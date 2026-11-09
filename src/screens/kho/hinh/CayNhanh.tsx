@@ -82,13 +82,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const [thongBao, setThongBao] = useState<string | null>(null)
   // thêm / sửa GIẢ THIẾT: id = null ⇒ thêm con của `cha`; id ≠ null ⇒ sửa (tên, giả thiết thêm, dời cha, chính/phụ)
   const [hopGT, setHopGT] = useState<{ id: string | null; cha: string; ten: string; gt: string; chinh: boolean } | null>(null)
-  const [hopMH, setHopMH] = useState<{ id: string | null; ten: string; gt: string; anh: string | null; nhom: string | null } | null>(null)   // tạo / sửa mô hình gốc
-  // NHÓM MÔ HÌNH (Thùy 18/10): Chủ đề → Nhóm mô hình → Mô hình. Chỉ khi mở từ Bản đồ mới (có chủ đề).
-  const [nhoms, setNhoms] = useState<api.NhomMoHinh[]>([])
-  const [hopNhom, setHopNhom] = useState<{ id: string | null; ten: string; moTa: string } | null>(null)
-  const [moNhom, setMoNhom] = useState<Record<string, boolean>>(NHO.moNhom)   // id nhóm → true = đang mở; MẶC ĐỊNH THU GẠN (chỉ hiện tên nhóm)
-  const moRa = (id: string | null) => { if (id) setMoNhom((g) => (g[id] ? g : { ...g, [id]: true })) }   // nhóm vừa nhận mô hình ⇒ mở ra để thấy kết quả
-  const [keoVao, setKeoVao] = useState<string | null>(null)   // nhóm đang được kéo mô hình vào (viền sáng)
+  // ⭐ 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): BỎ tầng Nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
+  //   Bảng/cột nhóm (hinh_nhom_mo_hinh, nhom_mh_id) CÒN NGUYÊN trong DB, chỉ xoá khi Thùy gật riêng (bước 2).
+  const [hopMH, setHopMH] = useState<{ id: string | null; ten: string; gt: string; anh: string | null } | null>(null)   // tạo / sửa mô hình gốc
   const [moDanhMuc, setMoDanhMuc] = useState<'dang' | 'bode' | null>(null)   // Thùy 19/10: danh mục Dạng bài / Bổ đề dời sang kho mới
   // thêm / sửa bài · `sau` = bài tiếp theo của bài đó (tiền đề mặc định = bài đó)
   const [hopBai, setHopBai] = useState<{ id: string | null; nhanh: string; sau?: string } | null>(null)
@@ -97,11 +93,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
 
   const setGocId = (id: string | null) => { NHO.gocId = id; setGocIdRaw(id) }
   useEffect(() => { api.demKhoMoHinh(khoi).then(setDemKho).catch(() => {}) }, [khoi])
-  useEffect(() => { if (chuDeId) api.nhomMoHinhCuaChuDe(chuDeId).then(setNhoms).catch((e) => setLoi(e.message ?? String(e))) }, [chuDeId])
-  useEffect(() => { NHO.moNhom = moNhom }, [moNhom])
   useEffect(() => { NHO.tab = tab }, [tab])
   useEffect(() => { NHO.tim = tim }, [tim])
-  useEffect(() => { luuNho() }, [moNhom, tab, gocId])   // nhớ cho các lần truy cập sau (sau khi NHO đã cập nhật ở các effect trên)
+  useEffect(() => { luuNho() }, [tab, gocId])   // nhớ cho các lần truy cập sau (sau khi NHO đã cập nhật ở các effect trên)
   const bao = (s: string) => { setThongBao(s); window.setTimeout(() => setThongBao((x) => (x === s ? null : x)), 2600) }
 
   // ── ĐỔI gốc (đổi ngữ cảnh ⇒ reset là đúng): lấy số hiển thị + cờ sai nhánh từ DB ──
@@ -282,14 +276,11 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
     try {
       if (hopMH.id) {
         await api.updateMoHinh(hopMH.id, { ten: hopMH.ten.trim(), gia_thiet: hopMH.gt.trim(), anh_cau_hinh: hopMH.anh })
-        const cu = goc.find((m) => m.id === hopMH.id)?.nhom_mh_id ?? null
-        if (chuDeId && hopMH.nhom && hopMH.nhom !== cu) await api.doiNhomMoHinh(hopMH.id, hopMH.nhom)
-        moRa(hopMH.nhom); await reload(); bao('Đã lưu mô hình')
+        await reload(); bao('Đã lưu mô hình')
       } else {
-        const id = chuDeId && hopMH.nhom
-          ? await api.taoMoHinhTrongNhom(hopMH.nhom, hopMH.ten, hopMH.gt, hopMH.anh)
-          : await api.taoMoHinhLuyen(khoi, hopMH.ten, hopMH.gt, hopMH.anh)
-        moRa(hopMH.nhom); await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
+        const id = await api.taoMoHinhLuyen(khoi, hopMH.ten, hopMH.gt, hopMH.anh)
+        if (chuDeId) await api.updateMoHinh(id, { chu_de_id: chuDeId })   // lỗi ở đây ⇒ mô hình nằm ở "Chưa xếp chủ đề", bấm ＋ để xếp
+        await reload(); setGocId(id); bao('Đã tạo mô hình — bấm “＋ Thêm bài” để dựng thân')
       }
       setHopMH(null)
     } catch (e: any) { setLoi(e.message ?? String(e)) }
@@ -307,46 +298,9 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
     } catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(false) }
   }
-  // ── nhóm mô hình: vá tại chỗ ──
-  const luuNhom = async () => {
-    if (!hopNhom || !chuDeId || ban || !hopNhom.ten.trim()) return
-    setBan(true); setLoi(null)
-    try {
-      if (hopNhom.id) {
-        await api.suaNhomMoHinh(hopNhom.id, { ten: hopNhom.ten, mo_ta: hopNhom.moTa })
-        setNhoms((p) => p.map((n) => (n.id === hopNhom.id ? { ...n, ten: hopNhom.ten.trim(), mo_ta: hopNhom.moTa.trim() } : n)))
-        bao('Đã lưu nhóm')
-      } else {
-        const n = await api.themNhomMoHinh(chuDeId, hopNhom.ten, hopNhom.moTa)
-        setNhoms((p) => [...p, n]); bao('Đã tạo nhóm — kéo mô hình vào, hoặc ＋ Mô hình')
-      }
-      setHopNhom(null)
-    } catch (e: any) { setLoi(e.message ?? String(e)) }
-    finally { setBan(false) }
-  }
-  const sapNhom = async (id: string, d: -1 | 1) => {
-    const i = nhoms.findIndex((n) => n.id === id), j = i + d
-    if (i < 0 || j < 0 || j >= nhoms.length) return
-    const moi = [...nhoms]; [moi[i], moi[j]] = [moi[j], moi[i]]
-    setNhoms(moi.map((n, k) => ({ ...n, thu_tu: k + 1 })))
-    try { await api.sapNhomMoHinh(moi.map((n) => n.id)) } catch (e: any) { setLoi(e.message ?? String(e)) }
-  }
-  const xoaNhom = async (id: string) => {
-    const n = nhoms.find((x) => x.id === id)
-    if (!n || !window.confirm(`Xoá nhóm «${n.ten}»? (Nhóm đang rỗng.)`)) return
-    try { await api.xoaNhomMoHinh(id); setNhoms((p) => p.filter((x) => x.id !== id)); setHopNhom(null); bao('Đã xoá nhóm') }
-    catch (e: any) { setLoi(e.message ?? String(e)) }
-  }
-  const chuyenMH = async (mhId: string, nhomId: string) => {
-    if (goc.find((m) => m.id === mhId)?.nhom_mh_id === nhomId) return
-    try { await api.doiNhomMoHinh(mhId, nhomId); moRa(nhomId); await reload(); bao('Đã chuyển mô hình sang nhóm ' + (nhoms.find((n) => n.id === nhomId)?.ten ?? '')) }
-    catch (e: any) { setLoi(e.message ?? String(e)) }
-  }
-
   // ── danh sách gốc cây (trái) ──
   const nutMH = (m: MoHinh) => (
-    <button key={m.id} onClick={() => setGocId(m.id)} draggable={!!chuDeId}
-      onDragStart={(e) => { e.dataTransfer.setData('text/mh', m.id); e.dataTransfer.effectAllowed = 'move' }}
+    <button key={m.id} onClick={() => setGocId(m.id)}
       className={`block w-full rounded-lg border px-2.5 py-1.5 text-left text-[12.5px] transition ${
         gocId === m.id ? 'border-teal-400 bg-teal-50 text-teal-800' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'}`}>
       <Ma>{m.ma}</Ma>
@@ -366,10 +320,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         <div className="mb-2 flex items-center justify-between gap-1">
           <span className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">Mô hình luyện · khối {khoi}</span>
           <span className="flex gap-1">
-            {chuDeId && <Btn className="!h-7 !px-2 !text-[12px]" onClick={() => setHopNhom({ id: null, ten: '', moTa: '' })} title="Nhóm mô hình: gom các mô hình tương đồng">＋ Nhóm</Btn>}
-            <Btn kind="pri" className="!h-7 !px-2 !text-[12px]" disabled={!!chuDeId && !nhoms.length}
-              title={chuDeId && !nhoms.length ? 'Tạo nhóm mô hình trước (＋ Nhóm)' : undefined}
-              onClick={() => setHopMH({ id: null, ten: '', gt: '', anh: null, nhom: (gocMH && goc.find((m) => m.id === gocId)?.nhom_mh_id) || nhoms[0]?.id || null })}>＋ Mô hình</Btn>
+            <Btn kind="pri" className="!h-7 !px-2 !text-[12px]" onClick={() => setHopMH({ id: null, ten: '', gt: '', anh: null })}>＋ Mô hình</Btn>
           </span>
         </div>
         {chuDeId && (
@@ -380,54 +331,8 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         )}
         <input className={inpCls} placeholder="Tìm mô hình…" value={tim} onChange={(e) => setTim(e.target.value)} />
         <div className="mt-2 max-h-[calc(100vh-230px)] min-h-0 flex-1 space-y-1.5 overflow-y-auto pr-1">
-          {chuDeId ? (
-            <>
-              {nhoms.map((n, i) => {
-                const ds = gocLoc.filter((m) => m.nhom_mh_id === n.id)
-                if (tim.trim() && !ds.length) return null
-                const gap = !moNhom[n.id] && !tim.trim()   // đang tìm thì mở hết để thấy kết quả
-                return (
-                  <div key={n.id}
-                    onDragOver={(e) => { if (e.dataTransfer.types.includes('text/mh')) { e.preventDefault(); setKeoVao(n.id) } }}
-                    onDragLeave={() => setKeoVao((x) => (x === n.id ? null : x))}
-                    onDrop={(e) => { e.preventDefault(); setKeoVao(null); const id = e.dataTransfer.getData('text/mh'); if (id) void chuyenMH(id, n.id) }}
-                    className={`rounded-lg border bg-slate-50/60 ${keoVao === n.id ? 'border-teal-500 ring-2 ring-teal-300' : 'border-slate-200'}`}>
-                    <div className="group flex items-center gap-1 px-1.5 py-1">
-                      <button onClick={() => setMoNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="w-4 shrink-0 text-[11px] text-slate-400">{gap ? '▸' : '▾'}</button>
-                      <button onClick={() => setMoNhom((g) => ({ ...g, [n.id]: !g[n.id] }))} className="min-w-0 flex-1 truncate text-left text-[12.5px] font-semibold text-slate-700" title={n.mo_ta || n.ten}>
-                        <span className="mr-1 text-[11px] font-normal text-slate-400">{i + 1}.</span>{tron(n.ten)}
-                      </button>
-                      <span className="shrink-0 rounded-full bg-slate-200/80 px-1.5 text-[10.5px] text-slate-600">{ds.length}</span>
-                      <span className="hidden shrink-0 gap-0.5 group-hover:flex">
-                        <button disabled={i === 0} onClick={() => void sapNhom(n.id, -1)} className="px-0.5 text-[11px] text-slate-500 disabled:opacity-20" title="Lên">▲</button>
-                        <button disabled={i === nhoms.length - 1} onClick={() => void sapNhom(n.id, 1)} className="px-0.5 text-[11px] text-slate-500 disabled:opacity-20" title="Xuống">▼</button>
-                        <button onClick={() => setHopNhom({ id: n.id, ten: n.ten, moTa: n.mo_ta })} className="px-0.5 text-[11px] text-blue-600" title="Sửa tên · mô tả nhận biết">✎</button>
-                      </span>
-                    </div>
-                    {!gap && (
-                      <div className="space-y-1 px-1.5 pb-1.5">
-                        {n.mo_ta && <div className="line-clamp-2 px-1 text-[10.5px] leading-snug text-slate-400" title={n.mo_ta}>{n.mo_ta}</div>}
-                        {ds.map(nutMH)}
-                        {!ds.length && <div className="rounded border border-dashed border-slate-300 px-2 py-1.5 text-center text-[11px] text-slate-400">Kéo mô hình thả vào đây</div>}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
-              {(() => {
-                const chuaXepNhom = gocLoc.filter((m) => !m.nhom_mh_id)
-                if (!chuaXepNhom.length) return null
-                return (
-                  <div className="rounded-lg border border-dashed border-amber-300 bg-amber-50/50 p-1.5">
-                    <div className="mb-1 px-1 text-[10.5px] font-semibold uppercase tracking-wide text-amber-700">⚠ Chưa xếp nhóm · {chuaXepNhom.length}</div>
-                    <div className="space-y-1">{chuaXepNhom.map(nutMH)}</div>
-                    {!!nhoms.length && <div className="mt-1 px-1 text-[10.5px] text-amber-700">Kéo mô hình thả vào một nhóm ở trên.</div>}
-                  </div>
-                )
-              })()}
-              {!nhoms.length && !gocLoc.length && <div className="px-2 py-4 text-[12px] leading-relaxed text-slate-400">Chủ đề này chưa có nhóm mô hình. Bấm <b>＋ Nhóm</b> để tạo nhóm đầu tiên, rồi <b>＋ Mô hình</b> trong nhóm.</div>}
-            </>
-          ) : gocLoc.map(nutMH)}
+          {gocLoc.map(nutMH)}
+          {chuDeId && !gocLoc.length && !tim.trim() && <div className="px-2 py-4 text-[12px] leading-relaxed text-slate-400">Chủ đề này chưa có mô hình nào. Bấm <b>＋ Mô hình</b> để tạo.</div>}
           {!!gocChuaXep.length && (
             <div className="mt-3 rounded-lg border border-dashed border-slate-300 p-1.5">
               <div className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-wide text-slate-400">Chưa xếp chủ đề · {gocChuaXep.length}</div>
@@ -447,8 +352,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             <div className="mb-1 flex flex-wrap items-center gap-2">
               <h1 className="text-[18px] font-semibold text-slate-900">{tron(gocMH.ten)}</h1>
               <Ma>{gocMH.ma}</Ma>
-              <button className="text-[12px] text-blue-600 hover:underline" onClick={() => setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null, nhom: gocMH.nhom_mh_id ?? null })}>✎ sửa mô hình</button>
-              {chuDeId && <span className="text-[12px] text-slate-400">· nhóm {nhoms.find((n) => n.id === gocMH.nhom_mh_id)?.ten ?? <span className="text-amber-600">chưa xếp</span>}</span>}
+              <button className="text-[12px] text-blue-600 hover:underline" onClick={() => setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null })}>✎ sửa mô hình</button>
               <span className="text-[12px] text-slate-400">{bais.length} bài · {nhanhs.length - 1} nhánh{sai.size ? ` · ${sai.size} sai nhánh` : ''}{dangTai ? ' · đang tính số…' : ''}</span>
             </div>
             <div className="mb-3 rounded-lg px-2.5 py-1.5 text-[12.5px] text-white" style={{ background: MAU[0].dac }}>
@@ -477,7 +381,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
                   onMo={(id) => { setCur(id); setPop(id) }}
                   onThemBai={(g) => setHopBai({ id: null, nhanh: g })}
                   onThemGT={(g, chinh) => setHopGT({ id: null, cha: g, ten: '', gt: '', chinh })}
-                  onSuaGT={(g) => g === gocId ? setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null, nhom: gocMH.nhom_mh_id ?? null })
+                  onSuaGT={(g) => g === gocId ? setHopMH({ id: gocMH.id, ten: gocMH.ten, gt: gocMH.gia_thiet ?? '', anh: gocMH.anh_cau_hinh ?? null })
                     : setHopGT({ id: g, cha: chaCua(g) ?? gocId!, ten: nhanhById.get(g)?.ten ?? '', gt: nhanhById.get(g)?.gia_thiet_them ?? '', chinh: laChinh(g) })} />
               : <TabNhom {...{ vai: vaiNut, nbById, tvCua, onNhomBai: moNhomBai, onThanhVien: moThanhVien, gocId: gocId!, lan, nhanhs, baiById, nhanhById, sai, cur, doSau, baiCaNhanh, conCuaNhanh, chaCua, laChinh, nhanCua, ban, L }}
                   onMo={(id) => { setCur(id); setPop(id) }} onChuyen={chuyen}
@@ -558,15 +462,6 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-5" onClick={() => setHopMH(null)}>
           <div className="max-h-[92vh] w-full max-w-2xl overflow-auto rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <h2 className="mb-3 text-[16px] font-semibold">{hopMH.id ? 'Sửa mô hình' : 'Mô hình luyện mới · khối ' + khoi}</h2>
-            {chuDeId && (
-              <>
-                <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Nhóm mô hình</label>
-                <select className={inpCls + ' mb-3'} value={hopMH.nhom ?? ''} onChange={(e) => setHopMH({ ...hopMH, nhom: e.target.value || null })}>
-                  {!hopMH.nhom && <option value="">— chọn nhóm —</option>}
-                  {nhoms.map((n, i) => <option key={n.id} value={n.id}>{i + 1}. {n.ten}</option>)}
-                </select>
-              </>
-            )}
             <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Tên mô hình</label>
             <input autoFocus className={inpCls} value={hopMH.ten} onChange={(e) => setHopMH({ ...hopMH, ten: e.target.value })} placeholder="vd: Phân giác trong tam giác vuông" />
             <div className="mb-1 mt-3 flex items-center justify-between">
@@ -578,7 +473,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             <div className="mt-3 max-w-xs"><AnhInput value={hopMH.anh} onChange={(u) => setHopMH((p) => (p ? { ...p, anh: u } : p))} cap="Hình của mô hình" /></div>
             <div className="mt-4 flex justify-end gap-2">
               <Btn onClick={() => setHopMH(null)}>Huỷ</Btn>
-              <Btn kind="pri" disabled={ban || !hopMH.ten.trim() || (!!chuDeId && !hopMH.id && !hopMH.nhom)} onClick={luuMoHinh}>{hopMH.id ? 'Lưu' : 'Tạo mô hình'}</Btn>
+              <Btn kind="pri" disabled={ban || !hopMH.ten.trim()} onClick={luuMoHinh}>{hopMH.id ? 'Lưu' : 'Tạo mô hình'}</Btn>
             </div>
           </div>
         </div>
@@ -591,27 +486,6 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
             <Btn className="ml-auto" onClick={() => setMoDanhMuc(null)}>✕ Đóng</Btn>
           </div>
           <div className="min-h-0 flex-1 overflow-auto p-5"><Catalog L={L} khoi={khoi} loai={moDanhMuc} reload={reload} /></div>
-        </div>
-      )}
-      {hopNhom && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-5" onClick={() => setHopNhom(null)}>
-          <div className="w-full max-w-lg rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <h2 className="mb-1 text-[16px] font-semibold">{hopNhom.id ? 'Sửa nhóm mô hình' : 'Nhóm mô hình mới'}</h2>
-            <p className="mb-3 text-[12.5px] text-slate-500">Nhóm gom các mô hình tương đồng (cùng kiểu cấu hình hình). Nhóm chỉ để gom — không kế thừa giả thiết, không đổi số bài.</p>
-            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Tên nhóm</label>
-            <input autoFocus className={inpCls} value={hopNhom.ten} onChange={(e) => setHopNhom({ ...hopNhom, ten: e.target.value })} placeholder="vd: Tứ giác có hai đường chéo vuông góc" />
-            <label className="mb-1 mt-3 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Mô tả nhận biết</label>
-            <textarea className={`${inpCls} h-24`} value={hopNhom.moTa} onChange={(e) => setHopNhom({ ...hopNhom, moTa: e.target.value })}
-              placeholder="Dấu hiệu chung của các mô hình trong nhóm: hình gì, giả thiết đặc trưng gì, hay hỏi gì…" />
-            <div className="mt-4 flex items-center gap-2">
-              {hopNhom.id && (() => { const con = goc.filter((m) => m.nhom_mh_id === hopNhom.id).length; return (
-                <Btn disabled={con > 0} title={con ? `Còn ${con} mô hình — chuyển hết sang nhóm khác mới xoá được` : 'Xoá nhóm rỗng'} onClick={() => void xoaNhom(hopNhom.id!)}>
-                  <span className="text-rose-600">Xoá nhóm</span></Btn>) })()}
-              <span className="flex-1" />
-              <Btn onClick={() => setHopNhom(null)}>Huỷ</Btn>
-              <Btn kind="pri" disabled={ban || !hopNhom.ten.trim()} onClick={() => void luuNhom()}>{hopNhom.id ? 'Lưu' : 'Tạo nhóm'}</Btn>
-            </div>
-          </div>
         </div>
       )}
       {hopBai && (

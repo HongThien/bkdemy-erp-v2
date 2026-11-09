@@ -292,7 +292,7 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 
 ---
 
-## 13. ⭐ TẦNG HÌNH–LUYỆN MỚI: Chủ đề → Mô hình → Trọng điểm → Nốt · NHÓM BÀI · bỏ Nhóm mô hình (Thùy chốt 09/11, CHƯA BUILD)
+## 13. ⭐ TẦNG HÌNH–LUYỆN MỚI: Chủ đề → Mô hình → Trọng điểm → Nốt · NHÓM BÀI · bỏ Nhóm mô hình (Thùy chốt 09/11 · bước 1–4 ĐÃ BUILD 09/11, còn 5–6)
 
 > Nguồn: sparring 08–09/11. Mockup: `docs/mockup-hinh-nhieu-cua.html` (dữ liệu thật MH.126 + MH.061, khối 7).
 > **Thay §12** (Nhóm mô hình) và bổ sung §0–§4. Các luật cây nhánh 22/10 (giả thiết nối giả thiết, nhánh chính xuống / phụ sang phải, mã gốc bất biến) **giữ nguyên**.
@@ -369,10 +369,10 @@ Không đổi sang đồ thị nhiều cha: chỉ mục "1 cha" (`hinh_mo_hinh_c
 
 ### 13.8 Thứ tự build
 
-1. Migration: cột `vai` + CHECK · 2 bảng sự kiện / cho-hỏi · cột `la_trong_diem` · 2 luật ở `fn_hl_them_gia_thiet` / `fn_hl_doi_cha_gia_thiet` · RPC tạo nhóm bài / thành viên / sự kiện. Kiểm ROLLBACK.
-2. Màn `CayNhanh.tsx`: khung nhóm bài (nền + sự kiện + thành viên cho/hỏi), một mũi tên "đầu ra"; bật trọng điểm trên nốt.
-3. Chọn ý `ChonYTuCay.tsx` + in `mucGhep`: luật thành viên đứng trước nhóm; cảnh báo đường đi (không chặn).
-4. Đo: hàm mức trọng điểm + mô hình; dashboard / báo cáo cấp Hình đổi sang mô hình → trọng điểm (Bước 1 của §13.6).
+1. ✅ (mig 202611091539) Migration: cột `vai` + CHECK · 2 bảng sự kiện / cho-hỏi · cột `la_trong_diem` · 2 luật ở `fn_hl_them_gia_thiet` / `fn_hl_doi_cha_gia_thiet` · RPC tạo nhóm bài / thành viên / sự kiện. Kiểm ROLLBACK.
+2. ✅ Màn `CayNhanh.tsx`: khung nhóm bài (nền + sự kiện + thành viên cho/hỏi), một mũi tên "đầu ra"; bật trọng điểm trên nốt.
+3. ✅ (mig 202611091738 `fn_hl_ghep_y`) Chọn ý `ChonYTuCay.tsx` + in `mucGhep`: luật thành viên đứng trước nhóm; cảnh báo đường đi (không chặn). Thứ tự ý cố định LÚC CHỌN (nodeIds) — lúc in không xếp lại, vì ô chấm ET đi theo đúng thứ tự đó.
+4. ✅ (mig 202611091750) Đo: `_dbht_cau` cấp chuyên đề Hình = mô hình GỐC, cấp nhóm = trọng điểm (`H:N:<nút nhóm>` · `H:T:<nốt>` · còn lại `H:<gốc>`); `fn_dbht_bang` / `fn_bc_ky_tinh` đặt tên theo cấp mới; màn bản đồ + bộ chọn mô hình của Chuyên đề Hình bỏ nhóm mô hình (Bước 1 của §13.6). `_dgcc_nut` · `_phien_hinh_khoi` · `_bdm_chu_de_co_noi_dung` chỉ dùng nhóm làm dự phòng tra chủ đề ⇒ để nguyên tới bước 2.
 5. Ca mẫu §13.7 (sau khi Thùy duyệt danh sách).
 6. Bước 2 của §13.6 — chỉ khi Thùy gật.
 

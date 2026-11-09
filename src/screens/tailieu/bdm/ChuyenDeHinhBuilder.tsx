@@ -305,7 +305,8 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   )
 }
 
-// ── Bộ chọn mô hình: chủ đề Hình–Luyện → nhóm mô hình → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
+// ── Bộ chọn mô hình: chủ đề Hình–Luyện → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
+// 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): bỏ tầng nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
 function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (ids: string[]) => void }) {
   const [cay, setCay] = useState<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] } | null>(null)
   const [dem, setDem] = useState<Map<string, DemKho>>(new Map())
@@ -318,7 +319,7 @@ function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
   const bat = (id: string) => setChon((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   const nhomCua = useMemo(() => {
     const m = new Map<string, CdhChonMoHinh[]>()
-    for (const mh of cay?.moHinh ?? []) { const k = mh.nhom_mh_id ?? `cd:${mh.chu_de_id ?? ''}`; m.set(k, [...(m.get(k) ?? []), mh]) }
+    for (const mh of cay?.moHinh ?? []) { const k = mh.chu_de_id ?? ''; m.set(k, [...(m.get(k) ?? []), mh]) }
     return m
   }, [cay])
   const theMh = (mh: CdhChonMoHinh) => {
@@ -346,19 +347,9 @@ function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
             : cay.chuDe.map((cd) => (
               <div key={cd.id} className="mb-5">
                 <div className="mb-2 text-[14px] font-bold text-slate-800">{cd.ten}</div>
-                <div className="grid gap-3 md:grid-cols-2">
-                  {cay.nhom.filter((n) => n.chu_de_id === cd.id).map((n) => (
-                    <div key={n.id} className="rounded-lg border border-slate-200 p-2.5">
-                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-500">{n.ten}</div>
-                      <div className="space-y-1">{(nhomCua.get(n.id) ?? []).map(theMh)}{!(nhomCua.get(n.id) ?? []).length && <div className="text-[12px] italic text-slate-300">trống</div>}</div>
-                    </div>
-                  ))}
-                  {(nhomCua.get(`cd:${cd.id}`) ?? []).length > 0 && (
-                    <div className="rounded-lg border border-dashed border-slate-200 p-2.5">
-                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Chưa vào nhóm</div>
-                      <div className="space-y-1">{(nhomCua.get(`cd:${cd.id}`) ?? []).map(theMh)}</div>
-                    </div>
-                  )}
+                <div className="grid gap-1 md:grid-cols-2">
+                  {(nhomCua.get(cd.id) ?? []).map(theMh)}
+                  {!(nhomCua.get(cd.id) ?? []).length && <div className="text-[12px] italic text-slate-300">chưa có mô hình</div>}
                 </div>
               </div>
             ))}
