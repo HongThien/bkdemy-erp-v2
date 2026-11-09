@@ -79482,3 +79482,9 @@ Thùy nêu 4 việc, làm được 3:
 - **ĐÃ GHI 09/11 (Thùy "ghi và push đi"):** `kho-rules/hinh/lo/mh126-nhom-bai/ghi_mh126.mjs --ghi`, 1 transaction. MH.126 = nhóm bài A·B·C, đầu ra làm giả thiết gốc; thành viên MH.166 (cho A,B⇒C: B3,B4) · MH.168 (cho A,C⇒B: B8) · mới "BE = BA, I trung điểm AE" (cho B⇒A,C: BT.07.061.17–19, đổi tên điểm M→E, E→I, K→D); đi tiếp: B5, B6 ở nút nhóm, nhánh F (B7, chính), Q (B9) → M (B10), nhánh mới H (BT.07.061.20). B1, B2 về MH.061 (còn 22 nốt). 9 nốt sửa chữ/tiền đề qua `fn_hl_sua_bai`. Không xoá gì. Kiểm trong transaction: mã 34 nốt không đổi · 0 cờ sai nhánh · ghép 3 cửa đúng giả thiết, không cảnh báo · 2 thành viên ⇒ có cảnh báo. Sau ghi: đọc lại qua phiên app admin khớp.
 - Chạy thử lần 1 bắt được: BT.07.061.17 vẫn "thay giả thiết" bằng đề cũ (tên M, E) ⇒ bỏ giả thiết riêng + tắt `gt_thay_the` cho nốt vào thành viên 3 / nhánh H.
 - `scripts/kho/test_ghep_y.mjs` + `test_nhom_bai.mjs` dựng nhóm bài trên MH.126 ⇒ từ nay không chạy được trên MH.126 (đã là nhóm bài thật) — muốn kiểm lại phải đổi sang cây khác.
+
+## 09/11 — Tách ý Hình – Học K7 + K8 ĐÃ GHI (Thùy: "chạy đi")
+- ghi.mjs (1 transaction, kiểm sau ghi): K7 161 bài → 438 ý · K8 113 bài → 337 ý. Câu cả bài cũ kho_chuan=false (giữ nguyên, 240 câu cũ đang trong tài liệu).
+- Để nguyên 27 bài (K7 26, K8 1) dạng chờ …000000 mà đã duyệt — tách là mất duyệt (trigger chặn duyệt ở dạng chờ). Tách sau khi phân dạng.
+- Chưa làm: K7 4 + K8 50 bài máy cắt lệch; không thêm dòng "Đã biết".
+- mig 202611091902 (ĐÃ ÁP): fn_hh_kho_cau + count_cau_by_bai_hh ẩn câu cả bài đã tách (tránh đếm/hiện trùng). Số câu cây K7 520→797, K8 483→707 khớp phép tính.
