@@ -79493,3 +79493,5 @@ Thùy nêu 4 việc, làm được 3:
 - mig 202611091907 ĐÃ ÁP: dai_bdm_cay_nho (khối, nhánh → cây jsonb + phiên bản) · sequence dai_bdm_cay_ban_seq tăng bằng trigger ràng buộc HOÃN tới COMMIT trên 15 bảng (câu Đại/HGT chỉ khi đổi dạng/cụm/gốc/xoá/loại) · thân cũ → _bdm_cay_tinh nguyên văn · fn_bdm_cay VOLATILE: khớp phiên bản thì trả bản lưu, lệch (hoặc >1 ngày) thì tính 1 lần rồi lưu.
 - Kiểm ROLLBACK: md5 13 khối + nhánh hgt khớp (tính lẫn đọc lưu) · sửa lời giải không làm tính lại · sửa tên nhóm thì tính lại đúng. Thật: K12 lần đầu 324 ms/17k block, sau đó 0 ms/7 block.
 - KHTN (fn_khtn_bdm_cay) chưa làm.
+- Lượt 2 (Thùy: "Làm xong cái tách ý đi"): tach.mjs nhận thêm 2 khuôn lời giải (Phần 1 phân tích đi lên chia theo a) b) · bước ghi "Ý b, …"/"Ý b …") ⇒ ghi thêm K8 48 bài → 139 ý. Tổng K7 161/438 · K8 161/476. Cây K8 707→798 khớp.
+- Còn lại K7·K8: 27 bài dạng chờ + đã duyệt (tách khi phân dạng) · 6 bài lệch: HHC000748/000752/000857 (đề lẫn bài khác, không có lời giải) · HHC002813 (không có lời dẫn) · HHC002422 (thiếu lời giải ý c) · HHC002549 (ý lồng 1) 2a) 2b)).

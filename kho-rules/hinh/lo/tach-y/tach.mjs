@@ -39,12 +39,24 @@ function loiGiaiTheoY(raw, nhans) {
       if (/^\*\*Phần 1\./.test(ln) || !ln.trim()) continue
       const mb = ln.match(/^\*\*Bước \d+\.\*\*\s*(.*)$/)
       if (!mb) { if (!cur && !buoc.length) chung.push(ln); else buoc.push({ y: cur, text: ln, noi: true }); continue }
-      const my = mb[1].match(/^Ý ([a-h1-9])\*?\s*[):]\s*/)
+      // "Ý a:" · "Ý a)" · "Ý b, …" · "Ý c …" (Thùy 09/11 lượt 2: bước ghi kiểu dấu phẩy/khoảng trắng cũng là gắn ý)
+      const my = mb[1].match(/^Ý ([a-h1-9])\*?(?:\s*[):,.]\s*|\s+)/)
       if (my) cur = my[1]
       buoc.push({ y: cur, text: my ? mb[1].slice(my[0].length) : mb[1] })
     }
     const t2 = tach(p2)
     const out = {}
+    // Phần 1 kiểu PHÂN TÍCH ĐI LÊN chia theo nhãn a) b) c) (không có dòng "Bước") ⇒ đoạn Phần 1 của ý = đoạn dưới nhãn đó.
+    // Chỉ nhận khi nhãn Phần 1 khớp ĐÚNG danh sách ý của đề (mỗi nhãn 1 lần, đúng thứ tự) — lệch thì bỏ, không đoán.
+    if (!buoc.length) {
+      const t1 = tach(p1.filter((ln) => !/^\*\*Phần 1\./.test(ln)).join('\n'))
+      if (t1.ys.map((y) => y.nhan).join(',') !== nhans.join(',')) return Object.fromEntries(nhans.map((n) => [n, null]))
+      for (const n of nhans) {
+        const y1 = t1.ys.find((z) => z.nhan === n)?.text, y2 = t2.ys.find((z) => z.nhan === n)?.text
+        out[n] = y1 && y2 ? ['**Phần 1. Hướng dẫn**', ...(t1.dau ? [t1.dau] : []), y1, '', m2[0], ...(t2.dau ? [t2.dau] : []), y2].join('\n') : null
+      }
+      return out
+    }
     for (const n of nhans) {
       const goc = n.replace('*', '')
       const bs = buoc.filter((x) => x.y === null || x.y === goc)
