@@ -79461,3 +79461,7 @@ Thùy nêu 4 việc, làm được 3:
 - Sai: tách ý Hình – Học — chưa chốt phương án đã tự áp mig 202611091550 + chạy máy cắt cả K7·8·8T·9 (746 bài), không báo trước. Thùy chửi.
 - Sửa: ghi luật lên đầu HANDOFF.md (mục ⛔ LUẬT LÀM VIỆC) + memory. Từ giờ: nêu phương án + scope (khối/lớp, số lượng, có ghi DB/migration) → chờ lệnh → một bước một lần.
 - Bổ sung: "Phải chuẩn hóa trước đã" — kho còn nhiều bài thừa, quét cả kho = tốn token. Chuẩn hoá trước, xử lý hàng loạt sau, chỉ trên tập Thùy chỉ định.
+
+## 09/11 — Bản đồ mới hay timeout (fn_bdm_cay)
+- Nguyên nhân: _bdm_cau_giai nối dai_cau_hoi g để lấy cụm câu gốc ⇒ Seq Scan CẢ kho (69.811 dòng ≈ 83 MB) mỗi lần mở bản đồ; thêm kế hoạch chung của hàm SQL ước sai mảng dạng. K12 = 107.504 block/lần, lúc DB bận đọc đĩa ⇒ vượt trần 8 s.
+- Sửa: mig 202611091800 (ĐÃ ÁP) — chỉ tra cụm cho câu gốc cần (pkey) + plpgsql RETURN QUERY EXECUTE USING. md5 đầu ra fn_bdm_cay 13 khối trước/sau khớp hết. K12: 16.489 block.
