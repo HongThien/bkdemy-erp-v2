@@ -1,0 +1,610 @@
+[
+ {
+  "ma_bai": "HLB01275",
+  "goc": "BT.07.061.10",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.126",
+  "de": "Cho $\\triangle ABC$ vuông tại $A$. Trên cạnh $BC$ lấy điểm $E$ sao cho $BA = BE$. Tia phân giác của góc $B$ cắt cạnh $AC$ tại $K$.\na) Chứng minh $\\triangle ABK = \\triangle EBK$ và $AK = KE$\nb) Chứng minh $EK \\perp BC$\nc) Chứng minh: $BK$ là đường trung trực của đoạn thẳng $AE$.",
+  "anh": [
+   1
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABK = \\triangle EBK$ và $AK = KE$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $EK \\perp BC$",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh: $BK$ là đường trung trực của đoạn thẳng $AE$.",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01276",
+  "goc": "BT.07.061.13",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.126",
+  "de": "Cho $\\triangle ABC$ vuông tại $A$. Vẽ $BD$ là tia phân giác của góc $ABC$. Trên $BC$ lấy điểm $E$ sao cho $BE = BA$.\na) Chứng minh $\\triangle ABD = \\triangle EBD$.\nb) Chứng minh $DE = AD$ và $DE \\perp BC$.\nc) Chứng minh: $BD \\perp AE$.\nd) Trên tia đối của tia $AB$ lấy điểm $F$ sao cho $AF = CE$. Chứng minh ba điểm $F, D, E$ thẳng hàng.",
+  "anh": [
+   4
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABD = \\triangle EBD$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $DE = AD$ và $DE \\perp BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh: $BD \\perp AE$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Trên tia đối của tia $AB$ lấy điểm $F$ sao cho $AF = CE$. Chứng minh ba điểm $F, D, E$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.061.16-b9015b92-dfb8-43e4-ab9b-710a272fd80a.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01277",
+  "goc": "BT.07.061.17",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.126",
+  "de": "Cho tam giác $ABC$ vuông tại $A$ có $AB < AC$. Trên cạnh $BC$ lấy điểm $M$ sao cho $BA = BM$. Gọi $E$ là trung điểm của $AM$.\na) Chứng minh $\\triangle ABE = \\triangle MBE$.\nb) Chứng minh $BE$ là tia phân giác của góc $ABC$\nc) Gọi $K$ là giao điểm của $BE$ và $AC$. Chứng minh $KM \\perp BC$.\nd) Trên tia đối của tia $KM$ lấy điểm $H$ sao cho $KH = KC$. Chứng minh ba điểm $B, A, H$ thẳng hàng.",
+  "anh": [
+   1,
+   4
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABE = \\triangle MBE$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $BE$ là tia phân giác của góc $ABC$",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Gọi $K$ là giao điểm của $BE$ và $AC$. Chứng minh $KM \\perp BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Trên tia đối của tia $KM$ lấy điểm $H$ sao cho $KH = KC$. Chứng minh ba điểm $B, A, H$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.061.20-b174637c-2cf8-4fab-9071-5c39f6323121.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01278",
+  "goc": "BT.07.061.21",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.126",
+  "de": "Cho $\\triangle ABC$ vuông tại $A$. Kẻ $BD$ là tia phân giác của $\\widehat{ABC}$ ($D \\in AC$). Trên cạnh $BC$ lấy điểm $E$ sao cho $BE = BA$.\na) Chứng minh $\\triangle ABD = \\triangle EBD$.\nb) Chứng minh $DE = AD$ và $DE \\perp BC$.\nc) Chứng minh $BD$ là đường trung trực của $AE$.\nd) Trên tia đối của tia $AB$ lấy điểm $F$ sao cho $AF = CE$. Chứng minh $D, F, E$ thẳng hàng.",
+  "anh": [
+   4
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABD = \\triangle EBD$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $DE = AD$ và $DE \\perp BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh $BD$ là đường trung trực của $AE$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Trên tia đối của tia $AB$ lấy điểm $F$ sao cho $AF = CE$. Chứng minh $D, F, E$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.061.24-a8d9bd2f-1bee-436a-820e-50ba48ad1b82.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01279",
+  "goc": "BT.07.061.25",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.126",
+  "de": "Cho $\\triangle ABC$ vuông tại $A$. Vẽ $BD$ là tia phân giác của $\\widehat{ABC}$ ($D \\in AC$). Kẻ $DE$ vuông góc với $BC$ ($E \\in BC$).\na) Chứng minh $\\triangle ABD = \\triangle EBD$.\nb) Tia $BA$ cắt tia $ED$ tại điểm $Q$. Chứng minh $DQ = DC$.\nc) Lấy điểm $M$ là trung điểm của đoạn thẳng $QC$. Chứng minh ba điểm $B, D, M$ thẳng hàng.",
+  "anh": [
+   2,
+   3
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABD = \\triangle EBD$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Tia $BA$ cắt tia $ED$ tại điểm $Q$. Chứng minh $DQ = DC$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.061.26-34812b55-f4ba-4325-ac14-700de43e1ec7.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "Lấy điểm $M$ là trung điểm của đoạn thẳng $QC$. Chứng minh ba điểm $B, D, M$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.061.27-f5c4bc15-bf22-4690-89bc-6b9e6f2ce485.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01280",
+  "goc": "BT.07.061.28",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.130",
+  "de": "Cho $\\triangle MAB$ nhọn có $MA < MB$. Trên cạnh $MB$ lấy điểm $C$ sao cho $MA = MC$. Tia phân giác của góc $AMB$ cắt cạnh $AB$ tại $E$. Gọi $F$ là giao điểm của $MA$ và $CE$.\na) Chứng minh $EA = EC$.\nb) Chứng minh $\\triangle AEF = \\triangle CEB$.\nc) Gọi $H$ là trung điểm của $FB$. Chứng minh $M,E,H$ thẳng hàng",
+  "anh": [
+   1
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $EA = EC$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $\\triangle AEF = \\triangle CEB$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Gọi $H$ là trung điểm của $FB$. Chứng minh $M,E,H$ thẳng hàng",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01281",
+  "goc": "BT.07.061.31",
+  "mh_cu": "MH.061",
+  "mh_moi": "MH.130",
+  "de": "Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt $BC$ tại $I$. Trên cạnh $AC$ lấy điểm $K$ sao cho $AK = AB$.\na) Chứng minh rằng: $\\triangle ABI = \\triangle AKI$\nb) Gọi giao điểm của $AI$ và $BK$ là $O$. Chứng minh rằng: $AI$ vuông góc với $BK$ tại $O$.\nc) Gọi giao điểm của $AB$ và $KI$ là $E$. Chứng minh rằng: $BK \\parallel EC$",
+  "anh": [
+   1
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh rằng: $\\triangle ABI = \\triangle AKI$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Gọi giao điểm của $AI$ và $BK$ là $O$. Chứng minh rằng: $AI$ vuông góc với $BK$ tại $O$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Gọi giao điểm của $AB$ và $KI$ là $E$. Chứng minh rằng: $BK \\parallel EC$",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01282",
+  "goc": "BT.07.062.01",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho $\\triangle ABC$ có $AB=AC$. Tia phân giác góc $A$ cắt $BC$ tại $D$.\na) Chứng minh: $\\triangle ABD = \\triangle ACD$\nb) Trên nửa mặt phẳng bờ $BC$ chứa điểm $A$ vẽ tia $Cx \\perp BC$. Trên nửa mặt phẳng bờ $AB$ chứa điểm $C$ vẽ tia $Ay \\parallel BC$. Chứng minh $\\widehat{yAC} = \\widehat{ABC}$.\nc) Chứng minh: $AD \\parallel Cx$.\nd) Gọi $I$ là trung điểm của $AC$, $K$ là giao điểm của hai tia $Ay$ và $Cx$. Chứng minh $I$ là trung điểm của $DK$.",
+  "anh": [
+   1,
+   2,
+   4
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh: $\\triangle ABD = \\triangle ACD$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Trên nửa mặt phẳng bờ $BC$ chứa điểm $A$ vẽ tia $Cx \\perp BC$. Trên nửa mặt phẳng bờ $AB$ chứa điểm $C$ vẽ tia $Ay \\parallel BC$. Chứng minh $\\widehat{yAC} = \\widehat{ABC}$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.02-59a6fe8f-4d70-4a1e-b62b-df11c7a9699a.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh: $AD \\parallel Cx$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Gọi $I$ là trung điểm của $AC$, $K$ là giao điểm của hai tia $Ay$ và $Cx$. Chứng minh $I$ là trung điểm của $DK$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.04-a9de2303-2c2a-48e7-b0cd-9232b7f8b708.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01283",
+  "goc": "BT.07.062.05",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho tam giác $ABC$ cân ở $A$ ($AB = AC$), $D,E$ lần lượt là trung điểm của $AC, AB$.\na) Chứng minh rằng: $BD = CE$\nb) Vẽ $M,N$ sao cho $D$ là trung điểm của $BM, E$ là trung điểm của $CN$. Chứng minh rằng $A$ là trung điểm của $MN$\nc) $BD$ cắt $CE$ tại $I$. Chứng minh $AI$ là phân giác góc $BAC$",
+  "anh": [
+   1,
+   2
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh rằng: $BD = CE$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Vẽ $M,N$ sao cho $D$ là trung điểm của $BM, E$ là trung điểm của $CN$. Chứng minh rằng $A$ là trung điểm của $MN$",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.06-e09838c5-118f-4f94-b739-c958da3b7cb3.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "$BD$ cắt $CE$ tại $I$. Chứng minh $AI$ là phân giác góc $BAC$",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01284",
+  "goc": "BT.07.062.08",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho $\\triangle ABC$, có $AB = AC$, tia phân giác góc $A$ cắt $BC$ tại $H$. Trên tia đối của tia $BC$ lấy điểm $D$, trên tia đối của tia $CB$ lấy điểm $E$ sao cho $BD = CE$.\na) Chứng minh $\\widehat{ABC} =\\widehat{ACB}$\nb) Chứng minh $AH \\perp BC$.\nc) Chứng minh $AD = AE$.\nd) Chứng minh $AH$ là tia phân giác của $DAE$",
+  "anh": [
+   1
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\widehat{ABC} =\\widehat{ACB}$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $AH \\perp BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh $AD = AE$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Chứng minh $AH$ là tia phân giác của $DAE$",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01285",
+  "goc": "BT.07.062.12",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho tam giác $ABC$ có $AB = AC$, lấy $M$ là trung điểm của $BC$.\na) Chứng minh $\\triangle ABM = \\triangle ACM$.\nb) Kẻ $ME \\perp AB$ tại $E$, kẻ $MF \\perp AC$ tại $F$. Chứng minh $AE = AF$\nc) $AM$ cắt $EF$ tại $K$. Chứng minh $AK \\perp EF$\nd) Chứng minh $EF \\parallel BC$\ne) Từ $C$ kẻ đường thẳng song song với $AM$ cắt tia $BA$ tại $D$. Chứng minh $A$ là trung điểm của $BD$.",
+  "anh": [
+   2,
+   3,
+   5
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABM = \\triangle ACM$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Kẻ $ME \\perp AB$ tại $E$, kẻ $MF \\perp AC$ tại $F$. Chứng minh $AE = AF$",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.13-452b4f48-f680-43df-b45d-e7073dd377dc.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "$AM$ cắt $EF$ tại $K$. Chứng minh $AK \\perp EF$",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.14-5886657d-0229-44af-9fb0-3c0b2b3fbb00.png"
+   },
+   {
+    "nhan": "d",
+    "nd": "Chứng minh $EF \\parallel BC$",
+    "anh": null
+   },
+   {
+    "nhan": "e",
+    "nd": "Từ $C$ kẻ đường thẳng song song với $AM$ cắt tia $BA$ tại $D$. Chứng minh $A$ là trung điểm của $BD$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.16-493db4c3-1e14-4e81-a898-47bf60f680d8.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01286",
+  "goc": "BT.07.062.17",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho tam giác $ABC$ có $AB=AC$. Gọi $M$ là trung điểm của $BC$.\na) Chứng minh tam giác $ABM$ và tam giác $ACM$ bằng nhau.\nb) Chứng minh $AM$ là phân giác của góc $BAC$ và $AM$ vuông góc với $BC$.\nc) Lấy $D$ là một điểm bất kỳ trên đoạn thẳng $AM$. Chứng minh $DB = DC$.",
+  "anh": [],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh tam giác $ABM$ và tam giác $ACM$ bằng nhau.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $AM$ là phân giác của góc $BAC$ và $AM$ vuông góc với $BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Lấy $D$ là một điểm bất kỳ trên đoạn thẳng $AM$. Chứng minh $DB = DC$.",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01287",
+  "goc": "BT.07.062.20",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho $\\triangle ABC$ cân tại $A$. Gọi $M$ là trung điểm của $BC$.\na) Chứng minh: $\\triangle ABM = \\triangle ACM$.\nb) Chứng minh: $AM$ là phân giác của $\\widehat{BAC}$ và $AM \\perp BC$.\nc) Trên cạnh $AB$ lấy điểm $H$, trên cạnh $AC$ lấy điểm $K$ sao cho $AH = AK$. Gọi giao điểm của $HK$ và $AM$ là $I$. Chứng minh: $AI \\perp HK$;\nd) Chứng minh rằng $HK \\parallel BC$",
+  "anh": [],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh: $\\triangle ABM = \\triangle ACM$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh: $AM$ là phân giác của $\\widehat{BAC}$ và $AM \\perp BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Trên cạnh $AB$ lấy điểm $H$, trên cạnh $AC$ lấy điểm $K$ sao cho $AH = AK$. Gọi giao điểm của $HK$ và $AM$ là $I$. Chứng minh: $AI \\perp HK$;",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Chứng minh rằng $HK \\parallel BC$",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01288",
+  "goc": "BT.07.062.24",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho góc $\\widehat{xAy}$ là góc nhọn trên $Ax$ và $Ay$ lần lượt lấy điểm $B$ và $C$ sao cho $AB = AC$. Vẽ $Az$ là phân giác góc $\\widehat{xAy}$, $Az$ cắt $BC$ tại điểm $D$.\na) Chứng minh $\\triangle ABD = \\triangle ACD$.\nb) Chứng minh $AD$ là trung trực của $BC$.\nc) Vẽ $DM \\perp AB$ tại $M$. Trên cạnh $AC$ lấy $N$ sao cho $AN = AM$. Chứng minh $\\triangle ADM = \\triangle ADN$ và $DN \\perp AC$.\nd) Gọi $K$ là trung điểm của $CN$. Trên tia đối của tia $KD$ lấy điểm $E$ sao cho $KE = KD$. Chứng minh $M, N, E$ thẳng hàng.",
+  "anh": [],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABD = \\triangle ACD$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $AD$ là trung trực của $BC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Vẽ $DM \\perp AB$ tại $M$. Trên cạnh $AC$ lấy $N$ sao cho $AN = AM$. Chứng minh $\\triangle ADM = \\triangle ADN$ và $DN \\perp AC$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Gọi $K$ là trung điểm của $CN$. Trên tia đối của tia $KD$ lấy điểm $E$ sao cho $KE = KD$. Chứng minh $M, N, E$ thẳng hàng.",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01289",
+  "goc": "BT.07.062.28",
+  "mh_cu": "MH.062",
+  "mh_moi": "MH.132",
+  "de": "Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$ ($D$ thuộc $BC$).\na) Chứng minh $\\triangle ABD = \\triangle ACD$.\nb) Từ $D$ kẻ $DE$ vuông góc với $AB$ ($E \\in AB$), $DF$ vuông góc với $AC$ ($F \\in AC$). Chứng minh $DE = DF$.\nc) Gọi $I$ là trung điểm của $EF$. Chứng minh 3 điểm $A, I, D$ thẳng hàng.",
+  "anh": [
+   1,
+   2,
+   3
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle ABD = \\triangle ACD$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Từ $D$ kẻ $DE$ vuông góc với $AB$ ($E \\in AB$), $DF$ vuông góc với $AC$ ($F \\in AC$). Chứng minh $DE = DF$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.29-338cea77-0471-4dfe-9c99-5c7502828f8a.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "Gọi $I$ là trung điểm của $EF$. Chứng minh 3 điểm $A, I, D$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.062.30-7a41bb01-0e6a-4674-a199-ed27be1e252e.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01290",
+  "goc": "BT.07.063.01",
+  "mh_cu": "MH.063",
+  "mh_moi": "MH.131",
+  "de": "Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD=MA$.\na) Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$\nb) Chứng minh rằng $BD \\parallel AC$.\nc) Qua $M$ vẽ đường thẳng vuông góc với $AC$ tại $I$, và đường thẳng vuông góc với $BD$ tại $K$. Chứng minh rằng ba điểm $I, M, K$ thẳng hàng.",
+  "anh": [
+   3
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh rằng $BD \\parallel AC$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Qua $M$ vẽ đường thẳng vuông góc với $AC$ tại $I$, và đường thẳng vuông góc với $BD$ tại $K$. Chứng minh rằng ba điểm $I, M, K$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.03-263b391b-ba77-41c4-90ca-606229be0cf1.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01291",
+  "goc": "BT.07.063.04",
+  "mh_cu": "MH.063",
+  "mh_moi": "MH.131",
+  "de": "Cho $\\triangle ABC$, $M$ là trung điểm của $AB$. Trên tia đối của tia $MC$ lấy điểm $N$ sao cho $MC = MN$.\na) Chứng minh $NB \\parallel AC$ và $NB = AC$.\nb) Trên tia đối tia $BN$ lấy điểm $E$ sao cho $BN = BE$. Chứng minh: $AB = EC$\nc) Gọi $F$ là trung điểm của $BC$. Chứng minh $A, E, F$ thẳng hàng.",
+  "anh": [
+   1,
+   2,
+   3
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $NB \\parallel AC$ và $NB = AC$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Trên tia đối tia $BN$ lấy điểm $E$ sao cho $BN = BE$. Chứng minh: $AB = EC$",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.05-a5fa804b-4d68-4f6e-bc8b-02865ea6118e.png"
+   },
+   {
+    "nhan": "c",
+    "nd": "Gọi $F$ là trung điểm của $BC$. Chứng minh $A, E, F$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.06-20fc297b-c112-40db-bee3-d1aeb057e951.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01292",
+  "goc": "BT.07.063.07",
+  "mh_cu": "MH.063",
+  "mh_moi": "MH.131",
+  "de": "Cho tam giác $ABC$ vuông tại $A$. Gọi $M$ là trung điểm của cạnh $BC$. Trên tia đối của tia $MA$ lấy điểm $E$ sao cho $ME = MA$.\na) Chứng minh $\\triangle AMB = \\triangle EMC$\nb) Chứng minh $AC$ vuông góc với $CE$.\nc) Chứng minh $BC = 2AM$.",
+  "anh": [
+   1
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle AMB = \\triangle EMC$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $AC$ vuông góc với $CE$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh $BC = 2AM$.",
+    "anh": null
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01293",
+  "goc": "BT.07.063.10",
+  "mh_cu": "MH.063",
+  "mh_moi": "MH.131",
+  "de": "Cho $\\triangle ABC$ ($AB < AC$) có $M$ là trung điểm của $AC$. Trên tia đối của tia $MB$ lấy điểm $D$ sao cho $MB = MD$.\na) Chứng minh $\\triangle AMB = \\triangle CMD$\nb) Chứng minh $\\triangle ABC = \\triangle CDA$\nc) Chứng minh $AD=CB$ và $AD\\parallel CB$.\nd) Gọi $N$ là trung điểm của $AB$. Trên tia đối của tia $NC$ lấy điểm $K$ sao cho $NC = NK$. Chứng minh 3 điểm $D, A, K$ thẳng hàng.\ne) Vẽ $CE \\perp AD$ ($E \\in AD$) và $AF \\perp BC$ ($F \\in BC$). Chứng minh $DE = BF$.",
+  "anh": [
+   1,
+   4,
+   5
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle AMB = \\triangle CMD$",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $\\triangle ABC = \\triangle CDA$",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Chứng minh $AD=CB$ và $AD\\parallel CB$.",
+    "anh": null
+   },
+   {
+    "nhan": "d",
+    "nd": "Gọi $N$ là trung điểm của $AB$. Trên tia đối của tia $NC$ lấy điểm $K$ sao cho $NC = NK$. Chứng minh 3 điểm $D, A, K$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.13-eea0f9ac-e710-41a7-803c-575ac9f4e102.png"
+   },
+   {
+    "nhan": "e",
+    "nd": "Vẽ $CE \\perp AD$ ($E \\in AD$) và $AF \\perp BC$ ($F \\in BC$). Chứng minh $DE = BF$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.14-ce79ce2d-e2ea-49c1-92a4-ab1e978ec887.png"
+   }
+  ]
+ },
+ {
+  "ma_bai": "HLB01294",
+  "goc": "BT.07.063.15",
+  "mh_cu": "MH.063",
+  "mh_moi": "MH.131",
+  "de": "Cho tam giác $ABC$, lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MA = MD$.\na) Chứng minh $\\triangle AMC = \\triangle DMB$.\nb) Chứng minh $AC \\parallel BD$.\nc) Kẻ $AH \\perp BC$, $DK \\perp BC$ ($H, K$ thuộc $BC$). Chứng minh $AH = DK$.\nd) Gọi $I$ là trung điểm của $AC$, vẽ điểm $E$ sao cho $I$ là trung điểm của $BE$. Chứng minh ba điểm $E, C, D$ thẳng hàng.",
+  "anh": [
+   3,
+   4
+  ],
+  "y": [
+   {
+    "nhan": "a",
+    "nd": "Chứng minh $\\triangle AMC = \\triangle DMB$.",
+    "anh": null
+   },
+   {
+    "nhan": "b",
+    "nd": "Chứng minh $AC \\parallel BD$.",
+    "anh": null
+   },
+   {
+    "nhan": "c",
+    "nd": "Kẻ $AH \\perp BC$, $DK \\perp BC$ ($H, K$ thuộc $BC$). Chứng minh $AH = DK$.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.17-6ddb61b8-e4a8-426b-a101-3a92b0b43eb2.png"
+   },
+   {
+    "nhan": "d",
+    "nd": "Gọi $I$ là trung điểm của $AC$, vẽ điểm $E$ sao cho $I$ là trung điểm của $BE$. Chứng minh ba điểm $E, C, D$ thẳng hàng.",
+    "anh": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-10/BT.07.063.18-10e535bf-fe57-42a5-aa29-063b1d682169.png"
+   }
+  ]
+ }
+]

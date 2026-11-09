@@ -79427,3 +79427,8 @@ Thùy nêu 4 việc, làm được 3:
 - Nguyên nhân: KhoTrenLopModal = lưới 2 cột (Bài giảng | Luyện trên lớp) trong vùng overflow-y-auto; mỗi cột overflow-hidden (bo góc) ⇒ là ô lưới được co min-height về 0 ⇒ hàng lưới bị ép vừa khung, câu dư bị CẮT, không có gì để cuộn.
 - Sửa: lưới thêm auto-rows-max + items-start ⇒ hàng cao theo nội dung, vùng cuộn được (dùng chung Đại · HGT · Hình–Học).
 - Kiểm app: K6 › 2.4 Tìm số nguyên theo điều kiện về thứ tự (12 câu bài giảng): cột cao 2135px trong khung 672px, cuộn tới câu 12 + nút Thêm câu.
+
+## 09/11 — K7 Hình–Luyện "Tam giác bằng nhau": đẩy bài cũ vào KHO BÀI (sửa hiểu nhầm hôm 07/11)
+- **Sai:** Thùy bảo "đẩy các bài hình luyện cũ vào kho bài", t dựng CHUỖI (nhánh giả thiết + bài nối bài + hình + lời giải). Kho bài của mô hình = `hinh_bai` (gán `mo_hinh_id`), KHÔNG phải `hinh_baitoan` trong cây ⇒ tab Kho bài vẫn trống. Chuỗi 07/11 vẫn nằm trong DB (không xoá, chờ Thùy quyết).
+- **Làm:** `scripts/kho/hl-kho-bai-tam-giac-cu.mjs` — 21 chuỗi cũ MH.061–064 (cap1..capN) → 20 `hinh_bai` + 72 `hinh_y` (a,b,c… ; ảnh gốc `anh_chuan` đi theo; `nguon_ma_cau` = mã cap1 để dedupe), gán bằng `fn_hl_gan_bai_mo_hinh`: MH.126 ×5 · MH.130 ×2 · MH.131 ×5 · MH.132 ×8. Chuẩn hoá chữ (tên điểm → `$…$`, `\widehat`), sửa 3 lỗi chữ gốc (HLB… "góc A, D thuộc BC", "phân giác của △ABC", "phân giác ABC").
+- **Chưa:** MH.133 (Hai trung điểm) vẫn 0 bài — chuỗi cũ BT.07.064.01 (3 ý) THIẾU giả thiết (không ai biết M, N là gì) ⇒ không đoán. `da_duyet=false`. 3 chuỗi MH.061 (…10/13/21) gần trùng đề, vẫn nhập đủ. File xem: `kho-rules/hinh/k7-tgbn-mohinh/kho-bai-cu-duyet.html`.
