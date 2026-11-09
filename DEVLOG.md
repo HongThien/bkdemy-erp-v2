@@ -79460,3 +79460,4 @@ Thùy nêu 4 việc, làm được 3:
 ## 09/11 — LUẬT: chỉ làm khi Thùy ra lệnh, phải nói rõ scope
 - Sai: tách ý Hình – Học — chưa chốt phương án đã tự áp mig 202611091550 + chạy máy cắt cả K7·8·8T·9 (746 bài), không báo trước. Thùy chửi.
 - Sửa: ghi luật lên đầu HANDOFF.md (mục ⛔ LUẬT LÀM VIỆC) + memory. Từ giờ: nêu phương án + scope (khối/lớp, số lượng, có ghi DB/migration) → chờ lệnh → một bước một lần.
+- Bổ sung: "Phải chuẩn hóa trước đã" — kho còn nhiều bài thừa, quét cả kho = tốn token. Chuẩn hoá trước, xử lý hàng loạt sau, chỉ trên tập Thùy chỉ định.

@@ -12,6 +12,7 @@
 - **Chỉ chạy khi Thùy đã RA LỆNH.** Thùy nêu một yêu cầu ≠ lệnh làm hết. Phương án chưa chốt thì **không** chạy gì: không migration, không script hàng loạt, không ghi DB, không dựng bản nháp cho toàn bộ dữ liệu.
 - **Trước khi làm, nói rõ SCOPE rồi chờ Thùy gật.** Scope gồm: làm cái gì · trên **khối/lớp/môn nào** · bao nhiêu bài/câu/bảng · có ghi DB hay không · thứ tự các bước. Thùy chưa nêu phạm vi ⇒ **hỏi**, không tự mở rộng ra "tất cả các khối".
 - **Một bước một lần.** Xong bước nào báo bước đó, rồi chờ lệnh cho bước sau. Không tự nối bước 1 → 2 → 3.
+- **CHUẨN HOÁ KHO TRƯỚC, XỬ LÝ HÀNG LOẠT SAU.** Kho các khối còn rất nhiều bài thừa không dùng. Chạy máy/agent quét cả kho = đốt token của Thùy vào bài rác. Chỉ xử lý trên tập bài Thùy đã chuẩn hoá / chỉ định.
 - *Vì sao:* 09/11 Thùy yêu cầu tách bài nhiều ý trong kho Hình – Học. Phương án chưa chốt, Claude đã tự áp migration (bảng `hinh_hoc_bai_y` + trigger, mig 202611091550) và tự chạy máy cắt cho **cả K7 · K8 · K8T · K9** (746 bài) mà không báo trước. Thùy: *"t mượn m làm hết tất cả các lớp à ??? lần sau làm cái gì phải thông báo trước."*
 
 ## ① TRẠNG THÁI HIỆN TẠI
