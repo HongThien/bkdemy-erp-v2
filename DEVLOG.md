@@ -79415,3 +79415,10 @@ Thùy nêu 4 việc, làm được 3:
 ## 09/11 — Phiên Toán 3 (chị Dương) vẫn đòi "bật Write" sau khi có ve_hinh/dung_hinh
 - 15:28 chị nhắn "giờ vẽ hình được rồi đấy" ⇒ Claude (phiên resume, ngữ cảnh cũ đã kết luận "cần Write") thử mkdir/printf/PowerShell ghi file ⇒ bị chặn ⇒ lại nhờ "chuyển Thùy bật Write + node scripts/anh/k3". Không đọc tới §Vẽ hình nằm giữa nhap_kho.md.
 - Sửa: CHUNG.md thêm luật 9 (đầu system prompt mọi phiên): vẽ hình CHỈ qua `dung_hinh` / `ve_hinh`, không ghi file, không xin bật Write, Read nhap_kho.md §Vẽ hình trước lần vẽ đầu. Bot đọc lại CHUNG.md mỗi lượt ⇒ có hiệu lực từ tin kế tiếp, không cần mở lại phiên.
+
+## 09/11 — Hình–Luyện: Nhóm bài · Trọng điểm · bỏ Nhóm mô hình (sparring, CHƯA BUILD) — spec-hinh-cay-nhanh §13
+- Thùy: cùng mô hình có giả thiết ban đầu khác nhau rồi hội tụ ⇒ thực chất là "nhiều mặt của 1 bài toán" (cho A,B hỏi C · cho A,C hỏi B · cho B,C hỏi A) — gom thành **Nhóm bài** (tên Thùy chọn), đầu ra = đủ giả thiết. Mockup `docs/mockup-hinh-nhieu-cua.html` (MH.126 + MH.061, 2 vòng: 3 cửa → 1 nhóm).
+- Review cấu trúc: đổi sang nhiều cha phải bỏ chỉ mục `hinh_mo_hinh_cha_mo_hinh_uq` + viết lại 13 hàm đường gốc→nhánh ⇒ chọn **GIỮ CÂY**: nút vai `nhom_bai` (giả thiết = đầu ra) + con vai `thanh_vien` (gt_thay_the, nguyên văn đề), 2 luật riêng (thành viên không có nhánh con; thành viên đứng "trước" nhóm khi chọn ý/in). Ca "tách rồi nhập" cũng là nhóm bài.
+- Chọn ý: con đường hợp lệ (không quay lại, rẽ nhánh phụ ≤1) — chỉ CẢNH BÁO, không chặn.
+- Tầng: Chủ đề → Mô hình (đánh giá, gộp mọi nốt) → **Trọng điểm** (nhóm bài, hoặc nốt đơn trưởng khối đánh dấu) → Nốt.
+- Bỏ Nhóm mô hình: dò ra 12 hàm (báo cáo tuần, dashboard dùng nó làm cột "chuyên đề" Hình, đánh giá cuối cấp, phiên Claude…) + **135 bản số liệu báo cáo tuần đã nộp chứa mã `H:<nhóm>`** ⇒ 2 bước: B1 gỡ khỏi màn + báo cáo mới dùng mô hình (không xoá), B2 xoá chỉ khi Thùy gật riêng.
