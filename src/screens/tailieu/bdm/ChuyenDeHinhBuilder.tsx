@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
@@ -474,7 +474,13 @@ function HocCard({ h, cfg, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY,
   onXoaCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
 }) {
   // câu Học (hinh_hoc_cau_hoi) ⇒ khối câu chung của builder giáo trình (KhoiCau) — cùng control: dòng, 2 cột, chế độ hình, cỡ ảnh
-  const cauMap = new Map<string, CauHoi>([...h.caus, ...(h.btvn?.caus ?? [])].map((x) => [x.ma_cau, x as unknown as CauHoi]))
+  // + bai_y / cau_hoi_y / da_biet (Thùy 09/11): thiếu 3 cột này thì KhoiCau không nhận ra các ý CÙNG BÀI ⇒ hiện từng ý với ô "dòng" riêng,
+  //   trong khi bản in gom ý và chỉ lấy số dòng của cả bài ⇒ "điền xong build ra không có dòng".
+  const maCaus = [...h.caus, ...(h.btvn?.caus ?? [])].map((x) => x.ma_cau)
+  const khoaMa = maCaus.join(',')
+  const [yMeta, setYMeta] = useState<Map<string, HhYMeta>>(new Map())
+  useEffect(() => { let huy = false; hhYMeta(maCaus).then((m) => { if (!huy) setYMeta(m) }).catch(() => { /* thiếu thì hiện từng ý như cũ */ }); return () => { huy = true } }, [khoaMa]) // eslint-disable-line react-hooks/exhaustive-deps
+  const cauMap = new Map<string, CauHoi>([...h.caus, ...(h.btvn?.caus ?? [])].map((x) => [x.ma_cau, { ...x, ...(yMeta.get(x.ma_cau) ?? {}) } as unknown as CauHoi]))
   const tong = (so: Record<string, number>) => Object.values(so).reduce((a, b) => a + b, 0)   // ô số người gõ (UI)
   return (
     <div id={`cdh-${h.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-sky-200">

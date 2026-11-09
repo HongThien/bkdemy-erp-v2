@@ -57,6 +57,16 @@ export async function cdhCayChon(khoi: string): Promise<{ chuDe: CdhChonChuDe[];
 // ══ GIÁO TRÌNH HÌNH (Thùy 27/10 — mig 202610271757): mỗi buổi thêm phần HỌC = bài học (hinh_hoc_bai) → câu luyện + BTVN ══
 // Lưu khuôn 'dang'/'btvn' như giáo trình Hình·Học cũ (bên đọc tài liệu lớp chạy như cũ). Mọi chọn/gợi ý ở DB.
 export type HhCau = { ma_cau: string; noi_dung: string | null; anh_de: string | null; loai_cau: string | null; con_trong_kho: boolean }
+/** Trường bài nhiều ý (mig 202611091550: bai_y · nhan_y · cau_hoi_y · da_biet) của câu Hình–Học — để khối câu (KhoiCau) gom ý cùng bài liền nhau thành 1 khối.
+ *  Chỉ đọc thô theo mã; HhCau từ fn_tl_hl_noi_dung không mang mấy cột này. */
+export type HhYMeta = { ma_cau: string; bai_y: string | null; nhan_y: string | null; cau_hoi_y: string | null; da_biet: string | null }
+export async function hhYMeta(maCaus: string[]): Promise<Map<string, HhYMeta>> {
+  const u = [...new Set(maCaus)].filter(Boolean)
+  if (!u.length) return new Map()
+  const { data, error } = await supabase.from('hinh_hoc_cau_hoi').select('ma_cau, bai_y, nhan_y, cau_hoi_y, da_biet').in('ma_cau', u).limit(1000)
+  if (error) throw error
+  return new Map(((data ?? []) as HhYMeta[]).map((r) => [r.ma_cau, r]))
+}
 export type HhBai = { phan_id: string; ma_bai: string; ten: string | null; hien_lt: boolean; con_trong_kho: boolean; co_ly_thuyet: boolean; caus: HhCau[]; btvn: { phan_id: string; caus: HhCau[] } | null }
 export type HhChonBai = { ma_bai: string; ten: string; thu_tu: number; chu_de_id: string | null; chu_de: string | null; so_cau: number; co_ly_thuyet: boolean }
 export type HhCauKho = { ma_cau: string; noi_dung: string; anh_de: string | null; loai_cau: string; la_goc: boolean; so_lan_dung: number
