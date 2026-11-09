@@ -85,6 +85,26 @@ export const LOAI_CAU: { value: LoaiCau; label: string }[] = [
 ]
 // Câu Đúng/Sai (Phần 2 đề 2025): 1 đề chung + 4 mệnh đề, MỖI mệnh đề có dạng RIÊNG (có thể khác chuyên đề).
 export type MenhDe = { noi_dung: string; dap_an: 'D' | 'S'; ma_dang: string; loi_giai?: string | null }
+// Hình–Học bài nhiều ý (mig 202611091550): noi_dung của ý = lời dẫn + "\n" + [đã biết + "\n"] + câu hỏi ý (trigger _trg_hh_y_ghep).
+// tachLoiDanY = phần lời dẫn (null nếu không phải ý / lệch khuôn ⇒ caller in câu như thường) · deCuaY = phần riêng của ý.
+// MỘT nguồn cho mọi chỗ gom ý (phiếu ET, phiếu giáo trình, builder) — đừng chép lại công thức.
+export function tachLoiDanY(c: { noi_dung: string; cau_hoi_y?: string | null; da_biet?: string | null }): string | null {
+  if (!c.cau_hoi_y) return null
+  const duoi = '\n' + (c.da_biet?.trim() ? c.da_biet.trim() + '\n' : '') + c.cau_hoi_y
+  return c.noi_dung.endsWith(duoi) ? c.noi_dung.slice(0, c.noi_dung.length - duoi.length) : null
+}
+export const deCuaY = (c: { cau_hoi_y?: string | null; da_biet?: string | null }): string =>
+  (c.da_biet?.trim() ? c.da_biet.trim() + '\n' : '') + (c.cau_hoi_y ?? '')
+// Khúc ≥2 ý CÙNG BÀI liền nhau bắt đầu ở i ⇒ chỉ số cuối khúc + lời dẫn; không thì null.
+export function khucY<T extends { noi_dung: string; bai_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null }>(cs: T[], i: number): { cuoi: number; dan: string } | null {
+  const b = cs[i].bai_y
+  if (!b) return null
+  let j = i
+  while (j + 1 < cs.length && cs[j + 1].bai_y === b) j++
+  const dan = j > i ? tachLoiDanY(cs[i]) : null
+  return dan ? { cuoi: j, dan } : null
+}
+
 export type CauHoi = {
   ma_cau: string
   dang_chinh: string

@@ -11,7 +11,7 @@ import {
   noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH,
   type NoiDung, type NdBuoi, type NdNhom, type ChonBuoi,
 } from '../../../lib/tailieuBdm'
-import { LOAI_CAU, type CauHoi } from '../../../lib/kho/api'
+import { LOAI_CAU, khucY, deCuaY, type CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { MathText, Shell, Field, inp } from '../../kho/ui'
 import { AnhMmEditCtx } from '../anhMmCtx'
@@ -396,6 +396,16 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
 }) {
   const [so, setSo] = useState<Record<string, number>>({ ...(soMacDinh ?? {}) })
   const mauChu = mau === 'sky' ? 'text-sky-700' : mau === 'orange' ? 'text-orange-600' : 'text-amber-700'
+  // Khúc ý cùng bài Hình–Học (≥2 ý liền nhau) — chỉ khi đã nạp đủ câu, tính 1 lần cho cả danh sách
+  const khuc = (() => {
+    const dau = new Map<number, { cuoi: number; dan: string }>(), boQua = new Set<number>()
+    const cs = caus.map((x) => cauMap.get(x))
+    if (cs.every(Boolean)) for (let i = 0; i < cs.length; i++) {
+      const k = khucY(cs as CauHoi[], i)
+      if (k) { dau.set(i, k); for (let t = i + 1; t <= k.cuoi; t++) boQua.add(t); i = k.cuoi }
+    }
+    return { dau, boQua }
+  })()
   return (
     <div className="p-3">
       <div className="flex flex-wrap items-center gap-2 text-[12px]">
@@ -415,6 +425,50 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
           <ol className="mt-2 space-y-1">
             {caus.map((m, i) => {
               const c = cauMap.get(m)
+              // Hình–Học bài nhiều ý (Thùy 09/11 "builder cũng không nên tách, hiện 1 bài nhiều ý"): khúc ≥2 ý cùng bài liền nhau
+              // ⇒ 1 khối (đầu bài + hình 1 lần, từng ý 1 dòng có dòng kẻ / ✕ riêng). Dữ liệu vẫn 1 ý = 1 câu.
+              if (khuc.boQua.has(i)) return null   // ý sau trong khối — đã vẽ ở ý đầu
+              const k = khuc.dau.get(i)
+              if (c && k) {
+                const ys = caus.slice(i, k.cuoi + 1).map((x) => cauMap.get(x)!)
+                return (
+                  <li key={m} className={`rounded-md border px-2.5 py-1.5 ${btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'}`}>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[12px] font-bold text-slate-400">{i + 1}–{k.cuoi + 1}.</span>
+                      <span className="font-mono text-[11px] font-semibold text-teal-700">{c.bai_y}</span>
+                      <span className="text-[11px] text-slate-400">bài {ys.length} ý</span>
+                      {!chiXem && !gon && c.anh_de && (
+                        <span className="ml-auto flex items-center gap-2">
+                          <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />
+                          <AnhMmCtl ma={m} url={c.anh_de} />
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1.5 text-[13px] leading-relaxed text-slate-700"><MathText>{k.dan}</MathText></div>
+                    {c.anh_de && <AnhXem ma={m} url={c.anh_de} cheDo={cfg.cheDo[m] ?? 'hien'} />}
+                    <div className="mt-1.5 space-y-1">
+                      {ys.map((y, t) => (
+                        <div key={y.ma_cau} className="flex items-start gap-2 rounded border border-slate-100 bg-white px-2 py-1">
+                          <span className="shrink-0 text-[12px] font-bold text-slate-400">{i + t + 1}.</span>
+                          <b className="shrink-0 text-[13px] text-violet-700">{y.nhan_y})</b>
+                          <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700"><MathText>{deCuaY(y)}</MathText></div>
+                          <MaCau ma={y.ma_cau} />
+                          {!chiXem && (
+                            <span className="flex shrink-0 items-center gap-2">
+                              {btvn && (
+                                <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết ý này">dòng
+                                  <input type="number" min={0} max={50} value={cfg.lines[y.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(y.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                                </label>
+                              )}
+                              <button onClick={() => onXoa(y.ma_cau)} title="Bỏ ý này" className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                )
+              }
               return (
                 <li key={m} className={`rounded-md border px-2.5 py-1.5 ${btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'}`}>
                   <div className="flex items-center gap-2">

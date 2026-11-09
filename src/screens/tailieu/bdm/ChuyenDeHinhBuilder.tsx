@@ -573,6 +573,19 @@ function gomTheoBai<T extends { ma_cau: string; bai_y?: string | null }>(ds: T[]
   return out
 }
 
+// Thứ tự trả về khi chọn: ý CÙNG BÀI đứng liền nhau tại chỗ ý được chọn đầu tiên của bài, theo nhãn a → b → c (giữ thứ tự chọn cho câu thường)
+// ⇒ giáo trình lưu đúng thứ tự in gom (lời dẫn 1 lần). ET tự xếp lại bằng sortETCaus.
+function xepYCungBai(chon: string[], kho: { ma_cau: string; bai_y?: string | null; nhan_y?: string | null }[]): string[] {
+  const cua = new Map(kho.map((c) => [c.ma_cau, c]))
+  const neo = new Map<string, number>()
+  const x = chon.map((m, i) => {
+    const c = cua.get(m), b = c?.bai_y
+    if (b && !neo.has(b)) neo.set(b, i)
+    return { m, i, neo: b ? neo.get(b)! : i, nhan: c?.nhan_y ?? '' }
+  })
+  return x.sort((a, b) => a.neo - b.neo || a.nhan.localeCompare(b.nhan) || a.i - b.i).map((e) => e.m)
+}
+
 // ── Chọn câu của 1 bài học cho khối Bài luyện / BTVN (câu đã chọn giữ thứ tự, câu mới thêm cuối; câu đang ở phần khác của buổi bị khoá) ──
 // 2 NGUỒN như giáo trình Đại (ChonCauBdm): 🏫 Kho trên lớp · 📚 Kho luyện — chọn trộn, 1 danh sách. `coKhoLop` = false (ET: bài ĐO) ⇒ chỉ kho luyện.
 export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh = 'lop', onClose, onConfirm }: {
@@ -666,7 +679,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
         <div className="flex items-center gap-2 border-t border-slate-200 px-6 py-3">
           <span className="text-[12px] text-slate-500">Đã chọn {chon.length} câu</span>
           <button onClick={onClose} className="ml-auto rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={() => onConfirm(chon)} className="rounded-md bg-sky-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-sky-500">Dùng {chon.length} câu</button>
+          <button onClick={() => onConfirm(xepYCungBai(chon, [...(luyen ?? []), ...(lop ?? [])]))} className="rounded-md bg-sky-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-sky-500">Dùng {chon.length} câu</button>
         </div>
       </div>
     </div>

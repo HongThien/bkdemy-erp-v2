@@ -11,7 +11,7 @@ import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, anhPhaiCua, type ETGrou
 import { fetchCausByMa } from '../../lib/ontap'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
-import type { CauHoi } from '../../lib/kho/api'
+import { tachLoiDanY, type CauHoi } from '../../lib/kho/api'
 import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe } from './PrintView'
 import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
@@ -426,10 +426,8 @@ function yCungBai(items: CauHoi[], i: number): { dau: number; cuoi: number; loiD
   while (dau > 0 && items[dau - 1].bai_y === b) dau--
   while (cuoi < items.length - 1 && items[cuoi + 1].bai_y === b) cuoi++
   if (cuoi === dau) return null
-  const c = items[dau]
-  const duoi = '\n' + (c.da_biet?.trim() ? c.da_biet.trim() + '\n' : '') + (c.cau_hoi_y ?? '')
-  if (!c.cau_hoi_y || !c.noi_dung.endsWith(duoi)) return null
-  return { dau, cuoi, loiDan: c.noi_dung.slice(0, c.noi_dung.length - duoi.length) }
+  const loiDan = tachLoiDanY(items[dau])
+  return loiDan === null ? null : { dau, cuoi, loiDan }
 }
 
 // ETHeaderBK — đã chuyển sang bkPrint.tsx (dùng chung ET Đại + ET Hình).
