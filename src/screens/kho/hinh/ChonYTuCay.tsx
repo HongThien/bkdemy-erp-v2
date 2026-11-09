@@ -7,8 +7,11 @@
 // ⭐ 29/10 (CEO "làm chế độ 2 — chọn được bài từ kho"): bước ② có 2 tab — "Tạo từ chuỗi" (ở trên) | "Bài trong kho" =
 // bài kho Hình luyện của mô hình đó (fn_hl_kho_cua_mo_hinh — bài đã gán vào mô hình là đã vào kho, không lọc thêm cờ duyệt). Chọn 1 bài ⇒ PickItem kind 'bai':
 // lấy NGUYÊN bài, mọi ý (Hình không tách ý), mỗi ý = 1 câu chấm + điểm riêng.
+// ⭐ 09/11 (spec-hinh-cay-nhanh §13.4, NHÓM BÀI): thứ tự ý + cảnh báo đường đi lấy từ DB (fn_hl_ghep_y) — thành viên đứng
+// trước nút nhóm; 2 thành viên cùng nhóm · 2 nhánh anh em · rẽ phụ > 1 lần ⇒ CẢNH BÁO, không chặn (Thùy: "người chọn tự biết").
 import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../../lib/kho/api'
+import { ghepY, type GhepY } from '../../../lib/kho/hinhCay'
 import type { Luoi, MoHinh } from '../../../lib/kho/hinh'
 import type { PickItem } from '../../../store/useStore'
 import { MathText } from '../ui'
@@ -48,6 +51,8 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
   const [so, setSo] = useState<Map<string, string>>(new Map())
   const [doKho, setDoKho] = useState<Map<string, number>>(new Map())
   const [loi, setLoi] = useState<string | null>(null)
+  const [ghep, setGhep] = useState<{ khoa: string; r: GhepY } | null>(null)
+  const khoaTick = [...tick].sort().join(',')
 
   useEffect(() => {
     if (!gocId) return
@@ -75,6 +80,13 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
     return () => { huy = true }
   }, [gocId]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { NHO_CHE = che }, [che])
+  // Thứ tự in + cảnh báo đường đi — hỏi DB mỗi lần đổi tick (chờ 200ms cho tick liên tiếp).
+  useEffect(() => {
+    if (!tick.size) { setGhep(null); return }
+    let huy = false
+    const t = setTimeout(() => { ghepY([...tick]).then((r) => { if (!huy) setGhep({ khoa: khoaTick, r }) }).catch((e) => { if (!huy) setLoi(e.message ?? String(e)) }) }, 200)
+    return () => { huy = true; clearTimeout(t) }
+  }, [khoaTick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const chonGoc = (id: string) => { if (id !== gocId) { setTick(new Set()); setBaiChon(null) } setGocId(id) }
   const doi = (id: string) => setTick((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
@@ -115,18 +127,31 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
   const g = L.moHinh.find((m) => m.id === gocId)
   const nhanhs = nhanhCua.get(gocId) ?? []
   const baiCua = (nid: string) => L.baiToan.filter((b) => b.mo_hinh_id === nid).sort((a, b) => soB(so.get(a.id)) - soB(so.get(b.id)) || a.ma.localeCompare(b.ma))
-  const khois = nhanhs.map((n) => ({ n, bai: baiCua(n.id) })).filter((k) => k.bai.length)
-    .sort((a, b) => soB(so.get(a.bai[0].id)) - soB(so.get(b.bai[0].id)))
+  const chaCua = (id: string) => L.canh.find((x) => x.mo_hinh_id === id)?.cha_id ?? null
+  const khois0 = nhanhs.map((n) => ({ n, bai: baiCua(n.id) })).filter((k) => k.bai.length)
+  // Thành viên nhóm bài hiện NGAY TRƯỚC khối của nút nhóm (về logic nó đứng trước nhóm — §13.3 luật 2).
+  const dauKhoi = new Map(khois0.map((k) => [k.n.id, soB(so.get(k.bai[0].id))]))
+  const khoaKhoi = (k: (typeof khois0)[number]) => {
+    const own = soB(so.get(k.bai[0].id))
+    if (k.n.vai !== 'thanh_vien') return own
+    const nhom = chaCua(k.n.id); const d = nhom ? dauKhoi.get(nhom) : undefined
+    return d != null && d < own ? d - 0.5 : own
+  }
+  const khois = khois0.sort((a, b) => khoaKhoi(a) - khoaKhoi(b))
   const chaTen = (n: MoHinh): string | null => {
-    const c = L.canh.find((x) => x.mo_hinh_id === n.id)?.cha_id
+    const c = chaCua(n.id)
     return c && c !== gocId ? tron(L.moHinh.find((m) => m.id === c)?.ten ?? '') : null
   }
   const xong = () => {
     if (che === 'kho') { if (baiChon) onPick({ key: crypto.randomUUID(), phan, kind: 'bai', baiId: baiChon, moHinhId: gocId, nodeIds: [] }); return }
-    if (chon.length) onPick({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: chon })
+    if (!chon.length) return
+    // Bấm nhanh trước khi DB trả thứ tự ⇒ hỏi thẳng, không lưu theo thứ tự tạm.
+    if (ghepDung) onPick({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: chon })
+    else ghepY([...tick]).then((r) => onPick({ key: crypto.randomUUID(), phan, kind: 'ghep', luaId: null, nodeIds: r.thuTu.filter((id) => tick.has(id)) })).catch((e) => setLoi(e.message ?? String(e)))
   }
-  // Ý đã tick theo đúng thứ tự in (số B) — dùng cho chuỗi ở chân popup + nhãn "Câu k".
-  const chon = [...tick].sort((a, b) => soB(so.get(a)) - soB(so.get(b)))
+  // Ý đã tick theo đúng thứ tự in — DB trả (nhóm bài: thành viên trước); chưa về thì tạm theo số B.
+  const ghepDung = ghep && ghep.khoa === khoaTick ? ghep.r : null
+  const chon = ghepDung ? ghepDung.thuTu.filter((id) => tick.has(id)) : [...tick].sort((a, b) => soB(so.get(a)) - soB(so.get(b)))
   const thuTu = new Map(chon.map((id, i) => [id, i + 1]))
   // CEO 29/10 ("MT chưa chọn được bài Hình 7" · "các bài trong kho hình 7 duyệt hết rồi mà"): bài đã gán vào mô hình = đã
   // vào kho ⇒ hiện MỌI bài như màn Hình luyện, KHÔNG lọc/cảnh báo theo cờ da_duyet của ý (nút "Duyệt bài" là việc khác).
@@ -188,14 +213,19 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
             const laGoc = n.id === gocId
             const ct = chaTen(n)
             return (
-              <section key={n.id} className="mb-4 rounded-xl border border-slate-200">
+              <section key={n.id} className={`mb-4 rounded-xl border ${n.vai === 'thanh_vien' ? 'border-orange-300' : n.vai === 'nhom_bai' ? 'border-2 border-orange-400' : 'border-slate-200'}`}>
                 <div className="flex gap-3 border-b border-slate-100 bg-slate-50/70 px-4 py-2.5 max-md:flex-col max-md:gap-2 max-md:px-3">
                   <div className="min-w-0 flex-1">
                     <div className={`text-[12.5px] font-bold ${laGoc ? 'text-teal-700' : 'text-slate-600'}`}>
-                      {laGoc ? 'Giả thiết' : `${L.canh.find((x) => x.mo_hinh_id === n.id)?.chinh ? 'Nhánh chính' : 'Nhánh phụ'}: ${tron(n.ten)}`}
-                      {ct && <span className="font-normal text-slate-400"> — đi tiếp từ «{ct}»</span>}
+                      {n.vai === 'thanh_vien'
+                        ? <span className="text-orange-700">Thành viên nhóm bài «{ct ?? tron(g?.ten ?? '')}»: {tron(n.ten)}</span>
+                        : <>
+                          {n.vai === 'nhom_bai' && <span className="mr-1 rounded bg-orange-100 px-1 text-[11px] text-orange-700">◈ nhóm bài</span>}
+                          {laGoc ? 'Giả thiết' : `${L.canh.find((x) => x.mo_hinh_id === n.id)?.chinh ? 'Nhánh chính' : 'Nhánh phụ'}: ${tron(n.ten)}`}
+                          {ct && <span className="font-normal text-slate-400"> — đi tiếp từ «{ct}»</span>}
+                        </>}
                     </div>
-                    <div className="mt-0.5 text-[13px] leading-relaxed text-slate-700"><MathText>{(laGoc ? n.gia_thiet : n.gia_thiet_them) ?? ''}</MathText></div>
+                    <div className="mt-0.5 text-[13px] leading-relaxed text-slate-700"><MathText>{(laGoc || n.vai === 'thanh_vien' ? n.gia_thiet : n.gia_thiet_them) ?? ''}</MathText></div>
                     {/* Chuỗi bài của khối (CEO 29/10: "hiện mũi tên như trước mới cảm nhận rõ chuỗi") — bấm chip = tick/bỏ. */}
                     <div className="mt-1.5 flex flex-wrap items-center gap-1 text-[12px]">
                       {bai.map((b, i) => (
@@ -227,6 +257,12 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
             )
           })}
         </div>
+        )}
+        {che === 'chuoi' && ghepDung && ghepDung.canhBao.length > 0 && (
+          <div className="border-t border-amber-200 bg-amber-50 px-6 py-2 text-[12.5px] text-amber-800 max-md:px-3">
+            {ghepDung.canhBao.map((c, i) => <div key={i}>⚠ {c}</div>)}
+            <div className="text-[11.5px] text-amber-700/80">Chỉ là cảnh báo — vẫn bấm Hoàn thành được nếu bạn chủ ý chọn vậy.</div>
+          </div>
         )}
         <div className="flex items-center gap-3 border-t border-slate-200 px-6 py-3 max-md:flex-wrap max-md:gap-2 max-md:px-3 max-md:pb-[max(0.75rem,env(safe-area-inset-bottom))]">
           {che === 'kho'

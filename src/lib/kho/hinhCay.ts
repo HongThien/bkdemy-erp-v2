@@ -40,6 +40,18 @@ export async function giaThietPhanNhieu(ids: string[]): Promise<Map<string, stri
   if (error) throw error
   return new Map(((data ?? []) as { baitoan_id: string; phan: string[] | null }[]).map((r) => [r.baitoan_id, r.phan ?? []]))
 }
+/** Ghép các ý đã chọn thành 1 bài — mig 202611091738 (spec-hinh-cay-nhanh §13.4). Theo NHÓM BÀI:
+ *  `thuTu` = thứ tự in (ý của thành viên đứng trước ý dưới nút nhóm) · `phan` = giả thiết từng phần (có thành viên
+ *  ⇒ đoạn đầu thay bằng giả thiết thành viên, không in lại đầu ra) · `canhBao` = đường đi sai (chỉ cảnh báo). */
+export type GhepY = { thuTu: string[]; phan: Map<string, string[]>; canhBao: string[] }
+export async function ghepY(ids: string[]): Promise<GhepY> {
+  const u = [...new Set(ids)].filter(Boolean)
+  if (!u.length) return { thuTu: [], phan: new Map(), canhBao: [] }
+  const { data, error } = await supabase.rpc('fn_hl_ghep_y', { p_ids: u })
+  if (error) throw error
+  const j = (data ?? {}) as { thu_tu?: string[]; phan?: Record<string, string[]>; canh_bao?: string[] }
+  return { thuTu: j.thu_tu ?? [], phan: new Map(Object.entries(j.phan ?? {})), canhBao: j.canh_bao ?? [] }
+}
 /** Một dòng mô hình/nhánh — dùng để vá sau khi RPC tạo nhánh mới hoặc đổi neo. */
 export async function layMoHinh(id: string): Promise<MoHinh | null> {
   const { data, error } = await supabase.from('hinh_mo_hinh').select('*').eq('id', id).limit(1).maybeSingle()
