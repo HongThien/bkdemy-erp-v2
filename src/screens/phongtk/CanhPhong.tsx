@@ -9,7 +9,7 @@
 // nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
 export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta'
+export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -195,6 +195,14 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
           <text x={1453} y={396} textAnchor="middle" fontSize={30}>💬</text>
         </g>
       )}
+
+      {/* KHAY HỒ SƠ = Duyệt công trợ giảng (Thùy 09/11) — dưới cửa sổ phải; phòng trưởng bộ môn có bảng Hỏi vận hành ở đó ⇒ xếp ngay dưới */}
+      <g className="dv" onClick={() => onMoDoVat('duyet_cong')} role="button" aria-label="Mở Duyệt công trợ giảng">
+        <rect className="vien" x={1378} y={coHoiTa ? 424 : 332} width={150} height={78} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
+        <rect x={1378} y={coHoiTa ? 424 : 332} width={150} height={24} rx={6} fill="#059669" />
+        <text x={1453} y={(coHoiTa ? 424 : 332) + 18} textAnchor="middle" fontSize={14} fontWeight={800} fill="#fff">DUYỆT CÔNG</text>
+        <text x={1453} y={(coHoiTa ? 424 : 332) + 64} textAnchor="middle" fontSize={30}>🗂</text>
+      </g>
 
       {/* chậu cây */}
       <g><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />

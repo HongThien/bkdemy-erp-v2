@@ -1,6 +1,7 @@
 // ============================================================================
 // DuyetCongScreen — "Duyệt công trợ giảng" (lá `ta_cong_duyet`, spec-cham-cong-ta.md §5–§6, mockup Thùy duyệt 14/10).
-//   Người duyệt: Trang (vai Core team). Duyệt theo NGOẠI LỆ: mọi dòng chờ duyệt CHỌN SẴN, đọc một lượt, bỏ chọn /
+//   Người duyệt (Thùy 09/11, mig 202611091507): TRƯỞNG KHỐI duyệt công gắn lớp/ca trực khối mình (mở từ phòng làm việc, chỉ thấy
+//   phần mình duyệt được — DB lọc, fn_ta_cong_duoc_duyet); Trang (lá ta_cong_duyet) thấy hết = hậu kiểm + phần chung. Duyệt theo NGOẠI LỆ: mọi dòng chờ duyệt CHỌN SẴN, đọc một lượt, bỏ chọn /
 //   từ chối (bắt buộc lý do) dòng không ổn, rồi duyệt cả lô. Chốt giờ ca quên checkout (giờ gốc giữ nguyên).
 //   Tab "Thiếu công": buổi lớp / ca trực đã diễn ra mà không ai ghi công (bất biến, tính từ 01/10) → nhập hộ.
 // Mọi khớp/cờ/làm hộ/người phụ trách suy ở Postgres (_ta_doi_chieu, fn_ta_buoi_thieu_cong — theo phân công TẠI
@@ -11,7 +12,7 @@ import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import {
-  doiChieu, thieuCong, duyetCong, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
+  doiChieu, duocDuyet, thieuCong, duyetCong, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
   gioVN, hm, nhanCo, type DongCong, type ThieuCong, type LoaiViec,
 } from '../../lib/tacong'
 
@@ -33,6 +34,7 @@ type NhapHoMoi = { ngay: string; loai: string; lop_id: string | null; bat: strin
 export default function DuyetCongScreen() {
   const quyen = useStore((s) => s.quyen)
   const coGhi = !!quyen && (quyen.laAdmin || (quyen.chucNang.includes('ta_cong_duyet') && !quyen.chiXem.includes('ta_cong_duyet')))
+  const coLa = !!quyen && (quyen.laAdmin || quyen.chucNang.includes('ta_cong_duyet'))   // không có lá = trưởng khối mở từ phòng làm việc
   const [tab, setTab] = useState<Tab>('duyet')
   const [toast, setToast] = useState<{ ok: boolean; t: string } | null>(null)
   const bao = useCallback((t: string, ok = true) => { setToast({ ok, t }); setTimeout(() => setToast(null), ok ? 2500 : 6000) }, [])
@@ -41,11 +43,11 @@ export default function DuyetCongScreen() {
     <div className="flex h-full flex-col">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-4 py-2">
         <h1 className="mr-2 text-base font-semibold text-slate-800">Công trợ giảng</h1>
-        {([['duyet', 'Duyệt công'], ['thieu', 'Thiếu công']] as [Tab, string][]).map(([k, t]) => (
+        {(coLa ? [['duyet', 'Duyệt công'], ['thieu', 'Thiếu công']] as [Tab, string][] : []).map(([k, t]) => (
           <button key={k} onClick={() => setTab(k)} className={`rounded-full px-3 py-1 text-sm font-medium transition ${tab === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{t}</button>
         ))}
         {coGhi && <button onClick={() => setNhapHo(nhapHo === undefined ? null : undefined)} className={`${btnGhost} ml-auto`}>{nhapHo === undefined ? '+ Nhập hộ (TA quá hạn)' : 'Đóng nhập hộ'}</button>}
-        {!coGhi && <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">Chỉ xem</span>}
+        {!coGhi && <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">{coLa ? 'Chỉ xem' : 'Công trợ giảng thuộc khối bạn phụ trách · công của chính bạn do trưởng bộ môn duyệt'}</span>}
       </div>
       <div className="min-h-0 flex-1 overflow-auto bg-slate-50 p-4">
         {nhapHo !== undefined && <NhapHo key={JSON.stringify(nhapHo)} moi={nhapHo} bao={bao} onXong={() => setNhapHo(undefined)} />}
@@ -64,6 +66,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   const [tu, setTu] = useState(congNgay(homNay, -6))
   const [den, setDen] = useState(homNay)
   const [rows, setRows] = useState<DongCong[] | null>(null)
+  const [duocDs, setDuocDs] = useState<Set<string> | null>(null)   // null = mọi dòng (lá ta_cong_duyet) · Set = dòng thuộc khối mình
   const [boChon, setBoChon] = useState<Set<string>>(new Set())   // mặc định CHỌN SẴN mọi dòng chờ duyệt
   const [mo, setMo] = useState<string | null>(null)              // 'tc:<id>' từ chối · 'chot:<id>' chốt giờ
   const [ban, setBan] = useState(false)
@@ -73,7 +76,10 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   // tai(true) = đổi ngữ cảnh (xoá + tải) · tai(false) = quét nền giữ list cũ
   const tai = useCallback(async (xoa: boolean) => {
     if (xoa) { setRows(null); setBoChon(new Set()); setMo(null) }
-    try { setRows(await doiChieu(khoang[0], khoang[1])) } catch (e) { bao(loiCua(e), false); if (xoa) setRows([]) }
+    try {
+      const [r, d] = await Promise.all([doiChieu(khoang[0], khoang[1]), duocDuyet(khoang[0], khoang[1])])
+      setDuocDs(d ? new Set(d) : null); setRows(r)
+    } catch (e) { bao(loiCua(e), false); if (xoa) setRows([]) }
   }, [khoang[0], khoang[1]]) // eslint-disable-line
   useEffect(() => { tai(true) }, [tai])
 
@@ -97,7 +103,8 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   }, [rows, loc])
 
   // duyệt hàng loạt chỉ trong phạm vi đang lọc (người đang chọn)
-  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id))
+  const duoc = (id: string) => coGhi || !!duocDs?.has(id)
+  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && duoc(r.id) && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id))
     && !(r.loai_dong === 'viec' && r.co?.includes('ca_bi_tu_choi')))   // việc trong ca đã từ chối: DB chặn duyệt (mig 202611041729) ⇒ không gom vào lô, xử từng dòng
   const dangChon = choDuyet.filter((r) => !boChon.has(r.id))
   const doiChon = (id: string) => setBoChon((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
@@ -126,7 +133,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
     catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
 
-  const props = { coGhi, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec }
+  const props = { duoc, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec }
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
@@ -140,7 +147,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
         </>}
         <div className="w-56"><SearchSelect value={nguoi} onChange={(v) => setNguoi(v ?? '')} options={dsNguoi} placeholder="Lọc theo TA…" /></div>
         <button onClick={() => tai(false)} className={btnGhost} title="Quét lại">↻</button>
-        {coGhi && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} dòng đang chọn</button>}
+        {(coGhi || !!duocDs?.size) && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} dòng đang chọn</button>}
       </div>
       <div className={`${card} overflow-x-auto`}>
         <table className="w-full min-w-[980px] border-collapse text-sm">
@@ -164,11 +171,11 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 }
 
 type DongProps = {
-  coGhi: boolean; boChon: Set<string>; doiChon: (id: string) => void; mo: string | null; setMo: (m: string | null) => void; ban: boolean
+  duoc: (id: string) => boolean; boChon: Set<string>; doiChon: (id: string) => void; mo: string | null; setMo: (m: string | null) => void; ban: boolean
   tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void; chotTheoViec: (r: DongCong) => void
 }
 const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <span className={`mr-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{children}</span>
-const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.coGhi
+const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.duoc(r.id)
   ? <input type="checkbox" aria-label="chọn dòng" checked={!p.boChon.has(r.id)} onChange={() => p.doiChon(r.id)} className="h-4 w-4 accent-indigo-600" /> : null)
 const CoPills = ({ co }: { co: string[] }) => <>{co.map((x) => <Pill key={x} c={nhanCo(x).nhe ? 'bg-indigo-50 text-indigo-700' : x === 'quen_ra' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800'}>{nhanCo(x).t}</Pill>)}</>
 const TrangThai = ({ r }: { r: DongCong }) => <><Pill c={PILL_DUYET[r.duyet][1]}>{PILL_DUYET[r.duyet][0]}</Pill>{r.ly_do_duyet && r.duyet !== 'cho_duyet' && <div className="mt-0.5 text-[11px] text-slate-500">{r.ly_do_duyet}</div>}</>
@@ -186,7 +193,7 @@ function NhomCa({ c, viec, ...p }: { c: DongCong; viec: DongCong[] } & DongProps
         <td className="px-2 py-2 align-top"><CoPills co={c.co} /></td>
         <td className="px-2 py-2 align-top"></td>
         <td className="px-2 py-2 align-top"><TrangThai r={c} /></td>
-        <td className="px-2 py-2 align-top">{p.coGhi && <div className="flex flex-col gap-1">
+        <td className="px-2 py-2 align-top">{p.duoc(c.id) && <div className="flex flex-col gap-1">
           {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Chốt theo việc</button>}
           <button className={btnGhost} onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
           {c.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + c.id ? null : 'tc:' + c.id)}>Từ chối</button>}
@@ -212,7 +219,7 @@ function DongViecQL({ v, hienTen, ...p }: { v: DongCong; hienTen?: boolean } & D
         <td className="px-2 py-2 align-top"><CoPills co={v.co} /></td>
         <td className="px-2 py-2 align-top text-slate-700">{v.lam_ho ?? ''}</td>
         <td className="px-2 py-2 align-top"><TrangThai r={v} /></td>
-        <td className="px-2 py-2 align-top">{p.coGhi && v.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + v.id ? null : 'tc:' + v.id)}>Từ chối</button>}</td>
+        <td className="px-2 py-2 align-top">{p.duoc(v.id) && v.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + v.id ? null : 'tc:' + v.id)}>Từ chối</button>}</td>
       </tr>
       {p.mo === 'tc:' + v.id && <TuChoiRow ban={p.ban} onLuu={(ld) => p.tuChoi(v, ld)} />}
     </>

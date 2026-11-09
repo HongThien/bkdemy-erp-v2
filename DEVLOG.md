@@ -79392,3 +79392,9 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa T104000000263 dap_an "C (1 tấn 45 yến = …)" ⇒ "C" (máy chấm so chữ cái).
 - Duyệt đề bằng `scripts/kho/de-thi/duyet-de-ai.mjs` (mới: làm đúng việc fn_de_thi_duyet, duyet_nguon 'ai', duyet_boi NULL) cho 5 đề + Đề 8 ôn tập GKI Toán 4 (e36ccb61, trước đó chưa duyệt; đặt thêm 40 phút thay mặc định 90). Kiểm: khoi 4 · Toán · ky gk1 · duyet_at có ⇒ khớp điều kiện fn_hs_on_thi_ds.
 - Chưa làm: dọn câu trùng/chữ hỏng của bản nhập kia — cần Thùy gật (luật xoá).
+
+## 09/11 — Duyệt công trợ giảng về TRƯỞNG KHỐI (mig 202611091507)
+- **Làm:** Thùy "đưa duyệt công TA về trưởng khối cho đúng flow vận hành". Mỗi dòng việc suy (môn|khối) — lớp · ca trực · buổi · ca trực DUY NHẤT của TA ngày đó (bổ trợ định kì cũ chưa gắn ca; nhiều ca khác khối ⇒ để trống). Ai có ô đó trong `fn_pham_vi_cua_toi` duyệt/từ chối được, trừ công của chính mình (TK cũng là TA ⇒ lên trưởng bộ môn). Ca có mặt: duyệt/chốt giờ được khi mọi việc còn hiệu lực trong ca thuộc phạm vi. Người giữ lá `ta_cong_duyet` (Trang · Lộc · Thùy) vẫn thấy + duyệt hết = hậu kiểm + phần chung (chấm thi, họp, khác, ôn thi chung). Hàm mới `fn_ta_cong_duoc_duyet(tu, den)` → id dòng duyệt được (null = mọi dòng). `fn_ta_doi_chieu` cho TK chỉ trả việc duyệt được + ca chứa chúng.
+- **Màn:** `DuyetCongScreen` bật ô chọn/nút theo từng dòng; không có lá ⇒ ẩn Thiếu công + Nhập hộ. Phòng làm việc thêm khay "DUYỆT CÔNG" (dưới cửa sổ phải; phòng TBM xếp dưới bảng Hỏi vận hành).
+- **Đo (ROLLBACK, 09/11):** 78 dòng chờ — 76 có khối, 2 không khối. TK 7 (Quỳnh Trang) duyệt việc khối 7 ✔, khối khác ✘, công của mình ✘; Ngọc chỉ thấy KHTN; Trang QLCL thấy 1.075 dòng như cũ.
+- **Chưa làm:** hạn duyệt + gậy trễ cho TK (chờ Thùy chốt hạn).
