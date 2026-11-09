@@ -79495,3 +79495,7 @@ Thùy nêu 4 việc, làm được 3:
 - KHTN (fn_khtn_bdm_cay) chưa làm.
 - Lượt 2 (Thùy: "Làm xong cái tách ý đi"): tach.mjs nhận thêm 2 khuôn lời giải (Phần 1 phân tích đi lên chia theo a) b) · bước ghi "Ý b, …"/"Ý b …") ⇒ ghi thêm K8 48 bài → 139 ý. Tổng K7 161/438 · K8 161/476. Cây K8 707→798 khớp.
 - Còn lại K7·K8: 27 bài dạng chờ + đã duyệt (tách khi phân dạng) · 6 bài lệch: HHC000748/000752/000857 (đề lẫn bài khác, không có lời giải) · HHC002813 (không có lời dẫn) · HHC002422 (thiếu lời giải ý c) · HHC002549 (ý lồng 1) 2a) 2b)).
+
+
+## 2026-11-09 — Báo cáo HỌC KÌ: BẬT app PH cho kì Nửa kì 1 (Thùy 'đẩy report lên app')
+- ky_hoc.mo_ph = true (actor Thùy, log ky_hoc_mo_ph_log). Lúc bật: 171 công bố · 146 điền đủ chưa công bố · 31 dở; 1 bản công bố thiếu sai số (Chu Bảo Ngọc 9K2). Kiểm app PH local (DB thật) link xem-thử PH Hoàng Nhật Minh: hiện hướng dẫn 'Báo cáo học kì của Minh đã có! · Toán, KHTN'.
