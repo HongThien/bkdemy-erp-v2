@@ -17,7 +17,7 @@
   },
   "BT.07.061.17": {
    "phat_bieu": "Chứng minh $\\triangle ABI = \\triangle EBI$.",
-   "gia_thiet_rieng": "Cho tam giác $ABC$ vuông tại $A$ có $AB < AC$. Trên cạnh $BC$ lấy điểm $M$ sao cho $BA = BM$. Gọi $E$ là trung điểm của $AM$.",
+   "gia_thiet_rieng": null,
    "loi_giai": "Xét $\\triangle ABI$ và $\\triangle EBI$ có:\n\n$BA = BE$ (giả thiết).\n\n$AI = EI$ ($I$ là trung điểm của $AE$).\n\n$BI$ chung.\n\nDo đó $\\triangle ABI = \\triangle EBI$ (c.c.c)."
   },
   "BT.07.061.18": {

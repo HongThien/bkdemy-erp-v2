@@ -35,7 +35,7 @@ $DA=DE$ (cmt)`]] },
 nên $DA=DE$ (hai cạnh tương ứng).`, CGC]] },
     'BT.07.126.10': { lg: [[R`Vì $\triangle ABD=\triangle EBD$ (theo B8)
 nên $BE=BA$ (hai cạnh tương ứng).`, R`Ta có $BE=BA$ (gt).`]] },
-    'BT.07.061.17': { pb: R`Chứng minh $\triangle ABI = \triangle EBI$.`, lg: 'MAP' },
+    'BT.07.061.17': { pb: R`Chứng minh $\triangle ABI = \triangle EBI$.`, rieng: null, lg: 'MAP' },   // đề cũ (tên M, E) đã thành giả thiết thành viên 3
     'BT.07.061.18': { pb: R`Chứng minh $BI$ là tia phân giác của góc $ABC$`, lg: 'MAP' },
     'BT.07.061.19': { pb: R`Gọi $D$ là giao điểm của $BI$ và $AC$. Chứng minh $DE \perp BC$.`, lg: 'MAP' },
     'BT.07.061.20': { pb: R`Chứng minh ba điểm $B, A, H$ thẳng hàng.`, rieng: null, lg: 'MAP',
