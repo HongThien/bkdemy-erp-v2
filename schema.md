@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-502 bảng · 39 view · 0 enum · 282 trigger · 1648 function
+502 bảng · 39 view · 0 enum · 282 trigger · 1653 function
 
 ## _app_secrets
 
@@ -10050,8 +10050,12 @@ WITH luot AS (
 - `_ta_cham_cong_kiem_gio()` → trigger
 - `_ta_cham_cong_kiem_tu_choi()` → trigger
 - `_ta_con_han_tu_khai(p_ngay date, p_ket timestamp with time zone)` → boolean
+- `_ta_cong_duoc_ca(p_ca uuid, p_pv text[], p_me uuid)` → boolean
+- `_ta_cong_duoc_viec(p_viec uuid, p_pv text[], p_me uuid)` → boolean
 - `_ta_cong_ghi_log()` → trigger
+- `_ta_cong_pham_vi()` → text[]
 - `_ta_cong_viec_kiem()` → trigger
+- `_ta_cong_viec_o(p_viec uuid)` → text
 - `_ta_cua_lop(p_lop uuid)` → uuid
 - `_ta_doi_chieu(p_tu date, p_den date, p_ns uuid)` → TABLE(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date, vao_at timestamp with time zone, ra_at timestamp with time zone, vao_chot timestamp with time zone, ra_chot timestamp with time zone, quen_ra boolean, khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, hoc_sinh text, ghi_chu text, khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
 - `_ta_don_gia_chi_them()` → trigger
@@ -11008,6 +11012,7 @@ WITH luot AS (
 - `fn_ta_chot_gio_theo_viec(p_id uuid)` → jsonb
 - `fn_ta_chot_ky(p_ky date, p_ghi_chu text DEFAULT ''::text)` → integer
 - `fn_ta_cong_cua_toi(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date, vao_at timestamp with time zone, ra_at timestamp with time zone, vao_chot timestamp with time zone, ra_chot timestamp with time zone, quen_ra boolean, khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, hoc_sinh text, ghi_chu text, khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
+- `fn_ta_cong_duoc_duyet(p_tu date, p_den date DEFAULT NULL::date)` → uuid[]
 - `fn_ta_cong_thang(p_ns uuid, p_ky date)` → TABLE(id uuid, ngay date, loai_viec text, ten_loai text, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, gio numeric, hoc_sinh text, ghi_chu text, nguon text, trang_thai text, ly_do_duyet text)
 - `fn_ta_dashboard(p_ym text)` → jsonb
 - `fn_ta_dat_don_gia(p_ma text, p_gia numeric, p_hieu_luc_tu date, p_ten text DEFAULT NULL::text, p_si_tu integer DEFAULT NULL::integer, p_si_den integer DEFAULT NULL::integer, p_ghi_chu text DEFAULT ''::text)` → uuid
@@ -11231,8 +11236,8 @@ WITH luot AS (
 - `hs_sotay_tim_ct(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_khoi text DEFAULT NULL::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_sotay_tim_lt(p_tu_khoa text, p_mon text DEFAULT 'Toán'::text, p_limit integer DEFAULT 20)` → jsonb
 - `hs_vao_ca_online(p_buoi uuid)` → jsonb
-- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `hs_xep_hang_tu_luyen(p_khoi text)` → jsonb
+- `hs_xep_hang_tu_luyen(p_khoi text, p_mon text)` → jsonb
 - `htd_co_mo(p_mon text)` → boolean
 - `htd_lo_trinh(p_mon text)` → jsonb
 - `htd_ly_thuyet(p_mon text, p_ma_dang text)` → jsonb
@@ -11301,9 +11306,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
