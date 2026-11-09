@@ -79503,3 +79503,4 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy dặn tiếp: kho/bộ chọn câu cũng hiện 1 bài với các ý (hệ hiểu là n ý, thao tác từng ý) — làm SAU ET.
 
 - 09/11 — Thùy 'cái nào đủ dữ liệu thì công bố luôn' ⇒ công bố 146/146 (actor Thùy) ⇒ 317 công bố, 31 dở. Ngay sau đó Thùy: 'trừ khối 345 để lại' (tin đến khi đã chạy xong) ⇒ mở lại 19 bản khối 3–5 vừa công bố (4T1 11 · 5T1 8; lớp 3–5 thường còn dở nên không dính) — công bố khoảng 2 phút trong lúc app PH đã bật. Còn 298 công bố.
+- Chọn câu Hình – Học (ET + giáo trình, ChonCauHoc): ý cùng bài gom 1 THẺ kiểu Hình–Luyện (mã bài, hình, lời dẫn dải xanh, mỗi ý 1 dòng chọn riêng + nút Chọn cả bài). mig 202611091930 ĐÃ ÁP: fn_tl_hh_cau trả thêm bai_y/nhan_y/cau_hoi_y/da_biet/loi_dan. ET: chọn nhiều ý trong 1 lần ⇒ ý đầu vào hàng, ý sau thêm hàng ngay dưới (xếp theo bài + nhãn). Đã thử trên app local 7A1 (không lưu).

@@ -59,7 +59,9 @@ export async function cdhCayChon(khoi: string): Promise<{ chuDe: CdhChonChuDe[];
 export type HhCau = { ma_cau: string; noi_dung: string | null; anh_de: string | null; loai_cau: string | null; con_trong_kho: boolean }
 export type HhBai = { phan_id: string; ma_bai: string; ten: string | null; hien_lt: boolean; con_trong_kho: boolean; co_ly_thuyet: boolean; caus: HhCau[]; btvn: { phan_id: string; caus: HhCau[] } | null }
 export type HhChonBai = { ma_bai: string; ten: string; thu_tu: number; chu_de_id: string | null; chu_de: string | null; so_cau: number; co_ly_thuyet: boolean }
-export type HhCauKho = { ma_cau: string; noi_dung: string; anh_de: string | null; loai_cau: string; la_goc: boolean; so_lan_dung: number }
+export type HhCauKho = { ma_cau: string; noi_dung: string; anh_de: string | null; loai_cau: string; la_goc: boolean; so_lan_dung: number
+  // bài nhiều ý (mig 202611091930): câu = 1 ý của bài HHB… — giao diện chọn gom các ý cùng bài thành 1 thẻ
+  bai_y?: string | null; nhan_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null; loi_dan?: string | null }
 export async function hhCayChon(khoi: string): Promise<HhChonBai[]> {
   const { data, error } = await supabase.rpc('fn_tl_hh_cay_chon', { p_khoi: khoi })
   if (error) throw error
