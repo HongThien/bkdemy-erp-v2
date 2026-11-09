@@ -472,3 +472,35 @@ export async function quyetDeXuatNhanY(id: number, nhan: boolean, lyDo = ''): Pr
   const { error } = await supabase.rpc('fn_hl_y_nhan_quyet', { p_de_xuat: id, p_nhan: nhan, p_ly_do: lyDo })
   if (error) throw error
 }
+
+// ══════════════════ NHÓM BÀI + TRỌNG ĐIỂM (spec-hinh-cay-nhanh §13, mig 202611091539) ══════════════════
+// Nhóm bài = "nhiều mặt của một bài toán": nền + sự kiện A, B, C…; thành viên = bài thật "cho … hỏi …". Nhãn A, B, C suy
+// từ thứ tự ở DB (không làm khoá). Mọi luật (thành viên không có nhánh con, cho/hỏi đúng nhóm…) chặn ở DB.
+export type SuKien = { id: string; ky_hieu: string; noi_dung: string }
+export type ThanhVien = { id: string; ten: string; gia_thiet: string; cho: string[]; hoi: string[] }
+export type NhomBai = { id: string; ten: string; su_kien: SuKien[]; thanh_vien: ThanhVien[] }
+export async function nhomBaiCuaCay(gocId: string): Promise<NhomBai[]> {
+  const { data, error } = await supabase.rpc('fn_hl_nhom_bai_cua_cay', { p_goc: gocId })
+  if (error) throw error
+  return (data ?? []) as NhomBai[]
+}
+const rpcCay = async (fn: string, args: Record<string, unknown>): Promise<KetQuaCay> => {
+  const { data, error } = await supabase.rpc(fn, args)
+  if (error) throw error
+  return data as KetQuaCay
+}
+export const nhomBaiBat = (nut: string, suKien: string[]) => rpcCay('fn_hl_nhom_bai_bat', { p_nut: nut, p_su_kien: suKien })
+export const suKienThem = (nhom: string, noiDung: string) => rpcCay('fn_hl_su_kien_them', { p_nhom: nhom, p_noi_dung: noiDung })
+export const suKienSua = (suKien: string, noiDung: string) => rpcCay('fn_hl_su_kien_sua', { p_su_kien: suKien, p_noi_dung: noiDung })
+export const thanhVienThem = (nhom: string, ten: string, giaThiet: string, cho: string[], hoi: string[]) =>
+  rpcCay('fn_hl_thanh_vien_them', { p_nhom: nhom, p_ten: ten, p_gia_thiet: giaThiet, p_cho: cho, p_hoi: hoi })
+/** Biến nhánh ĐANG CÓ (ngay dưới nút nhóm, không nhánh con) thành thành viên — nốt giữ nguyên mã. */
+export const thanhVienChuyen = (nut: string, giaThiet: string, cho: string[], hoi: string[]) =>
+  rpcCay('fn_hl_thanh_vien_chuyen', { p_nut: nut, p_gia_thiet: giaThiet, p_cho: cho, p_hoi: hoi })
+export const thanhVienChoHoi = (tv: string, cho: string[], hoi: string[]) => rpcCay('fn_hl_thanh_vien_cho_hoi', { p_tv: tv, p_cho: cho, p_hoi: hoi })
+export const trongDiemDat = (baitoan: string, bat: boolean) => rpcCay('fn_hl_trong_diem_dat', { p_baitoan: baitoan, p_bat: bat })
+/** "cho A, B ⇒ hỏi C" của một thành viên (nhãn suy từ sự kiện của nhóm). */
+export const moTaChoHoi = (nb: NhomBai, tv: ThanhVien): string => {
+  const kh = (ids: string[]) => ids.map((id) => nb.su_kien.find((s) => s.id === id)?.ky_hieu ?? '?').join(', ')
+  return `cho ${kh(tv.cho) || '—'} ⇒ hỏi ${kh(tv.hoi)}`
+}

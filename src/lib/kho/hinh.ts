@@ -20,6 +20,9 @@ export type MoHinh = {
   // CÂY NHÁNH (spec-hinh-cay-nhanh.md, mig 202610140048). `neo_baitoan_id` = bài mẹ nơi nhánh rẽ ra (null = gốc cây /
   // mô hình con kiểu cũ); cha của nhánh SUY từ neo, không lưu. `la_mo_hinh=false` = nhánh inline.
   neo_baitoan_id?: string | null; la_mo_hinh?: boolean; chu_de_id?: string | null; thu_tu?: number | null
+  // NHÓM BÀI (spec-hinh-cay-nhanh §13, mig 202611091539): nhom_bai = giả thiết là đầu ra của nhóm · thanh_vien = con của nhóm,
+  // giả thiết nguyên văn đề (gt_thay_the), không có nhánh con.
+  vai?: 'thuong' | 'nhom_bai' | 'thanh_vien'
   // NHÓM MÔ HÌNH (mig 202610181651, Thùy 18/10): mô hình gốc luyện thuộc 1 nhóm trong chủ đề; null = nhánh / mô hình cũ / chưa xếp
   nhom_mh_id?: string | null
 }
@@ -35,6 +38,7 @@ export type BaiToan = {
   // kiện lẻ lan theo van tiền đề, cơ chế riêng).
   gia_thiet_rieng: string | null
   gt_thay_the: boolean
+  la_trong_diem?: boolean  // nốt đơn là TRỌNG ĐIỂM (spec-hinh-cay-nhanh §13.5) — trưởng khối trở lên bật
   thu_tu?: number | null   // thứ tự trong làn (nhánh/thân) — số hiển thị 1.k suy từ đây ở DB; KHÔNG phải mã
 }
 /** Biến thể của một node = cùng bài toán, ĐỔI SỐ / ĐỔI ĐỈNH. Treo dưới node (không đẻ node mới, không
