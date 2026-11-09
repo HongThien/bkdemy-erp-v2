@@ -79473,3 +79473,8 @@ Thùy nêu 4 việc, làm được 3:
 - Màn: `CayNhanh.tsx` bỏ "＋ Nhóm", nhóm thu gọn, kéo thả, ô chọn nhóm khi tạo mô hình; mô hình xếp phẳng dưới chủ đề, tạo mới = `fn_hl_tao_mo_hinh` rồi gắn `chu_de_id`. `ChuyenDeHinhBuilder` bộ chọn mô hình gom theo chủ đề. API nhóm trong `hinhCay.ts` còn nguyên (danh sách xoá ở bước 2).
 - **Kiểm:** `scripts/kho/test_do_mo_hinh_trong_diem.mjs` (ROLLBACK, khối 8): 3 cấp × cột + ô Đại/HGT/KHTN y hệt cũ; cột Hình chủ đề không đổi; giả lập nốt trọng điểm ⇒ cột "★ …" riêng; `fn_bc_ky_tinh` chạy. Thời gian ~1,3–1,6 s (cũ dao động 1,2–13 s do DB dùng chung). Sau khi áp: RPC qua phiên app admin khối 8 cấp chuyên đề 4 s. Màn bản đồ K8 Tứ giác › Luyện: danh sách phẳng, hộp tạo mô hình không còn chọn nhóm (Huỷ, không tạo).
 - **Lưu ý gặp:** phiên đăng nhập dev trong Browser pane hết hạn giữa chừng ⇒ RPC trả "permission denied" (đúng: anon không gọi được) — đăng nhập lại là chạy.
+
+### 09/11 — Hình–Luyện bước 5 (ca mẫu MH.126): ĐỀ XUẤT, chưa ghi
+- `docs/de-xuat-nhom-bai-mh126.html`: hiện trạng cây · nhóm bài A/B/C + 3 thành viên (MH.166 cho A,B⇒C · MH.168 cho A,C⇒B · mới từ MH.061 BT.07.061.17–20 cho B⇒A,C, khuôn lệch tên) · đầu ra · 7 việc khi ghi (2 việc XOÁ cần gật: 3 nhánh F/Q/M rỗng, 2 nốt trùng B1/B2 ở gốc).
+- **Vướng:** 5 bài đi tiếp (B5, B6, B7, B9, B10) lấy nốt TRONG thành viên làm tiền đề ⇒ treo dưới đầu ra sẽ dính cờ sai nhánh. PA 1 = thêm nốt "ΔABD = ΔEBD" ở đầu ra + đổi tiền đề (lời giải lặp bước khi ra đề cùng thành viên) · PA 2 = giữ chuỗi trong thành viên (nhánh → giả thiết riêng). Chờ Thùy chọn.
+- Đo: 0 lượt chấm, 0 ý kho trên mọi nốt MH.126/MH.061 ⇒ dựng lại không ảnh hưởng điểm.
