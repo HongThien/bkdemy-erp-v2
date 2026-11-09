@@ -79422,3 +79422,8 @@ Thùy nêu 4 việc, làm được 3:
 - Chọn ý: con đường hợp lệ (không quay lại, rẽ nhánh phụ ≤1) — chỉ CẢNH BÁO, không chặn.
 - Tầng: Chủ đề → Mô hình (đánh giá, gộp mọi nốt) → **Trọng điểm** (nhóm bài, hoặc nốt đơn trưởng khối đánh dấu) → Nốt.
 - Bỏ Nhóm mô hình: dò ra 12 hàm (báo cáo tuần, dashboard dùng nó làm cột "chuyên đề" Hình, đánh giá cuối cấp, phiên Claude…) + **135 bản số liệu báo cáo tuần đã nộp chứa mã `H:<nhóm>`** ⇒ 2 bước: B1 gỡ khỏi màn + báo cáo mới dùng mô hình (không xoá), B2 xoá chỉ khi Thùy gật riêng.
+
+### 09/11 — Popup 🏫 Kho trên lớp cuộn được (Thùy "kho trên lớp ko có scroll để kéo")
+- Nguyên nhân: KhoTrenLopModal = lưới 2 cột (Bài giảng | Luyện trên lớp) trong vùng overflow-y-auto; mỗi cột overflow-hidden (bo góc) ⇒ là ô lưới được co min-height về 0 ⇒ hàng lưới bị ép vừa khung, câu dư bị CẮT, không có gì để cuộn.
+- Sửa: lưới thêm auto-rows-max + items-start ⇒ hàng cao theo nội dung, vùng cuộn được (dùng chung Đại · HGT · Hình–Học).
+- Kiểm app: K6 › 2.4 Tìm số nguyên theo điều kiện về thứ tự (12 câu bài giảng): cột cao 2135px trong khung 672px, cuộn tới câu 12 + nút Thêm câu.

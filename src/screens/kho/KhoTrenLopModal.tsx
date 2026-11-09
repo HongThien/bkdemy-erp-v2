@@ -58,7 +58,9 @@ export default function KhoTrenLopModal({ dangBaiId, ten, onDong, nhanh = 'dai' 
           <button onClick={() => onDong(doi)} className="rounded-md px-2 py-1 text-[13px] text-slate-500 hover:bg-slate-100">✕</button>
         </div>
         {loi && <div className="border-b border-rose-200 bg-rose-50 px-4 py-2 text-[12.5px] text-rose-700">⚠ {loi}</div>}
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 overflow-y-auto p-4 max-md:grid-cols-1 max-md:gap-3 max-md:p-2.5">
+        {/* auto-rows-max + items-start (Thùy 09/11 "kho trên lớp ko có scroll"): cột có overflow-hidden (bo góc) ⇒ trong lưới được co
+            về 0 ⇒ hàng lưới bị ép vừa khung, phần dư bị CẮT thay vì cuộn. Hàng cao theo nội dung ⇒ vùng này cuộn được. */}
+        <div className="grid min-h-0 flex-1 auto-rows-max grid-cols-2 items-start gap-4 overflow-y-auto p-4 max-md:grid-cols-1 max-md:gap-3 max-md:p-2.5">
           {VAI.map((vai) => {
             const ds = chuoi(vai)
             return (
