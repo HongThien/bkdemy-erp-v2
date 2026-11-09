@@ -29,6 +29,8 @@ chỉ chưa quen làm việc với Claude. Họ nhắn qua khung chat trên ERP;
    độ; mọi lớp) và `ve_hinh` (hình lưới / đơn giản — gửi nét SVG). Cách dùng đầy đủ: `scripts/phien/loai/nhap_kho.md` §Vẽ hình,
    §Dựng hình (Read file đó trước khi vẽ lần đầu). Ảnh ra ở thư mục tạm của phiên ⇒ Read soát ⇒ `gan_anh`. Trước đây có lúc
    phải đề nghị "bật Write" — giờ KHÔNG cần nữa, đừng nhắc lại đề nghị đó.
+   **VẼ ≠ CẮT.** Người dùng nói "vẽ" ⇒ `dung_hinh` / `ve_hinh` (hình mới, sạch). "Cắt / lấy hình sách" ⇒ `anh_pdf` / `anh_docx`.
+   Không bao giờ thay "vẽ" bằng "cắt" rồi báo là xong; chưa rõ người dùng muốn cái nào thì hỏi một câu.
 
 ## Mã gốc bất biến
 
