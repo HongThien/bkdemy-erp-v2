@@ -79488,3 +79488,8 @@ Thùy nêu 4 việc, làm được 3:
 - Để nguyên 27 bài (K7 26, K8 1) dạng chờ …000000 mà đã duyệt — tách là mất duyệt (trigger chặn duyệt ở dạng chờ). Tách sau khi phân dạng.
 - Chưa làm: K7 4 + K8 50 bài máy cắt lệch; không thêm dòng "Đã biết".
 - mig 202611091902 (ĐÃ ÁP): fn_hh_kho_cau + count_cau_by_bai_hh ẩn câu cả bài đã tách (tránh đếm/hiện trùng). Số câu cây K7 520→797, K8 483→707 khớp phép tính.
+
+## 09/11 — Bản đồ Toán: cây lưu sẵn, chỉ tính lại khi có ghi (Thùy: "Làm đi")
+- mig 202611091907 ĐÃ ÁP: dai_bdm_cay_nho (khối, nhánh → cây jsonb + phiên bản) · sequence dai_bdm_cay_ban_seq tăng bằng trigger ràng buộc HOÃN tới COMMIT trên 15 bảng (câu Đại/HGT chỉ khi đổi dạng/cụm/gốc/xoá/loại) · thân cũ → _bdm_cay_tinh nguyên văn · fn_bdm_cay VOLATILE: khớp phiên bản thì trả bản lưu, lệch (hoặc >1 ngày) thì tính 1 lần rồi lưu.
+- Kiểm ROLLBACK: md5 13 khối + nhánh hgt khớp (tính lẫn đọc lưu) · sửa lời giải không làm tính lại · sửa tên nhóm thì tính lại đúng. Thật: K12 lần đầu 324 ms/17k block, sau đó 0 ms/7 block.
+- KHTN (fn_khtn_bdm_cay) chưa làm.

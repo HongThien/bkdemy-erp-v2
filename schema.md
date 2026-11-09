@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-505 bảng · 39 view · 0 enum · 290 trigger · 1670 function
+506 bảng · 39 view · 0 enum · 305 trigger · 1672 function
 
 ## _app_secrets
 
@@ -1510,6 +1510,16 @@
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
 | chu_de_id | text | Y |  | FK→dai_bdm_chu_de.id |  |
+
+## dai_bdm_cay_nho
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoi | text |  |  | PK |  |
+| nhanh | text |  | ''::text | PK |  |
+| ban | bigint |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
+| cay | jsonb |  |  |  |  |
 
 ## dai_bdm_chu_de
 
@@ -9475,41 +9485,53 @@ WITH luot AS (
 | claude_phien | trg_claude_phien_touch | BEFORE | UPDATE | _phien_touch |
 | claude_phien_tin | trg_claude_phien_tin_bump | AFTER | INSERT | _phien_tin_bump |
 | claude_phien_tin | trg_claude_phien_tin_touch | BEFORE | UPDATE | _phien_touch |
+| dai_ban_do | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_ban_do | trg_dai_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | dai_ban_do | trg_dai_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
 | dai_ban_do | trg_dai_ban_do_xoa_mem_dong_bo_btyeu | AFTER | UPDATE | _trg_btyeu_dong_bo_dang_ban_do |
 | dai_bdm_cau_chua_khop | trg_bdm_cau_chua_khop_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_cau_chua_khop | trg_dai_bdm_cau_chua_khop_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | dai_bdm_cau_thieu_dang | trg_dai_bdm_cau_thieu_dang_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
+| dai_bdm_chu_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_chu_de | trg_bdm_chu_de_khoa_vung | BEFORE | INSERT/UPDATE | _trg_bdm_chu_de_khoa_vung |
 | dai_bdm_chu_de | trg_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_chu_de | trg_bdm_chu_de_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_chu_de | trg_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_chuyen_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_chuyen_de | trg_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_chuyen_de | trg_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_dang_bai | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _bdm_bump_nhom |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
 | dai_bdm_de_xuat | trg_dai_bdm_de_xuat_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
+| dai_bdm_doi_ung | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_doi_ung | trg_bdm_doi_ung_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_doi_ung_cum | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_doi_ung_cum | trg_bdm_doi_ung_cum_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| dai_bdm_gan_cau | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_gan_cau | trg_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_gan_cau | trg_dai_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | dai_bdm_gan_cau | trg_dai_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| dai_bdm_kho_ds | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| dai_bdm_nhom | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_nhom | trg_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom | trg_bdm_nhom_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_nhom | trg_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _bdm_tien_de_cung_o |
 | dai_bdm_nhom | trg_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_nhom_tien_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_nhom_tien_de | trg_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom_tien_de | trg_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _bdm_tien_de_kiem |
+| dai_bdm_o | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_o | trg_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_o | trg_bdm_o_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_cau_form_dien | dai_cau_form_dien_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_dien_kiem |
 | dai_cau_form_tn | dai_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | dai_cau_form_tn_kiem |
 | dai_cau_hoi | dai_cau_hoi_thu_hoi_dien | AFTER | UPDATE | dai_cau_form_dien_thu_hoi |
+| dai_cau_hoi | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | dai_cau_hoi | trg_dai_cau_nguon_loai | BEFORE | INSERT | _trg_dai_cau_nguon_loai |
 | dai_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
@@ -9541,12 +9563,15 @@ WITH luot AS (
 | hgt_bdm_cau_thieu_dang | trg_hgt_bdm_cau_thieu_dang_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_gan_cau | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| hgt_bdm_kho_ds | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | hgt_cau_form_tn | hgt_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hgt_cau_form_tn_kiem |
+| hgt_cau_hoi | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | hgt_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hgt_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | hgt_cau_hoi | trg_kho_cau_duyet_nguon | BEFORE | INSERT/UPDATE | _kho_cau_duyet_nguon |
@@ -9740,6 +9765,7 @@ WITH luot AS (
 - `_bdm_cau_co_dang_bai(p_kho text, p_ma_cau text, p_parent text, p_dang_chinh text)` → boolean
 - `_bdm_cau_ds_co_chu_de(p_kho text, p_ma_cau text, p_parent text)` → boolean
 - `_bdm_cau_giai(p_dang_cu text[])` → TABLE(ma_cau text, goc text, la_goc boolean, ma_dang_cu text, ma_cum_cu text, dang_bai_id text, nguon text)
+- `_bdm_cay_tinh(p_khoi text, p_nhanh text DEFAULT NULL::text)` → jsonb
 - `_bdm_chu_de_co_noi_dung(p_id text)` → boolean
 - `_bdm_dang_bai_cua_mon(p_mon text, p_ma text[])` → TABLE(ma_dang text, nhanh_bdm text, muc_do smallint)
 - `_bdm_dang_cu_cua_khoi(p_khoi text)` → text[]
@@ -10174,6 +10200,7 @@ WITH luot AS (
 - `_tq_dang_info(p_mon text, p_ma text[])` → TABLE(ma_dang text, nhom_bc text, muc_do_bc smallint)
 - `_trg_bai_lam_cau_thi()` → trigger
 - `_trg_bai_lam_thi()` → trigger
+- `_trg_bdm_cay_ban()` → trigger
 - `_trg_bdm_chu_de_khoa_vung()` → trigger
 - `_trg_btc_phat_hanh_log()` → trigger
 - `_trg_bthinh_log()` → trigger
@@ -11373,9 +11400,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
