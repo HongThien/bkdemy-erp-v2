@@ -88,6 +88,32 @@ HET
 - **Read ảnh vừa vẽ để soát** (nhãn đủ, không chồng chữ, không lộ đáp án) rồi `gan_anh` (o `de`), cuối cùng `sua_cau` bỏ "[có hình — chưa đưa hình]".
 - Hình lời giải (vd tô màu phần đáp án) vẽ riêng một ảnh, gắn `o` `dap_an`.
 
+**Dựng hình lớp 6–12 (09/11)** — hình có quan hệ hình học (vuông góc, trung điểm, đường tròn, tiếp tuyến, toạ độ, đồ thị, hình
+không gian): dùng `dung_hinh`, KHÔNG tự tính toạ độ nhẩm (`ve_hinh` chỉ cho hình lưới/đơn giản). Khai điểm bằng toạ độ toán hoặc phép
+dựng, máy tính toạ độ chính xác, tự co khung, tự đặt nhãn né nét, in lại toạ độ đã tính:
+```
+node scripts/phien/ban-do.mjs dung_hinh <<'HET'
+{"ten":"cau7",
+ "diem":[["O",[0,0]],["M",[7,0]],["A",["tiep_diem","M","O",3,0]],["B",["tiep_diem","M","O",3,1]],["H",["giao","A","B","O","M"]]],
+ "ve":[["duong_tron","O",3],["doan","M","A"],["doan","M","B"],["doan","A","B"],["doan","O","M"],["goc_vuong","H","A","M"],
+       ["gach","M","A",1],["gach","M","B",1],["cham","tat_ca"],["nhan","tat_ca"]]}
+HET
+```
+- **Toạ độ toán, y hướng LÊN.** `[x,y]` phẳng · `[x,y,z]` không gian (chiếu xiên: y vào sâu, z lên trên).
+- **Phép dựng điểm** `["Tên", ["phép", …]]`: `trung_diem A B` · `chia A B t` (A + t·AB) · `chan P A B` (chân đường vuông góc từ P xuống AB) ·
+  `giao A B C D` (giao AB và CD) · `quay P O độ` (ngược chiều kim đồng hồ) · `doi_xung_diem P O` · `doi_xung_truc P A B` · `tinh_tien P A B` ·
+  `trong_tam A B C` · `tam_ngoai A B C` · `tam_noi A B C` · `truc_tam A B C` · `tren_tron O R độ` · `giao_tron_thang O R A B 0|1` ·
+  `giao_hai_tron O1 R1 O2 R2 0|1` · `tiep_diem M O R 0|1` · `phan_giac V P Q dài` · `vuong_goc P A B dài` · `song_song P A B dài`.
+  R = số hoặc tên một điểm trên đường tròn. Hình KHÔNG GIAN chỉ dùng phép giữ qua phép chiếu (trung_diem · chia · giao hai đường cùng
+  mặt phẳng · trong_tam · tinh_tien); chân đường cao/tâm mặt cầu trong không gian thì tự tính toạ độ 3D rồi nhập thẳng.
+- **Nét** `["loại", …, {tuỳ chọn}]`: `doan A B` · `duong_thang A B` (kéo dài 2 đầu) · `tia A B` · `vecto A B` · `da_giac [A,B,C] {"to":"#e6ecf5"}` ·
+  `duong_tron O R` · `cung O A B` (từ A tới B ngược chiều kim đồng hồ) · `goc V P Q số_cung` · `goc_vuong V P Q` · `gach A B số_gạch` (đoạn bằng nhau) ·
+  `cham [..]|"tat_ca"` · `nhan [..]|"tat_ca" {"huong":độ}` (tên có `_1` ⇒ chỉ số dưới) · `chu điểm|[x,y] "chữ"` ·
+  `truc {"x":[-2,6],"y":[-2,5],"vach":1,"luoi":true}` · `do_thi "x^2-4x+3" x_đầu x_cuối`.
+  Tuỳ chọn: `{"dut":true}` nét đứt (cạnh khuất) · `{"mau":"#dc2626"}` · `{"day":3}`. Cố định tỉ lệ (hình toạ độ): thêm `"ti_le":50` (px/đơn vị).
+- Lỗi dựng (song song không giao, điểm trong đường tròn không kẻ được tiếp tuyến…) ⇒ máy báo rõ — sửa dữ kiện, đừng ép.
+- Read ảnh để soát như mọi hình khác rồi `gan_anh`. Không vẽ chi tiết của LỜI GIẢI (đường phụ, điểm dựng thêm) vào hình ĐỀ.
+
 ## Cách làm một lượt
 
 1. `kho-tong` + `xem` → báo trưởng khối: còn bao nhiêu câu chưa phân, bao nhiêu đề xuất / thiếu dạng đang chờ.
