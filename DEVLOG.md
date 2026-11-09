@@ -79411,3 +79411,7 @@ Thùy nêu 4 việc, làm được 3:
 - **An toàn:** JSON + danh sách phép cố định; đồ thị qua bộ đọc biểu thức tự viết (số, x, pi, e, + − × ÷ ^, sin cos tan sqrt abs ln log exp; không eval); chữ escape; màu chỉ #hex/tên; điểm lưu Object.create(null). Chụp chung hàm `chupPng` với ve_hinh (JS tắt, chặn mạng).
 - **Thử:** lớp 9 tiếp tuyến MA, MB + AB ⊥ OM tại H (toạ độ A(1.286, 2.711) đúng) · lớp 10 Oxy + parabol x²−4x+3 + vectơ AB + trung điểm · chóp S.ABCD nét khuất đứt + M trung điểm SC. Lần 1 nhãn O, H đè nét CM, nhãn A dính parabol ⇒ thêm chấm điểm 16 hướng ⇒ sạch. Phép lạ / biểu thức `process.exit()` / màu `red;x` / AB∥CD ⇒ báo lỗi rõ.
 - Hướng dẫn: `loai/nhap_kho.md` §Dựng hình lớp 6–12, `loai/ban_do.md` §Hình. Hạn chế: không gian chỉ dùng phép giữ qua phép chiếu (chân đường cao 3D tự tính toạ độ); chưa có elip/hypebol, mặt tròn xoay (trụ/nón/cầu phải ghép từ cung + đoạn).
+
+## 09/11 — Phiên Toán 3 (chị Dương) vẫn đòi "bật Write" sau khi có ve_hinh/dung_hinh
+- 15:28 chị nhắn "giờ vẽ hình được rồi đấy" ⇒ Claude (phiên resume, ngữ cảnh cũ đã kết luận "cần Write") thử mkdir/printf/PowerShell ghi file ⇒ bị chặn ⇒ lại nhờ "chuyển Thùy bật Write + node scripts/anh/k3". Không đọc tới §Vẽ hình nằm giữa nhap_kho.md.
+- Sửa: CHUNG.md thêm luật 9 (đầu system prompt mọi phiên): vẽ hình CHỈ qua `dung_hinh` / `ve_hinh`, không ghi file, không xin bật Write, Read nhap_kho.md §Vẽ hình trước lần vẽ đầu. Bot đọc lại CHUNG.md mỗi lượt ⇒ có hiệu lực từ tin kế tiếp, không cần mở lại phiên.
