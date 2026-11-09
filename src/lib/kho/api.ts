@@ -102,6 +102,8 @@ export type CauHoi = {
   clone_method: string | null
   ma_cum: string | null         // CỤM BÀI = lớp tương đương (thay được cho nhau ở mã đề). null = CHƯA phân cụm.
   xoa_at?: string | null        // kho rác — NULL = còn sống
+  // Hình–Học bài nhiều ý (mig 202611091550): câu = 1 ý của bài HHB… — noi_dung do DB ghép = lời dẫn + (đã biết) + câu hỏi ý
+  bai_y?: string | null; nhan_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null
   // ⭐ 20/08 (Thùy: "kho có rất nhiều câu, câu xịn câu không, cần nhãn chất lượng — đã/chưa kiểm duyệt.
   // Clone xong phải có người check"). Mặc định false — câu MỚI (clone/nhập) luôn vào hàng chờ duyệt.
   da_duyet: boolean

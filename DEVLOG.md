@@ -79499,3 +79499,5 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 2026-11-09 — Báo cáo HỌC KÌ: BẬT app PH cho kì Nửa kì 1 (Thùy 'đẩy report lên app')
 - ky_hoc.mo_ph = true (actor Thùy, log ky_hoc_mo_ph_log). Lúc bật: 171 công bố · 146 điền đủ chưa công bố · 31 dở; 1 bản công bố thiếu sai số (Chu Bảo Ngọc 9K2). Kiểm app PH local (DB thật) link xem-thử PH Hoàng Nhật Minh: hiện hướng dẫn 'Báo cáo học kì của Minh đã có! · Toán, KHTN'.
+- ET gom ý (Thùy: "ET phải gom ý lại mới chuẩn"): sortETCaus xếp ý cùng bài liền nhau theo nhãn tại chỗ ý chọn đầu (lúc LƯU ⇒ thu_tu = giấy) · ETPrintView: ≥2 ý cùng bài liền nhau ⇒ "Câu n – m." + lời dẫn + hình 1 lần, rồi "Câu n. a) …" từng ý (1 ý = 1 câu, khớp phiếu chấm). Lời dẫn suy từ noi_dung bỏ đuôi câu hỏi ý; lệch khuôn ⇒ in như thường. ET đã lưu trước đó: mở ra lưu lại 1 lần để ý đứng liền nhau.
+- Thùy dặn tiếp: kho/bộ chọn câu cũng hiện 1 bài với các ý (hệ hiểu là n ý, thao tác từng ý) — làm SAU ET.

@@ -250,18 +250,22 @@ export const coFormTn = (formTnTbl: string): boolean => KHO_CO_FORM_TN.has(formT
 // → BẨN MASTERY (đơn vị chân lý HS × dạng). Giờ `thu_tu` là thứ tự duy nhất, mọi nơi đọc cùng một nguồn.
 // DÙNG CHUNG — đừng copy lại logic gom này ở nơi khác, lệch một bản là tái diễn đúng bug trên.
 export type ETGroup = 0 | 1 | 2
-export type ETCauLike = { ma_cau: string; loai_cau: string; lua_chon?: string[] | null; menh_de?: unknown[] | null }
+export type ETCauLike = { ma_cau: string; loai_cau: string; lua_chon?: string[] | null; menh_de?: unknown[] | null; bai_y?: string | null; nhan_y?: string | null }
 // Câu Đúng/Sai (có menh_de) LUÔN thuộc nhóm trắc nghiệm — bảng trả-lời-ngắn không hiển thị nổi 4 mệnh đề.
 export function etGroupOf(c: ETCauLike, ch: CauHinh): ETGroup {
   if (c.menh_de && c.menh_de.length) return 0
   const f = etFormOf(c, ch)
   return f === 'trac_nghiem' ? 0 : f === 'tra_loi_ngan' ? 1 : 2
 }
+// Hình–Học bài nhiều ý (Thùy 09/11 "ET phải gom ý lại"): các ý CÙNG BÀI (bai_y) đứng LIỀN NHAU tại chỗ ý chọn đầu tiên của bài,
+// theo thứ tự nhãn a → b → c ⇒ phiếu in lời dẫn + hình 1 lần. Gom ở đây (lúc LƯU) để `thu_tu` = thứ tự giấy, như luật trên.
 export function sortETCaus<T extends ETCauLike>(caus: T[], ch: CauHinh): T[] {
-  return caus
-    .map((c, i) => ({ c, i }))                                    // i = tie-break, giữ thứ tự chọn trong nhóm
-    .sort((a, b) => etGroupOf(a.c, ch) - etGroupOf(b.c, ch) || a.i - b.i)
-    .map((x) => x.c)
+  const x = caus.map((c, i) => ({ c, i, g: etGroupOf(c, ch), neo: i }))
+  const dau = new Map<string, number>()
+  for (const e of x) if (e.c.bai_y) { const k = `${e.g}|${e.c.bai_y}`; if (!dau.has(k)) dau.set(k, e.i); e.neo = dau.get(k)! }
+  return x
+    .sort((a, b) => a.g - b.g || a.neo - b.neo || (a.c.nhan_y ?? '').localeCompare(b.c.nhan_y ?? '') || a.i - b.i)
+    .map((e) => e.c)
 }
 // file_url = link PDF public (bucket 'kho-tailieu') của bản export GẦN NHẤT — ghi đè mỗi lần "🔗 Lấy link" (uploadPagesAsLink, PrintView.tsx). "🖨 In / Xuất PDF" giờ dùng native window.print(), không upload.
 // stt_lop = SỐ BUỔI CỦA LỚP (1,2,3…) cho doc vận hành bám (lop_id, ngay) — xem §"Bộ giáo trình riêng
