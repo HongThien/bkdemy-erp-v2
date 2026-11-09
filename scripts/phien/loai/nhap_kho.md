@@ -73,6 +73,21 @@ Câu có hình mà chưa gắn ⇒ tìm hình ở tài liệu gốc: PDF thì `a
 `anh_docx` (đọc `van_ban.md` để biết hình nằm sau câu nào). **Luôn Read ảnh vừa cắt để soát** đúng hình, đủ nhãn điểm, không dính
 chữ câu khác — sai thì cắt lại với vùng khác. Đúng rồi mới `gan_anh`, rồi sửa đề bỏ dòng "[có hình — chưa đưa hình]" bằng `sua_cau`.
 
+**Vẽ hình sạch (09/11)** — khi người mở phiên muốn "hình vẽ đẹp / bỏ watermark", hoặc ảnh sách mờ/có chữ đè: **vẽ lại** bằng
+`ve_hinh` thay vì cắt. Bạn KHÔNG viết file hay chạy mã được — chỉ gửi phần thân SVG qua heredoc:
+```
+node scripts/phien/ban-do.mjs ve_hinh '{"ten":"cau12","w":420,"h":300,"luoi":30}' <<'HET'
+<polyline points="60,240 120,120 210,180"/><circle cx="60" cy="240" r="4.5" fill="#222" stroke="none"/>
+<text x="46" y="268" stroke="none" fill="#111" font-style="italic">A</text>
+HET
+```
+- Thẻ được dùng: `g line polyline polygon path circle ellipse rect text tspan` (+ `defs marker` cho mũi tên). Mọi giá trị trong dấu nháy;
+  chữ "<" trong nhãn viết `&lt;`. Khung sẵn: nền trắng, nét #222 dày 2, chữ Times 26 — chữ nhớ `stroke="none" fill="#111"`.
+- `luoi` = cạnh ô lưới vuông (px) cho bài trên lưới ô vuông/giấy kẻ ô; bỏ trống = không lưới. Toạ độ gốc trên-trái, y hướng xuống.
+- **Hình phải KHỚP dữ kiện đề** (độ dài theo số ô, vuông góc thật, chia đều thật) — tự tính toạ độ, đừng ước mắt. Đỉnh hình đặt đúng giao điểm lưới.
+- **Read ảnh vừa vẽ để soát** (nhãn đủ, không chồng chữ, không lộ đáp án) rồi `gan_anh` (o `de`), cuối cùng `sua_cau` bỏ "[có hình — chưa đưa hình]".
+- Hình lời giải (vd tô màu phần đáp án) vẽ riêng một ảnh, gắn `o` `dap_an`.
+
 ## Cách làm một lượt
 
 1. `kho-tong` + `xem` → báo trưởng khối: còn bao nhiêu câu chưa phân, bao nhiêu đề xuất / thiếu dạng đang chờ.
