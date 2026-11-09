@@ -79501,3 +79501,5 @@ Thùy nêu 4 việc, làm được 3:
 - ky_hoc.mo_ph = true (actor Thùy, log ky_hoc_mo_ph_log). Lúc bật: 171 công bố · 146 điền đủ chưa công bố · 31 dở; 1 bản công bố thiếu sai số (Chu Bảo Ngọc 9K2). Kiểm app PH local (DB thật) link xem-thử PH Hoàng Nhật Minh: hiện hướng dẫn 'Báo cáo học kì của Minh đã có! · Toán, KHTN'.
 - ET gom ý (Thùy: "ET phải gom ý lại mới chuẩn"): sortETCaus xếp ý cùng bài liền nhau theo nhãn tại chỗ ý chọn đầu (lúc LƯU ⇒ thu_tu = giấy) · ETPrintView: ≥2 ý cùng bài liền nhau ⇒ "Câu n – m." + lời dẫn + hình 1 lần, rồi "Câu n. a) …" từng ý (1 ý = 1 câu, khớp phiếu chấm). Lời dẫn suy từ noi_dung bỏ đuôi câu hỏi ý; lệch khuôn ⇒ in như thường. ET đã lưu trước đó: mở ra lưu lại 1 lần để ý đứng liền nhau.
 - Thùy dặn tiếp: kho/bộ chọn câu cũng hiện 1 bài với các ý (hệ hiểu là n ý, thao tác từng ý) — làm SAU ET.
+
+- 09/11 — Thùy 'cái nào đủ dữ liệu thì công bố luôn' ⇒ công bố 146/146 (actor Thùy) ⇒ 317 công bố, 31 dở. Ngay sau đó Thùy: 'trừ khối 345 để lại' (tin đến khi đã chạy xong) ⇒ mở lại 19 bản khối 3–5 vừa công bố (4T1 11 · 5T1 8; lớp 3–5 thường còn dở nên không dính) — công bố khoảng 2 phút trong lúc app PH đã bật. Còn 298 công bố.
