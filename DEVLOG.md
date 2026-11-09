@@ -79508,3 +79508,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ### 09/11 — Báo cáo kì: công bố lại 4T1 + 5T1 (Thùy "4T 5T cứ công bố, khối riêng mà")
 - Lượt trước rút cả khối 3–5; Thùy làm rõ: chỉ để lại khối 3–5 THƯỜNG, 4T/5T là khối riêng ⇒ công bố. Gọi `fn_bc_ky_cong_bo` (vai Thùy) cho 19 em: 4T1 11/11 · 5T1 8/8. Các lớp 3A1/5A1/5B1/5B2 vẫn chưa công bố.
+
+### 09/11 — BTVN Hình–Học bài nhiều ý: ý liền nhau, ô trống của cả bài (Thùy)
+- Thùy: "trong BTVN, các ý phải liền nhau, ô trống là ô trống của cả bài chứ ko phải ô của 1 ý" + "ko còn câu 3 nữa, chỉ là ý a) thôi".
+- `itemsGomY` (PrintView): ý in "a)" (bỏ "Câu n."), không dòng kẻ giữa các ý; 1 khối dòng kẻ sau ý cuối, số dòng = số đặt ở Ý ĐẦU. Builder (`BuilderBanDoMoi`): bỏ ô "dòng" từng ý, thêm 1 ô "dòng cả bài" ở đầu khối bài (ghi vào ý đầu). Số câu vẫn đếm theo ý (đầu bài "Câu 5 – 7.") như cũ.
+- Kiểm: bản in BTVN 8B1 Buổi 27 (Thales) trên app local: Câu 5–7 → a) b) c) liền nhau → 1 khối 15 dòng (trước: 15 dòng sau MỖI ý). `itemsTheoDe` (BTVN gán từ đề thi / đề thi) KHÔNG đổi — vẫn dòng kẻ từng ý theo luật đề 25/10.

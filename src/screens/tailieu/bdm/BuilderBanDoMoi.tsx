@@ -437,6 +437,12 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                       <span className="text-[12px] font-bold text-slate-400">{i + 1}–{k.cuoi + 1}.</span>
                       <span className="font-mono text-[11px] font-semibold text-teal-700">{c.bai_y}</span>
                       <span className="text-[11px] text-slate-400">bài {ys.length} ý</span>
+                      {/* Thùy 09/11: ô trống là của CẢ BÀI (1 khối dòng kẻ sau ý cuối) ⇒ 1 ô "dòng" cho bài, lưu ở ý đầu (`m`) */}
+                      {!chiXem && btvn && (
+                        <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết cả bài (in 1 khối sau ý cuối)">dòng cả bài
+                          <input type="number" min={0} max={50} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                        </label>
+                      )}
                       {!chiXem && !gon && c.anh_de && (
                         <span className="ml-auto flex items-center gap-2">
                           <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />
@@ -455,11 +461,6 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                           <MaCau ma={y.ma_cau} />
                           {!chiXem && (
                             <span className="flex shrink-0 items-center gap-2">
-                              {btvn && (
-                                <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết ý này">dòng
-                                  <input type="number" min={0} max={50} value={cfg.lines[y.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(y.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
-                                </label>
-                              )}
                               <button onClick={() => onXoa(y.ma_cau)} title="Bỏ ý này" className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                             </span>
                           )}

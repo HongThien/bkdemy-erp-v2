@@ -1189,8 +1189,8 @@ export function CauFlow({ items, hop }: { items: CauFlowItem[]; hop?: boolean })
   return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} dau={hop && i === 0} hop={hop ? (i === groups.length - 1 ? 'cuoi' : 'giua') : undefined} />)}</>
 }
 
-// Hình–Học bài nhiều ý (Thùy 09/11): ≥2 ý CÙNG BÀI liền nhau ⇒ "Câu n – m." + lời dẫn + hình 1 lần, rồi "Câu n. a) …" từng ý
-// (dòng kẻ / cột của chính ý). Số câu vẫn 1 ý = 1 câu — khớp app HS (thu_tu phẳng) và phiếu chấm. Câu khác: `mk` như cũ.
+// Hình–Học bài nhiều ý (Thùy 09/11): ≥2 ý CÙNG BÀI liền nhau ⇒ "Câu n – m." + lời dẫn + hình 1 lần, rồi "a) …" từng ý
+// liền nhau, dòng kẻ gộp 1 khối cho cả bài sau ý cuối (Thùy 09/11). Số câu vẫn 1 ý = 1 câu — khớp app HS (thu_tu phẳng) và phiếu chấm. Câu khác: `mk` như cũ.
 export function itemsGomY(cs: CauHoi[], o: {
   next: () => number; gv: boolean; dong: (c: CauHoi) => number; col: (c: CauHoi) => number; cheDo: (c: CauHoi) => CheDoHinh | undefined
 }, mk: (c: CauHoi, no: number) => CauFlowItem): CauFlowItem[] {
@@ -1207,10 +1207,15 @@ export function itemsGomY(cs: CauHoi[], o: {
       key: `bai-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: 0, hasImg: !!anh,
       content: <><div className="pv-math" style={{ breakAfter: 'avoid' }}><MathText prefix={`<span class="pv-cau-no">Câu ${so[0]} – ${so[so.length - 1]}.</span> `}>{k.dan}</MathText></div>{anh}</>,
     })
-    ys.forEach((y, t) => out.push({
-      key: y.ma_cau, cols: o.col(y), nhom: dau.bai_y!,
-      ...cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(y), nhan: `Câu ${so[t]}. ${y.nhan_y})` }),
-    }))
+    // ⭐ Thùy 09/11 (BTVN): ý chỉ ghi "a)" (không "Câu 3. a)"), các ý LIỀN NHAU, ô trống/dòng kẻ là của CẢ BÀI ⇒ 1 khối dòng kẻ
+    // sau ý cuối. Số dòng của bài = số dòng đặt ở Ý ĐẦU (builder chỉ có 1 ô "dòng" ở đầu khối bài, ghi vào ý đầu).
+    let ke = 0
+    ys.forEach((y, t) => {
+      const p = cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` })
+      if (t === 0) ke = p.lines
+      out.push({ key: y.ma_cau, cols: o.col(y), nhom: dau.bai_y!, ...p, lines: 0 })
+    })
+    if (ke > 0) out.push({ key: `ke-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: ke, hasImg: false, content: null })
     i = k.cuoi + 1
   }
   return out
