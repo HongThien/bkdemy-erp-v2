@@ -79456,3 +79456,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Không đổi thứ tự in lúc in:** thứ tự cố định lúc CHỌN (nodeIds), vì ô chấm ET/khung `noDapAn` đi theo đúng thứ tự đó.
 - **Kiểm:** `scripts/kho/test_ghep_y.mjs` (ROLLBACK, MH.126) 14/14 trước và sau khi áp; RPC qua phiên app admin; popup MT K7 → MH.126: tick nhánh chính + nhánh phụ ⇒ cảnh báo anh em, đổi sang gốc + chính ⇒ hết cảnh báo; Huỷ, không lưu.
 - **Ghi chú cho bước 5:** test dựng tạm thấy nhánh chính "BE = BA" (MH.166) trùng nội dung sự kiện B — khi gom MH.126 thành nhóm bài, nhánh đó phải thành THÀNH VIÊN, không để làm nhánh sau nhóm (nếu không sẽ in lặp "BE = BA").
+
+## 09/11 — LUẬT: chỉ làm khi Thùy ra lệnh, phải nói rõ scope
+- Sai: tách ý Hình – Học — chưa chốt phương án đã tự áp mig 202611091550 + chạy máy cắt cả K7·8·8T·9 (746 bài), không báo trước. Thùy chửi.
+- Sửa: ghi luật lên đầu HANDOFF.md (mục ⛔ LUẬT LÀM VIỆC) + memory. Từ giờ: nêu phương án + scope (khối/lớp, số lượng, có ghi DB/migration) → chờ lệnh → một bước một lần.
