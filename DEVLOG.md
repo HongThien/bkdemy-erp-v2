@@ -79683,3 +79683,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Còn trống:** NDB02800/02801 và nhóm NNB02098 chưa có mô tả/LT/ví dụ (Thùy dựng khung, chưa điền).
 
 - **Duyệt (10/11, Thùy "duyệt vào kho luôn"):** `so-chinh-phuong/duyet.mjs --ghi` — 7 câu T1060000001617–1623: dạng đề xuất → gán 'nguoi' (NDB02801 ×5, NDB02800 ×2), rút 7 dòng đề xuất, da_duyet=true (duyet_nguon='ai').
+
+
+## 10/11 ~20:00 — Màn Chấm MT "statement timeout" từng lúc: GỐC = khoá của cờ bẩn mastery (lỗi của tôi)
+- Đo: mọi bước dựng lưới MT 9A1 01/11 chỉ 40–140 ms; không có khoá đang giữ lúc 19:55. Tái hiện bằng 2 kết nối: A xoá dòng mastery_ban của 1 em (như fn_mastery_lam_moi giữ khoá suốt lượt 20–53 s) ⇒ B ghi điểm em đó (trigger UPSERT mastery_ban) BỊ CHẶN tới timeout. Em vừa chấm = em bẩn ⇒ hay đụng.
+- Sửa: mig 202611101957_mastery_ban_nhat_ky_khong_khoa — đánh bẩn = CHÈN nhật ký mastery_ban_log (không khoá duy nhất); em bẩn = nhật ký mới hơn mastery_luu_san_tinh.moc; làm mới đặt mốc = bắt đầu − 2 phút; dọn nhật ký > 10 phút dưới mốc. mastery_ban cũ thôi dùng, không xoá. Thử txn: ghi điểm 56 ms, em thành bẩn, làm mới 3,6 s, đối chiếu 0 lệch, nhanh = trực tiếp 0 lệch (60 em, 4 tầng). Chờ Thùy cho áp.
+- Thùy: đổi lớp ở Chấm MT ~5 s — chưa đo (cần đăng nhập Browser pane), nghi nhiều lượt gọi tuần tự của chuanBiLuoiMT.
+- ĐÃ ÁP mig 202611101957 (Thùy 'cho áp'). Kiểm 2 kết nối: A giữ khoá như lượt làm mới (advisory + xoá ô chụp + xoá nhật ký của em) ⇒ B ghi điểm em đó 48 ms, KHÔNG bị chặn. npm run schema đã chạy.
