@@ -79537,6 +79537,73 @@ Thùy nêu 4 việc, làm được 3:
 - Lỗi thấy khi chạy thử: em thiếu ảnh trang có câu 3 ⇒ câu đó chỉ bị đếm 1 ý ⇒ mẫu số 7 thay vì 9 ⇒ điểm CAO ẢO (Hương Giang 5,75). Sửa mig 202611101554: số ý của mỗi câu = số ý nhiều nhất máy từng ghi cho câu đó trong CÙNG BUỔI. Hệ quả: ghi.mjs ghi HẾT lần chấm của cả đợt rồi mới tính điểm/vẽ (2 lượt; --thu ghi cả đợt trong 1 transaction rồi rollback).
 - Hạn chế: điểm một em phụ thuộc các em cùng buổi đã chấm; em chấm sau có thể đổi mẫu số bạn trước ⇒ gửi chấm lại nếu số ý đổi. Em thiếu ảnh: câu thiếu = 0 điểm tới khi TA xin ảnh và gửi chấm lại.
 
+
+
+## 10/11 — Mastery: theo câu → theo lần, bước 1 (so trên dữ liệu thật, chưa ghi DB)
+- **Quyết định (Thùy):** chuyển mastery CHÍNH sang đo theo LẦN như Đánh giá cuối cấp, không giữ 2 mastery song song. Cấp NHÓM bài là chính, DẠNG là phụ. Bổ trợ yếu sẽ đổi từ luyện dạng yếu sang luyện NHÓM yếu.
+- **Mastery gốc hiện tại:** fn_mastery_cells_moi/bdm → _mastery_cells_core (5 CÂU gần nhất, MT3·ET2·khác1, Hình–Học 3) ← _mastery_lan_do_quy. Bổ trợ gọi fn_mastery_cells_bdm(include_btvn=true) = mọi nguồn kể cả tự luyện. ~20 hàm DB đọc mastery theo ma_dang.
+- **Làm:** scripts/_so_mastery_theo_lan.mjs (temp table + rollback, chỉ đọc) + _html_so_mastery_theo_lan.mjs → reports/so-mastery-theo-lan.html. Bản cũ chép lại khớp 2670/2670 ô với fn_mastery_cells_bdm thật.
+- **Số (347 HS Toán):** bổ trợ cũ 1760 dạng yếu/301 HS → mới 967 nhóm yếu/280 HS (274 trùng). Cấp dạng đổi ít (đa số lần chỉ 1–3 câu/dạng). Cửa sổ nhóm 5 lần phủ ~27 ngày vs 20 ngày của 5 câu (mọi nguồn); ET+MT 68 vs 51.
+- **Phát hiện:** tự luyện mỗi phiên = 1 lần (9.805 lần, nhiều nhất) ⇒ đẩy ET/BTVN khỏi cửa sổ; lần 1 câu × trọng số MT3 làm lệch mạnh. Đề xuất: bỏ tự luyện (trừ cấp 1) + bỏ trọng số nguồn. KHTN (K07–K09, 19k lượt) chưa có nhóm; Hình–Luyện đường riêng chưa so. Cách cũ: câu cùng ngày buổi ⇒ chọn 5 câu nào là tuỳ thứ tự sắp.
+
+## 10/11 — App HS: mở lượt luyện từ bản đồ bị "statement timeout" (Thùy báo)
+- **Đo:** `tu_luyen_chu_de_sinh` HS0010 dạng NDB00690 = 9.736 ms (> trần 8 s). Gắn đồng hồ từng bước: mỗi lần CHỌN 1 câu 170–900 ms, chụp câu ~7 ms. EXPLAIN: view `bdm_cau_dang` lấy dạng = COALESCE(gán, gán câu mẹ, đề xuất, đề xuất câu mẹ) ⇒ lọc dạng không đẩy xuống ⇒ quét cả 70.112 câu `dai_cau_hoi` mỗi lần chọn.
+- **Sai hướng đã loại:** nghi `_hs_cau_lan_gap` (đo 700 ms trong phiên JWT) — gọi thẳng chỉ 5 ms; bảng thuộc chủ hàm nên RLS không chạy trong app thật.
+- **Sửa:** mig `202611101421` viết lại view cùng nghĩa thành 4 nhánh ưu tiên (4 bảng gán unique ma_cau, dang NOT NULL). So khớp trước khi áp: 53.290 dòng, EXCEPT ALL 2 chiều = 0. Sau: lượt 0,4–0,8 s (HS0010 · HS0522 · HS0527); đọc toàn view không chậm hơn. Commit `5628dd43`, đã push. Không cần deploy (chỉ DB).
+
+
+## 10/11 — Mastery theo lần: Thùy chốt bỏ tự luyện (trừ cấp 1) + bỏ trọng số nguồn
+- Chạy lại so sánh với 2 luật mới (cách cũ giữ nguyên). Bổ trợ: cũ 1760 dạng yếu/301 HS → mới 686 nhóm yếu/251 HS (245 trùng). Cửa sổ nhóm 5 lần (mọi nguồn trừ tự luyện) phủ ~35 ngày vs 20 ngày của 5 câu cũ. ET+MT: 1007 nhóm yếu; dạng yếu 3014 → 2611.
+- Ô cũ đạt → mới yếu ở kịch bản bổ trợ chủ yếu là ô cũ đạt nhờ tự luyện gần đây. HTML cập nhật: reports/so-mastery-theo-lan.html.
+
+
+## 10/11 — Mastery theo lần: viết mig 202611101427_mastery_theo_lan (CHƯA ÁP)
+- **Làm:** công tắc he_thong_cong_tac 'mastery_theo_lan' (tạo TẮT) · _mastery_luot_do_quy = nguồn lượt đo duy nhất (thêm khoá lần + cờ cấp 1), _mastery_lan_do_quy thành lớp mỏng · _mastery_lan_core = công thức theo lần, 1 chỗ cho cả cấp dạng/nhóm · _mastery_cells_cau = bản theo câu cũ nguyên văn · _mastery_cells_core thành bộ chia theo công tắc (chữ ký giữ nguyên ⇒ ~20 hàm gọi không sửa) · fn_mastery_nhom (cấp nhóm, luôn theo lần).
+- **Thử trong txn + rollback** (scripts/_thu_mig_mastery_theo_lan.mjs, 347 HS Toán): TẮT ⇒ fn_mastery_cells_bdm (B) và fn_mastery_cells_moi (A) khớp tuyệt đối trước mig (0 dòng lệch). BẬT ⇒ dạng A yếu 2611 (= script so), nhóm A yếu 1007 (=), nhóm B yếu 886 (script 875), dạng B 2429 (script 2412) — lệch ~1% do thứ tự chọn lần cùng ngày (mig: t desc, luot desc). BẬT nhanh hơn (B 18 s vs 30 s cả 347 HS). fn_btyeu_dang_yeu_2_cua_so_moi, _dang_yeu_tai_lo chạy được. anon không gọi được hàm mới.
+- Khi bật: cột n = số LẦN; nhãn trên app đa số ghi 'lần đo' nên không phải sửa.
+
+
+## 10/11 — Mastery theo lần: ĐÃ ÁP mig 202611101427 + ĐÃ BẬT công tắc (Thùy 'áp và bật luôn')
+- Áp bằng migrate --only (sổ còn 25 file treo của phiên khác, không đụng). Bật he_thong_cong_tac.mastery_theo_lan = true lúc 15:18 VN.
+- Kiểm sau bật (9B1): fn_mastery_cells_moi 1,2 s · fn_mastery_nhom 0,4 s · _dang_yeu_tai_lo 3,1 s chạy được; Hình–Luyện (_mastery_cells_hinh_tai) không đổi. npm run schema đã chạy.
+- Đường lùi: tắt công tắc (update he_thong_cong_tac set bat=false where ma='mastery_theo_lan') ⇒ về theo câu ngay, không mất gì.
+- Việc sau: bổ trợ yếu mở case theo NHÓM (fn_mastery_nhom) + chọn câu dạng yếu nhất trong nhóm trước · KHTN nối nhóm · spec-bo-tro.md · CLAUDE.md §1 'KP = dạng' → nhóm chính (ghi Notion).
+
+## 10/11 (chiều) — App HS: bản đồ thôi tải/đếm cả kho (Thùy: "cứ load toàn bộ bản đồ làm gì")
+- **Rà:** (1) đánh xong 1 chặng ⇒ `tai(true)` tải lại CẢ bản đồ môn (1–6 s), lỗi thì màn báo lỗi THAY bản đồ · (2) vào Học tập ⇒ tải trước cả bản đồ dù không mở · (3) `fn_ban_do_phieu_luu` đếm câu lọc dạng bằng truy vấn con ⇒ dựng cả view `bdm_cau_hoi` (3,1 s) · (4) `tu_luyen_chu_de_ds_dang` đếm mọi dạng NDB mọi khối.
+- **Sửa:** mig `202611101517` — đếm bằng mảng mã dạng của khối + hàm mới `fn_ban_do_phieu_luu_man` (trạng thái 1 chặng). App: `PhieuLuuHS` vá 1 chặng (`vaChang`, bỏ bản nạp cũ), lỗi mạng bỏ qua; `napPhieuLuu` chỉ nạp chunk + ảnh.
+- **Kiểm:** 13 khối (k3→k12, 4T, 5T, 8T) JSON cũ = mới từng byte; 48 chặng hàm mới = chặng trong bản đồ đầy đủ. Bản đồ k10 11,6 s → 0,94 s, các khối khác 0,25–1,4 s; Học theo chủ đề 0,25–1,6 s. Trang soi `?xem=phieu_luu&that=1` hiện bình thường. CHƯA thử vòng đánh xong → vá bằng HS đăng nhập thật.
+- Commit `2234199a` (đẩy qua worktree tạm vì DEVLOG máy chính có phần phiên khác sửa dở; đã gỡ worktree). Cần deploy app HS cho phần (1)(2).
+
+## 10/11 (chiều) — Bổ trợ › Lịch khối: xếp lịch bổ trợ khối trên lịch phòng chung (Thùy: "mọi hoạt động xếp lịch của BK phải lấy nguồn từ lịch phòng tổng quan")
+- **Rà:** lịch phòng gộp ở CLIENT (`lichPhongNgay` 4 truy vấn + join JS) và SÓT nguồn: ca_bo_tro, lich_truc_bo_tro, buổi Ôn thi/Hình/Nhẹ. 60/60 lịch trực đang hiệu lực KHÔNG có phòng; form lịch trực không báo trùng.
+- **Làm:** mig `202611101544` (ĐÃ ÁP, --only): `fn_phong_lich` (8 nguồn, 4 ngày ~170 ms) · `fn_phong_kiem_trung` · `fn_lich_truc_kiem_trung` (phòng + người, 4 tuần, mức chặn/cảnh báo) · `fn_lich_truc_luu` (sửa không đổi giờ/người ⇒ bỏ kiểm người — trùng có sẵn từ trước; ca đã sinh chưa có em đi theo lịch mới). App: `phong.ts` đọc RPC (Tổng quan, Lịch phòng, form phát sinh, form xếp yếu tự hưởng) · `TongQuanTuanScreen` thành component (mauTheo nguon, bấm ô) · tab Lịch trực → **Lịch khối** (`LichTrucScreen` + `LichKhoiModal`). `LichTrucTab` cũ trong XepLichBoTroYeuScreen giờ không còn chỗ dùng (để nguyên).
+- **Kiểm:** 7 ca luật trong transaction rollback (gán phòng · trùng TKB chặn · phòng trống OK · ghép 1 ca cảnh báo→chấp nhận OK · ca thứ 3 chặn · TA trùng giờ chặn · overview thấy). Trên app: popup mở đúng ngày/phòng/giờ ô bấm, báo "không trùng" / "🚫 Trùng phòng P101 — 6S1 TKB"; Tổng quan phòng vẫn chạy, 0 lỗi console. CHƯA lưu dòng thật nào từ app.
+
+
+## 10/11 — Bổ trợ yếu theo NHÓM: viết mig 202611101521_botro_yeu_theo_nhom (CHƯA ÁP)
+- **Thiết kế:** nhóm quyết, dạng thực thi — luật duy nhất _btyeu_dang_theo_nhom thay luật dạng yếu ở fn_btyeu_dang_yeu_2_cua_so_moi / _dang_yeu_tai_lo / fn_btyeu_de_xuat_dang_moi (các hàm khác gọi qua 2 hàm đầu). Case vẫn chứa dạng ⇒ chọn câu/ca/test/app không sửa. Gắn công tắc mastery_theo_lan (tắt ⇒ luật cũ nguyên văn).
+- _mastery_lan_cap: công thức theo lần tính dạng + nhóm 1 lượt; _mastery_lan_core thành lớp mỏng (đối chiếu: mastery dạng 0 dòng lệch).
+- **Sai rồi sửa (tốc độ):** bản đầu cả Toán 1 lệnh 174 s, lô 10 em 7 s (sát trần 8 s Chốt tuần) — nối CTE bằng nested loop vì planner ước 1000 dòng. Sửa: CTE materialized + nối bằng tập distinct, _mastery_lan_cap 'rows 20000', _dang_yeu_tai_lo chia lô 20 em ⇒ lô 10 em chậm nhất 2,9–4,1 s (cũ 4,6), cả môn 71 s (cũ 74).
+- **Số:** 1.304 dạng yếu/292 HS → 684 nhóm yếu (1.322 dạng)/259 HS, 256 HS trùng. KHTN chạy luật cũ. Thử bằng scripts/_thu_mig_botro_theo_nhom.mjs (txn + rollback). spec-bo-tro.md §39.
+
+
+## 10/11 — Bổ trợ yếu theo NHÓM: ĐÃ ÁP mig 202611101521 (Thùy 'áp luôn', 16:05 VN)
+- Áp bằng migrate --only. Kiểm sau áp: lô 10 em K7 mốc T2 3,5 s; 1 em 0,3 s; mastery dạng chạy bình thường. npm run schema đã chạy.
+- Từ giờ mở case / +dạng mới / còn yếu / chụp đầu tuần / QLCL / bổ trợ nhẹ theo NHÓM yếu. Tắt mastery_theo_lan ⇒ về luật cũ.
+## 10/11 (chiều, tiếp) — Nối TKB · ca tạo tay · Nhẹ vào lịch phòng chung (Thùy: "nối luôn")
+- mig `202611101604` (ĐÃ ÁP --only): `fn_tkb_kiem_trung` + `fn_tkb_luu` (chính khoá là gốc: trùng chính khoá/test/phát sinh chặn, trùng bổ trợ cảnh báo; bỏ qua chính khung + buổi thường của chính lớp) · `fn_ca_bo_tro_tao` chặn trùng phòng/người (bỏ qua buổi lẻ của chính TA — ca sinh ra để chứa chúng), thu grant PUBLIC · `fn_btnhe_tao` giữ cảnh báo (spec §8.2), đếm trên lịch chung TRƯỚC khi ghi, trả `trung_ds`.
+- App: `TrungPhongList` + `useKiemTrung` dùng chung; TKB SlotModal/AddModal + ô thêm khung ở màn Lớp báo trùng sống (bỏ phép so trùng TKB ở client). Kiểm: 8 ca rollback + app (6S1 đổi sang P102 ⇒ 🚫 trùng 7B1, nút Lưu khoá; giữ P101 ⇒ không trùng). Commit `dc92a566`.
+
+
+## 10/11 — Màn Nội dung bổ trợ yếu gom theo NHÓM (code xong, mig 202611101607 CHƯA ÁP)
+- DB: fn_btyeu_case_dang_nhom(case) + fn_btyeu_dang_goi_y_nhom(hs, môn) — mỗi dạng kèm nhóm (bdm_ban_do.ma_nhom; Hình–Học nhóm = bài) + mastery nhóm/dạng theo lần, xếp nhóm yếu nhất trước. Thử txn+rollback (scripts/_thu_mig_botro_noi_dung.mjs): 3 case thật 0,4–1,4 s; gợi ý 0,2–0,6 s.
+- Màn: dạng trong case + popup + Thêm dạng gom theo nhóm (đầu nhóm: tên · yếu/cần luyện/đạt · % · số lần), nút Chọn cả nhóm; bỏ dạng = vá tại chỗ, thêm dạng = tải nền, ô đếm ngoài danh sách vá tại chỗ (không reload trắng). tsc sạch.
+- Áp mig bị máy chặn (auto mode coi là deploy) ⇒ chờ Thùy cho phép rồi mới kiểm trên app.
+
+## 10/11 — ĐÃ ÁP mig 202611101607_botro_noi_dung_theo_nhom (Thùy 'cho áp')
+- npm run schema đã chạy. Kiểm trên app: chờ đăng nhập trong Browser pane (không tự đăng nhập tài khoản thật).
+- Kiểm trên app local (Thùy đăng nhập trong Browser pane): case Test 04 K7 hiện 4 nhóm + 'Chưa có nhóm', mỗi nhóm có nhãn + % + số lần, dạng có % riêng / 'chưa đo'; popup + Thêm dạng gom theo nhóm, dạng đã có hiện mờ. 0 lỗi console. Không bấm bỏ/thêm dạng (dữ liệu thật).
 ## 10/11 — Phòng làm việc: "canceling statement due to statement timeout" ở phòng Giám đốc (Thùy báo) ⇒ số lưu sẵn + luật truy xuất DB
 - **Đo:** fn_phong_ghe_gd 29,7 s · fn_phong_ghe_tbm 22,8 s · fn_phong_cap_duoi tới 5,8 s (trần 8 s). Mỗi lần mở tính lại hiệu suất tháng MỌI TA × MỌI ghế × MỌI môn; màn còn gọi lại mỗi 60 s và gọi lại cả khi mở 1 việc.
 - **Thùy chốt luật:** hiển thị cái gì gọi cái đấy · bấm đến đâu gọi đến đấy · số không realtime thì không tính realtime · số quan trọng ít đổi (hiệu suất TA) có bảng tính sẵn ⇒ ghi CLAUDE.md §2.0.
