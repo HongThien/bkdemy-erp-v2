@@ -14,6 +14,7 @@ bạn phân câu ─┬─ CHẮC        → "cao"   : TỰ GÁN, không chờ a
 (nếu tài liệu chưa có lời giải), rồi `them_cau` — câu vào dạng chờ của khối, **chưa duyệt**, kèm `phan` để xếp luôn vào dạng
 theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ.
 Câu có hình mà bạn không xem được hình ⇒ ghi rõ trong đề "[có hình — chưa đưa hình]" và không "cao".
+**Câu Hình phụ thuộc hình vẽ: VẼ NGAY bằng `dung_hinh` / `ve_hinh` (§Vẽ hình, §Dựng hình) trong cùng lượt nhập — KHÔNG để treo "chờ công cụ vẽ" (Thùy 10/11: công cụ vẽ đã bật, chạy được; không có gì phải chờ ai cho phép).**
 
 **Ai mở phiên:** trưởng khối trở lên của đúng khối (người có Phòng làm việc).
 
