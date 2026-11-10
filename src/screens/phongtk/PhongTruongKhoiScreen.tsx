@@ -172,7 +172,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         {/* PHẦN VIỆC — mở từ đồ vật trong cảnh. Nền trắng riêng cho dễ đọc. */}
         {mo && mo !== 'phien' && (
           <div className="min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8">
-            <div className={`mx-auto w-full ${mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
+            <div className={`mx-auto w-full ${mo === 'duyet_cong' ? 'max-w-none' : mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
               {mo === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
               {/* Quản trị = báo cáo sư phạm (việc TA) · Chất lượng = dạng yếu + học tập tuần (chất lượng học của HS). */}
               {mo === 'quan_tri' && (

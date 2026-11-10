@@ -150,16 +150,17 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
         {(coGhi || !!duocDs?.size) && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} dòng đang chọn</button>}
       </div>
       <div className={`${card} overflow-x-auto`}>
-        <table className="w-full min-w-[980px] border-collapse text-sm">
+        <table className="w-full min-w-[1100px] table-fixed border-collapse whitespace-nowrap text-sm [&_td]:overflow-hidden [&_td]:text-ellipsis">
+          <colgroup><col className="w-8" /><col className="w-[12.5rem]" /><col /><col className="w-[6.75rem]" /><col className="w-[5.75rem]" /><col className="w-[12rem]" /><col className="w-[7.5rem]" /><col className="w-[10rem]" /></colgroup>
           <thead>
             <tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
               <th className="w-8 px-2 py-2"></th><th className="px-2 py-2">TA · ngày</th><th className="px-2 py-2">Có mặt / Việc</th><th className="px-2 py-2">Giờ</th>
-              <th className="px-2 py-2">Đối chiếu</th><th className="px-2 py-2">Cờ</th><th className="px-2 py-2">Làm hộ</th><th className="px-2 py-2">Trạng thái</th><th className="w-28 px-2 py-2"></th>
+              <th className="px-2 py-2">Đối chiếu</th><th className="px-2 py-2">Cờ</th><th className="px-2 py-2">Trạng thái</th><th className="px-2 py-2"></th>
             </tr>
           </thead>
           <tbody>
-            {rows === null && <tr><td colSpan={9} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
-            {rows !== null && nhom.cas.length === 0 && nhom.le.length === 0 && <tr><td colSpan={9} className="p-6 text-center text-slate-400">{loc === 'cho' ? 'Không còn dòng nào chờ duyệt.' : 'Không có dòng nào.'}</td></tr>}
+            {rows === null && <tr><td colSpan={8} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
+            {rows !== null && nhom.cas.length === 0 && nhom.le.length === 0 && <tr><td colSpan={8} className="p-6 text-center text-slate-400">{loc === 'cho' ? 'Không còn dòng nào chờ duyệt.' : 'Không có dòng nào.'}</td></tr>}
             {nhom.cas.map(({ c, viec }) => <NhomCa key={c.id} c={c} viec={viec} {...props} />)}
             {nhom.le.map((v) => <DongViecQL key={v.id} v={v} hienTen {...props} />)}
           </tbody>
@@ -178,24 +179,26 @@ const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <spa
 const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.duoc(r.id)
   ? <input type="checkbox" aria-label="chọn dòng" checked={!p.boChon.has(r.id)} onChange={() => p.doiChon(r.id)} className="h-4 w-4 accent-indigo-600" /> : null)
 const CoPills = ({ co }: { co: string[] }) => <>{co.map((x) => <Pill key={x} c={nhanCo(x).nhe ? 'bg-indigo-50 text-indigo-700' : x === 'quen_ra' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800'}>{nhanCo(x).t}</Pill>)}</>
-const TrangThai = ({ r }: { r: DongCong }) => <><Pill c={PILL_DUYET[r.duyet][1]}>{PILL_DUYET[r.duyet][0]}</Pill>{r.ly_do_duyet && r.duyet !== 'cho_duyet' && <div className="mt-0.5 text-[11px] text-slate-500">{r.ly_do_duyet}</div>}</>
+const thuNgan = (d: string) => thuCuaNgay(d).replace('Chủ nhật', 'CN').replace('Thứ ', 'T')
+const TrangThai = ({ r }: { r: DongCong }) => <><Pill c={PILL_DUYET[r.duyet][1]}>{PILL_DUYET[r.duyet][0]}</Pill>{r.ly_do_duyet && r.duyet !== 'cho_duyet' && <span className="text-[11px] text-slate-500" title={r.ly_do_duyet}>{r.ly_do_duyet.length > 24 ? r.ly_do_duyet.slice(0, 24) + '…' : r.ly_do_duyet}</span>}</>
 
 function NhomCa({ c, viec, ...p }: { c: DongCong; viec: DongCong[] } & DongProps) {
   const chot = c.vao_chot || c.ra_chot
   return (
     <>
       <tr className="border-t border-slate-200 bg-slate-50/80 font-medium">
-        <td className="px-2 py-2 align-top"><Chk r={c} p={p} /></td>
-        <td className="px-2 py-2 align-top"><div className="font-semibold text-slate-800">{c.ho_ten}</div><div className="text-xs text-slate-500">{thuCuaNgay(c.ngay)} {ddmmVN(c.ngay)}</div></td>
-        <td className="px-2 py-2 align-top text-slate-700">Có mặt<div className="text-xs font-normal text-slate-500">{c.nguon === 'nhap_ho' ? 'quản lý nhập hộ' : c.khai_bu ? 'TA khai bù' : 'TA bấm trên app'}</div></td>
-        <td className="whitespace-nowrap px-2 py-2 align-top text-slate-700">{gioVN(c.vao_at)} – {c.ra_at ? gioVN(c.ra_at) : '—'}{chot && <div className="text-xs font-normal text-indigo-700">chốt: {gioVN(c.vao_chot ?? c.vao_at)} – {gioVN(c.ra_chot ?? c.ra_at)}</div>}</td>
-        <td className="px-2 py-2 align-top text-xs font-normal text-slate-400">không áp dụng</td>
-        <td className="px-2 py-2 align-top"><CoPills co={c.co} /></td>
-        <td className="px-2 py-2 align-top"></td>
-        <td className="px-2 py-2 align-top"><TrangThai r={c} /></td>
-        <td className="px-2 py-2 align-top">{p.duoc(c.id) && <div className="flex flex-col gap-1">
-          {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Chốt theo việc</button>}
-          <button className={btnGhost} onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
+        <td className="px-2 py-1.5"><Chk r={c} p={p} /></td>
+        <td className="px-2 py-1.5" title={c.ho_ten}><span className="font-semibold text-slate-800">{c.ho_ten}</span><span className="ml-2 text-xs font-normal text-slate-500">{thuNgan(c.ngay)} {ddmmVN(c.ngay)}</span></td>
+        <td className="px-2 py-1.5 text-slate-700">Có mặt<span className="ml-2 text-xs font-normal text-slate-500">{c.nguon === 'nhap_ho' ? 'quản lý nhập hộ' : c.khai_bu ? 'TA khai bù' : 'TA bấm trên app'}</span></td>
+        <td className="px-2 py-1.5 text-slate-700">{chot
+          ? <span className="text-indigo-700" title={`Đã chốt giờ — giờ máy ghi: ${gioVN(c.vao_at)} – ${c.ra_at ? gioVN(c.ra_at) : 'chưa checkout'}`}>{gioVN(c.vao_chot ?? c.vao_at)} – {gioVN(c.ra_chot ?? c.ra_at)}</span>
+          : <>{gioVN(c.vao_at)} – {c.ra_at ? gioVN(c.ra_at) : '—'}</>}</td>
+        <td className="px-2 py-1.5 text-xs font-normal text-slate-400">—</td>
+        <td className="px-2 py-1.5" title={c.co.map((x) => nhanCo(x).t).join(' · ')}><CoPills co={c.co} /></td>
+        <td className="px-2 py-1.5"><TrangThai r={c} /></td>
+        <td className="px-2 py-1.5">{p.duoc(c.id) && <div className="flex justify-end gap-1 [&_button]:px-2">
+          {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Theo việc</button>}
+          <button className={btnGhost} title="Sửa giờ checkin / checkout" onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
           {c.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + c.id ? null : 'tc:' + c.id)}>Từ chối</button>}
         </div>}</td>
       </tr>
@@ -210,16 +213,16 @@ function DongViecQL({ v, hienTen, ...p }: { v: DongCong; hienTen?: boolean } & D
   return (
     <>
       <tr className="border-t border-slate-100">
-        <td className="px-2 py-2 align-top"><Chk r={v} p={p} /></td>
-        <td className="px-2 py-2 align-top text-xs text-slate-500">{hienTen ? <><div className="text-sm font-semibold text-slate-800">{v.ho_ten}</div>{thuCuaNgay(v.ngay)} {ddmmVN(v.ngay)}</> : null}</td>
-        <td className="px-2 py-2 align-top"><span className="text-slate-800">{v.ten_loai}</span>{v.ten_lop && <b className="ml-1 text-slate-900">· {v.ten_lop}</b>}
-          {(v.hoc_sinh || v.ghi_chu) && <div className="text-xs text-slate-500">{[v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}</div>}</td>
-        <td className="whitespace-nowrap px-2 py-2 align-top text-slate-700">{hm(v.gio_bat_dau)}–{hm(v.gio_ket_thuc)}</td>
-        <td className="px-2 py-2 align-top">{v.khop ? <Pill c="bg-emerald-100 text-emerald-700">Đã khớp</Pill> : null}</td>
-        <td className="px-2 py-2 align-top"><CoPills co={v.co} /></td>
-        <td className="px-2 py-2 align-top text-slate-700">{v.lam_ho ?? ''}</td>
-        <td className="px-2 py-2 align-top"><TrangThai r={v} /></td>
-        <td className="px-2 py-2 align-top">{p.duoc(v.id) && v.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + v.id ? null : 'tc:' + v.id)}>Từ chối</button>}</td>
+        <td className="px-2 py-1.5"><Chk r={v} p={p} /></td>
+        <td className="px-2 py-1.5 text-xs text-slate-500">{hienTen ? <><span className="text-sm font-semibold text-slate-800">{v.ho_ten}</span><span className="ml-2">{thuNgan(v.ngay)} {ddmmVN(v.ngay)}</span></> : null}</td>
+        <td className="px-2 py-1.5 pl-6" title={[v.ten_loai, v.ten_lop, v.lam_ho && 'làm hộ ' + v.lam_ho, v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}><span className="text-slate-800">{v.ten_loai}</span>{v.ten_lop && <b className="ml-1 text-slate-900">· {v.ten_lop}</b>}
+          {v.lam_ho && <span className="ml-2 rounded bg-violet-50 px-1.5 text-xs text-violet-700">làm hộ {v.lam_ho}</span>}
+          {(v.hoc_sinh || v.ghi_chu) && <span className="ml-2 text-xs text-slate-500">{[v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}</span>}</td>
+        <td className="px-2 py-1.5 text-slate-700">{hm(v.gio_bat_dau)}–{hm(v.gio_ket_thuc)}</td>
+        <td className="px-2 py-1.5">{v.khop ? <Pill c="bg-emerald-100 text-emerald-700">Đã khớp</Pill> : null}</td>
+        <td className="px-2 py-1.5" title={v.co.map((x) => nhanCo(x).t).join(' · ')}><CoPills co={v.co} /></td>
+        <td className="px-2 py-1.5"><TrangThai r={v} /></td>
+        <td className="px-2 py-1.5 text-right">{p.duoc(v.id) && v.duyet === 'cho_duyet' && <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + v.id ? null : 'tc:' + v.id)}>Từ chối</button>}</td>
       </tr>
       {p.mo === 'tc:' + v.id && <TuChoiRow ban={p.ban} onLuu={(ld) => p.tuChoi(v, ld)} />}
     </>
@@ -229,7 +232,7 @@ function DongViecQL({ v, hienTen, ...p }: { v: DongCong; hienTen?: boolean } & D
 function TuChoiRow({ ban, onLuu }: { ban: boolean; onLuu: (lyDo: string) => void }) {
   const [ld, setLd] = useState('')
   return (
-    <tr><td></td><td colSpan={8} className="px-2 pb-2">
+    <tr><td></td><td colSpan={7} className="whitespace-normal px-2 pb-2" style={{ overflow: 'visible' }}>
       <div className="flex flex-wrap items-center gap-2 rounded-lg bg-red-50 px-3 py-2">
         <span className="text-sm text-red-700">Lý do từ chối</span>
         <input autoFocus className={`${inputCls} min-w-[280px] flex-1`} value={ld} onChange={(e) => setLd(e.target.value)} placeholder="bắt buộc — TA sẽ thấy lý do này" />
@@ -243,7 +246,7 @@ function ChotGioRow({ c, ban, onLuu }: { c: DongCong; ban: boolean; onLuu: (vao:
   const [vao, setVao] = useState(gioVN(c.vao_chot ?? c.vao_at))
   const [ra, setRa] = useState(c.ra_chot || c.ra_at ? gioVN(c.ra_chot ?? c.ra_at) : '')
   return (
-    <tr><td></td><td colSpan={8} className="px-2 pb-2">
+    <tr><td></td><td colSpan={7} className="whitespace-normal px-2 pb-2" style={{ overflow: 'visible' }}>
       <div className="flex flex-wrap items-center gap-2 rounded-lg bg-indigo-50 px-3 py-2 text-sm">
         <span className="text-indigo-800">Giờ gốc giữ nguyên, giờ chốt lưu riêng.</span>
         Checkin <input type="time" className={inputCls} value={vao} onChange={(e) => setVao(e.target.value)} />
