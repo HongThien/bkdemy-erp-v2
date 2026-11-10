@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `1` BẢNG
-> Role `claude_ro` **không sở hữu** và **không có `bypassrls`** với: `thong_bao_ph`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs` · `thong_bao_ph`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-506 bảng · 39 view · 0 enum · 305 trigger · 1688 function
+507 bảng · 39 view · 0 enum · 305 trigger · 1696 function
 
 ## _app_secrets
 
@@ -5481,6 +5481,15 @@ END |  |  |
 | ghi_chu | text | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 
+## phong_so_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoa | text |  |  | PK |  |
+| o | jsonb |  |  |  |  |
+| ta | jsonb |  |  |  |  |
+| tinh_luc | timestamp with time zone |  | now() |  |  |
+
 ## phu_huynh
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -10059,6 +10068,7 @@ WITH luot AS (
 - `_ky_hoc_mo_ph_log()` → trigger
 - `_ky_hoc_touch()` → trigger
 - `_la_gv_kiem_ta(p_ns uuid)` → boolean
+- `_la_tac_vu_nen()` → boolean
 - `_lich_test_cham_updated()` → trigger
 - `_lich_test_ghi_log()` → trigger
 - `_luot_hoc_that(p_hs uuid, p_tu timestamp with time zone, p_den timestamp with time zone)` → TABLE(bai_lam_id uuid, mon text, nop_at timestamp with time zone, ngay date, thu_thach boolean, so_cau integer, dung integer, dung_moi integer, giay_tb numeric, tinh boolean, ly_do text)
@@ -10152,6 +10162,10 @@ WITH luot AS (
 - `_phong_lop_cua_tk(p_tk uuid)` → uuid[]
 - `_phong_lop_cua_toi()` → uuid[]
 - `_phong_mon_cua_toi()` → text[]
+- `_phong_so_khoa()` → TABLE(khoa text, o jsonb)
+- `_phong_so_lam_moi(p_ngan_giay integer DEFAULT 25, p_cu_phut integer DEFAULT 10)` → integer
+- `_phong_so_ta(p_khoa text)` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, khoi text[], hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
+- `_phong_so_tinh_o(p_o jsonb)` → jsonb
 - `_phong_ta_cua_o(p_mon text, p_khoi text)` → TABLE(nhan_su_id uuid, khoi text[])
 - `_phong_ta_cua_tk(p_tk uuid)` → TABLE(nhan_su_id uuid, khoi text[])
 - `_phong_trong_pham_vi(p_mon text, p_khoi text)` → boolean
@@ -10548,9 +10562,11 @@ WITH luot AS (
 - `fn_btyeu_ca_ta(p_buoi uuid)` → jsonb
 - `fn_btyeu_ca_theo_doi(p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_btyeu_capacity_khoi(p_mon text DEFAULT NULL::text)` → jsonb
+- `fn_btyeu_case_dang_nhom(p_case uuid)` → TABLE(id uuid, ma_dang text, ten_dang text, ten_chuyen_de text, day_at timestamp with time zone, dong_at timestamp with time zone, nhom_id text, ten_nhom text, nhom_score numeric, nhom_muc text, nhom_n integer, score numeric, muc text, n integer)
 - `fn_btyeu_case_xep_lich(p_mon text DEFAULT NULL::text)` → jsonb
 - `fn_btyeu_chi_tiet_case(p_case uuid)` → jsonb
 - `fn_btyeu_dang_goi_y_moi(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, ten_chuyen_de text, score numeric, n integer, muc text, tin text)
+- `fn_btyeu_dang_goi_y_nhom(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, ten_chuyen_de text, score numeric, n integer, muc text, tin text, nhom_id text, ten_nhom text, nhom_score numeric, nhom_muc text, nhom_n integer)
 - `fn_btyeu_dang_yeu_2_cua_so_moi(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, score numeric, n integer)
 - `fn_btyeu_de_xuat_dang_moi(p_mon text DEFAULT NULL::text, p_case uuid DEFAULT NULL::uuid, p_thuc_hien boolean DEFAULT false)` → jsonb
 - `fn_btyeu_dem(p_ns uuid)` → integer
@@ -11113,6 +11129,7 @@ WITH luot AS (
 - `fn_phong_lich(p_tu date, p_den date)` → TABLE(ngay date, nguon text, phong_ma text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, tieu_de text, phu_trach text, nhan_su_ids uuid[], ref_id text, loai_phat_sinh text, mon text, khoi text, phong_khong_khop_danh_muc boolean)
 - `fn_phong_lich_test_ngay(p_ngay date)` → TABLE(khung_id uuid, ma_phong text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, so_hen integer)
 - `fn_phong_mon_tbm()` → text[]
+- `fn_phong_so_luc()` → timestamp with time zone
 - `fn_phong_truong_khoi()` → TABLE(nhan_su_id uuid, ho_ten text, anh_url text, o text[], so_ta integer, so_ta_co_hs integer, hieu_suat numeric, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
 - `fn_plan_dat_order(p_plan uuid, p_nguoi_nhan uuid, p_han date DEFAULT NULL::date)` → uuid
 - `fn_plan_giao_task(p_plan uuid, p_nguoi_lam uuid, p_han date)` → uuid
