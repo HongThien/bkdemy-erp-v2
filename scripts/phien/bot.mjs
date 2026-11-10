@@ -142,7 +142,11 @@ function goiClaude1({ phien, nhapVao, tiepNoi, khiCo }) {
     const args = ['-p', '--output-format', 'stream-json', '--verbose', ...(coChuChay ? ['--include-partial-messages'] : []),
       tiepNoi ? '--resume' : '--session-id', phien.id,
       '--append-system-prompt', boiCanh(phien),
+      // Thùy 10/11 "không khoá gì của trưởng khối": thêm các lệnh ĐỌC hay bị hỏi quyền rồi rớt (ls/find/cd trong thư mục tài liệu,
+      // xem PDF). Ghi file / sửa code vẫn không mở — mọi ghi đi qua ban-do.mjs (rào khối ở DB).
       '--allowedTools', 'Read', 'Grep', 'Glob', 'Bash(node scripts/phien/ban-do.mjs:*)',
+      'Bash(ls:*)', 'Bash(find:*)', 'Bash(cd:*)', 'Bash(head:*)', 'Bash(tail:*)', 'Bash(wc:*)', 'Bash(sort:*)', 'Bash(grep:*)',
+      'Bash(pdftotext:*)', 'Bash(pdfinfo:*)', 'Bash(echo:*)',
       '--disallowedTools', 'Read(./.env)', 'Read(./.env.*)', 'Read(**/.env)', 'Read(**/.env.*)', 'Write', 'Edit', 'WebFetch', 'WebSearch']
     for (const d of TAI_LIEU) args.push('--add-dir', d)
     if (MODEL) args.push('--model', MODEL)
@@ -229,7 +233,11 @@ async function chayLuot(phienId) {
     .eq('phien_id', phienId).eq('vai', 'claude').in('trang_thai', ['xong', 'dung'])
   let tiepNoi = (soLuotTruoc ?? 0) > 0
 
-  const nhapVao = viec.map((v) => v.vai === 'nguoi'
+  // Thùy 10/11: chèn vào system prompt CHƯA đủ — phiên Toán 3 vẫn lặp "chờ bật công cụ vẽ" từ lịch sử chat dù ve_hinh chạy được
+  // (đã thử đúng quyền bot). Nên phiên mở trước công cụ mới nhận thêm một mẩu [HỆ THỐNG] NGAY TRONG tin nhắn mỗi lượt.
+  const moi = tiepNoi ? congCuMoi(phien) : ''
+  const nhapVao = (moi ? `[HỆ THỐNG — CÔNG CỤ ĐÃ BẬT]\nCác lệnh dưới đây ĐÃ CHẠY ĐƯỢC trong phiên này (đã kiểm thật), không ai cần bật thêm gì. Mọi câu trước đó kiểu "chờ bật công cụ", "máy đang chặn", "cần Thùy cho phép" về các lệnh này là SAI — đừng nhắc lại; gặp việc cần chúng thì làm luôn.\n${moi.split('\n').filter((d) => d.startsWith('- ')).join('\n')}\n\n---\n\n` : '')
+    + viec.map((v) => v.vai === 'nguoi'
     ? `[${v.nguoi_ten ?? 'Người dùng'} · ${new Date(v.at).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour12: false })}]\n${v.noi_dung}`
     : `[HỆ THỐNG]\n${v.noi_dung}`).join('\n\n---\n\n')
   log(`▶ phiên ${phienId.slice(0, 8)} ${phien.mon} ${phien.khoi} — ${viec.length} tin${laTongKet ? ' (tổng kết)' : ''}${tiepNoi ? '' : ' · lượt đầu'}`)

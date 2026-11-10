@@ -7335,32 +7335,89 @@ SELECT ma_dang,
 ```sql
 SELECT q.ma_cau,
     'dai'::text AS kho,
-    COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
-        CASE
-            WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
-            WHEN dx.ma_cau IS NOT NULL OR dxg.ma_cau IS NOT NULL THEN 'de_xuat'::text
-            ELSE NULL::text
-        END AS nguon
-   FROM dai_cau_hoi q
-     LEFT JOIN dai_bdm_gan_cau gc ON gc.ma_cau = q.ma_cau
-     LEFT JOIN dai_bdm_gan_cau gg ON gg.ma_cau = q.parent_ma_cau
-     LEFT JOIN dai_bdm_de_xuat dx ON dx.ma_cau = q.ma_cau
-     LEFT JOIN dai_bdm_de_xuat dxg ON dxg.ma_cau = q.parent_ma_cau
-  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL
+    gc.dang_bai_id,
+    'gan_cau'::text AS nguon
+   FROM dai_bdm_gan_cau gc
+     JOIN dai_cau_hoi q ON q.ma_cau = gc.ma_cau
+UNION ALL
+ SELECT q.ma_cau,
+    'dai'::text AS kho,
+    gg.dang_bai_id,
+    'gan_cau'::text AS nguon
+   FROM dai_bdm_gan_cau gg
+     JOIN dai_cau_hoi q ON q.parent_ma_cau = gg.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_gan_cau x
+          WHERE x.ma_cau = q.ma_cau))
+UNION ALL
+ SELECT q.ma_cau,
+    'dai'::text AS kho,
+    dx.dang_bai_id,
+    'de_xuat'::text AS nguon
+   FROM dai_bdm_de_xuat dx
+     JOIN dai_cau_hoi q ON q.ma_cau = dx.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_gan_cau x
+          WHERE x.ma_cau = q.ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_gan_cau x
+          WHERE x.ma_cau = q.parent_ma_cau))
+UNION ALL
+ SELECT q.ma_cau,
+    'dai'::text AS kho,
+    dxg.dang_bai_id,
+    'de_xuat'::text AS nguon
+   FROM dai_bdm_de_xuat dxg
+     JOIN dai_cau_hoi q ON q.parent_ma_cau = dxg.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_gan_cau x
+          WHERE x.ma_cau = q.ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_gan_cau x
+          WHERE x.ma_cau = q.parent_ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM dai_bdm_de_xuat x
+          WHERE x.ma_cau = q.ma_cau))
 UNION ALL
  SELECT h.ma_cau,
     'hgt'::text AS kho,
-    COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) AS dang_bai_id,
-        CASE
-            WHEN gc.ma_cau IS NOT NULL OR gg.ma_cau IS NOT NULL THEN 'gan_cau'::text
-            ELSE 'de_xuat'::text
-        END AS nguon
-   FROM hgt_cau_hoi h
-     LEFT JOIN hgt_bdm_gan_cau gc ON gc.ma_cau = h.ma_cau
-     LEFT JOIN hgt_bdm_gan_cau gg ON gg.ma_cau = h.parent_ma_cau
-     LEFT JOIN hgt_bdm_de_xuat dx ON dx.ma_cau = h.ma_cau
-     LEFT JOIN hgt_bdm_de_xuat dxg ON dxg.ma_cau = h.parent_ma_cau
-  WHERE COALESCE(gc.dang_bai_id, gg.dang_bai_id, dx.dang_bai_id, dxg.dang_bai_id) IS NOT NULL;
+    gc.dang_bai_id,
+    'gan_cau'::text AS nguon
+   FROM hgt_bdm_gan_cau gc
+     JOIN hgt_cau_hoi h ON h.ma_cau = gc.ma_cau
+UNION ALL
+ SELECT h.ma_cau,
+    'hgt'::text AS kho,
+    gg.dang_bai_id,
+    'gan_cau'::text AS nguon
+   FROM hgt_bdm_gan_cau gg
+     JOIN hgt_cau_hoi h ON h.parent_ma_cau = gg.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_gan_cau x
+          WHERE x.ma_cau = h.ma_cau))
+UNION ALL
+ SELECT h.ma_cau,
+    'hgt'::text AS kho,
+    dx.dang_bai_id,
+    'de_xuat'::text AS nguon
+   FROM hgt_bdm_de_xuat dx
+     JOIN hgt_cau_hoi h ON h.ma_cau = dx.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_gan_cau x
+          WHERE x.ma_cau = h.ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_gan_cau x
+          WHERE x.ma_cau = h.parent_ma_cau))
+UNION ALL
+ SELECT h.ma_cau,
+    'hgt'::text AS kho,
+    dxg.dang_bai_id,
+    'de_xuat'::text AS nguon
+   FROM hgt_bdm_de_xuat dxg
+     JOIN hgt_cau_hoi h ON h.parent_ma_cau = dxg.ma_cau
+  WHERE NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_gan_cau x
+          WHERE x.ma_cau = h.ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_gan_cau x
+          WHERE x.ma_cau = h.parent_ma_cau)) AND NOT (EXISTS ( SELECT 1
+           FROM hgt_bdm_de_xuat x
+          WHERE x.ma_cau = h.ma_cau));
 ```
 
 ### bdm_cau_form_tn

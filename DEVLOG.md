@@ -79522,3 +79522,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Phát hiện khi làm báo cáo:** 4 tuần 12/10–8/11: 246 ca trực mở, 67% không có HS; 36% lượt HS học NGOÀI mọi ca trực (65/182) — bù 42 · đuổi 17 · yếu 6. Có dữ liệu giờ lạ: buổi bù 09/11 14:00–03:00 (Lê Minh Sơn) — nên rà.
 - **Lỗi tự gây & sửa:** bản HTML đầu dùng khoá `d` cho cả ngày và số đuổi → bộ lọc tuần hỏng; đổi tên `ly/lb/ld/lh`. Bản ERP tính ở DB nên không còn rủi ro này.
 - **Nợ:** file `reports/tan-suat-ca-bo-tro-khoi*.{html,csv}` (3 file untracked, bản tĩnh trước đó) — đã thay bằng màn ERP, chưa xoá (chờ Thùy). Màn Chi tiết chưa có xuất CSV.
+## 10/11 — Phiên Toán 3 vẫn "chờ bật công cụ vẽ" sau khi đã có MOI.md
+- **Sai:** sau khởi động lại bot (09/11 17:41), 10/11 12:13–13:30 phiên của chị Dương vẫn treo mọi câu Hình "chờ bật công cụ vẽ (máy chặn, cần Thùy cho phép)", chưa gọi ve_hinh lần nào. Chèn vào system prompt không thắng được lịch sử chat do chính nó viết.
+- **Kiểm:** chạy `claude -p` với ĐÚNG allowedTools của bot + PHIEN_ID phiên Toán 3 ⇒ `ve_hinh` qua heredoc chạy, ra PNG. Máy không chặn.
+- **Sửa:** bot chèn mẩu `[HỆ THỐNG — CÔNG CỤ ĐÃ BẬT]` vào CHÍNH tin nhắn mỗi lượt cho phiên mở trước công cụ mới (MOI.md); nhap_kho.md: câu Hình phụ thuộc hình ⇒ vẽ ngay, không treo. Thùy "không khoá gì của trưởng khối": mở thêm lệnh đọc hay bị hỏi quyền rồi rớt (ls · find · cd · head · tail · wc · sort · grep · pdftotext · pdfinfo · echo) — phiên KHTN 7 của anh Ngọc 10/11 14:02–14:09 rớt 3 lần vì `cd … && ls`, `find`.
