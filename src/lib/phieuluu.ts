@@ -31,3 +31,11 @@ export async function banDoPhieuLuu(mon: string): Promise<BanDoPL> {
   if (error) throw error
   return data as BanDoPL
 }
+
+/** Trạng thái ĐÚNG 1 chặng (dạng) sau khi em vừa đánh xong — vá tại chỗ, KHÔNG tải lại cả bản đồ môn (Thùy 10/11, mig 202611101517). */
+export type TrangThaiChangPL = { ma_dang: string; trang_thai: ManPL['trang_thai']; muc: string | null; mastery: number | null; co_so_do: boolean }
+export async function trangThaiChang(mon: string, maDang: string): Promise<TrangThaiChangPL> {
+  const { data, error } = await supabase.rpc('fn_ban_do_phieu_luu_man', { p_mon: mon, p_ma_dang: maDang })
+  if (error) throw error
+  return data as TrangThaiChangPL
+}

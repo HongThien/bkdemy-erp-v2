@@ -57,3 +57,16 @@ export function tuBanDoPL(bd: BanDoPL): BanDoV {
     })),
   }
 }
+
+/** Vá 1 chặng bằng trạng thái DB vừa trả (trangThaiChang) — giữ nguyên mọi chặng khác, không dựng lại bản đồ. */
+export function vaChang(bd: BanDoV, ma: string, t: { trang_thai: TrangThai; mastery: number | null; co_so_do: boolean }): BanDoV {
+  return {
+    ...bd,
+    luc_dia: bd.luc_dia.map((l) => (l.vung.some((v) => v.chang.some((c) => c.ma === ma)) ? {
+      ...l,
+      vung: l.vung.map((v) => (v.chang.some((c) => c.ma === ma) ? {
+        ...v, chang: v.chang.map((c) => (c.ma === ma ? { ...c, trang_thai: t.trang_thai, mastery: t.mastery, da_day: c.da_day || t.co_so_do } : c)),
+      } : v)),
+    } : l)),
+  }
+}
