@@ -152,3 +152,17 @@ export async function luuLichKhoi(x: LichKhoiInput, chapNhan: boolean): Promise<
   if (error) throw error
   return data as any
 }
+
+// ── Thời khoá biểu — kiểm trùng + lưu qua DB trên lịch phòng chung (mig 202611101604). Chính khoá là gốc:
+// trùng chính khoá lớp khác/test/phát sinh = chặn · trùng bổ trợ = cảnh báo (lưu được nếu xác nhận, rồi dời bổ trợ).
+export async function kiemTrungTKB(p: { lop_id: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; hieu_luc_tu: string | null; bo_qua: string | null }): Promise<TrungLichKhoi[]> {
+  const { data, error } = await supabase.rpc('fn_tkb_kiem_trung', { p_lop: p.lop_id, p_thu: p.thu, p_gio_bd: p.gio_bat_dau, p_gio_kt: p.gio_ket_thuc, p_phong: p.phong, p_tu: p.hieu_luc_tu, p_bo_qua: p.bo_qua })
+  if (error) throw error
+  return (data ?? []) as TrungLichKhoi[]
+}
+// id có = sửa phòng + hiệu lực từ (đổi giờ = ngừng khung rồi xếp khung mới); id null = thêm khung mới.
+export async function luuTKB(p: { id: string | null; lop_id: string | null; thu: number | null; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; hieu_luc_tu: string | null }, chapNhan: boolean): Promise<{ ok: boolean; id: string | null; trung: TrungLichKhoi[] }> {
+  const { data, error } = await supabase.rpc('fn_tkb_luu', { p_id: p.id, p_lop: p.lop_id, p_thu: p.thu, p_gio_bd: p.gio_bat_dau, p_gio_kt: p.gio_ket_thuc, p_phong: p.phong, p_hieu_luc_tu: p.hieu_luc_tu, p_chap_nhan: chapNhan })
+  if (error) throw error
+  return data as any
+}

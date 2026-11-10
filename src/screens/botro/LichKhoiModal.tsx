@@ -5,9 +5,10 @@
 // Lưu = fn_lich_truc_luu: kiểm lại + ghi trong CÙNG transaction ở DB (màn không tự quyết trùng hay không).
 import { useEffect, useMemo, useState } from 'react'
 import SearchSelect from '../../components/SearchSelect'
-import { kiemTrungLichKhoi, luuLichKhoi, NGUON_PHONG_TEN, type LichKhoiInput, type Phong, type TrungLichKhoi } from '../../lib/phong'
+import TrungPhongList from '../../components/TrungPhongList'
+import { kiemTrungLichKhoi, luuLichKhoi, type LichKhoiInput, type Phong, type TrungLichKhoi } from '../../lib/phong'
 import type { NhanSu } from '../../lib/nhansu'
-import { homNayVN, ddmmVN } from '../../lib/tuan'
+import { homNayVN } from '../../lib/tuan'
 
 export const THU_TEN: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Thứ 4', 5: 'Thứ 5', 6: 'Thứ 6', 7: 'Thứ 7', 8: 'Chủ nhật' }
 export const thuTuNgay = (ngay: string) => { const d = new Date(ngay + 'T00:00:00').getDay(); return d === 0 ? 8 : d + 1 }
@@ -119,22 +120,7 @@ export default function LichKhoiModal({ init, cu, lops, nss, phongs, onClose, on
           </div>
 
           {/* Báo trùng — DB tính trên lịch phòng chung, 4 tuần tới */}
-          <div className="min-h-[44px] rounded-xl border border-slate-200 bg-slate-50 p-3">
-            {dangKiem ? <p className="text-[12px] text-slate-400">Đang kiểm trùng với lịch phòng chung…</p>
-              : trung === null ? <p className="text-[12px] text-slate-400">Chọn phòng / người trực để kiểm trùng.</p>
-              : trung.length === 0 ? <p className="text-[12.5px] font-semibold text-emerald-700">✓ Không trùng phòng, không trùng người trực trong 4 tuần tới.</p>
-              : (
-                <ul className="space-y-1.5">
-                  {trung.map((t, i) => (
-                    <li key={i} className={`rounded-lg px-2.5 py-1.5 text-[12px] ${t.muc === 'chan' ? 'bg-rose-50 text-rose-800 ring-1 ring-rose-200' : 'bg-amber-50 text-amber-800 ring-1 ring-amber-200'}`}>
-                      <span className="font-bold">{t.muc === 'chan' ? '🚫 Trùng' : '⚠ Ghép'} {t.kieu === 'phong' ? `phòng ${t.phong}` : 'người trực'}</span>
-                      {' — '}{t.tieu_de} · {t.gio_bat_dau}–{t.gio_ket_thuc}{t.kieu === 'nguoi' && t.phong ? ` · ${t.phong}` : ''}{t.phu_trach ? ` · ${t.phu_trach}` : ''}
-                      <span className="opacity-70"> ({NGUON_PHONG_TEN[t.nguon]}) · ngày {t.ngay.map(ddmmVN).join(', ')}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-          </div>
+          <TrungPhongList trung={trung} dangKiem={dangKiem} goiY="Chọn phòng / người trực để kiểm trùng." />
           {loi && <p className="text-[12px] text-rose-600">{loi}</p>}
 
           <div className="flex items-center justify-end gap-2 pt-1">

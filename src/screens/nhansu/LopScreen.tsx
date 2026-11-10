@@ -3,7 +3,7 @@ import { KHOI_OPTIONS, DEFAULT_KHOI } from '../../lib/kho/api'
 import {
   listLop, createLop, updateLop, deleteLop,
   listPhanCongByLop, addPhanCong, removePhanCong,
-  listTKB, addTKB, dongTKB,
+  listTKB, dongTKB,
   listHSCuaLop, ghiDanh, roiLop, setBandGhiDanh, setNgayVao as setNgayVaoApi, listHSChuaCoLopMon, todayVN,
   listNhanSu, listMucNangLuc, thongKeLop, listLopBac,
   type Lop, type PhanCongLop, type ThoiKhoaBieu, type HSTrongLop, type NhanSu, type HocSinh, type MucNangLuc, type LopThongKe,
@@ -11,7 +11,8 @@ import {
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import { listMucHocPhi, listMucHocLieu, type MucHocPhi, type MucHocLieu } from '../../lib/hocphi'
-import { listPhong, type Phong } from '../../lib/phong'
+import { listPhong, kiemTrungTKB, luuTKB, type Phong } from '../../lib/phong'
+import TrungPhongList, { useKiemTrung } from '../../components/TrungPhongList'
 
 const BAC_OPTS = ['S', 'A', 'B', 'C'] as const
 
@@ -305,9 +306,16 @@ function TkbBox({ lopId, tkb, onChange }: { lopId: string; tkb: ThoiKhoaBieu[]; 
   const [phongs, setPhongs] = useState<Phong[]>([])
   useEffect(() => { listPhong(true).then(setPhongs).catch(() => {}) }, [])
   const phongOpts = phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong }))
-  async function add() {
-    try { await addTKB({ lop_id: lopId, thu, gio_bat_dau: tu, gio_ket_thuc: den, phong: phong.trim() || null, hieu_luc_tu: today(), hieu_luc_den: null }); setPhong(''); onChange() }
-    catch (e: any) { alert(e.message ?? String(e)) }
+  // Kiểm trùng trên lịch phòng chung (fn_tkb_kiem_trung) — Thùy 10/11
+  const { trung, setTrung, dangKiem, coChan, coCanhBao } = useKiemTrung(
+    phong && den > tu ? () => kiemTrungTKB({ lop_id: lopId, thu, gio_bat_dau: tu, gio_ket_thuc: den, phong, hieu_luc_tu: today(), bo_qua: null }) : null,
+    [lopId, thu, tu, den, phong])
+  async function add(chapNhan = false) {
+    try {
+      const r = await luuTKB({ id: null, lop_id: lopId, thu, gio_bat_dau: tu, gio_ket_thuc: den, phong: phong.trim() || null, hieu_luc_tu: today() }, chapNhan)
+      if (!r.ok) { setTrung(r.trung); return }
+      setPhong(''); onChange()
+    } catch (e: any) { alert(e.message ?? String(e)) }
   }
   return (
     <div>
@@ -329,8 +337,10 @@ function TkbBox({ lopId, tkb, onChange }: { lopId: string; tkb: ThoiKhoaBieu[]; 
         <input type="time" value={tu} onChange={(e) => setTu(e.target.value)} className="rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
         <input type="time" value={den} onChange={(e) => setDen(e.target.value)} className="rounded border border-slate-300 px-2 py-1.5 text-[13px]" />
         <SearchSelect value={phong || null} onChange={(v) => setPhong(v ?? '')} options={phongOpts} placeholder="Phòng…" className="w-32" />
-        <button onClick={add} className="rounded-md bg-indigo-600 px-2.5 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500">Thêm</button>
+        {coCanhBao && !coChan && <button onClick={() => add(true)} className="rounded-md bg-amber-500 px-2.5 py-1.5 text-[12px] font-medium text-white hover:bg-amber-600">Vẫn thêm</button>}
+        <button onClick={() => add(false)} disabled={coChan || coCanhBao} className="rounded-md bg-indigo-600 px-2.5 py-1.5 text-[12px] font-medium text-white hover:bg-indigo-500 disabled:opacity-40">Thêm</button>
       </div>
+      {phong && <div className="mt-2"><TrungPhongList trung={trung} dangKiem={dangKiem} /></div>}
     </div>
   )
 }

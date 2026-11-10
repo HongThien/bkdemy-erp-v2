@@ -185,7 +185,7 @@ function FormTaoCa({ homNay, onXong }: { homNay: string; onXong: (caId: string, 
     setBusy(true); setLoi(null)
     try {
       const r = await taoCaNhe({ lopId: lop.lop_id, kieu, ngay, gioBatDau, phut, phong: phongDung, hs: [...chon], taId: coTa ? lop.ta_id : null })
-      if (r.trung_phong > 0) window.alert(`Phòng ${phongDung} đang có ${r.trung_phong} buổi khác trùng giờ — ca vẫn tạo, kiểm lại phòng nhé.`)
+      if (r.trung_phong > 0) window.alert(`Phòng ${phongDung} đang có ${r.trung_phong} hoạt động trùng giờ (lịch phòng chung):\n${(r.trung_ds ?? []).map((t) => `• ${t.gio_bat_dau}–${t.gio_ket_thuc} ${t.tieu_de}`).join('\n')}\nCa vẫn tạo — kiểm lại phòng nhé.`)
       onXong(r.ca_id, r.em_khong_dang ?? [])
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }

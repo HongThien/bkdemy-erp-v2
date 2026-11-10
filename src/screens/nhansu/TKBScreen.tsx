@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { listAllTKB, listLop, addTKB, dongTKB, suaHieuLucTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
-import { listPhong } from '../../lib/phong'
+import { listAllTKB, listLop, dongTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
+import { listPhong, kiemTrungTKB, luuTKB } from '../../lib/phong'
+import TrungPhongList, { useKiemTrung } from '../../components/TrungPhongList'
 import SearchSelect from '../../components/SearchSelect'
 import { Shell, Field, inp } from '../kho/ui'
 
@@ -269,12 +270,19 @@ function SlotModal({ s, rooms, slots, onClose, onChanged }: { s: TKBSlot; rooms:
   const [phong, setPhong] = useState(s.phong ?? '')
   const [error, setError] = useState<string | null>(null)
 
-  // Trùng phòng = ca khác (còn hiệu lực) cùng thứ, phòng vừa chọn, khung giờ chồng lấn — giữ đúng bản chất
-  // "categorical" của lưới TKB (§ xepCa), chỉ so trong phạm vi TKB mẫu (không đụng buổi thực tế đã mở).
-  const trung = phong
-    ? slots.find((o) => o.id !== s.id && o.thu === s.thu && (o.phong ?? '') === phong
-        && toMin(o.gio_bat_dau) < toMin(s.gio_ket_thuc) && toMin(s.gio_bat_dau) < toMin(o.gio_ket_thuc))
-    : undefined
+  // Trùng phòng: DB kiểm trên LỊCH PHÒNG CHUNG (fn_tkb_kiem_trung — TKB lớp khác, bổ trợ, lịch khối, test, phát sinh), 4 tuần tới (Thùy 10/11).
+  const { trung, setTrung, dangKiem, coChan, coCanhBao } = useKiemTrung(
+    phong ? () => kiemTrungTKB({ lop_id: s.lop_id, thu: s.thu, gio_bat_dau: s.gio_bat_dau, gio_ket_thuc: s.gio_ket_thuc, phong, hieu_luc_tu: hieuLucTu, bo_qua: s.id }) : null,
+    [phong, hieuLucTu])
+  void slots
+  async function luu(chapNhan: boolean) {
+    setBusy(true); setError(null)
+    try {
+      const r = await luuTKB({ id: s.id, lop_id: null, thu: null, gio_bat_dau: null, gio_ket_thuc: null, phong: phong || null, hieu_luc_tu: hieuLucTu }, chapNhan)
+      if (!r.ok) { setTrung(r.trung); setBusy(false); return }
+      onChanged()
+    } catch (e: any) { setError(e.message); setBusy(false) }
+  }
 
   const changed = hieuLucTu !== s.hieu_luc_tu || phong !== (s.phong ?? '')
 
@@ -289,7 +297,7 @@ function SlotModal({ s, rooms, slots, onClose, onChanged }: { s: TKBSlot; rooms:
           ))}
         </div>
       </Field>
-      {trung && <p className="mb-3 text-[12px] text-rose-600">Trùng phòng: {trung.lop?.ten_lop ?? '?'} · {hhmm(trung.gio_bat_dau)}–{hhmm(trung.gio_ket_thuc)} cùng {THU_LABEL[s.thu]}.</p>}
+      <div className="mb-3"><TrungPhongList trung={trung} dangKiem={dangKiem} goiY="Chọn phòng để kiểm trùng." /></div>
       <Field label="Hiệu lực từ (ngày khai giảng / bắt đầu áp khung này)">
         <input type="date" value={hieuLucTu} onChange={(e) => setHieuLucTu(e.target.value)} className={inp} />
       </Field>
@@ -300,7 +308,8 @@ function SlotModal({ s, rooms, slots, onClose, onChanged }: { s: TKBSlot; rooms:
           className="rounded-md border border-rose-200 px-3 py-1.5 text-sm font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">Ngừng ca này</button>
         <div className="flex gap-2">
           <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button disabled={busy || !changed || !!trung} onClick={async () => { setBusy(true); try { await suaHieuLucTKB(s.id, { hieu_luc_tu: hieuLucTu, phong: phong || null }); onChanged() } catch (e: any) { setError(e.message); setBusy(false) } }}
+          {coCanhBao && !coChan && <button disabled={busy || !changed} onClick={() => luu(true)} className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-600 disabled:opacity-40">Vẫn lưu</button>}
+          <button disabled={busy || !changed || coChan || coCanhBao} onClick={() => luu(false)}
             className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
       </div>
@@ -316,11 +325,17 @@ function AddModal({ thu, tu, den, dsLop, rooms, onClose, onAdded }: { thu: numbe
   const [hieuLucTu, setHieuLucTu] = useState(today())
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  async function add() {
+  const { trung, setTrung, dangKiem, coChan, coCanhBao } = useKiemTrung(
+    lopId && phong && gioDen > gioTu ? () => kiemTrungTKB({ lop_id: lopId, thu, gio_bat_dau: gioTu, gio_ket_thuc: gioDen, phong, hieu_luc_tu: hieuLucTu, bo_qua: null }) : null,
+    [lopId, phong, gioTu, gioDen, hieuLucTu])
+  async function add(chapNhan = false) {
     if (!lopId) return
     setBusy(true); setError(null)
-    try { await addTKB({ lop_id: lopId, thu, gio_bat_dau: gioTu, gio_ket_thuc: gioDen, phong, hieu_luc_tu: hieuLucTu, hieu_luc_den: null }); onAdded() }
-    catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
+    try {
+      const r = await luuTKB({ id: null, lop_id: lopId, thu, gio_bat_dau: gioTu, gio_ket_thuc: gioDen, phong: phong || null, hieu_luc_tu: hieuLucTu }, chapNhan)
+      if (!r.ok) { setTrung(r.trung); setBusy(false); return }
+      onAdded()
+    } catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
   return (
     <Shell title={`Xếp ca · ${THU_LABEL[thu]} ${tu}–${den}`} onClose={onClose}>
@@ -343,10 +358,12 @@ function AddModal({ thu, tu, den, dsLop, rooms, onClose, onAdded }: { thu: numbe
       <Field label="Hiệu lực từ (ngày bắt đầu áp — trước đó không sinh buổi)">
         <input type="date" value={hieuLucTu} onChange={(e) => setHieuLucTu(e.target.value)} className={inp} />
       </Field>
+      <div className="mb-3"><TrungPhongList trung={trung} dangKiem={dangKiem} goiY="Chọn lớp + phòng để kiểm trùng." /></div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-        <button onClick={add} disabled={!lopId || busy} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Xếp ca'}</button>
+        {coCanhBao && !coChan && <button onClick={() => add(true)} disabled={busy} className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-600 disabled:opacity-40">Vẫn xếp</button>}
+        <button onClick={() => add(false)} disabled={!lopId || busy || coChan || coCanhBao} className="rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500 disabled:opacity-40">{busy ? 'Đang lưu…' : 'Xếp ca'}</button>
       </div>
     </Shell>
   )

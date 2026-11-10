@@ -24,7 +24,7 @@ export async function hsCuaLop(lopId: string, ngay: string): Promise<HsNhe[]> {
   return (data ?? []) as HsNhe[]
 }
 
-export type KetQuaTao = { ca_id: string; so_hs: number; em_khong_dang: string[]; trung_phong: number }
+export type KetQuaTao = { ca_id: string; so_hs: number; em_khong_dang: string[]; trung_phong: number; trung_ds?: { tieu_de: string; gio_bat_dau: string; gio_ket_thuc: string; nguon: string }[] } // trung_ds: lịch phòng chung (mig 202611101604)
 export async function taoCaNhe(p: { lopId: string; kieu: 'sau_buoi' | 'khac'; ngay: string; gioBatDau: string; phut: number; phong: string | null; hs: string[]; taId: string | null }): Promise<KetQuaTao> {
   const { data, error } = await supabase.rpc('fn_btnhe_tao', {
     p_lop: p.lopId, p_kieu: p.kieu, p_ngay: p.ngay, p_gio_bat_dau: p.gioBatDau, p_phut: p.phut, p_phong: p.phong, p_hs: p.hs, p_ta: p.taId,
