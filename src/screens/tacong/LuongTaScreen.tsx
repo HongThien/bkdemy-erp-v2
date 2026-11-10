@@ -491,7 +491,8 @@ function SuaLoai({ r, bao, onXong }: { r: LoaiViecQL | null; bao: (t: string, ok
 // Thùy 10/11: mỗi lớp một mức lương tháng (thay bậc theo sĩ số, áp từ T10). Cách chia giữ nguyên: TG 40% · BTVN 20% · bổ trợ 40%.
 // Mức + khoá tháng đã chốt + lịch sử do DB quyết (fn_ta_luong_lop_*). Sĩ số TB + bậc theo sĩ số chỉ để tham khảo.
 function TabLop({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean) => void }) {
-  const [ky, setKy] = useState(dauThang(homNayVN()))
+  // mặc định THÁNG TRƯỚC — tháng đang làm lương (Thùy 10/11: mở tháng hiện tại làm Trang đặt nhầm mức áp từ 11 thay vì 10)
+  const [ky, setKy] = useState(dauThang(congNgay(dauThang(homNayVN()), -1)))
   const [rows, setRows] = useState<LuongLop[] | null>(null)
   const [loc, setLoc] = useState('')
   const [dangSua, setDangSua] = useState<string | null>(null)   // lop_id đang mở sửa
@@ -562,9 +563,10 @@ function SuaMucLop({ r, ky, bao, onXong }: { r: LuongLop; ky: string; bao: (t: s
     <tr className="border-t border-indigo-100 bg-indigo-50/40"><td colSpan={7} className="px-3 py-2">
       <div className="flex flex-wrap items-end gap-2">
         <label className={o}>Mức lương tháng (đ)<input type="number" min={0} step={50000} className={`${inputCls} w-40`} value={muc} onChange={(e) => setMuc(e.target.value)} autoFocus /></label>
-        <label className={o}>Áp từ tháng<input type="month" className={inputCls} value={tu.slice(0, 7)} onChange={(e) => e.target.value && setTu(e.target.value + '-01')} /></label>
+        <label className={o}>Áp từ tháng (tính lương tháng này trở đi)<input type="month" className={inputCls} value={tu.slice(0, 7)} onChange={(e) => e.target.value && setTu(e.target.value + '-01')} /></label>
         <label className={`${o} min-w-[200px] flex-1`}>Ghi chú<input className={inputCls} value={gc} onChange={(e) => setGc(e.target.value)} placeholder="vd: lớp lên 15 em" /></label>
         <button className={btnPrimary} disabled={ban || muc === '' || !(Number(muc) >= 0)} onClick={luu}>Lưu</button>
+        <span className="pb-2 text-xs font-semibold text-indigo-700">→ áp cho lương tháng {Number(tu.slice(5, 7))}/{tu.slice(0, 4)} trở đi</span>
       </div>
       {r.lich_su.length > 0 && <div className="mt-2 text-xs text-slate-600">
         <span className="font-semibold">Lịch sử mức:</span>
