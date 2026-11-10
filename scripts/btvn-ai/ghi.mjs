@@ -24,7 +24,9 @@ const LAI = process.argv.includes('--lai')
 const KQ = new Set(['correct', 'partial', 'wrong'])
 
 const c = await ketNoi(env)
-let n = 0
+
+// ── Lượt 1: đọc mọi bài cần ghi ──
+const jobs = []
 for (const ten of readdirSync(OUT)) {
   if (CHI && !ten.includes(CHI)) continue
   const dir = join(OUT, ten)
@@ -34,47 +36,62 @@ for (const ten of readdirSync(OUT)) {
   const okPid = new Set(de.cau.map((x) => x.problem_id))
   const okAnh = new Set(de.anh.map((x) => x.id))
   const cau = (kq.cau ?? []).filter((x) => okPid.has(x.problem_id) && KQ.has(x.result))
-  const bo = (kq.cau ?? []).length - cau.length
   const thuTu = (kq.thu_tu_anh ?? []).filter((id) => okAnh.has(id))
-  const ghiLan = () => c.query(
-    `select fn_btvn_ai_ghi($1,$2,$3,$4,$5,$6,$7::jsonb,null,null) id`,
-    [de.buoi_hoc_id, de.hoc_sinh_id, MODEL, RULE_VERSION, kq.nhan_xet_chung ?? '',
-     thuTu.length === de.anh.length ? thuTu : null, JSON.stringify(cau)]).then((r) => r.rows[0].id)
-  const layDiem = async (lan) => (await c.query(`select fn_btvn_ai_diem($1) d`, [lan])).rows[0].d
-  const ve = (diem) => JSON.parse(execFileSync('python', ['-X', 'utf8', join(import.meta.dirname, 've.py'), dir, String(diem)], { encoding: 'utf8' }))
-  if (THU) {
-    // ghi thử trong transaction rồi rollback — chỉ để lấy điểm DB tính, vẽ bản chấm xem trước
-    await c.query('begin')
-    let d
-    try {
-      await c.query(`select set_config('request.jwt.claims', $1, true)`, [JSON.stringify({ sub: de.yeu_cau_boi, role: 'authenticated' })])
-      d = await layDiem(await ghiLan())
-    } finally { await c.query('rollback') }
-    const ban = ve(d.diem)
-    console.log(`  (thử) ${ten}: ${cau.length}/${de.cau.length} câu · ${d.so_y} ý · điểm ${d.diem} (thô ${d.tong_tho}) · vẽ ${Object.keys(ban).length} trang${bo ? `, bỏ ${bo} dòng sai định dạng` : ''}`)
-    continue
+  jobs.push({ ten, dir, de, kq, okAnh, cau, bo: (kq.cau ?? []).length - cau.length, thuTu })
+}
+const ghiLan = (j) => c.query(
+  `select fn_btvn_ai_ghi($1,$2,$3,$4,$5,$6,$7::jsonb,null,null) id`,
+  [j.de.buoi_hoc_id, j.de.hoc_sinh_id, MODEL, RULE_VERSION, j.kq.nhan_xet_chung ?? '',
+   j.thuTu.length === j.de.anh.length ? j.thuTu : null, JSON.stringify(j.cau)]).then((r) => r.rows[0].id)
+const layDiem = async (lan) => (await c.query(`select fn_btvn_ai_diem($1) d`, [lan])).rows[0].d
+const ve = (j, diem) => JSON.parse(execFileSync('python', ['-X', 'utf8', join(import.meta.dirname, 've.py'), j.dir, String(diem)], { encoding: 'utf8' }))
+const dang = (j, uid) => c.query(`select set_config('request.jwt.claims', $1, true)`, [JSON.stringify({ sub: uid ?? j.de.yeu_cau_boi, role: 'authenticated' })])
+
+// Điểm cần thấy ĐỦ lần chấm của cả buổi (số ý mỗi câu lấy theo buổi — mig 202611101554) ⇒ ghi HẾT lần chấm trước, tính điểm sau.
+if (THU) {
+  // thử: ghi cả đợt trong 1 transaction, lấy điểm, ROLLBACK — vẽ bản chấm ra máy để xem, không tải lên
+  await c.query('begin')
+  const diem = []
+  try {
+    const lans = []
+    for (const j of jobs) { await dang(j); lans.push(await ghiLan(j)) }
+    for (const [i, j] of jobs.entries()) { await dang(j); diem.push(await layDiem(lans[i])) }
+  } finally { await c.query('rollback') }
+  for (const [i, j] of jobs.entries()) {
+    const d = diem[i], ban = ve(j, d.diem)
+    console.log(`  (thử) ${j.ten}: ${j.cau.length}/${j.de.cau.length} câu · ${d.so_y} ý · điểm ${d.diem} (thô ${d.tong_tho}) · vẽ ${Object.keys(ban).length} trang${j.bo ? `, bỏ ${j.bo} dòng sai định dạng` : ''}`)
   }
-  const { lan, d } = await voiNguoi(c, de.yeu_cau_boi, async () => { const lan = await ghiLan(); return { lan, d: await layDiem(lan) } })
-  // Góc xoay hiển thị (mig 202611081137) — chỉ đặt cho ảnh của bài này, góc hợp lệ
-  const xoay = Object.entries(kq.xoay_anh ?? {}).filter(([id, g]) => okAnh.has(id) && [0, 90, 180, 270].includes(g))
-  if (xoay.length) await voiNguoi(c, de.yeu_cau_boi, async () => { for (const [id, g] of xoay) await c.query(`select fn_btvn_anh_xoay($1, $2)`, [id, g]) })
-  // Bản chấm đỏ + điểm (mig 202611081545) — không đè bản TA vẽ tay
+  console.log('Chạy thử xong, không ghi gì.')
+  await c.end()
+  process.exit(0)
+}
+
+// Lượt 2: ghi lần chấm (mỗi bài 1 transaction) + góc xoay
+for (const j of jobs) {
+  j.lan = await voiNguoi(c, j.de.yeu_cau_boi, () => ghiLan(j))
+  const xoay = Object.entries(j.kq.xoay_anh ?? {}).filter(([id, g]) => j.okAnh.has(id) && [0, 90, 180, 270].includes(g))
+  if (xoay.length) await voiNguoi(c, j.de.yeu_cau_boi, async () => { for (const [id, g] of xoay) await c.query(`select fn_btvn_anh_xoay($1, $2)`, [id, g]) })
+}
+// Lượt 3: điểm (DB) → vẽ bản chấm đỏ → tải lên → gắn path_cham (không đè bản TA vẽ tay)
+let n = 0
+for (const j of jobs) {
+  const d = await voiNguoi(c, j.de.yeu_cau_boi, () => layDiem(j.lan))
   let soBan = 0
   if (env.url && env.service) {
-    const ban = ve(d.diem)
+    const ban = ve(j, d.diem)
     for (const [id, file] of Object.entries(ban)) {
-      if (!okAnh.has(id)) continue
+      if (!j.okAnh.has(id)) continue
       const path = `cham/ai-${id}-${Date.now()}.jpg`
       const r = await fetch(`${env.url}/storage/v1/object/btvn-nop/${path}`, {
-        method: 'POST', body: readFileSync(join(dir, file)),
+        method: 'POST', body: readFileSync(join(j.dir, file)),
         headers: { apikey: env.service, Authorization: `Bearer ${env.service}`, 'Content-Type': 'image/jpeg', 'x-upsert': 'false' } })
       if (!r.ok) throw new Error(`Tải bản chấm ${file} lỗi ${r.status}: ${await r.text()}`)
-      if (await voiNguoi(c, de.yeu_cau_boi, async () => (await c.query(`select fn_btvn_ai_dat_anh_cham($1, $2) ok`, [id, path])).rows[0].ok)) soBan++
+      if (await voiNguoi(c, j.de.yeu_cau_boi, async () => (await c.query(`select fn_btvn_ai_dat_anh_cham($1, $2) ok`, [id, path])).rows[0].ok)) soBan++
     }
   }
-  writeFileSync(join(dir, 'da_ghi.json'), JSON.stringify({ lan_id: lan, luc: new Date().toISOString(), so_cau: cau.length, diem: d.diem, so_ban_cham: soBan }, null, 1))
-  console.log(`  ✓ ${ten}: ${cau.length}/${de.cau.length} câu · điểm ${d.diem} · ${soBan} trang chấm đỏ → lần ${lan.slice(0, 8)}${bo ? ` (bỏ ${bo} dòng sai định dạng)` : ''}`)
+  writeFileSync(join(j.dir, 'da_ghi.json'), JSON.stringify({ lan_id: j.lan, luc: new Date().toISOString(), so_cau: j.cau.length, diem: d.diem, so_ban_cham: soBan }, null, 1))
+  console.log(`  ✓ ${j.ten}: ${j.cau.length}/${j.de.cau.length} câu · điểm ${d.diem} · ${soBan} trang chấm đỏ → lần ${j.lan.slice(0, 8)}${j.bo ? ` (bỏ ${j.bo} dòng sai định dạng)` : ''}`)
   n++
 }
-console.log(THU ? 'Chạy thử xong, không ghi gì.' : `Đã ghi ${n} bài (chờ TA xác nhận trên app).`)
+console.log(`Đã ghi ${n} bài (chờ TA xác nhận trên app).`)
 await c.end()
