@@ -22,7 +22,7 @@ export type LuongThang = {
   nhan_su_id: string; ho_ten: string; package_lop: number; bo_tro_gio: number; bo_tro_tien: number
   ngoai_package: number; gross: number; tien_phat: number; net: number
   chi_tiet: {
-    lop: { lop: string; la_chu: boolean; si_tb: number; bac: number; tg_lam: number; so_buoi: number; ti_le_tg: number; btvn_lam: number; btvn_dinh_muc: number; ti_le_btvn: number; tien: number }[]
+    lop: { lop: string; la_chu: boolean; si_tb: number; bac: number; thieu_muc?: boolean; tg_lam: number; so_buoi: number; ti_le_tg: number; btvn_lam: number; btvn_dinh_muc: number; ti_le_btvn: number; tien: number }[]
     bo_tro: { gio: number; gio_khai?: number; gio_trung?: number; so_lop: number; chi_tieu_moi_lop: number; chi_tieu: number; ti_le: number | null; tong_bac: number; lop_chinh: string | null; tien: number }
     ngoai_package: { loai: string; ngay: string; lop: string | null; so_luong: number; don_gia: number | null; thieu_don_gia: boolean }[]
     day_thay: number; tien_phat: number
@@ -127,6 +127,11 @@ export const dsLoaiViecQL = () => rpc<LoaiViecQL[]>('fn_ta_loai_viec_ds')
 export type LuuLoaiViec = { ma: string | null; ten: string; coChe: 'tg' | 'bo_tro' | 'ngoai'; donVi: 'gio' | 'buoi'; canLop: boolean; canHs: boolean; ghiChu: string; gia: number | null; giaTu: string | null }
 export const luuLoaiViec = (x: LuuLoaiViec) => rpc<string>('fn_ta_loai_viec_luu', { p_ma: x.ma, p_ten: x.ten, p_co_che: x.coChe, p_don_vi: x.donVi, p_can_lop: x.canLop, p_can_hs: x.canHs, p_ghi_chu: x.ghiChu, p_gia: x.gia, p_gia_tu: x.giaTu })
 export const dungLoaiViec = (ma: string, active: boolean) => rpc<null>('fn_ta_loai_viec_dung', { p_ma: ma, p_active: active })
+// Thùy 10/11: LƯƠNG TA THEO LỚP (mig 202611102253) — mỗi lớp một mức tháng, thay bậc theo sĩ số từ T10.
+export type LuongLop = { lop_id: string; ten_lop: string; mon: string | null; trang_thai: string; si_tb: number | null; bac_si_so: number | null; muc_id: string | null; muc: number | null; hieu_luc_tu: string | null; ghi_chu: string | null; nguoi_dat: string | null; dat_at: string | null; khoa_ky: string | null; lich_su: { id: string; muc: number; hieu_luc_tu: string; ghi_chu: string; khoa_ky: string | null }[] }
+export const dsLuongLop = (ky: string) => rpc<LuongLop[]>('fn_ta_luong_lop_ds', { p_ky: ky })
+export const datLuongLop = (lop: string, muc: number, tu: string, ghiChu: string) => rpc<string>('fn_ta_luong_lop_dat', { p_lop: lop, p_muc: muc, p_tu: tu, p_ghi_chu: ghiChu })
+export const xoaLuongLop = (id: string, lyDo: string) => rpc<null>('fn_ta_luong_lop_xoa', { p_id: id, p_ly_do: lyDo })
 export const thongSoKy = (ky: string, lan: number) => rpc<ThongSoKy | null>('fn_ta_ky_thong_so', { p_ky: ky, p_lan: lan })
 // Đổi giá = THÊM dòng mới có hiệu lực từ ngày chỉ định (bảng chỉ-thêm). Bậc lương phải kèm khoảng sĩ số của bậc đó.
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>

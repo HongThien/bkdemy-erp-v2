@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-516 bảng · 39 view · 0 enum · 337 trigger · 1725 function
+517 bảng · 39 view · 0 enum · 339 trigger · 1729 function
 
 ## _app_secrets
 
@@ -6026,8 +6026,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -6245,6 +6245,21 @@ END |  |  |
 | tien_phat | numeric |  |  |  |  |
 | net | numeric |  |  |  |  |
 | chi_tiet | jsonb |  |  |  |  |
+
+## ta_luong_lop
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| lop_id | uuid |  |  | FK→lop.id |  |
+| muc | numeric |  |  |  |  |
+| hieu_luc_tu | date |  |  |  |  |
+| ghi_chu | text |  | ''::text |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| xoa_boi | uuid | Y |  | FK→nhan_su.id |  |
+| ly_do_xoa | text | Y |  |  |  |
 
 ## ta_vang
 
@@ -9895,6 +9910,8 @@ WITH luot AS (
 | ta_loai_viec | ta_loai_viec_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
 | ta_luong_ky | ta_luong_ky_bat_bien | BEFORE | DELETE/UPDATE | _ta_luong_ky_bat_bien |
 | ta_luong_ky_dong | ta_luong_ky_dong_bat_bien | BEFORE | DELETE/UPDATE | _ta_luong_ky_bat_bien |
+| ta_luong_lop | ta_luong_lop_kiem | BEFORE | INSERT/DELETE/UPDATE | _ta_luong_lop_kiem |
+| ta_luong_lop | ta_luong_lop_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
 | tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
 | task_phat_trien | trg_task_pt_push_badge | AFTER | INSERT/UPDATE | _trg_task_pt_push |
@@ -10376,6 +10393,7 @@ WITH luot AS (
 - `_ta_lop_cua_buoi(p_buoi uuid)` → uuid
 - `_ta_luong_ky_bat_bien()` → trigger
 - `_ta_luong_ky_core(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb, da_chot boolean, lan integer, chot_at timestamp with time zone)
+- `_ta_luong_lop_kiem()` → trigger
 - `_ta_luong_tinh(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb)
 - `_ta_moc_cham_cong()` → date
 - `_ta_pc_khoang()` → TABLE(nhan_su_id uuid, lop_id uuid, tu date, den date)
@@ -11372,6 +11390,9 @@ WITH luot AS (
 - `fn_ta_loai_viec_dung(p_ma text, p_active boolean)` → void
 - `fn_ta_loai_viec_luu(p_ma text, p_ten text, p_co_che text, p_don_vi text, p_can_lop boolean, p_can_hs boolean, p_ghi_chu text DEFAULT ''::text, p_gia numeric DEFAULT NULL::numeric, p_gia_tu date DEFAULT NULL::date)` → text
 - `fn_ta_luong_ky(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb, da_chot boolean, lan integer, chot_at timestamp with time zone)
+- `fn_ta_luong_lop_dat(p_lop uuid, p_muc numeric, p_tu date, p_ghi_chu text DEFAULT ''::text)` → uuid
+- `fn_ta_luong_lop_ds(p_ky date)` → TABLE(lop_id uuid, ten_lop text, mon text, trang_thai text, si_tb numeric, bac_si_so numeric, muc_id uuid, muc numeric, hieu_luc_tu date, ghi_chu text, nguoi_dat text, dat_at timestamp with time zone, khoa_ky date, lich_su jsonb)
+- `fn_ta_luong_lop_xoa(p_id uuid, p_ly_do text)` → void
 - `fn_ta_luong_thang(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb)
 - `fn_ta_mo_lai_ky(p_ky date, p_ly_do text)` → void
 - `fn_ta_nhap_ho_viec(p_ns uuid, p_loai text, p_ngay date, p_lop uuid DEFAULT NULL::uuid, p_buoi uuid DEFAULT NULL::uuid, p_ca uuid DEFAULT NULL::uuid, p_bat time without time zone DEFAULT NULL::time without time zone, p_ket time without time zone DEFAULT NULL::time without time zone, p_hs text DEFAULT NULL::text, p_ly_do text DEFAULT ''::text)` → uuid
@@ -11964,6 +11985,8 @@ WITH luot AS (
 | ta_luong_ky | ta_luong_ky_check | `CHECK (((mo_lai_at IS NULL) = (ly_do_mo_lai IS NULL)))` |
 | ta_luong_ky | ta_luong_ky_ky_check | `CHECK ((ky = (date_trunc('month'::text, (ky)::timestamp with time zone))::date))` |
 | ta_luong_ky | ta_luong_ky_lan_check | `CHECK ((lan >= 1))` |
+| ta_luong_lop | ta_luong_lop_hieu_luc_tu_check | `CHECK ((EXTRACT(day FROM hieu_luc_tu) = (1)::numeric))` |
+| ta_luong_lop | ta_luong_lop_muc_check | `CHECK ((muc >= (0)::numeric))` |
 | task_phat_trien | task_phat_trien_check | `CHECK ((nguoi_giao_id <> nguoi_lam_id))` |
 | task_phat_trien | task_phat_trien_check1 | `CHECK (((trang_thai = 'da_duyet'::text) = (ket_qua_pct IS NOT NULL)))` |
 | task_phat_trien | task_phat_trien_ket_qua_pct_check | `CHECK (((ket_qua_pct >= (0)::numeric) AND (ket_qua_pct <= (100)::numeric)))` |

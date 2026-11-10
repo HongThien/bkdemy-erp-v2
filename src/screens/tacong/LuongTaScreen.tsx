@@ -7,12 +7,12 @@
 //   · Chốt kỳ (mig 202610141527): bản chụp bất biến; điều kiện chốt / khoá kỳ / mở lại đều do DB quyết
 //     (fn_ta_ky_trang_thai · fn_ta_chot_ky · fn_ta_mo_lai_ky). Kỳ đã chốt ⇒ bảng đọc bản chốt, không tính lại.
 // ============================================================================
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { homNayVN, congNgay, ddmmVN } from '../../lib/tuan'
-import { luongThang, bangDonGia, datDonGia, suaDonGia, xoaDonGia, thongSoKy, dsLoaiViec, dsLoaiViecQL, luuLoaiViec, dungLoaiViec, type LoaiViecQL, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai, type ThongSoKy } from '../../lib/tacong'
+import { luongThang, bangDonGia, datDonGia, suaDonGia, xoaDonGia, thongSoKy, dsLoaiViec, dsLoaiViecQL, luuLoaiViec, dungLoaiViec, type LoaiViecQL, dsLuongLop, datLuongLop, xoaLuongLop, type LuongLop, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai, type ThongSoKy } from '../../lib/tacong'
 
-type Tab = 'luong' | 'gia' | 'loai'
+type Tab = 'luong' | 'gia' | 'loai' | 'lop'
 const inputCls = 'rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-sm text-slate-700 outline-none focus:border-indigo-400'
 const btnPrimary = 'rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-40'
 const btnGhost = 'rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:bg-slate-50'
@@ -39,7 +39,7 @@ export default function LuongTaScreen() {
     <div className="flex h-full flex-col">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-4 py-2">
         <h1 className="mr-2 text-base font-semibold text-slate-800">Lương trợ giảng</h1>
-        {([['luong', 'Bảng lương'], ['loai', 'Loại việc & cơ chế'], ['gia', 'Đơn giá']] as [Tab, string][]).map(([k, t]) => (
+        {([['luong', 'Bảng lương'], ['loai', 'Loại việc & cơ chế'], ['gia', 'Đơn giá'], ['lop', 'Lương theo lớp']] as [Tab, string][]).map(([k, t]) => (
           <button key={k} onClick={() => setTab(k)} className={`rounded-full px-3 py-1 text-sm font-medium transition ${tab === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}>{t}</button>
         ))}
         {!coGhi && <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500">Chỉ xem</span>}
@@ -48,6 +48,7 @@ export default function LuongTaScreen() {
         {tab === 'luong' && <TabLuong bao={bao} coGhi={coGhi} />}
         {tab === 'gia' && <TabGia coGhi={coGhi} bao={bao} />}
         {tab === 'loai' && <TabLoai coGhi={coGhi} bao={bao} />}
+        {tab === 'lop' && <TabLop coGhi={coGhi} bao={bao} />}
       </div>
       {toast && <div className={`fixed bottom-4 left-1/2 z-50 max-w-[90vw] -translate-x-1/2 rounded-2xl px-4 py-2 text-sm text-white shadow-lg ${toast.ok ? 'bg-slate-900/90' : 'bg-red-700/95'}`}>{toast.t}</div>}
     </div>
@@ -202,7 +203,7 @@ function FragmentLuong({ r, mo, onMo, tenLoai }: { r: LuongThang; mo: boolean; o
               {r.chi_tiet.lop.map((x) => (
                 <tr key={x.lop} className="border-t border-slate-200">
                   <td className="py-1 pr-2 font-medium text-slate-800">{x.lop} {!x.la_chu && <span className="rounded-full bg-indigo-50 px-1.5 text-[11px] text-indigo-700">dạy hộ</span>}</td>
-                  <td className="py-1 pr-2 text-right">{so(x.si_tb)} HS · {tien(x.bac)}</td>
+                  <td className="py-1 pr-2 text-right">{so(x.si_tb)} HS · {x.thieu_muc ? <b className="text-red-600">lớp chưa có mức lương</b> : tien(x.bac)}</td>
                   <td className="py-1 pr-2 text-right">{x.tg_lam}/{x.so_buoi} · {pct(x.ti_le_tg)}</td>
                   <td className="py-1 pr-2 text-right">{x.btvn_lam}/{x.btvn_dinh_muc} · {pct(x.ti_le_btvn)}</td>
                   <td className="py-1 text-right">{tien(x.tien)}</td>
@@ -465,6 +466,104 @@ function SuaLoai({ r, bao, onXong }: { r: LoaiViecQL | null; bao: (t: string, ok
         <button className={btnPrimary} disabled={ban || !ten.trim() || (giaSo !== null && !(giaSo >= 0))} onClick={luu}>{r ? 'Lưu' : 'Thêm'}</button>
         <button className={btnGhost} onClick={() => onXong(false)}>Huỷ</button>
       </div>
+    </td></tr>
+  )
+}
+
+// ═══════════════════════════════ LƯƠNG THEO LỚP ═══════════════════════════════
+// Thùy 10/11: mỗi lớp một mức lương tháng (thay bậc theo sĩ số, áp từ T10). Cách chia giữ nguyên: TG 40% · BTVN 20% · bổ trợ 40%.
+// Mức + khoá tháng đã chốt + lịch sử do DB quyết (fn_ta_luong_lop_*). Sĩ số TB + bậc theo sĩ số chỉ để tham khảo.
+function TabLop({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolean) => void }) {
+  const [ky, setKy] = useState(dauThang(homNayVN()))
+  const [rows, setRows] = useState<LuongLop[] | null>(null)
+  const [loc, setLoc] = useState('')
+  const [dangSua, setDangSua] = useState<string | null>(null)   // lop_id đang mở sửa
+  useEffect(() => { setRows(null); setDangSua(null); dsLuongLop(ky).then(setRows).catch((e) => { bao(loiCua(e), false); setRows([]) }) }, [ky, bao])
+  const quetNen = () => dsLuongLop(ky).then(setRows).catch(() => {})
+  const [y, m] = ky.split('-')
+  const hien = (rows ?? []).filter((r) => !loc || r.ten_lop.toLowerCase().includes(loc.toLowerCase()) || (r.mon ?? '').toLowerCase().includes(loc.toLowerCase()))
+  const thieu = (rows ?? []).filter((r) => r.trang_thai === 'dang_hoc' && r.muc === null)
+  return (
+    <div className="flex flex-col gap-3">
+      <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
+        <button className={btnGhost} onClick={() => setKy(dauThang(congNgay(ky, -1)))}>‹</button>
+        <span className="min-w-[110px] text-center text-sm font-semibold text-slate-800">Tháng {Number(m)}/{y}</span>
+        <button className={btnGhost} onClick={() => setKy(dauThang(congNgay(ky, 32)))}>›</button>
+        <input className={`${inputCls} w-48`} placeholder="Lọc lớp / môn…" value={loc} onChange={(e) => setLoc(e.target.value)} />
+        <span className="ml-auto text-xs text-slate-500">Mức lương lớp thay cho bậc theo sĩ số (từ tháng 10/2026). Tiền TA = mức × (40% buổi trợ giảng + 20% BTVN) + bổ trợ 40% theo chỉ tiêu.</span>
+      </div>
+      {thieu.length > 0 && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">⚠ Lớp đang học chưa có mức lương (TA lớp này đang tính 0đ phần lớp): {thieu.map((r) => r.ten_lop).join(' · ')}</div>}
+      <div className={`${card} overflow-x-auto`}>
+        <table className="w-full min-w-[820px] border-collapse text-sm tabular-nums">
+          <thead><tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
+            <th className="px-3 py-2">Lớp</th><th className="px-3 py-2 text-right">Mức lương tháng</th><th className="px-3 py-2">Áp từ</th>
+            <th className="px-3 py-2 text-right">Sĩ số TB tháng</th><th className="px-3 py-2 text-right">Bậc theo sĩ số (tham khảo)</th><th className="px-3 py-2">Ghi chú</th>{coGhi && <th className="w-28 px-3 py-2"></th>}
+          </tr></thead>
+          <tbody>
+            {rows === null && <tr><td colSpan={7} className="p-6 text-center text-slate-400">Đang tải…</td></tr>}
+            {hien.map((r) => (
+              <Fragment key={r.lop_id}>
+                <tr className={`border-t border-slate-100 ${r.trang_thai === 'dang_hoc' ? '' : 'text-slate-400'}`}>
+                  <td className="whitespace-nowrap px-3 py-1.5"><b className={r.trang_thai === 'dang_hoc' ? 'text-slate-800' : ''}>{r.ten_lop}</b>{r.mon && <span className="ml-2 text-xs text-slate-500">{r.mon}</span>}{r.trang_thai !== 'dang_hoc' && <span className="ml-2 text-[11px]">(đã đóng)</span>}</td>
+                  <td className="px-3 py-1.5 text-right">{r.muc === null ? <span className="font-semibold text-red-600">chưa có</span> : <b>{tien(r.muc)}</b>}</td>
+                  <td className="whitespace-nowrap px-3 py-1.5 text-slate-600">{r.hieu_luc_tu ? `${r.hieu_luc_tu.slice(5, 7)}/${r.hieu_luc_tu.slice(0, 4)}` : '—'}{r.khoa_ky && <span className="ml-1 text-[11px] text-slate-400" title="Đang dùng cho tháng đã chốt lương">🔒</span>}</td>
+                  <td className="px-3 py-1.5 text-right text-slate-600">{r.si_tb === null ? '—' : so(r.si_tb)}</td>
+                  <td className={`px-3 py-1.5 text-right ${r.muc !== null && r.bac_si_so !== null && Number(r.bac_si_so) !== Number(r.muc) ? 'text-amber-700' : 'text-slate-400'}`}>{r.bac_si_so === null ? '—' : tien(r.bac_si_so)}</td>
+                  <td className="max-w-[260px] truncate px-3 py-1.5 text-xs text-slate-500" title={r.ghi_chu ?? ''}>{r.ghi_chu}</td>
+                  {coGhi && <td className="px-3 py-1.5"><button className={btnGhost} onClick={() => setDangSua(dangSua === r.lop_id ? null : r.lop_id)}>{dangSua === r.lop_id ? 'Đóng' : 'Đặt mức'}</button></td>}
+                </tr>
+                {dangSua === r.lop_id && <SuaMucLop r={r} ky={ky} bao={bao} onXong={() => { setDangSua(null); quetNen() }} />}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-xs text-slate-500">Mức không tự đổi theo sĩ số nữa — cột "Bậc theo sĩ số" chỉ để so (tô cam khi khác mức đang dùng). Đặt mức từ một tháng thì các tháng sau dùng mức đó tới khi đặt mức mới; tháng trước giữ mức cũ. Tháng đã chốt lương bị khoá 🔒 và mức được chụp vào bản chốt.</p>
+    </div>
+  )
+}
+
+function SuaMucLop({ r, ky, bao, onXong }: { r: LuongLop; ky: string; bao: (t: string, ok?: boolean) => void; onXong: () => void }) {
+  const [muc, setMuc] = useState(r.muc === null ? '' : String(r.muc))
+  const [tu, setTu] = useState(ky)
+  const [gc, setGc] = useState('')
+  const [ban, setBan] = useState(false)
+  const [xoa, setXoa] = useState<{ id: string; ld: string } | null>(null)
+  async function luu() {
+    setBan(true)
+    try { await datLuongLop(r.lop_id, Number(muc), tu, gc); bao(`Đã đặt ${r.ten_lop}: ${tien(Number(muc))} từ ${tu.slice(5, 7)}/${tu.slice(0, 4)}`); onXong() }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
+  async function xoaDong() {
+    if (!xoa) return
+    setBan(true)
+    try { await xoaLuongLop(xoa.id, xoa.ld); bao('Đã xoá dòng (giữ trong lịch sử)'); onXong() }
+    catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
+  }
+  const o = 'flex flex-col gap-1 text-[11px] font-medium text-slate-500'
+  return (
+    <tr className="border-t border-indigo-100 bg-indigo-50/40"><td colSpan={7} className="px-3 py-2">
+      <div className="flex flex-wrap items-end gap-2">
+        <label className={o}>Mức lương tháng (đ)<input type="number" min={0} step={50000} className={`${inputCls} w-40`} value={muc} onChange={(e) => setMuc(e.target.value)} autoFocus /></label>
+        <label className={o}>Áp từ tháng<input type="month" className={inputCls} value={tu.slice(0, 7)} onChange={(e) => e.target.value && setTu(e.target.value + '-01')} /></label>
+        <label className={`${o} min-w-[200px] flex-1`}>Ghi chú<input className={inputCls} value={gc} onChange={(e) => setGc(e.target.value)} placeholder="vd: lớp lên 15 em" /></label>
+        <button className={btnPrimary} disabled={ban || muc === '' || !(Number(muc) >= 0)} onClick={luu}>Lưu</button>
+      </div>
+      {r.lich_su.length > 0 && <div className="mt-2 text-xs text-slate-600">
+        <span className="font-semibold">Lịch sử mức:</span>
+        {r.lich_su.map((h) => (
+          <span key={h.id} className="ml-2 inline-flex items-center gap-1 rounded bg-white px-1.5 py-0.5">
+            {h.hieu_luc_tu.slice(5, 7)}/{h.hieu_luc_tu.slice(0, 4)}: <b>{tien(h.muc)}</b>
+            {h.khoa_ky ? <span title="Đã chốt lương">🔒</span> : <button className="text-red-500 hover:text-red-700" title="Xoá dòng này" onClick={() => setXoa({ id: h.id, ld: '' })}>✕</button>}
+          </span>
+        ))}
+      </div>}
+      {xoa && <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-red-50 px-3 py-2">
+        <span className="text-sm text-red-700">Lý do xoá</span>
+        <input className={`${inputCls} min-w-[240px] flex-1`} value={xoa.ld} onChange={(e) => setXoa({ ...xoa, ld: e.target.value })} placeholder="bắt buộc — vd: nhập nhầm" />
+        <button disabled={ban || !xoa.ld.trim()} onClick={xoaDong} className="rounded-lg bg-red-600 px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-40">Xoá</button>
+        <button className={btnGhost} onClick={() => setXoa(null)}>Huỷ</button>
+      </div>}
     </td></tr>
   )
 }
