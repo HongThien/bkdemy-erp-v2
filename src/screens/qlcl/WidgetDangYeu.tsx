@@ -86,9 +86,10 @@ function HaiBoxSo({ rows, dangCapNhat, onMo, nhom }: { rows: OTongQuan[]; dangCa
         <BoxSo tieuDe="Dạng yếu" phu={ten(o)} mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
           dauTuan={chuaChot ? null : (o.dau_tuan_dang_yeu ?? 0)} hienTai={o.so_dang_yeu} />
       )}
-      <BoxSo tieuDe="Học sinh yếu" phu={ten(o)} mau="bg-violet-500" chuSo="text-violet-600" onClick={() => onMo(o)}
-        dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs}
-        them={nhom ? [['≥ 3 nhóm', n?.hs_nhom_3 ?? 0, n?.dau_tuan_hs_nhom_3 ?? null], ['2 nhóm', n?.hs_nhom_2 ?? 0, n?.dau_tuan_hs_nhom_2 ?? null], ['1 nhóm', n?.hs_nhom_1 ?? 0, n?.dau_tuan_hs_nhom_1 ?? null]] : undefined} />
+      {nhom ? <BoxHsNhom phu={ten(o)} n={n} onClick={() => onMo(o)} /> : (
+        <BoxSo tieuDe="Học sinh yếu" phu={ten(o)} mau="bg-violet-500" chuSo="text-violet-600" onClick={() => onMo(o)}
+          dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs} />
+      )}
       {(rows.length > 1 || dangCapNhat > 0) && (
         <div className="flex min-w-0 max-w-[560px] flex-1 flex-col justify-center gap-1.5">
           {rows.length > 1 && (
@@ -110,19 +111,50 @@ function HaiBoxSo({ rows, dangCapNhat, onMo, nhom }: { rows: OTongQuan[]; dangCa
 
 // Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng. Thân = 2 số cạnh nhau: đầu tuần (trái, xám) · hiện tại (phải, đậm màu).
 // div + flex-col (không dùng <button>: button tự căn nội dung GIỮA theo chiều dọc ⇒ box thấp hơn bị lệch header khi kéo cao bằng box bên).
-// them: cột phụ [nhãn, hiện tại, đầu tuần] — số em theo số nhóm yếu (đếm riêng từng cột, không cộng dồn)
-function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick, them }: {
+// Phòng trưởng khối (Thùy 10/11): box HS chỉ 3 cột ≥3 · 2 · 1 nhóm, TÁCH 2 phần — nhóm cũ đang xử lý | nhóm mới tuần này.
+// 1 em bổ trợ gỡ được 1 nhóm cũ nhưng học bài mới thêm 2 nhóm ⇒ hiện ở phần MỚI, không bị "bù trừ" mất. Số tách do DB (so tập nhóm).
+function BoxHsNhom({ phu, n, onClick }: { phu: string; n: ONhomYeu | null; onClick: () => void }) {
+  const chua = !n?.co_anh_dau_tuan
+  const phan = (tieu: string, mau: string, ds: [string, number | null | undefined][]) => (
+    <div className="flex flex-col">
+      <div className={`pb-1 text-center text-[10.5px] font-bold uppercase tracking-wider ${mau}`}>{tieu}</div>
+      <div className="grid flex-1 grid-cols-3 divide-x divide-slate-100">
+        {ds.map(([nhan, v]) => (
+          <div key={nhan} className="flex flex-col items-center justify-center px-2">
+            <div className="whitespace-nowrap text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">{nhan}</div>
+            {v == null ? <div className="mt-1 text-[12px] text-slate-400">chưa chốt</div>
+              : <div className="mt-0.5 text-[26px] font-bold leading-none text-violet-600">{v}</div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+  return (
+    <div role="button" tabIndex={0} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter') onClick() }} title="Bấm để xem chi tiết từng em"
+      className="flex w-[560px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
+      <div className="flex items-baseline justify-between gap-2 bg-violet-500 px-3.5 py-1.5 text-white">
+        <span className="text-[13.5px] font-bold">Học sinh yếu{n ? <span className="ml-1.5 text-[11.5px] font-medium opacity-90">{n.so_hs_yeu}/{n.so_hs} em</span> : null}</span>
+        <span className="truncate text-[11px] opacity-90">{phu}</span>
+      </div>
+      <div className="grid flex-1 grid-cols-2 divide-x divide-slate-200 py-2">
+        {phan('Nhóm cũ đang xử lý', 'text-slate-500', [['≥ 3 nhóm', chua ? null : n?.cu_3], ['2 nhóm', chua ? null : n?.cu_2], ['1 nhóm', chua ? null : n?.cu_1]])}
+        {phan('Nhóm mới tuần này', 'text-rose-500', [['≥ 3 nhóm', chua ? null : n?.moi_3], ['2 nhóm', chua ? null : n?.moi_2], ['1 nhóm', chua ? null : n?.moi_1]])}
+      </div>
+    </div>
+  )
+}
+
+function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick }: {
   tieuDe: string; phu: string; mau: string; chuSo: string; dauTuan: number | null; hienTai: number; tong?: number; onClick: () => void
-  them?: [string, number, number | null][]
 }) {
   return (
     <div role="button" tabIndex={0} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter') onClick() }} title="Bấm để xem chi tiết từng em"
-      className={`flex ${them ? 'w-[520px]' : 'w-[250px]'} cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md`}>
+      className="flex w-[250px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
       <div className={`flex items-baseline justify-between gap-2 px-3.5 py-1.5 text-white ${mau}`}>
         <span className="text-[13.5px] font-bold">{tieuDe}</span>
         <span className="truncate text-[11px] opacity-90">{phu}</span>
       </div>
-      <div className={`grid flex-1 ${them ? 'grid-cols-5' : 'grid-cols-2'} divide-x divide-slate-100 py-2.5`}>
+      <div className="grid flex-1 grid-cols-2 divide-x divide-slate-100 py-2.5">
         <div className="flex flex-col items-center justify-center px-2">
           <div className="text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">Đầu tuần</div>
           {dauTuan == null
@@ -136,13 +168,6 @@ function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick, them 
             {tong != null && <span className="ml-0.5 text-[12px] text-slate-400">/{tong}</span>}
           </div>
         </div>
-        {them?.map(([nhan, ht, dt]) => (
-          <div key={nhan} className="flex flex-col items-center justify-center px-2">
-            <div className="whitespace-nowrap text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">{nhan}</div>
-            <div className={`mt-0.5 text-[24px] font-bold leading-none ${chuSo}`}>{ht}</div>
-            <div className="mt-1 text-[10.5px] text-slate-400">{dt == null ? 'đầu tuần —' : `đầu tuần ${dt}`}</div>
-          </div>
-        ))}
       </div>
     </div>
   )

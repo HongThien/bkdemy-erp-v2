@@ -22,7 +22,8 @@ export type LuotDB = {
   // 1 lượt = 1 LẦN (bài làm). p = TB ≤5 lần gần nhất tới lần này · p_luot = % lần này · delta = p_luot − p_truoc (p ngay trước; lần đầu = đầu kỳ)
   so_lan5: number; p: number; p_luot: number; p_truoc: number | null; delta: number | null; cau: CauDB[]
 }
-export type LichSuO = { tu: string; dau_ky: { p: number; n: number } | null; luot: LuotDB[] }
+// Thùy 10/11: lịch sử chỉ 1 tháng; co_cu = còn lần cũ hơn ⇒ nút "Xem thêm" gọi lại với soNgay + 30 (DB mới đọc thêm lúc đó)
+export type LichSuO = { tu: string; dau_ky: { p: number; n: number } | null; luot: LuotDB[]; so_ngay: number; co_cu: boolean }
 
 export const TEN_KENH: Record<string, string> = {
   et: 'ET', btvn: 'BTVN', mt: 'MT / Khảo sát', bo_tro_test: 'Test bổ trợ', bt: 'Phiếu bổ trợ', tu_luyen: 'Tự luyện', retest: 'Retest bổ trợ', bu_test: 'Test bù', htd_test: 'Test đuổi',
@@ -35,9 +36,9 @@ export async function bangDashboardHocTap(mon: string, khoi: string, soTuan: num
   return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, cot: j.cot ?? [], hs: j.hs ?? [] }
 }
 
-export async function lichSuO(hsId: string, mon: string, cap: CapDB, ma: string, soTuan: number): Promise<LichSuO> {
-  const { data, error } = await supabase.rpc('fn_dbht_o_lich_su', { p_hs: hsId, p_mon: mon, p_cap: cap, p_ma: ma, p_so_tuan: soTuan })
+export async function lichSuO(hsId: string, mon: string, cap: CapDB, ma: string, soNgay = 30): Promise<LichSuO> {
+  const { data, error } = await supabase.rpc('fn_dbht_o_lich_su', { p_hs: hsId, p_mon: mon, p_cap: cap, p_ma: ma, p_so_ngay: soNgay })
   if (error) throw error
   const j = (data ?? {}) as Partial<LichSuO>
-  return { tu: j.tu ?? '', dau_ky: j.dau_ky ?? null, luot: (j.luot ?? []).map((l) => ({ ...l, cau: l.cau ?? [] })) }
+  return { tu: j.tu ?? '', dau_ky: j.dau_ky ?? null, luot: (j.luot ?? []).map((l) => ({ ...l, cau: l.cau ?? [] })), so_ngay: j.so_ngay ?? soNgay, co_cu: !!j.co_cu }
 }

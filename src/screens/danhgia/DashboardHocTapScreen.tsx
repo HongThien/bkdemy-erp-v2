@@ -13,7 +13,7 @@ import BoTroPopup from '../phongtk/BoTroPopup'
 // dau: khối đặt ĐẦU thanh lọc (vd thanh 4 mục của Chất lượng) — Thùy 10/11: dồn hết thanh đầu về 1 dòng
 export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (hsId: string, mon: string) => void; dau?: ReactNode }
 
-type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string }
+type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string; dangThem?: boolean }
 
 // Rời tab quay lại = đúng chỗ cũ, kể cả các cửa sổ đang mở (CLAUDE §React).
 const NHO: {
@@ -116,9 +116,17 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
     const x = Math.max(8, Math.min(ev.clientX / z + 12, window.innerWidth / z - W - 8))
     const y = Math.max(8, Math.min(ev.clientY / z - 40, window.innerHeight / z - 420))
     setCua((cs) => [...cs, { id, hs: h, cap, ma, tenCot, x, y, z: ++NHO.zMax }])
-    lichSuO(h.id, mon, cap, ma, soTuan)
+    lichSuO(h.id, mon, cap, ma)
       .then((d) => doi(id, { data: d }))
       .catch((e) => doi(id, { loi: String(e?.message ?? e) }))
+  }
+  // "Xem thêm": lùi thêm 1 tháng — giữ bảng cũ tới khi có bảng mới (không trắng cửa sổ)
+  const xemThem = (c: Cua) => {
+    if (!c.data || c.dangThem) return
+    doi(c.id, { dangThem: true })
+    lichSuO(c.hs.id, mon, c.cap, c.ma, c.data.so_ngay + 30)
+      .then((d) => doi(c.id, { data: d, dangThem: false }))
+      .catch((e) => doi(c.id, { loi: String(e?.message ?? e), dangThem: false }))
   }
 
   const nut = (on: boolean) => `h-8 px-2.5 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`
@@ -208,14 +216,14 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình 5 lần làm bài gần nhất của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần); 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
+              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình tối đa 5 lần làm bài gần nhất TRONG 30 NGÀY của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần) — 30 ngày không có lần nào thì ô trống; 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
               Kênh: ET · BTVN · MT / khảo sát · phiếu và test bổ trợ (không tính tự luyện, trừ cấp 1). {TEN_CAP[cap]} theo bản đồ mới; Hình–Học: bài học = chuyên đề = nhóm bài. Nhóm yếu = số nhóm bài đang yếu. Số đọc từ bảng chụp mastery (tự làm mới 5 phút/lần khi có điểm mới).
             </p>
           </>
         )}
       {boTro && <BoTroPopup hs={{ id: boTro.id, ten: boTro.ten, lop: boTro.lop }} mon={mon} onDong={() => setBoTro(null)}
         onXong={(kq) => { vaBt(boTro.id, { id: kq.id, tt: kq.tt }); setBoTro(null) }} />}
-      {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} />)}
+      {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} onXemThem={() => xemThem(c)} />)}
     </div>
   )
 }
@@ -228,7 +236,7 @@ function XuHuong({ d, dk }: { d: number | null; dk: boolean }) {
 }
 
 // ── Cửa sổ nổi: lịch sử 1 ô ──
-function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void; onLen: () => void; onDoi: (x: number, y: number) => void; tiLe: () => number }) {
+function CuaSoO({ c, onDong, onLen, onDoi, tiLe, onXemThem }: { c: Cua; onDong: () => void; onLen: () => void; onDoi: (x: number, y: number) => void; tiLe: () => number; onXemThem: () => void }) {
   const keo = useRef<{ dx: number; dy: number; z: number } | null>(null)
   const [moLuot, setMoLuot] = useState<number | null>(null)
   const batDauKeo = (e: PointerEvent) => {
@@ -262,7 +270,13 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
           : !d ? <p className="text-slate-500">Đang tải…</p>
           : (
             <>
-              {d.luot.length === 0 && !d.dau_ky ? <p className="text-slate-500">Không có lượt nào trong cửa sổ.</p> : (
+              {d.co_cu && (
+                <button onClick={onXemThem} disabled={c.dangThem}
+                  className="mb-1.5 w-full rounded-md border border-dashed border-slate-300 py-1 text-[11.5px] font-semibold text-indigo-600 hover:bg-indigo-50 disabled:text-slate-400">
+                  {c.dangThem ? 'Đang tải…' : `↑ Xem thêm 1 tháng trước (đang hiện từ ${ngayVN(d.tu)})`}
+                </button>
+              )}
+              {d.luot.length === 0 && !d.dau_ky ? <p className="text-slate-500">{d.so_ngay}{' '}ngày gần nhất không có lần nào — ô để trống (chưa đo).</p> : (
                 <table className="w-full border-separate border-spacing-0 text-[12px]">
                   <thead>
                     <tr className="text-[10.5px] uppercase tracking-wide text-slate-500">
@@ -315,7 +329,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                   </tbody>
                 </table>
               )}
-              <p className="mt-2 text-[11px] text-slate-400">Tăng / giảm = % lần này so với "hiện tại" ngay trước (lần đầu: so với đầu kỳ). Hiện tại = trung bình tối đa 5 lần gần nhất. Bấm dòng để xem từng câu.</p>
+              <p className="mt-2 text-[11px] text-slate-400">Tăng / giảm = % lần này so với "hiện tại" ngay trước. Hiện tại (từng dòng) = trung bình tối đa 5 lần gần nhất trong 30 ngày tính tới ngày đó; ô trên bảng = tính tới hôm nay. Bấm dòng để xem từng câu.</p>
             </>
           )}
       </div>

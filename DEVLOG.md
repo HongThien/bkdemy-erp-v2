@@ -79711,3 +79711,7 @@ Thùy nêu 4 việc, làm được 3:
 - WidgetDangYeu prop theoNhom (chỉ Phòng TK: ChatLuongPhong + PhanViecPgd); Sảnh giữ Dạng yếu như cũ. Box HS rộng 5 cột, mỗi cột có đầu tuần. Kiểm trên app (KHTN 7: 3+1+4 = 8 HS yếu).
 
 - Cron tu_luyen_so_cau 05:30 VN: Thùy dán SQL Editor 10/11, đã --ghi-so. Kiểm thật sáng 11/11: tu_luyen_so_cau.tinh_at phải ~05:30.
+### Phòng TK — box HS tách nhóm CŨ đang xử lý / nhóm MỚI tuần này · Mastery tối đa 30 ngày · lịch sử ô 1 tháng + Xem thêm — Thùy 10/11
+- Thùy: box HS chỉ cần 3 cột ≥3·2·1, nhưng tách 2 phần (em gỡ 1 nhóm cũ mà thêm 2 nhóm mới thì số tổng che mất). mig 202611102139 ĐÃ ÁP: _dy_nhom_ds + fn_qlcl_nhom_yeu (drop/tạo lại, đổi cột trả) so TẬP nhóm đầu tuần (A) vs hiện tại (B): cũ = B∩A, mới = BA, đếm em theo từng phần; ô chưa có ảnh đầu tuần ⇒ NULL. Toán 9: cũ 49/9/8, mới 1/1/1. Tuần này ảnh đầu tuần luật cũ ⇒ mới có thể thấp.
+- Thùy: mastery tối đa 30 ngày; 30 ngày không có lần nào = chưa đo, không lấy từ đầu năm. mig 202611102142 ĐÃ ÁP: _mastery_lan_cap lấy lần trong [mốc−30 ngày, mốc], mốc = p_den hoặc now() (sửa 1 chỗ, mọi người dùng đi qua). Toán 8: ô dạng 2696→1907, nhóm yếu 122→110. KHÔNG đánh bẩn cả kho lúc áp (21h45, giờ HS chơi) — lưới đêm 02:00 chụp lại hết.
+- fn_dbht_o_lich_su: p_so_tuan → p_so_ngay (mặc định 30) + co_cu; popup Dashboard có nút Xem thêm 1 tháng (gọi lại DB lúc bấm, giữ bảng cũ tới khi có mới). Hiện tại từng dòng = luật 30 ngày tính tới ngày đó. Kiểm trên app (8A1 Bùi Thế Vinh: 30 ngày 3 lần, xem thêm ra từ 11/09).

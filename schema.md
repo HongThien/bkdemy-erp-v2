@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-516 bảng · 39 view · 0 enum · 337 trigger · 1724 function
+516 bảng · 39 view · 0 enum · 337 trigger · 1725 function
 
 ## _app_secrets
 
@@ -10096,6 +10096,7 @@ WITH luot AS (
 - `_dtv_mua_bat_dau()` → timestamp with time zone
 - `_duoi_lo_trinh(p_hs uuid, p_mon text)` → jsonb
 - `_duoi_tien_do_dang(p_hs uuid, p_mon text, p_dangs text[])` → TABLE(ma_dang text, doc_lt boolean, luyen_cau integer, luyen_dung integer, test_lan integer, test_gan_nhat numeric, xong boolean, xong_at timestamp with time zone, noi_lam text, mo_tay boolean)
+- `_dy_nhom_ds(p_dang jsonb)` → text[]
 - `_dy_so_nhom(p_dang jsonb)` → integer
 - `_et_cham(p_bai_lam uuid)` → void
 - `_et_diem_buoi(p_tu date, p_den date)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, ngay date, mon text, lop_id uuid, so_cau integer, ti_le numeric, cham_at timestamp with time zone)
@@ -10829,7 +10830,7 @@ WITH luot AS (
 - `fn_dai_sinh_ma_chuyen_de(p_ma_chu_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_dai_sinh_ma_dang(p_ma_chuyen_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_dbht_bang(p_mon text, p_khoi text, p_so_tuan integer DEFAULT 4, p_cap text DEFAULT 'chuyen_de'::text)` → jsonb
-- `fn_dbht_o_lich_su(p_hs uuid, p_mon text, p_cap text, p_ma text, p_so_tuan integer DEFAULT 4)` → jsonb
+- `fn_dbht_o_lich_su(p_hs uuid, p_mon text, p_cap text, p_ma text, p_so_ngay integer DEFAULT 30)` → jsonb
 - `fn_de_test_dat_dang_dung(p_tai_lieu_id uuid)` → void
 - `fn_de_test_xoa(p_tai_lieu_id uuid)` → void
 - `fn_de_thi_cau(p_de uuid)` → TABLE(stt integer, phan_id uuid, phan_thu_tu integer, phan_tieu_de text, ma_cau text, kho text, loai_cau text, dang_chinh text, dap_an text, lua_chon jsonb, menh_de jsonb, da_duyet boolean, xoa boolean, co_form boolean, form_duyet boolean, diem numeric)
@@ -11301,7 +11302,7 @@ WITH luot AS (
 - `fn_qlcl_dong_chay(p_mon text, p_khoi text)` → jsonb
 - `fn_qlcl_duoc_phan_cong()` → boolean
 - `fn_qlcl_lam_moi(p_mon text, p_khoi text, p_toi_da integer DEFAULT 10)` → integer
-- `fn_qlcl_nhom_yeu()` → TABLE(mon text, khoi text, so_hs integer, so_nhom_yeu integer, hs_nhom_3 integer, hs_nhom_2 integer, hs_nhom_1 integer, dau_tuan_nhom_yeu integer, dau_tuan_hs_nhom_3 integer, dau_tuan_hs_nhom_2 integer, dau_tuan_hs_nhom_1 integer)
+- `fn_qlcl_nhom_yeu()` → TABLE(mon text, khoi text, so_hs integer, so_hs_yeu integer, so_nhom_yeu integer, dau_tuan_nhom_yeu integer, co_anh_dau_tuan boolean, cu_3 integer, cu_2 integer, cu_1 integer, moi_3 integer, moi_2 integer, moi_1 integer, so_nhom_da_go integer)
 - `fn_qlcl_phan_cong_luu(p_mon text, p_khoi text, p_vai text, p_nhan_su_id uuid)` → void
 - `fn_qlcl_team()` → jsonb
 - `fn_qlcl_tong_quan()` → TABLE(mon text, khoi text, vai text, so_hs integer, so_hs_yeu integer, so_dang_yeu integer, so_can_tinh integer, tinh_at timestamp with time zone, dau_tuan_hs_yeu integer, dau_tuan_dang_yeu integer)
