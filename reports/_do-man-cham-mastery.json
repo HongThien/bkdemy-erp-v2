@@ -1,0 +1,232 @@
+{
+ "lop": {
+  "ten": "9A2",
+  "so_hs": 17
+ },
+ "ketQua": [
+  {
+   "man": "Kết quả học tập 1 HS",
+   "mo_ta": "mastery 1 em (fn_mastery_cells_moi)",
+   "ai": "ns",
+   "lan": [
+    43,
+    42
+   ],
+   "loi": null
+  },
+  {
+   "man": "Kết quả học tập cả lớp",
+   "mo_ta": "mastery 17 em (fn_mastery_cells_moi)",
+   "ai": "ns",
+   "lan": [
+    51,
+    43
+   ],
+   "loi": null
+  },
+  {
+   "man": "Kết quả học tập cả lớp — Hình–Luyện",
+   "mo_ta": "fn_mastery_cells_hinh",
+   "ai": "ns",
+   "lan": [
+    188,
+    46
+   ],
+   "loi": null
+  },
+  {
+   "man": "Mastery cấp nhóm cả lớp",
+   "mo_ta": "fn_mastery_nhom",
+   "ai": "ns",
+   "lan": [
+    43,
+    43
+   ],
+   "loi": null
+  },
+  {
+   "man": "App HS — Bản đồ phiêu lưu",
+   "mo_ta": "fn_ban_do_phieu_luu",
+   "ai": "hs",
+   "lan": [
+    1917,
+    511
+   ],
+   "loi": null
+  },
+  {
+   "man": "App HS — Học tập theo dạng",
+   "mo_ta": "hs_dang_hoc_tap",
+   "ai": "hs",
+   "lan": [
+    695,
+    635
+   ],
+   "loi": null
+  },
+  {
+   "man": "App HS — Tự luyện chọn chủ đề",
+   "mo_ta": "tu_luyen_chu_de_ds_dang",
+   "ai": "hs",
+   "lan": [
+    587,
+    499
+   ],
+   "loi": null
+  },
+  {
+   "man": "Dashboard học tập (khối 9, 4 tuần, chuyên đề)",
+   "mo_ta": "fn_dbht_bang",
+   "ai": "ns",
+   "lan": [
+    38,
+    39
+   ],
+   "loi": null
+  },
+  {
+   "man": "Đánh giá cuối cấp (1 lớp, nhóm bài)",
+   "mo_ta": "fn_dgcc_lop",
+   "ai": "ns",
+   "lan": [
+    2517,
+    1666
+   ],
+   "loi": null
+  },
+  {
+   "man": "Bổ trợ nhẹ — danh sách lớp",
+   "mo_ta": "fn_btnhe_lop_hs",
+   "ai": "ns",
+   "lan": [
+    315,
+    314
+   ],
+   "loi": null
+  },
+  {
+   "man": "QLCL / mở case — dạng yếu 1 em",
+   "mo_ta": "fn_btyeu_dang_yeu_2_cua_so_moi",
+   "ai": "ns",
+   "lan": [
+    70,
+    67
+   ],
+   "loi": null
+  },
+  {
+   "man": "Chốt tuần — 1 lô 10 em",
+   "mo_ta": "_dang_yeu_tai_lo (mốc T2)",
+   "ai": "ns",
+   "lan": [
+    746,
+    491
+   ],
+   "loi": null
+  },
+  {
+   "man": "Dashboard kết quả bổ trợ tuần",
+   "mo_ta": "fn_botro_ket_qua_tuan (7 ngày)",
+   "ai": "ns",
+   "lan": [
+    7793,
+    7026
+   ],
+   "loi": null
+  },
+  {
+   "man": "Thành tựu tháng (lớp)",
+   "mo_ta": "fn_thanh_tuu_thang",
+   "ai": "ns",
+   "lan": [
+    1340,
+    658
+   ],
+   "loi": null
+  }
+ ],
+ "doi": [
+  {
+   "d": "2026-10-26",
+   "hs_doi": 103,
+   "tong": 362
+  },
+  {
+   "d": "2026-10-27",
+   "hs_doi": 144,
+   "tong": 362
+  },
+  {
+   "d": "2026-10-28",
+   "hs_doi": 131,
+   "tong": 362
+  },
+  {
+   "d": "2026-10-29",
+   "hs_doi": 121,
+   "tong": 362
+  },
+  {
+   "d": "2026-10-30",
+   "hs_doi": 116,
+   "tong": 362
+  },
+  {
+   "d": "2026-10-31",
+   "hs_doi": 115,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-01",
+   "hs_doi": 119,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-02",
+   "hs_doi": 167,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-03",
+   "hs_doi": 144,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-04",
+   "hs_doi": 230,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-05",
+   "hs_doi": 135,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-06",
+   "hs_doi": 133,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-07",
+   "hs_doi": 154,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-08",
+   "hs_doi": 202,
+   "tong": 362
+  },
+  {
+   "d": "2026-11-09",
+   "hs_doi": 164,
+   "tong": 362
+  }
+ ],
+ "doiDang": [
+  {
+   "d": "lỗi",
+   "n": "column \"updated_at\" does not exist"
+  }
+ ],
+ "luc": "2026-11-10T09:54:51.242Z"
+}

@@ -1,0 +1,40 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đo màn chậm</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1d2433;--mo:#5b6475;--the:#fff;--vien:#e3e5ea;--vuot:#fde8e8;--cham:#fff1e0;--vua:#fff9e0;--nhanh:#eef6ef;--nhan:#3554d1;--cot:#9aa9e8}
+@media (prefers-color-scheme:dark){:root{--bg:#15181e;--fg:#e6e8ec;--mo:#9aa3b2;--the:#1e222a;--vien:#2e3440;--vuot:#401f22;--cham:#3d2a18;--vua:#3a3519;--nhanh:#1d3324;--nhan:#8ea2ff;--cot:#4f5fa8}}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 6px;border-top:1px solid var(--vien);padding-top:20px}
+.mo,small{color:var(--mo)}.wrap{overflow-x:auto}
+table{border-collapse:collapse;background:var(--the);font-variant-numeric:tabular-nums;width:100%}
+th,td{border:1px solid var(--vien);padding:6px 10px;text-align:left;vertical-align:top}td.so{text-align:right;white-space:nowrap}
+tr.vuot td.m{background:var(--vuot);font-weight:700}tr.cham td.m{background:var(--cham)}tr.vua td.m{background:var(--vua)}tr.nhanh td.m{background:var(--nhanh)}
+.ket{background:var(--the);border:1px solid var(--vien);border-left:4px solid var(--nhan);border-radius:8px;padding:12px 16px}.ket li{margin:4px 0}
+.bar{display:flex;align-items:flex-end;gap:4px;height:120px;margin-top:8px}.bar div{flex:1;background:var(--cot);border-radius:3px 3px 0 0;position:relative}
+.bar span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;color:var(--mo)}
+</style></head><body><main>
+<h1>Màn nào chậm vì tính mastery</h1>
+<p class="mo">Đo trên DB thật 16:54:51 10/11/2026 · lớp mẫu 9A2 (17 HS) · mỗi hàm chạy 2 lần (lần đầu / lần lặp, cùng kết nối) · trần app = 8 s/lệnh · chỉ đọc, mọi phép đo rollback.</p>
+<div class="ket"><b>Tóm tắt</b><ul>
+<li><b>Sau khi áp bảng mastery lưu sẵn (10/11 16:52, chụp 362 em, đối chiếu 20 em 0 lệch):</b> mastery 1 em / cả lớp còn ~0,04 s; Bổ trợ nhẹ 8,2 → 0,3 s; dạng yếu 1 em 0,25 → 0,07 s; Bản đồ phiêu lưu lần đầu 7,3 → 1,9 s. Dashboard kết quả bổ trợ tuần KHÔNG đổi (tính tại mốc quá khứ — cần chụp theo ngày, việc riêng). Cột “Trước” = lần lặp của lần đo trước.</li>
+<li><b>Bổ trợ nhẹ — danh sách lớp</b> vượt trần 8 s (gọi dạng yếu 2 lần cho mỗi em; luật nhóm áp 16:05 làm mỗi lượt chậm thêm). Đã có bản sửa tính cả lớp một lượt: lớp 12A1 1,9 s → 0,25 s, kết quả khớp 100% — <b>chờ áp</b>.</li>
+<li><b>Dashboard kết quả bổ trợ tuần</b> 7–10 s — sát/vượt trần. <b>Bản đồ phiêu lưu</b> (app HS) lần đầu 7,3 s.</li>
+<li>Mỗi ngày trung bình <b>145/362 HS (40%)</b> có lần đo mới (nhiều nhất 230) ⇒ hơn một nửa số em không đổi mastery trong ngày: bảng lưu sẵn + đánh dấu bẩn sẽ đọc thẳng được cho phần lớn em.</li>
+<li>Các màn đọc mastery 1 em / 1 lớp hiện ở mức 0,1–1,5 s — lưu sẵn sẽ đưa về vài chục ms nhưng không phải chỗ đau nhất.</li>
+</ul></div>
+<h2>Thời gian từng màn (sắp chậm nhất trước)</h2>
+<div class="wrap"><table><tr><th>Màn</th><th>Hàm</th><th>Trước bảng lưu sẵn</th><th>Lần đầu</th><th>Lần lặp</th><th>Mức</th></tr>
+<tr class="cham"><td>Dashboard kết quả bổ trợ tuần</td><td><small>fn_botro_ket_qua_tuan (7 ngày)</small></td><td class="so">7.41 s</td><td class="so">7.79 s</td><td class="so">7.03 s</td><td class="m">chậm</td></tr><tr class="vua"><td>Đánh giá cuối cấp (1 lớp, nhóm bài)</td><td><small>fn_dgcc_lop</small></td><td class="so">1.61 s</td><td class="so">2.52 s</td><td class="so">1.67 s</td><td class="m">chấp nhận</td></tr><tr class="vua"><td>App HS — Bản đồ phiêu lưu</td><td><small>fn_ban_do_phieu_luu</small></td><td class="so">0.76 s</td><td class="so">1.92 s</td><td class="so">0.51 s</td><td class="m">chấp nhận</td></tr><tr class="vua"><td>Thành tựu tháng (lớp)</td><td><small>fn_thanh_tuu_thang</small></td><td class="so">0.65 s</td><td class="so">1.34 s</td><td class="so">0.66 s</td><td class="m">chấp nhận</td></tr><tr class="nhanh"><td>Chốt tuần — 1 lô 10 em</td><td><small>_dang_yeu_tai_lo (mốc T2)</small></td><td class="so">0.58 s</td><td class="so">0.75 s</td><td class="so">0.49 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>App HS — Học tập theo dạng</td><td><small>hs_dang_hoc_tap</small></td><td class="so">0.79 s</td><td class="so">0.69 s</td><td class="so">0.64 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>App HS — Tự luyện chọn chủ đề</td><td><small>tu_luyen_chu_de_ds_dang</small></td><td class="so">0.67 s</td><td class="so">0.59 s</td><td class="so">0.50 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Bổ trợ nhẹ — danh sách lớp</td><td><small>fn_btnhe_lop_hs</small></td><td class="so">8.18 s</td><td class="so">0.32 s</td><td class="so">0.31 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Kết quả học tập cả lớp — Hình–Luyện</td><td><small>fn_mastery_cells_hinh</small></td><td class="so">0.05 s</td><td class="so">0.19 s</td><td class="so">0.05 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>QLCL / mở case — dạng yếu 1 em</td><td><small>fn_btyeu_dang_yeu_2_cua_so_moi</small></td><td class="so">0.25 s</td><td class="so">0.07 s</td><td class="so">0.07 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Kết quả học tập cả lớp</td><td><small>mastery 17 em (fn_mastery_cells_moi)</small></td><td class="so">0.30 s</td><td class="so">0.05 s</td><td class="so">0.04 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Kết quả học tập 1 HS</td><td><small>mastery 1 em (fn_mastery_cells_moi)</small></td><td class="so">0.12 s</td><td class="so">0.04 s</td><td class="so">0.04 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Mastery cấp nhóm cả lớp</td><td><small>fn_mastery_nhom</small></td><td class="so">0.32 s</td><td class="so">0.04 s</td><td class="so">0.04 s</td><td class="m">nhanh</td></tr><tr class="nhanh"><td>Dashboard học tập (khối 9, 4 tuần, chuyên đề)</td><td><small>fn_dbht_bang</small></td><td class="so">0.04 s</td><td class="so">0.04 s</td><td class="so">0.04 s</td><td class="m">nhanh</td></tr>
+</table></div>
+<h2>Bao nhiêu HS có lần đo mới mỗi ngày</h2>
+<p class="mo">Lần đo mới = chấm buổi · bài làm app · phiếu bổ trợ. Em không có lần đo mới thì mastery không đổi (trừ khi câu bị đổi dạng / sửa bản đồ).</p>
+<div class="bar"><div style="height:28%" title="2026-10-26: 103/362"><span>26/10</span></div><div style="height:40%" title="2026-10-27: 144/362"><span>27/10</span></div><div style="height:36%" title="2026-10-28: 131/362"><span>28/10</span></div><div style="height:33%" title="2026-10-29: 121/362"><span>29/10</span></div><div style="height:32%" title="2026-10-30: 116/362"><span>30/10</span></div><div style="height:32%" title="2026-10-31: 115/362"><span>31/10</span></div><div style="height:33%" title="2026-11-01: 119/362"><span>01/11</span></div><div style="height:46%" title="2026-11-02: 167/362"><span>02/11</span></div><div style="height:40%" title="2026-11-03: 144/362"><span>03/11</span></div><div style="height:64%" title="2026-11-04: 230/362"><span>04/11</span></div><div style="height:37%" title="2026-11-05: 135/362"><span>05/11</span></div><div style="height:37%" title="2026-11-06: 133/362"><span>06/11</span></div><div style="height:43%" title="2026-11-07: 154/362"><span>07/11</span></div><div style="height:56%" title="2026-11-08: 202/362"><span>08/11</span></div><div style="height:45%" title="2026-11-09: 164/362"><span>09/11</span></div></div>
+<p style="margin-top:28px" class="mo">Cột = % HS đang học có lần đo mới trong ngày (trên 362 em).</p>
+<h2>Đề xuất bước 2 (chưa làm)</h2>
+<ol>
+<li>Bảng mastery lưu sẵn (dạng + nhóm, theo lần) + cờ “bẩn” theo em; trigger trên bảng chấm/bài làm/phiếu bổ trợ/gán dạng câu chỉ đánh dấu bẩn.</li>
+<li>Đọc: em bẩn tính lại ngay (≈0,3 s/em), em sạch đọc bảng. Đêm dựng lại toàn bộ + đối chiếu ngẫu nhiên.</li>
+<li>Ưu tiên nối trước: Dashboard kết quả bổ trợ tuần, Bản đồ phiêu lưu, Bổ trợ nhẹ, Chốt tuần, QLCL.</li>
+</ol>
+</main></body></html>

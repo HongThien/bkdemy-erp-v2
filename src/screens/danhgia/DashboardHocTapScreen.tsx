@@ -207,7 +207,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             </div>
             <p className="text-[11px] text-slate-400">
               % = trung bình 5 LẦN gần nhất trong {soTuan} tuần (1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
-              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng (chủ đề Hình · nhóm mô hình · mô hình); câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (5 lần gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với lần đầu trong kỳ. Nhóm yếu = số nhóm bài đang yếu theo mastery (5 lần gần nhất, mọi thời điểm). Kênh quan sát song song — khác công thức mastery.
+              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng: Hình–Học = chủ đề → bài học (tầng chuyên đề và nhóm bài đều là bài học); Hình–Luyện = chủ đề → mô hình → trọng điểm; câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (5 lần gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với lần đầu trong kỳ. Nhóm yếu = số nhóm bài đang yếu theo mastery (5 lần gần nhất, mọi thời điểm). Kênh quan sát song song — khác công thức mastery.
             </p>
           </>
         )}

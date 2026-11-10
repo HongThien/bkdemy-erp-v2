@@ -1,0 +1,1332 @@
+{
+ "tong": {
+  "n": "263828",
+  "khong_nhom": "19011",
+  "dang_khong_nhom": "157",
+  "khong_nhom_khoi": [
+   {
+    "khoi": "9",
+    "tien_to": "K09",
+    "luot": 12004,
+    "dang": 68
+   },
+   {
+    "khoi": "8",
+    "tien_to": "K08",
+    "luot": 3874,
+    "dang": 44
+   },
+   {
+    "khoi": "7",
+    "tien_to": "K07",
+    "luot": 3124,
+    "dang": 43
+   },
+   {
+    "khoi": "9",
+    "tien_to": "T30",
+    "luot": 8,
+    "dang": 1
+   },
+   {
+    "khoi": "12",
+    "tien_to": "TS1",
+    "luot": 1,
+    "dang": 1
+   }
+  ],
+  "lan_theo_nguon": [
+   {
+    "src": "tu_luyen",
+    "lan": 9805,
+    "cau": 75982
+   },
+   {
+    "src": "btvn",
+    "lan": 8184,
+    "cau": 128799
+   },
+   {
+    "src": "et",
+    "lan": 7452,
+    "cau": 29647
+   },
+   {
+    "src": "mt",
+    "lan": 1235,
+    "cau": 29400
+   }
+  ]
+ },
+ "kiem": {
+  "tong": "2670",
+  "khop": "2670"
+ },
+ "so_hs": "347",
+ "kb": {
+  "a": {
+   "dang_x": [
+    {
+     "cu": "yeu",
+     "moi": "can_luyen",
+     "n": 516
+    },
+    {
+     "cu": "dat",
+     "moi": "yeu",
+     "n": 14
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "dat",
+     "n": 461
+    },
+    {
+     "cu": "yeu",
+     "moi": "yeu",
+     "n": 2498
+    },
+    {
+     "cu": "dat",
+     "moi": "dat",
+     "n": 11380
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "yeu",
+     "n": 99
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "can_luyen",
+     "n": 3653
+    },
+    {
+     "cu": "dat",
+     "moi": "can_luyen",
+     "n": 445
+    }
+   ],
+   "dang_tin": [
+    {
+     "cu": "cao",
+     "moi": "thap",
+     "n": 287
+    },
+    {
+     "cu": "thap",
+     "moi": "thap",
+     "n": 9386
+    },
+    {
+     "cu": "tb",
+     "moi": "tb",
+     "n": 3480
+    },
+    {
+     "cu": "tb",
+     "moi": "thap",
+     "n": 1337
+    },
+    {
+     "cu": "cao",
+     "moi": "tb",
+     "n": 1579
+    },
+    {
+     "cu": "cao",
+     "moi": "cao",
+     "n": 2997
+    }
+   ],
+   "nhom_x": [
+    {
+     "moi": "dat",
+     "co_yeu": true,
+     "n": 247
+    },
+    {
+     "moi": "yeu",
+     "co_yeu": true,
+     "n": 956
+    },
+    {
+     "moi": "yeu",
+     "co_yeu": false,
+     "n": 51
+    },
+    {
+     "moi": "can_luyen",
+     "co_yeu": false,
+     "n": 1523
+    },
+    {
+     "moi": "can_luyen",
+     "co_yeu": true,
+     "n": 886
+    },
+    {
+     "moi": "dat",
+     "co_yeu": false,
+     "n": 4717
+    }
+   ],
+   "dem": {
+    "o_dang": 19066,
+    "o_nhom": 8380,
+    "dang_yeu_cu": 3014,
+    "dang_yeu_moi": 2611,
+    "nhom_yeu_moi": 1007,
+    "nhom_co_dang_yeu_cu": 2089
+   },
+   "span": {
+    "cu": 50.5551790104167,
+    "moi_d": 56,
+    "moi_n": 68,
+    "n_cu": 3,
+    "n_moi_d": 2,
+    "n_moi_n": 3,
+    "cau_cs_n": "8.4214780600461894"
+   },
+   "khoi": [
+    {
+     "khoi": "10",
+     "hs_co_dang_yeu_cu": 19,
+     "dang_yeu_cu": 274,
+     "nhom_yeu_moi": 82,
+     "hs_co_nhom_yeu_moi": 17
+    },
+    {
+     "khoi": "11",
+     "hs_co_dang_yeu_cu": 23,
+     "dang_yeu_cu": 365,
+     "nhom_yeu_moi": 95,
+     "hs_co_nhom_yeu_moi": 22
+    },
+    {
+     "khoi": "12",
+     "hs_co_dang_yeu_cu": 14,
+     "dang_yeu_cu": 56,
+     "nhom_yeu_moi": 37,
+     "hs_co_nhom_yeu_moi": 11
+    },
+    {
+     "khoi": "3",
+     "hs_co_dang_yeu_cu": 2,
+     "dang_yeu_cu": 3,
+     "nhom_yeu_moi": 2,
+     "hs_co_nhom_yeu_moi": 1
+    },
+    {
+     "khoi": "4",
+     "hs_co_dang_yeu_cu": 17,
+     "dang_yeu_cu": 68,
+     "nhom_yeu_moi": 27,
+     "hs_co_nhom_yeu_moi": 15
+    },
+    {
+     "khoi": "4T",
+     "hs_co_dang_yeu_cu": 13,
+     "dang_yeu_cu": 82,
+     "nhom_yeu_moi": 21,
+     "hs_co_nhom_yeu_moi": 8
+    },
+    {
+     "khoi": "5",
+     "hs_co_dang_yeu_cu": 20,
+     "dang_yeu_cu": 133,
+     "nhom_yeu_moi": 41,
+     "hs_co_nhom_yeu_moi": 15
+    },
+    {
+     "khoi": "5T",
+     "hs_co_dang_yeu_cu": 8,
+     "dang_yeu_cu": 46,
+     "nhom_yeu_moi": 17,
+     "hs_co_nhom_yeu_moi": 8
+    },
+    {
+     "khoi": "6",
+     "hs_co_dang_yeu_cu": 39,
+     "dang_yeu_cu": 293,
+     "nhom_yeu_moi": 173,
+     "hs_co_nhom_yeu_moi": 35
+    },
+    {
+     "khoi": "7",
+     "hs_co_dang_yeu_cu": 52,
+     "dang_yeu_cu": 376,
+     "nhom_yeu_moi": 97,
+     "hs_co_nhom_yeu_moi": 34
+    },
+    {
+     "khoi": "8",
+     "hs_co_dang_yeu_cu": 43,
+     "dang_yeu_cu": 300,
+     "nhom_yeu_moi": 140,
+     "hs_co_nhom_yeu_moi": 41
+    },
+    {
+     "khoi": "8T",
+     "hs_co_dang_yeu_cu": 0,
+     "dang_yeu_cu": 0,
+     "nhom_yeu_moi": 0,
+     "hs_co_nhom_yeu_moi": 0
+    },
+    {
+     "khoi": "9",
+     "hs_co_dang_yeu_cu": 72,
+     "dang_yeu_cu": 1018,
+     "nhom_yeu_moi": 275,
+     "hs_co_nhom_yeu_moi": 66
+    }
+   ]
+  },
+  "b": {
+   "dang_x": [
+    {
+     "cu": "yeu",
+     "moi": "can_luyen",
+     "n": 634
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "dat",
+     "n": 937
+    },
+    {
+     "cu": "yeu",
+     "moi": "dat",
+     "n": 129
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "yeu",
+     "n": 296
+    },
+    {
+     "cu": "can_luyen",
+     "moi": "can_luyen",
+     "n": 3346
+    },
+    {
+     "cu": "dat",
+     "moi": "yeu",
+     "n": 153
+    },
+    {
+     "cu": "yeu",
+     "moi": "yeu",
+     "n": 1963
+    },
+    {
+     "cu": "dat",
+     "moi": "dat",
+     "n": 13439
+    },
+    {
+     "cu": "dat",
+     "moi": "can_luyen",
+     "n": 1613
+    }
+   ],
+   "dang_tin": [
+    {
+     "cu": "thap",
+     "moi": "thap",
+     "n": 4542
+    },
+    {
+     "cu": "tb",
+     "moi": "tb",
+     "n": 1388
+    },
+    {
+     "cu": "tb",
+     "moi": "thap",
+     "n": 1789
+    },
+    {
+     "cu": "cao",
+     "moi": "cao",
+     "n": 8097
+    },
+    {
+     "cu": "cao",
+     "moi": "thap",
+     "n": 2108
+    },
+    {
+     "cu": "cao",
+     "moi": "tb",
+     "n": 4586
+    }
+   ],
+   "nhom_x": [
+    {
+     "moi": "dat",
+     "co_yeu": true,
+     "n": 401
+    },
+    {
+     "moi": "yeu",
+     "co_yeu": true,
+     "n": 748
+    },
+    {
+     "moi": "yeu",
+     "co_yeu": false,
+     "n": 127
+    },
+    {
+     "moi": "can_luyen",
+     "co_yeu": false,
+     "n": 1750
+    },
+    {
+     "moi": "can_luyen",
+     "co_yeu": true,
+     "n": 756
+    },
+    {
+     "moi": "dat",
+     "co_yeu": false,
+     "n": 5411
+    }
+   ],
+   "dem": {
+    "o_dang": 22770,
+    "o_nhom": 9193,
+    "dang_yeu_cu": 2756,
+    "dang_yeu_moi": 2412,
+    "nhom_yeu_moi": 875,
+    "nhom_co_dang_yeu_cu": 1910
+   },
+   "span": {
+    "cu": 20.2994737905093,
+    "moi_d": 43.6321116550926,
+    "moi_n": 35,
+    "n_cu": 7,
+    "n_moi_d": 3,
+    "n_moi_n": 5,
+    "cau_cs_n": "12.3763306199123356"
+   },
+   "khoi": [
+    {
+     "khoi": "10",
+     "hs_co_dang_yeu_cu": 19,
+     "dang_yeu_cu": 274,
+     "nhom_yeu_moi": 71,
+     "hs_co_nhom_yeu_moi": 17
+    },
+    {
+     "khoi": "11",
+     "hs_co_dang_yeu_cu": 23,
+     "dang_yeu_cu": 347,
+     "nhom_yeu_moi": 77,
+     "hs_co_nhom_yeu_moi": 19
+    },
+    {
+     "khoi": "12",
+     "hs_co_dang_yeu_cu": 15,
+     "dang_yeu_cu": 96,
+     "nhom_yeu_moi": 53,
+     "hs_co_nhom_yeu_moi": 13
+    },
+    {
+     "khoi": "3",
+     "hs_co_dang_yeu_cu": 2,
+     "dang_yeu_cu": 2,
+     "nhom_yeu_moi": 1,
+     "hs_co_nhom_yeu_moi": 1
+    },
+    {
+     "khoi": "4",
+     "hs_co_dang_yeu_cu": 16,
+     "dang_yeu_cu": 57,
+     "nhom_yeu_moi": 25,
+     "hs_co_nhom_yeu_moi": 15
+    },
+    {
+     "khoi": "4T",
+     "hs_co_dang_yeu_cu": 13,
+     "dang_yeu_cu": 70,
+     "nhom_yeu_moi": 20,
+     "hs_co_nhom_yeu_moi": 8
+    },
+    {
+     "khoi": "5",
+     "hs_co_dang_yeu_cu": 17,
+     "dang_yeu_cu": 89,
+     "nhom_yeu_moi": 29,
+     "hs_co_nhom_yeu_moi": 12
+    },
+    {
+     "khoi": "5T",
+     "hs_co_dang_yeu_cu": 7,
+     "dang_yeu_cu": 32,
+     "nhom_yeu_moi": 13,
+     "hs_co_nhom_yeu_moi": 6
+    },
+    {
+     "khoi": "6",
+     "hs_co_dang_yeu_cu": 38,
+     "dang_yeu_cu": 285,
+     "nhom_yeu_moi": 159,
+     "hs_co_nhom_yeu_moi": 37
+    },
+    {
+     "khoi": "7",
+     "hs_co_dang_yeu_cu": 50,
+     "dang_yeu_cu": 374,
+     "nhom_yeu_moi": 59,
+     "hs_co_nhom_yeu_moi": 36
+    },
+    {
+     "khoi": "8",
+     "hs_co_dang_yeu_cu": 45,
+     "dang_yeu_cu": 246,
+     "nhom_yeu_moi": 120,
+     "hs_co_nhom_yeu_moi": 42
+    },
+    {
+     "khoi": "8T",
+     "hs_co_dang_yeu_cu": 0,
+     "dang_yeu_cu": 0,
+     "nhom_yeu_moi": 0,
+     "hs_co_nhom_yeu_moi": 0
+    },
+    {
+     "khoi": "9",
+     "hs_co_dang_yeu_cu": 72,
+     "dang_yeu_cu": 884,
+     "nhom_yeu_moi": 248,
+     "hs_co_nhom_yeu_moi": 63
+    }
+   ]
+  }
+ },
+ "moc": "2026-10-15T17:00:00.000Z",
+ "botro": {
+  "muc_cu": 1760,
+  "hs_cu": 301,
+  "muc_moi": 686,
+  "hs_moi": 251,
+  "hs_ca_hai": 245,
+  "case_dang_xu": 2
+ },
+ "mau_yeu_dat": [
+  {
+   "ho_ten": "Trần Hải Đăng",
+   "ten_lop": "7B1",
+   "dang": "NDB00799",
+   "ten_dang": "Tính toán Tổng hợp SHT: Biểu thức đơn giản",
+   "ten_nhom": "Tính toán biểu thức tổng hợp",
+   "p_cu": "0",
+   "n_cu": "37",
+   "p_moi": "95",
+   "n_lan": "15",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-20",
+     "src": "btvn",
+     "dung": 1.5,
+     "tong": 2
+    },
+    {
+     "t": "2026-10-13",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-09-27",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-15",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-06",
+     "src": "mt",
+     "dung": 1,
+     "tong": 2
+    }
+   ]
+  },
+  {
+   "ho_ten": "Mai Gia Bảo",
+   "ten_lop": "7B1",
+   "dang": "NDB00798",
+   "ten_dang": "Quy tắc chuyển vế",
+   "ten_nhom": "Tìm x: Quy tắc chuyển vế",
+   "p_cu": "0",
+   "n_cu": "47",
+   "p_moi": "86",
+   "n_lan": "15",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-20",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-13",
+     "src": "btvn",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-13",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-06",
+     "src": "btvn",
+     "dung": 4,
+     "tong": 5
+    },
+    {
+     "t": "2026-09-27",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lưu Hoàng Nam Sơn",
+   "ten_lop": "7B1",
+   "dang": "NDB00796",
+   "ten_dang": "x ở Cơ số: mũ chẵn",
+   "ten_nhom": "Tìm x: Luỹ thừa Số hữu tỉ",
+   "p_cu": "0",
+   "n_cu": "61",
+   "p_moi": "80",
+   "n_lan": "21",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-25",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-24",
+     "src": "btvn",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-13",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-13",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-10-06",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lưu Hoàng Nam Sơn",
+   "ten_lop": "7B1",
+   "dang": "NDB00795",
+   "ten_dang": "x ở Cơ số: mũ lẻ",
+   "ten_nhom": "Tìm x: Luỹ thừa Số hữu tỉ",
+   "p_cu": "20",
+   "n_cu": "40",
+   "p_moi": "100",
+   "n_lan": "9",
+   "lan": [
+    {
+     "t": "2026-10-06",
+     "src": "btvn",
+     "dung": 3,
+     "tong": 3
+    },
+    {
+     "t": "2026-10-04",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-23",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-16",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-08-04",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-02",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    }
+   ]
+  },
+  {
+   "ho_ten": "Nguyễn Đăng Đức",
+   "ten_lop": "7S3",
+   "dang": "NDB00800",
+   "ten_dang": "Tính toán Tổng hợp SHT: Biểu thức phức tạp",
+   "ten_nhom": "Tính toán biểu thức tổng hợp",
+   "p_cu": "20",
+   "n_cu": "47",
+   "p_moi": "100",
+   "n_lan": "13",
+   "lan": [
+    {
+     "t": "2026-10-31",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-24",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-05",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-28",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-05",
+     "src": "mt",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-08-15",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Nguyễn Hải Minh Châu",
+   "ten_lop": "8S1",
+   "dang": "NDB00466",
+   "ten_dang": "Dạng phân thức",
+   "ten_nhom": "Bình phương của các biểu thức đặc biệt",
+   "p_cu": "20",
+   "n_cu": "14",
+   "p_moi": "100",
+   "n_lan": "6",
+   "lan": [
+    {
+     "t": "2026-10-12",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-12",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-05",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-21",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-21",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-31",
+     "src": "btvn",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lê Thành An",
+   "ten_lop": "7S3",
+   "dang": "K07030303",
+   "ten_dang": "K07030303",
+   "ten_nhom": null,
+   "p_cu": "20",
+   "n_cu": "20",
+   "p_moi": "96",
+   "n_lan": "5",
+   "lan": [
+    {
+     "t": "2026-10-24",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-10-17",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 2
+    },
+    {
+     "t": "2026-09-03",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-13",
+     "src": "btvn",
+     "dung": 4,
+     "tong": 5
+    },
+    {
+     "t": "2026-08-13",
+     "src": "et",
+     "dung": 4,
+     "tong": 4
+    }
+   ]
+  },
+  {
+   "ho_ten": "Mai Gia Bảo",
+   "ten_lop": "7B1",
+   "dang": "NDB00935",
+   "ten_dang": "Tìm x Số thực: x trong GTTĐ",
+   "ten_nhom": "Tìm x GTTĐ",
+   "p_cu": "20",
+   "n_cu": "60",
+   "p_moi": "93",
+   "n_lan": "10",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-25",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-20",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-13",
+     "src": "btvn",
+     "dung": 2.5,
+     "tong": 4
+    },
+    {
+     "t": "2026-10-13",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-06",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  }
+ ],
+ "mau_dat_yeu": [
+  {
+   "ho_ten": "Lê Kim Anh",
+   "ten_lop": "9C1",
+   "dang": "NDB00483",
+   "ten_dang": "Rút gọn biểu thức dạng trong căn có thể biến đổi thành bình phương",
+   "ten_nhom": "Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn",
+   "p_cu": "100",
+   "n_cu": "60",
+   "p_moi": "13",
+   "n_lan": "3",
+   "lan": [
+    {
+     "t": "2026-10-04",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-27",
+     "src": "btvn",
+     "dung": 4,
+     "tong": 10
+    },
+    {
+     "t": "2026-09-27",
+     "src": "et",
+     "dung": 0,
+     "tong": 2
+    }
+   ]
+  },
+  {
+   "ho_ten": "Bùi Ngọc Diệp",
+   "ten_lop": "6S1",
+   "dang": "NDB00414",
+   "ten_dang": "Tìm BCNN của các số.",
+   "ten_nhom": "Tìm x liên quan đến BCNN",
+   "p_cu": "100",
+   "n_cu": "19",
+   "p_moi": "17",
+   "n_lan": "3",
+   "lan": [
+    {
+     "t": "2026-09-15",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-08",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 4
+    },
+    {
+     "t": "2026-09-08",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Mai Gia Bảo",
+   "ten_lop": "7B1",
+   "dang": "NDB00792",
+   "ten_dang": "So sánh Số hữu tỉ",
+   "ten_nhom": "So sánh số hữu tỉ",
+   "p_cu": "100",
+   "n_cu": "38",
+   "p_moi": "17",
+   "n_lan": "3",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-08-04",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-05",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lê Kim Anh",
+   "ten_lop": "9C1",
+   "dang": "NDB01364",
+   "ten_dang": "Bài toán thực tế sử dụng giải tam giác vuông",
+   "ten_nhom": "Bài toán thực tế sử dụng giải tam giác",
+   "p_cu": "100",
+   "n_cu": "29",
+   "p_moi": "18",
+   "n_lan": "6",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-23",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-04",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-10",
+     "src": "btvn",
+     "dung": 2,
+     "tong": 5
+    },
+    {
+     "t": "2026-09-10",
+     "src": "et",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-06",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lê Kim Anh",
+   "ten_lop": "9C1",
+   "dang": "NDB00731",
+   "ten_dang": "Cho vận tốc dòng nước, quãng đường xuôi chiều - ngược chiều và tổng hiệu thời gian",
+   "ten_nhom": "Bài toán Chuyển động",
+   "p_cu": "100",
+   "n_cu": "79",
+   "p_moi": "20",
+   "n_lan": "7",
+   "lan": [
+    {
+     "t": "2026-08-06",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-31",
+     "src": "et",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-27",
+     "src": "btvn",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-27",
+     "src": "et",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-15",
+     "src": "btvn",
+     "dung": 0.5,
+     "tong": 1
+    },
+    {
+     "t": "2026-07-13",
+     "src": "et",
+     "dung": 1,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Vũ Khắc Triệu",
+   "ten_lop": "11A1",
+   "dang": "NDB00619",
+   "ten_dang": "Bài toán gửi tiết kiệm định kỳ, trả góp",
+   "ten_nhom": "Bài toán thực tế về cấp số nhân",
+   "p_cu": "80",
+   "n_cu": "18",
+   "p_moi": "0",
+   "n_lan": "3",
+   "lan": [
+    {
+     "t": "2026-10-31",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-14",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-14",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Lê Kim Anh",
+   "ten_lop": "9C1",
+   "dang": "K09010302",
+   "ten_dang": "K09010302",
+   "ten_nhom": null,
+   "p_cu": "100",
+   "n_cu": "20",
+   "p_moi": "30",
+   "n_lan": "6",
+   "lan": [
+    {
+     "t": "2026-11-01",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-18",
+     "src": "btvn",
+     "dung": 1,
+     "tong": 2
+    },
+    {
+     "t": "2026-10-18",
+     "src": "et",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-10-04",
+     "src": "mt",
+     "dung": 0,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-27",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 2
+    },
+    {
+     "t": "2026-09-27",
+     "src": "et",
+     "dung": 0,
+     "tong": 1
+    }
+   ]
+  },
+  {
+   "ho_ten": "Bùi Duy Khoa",
+   "ten_lop": "7S1",
+   "dang": "NDB00803",
+   "ten_dang": "Viết STP vô hạn tuần hoàn thành PS tối giản",
+   "ten_nhom": "STP hữu hạn, STP vô hạn tuần hoàn",
+   "p_cu": "100",
+   "n_cu": "26",
+   "p_moi": "33",
+   "n_lan": "3",
+   "lan": [
+    {
+     "t": "2026-10-04",
+     "src": "mt",
+     "dung": 1,
+     "tong": 1
+    },
+    {
+     "t": "2026-09-09",
+     "src": "btvn",
+     "dung": 0,
+     "tong": 2
+    },
+    {
+     "t": "2026-09-09",
+     "src": "et",
+     "dung": 0,
+     "tong": 1
+    }
+   ]
+  }
+ ],
+ "mau_nhom": [
+  {
+   "ho_ten": "Đoàn Hà Bảo Nhi",
+   "ten_lop": "6S1",
+   "ten_nhom": "Tìm hai số tự nhiên a,b khi biết UCLN và BCNN",
+   "p_moi": "42",
+   "n_lan": "5",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00415 80%·dat"
+  },
+  {
+   "ho_ten": "Doãn Thu Giang",
+   "ten_lop": "10A1",
+   "ten_nhom": "Bài toán sử dụng công thức tách - ghép vector",
+   "p_moi": "33",
+   "n_lan": "4",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00909 50%·can_luyen"
+  },
+  {
+   "ho_ten": "Nguyễn Hải Minh Châu",
+   "ten_lop": "8S1",
+   "ten_nhom": "Phân tích đa thức thành nhân tử bằng phương pháp hằng đẳng thức",
+   "p_moi": "48",
+   "n_lan": "4",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00977 100%·dat"
+  },
+  {
+   "ho_ten": "Bùi Phạm Hoàng Lâm",
+   "ten_lop": "6S2",
+   "ten_nhom": "Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất",
+   "p_moi": "38",
+   "n_lan": "4",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00411 60%·can_luyen, NDB00410 80%·dat"
+  },
+  {
+   "ho_ten": "Tố Uyên",
+   "ten_lop": "4A1",
+   "ten_nhom": "Góc - Đơn vị đo góc",
+   "p_moi": "40",
+   "n_lan": "34",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB01719 80%·dat, NDB01775 67%·can_luyen, NDB01774 50%·can_luyen"
+  },
+  {
+   "ho_ten": "Phùng Thế Kiệt",
+   "ten_lop": "8A2",
+   "ten_nhom": "Phân tích đa thức thành nhân tử bằng phương pháp hằng đẳng thức",
+   "p_moi": "49",
+   "n_lan": "5",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00977 79%·can_luyen"
+  },
+  {
+   "ho_ten": "Nguyễn Minh Nhật",
+   "ten_lop": "7A1",
+   "ten_nhom": "Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ",
+   "p_moi": "48",
+   "n_lan": "4",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00809 100%·dat, NDB00462 100%·dat, NDB00810 57%·can_luyen, NDB00461 100%·dat, NDB00808 100%·dat"
+  },
+  {
+   "ho_ten": "Nguyễn Tường Vy",
+   "ten_lop": "11B1",
+   "ten_nhom": "Xác định các yếu tố của cấp số cộng",
+   "p_moi": "40",
+   "n_lan": "5",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00608 100%·dat, NDB00610 75%·can_luyen, NDB00606 100%·dat, NDB00607 80%·dat"
+  },
+  {
+   "ho_ten": "Trần Nguyễn Khánh An",
+   "ten_lop": "5T1",
+   "ten_nhom": "Phép toán với tỉ số phầm trăm",
+   "p_moi": "45",
+   "n_lan": "3",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB02770 57%·can_luyen, NDB02769 100%·dat"
+  },
+  {
+   "ho_ten": "Tạ Công Gia Bảo",
+   "ten_lop": "7S3",
+   "ten_nhom": "Tìm x: Quy tắc chuyển vế",
+   "p_moi": "30",
+   "n_lan": "10",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00798 68%·can_luyen"
+  },
+  {
+   "ho_ten": "Phạm Khánh Huy",
+   "ten_lop": "6A3",
+   "ten_nhom": "Tính thuận tiện Luỹ thừa với số mũ tự nhiên",
+   "p_moi": "44",
+   "n_lan": "4",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB00355 60%·can_luyen, NDB00356 60%·can_luyen"
+  },
+  {
+   "ho_ten": "Nguyễn Minh Vũ",
+   "ten_lop": "9A1",
+   "ten_nhom": "Bài toán thể tích - diện tích : Cho diện tích - hỏi thể tích",
+   "p_moi": "33",
+   "n_lan": "3",
+   "muc": "yeu",
+   "co_yeu": false,
+   "ds": "NDB01211 67%·can_luyen"
+  }
+ ]
+}

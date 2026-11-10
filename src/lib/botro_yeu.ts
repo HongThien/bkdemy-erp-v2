@@ -117,26 +117,29 @@ export async function listCaseDangMo(mon?: string): Promise<CaseBoTroYeuItem[]> 
   }))
 }
 
+// Nhóm của dạng + mastery theo lần (Thùy 10/11: bổ trợ theo NHÓM — màn Nội dung gom dạng theo nhóm). Tính ở DB.
+export type NhomCuaDang = {
+  nhom_id: string | null; ten_nhom: string | null; nhom_score: number | null; nhom_muc: 'dat' | 'can_luyen' | 'yeu' | null; nhom_n: number | null
+}
 export type DangCuaCase = {
   id: string; ma_dang: string; ten_dang: string; ten_chuyen_de: string
   day_at: string | null; dong_at: string | null
-}
+  score: number | null; muc: 'dat' | 'can_luyen' | 'yeu' | null; n: number | null
+} & NhomCuaDang
+const numOrNull = (v: unknown) => (v == null ? null : Number(v))
+const nhomCua = (r: any): NhomCuaDang => ({
+  nhom_id: r.nhom_id ?? null, ten_nhom: r.ten_nhom ?? null, nhom_score: numOrNull(r.nhom_score), nhom_muc: r.nhom_muc ?? null, nhom_n: r.nhom_n ?? null,
+})
 
 // Dạng đã chọn của 1 case, kèm TÊN (join bản đồ ĐÚNG BẢNG theo môn — ma_dang không unique xuyên môn,
 // CLAUDE.md bẫy #1 / HANDOFF ②: không được suy tên mà thiếu `mon`).
-export async function getDangCuaCase(boTroYeuId: string, mon: string): Promise<DangCuaCase[]> {
-  const { data, error } = await supabase.from('bo_tro_yeu_dang')
-    .select('id, ma_dang, day_at, dong_at').eq('bo_tro_yeu_id', boTroYeuId).limit(LIMIT)
+export async function getDangCuaCase(boTroYeuId: string): Promise<DangCuaCase[]> {
+  // 10/11: tên + nhóm + mastery dạng/nhóm lấy một lượt ở DB (fn_btyeu_case_dang_nhom), đã xếp nhóm yếu nhất trước
+  const { data, error } = await supabase.rpc('fn_btyeu_case_dang_nhom', { p_case: boTroYeuId }).limit(LIMIT)
   if (error) throw error
-  const rows = (data ?? []) as any[]
-  if (!rows.length) return []
-  // Bản đồ MỌI nhánh của môn (Đại · Hình giải tích · Hình học) — bổ trợ yếu bật cho Hình 29/09.
-  const ten = await dangInfoCuaMon(mon, rows.map((r) => r.ma_dang))
-  return rows.map((r) => ({
-    id: r.id, ma_dang: r.ma_dang,
-    ten_dang: ten.get(r.ma_dang)?.ten_dang ?? r.ma_dang, // dạng đã xoá khỏi bản đồ → hiện mã, không mất dòng
-    ten_chuyen_de: ten.get(r.ma_dang)?.ten_chuyen_de ?? '',
-    day_at: r.day_at, dong_at: r.dong_at,
+  return ((data ?? []) as any[]).map((r) => ({
+    id: r.id, ma_dang: r.ma_dang, ten_dang: r.ten_dang, ten_chuyen_de: r.ten_chuyen_de ?? '',
+    day_at: r.day_at, dong_at: r.dong_at, score: numOrNull(r.score), muc: r.muc ?? null, n: r.n ?? null, ...nhomCua(r),
   }))
 }
 
@@ -147,15 +150,16 @@ export async function getDangCuaCase(boTroYeuId: string, mon: string): Promise<D
 export type DangGoiY = {
   ma_dang: string; ten_dang: string; ten_chuyen_de: string
   score: number; n: number; muc: 'yeu' | 'can_luyen'; tin: 'cao' | 'tb' | 'thap'
-}
+} & NhomCuaDang
 export async function getDangYeuGoiY(hocSinhId: string, mon: string, banDo: 'cu' | 'moi' = 'moi'): Promise<DangGoiY[]> {
   // Ca mở sau khi bật bản đồ mới ⇒ gợi ý theo mastery bản đồ mới (lọc + tên + sắp ở DB — §2.0)
   if (banDo === 'moi') {
-    const { data, error } = await supabase.rpc('fn_btyeu_dang_goi_y_moi', { p_hs: hocSinhId, p_mon: mon })
+    // 10/11: kèm nhóm + mastery nhóm (fn_btyeu_dang_goi_y_nhom), nhóm yếu nhất trước
+    const { data, error } = await supabase.rpc('fn_btyeu_dang_goi_y_nhom', { p_hs: hocSinhId, p_mon: mon }).limit(LIMIT)
     if (error) throw error
     return ((data ?? []) as any[]).map((d) => ({
       ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
-      score: Number(d.score), n: d.n, muc: d.muc, tin: d.tin,
+      score: Number(d.score), n: d.n, muc: d.muc, tin: d.tin, ...nhomCua(d),
     }))
   }
   const all = await getMasteryHS(hocSinhId, mon, { includeBTVN: true })
@@ -164,6 +168,7 @@ export async function getDangYeuGoiY(hocSinhId: string, mon: string, banDo: 'cu'
     .map((d) => ({
       ma_dang: d.ma_dang, ten_dang: d.ten_dang, ten_chuyen_de: d.ten_chuyen_de,
       score: d.mastery!.score, n: d.mastery!.n, muc: d.mastery!.muc as 'yeu' | 'can_luyen', tin: d.mastery!.tin,
+      nhom_id: null, ten_nhom: null, nhom_score: null, nhom_muc: null, nhom_n: null,
     }))
     .sort((a, b) => a.score - b.score || b.n - a.n) // yếu nhất lên đầu; cùng điểm thì đo nhiều (tin hơn) trước
 }

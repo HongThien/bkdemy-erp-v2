@@ -1,0 +1,105 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mastery theo lần</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1d2433;--mo:#5b6475;--the:#fff;--vien:#e3e5ea;--giu:#eef6ef;--doi:#fff7e6;--manh:#fde8e8;--nhan:#3554d1}
+@media (prefers-color-scheme:dark){:root{--bg:#15181e;--fg:#e6e8ec;--mo:#9aa3b2;--the:#1e222a;--vien:#2e3440;--giu:#1d3324;--doi:#3a301a;--manh:#401f22;--nhan:#8ea2ff}}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:24px;margin:0 0 4px}h2{font-size:18px;margin:32px 0 4px;border-top:1px solid var(--vien);padding-top:20px}h3{font-size:14px;margin:18px 0 6px}
+.mo,small{color:var(--mo)}section{overflow-x:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0}
+.card{background:var(--the);border:1px solid var(--vien);border-radius:10px;padding:12px}.card b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.card span{color:var(--mo);font-size:12.5px}
+table.x{border-collapse:collapse;background:var(--the);font-variant-numeric:tabular-nums;margin:4px 0}
+.x th,.x td{border:1px solid var(--vien);padding:5px 10px;text-align:right}.x th{text-align:left;font-weight:600}
+td.giu{background:var(--giu)}td.doi{background:var(--doi)}td.manh{background:var(--manh);font-weight:700}
+.mau td{text-align:left;vertical-align:top}.lan{display:inline-block;margin:1px 3px 1px 0;padding:0 6px;border-radius:4px;font-size:12px;white-space:nowrap}
+.lan.d{background:var(--giu)}.lan.c{background:var(--doi)}.lan.y{background:var(--manh)}
+.ket{background:var(--the);border:1px solid var(--vien);border-left:4px solid var(--nhan);border-radius:8px;padding:12px 16px}
+.ket li{margin:4px 0}
+</style></head><body><main>
+<h1>Mastery: theo câu (cũ) so với theo lần (mới)</h1>
+<p class="mo">Dữ liệu thật 10/11/2026 · 347 HS đang học lớp Toán · 263.828 lượt đo đã quy dạng · chỉ đọc DB, chưa ghi gì.
+Bản cũ trong phép so chép lại <code>_mastery_cells_core</code> — đối chiếu 2.670/2.670 ô khớp tuyệt đối hàm thật.</p>
+
+<div class="ket"><b>Tóm tắt</b><ul>
+<li><b>Bổ trợ yếu</b> (2 cửa sổ gần nhất): cũ <b>1.760 dạng yếu / 301 HS</b> → mới <b>686 nhóm yếu / 251 HS</b>; 245 HS có mặt ở cả hai. Số em giảm nhẹ, số mục cần luyện giảm mạnh (gom dạng vào nhóm + không còn bị tự luyện kéo).</li>
+<li><b>Cấp dạng</b> đổi ít: phần lớn lần đo của một dạng chỉ có 1–3 câu, nên “5 câu” và “5 lần” gần trùng nhau. Chỗ đổi thật nằm ở các buổi dồn nhiều câu cùng dạng.</li>
+<li><b>Chậm hơn một chút:</b> cửa sổ nhóm 5 lần phủ 35 ngày so với 20 ngày của 5 câu (kịch bản bổ trợ); kịch bản ET+MT: 68 so với 51 ngày.</li>
+<li><b>Đã áp 2 luật Thùy chốt 10/11:</b> cách mới <b>bỏ tự luyện</b> (trừ HS cấp 1) và <b>không trọng số nguồn</b> — mọi lần ngang nhau, như Đánh giá cuối cấp. Cách cũ giữ nguyên để so.</li>
+</ul></div>
+
+<h2>Bổ trợ yếu: dạng yếu (cũ) → nhóm yếu (mới)</h2>
+<p class="mo">Cùng nguồn bổ trợ đang dùng (mọi nguồn, <code>include_btvn = true</code>), điều kiện “có đo từ mốc 2 cửa sổ” = từ 2026-10-15. Hiện có 2 case Toán đang xử.</p>
+<table class="x"><tr><th></th><th>Cũ (dạng)</th><th>Mới (nhóm)</th></tr>
+<tr><th>Mục yếu cần luyện</th><td>1.760</td><td>686</td></tr>
+<tr><th>HS có ≥1 mục yếu</th><td>301</td><td>251</td></tr>
+<tr><th>HS có ở cả hai</th><td colspan="2" style="text-align:center">245</td></tr></table>
+
+<section><h2>Kịch bản B — mọi nguồn (đúng nguồn bổ trợ đang dùng)</h2><p class="mo">ET · MT · BTVN · bổ trợ · tự luyện. Màu: xanh = giữ mức, vàng = lệch 1 bậc, đỏ = lệch hẳn (yếu ↔ đạt).</p>
+  <div class="cards">
+    <div class="card"><b>22.770</b><span>ô HS × dạng</span></div>
+    <div class="card"><b>9.193</b><span>ô HS × nhóm</span></div>
+    <div class="card"><b>2.756 → 2.412</b><span>ô dạng yếu: cũ → mới</span></div>
+    <div class="card"><b>875</b><span>ô nhóm yếu (mới) · cũ có 1.910 nhóm chứa ≥1 dạng yếu</span></div>
+  </div>
+  <h3>Cấp DẠNG: mức cũ (theo câu) × mức mới (theo lần)</h3><table class="x"><tr><th>Cũ ↓ · Mới →</th><th>Đạt</th><th>Cần luyện</th><th>Yếu</th><th>Tổng cũ</th></tr>
+  <tr><th>Đạt</th><td class="giu">13.439</td><td class="doi">1.613</td><td class="manh">153</td><td>15.205</td></tr><tr><th>Cần luyện</th><td class="doi">937</td><td class="giu">3.346</td><td class="doi">296</td><td>4.579</td></tr><tr><th>Yếu</th><td class="manh">129</td><td class="doi">634</td><td class="giu">1.963</td><td>2.726</td></tr>
+  </table>
+  <h3>Cấp NHÓM (chính): nhóm mới × nhóm có dạng yếu theo cách cũ</h3><table class="x"><tr><th>Nhóm (mới) ↓</th><th>Có ≥1 dạng yếu (cũ)</th><th>Không dạng nào yếu (cũ)</th></tr>
+  <tr><th>Đạt</th><td class="manh">401</td><td class="giu">5.411</td></tr><tr><th>Cần luyện</th><td class="doi">756</td><td class="giu">1.750</td></tr><tr><th>Yếu</th><td class="giu">748</td><td class="manh">127</td></tr>
+  </table>
+  <h3>Độ nhanh — cửa sổ đang phủ bao nhiêu ngày (trung vị, ô đủ 5)</h3>
+  <table class="x"><tr><th></th><th>Cũ · dạng · 5 câu</th><th>Mới · dạng · 5 lần</th><th>Mới · nhóm · 5 lần</th></tr>
+  <tr><th>Số ngày cửa sổ phủ</th><td>20</td><td>44</td><td>35</td></tr>
+  <tr><th>Trung vị số câu / số lần mỗi ô</th><td>7 câu</td><td>3 lần</td><td>5 lần</td></tr>
+  <tr><th>5 lần nhóm ≈ bao nhiêu câu</th><td></td><td></td><td>12.4 câu</td></tr></table>
+  <h3>Theo khối</h3>
+  <table class="x"><tr><th>Khối</th><th>HS có dạng yếu (cũ)</th><th>Ô dạng yếu (cũ)</th><th>HS có nhóm yếu (mới)</th><th>Ô nhóm yếu (mới)</th></tr>
+  <tr><th>3</th><td>2</td><td>2</td><td>1</td><td>1</td></tr><tr><th>4</th><td>16</td><td>57</td><td>15</td><td>25</td></tr><tr><th>4T</th><td>13</td><td>70</td><td>8</td><td>20</td></tr><tr><th>5</th><td>17</td><td>89</td><td>12</td><td>29</td></tr><tr><th>5T</th><td>7</td><td>32</td><td>6</td><td>13</td></tr><tr><th>6</th><td>38</td><td>285</td><td>37</td><td>159</td></tr><tr><th>7</th><td>50</td><td>374</td><td>36</td><td>59</td></tr><tr><th>8</th><td>45</td><td>246</td><td>42</td><td>120</td></tr><tr><th>9</th><td>72</td><td>884</td><td>63</td><td>248</td></tr><tr><th>10</th><td>19</td><td>274</td><td>17</td><td>71</td></tr><tr><th>11</th><td>23</td><td>347</td><td>19</td><td>77</td></tr><tr><th>12</th><td>15</td><td>96</td><td>13</td><td>53</td></tr>
+  </table></section>
+<section><h2>Kịch bản A — chỉ ET + MT (mặc định của mastery)</h2><p class="mo">Màn xem / app HS dùng mặc định này (HS cấp 1 thêm tự luyện).</p>
+  <div class="cards">
+    <div class="card"><b>19.066</b><span>ô HS × dạng</span></div>
+    <div class="card"><b>8.380</b><span>ô HS × nhóm</span></div>
+    <div class="card"><b>3.014 → 2.611</b><span>ô dạng yếu: cũ → mới</span></div>
+    <div class="card"><b>1.007</b><span>ô nhóm yếu (mới) · cũ có 2.089 nhóm chứa ≥1 dạng yếu</span></div>
+  </div>
+  <h3>Cấp DẠNG: mức cũ (theo câu) × mức mới (theo lần)</h3><table class="x"><tr><th>Cũ ↓ · Mới →</th><th>Đạt</th><th>Cần luyện</th><th>Yếu</th><th>Tổng cũ</th></tr>
+  <tr><th>Đạt</th><td class="giu">11.380</td><td class="doi">445</td><td class="manh">14</td><td>11.839</td></tr><tr><th>Cần luyện</th><td class="doi">461</td><td class="giu">3.653</td><td class="doi">99</td><td>4.213</td></tr><tr><th>Yếu</th><td class="manh">0</td><td class="doi">516</td><td class="giu">2.498</td><td>3.014</td></tr>
+  </table>
+  <h3>Cấp NHÓM (chính): nhóm mới × nhóm có dạng yếu theo cách cũ</h3><table class="x"><tr><th>Nhóm (mới) ↓</th><th>Có ≥1 dạng yếu (cũ)</th><th>Không dạng nào yếu (cũ)</th></tr>
+  <tr><th>Đạt</th><td class="manh">247</td><td class="giu">4.717</td></tr><tr><th>Cần luyện</th><td class="doi">886</td><td class="giu">1.523</td></tr><tr><th>Yếu</th><td class="giu">956</td><td class="manh">51</td></tr>
+  </table>
+  <h3>Độ nhanh — cửa sổ đang phủ bao nhiêu ngày (trung vị, ô đủ 5)</h3>
+  <table class="x"><tr><th></th><th>Cũ · dạng · 5 câu</th><th>Mới · dạng · 5 lần</th><th>Mới · nhóm · 5 lần</th></tr>
+  <tr><th>Số ngày cửa sổ phủ</th><td>51</td><td>56</td><td>68</td></tr>
+  <tr><th>Trung vị số câu / số lần mỗi ô</th><td>3 câu</td><td>2 lần</td><td>3 lần</td></tr>
+  <tr><th>5 lần nhóm ≈ bao nhiêu câu</th><td></td><td></td><td>8.4 câu</td></tr></table>
+  <h3>Theo khối</h3>
+  <table class="x"><tr><th>Khối</th><th>HS có dạng yếu (cũ)</th><th>Ô dạng yếu (cũ)</th><th>HS có nhóm yếu (mới)</th><th>Ô nhóm yếu (mới)</th></tr>
+  <tr><th>3</th><td>2</td><td>3</td><td>1</td><td>2</td></tr><tr><th>4</th><td>17</td><td>68</td><td>15</td><td>27</td></tr><tr><th>4T</th><td>13</td><td>82</td><td>8</td><td>21</td></tr><tr><th>5</th><td>20</td><td>133</td><td>15</td><td>41</td></tr><tr><th>5T</th><td>8</td><td>46</td><td>8</td><td>17</td></tr><tr><th>6</th><td>39</td><td>293</td><td>35</td><td>173</td></tr><tr><th>7</th><td>52</td><td>376</td><td>34</td><td>97</td></tr><tr><th>8</th><td>43</td><td>300</td><td>41</td><td>140</td></tr><tr><th>9</th><td>72</td><td>1018</td><td>66</td><td>275</td></tr><tr><th>10</th><td>19</td><td>274</td><td>17</td><td>82</td></tr><tr><th>11</th><td>23</td><td>365</td><td>22</td><td>95</td></tr><tr><th>12</th><td>14</td><td>56</td><td>11</td><td>37</td></tr>
+  </table></section>
+
+<h2>Mẫu: dạng cũ YẾU → mới ĐẠT</h2>
+<p class="mo">Thường là buổi có nhiều câu cùng dạng cùng ngày: cách cũ lấy 5 câu “gần nhất” nhưng mọi câu cùng ngày buổi ⇒ chọn 5 câu nào là ngẫu nhiên theo thứ tự sắp; cách mới tính trọn từng bài.</p>
+<table class="x mau"><tr><th>HS</th><th>Dạng</th><th>Cũ</th><th>Mới</th><th>Các lần gần nhất (mới → cũ)</th></tr>
+  <tr><td>Trần Hải Đăng<br><small>7B1</small></td><td>Tính toán Tổng hợp SHT: Biểu thức đơn giản<br><small>NDB00799</small></td><td>0%<br><small>37 câu</small></td><td>95%<br><small>15 lần</small></td><td><span class="lan d">01/11 MT 1/1</span><span class="lan c">20/10 BTVN 1.5/2</span><span class="lan d">13/10 BTVN 2/2</span><span class="lan d">27/09 BTVN 1/1</span><span class="lan d">15/09 BTVN 1/1</span><span class="lan c">06/09 MT 1/2</span></td></tr><tr><td>Mai Gia Bảo<br><small>7B1</small></td><td>Quy tắc chuyển vế<br><small>NDB00798</small></td><td>0%<br><small>47 câu</small></td><td>86%<br><small>15 lần</small></td><td><span class="lan d">01/11 MT 1/1</span><span class="lan d">20/10 BTVN 1/1</span><span class="lan c">13/10 BTVN 0.5/1</span><span class="lan d">13/10 ET 1/1</span><span class="lan d">06/10 BTVN 4/5</span><span class="lan c">27/09 ET 0.5/1</span></td></tr><tr><td>Lưu Hoàng Nam Sơn<br><small>7B1</small></td><td>x ở Cơ số: mũ chẵn<br><small>NDB00796</small></td><td>0%<br><small>61 câu</small></td><td>80%<br><small>21 lần</small></td><td><span class="lan d">01/11 MT 1/1</span><span class="lan c">25/10 ET 0.5/1</span><span class="lan c">24/10 BTVN 0.5/1</span><span class="lan d">13/10 ET 1/1</span><span class="lan d">13/10 BTVN 2/2</span><span class="lan c">06/10 ET 0.5/1</span></td></tr><tr><td>Lưu Hoàng Nam Sơn<br><small>7B1</small></td><td>x ở Cơ số: mũ lẻ<br><small>NDB00795</small></td><td>20%<br><small>40 câu</small></td><td>100%<br><small>9 lần</small></td><td><span class="lan d">06/10 BTVN 3/3</span><span class="lan d">04/10 MT 1/1</span><span class="lan d">23/08 BTVN 1/1</span><span class="lan d">16/08 BTVN 2/2</span><span class="lan d">04/08 MT 1/1</span><span class="lan d">02/08 BTVN 2/2</span></td></tr><tr><td>Nguyễn Đăng Đức<br><small>7S3</small></td><td>Tính toán Tổng hợp SHT: Biểu thức phức tạp<br><small>NDB00800</small></td><td>20%<br><small>47 câu</small></td><td>100%<br><small>13 lần</small></td><td><span class="lan d">31/10 MT 1/1</span><span class="lan d">24/10 BTVN 1/1</span><span class="lan d">05/10 MT 1/1</span><span class="lan d">28/09 ET 1/1</span><span class="lan d">05/09 MT 2/2</span><span class="lan c">15/08 ET 0.5/1</span></td></tr><tr><td>Nguyễn Hải Minh Châu<br><small>8S1</small></td><td>Dạng phân thức<br><small>NDB00466</small></td><td>20%<br><small>14 câu</small></td><td>100%<br><small>6 lần</small></td><td><span class="lan d">12/10 BTVN 1/1</span><span class="lan d">12/10 ET 1/1</span><span class="lan d">05/10 MT 1/1</span><span class="lan d">21/08 BTVN 1/1</span><span class="lan d">21/08 ET 1/1</span><span class="lan c">31/07 BTVN 0.5/1</span></td></tr><tr><td>Lê Thành An<br><small>7S3</small></td><td>K07030303<br><small>K07030303</small></td><td>20%<br><small>20 câu</small></td><td>96%<br><small>5 lần</small></td><td><span class="lan d">24/10 BTVN 2/2</span><span class="lan d">17/10 BTVN 2/2</span><span class="lan d">03/09 ET 1/1</span><span class="lan d">13/08 BTVN 4/5</span><span class="lan d">13/08 ET 4/4</span></td></tr><tr><td>Mai Gia Bảo<br><small>7B1</small></td><td>Tìm x Số thực: x trong GTTĐ<br><small>NDB00935</small></td><td>20%<br><small>60 câu</small></td><td>93%<br><small>10 lần</small></td><td><span class="lan d">01/11 MT 1/1</span><span class="lan d">25/10 ET 1/1</span><span class="lan d">20/10 BTVN 1/1</span><span class="lan c">13/10 BTVN 2.5/4</span><span class="lan d">13/10 ET 1/1</span><span class="lan c">06/10 ET 0.5/1</span></td></tr></table>
+<h2>Mẫu: dạng cũ ĐẠT → mới YẾU</h2>
+<p class="mo">Ở kịch bản bổ trợ, phần lớn là ô cách cũ “đạt” nhờ tự luyện gần đây; cách mới bỏ tự luyện nên lấy lại các bài ET / BTVN / bổ trợ trước đó. Danh sách lần bên phải chỉ hiện các lần được tính theo cách mới.</p>
+<table class="x mau"><tr><th>HS</th><th>Dạng</th><th>Cũ</th><th>Mới</th><th>Các lần gần nhất (mới → cũ)</th></tr>
+  <tr><td>Lê Kim Anh<br><small>9C1</small></td><td>Rút gọn biểu thức dạng trong căn có thể biến đổi thành bình phương<br><small>NDB00483</small></td><td>100%<br><small>60 câu</small></td><td>13%<br><small>3 lần</small></td><td><span class="lan y">04/10 MT 0/1</span><span class="lan y">27/09 BTVN 4/10</span><span class="lan y">27/09 ET 0/2</span></td></tr><tr><td>Bùi Ngọc Diệp<br><small>6S1</small></td><td>Tìm BCNN của các số.<br><small>NDB00414</small></td><td>100%<br><small>19 câu</small></td><td>17%<br><small>3 lần</small></td><td><span class="lan y">15/09 BTVN 0/1</span><span class="lan y">08/09 BTVN 0/4</span><span class="lan c">08/09 ET 0.5/1</span></td></tr><tr><td>Mai Gia Bảo<br><small>7B1</small></td><td>So sánh Số hữu tỉ<br><small>NDB00792</small></td><td>100%<br><small>38 câu</small></td><td>17%<br><small>3 lần</small></td><td><span class="lan y">01/11 MT 0/1</span><span class="lan y">04/08 MT 0/1</span><span class="lan c">05/07 ET 0.5/1</span></td></tr><tr><td>Lê Kim Anh<br><small>9C1</small></td><td>Bài toán thực tế sử dụng giải tam giác vuông<br><small>NDB01364</small></td><td>100%<br><small>29 câu</small></td><td>18%<br><small>6 lần</small></td><td><span class="lan y">01/11 MT 0/1</span><span class="lan y">23/10 MT 0/1</span><span class="lan y">04/10 MT 0/1</span><span class="lan y">10/09 BTVN 2/5</span><span class="lan c">10/09 ET 0.5/1</span><span class="lan y">06/09 MT 0/1</span></td></tr><tr><td>Lê Kim Anh<br><small>9C1</small></td><td>Cho vận tốc dòng nước, quãng đường xuôi chiều - ngược chiều và tổng hiệu thời gian<br><small>NDB00731</small></td><td>100%<br><small>79 câu</small></td><td>20%<br><small>7 lần</small></td><td><span class="lan y">06/08 MT 0/1</span><span class="lan y">31/07 ET 0/1</span><span class="lan c">27/07 BTVN 0.5/1</span><span class="lan y">27/07 ET 0/1</span><span class="lan c">15/07 BTVN 0.5/1</span><span class="lan d">13/07 ET 1/1</span></td></tr><tr><td>Vũ Khắc Triệu<br><small>11A1</small></td><td>Bài toán gửi tiết kiệm định kỳ, trả góp<br><small>NDB00619</small></td><td>80%<br><small>18 câu</small></td><td>0%<br><small>3 lần</small></td><td><span class="lan y">31/10 MT 0/1</span><span class="lan y">14/10 BTVN 0/1</span><span class="lan y">14/10 BTVN 0/1</span></td></tr><tr><td>Lê Kim Anh<br><small>9C1</small></td><td>K09010302<br><small>K09010302</small></td><td>100%<br><small>20 câu</small></td><td>30%<br><small>6 lần</small></td><td><span class="lan d">01/11 MT 1/1</span><span class="lan c">18/10 BTVN 1/2</span><span class="lan y">18/10 ET 0/1</span><span class="lan y">04/10 MT 0/1</span><span class="lan y">27/09 BTVN 0/2</span><span class="lan y">27/09 ET 0/1</span></td></tr><tr><td>Bùi Duy Khoa<br><small>7S1</small></td><td>Viết STP vô hạn tuần hoàn thành PS tối giản<br><small>NDB00803</small></td><td>100%<br><small>26 câu</small></td><td>33%<br><small>3 lần</small></td><td><span class="lan d">04/10 MT 1/1</span><span class="lan y">09/09 BTVN 0/2</span><span class="lan y">09/09 ET 0/1</span></td></tr></table>
+<h2>Mẫu: nhóm lệch với dạng</h2>
+<p class="mo">Nhóm mới yếu mà không dạng nào yếu (mỗi dạng ít lần, gộp lại mới thấy) — hoặc nhóm đạt mà vẫn có dạng yếu (dạng phụ sẽ chỉ ra để luyện).</p>
+<table class="x mau"><tr><th>HS</th><th>Nhóm</th><th>Nhóm mới</th><th>Các dạng trong nhóm (cũ)</th></tr>
+<tr><td>Đoàn Hà Bảo Nhi<br><small>6S1</small></td><td>Tìm hai số tự nhiên a,b khi biết UCLN và BCNN</td><td>42% · Yếu<br><small>5 lần</small></td><td><small>NDB00415 80%·dat</small></td></tr><tr><td>Doãn Thu Giang<br><small>10A1</small></td><td>Bài toán sử dụng công thức tách - ghép vector</td><td>33% · Yếu<br><small>4 lần</small></td><td><small>NDB00909 50%·can_luyen</small></td></tr><tr><td>Nguyễn Hải Minh Châu<br><small>8S1</small></td><td>Phân tích đa thức thành nhân tử bằng phương pháp hằng đẳng thức</td><td>48% · Yếu<br><small>4 lần</small></td><td><small>NDB00977 100%·dat</small></td></tr><tr><td>Bùi Phạm Hoàng Lâm<br><small>6S2</small></td><td>Toán thực tế liên quan đến Bội chung/Bội chung nhỏ nhất</td><td>38% · Yếu<br><small>4 lần</small></td><td><small>NDB00411 60%·can_luyen, NDB00410 80%·dat</small></td></tr><tr><td>Tố Uyên<br><small>4A1</small></td><td>Góc - Đơn vị đo góc</td><td>40% · Yếu<br><small>34 lần</small></td><td><small>NDB01719 80%·dat, NDB01775 67%·can_luyen, NDB01774 50%·can_luyen</small></td></tr><tr><td>Phùng Thế Kiệt<br><small>8A2</small></td><td>Phân tích đa thức thành nhân tử bằng phương pháp hằng đẳng thức</td><td>49% · Yếu<br><small>5 lần</small></td><td><small>NDB00977 79%·can_luyen</small></td></tr><tr><td>Nguyễn Minh Nhật<br><small>7A1</small></td><td>Tìm GTLN - GTNN của biểu thức ứng dụng Căn bậc hai và GTTĐ</td><td>48% · Yếu<br><small>4 lần</small></td><td><small>NDB00809 100%·dat, NDB00462 100%·dat, NDB00810 57%·can_luyen, NDB00461 100%·dat, NDB00808 100%·dat</small></td></tr><tr><td>Nguyễn Tường Vy<br><small>11B1</small></td><td>Xác định các yếu tố của cấp số cộng</td><td>40% · Yếu<br><small>5 lần</small></td><td><small>NDB00608 100%·dat, NDB00610 75%·can_luyen, NDB00606 100%·dat, NDB00607 80%·dat</small></td></tr><tr><td>Trần Nguyễn Khánh An<br><small>5T1</small></td><td>Phép toán với tỉ số phầm trăm</td><td>45% · Yếu<br><small>3 lần</small></td><td><small>NDB02770 57%·can_luyen, NDB02769 100%·dat</small></td></tr><tr><td>Tạ Công Gia Bảo<br><small>7S3</small></td><td>Tìm x: Quy tắc chuyển vế</td><td>30% · Yếu<br><small>10 lần</small></td><td><small>NDB00798 68%·can_luyen</small></td></tr><tr><td>Phạm Khánh Huy<br><small>6A3</small></td><td>Tính thuận tiện Luỹ thừa với số mũ tự nhiên</td><td>44% · Yếu<br><small>4 lần</small></td><td><small>NDB00355 60%·can_luyen, NDB00356 60%·can_luyen</small></td></tr><tr><td>Nguyễn Minh Vũ<br><small>9A1</small></td><td>Bài toán thể tích - diện tích : Cho diện tích - hỏi thể tích</td><td>33% · Yếu<br><small>3 lần</small></td><td><small>NDB01211 67%·can_luyen</small></td></tr></table>
+
+<h2>Luật đã chốt và phần còn ngoài phạm vi</h2>
+<table class="x"><tr><th>Nguồn</th><th>Số lần</th><th>Số câu</th><th>Câu / lần</th></tr>
+<tr><th>Tự luyện</th><td>9.805</td><td>75.982</td><td>7.7</td></tr><tr><th>BTVN</th><td>8.184</td><td>128.799</td><td>15.7</td></tr><tr><th>ET</th><td>7.452</td><td>29.647</td><td>4.0</td></tr><tr><th>MT</th><td>1.235</td><td>29.400</td><td>23.8</td></tr></table>
+<ol>
+<li><b>Tự luyện:</b> 9.805 lần — nhiều nhất trong mọi nguồn — vì mỗi phiên tự luyện là một lần. Ở kịch bản bổ trợ, vài phiên tự luyện ngắn trong một buổi tối đẩy hết ET/BTVN ra khỏi cửa sổ 5 lần. Đánh giá cuối cấp không tính tự luyện. <b>Đã chốt:</b> bỏ tự luyện (trừ cấp 1).</li>
+<li><b>Lần 1 câu:</b> đúng luật L4 cuối cấp (lần 1 câu vẫn tính), nhưng kèm trọng số nguồn cũ thì MT 1 câu sai nặng gấp 3 một BTVN 10 câu. <b>Đã chốt:</b> bỏ trọng số nguồn — mọi lần ngang nhau.</li>
+<li><b>KHTN:</b> 19.011 lượt đo (mã K07/K08/K09, 157 dạng) là KHTN theo bản đồ cũ, chưa có nhóm — so sánh này chỉ cho Toán; KHTN cần nối nhóm riêng (<code>khtn_bdm_nhom</code>).</li>
+<li><b>Hình–Luyện</b> (bài mô hình) đo ở đường riêng <code>fn_mastery_cells_hinh</code>, chưa nằm trong phép so này.</li>
+</ol>
+</main></body></html>

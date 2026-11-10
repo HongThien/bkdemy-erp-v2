@@ -2,13 +2,47 @@
 // Dashboard học tập) hiện ở đây để học thuật rà/chọn dạng cần bổ trợ TRƯỚC khi OPS xếp lịch.
 // "Lưu cấu hình" = CHÍNH các dòng `bo_tro_yeu_dang` — KHÔNG sinh tài liệu ở bước này (PLAN quyết
 // định 08); tài liệu thật (câu, số lượng) sinh khi đã có ngày bổ trợ, ở bước xếp lịch.
-import { useEffect, useState } from 'react'
+// 10/11 (Thùy): bổ trợ theo NHÓM — dạng của case và dạng gợi ý GOM THEO NHÓM bài, kèm % nhóm (mastery theo lần, tính ở DB).
+import { Fragment, useEffect, useState } from 'react'
 import {
   listCaseDangMo, getDangCuaCase, themDangTayVaoCase, boDangKhoiCase, getDangYeuGoiY,
-  type CaseBoTroYeuItem, type DangCuaCase, type DangGoiY,
+  type CaseBoTroYeuItem, type DangCuaCase, type DangGoiY, type NhomCuaDang,
 } from '../../lib/botro_yeu'
 import { DangPicker } from '../tailieu/TaiLieuBuilder'
 import { KHOI_OPTIONS } from '../../lib/kho/api'
+
+// Gom các dòng LIÊN TIẾP cùng nhóm (DB đã xếp nhóm yếu nhất trước) — chỉ để hiển thị.
+function gomNhom<T extends NhomCuaDang>(rows: T[]): { nhom: NhomCuaDang; rows: T[] }[] {
+  const out: { nhom: NhomCuaDang; rows: T[] }[] = []
+  for (const r of rows) {
+    const cuoi = out[out.length - 1]
+    if (cuoi && cuoi.nhom.nhom_id === r.nhom_id) cuoi.rows.push(r)
+    else out.push({ nhom: r, rows: [r] })
+  }
+  return out
+}
+const MUC_CHIP: Record<string, { ten: string; cls: string }> = {
+  yeu: { ten: 'yếu', cls: 'bg-rose-50 text-rose-700' },
+  can_luyen: { ten: 'cần luyện', cls: 'bg-amber-50 text-amber-700' },
+  dat: { ten: 'đạt', cls: 'bg-emerald-50 text-emerald-700' },
+}
+const pct = (v: number | null) => (v == null ? null : Math.round(v * 100))
+function DauNhom({ n }: { n: NhomCuaDang }) {
+  const chip = n.nhom_muc ? MUC_CHIP[n.nhom_muc] : null
+  return (
+    <div className="flex items-center gap-2 px-1 pb-1 pt-2">
+      <span className="min-w-0 flex-1 truncate text-[12px] font-semibold uppercase tracking-wide text-slate-500" title={n.ten_nhom ?? ''}>
+        {n.nhom_id ? `Nhóm · ${n.ten_nhom ?? n.nhom_id}` : 'Chưa có nhóm'}
+      </span>
+      {chip && <span className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${chip.cls}`}>{chip.ten}</span>}
+      {n.nhom_score != null && (
+        <span className="shrink-0 text-[12px] tabular-nums text-slate-500" title="Mastery nhóm: trung bình % của 5 lần làm bài gần nhất">
+          {pct(n.nhom_score)}% <span className="text-slate-400">· {n.nhom_n} lần</span>
+        </span>
+      )}
+    </div>
+  )
+}
 
 const NGUON_TEN: Record<string, string> = {
   ai_de_xuat: 'Hệ thống đề xuất', thu_cong: 'Mở tay',
@@ -65,12 +99,13 @@ export default function NoiDungBoTroYeuScreen() {
           </div>
         )}
       </div>
-      {moCase && <CaseDetail c={moCase} onDong={() => setMoId(null)} onDoi={reload} />}
+      {moCase && <CaseDetail c={moCase} onDong={() => setMoId(null)}
+        onDoi={(soDang) => setItems((prev) => prev.map((x) => (x.id === moCase.id ? { ...x, soDang } : x)))} />}
     </section>
   )
 }
 
-function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => void; onDoi: () => void }) {
+function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => void; onDoi: (soDang: number) => void }) {
   const [dangs, setDangs] = useState<DangCuaCase[]>([])
   const [loading, setLoading] = useState(true)
   const [khoiPick, setKhoiPick] = useState(c.khoi ?? KHOI_OPTIONS[0])
@@ -79,19 +114,30 @@ function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => v
   const [picker, setPicker] = useState<null | 'yeu' | 'ban_do'>(null)
   const [loi, setLoi] = useState<string | null>(null)
 
-  const reload = () => { setLoading(true); getDangCuaCase(c.id, c.mon).then(setDangs).finally(() => setLoading(false)) }
-  useEffect(() => { reload() }, [c.id]) // eslint-disable-line
+  useEffect(() => {
+    let alive = true
+    setLoading(true); setDangs([])
+    getDangCuaCase(c.id).then((d) => alive && setDangs(d)).catch((e: any) => alive && setLoi(e?.message ?? String(e)))
+      .finally(() => alive && setLoading(false))
+    return () => { alive = false }
+  }, [c.id])
 
+  // Mutation trong cùng case ⇒ vá tại chỗ / tải nền, không xoá trắng danh sách (CLAUDE §React)
   async function xoa(d: DangCuaCase) {
     setLoi(null)
-    try { await boDangKhoiCase(d.id); reload(); onDoi() }
-    catch (e: any) { setLoi(e?.message ?? String(e)) }
+    try {
+      await boDangKhoiCase(d.id)
+      const con = dangs.filter((x) => x.id !== d.id)
+      setDangs(con); onDoi(con.length)
+    } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
   async function themXong(maDangs: string[]) {
     setPicker(null); setLoi(null)
     try {
-      if (maDangs.length) await themDangTayVaoCase(c.id, maDangs)
-      reload(); onDoi()
+      if (!maDangs.length) return
+      await themDangTayVaoCase(c.id, maDangs)
+      const moi = await getDangCuaCase(c.id)   // dạng mới cần nhóm + % từ DB ⇒ tải nền, giữ danh sách cũ tới khi có
+      setDangs(moi); onDoi(moi.length)
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
 
@@ -107,20 +153,30 @@ function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => v
         {loading ? <p className="text-[13px] text-slate-400">Đang tải…</p> : dangs.length === 0 ? (
           <p className="mb-4 text-[13px] text-slate-400">Chưa có dạng nào — thêm dạng bên dưới.</p>
         ) : (
-          <ul className="mb-4 space-y-1.5">
-            {dangs.map((d) => (
-              <li key={d.id} className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-[13px]">
-                <div>
-                  <span className="font-medium text-slate-700">{d.ten_dang}</span>
-                  <span className="ml-1.5 text-slate-400">· {d.ten_chuyen_de}</span>
-                  {d.day_at && <span className="ml-1.5 rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700">đã dạy</span>}
-                </div>
-                <button onClick={() => xoa(d)} disabled={!!d.day_at}
-                  title={d.day_at ? 'Đã dạy — không xoá được' : 'Bỏ dạng này'}
-                  className="text-slate-400 hover:text-rose-600 disabled:cursor-not-allowed disabled:opacity-30">✕</button>
-              </li>
+          <div className="mb-4">
+            {gomNhom(dangs).map((g) => (
+              <Fragment key={g.nhom.nhom_id ?? '_'}>
+                <DauNhom n={g.nhom} />
+                <ul className="space-y-1">
+                  {g.rows.map((d) => (
+                    <li key={d.id} className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-[13px]">
+                      <div className="min-w-0 flex-1">
+                        <span className="font-medium text-slate-700">{d.ten_dang}</span>
+                        {d.ten_chuyen_de && <span className="ml-1.5 text-slate-400">· {d.ten_chuyen_de}</span>}
+                        {d.day_at && <span className="ml-1.5 rounded bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700">đã dạy</span>}
+                      </div>
+                      <span className="shrink-0 text-[12px] tabular-nums text-slate-500" title={d.score == null ? 'Em chưa được đo dạng này' : `Mastery dạng · ${d.n} lần`}>
+                        {d.score == null ? <span className="text-slate-300">chưa đo</span> : <>{pct(d.score)}% <span className="text-slate-400">· {d.n} lần</span></>}
+                      </span>
+                      <button onClick={() => xoa(d)} disabled={!!d.day_at}
+                        title={d.day_at ? 'Đã dạy — không xoá được' : 'Bỏ dạng này'}
+                        className="shrink-0 text-slate-400 hover:text-rose-600 disabled:cursor-not-allowed disabled:opacity-30">✕</button>
+                    </li>
+                  ))}
+                </ul>
+              </Fragment>
             ))}
-          </ul>
+          </div>
         )}
         {loi && <p className="mb-3 text-[12px] text-rose-600">{loi}</p>}
 
@@ -129,7 +185,7 @@ function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => v
             className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">
             + Thêm dạng
           </button>
-          <span className="text-[12px] text-slate-400">— chỉ hiện dạng em đang yếu / cần luyện</span>
+          <span className="text-[12px] text-slate-400">— dạng em chưa đạt, gom theo nhóm (nhóm yếu nhất trước)</span>
         </div>
         <div className="mt-2 flex items-center gap-2 text-[12px] text-slate-500">
           <span>Kiến thức năm trước / dạng chưa đo:</span>
@@ -161,10 +217,6 @@ function CaseDetail({ c, onDong, onDoi }: { c: CaseBoTroYeuItem; onDong: () => v
 // Popup "+ Thêm dạng": CHỈ dạng HS đang yếu/cần luyện (theo mastery hiện tại), yếu nhất lên đầu.
 // Dạng đã có trong case hiện mờ + nhãn "đã có", không cho tick lại (upsert vốn idempotent, nhưng tick
 // lại sẽ đếm sai "Thêm N dạng"). Không thấy dạng cần → link sang toàn bản đồ (kiến thức năm trước).
-const MUC_NHAN: Record<DangGoiY['muc'], { ten: string; cls: string }> = {
-  yeu: { ten: 'yếu', cls: 'bg-rose-50 text-rose-700' },
-  can_luyen: { ten: 'cần luyện', cls: 'bg-amber-50 text-amber-700' },
-}
 function DangYeuPicker({ hocSinhId, mon, banDo, daCo, onClose, onConfirm, onTimBanDo }: {
   hocSinhId: string; mon: string; banDo: 'cu' | 'moi'; daCo: string[]
   onClose: () => void; onConfirm: (maDangs: string[]) => void; onTimBanDo: () => void
@@ -185,12 +237,19 @@ function DangYeuPicker({ hocSinhId, mon, banDo, daCo, onClose, onConfirm, onTimB
   const toggle = (ma: string) => setSel((s) => { const n = new Set(s); n.has(ma) ? n.delete(ma) : n.add(ma); return n })
   const chuaCo = items.filter((d) => !daCoSet.has(d.ma_dang))
   const chonHet = () => setSel(new Set(chuaCo.map((d) => d.ma_dang)))
+  // Tick cả nhóm: mọi dạng chưa có của nhóm; đã tick đủ thì bỏ hết
+  const chonNhom = (rows: DangGoiY[]) => setSel((s) => {
+    const ma = rows.filter((d) => !daCoSet.has(d.ma_dang)).map((d) => d.ma_dang)
+    const n = new Set(s); const du = ma.every((m) => n.has(m))
+    for (const m of ma) { if (du) n.delete(m); else n.add(m) }
+    return n
+  })
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm" onClick={onClose}>
       <div className="flex max-h-[85vh] w-[620px] max-w-full flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-slate-200 px-6 py-3">
-          <h3 className="text-[15px] font-semibold text-slate-900">Dạng em đang yếu · {mon}</h3>
+          <h3 className="text-[15px] font-semibold text-slate-900">Dạng em chưa đạt · theo nhóm · {mon}</h3>
           <span className="text-[13px] text-slate-400">đã chọn <b className="text-indigo-600">{sel.size}</b></span>
           <button onClick={onClose} className="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100">✕</button>
         </div>
@@ -211,11 +270,23 @@ function DangYeuPicker({ hocSinhId, mon, banDo, daCo, onClose, onConfirm, onTimB
                     </button>
                   </div>
                 )}
+                {gomNhom(items).map((g) => {
+                  const conChon = g.rows.filter((d) => !daCoSet.has(d.ma_dang))
+                  return (
+                <Fragment key={g.nhom.nhom_id ?? '_'}>
+                <div className="flex items-center gap-2">
+                  <div className="min-w-0 flex-1"><DauNhom n={g.nhom} /></div>
+                  {g.nhom.nhom_id && conChon.length > 1 && (
+                    <button onClick={() => chonNhom(g.rows)} className="mt-1 shrink-0 rounded px-2 py-0.5 text-[11px] font-medium text-indigo-600 hover:bg-indigo-50">
+                      {conChon.every((d) => sel.has(d.ma_dang)) ? 'Bỏ cả nhóm' : `Chọn cả nhóm (${conChon.length})`}
+                    </button>
+                  )}
+                </div>
                 <ul className="space-y-1">
-                  {items.map((d) => {
+                  {g.rows.map((d) => {
                     const co = daCoSet.has(d.ma_dang)
                     const on = sel.has(d.ma_dang)
-                    const nhan = MUC_NHAN[d.muc]
+                    const nhan = MUC_CHIP[d.muc]
                     return (
                       <li key={d.ma_dang}>
                         <label className={`flex items-center gap-2.5 rounded-lg border px-3 py-2 ${co ? 'cursor-default border-slate-100 bg-slate-50 opacity-60' : on ? 'cursor-pointer border-indigo-300 bg-indigo-50/40' : 'cursor-pointer border-slate-100 hover:bg-slate-50'}`}>
@@ -234,6 +305,9 @@ function DangYeuPicker({ hocSinhId, mon, banDo, daCo, onClose, onConfirm, onTimB
                     )
                   })}
                 </ul>
+                </Fragment>
+                  )
+                })}
               </>
             )}
         </div>

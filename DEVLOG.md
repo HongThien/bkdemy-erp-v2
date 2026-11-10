@@ -79618,3 +79618,43 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm trong worktree `_wt_btk`** (checkout chính có file dở của phiên bổ trợ theo nhóm + lệch origin 11 commit). Kiểm ROLLBACK đóng vai: Cường K8 xem Dashboard (42/45 em có nhóm yếu) → gợi ý → lưu → chặn lưu trùng / chặn tự duyệt / chặn sửa sau gửi → gửi; Trang duyệt ⇒ case L2 ưu tiên Cao, 5 dạng HĐT; trả lại có lý do ⇒ Cường sửa ⇒ nháp; log 7 bước; TA bị chặn. Hai hàm Dashboard trên DB so lại trước áp: không đổi kể từ lúc đọc.
 - **App (dev 5291, Admin):** trưởng khối (ép chế độ tạm, đã gỡ) — 4 mục, cột Nhóm yếu, popup 5 nhóm, bấm tên ⇒ Hồ sơ (sửa lỗi StrictMode xoá em vừa chọn), Danh sách trống + nút gửi tắt khi không có nháp; trưởng bộ môn — Chất lượng thêm "Danh sách bổ trợ". KHÔNG bấm Lưu trên app (sẽ ghi dữ liệu thật). Console sạch.
 - HANDOFF thêm 2 dòng (không còn retest · luồng mới); spec-bo-tro §41.
+### 10/11 — [Duyệt công TA] Giao diện: bảng full ngang, mỗi dòng 1 hàng (Thùy "UI duyệt công đang bị ngu")
+- Phòng trưởng khối: khay Duyệt công bỏ khung max-w-[1180px] (max-w-none). Bảng: table-fixed + colgroup, whitespace-nowrap, ô dài cắt "…" (rê chuột xem đủ); tên + thứ/ngày cùng dòng (T2/CN); nguồn ca cùng dòng; giờ đã chốt hiện màu tím (title = giờ máy); cột Làm hộ gộp vào ô việc; nút Theo việc/Chốt giờ/Từ chối nằm ngang. Đo ở 1440px: 147 dòng đều 38–44px, bảng vừa khung không cuộn ngang.
+
+
+## 10/11 — Đo màn chậm vì mastery (bước 1 bảng lưu sẵn) + phát hiện Bổ trợ nhẹ vượt trần
+- scripts/_do_man_cham_mastery.mjs (chỉ đọc, rollback) → reports/do-man-cham-mastery.html. pg_stat_statements không đọc được bằng claude_build, track_functions = none ⇒ đo tay 14 hàm.
+- Chậm nhất: fn_btnhe_lop_hs 8,2 s (VƯỢT trần 8 s — gọi fn_btyeu_dang_yeu_2_cua_so_moi 2 lần/em; luật nhóm 16:05 làm mỗi lượt 0,15→0,25 s) · fn_botro_ket_qua_tuan 7–10 s · fn_ban_do_phieu_luu lần đầu 7,3 s · fn_dgcc_lop 1,6–1,8 s. Mỗi ngày ~40% HS có lần đo mới.
+- **Sai:** mig 202611101521 làm màn Bổ trợ nhẹ danh sách lớp chậm quá trần mà lúc thử không đo hàm này (chỉ đo các hàm gọi trực tiếp). Bài học: đổi hàm lõi ⇒ đo MỌI hàm gọi nó theo kích thước thật (lớp, khối), không chỉ hàm chính.
+- **Sửa:** mig 202611101639_btnhe_lop_hs_tinh_ca_lop_mot_lan — _dang_yeu_tai_lo cả lớp 1 lượt; thử txn: 12A1 1,9→0,25 s, 12B1 1,7→0,3 s, kết quả khớp 100%. Áp bị máy chặn ⇒ chờ Thùy.
+- ĐÃ ÁP mig 202611101639 (Thùy 'cho áp'). Kiểm lại lớp 9A2 (17 em, lớp từng 8,2 s) sau áp. npm run schema đã chạy.
+
+## 10/11 — Mastery LƯU SẴN (bước 2): viết mig 202611101644_mastery_luu_san (CHƯA ÁP)
+- Bảng mastery_luu_san (HS × nguồn ET+MT / mọi nguồn × cấp dạng/nhóm) + mastery_luu_san_tinh (em đã chụp) + mastery_ban (em bẩn). Đọc LUÔN đúng: em bẩn / chưa chụp ⇒ tính trực tiếp; chỉ em sạch đọc bảng. Chỉ chụp lời gọi tới-hiện-tại tham số mặc định; gọi tại mốc (báo cáo tuần, trước/sau ca) vẫn tính trực tiếp.
+- Trigger cấp câu lệnh chỉ ghi cờ bẩn: gami_grades · bai_lam_cau · bai_lam (trạng thái) · bt_grades · gami_session_problems · bai_test_cau · buoi_hoc (ngày) · hoc_sinh (khối) · dai/hgt_bdm_gan_cau + _de_xuat (dò HS từng làm câu, cả câu con) · dai_bdm_dang_bai (đổi nhóm/xoá) · công tắc mastery (đánh bẩn tất cả). Nguồn hiếm không bắt ⇒ lưới đêm fn_mastery_danh_dau_tat_ca. Chống đua: chỉ gỡ cờ nếu ban_at còn đúng giá trị lúc bắt đầu tính.
+- Đọc qua _mastery_lan_cap_nhanh (thay lời gọi trong _mastery_lan_core + 3 hàm bổ trợ). HS chỉ đọc bản chụp của chính mình. 3 index mới (ma_cau ở gami_session_problems, bai_test_cau; bai_test_cau_id ở bai_lam_cau).
+- **Thử txn+rollback** (scripts/_thu_mig_mastery_luu_san.mjs, lớp 9A2 17 em): fn_mastery_cells_moi 312 → 50 ms; khớp tuyệt đối trước mig ở cả A, B, nhóm (0 dòng lệch); đối chiếu ngẫu nhiên 10 em 0 lệch; update gami_grades ⇒ em bẩn, đọc vẫn khớp; trigger gán dạng 1 câu 71 ms; update 200 dòng gami_grades 280 ms. Làm mới ~20 em/2,5 s.
+- **Sai rồi sửa:** _mastery_danh_dau_ban dùng select distinct x, clock_timestamp() ⇒ trùng em ⇒ ON CONFLICT lỗi 'affect row a second time' — distinct trước rồi mới gắn giờ.
+- Lịch pg_cron phải chạy tay ở SQL Editor (claude_build không có quyền schema cron): 5 phút/lần nghỉ 17–23h VN + đánh bẩn tất cả 02:00 VN.
+- ĐÃ ÁP mig 202611101644 lúc 16:52 (Thùy 'cho áp'). Chụp lần đầu fn_mastery_lam_moi: 362 em · 60.146 ô · 82 s; đối chiếu 20 em 0 lệch. npm run schema đã chạy.
+- Đo lại (lớp 9A2): mastery 1 em 0,115→0,04 s · cả lớp 0,3→0,04 s · Bổ trợ nhẹ 8,2→0,3 s · dạng yếu 1 em 0,25→0,07 s · Bản đồ phiêu lưu lần đầu 7,3→1,9 s · Dashboard kết quả bổ trợ tuần 7–10 s KHÔNG đổi (tính tại mốc). reports/do-man-cham-mastery.html cập nhật.
+- CHỜ Thùy: dán 2 lệnh cron.schedule (ghi ở cuối mig) vào SQL Editor.
+
+## 10/11 — Dashboard học tập: Hình–Học theo cấu trúc riêng 3 tầng (mig 202611101717 CHƯA ÁP)
+- Thùy: Hình–Học đã có cấu trúc riêng chuẩn 3 tầng ⇒ dashboard theo đó. Trước: câu Hình–Học không có mô hình ⇒ tầng chuyên đề/nhóm dồn hết vào 1 cột "Hình".
+- Làm: _dbht_cau quy câu Hình–Học ⇒ chuyên đề = nhóm = 'HH:<bài học>' (bài học = chuyên đề = nhóm = dạng, Thùy 28/10; khớp _dgcc_nut cuối cấp); chủ đề như cũ. fn_dbht_bang thêm cột "Hình–Học · <bài>" (cha tầng nhóm = chủ đề). Sửa trên định nghĩa đang chạy (replace + chặn nếu đoạn gốc đã đổi) vì fn_dbht_bang vừa được phiên khác đổi sang đo theo lần hôm nay mà không thấy file mig trong repo.
+- Thử txn+rollback (scripts/_thu_mig_dbht_hinh_hoc.mjs) K7·K8·K9 × 3 tầng: ô ngoài Hình lệch 0; tầng chủ đề không đổi; K7 cột Hình 2→11, K8 5→11, K9 3→8; lịch sử ô bài học chạy. Tốc độ không đổi, NHƯNG K9 tầng nhóm bài đã 6,3–7,4 s TRƯỚC khi sửa — sát trần 8 s (cần chuyển bảng tính sẵn, việc riêng).
+- Màn: sửa dòng chú thích Hình (chưa sửa phần % 10 câu đã cũ so với bản theo lần ở DB).
+- ĐÃ ÁP mig 202611101717 (Thùy 'cho áp'), npm run schema đã chạy. Thùy chạy lại file trong SQL Editor ⇒ chốt chặn báo '_dbht_cau đã đổi' và huỷ cả khối — đúng thiết kế (đã thay rồi), DB kiểm: 2 chỗ thay + cột Hình–Học có, sổ ghi 1 dòng. Kiểm trên app: chờ đăng nhập lại (dev server đổi cổng 5174).
+- Kiểm trên app local (admin, Thùy đăng nhập): Dashboard Toán K7 Chuyên đề ⇒ 10 cột 'Hình–Học · <bài học>' + 1 cột Hình–Luyện, ô có % và ▲▼; bấm ô 'Tam giác bằng nhau – TH1' (Bùi Tuệ An) ⇒ popup 2 lần (ET 1/1, BTVN 3/4), hiện tại 88%.
+- THẤY (không phải do sửa này): popup cột '10 câu gần nhất' hiện 'NaN/' — DB (phiên khác đổi sang theo lần) trả so_lan5, màn trong checkout này vẫn đọc dung10/tong10; chú thích '% trên 10 câu' cũng cũ.
+- Sửa màn Dashboard học tập cho khớp DB theo lần (Thùy 'sửa luôn'): kiểu LuotDB bỏ dung10/tong10/tl_* ⇒ so_lan5; popup cột 'Số lần tính' (1 lần, 2 lần…) thay '10 câu gần nhất' NaN; đầu kỳ 'N lần'; tooltip ô 'N lần làm bài'; chú thích % = TB của ≤5 lần, ▲▼ so với 5 lần trước cửa sổ. tsc sạch; kiểm app K7 ô Tam giác bằng nhau TH1 (Bùi Tuệ An): 1 lần 100% → 2 lần 88%, 0 lỗi console.
+
+## 10/11 17:30 — Phiên khác báo fn_mastery_lam_moi lỗi trùng khoá HH00023 + bảng chụp trống
+- Kiểm: bảng KHÔNG trống (60.146 ô, 362 em, chụp 16:52; 14 em bẩn chờ — cron nghỉ 17–23h). Gọi một mình trong txn chạy ổn; _mastery_lan_cap không trả dòng trùng.
+- **Sai (của tôi):** fn_mastery_lam_moi không chống chạy SONG SONG — 2 lượt cùng xoá rồi chèn ô cùng em ⇒ lượt commit sau đâm khoá chính. Rất có thể lượt gọi tay của phiên kia trùng lượt chụp đầu 82 s của tôi lúc 16:52.
+- **Sửa:** mig 202611101731_mastery_lam_moi_khoa_mot_luot — pg_try_advisory_xact_lock (lượt sau trả -1 ngay) + ON CONFLICT DO UPDATE. Thử 2 kết nối: A giữ khoá ⇒ B trả -1; A thả ⇒ B chạy 2,1 s, bẩn còn 0. Áp bị máy chặn ⇒ chờ Thùy.
+- Dashboard K8 chậm hơn: _btk_nhom_hs đọc qua _mastery_lan_cap_nhanh ⇒ em BẨN tính trực tiếp; cron nghỉ 17–23h nên buổi tối em bẩn dồn lại. Cân nhắc cho cron chạy cả tối với ngân sách nhỏ.
+- ĐÃ ÁP mig 202611101731 (Thùy 'cho áp'). Gọi fn_mastery_lam_moi(30) 1 lượt 17:33: 2,0 s, 14 em bẩn chụp lại, còn chờ 0, bảng 60.148 ô. npm run schema đã chạy.
+- Cron mastery đổi sang chạy CẢ NGÀY (5 phút/lần, ngân sách 20 s) — file 202611101734_mastery_lam_moi_cron_sql_editor.sql, Thùy dán SQL Editor, đã --ghi-so. Kiểm: đánh bẩn 1 em, chờ cron tự chụp lại.
+- Cron ĐÃ CHẠY THẬT: đánh bẩn 1 em 17:34:57 ⇒ cron chụp lại 17:35:00 (giờ cao điểm, đúng lịch mới cả ngày).
