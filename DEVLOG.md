@@ -79526,3 +79526,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Sai:** sau khởi động lại bot (09/11 17:41), 10/11 12:13–13:30 phiên của chị Dương vẫn treo mọi câu Hình "chờ bật công cụ vẽ (máy chặn, cần Thùy cho phép)", chưa gọi ve_hinh lần nào. Chèn vào system prompt không thắng được lịch sử chat do chính nó viết.
 - **Kiểm:** chạy `claude -p` với ĐÚNG allowedTools của bot + PHIEN_ID phiên Toán 3 ⇒ `ve_hinh` qua heredoc chạy, ra PNG. Máy không chặn.
 - **Sửa:** bot chèn mẩu `[HỆ THỐNG — CÔNG CỤ ĐÃ BẬT]` vào CHÍNH tin nhắn mỗi lượt cho phiên mở trước công cụ mới (MOI.md); nhap_kho.md: câu Hình phụ thuộc hình ⇒ vẽ ngay, không treo. Thùy "không khoá gì của trưởng khối": mở thêm lệnh đọc hay bị hỏi quyền rồi rớt (ls · find · cd · head · tail · wc · sort · grep · pdftotext · pdfinfo · echo) — phiên KHTN 7 của anh Ngọc 10/11 14:02–14:09 rớt 3 lần vì `cd … && ls`, `find`.
+
+## 10/11 (tối) — Luật đơn vị BÙ theo nhóm cùng bài (Thùy 10/11: hỏi ca 8/11 của Tùng sao 12/6 đơn vị, 2/3 HS)
+- **Giải thích số:** ca K6 CN 8/11 16:00 (TA Tùng) có 3 buổi bù = 3 bài khác nhau (3 buổi nghỉ gốc khác nhau): Hiếu 1, Trí 2 (1 vắng · 1 có mặt) → 3 × 4 = 12; HS đếm distinct nên 2/3. Hệ thống (Lịch phòng) cũng tính 12 ⇒ lố thật do xếp bù tay không bị chặn đơn vị. Còn thấy: Trí có 2 buổi bù tuần sau (15/11) cùng bù 1 buổi gốc (tạo cách nhau 47 phút) — nghi trùng, chưa dọn (Luật xoá, chờ Thùy).
+- **Thùy:** bù cùng 1 bài: 1 HS 4 · 2 HS 6 · 3 HS 6. **Làm:** mig `202611101420_botro_lap_day_ca_bu_nhom` (ĐÃ ÁP) tính theo nhóm cho bảng Lấp đầy; ghi chú trong màn. Spec §40. 4 ca đổi (8→6), tổng 540→532.
+- **Chưa làm (chờ Thùy):** đổi luật ở Lịch phòng/xếp (`_ca_bo_tro_don_vi`, don_vi lưu sẵn, `fn_ca_bo_tro_xep`, `fn_ca_bo_tro_ngay`) — 2 chỗ sẽ lệch nhau tới khi sửa.

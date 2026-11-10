@@ -114,7 +114,7 @@ export default function LapDayCaBoTro({ toggle }: { toggle: ReactNode }) {
               rows={kq.ds.map((x) => [{ t: ddmmVN(x.ngay), v: x.ngay }, { t: THU[x.thu], v: x.thu }, { t: `${x.bd}–${x.kt}`, v: x.bd }, { t: `K${x.khoi}`, v: KHOI_ORDER(x.khoi) }, { t: x.ta, v: x.ta, cls: 'max-w-[160px] truncate' }, { t: String(x.so_ta), v: x.so_ta, n: 1 },
                 { bar: x.pct_hs, sub: `${x.hs}/${x.cap_hs}` }, { bar: x.pct_dv, sub: `${x.dv}/${x.cap_dv}` }, { t: `${x.ly}/${x.lb}/${x.ld}/${x.lh}`, v: x.ly + x.lb + x.ld + x.lh }])} /></div>}
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-slate-400">Ca = ca trực chưa huỷ, tính tới hôm qua. Lượt học sinh chưa gắn ca được ghép vào ca cùng ngày · khối · trùng giờ. Ca có thể &gt;100% đơn vị (xếp lố). Màu thanh: càng đầy càng đậm.</p>
+          <p className="mt-2 text-[11px] leading-relaxed text-slate-400">Ca = ca trực chưa huỷ, tính tới hôm qua. Lượt học sinh chưa gắn ca được ghép vào ca cùng ngày · khối · trùng giờ. <b>Bù tính theo nhóm cùng bài</b>: 1 em = 4 · 2–3 em cùng bài = 6 đơn vị (độ khó không tăng tỉ lệ thuận); các bài khác nhau trong cùng ca cộng dồn. Yếu · đuổi · hình tính theo từng em. Ca có thể &gt;100% đơn vị (xếp lố). Màu thanh: càng đầy càng đậm.</p>
         </>}
       </div>
     </div>
