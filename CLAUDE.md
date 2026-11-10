@@ -141,6 +141,18 @@
   transactional (tính + ghi trong CÙNG transaction); cột suy được từ cột khác cùng dòng =
   generated column; trạng thái suy từ bảng khác = trigger. `security definer` chỉ khi thật
   cần, mặc định invoker + RLS.
+- **⭐ GỌI ĐÚNG CÁI ĐANG HIỆN · SỐ KHÔNG REALTIME THÌ TÍNH SẴN (Thùy 10/11 — "statement timeout" lặp lại ở nhiều màn).**
+  Tính ở DB rồi vẫn sai nếu **tính lại cả hệ trong lượt gọi** (phòng Giám đốc: hiệu suất mọi TA mọi ghế mỗi lần mở = 29,7 s > trần 8 s).
+  - **Hiển thị cái gì gọi cái đấy:** màn mở chỉ gọi dữ liệu của phần ĐANG HIỆN. Phần chưa mở (tab, khối gập, popup, chặng khác,
+    người khác) chưa gọi. **Bấm đến đâu gọi đến đấy** — chi tiết 1 đối tượng tính lúc bấm vào nó.
+    Mutation 1 dòng ⇒ hỏi lại đúng dòng đó / vá tại chỗ, không tải lại cả danh sách (§2 React).
+  - **Số không cần realtime (hiệu suất, KPI, tổng hợp tháng/tuần, đếm cả kho, xếp hạng…) ⇒ BẢNG TÍNH SẴN ở DB**, màn chỉ ĐỌC.
+    Làm mới theo lịch (pg_cron, file `*_cron_sql_editor.sql` chạy ở SQL Editor) hoặc khi dữ liệu nguồn đổi (trigger/phiên bản);
+    lượt làm mới có ngân sách giây, cũ nhất trước. Màn ghi "số tính lúc HH:MM". Mẫu: `phong_so_luu` + `_phong_so_lam_moi`
+    (mig 202611101537) · cây/số đếm bản đồ lưu sẵn (mig 202611091907) · `dang_yeu_hien_tai`.
+  - **Cấm polling ngắn** (60 s…) cho số tính sẵn; đọc lại nền ≥ 5 phút, và không gọi lại khi chỉ mở/đóng 1 khối trên cùng màn.
+  - **Đo trước khi đưa lên màn:** hàm đọc > 1–2 s với dữ liệu thật (đo bằng tài khoản thật đông nhất — Giám đốc/toàn hệ) ⇒
+    chuyển sang bảng tính sẵn hoặc thu hẹp phạm vi, KHÔNG để chạm trần 8 s. Đổi cách đọc ⇒ so cũ–mới khớp từng dòng trước khi áp.
 - Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
   Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
 

@@ -74,6 +74,12 @@ export type GheGd = {
   so_ghe: number; so_ta: number; hieu_suat: number | null
   viec_tuan: number; dang_lam: number; da_xong: number; tre_han: number; qua_han: number; gay_thang: number
 }
+// Số các phòng là số LƯU SẴN (mig 202611101537, máy tính lại ngầm mỗi 5 phút) — đây là lúc tính của ghế cũ nhất.
+export async function soLuc(): Promise<string | null> {
+  const { data, error } = await supabase.rpc('fn_phong_so_luc')
+  if (error) throw error
+  return (data as string | null) ?? null
+}
 export async function listGheGd(): Promise<GheGd[]> {
   const { data, error } = await supabase.rpc('fn_phong_ghe_gd')
   if (error) throw error

@@ -29,7 +29,7 @@ import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import HoiVanHanhTa from './HoiVanHanhTa'
 import DuyetCongScreen from '../tacong/DuyetCongScreen'
 import { ChonGiaoDien } from '../HomeScreen'
-import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listGheTbm, monTbm, type CapDuoi, type GheGd, type GheTbm } from '../../lib/phongTk'
+import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listGheTbm, monTbm, soLuc, type CapDuoi, type GheGd, type GheTbm } from '../../lib/phongTk'
 import { useSkinErp } from '../../lib/erpSkin'
 import { HoatCanhNen } from '../hocsinh/skin/HoatCanhNen'
 import { HEAD } from '../home/khung'
@@ -58,6 +58,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const [dsTk, setDsTk] = useState<GheTbm[] | null>(NHO.tk)
   const [mon, setMon] = useState<string[] | null>(NHO.mon)   // môn của phòng trưởng bộ môn (null = mọi môn)
   const [loi, setLoi] = useState<string | null>(null)
+  const [soTinhLuc, setSoTinhLuc] = useState<string | null>(null)   // số lưu sẵn tính lúc nào (ghế cũ nhất)
   const [nguoi, setNguoi] = useState<CapDuoi | null>(null)
   useEffect(() => { if (mo === 'phien') setDaMoPhien(true) }, [mo])
   useEffect(() => {
@@ -71,19 +72,21 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
   const xemPhongGd = laGd && !xemMon && !xemTk     // cảnh đang là phòng Giám đốc
   useEffect(() => {
     if (!cheDo) return
-    // Thùy 03/11: hiệu suất hiện REALTIME — số tháng đang chạy, tính lại mỗi lần gọi (không đóng băng, không lấy tháng trước).
-    // Refetch NỀN mỗi 60 giây khi đang ở cảnh phòng: giữ danh sách cũ tới khi có danh sách mới, không bao giờ trắng.
+    // Thùy 10/11: số phòng KHÔNG realtime — DB lưu sẵn, máy tính lại ngầm mỗi 5 phút (mig 202611101537); màn chỉ đọc.
+    // Chỉ gọi danh sách của cảnh ĐANG HIỆN (đổi cảnh mới gọi; mở 1 việc không gọi lại). Đọc lại NỀN mỗi 5 phút, không bao giờ trắng.
     const xong = () => setLoi(null), hong = (e: any) => setLoi(e?.message ?? String(e))
-    const tai = () => laGd && !xemMon && !xemTk
-      ? listGheGd().then((d) => { NHO.gd = d; setDsGd(d); xong() }).catch(hong)
-      : cheDo === 'tbm' && !xemTk
-      ? listGheTbm(xemMon?.mon).then((d) => { NHO.tk = d; setDsTk(d); xong() }).catch(hong)
-      : (xemTk ? listCapDuoiCuaGhe(xemTk) : listCapDuoi()).then((d) => { NHO.ta = d; setDsTa(d); xong() }).catch(hong)
+    const tai = () => {
+      soLuc().then(setSoTinhLuc).catch(() => {})
+      return laGd && !xemMon && !xemTk
+        ? listGheGd().then((d) => { NHO.gd = d; setDsGd(d); xong() }).catch(hong)
+        : cheDo === 'tbm' && !xemTk
+        ? listGheTbm(xemMon?.mon).then((d) => { NHO.tk = d; setDsTk(d); xong() }).catch(hong)
+        : (xemTk ? listCapDuoiCuaGhe(xemTk) : listCapDuoi()).then((d) => { NHO.ta = d; setDsTa(d); xong() }).catch(hong)
+    }
     tai()
-    if (mo) return
-    const id = setInterval(() => { if (document.visibilityState === 'visible') tai() }, 60_000)
+    const id = setInterval(() => { if (document.visibilityState === 'visible' && !NHO.mo) tai() }, 300_000)
     return () => clearInterval(id)
-  }, [mo, cheDo, xemTk, laGd, xemMon])
+  }, [cheDo, xemTk, laGd, xemMon])
 
   const sk = useSkinErp()
   const khung: CSSProperties = { ...sk.bien, background: 'var(--sk-page)', fontFamily: 'var(--sk-font)' }
@@ -135,6 +138,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
                 : xemPhongGd
                 ? 'Trưởng vận hành + trưởng bộ môn · số trên đầu = hiệu suất trung bình của TA trong bộ môn · bấm để vào phòng của họ'
                 : `${ngoi.length} ghế trưởng khối · số trên đầu = hiệu suất trung bình của TA trong khối · bấm để vào phòng của họ`}
+              {soTinhLuc && ` · số tính lúc ${new Date(soTinhLuc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })}`}
             </span>
           )}
           <div className="ml-auto flex items-start gap-2">
