@@ -3,7 +3,7 @@
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
 // Số tính ở DB, lưu sẵn; widget gọi làm mới lười theo lô cho tới khi hết em cũ (fn_qlcl_lam_moi). Không tự ẩn số cũ khi đang làm mới.
 import { useEffect, useState } from 'react'
-import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, dongChayDangYeu, type DongChay, type OTongQuan, type HsDangYeu } from '../../lib/qlcl'
+import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, dongChayDangYeu, nhomYeuTheoO, type DongChay, type OTongQuan, type HsDangYeu, type ONhomYeu } from '../../lib/qlcl'
 import type { EtBtvn } from '../../lib/botro_tuan'
 import { KhoiET, KhoiBTVN } from '../danhgia/DuyetBoTroYeuScreen'
 
@@ -39,21 +39,26 @@ export function useCoDangYeu(): boolean {
 
 // Thùy 03/11 (thay 2 bảng 29/10): 2 box ngắn Dạng yếu · Học sinh yếu, mỗi box 2 số đầu tuần | hiện tại — mục tiêu là làm nổi SỐ.
 // chiO = 'môn|khối': chỉ hiện đúng ô đó (phòng Phó GĐ chuyên môn chọn khối ⇒ y như trưởng khối khối đó) — lọc thuần UI.
-export default function WidgetDangYeu({ onTaoCaNhe, className, chiO }: { onTaoCaNhe: () => void; className?: string; chiO?: string }) {
+// theoNhom (Phòng trưởng khối, Thùy 10/11): box 1 = NHÓM yếu thay dạng yếu; box HS thêm 3 cột ≥3 · 2 · 1 nhóm yếu (đếm riêng từng cột).
+const NHO_NHOM: { rows: ONhomYeu[] | null } = { rows: null }
+export default function WidgetDangYeu({ onTaoCaNhe, className, chiO, theoNhom }: { onTaoCaNhe: () => void; className?: string; chiO?: string; theoNhom?: boolean }) {
   const [rows, setRows] = useState<OTongQuan[] | null>(NHO.rows)
+  const [nhom, setNhom] = useState<ONhomYeu[] | null>(NHO_NHOM.rows)
   const [mo, setMo] = useState<OTongQuan | null>(null)
   useEffect(() => {
     NHO.nghe.add(setRows)
     tongQuanDangYeu().then((r) => { phat(r); chayLamMoi() }).catch(() => {})
     return () => { NHO.nghe.delete(setRows) }
   }, [])
+  // số nhóm đọc từ bảng chụp dạng yếu ⇒ đọc lại mỗi khi bảng chụp vừa được làm mới (rows đổi)
+  useEffect(() => { if (theoNhom) nhomYeuTheoO().then((r) => { NHO_NHOM.rows = r; setNhom(r) }).catch(() => {}) }, [theoNhom, rows])
   if (!rows || rows.length === 0) return null
 
   const dangCapNhat = rows.reduce((s, o) => s + o.so_can_tinh, 0) // đếm item đang render (badge)
   const hien = chiO ? rows.filter((o) => khoaO(o) === chiO) : rows
   return (
     <section className={className ?? 'mb-4'}>
-      {hien.length > 0 && <HaiBoxSo rows={hien} dangCapNhat={dangCapNhat} onMo={setMo} />}
+      {hien.length > 0 && <HaiBoxSo rows={hien} dangCapNhat={dangCapNhat} onMo={setMo} nhom={theoNhom ? (nhom ?? []) : null} />}
       {mo && <BangChiTiet o={mo} onDong={() => setMo(null)} onTaoCaNhe={onTaoCaNhe} />}
     </section>
   )
@@ -64,19 +69,26 @@ const NHO_O: { khoa: string | null } = { khoa: null }
 
 // Không CỘNG số giữa các ô (cùng 1 em có thể yếu ở 2 môn ⇒ cộng là đếm trùng; và số nghiệp vụ chỉ tính ở DB) —
 // phạm vi có nhiều ô thì chọn ô bằng chip, 2 box hiện đúng số của ô đó.
-function HaiBoxSo({ rows, dangCapNhat, onMo }: { rows: OTongQuan[]; dangCapNhat: number; onMo: (o: OTongQuan) => void }) {
+function HaiBoxSo({ rows, dangCapNhat, onMo, nhom }: { rows: OTongQuan[]; dangCapNhat: number; onMo: (o: OTongQuan) => void; nhom: ONhomYeu[] | null }) {
   const [khoa, setKhoa] = useState<string | null>(NHO_O.khoa)
   const o = rows.find((x) => khoaO(x) === khoa) ?? rows[0]
   const chon = (k: string) => { NHO_O.khoa = k; setKhoa(k) }
   const ten = (x: OTongQuan) => `${x.mon === 'Toán' ? '' : `${x.mon} `}Khối ${x.khoi}`
   const chuaChot = o.dau_tuan_hs_yeu == null
+  const n = nhom?.find((x) => x.mon === o.mon && x.khoi === o.khoi) ?? null
   // Màn laptop thấp (Thùy 03/11) ⇒ dàn NGANG: chip chọn ô (nếu >1) · 2 box thấp nằm cùng một hàng; tên ô ghi ngay trên header box.
   return (
     <div className="flex flex-wrap items-stretch gap-3">
-      <BoxSo tieuDe="Dạng yếu" phu={ten(o)} mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
-        dauTuan={chuaChot ? null : (o.dau_tuan_dang_yeu ?? 0)} hienTai={o.so_dang_yeu} />
+      {nhom ? (
+        <BoxSo tieuDe="Nhóm yếu" phu={ten(o)} mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
+          dauTuan={n?.dau_tuan_nhom_yeu ?? null} hienTai={n?.so_nhom_yeu ?? 0} />
+      ) : (
+        <BoxSo tieuDe="Dạng yếu" phu={ten(o)} mau="bg-rose-500" chuSo="text-rose-600" onClick={() => onMo(o)}
+          dauTuan={chuaChot ? null : (o.dau_tuan_dang_yeu ?? 0)} hienTai={o.so_dang_yeu} />
+      )}
       <BoxSo tieuDe="Học sinh yếu" phu={ten(o)} mau="bg-violet-500" chuSo="text-violet-600" onClick={() => onMo(o)}
-        dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs} />
+        dauTuan={o.dau_tuan_hs_yeu ?? null} hienTai={o.so_hs_yeu} tong={o.so_hs}
+        them={nhom ? [['≥ 3 nhóm', n?.hs_nhom_3 ?? 0, n?.dau_tuan_hs_nhom_3 ?? null], ['2 nhóm', n?.hs_nhom_2 ?? 0, n?.dau_tuan_hs_nhom_2 ?? null], ['1 nhóm', n?.hs_nhom_1 ?? 0, n?.dau_tuan_hs_nhom_1 ?? null]] : undefined} />
       {(rows.length > 1 || dangCapNhat > 0) && (
         <div className="flex min-w-0 max-w-[560px] flex-1 flex-col justify-center gap-1.5">
           {rows.length > 1 && (
@@ -98,17 +110,19 @@ function HaiBoxSo({ rows, dangCapNhat, onMo }: { rows: OTongQuan[]; dangCapNhat:
 
 // Card kiểu 1 (CLAUDE.md §6): header màu + thân trắng. Thân = 2 số cạnh nhau: đầu tuần (trái, xám) · hiện tại (phải, đậm màu).
 // div + flex-col (không dùng <button>: button tự căn nội dung GIỮA theo chiều dọc ⇒ box thấp hơn bị lệch header khi kéo cao bằng box bên).
-function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick }: {
+// them: cột phụ [nhãn, hiện tại, đầu tuần] — số em theo số nhóm yếu (đếm riêng từng cột, không cộng dồn)
+function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick, them }: {
   tieuDe: string; phu: string; mau: string; chuSo: string; dauTuan: number | null; hienTai: number; tong?: number; onClick: () => void
+  them?: [string, number, number | null][]
 }) {
   return (
     <div role="button" tabIndex={0} onClick={onClick} onKeyDown={(e) => { if (e.key === 'Enter') onClick() }} title="Bấm để xem chi tiết từng em"
-      className="flex w-[250px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
+      className={`flex ${them ? 'w-[520px]' : 'w-[250px]'} cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md`}>
       <div className={`flex items-baseline justify-between gap-2 px-3.5 py-1.5 text-white ${mau}`}>
         <span className="text-[13.5px] font-bold">{tieuDe}</span>
         <span className="truncate text-[11px] opacity-90">{phu}</span>
       </div>
-      <div className="grid flex-1 grid-cols-2 divide-x divide-slate-100 py-2.5">
+      <div className={`grid flex-1 ${them ? 'grid-cols-5' : 'grid-cols-2'} divide-x divide-slate-100 py-2.5`}>
         <div className="flex flex-col items-center justify-center px-2">
           <div className="text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">Đầu tuần</div>
           {dauTuan == null
@@ -122,6 +136,13 @@ function BoxSo({ tieuDe, phu, mau, chuSo, dauTuan, hienTai, tong, onClick }: {
             {tong != null && <span className="ml-0.5 text-[12px] text-slate-400">/{tong}</span>}
           </div>
         </div>
+        {them?.map(([nhan, ht, dt]) => (
+          <div key={nhan} className="flex flex-col items-center justify-center px-2">
+            <div className="whitespace-nowrap text-[10.5px] font-semibold uppercase tracking-wider text-slate-400">{nhan}</div>
+            <div className={`mt-0.5 text-[24px] font-bold leading-none ${chuSo}`}>{ht}</div>
+            <div className="mt-1 text-[10.5px] text-slate-400">{dt == null ? 'đầu tuần —' : `đầu tuần ${dt}`}</div>
+          </div>
+        ))}
       </div>
     </div>
   )

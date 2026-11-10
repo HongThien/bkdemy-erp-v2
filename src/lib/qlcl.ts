@@ -15,6 +15,17 @@ export async function tongQuanDangYeu(): Promise<OTongQuan[]> {
   return (data ?? []) as OTongQuan[]
 }
 // Tính lại tối đa `toiDa` em đã cũ của ô; trả số em còn cũ.
+// Phòng trưởng khối (Thùy 10/11): NHÓM yếu thay dạng yếu + số em theo số nhóm yếu (≥3 · 2 · 1) — đọc bảng chụp (mig 202611102120)
+export type ONhomYeu = {
+  mon: string; khoi: string; so_hs: number; so_nhom_yeu: number; hs_nhom_3: number; hs_nhom_2: number; hs_nhom_1: number
+  dau_tuan_nhom_yeu: number | null; dau_tuan_hs_nhom_3: number | null; dau_tuan_hs_nhom_2: number | null; dau_tuan_hs_nhom_1: number | null
+}
+export async function nhomYeuTheoO(): Promise<ONhomYeu[]> {
+  const { data, error } = await supabase.rpc('fn_qlcl_nhom_yeu').limit(200)
+  if (error) throw error
+  return (data ?? []) as ONhomYeu[]
+}
+
 export async function lamMoiDangYeu(mon: string, khoi: string, toiDa = 10): Promise<number> {
   const { data, error } = await supabase.rpc('fn_qlcl_lam_moi', { p_mon: mon, p_khoi: khoi, p_toi_da: toiDa })
   if (error) throw error

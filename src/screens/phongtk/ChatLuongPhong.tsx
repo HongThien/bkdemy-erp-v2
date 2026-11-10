@@ -40,7 +40,7 @@ export function ChatLuongTK({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
     <div className="space-y-4">
       {muc !== 'dashboard' && thanhMuc}
       {muc === 'dashboard' && (cacO ? <DashboardHocTapScreen phong={{ o: cacO.map((x) => ({ mon: x.mon, khoi: x.khoi })), onMoHoSo: moHoSo, dau: thanhMuc }} /> : <>{thanhMuc}<p className="text-[13px] text-slate-400">Đang tải các khối…</p></>)}
-      {muc === 'chung' && <><WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} /><BaoCaoCaNhan chiMuc={['tuan']} /></>}
+      {muc === 'chung' && <><WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} theoNhom /><BaoCaoCaNhan chiMuc={['tuan']} /></>}
       {muc === 'hoso' && <HoSoHocSinh key={hoSo ? `${hoSo.mon}|${hoSo.hs}` : 'trong'} monDau={hoSo?.mon ?? cacO?.[0]?.mon ?? 'Toán'} hsDau={hoSo?.hs ?? null} />}
       {muc === 'bo_tro' && (cacO ? <DanhSachBoTro che="tk" cacO={cacO} onMoHoSo={moHoSo} /> : null)}
     </div>

@@ -79705,3 +79705,7 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa: bảng tu_luyen_so_cau (bản đồ mới, dạng → số câu, theo khối) + _tu_luyen_so_cau_tinh(khối) + fn_tu_luyen_so_cau_lam_moi; tu_luyen_chu_de_ds_dang đọc bảng (khối chưa có thì tính 1 lần). Sửa trên định nghĩa đang chạy (thay đúng khối đếm câu, chặn nếu đã đổi).
 - Thử txn (scripts/_thu_mig_tu_luyen_so_cau.mjs): K9 9B2 0,84 → 0,46 s, K7 7A1 1,05 → 0,42 s, kết quả JSON khớp cũ từng dạng. Cron làm mới 05:30 VN: file 202611102121_tu_luyen_so_cau_cron_sql_editor.sql (dán SQL Editor).
 - ĐÃ ÁP mig 202611102121 (Thùy 'cho áp'). Tính sẵn cả 12 khối 1 lượt: 998 dạng · 8,1 s. Đo thật 1 em K9: 0,73 s lần đầu, 0,43 s lần sau. Cron 05:30 chờ Thùy dán SQL Editor. npm run schema đã chạy.
+### Phòng trưởng khối — Tình hình chung: NHÓM yếu thay dạng yếu + HS theo số nhóm (≥3 · 2 · 1) — Thùy 10/11 (qua phiên Hoàn thiện phòng làm việc)
+- mig 202611102120 (ĐÃ ÁP, Thùy "Áp đi"): _dy_so_nhom(jsonb) đếm nhóm khác nhau trong danh sách dạng yếu của em (Hình–Học bài = nhóm) + fn_qlcl_nhom_yeu() đọc bảng chụp dang_yeu_hien_tai / dang_yeu_dau_tuan, cùng phạm vi fn_pham_vi_cua_toi. Không tính mastery lúc mở; Thùy 358 ms / 20 ô.
+- Đối chiếu: Toán 9 HS ≥3/2/1 = 52/7/7 (tổng 66 = HS yếu), Toán 8 = 32/7/4 (43). Ảnh đầu tuần chụp trước luật bổ trợ theo nhóm ⇒ tuần này đầu tuần = số nhóm CÓ dạng yếu.
+- WidgetDangYeu prop theoNhom (chỉ Phòng TK: ChatLuongPhong + PhanViecPgd); Sảnh giữ Dạng yếu như cũ. Box HS rộng 5 cột, mỗi cột có đầu tuần. Kiểm trên app (KHTN 7: 3+1+4 = 8 HS yếu).

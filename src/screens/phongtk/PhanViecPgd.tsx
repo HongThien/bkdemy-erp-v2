@@ -74,7 +74,7 @@ function ChatLuongTbmChung({ cacO, onTaoCaNhe }: { cacO: OTongQuan[] | null; onT
   if (chon) return (
     <div className="space-y-4">
       <ChipO cacO={cacO} chon={chon} onChon={setChon} nhanTatCa="← Mọi khối" />
-      <WidgetDangYeu className="" chiO={khoaO(chon)} onTaoCaNhe={onTaoCaNhe} />
+      <WidgetDangYeu className="" chiO={khoaO(chon)} onTaoCaNhe={onTaoCaNhe} theoNhom />
       <BaoCaoCaNhan chiMuc={['tuan']} o={chon} />
     </div>
   )
