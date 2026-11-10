@@ -1780,7 +1780,7 @@ export function HopThuHS({ onXong }: { onXong: () => void }) {
         {thu.map((x) => x.tm ? (
           <TheHS key={`tm:${x.tm.id}`} className="p-4" style={!x.tm.doc_at ? vienChuaDoc : undefined}>
             <p className="text-[15.5px] font-semibold leading-snug" style={{ color: MAU.ink }}>{x.tm.bieu_tuong ?? '🔔'} {x.tm.tieu_de}</p>
-            <p className="mt-1 text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{x.tm.noi_dung}</p>
+            <p className="mt-1 whitespace-pre-line text-[14.5px] leading-snug" style={{ color: MAU.muted }}>{x.tm.noi_dung}</p>
             <p className="mt-1.5 text-[12px]" style={{ color: MAU.muted }}>{fmtShort(x.tm.created_at)}</p>
           </TheHS>
         ) : x.b ? (

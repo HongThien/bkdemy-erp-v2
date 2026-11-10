@@ -49,7 +49,7 @@ export async function setTrangThaiBaoLoi(id: string, trang_thai: TrangThaiBaoLoi
   if (error) throw error
 }
 
-// Nhân sự trả lời góp ý của học sinh (em thấy ở "Góp ý của em"; có quyền ghi thong_bao_hs thì còn vào Hòm thư).
+// Nhân sự trả lời góp ý của học sinh — mỗi lần là 1 dòng chuỗi (bao_loi_tra_loi) + 1 tin 💬 vào Hòm thư app HS (mig 202611101731).
 export async function traLoiBaoLoi(id: string, noiDung: string): Promise<void> {
   const { error } = await supabase.rpc('fn_bao_loi_tra_loi', { p_id: id, p_noi_dung: noiDung })
   if (error) throw error

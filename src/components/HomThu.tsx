@@ -6,7 +6,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useStore } from '../store/useStore'
-import { listThu, demChuaDoc, danhDauDoc, danhDauChuaDoc, NHAN_LOAI, type Thu, type LoaiThu } from '../lib/homThu'
+import { listThu, demChuaDoc, danhDauDoc, danhDauChuaDoc, luongBaoLoi, NHAN_LOAI, type Thu, type LoaiThu, type LuongBaoLoi } from '../lib/homThu'
+import { traLoiBaoLoi } from '../lib/baoloi'
 
 const VN = 'Asia/Ho_Chi_Minh'
 // Kiểu Gmail: hôm nay → giờ; năm nay → ngày/tháng; năm khác → ngày/tháng/năm.
@@ -170,6 +171,7 @@ export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: stri
                     {dangXem.noi_dung
                       ? <p className="whitespace-pre-line text-[16px] leading-relaxed text-slate-800">{dangXem.noi_dung}</p>
                       : <p className="text-[15px] italic text-slate-400">(Thư không có nội dung — xem tiêu đề.)</p>}
+                    {dangXem.bao_loi_id && <TraLoiHocSinh key={dangXem.bao_loi_id} id={dangXem.bao_loi_id} />}
                     <div className="mt-8 flex flex-wrap items-center gap-2">
                       {dangXem.lien_ket && duocDi(dangXem.lien_ket) && (
                         <button onClick={() => { setMo(false); di(dangXem.lien_ket!) }} className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-semibold text-white hover:bg-indigo-500">Mở màn liên quan ›</button>
@@ -185,5 +187,54 @@ export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: stri
         document.body,
       )}
     </div>
+  )
+}
+
+// TRẢ LỜI HỌC SINH ngay trong thư báo lỗi/góp ý (Thùy 10/11): các lần đã trả lời (ai, lúc nào — Thùy và Hải thấy của nhau)
+// + ô viết. Gửi ⇒ DB thêm 1 dòng chuỗi + 1 tin 💬 vào Hòm thư app HS của em (fn_bao_loi_tra_loi). Gửi xong chỉ hỏi lại ĐÚNG báo lỗi này.
+function TraLoiHocSinh({ id }: { id: string }) {
+  const [l, setL] = useState<LuongBaoLoi | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const [nd, setNd] = useState('')
+  const [dang, setDang] = useState(false)
+  const [vuaGui, setVuaGui] = useState(false)
+  const tai = useCallback(() => luongBaoLoi(id).then(setL).catch((e) => setLoi(e?.message ?? 'lỗi')), [id])
+  useEffect(() => { void tai() }, [tai])
+  const gui = async () => {
+    const v = nd.trim()
+    if (v.length < 2 || dang) return
+    setDang(true); setLoi(null)
+    try { await traLoiBaoLoi(id, v); setNd(''); setVuaGui(true); await tai() }
+    catch (e) { setLoi((e as Error)?.message ?? 'Chưa gửi được') }
+    finally { setDang(false) }
+  }
+  return (
+    <section className="mt-6 rounded-xl border border-indigo-100 bg-indigo-50/40 p-4">
+      <div className="mb-2 flex items-center gap-2">
+        <h3 className="text-[15px] font-bold text-slate-800">💬 Trả lời em{l?.ten_hs ? ` ${l.ten_hs}` : ''}</h3>
+        {l && l.tra_loi.length > 0 && <span className={`ml-auto text-[12px] font-semibold ${l.em_da_doc ? 'text-emerald-600' : 'text-slate-400'}`}>{l.em_da_doc ? '✓ Em đã xem' : 'Em chưa xem'}</span>}
+      </div>
+      {l === null && !loi && <p className="text-[13.5px] text-slate-400">Đang tải…</p>}
+      {l && l.tra_loi.length > 0 && (
+        <ul className="mb-3 flex flex-col gap-2">
+          {l.tra_loi.map((t, i) => (
+            <li key={i} className="rounded-lg bg-white px-3 py-2 shadow-sm">
+              <p className="text-[12px] text-slate-400"><b className="font-semibold text-slate-600">{t.ho_ten ?? 'Nhân sự'}</b> · {gioNgan(t.created_at)}</p>
+              <p className="mt-0.5 whitespace-pre-line text-[14.5px] leading-snug text-slate-800">{t.noi_dung}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      <textarea value={nd} onChange={(e) => { setNd(e.target.value.slice(0, 600)); setVuaGui(false) }} rows={3}
+        placeholder="Viết lời trả lời — em sẽ thấy trong Hòm thư của app học sinh"
+        className="w-full resize-y rounded-lg border border-slate-300 bg-white px-3 py-2 text-[14.5px] outline-none focus:border-indigo-500" />
+      <div className="mt-2 flex items-center gap-3">
+        <button onClick={gui} disabled={dang || nd.trim().length < 2}
+          className="rounded-lg bg-indigo-600 px-4 py-2 text-[14px] font-semibold text-white hover:bg-indigo-500 disabled:bg-slate-300">{dang ? 'Đang gửi…' : 'Gửi cho em'}</button>
+        <span className="text-[12px] text-slate-400">{nd.length}/600</span>
+        {vuaGui && <span className="text-[13px] font-semibold text-emerald-600">✓ Đã gửi vào Hòm thư của em</span>}
+        {loi && <span className="text-[13px] text-rose-600">{loi}</span>}
+      </div>
+    </section>
   )
 }

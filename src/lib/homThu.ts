@@ -5,6 +5,7 @@ export type LoaiThu = 'order' | 'gay' | 'viec' | 'nhan_xet' | 'he_thong'
 export type Thu = {
   id: string; loai: LoaiThu; tieu_de: string; noi_dung: string | null; lien_ket: string | null
   da_doc: boolean; created_at: string; tu: { ho_ten: string } | null
+  bao_loi_id: string | null   // thư sinh từ báo lỗi/góp ý của HỌC SINH ⇒ trả lời em ngay trong thư (mig 202611101731)
 }
 
 export const NHAN_LOAI: Record<LoaiThu, { icon: string; ten: string }> = {
@@ -14,7 +15,7 @@ export const NHAN_LOAI: Record<LoaiThu, { icon: string; ten: string }> = {
 
 export async function listThu(limit = 60): Promise<Thu[]> {
   const { data, error } = await supabase.from('hom_thu')
-    .select('id, loai, tieu_de, noi_dung, lien_ket, da_doc, created_at, tu:tu_nhan_su(ho_ten)')
+    .select('id, loai, tieu_de, noi_dung, lien_ket, da_doc, created_at, bao_loi_id, tu:tu_nhan_su(ho_ten)')
     .order('created_at', { ascending: false }).limit(limit)
   if (error) throw error
   return (data ?? []) as unknown as Thu[]
@@ -38,4 +39,16 @@ export async function danhDauChuaDoc(ids: string[]): Promise<void> {
   if (!ids.length) return
   const { error } = await supabase.from('hom_thu').update({ da_doc: false }).in('id', ids)
   if (error) throw error
+}
+
+/** Báo lỗi/góp ý của HS + chuỗi trả lời (ai, lúc nào) — cho khung trả lời trong thư. Chỉ nhân sự. */
+export type LuongBaoLoi = {
+  id: string; loai: 'bug' | 'yeu_cau'; mo_ta: string; created_at: string; anh_url: string | null
+  ten_hs: string | null; ma_hs: string | null; em_da_doc: boolean
+  tra_loi: { noi_dung: string; created_at: string; ho_ten: string | null }[]
+}
+export async function luongBaoLoi(id: string): Promise<LuongBaoLoi> {
+  const { data, error } = await supabase.rpc('fn_bao_loi_luong', { p_id: id })
+  if (error) throw error
+  return data as LuongBaoLoi
 }
