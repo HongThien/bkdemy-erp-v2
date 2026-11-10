@@ -137,6 +137,9 @@ export const thongSoKy = (ky: string, lan: number) => rpc<ThongSoKy | null>('fn_
 export const datDonGia = (ma: string, gia: number, tu: string, o: { ten?: string; siTu?: number | null; siDen?: number | null; ghiChu?: string } = {}) =>
   rpc<string>('fn_ta_dat_don_gia', { p_ma: ma, p_gia: gia, p_hieu_luc_tu: tu, p_ten: o.ten ?? null, p_si_tu: o.siTu ?? null, p_si_den: o.siDen ?? null, p_ghi_chu: o.ghiChu ?? '' })
 export const luongThang = (ky: string) => rpc<LuongThang[]>('fn_ta_luong_ky', { p_ky: ky })
+// Thùy 10/11: tổng lương tháng — cộng ở DB, cùng nguồn với bảng (kỳ chốt ⇒ bản chốt; chưa chốt ⇒ tạm tính)
+export type LuongTong = { so_ta: number; package_lop: number; bo_tro_tien: number; ngoai_package: number; gross: number; tien_phat: number; net: number; da_chot: boolean; tinh_luc: string }
+export const luongTong = async (ky: string) => (await rpc<LuongTong[]>('fn_ta_luong_ky_tong', { p_ky: ky }))[0] ?? null
 // Chốt kỳ (bản chụp bất biến; khoá sửa công + đơn giá lùi về tháng đó) · mở lại (bắt buộc lý do, bản cũ giữ trong lịch sử).
 export const kyTrangThai = (ky: string) => rpc<KyTrangThai>('fn_ta_ky_trang_thai', { p_ky: ky })
 export const chotKy = (ky: string, ghiChu = '') => rpc<number>('fn_ta_chot_ky', { p_ky: ky, p_ghi_chu: ghiChu })

@@ -10,7 +10,7 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { useStore } from '../../store/useStore'
 import { homNayVN, congNgay, ddmmVN } from '../../lib/tuan'
-import { luongThang, bangDonGia, datDonGia, suaDonGia, xoaDonGia, thongSoKy, dsLoaiViec, dsLoaiViecQL, luuLoaiViec, dungLoaiViec, type LoaiViecQL, dsLuongLop, datLuongLop, xoaLuongLop, type LuongLop, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai, type ThongSoKy } from '../../lib/tacong'
+import { luongThang, luongTong, type LuongTong, bangDonGia, datDonGia, suaDonGia, xoaDonGia, thongSoKy, dsLoaiViec, dsLoaiViecQL, luuLoaiViec, dungLoaiViec, type LoaiViecQL, dsLuongLop, datLuongLop, xoaLuongLop, type LuongLop, kyTrangThai, chotKy, moLaiKy, gioVN, type LuongThang, type DonGia, type LoaiViec, type KyTrangThai, type ThongSoKy } from '../../lib/tacong'
 
 type Tab = 'luong' | 'gia' | 'loai' | 'lop'
 const inputCls = 'rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-sm text-slate-700 outline-none focus:border-indigo-400'
@@ -63,9 +63,19 @@ function TabLuong({ bao, coGhi }: { bao: (t: string, ok?: boolean) => void; coGh
   const [tenLoai, setTenLoai] = useState<Record<string, string>>({})
   useEffect(() => { dsLoaiViec().then((d) => setTenLoai(Object.fromEntries(d.map((x) => [x.ma, x.ten])))).catch(() => {}) }, [])
   const [tt, setTt] = useState<KyTrangThai | null>(null)
+  const [tong, setTong] = useState<LuongTong | null>(null)
+  const [dongBo, setDongBo] = useState(false)
   // đổi tháng = đổi ngữ cảnh ⇒ reset; sau chốt / mở lại = cùng ngữ cảnh ⇒ tải NỀN, giữ bảng đang hiện (CLAUDE.md §2 React)
-  useEffect(() => { setRows(null); setMo(null); setTt(null); luongThang(ky).then(setRows).catch((e) => { bao(loiCua(e), false); setRows([]) }); kyTrangThai(ky).then(setTt).catch(() => {}) }, [ky, bao])
-  const taiLai = useCallback(() => { luongThang(ky).then(setRows).catch((e) => bao(loiCua(e), false)); kyTrangThai(ky).then(setTt).catch(() => {}) }, [ky, bao])
+  useEffect(() => { setRows(null); setMo(null); setTt(null); setTong(null); luongThang(ky).then(setRows).catch((e) => { bao(loiCua(e), false); setRows([]) }); kyTrangThai(ky).then(setTt).catch(() => {}); luongTong(ky).then(setTong).catch(() => {}) }, [ky, bao])
+  // Đồng bộ = tính lại NỀN từ dữ liệu hiện tại (công vừa duyệt, mức lớp, đơn giá…), giữ bảng cũ tới khi có bảng mới
+  const taiLai = useCallback(async (baoXong = false) => {
+    setDongBo(true)
+    try {
+      const [r, t] = await Promise.all([luongThang(ky), luongTong(ky)])
+      setRows(r); setTong(t); kyTrangThai(ky).then(setTt).catch(() => {})
+      if (baoXong) bao(t?.da_chot ? 'Tháng đã chốt — đang hiện bản chốt (mở lại kỳ nếu cần tính lại)' : 'Đã tính lại theo dữ liệu mới nhất')
+    } catch (e) { bao(loiCua(e), false) } finally { setDongBo(false) }
+  }, [ky, bao])
   const daChot = !!rows?.[0]?.da_chot
   const [y, m] = ky.split('-')
   return (
@@ -74,6 +84,9 @@ function TabLuong({ bao, coGhi }: { bao: (t: string, ok?: boolean) => void; coGh
         <button className={btnGhost} onClick={() => setKy(dauThang(congNgay(ky, -1)))}>‹</button>
         <span className="min-w-[110px] text-center text-sm font-semibold text-slate-800">Tháng {Number(m)}/{y}</span>
         <button className={btnGhost} disabled={ky >= dauThang(homNayVN())} onClick={() => setKy(dauThang(congNgay(ky, 32)))}>›</button>
+        {tong && <span className="ml-2 rounded-lg bg-emerald-50 px-3 py-1 text-sm text-emerald-800">Tổng thực nhận <b className="text-base">{tien(tong.net)}đ</b> · {tong.so_ta} TA</span>}
+        <button className={btnGhost} disabled={dongBo} onClick={() => taiLai(true)} title="Tính lại lương tháng này từ dữ liệu hiện tại (công đã duyệt, mức lương lớp, đơn giá, phạt)">{dongBo ? 'Đang tính…' : '↻ Đồng bộ'}</button>
+        {tong && <span className="text-[11px] text-slate-400">{tong.da_chot ? 'chốt lúc' : 'tính lúc'} {luc(tong.tinh_luc)}</span>}
         <span className="ml-auto text-xs text-slate-500">{daChot ? `Bản chốt lần ${rows?.[0]?.lan} — số liệu cố định, không tính lại` : 'Tạm tính từ dữ liệu đã duyệt tới hiện tại · hạn duyệt/sửa: ngày 3 tháng sau'}</span>
       </div>
       {tt && <ChotKy tt={tt} thang={`${Number(m)}/${y}`} coGhi={coGhi} bao={bao} onXong={taiLai} />}
@@ -90,6 +103,10 @@ function TabLuong({ bao, coGhi }: { bao: (t: string, ok?: boolean) => void; coGh
               <FragmentLuong key={r.nhan_su_id} r={r} mo={mo === r.nhan_su_id} onMo={() => setMo(mo === r.nhan_su_id ? null : r.nhan_su_id)} tenLoai={tenLoai} />
             ))}
           </tbody>
+          {tong && rows && rows.length > 0 && <tfoot><tr className="border-t-2 border-slate-300 bg-slate-50 font-semibold text-slate-800">
+            <td className="px-3 py-2">Tổng ({tong.so_ta} TA)</td><td className="px-3 py-2 text-right">{tien(tong.package_lop)}</td><td className="px-3 py-2 text-right">{tien(tong.bo_tro_tien)}</td>
+            <td className="px-3 py-2 text-right">{tien(tong.ngoai_package)}</td><td className="px-3 py-2 text-right">{Number(tong.tien_phat) ? '−' + tien(tong.tien_phat) : '—'}</td><td className="px-3 py-2 text-right text-emerald-700">{tien(tong.net)}</td><td></td>
+          </tr></tfoot>}
         </table>
       </div>
       <p className="text-xs text-slate-500">Chỉ tính việc đã duyệt thuộc ca đã duyệt. %Trợ giảng = buổi TA có công ÷ số buổi CẢ THÁNG của lớp (TA phân công giữa tháng chỉ nhận phần buổi mình làm). Lớp của TA = lớp được phân công vào bất kỳ ngày nào trong tháng + lớp TA dạy hộ. BTVN lấy thẳng từ người chấm trên ERP.</p>

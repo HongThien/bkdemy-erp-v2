@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-517 bảng · 39 view · 0 enum · 339 trigger · 1729 function
+517 bảng · 39 view · 0 enum · 339 trigger · 1730 function
 
 ## _app_secrets
 
@@ -11390,6 +11390,7 @@ WITH luot AS (
 - `fn_ta_loai_viec_dung(p_ma text, p_active boolean)` → void
 - `fn_ta_loai_viec_luu(p_ma text, p_ten text, p_co_che text, p_don_vi text, p_can_lop boolean, p_can_hs boolean, p_ghi_chu text DEFAULT ''::text, p_gia numeric DEFAULT NULL::numeric, p_gia_tu date DEFAULT NULL::date)` → text
 - `fn_ta_luong_ky(p_ky date, p_ns uuid DEFAULT NULL::uuid)` → TABLE(nhan_su_id uuid, ho_ten text, package_lop numeric, bo_tro_gio numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, chi_tiet jsonb, da_chot boolean, lan integer, chot_at timestamp with time zone)
+- `fn_ta_luong_ky_tong(p_ky date)` → TABLE(so_ta integer, package_lop numeric, bo_tro_tien numeric, ngoai_package numeric, gross numeric, tien_phat numeric, net numeric, da_chot boolean, tinh_luc timestamp with time zone)
 - `fn_ta_luong_lop_dat(p_lop uuid, p_muc numeric, p_tu date, p_ghi_chu text DEFAULT ''::text)` → uuid
 - `fn_ta_luong_lop_ds(p_ky date)` → TABLE(lop_id uuid, ten_lop text, mon text, trang_thai text, si_tb numeric, bac_si_so numeric, muc_id uuid, muc numeric, hieu_luc_tu date, ghi_chu text, nguoi_dat text, dat_at timestamp with time zone, khoa_ky date, lich_su jsonb)
 - `fn_ta_luong_lop_xoa(p_id uuid, p_ly_do text)` → void
