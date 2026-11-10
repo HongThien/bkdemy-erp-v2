@@ -79694,3 +79694,14 @@ Thùy nêu 4 việc, làm được 3:
 ## 10/11 ~20:30 — Màn Chấm MT đổi lớp 4–5 s
 - Đo DB 5 phút liên tục (20:18–20:23): mọi lệnh 45–54 ms, không nghẽn ⇒ 4–5 s do màn: mỗi lần mở chờ DỰNG LẠI lưới (chuanBiLuoiMT ~15–25 lượt gọi nối đuôi, kể cả ghi) rồi mới hiện.
 - Sửa ChamMTScreen: buổi đã mở trong phiên ⇒ hiện ngay từ bộ nhớ (CACHE_BUOI); lần đầu đọc đề · lưới · HS SONG SONG, lưới đã có ⇒ hiện luôn; dựng lưới vẫn chạy như cũ nhưng ở NỀN, xong vá lại. Lưới chưa từng dựng ⇒ chờ như trước. tsc sạch. Chưa đo trên app (Thùy thử ở dev bằng Chrome), push theo lệnh Thùy.
+
+## 10/11 21:15 — Kiểm tổng thể tốc độ (Thùy "vào ERP cái gì cũng lâu hơn")
+- Mạng/DB thô bình thường (select 1 = 46 ms). Bảng chụp mastery khoẻ (5 em bẩn, chụp cuối 21:10).
+- Đo 14 hàm (lần đầu / lần lặp, so 16:52): nhanh ≤0,2 s: kết quả học tập 1 em/lớp, mastery nhóm, Dashboard học tập, dạng yếu 1 em. Ổn 0,4–1,2 s: bản đồ phiêu lưu, học tập theo dạng, bổ trợ nhẹ (lần đầu 2,2), chốt tuần lô 10 (lần đầu 12,5!). CHẬM: tự luyện chọn chủ đề 4,9/4,0 s (16:52: 0,6/0,5) — ở bước ĐẾM CÂU KHO (bdm_cau_hoi), không ở mastery; đánh giá cuối cấp 7,2/4,4 (2,5/1,7); kết quả bổ trợ tuần 8,4/10,2 (như cũ); thành tựu tháng 27,6/2,7 s (1,3/0,65).
+- Loại trừ: công thức _mastery_lan_cap mới (_mastery_lan_d 4 tầng) KHÔNG chậm hơn bản 15:21 (17 em 640 vs 630 ms). Đo lúc 21:15 giờ cao điểm ⇒ một phần do tải; lần đầu vọt (12,5 s, 27,6 s) = đọc nguội.
+
+## 10/11 ~21:45 — Tự luyện chọn chủ đề: số câu theo dạng tính sẵn (mig 202611102121, CHƯA ÁP)
+- Đo K9: bước đếm câu kho (view bdm_cau_hoi + điều kiện online) ấm ~1 s, NGUỘI 21 s, chạy lại cho mỗi em mỗi lần mở; _hs_dang_da_hoc ~1 s; mastery 16–68 ms.
+- Sửa: bảng tu_luyen_so_cau (bản đồ mới, dạng → số câu, theo khối) + _tu_luyen_so_cau_tinh(khối) + fn_tu_luyen_so_cau_lam_moi; tu_luyen_chu_de_ds_dang đọc bảng (khối chưa có thì tính 1 lần). Sửa trên định nghĩa đang chạy (thay đúng khối đếm câu, chặn nếu đã đổi).
+- Thử txn (scripts/_thu_mig_tu_luyen_so_cau.mjs): K9 9B2 0,84 → 0,46 s, K7 7A1 1,05 → 0,42 s, kết quả JSON khớp cũ từng dạng. Cron làm mới 05:30 VN: file 202611102121_tu_luyen_so_cau_cron_sql_editor.sql (dán SQL Editor).
+- ĐÃ ÁP mig 202611102121 (Thùy 'cho áp'). Tính sẵn cả 12 khối 1 lượt: 998 dạng · 8,1 s. Đo thật 1 em K9: 0,73 s lần đầu, 0,43 s lần sau. Cron 05:30 chờ Thùy dán SQL Editor. npm run schema đã chạy.
