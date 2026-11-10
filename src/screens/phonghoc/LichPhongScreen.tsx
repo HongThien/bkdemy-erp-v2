@@ -14,17 +14,18 @@ function shiftNgay(ngay: string, delta: number): string {
 const hhmm = (t: string) => t.slice(0, 5)
 const thuLabel = (ngay: string) => ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'][new Date(ngay + 'T00:00:00').getDay()]
 
-const NGUON_TONE: Record<'chinh_khoa' | 'bo_tro' | 'test', string> = {
+const NGUON_TONE: Record<'chinh_khoa' | 'bo_tro' | 'bo_tro_khoi' | 'test', string> = {
   chinh_khoa: 'border-l-4 border-indigo-400 bg-indigo-50/70 text-indigo-900',
   test: 'border-l-4 border-sky-400 bg-sky-50/70 text-sky-900',
   bo_tro: 'border-l-4 border-amber-400 bg-amber-50/70 text-amber-900',
+  bo_tro_khoi: 'border-l-4 border-teal-500 bg-teal-50/70 text-teal-900',
 }
 const PHAT_SINH_TONE: Record<LoaiHoatDong, string> = {
   hop_noi_bo: 'border-l-4 border-violet-400 bg-violet-50/70 text-violet-900',
   hoc_tap_ngoai_lich: 'border-l-4 border-emerald-400 bg-emerald-50/70 text-emerald-900',
   viec_khac: 'border-l-4 border-rose-400 bg-rose-50/70 text-rose-900',
 }
-const NGUON_NHAN: Record<'chinh_khoa' | 'bo_tro' | 'test', string> = { chinh_khoa: 'Chính khóa', bo_tro: 'Bổ trợ', test: 'Tuyển sinh' }
+const NGUON_NHAN: Record<'chinh_khoa' | 'bo_tro' | 'bo_tro_khoi' | 'test', string> = { chinh_khoa: 'Chính khóa', bo_tro: 'Bổ trợ', bo_tro_khoi: 'Bổ trợ khối', test: 'Tuyển sinh' }
 
 function toneOf(k: KhoiBanPhong): string {
   if (k.nguon === 'phat_sinh') return PHAT_SINH_TONE[k.loai_phat_sinh ?? 'viec_khac']
@@ -51,7 +52,7 @@ export default function LichPhongScreen() {
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="shrink-0 p-6 pb-4">
         <div className="mx-auto max-w-[1400px]">
-          <p className="mb-4 text-[13px] text-slate-500">Chính khóa (TKB) · Bổ trợ (bù/yếu/đuổi) · Phát sinh (họp/học tập ngoài lịch/việc khác) — bấm "+ Phát sinh" trên phòng để thêm hoạt động.</p>
+          <p className="mb-4 text-[13px] text-slate-500">Chính khóa (TKB) · Bổ trợ (bù/yếu/đuổi/hình/ôn thi) · Bổ trợ khối (xếp ở Bổ trợ › Lịch khối) · Tuyển sinh · Phát sinh (họp/học tập ngoài lịch/việc khác) — bấm "+ Phát sinh" trên phòng để thêm hoạt động.</p>
           <div className="flex items-center gap-2">
             <button onClick={() => setNgay((n) => shiftNgay(n, -1))} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[14px] text-slate-600 hover:bg-slate-50">‹</button>
             <input type="date" value={ngay} onChange={(e) => setNgay(e.target.value)}

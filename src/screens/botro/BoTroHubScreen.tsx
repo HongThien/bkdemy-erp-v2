@@ -27,7 +27,7 @@ const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'hinh', ten: 'Hình', mo_ta: 'Bổ trợ Hình (17/10): độc lập với Yếu — Trang/Lộc tự mở ca, xếp ở Lịch phòng, tài liệu theo buổi, cuối buổi chỉ nhận xét' },
   { k: 'onthi', ten: 'Ôn thi', mo_ta: 'Bổ trợ ôn thi (23/10): mỗi kỳ thi mở ca cho TẤT CẢ học sinh — đợt · ca · đăng ký · TA điểm danh + báo động · thống kê theo khối' },
   { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
-  { k: 'lichtruc', ten: 'Lịch trực', mo_ta: 'Ca trực cố định hằng tuần của trợ giảng' },
+  { k: 'lichtruc', ten: 'Lịch khối', mo_ta: 'Xếp lịch bổ trợ khối hằng tuần (giờ · phòng · người trực) trên lịch phòng chung — báo trùng, tự hiện ở Tổng quan phòng' }, // Thùy 10/11
 ]
 // Thùy 24/09: CẢ folder "Bổ trợ yếu" ở Quản lý chất lượng (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào đây, cùng Xếp bổ trợ —
 // thanh toggle theo đúng thứ tự luồng: Duyệt → Nội dung → Xếp → Trạng thái ca → Đánh giá ca.

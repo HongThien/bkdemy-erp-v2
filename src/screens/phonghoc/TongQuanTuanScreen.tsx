@@ -5,8 +5,10 @@
 // bắt đầu). Trống = không màu. Sáng/Chiều/Tối chỉ là filter gộp khung để ẩn/hiện, không phải trục dữ liệu.
 // Chỉ hiện 1 SỐ NGÀY vừa màn hình (mặc định 4) thay vì cả tuần — cuộn ngang 42 cột (7 ngày × 6 phòng)
 // quá rối; ‹ › chuyển từng cụm ngày.
-import { useEffect, useMemo, useState } from 'react'
-import { listPhong, lichPhongNgay, type Phong, type KhoiBanPhong } from '../../lib/phong'
+// 10/11: dữ liệu = fn_phong_lich (DB gộp MỌI nguồn, kể cả lịch bổ trợ khối) — 1 lần gọi cho cả cụm ngày. Component dùng chung:
+// Bổ trợ › Lịch khối nhúng y nguyên lưới này (mauTheo='nguon', bấm ô trống = xếp lịch khối vào đúng ngày/phòng/giờ đó).
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { listPhong, lichPhongKhoang, type Phong, type KhoiBanPhong, type NguonPhong } from '../../lib/phong'
 import { CA_TRUC_DEF, CA_TRUC_LIST, type CaTruc } from '../../lib/opsvanhanh'
 
 const SO_NGAY_HIEN = 4
@@ -15,7 +17,7 @@ const today = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Ho_
 const toMin = (t: string): number => { const [h, m] = t.slice(0, 5).split(':').map(Number); return h * 60 + m }
 const fmtHM = (m: number) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}`
 
-type KhungGio = { ten: string; lo: number; hi: number; an?: boolean; dauGio?: boolean }
+type KhungGio = { ten: string; bd: number; lo: number; hi: number; an?: boolean; dauGio?: boolean }
 // Khung 30 phút ĐỀU suốt ngày, 7:00→21:30 (khung đầu bắt TỪ 0, khung cuối bắt TỚI hết ngày — hứng ca
 // lệch sớm/muộn hơn dự kiến, cùng kiểu "catch-all 2 đầu" TKBScreen đang dùng). `dauGio` = khung ":00"
 // (đầu giờ chẵn) để vẽ viền đậm phân nhóm "1 giờ = 2 khung 30p". `an` = khung nằm TRỌN trong giờ trưa
@@ -26,7 +28,7 @@ function buildBands(): KhungGio[] {
   for (let m = BD; m < KT; m += 30) {
     const lo = m === BD ? 0 : m
     const hi = m + 30 >= KT ? 1440 : m + 30
-    out.push({ ten: `${fmtHM(m)}–${fmtHM(m + 30)}`, lo, hi, an: m >= 720 && m + 30 <= 840, dauGio: m % 60 === 0 })
+    out.push({ ten: `${fmtHM(m)}–${fmtHM(m + 30)}`, bd: m, lo, hi, an: m >= 720 && m + 30 <= 840, dauGio: m % 60 === 0 })
   }
   return out
 }
@@ -51,9 +53,27 @@ const thuLabelOf = (ngay: string) => THU_LABEL[new Date(ngay + 'T00:00:00').getD
 // 1 màu RIÊNG/phòng, xoay vòng nếu danh mục vượt bảng màu — chip ĐẶC (không pill mềm) vì đây là
 // heatmap nhận diện nhanh theo màu, khác card trạng thái thường của hệ Apple-clean.
 const PALETTE = ['#6366f1', '#f43f5e', '#10b981', '#f59e0b', '#0ea5e9', '#8b5cf6', '#14b8a6', '#ea580c', '#ec4899']
+// mauTheo='nguon' (màn xếp lịch): chính khoá/test/phát sinh nhạt, bổ trợ lẻ vàng, bổ trợ khối đậm — nhìn ra ngay chỗ trống & lịch khối.
+export const MAU_NGUON: Record<NguonPhong, { mau: string; ten: string }> = {
+  chinh_khoa: { mau: '#a5b4fc', ten: 'Chính khoá' }, test: { mau: '#7dd3fc', ten: 'Test đầu vào' }, phat_sinh: { mau: '#c4b5fd', ten: 'Phát sinh' },
+  bo_tro: { mau: '#f59e0b', ten: 'Bổ trợ lẻ' }, bo_tro_khoi: { mau: '#0d9488', ten: 'Bổ trợ khối' },
+}
+const UU_TIEN: NguonPhong[] = ['bo_tro_khoi', 'bo_tro', 'chinh_khoa', 'test', 'phat_sinh']
+const nguonChinh = (ks: KhoiBanPhong[]) => UU_TIEN.find((n) => ks.some((k) => k.nguon === n)) ?? 'chinh_khoa'
 
-export default function TongQuanTuanScreen() {
-  const [rangeStart, setRangeStart] = useState(today())
+export type TongQuanProps = {
+  mauTheo?: 'phong' | 'nguon'
+  lamMoi?: number                                        // đổi số ⇒ nạp lại NỀN (không trắng lưới)
+  onChonO?: (o: { ngay: string; phongMa: string; gio: string }) => void  // bấm ô trống
+  onChonKhoi?: (ks: KhoiBanPhong[]) => void               // bấm ô đang dùng
+  moTa?: ReactNode
+  ngayDau?: string
+  onDoiNgay?: (ngayDau: string) => void
+}
+
+export default function TongQuanTuanScreen({ mauTheo = 'phong', lamMoi = 0, onChonO, onChonKhoi, moTa, ngayDau, onDoiNgay }: TongQuanProps = {}) {
+  const [rangeStart, setRangeStartState] = useState(ngayDau ?? today())
+  const setRangeStart = (f: (r: string) => string) => setRangeStartState((r) => { const n = f(r); onDoiNgay?.(n); return n })
   const [phongs, setPhongs] = useState<Phong[]>([])
   const [byDay, setByDay] = useState<Record<string, KhoiBanPhong[]>>({})
   const [loading, setLoading] = useState(true)
@@ -62,15 +82,23 @@ export default function TongQuanTuanScreen() {
   const days = useMemo(() => Array.from({ length: SO_NGAY_HIEN }, (_, i) => addDays(rangeStart, i)), [rangeStart])
   const mauCuaPhong = useMemo(() => new Map(phongs.map((p, i) => [p.ma_phong, PALETTE[i % PALETTE.length]])), [phongs])
 
-  async function load() {
-    setLoading(true)
+  const [loi, setLoi] = useState<string | null>(null)
+  const lanTai = useRef(0)
+  // nen=true: giữ lưới cũ tới khi có dữ liệu mới (sau khi xếp lịch — CLAUDE.md §2 không blank list)
+  async function load(nen: boolean) {
+    const lan = ++lanTai.current
+    if (!nen) setLoading(true)
+    setLoi(null)
     try {
-      const [ps, ...ks] = await Promise.all([listPhong(), ...days.map((d) => lichPhongNgay(d))])
+      const [ps, ks] = await Promise.all([listPhong(), lichPhongKhoang(days[0], days[days.length - 1])])
+      if (lan !== lanTai.current) return
       setPhongs(ps)
-      setByDay(Object.fromEntries(days.map((d, i) => [d, ks[i]])))
-    } finally { setLoading(false) }
+      setByDay(Object.fromEntries(days.map((d) => [d, ks.filter((k) => k.ngay === d)])))
+    } catch (e: any) { if (lan === lanTai.current) setLoi(e?.message ?? String(e)) }
+    finally { if (lan === lanTai.current) setLoading(false) }
   }
-  useEffect(() => { load() }, [rangeStart]) // eslint-disable-line
+  useEffect(() => { load(false) }, [rangeStart]) // eslint-disable-line
+  useEffect(() => { if (lamMoi) load(true) }, [lamMoi]) // eslint-disable-line
 
   // Ca thuộc khung nếu KHOẢNG THỜI GIAN chồng lấn khung (overlap thật) — ca dài hơn 1 khung 30p tô kín
   // hết các khung nó lấn qua, không chỉ khung nó bắt đầu.
@@ -120,12 +148,12 @@ export default function TongQuanTuanScreen() {
     <div className="flex h-full min-h-0 flex-col overflow-hidden bg-[#f5f5f7]">
       <div className="shrink-0 p-6 pb-4">
         <div className="mx-auto max-w-[1600px]">
-          <p className="mb-4 text-[13px] text-slate-500">Tổng quan trạng thái phòng — mỗi phòng 1 cột riêng trong từng ngày, theo khung 30 phút suốt ngày. Màu = phòng có ca chồng khung đó, trống = không màu. Sáng/Chiều/Tối chỉ là bộ lọc gộp khung để thu gọn. Xem chi tiết/thêm hoạt động ở tab "Lịch phòng".</p>
+          {moTa ?? <p className="mb-4 text-[13px] text-slate-500">Tổng quan trạng thái phòng — mỗi phòng 1 cột riêng trong từng ngày, theo khung 30 phút suốt ngày. Màu = phòng có ca chồng khung đó, trống = không màu. Sáng/Chiều/Tối chỉ là bộ lọc gộp khung để thu gọn. Xem chi tiết/thêm hoạt động ở tab "Lịch phòng".</p>}
           <div className="flex flex-wrap items-center gap-2">
             <button onClick={() => setRangeStart((r) => addDays(r, -SO_NGAY_HIEN))} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[14px] text-slate-600 hover:bg-slate-50">‹</button>
             <span className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[14px] font-medium text-slate-700">{ddmm(days[0])} – {ddmm(days[days.length - 1])}</span>
             <button onClick={() => setRangeStart((r) => addDays(r, SO_NGAY_HIEN))} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[14px] text-slate-600 hover:bg-slate-50">›</button>
-            <button onClick={() => setRangeStart(today())} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-50">Hôm nay</button>
+            <button onClick={() => setRangeStart(() => today())} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-50">Hôm nay</button>
 
             <div className="ml-2 flex gap-1 rounded-lg bg-slate-100 p-1">
               {CA_TRUC_LIST.map((c) => (
@@ -137,7 +165,12 @@ export default function TongQuanTuanScreen() {
             </div>
 
             <div className="ml-auto flex flex-wrap items-center gap-x-3 gap-y-1">
-              {phongs.map((p) => (
+              {mauTheo === 'nguon' ? UU_TIEN.map((n) => (
+                <span key={n} className="flex items-center gap-1.5 text-[12px] text-slate-500">
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: MAU_NGUON[n].mau }} />
+                  {MAU_NGUON[n].ten}
+                </span>
+              )) : phongs.map((p) => (
                 <span key={p.id} className="flex items-center gap-1.5 text-[12px] text-slate-500">
                   <span className="h-2.5 w-2.5 rounded-full" style={{ background: mauCuaPhong.get(p.ma_phong) }} />
                   {p.ten_phong}
@@ -149,6 +182,7 @@ export default function TongQuanTuanScreen() {
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto px-6 pb-6">
+        {loi && <p className="mb-2 text-[13px] text-rose-600">{loi}</p>}
         {loading ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
           <table className="mx-auto border-separate border-spacing-x-0.5 border-spacing-y-0">
             <thead>
@@ -183,7 +217,8 @@ export default function TongQuanTuanScreen() {
                   {days.map((d) => phongs.map((p) => {
                     const cell = grid.get(`${d}|${p.id}|${ri}`)
                     if (!cell || !cell.isStart) return null // hàng bị rowSpan từ trên phủ — KHÔNG render ô
-                    const mau = mauCuaPhong.get(p.ma_phong)
+                    const mau = mauTheo === 'nguon' ? MAU_NGUON[nguonChinh(cell.hoatDong)].mau : mauCuaPhong.get(p.ma_phong)
+                    const bamDuoc = cell.used ? !!onChonKhoi : !!onChonO
                     // Tô màu THẲNG lên <td> (không qua div con) — div con dùng h-full/percentage-height
                     // KHÔNG ăn đúng chiều cao thật của ô rowSpan nhiều hàng (Thùy bắt lỗi bằng ảnh chụp:
                     // màu chỉ hiện viên nhỏ nổi ở đầu ô thay vì kéo dài hết khối). <td> tự nhiên đã có
@@ -194,10 +229,11 @@ export default function TongQuanTuanScreen() {
                     // giữa 2 utility áp lên các cạnh trùng nhau).
                     return (
                       <td key={`${d}-${p.id}`} rowSpan={cell.span}
-                        title={cell.used ? `${p.ten_phong} — ${cell.hoatDong.map((k) => `${k.tieu_de} (${k.gio_bat_dau.slice(0, 5)}–${k.gio_ket_thuc.slice(0, 5)})`).join(', ')}` : `${p.ten_phong}: trống`}
-                        className={`h-4 w-6 rounded-sm ${b.dauGio ? 'border-t-2 border-t-slate-300' : ''} ${cell.used ? '' : 'border border-dashed border-slate-200'}`}
+                        title={cell.used ? `${p.ten_phong} — ${cell.hoatDong.map((k) => `${k.tieu_de}${k.phu_trach ? " · " + k.phu_trach : ""} (${k.gio_bat_dau.slice(0, 5)}–${k.gio_ket_thuc.slice(0, 5)})`).join(', ')}` : `${p.ten_phong}: trống`}
+                        onClick={bamDuoc ? () => (cell.used ? onChonKhoi!(cell.hoatDong) : onChonO!({ ngay: d, phongMa: p.ma_phong, gio: fmtHM(b.bd).padStart(5, '0') })) : undefined}
+                        className={`h-4 w-6 rounded-sm ${b.dauGio ? 'border-t-2 border-t-slate-300' : ''} ${cell.used ? '' : 'border border-dashed border-slate-200'} ${bamDuoc ? (cell.used ? 'cursor-pointer hover:brightness-90' : 'cursor-pointer hover:bg-teal-100') : ''} text-center align-top text-[9px] font-bold leading-4 text-white`}
                         style={cell.used ? { background: mau } : undefined}
-                      />
+                      >{cell.used && cell.hoatDong.length > 1 ? cell.hoatDong.length : ''}</td>
                     )
                   }))}
                 </tr>

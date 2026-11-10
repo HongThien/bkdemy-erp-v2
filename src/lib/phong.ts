@@ -86,107 +86,69 @@ export async function moLaiHoatDongPhong(id: string): Promise<void> {
   if (error) throw error
 }
 
-// ── Lịch phòng gộp 3 nguồn ────────────────────────────────────────────────
-const thuOf = (ngay: string): number => { const d = new Date(ngay + 'T00:00:00').getDay(); return d === 0 ? 8 : d + 1 } // CN=8, T2=2..T7=7
-const toMin = (t: string): number => { const [h, m] = t.slice(0, 5).split(':').map(Number); return h * 60 + m }
-const LOAI_BOTRO_NHAN: Record<string, string> = { bu: 'bù', bo_tro_yeu: 'bổ trợ yếu', bo_tro_duoi: 'bổ trợ đuổi' }
-
-export type NguonPhong = 'chinh_khoa' | 'bo_tro' | 'phat_sinh' | 'test'
+// ── Lịch phòng MỘT NGUỒN (Thùy 10/11) ─────────────────────────────────────
+// Mọi khối chiếm phòng của BK (chính khoá/TKB · bổ trợ lẻ · ca bổ trợ · lịch bổ trợ khối hằng tuần · phát sinh · test đầu vào)
+// gộp ở DB: fn_phong_lich(tu, den) (mig 202611101544). Màn nào xếp lịch/kiểm trùng cũng đọc đúng hàm này — không gộp lại ở client.
+export type NguonPhong = 'chinh_khoa' | 'bo_tro' | 'bo_tro_khoi' | 'phat_sinh' | 'test'
+export const NGUON_PHONG_TEN: Record<NguonPhong, string> = { chinh_khoa: 'Chính khoá', bo_tro: 'Bổ trợ lẻ', bo_tro_khoi: 'Bổ trợ khối', phat_sinh: 'Phát sinh', test: 'Test đầu vào' }
 export type KhoiBanPhong = {
+  ngay: string
   nguon: NguonPhong
-  phong_ma: string
+  phong_ma: string            // '' = khối có giờ nhưng CHƯA gán phòng (vd lịch khối cũ)
   gio_bat_dau: string
   gio_ket_thuc: string
   tieu_de: string
   phu_trach: string | null
-  ref_id: string
+  nhan_su_ids: string[]
+  ref_id: string              // 'lt-<lich_truc_id>-<ngay>' = lịch khối chiếu lên ngày chưa mở ca · 'ca-<id>' · 'tkb-…' · 'test-…' · uuid buổi/phát sinh
   loai_phat_sinh?: LoaiHoatDong
+  mon: string | null
+  khoi: string | null
   phong_khong_khop_danh_muc: boolean
 }
+const mapKhoi = (r: any): KhoiBanPhong => ({ ...r, ngay: String(r.ngay).slice(0, 10), phong_ma: r.phong_ma ?? '', nhan_su_ids: r.nhan_su_ids ?? [], loai_phat_sinh: r.loai_phat_sinh ?? undefined })
 
-// Gộp lịch phòng của 1 ngày từ 3 nguồn. Chính khóa ưu tiên buoi_hoc THẬT (đã 'mở buổi' — có thể
-// đã đổi phòng/giờ so với TKB gốc); ngày tương lai chưa mở buổi thì fallback TKB (mo_buoi tạo buổi
-// lazy lúc mở — xem gami.ts:moBuoi — nên hầu hết ngày tương lai KHÔNG có buoi_hoc).
+// Lịch phòng của khoảng ngày [tu, den] (tối đa 63 ngày) — 1 lần gọi.
+export async function lichPhongKhoang(tu: string, den: string): Promise<KhoiBanPhong[]> {
+  const { data, error } = await supabase.rpc('fn_phong_lich', { p_tu: tu, p_den: den })
+  if (error) throw error
+  return ((data ?? []) as any[]).map(mapKhoi)
+}
 export async function lichPhongNgay(ngay: string): Promise<KhoiBanPhong[]> {
-  const phongs = await listPhong(true)
-  const maSet = new Set(phongs.map((p) => p.ma_phong))
-  const thu = thuOf(ngay)
-
-  const [buoiRes, tkbRes, hdRes, testRes] = await Promise.all([
-    supabase.from('buoi_hoc')
-      .select('id, lop_id, phong, gio_bat_dau, gio_ket_thuc, loai, lop:lop_id(ten_lop,mon), nguoi_day:nguoi_day(ho_ten), nguoi_day_tg:nguoi_day_tg(ho_ten)')
-      .eq('ngay', ngay).in('loai', ['thuong', 'bu', 'bo_tro_yeu', 'bo_tro_duoi']).neq('trang_thai', 'huy').limit(LIMIT),
-    supabase.from('thoi_khoa_bieu')
-      .select('lop_id, phong, gio_bat_dau, gio_ket_thuc, lop:lop_id(ten_lop,mon)')
-      .eq('thu', thu).lte('hieu_luc_tu', ngay).or(`hieu_luc_den.is.null,hieu_luc_den.gte.${ngay}`).limit(LIMIT),
-    supabase.from('hoat_dong_phong')
-      .select('id, gio_bat_dau, gio_ket_thuc, loai, tieu_de, phong:phong_id(ma_phong), nhan_su:nguoi_tao_id(ho_ten)')
-      .eq('ngay', ngay).eq('trang_thai', 'xac_nhan').limit(LIMIT),
-    // Nguồn 4 (15/10): khung TEST ĐẦU VÀO giữ trọn khung (mig 202610151730) — buổi đã đóng thì không có
-    supabase.rpc('fn_phong_lich_test_ngay', { p_ngay: ngay }),
-  ])
-  if (buoiRes.error) throw buoiRes.error
-  if (tkbRes.error) throw tkbRes.error
-  if (hdRes.error) throw hdRes.error
-  if (testRes.error) throw testRes.error
-
-  const out: KhoiBanPhong[] = []
-  const lopIdsDaMo = new Set<string>() // lớp đã có buổi 'thuong' mở thật cho ngày này — TKB của lớp này bỏ qua, tránh đếm đôi
-
-  for (const b of (buoiRes.data ?? []) as any[]) {
-    if (b.loai === 'thuong' && b.lop_id) lopIdsDaMo.add(b.lop_id)
-    const phongMa = (b.phong ?? '').trim()
-    if (!phongMa || !b.gio_bat_dau || !b.gio_ket_thuc) continue // chưa gán phòng/giờ — không tính vào lịch phòng
-    out.push({
-      nguon: b.loai === 'thuong' ? 'chinh_khoa' : 'bo_tro',
-      phong_ma: phongMa, gio_bat_dau: b.gio_bat_dau, gio_ket_thuc: b.gio_ket_thuc,
-      tieu_de: b.loai === 'thuong'
-        ? `${b.lop?.ten_lop ?? '?'}${b.lop?.mon ? ' · ' + b.lop.mon : ''}`
-        : `${LOAI_BOTRO_NHAN[b.loai] ?? b.loai}`,
-      phu_trach: b.nguoi_day_tg?.ho_ten ?? b.nguoi_day?.ho_ten ?? null,
-      ref_id: b.id, phong_khong_khop_danh_muc: !maSet.has(phongMa),
-    })
-  }
-
-  for (const t of (tkbRes.data ?? []) as any[]) {
-    if (lopIdsDaMo.has(t.lop_id)) continue
-    const phongMa = (t.phong ?? '').trim()
-    if (!phongMa) continue
-    out.push({
-      nguon: 'chinh_khoa', phong_ma: phongMa, gio_bat_dau: t.gio_bat_dau, gio_ket_thuc: t.gio_ket_thuc,
-      tieu_de: `${t.lop?.ten_lop ?? '?'}${t.lop?.mon ? ' · ' + t.lop.mon : ''} (TKB)`,
-      phu_trach: null, ref_id: `tkb-${t.lop_id}-${t.gio_bat_dau}`, phong_khong_khop_danh_muc: !maSet.has(phongMa),
-    })
-  }
-
-  for (const h of (hdRes.data ?? []) as any[]) {
-    const phongMa = h.phong?.ma_phong ?? ''
-    out.push({
-      nguon: 'phat_sinh', phong_ma: phongMa, gio_bat_dau: h.gio_bat_dau, gio_ket_thuc: h.gio_ket_thuc,
-      tieu_de: h.tieu_de, phu_trach: h.nhan_su?.ho_ten ?? null, ref_id: h.id,
-      loai_phat_sinh: h.loai, phong_khong_khop_danh_muc: !phongMa,
-    })
-  }
-
-  for (const t of (testRes.data ?? []) as any[]) {
-    out.push({
-      nguon: 'test', phong_ma: t.ma_phong, gio_bat_dau: t.gio_bat_dau, gio_ket_thuc: t.gio_ket_thuc,
-      tieu_de: `Test đầu vào${t.so_hen ? ` · ${t.so_hen} hẹn` : ''}`, phu_trach: null, ref_id: `test-${t.khung_id}`,
-      phong_khong_khop_danh_muc: !maSet.has(t.ma_phong),
-    })
-  }
-
-  return out.sort((a, b) => a.phong_ma.localeCompare(b.phong_ma) || toMin(a.gio_bat_dau) - toMin(b.gio_bat_dau))
+  return lichPhongKhoang(ngay, ngay)
 }
 
-// Khối trùng với (phong, ngày, giờ) đang định lưu. boQuaRefId = loại chính nó ra (đang sửa).
+// Khối trùng PHÒNG với (phòng, ngày, giờ) đang định lưu — DB tính (fn_phong_kiem_trung). boQuaRefId = loại chính nó ra (đang sửa).
 export async function kiemTraTrungPhong(phongMa: string, ngay: string, gioBatDau: string, gioKetThuc: string, boQuaRefId?: string): Promise<KhoiBanPhong[]> {
-  const all = await lichPhongNgay(ngay)
-  const bd = toMin(gioBatDau), kt = toMin(gioKetThuc)
-  return all.filter((k) => {
-    if (k.phong_ma !== phongMa) return false
-    if (boQuaRefId && k.ref_id === boQuaRefId) return false
-    const kbd = toMin(k.gio_bat_dau), kkt = toMin(k.gio_ket_thuc)
-    return !(kt <= kbd || bd >= kkt)
+  const { data, error } = await supabase.rpc('fn_phong_kiem_trung', { p_phong: phongMa, p_ngay: ngay, p_gio_bd: gioBatDau, p_gio_kt: gioKetThuc, p_bo_qua: boQuaRefId ?? null })
+  if (error) throw error
+  return ((data ?? []) as any[]).map(mapKhoi)
+}
+
+// ── Lịch bổ trợ khối (lich_truc_bo_tro) — kiểm trùng + lưu qua DB, cùng nguồn fn_phong_lich ──
+export type TrungLichKhoi = {
+  kieu: 'phong' | 'nguoi'
+  muc: 'chan' | 'canh_bao'   // chan = không lưu được · canh_bao = lưu được nếu xác nhận (ghép phòng ≤2 ca bổ trợ)
+  nguon: NguonPhong; tieu_de: string; phong: string | null; phu_trach: string | null
+  gio_bat_dau: string; gio_ket_thuc: string; ngay: string[]
+}
+export type LichKhoiInput = {
+  id: string | null; mon: string; khoi: string; bac: string; thu: number; gio_bat_dau: string; gio_ket_thuc: string
+  phong: string; so_ta: number; nhan_su_id: string; nhan_su_2_id: string | null; suc_chua: number; hieu_luc_tu: string; ghi_chu: string | null
+}
+export async function kiemTrungLichKhoi(p: { thu: number; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; nhan_su_id: string | null; nhan_su_2_id: string | null; hieu_luc_tu: string | null; bo_qua: string | null }): Promise<TrungLichKhoi[]> {
+  const { data, error } = await supabase.rpc('fn_lich_truc_kiem_trung', {
+    p_thu: p.thu, p_gio_bd: p.gio_bat_dau, p_gio_kt: p.gio_ket_thuc, p_phong: p.phong, p_ns: p.nhan_su_id, p_ns2: p.nhan_su_2_id,
+    p_tu: p.hieu_luc_tu, p_den: null, p_bo_qua: p.bo_qua,
   })
+  if (error) throw error
+  return (data ?? []) as TrungLichKhoi[]
+}
+export async function luuLichKhoi(x: LichKhoiInput, chapNhan: boolean): Promise<{ ok: boolean; id: string | null; trung: TrungLichKhoi[] }> {
+  const { data, error } = await supabase.rpc('fn_lich_truc_luu', {
+    p_id: x.id, p_mon: x.mon, p_khoi: x.khoi, p_bac: x.bac, p_thu: x.thu, p_gio_bd: x.gio_bat_dau, p_gio_kt: x.gio_ket_thuc, p_phong: x.phong,
+    p_so_ta: x.so_ta, p_ns: x.nhan_su_id, p_ns2: x.nhan_su_2_id, p_suc_chua: x.suc_chua, p_hieu_luc_tu: x.hieu_luc_tu, p_ghi_chu: x.ghi_chu, p_chap_nhan: chapNhan,
+  })
+  if (error) throw error
+  return data as any
 }

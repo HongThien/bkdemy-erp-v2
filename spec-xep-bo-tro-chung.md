@@ -45,6 +45,7 @@ xong rồi thì **thống nhất quy tắc xếp lịch**: 1 lá "Bổ trợ", 3
 
 - **1 phòng, cùng 1 khung giờ, tối đa 2 ca bổ trợ** (tạm thời). Chặn cứng ở DB khi tạo/đổi ca; UI hiện "P201 · 2/2 ca lúc 17:00 — đầy".
 - Phòng hiện chỉ có tên (`buoi_hoc.phong` text; `Quản lý phòng học` có danh sách) — chưa cần sức chứa theo em.
+- **⭐ LỊCH PHÒNG MỘT NGUỒN (Thùy 10/11, mig `202611101544`):** mọi khối chiếm phòng (chính khoá/TKB · bổ trợ lẻ · ca bổ trợ · **lịch bổ trợ khối hằng tuần** · phát sinh · test) gộp ở **`fn_phong_lich(tu, den)`**; kiểm trùng 1 ngày = `fn_phong_kiem_trung`, kiểm trùng lịch khối hằng tuần (phòng + người trực, 4 tuần tới) = `fn_lich_truc_kiem_trung`, lưu lịch khối = `fn_lich_truc_luu` (kiểm + ghi 1 transaction; chặn khi trùng chính khoá/test/phát sinh, phòng đủ 2 ca bổ trợ, người trực đang ở chỗ khác; ghép 1 ca bổ trợ = cảnh báo, xác nhận mới lưu). **Thêm nguồn chiếm phòng mới ⇒ thêm 1 nhánh vào `fn_phong_lich`**, không gộp ở client. Màn: Bổ trợ › **Lịch khối** (lưới = component Tổng quan phòng). **Chưa nối:** form TKB, `fn_ca_bo_tro_tao` (ca tạo tay), `fn_btnhe_tao`, khung test chưa gọi kiểm trùng chung khi ghi.
 
 ## 4. LUỒNG XẾP (Lộc / core team)
 
