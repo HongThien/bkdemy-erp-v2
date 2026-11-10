@@ -1,7 +1,8 @@
 // CHUYỂN CẢNH app HS (Thùy 03/10: "từ chỗ chọn chế độ học vào world map vẫn chưa mượt — chỉnh hiệu ứng chuyển màn ở tất cả các màn").
 // Cái làm giật KHÔNG phải hiệu ứng phóng mà là 3 KHOẢNG TRỐNG nối đuôi nhau: (1) tải chunk PhieuLuuHS (màn trắng) → (2) gọi RPC bản đồ (màn trống + chữ "Đang mở")
 // → (3) ảnh thế giới/lục địa tải + giải mã DƠ ra giữa lúc đang hiện dần (nền biển rồi từng lục địa "nhảy" vào). Ở đây gom 3 thứ:
-//  · nạp TRƯỚC (chunk + dữ liệu + ảnh) ngay khi em vào khu Học tập — lúc bấm đảo đã sẵn;
+//  · nạp TRƯỚC chunk + ảnh ngay khi em vào khu Học tập (10/11: KHÔNG nạp trước DỮ LIỆU bản đồ nữa — Thùy: "cứ load toàn bộ bản đồ làm gì";
+//    em vào Học tập mà không mở bản đồ thì DB không phải tính cả bản đồ môn);
 //  · ảnh giải mã xong rồi mới hiện màn (trần 1,5s — mạng chậm vẫn vào được);
 //  · `ManCho`: 1 màn chờ DUY NHẤT dùng cho mọi chỗ đợi (Suspense · tải bản đồ · sinh lượt luyện) — cùng nền, cùng nhịp, không nhấp nháy giữa các kiểu chờ.
 import { banDoPhieuLuu, type BanDoPL } from '../../../lib/phieuluu'
@@ -19,6 +20,9 @@ export function layBanDo(mon: string, moi = false): Promise<BanDoPL> {
   p.catch(() => { if (DEM.get(mon)?.p === p) DEM.delete(mon) }) // lỗi thì đừng giữ — lần sau gọi lại thật
   return p
 }
+
+/** Bỏ bản đã nạp (vừa vá 1 chặng tại chỗ ⇒ bản trong bộ nhớ đã cũ, lần mở sau phải gọi mới). */
+export const boBanDoNap = (mon: string) => { DEM.delete(mon) }
 
 /** Chỉ cho trang soi (XemThat): nhồi dữ liệu có sẵn vào bộ nhớ nạp trước. */
 export const datBanDoNap = (mon: string, d: BanDoPL) => DEM.set(mon, { p: Promise.resolve(d), t: Date.now() })
@@ -40,10 +44,10 @@ export function nhoAnh(urls: (string | null | undefined)[], tran = 1500): Promis
 export const anhTheGioi = (): string[] => [anhNenTheGioi(), ...viTriLucDia().map((v) => anhLucDia(v.biome))].filter((u): u is string => !!u)
 
 let daNapChunk = false
-/** Nạp trước mọi thứ cho "Học theo chủ đề" của môn này. Gọi lúc rảnh (vào khu Học tập). An toàn gọi nhiều lần. */
+/** Nạp trước chunk + ảnh cho "Học theo chủ đề" (KHÔNG nạp dữ liệu). Gọi lúc rảnh (vào khu Học tập). An toàn gọi nhiều lần. */
 export function napPhieuLuu(mon: string) {
   if (!daNapChunk) { daNapChunk = true; void import('./PhieuLuuHS').catch(() => { daNapChunk = false }) }
-  layBanDo(mon).catch(() => undefined)
+  void mon   // dữ liệu bản đồ tải lúc em MỞ bản đồ (layBanDo trong PhieuLuuHS), không tải trước
   void nhoAnh(anhTheGioi(), 8000)
 }
 

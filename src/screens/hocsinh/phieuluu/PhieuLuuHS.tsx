@@ -7,7 +7,8 @@ import { BaoLuotHS } from '../BaoLuot'
 import { DauTrangHS, HEAD, MAU, ManHS, NutHS, TrongHS, useLoi } from '../skin/KhungHS'
 import { laySkin } from '../skin/registry'
 import type { SkinId } from '../skin/kieu'
-import { tuBanDoPL, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
+import { tuBanDoPL, vaChang, type BanDoV, type ChangV, type LucDiaV, type VungV } from './kieu'
+import { trangThaiChang } from '../../../lib/phieuluu'
 import { ganBiomeTheoTranh } from './ban2d/hinh2d'
 // 01/10 khuya (Thùy): 3 tầng bản đồ chuyển sang 2D (ảnh tĩnh + hiệu ứng code, ban2d/). Màn đấu giữ 3D tới khi có bản 2.5D.
 import { TheGioi2D } from './ban2d/TheGioi2D'
@@ -17,7 +18,7 @@ import { DauView2D } from './DauView2D'
 import type { NhungDau } from './nhungDau'
 import { BaoDoHoa, NutDoHoa } from './DoHoa'
 import type { NvId } from '../skin/nhanVat'
-import { anhTheGioi, layBanDo, ManCho, nhoAnh } from './chuyenCanh'
+import { anhTheGioi, boBanDoNap, layBanDo, ManCho, nhoAnh } from './chuyenCanh'
 
 export type LamBaiCmp = (p: { baiTestId: string; hocSinhId: string; onXong: () => void; desktop?: boolean; nhung?: NhungDau }) => ReactElement
 
@@ -55,6 +56,12 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, on
   // lần đầu: dùng bản đã nạp trước (chuyenCanh.napPhieuLuu) + CHỜ ảnh thế giới giải mã xong mới hiện (không còn cảnh nền biển rồi từng lục địa nhảy vào). Quay lại từ màn đấu (moi) ⇒ gọi mới, không chờ ảnh.
   const tai = (moi = false) => { setLoi(null); Promise.all([layBanDo(mon, moi), moi ? undefined : nhoAnh(anhTheGioi())]).then(([d]) => setBanDo(ganBiomeTheoTranh(tuBanDoPL(d)))).catch((e) => setLoi(e?.message ?? String(e))) }
   useEffect(() => { setBanDo(null); tai() }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
+  // Đánh xong 1 chặng ⇒ hỏi DB trạng thái ĐÚNG chặng đó rồi vá tại chỗ (Thùy 10/11). Trước: tải lại CẢ bản đồ môn (1–6 s) và nếu lỗi
+  // thì màn báo lỗi THAY bản đồ đang có. Giờ lỗi mạng chỉ bỏ qua — bản đồ giữ nguyên, lần mở sau gọi mới (đã bỏ bản nạp cũ).
+  const capNhatChang = (ma: string) => {
+    boBanDoNap(mon)
+    void trangThaiChang(mon, ma).then((t) => setBanDo((bd) => (bd ? vaChang(bd, ma, t) : bd))).catch(() => undefined)
+  }
 
   // lục địa em đang học: lục địa đầu tiên có chặng còn quái
   const hienTai = useMemo(() => banDo?.luc_dia.find((l) => l.vung.some((v) => v.chang.some((c) => c.trang_thai === 'yeu')))?.ma ?? banDo?.luc_dia[0]?.ma ?? null, [banDo])
@@ -84,7 +91,7 @@ export default function PhieuLuuHS({ hocSinhId, mon, gioiTinh, nhanVat, skin, on
         {t.t === 'luc_dia' && luc && <LucDia2D luc={luc} b={b} gioi={nhanVat ?? gioiTinh ?? 'nam'} onChon={(v) => setTang({ t: 'chang', luc: luc.ma, vung: v })} onVe={() => setTang({ t: 'the_gioi' })} />}
         {t.t === 'chang' && luc && vung && <Chang2D luc={luc} vung={vung} b={b} gioi={gioiTinh ?? 'nam'} onVe={() => setTang({ t: 'luc_dia', luc: luc.ma })} onVao={(c) => setTang({ t: 'dau', luc: luc.ma, vung: vung.ma, chang: c.ma })} />}
         {t.t === 'dau' && luc && vung && chang && (
-          <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={nhanVat ?? gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); tai(true) }} />
+          <DauThat luc={luc} chang={chang} b={b} mon={mon} hocSinhId={hocSinhId} gioi={nhanVat ?? gioiTinh ?? 'nam'} LamBai={LamBai} onVe={() => { setTang({ t: 'chang', luc: luc.ma, vung: vung.ma }); capNhatChang(chang.ma) }} />
         )}
       </>
     )
