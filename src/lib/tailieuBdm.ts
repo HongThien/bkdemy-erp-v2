@@ -150,6 +150,16 @@ export async function onTapUngVien(masterId: string, buoiId: string): Promise<Un
   if (error) throw error
   return (data ?? []) as UngVienOnTap[]
 }
+// Ứng viên ôn tập XẾP THEO MASTERY HIỆN TẠI của lớp (Thùy 09/11, mig 202611091506 — fn_tl_bdm_on_tap_xep): tính ngay lúc gọi, ET+MT (BTVN vẫn tham khảo).
+// Nhóm lớp đang yếu lên đầu → chưa đo → đã đạt. diem 0–1 (trung bình ô HS × dạng bài của nhóm); null = lớp CHƯA có số đo nhóm này (không phải "yếu").
+export type UngVienXep = UngVienOnTap & { so_hs: number; so_hs_do: number; diem: number | null; pct_dat: number | null; muc: 'yeu' | 'can_luyen' | 'dat' | null }
+export async function onTapXep(masterId: string, buoiId: string, lopId: string): Promise<{ ds: UngVienXep[]; xepTheoMastery: boolean }> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_on_tap_xep', { p_master: masterId, p_buoi: buoiId, p_lop: lopId })
+  if (!error) return { ds: (data ?? []) as UngVienXep[], xepTheoMastery: true }
+  // Hàm mới chưa có / quá chậm ⇒ lùi về danh sách cũ (không xếp), đừng chặn GV tạo phiếu.
+  const cu = await onTapUngVien(masterId, buoiId)
+  return { ds: cu.map((u) => ({ ...u, so_hs: 0, so_hs_do: 0, diem: null, pct_dat: null, muc: null })), xepTheoMastery: false }
+}
 export const CAP_NHOM_ON_TAP = 2       // tối đa nhóm ôn / phiếu (giữ như ôn tập giáo trình cũ: CAP_DANG = 2)
 export const SO_CAU_ON_TAP = 2         // câu / nhóm ôn (như cũ: CAP_CAU_MOI_DANG = 2)
 

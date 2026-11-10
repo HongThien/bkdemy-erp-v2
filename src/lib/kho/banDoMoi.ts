@@ -329,6 +329,8 @@ export type KhoCauRow = {
   menh_de: { noi_dung?: string; dap_an?: string }[] | null; dap_an: string | null; loi_giai: string | null
   anh_de: string | null; anh_dap_an: string | null; da_duyet: boolean; kho_chuan: boolean; kiem_may: string | null
   nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
+  // Hình–Học bài nhiều ý (mig 202611091550): câu là 1 ý của bài HHB… — chỉ kho Hình–Học trả, Đại/HGT để trống
+  bai_y?: string | null; nhan_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null; loi_dan?: string | null
 }
 // Thùy 27/10 — ngăn 📚 Kho câu: chuyển 1 câu sang dạng bài khác (gán của người; mặc định kèm bản sao của câu gốc) · đưa câu vào
 // KHO RÁC (xoa_at, khôi phục ở màn Kho rác). Kho gốc (Đại/HGT) và mọi luật chặn nằm ở DB (fn_bdm_cau_chuyen_dang / fn_bdm_cau_xoa).

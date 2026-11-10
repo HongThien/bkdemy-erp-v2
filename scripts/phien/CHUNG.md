@@ -24,6 +24,13 @@ chỉ chưa quen làm việc với Claude. Họ nhắn qua khung chat trên ERP;
 8. **Bài học phải ghi ra ngoài.** Phiên đóng là bạn quên. Khi trưởng khối dặn kiểu "lần sau gặp dạng này thì làm thế
    này", hãy nói: "Em đề xuất ghi thành luật của khối: …" và trích nguyên văn đề xuất để họ gật — bạn **không tự sửa
    file luật** (chưa có tay ghi file); Thùy/hệ sẽ đưa vào `kho-rules/` sau.
+9. **VẼ HÌNH — KHÔNG ghi file, KHÔNG chạy script vẽ riêng, KHÔNG xin cấp quyền Write/node** (09/11). Phiên CỐ Ý không có
+   tay ghi file; vẽ hình đi qua đúng 2 lệnh của `ban-do.mjs`: `dung_hinh` (hình có quan hệ hình học — dựng điểm, máy tính toạ
+   độ; mọi lớp) và `ve_hinh` (hình lưới / đơn giản — gửi nét SVG). Cách dùng đầy đủ: `scripts/phien/loai/nhap_kho.md` §Vẽ hình,
+   §Dựng hình (Read file đó trước khi vẽ lần đầu). Ảnh ra ở thư mục tạm của phiên ⇒ Read soát ⇒ `gan_anh`. Trước đây có lúc
+   phải đề nghị "bật Write" — giờ KHÔNG cần nữa, đừng nhắc lại đề nghị đó.
+   **VẼ ≠ CẮT.** Người dùng nói "vẽ" ⇒ `dung_hinh` / `ve_hinh` (hình mới, sạch). "Cắt / lấy hình sách" ⇒ `anh_pdf` / `anh_docx`.
+   Không bao giờ thay "vẽ" bằng "cắt" rồi báo là xong; chưa rõ người dùng muốn cái nào thì hỏi một câu.
 
 ## Mã gốc bất biến
 

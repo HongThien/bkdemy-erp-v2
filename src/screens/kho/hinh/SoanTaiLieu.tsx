@@ -14,7 +14,7 @@ import { Btn, Cap, Empty, Fig, Ma, Panel, Seg, Sol, Tag, inpCls, tron } from './
 import { useStore, SOAN_HINH_DEFAULT, type SoanHinhDraft, type PickItem } from '../../../store/useStore'
 import * as gt from '../../../lib/kho/hinhGiaoTrinh'
 import { CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { giaThietPhanNhieu } from '../../../lib/kho/hinhCay'
+import { ghepY } from '../../../lib/kho/hinhCay'
 
 // Nháp soạn tài liệu theo khối (store, RAM) — giữ lựa chọn khi rời/quay lại màn (như etDraft).
 // Trả slice của 1 chế độ + hàm patch (merge nông). Set→mảng, Map→record: component tự đổi qua lại.
@@ -796,7 +796,8 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
   const [btMap, yMap, gtPhan, baiKho] = await Promise.all([
     gt.getBienTheByIds(ps.filter((p): p is Extract<PickItem, { kind: 'bienthe' }> => p.kind === 'bienthe').map((p) => p.bienTheId)),
     gt.getYFull(ps.filter((p): p is Extract<PickItem, { kind: 'y' }> => p.kind === 'y').map((p) => p.yId)),
-    giaThietPhanNhieu(ghepChuan.flatMap((p) => p.nodeIds)),   // giả thiết theo đường gốc → nhánh (ở DB)
+    // giả thiết theo đường gốc → nhánh, tính theo TỪNG bài ghép (nhóm bài: có thành viên thì đoạn đầu khác) — ở DB
+    Promise.all(ghepChuan.map((p) => ghepY(p.nodeIds).then((r) => [p.key, r.phan] as const))).then((xs) => new Map(xs)),
     Promise.all(ps.filter((p): p is Extract<PickItem, { kind: 'bai' }> => p.kind === 'bai').map((p) => api.baiFullHL(p.baiId)))
       .then((xs) => new Map(xs.filter((x): x is api.BaiFullHL => !!x).map((x) => [x.bai.id, x]))),
   ])
@@ -806,7 +807,7 @@ export async function banInTheoMoHinh(tieuDe: string, phan: 'lop' | 'nha' | 'et'
     else if (p.kind === 'y') { const yb = yMap.get(p.yId); if (yb) mucs.push(mucY(L, yb, cd(p.key), dong(p.key))) }
     else if (p.kind === 'bai') { const b = baiKho.get(p.baiId); if (b) mucs.push(mucBaiKho(b, p.moHinhId, cd(p.key), dong(p.key))) }
     else if (p.luaId) { const vs = await api.bienTheCuaLua(p.luaId); mucs.push(mucGhepLua(L, p.nodeIds, vs, cd(p.key), dong(p.key))) }
-    else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key), gtPhan))
+    else mucs.push(mucGhep(L, p, cd(p.key), dong(p.key), gtPhan.get(p.key)))
   }
   // ⭐ 08-10 (Thùy: "lý thuyết in ở phiếu bài tập trên lớp giống bên đại"): CHỈ resolve cho phan='lop' —
   // khuôn Đại (LT chuyên đề chỉ hiện ở buổi trên lớp, KHÔNG lặp lại ở phiếu BTVN riêng).

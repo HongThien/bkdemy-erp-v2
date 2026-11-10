@@ -1,0 +1,181 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup gia đình bài toán</title>
+<style>
+:root{--teal:#0d9488;--fam:#ea580c;--chinh:#2563eb;--phu:#7c3aed;--ink:#0f172a;--line:#cbd5e1}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;color:var(--ink);background:#fff}
+header{padding:12px 18px;border-bottom:1px solid #e2e8f0}h1{font-size:17px;margin:0 0 4px}header p{margin:2px 0;font-size:13px;color:#475569}
+.main{display:flex;height:calc(100vh - 118px)}
+.canvas{flex:1;overflow:auto;position:relative}
+#stage{position:relative;width:1300px;height:1100px}
+svg#edges{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.fam{position:absolute;border:2.5px solid var(--fam);border-radius:18px;background:#fff7ed}
+.fam-h{padding:10px 16px 6px;font-size:13px;line-height:1.6}
+.fam-h .t{font-weight:800;color:#9a3412;text-transform:uppercase;letter-spacing:.03em;margin-right:8px}
+.su{display:inline-block;border-radius:7px;padding:1px 8px;margin:0 6px 2px 0;font-weight:600;background:#fff;border:1.5px solid #fdba74;color:#9a3412}
+.su i{font-style:normal;display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;background:var(--fam);color:#fff;margin-right:5px;font-size:11px}
+.box{position:absolute;border:1.5px dashed var(--line);border-radius:14px;background:#f8fafc;padding:0 10px 10px}
+.hx{margin:8px -4px 8px;padding:7px 18px;color:#fff;font-size:12.5px;line-height:1.35;clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%)}
+.hx b{display:block;font-size:12px;opacity:.95}
+.tv{display:flex;align-items:center;gap:12px;background:#fff;border-color:#fdba74}.tv .hx{flex:0 0 560px;background:#f97316;margin:8px 0}
+.goc .hx{background:var(--teal)}.chinh .hx{background:var(--chinh)}.phu .hx{background:var(--phu)}
+.tag{display:inline-block;background:#fff;color:#9a3412;border-radius:5px;padding:0 6px;margin-left:6px;font-weight:700}
+.chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ar{color:#94a3b8;font-size:15px}
+.card{width:158px;min-height:50px;border:1.5px solid #94a3b8;border-radius:9px;background:#fff;padding:5px 8px;font-size:12px;cursor:pointer;position:relative;user-select:none}
+.card .so{font-weight:700;font-size:12.5px}
+.card.on{border-color:#4f46e5;background:#eef2ff;box-shadow:0 0 0 2px #c7d2fe}.card.on .so::after{content:" ✓";color:#4f46e5}
+.card.bad{border-color:#e11d48;background:#fff1f2;box-shadow:0 0 0 2px #fecdd3}
+.panel{width:430px;border-left:1px solid #e2e8f0;padding:14px 16px;overflow:auto;background:#fcfcfd}
+.panel h2{font-size:14px;margin:0 0 8px}.ok{color:#047857;font-weight:600}.err{color:#be123c;font-weight:600}
+.de{border:1px solid #e2e8f0;border-radius:10px;background:#fff;padding:12px 14px;font-size:14px;line-height:1.6;margin-top:8px}
+.de .gt{margin-bottom:6px}.de .y{margin:3px 0}.de .them{color:#7c3aed}
+.chip{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11.5px;font-weight:600;background:#ffedd5;color:#9a3412}
+.btn{border:1px solid #cbd5e1;background:#fff;border-radius:7px;padding:4px 10px;font-size:12px;cursor:pointer;margin:0 4px 6px 0}
+.note{font-size:12px;color:#475569;margin-top:12px;line-height:1.5}
+.legend span{display:inline-block;width:12px;height:12px;border-radius:3px;margin:0 4px -2px 10px}
+</style></head><body>
+<header>
+<h1>Mockup — GIA ĐÌNH bài toán ("2 trong 3") trong chuỗi mô hình (dữ liệu thật MH.126 + MH.061, khối 7)</h1>
+<p><b>Gia đình</b> (khung cam) = nền chung + các <b>sự kiện</b> A, B, C; mỗi <b>thành viên</b> = một bài có thật "cho mọi sự kiện trừ một, hỏi cái còn lại" (có thể nhiều ý).
+<b>Đầu ra</b> của gia đình = nền + A + B + C = giả thiết đầy đủ để chuỗi đi tiếp. Gia đình có thể nằm giữa chuỗi; một mô hình có thể có nhiều gia đình.</p>
+<p class="legend">Bấm thẻ để tick ý như lúc chọn đề MT/ET → bên phải hiện <b>đề in ra</b> + kiểm <b>con đường hợp lệ</b>.
+<span style="background:var(--fam)"></span>gia đình <span style="background:var(--teal)"></span>giả thiết đầy đủ <span style="background:var(--chinh)"></span>nhánh chính <span style="background:var(--phu)"></span>nhánh phụ</p>
+</header>
+<div class="main">
+<div class="canvas"><div id="stage"><svg id="edges"></svg></div></div>
+<div class="panel">
+<h2>Thử nhanh</h2>
+<div id="mau"></div>
+<h2 style="margin-top:10px">Kiểm con đường</h2><div id="kq"></div>
+<h2 style="margin-top:12px">Đề in ra</h2><div id="de"></div>
+<div class="note"><b>Luật trong mockup:</b><br>
+① Mọi ý tick nằm trên MỘT đường đi theo chiều mũi tên, không quay lại ⇒ mỗi đề lấy <b>tối đa 1 thành viên</b> của một gia đình, không lấy 2 nhánh anh em.<br>
+② Rẽ sang nhánh phụ tối đa 1 lần <i>(đang chờ chị xác nhận — xem nút "Rẽ 2 lần")</i>. Đi thẳng nhánh chính, đi qua gia đình không tính là rẽ.<br>
+③ Bỏ qua ý ở giữa được. Có tick ý của thành viên ⇒ đề in <b>giả thiết của thành viên đó</b> (nguyên văn đề thật), ý của thành viên đứng đầu. Không tick thành viên nào ⇒ in thẳng giả thiết đầy đủ (đầu ra gia đình).<br>
+④ Giả thiết thêm của mỗi nhánh in ngay trước ý đầu tiên thuộc nhánh đó.<br>
+⑤ Mỗi ý là một nốt, đo riêng; thành viên khác nhau ⇒ nốt khác nhau dù cùng câu chữ (vd 3 ý "CM ΔABD = ΔEBD").<br><br>
+Thẻ ở nhánh phụ "N" chỉ để thử luật ②, nội dung không có thật.</div>
+</div></div>
+<script>
+// Gia đình: nền + sự kiện; thành viên = nút kind 'tv' (cho/hoi), cha của "đầu ra" (G) là các thành viên
+const FAM = { x:10, y:10, w:1280, nen:'ΔABC vuông tại A, D ∈ AC, E ∈ BC',
+  su:{ A:'BD là phân giác của góc B', B:'BE = BA', C:'DE ⊥ BC' } }
+const GT = [
+  { id:'T1', kind:'tv', x:30, y:96,  w:1240, cho:['A','B'], hoi:'C', gt:'Cho ΔABC vuông tại A, BD là phân giác của góc B (D ∈ AC). Trên BC lấy E sao cho BE = BA.', parents:[] },
+  { id:'T2', kind:'tv', x:30, y:196, w:1240, cho:['A','C'], hoi:'B', gt:'Cho ΔABC vuông tại A, BD là phân giác của góc B (D ∈ AC). Kẻ DE ⊥ BC (E ∈ BC).', parents:[] },
+  { id:'T3', kind:'tv', x:30, y:296, w:1240, cho:['B','C'], hoi:'A', gt:'Cho ΔABC vuông tại A. Trên BC lấy E sao cho BE = BA. Đường vuông góc với BC tại E cắt AC tại D.', parents:[] },
+  { id:'G',  kind:'goc', x:20,  y:460, w:560, ten:'Đầu ra gia đình — đủ giả thiết', gt:'Cho ΔABC vuông tại A, BD là phân giác của góc B (D ∈ AC), E ∈ BC, BE = BA, DE ⊥ BC.', parents:[{id:'T1'},{id:'T2'},{id:'T3'}] },
+  { id:'F',  kind:'phu', x:660, y:460, w:300, ten:'Nhánh phụ', gt:'Trên tia đối của tia AB lấy F sao cho AF = CE.', parents:[{id:'G',chinh:false}] },
+  { id:'N',  kind:'phu', x:990, y:460, w:290, ten:'Nhánh phụ (thử luật — nội dung giả)', gt:'Gọi N là giao điểm của FC và BD.', parents:[{id:'F',chinh:false}] },
+  { id:'Q',  kind:'chinh', x:20, y:680, w:400, ten:'Nhánh chính', gt:'Tia BA cắt tia ED tại Q.', parents:[{id:'G',chinh:true}] },
+  { id:'M',  kind:'chinh', x:20, y:860, w:400, ten:'Nhánh chính', gt:'Gọi M là trung điểm của QC.', parents:[{id:'Q',chinh:true}] },
+]
+const Y = [
+  { id:'B1', gt:'T1', nd:'CM ΔABD = ΔEBD.', ma:'BT.07.061.13' },
+  { id:'B2', gt:'T1', nd:'CM DE ⊥ BC (và DE = DA).', ma:'BT.07.061.14' },
+  { id:'B3', gt:'T2', nd:'CM ΔABD = ΔEBD.' },
+  { id:'B4', gt:'T2', nd:'CM BE = BA.' },
+  { id:'B5', gt:'T3', nd:'CM ΔABD = ΔEBD.', ma:'BT.07.061.17' },
+  { id:'B6', gt:'T3', nd:'CM BD là tia phân giác của góc ABC.', ma:'BT.07.061.18' },
+  { id:'B7', gt:'G', nd:'CM BD là đường trung trực của AE.', ma:'BT.07.061.23' },
+  { id:'B8', gt:'G', nd:'CM BD ⊥ AE.', ma:'BT.07.061.15' },
+  { id:'B9', gt:'F', nd:'CM ba điểm F, D, E thẳng hàng.', ma:'BT.07.061.24' },
+  { id:'B10', gt:'N', nd:'(giả) CM …' },
+  { id:'B11', gt:'Q', nd:'CM DQ = DC.', ma:'BT.07.061.26' },
+  { id:'B12', gt:'M', nd:'CM ba điểm B, D, M thẳng hàng.', ma:'BT.07.061.27' },
+]
+const MAU = [
+  ['Chỉ thân (không thành viên)', ['B7','B8','B11','B12']],
+  ['Thành viên 3 → thân', ['B5','B6','B7','B11']],
+  ['Thành viên 1, bỏ ý giữa', ['B1','B9']],
+  ['2 thành viên (sai)', ['B1','B5','B7']],
+  ['2 nhánh anh em (sai)', ['B9','B11']],
+  ['Rẽ 2 lần (sai?)', ['B7','B9','B10']],
+]
+const gtOf = Object.fromEntries(GT.map(g => [g.id, g])), yOf = Object.fromEntries(Y.map(y => [y.id, y]))
+const tenTV = (g) => `Thành viên ${g.id.slice(1)} · cho ${g.cho.join(', ')} ⇒ hỏi ${g.hoi}`
+const tick = new Set()
+const stage = document.getElementById('stage'), svg = document.getElementById('edges')
+// khung gia đình
+const fam = document.createElement('div'); fam.className = 'fam'; fam.id = 'fam'
+Object.assign(fam.style, { left: FAM.x + 'px', top: FAM.y + 'px', width: FAM.w + 'px', height: '390px' })
+fam.innerHTML = `<div class="fam-h"><span class="t">Gia đình · 2 trong 3</span> Nền: <b>${FAM.nen}</b><br>` +
+  Object.entries(FAM.su).map(([k, v]) => `<span class="su"><i>${k}</i>${v}</span>`).join('') +
+  ` → <b>Đầu ra</b>: nền + A + B + C</div>`
+stage.appendChild(fam)
+for (const g of GT) {
+  const b = document.createElement('div'); b.className = 'box ' + g.kind; b.id = 'box-' + g.id
+  Object.assign(b.style, { left: g.x + 'px', top: g.y + 'px', width: g.w + 'px' })
+  const dau = g.kind === 'tv' ? `<b>${tenTV(g)}</b>` : `<b>${g.ten}</b>`
+  b.innerHTML = `<div class="hx">${dau}${g.gt}</div><div class="chain"></div>`
+  const ch = b.querySelector('.chain')
+  Y.filter(y => y.gt === g.id).forEach((y, i) => {
+    if (i) ch.insertAdjacentHTML('beforeend', '<span class="ar">→</span>')
+    const c = document.createElement('div'); c.className = 'card'; c.id = 'card-' + y.id
+    c.innerHTML = `<div class="so">${y.id}</div>${y.nd}${y.ma ? `<div style="font-size:9.5px;color:#94a3b8;margin-top:2px">${y.ma}</div>` : ''}`
+    c.onclick = () => { tick.has(y.id) ? tick.delete(y.id) : tick.add(y.id); ve() }
+    ch.appendChild(c)
+  })
+  stage.appendChild(b)
+}
+function canh() {
+  const r0 = stage.getBoundingClientRect()
+  const R = (el) => { const r = el.getBoundingClientRect(); return { x: r.left - r0.left, y: r.top - r0.top, w: r.width, h: r.height } }
+  const B = (id) => R(document.getElementById('box-' + id))
+  const last = B('T3'); fam.style.height = (last.y + last.h + 16 - FAM.y) + 'px'
+  let s = `<defs>${['fam','chinh','phu'].map(k => `<marker id="m-${k}" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--${k})"/></marker>`).join('')}</defs>`
+  const f = R(fam), g = B('G')                                     // MỘT mũi tên: gia đình → đầu ra
+  s += `<path d="M${g.x + 120},${f.y + f.h} L${g.x + 120},${g.y - 4}" stroke="var(--fam)" stroke-width="4" fill="none" marker-end="url(#m-fam)"/>`
+  s += `<text x="${g.x + 134}" y="${(f.y + f.h + g.y) / 2 + 4}" font-size="12" fill="#9a3412" font-weight="700">đầu ra: đủ A + B + C</text>`
+  for (const n of GT) for (const p of n.parents) {
+    if (gtOf[p.id].kind === 'tv') continue
+    const a = B(p.id), b = B(n.id)
+    if (p.chinh) s += `<path d="M${a.x + 40},${a.y + a.h} L${b.x + 40},${b.y - 4}" stroke="var(--chinh)" stroke-width="3" fill="none" marker-end="url(#m-chinh)"/>`
+    else { const y1 = a.y + 28, y2 = b.y + 28, xm = (a.x + a.w + b.x) / 2
+      s += `<path d="M${a.x + a.w},${y1} H${xm} V${y2} H${b.x - 4}" stroke="var(--phu)" stroke-width="2.5" fill="none" marker-end="url(#m-phu)"/>` }
+  }
+  svg.innerHTML = s
+  stage.style.height = Math.max(...GT.map(n => B(n.id).y + B(n.id).h)) + 40 + 'px'
+}
+// ── luật ──
+const laTo = (a, b) => a === b || gtOf[b].parents.some(p => laTo(a, p.id))
+const duongLen = (tren, duoi) => { const out = []; let cur = duoi; while (cur !== tren) { out.unshift(cur); cur = gtOf[cur].parents.find(q => laTo(tren, q.id)).id } return out }
+function kiem() {
+  const ys = [...tick].sort((a, b) => +a.slice(1) - +b.slice(1))
+  if (!ys.length) return { ok: true, ys, msg: 'Chưa tick ý nào.' }
+  const gts = [...new Set(ys.map(y => yOf[y].gt))].sort((a, b) => (laTo(a, b) ? -1 : laTo(b, a) ? 1 : 0))
+  for (let i = 1; i < gts.length; i++) if (!laTo(gts[i - 1], gts[i])) {
+    const ten = (id) => gtOf[id].kind === 'tv' ? `Thành viên ${id.slice(1)}` : gtOf[id].ten
+    const hai = gtOf[gts[i - 1]].kind === 'tv' && gtOf[gts[i]].kind === 'tv'
+    return { ok: false, ys, bad: ys.filter(y => [gts[i - 1], gts[i]].includes(yOf[y].gt)),
+      msg: hai ? `Lấy 2 thành viên của cùng gia đình (${ten(gts[i - 1])} và ${ten(gts[i])}) — cái này cho thì cái kia hỏi.` : `«${ten(gts[i - 1])}» và «${ten(gts[i])}» không nối tiếp nhau (phải quay lại mới sang được).` }
+  }
+  let re = 0; const qua = [gts[0]]
+  for (let i = 1; i < gts.length; i++) for (const n of duongLen(gts[i - 1], gts[i])) { qua.push(n); if (gtOf[n].kind === 'phu') re++ }
+  if (re > 1) return { ok: false, ys, bad: ys.filter(y => gtOf[yOf[y].gt].kind === 'phu'), msg: `Đường đi rẽ sang nhánh phụ ${re} lần (luật ②: tối đa 1).` }
+  return { ok: true, ys, gts, qua, re, msg: `Hợp lệ — rẽ nhánh phụ ${re} lần.` }
+}
+function ve() {
+  const k = kiem()
+  document.querySelectorAll('.card').forEach(c => { const id = c.id.slice(5); c.classList.toggle('on', tick.has(id)); c.classList.toggle('bad', !!k.bad?.includes(id)) })
+  document.getElementById('kq').innerHTML = `<div class="${k.ok ? 'ok' : 'err'}">${k.ok ? '✓ ' : '✗ '}${k.msg}</div>`
+  const de = document.getElementById('de')
+  if (!k.ok || !k.ys.length) { de.innerHTML = k.ys.length ? '<div class="err">Không in được — sửa lựa chọn.</div>' : ''; return }
+  const tuTV = gtOf[k.gts[0]].kind === 'tv'
+  const dau = tuTV ? gtOf[k.gts[0]] : gtOf['G']
+  const them = k.qua.filter(n => n !== dau.id && gtOf[n].kind !== 'goc')
+  const truoc = tuTV ? [] : duongLen('G', k.gts[0])
+  const daIn = new Set()
+  let h = `<div class="gt">${dau.gt}${tuTV ? ` <span class="chip">${tenTV(dau)}</span>` : ' <span class="chip" style="background:#ccfbf1;color:#115e59">đầu ra đầy đủ</span>'}</div>`
+  k.ys.forEach((y, i) => {
+    const g = yOf[y].gt, can = [...truoc, ...them].filter(n => !daIn.has(n) && laTo(n, g))
+    can.forEach(n => daIn.add(n))
+    h += `<div class="y"><b>${String.fromCharCode(97 + i)})</b> ${can.map(n => `<span class="them">${gtOf[n].gt}</span> `).join('')}${yOf[y].nd.replace(/^CM /, 'Chứng minh ')}</div>`
+  })
+  de.innerHTML = `<div class="de">${h}</div><div class="note">Chữ tím = giả thiết thêm của nhánh. ${k.ys.length} ý = ${k.ys.length} câu, chấm theo từng nốt.</div>`
+}
+document.getElementById('mau').innerHTML = MAU.map(([t], i) => `<button class="btn" data-i="${i}">${t}</button>`).join('')
+document.querySelectorAll('#mau .btn').forEach(b => b.onclick = () => { tick.clear(); MAU[+b.dataset.i][1].forEach(y => tick.add(y)); ve() })
+canh(); window.addEventListener('resize', canh)
+MAU[1][1].forEach(y => tick.add(y)); ve()
+</script></body></html>

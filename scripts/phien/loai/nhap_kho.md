@@ -14,6 +14,7 @@ bạn phân câu ─┬─ CHẮC        → "cao"   : TỰ GÁN, không chờ a
 (nếu tài liệu chưa có lời giải), rồi `them_cau` — câu vào dạng chờ của khối, **chưa duyệt**, kèm `phan` để xếp luôn vào dạng
 theo đúng luật cao / vua / thieu bên dưới. Câu trùng câu đã có trong kho thì DB không thêm, trả mã cũ.
 Câu có hình mà bạn không xem được hình ⇒ ghi rõ trong đề "[có hình — chưa đưa hình]" và không "cao".
+**Câu Hình phụ thuộc hình vẽ: VẼ NGAY bằng `dung_hinh` / `ve_hinh` (§Vẽ hình, §Dựng hình) trong cùng lượt nhập — KHÔNG để treo "chờ công cụ vẽ" (Thùy 10/11: công cụ vẽ đã bật, chạy được; không có gì phải chờ ai cho phép).**
 
 **Ai mở phiên:** trưởng khối trở lên của đúng khối (người có Phòng làm việc).
 
@@ -72,6 +73,47 @@ node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'
 Câu có hình mà chưa gắn ⇒ tìm hình ở tài liệu gốc: PDF thì `anh_pdf` (đoán vùng theo tỉ lệ trang, cắt rộng một chút), Word thì
 `anh_docx` (đọc `van_ban.md` để biết hình nằm sau câu nào). **Luôn Read ảnh vừa cắt để soát** đúng hình, đủ nhãn điểm, không dính
 chữ câu khác — sai thì cắt lại với vùng khác. Đúng rồi mới `gan_anh`, rồi sửa đề bỏ dòng "[có hình — chưa đưa hình]" bằng `sua_cau`.
+
+**Vẽ hình sạch (09/11)** — khi người mở phiên muốn "hình vẽ đẹp / bỏ watermark", hoặc ảnh sách mờ/có chữ đè: **vẽ lại** bằng
+`ve_hinh` thay vì cắt. Bạn KHÔNG viết file hay chạy mã được — chỉ gửi phần thân SVG qua heredoc:
+```
+node scripts/phien/ban-do.mjs ve_hinh '{"ten":"cau12","w":420,"h":300,"luoi":30}' <<'HET'
+<polyline points="60,240 120,120 210,180"/><circle cx="60" cy="240" r="4.5" fill="#222" stroke="none"/>
+<text x="46" y="268" stroke="none" fill="#111" font-style="italic">A</text>
+HET
+```
+- Thẻ được dùng: `g line polyline polygon path circle ellipse rect text tspan` (+ `defs marker` cho mũi tên). Mọi giá trị trong dấu nháy;
+  chữ "<" trong nhãn viết `&lt;`. Khung sẵn: nền trắng, nét #222 dày 2, chữ Times 26 — chữ nhớ `stroke="none" fill="#111"`.
+- `luoi` = cạnh ô lưới vuông (px) cho bài trên lưới ô vuông/giấy kẻ ô; bỏ trống = không lưới. Toạ độ gốc trên-trái, y hướng xuống.
+- **Hình phải KHỚP dữ kiện đề** (độ dài theo số ô, vuông góc thật, chia đều thật) — tự tính toạ độ, đừng ước mắt. Đỉnh hình đặt đúng giao điểm lưới.
+- **Read ảnh vừa vẽ để soát** (nhãn đủ, không chồng chữ, không lộ đáp án) rồi `gan_anh` (o `de`), cuối cùng `sua_cau` bỏ "[có hình — chưa đưa hình]".
+- Hình lời giải (vd tô màu phần đáp án) vẽ riêng một ảnh, gắn `o` `dap_an`.
+
+**Dựng hình lớp 6–12 (09/11)** — hình có quan hệ hình học (vuông góc, trung điểm, đường tròn, tiếp tuyến, toạ độ, đồ thị, hình
+không gian): dùng `dung_hinh`, KHÔNG tự tính toạ độ nhẩm (`ve_hinh` chỉ cho hình lưới/đơn giản). Khai điểm bằng toạ độ toán hoặc phép
+dựng, máy tính toạ độ chính xác, tự co khung, tự đặt nhãn né nét, in lại toạ độ đã tính:
+```
+node scripts/phien/ban-do.mjs dung_hinh <<'HET'
+{"ten":"cau7",
+ "diem":[["O",[0,0]],["M",[7,0]],["A",["tiep_diem","M","O",3,0]],["B",["tiep_diem","M","O",3,1]],["H",["giao","A","B","O","M"]]],
+ "ve":[["duong_tron","O",3],["doan","M","A"],["doan","M","B"],["doan","A","B"],["doan","O","M"],["goc_vuong","H","A","M"],
+       ["gach","M","A",1],["gach","M","B",1],["cham","tat_ca"],["nhan","tat_ca"]]}
+HET
+```
+- **Toạ độ toán, y hướng LÊN.** `[x,y]` phẳng · `[x,y,z]` không gian (chiếu xiên: y vào sâu, z lên trên).
+- **Phép dựng điểm** `["Tên", ["phép", …]]`: `trung_diem A B` · `chia A B t` (A + t·AB) · `chan P A B` (chân đường vuông góc từ P xuống AB) ·
+  `giao A B C D` (giao AB và CD) · `quay P O độ` (ngược chiều kim đồng hồ) · `doi_xung_diem P O` · `doi_xung_truc P A B` · `tinh_tien P A B` ·
+  `trong_tam A B C` · `tam_ngoai A B C` · `tam_noi A B C` · `truc_tam A B C` · `tren_tron O R độ` · `giao_tron_thang O R A B 0|1` ·
+  `giao_hai_tron O1 R1 O2 R2 0|1` · `tiep_diem M O R 0|1` · `phan_giac V P Q dài` · `vuong_goc P A B dài` · `song_song P A B dài`.
+  R = số hoặc tên một điểm trên đường tròn. Hình KHÔNG GIAN chỉ dùng phép giữ qua phép chiếu (trung_diem · chia · giao hai đường cùng
+  mặt phẳng · trong_tam · tinh_tien); chân đường cao/tâm mặt cầu trong không gian thì tự tính toạ độ 3D rồi nhập thẳng.
+- **Nét** `["loại", …, {tuỳ chọn}]`: `doan A B` · `duong_thang A B` (kéo dài 2 đầu) · `tia A B` · `vecto A B` · `da_giac [A,B,C] {"to":"#e6ecf5"}` ·
+  `duong_tron O R` · `cung O A B` (từ A tới B ngược chiều kim đồng hồ) · `goc V P Q số_cung` · `goc_vuong V P Q` · `gach A B số_gạch` (đoạn bằng nhau) ·
+  `cham [..]|"tat_ca"` · `nhan [..]|"tat_ca" {"huong":độ}` (tên có `_1` ⇒ chỉ số dưới) · `chu điểm|[x,y] "chữ"` ·
+  `truc {"x":[-2,6],"y":[-2,5],"vach":1,"luoi":true}` · `do_thi "x^2-4x+3" x_đầu x_cuối`.
+  Tuỳ chọn: `{"dut":true}` nét đứt (cạnh khuất) · `{"mau":"#dc2626"}` · `{"day":3}`. Cố định tỉ lệ (hình toạ độ): thêm `"ti_le":50` (px/đơn vị).
+- Lỗi dựng (song song không giao, điểm trong đường tròn không kẻ được tiếp tuyến…) ⇒ máy báo rõ — sửa dữ kiện, đừng ép.
+- Read ảnh để soát như mọi hình khác rồi `gan_anh`. Không vẽ chi tiết của LỜI GIẢI (đường phụ, điểm dựng thêm) vào hình ĐỀ.
 
 ## Cách làm một lượt
 

@@ -3,7 +3,7 @@
 // Ôn tập v1: GV chọn tối đa CAP_NHOM_ON_TAP nhóm đã học ở buổi trước; máy gợi ý SO_CAU_ON_TAP câu/nhóm (né mọi câu
 // của buổi). Chưa xếp theo mastery — mastery còn đo theo nhóm cũ (spec-builder-ban-do-moi.md B6 bước 4).
 import { useEffect, useState } from 'react'
-import { noiDung, goiY, onTapUngVien, trichBuoiBdm, cauCuaBuoi, loiDoc, CAP_NHOM_ON_TAP, SO_CAU_ON_TAP, type NdBuoi, type UngVienOnTap } from '../../../lib/tailieuBdm'
+import { noiDung, goiY, onTapXep, trichBuoiBdm, cauCuaBuoi, loiDoc, CAP_NHOM_ON_TAP, SO_CAU_ON_TAP, type NdBuoi, type UngVienXep } from '../../../lib/tailieuBdm'
 import { fetchCausCuaTaiLieu, renumberBuoiLop, DEFAULT_BTVN_LINES, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
 import type { CauHoi } from '../../../lib/kho/api'
 import { useStore } from '../../../store/useStore'
@@ -21,7 +21,8 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
   onClose: () => void; onDone: () => void
 }) {
   const [buoi, setBuoi] = useState<NdBuoi | null>(null)
-  const [ungVien, setUngVien] = useState<UngVienOnTap[]>([])
+  const [ungVien, setUngVien] = useState<UngVienXep[]>([])
+  const [xepTheoMastery, setXepTheoMastery] = useState(false)
   const [chon, setChon] = useState<{ nhom: string; ten: string | null; caus: string[] }[]>([])
   const [cauMap, setCauMap] = useState<Map<string, CauHoi>>(new Map())
   const [gv, setGv] = useState(false)
@@ -38,17 +39,17 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
   useEffect(() => {
     (async () => {
       try {
-        const [nd, uv] = await Promise.all([noiDung(masterId, buoiId), onTapUngVien(masterId, buoiId)])
+        const [nd, uv] = await Promise.all([noiDung(masterId, buoiId), onTapXep(masterId, buoiId, lopId)])
         const b = nd.buoi[0] ?? null
-        setBuoi(b); setUngVien(uv)
+        setBuoi(b); setUngVien(uv.ds); setXepTheoMastery(uv.xepTheoMastery)
         if (b) await napCau(b.nhom.flatMap((n) => n.btvn?.caus ?? []))
       } catch (e) { setLoi(loiDoc(e)) }
     })()
-  }, [masterId, buoiId]) // eslint-disable-line
+  }, [masterId, buoiId, lopId]) // eslint-disable-line
 
   // Câu né khi gợi ý ôn tập: mọi câu của buổi (luyện + BTVN) + câu ôn tập của nhóm khác đã chọn.
   const tru = (khac: string | null) => [...(buoi ? cauCuaBuoi(buoi) : []), ...chon.filter((c) => c.nhom !== khac).flatMap((c) => c.caus)]
-  async function batNhom(u: UngVienOnTap) {
+  async function batNhom(u: UngVienXep) {
     setLoi(null)
     if (chon.some((c) => c.nhom === u.nhom)) { setChon((s) => s.filter((c) => c.nhom !== u.nhom)); return }
     if (chon.length >= CAP_NHOM_ON_TAP) { setLoi(`Tối đa ${CAP_NHOM_ON_TAP} nhóm ôn tập mỗi phiếu.`); return }
@@ -109,7 +110,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
       <div className="grid min-h-0 flex-1 grid-cols-2 overflow-hidden">
         <div className="min-h-0 overflow-auto border-r border-slate-200 bg-[#fafafb] p-5">
           <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Ôn tập · chọn tối đa {CAP_NHOM_ON_TAP} nhóm đã học ở buổi trước</div>
-          <p className="mb-3 text-[12px] text-slate-400">Chưa xếp theo mức nắm của lớp — GV tự chọn nhóm. Mỗi nhóm máy đề xuất {SO_CAU_ON_TAP} câu (đổi số câu từng loại + ↻ Gợi ý, hoặc ✎ Chọn câu / ✕ như giáo trình). Không chọn = phiếu không có ôn tập.</p>
+          <p className="mb-3 text-[12px] text-slate-400">{xepTheoMastery ? 'Xếp theo mức nắm HIỆN TẠI của lớp (mastery ET + MT): nhóm lớp đang yếu lên đầu, nhóm chưa đo ở giữa, nhóm đã đạt ở cuối.' : 'Chưa xếp được theo mức nắm của lớp — GV tự chọn nhóm.'} Mỗi nhóm máy đề xuất {SO_CAU_ON_TAP} câu (đổi số câu từng loại + ↻ Gợi ý, hoặc ✎ Chọn câu / ✕ như giáo trình). Không chọn = phiếu không có ôn tập.</p>
           {ungVien.length === 0
             ? <div className="rounded-lg border border-dashed border-slate-300 p-4 text-center text-[12px] italic text-slate-400">Không có nhóm nào ở các buổi trước (hoặc đều đã học lại ở buổi này).</div>
             : <div className="space-y-1.5">
@@ -120,6 +121,12 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
                     <label className="flex cursor-pointer items-center gap-2">
                       <input type="checkbox" checked={!!c} onChange={() => batNhom(u)} />
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{u.ten ?? u.nhom}</span>
+                      {xepTheoMastery && (
+                        u.diem == null
+                          ? <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10.5px] text-slate-500" title="Lớp chưa có số đo cho nhóm này (không phải yếu)">chưa đo</span>
+                          : <span className={`shrink-0 rounded px-1.5 text-[10.5px] font-semibold ${u.muc === 'yeu' ? 'bg-rose-100 text-rose-700' : u.muc === 'can_luyen' ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700'}`}
+                              title={`Điểm nắm TB ${u.diem.toFixed(2)} · ${u.so_hs_do}/${u.so_hs} em đã được đo`}>{u.pct_dat ?? 0}% đạt · {u.muc === 'yeu' ? 'yếu' : u.muc === 'can_luyen' ? 'cần luyện' : 'đạt'}</span>
+                      )}
                       <span className="shrink-0 text-[11px] text-slate-400">{u.buoi}</span>
                     </label>
                     {c && (

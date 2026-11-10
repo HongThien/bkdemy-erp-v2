@@ -6,6 +6,7 @@
 // Màn chính = CẢNH PHÒNG (CanhPhong): mỗi bàn một người, số trên đầu = hiệu suất tháng, bấm ⇒ chi tiết.
 // Phần việc là ĐỒ VẬT trong cảnh: máy tính = Phiên Claude · 3 tranh giữa tường = Bản đồ · Quản trị · Chất lượng; mở ra có nút ← Về phòng chính.
 // Phòng trưởng bộ môn có thêm BẢNG TIN "Hỏi vận hành TA" (Thùy 05/11): hỏi bằng lời lương/công/dữ liệu đã điền của TA trong môn (HoiVanHanhTa).
+// Khay hồ sơ "Duyệt công" (Thùy 09/11): trưởng khối duyệt công TA thuộc khối mình (màn DuyetCongScreen ở sảnh, DB lọc theo phạm vi).
 // Phòng là KHU RIÊNG ngang Trang chính trên menu/đường dẫn (lib/menu.ts LEAF_PHONG), không thuộc nhóm Quản lý chất lượng.
 // HAI CHẾ ĐỘ cùng một khuôn (fn_phong_che_do, theo ghế):
 //   'tk'  = phòng trưởng khối — nhân vật = TA của khối mình.
@@ -26,6 +27,7 @@ import { QuanTriTbm, ChatLuongTbm } from './PhanViecPgd'
 import BaoCaoTuanTK from './BaoCaoTuanTK'
 import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import HoiVanHanhTa from './HoiVanHanhTa'
+import DuyetCongScreen from '../tacong/DuyetCongScreen'
 import { ChonGiaoDien } from '../HomeScreen'
 import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listGheTbm, monTbm, type CapDuoi, type GheGd, type GheTbm } from '../../lib/phongTk'
 import { useSkinErp } from '../../lib/erpSkin'
@@ -34,7 +36,7 @@ import { HEAD } from '../home/khung'
 
 type Mo = DoVat | null
 type CheDo = 'tk' | 'tbm'
-const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA' }
+const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công' }
 const nhanKhoi = (o: string[]) => `Khối ${o.join(' · ')}`
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách không trắng (CLAUDE.md §2 React).
 const NHO: { mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null } =
@@ -175,6 +177,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
               {/* Báo cáo tuần (spec-bao-cao-tuan, P2): trưởng khối soạn/nộp báo cáo của mình; trưởng bộ môn báo cáo thay ô chưa có trưởng khối. Phòng trưởng bộ môn: duyệt / trả lại · ghép Báo cáo Chuyên môn tuần (P3). */}
               {/* Hỏi vận hành trợ giảng (Thùy 05/11): chỉ phòng trưởng bộ môn — DB khoá phạm vi môn của NGƯỜI HỎI (không theo môn đang xem). */}
               {mo === 'hoi_ta' && cheDo === 'tbm' && <div className="rounded-2xl bg-white p-4 shadow-sm"><HoiVanHanhTa mon={mon} /></div>}
+              {/* Duyệt công trợ giảng (Thùy 09/11): cùng màn ở sảnh; DB chỉ trả công thuộc khối của người mở (fn_ta_cong_duoc_duyet). */}
+              {mo === 'duyet_cong' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><DuyetCongScreen /></div>}
               {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (
                 <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">

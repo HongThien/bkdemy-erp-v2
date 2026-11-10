@@ -4,14 +4,14 @@
 // Bản GV = kèm đáp án/lời giải mặc định (đề rồi lời giải bên dưới), không tách bảng riêng.
 // THỨ TỰ CÂU: đọc thẳng `thu_tu` của DB, KHÔNG sắp xếp lại ở đây — việc gom theo nhóm in đã làm
 // từ lúc LƯU (sortETCaus, xem lib/tailieu.ts). Đừng thêm sort vào file này: giấy sẽ lệch với hệ.
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
 import { getTaiLieuFull, etGroupOf, etFormOf, khoCuaMon, anhPhaiCua, type ETGroup, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
 import { fetchCausByMa } from '../../lib/ontap'
 import { hsCoMatCuaBuoi } from '../../lib/gami'
 import { BK_CSS, BK_PAGE_CSS, ETHeaderBK } from './bkPrint'
-import type { CauHoi } from '../../lib/kho/api'
+import { tachLoiDanY, type CauHoi } from '../../lib/kho/api'
 import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe } from './PrintView'
 import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
@@ -357,13 +357,37 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; 
             <TLNTable rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c, cheDo(c)) } })} />
           ) : (
             /* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */
-            <CauFlow items={run.items.map((c) => {
+            <CauFlow items={run.items.flatMap((c, i) => {
               const n = next()
               const cols = ch.colByCau?.[c.ma_cau] ?? 1
-              if (run.g === 0) return { key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv, cheDoHinh: cheDo(c) }) }
+              if (run.g === 0) return [{ key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv, cheDoHinh: cheDo(c) }) }]
               const cd = cheDo(c)
+              // Hình–Học bài nhiều ý (Thùy 09/11 "ET phải gom ý lại"): ≥2 ý CÙNG BÀI liền nhau (sortETCaus đã xếp lúc lưu) ⇒
+              // lời dẫn + hình in 1 lần ở đầu, từng ý in "Câu n. b) …" — số câu vẫn 1 ý = 1 câu, khớp phiếu chấm / màn Chấm ET.
+              const nhom = yCungBai(run.items, i)
+              if (nhom) {
+                const dau = run.items[nhom.dau], cdDau = cheDo(dau)
+                const ra: { key: string; cols: number; content: ReactNode; lines: number; hasImg: boolean }[] = []
+                if (i === nhom.dau) ra.push({
+                  key: `${c.bai_y}:dan`, cols: 1, lines: 0, hasImg: !!dau.anh_de && cdDau !== 'khong',
+                  content: (<>
+                    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n} – ${n + nhom.cuoi - nhom.dau}.</span> `}>{nhom.loiDan}</MathText></div>
+                    {cdDau === 'khong' ? null : cdDau === 'o_trong' ? (gv && dau.anh_de ? <AnhDe ma={dau.ma_cau} src={dau.anh_de} /> : <div className="pv-vebox" />) : dau.anh_de && <AnhDe ma={dau.ma_cau} src={dau.anh_de} />}
+                  </>),
+                })
+                ra.push({
+                  key: c.ma_cau, cols, hasImg: false,
+                  content: (<>
+                    {c.da_biet?.trim() && <div className="pv-math"><i><MathText>{c.da_biet.trim()}</MathText></i></div>}
+                    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> <b>${c.nhan_y})</b> `}>{c.cau_hoi_y ?? ''}</MathText></div>
+                    {gv && <GvAnswer c={c} />}
+                  </>),
+                  lines: gv ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
+                })
+                return ra
+              }
               const { stem, grid, emb } = splitStem(c)
-              return {
+              return [{
                 key: c.ma_cau,
                 cols,
                 content: (<>
@@ -376,7 +400,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; 
                 // dòng theo ô "dòng" GV đặt. Bản GV vẫn 0 dòng.
                 lines: gv ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
                 hasImg: !!c.anh_de && cd !== 'khong',
-              }
+              }]
             })} />
           )}
         </section>
@@ -391,6 +415,19 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; 
     </AnhPhaiCtx.Provider>
     </AnhMmCtx.Provider>
   )
+}
+
+// Khúc ≥2 ý CÙNG BÀI (bai_y) liền nhau chứa vị trí i ⇒ {dau, cuoi, loiDan}; không thì null (in câu như thường).
+// Lời dẫn = noi_dung bỏ đuôi "\n[đã biết\n]câu hỏi ý" — đúng khuôn trigger _trg_hh_y_ghep ghép; lệch khuôn ⇒ không gom (an toàn).
+function yCungBai(items: CauHoi[], i: number): { dau: number; cuoi: number; loiDan: string } | null {
+  const b = items[i].bai_y
+  if (!b) return null
+  let dau = i, cuoi = i
+  while (dau > 0 && items[dau - 1].bai_y === b) dau--
+  while (cuoi < items.length - 1 && items[cuoi + 1].bai_y === b) cuoi++
+  if (cuoi === dau) return null
+  const loiDan = tachLoiDanY(items[dau])
+  return loiDan === null ? null : { dau, cuoi, loiDan }
 }
 
 // ETHeaderBK — đã chuyển sang bkPrint.tsx (dùng chung ET Đại + ET Hình).

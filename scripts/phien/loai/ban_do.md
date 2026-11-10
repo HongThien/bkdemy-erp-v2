@@ -35,7 +35,7 @@ Ghi lý thuyết (`ghi_noi_dung`) và lệnh kho cũng dùng được ngay trong
 Đại = chủ đề vùng `toan` · Hình giải tích = vùng `hgt` (cùng lệnh bản đồ + kho ở trên). **Hình** có 2 phần, bảng riêng:
 - **Hình–Học** (bài học = dạng, mã `HH…`, câu `HHC…`): `hh_xem` · `hh_bai` (them · sua tên/mô tả/ví dụ/lý thuyết/chủ đề/thứ tự · xoa —
   bài còn câu thì chuyển câu trước). Câu dùng lệnh kho chung: `them_cau` (`"nhanh":"hinh_hoc","ma_bai":"HH…"`) · `duyet_cau {"ma_bai"}` ·
-  `sua_cau` · `gan_anh` · `kho_rac`. Lý thuyết/ví dụ đúng thẻ `spec-format-noidung.md` (##ĐN ##ĐL ##TC ##PP ##VD…).
+  `sua_cau` · `gan_anh` · `ve_hinh` / `dung_hinh` (vẽ hình sạch; hình có quan hệ hình học thì DỰNG — cách dùng ở loai/nhap_kho.md §Vẽ hình, §Dựng hình) · `kho_rac`. Lý thuyết/ví dụ đúng thẻ `spec-format-noidung.md` (##ĐN ##ĐL ##TC ##PP ##VD…).
 - **Hình–Luyện** (cây mô hình) và thao tác Hình–Học khác: `hinh '{"ham":…,"args":{…}}'` gọi đúng hàm màn sửa tay. Tên tham số y như hàm.
   Đọc: `fn_hl_mo_hinh_luyen{p_khoi}` · `fn_hl_tien_do{p_khoi}` · `fn_hl_goc_mo_hinh{p_mh}` · `fn_hl_bai_full{p_bai}` · `fn_hl_kho_cua_mo_hinh{p_mo_hinh,p_gioi_han}` ·
   `fn_hl_kho_chua_phan{p_khoi,p_gioi_han,p_bo_qua,p_che_do}` · `fn_hl_gia_thiet_hieu_luc{p_baitoan}` · `fn_hl_mo_hinh_se_mat{p_id}` · `fn_hh_kho_cau{p_loai,p_id,p_loc,p_limit,p_offset}` · `fn_hh_lop_cua_bai{p_ma_bai}`.

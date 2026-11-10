@@ -17,6 +17,15 @@
 //   anh_pdf '{"file":"<pdf>","trang":3,"vung":[x0,y0,x1,y1],"ten":"cau12"}'      cắt hình (vung = tỉ lệ 0–1 của trang) ⇒ in đường dẫn PNG
 //   anh_docx '{"file":"<docx>"}'                                                 tách mọi hình trong Word ⇒ in danh sách PNG
 //   gan_anh '{"ma_cau":"…","file":"<png đã cắt>","o":"de|dap_an|ca_hai"}'       upload + gắn vào câu. XEM ẢNH (Read) TRƯỚC khi gắn.
+//   ve_hinh '{"ten":"cau12","w":420,"h":300,"luoi":30}' <<'HET'                 VẼ hình sạch (không watermark) từ nét SVG ⇒ in đường dẫn PNG
+//   <polygon points="60,240 300,240 300,80"/><text x="48" y="262" stroke="none" fill="#111" font-style="italic">A</text>
+//   HET     Chỉ thẻ vẽ: g line polyline polygon path circle ellipse rect text tspan (defs marker). Khung sẵn: nền trắng,
+//           nét #222 dày 2, chữ Times 26 (chữ nhớ thêm stroke="none" fill="#111"). "luoi" = cạnh ô lưới vuông (px, tuỳ chọn).
+//           Toạ độ gốc trên-trái, y hướng xuống; tự tính cho KHỚP dữ kiện đề. Soát ảnh bằng Read rồi gan_anh.
+//   dung_hinh <<'HET'  {"ten":"cau7","diem":[["B",[0,0]],["C",[6,0]],["A",[1.5,4]],["H",["chan","A","B","C"]]],
+//                       "ve":[["da_giac",["A","B","C"]],["doan","A","H",{"dut":true}],["goc_vuong","H","A","C"],["nhan","tat_ca"]]}  HET
+//           DỰNG hình lớp 6–12 KHÔNG tính toạ độ nhẩm: khai điểm bằng toạ độ toán (y hướng LÊN, [x,y,z] = không gian, chiếu xiên)
+//           hoặc phép dựng; máy tính toạ độ + tự co khung + tự đặt nhãn. Danh sách phép/nét: loai/nhap_kho.md §Dựng hình.
 // XOÁ (05/11, Thùy: trưởng khối đủ quyền): xoa_chu_de '{"id":..}' · xoa_chuyen_de '{"chu_de_id":..,"chuyen_de_id":..}' ·
 // xoa_nhom '{"id":..}' · xoa_dang_bai '{"id":..}' — chỉ chạy sau khi người mở phiên gật trong chat.
 //
@@ -204,7 +213,7 @@ if (lenh === 'kho-tong') {
 }
 
 let ts
-const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac'].includes(lenh) ? await docStdin() : '{}')
+const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac', 'dung_hinh'].includes(lenh) ? await docStdin() : '{}')
 try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
 
 if (lenh === 'doc') {
@@ -273,6 +282,83 @@ if (lenh === 'sua_cau' || lenh === 'kho_rac') {
   if (error) loi(error.message)
   console.log(`${lenh === 'sua_cau' ? 'Sửa' : 'Kho rác'}: ${data.ok} câu OK · ${data.loi} câu lỗi`)
   for (const x of data.chi_tiet ?? []) console.log(`  ✗ ${x.ma_cau}: ${x.loi}`)
+  process.exit(0)
+}
+
+// VẼ HÌNH (09/11, Thùy "Làm đi" — trưởng khối Dương nhờ "hình vẽ đẹp, bỏ watermark" mà phiên chỉ cắt được ảnh sách).
+// Claude KHÔNG được viết file/chạy mã ⇒ gửi nét vẽ dạng SVG qua stdin; script CHỈ nhận thẻ/thuộc tính vẽ trong danh sách trắng
+// (không script, không link, không ảnh nhúng, không thực thể), bọc khung chuẩn của ve_hinh_lib (nền trắng, nét #222 dày 2),
+// rồi Chrome chụp ra PNG 2x vào thư mục ảnh tạm của phiên (mọi request mạng bị chặn). Soát bằng Read rồi mới gan_anh.
+// Chụp SVG ra PNG 2x bằng Chrome: JS tắt, mọi request mạng bị chặn. Dùng chung ve_hinh + dung_hinh.
+async function chupPng(svg, w, h, ra) {
+  const { writeFileSync } = await import('node:fs')
+  const { default: puppeteer } = await import('puppeteer-core')
+  const CHROME = env('CHROME_PATH') || 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+  const br = await puppeteer.launch({ executablePath: CHROME, headless: 'new' })
+  try {
+    const pg = await br.newPage()
+    await pg.setJavaScriptEnabled(false)
+    await pg.setRequestInterception(true)
+    pg.on('request', (r) => (r.url().startsWith('data:') || r.url() === 'about:blank' ? r.continue() : r.abort()))
+    await pg.setViewport({ width: w, height: h, deviceScaleFactor: 2 })
+    await pg.setContent(`<body style="margin:0;background:#fff">${svg}</body>`)
+    await pg.screenshot({ path: ra, clip: { x: 0, y: 0, width: w, height: h } })
+  } catch (e) { loi(`Chrome lỗi khi vẽ (máy bot cần Chrome, hoặc đặt CHROME_PATH): ${String(e.message).slice(0, 200)}`) }
+  finally { await br.close() }
+  writeFileSync(ra.replace(/.png$/, '.svg'), svg)
+}
+
+// DỰNG HÌNH (09/11, Thùy: "hình lớp 9 10 thì m làm như nào") — mô tả cách dựng từng điểm, máy tính toạ độ (scripts/phien/dung_hinh.mjs).
+if (lenh === 'dung_hinh') {
+  const { mkdirSync } = await import('node:fs')
+  const { dungHinh } = await import('./dung_hinh.mjs')
+  const tam = join(root, 'scripts', 'phien', '.tam', PHIEN); mkdirSync(tam, { recursive: true })
+  const ten = String(ts.ten ?? 'hinh').replace(/[^\w.-]/g, '_').slice(0, 60)
+  let kq
+  try { kq = dungHinh(ts) } catch (e) { loi(`dung_hinh: ${e.message}`) }
+  const ra = join(tam, `${ten}.png`)
+  await chupPng(kq.svg, kq.w, kq.h, ra)
+  console.log(`Đã dựng: ${ra}  (${kq.w}×${kq.h}, ảnh 2x)`)
+  console.log(`Toạ độ đã tính: ${JSON.stringify(kq.toaDo)}`)
+  console.log(`ĐỌC ảnh để soát (khớp đề, nhãn không đè nét, không lộ đáp án) rồi gan_anh '{"ma_cau":"…","file":"${ra.replace(/\\/g, '/')}","o":"de"}'`)
+  process.exit(0)
+}
+
+if (lenh === 've_hinh') {
+  const { mkdirSync } = await import('node:fs')
+  const tam = join(root, 'scripts', 'phien', '.tam', PHIEN); mkdirSync(tam, { recursive: true })
+  const w = Math.round(Number(ts.w)), h = Math.round(Number(ts.h))
+  if (!(w >= 40 && w <= 1600 && h >= 40 && h <= 1600)) loi('Cần "w" và "h" (40–1600 px), vd {"ten":"cau5","w":420,"h":300}.')
+  const ten = String(ts.ten ?? 'hinh').replace(/[^\w.-]/g, '_').slice(0, 60)
+  const than = (await docStdin()).trim()
+  if (!than) loi('Thiếu nét vẽ: gửi phần thân SVG qua heredoc  ve_hinh \'{…}\' <<\'HET\'  <line …/><text …>A</text>  HET')
+  if (than.length > 200_000) loi('Hình quá dài (> 200.000 ký tự).')
+  const THE = new Set(['g', 'line', 'polyline', 'polygon', 'path', 'circle', 'ellipse', 'rect', 'text', 'tspan', 'defs', 'marker', 'title'])
+  const THUOC_TINH = new Set(['x', 'y', 'x1', 'y1', 'x2', 'y2', 'cx', 'cy', 'r', 'rx', 'ry', 'width', 'height', 'points', 'd', 'dx', 'dy',
+    'fill', 'fill-opacity', 'stroke', 'stroke-width', 'stroke-dasharray', 'stroke-linecap', 'stroke-linejoin', 'stroke-opacity', 'opacity',
+    'transform', 'font-family', 'font-size', 'font-style', 'font-weight', 'text-anchor', 'dominant-baseline', 'id', 'class',
+    'marker-start', 'marker-end', 'marker-mid', 'markerWidth', 'markerHeight', 'refX', 'refY', 'orient', 'markerUnits', 'viewBox'])
+  if (/<!|<\?|&(?!(?:lt|gt|amp|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(than)) loi('SVG không được có <!…>, <?…> hay thực thể lạ.')
+  for (const m of than.matchAll(/<\/?\s*([A-Za-z][\w:-]*)([^>]*)>/g)) {
+    const the = m[1]
+    if (!THE.has(the)) loi(`Thẻ <${the}> không được dùng — chỉ: ${[...THE].join(' ')}.`)
+    for (const a of m[2].matchAll(/([A-Za-z_:][\w:.-]*)\s*=\s*("[^"]*"|'[^']*')/g)) {
+      const ten_tt = a[1], gt = a[2].slice(1, -1)
+      if (!THUOC_TINH.has(ten_tt)) loi(`Thuộc tính "${ten_tt}" (thẻ <${the}>) không được dùng.`)
+      if (/url\(\s*(?!#)|javascript:|expression\(|@import/i.test(gt)) loi(`Giá trị "${gt.slice(0, 40)}" không được dùng (chỉ url(#id) nội bộ).`)
+    }
+    // còn sót chữ không phải cặp tên="giá trị" (vd thuộc tính không nháy) ⇒ chặn cho chắc
+    if (m[2].replace(/([A-Za-z_:][\w:.-]*)\s*=\s*("[^"]*"|'[^']*')/g, '').replace(/[\s/]/g, '')) loi(`Thẻ <${the}> có thuộc tính viết sai (giá trị phải trong dấu nháy).`)
+  }
+  if (/<[^>]*$/.test(than)) loi('SVG có thẻ chưa đóng.')
+  const o = Number(ts.luoi ?? 0)
+  const luoi = o >= 8 && o <= 200
+    ? `<g stroke="#c9ced6" stroke-width="1">${Array.from({ length: Math.floor(w / o) + 1 }, (_, i) => `<line x1="${i * o}" y1="0" x2="${i * o}" y2="${h}"/>`).join('')}${Array.from({ length: Math.floor(h / o) + 1 }, (_, i) => `<line x1="0" y1="${i * o}" x2="${w}" y2="${i * o}"/>`).join('')}</g>`
+    : ''
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><rect width="${w}" height="${h}" fill="#fff"/>${luoi}<g stroke="#222" stroke-width="2" stroke-linecap="round" fill="none" font-family="'Times New Roman',Times,serif" font-size="26">${than}</g></svg>`
+  const ra = join(tam, `${ten}.png`)
+  await chupPng(svg, w, h, ra)
+  console.log(`Đã vẽ: ${ra}  (${w}×${h}, ảnh 2x) — ĐỌC ảnh này để soát (nhãn đủ, khớp đề, không chồng chữ) rồi mới gan_anh '{"ma_cau":"…","file":"${ra.replace(/\\/g, '/')}","o":"de"}'`)
   process.exit(0)
 }
 

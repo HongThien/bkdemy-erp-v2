@@ -2,10 +2,12 @@
 // để người quản trị nắm tình hình cụ thể. Hiện 3 tuần gần nhất").
 // Mỗi tuần 1 thẻ, 3 dòng Yếu · Bù · Đuổi: ĐÃ CHẠY / CHỐT + thanh tiến độ + các ô trạng thái (bấm ô = xem đúng danh sách em đó).
 // Số liệu + phân loại trạng thái tính ở DB (fn_bo_tro_dashboard_tuan); màn chỉ vẽ và lọc danh sách đang mở.
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { dashboardBoTroTuan, type TuanBT, type LoaiBT, type TtLuot, type SoLoai } from '../../lib/botro_dashboard'
 import { congNgay, ddmmVN, thuCuaNgay, tuanCuaNgay } from '../../lib/tuan'
 import KetQuaBoTroTuan from './KetQuaBoTroTuan'
+import LapDayCaBoTro from './LapDayCaBoTro'
+import ChiTietBoTro from './ChiTietBoTro'
 
 const LOAI: { k: LoaiBT; ten: string; vach: string }[] = [
   { k: 'bo_tro_yeu', ten: 'Yếu', vach: 'border-l-amber-400' },
@@ -31,7 +33,21 @@ const pct = (a: number, b: number) => (b > 0 ? Math.round((a / b) * 100) : 0)
 type Mo = { tu: string; loai: LoaiBT; tt: TtLuot } | null
 const NHO: { den: string | null; mo: Mo; rows: TuanBT[] | null; kq: string | null } = { den: null, mo: null, rows: null, kq: null } // kq = tuần (tu) đang mở panel 'Kết quả'
 
+// Dashboard bổ trợ = 3 subtab (Thùy 10/11): Tiến độ bổ trợ · Lấp đầy ca · Chi tiết bổ trợ. Thanh chuyển nằm ngay chỗ tiêu đề cũ "Tiến độ bổ trợ".
+type SubDash = 'tiendo' | 'lapday' | 'chitiet'
+const SUB_DASH: [SubDash, string][] = [['tiendo', 'Tiến độ bổ trợ'], ['lapday', 'Lấp đầy ca'], ['chitiet', 'Chi tiết bổ trợ']]
+const NHO_SUB: { sub: SubDash } = { sub: 'tiendo' }
 export default function BoTroDashboardScreen() {
+  const [sub, setSubS] = useState<SubDash>(NHO_SUB.sub)
+  const toggle = (
+    <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 text-[13px] font-semibold shadow-sm">
+      {SUB_DASH.map(([k, ten]) => <button key={k} onClick={() => { NHO_SUB.sub = k; setSubS(k) }} className={`rounded-lg px-3.5 py-1 ${sub === k ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`}>{ten}</button>)}
+    </div>
+  )
+  return sub === 'lapday' ? <LapDayCaBoTro toggle={toggle} /> : sub === 'chitiet' ? <ChiTietBoTro toggle={toggle} /> : <TienDoBoTro toggle={toggle} />
+}
+
+function TienDoBoTro({ toggle }: { toggle: ReactNode }) {
   const [den, setDenState] = useState<string | null>(NHO.den) // null = tuần này
   const [rows, setRows] = useState<TuanBT[] | null>(NHO.rows)
   const [loi, setLoi] = useState<string | null>(null)
@@ -51,41 +67,43 @@ export default function BoTroDashboardScreen() {
   const tuanCuoi = rows?.[0]
 
   return (
-    <div className="min-h-0 flex-1 overflow-auto bg-[#f5f5f7] px-8 py-5">
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <div>
-          <h2 className="text-[20px] font-semibold text-slate-800">Tiến độ bổ trợ theo tuần</h2>
-          <p className="text-[12.5px] text-slate-500">Mỗi tuần đã chốt (xếp lịch) bao nhiêu ca, thực tế chạy được bao nhiêu. Đếm theo lượt học sinh trong ca, tuần tính Thứ 2 → Chủ nhật.</p>
+    <div className="min-h-0 flex-1 overflow-auto bg-[#f5f5f7] px-6 py-3">
+     <div className="mx-auto max-w-[1000px]">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          {toggle}
+          <p className="text-[11.5px] text-slate-500">Mỗi tuần đã chốt (xếp lịch) bao nhiêu ca, thực tế chạy được bao nhiêu. Đếm theo lượt học sinh trong ca, tuần tính Thứ 2 → Chủ nhật.</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5">
           <button disabled={!tuanCuoi || dangTai} onClick={() => tuanCuoi && doiTuan(congNgay(tuanCuoi.tu, -7))}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-40">◀ Tuần trước</button>
+            className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-40">◀ Tuần trước</button>
           <button disabled={!tuanCuoi || dangTai || tuanCuoi.dang_chay} onClick={() => tuanCuoi && doiTuan(congNgay(tuanCuoi.tu, 7))}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-40">Tuần sau ▶</button>
+            className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-40">Tuần sau ▶</button>
           <button disabled={dangTai || den === null} onClick={() => doiTuan(null)}
-            className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-[13px] font-semibold text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">Tuần này</button>
+            className="rounded-lg border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-[12.5px] font-semibold text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">Tuần này</button>
           <button disabled={dangTai} onClick={() => tai(den)} title="Tải lại số liệu"
-            className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-40">{dangTai ? '…' : '↻'}</button>
+            className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40">{dangTai ? '…' : '↻'}</button>
         </div>
       </div>
 
-      {loi && <p className="mb-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2.5 text-[13px] text-rose-700">Không tải được số liệu: {loi}</p>}
+      {loi && <p className="mb-2 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">Không tải được số liệu: {loi}</p>}
       {rows === null && !loi && <p className="py-16 text-center text-[13.5px] text-slate-400">Đang tải…</p>}
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2.5">
         {(rows ?? []).map((w) => <TheTuan key={w.tu} w={w} mo={mo?.tu === w.tu ? mo : null} onMo={setMo} kqMo={kqTu === w.tu} onKq={(b) => setKqTu(b ? w.tu : null)} />)}
       </div>
 
       {rows && rows.length > 0 && (
-        <div className="mt-5 rounded-2xl bg-white px-5 py-4 text-[12.5px] leading-relaxed text-slate-500 shadow-sm">
-          <p className="mb-1 font-semibold text-slate-700">Cách đếm</p>
+        <div className="mt-3 rounded-xl bg-white px-4 py-2.5 text-[11.5px] leading-snug text-slate-500 shadow-sm">
+          <p className="mb-0.5 font-semibold text-slate-700">Cách đếm</p>
           <p><b className="text-slate-700">Chốt</b> = mọi lượt đã xếp có ngày nằm trong tuần, kể cả ca sau đó vắng / không diễn ra. Ca đã <b className="text-slate-700">gỡ khỏi lịch</b> (đổi lịch ở Lịch phòng) không tính vào chốt, ghi riêng ở cuối dòng.</p>
           <p><b className="text-slate-700">Đã chạy</b> = em có mặt (Hoàn tất + Đang dở).</p>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+          <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5">
             {TT.map((x) => <span key={x.k} className="inline-flex items-center gap-1.5"><span className={`inline-block h-2.5 w-2.5 rounded-sm ${x.thanh}`} />{x.ten}: {x.giai}</span>)}
           </div>
         </div>
       )}
+     </div>
     </div>
   )
 }
@@ -95,40 +113,40 @@ function TheTuan({ w, mo, onMo, kqMo, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo)
   const tong = w.tong // tổng cả 3 loại — tính ở DB
   const ds = mo ? w.ds.filter((x) => x.loai === mo.loai && x.tt === mo.tt) : []
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-sm">
-      <div className="mb-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h3 className="text-[17px] font-semibold text-slate-800">{so <= 0 ? 'Tuần khởi động' : `Tuần ${so}`}</h3>
-        <span className="text-[13px] text-slate-500">{ddmmVN(w.tu)} – {ddmmVN(w.den)}</span>
-        {w.dang_chay && <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 text-[11.5px] font-semibold text-indigo-700">đang chạy</span>}
-        {w.tuong_lai && <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11.5px] font-semibold text-slate-500">chưa tới</span>}
-        <span className="ml-auto text-[13px] text-slate-500">Cả 3 loại: đã chạy <b className="text-[15px] text-slate-800">{tong.da_chay}</b> / chốt <b className="text-[15px] text-slate-800">{tong.chot}</b> ca{tong.chot > 0 ? ` · ${pct(tong.da_chay, tong.chot)}%` : ''}</span>
+    <div className="rounded-xl bg-white p-3 shadow-sm">
+      <div className="mb-1.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
+        <h3 className="text-[14.5px] font-semibold text-slate-800">{so <= 0 ? 'Tuần khởi động' : `Tuần ${so}`}</h3>
+        <span className="text-[12px] text-slate-500">{ddmmVN(w.tu)} – {ddmmVN(w.den)}</span>
+        {w.dang_chay && <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-px text-[11px] font-semibold text-indigo-700">đang chạy</span>}
+        {w.tuong_lai && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-px text-[11px] font-semibold text-slate-500">chưa tới</span>}
+        <span className="ml-auto text-[12px] text-slate-500">Cả 3 loại: đã chạy <b className="text-[13.5px] text-slate-800">{tong.da_chay}</b> / chốt <b className="text-[13.5px] text-slate-800">{tong.chot}</b> ca{tong.chot > 0 ? ` · ${pct(tong.da_chay, tong.chot)}%` : ''}</span>
       </div>
-      <div className="flex flex-col gap-2.5">
+      <div className="flex flex-col gap-1">
         {LOAI.map((l) => <DongLoai key={l.k} ten={l.ten} vach={l.vach} s={w.loai[l.k]} dangMo={mo?.loai === l.k ? mo.tt : null}
           onMo={(tt) => onMo(mo && mo.loai === l.k && mo.tt === tt ? null : { tu: w.tu, loai: l.k, tt })}
           onKetQua={l.k === 'bo_tro_yeu' && !w.tuong_lai && w.loai.bo_tro_yeu.da_chay > 0 ? () => onKq(!kqMo) : undefined} ketQuaMo={kqMo} />)}
       </div>
       {kqMo && <KetQuaBoTroTuan tu={w.tu} den={w.den} onDong={() => onKq(false)} />}
       {mo && (
-        <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50/60 p-3">
+        <div className="mt-2 rounded-lg border border-slate-200 bg-slate-50/60 p-2">
           <div className="mb-2 flex items-center gap-2">
             <span className="text-[13px] font-semibold text-slate-700">{LOAI.find((l) => l.k === mo.loai)?.ten} · {TEN_TT[mo.tt]} — {ds.length} lượt</span>
             <button onClick={() => onMo(null)} className="ml-auto text-[12.5px] text-slate-500 hover:text-slate-700">Đóng ✕</button>
           </div>
           {ds.length === 0 ? <p className="text-[12.5px] text-slate-400">Không có lượt nào.</p> : (
             <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-              <table className="w-full text-left text-[13px]">
+              <table className="w-full text-left text-[12px]">
                 <thead className="bg-slate-50 text-[11.5px] uppercase tracking-wide text-slate-500">
-                  <tr><th className="px-3 py-1.5 font-semibold">Học sinh</th><th className="px-3 py-1.5 font-semibold">Lớp</th><th className="px-3 py-1.5 font-semibold">Ngày · giờ</th><th className="px-3 py-1.5 font-semibold">Người dạy</th><th className="px-3 py-1.5 font-semibold">Ghi chú</th></tr>
+                  <tr><th className="px-2.5 py-1 font-semibold">Học sinh</th><th className="px-2.5 py-1 font-semibold">Lớp</th><th className="px-2.5 py-1 font-semibold">Ngày · giờ</th><th className="px-2.5 py-1 font-semibold">Người dạy</th><th className="px-2.5 py-1 font-semibold">Ghi chú</th></tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {ds.map((x, i) => (
                     <tr key={`${x.buoi_id}-${x.ma_hs ?? i}`}>
-                      <td className="px-3 py-1.5 font-medium text-slate-800">{x.ho_ten}{x.ma_hs ? <span className="ml-1.5 text-[11.5px] font-normal text-slate-400">{x.ma_hs}</span> : null}</td>
-                      <td className="px-3 py-1.5 text-slate-600">{x.lop ?? '—'}</td>
-                      <td className="px-3 py-1.5 text-slate-600">{thuCuaNgay(x.ngay)} {ddmmVN(x.ngay)}{x.gio_bat_dau ? ` · ${hhmm(x.gio_bat_dau)}` : ''}</td>
-                      <td className="px-3 py-1.5 text-slate-600">{x.nguoi ?? <span className="text-amber-700">chưa có người dạy</span>}</td>
-                      <td className="px-3 py-1.5 text-slate-500">{x.ly_do ?? ''}</td>
+                      <td className="px-2.5 py-1 font-medium text-slate-800">{x.ho_ten}{x.ma_hs ? <span className="ml-1.5 text-[11.5px] font-normal text-slate-400">{x.ma_hs}</span> : null}</td>
+                      <td className="px-2.5 py-1 text-slate-600">{x.lop ?? '—'}</td>
+                      <td className="px-2.5 py-1 text-slate-600">{thuCuaNgay(x.ngay)} {ddmmVN(x.ngay)}{x.gio_bat_dau ? ` · ${hhmm(x.gio_bat_dau)}` : ''}</td>
+                      <td className="px-2.5 py-1 text-slate-600">{x.nguoi ?? <span className="text-amber-700">chưa có người dạy</span>}</td>
+                      <td className="px-2.5 py-1 text-slate-500">{x.ly_do ?? ''}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -143,36 +161,34 @@ function TheTuan({ w, mo, onMo, kqMo, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo)
 
 function DongLoai({ ten, vach, s, dangMo, onMo, onKetQua, ketQuaMo }: { ten: string; vach: string; s: SoLoai; dangMo: TtLuot | null; onMo: (tt: TtLuot) => void; onKetQua?: () => void; ketQuaMo?: boolean }) {
   return (
-    <div className={`rounded-xl border border-slate-200/70 border-l-4 ${vach} px-4 py-3`}>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <span className="w-12 text-[15px] font-semibold text-slate-800">{ten}</span>
-        <span className="w-[150px] whitespace-nowrap">
-          <b className="text-[22px] font-semibold leading-none text-emerald-600">{s.da_chay}</b>
-          <span className="text-[15px] text-slate-400"> / </span>
-          <b className="text-[18px] font-semibold leading-none text-slate-800">{s.chot}</b>
-          <span className="ml-1.5 text-[12.5px] text-slate-500">ca{s.chot > 0 ? ` · ${pct(s.da_chay, s.chot)}%` : ''}</span>
+    <div className={`rounded-lg border border-slate-200/70 border-l-4 ${vach} px-3 py-1.5`}>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span className="w-9 text-[13.5px] font-semibold text-slate-800">{ten}</span>
+        <span className="w-[104px] whitespace-nowrap">
+          <b className="text-[16px] font-semibold leading-none text-emerald-600">{s.da_chay}</b>
+          <span className="text-[13px] text-slate-400"> / </span>
+          <b className="text-[14px] font-semibold leading-none text-slate-800">{s.chot}</b>
+          <span className="ml-1 text-[11.5px] text-slate-500">{s.chot > 0 ? `${pct(s.da_chay, s.chot)}%` : ''}</span>
         </span>
-        <div className="flex h-3 min-w-[180px] flex-1 overflow-hidden rounded-full bg-slate-100" title={`Đã chạy ${s.da_chay} / chốt ${s.chot}`}>
+        <div className="flex h-2 w-[150px] shrink-0 overflow-hidden rounded-full bg-slate-100" title={`Đã chạy ${s.da_chay} / chốt ${s.chot}`}>
           {s.chot > 0 && TT.map((x) => s[x.k] > 0 && <div key={x.k} className={x.thanh} style={{ width: `${(s[x.k] / s.chot) * 100}%` }} title={`${x.ten}: ${s[x.k]}`} />)}
         </div>
-      </div>
-      <div className="mt-2 flex flex-wrap items-center gap-1.5 pl-16">
-        {s.chot === 0 && s.go === 0 && <span className="text-[12.5px] text-slate-400">Tuần này chưa xếp ca nào.</span>}
+        {s.chot === 0 && s.go === 0 && <span className="text-[11.5px] text-slate-400">Chưa xếp ca nào.</span>}
         {TT.map((x) => s[x.k] > 0 && (
           <button key={x.k} onClick={() => onMo(x.k)} title={`${x.giai} — bấm để xem danh sách`}
-            className={`rounded-full border px-2.5 py-0.5 text-[12.5px] font-medium transition ${x.pill} ${dangMo === x.k ? 'ring-2 ring-indigo-300' : 'hover:brightness-95'}`}>
+            className={`rounded-full border px-2 py-px text-[11.5px] font-medium transition ${x.pill} ${dangMo === x.k ? 'ring-2 ring-indigo-300' : 'hover:brightness-95'}`}>
             {x.ten} <b>{s[x.k]}</b>
           </button>
         ))}
-        {onKetQua && (
-          <button onClick={onKetQua} title="Xem từng ca × từng em: dạng đã học, trước ca → nay, luyện/test — giảm được bao nhiêu dạng yếu"
-            className={`ml-auto rounded-full border px-3 py-0.5 text-[12.5px] font-semibold ${ketQuaMo ? 'border-indigo-300 bg-indigo-600 text-white' : 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>📊 Kết quả bổ trợ</button>
-        )}
         {s.go > 0 && (
           <button onClick={() => onMo('go')} title="Ca đã gỡ khỏi lịch (đổi lịch) — không tính vào chốt. Bấm để xem danh sách"
-            className={`ml-1 rounded-full border px-2.5 py-0.5 text-[12.5px] font-medium ${PILL_TT.go} ${dangMo === 'go' ? 'ring-2 ring-indigo-300' : 'hover:bg-slate-50'}`}>
+            className={`rounded-full border px-2 py-px text-[11.5px] font-medium ${PILL_TT.go} ${dangMo === 'go' ? 'ring-2 ring-indigo-300' : 'hover:bg-slate-50'}`}>
             Đã gỡ khỏi lịch <b>{s.go}</b> <span className="text-slate-400">(không tính)</span>
           </button>
+        )}
+        {onKetQua && (
+          <button onClick={onKetQua} title="Xem từng ca × từng em: dạng đã học, trước ca → sau ca, luyện/test — giảm được bao nhiêu dạng yếu"
+            className={`ml-auto rounded-full border px-2.5 py-px text-[11.5px] font-semibold ${ketQuaMo ? 'border-indigo-300 bg-indigo-600 text-white' : 'border-indigo-200 bg-indigo-50 text-indigo-700 hover:bg-indigo-100'}`}>📊 Kết quả bổ trợ</button>
         )}
       </div>
     </div>

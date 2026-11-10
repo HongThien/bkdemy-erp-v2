@@ -9,6 +9,9 @@
 ---
 
 
+> ## ⭐ TẦNG MỚI + NHÓM BÀI + BỎ NHÓM MÔ HÌNH — Thùy 09/11 (xem §13, CHƯA BUILD)
+> Chủ đề → Mô hình → **Trọng điểm** → Nốt. **Nhóm bài** (nhiều mặt của một bài toán, "2 trong 3") = nút giả thiết vai `nhom_bai` + các nút `thanh_vien`, GIỮ CÂY. Nhóm mô hình (§12) bỏ theo 2 bước.
+
 > ## ⭐ ĐỔI MÔ HÌNH — Thùy 22/10 (THAY §0 "rẽ nhánh từ bài mẹ", §1.1 neo_baitoan_id, §2 RPC rẽ nhánh, §4.2 xếp chỗ làn bài)
 > Mockup chốt: `docs/mockup-hinh-gia-thiet-mh072.html` · mig `202610221743_hinh_gia_thiet_noi_gia_thiet.sql`.
 > - **Giả thiết nối giả thiết, bài nối bài.** Giả thiết mô hình (gốc chuỗi) và mỗi giả thiết thêm là CÙNG một kiểu nút. Nhánh rẽ ra từ
@@ -279,10 +282,100 @@ Chọn vùng nào thì **toàn bộ UI đổi theo vùng đó** — dispatch qua
 - **Luật tách (máy chỉ làm phần chắc):** mốc ý `a) b) c)` hoặc `1) 2) 3)` nối tiếp · trước mốc đầu = giả thiết chung · câu dẫn kết thúc bằng ":" chép vào đầu từng ý · "Phần 1. Hướng dẫn" → `hinh_bai.huong_dan` · "Phần 2. Trình bày" tách theo cùng mốc → `hinh_y.loi_giai` · số ý đề ≠ số đoạn lời giải hoặc câu Đúng/Sai ⇒ không tách, gắn cờ. **Chưa làm:** `gia_thiet_them` của ý để trống (ranh giới "dữ kiện mới" ↔ "câu hỏi" cần người); ý lồng (2a, 2b) nằm chung trong ý 2; hình đề chỉ 9/88 bài có (đề gốc không kèm hình), hình lời giải 78/88.
 - **Mô hình:** chưa gán ý nào (khối 8 chưa có mô hình luyện) ⇒ cả 223 ý ở **Duyệt kho › "Hình luyện · chưa phân mô hình"** (mig `202610140230`: `fn_hl_kho_chua_phan` · `fn_hl_dem_chua_phan` · `fn_hl_bai_mo_hinh_luyen` · `fn_hl_gan_y` — chỉ gán được vào bài của mô hình `phan='luyen'`). CEO gán tay, hoặc dựng mô hình rồi bảo Claude duyệt lại.
 
-## 12. NHÓM MÔ HÌNH — tầng giữa Chủ đề và Mô hình (Thùy chốt 18/10, mig `202610181651` ĐÃ ÁP)
+## 12. NHÓM MÔ HÌNH — tầng giữa Chủ đề và Mô hình (Thùy chốt 18/10, mig `202610181651` ĐÃ ÁP) — ⚠ BỎ 09/11, xem §13.6
 
 - **Vì sao:** "dàn ra tầng mô hình thì nhiều quá khó theo dõi" ⇒ **Chủ đề → Nhóm mô hình → Mô hình → Nhánh → Bài**. Nhóm gom các mô hình TƯƠNG ĐỒNG (cùng kiểu cấu hình hình) — schema theory (Marshall 1995): nhận ra *họ* bài trước rồi mới tới bài.
 - **Chốt:** nhóm nằm TRONG 1 chủ đề · mô hình gốc luyện BẮT BUỘC thuộc 1 nhóm (tạo mô hình = tạo trong nhóm; mô hình cũ ở "⚠ Chưa xếp nhóm" tới khi Thùy kéo vào) · nhóm có **mô tả nhận biết** (dấu hiệu chung — sau này máy xếp mô hình/bài mới vào đúng nhóm).
 - **Nhóm CHỈ GOM:** không kế thừa giả thiết (khác *mô hình con*), không đổi số bài, không đo riêng — xem mức nắm cả nhóm = rollup tập `baitoan_id` bằng hàm hiện có.
 - **DB:** `hinh_nhom_mo_hinh` (mã `NMH…` bất biến, `chu_de_id`, `ten`, `mo_ta`, `thu_tu`) · `hinh_mo_hinh.nhom_mh_id` · trigger giữ nhóm và chủ đề khớp (vào nhóm ⇒ chủ đề theo nhóm; đổi chủ đề khác ⇒ rời nhóm) · nhật ký chung `dai_bdm_log` · RPC `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` (chỉ nhóm rỗng) · `fn_hl_tao_mo_hinh_trong_nhom`. Kiểm: `scripts/kho/test_nhom_mo_hinh.mjs` (ROLLBACK, 9/9).
 - **Màn (`CayNhanh.tsx`, chỉ khi mở từ Bản đồ mới):** cột trái = các nhóm (gập/mở nhớ tới F5, ▲▼, ✎ tên + mô tả, xoá khi rỗng) chứa ô mô hình; kéo ô mô hình thả vào nhóm khác = chuyển nhóm; "＋ Mô hình" chọn nhóm (khoá khi chưa có nhóm nào).
+
+---
+
+## 13. ⭐ TẦNG HÌNH–LUYỆN MỚI: Chủ đề → Mô hình → Trọng điểm → Nốt · NHÓM BÀI · bỏ Nhóm mô hình (Thùy chốt 09/11 · bước 1–4 ĐÃ BUILD 09/11, còn 5–6)
+
+> Nguồn: sparring 08–09/11. Mockup: `docs/mockup-hinh-nhieu-cua.html` (dữ liệu thật MH.126 + MH.061, khối 7).
+> **Thay §12** (Nhóm mô hình) và bổ sung §0–§4. Các luật cây nhánh 22/10 (giả thiết nối giả thiết, nhánh chính xuống / phụ sang phải, mã gốc bất biến) **giữ nguyên**.
+
+### 13.1 Các tầng
+
+| Tầng | Là gì | Đánh giá? | Ứng với Đại (báo cáo) |
+|---|---|---|---|
+| **Chủ đề** | `dai_bdm_chu_de` (nhanh `hinh`) | gom | chủ đề |
+| **Mô hình** | gốc cây `hinh_mo_hinh` (phan `luyen`, `la_mo_hinh`) | **CÓ — tầng đánh giá chính**, gộp **mọi nốt** của mô hình | chuyên đề |
+| **Trọng điểm** | **Nhóm bài** (luôn là trọng điểm) **hoặc** một nốt đơn được đánh dấu | **CÓ — đánh giá sâu** | dạng bài |
+| Nhánh / giả thiết | cấu trúc dựng đề (giả thiết hiệu lực) | không — báo cáo không hiện | — |
+| **Nốt** | `hinh_baitoan` (B1, B2…) | hạt đo (thang 3, như cũ) | câu / cụm |
+
+- **"Trọng điểm có thể không có nhóm bài, nhưng nhóm bài chắc chắn là trọng điểm."** Các nốt thường dẫn tới trọng điểm vẫn đo ở tầng nốt và gộp vào mô hình.
+- **Nhóm mô hình: BỎ** (§13.6) — chỉ để hiển thị, 8/15 nhóm có đúng 1 mô hình.
+
+### 13.2 Nhóm bài — "nhiều mặt của một bài toán"
+
+- **Là gì (R7: định lý & các định lý đảo; luật "2 trong 3"):** một **nền** chung + một bộ **sự kiện** A, B, C…; mỗi **thành viên** là một bài CÓ THẬT "cho mọi sự kiện trừ một, hỏi cái còn lại". **Đầu ra** = nền + đủ mọi sự kiện = giả thiết đầy đủ để chuỗi đi tiếp.
+  Vd (K7): nền ΔABC vuông tại A, D ∈ AC, E ∈ BC · A: BD phân giác · B: BE = BA · C: DE ⊥ BC. Thành viên: cho A,B ⇒ CM C · cho A,C ⇒ CM B · cho B,C ⇒ CM A.
+- Khuôn khác "n−1 ⇒ 1" (cho 1 hỏi 2, 4 sự kiện…) **chưa biết có** — làm rồi mới biết; cấu trúc dưới đây không chặn khuôn khác.
+- Thành viên có thể **nhiều ý** (mỗi ý một nốt). Ba ý "CM ΔABD = ΔEBD" ở 3 thành viên là **3 nốt khác nhau**, đo riêng.
+- Nhóm bài có thể là **gốc mô hình** hoặc nằm **giữa chuỗi**; một mô hình có thể có **nhiều** nhóm bài.
+- Ca **"tách ra rồi nhập lại"** cũng là nhóm bài: mỗi đường tách là một thành viên, chỗ nhập là đầu ra. Không có cơ chế thứ hai.
+
+### 13.3 Cách lưu — GIỮ CÂY (CTO đề xuất, Thùy duyệt 09/11)
+
+Không đổi sang đồ thị nhiều cha: chỉ mục "1 cha" (`hinh_mo_hinh_cha_mo_hinh_uq`) và 13 hàm dựa vào đường gốc → nhánh (`_hl_duong_mo_hinh`, `fn_hl_gia_thiet_phan`, `fn_hl_so_hien_thi`, `fn_hl_sai_nhanh`…) **giữ nguyên**.
+
+- **Vai của nút giả thiết** — cột mới `hinh_mo_hinh.vai` ∈ `thuong` (mặc định) · `nhom_bai` · `thanh_vien` (CHECK đi kèm, CLAUDE.md §2.1).
+  - Nút **nhom_bai**: giả thiết của nó **= đầu ra** (gốc ⇒ `gia_thiet`; giữa chuỗi ⇒ `gia_thiet_them` = phần sự kiện thêm). Bài đi tiếp treo **dưới nút nhóm** như mọi nhánh.
+  - Nút **thanh_vien**: con của nút nhóm, `gt_thay_the = true`, giả thiết = **nguyên văn đề thật** ⇒ hàm giả thiết hiệu lực chạy đúng không cần sửa. Chuỗi ý của thành viên = các nốt trong nút đó.
+- **Sự kiện:** bảng `hinh_nhom_bai_su_kien(id, nhom_id → hinh_mo_hinh, noi_dung, thu_tu)` — mã bất biến; nhãn **A, B, C chỉ để hiển thị**, suy từ `thu_tu`, không làm khoá.
+- **Cho / hỏi:** bảng `hinh_thanh_vien_su_kien(thanh_vien_id, su_kien_id, vai ∈ cho|hoi)` — chỉ có dòng cho bài thật (§1.5), không tự đẻ đủ tổ hợp.
+- **Hai luật riêng (ở DB):**
+  1. **Thành viên KHÔNG có nhánh con** — `fn_hl_them_gia_thiet` / `fn_hl_doi_cha_gia_thiet` từ chối cha có vai `thanh_vien`. Mọi bài đi tiếp treo dưới đầu ra.
+  2. **Thành viên đứng "trước" nút nhóm** khi xét đường đi (chọn ý) và khi in đề — dù về cây nó là con của nút nhóm.
+- Cờ **sai nhánh** (§3) tự bắt đúng: nốt ngoài nhóm lấy nốt thành viên làm tiền đề ⇒ thành viên nằm ở nhánh anh em ⇒ cờ. Bài sau chỉ được dựa vào đầu ra.
+- Số B (`fn_hl_so_hien_thi`) đánh tiếp như cũ, nốt thành viên có số như mọi nốt.
+
+### 13.4 Chọn ý (MT · ET · giáo trình) và in đề
+
+- Vẫn tick **từng ý** trên bản đồ, không có bước "chọn cửa".
+- **Con đường hợp lệ** = từ ý đầu tới ý cuối đi một đường theo chiều mũi tên, không quay lại, rẽ sang nhánh phụ **tối đa 1 lần** (đi thẳng nhánh chính, đi qua nhóm bài không tính là rẽ). Bỏ qua ý ở giữa được.
+  ⇒ Sai khi: lấy **2 thành viên** cùng nhóm · lấy ý ở **2 nhánh anh em** (vd a nhánh chính, b nhánh phụ X, c nhánh phụ Y) · rẽ nhánh phụ 2 lần.
+- **Chỉ CẢNH BÁO, không chặn** (Thùy 09/11: "người chọn tự biết logic, cảnh báo lúc sai là được").
+- **In đề:** có ý của thành viên ⇒ in **giả thiết thành viên**, ý của thành viên đứng đầu, rồi giả thiết thêm của các nhánh **sau** nút nhóm (không in lại đầu ra). Không tick thành viên nào ⇒ in thẳng đầu ra. Giả thiết thêm của mỗi nhánh in ngay trước ý đầu tiên thuộc nhánh đó (như `mucGhep` hiện nay, nguồn `fn_hl_gia_thiet_phan`).
+
+### 13.5 Đo
+
+| Mức | Gộp từ | Ghi chú |
+|---|---|---|
+| Nốt | lượt làm gắn nốt | không đổi (`fn_mastery_cells_hinh`, thang 3) |
+| Trọng điểm = nhóm bài | **mọi nốt của mọi thành viên** | |
+| Trọng điểm = nốt đơn | **đúng nốt đó** | |
+| Mô hình | **mọi nốt** của mô hình (hậu duệ) | báo cáo tách theo trọng điểm để thấy hổng ở đâu |
+
+- **Đánh dấu trọng điểm:** trên bản đồ, **trưởng khối trở lên** bật/tắt cho từng nốt (cột `hinh_baitoan.la_trong_diem boolean not null default false`). Nhóm bài tự là trọng điểm, không cần bật.
+- Mọi phép gộp ở Postgres (`fn_*`, CLAUDE.md §2.0) — một hàm nhận tập `baitoan_id` như §0.
+
+### 13.6 Bỏ Nhóm mô hình — 2 bước (luật xoá)
+
+**Hiện trạng (đo 09/11):** 16 nhóm (15 có mô tả viết tay) · 27 mô hình đều có nhóm · **12 hàm** dùng: báo cáo tuần `fn_bc_ky_tinh`, dashboard `fn_dbht_bang` / `_dbht_cau` (nhóm mô hình đang đóng vai cột "chuyên đề" của Hình), đánh giá cuối cấp `_dgcc_nut`, phiên Claude `_phien_hinh_khoi`, đồng bộ tài liệu `_tl_hl_dong_bo_bai`, `_bdm_chu_de_co_noi_dung`, cùng 5 hàm/trigger riêng của nhóm · **135 bản số liệu báo cáo tuần đã nộp** (`bc_ky_so_lieu.du_lieu`) chứa mã `H:<nhóm>`.
+
+- **Bước 1 — không xoá gì:** gỡ nhóm khỏi màn bản đồ; tạo mô hình không cần nhóm; báo cáo/dashboard MỚI lấy cấp "chuyên đề" của Hình = **mô hình**; sửa 7 hàm đọc ở trên. Báo cáo đã nộp vẫn tra tên qua bảng cũ ⇒ không vỡ.
+- **Bước 2 — chỉ khi Thùy gật riêng:** chép tên nhóm vào 135 bản số liệu đã nộp (hoặc giữ bảng chỉ-đọc làm từ điển tên), rồi mới xoá: bảng `hinh_nhom_mo_hinh` (16 dòng + mô tả), cột `hinh_mo_hinh.nhom_mh_id`, trigger `trg_hl_mo_hinh_khop_nhom` · `trg_hl_nhom_mh_thu_tu` · `trg_hl_nhom_mh_log`, hàm `_hl_mo_hinh_khop_nhom` · `_hl_nhom_mh_thu_tu` · `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` · `fn_hl_tao_mo_hinh_trong_nhom`, code client (`hinhCay.ts` nhóm, `CayNhanh.tsx` cột nhóm, `chuyenDeHinh.ts`, `ChuyenDeHinhBuilder.tsx`), script `scripts/kho/test_nhom_mo_hinh.mjs`.
+
+### 13.7 Ca mẫu đầu tiên: MH.126 + MH.061 (khối 7)
+
+- Hiện trạng: **MH.126** (phần Luyện, 2 nốt) có gốc "BD phân giác" và 2 nhánh anh em **MH.166** "BE = BA" (chính) · **MH.168** "DE ⊥ BC" (phụ) — đúng kiểu chia vụn. **MH.061** (mô hình cũ, `phan` NULL, 24 nốt) chứa 4–5 chuỗi đề thật mở đầu bằng các bộ giả thiết khác nhau.
+- Làm: gốc MH.126 thành **nhóm bài** {phân giác · BE = BA · DE ⊥ BC}, MH.166 / MH.168 thành **thành viên**, thêm thành viên "cho B, C ⇒ hỏi A" từ chuỗi đề thật MH.061; các bài sau (trung trực AE, F, D, E thẳng hàng; Q; M…) treo dưới đầu ra.
+- **Danh sách nốt chuyển đi đâu ⇒ HTML cho Thùy duyệt trước khi ghi** (memory "Bản đồ: đề xuất trước, ghi sau").
+
+### 13.8 Thứ tự build
+
+1. ✅ (mig 202611091539) Migration: cột `vai` + CHECK · 2 bảng sự kiện / cho-hỏi · cột `la_trong_diem` · 2 luật ở `fn_hl_them_gia_thiet` / `fn_hl_doi_cha_gia_thiet` · RPC tạo nhóm bài / thành viên / sự kiện. Kiểm ROLLBACK.
+2. ✅ Màn `CayNhanh.tsx`: khung nhóm bài (nền + sự kiện + thành viên cho/hỏi), một mũi tên "đầu ra"; bật trọng điểm trên nốt.
+3. ✅ (mig 202611091738 `fn_hl_ghep_y`) Chọn ý `ChonYTuCay.tsx` + in `mucGhep`: luật thành viên đứng trước nhóm; cảnh báo đường đi (không chặn). Thứ tự ý cố định LÚC CHỌN (nodeIds) — lúc in không xếp lại, vì ô chấm ET đi theo đúng thứ tự đó.
+4. ✅ (mig 202611091750) Đo: `_dbht_cau` cấp chuyên đề Hình = mô hình GỐC, cấp nhóm = trọng điểm (`H:N:<nút nhóm>` · `H:T:<nốt>` · còn lại `H:<gốc>`); `fn_dbht_bang` / `fn_bc_ky_tinh` đặt tên theo cấp mới; màn bản đồ + bộ chọn mô hình của Chuyên đề Hình bỏ nhóm mô hình (Bước 1 của §13.6). `_dgcc_nut` · `_phien_hinh_khoi` · `_bdm_chu_de_co_noi_dung` chỉ dùng nhóm làm dự phòng tra chủ đề ⇒ để nguyên tới bước 2.
+5. Ca mẫu §13.7 (sau khi Thùy duyệt danh sách).
+6. Bước 2 của §13.6 — chỉ khi Thùy gật.
+
+### 13.9 Đứng trên vai ai (R7)
+
+Định lý & định lý đảo / *two-out-of-three property* cho Nhóm bài · *anchor tasks* trong *learning progressions* cho Trọng điểm · cây gốc + nhãn vai (thay vì DAG) để giữ *path-condition* duy nhất cho giả thiết hiệu lực.

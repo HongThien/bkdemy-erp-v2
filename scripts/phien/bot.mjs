@@ -72,6 +72,17 @@ if (env('PHIEN_DUNG_API') === '1' && env('ANTHROPIC_API_KEY')) ENV_CLAUDE_GOC.AN
 const log = (...a) => console.log(new Date().toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour12: false }), ...a)
 const docFile = (p) => { try { return readFileSync(join(root, p), 'utf8') } catch { return '' } }
 
+// Công cụ thêm SAU khi phiên mở (scripts/phien/MOI.md, Thùy 09/11): phiên --resume mang lịch sử chat cũ, Claude bám kết luận
+// cũ của chính nó ("phiên chỉ cắt được hình") dù luật đã đổi — đã dính phiên Toán 3 chị Dương: lệnh ve_hinh có từ 15:12,
+// 15:33 vẫn trả lời "chỉ có cắt". Chèn riêng các dòng mới hơn giờ mở phiên, nói thẳng là ghi đè chat cũ.
+function congCuMoi(phien) {
+  const mo = phien.created_at ? new Date(phien.created_at).getTime() : 0
+  const ds = docFile('scripts/phien/MOI.md').split('\n').map((d) => d.trim()).map((d) => d.match(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) \| (.+)$/))
+    .filter((m) => m && new Date(`${m[1]}T${m[2]}:00+07:00`).getTime() > mo).map((m) => `- (${m[2]} ${m[1].slice(8)}/${m[1].slice(5, 7)}) ${m[3]}`)
+  return ds.length ? ['## ⚠ CÔNG CỤ MỚI THÊM SAU KHI PHIÊN NÀY MỞ — ghi đè mọi điều bạn đã nói trước đó trong cuộc chat',
+    'Nếu trước đây bạn đã nói "phiên không làm được việc X" mà X có ở dưới, kết luận đó ĐÃ CŨ: dùng công cụ mới, và nói với người dùng là giờ làm được.', ...ds].join('\n') : ''
+}
+
 // ── Bối cảnh của phiên (system prompt nối thêm) ─────────────────────────────
 function boiCanh(phien) {
   const homNay = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', dateStyle: 'full' }).format(new Date())
@@ -79,6 +90,7 @@ function boiCanh(phien) {
   return [
     docFile('scripts/phien/CHUNG.md'),
     docFile(`scripts/phien/loai/${phien.loai}.md`),
+    congCuMoi(phien),
     '## Thông tin phiên này',
     `- Loại việc: ${phien.loai} · Môn: ${phien.mon} · Khối: ${phien.khoi}`,
     `- Tiêu đề: ${phien.tieu_de}`,
@@ -130,7 +142,11 @@ function goiClaude1({ phien, nhapVao, tiepNoi, khiCo }) {
     const args = ['-p', '--output-format', 'stream-json', '--verbose', ...(coChuChay ? ['--include-partial-messages'] : []),
       tiepNoi ? '--resume' : '--session-id', phien.id,
       '--append-system-prompt', boiCanh(phien),
+      // Thùy 10/11 "không khoá gì của trưởng khối": thêm các lệnh ĐỌC hay bị hỏi quyền rồi rớt (ls/find/cd trong thư mục tài liệu,
+      // xem PDF). Ghi file / sửa code vẫn không mở — mọi ghi đi qua ban-do.mjs (rào khối ở DB).
       '--allowedTools', 'Read', 'Grep', 'Glob', 'Bash(node scripts/phien/ban-do.mjs:*)',
+      'Bash(ls:*)', 'Bash(find:*)', 'Bash(cd:*)', 'Bash(head:*)', 'Bash(tail:*)', 'Bash(wc:*)', 'Bash(sort:*)', 'Bash(grep:*)',
+      'Bash(pdftotext:*)', 'Bash(pdfinfo:*)', 'Bash(echo:*)',
       '--disallowedTools', 'Read(./.env)', 'Read(./.env.*)', 'Read(**/.env)', 'Read(**/.env.*)', 'Write', 'Edit', 'WebFetch', 'WebSearch']
     for (const d of TAI_LIEU) args.push('--add-dir', d)
     if (MODEL) args.push('--model', MODEL)
@@ -209,7 +225,7 @@ async function chayLuot(phienId) {
   if (!viec?.length) return
   const ids = viec.map((v) => v.id)
   const { data: p, error: eP } = await svc.from('claude_phien')
-    .select('id, loai, mon, khoi, tieu_de, trang_thai, nhan_su:nhan_su_id(ho_ten)').eq('id', phienId).single()
+    .select('id, loai, mon, khoi, tieu_de, trang_thai, created_at, nhan_su:nhan_su_id(ho_ten)').eq('id', phienId).single()
   if (eP || !p) { log('không đọc được phiên', phienId, eP?.message); await svc.rpc('fn_phien_bot_tra', { p_ids: ids, p_loi: 'Không đọc được phiên', p_tinh_lan: true, p_toi_da: TOI_DA_LAN }); return }
   const phien = { ...p, nguoi_mo_ten: p.nhan_su?.ho_ten }
   const laTongKet = viec.some((v) => v.vai === 'he_thong') && phien.trang_thai === 'dang_dong'
@@ -217,7 +233,11 @@ async function chayLuot(phienId) {
     .eq('phien_id', phienId).eq('vai', 'claude').in('trang_thai', ['xong', 'dung'])
   let tiepNoi = (soLuotTruoc ?? 0) > 0
 
-  const nhapVao = viec.map((v) => v.vai === 'nguoi'
+  // Thùy 10/11: chèn vào system prompt CHƯA đủ — phiên Toán 3 vẫn lặp "chờ bật công cụ vẽ" từ lịch sử chat dù ve_hinh chạy được
+  // (đã thử đúng quyền bot). Nên phiên mở trước công cụ mới nhận thêm một mẩu [HỆ THỐNG] NGAY TRONG tin nhắn mỗi lượt.
+  const moi = tiepNoi ? congCuMoi(phien) : ''
+  const nhapVao = (moi ? `[HỆ THỐNG — CÔNG CỤ ĐÃ BẬT]\nCác lệnh dưới đây ĐÃ CHẠY ĐƯỢC trong phiên này (đã kiểm thật), không ai cần bật thêm gì. Mọi câu trước đó kiểu "chờ bật công cụ", "máy đang chặn", "cần Thùy cho phép" về các lệnh này là SAI — đừng nhắc lại; gặp việc cần chúng thì làm luôn.\n${moi.split('\n').filter((d) => d.startsWith('- ')).join('\n')}\n\n---\n\n` : '')
+    + viec.map((v) => v.vai === 'nguoi'
     ? `[${v.nguoi_ten ?? 'Người dùng'} · ${new Date(v.at).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour12: false })}]\n${v.noi_dung}`
     : `[HỆ THỐNG]\n${v.noi_dung}`).join('\n\n---\n\n')
   log(`▶ phiên ${phienId.slice(0, 8)} ${phien.mon} ${phien.khoi} — ${viec.length} tin${laTongKet ? ' (tổng kết)' : ''}${tiepNoi ? '' : ' · lượt đầu'}`)

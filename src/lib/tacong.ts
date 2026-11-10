@@ -102,6 +102,8 @@ export type ThieuCong = { loai: 'buoi' | 'ca' | 'bo_tro_bu' | 'bo_tro_yeu' | 'bo
 export type DonGia = { id: string; khoa_ky: string | null; ma: string; ten: string; si_tu: number | null; si_den: number | null; gia_tri: number; don_vi: string; hieu_luc_tu: string; dang_hieu_luc: boolean; ghi_chu: string; nguoi_dat: string | null; dat_at: string }
 
 export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_chieu', { p_tu: tu, p_den: den })
+// Thùy 09/11 (mig 202611091507): duyệt công theo khối — id các dòng (ca + việc) người đang đăng nhập duyệt được; null = mọi dòng (giữ lá ta_cong_duyet).
+export const duocDuyet = (tu: string, den: string) => rpc<string[] | null>('fn_ta_cong_duoc_duyet', { p_tu: tu, p_den: den })
 export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_buoi_thieu_cong', { p_tu: tu, p_den: den })
 export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi', lyDo?: string) =>
   rpc<number>('fn_ta_duyet_cong', { p_ca: ca, p_viec: viec, p_ket_qua: ketQua, p_ly_do: lyDo ?? null })

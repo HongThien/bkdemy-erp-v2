@@ -10,7 +10,7 @@ import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
 import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/ui'
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
-import { uploadKhoFile } from '../../lib/kho/api'
+import { uploadKhoFile, khucY, deCuaY } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
@@ -585,7 +585,9 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
           // (bai_test_cau.thu_tu = thứ tự phẳng của phiếu; app hiện "Câu {thu_tu}"). Thùy 06/11: phiếu bắt đầu mỗi dạng từ câu 1 ⇒ lệch app.
           // Đếm theo THỨ TỰ VẼ (biểu thức JSX chạy trên xuống) nên đừng đảo thứ tự các khối bên dưới mà không sửa cả cauCuaBuoi/getGiaoTrinhBuoiCaus.
           let dem = 0
-          const cauItems = (cs: CauHoi[]) => cs.map((c) => { dem += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: dem, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) } })
+          // ý cùng bài Hình–Học gom 1 đầu bài (itemsGomY); số câu vẫn tăng theo từng ý
+          const cauItems = (cs: CauHoi[]) => itemsGomY(cs, { next: () => ++dem, gv, dong: () => 0, col: (c) => colByCau[c.ma_cau] ?? 1, cheDo: (c) => hinhCheDoByCau[c.ma_cau] },
+            (c, no) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no, c, gv, cheDoHinh: hinhCheDoByCau[c.ma_cau], nguon: nguon?.[c.ma_cau] }) }))
           return (
           <section key={b.id} className="pv-buoi gtbk">
             {b.tieu_de && <BuoiMasthead title={b.tieu_de} lopTen={lopTen} ngayPhat={ngayPhat} />}
@@ -821,7 +823,8 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau, batDau = 0 }: {
         )}
         {p.caus.length > 0 && (
           <>
-            <CauFlow hop items={p.caus.map((c, i) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: batDau + i + 1, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
+            <CauFlow hop items={(() => { let no = batDau; return itemsGomY(p.caus, { next: () => ++no, gv, dong: () => 0, col: (c) => colByCau[c.ma_cau] ?? 1, cheDo: (c) => hinhCheDoByCau?.[c.ma_cau] },
+              (c, n) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: n, c, gv, cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) })) })()} />
           </>
         )}
       </div>
@@ -879,7 +882,8 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
             {/* Số câu đếm LIÊN TỤC xuyên các dạng (dạng 1: 1,2 → dạng 2: 3,4,5…) — KHÔNG reset mỗi dạng,
                 kể cả sang khối Ôn tập bên dưới (đếm 1 mạch hết phiếu, đúng spec §7.1). */}
             <div className="gtbk-card-body">
-              <CauFlow items={b.caus.map((c) => { bno += 1; return { key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES), cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) } })} />
+              <CauFlow items={itemsGomY(b.caus, { next: () => ++bno, gv, dong: (c) => (gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES)), col: (c) => colByCau[c.ma_cau] ?? 1, cheDo: (c) => hinhCheDoByCau?.[c.ma_cau] },
+                (c, no) => ({ key: c.ma_cau, cols: colByCau[c.ma_cau] ?? 1, ...cauItemParts({ no, c, gv, lines: gv ? 0 : (linesByCau[c.ma_cau] ?? DEFAULT_BTVN_LINES), cheDoHinh: hinhCheDoByCau?.[c.ma_cau] }) }))} />
             </div>
           </div>
         )
@@ -1183,6 +1187,38 @@ export function CauFlow({ items, hop }: { items: CauFlowItem[]; hop?: boolean })
   // Không bọc div quanh cả cụm (thận trọng, xem CauColumns). Đỉnh khung + tag dính NGUYÊN TỬ vào câu đầu
   // (`dau`, xem CauColumns); thân = viền trái/phải vẽ lên từng .pv-caulist; nhóm cuối đóng viền đáy.
   return <>{groups.map((g, i) => <CauColumns key={i} cols={g.cols} parts={g.parts} dau={hop && i === 0} hop={hop ? (i === groups.length - 1 ? 'cuoi' : 'giua') : undefined} />)}</>
+}
+
+// Hình–Học bài nhiều ý (Thùy 09/11): ≥2 ý CÙNG BÀI liền nhau ⇒ "Câu n – m." + lời dẫn + hình 1 lần, rồi "a) …" từng ý
+// liền nhau, dòng kẻ gộp 1 khối cho cả bài sau ý cuối (Thùy 09/11). Số câu vẫn 1 ý = 1 câu — khớp app HS (thu_tu phẳng) và phiếu chấm. Câu khác: `mk` như cũ.
+export function itemsGomY(cs: CauHoi[], o: {
+  next: () => number; gv: boolean; dong: (c: CauHoi) => number; col: (c: CauHoi) => number; cheDo: (c: CauHoi) => CheDoHinh | undefined
+}, mk: (c: CauHoi, no: number) => CauFlowItem): CauFlowItem[] {
+  const out: CauFlowItem[] = []
+  for (let i = 0; i < cs.length;) {
+    const k = khucY(cs, i)
+    if (!k) { out.push(mk(cs[i], o.next())); i++; continue }
+    const dau = cs[i], ys = cs.slice(i, k.cuoi + 1), so = ys.map(() => o.next())
+    const cd = o.cheDo(dau) ?? 'hien'
+    const anh = cd === 'khong' ? null
+      : cd === 'o_trong' ? (o.gv && dau.anh_de ? <AnhDe ma={dau.ma_cau} src={dau.anh_de} /> : <div className="pv-vebox" />)
+        : (dau.anh_de ? <AnhDe ma={dau.ma_cau} src={dau.anh_de} /> : null)
+    out.push({
+      key: `bai-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: 0, hasImg: !!anh,
+      content: <><div className="pv-math" style={{ breakAfter: 'avoid' }}><MathText prefix={`<span class="pv-cau-no">Câu ${so[0]} – ${so[so.length - 1]}.</span> `}>{k.dan}</MathText></div>{anh}</>,
+    })
+    // ⭐ Thùy 09/11 (BTVN): ý chỉ ghi "a)" (không "Câu 3. a)"), các ý LIỀN NHAU, ô trống/dòng kẻ là của CẢ BÀI ⇒ 1 khối dòng kẻ
+    // sau ý cuối. Số dòng của bài = số dòng đặt ở Ý ĐẦU (builder chỉ có 1 ô "dòng" ở đầu khối bài, ghi vào ý đầu).
+    let ke = 0
+    ys.forEach((y, t) => {
+      const p = cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` })
+      if (t === 0) ke = p.lines
+      out.push({ key: y.ma_cau, cols: o.col(y), nhom: dau.bai_y!, ...p, lines: 0 })
+    })
+    if (ke > 0) out.push({ key: `ke-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: ke, hasImg: false, content: null })
+    i = k.cuoi + 1
+  }
+  return out
 }
 
 // Khuôn ĐỀ (đề thi + BTVN gán từ đề): câu lẻ = 1 dòng như cũ; bài nhiều ý = đầu bài (số bài + lời dẫn + hình chung) rồi

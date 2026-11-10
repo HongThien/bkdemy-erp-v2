@@ -1,0 +1,51 @@
+{
+ "moi": {
+  "BT.07.126.07": {
+   "phat_bieu": "Chứng minh ba điểm $F, D, E$ thẳng hàng.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Vì $F$ thuộc tia đối của tia $AB$\nnên $A$ nằm giữa $B$ và $F$.\nMà $DA\\perp AB$ ($\\triangle ABC$ vuông tại $A$)\nnên $\\widehat{DAF}=90^\\circ$.\nVì $DE\\perp BC$ (gt), $E$ thuộc $BC$\nnên $\\widehat{DEC}=90^\\circ$.\nXét $\\triangle ABD$ và $\\triangle EBD$ có:\n$BA=BE$ (gt)\n$\\widehat{ABD}=\\widehat{EBD}$ ($BD$ là phân giác của góc $B$)\n$BD$ là cạnh chung\nDo đó $\\triangle ABD=\\triangle EBD$ (c.g.c).\nSuy ra $DA=DE$ (hai cạnh tương ứng).\nXét $\\triangle DAF$ và $\\triangle DEC$ có:\n$DA=DE$ (cmt)\n$\\widehat{DAF}=\\widehat{DEC}=90^\\circ$ (cmt)\n$AF=EC$ (gt)\nDo đó $\\triangle DAF=\\triangle DEC$ (c.g.c).\nSuy ra $\\widehat{ADF}=\\widehat{EDC}$ (hai góc tương ứng).\nVì $D$ nằm giữa $A$ và $C$ ($D$ thuộc cạnh $AC$)\nnên $\\widehat{ADE}+\\widehat{EDC}=180^\\circ$ (hai góc kề bù).\nDo đó $\\widehat{ADE}+\\widehat{ADF}=180^\\circ$.\nVì $A$ nằm giữa $B$ và $F$ (cmt)\nnên $F$, $B$ khác phía đối với $AC$.\nVì $E$ thuộc cạnh $BC$\nnên $E$, $B$ cùng phía đối với $AC$.\nSuy ra $F$, $E$ khác phía đối với $AC$.\nHai góc $\\widehat{ADE}$, $\\widehat{ADF}$ chung cạnh $DA$,\nhai cạnh còn lại khác phía đối với $AC$\nvà tổng hai góc bằng $180^\\circ$\nnên hai tia $DE$, $DF$ đối nhau.\nVậy ba điểm $F, D, E$ thẳng hàng."
+  },
+  "BT.07.126.09": {
+   "phat_bieu": "Chứng minh $DQ=DC$.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Xét $\\triangle ABD$ và $\\triangle EBD$ có:\n$BA=BE$ (gt)\n$\\widehat{ABD}=\\widehat{EBD}$ ($BD$ là phân giác của góc $B$)\n$BD$ là cạnh chung\nDo đó $\\triangle ABD=\\triangle EBD$ (c.g.c).\nSuy ra $DA=DE$ (hai cạnh tương ứng).\nVì $DA\\perp AB$ ($\\triangle ABC$ vuông tại $A$)\nvà $Q$ thuộc tia $BA$ nên $\\widehat{DAQ}=90^\\circ$.\nVì $DE\\perp BC$ (gt), $C$ thuộc $BC$\nnên $\\widehat{DEC}=90^\\circ$.\nVì $D$ thuộc cạnh $AC$, $E$ thuộc cạnh $BC$\nnên $D$, $E$ cùng phía đối với $AB$.\nDo đó đoạn $ED$ không cắt $AB$,\nmà $Q$ thuộc tia $ED$\nnên $D$ nằm giữa $E$ và $Q$.\nLại có $D$ nằm giữa $A$ và $C$ ($D$ thuộc cạnh $AC$)\nnên $\\widehat{ADQ}=\\widehat{EDC}$ (hai góc đối đỉnh).\nXét $\\triangle ADQ$ và $\\triangle EDC$ có:\n$\\widehat{DAQ}=\\widehat{DEC}=90^\\circ$ (cmt)\n$DA=DE$ (cmt)\n$\\widehat{ADQ}=\\widehat{EDC}$ (cmt)\nDo đó $\\triangle ADQ=\\triangle EDC$ (cgv - gn).\nSuy ra $DQ=DC$ (hai cạnh tương ứng)."
+  },
+  "BT.07.126.10": {
+   "phat_bieu": "Chứng minh ba điểm $B, D, M$ thẳng hàng.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Ta có $BE=BA$ (gt).\nVì $Q$ thuộc tia $ED$, $DE\\perp BC$ tại $E$ (gt)\nnên $\\widehat{BEQ}=90^\\circ$.\nXét $\\triangle BEQ$ và $\\triangle BAC$ có:\n$\\widehat{BEQ}=\\widehat{BAC}=90^\\circ$ (cmt, gt)\n$BE=BA$ (cmt)\n$\\widehat{EBQ}=\\widehat{ABC}$ (góc chung)\nDo đó $\\triangle BEQ=\\triangle BAC$ (g.c.g).\nSuy ra $BQ=BC$ (hai cạnh tương ứng).\nXét $\\triangle BQM$ và $\\triangle BCM$ có:\n$BQ=BC$ (cmt)\n$MQ=MC$ ($M$ là trung điểm của $QC$)\n$BM$ là cạnh chung\nDo đó $\\triangle BQM=\\triangle BCM$ (c.c.c).\nSuy ra $\\widehat{BMQ}=\\widehat{BMC}$ (hai góc tương ứng).\nMà $\\widehat{BMQ}+\\widehat{BMC}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{BMQ}=90^\\circ$, tức là $BM\\perp QC$.\nXét $\\triangle DQM$ và $\\triangle DCM$ có:\n$DQ=DC$ (theo B9)\n$MQ=MC$ ($M$ là trung điểm của $QC$)\n$DM$ là cạnh chung\nDo đó $\\triangle DQM=\\triangle DCM$ (c.c.c).\nSuy ra $\\widehat{DMQ}=\\widehat{DMC}$ (hai góc tương ứng).\nMà $\\widehat{DMQ}+\\widehat{DMC}=180^\\circ$ (hai góc kề bù)\nnên $\\widehat{DMQ}=90^\\circ$, tức là $DM\\perp QC$.\nQua $M$ chỉ có một đường thẳng vuông góc với $QC$\nnên hai đường thẳng $BM$ và $DM$ trùng nhau.\nVậy ba điểm $B, D, M$ thẳng hàng."
+  },
+  "BT.07.061.17": {
+   "phat_bieu": "Chứng minh $\\triangle ABI = \\triangle EBI$.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Xét $\\triangle ABI$ và $\\triangle EBI$ có:\n\n$BA = BE$ (giả thiết).\n\n$AI = EI$ ($I$ là trung điểm của $AE$).\n\n$BI$ chung.\n\nDo đó $\\triangle ABI = \\triangle EBI$ (c.c.c)."
+  },
+  "BT.07.061.18": {
+   "phat_bieu": "Chứng minh $BI$ là tia phân giác của góc $ABC$",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Theo kết quả trên, $\\triangle ABI = \\triangle EBI$ nên $\\widehat{ABI} = \\widehat{EBI}$ (hai góc tương ứng).\n\nVì $E$ thuộc cạnh $BC$ nên tia $BE$ trùng tia $BC$, suy ra $\\widehat{EBI} = \\widehat{CBI}$.\n\nDo đó $\\widehat{ABI} = \\widehat{CBI}$, hay $BI$ là tia phân giác của góc $\\widehat{ABC}$."
+  },
+  "BT.07.061.19": {
+   "phat_bieu": "Gọi $D$ là giao điểm của $BI$ và $AC$. Chứng minh $DE \\perp BC$.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Xét $\\triangle ABD$ và $\\triangle EBD$ có:\n\n$BA = BE$ (giả thiết).\n\n$\\widehat{ABD} = \\widehat{EBD}$ (do $BI$ là tia phân giác của $\\widehat{ABC}$ và $D$ thuộc tia $BI$).\n\n$BD$ chung.\n\nDo đó $\\triangle ABD = \\triangle EBD$ (c.g.c), suy ra $\\widehat{BED} = \\widehat{BAD}$ (hai góc tương ứng).\n\nMà $D$ thuộc cạnh $AC$ nên $\\widehat{BAD} = \\widehat{BAC} = 90^\\circ$ (giả thiết tam giác vuông tại $A$).\n\nSuy ra $\\widehat{BED} = 90^\\circ$, tức là $DE \\perp BE$. Vì $B, E, C$ thẳng hàng ($E$ thuộc $BC$) nên $DE \\perp BC$."
+  },
+  "BT.07.061.20": {
+   "phat_bieu": "Chứng minh ba điểm $B, A, H$ thẳng hàng.",
+   "gia_thiet_rieng": null,
+   "loi_giai": "Xét $\\triangle ABD$ và $\\triangle EBD$ có:\n\n$BA=BE$ (gt)\n\n$\\widehat{ABD}=\\widehat{EBD}$ ($BD$ là phân giác của góc $B$)\n\n$BD$ là cạnh chung\n\nDo đó $\\triangle ABD=\\triangle EBD$ (c.g.c).\n\nSuy ra $DA=DE$ (hai cạnh tương ứng).\n\nVì $A, D, C$ thẳng hàng ($D$ thuộc $AC$) và $H, D, E$ thẳng hàng ($H$ thuộc tia đối của tia $DE$) nên $\\widehat{ADH}$ và $\\widehat{EDC}$ là hai góc đối đỉnh, suy ra $\\widehat{ADH} = \\widehat{EDC}$.\n\nXét $\\triangle ADH$ và $\\triangle EDC$ có:\n\n$DA = DE$ (chứng minh trên).\n\n$\\widehat{ADH} = \\widehat{EDC}$ (chứng minh trên).\n\n$DH = DC$ (giả thiết).\n\nDo đó $\\triangle ADH = \\triangle EDC$ (c.g.c), suy ra $\\widehat{DAH} = \\widehat{DEC}$ (hai góc tương ứng).\n\nMà $DE \\perp BC$ (gt) và $E$ thuộc $BC$ nên $\\widehat{DEC} = 90^\\circ$.\n\nSuy ra $\\widehat{DAH} = 90^\\circ$. Vì $D$ thuộc $AC$ nên $\\widehat{DAH} = \\widehat{CAH} = 90^\\circ$.\n\nMặt khác $\\widehat{CAB} = 90^\\circ$ (giả thiết tam giác vuông tại $A$).\n\nVậy $AH$ và $AB$ cùng vuông góc với $AC$ tại $A$ nên $AH, AB$ nằm trên cùng một đường thẳng (đường thẳng duy nhất qua $A$ vuông góc với $AC$). Do đó ba điểm $B, A, H$ thẳng hàng."
+  }
+ },
+ "tienDe": {
+  "BT.07.126.05": [],
+  "BT.07.126.06": [
+   "BT.07.126.05"
+  ],
+  "BT.07.126.07": [],
+  "BT.07.126.09": [],
+  "BT.07.126.10": [
+   "BT.07.126.09"
+  ],
+  "BT.07.061.20": []
+ }
+}

@@ -457,10 +457,17 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   }
   async function chotCauHang(i: number, ms: string[]) {
     const used = new Set(usedExcept(i))
-    const pick = ms.find((m) => !used.has(m)) ?? null
+    // Hình – Học bài nhiều ý (Thùy 09/11): chọn được NHIỀU ý trong 1 lần ⇒ ý đầu vào hàng này, các ý sau thêm hàng NGAY DƯỚI, cùng dạng bài
+    // (1 ý = 1 câu = 1 hàng, chấm từng ý). Câu thường vẫn 1 câu/hàng như cũ.
+    let picks = ms.filter((m) => !used.has(m))
     const db = rows[i]?.db ?? null
-    if (pick) { ghiNh([pick], db); await napNoiDung([pick]) }
-    setRows((rs) => rs.map((x, j) => (j === i ? { ...x, maCau: pick } : x)))
+    if (picks.length) {
+      ghiNh(picks, db)
+      const bk = await napNoiDung(picks)
+      if (picks.every((m) => bk[m])) picks = sortETCaus(picks.map((m) => bk[m]), ch).map((c) => c.ma_cau)   // ý cùng bài theo nhãn a → b → c
+    }
+    const pick = picks[0] ?? null
+    setRows((rs) => [...rs.slice(0, i), { ...rs[i], maCau: pick }, ...picks.slice(1).map((m) => ({ db, maCau: m })), ...rs.slice(i + 1)])
     setChonCau(null)
   }
   async function chotCauDe(ms: string[]) {

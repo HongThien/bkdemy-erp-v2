@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
@@ -305,7 +305,8 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   )
 }
 
-// ── Bộ chọn mô hình: chủ đề Hình–Luyện → nhóm mô hình → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
+// ── Bộ chọn mô hình: chủ đề Hình–Luyện → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
+// 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): bỏ tầng nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
 function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (ids: string[]) => void }) {
   const [cay, setCay] = useState<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] } | null>(null)
   const [dem, setDem] = useState<Map<string, DemKho>>(new Map())
@@ -318,7 +319,7 @@ function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
   const bat = (id: string) => setChon((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   const nhomCua = useMemo(() => {
     const m = new Map<string, CdhChonMoHinh[]>()
-    for (const mh of cay?.moHinh ?? []) { const k = mh.nhom_mh_id ?? `cd:${mh.chu_de_id ?? ''}`; m.set(k, [...(m.get(k) ?? []), mh]) }
+    for (const mh of cay?.moHinh ?? []) { const k = mh.chu_de_id ?? ''; m.set(k, [...(m.get(k) ?? []), mh]) }
     return m
   }, [cay])
   const theMh = (mh: CdhChonMoHinh) => {
@@ -346,19 +347,9 @@ function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon
             : cay.chuDe.map((cd) => (
               <div key={cd.id} className="mb-5">
                 <div className="mb-2 text-[14px] font-bold text-slate-800">{cd.ten}</div>
-                <div className="grid gap-3 md:grid-cols-2">
-                  {cay.nhom.filter((n) => n.chu_de_id === cd.id).map((n) => (
-                    <div key={n.id} className="rounded-lg border border-slate-200 p-2.5">
-                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-500">{n.ten}</div>
-                      <div className="space-y-1">{(nhomCua.get(n.id) ?? []).map(theMh)}{!(nhomCua.get(n.id) ?? []).length && <div className="text-[12px] italic text-slate-300">trống</div>}</div>
-                    </div>
-                  ))}
-                  {(nhomCua.get(`cd:${cd.id}`) ?? []).length > 0 && (
-                    <div className="rounded-lg border border-dashed border-slate-200 p-2.5">
-                      <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Chưa vào nhóm</div>
-                      <div className="space-y-1">{(nhomCua.get(`cd:${cd.id}`) ?? []).map(theMh)}</div>
-                    </div>
-                  )}
+                <div className="grid gap-1 md:grid-cols-2">
+                  {(nhomCua.get(cd.id) ?? []).map(theMh)}
+                  {!(nhomCua.get(cd.id) ?? []).length && <div className="text-[12px] italic text-slate-300">chưa có mô hình</div>}
                 </div>
               </div>
             ))}
@@ -483,7 +474,13 @@ function HocCard({ h, cfg, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY,
   onXoaCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
 }) {
   // câu Học (hinh_hoc_cau_hoi) ⇒ khối câu chung của builder giáo trình (KhoiCau) — cùng control: dòng, 2 cột, chế độ hình, cỡ ảnh
-  const cauMap = new Map<string, CauHoi>([...h.caus, ...(h.btvn?.caus ?? [])].map((x) => [x.ma_cau, x as unknown as CauHoi]))
+  // + bai_y / cau_hoi_y / da_biet (Thùy 09/11): thiếu 3 cột này thì KhoiCau không nhận ra các ý CÙNG BÀI ⇒ hiện từng ý với ô "dòng" riêng,
+  //   trong khi bản in gom ý và chỉ lấy số dòng của cả bài ⇒ "điền xong build ra không có dòng".
+  const maCaus = [...h.caus, ...(h.btvn?.caus ?? [])].map((x) => x.ma_cau)
+  const khoaMa = maCaus.join(',')
+  const [yMeta, setYMeta] = useState<Map<string, HhYMeta>>(new Map())
+  useEffect(() => { let huy = false; hhYMeta(maCaus).then((m) => { if (!huy) setYMeta(m) }).catch(() => { /* thiếu thì hiện từng ý như cũ */ }); return () => { huy = true } }, [khoaMa]) // eslint-disable-line react-hooks/exhaustive-deps
+  const cauMap = new Map<string, CauHoi>([...h.caus, ...(h.btvn?.caus ?? [])].map((x) => [x.ma_cau, { ...x, ...(yMeta.get(x.ma_cau) ?? {}) } as unknown as CauHoi]))
   const tong = (so: Record<string, number>) => Object.values(so).reduce((a, b) => a + b, 0)   // ô số người gõ (UI)
   return (
     <div id={`cdh-${h.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-sky-200">
@@ -571,6 +568,30 @@ export function ChonBaiHoc({ khoi, daChon, onClose, onConfirm, ghiChu }: { khoi:
   )
 }
 
+// Gom các ý cùng bài (bai_y) thành 1 nhóm, đứng ở chỗ ý đầu tiên; câu thường = nhóm 1 phần tử. Chỉ gom HIỂN THỊ.
+function gomTheoBai<T extends { ma_cau: string; bai_y?: string | null }>(ds: T[]): T[][] {
+  const out: T[][] = [], cua = new Map<string, T[]>()
+  for (const c of ds) {
+    if (!c.bai_y) { out.push([c]); continue }
+    const g = cua.get(c.bai_y)
+    if (g) g.push(c); else { const m = [c]; cua.set(c.bai_y, m); out.push(m) }
+  }
+  return out
+}
+
+// Thứ tự trả về khi chọn: ý CÙNG BÀI đứng liền nhau tại chỗ ý được chọn đầu tiên của bài, theo nhãn a → b → c (giữ thứ tự chọn cho câu thường)
+// ⇒ giáo trình lưu đúng thứ tự in gom (lời dẫn 1 lần). ET tự xếp lại bằng sortETCaus.
+function xepYCungBai(chon: string[], kho: { ma_cau: string; bai_y?: string | null; nhan_y?: string | null }[]): string[] {
+  const cua = new Map(kho.map((c) => [c.ma_cau, c]))
+  const neo = new Map<string, number>()
+  const x = chon.map((m, i) => {
+    const c = cua.get(m), b = c?.bai_y
+    if (b && !neo.has(b)) neo.set(b, i)
+    return { m, i, neo: b ? neo.get(b)! : i, nhan: c?.nhan_y ?? '' }
+  })
+  return x.sort((a, b) => a.neo - b.neo || a.nhan.localeCompare(b.nhan) || a.i - b.i).map((e) => e.m)
+}
+
 // ── Chọn câu của 1 bài học cho khối Bài luyện / BTVN (câu đã chọn giữ thứ tự, câu mới thêm cuối; câu đang ở phần khác của buổi bị khoá) ──
 // 2 NGUỒN như giáo trình Đại (ChonCauBdm): 🏫 Kho trên lớp · 📚 Kho luyện — chọn trộn, 1 danh sách. `coKhoLop` = false (ET: bài ĐO) ⇒ chỉ kho luyện.
 export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh = 'lop', onClose, onConfirm }: {
@@ -605,7 +626,45 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
         <div className="min-h-0 flex-1 space-y-2 overflow-auto px-6 py-4">
           {err ? <p className="text-sm text-rose-600">{err}</p> : !kho ? <p className="text-sm text-slate-400">Đang tải kho…</p>
             : kho.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? 'Bài học này chưa có câu ở kho trên lớp — soạn ở Bản đồ mới › Hình – Học › 🏫 Kho trên lớp.' : 'Bài học này chưa có câu kho chuẩn.'}</p>
-            : kho.map((c) => {
+            : gomTheoBai(kho).map((g) => {
+              // Bài nhiều ý (Thùy 09/11): 1 THẺ = đề bài + hình 1 lần, mỗi ý 1 dòng chọn riêng (hệ vẫn hiểu là n câu, chấm từng ý)
+              if (g[0].bai_y) {
+                const dau = g[0], so = (m: string) => chon.indexOf(m) + 1
+                const moTat = g.filter((y) => !khoa.includes(y.ma_cau))
+                const du = moTat.length > 0 && moTat.every((y) => chon.includes(y.ma_cau))
+                const chonBai = () => setChon((s) => du ? s.filter((m) => !moTat.some((y) => y.ma_cau === m)) : [...s, ...moTat.map((y) => y.ma_cau).filter((m) => !s.includes(m))])
+                return (
+                  <div key={dau.bai_y!} className={`rounded-lg border p-3 ${g.some((y) => chon.includes(y.ma_cau)) ? 'border-sky-400' : 'border-slate-200'}`}>
+                    <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px]">
+                      <span className="font-mono font-semibold text-teal-700">{dau.bai_y}</span>
+                      <span className="text-slate-400">bài {g.length} ý · chọn từng ý</span>
+                      <button onClick={chonBai} disabled={!moTat.length} className="ml-auto rounded border border-sky-300 px-2 py-0.5 font-medium text-sky-700 hover:bg-sky-50 disabled:opacity-40">{du ? 'Bỏ cả bài' : 'Chọn cả bài'}</button>
+                    </div>
+                    <div className="flex gap-4 max-md:flex-col">
+                      {dau.anh_de && <img src={dau.anh_de} alt="" className="h-40 w-52 shrink-0 self-start rounded border border-slate-200 bg-white object-contain max-md:w-full" />}
+                      <div className="min-w-0 flex-1 space-y-1.5">
+                        <div className="rounded-md bg-teal-600 px-3 py-2 text-[13.5px] leading-relaxed text-white"><MathText>{dau.loi_dan ?? ''}</MathText></div>
+                        {g.map((y) => {
+                          const on = chon.includes(y.ma_cau), khoaY = khoa.includes(y.ma_cau)
+                          return (
+                            <button key={y.ma_cau} disabled={khoaY} onClick={() => bat(y.ma_cau)} title={khoaY ? 'Ý này đã dùng ở phần khác trong cùng buổi' : undefined}
+                              className={`flex w-full items-start gap-2 rounded-md border px-2.5 py-1.5 text-left disabled:opacity-40 ${on ? 'border-sky-500 bg-sky-50' : 'border-slate-200 hover:border-sky-300'}`}>
+                              <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold ${on ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{on ? so(y.ma_cau) : ''}</span>
+                              <b className="shrink-0 text-[13.5px] text-violet-700">{y.nhan_y})</b>
+                              <div className="min-w-0 flex-1 text-[13.5px] text-slate-700">
+                                {y.da_biet && <div className="italic text-slate-500"><MathText>{y.da_biet}</MathText></div>}
+                                <MathText>{y.cau_hoi_y ?? ''}</MathText>
+                              </div>
+                              <span className="shrink-0 text-[10.5px] text-slate-400">{y.ma_cau} · dùng {y.so_lan_dung}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+              const c = g[0]
               const on = chon.includes(c.ma_cau), khoaC = khoa.includes(c.ma_cau)
               return (
                 <button key={c.ma_cau} disabled={khoaC} onClick={() => bat(c.ma_cau)} title={khoaC ? 'Câu đã dùng ở phần khác trong cùng buổi' : undefined}
@@ -626,7 +685,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
         <div className="flex items-center gap-2 border-t border-slate-200 px-6 py-3">
           <span className="text-[12px] text-slate-500">Đã chọn {chon.length} câu</span>
           <button onClick={onClose} className="ml-auto rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
-          <button onClick={() => onConfirm(chon)} className="rounded-md bg-sky-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-sky-500">Dùng {chon.length} câu</button>
+          <button onClick={() => onConfirm(xepYCungBai(chon, [...(luyen ?? []), ...(lop ?? [])]))} className="rounded-md bg-sky-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-sky-500">Dùng {chon.length} câu</button>
         </div>
       </div>
     </div>
