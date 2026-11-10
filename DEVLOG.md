@@ -79681,3 +79681,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Đề sai:** Bài 13 in "2008" nhưng lời giải tài liệu dùng 2018=672.3+2 ⇒ sửa đề thành 2018 (ghi ở ghi_chu). Bài 1: tài liệu chỉ nêu "2013^{4n} chia 4 dư 1" — em viết lại có chứng minh $(4q+1)(4r+1)$ và cặp $2015.2015$.
 - **Lập luận chung:** SCP có mọi số mũ thừa số nguyên tố chẵn (tự lập luận $n.n$, không dùng $(a^m)^n$); không dùng dấu hiệu chia hết 4/25 làm quy tắc — chứng minh bằng dư/phân tích.
 - **Còn trống:** NDB02800/02801 và nhóm NNB02098 chưa có mô tả/LT/ví dụ (Thùy dựng khung, chưa điền).
+
+- **Duyệt (10/11, Thùy "duyệt vào kho luôn"):** `so-chinh-phuong/duyet.mjs --ghi` — 7 câu T1060000001617–1623: dạng đề xuất → gán 'nguoi' (NDB02801 ×5, NDB02800 ×2), rút 7 dòng đề xuất, da_duyet=true (duyet_nguon='ai').
