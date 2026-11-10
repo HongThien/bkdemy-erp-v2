@@ -11,7 +11,7 @@
 import { useEffect, useState } from 'react'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { supabase } from '../../lib/supabase'
-import { chuanBiLuoiMT, laOHinh, listProblems, gradeMTChiTiet, deleteGrade, type Problem, type Grade, type ETResult } from '../../lib/gami'
+import { chuanBiLuoiMT, loadMTForBuoi, laOHinh, listProblems, gradeMTChiTiet, deleteGrade, type Problem, type Grade, type ETResult } from '../../lib/gami'
 import { dsBuoiChamMT, dsKyKhaoSat, dsHSChamMT, chamCaBaiMT, luuTongMT, dungDiemTuCauMT, type MTBuoiCham, type MTHSCham } from '../../lib/chamMT'
 import { listMT, mtMeta, mtLoaiDeLabel, ganMTVaoBuoi, taoKyKhaoSat } from '../../lib/mt'
 import type { TaiLieu } from '../../lib/tailieu'
@@ -45,6 +45,8 @@ const xong = (h: MTHSCham) => h.so_cau > 0 && h.so_cham === h.so_cau && h.so_thi
 
 // 23/10 (Thùy): lá "Chấm MT - Khảo sát" = 1 lá chung (chỉ khác đề) + dashboard "Kết quả theo chuyên đề" ở ngay trong lá.
 const NHO_TAB: { tab: 'cham' | 'chuyen_de' } = { tab: 'cham' }
+// Lưới + HS của buổi đã mở trong phiên (sống tới F5) ⇒ đổi qua lại giữa các lớp hiện ngay, dữ liệu mới vá nền.
+const CACHE_BUOI = new Map<string, { phans: MTPhanCaus[]; probs: Problem[]; hs: MTHSCham[] }>()
 export default function ChamMTScreen() {
   const [tab, setTab] = useState(NHO_TAB.tab)
   useEffect(() => { NHO_TAB.tab = tab }, [tab])
@@ -107,19 +109,32 @@ function ChamMTBody() {
   const buoi = buois.find((b) => b.buoi_id === buoiId) ?? null
   const dong = !!buoi?.dong
 
-  // Đề → dựng lưới (Đại + Hình, số theo phiếu, điểm tối đa từ đề — DB) + danh sách HS có mặt.
+  // Đề → lưới chấm (Đại + Hình, số theo phiếu, điểm tối đa từ đề — DB) + danh sách HS có mặt.
+  // 10/11 (Thùy: "chọn 9S chỉ cần load dữ liệu 9S, mất 4–5 s"): trước đây MỖI lần mở đều chờ DỰNG LẠI lưới (~15–25 lượt gọi nối đuôi)
+  // rồi mới hiện. Nay: (1) buổi đã mở trong phiên ⇒ hiện ngay từ bộ nhớ; (2) đề · lưới · HS đọc SONG SONG, lưới đã có ⇒ hiện luôn;
+  // (3) bước dựng lưới (đồng bộ với đề) vẫn chạy như cũ nhưng ở NỀN, xong thì vá lại lưới — không bắt người dùng chờ.
+  //     Lưới chưa từng dựng (buổi mới gán đề) ⇒ phải chờ dựng xong mới có ô để hiện, như trước.
   useEffect(() => {
-    setPhans([]); setProbs([]); setHsList([]); setGrades([]); setLoi(null); setMoNX(null)
-    if (!buoiId) return
+    setGrades([]); setLoi(null); setMoNX(null)
+    if (!buoiId) { setPhans([]); setProbs([]); setHsList([]); return }
     let alive = true
-    setLoadingDe(true)
-    ;(async () => {
-      const { phans: ps } = await chuanBiLuoiMT(buoiId, dong)
-      const [pr, hs] = await Promise.all([listProblems(buoiId, 'mt'), dsHSChamMT(buoiId)])
+    const apDung = (ps: MTPhanCaus[], pr: Problem[], hs: MTHSCham[]) => {
       if (!alive) return
+      CACHE_BUOI.set(buoiId, { phans: ps, probs: pr, hs })
       setPhans(ps); setProbs(pr); setHsList(hs)
       if (!hs.some((h) => h.hoc_sinh_id === NHO.hsId)) setHsId((hs.find((h) => !xong(h)) ?? hs[0])?.hoc_sinh_id ?? null)
       else setHsId(NHO.hsId)
+    }
+    const c = CACHE_BUOI.get(buoiId)
+    if (c) apDung(c.phans, c.probs, c.hs)
+    else { setPhans([]); setProbs([]); setHsList([]); setLoadingDe(true) }
+    ;(async () => {
+      const [de, pr0, hs0] = await Promise.all([loadMTForBuoi(buoiId), listProblems(buoiId, 'mt'), dsHSChamMT(buoiId)])
+      if (pr0.length) { apDung(de.phans, pr0, hs0); if (alive) setLoadingDe(false) }   // lưới đã có ⇒ hiện ngay
+      const { phans: ps } = await chuanBiLuoiMT(buoiId, dong)                           // đồng bộ lưới với đề (nền)
+      if (!alive) return
+      const [pr, hs] = await Promise.all([listProblems(buoiId, 'mt'), dsHSChamMT(buoiId)])
+      apDung(ps, pr, hs)
     })().catch((e) => alive && setLoi('Không tải được đề MT: ' + (e?.message ?? e))).finally(() => alive && setLoadingDe(false))
     return () => { alive = false }
   }, [buoiId]) // eslint-disable-line

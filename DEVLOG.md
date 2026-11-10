@@ -79690,3 +79690,7 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa: mig 202611101957_mastery_ban_nhat_ky_khong_khoa — đánh bẩn = CHÈN nhật ký mastery_ban_log (không khoá duy nhất); em bẩn = nhật ký mới hơn mastery_luu_san_tinh.moc; làm mới đặt mốc = bắt đầu − 2 phút; dọn nhật ký > 10 phút dưới mốc. mastery_ban cũ thôi dùng, không xoá. Thử txn: ghi điểm 56 ms, em thành bẩn, làm mới 3,6 s, đối chiếu 0 lệch, nhanh = trực tiếp 0 lệch (60 em, 4 tầng). Chờ Thùy cho áp.
 - Thùy: đổi lớp ở Chấm MT ~5 s — chưa đo (cần đăng nhập Browser pane), nghi nhiều lượt gọi tuần tự của chuanBiLuoiMT.
 - ĐÃ ÁP mig 202611101957 (Thùy 'cho áp'). Kiểm 2 kết nối: A giữ khoá như lượt làm mới (advisory + xoá ô chụp + xoá nhật ký của em) ⇒ B ghi điểm em đó 48 ms, KHÔNG bị chặn. npm run schema đã chạy.
+
+## 10/11 ~20:30 — Màn Chấm MT đổi lớp 4–5 s
+- Đo DB 5 phút liên tục (20:18–20:23): mọi lệnh 45–54 ms, không nghẽn ⇒ 4–5 s do màn: mỗi lần mở chờ DỰNG LẠI lưới (chuanBiLuoiMT ~15–25 lượt gọi nối đuôi, kể cả ghi) rồi mới hiện.
+- Sửa ChamMTScreen: buổi đã mở trong phiên ⇒ hiện ngay từ bộ nhớ (CACHE_BUOI); lần đầu đọc đề · lưới · HS SONG SONG, lưới đã có ⇒ hiện luôn; dựng lưới vẫn chạy như cũ nhưng ở NỀN, xong vá lại. Lưới chưa từng dựng ⇒ chờ như trước. tsc sạch. Chưa đo trên app (Thùy thử ở dev bằng Chrome), push theo lệnh Thùy.
