@@ -79709,3 +79709,5 @@ Thùy nêu 4 việc, làm được 3:
 - mig 202611102120 (ĐÃ ÁP, Thùy "Áp đi"): _dy_so_nhom(jsonb) đếm nhóm khác nhau trong danh sách dạng yếu của em (Hình–Học bài = nhóm) + fn_qlcl_nhom_yeu() đọc bảng chụp dang_yeu_hien_tai / dang_yeu_dau_tuan, cùng phạm vi fn_pham_vi_cua_toi. Không tính mastery lúc mở; Thùy 358 ms / 20 ô.
 - Đối chiếu: Toán 9 HS ≥3/2/1 = 52/7/7 (tổng 66 = HS yếu), Toán 8 = 32/7/4 (43). Ảnh đầu tuần chụp trước luật bổ trợ theo nhóm ⇒ tuần này đầu tuần = số nhóm CÓ dạng yếu.
 - WidgetDangYeu prop theoNhom (chỉ Phòng TK: ChatLuongPhong + PhanViecPgd); Sảnh giữ Dạng yếu như cũ. Box HS rộng 5 cột, mỗi cột có đầu tuần. Kiểm trên app (KHTN 7: 3+1+4 = 8 HS yếu).
+
+- Cron tu_luyen_so_cau 05:30 VN: Thùy dán SQL Editor 10/11, đã --ghi-so. Kiểm thật sáng 11/11: tu_luyen_so_cau.tinh_at phải ~05:30.
