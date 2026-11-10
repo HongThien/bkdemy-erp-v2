@@ -20,10 +20,10 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
 import BanDoMoiScreen from '../kho/BanDoMoi'
 import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
-import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import CanhPhong, { SO_GHE, mauHS, type DoVat, type NguoiCanh } from './CanhPhong'
 import ChiTietCapDuoiPopup from './ChiTietCapDuoi'
 import { QuanTriTbm, ChatLuongTbm } from './PhanViecPgd'
+import { ChatLuongTK } from './ChatLuongPhong'
 import BaoCaoTuanTK from './BaoCaoTuanTK'
 import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import HoiVanHanhTa from './HoiVanHanhTa'
@@ -186,10 +186,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
               {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (
                 <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">
-                  {cheDo === 'tbm' ? <ChatLuongTbm onTaoCaNhe={onTaoCaNhe} /> : <>
-                    <WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} />
-                    <BaoCaoCaNhan chiMuc={['tuan']} />
-                  </>}
+                  {/* Thùy 10/11: trưởng khối — Dashboard học tập · Tình hình chung · Hồ sơ học tập · Danh sách bổ trợ (thay màn Duyệt bổ trợ cũ) */}
+                  {cheDo === 'tbm' ? <ChatLuongTbm onTaoCaNhe={onTaoCaNhe} /> : <ChatLuongTK onTaoCaNhe={onTaoCaNhe} />}
                 </div>
               )}
             </div>

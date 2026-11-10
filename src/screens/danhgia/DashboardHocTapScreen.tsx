@@ -1,11 +1,16 @@
 // Dashboard học tập (leaf `db_hoctap`) — DỰNG LẠI 23/10 (Thùy: "hủy toàn bộ chức năng cũ"; luồng duyệt level / mở case cũ
 // bỏ khỏi lá này, hàm + bảng DB cũ giữ nguyên). Bảng giống MT - Khảo sát: Tên · Lớp · mỗi Chuyên đề / Nhóm bài BẢN ĐỒ MỚI
-// 1 cột, % trên ≤10 câu gần nhất trong 2–4 tuần. Bấm ô ⇒ CỬA SỔ NỔI lịch sử ô đó (kéo thả, mở nhiều cái cùng lúc).
+// 1 cột, % = TB ≤5 LẦN gần nhất (1 lần = 1 bài làm; Thùy 10/11 thay 10 câu) trong 2–4 tuần. Bấm ô ⇒ CỬA SỔ NỔI lịch sử ô đó (kéo thả, mở nhiều cái cùng lúc).
 // Kênh song song với mastery (công thức khác có chủ ý — xem mig 202610231524). Mọi con số từ DB (§2.0); client chỉ lọc lớp,
 // sắp cột đang bấm, định dạng.
 import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
 import { supabase } from '../../lib/supabase'
 import { bangDashboardHocTap, lichSuO, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO } from '../../lib/dashboardHocTap'
+import { NHAN_TT } from '../../lib/boTroTk'
+import BoTroPopup from '../phongtk/BoTroPopup'
+
+// Dùng trong PHÒNG TRƯỞNG KHỐI (Thùy 10/11): chỉ các ô (môn, khối) trong phạm vi · cột Bổ trợ · bấm tên ⇒ Hồ sơ học tập.
+export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (hsId: string, mon: string) => void }
 
 type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string }
 
@@ -23,7 +28,7 @@ const thO = 'border-b border-slate-200 px-1.5 py-1 text-center font-semibold'
 const tdO = 'border-b border-slate-100 px-1.5 py-1'
 const ngayVN = (d: string) => d ? d.split('-').reverse().slice(0, 2).join('/') : ''
 
-export default function DashboardHocTapScreen() {
+export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhong } = {}) {
   const [mons, setMons] = useState<string[]>([])
   const [khois, setKhois] = useState<string[]>([])
   const [mon, setMon] = useState(NHO.mon)
@@ -37,6 +42,7 @@ export default function DashboardHocTapScreen() {
   const [loi, setLoi] = useState<string | null>(null)
   const [cua, setCua] = useState<Cua[]>(NHO.cua)
   const [lamMoi, setLamMoi] = useState(0)
+  const [boTro, setBoTro] = useState<HSDB | null>(null)
   const goc = useRef<HTMLDivElement>(null)
   // App có thể bọc trong khung `zoom` (cỡ chữ) ⇒ toạ độ fixed bên trong bị nhân theo; quy toạ độ chuột về đơn vị của khung.
   const tiLe = () => { const el = goc.current; return el && el.offsetWidth ? el.getBoundingClientRect().width / el.offsetWidth : 1 }
@@ -44,6 +50,14 @@ export default function DashboardHocTapScreen() {
 
   // danh sách môn / khối = lớp đang học (chỉ để dựng nút lọc)
   useEffect(() => {
+    if (phong) {   // phòng: chỉ ô trong phạm vi của ghế
+      setMons([...new Set(phong.o.map((x) => x.mon))].sort((a, b) => a.localeCompare(b, 'vi')))
+      const ks = [...new Set(phong.o.filter((x) => x.mon === mon).map((x) => x.khoi))].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
+      setKhois(ks)
+      if (!ks.length && phong.o.length && phong.o[0].mon !== mon) { setMon(phong.o[0].mon); return }
+      if (!khoi || !ks.includes(khoi)) setKhoi(ks[0] ?? null)
+      return
+    }
     let alive = true
     supabase.from('lop').select('mon, khoi').eq('trang_thai', 'dang_hoc').limit(1000).then(({ data }) => {
       if (!alive) return
@@ -55,7 +69,7 @@ export default function DashboardHocTapScreen() {
       if (!khoi || !ks.includes(khoi)) setKhoi(ks.find((k) => k === '6') ?? ks[0] ?? null)
     })
     return () => { alive = false }
-  }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [mon, phong]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Đổi ngữ cảnh (môn/khối/tuần/cấp) ⇒ tải lại bảng; quay lại tab cùng ngữ cảnh ⇒ dùng bảng đã nhớ
   useEffect(() => {
@@ -74,7 +88,7 @@ export default function DashboardHocTapScreen() {
 
   const lops = bang ? [...new Map(bang.hs.map((h) => [h.lop_id, h.lop])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'vi', { numeric: true })) : []
   const hien = (bang?.hs ?? []).filter((h) => !lopId || h.lop_id === lopId)
-  const giaTri = (h: HSDB, cot: string): number | string | null => cot === 'ten' ? h.ten : cot === 'lop' ? h.lop : (h.o[cot]?.p ?? null)
+  const giaTri = (h: HSDB, cot: string): number | string | null => cot === 'ten' ? h.ten : cot === 'lop' ? h.lop : cot === 'ny' ? (h.nhom_yeu ?? null) : (h.o[cot]?.p ?? null)
   const sapXep = [...hien].sort((a, b) => {
     const x = giaTri(a, sap.cot), y = giaTri(b, sap.cot)
     if (x == null && y == null) return a.ten.localeCompare(b.ten, 'vi')
@@ -84,6 +98,8 @@ export default function DashboardHocTapScreen() {
     return (sap.tang ? s : -s) || a.ten.localeCompare(b.ten, 'vi')
   })
   const bamCot = (cot: string) => setSap((s) => s.cot === cot ? { cot, tang: !s.tang } : { cot, tang: cot === 'ten' || cot === 'lop' })
+  // sau khi lưu 1 em ⇒ vá đúng dòng đó tại chỗ (CLAUDE §React: không tải lại cả bảng)
+  const vaBt = (hsId: string, bt: HSDB['bt']) => setBang((b) => b && ({ ...b, hs: b.hs.map((h) => h.id === hsId ? { ...h, bt } : h) }))
   const muiTen = (cot: string) => sap.cot === cot ? (sap.tang ? ' ▲' : ' ▼') : ''
   const th = 'sticky top-0 z-10 cursor-pointer select-none border-b border-slate-200 bg-slate-50 px-2 py-2 text-[11px] font-semibold text-slate-600 hover:bg-slate-100'
 
@@ -108,7 +124,7 @@ export default function DashboardHocTapScreen() {
     <div ref={goc} className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         {mons.map((m) => <button key={m} onClick={() => { setMon(m); setLopId(null) }} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
-        <select value={khoi ?? ''} onChange={(e) => { setKhoi(e.target.value || null); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px]">
+        <select value={khoi ?? ''} onChange={(e) => { setKhoi(e.target.value || null); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-800">
           {khois.length === 0 && <option value="">Chưa có lớp</option>}
           {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
         </select>
@@ -141,6 +157,7 @@ export default function DashboardHocTapScreen() {
                 <thead>
                   <tr>
                     <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 min-w-[170px] text-left`}>Tên{muiTen('ten')}</th>
+                    <th onClick={() => bamCot('ny')} title="Số NHÓM bài đang yếu (mastery 5 lần gần nhất) · số nhỏ = số DẠNG yếu" className={`${th} text-center`}>Nhóm yếu{muiTen('ny')}</th>
                     <th onClick={() => bamCot('lop')} className={`${th} text-left`}>Lớp{muiTen('lop')}</th>
                     {bang.cot.map((c) => (
                       <th key={c.ma} onClick={() => bamCot(c.ma)} title={c.cha ? `${c.cha} › ${c.ten}` : c.ten} className={`${th} w-[92px] min-w-[92px] align-bottom`}>
@@ -148,12 +165,20 @@ export default function DashboardHocTapScreen() {
                         <div className="line-clamp-3 text-center leading-tight">{c.ten}{muiTen(c.ma)}</div>
                       </th>
                     ))}
+                    {phong && <th className={`${th} sticky right-0 z-20 cursor-default text-center`}>Bổ trợ</th>}
                   </tr>
                 </thead>
                 <tbody>
                   {sapXep.map((h) => (
                     <tr key={h.id} className="hover:bg-indigo-50/30">
-                      <td className="sticky left-0 z-[5] border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800">{h.ten}</td>
+                      <td className="sticky left-0 z-[5] border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800">
+                        {phong?.onMoHoSo ? <button onClick={() => phong.onMoHoSo!(h.id, mon)} title="Mở hồ sơ học tập" className="text-left hover:text-indigo-700 hover:underline">{h.ten}</button> : h.ten}
+                        {h.bao_dong && <span title={`Báo động ${h.bao_dong.so} lần trong 30 ngày — gần nhất: ${h.bao_dong.ghi_chu}`} className="ml-1 cursor-help">🚨</span>}
+                      </td>
+                      <td className="border-b border-slate-100 px-2 py-1 text-center tabular-nums">
+                        {h.nhom_yeu == null ? <span className="text-slate-300">—</span> : <span className={`font-bold ${h.nhom_yeu > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>{h.nhom_yeu}</span>}
+                        {h.dang_yeu != null && <span className="ml-1 text-[10.5px] text-slate-400" title="Số dạng yếu">· {h.dang_yeu} dạng</span>}
+                      </td>
                       <td className="border-b border-slate-100 px-2 py-1 text-slate-600">{h.lop}</td>
                       {bang.cot.map((c) => {
                         const o = h.o[c.ma]
@@ -161,7 +186,7 @@ export default function DashboardHocTapScreen() {
                         return (
                           <td key={c.ma} className="border-b border-slate-100 px-1 py-0.5 text-center">
                             {o == null ? <span className="text-slate-300">—</span> : (
-                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`${o.n} câu trong ${soTuan} tuần${o.d == null ? '' : ` · ${o.d > 0 ? '+' : ''}${o.d} điểm % so với ${o.dk ? 'đầu kỳ' : 'sau lượt đầu (chưa đo trước kỳ)'}`} · bấm xem lịch sử`}
+                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`${o.n} lần trong ${soTuan} tuần${o.d == null ? '' : ` · ${o.d > 0 ? '+' : ''}${o.d} điểm % so với ${o.dk ? 'đầu kỳ' : 'sau lượt đầu (chưa đo trước kỳ)'}`} · bấm xem lịch sử`}
                                 className={`w-full rounded px-1 py-0.5 font-semibold tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(o.p)} ${mo ? 'ring-2 ring-indigo-500' : ''}`}>
                                 {o.p}%<XuHuong d={o.d} dk={o.dk} />
                               </button>
@@ -169,17 +194,25 @@ export default function DashboardHocTapScreen() {
                           </td>
                         )
                       })}
+                      {phong && (
+                        <td className="sticky right-0 z-[5] border-b border-slate-100 bg-white px-1.5 py-0.5 text-center">
+                          {!h.bt ? <button onClick={() => setBoTro(h)} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[11.5px] font-bold text-white shadow-sm hover:bg-indigo-700">Bổ trợ</button>
+                            : <button onClick={() => h.bt!.tt !== 'dang_bo_tro' && setBoTro(h)} className={`whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-semibold ${NHAN_TT[h.bt.tt].cls}`}>{NHAN_TT[h.bt.tt].t}</button>}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              % = trên tối đa 10 câu gần nhất trong {soTuan} tuần (mỗi câu nặng như nhau; câu có điểm lẻ tính điểm đạt / điểm tối đa). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
-              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng (chủ đề Hình · nhóm mô hình · mô hình); câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (10 câu gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với sau lượt đầu. Kênh quan sát song song — khác công thức mastery.
+              % = trung bình 5 LẦN gần nhất trong {soTuan} tuần (1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
+              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng (chủ đề Hình · nhóm mô hình · mô hình); câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (5 lần gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với lần đầu trong kỳ. Nhóm yếu = số nhóm bài đang yếu theo mastery (5 lần gần nhất, mọi thời điểm). Kênh quan sát song song — khác công thức mastery.
             </p>
           </>
         )}
+      {boTro && <BoTroPopup hs={{ id: boTro.id, ten: boTro.ten, lop: boTro.lop }} mon={mon} onDong={() => setBoTro(null)}
+        onXong={(kq) => { vaBt(boTro.id, { id: kq.id, tt: kq.tt }); setBoTro(null) }} />}
       {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} />)}
     </div>
   )
@@ -234,9 +267,9 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                       <th className={thO + ' text-left'}>Ngày</th>
                       <th className={thO + ' text-left'}>Hoạt động</th>
                       <th className={thO}>Đúng</th>
-                      <th className={thO}>% lượt</th>
+                      <th className={thO}>% lần</th>
                       <th className={thO} title="% của lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ)">Tăng / giảm</th>
-                      <th className={thO} title="Tích luỹ trên tối đa 10 câu gần nhất">10 câu gần nhất</th>
+                      <th className={thO} title="Hiện tại tính trên bao nhiêu lần gần nhất (tối đa 5)">Số lần tính</th>
                       <th className={thO}>Hiện tại</th>
                     </tr>
                   </thead>
@@ -245,7 +278,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                       <td className={tdO + ' font-mono'}>&lt; {ngayVN(d.tu)}</td>
                       <td className={tdO + ' font-semibold'}>Đầu kỳ</td>
                       <td className={tdO} /><td className={tdO} /><td className={tdO} />
-                      <td className={tdO + ' text-center'}>{d.dau_ky ? `${d.dau_ky.n} câu` : ''}</td>
+                      <td className={tdO + ' text-center'}>{d.dau_ky ? `${d.dau_ky.n} lần` : ''}</td>
                       <td className={tdO + ' text-center'}>{d.dau_ky ? <span className={`rounded px-1.5 font-semibold ${mauPct(d.dau_ky.p)}`}>{d.dau_ky.p}%</span> : <span className="text-slate-400">chưa đo</span>}</td>
                     </tr>
                     {d.luot.map((l, i) => (
@@ -259,7 +292,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                             title={l.delta == null ? '' : `Lượt này ${l.p_luot}% so với ${l.p_truoc}% ${i === 0 ? 'đầu kỳ' : 'tích luỹ trước đó'}`}>
                             {l.delta == null ? '' : l.delta > 0 ? `▲${l.delta}` : l.delta < 0 ? `▼${-l.delta}` : '='}
                           </td>
-                          <td className={tdO + ' text-center tabular-nums'} title={l.tl_tong > 10 ? `Cộng dồn trong kỳ: ${so(l.tl_dung)}/${l.tl_tong}` : ''}>{so(l.dung10)}/{l.tong10}</td>
+                          <td className={tdO + ' text-center tabular-nums'}>{l.so_lan5} lần</td>
                           <td className={tdO + ' text-center'}><span className={`rounded px-1.5 font-semibold tabular-nums ${mauPct(l.p)}`}>{l.p}%</span></td>
                         </tr>
                         {moLuot === i && (
@@ -280,7 +313,7 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                   </tbody>
                 </table>
               )}
-              <p className="mt-2 text-[11px] text-slate-400">Tăng / giảm = % lượt so với % tích luỹ ngay trước lượt (lượt đầu: so với đầu kỳ). Hiện tại = trên tối đa 10 câu gần nhất. Bấm dòng để xem từng câu.</p>
+              <p className="mt-2 text-[11px] text-slate-400">Tăng / giảm = % lần này so với "hiện tại" ngay trước (lần đầu: so với đầu kỳ). Hiện tại = trung bình tối đa 5 lần gần nhất. Bấm dòng để xem từng câu.</p>
             </>
           )}
       </div>

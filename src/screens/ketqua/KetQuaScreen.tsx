@@ -1,7 +1,7 @@
 // KẾT QUẢ HỌC TẬP — mastery (HS × dạng) SUY ĐỘNG (không lưu). 3 tầng view qua tab:
 //   #1 Từng học sinh (QUAN TRỌNG NHẤT — port tab "Dạng bài" V1) · #2 Lớp/Khối (rollup) · #3 Theo dạng (pivot).
 // Hiện xây #1; #2/#3 placeholder. Engine src/gami/mastery.js + service src/lib/mastery.ts đã sẵn.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
 import { listHSDangHoc } from '../../lib/tuyensinh'
@@ -59,9 +59,14 @@ export default function KetQuaScreen() {
 }
 
 // ── #1 TỪNG HỌC SINH: chọn HS (ô tìm / cột lớp trái) → 3 sub-tab Tổng quan · Dạng bài · Lịch sử hoạt động ──
-function PerHocSinh() {
-  const [mon, setMon] = useState('Toán')
-  const [hsId, setHsId] = useState<string | null>(null)
+function PerHocSinh() { return <HoSoHocSinh /> }
+
+// Hồ sơ 1 học sinh — dùng chung cho tab "Từng học sinh" và tab Hồ sơ học tập ở Phòng trưởng khối (Thùy 10/11).
+// monDau/hsDau: mở sẵn 1 em (cha đổi em ⇒ đổi `key` để mount lại). monCoDinh: ẩn nút chọn môn khác.
+export function HoSoHocSinh({ monDau = 'Toán', hsDau = null, monCoDinh = false }: { monDau?: string; hsDau?: string | null; monCoDinh?: boolean } = {}) {
+  const [mon, setMon] = useState(monDau)
+  const [hsId, setHsId] = useState<string | null>(hsDau)
+  const monTruoc = useRef(mon)   // chỉ xoá em đang chọn khi NGƯỜI DÙNG đổi môn (không phải lúc mount / StrictMode chạy lại)
   const [lopId, setLopId] = useState<string | null>(null) // lớp hiển thị ở cột trái
   const [hsOpts, setHsOpts] = useState<Opt[]>([])
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
@@ -70,10 +75,12 @@ function PerHocSinh() {
 
   // Đổi môn: reset + nạp HS + lớp của môn.
   useEffect(() => {
-    setHsId(null); setLopId(null)
+    if (monTruoc.current !== mon) { monTruoc.current = mon; setHsId(null); setLopId(null) }
     listHSDangHoc(mon).then((hs) => setHsOpts(hs.map((h) => ({ id: h.id, label: h.ho_ten, sub: [h.ma_hs, h.khoi && `K${h.khoi}`].filter(Boolean).join(' · ') || undefined })))).catch(() => setHsOpts([]))
     listLop().then((ls) => setLopOpts(ls.filter((l: any) => l.mon === mon).map((l: any) => ({ id: l.id, label: l.ten_lop, sub: l.khoi ? `K${l.khoi}` : undefined })))).catch(() => setLopOpts([]))
   }, [mon])
+
+  useEffect(() => { if (hsDau) pickHS(hsDau) }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Lớp đổi → nạp roster cột trái (để click chuyển HS khỏi phải gõ lại).
   useEffect(() => {
@@ -100,7 +107,7 @@ function PerHocSinh() {
       {/* Bộ lọc: môn + tìm HS */}
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {(monCoDinh ? [mon] : MON_CO_KHO).map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-72"><SearchSelect value={hsId} onChange={pickHS} options={hsOpts} placeholder="Tìm học sinh…" avatars /></div>
       </div>
 

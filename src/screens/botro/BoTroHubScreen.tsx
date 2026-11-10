@@ -6,7 +6,6 @@ import { useState } from 'react'
 import BoTroDuoiScreen from './BoTroDuoiScreen'
 import BoTroScreen from './BoTroScreen'
 import XepLichBoTroYeuScreen from '../danhgia/XepLichBoTroYeuScreen'
-import DuyetBoTroYeuScreen from '../danhgia/DuyetBoTroYeuScreen'
 import NoiDungBoTroYeuScreen from '../danhgia/NoiDungBoTroYeuScreen'
 import BoTroHinhScreen from './BoTroHinhScreen'
 import BoTroOnThiScreen from './BoTroOnThiScreen'
@@ -32,7 +31,9 @@ const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
 // Thùy 24/09: CẢ folder "Bổ trợ yếu" ở Quản lý chất lượng (Duyệt · Nội dung · Trạng thái ca · Đánh giá ca) chuyển vào đây, cùng Xếp bổ trợ —
 // thanh toggle theo đúng thứ tự luồng: Duyệt → Nội dung → Xếp → Trạng thái ca → Đánh giá ca.
 export type YeuSub = 'duyet' | 'noidung' | 'xep' | 'trangthai' | 'danhgia'
-const YEU_SUB: [YeuSub, string][] = [['duyet', 'Duyệt bổ trợ'], ['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca']] // 17/10: tab 'Hình yếu' (theo mô hình) ẨN — thay bằng tab Hình (BoTroHinhScreen); code + DB cũ giữ nguyên
+// Thùy 10/11: "Duyệt bổ trợ" (Chốt tuần · Điểm thấp · Báo động · Đang theo dõi) THAY HẲN bằng luồng trưởng khối đề xuất ở Dashboard học tập
+// → trưởng bộ môn duyệt (Phòng làm việc › Chất lượng › Danh sách bổ trợ). Màn cũ ẨN, code + bảng DB giữ nguyên (DuyetBoTroYeuScreen.tsx).
+const YEU_SUB: [YeuSub, string][] = [['noidung', 'Nội dung'], ['xep', 'Xếp bổ trợ'], ['trangthai', 'Trạng thái ca'], ['danhgia', 'Đánh giá ca']] // 17/10: tab 'Hình yếu' (theo mô hình) ẨN — thay bằng tab Hình (BoTroHinhScreen); code + DB cũ giữ nguyên
 const NHO: { tab: BoTroTab; yeu: YeuSub } = { tab: 'lichphong', yeu: 'xep' }
 let capNhat: ((t: BoTroTab) => void) | null = null
 // Nhảy tới đúng tab từ nơi khác (Việc của tôi, Trợ lý…): gọi TRƯỚC hoặc SAU setStaffLeaf('botro') đều được.
@@ -50,7 +51,17 @@ function YeuTab() {
           ))}
         </div>
       </div>
-      {sub === 'duyet' ? <DuyetBoTroYeuScreen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : <XepLichBoTroYeuScreen />}
+      {sub === 'duyet' ? <DuyetDaChuyen /> : sub === 'noidung' ? <NoiDungBoTroYeuScreen /> : sub === 'trangthai' ? <TrangThaiCaBoTroScreen /> : sub === 'danhgia' ? <DanhGiaCaBoTroScreen /> : <XepLichBoTroYeuScreen />}
+    </div>
+  )
+}
+
+function DuyetDaChuyen() {
+  return (
+    <div className="m-8 rounded-2xl border border-slate-200 bg-white p-6 text-[14px] text-slate-600 shadow-sm">
+      <div className="mb-1 text-[16px] font-bold text-slate-800">Duyệt bổ trợ đã chuyển</div>
+      Trưởng khối chọn em cần bổ trợ ở <b>Phòng làm việc › Chất lượng › Dashboard học tập</b> (nút Bổ trợ), gửi lên ở <b>Danh sách bổ trợ</b>;
+      trưởng bộ môn duyệt ở <b>Phòng làm việc › Chất lượng › Danh sách bổ trợ</b>. Duyệt xong case hiện ở các tab Nội dung · Xếp bổ trợ như cũ.
     </div>
   )
 }

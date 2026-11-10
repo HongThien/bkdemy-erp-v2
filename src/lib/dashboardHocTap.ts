@@ -1,4 +1,4 @@
-// DASHBOARD HỌC TẬP (Thùy 23/10) — kênh quan sát song song với mastery: % trên ≤10 câu gần nhất trong 2–4 tuần, theo
+// DASHBOARD HỌC TẬP (Thùy 23/10) — kênh quan sát song song với mastery: % = TB ≤5 LẦN gần nhất (Thùy 10/11, thay 10 câu) trong 2–4 tuần, theo
 // Chuyên đề / Nhóm bài bản đồ mới. Mọi con số tính ở Postgres (mig 202610231524: fn_dbht_bang, fn_dbht_o_lich_su) — §2.0.
 import { supabase } from './supabase'
 
@@ -7,14 +7,20 @@ export type CapDB = 'chu_de' | 'chuyen_de' | 'nhom'
 export type CotDB = { ma: string; ten: string; cha: string | null }
 // d = % hiện tại − mốc (đầu kỳ; dk=false ⇒ mốc là % sau lượt đầu trong cửa sổ); null = chưa đủ để nói xu hướng
 export type ODB = { p: number; n: number; d: number | null; dk: boolean }
-export type HSDB = { id: string; ten: string; lop_id: string; lop: string; o: Record<string, ODB> }
+// 10/11: nhom_yeu (mastery theo lần) là chính · dang_yeu (bảng chụp) đi kèm · bao_dong 30 ngày · bt = trạng thái bổ trợ (đề xuất đang sống / case mở)
+export type HSDB = {
+  id: string; ten: string; lop_id: string; lop: string; o: Record<string, ODB>
+  nhom_yeu?: number | null; dang_yeu?: number | null
+  bao_dong?: { so: number; at: string; ghi_chu: string } | null
+  bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' } | null
+}
 export type BangDB = { tu: string; cot: CotDB[]; hs: HSDB[] }
 
 export type CauDB = { ma_cau: string | null; dang: string; nhom: string; g: number }
 export type LuotDB = {
-  ngay: string; kenh: string; dung: number; tong: number; tl_dung: number; tl_tong: number
-  // p = % tích luỹ (≤10 câu) sau lượt · p_luot = % riêng lượt · delta = p_luot − p_truoc (% tích luỹ ngay trước lượt; lượt đầu = đầu kỳ)
-  dung10: number; tong10: number; p: number; p_luot: number; p_truoc: number | null; delta: number | null; cau: CauDB[]
+  ngay: string; kenh: string; dung: number; tong: number
+  // 1 lượt = 1 LẦN (bài làm). p = TB ≤5 lần gần nhất tới lần này · p_luot = % lần này · delta = p_luot − p_truoc (p ngay trước; lần đầu = đầu kỳ)
+  so_lan5: number; p: number; p_luot: number; p_truoc: number | null; delta: number | null; cau: CauDB[]
 }
 export type LichSuO = { tu: string; dau_ky: { p: number; n: number } | null; luot: LuotDB[] }
 

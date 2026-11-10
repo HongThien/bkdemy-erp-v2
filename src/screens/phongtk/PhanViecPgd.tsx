@@ -7,8 +7,9 @@ import BaoCaoCaNhan, { type OChon } from '../troly/BaoCaoCaNhan'
 import WidgetDangYeu, { khoaO } from '../qlcl/WidgetDangYeu'
 import { tongQuanDangYeu, type OTongQuan } from '../../lib/qlcl'
 import { monTbm } from '../../lib/phongTk'
+import { DanhSachBoTro } from './ChatLuongPhong'
 
-const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null } = { cacO: null, qt: null, cl: null }
+const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null; clMuc: 'chung' | 'bo_tro' } = { cacO: null, qt: null, cl: null, clMuc: 'chung' }
 const tenO = (o: OChon) => `${o.mon === 'Toán' ? '' : `${o.mon} `}Khối ${o.khoi}`
 
 // Ô của PHÒNG: ô trong phạm vi (fn_qlcl_tong_quan) ∩ môn của phòng (fn_phong_mon_tbm; null = mọi môn) — Thùy 03/11: phòng Trang chỉ Toán.
@@ -48,8 +49,25 @@ export function QuanTriTbm() {
   )
 }
 
+// Thùy 10/11: thêm mục "Danh sách bổ trợ" — trưởng khối gửi lên, trưởng bộ môn duyệt (= mở case) / trả lại.
 export function ChatLuongTbm({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const cacO = useCacO()
+  const [muc, setMucS] = useState(NHO.clMuc)
+  const setMuc = (m: 'chung' | 'bo_tro') => { NHO.clMuc = m; setMucS(m) }
+  const thanh = (on: boolean) => `rounded-lg px-4 py-1.5 text-[13px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
+  return (
+    <div className="space-y-4">
+      <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
+        <button onClick={() => setMuc('chung')} className={thanh(muc === 'chung')}>Tình hình chung</button>
+        <button onClick={() => setMuc('bo_tro')} className={thanh(muc === 'bo_tro')}>Danh sách bổ trợ</button>
+      </div>
+      {muc === 'bo_tro' ? (cacO ? <DanhSachBoTro che="tbm" cacO={cacO} /> : <p className="text-[13px] text-slate-400">Đang tải các khối…</p>)
+        : <ChatLuongTbmChung cacO={cacO} onTaoCaNhe={onTaoCaNhe} />}
+    </div>
+  )
+}
+
+function ChatLuongTbmChung({ cacO, onTaoCaNhe }: { cacO: OTongQuan[] | null; onTaoCaNhe: () => void }) {
   const [chon, setChonS] = useState<OChon | null>(NHO.cl)
   const setChon = (o: OChon | null) => { NHO.cl = o; setChonS(o) }
   if (!cacO) return <p className="text-[13px] text-slate-400">Đang tải các khối…</p>

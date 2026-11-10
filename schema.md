@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-507 bảng · 39 view · 0 enum · 305 trigger · 1696 function
+512 bảng · 39 view · 0 enum · 336 trigger · 1717 function
 
 ## _app_secrets
 
@@ -629,6 +629,43 @@
 | ly_do | text[] |  | '{}'::text[] |  |  |
 | kenh | text[] |  | '{}'::text[] |  |  |
 | uu_tien | integer |  | 0 |  |  |
+| du_lieu | jsonb |  | '{}'::jsonb |  |  |
+
+## bo_tro_de_xuat
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| mon | text |  |  |  |  |
+| khoi | text |  |  |  |  |
+| lop_id | uuid | Y |  | FK→lop.id |  |
+| nhom | jsonb |  | '[]'::jsonb |  |  |
+| muc | smallint |  | 2 |  |  |
+| uu_tien | smallint |  | 2 |  |  |
+| ghi_chu | text |  | ''::text |  |  |
+| trang_thai | text |  | 'nhap'::text |  | `nhap` · `cho_duyet` · `da_duyet` · `tra_lai` · `huy` |
+| ly_do_tra | text | Y |  |  |  |
+| case_id | uuid | Y |  | FK→bo_tro_yeu.id |  |
+| so_dang | integer | Y |  |  |  |
+| tao_boi | uuid | Y |  | FK→nhan_su.id |  |
+| tao_at | timestamp with time zone |  | now() |  |  |
+| gui_boi | uuid | Y |  | FK→nhan_su.id |  |
+| gui_at | timestamp with time zone | Y |  |  |  |
+| duyet_boi | uuid | Y |  | FK→nhan_su.id |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## bo_tro_de_xuat_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('bo_tro_de_xuat_log_id_seq'::regclass) | PK |  |
+| de_xuat_id | uuid |  |  | FK→bo_tro_de_xuat.id |  |
+| actor | uuid | Y |  | FK→nhan_su.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+| tt_cu | text | Y |  |  |  |
+| tt_moi | text |  |  |  |  |
 | du_lieu | jsonb |  | '{}'::jsonb |  |  |
 
 ## bo_tro_duoi
@@ -5007,6 +5044,33 @@ END |  |  |
 | muc_do_de_toi_da | smallint |  | 2 |  |  |
 | tran_cau_ngay | integer |  | 20 |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+
+## mastery_ban
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| ban_at | timestamp with time zone |  | clock_timestamp() |  |  |
+
+## mastery_luu_san
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| btvn | boolean |  |  | PK |  |
+| cap | text |  |  | PK | `dang` · `nhom` |
+| nut | text |  |  | PK |  |
+| score | numeric |  |  |  |  |
+| n | integer |  |  |  |  |
+| muc | text |  |  |  |  |
+| tin | text |  |  |  |  |
+
+## mastery_luu_san_tinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
 
 ## may_man_cau_hinh
 
@@ -9502,11 +9566,17 @@ WITH luot AS (
 | bai_lam | trg_btyeu_retest_lam | AFTER | UPDATE | _trg_btyeu_retest_lam |
 | bai_lam | trg_chuoi_moc | AFTER | UPDATE | _trg_chuoi_moc |
 | bai_lam | trg_htd_test_nop | AFTER | UPDATE | trg_htd_test_nop |
+| bai_lam | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| bai_lam | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | bai_lam | trg_thu_thach_nop | AFTER | UPDATE | trg_thu_thach_nop |
 | bai_lam_cau | trg_bai_lam_cau_thi | BEFORE | INSERT/UPDATE | _trg_bai_lam_cau_thi |
 | bai_lam_cau | trg_btyeu_retest_cau | AFTER | INSERT/UPDATE | _trg_btyeu_retest_cau |
+| bai_lam_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| bai_lam_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| bai_lam_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | bai_test | trg_ta_retest_push_badge | AFTER | INSERT | _trg_ta_retest_push |
 | bai_test_cau | tg_bt_dang_ph_auto_dang1 | AFTER | INSERT | fn_bt_tu_phat_hanh_dang1 |
+| bai_test_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | bai_test_cau_phat_hanh | trg_btc_phat_hanh_log | AFTER | INSERT/UPDATE | _trg_btc_phat_hanh_log |
 | ban_be_loi_moi | ban_be_loi_moi_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | bao_cao_chuyen_mon_tuan | bao_cao_chuyen_mon_tuan_log_trg | AFTER | INSERT/UPDATE | _bcmt_ghi_log |
@@ -9522,10 +9592,14 @@ WITH luot AS (
 | bc_ky_nx_muc | trg_bc_ky_nx_muc_kiem | BEFORE | INSERT/UPDATE | _bc_ky_dm_kiem |
 | bc_ky_nx_muc | trg_bc_ky_nx_muc_log | AFTER | INSERT/UPDATE | _bc_ky_dm_ghi_log |
 | bc_ky_so_lieu | trg_bc_ky_so_lieu_log | BEFORE | DELETE/UPDATE | _bc_ky_so_lieu_log |
+| bo_tro_de_xuat | trg_bo_tro_de_xuat_log | AFTER | INSERT/UPDATE | _btk_ghi_log |
 | bo_tro_hinh | trg_bthinh_log | AFTER | INSERT/UPDATE | _trg_bthinh_log |
 | bo_tro_hinh | trg_bthinh_suc_chua | BEFORE | INSERT/UPDATE | _trg_bthinh_suc_chua |
 | bo_tro_yeu | trg_btyeu_ban_do_luc_mo | BEFORE | INSERT | _btyeu_ban_do_luc_mo |
 | bo_tro_yeu | trg_btyeu_suc_chua | BEFORE | INSERT/UPDATE | _trg_btyeu_suc_chua |
+| bt_grades | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| bt_grades | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| bt_grades | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | btvn_ket_qua | trg_btvn_bu_exp_buoi_me | AFTER | INSERT/UPDATE | _trg_btvn_bu_exp_buoi_me |
 | btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | buoi_hoc | trg_btnhe_dong_case | AFTER | UPDATE | _trg_btnhe_dong_case |
@@ -9535,6 +9609,7 @@ WITH luot AS (
 | buoi_hoc | trg_buoi_hoc_huy_exp | AFTER | UPDATE | _trg_buoi_hoc_huy_exp |
 | buoi_hoc | trg_buoi_hoc_online_log | AFTER | UPDATE | _trg_buoi_hoc_online_log |
 | buoi_hoc | trg_buoi_hoc_phase_log | AFTER | UPDATE | _trg_buoi_hoc_phase_log |
+| buoi_hoc | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | buoi_hoc | trg_ta_buoi_hoc_push_badge | AFTER | INSERT/UPDATE | _trg_ta_buoi_hoc_push |
 | buoi_hoc_hs | trg_bthinh_mot_buoi_cho_hoc | BEFORE | INSERT | _trg_bthinh_mot_buoi_cho_hoc |
 | buoi_hoc_hs | trg_btyeu_mot_buoi_cho_hoc | BEFORE | INSERT | _trg_btyeu_mot_buoi_cho_hoc |
@@ -9571,7 +9646,12 @@ WITH luot AS (
 | dai_bdm_dang_bai | trg_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_dang_bai | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| dai_bdm_dang_bai | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | dai_bdm_de_xuat | trg_dai_bdm_de_xuat_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
+| dai_bdm_de_xuat | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| dai_bdm_de_xuat | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| dai_bdm_de_xuat | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | dai_bdm_doi_ung | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_doi_ung | trg_bdm_doi_ung_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_doi_ung_cum | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
@@ -9580,6 +9660,9 @@ WITH luot AS (
 | dai_bdm_gan_cau | trg_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_gan_cau | trg_dai_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | dai_bdm_gan_cau | trg_dai_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| dai_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| dai_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| dai_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | dai_bdm_kho_ds | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
@@ -9617,22 +9700,33 @@ WITH luot AS (
 | gami_exp_ledger | trg_gami_exp_ledger_buoi_huy | AFTER | INSERT | _trg_gami_exp_ledger_buoi_huy |
 | gami_grades | tg_gami_grades_mt_diem | BEFORE | INSERT/UPDATE | _tg_gami_grades_mt_diem |
 | gami_grades | tg_gami_grades_mt_tong | AFTER | INSERT/DELETE/UPDATE | _tg_gami_grades_mt_tong |
+| gami_grades | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| gami_grades | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| gami_grades | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| gami_session_problems | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | gay_de_xuat | trg_log_gay_de_xuat | AFTER | INSERT/UPDATE | log_gay_de_xuat |
 | gay_ledger | hom_thu_gay_trg | AFTER | INSERT/UPDATE | _hom_thu_tg_gay |
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | he_thong_cong_tac | trg_he_thong_cong_tac_log | AFTER | INSERT/UPDATE | _he_thong_cong_tac_ghi_log |
+| he_thong_cong_tac | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hgt_ban_do | trg_hgt_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | hgt_ban_do | trg_hgt_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
 | hgt_bdm_cau_thieu_dang | trg_hgt_bdm_cau_thieu_dang_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_cau_thieu_dang | trg_hgt_bdm_cau_thieu_dang_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_de_xuat | trg_hgt_bdm_de_xuat_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hgt_bdm_de_xuat | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| hgt_bdm_de_xuat | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| hgt_bdm_de_xuat | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hgt_bdm_gan_cau | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_gan_cau | trg_hgt_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| hgt_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| hgt_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| hgt_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hgt_bdm_kho_ds | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hgt_bdm_kho_ds | trg_hgt_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
@@ -9689,6 +9783,7 @@ WITH luot AS (
 | hoat_dong_phong | trg_log_hoat_dong_phong | AFTER | INSERT/UPDATE | log_hoat_dong_phong |
 | hoc_sinh | trg_hs_nghi_tu_roi_lop | AFTER | UPDATE | hs_nghi_tu_roi_lop |
 | hoc_sinh | trg_log_he_so_hoc_phi | AFTER | UPDATE | log_he_so_hoc_phi |
+| hoc_sinh | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
 | hs_giao_dien | hs_giao_dien_log_trg | AFTER | INSERT/UPDATE | _hs_giao_dien_ghi_log |
 | hs_moi_buoc | hs_moi_buoc_touch_trg | BEFORE | UPDATE | _hs_moi_buoc_touch |
@@ -9864,6 +9959,11 @@ WITH luot AS (
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_bthinh_ket_thuc(p_case uuid, p_ns uuid, p_ket_qua text, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_bthinh_tai_lieu_json(p_buoi uuid)` → jsonb
+- `_btk_ghi_log()` → trigger
+- `_btk_la_tbm(p_mon text, p_khoi text)` → boolean
+- `_btk_la_tk(p_mon text, p_khoi text)` → boolean
+- `_btk_lop_hs(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, khoi text)
+- `_btk_nhom_hs(p_hs uuid[], p_mon text)` → TABLE(hoc_sinh_id uuid, ma text, ten text, cha text, score numeric, n bigint, muc text, tin text)
 - `_btnhe_duoc_tao(p_mon text, p_khoi text)` → boolean
 - `_btnhe_gio_lop(p_lop uuid, p_ngay date)` → TABLE(gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text)
 - `_btvn_app_tu_dong()` → jsonb
@@ -10036,8 +10136,8 @@ WITH luot AS (
 - `_kho_form_tn_cua(p_cautbl text)` → text
 - `_kho_form_tn_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_la_dang_cho(p_ma_dang text)` → boolean
-- `_kho_loc_duyet_sql(p_loc text)` → text
 - `_kho_loc_duyet_sql(p_loc text, p_tbl text)` → text
+- `_kho_loc_duyet_sql(p_loc text)` → text
 - `_kho_lt_dang_tbl(p_kho text)` → text
 - `_kho_lt_tbl(p_mon text, p_nhanh text DEFAULT NULL::text)` → text
 - `_kho_muc_do_dang(p_mon text, p_ma_dang text)` → smallint
@@ -10075,15 +10175,21 @@ WITH luot AS (
 - `_luot_hoc_that_nguong()` → jsonb
 - `_luot_tinh(p_hs uuid[], p_tu timestamp with time zone, p_den timestamp with time zone)` → TABLE(bai_lam_id uuid, hoc_sinh_id uuid, mon text, nop_at timestamp with time zone, so_cau integer, dung integer, giay_tb numeric, tinh boolean, ly_do text)
 - `_luyen_con_cho_dang(p_hs uuid, p_mon text, p_ma_dang text)` → integer
+- `_mastery_ban_tg()` → trigger
 - `_mastery_bdm_bat()` → boolean
 - `_mastery_cells_cau(p_bdm boolean, p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `_mastery_cells_core(p_bdm boolean, p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `_mastery_cells_hinh_tai(p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
+- `_mastery_danh_dau_ban(p_hs uuid[])` → void
+- `_mastery_hs_lam_cau(p_ma_cau text[])` → uuid[]
+- `_mastery_hs_sach(p_hs uuid[])` → uuid[]
 - `_mastery_lan_cap(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
+- `_mastery_lan_cap_nhanh(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
 - `_mastery_lan_core(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_cap text, p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, nut text, score numeric, n bigint, muc text, tin text)
 - `_mastery_lan_do(p_bdm boolean, p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text)
 - `_mastery_lan_do_quy(p_bdm boolean, p_khtn_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text)
 - `_mastery_luot_do_quy(p_bdm boolean, p_khtn_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text, luot text, cap1 boolean)
+- `_mastery_luu_san_doc(p_hs uuid[], p_btvn boolean, p_caps text[])` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
 - `_mastery_theo_lan_bat()` → boolean
 - `_mcq_kiem_kho(p_kho text)` → void
 - `_mon_khoi_hop_le(p_mon text, p_khoi text)` → boolean
@@ -10259,8 +10365,8 @@ WITH luot AS (
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
-- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
@@ -10521,6 +10627,13 @@ WITH luot AS (
 - `fn_bthinh_lich_su(p_case uuid)` → jsonb
 - `fn_bthinh_mo(p_hs uuid, p_muc integer, p_uu_tien integer, p_ly_do text, p_lop uuid DEFAULT NULL::uuid)` → uuid
 - `fn_bthinh_viec_cua_toi()` → jsonb
+- `fn_btk_ds(p_mon text, p_khoi text DEFAULT NULL::text, p_so_ngay integer DEFAULT 14)` → jsonb
+- `fn_btk_duyet(p_id uuid)` → jsonb
+- `fn_btk_goi_y(p_hs uuid, p_mon text)` → jsonb
+- `fn_btk_gui(p_mon text, p_khoi text)` → integer
+- `fn_btk_huy(p_id uuid)` → void
+- `fn_btk_luu(p_id uuid, p_hs uuid, p_mon text, p_nhom text[], p_muc integer, p_uu_tien integer, p_ghi_chu text)` → uuid
+- `fn_btk_tra_lai(p_id uuid, p_ly_do text)` → void
 - `fn_btnhe_ds(p_tu date, p_den date)` → jsonb
 - `fn_btnhe_huy(p_ca uuid, p_ly_do text)` → integer
 - `fn_btnhe_lop_cua_toi(p_ngay date)` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, ta_id uuid, ta_ten text)
@@ -11012,6 +11125,9 @@ WITH luot AS (
 - `fn_mastery_cells_bdm(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_hinh(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, hinh_baitoan_id uuid, score numeric, n bigint, muc text, tin text)
 - `fn_mastery_cells_moi(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, score numeric, n bigint, muc text, tin text)
+- `fn_mastery_danh_dau_tat_ca()` → integer
+- `fn_mastery_doi_chieu(p_so integer DEFAULT 20)` → jsonb
+- `fn_mastery_lam_moi(p_giay integer DEFAULT 20)` → integer
 - `fn_mastery_lan_do_moi(p_hs uuid, p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(ma_dang text, value numeric, t timestamp with time zone, src text)
 - `fn_mastery_nhom(p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_window integer DEFAULT 5, p_tin_cao integer DEFAULT 5, p_tin_tb integer DEFAULT 3, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, nhom_id text, score numeric, n bigint, muc text, tin text)
 - `fn_matrix_lop(p_lop uuid, p_phase text, p_ym text DEFAULT NULL::text)` → TABLE(hoc_sinh_id uuid, buoi_hoc_id uuid, pct integer, status text)
@@ -11490,9 +11606,9 @@ WITH luot AS (
 - `tsa_cum_hau_due(goc text)` → TABLE(ma_cum text, do_sau integer)
 - `tsa_dang_hau_due(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `tu_luyen_chu_de_ds_dang(p_mon text)` → jsonb
+- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_chi_cau_moi boolean DEFAULT false)` → jsonb
 - `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text)` → jsonb
-- `tu_luyen_chu_de_sinh(p_mon text, p_ma_dang text, p_loai text DEFAULT 'tu_luyen'::text)` → jsonb
 - `tu_luyen_dien_sinh(p_mon text DEFAULT 'Toán'::text, p_n integer DEFAULT 3)` → jsonb
 - `tu_luyen_sinh(p_mon text, p_dangs jsonb, p_nhanh text DEFAULT NULL::text)` → jsonb
 
@@ -11534,6 +11650,9 @@ WITH luot AS (
 | bc_ky_nx_muc | bc_ky_nx_muc_check | `CHECK (((goi_y IS NULL) OR (cha IS NOT NULL)))` |
 | bc_ky_nx_muc | bc_ky_nx_muc_check1 | `CHECK (((goi_y IS NULL) OR ((nguong_tot IS NOT NULL) AND (nguong_chua_tot IS NOT NULL))))` |
 | bc_ky_nx_muc | bc_ky_nx_muc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
+| bo_tro_de_xuat | bo_tro_de_xuat_muc_check | `CHECK ((muc = ANY (ARRAY[1, 2, 3])))` |
+| bo_tro_de_xuat | bo_tro_de_xuat_nhom_ck | `CHECK (((jsonb_typeof(nhom) = 'array'::text) AND (jsonb_array_length(nhom) >= 1)))` |
+| bo_tro_de_xuat | bo_tro_de_xuat_uu_tien_check | `CHECK ((uu_tien = ANY (ARRAY[1, 2, 3])))` |
 | bo_tro_hinh | bo_tro_hinh_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
 | bo_tro_hinh | bo_tro_hinh_ly_do_ck | `CHECK ((length(TRIM(BOTH FROM ly_do)) > 0))` |
 | bo_tro_hinh | bo_tro_hinh_muc_ck | `CHECK ((muc = ANY (ARRAY[1, 2, 3])))` |
