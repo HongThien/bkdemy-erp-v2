@@ -3,14 +3,15 @@
 // 1 cột, % = TB ≤5 LẦN gần nhất (1 lần = 1 bài làm; Thùy 10/11 thay 10 câu) trong 2–4 tuần. Bấm ô ⇒ CỬA SỔ NỔI lịch sử ô đó (kéo thả, mở nhiều cái cùng lúc).
 // Kênh song song với mastery (công thức khác có chủ ý — xem mig 202610231524). Mọi con số từ DB (§2.0); client chỉ lọc lớp,
 // sắp cột đang bấm, định dạng.
-import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEvent } from 'react'
+import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import { bangDashboardHocTap, lichSuO, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO } from '../../lib/dashboardHocTap'
 import { NHAN_TT } from '../../lib/boTroTk'
 import BoTroPopup from '../phongtk/BoTroPopup'
 
 // Dùng trong PHÒNG TRƯỞNG KHỐI (Thùy 10/11): chỉ các ô (môn, khối) trong phạm vi · cột Bổ trợ · bấm tên ⇒ Hồ sơ học tập.
-export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (hsId: string, mon: string) => void }
+// dau: khối đặt ĐẦU thanh lọc (vd thanh 4 mục của Chất lượng) — Thùy 10/11: dồn hết thanh đầu về 1 dòng
+export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (hsId: string, mon: string) => void; dau?: ReactNode }
 
 type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string }
 
@@ -26,14 +27,15 @@ const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
 const so = (v: number) => Number(v).toLocaleString('vi-VN', { maximumFractionDigits: 2 })
 const thO = 'border-b border-slate-200 px-1.5 py-1 text-center font-semibold'
 const tdO = 'border-b border-slate-100 px-1.5 py-1'
-const ngayVN = (d: string) => d ? d.split('-').reverse().slice(0, 2).join('/') : ''
+const ngayVN = (d: string | null) => d ? d.split('-').reverse().slice(0, 2).join('/') : ''
+const gioVN = (t: string) => new Date(t).toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit' })
 
 export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhong } = {}) {
   const [mons, setMons] = useState<string[]>([])
   const [khois, setKhois] = useState<string[]>([])
   const [mon, setMon] = useState(NHO.mon)
   const [khoi, setKhoi] = useState<string | null>(NHO.khoi)
-  const [soTuan, setSoTuan] = useState(NHO.soTuan)
+  const [soTuan] = useState(NHO.soTuan)   // 10/11: ô = mastery theo lần, không lọc tuần nữa — giữ tham số cho chữ ký hàm DB
   const [cap, setCap] = useState<CapDB>(NHO.cap)
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
   const [sap, setSap] = useState(NHO.sap)
@@ -119,11 +121,16 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
       .catch((e) => doi(id, { loi: String(e?.message ?? e) }))
   }
 
-  const nut = (on: boolean) => `h-8 px-3 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`
+  const nut = (on: boolean) => `h-8 px-2.5 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:text-slate-800'}`
   return (
     <div ref={goc} className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
-        {mons.map((m) => <button key={m} onClick={() => { setMon(m); setLopId(null) }} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
+        {phong?.dau}
+        {mons.length > 1 ? (
+          <select value={mon} onChange={(e) => { setMon(e.target.value); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] font-semibold text-slate-800">
+            {mons.map((m) => <option key={m} value={m}>{m}</option>)}
+          </select>
+        ) : <span className="px-1 text-[13px] font-semibold text-slate-700">{mon}</span>}
         <select value={khoi ?? ''} onChange={(e) => { setKhoi(e.target.value || null); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-800">
           {khois.length === 0 && <option value="">Chưa có lớp</option>}
           {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
@@ -133,31 +140,26 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             <button key={v} onClick={() => { setCap(v); if (sap.cot !== 'ten' && sap.cot !== 'lop') setSap({ cot: 'lop', tang: true }) }} className={nut(cap === v)}>{l}</button>
           ))}
         </div>
-        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
-          {[2, 3, 4].map((n) => <button key={n} onClick={() => setSoTuan(n)} className={nut(soTuan === n)}>{n} tuần</button>)}
-        </div>
-        <button onClick={() => setLamMoi((x) => x + 1)} title="Quét lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
-        {bang && <span className="text-[12px] text-slate-500">Từ {ngayVN(bang.tu)} · {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]} có dữ liệu</span>}
+        {lops.length > 1 && (
+          <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-800">
+            <option value="">Cả khối</option>
+            {lops.map(([id, ten]) => <option key={id} value={id}>Lớp {ten}</option>)}
+          </select>
+        )}
+        <button onClick={() => setLamMoi((x) => x + 1)} title="Đọc lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
         {cua.length > 0 && <button onClick={() => setCua([])} className="ml-auto h-7 rounded-md px-3 text-[12px] font-semibold text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng {cua.length} cửa sổ</button>}
       </div>
-      {lops.length > 1 && (
-        <div className="flex flex-wrap items-center gap-1">
-          <span className="mr-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Lớp</span>
-          <button onClick={() => setLopId(null)} className={`h-7 rounded-md px-3 text-[12px] font-semibold ${!lopId ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200'}`}>Cả khối</button>
-          {lops.map(([id, ten]) => <button key={id} onClick={() => setLopId(id)} className={`h-7 rounded-md px-3 text-[12px] font-semibold ${lopId === id ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200'}`}>{ten}</button>)}
-        </div>
-      )}
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!bang ? (dangTai ? <p className="text-sm text-slate-500">Đang tính bảng…</p> : null)
-        : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có câu nào đo được theo bản đồ mới trong {soTuan} tuần gần nhất.</div>
+        : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có lần đo nào theo bản đồ mới.</div>
         : (
           <>
-            <div className={`max-h-[calc(100vh-280px)] overflow-auto rounded-xl border border-slate-200 bg-white ${dangTai ? 'opacity-60' : ''}`}>
-              <table className="border-separate border-spacing-0 text-[12.5px]">
+            <div className={`max-h-[calc(100vh-230px)] overflow-auto rounded-xl border border-slate-200 bg-white ${dangTai ? 'opacity-60' : ''}`}>
+              <table className="min-w-full border-separate border-spacing-0 text-[12.5px]">
                 <thead>
                   <tr>
                     <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 min-w-[170px] text-left`}>Tên{muiTen('ten')}</th>
-                    <th onClick={() => bamCot('ny')} title="Số NHÓM bài đang yếu (mastery 5 lần gần nhất) · số nhỏ = số DẠNG yếu" className={`${th} text-center`}>Nhóm yếu{muiTen('ny')}</th>
+                    <th onClick={() => bamCot('ny')} title="Số NHÓM bài đang yếu (mastery 5 lần gần nhất) · số nhỏ = số DẠNG yếu" className={`${th} whitespace-nowrap text-center`}>Nhóm yếu{muiTen('ny')}</th>
                     <th onClick={() => bamCot('lop')} className={`${th} text-left`}>Lớp{muiTen('lop')}</th>
                     {bang.cot.map((c) => (
                       <th key={c.ma} onClick={() => bamCot(c.ma)} title={c.cha ? `${c.cha} › ${c.ten}` : c.ten} className={`${th} w-[92px] min-w-[92px] align-bottom`}>
@@ -165,7 +167,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                         <div className="line-clamp-3 text-center leading-tight">{c.ten}{muiTen(c.ma)}</div>
                       </th>
                     ))}
-                    {phong && <th className={`${th} sticky right-0 z-20 cursor-default text-center`}>Bổ trợ</th>}
+                    {phong && <th className={`${th} sticky right-0 z-20 cursor-default whitespace-nowrap text-center`}>Bổ trợ</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -175,7 +177,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                         {phong?.onMoHoSo ? <button onClick={() => phong.onMoHoSo!(h.id, mon)} title="Mở hồ sơ học tập" className="text-left hover:text-indigo-700 hover:underline">{h.ten}</button> : h.ten}
                         {h.bao_dong && <span title={`Báo động ${h.bao_dong.so} lần trong 30 ngày — gần nhất: ${h.bao_dong.ghi_chu}`} className="ml-1 cursor-help">🚨</span>}
                       </td>
-                      <td className="border-b border-slate-100 px-2 py-1 text-center tabular-nums">
+                      <td className="whitespace-nowrap border-b border-slate-100 px-2 py-1 text-center tabular-nums">
                         {h.nhom_yeu == null ? <span className="text-slate-300">—</span> : <span className={`font-bold ${h.nhom_yeu > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>{h.nhom_yeu}</span>}
                         {h.dang_yeu != null && <span className="ml-1 text-[10.5px] text-slate-400" title="Số dạng yếu">· {h.dang_yeu} dạng</span>}
                       </td>
@@ -186,7 +188,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                         return (
                           <td key={c.ma} className="border-b border-slate-100 px-1 py-0.5 text-center">
                             {o == null ? <span className="text-slate-300">—</span> : (
-                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`${o.n} lần trong ${soTuan} tuần${o.d == null ? '' : ` · ${o.d > 0 ? '+' : ''}${o.d} điểm % so với ${o.dk ? 'đầu kỳ' : 'sau lượt đầu (chưa đo trước kỳ)'}`} · bấm xem lịch sử`}
+                              <button onClick={(e) => moCua(h, c.ma, c.cha ? `${c.cha} › ${c.ten}` : c.ten, e)} title={`Trung bình ${Math.min(o.n, 5)} lần gần nhất (đã đo ${o.n} lần) · ${o.muc === 'dat' ? 'đạt' : o.muc === 'yeu' ? 'yếu' : 'cần luyện'}${o.tin === 'thap' ? ' · độ tin thấp' : ''} · bấm xem từng lần`}
                                 className={`w-full rounded px-1 py-0.5 font-semibold tabular-nums hover:ring-2 hover:ring-indigo-300 ${mauPct(o.p)} ${mo ? 'ring-2 ring-indigo-500' : ''}`}>
                                 {o.p}%<XuHuong d={o.d} dk={o.dk} />
                               </button>
@@ -196,7 +198,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                       })}
                       {phong && (
                         <td className="sticky right-0 z-[5] border-b border-slate-100 bg-white px-1.5 py-0.5 text-center">
-                          {!h.bt ? <button onClick={() => setBoTro(h)} className="rounded-md bg-indigo-600 px-2.5 py-1 text-[11.5px] font-bold text-white shadow-sm hover:bg-indigo-700">Bổ trợ</button>
+                          {!h.bt ? <button onClick={() => setBoTro(h)} className="whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[11.5px] font-bold text-white shadow-sm hover:bg-indigo-700">Bổ trợ</button>
                             : <button onClick={() => h.bt!.tt !== 'dang_bo_tro' && setBoTro(h)} className={`whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-semibold ${NHAN_TT[h.bt.tt].cls}`}>{NHAN_TT[h.bt.tt].t}</button>}
                         </td>
                       )}
@@ -206,8 +208,8 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              % = trung bình 5 LẦN gần nhất trong {soTuan} tuần (1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau). Kênh: ET · BTVN · MT / khảo sát · test bổ trợ / bù / đuổi
-              (không tính luyện bổ trợ, tự luyện, game). {TEN_CAP[cap]} theo bản đồ mới; câu chưa gán dạng bài chưa vào ô. Hình có cột riêng: Hình–Học = chủ đề → bài học (tầng chuyên đề và nhóm bài đều là bài học); Hình–Luyện = chủ đề → mô hình → trọng điểm; câu Hình chưa có tầng đang xem thì dồn vào cột “Hình”. ▲▼ = % hiện tại so với đầu kỳ (5 lần gần nhất trước cửa sổ); chữ nghiêng mờ = em chưa đo trước kỳ, so với lần đầu trong kỳ. Nhóm yếu = số nhóm bài đang yếu theo mastery (5 lần gần nhất, mọi thời điểm). Kênh quan sát song song — khác công thức mastery.
+              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình 5 lần làm bài gần nhất của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần); 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
+              Kênh: ET · BTVN · MT / khảo sát · phiếu và test bổ trợ (không tính tự luyện, trừ cấp 1). {TEN_CAP[cap]} theo bản đồ mới; Hình–Học: bài học = chuyên đề = nhóm bài. Nhóm yếu = số nhóm bài đang yếu. Số đọc từ bảng chụp mastery (tự làm mới 5 phút/lần khi có điểm mới).
             </p>
           </>
         )}
@@ -274,13 +276,13 @@ function CuaSoO({ c, onDong, onLen, onDoi, tiLe }: { c: Cua; onDong: () => void;
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-slate-50 text-slate-500">
+                    {d.dau_ky && <tr className="bg-slate-50 text-slate-500">
                       <td className={tdO + ' font-mono'}>&lt; {ngayVN(d.tu)}</td>
                       <td className={tdO + ' font-semibold'}>Đầu kỳ</td>
                       <td className={tdO} /><td className={tdO} /><td className={tdO} />
                       <td className={tdO + ' text-center'}>{d.dau_ky ? `${d.dau_ky.n} lần` : ''}</td>
                       <td className={tdO + ' text-center'}>{d.dau_ky ? <span className={`rounded px-1.5 font-semibold ${mauPct(d.dau_ky.p)}`}>{d.dau_ky.p}%</span> : <span className="text-slate-400">chưa đo</span>}</td>
-                    </tr>
+                    </tr>}
                     {d.luot.map((l, i) => (
                       <Fragment key={i}>
                         <tr onClick={() => setMoLuot(moLuot === i ? null : i)} className="cursor-pointer hover:bg-indigo-50/40">

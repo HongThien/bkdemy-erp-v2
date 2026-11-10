@@ -17,7 +17,7 @@ const MUC: [Muc, string][] = [['dashboard', 'Dashboard học tập'], ['chung', 
 const NHO: { muc: Muc; hoSo: { hs: string; mon: string } | null; o: OTongQuan[] | null; ds: Record<string, DongBtk[]> } = { muc: 'dashboard', hoSo: null, o: null, ds: {} }
 
 const ngay = (t: string | null) => (t ? new Date(t).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit' }) : '')
-const thanh = (on: boolean) => `rounded-lg px-4 py-1.5 text-[13px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
+const thanh = (on: boolean) => `whitespace-nowrap rounded-lg px-3 py-1 text-[12.5px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
 
 function useOCuaToi() {
   const [o, setO] = useState<OTongQuan[] | null>(NHO.o)
@@ -31,12 +31,15 @@ export function ChatLuongTK({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const [hoSo, setHoSo] = useState(NHO.hoSo)
   const cacO = useOCuaToi()
   const moHoSo = (hs: string, mon: string) => { NHO.hoSo = { hs, mon }; setHoSo(NHO.hoSo); setMuc('hoso') }
+  const thanhMuc = (
+    <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
+      {MUC.map(([k, t]) => <button key={k} onClick={() => setMuc(k)} className={thanh(muc === k)}>{t}</button>)}
+    </div>
+  )
   return (
     <div className="space-y-4">
-      <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
-        {MUC.map(([k, t]) => <button key={k} onClick={() => setMuc(k)} className={thanh(muc === k)}>{t}</button>)}
-      </div>
-      {muc === 'dashboard' && (cacO ? <DashboardHocTapScreen phong={{ o: cacO.map((x) => ({ mon: x.mon, khoi: x.khoi })), onMoHoSo: moHoSo }} /> : <p className="text-[13px] text-slate-400">Đang tải các khối…</p>)}
+      {muc !== 'dashboard' && thanhMuc}
+      {muc === 'dashboard' && (cacO ? <DashboardHocTapScreen phong={{ o: cacO.map((x) => ({ mon: x.mon, khoi: x.khoi })), onMoHoSo: moHoSo, dau: thanhMuc }} /> : <>{thanhMuc}<p className="text-[13px] text-slate-400">Đang tải các khối…</p></>)}
       {muc === 'chung' && <><WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} /><BaoCaoCaNhan chiMuc={['tuan']} /></>}
       {muc === 'hoso' && <HoSoHocSinh key={hoSo ? `${hoSo.mon}|${hoSo.hs}` : 'trong'} monDau={hoSo?.mon ?? cacO?.[0]?.mon ?? 'Toán'} hsDau={hoSo?.hs ?? null} />}
       {muc === 'bo_tro' && (cacO ? <DanhSachBoTro che="tk" cacO={cacO} onMoHoSo={moHoSo} /> : null)}

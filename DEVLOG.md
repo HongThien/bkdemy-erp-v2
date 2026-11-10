@@ -79658,3 +79658,16 @@ Thùy nêu 4 việc, làm được 3:
 - ĐÃ ÁP mig 202611101731 (Thùy 'cho áp'). Gọi fn_mastery_lam_moi(30) 1 lượt 17:33: 2,0 s, 14 em bẩn chụp lại, còn chờ 0, bảng 60.148 ô. npm run schema đã chạy.
 - Cron mastery đổi sang chạy CẢ NGÀY (5 phút/lần, ngân sách 20 s) — file 202611101734_mastery_lam_moi_cron_sql_editor.sql, Thùy dán SQL Editor, đã --ghi-so. Kiểm: đánh bẩn 1 em, chờ cron tự chụp lại.
 - Cron ĐÃ CHẠY THẬT: đánh bẩn 1 em 17:34:57 ⇒ cron chụp lại 17:35:00 (giờ cao điểm, đúng lịch mới cả ngày).
+
+
+## 10/11 18:1x — Dashboard học tập "tính rất lâu" / 0 chuyên đề
+- Đo: phiên Dashboard (mig 202611101756) chuyển ô sang đọc bảng chụp mastery 4 tầng; trong lúc chụp lại dần, em chưa tới lượt có ô chuyên đề/chủ đề TRỐNG (đúng thiết kế của họ) ⇒ K9 hiện "72 HS · 0 chuyên đề". 87 em chưa chụp lại.
+- Làm: gọi fn_mastery_lam_moi(90) 1 lượt (52,7 s, giờ cao điểm) ⇒ 0 em thiếu tầng chuyên đề. Kiểm app: K9 22 chuyên đề, fn_dbht_bang 0,54 s (lần đầu 2,2 s).
+- Tôi viết 2 mig sửa (202611101807 nhanh chỉ đọc tầng đã chụp · 202611101808) trước khi thấy mig 1756 của phiên kia — KHÔNG áp (1807 sẽ làm Dashboard chậm lại 1–4 s). Chờ Thùy cho xoá 2 file chưa áp này.
+
+## 10/11 (tối) — Dashboard học tập đọc BẢNG CHỤP mastery theo lần, bỏ lọc tuần — mig 202611101756 ĐÃ ÁP
+- **Thùy:** "sao cái dashboard trong chỗ phòng làm việc vẫn tính. t bảo dùng cache từ bên mastery rồi" ⇒ "Chuyển hết mastery theo lần. ko dùng theo câu nữa … ko cần filter thời gian". Sai của tôi lượt trước: chỉ cột Nhóm yếu đọc cache, ô % vẫn chạy `_dbht_cau` (cửa sổ tuần, đọc từng câu) ~2 s/khối, lần nguội 17 s.
+- **Làm:** nguồn quy nút chung `_mastery_lan_d` (dạng · nhóm · chuyên đề · chủ đề; Hình–Học bài = chuyên đề = nhóm); `_mastery_lan_cap` thêm cấp `chuyen_de` + `chu_de` (dang/nhom khớp từng dòng trước–sau, 3976 dòng K8); CHECK `mastery_luu_san.cap` nới 4 cấp; `fn_mastery_lam_moi` (vá trên định nghĩa đang chạy) chụp 4 cấp + tự chụp lại em thiếu cấp chuyên đề, cũ nhất trước — không đánh bẩn hàng loạt. `fn_dbht_bang` đọc `_mastery_lan_cap_nhanh` (bảng chụp) ⇒ ô = mastery 5 lần (Hình–Học 3), bỏ cửa sổ tuần + mũi tên đầu kỳ, trả `tinh_at`; `fn_dbht_o_lich_su` = từng lần của nút từ `_mastery_lan_d`.
+- **Đo (ROLLBACK, Cường K8):** nhóm 0,3 s · chuyên đề/chủ đề 0,05 s (trước ~2 s); 1280/1280 ô nhóm khớp mastery. Sau áp: gọi `fn_mastery_lam_moi(20)` 5 lượt + 1 lượt cron ⇒ 336/336 em đủ 4 cấp.
+- **Màn (Thùy: "full chiều ngang", "header dồn hết về 1 dòng"):** Chất lượng `max-w-none`; thanh 4 mục nằm đầu dòng lọc (prop `phong.dau`); môn + lớp thành ô chọn; bỏ 2/3/4 tuần; đếm HS + "số tính lúc" xuống dòng chú thích; nút Bổ trợ / cột Nhóm yếu không gãy chữ. Kiểm 1440 px: 1 dòng, khối 8 lên ngay, popup từng lần đúng; console sạch.
+- **Mất:** cột Hình–Luyện (mô hình) khỏi Dashboard — mastery theo lần chưa quy câu Hình–Luyện vào nhóm (Bổ trợ Hình riêng).

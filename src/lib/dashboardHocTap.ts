@@ -6,7 +6,7 @@ import { supabase } from './supabase'
 export type CapDB = 'chu_de' | 'chuyen_de' | 'nhom'
 export type CotDB = { ma: string; ten: string; cha: string | null }
 // d = % hiện tại − mốc (đầu kỳ; dk=false ⇒ mốc là % sau lượt đầu trong cửa sổ); null = chưa đủ để nói xu hướng
-export type ODB = { p: number; n: number; d: number | null; dk: boolean }
+export type ODB = { p: number; n: number; d: number | null; dk: boolean; muc?: 'dat' | 'can_luyen' | 'yeu'; tin?: 'cao' | 'tb' | 'thap' }
 // 10/11: nhom_yeu (mastery theo lần) là chính · dang_yeu (bảng chụp) đi kèm · bao_dong 30 ngày · bt = trạng thái bổ trợ (đề xuất đang sống / case mở)
 export type HSDB = {
   id: string; ten: string; lop_id: string; lop: string; o: Record<string, ODB>
@@ -14,7 +14,7 @@ export type HSDB = {
   bao_dong?: { so: number; at: string; ghi_chu: string } | null
   bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' } | null
 }
-export type BangDB = { tu: string; cot: CotDB[]; hs: HSDB[] }
+export type BangDB = { tu: string | null; tinh_at?: string | null; cot: CotDB[]; hs: HSDB[] }
 
 export type CauDB = { ma_cau: string | null; dang: string; nhom: string; g: number }
 export type LuotDB = {
@@ -25,14 +25,14 @@ export type LuotDB = {
 export type LichSuO = { tu: string; dau_ky: { p: number; n: number } | null; luot: LuotDB[] }
 
 export const TEN_KENH: Record<string, string> = {
-  et: 'ET', btvn: 'BTVN', mt: 'MT / Khảo sát', bo_tro_test: 'Test bổ trợ', retest: 'Retest bổ trợ', bu_test: 'Test bù', htd_test: 'Test đuổi',
+  et: 'ET', btvn: 'BTVN', mt: 'MT / Khảo sát', bo_tro_test: 'Test bổ trợ', bt: 'Phiếu bổ trợ', tu_luyen: 'Tự luyện', retest: 'Retest bổ trợ', bu_test: 'Test bù', htd_test: 'Test đuổi',
 }
 
 export async function bangDashboardHocTap(mon: string, khoi: string, soTuan: number, cap: CapDB): Promise<BangDB> {
   const { data, error } = await supabase.rpc('fn_dbht_bang', { p_mon: mon, p_khoi: khoi, p_so_tuan: soTuan, p_cap: cap })
   if (error) throw error
   const j = (data ?? {}) as Partial<BangDB>
-  return { tu: j.tu ?? '', cot: j.cot ?? [], hs: j.hs ?? [] }
+  return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, cot: j.cot ?? [], hs: j.hs ?? [] }
 }
 
 export async function lichSuO(hsId: string, mon: string, cap: CapDB, ma: string, soTuan: number): Promise<LichSuO> {
