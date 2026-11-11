@@ -1,4 +1,4 @@
-// ẢNH THÔNG BÁO PHỤ HUYNH — bổ trợ sau giờ (Thùy 11/11): logo + "Thông báo Bổ trợ yếu" + câu báo, tên các con in ĐẬM khác màu.
+// ẢNH THÔNG BÁO PHỤ HUYNH — bổ trợ sau giờ (Thùy 11/11): logo + "Thông báo Bổ trợ kiến thức" (Thùy 11/11 đổi từ "Bổ trợ yếu") + câu báo, tên các con in ĐẬM khác màu.
 // Chỉ ghép chữ hiển thị từ ca đã lưu (bỏ em đã huỷ/vắng). Template inline-hex (né oklch Tailwind v4) để html2canvas chụp được — như VinhDanhCard.
 import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -20,13 +20,13 @@ function AnhView({ ca }: { ca: CaNhe }) {
       <div style={{ position: 'absolute', right: -120, top: -120, width: 380, height: 380, borderRadius: '50%', background: '#dbe7ff' }} />
       <div style={{ position: 'absolute', left: -90, bottom: -110, width: 300, height: 300, borderRadius: '50%', background: '#ffe9d3' }} />
       <img src="/Logo.png" alt="BK Academy" style={{ position: 'relative', height: 64, width: 'auto', display: 'block' }} />
-      <div style={{ position: 'relative', marginTop: 30, fontSize: 56, fontWeight: 800, color: xanh, letterSpacing: 0.5, lineHeight: 1.2 }}>Thông báo Bổ trợ yếu</div>
+      <div style={{ position: 'relative', marginTop: 30, fontSize: 56, fontWeight: 800, color: xanh, letterSpacing: 0.5, lineHeight: 1.2 }}>Thông báo Bổ trợ kiến thức</div>
       <div style={{ position: 'relative', marginTop: 30, background: '#ffffff', border: '2px solid #dbe3f0', borderRadius: 28, padding: '36px 44px', fontSize: 34, lineHeight: 1.55 }}>
         Buổi học <b style={{ color: '#0f172a' }}>{thuCuaNgay(ca.ngay)}, ngày {ddmmVN(ca.ngay)}</b> các bạn{' '}
         {ten.map((t, i) => (
           <span key={t + i}><b style={{ color: cam, fontWeight: 800 }}>{t}</b>{i < ten.length - 2 ? ', ' : i === ten.length - 2 ? ' và ' : ''}</span>
         ))}{' '}
-        sẽ cần ở lại bổ trợ các dạng yếu nên các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!
+        sẽ ở lại bổ trợ kiến thức sau giờ học nên các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!
       </div>
       <div style={{ position: 'absolute', left: 72, bottom: 40, fontSize: 24, color: '#64748b' }}>Lớp {ca.ten_lop} · {ca.mon}</div>
     </div>

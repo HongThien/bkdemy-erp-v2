@@ -10,7 +10,7 @@ import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
 import NutInSauGio from './NutInSauGio'
 import { inTestSauGio } from '../../lib/botro_nhe'
 import { inLayBaiGiay, type BaiInGiay } from '../../lib/botro_yeu_ca'
-import { TrangInNhieu } from '../ta/PhieuGiayYeuTA'
+import InSauGioET from './InSauGioET'
 import { CaDetail } from '../ta/CaBoTroTA'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -37,7 +37,7 @@ export default function BoTroNheScreen() {
   const [dau, setDau] = useState<string | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp (em chờ tự tick)
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
-  const [inLop, setInLop] = useState<BaiInGiay[] | null>(null)
+  const [inLop, setInLop] = useState<{ bais: BaiInGiay[]; lop: string } | null>(null)
   // IN CẢ LỚP (Thùy 11/11): chỉ BÀI TEST — mỗi em còn mở 1 bài (chưa soạn thì DB tự sinh như nút 📝), sang trang giữa các em
   async function inCaLop(c: CaNhe) {
     setLoi(null)
@@ -47,7 +47,7 @@ export default function BoTroNheScreen() {
       catch (e: any) { loiEm.push(`${h.ho_ten}: ${e?.message ?? e}`) }
     }
     if (loiEm.length) setLoi(`Không in được: ${loiEm.join(' · ')}`)
-    if (bais.length) { setInLop(bais); tai() } else if (!loiEm.length) setLoi('Lớp không còn em nào chờ làm bài test.')
+    if (bais.length) { setInLop({ bais, lop: c.ten_lop }); tai() } else if (!loiEm.length) setLoi('Lớp không còn em nào chờ làm bài test.')
   }
 
   // refetch NỀN: giữ rows cũ tới khi có rows mới, không bao giờ trắng màn
@@ -107,7 +107,7 @@ export default function BoTroNheScreen() {
         }).catch((e) => setLoi(e?.message ?? String(e)))
       }} />}
 
-      {inLop && <TrangInNhieu bais={inLop} onDong={() => setInLop(null)} />}
+      {inLop && <InSauGioET bais={inLop.bais} lop={inLop.lop} onDong={() => setInLop(null)} />}
       {thongBao && (rows ?? []).some((c) => c.ca_id === thongBao) && <ThongBaoSauGioAnh ca={(rows ?? []).find((c) => c.ca_id === thongBao)!} onDong={() => setThongBao(null)} />}
 
       {rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
@@ -163,7 +163,7 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, rong }: {
                             <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold ${tt.cls}`}>{tt.ten}</span>
                             <span className="text-slate-300">›</span>
                           </button>
-                          {h.buoi_trang_thai !== 'huy' && <NutInSauGio gon buoiId={h.buoi_id} dong={h.buoi_trang_thai !== 'mo' || !!h.danh_gia_xong_at} daNop={h.test_da_nop} />}
+                          {h.buoi_trang_thai !== 'huy' && <NutInSauGio gon lop={c.ten_lop} buoiId={h.buoi_id} dong={h.buoi_trang_thai !== 'mo' || !!h.danh_gia_xong_at} daNop={h.test_da_nop} />}
                         </li>
                       )
                     })}

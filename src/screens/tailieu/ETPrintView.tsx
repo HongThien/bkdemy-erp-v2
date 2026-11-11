@@ -45,7 +45,9 @@ const DEFAULT_TLN_LINES = 2
 // Không perHS/không bật "Cả lớp" → in 3 mã đề tổng quát như cũ (ô tên trống).
 // fullOverride/varCauOverride: render từ dữ liệu ĐANG SOẠN (in-memory) thay vì đọc bản đã lưu — cho phép
 // PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
-export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh }) {
+// deRieng / nhanDe (Thùy 11/11, bổ trợ sau giờ "header giống ET, bản HS – GV như builder"): mỗi em 1 ĐỀ RIÊNG (câu khác nhau) in cùng khuôn ET.
+export type DeRiengET = { id: string; hoTen: string; caus: CauHoi[] }
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride, deRieng, nhanDe }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -241,7 +243,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           <button onClick={() => setGv(true)} className={seg(gv)}>Bản giáo viên</button>
         </div>
         {/* Không hiện khi ETScreen truyền perHS từ ngoài (đang soạn nháp, tự quản roster riêng). */}
-        {!perHS && (
+        {!perHS && !deRieng && (
           <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS có mặt — in mỗi HS 1 phiếu, tên + mã đề sẵn` : 'Chưa điểm danh có mặt (hoặc ET chưa gắn lớp/buổi) → chỉ in bản trống'}>
             <button onClick={() => setPerHSOn(false)} className={seg(!perHSOn)}>Bản trống</button>
             <button onClick={() => setPerHSOn(true)} disabled={!roster.length} className={`${seg(perHSOn)} disabled:opacity-40`}>🖨 Cả lớp{roster.length ? ` (${roster.length})` : ''}</button>
@@ -259,7 +261,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
           : !full ? <p className="text-center text-slate-400">Đang tải…</p>
           : <div ref={dstRef} className="pv-pages" />}
       </div>
-      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} hinhDe={hinhDe} />}</div>
+      <div ref={srcRef} className="pv-src" aria-hidden>{full && <ETAllDe full={full} gv={gv} varCau={varCau} perHS={effPerHS} hinhDe={hinhDe} deRieng={deRieng} nhanDe={nhanDe} />}</div>
       <style>{CHROME_CSS}</style>
     </div>,
     document.body,
@@ -269,8 +271,9 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
 // (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
-function ETAllDe({ full, gv, varCau, perHS, hinhDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null }) {
+function ETAllDe({ full, gv, varCau, perHS, hinhDe, deRieng, nhanDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
   const ch = full.taiLieu.cau_hinh ?? {}
+  if (deRieng) return <>{deRieng.map((d) => <div key={d.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={ch} gv={gv} hoTen={d.hoTen} nhanDe={nhanDe} /></div>)}</>
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   const etMaDe = ch.etMaDe
   // Đủ 3 mã đề = Đại (nếu có) đủ etMaDe; bài Hình luôn có đề 2/3 (thiếu bản khác thì dùng lại bài gốc). ET chỉ có Hình cũng in 3 mã đề.
@@ -315,7 +318,7 @@ function ETAllDe({ full, gv, varCau, perHS, hinhDe }: { full: TaiLieuFull; gv: b
   return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} hinh={d.hinh} gv={gv} badge={d.label} /></div>)}</>
 }
 
-function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; hinh?: MucIn[]; gv: boolean; badge?: string; hoTen?: string }) {
+function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; hinh?: MucIn[]; gv: boolean; badge?: string; hoTen?: string; nhanDe?: { tieuDe: string; nhan: string } }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -338,7 +341,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; 
   // "ET 6S1 · 31/07/2026" → tên đề "Đề kiểm tra cuối giờ lớp 6S1" + ngày riêng (mỗi thứ 1 dòng ở cột phải).
   const _dot = ten.indexOf(' · ')
   const rawName = _dot >= 0 ? ten.slice(0, _dot) : ten
-  const tenDe = rawName.replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')
+  const tenDe = nhanDe?.tieuDe ?? rawName.replace(/^ET\s+/, 'Đề kiểm tra cuối giờ lớp ')
   const ngayDe = _dot >= 0 ? ten.slice(_dot + 3) : ''
   const tenLop = rawName.replace(/^ET\s+/, '')                    // "6S1"
   const made = badge ? badge.replace(/^Mã đề\s*/i, '') : ''       // "2" (từ "Mã đề 2")
@@ -348,7 +351,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen }: { ten: string; 
     <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
     <AnhPhaiCtx.Provider value={anhPhaiCua(ch, nhanh)}>
     <div className="pv-et pv-et-bk">
-      <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length + soBaiHinh} gv={gv} />
+      <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length + soBaiHinh} gv={gv} nhan={nhanDe?.nhan} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
           {(!gv && run.g === 1) ? (

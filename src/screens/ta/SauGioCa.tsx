@@ -9,7 +9,8 @@ import { parseLyThuyetBlocks } from '../../lib/lythuyetBlocks'
 import { inLayBaiGiay, listPhieuGiayCuaCa, type BaiInGiay, type CaTA } from '../../lib/botro_yeu_ca'
 import { inTestSauGio, type LyThuyetSauGio } from '../../lib/botro_nhe'
 import NutInSauGio from '../botro/NutInSauGio'
-import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
+import InSauGioET from '../botro/InSauGioET'
+import { NhapKetQua } from './PhieuGiayYeuTA'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void }) {
@@ -66,7 +67,7 @@ export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void })
           : <button disabled={busy} onClick={nhapTest} className="w-full rounded-xl bg-emerald-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-50">{busy ? '…' : '✍ Nhập kết quả & nộp'}</button>}
       </div>
 
-      {phieuIn && <TrangIn bai={phieuIn} onDong={() => setPhieuIn(null)} />}
+      {phieuIn && <InSauGioET bais={[phieuIn]} onDong={() => setPhieuIn(null)} />}
       {phieuNhap && <NhapKetQua bai={phieuNhap} onDong={() => { setPhieuNhap(null); onDoi() }} />}
     </>
   )

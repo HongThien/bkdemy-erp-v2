@@ -194,7 +194,7 @@ export async function caTheoDoi(ngay?: string): Promise<CaTheoDoi[]> {
 }
 export type CauInGiay = {
   id: string; thu_tu: number; ma_cau: string | null; ma_dang: string | null; ten_dang: string
-  la_hinh_mh?: boolean
+  la_hinh_mh?: boolean; loai_cau?: string   // loai_cau: fn_btyeu_in_lay vốn trả, khai thêm cho bản in khuôn ET (sau giờ)
   noi_dung: string | null; lua_chon: string[] | null; anh_de: string | null; dap_an_key: unknown; loi_giai: string | null
   chon: number | null; verdict: 'correct' | 'wrong' | null // câu trả lời ngắn (lua_chon rỗng): TA chấm 1 = đúng · 0 = sai (Thùy 10/10)
 }

@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import { inLyThuyetSauGio, type LyThuyetSauGio } from '../../lib/botro_nhe'
 import type { BaiInGiay } from '../../lib/botro_yeu_ca'
-import { TrangIn } from '../ta/PhieuGiayYeuTA'
+import InSauGioET from './InSauGioET'
 import { TrangInLyThuyet } from '../ta/SauGioCa'
 import SoanBaiSauGio from './SoanBaiSauGio'
 
-export default function NutInSauGio({ buoiId, dong, daNop, gon, onDoi }: {
-  buoiId: string; dong: boolean; daNop: boolean; gon?: boolean; onDoi?: () => void
+export default function NutInSauGio({ buoiId, dong, daNop, gon, lop, onDoi }: {
+  buoiId: string; dong: boolean; daNop: boolean; gon?: boolean; lop?: string | null; onDoi?: () => void
 }) {
   const [lt, setLt] = useState<LyThuyetSauGio | null>(null)
   const [soan, setSoan] = useState<'luyen' | 'test' | null>(null)
@@ -36,7 +36,7 @@ export default function NutInSauGio({ buoiId, dong, daNop, gon, onDoi }: {
       {loi && <span className="basis-full text-[11.5px] text-rose-600">{loi}</span>}
       {lt && <TrangInLyThuyet bai={lt} onDong={() => setLt(null)} />}
       {soan && <SoanBaiSauGio buoiId={buoiId} loai={soan} onDong={() => setSoan(null)} onIn={(b) => { setSoan(null); setPhieu(b); onDoi?.() }} />}
-      {phieu && <TrangIn bai={phieu} onDong={() => setPhieu(null)} />}
+      {phieu && <InSauGioET bais={[phieu]} lop={lop} onDong={() => setPhieu(null)} />}
     </span>
   )
 }

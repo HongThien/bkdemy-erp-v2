@@ -55,8 +55,9 @@ export const BK_PAGE_CSS = `
 // số ô = SỐ CÂU của đề. Bản GV bỏ bảng HS + lưới chấm. DÙNG CHUNG ET Đại (ETPrintView) + ET Hình
 // (HinhPrintView, Thùy 21/08: "làm giống bên Đại số đi, cứ sáng tạo thêm làm gì" — 1 component, không
 // tự vẽ header riêng cho Hình).
-export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
+export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv, nhan = 'Bài test cuối giờ' }: {
   title: string; ngay: string; lop: string; made: string; hoTen?: string; soCau: number; gv: boolean
+  nhan?: string   // nhãn góc trên (bổ trợ sau giờ: "Bài test bổ trợ" / "Bài luyện bổ trợ")
 }) {
   return (
     <div className="pv-bkh">
@@ -65,7 +66,7 @@ export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv }: {
           <img className="pv-bkh-logo" src={location.origin + '/Logo.png'} alt="BK ACADEMY" />
         </div>
         {/* Bản GV ẩn bảng HS (chứa Mã đề) → gắn Mã đề vào NHÃN để đáp án vẫn biết của mã đề nào. */}
-        <div className="pv-bkh-label">Bài test cuối giờ{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
+        <div className="pv-bkh-label">{nhan}{gv ? (made ? ` · Mã đề ${made} · Đáp án` : ' · Đáp án') : ''}</div>
         <div className="pv-bkh-meta">
           <div className="pv-bkh-pill"><span>Thời gian</span><strong>10 phút</strong></div>
           <div className="pv-bkh-pill"><span>Ngày</span><strong>{ngay}</strong></div>
