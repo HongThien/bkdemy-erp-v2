@@ -61,6 +61,7 @@ export type ViecCaBoTro = {
   buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null
   hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; level: number | null
   diem_danh: string | null; so_dang: number; co_test: boolean; test_da_nop: boolean; danh_gia_xong_at: string | null
+  nhe?: boolean // ca BỔ TRỢ SAU GIỜ (buổi bo_tro_nhe, Thùy 11/11) — TA cùng làm nhập bài test
 }
 export type ViecRetest = {
   bai_test_id: string; ngay: string; mon: string; so_cau: number; lop_id: string; ten_lop: string

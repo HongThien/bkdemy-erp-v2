@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-520 bảng · 39 view · 0 enum · 340 trigger · 1739 function
+520 bảng · 39 view · 0 enum · 340 trigger · 1745 function
 
 ## _app_secrets
 
@@ -10055,6 +10055,7 @@ WITH luot AS (
 - `_btk_la_tk(p_mon text, p_khoi text)` → boolean
 - `_btk_lop_hs(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, khoi text)
 - `_btk_nhom_hs(p_hs uuid[], p_mon text)` → TABLE(hoc_sinh_id uuid, ma text, ten text, cha text, score numeric, n bigint, muc text, tin text)
+- `_btnhe_dang_buoi(p_buoi uuid)` → TABLE(ma_dang text, ten_dang text, nhom_yeu boolean, thu_tu integer)
 - `_btnhe_duoc_tao(p_mon text, p_khoi text)` → boolean
 - `_btnhe_gio_lop(p_lop uuid, p_ngay date)` → TABLE(gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text)
 - `_btvn_app_tu_dong()` → jsonb
@@ -10382,6 +10383,7 @@ WITH luot AS (
 - `_quan_ly_mon()` → text[]
 - `_quan_ly_mon_cua(p_ns uuid)` → text[]
 - `_rank_len_bac_ghi(p_mon text, p_hs uuid[] DEFAULT NULL::uuid[])` → integer
+- `_sau_gio_dang(p_hs uuid, p_mon text)` → TABLE(ma_dang text, ten_dang text, nhom text, nhom_yeu boolean, score numeric, n integer, thu_tu integer)
 - `_sk_can(p_su_kien uuid, p_vai text[])` → void
 - `_sk_can_admin()` → void
 - `_sk_cap_so(p_su_kien uuid)` → integer
@@ -10734,8 +10736,12 @@ WITH luot AS (
 - `fn_btk_huy(p_id uuid)` → void
 - `fn_btk_luu(p_id uuid, p_hs uuid, p_mon text, p_nhom text[], p_muc integer, p_uu_tien integer, p_ghi_chu text)` → uuid
 - `fn_btk_tra_lai(p_id uuid, p_ly_do text)` → void
+- `fn_btnhe_cho()` → jsonb
 - `fn_btnhe_ds(p_tu date, p_den date)` → jsonb
+- `fn_btnhe_fill_dang(p_case uuid)` → integer
 - `fn_btnhe_huy(p_ca uuid, p_ly_do text)` → integer
+- `fn_btnhe_in_ly_thuyet(p_buoi uuid)` → jsonb
+- `fn_btnhe_in_test(p_buoi uuid)` → jsonb
 - `fn_btnhe_lop_cua_toi(p_ngay date)` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, ta_id uuid, ta_ten text)
 - `fn_btnhe_lop_hs(p_lop uuid, p_ngay date)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, so_dang_yeu integer, dang_yeu text[], so_ca_nhe_tuan integer)
 - `fn_btnhe_tao(p_lop uuid, p_kieu text, p_ngay date, p_gio_bat_dau time without time zone, p_phut integer, p_phong text, p_hs uuid[], p_ta uuid)` → jsonb

@@ -1,23 +1,24 @@
-// BỔ TRỢ NHẸ (L1.1) — Thùy 29/10, spec-truong-khoi.md §8. Trưởng khối tự tạo ca, không qua Lộc, không suất.
+// BỔ TRỢ SAU GIỜ (= L1, Thùy 11/11 — trước là "Bổ trợ Nhẹ" L1.1, 29/10, spec-truong-khoi.md §8). Trưởng khối tự tạo ca, không qua Lộc, không suất.
+// 11/11: HÀNG CHỜ = em trưởng bộ môn đã duyệt L1 (fn_btnhe_cho) → bấm "Khởi tạo ca" mở form tạo ca chọn sẵn lớp + em.
+// Trong ca: 3 thứ in riêng (lý thuyết · luyện · test 1 câu/dạng yếu trong nhóm yếu) → TA nhập test → nộp = xong (SauGioCa).
 // Tạo ca: thời gian (sau buổi / khác) → lớp → học sinh (tô em có dạng yếu) → TA cùng làm → ra thông báo dán Zalo lớp.
 // Chạy ca = CaDetail của ca Yếu (điểm danh · in phiếu luyện + test · nhập giấy · đóng ca · hoàn tất) — không dựng máy thứ hai.
 // Mọi kiểm tra ở DB (fn_btnhe_*). Sau mutation: vá/refetch nền, không xoá list (CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
-import { lopCuaToi, hsCuaLop, taoCaNhe, dsCaNhe, huyCaNhe, thongBaoPhuHuynh, type LopNhe, type HsNhe, type CaNhe, type HsCaNhe } from '../../lib/botro_nhe'
+import { lopCuaToi, hsCuaLop, taoCaNhe, dsCaNhe, huyCaNhe, thongBaoPhuHuynh, choSauGio, type LopNhe, type HsNhe, type CaNhe, type HsCaNhe, type ChoSauGio } from '../../lib/botro_nhe'
 import { CaDetail } from '../ta/CaBoTroTA'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 // Nhớ list + ca đang mở tới F5 (rời tab Bổ trợ rồi quay lại = đúng chỗ cũ).
-const NHO: { rows: CaNhe[] | null; mo: { buoiId: string } | null } = { rows: null, mo: null }
+const NHO: { rows: CaNhe[] | null; mo: { buoiId: string } | null; cho: ChoSauGio[] | null } = { rows: null, mo: null, cho: null }
 
 function trangThaiHs(h: HsCaNhe): { ten: string; cls: string } {
   if (h.buoi_trang_thai === 'huy') return { ten: h.diem_danh === 'vang' ? 'Vắng' : 'Đã huỷ', cls: 'bg-rose-50 text-rose-600' }
-  if (h.danh_gia_xong_at) return { ten: 'Hoàn tất', cls: 'bg-emerald-50 text-emerald-700' }
-  if (!h.diem_danh) return { ten: 'Chưa điểm danh', cls: 'bg-slate-100 text-slate-500' }
-  if (!h.co_test) return { ten: 'Đang luyện', cls: 'bg-indigo-50 text-indigo-600' }
-  if (!h.test_da_nop) return { ten: 'Chờ test', cls: 'bg-amber-50 text-amber-700' }
-  return { ten: 'Chờ nhận xét', cls: 'bg-violet-50 text-violet-700' }
+  if (h.danh_gia_xong_at) return { ten: 'Xong', cls: 'bg-emerald-50 text-emerald-700' }
+  if (!h.co_test) return { ten: 'Chưa in test', cls: 'bg-slate-100 text-slate-500' }
+  if (!h.test_da_nop) return { ten: 'Chờ nhập test', cls: 'bg-amber-50 text-amber-700' }
+  return { ten: 'Đã nộp', cls: 'bg-violet-50 text-violet-700' }
 }
 
 export default function BoTroNheScreen() {
@@ -28,11 +29,20 @@ export default function BoTroNheScreen() {
   const [mo, setMoState] = useState(NHO.mo)
   const setMo = (v: typeof mo) => { NHO.mo = v; setMoState(v) }
   const [tao, setTao] = useState(false)
+  const [dau, setDau] = useState<{ lopId: string; hs: string[] } | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp + em
+  const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<{ caId: string; text: string } | null>(null)
 
   // refetch NỀN: giữ rows cũ tới khi có rows mới, không bao giờ trắng màn
-  const tai = () => dsCaNhe(tu, den).then((r) => { NHO.rows = r; setRows(r); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e)))
+  const taiCho = () => choSauGio().then((r) => { NHO.cho = r; setCho(r) }).catch((e) => setLoi(e?.message ?? String(e)))
+  const tai = () => { taiCho(); return dsCaNhe(tu, den).then((r) => { NHO.rows = r; setRows(r); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e))) }
   useEffect(() => { if (!NHO.rows) tai() }, []) // eslint-disable-line
+  // hàng chờ theo LỚP (khởi tạo 1 ca cho cả nhóm em cùng lớp) — nhóm thuần UI
+  const choTheoLop = useMemo(() => {
+    const g = new Map<string, ChoSauGio[]>()
+    for (const x of cho ?? []) { const k = x.lop_id ?? '?'; g.set(k, [...(g.get(k) ?? []), x]) }
+    return [...g.values()]
+  }, [cho])
 
   if (mo) return <div className="min-h-0 flex-1 overflow-auto bg-white"><CaDetail buoiId={mo.buoiId} nhe onBack={() => { setMo(null); tai() }} /></div>
 
@@ -42,17 +52,37 @@ export default function BoTroNheScreen() {
   return (
     <div className="min-h-0 flex-1 overflow-auto px-8 py-5">
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <h2 className="text-[16px] font-bold text-slate-800">Bổ trợ Nhẹ</h2>
-        <span className="text-[12.5px] text-slate-500">15–20 phút · trưởng khối tự xếp, tự báo phụ huynh · mỗi em tối đa 2 ca/tuần · vắng không bù</span>
+        <h2 className="text-[16px] font-bold text-slate-800">Bổ trợ sau giờ · L1</h2>
+        <span className="text-[12.5px] text-slate-500">15–20 phút sau buổi học · in lý thuyết / luyện / test tuỳ em · TA nhập test là xong · mỗi em tối đa 2 ca/tuần · vắng không bù</span>
         <div className="ml-auto flex gap-2">
           <button onClick={tai} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50" title="Quét lại">↻</button>
-          <button onClick={() => setTao((v) => !v)} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700">{tao ? 'Đóng' : '＋ Tạo ca Nhẹ'}</button>
+          <button onClick={() => { setDau(null); setTao((v) => !v) }} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700">{tao ? 'Đóng' : '＋ Khởi tạo ca'}</button>
         </div>
       </div>
       {loi && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
 
-      {tao && <FormTaoCa homNay={homNay} onXong={(caId, ds) => {
-        setTao(false)
+      {cho && cho.length > 0 && (
+        <section className="mb-5 rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
+          <p className="mb-2 text-[12px] font-bold uppercase tracking-wider text-amber-800">Chờ khởi tạo · {cho.length} em đã duyệt L1 (sau giờ)</p>
+          <div className="flex flex-col gap-2">
+            {choTheoLop.map((ds) => (
+              <div key={ds[0].lop_id ?? ds[0].hoc_sinh_id} className="flex flex-wrap items-center gap-2 rounded-xl bg-white px-3 py-2 ring-1 ring-amber-100">
+                <span className="text-[13px] font-bold text-slate-800">{ds[0].ten_lop ?? '?'}</span>
+                <span className="text-[11.5px] text-slate-400">{ds[0].mon} · K{ds[0].khoi}</span>
+                {ds.map((x) => (
+                  <span key={x.de_xuat_id} title={x.nhom.map((n) => n.ten).join('\n') + (x.ghi_chu ? '\n— ' + x.ghi_chu : '')}
+                    className="rounded-full bg-amber-100 px-2 py-0.5 text-[12px] text-amber-900">{x.ho_ten} · {x.so_dang} dạng</span>
+                ))}
+                {ds[0].lop_id && <button onClick={() => { setDau({ lopId: ds[0].lop_id!, hs: ds.map((x) => x.hoc_sinh_id) }); setTao(true) }}
+                  className="ml-auto rounded-lg bg-amber-600 px-3 py-1 text-[12.5px] font-semibold text-white hover:bg-amber-700">Khởi tạo ca · {ds.length} em</button>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {tao && <FormTaoCa key={dau ? dau.lopId + dau.hs.join() : 'trong'} homNay={homNay} dau={dau} onXong={(caId, ds) => {
+        setTao(false); setDau(null); taiCho()
         dsCaNhe(tu, den).then((r) => {
           NHO.rows = r; setRows(r)
           const ca = r.find((x) => x.ca_id === caId)
@@ -70,7 +100,7 @@ export default function BoTroNheScreen() {
             onHuy={async (c) => {
               if (!window.confirm(`Huỷ ca ${ddmmVN(c.ngay)} ${hhmm(c.gio_bat_dau)} lớp ${c.ten_lop}? Em đã điểm danh giữ nguyên.`)) return
               try { await huyCaNhe(c.ca_id, 'Trưởng khối huỷ ca'); tai() } catch (e: any) { setLoi(e?.message ?? String(e)) }
-            }} rong="Chưa có ca Nhẹ nào sắp tới." />
+            }} rong="Chưa có ca sau giờ nào sắp tới." />
           {daQua.length > 0 && <Nhom tieuDe={`Đã qua · 14 ngày · ${daQua.length} ca`} cas={daQua} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
             onThongBao={(c) => setThongBao({ caId: c.ca_id, text: thongBaoPhuHuynh(c) })} />}
         </>
@@ -148,11 +178,11 @@ function ThongBaoBox({ text, onDong }: { text: string; onDong: () => void }) {
   )
 }
 
-function FormTaoCa({ homNay, onXong }: { homNay: string; onXong: (caId: string, emKhongDang: string[]) => void }) {
+function FormTaoCa({ homNay, onXong, dau }: { homNay: string; onXong: (caId: string, emKhongDang: string[]) => void; dau?: { lopId: string; hs: string[] } | null }) {
   const [kieu, setKieu] = useState<'sau_buoi' | 'khac'>('sau_buoi')
   const [ngay, setNgay] = useState(homNay)
   const [lops, setLops] = useState<LopNhe[] | null>(null)
-  const [lopId, setLopId] = useState<string>('')
+  const [lopId, setLopId] = useState<string>(dau?.lopId ?? '')
   const [hs, setHs] = useState<HsNhe[] | null>(null)
   const [chon, setChon] = useState<Set<string>>(new Set())
   const [phut, setPhut] = useState(20)
@@ -168,7 +198,10 @@ function FormTaoCa({ homNay, onXong }: { homNay: string; onXong: (caId: string, 
   useEffect(() => {
     setHs(null); setChon(new Set())
     if (!lopId) return
-    hsCuaLop(lopId, ngay).then(setHs).catch((e) => { setHs([]); setLoi(e?.message ?? String(e)) })
+    hsCuaLop(lopId, ngay).then((r) => {
+      setHs(r)
+      if (dau && dau.lopId === lopId) setChon(new Set(r.filter((h) => dau.hs.includes(h.hoc_sinh_id) && h.so_ca_nhe_tuan < 2).map((h) => h.hoc_sinh_id)))
+    }).catch((e) => { setHs([]); setLoi(e?.message ?? String(e)) })
   }, [lopId, ngay])
 
   const lop = lops?.find((l) => l.lop_id === lopId) ?? null

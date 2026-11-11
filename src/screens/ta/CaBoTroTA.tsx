@@ -6,6 +6,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inSinhHinhGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
+import SauGioCa from './SauGioCa'
 import { MathText } from '../kho/ui'
 import { CauCuaEmTA } from './CauCuaEmTA'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
@@ -41,7 +42,7 @@ const TT_NHAN: Record<TrangThai, { ten: string; cls: string }> = {
 export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; retest: ViecRetest[] }; onDoi: () => void }) {
   const [moId, setMoId] = useState<string | null>(null)
   const homNay = homNayVN()
-  if (moId) return <CaDetail buoiId={moId} onBack={() => { setMoId(null); onDoi() }} />
+  if (moId) return <CaDetail buoiId={moId} nhe={viec.ca.some((c) => c.buoi_id === moId && c.nhe)} onBack={() => { setMoId(null); onDoi() }} />
 
   const nhom = (tt: (t: TrangThai, c: ViecCaBoTro) => boolean) => viec.ca.filter((c) => tt(trangThaiCa(c, homNay), c))
   const homNayCa = nhom((_t, c) => c.ngay === homNay)
@@ -89,7 +90,7 @@ function Nhom({ tieuDe, cls, items, homNay, onMo, rong }: { tieuDe: string; cls:
             title={<>{c.ho_ten} <MaHS ma={c.ma_hs} className="ml-1" /> <span className="font-normal text-[#63709A]">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></>}
             sub={<>
               <span>{c.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`}{c.gio_bat_dau ? ` · ${hhmm(c.gio_bat_dau)}` : ''}{c.phong ? ` · ${c.phong}` : ''}</span>
-              <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{MUC_TEN[c.level ?? 1] ?? `L${c.level}`}</span>
+              <span className="rounded-full bg-white/80 px-1.5 py-px font-semibold">{c.nhe ? 'L1 · sau giờ' : MUC_TEN[c.level ?? 1] ?? `L${c.level}`}</span>
               <span>{c.so_dang} dạng</span>
             </>}
             right={<span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${tt.cls}`}>{tt.ten}</span>} />
@@ -101,6 +102,7 @@ function Nhom({ tieuDe, cls, items, homNay, onMo, rong }: { tieuDe: string; cls:
 
 // ── DETAIL 1 CA ──────────────────────────────────────────────────────────────
 // Export cho màn ERP Bổ trợ Nhẹ (Thùy 29/10): ca Nhẹ chạy bằng đúng máy ca Yếu (fn_btyeu_*); `nhe` chỉ đổi câu chữ vắng (không bù).
+// 11/11: Nhẹ ⇒ BỔ TRỢ SAU GIỜ (L1) — `nhe` thay bước 2–4 bằng SauGioCa (3 thứ in riêng + nhập test = xong).
 export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () => void; nhe?: boolean }) {
   const [ca, setCa] = useState<CaTA | null | undefined>(undefined)
   const [busy, setBusy] = useState<string | null>(null)
@@ -207,7 +209,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
   return (
     <div>
       <BKTabHeader onBack={onBack} icon="/bk-ui/pr_tai_nghe.png" title={`${ca.hs.ho_ten}${ca.hs.ma_hs ? ` · ${ca.hs.ma_hs}` : ''} · ${ca.mon}${ca.hs.khoi ? ` · K${ca.hs.khoi}` : ''}`}
-        sub={`${thuCuaNgay(ca.ngay)} ${ddmmVN(ca.ngay)} · ${MUC_TEN[ca.hs.level ?? 1] ?? `L${ca.hs.level}`} · ${ca.dangs.length} dạng${ca.so_lan_huy ? ` · đã huỷ ${ca.so_lan_huy} lần` : ''}`} />
+        sub={`${thuCuaNgay(ca.ngay)} ${ddmmVN(ca.ngay)} · ${nhe ? 'L1 · sau giờ' : MUC_TEN[ca.hs.level ?? 1] ?? `L${ca.hs.level}`} · ${ca.dangs.length} dạng${ca.so_lan_huy ? ` · đã huỷ ${ca.so_lan_huy} lần` : ''}`} />
 
       <div className="mx-auto max-w-[1000px] px-2 pb-8 pt-1">
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
@@ -243,6 +245,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
             )}
         </Khoi>
 
+        {nhe ? <SauGioCa ca={ca} onDoi={tai} /> : <>
         {/* 1b. CHỌN CHẾ ĐỘ — hiện khi em có mặt; khoá khi ca đã đóng */}
         {coMat && (
           <div className={`mb-3 rounded-2xl p-3 ring-1 ${cheDo ? 'bg-white ring-slate-200' : 'bg-amber-50 ring-amber-300'}`}>
@@ -475,6 +478,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
             </div>
           )}
         </Khoi>
+        </>}
       </div>
     </div>
   )

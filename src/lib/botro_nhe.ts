@@ -54,6 +54,33 @@ export async function huyCaNhe(caId: string, lyDo: string): Promise<number> {
   return Number(data ?? 0)
 }
 
+// ── BỔ TRỢ SAU GIỜ = L1 (Thùy 11/11, mig 202611111627) ──
+// Hàng chờ: em được trưởng bộ môn DUYỆT L1, chưa khởi tạo ca sau giờ (fn_btnhe_cho).
+export type ChoSauGio = {
+  de_xuat_id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; mon: string; khoi: string
+  lop_id: string | null; ten_lop: string | null; nhom: { ma: string; ten: string }[]; uu_tien: number; ghi_chu: string; duyet_at: string; so_dang: number
+}
+export async function choSauGio(): Promise<ChoSauGio[]> {
+  const { data, error } = await supabase.rpc('fn_btnhe_cho')
+  if (error) throw error
+  return (data ?? []) as ChoSauGio[]
+}
+export type LyThuyetSauGio = {
+  buoi_id: string; mon: string; ngay: string; hs: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null }
+  dang: { ma_dang: string; ten_dang: string; nhom_yeu: boolean; ly_thuyet: string | null; file_url: string | null; vi_du: string | null }[]
+}
+export async function inLyThuyetSauGio(buoiId: string): Promise<LyThuyetSauGio> {
+  const { data, error } = await supabase.rpc('fn_btnhe_in_ly_thuyet', { p_buoi: buoiId })
+  if (error) throw error
+  return data as LyThuyetSauGio
+}
+// Bài test sau giờ: 1 câu mỗi dạng yếu trong nhóm yếu; gọi lại = lấy đúng bài đã sinh (DB idempotent)
+export async function inTestSauGio(buoiId: string): Promise<{ bai_test_id: string; so_cau: number; da_co: boolean; dang_khong_co_cau: string[] }> {
+  const { data, error } = await supabase.rpc('fn_btnhe_in_test', { p_buoi: buoiId })
+  if (error) throw error
+  return data as { bai_test_id: string; so_cau: number; da_co: boolean; dang_khong_co_cau: string[] }
+}
+
 // Thông báo dán nhóm Zalo lớp (Thùy 29/10). Chỉ ghép chữ hiển thị — tên em lấy từ ca đã lưu, bỏ em đã huỷ (vắng/huỷ ca).
 export function thongBaoPhuHuynh(ca: CaNhe): string {
   const ten = ca.hs.filter((h) => h.buoi_trang_thai !== 'huy').map((h) => h.ho_ten)

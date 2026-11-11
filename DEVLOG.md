@@ -79754,3 +79754,16 @@ Thùy nêu 4 việc, làm được 3:
 - mig 202611111553 ĐÃ ÁP: nới 5 CHECK (0–4 / 1–4) · dời hs_level 2→3 (10 em, mỗi em 1 dòng log doi_thang_l1_l4) + bo_tro_de_xuat 2→3 (11 dòng) · _ca_bo_tro_don_vi L1 1 · L2 2 · L3/L4 4 · fn_ca_bo_tro_ung_vien chỉ L2·L3, đơn vị lấy từ _ca_bo_tro_don_vi · fn_btyeu_capacity_khoi chỉ L2·L3 · fn_btyeu_doi_level 0–4 · fn_btk_luu 1–4. Thử rollback: L2 → dv 2, L3 → dv 4, L1/L4 không vào ứng viên; khối 7 capacity dùng 2→0 (3 case đang mở đều L1).
 - Màn: MUC_TEN/MUC_CLS chung (MucUuTienCase) 4 mức · TEN_MUC boTroTk · popup 4 nút, mặc định L3 · CaBoTroTA · Lịch phòng vá đv tại chỗ · DuyetBoTroYeu (ẩn) dùng MUC_TEN. Kiểm app: Danh sách bổ trợ Toán hiện "L1 · sau giờ…" / "L3 · 4 đơn vị…". spec-bo-tro §42.
 - Chờ Thùy: L1/L4 có tính vào trần 70 em / 20 Cao không (hiện vẫn tính).
+
+### 11/11 16:xx — [Duyệt công TA] Mở lại công đã duyệt + lịch sử duyệt + sửa ca trộn khối (mig 202611111600 ĐÃ ÁP)
+- Lỗi Cường (Tạ Quốc Cường, TK Toán 7–8) không duyệt được ca 01/11 của Tạ Quang Tùng: ca có 2 việc trông thi 7B1 (khối 7) + 9A2 (khối 9); luật 09/11 ca trộn khối chỉ người giữ ta_cong_duyet. Nới _ta_cong_duoc_ca: ≥1 việc thuộc phạm vi mình + mọi việc ngoài phạm vi đã DUYỆT ⇒ duyệt được.
+- fn_ta_duyet_cong nhận cho_duyet = Mở lại (bắt buộc lý do, ghi "Mở lại: …", cùng luật phạm vi; khoá kỳ vẫn chặn tháng đã chốt). fn_ta_cong_lich_su(id) dịch ta_cong_log ra chữ; fn_ta_cong_nguoi_duyet(từ,đến).
+- Màn: tab lọc "Lịch sử duyệt" (khoảng ngày + lọc người duyệt), tên người xử lý cạnh trạng thái, nút Mở lại (dòng đã duyệt/từ chối) + 🕘 lịch sử từng dòng. Test test_mo_lai_cong.mjs 10/10.
+- Ô tải ảnh chân dung HS cho ảnh FB: bảng hoc_sinh_anh_chan_dung (1 dòng/em, chưa có = không dòng), fn_vinh_danh_hs trả anhChanDung (mig 202611111622 đã áp). Chưa bấm thử trong app: đăng nhập nhanh DEV là tài khoản thật trên DB thật.
+- Subtab XS nhất khối (Tiêu biểu đổi tên): giai_thuong_xs_khoi + log trigger + 3 hàm (mig 202611111630 đã áp). Bẫy: claude_build không có REFERENCES trên giai_thuong (owner postgres) ⇒ bỏ FK, join khi đọc. CLI đọc 0 dòng giai_thuong nên chưa thấy dữ liệu thật; chưa bấm trong app.
+
+### Bổ trợ SAU GIỜ = L1 (nâng cấp Bổ trợ Nhẹ) — Thùy 11/11
+- Story + 6 câu Thùy chốt (xem spec-bo-tro §43). Phát hiện Bổ trợ Nhẹ (29/10) đã có khởi tạo ca sau buổi + in/nhập giấy ⇒ hỏi, Thùy chọn nâng cấp Nhẹ + L1 duyệt vào hàng chờ sau giờ (không vào hàng xếp Lộc).
+- mig 202611111627 ĐÃ ÁP: _sau_gio_dang · fn_btnhe_fill_dang · _btnhe_dang_buoi · fn_btnhe_in_ly_thuyet · fn_btnhe_in_test · fn_btnhe_cho + vá fn_btnhe_tao · fn_btyeu_in_sinh · fn_btyeu_giay_nop (nộp ca sau giờ = xong) · fn_btyeu_viec_cua_toi (TA cùng làm) · fn_btk_duyet (L1 ⇒ hàng chờ) · fn_btnhe_lop_hs. Thử ROLLBACK trọn vòng trên em K8 thật: đúng, lần đo vào mastery (ET).
+- Màn: SauGioCa.tsx (3 nút in riêng + nhập test) thay bước 2–4 CaDetail khi nhe · TrangInLyThuyet (LyThuyetBlockView) · BoTroNheScreen đổi "Sau giờ · L1" + khung Chờ khởi tạo (form tạo ca chọn sẵn lớp + em) · app TA thấy ca sau giờ. Kiểm ERP local: hàng chờ 1 em 7A1, Khởi tạo ca chọn sẵn đúng em (không bấm tạo).
+- Bài học: trước khi dựng luồng mới phải dò tính năng sẵn có cùng ý (Nhẹ = sau giờ đã tồn tại) — suýt dựng máy thứ hai.

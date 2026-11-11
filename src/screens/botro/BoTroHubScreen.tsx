@@ -21,7 +21,7 @@ const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'dashboard', ten: 'Dashboard', mo_ta: 'Tiến độ theo tuần: chốt bao nhiêu ca, thực tế chạy được bao nhiêu — 3 tuần gần nhất' }, // Thùy 13/10
   { k: 'duoi', ten: 'Đuổi', mo_ta: 'HS vào lớp giữa chừng — đợt đuổi, kế hoạch dạng' },
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
-  { k: 'nhe', ten: 'Nhẹ', mo_ta: 'Bổ trợ Nhẹ (L1.1, 29/10): trưởng khối tự tạo ca 15–20 phút sau giờ — không qua Lộc, không suất, mỗi em ≤ 2 ca/tuần' },
+  { k: 'nhe', ten: 'Sau giờ', mo_ta: 'Bổ trợ sau giờ (L1): khởi tạo ca 15–20 phút sau buổi cho em đã duyệt L1 — in lý thuyết/luyện/test, TA nhập test là xong' },
   { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
   { k: 'hinh', ten: 'Hình', mo_ta: 'Bổ trợ Hình (17/10): độc lập với Yếu — Trang/Lộc tự mở ca, xếp ở Lịch phòng, tài liệu theo buổi, cuối buổi chỉ nhận xét' },
   { k: 'onthi', ten: 'Ôn thi', mo_ta: 'Bổ trợ ôn thi (23/10): mỗi kỳ thi mở ca cho TẤT CẢ học sinh — đợt · ca · đăng ký · TA điểm danh + báo động · thống kê theo khối' },
