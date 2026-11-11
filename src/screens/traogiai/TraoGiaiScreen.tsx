@@ -10,6 +10,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { captureReportSnapshot } from '../report/ReportCard'
 import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
+import { veVinhDanhFB, getVinhDanhData, PHONG_CACH, type PhongCach, type LoaiNen } from './vinhDanhFB'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
@@ -315,6 +316,20 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
   const [busy, setBusy] = useState<Set<string>>(new Set())
   const [bulk, setBulk] = useState<{ done: number; total: number } | null>(null)
   const [xemAnh, setXemAnh] = useState<string | null>(null) // URL đang phóng to
+  // Ảnh vinh danh đăng FB (Thùy 11/11): chọn bộ nền, bấm từng dòng ⇒ dựng PNG 1080×1350 xem + tải. Chăm chỉ chưa có nền.
+  const [phongCach, setPhongCach] = useState<PhongCach>('hoanggia')
+  const [fbBusy, setFbBusy] = useState<string | null>(null)
+  const [fbXem, setFbXem] = useState<{ url: string; ten: string } | null>(null)
+  async function lamAnhFB(r: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }, loai: LoaiNen) {
+    const k = anhKey(r.slot.hocSinhId, r.card.mon)
+    setFbBusy(k)
+    try {
+      const d = await getVinhDanhData(r.slot.hocSinhId, r.card.mon, ym)
+      const cv = await veVinhDanhFB(d, loai, phongCach)
+      setFbXem({ url: cv.toDataURL('image/png'), ten: `vinh-danh-${ym}-${r.card.tenLop}-${d.maHs ?? r.slot.hocSinhId}.png` })
+    } catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setFbBusy(null) }
+  }
   const [toast, setToast] = useState<string | null>(null)
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
   const anhKey = (hsId: string, mon: string) => `${hsId}|${mon}|${ym}`
@@ -362,8 +377,13 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
   const soChua = rows.filter((r) => !anh[anhKey(r.slot.hocSinhId, r.card.mon)]).length
   return (
     <>
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between gap-3">
         <div className="text-[12px] text-slate-500">Ảnh chụp lấy y hệt Report PH (điểm ET/BTVN/MT, hạng lớp/khối). Chụp trước, PH chưa thấy tới khi chốt Report riêng.</div>
+        <label className="flex shrink-0 items-center gap-1.5 text-[12px] font-semibold text-slate-600">Nền ảnh FB
+          <select value={phongCach} onChange={(e) => setPhongCach(e.target.value as PhongCach)} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
+            {PHONG_CACH.map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}
+          </select>
+        </label>
         <button disabled={!!bulk || soChua === 0} onClick={() => void chupCaBang()}
           className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50">
           {bulk ? `Đang chụp ${bulk.done}/${bulk.total}…` : `📸 Chụp cả bảng (${soChua} chưa có)`}
@@ -382,6 +402,7 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
               <th className="px-3 py-2.5 text-right font-semibold">ET</th>
               <th className="px-3 py-2.5 text-right font-semibold">BTVN</th>
               <th className="px-3 py-2.5 text-center font-semibold">Ảnh</th>
+              <th className="px-3 py-2.5 text-center font-semibold">Ảnh FB</th>
               <th className="px-3 py-2.5 text-left font-semibold">Trạng thái</th>
             </tr>
           </thead>
@@ -415,6 +436,13 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
                       </button>
                     )}
                   </td>
+                  <td className="px-3 py-2 text-center">
+                    {loaiGiai === 'cham_chi' ? <span className="text-[11px] text-slate-300">chưa có nền</span> : (
+                      <button disabled={fbBusy != null} onClick={() => void lamAnhFB(r, loaiGiai as LoaiNen)} className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-700 hover:bg-amber-100 disabled:opacity-50">
+                        {fbBusy === k ? '⏳' : '🏅 Làm ảnh'}
+                      </button>
+                    )}
+                  </td>
                   <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
                 </tr>
               )
@@ -425,6 +453,16 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
       {xemAnh && createPortal(
         <div onClick={() => setXemAnh(null)} className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/70 p-4">
           <img src={xemAnh} alt="" className="max-h-full max-w-full rounded-xl shadow-2xl" />
+        </div>,
+        document.body,
+      )}
+      {fbXem && createPortal(
+        <div onClick={() => setFbXem(null)} className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/75 p-4">
+          <img src={fbXem.url} alt="" className="max-h-[85vh] max-w-full rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()} />
+          <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+            <a href={fbXem.url} download={fbXem.ten} className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-amber-400">⬇ Tải ảnh</a>
+            <button onClick={() => setFbXem(null)} className="rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700">Đóng</button>
+          </div>
         </div>,
         document.body,
       )}
