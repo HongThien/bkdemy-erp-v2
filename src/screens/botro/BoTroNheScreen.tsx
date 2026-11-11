@@ -5,7 +5,8 @@
 // Chạy ca = CaDetail của ca Yếu (điểm danh · in phiếu luyện + test · nhập giấy · đóng ca · hoàn tất) — không dựng máy thứ hai.
 // Mọi kiểm tra ở DB (fn_btnhe_*). Sau mutation: vá/refetch nền, không xoá list (CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
-import { lopCuaToi, hsCuaLop, taoCaNhe, dsCaNhe, huyCaNhe, thongBaoPhuHuynh, choSauGio, type LopNhe, type HsNhe, type CaNhe, type HsCaNhe, type ChoSauGio } from '../../lib/botro_nhe'
+import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
+import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
 import { CaDetail } from '../ta/CaBoTroTA'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -29,9 +30,9 @@ export default function BoTroNheScreen() {
   const [mo, setMoState] = useState(NHO.mo)
   const setMo = (v: typeof mo) => { NHO.mo = v; setMoState(v) }
   const [tao, setTao] = useState(false)
-  const [dau, setDau] = useState<{ lopId: string; hs: string[] } | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp + em
+  const [dau, setDau] = useState<string | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp (em chờ tự tick)
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
-  const [thongBao, setThongBao] = useState<{ caId: string; text: string } | null>(null)
+  const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
 
   // refetch NỀN: giữ rows cũ tới khi có rows mới, không bao giờ trắng màn
   const taiCho = () => choSauGio().then((r) => { NHO.cho = r; setCho(r) }).catch((e) => setLoi(e?.message ?? String(e)))
@@ -73,7 +74,7 @@ export default function BoTroNheScreen() {
                   <span key={x.de_xuat_id} title={x.nhom.map((n) => n.ten).join('\n') + (x.ghi_chu ? '\n— ' + x.ghi_chu : '')}
                     className="rounded-full bg-amber-100 px-2 py-0.5 text-[12px] text-amber-900">{x.ho_ten} · {x.so_dang} dạng</span>
                 ))}
-                {ds[0].lop_id && <button onClick={() => { setDau({ lopId: ds[0].lop_id!, hs: ds.map((x) => x.hoc_sinh_id) }); setTao(true) }}
+                {ds[0].lop_id && <button onClick={() => { setDau(ds[0].lop_id!); setTao(true) }}
                   className="ml-auto rounded-lg bg-amber-600 px-3 py-1 text-[12.5px] font-semibold text-white hover:bg-amber-700">Khởi tạo ca · {ds.length} em</button>}
               </div>
             ))}
@@ -81,28 +82,27 @@ export default function BoTroNheScreen() {
         </section>
       )}
 
-      {tao && <FormTaoCa key={dau ? dau.lopId + dau.hs.join() : 'trong'} homNay={homNay} dau={dau} onXong={(caId, ds) => {
+      {tao && <FormKhoiTao key={dau ?? 'trong'} lopDau={dau} onXong={(caId, ds) => {
         setTao(false); setDau(null); taiCho()
         dsCaNhe(tu, den).then((r) => {
           NHO.rows = r; setRows(r)
-          const ca = r.find((x) => x.ca_id === caId)
-          if (ca) setThongBao({ caId, text: thongBaoPhuHuynh(ca) })
+          setThongBao(caId) // khởi tạo xong ⇒ mở ngay ảnh thông báo phụ huynh
           if (ds.length) setLoi(`Lưu ý: ${ds.join(', ')} hiện chưa có dạng yếu nào đủ dữ liệu — ca vẫn tạo, phiếu in sẽ trống dạng.`)
         }).catch((e) => setLoi(e?.message ?? String(e)))
       }} />}
 
-      {thongBao && <ThongBaoBox text={thongBao.text} onDong={() => setThongBao(null)} />}
+      {thongBao && (rows ?? []).some((c) => c.ca_id === thongBao) && <ThongBaoSauGioAnh ca={(rows ?? []).find((c) => c.ca_id === thongBao)!} onDong={() => setThongBao(null)} />}
 
       {rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
         <>
           <Nhom tieuDe={`Sắp tới & hôm nay · ${dangToi.length} ca`} cas={dangToi} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
-            onThongBao={(c) => setThongBao({ caId: c.ca_id, text: thongBaoPhuHuynh(c) })}
+            onThongBao={(c) => setThongBao(c.ca_id)}
             onHuy={async (c) => {
               if (!window.confirm(`Huỷ ca ${ddmmVN(c.ngay)} ${hhmm(c.gio_bat_dau)} lớp ${c.ten_lop}? Em đã điểm danh giữ nguyên.`)) return
               try { await huyCaNhe(c.ca_id, 'Trưởng khối huỷ ca'); tai() } catch (e: any) { setLoi(e?.message ?? String(e)) }
             }} rong="Chưa có ca sau giờ nào sắp tới." />
           {daQua.length > 0 && <Nhom tieuDe={`Đã qua · 14 ngày · ${daQua.length} ca`} cas={daQua} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
-            onThongBao={(c) => setThongBao({ caId: c.ca_id, text: thongBaoPhuHuynh(c) })} />}
+            onThongBao={(c) => setThongBao(c.ca_id)} />}
         </>
       )}
     </div>
@@ -150,7 +150,7 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, rong }: {
                     })}
                   </ul>
                   <div className="mt-3 flex gap-2">
-                    <button onClick={() => onThongBao(c)} className="rounded-lg border border-slate-200 px-3 py-1 text-[12px] text-slate-600 hover:bg-slate-50">📋 Thông báo phụ huynh</button>
+                    <button onClick={() => onThongBao(c)} className="rounded-lg border border-slate-200 px-3 py-1 text-[12px] text-slate-600 hover:bg-slate-50">🖼 Ảnh thông báo PH</button>
                     {onHuy && !huy && <button onClick={() => onHuy(c)} className="rounded-lg px-3 py-1 text-[12px] text-rose-600 hover:bg-rose-50">Huỷ ca</button>}
                   </div>
                 </div>
@@ -163,137 +163,92 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, rong }: {
   )
 }
 
-function ThongBaoBox({ text, onDong }: { text: string; onDong: () => void }) {
-  const [daCopy, setDaCopy] = useState(false)
-  return (
-    <div className="mb-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3">
-      <div className="mb-1.5 flex items-center gap-2">
-        <span className="text-[12.5px] font-semibold text-emerald-800">Thông báo gửi nhóm Zalo lớp</span>
-        <button onClick={onDong} className="ml-auto text-[12px] text-emerald-700 hover:underline">Đóng</button>
-      </div>
-      <p className="whitespace-pre-wrap rounded-lg bg-white px-3 py-2 text-[13.5px] text-slate-800">{text}</p>
-      <button onClick={() => { navigator.clipboard?.writeText(text).then(() => { setDaCopy(true); setTimeout(() => setDaCopy(false), 2000) }).catch(() => {}) }}
-        className="mt-2 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12.5px] font-semibold text-white hover:bg-emerald-700">{daCopy ? '✓ Đã copy' : 'Copy'}</button>
-    </div>
-  )
-}
-
-function FormTaoCa({ homNay, onXong, dau }: { homNay: string; onXong: (caId: string, emKhongDang: string[]) => void; dau?: { lopId: string; hs: string[] } | null }) {
-  const [kieu, setKieu] = useState<'sau_buoi' | 'khac'>('sau_buoi')
-  const [ngay, setNgay] = useState(homNay)
-  const [lops, setLops] = useState<LopNhe[] | null>(null)
-  const [lopId, setLopId] = useState<string>(dau?.lopId ?? '')
-  const [hs, setHs] = useState<HsNhe[] | null>(null)
+// FORM KHỞI TẠO CA SAU GIỜ (Thùy 11/11): 1 chọn lớp (lớp có em đã duyệt L1) · 2 em ĐÃ DUYỆT của lớp (tick sẵn em đang chờ) ·
+// 3 chọn BUỔI HỌC sắp tới của lớp (ngày · giờ · phòng) — ca bắt đầu đúng lúc buổi tan, cùng phòng. Không nhập ngày/giờ tay.
+function FormKhoiTao({ lopDau, onXong }: { lopDau?: string | null; onXong: (caId: string, emKhongDang: string[]) => void }) {
+  const [lops, setLops] = useState<LopCho[] | null>(null)
+  const [lopId, setLopId] = useState<string>(lopDau ?? '')
+  const [hs, setHs] = useState<HsDuyet[] | null>(null)
   const [chon, setChon] = useState<Set<string>>(new Set())
+  const [buois, setBuois] = useState<BuoiLop[] | null>(null)
+  const [buoi, setBuoi] = useState<string>('') // ngày buổi đã chọn
   const [phut, setPhut] = useState(20)
-  const [gio, setGio] = useState('')
-  const [phong, setPhong] = useState('')
   const [coTa, setCoTa] = useState(true)
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
-  // đổi ngữ cảnh (ngày) ⇒ reset + fetch lại danh sách lớp
-  useEffect(() => { setLops(null); lopCuaToi(ngay).then(setLops).catch((e) => { setLops([]); setLoi(e?.message ?? String(e)) }) }, [ngay])
-  // đổi lớp ⇒ reset + fetch học sinh
+  useEffect(() => { lopCoEmDuyet().then((r) => { setLops(r); if (!lopDau && r.length === 1) setLopId(r[0].lop_id) }).catch((e) => { setLops([]); setLoi(e?.message ?? String(e)) }) }, []) // eslint-disable-line
+  // đổi lớp (đổi ngữ cảnh) ⇒ reset + fetch em + buổi song song
   useEffect(() => {
-    setHs(null); setChon(new Set())
+    setHs(null); setChon(new Set()); setBuois(null); setBuoi('')
     if (!lopId) return
-    hsCuaLop(lopId, ngay).then((r) => {
-      setHs(r)
-      if (dau && dau.lopId === lopId) setChon(new Set(r.filter((h) => dau.hs.includes(h.hoc_sinh_id) && h.so_ca_nhe_tuan < 2).map((h) => h.hoc_sinh_id)))
-    }).catch((e) => { setHs([]); setLoi(e?.message ?? String(e)) })
-  }, [lopId, ngay])
+    hsDaDuyet(lopId).then((r) => { setHs(r); setChon(new Set(r.filter((h) => h.cho && h.so_ca_tuan < 2).map((h) => h.hoc_sinh_id))) })
+      .catch((e) => { setHs([]); setLoi(e?.message ?? String(e)) })
+    buoiCuaLop(lopId).then((r) => { setBuois(r); if (r.length) setBuoi(r[0].ngay) }).catch((e) => { setBuois([]); setLoi(e?.message ?? String(e)) })
+  }, [lopId])
 
-  const lop = lops?.find((l) => l.lop_id === lopId) ?? null
-  // sau buổi = bắt đầu đúng lúc buổi học của lớp kết thúc, cùng phòng
-  const gioBatDau = kieu === 'sau_buoi' ? hhmm(lop?.gio_ket_thuc) : gio
-  const phongDung = kieu === 'sau_buoi' ? (lop?.phong ?? null) : (phong.trim() || null)
-  const thieuGioSauBuoi = kieu === 'sau_buoi' && !!lop && !lop.gio_ket_thuc
-  // em có dạng yếu lên đầu (sort thuần UI)
-  const hsSap = useMemo(() => [...(hs ?? [])].sort((a, b) => b.so_dang_yeu - a.so_dang_yeu || a.ho_ten.localeCompare(b.ho_ten, 'vi')), [hs])
-  const thieu = !lop ? 'Chọn lớp' : thieuGioSauBuoi ? 'Lớp không học ngày này — chọn "Giờ khác"' : !gioBatDau ? 'Nhập giờ bắt đầu' : chon.size === 0 ? 'Chọn học sinh' : null
-
+  const b = buois?.find((x) => x.ngay === buoi) ?? null
+  const thieu = !lopId ? 'Chọn lớp' : chon.size === 0 ? 'Chọn học sinh' : !b ? 'Chọn buổi học' : null
   async function tao() {
-    if (thieu || !lop) return
+    if (thieu || !b) return
     setBusy(true); setLoi(null)
     try {
-      const r = await taoCaNhe({ lopId: lop.lop_id, kieu, ngay, gioBatDau, phut, phong: phongDung, hs: [...chon], taId: coTa ? lop.ta_id : null })
-      if (r.trung_phong > 0) window.alert(`Phòng ${phongDung} đang có ${r.trung_phong} hoạt động trùng giờ (lịch phòng chung):\n${(r.trung_ds ?? []).map((t) => `• ${t.gio_bat_dau}–${t.gio_ket_thuc} ${t.tieu_de}`).join('\n')}\nCa vẫn tạo — kiểm lại phòng nhé.`)
+      const r = await taoCaNhe({ lopId, kieu: 'sau_buoi', ngay: b.ngay, gioBatDau: hhmm(b.gio_ket_thuc), phut, phong: b.phong, hs: [...chon], taId: coTa ? b.ta_id : null })
       onXong(r.ca_id, r.em_khong_dang ?? [])
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
-  const nhan = 'mb-1 block text-[11.5px] font-semibold uppercase tracking-wider text-slate-500'
+  const nhan = 'mb-1.5 block text-[11.5px] font-semibold uppercase tracking-wider text-slate-500'
   return (
     <div className="mb-6 rounded-2xl border border-indigo-100 bg-white p-5 shadow-sm">
-      <div className="grid gap-4 md:grid-cols-[repeat(4,minmax(0,1fr))]">
+      <div className="grid gap-5 md:grid-cols-[220px_minmax(0,1fr)_minmax(0,1.2fr)]">
         <div>
-          <span className={nhan}>1 · Thời gian</span>
-          <div className="inline-flex rounded-lg border border-slate-200 p-0.5 text-[12.5px] font-semibold">
-            {([['sau_buoi', 'Sau buổi học'], ['khac', 'Giờ khác']] as const).map(([k, t]) => (
-              <button key={k} onClick={() => setKieu(k)} className={`rounded-md px-3 py-1 ${kieu === k ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}>{t}</button>
-            ))}
-          </div>
-          <input type="date" value={ngay} onChange={(e) => e.target.value && setNgay(e.target.value)} className="mt-2 block w-full rounded-lg border border-slate-300 px-2 py-1 text-[13px]" />
-        </div>
-        <div>
-          <span className={nhan}>2 · Lớp</span>
+          <span className={nhan}>1 · Lớp</span>
           <select value={lopId} onChange={(e) => setLopId(e.target.value)} className="block w-full rounded-lg border border-slate-300 px-2 py-1.5 text-[13px]">
-            <option value="">{lops === null ? 'Đang tải…' : lops.length ? '— chọn lớp —' : 'Không có lớp trong phạm vi khối'}</option>
-            {(lops ?? []).map((l) => <option key={l.lop_id} value={l.lop_id}>{l.ten_lop} · {l.mon}{l.gio_ket_thuc ? ` · học ${hhmm(l.gio_bat_dau)}–${hhmm(l.gio_ket_thuc)}` : ' · không học ngày này'}</option>)}
+            <option value="">{lops === null ? 'Đang tải…' : lops.length ? '— chọn lớp —' : 'Chưa lớp nào có em đã duyệt L1'}</option>
+            {(lops ?? []).map((l) => <option key={l.lop_id} value={l.lop_id}>{l.ten_lop} · {l.mon} · {l.so_em} em{l.so_cho ? ` (${l.so_cho} chờ)` : ''}</option>)}
           </select>
-          {lop && kieu === 'sau_buoi' && (thieuGioSauBuoi
-            ? <p className="mt-1 text-[12px] text-amber-700">Lớp không có buổi ngày {ddmmVN(ngay)} — chọn “Giờ khác”.</p>
-            : <p className="mt-1 text-[12px] text-slate-500">Bắt đầu {hhmm(lop.gio_ket_thuc)}{lop.phong ? ` · phòng ${lop.phong}` : ''}</p>)}
+          <span className={nhan + ' mt-4'}>Thời lượng</span>
+          <div className="flex gap-1">{[20, 25].map((p) => <button key={p} onClick={() => setPhut(p)} className={`rounded-lg px-3 py-1 text-[12.5px] font-semibold ${phut === p ? 'bg-indigo-600 text-white' : 'border border-slate-200 text-slate-600'}`}>{p}′</button>)}</div>
+          {b?.ta_id && <label className="mt-4 flex items-center gap-2 text-[12.5px] text-slate-700"><input type="checkbox" checked={coTa} onChange={(e) => setCoTa(e.target.checked)} /> TA cùng làm: {b.ta_ten}</label>}
         </div>
         <div>
-          <span className={nhan}>Thời lượng{kieu === 'khac' ? ' · giờ · phòng' : ''}</span>
-          <div className="flex gap-1">
-            {[15, 20].map((p) => <button key={p} onClick={() => setPhut(p)} className={`rounded-lg px-3 py-1 text-[12.5px] font-semibold ${phut === p ? 'bg-indigo-600 text-white' : 'border border-slate-200 text-slate-600'}`}>{p}′</button>)}
-            <input type="number" min={10} max={90} value={phut} onChange={(e) => setPhut(Number(e.target.value) || 20)} className="w-16 rounded-lg border border-slate-300 px-2 text-[13px]" />
-          </div>
-          {kieu === 'khac' && (
-            <div className="mt-2 flex gap-2">
-              <input type="time" value={gio} onChange={(e) => setGio(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1 text-[13px]" />
-              <input value={phong} onChange={(e) => setPhong(e.target.value)} placeholder="Phòng" className="w-24 rounded-lg border border-slate-300 px-2 py-1 text-[13px]" />
-            </div>
-          )}
-        </div>
-        <div>
-          <span className={nhan}>4 · TA lớp cùng làm</span>
-          {lop?.ta_id ? (
-            <label className="flex items-center gap-2 text-[13px] text-slate-700"><input type="checkbox" checked={coTa} onChange={(e) => setCoTa(e.target.checked)} /> {lop.ta_ten}</label>
-          ) : <p className="text-[12.5px] text-slate-400">{lop ? 'Lớp chưa có TA' : '—'}</p>}
-          <p className="mt-1 text-[11.5px] text-slate-400">Ghi để tính công sau (chưa tính lương).</p>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <span className={nhan}>3 · Học sinh {hs ? `· chọn ${chon.size}/${hs.length}` : ''}</span>
-        {!lopId ? <p className="text-[13px] text-slate-400">Chọn lớp để hiện học sinh.</p>
-          : hs === null ? <p className="text-[13px] text-slate-400">Đang tính dạng yếu của lớp…</p>
-          : (
-            <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(230px,1fr))]">
-              {hsSap.map((h) => {
-                const het = h.so_ca_nhe_tuan >= 2, co = chon.has(h.hoc_sinh_id), yeu = h.so_dang_yeu > 0
+          <span className={nhan}>2 · Học sinh đã duyệt bổ trợ {hs ? `· chọn ${chon.size}/${hs.length}` : ''}</span>
+          {!lopId ? <p className="text-[13px] text-slate-400">Chọn lớp trước.</p>
+            : hs === null ? <p className="text-[13px] text-slate-400">Đang tải…</p>
+            : hs.length === 0 ? <p className="text-[13px] text-slate-400">Lớp chưa có em nào được duyệt L1 (sau giờ).</p>
+            : <div className="flex flex-col gap-1.5">{hs.map((h) => {
+                const het = h.so_ca_tuan >= 2, co = chon.has(h.hoc_sinh_id)
                 return (
-                  <label key={h.hoc_sinh_id} title={yeu ? h.dang_yeu.join('\n') : 'Chưa có dạng yếu đủ dữ liệu'}
-                    className={`flex cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-1.5 text-[13px] ${het ? 'cursor-not-allowed opacity-50' : ''} ${co ? 'border-indigo-400 bg-indigo-50' : yeu ? 'border-amber-200 bg-amber-50' : 'border-slate-200 bg-white'}`}>
-                    <input type="checkbox" disabled={het} checked={co} onChange={() => setChon((s) => { const n = new Set(s); if (n.has(h.hoc_sinh_id)) n.delete(h.hoc_sinh_id); else n.add(h.hoc_sinh_id); return n })} />
+                  <label key={h.hoc_sinh_id} title={h.nhom.map((n) => n.ten).join('\n') + (h.ghi_chu ? '\n— ' + h.ghi_chu : '')}
+                    className={`flex cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-1.5 text-[13px] ${het ? 'cursor-not-allowed opacity-50' : ''} ${co ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 bg-white'}`}>
+                    <input type="checkbox" disabled={het} checked={co} onChange={() => setChon((x) => { const n = new Set(x); if (n.has(h.hoc_sinh_id)) n.delete(h.hoc_sinh_id); else n.add(h.hoc_sinh_id); return n })} />
                     <span className="font-medium text-slate-800">{h.ho_ten}</span>
-                    <span className={`ml-auto text-[11.5px] ${yeu ? 'font-semibold text-amber-700' : 'text-slate-400'}`}>{yeu ? `${h.so_dang_yeu} dạng yếu` : '—'}</span>
-                    {h.so_ca_nhe_tuan > 0 && <span className="text-[10.5px] text-slate-400" title="Số ca Nhẹ tuần này">{h.so_ca_nhe_tuan}/2</span>}
+                    <span className="text-[11.5px] text-slate-400">{h.so_dang} dạng</span>
+                    <span className={`ml-auto rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${h.cho ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500'}`}>{h.cho ? 'chờ khởi tạo' : `đã có ca · ${h.so_ca_tuan}/2 tuần này`}</span>
                   </label>
                 )
-              })}
-            </div>
-          )}
+              })}</div>}
+        </div>
+        <div>
+          <span className={nhan}>3 · Buổi học (ca sau giờ ngay khi buổi tan)</span>
+          {!lopId ? <p className="text-[13px] text-slate-400">Chọn lớp trước.</p>
+            : buois === null ? <p className="text-[13px] text-slate-400">Đang tải…</p>
+            : buois.length === 0 ? <p className="text-[13px] text-amber-700">Lớp không có buổi học nào trong 14 ngày tới.</p>
+            : <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(190px,1fr))]">{buois.map((x) => (
+                <button key={x.ngay} onClick={() => setBuoi(x.ngay)}
+                  className={`rounded-lg border px-3 py-2 text-left text-[12.5px] ${buoi === x.ngay ? 'border-indigo-500 bg-indigo-600 text-white' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'}`}>
+                  <span className="block text-[13.5px] font-bold">{thuCuaNgay(x.ngay)} {ddmmVN(x.ngay)}</span>
+                  <span className={buoi === x.ngay ? 'text-white/85' : 'text-slate-500'}>học {hhmm(x.gio_bat_dau)}–{hhmm(x.gio_ket_thuc)}{x.phong ? ` · ${x.phong}` : ''}{x.so_ca_sau_gio ? ` · đã có ${x.so_ca_sau_gio} ca` : ''}</span>
+                </button>
+              ))}</div>}
+        </div>
       </div>
-
       {loi && <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
       <div className="mt-4 flex items-center gap-3">
-        <button disabled={!!thieu || busy} onClick={tao} className="rounded-lg bg-indigo-600 px-5 py-2 text-[13.5px] font-semibold text-white shadow-sm disabled:opacity-40">{busy ? 'Đang tạo…' : `Tạo ca${chon.size ? ` · ${chon.size} em` : ''}`}</button>
-        {thieu && <span className="text-[12px] text-slate-400">{thieu}</span>}
+        <button disabled={!!thieu || busy} onClick={tao} className="rounded-lg bg-indigo-600 px-5 py-2 text-[13.5px] font-semibold text-white shadow-sm disabled:opacity-40">{busy ? 'Đang khởi tạo…' : `Khởi tạo ca${chon.size ? ` · ${chon.size} em` : ''}`}</button>
+        {thieu ? <span className="text-[12px] text-slate-400">{thieu}</span>
+          : b && <span className="text-[12px] text-slate-500">{thuCuaNgay(b.ngay)} {ddmmVN(b.ngay)} · ca từ {hhmm(b.gio_ket_thuc)} · {phut} phút sau giờ{b.phong ? ` · ${b.phong}` : ''}</span>}
       </div>
     </div>
   )

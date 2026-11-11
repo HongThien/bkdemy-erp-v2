@@ -81,6 +81,26 @@ export async function inTestSauGio(buoiId: string): Promise<{ bai_test_id: strin
   return data as { bai_test_id: string; so_cau: number; da_co: boolean; dang_khong_co_cau: string[] }
 }
 
+// Form khởi tạo theo BUỔI (Thùy 11/11, mig 202611111659): lớp có em đã duyệt L1 → em đã duyệt của lớp → buổi học sắp tới
+export type LopCho = { lop_id: string; ten_lop: string; mon: string; khoi: string; so_em: number; so_cho: number }
+export async function lopCoEmDuyet(): Promise<LopCho[]> {
+  const { data, error } = await supabase.rpc('fn_btnhe_lop_cho').limit(500)
+  if (error) throw error
+  return (data ?? []) as LopCho[]
+}
+export type HsDuyet = { hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; cho: boolean; duyet_at: string; so_ca_tuan: number; so_dang: number; nhom: { ma: string; ten: string }[]; ghi_chu: string }
+export async function hsDaDuyet(lopId: string): Promise<HsDuyet[]> {
+  const { data, error } = await supabase.rpc('fn_btnhe_hs_duyet', { p_lop: lopId }).limit(500)
+  if (error) throw error
+  return (data ?? []) as HsDuyet[]
+}
+export type BuoiLop = { ngay: string; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; ta_id: string | null; ta_ten: string | null; so_ca_sau_gio: number }
+export async function buoiCuaLop(lopId: string, soNgay = 14): Promise<BuoiLop[]> {
+  const { data, error } = await supabase.rpc('fn_btnhe_buoi_lop', { p_lop: lopId, p_so_ngay: soNgay }).limit(100)
+  if (error) throw error
+  return (data ?? []) as BuoiLop[]
+}
+
 // Thông báo dán nhóm Zalo lớp (Thùy 29/10). Chỉ ghép chữ hiển thị — tên em lấy từ ca đã lưu, bỏ em đã huỷ (vắng/huỷ ca).
 export function thongBaoPhuHuynh(ca: CaNhe): string {
   const ten = ca.hs.filter((h) => h.buoi_trang_thai !== 'huy').map((h) => h.ho_ten)

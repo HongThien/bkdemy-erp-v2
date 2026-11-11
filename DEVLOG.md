@@ -79785,3 +79785,6 @@ Thùy nêu 4 việc, làm được 3:
 - Mục tiêu S 9,5+ · A 9+ · B 8+ · C 7+, chỉ A+ học nâng cao ⇒ hệ theo mức (ma trận 4 mức nhận thức): 1–2 C · 3 B · 4 A · 5 S. Chỉ điền ô trống.
 - 422 mức (129 từ dạng cũ đối ứng, 293 Claude đề xuất ở de-xuat.tsv) + 586 hệ. Còn trống 0. Nhật ký ghi-nhat-ky.json, hậu kiểm hau-kiem.html (kho-rules/dai/lo/muc-do-he/).
 - Dạng CÓ SẴN lệch luật (không sửa): mức 4–5 mà hệ B/C = 19 (trái "chỉ A+ học nâng cao") · mức 3 hệ C = 250 · mức 1–2 hệ A/B = 108 · mức 3 hệ A = 50 · mức 4 hệ S = 15 · mức 5 hệ A = 2. KHTN chưa làm.
+
+### Sau giờ: form khởi tạo theo buổi + ảnh thông báo PH — Thùy 11/11
+- mig 202611111659 ĐÃ ÁP: fn_btnhe_lop_cho · fn_btnhe_hs_duyet · fn_btnhe_buoi_lop (đọc, <0,2 s). Form mới lớp → em đã duyệt → buổi học; ảnh thông báo PH (logo, tên in đậm cam) Copy/Tải. Kiểm ERP local: 7A1 1 em, 4 buổi (T6 13/11…), không bấm tạo. Bẫy: script thử in ngày bằng toISOString lệch 1 ngày (12 thay 13) — màn đúng.
