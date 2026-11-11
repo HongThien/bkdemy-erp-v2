@@ -37,6 +37,7 @@ export default function BoTroNheScreen() {
   const [dau, setDau] = useState<string | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp (em chờ tự tick)
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
+  const [hienHuy, setHienHuy] = useState(false)
   const [inLop, setInLop] = useState<{ bais: BaiInGiay[]; lop: string } | null>(null)
   // IN CẢ LỚP (Thùy 11/11): chỉ BÀI TEST — mỗi em còn mở 1 bài (chưa soạn thì DB tự sinh như nút 📝), sang trang giữa các em
   async function inCaLop(c: CaNhe) {
@@ -64,7 +65,10 @@ export default function BoTroNheScreen() {
   if (mo) return <div className="min-h-0 flex-1 overflow-auto bg-white"><CaDetail buoiId={mo.buoiId} nhe onBack={() => { setMo(null); tai() }} /></div>
 
   const dangToi = (rows ?? []).filter((c) => c.ngay >= homNay && c.trang_thai === 'mo')
-  const daQua = (rows ?? []).filter((c) => !(c.ngay >= homNay && c.trang_thai === 'mo'))
+  // Thùy 11/11: ca đã HUỶ ẩn khỏi danh sách (vẫn giữ trong DB làm vết) — bấm 'xem ca đã huỷ' mới hiện (lọc hiển thị thuần UI)
+  const daQuaCa = (rows ?? []).filter((c) => !(c.ngay >= homNay && c.trang_thai === 'mo'))
+  const soHuy = daQuaCa.filter((c) => c.trang_thai === 'huy').length
+  const daQua = hienHuy ? daQuaCa : daQuaCa.filter((c) => c.trang_thai !== 'huy')
 
   return (
     <div className="min-h-0 flex-1 overflow-auto px-8 py-5">
@@ -120,6 +124,7 @@ export default function BoTroNheScreen() {
             }} rong="Chưa có ca sau giờ nào sắp tới." />
           {daQua.length > 0 && <Nhom tieuDe={`Đã qua · 14 ngày · ${daQua.length} ca`} cas={daQua} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
             onThongBao={(c) => setThongBao(c.ca_id)} />}
+          {soHuy > 0 && <button onClick={() => setHienHuy((v) => !v)} className="text-[12px] text-slate-400 hover:text-slate-600 hover:underline">{hienHuy ? 'Ẩn ca đã huỷ' : `Xem ${soHuy} ca đã huỷ`}</button>}
         </>
       )}
     </div>

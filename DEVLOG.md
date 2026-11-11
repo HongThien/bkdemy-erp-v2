@@ -79812,3 +79812,7 @@ Thùy nêu 4 việc, làm được 3:
 ### Sau giờ: ca HUỶ trả em về hàng chờ — Thùy 11/11 (reset ca 9A1)
 - 9A1: 6 em duyệt nhưng 4 L1 (sau giờ) + 2 L2 (ca khối: Nguyễn Quỳnh Anh, Nguyễn Minh Phương) ⇒ form đúng 4. Thùy huỷ ca nhưng 4 em không về hàng chờ (case nhe của ca huỷ vẫn tính đã khởi tạo).
 - mig 202611111933 ĐÃ ÁP: fn_btnhe_cho · fn_btnhe_lop_cho · fn_btnhe_hs_duyet bỏ qua case thuộc ca_bo_tro_nhe huỷ. Không xoá dữ liệu. Thử ROLLBACK: 4 em 9A1 về hàng chờ.
+
+### Sau giờ: em đang có ca mở không vào hàng chờ + ẩn ca huỷ — Thùy 11/11
+- 11A1 ca tạo 17:12 trước khi duyệt L1 18:42 ⇒ 13 em vẫn ở hàng chờ. mig 202611111946 ĐÃ ÁP: 3 hàm đọc coi case nhe_mo (ca không huỷ) là đã khởi tạo dù tạo trước lúc duyệt. Thử ROLLBACK: hàng chờ 112 → 99, 9A1 giữ 4 em L1.
+- Màn Sau giờ: ca đã huỷ ẩn mặc định, nút "Xem n ca đã huỷ". 9A1 thiếu Minh Phương / Quỳnh Anh vì duyệt L2 (ca khối), không phải lỗi.
