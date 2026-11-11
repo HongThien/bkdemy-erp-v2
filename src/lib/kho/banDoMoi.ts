@@ -43,8 +43,11 @@ const F = (x: string) => BDM_MON[monBdm].ham + x
 // so = số thứ tự hệ tự đánh (tính ở DB): chuyên đề trái→phải · nhóm theo tiền đề (chiều sâu, trái trước) · dạng bài trên→dưới
 // dang_cu = dạng cũ (bản đồ đang chạy) CEO gắn vào đích này · chua_gan = số câu (kể cả bản sao) chưa ra được dạng bài
 export type BdmDangCuRef = { ma: string; ten: string }
-export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[] }
-export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[] }
+export type BdmDangBai = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; co_ly_thuyet: boolean; co_vi_du: boolean; so_cau: number; dang_cu: BdmDangCuRef[]
+  // độ khó 1–5 + hệ tối thiểu S/A/B/C (dạng dành cho hệ đó trở lên) — như dai_ban_do cũ (mig 202611111647); null = chưa đặt
+  muc_do: number | null; bac_toi_thieu: string | null }
+export type BdmNhom = { id: string; ten: string; mo_ta: string; thu_tu: number; so: number; tang: number; tien_de: string[]; co_ly_thuyet: boolean; dang_cu: BdmDangCuRef[]; chua_gan: number; dang_bai: BdmDangBai[]
+  do_kho_tb: number | null; so_co_muc: number }   // TB mức các dạng bài ĐÃ đặt (tính ở DB) · số dạng đã đặt mức
 export type BdmO = { chuyen_de_id: string; ten: string; mo_ta: string; thu_tu: number; so: number; so_chu_de: number; cung_co_o: { chu_de_id: string; ten: string; khoi: string }[]; dang_cu: BdmDangCuRef[]; chua_gan: number; nhom: BdmNhom[] }
 export type BdmChuDe = { id: string; ten: string; thu_tu: number; nhanh: BdmNhanh; so_ds?: number; o: BdmO[] }
 export type BdmChuyenDe = { id: string; ten: string; so_chu_de: number; khoi: string[] }
@@ -182,7 +185,7 @@ export async function themDangBai(nhomId: string, ten: string): Promise<void> {
   const { error } = await supabase.from(T('dang_bai')).insert({ nhom_id: nhomId, ten: ten.trim() })
   if (error) loi(error)
 }
-export async function suaDangBai(id: string, patch: { ten?: string; mo_ta?: string }): Promise<void> {
+export async function suaDangBai(id: string, patch: { ten?: string; mo_ta?: string; muc_do?: number | null; bac_toi_thieu?: string | null }): Promise<void> {
   const { error } = await supabase.from(T('dang_bai')).update(patch).eq('id', id)
   if (error) loi(error)
 }

@@ -642,6 +642,12 @@ function BoxNhom(p: {
         </button>
         <button onClick={(e) => { e.stopPropagation(); moKho({ loai: 'nhom', id: n.id, ten: n.ten }) }} draggable={false}
           title="Mở KHO: mọi câu của các dạng bài trong nhóm này" className="shrink-0 rounded bg-white/15 px-1.5 py-0.5 text-[11px] font-semibold text-white/90 hover:bg-white/30">📚</button>
+        {n.dang_bai.length > 0 && (
+          <span title={`Độ khó trung bình của nhóm = trung bình mức các dạng bài đã đặt (${n.so_co_muc}/${n.dang_bai.length} dạng)`}
+            className={`shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ${n.do_kho_tb == null ? 'bg-white/10 text-white/50' : 'bg-white/20 text-white'}`}>
+            ⚡ {n.do_kho_tb == null ? 'chưa có độ khó' : String(n.do_kho_tb).replace('.', ',')}{n.do_kho_tb != null && n.so_co_muc < n.dang_bai.length ? ` (${n.so_co_muc}/${n.dang_bai.length})` : ''}
+          </span>
+        )}
         <span className="ml-auto"><DauTienDo moTa={!!n.mo_ta.trim()} noiDung={n.co_ly_thuyet} nhanNoiDung="lý thuyết" /></span>
        </span>
       </div>
@@ -701,9 +707,39 @@ function CardDangBai(p: {
             title="Mở KHO: các câu thuộc dạng bài này" className="shrink-0 rounded bg-white px-1.5 text-[10.5px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">📚 {d.so_cau}</button>
         )}
         <BadgeLop d={d} />
+        <MucHe d={d} lam={lam} />
         <span className="ml-auto"><DauTienDo moTa={!!d.mo_ta.trim()} noiDung={d.co_ly_thuyet} nhanNoiDung="lý thuyết" noiDung2={d.co_vi_du} nhanNoiDung2="ví dụ" lop={tinhNangBdm().khoLop ? soLop : undefined} /></span>
       </span>
     </div>
+  )
+}
+// Độ khó (mức 1–5) + hệ tối thiểu (dạng dành cho hệ đó trở lên, C dễ nhất → S) của dạng bài — như bản đồ cũ (Thùy 11/11).
+// Bấm chip ⇒ bảng chọn nhỏ; mỗi lần chọn ghi đúng 1 dòng (lam ⇒ cây lưu sẵn tự tính lại, TB nhóm cập nhật).
+const HE_TANG = ['C', 'B', 'A', 'S'] as const
+function MucHe({ d, lam }: { d: BdmDangBai; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {
+  const [mo, setMo] = useState(false)
+  const chua = d.muc_do == null && !d.bac_toi_thieu
+  const dat = (patch: { muc_do?: number | null; bac_toi_thieu?: string | null }) => { setMo(false); void lam(() => suaDangBai(d.id, patch), 'Đã lưu độ khó / hệ') }
+  const nut = (on: boolean) => `rounded px-1.5 py-0.5 text-[11px] font-semibold ${on ? 'bg-violet-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-violet-50'}`
+  return (
+    <span className="relative shrink-0" onClick={(e) => e.stopPropagation()}>
+      <button draggable={false} onClick={() => setMo((v) => !v)} title="Độ khó (mức 1–5) · hệ tối thiểu — bấm để đặt"
+        className={`rounded px-1.5 text-[10.5px] font-semibold ring-1 ${chua ? 'bg-white text-slate-400 ring-slate-200' : 'bg-white text-amber-700 ring-amber-200 hover:bg-amber-50'}`}>
+        {chua ? '⚡ chưa đặt' : `⚡ ${d.muc_do ?? '–'} · ${d.bac_toi_thieu ? d.bac_toi_thieu + (d.bac_toi_thieu === 'S' ? '' : '+') : '–'}`}
+      </button>
+      {mo && (
+        <span className="absolute left-0 top-full z-30 mt-1 flex w-max flex-col gap-1.5 rounded-lg border border-slate-200 bg-white p-2 text-[11px] shadow-lg">
+          <span className="flex items-center gap-1"><span className="w-12 text-slate-500">Độ khó</span>
+            {[1, 2, 3, 4, 5].map((m) => <button key={m} draggable={false} className={nut(d.muc_do === m)} onClick={() => dat({ muc_do: m })}>{m}</button>)}
+            {d.muc_do != null && <button draggable={false} className="px-1 text-slate-400 hover:text-rose-600" title="Bỏ mức" onClick={() => dat({ muc_do: null })}>✕</button>}
+          </span>
+          <span className="flex items-center gap-1"><span className="w-12 text-slate-500">Hệ từ</span>
+            {HE_TANG.map((h) => <button key={h} draggable={false} className={nut(d.bac_toi_thieu === h)} onClick={() => dat({ bac_toi_thieu: h })}>{h}{h === 'S' ? '' : '+'}</button>)}
+            {d.bac_toi_thieu && <button draggable={false} className="px-1 text-slate-400 hover:text-rose-600" title="Bỏ hệ" onClick={() => dat({ bac_toi_thieu: null })}>✕</button>}
+          </span>
+        </span>
+      )}
+    </span>
   )
 }
 function BadgeLop({ d }: { d: BdmDangBai }) {

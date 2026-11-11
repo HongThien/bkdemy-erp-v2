@@ -79773,3 +79773,8 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "có trường hợp điểm vượt quá 10 và tính 9.75, t vẫn muốn có thêm 1 ô ghi điểm thật kiểu 10.25 để so sánh xem ai nhất khối". Luật cũ giữ nguyên (`fn_diem_thi_tinh`: CB+NC ≥ 10 ⇒ 9.75, tích Full ⇒ 10) — Level/xu/hạng vẫn theo điểm đó. 20/1.236 dòng diem_thi có CB+NC > 10.
 - Mig `202611111647_diem_thi_diem_that` ĐÃ ÁP (`--only`): `diem_thi.diem_that` = cột sinh CB+NC không chặn trần (không có CB/NC ⇒ trống) · `fn_mt_cham_hs_v2` + `fn_bxh_diem_mt_khoi` + `fn_bxh_diem_ks_khoi` thêm cột cuối (`diem_that` / `tb_that` = TB coalesce(diem_that, diem)); HẠNG giữ theo điểm chính, cùng hạng thì điểm thật cao xếp trên. Giữ quyền gọi như cũ (mt_khoi vốn mở PUBLIC). Sinh từ định nghĩa live + thay đúng đoạn.
 - Kiểm ROLLBACK: K6 T10 6 em cùng #1 9.75, điểm thật Lê Trí Sơn 10.25 · Bùi Kim Chi 10.00; hạng + tb 40/40 không đổi; người gọi (fn_mt_cham_hs, fn_ks_ds_ky) vẫn chạy. App dev: BXH MT K6 T10 có cột Điểm thật; màn Chấm 6S2 Lê Trí Sơn "Điểm MT 9.75 · Điểm thật 10.25".
+
+## 11/11 — Bản đồ mới: độ khó + hệ tầng 4, độ khó TB tầng 3 (Thùy: "làm đi")
+- mig 202611111647 ĐÃ ÁP: cây Toán (_bdm_cay_tinh) + KHTN (fn_khtn_bdm_cay) trả thêm dạng bài muc_do/bac_toi_thieu (cột có sẵn như dai_ban_do cũ) · nhóm do_kho_tb (avg mức các dạng ĐÃ đặt, 1 chữ số) + so_co_muc; tăng phiên bản cây lưu sẵn. Kiểm ROLLBACK: bỏ 4 khoá mới thì 13 khối Toán + 3 khối KHTN y hệt.
+- BanDoMoi: chip "⚡ mức · hệ+" trên thẻ dạng bài, bấm ⇒ bảng chọn 1–5 / C+ B+ A+ S (ghi 1 dòng qua suaDangBai) · đầu nhóm "⚡ TB (n/m)". Thứ tự hệ C<B<A<S. Đã xem trên app local K? chủ đề Đơn thức–đa thức (không ghi).
+- Còn trống: Toán mức 422 / hệ 586 dạng (K4, 8T gần như trống) — điền gợi ý từ dạng cũ đối ứng = việc riêng, chưa làm. Hình – Học (hinh_hoc_bai) chưa làm.
