@@ -13,19 +13,21 @@ export type LoaiNen = 'xuat_sac' | 'tien_bo' | 'tieu_bieu'
 // Vị trí băng tên + đỉnh thẻ kết quả (% chiều cao), đo trên tranh thật.
 // vong = độ võng ruy băng đo trên tranh (px ở ±30% bề ngang so với tâm; ÂM = hai đầu cao hơn giữa) ⇒ chữ tên uốn theo.
 type CauHinhNen = { bangY: number; bangX0: number; bangX1: number; bangDay: number; chuBang: string; vong: number }
-type BoNen = { id: string; ten: string; nhom: string; kieu: 'loai'; cfg: Record<LoaiNen, CauHinhNen> } | { id: string; ten: string; nhom: string; kieu: 'chung'; cfg: CauHinhNen }
+// tone = kiểu chữ theo không khí tranh (Thùy 11/11 "font phải đi theo tone background"): sang = có chân (Lora) · tron = tròn mềm (Baloo 2) · phieu = fantasy (Philosopher).
+export type Tone = 'sang' | 'tron' | 'phieu'
+type BoNen = ({ kieu: 'loai'; cfg: Record<LoaiNen, CauHinhNen> } | { kieu: 'chung'; cfg: CauHinhNen }) & { id: string; ten: string; nhom: string; tone: Tone }
 const T = '#ffffff'
 const c = (bangY: number, bangDay: number, vong: number, chuBang = T, bangX0 = 18, bangX1 = 82): CauHinhNen => ({ bangY, bangX0, bangX1, bangDay, chuBang, vong })
 export const BO_NEN: BoNen[] = [
-  { id: 'hoanggia', ten: 'Hoàng gia', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.8, 70, -27, T, 17, 83), tien_bo: c(63.2, 70, -16, T, 17, 83), tieu_bieu: c(61.7, 68.5, -15, T, 17, 83) } },
-  { id: 'pastel', ten: 'Pastel 3D', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(60.8, 67.5, -22, T, 19, 81), tien_bo: c(61.0, 67, -37, T, 17, 83), tieu_bieu: c(60.6, 66.5, -34) } },
-  { id: 'phieuluu', ten: 'Phiêu lưu', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.1, 69.5, -29), tien_bo: c(62.7, 69.5, -20), tieu_bieu: c(62.5, 69.5, -16) } },
-  { id: 'tl_co_dien_do_do', ten: 'Cổ điển đỏ', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.7, 68.5, -23, T, 17, 83) },
-  { id: 'tl_xanh_rung_co_dien', ten: 'Xanh rừng cổ điển', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.2, 66.5, -36, '#6b1d1d', 18, 82) },
-  { id: 'tl_kien_truc_oxford', ten: 'Kiến trúc Oxford', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.3, 68.5, -26, T, 18, 82) },
-  { id: 'tl_do_navy_trang_nha', ten: 'Đỏ navy trang nhã', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.4, 69, -18, T, 17, 83) },
-  { id: 'tl_khuon_vien_xanh_luc', ten: 'Khuôn viên xanh lục', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(61.2, 67.5, -25, T, 18, 82) },
-  { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.3, 67, -16, T, 19, 81) },
+  { id: 'hoanggia', ten: 'Hoàng gia', nhom: 'Theo loại giải', kieu: 'loai', tone: 'sang', cfg: { xuat_sac: c(63.8, 70, -27, T, 17, 83), tien_bo: c(63.2, 70, -16, T, 17, 83), tieu_bieu: c(61.7, 68.5, -15, T, 17, 83) } },
+  { id: 'pastel', ten: 'Pastel 3D', nhom: 'Theo loại giải', kieu: 'loai', tone: 'tron', cfg: { xuat_sac: c(60.8, 67.5, -22, T, 19, 81), tien_bo: c(61.0, 67, -37, T, 17, 83), tieu_bieu: c(60.6, 66.5, -34) } },
+  { id: 'phieuluu', ten: 'Phiêu lưu', nhom: 'Theo loại giải', kieu: 'loai', tone: 'phieu', cfg: { xuat_sac: c(63.1, 69.5, -29), tien_bo: c(62.7, 69.5, -20), tieu_bieu: c(62.5, 69.5, -16) } },
+  { id: 'tl_co_dien_do_do', ten: 'Cổ điển đỏ', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(62.7, 68.5, -23, T, 17, 83) },
+  { id: 'tl_xanh_rung_co_dien', ten: 'Xanh rừng cổ điển', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(60.2, 66.5, -36, '#6b1d1d', 18, 82) },
+  { id: 'tl_kien_truc_oxford', ten: 'Kiến trúc Oxford', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(62.3, 68.5, -26, T, 18, 82) },
+  { id: 'tl_do_navy_trang_nha', ten: 'Đỏ navy trang nhã', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(62.4, 69, -18, T, 17, 83) },
+  { id: 'tl_khuon_vien_xanh_luc', ten: 'Khuôn viên xanh lục', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(61.2, 67.5, -25, T, 18, 82) },
+  { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(60.3, 67, -16, T, 19, 81) },
 ]
 export type PhongCach = string
 export const PHONG_CACH = BO_NEN.map((b) => ({ id: b.id, ten: b.ten, nhom: b.nhom }))
@@ -64,14 +66,11 @@ export async function chonAnhChanDung(hsId: string, url: string): Promise<void> 
     .upsert({ hoc_sinh_id: hsId, url, cap_nhat_at: new Date().toISOString() }, { onConflict: 'hoc_sinh_id' })
   if (error) throw error
 }
-export async function uploadAnhChanDung(hsId: string, file: File): Promise<string> {
+// Tải lên: CẮT THEO MẶT TRƯỚC (catMat.ts) rồi mới đưa lên. thayMat = false ⇒ không thấy mặt, đưa cả ảnh (thu nhỏ).
+export async function uploadAnhChanDung(hsId: string, file: File): Promise<{ url: string; thayMat: boolean }> {
   if (!file.type.startsWith('image/')) throw new Error('Chọn một file ảnh (JPG, PNG, WebP).')
-  const bmp = await createImageBitmap(file)
-  const k = Math.min(1, 1000 / Math.max(bmp.width, bmp.height))
-  const cv = document.createElement('canvas')
-  cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k)
-  cv.getContext('2d')!.drawImage(bmp, 0, 0, cv.width, cv.height)
-  const blob = await new Promise<Blob>((ok, no) => cv.toBlob((b) => (b ? ok(b) : no(new Error('Không xử lý được ảnh.'))), 'image/jpeg', 0.9))
+  const { catTheoMat } = await import('./catMat')
+  const { blob, thayMat } = await catTheoMat(file)
   const path = `chan-dung/${crypto.randomUUID()}.jpg`
   const { error } = await supabase.storage.from('avatars').upload(path, blob, { contentType: 'image/jpeg', upsert: false })
   if (error) throw error
@@ -79,7 +78,7 @@ export async function uploadAnhChanDung(hsId: string, file: File): Promise<strin
   const { error: e2 } = await supabase.from('hoc_sinh_kho_anh').insert({ hoc_sinh_id: hsId, url })
   if (e2) throw e2
   await chonAnhChanDung(hsId, url)
-  return url
+  return { url, thayMat }
 }
 export async function getAnhChanDung(hsIds: string[]): Promise<Record<string, string>> {
   if (!hsIds.length) return {}
@@ -173,12 +172,19 @@ function vuaChu(g: CanvasRenderingContext2D, s: string, font: (px: number) => st
   return px
 }
 
-const F = (w: number, px: number) => `${w} ${px}px 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif`
+const TONE: Record<Tone, { ho: string; can: (w: number) => number; the: string; vien: number; chu: string; phu: string; nho: string }> = {
+  // the = nền thẻ kết quả · chu/phu/nho = màu dòng phụ, nhãn ô, chú thích dưới số
+  sang: { ho: "'Lora', Georgia, 'Times New Roman', serif", can: (w) => (w >= 700 ? 700 : 600), the: 'rgba(255,251,242,.93)', vien: 2, chu: '#5b4a33', phu: '#7a6a55', nho: '#8f806c' },
+  tron: { ho: "'Baloo 2', 'Be Vietnam Pro', Arial, sans-serif", can: (w) => w, the: 'rgba(255,255,255,.90)', vien: 2, chu: '#4a5878', phu: '#6a7894', nho: '#7d8aa5' },
+  phieu: { ho: "'Philosopher', 'Be Vietnam Pro', Arial, sans-serif", can: (w) => (w >= 600 ? 700 : 400), the: 'rgba(250,248,255,.90)', vien: 2, chu: '#3f4a72', phu: '#5d6790', nho: '#77809f' },
+}
 
 export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach): Promise<HTMLCanvasElement> {
+  const bn = boNen(pc), tn = TONE[bn.tone]
+  const F = (w: number, px: number) => `${tn.can(w)} ${px}px ${tn.ho}`
   await Promise.all([800, 700, 600].map((w) => document.fonts.load(F(w, 40), 'ẮÂÊÔƠƯ')))
   const nen = await khoaXanh(nenUrl(pc, loai))
-  const bn = boNen(pc), ch = bn.kieu === 'chung' ? bn.cfg : bn.cfg[loai], L = LOAI[loai]
+  const ch = bn.kieu === 'chung' ? bn.cfg : bn.cfg[loai], L = LOAI[loai]
   const cv = document.createElement('canvas'); cv.width = FB_W; cv.height = FB_H
   const g = cv.getContext('2d')!
   g.fillStyle = '#ffffff'; g.fillRect(0, 0, FB_W, FB_H)
@@ -231,7 +237,7 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
   const py0 = FB_H * ch.bangDay / 100 + 14, ph = FB_H * 0.965 - py0
   g.save()
   g.shadowColor = 'rgba(30,40,80,.18)'; g.shadowBlur = 24; g.shadowOffsetY = 6
-  bo(g, px0, py0, pw, ph, 30); g.fillStyle = 'rgba(255,255,255,.90)'; g.fill()
+  bo(g, px0, py0, pw, ph, 30); g.fillStyle = tn.the; g.fill()
   g.restore()
   bo(g, px0, py0, pw, ph, 30); g.lineWidth = 2; g.strokeStyle = L.nhan + '55'; g.stroke()
 
@@ -242,7 +248,7 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
   g.fillText(tieuDe, FB_W / 2, cy)
   cy += 44
   const phu = [d.lop ? `Lớp ${d.lop}` : null, `Môn ${d.mon}`, `Sát hạch tháng ${Number(m)}/${y}`].filter(Boolean).join('  ·  ')
-  g.fillStyle = '#4a5878'; vuaChu(g, phu, (px) => F(600, px), pw - 60, 26, 18)
+  g.fillStyle = tn.chu; vuaChu(g, phu, (px) => F(600, px), pw - 60, 26, 18)
   g.fillText(phu, FB_W / 2, cy)
 
   // 4 ô: Hạng lớp · Hạng khối · Mastery · Test tháng
@@ -262,10 +268,10 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
     const gr = g.createLinearGradient(0, oy, 0, oy + oh); gr.addColorStop(0, '#ffffff'); gr.addColorStop(1, L.nhan + '14')
     g.fillStyle = gr; g.fill(); g.lineWidth = 1.5; g.strokeStyle = L.nhan + '40'; g.stroke()
     const cx = x + ow / 2
-    g.fillStyle = '#6a7894'; g.font = F(700, pxNhan); g.fillText(c.nhan, cx, oy + 28)
+    g.fillStyle = tn.phu; g.font = F(700, pxNhan); g.fillText(c.nhan, cx, oy + 28)
     g.fillStyle = i < 2 ? L.nhan2 : L.nhan
     vuaChu(g, c.so, (px) => F(800, px), ow - 16, Math.min(64, oh * 0.42), 30); g.fillText(c.so, cx, oy + oh * 0.53)
-    g.fillStyle = '#7d8aa5'; vuaChu(g, c.phu, (px) => F(600, px), ow - 14, 17, 11); g.fillText(c.phu, cx, oy + oh - 24)
+    g.fillStyle = tn.nho; vuaChu(g, c.phu, (px) => F(600, px), ow - 14, 17, 11); g.fillText(c.phu, cx, oy + oh - 24)
   })
   g.fillStyle = L.nhan2; g.font = F(800, 20)
   g.fillText('BK ACADEMY', FB_W / 2, py0 + ph - 26)

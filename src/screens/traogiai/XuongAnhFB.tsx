@@ -23,6 +23,7 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
   const [dangVe, setDangVe] = useState(false)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
+  const [ghiChu, setGhiChu] = useState<string | null>(null)
   const luot = useRef(0)
 
   useEffect(() => {
@@ -53,15 +54,17 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
   }
   async function themAnh(files: FileList | null) {
     if (!files?.length) return
-    setDangTai(true); setLoi(null)
+    setDangTai(true); setLoi(null); setGhiChu(null)
     try {
-      let cuoi = ''
+      let cuoi = '', khongMat = 0
       for (const f of Array.from(files)) {
-        cuoi = await uploadAnhChanDung(hsId, f)
-        const moi = cuoi
-        setKho((p) => [{ id: moi, url: moi, tai_at: new Date().toISOString() }, ...p])
+        const r = await uploadAnhChanDung(hsId, f) // cắt theo mặt rồi mới đưa lên
+        if (!r.thayMat) khongMat++
+        cuoi = r.url
+        setKho((p) => [{ id: r.url, url: r.url, tai_at: new Date().toISOString() }, ...p])
       }
       setAnh(cuoi); onDoiAnh?.(cuoi)
+      if (khongMat) setGhiChu(`${khongMat} ảnh không tìm thấy mặt — đã giữ nguyên cả ảnh. Nên chọn ảnh khác rõ mặt hơn.`)
     } catch (e) { setLoi((e as Error).message) }
     finally { setDangTai(false) }
   }
@@ -81,6 +84,7 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
             <button onClick={onClose} className="rounded-md px-2 py-1 text-slate-400 hover:bg-slate-100 hover:text-slate-700">✕</button>
           </div>
           {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-2 py-1.5 text-[12px] text-rose-600">⚠️ {loi}</div>}
+          {ghiChu && <div className="rounded-lg border border-amber-200 bg-amber-50 px-2 py-1.5 text-[12px] text-amber-700">{ghiChu}</div>}
 
           <section>
             <div className="mb-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-500">Ảnh học sinh <span className="font-normal normal-case text-slate-400">· {kho.length} ảnh — bấm để chọn</span></div>
@@ -95,7 +99,7 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
               <label className={`flex aspect-[4/5] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 text-slate-400 hover:border-amber-400 hover:text-amber-600 ${dangTai ? 'pointer-events-none opacity-60' : ''}`}>
                 <input type="file" accept="image/*" multiple className="hidden" onChange={(e) => { void themAnh(e.target.files); e.target.value = '' }} />
                 <span className="text-[20px] leading-none">{dangTai ? '⏳' : '+'}</span>
-                <span className="mt-1 text-[10.5px] font-semibold">{dangTai ? 'Đang tải' : 'Thêm ảnh'}</span>
+                <span className="mt-1 text-[10.5px] font-semibold">{dangTai ? "Đang cắt…" : "Thêm ảnh"}</span>
               </label>
             </div>
           </section>
