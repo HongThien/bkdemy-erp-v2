@@ -10,6 +10,7 @@ import { chotTuan, danhSachTuan, baoDongLive, theoDoiVao, theoDoiKetThuc, duyetC
   type BaoDong, type BuoiET, type BuoiBTVN, type ChotTuan, type DangTheoDoi, type DuLieuTuan, type ChuyenDeAnh, type EtBtvn, type MauET, type UngVienDiemThap } from '../../lib/botro_tuan'
 import { ddmmVN, homNayVN, congNgay } from '../../lib/tuan'
 import { xuLyCaHetHan } from '../../lib/botro_yeu_ca'
+import { MUC_TEN } from '../botro/MucUuTienCase'
 
 type Tab = 'td' | 'bd' | 'dt'
 const TAB_TEN: Record<Tab, string> = { td: '👁 Đang theo dõi', bd: '🚨 Báo động', dt: '📉 Điểm thấp' }
@@ -129,7 +130,7 @@ export default function DuyetBoTroYeuScreen() {
   const [chot, setChot] = useState<{ xong: number; tong: number } | null>(null)
   const [busy, setBusy] = useState(false)
   const [ghiChu, setGhiChu] = useState('')
-  const [muc, setMuc] = useState<1 | 2 | 3>(2)
+  const [muc, setMuc] = useState<number>(3)   // thang L1–L4 (Thùy 11/11)
   const [uuTien, setUuTien] = useState<UuTienCase>(2)
   const setTab = (t: Tab) => { NHO.tab = t; setTabS(t); setLoi(null) }
   const setCur = (t: Tab, v: number) => setCurS((p) => { const n = { ...p, [t]: v }; NHO.cur = n; return n })
@@ -292,8 +293,8 @@ export default function DuyetBoTroYeuScreen() {
                   <div className="sticky bottom-0 z-10 -mx-5 -mb-5 mt-4 flex flex-wrap items-center gap-2 rounded-b-2xl border-t border-slate-200 bg-slate-50/95 px-5 py-2.5 shadow-[0_-8px_14px_-10px_rgba(15,23,42,0.35)] backdrop-blur">
                     <span className="cursor-help text-[13px] font-bold text-slate-800" title={tab === 'td' ? 'Chỉ lúc này mới trừ slot. Bổ trợ 1 lần trong tuần rồi tự kết thúc; sau đó em còn dạng yếu (trong dạng đã học) sẽ tự quay lại Đang theo dõi.' : 'Vòng 1 KHÔNG tốn slot, KHÔNG mở case, không chọn mức. Máy không đề xuất level.'}>{tab === 'td' ? 'Vòng 2 — duyệt chính thức' : 'Vòng 1 — đưa vào theo dõi?'} <span className="font-normal text-slate-400">ⓘ</span></span>
                     {tab === 'td' && <>
-                      <select value={muc} onChange={(x) => setMuc(Number(x.target.value) as 1 | 2 | 3)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
-                        <option value={1}>L1 · trước/sau giờ</option><option value={2}>L2 · buổi riêng (TA)</option><option value={3}>L3 · buổi riêng (GV cao cấp)</option></select>
+                      <select value={muc} onChange={(x) => setMuc(Number(x.target.value))} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
+                        {[1, 2, 3, 4].map((m) => <option key={m} value={m}>{MUC_TEN[m]}</option>)}</select>
                       <select value={uuTien} onChange={(x) => setUuTien(Number(x.target.value) as UuTienCase)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
                         <option value={2}>Ưu tiên Thường</option><option value={3}>Ưu tiên Cao ({sucChua?.cao ?? '?'}/{sucChua?.tran_cao ?? 20})</option><option value={1}>Ưu tiên Thấp</option></select></>}
                     <input value={ghiChu} onChange={(x) => setGhiChu(x.target.value)} placeholder={tab === 'td' ? 'Lý do duyệt / gỡ (tuỳ chọn)…' : 'Ghi chú vì sao theo dõi (không bắt buộc)…'} className="min-w-[160px] flex-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]" />

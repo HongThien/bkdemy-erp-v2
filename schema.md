@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-517 bảng · 39 view · 0 enum · 339 trigger · 1732 function
+517 bảng · 39 view · 0 enum · 339 trigger · 1735 function
 
 ## _app_secrets
 
@@ -4362,7 +4362,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6026,7 +6026,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -10379,6 +10379,7 @@ WITH luot AS (
 - `_ta_cong_pham_vi()` → text[]
 - `_ta_cong_viec_kiem()` → trigger
 - `_ta_cong_viec_o(p_viec uuid)` → text
+- `_ta_cong_xem_duoc()` → boolean
 - `_ta_cua_lop(p_lop uuid)` → uuid
 - `_ta_doi_chieu(p_tu date, p_den date, p_ns uuid)` → TABLE(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date, vao_at timestamp with time zone, ra_at timestamp with time zone, vao_chot timestamp with time zone, ra_chot timestamp with time zone, quen_ra boolean, khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, hoc_sinh text, ghi_chu text, khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
 - `_ta_don_gia_chi_them()` → trigger
@@ -11375,6 +11376,8 @@ WITH luot AS (
 - `fn_ta_chot_ky(p_ky date, p_ghi_chu text DEFAULT ''::text)` → integer
 - `fn_ta_cong_cua_toi(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(loai_dong text, id uuid, cham_cong_id uuid, nhan_su_id uuid, ho_ten text, ngay date, vao_at timestamp with time zone, ra_at timestamp with time zone, vao_chot timestamp with time zone, ra_chot timestamp with time zone, quen_ra boolean, khai_bu boolean, nguon text, loai_viec text, ten_loai text, lop_id uuid, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, hoc_sinh text, ghi_chu text, khop boolean, co text[], lam_ho text, duyet text, ly_do_duyet text)
 - `fn_ta_cong_duoc_duyet(p_tu date, p_den date DEFAULT NULL::date)` → uuid[]
+- `fn_ta_cong_lich_su(p_id uuid)` → TABLE(luc timestamp with time zone, nguoi text, viec text, chi_tiet text)
+- `fn_ta_cong_nguoi_duyet(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(id uuid, nguoi text, luc timestamp with time zone)
 - `fn_ta_cong_thang(p_ns uuid, p_ky date)` → TABLE(id uuid, ngay date, loai_viec text, ten_loai text, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, gio numeric, hoc_sinh text, ghi_chu text, nguon text, trang_thai text, ly_do_duyet text)
 - `fn_ta_dashboard(p_ym text)` → jsonb
 - `fn_ta_dat_don_gia(p_ma text, p_gia numeric, p_hieu_luc_tu date, p_ten text DEFAULT NULL::text, p_si_tu integer DEFAULT NULL::integer, p_si_den integer DEFAULT NULL::integer, p_ghi_chu text DEFAULT ''::text)` → uuid
@@ -11721,7 +11724,7 @@ WITH luot AS (
 | bc_ky_nx_muc | bc_ky_nx_muc_check | `CHECK (((goi_y IS NULL) OR (cha IS NOT NULL)))` |
 | bc_ky_nx_muc | bc_ky_nx_muc_check1 | `CHECK (((goi_y IS NULL) OR ((nguong_tot IS NOT NULL) AND (nguong_chua_tot IS NOT NULL))))` |
 | bc_ky_nx_muc | bc_ky_nx_muc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
-| bo_tro_de_xuat | bo_tro_de_xuat_muc_check | `CHECK ((muc = ANY (ARRAY[1, 2, 3])))` |
+| bo_tro_de_xuat | bo_tro_de_xuat_muc_check | `CHECK ((muc = ANY (ARRAY[1, 2, 3, 4])))` |
 | bo_tro_de_xuat | bo_tro_de_xuat_nhom_ck | `CHECK (((jsonb_typeof(nhom) = 'array'::text) AND (jsonb_array_length(nhom) >= 1)))` |
 | bo_tro_de_xuat | bo_tro_de_xuat_uu_tien_check | `CHECK ((uu_tien = ANY (ARRAY[1, 2, 3])))` |
 | bo_tro_hinh | bo_tro_hinh_dong_du_ck | `CHECK (((trang_thai <> 'hoan_thanh'::text) OR ((ket_qua IS NOT NULL) AND (hoan_thanh_at IS NOT NULL))))` |
@@ -11878,10 +11881,10 @@ WITH luot AS (
 | hs_huy_hieu_dat | hs_huy_hieu_dat_lan_check | `CHECK ((lan >= 1))` |
 | hs_huy_hieu_dat | hs_huy_hieu_dat_sao_check | `CHECK (((sao >= 1) AND (sao <= 5)))` |
 | hs_huy_hieu_khoe | hs_huy_hieu_khoe_vi_tri_check | `CHECK (((vi_tri >= 1) AND (vi_tri <= 3)))` |
-| hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 3)))` |
-| hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 3)))` |
-| hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 3)))` |
-| hs_level_log | hs_level_log_level_may_de_xuat_check | `CHECK (((level_may_de_xuat >= 0) AND (level_may_de_xuat <= 3)))` |
+| hs_level | hs_level_level_check | `CHECK (((level >= 0) AND (level <= 4)))` |
+| hs_level_log | hs_level_log_level_chot_check | `CHECK (((level_chot >= 0) AND (level_chot <= 4)))` |
+| hs_level_log | hs_level_log_level_cu_check | `CHECK (((level_cu >= 0) AND (level_cu <= 4)))` |
+| hs_level_log | hs_level_log_level_may_de_xuat_check | `CHECK (((level_may_de_xuat >= 0) AND (level_may_de_xuat <= 4)))` |
 | hs_moi_buoc | hs_moi_buoc_mau_check | `CHECK ((mau ~ '^#[0-9a-fA-F]{6}$'::text))` |
 | hs_moi_buoc | hs_moi_buoc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | hs_thanh_tuu_thang | hs_thanh_tuu_thang_thang_check | `CHECK ((thang ~ '^\d{4}-\d{2}$'::text))` |

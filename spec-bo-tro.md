@@ -536,3 +536,23 @@ hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi 
 - **Số (347 HS Toán, 10/11):** cũ 1.304 dạng yếu / 292 HS → mới 684 nhóm yếu, 1.322 dạng / 259 HS (256 HS trùng). KHTN chạy luật cũ (189 dạng / 41 HS).
 - **Tốc độ:** lô 10 em mốc T2 (Chốt tuần, trần 8 s) chậm nhất ~3–4 s (cũ 4,6 s); chụp cả môn chia lô 20 em trong hàm ⇒ 71 s (cũ 74 s). `_mastery_lan_cap` khai `rows 20000` để planner không nối lại bằng nested loop.
 - **Chưa làm:** màn Nội dung / Xếp lịch chưa hiện dạng theo NHÓM (vẫn danh sách dạng); kênh ② "% dạng yếu" của engine phát hiện (`src/gami/danhgia.js`, client) vẫn đếm dạng; KHTN chưa có nhóm; Dashboard kết quả tuần (`fn_botro_ket_qua_tuan`) vẫn so trước/sau theo dạng (dạng đã tính theo lần).
+
+## 42. Cập nhật 11/11 — THANG MỨC BỔ TRỢ YẾU L1–L4 (sửa §41 popup, §31 capacity, §39 lấp đầy ca) — mig `202611111553_botro_muc_l1_l4`
+
+- **Thùy 11/11:** "chốt bổ trợ của trưởng khối có L1 · L2 · L3; bổ trợ cuối giờ là 1 option riêng. L1: 2 đơn vị · L2: 4 đơn vị · L3: bổ trợ riêng với GV, không dùng vào bổ trợ khối · Bổ trợ sau giờ là 1 nhãn riêng, không liên quan bổ trợ khối" → hỏi lại: "Sau giờ là 1 mức … hoặc đổi toàn bộ thành L1234, m xem cái nào OK hơn".
+- **CHỐT (CTO chọn, giữ nghĩa dữ liệu cũ):** thang **L1–L4 theo độ nặng**, lưu ở `hs_level.level` (case) và `bo_tro_de_xuat.muc` (đề xuất trưởng khối):
+
+  | Mức | Nghĩa | Ca bổ trợ khối | Đơn vị khối (`_ca_bo_tro_don_vi`) |
+  |---|---|---|---|
+  | L0 | hết yếu, dừng bổ trợ (không có dòng `hs_level`) | — | — |
+  | **L1** | **Sau giờ** — TA kèm sau buổi học thường (= L1 cũ "trước/sau giờ") | KHÔNG | 1 (chỉ khi lỡ gắn ca; không vào ứng viên, không vào capacity) |
+  | **L2** | 2 đơn vị | CÓ | **2** |
+  | **L3** | 4 đơn vị (= L2 cũ "buổi riêng TA") | CÓ | **4** |
+  | **L4** | Bổ trợ riêng với GV (= L3 cũ "buổi riêng GV") | KHÔNG | 4 (chỉ khi lỡ gắn ca) |
+
+- **Không dùng L0 / "L1.2" cho sau giờ:** L0 đã nghĩa "dừng bổ trợ" (không có dòng); cột mức là số nguyên.
+- **Ứng viên ca khối** (`fn_ca_bo_tro_ung_vien`, Lịch phòng): chỉ case **L2 · L3**; đơn vị lấy từ `_ca_bo_tro_don_vi` (bỏ công thức chép tay "L1 = 1, còn lại 4"). **Capacity khối** (`fn_btyeu_capacity_khoi`): chỉ cộng case L2 · L3.
+- **Dời dữ liệu cũ (giữ nghĩa):** `hs_level` 2→3 (10 em), `bo_tro_de_xuat.muc` 2→3 (11 dòng chờ duyệt; trigger log ghi từng dòng); mỗi em dời có 1 dòng `hs_level_log` nguồn `doi_thang_l1_l4`. **Dòng `hs_level_log` trước 11/11 giữ số CŨ** (lịch sử bất biến) — đọc log trước 11/11: 2 = "buổi riêng TA", 3 = "buổi riêng GV".
+- **CHECK nới:** `hs_level` · `hs_level_log` (3 cột) 0–3 → 0–4 · `bo_tro_de_xuat.muc` 1–3 → 1–4. `fn_btyeu_doi_level` nhận 0–4 · `fn_btk_luu` nhận 1–4.
+- **Màn:** popup Bổ trợ (phòng trưởng khối) 4 nút L1–L4, mặc định **L3** (4 đơn vị — giữ mặc định cũ) · nhãn chung `MUC_TEN` (`botro/MucUuTienCase.tsx`) + `TEN_MUC` (`lib/boTroTk.ts`) · app TA `CaBoTroTA` · Lịch phòng vá đơn vị tại chỗ cùng bảng.
+- **KHÔNG đổi:** Bổ trợ Hình (`bo_tro_hinh.muc`, thang riêng) · trần 70 em / 20 Cao (`fn_btyeu_kiem_suc_chua`) vẫn đếm MỌI case kể cả L1/L4 — **chờ Thùy:** L1 sau giờ / L4 riêng GV có tính vào trần 70 không? · màn Xếp lịch cũ vẫn hiện L1–L4 (L1 xếp sau giờ tan như cũ; L4 xếp tay).

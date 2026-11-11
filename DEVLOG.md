@@ -79746,4 +79746,11 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: 5 nhóm ưu tiên cao nhất phải có nút mở rộng tất cả để trưởng khối chọn.
 - Làm: fn_btk_goi_y_tat_ca(hs, môn) — mọi nhóm em đã đo, cùng hình dạng dòng + quyền như fn_btk_goi_y, chỉ gọi khi bấm. BoTroPopup: nút "▾ Xem tất cả N nhóm em đã đo" / "▴ Thu gọn"; thu gọn vẫn giữ hiện các nhóm ngoài top 5 đã tick. fn_btk_luu vốn nhận mọi nhóm.
 - Thử txn: 3 em 9A2 — tất cả 28 nhóm = so_nhom_do, 5 đầu khớp top 5, 53–55 ms. tsc sạch.
-- ĐÃ ÁP mig 202611111437 (Thùy 'cho áp và push'), npm run schema đã chạy.
+- ĐÃ ÁP mig 202611111437 (Thùy 'cho áp và push'), npm run schema đã chạy.- Dựng ảnh vinh danh FB: fn_vinh_danh_hs (mig 202611111437 đã áp, 0,3–2 s/em) · vinhDanhFB.ts canvas 1080×1350, khoá xanh flood-fill (nền Tiến bộ có lá/bóng xanh — key toàn ảnh sẽ thủng) · nút Làm ảnh ở tab Đã chốt giải. Soi 9 nền với 3 HS thật trên trang thử: khớp lỗ, không viền xanh. Lưu ý: hoc_sinh.anh_url nhiều em là avatar app (thẻ cầu thủ, giấy khen) chứ không phải ảnh chân dung.
+- Thêm 6 nền Thanh lịch (1 tranh/mọi loại giải): BO_NEN kieu chung, chọn nền có nhóm. Soi 6 nền với 3 HS thật: tên giữa băng, Xanh rừng băng kem ⇒ chữ đỏ sẫm.
+
+### Bổ trợ yếu: thang mức L1–L4 (L1 sau giờ · L2 2 đv · L3 4 đv · L4 riêng GV) — Thùy 11/11 (qua phiên Hoàn thiện phòng làm việc + Thùy chốt trực tiếp)
+- Thùy: L1 2 đv · L2 4 đv · L3 riêng GV ngoài khối · sau giờ là 1 mức ("L0 hoặc L1.2 hoặc đổi L1234, m xem"). Phiên chính đề xuất L0 = sau giờ; tôi trình Thùy 2 điểm vướng (L0 đang = dừng bổ trợ/không có dòng; 76 em + 58 đề xuất L1 chọn theo nhãn cũ "trước/sau giờ") ⇒ Thùy chọn L1–L4.
+- mig 202611111553 ĐÃ ÁP: nới 5 CHECK (0–4 / 1–4) · dời hs_level 2→3 (10 em, mỗi em 1 dòng log doi_thang_l1_l4) + bo_tro_de_xuat 2→3 (11 dòng) · _ca_bo_tro_don_vi L1 1 · L2 2 · L3/L4 4 · fn_ca_bo_tro_ung_vien chỉ L2·L3, đơn vị lấy từ _ca_bo_tro_don_vi · fn_btyeu_capacity_khoi chỉ L2·L3 · fn_btyeu_doi_level 0–4 · fn_btk_luu 1–4. Thử rollback: L2 → dv 2, L3 → dv 4, L1/L4 không vào ứng viên; khối 7 capacity dùng 2→0 (3 case đang mở đều L1).
+- Màn: MUC_TEN/MUC_CLS chung (MucUuTienCase) 4 mức · TEN_MUC boTroTk · popup 4 nút, mặc định L3 · CaBoTroTA · Lịch phòng vá đv tại chỗ · DuyetBoTroYeu (ẩn) dùng MUC_TEN. Kiểm app: Danh sách bổ trợ Toán hiện "L1 · sau giờ…" / "L3 · 4 đơn vị…". spec-bo-tro §42.
+- Chờ Thùy: L1/L4 có tính vào trần 70 em / 20 Cao không (hiện vẫn tính).

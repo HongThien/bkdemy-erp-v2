@@ -228,7 +228,7 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
   // Thùy 29/09: sửa mức/ưu tiên em Yếu ngay trong hàng chờ (control chung) — hạ L0 ⇒ rời hàng chờ; đổi ưu tiên ⇒ sắp lại
   function vaMuc(u: UngVien, kq: DoiMucUuTien) {
     setData((d) => d && { ...d, yeu: kq.dongCase ? d.yeu.filter((x) => x.ref_id !== u.ref_id)
-      : d.yeu.map((x) => x.ref_id === u.ref_id ? { ...x, level: kq.level, uu_tien: kq.uuTien, don_vi: kq.level === 1 ? 1 : 4 } : x).sort((a, b) => (b.uu_tien ?? 2) - (a.uu_tien ?? 2)) })
+      : d.yeu.map((x) => x.ref_id === u.ref_id ? { ...x, level: kq.level, uu_tien: kq.uuTien, don_vi: kq.level <= 1 ? 1 : kq.level === 2 ? 2 : 4 }   /* vá tại chỗ, cùng bảng với _ca_bo_tro_don_vi */ : x).sort((a, b) => (b.uu_tien ?? 2) - (a.uu_tien ?? 2)) })
   }
   async function xep(u: UngVien) { setBusy(u.ref_id); const ok = await onXep(u); setBusy(null); if (!ok) setLoi('Không xếp được — xem lỗi ở màn chính.') }
   return (

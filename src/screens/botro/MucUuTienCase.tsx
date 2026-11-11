@@ -5,8 +5,10 @@
 import { useState } from 'react'
 import { doiLevelCase, datUuTienCase, UU_TIEN_TEN, RETEST_BAT, type UuTienCase } from '../../lib/botro_yeu'
 
-export const MUC_TEN: Record<number, string> = { 1: 'Mức 1 · trước/sau giờ', 2: 'Mức 2 · buổi riêng (TA)', 3: 'Mức 3 · buổi riêng (GV cao cấp)' }
-export const MUC_CLS: Record<number, string> = { 0: 'bg-slate-50 text-slate-400', 1: 'bg-slate-100 text-slate-600', 2: 'bg-amber-50 text-amber-700', 3: 'bg-rose-50 text-rose-700' }
+// Thang mức L1–L4 (Thùy 11/11, mig 202611111553): L1 sau giờ · L2 2 đơn vị ca khối · L3 4 đơn vị ca khối · L4 riêng với GV.
+// L1 và L4 KHÔNG vào ca bổ trợ khối, không tính đơn vị khối. L0 = hết yếu, dừng bổ trợ.
+export const MUC_TEN: Record<number, string> = { 1: 'L1 · sau giờ', 2: 'L2 · 2 đơn vị (ca khối)', 3: 'L3 · 4 đơn vị (ca khối)', 4: 'L4 · riêng với GV' }
+export const MUC_CLS: Record<number, string> = { 0: 'bg-slate-50 text-slate-400', 1: 'bg-slate-100 text-slate-600', 2: 'bg-sky-50 text-sky-700', 3: 'bg-amber-50 text-amber-700', 4: 'bg-rose-50 text-rose-700' }
 export const UU_CLS: Record<UuTienCase, string> = { 3: 'bg-rose-600 text-white', 2: 'bg-slate-100 text-slate-600', 1: 'bg-slate-50 text-slate-400' }
 
 export type DoiMucUuTien = { level: number; uuTien: UuTienCase; dongCase: boolean }
@@ -51,7 +53,7 @@ export default function MucUuTienCase({ caseId, hoTen, level, uuTien, dong, onDo
       <select value={level} disabled={busy} onChange={(e) => doiMuc(Number(e.target.value))} title="Đổi mức bổ trợ (L0 = hết yếu, dừng bổ trợ)"
         className={`cursor-pointer rounded-full border-0 px-2 py-0.5 text-[11px] font-semibold outline-none disabled:opacity-50 ${MUC_CLS[level] ?? MUC_CLS[1]}`}>
         <option value={0}>L0 · hết yếu — dừng bổ trợ</option>
-        <option value={1}>{MUC_TEN[1]}</option><option value={2}>{MUC_TEN[2]}</option><option value={3}>{MUC_TEN[3]}</option>
+        {[1, 2, 3, 4].map((m) => <option key={m} value={m}>{MUC_TEN[m]}</option>)}
       </select>
       <button type="button" disabled={busy} onClick={doiUu} title="Bấm để đổi ưu tiên (Thường → Cao → Thấp). Tối đa 20 em Cao."
         className={`rounded-full px-2 py-0.5 text-[11px] font-bold disabled:opacity-50 ${UU_CLS[uuTien]}`}>{uuTien === 3 ? '▲ ' : uuTien === 1 ? '▼ ' : ''}{UU_TIEN_TEN[uuTien]}</button>

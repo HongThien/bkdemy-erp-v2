@@ -14,7 +14,7 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
   const [loi, setLoi] = useState<string | null>(null)
   const [chon, setChon] = useState<Set<string>>(new Set())
   const [them, setThem] = useState<NhomChon[]>([])   // nhóm đã chọn trước đây nhưng không còn trong top 5
-  const [muc, setMuc] = useState(2)
+  const [muc, setMuc] = useState(3)   // mặc định 4 đơn vị (= L2 cũ "buổi riêng TA")
   const [uuTien, setUuTien] = useState(2)
   const [ghiChu, setGhiChu] = useState('')
   const [dangLuu, setDangLuu] = useState(false)
@@ -89,7 +89,7 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div>
                   <div className="mb-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Mức</div>
-                  <div className="flex flex-col gap-1">{[1, 2, 3].map((m) => <button key={m} disabled={!!khoa} onClick={() => setMuc(m)} className={o(muc === m) + ' text-left'}>{TEN_MUC[m]}</button>)}</div>
+                  <div className="flex flex-col gap-1">{[1, 2, 3, 4].map((m) => <button key={m} disabled={!!khoa} onClick={() => setMuc(m)} className={o(muc === m) + ' text-left'}>{TEN_MUC[m]}</button>)}</div>
                 </div>
                 <div>
                   <div className="mb-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Ưu tiên</div>
