@@ -79816,3 +79816,5 @@ Thùy nêu 4 việc, làm được 3:
 ### Sau giờ: em đang có ca mở không vào hàng chờ + ẩn ca huỷ — Thùy 11/11
 - 11A1 ca tạo 17:12 trước khi duyệt L1 18:42 ⇒ 13 em vẫn ở hàng chờ. mig 202611111946 ĐÃ ÁP: 3 hàm đọc coi case nhe_mo (ca không huỷ) là đã khởi tạo dù tạo trước lúc duyệt. Thử ROLLBACK: hàng chờ 112 → 99, 9A1 giữ 4 em L1.
 - Màn Sau giờ: ca đã huỷ ẩn mặc định, nút "Xem n ca đã huỷ". 9A1 thiếu Minh Phương / Quỳnh Anh vì duyệt L2 (ca khối), không phải lỗi.
+
+- 9A1 (Thùy "sửa Minh Phương, Quỳnh Anh thành L1 và áp luôn"): ĐÃ GHI — fn_btyeu_doi_level 2→1 (có log), đề xuất muc 2→1 (case_id null), đóng case khối dang_xu (0 buổi) ket_qua bo "chuyển sang bổ trợ sau giờ". Hàng chờ 9A1 đủ 6 em.
