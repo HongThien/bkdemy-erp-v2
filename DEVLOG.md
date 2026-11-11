@@ -79806,3 +79806,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Sửa:** mig `202611111928_tl_dong_bo_cau_hinh_in_phieu_buoi` (ĐÃ ÁP, Thùy "áp luôn đi" lúc 19:3x dù giờ cao điểm — DB đang hết chỗ kết nối, script thử lại vài lượt): trigger `trg_tl_dong_bo_cau_hinh_in` (AFTER UPDATE OF cau_hinh, loai giao_trinh, security definer) chép 6 mục cấu hình in (btvnLinesByCau · hinhCheDoByCau · anhMmByCau · anhPctByCau · anhPhaiByCau · colByCau) sang mọi phiếu `giao_trinh_buoi`/`btvn` có nguon_id = giáo trình, gộp theo mã câu (giáo trình thắng, khoá riêng phiếu giữ). + chép 1 lần cho 1730 phiếu đã gán.
 - **Kiểm:** ROLLBACK trước khi áp: phiếu 7S1 lên 30; sửa giáo trình = 31 ⇒ phiếu 31. Sau áp: phiếu 7S1 = 30/30 khớp giáo trình.
 - Còn: `file_url` (PDF dựng sẵn, dùng ở bổ trợ) của phiếu không tự dựng lại — in từ màn tài liệu luôn dựng theo cấu hình mới.
+
+- mig 202611111756 (bổ trợ sau giờ: bài test tối đa 10 câu) ĐÃ ÁP (Thùy "Áp đi").
