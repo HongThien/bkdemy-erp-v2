@@ -13,6 +13,7 @@
 - Màn Trao giải › tab Đã chốt giải: chọn "Nền ảnh FB" + nút **🏅 Làm ảnh** từng dòng ⇒ xem + tải PNG. Chăm chỉ chưa có nền; Tiêu biểu chưa có bảng chọn.
 - 11/11 chiều: thêm 6 mẫu **Thanh lịch** (zip `BK_Academy_Thanh_lich_6_mau.zip`, gốc `goc-thanh-lich/`) — 1 tranh dùng cho MỌI loại giải (`vd_tl_<tên>.jpg`), màu loại giải chỉ ở thẻ kết quả. Thêm mẫu = 1 dòng trong `BO_NEN` (vinhDanhFB.ts).
 - Ảnh HS: ô 📷 ở cột Ảnh FB tải ảnh chân dung lên (bucket avatars/chan-dung, bảng `hoc_sinh_anh_chan_dung` — mig 202611111622 đã áp). KHÔNG đè `hoc_sinh.anh_url` (avatar app em tự chọn). Ghép ưu tiên chân dung, không có mới dùng avatar app.
+- **Học sinh xuất sắc nhất khối** (= "Tiêu biểu" cũ): subtab "XS nhất khối" ở Trao giải — mỗi môn × khối chọn tay 1 em trong số giải Xuất sắc của các lớp trong khối; bảng `giai_thuong_xs_khoi` + log, hàm `fn_traogiai_xs_khoi`/`_chon`/`_bo` (mig 202611111630 đã áp; không đặt FK tới giai_thuong vì thiếu quyền REFERENCES ⇒ hàm đọc chỉ nhận lượt chọn còn trỏ tới giải Xuất sắc đang tồn tại). Ảnh FB dùng nền loại tieu_bieu, tiêu đề "HỌC SINH XUẤT SẮC NHẤT KHỐI <khối>".
 - Tiêu đề loại giải đặt TRONG thẻ kết quả (đầu ảnh vướng vương miện/ngôi sao/pha lê của nền).
 
 ---

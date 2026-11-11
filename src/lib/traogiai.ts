@@ -143,3 +143,21 @@ export async function chotKetQuaThang(thangYm: string): Promise<number> {
   if (error) throw rpcErr(error)
   return Number(data ?? 0)
 }
+
+// ── HỌC SINH XUẤT SẮC NHẤT KHỐI (Thùy 11/11): mỗi tháng × môn × khối chọn tay 1 em trong số giải Xuất sắc của các lớp trong khối.
+// Ứng viên + điểm MT/hạng khối tính ở DB (fn_traogiai_xs_khoi); chọn/bỏ = RPC, DB tự ghi vết.
+export type XsKhoiUngVien = { giaiThuongId: string; hocSinhId: string; hoTen: string; maHs: string | null; lopId: string; lop: string; mt: number | null; hangKhoi: number | null; tongKhoi: number | null }
+export type XsKhoiNhom = { mon: string; khoi: string; chonGiaiThuongId: string | null; ungVien: XsKhoiUngVien[] }
+export async function getXsKhoi(ym: string, khoi?: string): Promise<XsKhoiNhom[]> {
+  const { data, error } = await supabase.rpc('fn_traogiai_xs_khoi', { p_ym: ym, p_khoi: khoi || null })
+  if (error) throw rpcErr(error)
+  return (data ?? []) as XsKhoiNhom[]
+}
+export async function chonXsKhoi(ym: string, giaiThuongId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_traogiai_xs_khoi_chon', { p_ym: ym, p_giai_thuong: giaiThuongId })
+  if (error) throw rpcErr(error)
+}
+export async function boXsKhoi(ym: string, mon: string, khoi: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_traogiai_xs_khoi_bo', { p_ym: ym, p_mon: mon, p_khoi: khoi })
+  if (error) throw rpcErr(error)
+}

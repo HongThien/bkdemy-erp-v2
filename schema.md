@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-518 bảng · 39 view · 0 enum · 339 trigger · 1735 function
+520 bảng · 39 view · 0 enum · 340 trigger · 1739 function
 
 ## _app_secrets
 
@@ -2696,6 +2696,31 @@ END |  |  |
 | cham_chi | integer |  |  |  |  |
 | cap_nhat_boi | uuid | Y |  | FK→nhan_su.id |  |
 | cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
+## giai_thuong_xs_khoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| thang | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| khoi | text |  |  | PK |  |
+| giai_thuong_id | uuid |  |  |  |  |
+| hoc_sinh_id | uuid |  |  | FK→hoc_sinh.id |  |
+| chon_boi | uuid | Y |  | FK→nhan_su.id |  |
+| chon_at | timestamp with time zone |  | now() |  |  |
+
+## giai_thuong_xs_khoi_log
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  | nextval('giai_thuong_xs_khoi_log_id_seq'::regclass) | PK |  |
+| thang | date |  |  |  |  |
+| mon | text |  |  |  |  |
+| khoi | text |  |  |  |  |
+| hs_cu | uuid | Y |  |  |  |
+| hs_moi | uuid | Y |  |  |  |
+| actor | uuid | Y |  |  |  |
+| at | timestamp with time zone |  | now() |  |  |
 
 ## han_nop_ngoai_le
 
@@ -6035,8 +6060,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -9770,6 +9795,7 @@ WITH luot AS (
 | gay_ledger | hom_thu_gay_trg | AFTER | INSERT/UPDATE | _hom_thu_tg_gay |
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
+| giai_thuong_xs_khoi | trg_giai_thuong_xs_khoi_log | AFTER | INSERT/DELETE/UPDATE | _giai_thuong_xs_khoi_log_tg |
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | he_thong_cong_tac | trg_he_thong_cong_tac_log | AFTER | INSERT/UPDATE | _he_thong_cong_tac_ghi_log |
 | he_thong_cong_tac | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
@@ -10134,6 +10160,7 @@ WITH luot AS (
 - `_gay_nhan_tre(p_tu timestamp with time zone, p_den timestamp with time zone)` → text
 - `_gay_ten_actor(p_id uuid)` → text
 - `_giai_ghi_nhan(p_giai uuid, p_hs uuid, p_lop uuid, p_thang date, p_mon text, p_loai text, p_xu_cach text DEFAULT 'tu_dong'::text, p_bao boolean DEFAULT true)` → jsonb
+- `_giai_thuong_xs_khoi_log_tg()` → trigger
 - `_giai_xu(p_khoi text)` → integer
 - `_he_thong_cong_tac_ghi_log()` → trigger
 - `_hinh_bai_dong_bo_chuyen_de()` → trigger
@@ -11516,6 +11543,9 @@ WITH luot AS (
 - `fn_traogiai_thang(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb
 - `fn_traogiai_tong_slot(p_lop uuid, p_thang date)` → integer
 - `fn_traogiai_xac_nhan(p_ym text, p_lop uuid, p_hs uuid, p_loai text)` → uuid
+- `fn_traogiai_xs_khoi(p_ym text, p_khoi text DEFAULT NULL::text)` → jsonb
+- `fn_traogiai_xs_khoi_bo(p_ym text, p_mon text, p_khoi text)` → void
+- `fn_traogiai_xs_khoi_chon(p_ym text, p_giai_thuong uuid)` → void
 - `fn_troly_bao_cao(p_den date DEFAULT NULL::date, p_so_ngay integer DEFAULT 14)` → jsonb
 - `fn_troly_bao_cao_lay(p_so_ngay integer DEFAULT 14, p_tinh_lai boolean DEFAULT false)` → jsonb
 - `fn_troly_ca_nhan_lay(p_so_ngay integer DEFAULT 14)` → jsonb

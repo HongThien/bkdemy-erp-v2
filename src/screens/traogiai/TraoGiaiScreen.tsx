@@ -10,6 +10,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { captureReportSnapshot } from '../report/ReportCard'
 import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
+import { getXsKhoi, chonXsKhoi, boXsKhoi, type XsKhoiNhom, type XsKhoiUngVien } from '../../lib/traogiai'
 import { veVinhDanhFB, getVinhDanhData, uploadAnhChanDung, getAnhChanDung, PHONG_CACH, type PhongCach, type LoaiNen } from './vinhDanhFB'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
@@ -33,7 +34,7 @@ const monthLabel = (ym: string) => { const [y, m] = ym.split('-'); return `Thán
 
 // ⭐ "Rời màn rồi quay lại = đúng chỗ cũ" (CLAUDE.md §2 React — Thùy 09-09): màn unmount khi đổi lá ở NhanSuHome,
 // nên filter + data đã vá + scrollTop nhớ ở MODULE-LEVEL (sống tới F5). Mount lại: dùng cache, bỏ fetch đầu; ↻ ép quét.
-type Tab = 'all' | 'chua' | 'da' | 'chot'
+type Tab = 'all' | 'chua' | 'da' | 'chot' | 'xs_khoi'
 const NHO: { ym: string; khoi: string; q: string; tab: Tab; data: TraoGiaiThang | null; scrollTop: number; fetchedFor: string } = {
   ym: curYM(), khoi: '', q: '', tab: 'all', data: null, scrollTop: 0, fetchedFor: '',
 }
@@ -267,9 +268,9 @@ export default function TraoGiaiScreen() {
           {/* ── Toolbar ── */}
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex gap-1 rounded-lg bg-slate-200/60 p-1">
-              {(['all', 'chua', 'da', 'chot'] as const).map((t) => (
+              {(['all', 'chua', 'da', 'chot', 'xs_khoi'] as const).map((t) => (
                 <button key={t} onClick={() => setTab(t)} className={`rounded-md px-3 py-1.5 text-[13px] font-semibold transition ${tab === t ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>
-                  {t === 'all' ? 'Tất cả lớp' : t === 'chua' ? 'Chưa hoàn thành' : t === 'da' ? 'Đã hoàn thành' : `Đã chốt giải (${summary.daXacNhan})`}
+                  {t === 'all' ? 'Tất cả lớp' : t === 'chua' ? 'Chưa hoàn thành' : t === 'da' ? 'Đã hoàn thành' : t === 'chot' ? `Đã chốt giải (${summary.daXacNhan})` : 'XS nhất khối'}
                 </button>
               ))}
             </div>
@@ -277,7 +278,9 @@ export default function TraoGiaiScreen() {
           </div>
 
           {err && <div className="mb-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>}
-          {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : tab === 'chot' ? (
+          {tab === 'xs_khoi' ? (
+            <BangXsKhoi ym={ym} khoi={khoi} />
+          ) : loading ? <p className="text-sm text-slate-400">Đang tải…</p> : tab === 'chot' ? (
             <BangDaChot rows={daChot} ym={ym} />
           ) : filtered.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Không có lớp nào khớp bộ lọc.</p>
@@ -481,6 +484,129 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
         </div>,
         document.body,
       )}
+      {fbXem && createPortal(
+        <div onClick={() => setFbXem(null)} className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/75 p-4">
+          <img src={fbXem.url} alt="" className="max-h-[85vh] max-w-full rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()} />
+          <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
+            <a href={fbXem.url} download={fbXem.ten} className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-amber-400">⬇ Tải ảnh</a>
+            <button onClick={() => setFbXem(null)} className="rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700">Đóng</button>
+          </div>
+        </div>,
+        document.body,
+      )}
+      {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
+    </>
+  )
+}
+
+// ── HỌC SINH XUẤT SẮC NHẤT KHỐI (Thùy 11/11): mỗi môn × khối chọn tay 1 em trong số giải Xuất sắc của các lớp trong khối.
+// Ứng viên xếp theo điểm MT giảm dần (tính ở DB). Bấm em = chọn; bấm lại em đang chọn = bỏ. Vá tại chỗ, không tải lại cả danh sách.
+// Em được chọn: tải ảnh chân dung + làm ảnh FB nền "Xuất sắc nhất khối" (loại tieu_bieu của bộ nền).
+function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
+  const [ds, setDs] = useState<XsKhoiNhom[] | null>(null)
+  const [err, setErr] = useState<string | null>(null)
+  const [busy, setBusy] = useState<string | null>(null)
+  const [phongCach, setPhongCach] = useState<PhongCach>('hoanggia')
+  const [chanDung, setChanDung] = useState<Record<string, string>>({})
+  const [fbXem, setFbXem] = useState<{ url: string; ten: string } | null>(null)
+  const [toast, setToast] = useState<string | null>(null)
+  const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
+
+  useEffect(() => {
+    let huy = false
+    setDs(null); setErr(null)
+    getXsKhoi(ym, khoi || undefined).then((d) => {
+      if (huy) return
+      setDs(d)
+      getAnhChanDung([...new Set(d.flatMap((n) => n.ungVien.map((u) => u.hocSinhId)))]).then((m) => { if (!huy) setChanDung(m) }).catch(() => {})
+    }).catch((e) => { if (!huy) setErr((e as Error).message) })
+    return () => { huy = true }
+  }, [ym, khoi])
+
+  const vaNhom = (n: XsKhoiNhom, id: string | null) => setDs((prev) => prev?.map((x) => (x.mon === n.mon && x.khoi === n.khoi ? { ...x, chonGiaiThuongId: id } : x)) ?? prev)
+  async function chon(n: XsKhoiNhom, u: XsKhoiUngVien) {
+    setBusy(`${n.mon}|${n.khoi}`)
+    try {
+      if (n.chonGiaiThuongId === u.giaiThuongId) { await boXsKhoi(ym, n.mon, n.khoi); vaNhom(n, null) }
+      else { await chonXsKhoi(ym, u.giaiThuongId); vaNhom(n, u.giaiThuongId) }
+    } catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setBusy(null) }
+  }
+  async function chonAnh(hsId: string, file: File | undefined) {
+    if (!file) return
+    setBusy('anh|' + hsId)
+    try { const url = await uploadAnhChanDung(hsId, file); setChanDung((p) => ({ ...p, [hsId]: url })); flash('Đã lưu ảnh chân dung.') }
+    catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setBusy(null) }
+  }
+  async function lamAnh(n: XsKhoiNhom, u: XsKhoiUngVien) {
+    setBusy('fb|' + u.hocSinhId)
+    try {
+      const d = await getVinhDanhData(u.hocSinhId, n.mon, ym)
+      if (chanDung[u.hocSinhId]) d.anhChanDung = chanDung[u.hocSinhId]
+      const cv = await veVinhDanhFB(d, 'tieu_bieu', phongCach)
+      setFbXem({ url: cv.toDataURL('image/png'), ten: `xs-nhat-khoi-${ym}-${n.mon}-K${n.khoi}-${d.maHs ?? u.hocSinhId}.png` })
+    } catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setBusy(null) }
+  }
+
+  if (err) return <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>
+  if (!ds) return <p className="text-sm text-slate-400">Đang tải…</p>
+  if (ds.length === 0) return <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Tháng này chưa có học sinh nào được giải Xuất sắc{khoi ? ` ở khối ${khoi}` : ''}.</p>
+  const soChon = ds.filter((n) => n.chonGiaiThuongId).length
+  return (
+    <>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="text-[12px] text-slate-500">Mỗi môn × khối chọn <b>1 em</b> trong số học sinh Xuất sắc của các lớp trong khối. Đã chọn <b className="text-slate-700">{soChon}/{ds.length}</b> khối. Bấm em để chọn, bấm lại để bỏ.</div>
+        <label className="flex shrink-0 items-center gap-1.5 text-[12px] font-semibold text-slate-600">Nền ảnh FB
+          <select value={phongCach} onChange={(e) => setPhongCach(e.target.value as PhongCach)} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
+            {[...new Set(PHONG_CACH.map((p) => p.nhom))].map((nh) => <optgroup key={nh} label={nh}>{PHONG_CACH.filter((p) => p.nhom === nh).map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}</optgroup>)}
+          </select>
+        </label>
+      </div>
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+        {ds.map((n) => {
+          const dangGhi = busy === `${n.mon}|${n.khoi}`
+          return (
+            <div key={`${n.mon}|${n.khoi}`} className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+              <div className="mb-2 flex items-center justify-between">
+                <div className="text-[15px] font-extrabold text-slate-800">Khối {n.khoi} <span className="font-semibold text-slate-400">· {n.mon} · {n.ungVien.length} em Xuất sắc</span></div>
+                {n.chonGiaiThuongId
+                  ? <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Đã chọn</span>
+                  : <span className="rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chưa chọn</span>}
+              </div>
+              <div className="divide-y divide-slate-100">
+                {n.ungVien.map((u) => {
+                  const la = n.chonGiaiThuongId === u.giaiThuongId
+                  return (
+                    <div key={u.giaiThuongId} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 ${la ? 'bg-amber-50 ring-1 ring-amber-300' : ''}`}>
+                      <button disabled={busy != null} onClick={() => void chon(n, u)} className="flex min-w-0 flex-1 items-center gap-2 text-left disabled:opacity-60">
+                        <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 text-[11px] ${la ? 'border-amber-500 bg-amber-500 text-white' : 'border-slate-300'}`}>{la ? '★' : ''}</span>
+                        <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-slate-800">{u.hoTen} <span className="font-normal text-slate-400">· {u.lop}</span></span>
+                        <span className="shrink-0 text-[12px] text-slate-500">MT <b className="text-slate-800">{fmtMT(u.mt)}</b>{u.hangKhoi != null ? <span className="ml-1 text-slate-400">#{u.hangKhoi}/{u.tongKhoi}</span> : null}</span>
+                      </button>
+                      {la && (
+                        <div className="flex shrink-0 items-center gap-1.5">
+                          <label title={chanDung[u.hocSinhId] ? 'Đổi ảnh chân dung' : 'Tải ảnh chân dung lên'} className="cursor-pointer">
+                            <input type="file" accept="image/*" className="hidden" disabled={busy != null} onChange={(e) => { void chonAnh(u.hocSinhId, e.target.files?.[0]); e.target.value = '' }} />
+                            {busy === 'anh|' + u.hocSinhId ? <span className="inline-block h-9 w-7 text-center leading-9">⏳</span>
+                              : chanDung[u.hocSinhId] ? <img src={chanDung[u.hocSinhId]} alt="" className="h-9 w-7 rounded border border-slate-200 object-cover hover:ring-2 hover:ring-amber-300" />
+                              : <span className="inline-flex h-9 w-7 items-center justify-center rounded border border-dashed border-slate-300 text-[14px] text-slate-400 hover:border-amber-400">📷</span>}
+                          </label>
+                          <button disabled={busy != null} onClick={() => void lamAnh(n, u)} className="rounded bg-amber-500 px-2 py-1 text-[11px] font-bold text-white hover:bg-amber-400 disabled:opacity-50">
+                            {busy === 'fb|' + u.hocSinhId ? '⏳' : '🏅 Làm ảnh'}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+              {dangGhi && <div className="mt-1 text-[11px] text-slate-400">Đang lưu…</div>}
+            </div>
+          )
+        })}
+      </div>
       {fbXem && createPortal(
         <div onClick={() => setFbXem(null)} className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/75 p-4">
           <img src={fbXem.url} alt="" className="max-h-[85vh] max-w-full rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()} />

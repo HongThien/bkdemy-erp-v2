@@ -33,7 +33,7 @@ function boNen(pc: PhongCach): BoNen { const b = BO_NEN.find((x) => x.id === pc)
 const LOAI: Record<LoaiNen, { ten: string; nhan: string; nhan2: string; file: string }> = {
   xuat_sac: { ten: 'HỌC SINH XUẤT SẮC', nhan: '#b07d12', nhan2: '#1f3a7a', file: 'xuatsac' },
   tien_bo: { ten: 'HỌC SINH TIẾN BỘ', nhan: '#0f8f8a', nhan2: '#1d5fb8', file: 'tienbo' },
-  tieu_bieu: { ten: 'HỌC SINH TIÊU BIỂU', nhan: '#c0234a', nhan2: '#7a2a8c', file: 'tieubieu' },
+  tieu_bieu: { ten: 'XUẤT SẮC NHẤT KHỐI', nhan: '#c0234a', nhan2: '#7a2a8c', file: 'tieubieu' },
 }
 
 export type VinhDanhData = {
@@ -213,8 +213,9 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
 
   const [y, m] = d.ym.split('-')
   let cy = py0 + 44
-  g.fillStyle = L.nhan; vuaChu(g, L.ten, (px) => F(800, px), pw - 60, 44, 30)
-  g.fillText(L.ten, FB_W / 2, cy)
+  const tieuDe = loai === 'tieu_bieu' ? `HỌC SINH ${L.ten}${d.khoi ? ' ' + d.khoi : ''}` : L.ten
+  g.fillStyle = L.nhan; vuaChu(g, tieuDe, (px) => F(800, px), pw - 60, 44, 30)
+  g.fillText(tieuDe, FB_W / 2, cy)
   cy += 44
   const phu = [d.lop ? `Lớp ${d.lop}` : null, `Môn ${d.mon}`, `Sát hạch tháng ${Number(m)}/${y}`].filter(Boolean).join('  ·  ')
   g.fillStyle = '#4a5878'; vuaChu(g, phu, (px) => F(600, px), pw - 60, 26, 18)
