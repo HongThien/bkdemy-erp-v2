@@ -123,6 +123,11 @@ Vẽ lại ĐÚNG hình đó, giữ bố cục và phong cách, sửa đúng l�
 
 ## 5. Nối dữ liệu (một hàm DB, chưa build — chờ Thùy gật)
 
+**Loại giải (Thùy chốt 11/11): "Học sinh tiêu biểu" là loại THỨ 4**, đứng cạnh Xuất sắc · Tiến bộ · Chăm chỉ (Chăm chỉ giữ nguyên).
+Hiện DB chỉ có 3 loại ⇒ thêm `tieu_bieu` phải đi qua: CHECK `loai_giai` ở `giai_thuong` + `giai_thuong_lop_giai` · cột mới ở `giai_thuong_slot` ·
+các hàm `fn_traogiai_*` (danh sách ứng viên theo loại, đặt slot, chốt) · `LoaiGiai`/`SLOT_COUNT` ở `src/lib/traogiai.ts` + màn Trao giải.
+Chưa làm — cần chốt tiêu chí chọn + số slot/lớp. Đơn nền đợt 1 chỉ vẽ 3 loại Thùy cần cho ảnh (Xuất sắc · Tiến bộ · Tiêu biểu); muốn có ảnh Chăm chỉ thì thêm 3 nền màu xanh lá (giống `VinhDanhCard` cũ).
+
 Mọi số tính ở Postgres (CLAUDE.md §2.0). Đề xuất **một hàm** `fn_vinh_danh_hs(p_hs, p_mon, p_ym) → jsonb`, ghép từ hàm đang chạy:
 
 | Trường trên ảnh | Nguồn |
