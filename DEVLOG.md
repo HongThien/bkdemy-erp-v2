@@ -79808,3 +79808,7 @@ Thùy nêu 4 việc, làm được 3:
 - Còn: `file_url` (PDF dựng sẵn, dùng ở bổ trợ) của phiếu không tự dựng lại — in từ màn tài liệu luôn dựng theo cấu hình mới.
 
 - mig 202611111756 (bổ trợ sau giờ: bài test tối đa 10 câu) ĐÃ ÁP (Thùy "Áp đi").
+
+### Sau giờ: ca HUỶ trả em về hàng chờ — Thùy 11/11 (reset ca 9A1)
+- 9A1: 6 em duyệt nhưng 4 L1 (sau giờ) + 2 L2 (ca khối: Nguyễn Quỳnh Anh, Nguyễn Minh Phương) ⇒ form đúng 4. Thùy huỷ ca nhưng 4 em không về hàng chờ (case nhe của ca huỷ vẫn tính đã khởi tạo).
+- mig 202611111933 ĐÃ ÁP: fn_btnhe_cho · fn_btnhe_lop_cho · fn_btnhe_hs_duyet bỏ qua case thuộc ca_bo_tro_nhe huỷ. Không xoá dữ liệu. Thử ROLLBACK: 4 em 9A1 về hàng chờ.
