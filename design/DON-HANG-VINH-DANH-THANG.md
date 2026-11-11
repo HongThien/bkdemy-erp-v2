@@ -123,10 +123,11 @@ Vẽ lại ĐÚNG hình đó, giữ bố cục và phong cách, sửa đúng l�
 
 ## 5. Nối dữ liệu (một hàm DB, chưa build — chờ Thùy gật)
 
-**Loại giải (Thùy chốt 11/11): "Học sinh tiêu biểu" là loại THỨ 4**, đứng cạnh Xuất sắc · Tiến bộ · Chăm chỉ (Chăm chỉ giữ nguyên).
-Hiện DB chỉ có 3 loại ⇒ thêm `tieu_bieu` phải đi qua: CHECK `loai_giai` ở `giai_thuong` + `giai_thuong_lop_giai` · cột mới ở `giai_thuong_slot` ·
-các hàm `fn_traogiai_*` (danh sách ứng viên theo loại, đặt slot, chốt) · `LoaiGiai`/`SLOT_COUNT` ở `src/lib/traogiai.ts` + màn Trao giải.
-Chưa làm — cần chốt tiêu chí chọn + số slot/lớp. Đơn nền đợt 1 chỉ vẽ 3 loại Thùy cần cho ảnh (Xuất sắc · Tiến bộ · Tiêu biểu); muốn có ảnh Chăm chỉ thì thêm 3 nền màu xanh lá (giống `VinhDanhCard` cũ).
+**Học sinh tiêu biểu (Thùy chốt 11/11): chọn THEO KHỐI, từ các HS đã được giải Xuất sắc của khối đó trong tháng — 1 suất, người chọn tay.**
+Không phải giải cấp lớp ⇒ KHÔNG đụng slot/ngân sách lớp, không thêm `loai_giai`. Lưu riêng: bảng `giai_thuong_tieu_bieu`
+(khoá `thang × mon × khoi`, trỏ `giai_thuong_id` của một giải `xuat_sac` cùng tháng–môn–khối; người chọn + lúc chọn), ô chọn trên màn Trao giải
+chỉ liệt kê HS Xuất sắc đã chốt của khối. Ảnh vinh danh của em đó dùng nền "Tiêu biểu". Đơn nền đợt 1 vẽ 3 loại (Xuất sắc · Tiến bộ · Tiêu biểu);
+Chăm chỉ dùng nền xanh lá nếu cần sau.
 
 Mọi số tính ở Postgres (CLAUDE.md §2.0). Đề xuất **một hàm** `fn_vinh_danh_hs(p_hs, p_mon, p_ym) → jsonb`, ghép từ hàm đang chạy:
 
