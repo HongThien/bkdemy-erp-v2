@@ -105,8 +105,12 @@ export const doiChieu = (tu: string, den: string) => rpc<DongCong[]>('fn_ta_doi_
 // Thùy 09/11 (mig 202611091507): duyệt công theo khối — id các dòng (ca + việc) người đang đăng nhập duyệt được; null = mọi dòng (giữ lá ta_cong_duyet).
 export const duocDuyet = (tu: string, den: string) => rpc<string[] | null>('fn_ta_cong_duoc_duyet', { p_tu: tu, p_den: den })
 export const thieuCong = (tu: string, den: string) => rpc<ThieuCong[]>('fn_ta_buoi_thieu_cong', { p_tu: tu, p_den: den })
-export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi', lyDo?: string) =>
+// ketQua 'cho_duyet' = MỞ LẠI dòng đã duyệt / từ chối (Thùy 11/11, mig 202611111600) — bắt buộc lý do, cùng luật phạm vi
+export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu_choi' | 'cho_duyet', lyDo?: string) =>
   rpc<number>('fn_ta_duyet_cong', { p_ca: ca, p_viec: viec, p_ket_qua: ketQua, p_ly_do: lyDo ?? null })
+export type LichSuCong = { luc: string; nguoi: string; viec: string; chi_tiet: string }
+export const lichSuCong = (id: string) => rpc<LichSuCong[]>('fn_ta_cong_lich_su', { p_id: id })
+export const nguoiDuyet = (tu: string, den: string) => rpc<{ id: string; nguoi: string; luc: string }[]>('fn_ta_cong_nguoi_duyet', { p_tu: tu, p_den: den })
 export const chotGio = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_chot_gio', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
 // Chốt giờ theo việc trong ca (Thùy 04/11): DB tính vào = sớm hơn (checkin, việc đầu), ra = việc cuối
 export const chotGioTheoViec = (id: string) => rpc<{ vao: string; ra: string }>('fn_ta_chot_gio_theo_viec', { p_id: id })
