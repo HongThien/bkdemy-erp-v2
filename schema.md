@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-521 bảng · 39 view · 0 enum · 340 trigger · 1751 function
+521 bảng · 39 view · 0 enum · 341 trigger · 1753 function
 
 ## _app_secrets
 
@@ -9964,6 +9964,7 @@ WITH luot AS (
 | ta_luong_lop | ta_luong_lop_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
 | tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
+| tai_lieu | trg_tl_dong_bo_cau_hinh_in | AFTER | UPDATE | _tl_dong_bo_cau_hinh_in |
 | task_phat_trien | trg_task_pt_push_badge | AFTER | INSERT/UPDATE | _trg_task_pt_push |
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | test_dau_vao_thoi_luong | trg_log_test_dau_vao_thoi_luong | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
@@ -10487,6 +10488,8 @@ WITH luot AS (
 - `_tl_bdm_mon_nhom(p_nhom text)` → text
 - `_tl_bdm_phan_cua_buoi(p_buoi uuid)` → SETOF tai_lieu_phan
 - `_tl_bdm_so_lan_dung(p_ma_caus text[])` → TABLE(ma_cau text, n bigint)
+- `_tl_dong_bo_cau_hinh_in()` → trigger
+- `_tl_gop_cau_hinh_in(p_con jsonb, p_goc jsonb)` → jsonb
 - `_tl_hh_cau_chuan(p_bai text)` → TABLE(ma_cau text, la_goc boolean, thu_tu integer)
 - `_tl_hh_cau_cua_buoi(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
 - `_tl_hh_goi_y(p_bai text, p_n integer, p_tru text[])` → text[]

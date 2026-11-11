@@ -79800,3 +79800,9 @@ Thùy nêu 4 việc, làm được 3:
 - Bản in luyện/test sau giờ = ETPrintView (header BK, Câu 1 Câu 2, không tên dạng, Bản HS / Bản GV có đáp án + lời giải); thêm prop deRieng (mỗi em 1 đề, In cả lớp) + nhanDe (tiêu đề/nhãn) cho ETPrintView, nhan cho ETHeaderBK. Kiểm: bài test thật 10 câu em Anh Thư (11A1), cả 2 bản. Ô Lớp trống khi mở từ màn chi tiết ca (CaTA chưa có tên lớp).
 - Ảnh thông báo PH: "Thông báo Bổ trợ kiến thức", câu "… sẽ ở lại bổ trợ kiến thức sau giờ học nên các con sẽ về muộn 20–25 phút…".
 - mig 202611111756 (test tối đa 10 câu) đã viết + thử ROLLBACK, CHƯA áp — chờ Thùy.
+
+### 11/11 — Phiếu buổi theo cấu hình in của giáo trình (Thùy "tài liệu ko hiện số dòng đúng")
+- **Gốc:** gán lớp (`trichBuoiBdm`) chép nguyên `cau_hinh` giáo trình sang phiếu buổi 1 lần ⇒ sửa số dòng ở giáo trình sau đó, phiếu đã gán vẫn số cũ. Đo: Giáo trình 7S1 HHC000837/832 = 30, "BTVN 7S1 08/11 · Buổi 27" = 25.
+- **Sửa:** mig `202611111928_tl_dong_bo_cau_hinh_in_phieu_buoi` (ĐÃ ÁP, Thùy "áp luôn đi" lúc 19:3x dù giờ cao điểm — DB đang hết chỗ kết nối, script thử lại vài lượt): trigger `trg_tl_dong_bo_cau_hinh_in` (AFTER UPDATE OF cau_hinh, loai giao_trinh, security definer) chép 6 mục cấu hình in (btvnLinesByCau · hinhCheDoByCau · anhMmByCau · anhPctByCau · anhPhaiByCau · colByCau) sang mọi phiếu `giao_trinh_buoi`/`btvn` có nguon_id = giáo trình, gộp theo mã câu (giáo trình thắng, khoá riêng phiếu giữ). + chép 1 lần cho 1730 phiếu đã gán.
+- **Kiểm:** ROLLBACK trước khi áp: phiếu 7S1 lên 30; sửa giáo trình = 31 ⇒ phiếu 31. Sau áp: phiếu 7S1 = 30/30 khớp giáo trình.
+- Còn: `file_url` (PDF dựng sẵn, dùng ở bổ trợ) của phiếu không tự dựng lại — in từ màn tài liệu luôn dựng theo cấu hình mới.
