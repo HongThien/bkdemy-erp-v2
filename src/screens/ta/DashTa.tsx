@@ -119,7 +119,7 @@ export default function DashTa({ profile }: { profile: MyProfile }) {
           {box === 'huongdan' && <HuongDanScreen vaiTro="ta" />}
           {box === 'datchuan' && (data
             ? <DatChuanScreen me={me} items={data.items} tabTen={TAB_TEN} lyDoTen={LY_DO_TEN}
-                chuThich={`Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥${data.nguongChatLuong}. Trễ hạn tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt.`} />
+                chuThich={`Đạt chuẩn = đóng đúng hạn + chất lượng duyệt ≥${data.nguongChatLuong}. Trễ hạn tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt.${data.tinhLuc ? ` Số tính lúc ${new Date(data.tinhLuc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })} (làm mới ≤10 phút).` : ''}`} />
             : <p className="text-center text-[13px] text-[#63709A]">Đang tính…</p>)}
           </div>
         </div>

@@ -14,6 +14,7 @@ export type GvDash = {
   items: ViecItem[]
   nguongRankFinal: number
   nguongRankTop: number
+  tinhLuc?: string   // 11/11: số đọc từ bảng tính sẵn (làm mới ≤10 phút) — màn ghi "số tính lúc HH:MM"
 }
 
 export async function gvDashboard(ym: string): Promise<GvDash> {

@@ -21,7 +21,9 @@ const GOI_Y: Partial<Record<PhienLoai, string[]>> = {
   nhap_kho: ['Phân dạng các câu chưa có dạng của khối, cho mình xem kết quả lượt đầu', 'Chạy hết kho đi, xong báo mình các cụm cần thêm dạng', 'Ok thêm dạng "Tìm x trong tỉ lệ thức" như em đề xuất rồi phân lại cụm đó'],
   ly_thuyet: ['Soạn lý thuyết + 2 ví dụ cho các dạng của chuyên đề Cộng trừ số hữu tỉ', 'Ví dụ 2 dạng 1.2.1 dễ quá, đổi bài khó hơn', 'Mình vừa sửa tay phương pháp dạng 1.3.2, áp cách viết đó cho các dạng còn lại'],
 }
-const POLL_DS_MS = 15_000
+// 11/11: 15 s → 60 s. claude_phien* CHƯA nằm trong publication supabase_realtime (đo 11/11) ⇒ hỏi lại là đường duy nhất;
+// danh sách chỉ cần thấy phiên nào đang chạy / tin cuối, phiên đang mở tự hỏi 4 s riêng.
+const POLL_DS_MS = 60_000
 const POLL_TIN_MS = 4_000      // chỉ khi phiên đang có việc chạy — Realtime là đường chính
 const gio = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })
 
@@ -291,8 +293,11 @@ export default function PhienClaudeTab() {
   }
   useEffect(() => {
     taiDs()
-    const id = setInterval(taiDs, POLL_DS_MS)
-    return () => clearInterval(id)
+    // 11/11 (audit timeout): tab ẩn thì không hỏi; quay lại tab thì hỏi ngay 1 lần
+    const id = setInterval(() => { if (!document.hidden) taiDs() }, POLL_DS_MS)
+    const khiHien = () => { if (!document.hidden) taiDs() }
+    document.addEventListener('visibilitychange', khiHien)
+    return () => { clearInterval(id); document.removeEventListener('visibilitychange', khiHien) }
   }, [])
 
   const hien = (ds ?? []).filter((p) => loc === 'tat_ca' || p.trang_thai !== 'dong')

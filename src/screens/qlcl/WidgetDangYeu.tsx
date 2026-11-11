@@ -1,7 +1,9 @@
 // WIDGET DẠNG YẾU — màn chính ERP (Việc của tôi), Thùy 29/10, spec-truong-khoi.md §8.4.
 // Mỗi ô (môn × khối) trong phạm vi của tôi: số dạng yếu · HS có dạng yếu. 2 số: đầu tuần (đóng băng lúc Chốt tuần — chờ P3) | hiện tại.
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
-// Số tính ở DB, lưu sẵn; widget gọi làm mới lười theo lô cho tới khi hết em cũ (fn_qlcl_lam_moi). Không tự ẩn số cũ khi đang làm mới.
+// Số tính ở DB, lưu sẵn (dang_yeu_hien_tai). 11/11 (audit timeout): DB tự làm mới NỀN theo lịch (_qlcl_lam_moi_nen, pg_cron) — widget
+// mở ra CHỈ ĐỌC; trước đây mỗi lần mở widget là tự chạy fn_qlcl_lam_moi qua MỌI ô trong phạm vi (Giám đốc = cả hệ). Còn em chờ cập nhật
+// thì hiện số em + giờ tính, bấm ↻ mới làm mới đúng ô đang xem (bấm đến đâu gọi đến đấy, §2.0). Không tự ẩn số cũ khi đang làm mới.
 import { useEffect, useState } from 'react'
 import { tongQuanDangYeu, lamMoiDangYeu, hsDangYeu, etBtvnCuaEm, deXuatYeu, dongChayDangYeu, nhomYeuTheoO, type DongChay, type OTongQuan, type HsDangYeu, type ONhomYeu } from '../../lib/qlcl'
 import type { EtBtvn } from '../../lib/botro_tuan'
@@ -12,13 +14,13 @@ export const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
 const NHO: { rows: OTongQuan[] | null; dangChay: boolean; nghe: Set<(r: OTongQuan[]) => void> } = { rows: null, dangChay: false, nghe: new Set() }
 const phat = (r: OTongQuan[]) => { NHO.rows = r; NHO.nghe.forEach((f) => f(r)) }
 
-// Làm mới tuần tự từng ô (giới hạn tải DB), sau mỗi lô đọc lại tổng quan (rẻ) để số nhảy dần.
-async function chayLamMoi() {
+// Làm mới ĐÚNG ô người dùng bấm ↻ (giới hạn tải DB), sau mỗi lô đọc lại tổng quan để số nhảy dần.
+async function chayLamMoi(chi: { mon: string; khoi: string }) {
   if (NHO.dangChay) return
   NHO.dangChay = true
   try {
     for (let vong = 0; vong < 200; vong++) {
-      const o = (NHO.rows ?? []).find((x) => x.so_can_tinh > 0)
+      const o = (NHO.rows ?? []).find((x) => x.so_can_tinh > 0 && khoaO(x) === khoaO(chi))
       if (!o) break
       await lamMoiDangYeu(o.mon, o.khoi, 10)
       phat(await tongQuanDangYeu())
@@ -47,7 +49,7 @@ export default function WidgetDangYeu({ onTaoCaNhe, className, chiO, theoNhom }:
   const [mo, setMo] = useState<OTongQuan | null>(null)
   useEffect(() => {
     NHO.nghe.add(setRows)
-    tongQuanDangYeu().then((r) => { phat(r); chayLamMoi() }).catch(() => {})
+    tongQuanDangYeu().then(phat).catch(() => {})
     return () => { NHO.nghe.delete(setRows) }
   }, [])
   // số nhóm đọc từ bảng chụp dạng yếu ⇒ đọc lại mỗi khi bảng chụp vừa được làm mới (rows đổi)
@@ -102,7 +104,13 @@ function HaiBoxSo({ rows, dangCapNhat, onMo, nhom }: { rows: OTongQuan[]; dangCa
               ))}
             </div>
           )}
-          {dangCapNhat > 0 && <span className="text-[11.5px] text-indigo-500">⟳ đang cập nhật {dangCapNhat} em…</span>}
+          {o.so_can_tinh > 0 && (
+            <span className="text-[11.5px] text-slate-500">
+              {o.tinh_at && <>số tính lúc {new Date(o.tinh_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })} · </>}
+              {o.so_can_tinh} em chờ cập nhật{' '}
+              <button onClick={() => { void chayLamMoi(o) }} className="font-semibold text-indigo-600 hover:underline">↻ cập nhật ngay</button>
+            </span>
+          )}
         </div>
       )}
     </div>

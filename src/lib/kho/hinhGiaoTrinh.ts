@@ -2,6 +2,7 @@
 // 1 buổi = bản LƯU của nháp "Theo mô hình" (sel/ghep/anDe → hinh_gt_bai). Gán lớp = SNAPSHOT (copy bài).
 // Nội dung bài lưu STRUCTURED: mỗi bài 1 dòng (phan/loai/ref/an_de); resolve nội dung sống khi in (cần Luoi).
 import { supabase } from '../supabase'
+import { baoCoJobMoi } from '../linkgen'
 import type { Bai, BienThe, Y, Luoi } from './hinh'
 import { loadLuoi, noDapAn } from './hinh'
 import type { PickItem } from '../../store/useStore'
@@ -580,6 +581,7 @@ export async function enqueueHinhLinkGenJob(buoiId: string, phan: 'lop' | 'nha' 
     { buoi_id: buoiId, phan, status: 'pending', attempt: 0, error: null, updated_at: new Date().toISOString() },
     { onConflict: 'buoi_id,phan' },
   )
+  baoCoJobMoi()   // màn Kho đang mở thì đọc trạng thái job ngay (poll rảnh 5 phút — lib/linkgen.ts)
 }
 /** Meta 1 buổi (khối/tên giáo trình/lớp+ngày nếu đã gán) — dùng để dựng title/khoi khi in mà chỉ có
  *  buoiId trong tay (PrintJobPage.tsx, worker gen-link). Khuôn hệt phần resolve trong listAllBuoiHinh

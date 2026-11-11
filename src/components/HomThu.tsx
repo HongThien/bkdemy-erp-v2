@@ -2,7 +2,7 @@
 //   trái = danh sách thư (CHƯA ĐỌC in đậm + chấm màu, ĐÃ ĐỌC chữ thường nhạt hơn) · phải = đọc nội dung đầy đủ.
 // Chữ là chính: tên người gửi / tiêu đề / vài dòng đầu nội dung, không icon lớn. Mở thư = tự đánh dấu đã đọc;
 // "Đánh dấu chưa đọc" lấy lại cờ. Nguồn thư do DB tự đẻ (mig 202610140053) — client chỉ đọc + đổi cờ da_doc.
-// Số chưa đọc đếm ở DB (head count); làm tươi mỗi 60 giây + khi quay lại cửa sổ.
+// Số chưa đọc đếm ở DB (head count); làm tươi mỗi 5 phút khi tab đang hiện + khi quay lại cửa sổ (11/11, trước là 60 s).
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useStore } from '../store/useStore'
@@ -21,6 +21,17 @@ const gioNgan = (iso: string) => {
 const gioDay = (iso: string) => new Date(iso).toLocaleString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: VN })
 const dongDau = (s: string | null) => (s ?? '').split('\n').map((x) => x.trim()).filter(Boolean).join(' · ')
 
+// Số chưa đọc DÙNG CHUNG mọi nút hòm thư đang mount (TopBar + Trang chủ có thể cùng hiện) — audit 11/11: đếm 60 s/lần
+// × mỗi nút × mỗi tab mở = 123k lượt. Giờ: 1 lượt/5 phút khi tab ĐANG HIỆN, quay lại tab/cửa sổ thì đếm lại
+// (gộp các lần gọi trong 30 s thành 1). §2.0 "cấm polling ngắn".
+const DEM: { so: number | null; at: number; dang: Promise<number> | null } = { so: null, at: 0, dang: null }
+function demChung(epBuoc = false): Promise<number> {
+  if (!epBuoc && DEM.so !== null && Date.now() - DEM.at < 30000) return Promise.resolve(DEM.so)
+  if (DEM.dang) return DEM.dang
+  DEM.dang = demChuaDoc().then((n) => { DEM.so = n; DEM.at = Date.now(); return n }).finally(() => { DEM.dang = null })
+  return DEM.dang
+}
+
 export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: string) => void; duocDi: (leaf: string) => boolean; noiBat?: boolean }) {
   const coHoSo = useStore((s) => !!s.me)
   const [so, setSo] = useState(0)
@@ -31,13 +42,15 @@ export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: stri
   const [loai, setLoai] = useState<LoaiThu | null>(null)
   const [chon, setChon] = useState<string | null>(null)
 
-  const lamTuoiSo = useCallback(() => { demChuaDoc().then(setSo).catch(() => { /* chưa có bảng / mất mạng: giữ số cũ */ }) }, [])
+  const lamTuoiSo = useCallback((epBuoc = false) => { demChung(epBuoc).then(setSo).catch(() => { /* chưa có bảng / mất mạng: giữ số cũ */ }) }, [])
   useEffect(() => {
     if (!coHoSo) return
     lamTuoiSo()
-    const t = setInterval(lamTuoiSo, 60000)
-    window.addEventListener('focus', lamTuoiSo)
-    return () => { clearInterval(t); window.removeEventListener('focus', lamTuoiSo) }
+    const t = setInterval(() => { if (!document.hidden) lamTuoiSo() }, 5 * 60000)
+    const khiHien = () => { if (!document.hidden) lamTuoiSo() }
+    window.addEventListener('focus', khiHien)
+    document.addEventListener('visibilitychange', khiHien)
+    return () => { clearInterval(t); window.removeEventListener('focus', khiHien); document.removeEventListener('visibilitychange', khiHien) }
   }, [coHoSo, lamTuoiSo])
 
   // Mở: nạp danh sách (không xoá list đang hiện khi nạp lại).
@@ -65,10 +78,10 @@ export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: stri
     const can = (ds ?? []).filter((t) => ids.includes(t.id) && t.da_doc !== daDoc).map((t) => t.id)
     if (!can.length) return
     setDs((c) => (c ?? []).map((t) => (can.includes(t.id) ? { ...t, da_doc: daDoc } : t)))
-    setSo((n) => Math.max(0, n + (daDoc ? -can.length : can.length)))
+    setSo((n) => { const m = Math.max(0, n + (daDoc ? -can.length : can.length)); DEM.so = m; return m })
     ;(daDoc ? danhDauDoc(can) : danhDauChuaDoc(can)).catch(() => {
       setDs((c) => (c ?? []).map((t) => (can.includes(t.id) ? { ...t, da_doc: !daDoc } : t)))
-      lamTuoiSo()
+      lamTuoiSo(true)
     })
   }
   const moThu = (t: Thu) => { setChon(t.id); if (!t.da_doc) datCo([t.id], true) }

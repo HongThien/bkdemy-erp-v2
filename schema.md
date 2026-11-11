@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-521 bảng · 39 view · 0 enum · 341 trigger · 1756 function
+524 bảng · 39 view · 0 enum · 341 trigger · 1761 function
 
 ## _app_secrets
 
@@ -2162,6 +2162,15 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | done_at | timestamp with time zone | Y |  |  |  |
 | model_chon | text | Y |  |  |  |
+
+## dash_viec_thang_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| loai | text |  |  | PK | `ta` · `gv` |
+| ym | text |  |  | PK |  |
+| tinh_luc | timestamp with time zone |  |  |  |  |
+| dong | jsonb |  |  |  |  |
 
 ## de_test_ghim
 
@@ -6742,6 +6751,29 @@ END |  |  |
 | cu | jsonb | Y |  |  |  |
 | moi | jsonb | Y |  |  |  |
 
+## the_gioi_tin_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoa | text |  |  |  |  |
+| tang | text | Y |  |  |  |
+| nhom | text | Y |  |  |  |
+| kieu | text | Y |  |  |  |
+| hoc_sinh_id | uuid | Y |  |  |  |
+| thanh_vien | uuid[] | Y |  |  |  |
+| lop_id | uuid | Y |  |  |  |
+| mon | text | Y |  |  |  |
+| at | timestamp with time zone | Y |  |  |  |
+| chi_tiet | jsonb | Y |  |  |  |
+
+## the_gioi_tin_luu_moc
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | integer |  |  | PK |  |
+| tu | timestamp with time zone |  |  |  |  |
+| tinh_luc | timestamp with time zone |  |  |  |  |
+
 ## thi_thu_anh
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -10120,6 +10152,7 @@ WITH luot AS (
 - `_dang_da_hoc_ok(p_hs uuid, p_mon text, p_ma_dang text)` → boolean
 - `_dang_yeu_chup_tuan(p_tuan date)` → integer
 - `_dang_yeu_tai_lo(p_hs uuid[], p_mon text, p_moc timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, ten_dang text, score numeric, n integer)
+- `_dash_viec_thang(p_loai text, p_ym text, p_cu_phut integer DEFAULT 10)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text, tinh_luc timestamp with time zone)
 - `_dbht_cau(p_hs uuid[], p_tu date, p_mon text)` → TABLE(hoc_sinh_id uuid, ngay date, t timestamp with time zone, kenh text, luot text, thu_tu integer, ma_cau text, gia_tri numeric, dang_bai_id text, nhom_id text, chuyen_de_id text, chu_de_id text, ten_dang text)
 - `_dbht_cot(p_cap text, x_nhom text, x_chuyen_de text, x_chu_de text)` → text
 - `_dbht_kenh_tt(p_kenh text)` → integer
@@ -10394,6 +10427,7 @@ WITH luot AS (
 - `_qlcl_dong_bang_tuan(p_mon text, p_tuan date, p_chot uuid)` → integer
 - `_qlcl_hs_can_tinh(p_mon text, p_khoi text)` → TABLE(hoc_sinh_id uuid)
 - `_qlcl_hs_cua_o(p_mon text, p_khoi text)` → TABLE(hoc_sinh_id uuid)
+- `_qlcl_lam_moi_nen(p_ngan_giay integer DEFAULT 25)` → integer
 - `_qlcl_toan_he()` → boolean
 - `_qlcl_tuan_nay()` → date
 - `_quan_ly_mon()` → text[]
@@ -10473,7 +10507,9 @@ WITH luot AS (
 - `_the_gioi_lop(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, ten_lop text)
 - `_the_gioi_nguoi(p_hs uuid, p_lop text, p_ban boolean)` → jsonb
 - `_the_gioi_tin(p_tu timestamp with time zone)` → TABLE(khoa text, tang text, nhom text, kieu text, hoc_sinh_id uuid, thanh_vien uuid[], lop_id uuid, mon text, at timestamp with time zone, chi_tiet jsonb)
+- `_the_gioi_tin_lam_moi()` → integer
 - `_the_gioi_tin_mo(p_khoa text)` → TABLE(nhom text, thanh_vien uuid[])
+- `_the_gioi_tin_tinh(p_tu timestamp with time zone)` → TABLE(khoa text, tang text, nhom text, kieu text, hoc_sinh_id uuid, thanh_vien uuid[], lop_id uuid, mon text, at timestamp with time zone, chi_tiet jsonb)
 - `_thu_cua_ngay(p date)` → smallint
 - `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_tinh_nang_ghi_vet()` → trigger
@@ -10662,6 +10698,7 @@ WITH luot AS (
 - `fn_bao_loi_cau_xu_ly(p_mon text, p_ma_cau text, p_ket_qua text, p_ghi_chu text DEFAULT NULL::text)` → integer
 - `fn_bao_loi_luong(p_id uuid)` → jsonb
 - `fn_bao_loi_tra_loi(p_id uuid, p_noi_dung text)` → void
+- `fn_bao_sai_cho_duyet_cua_toi()` → TABLE(lop_id uuid, ngay date, so_bao integer, bao_dau timestamp with time zone)
 - `fn_bc_ky_chot_hs(p_hs uuid, p_mon text, p_ky uuid)` → timestamp with time zone
 - `fn_bc_ky_cong_bo(p_hs uuid, p_mon text, p_ky uuid)` → timestamp with time zone
 - `fn_bc_ky_cong_bo_lop(p_lop uuid, p_mon text, p_ky uuid)` → jsonb
@@ -11870,6 +11907,7 @@ WITH luot AS (
 | dang_ky_test | dang_ky_test_check | `CHECK (((nguon = 'web'::text) = (kenh IS NULL)))` |
 | dang_ky_test | dang_ky_test_check1 | `CHECK (((trang_thai = 'huy'::text) = (huy_ly_do IS NOT NULL)))` |
 | dang_ky_test | dang_ky_test_thoi_luong_phut_check | `CHECK ((thoi_luong_phut = ANY (ARRAY[45, 60, 75, 90, 120])))` |
+| dash_viec_thang_luu | dash_viec_thang_luu_ym_check | `CHECK ((ym ~ '^\d{4}-\d{2}$'::text))` |
 | dht_hoan | dht_hoan_so_check | `CHECK ((so > 0))` |
 | dht_tieu | dht_tieu_so_check | `CHECK ((so > 0))` |
 | dtv_gop_tu | dtv_gop_tu_en_check | `CHECK (((char_length(btrim(en)) >= 1) AND (char_length(btrim(en)) <= 60)))` |
@@ -12087,6 +12125,7 @@ WITH luot AS (
 | the_gioi_khen | the_gioi_khen_check | `CHECK (((hs_id IS NULL) <> (ns_id IS NULL)))` |
 | the_gioi_khen | the_gioi_khen_hs_co_icon | `CHECK (((ns_id IS NOT NULL) OR (icon_ma IS NOT NULL)))` |
 | the_gioi_khen | the_gioi_khen_tin_khoa_check | `CHECK ((tin_khoa ~ '^[a-z_]+:'::text))` |
+| the_gioi_tin_luu_moc | the_gioi_tin_luu_moc_id_check | `CHECK ((id = 1))` |
 | thoi_khoa_bieu | thoi_khoa_bieu_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
 | thong_bao_ph | chk_scope_ca_nhan | `CHECK (((scope <> 'ca_nhan'::text) OR (hoc_sinh_id IS NOT NULL)))` |
 | thong_bao_ph | chk_scope_khoi | `CHECK (((scope <> 'khoi'::text) OR (khoi IS NOT NULL)))` |

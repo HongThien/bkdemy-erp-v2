@@ -117,8 +117,19 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
     // vá tại chỗ: câu xong thì rời hàng đợi (riêng 'thieu' ở hàng 'trong' cũng rời vì chuyển sang hàng "Thiếu dạng")
     setRows((prev) => { const n = prev.filter((x) => x.ma_cau !== c.ma_cau); if (n.length < 6 && tong - 1 > n.length) void buThem(); return n })
     setTong((t) => Math.max(0, t - 1))
-    void napDem(); void napNguon(); void napLoc(); onChanged?.()
+    henDemLai()
   }
+  // 11/11 (audit timeout: fn_bdm_khop_dem 969 lượt × 0,85 s): duyệt liền tay nhiều câu ⇒ đọc lại số đếm/nguồn/lọc MỘT lần sau khi
+  // ngừng tay 12 giây (số vẫn do DB đếm, chỉ gộp lượt gọi) — trước: mỗi câu quyết xong gọi lại cả 4 hàm đếm.
+  const henDem = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const napLaiRef = useRef(() => {})
+  napLaiRef.current = () => { void napDem(); void napNguon(); void napLoc(); onChanged?.() }   // luôn bản mới nhất (lọc đang mở)
+  const henDemLai = () => {
+    if (henDem.current) clearTimeout(henDem.current)
+    henDem.current = setTimeout(() => { henDem.current = null; napLaiRef.current() }, 12000)
+  }
+  // rời màn khi còn hẹn ⇒ báo cha ngay (cha đọc lại số của nó), không để mất lượt cập nhật
+  useEffect(() => () => { if (henDem.current) { clearTimeout(henDem.current); onChanged?.() } }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // "⏭ Để sau" = xuống CUỐI CẢ HÀNG (Thùy 22/10): DB đã xếp câu để sau ra sau (mig 202610221621). Hàng còn câu chưa nạp
   // ⇒ câu rời trang ngay, nạp bù câu kế tiếp; hàng đã nạp hết ⇒ giữ lại, deSau.xep đặt nó ở cuối.

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { listAllTaiLieu, listTaiLieuFacets, deleteTaiLieu, duplicateTaiLieu, updateTaiLieu, renumberBuoiLop, type TaiLieu } from '../../lib/tailieu'
 import { phatHanhTest, PHAT_HANH_DUOC, type CheDoPhatHanh } from '../../lib/testonline'
-import { listLinkGenJobs, type LinkGenJobRow } from '../../lib/linkgen'
+import { listLinkGenJobs, SU_KIEN_JOB_MOI, type LinkGenJobRow } from '../../lib/linkgen'
 import { listLop, type Lop } from '../../lib/nhansu'
 import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
@@ -229,31 +229,44 @@ export default function KhoTaiLieuScreen() {
     reload()
   }
 
-  // Poll bảng jobs mỗi 8s khi màn đang mở — job chạy ở SERVER, màn này không có cách nào khác biết nó
+  // Đọc bảng jobs khi màn đang mở — job chạy ở SERVER, màn này không có cách nào khác biết nó
   // xong lúc nào. Khi số job đang-chờ GIẢM (có job vừa xong) → tải lại danh sách NGẦM (không setLoading,
   // job xong lặng lẽ giữa lúc Thùy đang lướt bảng, không được xoá bảng ra "Đang tải…") để dòng đó hiện
   // "🔗 Copy link" ngay, không cần F5.
+  // ⭐ 11/11 (audit timeout: poll 8 s liên tục = 54k lượt): CÓ job đang chờ ⇒ 10 s/lần; không còn job ⇒ 5 phút/lần;
+  // tab ẩn ⇒ không đọc; quay lại tab hoặc vừa xếp job mới (sự kiện SU_KIEN_JOB_MOI) ⇒ đọc ngay.
   const prevPendingRef = useRef(0)
   useEffect(() => {
     let stop = false
+    let hen: ReturnType<typeof setTimeout> | null = null
+    const henLai = (ms: number) => { if (hen) clearTimeout(hen); if (!stop) hen = setTimeout(tick, ms) }
     const tick = async () => {
+      if (document.hidden) { henLai(5 * 60000); return }
+      let pending = 0
       try {
         // ⭐ 22/08: poll CẢ hinh_linkgen_jobs — cùng cơ chế "pending giảm → tải lại ngầm" của Đại, gộp
         // đếm chung 1 counter (chỉ cần biết "có job vừa xong" để refetch, không cần tách theo nguồn).
         const [jobs, hinhJobs] = await Promise.all([listLinkGenJobs(), listHinhLinkGenJobs()])
         if (stop) return
         setLinkJobs(jobs); setHinhLinkJobs(hinhJobs)
-        const pending = jobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
+        pending = jobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
           + hinhJobs.filter((j) => j.status === 'pending' || j.status === 'processing').length
         // Refresh ngầm = tải lại TRANG ĐẦU (không đụng `loading`/cursor "Tải thêm" đang có) — job xong
         // luôn rơi vào trang gần nhất (docs vừa sửa/tạo), đủ để dòng đó hiện link ngay không cần F5.
         if (pending < prevPendingRef.current) fetchFirstPage().then(({ dai, hinh }) => { if (!stop) { setDaiRows(dai); setHinhRows(hinh) } }).catch(() => {})
         prevPendingRef.current = pending
       } catch { /* mạng chớp — lượt poll sau tự bù */ }
+      henLai(pending > 0 ? 10000 : 5 * 60000)
     }
+    const docNgay = () => { if (!document.hidden) henLai(1500) }   // gộp nhiều sự kiện liền nhau thành 1 lượt đọc
     tick()
-    const t = setInterval(tick, 8000)
-    return () => { stop = true; clearInterval(t) }
+    window.addEventListener(SU_KIEN_JOB_MOI, docNgay)
+    document.addEventListener('visibilitychange', docNgay)
+    return () => {
+      stop = true; if (hen) clearTimeout(hen)
+      window.removeEventListener(SU_KIEN_JOB_MOI, docNgay)
+      document.removeEventListener('visibilitychange', docNgay)
+    }
   }, [])
 
   // ⭐ 07-12 — link PDF giờ gen TỰ ĐỘNG ngay lúc tài liệu tạo/sửa xong (`enqueueLinkGen`, hàng đợi TOÀN

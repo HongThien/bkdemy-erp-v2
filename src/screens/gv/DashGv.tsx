@@ -48,7 +48,7 @@ export default function DashGv() {
           <p className="text-[15px] font-bold text-white">📈 Công việc của tôi</p>
           <div className="ml-auto flex items-center gap-1">
             <button onClick={() => setYm(ymCong(ym, -1))} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-white/80 active:bg-white/10">‹</button>
-            <span className="text-[13px] font-semibold text-white">Tháng {thang}/{nam}</span>
+            <span className="text-[13px] font-semibold text-white">Tháng {thang}/{nam}{data?.tinhLuc && <span className="ml-2 font-normal opacity-80">· số tính lúc {new Date(data.tinhLuc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })}</span>}</span>
             <button onClick={() => setYm(ymCong(ym, 1))} disabled={ym >= ymNay} className="rounded-lg px-2.5 py-1 text-[15px] font-bold text-white/80 active:bg-white/10 disabled:opacity-30">›</button>
           </div>
         </div>

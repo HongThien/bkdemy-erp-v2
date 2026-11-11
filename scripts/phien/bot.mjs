@@ -401,7 +401,9 @@ if (ONCE) {
   process.exit(0)
 }
 setInterval(() => heartbeat(), HEARTBEAT_MS)
-setInterval(async () => { await nhatMoCoi(); await quet() }, POLL_MS)
+// 11/11 (audit timeout): nhặt mồ côi chỉ cần mỗi 5 phút — ngưỡng mồ côi là TIMEOUT + 5 phút (≥ 10 phút), quét 60 s là thừa.
+let lanQuet = 0
+setInterval(async () => { if (lanQuet++ % 5 === 0) await nhatMoCoi(); await quet() }, POLL_MS)
 svc.channel('phien_bot')
   .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'claude_phien_tin' }, (m) => { if (m.new?.trang_thai === 'cho') quet() })
   .subscribe((s) => log('realtime:', s))

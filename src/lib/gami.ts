@@ -1157,21 +1157,15 @@ export async function getMyTasks(): Promise<MyTask[]> {
   // Pure-derive đúng nghĩa: report `moi` TỒN TẠI ⇒ task; duyệt xong (dung/sai) là task tự biến
   // mất, không có cờ done nào phải dọn. Gom về 1 task / (lớp × buổi) để không vỡ list khi 1 câu
   // bị 20 HS cùng báo.
-  // ⚠ PostgREST không filter được quan hệ LỒNG (CLAUDE.md §2) — bảng report nhỏ nên tải hết
-  // rồi lọc client theo lớp của tôi, đừng cố nhét filter vào select lồng 3 tầng.
+  // 11/11 (audit timeout): trước tải MỌI report `moi` kèm select lồng 3 tầng (RLS chạy từng dòng, 410 ms/lượt)
+  // rồi gom ở client — giờ DB gom sẵn theo (lớp × ngày) đúng lớp tôi là TA (fn_bao_sai_cho_duyet_cua_toi, §2.0).
   {
     if (tgLops.size) {
-      const { data: reps } = await supabase.from('bai_test_report')
-        .select('created_at, blc:bai_lam_cau_id(cau:bai_test_cau_id(test:bai_test_id(lop_id, ngay)))')
-        .eq('trang_thai', 'moi').limit(LIMIT)
-      // gom theo lớp|ngày → đếm + report cũ nhất (để tính deadline)
+      const { data: reps } = await supabase.rpc('fn_bao_sai_cho_duyet_cua_toi').limit(LIMIT)
       const gom = new Map<string, { n: number; sinh: number }>()
-      for (const r of (reps ?? []) as any[]) {
-        const t = r.blc?.cau?.test
-        if (!t?.lop_id || !tgLops.has(t.lop_id)) continue
-        const k = `${t.lop_id}|${t.ngay}`
-        const cu = gom.get(k) ?? { n: 0, sinh: Number.POSITIVE_INFINITY }
-        gom.set(k, { n: cu.n + 1, sinh: Math.min(cu.sinh, new Date(r.created_at).getTime()) })
+      for (const r of (reps ?? []) as { lop_id: string; ngay: string | null; so_bao: number; bao_dau: string }[]) {
+        if (!tgLops.has(r.lop_id)) continue
+        gom.set(`${r.lop_id}|${r.ngay}`, { n: r.so_bao, sinh: new Date(r.bao_dau).getTime() })
       }
       for (const [k, v] of gom) {
         const [lopId, ngay] = k.split('|')
