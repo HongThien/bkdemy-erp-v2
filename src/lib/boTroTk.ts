@@ -34,6 +34,8 @@ const rpc = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> =>
   return data as T
 }
 export const goiYBoTro = (hs: string, mon: string) => rpc<GoiY>('fn_btk_goi_y', { p_hs: hs, p_mon: mon })
+// 11/11: mọi nhóm em đã đo (thấp → cao) — chỉ gọi khi bấm "Xem tất cả" trong popup
+export const tatCaNhomBoTro = (hs: string, mon: string) => rpc<NhomGoiY[]>('fn_btk_goi_y_tat_ca', { p_hs: hs, p_mon: mon })
 export const luuBoTro = (x: { id: string | null; hs: string; mon: string; nhom: string[]; muc: number; uuTien: number; ghiChu: string }) =>
   rpc<string>('fn_btk_luu', { p_id: x.id, p_hs: x.hs, p_mon: x.mon, p_nhom: x.nhom, p_muc: x.muc, p_uu_tien: x.uuTien, p_ghi_chu: x.ghiChu })
 export const boBoTro = (id: string) => rpc<null>('fn_btk_huy', { p_id: id })

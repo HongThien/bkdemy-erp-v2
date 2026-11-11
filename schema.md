@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-517 bảng · 39 view · 0 enum · 339 trigger · 1730 function
+517 bảng · 39 view · 0 enum · 339 trigger · 1732 function
 
 ## _app_secrets
 
@@ -10692,6 +10692,7 @@ WITH luot AS (
 - `fn_btk_ds(p_mon text, p_khoi text DEFAULT NULL::text, p_so_ngay integer DEFAULT 14)` → jsonb
 - `fn_btk_duyet(p_id uuid)` → jsonb
 - `fn_btk_goi_y(p_hs uuid, p_mon text)` → jsonb
+- `fn_btk_goi_y_tat_ca(p_hs uuid, p_mon text)` → jsonb
 - `fn_btk_gui(p_mon text, p_khoi text)` → integer
 - `fn_btk_huy(p_id uuid)` → void
 - `fn_btk_luu(p_id uuid, p_hs uuid, p_mon text, p_nhom text[], p_muc integer, p_uu_tien integer, p_ghi_chu text)` → uuid
@@ -11548,6 +11549,7 @@ WITH luot AS (
 - `fn_viec_chup_phu_trach(p_tu date DEFAULT NULL::date)` → integer
 - `fn_viec_ops_thuong(p_tu date, p_den date, p_tat_ca boolean DEFAULT false)` → TABLE(nhan_su_id uuid, ten_viec text, ngay date, ca text, tab text, dong_at timestamp with time zone, han timestamp with time zone, chat_luong numeric, ref_key text)
 - `fn_viec_tien_do(p_ref_keys text[])` → TABLE(ref_key text, han timestamp with time zone, dong_dau timestamp with time zone, dong_cuoi timestamp with time zone, so_mo_lai integer, tre_phut integer)
+- `fn_vinh_danh_hs(p_hs uuid, p_mon text, p_ym text)` → jsonb
 - `fn_vvhd_tinh()` → trigger
 - `fn_xep_chu_bxh(p_loai text, p_bo text, p_ma text, p_ten text, p_top integer DEFAULT 10)` → jsonb
 - `fn_xep_chu_da_choi(p_bo text, p_muc text, p_ten text, p_caus text[])` → jsonb

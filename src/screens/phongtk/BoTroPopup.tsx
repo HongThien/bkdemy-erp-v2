@@ -2,7 +2,7 @@
 // Hệ thống hiện 5 NHÓM có % thấp nhất (thấp → cao, mastery theo lần — fn_btk_goi_y), trưởng khối tick; nhóm YẾU tick sẵn.
 // Lưu ⇒ em vào Danh sách bổ trợ (nháp). Số liệu + luật ở DB; popup chỉ chọn và gửi.
 import { useEffect, useState } from 'react'
-import { goiYBoTro, luuBoTro, TEN_MUC, TEN_UU_TIEN, NHAN_TT, type GoiY, type NhomChon } from '../../lib/boTroTk'
+import { goiYBoTro, tatCaNhomBoTro, luuBoTro, TEN_MUC, TEN_UU_TIEN, NHAN_TT, type GoiY, type NhomChon, type NhomGoiY } from '../../lib/boTroTk'
 
 const mauP = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-600'
 
@@ -18,6 +18,15 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
   const [uuTien, setUuTien] = useState(2)
   const [ghiChu, setGhiChu] = useState('')
   const [dangLuu, setDangLuu] = useState(false)
+  // 11/11 (Thùy): mở rộng từ 5 nhóm thấp nhất ra MỌI nhóm em đã đo — gọi DB lúc bấm
+  const [tatCa, setTatCa] = useState<NhomGoiY[] | null>(null)
+  const [dangMo, setDangMo] = useState(false)
+  const [moRong, setMoRong] = useState(false)
+  const moTatCa = () => {
+    setMoRong(true)
+    if (tatCa) return
+    setDangMo(true); tatCaNhomBoTro(hs.id, mon).then(setTatCa).catch((e) => setLoi(e?.message ?? String(e))).finally(() => setDangMo(false))
+  }
 
   useEffect(() => {
     goiYBoTro(hs.id, mon).then((g) => {
@@ -55,10 +64,11 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
               {gy.dang_bo_tro && !gy.de_xuat && <p className="mb-3 rounded-lg bg-indigo-50 px-3 py-2 text-[13px] text-indigo-700">Em đang có case bổ trợ mở — chờ xong case rồi đề xuất tiếp.</p>}
               {gy.de_xuat?.trang_thai === 'tra_lai' && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[13px] text-rose-700"><b>Bị trả lại:</b> {gy.de_xuat.ly_do_tra}</p>}
               {khoa && <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-[13px] text-amber-800">Đã gửi trưởng bộ môn — {NHAN_TT.cho_duyet.t.toLowerCase()}, không sửa được nữa.</p>}
-              <div className="mb-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">5 nhóm thấp nhất — tick nhóm cần bổ trợ</div>
+              <div className="mb-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">{moRong && tatCa ? `Tất cả ${tatCa.length} nhóm em đã đo (thấp → cao)` : '5 nhóm thấp nhất'} — tick nhóm cần bổ trợ</div>
               {gy.nhom.length === 0 && them.length === 0 ? <p className="text-[13px] text-slate-400">Em chưa có lần đo nào theo nhóm bài của bản đồ mới.</p> : (
                 <div className="space-y-1.5">
-                  {[...gy.nhom.map((n) => ({ ...n, cu: false })), ...them.map((n) => ({ ...n, p: n.p ?? 0, n: n.n ?? 0, tin: '', dang_chua_dat: 0, dang_da_do: 0, tick: true, cu: true }))].map((n) => (
+                  {[...(moRong && tatCa ? tatCa : [...gy.nhom, ...(tatCa ?? []).filter((x) => chon.has(x.ma) && !gy.nhom.some((g) => g.ma === x.ma))]).map((n) => ({ ...n, cu: false })),
+                    ...them.filter((t) => !(tatCa ?? []).some((x) => x.ma === t.ma)).map((n) => ({ ...n, p: n.p ?? 0, n: n.n ?? 0, tin: '', dang_chua_dat: 0, dang_da_do: 0, tick: true, cu: true }))].map((n) => (
                     <label key={n.ma} className={`flex cursor-pointer items-start gap-3 rounded-xl border px-3 py-2 ${chon.has(n.ma) ? 'border-indigo-300 bg-indigo-50/60' : 'border-slate-200 hover:bg-slate-50'}`}>
                       <input type="checkbox" checked={chon.has(n.ma)} disabled={!!khoa} onChange={() => bat(n.ma)} className="mt-1 h-4 w-4 accent-indigo-600" />
                       <div className="min-w-0 flex-1">
@@ -70,6 +80,12 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
                   ))}
                 </div>
               )}
+              {!moRong && gy.so_nhom_do > gy.nhom.length && (
+                <button onClick={moTatCa} disabled={dangMo} className="mt-2 w-full rounded-lg border border-dashed border-indigo-300 py-1.5 text-[12.5px] font-semibold text-indigo-700 hover:bg-indigo-50 disabled:opacity-50">
+                  {dangMo ? 'Đang đọc…' : `▾ Xem tất cả ${gy.so_nhom_do} nhóm em đã đo`}
+                </button>
+              )}
+              {moRong && tatCa && <button onClick={() => setMoRong(false)} className="mt-2 w-full rounded-lg py-1 text-[12px] font-semibold text-slate-500 hover:bg-slate-50">▴ Thu gọn về 5 nhóm thấp nhất</button>}
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div>
                   <div className="mb-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Mức</div>

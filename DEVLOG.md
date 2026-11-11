@@ -79741,3 +79741,9 @@ Thùy nêu 4 việc, làm được 3:
 ## 11/11 — Dashboard học tập: chế độ 🎯 Tập trung + đóng băng cột Nhóm yếu
 - Thùy: thêm chế độ Tập trung (chuyển qua lại với Thường) — chỉ hiện cột có ô yếu; freeze cột số nhóm yếu.
 - Làm (DashboardHocTapScreen): nút Thường | 🎯 Tập trung (nhớ ở NHO); cột hiện = cột có ≥1 ô muc=yeu trong danh sách đang xem (lọc hiển thị, không tính lại); không còn cột ⇒ báo xanh; ghi chú "đang hiện N cột có ô yếu". Cột Tên cố định 170 px (tên dài cắt, title đủ), cột Nhóm yếu sticky left 170 px có vạch ngăn. tsc sạch. CHƯA kiểm trên app (Browser pane chưa đăng nhập) — Thùy xem ở localhost.
+
+## 11/11 — Popup Kế hoạch bổ trợ: nút "Xem tất cả" nhóm (mig 202611111437, CHƯA ÁP)
+- Thùy: 5 nhóm ưu tiên cao nhất phải có nút mở rộng tất cả để trưởng khối chọn.
+- Làm: fn_btk_goi_y_tat_ca(hs, môn) — mọi nhóm em đã đo, cùng hình dạng dòng + quyền như fn_btk_goi_y, chỉ gọi khi bấm. BoTroPopup: nút "▾ Xem tất cả N nhóm em đã đo" / "▴ Thu gọn"; thu gọn vẫn giữ hiện các nhóm ngoài top 5 đã tick. fn_btk_luu vốn nhận mọi nhóm.
+- Thử txn: 3 em 9A2 — tất cả 28 nhóm = so_nhom_do, 5 đầu khớp top 5, 53–55 ms. tsc sạch.
+- ĐÃ ÁP mig 202611111437 (Thùy 'cho áp và push'), npm run schema đã chạy.
