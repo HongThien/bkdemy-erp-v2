@@ -13,6 +13,7 @@ import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
 import { getXsKhoi, chonXsKhoi, boXsKhoi, type XsKhoiNhom, type XsKhoiUngVien } from '../../lib/traogiai'
 import { getAnhChanDung, type LoaiNen } from './vinhDanhFB'
 import XuongAnhFB from './XuongAnhFB'
+import ChieuAnhFB, { type MucChieu } from './ChieuAnhFB'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
@@ -322,6 +323,9 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
   const [xemAnh, setXemAnh] = useState<string | null>(null) // URL đang phóng to
   // Ảnh vinh danh đăng FB (Thùy 11/11): bấm ảnh nhỏ / Làm ảnh ⇒ mở Xưởng ảnh (đổi nền, chọn ảnh trong kho của em, tải PNG). Chăm chỉ chưa có nền.
   const [xuong, setXuong] = useState<{ hsId: string; mon: string; loai: LoaiNen; ten: string } | null>(null)
+  // Chiếu toàn màn hình: danh sách = mọi em trong bảng có nền (trừ Chăm chỉ), ← → chuyển em.
+  const dsChieu: MucChieu[] = rows.filter((r) => r.loaiGiai !== 'cham_chi').map((r) => ({ hsId: r.slot.hocSinhId, mon: r.card.mon, loai: r.loaiGiai as LoaiNen, ten: `${r.slot.hoTen} · ${r.card.tenLop}` }))
+  const [chieu, setChieu] = useState<number | null>(null)
   // Ảnh chân dung HS (bảng riêng, không đụng avatar app) — tải 1 lần cho mọi em đang hiện; tải ảnh mới ⇒ vá đúng em đó.
   const [chanDung, setChanDung] = useState<Record<string, string>>({})
   const hsIdsKey = [...new Set(rows.map((r) => r.slot.hocSinhId))].sort().join(',')
@@ -439,6 +443,10 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
                         🏅 Làm ảnh
                       </button>
                     )}
+                    {loaiGiai !== 'cham_chi' && (
+                      <button onClick={() => setChieu(Math.max(0, dsChieu.findIndex((m) => m.hsId === slot.hocSinhId && m.mon === card.mon)))} title="Chiếu toàn màn hình (← → chuyển em, Esc thoát)"
+                        className="ml-1.5 inline-flex h-10 items-center rounded-lg bg-slate-800 px-2 text-[11px] font-bold text-white hover:bg-slate-700">📺 Chiếu</button>
+                    )}
                   </td>
                   <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
                 </tr>
@@ -455,6 +463,7 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
       )}
       {xuong && <XuongAnhFB hsId={xuong.hsId} mon={xuong.mon} ym={ym} loai={xuong.loai} tenFile={xuong.ten}
         onClose={() => setXuong(null)} onDoiAnh={(url) => setChanDung((p) => ({ ...p, [xuong.hsId]: url }))} />}
+      {chieu != null && dsChieu.length > 0 && <ChieuAnhFB ds={dsChieu} batDau={chieu} ym={ym} onClose={() => setChieu(null)} />}
       {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
     </>
   )
@@ -468,6 +477,7 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
   const [err, setErr] = useState<string | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
   const [xuong, setXuong] = useState<{ hsId: string; mon: string; ten: string } | null>(null)
+  const [chieu, setChieu] = useState<number | null>(null)
   const [chanDung, setChanDung] = useState<Record<string, string>>({})
   const [toast, setToast] = useState<string | null>(null)
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
@@ -497,6 +507,9 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
   if (!ds) return <p className="text-sm text-slate-400">Đang tải…</p>
   if (ds.length === 0) return <p className="rounded-xl border border-dashed border-slate-300 bg-white px-4 py-8 text-center text-[13px] text-slate-400">Tháng này chưa có học sinh nào được giải Xuất sắc{khoi ? ` ở khối ${khoi}` : ''}.</p>
   const soChon = ds.filter((n) => n.chonGiaiThuongId).length
+  // Chiếu: lần lượt các em đã được chọn của mọi khối đang hiện.
+  const dsChieu: MucChieu[] = ds.flatMap((n) => n.ungVien.filter((u) => u.giaiThuongId === n.chonGiaiThuongId)
+    .map((u) => ({ hsId: u.hocSinhId, mon: n.mon, loai: 'tieu_bieu' as LoaiNen, ten: `${u.hoTen} · Khối ${n.khoi} · ${n.mon}` })))
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
@@ -523,13 +536,15 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
                         <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-slate-800">{u.hoTen} <span className="font-normal text-slate-400">· {u.lop}</span></span>
                         <span className="shrink-0 text-[12px] text-slate-500">MT <b className="text-slate-800">{fmtMT(u.mt)}</b>{u.hangKhoi != null ? <span className="ml-1 text-slate-400">#{u.hangKhoi}/{u.tongKhoi}</span> : null}</span>
                       </button>
-                      {la && (
+                      {la && (<>
                         <button onClick={() => setXuong({ hsId: u.hocSinhId, mon: n.mon, ten: `xs-nhat-khoi-${ym}-${n.mon}-K${n.khoi}-${u.maHs ?? u.hocSinhId}.png` })}
                           className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-amber-500 py-0.5 pl-0.5 pr-2 text-[11px] font-bold text-white hover:bg-amber-400">
                           {chanDung[u.hocSinhId] ? <img src={chanDung[u.hocSinhId]} alt="" className="h-8 w-6 rounded object-cover" /> : <span className="inline-flex h-8 w-6 items-center justify-center rounded bg-white/30">📷</span>}
                           🏅 Làm ảnh
                         </button>
-                      )}
+                        <button onClick={() => setChieu(Math.max(0, dsChieu.findIndex((m) => m.hsId === u.hocSinhId && m.mon === n.mon)))} title="Chiếu toàn màn hình (← → chuyển em, Esc thoát)"
+                          className="inline-flex h-9 shrink-0 items-center rounded-lg bg-slate-800 px-2 text-[11px] font-bold text-white hover:bg-slate-700">📺 Chiếu</button>
+                      </>)}
                     </div>
                   )
                 })}
@@ -541,6 +556,7 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
       </div>
       {xuong && <XuongAnhFB hsId={xuong.hsId} mon={xuong.mon} ym={ym} loai="tieu_bieu" tenFile={xuong.ten}
         onClose={() => setXuong(null)} onDoiAnh={(url) => setChanDung((p) => ({ ...p, [xuong.hsId]: url }))} />}
+      {chieu != null && dsChieu.length > 0 && <ChieuAnhFB ds={dsChieu} batDau={chieu} ym={ym} onClose={() => setChieu(null)} />}
       {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
     </>
   )

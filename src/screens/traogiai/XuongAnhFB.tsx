@@ -4,12 +4,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  veVinhDanhFB, getVinhDanhData, getKhoAnh, chonAnhChanDung, uploadAnhChanDung, nenUrl, PHONG_CACH,
+  veVinhDanhFB, getVinhDanhData, getKhoAnh, NHO_NEN, chonAnhChanDung, uploadAnhChanDung, nenUrl, PHONG_CACH,
   type LoaiNen, type PhongCach, type VinhDanhData, type AnhKho,
 } from './vinhDanhFB'
 
-// Nền chọn gần nhất — sống tới F5, mở em kế tiếp vẫn dùng nền đó.
-const NHO = { nen: 'hoanggia' as PhongCach }
 
 export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDoiAnh }: {
   hsId: string; mon: string; ym: string; loai: LoaiNen; tenFile: string
@@ -18,7 +16,7 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
   const [data, setData] = useState<VinhDanhData | null>(null)
   const [kho, setKho] = useState<AnhKho[]>([])
   const [anh, setAnh] = useState<string | null>(null)
-  const [nen, setNen] = useState<PhongCach>(NHO.nen)
+  const [nen, setNen] = useState<PhongCach>(NHO_NEN.nen)
   const [png, setPng] = useState<string | null>(null)
   const [dangVe, setDangVe] = useState(false)
   const [dangTai, setDangTai] = useState(false)
@@ -44,7 +42,7 @@ export default function XuongAnhFB({ hsId, mon, ym, loai, tenFile, onClose, onDo
       .finally(() => { if (id === luot.current) setDangVe(false) })
   }, [data, anh, nen, loai])
 
-  function doiNen(id: PhongCach) { NHO.nen = id; setNen(id) }
+  function doiNen(id: PhongCach) { NHO_NEN.nen = id; setNen(id) }
   async function doiAnh(url: string) {
     if (url === anh) return
     const cu = anh

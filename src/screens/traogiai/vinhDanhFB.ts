@@ -30,6 +30,8 @@ export const BO_NEN: BoNen[] = [
   { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', tone: 'sang', cfg: c(60.3, 67, -16, T, 19, 81) },
 ]
 export type PhongCach = string
+// Nền đang chọn ở Xưởng ảnh — dùng chung cho Chiếu; sống tới F5.
+export const NHO_NEN: { nen: PhongCach } = { nen: 'hoanggia' }
 export const PHONG_CACH = BO_NEN.map((b) => ({ id: b.id, ten: b.ten, nhom: b.nhom }))
 function boNen(pc: PhongCach): BoNen { const b = BO_NEN.find((x) => x.id === pc); if (!b) throw new Error('Không có bộ nền ' + pc); return b }
 
