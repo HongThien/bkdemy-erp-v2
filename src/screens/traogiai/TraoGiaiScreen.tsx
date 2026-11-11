@@ -381,7 +381,7 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
         <div className="text-[12px] text-slate-500">Ảnh chụp lấy y hệt Report PH (điểm ET/BTVN/MT, hạng lớp/khối). Chụp trước, PH chưa thấy tới khi chốt Report riêng.</div>
         <label className="flex shrink-0 items-center gap-1.5 text-[12px] font-semibold text-slate-600">Nền ảnh FB
           <select value={phongCach} onChange={(e) => setPhongCach(e.target.value as PhongCach)} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
-            {PHONG_CACH.map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}
+            {[...new Set(PHONG_CACH.map((p) => p.nhom))].map((n) => <optgroup key={n} label={n}>{PHONG_CACH.filter((p) => p.nhom === n).map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}</optgroup>)}
           </select>
         </label>
         <button disabled={!!bulk || soChua === 0} onClick={() => void chupCaBang()}

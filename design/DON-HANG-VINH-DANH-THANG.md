@@ -11,6 +11,7 @@
 - 9 nền về đủ (zip `BK_Academy_9_tranh_nen.zip`, 1120×1400): gốc `design/bk-ui-src/vinh-danh/goc-9-tranh/` (không lên git) · nén `public/bk-ui/vinhdanh/vd_<phong cách>_<loại>.jpg` 1080×1350.
 - Số liệu: `fn_vinh_danh_hs` (mig 202611111437, đã áp). Khung ghép: `src/screens/traogiai/vinhDanhFB.ts` (khoá xanh flood-fill từ tâm lỗ, tên trên băng, thẻ 4 ô).
 - Màn Trao giải › tab Đã chốt giải: chọn "Nền ảnh FB" + nút **🏅 Làm ảnh** từng dòng ⇒ xem + tải PNG. Chăm chỉ chưa có nền; Tiêu biểu chưa có bảng chọn.
+- 11/11 chiều: thêm 6 mẫu **Thanh lịch** (zip `BK_Academy_Thanh_lich_6_mau.zip`, gốc `goc-thanh-lich/`) — 1 tranh dùng cho MỌI loại giải (`vd_tl_<tên>.jpg`), màu loại giải chỉ ở thẻ kết quả. Thêm mẫu = 1 dòng trong `BO_NEN` (vinhDanhFB.ts).
 - Tiêu đề loại giải đặt TRONG thẻ kết quả (đầu ảnh vướng vương miện/ngôi sao/pha lê của nền).
 
 ---

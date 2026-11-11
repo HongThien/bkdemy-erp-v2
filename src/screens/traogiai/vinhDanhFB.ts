@@ -9,32 +9,26 @@ export const FB_W = 1080
 export const FB_H = 1350
 
 export type LoaiNen = 'xuat_sac' | 'tien_bo' | 'tieu_bieu'
-export type PhongCach = 'hoanggia' | 'pastel' | 'phieuluu'
-export const PHONG_CACH: { id: PhongCach; ten: string }[] = [
-  { id: 'hoanggia', ten: 'Hoàng gia' },
-  { id: 'pastel', ten: 'Pastel 3D' },
-  { id: 'phieuluu', ten: 'Phiêu lưu' },
-]
-
-// Vị trí băng tên + đỉnh bảng kết quả theo từng nền (% chiều cao) — đo trên tranh thật 11/11.
+// Bộ nền. 'loai' = mỗi loại giải 1 tranh (vd_<id>_<loại>.jpg) · 'chung' = 1 tranh dùng cho MỌI loại (vd_<id>.jpg) — màu loại giải chỉ ở thẻ kết quả.
+// Vị trí băng tên + đỉnh thẻ kết quả (% chiều cao), đo trên tranh thật.
 type CauHinhNen = { bangY: number; bangX0: number; bangX1: number; bangDay: number; chuBang: string }
-const CAU_HINH: Record<PhongCach, Record<LoaiNen, CauHinhNen>> = {
-  hoanggia: {
-    xuat_sac: { bangY: 63.2, bangX0: 17, bangX1: 83, bangDay: 70, chuBang: '#ffffff' },
-    tien_bo: { bangY: 63.2, bangX0: 17, bangX1: 83, bangDay: 70, chuBang: '#ffffff' },
-    tieu_bieu: { bangY: 61.6, bangX0: 17, bangX1: 83, bangDay: 68.5, chuBang: '#ffffff' },
-  },
-  pastel: {
-    xuat_sac: { bangY: 60.8, bangX0: 19, bangX1: 81, bangDay: 67.5, chuBang: '#ffffff' },
-    tien_bo: { bangY: 60.6, bangX0: 17, bangX1: 83, bangDay: 67, chuBang: '#ffffff' },
-    tieu_bieu: { bangY: 59.8, bangX0: 18, bangX1: 82, bangDay: 66.5, chuBang: '#ffffff' },
-  },
-  phieuluu: {
-    xuat_sac: { bangY: 63.4, bangX0: 18, bangX1: 82, bangDay: 69.5, chuBang: '#ffffff' },
-    tien_bo: { bangY: 63.4, bangX0: 18, bangX1: 82, bangDay: 69.5, chuBang: '#ffffff' },
-    tieu_bieu: { bangY: 63.0, bangX0: 18, bangX1: 82, bangDay: 69.5, chuBang: '#ffffff' },
-  },
-}
+type BoNen = { id: string; ten: string; nhom: string; kieu: 'loai'; cfg: Record<LoaiNen, CauHinhNen> } | { id: string; ten: string; nhom: string; kieu: 'chung'; cfg: CauHinhNen }
+const T = '#ffffff'
+const c = (bangY: number, bangDay: number, chuBang = T, bangX0 = 18, bangX1 = 82): CauHinhNen => ({ bangY, bangX0, bangX1, bangDay, chuBang })
+export const BO_NEN: BoNen[] = [
+  { id: 'hoanggia', ten: 'Hoàng gia', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.2, 70, T, 17, 83), tien_bo: c(63.2, 70, T, 17, 83), tieu_bieu: c(61.6, 68.5, T, 17, 83) } },
+  { id: 'pastel', ten: 'Pastel 3D', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(60.8, 67.5, T, 19, 81), tien_bo: c(60.6, 67, T, 17, 83), tieu_bieu: c(59.8, 66.5) } },
+  { id: 'phieuluu', ten: 'Phiêu lưu', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.4, 69.5), tien_bo: c(63.4, 69.5), tieu_bieu: c(63.0, 69.5) } },
+  { id: 'tl_co_dien_do_do', ten: 'Cổ điển đỏ', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62, 68.5, T, 17, 83) },
+  { id: 'tl_xanh_rung_co_dien', ten: 'Xanh rừng cổ điển', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(59.6, 66.5, '#6b1d1d', 18, 82) },
+  { id: 'tl_kien_truc_oxford', ten: 'Kiến trúc Oxford', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.2, 68.5, T, 18, 82) },
+  { id: 'tl_do_navy_trang_nha', ten: 'Đỏ navy trang nhã', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.6, 69, T, 17, 83) },
+  { id: 'tl_khuon_vien_xanh_luc', ten: 'Khuôn viên xanh lục', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(61.2, 67.5, T, 18, 82) },
+  { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.8, 67, T, 19, 81) },
+]
+export type PhongCach = string
+export const PHONG_CACH = BO_NEN.map((b) => ({ id: b.id, ten: b.ten, nhom: b.nhom }))
+function boNen(pc: PhongCach): BoNen { const b = BO_NEN.find((x) => x.id === pc); if (!b) throw new Error('Không có bộ nền ' + pc); return b }
 
 const LOAI: Record<LoaiNen, { ten: string; nhan: string; nhan2: string; file: string }> = {
   xuat_sac: { ten: 'HỌC SINH XUẤT SẮC', nhan: '#b07d12', nhan2: '#1f3a7a', file: 'xuatsac' },
@@ -55,7 +49,9 @@ export async function getVinhDanhData(hsId: string, mon: string, ym: string): Pr
   return data as VinhDanhData
 }
 
-export function nenUrl(pc: PhongCach, loai: LoaiNen) { return `/bk-ui/vinhdanh/vd_${pc}_${LOAI[loai].file}.jpg` }
+export function nenUrl(pc: PhongCach, loai: LoaiNen) {
+  return boNen(pc).kieu === 'chung' ? `/bk-ui/vinhdanh/vd_${pc}.jpg` : `/bk-ui/vinhdanh/vd_${pc}_${LOAI[loai].file}.jpg`
+}
 
 function taiAnh(src: string, cors: boolean): Promise<HTMLImageElement> {
   return new Promise((ok, fail) => {
@@ -143,7 +139,7 @@ const F = (w: number, px: number) => `${w} ${px}px 'Be Vietnam Pro', 'Segoe UI',
 export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach): Promise<HTMLCanvasElement> {
   await Promise.all([800, 700, 600].map((w) => document.fonts.load(F(w, 40), 'ẮÂÊÔƠƯ')))
   const nen = await khoaXanh(nenUrl(pc, loai))
-  const ch = CAU_HINH[pc][loai], L = LOAI[loai]
+  const bn = boNen(pc), ch = bn.kieu === 'chung' ? bn.cfg : bn.cfg[loai], L = LOAI[loai]
   const cv = document.createElement('canvas'); cv.width = FB_W; cv.height = FB_H
   const g = cv.getContext('2d')!
   g.fillStyle = '#ffffff'; g.fillRect(0, 0, FB_W, FB_H)
