@@ -79820,3 +79820,5 @@ Thùy nêu 4 việc, làm được 3:
 - 9A1 (Thùy "sửa Minh Phương, Quỳnh Anh thành L1 và áp luôn"): ĐÃ GHI — fn_btyeu_doi_level 2→1 (có log), đề xuất muc 2→1 (case_id null), đóng case khối dang_xu (0 buổi) ket_qua bo "chuyển sang bổ trợ sau giờ". Hàng chờ 9A1 đủ 6 em.
 
 - Màn Sau giờ tách 2 subtab (Thùy 11/11 "cho đỡ lẫn"): Chờ khởi tạo (hàng chờ theo lớp + form khởi tạo) · Đã khởi tạo (ca sắp tới / đã qua, ẩn ca huỷ). Khởi tạo xong tự sang Đã khởi tạo + mở ảnh thông báo. Kiểm ERP local: 24 lớp chờ · 5 ca sắp tới.
+
+- Ảnh thông báo PH sau giờ (Thùy 11/11 "nhiều HS bị rối"): mỗi em 1 dòng có gạch đầu dòng, cao ảnh theo nội dung (rộng 1080, tối thiểu 720; 13 em → 1341). Câu: "Buổi học <thứ, ngày>, các bạn sau sẽ ở lại bổ trợ kiến thức sau giờ học:" … "Các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!".
