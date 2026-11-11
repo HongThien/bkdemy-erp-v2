@@ -16,7 +16,8 @@ import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 // Nhớ list + ca đang mở tới F5 (rời tab Bổ trợ rồi quay lại = đúng chỗ cũ).
-const NHO: { rows: CaNhe[] | null; mo: { buoiId: string } | null; cho: ChoSauGio[] | null } = { rows: null, mo: null, cho: null }
+// sub: 2 subtab (Thùy 11/11 "cho đỡ lẫn") — Chờ khởi tạo · Đã khởi tạo; nhớ tới F5
+const NHO: { rows: CaNhe[] | null; mo: { buoiId: string } | null; cho: ChoSauGio[] | null; sub: 'cho' | 'da' } = { rows: null, mo: null, cho: null, sub: 'cho' }
 
 function trangThaiHs(h: HsCaNhe): { ten: string; cls: string } {
   if (h.buoi_trang_thai === 'huy') return { ten: h.diem_danh === 'vang' ? 'Vắng' : 'Đã huỷ', cls: 'bg-rose-50 text-rose-600' }
@@ -34,6 +35,8 @@ export default function BoTroNheScreen() {
   const [mo, setMoState] = useState(NHO.mo)
   const setMo = (v: typeof mo) => { NHO.mo = v; setMoState(v) }
   const [tao, setTao] = useState(false)
+  const [sub, setSubState] = useState(NHO.sub)
+  const setSub = (v: 'cho' | 'da') => { NHO.sub = v; setSubState(v) }
   const [dau, setDau] = useState<string | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp (em chờ tự tick)
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
@@ -74,15 +77,21 @@ export default function BoTroNheScreen() {
     <div className="min-h-0 flex-1 overflow-auto px-8 py-5">
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <h2 className="text-[16px] font-bold text-slate-800">Bổ trợ sau giờ · L1</h2>
-        <span className="text-[12.5px] text-slate-500">15–20 phút sau buổi học · in lý thuyết / luyện / test tuỳ em · TA nhập test là xong · mỗi em tối đa 2 ca/tuần · vắng không bù</span>
+        <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
+          {([['cho', `Chờ khởi tạo${cho ? ` · ${choTheoLop.length} lớp` : ''}`], ['da', `Đã khởi tạo${rows ? ` · ${dangToi.length} ca sắp tới` : ''}`]] as const).map(([k, t]) => (
+            <button key={k} onClick={() => setSub(k)} className={`rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition ${sub === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{t}</button>
+          ))}
+        </div>
+        <span className="text-[12px] text-slate-400">15–20 phút sau buổi · TA nhập test là xong · ≤ 2 ca/em/tuần · vắng không bù</span>
         <div className="ml-auto flex gap-2">
           <button onClick={tai} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50" title="Quét lại">↻</button>
-          <button onClick={() => { setDau(null); setTao((v) => !v) }} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700">{tao ? 'Đóng' : '＋ Khởi tạo ca'}</button>
+          {sub === 'cho' && <button onClick={() => { setDau(null); setTao((v) => !v) }} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700">{tao ? 'Đóng' : '＋ Khởi tạo ca'}</button>}
         </div>
       </div>
       {loi && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
 
-      {cho && cho.length > 0 && (
+      {sub === 'cho' && cho && cho.length === 0 && !tao && <p className="text-[13px] text-slate-400">Không còn lớp nào có em chờ khởi tạo.</p>}
+      {sub === 'cho' && cho && cho.length > 0 && (
         <section className="mb-5 rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
           <p className="mb-2 text-[12px] font-bold uppercase tracking-wider text-amber-800">Chờ khởi tạo · {cho.length} em đã duyệt L1 (sau giờ)</p>
           <div className="flex flex-col gap-2">
@@ -102,8 +111,8 @@ export default function BoTroNheScreen() {
         </section>
       )}
 
-      {tao && <FormKhoiTao key={dau ?? 'trong'} lopDau={dau} onXong={(caId, ds) => {
-        setTao(false); setDau(null); taiCho()
+      {sub === 'cho' && tao && <FormKhoiTao key={dau ?? 'trong'} lopDau={dau} onXong={(caId, ds) => {
+        setTao(false); setDau(null); taiCho(); setSub('da')   // khởi tạo xong ⇒ sang "Đã khởi tạo" + mở ảnh thông báo
         dsCaNhe(tu, den).then((r) => {
           NHO.rows = r; setRows(r)
           setThongBao(caId) // khởi tạo xong ⇒ mở ngay ảnh thông báo phụ huynh
@@ -114,7 +123,7 @@ export default function BoTroNheScreen() {
       {inLop && <InSauGioET bais={inLop.bais} lop={inLop.lop} onDong={() => setInLop(null)} />}
       {thongBao && (rows ?? []).some((c) => c.ca_id === thongBao) && <ThongBaoSauGioAnh ca={(rows ?? []).find((c) => c.ca_id === thongBao)!} onDong={() => setThongBao(null)} />}
 
-      {rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
+      {sub === 'da' && (rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
         <>
           <Nhom tieuDe={`Sắp tới & hôm nay · ${dangToi.length} ca`} cas={dangToi} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
             onThongBao={(c) => setThongBao(c.ca_id)} onInLop={inCaLop}
@@ -126,7 +135,7 @@ export default function BoTroNheScreen() {
             onThongBao={(c) => setThongBao(c.ca_id)} />}
           {soHuy > 0 && <button onClick={() => setHienHuy((v) => !v)} className="text-[12px] text-slate-400 hover:text-slate-600 hover:underline">{hienHuy ? 'Ẩn ca đã huỷ' : `Xem ${soHuy} ca đã huỷ`}</button>}
         </>
-      )}
+      ))}
     </div>
   )
 }

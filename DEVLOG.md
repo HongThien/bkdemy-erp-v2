@@ -79818,3 +79818,5 @@ Thùy nêu 4 việc, làm được 3:
 - Màn Sau giờ: ca đã huỷ ẩn mặc định, nút "Xem n ca đã huỷ". 9A1 thiếu Minh Phương / Quỳnh Anh vì duyệt L2 (ca khối), không phải lỗi.
 
 - 9A1 (Thùy "sửa Minh Phương, Quỳnh Anh thành L1 và áp luôn"): ĐÃ GHI — fn_btyeu_doi_level 2→1 (có log), đề xuất muc 2→1 (case_id null), đóng case khối dang_xu (0 buổi) ket_qua bo "chuyển sang bổ trợ sau giờ". Hàng chờ 9A1 đủ 6 em.
+
+- Màn Sau giờ tách 2 subtab (Thùy 11/11 "cho đỡ lẫn"): Chờ khởi tạo (hàng chờ theo lớp + form khởi tạo) · Đã khởi tạo (ca sắp tới / đã qua, ẩn ca huỷ). Khởi tạo xong tự sang Đã khởi tạo + mở ảnh thông báo. Kiểm ERP local: 24 lớp chờ · 5 ca sắp tới.
