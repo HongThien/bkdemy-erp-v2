@@ -1,0 +1,3566 @@
+[
+ {
+  "id": "NDB01377",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01375",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01859",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02649",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02632",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00918",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00928",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02656",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02634",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00929",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00919",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02650",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02657",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00920",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02651",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00930",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02637",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00931",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02652",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB01422",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02635",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02636",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00940",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02659",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02655",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00921",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02669",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02658",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00922",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00942",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02639",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02640",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00941",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02660",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00923",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02645",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02644",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00924",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02642",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02653",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02661",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02785",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02641",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00925",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02654",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00926",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00927",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01628",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02638",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02648",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB01401",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02667",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02668",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02664",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02647",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02646",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00913",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00566",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01631",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00567",
+  "muc_do": 2,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01634",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01618",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00945",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01633",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00986",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01632",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01148",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01187",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01168",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01169",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01188",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01160",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01189",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01170",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01150",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01190",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01191",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01171",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01151",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01152",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01172",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01173",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01193",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01162",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01174",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01194",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01862",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01154",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01195",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01175",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01176",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01196",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01155",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01161",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01197",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01177",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01156",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01198",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01861",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01199",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01178",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01157",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01179",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01158",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01200",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01201",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01180",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01181",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01202",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01159",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01182",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01183",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01184",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01163",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01185",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01164",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01186",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01165",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01166",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01167",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01860",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01153",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01149",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02600",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02601",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02458",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02484",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02507",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02514",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02515",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02508",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02485",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02459",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02460",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02516",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02509",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02486",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02487",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02517",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02461",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02488",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02462",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02463",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02464",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02489",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02518",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02510",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02519",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02465",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02511",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02490",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02520",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02491",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02466",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02492",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02467",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02468",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02493",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02494",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02469",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02512",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02495",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02470",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02521",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02471",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02496",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02513",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02522",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02497",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02523",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02472",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02473",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02474",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02475",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02476",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02498",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02524",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02525",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02499",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02477",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02478",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02526",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02500",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02527",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02479",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02528",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02480",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02481",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02529",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02530",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02482",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02501",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02502",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02531",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02483",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02503",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02504",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02505",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02506",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02532",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02533",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02534",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02592",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00788",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00639",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00786",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00761",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02548",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02561",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02535",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02544",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02549",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02536",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02545",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02562",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02550",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02551",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02537",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02546",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02563",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02552",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02538",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02547",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02564",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02553",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02539",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02540",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02541",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02565",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02554",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02555",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02566",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02542",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02543",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02556",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02557",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02558",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02559",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02560",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02574",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02567",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02568",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02575",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02569",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02576",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02577",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02570",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02578",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02571",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02579",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02580",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02572",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02573",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02581",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02582",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02589",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02583",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02590",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02584",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02585",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02586",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02587",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02591",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02588",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02595",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02596",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02597",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02598",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02599",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02593",
+  "muc_do": null,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00869",
+  "muc_do": null,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB02594",
+  "muc_do": null,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB00879",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02780",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02799",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02779",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02781",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02783",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02784",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02798",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01781",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01788",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01796",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01719",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01748",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01738",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01721",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01726",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01765",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01720",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01766",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01749",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01774",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01782",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01789",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01727",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01739",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01790",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01853",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01728",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01740",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01775",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01767",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01750",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01783",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01741",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01751",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01784",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01768",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01769",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01752",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02782",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01753",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01742",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01754",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01791",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01776",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01785",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01770",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01729",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01722",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01777",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01755",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01723",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01730",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01743",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01786",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01771",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01787",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01744",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01772",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01778",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01773",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01745",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01717",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01746",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01718",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01731",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01792",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01747",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01756",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01779",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01724",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01757",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01725",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01793",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01732",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01780",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01758",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01759",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01760",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01761",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01794",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01762",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01733",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01795",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01734",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01763",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01735",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01764",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01736",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01737",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01623",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01583",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01624",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01584",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01585",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01625",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01586",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01588",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01589",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01626",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01590",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01627",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01591",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01592",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01593",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01594",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02794",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02674",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01854",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01855",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01856",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01857",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01858",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02795",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02676",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02675",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02796",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02797",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02786",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02787",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02788",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02789",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02790",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02791",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02792",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02793",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02767",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02768",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02769",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02770",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02771",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02772",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02773",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02774",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02775",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02776",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02777",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02778",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01223",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01224",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01362",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01231",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01363",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01229",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01230",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01233",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01410",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01411",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01413",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01414",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01415",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01369",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01368",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01215",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01416",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00815",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01622",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01216",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01617",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01315",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01298",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01286",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01330",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01323",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01324",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01288",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01299",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01331",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01316",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01300",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01301",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01332",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01317",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01325",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01290",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01318",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01334",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01302",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01291",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01292",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01293",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01294",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01326",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01303",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01319",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01296",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01304",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01320",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01327",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01305",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01328",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01329",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01306",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01321",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01335",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01322",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01621",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01307",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01308",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01309",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02800",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02801",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01310",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01311",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01312",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01619",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01313",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01314",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01417",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01418",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00789",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00419",
+  "muc_do": 1,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00790",
+  "muc_do": 1,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00435",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00797",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01341",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01343",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00908",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01349",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00910",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00439",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01234",
+  "muc_do": 1,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00441",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00932",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00883",
+  "muc_do": 2,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01346",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01347",
+  "muc_do": 4,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01339",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00799",
+  "muc_do": 2,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00800",
+  "muc_do": 3,
+  "bac_toi_thieu": null,
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01337",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01340",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01350",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01370",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01419",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00681",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00682",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00975",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01356",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01427",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02724",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02723",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02722",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02727",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02726",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02725",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02730",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02728",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02731",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02729",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02733",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02732",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02735",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02734",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02737",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02736",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02741",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02740",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02739",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02738",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02745",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02742",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02744",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02743",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02747",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02746",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02748",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02749",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02750",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01599",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01600",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01601",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01602",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01603",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02752",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02751",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01604",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01605",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01606",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02754",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02753",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB01608",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01609",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01610",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02755",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB02756",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02758",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02757",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02760",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02759",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02761",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02763",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02764",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02762",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02765",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB02766",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "bản đồ cũ"
+ },
+ {
+  "id": "NDB00701",
+  "muc_do": 1,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00702",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00707",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00708",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00709",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01338",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00734",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00735",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01635",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00741",
+  "muc_do": 2,
+  "bac_toi_thieu": "C",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00485",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB00503",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01204",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01630",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01387",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01388",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01389",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01390",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01391",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01392",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01393",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01394",
+  "muc_do": 5,
+  "bac_toi_thieu": "S",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01629",
+  "muc_do": 3,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01396",
+  "muc_do": null,
+  "bac_toi_thieu": "B",
+  "nguon_muc": "có sẵn"
+ },
+ {
+  "id": "NDB01397",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ },
+ {
+  "id": "NDB01398",
+  "muc_do": 4,
+  "bac_toi_thieu": "A",
+  "nguon_muc": "Claude"
+ }
+]

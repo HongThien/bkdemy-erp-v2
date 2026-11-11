@@ -79778,3 +79778,10 @@ Thùy nêu 4 việc, làm được 3:
 - mig 202611111647 ĐÃ ÁP: cây Toán (_bdm_cay_tinh) + KHTN (fn_khtn_bdm_cay) trả thêm dạng bài muc_do/bac_toi_thieu (cột có sẵn như dai_ban_do cũ) · nhóm do_kho_tb (avg mức các dạng ĐÃ đặt, 1 chữ số) + so_co_muc; tăng phiên bản cây lưu sẵn. Kiểm ROLLBACK: bỏ 4 khoá mới thì 13 khối Toán + 3 khối KHTN y hệt.
 - BanDoMoi: chip "⚡ mức · hệ+" trên thẻ dạng bài, bấm ⇒ bảng chọn 1–5 / C+ B+ A+ S (ghi 1 dòng qua suaDangBai) · đầu nhóm "⚡ TB (n/m)". Thứ tự hệ C<B<A<S. Đã xem trên app local K? chủ đề Đơn thức–đa thức (không ghi).
 - Còn trống: Toán mức 422 / hệ 586 dạng (K4, 8T gần như trống) — điền gợi ý từ dạng cũ đối ứng = việc riêng, chưa làm. Hình – Học (hinh_hoc_bai) chưa làm.
+- Nhập ảnh HS (zip "ẢNH HỌC SINH" 200 file, tiền tố số = ma_hs): khớp mã + tên (nhân chứng 2) 198, bỏ 224 MINH TRANG (DB: Bùi Mai Trang) + 610 NGUYỄN KHÁNH HUY (DB: Tạ Hoàng Thảo), 101 HEIC máy không đọc được; 5 mã trùng lấy bản nhiều pixel ⇒ 192 em. Resize PowerShell cạnh dài 1000 JPEG q85 + xoay EXIF, lên avatars/hs-anh/<ma>-20261111.jpg (service role). DB: 192 dòng hoc_sinh_anh_chan_dung, 118 em chưa có avatar được điền anh_url; em đã có avatar giữ nguyên.
+- Xưởng ảnh FB: kho nhiều ảnh/em (hoc_sinh_kho_anh, mig 202611111700 đã áp, 193 ảnh cũ chuyển vào) + popup đổi nền/chọn ảnh/thêm ảnh/tải. Soi bằng trang thử giả lập fetch (RPC + REST) — đổi nền, chọn ảnh khác đều vẽ lại + ghi lựa chọn 1 lần.
+
+## 11/11 — Độ khó + hệ dạng bài bản đồ mới Toán ĐÃ GHI (Thùy: "M đề xuất độ khó đi. duyệt luôn")
+- Mục tiêu S 9,5+ · A 9+ · B 8+ · C 7+, chỉ A+ học nâng cao ⇒ hệ theo mức (ma trận 4 mức nhận thức): 1–2 C · 3 B · 4 A · 5 S. Chỉ điền ô trống.
+- 422 mức (129 từ dạng cũ đối ứng, 293 Claude đề xuất ở de-xuat.tsv) + 586 hệ. Còn trống 0. Nhật ký ghi-nhat-ky.json, hậu kiểm hau-kiem.html (kho-rules/dai/lo/muc-do-he/).
+- Dạng CÓ SẴN lệch luật (không sửa): mức 4–5 mà hệ B/C = 19 (trái "chỉ A+ học nâng cao") · mức 3 hệ C = 250 · mức 1–2 hệ A/B = 108 · mức 3 hệ A = 50 · mức 4 hệ S = 15 · mức 5 hệ A = 2. KHTN chưa làm.

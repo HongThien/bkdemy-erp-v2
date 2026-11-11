@@ -1,0 +1,306 @@
+NDB01377	K10	Phương trình và hệ bất phương trình bậc nhất 2 ẩn › Bài toán tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm	Bài toán tìm min max của hàm số bậc nhất 2 ẩn từ miền nghiệm có sẵn — Bài toán tìm min max của hàm  ố bậc nhất 2 ẩn từ miền nghiệm có  ẵn (Không có yếu tố thực tế)	[anh em: 3,3]
+NDB01375	K10	Phương trình và hệ bất phương trình bậc nhất 2 ẩn › Bài toán tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm	Bài toán tìm min max của hàm số bậc nhất 2 ẩn từ hệ bất phương trình có sẵn — Bài toán cho  ẵn hệ bất phương trình, yêu cầu tìm min max của hàm  ố bậc nhất 2 ẩn. (Không có yếu tố thực tế)	[anh em: 3,3]
+NDB01859	K10	Phương trình và hệ bất phương trình bậc nhất 2 ẩn › Bài toán tìm Min Max của hàm số bậc nhất 2 ẩn dựa vào miền nghiệm	Bài toán thực tế lập hệ bất phương trình bậc nhất 2 ẩn — Bài toán thực tế yêu cầu lập hệ bất phương trình bậc nhất 2 ẩn, không yêu cầu tìm min max	[anh em: 3,3]
+NDB00918	K10	Véc tơ › Tọa độ điểm, tọa độ véc tơ	Tọa độ véc tơ tính theo các véc tơ đơn vị — Tọa độ véc tơ tính theo các véc tơ đơn vị
+NDB00928	K10	Véc tơ › Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa	Xác định góc giữa 2 véc tơ trong đa giác — Xác định góc giữa 2 véc tơ trong đa giác
+NDB00929	K10	Véc tơ › Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa	Tính tích vô hướng theo định nghĩa — Tính tích vô hướng theo định nghĩa
+NDB00919	K10	Véc tơ › Tọa độ điểm, tọa độ véc tơ	Tọa độ véc tơ khi biết tọa độ 2 điểm — Tìm tọa độ véc tơ khi biết  tọa độ 2 điểm. 2 điểm đó có thể là đề bài cho  ẵn tọa độ hoặc có thể xác định được
+NDB00920	K10	Véc tơ › Tọa độ điểm, tọa độ véc tơ	Tìm tọa độ điểm khi biết tọa độ véc tơ và tọa độ 1 điểm còn lại — Tìm tọa độ điểm khi biết tọa độ véc tơ và tọa độ 1 điểm còn lại
+NDB00930	K10	Véc tơ › Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa	Tính góc giữa 2 véc tơ dựa khi biết tích vô hướng — Tính góc giữa 2 véc tơ dựa khi biết tích vô hướng
+NDB00931	K10	Véc tơ › Xác định tích vô hướng và góc giữa 2 véc tơ theo định nghĩa	Tính tích vô hướng của 2 véc tơ trong 1 số hình cơ bản — Tính tích vô hướng của 2 véc tơ trong tam giác, tứ giác
+NDB01422	K10	Véc tơ › Tọa độ điểm, tọa độ véc tơ	Tìm điều kiện để 2 véc tơ bằng nhau, đối nhau — Tìm điều kiện để 2 véc tơ bằng nhau, đối nhau
+NDB00940	K10	Véc tơ › Biểu thức tọa độ của tích vô hướng	Tính tích vô hướng của 2 véc tơ trong mặt phẳng tọa độ — Tính tích vô hướng của 2 véc tơ trong mặt phẳng tọa độ
+NDB00921	K10	Véc tơ › Biểu thức tọa độ của các phép toán véc tơ	Phép cộng, phép trừ, phép nhân 1 véc tơ với 1 số — Tọa độ véc tơ có chứa phép cộng, phép trừ, phép nhân 1 véc tơ với 1  ố
+NDB02669	K10	Hàm số, đồ thị và ứng dụng › Bài toán dùng dữ kiện hàm số bậc hai	Nhận biết hàm số bậc hai — Đề cho một hoặc nhiều biểu thức và hỏi biểu thức nào là hàm  ố bậc hai. Cách làm: rút gọn (khai triển, nhân, g	[anh em: 2,2,3,3]
+NDB00922	K10	Véc tơ › Biểu thức tọa độ của các phép toán véc tơ	Độ dài véc tơ, khoảng cách giữa 2 điểm — Tính độ dài đoạn thẳng dựa vào tọa độ điểm, tọa độ véc tơ
+NDB00942	K10	Véc tơ › Biểu thức tọa độ của tích vô hướng	Tính góc giữa 2 véc tơ khi biết tọa độ véc tơ — Tính góc giữa 2 véc tơ khi biết tọa độ véc tơ
+NDB00941	K10	Véc tơ › Biểu thức tọa độ của tích vô hướng	Sử dụng tích vô hướng để kiểm tra 2 véc tơ vuông góc — Sử dụng tích vô hướng để kiểm tra 2 véc tơ vuông góc
+NDB00923	K10	Véc tơ › Biểu thức tọa độ của các phép toán véc tơ	Tọa độ trung điểm, trọng tâm — Tìm tọa độ trung điểm, trọng tâm hoặc tọa độ điểm dựa vào trung điểm, trọng tâm
+NDB00924	K10	Véc tơ › Tìm tọa độ điểm, véc tơ thỏa mãn yêu cầu	Tìm điều kiện để 2 véc tơ cùng phương — Các bài toán tìm tọa độ điểm để 2 véc tơ cùng phương (3 điểm thẳng hàng hoặc 2 đường thẳng  ong  ong)
+NDB02785	K10	Véc tơ › Tích của véc tơ với một số	Cộng trừ véc tơ có sử dụng tích véc tơ với một số — Các bài toán cộng trừ véc tơ trong đó biểu thức có chứa tích véc tơ với một  ố.	[anh em: 2,2,2]
+NDB00925	K10	Véc tơ › Tìm tọa độ điểm, véc tơ thỏa mãn yêu cầu	Tìm tọa độ điểm để tứ giác là hình bình hành — Tìm tọa độ điểm để tứ giác là hình bình hành
+NDB00926	K10	Véc tơ › Tìm tọa độ điểm, véc tơ thỏa mãn yêu cầu	Tìm tọa độ điểm hoặc tọa độ véc tơ thỏa mãn đẳng thức — Tìm tọa độ điểm hoặc tọa độ véc tơ thỏa mãn đẳng thức, đẳng thức véc tơ hay 1 hoặc nhiều điều kiện mà đề bài c
+NDB00927	K10	Véc tơ › Tìm tọa độ điểm, véc tơ thỏa mãn yêu cầu	Tìm tọa độ điểm thỏa mãn cực trị véc tơ — Tìm tọa độ điểm để độ dài của 1 véc tơ tổng hiệu hoặc tổng bình phương các đoạn thẳng đạt giá trị lớn nhất, gi
+NDB01628	K10	Véc tơ › Tìm tọa độ điểm, véc tơ thỏa mãn yêu cầu	Tìm tọa độ trực tâm, chân đường cao của tam giác — Tìm tọa độ trực tâm hoặc chân đường cao của tam giác. Đề bài có thể cho  ẵn tọa độ 3 đỉnh của tam giác hoặc ch
+NDB01401	K10	Véc tơ › Một số dạng toán khác về véc tơ	Bài toán tìm cực trị véc tơ — Bài toán tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức véc tơ
+NDB02667	K10	Hàm số, đồ thị và ứng dụng › Bài toán hàm số chứa tham số m	Tập xác định có tham số m — Đề cho hàm  ố chứa tham  ố m và hỏi m để hàm  ố xác định trên R, trên một khoảng/đoạn cho trước, hoặc để tập x	[anh em: 4,4]
+NDB02668	K10	Hàm số, đồ thị và ứng dụng › Bài toán hàm số chứa tham số m	Tìm tham số m để đồ thị đi qua điểm — Đề cho hàm  ố y=f(x) chứa tham  ố m và một (hoặc vài) điểm cho trước, yêu cầu tìm m để đồ thị đi qua điểm đó h	[anh em: 4,4]
+NDB02664	K10	Hàm số, đồ thị và ứng dụng › Bài toán hàm số chứa tham số m	Tìm m để là hàm bậc hai — Đề cho biểu thức chứa tham  ố m và hỏi m để biểu thức là hàm  ố bậc hai, hoặc để parabol có bề lõm hướng lên (	[anh em: 4,4]
+NDB00913	K10	Véc tơ › Bài toán sử dụng công thức tách - ghép vector	Chứng minh 2 véc tơ cùng phương — Các bài về chứng minh 3 điểm thẳng hàng hoặc 2 đường thẳng  ong  ong dựa vào tính chất tích của véc tơ với 1  	[anh em: 2]
+NDB00566	K11	Lượng giác › Các yếu tố cơ bản của góc lượng giác	Cộng góc lượng giác sử dụng Hệ thức Chasles — Cộng góc lượng giác  ử dụng Hệ thức Cha le 	[anh em: 1,1,2]
+NDB01631	K11	Lượng giác › Bài toán thực tế về góc lượng giác	Bài toán thực tế tính độ dài cung tròn — Các bài toán thực tế tính độ dài cung tròn trong vật thể hình tròn	[anh em: 2,2]
+NDB00567	K11	Lượng giác › Bài toán thực tế về góc lượng giác	Bài toán hỏi số đo góc mà vật thể hình tròn quay được — Bài toán cho 1 vật thể hình tròn được chia làm nhiều phần bằng nhau (bánh xe có lan hoa, bánh răng, bánh xe qu	[anh em: 2,2]
+NDB01634	K11	Lượng giác › Giải phương trình lượng giác cơ bản trên khoảng/đoạn	Một số biến thể khác của giải phương trình lượng giác trên khoảng/đoạn	[anh em: 3,3,3]
+NDB01618	K11	Lượng giác › Giá trị lượng giác của góc lượng giác	Giá trị lượng giác của góc biết số đo — Tính giá trị lượng giác của góc hoặc biểu thức lượng giác khi đã biết  ố đo của tất cả các góc. 
+Tất cả các bà	[anh em: 1,3]
+NDB00945	K11	Lượng giác › Giá trị lượng giác của góc lượng giác	Xác định giá trị lượng giác của góc dựa và tọa độ của điểm biểu diễn — Các bài toán cho tọa độ của điểm biểu diễn góc lượng giác trên đường tròn lượng giác và yêu cầu xác định giá t	[anh em: 1,3]
+NDB01633	K11	Lượng giác › Tìm tập giá trị hoặc min max của hàm số lượng giác cơ bản	Bài toán thực tế tìm min max của hàm số lượng giác cơ bản — Bài toán thực tế tìm min max của hàm  ố lượng giác cơ bản	[anh em: 2,3]
+NDB00986	K11	Lượng giác › Bài toán thực tế sử dụng công thức lượng giác	Tổng hợp dao động (Tham khảo) — Bài toán thực tế tổng hợp 2 dao động cùng biên độ
+NDB01632	K11	Lượng giác › Đồ thị hàm số lượng giác	Một số dạng toán khác về đồ thị hàm số lượng giác — Các dạng toán có  ử dụng đồ thị mà không thuộc dạng nào khác của nhóm thì đưa vào dạng này. Ví dụ như các dạng	[anh em: 2,3,2,2,2,2]
+NDB01148	K11	Giới hạn. Hàm số liên tục › Giới hạn của dãy số: định nghĩa và quy tắc	Nhận biết dãy số có giới hạn 0 hoặc giới hạn hữu hạn — Cho dãy u_n, hỏi có giới hạn không / kể từ  ố hạng nào |u_n| nhỏ hơn một  ố dương cho trước; các giới hạn cơ b
+NDB01187	K11	Giới hạn. Hàm số liên tục › Tính liên tục của hàm số tại một điểm	Xét tính liên tục tại một điểm của hàm một công thức — Kiểm x_0 thuộc tập xác định, lim f=f(x_0).
+NDB01168	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại một điểm: định nghĩa và quy tắc	Dùng định nghĩa (dãy x_n) chứng minh hoặc tính giới hạn — Lấy dãy x_n≠ x_0, x_n→ x_0, tính f(x_n).
+NDB01169	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại một điểm: định nghĩa và quy tắc	Tính giới hạn bằng thay trực tiếp và quy tắc tổng, hiệu, tích, thương — Hàm xác định tại x_0, mẫu khác 0.
+NDB01188	K11	Giới hạn. Hàm số liên tục › Tính liên tục của hàm số tại một điểm	Xét tính liên tục tại điểm chia nhánh của hàm nhiều công thức — So giới hạn trái, phải với f(x_0).
+NDB01160	K11	Giới hạn. Hàm số liên tục › Giới hạn của dãy số: định nghĩa và quy tắc	Nhận biết dãy có giới hạn +∞ hoặc -∞ — lim n^k, lim qⁿ với q>1; dãy vượt mọi  ố dương kể từ một  ố hạng nào đó.
+NDB01189	K11	Giới hạn. Hàm số liên tục › Tính liên tục của hàm số tại một điểm	Nhận biết hàm liên tục hoặc gián đoạn qua đồ thị — Đồ thị liền nét hay đứt tại điểm đang xét (đề cần hình).
+NDB01170	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại một điểm: định nghĩa và quy tắc	Nhận biết khẳng định đúng về giới hạn — Hai hàm khác nhau tại một điểm nhưng cùng giới hạn; cho lim f, lim g tính giới hạn biểu thức.
+NDB01150	K11	Giới hạn. Hàm số liên tục › Giới hạn của dãy số: định nghĩa và quy tắc	Tính giới hạn khi biết giới hạn của các dãy thành phần — Cho lim u_n=a, lim v_n=b; tính giới hạn của tổng, hiệu, tích, thương, căn các dãy đó.
+NDB01190	K11	Giới hạn. Hàm số liên tục › Tính liên tục của hàm số tại một điểm	Nhận biết khẳng định đúng về giới hạn và liên tục tại một điểm — Trắc nghiệm: có giới hạn nhưng không liên tục, hàm nào gián đoạn tại điểm cho trước.
+NDB01191	K11	Giới hạn. Hàm số liên tục › Tìm tham số để hàm số liên tục hoặc gián đoạn tại một điểm	Tham số nằm ở 1 nhánh — Bài toán tìm tham  ố để hàm liên tục tại 1 điểm, trong đó tham  ố chỉ nằm ở 1 nhánh
+NDB01171	K11	Giới hạn. Hàm số liên tục › Giới hạn dạng vô định 0/0	Phân thức hữu tỉ: phân tích nhân tử (có thể dùng chia Horner) — Triệt nhân tử chung x-x_0.
+NDB01151	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng phân thức	Phân thức có tử và mẫu cùng bậc, hoặc tử bậc thấp hơn — Chia cả tử và mẫu cho luỹ thừa cao nhất của n rồi dùng quy tắc.
+NDB01152	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng phân thức	Phân thức có tử bậc cao hơn mẫu (giới hạn ±∞) — Rút luỹ thừa cao nhất, xét dấu hệ  ố.
+NDB01172	K11	Giới hạn. Hàm số liên tục › Giới hạn dạng vô định 0/0	Có một căn thức: nhân liên hợp — Nhân tử và mẫu với biểu thức liên hợp.
+NDB01173	K11	Giới hạn. Hàm số liên tục › Giới hạn dạng vô định 0/0	Có hai căn thức, căn bậc ba, hoặc nhân liên hợp nhiều lần — Tách thành hiệu rồi liên hợp từng phần.
+NDB01193	K11	Giới hạn. Hàm số liên tục › Tìm tham số để hàm số liên tục hoặc gián đoạn tại một điểm	Tham số ở cả hai nhánh — Giới hạn trái bằng giới hạn phải bằng f(x_0).
+NDB01162	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng phân thức	Quy tắc thương và tích khi có giới hạn vô cực — (u_n)/(v_n) với v_n→0 hoặc v_n→±∞; u_nv_n khi u_n→±∞.
+NDB01174	K11	Giới hạn. Hàm số liên tục › Giới hạn dạng vô định 0/0	Tìm tham số để giới hạn dạng 0/0 bằng giá trị cho trước — Điều kiện tử có nghiệm x_0, phân tích rồi  o giới hạn.
+NDB01194	K11	Giới hạn. Hàm số liên tục › Tìm tham số để hàm số liên tục hoặc gián đoạn tại một điểm	Tìm tham số để hàm số gián đoạn tại một điểm — Phủ định điều kiện liên tục.
+NDB01862	K11	Giới hạn. Hàm số liên tục › Giới hạn dạng vô định 0/0	Phân thức có hàm lượng giác: dùng lim sin x / x = 1 — Giới hạn dạng $\dfrac00$ khi $x\to x_0$ (thường $x_0=0$; nếu $x_0\ne0$ như $\dfrac\pi2$, $\dfrac\pi3$ thì đổi 
+NDB01154	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng luỹ thừa và dạng tổng	Thương các luỹ thừa aⁿ, bⁿ — Chia tử và mẫu cho luỹ thừa có cơ  ố lớn nhất.
+NDB01195	K11	Giới hạn. Hàm số liên tục › Tính liên tục trên một khoảng, đoạn, tập xác định	Tìm các khoảng liên tục của hàm sơ cấp — Đa thức, phân thức, căn, lượng giác, tổng hiệu tích thương hàm liên tục.
+NDB01175	K11	Giới hạn. Hàm số liên tục › Giới hạn một bên	Hàm số cho bởi nhiều công thức — Giới hạn trái, phải tại điểm chia nhánh, kể cả hàm Heavi ide.
+NDB01176	K11	Giới hạn. Hàm số liên tục › Giới hạn một bên	Hàm chứa dấu giá trị tuyệt đối hoặc căn tại điểm biên — Bỏ dấu giá trị tuyệt đối theo từng bên.
+NDB01196	K11	Giới hạn. Hàm số liên tục › Tính liên tục trên một khoảng, đoạn, tập xác định	Xét tính liên tục của hàm nhiều công thức trên tập xác định — Liên tục trên từng khoảng rồi xét điểm chia nhánh.
+NDB01155	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng luỹ thừa và dạng tổng	Dãy chứa cả n^k và qⁿ — Nhận ra qⁿ (q>1) lớn hơn mọi n^k, rút ra ngoài rồi xét.
+NDB01161	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng luỹ thừa và dạng tổng	Tính giới hạn ±∞ bằng cách rút luỹ thừa cao nhất — Như lim(n²-2n), lim(n-√n): rút n² hoặc n, dùng quy tắc tích.
+NDB01197	K11	Giới hạn. Hàm số liên tục › Tính liên tục trên một khoảng, đoạn, tập xác định	Tìm tham số để hàm số liên tục trên ℝ hoặc trên một khoảng — Điều kiện liên tục tại điểm ghép.
+NDB01177	K11	Giới hạn. Hàm số liên tục › Giới hạn một bên	Điều kiện tồn tại giới hạn: giới hạn trái bằng giới hạn phải — Kết luận lim tồn tại hay không, tìm tham  ố để tồn tại.
+NDB01156	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng luỹ thừa và dạng tổng	Dãy là tổng n số hạng của cấp số cộng hoặc cấp số nhân — Tính tổng theo công thức rồi lấy giới hạn, ví dụ (1+2+…+n)/(n²), (2+2²+…+2ⁿ)/(2ⁿ).
+NDB01198	K11	Giới hạn. Hàm số liên tục › Tính liên tục trên một khoảng, đoạn, tập xác định	Bài toán thực tế về hàm số liên tục — Cước taxi, bảng giá bậc thang, hàm Heavi ide, hàm dấu.
+NDB01861	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng luỹ thừa và dạng tổng	Tổng hoặc tích n số hạng: tách hiệu, khử liên tiếp — Tính giới hạn của tổng (hoặc tích) $n$  ố hạng trong đó  ố hạng thứ $k$ tách được thành hiệu $a_k-a_{k+d}$ (ho
+NDB01199	K11	Giới hạn. Hàm số liên tục › Chứng minh phương trình có nghiệm	Chứng minh phương trình có ít nhất một nghiệm trong khoảng cho trước — Hàm liên tục trên [a;b] và f(a)f(b)<0.
+NDB01178	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại vô cực	Phân thức hữu tỉ khi x→±∞ — Chia tử và mẫu cho luỹ thừa cao nhất của x.
+NDB01157	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng căn thức	Căn thức dưới dấu thương, đưa n ra ngoài căn — Chia tử và mẫu cho n, chú ý √(n²)=n.
+NDB01179	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại vô cực	Biểu thức chứa căn khi x→±∞ (chú ý dấu khi x→-∞) — Đưa |x| ra ngoài căn, √(x²)=-x khi x<0.
+NDB01158	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng căn thức	Hiệu hai căn hoặc căn trừ đa thức (dạng ∞-∞) — Nhân và chia cho biểu thức liên hợp.
+NDB01200	K11	Giới hạn. Hàm số liên tục › Chứng minh phương trình có nghiệm	Chứng minh phương trình có ít nhất k nghiệm — Chia thành nhiều khoảng, mỗi khoảng đổi dấu.
+NDB01201	K11	Giới hạn. Hàm số liên tục › Chứng minh phương trình có nghiệm	Phương trình chứa tham số luôn có nghiệm — Chọn a,b không phụ thuộc tham  ố  ao cho f(a)f(b)<0.
+NDB01180	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại vô cực	Dạng ∞-∞ — Nhân liên hợp đưa về ∞/∞.
+NDB01181	K11	Giới hạn. Hàm số liên tục › Giới hạn hữu hạn của hàm số tại vô cực	Dạng 0·∞ — Đưa về 0/0 hoặc ∞/∞.
+NDB01202	K11	Giới hạn. Hàm số liên tục › Chứng minh phương trình có nghiệm	Bài toán thực tế dùng tính liên tục (giá trị trung gian) — Như bài vận tốc 60 km/h ở phần mở đầu.
+NDB01159	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số dạng căn thức	Căn bậc ba, liên hợp bậc ba — Dùng a-b=(a³-b³)/(a²+ab+b²) cho căn bậc ba.
+NDB01182	K11	Giới hạn. Hàm số liên tục › Giới hạn vô cực của hàm số	Giới hạn tại một điểm dạng L/0 (xét dấu mẫu theo từng bên) — Giới hạn một bên bằng +∞ hoặc -∞.
+NDB01183	K11	Giới hạn. Hàm số liên tục › Giới hạn vô cực của hàm số	Giới hạn ±∞ khi x→±∞ của đa thức hoặc phân thức tử bậc cao hơn — Dùng x^k chẵn hoặc lẻ khi x→-∞.
+NDB01184	K11	Giới hạn. Hàm số liên tục › Giới hạn vô cực của hàm số	Giới hạn của tích khi một hàm có giới hạn vô cực — Áp bảng dấu quy tắc tích f(x)g(x).
+NDB01163	K11	Giới hạn. Hàm số liên tục › Tổng của cấp số nhân lùi vô hạn	Nhận biết cấp số nhân lùi vô hạn và tính tổng — Kiểm |q|<1, tính S=(u_1)/(1-q).
+NDB01185	K11	Giới hạn. Hàm số liên tục › Bài toán thực tế về giới hạn hàm số	Mô hình vật lí hoặc kinh tế có giới hạn — Khối lượng theo vận tốc (v→ c^-), chi phí trung bình, nồng độ.
+NDB01164	K11	Giới hạn. Hàm số liên tục › Tổng của cấp số nhân lùi vô hạn	Biểu diễn số thập phân vô hạn tuần hoàn dưới dạng phân số — Tách thành tổng cấp  ố nhân lùi vô hạn, ví dụ 2,222…, 1,(12).
+NDB01186	K11	Giới hạn. Hàm số liên tục › Bài toán thực tế về giới hạn hàm số	Điểm dịch chuyển trong hình học (đường cao khi A→ O hoặc A→∞) — Lập hàm theo tham  ố rồi lấy giới hạn.
+NDB01165	K11	Giới hạn. Hàm số liên tục › Tổng của cấp số nhân lùi vô hạn	Tìm số hạng đầu hoặc công bội khi biết tổng (bài toán ngược) — Từ S=(u_1)/(1-q) tìm đại lượng còn lại; ngoài SGK, mức nâng cao.
+NDB01166	K11	Giới hạn. Hàm số liên tục › Bài toán thực tế về giới hạn dãy số	Đại lượng giảm dần hoặc tích luỹ lặp lại (bóng nảy, lượng thuốc trong cơ thể) — Lập dãy theo chu kì, chứng minh dần về 0 hoặc tính giá trị ổn định.
+NDB01167	K11	Giới hạn. Hàm số liên tục › Bài toán thực tế về giới hạn dãy số	Hình học lặp vô hạn (hình vuông tô màu, đường gấp khúc, nghịch lí Zeno) — Lập cấp  ố nhân lùi vô hạn của độ dài hoặc diện tích, tính tổng.
+NDB01860	K11	Giới hạn. Hàm số liên tục › Giới hạn dãy số cho bởi công thức truy hồi	Dãy số cho bởi công thức truy hồi: đưa về cấp số nhân hoặc đơn điệu bị chặn — Dãy $(u_n)$ cho bởi  ố hạng đầu và công thức truy hồi $u_{n+1}=f(u_n)$ (có thể còn chứa $n$ như $u_{n+1}=u_n+2
+NDB01153	K11	Giới hạn. Hàm số liên tục › Một số dạng khác về giới hạn của dãy số	Phân thức chứa tham số — Tìm tham  ố để giới hạn bằng giá trị cho trước, hoặc để giới hạn hữu hạn, hoặc để giới hạn là  ố nguyên.
+NDB01149	K11	Giới hạn. Hàm số liên tục › Một số dạng khác về giới hạn của dãy số	Chứng minh giới hạn của dãy số bằng định nghĩa hoặc nguyên lí kẹp — Chứng minh lim u_n=a bằng lim(u_n-a)=0; hoặc dùng |u_n|≤ v_n, v_n→0.
+NDB02600	K11	Quan hệ song song trong không gian › Tính tỉ số đoạn thẳng và diện tích thiết diện	Tìm giao điểm và tính tỉ số cạnh (Menelaus) — Đề cho hình chóp, hình hộp, lăng trụ hoặc tứ diện cùng một  ố điểm chia cạnh theo tỉ lệ cho trước; yêu cầu xác
+NDB02601	K11	Quan hệ song song trong không gian › Tính tỉ số đoạn thẳng và diện tích thiết diện	Tìm thiết diện và tính diện tích thiết diện — Đề cho hình chóp, hình hộp, lăng trụ hoặc tứ diện cùng một mặt phẳng cắt (đi qua các điểm cho trước, hoặc  ong
+NDB00788	K12	Nguyên hàm và tích phân › Diện tích các hình phẳng đặc biệt	Tính diện tích các hình đối xứng — Các hình phức tạp nhưng đối xứng. Cách làm dựa theo việc đối xứng thì chỉ cần tính 1 phần hình vẽ rồi nhân lên	[anh em: 3]
+NDB00639	K12	Nguyên hàm và tích phân › Thể tích khối tròn xoay	Thể tích hình giới hạn bởi hai hàm số quay quanh trục tung Oy — Đề bài cho xoay quanh trục Oy	[anh em: 3,3,3,3]
+NDB00786	K12	Nguyên hàm và tích phân › Thể tích của vật khi biết công thức thiết diện	Thể tích phần giao nhau của các hình — Dạng này thường xoay quanh việc 2 vật thể không gian giao nhau và tính diện tích phần giao nhau đó	[anh em: 3,3,3]
+NDB00761	K12	Nguyên hàm và tích phân › Ứng dụng tích phân vào các bài toán thực tế khác	Cho giá trị các đại lượng. Tính tốc độ thay đổi của đại lượng — Cho giá trị các đại lượng. Tính tốc độ thay đổi của đại lượng	[anh em: 3,3,3]
+NDB00879	K12	Phương pháp toạ độ trong không gian › Vị trí tương đối của đường thẳng và mặt cầu	Viết phương trình đường thẳng cắt mặt cầu — Đề cho mặt cầu (vùng phủ  óng của trạm) và đường thẳng cắt nó theo một dây cung $MN$: hỏi độ dài dây cung (quã	[anh em: 3,3,3]
+NDB02780	K3	Số tự nhiên › Phép cộng-trừ trong phạm vi 1000	Tính giá trị biểu thức có nhân, chia và dấu ngoặc — Biểu thức có từ hai phép tính trở lên gồm phép nhân hoặc phép chia kết hợp với cộng, trừ, hoặc có dấu ngoặc; y	[anh em: 2,2,3]
+NDB02799	K3	Số tự nhiên › Bài toán một phép nhân, chia	Bài toán giải bằng một phép nhân hoặc phép chia — Bài toán lời văn mà câu hỏi trả lời được bằng đúng một phép nhân hoặc một phép chia. Dấu hiệu: mỗi ... có ...,
+NDB02779	K3	Số tự nhiên › Đo nhiệt độ	Đo nhiệt độ (độ C) — Đề cho nhiệt độ bằng độ C (°C) của thời tiết, cơ thể, nước...; yêu cầu đọc nhiệt độ trên nhiệt kế,  o  ánh hai
+NDB02781	K3	Số tự nhiên › Bảng nhân, chia	Nhân, chia với 0 và 1 — Câu về các quy tắc đặc biệt: một  ố nhân với 1 bằng chính nó, một  ố nhân với 0 bằng 0, một  ố chia cho 1 bằng	[anh em: 1,1,1,1,1,1,1,1]
+NDB02783	K3	Số tự nhiên › Phép nhân, phép chia trong phạm vi 100	Nhân số có ba chữ số với số có một chữ số — Phép nhân  ố có ba chữ  ố với  ố có một chữ  ố (có nhớ hoặc không nhớ, tích trong phạm vi 1000), thường yêu cầ	[anh em: 2,2,2,2,2]
+NDB02784	K3	Số tự nhiên › Phép nhân, phép chia trong phạm vi 100	Chia số có ba chữ số cho số có một chữ số — Phép chia  ố có ba chữ  ố cho  ố có một chữ  ố (chia hết hoặc chia có dư, trong phạm vi 1000), thường yêu cầu 	[anh em: 2,2,2,2,2]
+NDB02798	K3	Số tự nhiên › Phép nhân, phép chia trong phạm vi 100	So sánh số lớn gấp mấy lần số bé — Đề cho hai  ố (hoặc hai đại lượng cùng đơn vị) và hỏi  ố lớn gấp mấy lần  ố bé; công cụ: lấy  ố lớn chia cho  	[anh em: 2,2,2,2,2]
+NDB01853	K4	Số tự nhiên › Tìm trung bình cộng	Tìm trung bình cộng của 1 nhóm — nhóm có nhiều loại với  ố lượng khác nhau. V í dụ : 4 xe loại I, 5 xe loại II
+NDB02782	K4	Số tự nhiên › Đổi đơn vị đo	So sánh số đo đại lượng — Đề cho hai  ố đo cùng một loại đại lượng (khối lượng, thời gian hoặc diện tích), có thể kèm một phép tính ở mộ
+NDB01623	K4T	Các bài toán lời văn › Bài toán tổng hiệu có ẩn đại lượng	Bài toán tổng hiệu ẩn tổng - Chu vi diện tích	[anh em: 2]
+NDB01583	K4T	Các bài toán lời văn › Các bài toán cơ bản về trung bình cộng	Tìm 1 đại lượng khi biết trung bình cộng — Đề bài cho trung bình cộng và hỏi 1 đại lượng	[anh em: 1]
+NDB01624	K4T	Các bài toán lời văn › Bài toán tổng hiệu có ẩn đại lượng	Bài toán tổng hiệu ẩn hiệu - Các số tự nhiên chẵn lẻ	[anh em: 2]
+NDB01584	K4T	Các bài toán lời văn › Các bài toán cơ bản về trung bình cộng	Tính trung bình cộng của 1 nhóm có nhiều loại đại lượng — Thường là  ẽ cho nhiều loại đại lượng, mỗi loại có  ố lượng khác nhau. 
+
+Ví dụ : 4 xe loại I mỗi xe chở 8 tấn 	[anh em: 1]
+NDB01585	K4T	Các bài toán lời văn › Các bài toán cơ bản về trung bình cộng	Tìm 1 loại đại lượng khi biết trung bình cộng của nhóm các đại lượng — Bài ngược của 1.3. CHo trung bình cộng, cho xe loại I hỏi loại II	[anh em: 1]
+NDB01625	K4T	Các bài toán lời văn › Bài toán tổng hiệu có ẩn đại lượng	Bài toán tổng hiệu liên quan đến tuổi	[anh em: 2]
+NDB01586	K4T	Các bài toán lời văn › Các bài toán cơ bản về trung bình cộng	Tìm trung bình cộng của dãy số cách đều — Tìm trung bình cộng của các  ố tạo thành dãy  ố cách đều	[anh em: 1]
+NDB01588	K4T	Các bài toán lời văn › Các bài toán cơ bản về trung bình cộng	Bài toán tổng hiệu ẩn tổng bằng trung bình cộng — Bài toán tổng hiệu ẩn tổng bằng trung bình cộng	[anh em: 1]
+NDB01589	K4T	Các bài toán lời văn › Thay đổi trung bình cộng khi thêm bớt đại lượng	Tính trung bình cộng của nhóm trong bài toán Trung bình cộng thêm bớt đại lượng — Tính trung bình cộng của nhóm khi biết trung bình cộng ban đầu,  ố đại lượng và đại lượng thêm/bớt
+NDB01626	K4T	Các bài toán lời văn › Bài toán tổng hiệu có thay đổi đại lượng	Bài toán cho nhận
+NDB01590	K4T	Các bài toán lời văn › Thay đổi trung bình cộng khi thêm bớt đại lượng	Tính đại lượng thêm/bớt trong bài toán Trung bình cộng thêm bớt đại lượng — Tính đại lượng thêm/bớt khi biết trung bình cộng trước và  au khi thay đổi và cả  ố đại lượng
+NDB01627	K4T	Các bài toán lời văn › Bài toán tổng hiệu có thay đổi đại lượng	Bài toán tăng giảm đại lượng
+NDB01591	K4T	Các bài toán lời văn › Thay đổi trung bình cộng khi thêm bớt đại lượng	Tính số đại lượng trong bài toán Trung bình cộng thêm bớt đại lượng — Tính  ố đại lượng khi biết đại lượng thêm bớt và trung bình cộng trước -  au khi thêm bớt
+NDB01592	K4T	Các bài toán lời văn › Quan hệ của một số với trung bình cộng của cả nhóm	Một đại lượng bằng trung bình cộng cả nhóm — Một đại lượng bằng trung bình cộng cả nhóm
+NDB01593	K4T	Các bài toán lời văn › Quan hệ của một số với trung bình cộng của cả nhóm	Một đại lượng nhiều hơn trung bình cộng cả nhóm — Đề bài  ẽ cho Một đại lượng nhiều hơn trung bình cộng cả nhóm bao nhiêu
+NDB01594	K4T	Các bài toán lời văn › Quan hệ của một số với trung bình cộng của cả nhóm	Một đại lượng ít hơn trung bình cộng cả nhóm — Đề bài  ẽ cho Một đại lượng ít hơn trung bình cộng cả nhóm bao nhiêu
+NDB02794	K5	Phép toán với các số › Tỉ số phần trăm	Sử dụng máy tính cầm tay — Đề hỏi cách bấm phím hoặc kết quả máy tính cầm tay hiện ra khi tính phép tính, biểu thức (máy tính theo thứ tự	[anh em: 2,2,2,2,2]
+NDB02674	K5	Phép toán với các số › Bài toán lời văn	Tìm một số khi biết giá trị phân số của số đó — Đề cho giá trị của một phần (hoặc phần còn lại  au khi đã lấy đi một  ố phần) và phân  ố chỉ phần đó  o với cả	[anh em: 3,3]
+NDB02795	K5	Thống kê xác suất › Xác suất	Tỉ số mô tả số lần lặp lại của một sự kiện — Đề cho bảng kết quả một thí nghiệm lặp lại nhiều lần (tung đồng xu, gieo xúc xắc, lấy tất, bút, kẹo, quay vòng
+NDB02676	K5	Diện tích các hình › Ôn Hình học và đo lường	Nhận biết, đếm hình trong hình ghép; lắp ghép hình — Đề cho một bức tranh hoặc hình ghép từ nhiều miếng (tam giác, hình tròn, hình thang, hình chữ nhật...) và hỏi 	[anh em: 2,2]
+NDB02675	K5	Diện tích các hình › Diện tích tam giác	Tìm đáy hoặc chiều cao khi biết diện tích tam giác — Đề cho diện tích hình tam giác và một trong hai yếu tố (độ dài đáy hoặc chiều cao tương ứng), yêu cầu tìm yếu 	[anh em: 1,3]
+NDB02796	K5	Diện tích các hình › Hình thang	Tìm đáy hoặc chiều cao khi biết diện tích hình thang — Đề cho diện tích hình thang và các yếu tố còn lại (hai đáy hoặc tổng hai đáy, hoặc chiều cao và một đáy), yêu 	[anh em: 1,3]
+NDB02797	K5	Diện tích các hình › Hình tròn	Tìm bán kính, đường kính khi biết chu vi hoặc diện tích hình tròn — Đề cho chu vi (hoặc diện tích) của hình tròn, vật tròn, yêu cầu tìm đường kính, bán kính, hoặc tìm tiếp diện t	[anh em: 1,3]
+NDB02786	K5	Diện tích các hình › Hình khối	Hình khai triển của hình lập phương, hình hộp chữ nhật, hình trụ — Đề cho các tấm bìa hoặc hình vẽ khai triển, hỏi tấm nào gấp được thành hình lập phương, hình hộp chữ nhật hay 
+NDB02787	K5	Diện tích các hình › Hình khối	Diện tích xung quanh, diện tích toàn phần của hình hộp chữ nhật — Đề cho chiều dài, chiều rộng, chiều cao (có thể khác đơn vị hoặc là  ố thập phân) và hỏi diện tích xung quanh,
+NDB02788	K5	Diện tích các hình › Hình khối	Diện tích xung quanh, diện tích toàn phần của hình lập phương — Đề cho cạnh hình lập phương (hoặc cho diện tích một mặt, diện tích toàn phần để tìm ngược cạnh) và hỏi diện tí
+NDB02789	K5	Diện tích các hình › Hình khối	Thể tích hình hộp chữ nhật — Đề cho các kích thước của hình hộp chữ nhật (hoặc phải tìm qua tổng–hiệu, tỉ  ố) và hỏi thể tích, gồm cả bài t
+NDB02790	K5	Diện tích các hình › Hình khối	Thể tích hình lập phương — Đề cho cạnh hình lập phương và hỏi thể tích, hoặc phải tìm cạnh trước từ tổng độ dài các cạnh, chu vi một mặt,
+NDB02791	K5	Đơn vị đo lường › Đơn vị đo thể tích	Thể tích của một hình (đếm hình lập phương đơn vị) — Đề cho hình ghép từ các hình lập phương nhỏ cạnh 1 cm (thể tích $1\,cm^3$) và hỏi thể tích của hình, hoặc  o  	[anh em: 2,3]
+NDB02792	K5	Đơn vị đo lường › Đơn vị đo thể tích	Đọc, viết số đo thể tích — Đề cho  ố đo thể tích bằng chữ yêu cầu viết bằng  ố, hoặc cho  ố đo bằng  ố (có thể là  ố thập phân) yêu cầu đ	[anh em: 2,3]
+NDB02793	K5	Đơn vị đo lường › Đơn vị đo thể tích	Ước lượng và bài toán thực tế với số đo thể tích — Đề yêu cầu chọn  ố đo thể tích phù hợp với đồ vật (ước lượng), tính cộng, trừ, nhân, chia với các  ố đo thể tí	[anh em: 2,3]
+NDB02767	K5T	Bài toán tỉ số › Phép toán với tỉ số phầm trăm	Cộng trừ nhân chia tỉ số phần trăm
+NDB02768	K5T	Bài toán tỉ số › Phép toán với tỉ số phầm trăm	Tính thuận tiện liên quan đến tỉ số phần trăm
+NDB02769	K5T	Bài toán tỉ số › Phép toán với tỉ số phầm trăm	Tìm phần trăm của một số
+NDB02770	K5T	Bài toán tỉ số › Phép toán với tỉ số phầm trăm	Tìm một số khi biết phần trăm của nó
+NDB02771	K5T	Bài toán tỉ số › Bài toán bán hàng	Bài toán cơ bản về bán hàng — Xoay quanh : giá gốc, lãi, giá bán, tỉ lệ lãi..
+NDB02772	K5T	Bài toán tỉ số › Bài toán bán hàng	Bài toán cho số liệu theo giá bán — Đề bãi cho lãi hoặc giá gốc bằng phần trăm giá bán thay vì mặc định theo giá gốc
+NDB02773	K5T	Bài toán tỉ số › Bài toán bán hàng	Bài toán giảm giá — Xoay quanh việc giảm giá trên giá bán và lãi thực tế - lãi ban đầu trươc khi giảm giá
+NDB02774	K5T	Bài toán tỉ số › Bài toán bán hàng	Bài toán giảm giá kép — Giảm giá lần 1 và giảm giá lần 2 theo giá đã giảm. Tức là ko cộng dồn giảm giá mà phải nhân
+NDB02775	K5T	Bài toán tỉ số › Bài toán thay đổi phần trăm của tích	Bài toán về doanh thu - chi phí — Đề bài cho thay đổi giá bán - doanh thu - chi phí và hỏi những cái còn lại
+NDB02776	K5T	Bài toán tỉ số › Bài toán thay đổi phần trăm của tích	Bài toán về diện tích — bài toán cho thay đổi chiều dài  - chiều rộng - diện tích và hỏi cái còn lại.
+NDB02777	K5T	Bài toán tỉ số › Bài toán hỗn hợp	Bài toán trộn A và B để tìm hỗn hợp — Cho tỉ lệ % của A và B rồi trộn với nhau và tìm tỉ lệ %  au khi trộn
+NDB02778	K5T	Bài toán tỉ số › Bài toán hỗn hợp	Bài toán cho hỗn hợp tìm ngược lại A và B — Bài toán chô hỗn hợp A B rồi từ đó tính ngược lại A B
+NDB01223	K6	Số tự nhiên › Tính chất cơ bản của số tự nhiên	Nhận biết số tự nhiên — Xác định đâu là  ố tự nhiên, đâu không phải
+Kí hiệu tập hợp  ố tự nhiên, tập hợp  ố tự nhiên khác 0
+tính tổng 	[anh em: 1]
+NDB01224	K6	Số tự nhiên › Tính chất cơ bản của số tự nhiên	So sánh số tự nhiên — So  ánh các  ố tự nhiên
+xác định  ố liền  au, liền trước	[anh em: 1]
+NDB01362	K6	Số tự nhiên › Tìm x Nhân chia Số tự nhiên	Tìm x khi tích bằng 0 — (x-6)(x-5)=0	[anh em: 2,2]
+NDB01231	K6	Số tự nhiên › Dãy lũy thừa cơ số	Chứng minh biểu thức liên quan đến dãy lũy thừa là số chính phương — Thường  ẽ yêu cầu chứng minh ví dụ : 4A+3 là  ố chính phương với A là 1 dãy lũy thừa	[anh em: 4,4,4]
+NDB01363	K6	Số tự nhiên › Tìm x Luỹ thừa với số mũ tự nhiên	Tìm x chứa lũy thừa: khi tích bằng 0 — (x^2 - 81) (x - 5^2)= 0
+x^5-3x^4=0	[anh em: 3,3,3]
+NDB01229	K6	Số tự nhiên › Bài toán tìm số tự nhiên thỏa mãn đẳng thức dạng tích	Đẳng thức dạng tích — Đề bài  ẽ cho một tích một biểu thức của x và y nhân với nhau bằng 1  ố và yêu cầu tìm  ố tự nhiên x,y
+NDB01230	K6	Số tự nhiên › Bài toán tìm số tự nhiên thỏa mãn đẳng thức dạng tích	Đẳng thức dạng tổng đưa về dạng tích — Đề bài  ẽ cho một biểu thức dạng tổng các biểu thức của x và y. Nhiệm vụ là  ẽ phải đưa về dạng tích vài giải
+NDB01233	K6	Số tự nhiên › Chữ số tận cùng của biểu thức	Chữ số tận cùng của một biểu thức — THường hỏi chữ  ố tận cùng của biểu thức là tổng, hiệu, tích của các lũy thừa có  ố mũ to	[anh em: 4]
+NDB01410	K6	Số tự nhiên › Các bài nâng cao liên quan đến đẳng thức về lũy thừa	Tìm x thỏa mãn tích các lũy thừa đưa được về cũng số mũ — Đẳng thức có tích các lũy thừa khác cơ  ố mà  ố mũ chứa x, bằng một  ố cho trước; tách để các lũy thừa cùng  ố	[anh em: 4]
+NDB01411	K6	Số tự nhiên › Các bài nâng cao liên quan đến đẳng thức về lũy thừa	Tìm x thỏa mãn điều kiện tổng các lũy thừa cùng số mũ — Đẳng thức có tổng các lũy thừa khác cơ  ố nhưng cùng  ố mũ x ở hai vế; đặt lũy thừa chung làm thừa  ố, rút gọn	[anh em: 4]
+NDB01413	K6	Số tự nhiên › Các dạng nâng cao khác	Dãy tổng các tích các số tự nhiên liên tiếp — Tính tổng $1.2+2.3+3.4+\dot $ hoặc $1.2.3+2.3.4+\dot $: các  ố hạng là tích của các  ố tự nhiên liên tiếp, nhâ
+NDB01414	K6	Số tự nhiên › Các dạng nâng cao khác	Tính tổng các tích các số tự nhiên cách đều — Tính tổng các tích có hai thừa  ố hơn kém nhau $2$ hoặc $3$ đơn vị (như $2.4+4.6+\dot $, $1.4+4.7+\dot $), thừ
+NDB01415	K6	Số tự nhiên › Các dạng nâng cao khác	Tính tổng dãy số cùng số mũ — Tính tổng các lũy thừa có cùng  ố mũ, cơ  ố là các  ố tự nhiên liên tiếp hoặc cách đều (như 
+$1^2+2^2+\dot +n^
+NDB01369	K6	Tính chia hết trong tập hợp các số tự nhiên › Tính chất chia hết của biểu thức	Chứng minh dãy tổng các tích chia hết — biểu thức gồm tổng các tích (có quy luật) chia hết cho  ố tự nhiên
+NDB01368	K6	Tính chia hết trong tập hợp các số tự nhiên › Tính chất chia hết của biểu thức	Chứng minh biểu thức chia hết — Chứng minh biểu thức 1 ẩn chia hết
+NDB01215	K6	Tính chia hết trong tập hợp các số tự nhiên › Ước/bội của số tự nhiên	Toán thực tế về ước bội thỏa mãn điều kiện cho trước — toán thực tế có lời văn về ước, bội thỏa mãn điều kiện cho trước	[anh em: 2,2,2]
+NDB01416	K6	Tính chia hết trong tập hợp các số tự nhiên › Chứng minh 2 biểu thức nguyên tố cùng nhau 1 ẩn	Tìm n để phân số rút gọn được	[anh em: 4,4,4,4,4]
+NDB00815	K6	Tính chia hết trong tập hợp các số tự nhiên › Tính chia hết của dãy Tổng lũy thừa cùng cơ số	Chia hết ghép cách Số hạng — Các dạng khác là ghép liên tiếp các Luỹ thừa mũ liên tiếp với nhau. Tuy nhiên ở dạng này có thể ghép các mũ cá	[anh em: 4,4,4,4]
+NDB01622	K6	Tính chia hết trong tập hợp các số tự nhiên › Tìm tất cả ước của một số	Tìm số ước của một số — tìm  ố ước của một bằng. phương pháp: phân tích ra thừa  ố nguyên tố
+NDB01216	K6	Tính chia hết trong tập hợp các số tự nhiên › Tìm tất cả ước của một số	Tìm Ước của một số khi phân tích ra thừa số nguyên tố — Tìm ước dựa vào kết quả phân tích ra thừa  ố nguyên tố
+NDB01617	K6	Tính chia hết trong tập hợp các số tự nhiên › Các bài toán nâng cao khác	Chứng minh biểu thức là hợp số. — Cho p là  ố nguyên tố lớn hơn 3 và p+7 là  ố nguyên tố. Chứng minh rằng p+5 là hợp  ố.
+NDB01315	K6	Số nguyên › Tìm x cộng trừ Số nguyên	Tìm x là số hạng, số bị trừ — x + 13 = −19; x − 16 = −36.
+NDB01298	K6	Số nguyên › Cộng, trừ số nguyên	Cộng hai số nguyên — Một phép cộng hai  ố nguyên (cùng dấu hoặc khác dấu, có thể có  ố đối).
+NDB01286	K6	Số nguyên › Các tính chất cơ bản của số nguyên	Tính chất cơ bản của số nguyên — Nhận biết  ố nguyên dương / âm / 0, dùng  ố nguyên âm biểu thị đại lượng thực tế (hoặc diễn đạt lại  ố âm bằng
+NDB01330	K6	Số nguyên › Tổng dãy số nguyên xen dấu	Ghép hai số hạng liên tiếp — A = 1 − 2 + 3 − 4 + … + 59 − 60; −2 + 4 − 6 + … + 100.
+NDB01323	K6	Số nguyên › Ước và bội của số nguyên	Tìm tất cả các ước của một số nguyên — Ư(−30), Ư(22): lấy ước dương cùng  ố đối.
+NDB01324	K6	Số nguyên › Ước và bội của số nguyên	Tìm bội và ước chung — Tìm 6 bội của −4; tìm ƯC của 12 và −24; bội của 4 nằm giữa −20 và 20.
+NDB01288	K6	Số nguyên › Các tính chất cơ bản của số nguyên	Số đối — Tìm  ố đối của một  ố nguyên (kể cả dạng −(−15), 5−a) và viết tập hợp gồm các phần tử của một tập cùng  ố đối 
+NDB01299	K6	Số nguyên › Cộng, trừ số nguyên	Trừ hai số nguyên — Một phép trừ hai  ố nguyên, đổi trừ thành cộng với  ố đối.
+NDB01331	K6	Số nguyên › Tổng dãy số nguyên xen dấu	Ghép bốn số hạng / số hạng cách đều — A = (−1) + 5 + (−9) + 13 + … + 85.
+NDB01316	K6	Số nguyên › Tìm x cộng trừ Số nguyên	Tìm x là số trừ — 23 − x = 19; 75 − x = −24.
+NDB01300	K6	Số nguyên › Cộng, trừ số nguyên	Cộng, trừ nhiều số nguyên — Dãy cộng trừ nhiều  ố hạng (không / có ngoặc đơn giản) — làm lần lượt từ trái  ang phải.
+NDB01301	K6	Số nguyên › Quy tắc dấu ngoặc	Nhận biết kết quả khi bỏ dấu ngoặc — Trắc nghiệm: bỏ dấu ngoặc của biểu thức −(−3+5−7), 37−(−163+84)−116… được biểu thức nào.
+không yêu cầu tính
+NDB01332	K6	Số nguyên › Tìm x, y ∈ tập hợp Số nguyên thoả điều kiện dạng tích	Đẳng thức tích — x.y = −9 và x < y; x.y = 7 và x > y.
+(x + 1)(y − 3) = −5; (x − 4)(y + 3) = −3.
+NDB01317	K6	Số nguyên › Tìm x biểu thức chứa ngoặc, nhân chia	Cơ bản (nhân chia, một cấp) — 2x − 11 = −17; x : 2 − 5 = −8; 16 : x − 2 = 6.
+NDB01325	K6	Số nguyên › Tìm số nguyên thoả điều kiện chia hết	x là ước (bội) của số cho trước, có điều kiện — −8 ⋮ x và 12 ⋮ x; x ⋮ 3 và −6 < x < 6.
+NDB01290	K6	Số nguyên › Trục số, so sánh và sắp xếp số nguyên	Biểu diễn và đọc số nguyên trên trục số — Vẽ trục  ố, biểu diễn các điểm, đọc  ố tại điểm cho trước, khoảng cách tới gốc O.
+NDB01318	K6	Số nguyên › Tìm x biểu thức chứa ngoặc, nhân chia	Có ngoặc, x trong ngoặc — 15 − (2 − x) = −7; (x + 18).(−40) = 80; 71 − (24 − 3x) = 23.
+NDB01334	K6	Số nguyên › Tìm x, y ∈ tập hợp Số nguyên thoả điều kiện dạng tích	Đẳng thức dạng tổng đưa về tích — 2xy − 4x + y = 14; xy + 3x − 2y = 51.
+NDB01302	K6	Số nguyên › Quy tắc dấu ngoặc	Bỏ dấu ngoặc rồi tính — Bỏ ngoặc tròn / vuông rồi tính một tổng, hiệu.
+NDB01291	K6	Số nguyên › Trục số, so sánh và sắp xếp số nguyên	So sánh hai số nguyên — Điền dấu <, >, = hoặc chọn  ố lớn hơn / nhỏ hơn giữa hai (ba)  ố nguyên.
+NDB01292	K6	Số nguyên › Trục số, so sánh và sắp xếp số nguyên	Sắp xếp các số nguyên theo thứ tự — Sắp xếp dãy  ố (hoặc nhiệt độ các thành phố / hành tinh) tăng dần, giảm dần; tìm nhiệt độ thấp nhất / cao nhất
+NDB01293	K6	Số nguyên › Trục số, so sánh và sắp xếp số nguyên	Tìm số nguyên theo điều kiện về thứ tự — Tìm  ố nguyên lớn nhất bé hơn −9,  ố nguyên âm nhỏ nhất có hai chữ  ố, điền chữ  ố * để bất đẳng thức đúng.
+NDB01294	K6	Số nguyên › Tập hợp số nguyên: liệt kê, đếm, tính tổng	Tập hợp của số nguyên — Cho {x ∈ ℤ | −2 < x ≤ 3}: viết các phần tử bằng cách liệt kê, hoặc đếm xem có bao nhiêu  ố nguyên thoả mãn.
+NDB01326	K6	Số nguyên › Tìm n để an+b chia hết cho cn+d (trong tập hợp Số nguyên)	Tử là số tự nhiên (a ⋮ (x + b)) — −13 ⋮ (x + 1); 3 ⋮ (n − 1).
+NDB01303	K6	Số nguyên › Nhân, chia số nguyên	Nhân hai số nguyên — Tính tích hai  ố nguyên (khác dấu, cùng dấu), có thể nhiều thừa  ố.
+NDB01319	K6	Số nguyên › Tìm x có luỹ thừa	Luỹ thừa là số đã biết — (x − 18) − 2^3 = −23; 11 + 2x = 2^3 − 3^2.
+NDB01296	K6	Số nguyên › Tập hợp số nguyên: liệt kê, đếm, tính tổng	Tính tổng các số nguyên thoả điều kiện — Tính tổng các  ố nguyên x thoả −5 < x ≤ 4: ghép cặp  ố đối, chỉ còn các  ố không có  ố đối.
+NDB01304	K6	Số nguyên › Nhân, chia số nguyên	Chia hai số nguyên — Thực hiện phép chia hết  ố nguyên, xác định dấu của thương.
+NDB01320	K6	Số nguyên › Tìm x có luỹ thừa	Luỹ thừa chứa x (cơ số hoặc số mũ) — 5^x − 31 = −6; (x + 1)^3 + 9 = −116; 584 − (x − 1)^3 = −416; 25 − (3 + x)^2 = 3.(−2)^3.
+NDB01327	K6	Số nguyên › Tìm n để an+b chia hết cho cn+d (trong tập hợp Số nguyên)	Hệ số tử bằng / chia hết hệ số mẫu — x + 6 ⋮ x; 3x − 5 ⋮ x − 1; 4n + 3 ⋮ 2n + 1.
+NDB01305	K6	Số nguyên › Nhân, chia số nguyên	So sánh tích với một số (không tính kết quả) — So  ánh a.b với 0 hoặc với một  ố khác bằng dấu của tích.
+NDB01328	K6	Số nguyên › Tìm n để an+b chia hết cho cn+d (trong tập hợp Số nguyên)	Phân số có giá trị nguyên — (4n + 5)/(2n − 1) nhận giá trị nguyên.
+NDB01329	K6	Số nguyên › Tìm n để an+b chia hết cho cn+d (trong tập hợp Số nguyên)	Bậc hai chia hết cho bậc nhất — n² + 2n − 5 ⋮ n + 2; 2x² + 5 ⋮ x (nâng cao).
+NDB01306	K6	Số nguyên › Tính thuận tiện với số nguyên	Tính hợp lí tổng, hiệu (giao hoán, kết hợp, số đối) — Tổng / hiệu nhiều  ố hạng có cặp  ố đối hoặc  ố tròn trăm: nhóm lại để tính nhanh.
+NDB01321	K6	Số nguyên › Tìm x khi tích bằng 0	Hai thừa số bậc nhất — (x + 2).(x − 3) = 0; (x − 3)(2x − 8) = 0.
+NDB01335	K6	Số nguyên › Giá trị nhỏ nhất, lớn nhất của biểu thức	GTNN chứa bình phương — A = −7 + (x + 1)²; B = (x − 2)² − 17.
+NDB01322	K6	Số nguyên › Tìm x khi tích bằng 0	Có thừa số bậc hai hoặc nhiều thừa số — (x² + 9)(x − 2) = 0; (x² − 9)(10 + 5x) = 0; x(x² − 25)(x³ − 8) = 0.
+NDB01621	K6	Số nguyên › Giá trị nhỏ nhất, lớn nhất của biểu thức	Tìm x dùng GTNN của bình phương
+NDB01307	K6	Số nguyên › Tính thuận tiện với số nguyên	Tính hợp lí: rút thừa số chung — Biểu thức dạng a.b + a.c, a.b − a.c có thừa  ố chung rõ ràng.
+NDB01308	K6	Số nguyên › Tính thuận tiện với số nguyên	Tính hợp lí: ẩn thừa số chung — Phải biến đổi  ố (viết −57.84 + 57.16...) mới thấy thừa  ố chung.
+NDB01309	K6	Số nguyên › Thứ tự thực hiện phép tính trong tập hợp Số nguyên	Biểu thức cơ bản (không luỹ thừa) — Nhân, chia, cộng, trừ  ố nguyên có một cấp ngoặc.
+NDB02800	K6	Số nguyên › Số chính phương	Chứng minh dãy lũy thừa không phải số chính phương
+NDB02801	K6	Số nguyên › Số chính phương	Chứng minh biểu thức không phải số chính phương
+NDB01310	K6	Số nguyên › Thứ tự thực hiện phép tính trong tập hợp Số nguyên	Biểu thức có luỹ thừa và nhiều cấp ngoặc — Có luỹ thừa  ố mũ tự nhiên, (−1)^2024, ngoặc lồng nhau.
+NDB01311	K6	Số nguyên › Biểu thức chứa chữ	Tính giá trị biểu thức khi biết giá trị biến — Cho a = −5, b = 7 … tính A = a − b + c.
+NDB01312	K6	Số nguyên › Biểu thức chứa chữ	Rút gọn biểu thức chứa chữ — Bỏ dấu ngoặc và thu gọn: A = −(24 − x) + 4.
+NDB01619	K6	Số nguyên › Biểu thức chứa chữ	Tính giá trị biểu thức khi biết giá trị của biểu thức chứa biến — Tính giá trị biểu thức khi đã biết giá trị của biểu thức khác chứa ẩn
+VD: A = ax-ay+bx-by biết a+b=-7, x-y=-1
+NDB01313	K6	Số nguyên › Toán thực tế với số nguyên	Nhiệt độ, độ cao tăng giảm — Nhiệt độ buổi  áng −9°C, buổi chiều tăng 4°C; tàu ngầm ở −200 m nổi lên 45 m; chim bay…
+NDB01314	K6	Số nguyên › Toán thực tế với số nguyên	Thưởng – phạt, lãi – lỗ, nhân với số âm — Một đại lượng thay đổi x mỗi ngày trong 26 ngày; lương theo  ản phẩm đạt / không đạt.
+NDB01417	K6	Tính chất đối xứng của hình học phẳng › Hình có trục đối xứng	Nhận biết hình có trục đối xứng — Đề cho một hình hoặc một chữ cái, hỏi hình có trục đối xứng không, có bao nhiêu trục đối xứng, hoặc chọn hình 
+NDB01418	K6	Tính chất đối xứng của hình học phẳng › Hình có tâm đối xứng	Nhận biết hình có tâm đối xứng — Đề cho một hình hoặc một chữ cái, hỏi hình có tâm đối xứng không, tâm đối xứng nằm ở đâu, hoặc chọn hình có tâ
+NDB00789	K7	Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số	Nhận biết Số hữu tỉ — Điền kí hiệu \in, \notin vào chỗ trống các  ố thuộc tập hợp N, Z, Q. Xác định  ố nào là Số hữu tỉ,  ố nào khôn
+NDB00419	K7	Số hữu tỉ › Tính toán với Số hữu tỉ	Cộng trừ Số hữu tỉ — Thực hiện Phép tính Cộng Trừ hai Số hữu tỉ. Không có luỹ thừa, STP vô hạn tuần hoàn, Số thực ở đây.	[anh em: 2]
+NDB00790	K7	Số hữu tỉ › Nhận biết và Biểu diễn Số hữu tỉ trên trục số	Biểu diễn Số hữu tỉ trên trục số — Cho hình vẽ Trục  ố và yêu cầu biểu diễn các  ố Hữu tỉ cho trước trên trục  ố đó, Xác định các điểm biểu diễn 
+NDB00435	K7	Số hữu tỉ › Dãy phân số dạng Hiệu tích	Hiệu - Tích biến đổi Tử: Nhân thêm — Cần nhân thêm Tử  ố với một  ố thích hợp để biến đổi Tử bằng Hiệu hai thừa  ố của Mẫu. Sau khi biến đổi thì Tử	[anh em: 4,4,4,5]
+NDB00797	K7	Số hữu tỉ › Dãy phân số dạng Hiệu tích	Hiệu tích: Tích nhiều chữ số — Mẫu  ố là tích các  ố liên tiếp (thường từ 3 thừa  ố trở lên).	[anh em: 4,4,4,5]
+NDB01341	K7	Số hữu tỉ › Dãy phân số dạng Hiệu tích	Dãy phân số bình phương liên tiếp — Mẫu là các bình phương liên tiếp : 2^2, 3^2, 4^2, 5^2,.... hoặc ẩn đi thay vì 2^2 thì là 4, thay vì 3^2 thì là	[anh em: 4,4,4,5]
+NDB01343	K7	Số hữu tỉ › Dãy phân số dạng Hiệu tích	Dãy lập phương — Mẫu là lập phương	[anh em: 4,4,4,5]
+NDB00908	K7	Số hữu tỉ › Dãy phân số Mẫu liên tiếp	Dãy PS Mẫu liên tiếp: Nhóm bằng nhau — Mẫu là các  ố liên tiếp, thường yêu cầu chứng minh a<A<b với A là biểu thức mà đề bài cho. Phương pháp làm là 	[anh em: 5]
+NDB01349	K7	Số hữu tỉ › Biểu đồ/Thống kê	Biểu đồ/Thống kê — Các bài toán thực tế về Biểu đồ tròn, cột đường
+NDB00910	K7	Số hữu tỉ › Dãy phân số Mẫu liên tiếp	Dãy PS mẫu liên tiếp: Gom nhóm Lẻ - Chẵn — Mẫu là các  ố liên tiếp, thường cho 2 biểu thức A và B và yêu cầu chứng minh A = B Hoặc tính (A-B)^n. Biểu thứ	[anh em: 5]
+NDB00439	K7	Số hữu tỉ › Dãy phân số Luỹ thừa	Dãy Luỹ thừa: Tử không đổi — Các phân  ố có Tử  ố bằng nhau	[anh em: 4]
+NDB01234	K7	Số hữu tỉ › Luỹ thừa Số hữu tỉ	Tính chất Luỹ thừa Số hữu tỉ — Gồm các bài toán về Định nghĩa luỹ thừa của Số hữu tỉ, tính chất luỹ thừa SỐ hữu tỉ,....... Thường ở dạng trắc
+NDB00441	K7	Số hữu tỉ › Dãy phân số Luỹ thừa	Dãy Luỹ thừa: Tử thay đổi (cách n đơn vị) — Các phân  ố có Tử  ố cách đều nhau n đơn vị (n là  ố bất kì, thường  ẽ là 2)	[anh em: 4]
+NDB00932	K7	Số hữu tỉ › Dãy Tích phân số	Dãy Tích phân số — Biểu thức gồm Tích các phân  ố nhân với nhau hoặc Tích các ngoặc.
+NDB00883	K7	Số hữu tỉ › Tính toán Luỹ thừa Số hữu tỉ	Tính toán Luỹ thừa Số hữu tỉ — Tính toán biểu thức Luỹ thừa của các  ố Hữu tỉ hoặc Tích/thương của Luỹ thừa với 1  ố hoặc các biểu thức ứng d
+NDB01346	K7	Số hữu tỉ › So sánh biểu thức lũy thừa	So sánh Phân thức có bậc tử và mẫu giống nhau — phân thức có bậc lũy tằ	[anh em: 2]
+NDB01347	K7	Số hữu tỉ › So sánh biểu thức lũy thừa	So sánh Phân thức có bậc tử và mẫu khác nhau — So  ánh hai biểu thức phân thức luỹ thừa mà  ố mũ của tử và mẫu khác nhau, ví dụ (10^2024+1)/(10^2025+1) và (1	[anh em: 2]
+NDB01339	K7	Số hữu tỉ › Các bài toán khác	SHT: Các bài toán Nâng cao khác — Gom Các bài toán Nâng cao CỦA Số hữu tỉ (Thường là các câu cuối đề) khác không xếp được dạng vào đây.	[anh em: 4,5,3]
+NDB00799	K7	Số hữu tỉ › Tính toán biểu thức tổng hợp	Tính toán Tổng hợp SHT: Biểu thức đơn giản — Biểu thức chứa tổng hợp các phép tính Cộng, trừ, nhân, chia, nâng lên Luỹ thừa, chứa ngoặc tròn hoặc vuông của
+NDB00800	K7	Số hữu tỉ › Tính toán biểu thức tổng hợp	Tính toán Tổng hợp SHT: Biểu thức phức tạp — Biểu thức chứa tổng hợp các phép tính Cộng, trừ, nhân, chia, nâng lên Luỹ thừa, chứa nhiều loại ngoặc (Tròn + 
+NDB01337	K7	Số thực › Tìm x Căn bậc hai	Tìm x Số thực: chứa Căn bậc hai của Số — Biểu thức tìm x: x không ở trong Căn nhưng có chứa căn bậc hai  ố học của một  ố	[anh em: 3]
+NDB01340	K7	Số thực › Các bài toán khác	Số thực: Các bài toán Nâng cao khác — Các bài toán Nâng cao có chứa Số thập phân vô hạn tuần hoàn, Căn bậc hai, Giá trị tuyệt đối không xếp được vào
+NDB01350	K7	Số thực › Các bài toán khác	Dãy Hiệu tích chứa Căn — Dãy hiệu tích chứa căn của các  ố. Cần tính Căn bậc hai trước
+NDB01370	K8	Đơn thức - đa thức › Lập biểu thức Đại số	Lập biểu thức Đại số — Các bài toán viết biểu thức biểu thị chiều dài, chiều rộng, chu vi, diện tích theo các ẩn x, y cho trước. Tính
+NDB01419	K8	Đơn thức - đa thức › Các bài toán nâng cao về Đa thức	Tìm số dư trong phép chia Đa thức — Form 1: Cho fx chia x+a dư b chia x+b dư c hỏi chia (x+a)(x+b) dư bao nhiêu
+Form 2: Cho fx chia x+a dư b chia 
+NDB00681	K8	Đơn thức - đa thức › Rút gọn biểu thức	Rút gọn biểu thức nhiều biến — Rút gọn biểu thức nhiều biến x,y,z.... kết hợp cộng trừ nhân chia đơn thức - đa thức nhiều biến.
+Các bài trong	[anh em: 3]
+NDB00682	K8	Đơn thức - đa thức › Tính giá trị của biểu thức áp dụng rút gọn biểu thức	Tính giá trị biểu thức một biến — Cho biểu thức một biến (có thể được thu gọn rồi hoặc chưa) yêu cầu tính giá trị biểu thức với giá trị x đã cho	[anh em: 3]
+NDB00975	K8	Hằng đẳng thức › Tìm x ứng dụng hằng đẳng thức một biến	Tìm x ứng dụng HĐT một biến dạng không phải bậc nhất — Cho biểu thức một biến yêu cầu tìm x, bao gồm việc  ử dụng các hằng đẳng thức kết hợp với nhân chia đơn thứuc 	[anh em: 3]
+NDB01356	K8	Hằng đẳng thức › GTLN - GTNN của biểu thức một biến	Bài toán thực tế ứng dụng GTLN - GTNN biểu thức bậc hai — Bài toán thực tế cho Chu vi của Khu vườn, chuồng trại tìm diện tích lớn nhất hoặc Tìm giá bán,  ố phòng tăng đ	[anh em: 3,3]
+NDB01427	K8	Phân tích đa thức thành nhân tử › Các bài toán nâng cao về PTĐTTNT	Tìm x, y thoả mãn điều kiện tích là 1 số	[anh em: 5]
+NDB01599	K8T	Bất đẳng thức và cực trị › Các bài toán ứng dụng cơ bản của BĐT AM-GM	AM - GM 1 biến dạng tổng
+NDB01600	K8T	Bất đẳng thức và cực trị › Các bài toán ứng dụng cơ bản của BĐT AM-GM	AM - GM 1 biến dạng tích
+NDB01601	K8T	Bất đẳng thức và cực trị › Các bài toán ứng dụng cơ bản của BĐT AM-GM	AM - GM nhiều biến dạng tổng
+NDB01602	K8T	Bất đẳng thức và cực trị › Các bài toán ứng dụng cơ bản của BĐT AM-GM	AM - GM nhiều biến dạng tích
+NDB01603	K8T	Bất đẳng thức và cực trị › Kĩ thuật điểm rơi của BDT Cauchy	Điểm rơi của biểu thức dạng 1 biến
+NDB01604	K8T	Bất đẳng thức và cực trị › Kĩ thuật điểm rơi của BDT Cauchy	Điểm rơi của biểu thức nhiều biến đối xứng
+NDB01605	K8T	Bất đẳng thức và cực trị › Kĩ thuật điểm rơi của BDT Cauchy	Điểm rơi của biểu thức nhiều biến bất đối xứng
+NDB01606	K8T	Bất đẳng thức và cực trị › Kĩ thuật điểm rơi của BDT Cauchy	Thêm biểu thức sử dụng điểm rơi
+NDB01608	K8T	Bất đẳng thức và cực trị › Kĩ thuật thêm - bớt - ghép biểu thức trong AM - GM	Kĩ thuật Ghép các biểu thức trong AM - GM
+NDB01609	K8T	Bất đẳng thức và cực trị › Kĩ thuật thêm - bớt - ghép biểu thức trong AM - GM	Kĩ thuật Tách các biểu thức trong AM - GM
+NDB01610	K8T	Bất đẳng thức và cực trị › Kĩ thuật thêm - bớt - ghép biểu thức trong AM - GM	Kĩ thuật Thêm - bớt biểu thức trong AM - GM
+NDB02755	K8T	Bất đẳng thức và cực trị › Kĩ thuật AM - GM Ngược dấu	Kĩ thuật AM - GM Ngược dấu
+NDB00701	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Phương trình bậc nhất hai ẩn	Tìm nghiệm của phương trình bậc nhất hai ẩn — Dạng bài yêu cầu tìm một hoặc một  ố cặp giá trị \((x;y)\) thỏa mãn phương trình bậc nhất hai ẩn bằng cách chọ
+NDB00702	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Phương trình bậc nhất hai ẩn	Biểu diễn nghiệm của phương trình bậc nhất hai ẩn — Dạng bài yêu cầu biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn bằng cách đưa phương trình về dạng y=ax
+NDB00707	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Hệ phương trình bậc nhất hai ẩn chứa tham số	Tìm m để hệ phương trình vô nghiệm — Dạng bài yêu cầu xác định giá trị của tham  ố \(m\) để hệ phương trình bậc nhất hai ẩn không có nghiệm. Thực h
+NDB00708	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Hệ phương trình bậc nhất hai ẩn chứa tham số	Tìm m để hệ phương trình vô số nghiệm — Dạng bài yêu cầu xác định giá trị của tham  ố m để hệ phương trình có vô  ố nghiệm. Các phương trình trong hệ 
+NDB00709	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Hệ phương trình bậc nhất hai ẩn chứa tham số	Tìm m để hệ phương trình có nghiệm duy nhất — Dạng bài yêu cầu xác định giá trị của tham  ố m để hệ phương trình có đúng một nghiệm. Thường  ử dụng điều kiệ
+NDB01338	K9	Phương trình và hệ phương trình bậc nhất hai ẩn › Bài toán Hai đối đượng	Bài toán cổ điển — Đề cho hai đại lượng chưa biết là  ố lượng cụ thể ( ố  ản phẩm mỗi máy làm trong một giờ,  ố học  inh mỗi lớp,	[anh em: 3,3,3,3]
+NDB00734	K9	Phương trình và bất phương trình bậc nhất một ẩn › Bài toán về Lãi suất	Tìm lãi suất khi biết số tiền thu được sau một thời gian — Dạng bài gửi tiết kiệm, gửi ngân hàng thu được tiền lãi thu về hoặc tổng  ố tiền nhận được,  au đó yêu cầu tìm
+NDB00735	K9	Phương trình và bất phương trình bậc nhất một ẩn › Bài toán về Lãi suất	Tìm lãi suất khi biết số tiền phải trả sau một thời gian — Dạng bài đi vay ngân hàng và cho biết  ố tiền phải trả  au một thời gian, tìm lãi  uất vay.
+NDB01635	K9	Phương trình và bất phương trình bậc nhất một ẩn › Bài toán về Lãi suất	Bài toán gửi tiết kiệm – Tìm tiền gốc, lãi suất hoặc tiền lãi — Dạng bài về gửi tiền vào ngân hàng (gửi tiết kiệm) theo lãi  uất mỗi tháng hoặc mỗi năm. Biết một  ố đại lượng
+NDB00741	K9	Căn bậc hai - Căn thức bậc hai › Tính giá trị của biểu thức chứa căn	Tính giá trị của biểu thức chứa căn khi giá trị của x cho dưới dạng căn thức — Dạng bài cho giá trị của biến x dưới dạng căn thức, yêu cầu thay thế và biến đổi biểu thức để tính giá trị.	[anh em: 2,2]
+NDB00485	K9	Căn bậc hai - Căn thức bậc hai › Rút gọn biểu thức chứa căn - Ứng dụng hẳng đẳng thức chứa căn	Rút gọn biểu thức sử dụng việc bình phương cả biểu thức — Dạng bài yêu cầu xử lý biểu thức chứa căn bằng cách bình phương hai vế.	[anh em: 3,3]
+NDB00503	K9	Căn bậc hai - Căn thức bậc hai › Tìm x để P thoả mãn Bất đẳng thức	Tìm x liên quan đến giá trị tuyệt đối của P — Dạng bài yêu cầu tìm giá trị của x khi đề bài xuất hiện giá trị tuyệt đối của biểu thức P, khác cụm bài giá tr	[anh em: 3,3,3]
+NDB01204	K9	Các mô hình toán thực tế nâng cao › Bài toán tối ưu Doanh thu - Lợi nhuận sử dụng điều kiện biến nguyên	Tăng số lượng, giảm lợi nhuận mỗi đơn vị – Tìm số lượng bổ sung cho tổng lợi nhuận lớn nhất (biến nguyên) — Đề cho  ố lượng ban đầu n (xe, phòng,  uất bán…), lợi nhuận mỗi đơn vị p và quy luật “cứ thêm 1 đơn vị thì lợi
+NDB01630	K9	Các mô hình toán thực tế nâng cao › Hình vuông nội tiếp hình vuông	Hình vuông nội tiếp hình vuông – Tìm vị trí đỉnh để diện tích nhỏ nhất — Dạng bài cho một hình vuông lớn cạnh a (mảnh đất, tấm bìa…), dựng một hình vuông hoặc tứ giác có bốn đỉnh nằm 
+NDB01387	K9	Các dạng bài toán nâng cao › Bất đẳng thức hai biến đối xứng	Tìm GLTN - GTNN của biểu thức dạng tổng — Dạng bài tìm GTLN hoặc GTNN của tổng x + y khi biết trước tích xy hoặc tổng bình phương x² + y² không đổi.
+NDB01388	K9	Các dạng bài toán nâng cao › Bất đẳng thức hai biến đối xứng	Tìm GLTN - GTNN của biểu thức dạng tích — Dạng bài tìm GTLN của tích xy khi biết trước tổng x + y hoặc tổng bình phương x² + y² không đổi.
+NDB01389	K9	Các dạng bài toán nâng cao › Bất đẳng thức hai biến đối xứng	Tìm GLTN - GTNN của biểu thức dạng tổng bình phương — Dạng bài tìm GTNN của x² + y² khi biết trước tổng x + y hoặc tích xy không đổi.
+NDB01390	K9	Các dạng bài toán nâng cao › Ứng dụng phương pháp dồn biến	Tìm GTLN - GTNN của biểu thức hai biến bằng dồn biến dạng tổng — Dạng bài cho điều kiện bậc nhất ax + by = c và tìm GTLN – GTNN của một biểu thức hai biến không đối xứng. Rút 
+NDB01391	K9	Các dạng bài toán nâng cao › Ứng dụng phương pháp dồn biến	Tìm GTLN - GTNN của biểu thức hai biến bằng dồn biến dạng tích — Dạng bài cho x, y > 0 và điều kiện tích xy = k, tìm GTNN của một biểu thức hai biến không đối xứng. Rút y = k/
+NDB01392	K9	Các dạng bài toán nâng cao › Các bài toán về biểu thức bậc nhất hai biến	Ứng dụng phương trình nghiệm nguyên dạng bậc nhất hai biến — Dạng bài cho x, y là  ố tự nhiên hoặc  ố nguyên dương thỏa mãn phương trình ax + by = c, tìm GTLN – GTNN của b
+NDB01393	K9	Các dạng bài toán nâng cao › Các bài toán về biểu thức bậc nhất hai biến	Ứng dụng biểu diễn hệ thức bậc nhất hai biến qua các hệ thức bậc nhất khác — Dạng bài cho hai bất đẳng thức bậc nhất hai biến (cùng chiều “≤” hoặc cùng chiều “≥”), tìm GTLN hoặc GTNN của 
+NDB01394	K9	Các dạng bài toán nâng cao › Các bài toán về biểu thức bậc nhất hai biến	Tìm GTLN - GTNN của biểu thức hai biến có nhiều điều kiện của biến — Dạng bài cho từ ba điều kiện trở lên, gồm điều kiện về miền của từng biến (a ≤ x ≤ b, y ≥ c, …) và điều kiện r
+NDB01629	K9	Các dạng bài toán nâng cao › Tính chất của bất đẳng thức	So sánh hai biểu thức bằng tính chất của bất đẳng thức — Dạng bài cho trước một bất đẳng thức giữa hai  ố (ví dụ a > b, a ≤ b), yêu cầu  o  ánh hai biểu thức, hoặc chứ	[anh em: 3,3]
+NDB01397	K9	Các dạng bài toán nâng cao › Tính chất của bất đẳng thức	Chứng minh bất đẳng thức dạng căn thức — Dạng bài chứng minh bất đẳng thức có chứa căn bậc hai, kèm điều kiện các biểu thức dưới căn không âm. Khi hai 	[anh em: 3,3]
+NDB01398	K9	Các dạng bài toán nâng cao › Tính chất của bất đẳng thức	Chứng minh bất đẳng thức có chứa dấu giá trị tuyệt đối — Dạng bài chứng minh bất đẳng thức có chứa dấu giá trị tuyệt đối. Dùng các tính chất |a| ≥ 0, |a|² = a², ab ≤ |	[anh em: 3,3]
