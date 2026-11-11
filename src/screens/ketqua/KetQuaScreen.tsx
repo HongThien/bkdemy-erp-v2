@@ -1106,6 +1106,7 @@ function BXHDiemMTView({ ks = false }: { ks?: boolean }) {
                   <th className="px-3 py-2">Mã HS</th>
                   <th className="px-3 py-2">Lớp</th>
                   <th className="w-24 px-3 py-2 text-center">{ks ? 'Điểm KS TB' : 'Điểm MT TB'}</th>
+                  <th className="w-24 px-3 py-2 text-center" title="Cơ bản + Nâng cao, không chặn ở 10 (điểm chính từ 10 trở lên ghi 9.75). Chỉ để so — hạng vẫn theo điểm chính; cùng hạng thì điểm thật cao đứng trên.">Điểm thật</th>
                 </tr>
               </thead>
               <tbody>
@@ -1138,6 +1139,9 @@ function BXHRow({ r }: { r: BXHDiemMTRow }) {
       <td className="px-3 py-1.5 text-slate-600">{r.ten_lop ?? '—'}</td>
       <td className="px-3 py-1.5 text-center font-mono font-semibold text-slate-700">
         {r.tb == null ? <span className="text-slate-300">—</span> : r.tb.toFixed(2)}
+      </td>
+      <td className={`px-3 py-1.5 text-center font-mono ${r.tb_that != null && r.tb != null && r.tb_that > r.tb ? 'font-bold text-amber-700' : 'text-slate-500'}`}>
+        {r.tb_that == null ? <span className="text-slate-300">—</span> : r.tb_that.toFixed(2)}
       </td>
     </tr>
   )

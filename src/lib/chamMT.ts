@@ -9,6 +9,7 @@ export type MTHSCham = {
   tinh_co_ban: number; tinh_nang_cao: number; khung_co_ban: number | null; khung_nang_cao: number | null
   nguon: 'tay' | 'cau' | null; diem_co_ban: number | null; diem_nang_cao: number | null; diem: number | null; full_diem: boolean
   tl_co_ban: number | null; tl_nang_cao: number | null; full_thi_lai: boolean; diem_thi_lai: number | null
+  diem_that?: number | null // 11/11: Cơ bản + Nâng cao KHÔNG chặn trần (điểm chính ≥ 10 ⇒ 9.75) — để so ai nhất khối
   lop_id: string | null; ten_lop: string | null // lớp hiện tại của em trong môn (kỳ khảo sát chung cần để lọc)
 }
 const so = (v: unknown): number | null => (v == null ? null : Number(v))

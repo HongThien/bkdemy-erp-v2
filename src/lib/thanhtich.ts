@@ -238,6 +238,7 @@ export type BXHDiemMTRow = {
   hoc_sinh_id: string; ho_ten: string; ma_hs: string | null
   lop_id: string | null; ten_lop: string | null
   tb: number | null; rank_now: number; rank_total: number
+  tb_that: number | null // 11/11: TB điểm THẬT (không chặn 9.75) — chỉ để so; hạng vẫn theo tb
 }
 // 23/10: BXH KHẢO SÁT GIỮA THÁNG — cùng luật, kỳ 'khao_sat_thang', cửa sổ = THÁNG DƯƠNG LỊCH của buổi (fn_bxh_diem_ks_khoi).
 export async function getBXHDiemKSKhoi(mon: string, khoi: string, ym: string): Promise<BXHDiemMTRow[]> {
@@ -254,6 +255,7 @@ async function bxhKhoi(fn: 'fn_bxh_diem_mt_khoi' | 'fn_bxh_diem_ks_khoi', mon: s
     lop_id: r.lop_id, ten_lop: r.ten_lop,
     tb: r.tb == null ? null : Number(r.tb),
     rank_now: Number(r.rank_now), rank_total: Number(r.rank_total),
+    tb_that: r.tb_that == null ? null : Number(r.tb_that),
   }))
 }
 

@@ -363,6 +363,8 @@ function DiemTong({ hs, dong, thieuDiem, onDungCau }: { hs: MTHSCham; dong: bool
           {chuaCham + thieuDiem > 0
             ? <span className="rounded bg-rose-50 px-2 py-0.5 font-medium text-rose-700">Chưa đủ: {chuaCham > 0 ? `${chuaCham} câu chưa chấm` : ''}{chuaCham > 0 && thieuDiem > 0 ? ' · ' : ''}{thieuDiem > 0 ? `${thieuDiem} câu chưa có điểm` : ''}</span>
             : <span className="rounded bg-violet-100 px-2 py-0.5 text-violet-800">Điểm MT <b>{fmt(hs.diem)}</b></span>}
+          {/* 11/11 (Thùy): điểm vượt 10 ⇒ điểm MT ghi 9.75 (luật cũ); ô này ghi ĐIỂM THẬT (Cơ bản + Nâng cao) để so ai nhất khối */}
+          {hs.diem_that != null && <span className={`rounded px-2 py-0.5 ${hs.diem_that !== hs.diem ? 'bg-amber-100 font-medium text-amber-800' : 'bg-slate-100 text-slate-600'}`} title="Điểm thật = Cơ bản + Nâng cao, không chặn ở 10 (điểm MT vẫn theo luật cũ: từ 10 trở lên ghi 9.75)">Điểm thật <b>{fmt(hs.diem_that)}</b></span>}
         </>
       )}
     </div>

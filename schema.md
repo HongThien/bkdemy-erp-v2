@@ -2215,6 +2215,11 @@
 | diem_thi_lai_nang_cao | numeric | Y |  |  |  |
 | full_thi_lai | boolean |  | false |  |  |
 | nguon | text |  | 'tay'::text |  | `tay` · `cau` |
+| diem_that | numeric | Y | 
+CASE
+    WHEN ((diem_co_ban IS NULL) AND (diem_nang_cao IS NULL)) THEN NULL::numeric
+    ELSE round((COALESCE(diem_co_ban, (0)::numeric) + COALESCE(diem_nang_cao, (0)::numeric)), 2)
+END |  |  |
 
 ## dtv_cau_log
 
@@ -4396,7 +4401,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6061,7 +6066,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -10827,8 +10832,8 @@ WITH luot AS (
 - `fn_buoi_recompute_hoan_tat(p_buoi_id uuid)` → void
 - `fn_bxh(p_loai text, p_mon text, p_pham_vi text DEFAULT 'khoi'::text, p_ky text DEFAULT NULL::text)` → jsonb
 - `fn_bxh_danh_muc()` → jsonb
-- `fn_bxh_diem_ks_khoi(p_mon text, p_khoi text, p_ym text)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, lop_id uuid, ten_lop text, tb numeric, rank_now integer, rank_total integer)
-- `fn_bxh_diem_mt_khoi(p_mon text, p_khoi text, p_ym text)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, lop_id uuid, ten_lop text, tb numeric, rank_now integer, rank_total integer)
+- `fn_bxh_diem_ks_khoi(p_mon text, p_khoi text, p_ym text)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, lop_id uuid, ten_lop text, tb numeric, rank_now integer, rank_total integer, tb_that numeric)
+- `fn_bxh_diem_mt_khoi(p_mon text, p_khoi text, p_ym text)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, lop_id uuid, ten_lop text, tb numeric, rank_now integer, rank_total integer, tb_that numeric)
 - `fn_ca_bo_tro_go(p_bhh uuid, p_ly_do text DEFAULT NULL::text)` → void
 - `fn_ca_bo_tro_huy(p_ca uuid, p_ly_do text)` → integer
 - `fn_ca_bo_tro_ngay(p_ngay date)` → jsonb
@@ -11258,7 +11263,7 @@ WITH luot AS (
 - `fn_mt_cham_ca_hs(p_buoi uuid, p_hs uuid, p_result text)` → integer
 - `fn_mt_cham_ds_buoi(p_lop uuid)` → TABLE(buoi_id uuid, ngay date, ten text, loai_de text, dong boolean, so_hs integer, so_hs_xong integer)
 - `fn_mt_cham_hs(p_buoi uuid)` → TABLE(hoc_sinh_id uuid, ho_ten text, diem_danh text, so_cau integer, so_cham integer, so_thieu_diem integer, tinh_co_ban numeric, tinh_nang_cao numeric, khung_co_ban numeric, khung_nang_cao numeric, nguon text, diem_co_ban numeric, diem_nang_cao numeric, diem numeric, full_diem boolean, tl_co_ban numeric, tl_nang_cao numeric, full_thi_lai boolean, diem_thi_lai numeric)
-- `fn_mt_cham_hs_v2(p_buoi uuid)` → TABLE(hoc_sinh_id uuid, ho_ten text, diem_danh text, so_cau integer, so_cham integer, so_thieu_diem integer, tinh_co_ban numeric, tinh_nang_cao numeric, khung_co_ban numeric, khung_nang_cao numeric, nguon text, diem_co_ban numeric, diem_nang_cao numeric, diem numeric, full_diem boolean, tl_co_ban numeric, tl_nang_cao numeric, full_thi_lai boolean, diem_thi_lai numeric, lop_id uuid, ten_lop text)
+- `fn_mt_cham_hs_v2(p_buoi uuid)` → TABLE(hoc_sinh_id uuid, ho_ten text, diem_danh text, so_cau integer, so_cham integer, so_thieu_diem integer, tinh_co_ban numeric, tinh_nang_cao numeric, khung_co_ban numeric, khung_nang_cao numeric, nguon text, diem_co_ban numeric, diem_nang_cao numeric, diem numeric, full_diem boolean, tl_co_ban numeric, tl_nang_cao numeric, full_thi_lai boolean, diem_thi_lai numeric, lop_id uuid, ten_lop text, diem_that numeric)
 - `fn_mt_ds_de_da_thi(p_mon text)` → TABLE(de_id uuid, ten text, khoi text, loai_de text, ngay_moi date, so_lop integer)
 - `fn_mt_dung_diem_cau(p_buoi uuid, p_hs uuid)` → void
 - `fn_mt_hang_thang(p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, khoi text, tb numeric, hang integer, so_em integer, hang_quy integer, diem_bang integer, ngay date)

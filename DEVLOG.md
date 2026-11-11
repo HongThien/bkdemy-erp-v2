@@ -79767,3 +79767,9 @@ Thùy nêu 4 việc, làm được 3:
 - mig 202611111627 ĐÃ ÁP: _sau_gio_dang · fn_btnhe_fill_dang · _btnhe_dang_buoi · fn_btnhe_in_ly_thuyet · fn_btnhe_in_test · fn_btnhe_cho + vá fn_btnhe_tao · fn_btyeu_in_sinh · fn_btyeu_giay_nop (nộp ca sau giờ = xong) · fn_btyeu_viec_cua_toi (TA cùng làm) · fn_btk_duyet (L1 ⇒ hàng chờ) · fn_btnhe_lop_hs. Thử ROLLBACK trọn vòng trên em K8 thật: đúng, lần đo vào mastery (ET).
 - Màn: SauGioCa.tsx (3 nút in riêng + nhập test) thay bước 2–4 CaDetail khi nhe · TrangInLyThuyet (LyThuyetBlockView) · BoTroNheScreen đổi "Sau giờ · L1" + khung Chờ khởi tạo (form tạo ca chọn sẵn lớp + em) · app TA thấy ca sau giờ. Kiểm ERP local: hàng chờ 1 em 7A1, Khởi tạo ca chọn sẵn đúng em (không bấm tạo).
 - Bài học: trước khi dựng luồng mới phải dò tính năng sẵn có cùng ý (Nhẹ = sau giờ đã tồn tại) — suýt dựng máy thứ hai.
+
+## 11/11 — Chấm MT: ô ĐIỂM THẬT (không chặn 9.75) để so ai nhất khối (Thùy)
+
+- Thùy: "có trường hợp điểm vượt quá 10 và tính 9.75, t vẫn muốn có thêm 1 ô ghi điểm thật kiểu 10.25 để so sánh xem ai nhất khối". Luật cũ giữ nguyên (`fn_diem_thi_tinh`: CB+NC ≥ 10 ⇒ 9.75, tích Full ⇒ 10) — Level/xu/hạng vẫn theo điểm đó. 20/1.236 dòng diem_thi có CB+NC > 10.
+- Mig `202611111647_diem_thi_diem_that` ĐÃ ÁP (`--only`): `diem_thi.diem_that` = cột sinh CB+NC không chặn trần (không có CB/NC ⇒ trống) · `fn_mt_cham_hs_v2` + `fn_bxh_diem_mt_khoi` + `fn_bxh_diem_ks_khoi` thêm cột cuối (`diem_that` / `tb_that` = TB coalesce(diem_that, diem)); HẠNG giữ theo điểm chính, cùng hạng thì điểm thật cao xếp trên. Giữ quyền gọi như cũ (mt_khoi vốn mở PUBLIC). Sinh từ định nghĩa live + thay đúng đoạn.
+- Kiểm ROLLBACK: K6 T10 6 em cùng #1 9.75, điểm thật Lê Trí Sơn 10.25 · Bùi Kim Chi 10.00; hạng + tb 40/40 không đổi; người gọi (fn_mt_cham_hs, fn_ks_ds_ky) vẫn chạy. App dev: BXH MT K6 T10 có cột Điểm thật; màn Chấm 6S2 Lê Trí Sơn "Điểm MT 9.75 · Điểm thật 10.25".
