@@ -37,7 +37,7 @@ const LOAI: Record<LoaiNen, { ten: string; nhan: string; nhan2: string; file: st
 }
 
 export type VinhDanhData = {
-  hoTen: string; maHs: string | null; anhUrl: string | null; mon: string; ym: string
+  hoTen: string; maHs: string | null; anhUrl: string | null; anhChanDung?: string | null; mon: string; ym: string
   lop: string | null; khoi: string | null; loaiGiai: string | null; kyThi: string | null
   diemTest: number | null; hangLop: number | null; tongLop: number | null; hangKhoi: number | null; tongKhoi: number | null
   dangDat: number; dangDo: number; masteryPct: number | null
@@ -47,6 +47,32 @@ export async function getVinhDanhData(hsId: string, mon: string, ym: string): Pr
   const { data, error } = await supabase.rpc('fn_vinh_danh_hs', { p_hs: hsId, p_mon: mon, p_ym: ym })
   if (error) throw error
   return data as VinhDanhData
+}
+
+// ẢNH CHÂN DUNG (bảng hoc_sinh_anh_chan_dung — KHÔNG đụng hoc_sinh.anh_url là avatar app của em). Thu nhỏ ở máy
+// (cạnh dài ≤1600, JPEG) rồi đưa lên bucket public 'avatars' thư mục chan-dung/. Ảnh cũ để nguyên trong bucket (Luật xoá).
+export async function uploadAnhChanDung(hsId: string, file: File): Promise<string> {
+  if (!file.type.startsWith('image/')) throw new Error('Chọn một file ảnh (JPG, PNG, WebP).')
+  const bmp = await createImageBitmap(file)
+  const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height))
+  const cv = document.createElement('canvas')
+  cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k)
+  cv.getContext('2d')!.drawImage(bmp, 0, 0, cv.width, cv.height)
+  const blob = await new Promise<Blob>((ok, no) => cv.toBlob((b) => (b ? ok(b) : no(new Error('Không xử lý được ảnh.'))), 'image/jpeg', 0.9))
+  const path = `chan-dung/${crypto.randomUUID()}.jpg`
+  const { error } = await supabase.storage.from('avatars').upload(path, blob, { contentType: 'image/jpeg', upsert: false })
+  if (error) throw error
+  const url = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl
+  const { error: e2 } = await supabase.from('hoc_sinh_anh_chan_dung')
+    .upsert({ hoc_sinh_id: hsId, url, cap_nhat_at: new Date().toISOString() }, { onConflict: 'hoc_sinh_id' })
+  if (e2) throw e2
+  return url
+}
+export async function getAnhChanDung(hsIds: string[]): Promise<Record<string, string>> {
+  if (!hsIds.length) return {}
+  const { data, error } = await supabase.from('hoc_sinh_anh_chan_dung').select('hoc_sinh_id, url').in('hoc_sinh_id', hsIds).limit(1000)
+  if (error) throw error
+  return Object.fromEntries(((data ?? []) as { hoc_sinh_id: string; url: string }[]).map((r) => [r.hoc_sinh_id, r.url]))
 }
 
 export function nenUrl(pc: PhongCach, loai: LoaiNen) {
@@ -147,15 +173,17 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
   // ① ảnh HS sau lỗ (cover; lệch lên 35% để giữ mặt). Không có ảnh ⇒ hình người mờ.
   const { lo } = nen
   const pad = 6
-  if (d.anhUrl) {
+  const anh = d.anhChanDung || d.anhUrl // ưu tiên ảnh chân dung đã tải lên; không có mới dùng avatar app
+  let coAnh = !!anh
+  if (anh) {
     try {
-      const im = await taiAnh(d.anhUrl, true)
+      const im = await taiAnh(anh, true)
       const s = Math.max((lo.w + pad * 2) / im.width, (lo.h + pad * 2) / im.height)
       const w = im.width * s, h = im.height * s
       g.drawImage(im, lo.x - pad + (lo.w + pad * 2 - w) / 2, lo.y - pad + (lo.h + pad * 2 - h) * 0.35, w, h)
-    } catch { d = { ...d, anhUrl: null } }
+    } catch { coAnh = false }
   }
-  if (!d.anhUrl) {
+  if (!coAnh) {
     g.fillStyle = '#dfe7f3'; g.fillRect(lo.x - pad, lo.y - pad, lo.w + pad * 2, lo.h + pad * 2)
     g.fillStyle = '#b6c6de'
     g.beginPath(); g.arc(lo.x + lo.w / 2, lo.y + lo.h * 0.4, lo.w * 0.18, 0, Math.PI * 2); g.fill()

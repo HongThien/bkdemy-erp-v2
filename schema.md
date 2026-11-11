@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-517 bảng · 39 view · 0 enum · 339 trigger · 1735 function
+518 bảng · 39 view · 0 enum · 339 trigger · 1735 function
 
 ## _app_secrets
 
@@ -3982,6 +3982,15 @@ END |  |  |
 | bo_me_chuc_vu_toa | text | Y |  |  | `co` · `khong` · `khong_biet` |
 | nghe_bo_me | text | Y |  |  |  |
 
+## hoc_sinh_anh_chan_dung
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| url | text |  |  |  |  |
+| cap_nhat_boi | uuid | Y | current_nhan_su_id() | FK→nhan_su.id |  |
+| cap_nhat_at | timestamp with time zone |  | now() |  |  |
+
 ## hoc_sinh_he_so
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -6026,8 +6035,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |

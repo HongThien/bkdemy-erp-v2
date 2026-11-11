@@ -10,7 +10,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { captureReportSnapshot } from '../report/ReportCard'
 import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
-import { veVinhDanhFB, getVinhDanhData, PHONG_CACH, type PhongCach, type LoaiNen } from './vinhDanhFB'
+import { veVinhDanhFB, getVinhDanhData, uploadAnhChanDung, getAnhChanDung, PHONG_CACH, type PhongCach, type LoaiNen } from './vinhDanhFB'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
@@ -325,10 +325,27 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
     setFbBusy(k)
     try {
       const d = await getVinhDanhData(r.slot.hocSinhId, r.card.mon, ym)
+      if (chanDung[r.slot.hocSinhId]) d.anhChanDung = chanDung[r.slot.hocSinhId] // ảnh vừa tải lên trong phiên
       const cv = await veVinhDanhFB(d, loai, phongCach)
       setFbXem({ url: cv.toDataURL('image/png'), ten: `vinh-danh-${ym}-${r.card.tenLop}-${d.maHs ?? r.slot.hocSinhId}.png` })
     } catch (e) { flash('⚠️ ' + (e as Error).message) }
     finally { setFbBusy(null) }
+  }
+  // Ảnh chân dung HS (bảng riêng, không đụng avatar app) — tải 1 lần cho mọi em đang hiện; tải ảnh mới ⇒ vá đúng em đó.
+  const [chanDung, setChanDung] = useState<Record<string, string>>({})
+  const [taiLen, setTaiLen] = useState<string | null>(null)
+  const hsIdsKey = [...new Set(rows.map((r) => r.slot.hocSinhId))].sort().join(',')
+  useEffect(() => {
+    let huy = false
+    getAnhChanDung(hsIdsKey ? hsIdsKey.split(',') : []).then((m) => { if (!huy) setChanDung(m) }).catch(() => {})
+    return () => { huy = true }
+  }, [hsIdsKey])
+  async function chonAnh(hsId: string, file: File | undefined) {
+    if (!file) return
+    setTaiLen(hsId)
+    try { const url = await uploadAnhChanDung(hsId, file); setChanDung((p) => ({ ...p, [hsId]: url })); flash('Đã lưu ảnh chân dung.') }
+    catch (e) { flash('⚠️ ' + (e as Error).message) }
+    finally { setTaiLen(null) }
   }
   const [toast, setToast] = useState<string | null>(null)
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
@@ -437,11 +454,19 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
                     )}
                   </td>
                   <td className="px-3 py-2 text-center">
+                    <div className="flex items-center justify-center gap-1.5">
+                    <label title={chanDung[slot.hocSinhId] ? 'Đổi ảnh chân dung' : 'Tải ảnh chân dung lên'} className="cursor-pointer">
+                      <input type="file" accept="image/*" className="hidden" disabled={taiLen != null} onChange={(e) => { void chonAnh(slot.hocSinhId, e.target.files?.[0]); e.target.value = '' }} />
+                      {taiLen === slot.hocSinhId ? <span className="inline-block h-10 w-8 text-center leading-10">⏳</span>
+                        : chanDung[slot.hocSinhId] ? <img src={chanDung[slot.hocSinhId]} alt="" className="h-10 w-8 rounded border border-slate-200 object-cover hover:ring-2 hover:ring-amber-300" />
+                        : <span className="inline-flex h-10 w-8 items-center justify-center rounded border border-dashed border-slate-300 text-[15px] text-slate-400 hover:border-amber-400 hover:text-amber-600">📷</span>}
+                    </label>
                     {loaiGiai === 'cham_chi' ? <span className="text-[11px] text-slate-300">chưa có nền</span> : (
                       <button disabled={fbBusy != null} onClick={() => void lamAnhFB(r, loaiGiai as LoaiNen)} className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-700 hover:bg-amber-100 disabled:opacity-50">
                         {fbBusy === k ? '⏳' : '🏅 Làm ảnh'}
                       </button>
                     )}
+                    </div>
                   </td>
                   <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
                 </tr>
