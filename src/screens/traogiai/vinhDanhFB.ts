@@ -11,20 +11,21 @@ export const FB_H = 1350
 export type LoaiNen = 'xuat_sac' | 'tien_bo' | 'tieu_bieu'
 // Bộ nền. 'loai' = mỗi loại giải 1 tranh (vd_<id>_<loại>.jpg) · 'chung' = 1 tranh dùng cho MỌI loại (vd_<id>.jpg) — màu loại giải chỉ ở thẻ kết quả.
 // Vị trí băng tên + đỉnh thẻ kết quả (% chiều cao), đo trên tranh thật.
-type CauHinhNen = { bangY: number; bangX0: number; bangX1: number; bangDay: number; chuBang: string }
+// vong = độ võng ruy băng đo trên tranh (px ở ±30% bề ngang so với tâm; ÂM = hai đầu cao hơn giữa) ⇒ chữ tên uốn theo.
+type CauHinhNen = { bangY: number; bangX0: number; bangX1: number; bangDay: number; chuBang: string; vong: number }
 type BoNen = { id: string; ten: string; nhom: string; kieu: 'loai'; cfg: Record<LoaiNen, CauHinhNen> } | { id: string; ten: string; nhom: string; kieu: 'chung'; cfg: CauHinhNen }
 const T = '#ffffff'
-const c = (bangY: number, bangDay: number, chuBang = T, bangX0 = 18, bangX1 = 82): CauHinhNen => ({ bangY, bangX0, bangX1, bangDay, chuBang })
+const c = (bangY: number, bangDay: number, vong: number, chuBang = T, bangX0 = 18, bangX1 = 82): CauHinhNen => ({ bangY, bangX0, bangX1, bangDay, chuBang, vong })
 export const BO_NEN: BoNen[] = [
-  { id: 'hoanggia', ten: 'Hoàng gia', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.2, 70, T, 17, 83), tien_bo: c(63.2, 70, T, 17, 83), tieu_bieu: c(61.6, 68.5, T, 17, 83) } },
-  { id: 'pastel', ten: 'Pastel 3D', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(60.8, 67.5, T, 19, 81), tien_bo: c(60.6, 67, T, 17, 83), tieu_bieu: c(59.8, 66.5) } },
-  { id: 'phieuluu', ten: 'Phiêu lưu', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.4, 69.5), tien_bo: c(63.4, 69.5), tieu_bieu: c(63.0, 69.5) } },
-  { id: 'tl_co_dien_do_do', ten: 'Cổ điển đỏ', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62, 68.5, T, 17, 83) },
-  { id: 'tl_xanh_rung_co_dien', ten: 'Xanh rừng cổ điển', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(59.6, 66.5, '#6b1d1d', 18, 82) },
-  { id: 'tl_kien_truc_oxford', ten: 'Kiến trúc Oxford', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.2, 68.5, T, 18, 82) },
-  { id: 'tl_do_navy_trang_nha', ten: 'Đỏ navy trang nhã', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.6, 69, T, 17, 83) },
-  { id: 'tl_khuon_vien_xanh_luc', ten: 'Khuôn viên xanh lục', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(61.2, 67.5, T, 18, 82) },
-  { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.8, 67, T, 19, 81) },
+  { id: 'hoanggia', ten: 'Hoàng gia', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.8, 70, -27, T, 17, 83), tien_bo: c(63.2, 70, -16, T, 17, 83), tieu_bieu: c(61.7, 68.5, -15, T, 17, 83) } },
+  { id: 'pastel', ten: 'Pastel 3D', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(60.8, 67.5, -22, T, 19, 81), tien_bo: c(61.0, 67, -37, T, 17, 83), tieu_bieu: c(60.6, 66.5, -34) } },
+  { id: 'phieuluu', ten: 'Phiêu lưu', nhom: 'Theo loại giải', kieu: 'loai', cfg: { xuat_sac: c(63.1, 69.5, -29), tien_bo: c(62.7, 69.5, -20), tieu_bieu: c(62.5, 69.5, -16) } },
+  { id: 'tl_co_dien_do_do', ten: 'Cổ điển đỏ', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.7, 68.5, -23, T, 17, 83) },
+  { id: 'tl_xanh_rung_co_dien', ten: 'Xanh rừng cổ điển', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.2, 66.5, -36, '#6b1d1d', 18, 82) },
+  { id: 'tl_kien_truc_oxford', ten: 'Kiến trúc Oxford', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.3, 68.5, -26, T, 18, 82) },
+  { id: 'tl_do_navy_trang_nha', ten: 'Đỏ navy trang nhã', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(62.4, 69, -18, T, 17, 83) },
+  { id: 'tl_khuon_vien_xanh_luc', ten: 'Khuôn viên xanh lục', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(61.2, 67.5, -25, T, 18, 82) },
+  { id: 'tl_toi_gian_cot_da', ten: 'Tối giản cột đá', nhom: 'Thanh lịch (mọi loại)', kieu: 'chung', cfg: c(60.3, 67, -16, T, 19, 81) },
 ]
 export type PhongCach = string
 export const PHONG_CACH = BO_NEN.map((b) => ({ id: b.id, ten: b.ten, nhom: b.nhom }))
@@ -207,11 +208,22 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
   // ③ tên trên băng
   const by = FB_H * ch.bangY / 100, bw = FB_W * (ch.bangX1 - ch.bangX0) / 100
   g.textAlign = 'center'; g.textBaseline = 'middle'
-  const ten = d.hoTen.toUpperCase()
-  vuaChu(g, ten, (px) => F(800, px), bw * 0.86, 54, 28)
   g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 8; g.shadowOffsetY = 2
   g.fillStyle = ch.chuBang
-  g.fillText(ten, FB_W / 2, by + 2)
+  const ten = d.hoTen.toUpperCase()
+  const px = vuaChu(g, ten, (p) => F(800, p), bw * 0.86, 54, 28)
+  g.font = F(800, px)
+  // Uốn chữ theo ruy băng: y = by + a·u² (u = khoảng cách tới giữa ảnh), mỗi chữ cái xoay theo độ dốc tại chỗ nó đứng.
+  const a = ch.vong / (FB_W * 0.3) ** 2
+  const kyTu = Array.from(ten.normalize('NFC'))
+  const rong = kyTu.map((k) => g.measureText(k).width)
+  let x = FB_W / 2 - rong.reduce((s, w) => s + w, 0) / 2
+  g.textAlign = 'center'
+  kyTu.forEach((k, idx) => {
+    const xm = x + rong[idx] / 2, u = xm - FB_W / 2
+    g.save(); g.translate(xm, by + 2 + a * u * u); g.rotate(Math.atan(2 * a * u)); g.fillText(k, 0, 0); g.restore()
+    x += rong[idx]
+  })
   g.shadowColor = 'transparent'; g.shadowBlur = 0; g.shadowOffsetY = 0
 
   // ④ bảng kết quả: thẻ kính trắng
@@ -237,18 +249,20 @@ export async function veVinhDanhFB(d: VinhDanhData, loai: LoaiNen, pc: PhongCach
   const o = [
     { nhan: 'HẠNG LỚP', so: d.hangLop != null ? `${d.hangLop}` : '—', phu: d.tongLop ? `/${d.tongLop} bạn` : '' },
     { nhan: d.khoi ? `HẠNG KHỐI ${d.khoi}` : 'HẠNG KHỐI', so: d.hangKhoi != null ? `${d.hangKhoi}` : '—', phu: d.tongKhoi ? `/${d.tongKhoi} bạn` : '' },
-    { nhan: 'MASTERY', so: d.masteryPct != null ? `${d.masteryPct}%` : '—', phu: d.dangDo ? `${d.dangDat}/${d.dangDo} dạng · 30 ngày` : 'chưa đo' },
+    { nhan: 'THÀNH THẠO KIẾN THỨC', so: d.masteryPct != null ? `${d.masteryPct}%` : '—', phu: d.dangDo ? `${d.dangDat}/${d.dangDo} dạng · 30 ngày` : 'chưa đo' },
     { nhan: 'TEST THÁNG', so: d.diemTest != null ? String(d.diemTest).replace('.', ',') : '—', phu: 'điểm / 10' },
   ]
   const gap = 14, ox0 = px0 + 24, ow = (pw - 48 - gap * 3) / 4
   const oy = cy + 30, oh = py0 + ph - 54 - oy
+  // 4 nhãn cùng một cỡ chữ (cỡ vừa nhãn dài nhất) cho đều hàng.
+  const pxNhan = Math.min(...o.map((c) => vuaChu(g, c.nhan, (px) => F(700, px), ow - 12, 19, 13)))
   o.forEach((c, i) => {
     const x = ox0 + i * (ow + gap)
     bo(g, x, oy, ow, oh, 20)
     const gr = g.createLinearGradient(0, oy, 0, oy + oh); gr.addColorStop(0, '#ffffff'); gr.addColorStop(1, L.nhan + '14')
     g.fillStyle = gr; g.fill(); g.lineWidth = 1.5; g.strokeStyle = L.nhan + '40'; g.stroke()
     const cx = x + ow / 2
-    g.fillStyle = '#6a7894'; vuaChu(g, c.nhan, (px) => F(700, px), ow - 16, 19, 13); g.fillText(c.nhan, cx, oy + 28)
+    g.fillStyle = '#6a7894'; g.font = F(700, pxNhan); g.fillText(c.nhan, cx, oy + 28)
     g.fillStyle = i < 2 ? L.nhan2 : L.nhan
     vuaChu(g, c.so, (px) => F(800, px), ow - 16, Math.min(64, oh * 0.42), 30); g.fillText(c.so, cx, oy + oh * 0.53)
     g.fillStyle = '#7d8aa5'; vuaChu(g, c.phu, (px) => F(600, px), ow - 14, 17, 11); g.fillText(c.phu, cx, oy + oh - 24)
