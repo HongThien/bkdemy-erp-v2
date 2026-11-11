@@ -79788,3 +79788,7 @@ Thùy nêu 4 việc, làm được 3:
 
 ### Sau giờ: form khởi tạo theo buổi + ảnh thông báo PH — Thùy 11/11
 - mig 202611111659 ĐÃ ÁP: fn_btnhe_lop_cho · fn_btnhe_hs_duyet · fn_btnhe_buoi_lop (đọc, <0,2 s). Form mới lớp → em đã duyệt → buổi học; ảnh thông báo PH (logo, tên in đậm cam) Copy/Tải. Kiểm ERP local: 7A1 1 em, 4 buổi (T6 13/11…), không bấm tạo. Bẫy: script thử in ngày bằng toISOString lệch 1 ngày (12 thay 13) — màn đúng.
+- Ảnh FB: tên uốn theo ruy băng (độ võng đo tự động từng nền — khớp parabol tâm dải màu ruy băng, cả 15 tranh đều võng "cười" 15–37 px; phieuluu/tien_bo đo nhiễu lấy -20) + bangY chỉnh theo số đo; MASTERY → THÀNH THẠO KIẾN THỨC, 4 nhãn ô cùng cỡ.
+
+### Sau giờ: 3 nút in ở danh sách HS · in cả lớp (test) · soạn luyện/test kiểu builder — Thùy 11/11
+- mig 202611111717 ĐÃ ÁP: fn_btnhe_soan · fn_btnhe_goi_y_dang · fn_btnhe_luu_bai. Màn: NutInSauGio, SoanBaiSauGio (KhoiCau + ChonCauBdm), TrangInNhieu (PhieuInBody tách từ TrangIn), thẻ ca rộng 420px. Kiểm ERP local trên ca thật 11A1 (Thùy tạo): 3 nút từng em, khung soạn 11 dạng · 33 câu — chỉ mở xem, KHÔNG bấm Lưu. DB soạn 2,5 s; màn dev ~10 s (StrictMode gọi 2 lần).

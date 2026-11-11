@@ -10,20 +10,31 @@ const CHU = ['A', 'B', 'C', 'D', 'E', 'F']
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
 
 // ── TRANG IN — overlay trắng + CSS @media print chỉ hiện .bk-print. Trang 1..n = đề cho em; trang cuối (ngắt trang) = đáp án cho TA. ──
+const CSS_IN = `@media print { body * { visibility: hidden !important; } .bk-print, .bk-print * { visibility: visible !important; } .bk-print { position: absolute !important; inset: 0 auto auto 0 !important; width: 100% !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-page-break { break-before: page; } .bk-cau { break-inside: avoid; } }`
 export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void }) {
+  return <TrangInNhieu bais={[bai]} onDong={onDong} />
+}
+// Nhiều bài trong 1 lần in (Thùy 11/11 "in cả lớp" — mỗi em 1 bài test, sang trang mới giữa các em)
+export function TrangInNhieu({ bais, onDong }: { bais: BaiInGiay[]; onDong: () => void }) {
+  return (
+    <div className="bk-print fixed inset-0 z-[100] overflow-auto bg-white">
+      <style>{CSS_IN}</style>
+      <div className="bk-no-print sticky top-0 z-10 flex items-center gap-2 border-b border-slate-200 bg-white/95 px-4 py-2">
+        <span className="text-[13px] font-semibold text-slate-700">Xem trước bản in — {bais.length === 1 ? `${bais[0].hs.ho_ten} · ${bais[0].caus.length} câu` : `${bais.length} em`}</span>
+        <button onClick={() => window.print()} className="ml-auto rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">🖨 In</button>
+        <button onClick={onDong} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
+      </div>
+      {bais.map((b, i) => <div key={b.bai_test_id} className={i > 0 ? 'bk-page-break' : ''}><PhieuInBody bai={b} /></div>)}
+    </div>
+  )
+}
+function PhieuInBody({ bai }: { bai: BaiInGiay }) {
   const theoDang = useMemo(() => {
     const g = new Map<string, BaiInGiay['caus']>()
     for (const k of bai.caus) g.set(k.ten_dang, [...(g.get(k.ten_dang) ?? []), k])
     return [...g.entries()]
   }, [bai])
   return (
-    <div className="bk-print fixed inset-0 z-[100] overflow-auto bg-white">
-      <style>{`@media print { body * { visibility: hidden !important; } .bk-print, .bk-print * { visibility: visible !important; } .bk-print { position: absolute !important; inset: 0 auto auto 0 !important; width: 100% !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-page-break { break-before: page; } .bk-cau { break-inside: avoid; } }`}</style>
-      <div className="bk-no-print sticky top-0 z-10 flex items-center gap-2 border-b border-slate-200 bg-white/95 px-4 py-2">
-        <span className="text-[13px] font-semibold text-slate-700">Xem trước bản in — {bai.hs.ho_ten} · {bai.caus.length} câu</span>
-        <button onClick={() => window.print()} className="ml-auto rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">🖨 In</button>
-        <button onClick={onDong} className="rounded-lg border border-slate-200 px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50">Đóng</button>
-      </div>
       <div className="mx-auto max-w-[800px] px-8 py-6 text-[14px] leading-relaxed text-slate-900">
         <div className="mb-4 border-b-2 border-slate-800 pb-2">
           <div className="flex items-baseline justify-between">
@@ -63,7 +74,6 @@ export function TrangIn({ bai, onDong }: { bai: BaiInGiay; onDong: () => void })
           <p className="mt-3 text-[11.5px] italic text-slate-600">Chấm xong: ERP → Xếp bổ trợ yếu → Đang diễn ra → "Nhập KQ" của phiếu này, bấm lại đáp án em đã khoanh — máy tự chấm và tính vào tiến độ ca.</p>
         </div>
       </div>
-    </div>
   )
 }
 

@@ -7,6 +7,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
 import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
+import NutInSauGio from './NutInSauGio'
+import { inTestSauGio } from '../../lib/botro_nhe'
+import { inLayBaiGiay, type BaiInGiay } from '../../lib/botro_yeu_ca'
+import { TrangInNhieu } from '../ta/PhieuGiayYeuTA'
 import { CaDetail } from '../ta/CaBoTroTA'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
@@ -33,6 +37,18 @@ export default function BoTroNheScreen() {
   const [dau, setDau] = useState<string | null>(null) // khởi tạo từ hàng chờ: chọn sẵn lớp (em chờ tự tick)
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
+  const [inLop, setInLop] = useState<BaiInGiay[] | null>(null)
+  // IN CẢ LỚP (Thùy 11/11): chỉ BÀI TEST — mỗi em còn mở 1 bài (chưa soạn thì DB tự sinh như nút 📝), sang trang giữa các em
+  async function inCaLop(c: CaNhe) {
+    setLoi(null)
+    const bais: BaiInGiay[] = [], loiEm: string[] = []
+    for (const h of c.hs.filter((x) => x.buoi_trang_thai === 'mo' && !x.danh_gia_xong_at && !x.test_da_nop)) {
+      try { const r = await inTestSauGio(h.buoi_id); bais.push(await inLayBaiGiay(r.bai_test_id)) }
+      catch (e: any) { loiEm.push(`${h.ho_ten}: ${e?.message ?? e}`) }
+    }
+    if (loiEm.length) setLoi(`Không in được: ${loiEm.join(' · ')}`)
+    if (bais.length) { setInLop(bais); tai() } else if (!loiEm.length) setLoi('Lớp không còn em nào chờ làm bài test.')
+  }
 
   // refetch NỀN: giữ rows cũ tới khi có rows mới, không bao giờ trắng màn
   const taiCho = () => choSauGio().then((r) => { NHO.cho = r; setCho(r) }).catch((e) => setLoi(e?.message ?? String(e)))
@@ -91,12 +107,13 @@ export default function BoTroNheScreen() {
         }).catch((e) => setLoi(e?.message ?? String(e)))
       }} />}
 
+      {inLop && <TrangInNhieu bais={inLop} onDong={() => setInLop(null)} />}
       {thongBao && (rows ?? []).some((c) => c.ca_id === thongBao) && <ThongBaoSauGioAnh ca={(rows ?? []).find((c) => c.ca_id === thongBao)!} onDong={() => setThongBao(null)} />}
 
       {rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
         <>
           <Nhom tieuDe={`Sắp tới & hôm nay · ${dangToi.length} ca`} cas={dangToi} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
-            onThongBao={(c) => setThongBao(c.ca_id)}
+            onThongBao={(c) => setThongBao(c.ca_id)} onInLop={inCaLop}
             onHuy={async (c) => {
               if (!window.confirm(`Huỷ ca ${ddmmVN(c.ngay)} ${hhmm(c.gio_bat_dau)} lớp ${c.ten_lop}? Em đã điểm danh giữ nguyên.`)) return
               try { await huyCaNhe(c.ca_id, 'Trưởng khối huỷ ca'); tai() } catch (e: any) { setLoi(e?.message ?? String(e)) }
@@ -109,15 +126,16 @@ export default function BoTroNheScreen() {
   )
 }
 
-function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, rong }: {
+function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, rong }: {
   tieuDe: string; cas: CaNhe[]; homNay: string; onMo: (buoiId: string) => void
-  onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; rong?: string
+  onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; onInLop?: (c: CaNhe) => Promise<void>; rong?: string
 }) {
+  const [dangIn, setDangIn] = useState<string | null>(null)
   return (
     <section className="mb-6">
       <p className="mb-2 text-[11.5px] font-bold uppercase tracking-wider text-slate-500">{tieuDe}</p>
       {cas.length === 0 ? <p className="text-[13px] text-slate-400">{rong}</p> : (
-        <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(300px,1fr))]">
+        <div className="grid gap-3 [grid-template-columns:repeat(auto-fill,minmax(420px,1fr))]">
           {cas.map((c) => {
             const huy = c.trang_thai === 'huy'
             return (
@@ -138,19 +156,22 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, rong }: {
                     {c.hs.map((h) => {
                       const tt = trangThaiHs(h)
                       return (
-                        <li key={h.buoi_id}>
-                          <button onClick={() => onMo(h.buoi_id)} className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left hover:bg-slate-50">
-                            <span className="text-[13px] font-medium text-slate-800">{h.ho_ten}</span>
-                            <span className="text-[11.5px] text-slate-400">{h.so_dang} dạng</span>
+                        <li key={h.buoi_id} className="flex items-center gap-1">
+                          <button onClick={() => onMo(h.buoi_id)} className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-1.5 text-left hover:bg-slate-50">
+                            <span className="truncate text-[13px] font-medium text-slate-800">{h.ho_ten}</span>
+                            <span className="shrink-0 text-[11.5px] text-slate-400">{h.so_dang} dạng</span>
                             <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold ${tt.cls}`}>{tt.ten}</span>
                             <span className="text-slate-300">›</span>
                           </button>
+                          {h.buoi_trang_thai !== 'huy' && <NutInSauGio gon buoiId={h.buoi_id} dong={h.buoi_trang_thai !== 'mo' || !!h.danh_gia_xong_at} daNop={h.test_da_nop} />}
                         </li>
                       )
                     })}
                   </ul>
                   <div className="mt-3 flex gap-2">
                     <button onClick={() => onThongBao(c)} className="rounded-lg border border-slate-200 px-3 py-1 text-[12px] text-slate-600 hover:bg-slate-50">🖼 Ảnh thông báo PH</button>
+                    {onInLop && !huy && <button disabled={dangIn === c.ca_id} onClick={async () => { setDangIn(c.ca_id); try { await onInLop(c) } finally { setDangIn(null) } }}
+                      className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-semibold text-amber-800 hover:bg-amber-100 disabled:opacity-50">{dangIn === c.ca_id ? 'Đang chuẩn bị…' : '🖨 In cả lớp · bài test'}</button>}
                     {onHuy && !huy && <button onClick={() => onHuy(c)} className="rounded-lg px-3 py-1 text-[12px] text-rose-600 hover:bg-rose-50">Huỷ ca</button>}
                   </div>
                 </div>
