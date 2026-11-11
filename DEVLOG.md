@@ -79822,3 +79822,5 @@ Thùy nêu 4 việc, làm được 3:
 - Màn Sau giờ tách 2 subtab (Thùy 11/11 "cho đỡ lẫn"): Chờ khởi tạo (hàng chờ theo lớp + form khởi tạo) · Đã khởi tạo (ca sắp tới / đã qua, ẩn ca huỷ). Khởi tạo xong tự sang Đã khởi tạo + mở ảnh thông báo. Kiểm ERP local: 24 lớp chờ · 5 ca sắp tới.
 
 - Ảnh thông báo PH sau giờ (Thùy 11/11 "nhiều HS bị rối"): mỗi em 1 dòng có gạch đầu dòng, cao ảnh theo nội dung (rộng 1080, tối thiểu 720; 13 em → 1341). Câu: "Buổi học <thứ, ngày>, các bạn sau sẽ ở lại bổ trợ kiến thức sau giờ học:" … "Các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!".
+
+- Bản đáp án (Bản GV) khuôn ET in tên em dưới tiêu đề ("Học sinh: … · Lớp …") — Thùy 11/11: đáp án sau giờ mỗi em 1 đề. Áp chung ETHeaderBK (ET cả lớp bản GV cũng có tên). Kiểm: bài test Anh Thư 11A1.

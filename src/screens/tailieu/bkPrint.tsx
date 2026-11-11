@@ -74,6 +74,8 @@ export function ETHeaderBK({ title, ngay, lop, made, hoTen, soCau, gv, nhan = 'B
       </div>
       <div className="pv-bkh-hero">
         <h1 className="pv-bkh-title">{title}</h1>
+        {/* Bản GV có tên em (Thùy 11/11: đáp án bổ trợ sau giờ mỗi em 1 đề ⇒ phải biết đáp án của ai) */}
+        {gv && hoTen && <div style={{ textAlign: 'center', fontSize: 15, fontWeight: 700, marginTop: 4 }}>Học sinh: {hoTen}{lop ? ` · Lớp ${lop}` : ''}</div>}
         <div className="pv-bkh-divider" />
       </div>
       {!gv && (
