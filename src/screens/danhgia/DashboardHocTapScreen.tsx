@@ -18,8 +18,8 @@ type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: nu
 // Rời tab quay lại = đúng chỗ cũ, kể cả các cửa sổ đang mở (CLAUDE §React).
 const NHO: {
   mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }
-  bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number
-} = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60 }
+  bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number; tapTrung: boolean
+} = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false }
 
 const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuyên đề', nhom: 'nhóm bài' }
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
@@ -45,6 +45,9 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   const [cua, setCua] = useState<Cua[]>(NHO.cua)
   const [lamMoi, setLamMoi] = useState(0)
   const [boTro, setBoTro] = useState<HSDB | null>(null)
+  // 11/11 (Thùy): chế độ TẬP TRUNG — chỉ hiện cột có ít nhất 1 ô YẾU trong danh sách đang xem (lọc hiển thị, không tính lại số)
+  const [tapTrung, setTapTrung] = useState(NHO.tapTrung)
+  useEffect(() => { NHO.tapTrung = tapTrung }, [tapTrung])
   const goc = useRef<HTMLDivElement>(null)
   // App có thể bọc trong khung `zoom` (cỡ chữ) ⇒ toạ độ fixed bên trong bị nhân theo; quy toạ độ chuột về đơn vị của khung.
   const tiLe = () => { const el = goc.current; return el && el.offsetWidth ? el.getBoundingClientRect().width / el.offsetWidth : 1 }
@@ -99,6 +102,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
     const s = typeof x === 'string' ? x.localeCompare(String(y), 'vi', { numeric: true }) : (x as number) - (y as number)
     return (sap.tang ? s : -s) || a.ten.localeCompare(b.ten, 'vi')
   })
+  const cotHien = !bang ? [] : tapTrung ? bang.cot.filter((c) => hien.some((h) => h.o[c.ma]?.muc === 'yeu')) : bang.cot
   const bamCot = (cot: string) => setSap((s) => s.cot === cot ? { cot, tang: !s.tang } : { cot, tang: cot === 'ten' || cot === 'lop' })
   // sau khi lưu 1 em ⇒ vá đúng dòng đó tại chỗ (CLAUDE §React: không tải lại cả bảng)
   const vaBt = (hsId: string, bt: HSDB['bt']) => setBang((b) => b && ({ ...b, hs: b.hs.map((h) => h.id === hsId ? { ...h, bt } : h) }))
@@ -148,6 +152,10 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             <button key={v} onClick={() => { setCap(v); if (sap.cot !== 'ten' && sap.cot !== 'lop') setSap({ cot: 'lop', tang: true }) }} className={nut(cap === v)}>{l}</button>
           ))}
         </div>
+        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200" title="Tập trung: chỉ hiện các cột có ô yếu">
+          <button onClick={() => setTapTrung(false)} className={nut(!tapTrung)}>Thường</button>
+          <button onClick={() => setTapTrung(true)} className={nut(tapTrung)}>🎯 Tập trung</button>
+        </div>
         {lops.length > 1 && (
           <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-800">
             <option value="">Cả khối</option>
@@ -162,14 +170,15 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
         : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có lần đo nào theo bản đồ mới.</div>
         : (
           <>
+            {tapTrung && cotHien.length === 0 && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-700">Không có {TEN_CAP[cap]} nào có ô yếu trong danh sách đang xem.</div>}
             <div className={`max-h-[calc(100vh-230px)] overflow-auto rounded-xl border border-slate-200 bg-white ${dangTai ? 'opacity-60' : ''}`}>
               <table className="min-w-full border-separate border-spacing-0 text-[12.5px]">
                 <thead>
                   <tr>
-                    <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 min-w-[170px] text-left`}>Tên{muiTen('ten')}</th>
-                    <th onClick={() => bamCot('ny')} title="Số NHÓM bài đang yếu (mastery 5 lần gần nhất) · số nhỏ = số DẠNG yếu" className={`${th} whitespace-nowrap text-center`}>Nhóm yếu{muiTen('ny')}</th>
+                    <th onClick={() => bamCot('ten')} className={`${th} sticky left-0 z-20 w-[170px] min-w-[170px] max-w-[170px] text-left`}>Tên{muiTen('ten')}</th>
+                    <th onClick={() => bamCot('ny')} title="Số NHÓM bài đang yếu (mastery 5 lần gần nhất) · số nhỏ = số DẠNG yếu" className={`${th} sticky left-[170px] z-20 whitespace-nowrap text-center shadow-[2px_0_0_0_#e2e8f0]`}>Nhóm yếu{muiTen('ny')}</th>
                     <th onClick={() => bamCot('lop')} className={`${th} text-left`}>Lớp{muiTen('lop')}</th>
-                    {bang.cot.map((c) => (
+                    {cotHien.map((c) => (
                       <th key={c.ma} onClick={() => bamCot(c.ma)} title={c.cha ? `${c.cha} › ${c.ten}` : c.ten} className={`${th} w-[92px] min-w-[92px] align-bottom`}>
                         {c.cha && <div className="mb-0.5 line-clamp-1 text-center text-[10px] font-normal text-slate-400">{c.cha}</div>}
                         <div className="line-clamp-3 text-center leading-tight">{c.ten}{muiTen(c.ma)}</div>
@@ -181,16 +190,16 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                 <tbody>
                   {sapXep.map((h) => (
                     <tr key={h.id} className="hover:bg-indigo-50/30">
-                      <td className="sticky left-0 z-[5] border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800">
+                      <td className="sticky left-0 z-[5] w-[170px] min-w-[170px] max-w-[170px] truncate border-b border-slate-100 bg-white px-2 py-1 font-medium text-slate-800" title={h.ten}>
                         {phong?.onMoHoSo ? <button onClick={() => phong.onMoHoSo!(h.id, mon)} title="Mở hồ sơ học tập" className="text-left hover:text-indigo-700 hover:underline">{h.ten}</button> : h.ten}
                         {h.bao_dong && <span title={`Báo động ${h.bao_dong.so} lần trong 30 ngày — gần nhất: ${h.bao_dong.ghi_chu}`} className="ml-1 cursor-help">🚨</span>}
                       </td>
-                      <td className="whitespace-nowrap border-b border-slate-100 px-2 py-1 text-center tabular-nums">
+                      <td className="sticky left-[170px] z-[5] whitespace-nowrap border-b border-slate-100 bg-white px-2 py-1 text-center tabular-nums shadow-[2px_0_0_0_#e2e8f0]">
                         {h.nhom_yeu == null ? <span className="text-slate-300">—</span> : <span className={`font-bold ${h.nhom_yeu > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>{h.nhom_yeu}</span>}
                         {h.dang_yeu != null && <span className="ml-1 text-[10.5px] text-slate-400" title="Số dạng yếu">· {h.dang_yeu} dạng</span>}
                       </td>
                       <td className="border-b border-slate-100 px-2 py-1 text-slate-600">{h.lop}</td>
-                      {bang.cot.map((c) => {
+                      {cotHien.map((c) => {
                         const o = h.o[c.ma]
                         const mo = cua.some((w) => w.id === [h.id, cap, c.ma, soTuan].join('|'))
                         return (
@@ -216,7 +225,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình tối đa 5 lần làm bài gần nhất TRONG 30 NGÀY của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần) — 30 ngày không có lần nào thì ô trống; 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
+              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{tapTrung ? ` · 🎯 Tập trung: đang hiện ${cotHien.length} cột có ô yếu` : ''}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình tối đa 5 lần làm bài gần nhất TRONG 30 NGÀY của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần) — 30 ngày không có lần nào thì ô trống; 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
               Kênh: ET · BTVN · MT / khảo sát · phiếu và test bổ trợ (không tính tự luyện, trừ cấp 1). {TEN_CAP[cap]} theo bản đồ mới; Hình–Học: bài học = chuyên đề = nhóm bài. Nhóm yếu = số nhóm bài đang yếu. Số đọc từ bảng chụp mastery (tự làm mới 5 phút/lần khi có điểm mới).
             </p>
           </>

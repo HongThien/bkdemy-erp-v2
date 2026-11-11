@@ -79715,3 +79715,29 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: box HS chỉ cần 3 cột ≥3·2·1, nhưng tách 2 phần (em gỡ 1 nhóm cũ mà thêm 2 nhóm mới thì số tổng che mất). mig 202611102139 ĐÃ ÁP: _dy_nhom_ds + fn_qlcl_nhom_yeu (drop/tạo lại, đổi cột trả) so TẬP nhóm đầu tuần (A) vs hiện tại (B): cũ = B∩A, mới = BA, đếm em theo từng phần; ô chưa có ảnh đầu tuần ⇒ NULL. Toán 9: cũ 49/9/8, mới 1/1/1. Tuần này ảnh đầu tuần luật cũ ⇒ mới có thể thấp.
 - Thùy: mastery tối đa 30 ngày; 30 ngày không có lần nào = chưa đo, không lấy từ đầu năm. mig 202611102142 ĐÃ ÁP: _mastery_lan_cap lấy lần trong [mốc−30 ngày, mốc], mốc = p_den hoặc now() (sửa 1 chỗ, mọi người dùng đi qua). Toán 8: ô dạng 2696→1907, nhóm yếu 122→110. KHÔNG đánh bẩn cả kho lúc áp (21h45, giờ HS chơi) — lưới đêm 02:00 chụp lại hết.
 - fn_dbht_o_lich_su: p_so_tuan → p_so_ngay (mặc định 30) + co_cu; popup Dashboard có nút Xem thêm 1 tháng (gọi lại DB lúc bấm, giữ bảng cũ tới khi có mới). Hiện tại từng dòng = luật 30 ngày tính tới ngày đó. Kiểm trên app (8A1 Bùi Thế Vinh: 30 ngày 3 lần, xem thêm ra từ 11/09).
+
+### 10/11 23:xx — [Lương TA] Lương theo lớp (mig 202611102253 ĐÃ ÁP) — Thùy "bảng lương TA từng lớp", "T10 tính theo cái này luôn"
+- Bảng ta_luong_lop (lớp × mức × tháng hiệu lực, xoá mềm, ghi vết, khoá tháng đã chốt dùng chung _ta_don_gia_ky_khoa). Mức THAY bậc theo sĩ số trong _ta_luong_tinh từ mốc chấm công ERP (T10); T9 giữ bậc. Cách chia giữ: TG 40% · BTVN 20% · bổ trợ 40%.
+- Khởi tạo 54 lớp (đang học + có buổi T10) = đúng bậc T10 ⇒ lương T10 không đổi (32.850.890 trước/sau). Từ nay mức không tự đổi theo sĩ số (T11 tạm tính 10.325.833 → 10.155.834 vì vài lớp T11 sĩ số đổi bậc). Lớp thiếu mức ⇒ 0đ + cờ thieu_muc (báo đỏ). Chốt kỳ chụp luong_lop.
+- Màn: subtab "Lương theo lớp" cạnh Đơn giá (chọn tháng, lọc lớp, Đặt mức áp từ tháng, lịch sử + xoá có lý do, cột bậc theo sĩ số để so, tô cam khi khác). Test test_luong_lop.mjs 18/18.
+
+### 10/11 23:10 — [Lương TA] Bảng lương: tổng lương + nút Đồng bộ (mig 202611102304 ĐÃ ÁP)
+- fn_ta_luong_ky_tong(kỳ): cộng ở DB từ _ta_luong_ky_core (kỳ chốt ⇒ bản chốt) — so với cộng tay từng dòng T10: 17 TA · 32.850.890 khớp. Màn: ô "Tổng thực nhận" trên đầu + dòng Tổng cuối bảng theo từng cột; nút ↻ Đồng bộ tính lại nền (giữ bảng cũ tới khi có số mới), hiện "tính lúc".
+
+### 10/11 23:20 — [Lương TA] Sửa: mức Trang đặt bị áp từ T11 thay vì T10 (mig 202611102316 ĐÃ ÁP)
+- SAI: subtab Lương theo lớp mở mặc định tháng hiện tại (11) ⇒ Trang đặt 11 lớp lúc 23:02–23:05 thành "áp từ 11/2026", T10 vẫn mức khởi tạo (Thùy: "lương tháng 10 chưa tính theo đơn giá mới").
+- SỬA: chép mức 11/2026 Trang đặt sang dòng 10/2026 cùng lớp (11 dòng, assert đúng 11) ⇒ T10 tổng 32.850.890 → 33.796.287. Màn: subtab mặc định THÁNG TRƯỚC + form ghi rõ "→ áp cho lương tháng X trở đi".
+- Bài học: màn đặt thông số lương mặc định phải là tháng ĐANG LÀM LƯƠNG (tháng trước), không phải tháng hiện tại.
+
+## 11/11/2026 — Đơn nền ảnh vinh danh tháng (FB)
+- Thùy: ảnh vinh danh 3 loại Xuất sắc/Tiến bộ/HS tiêu biểu, ảnh HS + tên + lớp + kì thi + hạng lớp/khối + %mastery 30 ngày + điểm test tháng; nền do ChatGPT vẽ, nhiều bộ.
+- Làm: design/DON-HANG-VINH-DANH-THANG.md — khổ 4:5 (1080×1350), hợp đồng bố cục 5 vùng, lỗ khung ảnh tô #00FF00 để code khoá màu ghép ảnh HS, 9 nền (3 phong cách × 3 loại), khối dán ChatGPT.
+- Chưa làm (chờ Thùy): fn_vinh_danh_hs, template VinhDanhFB, nút xuất hàng loạt. Treo: "Tiêu biểu" thay "Chăm chỉ" (cham_chi) hay là loại thứ 4?
+- Thùy chốt: "Học sinh tiêu biểu" = loại giải THỨ 4 (Chăm chỉ giữ). Ghi vào mục 5 đơn; DB/hàm trao giải chưa đổi, chờ tiêu chí + slot.
+- **11/11 — Học bù buổi MINI TEST ra rỗng (gốc lỗi "TA báo không hiện câu tổng hiệu" của Minh Quân).** fn_hs_bu_dang chỉ lấy phase ingame/et/btvn của buổi gốc; buổi 4T1 31/10 là MT (16 dạng toàn phase mt: tổng hiệu, TBC, dãy số…) ⇒ màn Học bù báo "chưa có dạng bài nào trên app". Mig 202611111419 (ĐÃ ÁP, --only): + phase mt. Đo bằng tài khoản em (ROLLBACK): bù buổi 31/10 ra 16 dạng đều có câu, sinh bu_luyen NDB01623 ra 10 câu; 7 lượt bù toàn hệ có buổi gốc chỉ là MT. Cùng mig GỠ luật Bảo lưu 202611101833 (Thùy: không làm kiểu bảo lưu) — 2 hàm về thân cũ; Minh Quân vẫn mở 187 mã khối 4T qua hs_mo_dang.
+- Sửa: Tiêu biểu KHÔNG phải loại giải cấp lớp — chọn theo KHỐI từ HS Xuất sắc của khối, 1 suất, chọn tay. Ghi đơn mục 5 (bảng riêng giai_thuong_tieu_bieu thang×mon×khoi). Bài học: hỏi ngân sách lớp là thừa — đáng lẽ hỏi Tiêu biểu xét ở cấp nào trước.
+
+
+## 11/11 — Dashboard học tập: chế độ 🎯 Tập trung + đóng băng cột Nhóm yếu
+- Thùy: thêm chế độ Tập trung (chuyển qua lại với Thường) — chỉ hiện cột có ô yếu; freeze cột số nhóm yếu.
+- Làm (DashboardHocTapScreen): nút Thường | 🎯 Tập trung (nhớ ở NHO); cột hiện = cột có ≥1 ô muc=yeu trong danh sách đang xem (lọc hiển thị, không tính lại); không còn cột ⇒ báo xanh; ghi chú "đang hiện N cột có ô yếu". Cột Tên cố định 170 px (tên dài cắt, title đủ), cột Nhóm yếu sticky left 170 px có vạch ngăn. tsc sạch. CHƯA kiểm trên app (Browser pane chưa đăng nhập) — Thùy xem ở localhost.
