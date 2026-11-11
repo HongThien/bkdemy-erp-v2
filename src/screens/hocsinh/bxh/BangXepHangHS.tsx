@@ -166,6 +166,8 @@ export function BangXepHangView({ dm, loai, onLoai, pv, onPv, ky, onKy, kq, dang
               {kq.toi
                 ? <>Em hạng {kq.toi.hang}/{kq.tong}{pv === 'khoi' && kq.khoi ? ` khối ${kq.khoi}` : ' toàn BK'} · <span style={{ color: MAU.acc }}>{so(kq.toi.gia_tri, dv)}</span> <span className="font-medium" style={{ color: MAU.muted }}>· chỉ mình em thấy</span></>
                 : <span className="font-semibold">Em chưa có hạng — làm vài lượt luyện để có tên trong bảng.</span>}
+              {/* Bảng tính sẵn ở DB (mig 202611112211) — ghi giờ tính để em biết số không phải từng giây */}
+              {kq.tinh_luc && <span className="block text-[12px] font-medium" style={{ color: MAU.muted }}>Số tính lúc {new Date(kq.tinh_luc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })}</span>}
             </span>
             {art && !kq.toi && <img src={art.trong} alt="" draggable={false} className="hidden h-[52px] shrink-0 object-contain sm:block" />}
             <label className="mr-3 flex shrink-0 cursor-pointer items-center gap-1 text-[12.5px]" style={{ color: MAU.muted }}>

@@ -614,13 +614,31 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     mayManHSCuaToi().then((d) => setMaymanCoLuot(!!d.active && !d.hom_nay && !!d.du_dieu_kien.du)).catch(() => setMaymanCoLuot(false))
   }, [cap1, cap2, direct, khu])
   useEffect(() => {
+    // CHỈ Ở MÀN CHÍNH (audit timeout 11/11, CLAUDE §2.0 "gọi đúng cái đang hiện"): box Bổ trợ chỉ nằm ở màn chính ⇒ vào màn con thì
+    // không gọi (trước: mỗi lần đổi màn đều gọi ngay 2 RPC, rồi hỏi lại 15 s/lần dù em không có buổi nào hôm nay).
+    if ((direct && direct !== 'lich_bo_tro') || khu) return // màn Lịch bổ trợ cũng vẽ từ số này
+    let bo = false
+    let homNay = true // chưa biết lịch ⇒ coi như có buổi hôm nay (hỏi nhanh)
     // Hold retest (Thùy 29/09): không gọi — ô "Bài kiểm tra lại" không hiện (DB cũng trả rỗng).
     const tai = () => Promise.all([caCuaToi().catch(() => 'loi' as const), RETEST_BAT ? retestCuaToi().catch(() => []) : Promise.resolve([] as RetestCuaToi[]), lichBoTroCuaToi().catch(() => [] as LichBoTro[])])
       // 29/10: caCuaToi LỖI (DB dựng ca nổ) KHÔNG còn nuốt thành "không có ca" — lịch đã nói em vào ca được thì vẫn hiện nút, CaBoTroHS hiện lỗi thật (trước đây nút biến mất im lặng, em/TA không biết vì sao).
-      .then(([ca, rt, lich]) => setBoTro({ coCa: (!!ca && ca !== 'loi') || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu' || (ca === 'loi' && l.loai === 'bo_tro_yeu'))), soRetest: rt.filter((r) => !r.da_nop).length, lich }))
+      .then(([ca, rt, lich]) => {
+        if (bo) return
+        homNay = (!!ca && ca !== 'loi') || lich.some((l) => l.hom_nay)
+        setBoTro({ coCa: (!!ca && ca !== 'loi') || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu' || (ca === 'loi' && l.loai === 'bo_tro_yeu'))), soRetest: rt.filter((r) => !r.da_nop).length, lich })
+      })
     tai()
-    const id = setInterval(() => { if (document.visibilityState === 'visible' && !direct && !khu) tai() }, 15000)
-    return () => clearInterval(id)
+    // Có buổi bổ trợ HÔM NAY ⇒ hỏi 15 s/lần (TA vừa điểm danh là nút "Vào ca" hiện ngay). Không có ⇒ 60 s/lần (bắt ca sau giờ
+    // xếp trong ngày). Quay lại tab ⇒ hỏi ngay. Tab ẩn ⇒ không hỏi.
+    let dem = 0
+    const id = setInterval(() => {
+      if (document.visibilityState !== 'visible') return
+      dem += 1
+      if (homNay || dem % 4 === 0) tai()
+    }, 15000)
+    const hien = () => { if (document.visibilityState === 'visible') { dem = 0; tai() } }
+    document.addEventListener('visibilitychange', hien)
+    return () => { bo = true; clearInterval(id); document.removeEventListener('visibilitychange', hien) }
   }, [direct, khu])
 
   // Bổ trợ của MÔN đang chọn. Ca ĐANG TỚI GIỜ (vao_ca) của môn khác vẫn giữ — không để em lỡ ca chỉ vì đang đứng ở môn

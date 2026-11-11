@@ -17,6 +17,7 @@ export type BxhKetQua =
   | {
       ma: string; ten: string; san_sang: true; don_vi: string; ky: BxhKy; pham_vi: BxhPhamVi; khoi: string | null
       tong: number; top: BxhDong[]; toi: { hang: number; gia_tri: number } | null
+      tinh_luc?: string // có khi DB đọc bảng tính sẵn (mig 202611112211) — lúc tính
     }
 
 export async function bxhDanhMuc(): Promise<BxhLoai[]> {
