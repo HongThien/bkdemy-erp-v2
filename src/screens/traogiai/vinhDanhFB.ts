@@ -49,12 +49,24 @@ export async function getVinhDanhData(hsId: string, mon: string, ym: string): Pr
   return data as VinhDanhData
 }
 
-// ẢNH CHÂN DUNG (bảng hoc_sinh_anh_chan_dung — KHÔNG đụng hoc_sinh.anh_url là avatar app của em). Thu nhỏ ở máy
-// (cạnh dài ≤1600, JPEG) rồi đưa lên bucket public 'avatars' thư mục chan-dung/. Ảnh cũ để nguyên trong bucket (Luật xoá).
+// ẢNH HỌC SINH: KHO (hoc_sinh_kho_anh — mọi ảnh đã tải, không đè) + ẢNH ĐANG CHỌN cho vinh danh (hoc_sinh_anh_chan_dung,
+// 1 dòng/em). KHÔNG đụng hoc_sinh.anh_url (avatar app em tự chọn). Thu nhỏ ở máy (cạnh dài ≤1000, JPEG) rồi đưa lên bucket
+// public 'avatars' thư mục chan-dung/. Tải lên = thêm vào kho + chọn luôn ảnh đó. File cũ để nguyên trong bucket (Luật xoá).
+export type AnhKho = { id: string; url: string; tai_at: string }
+export async function getKhoAnh(hsId: string): Promise<AnhKho[]> {
+  const { data, error } = await supabase.from('hoc_sinh_kho_anh').select('id, url, tai_at').eq('hoc_sinh_id', hsId).order('tai_at', { ascending: false }).limit(100)
+  if (error) throw error
+  return (data ?? []) as AnhKho[]
+}
+export async function chonAnhChanDung(hsId: string, url: string): Promise<void> {
+  const { error } = await supabase.from('hoc_sinh_anh_chan_dung')
+    .upsert({ hoc_sinh_id: hsId, url, cap_nhat_at: new Date().toISOString() }, { onConflict: 'hoc_sinh_id' })
+  if (error) throw error
+}
 export async function uploadAnhChanDung(hsId: string, file: File): Promise<string> {
   if (!file.type.startsWith('image/')) throw new Error('Chọn một file ảnh (JPG, PNG, WebP).')
   const bmp = await createImageBitmap(file)
-  const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height))
+  const k = Math.min(1, 1000 / Math.max(bmp.width, bmp.height))
   const cv = document.createElement('canvas')
   cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k)
   cv.getContext('2d')!.drawImage(bmp, 0, 0, cv.width, cv.height)
@@ -63,9 +75,9 @@ export async function uploadAnhChanDung(hsId: string, file: File): Promise<strin
   const { error } = await supabase.storage.from('avatars').upload(path, blob, { contentType: 'image/jpeg', upsert: false })
   if (error) throw error
   const url = supabase.storage.from('avatars').getPublicUrl(path).data.publicUrl
-  const { error: e2 } = await supabase.from('hoc_sinh_anh_chan_dung')
-    .upsert({ hoc_sinh_id: hsId, url, cap_nhat_at: new Date().toISOString() }, { onConflict: 'hoc_sinh_id' })
+  const { error: e2 } = await supabase.from('hoc_sinh_kho_anh').insert({ hoc_sinh_id: hsId, url })
   if (e2) throw e2
+  await chonAnhChanDung(hsId, url)
   return url
 }
 export async function getAnhChanDung(hsIds: string[]): Promise<Record<string, string>> {

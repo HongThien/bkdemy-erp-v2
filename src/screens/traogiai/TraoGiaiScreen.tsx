@@ -11,7 +11,8 @@ import { createPortal } from 'react-dom'
 import { captureReportSnapshot } from '../report/ReportCard'
 import { upsertBaoCaoPH, getBaoCaoPH } from '../../lib/report'
 import { getXsKhoi, chonXsKhoi, boXsKhoi, type XsKhoiNhom, type XsKhoiUngVien } from '../../lib/traogiai'
-import { veVinhDanhFB, getVinhDanhData, uploadAnhChanDung, getAnhChanDung, PHONG_CACH, type PhongCach, type LoaiNen } from './vinhDanhFB'
+import { getAnhChanDung, type LoaiNen } from './vinhDanhFB'
+import XuongAnhFB from './XuongAnhFB'
 import {
   getTraoGiaiThang, xacNhanSlot, boXacNhanSlot, doiNguoiSlotDaXacNhan, chotGiaiLop, moLaiGiaiLop, chotKetQuaThang, datSlotLop, metricChips,
   curYM, shiftYM, LOAI_GIAI_TEN, LOAI_GIAI_THU_TU, TONG_SLOT,
@@ -319,37 +320,16 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
   const [busy, setBusy] = useState<Set<string>>(new Set())
   const [bulk, setBulk] = useState<{ done: number; total: number } | null>(null)
   const [xemAnh, setXemAnh] = useState<string | null>(null) // URL đang phóng to
-  // Ảnh vinh danh đăng FB (Thùy 11/11): chọn bộ nền, bấm từng dòng ⇒ dựng PNG 1080×1350 xem + tải. Chăm chỉ chưa có nền.
-  const [phongCach, setPhongCach] = useState<PhongCach>('hoanggia')
-  const [fbBusy, setFbBusy] = useState<string | null>(null)
-  const [fbXem, setFbXem] = useState<{ url: string; ten: string } | null>(null)
-  async function lamAnhFB(r: { card: TraoGiaiClass; loaiGiai: LoaiGiai; slot: TraoGiaiSlot }, loai: LoaiNen) {
-    const k = anhKey(r.slot.hocSinhId, r.card.mon)
-    setFbBusy(k)
-    try {
-      const d = await getVinhDanhData(r.slot.hocSinhId, r.card.mon, ym)
-      if (chanDung[r.slot.hocSinhId]) d.anhChanDung = chanDung[r.slot.hocSinhId] // ảnh vừa tải lên trong phiên
-      const cv = await veVinhDanhFB(d, loai, phongCach)
-      setFbXem({ url: cv.toDataURL('image/png'), ten: `vinh-danh-${ym}-${r.card.tenLop}-${d.maHs ?? r.slot.hocSinhId}.png` })
-    } catch (e) { flash('⚠️ ' + (e as Error).message) }
-    finally { setFbBusy(null) }
-  }
+  // Ảnh vinh danh đăng FB (Thùy 11/11): bấm ảnh nhỏ / Làm ảnh ⇒ mở Xưởng ảnh (đổi nền, chọn ảnh trong kho của em, tải PNG). Chăm chỉ chưa có nền.
+  const [xuong, setXuong] = useState<{ hsId: string; mon: string; loai: LoaiNen; ten: string } | null>(null)
   // Ảnh chân dung HS (bảng riêng, không đụng avatar app) — tải 1 lần cho mọi em đang hiện; tải ảnh mới ⇒ vá đúng em đó.
   const [chanDung, setChanDung] = useState<Record<string, string>>({})
-  const [taiLen, setTaiLen] = useState<string | null>(null)
   const hsIdsKey = [...new Set(rows.map((r) => r.slot.hocSinhId))].sort().join(',')
   useEffect(() => {
     let huy = false
     getAnhChanDung(hsIdsKey ? hsIdsKey.split(',') : []).then((m) => { if (!huy) setChanDung(m) }).catch(() => {})
     return () => { huy = true }
   }, [hsIdsKey])
-  async function chonAnh(hsId: string, file: File | undefined) {
-    if (!file) return
-    setTaiLen(hsId)
-    try { const url = await uploadAnhChanDung(hsId, file); setChanDung((p) => ({ ...p, [hsId]: url })); flash('Đã lưu ảnh chân dung.') }
-    catch (e) { flash('⚠️ ' + (e as Error).message) }
-    finally { setTaiLen(null) }
-  }
   const [toast, setToast] = useState<string | null>(null)
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
   const anhKey = (hsId: string, mon: string) => `${hsId}|${mon}|${ym}`
@@ -399,11 +379,6 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
     <>
       <div className="mb-3 flex items-center justify-between gap-3">
         <div className="text-[12px] text-slate-500">Ảnh chụp lấy y hệt Report PH (điểm ET/BTVN/MT, hạng lớp/khối). Chụp trước, PH chưa thấy tới khi chốt Report riêng.</div>
-        <label className="flex shrink-0 items-center gap-1.5 text-[12px] font-semibold text-slate-600">Nền ảnh FB
-          <select value={phongCach} onChange={(e) => setPhongCach(e.target.value as PhongCach)} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
-            {[...new Set(PHONG_CACH.map((p) => p.nhom))].map((n) => <optgroup key={n} label={n}>{PHONG_CACH.filter((p) => p.nhom === n).map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}</optgroup>)}
-          </select>
-        </label>
         <button disabled={!!bulk || soChua === 0} onClick={() => void chupCaBang()}
           className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500 disabled:opacity-50">
           {bulk ? `Đang chụp ${bulk.done}/${bulk.total}…` : `📸 Chụp cả bảng (${soChua} chưa có)`}
@@ -457,19 +432,13 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
                     )}
                   </td>
                   <td className="px-3 py-2 text-center">
-                    <div className="flex items-center justify-center gap-1.5">
-                    <label title={chanDung[slot.hocSinhId] ? 'Đổi ảnh chân dung' : 'Tải ảnh chân dung lên'} className="cursor-pointer">
-                      <input type="file" accept="image/*" className="hidden" disabled={taiLen != null} onChange={(e) => { void chonAnh(slot.hocSinhId, e.target.files?.[0]); e.target.value = '' }} />
-                      {taiLen === slot.hocSinhId ? <span className="inline-block h-10 w-8 text-center leading-10">⏳</span>
-                        : chanDung[slot.hocSinhId] ? <img src={chanDung[slot.hocSinhId]} alt="" className="h-10 w-8 rounded border border-slate-200 object-cover hover:ring-2 hover:ring-amber-300" />
-                        : <span className="inline-flex h-10 w-8 items-center justify-center rounded border border-dashed border-slate-300 text-[15px] text-slate-400 hover:border-amber-400 hover:text-amber-600">📷</span>}
-                    </label>
                     {loaiGiai === 'cham_chi' ? <span className="text-[11px] text-slate-300">chưa có nền</span> : (
-                      <button disabled={fbBusy != null} onClick={() => void lamAnhFB(r, loaiGiai as LoaiNen)} className="rounded bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-700 hover:bg-amber-100 disabled:opacity-50">
-                        {fbBusy === k ? '⏳' : '🏅 Làm ảnh'}
+                      <button onClick={() => setXuong({ hsId: slot.hocSinhId, mon: card.mon, loai: loaiGiai as LoaiNen, ten: `vinh-danh-${ym}-${card.tenLop}-${slot.maHs ?? slot.hocSinhId}.png` })}
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 py-0.5 pl-0.5 pr-2 text-[11px] font-bold text-amber-700 hover:bg-amber-100">
+                        {chanDung[slot.hocSinhId] ? <img src={chanDung[slot.hocSinhId]} alt="" className="h-9 w-7 rounded object-cover" /> : <span className="inline-flex h-9 w-7 items-center justify-center rounded border border-dashed border-amber-300">📷</span>}
+                        🏅 Làm ảnh
                       </button>
                     )}
-                    </div>
                   </td>
                   <td className="px-3 py-2">{slot.congBoAt ? <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">Đã công bố {fmtNgay(slot.congBoAt)}</span> : <span className="whitespace-nowrap rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-bold text-orange-700">Chờ chốt tháng</span>}</td>
                 </tr>
@@ -484,16 +453,8 @@ function BangDaChot({ rows, ym }: { rows: { card: TraoGiaiClass; loaiGiai: LoaiG
         </div>,
         document.body,
       )}
-      {fbXem && createPortal(
-        <div onClick={() => setFbXem(null)} className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/75 p-4">
-          <img src={fbXem.url} alt="" className="max-h-[85vh] max-w-full rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()} />
-          <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
-            <a href={fbXem.url} download={fbXem.ten} className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-amber-400">⬇ Tải ảnh</a>
-            <button onClick={() => setFbXem(null)} className="rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700">Đóng</button>
-          </div>
-        </div>,
-        document.body,
-      )}
+      {xuong && <XuongAnhFB hsId={xuong.hsId} mon={xuong.mon} ym={ym} loai={xuong.loai} tenFile={xuong.ten}
+        onClose={() => setXuong(null)} onDoiAnh={(url) => setChanDung((p) => ({ ...p, [xuong.hsId]: url }))} />}
       {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
     </>
   )
@@ -506,9 +467,8 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
   const [ds, setDs] = useState<XsKhoiNhom[] | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
-  const [phongCach, setPhongCach] = useState<PhongCach>('hoanggia')
+  const [xuong, setXuong] = useState<{ hsId: string; mon: string; ten: string } | null>(null)
   const [chanDung, setChanDung] = useState<Record<string, string>>({})
-  const [fbXem, setFbXem] = useState<{ url: string; ten: string } | null>(null)
   const [toast, setToast] = useState<string | null>(null)
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000) }
 
@@ -532,23 +492,6 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
     } catch (e) { flash('⚠️ ' + (e as Error).message) }
     finally { setBusy(null) }
   }
-  async function chonAnh(hsId: string, file: File | undefined) {
-    if (!file) return
-    setBusy('anh|' + hsId)
-    try { const url = await uploadAnhChanDung(hsId, file); setChanDung((p) => ({ ...p, [hsId]: url })); flash('Đã lưu ảnh chân dung.') }
-    catch (e) { flash('⚠️ ' + (e as Error).message) }
-    finally { setBusy(null) }
-  }
-  async function lamAnh(n: XsKhoiNhom, u: XsKhoiUngVien) {
-    setBusy('fb|' + u.hocSinhId)
-    try {
-      const d = await getVinhDanhData(u.hocSinhId, n.mon, ym)
-      if (chanDung[u.hocSinhId]) d.anhChanDung = chanDung[u.hocSinhId]
-      const cv = await veVinhDanhFB(d, 'tieu_bieu', phongCach)
-      setFbXem({ url: cv.toDataURL('image/png'), ten: `xs-nhat-khoi-${ym}-${n.mon}-K${n.khoi}-${d.maHs ?? u.hocSinhId}.png` })
-    } catch (e) { flash('⚠️ ' + (e as Error).message) }
-    finally { setBusy(null) }
-  }
 
   if (err) return <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-600">Lỗi: {err}</div>
   if (!ds) return <p className="text-sm text-slate-400">Đang tải…</p>
@@ -558,11 +501,6 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
     <>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <div className="text-[12px] text-slate-500">Mỗi môn × khối chọn <b>1 em</b> trong số học sinh Xuất sắc của các lớp trong khối. Đã chọn <b className="text-slate-700">{soChon}/{ds.length}</b> khối. Bấm em để chọn, bấm lại để bỏ.</div>
-        <label className="flex shrink-0 items-center gap-1.5 text-[12px] font-semibold text-slate-600">Nền ảnh FB
-          <select value={phongCach} onChange={(e) => setPhongCach(e.target.value as PhongCach)} className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[12px]">
-            {[...new Set(PHONG_CACH.map((p) => p.nhom))].map((nh) => <optgroup key={nh} label={nh}>{PHONG_CACH.filter((p) => p.nhom === nh).map((p) => <option key={p.id} value={p.id}>{p.ten}</option>)}</optgroup>)}
-          </select>
-        </label>
       </div>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
         {ds.map((n) => {
@@ -586,17 +524,11 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
                         <span className="shrink-0 text-[12px] text-slate-500">MT <b className="text-slate-800">{fmtMT(u.mt)}</b>{u.hangKhoi != null ? <span className="ml-1 text-slate-400">#{u.hangKhoi}/{u.tongKhoi}</span> : null}</span>
                       </button>
                       {la && (
-                        <div className="flex shrink-0 items-center gap-1.5">
-                          <label title={chanDung[u.hocSinhId] ? 'Đổi ảnh chân dung' : 'Tải ảnh chân dung lên'} className="cursor-pointer">
-                            <input type="file" accept="image/*" className="hidden" disabled={busy != null} onChange={(e) => { void chonAnh(u.hocSinhId, e.target.files?.[0]); e.target.value = '' }} />
-                            {busy === 'anh|' + u.hocSinhId ? <span className="inline-block h-9 w-7 text-center leading-9">⏳</span>
-                              : chanDung[u.hocSinhId] ? <img src={chanDung[u.hocSinhId]} alt="" className="h-9 w-7 rounded border border-slate-200 object-cover hover:ring-2 hover:ring-amber-300" />
-                              : <span className="inline-flex h-9 w-7 items-center justify-center rounded border border-dashed border-slate-300 text-[14px] text-slate-400 hover:border-amber-400">📷</span>}
-                          </label>
-                          <button disabled={busy != null} onClick={() => void lamAnh(n, u)} className="rounded bg-amber-500 px-2 py-1 text-[11px] font-bold text-white hover:bg-amber-400 disabled:opacity-50">
-                            {busy === 'fb|' + u.hocSinhId ? '⏳' : '🏅 Làm ảnh'}
-                          </button>
-                        </div>
+                        <button onClick={() => setXuong({ hsId: u.hocSinhId, mon: n.mon, ten: `xs-nhat-khoi-${ym}-${n.mon}-K${n.khoi}-${u.maHs ?? u.hocSinhId}.png` })}
+                          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-amber-500 py-0.5 pl-0.5 pr-2 text-[11px] font-bold text-white hover:bg-amber-400">
+                          {chanDung[u.hocSinhId] ? <img src={chanDung[u.hocSinhId]} alt="" className="h-8 w-6 rounded object-cover" /> : <span className="inline-flex h-8 w-6 items-center justify-center rounded bg-white/30">📷</span>}
+                          🏅 Làm ảnh
+                        </button>
                       )}
                     </div>
                   )
@@ -607,16 +539,8 @@ function BangXsKhoi({ ym, khoi }: { ym: string; khoi: string }) {
           )
         })}
       </div>
-      {fbXem && createPortal(
-        <div onClick={() => setFbXem(null)} className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-3 bg-black/75 p-4">
-          <img src={fbXem.url} alt="" className="max-h-[85vh] max-w-full rounded-xl shadow-2xl" onClick={(e) => e.stopPropagation()} />
-          <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
-            <a href={fbXem.url} download={fbXem.ten} className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-amber-400">⬇ Tải ảnh</a>
-            <button onClick={() => setFbXem(null)} className="rounded-lg bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700">Đóng</button>
-          </div>
-        </div>,
-        document.body,
-      )}
+      {xuong && <XuongAnhFB hsId={xuong.hsId} mon={xuong.mon} ym={ym} loai="tieu_bieu" tenFile={xuong.ten}
+        onClose={() => setXuong(null)} onDoiAnh={(url) => setChanDung((p) => ({ ...p, [xuong.hsId]: url }))} />}
       {toast && <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-800 px-5 py-3 text-sm font-medium text-white shadow-lg">{toast}</div>}
     </>
   )
