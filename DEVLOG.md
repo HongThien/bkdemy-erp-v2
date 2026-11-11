@@ -79826,3 +79826,7 @@ Thùy nêu 4 việc, làm được 3:
 - Bản đáp án (Bản GV) khuôn ET in tên em dưới tiêu đề ("Học sinh: … · Lớp …") — Thùy 11/11: đáp án sau giờ mỗi em 1 đề. Áp chung ETHeaderBK (ET cả lớp bản GV cũng có tên). Kiểm: bài test Anh Thư 11A1.
 
 - App TA (Thùy 11/11 "bổ trợ này không cần mở ca, chỉ cần chỗ nhập liệu, GV mở rồi"): ca sau giờ tách khỏi danh sách ca Yếu thành khối "Bổ trợ sau giờ · nhập kết quả bài test" — chạm em ⇒ NhapKetQua (nộp = xong ca); trạng thái Chờ nhập / GV chưa in bài test / Đã nhập; badge nợ chỉ đếm sau giờ khi đã có bài test chưa nhập. DB: TA cùng làm thấy ca (thử 3 TA thật). Build TA ổn (ta.js 1,83 MB < 2 MiB). Chưa thử bằng tài khoản TA thật trên máy TA.
+
+### App TA: ô Bổ trợ sau giờ + tab nhập Đ/C/S — Thùy 11/11
+- mig 202611112203 ĐÃ ÁP: fn_btnhe_ta_nhap_ds (em sau giờ của TA cùng làm/người mở, ≤ hôm nay, đã có bài test, chưa xong + em xong hôm nay) · fn_btnhe_nhap_dcs (Đ=1 · C=0,5 · S=0 · null xoá; chỉ bài bo_tro_test của buổi bo_tro_nhe, chưa nộp). Nộp = fn_btyeu_giay_nop (xong ca). Đo: 60 ms (lần đầu sau sự cố DB 26 s / 3,9 s).
+- Màn: ô cam "Bổ trợ sau giờ" ở màn chính TA (badge = em chờ nhập) → SauGioNhapTA (mỗi em 1 thẻ, Câu 1…n × Đ/C/S, lưu từng ô, Xong · nộp). Bỏ khối sau giờ khỏi tab Bổ trợ; demNoBoTro không đếm sau giờ. Kiểm ERP local (Admin) trên dữ liệu thật 11A1; chưa thử tài khoản TA thật.

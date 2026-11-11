@@ -21,6 +21,7 @@ import ChamBuoi from './ChamBuoi'
 import DashTa from './DashTa'
 import GopY from './GopY'
 import CaBoTroTA, { demNoBoTro } from './CaBoTroTA'
+import SauGioNhapTA from './SauGioNhapTA'
 import CaOnThiTA from './CaOnThiTA' // 23/10: bổ trợ ôn thi — TA điểm danh + báo động, không mở ca/app HS
 import CaHinhTA from './CaHinhTA' // 17/10: thay hộp 'Hình yếu theo mô hình' (HinhYeuTA.tsx giữ nguyên, chỉ không render)
 import { viecBoTroCuaToi, caBuCuaToi, caDuoiCuaToi, btvnBuCuaToi, xuLyCaHetHan, type ViecCaBoTro, type ViecRetest, type CaBu, type BtvnBu } from '../../lib/botro_yeu_ca'
@@ -43,7 +44,7 @@ const TA_MO_TA_NHAC = 'nhớ kiểm tra & chấm hết ET/BTVN/bài trên lớp 
 
 type NvKey = 'ingame' | 'et' | 'btvn'
 // 'botro' = ca bổ trợ yếu (PLAN-botro-yeu-ca.md) — nghiệp vụ thứ 4, dữ liệu riêng (fn_btyeu_viec_cua_toi), không qua getMyTasks.
-type TabKey = 'home' | NvKey | 'dash' | 'botro' | 'cong'   // 'cong' = Chấm công (CongTA, Thùy 14/10)
+type TabKey = 'home' | NvKey | 'dash' | 'botro' | 'cong' | 'saugio'   // 'saugio' = nhập Đ/C/S bổ trợ sau giờ (Thùy 11/11)   // 'cong' = Chấm công (CongTA, Thùy 14/10)
 type ViecBoTro = { ca: ViecCaBoTro[]; retest: ViecRetest[] }
 const A = (n: string) => `/bk-ui/${n}.png`
 // icon PNG + màu pastel/accent theo nghiệp vụ (bộ icon CEO 07/09; màu hex inline — không ghép class Tailwind động)
@@ -163,7 +164,8 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
         {tab === 'dash' && <DashTa profile={profile} />}
         {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><CaHinhTA /><CaOnThiTA /></>}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
-        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
+        {tab === 'saugio' && <SauGioNhapTA onBack={() => setTab('home')} onDoi={taiBoTro} />}
+        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && tab !== 'saugio' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
           dauDs={tab === 'btvn' ? <>{tuDongBat && <NutChamTuDong onClick={() => setMoTuDong(true)} />}<DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /></> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}
       </div>
 
@@ -282,6 +284,7 @@ function TrangChu({ profile, homNay, loading, coQuyen, tasks, canLam, noCua, now
 
         {/* BOX DASHBOARD THÁNG — 1 cái riêng đứng cùng các nghiệp vụ (CEO 31/08) */}
         {!loading && coQuyen && <BoxDashThang d={dashTom} onGo={() => onGo('dash')} />}
+        {!loading && coQuyen && <BoxSauGio v={boTro} homNay={homNay} onGo={() => onGo('saugio')} />}
         {!loading && coQuyen && <BoxBoTro v={boTro} homNay={homNay} onGo={() => onGo('botro')} />}
         {!loading && coQuyen && <BoxBu ca={caBu} homNay={homNay} onOpen={onOpenBuoi} />}
         {!loading && coQuyen && <BoxBu ca={caDuoi} homNay={homNay} onOpen={onOpenBuoi} loai="bo_tro_duoi" />}
@@ -350,7 +353,28 @@ function BoxChamCong({ cong, onGo }: { cong: { dong: DongCong[]; goiY: GoiY[] } 
 }
 
 // Box "Bổ trợ yếu" — ca hôm nay của tôi + retest đến hạn (PLAN-botro-yeu-ca.md). Bấm → tab botro.
-function BoxBoTro({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () => void }) {
+// Ô BỔ TRỢ SAU GIỜ (Thùy 11/11): chỉ hiện khi TA có em sau giờ (hôm nay / nợ cũ). Bấm ⇒ tab nhập Đ/C/S, không mở ca.
+function BoxSauGio({ v, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () => void }) {
+  const ds = v.ca.filter((c) => c.nhe && c.ngay <= homNay)
+  if (!ds.length) return null
+  const cho = ds.filter((c) => c.co_test && !c.test_da_nop).length
+  const chuaIn = ds.filter((c) => !c.co_test).length
+  return (
+    <button onClick={onGo} className="rounded-[22px] p-3 text-left active:scale-[.99]" style={{ background: '#FFF1D6' }}>
+      <div className="flex items-center gap-2.5">
+        <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80"><img src={A('pr_et')} alt="" className="h-10 w-10 object-contain" draggable={false} /><NoBadge n={cho} /></span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="font-bubble text-[17px] font-extrabold text-[#16224D]">Bổ trợ sau giờ</p>
+          <p className="text-[12.5px] text-[#63709A]">{[cho ? `${cho} em chờ nhập Đ/C/S` : 'Đã nhập hết', chuaIn ? `${chuaIn} em GV chưa in bài` : ''].filter(Boolean).join(' · ')}</p>
+        </div>
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F2A93B] text-[15px] font-bold text-white">›</span>
+      </div>
+    </button>
+  )
+}
+
+function BoxBoTro({ v: v0, homNay, onGo }: { v: ViecBoTro; homNay: string; onGo: () => void }) {
+  const v = { ...v0, ca: v0.ca.filter((c) => !c.nhe) }   // sau giờ có ô riêng
   const homNayCa = v.ca.filter((c) => c.ngay === homNay)
   const no = demNoBoTro(v)
   const noCu = v.ca.filter((c) => c.ngay < homNay && !c.danh_gia_xong_at).length

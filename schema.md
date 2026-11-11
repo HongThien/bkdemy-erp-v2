@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-521 bảng · 39 view · 0 enum · 341 trigger · 1753 function
+521 bảng · 39 view · 0 enum · 341 trigger · 1756 function
 
 ## _app_secrets
 
@@ -10767,7 +10767,9 @@ WITH luot AS (
 - `fn_btnhe_lop_cua_toi(p_ngay date)` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, ta_id uuid, ta_ten text)
 - `fn_btnhe_lop_hs(p_lop uuid, p_ngay date)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, so_dang_yeu integer, dang_yeu text[], so_ca_nhe_tuan integer)
 - `fn_btnhe_luu_bai(p_buoi uuid, p_loai text, p_ds jsonb)` → jsonb
+- `fn_btnhe_nhap_dcs(p_bai_test_cau uuid, p_kq text)` → jsonb
 - `fn_btnhe_soan(p_buoi uuid, p_loai text, p_so integer DEFAULT 3)` → jsonb
+- `fn_btnhe_ta_nhap_ds()` → jsonb
 - `fn_btnhe_tao(p_lop uuid, p_kieu text, p_ngay date, p_gio_bat_dau time without time zone, p_phut integer, p_phong text, p_hs uuid[], p_ta uuid)` → jsonb
 - `fn_btvn_ai_chot(p_lan_id uuid, p_items jsonb)` → integer
 - `fn_btvn_ai_dat_anh_cham(p_anh_id uuid, p_path text)` → boolean
@@ -10947,6 +10949,7 @@ WITH luot AS (
 - `fn_dien_form_cho_duyet(p_khoi text DEFAULT NULL::text, p_da_duyet boolean DEFAULT false)` → TABLE(id uuid, loai text, ref_id uuid, ma text, khoi text, de text, gia_thiet text, anh text, buoc jsonb, o jsonb, sinh_at timestamp with time zone, da_duyet boolean, sua_truoc_duyet boolean, ai_model text)
 - `fn_dien_form_duyet(p_id uuid, p_nguoi uuid, p_o jsonb DEFAULT NULL::jsonb)` → void
 - `fn_dien_form_tu_choi(p_id uuid, p_nguoi uuid, p_ly_do text)` → void
+- `fn_do_truy_van_cham(p_toi_thieu_ms numeric DEFAULT 2000, p_gioi_han integer DEFAULT 200)` → TABLE(vai text, so_lan bigint, tb_ms numeric, max_ms numeric, tong_giay numeric, truy_van text)
 - `fn_dong_btvn(p_buoi_id uuid)` → jsonb
 - `fn_dong_phase(p_buoi_id uuid, p_phase text)` → jsonb
 - `fn_dtv_bxh(p_tieu_chi text, p_uid text DEFAULT NULL::text)` → jsonb

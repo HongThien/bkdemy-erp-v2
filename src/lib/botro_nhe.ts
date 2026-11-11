@@ -120,6 +120,21 @@ export async function luuBai(buoiId: string, loai: 'luyen' | 'test', ds: { ma_da
   return data as { bai_test_id: string; so_cau: number }
 }
 
+// APP TA nhập Đ/C/S bài test sau giờ (Thùy 11/11, mig 202611112203) — TA không mở ca
+export type EmNhapSauGio = {
+  buoi_id: string; ngay: string; gio_bat_dau: string | null; ten_lop: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; mon: string
+  bai_test_id: string; xong: boolean; da_nop: boolean; caus: { id: string; thu_tu: number; loai_cau: string; kq: 'D' | 'C' | 'S' | null }[]
+}
+export async function taNhapDs(): Promise<EmNhapSauGio[]> {
+  const { data, error } = await supabase.rpc('fn_btnhe_ta_nhap_ds')
+  if (error) throw error
+  return ((data ?? []) as EmNhapSauGio[]).map((x) => ({ ...x, caus: x.caus ?? [] }))
+}
+export async function nhapDcs(cauId: string, kq: 'D' | 'C' | 'S' | null): Promise<void> {
+  const { error } = await supabase.rpc('fn_btnhe_nhap_dcs', { p_bai_test_cau: cauId, p_kq: kq })
+  if (error) throw error
+}
+
 // Thông báo dán nhóm Zalo lớp (Thùy 29/10). Chỉ ghép chữ hiển thị — tên em lấy từ ca đã lưu, bỏ em đã huỷ (vắng/huỷ ca).
 export function thongBaoPhuHuynh(ca: CaNhe): string {
   const ten = ca.hs.filter((h) => h.buoi_trang_thai !== 'huy').map((h) => h.ho_ten)
