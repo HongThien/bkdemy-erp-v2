@@ -7,6 +7,7 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inSinhHinhGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
 import SauGioCa from './SauGioCa'
+import { inTestSauGio } from '../../lib/botro_nhe'
 import { MathText } from '../kho/ui'
 import { CauCuaEmTA } from './CauCuaEmTA'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
@@ -41,10 +42,20 @@ const TT_NHAN: Record<TrangThai, { ten: string; cls: string }> = {
 
 export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; retest: ViecRetest[] }; onDoi: () => void }) {
   const [moId, setMoId] = useState<string | null>(null)
+  // BỔ TRỢ SAU GIỜ (Thùy 11/11): TA KHÔNG mở ca (GV/trưởng khối đã mở + in) — chỉ có CHỖ NHẬP kết quả bài test
+  const [phieuNhap, setPhieuNhap] = useState<BaiInGiay | null>(null)
+  const [dangMo, setDangMo] = useState<string | null>(null)
+  const [loiSg, setLoiSg] = useState<string | null>(null)
   const homNay = homNayVN()
-  if (moId) return <CaDetail buoiId={moId} nhe={viec.ca.some((c) => c.buoi_id === moId && c.nhe)} onBack={() => { setMoId(null); onDoi() }} />
+  if (moId) return <CaDetail buoiId={moId} onBack={() => { setMoId(null); onDoi() }} />
 
-  const nhom = (tt: (t: TrangThai, c: ViecCaBoTro) => boolean) => viec.ca.filter((c) => tt(trangThaiCa(c, homNay), c))
+  const sauGio = viec.ca.filter((c) => c.nhe)
+  async function nhapSauGio(c: ViecCaBoTro) {
+    setDangMo(c.buoi_id); setLoiSg(null)
+    try { const r = await inTestSauGio(c.buoi_id); setPhieuNhap(await inLayBaiGiay(r.bai_test_id)) }   // bài đã in ⇒ DB trả đúng bài đó
+    catch (e: any) { setLoiSg(e?.message ?? String(e)) } finally { setDangMo(null) }
+  }
+  const nhom = (tt: (t: TrangThai, c: ViecCaBoTro) => boolean) => viec.ca.filter((c) => !c.nhe && tt(trangThaiCa(c, homNay), c))
   const homNayCa = nhom((_t, c) => c.ngay === homNay)
   const noCu = nhom((t, c) => c.ngay < homNay && t !== 'hoan_tat')
   const sapToi = nhom((t) => t === 'sap_toi')
@@ -68,7 +79,25 @@ export default function CaBoTroTA({ viec, onDoi }: { viec: { ca: ViecCaBoTro[]; 
           </div>
         )}
         {sapToi.length > 0 && <Nhom tieuDe="Sắp tới" cls="text-[#63709A]" items={sapToi} homNay={homNay} onMo={setMoId} />}
+        {sauGio.length > 0 && (
+          <div className="flex flex-col gap-1">
+            <p className="px-1 pt-1 text-[11px] font-bold uppercase tracking-wide text-[#C27A00]">Bổ trợ sau giờ · nhập kết quả bài test</p>
+            {loiSg && <p className="rounded-xl bg-[#FFE3EA] px-3 py-1.5 text-[12px] text-[#C0355A]">{loiSg}</p>}
+            {sauGio.map((c) => {
+              const xong = !!c.danh_gia_xong_at || c.test_da_nop
+              const tt = xong ? { ten: 'Đã nhập', cls: 'bg-[#E4F8EC] text-[#1E8A52]' } : c.co_test ? { ten: 'Chờ nhập', cls: 'bg-[#FFF1D6] text-[#C27A00]' } : { ten: 'GV chưa in bài test', cls: 'bg-white/85 text-[#63709A]' }
+              const duoc = c.co_test && !xong
+              return (
+                <BKRowCard key={c.buoi_id} icon="/bk-ui/pr_et.png" bg="#FFF1D6" accent="#F2A93B" onClick={duoc && !dangMo ? () => nhapSauGio(c) : undefined}
+                  title={<>{c.ho_ten} <MaHS ma={c.ma_hs} className="ml-1" /> <span className="font-normal text-[#63709A]">· {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span></>}
+                  sub={<span>{c.ngay === homNay ? 'hôm nay' : `${thuCuaNgay(c.ngay)} ${ddmmVN(c.ngay)}`}{c.gio_bat_dau ? ` · ${hhmm(c.gio_bat_dau)}` : ''}{c.phong ? ` · ${c.phong}` : ''}{duoc ? ' · chạm để nhập' : ''}</span>}
+                  right={<span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${tt.cls}`}>{dangMo === c.buoi_id ? '…' : tt.ten}</span>} />
+              )
+            })}
+          </div>
+        )}
       </div>
+      {phieuNhap && <NhapKetQua bai={phieuNhap} onDong={() => { setPhieuNhap(null); onDoi() }} />}
     </div>
   )
 }
@@ -506,5 +535,6 @@ function TiLe({ dung, tong }: { dung: number; tong: number }) {
 
 export function demNoBoTro(viec: { ca: ViecCaBoTro[]; retest: ViecRetest[] }): number {
   const homNay = homNayVN()
-  return viec.ca.filter((c) => c.ngay <= homNay && !c.danh_gia_xong_at && c.diem_danh !== 'vang').length + viec.retest.length
+  // sau giờ: chỉ là "nợ" khi GV đã in bài test mà TA chưa nhập (Thùy 11/11 — TA không mở ca sau giờ)
+  return viec.ca.filter((c) => c.ngay <= homNay && !c.danh_gia_xong_at && c.diem_danh !== 'vang' && (!c.nhe || (c.co_test && !c.test_da_nop))).length + viec.retest.length
 }

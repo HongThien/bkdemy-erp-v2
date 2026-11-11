@@ -79824,3 +79824,5 @@ Thùy nêu 4 việc, làm được 3:
 - Ảnh thông báo PH sau giờ (Thùy 11/11 "nhiều HS bị rối"): mỗi em 1 dòng có gạch đầu dòng, cao ảnh theo nội dung (rộng 1080, tối thiểu 720; 13 em → 1341). Câu: "Buổi học <thứ, ngày>, các bạn sau sẽ ở lại bổ trợ kiến thức sau giờ học:" … "Các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!".
 
 - Bản đáp án (Bản GV) khuôn ET in tên em dưới tiêu đề ("Học sinh: … · Lớp …") — Thùy 11/11: đáp án sau giờ mỗi em 1 đề. Áp chung ETHeaderBK (ET cả lớp bản GV cũng có tên). Kiểm: bài test Anh Thư 11A1.
+
+- App TA (Thùy 11/11 "bổ trợ này không cần mở ca, chỉ cần chỗ nhập liệu, GV mở rồi"): ca sau giờ tách khỏi danh sách ca Yếu thành khối "Bổ trợ sau giờ · nhập kết quả bài test" — chạm em ⇒ NhapKetQua (nộp = xong ca); trạng thái Chờ nhập / GV chưa in bài test / Đã nhập; badge nợ chỉ đếm sau giờ khi đã có bài test chưa nhập. DB: TA cùng làm thấy ca (thử 3 TA thật). Build TA ổn (ta.js 1,83 MB < 2 MiB). Chưa thử bằng tài khoản TA thật trên máy TA.
