@@ -79928,3 +79928,9 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "file lớp 8 chọn câu mới vẫn bị 4 đáp án abcd". Gốc: _kho_snapshot_cau tự hiện form TN đã duyệt ⇒ câu TLN thành trắc nghiệm. Sửa: cờ giao dịch bk.snap_khong_form bật quanh vòng chụp ở fn_btnhe_luu_bai / fn_btnhe_in_test khi _btnhe_uu_tu_luan, tắt sau vòng; _kho_snapshot_cau giữ chữ ký, không cờ = như cũ.
 - Thử rollback 3 câu TLN có form (T108020702012…): K8 abcd→trả lời ngắn; K10 vẫn abcd. 13 bài test K8 16:43 chưa sửa, chờ Thùy.
 - (12/11 tối) File SQL Editor của lần tách đã vào DB (fn_kho_sua_tk + CHECK kho_sua_log có vatly/hoahoc, ACL không anon) ⇒ đã `--ghi-so`. DB: 0 hàm/ràng buộc/bảng còn dấu Lý hóa. **Vật lý + Hóa học: DB đủ.**
+
+## 12/11 22:56 — QUYẾT ĐỊNH: Mục tiêu tuần của học sinh (chỉ spec, CHƯA build)
+- Thùy (Sparring): công khai mục tiêu tuần cho HS + phụ huynh thành cái neo chung — bảng gồm dạng học mới + dạng nợ; tuần sau đánh giá lại.
+- Chốt: người đọc = HS và phụ huynh · mục tiêu hệ tự suy từ giáo trình · ngưỡng = mastery đang chạy · kênh = app HS là chính + app GV, phụ huynh tạm chụp ảnh.
+- Timeline (qua 4 phương án): MỘT ngày chốt = thứ Hai; cửa sổ mục tiêu = các buổi có HẠN BTVN rơi trong tuần ⇒ lùi một buổi so với lịch dạy (buổi cuối tuần trước + buổi đầu tuần này). Lịch dạy tuần của GV là chu kỳ riêng, không đổi.
+- Ghi ở `spec-muc-tieu-tuan.md` (§8 = 7 câu còn treo). Hiện trạng dữ liệu đọc từ schema.md/migration, CHƯA query DB thật; việc đầu tiên khi build = đo % buổi có tài liệu trên hệ trước thứ Hai.
