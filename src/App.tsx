@@ -6,11 +6,13 @@ import TopBar from './components/TopBar'
 import NhanSuHome from './screens/NhanSuHome'
 import Login from './auth/Login'
 import GeminiMeterBadge from './components/GeminiMeterBadge'
-import HocSinhApp from './screens/hocsinh/HocSinhApp'
-import DoiMatKhau from './screens/hocsinh/DoiMatKhau'
+const HocSinhApp = lazyMan(() => import('./screens/hocsinh/HocSinhApp'))
+const DoiMatKhau = lazyMan(() => import('./screens/hocsinh/DoiMatKhau'))
 import { getMyHocSinhId } from './lib/testonline'
 import { useIsMobile } from './hooks/useIsMobile'
 import TvSuKien, { parseTvHash } from './screens/sukien/TvSuKien'
+import { lazyMan } from './lib/lazyMan'
+import { Suspense } from 'react'
 
 export default function App() {
   const [session, setSession] = useState<Session | null | undefined>(undefined) // undefined = đang tải
@@ -51,9 +53,11 @@ export default function App() {
     const maHS = (session.user.email ?? '').split('@')[0]
     return (
       <div style={{ zoom: 'var(--app-unz)' }}>
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-sm text-slate-400">Đang tải…</div>}>
         {phaiDoiMK
           ? <DoiMatKhau maHS={maHS} batBuoc onXong={() => supabase.auth.getSession().then(({ data }) => setSession(data.session))} />
           : <HocSinhApp hocSinhId={hsId} hoTen={(session.user.user_metadata?.ho_ten as string) || 'bạn'} maHS={maHS} />}
+        </Suspense>
       </div>
     )
   }
@@ -71,7 +75,10 @@ export default function App() {
     <div className={isMobile ? 'flex h-dvh flex-col overflow-hidden bg-slate-50 text-slate-800' : 'flex h-[calc(100vh/var(--app-z))] flex-col overflow-hidden bg-slate-50 text-slate-800'}>
       <TopBar email={session.user.email ?? ''} />
       <div className="min-h-0 flex-1 overflow-hidden">
-        <NhanSuHome user={user} />
+        {/* lưới an toàn cho màn tải-khi-mở nằm ngoài vùng Suspense riêng của NhanSuHome */}
+        <Suspense fallback={<div className="p-8 text-sm text-slate-400">Đang mở…</div>}>
+          <NhanSuHome user={user} />
+        </Suspense>
       </div>
       <GeminiMeterBadge />
       {/* LinkGenWorker (đời 1 — render link-PDF trên máy người dùng) ĐÃ NGỪNG MOUNT (07-12): nó chiếm

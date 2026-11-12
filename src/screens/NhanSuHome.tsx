@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
+import { lazyMan } from '../lib/lazyMan'
 import type { User, NavGroup } from '../types'
 import { useStore, staffNavFromScope, useCayYT } from '../store/useStore'
 import NutGhimYT from '../components/NutGhimYT'
@@ -9,84 +10,86 @@ import DuongDan from '../components/DuongDan'
 import { useAnTieuDeTrung } from '../lib/useAnTieuDeTrung'
 import { useNutQuayVe } from '../lib/useNutQuayVe'
 import HomeScreen from './HomeScreen'
-import MyPlanScreen from './myplan/MyPlanScreen'
+const MyPlanScreen = lazyMan(() => import('./myplan/MyPlanScreen'))
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { listCanScanDaCham, listCanChamCuaToi, listCanTraBaiCuaToi, type CaTestChoScanDaCham, type CaTestChoCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
-import { BuoiDetail } from './gami/BuoiHocScreen'
-import { BuoiBuDetail } from './botro/BoTroScreen'
-import { BuoiDuoiDetail } from './botro/BoTroDuoiScreen'
+const BuoiDetail = lazyMan(() => import('./gami/BuoiHocScreen').then((m) => ({ default: m.BuoiDetail })))
+const BuoiBuDetail = lazyMan(() => import('./botro/BoTroScreen').then((m) => ({ default: m.BuoiBuDetail })))
+const BuoiDuoiDetail = lazyMan(() => import('./botro/BoTroDuoiScreen').then((m) => ({ default: m.BuoiDuoiDetail })))
 import PersonalCard from '../components/PersonalCard'
 import NavTree from '../components/NavTree'
-import KhoScreen from './kho/KhoScreen'
-import BanDoMoiScreen from './kho/BanDoMoi'
-import SoTayCongThucScreen from './sotay/SoTayCongThucScreen'
-import NhapKhoScreen from './nhapkho/NhapKhoScreen'
-import GiaoTrinhBdmScreen from './tailieu/bdm/GiaoTrinhBdmScreen'
-import TaiLieuScreen from './tailieu/TaiLieuScreen'
-import ETScreen from './tailieu/ETScreen'
-import ETBdmEditor from './tailieu/bdm/ETBdmEditor'
-import MTScreen from './tailieu/MTScreen'
-import BTScreen from './tailieu/BTScreen'
-import KhoTaiLieuScreen from './tailieu/KhoTaiLieuScreen'
-import KhoDeThiScreen from './tailieu/KhoDeThi'
-import NhanSuScreen from './nhansu/NhanSuScreen'
-import OrgChartScreen from './nhansu/OrgChartScreen'
-import TKBScreen from './nhansu/TKBScreen'
-import PhanCongScreen from './nhansu/PhanCongScreen'
-import LopScreen from './nhansu/LopScreen'
-import HocSinhScreen from './nhansu/HocSinhScreen'
-import BuoiHocScreen from './gami/BuoiHocScreen'
-import GamiDiemScreen from './gami/GamiDiemScreen'
-import ThanhTichScreen from './gami/ThanhTichScreen'
-import KetQuaScreen from './ketqua/KetQuaScreen'
-import ChamMTScreen from './ketqua/ChamMTScreen'
-import ReportPHScreen from './report/ReportPHScreen'
-import TraoGiaiScreen from './traogiai/TraoGiaiScreen'
-import TinhNangScreen from './gami/TinhNangScreen'
-import CauBaoLoiScreen from './kho/CauBaoLoiScreen'
-import DuyetChamScreen from './duyetcham/DuyetChamScreen'
-import DuyetLoiGiaiScreen from './duyetloigiai/DuyetLoiGiaiScreen'
-import HocPhiScreen from './hocphi/HocPhiScreen'
-import BangTaskScreen from './giaoviec/BangTaskScreen'
-import TroLyTab from './troly/TroLyTab'
-import BaoCaoCaNhan from './troly/BaoCaoCaNhan'
+const KhoScreen = lazyMan(() => import('./kho/KhoScreen'))
+const BanDoMoiScreen = lazyMan(() => import('./kho/BanDoMoi'))
+const SoTayCongThucScreen = lazyMan(() => import('./sotay/SoTayCongThucScreen'))
+const NhapKhoScreen = lazyMan(() => import('./nhapkho/NhapKhoScreen'))
+const GiaoTrinhBdmScreen = lazyMan(() => import('./tailieu/bdm/GiaoTrinhBdmScreen'))
+const TaiLieuScreen = lazyMan(() => import('./tailieu/TaiLieuScreen'))
+const ETScreen = lazyMan(() => import('./tailieu/ETScreen'))
+const ETBdmEditor = lazyMan(() => import('./tailieu/bdm/ETBdmEditor'))
+const MTScreen = lazyMan(() => import('./tailieu/MTScreen'))
+const BTScreen = lazyMan(() => import('./tailieu/BTScreen'))
+const KhoTaiLieuScreen = lazyMan(() => import('./tailieu/KhoTaiLieuScreen'))
+const KhoDeThiScreen = lazyMan(() => import('./tailieu/KhoDeThi'))
+const NhanSuScreen = lazyMan(() => import('./nhansu/NhanSuScreen'))
+const OrgChartScreen = lazyMan(() => import('./nhansu/OrgChartScreen'))
+const TKBScreen = lazyMan(() => import('./nhansu/TKBScreen'))
+const PhanCongScreen = lazyMan(() => import('./nhansu/PhanCongScreen'))
+const LopScreen = lazyMan(() => import('./nhansu/LopScreen'))
+const HocSinhScreen = lazyMan(() => import('./nhansu/HocSinhScreen'))
+const BuoiHocScreen = lazyMan(() => import('./gami/BuoiHocScreen'))
+const GamiDiemScreen = lazyMan(() => import('./gami/GamiDiemScreen'))
+const ThanhTichScreen = lazyMan(() => import('./gami/ThanhTichScreen'))
+const KetQuaScreen = lazyMan(() => import('./ketqua/KetQuaScreen'))
+const ChamMTScreen = lazyMan(() => import('./ketqua/ChamMTScreen'))
+const ReportPHScreen = lazyMan(() => import('./report/ReportPHScreen'))
+const TraoGiaiScreen = lazyMan(() => import('./traogiai/TraoGiaiScreen'))
+const TinhNangScreen = lazyMan(() => import('./gami/TinhNangScreen'))
+const CauBaoLoiScreen = lazyMan(() => import('./kho/CauBaoLoiScreen'))
+const DuyetChamScreen = lazyMan(() => import('./duyetcham/DuyetChamScreen'))
+const DuyetLoiGiaiScreen = lazyMan(() => import('./duyetloigiai/DuyetLoiGiaiScreen'))
+const HocPhiScreen = lazyMan(() => import('./hocphi/HocPhiScreen'))
+const BangTaskScreen = lazyMan(() => import('./giaoviec/BangTaskScreen'))
+const TroLyTab = lazyMan(() => import('./troly/TroLyTab'))
+const BaoCaoCaNhan = lazyMan(() => import('./troly/BaoCaoCaNhan'))
 import { trolyCaNhanDuocDung } from '../lib/troly-baocao'
-import HoiDapTab from './hoidap/HoiDapTab'
-import SuKienScreen from './sukien/SuKienScreen'
-import QuyTrinhHsMoiScreen from './vanhanhops/QuyTrinhHsMoiScreen'
+const HoiDapTab = lazyMan(() => import('./hoidap/HoiDapTab'))
+const SuKienScreen = lazyMan(() => import('./sukien/SuKienScreen'))
+const QuyTrinhHsMoiScreen = lazyMan(() => import('./vanhanhops/QuyTrinhHsMoiScreen'))
 import { hoiDapDuocDung } from '../lib/hoidap'
 import { listDotChoDuyetDuoi } from '../lib/botro_duoi'
-import QuanLyLevelScreen from './gami/QuanLyLevelScreen'
-import TongKetXuScreen from './gami/TongKetXuScreen'
-import PhanQuyenScreen from './phanquyen/PhanQuyenScreen'
-import BaoLoiScreen from './baoloi/BaoLoiScreen'
-import OpsReportScreen from './vanhanhops/OpsReportScreen'
-import PrepScreen from './vanhanhops/PrepScreen'
-import PhongHocScreen from './phonghoc/PhongHocScreen'
-import PhanCongOpsScreen from './vanhanhops/PhanCongOpsScreen'
-import ScanDaChamScreen from './vanhanhops/ScanDaChamScreen'
-import DuyetOpsNgay from './vanhanhops/DuyetOpsNgay'
-import WidgetDangYeu from './qlcl/WidgetDangYeu'
-import QlclTeamScreen from './qlcl/QlclTeamScreen'
-import PhongTruongKhoiScreen from './phongtk/PhongTruongKhoiScreen'
-import TuyenSinhScreen from './tuyensinh/TuyenSinhScreen'
-import TestDauVaoScreen, { moTabTestDauVao } from './tuyensinh/TestDauVaoScreen'
-import BoTroHubScreen, { moBoTroTab } from './botro/BoTroHubScreen'
-import HieuSuatTAScreen from './dashboard/HieuSuatTAScreen' // thay ChatLuongVanHanhScreen (outdate, CEO 08/10)
-import PhDangNhapScreen from './dashboard/PhDangNhapScreen'
-import XemAppScreen from './dashboard/XemAppScreen'
-import ThongBaoPhScreen from './dashboard/ThongBaoPhScreen'
-import DashboardHocTapScreen from './danhgia/DashboardHocTapScreen'
-import DanhGiaCuoiCapScreen from './danhgia/DanhGiaCuoiCapScreen'
-import BangLamBaiScreen from './theodoi/BangLamBaiScreen'
-import GayScreen from './gay/GayScreen'
-import DuyetCongScreen from './tacong/DuyetCongScreen'
-import LuongTaScreen from './tacong/LuongTaScreen'
-import ThuChiScreen from './thuchi/ThuChiScreen'
+const QuanLyLevelScreen = lazyMan(() => import('./gami/QuanLyLevelScreen'))
+const TongKetXuScreen = lazyMan(() => import('./gami/TongKetXuScreen'))
+const PhanQuyenScreen = lazyMan(() => import('./phanquyen/PhanQuyenScreen'))
+const BaoLoiScreen = lazyMan(() => import('./baoloi/BaoLoiScreen'))
+const OpsReportScreen = lazyMan(() => import('./vanhanhops/OpsReportScreen'))
+const PrepScreen = lazyMan(() => import('./vanhanhops/PrepScreen'))
+const PhongHocScreen = lazyMan(() => import('./phonghoc/PhongHocScreen'))
+const PhanCongOpsScreen = lazyMan(() => import('./vanhanhops/PhanCongOpsScreen'))
+const ScanDaChamScreen = lazyMan(() => import('./vanhanhops/ScanDaChamScreen'))
+const DuyetOpsNgay = lazyMan(() => import('./vanhanhops/DuyetOpsNgay'))
+const WidgetDangYeu = lazyMan(() => import('./qlcl/WidgetDangYeu'))
+const QlclTeamScreen = lazyMan(() => import('./qlcl/QlclTeamScreen'))
+const PhongTruongKhoiScreen = lazyMan(() => import('./phongtk/PhongTruongKhoiScreen'))
+const TuyenSinhScreen = lazyMan(() => import('./tuyensinh/TuyenSinhScreen'))
+const TestDauVaoScreen = lazyMan(() => import('./tuyensinh/TestDauVaoScreen'))
+const moTabTestDauVao = (t: 'cham' | 'tra_bai') => import('./tuyensinh/TestDauVaoScreen').then((m) => m.moTabTestDauVao(t))
+const BoTroHubScreen = lazyMan(() => import('./botro/BoTroHubScreen'))
+const moBoTroTab = (t: 'nhe' | 'duoi') => import('./botro/BoTroHubScreen').then((m) => m.moBoTroTab(t))
+const HieuSuatTAScreen = lazyMan(() => import('./dashboard/HieuSuatTAScreen')) // thay ChatLuongVanHanhScreen (outdate, CEO 08/10)
+const PhDangNhapScreen = lazyMan(() => import('./dashboard/PhDangNhapScreen'))
+const XemAppScreen = lazyMan(() => import('./dashboard/XemAppScreen'))
+const ThongBaoPhScreen = lazyMan(() => import('./dashboard/ThongBaoPhScreen'))
+const DashboardHocTapScreen = lazyMan(() => import('./danhgia/DashboardHocTapScreen'))
+const DanhGiaCuoiCapScreen = lazyMan(() => import('./danhgia/DanhGiaCuoiCapScreen'))
+const BangLamBaiScreen = lazyMan(() => import('./theodoi/BangLamBaiScreen'))
+const GayScreen = lazyMan(() => import('./gay/GayScreen'))
+const DuyetCongScreen = lazyMan(() => import('./tacong/DuyetCongScreen'))
+const LuongTaScreen = lazyMan(() => import('./tacong/LuongTaScreen'))
+const ThuChiScreen = lazyMan(() => import('./thuchi/ThuChiScreen'))
 import KhungLoi from '../components/KhungLoi'
 
 // tk (trưởng khối) chỉ có Chấm MT · gv thêm 'mt' khi là fallback không có trưởng khối (tab tự ẩn nếu buổi không gán MT).
@@ -417,7 +420,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
       {/* Thùy 08/10: duyệt Report/Báo tan/Prep gom THEO NGÀY, 1 nút/ngày — tự ẩn nếu không phải trưởng/phó Vận hành hoặc admin. */}
       <DuyetOpsNgay />
       {/* Thùy 29/10 (spec-truong-khoi.md §8.4): HS có dạng yếu · số dạng yếu theo ô môn × khối — tự ẩn nếu không quản ô nào. */}
-      <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
+      <WidgetDangYeu onTaoCaNhe={() => { moBoTroTab('nhe').then(() => setStaffLeaf('botro')) }} />
       {/* Dải số liệu tổng quan — compact (mobile, Thùy 07-06: "4 cái thẻ đếm quá to") */}
       <div className={isMobile ? 'mb-4 grid grid-cols-4 gap-1.5' : 'mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4'}>
         <Metric label="Cần làm" value={canLam} tone="slate" compact={isMobile} />
@@ -464,7 +467,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <div className="mb-1.5 text-[12px] font-semibold text-slate-500">✍️ Test đầu vào — cần chấm ({chamTestToi.length})</div>
               <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
                 {chamTestToi.map((c) => (
-                  <button key={c.id} onClick={() => { moTabTestDauVao('cham'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-violet-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                  <button key={c.id} onClick={() => { moTabTestDauVao('cham').then(() => setStaffLeaf('test_dau_vao')) }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-violet-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
                     <div className="flex items-center gap-1.5">
                       <span className="shrink-0 text-[15px]">✍️</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
@@ -480,7 +483,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
               <div className="mb-1.5 text-[12px] font-semibold text-slate-500">📨 Test đầu vào — cần trả bài ({traBaiTestToi.length})</div>
               <div className="grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
                 {traBaiTestToi.map((c) => (
-                  <button key={c.id} onClick={() => { moTabTestDauVao('tra_bai'); setStaffLeaf('test_dau_vao') }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-sky-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
+                  <button key={c.id} onClick={() => { moTabTestDauVao('tra_bai').then(() => setStaffLeaf('test_dau_vao')) }} className="flex flex-col gap-0.5 rounded-lg border-l-4 border-l-sky-400 bg-white px-2.5 py-2 text-left shadow-sm hover:shadow-md">
                     <div className="flex items-center gap-1.5">
                       <span className="shrink-0 text-[15px]">📨</span>
                       <span className="min-w-0 flex-1 text-[13px] font-medium text-slate-800">{c.hoTenHs} · {c.mon}{c.khoi ? ` · K${c.khoi}` : ''}</span>
@@ -556,7 +559,7 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
         <div>
           {/* Team học thuật: đợt bổ trợ đuổi chờ chốt dạng (derive theo hocThuatMons) — Thùy 07-15 */}
           {choDuyetDuoi > 0 && (
-            <button onClick={() => { moBoTroTab('duoi'); setStaffLeaf('botro') }} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
+            <button onClick={() => { moBoTroTab('duoi').then(() => setStaffLeaf('botro')) }} className="mx-auto mb-3 block w-full max-w-[900px] rounded-2xl border border-amber-200 bg-amber-50 p-3.5 text-left shadow-sm hover:shadow-md">
               <div className="flex items-center gap-2 text-[14px] font-semibold text-amber-800">📚 {choDuyetDuoi} đợt bổ trợ đuổi chờ chốt dạng</div>
               <p className="mt-1 text-[12px] leading-relaxed text-amber-700">Ops đã tạo card đuổi — bạn (team học thuật) chốt dạng cần đuổi + số buổi để GV dạy bám theo.</p>
             </button>
@@ -620,11 +623,13 @@ export default function NhanSuHome({ user }: { user: User }) {
   // đưa vào vận hành thật.
   if (openBuoi) return (
     <div ref={manRef} className="h-full min-h-0">
+      <Suspense fallback={<section className="p-8 text-sm text-slate-400">Đang mở…</section>}>
       {openBuoi.loai === 'bu'
         ? <BuoiBuDetail buoiId={openBuoi.id} onClose={dongBuoi} />
         : openBuoi.loai === 'bo_tro_duoi'
         ? <BuoiDuoiDetail buoiId={openBuoi.id} onClose={dongBuoi} />
         : <BuoiDetail id={openBuoi.id} initialTab={openBuoi.initialTab} tabs={openBuoi.tabs} canManage={openBuoi.canManage} onClose={dongBuoi} />}
+      </Suspense>
     </div>
   )
 
@@ -722,6 +727,7 @@ export default function NhanSuHome({ user }: { user: User }) {
           root co về đúng bề rộng, phần thân overflow-auto tự cuộn ngang. */}
       <div ref={manRef} className="grid min-h-0 min-w-0 flex-1 grid-cols-[minmax(0,1fr)] grid-rows-[minmax(0,1fr)] overflow-hidden">
       <KhungLoi key={staffLeaf} ten={staffLeaf}>
+      <Suspense fallback={<section className="p-8 text-sm text-slate-400">Đang mở…</section>}>
       {loading ? (
         <section className="p-8 text-sm text-slate-400">Đang tải…</section>
       ) : laHome(staffLeaf) ? (
@@ -765,7 +771,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : staffLeaf === 'ns' ? <NhanSuScreen />
       : staffLeaf === 'phancong' ? <PhanCongScreen />
       : staffLeaf === 'qlcl_team' ? <QlclTeamScreen />
-      : staffLeaf === 'phong_tk' ? <PhongTruongKhoiScreen onTaoCaNhe={() => { moBoTroTab('nhe'); setStaffLeaf('botro') }} />
+      : staffLeaf === 'phong_tk' ? <PhongTruongKhoiScreen onTaoCaNhe={() => { moBoTroTab('nhe').then(() => setStaffLeaf('botro')) }} />
       : staffLeaf === 'tkb' ? <TKBScreen />
       : staffLeaf === 'orgchart' ? <OrgChartScreen />
       : staffLeaf === 'lop' ? <LopScreen />
@@ -800,6 +806,7 @@ export default function NhanSuHome({ user }: { user: User }) {
       : (
         <section className="flex min-h-0 items-center justify-center p-8 text-sm text-slate-400">Chọn một mục bên trái.</section>
       )}
+      </Suspense>
       </KhungLoi>
       </div>
       </div>

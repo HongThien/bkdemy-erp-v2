@@ -27,7 +27,8 @@ import HomThu from '../components/HomThu'
 import AvatarEditButton from '../components/AvatarEditButton'
 import BangOrder from './home/BangOrder'
 import WidgetDangYeu, { useCoDangYeu } from './qlcl/WidgetDangYeu'
-import { moBoTroTab } from './botro/BoTroHubScreen'
+// tải màn Bổ trợ khi bấm, không kéo cả màn vào file chính (lazyMan, Thùy 12/11)
+const moBoTroTab = (t: 'nhe') => import('./botro/BoTroHubScreen').then((m) => m.moBoTroTab(t))
 import NutDoiMoiTruong from './phongtk/NutDoiMoiTruong'
 import { LEAF_VIEC, MUC_VIEC, NHOM_MO_TA, VIEC_MO_TA, YEU_THICH_TOI_DA, leafNhom, nhomCuaLeafHome, nhomIcon, type MucMenu } from '../lib/menu'
 
@@ -591,7 +592,7 @@ export default function HomeScreen() {
         {/* Thùy 29/10: widget dạng yếu phải thấy ngay ở Trang chính — cảnh là tranh cố định nên để nút nổi, bấm mở widget */}
         <div className="absolute right-4 top-4 z-[200] flex items-start gap-2">
           <NutDoiMoiTruong den="phong" />
-          <DangYeuNoi taoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} />
+          <DangYeuNoi taoCaNhe={() => { moBoTroTab('nhe').then(() => dh.di('botro')) }} />
         </div>
         <HomeScene canh={canh}
           today={hienBox('viec_ngay') ? <ViecHangNgay compact onMoVietCuaToi={lenViec} onMoKeHoach={() => dh.di('myplan')} tabs={noticeTabs} /> : null}
@@ -625,7 +626,7 @@ export default function HomeScreen() {
   // Thùy 29/10: khối dạng yếu (03/11: 2 box số Dạng yếu · Học sinh yếu) ở GÓC TRÁI DƯỚI = cột trái của "Tất cả", ngay dưới box nửa trái.
   // Bố cục chảy (flow) ⇒ các khối nối nhau, không đè. Tự ẩn nếu không quản ô môn × khối nào.
   const coTraiDuoi = coNuaTrai || coDangYeu
-  const dangYeu = coDangYeu ? <WidgetDangYeu className={coNuaTrai ? 'mt-4' : ''} onTaoCaNhe={() => { moBoTroTab('nhe'); dh.di('botro') }} /> : null
+  const dangYeu = coDangYeu ? <WidgetDangYeu className={coNuaTrai ? 'mt-4' : ''} onTaoCaNhe={() => { moBoTroTab('nhe').then(() => dh.di('botro')) }} /> : null
   const soAn = an.length
 
   return (

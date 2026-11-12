@@ -79837,3 +79837,9 @@ Thùy nêu 4 việc, làm được 3:
 - Đo sau áp: fn_the_gioi_home 0,12–0,3 s · kenh tg 0,08–0,12 s · fn_ta_dashboard < 0,1 s.
 - Client: HomThu đếm chung 5 phút · Kho tài liệu poll linkgen 10 s chỉ khi có job (rảnh 5 phút, tab ẩn không đọc) · WidgetDangYeu bỏ tự làm mới khi mount · Dash TA/GV hiện "số tính lúc" · KhopBanDo gộp đọc lại 12 s · PhienClaudeTab 60 s, tab ẩn không hỏi · bot.mjs nhặt mồ côi 5 phút (cần khởi động lại bot).
 - **Còn:** 2 file cron SQL Editor (202611112115, 202611112200_cron) chưa chạy · 202611112136_toi_uu_phien_kho_them (130 s → 0,56 s/câu) chờ tạo index CONCURRENTLY lúc vắng · fn_bdm_cay (bộ đếm phiên bản chung) + fn_traogiai_thang chưa sửa · 2 nhóm app HS (mở app; tự luyện + nông trại) đang làm · lúc đo, index thử trong txn khoá ghi dai_cau_hoi ~2 phút × 2 (không mất dữ liệu).
+
+## 12/11 — Lag app HS + ERP: tối ưu đợt 2 (Thùy "fix dứt điểm", "Áp đi")
+- **ĐÃ ÁP:** app HS 202611112136_toi_uu_hs_index_hs · 2152 hs_so_luu (bản chụp chuỗi/nhiệm vụ + cờ bẩn) · 2211 bxh_luu · 2221 custom plan thành tựu (so cũ–mới 0 lệch) · 202611112136_toi_uu_phien_kho_them: 7 index tạo CONCURRENTLY trước (không khoá), migrate 2 s.
+- **ERP mở chậm vì file JS:** bundle chính 8,6 MB (gzip 2,34 MB) gồm ~90 màn + cả app HS. Đổi 62 màn NhanSuHome + HocSinhApp/DoiMatKhau sang tải-khi-mở (`src/lib/lazyMan.ts`: lỗi tải chunk sau deploy ⇒ tự reload 1 lần), HomeScreen/NhanSuHome gọi moBoTroTab/moTabTestDauVao bằng import động. Bundle chính → 3,8 MB (gzip 1,09 MB). Cần deploy ERP. Chưa mở thử trên app.
+- Lấy mẫu pg_stat_activity 60 s lúc 14:10: không có truy vấn người dùng nào chạy lâu (DB rảnh).
+- **CHƯA ÁP (đã so 0 lệch):** tự luyện + nông trại 202611112136_toi_uu_tl_nt_nhip_dht · 2216 cay_chon_dem_luu · 2216 sinh_lan_gap_mot_lan · 2222 tang_toc. Cron bxh (2212) + cron phòng (202611101538 — CHƯA từng chạy, số phòng đứng từ 10/11) chờ SQL Editor.
