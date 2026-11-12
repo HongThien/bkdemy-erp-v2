@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-582 bảng · 39 view · 0 enum · 406 trigger · 1876 function
+582 bảng · 39 view · 0 enum · 406 trigger · 1877 function
 
 ## _app_secrets
 
@@ -4969,7 +4969,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `lyhoa` · `anh` · `tsa` |
+| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `vatly` · `hoahoc` · `anh` · `tsa` |
 | ma_cau | text |  |  |  |  |
 | khau | text |  |  |  | `doc` · `menh_de` · `dap_so` · `loi_giai` · `cum` · `hinh` |
 | truong | text |  |  |  |  |
@@ -11250,6 +11250,7 @@ WITH luot AS (
 - `_btyeu_dk_dang_sql(p_cautbl text, p_ma_dang text)` → text
 - `_btyeu_dong_bo_dang_ban_do()` → jsonb
 - `_btyeu_dong_case_het_han(p_case uuid, p_tinh_yeu boolean DEFAULT true, p_bat_buoc boolean DEFAULT false)` → boolean
+- `_btyeu_dv_tuan(p_hs uuid, p_mon text, p_ngay date)` → integer
 - `_btyeu_ket_thuc_case(p_case uuid, p_ns uuid, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_btyeu_la_hinh_mh(p_ma_dang text)` → boolean
 - `_btyeu_moc_2_cua_so()` → date
@@ -13104,7 +13105,7 @@ WITH luot AS (
 | buoi_hoc | buoi_hoc_khao_sat_chung_check | `CHECK (((loai <> 'khao_sat'::text) OR ((de_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | buoi_hoc | buoi_hoc_on_thi_dot_ck | `CHECK (((loai <> 'bo_tro_on_thi'::text) OR (on_thi_dot_id IS NOT NULL)))` |
 | buoi_hoc | buoi_hoc_online_ck | `CHECK (((online_dong_at IS NULL) OR (online_mo_at IS NOT NULL)))` |
-| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[1, 4]))))` |
+| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[1, 2, 4]))))` |
 | ca_bo_tro | ca_bo_tro_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | ca_bo_tro | ca_bo_tro_so_ta_check | `CHECK (((so_ta >= 1) AND (so_ta <= 2)))` |
 | ca_bo_tro_nhe | ca_bo_tro_nhe_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
