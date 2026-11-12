@@ -79849,3 +79849,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Chia 4 đợt:** (1) nền vận hành · (2) kho + bản đồ (`lyhoa_*` theo khuôn KHTN) · (3) tài liệu/giáo trình/ET/MT/BTVN/chấm/mastery/bổ trợ/kết quả/báo cáo PH · (4) app HS + phòng trưởng khối/phiên Claude + trợ lý.
 - **Đợt 1 ĐÃ ÁP + push:** mig 202611121420 (`_mon_khoi_hop_le`: Lý hóa ⇒ khối 10/11/12, CHECK `lop_mon_khoi_hop_le` chặn lớp Lý hóa khối khác; nới CHECK `sotay_ct_*`). `MON_LIST` thêm 'Lý hóa' (chưa vào `MON_APP_HS`). Ô Môn ở form tạo/sửa lớp đổi từ gõ tay sang chọn theo `MON_LIST` (gõ tay là nguồn nhãn lệch kiểu 'Anh' ≠ 'Tiếng Anh'). Màu/thứ tự Lý hóa ở Lớp · TKB · Phân công · Học phí · Phát sinh phòng. Chưa mở thử trên app.
 - Tên môn trong DB: `Lý hóa` (h thường, khớp lời Thùy).
+
+### Dashboard bổ trợ: Sau giờ thành loại riêng như Yếu — Thùy 12/11
+- mig 202611121420 ĐÃ ÁP: fn_bo_tro_dashboard_tuan thêm bo_tro_nhe (nộp test = hoàn tất, in test chưa nhập = đang dở, ca huỷ = không diễn ra; lớp từ ca_bo_tro_nhe) · _botro_ca_tuan + fn_botro_ket_qua_tuan_loai theo loại; fn_botro_ket_qua_tuan/_botro_ca_yeu_tuan cũ gọi bản theo loại (Yếu tuần 2–8/11 khớp từng byte, 4 loại cũ không đổi).
+- Màn: dòng Sau giờ ở Tiến độ (tuần 9–15/11: 23/40, hoàn tất 13, đang dở 10), nút Kết quả bổ trợ sau giờ (37 dạng giảm · 13 em), Chi tiết bổ trợ nhãn Sau giờ. Kiểm ERP local.

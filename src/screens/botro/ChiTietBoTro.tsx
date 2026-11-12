@@ -9,7 +9,7 @@ const LOAI: { k: LoaiChiTiet; ten: string; cls: string }[] = [
   { k: 'bu', ten: 'Bù', cls: 'border-sky-200 bg-sky-50 text-sky-800' },
   { k: 'bo_tro_duoi', ten: 'Đuổi', cls: 'border-violet-200 bg-violet-50 text-violet-800' },
   { k: 'bo_tro_hinh', ten: 'Hình', cls: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-800' },
-  { k: 'bo_tro_nhe', ten: 'Nhẹ', cls: 'border-teal-200 bg-teal-50 text-teal-800' },
+  { k: 'bo_tro_nhe', ten: 'Sau giờ', cls: 'border-teal-200 bg-teal-50 text-teal-800' },
   { k: 'bo_tro_on_thi', ten: 'Ôn thi', cls: 'border-rose-200 bg-rose-50 text-rose-800' },
 ]
 const TT: { k: string; ten: string; cls: string }[] = [

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-529 bảng · 39 view · 0 enum · 347 trigger · 1769 function
+529 bảng · 39 view · 0 enum · 347 trigger · 1771 function
 
 ## _app_secrets
 
@@ -10146,6 +10146,7 @@ WITH luot AS (
 - `_bl_bo_dau(p text)` → text
 - `_bl_kiem(p text)` → jsonb
 - `_bl_noi_chu_roi(p text)` → text
+- `_botro_ca_tuan(p_tu date, p_den date, p_loai text)` → TABLE(buoi uuid, ngay date, gio time without time zone, hs uuid, case_id uuid, ban_do text, mon text, nguoi_day uuid, hoan_tat boolean)
 - `_botro_ca_yeu_tuan(p_tu date, p_den date)` → TABLE(buoi uuid, ngay date, gio time without time zone, hs uuid, case_id uuid, ban_do text, mon text, nguoi_day uuid, hoan_tat boolean)
 - `_bt_cau_trang_thai_json(p_bt uuid, p_cau uuid[])` → jsonb
 - `_bt_trong_so_lop(p_lop uuid)` → numeric
@@ -10826,6 +10827,7 @@ WITH luot AS (
 - `fn_botro_et_btvn(p_hs uuid, p_n integer DEFAULT 4)` → jsonb
 - `fn_botro_giay_nop(p_bai_test uuid)` → jsonb
 - `fn_botro_ket_qua_tuan(p_tu date, p_den date)` → jsonb
+- `fn_botro_ket_qua_tuan_loai(p_tu date, p_den date, p_loai text)` → jsonb
 - `fn_botro_lan_do_lop(p_hs uuid[], p_mon text, p_che_do text DEFAULT NULL::text)` → jsonb
 - `fn_botro_lap_day_ca(p_tu date, p_den date, p_khoi text DEFAULT NULL::text, p_co_mat boolean DEFAULT false)` → jsonb
 - `fn_botro_theo_doi_ket_thuc(p_id uuid, p_trang_thai text, p_ly_do text DEFAULT NULL::text)` → void

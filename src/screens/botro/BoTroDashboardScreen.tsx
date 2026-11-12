@@ -14,7 +14,9 @@ const LOAI: { k: LoaiBT; ten: string; vach: string }[] = [
   { k: 'bu', ten: 'Bù', vach: 'border-l-sky-400' },
   { k: 'bo_tro_duoi', ten: 'Đuổi', vach: 'border-l-violet-400' },
   { k: 'bo_tro_hinh', ten: 'Hình', vach: 'border-l-fuchsia-400' },
+  { k: 'bo_tro_nhe', ten: 'Sau giờ', vach: 'border-l-orange-400' },   // Thùy 12/11: loại bổ trợ riêng như Yếu
 ]
+const CO_KET_QUA: LoaiBT[] = ['bo_tro_yeu', 'bo_tro_nhe']   // nút "Kết quả" trước → sau ca
 // Thứ tự = thứ tự trên thanh tiến độ. `thanh` = màu đoạn trên thanh; `pill` = ô trạng thái (pill mềm, không khối đặc).
 const TT: { k: Exclude<TtLuot, 'go'>; ten: string; thanh: string; pill: string; giai: string }[] = [
   { k: 'hoan_tat', ten: 'Hoàn tất', thanh: 'bg-emerald-500', pill: 'border-emerald-200 bg-emerald-50 text-emerald-700', giai: 'Em có mặt, ca đã đóng / đánh giá xong' },
@@ -90,7 +92,7 @@ function TienDoBoTro({ toggle }: { toggle: ReactNode }) {
       {rows === null && !loi && <p className="py-16 text-center text-[13.5px] text-slate-400">Đang tải…</p>}
 
       <div className="flex flex-col gap-2.5">
-        {(rows ?? []).map((w) => <TheTuan key={w.tu} w={w} mo={mo?.tu === w.tu ? mo : null} onMo={setMo} kqMo={kqTu === w.tu} onKq={(b) => setKqTu(b ? w.tu : null)} />)}
+        {(rows ?? []).map((w) => <TheTuan key={w.tu} w={w} mo={mo?.tu === w.tu ? mo : null} onMo={setMo} kqLoai={kqTu?.startsWith(w.tu + '|') ? kqTu.slice(w.tu.length + 1) as LoaiBT : null} onKq={(l) => setKqTu(l ? `${w.tu}|${l}` : null)} />)}
       </div>
 
       {rows && rows.length > 0 && (
@@ -108,7 +110,7 @@ function TienDoBoTro({ toggle }: { toggle: ReactNode }) {
   )
 }
 
-function TheTuan({ w, mo, onMo, kqMo, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void; kqMo: boolean; onKq: (b: boolean) => void }) {
+function TheTuan({ w, mo, onMo, kqLoai, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo) => void; kqLoai: LoaiBT | null; onKq: (l: LoaiBT | null) => void }) {
   const so = tuanCuaNgay(w.tu)
   const tong = w.tong // tổng cả 3 loại — tính ở DB
   const ds = mo ? w.ds.filter((x) => x.loai === mo.loai && x.tt === mo.tt) : []
@@ -119,14 +121,14 @@ function TheTuan({ w, mo, onMo, kqMo, onKq }: { w: TuanBT; mo: Mo; onMo: (m: Mo)
         <span className="text-[12px] text-slate-500">{ddmmVN(w.tu)} – {ddmmVN(w.den)}</span>
         {w.dang_chay && <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-px text-[11px] font-semibold text-indigo-700">đang chạy</span>}
         {w.tuong_lai && <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-px text-[11px] font-semibold text-slate-500">chưa tới</span>}
-        <span className="ml-auto text-[12px] text-slate-500">Cả 3 loại: đã chạy <b className="text-[13.5px] text-slate-800">{tong.da_chay}</b> / chốt <b className="text-[13.5px] text-slate-800">{tong.chot}</b> ca{tong.chot > 0 ? ` · ${pct(tong.da_chay, tong.chot)}%` : ''}</span>
+        <span className="ml-auto text-[12px] text-slate-500">Tất cả: đã chạy <b className="text-[13.5px] text-slate-800">{tong.da_chay}</b> / chốt <b className="text-[13.5px] text-slate-800">{tong.chot}</b> ca{tong.chot > 0 ? ` · ${pct(tong.da_chay, tong.chot)}%` : ''}</span>
       </div>
       <div className="flex flex-col gap-1">
         {LOAI.map((l) => <DongLoai key={l.k} ten={l.ten} vach={l.vach} s={w.loai[l.k]} dangMo={mo?.loai === l.k ? mo.tt : null}
           onMo={(tt) => onMo(mo && mo.loai === l.k && mo.tt === tt ? null : { tu: w.tu, loai: l.k, tt })}
-          onKetQua={l.k === 'bo_tro_yeu' && !w.tuong_lai && w.loai.bo_tro_yeu.da_chay > 0 ? () => onKq(!kqMo) : undefined} ketQuaMo={kqMo} />)}
+          onKetQua={CO_KET_QUA.includes(l.k) && !w.tuong_lai && (w.loai[l.k]?.da_chay ?? 0) > 0 ? () => onKq(kqLoai === l.k ? null : l.k) : undefined} ketQuaMo={kqLoai === l.k} />)}
       </div>
-      {kqMo && <KetQuaBoTroTuan tu={w.tu} den={w.den} onDong={() => onKq(false)} />}
+      {kqLoai && <KetQuaBoTroTuan key={kqLoai} tu={w.tu} den={w.den} loai={kqLoai as 'bo_tro_yeu' | 'bo_tro_nhe'} onDong={() => onKq(null)} />}
       {mo && (
         <div className="mt-2 rounded-lg border border-slate-200 bg-slate-50/60 p-2">
           <div className="mb-2 flex items-center gap-2">

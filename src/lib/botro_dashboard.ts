@@ -3,7 +3,7 @@
 // file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
 
-export type LoaiBT = 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi' | 'bo_tro_hinh'
+export type LoaiBT = 'bo_tro_yeu' | 'bu' | 'bo_tro_duoi' | 'bo_tro_hinh' | 'bo_tro_nhe'   // bo_tro_nhe = SAU GIỜ (12/11)
 // go = đã gỡ khỏi lịch (đổi lịch) — KHÔNG tính vào "chốt"
 export type TtLuot = 'hoan_tat' | 'dang_do' | 'vang' | 'khong_dien_ra' | 'qua_han' | 'cho' | 'go'
 export type SoLoai = { chot: number; da_chay: number; hoan_tat: number; dang_do: number; vang: number; khong_dien_ra: number; qua_han: number; cho: number; go: number }
@@ -41,8 +41,9 @@ export type TomTatKetQua = {
   luyen_dung: number; luyen_tong: number; test_dung: number; test_tong: number
 }
 export type KetQuaTuan = { tu: string; den: string; tom_tat: TomTatKetQua; ca: CaKetQua[] }
-export async function ketQuaBoTroTuan(tu: string, den: string): Promise<KetQuaTuan> {
-  const { data, error } = await supabase.rpc('fn_botro_ket_qua_tuan', { p_tu: tu, p_den: den })
+// loai: Yếu | Sau giờ (Thùy 12/11 — cùng công thức trước → sau ca, mig 202611121420)
+export async function ketQuaBoTroTuan(tu: string, den: string, loai: 'bo_tro_yeu' | 'bo_tro_nhe' = 'bo_tro_yeu'): Promise<KetQuaTuan> {
+  const { data, error } = await supabase.rpc('fn_botro_ket_qua_tuan_loai', { p_tu: tu, p_den: den, p_loai: loai })
   if (error) throw error
   return data as KetQuaTuan
 }

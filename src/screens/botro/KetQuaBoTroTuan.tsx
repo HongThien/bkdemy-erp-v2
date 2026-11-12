@@ -29,8 +29,9 @@ const nGiam = (c: CaKetQua) => c.dang.filter((d) => d.tien_bo === 'giam').length
 const nVan = (c: CaKetQua) => c.dang.filter((d) => d.tien_bo === 'van_yeu').length
 type Loc = 'tat_ca' | 'co_giam' | 'con_yeu' | 'khong_hoc'
 
-export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: string; onDong: () => void }) {
-  const key = `${tu}|${den}`
+export default function KetQuaBoTroTuan({ tu, den, loai = 'bo_tro_yeu', onDong }: { tu: string; den: string; loai?: 'bo_tro_yeu' | 'bo_tro_nhe'; onDong: () => void }) {
+  const key = `${tu}|${den}|${loai}`
+  const tenLoai = loai === 'bo_tro_nhe' ? 'bổ trợ sau giờ' : 'bổ trợ yếu'
   const [kq, setKq] = useState<KetQuaTuan | null>(NHO.get(key) ?? null)
   const [loi, setLoi] = useState<string | null>(null)
   const [dangTai, setDangTai] = useState(false)
@@ -38,7 +39,7 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
   const [mo, setMo] = useState<Set<string>>(new Set())
   const tai = async () => {
     setDangTai(true); setLoi(null)
-    try { const r = await ketQuaBoTroTuan(tu, den); NHO.set(key, r); setKq(r) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setDangTai(false) }
+    try { const r = await ketQuaBoTroTuan(tu, den, loai); NHO.set(key, r); setKq(r) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setDangTai(false) }
   }
   useEffect(() => { if (!NHO.has(key)) tai() }, [key]) // eslint-disable-line
 
@@ -49,7 +50,7 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
   return (
     <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/30 p-4">
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <span className="text-[14px] font-semibold text-slate-800">📊 Kết quả bổ trợ yếu · {ddmmVN(tu)} – {ddmmVN(den)}</span>
+        <span className="text-[14px] font-semibold text-slate-800">📊 Kết quả {tenLoai} · {ddmmVN(tu)} – {ddmmVN(den)}</span>
         <span className="text-[12px] text-slate-500">các ca đã diễn ra (em có mặt)</span>
         <span className="ml-auto flex items-center gap-2">
           <button disabled={dangTai} onClick={tai} className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50 disabled:opacity-40" title="Tải lại số liệu">{dangTai ? 'Đang tính…' : '↻ Tính lại'}</button>
@@ -60,7 +61,7 @@ export default function KetQuaBoTroTuan({ tu, den, onDong }: { tu: string; den: 
       {!kq && !loi && <p className="py-8 text-center text-[13px] text-slate-400">Đang tính kết quả từng dạng (vài giây)…</p>}
       {kq && t && (
         <>
-          {t.so_ca === 0 ? <p className="rounded-lg bg-white px-3 py-4 text-center text-[13px] text-slate-500">Tuần này chưa có ca bổ trợ yếu nào diễn ra.</p> : (
+          {t.so_ca === 0 ? <p className="rounded-lg bg-white px-3 py-4 text-center text-[13px] text-slate-500">Tuần này chưa có ca {tenLoai} nào diễn ra.</p> : (
             <>
               <div className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
                 <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3">
