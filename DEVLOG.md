@@ -79882,3 +79882,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Bẫy:** thân hàm áp từ file Windows mang CRLF ⇒ so chuỗi `\n` trượt — script chuẩn hoá trước khi vá.
 - Kiểm trước khi áp: số dòng 6 view y nguyên; `_dbht_cau` 4 em KHTN (1128 dòng) + Toán (902) md5 trùng khớp trước/sau. **ĐÃ ÁP** mig 202611121535.
 - App: `MON_CO_KHO` (lib/mon.ts) thay 6 chỗ tự gõ ['Toán','KHTN'] (MT, Tài liệu, Kết quả ×2, Chấm MT, Report PH); `khoCuaMon` + ET bản đồ mới + Kho đề thi + giáo trình bản đồ mới (`taiLieu` bật) có Lý hóa; Lịch phòng bổ trợ có Lý hóa. Mở thử Kết quả học tập › Lý hóa: hiện, 0 lỗi.
+
+## 12/11 — Môn Lý hóa ĐỢT 4 (cuối): app HS · phiên Claude / phòng trưởng khối · trợ lý · game Đấu trường
+- **File SQL Editor đợt 2 (202611121512) kiểm lần 2 sau khi Thùy báo "đã chạy": VẪN CHƯA vào DB** (`fn_kho_sua_tk` không có lyhoa, CHECK `kho_sua_log` cũ). Không ghi sổ. Nghi chạy nhầm project / lỗi giữa chừng — đã báo Thùy.
+- `scripts/_gen_mig_ly_hoa_dot4.mjs`: `_kho_co_mon` (+Lý hóa ⇒ app HS mở kho; lớp Lý hóa chỉ khối 10–12) · phiên Claude: `_phien_kho_mon`, `_phien_bdm_bang`, `_phien_bd_kiem_khoi`, `_phien_kho_nhanh_ds`, `_phien_kho_cau` + `_phien_kho_phan1` (thay `(r.nhanh='khtn') <> (mon='KHTN')` bằng ánh xạ nhánh→môn, thêm kiểm dạng bài/chủ đề + gán qua `_lyhoa_bdm_gan`), `fn_phien_kho_{dang,hang,tong,duyet,them}`, `fn_phien_bd_ghi` · trợ lý: `_troly_ten_dang`, enum môn `fn_troly_danh_muc`. Script tự chặn nếu còn nhánh `'khtn'` chưa xử lý. **ĐÃ ÁP** mig 202611121541 (lúc áp: 0 lớp Lý hóa ⇒ chưa HS nào thấy).
+- App: `MON_APP_HS` + màu đọc theo môn (skin/registry) + Đấu trường (`dautu/nguon`, giayThap 25 khớp DB) + enum trợ lý (`troly-tools.mjs`) + hướng dẫn phiên nhập kho. `check:style-hs` RỚT ở `CaBoTroHS.tsx` (3 màu gõ tay — có từ 17/10, không phải file đợt này).
+- **Chưa mở thử app HS**: chưa có lớp/HS Lý hóa thật để đăng nhập xem.

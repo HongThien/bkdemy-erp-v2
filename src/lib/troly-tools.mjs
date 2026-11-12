@@ -29,7 +29,7 @@ export const TROLY_TOOLS = [
       type: 'object',
       properties: {
         ten_hoc_sinh: { type: 'string', description: 'Tên học sinh, lấy nguyên văn từ câu hỏi (có thể không dấu/gõ tắt).' },
-        mon: { type: 'string', enum: ['Toán', 'Văn', 'Anh', 'KHTN'], description: 'Môn học, nếu câu hỏi có nhắc tới. Bỏ trống nếu không rõ.' },
+        mon: { type: 'string', enum: ['Toán', 'Văn', 'Anh', 'KHTN', 'Lý hóa'], description: 'Môn học, nếu câu hỏi có nhắc tới. Bỏ trống nếu không rõ.' },
         thang: { type: 'string', description: 'Tháng dạng YYYY-MM, nếu câu hỏi hỏi về ĐÚNG 1 tháng cụ thể (vd "tháng trước"). Bỏ trống = suy động toàn bộ lịch sử tới hiện tại (mặc định, thường đúng ý hơn).' },
       },
       required: ['ten_hoc_sinh'],

@@ -66,7 +66,7 @@ export const DOC_MAC_DINH: MauDoc = {
 const MAU_DOC_THEO: Record<string, { acc: string; nhat: string }> = {
   'Toán': { acc: '#3b6fe0', nhat: '#edf2fe' }, 'TSA': { acc: '#c2771b', nhat: '#fdf3e4' },
   'Tiếng Anh': { acc: '#d14776', nhat: '#fdeef3' }, 'Văn': { acc: '#b4532f', nhat: '#fbefe9' },
-  'KHTN': { acc: '#2c8f86', nhat: '#e8f6f4' },
+  'KHTN': { acc: '#2c8f86', nhat: '#e8f6f4' }, 'Lý hóa': { acc: '#5b63d3', nhat: '#eef0fd' },
   'Lý': { acc: '#7357d6', nhat: '#f1edff' }, 'Hóa': { acc: '#2d7fd3', nhat: '#eaf3fd' }, 'Sinh': { acc: '#1f9a6a', nhat: '#e8f7f0' },
 }
 const MAU_DOC_CHUNG = { acc: '#4f5f86', nhat: '#eef1f7' }

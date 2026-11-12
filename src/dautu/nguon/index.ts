@@ -9,6 +9,7 @@ export const NGUON: Record<string, NguonCau> = {
   'Tiếng Anh': NGUON_ANH,
   'Toán': taoNguonKho({ mon: 'Toán', ten: 'Toán', icon: '📐', giayMoiCau: 45, giayThap: 40, capMacDinh: '7' }),
   'KHTN': taoNguonKho({ mon: 'KHTN', ten: 'KHTN', icon: '🔬', giayMoiCau: 30, giayThap: 25, capMacDinh: '8' }),
+  'Lý hóa': taoNguonKho({ mon: 'Lý hóa', ten: 'Lý hóa', icon: '⚗️', giayMoiCau: 30, giayThap: 25, capMacDinh: '10' }),   // 12/11: giayThap khớp _dtv_giay_thap
 }
 export const DS_MON = Object.keys(NGUON)
 export const nguonCua = (mon: string | null | undefined) => NGUON[mon ?? ''] ?? NGUON_ANH
