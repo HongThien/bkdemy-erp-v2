@@ -79958,3 +79958,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:38 — Mục tiêu tuần: đơn vị đánh giá = NHÓM bài, đơn vị dạy = DẠNG bài
 - Thùy chốt. Dòng của bảng = nhóm (mastery cap nhom), bên trong ghi dạng dạy tuần này; nợ và kiểm tra sau giờ theo nhóm. Spec Q12 + §4.
+
+## 12/11 23:49 — SAI Ý: vẽ màn chốt riêng theo từng học sinh ⇒ bỏ
+- **Sai:** từ câu "GV chỉ việc duyệt" tôi suy ra một màn chốt mới (duyệt dạng trọng tâm từng em) và vẽ vào mockup. Thùy: "chốt từng học sinh quá vất vả".
+- **Đúng:** thứ Hai chỉ có 2 lượt chốt ĐANG CÓ — ① chốt giáo trình/tài liệu ② soi Dashboard học tập cả lớp rồi chốt bổ trợ ở Phòng làm việc trưởng khối. Chốt bổ trợ xong ⇒ hệ TỰ GHÉP vào mục tiêu tuần của từng HS. Không màn chốt mới, không đường duyệt mới. Spec §3b viết lại.
+- **Bài học:** "duyệt" trong lời Thùy = duyệt ở chỗ đang duyệt; đừng đẻ màn mới khi chưa hỏi luồng hiện tại chốt ở đâu.
