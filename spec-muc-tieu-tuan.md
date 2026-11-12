@@ -55,7 +55,8 @@ Với lớp 2 buổi/tuần vẫn ra cặp **buổi cuối tuần trước + bu�
 - **Tách hai thứ:** "con đã nộp / đúng hạn chưa" tính theo GIỜ NỘP (biết ngay) · "kết quả" tính theo GIỜ CHẤM.
 - Bài đã nộp mà chưa chấm = **"chờ chấm"** — nợ của trung tâm, không ghi "không có lần đo mới" cho con.
 - Mốc theo giờ chấm ⇒ **chấm trễ là đẩy lần đo sang tuần khác**. Hạn chấm THỰC TẾ đang chạy (Thùy 12/11): lớp học từ 18:00 ⇒ TA chấm BTVN xong
-  **2 tiếng trước buổi học kế** (tức trong ngày của buổi kế). Dùng luôn hạn này; quá hạn ⇒ "chờ chấm" hiện thành việc tồn của TA. *Lớp giờ khác (sáng/chiều): chưa hỏi.*
+  **2 tiếng trước buổi học kế** (tức trong ngày của buổi kế). Dùng luôn hạn này; quá hạn ⇒ "chờ chấm" hiện thành việc tồn của TA. Lớp học thứ Bảy / Chủ nhật (học cả ngày) ⇒ chấm xong **trước buổi kế MỘT NGÀY**.
+  *Chưa rõ: lớp học CẢ thứ Bảy lẫn Chủ nhật liền nhau thì BTVN buổi thứ Bảy chấm lúc nào (không thể "trước một ngày").*
 
 | Lớp | Buổi thuộc mục tiêu tuần này | Hạn BTVN |
 |---|---|---|

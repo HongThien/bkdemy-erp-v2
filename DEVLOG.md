@@ -79952,3 +79952,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:30 — Mục tiêu tuần: hạn chấm BTVN = hạn đang chạy
 - Thùy: lớp học từ 18:00, TA chấm BTVN xong 2 tiếng trước buổi học kế. Spec §3 dùng luôn hạn này (không đặt hạn mới). Lớp giờ khác chưa hỏi.
+
+## 12/11 23:31 — Mục tiêu tuần: hạn chấm BTVN lớp cuối tuần
+- Thùy: lớp học thứ Bảy/Chủ nhật (cả ngày) ⇒ chấm xong trước buổi kế một ngày. Chưa rõ ca lớp học hai ngày liền nhau.
