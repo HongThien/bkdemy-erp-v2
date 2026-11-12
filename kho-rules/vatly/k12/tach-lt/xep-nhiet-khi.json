@@ -1,0 +1,272 @@
+{
+ "xep": {
+  "LNB00034": {
+   "K0": "N",
+   "K1": "N",
+   "K2": "N",
+   "K3": [
+    "LDB00068"
+   ],
+   "K4": [
+    "LDB00068"
+   ],
+   "K5": [
+    "LDB00068"
+   ],
+   "K6": [
+    "LDB00068"
+   ],
+   "K7": [
+    "LDB00068"
+   ]
+  },
+  "LNB00035": {
+   "K0": "N",
+   "K1": [
+    "LDB00069"
+   ],
+   "K2": [
+    "LDB00069"
+   ],
+   "K3": [
+    "LDB00070"
+   ],
+   "K4": [
+    "LDB00070"
+   ]
+  },
+  "LNB00036": {
+   "K0": "N",
+   "K1": "N",
+   "K2": "N",
+   "K3": [
+    "LDB00071"
+   ],
+   "K4": [
+    "LDB00071"
+   ]
+  },
+  "LNB00037": {
+   "K0": "N",
+   "K1": [
+    "LDB00072",
+    "LDB00073"
+   ],
+   "K2": "N",
+   "K3": "N",
+   "K4": "N",
+   "K5": "N",
+   "K6": [
+    "LDB00074"
+   ]
+  },
+  "LNB00038": {
+   "K0": [
+    "LDB00075"
+   ],
+   "K1": [
+    "LDB00076"
+   ],
+   "K2": [
+    "LDB00076"
+   ]
+  },
+  "LNB00039": {
+   "K0": "N",
+   "K1": "N",
+   "K2": "N",
+   "K3": [
+    "LDB00077"
+   ]
+  },
+  "LNB00040": {
+   "K0": "N",
+   "K1": "N",
+   "K2": "N"
+  },
+  "LNB00041": {
+   "K0": [
+    "LDB00079",
+    "LDB00081"
+   ],
+   "K1": [
+    "LDB00080",
+    "LDB00081"
+   ],
+   "K2": [
+    "LDB00080",
+    "LDB00081"
+   ]
+  },
+  "LNB00042": {
+   "K0": [
+    "LDB00082"
+   ],
+   "K1": [
+    "LDB00082"
+   ],
+   "K2": [
+    "LDB00083"
+   ]
+  },
+  "LNB00044": {
+   "K0": "N",
+   "K1": [
+    "LDB00085"
+   ],
+   "K2": [
+    "LDB00085"
+   ],
+   "K3": [
+    "LDB00085"
+   ],
+   "K4": [
+    "LDB00085"
+   ],
+   "K5": [
+    "LDB00085"
+   ],
+   "K6": "N",
+   "K7": "N"
+  },
+  "LNB00045": {
+   "K0": "N",
+   "K1": [
+    "LDB00086",
+    "LDB00087",
+    "LDB00090"
+   ],
+   "K2": [
+    "LDB00086",
+    "LDB00088",
+    "LDB00090"
+   ],
+   "K3": [
+    "LDB00086",
+    "LDB00089",
+    "LDB00090"
+   ],
+   "K4": [
+    "LDB00090"
+   ],
+   "K5": [
+    "LDB00090"
+   ],
+   "K6": [
+    "LDB00090"
+   ]
+  },
+  "LNB00046": {
+   "K0": [
+    "LDB00094"
+   ],
+   "K1": [
+    "LDB00094"
+   ],
+   "K2": [
+    "LDB00094"
+   ],
+   "K3": [
+    "LDB00094"
+   ],
+   "K4": [
+    "LDB00092"
+   ],
+   "K5": [
+    "LDB00093"
+   ]
+  },
+  "LNB00047": {
+   "K0": [
+    "LDB00095"
+   ],
+   "K1": [
+    "LDB00095"
+   ]
+  },
+  "LNB00048": {
+   "K0": "N",
+   "K1": [
+    "LDB00097",
+    "LDB00098"
+   ],
+   "K2": [
+    "LDB00097",
+    "LDB00098"
+   ],
+   "K3": [
+    "LDB00097",
+    "LDB00098"
+   ]
+  },
+  "LNB00049": {
+   "K0": [
+    "LDB00099",
+    "LDB00100"
+   ],
+   "K1": [
+    "LDB00100"
+   ]
+  }
+ },
+ "tron": [
+  {
+   "nhom": "LNB00037",
+   "khoi": "K1",
+   "ghi": "quy ước dấu cũng cần cho LDB00074 nhưng xếp theo phần chính cho 72,73"
+  },
+  {
+   "nhom": "LNB00045",
+   "khoi": "K1",
+   "ghi": "vừa định luật vừa đồ thị; xếp cho dạng nhận biết, tính và đồ thị"
+  },
+  {
+   "nhom": "LNB00045",
+   "khoi": "K2",
+   "ghi": "như K1"
+  },
+  {
+   "nhom": "LNB00045",
+   "khoi": "K3",
+   "ghi": "như K1"
+  },
+  {
+   "nhom": "LNB00046",
+   "khoi": "K5",
+   "ghi": "Clapeyron + khối lượng riêng + mật độ phân tử; số mol theo N cũng liên quan LDB00094"
+  },
+  {
+   "nhom": "LNB00044",
+   "khoi": "K5",
+   "ghi": "mô hình động học khí, có thể coi là nền chung; nhóm chỉ 1 dạng nên xuống dạng"
+  },
+  {
+   "nhom": "LNB00037",
+   "khoi": "K4",
+   "ghi": "Claude soát: Động cơ nhiệt: thuộc định luật II (đang ở chung), không phục vụ dạng ĐL I"
+  },
+  {
+   "nhom": "LNB00037",
+   "khoi": "K5",
+   "ghi": "Claude soát: Máy lạnh: như động cơ nhiệt"
+  }
+ ],
+ "dang_trong": [
+  {
+   "dang": "LDB00078",
+   "ly_do": "nhóm chỉ có định nghĩa c, λ, L, giữ ở nhóm"
+  },
+  {
+   "dang": "LDB00084",
+   "ly_do": "nhóm không có khối lý thuyết"
+  },
+  {
+   "dang": "LDB00091",
+   "ly_do": "sách không có kiến thức riêng về thí nghiệm kiểm chứng"
+  },
+  {
+   "dang": "LDB00096",
+   "ly_do": "chỉ có khối khí đa quá trình/tỉ lệ số mol, thuộc lượng khí không đổi; sách không có kiến thức riêng cho khí thay đổi"
+  }
+ ]
+}
