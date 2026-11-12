@@ -9,7 +9,11 @@ import path from 'node:path'
 process.loadEnvFile('.env')
 const GHI = process.argv.includes('--ghi')
 const DIR = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
-const G = JSON.parse(fs.readFileSync(path.join(DIR, '..', 'ebook-tap1', 'gop.json'), 'utf8'))
+// --nguon ebook-tap2 (mặc định ebook-tap1). Khối viết theo SGK (sgk[]) nối SAU phần chép sách — Thùy duyệt Tập 2 12/11.
+const ai = process.argv.indexOf('--nguon')
+const NGUON = ai > 0 ? process.argv[ai + 1] : 'ebook-tap1'
+const G = JSON.parse(fs.readFileSync(path.join(DIR, '..', NGUON, 'gop.json'), 'utf8'))
+console.log('nguồn file:', NGUON)
 
 // kiểm định dạng lại trước khi ghi
 const loi = []
@@ -22,7 +26,7 @@ const kiemVD = (id, s) => { if (!/^##VD/.test(s)) loi.push(`${id}: VD không m�
 
 const nhom = Object.entries(G.nhom).map(([id, x]) => {
   const mo = [...x.mo_ta].sort((a, b) => b.v.length - a.v.length)[0]?.v.trim() || ''
-  const lt = x.lt.map(l => l.v.trim()).filter(Boolean).join('\n\n')
+  const lt = [...x.lt, ...(x.sgk || [])].map(l => l.v.trim()).filter(Boolean).join('\n\n')
   kiemLT(id, lt); return { id, mo, lt }
 })
 const dang = Object.entries(G.dang).filter(([, x]) => x.vd.length).map(([id, x]) => {
