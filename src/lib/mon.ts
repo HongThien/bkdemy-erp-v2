@@ -1,16 +1,17 @@
 // Danh mục MÔN của hệ thống — 1 NGUỒN duy nhất. Thêm môn = sửa đúng ở đây.
 // Giá trị = chuỗi hiển thị, khớp lop.mon / ung_vien.mon trong DB.
-export const MON_LIST = ['Toán', 'KHTN', 'Lý hóa', 'Tiếng Anh', 'Văn', 'TSA'] as const // TSA = Toán luyện thi ĐH Bách khoa (môn ĐỘC LẬP với Toán, 02/10)
+export const MON_LIST = ['Toán', 'KHTN', 'Vật lý', 'Hóa học', 'Tiếng Anh', 'Văn', 'TSA'] as const // TSA = Toán luyện thi ĐH Bách khoa (môn ĐỘC LẬP với Toán, 02/10)
 export type Mon = typeof MON_LIST[number]
 // Môn có GÓC HỌC TẬP trong app Học sinh (Thùy 01/10: "chọn môn Toán, KHTN, Tiếng Anh") — thứ tự = thứ tự nút ở thanh chọn môn.
 // Môn có lớp mà không nằm đây (Văn) thì app HS chưa hiện. Mở thêm môn = thêm vào đây (kho câu: `_kho_co_mon` ở DB).
-// Lý hóa (Thùy 12/11) = môn riêng như KHTN, chỉ khối 10–12 (DB `_mon_khoi_hop_le`). App HS mở từ đợt 4 (DB `_kho_co_mon`, mig 202611121541).
-export const MON_APP_HS = ['Toán', 'KHTN', 'Lý hóa', 'Tiếng Anh', 'TSA'] as const
+// Vật lý · Hóa học (Thùy 12/11 — cấp 3 KHTN tách môn; tên ĐẦY ĐỦ để không lẫn phân môn "Lý"/"Hóa" của KHTN) = mỗi môn 1 trung tâm như KHTN,
+// chỉ khối 10–12 (DB `_mon_khoi_hop_le`), app HS mở (DB `_kho_co_mon`) — mig 202611121749.
+export const MON_APP_HS = ['Toán', 'KHTN', 'Vật lý', 'Hóa học', 'Tiếng Anh', 'TSA'] as const
 // Môn có nội dung là CHỮ THƯỜNG, không công thức (Thùy 02/10 mở luyện tập Anh): hiện bằng `TextAnh` thay `MathText` — MathText
 // tự in đậm từ VIẾT HOA, hiểu "$5" là công thức và hiện nguyên "<u>" (gạch chân là ĐỀ BÀI câu phát âm). Thêm môn = thêm vào đây.
 export const MON_CHU_THUONG: readonly string[] = ['Tiếng Anh']
 // Môn có KHO CÂU + bản đồ (soạn tài liệu/MT/ET, kết quả học tập, report PH) — trước 12/11 mỗi màn tự gõ ['Toán', 'KHTN'].
-export const MON_CO_KHO: readonly string[] = ['Toán', 'KHTN', 'Lý hóa']
+export const MON_CO_KHO: readonly string[] = ['Toán', 'KHTN', 'Vật lý', 'Hóa học']
 // Môn có "Luyện chứng minh" (điền ô — bài lấy từ nhánh hình học, `tu_luyen_dien_sinh`). Môn khác không hiện nút.
 export const MON_LUYEN_CHUNG_MINH: readonly string[] = ['Toán']
 // Team LIÊN-MÔN (thấy nội dung mọi môn) — dùng chung cho hook useMonScope (ERP) và các bundle không có useStore (tool giải bài).

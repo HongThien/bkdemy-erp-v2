@@ -5,7 +5,7 @@ import { layMonBdm, BDM_MON } from './banDoMoi'
 
 // Bộ hàm theo môn đang mở trên Bản đồ mới (05/11: KHTN có bộ fn_khtn_bdm_khop_* cùng chữ ký, mig 202611051543).
 // Phạm vi người duyệt (pham_vi/ung_vien/giao/go) chỉ Toán có — KHTN duyệt theo trưởng khối.
-const K = (x: string) => BDM_MON[layMonBdm()].ham + 'khop_' + x   // fn_bdm_khop_* · fn_khtn_bdm_khop_* · fn_lyhoa_bdm_khop_*
+const K = (x: string) => BDM_MON[layMonBdm()].ham + 'khop_' + x   // fn_bdm_khop_* · fn_khtn_bdm_khop_* · fn_vatly_bdm_khop_* · fn_hoahoc_bdm_khop_*
 export const khopCoPhamVi = () => layMonBdm() === 'Toán'
 
 export type KhopHang = 'de_xuat' | 'trong' | 'thieu' | 'mau'
@@ -25,7 +25,7 @@ export type KhopCau = {
   ly_do: string | null; chac: string | null
   dang_bai_id: string | null; dang_bai: string | null; nhom: string | null; chu_de: string | null; chuyen_de: string | null
   dang_cu: string | null; chuyen_de_cu: string | null
-  nhanh?: 'dai' | 'hgt' | 'khtn' | 'lyhoa'   // câu thuộc kho Đại / Hình giải tích (mig 202610221734) / KHTN (mig 202611051543)
+  nhanh?: 'dai' | 'hgt' | 'khtn' | 'vatly' | 'hoahoc'   // câu thuộc kho Đại / Hình giải tích (mig 202610221734) / KHTN (mig 202611051543)
   nguon_tl?: string[]     // nguồn tài liệu của câu (mig 202610271607)
 }
 export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }

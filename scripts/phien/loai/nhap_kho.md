@@ -67,7 +67,7 @@ node scripts/phien/ban-do.mjs sua '{"loai":"dang_bai","id":"...","mo_ta":"..."}'
 - Câu Đại phân vào chủ đề vùng `toan`; câu Hình giải tích (nhánh `hgt`) vào chủ đề vùng `hgt`.
 - **Phiên KHTN** (05/11): kho `khtn`, bản đồ KHTN không chia vùng — `them_cau` dùng `"nhanh":"khtn"` (bỏ trống cũng được),
   dạng bài mã `KDB…`, chủ đề mã của bản đồ KHTN. Câu Toán không phân được trong phiên KHTN và ngược lại (DB chặn).
-- **Phiên Lý hóa** (12/11, khối 10–12): y hệt KHTN — kho `lyhoa`, `"nhanh":"lyhoa"` (bỏ trống cũng được), dạng bài mã `LDB…`, chủ đề `LCD…`. Câu môn khác không phân được trong phiên Lý hóa (DB chặn).
+- **Phiên Vật lý / Hóa học** (12/11, khối 10–12, hai môn RIÊNG): y hệt KHTN — kho `vatly` / `hoahoc`, `"nhanh":"vatly"` / `"hoahoc"` (bỏ trống cũng được), dạng bài mã `LDB…` / `QDB…`, chủ đề `LCD…` / `QCD…`. Câu môn khác không phân được trong phiên (DB chặn).
 
 ## Ảnh của câu (06/11)
 

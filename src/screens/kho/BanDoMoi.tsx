@@ -1332,7 +1332,7 @@ function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string 
 }
 
 // Môn đang soạn (Thùy 29/10: KHTN có bản đồ mới riêng). Nhớ lựa chọn gần nhất (sở thích cá nhân).
-const DS_MON_BDM: BdmMon[] = ['Toán', 'KHTN', 'Lý hóa']
+const DS_MON_BDM: BdmMon[] = ['Toán', 'KHTN', 'Vật lý', 'Hóa học']
 const docMon = (): BdmMon => {
   try { const m = localStorage.getItem('bdm.mon'); return (DS_MON_BDM as string[]).includes(m ?? '') ? (m as BdmMon) : 'Toán' } catch { return 'Toán' }
 }

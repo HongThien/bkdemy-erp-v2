@@ -23,7 +23,8 @@ const MON_TONE: Record<string, { chip: string; letter: string }> = {
   'Văn': { chip: 'bg-rose-500', letter: 'V' },
   'Anh': { chip: 'bg-emerald-600', letter: 'A' },
   'KHTN': { chip: 'bg-amber-500', letter: 'K' },
-  'Lý hóa': { chip: 'bg-cyan-600', letter: 'L' },
+  'Vật lý': { chip: 'bg-violet-600', letter: 'L' },
+  'Hóa học': { chip: 'bg-sky-600', letter: 'H' },
 }
 const monTone = (mon: string) => MON_TONE[mon] ?? { chip: 'bg-slate-500', letter: mon[0]?.toUpperCase() ?? '?' }
 const MonChip = ({ mon }: { mon: string }) => (
@@ -132,7 +133,7 @@ export default function LopScreen() {
           : (
             // 4 môn 4 KHU VỰC (Toán trên cùng → Văn → Anh → KHTN → môn khác) — không lẫn môn.
             <div className="space-y-6">
-              {[...new Set(['Toán', 'Văn', 'Anh', 'KHTN', 'Lý hóa', ...list.map((l) => l.mon)])]
+              {[...new Set(['Toán', 'Văn', 'Anh', 'KHTN', 'Vật lý', 'Hóa học', ...list.map((l) => l.mon)])]
                 .filter((mon) => list.some((l) => l.mon === mon))
                 .map((mon) => (
                   <section key={mon}>

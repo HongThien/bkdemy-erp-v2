@@ -7,7 +7,7 @@ import { Shell, Field, inp } from '../kho/ui'
 
 const THU_COLS = [2, 3, 4, 5, 6, 7, 8]
 const THU_LABEL: Record<number, string> = { 2: 'Thứ 2', 3: 'Thứ 3', 4: 'Thứ 4', 5: 'Thứ 5', 6: 'Thứ 6', 7: 'Thứ 7', 8: 'CN' }
-const MON_TONE: Record<string, string> = { 'Toán': 'border-indigo-400 bg-indigo-50 text-indigo-900', 'Văn': 'border-rose-400 bg-rose-50 text-rose-900', 'Anh': 'border-emerald-400 bg-emerald-50 text-emerald-900', 'KHTN': 'border-amber-400 bg-amber-50 text-amber-900', 'Lý hóa': 'border-cyan-400 bg-cyan-50 text-cyan-900' }
+const MON_TONE: Record<string, string> = { 'Toán': 'border-indigo-400 bg-indigo-50 text-indigo-900', 'Văn': 'border-rose-400 bg-rose-50 text-rose-900', 'Anh': 'border-emerald-400 bg-emerald-50 text-emerald-900', 'KHTN': 'border-amber-400 bg-amber-50 text-amber-900', 'Vật lý': 'border-violet-400 bg-violet-50 text-violet-900', 'Hóa học': 'border-sky-400 bg-sky-50 text-sky-900' }
 const monTone = (mon?: string) => (mon && MON_TONE[mon]) || 'border-slate-300 bg-slate-50 text-slate-700'
 
 // Xếp các ca của 1 ô (khung × thứ) vào lưới vị trí phòng (từ danh mục `phong`, KHÔNG hard-code nữa —
@@ -186,7 +186,8 @@ const MON_HEX: Record<string, { bd: string; bg: string; fg: string }> = {
   'Văn': { bd: '#fb7185', bg: '#fff1f2', fg: '#881337' },
   'Anh': { bd: '#34d399', bg: '#ecfdf5', fg: '#064e3b' },
   'KHTN': { bd: '#fbbf24', bg: '#fffbeb', fg: '#78350f' },
-  'Lý hóa': { bd: '#22d3ee', bg: '#ecfeff', fg: '#164e63' },
+  'Vật lý': { bd: '#a78bfa', bg: '#f5f3ff', fg: '#4c1d95' },
+  'Hóa học': { bd: '#38bdf8', bg: '#f0f9ff', fg: '#0c4a6e' },
 }
 const monHex = (m?: string) => (m && MON_HEX[m]) || { bd: '#cbd5e1', bg: '#f8fafc', fg: '#334155' }
 

@@ -20,7 +20,7 @@ import { BDM_MON, layMonBdm } from '../../lib/kho/banDoMoi'
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
-const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : c.nhanh === 'lyhoa' ? 'lyhoa' : 'toan') as 'hgt' | 'toan' | 'khtn' | 'lyhoa'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
+const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : c.nhanh === 'vatly' ? 'vatly' : c.nhanh === 'hoahoc' ? 'hoahoc' : 'toan') as 'hgt' | 'toan' | 'khtn' | 'vatly' | 'hoahoc'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
 // Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
 // + PHẠM VI hiển thị theo cấp (Thùy 05/11): cấp chủ đề/chuyên đề/nhóm/dạng bài + mục đang chọn — cũng nhớ theo khối + chủ đề.
 const NHO: { hang: KhopHang; trang: number; khoa: string; nguon: string; cap: KhopCap | 'all'; loc: string | null } =
@@ -66,7 +66,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const cd = !coCap && chuDeId && locCD ? chuDeId : null
   const req = useRef(0)
   const nhanXet = useNhanXet('cau')   // "✎ Cần sửa" nội dung câu (đề/đáp án/lời giải): chờ Claude sửa thì tạm ẩn
-  const monDS = khopCoPhamVi() ? 'toan' : (BDM_MON[layMonBdm()].nhanhTl as 'khtn' | 'lyhoa')   // "Để sau" theo môn của bản đồ đang mở
+  const monDS = khopCoPhamVi() ? 'toan' : (BDM_MON[layMonBdm()].nhanhTl as 'khtn' | 'vatly' | 'hoahoc')   // "Để sau" theo môn của bản đồ đang mở
   const deSau = useDeSau('bdm_khop', monDS)  // "⏭ Để sau" (Thùy 20/10): câu chưa muốn quyết dạng bài xuống cuối hàng
 
   const setHang = (h: KhopHang) => { NHO.hang = h; setHangRaw(h); setTrang(0) }

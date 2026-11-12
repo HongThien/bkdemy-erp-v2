@@ -79896,3 +79896,30 @@ Thùy nêu 4 việc, làm được 3:
 - Sai rồi sửa: bản đầu chèn ghi chú -- giữa dòng ⇒ nuốt mất "from hoc_sinh…" cùng dòng ⇒ lỗi column id; đổi sang /* */.
 - Thử txn: 22 HS 4T/5T — ET+MT: 950 → 597 ô (353 ô chỉ có tự luyện thành chưa đo), 147 ô đổi mức, ô yếu 139 → 139; mọi nguồn: 964 → 624, 154 đổi mức. Khối 4 & 6: 0 thay đổi.
 - ĐÃ ÁP mig 202611121657 (Thùy 'cho áp và push'), npm run schema đã chạy. HS 4T/5T đã đánh bẩn ⇒ cron chụp lại trong ≤5 phút (đọc trong lúc chờ = tính trực tiếp theo luật mới).
+## 12/11 — Sau giờ: cấp 1–2 KHÔNG BAO GIỜ trắc nghiệm (mig 202611121657 ĐÃ ÁP)
+- Thùy: "đề test cuối giờ cấp 2 phải tự luận + trả lời ngắn, sao lớp 8 vẫn ra trắc nghiệm". Gốc: mig 1501 thiếu tự luận thì lùi về luật cũ (TN→TLN) + fn_btnhe_soan/in_test lùi _btyeu_chon_cau.
+- Sửa: _btnhe_chon_loai (tu_luan có lời giải | tra_loi_ngan có đáp án); _btnhe_chon_cau cấp 1–2 = TL → TLN, hết; bỏ đường lùi MCQ cho cấp 1–2 ở soan/in_test; soan trả tu_luan, màn soạn ghi "Dạng này chưa có câu tự luận / trả lời ngắn".
+- So cũ–mới (rollback): luyện K5 TN 1→0, K6 6→0, K8 5→0; test K8 0 TN; K10 không đổi. Dạng thiếu cả TL lẫn TLN: K5 1 · K6 2 · K7 1 · K8 0.
+- 13 bài test K8 ngày 12/11 (chưa nộp) vẫn còn câu TN — KHÔNG sửa, chờ Thùy (GV mở 📝 soạn lại → Lưu, hoặc để nguyên). Chọn tay qua ChonCauBdm vẫn chọn được TN (người quyết).
+
+## 12/11 17:05 — Sau giờ cấp 1–2: tự luận + trả lời ngắn NGANG HÀNG, hết mới trắc nghiệm (mig 202611121705 ĐÃ ÁP, thay luật 1657)
+- Thùy: "trả lời ngắn với tự luận như nhau. ưu tiên 2 cái này trước. ko có mới dùng trắc nghiệm". _btnhe_chon_loai thêm nhóm tl_tln (trộn ngẫu nhiên); thiếu ⇒ _btyeu_chon_cau_khac; soan/in_test trả đường lùi _btyeu_chon_cau. Bỏ dòng báo "dạng thiếu" trên màn soạn.
+- So cũ–mới (rollback, luyện): K5 TLN/TL 7/41→34/14 · K6 36/52→59/29 · K8 163/56→196/23; K10 không đổi. Dạng lùi về TN: K5 NDB02797, K6 NDB01223, K7 NDB00449; K6 NDB00383 không có câu dùng được (4 TLN chuẩn nhưng không qua điều kiện đáp án/hình), 0 TN ⇒ vẫn rỗng.
+
+## 12/11 17:23 — Chấm công TA: Bổ trợ sau giờ thành đầu việc mặc định (mig 202611121723 ĐÃ ÁP)
+- Thùy: "bổ trợ sau giờ là 1 task cần đưa mặc định vào danh sách đầu việc cần chấm công". Loại việc bo_tro_sau_gio (package, tính vào bổ trợ, giờ). 1 ca (cả lớp) = 1 việc của ca_bo_tro_nhe.ta_id; khoá tự nhiên (TA, lớp, ngày, loại), không thêm cột.
+- fn_ta_hom_nay gợi ý ca sau giờ (nguon ca_sau_gio) · _ta_buoi_thieu_cong thêm ca qua giờ chưa ghi · _ta_doi_chieu khớp theo ca · fn_ta_khai_viec nguon he_thong + giờ ca. Lương tự cộng vì tính theo tinh_vao.
+- Thử rollback: 01–12/11 thêm 2 thiếu công (11A1, 9A1 ngày 11/11), đối chiếu 276 dòng không đổi; ghi công 1 ca ⇒ he_thong 21:00–21:20, khop=true.
+
+## 12/11 17:42 — Sau giờ: ĐỔI MỨC L1 → L2/L3/L4 (mig 202611121742 ĐÃ ÁP)
+- Thùy: "khi thấy cần lên L2 thì chỉnh lên L2 và nó chuyển sang bổ trợ yếu". fn_btnhe_doi_muc: đề xuất mới nhất phải là L1 đã duyệt; quyền _btk_la_tk (trưởng khối trở lên); fn_btk_luu (cùng nhóm/ưu tiên) → cho_duyet → _btk_duyet_chay (thân fn_btk_duyet tách ra, giữ nguyên: trần sức chứa, hs_level_log, mở/gộp case). fn_btk_duyet = kiểm TBM + gọi thân.
+- Ca sau giờ đã tạo không tự huỷ: fn_btnhe_ds trả muc_moi ⇒ thẻ ca hiện "Đã chuyển Lx". Màn BoTroNheScreen: select Đổi mức ở chip hàng chờ + từng em trên thẻ ca, vá tại chỗ.
+- Thử rollback: hàng chờ 56→55, log 1→2 có actor, case dang_xu 7 dạng; em trong ca mở → L3, ca hiện muc_moi; đổi lần 2 bị chặn. Chưa bấm thử trên app (preview không đăng nhập).
+
+## 12/11 tối — SAI ĐÍCH: "Lý hóa" là HAI môn ⇒ tách thành VẬT LÝ + HÓA HỌC
+- **Sai:** Thùy viết "bộ môn Lý hóa", tôi hiểu thành 1 môn tên "Lý hóa" và dựng cả 4 đợt mà KHÔNG hỏi (vi phạm R1 — tên môn là câu về ĐÍCH). Thùy: "lý 1 môn hóa 1 môn". Ở cấp 3 KHTN tách thành Vật lý · Hóa học · Sinh học.
+- **Sửa (Thùy gật xoá):** mig 202611121749 sinh bởi `scripts/_gen_mig_vat_ly_hoa_hoc.mjs` — dựng `vatly_*` (mã L…) + `hoahoc_*` (mã Q…, vì H đã là Hình) từ khuôn KHTN; mọi hàm/view dùng chung = BẢN GỐC trước Lý hóa (pg_get_functiondef chụp trước khi vá, đã đối chiếu DB: khác đúng phần Lý hóa) + nhánh 2 môn; gỡ 25 bảng `lyhoa_*` (DROP thường, không CASCADE), 45 hàm, 11 chuỗi. Tên ĐẦY ĐỦ "Vật lý"/"Hóa học" để không lẫn phân môn "Lý"/"Hóa" trong KHTN.
+- Kiểm trong giao dịch huỷ trước khi áp: 9 view số dòng y nguyên, `_dbht_cau` md5 KHTN/Toán trùng; mỗi môn 25 bảng · 45 hàm · 29 trigger · 25 policy · dạng chờ L/Q10–12; còn dấu Lý hóa chỉ ở `fn_kho_sua_tk` + CHECK `kho_sua_log` (owner postgres). **ĐÃ ÁP** 202611121749. **CHƯA ÁP:** `202611121749_tach_ly_hoa_vat_ly_hoa_hoc_sql_editor.sql` (Thùy dán SQL Editor, project osrvycilwshkzhljuxef).
+- Code: 26 file thay "Lý hóa" bằng 2 môn (registry môn, kho, bản đồ mới, tài liệu/ET/đề thi, nhân sự/TKB/học phí, app HS màu = màu phân môn Lý/Hóa, Đấu trường, trợ lý, hướng dẫn phiên). Mở thử Kho: 6 tab môn đúng, Hóa học trống, 0 lỗi.
+- 4 script `_gen_mig_ly_hoa_*.mjs` + 5 mig Lý hóa giữ nguyên (lịch sử migration bất biến) — đã bị mig 202611121749 thay thế, ĐỪNG chạy lại script cũ.
+- **Bài học:** tên môn/đối tượng mới mà ghép 2 danh từ ("Lý hóa", "Sử địa"…) ⇒ hỏi 1 câu "một môn hay hai môn" TRƯỚC khi dựng.

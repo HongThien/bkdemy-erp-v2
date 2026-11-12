@@ -52,10 +52,10 @@ const SO_CAU_MAC_DINH = 1                      // kế hoạch điền sẵn t�
 type Row = { db: string | null; maCau: string | null }   // db = id dạng bài bản đồ mới
 type Plan = { db: string; soCau: number }
 // Nhánh của dạng bài: 'toan' Đại · 'hgt' lượng giác (Hình giải tích) · 'hinh_hoc' Hình (bài học = nhóm = dạng bài) · 'khtn' KHTN (một vùng)
-type Nh = 'toan' | 'hgt' | 'hinh_hoc' | 'khtn' | 'lyhoa'
-const KHO_NH: Record<Nh, string | null> = { toan: null, hgt: 'hinh_gt', hinh_hoc: 'hinh_hoc', khtn: null, lyhoa: null }   // nhánh KHO (khoCuaMon) của câu
-const TEN_NH: Record<Nh, string> = { toan: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình', khtn: 'KHTN', lyhoa: 'Lý hóa' }
-const DS_NH: Nh[] = ['toan', 'hgt', 'hinh_hoc', 'khtn', 'lyhoa']
+type Nh = 'toan' | 'hgt' | 'hinh_hoc' | 'khtn' | 'vatly' | 'hoahoc'
+const KHO_NH: Record<Nh, string | null> = { toan: null, hgt: 'hinh_gt', hinh_hoc: 'hinh_hoc', khtn: null, vatly: null, hoahoc: null }   // nhánh KHO (khoCuaMon) của câu
+const TEN_NH: Record<Nh, string> = { toan: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình', khtn: 'KHTN', vatly: 'Vật lý', hoahoc: 'Hóa học' }
+const DS_NH: Nh[] = ['toan', 'hgt', 'hinh_hoc', 'khtn', 'vatly', 'hoahoc']
 // nhánh THÊM ngoài vùng chính (BDM_MON.nhanhTl) của môn: Toán có lượng giác + Hình; KHTN không có
 const NH_PHU: Partial<Record<BdmMon, Nh[]>> = { 'Toán': ['hgt', 'hinh_hoc'] }
 type DbInfo = { id: string; ten: string; nhom_id: string; nhom_ten: string; so_cau: number; nh: Nh }

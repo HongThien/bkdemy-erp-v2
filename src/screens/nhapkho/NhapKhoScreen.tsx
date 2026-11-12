@@ -40,7 +40,8 @@ const MONS: { key: KhoMon; label: string; gate: string }[] = [
   { key: 'toan', label: 'Đại số', gate: 'Toán' },
   { key: 'hgt', label: 'Hình giải tích', gate: 'Toán' },
   { key: 'khtn', label: 'KHTN', gate: 'KHTN' },
-  { key: 'lyhoa', label: 'Lý hóa', gate: 'Lý hóa' },
+  { key: 'vatly', label: 'Vật lý', gate: 'Vật lý' },
+  { key: 'hoahoc', label: 'Hóa học', gate: 'Hóa học' },
 ]
 const CONF_NGUONG = 0.7
 const LOAI_LABEL: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng / sai', tra_loi_ngan: 'Tự luận / trả lời ngắn', tu_luan: 'Tự luận / trả lời ngắn' }

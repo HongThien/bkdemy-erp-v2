@@ -8,17 +8,17 @@ import KhoRac from './KhoRac'
 import McqCoverage from './McqCoverage'
 import DeXuatPanel from './DeXuatPanel'
 import GanMauPanel from './GanMauPanel'
-import { anhBranch, daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch, lyhoaBranch, tsaBranch } from './branches'
+import { anhBranch, daiBranch, hinhBranch, hinhGiaiTichBranch, khtnBranch, vatlyBranch, hoahocBranch, tsaBranch } from './branches'
 import KhoHinhScreen from './hinh/KhoHinhScreen'
 import KhoHinhHocScreen from './hinh/KhoHinhHocScreen'
 
 type Tab = 'dai' | 'hinh' | 'hinhgt' | 'mcq'
-type Mon = 'toan' | 'khtn' | 'lyhoa' | 'anh' | 'tsa'
+type Mon = 'toan' | 'khtn' | 'vatly' | 'hoahoc' | 'anh' | 'tsa'
 // ⭐ 16/09 (CEO): tab Hình học tách 2 phase — Học kiến thức (Bài) vs Luyện tập (Mô hình/Dạng/Bổ đề cũ).
 // Toggle chỉ hiện khi tab='hinh'. Nhớ preference/localStorage riêng.
 type HinhPhase = 'hoc' | 'luyen'
 // Map môn-kho ↔ nhãn MON_LIST (nhan_su_mon lưu nhãn 'Toán'/'KHTN'/'Tiếng Anh' — nhãn PHẢI khớp đúng, useMonScope so chuỗi).
-const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }, { key: 'lyhoa', label: 'Lý hóa' }, { key: 'anh', label: 'Tiếng Anh' }, { key: 'tsa', label: 'TSA' }]
+const MON_TABS: { key: Mon; label: string }[] = [{ key: 'toan', label: 'Toán' }, { key: 'khtn', label: 'KHTN' }, { key: 'vatly', label: 'Vật lý' }, { key: 'hoahoc', label: 'Hóa học' }, { key: 'anh', label: 'Tiếng Anh' }, { key: 'tsa', label: 'TSA' }]
 
 // Nhớ màn hình gần nhất (preference cá nhân → localStorage, không phải data dùng chung)
 const readKhoi = () => {
@@ -29,7 +29,7 @@ const readTab = () => {
   const v = localStorage.getItem('kho.tab')
   return (v === 'hinh' || v === 'hinhgt' || v === 'mcq' ? v : 'dai') as Tab
 }
-const readMon = () => { const v = localStorage.getItem('kho.mon'); return (v === 'khtn' || v === 'lyhoa' || v === 'anh' || v === 'tsa' ? v : 'toan') as Mon }
+const readMon = () => { const v = localStorage.getItem('kho.mon'); return (v === 'khtn' || v === 'vatly' || v === 'hoahoc' || v === 'anh' || v === 'tsa' ? v : 'toan') as Mon }
 const readHinhPhase = () => (localStorage.getItem('kho.hinh.phase') === 'luyen' ? 'luyen' : 'hoc') as HinhPhase
 
 export default function KhoScreen() {
@@ -42,7 +42,7 @@ export default function KhoScreen() {
   useEffect(() => { localStorage.setItem('kho.mon', mon) }, [mon])
   useEffect(() => { localStorage.setItem('kho.hinh.phase', hinhPhase) }, [hinhPhase])
   // môn KHTN = 1 cây (không nhánh Đại/Hình); Toán = nhánh tab → branch.
-  const config = mon === 'khtn' ? khtnBranch : mon === 'lyhoa' ? lyhoaBranch : mon === 'anh' ? anhBranch : mon === 'tsa' ? tsaBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
+  const config = mon === 'khtn' ? khtnBranch : mon === 'vatly' ? vatlyBranch : mon === 'hoahoc' ? hoahocBranch : mon === 'anh' ? anhBranch : mon === 'tsa' ? tsaBranch : tab === 'dai' ? daiBranch : tab === 'hinhgt' ? hinhGiaiTichBranch : hinhBranch
   // Kho Anh hiện chỉ có bản đồ khối 9 ⇒ mở môn Anh thì nhảy về khối 9 (không mở ra màn trống).
   useEffect(() => { if (mon === 'anh' && khoi !== '9') setKhoi('9') }, [mon]) // eslint-disable-line react-hooks/exhaustive-deps
   // Kho TSA (Toán luyện thi Bách khoa) hiện chỉ có bản đồ khối 12 ⇒ mở môn TSA thì nhảy về khối 12.

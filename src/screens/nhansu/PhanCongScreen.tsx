@@ -10,7 +10,7 @@ import { teamQlcl } from '../../lib/qlcl'
 
 // Ma trận PHÂN CÔNG: hàng = lớp, cột = SLOT việc. Gán theo vai (TG ôm toàn bộ chấm; GV chính/phụ làm đánh giá+nội dung).
 // Ghi vào phan_cong_lop (cùng seam màn Lớp — 1 sự thật, 2 cửa). Điểm danh = OPS toàn hệ (không gán per-lớp).
-const MON_ORDER = ['Toán', 'Văn', 'Anh', 'KHTN', 'Lý hóa']
+const MON_ORDER = ['Toán', 'Văn', 'Anh', 'KHTN', 'Vật lý', 'Hóa học']
 const BAC_ORDER: Record<string, number> = { S: 0, A: 1, B: 2, C: 3 }
 const BAC_TONE: Record<string, string> = { S: 'bg-violet-100 text-violet-700', A: 'bg-blue-100 text-blue-700', B: 'bg-teal-100 text-teal-700', C: 'bg-amber-100 text-amber-700' }
 

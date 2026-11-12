@@ -84,7 +84,7 @@ export default function HocPhiScreen() {
 // nhãn toggle ngắn (Thùy: "Toán - Văn - Anh - KHTN") nhưng GIÁ TRỊ môn trong DB là 'Tiếng Anh' —
 // map tường minh, không so trực tiếp nhãn (bug thật 07-13: toggle Anh luôn 0 dòng).
 const MON_TOGGLE: { label: string; value: string }[] = [
-  { label: 'Toán', value: 'Toán' }, { label: 'Văn', value: 'Văn' }, { label: 'Anh', value: 'Tiếng Anh' }, { label: 'KHTN', value: 'KHTN' }, { label: 'Lý hóa', value: 'Lý hóa' },
+  { label: 'Toán', value: 'Toán' }, { label: 'Văn', value: 'Văn' }, { label: 'Anh', value: 'Tiếng Anh' }, { label: 'KHTN', value: 'KHTN' }, { label: 'Vật lý', value: 'Vật lý' }, { label: 'Hóa học', value: 'Hóa học' },
 ]
 type SortKey = 'ten' | 'ma' | 'lop' | 'buoi' | 'bu' | 'duoi' | 'ct' | 'tien'
 

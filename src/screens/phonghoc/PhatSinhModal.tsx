@@ -10,7 +10,7 @@ import {
 } from '../../lib/phong'
 import { getMyProfile } from '../../lib/nhansu'
 
-const MON_OPTS = ['Toán', 'Văn', 'Anh', 'KHTN', 'Lý hóa']
+const MON_OPTS = ['Toán', 'Văn', 'Anh', 'KHTN', 'Vật lý', 'Hóa học']
 const LOAI_OPTS = Object.keys(LOAI_HOAT_DONG_NHAN) as LoaiHoatDong[]
 
 export default function PhatSinhModal({ phongId, ngay, edit, onClose, onSaved }: {
