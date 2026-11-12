@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-557 bảng · 39 view · 0 enum · 376 trigger · 1828 function
+557 bảng · 39 view · 0 enum · 376 trigger · 1830 function
 
 ## _app_secrets
 
@@ -10700,6 +10700,7 @@ WITH luot AS (
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_bthinh_ket_thuc(p_case uuid, p_ns uuid, p_ket_qua text, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_bthinh_tai_lieu_json(p_buoi uuid)` → jsonb
+- `_btk_duyet_chay(p_id uuid)` → jsonb
 - `_btk_ghi_log()` → trigger
 - `_btk_la_tbm(p_mon text, p_khoi text)` → boolean
 - `_btk_la_tk(p_mon text, p_khoi text)` → boolean
@@ -11427,6 +11428,7 @@ WITH luot AS (
 - `fn_btk_tra_lai(p_id uuid, p_ly_do text)` → void
 - `fn_btnhe_buoi_lop(p_lop uuid, p_so_ngay integer DEFAULT 14)` → TABLE(ngay date, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, ta_id uuid, ta_ten text, so_ca_sau_gio integer)
 - `fn_btnhe_cho()` → jsonb
+- `fn_btnhe_doi_muc(p_hs uuid, p_mon text, p_muc integer)` → jsonb
 - `fn_btnhe_ds(p_tu date, p_den date)` → jsonb
 - `fn_btnhe_fill_dang(p_case uuid)` → integer
 - `fn_btnhe_goi_y_dang(p_buoi uuid, p_ma_dang text, p_n integer, p_tru text[])` → text[]

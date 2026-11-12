@@ -37,6 +37,7 @@ export type HsCaNhe = {
   buoi_id: string; buoi_hoc_hs_id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null
   buoi_trang_thai: 'mo' | 'hoan_tat' | 'huy'; diem_danh: string | null; danh_gia_xong_at: string | null
   so_dang: number; co_test: boolean; test_da_nop: boolean; ket_qua: string | null
+  muc_moi?: number | null  // đã đổi mức (L2/L3/L4) sau khi ca tạo — Thùy 12/11
 }
 export type CaNhe = {
   ca_id: string; lop_id: string; ten_lop: string; mon: string; khoi: string; kieu: 'sau_buoi' | 'khac'; ngay: string
@@ -59,6 +60,14 @@ export async function huyCaNhe(caId: string, lyDo: string): Promise<number> {
 export type ChoSauGio = {
   de_xuat_id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; mon: string; khoi: string
   lop_id: string | null; ten_lop: string | null; nhom: { ma: string; ten: string }[]; uu_tien: number; ghi_chu: string; duyet_at: string; so_dang: number
+}
+// ĐỔI MỨC em đang ở sau giờ (L1) lên L2/L3/L4 (Thùy 12/11, mig 202611121742): đi đúng đường chốt — đề xuất + duyệt, log mức.
+// L2/L3 ⇒ case bổ trợ yếu vào hàng xếp của Lộc. Ca sau giờ đã tạo KHÔNG tự huỷ (ca_sau_gio_con_mo = số buổi còn mở để báo).
+export type KqDoiMuc = { muc: number; case_id: string | null; so_dang: number; ca_sau_gio_con_mo: number }
+export async function doiMucSauGio(hs: string, mon: string, muc: 2 | 3 | 4): Promise<KqDoiMuc> {
+  const { data, error } = await supabase.rpc('fn_btnhe_doi_muc', { p_hs: hs, p_mon: mon, p_muc: muc })
+  if (error) throw error
+  return data as KqDoiMuc
 }
 export async function choSauGio(): Promise<ChoSauGio[]> {
   const { data, error } = await supabase.rpc('fn_btnhe_cho')

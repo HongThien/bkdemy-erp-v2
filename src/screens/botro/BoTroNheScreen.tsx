@@ -8,7 +8,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
 import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
 import NutInSauGio from './NutInSauGio'
-import { inTestSauGio } from '../../lib/botro_nhe'
+import { inTestSauGio, doiMucSauGio, type KqDoiMuc } from '../../lib/botro_nhe'
+import { TEN_MUC } from '../../lib/boTroTk'
 import { inLayBaiGiay, type BaiInGiay } from '../../lib/botro_yeu_ca'
 import InSauGioET from './InSauGioET'
 import { CaDetail } from '../ta/CaBoTroTA'
@@ -41,6 +42,13 @@ export default function BoTroNheScreen() {
   const [cho, setCho] = useState<ChoSauGio[] | null>(NHO.cho)
   const [thongBao, setThongBao] = useState<string | null>(null) // ca_id đang mở ảnh thông báo PH
   const [hienHuy, setHienHuy] = useState(false)
+  const [tin, setTin] = useState<string | null>(null)
+  // đổi mức 1 em trên thẻ ca ⇒ vá đúng em đó tại chỗ (CLAUDE.md §2 React), không tải lại danh sách
+  const vaDoiMuc = (c: CaNhe, h: HsCaNhe, r: KqDoiMuc) => {
+    setRows((p) => { const n = (p ?? []).map((x) => x.ca_id !== c.ca_id ? x : { ...x, hs: x.hs.map((y) => y.buoi_id === h.buoi_id ? { ...y, muc_moi: r.muc } : y) }); NHO.rows = n; return n })
+    setLoi(null)
+    setTin(`${h.ho_ten}: đã chuyển L${r.muc}${r.muc < 4 ? ` — vào bổ trợ yếu (hàng xếp của Lộc), ${r.so_dang} dạng` : ' — bổ trợ riêng với GV'}.${r.ca_sau_gio_con_mo ? ' Ca sau giờ của em vẫn giữ — muốn bỏ thì tự huỷ ca hoặc để em vắng.' : ''}`)
+  }
   const [inLop, setInLop] = useState<{ bais: BaiInGiay[]; lop: string } | null>(null)
   // IN CẢ LỚP (Thùy 11/11): chỉ BÀI TEST — mỗi em còn mở 1 bài (chưa soạn thì DB tự sinh như nút 📝), sang trang giữa các em
   async function inCaLop(c: CaNhe) {
@@ -89,6 +97,7 @@ export default function BoTroNheScreen() {
         </div>
       </div>
       {loi && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
+      {tin && <p className="mb-3 flex items-center gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-[12.5px] text-emerald-800">✓ {tin}<button onClick={() => setTin(null)} className="ml-auto text-emerald-600">✕</button></p>}
 
       {sub === 'cho' && cho && cho.length === 0 && !tao && <p className="text-[13px] text-slate-400">Không còn lớp nào có em chờ khởi tạo.</p>}
       {sub === 'cho' && cho && cho.length > 0 && (
@@ -101,7 +110,12 @@ export default function BoTroNheScreen() {
                 <span className="text-[11.5px] text-slate-400">{ds[0].mon} · K{ds[0].khoi}</span>
                 {ds.map((x) => (
                   <span key={x.de_xuat_id} title={x.nhom.map((n) => n.ten).join('\n') + (x.ghi_chu ? '\n— ' + x.ghi_chu : '')}
-                    className="rounded-full bg-amber-100 px-2 py-0.5 text-[12px] text-amber-900">{x.ho_ten} · {x.so_dang} dạng</span>
+                    className="inline-flex items-center gap-1 rounded-full bg-amber-100 py-0.5 pl-2 pr-0.5 text-[12px] text-amber-900">{x.ho_ten} · {x.so_dang} dạng
+                      <DoiMuc hs={x.hoc_sinh_id} mon={x.mon} ten={x.ho_ten} onXong={(r) => {
+                        // vá tại chỗ: em rời hàng chờ (đã sang bổ trợ khối / riêng)
+                        setCho((p) => { const n = (p ?? []).filter((z) => z.de_xuat_id !== x.de_xuat_id); NHO.cho = n; return n })
+                        setLoi(null); setTin(`${x.ho_ten}: đã chuyển L${r.muc}${r.muc < 4 ? ` — vào bổ trợ yếu (hàng xếp của Lộc), ${r.so_dang} dạng` : ' — bổ trợ riêng với GV'}.`)
+                      }} /></span>
                 ))}
                 {ds[0].lop_id && <button onClick={() => { setDau(ds[0].lop_id!); setTao(true) }}
                   className="ml-auto rounded-lg bg-amber-600 px-3 py-1 text-[12.5px] font-semibold text-white hover:bg-amber-700">Khởi tạo ca · {ds.length} em</button>}
@@ -126,7 +140,7 @@ export default function BoTroNheScreen() {
       {sub === 'da' && (rows === null ? <p className="text-[13px] text-slate-400">Đang tải…</p> : (
         <>
           <Nhom tieuDe={`Sắp tới & hôm nay · ${dangToi.length} ca`} cas={dangToi} homNay={homNay} onMo={(b) => setMo({ buoiId: b })}
-            onThongBao={(c) => setThongBao(c.ca_id)} onInLop={inCaLop}
+            onThongBao={(c) => setThongBao(c.ca_id)} onInLop={inCaLop} onDoiMuc={vaDoiMuc}
             onHuy={async (c) => {
               if (!window.confirm(`Huỷ ca ${ddmmVN(c.ngay)} ${hhmm(c.gio_bat_dau)} lớp ${c.ten_lop}? Em đã điểm danh giữ nguyên.`)) return
               try { await huyCaNhe(c.ca_id, 'Trưởng khối huỷ ca'); tai() } catch (e: any) { setLoi(e?.message ?? String(e)) }
@@ -140,9 +154,9 @@ export default function BoTroNheScreen() {
   )
 }
 
-function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, rong }: {
+function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc, rong }: {
   tieuDe: string; cas: CaNhe[]; homNay: string; onMo: (buoiId: string) => void
-  onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; onInLop?: (c: CaNhe) => Promise<void>; rong?: string
+  onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; onInLop?: (c: CaNhe) => Promise<void>; onDoiMuc?: (c: CaNhe, h: HsCaNhe, r: KqDoiMuc) => void; rong?: string
 }) {
   const [dangIn, setDangIn] = useState<string | null>(null)
   return (
@@ -177,6 +191,8 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, rong }: {
                             <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold ${tt.cls}`}>{tt.ten}</span>
                             <span className="text-slate-300">›</span>
                           </button>
+                          {h.muc_moi ? <span title="Em đã được đổi mức sau khi ca tạo. Ca sau giờ KHÔNG tự huỷ — tự quyết huỷ hay giữ." className="shrink-0 rounded-full bg-rose-100 px-2 py-0.5 text-[11px] font-semibold text-rose-700">Đã chuyển L{h.muc_moi}</span>
+                            : onDoiMuc && h.buoi_trang_thai !== 'huy' && !h.danh_gia_xong_at && <DoiMuc hs={h.hoc_sinh_id} mon={c.mon} ten={h.ho_ten} onXong={(r) => onDoiMuc(c, h, r)} />}
                           {h.buoi_trang_thai !== 'huy' && <NutInSauGio gon lop={c.ten_lop} buoiId={h.buoi_id} dong={h.buoi_trang_thai !== 'mo' || !!h.danh_gia_xong_at} daNop={h.test_da_nop} />}
                         </li>
                       )
@@ -286,5 +302,23 @@ function FormKhoiTao({ lopDau, onXong }: { lopDau?: string | null; onXong: (caId
           : b && <span className="text-[12px] text-slate-500">{thuCuaNgay(b.ngay)} {ddmmVN(b.ngay)} · ca từ {hhmm(b.gio_ket_thuc)} · {phut} phút sau giờ{b.phong ? ` · ${b.phong}` : ''}</span>}
       </div>
     </div>
+  )
+}
+
+// ĐỔI MỨC (Thùy 12/11): L1 sau giờ → L2/L3/L4. Quyền (trưởng khối trở lên) + mọi ghi ở DB (fn_btnhe_doi_muc, đường chốt có sẵn).
+function DoiMuc({ hs, mon, ten, onXong }: { hs: string; mon: string; ten: string; onXong: (r: KqDoiMuc) => void }) {
+  const [ban, setBan] = useState(false)
+  return (
+    <select disabled={ban} value="" title="Đổi mức bổ trợ của em" onClick={(e) => e.stopPropagation()}
+      onChange={async (e) => {
+        const muc = Number(e.target.value) as 2 | 3 | 4
+        if (!muc || !window.confirm(`Đổi ${ten} lên ${TEN_MUC[muc]}?${muc < 4 ? ' Em rời sau giờ, vào bổ trợ yếu (hàng xếp của Lộc).' : ''}`)) return
+        setBan(true)
+        try { onXong(await doiMucSauGio(hs, mon, muc)) } catch (er: any) { window.alert(er?.message ?? String(er)) } finally { setBan(false) }
+      }}
+      className="shrink-0 cursor-pointer rounded-full border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] text-slate-600 hover:border-indigo-300 disabled:opacity-50">
+      <option value="">{ban ? '…' : 'Đổi mức'}</option>
+      <option value="2">→ L2</option><option value="3">→ L3</option><option value="4">→ L4</option>
+    </select>
   )
 }
