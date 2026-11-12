@@ -48,8 +48,13 @@ bảng xoay cùng dữ liệu đó sang trục học sinh. Một hàm, ba ngư�
 | Lịch dạy tuần | GV bàn với nhau | các buổi của tuần NÀY (vd thứ Năm + Chủ nhật tới) |
 | Mục tiêu học sinh | HS + phụ huynh | **lùi một buổi** (vd Chủ nhật vừa qua + thứ Năm tới) |
 
-**Luật cắt cửa sổ:** *mục tiêu tuần W = các buổi có hạn BTVN rơi trong tuần W (thứ Hai → Chủ nhật).*
-BTVN buổi N hạn trước buổi N+1 ⇒ với lớp 2 buổi/tuần luôn ra cặp **buổi cuối tuần trước + buổi đầu tuần này**.
+**Luật cắt cửa sổ (sửa 12/11 tối — Thùy):** *một lần đo thuộc tuần mà nó ĐƯỢC CHẤM XONG (thứ Hai → Chủ nhật), không theo lúc HS nộp.*
+Lý do: lần đo chỉ tồn tại khi có kết quả chấm (CLAUDE §1.5 — chỉ có dòng khi có kết quả thật). BTVN nộp tối hôm trước buổi kế
+(lớp thứ Hai – thứ Sáu: nộp thứ Năm và Chủ nhật); bài nộp Chủ nhật thì **thứ Hai mới chấm ⇒ vào tuần MỚI**.
+Với lớp 2 buổi/tuần vẫn ra cặp **buổi cuối tuần trước + buổi đầu tuần này** — bảng dưới không đổi, chỉ đổi mốc tính từ "hạn nộp" sang "lúc chấm xong".
+- **Tách hai thứ:** "con đã nộp / đúng hạn chưa" tính theo GIỜ NỘP (biết ngay) · "kết quả" tính theo GIỜ CHẤM.
+- Bài đã nộp mà chưa chấm = **"chờ chấm"** — nợ của trung tâm, không ghi "không có lần đo mới" cho con.
+- Mốc theo giờ chấm ⇒ **chấm trễ là đẩy lần đo sang tuần khác** ⇒ cần hạn chấm (đề xuất: xong trước buổi kế của lớp); *chưa chốt.*
 
 | Lớp | Buổi thuộc mục tiêu tuần này | Hạn BTVN |
 |---|---|---|
@@ -61,8 +66,8 @@ Hệ quả: mọi dạng của tuần đều **đủ vòng đo (ET trên lớp +
 không cần khối "chờ kết quả", không cần ngày chốt sổ thứ hai. Lớp 1 hay 3 buổi/tuần chạy cùng luật, không ngoại lệ.
 
 **Quy ước đi kèm:**
-1. Giờ chốt = **đầu ngày thứ Hai (giờ VN)**. BTVN có hạn rơi đúng thứ Hai tính vào tuần mới.
-2. **Bản đã chốt không sửa.** Bài nộp sau giờ chốt vẫn tính vào mastery và hiện ở kỳ sau; bản tuần đó ghi "không nộp đúng hạn".
+1. Giờ chốt = **đầu ngày thứ Hai (giờ VN)**. Mọi kết quả chấm từ thứ Hai trở đi tính vào tuần mới.
+2. **Bản đã chốt không sửa.** Bài chấm sau giờ chốt vẫn tính vào mastery và hiện ở kỳ sau.
 3. Buổi huỷ / tuần nghỉ ⇒ hạn BTVN trôi; dạng đi theo hạn.
 4. Buổi thứ hai của tuần (chưa thuộc cửa sổ) hiện **một dòng thông tin** "cuối tuần này con sẽ học thêm: …
    (tính vào mục tiêu tuần sau)". Không tính điểm. Có sẵn vì GV đã chốt lịch dạy cả tuần từ thứ Hai.
@@ -232,7 +237,7 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 |---|---|---|
 | 1 | Mastery không nhúc nhích trong 1 tuần; mặc định không tính BTVN | **Đã gỡ bằng thiết kế:** hai tầng (§5) + BTVN xếp chồng tính vào mastery (§5b) |
 | 2 | Đường "hết yếu" không kết thúc bằng lần đo được tính; trùng với luồng bổ trợ | **Đã gỡ bằng thiết kế:** vòng nợ sau giờ (§5c), một danh sách với bổ trợ |
-| 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **Giảm:** dạng trọng tâm và giáo trình do người chốt ở buổi thứ Hai (§3b), hệ chỉ đề xuất. Còn mở: tài liệu phải ở trên hệ lúc họp · chấm BTVN kịp trước 00:00 thứ Hai — cần đo (§7.1) |
+| 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **Giảm:** dạng trọng tâm và giáo trình do người chốt ở buổi thứ Hai (§3b), hệ chỉ đề xuất. Tài liệu: Thùy chốt BẮT BUỘC làm xong ở buổi họp. Chấm BTVN: mốc tính theo giờ chấm (§3) nên không còn "kịp trước 00:00", nhưng cần hạn chấm để lần đo không trôi tuần |
 | 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Vẫn cần đo phân bố thật trước khi phát cho phụ huynh |
 | 5 | Nợ tự biến mất sau 30 ngày không đo | **Đã gỡ:** nợ đọc từ sổ chốt tuần (§4) |
 | 6 | Tải: em 3 môn ~20 dòng/tuần (cần màn gộp có ưu tiên) · sức chứa ca sau giờ · em vắng (mục tiêu giữ, đường đi = buổi bù) · em mới vào lớp (không gánh nợ trước ngày vào) | **MỞ** |

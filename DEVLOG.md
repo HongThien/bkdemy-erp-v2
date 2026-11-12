@@ -79946,3 +79946,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:20 — Mục tiêu tuần: làm rõ "GV không phải làm gì" = không làm SỐ LIỆU, vẫn CHỐT
 - Thùy: buổi họp chiều thứ Hai chốt giáo trình cả tuần + vấn đề HS tuần trước + dạng bổ trợ trọng tâm của từng em (yếu 5 dạng ⇒ tuần này vào dạng nào). Hệ đưa sẵn toàn bộ danh sách, GV chỉ duyệt. Spec thêm §3b; còn treo: khối chưa chốt tới giờ phát thì phát bản đề xuất hay giữ.
+
+## 12/11 23:26 — Mục tiêu tuần: mốc tính lần đo = lúc CHẤM XONG, không phải lúc nộp
+- Thùy: BTVN buổi thứ Sáu nộp Chủ nhật, thứ Hai mới chấm ⇒ phải vào tuần mới. Sửa luật cắt cửa sổ §3 (cặp buổi không đổi). Tách "con đã nộp" (giờ nộp) khỏi "kết quả" (giờ chấm); bài chờ chấm là nợ của trung tâm. Tài liệu: bắt buộc xong ở buổi họp thứ Hai. Còn treo: hạn chấm BTVN.
