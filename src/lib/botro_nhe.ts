@@ -103,7 +103,7 @@ export async function buoiCuaLop(lopId: string, soNgay = 14): Promise<BuoiLop[]>
 
 // SOẠN bài luyện / bài test như builder giáo trình (Thùy 11/11, mig 202611111717): máy đề xuất (không ghi) → người sửa → lưu.
 export type DangSoan = { ma_dang: string; ten_dang: string; nhom_yeu: boolean; nhanh: string | null; nhom_id: string | null; caus: string[] }
-export type BaiSoan = { loai: 'luyen' | 'test'; mon: string; test_id: string | null; dang: DangSoan[]; da_in: string[]; cau_hinh_in?: CauHinhIn | null }
+export type BaiSoan = { loai: 'luyen' | 'test'; mon: string; test_id: string | null; dang: DangSoan[]; da_in: string[]; cau_hinh_in?: CauHinhIn | null; tu_luan?: boolean /* cấp 1–2: chỉ tự luận → trả lời ngắn */ }
 // cấu hình in theo câu như builder giáo trình (khoá = ma_cau) — lưu ở bai_test.cau_hinh_in (mig 202611121501)
 export type CauHinhIn = { btvnLinesByCau?: Record<string, number>; colByCau?: Record<string, number>; hinhCheDoByCau?: Record<string, 'hien' | 'o_trong' | 'khong'>; anhMmByCau?: Record<string, number>; anhPctByCau?: Record<string, number> }
 export async function soanBai(buoiId: string, loai: 'luyen' | 'test', so = 3): Promise<BaiSoan> {

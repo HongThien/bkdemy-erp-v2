@@ -92,6 +92,7 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
               <div key={d.ma_dang} className={busy === d.ma_dang ? 'opacity-50' : ''}>
                 <div className="px-3 pt-3 text-[13px] font-bold text-slate-800">
                   {i + 1}. {d.ten_dang}{d.nhom_yeu && <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-[10.5px] text-amber-800">★ nhóm yếu</span>}
+                  {bai.tu_luan && !d.caus.length && <span className="ml-2 rounded-full bg-rose-50 px-2 py-0.5 text-[10.5px] font-medium text-rose-700">Dạng này chưa có câu tự luận / trả lời ngắn — bỏ khỏi bài</span>}
                 </div>
                 <KhoiCau tieuDe={`${d.caus.length} câu`} mau={loai === 'test' ? 'amber' : 'sky'} btvn caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={false}
                   soMacDinh={{ trac_nghiem: loai === 'test' ? 1 : so }}
