@@ -1,0 +1,194 @@
+[
+ {
+  "ma": "H085",
+  "file": "H085.png",
+  "cach": 3,
+  "chu_thich": "Mô hình nguyên tử bánh mận: điện tích dương phân bố đều, electron nhúng trong quả cầu",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 121); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H086",
+  "file": "H086.png",
+  "cach": 3,
+  "chu_thich": "Thí nghiệm tán xạ hạt α của Rutherford: nguồn Po, lá vàng mỏng, màn huỳnh quang",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 121); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H087",
+  "file": "H087.png",
+  "cach": 3,
+  "chu_thich": "Hạt α qua nguyên tử: mô hình Thomson chỉ lệch rất ít, mô hình Rutherford lệch góc lớn (kể cả bật ngược)",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Quỹ đạo Coulomb mô phỏng số; kích thước hạt nhân phóng đại"
+ },
+ {
+  "ma": "H088",
+  "file": "H088.png",
+  "cach": 3,
+  "chu_thich": "Mô hình hành tinh nguyên tử: hạt α xa hạt nhân ít lệch, gần hạt nhân lệch mạnh",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 122); không chép nét vẽ gốc",
+  "ghi": "Quỹ đạo Coulomb mô phỏng số; hạt nhân phóng đại"
+ },
+ {
+  "ma": "H089",
+  "file": "H089.png",
+  "cach": 3,
+  "chu_thich": "Nguyên tử và hạt nhân gồm Z proton, N neutron (ví dụ Li-7: Z = 3, N = 4)",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H090",
+  "file": "H090.png",
+  "cach": 3,
+  "chu_thich": "Ba đồng vị của hydrogen: cùng Z = 1, khác số neutron",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H091",
+  "file": "H091.png",
+  "cach": 3,
+  "chu_thich": "Năng lượng liên kết: phá hạt nhân phải cung cấp ΔE = Δm·c², liên kết lại thì toả ΔE",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H092",
+  "file": "H092.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị năng lượng liên kết riêng ε theo số khối A: hạt nhân trung bình bền nhất",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Đường cong nội suy từ giá trị thật (Li-6 5,33; Fe-56 8,79; U-238 7,57 MeV/nucleon), bỏ He-4 cho gọn"
+ },
+ {
+  "ma": "H093",
+  "file": "H093.png",
+  "cach": 3,
+  "chu_thich": "Phản ứng Rutherford: α + N-14 → O-17 + p",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H094",
+  "file": "H094.png",
+  "cach": 3,
+  "chu_thich": "Mức năng lượng nghỉ: W > 0 toả năng lượng, W < 0 thu năng lượng",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H095",
+  "file": "H095.png",
+  "cach": 3,
+  "chu_thich": "Phân hạch: neutron chậm + U-235 → U-236 kích thích → Y-95 + I-138 + 3 neutron, toả ≈ 200 MeV",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H096",
+  "file": "H096.png",
+  "cach": 3,
+  "chu_thich": "Phản ứng dây chuyền (ví dụ k = 2): số phân hạch nhân lên 1, 2, 4, ...",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H097",
+  "file": "H097.png",
+  "cach": 3,
+  "chu_thich": "Sơ đồ lò phản ứng hạt nhân: thanh uranium, thanh cadmium, than chì, xi măng bảo vệ",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 165); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H098",
+  "file": "H098.png",
+  "cach": 3,
+  "chu_thich": "Phản ứng nhiệt hạch: D + T → He-4 + n, toả năng lượng rất lớn",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H099",
+  "file": "H099.png",
+  "cach": 3,
+  "chu_thich": "Nhiên liệu của lò: thanh uranium (U tự nhiên hoặc U làm giàu 2–4% U-235)",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 165); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H100",
+  "file": "H100.png",
+  "cach": 3,
+  "chu_thich": "Chất điều tiết (than chì) làm chậm neutron nhanh thành neutron chậm để gây phân hạch tiếp",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 165); không chép nét vẽ gốc",
+  "ghi": "Mô tả định tính quá trình làm chậm"
+ },
+ {
+  "ma": "H101",
+  "file": "H101.png",
+  "cach": 3,
+  "chu_thich": "Thanh điều khiển cadmium: cắm sâu hấp thụ neutron làm phản ứng chậm lại, rút ra thì nhanh lên",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 165); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H102",
+  "file": "H102.png",
+  "cach": 3,
+  "chu_thich": "Sơ đồ nhà máy điện hạt nhân: lò, bộ trao đổi nhiệt, tua-bin, máy phát, bình ngưng",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 166); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H104",
+  "file": "H104.png",
+  "cach": 3,
+  "chu_thich": "Hiện tượng phóng xạ: hạt nhân mẹ không bền tự phát phân rã thành hạt nhân con và phát tia phóng xạ",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H105",
+  "file": "H105.png",
+  "cach": 3,
+  "chu_thich": "Các tia phóng xạ: lệch trong điện trường và khả năng đâm xuyên qua giấy, nhôm, chì",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Độ lệch chỉ minh hoạ định tính (β lệch nhiều hơn α); γ qua chì chỉ giảm mạnh, không hết"
+ },
+ {
+  "ma": "H106",
+  "file": "H106.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị số hạt nhân N theo thời gian: sau mỗi chu kì T còn một nửa",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 151); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H107",
+  "file": "H107.png",
+  "cach": 3,
+  "chu_thich": "Số hạt nhân còn lại N(t) và số đã phân rã ΔN trên đồ thị N–t",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 151); không chép nét vẽ gốc",
+  "ghi": ""
+ },
+ {
+  "ma": "H108",
+  "file": "H108.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị độ phóng xạ H theo thời gian: giảm mũ, sau mỗi chu kì T giảm một nửa",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H111",
+  "file": "H111.png",
+  "cach": 3,
+  "chu_thich": "Đầu báo khói dùng tia α: có khói thì dòng điện giảm và báo động",
+  "nguon": "Vẽ lại bằng code, cùng ý với hình sách Tập 2 (trang PDF 167); không chép nét vẽ gốc",
+  "ghi": "Sơ đồ đơn giản hoá buồng ion hoá"
+ }
+]

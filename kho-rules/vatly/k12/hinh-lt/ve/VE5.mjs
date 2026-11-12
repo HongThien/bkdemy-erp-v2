@@ -232,7 +232,7 @@ async function H094() {
   const panel = (x0, hiBefore) => {
     const yHi = 90, yLo = 215, yB = hiBefore ? yHi : yLo, yA = hiBefore ? yLo : yHi
     let s = line(x0, yB, x0 + 90, yB, INK, 2.5) + line(x0 + 150, yA, x0 + 240, yA, INK, 2.5)
-    s += tx(x0 + 45, yB - 28, 'Trước', { sz: 18 }) + tx(x0 + 45, yB - 8, '~m~_{tr}&#160;~c~²', { sz: 19, c: '#444' })
+    s += tx(x0 + 45, yB - 36, 'Trước', { sz: 18 }) + tx(x0 + 45, yB - 14, '~m~_{tr}&#160;~c~²', { sz: 19, c: '#444' })
     s += tx(x0 + 195, yA + (hiBefore ? 28 : -28), 'Sau', { sz: 18 }) + tx(x0 + 195, yA + (hiBefore ? 50 : -8), '~m~_{s}&#160;~c~²', { sz: 19, c: '#444' })
     s += arrow(x0 + 90, yB, x0 + 150, yA, hiBefore ? GR : RD, 3, 13)
     return s
