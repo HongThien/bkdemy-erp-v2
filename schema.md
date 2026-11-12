@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-529 bảng · 39 view · 0 enum · 347 trigger · 1771 function
+531 bảng · 39 view · 0 enum · 347 trigger · 1774 function
 
 ## _app_secrets
 
@@ -5527,6 +5527,14 @@ END |  |  |
 | da_tieu | bigint |  | 0 |  |  |
 | cap_nhat | timestamp with time zone |  | now() |  |  |
 
+## nt_dht_so_du_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| so_du | integer |  |  |  |  |
+| tinh_at | timestamp with time zone |  | clock_timestamp() |  |  |
+
 ## nt_gio_choi
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -6935,6 +6943,16 @@ END |  |  |
 | lop_id | uuid |  |  | PK FK→lop.id |  |
 | mo | boolean |  |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+
+## tl_bdm_dem_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| khoi | text |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| dem_db | jsonb |  |  |  |  |
+| dem_cp | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  | clock_timestamp() |  |  |
 
 ## tln_ai_cham_log
 
@@ -10415,6 +10433,8 @@ WITH luot AS (
 - `_nt_bao_tri()` → boolean
 - `_nt_bonus_mua(p_ngay0 integer, p_d0 integer)` → double precision
 - `_nt_cung_lop(p_a uuid, p_b uuid)` → boolean
+- `_nt_dht_so_du_ghi(p_hs uuid, p_so integer)` → void
+- `_nt_dht_so_du_hien(p_hs uuid, p_tinh_lai boolean)` → integer
 - `_nt_hom_nay()` → integer
 - `_nt_luat()` → jsonb
 - `_nt_luot_con(p_nguoi uuid, p_dn integer)` → jsonb
@@ -10581,6 +10601,7 @@ WITH luot AS (
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
+- `_tl_bdm_dem(p_khoi text, p_mon text)` → TABLE(dem_db jsonb, dem_cp jsonb)
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
