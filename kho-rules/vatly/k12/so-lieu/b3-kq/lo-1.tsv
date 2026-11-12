@@ -1,0 +1,202 @@
+B3-0001	O	O	Nhận biết dụng cụ đo áp suất	1	0	áp kế, ngoài 4 chương
+B3-0002	HN	H4.1.1		1	1	
+B3-0003	HN	H4.3.1		1	1	
+B3-0004	HN	H2.1.1		1	1	chọn công thức độ hụt khối
+B3-0005	HN	H3.1.1		1	1	
+B3-0006	TU	T4.2.1		1	1	
+B3-0007	NHIET	N3.2.1		1	1	
+B3-0008	KHI	K3.1.3		3	1	p từ cột thuỷ ngân rồi N=nNA
+B3-0009	KHI	K3.2.1		4	0	hai phần khí trong ống, quay ống, thuỷ ngân
+B3-0010	HN	H2.1.1		2	1	
+B3-0011	HN	H4.2.2		4	0	dùng H giảm theo thời gian để suy thể tích bể (pha loãng)
+B3-0012	HN	H1.1.1		1	1	
+B3-0013	NHIET	N3.2.1		1	1	
+B3-0014	NHIET	N4.3.2		3	0	Q làm nóng + nóng chảy đồng so với nhiệt đốt khí, hiệu suất
+B3-0015	TU	T3.1.1		1	1	
+B3-0016	O	O	Nguyên lí chụp CT tia X, suy giảm cường độ	2	1	tia X ngoài 4 chương
+B3-0017	TU	T2.1.2		1	1	đơn vị tesla theo đơn vị cơ bản
+B3-0018	NHIET	N4.1.1		1	1	
+B3-0019	TU	T3.2.1		1	1	
+B3-0020	HN	H4.1.1		1	1	
+B3-0021	KHI	K2.1.1		1	1	
+B3-0022	HN	H2.1.2		1	1	
+B3-0023	NHIET	N3.1.2		1	1	
+B3-0024	TU	T4.3.1		1	1	
+B3-0025	KHI	K1.1.1		1	1	
+B3-0026	TU	T1.1.1		1	1	
+B3-0027	TU	T3.2.1		2	1	
+B3-0028	HN	H1.1.2		3	1	
+B3-0029	KHI	K3.2.1		3	1	xilanh hai ngăn, pittông cách nhiệt
+B3-0030	HN	H3.2.2		3	1	
+B3-0031	TU	T2.1.4		3	1	thanh trượt trên ray nghiêng, lực từ + trọng lực
+B3-0032	HN	H4.2.2		4	0	độ phóng xạ pha loãng trong máu, giống 11
+B3-0033	TU	T3.2.2		2	1	
+B3-0034	KHI	K1.1.1		1	0	giải thích áp suất tăng theo nhiệt độ bằng mô hình phân tử
+B3-0035	KHI	K2.1.5		1	1	
+B3-0036	NHIET	N4.2.3		3	0	đồ thị t-thời gian hai chất rắn, so sánh c và λ
+B3-0037	TU	T4.3.1		1	1	
+B3-0038	NHIET	N4.2.2		2	1	
+B3-0039	TU	T5.1.1		1	1	
+B3-0040	NHIET	N1.2.1		2	1	
+B3-0041	KHI	K4.2.2		2	1	
+B3-0042	TU	T2.1.2		1	1	
+B3-0043	KHI	K4.2.2		1	1	k=R/NA
+B3-0044	HN	H1.1.2		1	1	
+B3-0045	KHI	K4.1.1		2	0	so sánh bình phương tốc độ theo khối lượng mol
+B3-0046	TU	T3.2.1		1	1	
+B3-0047	HN	H2.1.2		1	1	
+B3-0048	NHIET	N2.1.1		1	1	
+B3-0049	TU	T3.2.1		3	1	chiều dòng cảm ứng khi R thay đổi
+B3-0050	NHIET	N4.3.1		4	1	thả nhiều chai nhiều lần, nhiệt dung bình
+B3-0051	TU	T2.1.3		1	1	
+B3-0052	NHIET	N3.2.1		1	1	
+B3-0053	KHI	K3.2.2		3	1	
+B3-0054	TU	T2.1.4		2	0	lực từ rồi gia tốc a=F/m
+B3-0055	NHIET	N4.3.1		3	1	
+B3-0056	KHI	NEW	Tìm nhiệt độ cực đại từ đồ thị p-V đường thẳng	4	1	gần nhất K2.1.5/K3.1.2 nhưng cần lập p(V), xét cực trị pV
+B3-0057	TU	T3.2.1		2	1	
+B3-0058	TU	T5.1.1		1	1	
+B3-0059	KHI	K2.1.5		1	1	
+B3-0060	HN	H3.2.1		1	1	
+B3-0061	KHI	K4.2.2		2	1	
+B3-0062	TU	T1.1.1		1	1	
+B3-0063	NHIET	N1.2.1		1	1	
+B3-0064	NHIET	N3.2.1		1	1	
+B3-0065	HN	H2.1.1		1	0	định nghĩa năng lượng liên kết riêng
+B3-0066	KHI	K2.1.5		3	0	đồ thị p-T hai khối lượng khí, so sánh độ dốc
+B3-0067	TU	T1.1.2		2	1	
+B3-0068	TU	T4.3.1		1	1	
+B3-0069	NHIET	N2.2.2		2	1	
+B3-0070	NHIET	N1.1.1		1	1	
+B3-0071	HN	H2.1.1		1	0	hệ quả độ hụt khối dương
+B3-0072	NHIET	N2.2.2		2	0	cơ năng toàn bộ thành nhiệt Q=mcΔt
+B3-0073	KHI	K3.1.2		3	0	số phân tử N=pV/kT hai phòng nhiệt độ khác nhau
+B3-0074	HN	H1.1.2		1	1	
+B3-0075	KHI	NEW	Cân bằng lực hệ nhiều pittông nối thanh, tiết diện khác nhau	4	1	gần K3.2.1 nhưng chính là điều kiện cân bằng lực áp suất lên hệ pittông
+B3-0076	NHIET	N4.3.1		3	1	
+B3-0077	HN	H3.2.2		3	1	
+B3-0078	TU	T4.3.2		4	1	cuộn thứ cấp bị nối tắt, quấn thêm vòng
+B3-0079	HN	H4.2.3		4	1	
+B3-0080	NHIET	NEW	Tính phần năng lượng chuyển thành nhiệt từ tổng cal, đổi cal-J	2	0	gần N4.2.2 nhưng chỉ phần trăm và đổi đơn vị, không có nhiệt hoá hơi tính
+B3-0081	NHIET	N1.2.1		1	1	
+B3-0082	NHIET	N2.1.1		1	1	
+B3-0083	NHIET	N3.2.1		2	1	độ chênh nhiệt độ ΔT=Δt
+B3-0084	NHIET	N4.4.1		3	1	
+B3-0085	KHI	K2.1.5		1	1	
+B3-0086	KHI	K2.1.1		1	1	
+B3-0087	KHI	K2.1.5		2	1	
+B3-0088	TU	T1.1.1		1	1	
+B3-0089	TU	T3.2.1		1	1	
+B3-0090	TU	T4.2.1		1	1	
+B3-0091	TU	T4.3.1		2	0	khảo sát máy biến áp chọn chốt có số vòng thứ cấp lớn nhất
+B3-0092	TU	T1.1.2		2	1	
+B3-0093	TU	T3.2.2		3	1	vòng dây có điện trở theo ρ, B=kt
+B3-0094	HN	H1.1.1		1	1	
+B3-0095	HN	H3.2.1		1	1	
+B3-0096	HN	H1.1.2		2	1	
+B3-0097	HN	H3.1.1		2	1	
+B3-0098	HN	H2.1.1		2	1	
+B3-0099	NHIET	N4.3.1		3	0	nhiệt cơ thể toả = nhiệt hoá hơi mồ hôi, tìm thể tích nước
+B3-0100	TU	T4.1.1		3	1	E0=NBSω với ω=40ω phao
+B3-0101	KHI	K3.2.2		3	0	khí thoát ra khỏi bình, khối lượng qua độ dốc p-T
+B3-0102	TU	T2.1.3		2	1	
+B3-0103	TU	T3.1.1		2	0	từ thông cực tiểu theo góc
+B3-0104	HN	H4.2.3		3	1	
+B3-0105	HN	H4.2.3		4	1	
+B3-0106	KHI	K2.1.5		1	1	đường đẳng áp trong hệ V-T
+B3-0107	HN	H1.1.2		1	1	
+B3-0108	TU	T3.2.2		2	1	
+B3-0109	HN	NEW	Nhận biết đơn vị khối lượng nguyên tử u	1	1	gần H1.1.1/H2.1.1 nhưng chỉ hỏi định nghĩa đơn vị
+B3-0110	TU	T2.1.2		1	1	
+B3-0111	TU	T1.1.2		2	1	kim nam châm gần ống dây
+B3-0112	TU	T5.1.1		2	1	
+B3-0113	TU	T2.1.4		3	1	
+B3-0114	HN	H3.2.2		3	1	
+B3-0115	NHIET	N4.2.3		2	1	
+B3-0116	NHIET	N2.2.3		3	1	
+B3-0117	KHI	K2.1.3		2	1	
+B3-0118	NHIET	N3.2.1		1	1	
+B3-0119	KHI	K4.2.1		1	1	
+B3-0120	HN	H3.1.1		1	0	định luật bảo toàn trong phản ứng hạt nhân
+B3-0121	NHIET	N3.1.1		2	1	
+B3-0122	KHI	K3.1.1		1	1	
+B3-0123	HN	H1.1.2		1	1	
+B3-0124	HN	H2.1.2		2	1	
+B3-0125	NHIET	N2.2.3		4	0	đồ thị p-V ba đường, ΔU=0, Q=|A| bằng diện tích
+B3-0126	HN	H2.1.1		2	1	
+B3-0127	TU	T4.1.1		2	1	
+B3-0128	TU	T3.2.2		3	1	khung nối nguồn, tính e_c rồi I
+B3-0129	NHIET	N4.4.1		2	1	
+B3-0130	TU	T4.3.1		1	1	
+B3-0131	NHIET	N4.1.1		1	1	
+B3-0132	KHI	K1.1.1		1	1	
+B3-0133	KHI	K4.1.1		2	1	
+B3-0134	HN	H4.3.1		1	1	
+B3-0135	NHIET	N4.1.1		1	0	nhiệt dung riêng lớn của nước giữ nhiệt
+B3-0136	HN	H2.1.2		1	1	
+B3-0137	NHIET	N1.1.1		1	1	
+B3-0138	TU	T5.1.1		1	1	từ trường biến thiên sinh điện trường xoáy
+B3-0139	HN	H4.1.1		1	1	
+B3-0140	NHIET	N1.2.2		1	1	
+B3-0141	O	O	Nhận biết tần số siêu âm	1	1	sóng âm ngoài 4 chương
+B3-0142	KHI	K3.1.2		3	0	số mol oxygen hấp thụ từ thể tích khí
+B3-0143	KHI	K3.1.2		3	0	tần số hô hấp từ số mol/giờ
+B3-0144	TU	T2.1.3		2	1	thành phần ngang của B Trái Đất, lực cực đại mỗi mét dây
+B3-0145	NHIET	N4.3.1		3	0	trộn nước hai ống lưu lượng khác nhiệt độ
+B3-0146	NHIET	N4.3.1		4	0	lưu lượng cực đại ứng nhiệt độ 44°C
+B3-0147	KHI	K2.1.6		1	1	
+B3-0148	NHIET	N1.1.1		1	0	khuếch tán, chuyển động không ngừng của phân tử
+B3-0149	NHIET	N2.1.1		1	0	truyền nhiệt, nhiệt lượng, nội năng
+B3-0150	KHI	K3.1.2		1	1	nhận biết phương trình Clapeyron
+B3-0151	HN	H2.1.2		2	1	
+B3-0152	TU	T4.1.1		2	1	suy góc ban đầu từ pha e(t)
+B3-0153	HN	H4.3.1		1	1	
+B3-0154	KHI	K2.1.5		2	1	
+B3-0155	TU	T5.1.1		3	0	E,B cùng pha, tìm thời điểm E=0 từ pha của B
+B3-0156	TU	T3.3.1		1	1	
+B3-0157	HN	H3.2.1		1	1	
+B3-0158	KHI	K2.1.4		1	1	
+B3-0159	TU	T2.1.1		1	1	
+B3-0160	NHIET	N1.2.2		1	1	
+B3-0161	KHI	K2.1.5		1	1	
+B3-0162	HN	H2.1.1		2	1	
+B3-0163	NHIET	N4.1.1		2	1	
+B3-0164	TU	T3.3.1		1	1	
+B3-0165	O	O	Tính áp suất thuỷ tĩnh trong nước theo độ sâu	2	1	áp suất thuỷ tĩnh ngoài 4 chương
+B3-0166	KHI	K3.2.1		3	0	ly úp vào nước, khí bị nén đẳng nhiệt dưới áp suất thuỷ tĩnh
+B3-0167	HN	H4.2.2		3	0	từ độ phóng xạ suy khối lượng Ra
+B3-0168	TU	T2.1.3		2	1	
+B3-0169	TU	T2.1.4		3	0	thanh MN tăng tốc trên ray bởi lực từ
+B3-0170	NHIET	N2.2.2		3	0	công ma sát thành nội năng làm nóng chảy tuyết
+B3-0171	TU	T1.1.1		1	1	
+B3-0172	NHIET	N2.2.1		1	1	
+B3-0173	NHIET	N4.1.1		1	1	
+B3-0174	NHIET	N3.1.1		1	1	
+B3-0175	HN	H4.1.1		2	1	
+B3-0176	TU	T2.1.1		2	1	
+B3-0177	TU	T3.2.1		2	1	
+B3-0178	TU	T4.1.1		2	1	
+B3-0179	HN	H4.2.1		2	1	
+B3-0180	TU	T5.1.1		2	0	nhiều phát biểu về sóng âm, sóng điện từ
+B3-0181	HN	H3.1.1		1	1	
+B3-0182	HN	H2.1.1		2	1	
+B3-0183	KHI	K3.1.1		2	0	phát biểu tổ hợp thông số p,V,T khả thi theo pV/T=hằng số
+B3-0184	NHIET	N1.2.2		1	1	
+B3-0185	TU	T2.1.2		1	1	
+B3-0186	NHIET	N1.2.1		1	1	
+B3-0187	KHI	K2.1.2		1	1	
+B3-0188	TU	T5.1.1		1	1	
+B3-0189	KHI	K2.1.4		2	1	
+B3-0190	TU	T2.1.3		2	1	
+B3-0191	NHIET	N4.3.2		3	1	làm nóng đá rồi nóng chảy bằng công suất
+B3-0192	HN	H4.2.1		4	0	số hạt β phát ra trong khoảng thời gian, tìm m0
+B3-0193	HN	H3.2.2		3	1	
+B3-0194	TU	T4.1.1		4	0	thời điểm lần thứ 2026 độ lớn e bằng giá trị cho trước
+B3-0195	KHI	K1.1.1		1	1	
+B3-0196	NHIET	N1.1.1		1	1	
+B3-0197	TU	T3.3.1		1	1	
+B3-0198	HN	H1.1.1		1	0	số electron của nguyên tử bằng Z
+B3-0199	KHI	K4.2.1		1	1	
+B3-0200	NHIET	N2.2.1		1	1	
+B3-0201	NHIET	N2.1.1		2	1	
+B3-0202	NHIET	N3.1.1		1	1	

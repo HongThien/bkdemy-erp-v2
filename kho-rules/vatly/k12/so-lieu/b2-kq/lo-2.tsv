@@ -1,0 +1,228 @@
+B2-0230	NHIET	N2.1.1		2	1	
+B2-0231	O	O	So sánh công suất tỏa nhiệt hai dây dẫn cùng kích thước theo điện trở suất	2	1	dòng điện không đổi Lý 11, dùng bảng điện trở suất
+B2-0232	O	O	So sánh cường độ dòng điện qua các dây dẫn cùng kích thước theo điện trở suất	2	1	dòng điện không đổi Lý 11
+B2-0233	NHIET	N1.2.1		2	1	
+B2-0234	NHIET	N3.2.1		1	1	
+B2-0235	KHI	K4.2.1		1	1	
+B2-0236	KHI	K2.1.1		1	1	
+B2-0237	NHIET	N3.1.2		2	1	
+B2-0238	NHIET	N4.1.1		1	1	
+B2-0239	KHI	K2.1.3		2	1	
+B2-0240	KHI	K1.1.1		1	1	
+B2-0241	KHI	K3.1.1		1	1	
+B2-0242	NHIET	N2.1.1		1	1	
+B2-0243	NHIET	N2.1.1		1	1	
+B2-0244	NHIET	N1.1.1		1	1	
+B2-0245	KHI	K3.1.1		3	1	đẳng tích rồi đẳng áp
+B2-0246	NHIET	N1.1.1		1	1	
+B2-0247	NHIET	N4.1.1		1	1	
+B2-0248	NHIET	N1.2.1		2	1	
+B2-0249	KHI	K4.2.2		2	1	
+B2-0250	KHI	K3.1.1		3	1	
+B2-0251	NHIET	N2.2.2		2	1	
+B2-0252	NHIET	N2.2.2		3	1	cơ năng hao thành nội năng
+B2-0253	KHI	K3.1.1		2	1	
+B2-0254	NHIET	N4.2.1		2	1	
+B2-0255	KHI	K3.1.2		3	1	khối lượng riêng từ pV=nRT
+B2-0256	KHI	K4.2.1		1	1	
+B2-0257	NHIET	N1.2.1		2	1	đồ thị chất vô định hình vs kết tinh
+B2-0258	NHIET	N4.2.3		2	1	
+B2-0259	TU	T1.1.1		1	1	
+B2-0260	NHIET	N1.1.1		1	1	
+B2-0261	NHIET	N4.2.1		3	1	Q=mcΔt, tỉ số khối lượng theo bán kính
+B2-0262	NHIET	N4.3.1		3	1	
+B2-0263	KHI	K1.1.1		1	1	
+B2-0264	KHI	K3.1.1		2	1	
+B2-0265	NHIET	N1.2.1		2	0	nhiệt độ hỗn hợp nước đá không đổi, hình mất
+B2-0266	KHI	K2.1.5		2	1	
+B2-0267	NHIET	N2.2.1		1	1	
+B2-0268	O	O	Nhận biết kí hiệu cảnh báo bình khí nén áp suất cao	1	0	đáp án là hình
+B2-0269	TU	T2.2.2		2	0	đề cụt, ứng dụng khối phổ kế
+B2-0270	TU	T2.2.2		2	1	
+B2-0271	NHIET	N4.2.2		2	1	
+B2-0272	TU	T1.1.2		2	1	
+B2-0273	KHI	K2.1.5		2	0	đề cụt, hình mất
+B2-0274	KHI	K3.1.1		3	0	đề cụt, hình mất
+B2-0275	TU	NEW	Tính cảm ứng từ do dòng điện thẳng dài theo B=2e-7·I/r	2	0	gần T2.1.3 nhưng là cảm ứng từ của dây thẳng dài; đề cụt
+B2-0276	TU	NEW	Tính cảm ứng từ do dòng điện thẳng dài theo B=2e-7·I/r	2	1	gần T2.1.3/T1.1.1; dạng không có trong cây
+B2-0277	NHIET	N2.2.3		3	1	động cơ nhiệt Otto
+B2-0278	NHIET	N2.2.3		3	1	nhiệt cung cấp từ hiệu suất
+B2-0279	NHIET	N4.3.1		4	1	đá còn lại, nhiệt độ cân bằng 0 độ
+B2-0280	NHIET	N4.1.1		1	1	
+B2-0281	KHI	K3.1.1		2	1	
+B2-0282	KHI	K1.1.1		2	0	giải thích áp suất tăng theo mô hình động học
+B2-0283	NHIET	N3.1.1		1	1	
+B2-0284	KHI	K3.1.2		3	1	khối lượng riêng ở hai trạng thái
+B2-0285	NHIET	N4.1.1		1	1	
+B2-0286	NHIET	N2.2.2		2	1	
+B2-0287	KHI	K1.1.1		1	1	
+B2-0288	KHI	K2.1.5		1	1	
+B2-0289	KHI	K4.2.1		1	1	
+B2-0290	NHIET	N2.2.1		1	1	
+B2-0291	KHI	K2.1.1		1	1	
+B2-0292	NHIET	N1.2.2		1	1	
+B2-0293	NHIET	N2.1.1		1	1	
+B2-0294	NHIET	N4.1.1		1	0	nhiệt hóa hơi phụ thuộc gì
+B2-0295	NHIET	N3.2.1		2	1	
+B2-0296	NHIET	N1.2.1		1	1	
+B2-0297	NHIET	N4.2.3		3	1	
+B2-0298	NHIET	N4.2.2		2	1	
+B2-0299	NHIET	N4.3.1		3	1	
+B2-0300	KHI	K3.1.2		2	1	
+B2-0301	KHI	K3.1.1		3	1	
+B2-0302	KHI	K2.1.3		2	1	
+B2-0303	NHIET	N4.1.1		1	1	
+B2-0304	KHI	K2.1.3		2	0	đẳng áp, khối lượng riêng giảm
+B2-0305	KHI	K3.2.2		3	1	
+B2-0306	NHIET	N2.2.1		1	1	
+B2-0307	KHI	K2.1.5		2	1	
+B2-0308	NHIET	N4.1.1		1	1	
+B2-0309	KHI	K2.1.1		1	1	
+B2-0310	NHIET	N1.2.1		1	1	
+B2-0311	KHI	K1.1.1		1	1	
+B2-0312	NHIET	N2.1.1		1	1	
+B2-0313	NHIET	N4.2.2		2	1	
+B2-0314	KHI	K1.1.1		1	1	
+B2-0315	NHIET	N3.1.2		2	0	thứ tự bước đo nhiệt độ bằng nhiệt kế
+B2-0316	KHI	K4.1.1		1	1	
+B2-0317	NHIET	N4.4.1		1	1	
+B2-0318	NHIET	N1.2.1		1	1	
+B2-0319	NHIET	N3.2.1		1	1	
+B2-0320	KHI	NEW	Thí nghiệm kiểm chứng định luật chất khí: điều kiện, dụng cụ, bước làm	2	1	gần K2.1.1/K2.1.2 nhưng là thí nghiệm khí, cây chưa có dạng
+B2-0321	NHIET	N4.3.2		2	1	
+B2-0322	KHI	K3.2.2		3	1	
+B2-0323	NHIET	N2.2.2		2	1	
+B2-0324	NHIET	N4.4.1		3	1	
+B2-0325	KHI	K2.1.2		2	1	
+B2-0326	KHI	K4.2.2		2	1	
+B2-0327	KHI	K4.2.1		1	0	
+B2-0328	NHIET	N2.1.1		1	1	
+B2-0329	KHI	K2.1.5		1	1	
+B2-0330	KHI	K3.2.1		1	0	nén khí trong xilanh, nhận biết chiều biến thiên
+B2-0331	NHIET	N3.1.2		1	1	
+B2-0332	KHI	K3.1.1		1	1	
+B2-0333	KHI	K1.1.1		1	1	
+B2-0334	NHIET	N1.2.2		1	1	
+B2-0335	NHIET	N4.1.1		1	1	
+B2-0336	KHI	K3.1.3		1	0	hệ thức k=R/NA; không dạng nào khớp sát
+B2-0337	KHI	K4.2.1		1	1	
+B2-0338	KHI	K1.1.1		1	0	giải thích hiện tượng bằng phân tử khí
+B2-0339	NHIET	N3.2.1		1	1	
+B2-0340	KHI	K3.1.1		3	0	đồ thị p-V hai quá trình, tìm T3
+B2-0341	KHI	K4.2.2		2	1	
+B2-0342	KHI	K3.1.1		3	1	thể tích cầu
+B2-0343	NHIET	N1.1.1		1	1	
+B2-0344	KHI	K4.1.1		1	0	
+B2-0345	KHI	K3.2.1		3	1	nồi áp suất, đẳng tích
+B2-0346	KHI	K4.2.2		2	1	
+B2-0347	NHIET	N4.2.1		2	1	
+B2-0348	NHIET	N4.3.2		3	0	nhiều giai đoạn gồm hóa hơi một phần + hiệu suất bếp
+B2-0349	KHI	K3.2.1		4	0	pittông ngăn hai phần khí
+B2-0350	KHI	K3.2.1		4	0	pittông ngăn hai phần khí
+B2-0351	NHIET	N2.2.1		1	1	
+B2-0352	KHI	K3.1.2		1	1	
+B2-0353	NHIET	N3.2.1		1	1	
+B2-0354	KHI	K1.1.1		1	1	
+B2-0355	TU	T2.1.1		2	1	
+B2-0356	KHI	K2.1.1		1	1	
+B2-0357	TU	T1.1.1		1	1	
+B2-0358	NHIET	N2.1.1		1	1	
+B2-0359	NHIET	N4.1.1		1	1	
+B2-0360	TU	T2.1.4		3	1	
+B2-0361	NHIET	N1.2.1		1	1	
+B2-0362	TU	T2.1.2		1	1	
+B2-0363	NHIET	N1.1.1		1	1	
+B2-0364	NHIET	N1.2.1		1	1	
+B2-0365	KHI	K2.1.1		1	1	
+B2-0366	NHIET	N4.1.1		1	1	
+B2-0367	NHIET	N2.1.1		2	0	thí nghiệm nút bấc, phát biểu sai
+B2-0368	KHI	K3.1.3		1	0	hệ thức k=R/NA; không dạng nào khớp sát
+B2-0369	NHIET	N4.2.3		3	1	
+B2-0370	NHIET	N4.3.1		3	1	
+B2-0371	NHIET	N2.2.2		2	1	
+B2-0372	KHI	K3.1.2		2	1	
+B2-0373	KHI	K3.2.1		4	0	hệ ròng rọc-cân với khí trong xilanh
+B2-0374	TU	T2.1.3		2	1	
+B2-0375	TU	T4.2.1		2	1	
+B2-0376	KHI	K4.1.1		1	1	
+B2-0377	KHI	K1.1.1		1	1	
+B2-0378	NHIET	N1.2.1		1	1	
+B2-0379	NHIET	N4.1.1		1	0	ý nghĩa nhiệt dung riêng lớn
+B2-0380	O	O	Nhận biết chuyển hoá năng lượng của thiết bị điện	1	1	
+B2-0381	TU	T3.2.2		2	1	
+B2-0382	HN	H3.2.2		3	1	nhiệt hạch
+B2-0383	KHI	K3.1.1		2	1	
+B2-0384	NHIET	N4.3.1		4	1	
+B2-0385	NHIET	N4.2.2		2	1	
+B2-0386	HN	H1.1.1		1	1	
+B2-0387	NHIET	N2.2.3		4	1	đẳng áp, tính n rồi m
+B2-0388	NHIET	N1.1.1		1	1	
+B2-0389	O	O	Nhận biết tia X trong y học	1	1	gần T5.1.2
+B2-0390	TU	T4.1.1		3	0	đồ thị e(t) tìm góc ban đầu
+B2-0391	TU	T2.2.2		2	1	
+B2-0392	HN	H1.1.2		2	1	
+B2-0393	NHIET	N4.2.3		4	0	đồ thị t-Q hai vật trao đổi nhiệt
+B2-0394	KHI	K3.2.2		3	1	
+B2-0395	TU	T4.2.1		3	0	độ lệch pha từ đồ thị u,i
+B2-0396	TU	T4.1.1		4	1	
+B2-0397	HN	H1.1.2		2	0	phân rã beta rồi đếm neutron
+B2-0398	HN	H4.2.2		3	1	
+B2-0399	HN	H1.1.2		1	1	
+B2-0400	TU	T4.1.1		3	0	đồ thị Φ(t), so sánh e
+B2-0401	HN	H1.1.2		2	1	
+B2-0402	TU	T3.2.1		2	1	
+B2-0403	NHIET	N4.1.1		1	1	
+B2-0404	HN	H2.1.1		1	0	E=mc2
+B2-0405	KHI	K1.1.1		1	1	
+B2-0406	TU	T5.1.1		1	1	
+B2-0407	TU	T3.1.1		1	1	
+B2-0408	TU	T4.3.2		2	1	
+B2-0409	HN	H4.2.2		3	1	
+B2-0410	HN	H4.2.2		4	0	công suất liều tỉ lệ độ phóng xạ, tìm thời gian thay nguồn
+B2-0411	TU	T3.3.1		1	1	
+B2-0412	NHIET	N2.2.3		2	1	
+B2-0413	TU	T4.3.1		1	1	
+B2-0414	HN	H1.1.1		1	1	
+B2-0415	NHIET	N2.1.1		1	1	
+B2-0416	KHI	K2.1.1		1	1	
+B2-0417	HN	H3.1.1		2	1	
+B2-0418	HN	NEW	Nhận biết phạm vi tác dụng lực hạt nhân (tương tác mạnh)	1	1	gần H1.1.1 nhưng là lực hạt nhân
+B2-0419	NHIET	N1.1.1		1	0	đặc điểm dễ nén của chất khí
+B2-0420	TU	T1.1.1		2	1	
+B2-0421	NHIET	N1.1.1		1	1	
+B2-0422	HN	H4.3.1		1	1	
+B2-0423	NHIET	N1.1.1		1	1	
+B2-0424	NHIET	N1.2.1		2	0	khói trắng là ngưng tụ
+B2-0425	TU	T4.2.1		2	1	
+B2-0426	NHIET	N4.3.1		3	1	
+B2-0427	KHI	K2.1.3		2	1	
+B2-0428	KHI	K2.1.5		2	1	
+B2-0429	NHIET	N4.3.1		4	1	
+B2-0430	KHI	K3.2.1		3	0	áp kế cột nước p=p0+ρgh
+B2-0431	KHI	K3.2.1		3	1	
+B2-0432	TU	T5.1.2		2	1	
+B2-0433	TU	T2.2.2		3	1	
+B2-0434	HN	H4.2.1		4	1	
+B2-0435	TU	T3.3.1		1	1	
+B2-0436	KHI	K4.1.2		3	1	
+B2-0437	NHIET	N2.2.3		2	1	
+B2-0438	TU	T1.1.2		1	1	
+B2-0439	TU	T3.1.2		2	1	
+B2-0440	HN	H2.1.1		1	1	
+B2-0441	NHIET	N1.2.1		2	1	
+B2-0442	TU	T3.1.1		1	1	
+B2-0443	NHIET	N4.3.1		4	1	
+B2-0444	TU	T4.3.1		1	1	
+B2-0445	TU	T3.2.1		1	1	
+B2-0446	KHI	K3.2.2		3	1	
+B2-0447	NHIET	N3.1.1		1	1	
+B2-0448	NHIET	N2.2.3		3	1	
+B2-0449	HN	H3.2.1		1	1	
+B2-0450	NHIET	N3.2.1		2	1	
+B2-0451	HN	H2.1.2		1	1	
+B2-0452	HN	H4.2.1		2	1	
+B2-0453	TU	T4.3.2		2	1	
+B2-0454	KHI	K3.2.1		3	1	
+B2-0455	HN	H2.1.1		2	1	
+B2-0456	KHI	K3.1.1		2	1	
+B2-0457	NHIET	N2.2.2		3	0	thế năng thành nội năng rồi Q=mcΔt

@@ -1,0 +1,281 @@
+W0653	TU	T4.2		3	1	
+W0654	HN	H3.3		3	1	
+W0655	HN	H3.3		3	1	có thêm bước công suất/hiệu suất
+W0656	TU	T1.1		1	1	
+W0657	O	O	Lý 8: áp suất, dụng cụ đo áp suất	1	1	
+W0658	KHI	K4.1		2	0	giữa K2.3 và K4.1
+W0659	TU	T3.3		1	1	
+W0660	HN	H4.1		1	1	
+W0661	NHIET	N2.1		1	1	
+W0662	HN	H4.6		1	1	
+W0663	TU	T5.1		1	1	
+W0664	HN	H2.2		1	1	
+W0665	KHI	K3.1		1	1	
+W0666	TU	T1.1		2	0	tương tác nam châm tàu đệm từ
+W0667	KHI	K2.4		2	1	
+W0668	NHIET	N1.1		1	0	giữa N1.1 và K1.1
+W0669	HN	H3.1		1	1	
+W0670	TU	T4.2		1	1	
+W0671	KHI	K2.3		1	1	
+W0672	NHIET	N4.1		1	1	
+W0673	NHIET	N3.2		1	1	
+W0674	KHI	K2.5		4	1	
+W0675	TU	T2.2		3	1	
+W0676	TU	T3.4		3	1	
+W0677	HN	H2.2		3	1	
+W0678	HN	H4.4		3	0	giữa H4.3 và H4.4; đồng vị đánh dấu đo thể tích
+W0679	HN	H4.6		1	1	
+W0680	TU	NEW	Tương tác giữa hai dây dẫn thẳng song song mang dòng điện	1	1	
+W0681	TU	T4.4		1	1	
+W0682	KHI	K4.2		1	1	
+W0683	NHIET	N2.1		1	1	
+W0684	HN	H4.1		2	1	
+W0685	NHIET	N3.3		1	1	
+W0686	HN	H1.1		1	1	
+W0687	KHI	K2.4		2	1	
+W0688	HN	NEW	Thí nghiệm tán xạ alpha Rutherford: lực làm lệch hạt alpha	1	1	
+W0689	NHIET	N4.1		1	1	
+W0690	TU	T3.2		3	1	
+W0691	NHIET	N4.2		3	1	
+W0692	KHI	K2.2		1	1	
+W0693	NHIET	N2.2		2	1	
+W0694	KHI	K2.2		2	0	giữa K2.2 và N1.1
+W0695	TU	T2.2		3	0	hợp lực từ lên khung kín bằng 0
+W0696	KHI	K2.5		2	0	bình kín nung nóng áp suất tăng; gần K2.3
+W0697	HN	H2.2		3	1	
+W0698	KHI	K2.5		3	1	
+W0699	HN	H4.5		4	1	
+W0700	NHIET	N4.6		3	1	
+W0701	NHIET	N4.6		4	1	kèm cân bằng nhiệt N4.5
+W0702	TU	T3.3		4	1	
+W0724	NHIET	N1.1		1	1	
+W0725	TU	T1.1		1	1	dính câu khác (đồ thị đẳng nhiệt)
+W0726	NHIET	N4.5		3	1	dính câu tơ nhện
+W0727	KHI	K2.3		2	1	
+W0728	KHI	K4.2		2	1	
+W0729	KHI	K2.2		1	1	dính câu từ trường 2 dây vuông góc
+W0730	NHIET	N1.2		2	0	giữa N1.2 và N4.4; dính câu kim nam châm
+W0731	NHIET	N2.2		2	1	
+W0732	NHIET	N3.2		1	1	
+W0733	NHIET	N4.4		3	1	
+W0734	KHI	K3.2		1	1	dính câu bóng thám không
+W0735	KHI	K2.1		1	1	
+W0736	NHIET	N3.2		2	1	
+W0737	KHI	K4.2		3	0	giữa K3.2 và K4.2; dính câu chu trình
+W0738	NHIET	N4.5		2	1	
+W0739	KHI	K2.3		2	1	
+W0740	NHIET	N1.1		1	1	
+W0741	HN	H3.2		4	1	kèm N4.2 đun sôi nước
+W0742	KHI	K4.2		2	1	
+W0743	KHI	K2.2		1	1	
+W0744	TU	T2.3		3	0	mômen ngẫu lực từ lên khung dây
+W0745	TU	T1.2		2	1	
+W0746	NHIET	N4.1		1	1	
+W0747	TU	T3.5		1	1	
+W0748	NHIET	N4.2		3	0	động năng chuyển thành nội năng
+W0749	HN	H2.2		2	1	
+W0750	TU	T4.4		1	1	
+W0751	TU	T4.4		1	1	
+W0752	KHI	K3.2		1	0	giữa K3.2 và K4.1
+W0753	KHI	K3.2		1	1	
+W0754	HN	H2.3		1	1	
+W0755	NHIET	N2.2		1	1	
+W0756	TU	T5.1		2	1	
+W0757	NHIET	N1.1		1	1	
+W0758	TU	T2.3		3	1	
+W0759	HN	H3.3		3	1	
+W0760	KHI	K2.5		3	0	nút chai đẩy lên, thực chất đẳng tích K2.3
+W0761	HN	H1.2		2	1	
+W0762	TU	T2.2		2	1	
+W0763	NHIET	N3.2		1	1	
+W0764	NHIET	N1.2		1	1	
+W0765	NHIET	N3.3		2	1	
+W0766	NHIET	N4.7		2	1	
+W0767	NHIET	N4.7		3	1	
+W0768	KHI	K1.1		1	1	
+W0769	KHI	K2.2		1	1	
+W0770	KHI	K3.2		1	1	
+W0771	KHI	K4.1		1	0	định nghĩa áp suất khí
+W0772	NHIET	N2.2		2	1	dính câu đồ thị nóng chảy
+W0773	TU	T1.1		1	1	
+W0774	O	O	Lý 10: áp suất thuỷ tĩnh p = p0 + ρgh	2	1	
+W0775	KHI	K2.5		2	1	
+W0776	KHI	K2.4		2	1	dính câu nam châm ống dây
+W0777	NHIET	N4.4		3	1	
+W0778	KHI	K3.2		3	1	
+W0779	KHI	K4.2		3	1	
+W0780	NHIET	N3.2		3	1	
+W0781	NHIET	N3.2		2	1	
+W0782	NHIET	N2.3		3	1	
+W0783	KHI	K2.2		3	0	nối tiếp câu W0782; đẳng áp tìm T
+W0784	KHI	K3.2		2	1	
+W0785	KHI	K4.2		3	1	kèm K2.3 tìm T
+W0786	HN	H2.3		1	1	
+W0787	TU	T3.2		2	1	
+W0788	TU	T3.5		1	1	
+W0789	TU	NEW	Tương tác giữa hai dây dẫn thẳng song song mang dòng điện	1	1	
+W0790	KHI	K2.1		1	1	
+W0791	NHIET	N2.3		3	1	công khí = diện tích dưới đồ thị p-V
+W0792	TU	T2.2		1	1	
+W0793	NHIET	N3.2		1	0	nhận biết thang nhiệt độ
+W0794	O	O	Lý 10: lực đẩy Archimedes, khối lượng riêng	1	1	
+W0795	KHI	K3.2		2	0	giữa K3.2 và K4.1 (p = nkT)
+W0796	HN	NEW	Khái niệm và đặc điểm hiện tượng phóng xạ	1	1	
+W0797	HN	H4.2		2	1	
+W0798	TU	T4.4		1	0	máy biến áp, dầu tản nhiệt
+W0799	KHI	K1.1		1	1	
+W0800	HN	H3.3		1	1	
+W0801	NHIET	N2.1		2	0	giữa N2.1 và N1.2
+W0802	NHIET	N1.2		1	1	
+W0803	TU	T5.1		1	1	
+W0804	HN	H4.3		3	1	
+W0805	HN	H4.4		4	1	
+W0806	TU	T4.2		3	0	tần số loa từ đồ thị i(t)
+W0807	TU	T2.2		3	1	
+W0808	KHI	K3.2		3	1	
+W0809	KHI	K3.2		3	0	tính mol rồi khối lượng hóa chất
+W0857	NHIET	N2.2		2	1	
+W0858	TU	T3.5		1	1	
+W0859	TU	T3.1		1	1	
+W0860	TU	T2.2		1	1	đơn vị cảm ứng từ
+W0861	KHI	K3.2		3	0	giữa K3.2 và K4.1 (p = nkT, hai phòng)
+W0862	NHIET	N3.2		2	1	
+W0863	TU	T3.2		2	1	
+W0864	O	O	Ứng dụng chụp ảnh y học (siêu âm, MRI, tia X)	1	0	
+W0865	NHIET	N1.2		1	1	
+W0866	TU	T4.4		1	1	
+W0867	KHI	K3.1		3	0	giữa K3.1 và K2.4; đồ thị nhiều quá trình
+W0868	NHIET	N1.3		1	1	
+W0869	TU	T2.1		2	1	
+W0870	KHI	K4.2		1	1	
+W0871	KHI	K4.2		2	1	
+W0872	KHI	K4.1		1	1	
+W0873	O	O	Nhận biết biển báo cảnh báo (điện, từ trường)	1	0	
+W0874	NHIET	N4.3		3	1	
+W0875	TU	T2.2		2	1	
+W0876	TU	T4.2		3	1	
+W0877	KHI	K2.2		2	1	
+W0878	NHIET	N2.2		1	1	
+W0879	KHI	K3.2		3	0	khối lượng không khí trong phòng, tỉ lệ nghịch T
+W0880	NHIET	N4.6		4	1	kèm K3.3 khí thoát ra
+W0881	TU	T3.1		1	1	
+W0882	NHIET	N1.2		2	0	hơi ngưng tụ toả nhiệt; giữa N1.2 và N4.3
+W0883	KHI	K4.2		1	1	dính câu nội năng khí
+W0884	NHIET	N1.2		1	1	
+W0885	TU	T5.2		1	1	
+W0886	KHI	K2.1		1	1	
+W0887	O	O	Nhận biết biển báo cảnh báo (điện, từ trường)	1	0	dính dẫn chung cọ xát sắt
+W0888	NHIET	N4.2		2	0	dẫn chung thiếu; cọ xát làm nóng sắt
+W0889	NHIET	N2.2		3	0	dẫn chung thiếu; công = nhiệt làm nóng sắt
+W0890	TU	T2.2		2	1	
+W0891	TU	T2.2		2	1	dính câu ống tia X
+W0892	TU	T3.3		2	1	dính câu bình thép hydrogen
+W0893	KHI	K2.3		2	1	
+W0894	NHIET	N4.3		2	1	dính câu đồ thị V-T
+W0895	NHIET	N3.2		3	1	
+W0896	TU	T3.1		2	1	
+W0897	KHI	K3.2		3	1	
+W0898	NHIET	N2.2		2	0	dẫn chung phổi; dính câu loa điện động
+W0899	KHI	K3.3		3	0	giữa K3.2 và K3.3; bơm khí vào khí cầu
+W0939	TU	T4.2		1	1	
+W0940	KHI	K4.2		2	1	
+W0941	TU	T2.1		2	0	giữa T2.1 và T2.2; chiều và độ lớn I
+W0942	KHI	K2.2		2	1	
+W0943	NHIET	N3.3		1	1	
+W0944	TU	T2.1		2	1	
+W0945	HN	H2.1		2	1	
+W0946	HN	H3.3		1	1	
+W0947	NHIET	N3.3		1	1	
+W0948	TU	T1.1		1	1	
+W0949	TU	T3.3		3	1	
+W0950	KHI	K1.1		1	1	
+W0951	HN	H4.6		1	1	
+W0952	HN	H4.3		3	1	
+W0953	HN	H4.1		1	1	
+W0954	HN	H1.1		1	1	
+W0955	KHI	K1.1		1	1	
+W0956	NHIET	N4.1		1	1	
+W0957	NHIET	N2.3		3	1	lời giải dính câu khác
+W0958	KHI	K2.2		3	1	
+W0959	TU	T3.4		4	0	dẫn chung mất; thanh MN chuyển động, lực từ
+W0960	TU	T4.1		3	0	dẫn chung mất; suất điện động khung quay
+W0961	HN	H4.2		2	1	
+W0962	HN	H4.5		4	1	
+W0963	KHI	K2.3		1	1	
+W0964	HN	H1.1		1	1	
+W0965	NHIET	N4.1		2	1	
+W0966	NHIET	N4.1		1	1	
+W0967	NHIET	N2.1		1	1	đề lỗi: phương án D lặp
+W0968	NHIET	N2.1		1	1	
+W0969	NHIET	N2.2		2	1	
+W0970	HN	H1.1		1	1	
+W0971	HN	H2.2		2	0	năng lượng liên kết của sắt, thiếu số liệu trong đề
+W0972	KHI	K2.3		2	1	
+W0973	KHI	K2.4		1	1	
+W0974	TU	T2.2		1	1	
+W0975	TU	NEW	Tương tác giữa hai dây dẫn thẳng song song mang dòng điện	1	1	
+W0976	TU	T3.1		1	1	
+W0977	TU	T2.2		1	1	
+W0978	TU	T4.4		1	1	
+W0979	TU	T2.1		1	1	
+W0980	TU	T1.2		1	1	
+W0981	KHI	K3.3		3	1	
+W0982	KHI	K3.3		4	1	
+W0983	TU	T2.5		4	1	
+W0984	HN	H2.2		3	1	
+W0985	NHIET	N4.6		2	1	
+W0986	NHIET	N4.6		3	1	
+W0987	TU	T3.3		3	1	
+W0988	TU	T5.1		2	1	
+W0989	NHIET	N1.2		1	1	
+W0990	NHIET	N4.2		2	1	
+W0991	TU	T4.2		1	1	
+W0992	KHI	K3.1		1	1	
+W0993	TU	T2.1		2	1	
+W0994	KHI	K3.3		3	0	hai bình thông nhau, Boyle; giữa K2.1 và K3.3
+W0995	TU	T2.2		2	1	
+W0996	TU	T1.1		1	1	
+W0997	NHIET	N4.1		1	1	
+W0998	KHI	K2.2		1	1	
+W0999	HN	H2.2		1	1	
+W1000	HN	H1.1		1	1	
+W1001	TU	T5.2		1	1	
+W1002	KHI	K4.1		1	1	
+W1003	HN	H4.3		2	1	
+W1004	HN	H1.1		1	1	
+W1005	NHIET	N4.5		2	1	
+W1006	HN	H3.3		3	1	
+W1007	KHI	K4.2		3	1	
+W1008	KHI	K3.2		3	0	số phân tử từ p, V, T (pV = NkT)
+W1009	HN	H4.4		3	1	
+W1010	KHI	K1.1		2	1	dính câu tàu đệm từ
+W1011	TU	T4.2		1	1	
+W1012	KHI	K3.3		3	1	dính câu hệ làm mát
+W1013	KHI	K2.1		1	0	định nghĩa quá trình đẳng nhiệt
+W1014	TU	T4.1		2	1	
+W1015	KHI	K4.2		1	1	dính câu nội năng
+W1016	TU	T1.1		1	1	dính câu con lắc lò xo
+W1017	TU	T5.1		2	1	dính câu thí nghiệm kim nam châm
+W1018	TU	T2.2		1	1	
+W1019	TU	T3.1		2	0	dẫn chung mất; từ thông qua vòng kim loại
+W1020	TU	T3.3		3	0	dẫn chung mất; dòng cảm ứng trong vòng; dính câu máy làm nóng nước
+W1021	TU	T4.1		2	0	máy phát điện f = np
+W1022	NHIET	N2.2		1	1	
+W1023	NHIET	N2.1		2	1	
+W1024	NHIET	N3.2		1	1	
+W1025	TU	T1.1		1	1	
+W1026	KHI	K1.2		3	1	
+W1027	KHI	K4.2		1	1	dính câu xilanh nằm ngang
+W1028	NHIET	N1.2		1	1	
+W1029	KHI	K2.1		1	0	định nghĩa quá trình đẳng nhiệt
+W1030	KHI	K4.1		2	1	
+W1031	NHIET	N1.2		1	1	
+W1032	NHIET	N4.1		1	1	
+W1033	TU	T3.5		1	1	
+W1034	KHI	K4.2		3	1	
+W1035	NHIET	N4.2		3	1	đề-đáp án có vẻ lệch
+W1036	NHIET	N3.3		1	1	
+W1037	TU	T3.1		1	1	
+W1038	TU	NEW	Thanh trượt trên ray nối tụ điện, tìm gia tốc	4	1	
+W1039	NHIET	N4.5		4	1	
+W1040	KHI	K3.2		2	0	số phân tử từ p, V, T (pV = NkT)

@@ -1,0 +1,202 @@
+B3-0203	HN	H1.1.1		1	1	
+B3-0204	KHI	K2.1.2		2	1	nén đẳng nhiệt; dính rác cuối
+B3-0205	TU	T4.1.1		2	1	liên hệ Φ0 và E0
+B3-0206	TU	T1.1.1		1	1	
+B3-0207	KHI	K2.1.1		1	1	
+B3-0208	HN	H4.2.1		1	0	hệ thức λ và T; gần H4.2.1/H4.2.2
+B3-0209	TU	T5.1.1		1	1	
+B3-0210	HN	H2.1.2		1	1	
+B3-0211	NHIET	N4.2.1		3	1	Q=mcΔt cần khối lượng riêng dầu
+B3-0212	NHIET	N2.1.1		2	0	dầu toả nhiệt nên nội năng giảm
+B3-0213	HN	H4.2.2		3	1	cần tính N từ khối lượng rồi H=λN
+B3-0214	KHI	K3.1.2		2	1	
+B3-0215	HN	NEW	Phản ứng dây chuyền hệ số nhân k, tổng năng lượng nhiều thế hệ phân hạch	4	1	gần H3.2.2 nhưng là cấp số nhân qua các thế hệ
+B3-0216	KHI	K3.2.1		3	0	CO2 trong bình, tìm T khi nổ; cần tính n hoặc V đktc từ khối lượng riêng
+B3-0217	TU	T4.2.1		2	1	số lần đổi chiều trong 1 s từ tần số
+B3-0218	TU	T4.2.1		3	1	nhiệt lượng trên điện trở
+B3-0219	TU	T1.1.1		1	1	
+B3-0220	KHI	K2.1.3		2	1	
+B3-0221	NHIET	N2.2.1		1	1	
+B3-0222	TU	T1.1.1		1	1	
+B3-0223	HN	H1.1.2		1	1	
+B3-0224	O	O	Nhận biết công thức áp suất thuỷ tĩnh p = p0 + dh	1	1	
+B3-0225	TU	T3.2.1		1	1	
+B3-0226	NHIET	N3.1.2		1	1	
+B3-0227	NHIET	N2.2.2		2	1	
+B3-0228	HN	H4.2.2		3	1	
+B3-0229	KHI	K4.2.1		1	1	
+B3-0230	KHI	K3.1.3		3	1	số phân tử từ pV=NkT hoặc n rồi N
+B3-0231	NHIET	N1.2.1		1	1	
+B3-0232	KHI	K2.1.1		1	1	
+B3-0233	HN	H4.3.1		1	1	
+B3-0234	HN	H2.1.2		3	1	cho Elk tổng cần chia A
+B3-0235	NHIET	N1.1.1		1	1	
+B3-0236	TU	T2.1.3		2	1	
+B3-0237	HN	H3.2.2		3	1	
+B3-0238	TU	T5.1.2		2	1	
+B3-0239	TU	T4.3.2		4	1	hao phí giảm 100 lần với công suất đến tải không đổi
+B3-0240	HN	H3.2.2		3	1	nhiệt hạch D-D từ nước biển so với than đá
+B3-0241	KHI	K3.2.1		4	0	hai xilanh nối pit-tông cứng; Boyle khí B + cân bằng áp suất + pV/T khí A
+B3-0242	NHIET	N2.2.2		3	1	va chạm mềm, giảm cơ năng thành nội năng
+B3-0243	NHIET	N4.1.1		1	1	
+B3-0244	KHI	K2.1.1		1	1	
+B3-0245	TU	T5.1.1		1	1	
+B3-0246	NHIET	N3.2.1		3	0	đổi đơn vị nhiệt dung riêng sang thang F, dựa ΔT; gần N3.2.1
+B3-0247	HN	H2.1.1		3	1	
+B3-0248	HN	H1.1.2		1	1	
+B3-0249	NHIET	N1.2.2		1	1	
+B3-0250	TU	T1.1.2		2	1	chiều B của dòng thẳng
+B3-0251	HN	NEW	Phóng xạ: đếm hạt đến màn theo góc khối để tìm chu kì bán rã	4	1	gần H4.2.1 nhưng thêm hình học góc khối
+B3-0252	TU	T4.1.1		3	1	E hiệu dụng từ N B S ω
+B3-0253	KHI	K3.2.1		3	1	xilanh pit-tông đẳng nhiệt kèm lực tác dụng
+B3-0254	KHI	K4.1.2		2	1	p=ρv²/3
+B3-0255	HN	H4.3.1		1	1	
+B3-0256	HN	H3.1.1		2	1	
+B3-0257	TU	T4.3.1		1	0	sạc không dây theo nguyên lý máy biến áp, hỏi tên cuộn
+B3-0258	NHIET	N4.3.2		3	1	làm nóng rồi nóng chảy, có P và hiệu suất
+B3-0259	TU	T1.1.2		1	1	
+B3-0260	NHIET	N4.3.1		3	1	cân bằng nhiệt nhiều vật
+B3-0261	KHI	K3.2.1		3	1	pit-tông, vật nặng, đổi T
+B3-0262	TU	T3.1.2		2	1	độ biến thiên Φ khi quay khung 90°
+B3-0263	HN	H4.2.1		3	0	đồ thị N–t hai chất; đề cụt
+B3-0264	HN	H4.2.1		3	1	
+B3-0265	NHIET	N3.1.1		1	1	
+B3-0266	KHI	K2.1.5		1	1	
+B3-0267	KHI	K3.1.3		1	1	
+B3-0268	HN	H2.1.1		1	1	công thức độ hụt khối
+B3-0269	TU	T4.2.1		1	1	
+B3-0270	NHIET	N3.1.2		1	1	
+B3-0271	NHIET	N1.2.1		2	1	đồ thị nóng chảy, nhiệt độ không đổi
+B3-0272	TU	T5.1.1		1	1	
+B3-0273	TU	T2.1.1		2	1	
+B3-0274	HN	H4.1.1		1	1	
+B3-0275	NHIET	N2.1.1		1	1	
+B3-0276	TU	T3.2.1		1	1	
+B3-0277	NHIET	N4.1.1		1	1	
+B3-0278	KHI	K2.1.1		1	1	
+B3-0279	HN	H3.1.1		1	1	
+B3-0280	NHIET	N2.2.1		1	1	
+B3-0281	HN	H1.1.1		1	1	
+B3-0282	KHI	K3.1.1		1	1	chọn biểu thức pV/T không tính; cây chưa có dạng nhận biết riêng
+B3-0283	TU	T3.2.2		3	0	đề cụt; hiệu chuẩn, ΔB từ suất điện động
+B3-0284	TU	T3.2.2		3	0	đề cụt; số vòng dây từ e=NΔΦ/Δt
+B3-0285	KHI	K3.2.2		4	1	khí thoát dần, bảo toàn số mol
+B3-0286	HN	H2.1.1		3	1	
+B3-0287	HN	H4.2.1		3	1	
+B3-0288	HN	H3.2.1		1	1	
+B3-0289	KHI	K4.1.1		1	1	
+B3-0290	NHIET	N4.2.3		3	1	nước đá -5°C thành nước 0°C
+B3-0291	TU	T4.3.2		2	0	khảo sát máy biến áp, chọn chốt cho U2 nhỏ nhất
+B3-0292	NHIET	N1.2.1		1	1	
+B3-0293	NHIET	N2.1.1		1	1	
+B3-0294	O	O	Nhận biết ứng dụng tia X trong y học	1	1	
+B3-0295	HN	H2.1.2		1	1	
+B3-0296	HN	H3.1.1		2	1	
+B3-0297	TU	T5.1.1		1	1	
+B3-0298	TU	T3.2.1		2	1	
+B3-0299	KHI	K2.1.1		2	1	
+B3-0300	NHIET	N4.3.1		4	1	so sánh hai lần tính khi tính/không tính nhiệt lượng kế
+B3-0301	TU	T3.2.1		2	1	Lenz chiều dòng
+B3-0302	TU	T4.1.1		2	1	đồ thị Φ(t)
+B3-0303	HN	H1.1.2		1	1	
+B3-0304	HN	H2.1.1		2	1	
+B3-0305	KHI	K3.2.2		4	1	
+B3-0306	NHIET	N4.3.2		4	0	ấm điện P, đồ thị t–τ, thêm nước giữa chừng (cần cân bằng nhiệt); đề cụt
+B3-0307	TU	T2.1.4		3	0	đề cụt; khung dây treo lực kế
+B3-0308	TU	T2.1.4		3	1	
+B3-0309	HN	H3.1.2		3	1	
+B3-0310	HN	H3.2.2		4	1	so sánh năng lượng nhiệt hạch D với phân hạch U
+B3-0311	KHI	K3.1.1		1	1	chọn biểu thức; cây chưa có dạng nhận biết riêng
+B3-0312	HN	H3.1.1		2	1	chọn phương trình phân rã đúng
+B3-0313	TU	T4.3.1		1	1	
+B3-0314	NHIET	NEW	Tủ lạnh, hệ số làm lạnh COP, bảo toàn năng lượng trong chu trình	3	1	gần N2.2.3 nhưng là máy lạnh với COP
+B3-0315	TU	T3.2.3		2	1	
+B3-0316	TU	T4.1.1		2	1	
+B3-0317	HN	H4.3.1		1	1	
+B3-0318	HN	H1.1.2		1	1	
+B3-0319	HN	H2.1.2		1	1	
+B3-0320	KHI	K2.1.5		2	1	đồ thị p–T
+B3-0321	NHIET	N1.2.2		1	1	
+B3-0322	NHIET	N3.1.2		1	1	
+B3-0323	TU	T1.1.1		1	1	
+B3-0324	TU	T4.2.1		1	1	
+B3-0325	O	O	Nhận biết ứng dụng tia X chụp CT và biện pháp khi chụp	1	1	
+B3-0326	KHI	K1.1.1		1	1	
+B3-0327	TU	T2.1.2		1	1	
+B3-0328	NHIET	N3.1.1		1	1	
+B3-0329	HN	H3.2.2		3	1	
+B3-0330	HN	H3.2.2		4	0	đếm neutron dư từ tốc độ phân hạch rồi tìm thời gian
+B3-0331	KHI	K3.1.2		2	1	
+B3-0332	TU	T2.1.3		2	1	
+B3-0333	TU	T2.1.4		3	1	
+B3-0334	NHIET	N4.3.1		3	1	
+B3-0335	KHI	K1.1.1		1	1	điền khuyết đặc điểm phân tử khí
+B3-0336	KHI	K3.1.1		2	1	
+B3-0337	KHI	K4.2.2		2	1	động năng tỉ lệ T
+B3-0338	TU	T2.1.1		2	1	
+B3-0339	TU	T5.1.2		2	1	
+B3-0340	KHI	K3.2.1		4	1	chuông lặn, khí trong chuông, áp suất thuỷ tĩnh và hai nhiệt độ
+B3-0341	TU	T1.1.2		1	1	
+B3-0342	HN	H1.1.2		2	1	ion, đếm electron
+B3-0343	NHIET	N1.2.1		1	1	
+B3-0344	HN	H4.3.1		1	1	
+B3-0345	NHIET	N1.1.1		1	0	tính chất chung của phân tử
+B3-0346	HN	H1.1.1		1	1	
+B3-0347	TU	T4.3.2		2	1	
+B3-0348	KHI	K2.1.5		1	1	
+B3-0349	NHIET	N3.1.2		1	1	
+B3-0350	KHI	K3.2.2		3	1	tỉ lệ khối lượng khí thoát ra khi nhiệt độ tăng
+B3-0351	KHI	K3.2.1		3	1	
+B3-0352	NHIET	N4.3.2		3	1	bàn là hơi: đun nóng rồi hoá hơi
+B3-0353	KHI	K3.2.1		4	1	xilanh hai pit-tông tiết diện khác nhau
+B3-0354	TU	T3.2.2		3	1	
+B3-0355	HN	H3.2.2		4	1	đề cụt
+B3-0356	TU	T2.2.2		4	1	khối phổ kế
+B3-0357	TU	T3.3.1		1	1	
+B3-0358	HN	H2.1.1		2	1	
+B3-0359	TU	T3.2.3		3	1	
+B3-0360	NHIET	N2.2.2		3	1	cơ năng hao thành nội năng
+B3-0361	NHIET	N2.2.3		2	0	khí nhận nhiệt sinh công, hỏi tốc độ phân tử và mật độ; cũng liên quan K4.2.1
+B3-0362	HN	H3.1.1		2	1	bảo toàn số neutron trong phân hạch
+B3-0363	KHI	K3.2.2		4	1	hai bình nối ống, tổng số mol bảo toàn
+B3-0364	HN	H2.1.1		3	1	
+B3-0365	HN	H4.2.3		4	1	tỉ số X còn lại và Y sinh ra tại hai thời điểm
+B3-0366	HN	H3.2.1		1	1	
+B3-0367	TU	T3.2.1		3	1	nam châm rơi qua ống dây kín
+B3-0368	NHIET	N2.2.3		3	0	công của chu trình bằng diện tích p–V; gần N2.2.3
+B3-0369	TU	T2.1.2		1	0	chọn câu sai về vectơ cảm ứng từ
+B3-0370	NHIET	N1.2.1		1	1	
+B3-0371	KHI	K4.2.2		1	0	k=R/NA
+B3-0372	NHIET	N4.1.1		1	1	
+B3-0373	TU	T3.2.1		2	1	
+B3-0374	HN	H2.1.1		1	0	đơn vị amu
+B3-0375	KHI	K1.1.1		1	1	
+B3-0376	HN	H4.2.2		3	1	
+B3-0377	KHI	K3.2.1		3	1	bọt khí nổi, áp suất thuỷ tĩnh
+B3-0378	KHI	K4.2.2		1	0	đơn vị k
+B3-0379	TU	T5.1.2		1	1	
+B3-0380	KHI	K3.1.1		3	0	bóng thám không đổi p,V,T; cũng có thể K3.2.1
+B3-0381	TU	T3.3.1		1	1	
+B3-0382	NHIET	N2.1.1		2	0	nhiệt lượng khi sôi làm tăng nội năng; gần N1.2.2
+B3-0383	TU	T1.1.2		2	1	
+B3-0384	TU	NEW	Định luật Wien nhiệt độ từ bước sóng cực đại, nhiệt kế hồng ngoại	3	1	gần T5.1.2
+B3-0385	KHI	K3.1.2		3	1	đề cụt; số mol N2 từ NaN3 rồi pV=nRT
+B3-0386	HN	H4.2.2		2	0	độ phóng xạ còn 12,5%; cùng cách giải H4.2.1
+B3-0387	TU	T3.2.2		2	1	
+B3-0388	HN	H4.2.3		4	1	
+B3-0389	TU	T5.1.2		2	1	
+B3-0390	NHIET	N1.2.1		1	1	
+B3-0391	HN	H4.2.3		4	1	
+B3-0392	TU	T2.1.3		2	1	
+B3-0393	HN	H4.1.1		1	1	
+B3-0394	KHI	K4.2.2		1	0	k=R/NA
+B3-0395	KHI	K4.1.1		1	1	
+B3-0396	KHI	K2.1.5		3	1	đồ thị đẳng tích hai bình
+B3-0397	TU	T2.1.3		3	1	
+B3-0398	HN	H3.1.1		2	1	
+B3-0399	NHIET	N2.2.1		2	1	
+B3-0400	HN	H1.1.2		1	1	
+B3-0401	HN	H2.1.1		3	1	
+B3-0402	KHI	K4.2.2		3	0	v² trung bình từ T1; chu trình chỉ nhiễu
+B3-0403	HN	H3.2.2		4	1	
+B3-0404	HN	H4.2.2		2	1	

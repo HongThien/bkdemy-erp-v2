@@ -1,0 +1,279 @@
+W1041	KHI	NEW	Nhận biết thông số trạng thái của lượng khí	1	1	
+W1042	NHIET	N1.3		2	1	
+W1043	HN	H4.6		1	1	
+W1044	HN	H1.1		1	1	
+W1045	KHI	K1.1		1	1	
+W1046	TU	T4.1		3	1	
+W1047	NHIET	NEW	Nhận biết trạng thái plasma của vật chất	1	1	
+W1048	NHIET	N2.2		2	1	
+W1049	HN	H2.3		2	1	
+W1050	NHIET	N4.4		2	0	đồ thị t-thời gian so sánh c; giữa N4.1 và N4.4
+W1051	TU	T3.5		2	0	ổ cứng đọc dữ liệu bằng Faraday; giữa T3.2 và T3.5
+W1052	HN	H3.3		1	1	
+W1053	TU	T5.1		1	1	
+W1054	NHIET	N4.7		2	1	
+W1055	HN	H4.2		3	1	
+W1056	NHIET	N4.1		1	1	
+W1057	TU	T1.2		2	1	
+W1058	KHI	K2.4		2	1	
+W1059	KHI	K4.2		2	1	
+W1060	KHI	K3.1		3	1	
+W1061	TU	T3.4		3	1	
+W1062	TU	T3.4		3	1	lực ngoài = công suất điện
+W1063	HN	H3.3		3	1	công suất lò, hiệu suất
+W1064	HN	H3.3		3	1	
+W1065	KHI	K4.2		1	1	
+W1066	TU	T1.2		2	1	
+W1067	NHIET	N1.2		1	1	
+W1068	KHI	K2.3		1	0	nhận biết tên quá trình đẳng tích
+W1069	TU	T1.1		1	1	
+W1070	NHIET	N3.1		1	1	
+W1071	NHIET	N3.3		1	0	các bước đo nhiệt độ
+W1072	TU	T4.2		1	1	
+W1073	TU	T5.1		1	1	
+W1074	TU	T4.1		2	1	
+W1075	TU	T2.2		1	1	đơn vị cảm ứng từ
+W1076	TU	T2.1		2	1	
+W1077	KHI	K2.2		2	1	
+W1078	KHI	K2.4		2	1	
+W1079	NHIET	N4.6		2	1	
+W1080	NHIET	N4.6		3	1	
+W1081	KHI	K3.2		2	1	
+W1082	KHI	K3.3		3	1	
+W1083	NHIET	N4.4		2	1	
+W1084	NHIET	N2.2		2	1	
+W1085	KHI	K3.2		2	1	
+W1086	KHI	K2.1		2	1	
+W1087	TU	T4.1		2	1	
+W1088	TU	T4.3		2	1	
+W1105	NHIET	N2.1		1	1	câu gộp thêm Câu 2 phóng xạ (H4.3) trong ĐỀ
+W1106	KHI	K2.4		1	0	đường đẳng áp trong hệ V-T; giữa K2.2 và K2.4
+W1107	KHI	K2.1		1	1	
+W1108	HN	NEW	Đếm phát biểu đúng về hiện tượng phóng xạ	2	1	câu gộp thêm câu sạc không dây (T3.5)
+W1109	HN	H1.1		1	1	
+W1110	TU	T3.3		2	1	
+W1111	NHIET	N1.2		1	1	ngưng tụ
+W1112	HN	H1.2		1	1	
+W1113	TU	T2.2		1	1	
+W1114	KHI	K2.4		2	1	
+W1115	KHI	K1.1		1	1	
+W1116	TU	T1.2		2	1	
+W1117	TU	T5.1		2	1	
+W1118	NHIET	N4.7		2	1	
+W1119	TU	T3.2		1	1	
+W1120	NHIET	N1.2		1	1	
+W1121	TU	T2.3		3	1	
+W1122	HN	H3.3		3	0	năng lượng toả khi tổng hợp m gam; giữa H3.2 và H3.3
+W1123	NHIET	N4.4		2	1	
+W1124	NHIET	N2.3		3	1	
+W1125	KHI	K2.5		3	0	bình oxy giảm áp, thực chất Boyle
+W1126	KHI	K2.2		3	1	
+W1151	KHI	NEW	Nhận biết thông số trạng thái của lượng khí	1	1	
+W1152	NHIET	N1.1		1	1	
+W1153	KHI	K4.2		1	1	
+W1154	NHIET	N2.2		2	1	
+W1155	TU	T2.2		2	1	
+W1156	TU	T5.1		1	1	
+W1157	TU	T3.1		1	1	
+W1158	KHI	K4.1		2	0	giải thích áp suất theo mô hình động học; giữa K1.1 và K4.1
+W1159	KHI	K3.1		2	1	
+W1160	NHIET	N4.1		1	1	
+W1161	NHIET	N2.1		1	1	câu gộp thêm Câu 12 tia X soi hành lý (O)
+W1162	TU	T3.3		2	1	
+W1163	TU	T1.2		2	1	
+W1164	NHIET	N3.2		1	1	câu gộp thêm Câu 16 đồ thị khí (K2.4)
+W1165	NHIET	N4.3		3	1	câu gộp thêm Câu 18 biển báo phóng xạ
+W1166	NHIET	N4.2		1	1	
+W1167	NHIET	N2.2		2	1	
+W1168	TU	T2.2		1	1	
+W1169	TU	T3.3		2	1	câu gộp thêm câu bơm bóng
+W1170	KHI	K2.5		2	1	bơm bóng, Boyle
+W1171	KHI	K3.1		3	1	
+W1215	TU	T1.1		1	1	
+W1216	NHIET	N1.3		1	1	sôi
+W1217	NHIET	N4.5		3	1	
+W1218	TU	T2.1		2	1	
+W1219	TU	T2.5		2	0	tàu đệm từ, cực nam châm hút/đẩy; giữa T1.1 và T2.5
+W1220	HN	H3.1		2	1	
+W1221	HN	H2.3		2	1	
+W1222	KHI	K2.5		3	0	bơm hút khí nhiều lần, Boyle lặp
+W1223	NHIET	N4.1		1	1	
+W1224	HN	H1.1		1	1	
+W1225	TU	T3.1		1	1	đơn vị
+W1226	TU	T3.1		2	1	
+W1227	HN	H1.1		1	1	đồng vị
+W1228	HN	H2.2		2	1	
+W1229	NHIET	N4.1		1	0	ứng dụng nhiệt hoá hơi riêng
+W1230	NHIET	N2.2		2	1	
+W1231	TU	T3.3		3	0	Lenz xác định chiều + I=e/R; giữa T3.2 và T3.3
+W1232	TU	T3.3		2	1	
+W1233	HN	H3.3		3	1	
+W1234	KHI	K3.1		4	0	chu trình hình bình hành tìm Tmax/Tmin; giữa K3.1 và K3.2
+W1235	TU	T3.3		2	1	
+W1236	KHI	K4.1		2	1	
+W1237	TU	T1.2		2	1	B ống dây
+W1238	HN	H4.3		3	1	
+W1239	KHI	K2.1		2	1	câu gộp thêm Câu 2 sonar (O)
+W1240	TU	T3.3		1	1	
+W1241	TU	T4.4		3	1	
+W1242	TU	T5.1		1	1	
+W1243	NHIET	N3.2		2	1	
+W1244	NHIET	N4.2		1	1	
+W1245	KHI	K3.2		2	0	khối lượng riêng theo T khi đẳng áp; giữa K2.2 và K3.2
+W1246	TU	T3.5		1	1	câu gộp thêm câu dynamo
+W1247	HN	H1.1		1	1	
+W1248	HN	H4.6		1	0	dao Gamma; giữa H4.1 và H4.6
+W1249	KHI	K3.1		3	1	câu gộp thêm quy tắc bàn tay trái (T2.1)
+W1250	HN	H3.1		2	1	
+W1251	HN	H4.6		1	1	biển cảnh báo
+W1252	NHIET	N1.2		1	1	
+W1253	NHIET	N2.1		1	1	
+W1254	HN	H4.4		3	1	
+W1255	HN	H4.3		4	0	giữa H4.3 và H4.4
+W1256	TU	T3.4		3	0	súng điện từ, lực từ lúc đóng mạch; giữa T2.2 và T3.4
+W1257	TU	T3.4		3	1	
+W1258	KHI	K3.3		3	1	
+W1259	NHIET	N4.4		2	1	
+W1260	KHI	K3.1		1	1	
+W1261	TU	T5.1		1	1	
+W1262	KHI	K2.3		3	0	so sánh tỉ số p/T giữa các lốp
+W1263	TU	T2.2		1	1	
+W1264	KHI	K4.2		1	1	
+W1265	HN	H2.3		3	1	
+W1266	TU	T4.2		3	1	
+W1267	NHIET	N4.5		3	1	
+W1268	HN	H1.1		1	1	đồng vị
+W1269	HN	H2.2		1	1	
+W1270	HN	H3.1		1	1	
+W1271	NHIET	N4.1		1	1	
+W1272	NHIET	N4.4		3	1	
+W1273	KHI	K2.5		3	1	
+W1274	NHIET	N4.3		1	1	
+W1275	TU	T2.2		2	0	dây quay, lực từ F=BIlsinα; giữa T2.1 và T2.2
+W1276	TU	T5.1		2	1	
+W1277	TU	T4.2		2	1	
+W1278	TU	T3.3		2	1	
+W1279	KHI	K2.5		4	1	
+W1280	TU	T2.5		3	1	
+W1281	HN	H4.4		4	1	
+W1282	NHIET	N4.5		2	1	
+W1283	KHI	K3.3		3	1	
+W1284	TU	T3.3		1	1	
+W1285	KHI	K2.4		1	1	
+W1286	NHIET	N4.1		1	1	
+W1287	NHIET	N3.2		1	1	câu gộp thêm Câu 5 áp kế (O)
+W1288	TU	T5.1		1	1	
+W1289	KHI	K4.2		1	1	
+W1290	KHI	K1.1		1	1	
+W1291	HN	H3.1		1	1	
+W1292	TU	T2.1		2	1	
+W1293	KHI	K2.1		1	1	
+W1294	NHIET	N3.1		2	0	cảm giác nóng lạnh, dẫn nhiệt
+W1295	KHI	K3.1		1	1	
+W1296	HN	H1.1		1	1	
+W1297	TU	T1.2		2	1	
+W1298	HN	H2.3		2	1	
+W1299	NHIET	N2.1		1	1	
+W1300	TU	T3.5		2	1	
+W1301	KHI	K2.5		3	1	
+W1302	NHIET	N2.3		3	1	
+W1303	NHIET	N4.4		3	1	
+W1304	HN	H2.2		2	1	
+W1305	TU	T4.1		2	1	
+W1306	TU	T3.3		3	1	
+W1307	O	O	Lý 12: sóng âm, siêu âm	1	1	
+W1308	TU	T2.1		2	1	
+W1309	HN	H2.2		1	1	
+W1310	KHI	K4.2		2	1	
+W1311	KHI	K1.1		2	1	
+W1312	TU	T1.1		1	1	
+W1313	HN	H1.1		1	1	
+W1314	NHIET	N4.3		1	1	
+W1315	TU	T3.2		1	1	
+W1316	NHIET	N3.3		1	1	
+W1317	KHI	K2.4		2	1	
+W1318	NHIET	N1.3		1	1	
+W1319	KHI	K3.1		2	1	
+W1320	NHIET	N2.1		2	0	nước đá tan, nội năng; giữa N1.2 và N2.1
+W1321	TU	T3.3		2	1	
+W1322	TU	T5.1		1	1	
+W1323	TU	T4.4		2	1	
+W1324	HN	H4.6		1	0	vật liệu chắn phóng xạ; giữa H4.1 và H4.6
+W1325	NHIET	N4.3		1	1	
+W1326	TU	T3.3		2	1	
+W1327	HN	H4.3		2	1	
+W1328	TU	T4.2		3	1	
+W1329	TU	T2.5		3	1	
+W1330	KHI	K2.1		2	1	
+W1331	NHIET	N3.1		1	1	
+W1332	TU	T2.2		1	1	
+W1333	KHI	K4.2		1	1	
+W1334	NHIET	N4.3		1	1	
+W1335	TU	T2.2		1	1	
+W1336	O	O	An toàn điện: nhận biết biển báo	1	1	
+W1337	NHIET	N1.2		2	1	
+W1338	NHIET	N2.1		1	1	
+W1339	HN	H2.3		1	1	
+W1340	TU	T3.2		3	1	
+W1341	TU	T5.1		2	1	
+W1342	HN	H3.1		1	1	
+W1343	TU	T1.1		2	1	
+W1344	HN	H4.3		1	1	
+W1345	TU	T2.2		1	1	đơn vị cảm ứng từ
+W1346	HN	H4.1		2	1	
+W1347	TU	T3.1		2	1	
+W1348	KHI	K3.1		2	1	
+W1349	HN	H3.3		3	1	
+W1350	TU	T3.3		3	1	
+W1351	NHIET	N4.6		3	0	lò nung hiệu suất, nhiều giai đoạn; giữa N4.4 và N4.6
+W1352	NHIET	N4.2		2	1	
+W1353	KHI	K2.5		3	1	
+W1354	KHI	K2.5		4	1	
+W1355	NHIET	N3.1		1	1	
+W1356	HN	H1.1		1	1	
+W1357	KHI	K3.2		2	1	
+W1358	TU	T3.3		3	0	e theo độ dốc đồ thị Φ(t); giữa T3.3 và T4.1
+W1359	HN	H1.1		2	1	
+W1360	TU	T1.1		1	1	từ phổ
+W1361	NHIET	N1.2		1	1	
+W1362	KHI	K4.1		2	1	
+W1363	TU	T3.2		3	1	
+W1364	NHIET	N4.1		1	1	
+W1365	HN	H2.1		1	1	
+W1366	KHI	K1.1		1	1	
+W1367	KHI	K2.1		1	1	
+W1368	NHIET	N2.1		2	1	
+W1369	TU	T5.1		1	1	
+W1370	TU	T1.1		1	1	
+W1371	HN	H4.1		1	1	
+W1372	TU	T3.1		1	1	đơn vị
+W1373	KHI	K3.3		4	1	
+W1374	KHI	K3.2		2	1	
+W1375	TU	T4.4		2	1	
+W1376	TU	T3.3		4	1	
+W1377	HN	H4.4		3	1	
+W1378	HN	H4.4		4	0	liều chiếu xạ + độ phóng xạ giảm; giữa H4.4 và H4.6
+W1379	NHIET	N1.2		1	1	
+W1380	HN	H4.5		3	1	
+W1381	NHIET	N3.2		3	1	
+W1382	TU	T2.2		2	1	
+W1383	NHIET	N4.5		3	1	
+W1384	HN	H4.1		1	1	
+W1385	KHI	K4.2		2	1	
+W1386	KHI	K1.2		1	0	hằng số Boltzmann k=R/NA
+W1387	KHI	K4.1		1	1	
+W1388	KHI	K2.4		2	0	đồ thị đẳng tích hai bình; giữa K2.3 và K2.4
+W1389	TU	T2.2		2	1	
+W1390	HN	H3.1		1	1	
+W1391	TU	T1.2		2	1	
+W1392	NHIET	N2.2		2	1	
+W1393	TU	T4.1		2	1	
+W1394	TU	T1.1		1	1	
+W1395	HN	H1.1		1	1	
+W1396	HN	H2.2		2	1	
+W1397	KHI	K4.2		2	1	
+W1398	TU	T2.5		3	1	
+W1399	HN	H3.3		3	1	
+W1400	TU	T3.4		4	0	thanh dẫn nối tụ dao động; giữa T3.4 và T2.3
+W1401	HN	H4.4		2	0	độ phóng xạ theo thời gian; giữa H4.3 và H4.4
+W1402	NHIET	N4.5		2	1	

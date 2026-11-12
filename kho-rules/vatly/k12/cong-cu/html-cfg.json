@@ -1,0 +1,23 @@
+{
+  "dang_moi": {
+    "b2": ["T1.1.3 Tính cảm ứng từ của dòng điện thẳng dài (3 câu)", "K2.1.6 Thí nghiệm kiểm chứng định luật chất khí (2 câu)"],
+    "b3": ["0 — 8 câu NEW đều lẻ 1 câu, gộp vào mô tả dạng gần nhất"]
+  },
+  "cau_hoi": [
+    ["Câu ngoài 4 chương (khoảng 3%: sóng âm, sóng cơ, tia X, an toàn điện, áp suất thuỷ tĩnh, cơ học Lý 10…) xử lý thế nào?",
+     "Mỗi đề thi thử có 0–2 câu kiểu này (kiến thức Lý 10/11 lồng vào bối cảnh thực tế). Đề chính thức Bộ GD 2025–2026 gần như không có.",
+     "KHÔNG đưa vào bản đồ Lý 12; khi nhập kho, câu loại này để rổ riêng 'ngoài chương trình 12'."],
+    ["Tách 'Nhận biết …' và 'Tính …' thành 2 dạng bài trong cùng nhóm bài — có đồng ý?",
+     "Đề Lý hỏi cùng một định luật theo 2 cách khác hẳn: chọn phát biểu/công thức/đơn vị (không tính) và thay số/vận dụng. Theo luật 'dạng = cách giải' thì là 2 dạng; mastery vẫn đo chung ở nhóm bài.",
+     "Đồng ý tách (như cây đang làm ở ~12 nhóm)."],
+    ["Dòng điện xoay chiều và Sóng điện từ để trong chủ đề 'Từ trường' hay tách chủ đề riêng?",
+     "SGK CT 2018 đặt cả hai trong chương Từ trường (cảm ứng điện từ → dòng xoay chiều → điện từ trường). Tách ra thì Lý 12 thành 5 chủ đề.",
+     "Giữ trong 'Từ trường' cho khớp SGK; mỗi phần đã là một chuyên đề riêng (T4, T5)."],
+    ["Dạng ít câu (dưới 8 câu trên 90 đề) giữ riêng hay gộp?",
+     "Gồm: lực Lorentz – hạt mang điện, năng lượng toả/thu của phản ứng, cảm ứng từ của dòng thẳng dài, thí nghiệm định luật chất khí, nhiệt kế… Cách giải riêng, không gộp được vào dạng khác mà không lẫn.",
+     "Giữ riêng, gắn nhãn 'ít câu'; đề mỗi năm đổi nên không bỏ."],
+    ["Thứ tự học các chủ đề?",
+     "Đang để theo SGK: Vật lí nhiệt → Khí lí tưởng → Từ trường → Vật lí hạt nhân; chuyên đề và nhóm bài cũng theo thứ tự SGK.",
+     "Giữ thứ tự SGK."]
+  ]
+}

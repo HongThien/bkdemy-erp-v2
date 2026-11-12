@@ -1,0 +1,281 @@
+W0282	NHIET	N2.1		1	1	
+W0283	NHIET	N4.3		1	1	
+W0284	NHIET	N4.1		1	1	
+W0285	KHI	K4.2		1	1	
+W0286	KHI	K2.2		1	1	
+W0287	NHIET	N4.2		1	1	
+W0288	KHI	K1.2		2	1	
+W0289	KHI	K4.1		3	0	giữa K4.1 và K4.2/K3.2 (cùng T, cùng V, cùng khối lượng)
+W0290	KHI	K1.2		2	1	
+W0291	KHI	K3.3		3	1	
+W0292	NHIET	N2.2		2	1	
+W0293	KHI	K3.2		2	1	
+W0294	NHIET	N4.3		3	1	
+W0295	NHIET	N3.2		2	1	
+W0296	KHI	K2.2		3	0	dùng khối lượng riêng để ra V2; giữa K2.2 và K3.2
+W0297	KHI	K3.2		2	1	đề dính thêm câu 5 đồ thị nóng chảy (N4.4)
+W0298	KHI	K4.2		2	1	
+W0299	HN	H3.3		2	0	phương trình mất công thức; nhận loại phản ứng
+W0300	NHIET	N3.1		1	1	
+W0301	NHIET	N1.2		1	1	
+W0302	TU	T1.1		1	1	
+W0303	HN	H2.3		1	1	
+W0304	KHI	K2.1		1	1	
+W0305	TU	T3.5		1	1	
+W0306	HN	H1.1		1	1	
+W0307	KHI	K3.2		1	1	
+W0308	HN	H1.1		1	1	
+W0309	TU	T2.2		1	0	đơn vị cảm ứng từ, không có dạng riêng
+W0310	NHIET	N1.1		1	1	
+W0311	NHIET	N1.2		1	1	
+W0312	TU	T2.2		1	1	
+W0313	TU	T3.1		1	1	
+W0314	NHIET	N2.1		1	1	
+W0315	KHI	K4.2		1	1	
+W0316	NHIET	N3.3		1	1	
+W0317	NHIET	N4.4		3	1	
+W0318	NHIET	N4.4		3	1	
+W0319	TU	T2.2		2	1	
+W0320	TU	T2.3		3	0	moment ngẫu lực lên khung dây; giữa T2.3 và T2.5
+W0321	HN	H4.4		3	1	
+W0322	HN	H4.4		3	0	độ phóng xạ sau t; giữa H4.3 và H4.4
+W0323	HN	H1.1		1	1	
+W0324	TU	T5.2		2	1	
+W0325	NHIET	N3.2		3	0	nhiệt kế hỏng đổi sang Fahrenheit; thang nhiệt độ tuyến tính
+W0326	NHIET	N1.2		1	1	
+W0327	HN	H3.3		2	1	đề dính thêm câu 6 đồ thị khí (K2.4/K3.1)
+W0328	TU	T3.1		1	1	
+W0329	KHI	K3.1		1	0	thông số trạng thái khí; không có dạng riêng
+W0330	KHI	K4.2		2	1	
+W0331	NHIET	N4.4		3	1	
+W0332	HN	H3.2		4	0	va chạm neutron, bảo toàn động lượng, năng lượng thu; có thể NEW
+W0333	NHIET	N4.2		2	1	
+W0334	O	NEW	Lý 11: an toàn điện, nhận biết biển báo	1	0	đề dính thêm câu 14 tia phóng xạ lệch trong điện trường (H4.1)
+W0335	TU	T3.2		2	1	đề dính thêm câu 16 động cơ điện
+W0336	KHI	K2.3		2	1	
+W0337	KHI	K2.3		2	1	
+W0338	HN	H3.2		2	1	
+W0339	NHIET	N4.5		4	0	c phụ thuộc t, cần tích phân; đề dính câu 6 cân dòng điện
+W0340	KHI	K2.1		1	1	
+W0341	KHI	K4.2		1	0	nhiệt độ tăng thì phân tử chuyển động nhanh hơn
+W0342	NHIET	N4.3		1	1	
+W0343	NHIET	N1.2		1	1	
+W0344	NHIET	N4.5		3	1	
+W0345	NHIET	N2.1		2	1	
+W0346	KHI	K4.2		1	1	
+W0347	NHIET	N3.2		1	1	
+W0348	NHIET	N4.2		2	1	
+W0349	TU	T4.2		1	1	
+W0350	TU	T5.1		1	1	
+W0351	TU	T1.1		1	1	
+W0352	TU	T3.3		2	1	
+W0353	TU	T2.2		1	0	đơn vị cảm ứng từ
+W0354	KHI	K2.5		2	1	
+W0355	TU	T2.2		2	1	
+W0356	KHI	K2.1		2	1	
+W0357	TU	T3.1		1	1	
+W0358	TU	T3.3		3	1	còn tính nhiệt lượng Q = e²t/R
+W0359	NHIET	N2.2		2	1	
+W0360	TU	T4.1		3	1	
+W0361	NHIET	N4.5		3	1	đá tan hết rồi cân bằng
+W0362	KHI	K2.3		2	1	
+W0363	KHI	K3.2		3	1	đếm số phân tử, nửa lượng khí
+W0364	NHIET	N1.1		1	1	
+W0365	NHIET	N4.1		1	1	
+W0366	NHIET	N1.3		1	1	
+W0367	NHIET	N4.1		2	1	
+W0368	KHI	K1.1		1	1	
+W0369	KHI	K2.4		1	1	
+W0370	NHIET	N4.7		2	1	
+W0371	KHI	K4.1		2	1	
+W0372	TU	T1.1		1	1	đề dính thêm câu 10 Lenz
+W0373	TU	T5.1		1	0	từ trường biến thiên sinh điện trường xoáy; đề dính câu 12 rơ-le
+W0374	HN	H2.3		1	1	
+W0375	HN	H4.1		1	1	
+W0376	HN	H3.3		2	1	
+W0377	HN	H4.6		1	1	
+W0378	O	NEW	Lý 11/12: sóng âm, siêu âm	1	1	
+W0379	TU	T4.4		1	1	
+W0380	NHIET	N4.5		3	1	trộn hai dòng nước
+W0381	NHIET	N4.5		3	0	trộn hai dòng nước, tối ưu lưu lượng
+W0382	KHI	K3.2		3	1	
+W0383	KHI	K3.2		3	1	
+W0384	TU	T4.2		1	1	
+W0385	TU	T2.2		3	1	dùng I0
+W0410	KHI	K2.2		1	1	
+W0411	TU	T1.1		1	0	vectơ cảm ứng từ
+W0412	NHIET	N4.3		1	1	
+W0413	TU	T1.1		1	1	
+W0414	NHIET	N1.2		1	1	
+W0415	KHI	K2.1		1	1	
+W0416	KHI	K1.1		1	1	
+W0417	TU	T4.1		2	1	
+W0418	HN	H3.3		1	1	
+W0419	NHIET	N2.2		2	1	
+W0420	NHIET	N3.2		2	1	
+W0421	HN	H1.1		1	1	đề dính hình rác
+W0422	KHI	K2.4		3	1	
+W0423	TU	T2.3		3	0	lực từ bằng 1% trọng lực; giữa T2.2 và T2.3
+W0424	KHI	K2.3		2	1	
+W0425	HN	H1.2		2	1	
+W0426	NHIET	N4.5		3	1	chậu nhôm + nước
+W0427	HN	H2.2		2	1	
+W0428	KHI	K4.2		2	1	đề mất nhiệt độ
+W0429	KHI	K2.5		3	0	xilanh có lò xo, van xả; đề dính câu cảm ứng điện từ
+W0430	TU	T3.3		3	1	
+W0431	TU	T3.3		3	1	còn nhiệt lượng toả ra; đề dính dẫn Xenon
+W0432	HN	H4.4		3	1	
+W0433	HN	H4.4		3	0	độ phóng xạ sau t, giữa H4.3 và H4.4
+W0434	TU	T5.2		1	1	
+W0435	KHI	K2.2		1	1	
+W0436	KHI	K1.1		1	1	
+W0437	HN	H4.3		1	1	
+W0438	KHI	K4.2		1	0	hằng số Boltzmann
+W0439	KHI	K3.2		1	1	
+W0440	NHIET	N2.1		1	1	
+W0441	TU	T3.1		1	1	
+W0442	HN	H1.1		1	1	
+W0443	TU	T4.2		1	1	
+W0444	NHIET	N3.2		1	1	
+W0445	HN	H4.6		1	1	
+W0446	HN	H3.3		1	1	
+W0447	NHIET	N1.3		2	1	
+W0448	HN	H2.2		3	1	
+W0449	NHIET	N1.2		1	1	đề dính câu 17 Lenz nam châm - ống dây
+W0450	TU	T3.1		2	1	
+W0451	NHIET	NEW	Cơ năng hao hụt chuyển thành nội năng của vật	3	1	
+W0452	KHI	K4.1		3	0	mật độ phân tử và áp suất tìm động năng; giữa K4.1 và K4.2
+W0453	TU	T2.3		3	1	
+W0454	HN	H3.3		3	1	
+W0455	NHIET	N2.3		3	1	công tính từ diện tích đồ thị p-V
+W0456	KHI	K1.1		1	1	
+W0457	TU	T2.5		3	1	cân lực kế đo B
+W0458	HN	H1.1		1	1	
+W0459	TU	T1.2		2	1	
+W0460	NHIET	N2.1		2	1	
+W0461	TU	T4.3		2	1	
+W0462	HN	H4.5		3	1	
+W0463	HN	H3.3		3	1	nhiệt hạch D-D, năng lượng 1 g
+W0464	KHI	K1.1		1	1	
+W0465	TU	T3.1		1	1	
+W0466	HN	H4.6		1	1	
+W0467	KHI	K2.3		2	1	
+W0468	TU	T1.1		1	1	
+W0469	TU	T2.2		1	1	
+W0470	HN	H2.3		2	1	
+W0471	NHIET	N4.1		1	1	
+W0472	TU	T2.1		2	1	
+W0473	HN	H4.4		3	1	
+W0474	HN	H3.1		3	0	phân hạch xác định hạt rồi đếm neutron
+W0475	KHI	K4.2		2	1	
+W0476	TU	T3.3		3	1	
+W0477	NHIET	N2.3		3	1	
+W0478	NHIET	N4.5		3	1	
+W0479	NHIET	N1.2		1	1	
+W0480	O	NEW	Lý 9/11: tác dụng nhiệt của dòng điện, ứng dụng có lợi	1	1	
+W0481	TU	T3.3		1	1	
+W0482	TU	T4.4		2	1	
+W0483	NHIET	N4.6		3	1	
+W0484	TU	T5.2		2	1	
+W0485	NHIET	N4.6		2	0	nhiệt hoá hơi riêng từ P·t; giữa N4.3 và N4.6
+W0486	KHI	K3.1		2	1	
+W0487	TU	T3.5		1	1	
+W0488	KHI	K4.1		3	0	tổng động năng và tốc độ căn quân phương tìm khối lượng
+W0489	KHI	K2.5		3	1	
+W0490	TU	T2.3		3	1	đề/đáp án có thể sai
+W0491	TU	T2.2		1	1	
+W0492	TU	T3.3		2	1	
+W0493	NHIET	N3.2		1	1	
+W0494	O	NEW	Lý 10: điện năng = công suất × thời gian	1	1	
+W0495	HN	H2.3		2	1	
+W0496	TU	T2.1		2	1	
+W0497	HN	H1.2		3	1	số neutron trong m gam
+W0498	NHIET	N4.6		2	1	
+W0499	NHIET	NEW	Động cơ nhiệt: công từ nhiệt nhận và nhiệt thải, hiệu suất	3	0	có thêm hiệu suất máy phát
+W0500	TU	T3.3		3	1	đọc đồ thị B(t)
+W0501	KHI	K3.1		3	0	khối lượng riêng ở điều kiện chuẩn đổi sang điều kiện khác
+W0502	TU	T4.1		2	1	
+W0503	O	NEW	Lý 12: mạch xoay chiều RC, độ lệch pha u–i	2	1	
+W0504	KHI	K3.3		3	1	
+W0505	TU	T3.3		2	1	
+W0506	TU	T3.5		1	1	
+W0507	HN	H2.2		2	1	
+W0508	TU	T3.4		2	1	
+W0509	NHIET	N4.7		2	1	
+W0510	NHIET	N2.1		1	1	
+W0511	TU	T1.1		2	1	đếm phát biểu đúng
+W0512	TU	T3.2		3	1	Lenz + chuyển động khung
+W0513	NHIET	N4.1		1	1	nhiệt dung riêng lớn của nước
+W0514	TU	T2.2		1	0	đơn vị cảm ứng từ
+W0515	O	NEW	Lý 11: dao động điều hoà, nhận biết đặc điểm	1	1	
+W0516	NHIET	NEW	Cơ năng hao hụt chuyển thành nội năng của vật	3	1	
+W0517	NHIET	N2.3		2	0	khí nhận nhiệt và thực hiện công, nhận định tốc độ phân tử
+W0518	NHIET	N2.3		3	1	Q = ΔU + A qua đồ thị p-V
+W0519	HN	H3.1		2	1	
+W0520	KHI	K2.4		2	0	chu trình trên đồ thị, so sánh nhiệt độ qua tích pV
+W0521	KHI	K3.3		3	1	hai bình nối thông, nhiệt độ khác nhau
+W0522	NHIET	N4.7		3	1	sai số nhiệt hoá hơi riêng
+W0523	NHIET	N4.6		3	1	
+W0524	HN	H2.2		2	1	
+W0525	NHIET	N4.4		2	1	
+W0526	HN	H4.5		3	1	tỉ số hạt mẹ/hạt con tại hai thời điểm
+W0527	HN	H2.1		1	1	
+W0528	HN	H1.1		1	1	
+W0529	TU	T3.5		1	1	
+W0530	TU	T2.2		1	1	
+W0531	TU	T5.2		1	0	ứng dụng tia X
+W0532	KHI	K4.1		1	1	
+W0533	NHIET	N1.1		1	1	
+W0534	KHI	K1.1		1	1	
+W0535	NHIET	N4.4		2	1	
+W0536	TU	T2.2		1	0	đơn vị cảm ứng từ
+W0537	NHIET	N3.3		1	1	
+W0538	TU	T1.1		1	1	
+W0539	HN	H4.1		1	1	
+W0540	KHI	K2.1		1	1	
+W0541	KHI	K2.1		2	1	
+W0542	TU	T4.2		1	0	nhận biết loại dòng điện trong gia đình
+W0543	HN	H2.3		2	1	
+W0544	NHIET	N2.2		2	1	
+W0545	HN	H3.3		3	1	năng lượng từ D trong nước tự nhiên
+W0546	KHI	K3.1		3	1	bọt khí nổi lên
+W0547	KHI	K2.3		2	1	
+W0548	TU	T4.1		3	0	E0 = NBSω rồi nhiệt lượng trên R (T4.3)
+W0549	HN	H4.5		3	1	
+W0550	NHIET	N4.5		3	1	đá không tan hết
+W0594	NHIET	N2.2		1	1	
+W0595	KHI	K4.1		1	1	
+W0596	NHIET	N3.3		1	1	
+W0597	NHIET	N4.1		1	1	
+W0598	NHIET	N4.2		2	0	so sánh nhiệt lượng thu theo mc cùng Δt
+W0599	NHIET	N1.1		1	1	
+W0600	TU	T5.2		2	0	súng bắn tốc độ dùng sóng vô tuyến
+W0601	TU	T3.1		1	0	đơn vị từ thông
+W0602	HN	H4.6		1	1	
+W0603	NHIET	N4.1		1	1	
+W0604	TU	T3.5		1	1	
+W0605	HN	H1.1		1	1	đề dính câu 13 bay hơi (N1.3)
+W0606	NHIET	N4.3		2	1	
+W0607	TU	T1.1		1	0	tương tác từ của dây dẫn; đề dính câu 16 đồ thị đẳng quá trình
+W0608	HN	H3.1		2	1	đề dính câu 18 ống tiêm (K2.1)
+W0632	NHIET	N1.3		2	1	
+W0633	NHIET	N4.4		2	1	
+W0634	NHIET	N3.3		1	1	thao tác dùng nhiệt kế
+W0635	NHIET	N2.3		2	0	nung đẳng áp, ΔU = A + Q
+W0636	NHIET	N3.2		1	1	
+W0637	TU	T2.5		2	0	tàu đệm từ, lực từ đóng vai trò gì
+W0638	KHI	K2.4		3	1	
+W0639	KHI	K1.1		1	1	
+W0640	KHI	K4.2		2	1	
+W0641	KHI	K4.1		2	1	
+W0642	TU	T2.1		2	1	
+W0643	TU	T5.1		1	1	
+W0644	TU	T3.5		1	1	
+W0645	TU	T2.2		2	1	
+W0646	HN	H3.1		2	1	
+W0647	O	NEW	Vật lí nguyên tử: thí nghiệm tán xạ hạt alpha Rutherford	1	1	
+W0648	HN	H1.1		2	1	
+W0649	KHI	K3.1		3	1	máy nén gas
+W0650	TU	T4.1		2	1	
+W0651	NHIET	N2.3		4	0	nhiều bước: đốt điện, đẳng áp, dịch chuyển hệ; đề bị cắt
+W0652	KHI	K2.5		3	0	bình kín có nút, đun nóng đến khi nút bật

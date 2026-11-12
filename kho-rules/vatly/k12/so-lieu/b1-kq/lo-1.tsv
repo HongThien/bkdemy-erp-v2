@@ -1,0 +1,281 @@
+W0001	NHIET	N1.2		1	1	
+W0002	HN	H4.6		1	1	biển báo phóng xạ
+W0003	NHIET	N3.2		1	1	
+W0004	NHIET	N4.2		2	1	
+W0005	NHIET	N2.1		1	1	
+W0006	KHI	K2.1		1	1	
+W0007	KHI	K2.2		1	1	
+W0008	KHI	K3.3		3	1	
+W0009	TU	T5.1		1	1	
+W0010	TU	T4.1		1	1	
+W0011	TU	T4.1		2	1	
+W0012	TU	T2.2		2	1	
+W0013	TU	T1.1		1	1	
+W0014	O	NEW	Lý 11: sóng âm, siêu âm	1	1	
+W0015	HN	H1.1		1	1	
+W0016	HN	H2.3		1	1	
+W0017	HN	H4.1		2	1	
+W0018	TU	T3.3		3	1	
+W0019	KHI	K1.2		2	0	thiếu đề; có thể n=pV/RT hoặc N=nNA
+W0020	KHI	K3.2		3	0	thiếu đề; từ số phân tử suy thể tích
+W0021	TU	T4.2		1	1	
+W0022	TU	T2.2		2	1	
+W0023	HN	H3.3		3	1	
+W0024	HN	H3.3		3	1	
+W0025	HN	H4.1		1	0	giữa H4.1 và H4.6
+W0026	NHIET	N1.2		1	1	
+W0027	TU	T2.2		2	0	giữa T2.1 và T2.2
+W0028	NHIET	N3.1		1	1	
+W0029	TU	T1.1		1	1	
+W0030	NHIET	N1.1		1	1	
+W0031	KHI	K2.2		2	1	
+W0032	KHI	K3.2		2	0	so sánh theo pV=nRT
+W0033	NHIET	N2.3		2	1	
+W0034	KHI	K1.1		1	1	
+W0035	NHIET	N2.3		3	1	
+W0036	HN	H2.3		2	1	
+W0037	NHIET	N4.2		2	1	
+W0038	TU	T4.2		1	1	
+W0039	TU	T3.2		1	1	
+W0040	TU	T2.4		2	1	
+W0041	HN	H4.3		1	0	hằng số phóng xạ không đổi; giữa H4.3 và H4.6
+W0042	KHI	K3.1		2	1	
+W0043	TU	T2.2		2	0	thiếu đề
+W0044	TU	T3.1		2	1	
+W0045	KHI	K2.2		2	0	xilanh pittông đẳng áp; giữa K2.2 và K2.5
+W0046	KHI	K3.1		3	0	xilanh pittông; giữa K3.1 và K2.5
+W0047	HN	H4.3		2	1	
+W0048	HN	H4.4		3	0	tỉ số độ phóng xạ theo thời gian; giữa H4.4 và H4.5
+W0049	TU	T3.2		1	1	
+W0050	KHI	K2.2		1	0	giữa K2.2 và N2.1
+W0051	TU	T1.1		1	0	lực giữa dòng điện, nam châm; giữa T1.1 và T2.1
+W0052	NHIET	N4.2		2	1	
+W0053	TU	T4.2		1	1	
+W0054	NHIET	N1.3		2	1	
+W0055	HN	H4.3		2	1	
+W0056	HN	H2.3		2	1	
+W0057	NHIET	N2.2		2	1	
+W0058	NHIET	N3.1		1	1	
+W0059	KHI	K2.1		1	1	
+W0060	NHIET	N1.1		1	1	
+W0061	TU	T2.4		2	1	
+W0062	KHI	K1.1		1	1	
+W0063	TU	T1.1		1	1	
+W0064	KHI	K2.3		2	1	
+W0065	HN	H4.6		1	1	
+W0066	NHIET	N1.2		1	1	
+W0067	TU	T3.4		2	0	thiếu đề; thanh kim loại tính dòng điện
+W0068	TU	T3.4		2	0	thiếu đề; công suất toả nhiệt thanh
+W0069	KHI	K2.3		2	1	
+W0070	KHI	K3.3		3	1	
+W0071	HN	H4.4		3	0	năng lượng điện từ số phân rã; giữa H4.4 và H3.2
+W0072	HN	H4.3		3	1	
+W0073	HN	H2.3		2	1	
+W0074	NHIET	N4.2		2	1	
+W0075	HN	H4.3		2	1	
+W0076	KHI	K1.1		1	1	
+W0077	TU	T2.4		2	1	
+W0078	NHIET	N3.1		1	1	
+W0079	TU	T1.1		1	0	lực giữa dòng điện, nam châm
+W0080	KHI	K2.1		1	0	dãn đẳng nhiệt; có hỏi nội năng
+W0081	KHI	K2.3		2	1	
+W0082	NHIET	N1.3		2	1	
+W0083	HN	H4.6		1	1	
+W0084	NHIET	N1.1		1	1	
+W0085	KHI	K2.2		1	1	
+W0086	NHIET	N1.2		1	1	
+W0087	TU	T4.2		1	1	
+W0088	TU	T3.2		1	1	
+W0089	TU	T1.1		1	1	
+W0090	NHIET	N2.2		2	1	
+W0091	HN	H4.4		3	0	như W0071
+W0092	HN	H4.3		3	1	
+W0093	KHI	K2.3		2	1	
+W0094	KHI	K3.3		3	1	
+W0095	TU	T3.4		2	0	thiếu đề; thanh trượt trên ray
+W0096	TU	T3.4		2	0	thiếu đề; công suất toả nhiệt thanh trượt
+W0097	TU	T4.4		1	1	
+W0098	HN	H4.1		1	1	
+W0099	NHIET	N3.2		1	1	
+W0100	HN	H1.2		2	1	
+W0101	O	NEW	Lý 12: tia X, chụp CT, định luật suy giảm cường độ	2	1	
+W0102	HN	H2.3		1	1	
+W0103	NHIET	N4.1		1	1	
+W0104	KHI	K1.1		1	1	
+W0105	NHIET	N3.2		1	1	
+W0106	NHIET	N1.2		2	0	giải thích hiện tượng; giữa N1.2 và N2.1
+W0107	TU	T1.1		1	1	
+W0108	TU	T2.2		2	0	đơn vị tesla qua đơn vị cơ bản
+W0109	HN	H1.1		1	1	
+W0110	KHI	K2.1		1	1	
+W0111	TU	T3.2		2	1	
+W0112	TU	T3.1		1	1	
+W0113	NHIET	N4.6		3	0	nung và nóng chảy đồng, hiệu suất; giữa N4.6 và N4.4
+W0114	TU	T3.2		1	1	
+W0115	HN	H3.3		3	1	
+W0116	KHI	K3.1		3	0	xilanh hai ngăn pit-tông; giữa K3.1 và K2.5
+W0117	HN	H4.4		3	0	xác định thể tích máu; giữa H4.4 và H4.3
+W0118	TU	T2.3		3	1	
+W0119	TU	T3.3		2	1	
+W0120	KHI	K2.1		2	1	
+W0121	TU	T3.1		2	0	thiếu đề; từ thông tại thời điểm t
+W0122	TU	T3.3		2	0	thiếu đề; suất điện động cảm ứng
+W0123	KHI	K4.2		1	1	
+W0124	KHI	K2.2		1	1	
+W0125	TU	T2.2		1	1	
+W0126	TU	T3.2		2	0	vòng dây quay gần nam châm; đề dính câu khác
+W0127	NHIET	N1.2		1	1	
+W0128	TU	T5.1		1	1	
+W0129	NHIET	N4.4		2	1	
+W0130	O	NEW	Lý 11: an toàn sử dụng điện	1	1	
+W0131	NHIET	N1.1		1	1	
+W0132	TU	T5.2		1	1	
+W0133	TU	T4.2		1	1	
+W0134	NHIET	N2.3		2	1	
+W0135	NHIET	N4.5		4	0	nước đá và nước, mực nước giảm
+W0136	NHIET	N2.1		1	1	
+W0137	HN	H4.3		2	1	
+W0138	TU	T3.1		1	1	
+W0139	HN	H4.3		1	1	
+W0140	HN	H2.3		1	1	
+W0141	KHI	K2.2		1	1	
+W0142	TU	T1.1		1	1	
+W0143	TU	T3.2		1	1	
+W0144	NHIET	N1.3		2	1	
+W0145	NHIET	N4.1		1	1	
+W0146	KHI	K4.2		1	1	
+W0147	HN	H3.3		1	1	
+W0148	KHI	K1.1		1	1	
+W0149	NHIET	N2.3		2	1	
+W0150	NHIET	N1.2		1	1	
+W0151	HN	H1.1		1	1	
+W0152	TU	T4.2		1	1	
+W0153	KHI	K4.2		1	1	
+W0154	KHI	K3.2		2	1	
+W0155	KHI	K3.2		2	1	
+W0156	TU	T3.3		3	0	điện lượng q=ΔΦ/R khi lật cuộn dây; giữa T3.1 và T3.3
+W0157	TU	T3.3		3	0	ΔΦ khi lật 180 độ; giữa T3.1 và T3.3
+W0158	HN	H1.1		2	1	
+W0159	HN	H4.5		3	1	
+W0160	NHIET	N1.1		1	1	đề dính câu khác
+W0161	O	NEW	Lý 11: điện năng tiêu thụ A=P·t	1	1	
+W0162	NHIET	N1.2		1	1	
+W0163	NHIET	N4.3		2	1	
+W0164	TU	T3.4		2	1	
+W0165	TU	T3.4		3	0	lực kéo cân bằng lực từ; giữa T3.4 và T2.3
+W0166	TU	T3.4		1	1	
+W0167	TU	T1.1		1	1	
+W0168	TU	T5.2		1	1	
+W0169	TU	T4.1		2	1	
+W0170	TU	T3.5		1	1	rôto stato máy phát
+W0171	NHIET	N4.1		1	1	
+W0172	NHIET	N4.1		1	1	
+W0173	TU	T4.2		1	1	
+W0174	KHI	K2.3		1	1	
+W0175	TU	T4.2		2	1	
+W0176	TU	T4.1		2	1	
+W0177	NHIET	N4.5		2	1	
+W0178	KHI	K3.2		2	1	
+W0179	KHI	K3.3		4	1	
+W0180	KHI	K2.3		2	0	trứng vào bình; nhận dạng đẳng quá trình; giữa K2.3 và K2.5
+W0181	HN	H4.1		1	1	
+W0182	NHIET	N1.2		1	1	
+W0183	KHI	K2.1		2	1	
+W0184	TU	T5.1		2	1	
+W0185	HN	H4.3		1	1	
+W0186	NHIET	N1.3		2	1	
+W0187	KHI	K3.2		1	1	
+W0188	TU	T2.2		2	1	
+W0189	HN	H2.3		2	1	
+W0190	HN	H1.1		1	1	
+W0191	NHIET	N1.2		1	1	
+W0192	HN	H3.3		1	1	
+W0193	TU	T3.5		1	1	
+W0194	TU	T4.4		1	1	
+W0195	KHI	K4.2		2	1	
+W0196	NHIET	N2.1		1	1	
+W0197	TU	T4.1		2	0	cuộn dây từ trường biến thiên, E0=NBSω; giữa T4.1 và T3.3
+W0198	TU	T2.3		3	1	
+W0199	NHIET	N4.7		3	1	
+W0200	TU	T3.3		4	0	thanh quay quét hình quạt; giữa T3.3 và T3.4
+W0201	HN	H4.4		3	0	thời gian chiếu theo hoạt độ giảm; giữa H4.4 và H4.3
+W0202	KHI	K2.1		4	0	xilanh quay, Boyle hai ngăn + lực hướng tâm
+W0203	KHI	K3.1		3	1	
+W0204	TU	T5.1		1	1	
+W0205	KHI	K4.2		1	1	
+W0206	KHI	K1.2		1	1	
+W0207	NHIET	N4.2		2	1	
+W0208	HN	H2.2		1	1	
+W0209	NHIET	N3.1		1	1	
+W0210	NHIET	N1.2		1	1	
+W0211	TU	T4.1		2	1	
+W0212	NHIET	N2.3		1	1	
+W0213	O	NEW	Lý 11: sóng âm, siêu âm	1	1	
+W0214	HN	H4.4		3	0	thời gian chiếu theo hoạt độ giảm; giữa H4.4 và H4.3
+W0215	HN	H1.1		1	1	
+W0216	HN	H1.1		1	1	
+W0217	KHI	K1.2		3	0	số phân tử đập vào một mặt hộp; giữa K1.2 và K4.1
+W0218	KHI	K1.1		1	1	
+W0219	TU	T4.4		1	1	
+W0220	TU	T1.2		2	1	
+W0221	KHI	K4.1		1	1	
+W0222	TU	T2.2		2	1	
+W0223	NHIET	N2.3		3	1	
+W0224	KHI	K3.2		4	0	hỗn hợp khí phân li, áp suất theo số mol
+W0225	HN	H4.5		4	1	
+W0226	TU	T2.3		4	1	
+W0227	HN	H2.2		2	1	
+W0228	KHI	K3.1		1	1	
+W0229	TU	T3.1		1	1	
+W0230	HN	H1.1		1	1	
+W0231	KHI	K1.1		1	1	
+W0232	NHIET	N4.4		2	0	đọc đồ thị nhiệt độ thời gian; giữa N4.4 và N1.2
+W0233	HN	H4.4		3	1	
+W0234	TU	T2.2		2	1	
+W0235	HN	H2.3		1	1	
+W0236	KHI	K2.4		1	1	
+W0237	TU	T3.2		2	1	
+W0238	KHI	K4.2		1	1	
+W0239	HN	H3.3		2	1	
+W0240	NHIET	N2.2		1	1	
+W0241	TU	T2.4		3	1	
+W0242	TU	T5.1		1	1	
+W0243	NHIET	N4.3		1	1	
+W0244	NHIET	N4.2		1	1	
+W0245	TU	T3.5		1	1	
+W0246	NHIET	N4.6		3	0	laze khoan thép, hiệu suất; giữa N4.6 và N4.4
+W0247	KHI	K4.2		2	1	
+W0248	HN	H4.5		3	1	
+W0249	TU	T3.1		2	1	
+W0250	TU	T3.3		4	1	
+W0251	HN	H3.3		2	1	
+W0252	TU	T4.2		1	1	
+W0253	TU	T5.2		1	0	tia X trong y tế; thang sóng điện từ
+W0254	KHI	K4.2		1	1	
+W0255	NHIET	N2.2		1	1	
+W0256	KHI	K3.1		2	1	
+W0257	TU	T4.4		2	1	
+W0258	HN	H4.2		2	1	
+W0259	HN	H3.3		2	1	
+W0260	NHIET	N3.2		1	1	
+W0261	HN	H4.3		2	1	
+W0262	TU	T5.2		2	1	
+W0263	NHIET	N4.2		2	1	
+W0264	TU	T2.5		1	1	
+W0265	TU	T2.2		1	1	
+W0266	TU	T3.1		2	1	
+W0267	TU	T1.1		1	1	
+W0268	HN	H4.3		2	0	nhiều ý gamma, chu kì bán rã; giữa H4.3 và H4.6
+W0269	TU	T3.2		2	1	
+W0270	KHI	K3.1		3	1	
+W0271	HN	H4.5		3	1	
+W0272	TU	T3.4		2	1	
+W0273	TU	T5.2		1	1	
+W0274	HN	H2.2		2	1	
+W0275	NHIET	N4.5		3	1	
+W0276	KHI	K1.1		1	1	
+W0277	NHIET	N1.1		1	1	
+W0278	KHI	K3.1		1	0	thông số trạng thái khí
+W0279	NHIET	N3.3		1	1	
+W0280	NHIET	N4.2		2	1	
+W0281	KHI	K1.1		1	0	giữa K1.1 và K4.1

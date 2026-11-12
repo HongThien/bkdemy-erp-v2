@@ -1,0 +1,229 @@
+B2-0001	NHIET	N1.1.1		1	1	
+B2-0002	NHIET	N1.2.2		2	1	
+B2-0003	NHIET	N2.1.1		1	1	
+B2-0004	NHIET	N4.1.1		1	1	
+B2-0005	NHIET	N1.2.2		2	1	bỏng hơi nước do ẩn nhiệt ngưng tụ
+B2-0006	NHIET	N1.2.2		2	1	sôi do giảm áp suất
+B2-0007	NHIET	N2.1.1		2	1	khối khí bị nén nhận công làm nóng
+B2-0008	NHIET	N3.2.1		1	1	
+B2-0009	NHIET	N4.1.1		1	1	
+B2-0010	NHIET	N4.1.1		1	1	
+B2-0011	NHIET	N3.1.1		1	1	
+B2-0012	NHIET	N4.2.3		3	1	so sánh hai giai đoạn đun
+B2-0013	KHI	K1.1.1		1	1	
+B2-0014	NHIET	N1.2.1		1	1	
+B2-0015	NHIET	N1.2.2		2	1	
+B2-0016	KHI	K1.1.1		1	1	
+B2-0017	NHIET	N3.1.2		1	1	mốc thang Celsius
+B2-0018	NHIET	N2.2.1		1	1	
+B2-0019	NHIET	N2.2.2		3	0	mất dẫn; công ma sát đánh bóng làm nóng vật
+B2-0020	NHIET	N2.2.2		3	0	mất dẫn; tổng công ma sát chuyển thành nhiệt
+B2-0021	NHIET	N4.3.1		3	0	mất dẫn; tính c vật liệu B có lẽ qua cân bằng nhiệt
+B2-0022	NHIET	N4.3.1		3	0	mất dẫn; tính c vật liệu A
+B2-0023	NHIET	N4.3.1		4	0	mất dẫn; đá granit toả nhiệt đun sôi nước
+B2-0024	NHIET	N4.2.3		3	0	mất dẫn; làm nóng rồi hoá hơi nước
+B2-0025	KHI	K4.2.1		2	1	0°C vẫn có động năng phân tử
+B2-0026	NHIET	N2.1.1		1	1	
+B2-0027	NHIET	N4.4.1		2	1	mục đích mở nắp bình trong thí nghiệm
+B2-0028	NHIET	N1.2.2		1	1	
+B2-0029	NHIET	N4.2.1		2	1	
+B2-0030	NHIET	N3.1.1		1	1	
+B2-0031	NHIET	N2.2.1		1	1	
+B2-0032	NHIET	NEW	Giải thích cảm giác nóng lạnh do tính dẫn nhiệt của vật liệu	2	1	gần N3.1.1 nhưng hỏi tính dẫn nhiệt, cây chưa có dạng dẫn nhiệt
+B2-0033	NHIET	N4.1.1		2	1	vì sao nước dùng làm mát: c lớn
+B2-0034	NHIET	N1.2.1		1	1	nước đang sôi nhiệt độ không đổi
+B2-0035	NHIET	N1.2.2		2	1	
+B2-0036	NHIET	N1.1.1		1	1	
+B2-0037	NHIET	N4.3.1		3	1	so sánh nhiệt độ cân bằng, không tính số
+B2-0038	NHIET	N2.1.1		2	1	bơm xe: công làm tăng nội năng
+B2-0039	NHIET	N1.2.1		1	1	
+B2-0040	NHIET	N4.4.1		1	1	
+B2-0041	NHIET	N1.2.1		1	1	
+B2-0042	NHIET	N2.2.3		3	1	A=pΔV rồi ΔU=Q-A
+B2-0043	NHIET	N4.2.1		3	1	tỉ số theo Q=mcΔt
+B2-0044	NHIET	N4.3.1		3	1	có hơi ngưng tụ Lm
+B2-0045	NHIET	N4.3.2		3	1	
+B2-0046	NHIET	N2.2.2		4	1	cơ năng hao thành nhiệt phanh, cần cơ học trước; bước quyết định Q=mcΔt
+B2-0047	NHIET	N4.3.1		3	1	
+B2-0048	NHIET	N4.2.2		2	1	
+B2-0049	NHIET	N1.2.1		1	1	
+B2-0050	TU	T3.3.1		1	1	
+B2-0051	KHI	K3.1.2		3	1	tính p từ khối lượng riêng ρ, M, T
+B2-0052	NHIET	N3.2.1		2	1	ΔT=Δt
+B2-0053	NHIET	N1.1.1		1	1	
+B2-0054	TU	NEW	Chuông điện: nam châm điện, tiếp điểm đóng ngắt	2	0	gần T2.2.1 nhưng là nam châm điện không phải lực từ lên dây
+B2-0055	TU	T1.1.1		1	1	
+B2-0056	TU	T3.2.1		2	1	
+B2-0057	TU	T3.3.1		1	1	
+B2-0058	NHIET	N2.1.1		1	1	
+B2-0059	KHI	K4.1.1		1	1	p theo mật độ và động năng TB
+B2-0060	TU	T2.1.3		2	1	
+B2-0061	TU	T3.1.2		2	1	
+B2-0062	KHI	K2.1.5		2	1	
+B2-0063	NHIET	N4.1.1		1	1	
+B2-0064	KHI	K2.1.1		1	1	
+B2-0065	TU	T4.2.1		1	1	công thức bị mất; đọc i(t)
+B2-0066	NHIET	N4.3.2		3	1	
+B2-0067	KHI	NEW	Khinh khí cầu: lực đẩy Archimedes cân bằng trọng lượng, ρ khí theo T	4	1	gần K3.2.2 nhưng cần lực đẩy Archimedes và ρ∝1/T
+B2-0068	KHI	K3.2.1		4	1	chuông lặn: đẳng nhiệt + áp suất thuỷ tĩnh
+B2-0069	NHIET	N2.2.2		2	1	
+B2-0070	TU	T3.1.2		2	0	Φmax=NBS với khung quay; có thể coi T4.1.1
+B2-0071	TU	T4.1.1		3	1	E hiệu dụng khung quay
+B2-0072	NHIET	N4.1.1		1	1	
+B2-0073	NHIET	N1.1.1		1	1	
+B2-0074	NHIET	N4.1.1		1	1	
+B2-0075	KHI	K3.1.2		1	1	ý nghĩa n trong pV=nRT
+B2-0076	KHI	K1.1.1		1	1	
+B2-0077	NHIET	N4.2.3		3	1	đá 0°C thành nước nhiều giai đoạn
+B2-0078	NHIET	N2.1.1		1	1	
+B2-0079	KHI	K4.2.1		2	1	
+B2-0080	NHIET	N4.1.1		1	1	chọn công thức Q=mcΔt
+B2-0081	KHI	K3.1.1		3	1	
+B2-0082	KHI	K2.1.2		2	1	
+B2-0083	NHIET	N4.2.1		2	1	
+B2-0084	NHIET	N2.2.1		1	1	
+B2-0085	NHIET	N3.1.2		1	1	mốc thang Celsius
+B2-0086	KHI	K4.1.1		1	1	
+B2-0087	KHI	K2.1.1		1	1	
+B2-0088	NHIET	N1.2.1		1	1	
+B2-0089	KHI	K3.1.1		2	1	
+B2-0090	NHIET	N2.2.2		2	1	
+B2-0091	KHI	K3.1.2		3	1	pV=nRT rồi N=nN_A (K3.1.3)
+B2-0092	KHI	K4.2.2		3	1	v căn quân phương
+B2-0093	NHIET	N4.2.3		3	0	có thể chỉ hoá hơi (N4.2.2) tuỳ nhiệt độ đầu
+B2-0094	KHI	K3.1.1		3	1	
+B2-0095	KHI	K2.1.5		3	1	
+B2-0096	KHI	K2.1.5		2	1	
+B2-0097	NHIET	N3.2.1		1	1	
+B2-0098	TU	T3.1.1		2	1	so sánh từ thông các hình
+B2-0099	KHI	K4.2.1		1	1	
+B2-0100	NHIET	N4.1.1		1	1	
+B2-0101	KHI	K4.2.1		2	1	
+B2-0102	NHIET	N1.2.1		1	1	
+B2-0103	TU	T5.1.1		1	1	
+B2-0104	TU	T4.3.1		1	1	
+B2-0105	TU	T4.3.1		2	1	nhìn sơ đồ chọn MBA tăng áp
+B2-0106	NHIET	N2.2.2		2	1	
+B2-0107	NHIET	N4.2.2		2	1	
+B2-0108	KHI	K2.1.3		3	1	
+B2-0109	KHI	K3.2.1		2	1	bong bóng nổi lên đẳng nhiệt
+B2-0110	TU	T3.2.1		2	1	
+B2-0111	TU	T1.1.1		2	1	
+B2-0112	TU	NEW	Tính cảm ứng từ dòng thẳng dài theo công thức cho sẵn B tỉ lệ I/r	2	1	gần T1.1.2 nhưng là tính độ lớn B, cây không có dạng này
+B2-0113	TU	T2.1.1		2	1	
+B2-0114	NHIET	N4.2.2		2	1	
+B2-0115	TU	T2.1.3		3	1	
+B2-0116	KHI	K3.2.2		3	1	khối lượng khí giảm khi dùng
+B2-0117	TU	T3.1.2		2	1	
+B2-0118	TU	T3.2.2		3	1	
+B2-0119	TU	T3.2.2		3	1	công suất toả nhiệt vòng dây
+B2-0120	TU	T1.1.1		1	1	
+B2-0121	KHI	K1.1.1		1	1	nguyên nhân gây áp suất
+B2-0122	KHI	K2.1.5		2	1	
+B2-0123	TU	T3.1.1		1	1	
+B2-0124	KHI	K3.1.2		1	1	
+B2-0125	TU	T3.1.1		2	1	lời giải dính rác câu khác
+B2-0126	TU	T2.1.3		2	1	
+B2-0127	KHI	K2.1.1		1	1	
+B2-0128	KHI	K2.1.1		1	1	
+B2-0129	KHI	K2.1.1		2	1	
+B2-0130	NHIET	N4.1.1		1	1	
+B2-0131	NHIET	N2.2.1		1	1	
+B2-0132	NHIET	N2.1.1		1	1	
+B2-0133	NHIET	N1.2.1		1	1	
+B2-0134	NHIET	N1.1.1		1	1	
+B2-0135	NHIET	N3.1.2		1	1	
+B2-0136	KHI	K2.1.3		2	1	
+B2-0137	NHIET	N4.2.1		2	1	so sánh Δt khi cùng Q
+B2-0138	KHI	K3.2.2		3	1	bơm nhiều lần
+B2-0139	KHI	K2.1.3		3	1	
+B2-0140	KHI	K3.1.2		3	1	pV=nRT với n,T,V đổi
+B2-0141	KHI	K4.2.2		3	1	
+B2-0142	TU	T2.1.3		3	1	
+B2-0143	TU	T3.2.2		3	1	
+B2-0144	NHIET	N1.2.1		1	1	
+B2-0145	HN	H2.1.2		2	1	
+B2-0146	NHIET	N4.1.1		1	1	
+B2-0147	KHI	K4.2.1		2	0	cũng có thể coi K1.1.1/K2.1.4
+B2-0148	KHI	K2.1.2		2	1	
+B2-0149	HN	H1.1.2		1	1	
+B2-0150	TU	T1.1.1		1	1	
+B2-0151	NHIET	N2.1.1		2	1	
+B2-0152	NHIET	N4.1.1		1	1	
+B2-0153	TU	T3.2.1		1	1	
+B2-0154	TU	T4.2.1		1	1	
+B2-0155	KHI	K3.1.2		1	1	
+B2-0156	TU	T5.1.1		1	1	
+B2-0157	KHI	K3.1.2		1	0	hệ thức R,N_A,k
+B2-0158	TU	T2.1.1		2	1	chiều dòng ngược chiều electron
+B2-0159	HN	H2.1.1		1	1	
+B2-0160	KHI	K3.1.1		2	1	
+B2-0161	TU	T4.1.1		3	0	câu hỏi bị cắt
+B2-0162	TU	T4.1.1		3	1	
+B2-0163	HN	H3.2.2		4	1	còn nhiệt làm nóng nước Q=mcΔt
+B2-0164	NHIET	N4.3.1		3	1	
+B2-0165	KHI	K3.1.2		3	0	câu hỏi bị cắt; bình helium
+B2-0166	KHI	K3.1.2		3	1	
+B2-0167	NHIET	N4.1.1		2	1	c nhỏ thì nóng nhanh
+B2-0168	NHIET	N4.1.1		1	1	
+B2-0169	NHIET	N2.2.1		1	1	
+B2-0170	NHIET	N4.4.1		2	1	thứ tự thao tác thí nghiệm
+B2-0171	KHI	K3.1.1		1	1	
+B2-0172	NHIET	N3.2.1		3	1	đổi giữa hai thang qua đồ thị
+B2-0173	KHI	K3.2.1		2	1	
+B2-0174	KHI	NEW	Thí nghiệm định luật chất khí: nhận biết thiết bị đo	1	1	gần K2.1.3 nhưng là thí nghiệm
+B2-0175	NHIET	N1.2.1		1	1	
+B2-0176	TU	T3.2.2		3	1	công suất toả nhiệt ống dây B tăng đều
+B2-0177	TU	T1.1.1		1	1	
+B2-0178	O	O	Tĩnh điện: dây xích xe xăng truyền điện tích xuống đất	1	1	
+B2-0179	NHIET	N1.1.1		1	1	
+B2-0180	KHI	K3.2.1		3	1	lốp đẳng tích p1/T1=p2/T2
+B2-0181	TU	T2.1.1		3	0	cần chiều B của dòng thẳng (nắm tay phải) rồi bàn tay trái
+B2-0182	KHI	K2.1.5		1	1	
+B2-0183	KHI	K4.1.1		1	0	định nghĩa trung bình bình phương tốc độ
+B2-0184	KHI	K3.1.2		3	0	hai phòng cùng p khác T; n=p/kT
+B2-0185	NHIET	N4.3.1		3	1	pha nước sôi với nước lạnh
+B2-0186	NHIET	N4.2.3		3	1	nhiều giai đoạn rồi P=Q/t
+B2-0187	KHI	K2.1.5		2	1	
+B2-0188	KHI	K2.1.3		2	1	
+B2-0189	KHI	K2.1.4		4	1	đẳng tích kèm cân bằng lực lò xo
+B2-0190	TU	T2.1.3		2	1	
+B2-0191	O	O	Điện trường: E=F/q	1	1	Lý 11
+B2-0192	NHIET	N1.1.1		2	0	giải thích xẹp lốp qua khoảng cách phân tử
+B2-0193	NHIET	N1.1.1		1	1	
+B2-0194	NHIET	N1.1.1		1	1	
+B2-0195	KHI	K3.2.1		2	0	nén khí từ từ, áp suất tăng
+B2-0196	O	O	Dao động cơ: biên độ từ chiều dài quỹ đạo	1	1	
+B2-0197	NHIET	N1.2.2		3	1	nhiệt độ sôi giảm theo độ cao
+B2-0198	NHIET	N1.2.1		2	0	nước đông đặc nở thể tích làm vỡ ống
+B2-0199	NHIET	N3.1.1		1	1	
+B2-0200	O	O	Điện: ý nghĩa dung lượng acquy Ah	1	1	
+B2-0201	NHIET	N3.2.1		2	1	
+B2-0202	NHIET	N2.2.2		3	1	va chạm mềm cơ năng thành nội năng
+B2-0203	NHIET	N2.1.1		2	0	truyền nhiệt viên đá và nước; cũng N3.1.1
+B2-0204	NHIET	N2.2.2		2	1	
+B2-0205	KHI	K2.1.1		1	1	
+B2-0206	O	O	Cơ học: động năng thế năng vật rơi	1	1	
+B2-0207	O	O	Sóng âm: dải tần tai người nghe	1	1	
+B2-0208	O	O	Định luật II Newton	1	1	
+B2-0209	NHIET	N2.2.3		3	0	câu hỏi bị cắt
+B2-0210	NHIET	N2.2.3		3	1	A=pΔV
+B2-0211	NHIET	N4.3.1		3	0	câu hỏi bị cắt; trà nóng thêm đá
+B2-0212	NHIET	N4.2.1		2	1	
+B2-0213	KHI	K3.2.1		3	1	ống thuỷ ngân đẳng nhiệt
+B2-0214	KHI	K3.1.3		2	1	
+B2-0215	NHIET	N1.2.1		1	1	
+B2-0216	TU	T5.1.2		1	0	biển báo tia tử ngoại; có thể coi O
+B2-0217	NHIET	N1.2.2		2	0	cooling pad bay hơi làm mát
+B2-0218	TU	T2.2.1		1	0	động cơ điện: điện năng thành cơ năng
+B2-0219	NHIET	N1.2.2		2	0	bay hơi làm mát không khí
+B2-0220	TU	T5.1.2		2	1	
+B2-0221	KHI	K3.2.2		3	1	bơm bóng lần đầu
+B2-0222	KHI	K2.1.3		1	1	
+B2-0223	KHI	K3.1.2		1	1	
+B2-0224	O	O	Sóng cơ: chu kì từ hình hai thời điểm	2	1	
+B2-0225	O	O	Sóng cơ: bước sóng từ hình	2	1	
+B2-0226	O	O	Sóng cơ: chiều chuyển động phần tử dây	2	1	
+B2-0227	NHIET	N4.2.1		2	1	đọc c từ bảng
+B2-0228	NHIET	N4.2.1		2	1	so sánh Δt theo c
+B2-0229	O	O	Tĩnh điện sinh học: điện trường quanh ong	1	1	
