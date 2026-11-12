@@ -142,7 +142,7 @@ export async function getDangTen(maDangs: string[], mon?: string): Promise<Recor
   // có dang_chinh 'T309…' nằm ở hgt_ban_do — chỉ tra dai_ban_do thì header MT + popup chuông hiện mã trần (09/09).
   const tbls = mon
     ? [...new Set([khoCuaMon(mon).banDoTbl, ...nhanhCuaMon(mon).map((n) => khoCuaMon(mon, n.ma).banDoTbl)])]
-    : ['dai_ban_do', 'khtn_ban_do', 'hgt_ban_do']
+    : ['dai_ban_do', 'khtn_ban_do', 'lyhoa_ban_do', 'hgt_ban_do']
   // Dạng bài BẢN ĐỒ MỚI (mã 'NDB…', K6–12 — PLAN-mastery-ban-do-moi.md): cùng luật nhánh của DB (_kho_nhanh_cua_dang: NDB ⇒ 'bdm' ⇒ bdm_ban_do).
   if (uniq.some((m) => m.startsWith('NDB')) && !tbls.includes('bdm_ban_do')) tbls.push('bdm_ban_do')
   for (const tbl of tbls) {

@@ -8578,7 +8578,15 @@ UNION ALL
     c.ten,
     c.thu_tu,
     'khtn'::text AS nhanh
-   FROM khtn_bdm_chu_de c;
+   FROM khtn_bdm_chu_de c
+UNION ALL
+ SELECT 'Lý hóa'::text AS mon,
+    c.id,
+    c.khoi,
+    c.ten,
+    c.thu_tu,
+    'lyhoa'::text AS nhanh
+   FROM lyhoa_bdm_chu_de c;
 ```
 
 ### tl_bdm_chuyen_de_v
@@ -8598,7 +8606,12 @@ UNION ALL
  SELECT 'KHTN'::text AS mon,
     c.id,
     c.ten
-   FROM khtn_bdm_chuyen_de c;
+   FROM khtn_bdm_chuyen_de c
+UNION ALL
+ SELECT 'Lý hóa'::text AS mon,
+    c.id,
+    c.ten
+   FROM lyhoa_bdm_chuyen_de c;
 ```
 
 ### tl_bdm_dang_bai_v
@@ -8639,7 +8652,19 @@ UNION ALL
     d.vi_du,
     d.vi_du_file_url,
     d.thu_tu
-   FROM khtn_bdm_dang_bai d;
+   FROM khtn_bdm_dang_bai d
+UNION ALL
+ SELECT 'Lý hóa'::text AS mon,
+    d.id,
+    d.nhom_id,
+    d.ten,
+    d.mo_ta,
+    d.ly_thuyet,
+    d.ly_thuyet_file_url,
+    d.vi_du,
+    d.vi_du_file_url,
+    d.thu_tu
+   FROM lyhoa_bdm_dang_bai d;
 ```
 
 ### tl_bdm_nhom_v
@@ -8677,7 +8702,18 @@ UNION ALL
     n.ly_thuyet,
     n.ly_thuyet_file_url,
     n.thu_tu
-   FROM khtn_bdm_nhom n;
+   FROM khtn_bdm_nhom n
+UNION ALL
+ SELECT 'Lý hóa'::text AS mon,
+    n.id,
+    n.chu_de_id,
+    n.chuyen_de_id,
+    n.ten,
+    n.mo_ta,
+    n.ly_thuyet,
+    n.ly_thuyet_file_url,
+    n.thu_tu
+   FROM lyhoa_bdm_nhom n;
 ```
 
 ### tl_bdm_o_v
@@ -8700,7 +8736,13 @@ UNION ALL
     o.chu_de_id,
     o.chuyen_de_id,
     o.thu_tu
-   FROM khtn_bdm_o o;
+   FROM khtn_bdm_o o
+UNION ALL
+ SELECT 'Lý hóa'::text AS mon,
+    o.chu_de_id,
+    o.chuyen_de_id,
+    o.thu_tu
+   FROM lyhoa_bdm_o o;
 ```
 
 ### v_btvn_ai_hang_doi
@@ -8761,20 +8803,21 @@ SELECT n.hoc_sinh_id,
     sp.problem_no,
     sp.ma_dang,
     sp.ma_cau,
-    COALESCE(d.loai_cau, kk.loai_cau) AS loai_cau,
-    COALESCE(d.noi_dung, kk.noi_dung) AS de_bai,
-    COALESCE(d.lua_chon, kk.lua_chon) AS lua_chon,
-    COALESCE(d.menh_de, kk.menh_de) AS menh_de,
-    COALESCE(d.dap_an, kk.dap_an) AS dap_an,
-    COALESCE(d.loi_giai, kk.loi_giai) AS loi_giai,
-    COALESCE(d.anh_de, kk.anh_de) AS anh_de,
-    COALESCE(d.anh_dap_an, kk.anh_dap_an) AS anh_dap_an
+    COALESCE(d.loai_cau, kk.loai_cau, lh.loai_cau) AS loai_cau,
+    COALESCE(d.noi_dung, kk.noi_dung, lh.noi_dung) AS de_bai,
+    COALESCE(d.lua_chon, kk.lua_chon, lh.lua_chon) AS lua_chon,
+    COALESCE(d.menh_de, kk.menh_de, lh.menh_de) AS menh_de,
+    COALESCE(d.dap_an, kk.dap_an, lh.dap_an) AS dap_an,
+    COALESCE(d.loi_giai, kk.loi_giai, lh.loi_giai) AS loi_giai,
+    COALESCE(d.anh_de, kk.anh_de, lh.anh_de) AS anh_de,
+    COALESCE(d.anh_dap_an, kk.anh_dap_an, lh.anh_dap_an) AS anh_dap_an
    FROM btvn_nop n
      JOIN buoi_hoc b ON b.id = n.buoi_hoc_id
      LEFT JOIN lop l ON l.id = b.lop_id
      JOIN gami_session_problems sp ON sp.buoi_hoc_id = n.buoi_hoc_id AND sp.phase = 'btvn'::text AND sp.ma_cau IS NOT NULL
      LEFT JOIN dai_cau_hoi d ON l.mon = 'Toán'::text AND d.ma_cau = sp.ma_cau
      LEFT JOIN khtn_cau_hoi kk ON l.mon = 'KHTN'::text AND kk.ma_cau = sp.ma_cau
+     LEFT JOIN lyhoa_cau_hoi lh ON l.mon = 'Lý hóa'::text AND lh.ma_cau = sp.ma_cau
   WHERE n.tra_at IS NOT NULL;
 ```
 

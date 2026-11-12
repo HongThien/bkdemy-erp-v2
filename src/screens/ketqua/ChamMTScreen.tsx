@@ -18,8 +18,8 @@ import type { TaiLieu } from '../../lib/tailieu'
 import { laMaHinh, MT_DIEM_OPTS } from '../../lib/tailieu'
 import type { MTPhanCaus } from '../../lib/mt'
 import BangChuyenDeView from './BangChuyenDeView'
+import { MON_CO_KHO } from '../../lib/mon'
 
-const MON_CO_KHO = ['Toán', 'KHTN']
 // che: 'mt' = MT theo lớp (đề gán vào buổi của lớp) · 'ks' = KHẢO SÁT CHUNG (Thùy 23/10: thi chung cả khối, không theo lớp).
 type Che = 'mt' | 'ks'
 const NHO: { che: Che; mon: string; lopId: string | null; buoiId: string | null; hsId: string | null; lopLoc: string | null } = { che: 'mt', mon: 'Toán', lopId: null, buoiId: null, hsId: null, lopLoc: null }

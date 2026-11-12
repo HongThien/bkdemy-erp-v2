@@ -320,7 +320,7 @@ export function DeThiSoan({ id, onClose, tuKho }: { id: string; onClose: () => v
   // "✎ Cần sửa" (Thùy 17/10): nhận xét cho từng CÂU (không rút khỏi đề — đề giữ cấu trúc) và cho CẢ ĐỀ
   const nxCau = useNhanXet('cau')
   const nxDe = useNhanXet('de_thi')
-  const monDe: MonNX = d?.mon === 'KHTN' ? 'khtn' : d?.mon === 'Tiếng Anh' ? 'anh' : d?.mon === 'TSA' ? 'tsa' : 'toan'
+  const monDe: MonNX = d?.mon === 'KHTN' ? 'khtn' : d?.mon === 'Lý hóa' ? 'lyhoa' : d?.mon === 'Tiếng Anh' ? 'anh' : d?.mon === 'TSA' ? 'tsa' : 'toan'
 
   // Tải lại CẤU TRÚC (phần + câu) ở nền — giữ nguyên danh sách đang hiện tới khi có bản mới.
   async function taiCau(deMon: string) {

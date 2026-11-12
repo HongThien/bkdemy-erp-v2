@@ -1,6 +1,6 @@
 // Data-layer "Làm tài liệu" (giáo trình…). Tài liệu = THAM CHIẾU vào kho; resolver kéo nội dung sống khi render.
 import { supabase } from './supabase'
-import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, khoiChayBanDoMoi, type CauHoi, type MapRow } from './kho/api'
+import { cumKey, listCauByDang, listDaiMap, listKhtnMap, listLyhoaMap, listHgtMap, listAnhMap, listTsaMap, listBdmMap, khoiChayBanDoMoi, type CauHoi, type MapRow } from './kho/api'
 import { listHinhHocMap } from './kho/hinhhoc'
 import { laMaLop, bangLopCuaMa } from './kho/khoTrenLop'
 
@@ -15,6 +15,8 @@ const LIMIT = 10000
 export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; nguLieuTbl: string | null; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', nguLieuTbl: null, listMap: listKhtnMap }
+    : mon === 'Lý hóa'
+    ? { cauTbl: 'lyhoa_cau_hoi', banDoTbl: 'lyhoa_ban_do', ltDangTbl: 'lyhoa_dang_ly_thuyet', ltCdTbl: 'lyhoa_chuyen_de_ly_thuyet', formTnTbl: 'lyhoa_cau_form_tn', nguLieuTbl: null, listMap: listLyhoaMap }
     // Tiếng Anh (kho từ 02/10): KHÔNG có lý thuyết cấp chuyên đề, KHÔNG có form TN (câu vốn là trắc nghiệm) ⇒ ltCdTbl/formTnTbl
     // trỏ tên theo quy ước (bảng chưa có — gọi tới thì PostgREST báo to, không im lặng rơi về Toán như trước).
     // TSA = Toán độc lập (02/10): cùng khuôn KHTN/Đại, bảng tsa_*. (Bảng form TN/điền chưa có — gọi tới thì PostgREST báo to.)

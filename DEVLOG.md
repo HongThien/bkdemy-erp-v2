@@ -79875,3 +79875,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Dò:** RLS bảng hinh_* mở cho la_thanh_vien; TK Toán 7 (Cường) gọi fn_hl_tao_mo_hinh trong rollback ⇒ OK; cổng fn_phien_hinh_goi cho mọi fn_hl_*/fn_hh_*. DB KHÔNG chặn.
 - **Gốc thật:** phiên Toán 7 (mở 06/11) treo 07/11 + 09/11 "chưa có lệnh Hình, chờ Thùy mở" vì bot tự kiểm bằng `tro-giup` (chỉ in từ dòng "Cách dùng" ⇒ GIẤU khối lệnh Hình/kho/ảnh/vẽ ở đầu file) và `xem` (chủ đề vùng hinh chỉ in tên).
 - **Sửa (scripts/phien, không DB):** tro-giup in từ dòng HÌNH (đủ lệnh) · `xem` in thêm PHẦN HÌNH (bài Hình–Học gọn 1 dòng/bài + mô hình Hình–Luyện kèm id + cách mở) · loai/ban_do.md thêm hàm nhóm bài/nhãn + cảnh báo "đừng kết luận chưa có lệnh từ grep" · MOI.md thêm dòng 2026-11-12 15:45 ⇒ phiên mở trước đó được chèn "CÔNG CỤ ĐÃ BẬT" mỗi lượt. Bot nạp ban-do.mjs mỗi lần gọi ⇒ không cần khởi động lại.
+
+## 12/11 — Môn Lý hóa ĐỢT 3: tài liệu/giáo trình/ET · MT · BTVN · mastery & dashboard · báo cáo kỳ
+- **File SQL Editor đợt 2 (202611121512) KIỂM LẠI LÚC 15:3x: CHƯA vào DB** (`fn_kho_sua_tk` + CHECK `kho_sua_log` vẫn bản cũ) dù Thùy báo đã dán — chưa ghi sổ, đã báo Thùy.
+- `scripts/_gen_mig_ly_hoa_dot3.mjs` (đọc DB, chỉ CHÈN nhánh Lý hóa cạnh KHTN): `_do_o_quy` · `_dbht_cau` (CTE `lk`) · `_tl_bdm_cau_vi_tri(khoi, mon)` · `fn_tl_bdm_et_vi_tri` · `fn_tl_bdm_cay_chon` · `fn_tl_bdm_et_ma_de` · 5 view `tl_bdm_*_v` · `fn_mt_bang_ket_qua` · `fn_bc_ky_tinh` · `_btvn_app_tu_dong` · `fn_btvn_ai_du_lieu` · view `v_btvn_dap_an` · `_dtv_giay_thap`.
+- **Bẫy:** thân hàm áp từ file Windows mang CRLF ⇒ so chuỗi `\n` trượt — script chuẩn hoá trước khi vá.
+- Kiểm trước khi áp: số dòng 6 view y nguyên; `_dbht_cau` 4 em KHTN (1128 dòng) + Toán (902) md5 trùng khớp trước/sau. **ĐÃ ÁP** mig 202611121535.
+- App: `MON_CO_KHO` (lib/mon.ts) thay 6 chỗ tự gõ ['Toán','KHTN'] (MT, Tài liệu, Kết quả ×2, Chấm MT, Report PH); `khoCuaMon` + ET bản đồ mới + Kho đề thi + giáo trình bản đồ mới (`taiLieu` bật) có Lý hóa; Lịch phòng bổ trợ có Lý hóa. Mở thử Kết quả học tập › Lý hóa: hiện, 0 lỗi.

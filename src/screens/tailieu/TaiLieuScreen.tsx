@@ -6,11 +6,12 @@ import { useMonScope } from '../../hooks/useMonScope'
 import { usePagedList } from '../../hooks/usePagedList'
 import { Shell, Field, inp } from '../kho/ui'
 import TaiLieuBuilder, { CanhBaoGiaoTrinhMoi } from './TaiLieuBuilder'
+import { MON_CO_KHO } from '../../lib/mon'
 
 const PAGE = 20 // "20 tài liệu gần nhất" (Thùy 09-10) — xem usePagedList
 
 // Môn CÓ KHO (soạn tài liệu được). Anh/Văn chưa có kho.
-const KHO_MON = ['Toán', 'KHTN']
+const KHO_MON = MON_CO_KHO
 
 // Ngày giờ VN (CLAUDE.md §2: không toISOString) — hiển thị "dd/mm/yyyy".
 function fmtNgay(iso?: string): string {

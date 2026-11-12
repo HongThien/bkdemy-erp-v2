@@ -12,8 +12,8 @@ import { tenHienThiDs } from '../../lib/hoten'
 import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
 import { NutThangNhanXet } from './ThangNhanXet'
 import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, nghiLechBcKy, type BcKyTT } from '../../lib/baoCaoKy'
+import { MON_CO_KHO } from '../../lib/mon'
 
-const MON_CO_KHO = ['Toán', 'KHTN']
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 const NOP_LABEL: Record<string, string> = { nop_dung_han: 'Đúng hạn', nop_muon: 'Nộp muộn', xin_phep: 'Xin phép', khong_lam: 'Không làm' }

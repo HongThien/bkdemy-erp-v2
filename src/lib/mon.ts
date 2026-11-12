@@ -9,6 +9,8 @@ export const MON_APP_HS = ['Toán', 'KHTN', 'Tiếng Anh', 'TSA'] as const
 // Môn có nội dung là CHỮ THƯỜNG, không công thức (Thùy 02/10 mở luyện tập Anh): hiện bằng `TextAnh` thay `MathText` — MathText
 // tự in đậm từ VIẾT HOA, hiểu "$5" là công thức và hiện nguyên "<u>" (gạch chân là ĐỀ BÀI câu phát âm). Thêm môn = thêm vào đây.
 export const MON_CHU_THUONG: readonly string[] = ['Tiếng Anh']
+// Môn có KHO CÂU + bản đồ (soạn tài liệu/MT/ET, kết quả học tập, report PH) — trước 12/11 mỗi màn tự gõ ['Toán', 'KHTN'].
+export const MON_CO_KHO: readonly string[] = ['Toán', 'KHTN', 'Lý hóa']
 // Môn có "Luyện chứng minh" (điền ô — bài lấy từ nhánh hình học, `tu_luyen_dien_sinh`). Môn khác không hiện nút.
 export const MON_LUYEN_CHUNG_MINH: readonly string[] = ['Toán']
 // Team LIÊN-MÔN (thấy nội dung mọi môn) — dùng chung cho hook useMonScope (ERP) và các bundle không có useStore (tool giải bài).

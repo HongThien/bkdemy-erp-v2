@@ -39,8 +39,9 @@ import { useIsMobile } from '../../hooks/useIsMobile'
 import BoChonNhom from './bdm/BoChonNhom'
 import ChonCauBdm from './bdm/ChonCauBdm'
 import { cayChon, goiYDangBai, etViTri, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
+import { MON_CO_KHO } from '../../lib/mon'
 
-const MONS = ['Toán', 'KHTN']
+const MONS = MON_CO_KHO
 const DEFAULT_ROWS_PER_PHAN = 3
 // nhanh = NHÁNH KHO của hàng (null = nhánh mặc định của tài liệu). MT TRỘN nhánh (Thùy 21/08: "toggle chọn bản
 // đồ lúc chọn câu" — Đại số / Hình giải tích trong cùng 1 đề, không cứng theo phần) → mọi thao tác tra kho

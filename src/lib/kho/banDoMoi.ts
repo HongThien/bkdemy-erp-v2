@@ -14,12 +14,12 @@ export type BdmMon = 'Toán' | 'KHTN' | 'Lý hóa'
 // aiDuyet = luồng AI xếp câu (Duyệt kho · Đề xuất · Thiếu dạng · Chưa khớp · Đúng/Sai) · khoLop = kho trên lớp · mastery = công tắc mastery
 // chuaPhan = hiện "⚠ n câu chưa gán dạng bài · gán →" ở nhóm/chuyên đề (KHTN: câu không cụm sau chuyển 29/10)
 // chonQuaCay = chuyển câu sang dạng bài khác: chọn thẳng trên cây đang mở (Toán dùng DangPickerOne — nhiều khối, bản đồ cũ)
-// taiLieu = đã nối giáo trình / ET theo bản đồ mới (Lý hóa: CHƯA — đợt 3; DB fn_tl_bdm_* chưa có nhánh lyhoa ⇒ sẽ ra cây Toán)
+// taiLieu = đã nối giáo trình / ET theo bản đồ mới (DB fn_tl_bdm_* có nhánh của môn) — môn mới bật khi DB đã nối, không thì cây chọn ra Toán
 // nhanhTl = p_nhanh của cây chọn giáo trình / ET (fn_tl_bdm_cay_chon, mig 202611031655) cho vùng chính của môn
 export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string; taiLieu: boolean }> = {
   'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan', taiLieu: true },
   'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn', taiLieu: true },
-  'Lý hóa': { bang: 'lyhoa_bdm_', ham: 'fn_lyhoa_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'lyhoa', taiLieu: false },
+  'Lý hóa': { bang: 'lyhoa_bdm_', ham: 'fn_lyhoa_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'lyhoa', taiLieu: true },
 }
 export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
 // Bảng câu GỐC của môn (popup Kho › ✎ Sửa — Thùy 08/11). Toán có 2 nhánh (Đại · Hình giải tích), mã câu không trùng giữa 2 bảng.

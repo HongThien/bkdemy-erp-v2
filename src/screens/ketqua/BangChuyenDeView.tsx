@@ -4,8 +4,9 @@
 // lọc lớp + sắp xếp theo cột đang bấm (§2.0). Giai đoạn chuyển giao: CHUYÊN ĐỀ CŨ; xong bản đồ mới đổi nguồn ở hàm DB.
 import { useEffect, useState, type CSSProperties } from 'react'
 import { dsDeDaThi, bangChuyenDe, type DeDaThi, type BangCD, type BangCDCot, type BangCDHS } from '../../lib/chamMT'
+import { MON_CO_KHO } from '../../lib/mon'
 
-const MON = ['Toán', 'KHTN']
+const MON = MON_CO_KHO
 // Bề rộng cột (px): chuyên đề tối thiểu COT_MIN rồi giãn đều theo màn; các cột còn lại cố định.
 const COT_TEN = 190, COT_LOP = 60, COT_DIEM = 64, COT_HANG = 64, COT_MIN = 92
 // Rời tab quay lại = đúng chỗ cũ (CLAUDE §React).

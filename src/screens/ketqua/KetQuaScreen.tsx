@@ -14,9 +14,9 @@ import {
 import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
+import { MON_CO_KHO } from '../../lib/mon'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
-const MON_CO_KHO = ['Toán', 'KHTN']
 const DAYS = [30, 60, 90] as const
 
 const MUC = {
