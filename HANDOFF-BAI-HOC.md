@@ -6,6 +6,7 @@
 
 ## Mục lục (số dòng trong file này)
 
+- Bài học 10→12/11 — Lịch phòng một nguồn · Lịch khối · Chốt tuần (ngay dưới mục lục ②)
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
 - Bài học 03/11 — K9 đề cương / đề thi HK1 → Hình–Luyện + tiếp tuyến (ngay dưới mục lục ②)
 - Bài học 07/11 — Kinh tế nông trại (ngay dưới mục lục ②)
@@ -42,6 +43,16 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 10→12/11 — Lịch phòng một nguồn · Lịch khối · Chốt tuần
+
+- **Lịch gộp ở client = sót nguồn âm thầm.** `lichPhongNgay` cũ (4 truy vấn + join JS) không có ca bổ trợ, lịch khối, buổi Ôn thi/Hình/Nhẹ ⇒ Tổng quan phòng "trống" chỗ đang có người. Giờ mọi khối chiếm phòng ở `fn_phong_lich`; kiểm trùng đọc lại chính hàm đó.
+- **Đo trước khi tin dữ liệu:** 60/60 lịch trực đang chạy KHÔNG có phòng, 471 ca bổ trợ cũng không — tính năng "không trùng phòng" vô nghĩa cho tới khi người xếp gán phòng.
+- **Kiểm trùng phải bỏ qua chính nó và "con" của nó:** sửa lịch khối bỏ `lt-<id>-*` + ca nó sinh; sửa TKB bỏ `tkb-<id>-*` + buổi thường của chính lớp; tạo ca tay bỏ buổi lẻ của chính TA (ca sinh ra để chứa chúng). Thiếu ⇒ tự báo trùng với chính mình.
+- **Sửa dòng cũ chỉ để gán phòng thì đừng kiểm lại trùng người** — trùng đó có từ trước (dòng tách bậc 7S/7A cùng TA cùng giờ), chặn ⇒ không ai gán được phòng.
+- **Bản chụp để báo "đổi sau chốt" phải gồm cả hiệu lực** — lần đầu thiếu `hieu_luc_den` nên xoá lịch sau chốt không bị báo (bắt được nhờ thử rollback).
+- **Xoá đối tượng có FK lịch sử trỏ về:** chưa từng sinh con ⇒ delete; đã sinh ⇒ đóng hiệu lực tới hôm qua (mọi hàm đọc đều lọc hiệu lực — đã kiểm bằng `prosrc ~ 'hieu_luc'`).
+- **Push khi checkout chính lệch xa origin** (14 commit phiên khác chưa đẩy): cherry-pick đúng commit của mình vào 1 worktree tạm từ `origin/main`, push, kiểm `status -sb`, gỡ worktree ngay.
 
 ## Bài học 07/11 — Kinh tế nông trại
 - **Chỉnh nhịp xu = chỉnh NGUỒN EXP, không chỉnh trần.** Trần chạm sớm ⇒ EXP dồn mà không đổi được, HS thấy "hỏng". Đặt ngân sách EXP/tháng cho em giỏi nhất rồi chia cho từng nguồn; trần chỉ là lưới an toàn (Thùy 05/11 + 07/11).

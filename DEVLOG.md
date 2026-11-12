@@ -79928,3 +79928,7 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "file lớp 8 chọn câu mới vẫn bị 4 đáp án abcd". Gốc: _kho_snapshot_cau tự hiện form TN đã duyệt ⇒ câu TLN thành trắc nghiệm. Sửa: cờ giao dịch bk.snap_khong_form bật quanh vòng chụp ở fn_btnhe_luu_bai / fn_btnhe_in_test khi _btnhe_uu_tu_luan, tắt sau vòng; _kho_snapshot_cau giữ chữ ký, không cờ = như cũ.
 - Thử rollback 3 câu TLN có form (T108020702012…): K8 abcd→trả lời ngắn; K10 vẫn abcd. 13 bài test K8 16:43 chưa sửa, chờ Thùy.
 - (12/11 tối) File SQL Editor của lần tách đã vào DB (fn_kho_sua_tk + CHECK kho_sua_log có vatly/hoahoc, ACL không anon) ⇒ đã `--ghi-so`. DB: 0 hàm/ràng buộc/bảng còn dấu Lý hóa. **Vật lý + Hóa học: DB đủ.**
+
+## 12/11 — Lịch khối: Xoá thay Kết thúc + Chốt lịch tuần (Thùy)
+- mig `202611122233` (ĐÃ ÁP --only): `fn_lich_truc_xoa` (vướng ca có em ⇒ hỏi; chưa sinh ca ⇒ delete, đã sinh ⇒ hieu_luc_den = hôm qua vì ca cũ FK về) · bảng `lich_khoi_chot` (append, bản chụp) · `fn_lich_khoi_chot_tuan` · `fn_lich_khoi_chot_trang_thai` (so nội dung, có cả hiệu lực — lần đầu thiếu `den` nên xoá sau chốt không báo, đã sửa). Thử rollback: chốt tuần 09/11 sinh 3 · cập nhật 1 · huỷ 5 ca trống của lịch cũ; xoá vướng 1 ca 13/11 ⇒ hỏi ⇒ xác nhận huỷ 1 ca 1 buổi, hết trên lưới. App: 2 thẻ Tuần này/Tuần sau + popup vướng. CHƯA bấm chốt/xoá thật. Commit `8b43e92d`.
+- HANDOFF: mục ① "LỊCH PHÒNG MỘT NGUỒN…" + HANDOFF-BAI-HOC "Bài học 10→12/11".
