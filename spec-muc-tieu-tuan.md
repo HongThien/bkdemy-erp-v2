@@ -32,6 +32,7 @@
 | Q8 | **BTVN tính vào mastery** (không chỉ ET/MT như mặc định hiện nay) — đổi luật TOÀN HỆ, xem §5b. |
 | Q9 | **BTVN xếp chồng 3 buổi** (§5b): BTVN buổi N gồm dạng của buổi N, N-1, N-2; tổng số bài mỗi dạng không đổi. |
 | Q10 | **Dạng nợ đo lại TẠI TRUNG TÂM, sau giờ**, ngày kiểm tra báo trước trên bảng thứ Hai (§5c). Làm ở nhà = ôn, không tính điểm. |
+| Q12 | **Đơn vị ĐÁNH GIÁ = nhóm bài; đơn vị DẠY = dạng bài.** Mastery, tăng/giảm, nợ, kiểm tra sau giờ tính theo nhóm (`mastery_luu_san.cap = 'nhom'`); giáo trình và BTVN xếp chồng nói theo dạng. |
 | Q11 | Kiểm tra sau giờ rơi vào buổi nào của tuần: **chốt từng trường hợp theo lịch phòng**, không đặt luật cứng — và **chốt ngay trong ngày thứ Hai**, cùng lượt chốt lịch học + chốt bổ trợ (thứ Hai = ngày chốt mọi thứ). |
 
 Bảng này về bản chất là **dashboard của học sinh**: dữ liệu hiện nằm theo trục hành động (lớp làm ET, lớp nộp BTVN…),
@@ -109,7 +110,13 @@ mỗi dạng ghi đang ở lần BTVN thứ mấy trên 3 (hệ quả của BTVN
 Nợ đọc từ SỔ CHỐT TUẦN, không đọc từ mastery hiện tại (mastery chỉ nhìn 30 ngày ⇒ nợ không ai đo lại sẽ tự thành "chưa đo").
 **Dòng thông tin:** "sắp học" (quy ước 4).
 
-Mỗi dòng dạng hiện:
+**Dòng của bảng = NHÓM bài** (Q12); bên trong ghi các dạng của nhóm đó được dạy tuần này. Hệ quả:
+- 4 dạng của 2 buổi thường gom về ít nhóm hơn ⇒ bảng ngắn hơn.
+- Một nhóm có dạng dạy ở nhiều tuần ⇒ nhóm đó ở khối "Đang học" qua nhiều tuần; số của nhóm gồm cả lần đo các dạng dạy trước.
+- Nợ = nhóm chưa đạt; đề kiểm tra sau giờ lấy câu trong nhóm, ưu tiên dạng con đã sai.
+- Quy dạng → nhóm dùng đúng hàm đang chạy (`_do_o` / `_do_nhom_cua_o`), không viết bản thứ hai.
+
+Mỗi dòng hiện:
 - **Tên dạng bằng lời thường** (không phải mã) — "con làm được bài kiểu nào".
 - **Mức hiện tại** theo mastery đang chạy, kèm **số câu đã đo** (mới 3–4 câu thì % nhảy mạnh; không hiện số trần cho phụ huynh).
   Dạng chưa có lần đo nào = **"chưa đo"**, KHÔNG gộp vào yếu/0 (§5 CLAUDE.md).
@@ -222,7 +229,6 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 
 1. Luật GỢI Ý mặc định dạng trọng tâm khi nợ nhiều hơn sức chứa ca sau giờ (mới nhất / nền tảng nhất / yếu nhất?) — người vẫn sửa được ở buổi chốt (§3b), nên chỉ là thứ tự đề xuất.
 1b. Khối nào tới giờ phát mà CHƯA chốt: phát bản hệ đề xuất, hay giữ lại chờ duyệt?
-2. Đơn vị mục tiêu = **dạng** hay **nhóm dạng** (mastery nhiều chỗ đang đo theo nhóm).
 3. Ngưỡng chênh tối thiểu để gọi là "tăng"/"giảm" (§5).
 4. Hết vòng 3 buổi mà ở mức `can_luyen` (0,5–0,8): thành nợ, hay chỉ `yeu` (< 0,5) mới thành nợ?
 5. Tự luyện trên app có tính vào mastery không (hiện trạng chưa kiểm; quyết định "ôn ở nhà không tính" đang nghiêng về không).

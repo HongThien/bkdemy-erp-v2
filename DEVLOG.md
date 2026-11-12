@@ -79955,3 +79955,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:31 — Mục tiêu tuần: hạn chấm BTVN lớp cuối tuần
 - Thùy: lớp học thứ Bảy/Chủ nhật (cả ngày) ⇒ chấm xong trước buổi kế một ngày. Chưa rõ ca lớp học hai ngày liền nhau.
+
+## 12/11 23:38 — Mục tiêu tuần: đơn vị đánh giá = NHÓM bài, đơn vị dạy = DẠNG bài
+- Thùy chốt. Dòng của bảng = nhóm (mastery cap nhom), bên trong ghi dạng dạy tuần này; nợ và kiểm tra sau giờ theo nhóm. Spec Q12 + §4.
