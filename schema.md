@@ -4618,7 +4618,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | uuid |  | gen_random_uuid() | PK |  |
-| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `anh` · `tsa` |
+| mon | text |  |  |  | `dai` · `hgt` · `khtn` · `lyhoa` · `anh` · `tsa` |
 | ma_cau | text |  |  |  |  |
 | khau | text |  |  |  | `doc` · `menh_de` · `dap_so` · `loi_giai` · `cum` · `hinh` |
 | truong | text |  |  |  |  |

@@ -79889,3 +79889,10 @@ Thùy nêu 4 việc, làm được 3:
 - App: `MON_APP_HS` + màu đọc theo môn (skin/registry) + Đấu trường (`dautu/nguon`, giayThap 25 khớp DB) + enum trợ lý (`troly-tools.mjs`) + hướng dẫn phiên nhập kho. `check:style-hs` RỚT ở `CaBoTroHS.tsx` (3 màu gõ tay — có từ 17/10, không phải file đợt này).
 - **Chưa mở thử app HS**: chưa có lớp/HS Lý hóa thật để đăng nhập xem.
 - (12/11 tối) Thùy chạy lại đúng project ⇒ 202611121512 đã vào DB (fn_kho_sua_tk có lyhoa, ACL không anon; CHECK kho_sua_log có lyhoa) ⇒ đã `--ghi-so`. 3 lần trước không ăn: nhiều khả năng chạy ở project khác. **Lý hóa 4 đợt: DB đủ.**
+
+
+## 12/11 — Mastery 4T · 5T không tính tự luyện (mig 202611121657, CHƯA ÁP)
+- Thùy: mastery khối 4T 5T trên ERP giáo viên không tính tự luyện. Một chỗ quyết: cờ cap1 trong _mastery_luot_do_quy (3·4·4T·5·5T ⇒ 3·4·5); một công thức cho mọi màn. Đánh bẩn HS 4T/5T để cache chụp lại.
+- Sai rồi sửa: bản đầu chèn ghi chú -- giữa dòng ⇒ nuốt mất "from hoc_sinh…" cùng dòng ⇒ lỗi column id; đổi sang /* */.
+- Thử txn: 22 HS 4T/5T — ET+MT: 950 → 597 ô (353 ô chỉ có tự luyện thành chưa đo), 147 ô đổi mức, ô yếu 139 → 139; mọi nguồn: 964 → 624, 154 đổi mức. Khối 4 & 6: 0 thay đổi.
+- ĐÃ ÁP mig 202611121657 (Thùy 'cho áp và push'), npm run schema đã chạy. HS 4T/5T đã đánh bẩn ⇒ cron chụp lại trong ≤5 phút (đọc trong lúc chờ = tính trực tiếp theo luật mới).
