@@ -44,6 +44,11 @@ Ghi lý thuyết (`ghi_noi_dung`) và lệnh kho cũng dùng được ngay trong
   `fn_hl_doi_cha_gia_thiet` · `fn_hl_doi_neo` · `fn_hl_doi_thu_tu` · `fn_hl_chuyen_bai` · `fn_hl_gan_bai_mo_hinh` · `fn_hl_gan_y` · `fn_hl_duyet_bai{p_bai,p_duyet}` ·
   `fn_hl_bo_qua_bai` · `fn_hl_khoi_phuc_bai` · `fn_hl_xoa_mo_hinh{p_id}` (xem `fn_hl_mo_hinh_se_mat` trước) · `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` ·
   `fn_hh_cau_chuyen_dang{p_ma_cau,p_ma_bai,p_ca_ban_sao}` · `fn_hh_lop_them` · `fn_hh_lop_chep_tu_kho` · `fn_hh_lop_xep`.
+  **Nhóm bài / bài nhiều ý trong mô hình** (09/11 — vd MH.126): xem `fn_hl_nhom_bai_cua_cay{p_goc}` · thêm thành viên `fn_hl_thanh_vien_them{p_nhom,p_ten,p_gia_thiet,p_cho,p_hoi}` ·
+  `fn_hl_thanh_vien_chuyen` · `fn_hl_thanh_vien_cho_hoi` · sự kiện `fn_hl_su_kien_them{p_nhom,p_noi_dung}` / `fn_hl_su_kien_sua` · bật nhóm `fn_hl_nhom_bai_bat{p_nut,p_su_kien}`.
+  Nhãn/trọng điểm: `fn_hl_bai_nhan_dat` · `fn_hl_y_nhan_dat` · `fn_hl_trong_diem_dat{p_baitoan,p_bat}` · độ khó `fn_hl_bai_do_kho_dat`.
+  ⚠ (12/11) Lệnh Hình CÓ THẬT và đã chạy được từ 07/11 — `xem` in cả phần Hình (bài Hình–Học + mô hình Hình–Luyện kèm id), `tro-giup` in đủ lệnh.
+  Đừng kết luận "chưa có lệnh, chờ Thùy mở" từ việc grep — gọi thử `hinh` với hàm đọc trước.
   Cần biết hàm làm gì ⇒ grep tên hàm trong `supabase/migrations/` (đầu file có "VÌ SAO"). Mọi mã Hình đưa vào phải thuộc khối phiên (DB chặn).
   Luật vẽ/hình: `docs/luong-kho-kieu-1-hinh-hoc.md`, `spec-hinh-cay-nhanh.md` (cây nhánh: chỉ xuống/sang phải; giả thiết nối giả thiết).
 JSON để trong **dấu nháy đơn**. Mỗi lệnh ghi một thay đổi; nhiều thay đổi thì chạy nhiều lệnh.

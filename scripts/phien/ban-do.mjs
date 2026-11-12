@@ -175,7 +175,8 @@ function docStdin() {
 if (!lenh || lenh === 'tro-giup' || lenh === '--help') {
   // In đúng khối "Cách dùng" ở đầu file — một nguồn, không chép hướng dẫn hai nơi.
   const dong = readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n')
-  const tu = dong.findIndex((l) => l.includes('Cách dùng'))
+  // 12/11: in TỪ dòng HÌNH (đầu khối lệnh) — trước chỉ in từ "Cách dùng" nên lệnh Hình/kho/ảnh/vẽ bị giấu, phiên tưởng chưa có lệnh.
+  const tu = dong.findIndex((l) => l.startsWith('// HÌNH'))
   const den = dong.findIndex((l, i) => i > tu && l.startsWith('// ====='))
   console.log(dong.slice(tu, den).map((l) => l.replace(/^\/\/ ?/, '')).join('\n'))
   process.exit(0)
@@ -185,7 +186,22 @@ if (lenh === 'xem') {
   const { data, error } = await svc.rpc('fn_phien_bd_xem', { p_phien: PHIEN })
   if (error) loi(error.message)
   if (con.includes('--json')) console.log(JSON.stringify(data, null, 1))
-  else console.log(`Bản đồ ${data.mon} khối ${data.khoi}\n\n${inCay(data.cay)}`)
+  else {
+    console.log(`Bản đồ ${data.mon} khối ${data.khoi}\n\n${inCay(data.cay)}`)
+    // 12/11: chủ đề vùng hinh chỉ in tên ở cây trên ⇒ in luôn phần bên trong (Hình–Học: bài · Hình–Luyện: mô hình).
+    // Trước đó phiên Toán 7 xem bản đồ không thấy gì của Hình ⇒ tưởng chưa có lệnh, treo "chờ Thùy mở lệnh" 2 ngày.
+    if (data.mon === 'Toán' && JSON.stringify(data.cay ?? '').includes('"hinh"')) {
+      const hh = await svc.rpc('fn_phien_hh_xem', { p_phien: PHIEN })
+      const mh = await svc.rpc('fn_phien_hinh_goi', { p_phien: PHIEN, p_ham: 'fn_hl_mo_hinh_luyen', p_args: { p_khoi: data.khoi } })
+      console.log('\n── PHẦN HÌNH ── (lệnh: hh_xem · hh_bai · hinh {"ham":"fn_hl_…|fn_hh_…","args":{…}} — danh sách hàm: loai/ban_do.md §Hình)')
+      console.log('HÌNH – HỌC (bài học = dạng, mã HH…):')
+      if (hh.error) console.log('  (lỗi: ' + hh.error.message + ')')
+      else for (const x of (Array.isArray(hh.data) ? hh.data : [])) console.log(`  ${x.ma_bai} · ${x.ten_bai} · ${x.chu_de ? 'chủ đề ' + x.chu_de + ' (' + x.chu_de_id + ')' : 'chưa gắn chủ đề'} · ${x.so_cau} câu (${x.so_cau_duyet} duyệt) · LT ${x.ky_tu_ly_thuyet} · VD ${x.ky_tu_vi_du} ký tự`)
+      console.log('HÌNH – LUYỆN (mô hình — đọc: hinh fn_hl_goc_mo_hinh {"p_mh":id} · fn_hl_kho_cua_mo_hinh {"p_mo_hinh":id,"p_gioi_han":50} · fn_hl_nhom_bai_cua_cay {"p_goc":id}):')
+      if (mh.error) console.log('  (lỗi: ' + mh.error.message + ')')
+      else for (const x of mh.data ?? []) console.log(`  ${x.ma} · ${x.ten} · chủ đề ${x.chu_de_id} · ${x.so_bai} bài · id ${x.id}`)
+    }
+  }
   process.exit(0)
 }
 
