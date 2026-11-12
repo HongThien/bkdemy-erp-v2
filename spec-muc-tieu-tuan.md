@@ -23,7 +23,7 @@
 | # | Quyết định |
 |---|---|
 | Q1 | **Người đọc = học sinh VÀ phụ huynh**, cùng một bảng. GV/TA cũng xem bảng đó. |
-| Q2 | **Mục tiêu do hệ đặt**, suy từ giáo trình GV đã soạn. GV không khai thêm gì. |
+| Q2 | **Hệ làm SỐ LIỆU và đưa sẵn toàn bộ danh sách; người CHỐT.** "GV không phải làm gì" = không phải làm số liệu/ngồi chọn tay, chứ vẫn duyệt ở buổi chốt thứ Hai (§3b). |
 | Q3 | **Một ngày chốt duy nhất = thứ Hai**: vừa chốt kết quả tuần trước, vừa phát mục tiêu tuần này. |
 | Q4 | **Cửa sổ mục tiêu tính theo HẠN BTVN, không theo ngày dạy** (xem §3). |
 | Q5 | **Ngưỡng đạt = đúng mastery đang chạy**, không đặt định nghĩa "đạt" thứ hai. |
@@ -70,6 +70,25 @@ không cần khối "chờ kết quả", không cần ngày chốt sổ thứ ha
 Các phương án đã cân và bỏ: (a) cắt theo tuần lịch ngày dạy — dạng dạy cuối tuần luôn "chưa đo" lúc đánh giá;
 (b) đánh giá theo hạn đóng riêng từng dạng — đúng nhưng không có nhịp chung; (c) thứ Hai chốt kế hoạch + thứ Năm chốt sổ —
 nợ trễ gần 2 tuần hoặc phải thêm khối "chờ kết quả".
+
+---
+
+## 3b. Buổi chốt thứ Hai (Thùy 12/11) — hệ đề xuất, người duyệt
+
+Hiện tại đã có nhịp này: chiều thứ Hai (vd 14:00) mọi người họp chốt. Bảng mục tiêu tuần là **đầu ra** của buổi đó.
+
+| Việc chốt | Hệ đưa sẵn (tính lúc 00:00) | Người quyết |
+|---|---|---|
+| Giáo trình cả tuần | dạng suy từ tài liệu đã soạn của từng buổi | GV chốt ⇒ hệ biết mục tiêu tuần |
+| Vấn đề của HS tuần trước | kết luận tuần từng em × dạng (§5), em nào tụt / không nộp / không có lần đo | GV, trưởng khối xem |
+| Dạng bổ trợ trọng tâm tuần này | toàn bộ danh sách nợ của từng em + **đề xuất** dạng trọng tâm (em yếu 5 dạng ⇒ tuần này vào dạng nào) | duyệt / sửa |
+| Ca kiểm tra sau giờ | đề xuất theo danh sách trên | chốt theo lịch phòng |
+
+- Trước đây muốn có mục tiêu cho từng HS thì GV phải ngồi chọn tay, rất phức tạp. Giờ **hệ đưa hết danh sách, GV chỉ duyệt**
+  (đúng Principle 6 "AI gợi ý → người confirm").
+- Để buổi họp không thành nút cổ chai: màn chốt hiện **ngoại lệ trước** (em tụt, em nợ nhiều, dạng thiếu câu), phần còn lại duyệt cả lớp một lượt.
+- Dùng lại đường duyệt bổ trợ sẵn có (trưởng khối đề xuất → trưởng bộ môn duyệt) — không mở đường duyệt thứ hai.
+- Bảng HS phát **sau** buổi chốt (§5c).
 
 ---
 
@@ -194,7 +213,8 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 
 ## 8. Còn treo — cần Thùy quyết
 
-1. Luật ưu tiên khi nợ nhiều hơn sức chứa ca sau giờ (mới nhất / nền tảng nhất / yếu nhất?).
+1. Luật GỢI Ý mặc định dạng trọng tâm khi nợ nhiều hơn sức chứa ca sau giờ (mới nhất / nền tảng nhất / yếu nhất?) — người vẫn sửa được ở buổi chốt (§3b), nên chỉ là thứ tự đề xuất.
+1b. Khối nào tới giờ phát mà CHƯA chốt: phát bản hệ đề xuất, hay giữ lại chờ duyệt?
 2. Đơn vị mục tiêu = **dạng** hay **nhóm dạng** (mastery nhiều chỗ đang đo theo nhóm).
 3. Ngưỡng chênh tối thiểu để gọi là "tăng"/"giảm" (§5).
 4. Hết vòng 3 buổi mà ở mức `can_luyen` (0,5–0,8): thành nợ, hay chỉ `yeu` (< 0,5) mới thành nợ?
@@ -212,7 +232,7 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 |---|---|---|
 | 1 | Mastery không nhúc nhích trong 1 tuần; mặc định không tính BTVN | **Đã gỡ bằng thiết kế:** hai tầng (§5) + BTVN xếp chồng tính vào mastery (§5b) |
 | 2 | Đường "hết yếu" không kết thúc bằng lần đo được tính; trùng với luồng bổ trợ | **Đã gỡ bằng thiết kế:** vòng nợ sau giờ (§5c), một danh sách với bổ trợ |
-| 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **MỞ** — cần đo (§7.1) và luật dạng trọng tâm |
+| 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **Giảm:** dạng trọng tâm và giáo trình do người chốt ở buổi thứ Hai (§3b), hệ chỉ đề xuất. Còn mở: tài liệu phải ở trên hệ lúc họp · chấm BTVN kịp trước 00:00 thứ Hai — cần đo (§7.1) |
 | 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Vẫn cần đo phân bố thật trước khi phát cho phụ huynh |
 | 5 | Nợ tự biến mất sau 30 ngày không đo | **Đã gỡ:** nợ đọc từ sổ chốt tuần (§4) |
 | 6 | Tải: em 3 môn ~20 dòng/tuần (cần màn gộp có ưu tiên) · sức chứa ca sau giờ · em vắng (mục tiêu giữ, đường đi = buổi bù) · em mới vào lớp (không gánh nợ trước ngày vào) | **MỞ** |

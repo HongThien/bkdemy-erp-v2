@@ -79943,3 +79943,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:15 — Mục tiêu tuần: ca kiểm tra sau giờ chốt trong ngày thứ Hai
 - Thùy: thứ Hai là ngày chốt mọi thứ — lịch học, bổ trợ, kiểm tra sau giờ. ⇒ thứ Hai có 2 mốc: 00:00 máy chụp số → trong ngày người chốt → bảng phát cho HS SAU khi chốt xong (không phát 00:00). Rủi ro "bảng chưa có ngày kiểm tra" đóng; giờ phát cụ thể chưa định.
+
+## 12/11 23:20 — Mục tiêu tuần: làm rõ "GV không phải làm gì" = không làm SỐ LIỆU, vẫn CHỐT
+- Thùy: buổi họp chiều thứ Hai chốt giáo trình cả tuần + vấn đề HS tuần trước + dạng bổ trợ trọng tâm của từng em (yếu 5 dạng ⇒ tuần này vào dạng nào). Hệ đưa sẵn toàn bộ danh sách, GV chỉ duyệt. Spec thêm §3b; còn treo: khối chưa chốt tới giờ phát thì phát bản đề xuất hay giữ.
