@@ -4,13 +4,13 @@
 
 | Giai đoạn | Batch | Bài | Câu đã bóc | Batch xong | Câu đã ghi |
 |---|---|---|---|---|---|
-| 1. Cuối kì | 54 | 519 | 470 | 0 | 0 |
+| 1. Cuối kì | 54 | 519 | 470 | 1 | 259 |
 | 2. Giữa kì | 55 | 535 | 390 | 0 | 0 |
 | 3. Thi vào lớp trên | 21 | 329 | 955 | 0 | 0 |
 
 | Batch | Giai đoạn | Nội dung | Bài | Câu bóc | Trùng kho | Sonnet giải | Opus khớp | Lệch | Bỏ | Ghi DB | Trạng thái |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| B001 | 1 | K9 đề thi cuối kì (1/4) | 16 | 259 | 3 | 259 | 259 | 0 | 1 | 0 | chờ Thùy duyệt |
+| B001 | 1 | K9 đề thi cuối kì (1/4) | 16 | 259 | 3 | 259 | 259 | 0 | 1 | 259 | xong |
 | B002 | 1 | K9 đề thi cuối kì (2/4) | 17 | — | — | — | — | — | — | — | chưa làm |
 | B003 | 1 | K9 đề thi cuối kì (3/4) | 17 | — | — | — | — | — | — | — | chưa làm |
 | B004 | 1 | K9 đề thi cuối kì (4/4) | 17 | — | — | — | — | — | — | — | chưa làm |
