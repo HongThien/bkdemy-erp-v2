@@ -1,0 +1,96 @@
+{
+ "tram": "Q",
+ "trang_doc": "17-27,168-176",
+ "nhom": [
+  {
+   "id": "LNB00051",
+   "mo_ta": "Lực từ (lực Ampere) tác dụng lên đoạn dây mang dòng điện đặt trong từ trường đều: phương, chiều (quy tắc bàn tay trái) và độ lớn $F = BIl\\sin\\theta$.",
+   "ly_thuyet": "##ĐN Lực từ (lực Ampere)\nTừ trường tác dụng lực lên dây dẫn mang dòng điện đặt trong nó; lực đó gọi là lực từ (lực Ampere). Dựa vào hiện tượng này ta xác định được cảm ứng từ $\\vec{B}$ của từ trường.\n\n##TC Phương của lực từ\nPhương của lực từ tác dụng lên đoạn dây mang dòng điện đặt trong từ trường đều vuông góc với đoạn dây và vuông góc với đường sức từ của từ trường.\n\n##ĐL Quy tắc bàn tay trái\nĐặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều dòng điện.\nLúc này, chiều mà ngón cái chỉ là chiều của lực từ tác dụng lên dây dẫn mang dòng điện.\n\n##TC Độ lớn của lực từ\n- Đoạn dây dài $l$ mang dòng điện $I$ đặt vuông góc với đường sức từ trong từ trường đều có cảm ứng từ $B$: $F = BIl$ ($I$ tính theo A, $l$ theo m, $B$ theo T).\n- Khi $\\vec{B}$ hợp với đoạn dây một góc $\\theta$: phân tích $\\vec{B}$ thành thành phần $\\vec{B}_{\\perp}$ vuông góc với đoạn dây ($B_{\\perp} = B\\sin\\theta$) và thành phần $\\vec{B}_{\\parallel}$ song song với đoạn dây ($B_{\\parallel} = B\\cos\\theta$). Lực từ chỉ do $\\vec{B}_{\\perp}$ gây ra nên $F = BIl\\sin\\theta$.\n\n##CY Chú ý\nKhi $\\vec{B}$ song song với đoạn dây mang dòng điện thì lực từ tác dụng bằng 0.",
+   "ly_thuyet_sgk": "##ĐN Cảm ứng từ và đơn vị tesla\nCảm ứng từ có độ lớn $B = \\dfrac{F}{Il}$ (đoạn dây vuông góc với đường sức từ). Đơn vị của cảm ứng từ là tesla (T): $1\\ \\text{T} = 1\\ \\text{N/(A.m)}$.",
+   "trang": [
+    17,
+    18
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00104",
+   "vi_du": "##VD\nMột đoạn dây dẫn thẳng mang dòng điện được đặt trong từ trường đều sao cho phương của đoạn dây vuông góc với đường sức từ. Khi đó, lực từ tác dụng lên đoạn dây dẫn có phương\nA. vuông góc với đoạn dây dẫn và vuông góc với đường sức từ.\nB. vuông góc với đoạn dây dẫn và song song với đường sức từ.\nC. dọc theo đoạn dây dẫn và song song với đường sức từ.\nD. dọc theo đoạn dây dẫn và vuông góc với đường sức từ.\n\nBài giải:\nChọn A.\n\n##VD\nTrong từ trường đều có đường sức từ phương ngang hướng sang phải, một đoạn dây dẫn nằm trên mặt phẳng trang giấy theo phương thẳng đứng có dòng điện chạy qua theo chiều hướng xuống. Lực từ tác dụng lên đoạn dây dẫn có\nA. phương nằm ngang, chiều hướng sang phải.\nB. phương nằm ngang, chiều hướng sang trái.\nC. phương vuông góc với trang giấy, chiều hướng ra ngoài trang giấy.\nD. phương vuông góc với trang giấy, chiều hướng vào trong trang giấy.\n\nBài giải:\nChọn C.\n\n##VD\nĐường sức từ của một từ trường đều có phương vuông góc với trang giấy hướng vào trong, một đoạn dây dẫn thẳng nằm ngang trong trang giấy có dòng điện chạy qua theo chiều hướng sang phải. Lực từ tác dụng lên đoạn dây dẫn có\nA. phương thẳng đứng, chiều hướng lên trên.\nB. phương thẳng đứng, chiều hướng xuống dưới.\nC. phương vuông góc với trang giấy, chiều hướng ra ngoài trang giấy.\nD. phương vuông góc với trang giấy, chiều hướng vào trong trang giấy.\n\nBài giải:\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    19,
+    20,
+    173
+   ],
+   "nguon": "BT tự luyện CĐ2 dạng 1 câu 1 — đề tr.20, đáp án tr.173 | BT tự luyện CĐ2 dạng 1 câu 2 — đề tr.20, đáp án tr.173 | BT tự luyện CĐ2 dạng 1 câu 3 — đề tr.20, đáp án tr.173"
+  },
+  {
+   "id": "LDB00105",
+   "vi_du": "##VD\nMột đoạn dây dẫn thẳng có chiều dài $l$ được đặt trong từ trường đều có vectơ cảm ứng từ $\\vec{B}$ hợp với đoạn dây một góc $\\theta$. Khi cho dòng điện không đổi có cường độ $I$ chạy qua dây thì độ lớn lực từ tác dụng lên đoạn dây là\nA. $BIl\\sin\\theta$.\nB. $BIl\\cos\\theta$.\nC. $BIl\\tan\\theta$.\nD. $BIl\\cot\\theta$.\n\nBài giải:\nChọn A.",
+   "so_vd": 1,
+   "trang": [
+    23,
+    174
+   ],
+   "nguon": "BT tự luyện CĐ2 dạng 2 phần ① câu 1 — đề tr.23, đáp án tr.174"
+  },
+  {
+   "id": "LDB00106",
+   "vi_du": "##VD\nMột đoạn dây dẫn thẳng dài 30 cm đặt trong từ trường đều, hợp với các đường sức từ góc $30^\\circ$. Khi cho dòng điện không đổi có cường độ 3 A chạy qua dây dẫn thì lực từ tác dụng lên đoạn dây có độ lớn là 22,5 mN. Tính độ lớn cảm ứng từ của từ trường.\n\nBài giải:\nTa có:\n$F = BIl\\sin\\theta \\Leftrightarrow B = \\dfrac{F}{Il\\sin\\theta} = \\dfrac{0{,}0225}{3.0{,}3.\\sin 30^\\circ} = 0{,}05\\ \\text{T}$.\n\n##VD\nMột đoạn dây dẫn thẳng dài 0,2 m đặt trong từ trường đều sao cho dây dẫn hợp với vectơ cảm ứng từ một góc $30^\\circ$. Biết dòng điện chạy qua dây là 10 A, cảm ứng từ là $2.10^{-4}\\ \\text{T}$. Lực từ tác dụng lên đoạn dây dẫn này là\nA. $10^{-4}\\ \\text{N}$.\nB. $2.10^{-4}\\ \\text{N}$.\nC. $10^{-3}\\ \\text{N}$.\nD. $2.10^{-3}\\ \\text{N}$.\n\nBài giải:\n$F = BIl\\sin\\theta = 2.10^{-4} \\times 10 \\times 0{,}2 \\times \\sin 30^\\circ = 2.10^{-4}\\ \\text{N}$. Chọn B.\n\n##VD\nMột đoạn dây dẫn thẳng có chiều dài 6 cm mang dòng điện 5 A chạy qua đặt trong từ trường đều có cảm ứng từ $B = 0{,}5\\ \\text{T}$. Lực từ tác dụng lên đoạn dây có độ lớn 90 mN. Góc hợp bởi đoạn dây và vectơ cảm ứng từ là\nA. $30^\\circ$.\nB. $53^\\circ$.\nC. $60^\\circ$.\nD. $37^\\circ$.\n\nBài giải:\n$\\sin\\theta = \\dfrac{F}{BIl} = \\dfrac{90.10^{-3}}{0{,}5 \\times 5 \\times 0{,}06} = 0{,}6 \\to \\theta \\approx 37^\\circ$. Chọn D.",
+   "so_vd": 3,
+   "trang": [
+    22,
+    23,
+    174
+   ],
+   "nguon": "Ví dụ mẫu 1 dạng 2 — tr.22 | BT tự luyện CĐ2 dạng 2 phần ① câu 3 — đề tr.23, giải tr.174 | BT tự luyện CĐ2 dạng 2 phần ① câu 6 — đề tr.23, giải tr.174"
+  },
+  {
+   "id": "LDB00107",
+   "vi_du": "##VD\nMột đoạn dây đồng CD có chiều dài 20 cm và nặng 12 g được treo ở hai đầu bằng hai sợi dây mềm, rất nhẹ, cách điện, có chiều dài bằng nhau. Đoạn dây CD nằm cân bằng (nằm ngang) trong từ trường đều có cảm ứng từ $B = 0{,}2\\ \\text{T}$ và đường sức từ hướng thẳng đứng hướng lên. Lực căng của mỗi dây treo là 0,075 N. Lấy $g = 10\\ \\text{m/s}^2$. Xác định dòng điện qua dây CD.\n\nBài giải:\nDây CD cân bằng:\n$2\\vec{T} + \\vec{P} + \\vec{F} = \\vec{0} \\to 2\\vec{T} = -(\\vec{P} + \\vec{F})$.\nTheo quy tắc bàn tay trái, ta thấy dòng điện có chiều từ C tới D.\n$F = \\sqrt{(2T)^2 - P^2} = \\sqrt{0{,}15^2 - 0{,}12^2} = 0{,}09\\ \\text{N}$.\nMà $F = BIl \\to I = \\dfrac{F}{Bl} = \\dfrac{0{,}09}{0{,}2.0{,}2} = 2{,}25\\ \\text{A}$.\n\n##VD\nTrong từ trường đều tại một nơi trên mặt đất, một đoạn dây dẫn thẳng nằm ngang mang dòng điện 20 A chạy qua theo chiều từ Tây sang Đông. Đoạn dây đang ở trạng thái cân bằng. Khối lượng của một đơn vị chiều dài của đoạn dây là 48 g/m. Lấy $g = 10\\ \\text{m/s}^2$. Vectơ cảm ứng từ của từ trường hướng có chiều hướng về\nA. phía Bắc và độ lớn là 0,012 T.\nB. phía Nam và độ lớn là 0,024 T.\nC. phía Bắc và độ lớn là 0,024 T.\nD. phía Nam và độ lớn là 0,012 T.\n\nBài giải:\nQuy tắc bàn tay trái $\\to \\vec{B}$ hướng về phía Bắc.\n$B = \\dfrac{mg}{Il} = \\rho\\dfrac{g}{I} = 48.10^{-3} \\times \\dfrac{10}{20} = 0{,}024\\ \\text{T}$. Chọn C.\n\n##VD\nTreo một thanh đồng dài 20 cm và khối lượng 120 g vào hai sợi dây thẳng đứng cùng chiều dài trong một từ trường đều có $B = 0{,}5\\ \\text{T}$ và có chiều thẳng đứng từ dưới lên. Cho dòng điện một chiều qua thanh đồng thì thấy dây treo bị lệch so với phương thẳng đứng một góc $53^\\circ$. Lấy $g = 10\\ \\text{m/s}^2$. Cường độ dòng điện chạy qua thanh đồng là\nA. 7 A.\nB. 9 A.\nC. 16 A.\nD. 10 A.\n\nBài giải:\n$\\tan\\theta = \\dfrac{BIl}{mg} \\to I = \\dfrac{mg\\tan\\theta}{Bl} = \\dfrac{0{,}12.10.\\tan 53^\\circ}{0{,}5.0{,}2} \\approx 16\\ \\text{A}$. Chọn C.",
+   "so_vd": 3,
+   "trang": [
+    22,
+    24,
+    25,
+    174,
+    175
+   ],
+   "nguon": "Ví dụ mẫu 3 dạng 2 — tr.22 | BT tự luyện CĐ2 dạng 2 phần ① câu 12 — đề tr.24, giải tr.175 | BT tự luyện CĐ2 dạng 2 phần ① câu 16 — đề tr.25, giải tr.175"
+  },
+  {
+   "id": "LDB00108",
+   "vi_du": "##VD\nKhung dây gồm 100 vòng, hình vuông cạnh $a = 5\\ \\text{cm}$. Cạnh dưới nằm ngang trong từ trường đều của nam châm chữ U (các đường cảm ứng cũng nằm ngang nhưng vuông góc với cạnh). Khung dây được treo thăng bằng ở một đầu đòn cân. Khi cho dòng điện $I = 5\\ \\text{A}$ chạy qua, phải đặt ở đĩa cân bên kia các quả cân để làm cân thăng bằng. Sau đó, quay nam châm $180^\\circ$ để đổi chiều từ trường thì phải lấy bớt ở đĩa cân bên kia 100 g để lấy lại thăng bằng cho cân. Lấy $g = 10\\ \\text{m/s}^2$. Độ lớn của $B$ giữa hai cực nam châm hình chữ U là\nA. 0,04 T.\nB. 0,02 T.\nC. 0,08 T.\nD. 0,06 T.\n\nBài giải:\nLúc đầu: $F + P = mg$.\nLúc sau: $F + (m - 0{,}1)g = P$.\n$\\Rightarrow 2F = 0{,}1g \\to B = \\dfrac{0{,}1g}{2I(na)} = \\dfrac{0{,}1 \\times 10}{2 \\times 5 \\times (100.5.10^{-2})} = 0{,}02\\ \\text{T}$. Chọn B.",
+   "so_vd": 1,
+   "trang": [
+    24,
+    175
+   ],
+   "nguon": "BT tự luyện CĐ2 dạng 2 phần ① câu 14 (cân đo cảm ứng từ của nam châm chữ U) — đề tr.24, giải tr.175"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 19,
+   "noi_dung": "Ví dụ mẫu 1–2 dạng 1 (thanh ab trượt; hướng của I/B/F từ hình)",
+   "goi_y": "LDB00104 — bỏ vì cần hình vẽ"
+  },
+  {
+   "trang": 22,
+   "noi_dung": "Ví dụ mẫu 2 dạng 2 (dây kim loại hình Λ, lực tổng hợp)",
+   "goi_y": "LDB00106 — bỏ vì cần hình vẽ để biết hình học"
+  },
+  {
+   "trang": 24,
+   "noi_dung": "Câu 13 (cuộn dây abcd treo ở cân, xác định chiều dòng điện và B)",
+   "goi_y": "LDB00108 — bỏ vì chiều dòng điện chọn theo hình"
+  }
+ ],
+ "sua_in": [
+  "Giải câu 3 dạng 2 phần ① (đáp án tr.174): sách in kết quả '2.10^{-1} N' nhưng phép tính 2.10^{-4}×10×0,2×sin30° = 2.10^{-4} N và đáp án B là 2.10^{-4} N → sửa thành 2.10^{-4} N; kiểm lại bằng tính tay.",
+  "Đề câu 1 dạng 2 phần ① (tr.23): sách in 'điện trường đều có vectơ cảm ứng từ' → sửa 'từ trường đều' (lỗi in hiển nhiên).",
+  "Đề câu 12 (tr.24): giữ nguyên câu chữ sách 'có chiều hướng về' (hơi thừa chữ), không đổi số."
+ ],
+ "ghi_chu": "PDF 168-172 trong brief thực tế là đáp án CĐ1 (tr.in 163-168); đáp án CĐ2 nằm ở PDF 173-176 (tr.in 169-172), đã đọc. Đề tr.in 18-28 = PDF 17-27. Ví dụ mẫu 3 và câu 12: bỏ cụm 'như hình vẽ'/'(hình vẽ)' vì không có hình; chiều dòng điện C→D trong ví dụ mẫu 3 dựa vào hình của sách. Các số trang trong trường 'trang' là trang PDF cho đề (17-27) và đáp án (173-176)."
+}

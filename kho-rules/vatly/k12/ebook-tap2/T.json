@@ -1,0 +1,66 @@
+{
+ "tram": "T",
+ "trang_doc": "59-70,99-108,185-192,205-208",
+ "nhom": [
+  {
+   "id": "LNB00054",
+   "mo_ta": "",
+   "ly_thuyet": "##TC Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ\n- Đoạn dây $MN$ dài $l$ chuyển động với tốc độ $v$ cắt các đường sức của từ trường đều $\\vec{B}$ (mặt phẳng khung dây vuông góc với đường sức từ) làm thay đổi từ thông qua mạch kín, nên định luật Faraday có thể viết cụ thể hơn.\n- Trong thời gian $\\Delta t$ đoạn dây dịch chuyển một đoạn $v\\Delta t$, diện tích khung thay đổi $\\Delta S = lv\\Delta t$.\n- Độ lớn độ biến thiên từ thông: $\\Delta\\Phi = B\\Delta S = Blv\\Delta t$.\n- Độ lớn suất điện động cảm ứng: $E = \\dfrac{\\Delta\\Phi}{\\Delta t} = Blv$.\n\n##TC Vận tốc hợp với đường sức từ một góc $\\theta$\n- Khi hướng chuyển động vuông góc với đoạn dây nhưng hợp với đường sức từ một góc $\\theta$, phân tích $\\vec{v}$ thành hai thành phần: vuông góc với đường sức $v_1 = v\\sin\\theta$ và song song với đường sức $v_2 = v\\cos\\theta$.\n- Chỉ thành phần vuông góc cắt các đường sức từ mới tạo ra suất điện động cảm ứng: $E = Blv_1 = Blv\\sin\\theta$.\n\n##NX Đoạn dây chuyển động là một nguồn điện\n- Đoạn dây $MN$ chuyển động đóng vai trò như một nguồn điện có suất điện động $E$.\n- Chiều dòng điện chạy qua đoạn dây $MN$ có thể xác định theo quy tắc bàn tay phải.",
+   "ly_thuyet_sgk": "##ĐL Quy tắc bàn tay phải\n- Đặt bàn tay phải sao cho các đường sức từ hướng vào lòng bàn tay, ngón cái choãi ra $90^\\circ$ chỉ chiều chuyển động của đoạn dây.\n- Chiều từ cổ tay đến bốn ngón tay là chiều của dòng điện cảm ứng (chiều suất điện động) trong đoạn dây.",
+   "trang": [
+    65,
+    66
+   ]
+  },
+  {
+   "id": "LNB00055",
+   "mo_ta": "Dòng điện xoáy (dòng Foucault) sinh ra khi khối kim loại đặt trong từ trường biến thiên và các ứng dụng của nó: lò luyện kim, bếp từ, phanh điện từ; cách giảm tác hại của dòng điện xoáy trong lõi thép máy biến áp, động cơ.",
+   "ly_thuyet": "##ĐN Dòng điện xoáy (dòng Fu-cô)\n- Khi một khối kim loại đặt trong từ trường biến thiên, từ thông qua khối kim loại thay đổi nên dòng điện cảm ứng xuất hiện bên trong khối.\n- Có thể coi khối kim loại gồm nhiều vòng dây ghép với nhau; dòng điện cảm ứng tạo thành các vòng khép kín giống như xoáy nước nên gọi là dòng điện xoáy hay dòng điện Foucault (Fu-cô).\n\n##TC Lò luyện kim\n- Lò luyện có cuộn dây quấn bên ngoài lò; khi dòng điện qua cuộn dây thay đổi nhanh thì gây ra dòng điện xoáy trong kim loại trong lò.\n- Nhiệt lượng do dòng điện xoáy tạo ra làm nóng chảy kim loại.\n- Ưu điểm: toàn bộ quá trình có thể thực hiện trong chân không, ngăn các tạp chất trong không khí xâm nhập vào kim loại và có thể nấu chảy các hợp kim chất lượng cao.\n\n##TC Bếp từ\n- Bếp từ dùng dòng điện xoáy để tạo ra lượng nhiệt lớn nấu thức ăn. Mặt bếp làm bằng tấm vật liệu phi kim có độ phẳng cao.\n- Bếp từ mắc vào nguồn điện xoay chiều; thông qua thiết bị chuyển đổi, dòng điện xoay chiều tần số cao chạy qua cuộn dây, sinh ra từ trường thay đổi nhanh.\n- Khi đặt nồi sắt lên bếp, đáy nồi nằm trong từ trường biến đổi nhanh, tạo ra vô số dòng điện xoáy nhỏ về cơ bản nằm trong mặt phẳng thẳng đứng của đáy nồi, làm bản thân nồi nóng lên nhanh chóng, do đó làm nóng thức ăn.\n\n##TC Hãm chuyển động bằng điện từ (phanh điện từ)\n- Tấm đồng (hoặc nhôm) dao động trong mặt phẳng thẳng đứng như con lắc, đặt giữa hai cực của nam châm: bên trong tấm kim loại xuất hiện dòng điện xoáy do từ thông thay đổi.\n- Điện trở của tấm đồng (hoặc nhôm) rất nhỏ nên dòng điện xoáy rất mạnh. Theo định luật Lenz, lực từ tác dụng lên dây dẫn mang dòng điện xoáy trong từ trường là lực cản, làm con lắc nhanh chóng dừng lại.\n- Tác dụng hãm của dòng điện xoáy được dùng trong phanh điện từ ở các xe có trọng tải lớn.\n\n##CY Dòng điện xoáy cũng có hại, cần giảm tác hại\n- Trong lõi sắt của động cơ hay máy biến áp, dòng điện xoáy lớn sinh nhiệt, tiêu tốn một lượng lớn năng lượng điện, thậm chí có thể làm cháy các thiết bị.\n- Để giảm tổn thất do dòng điện xoáy: dùng thép silicon có điện trở suất cao làm vật liệu lõi; dùng nhiều lá thép silicon mỏng cách điện ghép lại, mặt phẳng của các tấm thép song song với đường sức từ.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    105,
+    106
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00114",
+   "vi_du": "##VD\nĐoạn dây $ab$ trượt với tốc độ $v = 20\\ \\text{m/s}$ sang bên trái dọc theo hai ray dẫn điện nhẵn, hai ray được nối với điện trở $R = 2\\ \\Omega$. Tất cả đặt trong từ trường đều có cảm ứng từ $B = 0{,}4\\ \\text{T}$ và đường sức hướng vuông góc với mặt phẳng khung dây. Biết đoạn dây $ab$ dài $50\\ \\text{cm}$ có điện trở $r = 0{,}5\\ \\Omega$. Lực từ tác dụng lên đoạn dây $ab$\nA. hướng sang phải và có độ lớn $0{,}40\\ \\text{N}$.\nB. hướng sang trái và có độ lớn $0{,}40\\ \\text{N}$.\nC. hướng sang phải và có độ lớn $0{,}32\\ \\text{N}$.\nD. hướng sang trái và có độ lớn $0{,}32\\ \\text{N}$.\n\nBài giải:\nSuất điện động cảm ứng trong đoạn dây: $E = Blv$; dòng điện trong mạch: $I = \\dfrac{E}{R+r} = \\dfrac{Blv}{R+r}$.\nLực từ tác dụng lên đoạn dây: $F = BIl = \\dfrac{(Bl)^2 v}{R+r} = \\dfrac{(0{,}4\\cdot 0{,}5)^2\\cdot 20}{2+0{,}5} = 0{,}32\\ \\text{N}$.\nLực từ là lực cản chuyển động nên hướng ngược chiều chuyển động, tức là hướng sang phải.\nChọn C.\n\n##VD\nHai ray dẫn điện nhẵn song song (đủ dài) cách nhau $0{,}5\\ \\text{m}$ được cố định trên mặt phẳng nằm ngang, hai đầu ray mắc với điện trở $R = 1\\ \\Omega$. Tất cả đặt trong từ trường đều $B = 2\\ \\text{T}$ hướng xuống theo phương thẳng đứng. Đoạn dây $MN$ khối lượng $0{,}5\\ \\text{kg}$ và điện trở $r = 0{,}5\\ \\Omega$. Tác dụng lực $F = 2\\ \\text{N}$ nằm ngang vuông góc với đoạn dây thì đoạn dây bắt đầu trượt từ trạng thái đứng yên. Tốc độ cực đại mà đoạn dây đạt được là\nA. $5\\ \\text{m/s}$.\nB. $2\\ \\text{m/s}$.\nC. $3\\ \\text{m/s}$.\nD. $4\\ \\text{m/s}$.\n\nBài giải:\nPhương trình chuyển động: $F - BIl = ma$, suy ra $a = \\dfrac{F - BIl}{m}$.\nTốc độ cực đại khi $a = 0$, tức $F = BIl$, với $I = \\dfrac{Blv}{R+r}$ nên $F = \\dfrac{(Bl)^2 v}{R+r}$.\n$v_{\\max} = \\dfrac{R+r}{(Bl)^2}F = \\dfrac{1+0{,}5}{(2\\cdot 0{,}5)^2}\\cdot 2 = 3\\ \\text{m/s}$.\nChọn C.\n\n##VD\nHai thanh ray dẫn điện nhẵn song song nghiêng một góc $\\alpha = 60^\\circ$ so với phương thẳng đứng, cách nhau $1\\ \\text{m}$, đầu trên được nối với điện trở $R = 9\\ \\Omega$. Tất cả đặt trong từ trường đều $B = 1\\ \\text{T}$ có đường sức vuông góc với mặt phẳng chứa hai ray. Một đoạn dây dài $l = 1\\ \\text{m}$ và khối lượng $m = 100\\ \\text{g}$ bắt đầu trượt xuống từ đầu trên của ray từ trạng thái đứng yên, hướng chuyển động của thanh kim loại luôn vuông góc với thanh. Điện trở của thanh kim loại là $r = 1\\ \\Omega$. Lấy $g = 10\\ \\text{m/s}^2$. Tốc độ cực đại của đoạn dây là\nA. $5\\sqrt{3}\\ \\text{m/s}$.\nB. $5\\ \\text{m/s}$.\nC. $2\\sqrt{3}\\ \\text{m/s}$.\nD. $2\\ \\text{m/s}$.\n\nBài giải:\nTheo quy tắc bàn tay phải, dòng điện cảm ứng đi vào; theo quy tắc bàn tay trái, lực từ song song với ray và hướng lên.\nVì ray hợp với phương thẳng đứng góc $\\alpha$ nên thành phần trọng lực dọc theo ray là $mg\\cos\\alpha$: $mg\\cos\\alpha - BIl = ma$, suy ra $a = g\\cos\\alpha - \\dfrac{BIl}{m}$.\nTốc độ cực đại khi $a = 0$: $mg\\cos\\alpha = BIl = \\dfrac{(Bl)^2 v}{R+r}$.\n$v_{\\max} = \\dfrac{R+r}{(Bl)^2}\\,mg\\cos\\alpha = \\dfrac{9+1}{(1\\cdot 1)^2}\\cdot(0{,}1\\cdot 10\\cdot\\cos 60^\\circ) = 5\\ \\text{m/s}$.\nChọn B.",
+   "so_vd": 3,
+   "trang": [
+    67,
+    68,
+    69,
+    191,
+    192
+   ],
+   "nguon": "BT tự luyện CĐ7 phần ① câu 6 — đề in tr.62, giải in tr.186 | BT tự luyện CĐ7 phần ① câu 8 — đề in tr.62, giải in tr.186 | BT tự luyện CĐ7 phần ① câu 9 — đề in tr.62, giải in tr.186"
+  },
+  {
+   "id": "LDB00115",
+   "vi_du": "##VD\nVật liệu thích hợp để làm nồi sử dụng trên bếp từ là\nA. sắt.\nB. gốm sứ.\nC. thủy tinh.\nD. nhựa.\n\nBài giải:\nChọn A.\n\n##VD\nNguyên lí hoạt động của thiết bị nào sau đây không liên quan tới dòng điện xoáy?\nA. Lò luyện kim.\nB. Bếp từ.\nC. Máy dò kim loại.\nD. Lò vi sóng.\n\nBài giải:\nChọn D.\n\n##VD\nNguyên lý của bếp từ là sử dụng suất điện động cảm ứng để tạo ra dòng điện xoáy ở đáy nồi làm nồi nóng lên, từ đó làm nóng thức ăn trong nồi. Phát biểu nào sau đây về bếp từ là đúng?\nA. Mặt bếp làm bằng chất cách nhiệt, bộ phận làm nóng là đáy nồi sắt.\nB. Mặt bếp làm bằng sắt tạo ra nhiệt để làm nóng.\nC. Có thể sử dụng nồi thủy tinh trên bếp từ để làm nóng thức ăn.\nD. Nguyên lý hoạt động của bếp từ tương tự như bếp hồng ngoại.\n\nBài giải:\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    107,
+    108,
+    208
+   ],
+   "nguon": "BT CĐ11 câu 1 — đề in tr.102, đáp án in tr.204 | BT CĐ11 câu 4 — đề in tr.102, đáp án in tr.204 | BT CĐ11 câu 8 — đề in tr.102, đáp án in tr.204"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 69,
+   "noi_dung": "CĐ7 phần ② Đúng–Sai câu 1–6 (thanh trượt trên ray: tính E, F, P, chuyển động có ma sát, thanh nghiêng 37°, hai điện trở)",
+   "goi_y": "Thuộc LDB00114 nhưng là câu Đúng–Sai 4 ý nên bỏ theo luật."
+  },
+  {
+   "trang": 67,
+   "noi_dung": "CĐ7 phần ① câu 1–5, 7, 10 (xác định chiều dòng cảm ứng/lực từ, khung đi vào vùng từ trường, dây dài + nhiều thanh)",
+   "goi_y": "Cần hình vẽ mới hiểu nên bỏ."
+  }
+ ],
+ "sua_in": [],
+ "ghi_chu": "Số trang trong brief (59–63, 99–102, 185–187, 203) là SỐ TRANG IN, không phải trang PDF (in = PDF − 4 hoặc 5). Thực tế: CĐ7 lý thuyết PDF 65–66 (in 60–61), bài tập PDF 67–69; giải CĐ7 PDF 190–192 (in 186–188); CĐ11 lý thuyết PDF 105–106 (in 100–101), bài tập PDF 107–108, đáp án PDF 208 (in 204, chỉ bảng chữ cái). CĐ7 không có ví dụ mẫu; 3 ví dụ LDB00114 lấy từ BT tự luyện phần ① câu 6, 8, 9 (đề mô tả đủ bằng chữ, lời giải chép theo sách; ở câu 9 sách viết (1,1)^2 là (1·1)^2 đã viết rõ). Chiều lực ở câu 6 được diễn đạt \"lực cản chuyển động nên hướng ngược chiều chuyển động\" (thống nhất với đáp án C của sách). Ví dụ LDB00115 chỉ có đáp án chữ nên là câu nhận biết. ly_thuyet_sgk của LNB00054 (quy tắc bàn tay phải) viết theo SGK KNTT vì sách chỉ nhắc tên quy tắc."
+}

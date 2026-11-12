@@ -1,0 +1,1374 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lý thuyết Vật lý 12</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1d1d1f;--mute:#6b6b70;--line:#e3e3e0;--acc:#2f5bd3;--eb:#1f7a4d;--sg:#b35c00}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1d1d20;--ink:#ececee;--mute:#9a9aa2;--line:#2f2f34;--acc:#8fb0ff;--eb:#6fd4a0;--sg:#ffb466}}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,"Segoe UI",sans-serif}main{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:23px;margin:0 0 4px}.sub{color:var(--mute)}section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+h2{font-size:18px;margin:0 0 10px}h3{font-size:15px;margin:14px 0 6px}.ma{font:12px Consolas,monospace;color:var(--mute);margin-right:6px}
+.o{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:8px 0}.o.sgk{border-color:var(--sg)}.nhan{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.03em}
+.src{font-size:11px;padding:1px 6px;border-radius:999px;margin-left:6px;text-transform:none}.eb{color:var(--eb);border:1px solid var(--eb)}.sg{color:var(--sg);border:1px solid var(--sg)}
+.pre{white-space:pre-wrap;margin:4px 0}.tr{font-size:11px;color:var(--mute)}.trong{color:var(--mute);font-style:italic}
+.the{display:inline-block;font:700 11px Consolas,monospace;padding:0 5px;border-radius:4px;margin-right:6px;background:#e8eefc;color:#2f5bd3}.the-VD{background:#fbe6f0;color:#b23a72}.the-CY{background:#fff0e0;color:#b35c00}
+.co-hoi{font-size:12px;color:var(--sg);font-weight:600}
+.dang{border-top:1px dashed var(--line);margin-top:10px}.dem{font-size:11px;color:var(--eb);margin-left:6px}.trongd{color:var(--sg)}
+.nd.vd{background:var(--bg);border-radius:8px;padding:8px 10px;margin:6px 0}.kq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+</style></head><body><main>
+<h1>Lý thuyết · mô tả · ví dụ — Vật lý 12 (Từ trường + Vật lí hạt nhân)</h1>
+<p class="sub">Nguồn: ebook "Nắm trọn kiến thức Vật lí 12 – Tập 2: Từ trường và Vật lí hạt nhân" (Đỗ Ngọc Hà); trang PDF = trang in − 1. Ví dụ chép nguyên sách (đề + lời giải). Đoạn viết theo SGK Kết nối tri thức đánh dấu cam. ĐỀ XUẤT — chưa ghi DB.</p>
+<div class="kq">Nhóm có lý thuyết từ ebook: <b>17/17</b> · nhóm có phần SGK: <b>4</b> · dạng có ví dụ: <b>32/34</b> (92 ví dụ) · lỗi định dạng: <b>0</b></div>
+<section><h2>Chỗ trạm chép đã sửa lỗi in của sách (chị soát)</h2><ul><li>K: tr.157 (in 152) Ví dụ mẫu 2 CĐ4 Dạng 2: sách in "2^{t/4,47.10^9} - 1 - 2,863.10^19/7,243.10^20" (dấu "-" ở vị trí phải là dấu "="); đã viết lại thành "=". Kiểm lại: 2,863e19/7,243e20 = 0,03953; t = 4,47e9 x log2(1,03953) = 2,50e8 năm, khớp "250 triệu năm".</li><li>K: tr.225 (in 221) giải Câu 3 CĐ4 Dạng 2: sách ghi "t = 2T = 53,6 -&gt; t = 26,8 phút" (đúng phải là T = 26,8 phút); đã viết lại thành T = 26,8 phút. Kiểm lại: 2T = 53,6 phút nên T = 26,8 phút.</li><li>Q: Giải câu 3 dạng 2 phần ① (đáp án tr.174): sách in kết quả '2.10^{-1} N' nhưng phép tính 2.10^{-4}×10×0,2×sin30° = 2.10^{-4} N và đáp án B là 2.10^{-4} N → sửa thành 2.10^{-4} N; kiểm lại bằng tính tay.</li><li>Q: Đề câu 1 dạng 2 phần ① (tr.23): sách in 'điện trường đều có vectơ cảm ứng từ' → sửa 'từ trường đều' (lỗi in hiển nhiên).</li><li>Q: Đề câu 12 (tr.24): giữ nguyên câu chữ sách 'có chiều hướng về' (hơi thừa chữ), không đổi số.</li><li>R: tr.30 (mục 1.2, sách in "F = BIl sinθ" cho trường hợp v hợp với B góc θ): sách in thiếu chữ, đúng là F = |q|vB sinθ (kiểm lại: cùng mục sách viết F = |q|vB khi vuông góc, B⊥ = B sinθ; đáp án CĐ3 ① câu 1 chọn D là f = |q0|vB sinθ). Đã ghi F = |q|vB sinθ trong lý thuyết.</li><li>Y: Ví dụ mẫu 2 CĐ1 (tr.123): sách in 'N = n/M × N_A = 2×6,02.10^23'; đã sửa thành N = (m/A)·N_A = (134/67)·6,02·10^23 = 2·6,02·10^23 (n/M của sách là chữ in sót: m=134 g, M=67 g/mol, n=2; kết quả 12,04·10^23 khớp, kiểm lại 30×12,04e23=3,612e25 và 37×12,04e23=4,4548e25).</li><li>Y: Ví dụ mẫu 2 CĐ2 hạt nhân (Li-6) — sách in ΔE = 37,19 MeV, tính lại ra ≈ 37,18 MeV; giữ số sách.</li><li>P: BT tự luyện CĐ1 câu 24 (hệ trục Oxyz) — đề gốc có hình, trạm tả bằng chữ 'P trên trục Oz'; lời giải đúng nguyên sách (đã đối chiếu tr.171).</li><li>Q: đã kiểm lại 2·10⁻⁴·10·0,2·sin30° = 2·10⁻⁴ N.</li></ul></section>
+<section><h2><span class="ma">LNB00050</span>Từ trường › Từ trường › Từ trường và đường sức từ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Từ trường và đường sức từ: khái niệm từ trường, tương tác từ, vectơ cảm ứng từ, từ phổ, đường sức từ và đặc điểm, từ trường đều, đường sức từ của dòng điện thẳng, dòng điện tròn, ống dây và quy tắc nắm tay phải.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm P · trang PDF 8, 9, 10, 11</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Từ trường</b>
+Từ trường là trường lực gây ra bởi dòng điện hoặc nam châm, là dạng vật chất tồn tại xung quanh dòng điện hoặc nam châm mà biểu hiện cụ thể là sự xuất hiện của lực từ tác dụng lên một dòng điện hay nam châm khác đặt trong đó.
+- Nam châm có hai cực: cực Bắc (N) và cực Nam (S). Các cực cùng tên đẩy nhau, các cực khác tên hút nhau; lực hút hoặc đẩy giữa các cực từ gọi là lực từ.
+- Dòng điện tác dụng lực từ lên nam châm, nam châm tác dụng lực từ lên dây dẫn mang dòng điện, hai dây dẫn mang dòng điện cũng tác dụng lực từ lên nhau. Các tương tác này đều xảy ra thông qua từ trường.
+- Để phát hiện từ trường trong một vùng không gian, ta dùng một kim nam châm nhỏ gọi là nam châm thử.
+
+<span class="the the-ĐN">ĐN</span><b> Cảm ứng từ</b>
+Để đặc trưng cho từ trường về mặt gây ra lực từ, ta dùng đại lượng vectơ cảm ứng từ, kí hiệu $\vec{B}$. Đơn vị của cảm ứng từ là tesla, kí hiệu T.
+- Phương của nam châm thử nằm cân bằng tại một điểm trong từ trường là phương của vectơ cảm ứng từ $\vec{B}$ của từ trường tại điểm đó.
+- Quy ước: chiều từ cực Nam sang cực Bắc của nam châm thử là chiều của $\vec{B}$.
+
+<span class="the the-ĐN">ĐN</span><b> Từ phổ và đường sức từ</b>
+Từ phổ là hình ảnh những đường tạo ra bởi các mạt sắt mịn khi được đặt trong từ trường (các mạt sắt bị nhiễm từ, trở thành các nam châm thử).
+Đường sức từ là những đường vẽ trong không gian có từ trường sao cho tiếp tuyến với nó tại mỗi điểm trùng với phương của vectơ cảm ứng từ tại điểm đó. Chiều của đường sức từ là chiều của vectơ cảm ứng từ.
+
+<span class="the the-TC">TC</span><b> Đặc điểm của đường sức từ</b>
+- Tại mỗi điểm trong từ trường chỉ vẽ được một đường sức từ đi qua và chỉ một mà thôi.
+- Các đường sức từ là những đường cong khép kín.
+- Nơi nào từ trường mạnh hơn thì các đường sức từ ở đó vẽ dày hơn, nơi nào từ trường yếu hơn thì vẽ thưa hơn.
+- Từ trường đều là từ trường mà cảm ứng từ tại mọi điểm đều bằng nhau; đường sức của từ trường đều là những đường thẳng song song và cách đều nhau.
+
+<span class="the the-TC">TC</span><b> Từ trường của dòng điện thẳng dài</b>
+- Đường sức từ là những đường tròn nằm trong những mặt phẳng vuông góc với dòng điện, có tâm là giao điểm giữa dòng điện và mặt phẳng đó.
+- Càng gần dòng điện thẳng thì từ trường càng mạnh, càng xa dây thì từ trường càng yếu.
+- Kí hiệu $\otimes$ và $\odot$ biểu thị dòng điện (hoặc đường sức từ, vectơ cảm ứng từ) vuông góc với trang giấy, lần lượt đi vào và đi ra trang giấy; kí hiệu $\times$ và $\bullet$ biểu thị từ trường (đường sức từ, vectơ cảm ứng từ) lần lượt vuông góc với trang giấy hướng vào trong và hướng ra ngoài.
+
+<span class="the the-ĐL">ĐL</span><b> Quy tắc nắm tay phải (dòng điện thẳng)</b>
+Giơ ngón cái của bàn tay phải hướng theo chiều dòng điện, khum bốn ngón tay kia xung quanh dây dẫn thì chiều từ cổ tay đến bốn ngón tay đó là chiều của đường sức từ.
+
+<span class="the the-TC">TC</span><b> Từ trường của dòng điện tròn</b>
+- Các đường sức từ của dòng điện tròn là những đường cong khép kín bao quanh dòng điện tròn; riêng đường sức từ qua tâm vòng dây thì vuông góc với mặt phẳng chứa vòng dây.
+- Quy tắc nắm tay phải: khum bàn tay phải theo vòng dây của dòng điện sao cho chiều từ cổ tay đến các ngón tay trùng với chiều dòng điện; khi đó ngón tay cái choãi ra chỉ chiều đường sức từ.
+
+<span class="the the-TC">TC</span><b> Từ trường của ống dây hình trụ</b>
+- Từ trường xung quanh ống dây tương tự từ trường xung quanh một thanh nam châm.
+- Khi các vòng dây được quấn chặt và chiều dài ống dây rất lớn so với bán kính các vòng dây, có thể xem từ trường bên trong ống dây là từ trường đều.
+- Quy tắc nắm tay phải: tưởng tượng bàn tay phải nắm lấy ống dây sao cho chiều khum các ngón tay là chiều dòng điện, khi đó ngón cái choãi ra cho ta chiều đường sức từ trong lòng ống dây.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00101</span>Khái niệm, tính chất từ trường và đường sức từ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm P · Ví dụ mẫu 1 — tr.11</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi nghiên cứu về từ trường và đường sức từ, một học sinh đã rút ra những kết luận bên dưới. Những kết luận này có đúng hay không?
+(1) Đường sức từ được tạo thành từ các mạt sắt.
+(2) Đường sức từ tồn tại thực sự trong không gian xung quanh nam châm.
+(3) Từ trường không nhìn thấy được nhưng sự tồn tại của nó có thể được phát hiện bằng một kim nam châm nhỏ.
+
+Bài giải:
+(1) Sai. Đường sức từ là những đường được vẽ ra để mô tả từ trường. Sau khi được từ hóa trong từ trường, các mạt sắt giống như những kim nam châm nhỏ, hầu như đều sắp xếp dọc theo hướng của từ trường, tức là hướng của các đường sức từ.
+(2) Sai. Đường sức từ không thực sự tồn tại. Đường sức từ là những đường có hướng được tưởng tượng vẽ ra nhằm mục đích mô tả một cách sinh động sự phân bố không gian của từ trường.
+(3) Đúng. Từ trường là vô hình không nhìn thấy được, nhưng nó có tác dụng từ lên kim nam châm nhỏ tự do. Do đó sự tồn tại của từ trường có thể được phát hiện với sự trợ giúp của kim nam châm nhỏ.</div></div><div class="nd vd"><div class="tr">trạm P · BT tự luyện CĐ1 phần ① câu 8 — đề tr.13, giải tr.171 (đáp án C)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây đúng khi nói về từ trường?
+A. Hướng của từ trường tại một điểm là hướng của cực S của kim nam châm đặt tại điểm đó.
+B. Từ trường là dạng vật chất tồn tại khách quan xung quanh các hạt mang điện.
+C. Từ trường là dạng vật chất tồn tại khách quan xung quanh dòng điện hoặc nam châm.
+D. Từ trường thực sự không tồn tại, chỉ là sản phẩm do chúng ta tưởng tượng ra.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm P · BT tự luyện CĐ1 phần ① câu 15 — đề tr.14, giải tr.171</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đâu là đặc điểm của đường sức từ của nam châm?
+A. Xuất phát từ cực N và kết thúc ở cực S.
+B. Thường là đường cong khép kín, hai đường sức từ bất kì sẽ không cắt nhau.
+C. Xuất phát từ cực S và kết thúc ở cực N.
+D. Thường là đường cong khép kín, hai đường sức từ bất kì có thể cắt nhau.
+
+Bài giải:
+A sai vì đường sức từ khép kín, không có xuất phát và kết thúc, ở đây chính xác là: đường sức từ đi ra từ cực N và đi vào cực S của nam châm.
+Chọn B.</div></div></div><div class="dang"><h3><span class="ma">LDB00102</span>Đường sức từ của dòng điện, quy tắc nắm tay phải <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm P · BT tự luyện CĐ1 phần ① câu 13 — đề tr.13, giải tr.171 (đáp án C)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đường sức từ xung quanh dây dẫn thẳng dài có dòng điện không đổi chạy qua là
+A. những đường thẳng song song với dòng điện.
+B. những đường thẳng vuông góc với dòng điện.
+C. những vòng tròn có tâm thuộc dây dẫn, mặt phẳng chứa từng vòng tròn vuông góc với dây.
+D. đường xoắn ốc có trục là dây dẫn.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm P · BT tự luyện CĐ1 phần ① câu 27 — đề tr.15, giải tr.171</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một dây dẫn thẳng dài đặt thẳng đứng mang dòng điện có chiều từ dưới hướng lên, hướng của vectơ cảm ứng từ tại điểm nằm ở phía Tây của dây dẫn đó là
+A. hướng lên trên.
+B. hướng xuống dưới.
+C. hướng về phía Bắc.
+D. hướng về phía Nam.
+
+Bài giải:
+Theo quy tắc bàn tay phải, vectơ cảm ứng từ tại điểm nằm ở phía Tây của dây dẫn đó hướng về phía Nam.
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm P · BT tự luyện CĐ1 phần ① câu 24 — đề tr.15, giải tr.171</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong hệ trục tọa độ vuông góc Oxyz, một dòng electron chuyển động dọc trục Ox theo chiều dương. Hướng của vectơ cảm ứng từ tạo ra bởi dòng electron tại điểm P trên trục Oz là
+A. theo chiều dương của trục Oy.
+B. theo chiều âm của trục Oy.
+C. theo chiều dương của trục Oz.
+D. theo chiều âm của trục Oz.
+
+Bài giải:
+Dòng electron chuyển động theo chiều dương trục Ox nên dòng điện theo chiều âm trục Ox.
+Theo quy tắc bàn tay phải: $\vec{B}_P$ hướng theo chiều dương trục Oy.
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00103</span>Tính cảm ứng từ của dòng điện thẳng dài <span class="dem trongd">chưa có ví dụ</span></h3>
+    </div></section><section><h2><span class="ma">LNB00051</span>Từ trường › Lực từ › Lực từ tác dụng lên dây dẫn mang dòng điện</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Lực từ (lực Ampere) tác dụng lên đoạn dây mang dòng điện đặt trong từ trường đều: phương, chiều (quy tắc bàn tay trái) và độ lớn $F = BIl\sin\theta$.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm Q · trang PDF 17, 18</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Lực từ (lực Ampere)</b>
+Từ trường tác dụng lực lên dây dẫn mang dòng điện đặt trong nó; lực đó gọi là lực từ (lực Ampere). Dựa vào hiện tượng này ta xác định được cảm ứng từ $\vec{B}$ của từ trường.
+
+<span class="the the-TC">TC</span><b> Phương của lực từ</b>
+Phương của lực từ tác dụng lên đoạn dây mang dòng điện đặt trong từ trường đều vuông góc với đoạn dây và vuông góc với đường sức từ của từ trường.
+
+<span class="the the-ĐL">ĐL</span><b> Quy tắc bàn tay trái</b>
+Đặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều dòng điện.
+Lúc này, chiều mà ngón cái chỉ là chiều của lực từ tác dụng lên dây dẫn mang dòng điện.
+
+<span class="the the-TC">TC</span><b> Độ lớn của lực từ</b>
+- Đoạn dây dài $l$ mang dòng điện $I$ đặt vuông góc với đường sức từ trong từ trường đều có cảm ứng từ $B$: $F = BIl$ ($I$ tính theo A, $l$ theo m, $B$ theo T).
+- Khi $\vec{B}$ hợp với đoạn dây một góc $\theta$: phân tích $\vec{B}$ thành thành phần $\vec{B}_{\perp}$ vuông góc với đoạn dây ($B_{\perp} = B\sin\theta$) và thành phần $\vec{B}_{\parallel}$ song song với đoạn dây ($B_{\parallel} = B\cos\theta$). Lực từ chỉ do $\vec{B}_{\perp}$ gây ra nên $F = BIl\sin\theta$.
+
+<span class="the the-CY">CY</span><b> Chú ý</b>
+Khi $\vec{B}$ song song với đoạn dây mang dòng điện thì lực từ tác dụng bằng 0.</div></div></div>
+  <div class="o sgk"><div class="nhan">Lý thuyết bổ sung <span class="src sg">viết theo SGK KNTT — cần chị soát</span></div><div class="nd"><div class="tr">trạm Q</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Cảm ứng từ và đơn vị tesla</b>
+Cảm ứng từ có độ lớn $B = \dfrac{F}{Il}$ (đoạn dây vuông góc với đường sức từ). Đơn vị của cảm ứng từ là tesla (T): $1\ \text{T} = 1\ \text{N/(A.m)}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00104</span>Xác định chiều lực từ bằng quy tắc bàn tay trái <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 1 câu 1 — đề tr.20, đáp án tr.173</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn thẳng mang dòng điện được đặt trong từ trường đều sao cho phương của đoạn dây vuông góc với đường sức từ. Khi đó, lực từ tác dụng lên đoạn dây dẫn có phương
+A. vuông góc với đoạn dây dẫn và vuông góc với đường sức từ.
+B. vuông góc với đoạn dây dẫn và song song với đường sức từ.
+C. dọc theo đoạn dây dẫn và song song với đường sức từ.
+D. dọc theo đoạn dây dẫn và vuông góc với đường sức từ.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 1 câu 2 — đề tr.20, đáp án tr.173</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong từ trường đều có đường sức từ phương ngang hướng sang phải, một đoạn dây dẫn nằm trên mặt phẳng trang giấy theo phương thẳng đứng có dòng điện chạy qua theo chiều hướng xuống. Lực từ tác dụng lên đoạn dây dẫn có
+A. phương nằm ngang, chiều hướng sang phải.
+B. phương nằm ngang, chiều hướng sang trái.
+C. phương vuông góc với trang giấy, chiều hướng ra ngoài trang giấy.
+D. phương vuông góc với trang giấy, chiều hướng vào trong trang giấy.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 1 câu 3 — đề tr.20, đáp án tr.173</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đường sức từ của một từ trường đều có phương vuông góc với trang giấy hướng vào trong, một đoạn dây dẫn thẳng nằm ngang trong trang giấy có dòng điện chạy qua theo chiều hướng sang phải. Lực từ tác dụng lên đoạn dây dẫn có
+A. phương thẳng đứng, chiều hướng lên trên.
+B. phương thẳng đứng, chiều hướng xuống dưới.
+C. phương vuông góc với trang giấy, chiều hướng ra ngoài trang giấy.
+D. phương vuông góc với trang giấy, chiều hướng vào trong trang giấy.
+
+Bài giải:
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00105</span>Nhận biết công thức F = BIl·sinα, định nghĩa và đơn vị cảm ứng từ <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 1 — đề tr.23, đáp án tr.174</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn thẳng có chiều dài $l$ được đặt trong từ trường đều có vectơ cảm ứng từ $\vec{B}$ hợp với đoạn dây một góc $\theta$. Khi cho dòng điện không đổi có cường độ $I$ chạy qua dây thì độ lớn lực từ tác dụng lên đoạn dây là
+A. $BIl\sin\theta$.
+B. $BIl\cos\theta$.
+C. $BIl\tan\theta$.
+D. $BIl\cot\theta$.
+
+Bài giải:
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00106</span>Tính lực từ, cảm ứng từ, cường độ dòng điện, góc <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Q · Ví dụ mẫu 1 dạng 2 — tr.22</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn thẳng dài 30 cm đặt trong từ trường đều, hợp với các đường sức từ góc $30^\circ$. Khi cho dòng điện không đổi có cường độ 3 A chạy qua dây dẫn thì lực từ tác dụng lên đoạn dây có độ lớn là 22,5 mN. Tính độ lớn cảm ứng từ của từ trường.
+
+Bài giải:
+Ta có:
+$F = BIl\sin\theta \Leftrightarrow B = \dfrac{F}{Il\sin\theta} = \dfrac{0{,}0225}{3.0{,}3.\sin 30^\circ} = 0{,}05\ \text{T}$.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 3 — đề tr.23, giải tr.174</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn thẳng dài 0,2 m đặt trong từ trường đều sao cho dây dẫn hợp với vectơ cảm ứng từ một góc $30^\circ$. Biết dòng điện chạy qua dây là 10 A, cảm ứng từ là $2.10^{-4}\ \text{T}$. Lực từ tác dụng lên đoạn dây dẫn này là
+A. $10^{-4}\ \text{N}$.
+B. $2.10^{-4}\ \text{N}$.
+C. $10^{-3}\ \text{N}$.
+D. $2.10^{-3}\ \text{N}$.
+
+Bài giải:
+$F = BIl\sin\theta = 2.10^{-4} \times 10 \times 0{,}2 \times \sin 30^\circ = 2.10^{-4}\ \text{N}$. Chọn B.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 6 — đề tr.23, giải tr.174</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn thẳng có chiều dài 6 cm mang dòng điện 5 A chạy qua đặt trong từ trường đều có cảm ứng từ $B = 0{,}5\ \text{T}$. Lực từ tác dụng lên đoạn dây có độ lớn 90 mN. Góc hợp bởi đoạn dây và vectơ cảm ứng từ là
+A. $30^\circ$.
+B. $53^\circ$.
+C. $60^\circ$.
+D. $37^\circ$.
+
+Bài giải:
+$\sin\theta = \dfrac{F}{BIl} = \dfrac{90.10^{-3}}{0{,}5 \times 5 \times 0{,}06} = 0{,}6 \to \theta \approx 37^\circ$. Chọn D.</div></div></div><div class="dang"><h3><span class="ma">LDB00107</span>Cân bằng, chuyển động của dây dẫn trong từ trường <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Q · Ví dụ mẫu 3 dạng 2 — tr.22</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây đồng CD có chiều dài 20 cm và nặng 12 g được treo ở hai đầu bằng hai sợi dây mềm, rất nhẹ, cách điện, có chiều dài bằng nhau. Đoạn dây CD nằm cân bằng (nằm ngang) trong từ trường đều có cảm ứng từ $B = 0{,}2\ \text{T}$ và đường sức từ hướng thẳng đứng hướng lên. Lực căng của mỗi dây treo là 0,075 N. Lấy $g = 10\ \text{m/s}^2$. Xác định dòng điện qua dây CD.
+
+Bài giải:
+Dây CD cân bằng:
+$2\vec{T} + \vec{P} + \vec{F} = \vec{0} \to 2\vec{T} = -(\vec{P} + \vec{F})$.
+Theo quy tắc bàn tay trái, ta thấy dòng điện có chiều từ C tới D.
+$F = \sqrt{(2T)^2 - P^2} = \sqrt{0{,}15^2 - 0{,}12^2} = 0{,}09\ \text{N}$.
+Mà $F = BIl \to I = \dfrac{F}{Bl} = \dfrac{0{,}09}{0{,}2.0{,}2} = 2{,}25\ \text{A}$.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 12 — đề tr.24, giải tr.175</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong từ trường đều tại một nơi trên mặt đất, một đoạn dây dẫn thẳng nằm ngang mang dòng điện 20 A chạy qua theo chiều từ Tây sang Đông. Đoạn dây đang ở trạng thái cân bằng. Khối lượng của một đơn vị chiều dài của đoạn dây là 48 g/m. Lấy $g = 10\ \text{m/s}^2$. Vectơ cảm ứng từ của từ trường hướng có chiều hướng về
+A. phía Bắc và độ lớn là 0,012 T.
+B. phía Nam và độ lớn là 0,024 T.
+C. phía Bắc và độ lớn là 0,024 T.
+D. phía Nam và độ lớn là 0,012 T.
+
+Bài giải:
+Quy tắc bàn tay trái $\to \vec{B}$ hướng về phía Bắc.
+$B = \dfrac{mg}{Il} = \rho\dfrac{g}{I} = 48.10^{-3} \times \dfrac{10}{20} = 0{,}024\ \text{T}$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 16 — đề tr.25, giải tr.175</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Treo một thanh đồng dài 20 cm và khối lượng 120 g vào hai sợi dây thẳng đứng cùng chiều dài trong một từ trường đều có $B = 0{,}5\ \text{T}$ và có chiều thẳng đứng từ dưới lên. Cho dòng điện một chiều qua thanh đồng thì thấy dây treo bị lệch so với phương thẳng đứng một góc $53^\circ$. Lấy $g = 10\ \text{m/s}^2$. Cường độ dòng điện chạy qua thanh đồng là
+A. 7 A.
+B. 9 A.
+C. 16 A.
+D. 10 A.
+
+Bài giải:
+$\tan\theta = \dfrac{BIl}{mg} \to I = \dfrac{mg\tan\theta}{Bl} = \dfrac{0{,}12.10.\tan 53^\circ}{0{,}5.0{,}2} \approx 16\ \text{A}$. Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00052</span>Từ trường › Lực từ › Ứng dụng lực từ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Lực Lorentz (khái niệm, chiều theo quy tắc bàn tay trái, độ lớn), chuyển động tròn đều của hạt tích điện trong từ trường đều (bán kính, chu kì) và các thiết bị ứng dụng lực Lorentz: ống tia âm cực, máy quang phổ khối, cyclotron, máy phát điện MHD, lưu lượng kế điện từ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm R · trang PDF 28, 29, 37, 38, 39, 40</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Lực Lorentz</b>
+Từ trường tác dụng lực lên các điện tích chuyển động. Lực từ tác dụng lên điện tích chuyển động trong từ trường được gọi là lực Lorentz.
+
+<span class="the the-ĐL">ĐL</span><b> Chiều của lực Lorentz</b>
+Phương của lực Lorentz vuông góc với phương chuyển động của hạt tích điện (vuông góc với $\vec{v}$) và vuông góc với đường sức từ ($\vec{B}$).
+Quy tắc bàn tay trái: đặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều chuyển động của điện tích.
+Nếu điện tích dương thì chiều của lực Lorentz là chiều ngón cái chỉ; nếu điện tích âm thì chiều của lực Lorentz ngược với chiều ngón cái chỉ.
+
+<span class="the the-TC">TC</span><b> Độ lớn của lực Lorentz</b>
+- Hạt điện tích $q$ chuyển động với vận tốc $\vec{v}$ vuông góc với $\vec{B}$ thì $F=|q|vB$ ($v$ tính theo m/s, $q$ theo C, $B$ theo T).
+- Khi $\vec{v}$ song song với $\vec{B}$ thì lực Lorentz bằng 0.
+- Khi $\vec{v}$ hợp với $\vec{B}$ một góc $\theta$: chỉ thành phần $B_\perp = B\sin\theta$ vuông góc với $\vec{v}$ gây ra lực, nên $F=|q|vB\sin\theta$.
+
+<span class="the the-TC">TC</span><b> Chuyển động của hạt tích điện trong từ trường đều</b>
+Hạt tích điện bay vào từ trường đều theo hướng vuông góc với đường sức từ thì lực Lorentz luôn vuông góc với vận tốc: chỉ làm đổi hướng vận tốc mà không làm đổi độ lớn vận tốc. Do đó độ lớn lực Lorentz không đổi và đóng vai trò lực hướng tâm, hạt chuyển động tròn đều trong mặt phẳng vuông góc với đường sức từ.
+- Lực hướng tâm: $|q|vB=m\dfrac{v^2}{r}$, suy ra bán kính quỹ đạo $r=\dfrac{mv}{|q|B}$.
+- Bán kính tỉ lệ thuận với khối lượng và tốc độ của hạt, tỉ lệ nghịch với độ lớn điện tích của hạt và độ lớn cảm ứng từ.
+- Chu kì chuyển động tròn đều: $T=\dfrac{2\pi m}{|q|B}$, không phụ thuộc tốc độ và bán kính quỹ đạo.
+
+<span class="the the-TC">TC</span><b> Ống tia âm cực (đèn hình CRT)</b>
+Ống tia âm cực là ống chùm tia điện tử dùng trong tivi, màn hình máy tính và các thiết bị điện tử khác. Các electron phát ra từ súng điện được gia tốc bởi một điện trường để tạo thành chùm tia điện tử. Từ trường biến thiên liên tục tạo bởi các cuộn dây lệch hướng (theo phương ngang và phương dọc) làm lực Lorentz đổi hướng chùm tia, nhờ đó chùm tia quét và hiển thị hình ảnh trên màn huỳnh quang.
+
+<span class="the the-TC">TC</span><b> Máy quang phổ khối</b>
+Hạt khối lượng $m$, độ lớn điện tích $q$ bay từ lỗ nhỏ $S_1$ với vận tốc ban đầu gần bằng 0 vào điện trường có hiệu điện thế $U$, rồi đi qua $S_3$ vào từ trường đều $B$ theo hướng vuông góc với đường sức từ và đập vào tấm ảnh.
+- Theo định lí biến thiên động năng: $\dfrac{1}{2}mv^2=qU$, suy ra $v=\sqrt{\dfrac{2qU}{m}}$.
+- Trong từ trường hạt chuyển động tròn đều với bán kính $r=\dfrac{mv}{qB}=\dfrac{1}{B}\sqrt{\dfrac{2mU}{q}}$.
+- Các hạt cùng điện tích nhưng khối lượng khác nhau chuyển động theo các bán kính khác nhau nên bị tách ra và đập vào các phần khác nhau của tấm ảnh.
+- Máy quang phổ khối được Aston dùng để phát hiện neon-20 và neon-22, xác nhận sự tồn tại của các đồng vị.
+
+<span class="the the-TC">TC</span><b> Máy gia tốc cyclotron</b>
+Cyclotron có hai hộp kim loại rỗng hình chữ D ($D_1$, $D_2$) đặt trong từ trường đều vuông góc với bề mặt hộp, giữa hai hộp có hiệu điện thế xoay chiều $U$. Hạt tích điện từ nguồn đặt gần tâm được gia tốc bởi điện trường ở khe hở, rồi chuyển động tròn đều trong mỗi hộp.
+- Sau mỗi nửa vòng tròn hạt lại đến khe hở, hiệu điện thế đổi dấu nên hạt lại được gia tốc.
+- Chu kì chuyển động của hạt $T=\dfrac{2\pi m}{qB}$ không đổi khi tốc độ và bán kính tăng, nên chu kì của điện áp xoay chiều phải bằng chu kì của hạt (tần số $f=\dfrac{qB}{2\pi m}$).
+- Sau $n$ lần gia tốc từ trạng thái nghỉ: $\dfrac{1}{2}mv_n^2=nqU$ và $r_n=\dfrac{1}{B}\sqrt{\dfrac{2mnU}{q}}$.
+- Khi hạt ra khỏi máy ở bán kính cực đại $R$: $v_{max}=\dfrac{qBR}{m}$, động năng cực đại $K_{max}=\dfrac{q^2B^2R^2}{2m}$ (không phụ thuộc $U$).
+
+<span class="the the-TC">TC</span><b> Máy phát điện từ thủy động lực học (MHD)</b>
+Chùm plasma (chứa nhiều ion dương và ion âm) được đưa vào từ trường giữa hai tấm kim loại song song A và B. Lực Lorentz làm các ion dương lệch về một tấm và các ion âm lệch về tấm kia, tạo ra hiệu điện thế giữa hai tấm; đồng thời xuất hiện điện trường giữa hai tấm. Khi lực điện cân bằng lực Lorentz $qE=qvB$ (tức $E=vB$) thì hiệu điện thế giữa hai tấm đạt cực đại, bằng suất điện động của máy phát: $U=Ed=Bvd$.
+
+<span class="the the-TC">TC</span><b> Lưu lượng kế điện từ</b>
+Lưu lượng kế điện từ dùng để đo lưu lượng của chất lỏng dẫn điện chảy trong ống đặt trong từ trường. Các ion dương và âm bị lực Lorentz làm lệch hướng, tạo ra hiệu điện thế giữa các điện cực ở hai bên thành ống. Khi lực điện trường cân bằng với lực Lorentz thì hiệu điện thế này ổn định; đo hiệu điện thế giữa hai điện cực là xác định được gián tiếp lưu lượng chất lỏng trong ống.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00108</span>Động cơ điện, loa điện động, nam châm điện (chuông điện, rơ-le), đo cảm ứng từ bằng cân dòng điện <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Q · BT tự luyện CĐ2 dạng 2 phần ① câu 14 (cân đo cảm ứng từ của nam châm chữ U) — đề tr.24, giải tr.175</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khung dây gồm 100 vòng, hình vuông cạnh $a = 5\ \text{cm}$. Cạnh dưới nằm ngang trong từ trường đều của nam châm chữ U (các đường cảm ứng cũng nằm ngang nhưng vuông góc với cạnh). Khung dây được treo thăng bằng ở một đầu đòn cân. Khi cho dòng điện $I = 5\ \text{A}$ chạy qua, phải đặt ở đĩa cân bên kia các quả cân để làm cân thăng bằng. Sau đó, quay nam châm $180^\circ$ để đổi chiều từ trường thì phải lấy bớt ở đĩa cân bên kia 100 g để lấy lại thăng bằng cho cân. Lấy $g = 10\ \text{m/s}^2$. Độ lớn của $B$ giữa hai cực nam châm hình chữ U là
+A. 0,04 T.
+B. 0,02 T.
+C. 0,08 T.
+D. 0,06 T.
+
+Bài giải:
+Lúc đầu: $F + P = mg$.
+Lúc sau: $F + (m - 0{,}1)g = P$.
+$\Rightarrow 2F = 0{,}1g \to B = \dfrac{0{,}1g}{2I(na)} = \dfrac{0{,}1 \times 10}{2 \times 5 \times (100.5.10^{-2})} = 0{,}02\ \text{T}$. Chọn B.</div></div></div><div class="dang"><h3><span class="ma">LDB00109</span>Lực Lorentz, hạt mang điện chuyển động trong từ trường <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm R · BT tự luyện CĐ3 phần ① câu 6 — đề tr.30, giải tr.178</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một hạt mang điện tích $3{,}2\cdot10^{-19}\ \text{C}$ chuyển động với tốc độ $5\cdot10^{6}\ \text{m/s}$ trong một từ trường đều theo hướng vuông góc với đường sức từ. Biết cảm ứng từ của từ trường có độ lớn là $0{,}036\ \text{T}$. Lực Lorentz tác dụng lên điện tích có độ lớn là
+A. $5{,}76\cdot10^{-14}\ \text{N}$.
+B. $5{,}76\cdot10^{-15}\ \text{N}$.
+C. $2{,}88\cdot10^{-14}\ \text{N}$.
+D. $2{,}88\cdot10^{-15}\ \text{N}$.
+
+Bài giải:
+Hạt chuyển động vuông góc với đường sức từ nên $F=|q|vB=3{,}2\cdot10^{-19}\cdot5\cdot10^{6}\cdot0{,}036=5{,}76\cdot10^{-14}\ \text{N}$.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm R · BT tự luyện CĐ3 phần ① câu 19 — đề tr.38, giải tr.178</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một điện tích $1\ \text{mC}$ có khối lượng $10\ \text{mg}$ bay với vận tốc có độ lớn $1200\ \text{m/s}$ vuông góc với các đường sức từ của một từ trường đều có độ lớn $1{,}2\ \text{T}$. Bỏ qua trọng lực tác dụng lên điện tích. Bán kính quỹ đạo của nó là
+A. $0{,}5\ \text{m}$.
+B. $1\ \text{m}$.
+C. $10\ \text{m}$.
+D. $0{,}1\ \text{mm}$.
+
+Bài giải:
+Lực Lorentz đóng vai trò lực hướng tâm nên $R=\dfrac{mv}{|q|B}=\dfrac{10\cdot10^{-6}\cdot1200}{10^{-3}\cdot1{,}2}=10\ \text{m}$.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm R · BT tự luyện CĐ3 phần ③ câu 1 — đề tr.41, giải tr.180</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một proton có vận tốc ban đầu bằng không được gia tốc bởi một điện trường hiệu điện thế $1880\ \text{V}$ và sau đó bay vuông góc với đường sức từ của một từ trường đều có độ lớn cảm ứng từ $5\cdot10^{-4}\ \text{T}$. Biết proton có khối lượng là $1{,}67\cdot10^{-27}\ \text{kg}$ và điện tích là $1{,}6\cdot10^{-19}\ \text{C}$. Độ lớn của lực Lorentz tác dụng lên proton là $x\cdot10^{-17}\ \text{N}$. Giá trị của $x$ là bao nhiêu (kết quả làm tròn đến chữ số hàng phần mười)?
+
+Bài giải:
+Theo định lí biến thiên động năng: $\dfrac{1}{2}mv^2=qU$, suy ra $v=\sqrt{\dfrac{2qU}{m}}$.
+Proton bay vuông góc với đường sức từ nên $F=|q|vB=B\sqrt{\dfrac{2q^3U}{m}}=4{,}8\cdot10^{-17}\ \text{N}$.
+Vậy $x=4{,}8$.</div></div></div></section><section><h2><span class="ma">LNB00053</span>Từ trường › Cảm ứng điện từ › Từ thông</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Khái niệm từ thông, đơn vị vêbe, công thức $\Phi = BS\cos\alpha$ khi mặt phẳng nghiêng góc với đường sức từ; từ thông cực đại, cực tiểu và độ biến thiên từ thông khi khung quay hoặc dịch chuyển.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm S · trang PDF 52, 53</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Từ thông</b>
+- Trong từ trường đều có cảm ứng từ $\vec{B}$, xét một mặt phẳng giới hạn có diện tích $S$ vuông góc với các đường sức từ. Tích của $B$ và $S$ gọi là từ thông đi qua mặt đó: $\Phi = BS$.
+- Đơn vị của từ thông là vêbe (weber), kí hiệu Wb: $1\ \text{Wb} = 1\ \text{T}\cdot\text{m}^2$.
+- Từ thông là đại lượng vô hướng. Nếu quy ước từ thông có giá trị dương khi cảm ứng từ hướng sang phải thì từ thông có giá trị âm khi cảm ứng từ hướng sang trái.
+
+<span class="the the-TC">TC</span><b> Cảm ứng từ là mật độ từ thông</b>
+- $B = \dfrac{\Phi}{S}$: độ lớn cảm ứng từ bằng lượng từ thông đi qua một đơn vị diện tích vuông góc với hướng từ trường; vì vậy cảm ứng từ còn được gọi là mật độ từ thông.
+- Từ thông tỉ lệ thuận với cảm ứng từ nên từ thông đặc trưng cho số đường sức từ xuyên qua mặt giới hạn.
+
+<span class="the the-TC">TC</span><b> Mặt phẳng không vuông góc với đường sức từ</b>
+- Gọi $\alpha$ là góc giữa vectơ pháp tuyến của mặt $S$ và hướng của từ trường; diện tích hình chiếu của mặt $S$ theo phương vuông góc với đường sức từ là $S' = S\cos\alpha$.
+- Từ thông qua mặt $S$ bằng từ thông qua $S'$: $\Phi = BS' = BS\cos\alpha$.</div></div></div>
+  <div class="o sgk"><div class="nhan">Lý thuyết bổ sung <span class="src sg">viết theo SGK KNTT — cần chị soát</span></div><div class="nd"><div class="tr">trạm S</div><div class="pre"><span class="the the-TC">TC</span><b> Cuộn dây N vòng; giá trị lớn nhất, nhỏ nhất của từ thông</b>
+- Từ thông qua cuộn dây gồm $N$ vòng: $\Phi = NBS\cos\alpha$.
+- $|\Phi|$ lớn nhất, bằng $NBS$, khi $\alpha = 0$ hoặc $\alpha = 180^\circ$ (mặt phẳng vuông góc với đường sức từ); $\Phi = 0$ khi $\alpha = 90^\circ$ (mặt phẳng song song với đường sức từ).</div></div></div><div class="dang"><h3><span class="ma">LDB00110</span>Nhận biết từ thông: định nghĩa, đơn vị weber, phụ thuộc góc <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ5 phần ① câu 1 — đề tr.PDF 53, đáp án tr.PDF 185</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đơn vị của từ thông là
+A. T.
+B. Wb.
+C. N.
+D. C.
+
+Bài giải:
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ5 phần ① câu 4 — đề tr.PDF 53, đáp án tr.PDF 185</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một mạch kín phẳng có diện tích $S$ đặt trong từ trường đều. Biết vectơ pháp tuyến $\vec{n}$ của mặt phẳng chứa mạch hợp với vectơ cảm ứng từ $\vec{B}$ một góc $\alpha$. Từ thông qua diện tích $S$ là
+A. $BS\cos\alpha$.
+B. $BS\sin\alpha$.
+C. $S\cos\alpha$.
+D. $S\sin\alpha$.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ5 phần ① câu 5 — đề tr.PDF 53, đáp án tr.PDF 185</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong từ trường đều có cường độ từ trường $B$, độ lớn từ thông đi qua một mặt hình chữ nhật có diện tích $S$ không thể là
+A. $0$.
+B. $BS$.
+C. $\dfrac{2}{3}BS$.
+D. $\dfrac{3}{2}BS$.
+
+Bài giải:
+Chọn D.</div></div></div><div class="dang"><h3><span class="ma">LDB00111</span>Tính từ thông Φ = NBS·cosα <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm S · Ví dụ mẫu CĐ5 — tr.PDF 52</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một vòng dây dẫn kín hình tròn được đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng vòng dây một góc $60^\circ$ và có độ lớn là $5\cdot10^{-4}\ \text{T}$. Từ thông qua vòng dây dẫn này có giá trị là $7{,}5\cdot10^{-7}\ \text{Wb}$. Tính bán kính của vòng dây tròn.
+
+Bài giải:
+Ta có: $\Phi = BS\cos\alpha \Rightarrow S = \dfrac{\Phi}{B\cos\alpha} = 3\cdot10^{-3}\ \text{m}^2$.
+Bán kính của vòng dây tròn: $S = \pi R^2 \Rightarrow R \approx 3{,}1\ \text{cm}$.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ5 phần ① câu 9 — đề tr.PDF 54, giải tr.PDF 185</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khung dây phẳng có diện tích $40\ \text{cm}^2$ gồm 30 vòng dây đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng khung dây một góc $30^\circ$ và có độ lớn là $0{,}05\ \text{T}$. Từ thông qua diện tích giới hạn bởi khung dây có độ lớn là
+A. $3{,}0\ \text{mWb}$.
+B. $5{,}2\ \text{mWb}$.
+C. $2{,}5\ \text{mWb}$.
+D. $4{,}3\ \text{mWb}$.
+
+Bài giải:
+$\Phi = NBS\cos\alpha = 30\times0{,}05\times40\cdot10^{-4}\times\cos30^\circ \approx 5{,}2\ \text{mWb}$. Chọn B.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ5 phần ① câu 14 — đề tr.PDF 54, giải tr.PDF 185</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đoạn dây dẫn có chiều dài $1\ \text{m}$ được uốn thành một khung kín hình tam giác đều. Khung dây được đặt trong một từ trường đều có độ lớn cảm ứng từ là $0{,}1\ \text{T}$ sao cho các đường sức từ vuông góc với mặt phẳng khung dây. Từ thông qua khung có độ lớn là
+A. $9{,}6\cdot10^{-3}\ \text{Wb}$.
+B. $5{,}6\cdot10^{-3}\ \text{Wb}$.
+C. $4{,}8\cdot10^{-3}\ \text{Wb}$.
+D. $0{,}011\ \text{Wb}$.
+
+Bài giải:
+Cả khung dài $1\ \text{m}$ nên mỗi cạnh dài $\dfrac{1}{3}\ \text{m}$, diện tích khung $S = \left(\dfrac{1}{3}\right)^2\times\dfrac{\sqrt{3}}{4} = \dfrac{\sqrt{3}}{36}\ \text{m}^2$.
+Do đó $\Phi = BS = 0{,}1\times\dfrac{\sqrt{3}}{36} \approx 4{,}8\cdot10^{-3}\ \text{Wb}$. Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00054</span>Từ trường › Cảm ứng điện từ › Hiện tượng cảm ứng điện từ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Thí nghiệm và điều kiện xuất hiện dòng điện cảm ứng, định luật Lenz (chiều dòng cảm ứng) và định luật Faraday (độ lớn suất điện động cảm ứng).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm S · trang PDF 57, 58</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Hiện tượng cảm ứng điện từ</b>
+- Thí nghiệm 1: nối điện kế nhạy với cuộn dây $B$ thành mạch kín rồi đưa thanh nam châm vào cuộn dây, để nam châm đứng yên trong cuộn dây, hoặc rút nam châm ra. Khi đưa vào hoặc rút ra, từ trường qua cuộn dây thay đổi và kim điện kế lệch: trong cuộn dây xuất hiện dòng điện cảm ứng.
+- Thí nghiệm 2: cuộn dây $A$ nối với nguồn điện qua biến trở và công tắc, lắp vào trong cuộn dây $B$ (nối với điện kế), luồn thanh sắt mềm vào cuộn $A$. Khi đóng hoặc mở công tắc, hoặc khi đầu trượt của biến trở trượt nhanh, dòng điện trong cuộn $A$ thay đổi nhanh nên từ trường trong cuộn $B$ thay đổi nhanh và trong cuộn $B$ xuất hiện dòng điện cảm ứng.
+- Kết luận: nếu từ thông đi qua vòng dây dẫn kín thay đổi thì trong vòng dây dẫn đó xuất hiện dòng điện cảm ứng.
+- Hiện tượng xuất hiện dòng điện cảm ứng trong cuộn dây được gọi là hiện tượng cảm ứng điện từ.
+
+<span class="the the-ĐL">ĐL</span><b> Định luật Lenz</b>
+- Dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường do nó sinh ra có tác dụng chống lại sự biến thiên của từ thông qua mạch kín đó.
+
+<span class="the the-PP">PP</span><b> Xác định chiều dòng điện cảm ứng</b>
+Xác định chiều của $\vec{B}$ qua mạch và xem từ thông qua mạch tăng hay giảm.
+Từ thông tăng thì từ trường cảm ứng $\vec{B}_c$ ngược chiều $\vec{B}$; từ thông giảm thì $\vec{B}_c$ cùng chiều $\vec{B}$ (chống lại sự biến thiên của từ thông).
+Từ chiều $\vec{B}_c$, dùng quy tắc nắm tay phải suy ra chiều dòng điện cảm ứng $I_c$.
+
+<span class="the the-ĐL">ĐL</span><b> Định luật Faraday</b>
+- Khi từ thông qua vòng dây kín thay đổi thì xuất hiện dòng điện cảm ứng, chứng tỏ trong vòng dây có suất điện động; suất điện động này gọi là suất điện động cảm ứng.
+- Độ lớn suất điện động cảm ứng trong mạch kín tỉ lệ với tốc độ biến thiên của từ thông qua mạch kín đó: $|e_c| = k\left|\dfrac{\Delta\Phi}{\Delta t}\right|$.
+- Trong hệ SI, $k = 1$. Nếu kể đến định luật Lenz thì $e_c = -\dfrac{\Delta\Phi}{\Delta t}$.</div></div><div class="nd"><div class="tr">trạm T · trang PDF 65, 66</div><div class="pre"><span class="the the-TC">TC</span><b> Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ</b>
+- Đoạn dây $MN$ dài $l$ chuyển động với tốc độ $v$ cắt các đường sức của từ trường đều $\vec{B}$ (mặt phẳng khung dây vuông góc với đường sức từ) làm thay đổi từ thông qua mạch kín, nên định luật Faraday có thể viết cụ thể hơn.
+- Trong thời gian $\Delta t$ đoạn dây dịch chuyển một đoạn $v\Delta t$, diện tích khung thay đổi $\Delta S = lv\Delta t$.
+- Độ lớn độ biến thiên từ thông: $\Delta\Phi = B\Delta S = Blv\Delta t$.
+- Độ lớn suất điện động cảm ứng: $E = \dfrac{\Delta\Phi}{\Delta t} = Blv$.
+
+<span class="the the-TC">TC</span><b> Vận tốc hợp với đường sức từ một góc $\theta$</b>
+- Khi hướng chuyển động vuông góc với đoạn dây nhưng hợp với đường sức từ một góc $\theta$, phân tích $\vec{v}$ thành hai thành phần: vuông góc với đường sức $v_1 = v\sin\theta$ và song song với đường sức $v_2 = v\cos\theta$.
+- Chỉ thành phần vuông góc cắt các đường sức từ mới tạo ra suất điện động cảm ứng: $E = Blv_1 = Blv\sin\theta$.
+
+<span class="the the-NX">NX</span><b> Đoạn dây chuyển động là một nguồn điện</b>
+- Đoạn dây $MN$ chuyển động đóng vai trò như một nguồn điện có suất điện động $E$.
+- Chiều dòng điện chạy qua đoạn dây $MN$ có thể xác định theo quy tắc bàn tay phải.</div></div></div>
+  <div class="o sgk"><div class="nhan">Lý thuyết bổ sung <span class="src sg">viết theo SGK KNTT — cần chị soát</span></div><div class="nd"><div class="tr">trạm S</div><div class="pre"><span class="the the-TC">TC</span><b> Suất điện động cảm ứng trong cuộn dây N vòng</b>
+- Cuộn dây gồm $N$ vòng: $|e_c| = N\left|\dfrac{\Delta\Phi}{\Delta t}\right|$, trong đó $\Delta\Phi$ là độ biến thiên từ thông qua một vòng dây.
+- Dòng điện cảm ứng trong mạch kín có điện trở $R$: $I_c = \dfrac{|e_c|}{R}$.</div></div><div class="nd"><div class="tr">trạm T</div><div class="pre"><span class="the the-ĐL">ĐL</span><b> Quy tắc bàn tay phải</b>
+- Đặt bàn tay phải sao cho các đường sức từ hướng vào lòng bàn tay, ngón cái choãi ra $90^\circ$ chỉ chiều chuyển động của đoạn dây.
+- Chiều từ cổ tay đến bốn ngón tay là chiều của dòng điện cảm ứng (chiều suất điện động) trong đoạn dây.</div></div></div><div class="dang"><h3><span class="ma">LDB00112</span>Điều kiện xuất hiện dòng cảm ứng và định luật Lenz <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ6 phần ① câu 1 — đề tr.PDF 59, đáp án tr.PDF 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây đúng khi nói về dòng điện cảm ứng?
+A. Nếu một mạch kín di chuyển trong từ trường thì sẽ xuất hiện dòng điện cảm ứng trong mạch.
+B. Nếu một mạch kín được đặt trong từ trường đều thì sẽ xuất hiện dòng điện cảm ứng trong mạch.
+C. Khi từ thông qua mạch kín bằng 0 thì sẽ không xuất hiện dòng điện cảm ứng trong mạch.
+D. Khi số lượng đường sức từ qua mạch kín thay đổi thì sẽ xuất hiện dòng điện cảm ứng trong mạch.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ6 phần ① câu 3 — đề tr.PDF 59, đáp án tr.PDF 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một cuộn dây dẫn hình tròn khép kín đặt trong từ trường đều, mặt phẳng của cuộn dây vuông góc với đường sức từ. Để xuất hiện dòng điện cảm ứng trong cuộn dây thì cuộn dây phải
+A. di chuyển thẳng đều dọc theo một đường thẳng trong mặt phẳng chứa nó.
+B. di chuyển thẳng nhanh dần đều dọc theo một đường thẳng trong mặt phẳng chứa nó.
+C. quay quanh trục là đường kính bất kì.
+D. di chuyển dọc theo hướng của đường sức từ.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm S · Ví dụ 1 CĐ6 — tr.PDF 58</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khung dây hình chữ nhật được đặt gần một dây dẫn thẳng dài vô hạn có dòng điện chạy qua, trong cùng mặt phẳng với dây dẫn (mặt phẳng trang giấy), đoạn dây trên và dưới của khung dây song song với dây dẫn. Khi cho khung dây chuyển động tịnh tiến theo một trong ba hướng khác nhau dưới đây thì có thể tạo ra dòng điện cảm ứng trong khung dây không?
+(1) Khung dây chuyển động theo hướng song song với dây dẫn.
+(2) Khung dây chuyển động theo hướng vuông góc với dây dẫn sao cho khung dây và dây dẫn luôn cùng thuộc mặt phẳng trang giấy.
+(3) Khung dây chuyển động theo hướng vuông góc với bề mặt trang giấy ra phía ngoài.
+
+Bài giải:
+Từ trường xung quanh một dây dẫn thẳng dài vô hạn là một từ trường phân bố đối xứng quanh trục của dây dẫn thẳng, càng gần dây dẫn thì từ trường càng mạnh.
+(1) Trong quá trình khung dây chuyển động theo hướng song song với dây dẫn, từ thông qua khung dây không thay đổi nên không tạo ra dòng điện cảm ứng trong khung dây.
+(2) Trong quá trình khung dây chuyển động theo hướng vuông góc với dây dẫn trong cùng mặt phẳng, thì càng xa dây dẫn từ trường càng yếu, từ thông qua khung dây có độ lớn giảm, vì vậy trong khung dây sinh ra dòng điện cảm ứng.
+(3) Trong quá trình khung dây chuyển động theo hướng vuông góc với bề mặt trang giấy, dù nó đi chuyển vào trong hay ra ngoài thì độ lớn từ thông qua khung dây đều giảm, vì vậy trong khung dây sinh ra dòng điện cảm ứng.</div></div></div><div class="dang"><h3><span class="ma">LDB00113</span>Tính suất điện động cảm ứng e = |ΔΦ/Δt| và dòng cảm ứng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ6 phần ① câu 21 — đề tr.PDF 62, giải tr.PDF 188</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nếu từ thông đi qua một khung dây kín tăng đều với tốc độ $4\ \text{Wb/s}$ thì suất điện động cảm ứng trong khung dây có độ lớn là
+A. $4\ \text{V}$.
+B. $2\ \text{V}$.
+C. $0$.
+D. $8\ \text{V}$.
+
+Bài giải:
+$|e_c| = \left|\dfrac{\Delta\Phi}{\Delta t}\right| = 4\ \text{V}$. Chọn A.</div></div><div class="nd vd"><div class="tr">trạm S · BT tự luyện CĐ6 phần ① câu 26 — đề tr.PDF 63, giải tr.PDF 188</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một cuộn dây kín phẳng có điện trở $5\ \Omega$ và gồm 100 vòng dây. Nếu từ thông đi qua diện tích giới hạn bởi cuộn dây giảm đều với tốc độ $0{,}2\ \text{mWb/s}$ thì dòng điện cảm ứng trong cuộn dây có cường độ là
+A. $8\ \text{mA}$.
+B. $10\ \text{mA}$.
+C. $4\ \text{mA}$.
+D. $2\ \text{mA}$.
+
+Bài giải:
+$I_c = \dfrac{|e_c|}{R} = \dfrac{N}{R}\times\left|\dfrac{\Delta\Phi}{\Delta t}\right| = \dfrac{100}{5}\times0{,}2\cdot10^{-3} = 4\ \text{mA}$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm S · Ví dụ 2 CĐ6 — tr.PDF 59</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một vòng dây dẫn kín, phẳng có diện tích $20\ \text{cm}^2$ được đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng vòng dây một góc $60^\circ$. Trong khoảng thời gian $0{,}05\ \text{s}$, độ lớn cảm ứng từ của từ trường giảm đều từ $0{,}08\ \text{T}$ về $0{,}03\ \text{T}$ thì suất điện động cảm ứng xuất hiện trong vòng dây có độ lớn là bao nhiêu?
+
+Bài giải:
+Ta có: $\Phi = BS\cos\alpha$, ở đây $S\cos\alpha$ không đổi nên $\Delta\Phi = S\cos\alpha\times\Delta B$.
+Độ lớn độ biến thiên từ thông: $|\Delta\Phi| = S\cos\alpha\,|B_s - B_t| = 20\cdot10^{-4}\times\cos60^\circ\times|0{,}03 - 0{,}08| = 5\cdot10^{-5}\ \text{Wb}$.
+Độ lớn suất điện động cảm ứng: $|e_c| = \left|\dfrac{\Delta\Phi}{\Delta t}\right| = \dfrac{5\cdot10^{-5}}{0{,}05} = 10^{-3}\ \text{V} = 1\ \text{mV}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00114</span>Thanh dẫn chuyển động cắt đường sức, khung đi vào/ra vùng từ trường <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm T · BT tự luyện CĐ7 phần ① câu 6 — đề in tr.62, giải in tr.186</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đoạn dây $ab$ trượt với tốc độ $v = 20\ \text{m/s}$ sang bên trái dọc theo hai ray dẫn điện nhẵn, hai ray được nối với điện trở $R = 2\ \Omega$. Tất cả đặt trong từ trường đều có cảm ứng từ $B = 0{,}4\ \text{T}$ và đường sức hướng vuông góc với mặt phẳng khung dây. Biết đoạn dây $ab$ dài $50\ \text{cm}$ có điện trở $r = 0{,}5\ \Omega$. Lực từ tác dụng lên đoạn dây $ab$
+A. hướng sang phải và có độ lớn $0{,}40\ \text{N}$.
+B. hướng sang trái và có độ lớn $0{,}40\ \text{N}$.
+C. hướng sang phải và có độ lớn $0{,}32\ \text{N}$.
+D. hướng sang trái và có độ lớn $0{,}32\ \text{N}$.
+
+Bài giải:
+Suất điện động cảm ứng trong đoạn dây: $E = Blv$; dòng điện trong mạch: $I = \dfrac{E}{R+r} = \dfrac{Blv}{R+r}$.
+Lực từ tác dụng lên đoạn dây: $F = BIl = \dfrac{(Bl)^2 v}{R+r} = \dfrac{(0{,}4\cdot 0{,}5)^2\cdot 20}{2+0{,}5} = 0{,}32\ \text{N}$.
+Lực từ là lực cản chuyển động nên hướng ngược chiều chuyển động, tức là hướng sang phải.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm T · BT tự luyện CĐ7 phần ① câu 8 — đề in tr.62, giải in tr.186</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hai ray dẫn điện nhẵn song song (đủ dài) cách nhau $0{,}5\ \text{m}$ được cố định trên mặt phẳng nằm ngang, hai đầu ray mắc với điện trở $R = 1\ \Omega$. Tất cả đặt trong từ trường đều $B = 2\ \text{T}$ hướng xuống theo phương thẳng đứng. Đoạn dây $MN$ khối lượng $0{,}5\ \text{kg}$ và điện trở $r = 0{,}5\ \Omega$. Tác dụng lực $F = 2\ \text{N}$ nằm ngang vuông góc với đoạn dây thì đoạn dây bắt đầu trượt từ trạng thái đứng yên. Tốc độ cực đại mà đoạn dây đạt được là
+A. $5\ \text{m/s}$.
+B. $2\ \text{m/s}$.
+C. $3\ \text{m/s}$.
+D. $4\ \text{m/s}$.
+
+Bài giải:
+Phương trình chuyển động: $F - BIl = ma$, suy ra $a = \dfrac{F - BIl}{m}$.
+Tốc độ cực đại khi $a = 0$, tức $F = BIl$, với $I = \dfrac{Blv}{R+r}$ nên $F = \dfrac{(Bl)^2 v}{R+r}$.
+$v_{\max} = \dfrac{R+r}{(Bl)^2}F = \dfrac{1+0{,}5}{(2\cdot 0{,}5)^2}\cdot 2 = 3\ \text{m/s}$.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm T · BT tự luyện CĐ7 phần ① câu 9 — đề in tr.62, giải in tr.186</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hai thanh ray dẫn điện nhẵn song song nghiêng một góc $\alpha = 60^\circ$ so với phương thẳng đứng, cách nhau $1\ \text{m}$, đầu trên được nối với điện trở $R = 9\ \Omega$. Tất cả đặt trong từ trường đều $B = 1\ \text{T}$ có đường sức vuông góc với mặt phẳng chứa hai ray. Một đoạn dây dài $l = 1\ \text{m}$ và khối lượng $m = 100\ \text{g}$ bắt đầu trượt xuống từ đầu trên của ray từ trạng thái đứng yên, hướng chuyển động của thanh kim loại luôn vuông góc với thanh. Điện trở của thanh kim loại là $r = 1\ \Omega$. Lấy $g = 10\ \text{m/s}^2$. Tốc độ cực đại của đoạn dây là
+A. $5\sqrt{3}\ \text{m/s}$.
+B. $5\ \text{m/s}$.
+C. $2\sqrt{3}\ \text{m/s}$.
+D. $2\ \text{m/s}$.
+
+Bài giải:
+Theo quy tắc bàn tay phải, dòng điện cảm ứng đi vào; theo quy tắc bàn tay trái, lực từ song song với ray và hướng lên.
+Vì ray hợp với phương thẳng đứng góc $\alpha$ nên thành phần trọng lực dọc theo ray là $mg\cos\alpha$: $mg\cos\alpha - BIl = ma$, suy ra $a = g\cos\alpha - \dfrac{BIl}{m}$.
+Tốc độ cực đại khi $a = 0$: $mg\cos\alpha = BIl = \dfrac{(Bl)^2 v}{R+r}$.
+$v_{\max} = \dfrac{R+r}{(Bl)^2}\,mg\cos\alpha = \dfrac{9+1}{(1\cdot 1)^2}\cdot(0{,}1\cdot 10\cdot\cos 60^\circ) = 5\ \text{m/s}$.
+Chọn B.</div></div></div></section><section><h2><span class="ma">LNB00055</span>Từ trường › Cảm ứng điện từ › Ứng dụng cảm ứng điện từ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Dòng điện xoáy (dòng Foucault) sinh ra khi khối kim loại đặt trong từ trường biến thiên và các ứng dụng của nó: lò luyện kim, bếp từ, phanh điện từ; cách giảm tác hại của dòng điện xoáy trong lõi thép máy biến áp, động cơ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm T · trang PDF 105, 106</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Dòng điện xoáy (dòng Fu-cô)</b>
+- Khi một khối kim loại đặt trong từ trường biến thiên, từ thông qua khối kim loại thay đổi nên dòng điện cảm ứng xuất hiện bên trong khối.
+- Có thể coi khối kim loại gồm nhiều vòng dây ghép với nhau; dòng điện cảm ứng tạo thành các vòng khép kín giống như xoáy nước nên gọi là dòng điện xoáy hay dòng điện Foucault (Fu-cô).
+
+<span class="the the-TC">TC</span><b> Lò luyện kim</b>
+- Lò luyện có cuộn dây quấn bên ngoài lò; khi dòng điện qua cuộn dây thay đổi nhanh thì gây ra dòng điện xoáy trong kim loại trong lò.
+- Nhiệt lượng do dòng điện xoáy tạo ra làm nóng chảy kim loại.
+- Ưu điểm: toàn bộ quá trình có thể thực hiện trong chân không, ngăn các tạp chất trong không khí xâm nhập vào kim loại và có thể nấu chảy các hợp kim chất lượng cao.
+
+<span class="the the-TC">TC</span><b> Bếp từ</b>
+- Bếp từ dùng dòng điện xoáy để tạo ra lượng nhiệt lớn nấu thức ăn. Mặt bếp làm bằng tấm vật liệu phi kim có độ phẳng cao.
+- Bếp từ mắc vào nguồn điện xoay chiều; thông qua thiết bị chuyển đổi, dòng điện xoay chiều tần số cao chạy qua cuộn dây, sinh ra từ trường thay đổi nhanh.
+- Khi đặt nồi sắt lên bếp, đáy nồi nằm trong từ trường biến đổi nhanh, tạo ra vô số dòng điện xoáy nhỏ về cơ bản nằm trong mặt phẳng thẳng đứng của đáy nồi, làm bản thân nồi nóng lên nhanh chóng, do đó làm nóng thức ăn.
+
+<span class="the the-TC">TC</span><b> Hãm chuyển động bằng điện từ (phanh điện từ)</b>
+- Tấm đồng (hoặc nhôm) dao động trong mặt phẳng thẳng đứng như con lắc, đặt giữa hai cực của nam châm: bên trong tấm kim loại xuất hiện dòng điện xoáy do từ thông thay đổi.
+- Điện trở của tấm đồng (hoặc nhôm) rất nhỏ nên dòng điện xoáy rất mạnh. Theo định luật Lenz, lực từ tác dụng lên dây dẫn mang dòng điện xoáy trong từ trường là lực cản, làm con lắc nhanh chóng dừng lại.
+- Tác dụng hãm của dòng điện xoáy được dùng trong phanh điện từ ở các xe có trọng tải lớn.
+
+<span class="the the-CY">CY</span><b> Dòng điện xoáy cũng có hại, cần giảm tác hại</b>
+- Trong lõi sắt của động cơ hay máy biến áp, dòng điện xoáy lớn sinh nhiệt, tiêu tốn một lượng lớn năng lượng điện, thậm chí có thể làm cháy các thiết bị.
+- Để giảm tổn thất do dòng điện xoáy: dùng thép silicon có điện trở suất cao làm vật liệu lõi; dùng nhiều lá thép silicon mỏng cách điện ghép lại, mặt phẳng của các tấm thép song song với đường sức từ.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00115</span>Máy phát điện, bếp từ, dòng Foucault, phanh điện từ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm T · BT CĐ11 câu 1 — đề in tr.102, đáp án in tr.204</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Vật liệu thích hợp để làm nồi sử dụng trên bếp từ là
+A. sắt.
+B. gốm sứ.
+C. thủy tinh.
+D. nhựa.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm T · BT CĐ11 câu 4 — đề in tr.102, đáp án in tr.204</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nguyên lí hoạt động của thiết bị nào sau đây không liên quan tới dòng điện xoáy?
+A. Lò luyện kim.
+B. Bếp từ.
+C. Máy dò kim loại.
+D. Lò vi sóng.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm T · BT CĐ11 câu 8 — đề in tr.102, đáp án in tr.204</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nguyên lý của bếp từ là sử dụng suất điện động cảm ứng để tạo ra dòng điện xoáy ở đáy nồi làm nồi nóng lên, từ đó làm nóng thức ăn trong nồi. Phát biểu nào sau đây về bếp từ là đúng?
+A. Mặt bếp làm bằng chất cách nhiệt, bộ phận làm nóng là đáy nồi sắt.
+B. Mặt bếp làm bằng sắt tạo ra nhiệt để làm nóng.
+C. Có thể sử dụng nồi thủy tinh trên bếp từ để làm nóng thức ăn.
+D. Nguyên lý hoạt động của bếp từ tương tự như bếp hồng ngoại.
+
+Bài giải:
+Chọn A.</div></div></div></section><section><h2><span class="ma">LNB00056</span>Từ trường › Dòng điện xoay chiều › Tạo ra dòng điện xoay chiều</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Khung dây quay đều trong từ trường đều: biểu thức từ thông Φ(t), suất điện động cảm ứng e(t), E0 = NBSω; cấu tạo, tần số và suất điện động của máy phát điện xoay chiều một pha, ba pha.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm V · trang PDF 81, 82</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Hiện tượng cảm ứng điện từ trên khung dây</b>
+- Khi từ thông qua khung dây dẫn biến thiên thì trên khung dây xuất hiện một suất điện động cảm ứng.
+- Khung dây có $N$ vòng, diện tích $S$, quay đều với tốc độ $n$ (vòng/s) trong từ trường đều có vectơ cảm ứng từ $\vec{B}$ vuông góc với trục quay; tốc độ góc $\omega = 2\pi n$ (rad/s).
+- Khi khung quay đều thì vectơ pháp tuyến $\vec{n}$ của mặt phẳng khung cũng quay đều với tốc độ góc $\omega$.
+
+<span class="the the-TC">TC</span><b> Biểu thức từ thông qua khung dây</b>
+$\Phi = NBS\cos(\vec{B},\vec{n}) = \Phi_0\cos(\omega t + \varphi)$
+- $\Phi_0 = NBS$ là từ thông cực đại qua khung dây; $BS$ là từ thông cực đại qua một vòng dây.
+- Độ lớn pha ban đầu: $|\varphi| = (\vec{B},\vec{n})_{t=0}$.
+
+<span class="the the-TC">TC</span><b> Biểu thức suất điện động cảm ứng</b>
+$e = -\Phi'(t) = \omega NBS\cos\left(\omega t + \varphi - \dfrac{\pi}{2}\right) = E_0\cos(\omega t + \varphi_e)$
+- $E_0 = \omega NBS = \omega\Phi_0$ là suất điện động cực đại; pha ban đầu $\varphi_e = \varphi - \dfrac{\pi}{2}$.
+- Suất điện động hiệu dụng: $E = \dfrac{E_0}{\sqrt{2}} = \dfrac{\omega NBS}{\sqrt{2}}$.
+
+<span class="the the-CY">CY</span><b> Quan hệ giữa e và Φ</b>
+- Tại một thời điểm, suất điện động $e$ trễ pha $\dfrac{\pi}{2}$ so với từ thông $\Phi$ (vuông pha).
+- $\left(\dfrac{\Phi}{\Phi_0}\right)^2 + \left(\dfrac{e}{E_0}\right)^2 = 1 \;\Leftrightarrow\; \Phi^2 + \dfrac{e^2}{\omega^2} = \Phi_0^2 = (NBS)^2$.
+
+<span class="the the-TC">TC</span><b> Máy phát điện xoay chiều một pha</b>
+- Phần cảm: tạo ra từ thông biến thiên, là vành tròn đặt $p$ cặp cực nam châm xếp xen kẽ cực bắc, cực nam đều nhau. Phần ứng: các cuộn dây giống nhau, xếp cách đều nhau trên một vòng tròn.
+- Một trong hai phần được đặt cố định, phần còn lại quay quanh một trục. Phần cố định gọi là stato, phần quay gọi là rôto.
+- Tần số: $f = np$ (Hz) nếu rôto quay $n$ (vòng/giây); $f = \dfrac{Np}{60}$ (Hz) nếu rôto quay $N$ (vòng/phút).
+- Suất điện động cực đại ở hai đầu ra: $E_0 = \omega\,\Phi_0\,N\,[\text{số cuộn dây}]$, với $\Phi_0$ là từ thông cực đại qua một vòng dây và $N$ là số vòng của một cuộn dây.
+
+<span class="the the-TC">TC</span><b> Máy phát điện xoay chiều ba pha</b>
+- Phần cảm thường là nam châm điện, là rôto. Phần ứng gồm ba cuộn dây giống nhau quấn quanh lõi thép, đặt cách nhau $\dfrac{1}{3}$ vòng tròn trên thân stato.
+- Ba suất điện động có cùng tần số, cùng biên độ, từng đôi một lệch pha nhau $\dfrac{2\pi}{3}$: $e_1 = E_0\cos\omega t$; $e_2 = E_0\cos\left(\omega t + \dfrac{2\pi}{3}\right)$; $e_3 = E_0\cos\left(\omega t - \dfrac{2\pi}{3}\right)$.
+- Tại mọi thời điểm: $e_1 + e_2 + e_3 = 0$; $e_1^2 + \left(\dfrac{e_2 - e_3}{\sqrt{3}}\right)^2 = E_0^2$; $e_2e_3 = e_1^2 - \dfrac{3E_0^2}{4}$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00116</span>Khung dây quay đều trong từ trường <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm V · Ví dụ mẫu 1 — tr.83</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khung dây dẫn phẳng dẹt hình chữ nhật có 1000 vòng dây, diện tích mỗi vòng là $40\ \text{cm}^2$. Khung quay đều với tốc độ 3000 vòng/phút quanh một trục đối xứng nằm trong mặt phẳng của khung, trong một từ trường đều có vectơ cảm ứng từ vuông góc với trục quay và có độ lớn $0{,}01\ \text{T}$. Xác định suất điện động hiệu dụng xuất hiện trên khung dây.
+
+Bài giải:
+$n = 3000$ vòng/phút $= 50$ vòng/s $\Rightarrow \omega = 2\pi n = 100\pi\ \text{(rad/s)}$.
+$E_0 = \omega NBS = 4\pi\ \text{(V)} \Rightarrow E = \dfrac{E_0}{\sqrt{2}} = 2\pi\sqrt{2} \approx 8{,}89\ \text{(V)}$.</div></div><div class="nd vd"><div class="tr">trạm V · Ví dụ mẫu 2 — tr.83</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khung dây kim loại phẳng có diện tích $S = 100\ \text{cm}^2$ gồm $N = 500$ vòng dây, quay đều với tốc độ 3000 vòng/phút quanh trục vuông góc với đường sức của một từ trường đều có cảm ứng từ $B = 0{,}1\ \text{T}$. Gốc thời gian là lúc vectơ pháp tuyến của mặt phẳng khung dây ngược hướng với vectơ cảm ứng từ. Xác định:
+a) Biểu thức suất điện động cảm ứng xuất hiện trong khung dây.
+b) Góc hợp bởi vectơ pháp tuyến của mặt phẳng khung dây với vectơ cảm ứng từ tại $t = 0{,}2025\ \text{s}$.
+
+Bài giải:
+a) $\Phi_0 = NBS = 0{,}5\ \text{Wb}$; $\omega = 2\pi n = 100\pi\ \text{(rad/s)} \Rightarrow E_0 = \omega\Phi_0 = 50\pi\ \text{(V)}$.
+Tại $t = 0$: $|\varphi| = (\vec{n},\vec{B})_{t=0} = \pi \Rightarrow \varphi = \pi \Rightarrow \varphi_e = \varphi - \dfrac{\pi}{2} = \dfrac{\pi}{2}$.
+Vậy $e = 50\pi\cos(100\pi t + 0{,}5\pi)\ \text{(V)}$.
+
+b) Pha của từ thông: $\alpha_\Phi = 100\pi t + \pi$.
+Tại $t = 0{,}2025\ \text{s}$: $\alpha_\Phi = 21{,}25\pi \equiv -\dfrac{3\pi}{4} \Rightarrow (\vec{n},\vec{B}) = \dfrac{3\pi}{4}$.</div></div><div class="nd vd"><div class="tr">trạm V · BT tự luyện Dạng 1 câu 18 — đề tr.86, giải tr.200</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khung dây hình chữ nhật có kích thước $20\ \text{cm} \times 10\ \text{cm}$, gồm 100 vòng dây được đặt trong từ trường đều có cảm ứng từ $0{,}318\ \text{T}$. Cho khung quay quanh trục đối xứng của nó với tốc độ góc 120 vòng/phút. Gốc thời gian $t = 0$ là lúc vectơ pháp tuyến của khung cùng hướng với vectơ cảm ứng từ. Khi $t = \dfrac{5}{24}\ \text{s}$, suất điện động cảm ứng xuất hiện trong khung bằng
+A. $-4{,}0\ \text{V}$.
+B. $6{,}9\ \text{V}$.
+C. $-6{,}9\ \text{V}$.
+D. $4{,}0\ \text{V}$.
+
+Bài giải:
+$\Phi_0 = NBS = 0{,}636\ \text{Wb}$; $120$ vòng/phút $= 2$ vòng/s nên $f = 2\ \text{Hz}$, $\omega = 2\pi f = 4\pi\ \text{(rad/s)}$.
+Tại $t = 0$: $|\varphi| = (\vec{n},\vec{B})_{t=0} = 0 \Rightarrow \varphi = 0$.
+$\Phi = 0{,}636\cos 4\pi t\ \text{(Wb)} \Rightarrow e = 8\cos(4\pi t - 0{,}5\pi)\ \text{(V)}$.
+Tại $t = \dfrac{5}{24}\ \text{s}$: pha của $e$ bằng $\dfrac{\pi}{3} \Rightarrow e = \dfrac{E_0}{2} = 4\ \text{(V)}$ và đang giảm.
+Chọn D.</div></div></div></section><section><h2><span class="ma">LNB00057</span>Từ trường › Dòng điện xoay chiều › Các đại lượng của dòng điện xoay chiều</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Biểu thức tức thời của dòng điện và điện áp xoay chiều, các đại lượng cực đại, tần số góc, chu kì, tần số, pha, độ lệch pha, và giá trị hiệu dụng (cùng công suất, nhiệt lượng trên điện trở thuần, dụng cụ đo).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm U · trang PDF 70, 71</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Dòng điện xoay chiều</b>
+Dòng điện xoay chiều (dạng sin hay cosin) là dòng điện có cường độ biến thiên tuần hoàn theo thời gian theo quy luật của hàm sin hoặc cosin. Dạng tổng quát: $i = I_0\cos(\omega t+\varphi)$
+- $i$ là cường độ tức thời (giá trị của cường độ dòng điện ở thời điểm $t$).
+- $I_0 &gt; 0$ là cường độ dòng điện cực đại.
+- $\omega$ là tần số góc; $T = \dfrac{2\pi}{\omega}$ là chu kì; $f = \dfrac{\omega}{2\pi}$ là tần số.
+- $(\omega t+\varphi)$ là pha của $i$; $\varphi$ là pha ban đầu.
+
+<span class="the the-ĐN">ĐN</span><b> Điện áp xoay chiều</b>
+Hiệu điện thế biến thiên theo thời gian theo quy luật dạng sin gọi là điện áp xoay chiều: $u = U_0\cos(\omega t+\varphi)$
+- $u$ là điện áp tức thời; $U_0 &gt; 0$ là điện áp cực đại.
+- $\omega$, $T = \dfrac{2\pi}{\omega}$, $f = \dfrac{\omega}{2\pi}$ là tần số góc, chu kì, tần số của $u$.
+- $(\omega t+\varphi)$ là pha của $u$; $\varphi$ là pha ban đầu.
+
+<span class="the the-TC">TC</span><b> Độ lệch pha giữa u và i</b>
+Khi đặt vào hai đầu mạch điện bất kì điện áp xoay chiều $u = U_0\cos(\omega t+\varphi_u)$ thì cường độ dòng điện qua mạch có dạng $i = I_0\cos(\omega t+\varphi_i)$.
+Đại lượng $\varphi = \varphi_u - \varphi_i$ gọi là độ lệch pha của $u$ so với $i$.
+
+<span class="the the-ĐN">ĐN</span><b> Giá trị hiệu dụng của cường độ dòng điện</b>
+Dòng điện xoay chiều cũng có tác dụng nhiệt Jun – Len-xơ như dòng điện một chiều.
+Với $i = I_0\cos\omega t$ chạy qua điện trở thuần $R$, công suất toả nhiệt tức thời là $p = Ri^2 = \dfrac{RI_0^2}{2} + \dfrac{RI_0^2}{2}\cos 2\omega t$. Giá trị trung bình trong một chu kì của số hạng thứ hai bằng 0 nên công suất toả nhiệt trung bình là $P = \dfrac{RI_0^2}{2}$, nhiệt lượng toả ra trong thời gian $t$ là $Q = Pt = \dfrac{RI_0^2}{2}t$.
+Dòng điện không đổi cường độ $I$ toả ra cùng nhiệt lượng $Q = RI^2t$ trong cùng thời gian $t$ trên cùng điện trở $R$ thì $I = \dfrac{I_0}{\sqrt{2}}$.
+$I$ gọi là cường độ hiệu dụng của dòng điện xoay chiều: bằng cường độ của dòng điện không đổi mà khi cho hai dòng điện lần lượt đi qua cùng một điện trở trong những khoảng thời gian bằng nhau đủ dài thì nhiệt lượng toả ra trên điện trở bằng nhau.
+
+<span class="the the-TC">TC</span><b> Công thức giá trị hiệu dụng</b>
+- Cường độ hiệu dụng: $I = \dfrac{I_0}{\sqrt{2}}$
+- Điện áp hiệu dụng: $U = \dfrac{U_0}{\sqrt{2}}$
+- Công suất toả nhiệt trung bình trên điện trở $R$: $P = RI^2 = \dfrac{RI_0^2}{2}$
+- Nhiệt lượng toả ra trên $R$ trong thời gian $t$: $Q = Pt = RI^2t$
+
+<span class="the the-CY">CY</span><b> Số liệu ghi trên thiết bị và dụng cụ đo</b>
+- Các số liệu ghi trên các thiết bị điện đều là giá trị hiệu dụng; khi nói về cường độ dòng điện hay điện áp xoay chiều mà không nói gì thêm là nói về giá trị hiệu dụng. Chẳng hạn bóng đèn ghi 220 V – 3 A nghĩa là điện áp hiệu dụng (định mức) $U = 220\ \text{V}$ và cường độ hiệu dụng (định mức) $I = 3\ \text{A}$.
+- Đo điện áp hiệu dụng và cường độ hiệu dụng của dòng điện xoay chiều bằng vôn kế và ampe kế xoay chiều (nguyên tắc dựa trên các tác dụng không phụ thuộc chiều dòng điện).</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00117</span>Giá trị cực đại, hiệu dụng, tần số, chu kì, pha <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm U · Ví dụ mẫu 1 — tr.72</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một dòng điện chạy qua một đoạn mạch có cường độ $i = 2\sqrt{2}\cos\left(\dfrac{250\pi}{3}t-\dfrac{\pi}{3}\right)$ (A).
+a) Xác định cường độ hiệu dụng của dòng điện.
+b) Xác định trạng thái của dòng điện tại thời điểm $t = 19\ \text{ms}$.
+
+Bài giải:
+a) $I = \dfrac{I_0}{\sqrt{2}} = \dfrac{2\sqrt{2}}{\sqrt{2}} = 2\ \text{A}$.
+
+b) Tại $t = 19\ \text{ms}$: pha của $i$ là $\dfrac{250\pi}{3}\times 0{,}019 - \dfrac{\pi}{3} = \dfrac{5\pi}{4} \equiv -\dfrac{3\pi}{4}$.
+Khi đó $i = -\dfrac{I_0\sqrt{2}}{2} = -2\ \text{A}$ và đang tăng.</div></div><div class="nd vd"><div class="tr">trạm U · BT tự luyện CĐ8 phần ① câu 62 — đề tr.79, giải tr.197</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một dòng điện xoay chiều hình sin có giá trị cực đại là $3\ \text{A}$ chạy qua một ấm điện. Ấm điện này đun sôi $1$ lít nước với nhiệt độ ban đầu là $37\ ^\circ\text{C}$ trong thời gian $14$ phút. Bỏ qua mọi hao phí. Biết khối lượng riêng của nước là $1\ \text{kg/dm}^3$, nhiệt dung riêng của nước là $4{,}2\ \text{kJ/(kg.K)}$. Điện trở của ấm điện này là
+A. $35\ \Omega$.
+B. $70\ \Omega$.
+C. $17{,}5\ \Omega$.
+D. $140\ \Omega$.
+
+Bài giải:
+Nhiệt lượng toả ra trên ấm bằng nhiệt lượng làm nước sôi: $Q = I^2Rt = mc\Delta t$, với cường độ hiệu dụng $I = \dfrac{I_0}{\sqrt{2}} = \dfrac{3}{\sqrt{2}}\ \text{A}$.
+Suy ra $R = \dfrac{mc\Delta t}{I^2t} = \dfrac{1\cdot 4200\cdot(100-37)}{\left(\dfrac{3}{\sqrt{2}}\right)^2\cdot 14\cdot 60} = 70\ \Omega$.
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm U · Ví dụ mẫu 3 — tr.72</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hai đầu của một đèn ống thông dụng được mắc vào điện áp $u = 220\sqrt{2}\cos 100\pi t$ (V). Biết đèn sáng khi điện áp giữa hai đầu của đèn có độ lớn lớn hơn $110\sqrt{6}\ \text{V}$. Xác định khoảng thời gian đèn tối (không sáng) trong một chu kì.
+
+Bài giải:
+Đèn sáng khi $|u| &gt; 110\sqrt{6}\ \text{V} = \dfrac{U_0\sqrt{3}}{2}$.
+Chu kì $T = \dfrac{2\pi}{100\pi} = 0{,}02\ \text{s}$. Diễn biến của $u$ trong một chu kì trên trục điện áp: đèn tối khi $|u| &lt; \dfrac{U_0\sqrt{3}}{2}$, ứng với bốn đoạn dịch chuyển $\dfrac{U_0\sqrt{3}}{2} \to 0 \to -\dfrac{U_0\sqrt{3}}{2}$ (và ngược lại), mỗi đoạn mất $\dfrac{T}{6}$.
+Trong một chu kì, khoảng thời gian đèn tối là $\Delta t = 4\times\dfrac{T}{6} = \dfrac{2T}{3} = \dfrac{1}{75}\ \text{s}$.</div></div></div></section><section><h2><span class="ma">LNB00058</span>Từ trường › Dòng điện xoay chiều › Máy biến áp và truyền tải điện năng</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Máy biến áp (cấu tạo, nguyên tắc, hệ thức điện áp – số vòng – cường độ, máy tăng áp/hạ áp) và truyền tải điện năng đi xa (công suất hao phí, hiệu suất truyền tải, cách giảm hao phí bằng tăng điện áp).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm W · trang PDF 92, 93, 100</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Máy biến áp</b>
+Là những thiết bị hoạt động dựa trên hiện tượng cảm ứng điện từ, dùng để biến đổi điện áp xoay chiều mà không làm thay đổi tần số của nó.
+
+<span class="the the-TC">TC</span><b> Cấu tạo và nguyên tắc hoạt động</b>
+- Máy biến áp gồm hai cuộn dây có số vòng khác nhau $N_1$ và $N_2$ quấn trên một lõi sắt kín. Lõi thường làm bằng các lá sắt hoặc thép pha silic ghép cách điện với nhau để giảm hao phí điện năng do dòng Fu-cô. Các cuộn dây thường làm bằng đồng, đặt cách điện với nhau và cách điện với lõi.
+- Hoạt động dựa trên hiện tượng cảm ứng điện từ. Cuộn dây nối với nguồn điện xoay chiều gọi là cuộn sơ cấp (số vòng $N_1$), cuộn còn lại gọi là cuộn thứ cấp (số vòng $N_2$). Dòng điện xoay chiều trong cuộn sơ cấp gây ra từ thông biến thiên qua cuộn thứ cấp, làm xuất hiện trong cuộn thứ cấp suất điện động xoay chiều. Nếu mạch thứ cấp kín thì có dòng điện chạy trong cuộn thứ cấp.
+
+<span class="the the-TC">TC</span><b> Điện áp và cường độ dòng điện qua máy biến áp</b>
+- Từ thông qua mỗi vòng dây của cả hai cuộn là như nhau: $\Phi = \Phi_0\cos\omega t$. Suất điện động hiệu dụng trên hai cuộn: $E_1 = \dfrac{\omega N_1\Phi_0}{\sqrt{2}}$ và $E_2 = \dfrac{\omega N_2\Phi_0}{\sqrt{2}}$.
+- Máy biến áp lí tưởng (điện trở các cuộn dây không đáng kể): $U_1 = E_1$, $U_2 = E_2$ nên $\dfrac{U_2}{U_1} = \dfrac{N_2}{N_1}$.
+- Nếu $N_2 &gt; N_1$ thì $U_2 &gt; U_1$: máy tăng áp. Nếu $N_2 &lt; N_1$ thì $U_2 &lt; U_1$: máy hạ áp.
+- Máy biến áp lí tưởng không hao phí, điện năng được bảo toàn: $P_1 = U_1I_1 = P_2 = U_2I_2$, suy ra $\dfrac{U_2}{U_1} = \dfrac{I_1}{I_2} = \dfrac{N_2}{N_1}$. Điện áp tăng lên bao nhiêu lần thì cường độ dòng điện giảm đi bấy nhiêu lần và ngược lại.
+
+<span class="the the-ĐN">ĐN</span><b> Truyền tải điện năng đi xa</b>
+Điện năng chỉ được sản xuất ở một số nhà máy lớn nên phải truyền đi xa đến nơi tiêu thụ bằng đường dây dẫn. Yêu cầu: giảm hao phí điện năng trên đường dây xuống mức thấp nhất và giảm chi phí xây dựng đường dây.
+
+<span class="the the-TC">TC</span><b> Công suất hao phí và hiệu suất truyền tải</b>
+- Truyền công suất $P$ từ nhà máy, điện áp hiệu dụng ở đầu đường dây là $U$, điện trở tổng cộng của đường dây là $R$: cường độ dòng điện hiệu dụng $I = \dfrac{P}{U}$.
+- Công suất hao phí do tỏa nhiệt (hiệu ứng Jun – Len-xơ): $\Delta P = I^2R = \dfrac{P^2R}{U^2}$.
+- Gọi $U'$, $P'$ là điện áp hiệu dụng và công suất nơi tiêu thụ: $P' = U'I$, $P = P' + \Delta P$. Độ sụt áp trên đường dây $\Delta U = IR$, $U = U' + \Delta U$.
+- Hiệu suất truyền tải: $H = \dfrac{P'}{P} = \dfrac{U'}{U} = 1 - \dfrac{\Delta P}{P}$, và $1 - H = \dfrac{RP}{U^2} = \dfrac{RP'}{HU^2}$.
+
+<span class="the the-NX">NX</span><b> Cách giảm hao phí</b>
+Với $P$ xác định, có hai cách giảm công suất hao phí $\Delta P$: giảm điện trở $R$ của đường dây hoặc tăng điện áp $U$ ở nơi phát điện.
+Trong thực tế không giảm $R$ được nhiều vì $R = \rho\dfrac{\ell}{S}$: chiều dài $\ell$ không thể giảm, còn tăng tiết diện $S$ thì quá tốn kém (tăng khối lượng dây và chi phí xây dựng).
+Vì vậy biện pháp hầu như duy nhất được sử dụng rộng rãi là tăng điện áp $U$ ở đầu đường dây tải điện, thực hiện dễ dàng nhờ máy biến áp (máy tăng áp).</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00118</span>Nhận biết nguyên lý máy biến áp, truyền tải điện <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm W · BT tự luyện CĐ10 Phần 1 câu 1 — đề tr.95, đáp án tr.203</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Máy biến áp là thiết bị
+A. biến đổi tần số của dòng điện xoay chiều.
+B. có khả năng biến đổi điện áp của dòng điện xoay chiều.
+C. làm tăng công suất của dòng điện xoay chiều.
+D. biến đổi dòng điện xoay chiều thành dòng điện một chiều.
+
+Bài giải:
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm W · BT tự luyện CĐ10 Phần 1 câu 5 — đề tr.95, đáp án tr.203</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một máy biến áp có số vòng dây của cuộn sơ cấp lớn hơn số vòng dây của cuộn thứ cấp. Máy biến áp này có tác dụng
+A. tăng điện áp và tăng tần số của dòng điện xoay chiều.
+B. tăng điện áp mà không thay đổi tần số của dòng điện xoay chiều.
+C. giảm điện áp và giảm tần số của dòng điện xoay chiều.
+D. giảm điện áp mà không thay đổi tần số của dòng điện xoay chiều.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm W · BT tự luyện CĐ10 Phần 2 câu 11 — đề tr.102, đáp án tr.206</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một trong những biện pháp làm giảm hao phí điện năng trên đường dây tải điện khi truyền điện năng đi xa được áp dụng rộng rãi là
+A. giảm tiết diện dây truyền tải điện.
+B. tăng chiều dài đường dây truyền tải điện
+C. giảm điện áp hiệu dụng ở trạm phát điện.
+D. tăng điện áp hiệu dụng ở trạm phát điện.
+
+Bài giải:
+Chọn D.</div></div></div><div class="dang"><h3><span class="ma">LDB00119</span>Tính theo U1/U2 = N1/N2 và hao phí truyền tải <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm W · Ví dụ mẫu 1 Phần 1 CĐ10 — tr.93</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một máy biến áp có số vòng của cuộn sơ cấp là 5000 và thứ cấp là 1000. Bỏ qua mọi hao phí của máy biến áp. Đặt vào hai đầu cuộn sơ cấp điện áp xoay chiều có giá trị hiệu dụng 100 V thì điện áp hiệu dụng ở hai đầu cuộn thứ cấp để hở là
+A. 20 V.
+B. 40 V.
+C. 10 V.
+D. 500 V.
+
+Bài giải:
+$\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$ với $N_1 = 5000$, $N_2 = 1000$, $U_1 = 100\ \text{V}$ nên $U_2 = 20\ \text{V}$. Chọn A.</div></div><div class="nd vd"><div class="tr">trạm W · Ví dụ mẫu 1 Phần 2 (Dạng 1 – Đặc trưng cơ bản của mạch truyền tải) CĐ10 — tr.101</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Truyền một công suất 100 kW từ trạm phát điện đến nơi tiêu thụ bằng đường dây truyền tải một pha, điện áp hiệu dụng ở trạm phát là 2 kV, điện trở tổng cộng của đường dây tải điện là 2 Ω. Coi hệ số công suất của mạch truyền tải điện bằng 1. Xác định:
+a) Điện năng tiêu thụ ở nơi tiêu thụ trong một ngày đêm (lấy một ngày đêm là 24 giờ).
+b) Hiệu suất truyền tải điện năng.
+
+Bài giải:
+Cường độ dòng điện hiệu dụng trong mạch là $I = \dfrac{P}{U} = 50\ \text{A}$.
+Công suất hao phí là $\Delta P = I^2R = 5\ \text{kW}$, nên công suất nơi tiêu thụ là $P' = P - \Delta P = 95\ \text{kW}$.
+a) Điện năng tiêu thụ ở nơi tiêu thụ trong một ngày đêm là $A' = P'\Delta t = 95 \times 24 = 2280\ \text{kWh}$.
+b) Hiệu suất truyền tải là $H = \dfrac{P'}{P}\cdot 100\% = 95\%$.</div></div><div class="nd vd"><div class="tr">trạm W · Ví dụ mẫu 2 Phần 1 CĐ10 — tr.93</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một học sinh quấn một máy biến áp với dự định số vòng dây của cuộn sơ cấp gấp 2,5 lần số vòng dây của cuộn thứ cấp. Do sơ suất nên cuộn thứ cấp bị thiếu một số vòng dây. Muốn xác định số vòng dây thiếu để quấn tiếp thêm vào cuộn thứ cấp cho đủ, học sinh này đặt vào hai đầu cuộn sơ cấp một điện áp xoay chiều có giá trị hiệu dụng không đổi, rồi dùng vôn kế xác định tỉ số điện áp ở cuộn thứ cấp để hở và cuộn sơ cấp. Lúc đầu tỉ số điện áp bằng $\dfrac{9}{25}$. Sau khi quấn thêm vào cuộn thứ cấp 30 vòng dây thì tỉ số điện áp bằng $\dfrac{19}{50}$. Bỏ qua mọi hao phí trong máy biến áp. Để được máy biến áp đúng như dự định, học sinh này phải tiếp tục quấn thêm vào cuộn thứ cấp
+A. 40 vòng.
+B. 29 vòng.
+C. 30 vòng.
+D. 60 vòng.
+
+Bài giải:
+Dự định: $N_1 = 2{,}5N_2$ nhưng thực tế lúc đầu học sinh này quấn là $\dfrac{N_1}{N_2'} = \dfrac{25}{9}$.
+Sau khi quấn thêm vào cuộn thứ cấp 30 vòng thì $\dfrac{N_1}{N_2' + 30} = \dfrac{50}{19}$.
+Giải ra $N_1 = 1500$, $N_2' = 540$, suy ra $N_2 = 600$, nên phải quấn tiếp $600 - 540 - 30 = 30$ vòng. Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00059</span>Từ trường › Điện từ trường và sóng điện từ › Sóng điện từ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Điện từ trường và sóng điện từ: từ trường biến thiên sinh điện trường xoáy, điện trường biến thiên sinh từ trường, khái niệm điện từ trường; định nghĩa, đặc điểm và tính chất của sóng điện từ (tốc độ, bước sóng, sóng ngang, đồng pha).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm X · trang PDF 109, 110</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Điện trường xoáy</b>
+Từ trường biến thiên theo thời gian sinh ra trong không gian xung quanh một điện trường. Đường sức của điện trường này là các đường cong kín, nên gọi là điện trường xoáy.
+Điện trường xoáy tồn tại dù vòng dây kín có tồn tại hay không.
+Từ trường thay đổi đều thì điện trường xoáy không đổi; từ trường biến đổi tuần hoàn thì điện trường xoáy biến đổi tuần hoàn.
+
+<span class="the the-TC">TC</span><b> Điện trường biến thiên tạo ra từ trường</b>
+- Điện trường biến thiên theo thời gian cũng sinh ra từ trường xung quanh (Maxwell chỉ ra, điện trường giữa hai bản tụ điện biến thiên cũng sinh ra từ trường).
+- Cường độ điện trường thay đổi càng nhanh thì cảm ứng từ của từ trường sinh ra càng lớn.
+
+<span class="the the-ĐN">ĐN</span><b> Điện từ trường</b>
+Từ trường biến thiên sinh ra điện trường biến thiên, điện trường biến thiên sinh ra từ trường biến thiên trong không gian xung quanh. Hai trường biến thiên này cùng tồn tại trong không gian, chuyển hóa lẫn nhau trong một trường thống nhất gọi là điện từ trường.
+
+<span class="the the-ĐN">ĐN</span><b> Sóng điện từ</b>
+Sóng điện từ là quá trình lan truyền điện từ trường biến thiên trong không gian.
+
+<span class="the the-TC">TC</span><b> Đặc điểm và tính chất của sóng điện từ</b>
+- Truyền trong mọi môi trường vật chất và truyền được trong cả chân không (khác với sóng cơ). Tốc độ sóng điện từ trong chân không là $c \approx 3\cdot 10^{8}\ \text{m/s}$; trong các môi trường khác nhỏ hơn $c$.
+- Sóng điện từ có tần số $f$ (chu kì $T = \dfrac{1}{f}$) thì trong chân không có bước sóng $\lambda = \dfrac{c}{f} = cT$.
+- Tại mỗi điểm trên phương truyền sóng, vectơ cường độ điện trường $\vec{E}$ và vectơ cảm ứng từ $\vec{B}$ luôn vuông góc với nhau và cùng vuông góc với phương truyền sóng: sóng điện từ là sóng ngang.
+- Tại mỗi điểm trong không gian, điện trường và từ trường biến thiên điều hòa theo thời gian và đồng pha với nhau.
+- Sóng điện từ tuân theo định luật truyền thẳng, phản xạ, khúc xạ như ánh sáng.
+- Sóng điện từ mang năng lượng, nhờ đó khi truyền đến anten sẽ làm cho các electron tự do trong anten dao động.
+- Nguồn phát sóng điện từ rất đa dạng: bất cứ vật thể nào tạo ra điện trường và từ trường biến thiên, chẳng hạn tia lửa điện, dây dẫn có dòng điện xoay chiều, cầu dao khi đóng ngắt mạch điện.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00120</span>Điện từ trường, đặc điểm sóng điện từ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm X · BT tự luyện CĐ12 câu 1 — đề tr.111, đáp án tr.209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Điện trường xoáy là điện trường
+A. có các đường sức không khép kín.
+B. giữa hai bản tụ điện có điện tích không đổi.
+C. có các đường sức bao quanh các đường cảm ứng từ.
+D. của các điện tích đứng yên.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm X · BT tự luyện CĐ12 câu 12 — đề tr.112, giải tr.209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đối với sự lan truyền sóng điện từ thì
+A. vectơ cường độ điện trường $\vec{E}$ cùng phương với phương truyền sóng còn vectơ cảm ứng từ $\vec{B}$ vuông góc với vectơ cường độ điện trường $\vec{E}$.
+B. vectơ cường độ điện trường $\vec{E}$ và vectơ cảm ứng từ $\vec{B}$ luôn cùng phương với phương truyền sóng.
+C. vectơ cường độ điện trường $\vec{E}$ và vectơ cảm ứng từ $\vec{B}$ luôn vuông góc với phương truyền sóng.
+D. vectơ cảm ứng từ $\vec{B}$ cùng phương với phương truyền sóng còn vectơ cường độ điện trường $\vec{E}$ vuông góc với vectơ cảm ứng từ $\vec{B}$.
+
+Bài giải:
+Tại một điểm trên phương truyền của sóng điện từ, điện trường $\vec{E}$ và từ trường có phương vuông góc với nhau và vuông góc với phương truyền sóng.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm X · BT tự luyện CĐ12 câu 20 — đề tr.113, giải tr.209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một sóng điện từ truyền qua điểm M trong không gian. Cường độ điện trường và cảm ứng từ tại M biến thiên điều hòa với giá trị cực đại lần lượt là $E_0$ và $B_0$. Khi cảm ứng từ tại M bằng $0{,}5B_0$ thì cường độ điện trường tại đó có độ lớn là
+A. $0{,}5E_0$.
+B. $E_0$.
+C. $2E_0$.
+D. $0{,}25E_0$.
+
+Bài giải:
+Điện trường và từ trường cùng pha, nên khi $B = 0{,}5B_0$ thì $E = 0{,}5E_0$.
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00121</span>Tính bước sóng, tần số, thang sóng điện từ <span class="dem trongd">chưa có ví dụ</span></h3>
+    </div></section><section><h2><span class="ma">LNB00060</span>Vật lí hạt nhân › Cấu trúc hạt nhân › Thành phần hạt nhân</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Mô hình nguyên tử (bánh mận, thí nghiệm tán xạ alpha của Rutherford, mô hình hành tinh), cấu tạo hạt nhân (proton, neutron, nucleon, kí hiệu hạt nhân, số khối), đồng vị, đơn vị khối lượng nguyên tử, lực hạt nhân và cách tính số hạt trong m gam chất.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm Y · trang PDF 121, 123, 128, 129</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Mô hình nguyên tử bánh mận</b>
+Năm 1904, J. J. Thomson đề xuất mô hình nguyên tử bánh mận: nguyên tử là quả cầu đặc có điện tích dương phân bố đều, các electron được nhúng trong quả cầu như mận khô trong bánh.
+Mô hình này giải thích được một số hiện tượng, nhưng các thí nghiệm tán xạ hạt alpha sau đó đã bác bỏ nó.
+
+<span class="the the-TC">TC</span><b> Thí nghiệm tán xạ hạt alpha của Rutherford</b>
+- Hạt alpha là ion helium, có điện tích $+2e$ và khối lượng gấp khoảng 7300 lần khối lượng của electron.
+- Rutherford cho các hạt $\alpha$ tốc độ cao bắn vào một lá vàng dày chỉ khoảng $0{,}4\ \mu\text{m}$.
+- Kết quả: phần lớn hạt alpha xuyên qua lá vàng; số hạt bị lệch so với phương ban đầu góc $\theta$ khác nhau là khác nhau và giảm nhanh khi $\theta$ tăng. Một số rất nhỏ hạt $\alpha$ có góc tán xạ vượt quá $90^\circ$, thậm chí bị bật trở lại.
+
+<span class="the the-NX">NX</span><b> Phân tích kết quả thí nghiệm</b>
+- Phần lớn hạt alpha xuyên qua lá vàng chứng tỏ nguyên tử không hoàn toàn đặc như mô hình của Thomson.
+- Sự lệch góc lớn của số ít hạt alpha không thể do electron gây ra, vì khối lượng electron chỉ bằng $\dfrac{1}{7300}$ khối lượng hạt alpha. Độ lệch chủ yếu do phần điện tích dương, chiếm phần lớn khối lượng nguyên tử.
+- Theo mô hình Thomson, điện tích dương phân bố đều nên lực đẩy theo mọi hướng cân bằng nhau, tác động lên hạt $\alpha$ không lớn; vì vậy mô hình này không giải thích được tán xạ góc lớn.
+- Rutherford cho rằng thực tế vật chất tích điện dương, chiếm phần lớn khối lượng nguyên tử, tập trung trong một phạm vi không gian rất nhỏ; điều này khiến hạt alpha chịu lực đẩy mạnh khi đi ngang qua, làm chúng bị lệch một góc lớn.
+
+<span class="the the-ĐN">ĐN</span><b> Mô hình đơn giản của nguyên tử (mô hình hành tinh nguyên tử)</b>
+Ở trung tâm nguyên tử có một hạt nhân. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử đều tập trung ở hạt nhân. Các electron quay quanh hạt nhân trong không gian ngoài hạt nhân.
+Mô hình có phần giống hệ Mặt Trời (hạt nhân giống Mặt Trời, các electron giống các hành tinh) nên còn gọi là mô hình hành tinh nguyên tử.
+Giải thích tán xạ: khi hạt $\alpha$ đi qua nguyên tử, các electron ít ảnh hưởng; yếu tố chính là hạt nhân. Hạt $\alpha$ ở xa hạt nhân thì lực đẩy rất nhỏ, hầu như không bị ảnh hưởng; hạt $\alpha$ bay gần hạt nhân chịu lực đẩy Coulomb rõ rệt nên bị lệch một góc lớn.
+
+<span class="the the-ĐN">ĐN</span><b> Cấu trúc của hạt nhân</b>
+- Hạt nhân có kích thước rất nhỏ so với nguyên tử, được cấu tạo từ các hạt nhỏ hơn gọi là nucleon. Có hai loại nucleon: proton (kí hiệu p, mang điện tích nguyên tố dương) và neutron (kí hiệu n, không mang điện).
+- Nguyên tử của nguyên tố có số thứ tự $Z$ trong bảng tuần hoàn ($Z$ là số hiệu nguyên tử) có $Z$ electron ở lớp vỏ ngoài; hạt nhân có $Z$ proton và $N$ neutron. Electron mang điện $-Ze$, hạt nhân mang điện $+Ze$ nên nguyên tử trung hòa về điện.
+- Tổng $A = Z + N$ gọi là số khối.
+- Bán kính hạt nhân tăng chậm cùng với số khối: $R \approx R_0 A^{\frac{1}{3}}$, với $R_0 = 1{,}2\cdot 10^{-15}\ \text{m}$.
+
+<span class="the the-TC">TC</span><b> Kí hiệu hạt nhân</b>
+- Hạt nhân được kí hiệu bằng cách ghi bên cạnh kí hiệu hóa học nguyên tử số (phía dưới) và số khối (phía trên): $^{A}_{Z}X$.
+- Số proton $=Z$; số nucleon $=A$; số neutron $N = A - Z$; điện tích hạt nhân $Q = +Ze$.
+- Nhiều khi chỉ cần ghi số khối vì kí hiệu hóa học đã xác định nguyên tử số.
+
+<span class="the the-ĐN">ĐN</span><b> Đồng vị</b>
+Đồng vị là những nguyên tử mà hạt nhân chứa cùng số proton $Z$ nhưng số neutron $N$ khác nhau (số khối $A$ khác nhau).
+- Hydrogen có 3 đồng vị: hydrogen thường $^{1}_{1}\text{H}$; hydrogen nặng (deuterium) $^{2}_{1}\text{H}$ hay $^{2}_{1}\text{D}$; hydrogen siêu nặng (tritium) $^{3}_{1}\text{H}$ hay $^{3}_{1}\text{T}$.
+- Hầu hết các nguyên tố là hỗn hợp của nhiều đồng vị. Uranium có hai đồng vị chính là U235 và U238 (U238 chiếm tới 99,3%). Carbon có ba đồng vị chính là C12, C13, C14 (C12 và C13 chiếm 99%).
+
+<span class="the the-TC">TC</span><b> Đơn vị khối lượng nguyên tử</b>
+- Đơn vị khối lượng nguyên tử (amu, hay u) bằng $\dfrac{1}{12}$ khối lượng của đồng vị carbon $^{12}_{6}\text{C}$: $1\ \text{amu} = \dfrac{1}{12}\cdot\dfrac{12}{6{,}022\cdot10^{23}}\ \text{g} \approx 1{,}66\cdot 10^{-27}\ \text{kg}$.
+- Proton có khối lượng $m_p = 1{,}007276\ \text{amu}$; neutron có $m_n = 1{,}008665\ \text{amu}$. Nói chung, một nguyên tử có số khối $A$ thì khối lượng xấp xỉ bằng $A$ (amu).
+
+<span class="the the-ĐN">ĐN</span><b> Lực hạt nhân</b>
+- Trong thể tích rất nhỏ của hạt nhân, các nucleon tương tác với nhau bằng lực hút rất mạnh, có tác dụng liên kết các nucleon với nhau; các lực hút đó gọi là lực hạt nhân.
+- Lực hạt nhân không cùng bản chất với lực tĩnh điện hay lực hấp dẫn; nó là một loại lực mới truyền tương tác giữa các nucleon trong hạt nhân, còn gọi là lực tương tác mạnh.
+- Lực hạt nhân không phụ thuộc vào điện tích của nucleon và chỉ có tác dụng khi khoảng cách giữa hai nucleon bằng hoặc nhỏ hơn kích thước hạt nhân: bán kính tác dụng của lực hạt nhân vào khoảng $10^{-15}\ \text{m}$. Ngoài phạm vi đó lực hạt nhân giảm nhanh xuống không.
+
+<span class="the the-PP">PP</span><b> Tính số hạt trong khối lượng $m$ gam chất</b>
+Tính số mol (số nguyên tử) $n = \dfrac{m}{A}$ hoặc $\dfrac{m}{M}$ rồi số nguyên tử $N = \dfrac{m}{A}\cdot N_A$, với $N_A = 6{,}02\cdot10^{23}\ \text{nguyên tử/mol}$.
+Số proton $N_p = Z\cdot N$.
+Số neutron $N_n = (A - Z)\cdot N$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00122</span>Nhận biết kí hiệu hạt nhân, đồng vị, mô hình nguyên tử, lực hạt nhân <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ1 phần ① câu 1 — đề tr.124, giải tr.213</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây là đúng?
+A. Thí nghiệm tán xạ hạt alpha không liên quan đến việc thiết lập mô hình bánh mận và mô hình cấu trúc hạt nhân.
+B. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình bánh mận nhưng giúp thiết lập mô hình cấu trúc hạt nhân.
+C. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình cấu trúc hạt nhân nhưng giúp thiết lập mô hình bánh mận.
+D. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình cấu trúc hạt nhân và cả mô hình bánh mận.
+
+Bài giải:
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ1 phần ① câu 2 — đề tr.124, giải tr.213</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong thí nghiệm tán xạ hạt alpha của Rutherford, một số lượng nhỏ hạt alpha bị lệch ở những góc lớn là do
+A. điện tích dương và phần lớn khối lượng của nguyên tử tập trung ở một hạt nhân rất nhỏ.
+B. điện tích dương phân bố đều trong nguyên tử.
+C. có các electron tích điện âm trong nguyên tử.
+D. nguyên tử chỉ tồn tại ở các trạng thái năng lượng không liên tục.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ1 phần ① câu 4 — đề tr.124, giải tr.213</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đâu không phải nội dung trong mô hình nguyên tử của Rutherford?
+A. Ở trung tâm nguyên tử có một hạt nhân.
+B. Điện tích dương của nguyên tử phân bố đều khắp nguyên tử.
+C. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử tập trung ở hạt nhân.
+D. Các electron mang điện tích âm quay xung quanh hạt nhân bên ngoài hạt nhân.
+
+Bài giải:
+Chọn B.</div></div></div><div class="dang"><h3><span class="ma">LDB00123</span>Đếm proton, neutron, nucleon; số hạt trong m gam chất <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Y · Ví dụ mẫu 1 CĐ1 — tr.123</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hạt nhân $^{40}_{20}\text{Ca}$ có số nucleon, proton, neutron, điện tích là bao nhiêu?
+
+Bài giải:
+- Số nucleon trong hạt nhân $^{40}_{20}\text{Ca}$ là: $A = 40$.
+- Số proton trong hạt nhân $^{40}_{20}\text{Ca}$ là: $Z = 20$.
+- Số neutron trong hạt nhân $^{40}_{20}\text{Ca}$ là: $N = A - Z = 20$.
+- Điện tích của hạt nhân $^{40}_{20}\text{Ca}$ là: $Q = +Ze = 20\times 1{,}6\cdot10^{-19} = 3{,}2\cdot10^{-18}\ \text{C}$.</div></div><div class="nd vd"><div class="tr">trạm Y · Ví dụ mẫu 2 CĐ1 — tr.123</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong 134 g $^{67}_{30}\text{Zn}$ có bao nhiêu proton, neutron?
+
+Bài giải:
+Số nguyên tử Zn có trong 134 g Zn là $N = \dfrac{m}{A}\times N_A = \dfrac{134}{67}\times 6{,}02\cdot10^{23} = 2\times 6{,}02\cdot10^{23} = 12{,}04\cdot10^{23}$ (nguyên tử).
+- Số proton là: $N_{proton} = ZN = 30\times 12{,}04\cdot10^{23} = 3{,}612\cdot10^{25}$.
+- Số neutron là: $N_{neutron} = (A-Z)N = (67-30)\times 12{,}04\cdot10^{23} = 4{,}4548\cdot10^{25}$.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ1 phần ① câu 36 — đề tr.126, giải tr.213</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Số proton có trong 0,27 gam $^{27}_{13}\text{Al}$ là
+A. $6{,}826\cdot10^{22}$.
+B. $8{,}826\cdot10^{22}$.
+C. $9{,}826\cdot10^{22}$.
+D. $7{,}826\cdot10^{22}$.
+
+Bài giải:
+$N_{Al} = \dfrac{m}{A_{Al}}\cdot N_A = 6{,}02\cdot10^{21}$ (nguyên tử) $\to N_p = Z\,N_{Al} = 7{,}826\cdot10^{22}$.
+Chọn D.</div></div></div></section><section><h2><span class="ma">LNB00061</span>Vật lí hạt nhân › Năng lượng liên kết hạt nhân › Năng lượng liên kết</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Khối lượng và năng lượng trong thuyết tương đối (E = mc²), độ hụt khối, năng lượng liên kết, năng lượng liên kết riêng và mối liên hệ với độ bền vững của hạt nhân.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm Y · trang PDF 128, 129</div><div class="pre"><span class="the the-TC">TC</span><b> Khối lượng trong thuyết tương đối</b>
+Khối lượng của một vật không phải là hằng số: $m = \dfrac{m_0}{\sqrt{1-\dfrac{v^2}{c^2}}}$.
+- $m$ là khối lượng của vật khi chuyển động với tốc độ $v$ (khối lượng tương đối tính, khối lượng động); $m_0$ là khối lượng khi vật ở trạng thái nghỉ (khối lượng nghỉ).
+- Khối lượng của vật tăng lên khi vật chuyển động và có giá trị nhỏ nhất khi vật đứng yên: khối lượng có tính tương đối.
+
+<span class="the the-ĐL">ĐL</span><b> Hệ thức Anh-xtanh giữa khối lượng và năng lượng</b>
+Một vật có khối lượng thì cũng có năng lượng tương ứng và ngược lại. Năng lượng $E$ và khối lượng $m$ tương ứng của cùng một vật luôn tồn tại đồng thời và tỉ lệ với nhau, hệ số tỉ lệ là $c^2$ ($c$ là tốc độ ánh sáng trong chân không): $E = mc^2$.
+
+<span class="the the-TC">TC</span><b> Các hệ quả của hệ thức Anh-xtanh</b>
+- Năng lượng nghỉ (lúc vật đứng yên, $m = m_0$): $E_0 = m_0c^2$.
+- Động năng của vật trong thuyết tương đối: $W_đ = E - E_0 = mc^2 - m_0c^2 = \dfrac{m_0c^2}{\sqrt{1-\dfrac{v^2}{c^2}}} - m_0c^2$.
+- Khi $v \ll c$: $W_đ \approx \dfrac{m_0v^2}{2}$, tức là trở lại biểu thức động năng của cơ học cổ điển.
+- Từ $m = \dfrac{E}{c^2}$, khối lượng còn có thể đo bằng đơn vị của năng lượng chia cho $c^2$ như $\text{eV}/c^2$ hay $\text{MeV}/c^2$.
+- $1\ \text{MeV}/c^2 = 1{,}7827\cdot10^{-30}\ \text{kg} = 1{,}07356\cdot10^{-3}\ \text{amu}$; $1\ \text{amu} = 931{,}5\ \text{MeV}/c^2$.
+
+<span class="the the-ĐN">ĐN</span><b> Độ hụt khối</b>
+Các phép đo chính xác cho thấy khối lượng $m$ của hạt nhân $^{A}_{Z}X$ luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành hạt nhân đó. Độ hụt khối: $\Delta m = \left[Zm_p + (A-Z)m_n\right] - m$.
+
+<span class="the the-ĐN">ĐN</span><b> Năng lượng liên kết</b>
+Năng lượng liên kết các nucleon trong hạt nhân (gọi tắt là năng lượng liên kết của hạt nhân): $\Delta E = \Delta m\,c^2 = \left[\left(Zm_p + (A-Z)m_n\right) - m\right]c^2$.
+Năng lượng $\Delta E$ càng lớn thì liên kết giữa các nucleon càng mạnh, càng phải tốn nhiều năng lượng để phá vỡ liên kết giữa các nucleon.
+
+<span class="the the-ĐN">ĐN</span><b> Năng lượng liên kết riêng</b>
+Năng lượng liên kết tính trung bình cho mỗi nucleon gọi là năng lượng liên kết riêng của hạt nhân, kí hiệu $\varepsilon$, đặc trưng cho sự bền vững của hạt nhân: $\varepsilon = \dfrac{\Delta E}{A} = \dfrac{\Delta m\,c^2}{A}$.
+- Hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững.
+- Hạt nhân có số khối trung bình thì bền vững hơn cả.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00124</span>Tính độ hụt khối, năng lượng liên kết, năng lượng liên kết riêng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ2 phần ① câu 25 — đề tr.132, giải tr.214</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một hạt nhân có độ hụt khối là 0,21 amu. Năng lượng liên kết của hạt nhân này là
+A. 195,615 MeV.
+B. 4435,7 MeV.
+C. 4435,7 J.
+D. 195,615 J.
+
+Bài giải:
+$\Delta E = \Delta m\cdot c^2 = 0{,}21\times 931{,}5 = 195{,}615\ \text{MeV}$.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm Y · Ví dụ mẫu 1 CĐ2 — tr.130</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hạt nhân $^{10}_{4}\text{Be}$ có khối lượng 10,0135 amu. Khối lượng của neutron $m_n = 1{,}0087$ amu, của proton $m_p = 1{,}0073$ amu. Xác định độ hụt khối, năng lượng liên kết, năng lượng liên kết riêng của hạt nhân $^{10}_{4}\text{Be}$?
+
+Bài giải:
+- $\Delta m = Zm_p + (A-Z)m_n - m = 4\times1{,}0073 + 6\times1{,}0087 - 10{,}0135 = 0{,}0679\ \text{amu}$.
+- $\Delta E = \Delta m\,c^2 = 0{,}0679\times 931{,}5 = 63{,}25\ \text{MeV}$.
+- $\varepsilon = \dfrac{\Delta E}{A} = \dfrac{63{,}25}{10} = 6{,}325\ \text{MeV/nucleon}$.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ2 phần ① câu 29 — đề tr.133, giải tr.214</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hạt nhân $^{235}_{92}\text{U}$ có năng lượng liên kết riêng là 7,6 MeV/nucleon. Độ hụt khối của hạt nhân này là
+A. 1,917 amu.
+B. 1,942 amu.
+C. 1,754 amu.
+D. 0,751 amu.
+
+Bài giải:
+$\varepsilon = \dfrac{\Delta E}{A} = 7{,}6 \to \Delta E = 7{,}6\times 235 = 1786\ \text{MeV} \to \Delta m = \dfrac{\Delta E}{c^2} = \dfrac{1786}{931{,}5} = 1{,}917\ \text{amu}$.
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00125</span>So sánh độ bền vững hạt nhân <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Y · Ví dụ mẫu 2 CĐ2 — tr.130</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khối lượng các hạt nhân $^{4}_{2}\text{He}$, $^{6}_{3}\text{Li}$ và $^{2}_{1}\text{D}$ lần lượt là 4,0015 amu, 6,00808 amu và 2,0136 amu. Khối lượng của neutron $m_n = 1{,}0087$ amu, của proton $m_p = 1{,}0073$ amu. Hãy sắp xếp các hạt nhân này theo thứ tự độ bền vững tăng dần?
+
+Bài giải:
+Hạt nhân càng bền vững nếu năng lượng liên kết riêng càng lớn.
+- $\Delta m_{He} = 0{,}0305\ \text{amu} \to \Delta E_{He} = 28{,}41\ \text{MeV} \to \varepsilon_{He} \approx 7{,}1\ \text{MeV/nucleon}$.
+- $\Delta m_{Li} = 0{,}0399\ \text{amu} \to \Delta E_{Li} = 37{,}19\ \text{MeV} \to \varepsilon_{Li} \approx 6{,}2\ \text{MeV/nucleon}$.
+- $\Delta m_{D} = 0{,}0024\ \text{amu} \to \Delta E_{D} = 2{,}24\ \text{MeV} \to \varepsilon_{D} \approx 1{,}1\ \text{MeV/nucleon}$.
+Suy ra $\varepsilon_D &lt; \varepsilon_{Li} &lt; \varepsilon_{He}$. Vậy thứ tự tăng dần độ bền vững hạt nhân là: $^{2}_{1}\text{D}$, $^{6}_{3}\text{Li}$, $^{4}_{2}\text{He}$.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ2 phần ① câu 32 — đề tr.133, giải tr.214</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Các hạt nhân đơteri $^{2}_{1}\text{H}$; triti $^{3}_{1}\text{H}$, heli $^{4}_{2}\text{He}$ có năng lượng liên kết lần lượt là 2,22 MeV; 8,49 MeV và 28,16 MeV. Các hạt nhân trên được sắp xếp theo thứ tự giảm dần về độ bền vững của hạt nhân là
+A. $^{2}_{1}\text{H}$; $^{4}_{2}\text{He}$; $^{3}_{1}\text{H}$.
+B. $^{2}_{1}\text{H}$; $^{3}_{1}\text{H}$; $^{4}_{2}\text{He}$.
+C. $^{4}_{2}\text{He}$; $^{3}_{1}\text{H}$; $^{2}_{1}\text{H}$.
+D. $^{3}_{1}\text{H}$; $^{4}_{2}\text{He}$; $^{2}_{1}\text{H}$.
+
+Bài giải:
+$\varepsilon_H = \dfrac{\Delta E_H}{A} = 1{,}11\ \text{MeV}$; $\varepsilon_T = \dfrac{\Delta E_T}{A} = 2{,}83\ \text{MeV}$; $\varepsilon_{He} = \dfrac{\Delta E_{He}}{A} = 7{,}04\ \text{MeV}$.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm Y · BT tự luyện CĐ2 phần ① câu 33 — đề tr.133, giải tr.214-215</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Các hạt nhân $^{4}_{2}\text{He}$, $^{139}_{53}\text{I}$, $^{235}_{92}\text{U}$ có khối lượng tương ứng là 4,0015 amu; 138,8970 amu và 234,9933 amu. Biết khối lượng của hạt proton, neutron lần lượt là: 1,0073 amu; 1,0087 amu. Các hạt nhân trên được sắp xếp theo thứ tự giảm dần về độ bền vững của hạt nhân là
+A. $^{4}_{2}\text{He}$; $^{139}_{53}\text{I}$; $^{235}_{92}\text{U}$.
+B. $^{139}_{53}\text{I}$; $^{4}_{2}\text{He}$; $^{235}_{92}\text{U}$.
+C. $^{235}_{92}\text{U}$; $^{4}_{2}\text{He}$; $^{139}_{53}\text{I}$.
+D. $^{139}_{53}\text{I}$; $^{235}_{92}\text{U}$; $^{4}_{2}\text{He}$.
+
+Bài giải:
+- $\Delta m_{He} = 0{,}0305\ \text{amu} \to \Delta E_{He} = \Delta m_{He}c^2 = 28{,}410\ \text{MeV} \to \varepsilon_{He} = \dfrac{\Delta E_{He}}{A_{He}} = 7{,}1\ \text{MeV}$.
+- $\Delta m_{I} = 1{,}2381\ \text{amu} \to \Delta E_{I} = \Delta m_{I}c^2 = 1153{,}29\ \text{MeV} \to \varepsilon_{I} = \dfrac{\Delta E_{I}}{A_{I}} = 8{,}29\ \text{MeV}$.
+- $\Delta m_{U} = 1{,}9224\ \text{amu} \to \Delta E_{U} = \Delta m_{U}c^2 = 1790{,}71\ \text{MeV} \to \varepsilon_{U} = \dfrac{\Delta E_{U}}{A_{U}} = 7{,}6\ \text{MeV}$.
+Chọn D.</div></div></div></section><section><h2><span class="ma">LNB00062</span>Vật lí hạt nhân › Phản ứng hạt nhân › Phản ứng hạt nhân</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Khái niệm phản ứng hạt nhân (tự phát, kích thích), phương trình và các định luật bảo toàn (số khối, điện tích, năng lượng, động lượng), cách cân bằng phương trình, năng lượng toả/thu của phản ứng và phương trình các loại phóng xạ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm Z · trang PDF 136, 137</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Phản ứng hạt nhân</b>
+Phản ứng hạt nhân là mọi quá trình dẫn đến sự biến đổi hạt nhân. Năm 1909, Rutherford dùng chùm hạt α ($^{4}_{2}\text{He}$) phóng ra từ nguồn phóng xạ $^{210}_{84}\text{Po}$ bắn phá hạt nhân $^{14}_{7}\text{N}$ trong không khí: nitơ bị phân rã và biến đổi thành oxygen và hydrogen.
+- Phản ứng hạt nhân tự phát: quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác (vd: phóng xạ).
+- Phản ứng hạt nhân kích thích: quá trình các hạt nhân tương tác với nhau tạo ra các hạt nhân khác (vd: thí nghiệm Rutherford, phân hạch, nhiệt hạch).
+
+<span class="the the-TC">TC</span><b> Phương trình phản ứng</b>
+Phương trình tổng quát: $A + B \to C + D$, trong đó A, B là các hạt tương tác, C, D là các hạt sản phẩm.
+Trường hợp phóng xạ: $A \to B + C$, trong đó A là hạt nhân mẹ, B là hạt nhân con, C là hạt α ($^{4}_{2}\text{He}$) hoặc $^{0}_{1}e$ hoặc $^{0}_{-1}e$.
+Kí hiệu một số hạt đáng nhớ: proton $^{1}_{1}\text{p}$ hoặc $^{1}_{1}\text{H}$; neutron $^{1}_{0}\text{n}$; helium (alpha) $^{4}_{2}\text{He}$ hay α; electron $^{0}_{-1}e$ hay $\beta^{-}$; positron $^{0}_{1}e$ hay $\beta^{+}$.
+
+<span class="the the-ĐL">ĐL</span><b> Các định luật bảo toàn trong phản ứng hạt nhân</b>
+Xét phản ứng $^{A_1}_{Z_1}X_1 + {}^{A_2}_{Z_2}X_2 \to {}^{A_3}_{Z_3}X_3 + {}^{A_4}_{Z_4}X_4$.
+- Bảo toàn số nucleon (số khối A): $A_1 + A_2 = A_3 + A_4$.
+- Bảo toàn điện tích: $Z_1 + Z_2 = Z_3 + Z_4$.
+- Bảo toàn năng lượng toàn phần: tổng năng lượng toàn phần của các hạt tương tác bằng tổng năng lượng toàn phần của các hạt sản phẩm.
+- Bảo toàn động lượng: vectơ tổng động lượng của các hạt tương tác bằng vectơ tổng động lượng của các hạt sản phẩm.
+
+<span class="the the-CY">CY</span><b> Không có bảo toàn khối lượng, bảo toàn proton, bảo toàn neutron trong phản ứng hạt nhân.</b>
+
+<span class="the the-PP">PP</span><b> Cân bằng phương trình phản ứng hạt nhân</b>
+Sử dụng định luật bảo toàn số khối và bảo toàn điện tích cho hai vế của phương trình.
+Từ đó tìm số khối A và điện tích Z của hạt chưa biết, đối chiếu với kí hiệu các hạt đáng nhớ để nhận ra hạt đó.
+
+<span class="the the-TC">TC</span><b> Năng lượng toả ra hay thu vào trong phản ứng hạt nhân</b>
+Năng lượng phản ứng hạt nhân W: $W = (m_{tr} - m_s)c^2 = (\Delta m_s - \Delta m_{tr})c^2 = \Delta E_s - \Delta E_{tr} = K_s - K_{tr}$.
+Trong đó $m_{tr}, \Delta m_{tr}, \Delta E_{tr}, K_{tr}$ và $m_s, \Delta m_s, \Delta E_s, K_s$ lần lượt là tổng khối lượng nghỉ, độ hụt khối, năng lượng liên kết, động năng các hạt nhân trước phản ứng và sau phản ứng.
+- Nếu $W &gt; 0$ thì phản ứng toả năng lượng.
+- Nếu $W &lt; 0$ thì phản ứng thu năng lượng.
+
+<span class="the the-TC">TC</span><b> Phóng xạ — phương trình các loại phóng xạ</b>
+Phóng xạ là hiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác; quá trình này không chịu tác động của các yếu tố môi trường ngoài như nhiệt độ, áp suất.
+- Phóng xạ α: $^{A}_{Z}X \to {}^{A-4}_{Z-2}Y + {}^{4}_{2}\text{He}$.
+- Phóng xạ $\beta^{-}$: $^{A}_{Z}X \to {}^{0}_{-1}e + {}^{A}_{Z+1}Y$ (kèm theo một hạt phản neutrino $\tilde{\nu}$).
+- Phóng xạ $\beta^{+}$: $^{A}_{Z}X \to {}^{0}_{1}e + {}^{A}_{Z-1}Y$ (kèm theo một hạt neutrino $\nu$).
+- Tia γ là sóng điện từ có bước sóng rất ngắn, là dòng hạt photon có năng lượng cao, thường đi kèm trong các phóng xạ α và β.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00126</span>Bảo toàn số khối, điện tích <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Z · BT tự luyện Dạng 1 câu 9 — đề tr.139, giải tr.216</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho phản ứng hạt nhân: $^{210}_{84}\text{Po} \to X + {}^{206}_{82}\text{Pb}$. Hạt X là
+A. $^{1}_{1}\text{H}$.
+B. $^{3}_{2}\text{He}$.
+C. $^{4}_{2}\text{He}$.
+D. $^{3}_{1}\text{H}$.
+
+Bài giải:
+Áp dụng bảo toàn số khối và bảo toàn điện tích: $A_X = 210 - 206 = 4$ và $Z_X = 84 - 82 = 2$.
+Phương trình: $^{210}_{84}\text{Po} \to {}^{4}_{2}X + {}^{206}_{82}\text{Pb}$, hạt X là $^{4}_{2}\text{He}$.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm Z · BT tự luyện Dạng 1 câu 16 — đề tr.140, giải tr.216</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho phản ứng hạt nhân $^{1}_{0}\text{n} + {}^{235}_{92}\text{U} \to {}^{94}_{38}\text{Sr} + X + 2\,{}^{1}_{0}\text{n}$. Hạt nhân X có cấu tạo gồm
+A. 54 proton và 86 neutron.
+B. 54 proton và 140 neutron.
+C. 86 proton và 140 neutron.
+D. 86 proton và 54 neutron.
+
+Bài giải:
+Phương trình: $^{1}_{0}\text{n} + {}^{235}_{92}\text{U} \to {}^{94}_{38}\text{Sr} + {}^{140}_{54}X + 2\,{}^{1}_{0}\text{n}$.
+Bảo toàn số khối: $1 + 235 = 94 + A_X + 2 \Rightarrow A_X = 140$. Bảo toàn điện tích: $92 = 38 + Z_X \Rightarrow Z_X = 54$.
+Hạt nhân X có 54 proton và $140 - 54 = 86$ neutron.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm Z · BT tự luyện Dạng 1 câu 21 — đề tr.140, giải tr.216</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đồng vị $^{234}_{92}\text{U}$ sau một chuỗi phóng xạ α và $\beta^{-}$ biến đổi thành $^{206}_{82}\text{Pb}$, đã phóng ra
+A. 7 hạt α và 4 hạt electron.
+B. 7 hạt α và 8 hạt electron.
+C. 14 hạt α và 8 hạt electron.
+D. 14 hạt α và 4 hạt electron.
+
+Bài giải:
+Gọi x, y lần lượt là số hạt α và số hạt electron phóng ra: $^{234}_{92}\text{U} \to x\,{}^{4}_{2}\alpha + y\,{}^{0}_{-1}e^{-} + {}^{206}_{82}\text{Pb}$.
+Bảo toàn số khối và điện tích ta có hệ: $234 = 4x + 206$ và $92 = 2x - y + 82$.
+Suy ra $x = 7$, $y = 4$.
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00127</span>Năng lượng toả, thu của phản ứng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Z · Ví dụ mẫu 1 Dạng 2 — tr.141</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho phản ứng hạt nhân: $^{2}_{1}\text{D} + {}^{6}_{3}\text{Li} \to {}^{4}_{2}\text{He} + X$. Biết khối lượng các hạt nhân $^{2}_{1}\text{D}$; $^{6}_{3}\text{Li}$; $^{4}_{2}\text{He}$ lần lượt là 2,0136 amu; 6,0170 amu và 4,0015 amu. Cho khối lượng nguyên tử bằng khối lượng hạt nhân của nó.
+a) Tính năng lượng của phản ứng trên.
+b) Tính năng lượng toả ra khi có 1 g $^{4}_{2}\text{He}$ tạo thành theo các phản ứng trên.
+
+Bài giải:
+Cân bằng phản ứng: $^{2}_{1}\text{D} + {}^{6}_{3}\text{Li} \to {}^{4}_{2}\text{He} + {}^{4}_{2}X$, X là hạt nhân $^{4}_{2}\text{He}$.
+a) Năng lượng của phản ứng là: $W = (m_D + m_{Li} - 2m_{He})c^2 = 0{,}0276\ \text{amu}\cdot c^2 = 25{,}7094\ \text{MeV}$ (dùng $1\ \text{amu}\cdot c^2 = 931{,}5\ \text{MeV}$). Vậy phản ứng đã cho toả năng lượng 25,7094 MeV.
+
+b) Trong 1 g He có số hạt nhân là: $N = \dfrac{m}{A}N_A = 1{,}505\cdot10^{23}$.
+Mỗi phản ứng cho 2 hạt He, do đó số phản ứng cần thiết là: $N_{pu} = \dfrac{N}{2} = 7{,}525\cdot10^{22}$.
+Năng lượng toả ra tổng cộng là $Q = N_{pu}W \approx 1{,}93\cdot10^{24}\ \text{MeV} = 3{,}1\cdot10^{11}\ \text{J}$.</div></div><div class="nd vd"><div class="tr">trạm Z · Ví dụ mẫu 2 Dạng 2 — tr.141</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho phản ứng hạt nhân $^{3}_{1}\text{T} + {}^{2}_{1}\text{D} \to {}^{4}_{2}\text{He} + X + 17{,}5\ \text{MeV}$. Độ hụt khối của $^{3}_{1}\text{T}$ và $^{2}_{1}\text{D}$ lần lượt là 0,0091 amu và 0,0025 amu. Tính năng lượng liên kết riêng của hạt nhân $^{4}_{2}\text{He}$.
+
+Bài giải:
+Cân bằng phản ứng: $^{3}_{1}\text{T} + {}^{2}_{1}\text{D} \to {}^{4}_{2}\text{He} + {}^{1}_{0}X$, X là hạt neutron (năng lượng liên kết bằng 0).
+Năng lượng phản ứng: $W = \Delta E_{He} - \Delta E_T - \Delta E_D \Rightarrow \Delta E_{He} = W + \Delta E_T + \Delta E_D \approx 28{,}3\ \text{MeV}$.
+Vậy năng lượng liên kết riêng của hạt nhân $^{4}_{2}\text{He}$ là $\varepsilon_{He} = \dfrac{\Delta E_{He}}{A_{He}} = \dfrac{28{,}3}{4} \approx 7{,}1\ \text{MeV}$.</div></div><div class="nd vd"><div class="tr">trạm Z · Ví dụ mẫu 3 Dạng 2 — tr.141</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Bắn hạt proton có động năng 1,6 MeV vào hạt nhân $^{7}_{3}\text{Li}$ đứng yên. Sau phản ứng thu được hai hạt nhân X giống nhau có cùng tốc độ. Biết khối lượng các hạt nhân proton, $^{7}_{3}\text{Li}$ và X lần lượt là 1,0073 amu, 7,0144 amu và 4,0015 amu. Tính động năng của mỗi hạt X thu được.
+
+Bài giải:
+Phản ứng hạt nhân: $^{1}_{1}\text{p} + {}^{7}_{3}\text{Li} \to 2X$, hạt nhân Li đứng yên nên có động năng $K_{Li} = 0$.
+$W = (m_p + m_{Li} - 2m_X)c^2 = 2K_X - K_p \leftrightarrow 17{,}42 = 2K_X - 1{,}6 \leftrightarrow K_X = 9{,}5\ \text{MeV}$.</div></div></div></section><section><h2><span class="ma">LNB00063</span>Vật lí hạt nhân › Phản ứng hạt nhân › Phân hạch và nhiệt hạch</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Lò phản ứng phân hạch hạt nhân và nhà máy điện hạt nhân: nhiên liệu, chất làm chậm, thanh điều khiển, chất tải nhiệt, cách biến năng lượng phân hạch thành điện năng và các biện pháp an toàn.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm Z · trang PDF 138</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Phản ứng phân hạch</b>
+Phản ứng phân hạch là phản ứng trong đó một hạt nhân nặng hấp thụ một neutron chậm vỡ thành hai hạt nhân trung bình, đồng thời phóng ra một số neutron và toả ra một năng lượng rất lớn (khoảng 200 MeV). Nhiên liệu chủ yếu thực hiện phản ứng phân hạch là $^{235}_{92}\text{U}$ và $^{239}_{94}\text{Pu}$.
+Cơ chế: truyền cho hạt nhân mẹ X một năng lượng đủ lớn (năng lượng kích hoạt) bằng cách bắn một neutron vào X để X bắt neutron đó và chuyển sang trạng thái kích thích, sau đó mới phân hạch: $n + X \to X^{*} \to Y + Z + kn$.
+Ví dụ phương trình: $^{1}_{0}\text{n} + {}^{235}_{92}\text{U} \to {}^{236}_{92}\text{U} \to {}^{95}_{39}\text{Y} + {}^{138}_{53}\text{I} + 3\,{}^{1}_{0}\text{n}$.
+
+<span class="the the-TC">TC</span><b> Phản ứng dây chuyền</b>
+Sự phân hạch của một hạt nhân uranium kèm theo sự giải phóng vài neutron mới; các neutron này lại có thể gây ra các phân hạch tiếp theo và cứ thế, sự phân hạch tiếp diễn thành phản ứng dây chuyền.
+Gọi k là số neutron trung bình được giải phóng sau mỗi phân hạch đến kích thích các hạt nhân uranium khác để tạo nên những phân hạch mới (không phải mọi neutron sinh ra đều gây phân hạch, vì có neutron bị các tạp chất trong nhiên liệu hấp thụ hoặc bay ra ngoài khối nhiên liệu).
+- $k &gt; 1$: số phân hạch tăng nhanh theo $k^1, k^2, k^3, \dots$; phản ứng dây chuyền trở thành thác lũ không thể khống chế, hệ thống vượt hạn (cơ chế nổ của bom nguyên tử).
+- $k &lt; 1$: phản ứng dây chuyền không thể xảy ra, hệ thống dưới hạn.
+- $k = 1$: phản ứng dây chuyền có thể khống chế, hệ thống tới hạn (cơ chế hoạt động của nhà máy điện nguyên tử).
+Muốn $k \ge 1$ thì khối lượng uranium hoặc plutonium phải đạt đến một trị số tối thiểu gọi là khối lượng tới hạn.
+
+<span class="the the-TC">TC</span><b> Lò phản ứng hạt nhân</b>
+- Lò phản ứng hạt nhân là thiết bị để tạo ra các phản ứng phân hạch dây chuyền tự duy trì và điều khiển được.
+- Nhiên liệu phân hạch trong lò thường là $^{235}\text{U}$ hoặc $^{239}\text{Pu}$.
+- Để đảm bảo $k = 1$, người ta dùng các thanh điều khiển chứa Bo hay Cd là các chất có tác dụng hấp thụ neutron (khi số neutron trong lò tăng quá nhiều thì cho các thanh điều khiển ngập sâu vào khu vực chứa nhiên liệu để hấp thụ số neutron thừa).
+- Năng lượng toả ra từ lò phản ứng không đổi theo thời gian.
+
+<span class="the the-ĐN">ĐN</span><b> Phản ứng nhiệt hạch</b>
+Phản ứng nhiệt hạch là phản ứng kết hợp hai hạt nhân rất nhẹ thành hạt nhân nặng hơn ở nhiệt độ rất cao. Đây là phản ứng toả năng lượng, là nguồn gốc năng lượng của Mặt Trời, các ngôi sao.</div></div><div class="nd"><div class="tr">trạm L · trang PDF 165, 166</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Lò phản ứng phân hạch hạt nhân</b>
+Lò phản ứng phân hạch hạt nhân là thiết bị giải phóng năng lượng hạt nhân thông qua phản ứng dây chuyền có thể kiểm soát được.
+- Lò phản ứng phân hạch hạt nhân đầu tiên trên thế giới được xây dựng tại Đại học Chicago (Hoa Kỳ) vào năm 1942.
+- Nhiên liệu của lò là thanh uranium, làm từ uranium tự nhiên hoặc uranium đã làm giàu (hàm lượng $^{235}\text{U}$ chiếm từ 2% đến 4%).
+
+<span class="the the-TC">TC</span><b> Chất điều tiết (làm chậm neutron)</b>
+Neutron có tốc độ tương đương với chuyển động nhiệt (neutron nhiệt, hay neutron chậm) là thích hợp nhất để phân hạch hạt nhân. Neutron quá nhanh sẽ "đi ngang qua" hạt nhân $^{235}\text{U}$ mà hạt nhân không "bắt" được nên phân hạch không xảy ra.
+- Phản ứng phân hạch tạo ra neutron tốc độ rất cao, vì vậy phải làm chậm chúng bằng bộ điều tiết đặt xung quanh thanh uranium: neutron nhanh va chạm với hạt nhân trong bộ điều tiết, năng lượng giảm và trở thành neutron chậm.
+- Chất điều tiết thường dùng: than chì, nước nặng ($\text{D}_2\text{O}$), nước thông thường (nước nhẹ).
+- Nước nhẹ hấp thụ neutron cao hơn nên lò dùng nước nhẹ phải dùng urani đã làm giàu; lò dùng nước nặng hoặc than chì làm chất làm chậm có thể dùng urani tự nhiên làm nhiên liệu.
+
+<span class="the the-TC">TC</span><b> Thanh điều khiển</b>
+Để điều chỉnh số lượng neutron nhằm kiểm soát tốc độ phản ứng, người ta chèn một số thanh cadmium vào giữa các thanh uranium. Cadmium hấp thụ neutron mạnh; loại thanh này gọi là thanh điều khiển.
+- Khi phản ứng dây chuyền tăng nhanh, đưa thanh cadmium vào sâu hơn để hấp thụ nhiều neutron hơn thì phản ứng dây chuyền chậm lại.
+
+<span class="the the-TC">TC</span><b> Chất tải nhiệt và nhà máy điện hạt nhân</b>
+Năng lượng giải phóng bởi phân hạch làm tăng nhiệt độ vùng phản ứng. Các chất lỏng như nước hoặc natri kim loại lỏng lưu thông bên trong và bên ngoài lò để truyền nhiệt và đồng thời làm mát lò.
+- Nhiệt toả ra từ lò biến nước thành hơi; hơi nước có nhiệt độ và áp suất cao điều khiển tua-bin tạo ra điện.
+- Chỉ cần đốt cháy lượng nhiên liệu hạt nhân bằng một cây bút chì thì năng lượng giải phóng ra tương đương nhiệt lượng toả ra khi đốt cháy hoàn toàn 10 tấn than tiêu chuẩn.
+- Một nhà máy điện hạt nhân công suất một triệu kilowatt chỉ tiêu thụ khoảng 30 tấn uranium đã làm giàu mỗi năm, trong khi nhà máy nhiệt điện cùng công suất đốt $2{,}5 \times 10^6$ tấn than mỗi năm.
+
+<span class="the the-CY">CY</span><b> An toàn phóng xạ ở nhà máy điện hạt nhân</b>
+Khi xây dựng nhà máy điện hạt nhân phải ngăn ngừa rò rỉ phóng xạ và chất phóng xạ để tránh gây hại cho con người và ô nhiễm nguồn nước, không khí, nơi làm việc.
+- Xây lớp xi măng dày bên ngoài lò phản ứng để che chắn các tia phát ra từ các sản phẩm phân hạch.
+- Chất thải hạt nhân trong các lò có tính phóng xạ cao, được đưa vào các thùng chứa đặc biệt và chôn sâu dưới lòng đất.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00128</span>Nhận biết phân hạch, nhiệt hạch, lò phản ứng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 3 — đề tr.168 (in 163), giải tr.230 (in 226; phần B chỉ có đáp án, phần giải thích ghép từ lý thuyết tr.165)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong lò phản ứng hạt nhân gồm các bộ phận chính sau: thanh uranium; thanh điều khiển; chất làm mát. Về chức năng chính của thanh điều khiển, phát biểu nào sau đây đúng?
+A. Làm chậm neutron nhanh và duy trì phản ứng dây chuyền.
+B. Hấp thụ neutron và kiểm soát tốc độ của phản ứng dây chuyền.
+C. Làm nguội và kiểm soát nhiệt độ của lò phản ứng hạt nhân.
+D. Kiểm soát khối lượng uranium không vượt quá khối lượng tới hạn.
+
+Bài giải:
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 5 — đề tr.168, giải tr.230</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong lò phản ứng hạt nhân, để làm chậm tốc độ của neutron nhanh, vật liệu có thể được sử dụng là
+A. Hydrogen.
+B. Cadmium.
+C. Oxygen.
+D. Than chì.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 7 — đề tr.168, giải tr.230</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong lò phản ứng hạt nhân, nhiên liệu hạt nhân trải qua phản ứng phân hạch để giải phóng năng lượng hạt nhân. Mô tả nào sau đây về lò phản ứng hạt nhân là đúng?
+A. Nhiên liệu hạt nhân trong lò phản ứng có thể là $^{2}_{1}\text{D}$ hoặc $^{3}_{1}\text{T}$.
+B. Trong lò phản ứng hạt nhân xảy ra phản ứng dây chuyền.
+C. Tổng năng lượng liên kết của các hạt nhân mới sau phản ứng nhỏ hơn năng lượng liên kết của hạt nhân trước phản ứng.
+D. Trong lò phản ứng hạt nhân, neutron chậm có thể được chuyển thành neutron nhanh thông qua than chì hoặc nước nặng.
+
+Bài giải:
+Chọn B.</div></div></div><div class="dang"><h3><span class="ma">LDB00129</span>Năng lượng toả ra từ nhiên liệu hạt nhân <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm Z · BT tự luyện Dạng 2 câu 37 — đề tr.145, giải tr.219</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong sự vỡ hạt nhân uranium $^{235}\text{U}$ năng lượng trung bình toả ra khi phân chia một hạt nhân là 200 MeV. Khi 1 kg $^{235}\text{U}$ phân hạch hoàn toàn thì toả ra năng lượng là
+A. $8{,}21\cdot10^{13}\ \text{J}$.
+B. $4{,}11\cdot10^{13}\ \text{J}$.
+C. $5{,}25\cdot10^{13}\ \text{J}$.
+D. $6{,}23\cdot10^{21}\ \text{J}$.
+
+Bài giải:
+Số hạt U trong 1 kg = 1000 g là $N_U = \dfrac{1000}{235}\cdot6{,}02\cdot10^{23} = 2{,}5617\cdot10^{24}$.
+Năng lượng toả ra là $Q = N_U W = 5{,}1234\cdot10^{26}\ \text{MeV} = 8{,}2\cdot10^{13}\ \text{J}$.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm Z · Ví dụ mẫu 4 Dạng 2 — đề tr.141, giải tr.142</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một nhà máy điện hạt nhân có công suất 160 kW, dùng năng lượng phân hạch uranium $^{235}\text{U}$, hiệu suất là 25%. Mỗi hạt $^{235}\text{U}$ phân hạch toả ra 200 MeV. Với 500 g uranium $^{235}\text{U}$ nhiên liệu thì nhà máy điện này hoạt động được trong bao lâu?
+
+Bài giải:
+Số hạt uranium trong 500 g là $N_U = \dfrac{500}{235}\cdot6{,}02\cdot10^{23} \approx 1{,}28\cdot10^{24}$.
+Năng lượng toả ra khi 500 g uranium phân hạch là $Q = N_U W \approx 2{,}56\cdot10^{26}\ \text{MeV} \approx 4{,}1\cdot10^{13}\ \text{J}$.
+Điện năng nhà máy sinh ra khi 500 g uranium phân hạch là $A = HQ \approx 1{,}025\cdot10^{13}\ \text{J}$.
+Thời gian hoạt động là $t = \dfrac{A}{P} \approx 6{,}4\cdot10^{7}\ \text{s} \approx 741$ ngày.</div></div><div class="nd vd"><div class="tr">trạm Z · BT tự luyện Dạng 2 câu 48 — đề tr.147, giải tr.220</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong một vụ thử hạt nhân, quả bom hạt nhân sử dụng sự phân hạch của đồng vị $^{235}\text{U}$ với hệ số nhân neutron là k ($k &gt; 1$). Giả sử $^{235}\text{U}$ phân hạch trong mỗi phản ứng tạo ra 200 MeV. Coi lần đầu chỉ có một phân hạch và các lần phân hạch xảy ra đồng loạt. Sau 85 phân hạch thì quả bom giải phóng tổng cộng 343,87 triệu kWh. Giá trị của k là
+A. 2,0.
+B. 2,2.
+C. 2,4.
+D. 1,8.
+
+Bài giải:
+Số phản ứng tổng cộng: $N = 1 + k + k^2 + \dots + k^{84} = \dfrac{k^{85} - 1}{k - 1}$.
+Năng lượng toả ra của quả bom: $N W = 343{,}87\cdot10^{6}\ \text{kWh} \Rightarrow \dfrac{k^{85} - 1}{k - 1} = 3{,}87\cdot10^{25} \Rightarrow k \approx 2$.
+Chọn A.</div></div></div></section><section><h2><span class="ma">LNB00064</span>Vật lí hạt nhân › Phóng xạ › Hiện tượng phóng xạ và các tia</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Hiện tượng phóng xạ (hạt nhân không bền tự phát phân rã, không phụ thuộc môi trường ngoài) và bản chất, phương trình phân rã, tốc độ, khả năng ion hoá, đâm xuyên của các tia $\alpha$, $\beta^-$, $\beta^+$, $\gamma$.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm K · trang PDF 136, 137</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Hiện tượng phóng xạ</b>
+Hiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác được gọi là hiện tượng phóng xạ.
+Quá trình này do các nguyên nhân bên trong gây ra nên không chịu tác động của các yếu tố thuộc môi trường ngoài như nhiệt độ, áp suất,...
+
+<span class="the the-TC">TC</span><b> Phóng xạ là phản ứng hạt nhân tự phát</b>
+- Phản ứng hạt nhân tự phát là quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác; ví dụ: quá trình phóng xạ.
+- Phương trình phóng xạ có dạng $\text{A} \to \text{B} + \text{C}$, trong đó A là hạt nhân mẹ, B là hạt nhân con và C là hạt $\alpha$ ($^{4}_{2}\text{He}$) hoặc $^{0}_{1}\text{e}$ hoặc $^{0}_{-1}\text{e}$.
+
+<span class="the the-TC">TC</span><b> Phóng xạ $\alpha$</b>
+- Phương trình: $^{A}_{Z}\text{X} \to {}^{A-4}_{Z-2}\text{Y} + {}^{4}_{2}\text{He}$.
+- Tia $\alpha$ thực chất là hạt nhân của nguyên tử helium, kí hiệu $^{4}_{2}\text{He}$.
+- Tia $\alpha$ phóng ra từ mẫu phóng xạ với tốc độ khoảng $2\cdot10^{7}\ \text{m/s}$.
+- Tia $\alpha$ ion hoá mạnh môi trường vật chất, do đó nó chỉ đi được khoảng vài cm trong không khí và dễ dàng bị tờ giấy dày 1 mm chặn lại.
+
+<span class="the the-TC">TC</span><b> Phóng xạ $\beta$</b>
+- Tia $\beta$ là các hạt phóng xạ có tốc độ lớn (xấp xỉ tốc độ ánh sáng trong chân không), làm ion hoá môi trường vật chất ở mức trung bình.
+- Tia $\beta$ có thể xuyên qua tờ giấy dày khoảng 1 mm nhưng bị chặn bởi tấm nhôm dày khoảng 1 mm.
+- Có hai loại phóng xạ $\beta$ là $\beta^+$ và $\beta^-$.
+
+<span class="the the-TC">TC</span><b> Phóng xạ $\beta^-$</b>
+- Là quá trình phát ra tia $\beta^-$ (dòng các electron $^{0}_{-1}\text{e}$), phương trình: $^{A}_{Z}\text{X} \to {}^{0}_{-1}\text{e} + {}^{A}_{Z+1}\text{Y}$.
+- Trong phân rã $\beta^-$ còn sinh ra một hạt phản neutrino $\bar{\nu}$.
+
+<span class="the the-TC">TC</span><b> Phóng xạ $\beta^+$</b>
+- Là quá trình phát ra tia $\beta^+$ (dòng các positron $^{0}_{+1}\text{e}$, có điện tích $+e$ và khối lượng bằng electron, là phản hạt của electron), phương trình: $^{A}_{Z}\text{X} \to {}^{0}_{1}\text{e} + {}^{A}_{Z-1}\text{Y}$.
+- Trong phân rã $\beta^+$ còn sinh ra một hạt neutrino $\nu$.
+
+<span class="the the-CY">CY</span><b></b>
+Hạt neutrino và phản neutrino là những hạt không mang điện, có khối lượng vô cùng nhỏ.
+
+<span class="the the-TC">TC</span><b> Phóng xạ $\gamma$</b>
+- Tia $\gamma$ là sóng điện từ có bước sóng rất ngắn, là dòng hạt photon có năng lượng cao, thường đi kèm trong các phóng xạ $\alpha$ và $\beta$.</div></div></div>
+  <div class="o sgk"><div class="nhan">Lý thuyết bổ sung <span class="src sg">viết theo SGK KNTT — cần chị soát</span></div><div class="nd"><div class="tr">trạm K</div><div class="pre"><span class="the the-TC">TC</span><b> So sánh các tia phóng xạ</b>
+- Tia $\alpha$ và tia $\beta^+$ mang điện dương nên trong điện trường lệch về phía bản âm; tia $\beta^-$ mang điện âm nên lệch về phía bản dương; tia $\gamma$ không mang điện nên không bị lệch.
+- Khả năng ion hoá: tia $\alpha$ mạnh nhất, tia $\gamma$ yếu nhất. Khả năng đâm xuyên: tia $\gamma$ mạnh nhất, tia $\alpha$ yếu nhất.</div></div></div><div class="dang"><h3><span class="ma">LDB00130</span>Bản chất, tính chất tia α, β−, β+, γ và hiện tượng phóng xạ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ3 Dạng 3 câu 3 — đề tr.148 (in 143), đáp án tr.221 (in 217)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Tia $\alpha$ là dòng các hạt nhân
+A. $^{1}_{1}\text{H}$.
+B. $^{3}_{1}\text{H}$.
+C. $^{4}_{2}\text{He}$.
+D. $^{3}_{2}\text{He}$.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ3 Dạng 3 câu 11 — đề tr.148 (in 143), đáp án tr.221 (in 217)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho 4 tia phóng xạ: tia $\alpha$, tia $\beta^+$, tia $\beta^-$ và tia $\gamma$ đi vào một miền có điện trường đều theo phương vuông góc với đường sức điện. Tia phóng xạ không bị lệch khỏi phương truyền ban đầu là
+A. tia $\gamma$.
+B. tia $\beta^-$.
+C. tia $\beta^+$.
+D. tia $\alpha$.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ3 Dạng 3 câu 18 — đề tr.149 (in 144), đáp án tr.221 (in 217)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi nói về tia $\alpha$, phát biểu nào sau đây là sai?
+A. Tia $\alpha$ phóng ra từ hạt nhân với tốc độ bằng 2000 m/s.
+B. Khi đi qua điện trường giữa hai bản tụ điện, tia $\alpha$ bị lệch về phía bản âm của tụ điện.
+C. Khi đi trong không khí, tia $\alpha$ làm ion hóa không khí và mất dần năng lượng.
+D. Tia $\alpha$ là dòng các hạt nhân heli ($^{4}_{2}\text{He}$).
+
+Bài giải:
+Chọn A.</div></div></div></section><section><h2><span class="ma">LNB00065</span>Vật lí hạt nhân › Phóng xạ › Định luật phóng xạ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Định luật phóng xạ: chu kì bán rã, hằng số phóng xạ, số hạt nhân (khối lượng) còn lại và đã phân rã, quan hệ hạt nhân mẹ - hạt nhân con, độ phóng xạ và đơn vị becơren.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm K · trang PDF 151, 152</div><div class="pre"><span class="the the-ĐL">ĐL</span><b> Định luật phóng xạ</b>
+Thực nghiệm chứng tỏ rằng cứ sau một khoảng thời gian xác định $T$, một nửa số hạt nhân hiện có bị phân rã, biến đổi thành hạt nhân khác; $T$ được gọi là chu kì bán rã của chất phóng xạ.
+Sau các khoảng thời gian $T, 2T, 3T, \dots, kT$ ($k$ là số nguyên dương), số hạt nhân $N$ còn lại chưa bị phân rã bằng $\dfrac{N_0}{2}, \dfrac{N_0}{4}, \dfrac{N_0}{8}, \dots, \dfrac{N_0}{2^k}$, tức là $N(kT) = N_0 \cdot 2^{-k}$.
+
+<span class="the the-TC">TC</span><b> Số hạt nhân và khối lượng còn lại</b>
+- Số hạt nhân còn lại: $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$.
+- Hằng số phóng xạ: $\lambda = \dfrac{0{,}693}{T}$ (vì $2 = e^{\ln 2} \approx e^{0{,}693}$).
+- Số hạt nhân đã bị phân rã: $\Delta N = N_0 - N(t) = N_0\left(1 - e^{-\lambda t}\right)$.
+- Khối lượng chất phóng xạ còn lại: $m(t) = m_0 \cdot 2^{-\frac{t}{T}} = m_0 e^{-\lambda t}$ (khối lượng tỉ lệ với số hạt nên giảm theo cùng quy luật như số hạt nhân $N$).
+
+<span class="the the-TC">TC</span><b> Hạt nhân mẹ và hạt nhân con</b>
+- Hạt nhân $^{A}_{Z}\text{X}$ của chất phóng xạ sau khi phân rã thì biến thành hạt nhân bền $^{A'}_{Z'}\text{Y}$; $^{A}_{Z}\text{X}$ là hạt nhân mẹ (hạt nhân của chất phóng xạ chưa bị phân rã), $^{A'}_{Z'}\text{Y}$ là hạt nhân con (hạt nhân của chất phóng xạ đã bị phân rã).
+- Tại thời điểm $t_0 = 0$: số hạt nhân mẹ là $N_0$, số hạt nhân con là $0$.
+- Tại thời điểm $t$: $N_X = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$ và $N_Y = N_0 - N_0 \cdot 2^{-\frac{t}{T}} = N_0 - N_0 e^{-\lambda t}$.
+- Tỉ số số hạt nhân con và hạt nhân mẹ: $\dfrac{N_Y}{N_X} = 2^{\frac{t}{T}} - 1 = e^{\lambda t} - 1$.
+
+<span class="the the-ĐN">ĐN</span><b> Độ phóng xạ</b>
+- Độ phóng xạ $H$ (hoạt độ phóng xạ) đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, có giá trị bằng số hạt nhân phân rã trong một giây.
+- $H_t = -\dfrac{dN_t}{dt} = \lambda N_0 e^{-\lambda t} = \lambda N_t$; độ phóng xạ ban đầu $H_0 = \lambda N_0$.
+- Đơn vị của độ phóng xạ là becơren (Bq): $1\ \text{Bq} = 1$ phân rã/giây.
+- Độ phóng xạ của một chất phóng xạ giảm theo thời gian theo cùng quy luật hàm số mũ như số hạt nhân của nó: $H = H_0 \cdot 2^{-\frac{t}{T}}$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00131</span>Số hạt còn lại, bị phân rã N = N0·2^(−t/T) <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 1 câu 4 — đề tr.153 (in 148), giải tr.222 (in 218)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Ban đầu có 20 g chất phóng xạ X có chu kì bán rã $T$. Khối lượng của chất X còn lại sau khoảng thời gian $3T$, kể từ thời điểm ban đầu bằng
+A. 3,2 g.
+B. 2,5 g.
+C. 4,5 g.
+D. 1,5 g.
+
+Bài giải:
+Khối lượng còn lại: $m = m_0 \cdot 2^{-\frac{3T}{T}} = \dfrac{m_0}{8} = \dfrac{20\ \text{g}}{8} = 2{,}5\ \text{g}$. Chọn B.</div></div><div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 1 câu 14 — đề tr.154 (in 149), giải tr.222 (in 218)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Gọi $\tau$ là khoảng thời gian để số hạt nhân của một đồng vị phóng xạ giảm đi bốn lần. Sau thời gian $2\tau$ số hạt nhân còn lại của đồng vị đó bằng bao nhiêu phần trăm số hạt nhân ban đầu?
+A. 25,25%.
+B. 93,75%.
+C. 6,25%.
+D. 13,5%.
+
+Bài giải:
+Tại $t = \tau$: $N_0 \cdot 2^{-\frac{\tau}{T}} = \dfrac{N_0}{4} \Rightarrow \tau = 2T$.
+Tại $t = 2\tau$: $N_0 \cdot 2^{-\frac{2\tau}{T}} = N_0 \cdot 2^{-\frac{4T}{T}} = N_0 \cdot 2^{-4} = 6{,}25\%\,N_0$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm K · Ví dụ mẫu CĐ4 Dạng 1 — tr.152 (in 147)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Chất phóng xạ polonium $^{210}_{84}\text{Po}$ phát ra tia $\alpha$ và biến đổi thành chì $^{206}_{82}\text{Pb}$. Biết chu kì bán rã của polonium là 138 ngày. Ban đầu ($t = 0$), mẫu polonium $^{210}_{84}\text{Po}$ nguyên chất có số hạt là $N_0$. Xác định:
+a) Hằng số phóng xạ?
+b) Số hạt $^{210}_{84}\text{Po}$ và $^{206}_{82}\text{Pb}$ trong mẫu chất tại $t = 276$ ngày?
+c) Số hạt $\alpha$ thu được trong ngày thứ 414?
+d) Tỉ số khối lượng của $^{206}_{82}\text{Pb}$ và $^{210}_{84}\text{Po}$ trong mẫu chất tại $t = 552$ ngày?
+
+Bài giải:
+Phóng xạ: $^{210}_{84}\text{Po} \to \alpha + {}^{206}_{82}\text{Pb}$.
+a) Hằng số phóng xạ $\lambda = \dfrac{0{,}693}{T} \approx 0{,}005\ (\text{ngày}^{-1})$.
+
+b) Số hạt $^{210}_{84}\text{Po}$ còn lại trong mẫu: $N_0 \cdot 2^{-\frac{t}{T}} = N_0 \cdot 2^{-\frac{276}{138}} = \dfrac{N_0}{4}$ (hạt).
+Số hạt $^{206}_{82}\text{Pb}$ được tạo thành trong mẫu: $N_0\left(1 - 2^{-\frac{t}{T}}\right) = \dfrac{3N_0}{4}$ (hạt).
+
+c) Trong ngày thứ 414 là từ thời điểm $t_1 = 413$ (ngày) tới thời điểm $t_2 = 414$ (ngày).
+Số hạt $\alpha$ thu được bằng số hạt $^{206}_{82}\text{Pb}$ tạo thành. Do đó: $N_0\left(2^{-\frac{t_1}{T}} - 2^{-\frac{t_2}{T}}\right) \approx 6{,}3N_0 \cdot 10^{-4}$ (hạt).
+
+d) Số hạt $^{210}_{84}\text{Po}$ còn lại trong mẫu: $N_0 \cdot 2^{-\frac{t}{T}} = N_0 \cdot 2^{-\frac{552}{138}} = \dfrac{N_0}{16}$ (hạt) $\to m_{Po} = \dfrac{105}{8}N_0$ (u).
+Số hạt $^{206}_{82}\text{Pb}$ được tạo thành trong mẫu: $N_0\left(1 - 2^{-\frac{t}{T}}\right) = \dfrac{15N_0}{16}$ (hạt) $\to m_{Pb} = \dfrac{1545}{8}N_0$ (u).
+Suy ra $\delta = \dfrac{m_{Pb}}{m_{Po}} = \dfrac{103}{7}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00132</span>Độ phóng xạ H = λN <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 3 phần ① câu 2 — đề tr.161 (in 156), giải tr.227 (in 223)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nếu độ phóng xạ của tritium trong một lít nước thải hạt nhân là 10 000 Bq thì sau hai chu kì bán rã tritium, độ phóng xạ của tritium trong một lít nước thải hạt nhân này là
+A. 7500 Bq.
+B. 5000 Bq.
+C. 2500 Bq.
+D. 1250 Bq.
+
+Bài giải:
+$H = H_0 \cdot 2^{-\frac{t}{T}} = 10000 \times 2^{-2} = 2500\ \text{Bq}$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 3 phần ① câu 6 — đề tr.161 (in 156), giải tr.227 (in 223)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong các vụ thử hạt nhân, người ta thấy có đồng vị phóng xạ $^{131}\text{I}$ lan ra trong khí quyển (đồng vị này có thể gây ung thư tuyến giáp). Mưa sẽ làm cho cỏ nhiễm đồng vị phóng xạ này và cuối cùng nó xuất hiện trong sữa bò. Giả sử sau một vụ thử hạt nhân, người ta đo được độ phóng xạ của $^{131}\text{I}$ trong sữa bò tại một nơi nào đó là 2900 Bq/lít. Biết chu kì bán rã của $^{131}\text{I}$ là 8,04 ngày. Hỏi sau bao lâu thì sữa bò tại đó mới đạt mức an toàn cho phép là 185 Bq/lít?
+A. 43 ngày.
+B. 25 ngày.
+C. 16 ngày.
+D. 32 ngày.
+
+Bài giải:
+$2^{-\frac{t}{T}} = \dfrac{H}{H_0} = \dfrac{185}{2900} \to t \approx 32$ ngày. Chọn D.</div></div><div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 3 phần ① câu 15 — đề tr.162 (in 157), giải tr.228 (in 224)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Để ước lượng thể tích nước trong một bể nước, một lượng nhỏ dung dịch chứa chất phóng xạ có chu kì bán rã 3 ngày và có độ phóng xạ là $8\cdot10^{7}$ phân rã/phút được đổ vào bể nước. Sau 9 ngày, lấy mẫu $1\ \text{m}^3$ nước từ bể nước (coi dung dịch chất phóng xạ đã phân bố đều) thì thấy mẫu có độ phóng xạ là 20 phân rã/phút. Thể tích của nước trong bể ước lượng được là
+A. $3\cdot10^{5}\ \text{m}^3$.
+B. $4\cdot10^{5}\ \text{m}^3$.
+C. $2\cdot10^{5}\ \text{m}^3$.
+D. $5\cdot10^{5}\ \text{m}^3$.
+
+Bài giải:
+$2^{-\frac{t}{T}} = \dfrac{H}{H_0} \to 2^{-3} = \dfrac{20 \times \dfrac{V}{1\ \text{m}^3}}{8\cdot10^{7}} \to V = 5\cdot10^{5}\ \text{m}^3$. Chọn D.</div></div></div><div class="dang"><h3><span class="ma">LDB00133</span>Tính tuổi và tỉ số hạt con / hạt mẹ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm K · BT tự luyện CĐ4 Dạng 2 câu 3 — đề tr.157 (in 152), giải tr.225 (in 221)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+$X$ là chất phóng xạ $\beta^-$. Ban đầu có một mẫu $X$ nguyên chất. Sau 53,6 phút, số hạt $\beta^-$ sinh ra gấp 3 lần số hạt nhân $X$ còn lại trong mẫu. Chu kì bán rã của $X$ bằng
+A. 8,93 phút.
+B. 13,4 phút.
+C. 26,8 phút.
+D. 53,6 phút.
+
+Bài giải:
+Số hạt $\beta^-$ sinh ra bằng số hạt nhân con, nên $\dfrac{N_{con}}{N_{me}} = 2^{\frac{t}{T}} - 1 = 3 \to t = 2T = 53{,}6$ phút $\to T = 26{,}8$ phút. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm K · Ví dụ mẫu 1 CĐ4 Dạng 2 — tr.157 (in 152)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Chất phóng xạ polonium $^{210}_{84}\text{Po}$ phát ra tia $\alpha$ và biến đổi thành chì $^{206}_{82}\text{Pb}$. Chu kì bán rã của $^{210}_{84}\text{Po}$ là 138 ngày. Ban đầu ($t = 0$) có một mẫu polonium nguyên chất. Tại thời điểm $t_1$, tỉ số giữa số hạt nhân polonium và số hạt nhân chì trong mẫu là $\dfrac{1}{4}$. Tại thời điểm $t_2 = t_1 + 414$ ngày, tỉ số giữa số hạt nhân polonium và số hạt nhân chì trong mẫu là bao nhiêu?
+
+Bài giải:
+Tại $t = t_1$: $\dfrac{N_{Pb}}{N_{Po}} = 2^{\frac{t_1}{T}} - 1 = 4 \to 2^{\frac{t_1}{138}} = 5$.
+Tại $t = t_2$: $\dfrac{N_{Pb}}{N_{Po}} = 2^{\frac{t_2}{T}} - 1 = 2^{\frac{t_1 + 414}{138}} - 1 = 8 \cdot 2^{\frac{t_1}{138}} - 1 = 8 \cdot 5 - 1 = 39 \to \dfrac{N_{Po}}{N_{Pb}} = \dfrac{1}{39}$.</div></div><div class="nd vd"><div class="tr">trạm K · Ví dụ mẫu 2 CĐ4 Dạng 2 — tr.157 (in 152)</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hạt nhân uranium $^{238}_{92}\text{U}$ sau một chuỗi phân rã, biến đổi thành hạt nhân chì $^{206}_{82}\text{Pb}$. Trong quá trình đó, chu kì bán rã của $^{238}_{92}\text{U}$ biến đổi thành hạt nhân chì là $4{,}47\cdot10^{9}$ năm. Một khối đá được phát hiện có chứa $7{,}243\cdot10^{20}$ hạt nhân $^{238}_{92}\text{U}$ và $2{,}863\cdot10^{19}$ hạt nhân $^{206}_{82}\text{Pb}$. Giả sử khối đá lúc mới hình thành không chứa chì và tất cả lượng chì có mặt trong đó đều là sản phẩm phân rã của $^{238}_{92}\text{U}$. Tuổi của khối đá khi được phát hiện là bao nhiêu?
+
+Bài giải:
+Gọi $t$ là tuổi của khối đá, ta có: $2^{\frac{t}{4{,}47\cdot10^{9}}} - 1 = \dfrac{2{,}863\cdot10^{19}}{7{,}243\cdot10^{20}} \to t \approx 250$ triệu năm.</div></div></div></section><section><h2><span class="ma">LNB00066</span>Vật lí hạt nhân › Phóng xạ › Ứng dụng và an toàn phóng xạ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Ứng dụng của hiện tượng phóng xạ (nguyên tử đánh dấu và chụp PET trong y học, tạo giống cây, pin hạt nhân, đầu báo khói) cùng ô nhiễm phóng xạ và các biện pháp an toàn phóng xạ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm L · trang PDF 166, 167</div><div class="pre"><span class="the the-TC">TC</span><b> Nguyên tử đánh dấu</b>
+Nếu trộn lẫn đồng vị phóng xạ với đồng vị bền không phóng xạ của một nguyên tố X và dùng dụng cụ phát hiện tia phóng xạ thì có thể tìm ra sự phân bố của nguyên tố đó. Đồng vị phóng xạ dùng cho mục đích này gọi là nguyên tử đánh dấu.
+- Trong điều trị y tế, bác sĩ đưa chất đánh dấu phóng xạ vào bệnh nhân bằng đường uống hoặc tiêm tĩnh mạch; chất này tham gia lưu thông, chuyển hóa như các chất của cơ thể và liên tục phát ra tia phóng xạ.
+- Theo dõi bằng thiết bị phát hiện tia, chẳng hạn chụp cắt lớp phát xạ positron (máy quét PET), có thể biết các cơ quan nội tạng của bệnh nhân có bị tổn thương hay không.
+
+<span class="the the-TC">TC</span><b> Các ứng dụng khác của hiện tượng phóng xạ</b>
+- Tạo giống cây mới trong nông nghiệp: dùng tia gamma chiếu xạ hạt giống để làm biến đổi vật chất di truyền trong hạt, tạo ra giống mới ưu việt hơn.
+- Pin hạt nhân: chuyển đổi năng lượng giải phóng khi đồng vị phóng xạ phân rã thành năng lượng điện; công suất cao, tuổi thọ dài, dùng làm nguồn năng lượng cho vệ tinh nhân tạo, tàu vũ trụ, cơ sở kỹ thuật hải đảo...
+
+<span class="the the-TC">TC</span><b> Đầu báo khói dùng tia alpha</b>
+Đầu báo khói là thiết bị phát hiện khói trong không khí và tự động báo động. Máy dò chứa khoảng 0,2 mg Am, kim loại phóng xạ có chu kì bán rã 432 năm, phát ra tia alpha và gamma.
+- Các hạt alpha va chạm với oxy, nitơ và các phân tử khác trong khoang phát hiện, làm ion hóa các phân tử này; ion dương và ion âm chuyển động dưới tác dụng của lực điện trường tạo thành dòng điện rất nhỏ.
+- Khi khói đi vào buồng phát hiện, các hạt trong khói hấp phụ một số hạt $\alpha$, làm giảm số lượng phân tử khí bị ion hóa, dòng điện giữa hai điện cực giảm; máy dò phát hiện thay đổi đó thì phát ra âm thanh báo động.
+
+<span class="the the-CY">CY</span><b> Ô nhiễm phóng xạ và an toàn phóng xạ</b>
+Con người luôn sống trong môi trường có chất phóng xạ (tia vũ trụ, đá trong lòng đất, một số thực phẩm và nhu yếu phẩm chứa kali 40, thuốc lá chứa polonium 210...), nhưng cường độ bức xạ của chúng nằm trong liều lượng an toàn.
+- Để tránh thiệt hại do tia phóng xạ, cần giảm thiểu thời gian tiếp xúc và thực hiện các biện pháp phòng ngừa cần thiết.
+- Nguồn phóng xạ dùng trong nghiên cứu khoa học, bệnh viện, phòng thí nghiệm trường học phải đặt trong thùng bằng chì; thùng chì có khóa và dán biển cảnh báo.
+- Chất thải công nghiệp hạt nhân phải đựng hộp kim loại nặng dày và chôn sâu trong đại dương.
+- Trong trường học chỉ dùng nguồn phóng xạ rất yếu; khi xử lí phải dùng nhíp đặc biệt và không để nguồn phóng xạ gần mắt.
+- Dùng tấm chắn (nước, xi măng...) giữa nguồn phóng xạ và cơ thể con người là một biện pháp bảo vệ.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00134</span>Ứng dụng và an toàn phóng xạ <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 8 — đề tr.168 (in 163), giải tr.230</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đâu không phải là ứng dụng của chất phóng xạ?
+A. Chiếu xạ các nguyên tố phóng xạ để điều trị khối u ác tính.
+B. Đồng vị phóng xạ làm nguyên tử đánh dấu.
+C. Nguồn phóng xạ được cất giữ cách xa thực phẩm, nguồn nước và môi trường sống.
+D. Khảo cổ học phân tích nguyên tố phóng xạ.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 4 — đề tr.168, giải tr.230</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Chất thải hạt nhân trong các lò phản ứng hạt nhân có độ phóng xạ cao. Phương pháp xử lí thông dụng hiện nay là cho chúng vào các thùng chứa đặc biệt và sau đó
+A. thả xuống đáy biển.
+B. đưa vào sa mạc.
+C. vận chuyển lên mặt trăng.
+D. chôn sâu dưới lòng đất.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm L · BT tự luyện CĐ5 phần ① câu 10 — đề tr.169 (in 164), giải tr.230</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nguyên lí của chụp cắt lớp vi tính phát xạ positron (PET) là: các đồng vị phóng xạ $^{15}_{8}\text{O}$ được tiêm vào cơ thể con người, positron được giải phóng do $^{15}_{8}\text{O}$ phân rã gặp electron trong cơ thể thì hủy nhau và chuyển hóa thành một cặp photon gamma, được máy dò phát hiện. Sau khi thu thập, hình ảnh rõ nét được tạo ra thông qua xử lí máy tính. Phát biểu nào sau đây là sai?
+A. Phương trình phân rã của $^{15}_{8}\text{O}$ trong cơ thể con người là $^{15}_{8}\text{O} \to {}^{15}_{7}\text{N} + {}^{0}_{1}\text{e}^{+}$.
+B. Phương trình hủy diệt của các positron và electron là ${}^{0}_{1}\text{e}^{+} + {}^{0}_{-1}\text{e}^{-} \to 2\gamma$.
+C. Trong PET, công dụng chính của $^{15}_{8}\text{O}$ là làm nguyên tử đánh dấu.
+D. Trong PET, mục đích chính là tham gia vào quá trình trao đổi chất của cơ thể con người.
+
+Bài giải:
+Chọn D.</div></div></div></section>
+<section><h2>Nội dung sách chưa xếp được</h2><ul><li>trạm K · tr.163-164 (giải 228-229): CĐ4 Dạng 4 "Vấn đề hai chất phóng xạ" (11 câu trắc nghiệm, có đáp án giải): thời điểm hai chất có số hạt bằng nhau, tỉ số $N_A/N_B$, tuổi Trái Đất theo U-238/U-235. <i>Bản đồ không có dạng riêng cho hai chất phóng xạ; có thể gộp vào LDB00131 hoặc mở dạng mới trong nhóm LNB00065.</i></li><li>trạm K · tr.145-150 (giải 217-220): CĐ3 Dạng 2 năng lượng phản ứng hạt nhân (câu 1-50) và CĐ3 Dạng 3 câu 20-30 (phân hạch, nhiệt hạch, hệ số nhân k, thanh điều khiển). <i>LDB00127 / LDB00128 / LDB00129 (trạm khác).</i></li><li>trạm K · tr.165-166: Đầu CĐ5 Ứng dụng của vật lí hạt nhân: lò phản ứng, nhà máy điện hạt nhân, nguyên tử đánh dấu, tạo giống cây, pin hạt nhân. <i>LNB00063 (lò phản ứng) và LNB00066 / LDB00134 (ứng dụng phóng xạ).</i></li><li>trạm L · tr.168: Chủ đề 5 phần ① câu 1 (nhà máy điện hạt nhân dùng năng lượng phân hạch, đáp án C), câu 2 (hạt gây phân hạch dây chuyền là neutron, B), câu 6 (nước ngoài làm mát còn làm giảm tốc neutron, A) <i>Nhận biết lò phản ứng, có thể dùng thay thế cho LDB00128 nếu muốn; chưa chọn vì đã đủ 3 ví dụ.</i></li><li>trạm L · tr.169: Chủ đề 5 phần ① câu 9 (biển báo chất phóng xạ) và phần ② câu 2 (sơ đồ lò phản ứng) <i>Cần hình vẽ mới hiểu — bỏ theo luật.</i></li><li>trạm L · tr.169: Chủ đề 5 phần ② câu 1 và câu 2 (Đúng–Sai 4 ý) <i>Bỏ theo luật (câu Đúng–Sai 4 ý).</i></li><li>trạm Q · tr.19: Ví dụ mẫu 1–2 dạng 1 (thanh ab trượt; hướng của I/B/F từ hình) <i>LDB00104 — bỏ vì cần hình vẽ</i></li><li>trạm Q · tr.22: Ví dụ mẫu 2 dạng 2 (dây kim loại hình Λ, lực tổng hợp) <i>LDB00106 — bỏ vì cần hình vẽ để biết hình học</i></li><li>trạm Q · tr.24: Câu 13 (cuộn dây abcd treo ở cân, xác định chiều dòng điện và B) <i>LDB00108 — bỏ vì chiều dòng điện chọn theo hình</i></li><li>trạm R · tr.46: CĐ4 ① câu 1, 2 (máy quang phổ khối: tỉ số thời gian, miền điện áp để hai vạch kề nhau) — đề dựa vào hình khe S1,S2,S3 và vị trí M, N trên tấm ảnh <i>LDB00109 (khối phổ kế) nhưng cần hình; chưa dùng làm ví dụ</i></li><li>trạm R · tr.30: CĐ3 ① câu 3, 4 (chọn hình đúng hướng lực Lorentz) và Đ/S/TLN dựa hình (CĐ3 ② câu 2,3,4; ③ câu 2) <i>LDB00109 (chiều lực Lorentz, quỹ đạo) — cần hình vẽ, bỏ</i></li><li>trạm R · tr.47: CĐ4 ① câu 10 (graphene, đo mật độ electron bằng hiệu ứng Hall), ① câu 7, 8 (cyclotron lí thuyết) <i>LDB00108 — câu 10 cần mạch hình; câu 7,8 chỉ chọn nếu muốn thêm câu lí thuyết cyclotron (lời giải có ở tr.181)</i></li><li>trạm R · tr.48: CĐ4 ② Đúng–Sai (khối phổ kế, cyclotron, MHD, lưu lượng kế máu) — câu 4 ý, đã loại theo luật <i>LDB00108/LDB00109</i></li><li>trạm R · tr.40: Sách KHÔNG có nội dung về động cơ điện, loa điện động, nam châm điện, cân dòng điện trong các trang được giao; dạng LDB00108 vì vậy được gán các thiết bị ứng dụng lực Lorentz (cyclotron, lưu lượng kế) <i>Nếu người tổng hợp muốn tách riêng thì chuyển 3 ví dụ cyclotron/lưu lượng kế sang LDB00109 (khối phổ kế/hạt trong từ trường) và để LDB00108 cho trạm khác</i></li><li>trạm S · tr.61: CĐ6 phần ① câu 11-18 (chiều dòng điện cảm ứng: nam châm rơi/dịch chuyển, biến trở, khung gần dây thẳng) đều cần hình vẽ mới xác định được cực, chiều dây, vị trí điểm a,b,c,d <i>Bỏ khỏi ví dụ LDB00112 theo luật "cần hình vẽ"; đáp án có ở tr.PDF 187</i></li><li>trạm S · tr.63: CĐ6 phần ① câu 29 (ΔB, chiều dòng cảm ứng và công suất toả nhiệt của khung vuông) cần hình đọc chiều từ trường và đồ thị B-t; câu 30 (hai khung tròn) cần hình <i>LDB00113 (nhiệt lượng toả ra trong khung) nhưng cần hình; bỏ</i></li><li>trạm S · tr.64: CĐ6 phần ② đúng-sai câu 1, 2 (4 ý, đồ thị Φ-t, B-t) <i>Bỏ theo luật (4 ý + hình)</i></li><li>trạm S · tr.64: Chủ đề 7 (đoạn dây chuyển động trong từ trường đều, e = Bvl) bắt đầu từ tr.PDF 64 (in 60) <i>Thuộc LDB00114, trạm khác lo</i></li><li>trạm T · tr.69: CĐ7 phần ② Đúng–Sai câu 1–6 (thanh trượt trên ray: tính E, F, P, chuyển động có ma sát, thanh nghiêng 37°, hai điện trở) <i>Thuộc LDB00114 nhưng là câu Đúng–Sai 4 ý nên bỏ theo luật.</i></li><li>trạm T · tr.67: CĐ7 phần ① câu 1–5, 7, 10 (xác định chiều dòng cảm ứng/lực từ, khung đi vào vùng từ trường, dây dài + nhiều thanh) <i>Cần hình vẽ mới hiểu nên bỏ.</i></li><li>trạm U · tr.72: Ví dụ mẫu 2 (viết phương trình u từ đồ thị) cần đồ thị nên bỏ <i>LDB00117 nếu có hình</i></li><li>trạm U · tr.74-80: Chủ đề 8 tr.74–80 chỉ là bài tập tự luyện (câu 1–68); câu 64–68 dùng đồ thị u.i, đường elip <i>bỏ (cần hình)</i></li><li>trạm V · tr.87-90: Dạng 2 (máy phát một pha: f = np, tìm p/n/N, E tỉ lệ n) và Dạng 3 (ba pha: e1e2e3) dạng tính toán <i>Chưa có dạng LDB trong danh sách giao cho trạm này; nếu bản đồ có dạng máy phát một pha tính tần số, số cặp cực thì lấy ví dụ mẫu 1-2 (f = pn, E0 = ωΦ0N[số cuộn])</i></li><li>trạm V · tr.75-80: Chủ đề 8 Đại cương về dòng điện xoay chiều (câu 24-68) <i>Thuộc nhóm LNB00057 (trạm khác)</i></li><li>trạm X · tr.113: CĐ12 câu 21, 22 (pha E và B theo phương trình/chu kì, tính cường độ tại thời điểm sau), đề tr.113, lời giải tr.209 <i>LDB00120 (E, B đồng pha) nhưng thuộc loại tính pha, không chắc; để người tổng hợp quyết</i></li><li>trạm X · tr.114: CĐ12 câu 33, 34, 35 (hai điểm M, N trên phương truyền, độ lệch pha 2πd/λ; có λ = c/f ở câu 33) đề tr.114–115, lời giải tr.209–210 <i>LDB00121 hay LDB00120? chủ yếu là bài pha sóng điện từ, không chắc nên không ghi</i></li><li>trạm X · tr.114: CĐ12 câu 27–32 (tính λ, T, f) chỉ có đáp án chữ cái ở bảng tr.209 (27.D, 28.D, 29.C, 30.A, 31.D, 32.C), không có lời giải <i>LDB00121 — dạng tính, thiếu lời giải bước nên bỏ</i></li><li>trạm X · tr.110: Sách KHÔNG có mục thang sóng điện từ (vô tuyến–hồng ngoại–tử ngoại–X) trong CĐ12 <i>LDB00121: không có ví dụ thang sóng trong phạm vi trạm</i></li><li>trạm X · tr.116: CĐ13 Thí nghiệm về từ trường (tr.116–119, đáp án tr.211): cả 8 câu đều là Đúng–Sai 4 ý (câu 1–4 cảm ứng điện từ với ống dây và nam châm; câu 5 khung dây ABCD và lực kế; câu 6–8 đo B bằng lực kế/cân và <i>Đều bị loại theo luật (Đúng–Sai 4 ý, nhiều câu cần hình). Câu 4 → LDB00112/00113; câu 5, 6, 7, 8 → LDB00108 (lý thuyết LNB00052)</i></li><li>trạm X · tr.105: CĐ11 Dòng điện xoáy và ứng dụng (PDF tr.105–106 lý thuyết, tr.107–108 bài tập 10 câu, đáp án tr.208: 1.A 2.D 3.C 4.D 5.A 6.B 7.B 8.A 9.B 10.C) — ngoài khoảng giao <i>LNB00055 / LDB00115 (bếp từ, lò luyện, phanh điện từ)</i></li><li>trạm X · tr.103: PDF tr.103–104 là cuối CĐ10 (máy biến áp, truyền tải điện năng) câu 12–20, giải tr.206–207 <i>LDB00119 — ngoài khoảng giao</i></li><li>trạm Y · tr.128: Mục 1.1 và 1.2 CĐ2 (khối lượng tương đối tính, E = mc², năng lượng nghỉ, động năng tương đối) cùng các câu BT CĐ2 ① 1–10 (tính theo thuyết tương đối). <i>Nằm trong lý thuyết LNB00061 nhưng không dạng LDB nào trong danh sách nhận (LDB00124 chỉ nhắc E = mc², đổi amu → MeV); có thể cần dạng riêng.</i></li><li>trạm Y · tr.134: BT CĐ2 phần ① câu 11–13, 16–19 (lực hạt nhân, năng lượng liên kết riêng, độ bền vững — nhận biết). <i>Nhận biết lực hạt nhân thuộc LDB00122; nhận biết năng lượng liên kết riêng/độ bền vững thuộc LDB00125. Phần B chỉ có bảng đáp án nên chưa chọn.</i></li><li>trạm Z · tr.140: Dạng 1 câu 14 (nhiệt hạch D+D→He+n, độ hụt khối He → năng lượng liên kết riêng 2,57 MeV/nucleon) <i>thuộc LDB00124 (tính năng lượng liên kết riêng), không phải dạng cân bằng phương trình</i></li><li>trạm Z · tr.139: Dạng 1 câu 1–3 (phản ứng hạt nhân bảo toàn/không bảo toàn đại lượng nào) — phần B chỉ có chữ cái đáp án <i>nhận biết định luật bảo toàn, thuộc LDB00126 nhưng không có lời giải bước</i></li><li>trạm Z · tr.130-135: Chủ đề 2 Liên kết trong hạt nhân (ví dụ mẫu, BT tự luyện, đáp án PDF 213-215) <i>thuộc LNB00061 / LDB00124, LDB00125 (trạm khác)</i></li></ul></section>
+</main></body></html>

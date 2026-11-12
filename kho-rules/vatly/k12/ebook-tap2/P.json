@@ -1,0 +1,46 @@
+{
+ "tram": "P",
+ "trang_doc": "7-16 (đề), 171-172 (đáp án chủ đề 1; thực tế ở PDF 171-172, KHÔNG phải 166-167)",
+ "nhom": [
+  {
+   "id": "LNB00050",
+   "mo_ta": "Từ trường và đường sức từ: khái niệm từ trường, tương tác từ, vectơ cảm ứng từ, từ phổ, đường sức từ và đặc điểm, từ trường đều, đường sức từ của dòng điện thẳng, dòng điện tròn, ống dây và quy tắc nắm tay phải.",
+   "ly_thuyet": "##ĐN Từ trường\nTừ trường là trường lực gây ra bởi dòng điện hoặc nam châm, là dạng vật chất tồn tại xung quanh dòng điện hoặc nam châm mà biểu hiện cụ thể là sự xuất hiện của lực từ tác dụng lên một dòng điện hay nam châm khác đặt trong đó.\n- Nam châm có hai cực: cực Bắc (N) và cực Nam (S). Các cực cùng tên đẩy nhau, các cực khác tên hút nhau; lực hút hoặc đẩy giữa các cực từ gọi là lực từ.\n- Dòng điện tác dụng lực từ lên nam châm, nam châm tác dụng lực từ lên dây dẫn mang dòng điện, hai dây dẫn mang dòng điện cũng tác dụng lực từ lên nhau. Các tương tác này đều xảy ra thông qua từ trường.\n- Để phát hiện từ trường trong một vùng không gian, ta dùng một kim nam châm nhỏ gọi là nam châm thử.\n\n##ĐN Cảm ứng từ\nĐể đặc trưng cho từ trường về mặt gây ra lực từ, ta dùng đại lượng vectơ cảm ứng từ, kí hiệu $\\vec{B}$. Đơn vị của cảm ứng từ là tesla, kí hiệu T.\n- Phương của nam châm thử nằm cân bằng tại một điểm trong từ trường là phương của vectơ cảm ứng từ $\\vec{B}$ của từ trường tại điểm đó.\n- Quy ước: chiều từ cực Nam sang cực Bắc của nam châm thử là chiều của $\\vec{B}$.\n\n##ĐN Từ phổ và đường sức từ\nTừ phổ là hình ảnh những đường tạo ra bởi các mạt sắt mịn khi được đặt trong từ trường (các mạt sắt bị nhiễm từ, trở thành các nam châm thử).\nĐường sức từ là những đường vẽ trong không gian có từ trường sao cho tiếp tuyến với nó tại mỗi điểm trùng với phương của vectơ cảm ứng từ tại điểm đó. Chiều của đường sức từ là chiều của vectơ cảm ứng từ.\n\n##TC Đặc điểm của đường sức từ\n- Tại mỗi điểm trong từ trường chỉ vẽ được một đường sức từ đi qua và chỉ một mà thôi.\n- Các đường sức từ là những đường cong khép kín.\n- Nơi nào từ trường mạnh hơn thì các đường sức từ ở đó vẽ dày hơn, nơi nào từ trường yếu hơn thì vẽ thưa hơn.\n- Từ trường đều là từ trường mà cảm ứng từ tại mọi điểm đều bằng nhau; đường sức của từ trường đều là những đường thẳng song song và cách đều nhau.\n\n##TC Từ trường của dòng điện thẳng dài\n- Đường sức từ là những đường tròn nằm trong những mặt phẳng vuông góc với dòng điện, có tâm là giao điểm giữa dòng điện và mặt phẳng đó.\n- Càng gần dòng điện thẳng thì từ trường càng mạnh, càng xa dây thì từ trường càng yếu.\n- Kí hiệu $\\otimes$ và $\\odot$ biểu thị dòng điện (hoặc đường sức từ, vectơ cảm ứng từ) vuông góc với trang giấy, lần lượt đi vào và đi ra trang giấy; kí hiệu $\\times$ và $\\bullet$ biểu thị từ trường (đường sức từ, vectơ cảm ứng từ) lần lượt vuông góc với trang giấy hướng vào trong và hướng ra ngoài.\n\n##ĐL Quy tắc nắm tay phải (dòng điện thẳng)\nGiơ ngón cái của bàn tay phải hướng theo chiều dòng điện, khum bốn ngón tay kia xung quanh dây dẫn thì chiều từ cổ tay đến bốn ngón tay đó là chiều của đường sức từ.\n\n##TC Từ trường của dòng điện tròn\n- Các đường sức từ của dòng điện tròn là những đường cong khép kín bao quanh dòng điện tròn; riêng đường sức từ qua tâm vòng dây thì vuông góc với mặt phẳng chứa vòng dây.\n- Quy tắc nắm tay phải: khum bàn tay phải theo vòng dây của dòng điện sao cho chiều từ cổ tay đến các ngón tay trùng với chiều dòng điện; khi đó ngón tay cái choãi ra chỉ chiều đường sức từ.\n\n##TC Từ trường của ống dây hình trụ\n- Từ trường xung quanh ống dây tương tự từ trường xung quanh một thanh nam châm.\n- Khi các vòng dây được quấn chặt và chiều dài ống dây rất lớn so với bán kính các vòng dây, có thể xem từ trường bên trong ống dây là từ trường đều.\n- Quy tắc nắm tay phải: tưởng tượng bàn tay phải nắm lấy ống dây sao cho chiều khum các ngón tay là chiều dòng điện, khi đó ngón cái choãi ra cho ta chiều đường sức từ trong lòng ống dây.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    8,
+    9,
+    10,
+    11
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00101",
+   "vi_du": "##VD\nKhi nghiên cứu về từ trường và đường sức từ, một học sinh đã rút ra những kết luận bên dưới. Những kết luận này có đúng hay không?\n(1) Đường sức từ được tạo thành từ các mạt sắt.\n(2) Đường sức từ tồn tại thực sự trong không gian xung quanh nam châm.\n(3) Từ trường không nhìn thấy được nhưng sự tồn tại của nó có thể được phát hiện bằng một kim nam châm nhỏ.\n\nBài giải:\n(1) Sai. Đường sức từ là những đường được vẽ ra để mô tả từ trường. Sau khi được từ hóa trong từ trường, các mạt sắt giống như những kim nam châm nhỏ, hầu như đều sắp xếp dọc theo hướng của từ trường, tức là hướng của các đường sức từ.\n(2) Sai. Đường sức từ không thực sự tồn tại. Đường sức từ là những đường có hướng được tưởng tượng vẽ ra nhằm mục đích mô tả một cách sinh động sự phân bố không gian của từ trường.\n(3) Đúng. Từ trường là vô hình không nhìn thấy được, nhưng nó có tác dụng từ lên kim nam châm nhỏ tự do. Do đó sự tồn tại của từ trường có thể được phát hiện với sự trợ giúp của kim nam châm nhỏ.\n\n##VD\nPhát biểu nào sau đây đúng khi nói về từ trường?\nA. Hướng của từ trường tại một điểm là hướng của cực S của kim nam châm đặt tại điểm đó.\nB. Từ trường là dạng vật chất tồn tại khách quan xung quanh các hạt mang điện.\nC. Từ trường là dạng vật chất tồn tại khách quan xung quanh dòng điện hoặc nam châm.\nD. Từ trường thực sự không tồn tại, chỉ là sản phẩm do chúng ta tưởng tượng ra.\n\nBài giải:\nChọn C.\n\n##VD\nĐâu là đặc điểm của đường sức từ của nam châm?\nA. Xuất phát từ cực N và kết thúc ở cực S.\nB. Thường là đường cong khép kín, hai đường sức từ bất kì sẽ không cắt nhau.\nC. Xuất phát từ cực S và kết thúc ở cực N.\nD. Thường là đường cong khép kín, hai đường sức từ bất kì có thể cắt nhau.\n\nBài giải:\nA sai vì đường sức từ khép kín, không có xuất phát và kết thúc, ở đây chính xác là: đường sức từ đi ra từ cực N và đi vào cực S của nam châm.\nChọn B.",
+   "so_vd": 3,
+   "trang": [
+    11,
+    13,
+    14,
+    171
+   ],
+   "nguon": "Ví dụ mẫu 1 — tr.11 | BT tự luyện CĐ1 phần ① câu 8 — đề tr.13, giải tr.171 (đáp án C) | BT tự luyện CĐ1 phần ① câu 15 — đề tr.14, giải tr.171"
+  },
+  {
+   "id": "LDB00102",
+   "vi_du": "##VD\nĐường sức từ xung quanh dây dẫn thẳng dài có dòng điện không đổi chạy qua là\nA. những đường thẳng song song với dòng điện.\nB. những đường thẳng vuông góc với dòng điện.\nC. những vòng tròn có tâm thuộc dây dẫn, mặt phẳng chứa từng vòng tròn vuông góc với dây.\nD. đường xoắn ốc có trục là dây dẫn.\n\nBài giải:\nChọn C.\n\n##VD\nMột dây dẫn thẳng dài đặt thẳng đứng mang dòng điện có chiều từ dưới hướng lên, hướng của vectơ cảm ứng từ tại điểm nằm ở phía Tây của dây dẫn đó là\nA. hướng lên trên.\nB. hướng xuống dưới.\nC. hướng về phía Bắc.\nD. hướng về phía Nam.\n\nBài giải:\nTheo quy tắc bàn tay phải, vectơ cảm ứng từ tại điểm nằm ở phía Tây của dây dẫn đó hướng về phía Nam.\nChọn D.\n\n##VD\nTrong hệ trục tọa độ vuông góc Oxyz, một dòng electron chuyển động dọc trục Ox theo chiều dương. Hướng của vectơ cảm ứng từ tạo ra bởi dòng electron tại điểm P trên trục Oz là\nA. theo chiều dương của trục Oy.\nB. theo chiều âm của trục Oy.\nC. theo chiều dương của trục Oz.\nD. theo chiều âm của trục Oz.\n\nBài giải:\nDòng electron chuyển động theo chiều dương trục Ox nên dòng điện theo chiều âm trục Ox.\nTheo quy tắc bàn tay phải: $\\vec{B}_P$ hướng theo chiều dương trục Oy.\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    13,
+    15,
+    171
+   ],
+   "nguon": "BT tự luyện CĐ1 phần ① câu 13 — đề tr.13, giải tr.171 (đáp án C) | BT tự luyện CĐ1 phần ① câu 27 — đề tr.15, giải tr.171 | BT tự luyện CĐ1 phần ① câu 24 — đề tr.15, giải tr.171"
+  }
+ ],
+ "khong_khop": [],
+ "sua_in": [],
+ "ghi_chu": "LDB00103 (B dòng thẳng dài = 2e-7 I/r): chủ đề 1 không có công thức/bài tính; chỉ có câu so sánh B_M > B_N cần hình (bỏ). Trang đáp án trong brief (166-167) sai: PDF 166-167 là phần Ứng dụng hạt nhân (CĐ5 chương 4); đáp án CĐ1 ở PDF 171-172 (in 167-168). Sách in lệch: trong lời giải in 'Câu 7' ghi giải thích về hạt mang điện đứng yên (thuộc câu 6) nên không dùng câu 6, 7. Ví dụ mẫu 2 (TH1-3 kim nam châm) cần hình nên bỏ. Đúng-sai 4 ý bỏ theo luật. Câu 24 dùng hệ trục Oxyz chuẩn (đề gốc có hình tọa độ, đã tả bằng chữ)."
+}

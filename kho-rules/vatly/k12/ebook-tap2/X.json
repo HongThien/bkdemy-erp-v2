@@ -1,0 +1,69 @@
+{
+ "tram": "X",
+ "trang_doc": "103-120,204-211",
+ "nhom": [
+  {
+   "id": "LNB00059",
+   "mo_ta": "Điện từ trường và sóng điện từ: từ trường biến thiên sinh điện trường xoáy, điện trường biến thiên sinh từ trường, khái niệm điện từ trường; định nghĩa, đặc điểm và tính chất của sóng điện từ (tốc độ, bước sóng, sóng ngang, đồng pha).",
+   "ly_thuyet": "##ĐN Điện trường xoáy\nTừ trường biến thiên theo thời gian sinh ra trong không gian xung quanh một điện trường. Đường sức của điện trường này là các đường cong kín, nên gọi là điện trường xoáy.\nĐiện trường xoáy tồn tại dù vòng dây kín có tồn tại hay không.\nTừ trường thay đổi đều thì điện trường xoáy không đổi; từ trường biến đổi tuần hoàn thì điện trường xoáy biến đổi tuần hoàn.\n\n##TC Điện trường biến thiên tạo ra từ trường\n- Điện trường biến thiên theo thời gian cũng sinh ra từ trường xung quanh (Maxwell chỉ ra, điện trường giữa hai bản tụ điện biến thiên cũng sinh ra từ trường).\n- Cường độ điện trường thay đổi càng nhanh thì cảm ứng từ của từ trường sinh ra càng lớn.\n\n##ĐN Điện từ trường\nTừ trường biến thiên sinh ra điện trường biến thiên, điện trường biến thiên sinh ra từ trường biến thiên trong không gian xung quanh. Hai trường biến thiên này cùng tồn tại trong không gian, chuyển hóa lẫn nhau trong một trường thống nhất gọi là điện từ trường.\n\n##ĐN Sóng điện từ\nSóng điện từ là quá trình lan truyền điện từ trường biến thiên trong không gian.\n\n##TC Đặc điểm và tính chất của sóng điện từ\n- Truyền trong mọi môi trường vật chất và truyền được trong cả chân không (khác với sóng cơ). Tốc độ sóng điện từ trong chân không là $c \\approx 3\\cdot 10^{8}\\ \\text{m/s}$; trong các môi trường khác nhỏ hơn $c$.\n- Sóng điện từ có tần số $f$ (chu kì $T = \\dfrac{1}{f}$) thì trong chân không có bước sóng $\\lambda = \\dfrac{c}{f} = cT$.\n- Tại mỗi điểm trên phương truyền sóng, vectơ cường độ điện trường $\\vec{E}$ và vectơ cảm ứng từ $\\vec{B}$ luôn vuông góc với nhau và cùng vuông góc với phương truyền sóng: sóng điện từ là sóng ngang.\n- Tại mỗi điểm trong không gian, điện trường và từ trường biến thiên điều hòa theo thời gian và đồng pha với nhau.\n- Sóng điện từ tuân theo định luật truyền thẳng, phản xạ, khúc xạ như ánh sáng.\n- Sóng điện từ mang năng lượng, nhờ đó khi truyền đến anten sẽ làm cho các electron tự do trong anten dao động.\n- Nguồn phát sóng điện từ rất đa dạng: bất cứ vật thể nào tạo ra điện trường và từ trường biến thiên, chẳng hạn tia lửa điện, dây dẫn có dòng điện xoay chiều, cầu dao khi đóng ngắt mạch điện.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    109,
+    110
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00120",
+   "vi_du": "##VD\nĐiện trường xoáy là điện trường\nA. có các đường sức không khép kín.\nB. giữa hai bản tụ điện có điện tích không đổi.\nC. có các đường sức bao quanh các đường cảm ứng từ.\nD. của các điện tích đứng yên.\n\nBài giải:\nChọn C.\n\n##VD\nĐối với sự lan truyền sóng điện từ thì\nA. vectơ cường độ điện trường $\\vec{E}$ cùng phương với phương truyền sóng còn vectơ cảm ứng từ $\\vec{B}$ vuông góc với vectơ cường độ điện trường $\\vec{E}$.\nB. vectơ cường độ điện trường $\\vec{E}$ và vectơ cảm ứng từ $\\vec{B}$ luôn cùng phương với phương truyền sóng.\nC. vectơ cường độ điện trường $\\vec{E}$ và vectơ cảm ứng từ $\\vec{B}$ luôn vuông góc với phương truyền sóng.\nD. vectơ cảm ứng từ $\\vec{B}$ cùng phương với phương truyền sóng còn vectơ cường độ điện trường $\\vec{E}$ vuông góc với vectơ cảm ứng từ $\\vec{B}$.\n\nBài giải:\nTại một điểm trên phương truyền của sóng điện từ, điện trường $\\vec{E}$ và từ trường có phương vuông góc với nhau và vuông góc với phương truyền sóng.\nChọn C.\n\n##VD\nMột sóng điện từ truyền qua điểm M trong không gian. Cường độ điện trường và cảm ứng từ tại M biến thiên điều hòa với giá trị cực đại lần lượt là $E_0$ và $B_0$. Khi cảm ứng từ tại M bằng $0{,}5B_0$ thì cường độ điện trường tại đó có độ lớn là\nA. $0{,}5E_0$.\nB. $E_0$.\nC. $2E_0$.\nD. $0{,}25E_0$.\n\nBài giải:\nĐiện trường và từ trường cùng pha, nên khi $B = 0{,}5B_0$ thì $E = 0{,}5E_0$.\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    111,
+    112,
+    113,
+    209
+   ],
+   "nguon": "BT tự luyện CĐ12 câu 1 — đề tr.111, đáp án tr.209 | BT tự luyện CĐ12 câu 12 — đề tr.112, giải tr.209 | BT tự luyện CĐ12 câu 20 — đề tr.113, giải tr.209"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 113,
+   "noi_dung": "CĐ12 câu 21, 22 (pha E và B theo phương trình/chu kì, tính cường độ tại thời điểm sau), đề tr.113, lời giải tr.209",
+   "goi_y": "LDB00120 (E, B đồng pha) nhưng thuộc loại tính pha, không chắc; để người tổng hợp quyết"
+  },
+  {
+   "trang": 114,
+   "noi_dung": "CĐ12 câu 33, 34, 35 (hai điểm M, N trên phương truyền, độ lệch pha 2πd/λ; có λ = c/f ở câu 33) đề tr.114–115, lời giải tr.209–210",
+   "goi_y": "LDB00121 hay LDB00120? chủ yếu là bài pha sóng điện từ, không chắc nên không ghi"
+  },
+  {
+   "trang": 114,
+   "noi_dung": "CĐ12 câu 27–32 (tính λ, T, f) chỉ có đáp án chữ cái ở bảng tr.209 (27.D, 28.D, 29.C, 30.A, 31.D, 32.C), không có lời giải",
+   "goi_y": "LDB00121 — dạng tính, thiếu lời giải bước nên bỏ"
+  },
+  {
+   "trang": 110,
+   "noi_dung": "Sách KHÔNG có mục thang sóng điện từ (vô tuyến–hồng ngoại–tử ngoại–X) trong CĐ12",
+   "goi_y": "LDB00121: không có ví dụ thang sóng trong phạm vi trạm"
+  },
+  {
+   "trang": 116,
+   "noi_dung": "CĐ13 Thí nghiệm về từ trường (tr.116–119, đáp án tr.211): cả 8 câu đều là Đúng–Sai 4 ý (câu 1–4 cảm ứng điện từ với ống dây và nam châm; câu 5 khung dây ABCD và lực kế; câu 6–8 đo B bằng lực kế/cân và thanh đồng)",
+   "goi_y": "Đều bị loại theo luật (Đúng–Sai 4 ý, nhiều câu cần hình). Câu 4 → LDB00112/00113; câu 5, 6, 7, 8 → LDB00108 (lý thuyết LNB00052)"
+  },
+  {
+   "trang": 105,
+   "noi_dung": "CĐ11 Dòng điện xoáy và ứng dụng (PDF tr.105–106 lý thuyết, tr.107–108 bài tập 10 câu, đáp án tr.208: 1.A 2.D 3.C 4.D 5.A 6.B 7.B 8.A 9.B 10.C) — ngoài khoảng giao",
+   "goi_y": "LNB00055 / LDB00115 (bếp từ, lò luyện, phanh điện từ)"
+  },
+  {
+   "trang": 103,
+   "noi_dung": "PDF tr.103–104 là cuối CĐ10 (máy biến áp, truyền tải điện năng) câu 12–20, giải tr.206–207",
+   "goi_y": "LDB00119 — ngoài khoảng giao"
+  }
+ ],
+ "sua_in": [],
+ "ghi_chu": "Số trang trong brief lệch: PDF = trang in + 5 (không phải +1). CĐ12 ở PDF tr.109–115 (lý thuyết tr.109–110, bài tập tr.111–115, đáp án tr.209–210); CĐ13 ở tr.116–119 (đáp án tr.211); CĐ11 tr.105–108 (đáp án tr.208). Mọi ví dụ lấy từ bài tập tự luyện (CĐ12 không có ví dụ mẫu). Hình sóng E–B tr.110 bỏ."
+}

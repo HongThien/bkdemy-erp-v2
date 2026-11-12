@@ -1,0 +1,96 @@
+{
+ "tram": "S",
+ "trang_doc": "PDF 52-64 (chủ đề 5, 6; trang in 47-59), 185-189 (đáp án chủ đề 5, 6; trang in 181-185); đã đối chiếu thêm 180-184 đáp án chủ đề 4",
+ "nhom": [
+  {
+   "id": "LNB00053",
+   "mo_ta": "Khái niệm từ thông, đơn vị vêbe, công thức $\\Phi = BS\\cos\\alpha$ khi mặt phẳng nghiêng góc với đường sức từ; từ thông cực đại, cực tiểu và độ biến thiên từ thông khi khung quay hoặc dịch chuyển.",
+   "ly_thuyet": "##ĐN Từ thông\n- Trong từ trường đều có cảm ứng từ $\\vec{B}$, xét một mặt phẳng giới hạn có diện tích $S$ vuông góc với các đường sức từ. Tích của $B$ và $S$ gọi là từ thông đi qua mặt đó: $\\Phi = BS$.\n- Đơn vị của từ thông là vêbe (weber), kí hiệu Wb: $1\\ \\text{Wb} = 1\\ \\text{T}\\cdot\\text{m}^2$.\n- Từ thông là đại lượng vô hướng. Nếu quy ước từ thông có giá trị dương khi cảm ứng từ hướng sang phải thì từ thông có giá trị âm khi cảm ứng từ hướng sang trái.\n\n##TC Cảm ứng từ là mật độ từ thông\n- $B = \\dfrac{\\Phi}{S}$: độ lớn cảm ứng từ bằng lượng từ thông đi qua một đơn vị diện tích vuông góc với hướng từ trường; vì vậy cảm ứng từ còn được gọi là mật độ từ thông.\n- Từ thông tỉ lệ thuận với cảm ứng từ nên từ thông đặc trưng cho số đường sức từ xuyên qua mặt giới hạn.\n\n##TC Mặt phẳng không vuông góc với đường sức từ\n- Gọi $\\alpha$ là góc giữa vectơ pháp tuyến của mặt $S$ và hướng của từ trường; diện tích hình chiếu của mặt $S$ theo phương vuông góc với đường sức từ là $S' = S\\cos\\alpha$.\n- Từ thông qua mặt $S$ bằng từ thông qua $S'$: $\\Phi = BS' = BS\\cos\\alpha$.",
+   "ly_thuyet_sgk": "##TC Cuộn dây N vòng; giá trị lớn nhất, nhỏ nhất của từ thông\n- Từ thông qua cuộn dây gồm $N$ vòng: $\\Phi = NBS\\cos\\alpha$.\n- $|\\Phi|$ lớn nhất, bằng $NBS$, khi $\\alpha = 0$ hoặc $\\alpha = 180^\\circ$ (mặt phẳng vuông góc với đường sức từ); $\\Phi = 0$ khi $\\alpha = 90^\\circ$ (mặt phẳng song song với đường sức từ).",
+   "trang": [
+    52,
+    53
+   ]
+  },
+  {
+   "id": "LNB00054",
+   "mo_ta": "Thí nghiệm và điều kiện xuất hiện dòng điện cảm ứng, định luật Lenz (chiều dòng cảm ứng) và định luật Faraday (độ lớn suất điện động cảm ứng).",
+   "ly_thuyet": "##ĐN Hiện tượng cảm ứng điện từ\n- Thí nghiệm 1: nối điện kế nhạy với cuộn dây $B$ thành mạch kín rồi đưa thanh nam châm vào cuộn dây, để nam châm đứng yên trong cuộn dây, hoặc rút nam châm ra. Khi đưa vào hoặc rút ra, từ trường qua cuộn dây thay đổi và kim điện kế lệch: trong cuộn dây xuất hiện dòng điện cảm ứng.\n- Thí nghiệm 2: cuộn dây $A$ nối với nguồn điện qua biến trở và công tắc, lắp vào trong cuộn dây $B$ (nối với điện kế), luồn thanh sắt mềm vào cuộn $A$. Khi đóng hoặc mở công tắc, hoặc khi đầu trượt của biến trở trượt nhanh, dòng điện trong cuộn $A$ thay đổi nhanh nên từ trường trong cuộn $B$ thay đổi nhanh và trong cuộn $B$ xuất hiện dòng điện cảm ứng.\n- Kết luận: nếu từ thông đi qua vòng dây dẫn kín thay đổi thì trong vòng dây dẫn đó xuất hiện dòng điện cảm ứng.\n- Hiện tượng xuất hiện dòng điện cảm ứng trong cuộn dây được gọi là hiện tượng cảm ứng điện từ.\n\n##ĐL Định luật Lenz\n- Dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường do nó sinh ra có tác dụng chống lại sự biến thiên của từ thông qua mạch kín đó.\n\n##PP Xác định chiều dòng điện cảm ứng\nXác định chiều của $\\vec{B}$ qua mạch và xem từ thông qua mạch tăng hay giảm.\nTừ thông tăng thì từ trường cảm ứng $\\vec{B}_c$ ngược chiều $\\vec{B}$; từ thông giảm thì $\\vec{B}_c$ cùng chiều $\\vec{B}$ (chống lại sự biến thiên của từ thông).\nTừ chiều $\\vec{B}_c$, dùng quy tắc nắm tay phải suy ra chiều dòng điện cảm ứng $I_c$.\n\n##ĐL Định luật Faraday\n- Khi từ thông qua vòng dây kín thay đổi thì xuất hiện dòng điện cảm ứng, chứng tỏ trong vòng dây có suất điện động; suất điện động này gọi là suất điện động cảm ứng.\n- Độ lớn suất điện động cảm ứng trong mạch kín tỉ lệ với tốc độ biến thiên của từ thông qua mạch kín đó: $|e_c| = k\\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$.\n- Trong hệ SI, $k = 1$. Nếu kể đến định luật Lenz thì $e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t}$.",
+   "ly_thuyet_sgk": "##TC Suất điện động cảm ứng trong cuộn dây N vòng\n- Cuộn dây gồm $N$ vòng: $|e_c| = N\\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$, trong đó $\\Delta\\Phi$ là độ biến thiên từ thông qua một vòng dây.\n- Dòng điện cảm ứng trong mạch kín có điện trở $R$: $I_c = \\dfrac{|e_c|}{R}$.",
+   "trang": [
+    57,
+    58
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00110",
+   "vi_du": "##VD\nĐơn vị của từ thông là\nA. T.\nB. Wb.\nC. N.\nD. C.\n\nBài giải:\nChọn B.\n\n##VD\nMột mạch kín phẳng có diện tích $S$ đặt trong từ trường đều. Biết vectơ pháp tuyến $\\vec{n}$ của mặt phẳng chứa mạch hợp với vectơ cảm ứng từ $\\vec{B}$ một góc $\\alpha$. Từ thông qua diện tích $S$ là\nA. $BS\\cos\\alpha$.\nB. $BS\\sin\\alpha$.\nC. $S\\cos\\alpha$.\nD. $S\\sin\\alpha$.\n\nBài giải:\nChọn A.\n\n##VD\nTrong từ trường đều có cường độ từ trường $B$, độ lớn từ thông đi qua một mặt hình chữ nhật có diện tích $S$ không thể là\nA. $0$.\nB. $BS$.\nC. $\\dfrac{2}{3}BS$.\nD. $\\dfrac{3}{2}BS$.\n\nBài giải:\nChọn D.",
+   "so_vd": 3,
+   "trang": [
+    53,
+    185
+   ],
+   "nguon": "BT tự luyện CĐ5 phần ① câu 1 — đề tr.PDF 53, đáp án tr.PDF 185 | BT tự luyện CĐ5 phần ① câu 4 — đề tr.PDF 53, đáp án tr.PDF 185 | BT tự luyện CĐ5 phần ① câu 5 — đề tr.PDF 53, đáp án tr.PDF 185"
+  },
+  {
+   "id": "LDB00111",
+   "vi_du": "##VD\nMột vòng dây dẫn kín hình tròn được đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng vòng dây một góc $60^\\circ$ và có độ lớn là $5\\cdot10^{-4}\\ \\text{T}$. Từ thông qua vòng dây dẫn này có giá trị là $7{,}5\\cdot10^{-7}\\ \\text{Wb}$. Tính bán kính của vòng dây tròn.\n\nBài giải:\nTa có: $\\Phi = BS\\cos\\alpha \\Rightarrow S = \\dfrac{\\Phi}{B\\cos\\alpha} = 3\\cdot10^{-3}\\ \\text{m}^2$.\nBán kính của vòng dây tròn: $S = \\pi R^2 \\Rightarrow R \\approx 3{,}1\\ \\text{cm}$.\n\n##VD\nMột khung dây phẳng có diện tích $40\\ \\text{cm}^2$ gồm 30 vòng dây đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng khung dây một góc $30^\\circ$ và có độ lớn là $0{,}05\\ \\text{T}$. Từ thông qua diện tích giới hạn bởi khung dây có độ lớn là\nA. $3{,}0\\ \\text{mWb}$.\nB. $5{,}2\\ \\text{mWb}$.\nC. $2{,}5\\ \\text{mWb}$.\nD. $4{,}3\\ \\text{mWb}$.\n\nBài giải:\n$\\Phi = NBS\\cos\\alpha = 30\\times0{,}05\\times40\\cdot10^{-4}\\times\\cos30^\\circ \\approx 5{,}2\\ \\text{mWb}$. Chọn B.\n\n##VD\nMột đoạn dây dẫn có chiều dài $1\\ \\text{m}$ được uốn thành một khung kín hình tam giác đều. Khung dây được đặt trong một từ trường đều có độ lớn cảm ứng từ là $0{,}1\\ \\text{T}$ sao cho các đường sức từ vuông góc với mặt phẳng khung dây. Từ thông qua khung có độ lớn là\nA. $9{,}6\\cdot10^{-3}\\ \\text{Wb}$.\nB. $5{,}6\\cdot10^{-3}\\ \\text{Wb}$.\nC. $4{,}8\\cdot10^{-3}\\ \\text{Wb}$.\nD. $0{,}011\\ \\text{Wb}$.\n\nBài giải:\nCả khung dài $1\\ \\text{m}$ nên mỗi cạnh dài $\\dfrac{1}{3}\\ \\text{m}$, diện tích khung $S = \\left(\\dfrac{1}{3}\\right)^2\\times\\dfrac{\\sqrt{3}}{4} = \\dfrac{\\sqrt{3}}{36}\\ \\text{m}^2$.\nDo đó $\\Phi = BS = 0{,}1\\times\\dfrac{\\sqrt{3}}{36} \\approx 4{,}8\\cdot10^{-3}\\ \\text{Wb}$. Chọn C.",
+   "so_vd": 3,
+   "trang": [
+    52,
+    54,
+    185
+   ],
+   "nguon": "Ví dụ mẫu CĐ5 — tr.PDF 52 | BT tự luyện CĐ5 phần ① câu 9 — đề tr.PDF 54, giải tr.PDF 185 | BT tự luyện CĐ5 phần ① câu 14 — đề tr.PDF 54, giải tr.PDF 185"
+  },
+  {
+   "id": "LDB00112",
+   "vi_du": "##VD\nPhát biểu nào sau đây đúng khi nói về dòng điện cảm ứng?\nA. Nếu một mạch kín di chuyển trong từ trường thì sẽ xuất hiện dòng điện cảm ứng trong mạch.\nB. Nếu một mạch kín được đặt trong từ trường đều thì sẽ xuất hiện dòng điện cảm ứng trong mạch.\nC. Khi từ thông qua mạch kín bằng 0 thì sẽ không xuất hiện dòng điện cảm ứng trong mạch.\nD. Khi số lượng đường sức từ qua mạch kín thay đổi thì sẽ xuất hiện dòng điện cảm ứng trong mạch.\n\nBài giải:\nChọn D.\n\n##VD\nMột cuộn dây dẫn hình tròn khép kín đặt trong từ trường đều, mặt phẳng của cuộn dây vuông góc với đường sức từ. Để xuất hiện dòng điện cảm ứng trong cuộn dây thì cuộn dây phải\nA. di chuyển thẳng đều dọc theo một đường thẳng trong mặt phẳng chứa nó.\nB. di chuyển thẳng nhanh dần đều dọc theo một đường thẳng trong mặt phẳng chứa nó.\nC. quay quanh trục là đường kính bất kì.\nD. di chuyển dọc theo hướng của đường sức từ.\n\nBài giải:\nChọn C.\n\n##VD\nMột khung dây hình chữ nhật được đặt gần một dây dẫn thẳng dài vô hạn có dòng điện chạy qua, trong cùng mặt phẳng với dây dẫn (mặt phẳng trang giấy), đoạn dây trên và dưới của khung dây song song với dây dẫn. Khi cho khung dây chuyển động tịnh tiến theo một trong ba hướng khác nhau dưới đây thì có thể tạo ra dòng điện cảm ứng trong khung dây không?\n(1) Khung dây chuyển động theo hướng song song với dây dẫn.\n(2) Khung dây chuyển động theo hướng vuông góc với dây dẫn sao cho khung dây và dây dẫn luôn cùng thuộc mặt phẳng trang giấy.\n(3) Khung dây chuyển động theo hướng vuông góc với bề mặt trang giấy ra phía ngoài.\n\nBài giải:\nTừ trường xung quanh một dây dẫn thẳng dài vô hạn là một từ trường phân bố đối xứng quanh trục của dây dẫn thẳng, càng gần dây dẫn thì từ trường càng mạnh.\n(1) Trong quá trình khung dây chuyển động theo hướng song song với dây dẫn, từ thông qua khung dây không thay đổi nên không tạo ra dòng điện cảm ứng trong khung dây.\n(2) Trong quá trình khung dây chuyển động theo hướng vuông góc với dây dẫn trong cùng mặt phẳng, thì càng xa dây dẫn từ trường càng yếu, từ thông qua khung dây có độ lớn giảm, vì vậy trong khung dây sinh ra dòng điện cảm ứng.\n(3) Trong quá trình khung dây chuyển động theo hướng vuông góc với bề mặt trang giấy, dù nó đi chuyển vào trong hay ra ngoài thì độ lớn từ thông qua khung dây đều giảm, vì vậy trong khung dây sinh ra dòng điện cảm ứng.",
+   "so_vd": 3,
+   "trang": [
+    58,
+    59,
+    187
+   ],
+   "nguon": "BT tự luyện CĐ6 phần ① câu 1 — đề tr.PDF 59, đáp án tr.PDF 187 | BT tự luyện CĐ6 phần ① câu 3 — đề tr.PDF 59, đáp án tr.PDF 187 | Ví dụ 1 CĐ6 — tr.PDF 58"
+  },
+  {
+   "id": "LDB00113",
+   "vi_du": "##VD\nNếu từ thông đi qua một khung dây kín tăng đều với tốc độ $4\\ \\text{Wb/s}$ thì suất điện động cảm ứng trong khung dây có độ lớn là\nA. $4\\ \\text{V}$.\nB. $2\\ \\text{V}$.\nC. $0$.\nD. $8\\ \\text{V}$.\n\nBài giải:\n$|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = 4\\ \\text{V}$. Chọn A.\n\n##VD\nMột cuộn dây kín phẳng có điện trở $5\\ \\Omega$ và gồm 100 vòng dây. Nếu từ thông đi qua diện tích giới hạn bởi cuộn dây giảm đều với tốc độ $0{,}2\\ \\text{mWb/s}$ thì dòng điện cảm ứng trong cuộn dây có cường độ là\nA. $8\\ \\text{mA}$.\nB. $10\\ \\text{mA}$.\nC. $4\\ \\text{mA}$.\nD. $2\\ \\text{mA}$.\n\nBài giải:\n$I_c = \\dfrac{|e_c|}{R} = \\dfrac{N}{R}\\times\\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{100}{5}\\times0{,}2\\cdot10^{-3} = 4\\ \\text{mA}$. Chọn C.\n\n##VD\nMột vòng dây dẫn kín, phẳng có diện tích $20\\ \\text{cm}^2$ được đặt trong từ trường đều có vectơ cảm ứng từ hợp với vectơ pháp tuyến của mặt phẳng vòng dây một góc $60^\\circ$. Trong khoảng thời gian $0{,}05\\ \\text{s}$, độ lớn cảm ứng từ của từ trường giảm đều từ $0{,}08\\ \\text{T}$ về $0{,}03\\ \\text{T}$ thì suất điện động cảm ứng xuất hiện trong vòng dây có độ lớn là bao nhiêu?\n\nBài giải:\nTa có: $\\Phi = BS\\cos\\alpha$, ở đây $S\\cos\\alpha$ không đổi nên $\\Delta\\Phi = S\\cos\\alpha\\times\\Delta B$.\nĐộ lớn độ biến thiên từ thông: $|\\Delta\\Phi| = S\\cos\\alpha\\,|B_s - B_t| = 20\\cdot10^{-4}\\times\\cos60^\\circ\\times|0{,}03 - 0{,}08| = 5\\cdot10^{-5}\\ \\text{Wb}$.\nĐộ lớn suất điện động cảm ứng: $|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{5\\cdot10^{-5}}{0{,}05} = 10^{-3}\\ \\text{V} = 1\\ \\text{mV}$.",
+   "so_vd": 3,
+   "trang": [
+    59,
+    62,
+    63,
+    188
+   ],
+   "nguon": "BT tự luyện CĐ6 phần ① câu 21 — đề tr.PDF 62, giải tr.PDF 188 | BT tự luyện CĐ6 phần ① câu 26 — đề tr.PDF 63, giải tr.PDF 188 | Ví dụ 2 CĐ6 — tr.PDF 59"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 61,
+   "noi_dung": "CĐ6 phần ① câu 11-18 (chiều dòng điện cảm ứng: nam châm rơi/dịch chuyển, biến trở, khung gần dây thẳng) đều cần hình vẽ mới xác định được cực, chiều dây, vị trí điểm a,b,c,d",
+   "goi_y": "Bỏ khỏi ví dụ LDB00112 theo luật \"cần hình vẽ\"; đáp án có ở tr.PDF 187"
+  },
+  {
+   "trang": 63,
+   "noi_dung": "CĐ6 phần ① câu 29 (ΔB, chiều dòng cảm ứng và công suất toả nhiệt của khung vuông) cần hình đọc chiều từ trường và đồ thị B-t; câu 30 (hai khung tròn) cần hình",
+   "goi_y": "LDB00113 (nhiệt lượng toả ra trong khung) nhưng cần hình; bỏ"
+  },
+  {
+   "trang": 64,
+   "noi_dung": "CĐ6 phần ② đúng-sai câu 1, 2 (4 ý, đồ thị Φ-t, B-t)",
+   "goi_y": "Bỏ theo luật (4 ý + hình)"
+  },
+  {
+   "trang": 64,
+   "noi_dung": "Chủ đề 7 (đoạn dây chuyển động trong từ trường đều, e = Bvl) bắt đầu từ tr.PDF 64 (in 60)",
+   "goi_y": "Thuộc LDB00114, trạm khác lo"
+  }
+ ],
+ "sua_in": [],
+ "ghi_chu": "Số trang trong brief (46-58, 180-184) lệch với PDF thật: PDF = trang in + 5 ở đầu sách (chủ đề 5 mở đầu ở PDF 52), PDF = trang in + 4 ở phần đáp án (đáp án CĐ5 ở PDF 185, CĐ6 ở PDF 187-189). Đã đọc theo nội dung chủ đề 5 và 6. Phần đáp án CĐ5/CĐ6 phần ① chỉ có bảng chữ cái cho câu nhận biết nên lời giải của LDB00110 và LDB00112 chỉ ghi Chọn X. Một số câu CĐ6 ① (14, 19, 20) không có giải thích. Không có ví dụ cho LDB00114 trong phạm vi này. ly_thuyet_sgk của cả hai nhóm chỉ bổ sung công thức cho cuộn N vòng và nhận xét góc lớn nhất/nhỏ nhất (suy trực tiếp từ công thức), kiến thức chương trình 2018."
+}

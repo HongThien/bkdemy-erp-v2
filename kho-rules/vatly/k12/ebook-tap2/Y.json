@@ -1,0 +1,93 @@
+{
+ "tram": "Y",
+ "trang_doc": "115-135 (chủ đề), 213-215 (lời giải phần B)",
+ "nhom": [
+  {
+   "id": "LNB00060",
+   "mo_ta": "Mô hình nguyên tử (bánh mận, thí nghiệm tán xạ alpha của Rutherford, mô hình hành tinh), cấu tạo hạt nhân (proton, neutron, nucleon, kí hiệu hạt nhân, số khối), đồng vị, đơn vị khối lượng nguyên tử, lực hạt nhân và cách tính số hạt trong m gam chất.",
+   "ly_thuyet": "##ĐN Mô hình nguyên tử bánh mận\nNăm 1904, J. J. Thomson đề xuất mô hình nguyên tử bánh mận: nguyên tử là quả cầu đặc có điện tích dương phân bố đều, các electron được nhúng trong quả cầu như mận khô trong bánh.\nMô hình này giải thích được một số hiện tượng, nhưng các thí nghiệm tán xạ hạt alpha sau đó đã bác bỏ nó.\n\n##TC Thí nghiệm tán xạ hạt alpha của Rutherford\n- Hạt alpha là ion helium, có điện tích $+2e$ và khối lượng gấp khoảng 7300 lần khối lượng của electron.\n- Rutherford cho các hạt $\\alpha$ tốc độ cao bắn vào một lá vàng dày chỉ khoảng $0{,}4\\ \\mu\\text{m}$.\n- Kết quả: phần lớn hạt alpha xuyên qua lá vàng; số hạt bị lệch so với phương ban đầu góc $\\theta$ khác nhau là khác nhau và giảm nhanh khi $\\theta$ tăng. Một số rất nhỏ hạt $\\alpha$ có góc tán xạ vượt quá $90^\\circ$, thậm chí bị bật trở lại.\n\n##NX Phân tích kết quả thí nghiệm\n- Phần lớn hạt alpha xuyên qua lá vàng chứng tỏ nguyên tử không hoàn toàn đặc như mô hình của Thomson.\n- Sự lệch góc lớn của số ít hạt alpha không thể do electron gây ra, vì khối lượng electron chỉ bằng $\\dfrac{1}{7300}$ khối lượng hạt alpha. Độ lệch chủ yếu do phần điện tích dương, chiếm phần lớn khối lượng nguyên tử.\n- Theo mô hình Thomson, điện tích dương phân bố đều nên lực đẩy theo mọi hướng cân bằng nhau, tác động lên hạt $\\alpha$ không lớn; vì vậy mô hình này không giải thích được tán xạ góc lớn.\n- Rutherford cho rằng thực tế vật chất tích điện dương, chiếm phần lớn khối lượng nguyên tử, tập trung trong một phạm vi không gian rất nhỏ; điều này khiến hạt alpha chịu lực đẩy mạnh khi đi ngang qua, làm chúng bị lệch một góc lớn.\n\n##ĐN Mô hình đơn giản của nguyên tử (mô hình hành tinh nguyên tử)\nỞ trung tâm nguyên tử có một hạt nhân. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử đều tập trung ở hạt nhân. Các electron quay quanh hạt nhân trong không gian ngoài hạt nhân.\nMô hình có phần giống hệ Mặt Trời (hạt nhân giống Mặt Trời, các electron giống các hành tinh) nên còn gọi là mô hình hành tinh nguyên tử.\nGiải thích tán xạ: khi hạt $\\alpha$ đi qua nguyên tử, các electron ít ảnh hưởng; yếu tố chính là hạt nhân. Hạt $\\alpha$ ở xa hạt nhân thì lực đẩy rất nhỏ, hầu như không bị ảnh hưởng; hạt $\\alpha$ bay gần hạt nhân chịu lực đẩy Coulomb rõ rệt nên bị lệch một góc lớn.\n\n##ĐN Cấu trúc của hạt nhân\n- Hạt nhân có kích thước rất nhỏ so với nguyên tử, được cấu tạo từ các hạt nhỏ hơn gọi là nucleon. Có hai loại nucleon: proton (kí hiệu p, mang điện tích nguyên tố dương) và neutron (kí hiệu n, không mang điện).\n- Nguyên tử của nguyên tố có số thứ tự $Z$ trong bảng tuần hoàn ($Z$ là số hiệu nguyên tử) có $Z$ electron ở lớp vỏ ngoài; hạt nhân có $Z$ proton và $N$ neutron. Electron mang điện $-Ze$, hạt nhân mang điện $+Ze$ nên nguyên tử trung hòa về điện.\n- Tổng $A = Z + N$ gọi là số khối.\n- Bán kính hạt nhân tăng chậm cùng với số khối: $R \\approx R_0 A^{\\frac{1}{3}}$, với $R_0 = 1{,}2\\cdot 10^{-15}\\ \\text{m}$.\n\n##TC Kí hiệu hạt nhân\n- Hạt nhân được kí hiệu bằng cách ghi bên cạnh kí hiệu hóa học nguyên tử số (phía dưới) và số khối (phía trên): $^{A}_{Z}X$.\n- Số proton $=Z$; số nucleon $=A$; số neutron $N = A - Z$; điện tích hạt nhân $Q = +Ze$.\n- Nhiều khi chỉ cần ghi số khối vì kí hiệu hóa học đã xác định nguyên tử số.\n\n##ĐN Đồng vị\nĐồng vị là những nguyên tử mà hạt nhân chứa cùng số proton $Z$ nhưng số neutron $N$ khác nhau (số khối $A$ khác nhau).\n- Hydrogen có 3 đồng vị: hydrogen thường $^{1}_{1}\\text{H}$; hydrogen nặng (deuterium) $^{2}_{1}\\text{H}$ hay $^{2}_{1}\\text{D}$; hydrogen siêu nặng (tritium) $^{3}_{1}\\text{H}$ hay $^{3}_{1}\\text{T}$.\n- Hầu hết các nguyên tố là hỗn hợp của nhiều đồng vị. Uranium có hai đồng vị chính là U235 và U238 (U238 chiếm tới 99,3%). Carbon có ba đồng vị chính là C12, C13, C14 (C12 và C13 chiếm 99%).\n\n##TC Đơn vị khối lượng nguyên tử\n- Đơn vị khối lượng nguyên tử (amu, hay u) bằng $\\dfrac{1}{12}$ khối lượng của đồng vị carbon $^{12}_{6}\\text{C}$: $1\\ \\text{amu} = \\dfrac{1}{12}\\cdot\\dfrac{12}{6{,}022\\cdot10^{23}}\\ \\text{g} \\approx 1{,}66\\cdot 10^{-27}\\ \\text{kg}$.\n- Proton có khối lượng $m_p = 1{,}007276\\ \\text{amu}$; neutron có $m_n = 1{,}008665\\ \\text{amu}$. Nói chung, một nguyên tử có số khối $A$ thì khối lượng xấp xỉ bằng $A$ (amu).\n\n##ĐN Lực hạt nhân\n- Trong thể tích rất nhỏ của hạt nhân, các nucleon tương tác với nhau bằng lực hút rất mạnh, có tác dụng liên kết các nucleon với nhau; các lực hút đó gọi là lực hạt nhân.\n- Lực hạt nhân không cùng bản chất với lực tĩnh điện hay lực hấp dẫn; nó là một loại lực mới truyền tương tác giữa các nucleon trong hạt nhân, còn gọi là lực tương tác mạnh.\n- Lực hạt nhân không phụ thuộc vào điện tích của nucleon và chỉ có tác dụng khi khoảng cách giữa hai nucleon bằng hoặc nhỏ hơn kích thước hạt nhân: bán kính tác dụng của lực hạt nhân vào khoảng $10^{-15}\\ \\text{m}$. Ngoài phạm vi đó lực hạt nhân giảm nhanh xuống không.\n\n##PP Tính số hạt trong khối lượng $m$ gam chất\nTính số mol (số nguyên tử) $n = \\dfrac{m}{A}$ hoặc $\\dfrac{m}{M}$ rồi số nguyên tử $N = \\dfrac{m}{A}\\cdot N_A$, với $N_A = 6{,}02\\cdot10^{23}\\ \\text{nguyên tử/mol}$.\nSố proton $N_p = Z\\cdot N$.\nSố neutron $N_n = (A - Z)\\cdot N$.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    121,
+    123,
+    128,
+    129
+   ]
+  },
+  {
+   "id": "LNB00061",
+   "mo_ta": "Khối lượng và năng lượng trong thuyết tương đối (E = mc²), độ hụt khối, năng lượng liên kết, năng lượng liên kết riêng và mối liên hệ với độ bền vững của hạt nhân.",
+   "ly_thuyet": "##TC Khối lượng trong thuyết tương đối\nKhối lượng của một vật không phải là hằng số: $m = \\dfrac{m_0}{\\sqrt{1-\\dfrac{v^2}{c^2}}}$.\n- $m$ là khối lượng của vật khi chuyển động với tốc độ $v$ (khối lượng tương đối tính, khối lượng động); $m_0$ là khối lượng khi vật ở trạng thái nghỉ (khối lượng nghỉ).\n- Khối lượng của vật tăng lên khi vật chuyển động và có giá trị nhỏ nhất khi vật đứng yên: khối lượng có tính tương đối.\n\n##ĐL Hệ thức Anh-xtanh giữa khối lượng và năng lượng\nMột vật có khối lượng thì cũng có năng lượng tương ứng và ngược lại. Năng lượng $E$ và khối lượng $m$ tương ứng của cùng một vật luôn tồn tại đồng thời và tỉ lệ với nhau, hệ số tỉ lệ là $c^2$ ($c$ là tốc độ ánh sáng trong chân không): $E = mc^2$.\n\n##TC Các hệ quả của hệ thức Anh-xtanh\n- Năng lượng nghỉ (lúc vật đứng yên, $m = m_0$): $E_0 = m_0c^2$.\n- Động năng của vật trong thuyết tương đối: $W_đ = E - E_0 = mc^2 - m_0c^2 = \\dfrac{m_0c^2}{\\sqrt{1-\\dfrac{v^2}{c^2}}} - m_0c^2$.\n- Khi $v \\ll c$: $W_đ \\approx \\dfrac{m_0v^2}{2}$, tức là trở lại biểu thức động năng của cơ học cổ điển.\n- Từ $m = \\dfrac{E}{c^2}$, khối lượng còn có thể đo bằng đơn vị của năng lượng chia cho $c^2$ như $\\text{eV}/c^2$ hay $\\text{MeV}/c^2$.\n- $1\\ \\text{MeV}/c^2 = 1{,}7827\\cdot10^{-30}\\ \\text{kg} = 1{,}07356\\cdot10^{-3}\\ \\text{amu}$; $1\\ \\text{amu} = 931{,}5\\ \\text{MeV}/c^2$.\n\n##ĐN Độ hụt khối\nCác phép đo chính xác cho thấy khối lượng $m$ của hạt nhân $^{A}_{Z}X$ luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành hạt nhân đó. Độ hụt khối: $\\Delta m = \\left[Zm_p + (A-Z)m_n\\right] - m$.\n\n##ĐN Năng lượng liên kết\nNăng lượng liên kết các nucleon trong hạt nhân (gọi tắt là năng lượng liên kết của hạt nhân): $\\Delta E = \\Delta m\\,c^2 = \\left[\\left(Zm_p + (A-Z)m_n\\right) - m\\right]c^2$.\nNăng lượng $\\Delta E$ càng lớn thì liên kết giữa các nucleon càng mạnh, càng phải tốn nhiều năng lượng để phá vỡ liên kết giữa các nucleon.\n\n##ĐN Năng lượng liên kết riêng\nNăng lượng liên kết tính trung bình cho mỗi nucleon gọi là năng lượng liên kết riêng của hạt nhân, kí hiệu $\\varepsilon$, đặc trưng cho sự bền vững của hạt nhân: $\\varepsilon = \\dfrac{\\Delta E}{A} = \\dfrac{\\Delta m\\,c^2}{A}$.\n- Hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững.\n- Hạt nhân có số khối trung bình thì bền vững hơn cả.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    128,
+    129
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00122",
+   "vi_du": "##VD\nPhát biểu nào sau đây là đúng?\nA. Thí nghiệm tán xạ hạt alpha không liên quan đến việc thiết lập mô hình bánh mận và mô hình cấu trúc hạt nhân.\nB. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình bánh mận nhưng giúp thiết lập mô hình cấu trúc hạt nhân.\nC. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình cấu trúc hạt nhân nhưng giúp thiết lập mô hình bánh mận.\nD. Thí nghiệm tán xạ hạt alpha đã bác bỏ mô hình cấu trúc hạt nhân và cả mô hình bánh mận.\n\nBài giải:\nChọn B.\n\n##VD\nTrong thí nghiệm tán xạ hạt alpha của Rutherford, một số lượng nhỏ hạt alpha bị lệch ở những góc lớn là do\nA. điện tích dương và phần lớn khối lượng của nguyên tử tập trung ở một hạt nhân rất nhỏ.\nB. điện tích dương phân bố đều trong nguyên tử.\nC. có các electron tích điện âm trong nguyên tử.\nD. nguyên tử chỉ tồn tại ở các trạng thái năng lượng không liên tục.\n\nBài giải:\nChọn A.\n\n##VD\nĐâu không phải nội dung trong mô hình nguyên tử của Rutherford?\nA. Ở trung tâm nguyên tử có một hạt nhân.\nB. Điện tích dương của nguyên tử phân bố đều khắp nguyên tử.\nC. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử tập trung ở hạt nhân.\nD. Các electron mang điện tích âm quay xung quanh hạt nhân bên ngoài hạt nhân.\n\nBài giải:\nChọn B.\n\n##VD\nĐồng vị là các nguyên tử mà hạt nhân của nó có\nA. cùng khối lượng, khác số neutron.\nB. cùng số neutron, khác số proton.\nC. cùng số proton, khác số neutron.\nD. cùng số nucleon, khác số proton.\n\nBài giải:\nChọn C.",
+   "so_vd": 4,
+   "trang": [
+    121,
+    124,
+    126,
+    213
+   ],
+   "nguon": "BT tự luyện CĐ1 phần ① câu 1 — đề tr.124, giải tr.213 | BT tự luyện CĐ1 phần ① câu 2 — đề tr.124, giải tr.213 | BT tự luyện CĐ1 phần ① câu 4 — đề tr.124, giải tr.213 | BT tự luyện CĐ1 phần ① câu 31 — đề tr.126, giải tr.213"
+  },
+  {
+   "id": "LDB00123",
+   "vi_du": "##VD\nHạt nhân $^{40}_{20}\\text{Ca}$ có số nucleon, proton, neutron, điện tích là bao nhiêu?\n\nBài giải:\n- Số nucleon trong hạt nhân $^{40}_{20}\\text{Ca}$ là: $A = 40$.\n- Số proton trong hạt nhân $^{40}_{20}\\text{Ca}$ là: $Z = 20$.\n- Số neutron trong hạt nhân $^{40}_{20}\\text{Ca}$ là: $N = A - Z = 20$.\n- Điện tích của hạt nhân $^{40}_{20}\\text{Ca}$ là: $Q = +Ze = 20\\times 1{,}6\\cdot10^{-19} = 3{,}2\\cdot10^{-18}\\ \\text{C}$.\n\n##VD\nTrong 134 g $^{67}_{30}\\text{Zn}$ có bao nhiêu proton, neutron?\n\nBài giải:\nSố nguyên tử Zn có trong 134 g Zn là $N = \\dfrac{m}{A}\\times N_A = \\dfrac{134}{67}\\times 6{,}02\\cdot10^{23} = 2\\times 6{,}02\\cdot10^{23} = 12{,}04\\cdot10^{23}$ (nguyên tử).\n- Số proton là: $N_{proton} = ZN = 30\\times 12{,}04\\cdot10^{23} = 3{,}612\\cdot10^{25}$.\n- Số neutron là: $N_{neutron} = (A-Z)N = (67-30)\\times 12{,}04\\cdot10^{23} = 4{,}4548\\cdot10^{25}$.\n\n##VD\nSố proton có trong 0,27 gam $^{27}_{13}\\text{Al}$ là\nA. $6{,}826\\cdot10^{22}$.\nB. $8{,}826\\cdot10^{22}$.\nC. $9{,}826\\cdot10^{22}$.\nD. $7{,}826\\cdot10^{22}$.\n\nBài giải:\n$N_{Al} = \\dfrac{m}{A_{Al}}\\cdot N_A = 6{,}02\\cdot10^{21}$ (nguyên tử) $\\to N_p = Z\\,N_{Al} = 7{,}826\\cdot10^{22}$.\nChọn D.",
+   "so_vd": 3,
+   "trang": [
+    123,
+    126,
+    213
+   ],
+   "nguon": "Ví dụ mẫu 1 CĐ1 — tr.123 | Ví dụ mẫu 2 CĐ1 — tr.123 | BT tự luyện CĐ1 phần ① câu 36 — đề tr.126, giải tr.213"
+  },
+  {
+   "id": "LDB00124",
+   "vi_du": "##VD\nMột hạt nhân có độ hụt khối là 0,21 amu. Năng lượng liên kết của hạt nhân này là\nA. 195,615 MeV.\nB. 4435,7 MeV.\nC. 4435,7 J.\nD. 195,615 J.\n\nBài giải:\n$\\Delta E = \\Delta m\\cdot c^2 = 0{,}21\\times 931{,}5 = 195{,}615\\ \\text{MeV}$.\nChọn A.\n\n##VD\nHạt nhân $^{10}_{4}\\text{Be}$ có khối lượng 10,0135 amu. Khối lượng của neutron $m_n = 1{,}0087$ amu, của proton $m_p = 1{,}0073$ amu. Xác định độ hụt khối, năng lượng liên kết, năng lượng liên kết riêng của hạt nhân $^{10}_{4}\\text{Be}$?\n\nBài giải:\n- $\\Delta m = Zm_p + (A-Z)m_n - m = 4\\times1{,}0073 + 6\\times1{,}0087 - 10{,}0135 = 0{,}0679\\ \\text{amu}$.\n- $\\Delta E = \\Delta m\\,c^2 = 0{,}0679\\times 931{,}5 = 63{,}25\\ \\text{MeV}$.\n- $\\varepsilon = \\dfrac{\\Delta E}{A} = \\dfrac{63{,}25}{10} = 6{,}325\\ \\text{MeV/nucleon}$.\n\n##VD\nHạt nhân $^{235}_{92}\\text{U}$ có năng lượng liên kết riêng là 7,6 MeV/nucleon. Độ hụt khối của hạt nhân này là\nA. 1,917 amu.\nB. 1,942 amu.\nC. 1,754 amu.\nD. 0,751 amu.\n\nBài giải:\n$\\varepsilon = \\dfrac{\\Delta E}{A} = 7{,}6 \\to \\Delta E = 7{,}6\\times 235 = 1786\\ \\text{MeV} \\to \\Delta m = \\dfrac{\\Delta E}{c^2} = \\dfrac{1786}{931{,}5} = 1{,}917\\ \\text{amu}$.\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    130,
+    132,
+    133,
+    214
+   ],
+   "nguon": "BT tự luyện CĐ2 phần ① câu 25 — đề tr.132, giải tr.214 | Ví dụ mẫu 1 CĐ2 — tr.130 | BT tự luyện CĐ2 phần ① câu 29 — đề tr.133, giải tr.214"
+  },
+  {
+   "id": "LDB00125",
+   "vi_du": "##VD\nKhối lượng các hạt nhân $^{4}_{2}\\text{He}$, $^{6}_{3}\\text{Li}$ và $^{2}_{1}\\text{D}$ lần lượt là 4,0015 amu, 6,00808 amu và 2,0136 amu. Khối lượng của neutron $m_n = 1{,}0087$ amu, của proton $m_p = 1{,}0073$ amu. Hãy sắp xếp các hạt nhân này theo thứ tự độ bền vững tăng dần?\n\nBài giải:\nHạt nhân càng bền vững nếu năng lượng liên kết riêng càng lớn.\n- $\\Delta m_{He} = 0{,}0305\\ \\text{amu} \\to \\Delta E_{He} = 28{,}41\\ \\text{MeV} \\to \\varepsilon_{He} \\approx 7{,}1\\ \\text{MeV/nucleon}$.\n- $\\Delta m_{Li} = 0{,}0399\\ \\text{amu} \\to \\Delta E_{Li} = 37{,}19\\ \\text{MeV} \\to \\varepsilon_{Li} \\approx 6{,}2\\ \\text{MeV/nucleon}$.\n- $\\Delta m_{D} = 0{,}0024\\ \\text{amu} \\to \\Delta E_{D} = 2{,}24\\ \\text{MeV} \\to \\varepsilon_{D} \\approx 1{,}1\\ \\text{MeV/nucleon}$.\nSuy ra $\\varepsilon_D < \\varepsilon_{Li} < \\varepsilon_{He}$. Vậy thứ tự tăng dần độ bền vững hạt nhân là: $^{2}_{1}\\text{D}$, $^{6}_{3}\\text{Li}$, $^{4}_{2}\\text{He}$.\n\n##VD\nCác hạt nhân đơteri $^{2}_{1}\\text{H}$; triti $^{3}_{1}\\text{H}$, heli $^{4}_{2}\\text{He}$ có năng lượng liên kết lần lượt là 2,22 MeV; 8,49 MeV và 28,16 MeV. Các hạt nhân trên được sắp xếp theo thứ tự giảm dần về độ bền vững của hạt nhân là\nA. $^{2}_{1}\\text{H}$; $^{4}_{2}\\text{He}$; $^{3}_{1}\\text{H}$.\nB. $^{2}_{1}\\text{H}$; $^{3}_{1}\\text{H}$; $^{4}_{2}\\text{He}$.\nC. $^{4}_{2}\\text{He}$; $^{3}_{1}\\text{H}$; $^{2}_{1}\\text{H}$.\nD. $^{3}_{1}\\text{H}$; $^{4}_{2}\\text{He}$; $^{2}_{1}\\text{H}$.\n\nBài giải:\n$\\varepsilon_H = \\dfrac{\\Delta E_H}{A} = 1{,}11\\ \\text{MeV}$; $\\varepsilon_T = \\dfrac{\\Delta E_T}{A} = 2{,}83\\ \\text{MeV}$; $\\varepsilon_{He} = \\dfrac{\\Delta E_{He}}{A} = 7{,}04\\ \\text{MeV}$.\nChọn C.\n\n##VD\nCác hạt nhân $^{4}_{2}\\text{He}$, $^{139}_{53}\\text{I}$, $^{235}_{92}\\text{U}$ có khối lượng tương ứng là 4,0015 amu; 138,8970 amu và 234,9933 amu. Biết khối lượng của hạt proton, neutron lần lượt là: 1,0073 amu; 1,0087 amu. Các hạt nhân trên được sắp xếp theo thứ tự giảm dần về độ bền vững của hạt nhân là\nA. $^{4}_{2}\\text{He}$; $^{139}_{53}\\text{I}$; $^{235}_{92}\\text{U}$.\nB. $^{139}_{53}\\text{I}$; $^{4}_{2}\\text{He}$; $^{235}_{92}\\text{U}$.\nC. $^{235}_{92}\\text{U}$; $^{4}_{2}\\text{He}$; $^{139}_{53}\\text{I}$.\nD. $^{139}_{53}\\text{I}$; $^{235}_{92}\\text{U}$; $^{4}_{2}\\text{He}$.\n\nBài giải:\n- $\\Delta m_{He} = 0{,}0305\\ \\text{amu} \\to \\Delta E_{He} = \\Delta m_{He}c^2 = 28{,}410\\ \\text{MeV} \\to \\varepsilon_{He} = \\dfrac{\\Delta E_{He}}{A_{He}} = 7{,}1\\ \\text{MeV}$.\n- $\\Delta m_{I} = 1{,}2381\\ \\text{amu} \\to \\Delta E_{I} = \\Delta m_{I}c^2 = 1153{,}29\\ \\text{MeV} \\to \\varepsilon_{I} = \\dfrac{\\Delta E_{I}}{A_{I}} = 8{,}29\\ \\text{MeV}$.\n- $\\Delta m_{U} = 1{,}9224\\ \\text{amu} \\to \\Delta E_{U} = \\Delta m_{U}c^2 = 1790{,}71\\ \\text{MeV} \\to \\varepsilon_{U} = \\dfrac{\\Delta E_{U}}{A_{U}} = 7{,}6\\ \\text{MeV}$.\nChọn D.",
+   "so_vd": 3,
+   "trang": [
+    130,
+    133,
+    214,
+    215
+   ],
+   "nguon": "Ví dụ mẫu 2 CĐ2 — tr.130 | BT tự luyện CĐ2 phần ① câu 32 — đề tr.133, giải tr.214 | BT tự luyện CĐ2 phần ① câu 33 — đề tr.133, giải tr.214-215"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 128,
+   "noi_dung": "Mục 1.1 và 1.2 CĐ2 (khối lượng tương đối tính, E = mc², năng lượng nghỉ, động năng tương đối) cùng các câu BT CĐ2 ① 1–10 (tính theo thuyết tương đối).",
+   "goi_y": "Nằm trong lý thuyết LNB00061 nhưng không dạng LDB nào trong danh sách nhận (LDB00124 chỉ nhắc E = mc², đổi amu → MeV); có thể cần dạng riêng."
+  },
+  {
+   "trang": 134,
+   "noi_dung": "BT CĐ2 phần ① câu 11–13, 16–19 (lực hạt nhân, năng lượng liên kết riêng, độ bền vững — nhận biết).",
+   "goi_y": "Nhận biết lực hạt nhân thuộc LDB00122; nhận biết năng lượng liên kết riêng/độ bền vững thuộc LDB00125. Phần B chỉ có bảng đáp án nên chưa chọn."
+  }
+ ],
+ "sua_in": [
+  "Ví dụ mẫu 2 CĐ1 (tr.123): sách in 'N = n/M × N_A = 2×6,02.10^23'; đã sửa thành N = (m/A)·N_A = (134/67)·6,02·10^23 = 2·6,02·10^23 (n/M của sách là chữ in sót: m=134 g, M=67 g/mol, n=2; kết quả 12,04·10^23 khớp, kiểm lại 30×12,04e23=3,612e25 và 37×12,04e23=4,4548e25)."
+ ],
+ "ghi_chu": "Số trang PDF thực tế lệch brief: chủ đề 1 bắt đầu PDF 121, chủ đề 2 PDF 128, bài tập CĐ2 tới PDF 135, lời giải CĐ1-CĐ2 ở PDF 213-215 (không phải 208-210); in ở giữa sách lệch 5 trang (trang in = PDF-5), tới phần B lệch 4. Ví dụ mẫu 2 CĐ2: sách in ΔE_Li = 37,19 MeV (tính từ 0,0399 amu ra 37,17; từ 0,03992 ra 37,18), giữ nguyên số sách, ε vẫn 6,2. Không có SGK bổ sung."
+}

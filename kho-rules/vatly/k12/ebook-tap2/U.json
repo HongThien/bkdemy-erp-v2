@@ -1,0 +1,44 @@
+{
+ "tram": "U",
+ "trang_doc": "70-80,193-198",
+ "nhom": [
+  {
+   "id": "LNB00057",
+   "mo_ta": "Biểu thức tức thời của dòng điện và điện áp xoay chiều, các đại lượng cực đại, tần số góc, chu kì, tần số, pha, độ lệch pha, và giá trị hiệu dụng (cùng công suất, nhiệt lượng trên điện trở thuần, dụng cụ đo).",
+   "ly_thuyet": "##ĐN Dòng điện xoay chiều\nDòng điện xoay chiều (dạng sin hay cosin) là dòng điện có cường độ biến thiên tuần hoàn theo thời gian theo quy luật của hàm sin hoặc cosin. Dạng tổng quát: $i = I_0\\cos(\\omega t+\\varphi)$\n- $i$ là cường độ tức thời (giá trị của cường độ dòng điện ở thời điểm $t$).\n- $I_0 > 0$ là cường độ dòng điện cực đại.\n- $\\omega$ là tần số góc; $T = \\dfrac{2\\pi}{\\omega}$ là chu kì; $f = \\dfrac{\\omega}{2\\pi}$ là tần số.\n- $(\\omega t+\\varphi)$ là pha của $i$; $\\varphi$ là pha ban đầu.\n\n##ĐN Điện áp xoay chiều\nHiệu điện thế biến thiên theo thời gian theo quy luật dạng sin gọi là điện áp xoay chiều: $u = U_0\\cos(\\omega t+\\varphi)$\n- $u$ là điện áp tức thời; $U_0 > 0$ là điện áp cực đại.\n- $\\omega$, $T = \\dfrac{2\\pi}{\\omega}$, $f = \\dfrac{\\omega}{2\\pi}$ là tần số góc, chu kì, tần số của $u$.\n- $(\\omega t+\\varphi)$ là pha của $u$; $\\varphi$ là pha ban đầu.\n\n##TC Độ lệch pha giữa u và i\nKhi đặt vào hai đầu mạch điện bất kì điện áp xoay chiều $u = U_0\\cos(\\omega t+\\varphi_u)$ thì cường độ dòng điện qua mạch có dạng $i = I_0\\cos(\\omega t+\\varphi_i)$.\nĐại lượng $\\varphi = \\varphi_u - \\varphi_i$ gọi là độ lệch pha của $u$ so với $i$.\n\n##ĐN Giá trị hiệu dụng của cường độ dòng điện\nDòng điện xoay chiều cũng có tác dụng nhiệt Jun – Len-xơ như dòng điện một chiều.\nVới $i = I_0\\cos\\omega t$ chạy qua điện trở thuần $R$, công suất toả nhiệt tức thời là $p = Ri^2 = \\dfrac{RI_0^2}{2} + \\dfrac{RI_0^2}{2}\\cos 2\\omega t$. Giá trị trung bình trong một chu kì của số hạng thứ hai bằng 0 nên công suất toả nhiệt trung bình là $P = \\dfrac{RI_0^2}{2}$, nhiệt lượng toả ra trong thời gian $t$ là $Q = Pt = \\dfrac{RI_0^2}{2}t$.\nDòng điện không đổi cường độ $I$ toả ra cùng nhiệt lượng $Q = RI^2t$ trong cùng thời gian $t$ trên cùng điện trở $R$ thì $I = \\dfrac{I_0}{\\sqrt{2}}$.\n$I$ gọi là cường độ hiệu dụng của dòng điện xoay chiều: bằng cường độ của dòng điện không đổi mà khi cho hai dòng điện lần lượt đi qua cùng một điện trở trong những khoảng thời gian bằng nhau đủ dài thì nhiệt lượng toả ra trên điện trở bằng nhau.\n\n##TC Công thức giá trị hiệu dụng\n- Cường độ hiệu dụng: $I = \\dfrac{I_0}{\\sqrt{2}}$\n- Điện áp hiệu dụng: $U = \\dfrac{U_0}{\\sqrt{2}}$\n- Công suất toả nhiệt trung bình trên điện trở $R$: $P = RI^2 = \\dfrac{RI_0^2}{2}$\n- Nhiệt lượng toả ra trên $R$ trong thời gian $t$: $Q = Pt = RI^2t$\n\n##CY Số liệu ghi trên thiết bị và dụng cụ đo\n- Các số liệu ghi trên các thiết bị điện đều là giá trị hiệu dụng; khi nói về cường độ dòng điện hay điện áp xoay chiều mà không nói gì thêm là nói về giá trị hiệu dụng. Chẳng hạn bóng đèn ghi 220 V – 3 A nghĩa là điện áp hiệu dụng (định mức) $U = 220\\ \\text{V}$ và cường độ hiệu dụng (định mức) $I = 3\\ \\text{A}$.\n- Đo điện áp hiệu dụng và cường độ hiệu dụng của dòng điện xoay chiều bằng vôn kế và ampe kế xoay chiều (nguyên tắc dựa trên các tác dụng không phụ thuộc chiều dòng điện).",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    70,
+    71
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00117",
+   "vi_du": "##VD\nMột dòng điện chạy qua một đoạn mạch có cường độ $i = 2\\sqrt{2}\\cos\\left(\\dfrac{250\\pi}{3}t-\\dfrac{\\pi}{3}\\right)$ (A).\na) Xác định cường độ hiệu dụng của dòng điện.\nb) Xác định trạng thái của dòng điện tại thời điểm $t = 19\\ \\text{ms}$.\n\nBài giải:\na) $I = \\dfrac{I_0}{\\sqrt{2}} = \\dfrac{2\\sqrt{2}}{\\sqrt{2}} = 2\\ \\text{A}$.\n\nb) Tại $t = 19\\ \\text{ms}$: pha của $i$ là $\\dfrac{250\\pi}{3}\\times 0{,}019 - \\dfrac{\\pi}{3} = \\dfrac{5\\pi}{4} \\equiv -\\dfrac{3\\pi}{4}$.\nKhi đó $i = -\\dfrac{I_0\\sqrt{2}}{2} = -2\\ \\text{A}$ và đang tăng.\n\n##VD\nMột dòng điện xoay chiều hình sin có giá trị cực đại là $3\\ \\text{A}$ chạy qua một ấm điện. Ấm điện này đun sôi $1$ lít nước với nhiệt độ ban đầu là $37\\ ^\\circ\\text{C}$ trong thời gian $14$ phút. Bỏ qua mọi hao phí. Biết khối lượng riêng của nước là $1\\ \\text{kg/dm}^3$, nhiệt dung riêng của nước là $4{,}2\\ \\text{kJ/(kg.K)}$. Điện trở của ấm điện này là\nA. $35\\ \\Omega$.\nB. $70\\ \\Omega$.\nC. $17{,}5\\ \\Omega$.\nD. $140\\ \\Omega$.\n\nBài giải:\nNhiệt lượng toả ra trên ấm bằng nhiệt lượng làm nước sôi: $Q = I^2Rt = mc\\Delta t$, với cường độ hiệu dụng $I = \\dfrac{I_0}{\\sqrt{2}} = \\dfrac{3}{\\sqrt{2}}\\ \\text{A}$.\nSuy ra $R = \\dfrac{mc\\Delta t}{I^2t} = \\dfrac{1\\cdot 4200\\cdot(100-37)}{\\left(\\dfrac{3}{\\sqrt{2}}\\right)^2\\cdot 14\\cdot 60} = 70\\ \\Omega$.\nChọn B.\n\n##VD\nHai đầu của một đèn ống thông dụng được mắc vào điện áp $u = 220\\sqrt{2}\\cos 100\\pi t$ (V). Biết đèn sáng khi điện áp giữa hai đầu của đèn có độ lớn lớn hơn $110\\sqrt{6}\\ \\text{V}$. Xác định khoảng thời gian đèn tối (không sáng) trong một chu kì.\n\nBài giải:\nĐèn sáng khi $|u| > 110\\sqrt{6}\\ \\text{V} = \\dfrac{U_0\\sqrt{3}}{2}$.\nChu kì $T = \\dfrac{2\\pi}{100\\pi} = 0{,}02\\ \\text{s}$. Diễn biến của $u$ trong một chu kì trên trục điện áp: đèn tối khi $|u| < \\dfrac{U_0\\sqrt{3}}{2}$, ứng với bốn đoạn dịch chuyển $\\dfrac{U_0\\sqrt{3}}{2} \\to 0 \\to -\\dfrac{U_0\\sqrt{3}}{2}$ (và ngược lại), mỗi đoạn mất $\\dfrac{T}{6}$.\nTrong một chu kì, khoảng thời gian đèn tối là $\\Delta t = 4\\times\\dfrac{T}{6} = \\dfrac{2T}{3} = \\dfrac{1}{75}\\ \\text{s}$.",
+   "so_vd": 3,
+   "trang": [
+    72,
+    73,
+    79,
+    197
+   ],
+   "nguon": "Ví dụ mẫu 1 — tr.72 | BT tự luyện CĐ8 phần ① câu 62 — đề tr.79, giải tr.197 | Ví dụ mẫu 3 — tr.72"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 72,
+   "noi_dung": "Ví dụ mẫu 2 (viết phương trình u từ đồ thị) cần đồ thị nên bỏ",
+   "goi_y": "LDB00117 nếu có hình"
+  },
+  {
+   "trang": "74-80",
+   "noi_dung": "Chủ đề 8 tr.74–80 chỉ là bài tập tự luyện (câu 1–68); câu 64–68 dùng đồ thị u.i, đường elip",
+   "goi_y": "bỏ (cần hình)"
+  }
+ ],
+ "sua_in": [],
+ "ghi_chu": "Đã đọc hết CĐ8 (PDF 70–80) và đáp án (PDF 193–198, hết ở câu 68). CĐ8 không có khung phương pháp riêng, không có khung dây quay/e(t) ⇒ không ghi LNB00056/LDB00116. Lý thuyết chỉ có ở PDF 70–71. Phần B với câu 62 có lời giải từng bước."
+}

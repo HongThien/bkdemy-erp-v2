@@ -1,0 +1,77 @@
+{
+ "tram": "R",
+ "trang_doc": "28-30,37-51,176-184",
+ "nhom": [
+  {
+   "id": "LNB00052",
+   "mo_ta": "Lực Lorentz (khái niệm, chiều theo quy tắc bàn tay trái, độ lớn), chuyển động tròn đều của hạt tích điện trong từ trường đều (bán kính, chu kì) và các thiết bị ứng dụng lực Lorentz: ống tia âm cực, máy quang phổ khối, cyclotron, máy phát điện MHD, lưu lượng kế điện từ.",
+   "ly_thuyet": "##ĐN Lực Lorentz\nTừ trường tác dụng lực lên các điện tích chuyển động. Lực từ tác dụng lên điện tích chuyển động trong từ trường được gọi là lực Lorentz.\n\n##ĐL Chiều của lực Lorentz\nPhương của lực Lorentz vuông góc với phương chuyển động của hạt tích điện (vuông góc với $\\vec{v}$) và vuông góc với đường sức từ ($\\vec{B}$).\nQuy tắc bàn tay trái: đặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều chuyển động của điện tích.\nNếu điện tích dương thì chiều của lực Lorentz là chiều ngón cái chỉ; nếu điện tích âm thì chiều của lực Lorentz ngược với chiều ngón cái chỉ.\n\n##TC Độ lớn của lực Lorentz\n- Hạt điện tích $q$ chuyển động với vận tốc $\\vec{v}$ vuông góc với $\\vec{B}$ thì $F=|q|vB$ ($v$ tính theo m/s, $q$ theo C, $B$ theo T).\n- Khi $\\vec{v}$ song song với $\\vec{B}$ thì lực Lorentz bằng 0.\n- Khi $\\vec{v}$ hợp với $\\vec{B}$ một góc $\\theta$: chỉ thành phần $B_\\perp = B\\sin\\theta$ vuông góc với $\\vec{v}$ gây ra lực, nên $F=|q|vB\\sin\\theta$.\n\n##TC Chuyển động của hạt tích điện trong từ trường đều\nHạt tích điện bay vào từ trường đều theo hướng vuông góc với đường sức từ thì lực Lorentz luôn vuông góc với vận tốc: chỉ làm đổi hướng vận tốc mà không làm đổi độ lớn vận tốc. Do đó độ lớn lực Lorentz không đổi và đóng vai trò lực hướng tâm, hạt chuyển động tròn đều trong mặt phẳng vuông góc với đường sức từ.\n- Lực hướng tâm: $|q|vB=m\\dfrac{v^2}{r}$, suy ra bán kính quỹ đạo $r=\\dfrac{mv}{|q|B}$.\n- Bán kính tỉ lệ thuận với khối lượng và tốc độ của hạt, tỉ lệ nghịch với độ lớn điện tích của hạt và độ lớn cảm ứng từ.\n- Chu kì chuyển động tròn đều: $T=\\dfrac{2\\pi m}{|q|B}$, không phụ thuộc tốc độ và bán kính quỹ đạo.\n\n##TC Ống tia âm cực (đèn hình CRT)\nỐng tia âm cực là ống chùm tia điện tử dùng trong tivi, màn hình máy tính và các thiết bị điện tử khác. Các electron phát ra từ súng điện được gia tốc bởi một điện trường để tạo thành chùm tia điện tử. Từ trường biến thiên liên tục tạo bởi các cuộn dây lệch hướng (theo phương ngang và phương dọc) làm lực Lorentz đổi hướng chùm tia, nhờ đó chùm tia quét và hiển thị hình ảnh trên màn huỳnh quang.\n\n##TC Máy quang phổ khối\nHạt khối lượng $m$, độ lớn điện tích $q$ bay từ lỗ nhỏ $S_1$ với vận tốc ban đầu gần bằng 0 vào điện trường có hiệu điện thế $U$, rồi đi qua $S_3$ vào từ trường đều $B$ theo hướng vuông góc với đường sức từ và đập vào tấm ảnh.\n- Theo định lí biến thiên động năng: $\\dfrac{1}{2}mv^2=qU$, suy ra $v=\\sqrt{\\dfrac{2qU}{m}}$.\n- Trong từ trường hạt chuyển động tròn đều với bán kính $r=\\dfrac{mv}{qB}=\\dfrac{1}{B}\\sqrt{\\dfrac{2mU}{q}}$.\n- Các hạt cùng điện tích nhưng khối lượng khác nhau chuyển động theo các bán kính khác nhau nên bị tách ra và đập vào các phần khác nhau của tấm ảnh.\n- Máy quang phổ khối được Aston dùng để phát hiện neon-20 và neon-22, xác nhận sự tồn tại của các đồng vị.\n\n##TC Máy gia tốc cyclotron\nCyclotron có hai hộp kim loại rỗng hình chữ D ($D_1$, $D_2$) đặt trong từ trường đều vuông góc với bề mặt hộp, giữa hai hộp có hiệu điện thế xoay chiều $U$. Hạt tích điện từ nguồn đặt gần tâm được gia tốc bởi điện trường ở khe hở, rồi chuyển động tròn đều trong mỗi hộp.\n- Sau mỗi nửa vòng tròn hạt lại đến khe hở, hiệu điện thế đổi dấu nên hạt lại được gia tốc.\n- Chu kì chuyển động của hạt $T=\\dfrac{2\\pi m}{qB}$ không đổi khi tốc độ và bán kính tăng, nên chu kì của điện áp xoay chiều phải bằng chu kì của hạt (tần số $f=\\dfrac{qB}{2\\pi m}$).\n- Sau $n$ lần gia tốc từ trạng thái nghỉ: $\\dfrac{1}{2}mv_n^2=nqU$ và $r_n=\\dfrac{1}{B}\\sqrt{\\dfrac{2mnU}{q}}$.\n- Khi hạt ra khỏi máy ở bán kính cực đại $R$: $v_{max}=\\dfrac{qBR}{m}$, động năng cực đại $K_{max}=\\dfrac{q^2B^2R^2}{2m}$ (không phụ thuộc $U$).\n\n##TC Máy phát điện từ thủy động lực học (MHD)\nChùm plasma (chứa nhiều ion dương và ion âm) được đưa vào từ trường giữa hai tấm kim loại song song A và B. Lực Lorentz làm các ion dương lệch về một tấm và các ion âm lệch về tấm kia, tạo ra hiệu điện thế giữa hai tấm; đồng thời xuất hiện điện trường giữa hai tấm. Khi lực điện cân bằng lực Lorentz $qE=qvB$ (tức $E=vB$) thì hiệu điện thế giữa hai tấm đạt cực đại, bằng suất điện động của máy phát: $U=Ed=Bvd$.\n\n##TC Lưu lượng kế điện từ\nLưu lượng kế điện từ dùng để đo lưu lượng của chất lỏng dẫn điện chảy trong ống đặt trong từ trường. Các ion dương và âm bị lực Lorentz làm lệch hướng, tạo ra hiệu điện thế giữa các điện cực ở hai bên thành ống. Khi lực điện trường cân bằng với lực Lorentz thì hiệu điện thế này ổn định; đo hiệu điện thế giữa hai điện cực là xác định được gián tiếp lưu lượng chất lỏng trong ống.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    28,
+    29,
+    37,
+    38,
+    39,
+    40
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00108",
+   "vi_du": "##VD\nMột máy gia tốc cyclotron dùng để tăng tốc electron, hai hộp kim loại hình chữ D được kết nối với hai cực của nguồn điện xoay chiều tần số cao. Hai hộp được đặt trong một từ trường đều có cảm ứng từ $B$. Hướng của từ trường vuông góc với đáy hộp và hướng xuống dưới. Hiệu điện thế giữa hai hộp hình chữ D luôn có độ lớn là $U$ và nguồn electron được đặt gần tâm hộp. Biết electron có vận tốc ban đầu không đáng kể, khối lượng là $m$, độ lớn điện tích là $e$ và bán kính cyclotron cực đại của nó là $R$. Tốc độ cực đại của electron khi rời khỏi máy là\nA. $\\dfrac{m}{eBR}$.\nB. $\\dfrac{mR}{eB}$.\nC. $\\dfrac{eBR}{m}$.\nD. $\\dfrac{eB}{mR}$.\n\nBài giải:\nKhi electron ra khỏi máy, bán kính quỹ đạo là $R$ nên $R=\\dfrac{mv_{max}}{eB}$, suy ra $v_{max}=\\dfrac{eBR}{m}$.\nChọn C.\n\n##VD\nMột máy gia tốc cyclotron y tế nhỏ có bán kính cyclotron tối đa là $0{,}5\\ \\text{m}$, độ lớn cảm ứng từ là $1{,}12\\ \\text{T}$ và động năng cực đại của proton sau khi được tăng tốc là $1{,}5\\cdot10^{7}\\ \\text{eV}$. Biết điện tích của proton là $+e$. Tốc độ cực đại của proton được gia tốc là\nA. $2{,}4\\cdot10^{8}\\ \\text{m/s}$.\nB. $1{,}3\\cdot10^{7}\\ \\text{m/s}$.\nC. $3{,}6\\cdot10^{6}\\ \\text{m/s}$.\nD. $5{,}4\\cdot10^{7}\\ \\text{m/s}$.\n\nBài giải:\nTừ $r=\\dfrac{mv_{max}}{qB}$ suy ra $mv_{max}=qBr$.\nĐộng năng cực đại $K_{max}=\\dfrac{1}{2}mv_{max}^2=\\dfrac{1}{2}qBr\\,v_{max}$, suy ra $v_{max}=\\dfrac{2K_{max}}{qBr}$.\nVới $K_{max}=1{,}5\\cdot10^{7}\\ \\text{eV}$ và $q=e$: $v_{max}=\\dfrac{2\\cdot1{,}5\\cdot10^{7}}{1{,}12\\cdot0{,}5}\\approx5{,}4\\cdot10^{7}\\ \\text{m/s}$.\nChọn D.\n\n##VD\nLưu lượng kế điện từ dùng để đo lưu lượng chất lỏng dẫn điện. Một chất lỏng dẫn điện chảy trong ống tròn làm bằng vật liệu phi từ tính có đường kính $d$. Giả sử trong chất lỏng có rất nhiều hạt mang điện tích âm và một từ trường đều $B$ vuông góc với hướng dòng chảy. Nếu hiệu điện thế giữa điểm $a$ và $b$ trong thành ống là $U$ thì lưu lượng chất lỏng trong đường ống là\nA. $\\dfrac{\\pi dB}{2U}$.\nB. $\\dfrac{\\pi dB}{4U}$.\nC. $\\dfrac{\\pi dU}{2B}$.\nD. $\\dfrac{\\pi dU}{4B}$.\n\nBài giải:\nKhi hiệu điện thế đo được ổn định, lực điện cân bằng lực Lorentz: $qE=qvB\\Rightarrow E=vB\\Rightarrow \\dfrac{U}{d}=vB\\Rightarrow v=\\dfrac{U}{dB}$.\nLưu lượng: $Q=vS=\\dfrac{U}{dB}\\cdot\\dfrac{\\pi d^2}{4}=\\dfrac{\\pi dU}{4B}$.\nChọn D.",
+   "so_vd": 3,
+   "trang": [
+    46,
+    47,
+    181
+   ],
+   "nguon": "BT tự luyện CĐ4 phần ① câu 5 — đề tr.46, giải tr.181 | BT tự luyện CĐ4 phần ① câu 3 — đề tr.46, giải tr.181 | BT tự luyện CĐ4 phần ① câu 9 — đề tr.47, giải tr.181 (đã bỏ câu \"Hình vẽ thể hiện sơ đồ…\" ở đầu đề)"
+  },
+  {
+   "id": "LDB00109",
+   "vi_du": "##VD\nMột hạt mang điện tích $3{,}2\\cdot10^{-19}\\ \\text{C}$ chuyển động với tốc độ $5\\cdot10^{6}\\ \\text{m/s}$ trong một từ trường đều theo hướng vuông góc với đường sức từ. Biết cảm ứng từ của từ trường có độ lớn là $0{,}036\\ \\text{T}$. Lực Lorentz tác dụng lên điện tích có độ lớn là\nA. $5{,}76\\cdot10^{-14}\\ \\text{N}$.\nB. $5{,}76\\cdot10^{-15}\\ \\text{N}$.\nC. $2{,}88\\cdot10^{-14}\\ \\text{N}$.\nD. $2{,}88\\cdot10^{-15}\\ \\text{N}$.\n\nBài giải:\nHạt chuyển động vuông góc với đường sức từ nên $F=|q|vB=3{,}2\\cdot10^{-19}\\cdot5\\cdot10^{6}\\cdot0{,}036=5{,}76\\cdot10^{-14}\\ \\text{N}$.\nChọn A.\n\n##VD\nMột điện tích $1\\ \\text{mC}$ có khối lượng $10\\ \\text{mg}$ bay với vận tốc có độ lớn $1200\\ \\text{m/s}$ vuông góc với các đường sức từ của một từ trường đều có độ lớn $1{,}2\\ \\text{T}$. Bỏ qua trọng lực tác dụng lên điện tích. Bán kính quỹ đạo của nó là\nA. $0{,}5\\ \\text{m}$.\nB. $1\\ \\text{m}$.\nC. $10\\ \\text{m}$.\nD. $0{,}1\\ \\text{mm}$.\n\nBài giải:\nLực Lorentz đóng vai trò lực hướng tâm nên $R=\\dfrac{mv}{|q|B}=\\dfrac{10\\cdot10^{-6}\\cdot1200}{10^{-3}\\cdot1{,}2}=10\\ \\text{m}$.\nChọn C.\n\n##VD\nMột proton có vận tốc ban đầu bằng không được gia tốc bởi một điện trường hiệu điện thế $1880\\ \\text{V}$ và sau đó bay vuông góc với đường sức từ của một từ trường đều có độ lớn cảm ứng từ $5\\cdot10^{-4}\\ \\text{T}$. Biết proton có khối lượng là $1{,}67\\cdot10^{-27}\\ \\text{kg}$ và điện tích là $1{,}6\\cdot10^{-19}\\ \\text{C}$. Độ lớn của lực Lorentz tác dụng lên proton là $x\\cdot10^{-17}\\ \\text{N}$. Giá trị của $x$ là bao nhiêu (kết quả làm tròn đến chữ số hàng phần mười)?\n\nBài giải:\nTheo định lí biến thiên động năng: $\\dfrac{1}{2}mv^2=qU$, suy ra $v=\\sqrt{\\dfrac{2qU}{m}}$.\nProton bay vuông góc với đường sức từ nên $F=|q|vB=B\\sqrt{\\dfrac{2q^3U}{m}}=4{,}8\\cdot10^{-17}\\ \\text{N}$.\nVậy $x=4{,}8$.",
+   "so_vd": 3,
+   "trang": [
+    30,
+    38,
+    41,
+    178,
+    180
+   ],
+   "nguon": "BT tự luyện CĐ3 phần ① câu 6 — đề tr.30, giải tr.178 | BT tự luyện CĐ3 phần ① câu 19 — đề tr.38, giải tr.178 | BT tự luyện CĐ3 phần ③ câu 1 — đề tr.41, giải tr.180"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 46,
+   "noi_dung": "CĐ4 ① câu 1, 2 (máy quang phổ khối: tỉ số thời gian, miền điện áp để hai vạch kề nhau) — đề dựa vào hình khe S1,S2,S3 và vị trí M, N trên tấm ảnh",
+   "goi_y": "LDB00109 (khối phổ kế) nhưng cần hình; chưa dùng làm ví dụ"
+  },
+  {
+   "trang": 30,
+   "noi_dung": "CĐ3 ① câu 3, 4 (chọn hình đúng hướng lực Lorentz) và Đ/S/TLN dựa hình (CĐ3 ② câu 2,3,4; ③ câu 2)",
+   "goi_y": "LDB00109 (chiều lực Lorentz, quỹ đạo) — cần hình vẽ, bỏ"
+  },
+  {
+   "trang": 47,
+   "noi_dung": "CĐ4 ① câu 10 (graphene, đo mật độ electron bằng hiệu ứng Hall), ① câu 7, 8 (cyclotron lí thuyết)",
+   "goi_y": "LDB00108 — câu 10 cần mạch hình; câu 7,8 chỉ chọn nếu muốn thêm câu lí thuyết cyclotron (lời giải có ở tr.181)"
+  },
+  {
+   "trang": 48,
+   "noi_dung": "CĐ4 ② Đúng–Sai (khối phổ kế, cyclotron, MHD, lưu lượng kế máu) — câu 4 ý, đã loại theo luật",
+   "goi_y": "LDB00108/LDB00109"
+  },
+  {
+   "trang": 40,
+   "noi_dung": "Sách KHÔNG có nội dung về động cơ điện, loa điện động, nam châm điện, cân dòng điện trong các trang được giao; dạng LDB00108 vì vậy được gán các thiết bị ứng dụng lực Lorentz (cyclotron, lưu lượng kế) theo chỉ dẫn của brief",
+   "goi_y": "Nếu người tổng hợp muốn tách riêng thì chuyển 3 ví dụ cyclotron/lưu lượng kế sang LDB00109 (khối phổ kế/hạt trong từ trường) và để LDB00108 cho trạm khác"
+  }
+ ],
+ "sua_in": [
+  "tr.30 (mục 1.2, sách in \"F = BIl sinθ\" cho trường hợp v hợp với B góc θ): sách in thiếu chữ, đúng là F = |q|vB sinθ (kiểm lại: cùng mục sách viết F = |q|vB khi vuông góc, B⊥ = B sinθ; đáp án CĐ3 ① câu 1 chọn D là f = |q0|vB sinθ). Đã ghi F = |q|vB sinθ trong lý thuyết."
+ ],
+ "ghi_chu": "Trang PDF thực tế lệch brief vì có 6 trang quảng cáo UniMap chèn ở PDF 31–36: CĐ3 = PDF 28–30 và 37–41, CĐ4 = PDF 45–51, đáp án CĐ3 = PDF 178–180, đáp án CĐ4 = PDF 181–184. Cả hai chủ đề KHÔNG có \"Ví dụ mẫu\", chỉ có BT tự luyện; ví dụ lấy từ BT tự luyện có lời giải ở phần B. Lý thuyết chỉ chép từ sách, không dùng ly_thuyet_sgk. Câu 9 CĐ4 ① bỏ câu mở đầu nhắc hình nên điểm a, b theo sách là hai điểm ở thành ống như trong lời giải (E=U/d)."
+}

@@ -1,0 +1,92 @@
+{
+ "tram": "Z",
+ "trang_doc": "130-150,211-221",
+ "nhom": [
+  {
+   "id": "LNB00062",
+   "mo_ta": "Khái niệm phản ứng hạt nhân (tự phát, kích thích), phương trình và các định luật bảo toàn (số khối, điện tích, năng lượng, động lượng), cách cân bằng phương trình, năng lượng toả/thu của phản ứng và phương trình các loại phóng xạ.",
+   "ly_thuyet": "##ĐN Phản ứng hạt nhân\nPhản ứng hạt nhân là mọi quá trình dẫn đến sự biến đổi hạt nhân. Năm 1909, Rutherford dùng chùm hạt α ($^{4}_{2}\\text{He}$) phóng ra từ nguồn phóng xạ $^{210}_{84}\\text{Po}$ bắn phá hạt nhân $^{14}_{7}\\text{N}$ trong không khí: nitơ bị phân rã và biến đổi thành oxygen và hydrogen.\n- Phản ứng hạt nhân tự phát: quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác (vd: phóng xạ).\n- Phản ứng hạt nhân kích thích: quá trình các hạt nhân tương tác với nhau tạo ra các hạt nhân khác (vd: thí nghiệm Rutherford, phân hạch, nhiệt hạch).\n\n##TC Phương trình phản ứng\nPhương trình tổng quát: $A + B \\to C + D$, trong đó A, B là các hạt tương tác, C, D là các hạt sản phẩm.\nTrường hợp phóng xạ: $A \\to B + C$, trong đó A là hạt nhân mẹ, B là hạt nhân con, C là hạt α ($^{4}_{2}\\text{He}$) hoặc $^{0}_{1}e$ hoặc $^{0}_{-1}e$.\nKí hiệu một số hạt đáng nhớ: proton $^{1}_{1}\\text{p}$ hoặc $^{1}_{1}\\text{H}$; neutron $^{1}_{0}\\text{n}$; helium (alpha) $^{4}_{2}\\text{He}$ hay α; electron $^{0}_{-1}e$ hay $\\beta^{-}$; positron $^{0}_{1}e$ hay $\\beta^{+}$.\n\n##ĐL Các định luật bảo toàn trong phản ứng hạt nhân\nXét phản ứng $^{A_1}_{Z_1}X_1 + {}^{A_2}_{Z_2}X_2 \\to {}^{A_3}_{Z_3}X_3 + {}^{A_4}_{Z_4}X_4$.\n- Bảo toàn số nucleon (số khối A): $A_1 + A_2 = A_3 + A_4$.\n- Bảo toàn điện tích: $Z_1 + Z_2 = Z_3 + Z_4$.\n- Bảo toàn năng lượng toàn phần: tổng năng lượng toàn phần của các hạt tương tác bằng tổng năng lượng toàn phần của các hạt sản phẩm.\n- Bảo toàn động lượng: vectơ tổng động lượng của các hạt tương tác bằng vectơ tổng động lượng của các hạt sản phẩm.\n\n##CY Không có bảo toàn khối lượng, bảo toàn proton, bảo toàn neutron trong phản ứng hạt nhân.\n\n##PP Cân bằng phương trình phản ứng hạt nhân\nSử dụng định luật bảo toàn số khối và bảo toàn điện tích cho hai vế của phương trình.\nTừ đó tìm số khối A và điện tích Z của hạt chưa biết, đối chiếu với kí hiệu các hạt đáng nhớ để nhận ra hạt đó.\n\n##TC Năng lượng toả ra hay thu vào trong phản ứng hạt nhân\nNăng lượng phản ứng hạt nhân W: $W = (m_{tr} - m_s)c^2 = (\\Delta m_s - \\Delta m_{tr})c^2 = \\Delta E_s - \\Delta E_{tr} = K_s - K_{tr}$.\nTrong đó $m_{tr}, \\Delta m_{tr}, \\Delta E_{tr}, K_{tr}$ và $m_s, \\Delta m_s, \\Delta E_s, K_s$ lần lượt là tổng khối lượng nghỉ, độ hụt khối, năng lượng liên kết, động năng các hạt nhân trước phản ứng và sau phản ứng.\n- Nếu $W > 0$ thì phản ứng toả năng lượng.\n- Nếu $W < 0$ thì phản ứng thu năng lượng.\n\n##TC Phóng xạ — phương trình các loại phóng xạ\nPhóng xạ là hiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác; quá trình này không chịu tác động của các yếu tố môi trường ngoài như nhiệt độ, áp suất.\n- Phóng xạ α: $^{A}_{Z}X \\to {}^{A-4}_{Z-2}Y + {}^{4}_{2}\\text{He}$.\n- Phóng xạ $\\beta^{-}$: $^{A}_{Z}X \\to {}^{0}_{-1}e + {}^{A}_{Z+1}Y$ (kèm theo một hạt phản neutrino $\\tilde{\\nu}$).\n- Phóng xạ $\\beta^{+}$: $^{A}_{Z}X \\to {}^{0}_{1}e + {}^{A}_{Z-1}Y$ (kèm theo một hạt neutrino $\\nu$).\n- Tia γ là sóng điện từ có bước sóng rất ngắn, là dòng hạt photon có năng lượng cao, thường đi kèm trong các phóng xạ α và β.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    136,
+    137
+   ]
+  },
+  {
+   "id": "LNB00063",
+   "mo_ta": "Phản ứng phân hạch (cơ chế, phản ứng dây chuyền, hệ số nhân k, khối lượng tới hạn), lò phản ứng hạt nhân với thanh điều khiển, và phản ứng nhiệt hạch.",
+   "ly_thuyet": "##ĐN Phản ứng phân hạch\nPhản ứng phân hạch là phản ứng trong đó một hạt nhân nặng hấp thụ một neutron chậm vỡ thành hai hạt nhân trung bình, đồng thời phóng ra một số neutron và toả ra một năng lượng rất lớn (khoảng 200 MeV). Nhiên liệu chủ yếu thực hiện phản ứng phân hạch là $^{235}_{92}\\text{U}$ và $^{239}_{94}\\text{Pu}$.\nCơ chế: truyền cho hạt nhân mẹ X một năng lượng đủ lớn (năng lượng kích hoạt) bằng cách bắn một neutron vào X để X bắt neutron đó và chuyển sang trạng thái kích thích, sau đó mới phân hạch: $n + X \\to X^{*} \\to Y + Z + kn$.\nVí dụ phương trình: $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{236}_{92}\\text{U} \\to {}^{95}_{39}\\text{Y} + {}^{138}_{53}\\text{I} + 3\\,{}^{1}_{0}\\text{n}$.\n\n##TC Phản ứng dây chuyền\nSự phân hạch của một hạt nhân uranium kèm theo sự giải phóng vài neutron mới; các neutron này lại có thể gây ra các phân hạch tiếp theo và cứ thế, sự phân hạch tiếp diễn thành phản ứng dây chuyền.\nGọi k là số neutron trung bình được giải phóng sau mỗi phân hạch đến kích thích các hạt nhân uranium khác để tạo nên những phân hạch mới (không phải mọi neutron sinh ra đều gây phân hạch, vì có neutron bị các tạp chất trong nhiên liệu hấp thụ hoặc bay ra ngoài khối nhiên liệu).\n- $k > 1$: số phân hạch tăng nhanh theo $k^1, k^2, k^3, \\dots$; phản ứng dây chuyền trở thành thác lũ không thể khống chế, hệ thống vượt hạn (cơ chế nổ của bom nguyên tử).\n- $k < 1$: phản ứng dây chuyền không thể xảy ra, hệ thống dưới hạn.\n- $k = 1$: phản ứng dây chuyền có thể khống chế, hệ thống tới hạn (cơ chế hoạt động của nhà máy điện nguyên tử).\nMuốn $k \\ge 1$ thì khối lượng uranium hoặc plutonium phải đạt đến một trị số tối thiểu gọi là khối lượng tới hạn.\n\n##TC Lò phản ứng hạt nhân\n- Lò phản ứng hạt nhân là thiết bị để tạo ra các phản ứng phân hạch dây chuyền tự duy trì và điều khiển được.\n- Nhiên liệu phân hạch trong lò thường là $^{235}\\text{U}$ hoặc $^{239}\\text{Pu}$.\n- Để đảm bảo $k = 1$, người ta dùng các thanh điều khiển chứa Bo hay Cd là các chất có tác dụng hấp thụ neutron (khi số neutron trong lò tăng quá nhiều thì cho các thanh điều khiển ngập sâu vào khu vực chứa nhiên liệu để hấp thụ số neutron thừa).\n- Năng lượng toả ra từ lò phản ứng không đổi theo thời gian.\n\n##ĐN Phản ứng nhiệt hạch\nPhản ứng nhiệt hạch là phản ứng kết hợp hai hạt nhân rất nhẹ thành hạt nhân nặng hơn ở nhiệt độ rất cao. Đây là phản ứng toả năng lượng, là nguồn gốc năng lượng của Mặt Trời, các ngôi sao.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    138
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00126",
+   "vi_du": "##VD\nCho phản ứng hạt nhân: $^{210}_{84}\\text{Po} \\to X + {}^{206}_{82}\\text{Pb}$. Hạt X là\nA. $^{1}_{1}\\text{H}$.\nB. $^{3}_{2}\\text{He}$.\nC. $^{4}_{2}\\text{He}$.\nD. $^{3}_{1}\\text{H}$.\n\nBài giải:\nÁp dụng bảo toàn số khối và bảo toàn điện tích: $A_X = 210 - 206 = 4$ và $Z_X = 84 - 82 = 2$.\nPhương trình: $^{210}_{84}\\text{Po} \\to {}^{4}_{2}X + {}^{206}_{82}\\text{Pb}$, hạt X là $^{4}_{2}\\text{He}$.\nChọn C.\n\n##VD\nCho phản ứng hạt nhân $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{94}_{38}\\text{Sr} + X + 2\\,{}^{1}_{0}\\text{n}$. Hạt nhân X có cấu tạo gồm\nA. 54 proton và 86 neutron.\nB. 54 proton và 140 neutron.\nC. 86 proton và 140 neutron.\nD. 86 proton và 54 neutron.\n\nBài giải:\nPhương trình: $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{94}_{38}\\text{Sr} + {}^{140}_{54}X + 2\\,{}^{1}_{0}\\text{n}$.\nBảo toàn số khối: $1 + 235 = 94 + A_X + 2 \\Rightarrow A_X = 140$. Bảo toàn điện tích: $92 = 38 + Z_X \\Rightarrow Z_X = 54$.\nHạt nhân X có 54 proton và $140 - 54 = 86$ neutron.\nChọn A.\n\n##VD\nĐồng vị $^{234}_{92}\\text{U}$ sau một chuỗi phóng xạ α và $\\beta^{-}$ biến đổi thành $^{206}_{82}\\text{Pb}$, đã phóng ra\nA. 7 hạt α và 4 hạt electron.\nB. 7 hạt α và 8 hạt electron.\nC. 14 hạt α và 8 hạt electron.\nD. 14 hạt α và 4 hạt electron.\n\nBài giải:\nGọi x, y lần lượt là số hạt α và số hạt electron phóng ra: $^{234}_{92}\\text{U} \\to x\\,{}^{4}_{2}\\alpha + y\\,{}^{0}_{-1}e^{-} + {}^{206}_{82}\\text{Pb}$.\nBảo toàn số khối và điện tích ta có hệ: $234 = 4x + 206$ và $92 = 2x - y + 82$.\nSuy ra $x = 7$, $y = 4$.\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    139,
+    140,
+    216
+   ],
+   "nguon": "BT tự luyện Dạng 1 câu 9 — đề tr.139, giải tr.216 | BT tự luyện Dạng 1 câu 16 — đề tr.140, giải tr.216 | BT tự luyện Dạng 1 câu 21 — đề tr.140, giải tr.216"
+  },
+  {
+   "id": "LDB00127",
+   "vi_du": "##VD\nCho phản ứng hạt nhân: $^{2}_{1}\\text{D} + {}^{6}_{3}\\text{Li} \\to {}^{4}_{2}\\text{He} + X$. Biết khối lượng các hạt nhân $^{2}_{1}\\text{D}$; $^{6}_{3}\\text{Li}$; $^{4}_{2}\\text{He}$ lần lượt là 2,0136 amu; 6,0170 amu và 4,0015 amu. Cho khối lượng nguyên tử bằng khối lượng hạt nhân của nó.\na) Tính năng lượng của phản ứng trên.\nb) Tính năng lượng toả ra khi có 1 g $^{4}_{2}\\text{He}$ tạo thành theo các phản ứng trên.\n\nBài giải:\nCân bằng phản ứng: $^{2}_{1}\\text{D} + {}^{6}_{3}\\text{Li} \\to {}^{4}_{2}\\text{He} + {}^{4}_{2}X$, X là hạt nhân $^{4}_{2}\\text{He}$.\na) Năng lượng của phản ứng là: $W = (m_D + m_{Li} - 2m_{He})c^2 = 0{,}0276\\ \\text{amu}\\cdot c^2 = 25{,}7094\\ \\text{MeV}$ (dùng $1\\ \\text{amu}\\cdot c^2 = 931{,}5\\ \\text{MeV}$). Vậy phản ứng đã cho toả năng lượng 25,7094 MeV.\n\nb) Trong 1 g He có số hạt nhân là: $N = \\dfrac{m}{A}N_A = 1{,}505\\cdot10^{23}$.\nMỗi phản ứng cho 2 hạt He, do đó số phản ứng cần thiết là: $N_{pu} = \\dfrac{N}{2} = 7{,}525\\cdot10^{22}$.\nNăng lượng toả ra tổng cộng là $Q = N_{pu}W \\approx 1{,}93\\cdot10^{24}\\ \\text{MeV} = 3{,}1\\cdot10^{11}\\ \\text{J}$.\n\n##VD\nCho phản ứng hạt nhân $^{3}_{1}\\text{T} + {}^{2}_{1}\\text{D} \\to {}^{4}_{2}\\text{He} + X + 17{,}5\\ \\text{MeV}$. Độ hụt khối của $^{3}_{1}\\text{T}$ và $^{2}_{1}\\text{D}$ lần lượt là 0,0091 amu và 0,0025 amu. Tính năng lượng liên kết riêng của hạt nhân $^{4}_{2}\\text{He}$.\n\nBài giải:\nCân bằng phản ứng: $^{3}_{1}\\text{T} + {}^{2}_{1}\\text{D} \\to {}^{4}_{2}\\text{He} + {}^{1}_{0}X$, X là hạt neutron (năng lượng liên kết bằng 0).\nNăng lượng phản ứng: $W = \\Delta E_{He} - \\Delta E_T - \\Delta E_D \\Rightarrow \\Delta E_{He} = W + \\Delta E_T + \\Delta E_D \\approx 28{,}3\\ \\text{MeV}$.\nVậy năng lượng liên kết riêng của hạt nhân $^{4}_{2}\\text{He}$ là $\\varepsilon_{He} = \\dfrac{\\Delta E_{He}}{A_{He}} = \\dfrac{28{,}3}{4} \\approx 7{,}1\\ \\text{MeV}$.\n\n##VD\nBắn hạt proton có động năng 1,6 MeV vào hạt nhân $^{7}_{3}\\text{Li}$ đứng yên. Sau phản ứng thu được hai hạt nhân X giống nhau có cùng tốc độ. Biết khối lượng các hạt nhân proton, $^{7}_{3}\\text{Li}$ và X lần lượt là 1,0073 amu, 7,0144 amu và 4,0015 amu. Tính động năng của mỗi hạt X thu được.\n\nBài giải:\nPhản ứng hạt nhân: $^{1}_{1}\\text{p} + {}^{7}_{3}\\text{Li} \\to 2X$, hạt nhân Li đứng yên nên có động năng $K_{Li} = 0$.\n$W = (m_p + m_{Li} - 2m_X)c^2 = 2K_X - K_p \\leftrightarrow 17{,}42 = 2K_X - 1{,}6 \\leftrightarrow K_X = 9{,}5\\ \\text{MeV}$.",
+   "so_vd": 3,
+   "trang": [
+    141
+   ],
+   "nguon": "Ví dụ mẫu 1 Dạng 2 — tr.141 | Ví dụ mẫu 2 Dạng 2 — tr.141 | Ví dụ mẫu 3 Dạng 2 — tr.141"
+  },
+  {
+   "id": "LDB00128",
+   "vi_du": "##VD\nPhản ứng nào sau đây là phản ứng nhiệt hạch?\nA. $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{139}_{54}\\text{Xe} + {}^{95}_{38}\\text{Sr} + 2\\,{}^{1}_{0}\\text{n}$.\nB. $^{2}_{1}\\text{H} + {}^{3}_{1}\\text{H} \\to {}^{4}_{2}\\text{He} + {}^{1}_{0}\\text{n}$.\nC. $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{144}_{54}\\text{Ba} + {}^{89}_{36}\\text{Sr} + 3\\,{}^{1}_{0}\\text{n}$.\nD. $^{210}_{84}\\text{Po} \\to {}^{4}_{2}\\text{He} + {}^{206}_{82}\\text{Pb}$.\n\nBài giải:\nPhản ứng nhiệt hạch là phản ứng kết hợp hai hạt nhân rất nhẹ thành hạt nhân nặng hơn; $^{2}_{1}\text{H} + {}^{3}_{1}\text{H} \to {}^{4}_{2}\text{He} + {}^{1}_{0}\text{n}$ thoả mãn. Hai phản ứng đầu là phân hạch, phản ứng cuối là phóng xạ α.\nChọn B.\n\n##VD\nTrong sự phân hạch của hạt nhân $^{235}_{92}\\text{U}$, gọi k là hệ số nhân neutron. Phát biểu đúng là\nA. Nếu $k < 1$ thì phản ứng phân hạch dây chuyền xảy ra và năng lượng toả ra tăng nhanh.\nB. Nếu $k > 1$ thì phản ứng phân hạch dây chuyền tự duy trì và có thể gây nên bùng nổ.\nC. Nếu $k > 1$ thì phản ứng phân hạch dây chuyền không xảy ra.\nD. Nếu $k = 1$ thì phản ứng phân hạch dây chuyền không xảy ra.\n\nBài giải:\nKhi $k > 1$ số phân hạch tăng rất nhanh, phản ứng dây chuyền tự duy trì, trở thành thác lũ không khống chế được (vượt hạn, cơ chế nổ của bom nguyên tử). Khi $k < 1$ phản ứng dây chuyền không xảy ra; khi $k = 1$ phản ứng có thể khống chế.\nChọn B.\n\n##VD\nPhản ứng phân hạch được thực hiện trong lò phản ứng hạt nhân. Để đảm bảo hệ số nhân neutron $k = 1$, người ta dùng các thanh điều khiển. Những thanh điều khiển có chứa:\nA. uranium và plutonium.\nB. nước nặng.\nC. boron và cadmium.\nD. kim loại nặng.\n\nBài giải:\nThanh điều khiển chứa boron hoặc cadmium là các chất hấp thụ neutron; khi số neutron trong lò tăng quá nhiều thì cho thanh điều khiển ngập sâu vào vùng nhiên liệu để hấp thụ neutron thừa, giữ $k = 1$.\nChọn C.",
+   "so_vd": 3,
+   "trang": [
+    148,
+    149,
+    150,
+    221
+   ],
+   "nguon": "BT tự luyện Dạng 3 câu 7 — đề tr.148, giải tr.221 | BT tự luyện Dạng 3 câu 25 — đề tr.149, giải tr.221 | BT tự luyện Dạng 3 câu 29 — đề tr.150, giải tr.221"
+  },
+  {
+   "id": "LDB00129",
+   "vi_du": "##VD\nTrong sự vỡ hạt nhân uranium $^{235}\\text{U}$ năng lượng trung bình toả ra khi phân chia một hạt nhân là 200 MeV. Khi 1 kg $^{235}\\text{U}$ phân hạch hoàn toàn thì toả ra năng lượng là\nA. $8{,}21\\cdot10^{13}\\ \\text{J}$.\nB. $4{,}11\\cdot10^{13}\\ \\text{J}$.\nC. $5{,}25\\cdot10^{13}\\ \\text{J}$.\nD. $6{,}23\\cdot10^{21}\\ \\text{J}$.\n\nBài giải:\nSố hạt U trong 1 kg = 1000 g là $N_U = \\dfrac{1000}{235}\\cdot6{,}02\\cdot10^{23} = 2{,}5617\\cdot10^{24}$.\nNăng lượng toả ra là $Q = N_U W = 5{,}1234\\cdot10^{26}\\ \\text{MeV} = 8{,}2\\cdot10^{13}\\ \\text{J}$.\nChọn A.\n\n##VD\nMột nhà máy điện hạt nhân có công suất 160 kW, dùng năng lượng phân hạch uranium $^{235}\\text{U}$, hiệu suất là 25%. Mỗi hạt $^{235}\\text{U}$ phân hạch toả ra 200 MeV. Với 500 g uranium $^{235}\\text{U}$ nhiên liệu thì nhà máy điện này hoạt động được trong bao lâu?\n\nBài giải:\nSố hạt uranium trong 500 g là $N_U = \\dfrac{500}{235}\\cdot6{,}02\\cdot10^{23} \\approx 1{,}28\\cdot10^{24}$.\nNăng lượng toả ra khi 500 g uranium phân hạch là $Q = N_U W \\approx 2{,}56\\cdot10^{26}\\ \\text{MeV} \\approx 4{,}1\\cdot10^{13}\\ \\text{J}$.\nĐiện năng nhà máy sinh ra khi 500 g uranium phân hạch là $A = HQ \\approx 1{,}025\\cdot10^{13}\\ \\text{J}$.\nThời gian hoạt động là $t = \\dfrac{A}{P} \\approx 6{,}4\\cdot10^{7}\\ \\text{s} \\approx 741$ ngày.\n\n##VD\nTrong một vụ thử hạt nhân, quả bom hạt nhân sử dụng sự phân hạch của đồng vị $^{235}\\text{U}$ với hệ số nhân neutron là k ($k > 1$). Giả sử $^{235}\\text{U}$ phân hạch trong mỗi phản ứng tạo ra 200 MeV. Coi lần đầu chỉ có một phân hạch và các lần phân hạch xảy ra đồng loạt. Sau 85 phân hạch thì quả bom giải phóng tổng cộng 343,87 triệu kWh. Giá trị của k là\nA. 2,0.\nB. 2,2.\nC. 2,4.\nD. 1,8.\n\nBài giải:\nSố phản ứng tổng cộng: $N = 1 + k + k^2 + \\dots + k^{84} = \\dfrac{k^{85} - 1}{k - 1}$.\nNăng lượng toả ra của quả bom: $N W = 343{,}87\\cdot10^{6}\\ \\text{kWh} \\Rightarrow \\dfrac{k^{85} - 1}{k - 1} = 3{,}87\\cdot10^{25} \\Rightarrow k \\approx 2$.\nChọn A.",
+   "so_vd": 3,
+   "trang": [
+    141,
+    142,
+    145,
+    147,
+    219,
+    220
+   ],
+   "nguon": "BT tự luyện Dạng 2 câu 37 — đề tr.145, giải tr.219 | Ví dụ mẫu 4 Dạng 2 — đề tr.141, giải tr.142 | BT tự luyện Dạng 2 câu 48 — đề tr.147, giải tr.220"
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 140,
+   "noi_dung": "Dạng 1 câu 14 (nhiệt hạch D+D→He+n, độ hụt khối He → năng lượng liên kết riêng 2,57 MeV/nucleon)",
+   "goi_y": "thuộc LDB00124 (tính năng lượng liên kết riêng), không phải dạng cân bằng phương trình"
+  },
+  {
+   "trang": 139,
+   "noi_dung": "Dạng 1 câu 1–3 (phản ứng hạt nhân bảo toàn/không bảo toàn đại lượng nào) — phần B chỉ có chữ cái đáp án",
+   "goi_y": "nhận biết định luật bảo toàn, thuộc LDB00126 nhưng không có lời giải bước"
+  },
+  {
+   "trang": "130-135",
+   "noi_dung": "Chủ đề 2 Liên kết trong hạt nhân (ví dụ mẫu, BT tự luyện, đáp án PDF 213-215)",
+   "goi_y": "thuộc LNB00061 / LDB00124, LDB00125 (trạm khác)"
+  }
+ ],
+ "sua_in": [],
+ "ghi_chu": "Đọc thêm PDF 145-150 và 217-221 (hết Chủ đề 3). Offset trang in: đề = PDF-5, đáp án = PDF-4. Không có khung kiến thức mới cho LNB00063 ngoài tr.138; Dạng 3 chỉ là câu trắc nghiệm. Ví dụ 1 Dạng 2: kết quả 1,93e24 MeV khớp phép tính 7,525e22 x 25,7094."
+}

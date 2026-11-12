@@ -1,0 +1,95 @@
+{
+  "tram": "K",
+  "trang_doc": "136-137 (lý thuyết phóng xạ, CĐ3), 145-166 (CĐ3 tail + CĐ4 + đầu CĐ5), 217-229 (phần B)",
+  "nhom": [
+    {
+      "id": "LNB00064",
+      "mo_ta": "Hiện tượng phóng xạ (hạt nhân không bền tự phát phân rã, không phụ thuộc môi trường ngoài) và bản chất, phương trình phân rã, tốc độ, khả năng ion hoá, đâm xuyên của các tia $\\alpha$, $\\beta^-$, $\\beta^+$, $\\gamma$.",
+      "ly_thuyet": "##ĐN Hiện tượng phóng xạ\nHiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác được gọi là hiện tượng phóng xạ.\nQuá trình này do các nguyên nhân bên trong gây ra nên không chịu tác động của các yếu tố thuộc môi trường ngoài như nhiệt độ, áp suất,...\n\n##TC Phóng xạ là phản ứng hạt nhân tự phát\n- Phản ứng hạt nhân tự phát là quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác; ví dụ: quá trình phóng xạ.\n- Phương trình phóng xạ có dạng $\\text{A} \\to \\text{B} + \\text{C}$, trong đó A là hạt nhân mẹ, B là hạt nhân con và C là hạt $\\alpha$ ($^{4}_{2}\\text{He}$) hoặc $^{0}_{1}\\text{e}$ hoặc $^{0}_{-1}\\text{e}$.\n\n##TC Phóng xạ $\\alpha$\n- Phương trình: $^{A}_{Z}\\text{X} \\to {}^{A-4}_{Z-2}\\text{Y} + {}^{4}_{2}\\text{He}$.\n- Tia $\\alpha$ thực chất là hạt nhân của nguyên tử helium, kí hiệu $^{4}_{2}\\text{He}$.\n- Tia $\\alpha$ phóng ra từ mẫu phóng xạ với tốc độ khoảng $2\\cdot10^{7}\\ \\text{m/s}$.\n- Tia $\\alpha$ ion hoá mạnh môi trường vật chất, do đó nó chỉ đi được khoảng vài cm trong không khí và dễ dàng bị tờ giấy dày 1 mm chặn lại.\n\n##TC Phóng xạ $\\beta$\n- Tia $\\beta$ là các hạt phóng xạ có tốc độ lớn (xấp xỉ tốc độ ánh sáng trong chân không), làm ion hoá môi trường vật chất ở mức trung bình.\n- Tia $\\beta$ có thể xuyên qua tờ giấy dày khoảng 1 mm nhưng bị chặn bởi tấm nhôm dày khoảng 1 mm.\n- Có hai loại phóng xạ $\\beta$ là $\\beta^+$ và $\\beta^-$.\n\n##TC Phóng xạ $\\beta^-$\n- Là quá trình phát ra tia $\\beta^-$ (dòng các electron $^{0}_{-1}\\text{e}$), phương trình: $^{A}_{Z}\\text{X} \\to {}^{0}_{-1}\\text{e} + {}^{A}_{Z+1}\\text{Y}$.\n- Trong phân rã $\\beta^-$ còn sinh ra một hạt phản neutrino $\\bar{\\nu}$.\n\n##TC Phóng xạ $\\beta^+$\n- Là quá trình phát ra tia $\\beta^+$ (dòng các positron $^{0}_{+1}\\text{e}$, có điện tích $+e$ và khối lượng bằng electron, là phản hạt của electron), phương trình: $^{A}_{Z}\\text{X} \\to {}^{0}_{1}\\text{e} + {}^{A}_{Z-1}\\text{Y}$.\n- Trong phân rã $\\beta^+$ còn sinh ra một hạt neutrino $\\nu$.\n\n##CY\nHạt neutrino và phản neutrino là những hạt không mang điện, có khối lượng vô cùng nhỏ.\n\n##TC Phóng xạ $\\gamma$\n- Tia $\\gamma$ là sóng điện từ có bước sóng rất ngắn, là dòng hạt photon có năng lượng cao, thường đi kèm trong các phóng xạ $\\alpha$ và $\\beta$.",
+      "ly_thuyet_sgk": "##TC So sánh các tia phóng xạ\n- Tia $\\alpha$ và tia $\\beta^+$ mang điện dương nên trong điện trường lệch về phía bản âm; tia $\\beta^-$ mang điện âm nên lệch về phía bản dương; tia $\\gamma$ không mang điện nên không bị lệch.\n- Khả năng ion hoá: tia $\\alpha$ mạnh nhất, tia $\\gamma$ yếu nhất. Khả năng đâm xuyên: tia $\\gamma$ mạnh nhất, tia $\\alpha$ yếu nhất.",
+      "trang": [
+        136,
+        137
+      ]
+    },
+    {
+      "id": "LNB00065",
+      "mo_ta": "Định luật phóng xạ: chu kì bán rã, hằng số phóng xạ, số hạt nhân (khối lượng) còn lại và đã phân rã, quan hệ hạt nhân mẹ - hạt nhân con, độ phóng xạ và đơn vị becơren.",
+      "ly_thuyet": "##ĐL Định luật phóng xạ\nThực nghiệm chứng tỏ rằng cứ sau một khoảng thời gian xác định $T$, một nửa số hạt nhân hiện có bị phân rã, biến đổi thành hạt nhân khác; $T$ được gọi là chu kì bán rã của chất phóng xạ.\nSau các khoảng thời gian $T, 2T, 3T, \\dots, kT$ ($k$ là số nguyên dương), số hạt nhân $N$ còn lại chưa bị phân rã bằng $\\dfrac{N_0}{2}, \\dfrac{N_0}{4}, \\dfrac{N_0}{8}, \\dots, \\dfrac{N_0}{2^k}$, tức là $N(kT) = N_0 \\cdot 2^{-k}$.\n\n##TC Số hạt nhân và khối lượng còn lại\n- Số hạt nhân còn lại: $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$.\n- Hằng số phóng xạ: $\\lambda = \\dfrac{0{,}693}{T}$ (vì $2 = e^{\\ln 2} \\approx e^{0{,}693}$).\n- Số hạt nhân đã bị phân rã: $\\Delta N = N_0 - N(t) = N_0\\left(1 - e^{-\\lambda t}\\right)$.\n- Khối lượng chất phóng xạ còn lại: $m(t) = m_0 \\cdot 2^{-\\frac{t}{T}} = m_0 e^{-\\lambda t}$ (khối lượng tỉ lệ với số hạt nên giảm theo cùng quy luật như số hạt nhân $N$).\n\n##TC Hạt nhân mẹ và hạt nhân con\n- Hạt nhân $^{A}_{Z}\\text{X}$ của chất phóng xạ sau khi phân rã thì biến thành hạt nhân bền $^{A'}_{Z'}\\text{Y}$; $^{A}_{Z}\\text{X}$ là hạt nhân mẹ (hạt nhân của chất phóng xạ chưa bị phân rã), $^{A'}_{Z'}\\text{Y}$ là hạt nhân con (hạt nhân của chất phóng xạ đã bị phân rã).\n- Tại thời điểm $t_0 = 0$: số hạt nhân mẹ là $N_0$, số hạt nhân con là $0$.\n- Tại thời điểm $t$: $N_X = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$ và $N_Y = N_0 - N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 - N_0 e^{-\\lambda t}$.\n- Tỉ số số hạt nhân con và hạt nhân mẹ: $\\dfrac{N_Y}{N_X} = 2^{\\frac{t}{T}} - 1 = e^{\\lambda t} - 1$.\n\n##ĐN Độ phóng xạ\n- Độ phóng xạ $H$ (hoạt độ phóng xạ) đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, có giá trị bằng số hạt nhân phân rã trong một giây.\n- $H_t = -\\dfrac{dN_t}{dt} = \\lambda N_0 e^{-\\lambda t} = \\lambda N_t$; độ phóng xạ ban đầu $H_0 = \\lambda N_0$.\n- Đơn vị của độ phóng xạ là becơren (Bq): $1\\ \\text{Bq} = 1$ phân rã/giây.\n- Độ phóng xạ của một chất phóng xạ giảm theo thời gian theo cùng quy luật hàm số mũ như số hạt nhân của nó: $H = H_0 \\cdot 2^{-\\frac{t}{T}}$.",
+      "ly_thuyet_sgk": "",
+      "trang": [
+        151,
+        152
+      ]
+    }
+  ],
+  "dang": [
+    {
+      "id": "LDB00130",
+      "vi_du": "##VD\nTia $\\alpha$ là dòng các hạt nhân\nA. $^{1}_{1}\\text{H}$.\nB. $^{3}_{1}\\text{H}$.\nC. $^{4}_{2}\\text{He}$.\nD. $^{3}_{2}\\text{He}$.\n\nBài giải:\nTia $\\alpha$ thực chất là hạt nhân của nguyên tử helium $^{4}_{2}\\text{He}$. Chọn C.\n\n##VD\nCho 4 tia phóng xạ: tia $\\alpha$, tia $\\beta^+$, tia $\\beta^-$ và tia $\\gamma$ đi vào một miền có điện trường đều theo phương vuông góc với đường sức điện. Tia phóng xạ không bị lệch khỏi phương truyền ban đầu là\nA. tia $\\gamma$.\nB. tia $\\beta^-$.\nC. tia $\\beta^+$.\nD. tia $\\alpha$.\n\nBài giải:\nTia $\\gamma$ là dòng hạt photon (sóng điện từ), không mang điện nên không bị lệch trong điện trường. Chọn A.\n\n##VD\nKhi nói về tia $\\alpha$, phát biểu nào sau đây là sai?\nA. Tia $\\alpha$ phóng ra từ hạt nhân với tốc độ bằng 2000 m/s.\nB. Khi đi qua điện trường giữa hai bản tụ điện, tia $\\alpha$ bị lệch về phía bản âm của tụ điện.\nC. Khi đi trong không khí, tia $\\alpha$ làm ion hóa không khí và mất dần năng lượng.\nD. Tia $\\alpha$ là dòng các hạt nhân heli ($^{4}_{2}\\text{He}$).\n\nBài giải:\nTia $\\alpha$ phóng ra từ hạt nhân với tốc độ khoảng $2\\cdot10^{7}\\ \\text{m/s}$ chứ không phải 2000 m/s, nên phát biểu A sai. Chọn A.",
+      "so_vd": 3,
+      "trang": [
+        148,
+        149,
+        221
+      ],
+      "nguon": "BT tự luyện CĐ3 Dạng 3 câu 3 — đề tr.148 (in 143), đáp án tr.221 (in 217) | BT tự luyện CĐ3 Dạng 3 câu 11 — đề tr.148 (in 143), đáp án tr.221 (in 217) | BT tự luyện CĐ3 Dạng 3 câu 18 — đề tr.149 (in 144), đáp án tr.221 (in 217)"
+    },
+    {
+      "id": "LDB00131",
+      "vi_du": "##VD\nBan đầu có 20 g chất phóng xạ X có chu kì bán rã $T$. Khối lượng của chất X còn lại sau khoảng thời gian $3T$, kể từ thời điểm ban đầu bằng\nA. 3,2 g.\nB. 2,5 g.\nC. 4,5 g.\nD. 1,5 g.\n\nBài giải:\nKhối lượng còn lại: $m = m_0 \\cdot 2^{-\\frac{3T}{T}} = \\dfrac{m_0}{8} = \\dfrac{20\\ \\text{g}}{8} = 2{,}5\\ \\text{g}$. Chọn B.\n\n##VD\nGọi $\\tau$ là khoảng thời gian để số hạt nhân của một đồng vị phóng xạ giảm đi bốn lần. Sau thời gian $2\\tau$ số hạt nhân còn lại của đồng vị đó bằng bao nhiêu phần trăm số hạt nhân ban đầu?\nA. 25,25%.\nB. 93,75%.\nC. 6,25%.\nD. 13,5%.\n\nBài giải:\nTại $t = \\tau$: $N_0 \\cdot 2^{-\\frac{\\tau}{T}} = \\dfrac{N_0}{4} \\Rightarrow \\tau = 2T$.\nTại $t = 2\\tau$: $N_0 \\cdot 2^{-\\frac{2\\tau}{T}} = N_0 \\cdot 2^{-\\frac{4T}{T}} = N_0 \\cdot 2^{-4} = 6{,}25\\%\\,N_0$. Chọn C.\n\n##VD\nChất phóng xạ polonium $^{210}_{84}\\text{Po}$ phát ra tia $\\alpha$ và biến đổi thành chì $^{206}_{82}\\text{Pb}$. Biết chu kì bán rã của polonium là 138 ngày. Ban đầu ($t = 0$), mẫu polonium $^{210}_{84}\\text{Po}$ nguyên chất có số hạt là $N_0$. Xác định:\na) Hằng số phóng xạ?\nb) Số hạt $^{210}_{84}\\text{Po}$ và $^{206}_{82}\\text{Pb}$ trong mẫu chất tại $t = 276$ ngày?\nc) Số hạt $\\alpha$ thu được trong ngày thứ 414?\nd) Tỉ số khối lượng của $^{206}_{82}\\text{Pb}$ và $^{210}_{84}\\text{Po}$ trong mẫu chất tại $t = 552$ ngày?\n\nBài giải:\nPhóng xạ: $^{210}_{84}\\text{Po} \\to \\alpha + {}^{206}_{82}\\text{Pb}$.\na) Hằng số phóng xạ $\\lambda = \\dfrac{0{,}693}{T} \\approx 0{,}005\\ (\\text{ngày}^{-1})$.\n\nb) Số hạt $^{210}_{84}\\text{Po}$ còn lại trong mẫu: $N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 \\cdot 2^{-\\frac{276}{138}} = \\dfrac{N_0}{4}$ (hạt).\nSố hạt $^{206}_{82}\\text{Pb}$ được tạo thành trong mẫu: $N_0\\left(1 - 2^{-\\frac{t}{T}}\\right) = \\dfrac{3N_0}{4}$ (hạt).\n\nc) Trong ngày thứ 414 là từ thời điểm $t_1 = 413$ (ngày) tới thời điểm $t_2 = 414$ (ngày).\nSố hạt $\\alpha$ thu được bằng số hạt $^{206}_{82}\\text{Pb}$ tạo thành. Do đó: $N_0\\left(2^{-\\frac{t_1}{T}} - 2^{-\\frac{t_2}{T}}\\right) \\approx 6{,}3N_0 \\cdot 10^{-4}$ (hạt).\n\nd) Số hạt $^{210}_{84}\\text{Po}$ còn lại trong mẫu: $N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 \\cdot 2^{-\\frac{552}{138}} = \\dfrac{N_0}{16}$ (hạt) $\\to m_{Po} = \\dfrac{105}{8}N_0$ (u).\nSố hạt $^{206}_{82}\\text{Pb}$ được tạo thành trong mẫu: $N_0\\left(1 - 2^{-\\frac{t}{T}}\\right) = \\dfrac{15N_0}{16}$ (hạt) $\\to m_{Pb} = \\dfrac{1545}{8}N_0$ (u).\nSuy ra $\\delta = \\dfrac{m_{Pb}}{m_{Po}} = \\dfrac{103}{7}$.",
+      "so_vd": 3,
+      "trang": [
+        152,
+        153,
+        154,
+        222
+      ],
+      "nguon": "BT tự luyện CĐ4 Dạng 1 câu 4 — đề tr.153 (in 148), giải tr.222 (in 218) | BT tự luyện CĐ4 Dạng 1 câu 14 — đề tr.154 (in 149), giải tr.222 (in 218) | Ví dụ mẫu CĐ4 Dạng 1 — tr.152 (in 147)"
+    },
+    {
+      "id": "LDB00132",
+      "vi_du": "##VD\nNếu độ phóng xạ của tritium trong một lít nước thải hạt nhân là 10 000 Bq thì sau hai chu kì bán rã tritium, độ phóng xạ của tritium trong một lít nước thải hạt nhân này là\nA. 7500 Bq.\nB. 5000 Bq.\nC. 2500 Bq.\nD. 1250 Bq.\n\nBài giải:\n$H = H_0 \\cdot 2^{-\\frac{t}{T}} = 10000 \\times 2^{-2} = 2500\\ \\text{Bq}$. Chọn C.\n\n##VD\nTrong các vụ thử hạt nhân, người ta thấy có đồng vị phóng xạ $^{131}\\text{I}$ lan ra trong khí quyển (đồng vị này có thể gây ung thư tuyến giáp). Mưa sẽ làm cho cỏ nhiễm đồng vị phóng xạ này và cuối cùng nó xuất hiện trong sữa bò. Giả sử sau một vụ thử hạt nhân, người ta đo được độ phóng xạ của $^{131}\\text{I}$ trong sữa bò tại một nơi nào đó là 2900 Bq/lít. Biết chu kì bán rã của $^{131}\\text{I}$ là 8,04 ngày. Hỏi sau bao lâu thì sữa bò tại đó mới đạt mức an toàn cho phép là 185 Bq/lít?\nA. 43 ngày.\nB. 25 ngày.\nC. 16 ngày.\nD. 32 ngày.\n\nBài giải:\n$2^{-\\frac{t}{T}} = \\dfrac{H}{H_0} = \\dfrac{185}{2900} \\to t \\approx 32$ ngày. Chọn D.\n\n##VD\nĐể ước lượng thể tích nước trong một bể nước, một lượng nhỏ dung dịch chứa chất phóng xạ có chu kì bán rã 3 ngày và có độ phóng xạ là $8\\cdot10^{7}$ phân rã/phút được đổ vào bể nước. Sau 9 ngày, lấy mẫu $1\\ \\text{m}^3$ nước từ bể nước (coi dung dịch chất phóng xạ đã phân bố đều) thì thấy mẫu có độ phóng xạ là 20 phân rã/phút. Thể tích của nước trong bể ước lượng được là\nA. $3\\cdot10^{5}\\ \\text{m}^3$.\nB. $4\\cdot10^{5}\\ \\text{m}^3$.\nC. $2\\cdot10^{5}\\ \\text{m}^3$.\nD. $5\\cdot10^{5}\\ \\text{m}^3$.\n\nBài giải:\n$2^{-\\frac{t}{T}} = \\dfrac{H}{H_0} \\to 2^{-3} = \\dfrac{20 \\times \\dfrac{V}{1\\ \\text{m}^3}}{8\\cdot10^{7}} \\to V = 5\\cdot10^{5}\\ \\text{m}^3$. Chọn D.",
+      "so_vd": 3,
+      "trang": [
+        161,
+        162,
+        227,
+        228
+      ],
+      "nguon": "BT tự luyện CĐ4 Dạng 3 phần ① câu 2 — đề tr.161 (in 156), giải tr.227 (in 223) | BT tự luyện CĐ4 Dạng 3 phần ① câu 6 — đề tr.161 (in 156), giải tr.227 (in 223) | BT tự luyện CĐ4 Dạng 3 phần ① câu 15 — đề tr.162 (in 157), giải tr.228 (in 224)"
+    },
+    {
+      "id": "LDB00133",
+      "vi_du": "##VD\n$X$ là chất phóng xạ $\\beta^-$. Ban đầu có một mẫu $X$ nguyên chất. Sau 53,6 phút, số hạt $\\beta^-$ sinh ra gấp 3 lần số hạt nhân $X$ còn lại trong mẫu. Chu kì bán rã của $X$ bằng\nA. 8,93 phút.\nB. 13,4 phút.\nC. 26,8 phút.\nD. 53,6 phút.\n\nBài giải:\nSố hạt $\\beta^-$ sinh ra bằng số hạt nhân con, nên $\\dfrac{N_{con}}{N_{me}} = 2^{\\frac{t}{T}} - 1 = 3 \\to t = 2T = 53{,}6$ phút $\\to T = 26{,}8$ phút. Chọn C.\n\n##VD\nChất phóng xạ polonium $^{210}_{84}\\text{Po}$ phát ra tia $\\alpha$ và biến đổi thành chì $^{206}_{82}\\text{Pb}$. Chu kì bán rã của $^{210}_{84}\\text{Po}$ là 138 ngày. Ban đầu ($t = 0$) có một mẫu polonium nguyên chất. Tại thời điểm $t_1$, tỉ số giữa số hạt nhân polonium và số hạt nhân chì trong mẫu là $\\dfrac{1}{4}$. Tại thời điểm $t_2 = t_1 + 414$ ngày, tỉ số giữa số hạt nhân polonium và số hạt nhân chì trong mẫu là bao nhiêu?\n\nBài giải:\nTại $t = t_1$: $\\dfrac{N_{Pb}}{N_{Po}} = 2^{\\frac{t_1}{T}} - 1 = 4 \\to 2^{\\frac{t_1}{138}} = 5$.\nTại $t = t_2$: $\\dfrac{N_{Pb}}{N_{Po}} = 2^{\\frac{t_2}{T}} - 1 = 2^{\\frac{t_1 + 414}{138}} - 1 = 8 \\cdot 2^{\\frac{t_1}{138}} - 1 = 8 \\cdot 5 - 1 = 39 \\to \\dfrac{N_{Po}}{N_{Pb}} = \\dfrac{1}{39}$.\n\n##VD\nHạt nhân uranium $^{238}_{92}\\text{U}$ sau một chuỗi phân rã, biến đổi thành hạt nhân chì $^{206}_{82}\\text{Pb}$. Trong quá trình đó, chu kì bán rã của $^{238}_{92}\\text{U}$ biến đổi thành hạt nhân chì là $4{,}47\\cdot10^{9}$ năm. Một khối đá được phát hiện có chứa $7{,}243\\cdot10^{20}$ hạt nhân $^{238}_{92}\\text{U}$ và $2{,}863\\cdot10^{19}$ hạt nhân $^{206}_{82}\\text{Pb}$. Giả sử khối đá lúc mới hình thành không chứa chì và tất cả lượng chì có mặt trong đó đều là sản phẩm phân rã của $^{238}_{92}\\text{U}$. Tuổi của khối đá khi được phát hiện là bao nhiêu?\n\nBài giải:\nGọi $t$ là tuổi của khối đá, ta có: $2^{\\frac{t}{4{,}47\\cdot10^{9}}} - 1 = \\dfrac{2{,}863\\cdot10^{19}}{7{,}243\\cdot10^{20}} \\to t \\approx 250$ triệu năm.",
+      "so_vd": 3,
+      "trang": [
+        157,
+        225
+      ],
+      "nguon": "BT tự luyện CĐ4 Dạng 2 câu 3 — đề tr.157 (in 152), giải tr.225 (in 221) | Ví dụ mẫu 1 CĐ4 Dạng 2 — tr.157 (in 152) | Ví dụ mẫu 2 CĐ4 Dạng 2 — tr.157 (in 152)"
+    }
+  ],
+  "khong_khop": [
+    {
+      "trang": "163-164 (giải 228-229)",
+      "noi_dung": "CĐ4 Dạng 4 \"Vấn đề hai chất phóng xạ\" (11 câu trắc nghiệm, có đáp án giải): thời điểm hai chất có số hạt bằng nhau, tỉ số $N_A/N_B$, tuổi Trái Đất theo U-238/U-235.",
+      "goi_y": "Bản đồ không có dạng riêng cho hai chất phóng xạ; có thể gộp vào LDB00131 hoặc mở dạng mới trong nhóm LNB00065."
+    },
+    {
+      "trang": "145-150 (giải 217-220)",
+      "noi_dung": "CĐ3 Dạng 2 năng lượng phản ứng hạt nhân (câu 1-50) và CĐ3 Dạng 3 câu 20-30 (phân hạch, nhiệt hạch, hệ số nhân k, thanh điều khiển).",
+      "goi_y": "LDB00127 / LDB00128 / LDB00129 (trạm khác)."
+    },
+    {
+      "trang": "165-166",
+      "noi_dung": "Đầu CĐ5 Ứng dụng của vật lí hạt nhân: lò phản ứng, nhà máy điện hạt nhân, nguyên tử đánh dấu, tạo giống cây, pin hạt nhân.",
+      "goi_y": "LNB00063 (lò phản ứng) và LNB00066 / LDB00134 (ứng dụng phóng xạ)."
+    }
+  ],
+  "sua_in": [
+    "tr.157 (in 152) Ví dụ mẫu 2 CĐ4 Dạng 2: sách in \"2^{t/4,47.10^9} - 1 - 2,863.10^19/7,243.10^20\" (dấu \"-\" ở vị trí phải là dấu \"=\"); đã viết lại thành \"=\". Kiểm lại: 2,863e19/7,243e20 = 0,03953; t = 4,47e9 x log2(1,03953) = 2,50e8 năm, khớp \"250 triệu năm\".",
+    "tr.225 (in 221) giải Câu 3 CĐ4 Dạng 2: sách ghi \"t = 2T = 53,6 -> t = 26,8 phút\" (đúng phải là T = 26,8 phút); đã viết lại thành T = 26,8 phút. Kiểm lại: 2T = 53,6 phút nên T = 26,8 phút."
+  ],
+  "ghi_chu": "Số trang PDF thực = số trang in + 5 (in 140 = PDF 145), không phải in - 1; mọi số trang trong file theo PDF thực, kèm \"in N\" cho trang in. Phần B của các dạng đều dịch +5 tương ứng (đáp án CĐ3 Dạng 3 ở in 217 = PDF 221; CĐ4 ở PDF 222-229). Khoảng trang giao 145-158/217-224 chỉ phủ phần đầu CĐ4 nên đã đọc thêm đến PDF 166 và 225-229, và PDF 130-139 (lý thuyết phóng xạ α, β, γ nằm trong \"Kiến thức trọng tâm\" CĐ3, in 131-132 = PDF 136-137) để có lý thuyết cho LNB00064. LDB00130: sách không có ví dụ mẫu, dùng BT tự luyện CĐ3 Dạng 3 (nhận biết), lời giải chỉ có đáp án chữ cái nên chỉ thêm một dòng nhắc lại kiến thức từ chính sách. ly_thuyet_sgk của LNB00064 (lệch trong điện trường, so sánh ion hoá/đâm xuyên): kiến thức chuẩn đã khớp đáp án sách (câu 11, 18, 19 CĐ3 Dạng 3), nhóm LNB00065 không cần phần SGK. Đã bỏ: câu có đồ thị (CĐ4 D1 câu 28-30, D2 câu 24), câu Đúng-Sai 4 ý (CĐ4 D3 phần ②), câu chỉ có đáp án chữ cái của dạng tính. Chủ đề 4 gom LDB00131 gồm cả tỉ lệ còn lại/khối lượng/số hạt phân rã (chưa có ví dụ đếm số hạt phát ra theo thời gian để tìm T)."
+}
