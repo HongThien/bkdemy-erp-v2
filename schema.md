@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-531 bảng · 39 view · 0 enum · 347 trigger · 1779 function
+532 bảng · 39 view · 0 enum · 347 trigger · 1781 function
 
 ## _app_secrets
 
@@ -5159,6 +5159,16 @@ END |  |  |
 | ten | text |  |  |  |  |
 | thu_tu | smallint |  |  |  |  |
 | si_so_toi_da | smallint | Y |  |  |  |
+
+## lop_dang_da_hoc_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| hs | uuid[] |  |  |  |  |
+| nh | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  |  |  |  |
 
 ## luyen_gioi_han
 
@@ -10401,6 +10411,8 @@ WITH luot AS (
 - `_la_tac_vu_nen()` → boolean
 - `_lich_test_cham_updated()` → trigger
 - `_lich_test_ghi_log()` → trigger
+- `_lop_dang_da_hoc_lam_moi(p_giay integer DEFAULT 20)` → integer
+- `_lop_nh_tinh(v_hs uuid[])` → TABLE(hoc_sinh_id uuid, goc text, nhom text)
 - `_luot_hoc_that(p_hs uuid, p_tu timestamp with time zone, p_den timestamp with time zone)` → TABLE(bai_lam_id uuid, mon text, nop_at timestamp with time zone, ngay date, thu_thach boolean, so_cau integer, dung integer, dung_moi integer, giay_tb numeric, tinh boolean, ly_do text)
 - `_luot_hoc_that_nguong()` → jsonb
 - `_luot_tinh(p_hs uuid[], p_tu timestamp with time zone, p_den timestamp with time zone)` → TABLE(bai_lam_id uuid, hoc_sinh_id uuid, mon text, nop_at timestamp with time zone, so_cau integer, dung integer, giay_tb numeric, tinh boolean, ly_do text)
