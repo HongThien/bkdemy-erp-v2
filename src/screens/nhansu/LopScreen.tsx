@@ -10,6 +10,7 @@ import {
 } from '../../lib/nhansu'
 import { Shell, Field, inp, Seg, Actions, BacChip } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
+import { MON_LIST } from '../../lib/mon'
 import { listMucHocPhi, listMucHocLieu, type MucHocPhi, type MucHocLieu } from '../../lib/hocphi'
 import { listPhong, kiemTrungTKB, luuTKB, type Phong } from '../../lib/phong'
 import TrungPhongList, { useKiemTrung } from '../../components/TrungPhongList'
@@ -22,12 +23,19 @@ const MON_TONE: Record<string, { chip: string; letter: string }> = {
   'Văn': { chip: 'bg-rose-500', letter: 'V' },
   'Anh': { chip: 'bg-emerald-600', letter: 'A' },
   'KHTN': { chip: 'bg-amber-500', letter: 'K' },
+  'Lý hóa': { chip: 'bg-cyan-600', letter: 'L' },
 }
 const monTone = (mon: string) => MON_TONE[mon] ?? { chip: 'bg-slate-500', letter: mon[0]?.toUpperCase() ?? '?' }
 const MonChip = ({ mon }: { mon: string }) => (
   <span className={`inline-flex h-8 w-8 items-center justify-center rounded-lg text-[15px] font-bold text-white shadow-sm ${monTone(mon).chip}`} title={`Môn ${mon}`}>
     {monTone(mon).letter}
   </span>
+)
+// Ô chọn MÔN theo danh mục chung (lib/mon.ts) — gõ tay từng ra nhãn lệch DB ('Anh' ≠ 'Tiếng Anh'). Giá trị cũ ngoài danh mục vẫn giữ.
+const MonSelect = ({ value, onChange }: { value: string; onChange: (v: string) => void }) => (
+  <select value={value} onChange={(e) => onChange(e.target.value)} className={inp}>
+    {[...new Set([...MON_LIST, value].filter(Boolean))].map((m) => <option key={m} value={m}>{m}</option>)}
+  </select>
 )
 // Hệ/bậc = VIỀN + NỀN card (màu nhạt theo hệ màu BacChip: S tím · A xanh · B teal · C vàng)
 const BAC_CARD: Record<string, string> = {
@@ -124,7 +132,7 @@ export default function LopScreen() {
           : (
             // 4 môn 4 KHU VỰC (Toán trên cùng → Văn → Anh → KHTN → môn khác) — không lẫn môn.
             <div className="space-y-6">
-              {[...new Set(['Toán', 'Văn', 'Anh', 'KHTN', ...list.map((l) => l.mon)])]
+              {[...new Set(['Toán', 'Văn', 'Anh', 'KHTN', 'Lý hóa', ...list.map((l) => l.mon)])]
                 .filter((mon) => list.some((l) => l.mon === mon))
                 .map((mon) => (
                   <section key={mon}>
@@ -176,7 +184,7 @@ function CreateLopModal({ khoi, onClose, onCreated }: { khoi: string; onClose: (
     <Shell title={`Thêm lớp · Khối ${khoi}`} onClose={onClose}>
       <div className="grid grid-cols-2 gap-x-4">
         <Field label="Tên lớp"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} placeholder="vd: 9A2" autoFocus /></Field>
-        <Field label="Môn"><input value={mon} onChange={(e) => setMon(e.target.value)} className={inp} /></Field>
+        <Field label="Môn"><MonSelect value={mon} onChange={setMon} /></Field>
       </div>
       <Field label="Bậc lớp"><Seg options={BAC_OPTS as unknown as string[]} value={bac} onChange={setBac} /></Field>
       <div className="grid grid-cols-2 gap-x-4">
@@ -425,7 +433,7 @@ function EditLopModal({ lop, onClose, onSaved, onDeleted }: { lop: Lop; onClose:
     <Shell title={`Sửa lớp · ${lop.ten_lop}`} onClose={onClose}>
       <div className="grid grid-cols-2 gap-x-4">
         <Field label="Tên lớp"><input value={ten} onChange={(e) => setTen(e.target.value)} className={inp} /></Field>
-        <Field label="Môn"><input value={mon} onChange={(e) => setMon(e.target.value)} className={inp} /></Field>
+        <Field label="Môn"><MonSelect value={mon} onChange={setMon} /></Field>
       </div>
       <Field label="Bậc lớp"><Seg options={BAC_OPTS as unknown as string[]} value={bac} onChange={setBac} /></Field>
       <div className="grid grid-cols-2 gap-x-4">

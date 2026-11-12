@@ -6132,8 +6132,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -6166,7 +6166,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK | `Toán` · `KHTN` · `Tiếng Anh` · `Văn` · `TSA` |
+| mon | text |  |  | PK | `Toán` · `KHTN` · `Lý hóa` · `Tiếng Anh` · `Văn` · `TSA` |
 | khoi | text |  |  | PK |  |
 | ma | text |  |  | PK |  |
 | ten | text |  |  |  |  |
@@ -6177,7 +6177,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK | `Toán` · `KHTN` · `Tiếng Anh` · `Văn` · `TSA` |
+| mon | text |  |  | PK | `Toán` · `KHTN` · `Lý hóa` · `Tiếng Anh` · `Văn` · `TSA` |
 | khoi | text |  |  | PK |  |
 | ma | text |  |  | PK |  |
 | ten | text |  |  |  |  |
