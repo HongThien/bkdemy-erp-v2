@@ -79990,3 +79990,11 @@ Thùy nêu 4 việc, làm được 3:
 ## 12/11 — Lịch khối: Xoá thay Kết thúc + Chốt lịch tuần (Thùy)
 - mig `202611122233` (ĐÃ ÁP --only): `fn_lich_truc_xoa` (vướng ca có em ⇒ hỏi; chưa sinh ca ⇒ delete, đã sinh ⇒ hieu_luc_den = hôm qua vì ca cũ FK về) · bảng `lich_khoi_chot` (append, bản chụp) · `fn_lich_khoi_chot_tuan` · `fn_lich_khoi_chot_trang_thai` (so nội dung, có cả hiệu lực — lần đầu thiếu `den` nên xoá sau chốt không báo, đã sửa). Thử rollback: chốt tuần 09/11 sinh 3 · cập nhật 1 · huỷ 5 ca trống của lịch cũ; xoá vướng 1 ca 13/11 ⇒ hỏi ⇒ xác nhận huỷ 1 ca 1 buổi, hết trên lưới. App: 2 thẻ Tuần này/Tuần sau + popup vướng. CHƯA bấm chốt/xoá thật. Commit `8b43e92d`.
 - HANDOFF: mục ① "LỊCH PHÒNG MỘT NGUỒN…" + HANDOFF-BAI-HOC "Bài học 10→12/11".
+
+
+## 12/11/2026 — toanmath B001 (K9 đề thi cuối kì 1/4) chạy xong tới bước duyệt
+- 16 bài → 1 bỏ (phường Hà Đông 25-26 = CKI-02, so ảnh) → 31 đề (13 đơn + Cổ Loa 6 + Nghĩa Tân 12). Không dùng Gemini: Sonnet gõ lại từ ảnh trang theo brief K9 CKI (ghep-brief.mjs đổi đường dẫn + đầu riêng batch).
+- 31/31 Opus soát mù ĐẠT, 259 câu, lệch 0; soát có sửa 24 đề (lập luận/hình/phân loại, không đổi đáp số); 3 HD chấm in sai; 7 câu Chưa chắc; bỏ 1 câu thiếu dữ kiện.
+- Chạy thử ghi.mjs (rollback): 256 mới · 3 trùng. CHƯA ghi DB — chờ Thùy duyệt duyet-B001.html.
+- Công cụ mới: do-trung-batch.mjs, chuan-bi-batch.mjs, ghep-brief.mjs, tong-hop-batch.mjs, duyet-batch.mjs.
+- 12/11 Thùy "Ghi B001": ghi.mjs --ghi tuần tự 31/31 ✔ — 31 tai_lieu, 259 câu (Đại 193 · Hình 66 tạm HH00108), 256 mới · 3 trỏ câu cũ; kiểm DB khớp. HANDOFF thêm mục toanmath.
