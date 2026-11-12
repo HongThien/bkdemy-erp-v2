@@ -1,0 +1,258 @@
+[
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-hk1-toan-9-nam-2024-2025-truong-thcs-co-loa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3576,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-hoc-ki-1-toan-9-nam-2024-2025-truong-thcs-nghia-tan-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 4774,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2025-2026 — THCS Hà Đông (Phòng VH-XH Hà Đông)",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-phong-gddt-ba-dinh-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1938,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì I Toán 9 — THCS Nguyễn Bỉnh Khiêm (Hà Nội) · phần Hình",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.27,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-phong-gddt-hoai-duc-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1178,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2024-2025 — THCS Nguyễn Công Trứ (Ba Đình, Hà Nội)",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-phong-gddt-long-bien-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-truong-ban-mai-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1809,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-truong-m-v-lomonoxop-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-truong-thcs-xuan-la-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2024-2025-truong-ththcs-ngoi-sao-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2025-2026-phuong-ha-dong-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2025-2026-truong-thcs-hat-mon-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2228,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-9-nam-2025-2026-truong-thcs-ngoc-thuy-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 401,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2025-2026 — THCS Chúc Sơn",
+   "ti_le": 0.33,
+   "cau": 3
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-9-nam-2024-2025-phong-gddt-cau-giay-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1574,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-9-nam-2024-2025-phong-gddt-chuong-my-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1283,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2025-2026 — THCS Ái Mộ, phường Bồ Đề (Đề số 1)",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-9-nam-2024-2025-phong-gddt-thanh-tri-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1663,
+  "best": {
+   "ten": "50 đề thực chiến vào 10 Hà Nội — Đề số 29",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B001",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2024-2025-phong-gddt-gia-lam-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1344,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì I Toán 9 — THCS Nguyễn Bỉnh Khiêm (Hà Nội) · phần Hình",
+   "ti_le": 0.5,
+   "cau": 2
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.27,
+  "trung_kho": false
+ }
+]

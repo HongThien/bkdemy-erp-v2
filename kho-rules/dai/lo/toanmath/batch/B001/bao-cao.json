@@ -1,0 +1,22 @@
+{
+ "trang_thai": "chờ Thùy duyệt",
+ "ngay": "2026-11-12",
+ "bat_dau": "15:20",
+ "xong_soat": "15:47",
+ "bai": 16,
+ "de": 31,
+ "trung_kho_bai": 1,
+ "trung_kho_ghi": "phuong-ha-dong 25-26 = CKI-02 đã có (so ảnh trang) — bỏ, không giải",
+ "cau_boc": 259,
+ "trung_kho": 3,
+ "sonnet": 259,
+ "opus_khop": 259,
+ "lech": 0,
+ "bo": 1,
+ "ghi_db": 0,
+ "ghi_thu": "chạy thử ghi.mjs (rollback): 256 câu mới · 3 trỏ về câu cũ (B001-10, 12, 13)",
+ "soat_co_sua": 24,
+ "chua_chac": 7,
+ "hd_cham_sai": ["B001-04 Bài 2 (in 20; 25 m — đúng 20 m × 15 m)", "B001-08 IV.1 (tính bằng tan36° — đề 34° ⇒ 5,80 m)", "B001-12 Bài V (in 30 × 28 cm — đúng 30 × 20 cm)"],
+ "ghi_chu": "13 đề đơn + Cổ Loa 6 đề + Nghĩa Tân 12 đề. 8 đề có HD chấm: khớp hết trừ 3 chỗ HD in sai. Bỏ 1 câu: B001-30 Bài 3.1 thiếu dữ kiện (soát xác nhận). Soát có sửa 24/31 đề — không chỗ nào sửa đáp số; sửa lập luận, hình giải lộ điều phải CM, phân loại, đường trung bình dùng thẳng (B001-31). 62 lượt subagent (31 Sonnet + 31 Opus), ~150–200k token/lượt."
+}

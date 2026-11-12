@@ -1,0 +1,504 @@
+{
+ "tong": {
+  "de": 31,
+  "soan": 31,
+  "soat": 31,
+  "dat": 31,
+  "sua": 24,
+  "cau": 259,
+  "hinh": 66,
+  "co_hd": 8,
+  "chua_chac": [
+   "B001-03 Câu IV.2",
+   "B001-10 Câu IV.2",
+   "B001-14 Bài 1.1",
+   "B001-14 Bài 4.1",
+   "B001-18 Bài 3.3",
+   "B001-22 Bài 2.2",
+   "B001-22 Bài 3.1"
+  ],
+  "loai": {
+   "tu_luan": 168,
+   "tra_loi_ngan": 91
+  }
+ },
+ "de": [
+  {
+   "ma": "B001-01",
+   "don_vi": "Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-02",
+   "don_vi": "Phòng GD&ĐT huyện Hoài Đức, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-03",
+   "don_vi": "Phòng GD&ĐT quận Long Biên, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 5,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Câu IV.2"
+   ]
+  },
+  {
+   "ma": "B001-04",
+   "don_vi": "Trường Ban Mai School, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tu_luan": 9,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-05",
+   "don_vi": "Trường M.V. Lômônôxốp, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-06",
+   "don_vi": "THCS Xuân La, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-07",
+   "don_vi": "TH&THCS Ngôi Sao, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 7,
+   "loai": {
+    "tra_loi_ngan": 2,
+    "tu_luan": 5
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-08",
+   "don_vi": "THCS Hát Môn, xã Hát Môn, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 4
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-09",
+   "don_vi": "THCS Ngọc Thụy, phường Bồ Đề, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-10",
+   "don_vi": "Phòng GD&ĐT quận Cầu Giấy, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Câu IV.2"
+   ]
+  },
+  {
+   "ma": "B001-11",
+   "don_vi": "Phòng GD&ĐT huyện Chương Mỹ, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-12",
+   "don_vi": "Phòng GD&ĐT huyện Thanh Trì, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-13",
+   "don_vi": "Phòng GD&ĐT huyện Gia Lâm, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-14",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 1)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 8,
+    "tra_loi_ngan": 4
+   },
+   "hinh": 3,
+   "chua_chac": [
+    "Bài 1.1",
+    "Bài 4.1"
+   ]
+  },
+  {
+   "ma": "B001-15",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 2)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 8,
+    "tra_loi_ngan": 4
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-16",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 3)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-17",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 4)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 8
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-18",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 5)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 9,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 3,
+   "chua_chac": [
+    "Bài 3.3"
+   ]
+  },
+  {
+   "ma": "B001-19",
+   "don_vi": "THCS Cổ Loa, Hà Nội (Đề ôn tập số 6)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 14,
+   "loai": {
+    "tra_loi_ngan": 10,
+    "tu_luan": 4
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-20",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 1)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 2,
+    "tra_loi_ngan": 4
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-21",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 2)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-22",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 3)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Bài 2.2",
+    "Bài 3.1"
+   ]
+  },
+  {
+   "ma": "B001-23",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 4)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 3,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-24",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 5)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 5,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-25",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 6)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-26",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 7)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 3,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-27",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 8)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-28",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 9)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 5,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-29",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 10)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-30",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 11)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 5,
+   "loai": {
+    "tu_luan": 2,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 1,
+   "chua_chac": []
+  },
+  {
+   "ma": "B001-31",
+   "don_vi": "THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 12)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 6,
+   "loai": {
+    "tu_luan": 4,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  }
+ ]
+}
