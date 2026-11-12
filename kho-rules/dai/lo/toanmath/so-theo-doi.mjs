@@ -5,7 +5,7 @@ import fs from 'node:fs'; import path from 'node:path'
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
 const B = JSON.parse(fs.readFileSync(path.join(HERE, 'batch.json'), 'utf8'))
 const bc = (ma) => { const p = path.join(HERE, 'batch', ma, 'bao-cao.json'); return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {} }
-const GD = (b) => b.nhom === 'Word' ? '1. Word đã bóc' : b.nhom === 'Thi thử K12' || /thi thử/.test(b.ten) && b.bai[0]?.khoi === 'K12' ? '6. K12 thi thử' : /K(6|7|8|9) đề thi|vào 10/.test(b.ten) ? '2. THCS đề thi' : /K(6|7|8|9) đề cương/.test(b.ten) ? '3. THCS đề cương' : /đề thi|chính thức/.test(b.ten) ? '4. K10–12 đề thi' : '5. K10–12 đề cương'
+const GD = (b) => b.giai_doan || '?'
 const v = (x) => x ?? '—'
 let md = `# Sổ theo dõi batch — bộ đề toanmath còn lại\n\n> Tự sinh bởi \`so-theo-doi.mjs\` — KHÔNG sửa tay. Kế hoạch: \`KE-HOACH.md\`.\n\n`
 const g = {}; for (const b of B) { const k = GD(b); g[k] ??= { batch: 0, bai: 0, cau: 0, xong: 0, ghi: 0 }; g[k].batch++; g[k].bai += b.so_bai; g[k].cau += b.so_cau_boc || 0; const r = bc(b.ma); if (r.trang_thai === 'xong') g[k].xong++; g[k].ghi += r.ghi_db || 0 }
