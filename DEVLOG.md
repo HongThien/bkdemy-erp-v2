@@ -79934,3 +79934,9 @@ Thùy nêu 4 việc, làm được 3:
 - Chốt: người đọc = HS và phụ huynh · mục tiêu hệ tự suy từ giáo trình · ngưỡng = mastery đang chạy · kênh = app HS là chính + app GV, phụ huynh tạm chụp ảnh.
 - Timeline (qua 4 phương án): MỘT ngày chốt = thứ Hai; cửa sổ mục tiêu = các buổi có HẠN BTVN rơi trong tuần ⇒ lùi một buổi so với lịch dạy (buổi cuối tuần trước + buổi đầu tuần này). Lịch dạy tuần của GV là chu kỳ riêng, không đổi.
 - Ghi ở `spec-muc-tieu-tuan.md` (§8 = 7 câu còn treo). Hiện trạng dữ liệu đọc từ schema.md/migration, CHƯA query DB thật; việc đầu tiên khi build = đo % buổi có tài liệu trên hệ trước thứ Hai.
+
+## 12/11 23:13 — Mục tiêu tuần: soát rủi ro + 5 quyết định thêm (spec cập nhật, vẫn CHƯA build)
+- Soát thiết kế với luật mastery đang chạy (TB ≤5 lần/30 ngày, mặc định chỉ ET+MT): một tuần không lật được ô ⇒ đòi "đạt trong tuần" là bất khả thi.
+- Thùy chốt: hai tầng (TUẦN = số phải tăng · CHIẾN DỊCH 2–3 tuần = đạt) · BTVN tính vào mastery (đổi luật toàn hệ, phải so cũ–mới trước khi áp) · BTVN xếp chồng 3 buổi (buổi N gồm dạng N, N-1, N-2; tổng bài không đổi; chia 5–3–2 hay 4–3–3 chưa cần chốt).
+- Nợ: ôn ở nhà (không tính điểm), ĐO LẠI tại trung tâm sau giờ, ngày kiểm tra báo trước trên bảng thứ Hai; buổi nào thì chốt từng trường hợp theo lịch phòng. Đánh giá ở nhà để sau.
+- `spec-muc-tieu-tuan.md`: thêm §5 hai tầng · §5b BTVN · §5c vòng nợ · §9 bảng rủi ro (3 mục còn MỞ: dạng trọng tâm/tài liệu trước thứ Hai/chấm kịp · tải nhiều môn · ai xếp ngày kiểm tra).

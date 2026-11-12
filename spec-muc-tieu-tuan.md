@@ -28,6 +28,14 @@
 | Q4 | **Cửa sổ mục tiêu tính theo HẠN BTVN, không theo ngày dạy** (xem §3). |
 | Q5 | **Ngưỡng đạt = đúng mastery đang chạy**, không đặt định nghĩa "đạt" thứ hai. |
 | Q6 | **Kênh = app học sinh là chính** (đẩy hằng tuần) + app GV. Phụ huynh: tạm thời chụp ảnh bảng gửi qua. |
+| Q7 | **Hai tầng mục tiêu** (§5): TUẦN = có lần đo mới và số phải TĂNG; CHIẾN DỊCH (2–3 tuần) = tới mức đạt. Một tuần không đòi "đạt". |
+| Q8 | **BTVN tính vào mastery** (không chỉ ET/MT như mặc định hiện nay) — đổi luật TOÀN HỆ, xem §5b. |
+| Q9 | **BTVN xếp chồng 3 buổi** (§5b): BTVN buổi N gồm dạng của buổi N, N-1, N-2; tổng số bài mỗi dạng không đổi. |
+| Q10 | **Dạng nợ đo lại TẠI TRUNG TÂM, sau giờ**, ngày kiểm tra báo trước trên bảng thứ Hai (§5c). Làm ở nhà = ôn, không tính điểm. |
+| Q11 | Kiểm tra sau giờ rơi vào buổi nào của tuần: **chốt từng trường hợp theo lịch phòng**, không đặt luật cứng. |
+
+Bảng này về bản chất là **dashboard của học sinh**: dữ liệu hiện nằm theo trục hành động (lớp làm ET, lớp nộp BTVN…),
+bảng xoay cùng dữ liệu đó sang trục học sinh. Một hàm, ba người xem (HS · phụ huynh · GV/TA) — không dựng bản sao thứ ba.
 
 ---
 
@@ -69,8 +77,10 @@ nợ trễ gần 2 tuần hoặc phải thêm khối "chờ kết quả".
 
 Mọi dòng mang nhãn `mon` (§1.6 CLAUDE.md). Một HS học nhiều môn ⇒ mỗi môn một bảng.
 
-**Khối A — Học mới tuần này:** các dạng của những buổi trong cửa sổ (§3).
-**Khối B — Nợ:** dạng của các kỳ trước đã chốt mà chưa đạt.
+**Khối A — Đang học:** các dạng đang trong vòng luyện = dạng của 3 buổi gần nhất tính theo cửa sổ §3 (khoảng 6 dạng),
+mỗi dạng ghi đang ở lần BTVN thứ mấy trên 3 (hệ quả của BTVN xếp chồng, §5b).
+**Khối B — Nợ:** dạng đã hết vòng luyện mà chưa đạt, kèm **ngày kiểm tra lại sau giờ** (§5c).
+Nợ đọc từ SỔ CHỐT TUẦN, không đọc từ mastery hiện tại (mastery chỉ nhìn 30 ngày ⇒ nợ không ai đo lại sẽ tự thành "chưa đo").
 **Dòng thông tin:** "sắp học" (quy ước 4).
 
 Mỗi dòng dạng hiện:
@@ -81,29 +91,73 @@ Mỗi dòng dạng hiện:
 - **Lối hỗ trợ bấm được ngay, gắn đúng dạng đó:** xem lý thuyết dạng · xem lại bài giảng/video · tự luyện dạng · đến trung tâm.
   Dạng chưa có nội dung hỗ trợ ⇒ lộ ra chỗ kho hỗ trợ còn thủng.
 
-**Giới hạn nợ:** em nợ nhiều thì mỗi tuần chỉ hiện 2–3 dạng ưu tiên nhất, phần còn lại xếp hàng
-(tránh bức tường "tuần nào cũng trượt"). *Con số 2–3 và luật ưu tiên: CHƯA chốt — xem §8.*
+**Giới hạn nợ = sức chứa ca sau giờ:** mỗi tuần chỉ hiện số dạng kiểm tra kịp trong một ca (ca ~20 phút, mỗi dạng 3–4 câu ⇒ 2–3 dạng),
+phần còn lại xếp hàng (tránh bức tường "tuần nào cũng trượt"). *Luật ưu tiên dạng nào trước: CHƯA chốt — xem §8.*
 
 ---
 
-## 5. Đánh giá (chốt thứ Hai)
+## 5. Đánh giá — hai tầng (chốt thứ Hai)
 
-Kết luận từng dạng của tuần vừa đóng:
+Lý do: mastery = trung bình ≤ 5 lần đo gần nhất trong 30 ngày ⇒ một tuần **không thể** lật ô từ yếu sang đạt
+(2 lần cũ 40% + 50%, thêm 1 lần 100% mới lên 63%). Đòi "đạt trong tuần" là đòi điều bất khả thi về số học.
 
-| Kết luận | Nghĩa |
-|---|---|
-| Đạt | mastery ở mức đạt |
-| Chưa đạt | có đo, chưa tới mức đạt ⇒ sang Nợ |
-| Không nộp | hết hạn không có bài ⇒ sang Nợ, ghi đúng lý do |
-| Chưa đo | hệ không có lần đo nào (lỗi phía trung tâm, không phải của con) |
+| Tầng | Câu hỏi | Kết luận |
+|---|---|---|
+| **Tuần** | Con có lần đo mới không, số có lên không? | tăng · giữ đạt · đi ngang · giảm · không có lần đo mới |
+| **Chiến dịch** — hết vòng 3 buổi (dạng mới) · 2–3 tuần (dạng nợ) | Con đã tới mức đạt chưa? | đạt · chưa đạt (⇒ thành nợ / nợ kéo dài) |
+
+- "Giữ đạt" là kết quả TỐT (em 90% không tăng được nữa).
+- "Không có lần đo mới" ≠ "đi ngang": con không làm bài / vắng buổi kiểm tra, không phải con không tiến bộ.
+- "Chưa đo" do trung tâm (không giao bài, chấm chưa xong) ghi riêng, không tính cho con.
+- Mỗi lần chỉ 3–4 câu một dạng ⇒ điểm từng lần thô (0/33/67/100%) ⇒ chỉ gọi tăng/giảm khi chênh qua một ngưỡng tối thiểu
+  (*con số ngưỡng: chưa chốt*), còn lại là đi ngang.
+- Ví dụ đích của Thùy: em 50% → 70% · em 20% → 40–50% trong tuần; em 20% cần 2–3 tuần mới tới đạt.
 
 Tách 3 lớp để trả lời "ai chưa hiệu quả":
-1. **Trung tâm có làm phần mình không** — dạy đúng dạng đã lên lịch · giao BTVN · có nội dung hỗ trợ · xếp ca bổ trợ.
-2. **Con có làm phần con không** — nộp BTVN · tự luyện · đi ca.
+1. **Trung tâm có làm phần mình không** — dạy đúng dạng đã lên lịch · giao BTVN · chấm kịp · có nội dung ôn · xếp ca sau giờ.
+2. **Con có làm phần con không** — nộp BTVN · ôn ở nhà · có mặt buổi kiểm tra.
 3. **Kết quả đo.**
 
-Mình đủ + con đủ mà vẫn chưa đạt ⇒ phương pháp. Con không làm ⇒ động lực/gia đình. Mình không làm ⇒ vận hành.
+Mình đủ + con đủ mà vẫn không tăng ⇒ phương pháp. Con không làm ⇒ động lực/gia đình. Mình không làm ⇒ vận hành.
 Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thực dạy so với dạng đã chốt thứ Hai).
+
+---
+
+## 5b. BTVN xếp chồng 3 buổi + tính vào mastery (Thùy 12/11 — thay đổi SẮP TỚI, chưa làm)
+
+- **Trước:** BTVN buổi dạy dạng X = toàn dạng X. **Sau:** BTVN buổi N gồm dạng của buổi N, N-1, N-2
+  (BTVN buổi 10 có kiến thức buổi 9 và 8). Một dạng vẫn ~10 bài, nhưng rải qua 3 lần BTVN.
+  Tỉ lệ chia: **5–3–2 hoặc 4–3–3, chưa cần chốt** — để thành tham số, mặc định 5–3–2 (nhiều nhất ngay sau buổi học).
+- **Được gì:** mỗi dạng có ET + 3 lần BTVN = 4 lần đo trong ~1,5 tuần (đủ độ tin theo luật mastery "theo lần") ·
+  kéo dài thời gian luyện một dạng · không tăng khối lượng bài · em vắng buổi 9 vẫn gặp dạng buổi 9 ở BTVN 10, 11.
+  Đứng trên vai: luyện tập giãn cách + xen kẽ (spaced practice, interleaving — Rohrer & Taylor trên môn Toán).
+- **Hệ tự ghép BTVN**, GV chỉ duyệt: hệ biết dạng của N-1, N-2 và câu đã dùng. Để GV ghép tay = trái mục tiêu "GV không phải làm gì".
+- **Tính BTVN vào mastery là đổi luật TOÀN HỆ:** số dạng yếu, đề xuất bổ trợ, trend báo cáo tuần, KPI trưởng khối đều đọc mastery
+  ⇒ chuỗi số gãy tại ngày đổi. Trước khi áp phải so cũ–mới (bao nhiêu em đổi mức, bao nhiêu dạng yếu mất/mới).
+  Hiện có sẵn 2 bản: `btvn=false` (ET+MT, mặc định) và `btvn=true` (mọi nguồn, bổ trợ dùng).
+- **Bài ở nhà không kiểm soát được** ⇒ hệ tự nêu cờ khi BTVN và ET/MT của cùng dạng lệch nhau nhiều (triangulation, CLAUDE §5), không tin mù số trung bình.
+
+---
+
+## 5c. Vòng nợ — ôn ở nhà, đo ở trung tâm sau giờ
+
+| Ở đâu | Làm gì | Tính vào mastery |
+|---|---|---|
+| Ở nhà | Ôn dạng nợ: lý thuyết · bài mẫu · tập bài luyện thêm | KHÔNG — chỉ hiện "việc con đã làm" |
+| Trung tâm, sau giờ | Kiểm tra lại dạng đó (luồng bổ trợ sau giờ đang thử từ tuần 09/11) | CÓ — lần đo chính thức |
+
+1. **Thứ Hai:** bảng ghi "con nợ dạng X, đang 40%, [ngày] ở lại kiểm tra sau giờ" + tài liệu ôn gắn đúng dạng X.
+2. **Trong tuần:** con ôn ở nhà, hỏi GV/TA.
+3. **Buổi kiểm tra sau giờ:** thêm một lần đo.
+4. **Thứ Hai sau:** đạt ⇒ hết nợ · tăng chưa đạt ⇒ tiếp tục · vắng/về sớm ⇒ "không có lần đo mới", nợ chuyển tuần sau.
+5. **2–3 tuần không tăng:** hệ đề xuất trưởng khối chuyển lên bổ trợ yếu (ca riêng, có dạy lại) — dùng nút đổi mức L1 → L2/L3/L4 sẵn có.
+
+- Nợ trên bảng và case bổ trợ là **MỘT danh sách** — không để con nhận hai chỉ dẫn khác nhau cho cùng một dạng.
+- **Ngày kiểm tra: chốt từng trường hợp theo lịch phòng** (Q11). Hệ quả phải giữ: ngày đó cần có **trước giờ chốt thứ Hai**
+  thì bảng mới báo trước được; chưa xếp ⇒ bảng ghi "sẽ báo ngày" và việc xếp hiện thành việc tồn của người xếp lịch.
+- Câu kiểm tra **khác** câu đã ôn (cùng dạng, không trùng) ⇒ dạng thiếu câu trong kho thì không có đề (đã thấy ở vài dạng K5–K7, DEVLOG 12/11).
+- Trên bảng gọi là lượt trả nợ / cơ hội, không phải án phạt; em đạt được ghi nhận rõ.
+- Làm đánh giá ở nhà (nhẹ hơn cho trung tâm): **để sau, chưa nghĩ sâu.**
 
 ---
 
@@ -138,10 +192,26 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 
 ## 8. Còn treo — cần Thùy quyết
 
-1. Giới hạn nợ hiện mỗi tuần (2–3?) và luật ưu tiên (mới nhất / nền tảng nhất / theo mức ưu tiên case bổ trợ?).
+1. Luật ưu tiên khi nợ nhiều hơn sức chứa ca sau giờ (mới nhất / nền tảng nhất / yếu nhất?).
 2. Đơn vị mục tiêu = **dạng** hay **nhóm dạng** (mastery nhiều chỗ đang đo theo nhóm).
-3. "Đạt" của mục tiêu = mức `dat` (≥ 0,8), còn `can_luyen` (0,5–0,8) tính là chưa đạt ⇒ sang nợ? (Dạng yếu hiện hành chỉ tính < 0,5.)
-4. HS có được tự cam kết / chọn thêm mục tiêu không (lý thuyết: có cam kết thì hiệu lực mạnh hơn), hay 100% hệ đặt?
-5. Phụ huynh về lâu dài: màn riêng, hay giữ cách chụp ảnh?
-6. Thử nghiệm trước hay làm toàn hệ luôn; nếu thử thì khối nào.
-7. Báo cáo tuần trưởng khối (`spec-bao-cao-tuan.md`) có thêm khối "mục tiêu tuần của lớp" không.
+3. Ngưỡng chênh tối thiểu để gọi là "tăng"/"giảm" (§5).
+4. Hết vòng 3 buổi mà ở mức `can_luyen` (0,5–0,8): thành nợ, hay chỉ `yeu` (< 0,5) mới thành nợ?
+5. Tự luyện trên app có tính vào mastery không (hiện trạng chưa kiểm; quyết định "ôn ở nhà không tính" đang nghiêng về không).
+6. HS có được tự cam kết / chọn thêm mục tiêu không, hay 100% hệ đặt.
+7. Phụ huynh về lâu dài: màn riêng, hay giữ cách chụp ảnh.
+8. Thử nghiệm trước hay làm toàn hệ; nếu thử thì khối nào.
+9. Báo cáo tuần trưởng khối (`spec-bao-cao-tuan.md`) có thêm khối "mục tiêu tuần của lớp" không.
+
+---
+
+## 9. Rủi ro đã soát (12/11) — đọc trước khi build
+
+| # | Rủi ro | Trạng thái |
+|---|---|---|
+| 1 | Mastery không nhúc nhích trong 1 tuần; mặc định không tính BTVN | **Đã gỡ bằng thiết kế:** hai tầng (§5) + BTVN xếp chồng tính vào mastery (§5b) |
+| 2 | Đường "hết yếu" không kết thúc bằng lần đo được tính; trùng với luồng bổ trợ | **Đã gỡ bằng thiết kế:** vòng nợ sau giờ (§5c), một danh sách với bổ trợ |
+| 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **MỞ** — cần đo (§7.1) và luật dạng trọng tâm |
+| 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Vẫn cần đo phân bố thật trước khi phát cho phụ huynh |
+| 5 | Nợ tự biến mất sau 30 ngày không đo | **Đã gỡ:** nợ đọc từ sổ chốt tuần (§4) |
+| 6 | Tải: em 3 môn ~20 dòng/tuần (cần màn gộp có ưu tiên) · sức chứa ca sau giờ · em vắng (mục tiêu giữ, đường đi = buổi bù) · em mới vào lớp (không gánh nợ trước ngày vào) | **MỞ** |
+| 7 | Ngày kiểm tra chốt từng trường hợp ⇒ có tuần bảng thứ Hai chưa có ngày | **MỞ** — cần người chịu việc xếp + hạn (§5c) |
