@@ -7,10 +7,10 @@ import { useEffect, useState } from 'react'
 import { MathText, LT_CORE_CSS, LyThuyetBlockView } from '../kho/ui'
 import { parseLyThuyetBlocks } from '../../lib/lythuyetBlocks'
 import { inLayBaiGiay, listPhieuGiayCuaCa, type BaiInGiay, type CaTA } from '../../lib/botro_yeu_ca'
-import { inTestSauGio, type LyThuyetSauGio } from '../../lib/botro_nhe'
+import { type LyThuyetSauGio } from '../../lib/botro_nhe'
 import NutInSauGio from '../botro/NutInSauGio'
 import InSauGioET from '../botro/InSauGioET'
-import { NhapKetQua } from './PhieuGiayYeuTA'
+import SauGioNhapTA from './SauGioNhapTA'
 import { ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void }) {
@@ -18,7 +18,6 @@ export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void })
   const [loi, setLoi] = useState<string | null>(null)
   const [phieu, setPhieu] = useState<{ bai_test_id: string; so_cau: number; in_giay_at: string }[]>([])
   const [phieuIn, setPhieuIn] = useState<BaiInGiay | null>(null)
-  const [phieuNhap, setPhieuNhap] = useState<BaiInGiay | null>(null)
   const taiPhieu = () => listPhieuGiayCuaCa(ca.buoi_id).then(setPhieu).catch(() => {})
   useEffect(() => { taiPhieu() }, [ca.buoi_id]) // eslint-disable-line
 
@@ -30,10 +29,6 @@ export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void })
   async function moPhieu(id: string) {
     setBusy(true); setLoi(null)
     try { setPhieuIn(await inLayBaiGiay(id)) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
-  }
-  async function nhapTest() {
-    setBusy(true); setLoi(null)
-    try { const r = await inTestSauGio(ca.buoi_id); setPhieuNhap(await inLayBaiGiay(r.bai_test_id)) } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(false) }
   }
 
   return (
@@ -61,14 +56,12 @@ export default function SauGioCa({ ca, onDoi }: { ca: CaTA; onDoi: () => void })
           <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${xong ? 'bg-emerald-500 text-white' : coTest ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-500'}`}>{xong ? '✓' : 3}</span>
           <p className="text-[14px] font-bold text-slate-800">Nhập kết quả bài test</p>
         </div>
-        {xong ? <p className="text-[13px] font-semibold text-emerald-700">✓ Đã nhập & nộp — xong ca sau giờ. Kết quả đã vào mastery.</p>
-          : !coTest ? <p className="text-[13px] text-slate-500">Soạn & in bài test ở khối trên, em làm tại chỗ, rồi nhập đáp án em khoanh ở đây.</p>
-          : daNop ? <p className="text-[13px] text-slate-600">Đã nộp.</p>
-          : <button disabled={busy} onClick={nhapTest} className="w-full rounded-xl bg-emerald-600 py-2.5 text-[14px] font-bold text-white disabled:opacity-50">{busy ? '…' : '✍ Nhập kết quả & nộp'}</button>}
+        {/* Thùy 12/11: em làm ra GIẤY ⇒ nhập Đ / C / S từng câu (không khoanh A–D) — cùng màn nhập của app TA */}
+        {!coTest && !xong ? <p className="text-[13px] text-slate-500">Soạn & in bài test ở khối trên, em làm tại chỗ, rồi nhập Đ / C / S từng câu ở đây.</p>
+          : <SauGioNhapTA chiBuoi={ca.buoi_id} onBack={() => {}} onDoi={onDoi} />}
       </div>
 
       {phieuIn && <InSauGioET bais={[phieuIn]} onDong={() => setPhieuIn(null)} />}
-      {phieuNhap && <NhapKetQua bai={phieuNhap} onDong={() => { setPhieuNhap(null); onDoi() }} />}
     </>
   )
 }

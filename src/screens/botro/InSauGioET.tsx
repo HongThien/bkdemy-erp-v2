@@ -21,7 +21,7 @@ export default function InSauGioET({ bais, lop, onDong }: { bais: BaiInGiay[]; l
     taiLieu: { id: 'sau-gio-' + dau.bai_test_id, ten: `ET ${lop ?? ''} · ${ddmmyyyy(dau.ngay)}`, mon: dau.mon, nhanh: null, cau_hinh: {}, ban_do: null, lop_id: null, ngay: null, khoi: dau.hs.khoi },
     phans: [], ltChuyenDe: {}, tenChuyenDe: {},
   } as unknown as TaiLieuFull
-  const deRieng: DeRiengET[] = bais.map((b) => ({ id: b.bai_test_id, hoTen: b.hs.ho_ten, caus: b.caus.map((k) => sangCauHoi(k, b)) }))
+  const deRieng: DeRiengET[] = bais.map((b) => ({ id: b.bai_test_id, hoTen: b.hs.ho_ten, caus: b.caus.map((k) => sangCauHoi(k, b)), ch: (b.cau_hinh_in ?? undefined) as DeRiengET['ch'] }))
   return (
     <ETPrintView id={full.taiLieu.id} onClose={onDong} fullOverride={full} deRieng={deRieng}
       nhanDe={test ? { tieuDe: 'Bài kiểm tra bổ trợ sau giờ', nhan: 'Bài test bổ trợ' } : { tieuDe: 'Phiếu luyện bổ trợ sau giờ', nhan: 'Bài luyện bổ trợ' }} />

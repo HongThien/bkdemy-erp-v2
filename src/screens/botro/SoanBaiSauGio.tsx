@@ -2,15 +2,16 @@
 // Máy đề xuất câu theo luật bổ trợ (fn_btnhe_soan — chưa ghi gì) → mỗi dạng 1 khối KhoiCau của builder (✕ bỏ câu · ↻ Gợi ý lại ·
 // ✎ Chọn câu từ kho bằng ChonCauBdm) → "Lưu & in" (fn_btnhe_luu_bai) → bản in phiếu giấy sẵn có. Dùng lại module builder, không đẻ kiểu mới.
 import { useEffect, useState } from 'react'
-import { soanBai, goiYDang, luuBai, type BaiSoan, type DangSoan } from '../../lib/botro_nhe'
+import { soanBai, goiYDang, luuBai, type BaiSoan, type DangSoan, type CauHinhIn } from '../../lib/botro_nhe'
+import { AnhMmEditCtx } from '../tailieu/anhMmCtx'
 import { inLayBaiGiay, type BaiInGiay } from '../../lib/botro_yeu_ca'
 import { fetchCausCuaTaiLieu } from '../../lib/tailieu'
 import type { CauHoi } from '../../lib/kho/api'
 import { KhoiCau, type CfgCau } from '../tailieu/bdm/BuilderBanDoMoi'
 import ChonCauBdm from '../tailieu/bdm/ChonCauBdm'
 
-// Phiếu bổ trợ không lưu cấu hình in theo câu — KhoiCau chạy chế độ `gon`, cfg chỉ để đủ kiểu (như Ôn tập BTVN).
-const CFG_TRONG: CfgCau = { lines: {}, cols: {}, cheDo: {}, onLine: () => {}, onLineAll: () => {}, onCol: () => {}, onCheDo: () => {} }
+// Thùy 12/11 "cần có chọn dòng và những cái khác như builder giáo trình hoàn thiện": KhoiCau ĐẦY ĐỦ (dòng kẻ · cột · chế độ hình · cỡ ảnh),
+// lưu theo câu vào bai_test.cau_hinh_in; bản in khuôn ET đọc lại.
 
 export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
   buoiId: string; loai: 'luyen' | 'test'; onDong: () => void; onIn: (bai: BaiInGiay) => void
@@ -20,6 +21,13 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
   const [cauMap, setCauMap] = useState<Map<string, CauHoi>>(new Map())
   const [chonCau, setChonCau] = useState<DangSoan | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
+  const [ch, setCh] = useState<CauHinhIn>({})
+  const vaCh = (k: keyof CauHinhIn, m: string, v: unknown) => setCh((c) => { const o = { ...((c[k] ?? {}) as Record<string, unknown>) }; if (v == null) delete o[m]; else o[m] = v; return { ...c, [k]: o } })
+  const cfg: CfgCau = {
+    lines: ch.btvnLinesByCau ?? {}, cols: ch.colByCau ?? {}, cheDo: ch.hinhCheDoByCau ?? {},
+    onLine: (m, n) => vaCh('btvnLinesByCau', m, n), onLineAll: (ms, n) => ms.forEach((m) => vaCh('btvnLinesByCau', m, n)),
+    onCol: (m, n) => vaCh('colByCau', m, n), onCheDo: (m, v) => vaCh('hinhCheDoByCau', m, v),
+  }
   const [loi, setLoi] = useState<string | null>(null)
 
   async function napCau(mon: string, ds: DangSoan[]) {
@@ -34,7 +42,7 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
   // đổi số câu / mở ⇒ đề xuất lại (đổi ngữ cảnh — fetch lại)
   useEffect(() => {
     setBai(null); setLoi(null)
-    soanBai(buoiId, loai, so).then((b) => { setBai(b); napCau(b.mon, b.dang).catch((e) => setLoi(e?.message ?? String(e))) })
+    soanBai(buoiId, loai, so).then((b) => { setBai(b); setCh((b.cau_hinh_in ?? {}) as CauHinhIn); napCau(b.mon, b.dang).catch((e) => setLoi(e?.message ?? String(e))) })
       .catch((e) => setLoi(e?.message ?? String(e)))
   }, [buoiId, loai, so]) // eslint-disable-line
 
@@ -53,13 +61,15 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
     if (!bai) return
     setBusy('luu'); setLoi(null)
     try {
-      const r = await luuBai(buoiId, loai, bai.dang.filter((d) => d.caus.length).map((d) => ({ ma_dang: d.ma_dang, caus: d.caus })))
+      const r = await luuBai(buoiId, loai, bai.dang.filter((d) => d.caus.length).map((d) => ({ ma_dang: d.ma_dang, caus: d.caus })), ch)
       onIn(await inLayBaiGiay(r.bai_test_id))
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }
 
   const ten = loai === 'test' ? 'bài test' : 'bài luyện'
   return (
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, baChe: false,
+      set: (m, v) => { vaCh('anhMmByCau', m, v?.mm ?? null); vaCh('anhPctByCau', m, v?.pct ?? null) } }}>
     <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-auto bg-slate-900/40 p-4">
       <div className="w-full max-w-[920px] rounded-2xl bg-white shadow-2xl">
         <div className="sticky top-0 z-10 flex flex-wrap items-center gap-2 rounded-t-2xl border-b border-slate-200 bg-white px-5 py-3">
@@ -83,7 +93,7 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
                 <div className="px-3 pt-3 text-[13px] font-bold text-slate-800">
                   {i + 1}. {d.ten_dang}{d.nhom_yeu && <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-[10.5px] text-amber-800">★ nhóm yếu</span>}
                 </div>
-                <KhoiCau tieuDe={`${d.caus.length} câu`} mau={loai === 'test' ? 'amber' : 'sky'} gon caus={d.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false}
+                <KhoiCau tieuDe={`${d.caus.length} câu`} mau={loai === 'test' ? 'amber' : 'sky'} btvn caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={false}
                   soMacDinh={{ trac_nghiem: loai === 'test' ? 1 : so }}
                   onXoa={(m) => vaDang(d.ma_dang, d.caus.filter((x) => x !== m))}
                   onGoiY={(s) => goiY(d, Object.values(s).reduce((a, b) => a + b, 0))}
@@ -100,5 +110,6 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
           onConfirm={async (ms) => { vaDang(chonCau.ma_dang, ms); await napCau(bai.mon, [{ ...chonCau, caus: ms }]); setChonCau(null) }} />
       )}
     </div>
+    </AnhMmEditCtx.Provider>
   )
 }

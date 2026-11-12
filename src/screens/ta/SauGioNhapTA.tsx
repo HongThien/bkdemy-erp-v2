@@ -11,8 +11,10 @@ import { ddmmVN, thuCuaNgay, homNayVN } from '../../lib/tuan'
 const NHO: { ds: EmNhapSauGio[] | null } = { ds: null }   // nhớ tới F5 (rời tab quay lại = đúng chỗ cũ)
 const MAU: Record<string, string> = { D: 'bg-[#1E8A52] text-white', C: 'bg-[#C27A00] text-white', S: 'bg-[#C0355A] text-white' }
 
-export default function SauGioNhapTA({ onBack, onDoi }: { onBack: () => void; onDoi: () => void }) {
-  const [ds, setDs] = useState<EmNhapSauGio[] | null>(NHO.ds)
+// chiBuoi: nhúng trong màn ca ERP (Thùy 12/11 "làm ra giấy nên kết quả phải là DCS") — chỉ thẻ của buổi đó, không tiêu đề
+export default function SauGioNhapTA({ onBack, onDoi, chiBuoi }: { onBack: () => void; onDoi: () => void; chiBuoi?: string }) {
+  const [ds0, setDs] = useState<EmNhapSauGio[] | null>(NHO.ds)
+  const ds = ds0 && chiBuoi ? ds0.filter((x) => x.buoi_id === chiBuoi) : ds0
   const [loi, setLoi] = useState<string | null>(null)
   const [busy, setBusy] = useState<string | null>(null)
   const [hoiNop, setHoiNop] = useState<string | null>(null)
@@ -38,8 +40,8 @@ export default function SauGioNhapTA({ onBack, onDoi }: { onBack: () => void; on
   const choNhap = (ds ?? []).filter((x) => !x.da_nop)
   return (
     <div>
-      <BKTabHeader onBack={onBack} icon="/bk-ui/pr_et.png" title="Bổ trợ sau giờ"
-        sub={ds === null ? 'Đang tải…' : choNhap.length ? `${choNhap.length} em chờ nhập kết quả` : 'Không còn em nào chờ nhập ✓'} />
+      {!chiBuoi && <BKTabHeader onBack={onBack} icon="/bk-ui/pr_et.png" title="Bổ trợ sau giờ"
+        sub={ds === null ? 'Đang tải…' : choNhap.length ? `${choNhap.length} em chờ nhập kết quả` : 'Không còn em nào chờ nhập ✓'} />}
       <div className="mx-auto flex max-w-[1000px] flex-col gap-2 px-2 pb-6">
         {loi && <p className="rounded-xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] font-semibold text-[#C0355A]">{loi}</p>}
         <p className="px-1 text-[11.5px] text-[#63709A]">Bấm <b className="text-[#1E8A52]">Đ</b> đúng · <b className="text-[#C27A00]">C</b> chưa trọn · <b className="text-[#C0355A]">S</b> sai cho từng câu (bấm lại để xoá). Đủ thì bấm <b>Xong</b>.</p>

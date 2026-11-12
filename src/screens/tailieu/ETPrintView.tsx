@@ -46,7 +46,7 @@ const DEFAULT_TLN_LINES = 2
 // fullOverride/varCauOverride: render từ dữ liệu ĐANG SOẠN (in-memory) thay vì đọc bản đã lưu — cho phép
 // PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
 // deRieng / nhanDe (Thùy 11/11, bổ trợ sau giờ "header giống ET, bản HS – GV như builder"): mỗi em 1 ĐỀ RIÊNG (câu khác nhau) in cùng khuôn ET.
-export type DeRiengET = { id: string; hoTen: string; caus: CauHoi[] }
+export type DeRiengET = { id: string; hoTen: string; caus: CauHoi[]; ch?: CauHinh }   // ch = cấu hình in riêng của đề (dòng/cột/hình)
 export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride, deRieng, nhanDe }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -273,7 +273,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
 function ETAllDe({ full, gv, varCau, perHS, hinhDe, deRieng, nhanDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
   const ch = full.taiLieu.cau_hinh ?? {}
-  if (deRieng) return <>{deRieng.map((d) => <div key={d.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={ch} gv={gv} hoTen={d.hoTen} nhanDe={nhanDe} /></div>)}</>
+  if (deRieng) return <>{deRieng.map((d) => <div key={d.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={{ ...ch, ...(d.ch ?? {}) }} gv={gv} hoTen={d.hoTen} nhanDe={nhanDe} /></div>)}</>
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
   const etMaDe = ch.etMaDe
   // Đủ 3 mã đề = Đại (nếu có) đủ etMaDe; bài Hình luôn có đề 2/3 (thiếu bản khác thì dùng lại bài gốc). ET chỉ có Hình cũng in 3 mã đề.

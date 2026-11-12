@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-531 bảng · 39 view · 0 enum · 347 trigger · 1774 function
+531 bảng · 39 view · 0 enum · 347 trigger · 1777 function
 
 ## _app_secrets
 
@@ -217,6 +217,7 @@
 | thoi_gian_phut | integer | Y |  |  |  |
 | thu_thach | boolean |  | false |  |  |
 | luyen_yeu | boolean |  | false |  |  |
+| cau_hinh_in | jsonb | Y |  |  |  |
 
 ## bai_test_cau
 
@@ -10176,9 +10177,12 @@ WITH luot AS (
 - `_btk_la_tk(p_mon text, p_khoi text)` → boolean
 - `_btk_lop_hs(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, khoi text)
 - `_btk_nhom_hs(p_hs uuid[], p_mon text)` → TABLE(hoc_sinh_id uuid, ma text, ten text, cha text, score numeric, n bigint, muc text, tin text)
+- `_btnhe_chon_cau(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer, p_tu_luan boolean, p_giu_lai integer DEFAULT 0)` → text[]
+- `_btnhe_chon_tu_luan(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
 - `_btnhe_dang_buoi(p_buoi uuid)` → TABLE(ma_dang text, ten_dang text, nhom_yeu boolean, thu_tu integer)
 - `_btnhe_duoc_tao(p_mon text, p_khoi text)` → boolean
 - `_btnhe_gio_lop(p_lop uuid, p_ngay date)` → TABLE(gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text)
+- `_btnhe_uu_tu_luan(p_hs uuid)` → boolean
 - `_btvn_app_tu_dong()` → jsonb
 - `_btvn_cau_bo_trong(p_hs uuid)` → TABLE(buoi_hoc_id uuid, ngay date, problem_id uuid, ma_dang text)
 - `_btvn_hs_xem_anh(p_name text)` → boolean
@@ -10888,7 +10892,7 @@ WITH luot AS (
 - `fn_btnhe_lop_cho()` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, so_em integer, so_cho integer)
 - `fn_btnhe_lop_cua_toi(p_ngay date)` → TABLE(lop_id uuid, ten_lop text, mon text, khoi text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, ta_id uuid, ta_ten text)
 - `fn_btnhe_lop_hs(p_lop uuid, p_ngay date)` → TABLE(hoc_sinh_id uuid, ho_ten text, ma_hs text, so_dang_yeu integer, dang_yeu text[], so_ca_nhe_tuan integer)
-- `fn_btnhe_luu_bai(p_buoi uuid, p_loai text, p_ds jsonb)` → jsonb
+- `fn_btnhe_luu_bai(p_buoi uuid, p_loai text, p_ds jsonb, p_cau_hinh jsonb)` → jsonb
 - `fn_btnhe_nhap_dcs(p_bai_test_cau uuid, p_kq text)` → jsonb
 - `fn_btnhe_soan(p_buoi uuid, p_loai text, p_so integer DEFAULT 3)` → jsonb
 - `fn_btnhe_ta_nhap_ds()` → jsonb

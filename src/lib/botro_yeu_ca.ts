@@ -199,6 +199,7 @@ export type CauInGiay = {
   chon: number | null; verdict: 'correct' | 'wrong' | null // câu trả lời ngắn (lua_chon rỗng): TA chấm 1 = đúng · 0 = sai (Thùy 10/10)
 }
 export type BaiInGiay = {
+  cau_hinh_in?: Record<string, unknown> | null   // bổ trợ sau giờ: dòng / cột / hình theo câu (bản in khuôn ET đọc)
   bai_test_id: string; loai: 'bo_tro' | 'bo_tro_test'; da_nop: boolean; mon: string; ngay: string; in_giay_at: string | null; buoi_id: string | null
   hs: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null }
   gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_ten: string | null; caus: CauInGiay[]
