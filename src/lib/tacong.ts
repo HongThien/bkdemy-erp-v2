@@ -5,7 +5,7 @@ import { supabase } from './supabase'
 
 export type LoaiViec = { ma: string; ten: string; nhom: 'package' | 'ngoai_package'; tinh_vao: string; don_vi: 'buoi' | 'gio'; can_lop: boolean; can_hs: boolean; thu_tu: number }
 export type GoiY = {
-  nguon: 'buoi_thuong' | 'ca_bo_tro' | 'buoi_bo_tro'; loai_viec: string; lop_id: string | null; ten_lop: string | null
+  nguon: 'buoi_thuong' | 'ca_bo_tro' | 'buoi_bo_tro' | 'ca_sau_gio'; loai_viec: string; lop_id: string | null; ten_lop: string | null
   buoi_hoc_id: string | null; ca_bo_tro_id: string | null; gio_bat_dau: string | null; gio_ket_thuc: string | null
   dang_dien_ra: boolean; da_khai: boolean
 }
