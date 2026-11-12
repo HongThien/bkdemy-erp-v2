@@ -79949,3 +79949,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 12/11 23:26 — Mục tiêu tuần: mốc tính lần đo = lúc CHẤM XONG, không phải lúc nộp
 - Thùy: BTVN buổi thứ Sáu nộp Chủ nhật, thứ Hai mới chấm ⇒ phải vào tuần mới. Sửa luật cắt cửa sổ §3 (cặp buổi không đổi). Tách "con đã nộp" (giờ nộp) khỏi "kết quả" (giờ chấm); bài chờ chấm là nợ của trung tâm. Tài liệu: bắt buộc xong ở buổi họp thứ Hai. Còn treo: hạn chấm BTVN.
+
+## 12/11 23:30 — Mục tiêu tuần: hạn chấm BTVN = hạn đang chạy
+- Thùy: lớp học từ 18:00, TA chấm BTVN xong 2 tiếng trước buổi học kế. Spec §3 dùng luôn hạn này (không đặt hạn mới). Lớp giờ khác chưa hỏi.
