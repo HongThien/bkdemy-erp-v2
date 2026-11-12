@@ -9,6 +9,10 @@ const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)
 const ROOT = path.resolve(HERE, '../../../..')
 const hd = JSON.parse(fs.readFileSync(path.join(HERE, 'hang-doi.json'), 'utf8'))
 const pl = JSON.parse(fs.readFileSync(path.join(ROOT, '.nhap-tam/toanmath-word/phan-loai.json'), 'utf8'))
+// Noctorium (kiem-noctorium.json): bài đủ 2 nhân chứng trùng ⇒ coi như đã có. K12 ĐỀ CƯƠNG: KHÔNG làm (Thùy 12/11 — đề thi thử K12 đã quá nhiều).
+const NOC = path.join(HERE, 'kiem-noctorium.json')
+const noc = new Set(fs.existsSync(NOC) ? JSON.parse(fs.readFileSync(NOC, 'utf8')).filter((x) => x.bo_vi_noctorium).map((x) => x.ten_bai) : [])
+const boQua = (x) => noc.has(x.ten_bai) || (x.khoi === 'K12' && x.folder.startsWith('Đề cương'))
 const plMap = new Map(pl.map((x) => [x.ten_bai, x]))
 const loaiF = (f) => f.startsWith('Đề cương') ? 'de_cuong' : f.startsWith('Đề thi') ? 'de_thi' : f.startsWith('Thi thử') ? 'thi_thu' : 'chinh_thuc'
 const kyF = (f) => (f.split('/')[1] || '')
@@ -19,7 +23,7 @@ const them = (ma, nhom, ten, bai, ghi) => B.push({ ma, nhom, ten, so_bai: bai.le
 const ban = (x, cau) => ({ khoi: x.khoi, folder: x.folder, ten_bai: x.ten_bai, dinh_dang: x.dinh_dang, tt: x.tt, cau: cau ?? null, loai_boc: plMap.get(x.ten_bai)?.loai ?? null, files: x.files })
 
 // ── Lượt WORD (đã bóc máy) ─────────────────────────────────────────────
-const word = hd.filter((x) => x.tt === 'chua' && x.dinh_dang === 'word').map((x) => ban(x, plMap.get(x.ten_bai)?.chon?.cau ?? 0))
+const word = hd.filter((x) => x.tt === 'chua' && x.dinh_dang === 'word' && !boQua(x)).map((x) => ban(x, plMap.get(x.ten_bai)?.chon?.cau ?? 0))
 const wordCo = word.filter((x) => x.cau > 0), word0 = word.filter((x) => !x.cau)
 const lay = (f) => wordCo.filter(f).sort(sortBai)
 const W = [
@@ -30,11 +34,11 @@ const W = [
   ['W5', 'Đề cương K10 + K11', lay((x) => ['K10', 'K11'].includes(x.khoi) && loaiF(x.folder) === 'de_cuong')],
   ['W6', 'Đề cương K12', lay((x) => x.khoi === 'K12' && loaiF(x.folder) === 'de_cuong')],
 ]
-for (const [ma, ten, bai, ghi] of W) them(ma, 'Word', ten, bai, ghi)
+for (const [ma, ten, bai, ghi] of W) if (bai.length) them(ma, 'Word', ten, bai, ghi)
 
 // ── Lượt PDF (bóc bằng Gemini) — K6→K9 đề thi trước, rồi đề cương, rồi K10→K12 ─
-const pdf = hd.filter((x) => x.tt === 'chua' && x.dinh_dang === 'pdf').map((x) => ban(x))
-const scan = hd.filter((x) => x.tt === 'nghi_trung_scan').map((x) => ban(x))
+const pdf = hd.filter((x) => x.tt === 'chua' && x.dinh_dang === 'pdf' && !boQua(x)).map((x) => ban(x))
+const scan = hd.filter((x) => x.tt === 'nghi_trung_scan' && !boQua(x)).map((x) => ban(x))
 const word0Ban = word0.map((x) => ({ ...x, ghi: 'Word bóc 0 câu → đọc PDF' }))
 let n = 0
 const chia = (ten, ds, ghi, cap = 20) => { ds = ds.sort(sortBai); const k = Math.ceil(ds.length / cap); for (let i = 0; i < k; i++) {
@@ -60,7 +64,7 @@ const ttScan = scan.filter((x) => x.khoi === 'K12' && loaiF(x.folder) === 'thi_t
 
 // kiểm: mọi bài chua/scan có file đều vào đúng 1 batch
 const all = B.flatMap((b) => b.bai.map((x) => x.ten_bai)), dup = all.filter((t, i) => all.indexOf(t) !== i)
-const can = hd.filter((x) => (x.tt === 'chua' || x.tt === 'nghi_trung_scan') && x.dinh_dang !== 'khong_file').map((x) => x.ten_bai)
+const can = hd.filter((x) => (x.tt === 'chua' || x.tt === 'nghi_trung_scan') && x.dinh_dang !== 'khong_file' && !boQua(x)).map((x) => x.ten_bai)
 const thieu = can.filter((t) => !all.includes(t))
 if (dup.length || thieu.length) { console.error('LỆCH', { dup, thieu }); process.exit(1) }
 B.forEach((b, i) => { b.ma = 'B' + String(i + 1).padStart(3, '0') })

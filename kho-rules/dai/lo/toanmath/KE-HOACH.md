@@ -5,17 +5,25 @@
 
 ## 1. Phạm vi
 
-Bộ đã tải 2.988 bài đăng: **1.474 đã có trong kho** · **1.501 còn phải làm** · 13 bài không có file (bỏ).
+Bộ đã tải 2.988 bài đăng: **1.474 đã có trong kho** · 13 bài không có file (bỏ) · 1.501 chưa có, trong đó **bỏ 118**:
+- **96 bài đề cương K12 — KHÔNG làm** (Thùy 12/11: đề thi thử K12 đã quá nhiều).
+- **22 bài trùng bộ Noctorium** (đề K12 nhập từ Word Noctorium, file khác nên sha256 không bắt được) — đủ 2 nhân chứng:
+  nội dung (cụm 6 chữ, câu khớp ≥50% cụm, vượt hẳn đề đứng nhì) + tên trường khớp. Chi tiết: `kiem-noctorium.json` (`bo_vi_noctorium`).
+
+⇒ **Còn làm 1.383 bài, 107 batch.**
 
 | Giai đoạn | Batch | Bài | Câu | Ghi chú |
 |---|---|---|---|---|
-| 1. Word đã bóc (K7, K10–12 đề thi + đề cương) | B001–B006 | 38 | 1.066 (đã bóc) | B001 là batch thử |
-| 2. THCS đề thi K6→K9 + vào 10 | B007–B036 | 492 | chưa bóc | gồm 6 batch scan nghi trùng (B027–B032) |
-| 3. THCS đề cương K6→K9 | B037–B062 | 248 | chưa bóc | ≤10 bài/batch vì đề cương dài |
-| 4. K10–12 đề thi + đề chính thức THPT | B063–B073, B103 | 175 | chưa bóc | gồm scan nghi trùng (B071–B073) |
-| 5. K10–12 đề cương | B074–B102 | 279 | chưa bóc | |
-| 6. **K12 thi thử — làm cuối** | B104–B119 | 269 | 1.100 phần Word | Word 4 batch, PDF 10 batch, scan 2 batch |
-| **Tổng** | **119 batch** | **1.501** | | |
+| 1. Word đã bóc (K7, K10–12 đề thi, đề cương K10–11) | B001–B005 | 34 | 860 (đã bóc) | B001 là batch thử |
+| 2. THCS đề thi K6→K9 + vào 10 | B006–B035 | 492 | chưa bóc | gồm 6 batch scan nghi trùng (B026–B031) |
+| 3. THCS đề cương K6→K9 | B036–B061 | 248 | chưa bóc | ≤10 bài/batch vì đề cương dài |
+| 4. K10–12 đề thi + đề chính thức THPT | B062–B072, B092 | 174 | chưa bóc | gồm scan nghi trùng (B070–B072) |
+| 5. Đề cương K10–11 | B073–B091 | 186 | chưa bóc | |
+| 6. **K12 thi thử — làm cuối** | B093–B107 | 249 | 955 phần Word | Word 4 batch, PDF 9 batch, scan 2 batch |
+| **Tổng** | **107 batch** | **1.383** | | |
+
+Noctorium chưa đo được: 73 bài scan K12 (không có lớp chữ) và 72 bộ nhiều đề (4 bộ có chứa ≥1 đề Noctorium) — bước 2 của từng
+batch (đo trùng kho sau khi bóc) sẽ bắt, câu trùng tự trỏ về câu cũ lúc ghi.
 
 Cỡ batch: Word ≤ ~280 câu · PDF đề thi ≤ 20 bài · PDF đề cương ≤ 10 bài. Số câu PDF chỉ biết sau khi bóc —
 bóc xong mà batch > 300 câu thì tách thành `a`/`b`, mỗi nửa báo cáo riêng.

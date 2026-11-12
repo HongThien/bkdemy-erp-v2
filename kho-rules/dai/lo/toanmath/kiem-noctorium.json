@@ -1,0 +1,7522 @@
+[
+ {
+  "batch": "B004",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-cam-binh-ha-tinh",
+  "ket_luan": "trung",
+  "so_tu": 3162,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Cẩm Bình - Hà Tĩnh",
+   "ti_le": 1,
+   "cau": 11
+  },
+  "nhi": 0.09,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B004",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-tran-quang-dieu-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 7699,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lý Tự Trọng - Đà Nẵng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B004",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-chuyen-le-thanh-tong-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 3755,
+  "best": {
+   "ten": "Đề KSCL Toán 12 ôn thi TN THPT 2026 trường THPT Thiệu Hóa - Thanh Hóa",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B004",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-nui-thanh-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 6133,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường THPT Kim Liên - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B004",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-binh-duong-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 7932,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Thị Minh Khai - Khánh Hòa",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B006",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 4486,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quế Sơn - Đà Nẵng",
+   "ti_le": 0.36,
+   "cau": 11
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B006",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-gia-binh-1-bac-ninh",
+  "ket_luan": "mo_ho",
+  "so_tu": 33973,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Yên Viên - Hà Nội",
+   "ti_le": 0.38,
+   "cau": 16
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B006",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2024-2025-truong-thpt-trung-nghia-phu-tho",
+  "ket_luan": "khac",
+  "so_tu": 30563,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 2 sở GD&ĐT Hưng Yên",
+   "ti_le": 0.18,
+   "cau": 17
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "10-de-kiem-tra-giua-hoc-ky-1-mon-toan-12-dinh-dang-trac-nghiem-2025",
+  "ket_luan": "khac",
+  "so_tu": 36739,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán lần 3 trường THPT Bá Thước - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "10-de-on-tap-giua-ki-1-toan-12-nam-hoc-2025-2026-truong-ngoc-vy",
+  "ket_luan": "khac",
+  "so_tu": 56637,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-giua-hoc-ki-1-toan-12-knttvcs-dinh-huong-cau-truc-2025",
+  "ket_luan": "khac",
+  "so_tu": 16887,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Đào Duy Từ - Thanh Hóa",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-giua-ki-1-toan-12-nam-2026-2027-chuong-trinh-moi-thong-nhat-sgk",
+  "ket_luan": "mo_ho",
+  "so_tu": 135270,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Tân Yên 1 - Bắc Ninh",
+   "ti_le": 0.44,
+   "cau": 16
+  },
+  "nhi": 0.43,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-dinh-ki-hoc-ki-1-mon-toan-12-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 65457,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.5,
+   "cau": 12
+  },
+  "nhi": 0.33,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-giua-hoc-ki-1-mon-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 55251,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-giua-hoc-ki-1-mon-toan-12-theo-cau-truc-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 23659,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THCS & THPT Hoa Sen - TP HCM",
+   "ti_le": 0.45,
+   "cau": 11
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-giua-hoc-ky-1-mon-toan-12-nam-hoc-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 16574,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-giua-hoc-ky-1-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 13425,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-tham-khao-kiem-tra-giua-ki-1-toan-12-nam-hoc-2026-2027",
+  "ket_luan": "khac",
+  "so_tu": 36586,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Yên Viên - Hà Nội",
+   "ti_le": 0.19,
+   "cau": 16
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "bo-de-thi-thu-giua-hoc-ki-1-toan-12-nam-hoc-2025-2026-chu-hoang-minh",
+  "ket_luan": "khac",
+  "so_tu": 8371,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-du-bi-giua-ki-1-toan-12-nam-2024-2025-truong-thpt-han-thuyen-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 4484,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Bình Giang - Hải Dương",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-du-bi-giua-ki-1-toan-12-nam-2024-2025-truong-thpt-tien-du-1-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 4579,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Lộc Bình - Lạng Sơn",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ki-1-toan-12-nam-2024-2025-truong-thpt-di-an-binh-duong",
+  "ket_luan": "khac",
+  "so_tu": 151,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2024-2025-trung-tam-le-thi-hong-gam-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 7482,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trung tâm Lê Thị Hồng Gấm - TP HCM",
+   "ti_le": 0.44,
+   "cau": 16
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-truong-dinh-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2026-2027-truong-thpt-ho-thi-bi-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 1503,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-duy-tan-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 527,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B067",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-minh-hoa-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-ngo-quyen-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 3282,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-minh-hoa-gk1-toan-12-nam-2026-2027-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2114,
+  "best": {
+   "ten": "Đề kiểm tra Toán 12 tháng 9 năm 2025 trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM (1)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-on-tap-giua-hoc-ki-1-toan-12-nam-2024-2025-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 3865,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-on-tap-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-thu-duc-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 9781,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Trãi - Thái Bình",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-on-tap-giua-ky-1-toan-12-nam-2025-2026-truong-thpt-gia-binh-1-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 15076,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Trãi - Thái Bình",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-on-thi-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-nguyen-huu-cau-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 12617,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-tham-khao-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-luong-ngoc-quyen-thai-nguyen",
+  "ket_luan": "khac",
+  "so_tu": 1314,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Minh Hà - Hà Nội",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "05-de-on-thi-cuoi-hoc-ki-1-toan-12-nam-2025-2026-hoang-trong-nghia",
+  "ket_luan": "khac",
+  "so_tu": 33647,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 2 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "05-de-thi-thu-cuoi-hoc-ki-1-toan-12-nam-2024-2025-co-loi-giai-chi-tiet",
+  "ket_luan": "khac",
+  "so_tu": 26617,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-dinh-dang-trac-nghiem-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 49041,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Bình Xuyên - Phú Thọ",
+   "ti_le": 0.27,
+   "cau": 15
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-cuoi-hoc-ki-1-toan-12-cau-truc-trac-nghiem-moi",
+  "ket_luan": "khac",
+  "so_tu": 57481,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 cụm trường THPT QV1-TT1-LVT - Bắc Ninh",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-cuoi-ki-1-toan-12-nam-hoc-2024-2025-co-dap-an-va-loi-giai",
+  "ket_luan": "mo_ho",
+  "so_tu": 56554,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán đợt 1 liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-kiem-tra-hoc-ki-1-toan-12-nam-2025-2026-hoang-xuan-nhan",
+  "ket_luan": "mo_ho",
+  "so_tu": 23196,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-thi-cuoi-ki-1-toan-12-nam-hoc-2025-2026-truong-ngoc-vy",
+  "ket_luan": "mo_ho",
+  "so_tu": 57197,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Du - Thái Bình",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "17-de-tham-khao-cuoi-hoc-ky-1-toan-12-cau-truc-trac-nghiem-moi",
+  "ket_luan": "khac",
+  "so_tu": 33395,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "20-de-on-tap-cuoi-ki-1-toan-12-nam-2024-2025-truong-thcsthpt-hoa-sen-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 28896,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Dĩ An - Bình Dương",
+   "ti_le": 0.36,
+   "cau": 14
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-nam-hoc-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 49764,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.19,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-dai-ngai-can-tho",
+  "ket_luan": "mo_ho",
+  "so_tu": 21568,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Du - Thái Bình",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-1-mon-toan-12-theo-cau-truc-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 32263,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "khac",
+  "so_tu": 14959,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Tân Yên 1 - Bắc Ninh",
+   "ti_le": 0.19,
+   "cau": 16
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B068",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-1-mon-toan-12-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 46406,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Quang Trung - Gia Lai",
+   "ti_le": 0.21,
+   "cau": 14
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-tham-khao-on-tap-hoc-ky-1-mon-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 63914,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Đinh Tiên Hoàng - Ninh Bình",
+   "ti_le": 0.31,
+   "cau": 16
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-thi-thu-cuoi-hoc-ki-1-toan-12-nam-hoc-2025-2026-chu-hoang-minh",
+  "ket_luan": "khac",
+  "so_tu": 8863,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Văn Lang - Hà Nội",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-12-nam-2025-2026-trung-tam-gdtx-chau-duc-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 4269,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-mac-dinh-chi-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 1410,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-12-nam-2025-2026-truong-thpt-duy-tan-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 1938,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Cầu Giấy - Hà Nội",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4105,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-binh-duong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 11051,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-lam-ha-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 2124,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-que-son-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 5151,
+  "best": {
+   "ten": "Đề thi công bằng Toán 12 lần 1 năm 2025 - 2026 trường THPT chuyên KHTN - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 5186,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 2 năm 2025 - 2026 trường THPT Thường Xuân 2 - Thanh Hóa",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-12-nam-2024-2025-truong-thpt-tran-phu-br-vt",
+  "ket_luan": "khac",
+  "so_tu": 3208,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-nguyen-thi-minh-khai-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 1894,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường Thực Nghiệm Khoa Học Giáo Dục - Hà Nội",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-12-nam-2025-2026-truong-tran-cao-van-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-on-tap-cuoi-hoc-ki-1-toan-12-nam-2024-2025-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4633,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường Khương Hạ - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-on-tap-cuoi-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-thu-duc-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 9361,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Cẩm Bình - Hà Tĩnh",
+   "ti_le": 0.36,
+   "cau": 11
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-on-tap-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-thu-duc-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 8773,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Cẩm Bình - Hà Tĩnh",
+   "ti_le": 0.27,
+   "cau": 11
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-on-thi-hk1-toan-12-nam-2024-2025-truong-quoc-te-a-chau-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 10131,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 3 - Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-tham-khao-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-thuan-thanh-1-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 6920,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "10-de-on-tap-giua-hoc-ki-2-toan-12-nam-2024-2025-co-loi-giai-chi-tiet",
+  "ket_luan": "mo_ho",
+  "so_tu": 51367,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán đợt 1 liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B069",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "bo-10-de-kiem-tra-giua-hoc-ky-2-toan-12-gdpt-2018-nam-hoc-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 17181,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán đợt 1 liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "bo-de-tham-khao-giua-hoc-ki-2-toan-12-nam-2024-2025-so-gddt-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 32329,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 2 năm 2025 - 2026 trường THPT Thường Xuân 2 - Thanh Hóa",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-duy-tan-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 2180,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-nguyen-hue-hue",
+  "ket_luan": "khac",
+  "so_tu": 3654,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-thi-xa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 1590,
+  "best": {
+   "ten": "Đề khảo sát thi tốt nghiệp THPT 2026 môn Toán sở GD&ĐT Hải Phòng",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-on-thi-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-nguyen-huu-cau-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 12710,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "05-de-thi-thu-cuoi-hoc-ki-2-mon-toan-12-nam-hoc-2024-2025-co-dap-an",
+  "ket_luan": "khac",
+  "so_tu": 11008,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Lang Chánh - Thanh Hóa",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "10-de-on-tap-cuoi-ki-2-toan-12-nam-2025-2026-co-loi-giai-chi-tiet-truong-ngoc-vy",
+  "ket_luan": "mo_ho",
+  "so_tu": 61995,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.22,
+   "cau": 9
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-kiem-tra-cuoi-hoc-ky-2-mon-toan-12-nam-hoc-2024-2025",
+  "ket_luan": "khac",
+  "so_tu": 65147,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-2-mon-toan-12-theo-cau-truc-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 32297,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ky-2-mon-toan-12-nam-2025-2026",
+  "ket_luan": "khac",
+  "so_tu": 19779,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-2-mon-toan-12-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 49098,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-2-toan-12-chuan-cau-truc-moi-nam-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 138018,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-dong-ha-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2027,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Gia Định - TP HCM",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ki-2-toan-12-nam-2024-2025-truong-thpt-binh-chieu-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 6829,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2024-2025-truong-chuyen-le-thanh-tong-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 2828,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2024-2025-truong-thpt-ngu-hanh-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 1893,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-chu-van-an-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 1669,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ki-2-toan-12-nam-2024-2025-truong-thpt-nguyen-gia-thieu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4384,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 đợt 1 môn Toán trường THPT Đông Đô - Hà Nội",
+   "ti_le": 0.05,
+   "cau": 20
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-pham-van-sang-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B070",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ky-2-toan-12-nam-2024-2025-truong-thcsthpt-tri-duc-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hk1-toan-12-nam-2025-2026-truong-thpt-nguyen-khuyen-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-nguyen-gia-thieu-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-phan-dinh-phung-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-trung-vuong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-truong-chinh-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2025-2026-so-gddt-hung-yen",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2025-2026-truong-ta-quang-buu-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ki-1-toan-12-nam-2024-2025-truong-thpt-hung-vuong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ki-1-toan-12-nam-2024-2025-truong-thpt-nguyen-quoc-trinh-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ki-1-toan-12-nam-2025-2026-truong-nguyen-khuyen-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-dinh-tien-hoang-ninh-binh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ky-1-toan-12-nam-2025-2026-truong-thpt-hoa-lu-a-ninh-binh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/GKI",
+  "ten_bai": "de-giua-ky-1-toan-12-nam-2025-2026-truong-thpt-phan-dang-luu-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B073",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-12-nam-2024-2025-truong-thpt-nguyen-tat-thanh-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-hoc-ki-1-toan-12-nam-2026-2027-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "trung",
+  "so_tu": 4419,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.67,
+   "cau": 12
+  },
+  "nhi": 0.2,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4783,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Ninh Bình - Bạc Liêu - Ninh Bình",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-xuan-dinh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 8307,
+  "best": {
+   "ten": "Đề kiểm tra lần 1 Toán 12 năm 2025 - 2026 trường THPT Mai Anh Tuấn - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-son-dong-3-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 1442,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Phan Việt Thống - Đồng Tháp",
+   "ti_le": 0.13,
+   "cau": 16
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5778,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-bui-huu-nghia-can-tho",
+  "ket_luan": "mo_ho",
+  "so_tu": 5950,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 liên trường THPT - Bắc Ninh",
+   "ti_le": 0.5,
+   "cau": 2
+  },
+  "nhi": 0.31,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "mo_ho",
+  "so_tu": 7279,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Đức Linh - Bình Thuận",
+   "ti_le": 0.2,
+   "cau": 15
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 11762,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường Đông Thành - Vĩnh Long",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B093",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2025-2026-truong-thpt-xuan-phuong-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 7837,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị",
+   "ti_le": 0.27,
+   "cau": 11
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-12-nam-2026-2027-truong-thpt-truong-vinh-ky-vinh-long",
+  "ket_luan": "khac",
+  "so_tu": 4185,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Yên Viên - Hà Nội",
+   "ti_le": 0.19,
+   "cau": 16
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6925,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-chau-van-liem-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 5881,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Hồ Thị Kỷ - Cà Mau",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-son-dong-3-bac-giang",
+  "ket_luan": "khac",
+  "so_tu": 1478,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lý Tự Trọng - Đà Nẵng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2024-2025-truong-thpt-thanh-khe-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 2637,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2025-2026-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5166,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Ninh Bình - Bạc Liêu - Ninh Bình",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2025-2026-truong-thpt-tran-quang-khai-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 10679,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Đức Linh - Bình Thuận",
+   "ti_le": 0.2,
+   "cau": 15
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2026-2027-truong-thpt-bui-huu-nghia-can-tho",
+  "ket_luan": "mo_ho",
+  "so_tu": 7446,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Yên Viên - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 16
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B094",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2026-2027-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "mo_ho",
+  "so_tu": 23147,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-12-nam-2026-2027-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4464,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Ninh Bình - Bạc Liêu - Ninh Bình",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5386,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-hoc-ki-1-toan-12-nam-2026-2027-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1811,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường Khương Hạ - Hà Nội",
+   "ti_le": 0.22,
+   "cau": 9
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-ki-1-toan-12-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4879,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trung tâm Lê Thị Hồng Gấm - TP HCM",
+   "ti_le": 0.13,
+   "cau": 16
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-toan-12-giua-ky-1-nam-2025-2026-truong-thpt-bao-loc-lam-dong",
+  "ket_luan": "mo_ho",
+  "so_tu": 11585,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THCS & THPT Hoa Sen - TP HCM",
+   "ti_le": 0.27,
+   "cau": 11
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7341,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường chuyên Lê Thánh Tông - Đà Nẵng",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-xuan-dinh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5804,
+  "best": {
+   "ten": "Đề KSCL Toán 12 ôn thi TN THPT 2026 trường THPT Thiệu Hóa - Thanh Hóa",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-son-dong-3-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 1452,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lý Tự Trọng - Đà Nẵng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B095",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-yen-mo-b-ninh-binh",
+  "ket_luan": "khac",
+  "so_tu": 10765,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-12-nam-2025-2026-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 7286,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-12-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 9829,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 3 sở GD&ĐT Sơn La",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-ngo-quyen-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 8543,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Trần Phú - TP HCM",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-nguyen-binh-khiem-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 4395,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-phuc-tho-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7568,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Quang Trung - Gia Lai",
+   "ti_le": 0.14,
+   "cau": 14
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-thanh-khe-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 3926,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 5038,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 6802,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Trưng Vương - TP HCM",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 8273,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường chuyên Lê Thánh Tông - Đà Nẵng",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B096",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-thanh-khe-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 2980,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 3 - Thanh Hóa",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-12-nam-2024-2025-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9080,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Lê Hồng Phong - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-12-nam-2025-2026-truong-thcs-thpt-bau-ham-dong-nai",
+  "ket_luan": "khac",
+  "so_tu": 14040,
+  "best": {
+   "ten": "Đề kiểm tra lần 1 Toán 12 năm 2025 - 2026 trường THPT Mai Anh Tuấn - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6688,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường Khương Hạ - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-12-nam-2026-2027-truong-thpt-van-noi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 14595,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.12,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-12-nam-2024-2025-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 11809,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường Mỹ Việt - TP HCM",
+   "ti_le": 0.13,
+   "cau": 16
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-van-coc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7851,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-12-nam-2025-2026-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 12058,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường Mỹ Việt - TP HCM",
+   "ti_le": 0.13,
+   "cau": 16
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-12-nam-2026-2027-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 13992,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B097",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-on-tap-hk1-toan-12-nam-2025-2026-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 12266,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-hoc-ki-1-toan-12-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7782,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 5001,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 12073,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Hồ Thị Kỷ - Cà Mau",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-12-nam-2025-2026-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 6686,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "150-cau-hoi-on-tap-kiem-tra-giua-hoc-ki-2-mon-toan-12",
+  "ket_luan": "mo_ho",
+  "so_tu": 8397,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3296,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ky-2-toan-12-nam-2024-2025-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 8786,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Lộc Bình - Lạng Sơn",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ky-2-toan-12-nam-2024-2025-truong-thpt-xuan-dinh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9058,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lý Tự Trọng - Đà Nẵng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B098",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ki-2-toan-12-nam-2024-2025-truong-thpt-nguyen-viet-hong-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 1858,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ki-2-toan-12-nam-2024-2025-truong-thpt-son-dong-3-bac-giang",
+  "ket_luan": "khac",
+  "so_tu": 2015,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 8785,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-nguyen-viet-hong-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 1859,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-que-son-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 4196,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 10 - Đắk Lắk",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-tran-quang-khai-br-vt",
+  "ket_luan": "khac",
+  "so_tu": 8419,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 3408,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-bui-huu-nghia-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 13876,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 9593,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Lê Quý Đôn - Quảng Ngãi",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7800,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Lộc Bình - Lạng Sơn",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B099",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-nguyen-binh-khiem-2-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 4282,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán sở GD&ĐT Lào Cai",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-gk2-toan-12-nam-2024-2025-truong-thpt-chuyen-bao-loc-lam-dong",
+  "ket_luan": "mo_ho",
+  "so_tu": 8347,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán đợt 1 liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "on-tap-giua-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7188,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 3 trường THPT Lê Hồng Phong - Thái Nguyên",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "on-tap-giua-ki-2-toan-12-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5790,
+  "best": {
+   "ten": "Đề thi thử THPT QG môn Toán năm 2026 cụm trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "on-tap-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-phan-chau-trinh-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 4711,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Tĩnh",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "on-tap-toan-12-giua-ky-2-nam-2025-2026-truong-thpt-bao-loc-lam-dong",
+  "ket_luan": "mo_ho",
+  "so_tu": 11168,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hk2-toan-12-nam-2024-2025-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 11835,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán sở GD&ĐT Hà Tĩnh",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6872,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-2-toan-12-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 3580,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 3 trường THPT Lê Hồng Phong - Thái Nguyên",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B100",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-12-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 4963,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 3 - Đắk Lắk",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-12-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2840,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 1 sở GD&ĐT Nghệ An",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2024-2025-truong-thpt-phu-bai-hue",
+  "ket_luan": "khac",
+  "so_tu": 4639,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.05,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-bui-huu-nghia-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 16422,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 3 - Đắk Lắk",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 9706,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán cụm trường THPT số 1 - Hà Nội",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 7273,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 3 trường THPT Lê Hồng Phong - Thái Nguyên",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-trung-vuong-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 4465,
+  "best": {
+   "ten": "Đề ôn tập tốt nghiệp THPT 2026 môn Toán trường THPT Thanh Đa - TP HCM",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hk2-toan-12-nam-2024-2025-truong-thpt-bui-huu-nghia-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 4515,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-12-nam-2024-2025-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 7097,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Nông Cống 3 - Thanh Hóa",
+   "ti_le": 0.4,
+   "cau": 5
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B101",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-pham-phu-thu-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 4503,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-yen-vien-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 13555,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ky-2-toan-12-nam-2024-2025-truong-thpt-son-dong-3-bac-giang",
+  "ket_luan": "khac",
+  "so_tu": 2067,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ky-2-toan-12-nam-2024-2025-truong-thpt-xuan-dinh-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 18805,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.44,
+   "cau": 9
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ky-2-toan-12-nam-2024-2025-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 18450,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ky-2-toan-12-nam-2025-2026-truong-thpt-dai-mo-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 11014,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 trường THPT Lê Quý Đôn - Hà Nội",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ky-2-toan-12-nam-2025-2026-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 18622,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-toan-12-hoc-ki-2-nam-2024-2025-truong-thpt-chuyen-bao-loc-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 10261,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "on-tap-cuoi-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 8325,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "on-tap-cuoi-ki-2-toan-12-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9560,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 2 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B102",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "tai-lieu-on-tap-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-tran-phu-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 12600,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "de-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2025-mon-toan",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "de-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2026-lan-2-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 4580,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 liên trường THPT - Hải Phòng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "de-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2026-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 2400,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "huong-dan-giai-de-chinh-thuc-ky-thi-tot-nghiep-thpt-nam-2026-mon-toan",
+  "ket_luan": "mo_ho",
+  "so_tu": 25616,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Tĩnh",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "huong-dan-giai-de-chinh-thuc-tot-nghiep-thpt-nam-2025-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 27007,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 1 sở GD&ĐT Thái Nguyên",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B103",
+  "folder": "Đề chính thức THPT",
+  "ten_bai": "tong-hop-88-de-thi-thpt-quoc-gia-mon-toan-cua-bo-gddt-2005-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 172501,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.22,
+   "cau": 9
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B104",
+  "folder": "Thi thử THPT",
+  "ten_bai": "05-de-toan-nang-cao-huong-den-ki-thi-tot-nghiep-thpt-quoc-gia-nam-2025",
+  "ket_luan": "khac",
+  "so_tu": 59196,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Trần Phú - TP HCM",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B104",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-khao-sat-chat-luong-thang-2-toan-12-co-dap-an-va-loi-giai",
+  "ket_luan": "khac",
+  "so_tu": 53084,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Hùng Vương - Quảng Nam",
+   "ti_le": 0.14,
+   "cau": 14
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B104",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-khao-sat-chat-luong-thang-3-toan-12-co-dap-an-va-loi-giai",
+  "ket_luan": "mo_ho",
+  "so_tu": 45093,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B104",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-tn-thpt-2025-mon-toan-truong-thpt-pham-phu-thu-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 95446,
+  "best": {
+   "ten": "Đề khảo sát Toán thi TN THPT 2026 lần 2 trường THPT Mường Lát - Thanh Hóa",
+   "ti_le": 0.29,
+   "cau": 14
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-tham-khao-thi-tot-nghiep-thpt-2025-mon-toan-so-gddt-hue",
+  "ket_luan": "mo_ho",
+  "so_tu": 87806,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2024-2025-truong-thpt-nong-cong-4-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 9776,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Đặng Huy Trứ - TT Huế",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-dau-nam-2024-2025-truong-thpt-yen-mo-b-ninh-binh",
+  "ket_luan": "khac",
+  "so_tu": 5612,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-dau-nam-2025-2026-truong-thpt-yen-mo-b-ninh-binh",
+  "ket_luan": "mo_ho",
+  "so_tu": 6059,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 đầu năm 2025 - 2026 trường THPT Yên Mô B - Ninh Bình",
+   "ti_le": 1,
+   "cau": 2
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2025-2026-cum-cac-truong-thpt-chuyen-phu-tho",
+  "ket_luan": "trung",
+  "so_tu": 7632,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 cụm các trường THPT chuyên - Phú Thọ",
+   "ti_le": 0.91,
+   "cau": 11
+  },
+  "nhi": 0.1,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2025-lan-2-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 4319,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Trưng Vương - TP HCM",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kscl-toan-12-on-thi-tn-thpt-2026-truong-thpt-thieu-hoa-thanh-hoa",
+  "ket_luan": "trung",
+  "so_tu": 13702,
+  "best": {
+   "ten": "Đề KSCL Toán 12 ôn thi TN THPT 2026 trường THPT Thiệu Hóa - Thanh Hóa",
+   "ti_le": 0.91,
+   "cau": 11
+  },
+  "nhi": 0.14,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B105",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-thi-tot-nghiep-thpt-2025-mon-toan-truong-thpt-hung-vuong-binh-thuan",
+  "ket_luan": "khac",
+  "so_tu": 9723,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán lần 3 trường THPT Bá Thước - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-thi-tot-nghiep-thpt-2026-mon-toan-truong-thpt-marie-curie-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 8430,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 1,
+   "cau": 12
+  },
+  "nhi": 0.14,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-tham-khao-thi-tn-thpt-2025-mon-toan-so-gddt-ba-ria-vung-tau",
+  "ket_luan": "khac",
+  "so_tu": 9918,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-cum-cac-truong-so-4-hai-duong",
+  "ket_luan": "mo_ho",
+  "so_tu": 16050,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường THPT Bãi Cháy - Quảng Ninh",
+   "ti_le": 0.31,
+   "cau": 13
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-khoi-thpt-huyen-cam-xuyen-ha-tinh",
+  "ket_luan": "khac",
+  "so_tu": 5137,
+  "best": {
+   "ten": "Đề kiểm tra lần 1 Toán 12 năm 2025 - 2026 trường THPT Mai Anh Tuấn - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-truong-thpt-kinh-mon-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 6437,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Văn Lang - Hà Nội",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-truong-thpt-luong-tai-2-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 6651,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 1 sở GD&ĐT Nghệ An",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-cum-truong-thpt-tuyen-quang-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 7516,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-thpt-chuyen-dh-vinh-nghe-an",
+  "ket_luan": "mo_ho",
+  "so_tu": 5651,
+  "best": {
+   "ten": "Đề kiểm tra Toán 12 tháng 11 năm 2025 trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM (2)",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-3-truong-thpt-ba-thuoc-thanh-hoa",
+  "ket_luan": "mo_ho",
+  "so_tu": 14106,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường Lê Thánh Tông - TP HCM",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-pt-dtnt-thpt-tinh-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 6332,
+  "best": {
+   "ten": "Đề khảo sát trực tuyến Toán 12 năm 2025 - 2026 sở GD&ĐT Quảng Ninh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-gio-linh-quang-tri",
+  "ket_luan": "mo_ho",
+  "so_tu": 12784,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.38,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-tran-quang-khai-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 6673,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 1 trường THPT Mộ Đức 2 - Quảng Ngãi",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-cum-cac-truong-thpt-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 7647,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 liên trường THPT - Hải Phòng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-cum-truong-thpt-tp-nam-dinh",
+  "ket_luan": "khac",
+  "so_tu": 7300,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 10 - Đắk Lắk",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-1-so-gddt-binh-phuoc",
+  "ket_luan": "khac",
+  "so_tu": 10800,
+  "best": {
+   "ten": "Đề khảo sát trực tuyến Toán 12 năm 2025 - 2026 sở GD&ĐT Quảng Ninh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-so-gddt-binh-phuoc",
+  "ket_luan": "mo_ho",
+  "so_tu": 13731,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-so-gddt-hau-giang",
+  "ket_luan": "khac",
+  "so_tu": 8110,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-3-cum-truong-thpt-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 5460,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán sở GD&ĐT Lâm Đồng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lien-truong-thpt-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 11131,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-so-gddt-ha-tinh",
+  "ket_luan": "khac",
+  "so_tu": 15098,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Văn Lang - Hà Nội",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-hai-lang-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 6519,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 7110,
+  "best": {
+   "ten": "Đề khảo sát chất lượng Toán 12 năm 2025 - 2026 sở GD&ĐT Hà Nội",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 14087,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Lang Chánh - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-kon-tum",
+  "ket_luan": "khac",
+  "so_tu": 12705,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Bảo Thắng 3 - Lào Cai",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B107",
+  "folder": "Thi thử THPT",
+  "ten_bai": "phat-trien-de-tham-khao-tn-thpt-2025-mon-toan-so-gddt-thai-nguyen",
+  "ket_luan": "mo_ho",
+  "so_tu": 47646,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.44,
+   "cau": 9
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "05-de-on-thi-tot-nghiep-thpt-nam-2025-mon-toan-bam-sat-de-minh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 29747,
+  "best": {
+   "ten": "Đề thi thử THPT QG môn Toán năm 2026 cụm trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "10-de-on-thi-tot-nghiep-thpt-2025-mon-toan-co-dap-an-va-loi-giai-chi-tiet",
+  "ket_luan": "khac",
+  "so_tu": 61981,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "12-de-thi-thu-bam-sat-cau-truc-de-tham-khao-tn-thpt-2025-mon-toan",
+  "ket_luan": "trung",
+  "so_tu": 64548,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Nông Cống 3 - Thanh Hóa",
+   "ti_le": 1,
+   "cau": 5
+  },
+  "nhi": 0.33,
+  "so_de_khop": 1,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "20-de-thi-thu-tot-nghiep-thpt-quoc-gia-nam-2026-mon-toan-hoang-xuan-nhan",
+  "ket_luan": "mo_ho",
+  "so_tu": 47709,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THCS-THPT Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.27,
+   "cau": 11
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "40-de-on-thi-tot-nghiep-thpt-2026-mon-toan-co-loi-giai-chi-tiet-truong-ngoc-vy",
+  "ket_luan": "mo_ho",
+  "so_tu": 249561,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.24,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "50-de-on-tap-ky-thi-tot-nghiep-thpt-mon-toan-nam-hoc-2025-2026",
+  "ket_luan": "trung",
+  "so_tu": 97342,
+  "best": {
+   "ten": "Đề thi KTCL Toán 12 lần 1 năm 2025 - 2026 trường THPT chuyên KHTN - Hà Nội",
+   "ti_le": 0.7,
+   "cau": 10
+  },
+  "nhi": 0.6,
+  "so_de_khop": 3,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-10-de-phat-trien-de-minh-hoa-tot-nghiep-thpt-nam-2025-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 24980,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-130-de-on-thi-thpt-quoc-gia-mon-toan-nam-hoc-2025-2026-co-dap-an",
+  "ket_luan": "mo_ho",
+  "so_tu": 275235,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.5,
+   "cau": 6
+  },
+  "nhi": 0.4,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-cung-co-kien-thuc-tot-nghiep-thpt-nam-2025-mon-toan-phan-1",
+  "ket_luan": "mo_ho",
+  "so_tu": 116338,
+  "best": {
+   "ten": "Đề kiểm tra thường xuyên Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.5,
+   "cau": 8
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-cung-co-kien-thuc-tot-nghiep-thpt-nam-2025-mon-toan-phan-2",
+  "ket_luan": "mo_ho",
+  "so_tu": 114076,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 ôn thi TN THPT 2026 trường THPT Hoằng Hóa 3 - Thanh Hóa",
+   "ti_le": 0.4,
+   "cau": 10
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-cung-co-kien-thuc-tot-nghiep-thpt-nam-2025-mon-toan-phan-3",
+  "ket_luan": "mo_ho",
+  "so_tu": 113185,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 3 - Đắk Lắk",
+   "ti_le": 0.33,
+   "cau": 9
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-minh-hoa-tot-nghiep-thpt-quoc-gia-mon-toan-cau-truc-moi-nam-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 93967,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 2 môn Toán trường Lê Thánh Tông - TP HCM",
+   "ti_le": 0.3,
+   "cau": 10
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thi-thpt-quoc-gia-mon-toan-nam-hoc-2025-2026-muc-tieu-5",
+  "ket_luan": "mo_ho",
+  "so_tu": 41420,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 1 sở GD&ĐT Sơn La",
+   "ti_le": 0.5,
+   "cau": 8
+  },
+  "nhi": 0.36,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thi-thpt-quoc-gia-mon-toan-nam-hoc-2025-2026-muc-tieu-9",
+  "ket_luan": "mo_ho",
+  "so_tu": 74921,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 2 môn Toán trường Lê Thánh Tông - TP HCM",
+   "ti_le": 0.3,
+   "cau": 10
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thi-tot-nghiep-thpt-2025-mon-toan-cau-truc-moi-gdpt-2018",
+  "ket_luan": "mo_ho",
+  "so_tu": 18429,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 đợt 1 môn Toán trường THPT Đông Đô - Hà Nội",
+   "ti_le": 0.35,
+   "cau": 20
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thi-tot-nghiep-thpt-mon-toan-nam-2026-pham-van-nghiep",
+  "ket_luan": "mo_ho",
+  "so_tu": 91354,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 2 sở GD&ĐT Nghệ An",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thi-tot-nghiep-thpt-nam-2025-mon-toan-muc-do-co-ban",
+  "ket_luan": "khac",
+  "so_tu": 37714,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Nguyễn Thị Minh Khai - Hà Nội",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-thpt-quoc-gia-mon-toan-nam-2026-phan-2-le-minh-kha",
+  "ket_luan": "mo_ho",
+  "so_tu": 74721,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 2 sở GD&ĐT Sơn La",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B108",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-tap-tot-nghiep-thpt-nam-2025-mon-toan-muc-do-5",
+  "ket_luan": "khac",
+  "so_tu": 26706,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 trường THPT An Dương - Hải Phòng",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-thpt-quoc-gia-nam-2025-mon-toan-cao-thanh-phuc",
+  "ket_luan": "mo_ho",
+  "so_tu": 111137,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-thpt-quoc-gia-nam-2026-mon-toan-phan-nhat-linh",
+  "ket_luan": "khac",
+  "so_tu": 21993,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường Khương Hạ - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-tot-nghiep-thpt-nam-2025-mon-toan-giai-doan-1",
+  "ket_luan": "trung",
+  "so_tu": 60384,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Nông Cống 3 - Thanh Hóa",
+   "ti_le": 0.8,
+   "cau": 5
+  },
+  "nhi": 0.25,
+  "so_de_khop": 1,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-tot-nghiep-thpt-nam-2026-mon-toan-phan-2-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 35929,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 trường THPT An Dương - Hải Phòng",
+   "ti_le": 0.29,
+   "cau": 7
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-on-thi-tot-nghiep-thpt-nam-2026-mon-toan-phan-3-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 53185,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THCS-THPT Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.45,
+   "cau": 11
+  },
+  "nhi": 0.42,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-phat-trien-de-minh-hoa-tot-nghiep-thpt-nam-2025-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 19051,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "bo-de-tham-khao-tn-thpt-nam-2026-mon-toan-so-gddt-tp-ho-chi-minh",
+  "ket_luan": "trung",
+  "so_tu": 31790,
+  "best": {
+   "ten": "Đề thi KTCL Toán 12 lần 1 năm 2025 - 2026 trường THPT chuyên KHTN - Hà Nội",
+   "ti_le": 0.9,
+   "cau": 10
+  },
+  "nhi": 0.38,
+  "so_de_khop": 1,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-danh-gia-toan-12-lan-1-nam-2024-2025-truong-thpt-trieu-quang-phuc-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 3676,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Gia Lai",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-danh-gia-toan-12-nam-2026-2027-truong-thcsthpt-nguyen-khuyen-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 7059,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Hồ Thị Kỷ - Cà Mau",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-1-nam-2024-2025-so-gddt-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 7909,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-2-nam-2024-2025-so-gddt-ninh-binh",
+  "ket_luan": "khac",
+  "so_tu": 5349,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-2-nam-2024-2025-so-gddt-phu-tho",
+  "ket_luan": "khac",
+  "so_tu": 1968,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 3 sở GD&ĐT Sơn La",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-2-nam-2024-2025-so-gddt-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 5978,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-2-nam-2024-2025-so-gddt-vinh-phuc",
+  "ket_luan": "mo_ho",
+  "so_tu": 6872,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.33,
+   "cau": 6
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-3-nam-2024-2025-so-gddt-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 1809,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-nam-2024-2025-so-gddt-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5372,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-nam-2024-2025-so-gddt-thai-binh",
+  "ket_luan": "khac",
+  "so_tu": 6411,
+  "best": {
+   "ten": "Đề kiểm tra Toán 12 tháng 9 năm 2025 trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM (1)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-nam-2025-2026-so-gddt-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 4049,
+  "best": {
+   "ten": "Đề khảo sát chất lượng Toán 12 năm 2025 - 2026 sở GD&ĐT Hà Nội",
+   "ti_le": 0.4,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2024-2025-truong-thpt-ly-thuong-kiet-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4043,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Yên Lạc - Vĩnh Phúc",
+   "ti_le": 0.06,
+   "cau": 16
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B109",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2024-2025-truong-thpt-sao-nam-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 4058,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Tân Yên 1 - Bắc Ninh",
+   "ti_le": 0.06,
+   "cau": 16
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2024-2025-truong-thpt-thach-thanh-1-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 2894,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Đào Duy Từ - Thanh Hóa",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2024-2025-truong-thpt-yen-lac-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 2811,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Duy Tân - Quảng Ngãi",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-2-toan-12-nam-2024-2025-truong-thpt-ly-thuong-kiet-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9085,
+  "best": {
+   "ten": "Đề KSCL Toán 12 ôn thi TN THPT 2026 trường THPT Thiệu Hóa - Thanh Hóa",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-3-toan-12-nam-2024-2025-truong-thpt-minh-chau-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 2325,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 cụm trường THPT QV1-TT1-LVT - Bắc Ninh",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-5-toan-12-nam-2024-2025-truong-thpt-yen-lac-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 1808,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-nang-luc-toan-12-nam-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 2273,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Ngô Quyền - TP HCM",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-thi-tot-nghiep-thpt-2025-mon-toan-so-gddt-hai-phong",
+  "ket_luan": "khac",
+  "so_tu": 8412,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Phan Bội Châu - Nghệ An",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-tn-thpt-2026-mon-toan-truong-thpt-nguyen-du-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 2847,
+  "best": {
+   "ten": "Đề khảo sát TN THPT 2026 môn Toán trường THPT Nguyễn Du - TP HCM",
+   "ti_le": 0.5,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-1-nam-2024-2025-truong-thpt-chuyen-ha-long-quang-ninh",
+  "ket_luan": "khac",
+  "so_tu": 3519,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-1-nam-2025-2026-cum-cac-truong-thpt-bac-ninh",
+  "ket_luan": "trung",
+  "so_tu": 2940,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 cụm các trường THPT - Bắc Ninh",
+   "ti_le": 0.55,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-1-nam-2026-2027-lien-truong-thpt-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 1799,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-1-nam-2026-2027-truong-thpt-nguyen-dang-dao-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 2097,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-2-nam-2024-2025-cum-cac-truong-thpt-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 4281,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 đợt 2 năm 2025 - 2026 liên trường THPT cụm 09 - Hà Nội",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-2-nam-2024-2025-so-gddt-thai-binh",
+  "ket_luan": "khac",
+  "so_tu": 2148,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Hồ Thị Kỷ - Cà Mau",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-3-nam-2024-2025-cum-cac-truong-thpt-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 4413,
+  "best": {
+   "ten": "Đề KSCL Toán 12 ôn thi TN THPT 2026 trường THPT Thiệu Hóa - Thanh Hóa",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-3-nam-2024-2025-truong-thpt-nguyen-gia-thieu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2469,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-3-nam-2025-2026-truong-khuong-ha-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1353,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-3-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 672,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B110",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-cum-cam-khe-yen-lap-phu-tho",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-dot-1-so-gddt-nghe-an",
+  "ket_luan": "mo_ho",
+  "so_tu": 12328,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-dot-2-so-gddt-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 10765,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-dot-3-so-gddt-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 4414,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Bình Giang - Hải Dương",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-truong-thpt-chuyen-lam-son-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 8355,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 2 sở GD&ĐT Nghệ An",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-thpt-2025-lan-1-cum-thpt-nguyen-hien-le-hong-phong-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 1981,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 2 sở GD&ĐT Nghệ An",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-tot-nghiep-thpt-2025-mon-toan-lan-2-so-gddt-hai-phong",
+  "ket_luan": "khac",
+  "so_tu": 7398,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Gia Định - TP HCM",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-dinh-ky-mon-toan-nam-2025-truong-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2900,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-lan-1-toan-12-nam-2024-2025-truong-thpt-nguyen-viet-xuan-vinh-phuc",
+  "ket_luan": "khac",
+  "so_tu": 1963,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-lan-2-toan-12-nam-2024-2025-truong-thpt-ngo-si-lien-bac-giang",
+  "ket_luan": "khac",
+  "so_tu": 1945,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 3 trường THPT Trần Phú - Quảng Ninh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-06-10-2024",
+  "ket_luan": "khac",
+  "so_tu": 1700,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Ngô Quyền - Đồng Nai",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-16-02-2025",
+  "ket_luan": "khac",
+  "so_tu": 1928,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-16-03-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 4369,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT An Lương Đông - Huế",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-24-11-2024",
+  "ket_luan": "khac",
+  "so_tu": 4340,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Hồ Thị Kỷ - Cà Mau",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-thcsthpt-nguyen-khuyen-tp-hcm-13-09-2024",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-thcsthpt-nguyen-khuyen-tp-hcm-27-08-2024",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2026-2027-truong-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 7334,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Bắc Yên Thành - Nghệ An",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-9-nam-2026-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 7146,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường THPT Kim Liên - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kscl-toan-12-thi-tn-thpt-2025-lan-2-truong-thpt-khoa-hoc-giao-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1883,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kscl-toan-12-thi-tn-thpt-2025-truong-thpt-yen-dinh-1-thanh-hoa",
+  "ket_luan": "khac",
+  "so_tu": 5308,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B111",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kscl-toan-12-thi-tn-thpt-2026-lan-1-truong-thpt-nguyen-quan-nho-thanh-hoa",
+  "ket_luan": "mo_ho",
+  "so_tu": 8300,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.4,
+   "cau": 10
+  },
+  "nhi": 0.33,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-tap-tot-nghiep-thpt-2025-mon-toan-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 9391,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-tap-tot-nghiep-thpt-2026-mon-toan-truong-thpt-thanh-da-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 6175,
+  "best": {
+   "ten": "Đề ôn tập tốt nghiệp THPT 2026 môn Toán trường THPT Thanh Đa - TP HCM",
+   "ti_le": 0.7,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-thi-tot-nghiep-thpt-2026-mon-toan-truong-thpt-luong-the-vinh-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 2020,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Lương Thế Vinh - TP HCM",
+   "ti_le": 0.54,
+   "cau": 13
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-thi-tot-nghiep-thpt-2026-mon-toan-truong-thpt-nguyen-thi-dieu-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 2054,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Nguyễn Thị Diệu - TP HCM",
+   "ti_le": 0.5,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-on-thi-tot-nghiep-thpt-2026-mon-toan-truong-thpt-nong-cong-3-thanh-hoa",
+  "ket_luan": "trung",
+  "so_tu": 4295,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Nông Cống 3 - Thanh Hóa",
+   "ti_le": 1,
+   "cau": 5
+  },
+  "nhi": 0.11,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-tap-huan-thi-tot-nghiep-thpt-2025-mon-toan-so-gddt-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 7015,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.11,
+   "cau": 18
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-tham-khao-ky-thi-tot-nghiep-thpt-tu-nam-2025-mon-toan",
+  "ket_luan": "khac",
+  "so_tu": 3062,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-tham-khao-tn-thpt-2025-mon-toan-truong-chuyen-luong-the-vinh-dong-nai",
+  "ket_luan": "khac",
+  "so_tu": 10956,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-dien-tap-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-dong-thap",
+  "ket_luan": "khac",
+  "so_tu": 6177,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-ktcl-lan-1-toan-12-nam-2024-2025-truong-thpt-chuyen-khtn-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-2025-lan-1-mon-toan-truong-thpt-thuan-thanh-1-2-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 3131,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 trường THPT An Dương - Hải Phòng",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-2025-lan-3-mon-toan-lien-truong-thpt-nqa-gvc-ninh-binh",
+  "ket_luan": "khac",
+  "so_tu": 5925,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-cum-cac-truong-thpt-tp-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 1989,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 sở GD&ĐT Hưng Yên",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-cum-chuyen-mon-so-3-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 6275,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-truong-chuyen-le-khiet-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 1865,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-1-mon-toan-truong-thpt-do-luong-1-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 4294,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Thanh Miện 2 - Hải Phòng",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-2-mon-toan-cum-cac-truong-thpt-tp-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 1807,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Đào Duy Từ - Thanh Hóa",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-lan-2-mon-toan-cum-chuyen-mon-so-3-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 5120,
+  "best": {
+   "ten": "Đề kiểm tra lần 1 Toán 12 năm 2025 - 2026 trường THPT Mai Anh Tuấn - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-dot-1-truong-chuyen-hung-vuong-phu-tho",
+  "ket_luan": "khac",
+  "so_tu": 2056,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B112",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-1-truong-thpt-ngo-quyen-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-lien-truong-thpt-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 3826,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 2 sở GD&ĐT Hưng Yên",
+   "ti_le": 0.06,
+   "cau": 17
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-so-gddt-ba-ria-vung-tau",
+  "ket_luan": "khac",
+  "so_tu": 4185,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Ngô Gia Tự - Đắk Lắk",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2472,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 2 sở GD&ĐT Nghệ An",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-thpt-anh-son-3-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 1918,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 3 - Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-thpt-chuyen-khtn-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1663,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2174,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Trần Đại Nghĩa - TP HCM",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-2-truong-thpt-le-quang-chi-ha-tinh",
+  "ket_luan": "khac",
+  "so_tu": 12280,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Phan Đình Phùng - Hà Nội",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-lan-5-truong-thpt-quy-hop-2-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 2572,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 cụm chuyên môn số 10 - Đắk Lắk",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thcsthpt-le-loi-binh-thuan",
+  "ket_luan": "khac",
+  "so_tu": 2240,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Lộc Bình - Lạng Sơn",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-chuyen-phan-boi-chau-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 6404,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường Thực Nghiệm Khoa Học Giáo Dục - Hà Nội",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-ngo-gia-tu-phu-yen",
+  "ket_luan": "khac",
+  "so_tu": 6719,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 ôn thi TN THPT 2026 trường THPT Hoằng Hóa 3 - Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-nguyen-huu-than-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 1617,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-nguyen-thuong-hien-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-phan-dinh-phung-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2996,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-sao-nam-ho-nghinh-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 4566,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 đợt 1 môn Toán trường THPT Đông Đô - Hà Nội",
+   "ti_le": 0.05,
+   "cau": 20
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2025-mon-toan-truong-thpt-tran-quoc-tuan-phu-yen",
+  "ket_luan": "khac",
+  "so_tu": 1901,
+  "best": {
+   "ten": "Đề khảo sát TN THPT năm 2026 môn Toán cụm 09 trường THPT - Phú Thọ",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-cum-truong-thpt-so-7-ninh-binh",
+  "ket_luan": "khac",
+  "so_tu": 243,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-chuyen-luong-van-chanh-dak-lak",
+  "ket_luan": "mo_ho",
+  "so_tu": 7224,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường chuyên Lương Văn Chánh - Đắk Lắk",
+   "ti_le": 0.38,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B113",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-le-thanh-tong-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 6869,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường Lê Thánh Tông - TP HCM",
+   "ti_le": 0.6,
+   "cau": 15
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 2268,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM",
+   "ti_le": 0.58,
+   "cau": 12
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thcs-thpt-nguyen-khuyen-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 6847,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THCS-THPT Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.82,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-chuyen-ha-long-quang-ninh",
+  "ket_luan": "trung",
+  "so_tu": 1776,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Hạ Long - Quảng Ninh",
+   "ti_le": 0.63,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-chuyen-le-hong-phong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 130,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-chuyen-phan-boi-chau-nghe-an",
+  "ket_luan": "trung",
+  "so_tu": 3085,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Phan Bội Châu - Nghệ An",
+   "ti_le": 0.5,
+   "cau": 10
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-chuyen-tran-dai-nghia-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 133,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-le-quy-don-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 4939,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Lê Quý Đôn - Quảng Ngãi",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-nguyen-thi-minh-khai-khanh-hoa",
+  "ket_luan": "trung",
+  "so_tu": 5656,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Thị Minh Khai - Khánh Hòa",
+   "ti_le": 0.63,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-nguyen-van-troi-ha-tinh",
+  "ket_luan": "trung",
+  "so_tu": 2109,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Văn Trỗi - Hà Tĩnh",
+   "ti_le": 0.44,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-truong-thpt-van-lang-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-nam-2025-mon-toan-truong-thpt-chuyen-phan-boi-chau-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 4451,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-toan-tn-thpt-2025-lan-2-cum-truong-thpt-tp-chi-linh-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 1931,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 3 trường THPT Trần Phú - Quảng Ninh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-toan-tn-thpt-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 7026,
+  "best": {
+   "ten": "Đề kiểm tra lần 1 Toán 12 năm 2025 - 2026 trường THPT Mai Anh Tuấn - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-toan-tn-thpt-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-15-06-2025",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-toan-tot-nghiep-thpt-2025-lan-1-cum-cac-truong-thpt-hai-duong",
+  "ket_luan": "khac",
+  "so_tu": 2872,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lê Quý Đôn - Ninh Bình",
+   "ti_le": 0.06,
+   "cau": 17
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-lan-1-mon-toan-so-gddt-bac-giang",
+  "ket_luan": "mo_ho",
+  "so_tu": 2609,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 3 - Đắk Lắk",
+   "ti_le": 0.22,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-lan-1-mon-toan-so-gddt-nam-dinh",
+  "ket_luan": "khac",
+  "so_tu": 2037,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Gia Định - TP HCM",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-lan-2-mon-toan-so-gddt-bac-giang",
+  "ket_luan": "khac",
+  "so_tu": 2637,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán đợt 2 sở GD&ĐT Nghệ An",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-lan-2-mon-toan-so-gddt-nam-dinh",
+  "ket_luan": "khac",
+  "so_tu": 2460,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B114",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-cum-chuyen-mon-so-10-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 7709,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-dot-1-so-gddt-thai-nguyen",
+  "ket_luan": "mo_ho",
+  "so_tu": 7915,
+  "best": {
+   "ten": "Đề kiểm tra Toán 12 tháng 9 năm 2025 trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM (2)",
+   "ti_le": 0.33,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.11,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-dot-2-so-gddt-thai-nguyen",
+  "ket_luan": "khac",
+  "so_tu": 7657,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-1-so-gddt-hau-giang",
+  "ket_luan": "khac",
+  "so_tu": 3439,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 1 năm 2025 - 2026 liên trường THPT - Hải Phòng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-1-so-gddt-lai-chau",
+  "ket_luan": "khac",
+  "so_tu": 7150,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Gia Định - TP HCM",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-cum-truong-thpt-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 4454,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-lien-truong-thpt-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 11839,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường Khương Hạ - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-so-gddt-hoa-binh",
+  "ket_luan": "khac",
+  "so_tu": 9036,
+  "best": {
+   "ten": "Đề khảo sát Toán thi TN THPT 2026 lần 2 trường THPT Mường Lát - Thanh Hóa",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0.03,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lan-2-so-gddt-son-la",
+  "ket_luan": "khac",
+  "so_tu": 7850,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán cụm 13 trường THPT - Hải Phòng",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lien-truong-thpt-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 3975,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Thanh Miện 2 - Hải Phòng",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-lien-truong-thpt-tien-giang",
+  "ket_luan": "khac",
+  "so_tu": 2142,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Lê Hồng Phong - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-so-gddt-ha-tinh-online",
+  "ket_luan": "khac",
+  "so_tu": 1685,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 1 Toán 12 năm 2025 - 2026 trường THPT Việt Đức - Hà Nội",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-le-thanh-tong-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2219,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 2 sở GD&ĐT Hưng Yên",
+   "ti_le": 0.12,
+   "cau": 17
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-chuyen-khoa-hoc-hue",
+  "ket_luan": "mo_ho",
+  "so_tu": 2882,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2400,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường Đông Thành - Vĩnh Long",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-le-quy-don-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2399,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT chuyên Lê Hồng Phong - TP HCM",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-mo-duc-2-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 2100,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-nguyen-cong-tru-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2054,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Lang Chánh - Thanh Hóa",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-thpt-thi-xa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 2359,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B115",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2025-mon-toan-truong-tran-cao-van-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 2032,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán trường THPT Nguyễn Trung Thiên - Hà Tĩnh",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-lan-1-so-gddt-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 672,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-marie-curie-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-gia-dinh-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 2133,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Gia Định - TP HCM",
+   "ti_le": 0.7,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 1,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-my-dinh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2687,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Mỹ Đình - Hà Nội",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-ngo-quyen-tp-hcm",
+  "ket_luan": "trung",
+  "so_tu": 1626,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Ngô Quyền - TP HCM",
+   "ti_le": 0.55,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "bo_vi_noctorium": true
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-nguyen-trung-truc-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 116,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-phan-dang-luu-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-phan-huy-chu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2574,
+  "best": {
+   "ten": "Đề kiểm tra Toán 12 tháng 9 năm 2025 trường Nguyễn Khuyến & Lê Thánh Tông - TP HCM (1)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-truong-thpt-tran-phu-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 119,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-cum-7-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 3378,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-an-giang",
+  "ket_luan": "khong_doc",
+  "so_tu": 2,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-ben-tre",
+  "ket_luan": "khac",
+  "so_tu": 6550,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 3 năm 2025 - 2026 trường THPT Kim Liên - Hà Nội",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-binh-duong",
+  "ket_luan": "khac",
+  "so_tu": 1840,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 lần 2 năm 2025 - 2026 sở GD&ĐT Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-ca-mau",
+  "ket_luan": "mo_ho",
+  "so_tu": 4277,
+  "best": {
+   "ten": "Đề khảo sát Toán thi TN THPT 2026 lần 2 trường THPT Mường Lát - Thanh Hóa",
+   "ti_le": 0.29,
+   "cau": 14
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 7663,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 8014,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán liên trường THPT - Hà Tĩnh",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-dong-nai",
+  "ket_luan": "khac",
+  "so_tu": 21621,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-ha-tinh",
+  "ket_luan": "khac",
+  "so_tu": 6533,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-hue",
+  "ket_luan": "khac",
+  "so_tu": 8033,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường THPT Bãi Cháy - Quảng Ninh",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B116",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-hung-yen",
+  "ket_luan": "khac",
+  "so_tu": 7334,
+  "best": {
+   "ten": "Đề thi KSCL Toán 12 lần 2 năm 2025 - 2026 trường THPT Thạch Thành 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-khanh-hoa",
+  "ket_luan": "mo_ho",
+  "so_tu": 4687,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán liên trường THPT - Nghệ An",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-kien-giang",
+  "ket_luan": "khac",
+  "so_tu": 1607,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường Thực Nghiệm Khoa Học Giáo Dục - Hà Nội",
+   "ti_le": 0.08,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 2240,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán trường THPT Trần Phú - TP HCM",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-lao-cai",
+  "ket_luan": "khac",
+  "so_tu": 936,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-long-an",
+  "ket_luan": "khac",
+  "so_tu": 1605,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Dương Quảng Hàm - Hưng Yên",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-phu-yen",
+  "ket_luan": "khac",
+  "so_tu": 1917,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-quang-binh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 1660,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 cụm chuyên môn số 10 - Đắk Lắk",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-quang-ninh",
+  "ket_luan": "khac",
+  "so_tu": 12051,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán lần 1 sở GD&ĐT Sơn La",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-soc-trang",
+  "ket_luan": "khac",
+  "so_tu": 2232,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-tien-giang",
+  "ket_luan": "khac",
+  "so_tu": 4645,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Hùng Vương - Quảng Nam",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-tra-vinh",
+  "ket_luan": "khac",
+  "so_tu": 1802,
+  "best": {
+   "ten": "Đề khảo sát lần 2 Toán 12 năm 2025 - 2026 trường THPT Triệu Sơn 1 - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-so-gddt-yen-bai",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2025-mon-toan-truong-thpt-kon-tum",
+  "ket_luan": "khac",
+  "so_tu": 2504,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "loi-giai-chi-tiet-de-tham-khao-ky-thi-tot-nghiep-thpt-mon-toan-tu-nam-2025",
+  "ket_luan": "khac",
+  "so_tu": 4232,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 lần 1 môn Toán trường THPT Cửa Lò - Nghệ An",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "loi-giai-chi-tiet-de-thi-thu-tn-thpt-2025-mon-toan-cua-cac-so-gddt-phan-2",
+  "ket_luan": "khac",
+  "so_tu": 63422,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2025 - 2026 trường THPT Lê Lợi - Quảng Ngãi",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "loi-giai-chi-tiet-de-thi-thu-tot-nghiep-thpt-2025-mon-toan-cua-cac-so-gddt",
+  "ket_luan": "mo_ho",
+  "so_tu": 64338,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán lần 2 trường THPT Lê Hồng Phong - Thanh Hóa",
+   "ti_le": 0.5,
+   "cau": 6
+  },
+  "nhi": 0.3,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "tuyen-tap-10-de-thi-thu-thpt-quoc-gia-mon-toan-nam-hoc-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 31962,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm chuyên môn số 3 - Đắk Lắk",
+   "ti_le": 0.33,
+   "cau": 9
+  },
+  "nhi": 0.23,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "tuyen-tap-15-de-on-thi-tot-nghiep-thpt-nam-2026-mon-toan-muc-do-6-7-diem",
+  "ket_luan": "mo_ho",
+  "so_tu": 31358,
+  "best": {
+   "ten": "Đề ôn thi tốt nghiệp THPT 2026 môn Toán trường THPT Marie Curie - TP HCM",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B117",
+  "folder": "Thi thử THPT",
+  "ten_bai": "tuyen-tap-50-de-on-thi-thpt-quoc-gia-2026-mon-toan-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 113546,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.3,
+   "cau": 10
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-dot-1-nam-2025-2026-so-gddt-phu-tho",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-chat-luong-toan-12-lan-1-nam-2024-2025-so-gddt-thanh-hoa",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-he-toan-12-nam-2024-2025-truong-chuyen-le-hong-phong-nam-dinh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-lan-1-toan-12-nam-2025-2026-truong-thpt-chuyen-bac-ninh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-tn-thpt-nam-2026-mon-toan-cum-09-truong-thpt-phu-tho",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-1-nam-2025-2026-truong-thpt-le-quy-don-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-2-nam-2025-2026-so-gddt-thanh-hoa",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-2-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-3-nam-2025-2026-truong-thpt-kim-lien-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 131,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-lan-4-nam-2024-2025-truong-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2024-2025-truong-thpt-nguyen-quoc-trinh-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-khao-sat-toan-12-nam-2025-2026-truong-thpt-cau-giay-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-khao-sat-toan-12-nam-2025-so-gddt-binh-thuan",
+  "ket_luan": "khong_doc",
+  "so_tu": 2,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-thuong-xuyen-toan-12-nam-2025-2026-truong-nguyen-khuyen-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-13-10-2024",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-nam-2024-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-22-09-2024",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B118",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-10-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-10-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-2",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-11-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-2",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-11-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-3",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-9-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-kiem-tra-toan-12-thang-9-nam-2025-truong-nguyen-khuyen-le-thanh-tong-tp-hcm-2",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-cong-bang-toan-12-lan-1-nam-2025-2026-truong-thpt-chuyen-khtn-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-thpt-qg-mon-toan-nam-2026-cum-truong-thpt-hai-phong",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-dot-1-mon-toan-truong-thpt-dong-do-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-lan-1-mon-toan-truong-thpt-than-uyen-lai-chau",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-lan-2-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tn-thpt-2026-mon-toan-lan-3-truong-chuyen-le-hong-phong-ninh-binh",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-lan-1-mon-toan-so-gddt-dong-nai",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-lan-2-mon-toan-so-gddt-dong-nai",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-lan-2-so-gddt-son-la",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-2026-mon-toan-lan-3-so-gddt-son-la",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2026-lan-1-mon-toan-so-gddt-lang-son",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2026-mon-toan-lien-truong-thpt-nghe-an",
+  "ket_luan": "khong_doc",
+  "so_tu": 138,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ },
+ {
+  "batch": "B119",
+  "folder": "Thi thử THPT",
+  "ten_bai": "de-thi-thu-tot-nghiep-thpt-nam-2026-mon-toan-so-gddt-dong-thap",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT 2026 môn Toán cụm các trường THPT - Hưng Yên",
+   "ti_le": 0,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "bo_vi_noctorium": false
+ }
+]
