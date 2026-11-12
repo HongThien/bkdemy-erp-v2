@@ -391,17 +391,22 @@ export async function chotKy(phuHuynhId: string, ky: string, phatSinh: { mo_ta: 
 }
 
 // ── THANH TOÁN & NỢ (§9) ─────────────────────────────────────────────────────
+// Hình thức thu (Thùy 12/11). DB CHECK thanh_toan_phuong_thuc_chk — dòng mới bắt buộc 1 trong 2; NULL = dòng cũ chưa ghi.
+export type PhuongThucThu = 'tien_mat' | 'chuyen_khoan'
+export const PHUONG_THUC_LABEL: Record<PhuongThucThu, string> = { tien_mat: 'Tiền mặt', chuyen_khoan: 'Chuyển khoản' }
 export type ThanhToan = { id: string; hoa_don_id: string; so_tien: number; ngay: string; phuong_thuc: string | null; ghi_chu: string | null; created_at?: string }
 // §2.0 (30/08): client CHỈ ghi dòng thanh toán — trạng thái phiếu (chua_thu/thu_mot_phan/
 // da_thu) do TRIGGER tg_thanh_toan_trang_thai suy từ Σ thanh_toan NGAY TRONG transaction.
 // Trigger cũng đồng bộ trang_thai_tb: thu đủ → 'hoan_thanh' (CEO 30/08 — không cần gửi tin
 // xác nhận PH, chỉ cần app tự báo "Đã hoàn thành"); tụt khỏi da_thu → rời 'hoan_thanh'.
 // Bản cũ đọc-cộng-suy-update ở client: 2 tab thu tiền song song là đè trạng thái của nhau.
-export async function ghiThanhToan(hoaDonId: string, soTien: number, opts?: { ngay?: string; phuongThuc?: string; ghiChu?: string }): Promise<void> {
+// Ngày theo giờ máy (VN) — CẤM toISOString cho ngày local (CLAUDE.md §2): 0h–7h sáng bị lùi 1 ngày.
+function ngayLocal(): string { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}` }
+export async function ghiThanhToan(hoaDonId: string, soTien: number, phuongThuc: PhuongThucThu, opts?: { ngay?: string; ghiChu?: string }): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser()
   const { error } = await supabase.from('thanh_toan').insert({
-    hoa_don_id: hoaDonId, so_tien: soTien, ngay: opts?.ngay ?? new Date().toISOString().slice(0, 10),
-    phuong_thuc: opts?.phuongThuc ?? null, ghi_chu: opts?.ghiChu ?? null, nguoi_thu: user?.id ?? null,
+    hoa_don_id: hoaDonId, so_tien: soTien, ngay: opts?.ngay ?? ngayLocal(),
+    phuong_thuc: phuongThuc, ghi_chu: opts?.ghiChu ?? null, nguoi_thu: user?.id ?? null,
   })
   if (error) throw error
 }
@@ -497,7 +502,9 @@ export type DongSoHang = {
   tienChinh: number; tienDuoi: number; tienNo: number // breakdown TẠM TÍNH (chưa chốt); chốt rồi thì xem chi tiết hoá đơn
   dong: DongPhieu[] // CHI TIẾT từng dòng (như phiếu) — chưa chốt: batch tính; chốt: hoa_don_dong
   hoaDonId: string | null; trangThaiTB: TrangThaiTB | null; baoLan1At: string | null; daThuKy: number
+  thu: LanThu[] // từng lần thu của phiếu kỳ này (mới nhất trước) — hiện hình thức TM/CK
 }
+export type LanThu = { so_tien: number; ngay: string; phuong_thuc: PhuongThucThu | null }
 // Chi tiết từng dòng theo PH (BATCH, không N+1) — để card hiện ĐỦ như phiếu. Nguồn = listHocPhiTheoMonV2
 // (CT1/CT2 + bù, KHỚP getPhieuAo) + phát sinh. KHÔNG gồm nợ (nợ thêm ở listPhieuTheoKy).
 export async function listChiTietTheoPH(ky: string): Promise<Map<string, DongPhieu[]>> {
@@ -530,13 +537,14 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
   const hdToPh = new Map(hds.map((h) => [h.id, h.phu_huynh_id]))
   // Batch: đã thu + DÒNG hoá đơn ĐÃ CHỐT (hiện chi tiết cho card chốt).
   const daThuByPH = new Map<string, number>()
+  const thuByPH = new Map<string, LanThu[]>()
   const dongChotByPH = new Map<string, DongPhieu[]>()
   if (hdIds.length) {
     const [{ data: tts }, { data: dd }] = await Promise.all([
-      supabase.from('thanh_toan').select('hoa_don_id, so_tien').in('hoa_don_id', hdIds).limit(LIMIT),
+      supabase.from('thanh_toan').select('hoa_don_id, so_tien, ngay, phuong_thuc').in('hoa_don_id', hdIds).order('ngay', { ascending: false }).order('created_at', { ascending: false }).limit(LIMIT),
       supabase.from('hoa_don_dong').select('hoa_don_id, loai, hoc_sinh_id, lop_id, mo_ta, so_luong, don_gia, he_so, thanh_tien, hoc_sinh:hoc_sinh_id(ho_ten), lop:lop_id(ten_lop)').in('hoa_don_id', hdIds).limit(LIMIT),
     ])
-    for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (ph) daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)) }
+    for (const t of (tts ?? []) as any[]) { const ph = hdToPh.get(t.hoa_don_id); if (!ph) continue; daThuByPH.set(ph, (daThuByPH.get(ph) ?? 0) + Number(t.so_tien)); const a = thuByPH.get(ph) ?? []; a.push({ so_tien: Number(t.so_tien), ngay: String(t.ngay).slice(0, 10), phuong_thuc: t.phuong_thuc ?? null }); thuByPH.set(ph, a) }
     for (const d of (dd ?? []) as any[]) { const ph = hdToPh.get(d.hoa_don_id); if (!ph) continue; if (d.loai === 'no_ky_truoc' && Number(d.thanh_tien) === 0) continue; const a = dongChotByPH.get(ph) ?? []; a.push({ loai: d.loai, hoc_sinh_id: d.hoc_sinh_id, hoc_sinh_ten: d.hoc_sinh?.ho_ten, lop_id: d.lop_id, lop_ten: d.lop?.ten_lop, mo_ta: d.mo_ta, so_luong: d.so_luong, don_gia: d.don_gia, he_so: d.he_so, thanh_tien: Number(d.thanh_tien) }); dongChotByPH.set(ph, a) }
   }
   // §2.0: chinh/duoi per PH từ fn_hocphi_tong_hop_ky (Σ ở DB) — không reduce tiền ở client.
@@ -560,6 +568,7 @@ export async function listPhieuTheoKy(ky: string): Promise<DongSoHang[]> {
       tienChinh: chinh, tienDuoi: duoi, tienNo: no,
       dong: hd ? (dongChotByPH.get(p.id) ?? []) : dongAo, // chốt → dòng hoá đơn thật; chưa chốt → tính batch + nợ
       hoaDonId: hd?.id ?? null, trangThaiTB: hd?.trang_thai_tb ?? null, baoLan1At: hd?.bao_lan1_at ?? null, daThuKy: daThuByPH.get(p.id) ?? 0,
+      thu: thuByPH.get(p.id) ?? [],
     }
   })
   // PH học phí = 0đ (chưa phát sinh gì trong kỳ) → đẩy XUỐNG CUỐI, không lẫn với PH có phí cần xử lý (Thùy 07-05).

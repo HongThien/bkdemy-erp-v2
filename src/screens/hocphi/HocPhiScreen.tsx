@@ -15,6 +15,7 @@ import {
   layTenConDangHoc, soanThongBao, danhDauDaBao, TRANG_THAI_TB_LABEL,
   type MucHocPhi, type MucHocDuoi, type MucHocLieu, type DongSoHang, type DongDuoiSoHang, type DongNo, type PHOpt, type PHNoOpt, type HocSinhHeSo, type PhatSinhEntry,
   type DongTheoMonV2, type CongThuc, type DiemDanhLop,
+  PHUONG_THUC_LABEL, type PhuongThucThu,
 } from '../../lib/hocphi'
 import { listLop, listHocSinh, updateLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { AnhGuiPHModal, taiTatCaAnhZip } from './PhieuThongBao'
@@ -374,12 +375,14 @@ const NHOM_MAU: Record<NhomTT, { vien: string; pill: string }> = {
 
 // 1 CARD phụ huynh — hiện ĐỦ cơ cấu tiền + tổng, thu gọn được. Chốt/báo/thu OPTIMISTIC (cập nhật đúng
 // card, KHÔNG refresh cả màn). Chốt = checkbox; trạng thái = toggle bar 3 nấc (Chưa báo/Đã báo/Đã thu).
+const PT_NGAN: Record<PhuongThucThu, string> = { tien_mat: '💵 TM', chuyen_khoan: '🏦 CK' }
 function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky: string; onAnh: (r: DongSoHang) => void; moMacDinh: boolean; onDoi: (r: DongSoHang) => void }) {
   const [r, setRSt] = useState(r0)
   const [open, setOpen] = useState(moMacDinh)
   const [busy, setBusy] = useState(false)
   const [showThu, setShowThu] = useState(false)
   const [thuSo, setThuSo] = useState('')
+  const [thuPT, setThuPT] = useState<PhuongThucThu | null>(null) // KHÔNG mặc định — người thu phải chọn TM/CK
   const [copied, setCopied] = useState(false)
   useEffect(() => { setRSt(r0) }, [r0])
   useEffect(() => { setOpen(moMacDinh) }, [moMacDinh])
@@ -387,6 +390,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
   const nhom = nhomTT(r)
   const tong = r.tongTien ?? 0
   const conLai = Math.max(0, tong - r.daThuKy)
+  const ptDaThu = [...new Set(r.thu.map((t) => t.phuong_thuc))] // nhãn hiển thị các hình thức đã dùng
 
   async function toggleChot() {
     setBusy(true)
@@ -394,12 +398,12 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       if (!r.daChot) {
         if (!confirm(`Chốt học phí kỳ này cho ${r.ho_ten} = ${tienVN(tong)}?\nĐông cứng số này để thu tiền (sửa được sau bằng bỏ tích Chốt).`)) return
         const { hoaDonId, tongTien } = await chotKy(r.phu_huynh_id, ky, [])
-        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', trangThaiTB: 'thong_bao_1', baoLan1At: null, daThuKy: 0 })
+        setR({ ...r, daChot: true, hoaDonId, tongTien, trangThai: 'chua_thu', trangThaiTB: 'thong_bao_1', baoLan1At: null, daThuKy: 0, thu: [] })
       } else {
         const cb = r.daThuKy > 0 ? `\n⚠ Đã thu ${tienVN(r.daThuKy)} — huỷ sẽ xoá bản ghi thu.` : ''
         if (!confirm(`Huỷ chốt phiếu này để sửa lại?${cb}`)) return
         await huyChot(r.hoaDonId!)
-        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, trangThaiTB: null, baoLan1At: null, daThuKy: 0, tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
+        setR({ ...r, daChot: false, hoaDonId: null, trangThai: null, trangThaiTB: null, baoLan1At: null, daThuKy: 0, thu: [], tongTien: r.tienChinh + r.tienDuoi + r.tienNo })
       }
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
@@ -415,13 +419,15 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
   }
   async function ghiThu() {
     const so = Number(thuSo.replace(/[.,]/g, '')); if (!so || so <= 0) { alert('Số tiền không hợp lệ.'); return }
+    if (!thuPT) return
     setBusy(true)
     try {
-      await ghiThanhToan(r.hoaDonId!, so)
+      await ghiThanhToan(r.hoaDonId!, so, thuPT)
+      const d = new Date(); const ngay = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
       const daThuMoi = r.daThuKy + so
       // Khớp trigger tg_thanh_toan_trang_thai: thu đủ → trạng thái thông báo tự thành "Đã hoàn thành"
-      setR({ ...r, daThuKy: daThuMoi, trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan', trangThaiTB: daThuMoi >= tong ? 'hoan_thanh' : r.trangThaiTB })
-      setShowThu(false); setThuSo('')
+      setR({ ...r, daThuKy: daThuMoi, thu: [{ so_tien: so, ngay, phuong_thuc: thuPT }, ...r.thu], trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan', trangThaiTB: daThuMoi >= tong ? 'hoan_thanh' : r.trangThaiTB })
+      setShowThu(false); setThuSo(''); setThuPT(null)
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
   const Seg = ({ k, label, onClick }: { k: NhomTT; label: string; onClick: () => void }) => (
@@ -442,6 +448,11 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
         <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-bold ${NHOM_MAU[nhom].pill}`}>
           {nhom === 'da_thu' && r.trangThaiTB === 'hoan_thanh' ? `✓ ${TRANG_THAI_TB_LABEL.hoan_thanh}` : NHOM.find((n) => n.key === nhom)?.label}
         </span>
+        {ptDaThu.length > 0 && (
+          <span className="whitespace-nowrap rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600" title="Hình thức các lần thu kỳ này">
+            {ptDaThu.map((p) => (p ? PT_NGAN[p] : '?')).join(' + ')}
+          </span>
+        )}
         <span className="whitespace-nowrap text-[15px] font-extrabold text-indigo-700">{tienVN(tong)}</span>
         <button onClick={() => setOpen((o) => !o)} className="rounded-md border border-slate-200 px-1.5 py-1 text-[11px] text-slate-500 hover:border-indigo-300">{open ? '▴' : '▾'}</button>
       </div>
@@ -462,6 +473,12 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
               </div>
             ))}
             <div className="flex justify-between border-t border-slate-200 pt-1"><span className="font-bold text-slate-800">TỔNG{!r.daChot ? ' (tạm tính)' : ''}</span><span className="font-extrabold text-indigo-700">{tienVN(tong)}</span></div>
+            {r.daChot && r.thu.map((t, i) => (
+              <div key={'thu' + i} className="flex justify-between gap-2 text-[11px]">
+                <span className="text-slate-500">Đã thu {ddmmHP(t.ngay)} · <b className={t.phuong_thuc === 'tien_mat' ? 'text-amber-700' : t.phuong_thuc === 'chuyen_khoan' ? 'text-sky-700' : 'font-normal text-slate-400'}>{t.phuong_thuc ? PHUONG_THUC_LABEL[t.phuong_thuc] : 'chưa ghi hình thức'}</b></span>
+                <span className="whitespace-nowrap font-medium text-emerald-700">{tienVN(t.so_tien)}</span>
+              </div>
+            ))}
             {r.daChot && r.daThuKy > 0 && <div className="flex justify-between text-[11px]"><span className="text-slate-400">Đã thu {tienVN(r.daThuKy)} · còn lại</span><span className="font-semibold text-rose-600">{tienVN(conLai)}</span></div>}
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -469,7 +486,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
               <div className="inline-flex overflow-hidden rounded-md border border-slate-300">
                 <Seg k="chua_bao" label="Chưa báo" onClick={() => {}} />
                 <Seg k="da_bao" label={copied ? '✓ Copy' : 'Đã báo'} onClick={bao} />
-                <Seg k="da_thu" label="Đã thu" onClick={() => { setShowThu(true); setThuSo(String(conLai)) }} />
+                <Seg k="da_thu" label="Đã thu" onClick={() => { setShowThu(true); setThuSo(String(conLai)); setThuPT(null) }} />
               </div>
             ) : <span className="text-[11px] text-slate-400">Tích &quot;Chốt&quot; để bắt đầu thu tiền</span>}
             <button onClick={() => onAnh(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh QR</button>
@@ -478,7 +495,12 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
             <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-emerald-50 p-2">
               <span className="text-[11px] font-medium text-slate-600">Số tiền thu (mặc định = số thông báo):</span>
               <input value={thuSo} onChange={(e) => setThuSo(e.target.value)} className={`${inp} w-32`} />
-              <button disabled={busy} onClick={ghiThu} className="rounded-md bg-emerald-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">Ghi đã thu</button>
+              <div className="inline-flex overflow-hidden rounded-md border border-slate-300 bg-white">
+                {(['tien_mat', 'chuyen_khoan'] as PhuongThucThu[]).map((p) => (
+                  <button key={p} onClick={() => setThuPT(p)} className={`px-2.5 py-1 text-[11px] font-semibold ${thuPT === p ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>{p === 'tien_mat' ? '💵 ' : '🏦 '}{PHUONG_THUC_LABEL[p]}</button>
+                ))}
+              </div>
+              <button disabled={busy || !thuPT} title={!thuPT ? 'Chọn Tiền mặt hoặc Chuyển khoản' : ''} onClick={ghiThu} className="rounded-md bg-emerald-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">Ghi đã thu</button>
               <button onClick={() => setShowThu(false)} className="text-[11px] text-slate-400 hover:text-slate-600">Huỷ</button>
               <span className="text-[10px] text-slate-400">Thu ít hơn tổng → phần thiếu tự thành nợ.</span>
             </div>
