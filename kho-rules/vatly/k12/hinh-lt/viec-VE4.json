@@ -1,0 +1,274 @@
+[
+ {
+  "ma": "H073",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K0",
+  "tieu_de": "Dòng điện xoay chiều",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị i theo t; sách trang này chỉ có công thức.",
+  "noi_dung": "##ĐN Dòng điện xoay chiều\nDòng điện xoay chiều (dạng sin hay cosin) là dòng điện có cường độ biến thiên tuần hoàn theo thời gian theo quy luật của hàm sin hoặc cosin. Dạng tổng quát: $i = I_0\\cos(\\omega t+\\varphi)$\n- $i$ là cường độ tức thời (giá trị của cường độ dòng điện ở thời điểm $t$).\n- $I_0 > 0$ là cường độ dòng điện cực đại.\n- $\\omega$ là tần số góc; $T = \\dfrac{2\\pi}{\\omega}$ là chu kì; $f = \\dfrac{\\omega}{2\\pi}$ là tần số.\n- $(\\omega t+\\varphi)$ là pha của $i$; $\\varphi$ là pha ban đầu."
+ },
+ {
+  "ma": "H074",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K1",
+  "tieu_de": "Điện áp xoay chiều",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị u theo t.",
+  "noi_dung": "##ĐN Điện áp xoay chiều\nHiệu điện thế biến thiên theo thời gian theo quy luật dạng sin gọi là điện áp xoay chiều: $u = U_0\\cos(\\omega t+\\varphi)$\n- $u$ là điện áp tức thời; $U_0 > 0$ là điện áp cực đại.\n- $\\omega$, $T = \\dfrac{2\\pi}{\\omega}$, $f = \\dfrac{\\omega}{2\\pi}$ là tần số góc, chu kì, tần số của $u$.\n- $(\\omega t+\\varphi)$ là pha của $u$; $\\varphi$ là pha ban đầu."
+ },
+ {
+  "ma": "H075",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K2",
+  "tieu_de": "Độ lệch pha giữa u và i",
+  "noi": [
+   "LDB00117"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị u, i lệch pha phi.",
+  "noi_dung": "##TC Độ lệch pha giữa u và i\nKhi đặt vào hai đầu mạch điện bất kì điện áp xoay chiều $u = U_0\\cos(\\omega t+\\varphi_u)$ thì cường độ dòng điện qua mạch có dạng $i = I_0\\cos(\\omega t+\\varphi_i)$.\nĐại lượng $\\varphi = \\varphi_u - \\varphi_i$ gọi là độ lệch pha của $u$ so với $i$."
+ },
+ {
+  "ma": "H076",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K1",
+  "tieu_de": "Cấu tạo và nguyên tắc hoạt động",
+  "noi": [
+   "LDB00118"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 92,
+    "chu_thich": "Hình (không số) cấu tạo máy biến áp: lõi sắt, cuộn sơ cấp/thứ cấp, ký hiệu",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Lõi sắt kín + hai cuộn dây.",
+  "noi_dung": "##TC Cấu tạo và nguyên tắc hoạt động\n- Máy biến áp gồm hai cuộn dây có số vòng khác nhau $N_1$ và $N_2$ quấn trên một lõi sắt kín. Lõi thường làm bằng các lá sắt hoặc thép pha silic ghép cách điện với nhau để giảm hao phí điện năng do dòng Fu-cô. Các cuộn dây thường làm bằng đồng, đặt cách điện với nhau và cách điện với lõi.\n- Hoạt động dựa trên hiện tượng cảm ứng điện từ. Cuộn dây nối với nguồn điện xoay chiều gọi là cuộn sơ cấp (số vòng $N_1$), cuộn còn lại gọi là cuộn thứ cấp (số vòng $N_2$). Dòng điện xoay chiều trong cuộn sơ cấp gây ra từ thông biến thiên qua cuộn thứ cấp, làm xuất hiện trong cuộn thứ cấp suất điện động xoay chiều. Nếu mạch thứ cấp kín thì có dòng điện chạy trong cuộn thứ cấp."
+ },
+ {
+  "ma": "H077",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K2",
+  "tieu_de": "Điện áp và cường độ dòng điện qua máy biến áp",
+  "noi": [
+   "LDB00119"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 92,
+    "chu_thich": "Hình (không số) sơ đồ máy biến áp N1, N2, u1, u2",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ điện kèm ký hiệu.",
+  "noi_dung": "##TC Điện áp và cường độ dòng điện qua máy biến áp\n- Từ thông qua mỗi vòng dây của cả hai cuộn là như nhau: $\\Phi = \\Phi_0\\cos\\omega t$. Suất điện động hiệu dụng trên hai cuộn: $E_1 = \\dfrac{\\omega N_1\\Phi_0}{\\sqrt{2}}$ và $E_2 = \\dfrac{\\omega N_2\\Phi_0}{\\sqrt{2}}$.\n- Máy biến áp lí tưởng (điện trở các cuộn dây không đáng kể): $U_1 = E_1$, $U_2 = E_2$ nên $\\dfrac{U_2}{U_1} = \\dfrac{N_2}{N_1}$.\n- Nếu $N_2 > N_1$ thì $U_2 > U_1$: máy tăng áp. Nếu $N_2 < N_1$ thì $U_2 < U_1$: máy hạ áp.\n- Máy biến áp lí tưởng không hao phí, điện năng được bảo toàn: $P_1 = U_1I_1 = P_2 = U_2I_2$, suy ra $\\dfrac{U_2}{U_1} = \\dfrac{I_1}{I_2} = \\dfrac{N_2}{N_1}$. Điện áp tăng lên bao nhiêu lần thì cường độ dòng điện giảm đi bấy nhiêu lần và ngược lại."
+ },
+ {
+  "ma": "H078",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K3",
+  "tieu_de": "Truyền tải điện năng đi xa",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 100,
+    "chu_thich": "Hình 1 Mô hình truyền tải điện năng đi xa",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Nhà máy-đường dây-nơi tiêu thụ.",
+  "noi_dung": "##ĐN Truyền tải điện năng đi xa\nĐiện năng chỉ được sản xuất ở một số nhà máy lớn nên phải truyền đi xa đến nơi tiêu thụ bằng đường dây dẫn. Yêu cầu: giảm hao phí điện năng trên đường dây xuống mức thấp nhất và giảm chi phí xây dựng đường dây."
+ },
+ {
+  "ma": "H079",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K4",
+  "tieu_de": "Công suất hao phí và hiệu suất truyền tải",
+  "noi": [
+   "LDB00119"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 100,
+    "chu_thich": "Hình 2 Sơ đồ mạch điện truyền tải rút gọn (R, U, U_R, U_tt)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ mạch có R đường dây.",
+  "noi_dung": "##TC Công suất hao phí và hiệu suất truyền tải\n- Truyền công suất $P$ từ nhà máy, điện áp hiệu dụng ở đầu đường dây là $U$, điện trở tổng cộng của đường dây là $R$: cường độ dòng điện hiệu dụng $I = \\dfrac{P}{U}$.\n- Công suất hao phí do tỏa nhiệt (hiệu ứng Jun – Len-xơ): $\\Delta P = I^2R = \\dfrac{P^2R}{U^2}$.\n- Gọi $U'$, $P'$ là điện áp hiệu dụng và công suất nơi tiêu thụ: $P' = U'I$, $P = P' + \\Delta P$. Độ sụt áp trên đường dây $\\Delta U = IR$, $U = U' + \\Delta U$.\n- Hiệu suất truyền tải: $H = \\dfrac{P'}{P} = \\dfrac{U'}{U} = 1 - \\dfrac{\\Delta P}{P}$, và $1 - H = \\dfrac{RP}{U^2} = \\dfrac{RP'}{HU^2}$."
+ },
+ {
+  "ma": "H080",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K0",
+  "tieu_de": "Điện trường xoáy",
+  "noi": [
+   "LDB00120"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Điện trường xoáy.",
+  "noi_dung": "##ĐN Điện trường xoáy\nTừ trường biến thiên theo thời gian sinh ra trong không gian xung quanh một điện trường. Đường sức của điện trường này là các đường cong kín, nên gọi là điện trường xoáy.\nĐiện trường xoáy tồn tại dù vòng dây kín có tồn tại hay không.\nTừ trường thay đổi đều thì điện trường xoáy không đổi; từ trường biến đổi tuần hoàn thì điện trường xoáy biến đổi tuần hoàn."
+ },
+ {
+  "ma": "H081",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K1",
+  "tieu_de": "Điện trường biến thiên tạo ra từ trường",
+  "noi": [
+   "LDB00120"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Tụ điện: E tăng sinh B.",
+  "noi_dung": "##TC Điện trường biến thiên tạo ra từ trường\n- Điện trường biến thiên theo thời gian cũng sinh ra từ trường xung quanh (Maxwell chỉ ra, điện trường giữa hai bản tụ điện biến thiên cũng sinh ra từ trường).\n- Cường độ điện trường thay đổi càng nhanh thì cảm ứng từ của từ trường sinh ra càng lớn."
+ },
+ {
+  "ma": "H082",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K2",
+  "tieu_de": "Điện từ trường",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Tái dùng hai hình trên.",
+  "noi_dung": "##ĐN Điện từ trường\nTừ trường biến thiên sinh ra điện trường biến thiên, điện trường biến thiên sinh ra từ trường biến thiên trong không gian xung quanh. Hai trường biến thiên này cùng tồn tại trong không gian, chuyển hóa lẫn nhau trong một trường thống nhất gọi là điện từ trường."
+ },
+ {
+  "ma": "H083",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K3",
+  "tieu_de": "Sóng điện từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 110,
+    "chu_thich": "Hình (không số) sóng điện từ: E và B vuông góc, lan truyền theo z",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sóng điện từ E,B,z.",
+  "noi_dung": "##ĐN Sóng điện từ\nSóng điện từ là quá trình lan truyền điện từ trường biến thiên trong không gian."
+ },
+ {
+  "ma": "H084",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K4",
+  "tieu_de": "Đặc điểm và tính chất của sóng điện từ",
+  "noi": [
+   "LDB00120",
+   "LDB00121"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 110,
+    "chu_thich": "Hình (không số) tam diện E, B, v",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "E vuông góc B vuông góc v.",
+  "noi_dung": "##TC Đặc điểm và tính chất của sóng điện từ\n- Truyền trong mọi môi trường vật chất và truyền được trong cả chân không (khác với sóng cơ). Tốc độ sóng điện từ trong chân không là $c \\approx 3\\cdot 10^{8}\\ \\text{m/s}$; trong các môi trường khác nhỏ hơn $c$.\n- Sóng điện từ có tần số $f$ (chu kì $T = \\dfrac{1}{f}$) thì trong chân không có bước sóng $\\lambda = \\dfrac{c}{f} = cT$.\n- Tại mỗi điểm trên phương truyền sóng, vectơ cường độ điện trường $\\vec{E}$ và vectơ cảm ứng từ $\\vec{B}$ luôn vuông góc với nhau và cùng vuông góc với phương truyền sóng: sóng điện từ là sóng ngang.\n- Tại mỗi điểm trong không gian, điện trường và từ trường biến thiên điều hòa theo thời gian và đồng pha với nhau.\n- Sóng điện từ tuân theo định luật truyền thẳng, phản xạ, khúc xạ như ánh sáng.\n- Sóng điện từ mang năng lượng, nhờ đó khi truyền đến anten sẽ làm cho các electron tự do trong anten dao động.\n- Nguồn phát sóng điện từ rất đa dạng: bất cứ vật thể nào tạo ra điện trường và từ trường biến thiên, chẳng hạn tia lửa điện, dây dẫn có dòng điện xoay chiều, cầu dao khi đóng ngắt mạch điện."
+ }
+]

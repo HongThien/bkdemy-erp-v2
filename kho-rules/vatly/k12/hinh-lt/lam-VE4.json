@@ -1,0 +1,98 @@
+[
+ {
+  "ma": "H073",
+  "file": "H073.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị cường độ dòng điện xoay chiều i theo thời gian: biên độ I₀, chu kì T",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "i = I₀cos(ωt+φ), φ = π/3"
+ },
+ {
+  "ma": "H074",
+  "file": "H074.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị điện áp xoay chiều u theo thời gian: biên độ U₀, chu kì T",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "u = U₀cos ωt, φ = 0"
+ },
+ {
+  "ma": "H075",
+  "file": "H075.png",
+  "cach": 3,
+  "chu_thich": "Điện áp u sớm pha hơn dòng điện i một góc φ = φu − φi",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "u=cos ωt, i=cos(ωt−π/3)"
+ },
+ {
+  "ma": "H076",
+  "file": "H076.png",
+  "cach": 3,
+  "chu_thich": "Máy biến áp: hai cuộn dây N₁, N₂ quấn trên lõi sắt kín; từ thông Φ chạy trong lõi",
+  "nguon": "Vẽ lại theo hình cấu tạo máy biến áp sách Tập 2 tr.92 (trang in 87)",
+  "ghi": "sơ cấp 7 vòng, thứ cấp 4 vòng chỉ để minh hoạ N₁ ≠ N₂; Φ chiều kim đồng hồ chỉ minh hoạ"
+ },
+ {
+  "ma": "H077",
+  "file": "H077.png",
+  "cach": 3,
+  "chu_thich": "Sơ đồ máy biến áp: u₁, i₁ ở cuộn sơ cấp N₁; u₂, i₂ ở cuộn thứ cấp N₂",
+  "nguon": "Vẽ lại theo sơ đồ máy biến áp sách Tập 2 tr.92 (trang in 87)",
+  "ghi": "chiều i₁, i₂ chọn tại một thời điểm"
+ },
+ {
+  "ma": "H078",
+  "file": "H078.png",
+  "cach": 3,
+  "chu_thich": "Truyền tải điện năng đi xa: nhà máy – máy tăng áp – đường dây (điện trở R) – máy hạ áp – nơi tiêu thụ",
+  "nguon": "Vẽ lại theo Hình 1 sách Tập 2 tr.100 (trang in 95)",
+  "ghi": ""
+ },
+ {
+  "ma": "H079",
+  "file": "H079.png",
+  "cach": 3,
+  "chu_thich": "Sơ đồ truyền tải rút gọn: nguồn (P, U), đường dây điện trở R, tải (U′, P′); ΔU = IR, ΔP = I²R",
+  "nguon": "Vẽ lại theo Hình 2 sách Tập 2 tr.100 (trang in 95)",
+  "ghi": ""
+ },
+ {
+  "ma": "H080",
+  "file": "H080.png",
+  "cach": 3,
+  "chu_thich": "Từ trường B biến thiên (tăng, hướng vào) sinh điện trường xoáy: đường sức là các vòng kín",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.109 (trang in 104)",
+  "ghi": "B vào và tăng ⇒ E xoáy ngược chiều kim đồng hồ (Len-xơ)"
+ },
+ {
+  "ma": "H081",
+  "file": "H081.png",
+  "cach": 3,
+  "chu_thich": "Điện trường giữa hai bản tụ tăng sinh ra từ trường xoáy quanh đường sức điện",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.109 (trang in 104)",
+  "ghi": "E hướng sang phải, tăng ⇒ B quanh trục theo quy tắc nắm tay phải: trên ra (⊙), dưới vào (⊗)"
+ },
+ {
+  "ma": "H082",
+  "file": "H082.png",
+  "cach": 3,
+  "chu_thich": "Điện từ trường: từ trường biến thiên và điện trường biến thiên sinh ra nhau, cùng tồn tại",
+  "nguon": "Vẽ theo nội dung lý thuyết (tổng hợp 2 hình sách Tập 2 tr.109)",
+  "ghi": ""
+ },
+ {
+  "ma": "H083",
+  "file": "H083.png",
+  "cach": 3,
+  "chu_thich": "Sóng điện từ lan truyền theo z: E và B vuông góc nhau, vuông góc phương truyền, cùng pha",
+  "nguon": "Vẽ lại theo hình sóng điện từ sách Tập 2 tr.110 (trang in 105)",
+  "ghi": "E⃗×B⃗ cùng chiều z; B vẽ phối cảnh hướng về người xem"
+ },
+ {
+  "ma": "H084",
+  "file": "H084.png",
+  "cach": 3,
+  "chu_thich": "Tam diện E, B, v vuông góc từng đôi; E⃗ × B⃗ cùng chiều truyền sóng v⃗",
+  "nguon": "Vẽ lại theo hình tam diện sách Tập 2 tr.110 (trang in 105)",
+  "ghi": "E lên, v sang phải, B hướng ra phía người xem (E×B = v)"
+ }
+]

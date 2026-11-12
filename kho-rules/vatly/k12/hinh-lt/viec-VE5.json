@@ -1,0 +1,477 @@
+[
+ {
+  "ma": "H085",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K0",
+  "tieu_de": "Mô hình nguyên tử bánh mận",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 121,
+    "chu_thich": "Hình 1-1 Mô hình nguyên tử bánh mận (chấm điện tích dương + quả cầu cắt)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Cần hình để thấy điện tích dương phân bố đều + electron nhúng",
+  "noi_dung": "##ĐN Mô hình nguyên tử bánh mận\nNăm 1904, J. J. Thomson đề xuất mô hình nguyên tử bánh mận: nguyên tử là quả cầu đặc có điện tích dương phân bố đều, các electron được nhúng trong quả cầu như mận khô trong bánh.\nMô hình này giải thích được một số hiện tượng, nhưng các thí nghiệm tán xạ hạt alpha sau đó đã bác bỏ nó."
+ },
+ {
+  "ma": "H086",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K1",
+  "tieu_de": "Thí nghiệm tán xạ alpha của Rutherford",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 121,
+    "chu_thich": "Hình 1-2 Thí nghiệm tán xạ alpha (cấu tạo thiết bị + sơ đồ nhìn từ trên)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "chú thích tiếng Việt rõ"
+   }
+  ],
+  "ly_do": "Cần sơ đồ bố trí thí nghiệm (nguồn Po, lá vàng, màn huỳnh quang)",
+  "noi_dung": "##TC Thí nghiệm tán xạ hạt alpha của Rutherford\n- Hạt alpha là ion helium, có điện tích $+2e$ và khối lượng gấp khoảng 7300 lần khối lượng của electron.\n- Rutherford cho các hạt $\\alpha$ tốc độ cao bắn vào một lá vàng dày chỉ khoảng $0{,}4\\ \\mu\\text{m}$.\n- Kết quả: phần lớn hạt alpha xuyên qua lá vàng; số hạt bị lệch so với phương ban đầu góc $\\theta$ khác nhau là khác nhau và giảm nhanh khi $\\theta$ tăng. Một số rất nhỏ hạt $\\alpha$ có góc tán xạ vượt quá $90^\\circ$, thậm chí bị bật trở lại."
+ },
+ {
+  "ma": "H087",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K2",
+  "tieu_de": "Phân tích kết quả thí nghiệm",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình riêng; nên có quỹ đạo hạt α lệch so với mô hình Thomson",
+  "noi_dung": "##NX Phân tích kết quả thí nghiệm\n- Phần lớn hạt alpha xuyên qua lá vàng chứng tỏ nguyên tử không hoàn toàn đặc như mô hình của Thomson.\n- Sự lệch góc lớn của số ít hạt alpha không thể do electron gây ra, vì khối lượng electron chỉ bằng $\\dfrac{1}{7300}$ khối lượng hạt alpha. Độ lệch chủ yếu do phần điện tích dương, chiếm phần lớn khối lượng nguyên tử.\n- Theo mô hình Thomson, điện tích dương phân bố đều nên lực đẩy theo mọi hướng cân bằng nhau, tác động lên hạt $\\alpha$ không lớn; vì vậy mô hình này không giải thích được tán xạ góc lớn.\n- Rutherford cho rằng thực tế vật chất tích điện dương, chiếm phần lớn khối lượng nguyên tử, tập trung trong một phạm vi không gian rất nhỏ; điều này khiến hạt alpha chịu lực đẩy mạnh khi đi ngang qua, làm chúng bị lệch một góc lớn."
+ },
+ {
+  "ma": "H088",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K3",
+  "tieu_de": "Mô hình hành tinh nguyên tử",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 122,
+    "chu_thich": "Quỹ đạo hạt α lệch gần hạt nhân (mô hình hành tinh nguyên tử), không đánh số",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ, nét mảnh, góc phải trang"
+   }
+  ],
+  "ly_do": "Hình sách đúng ý nhưng nhỏ/mảnh; nếu cắt mờ thì vẽ lại",
+  "noi_dung": "##ĐN Mô hình đơn giản của nguyên tử (mô hình hành tinh nguyên tử)\nỞ trung tâm nguyên tử có một hạt nhân. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử đều tập trung ở hạt nhân. Các electron quay quanh hạt nhân trong không gian ngoài hạt nhân.\nMô hình có phần giống hệ Mặt Trời (hạt nhân giống Mặt Trời, các electron giống các hành tinh) nên còn gọi là mô hình hành tinh nguyên tử.\nGiải thích tán xạ: khi hạt $\\alpha$ đi qua nguyên tử, các electron ít ảnh hưởng; yếu tố chính là hạt nhân. Hạt $\\alpha$ ở xa hạt nhân thì lực đẩy rất nhỏ, hầu như không bị ảnh hưởng; hạt $\\alpha$ bay gần hạt nhân chịu lực đẩy Coulomb rõ rệt nên bị lệch một góc lớn."
+ },
+ {
+  "ma": "H089",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K4",
+  "tieu_de": "Cấu trúc của hạt nhân",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ hạt nhân gồm p, n trong nguyên tử; sách không có",
+  "noi_dung": "##ĐN Cấu trúc của hạt nhân\n- Hạt nhân có kích thước rất nhỏ so với nguyên tử, được cấu tạo từ các hạt nhỏ hơn gọi là nucleon. Có hai loại nucleon: proton (kí hiệu p, mang điện tích nguyên tố dương) và neutron (kí hiệu n, không mang điện).\n- Nguyên tử của nguyên tố có số thứ tự $Z$ trong bảng tuần hoàn ($Z$ là số hiệu nguyên tử) có $Z$ electron ở lớp vỏ ngoài; hạt nhân có $Z$ proton và $N$ neutron. Electron mang điện $-Ze$, hạt nhân mang điện $+Ze$ nên nguyên tử trung hòa về điện.\n- Tổng $A = Z + N$ gọi là số khối.\n- Bán kính hạt nhân tăng chậm cùng với số khối: $R \\approx R_0 A^{\\frac{1}{3}}$, với $R_0 = 1{,}2\\cdot 10^{-15}\\ \\text{m}$."
+ },
+ {
+  "ma": "H090",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K6",
+  "tieu_de": "Đồng vị",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ 3 đồng vị hydrogen (p, n); sách không có",
+  "noi_dung": "##ĐN Đồng vị\nĐồng vị là những nguyên tử mà hạt nhân chứa cùng số proton $Z$ nhưng số neutron $N$ khác nhau (số khối $A$ khác nhau).\n- Hydrogen có 3 đồng vị: hydrogen thường $^{1}_{1}\\text{H}$; hydrogen nặng (deuterium) $^{2}_{1}\\text{H}$ hay $^{2}_{1}\\text{D}$; hydrogen siêu nặng (tritium) $^{3}_{1}\\text{H}$ hay $^{3}_{1}\\text{T}$.\n- Hầu hết các nguyên tố là hỗn hợp của nhiều đồng vị. Uranium có hai đồng vị chính là U235 và U238 (U238 chiếm tới 99,3%). Carbon có ba đồng vị chính là C12, C13, C14 (C12 và C13 chiếm 99%)."
+ },
+ {
+  "ma": "H091",
+  "phan": "p3",
+  "nhom": "LNB00061",
+  "k": "K4",
+  "tieu_de": "Năng lượng liên kết",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ nucleon rời sang hạt nhân, năng lượng liên kết; sách không có",
+  "noi_dung": "##ĐN Năng lượng liên kết\nNăng lượng liên kết các nucleon trong hạt nhân (gọi tắt là năng lượng liên kết của hạt nhân): $\\Delta E = \\Delta m\\,c^2 = \\left[\\left(Zm_p + (A-Z)m_n\\right) - m\\right]c^2$.\nNăng lượng $\\Delta E$ càng lớn thì liên kết giữa các nucleon càng mạnh, càng phải tốn nhiều năng lượng để phá vỡ liên kết giữa các nucleon."
+ },
+ {
+  "ma": "H092",
+  "phan": "p3",
+  "nhom": "LNB00061",
+  "k": "K5",
+  "tieu_de": "Năng lượng liên kết riêng",
+  "noi": [
+   "LDB00124",
+   "LDB00125"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Cần đồ thị ε theo A để thấy hạt nhân trung bình bền; sách không có",
+  "noi_dung": "##ĐN Năng lượng liên kết riêng\nNăng lượng liên kết tính trung bình cho mỗi nucleon gọi là năng lượng liên kết riêng của hạt nhân, kí hiệu $\\varepsilon$, đặc trưng cho sự bền vững của hạt nhân: $\\varepsilon = \\dfrac{\\Delta E}{A} = \\dfrac{\\Delta m\\,c^2}{A}$.\n- Hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững.\n- Hạt nhân có số khối trung bình thì bền vững hơn cả."
+ },
+ {
+  "ma": "H093",
+  "phan": "p3",
+  "nhom": "LNB00062",
+  "k": "K0",
+  "tieu_de": "Phản ứng hạt nhân",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ thí nghiệm Rutherford α + N14 sang O17 + p; sách không có",
+  "noi_dung": "##ĐN Phản ứng hạt nhân\nPhản ứng hạt nhân là mọi quá trình dẫn đến sự biến đổi hạt nhân. Năm 1909, Rutherford dùng chùm hạt α ($^{4}_{2}\\text{He}$) phóng ra từ nguồn phóng xạ $^{210}_{84}\\text{Po}$ bắn phá hạt nhân $^{14}_{7}\\text{N}$ trong không khí: nitơ bị phân rã và biến đổi thành oxygen và hydrogen.\n- Phản ứng hạt nhân tự phát: quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác (vd: phóng xạ).\n- Phản ứng hạt nhân kích thích: quá trình các hạt nhân tương tác với nhau tạo ra các hạt nhân khác (vd: thí nghiệm Rutherford, phân hạch, nhiệt hạch)."
+ },
+ {
+  "ma": "H094",
+  "phan": "p3",
+  "nhom": "LNB00062",
+  "k": "K5",
+  "tieu_de": "Năng lượng toả ra hay thu vào",
+  "noi": [
+   "LDB00127"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ mức năng lượng trước/sau phản ứng; sách không có",
+  "noi_dung": "##TC Năng lượng toả ra hay thu vào trong phản ứng hạt nhân\nNăng lượng phản ứng hạt nhân W: $W = (m_{tr} - m_s)c^2 = (\\Delta m_s - \\Delta m_{tr})c^2 = \\Delta E_s - \\Delta E_{tr} = K_s - K_{tr}$.\nTrong đó $m_{tr}, \\Delta m_{tr}, \\Delta E_{tr}, K_{tr}$ và $m_s, \\Delta m_s, \\Delta E_s, K_s$ lần lượt là tổng khối lượng nghỉ, độ hụt khối, năng lượng liên kết, động năng các hạt nhân trước phản ứng và sau phản ứng.\n- Nếu $W > 0$ thì phản ứng toả năng lượng.\n- Nếu $W < 0$ thì phản ứng thu năng lượng."
+ },
+ {
+  "ma": "H095",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K0",
+  "tieu_de": "Phản ứng phân hạch",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ n + U235 sang U236* sang Y + Z + k n; sách không có hình",
+  "noi_dung": "##ĐN Phản ứng phân hạch\nPhản ứng phân hạch là phản ứng trong đó một hạt nhân nặng hấp thụ một neutron chậm vỡ thành hai hạt nhân trung bình, đồng thời phóng ra một số neutron và toả ra một năng lượng rất lớn (khoảng 200 MeV). Nhiên liệu chủ yếu thực hiện phản ứng phân hạch là $^{235}_{92}\\text{U}$ và $^{239}_{94}\\text{Pu}$.\nCơ chế: truyền cho hạt nhân mẹ X một năng lượng đủ lớn (năng lượng kích hoạt) bằng cách bắn một neutron vào X để X bắt neutron đó và chuyển sang trạng thái kích thích, sau đó mới phân hạch: $n + X \\to X^{*} \\to Y + Z + kn$.\nVí dụ phương trình: $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{236}_{92}\\text{U} \\to {}^{95}_{39}\\text{Y} + {}^{138}_{53}\\text{I} + 3\\,{}^{1}_{0}\\text{n}$."
+ },
+ {
+  "ma": "H096",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K1",
+  "tieu_de": "Phản ứng dây chuyền",
+  "noi": [
+   "LDB00128",
+   "LDB00129"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ neutron nhân lên theo k; sách không có",
+  "noi_dung": "##TC Phản ứng dây chuyền\nSự phân hạch của một hạt nhân uranium kèm theo sự giải phóng vài neutron mới; các neutron này lại có thể gây ra các phân hạch tiếp theo và cứ thế, sự phân hạch tiếp diễn thành phản ứng dây chuyền.\nGọi k là số neutron trung bình được giải phóng sau mỗi phân hạch đến kích thích các hạt nhân uranium khác để tạo nên những phân hạch mới (không phải mọi neutron sinh ra đều gây phân hạch, vì có neutron bị các tạp chất trong nhiên liệu hấp thụ hoặc bay ra ngoài khối nhiên liệu).\n- $k > 1$: số phân hạch tăng nhanh theo $k^1, k^2, k^3, \\dots$; phản ứng dây chuyền trở thành thác lũ không thể khống chế, hệ thống vượt hạn (cơ chế nổ của bom nguyên tử).\n- $k < 1$: phản ứng dây chuyền không thể xảy ra, hệ thống dưới hạn.\n- $k = 1$: phản ứng dây chuyền có thể khống chế, hệ thống tới hạn (cơ chế hoạt động của nhà máy điện nguyên tử).\nMuốn $k \\ge 1$ thì khối lượng uranium hoặc plutonium phải đạt đến một trị số tối thiểu gọi là khối lượng tới hạn."
+ },
+ {
+  "ma": "H097",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K2",
+  "tieu_de": "Lò phản ứng hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ lò tốt, cắt được ngay",
+  "noi_dung": "##TC Lò phản ứng hạt nhân\n- Lò phản ứng hạt nhân là thiết bị để tạo ra các phản ứng phân hạch dây chuyền tự duy trì và điều khiển được.\n- Nhiên liệu phân hạch trong lò thường là $^{235}\\text{U}$ hoặc $^{239}\\text{Pu}$.\n- Để đảm bảo $k = 1$, người ta dùng các thanh điều khiển chứa Bo hay Cd là các chất có tác dụng hấp thụ neutron (khi số neutron trong lò tăng quá nhiều thì cho các thanh điều khiển ngập sâu vào khu vực chứa nhiên liệu để hấp thụ số neutron thừa).\n- Năng lượng toả ra từ lò phản ứng không đổi theo thời gian."
+ },
+ {
+  "ma": "H098",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K3",
+  "tieu_de": "Phản ứng nhiệt hạch",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ D + T sang He + n; sách không có",
+  "noi_dung": "##ĐN Phản ứng nhiệt hạch\nPhản ứng nhiệt hạch là phản ứng kết hợp hai hạt nhân rất nhẹ thành hạt nhân nặng hơn ở nhiệt độ rất cao. Đây là phản ứng toả năng lượng, là nguồn gốc năng lượng của Mặt Trời, các ngôi sao."
+ },
+ {
+  "ma": "H099",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K4",
+  "tieu_de": "Lò phản ứng phân hạch hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Dùng sơ đồ lò (thanh uranium, cadmium, than chì, xi măng)",
+  "noi_dung": "##ĐN Lò phản ứng phân hạch hạt nhân\nLò phản ứng phân hạch hạt nhân là thiết bị giải phóng năng lượng hạt nhân thông qua phản ứng dây chuyền có thể kiểm soát được.\n- Lò phản ứng phân hạch hạt nhân đầu tiên trên thế giới được xây dựng tại Đại học Chicago (Hoa Kỳ) vào năm 1942.\n- Nhiên liệu của lò là thanh uranium, làm từ uranium tự nhiên hoặc uranium đã làm giàu (hàm lượng $^{235}\\text{U}$ chiếm từ 2% đến 4%)."
+ },
+ {
+  "ma": "H100",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K5",
+  "tieu_de": "Chất điều tiết",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình lò có chú thích than chì làm chất điều tiết",
+  "noi_dung": "##TC Chất điều tiết (làm chậm neutron)\nNeutron có tốc độ tương đương với chuyển động nhiệt (neutron nhiệt, hay neutron chậm) là thích hợp nhất để phân hạch hạt nhân. Neutron quá nhanh sẽ \"đi ngang qua\" hạt nhân $^{235}\\text{U}$ mà hạt nhân không \"bắt\" được nên phân hạch không xảy ra.\n- Phản ứng phân hạch tạo ra neutron tốc độ rất cao, vì vậy phải làm chậm chúng bằng bộ điều tiết đặt xung quanh thanh uranium: neutron nhanh va chạm với hạt nhân trong bộ điều tiết, năng lượng giảm và trở thành neutron chậm.\n- Chất điều tiết thường dùng: than chì, nước nặng ($\\text{D}_2\\text{O}$), nước thông thường (nước nhẹ).\n- Nước nhẹ hấp thụ neutron cao hơn nên lò dùng nước nhẹ phải dùng urani đã làm giàu; lò dùng nước nặng hoặc than chì làm chất làm chậm có thể dùng urani tự nhiên làm nhiên liệu."
+ },
+ {
+  "ma": "H101",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K6",
+  "tieu_de": "Thanh điều khiển",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình lò có thanh cadmium",
+  "noi_dung": "##TC Thanh điều khiển\nĐể điều chỉnh số lượng neutron nhằm kiểm soát tốc độ phản ứng, người ta chèn một số thanh cadmium vào giữa các thanh uranium. Cadmium hấp thụ neutron mạnh; loại thanh này gọi là thanh điều khiển.\n- Khi phản ứng dây chuyền tăng nhanh, đưa thanh cadmium vào sâu hơn để hấp thụ nhiều neutron hơn thì phản ứng dây chuyền chậm lại."
+ },
+ {
+  "ma": "H102",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K7",
+  "tieu_de": "Chất tải nhiệt và nhà máy điện hạt nhân",
+  "noi": [
+   "LDB00128",
+   "LDB00129"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 166,
+    "chu_thich": "Sơ đồ nhỏ máy điện hạt nhân (lò, bộ trao đổi nhiệt, tua bin, máy phát)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "chữ chú thích nhỏ"
+   }
+  ],
+  "ly_do": "Sơ đồ nhà máy tạm dùng được; có thể thêm ảnh thật nhà máy",
+  "noi_dung": "##TC Chất tải nhiệt và nhà máy điện hạt nhân\nNăng lượng giải phóng bởi phân hạch làm tăng nhiệt độ vùng phản ứng. Các chất lỏng như nước hoặc natri kim loại lỏng lưu thông bên trong và bên ngoài lò để truyền nhiệt và đồng thời làm mát lò.\n- Nhiệt toả ra từ lò biến nước thành hơi; hơi nước có nhiệt độ và áp suất cao điều khiển tua-bin tạo ra điện.\n- Chỉ cần đốt cháy lượng nhiên liệu hạt nhân bằng một cây bút chì thì năng lượng giải phóng ra tương đương nhiệt lượng toả ra khi đốt cháy hoàn toàn 10 tấn than tiêu chuẩn.\n- Một nhà máy điện hạt nhân công suất một triệu kilowatt chỉ tiêu thụ khoảng 30 tấn uranium đã làm giàu mỗi năm, trong khi nhà máy nhiệt điện cùng công suất đốt $2{,}5 \\times 10^6$ tấn than mỗi năm."
+ },
+ {
+  "ma": "H104",
+  "phan": "p3",
+  "nhom": "LNB00064",
+  "k": "K0",
+  "tieu_de": "Hiện tượng phóng xạ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ hạt nhân mẹ phân rã ra hạt nhân con + tia",
+  "noi_dung": "##ĐN Hiện tượng phóng xạ\nHiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác được gọi là hiện tượng phóng xạ.\nQuá trình này do các nguyên nhân bên trong gây ra nên không chịu tác động của các yếu tố thuộc môi trường ngoài như nhiệt độ, áp suất,..."
+ },
+ {
+  "ma": "H105",
+  "phan": "p3",
+  "nhom": "LNB00064",
+  "k": "K8",
+  "tieu_de": "So sánh các tia phóng xạ",
+  "noi": [
+   "LDB00130"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ lệch trong điện trường + khả năng xuyên qua giấy/nhôm/chì; sách không có",
+  "noi_dung": "##TC So sánh các tia phóng xạ\n- Tia $\\alpha$ và tia $\\beta^+$ mang điện dương nên trong điện trường lệch về phía bản âm; tia $\\beta^-$ mang điện âm nên lệch về phía bản dương; tia $\\gamma$ không mang điện nên không bị lệch.\n- Khả năng ion hoá: tia $\\alpha$ mạnh nhất, tia $\\gamma$ yếu nhất. Khả năng đâm xuyên: tia $\\gamma$ mạnh nhất, tia $\\alpha$ yếu nhất."
+ },
+ {
+  "ma": "H106",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K0",
+  "tieu_de": "Định luật phóng xạ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 151,
+    "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+    "loai": "do_thi",
+    "chat_luong": "tam",
+    "ghi": "có đánh dấu điểm, đủ dùng"
+   }
+  ],
+  "ly_do": "Đồ thị N-t sách dùng được; vẽ lại nếu muốn sạch",
+  "noi_dung": "##ĐL Định luật phóng xạ\nThực nghiệm chứng tỏ rằng cứ sau một khoảng thời gian xác định $T$, một nửa số hạt nhân hiện có bị phân rã, biến đổi thành hạt nhân khác; $T$ được gọi là chu kì bán rã của chất phóng xạ.\nSau các khoảng thời gian $T, 2T, 3T, \\dots, kT$ ($k$ là số nguyên dương), số hạt nhân $N$ còn lại chưa bị phân rã bằng $\\dfrac{N_0}{2}, \\dfrac{N_0}{4}, \\dfrac{N_0}{8}, \\dots, \\dfrac{N_0}{2^k}$, tức là $N(kT) = N_0 \\cdot 2^{-k}$."
+ },
+ {
+  "ma": "H107",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K1",
+  "tieu_de": "Số hạt nhân và khối lượng còn lại",
+  "noi": [
+   "LDB00131"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 151,
+    "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+    "loai": "do_thi",
+    "chat_luong": "tam",
+    "ghi": "có đánh dấu điểm, đủ dùng"
+   }
+  ],
+  "ly_do": "Dùng lại đồ thị N-t",
+  "noi_dung": "##TC Số hạt nhân và khối lượng còn lại\n- Số hạt nhân còn lại: $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$.\n- Hằng số phóng xạ: $\\lambda = \\dfrac{0{,}693}{T}$ (vì $2 = e^{\\ln 2} \\approx e^{0{,}693}$).\n- Số hạt nhân đã bị phân rã: $\\Delta N = N_0 - N(t) = N_0\\left(1 - e^{-\\lambda t}\\right)$.\n- Khối lượng chất phóng xạ còn lại: $m(t) = m_0 \\cdot 2^{-\\frac{t}{T}} = m_0 e^{-\\lambda t}$ (khối lượng tỉ lệ với số hạt nên giảm theo cùng quy luật như số hạt nhân $N$)."
+ },
+ {
+  "ma": "H108",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K3",
+  "tieu_de": "Độ phóng xạ",
+  "noi": [
+   "LDB00132"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị H-t giảm mũ; sách không có",
+  "noi_dung": "##ĐN Độ phóng xạ\n- Độ phóng xạ $H$ (hoạt độ phóng xạ) đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, có giá trị bằng số hạt nhân phân rã trong một giây.\n- $H_t = -\\dfrac{dN_t}{dt} = \\lambda N_0 e^{-\\lambda t} = \\lambda N_t$; độ phóng xạ ban đầu $H_0 = \\lambda N_0$.\n- Đơn vị của độ phóng xạ là becơren (Bq): $1\\ \\text{Bq} = 1$ phân rã/giây.\n- Độ phóng xạ của một chất phóng xạ giảm theo thời gian theo cùng quy luật hàm số mũ như số hạt nhân của nó: $H = H_0 \\cdot 2^{-\\frac{t}{T}}$."
+ },
+ {
+  "ma": "H111",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K2",
+  "tieu_de": "Đầu báo khói dùng tia alpha",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Sơ đồ đầu báo khói dùng tia alpha",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nét vẽ tay, hơi rối"
+   }
+  ],
+  "ly_do": "Sơ đồ sách đủ dùng nhưng rối; vẽ lại nếu cần",
+  "noi_dung": "##TC Đầu báo khói dùng tia alpha\nĐầu báo khói là thiết bị phát hiện khói trong không khí và tự động báo động. Máy dò chứa khoảng 0,2 mg Am, kim loại phóng xạ có chu kì bán rã 432 năm, phát ra tia alpha và gamma.\n- Các hạt alpha va chạm với oxy, nitơ và các phân tử khác trong khoang phát hiện, làm ion hóa các phân tử này; ion dương và ion âm chuyển động dưới tác dụng của lực điện trường tạo thành dòng điện rất nhỏ.\n- Khi khói đi vào buồng phát hiện, các hạt trong khói hấp phụ một số hạt $\\alpha$, làm giảm số lượng phân tử khí bị ion hóa, dòng điện giữa hai điện cực giảm; máy dò phát hiện thay đổi đó thì phát ra âm thanh báo động."
+ }
+]

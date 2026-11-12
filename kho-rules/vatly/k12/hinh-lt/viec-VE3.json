@@ -1,0 +1,378 @@
+[
+ {
+  "ma": "H055",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K0",
+  "tieu_de": "Hiện tượng cảm ứng điện từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 57,
+    "chu_thich": "Hình 4-1 (in nhầm số) Thí nghiệm nghiên cứu hiện tượng cảm ứng điện từ (a: nam châm-cuộn dây, b: hai cuộn dây)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "số hiệu in nhầm là 4-1"
+   }
+  ],
+  "ly_do": "Hai thí nghiệm nam châm-cuộn dây và hai cuộn dây: có trong sách.",
+  "noi_dung": "##ĐN Hiện tượng cảm ứng điện từ\n- Thí nghiệm 1: nối điện kế nhạy với cuộn dây $B$ thành mạch kín rồi đưa thanh nam châm vào cuộn dây, để nam châm đứng yên trong cuộn dây, hoặc rút nam châm ra. Khi đưa vào hoặc rút ra, từ trường qua cuộn dây thay đổi và kim điện kế lệch: trong cuộn dây xuất hiện dòng điện cảm ứng.\n- Thí nghiệm 2: cuộn dây $A$ nối với nguồn điện qua biến trở và công tắc, lắp vào trong cuộn dây $B$ (nối với điện kế), luồn thanh sắt mềm vào cuộn $A$. Khi đóng hoặc mở công tắc, hoặc khi đầu trượt của biến trở trượt nhanh, dòng điện trong cuộn $A$ thay đổi nhanh nên từ trường trong cuộn $B$ thay đổi nhanh và trong cuộn $B$ xuất hiện dòng điện cảm ứng.\n- Kết luận: nếu từ thông đi qua vòng dây dẫn kín thay đổi thì trong vòng dây dẫn đó xuất hiện dòng điện cảm ứng.\n- Hiện tượng xuất hiện dòng điện cảm ứng trong cuộn dây được gọi là hiện tượng cảm ứng điện từ."
+ },
+ {
+  "ma": "H056",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K1",
+  "tieu_de": "Định luật Lenz",
+  "noi": [
+   "LDB00112"
+  ],
+  "cach": 3,
+  "so_hinh": 4,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình Lenz; cần sơ đồ nam châm lại gần/ra xa, từ thông tăng/giảm, chiều dòng cảm ứng.",
+  "noi_dung": "##ĐL Định luật Lenz\n- Dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường do nó sinh ra có tác dụng chống lại sự biến thiên của từ thông qua mạch kín đó."
+ },
+ {
+  "ma": "H057",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K2",
+  "tieu_de": "Xác định chiều dòng điện cảm ứng",
+  "noi": [
+   "LDB00112"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ B, B cảm ứng khi Phi tăng/giảm; sách không có.",
+  "noi_dung": "##PP Xác định chiều dòng điện cảm ứng\nXác định chiều của $\\vec{B}$ qua mạch và xem từ thông qua mạch tăng hay giảm.\nTừ thông tăng thì từ trường cảm ứng $\\vec{B}_c$ ngược chiều $\\vec{B}$; từ thông giảm thì $\\vec{B}_c$ cùng chiều $\\vec{B}$ (chống lại sự biến thiên của từ thông).\nTừ chiều $\\vec{B}_c$, dùng quy tắc nắm tay phải suy ra chiều dòng điện cảm ứng $I_c$."
+ },
+ {
+  "ma": "H058",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K4",
+  "tieu_de": "Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Khung CDMN, MN dịch chuyển: Hình 7-1.",
+  "noi_dung": "##TC Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ\n- Đoạn dây $MN$ dài $l$ chuyển động với tốc độ $v$ cắt các đường sức của từ trường đều $\\vec{B}$ (mặt phẳng khung dây vuông góc với đường sức từ) làm thay đổi từ thông qua mạch kín, nên định luật Faraday có thể viết cụ thể hơn.\n- Trong thời gian $\\Delta t$ đoạn dây dịch chuyển một đoạn $v\\Delta t$, diện tích khung thay đổi $\\Delta S = lv\\Delta t$.\n- Độ lớn độ biến thiên từ thông: $\\Delta\\Phi = B\\Delta S = Blv\\Delta t$.\n- Độ lớn suất điện động cảm ứng: $E = \\dfrac{\\Delta\\Phi}{\\Delta t} = Blv$."
+ },
+ {
+  "ma": "H059",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K5",
+  "tieu_de": "Vận tốc hợp với đường sức từ một góc $\\theta$",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-2 Hướng chuyển động của đoạn dây không vuông góc với đường sức từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Phân tích v thành thành phần vuông góc và song song: Hình 7-2.",
+  "noi_dung": "##TC Vận tốc hợp với đường sức từ một góc $\\theta$\n- Khi hướng chuyển động vuông góc với đoạn dây nhưng hợp với đường sức từ một góc $\\theta$, phân tích $\\vec{v}$ thành hai thành phần: vuông góc với đường sức $v_1 = v\\sin\\theta$ và song song với đường sức $v_2 = v\\cos\\theta$.\n- Chỉ thành phần vuông góc cắt các đường sức từ mới tạo ra suất điện động cảm ứng: $E = Blv_1 = Blv\\sin\\theta$."
+ },
+ {
+  "ma": "H060",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K6",
+  "tieu_de": "Đoạn dây chuyển động là một nguồn điện",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Dùng lại Hình 7-1.",
+  "noi_dung": "##NX Đoạn dây chuyển động là một nguồn điện\n- Đoạn dây $MN$ chuyển động đóng vai trò như một nguồn điện có suất điện động $E$.\n- Chiều dòng điện chạy qua đoạn dây $MN$ có thể xác định theo quy tắc bàn tay phải."
+ },
+ {
+  "ma": "H061",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K8",
+  "tieu_de": "Quy tắc bàn tay phải",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 66,
+    "chu_thich": "Hình quy tắc bàn tay phải (thanh dẫn MN giữa hai cực nam châm, bàn tay vẽ nét)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "không thấy số hiệu"
+   }
+  ],
+  "ly_do": "Bàn tay phải + thanh MN + v, B: có trong sách (PDF 66).",
+  "noi_dung": "##ĐL Quy tắc bàn tay phải\n- Đặt bàn tay phải sao cho các đường sức từ hướng vào lòng bàn tay, ngón cái choãi ra $90^\\circ$ chỉ chiều chuyển động của đoạn dây.\n- Chiều từ cổ tay đến bốn ngón tay là chiều của dòng điện cảm ứng (chiều suất điện động) trong đoạn dây."
+ },
+ {
+  "ma": "H062",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K0",
+  "tieu_de": "Dòng điện xoáy (dòng Fu-cô)",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 105,
+    "chu_thich": "Hình (không số) khối kim loại trong từ trường biến thiên, dòng xoáy",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ, ở đầu trang"
+   }
+  ],
+  "ly_do": "Khối kim loại + dòng xoáy.",
+  "noi_dung": "##ĐN Dòng điện xoáy (dòng Fu-cô)\n- Khi một khối kim loại đặt trong từ trường biến thiên, từ thông qua khối kim loại thay đổi nên dòng điện cảm ứng xuất hiện bên trong khối.\n- Có thể coi khối kim loại gồm nhiều vòng dây ghép với nhau; dòng điện cảm ứng tạo thành các vòng khép kín giống như xoáy nước nên gọi là dòng điện xoáy hay dòng điện Foucault (Fu-cô)."
+ },
+ {
+  "ma": "H063",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K1",
+  "tieu_de": "Lò luyện kim",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 105,
+    "chu_thich": "Hình (không số) lò luyện kim, cuộn dây quấn ngoài",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ"
+   }
+  ],
+  "ly_do": "Sơ đồ lò luyện; cũng có ảnh thật lò cảm ứng.",
+  "noi_dung": "##TC Lò luyện kim\n- Lò luyện có cuộn dây quấn bên ngoài lò; khi dòng điện qua cuộn dây thay đổi nhanh thì gây ra dòng điện xoáy trong kim loại trong lò.\n- Nhiệt lượng do dòng điện xoáy tạo ra làm nóng chảy kim loại.\n- Ưu điểm: toàn bộ quá trình có thể thực hiện trong chân không, ngăn các tạp chất trong không khí xâm nhập vào kim loại và có thể nấu chảy các hợp kim chất lượng cao."
+ },
+ {
+  "ma": "H065",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K3",
+  "tieu_de": "Hãm chuyển động bằng điện từ (phanh điện từ)",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 106,
+    "chu_thich": "Hình 9-4 Tấm kim loại dao động trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Con lắc tấm đồng giữa hai cực nam châm.",
+  "noi_dung": "##TC Hãm chuyển động bằng điện từ (phanh điện từ)\n- Tấm đồng (hoặc nhôm) dao động trong mặt phẳng thẳng đứng như con lắc, đặt giữa hai cực của nam châm: bên trong tấm kim loại xuất hiện dòng điện xoáy do từ thông thay đổi.\n- Điện trở của tấm đồng (hoặc nhôm) rất nhỏ nên dòng điện xoáy rất mạnh. Theo định luật Lenz, lực từ tác dụng lên dây dẫn mang dòng điện xoáy trong từ trường là lực cản, làm con lắc nhanh chóng dừng lại.\n- Tác dụng hãm của dòng điện xoáy được dùng trong phanh điện từ ở các xe có trọng tải lớn."
+ },
+ {
+  "ma": "H066",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K4",
+  "tieu_de": "Dòng điện xoáy cũng có hại, cần giảm tác hại",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 106,
+    "chu_thich": "Hình 9-5 Tấm thép silicon trong máy biến áp giúp giảm tổn thất do dòng điện xoáy",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Lõi thép ghép lá silicon: rõ.",
+  "noi_dung": "##CY Dòng điện xoáy cũng có hại, cần giảm tác hại\n- Trong lõi sắt của động cơ hay máy biến áp, dòng điện xoáy lớn sinh nhiệt, tiêu tốn một lượng lớn năng lượng điện, thậm chí có thể làm cháy các thiết bị.\n- Để giảm tổn thất do dòng điện xoáy: dùng thép silicon có điện trở suất cao làm vật liệu lõi; dùng nhiều lá thép silicon mỏng cách điện ghép lại, mặt phẳng của các tấm thép song song với đường sức từ."
+ },
+ {
+  "ma": "H067",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K0",
+  "tieu_de": "Hiện tượng cảm ứng điện từ trên khung dây",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 81,
+    "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "hai sơ đồ nhỏ"
+   }
+  ],
+  "ly_do": "Khung dây quay, pháp tuyến n.",
+  "noi_dung": "##ĐN Hiện tượng cảm ứng điện từ trên khung dây\n- Khi từ thông qua khung dây dẫn biến thiên thì trên khung dây xuất hiện một suất điện động cảm ứng.\n- Khung dây có $N$ vòng, diện tích $S$, quay đều với tốc độ $n$ (vòng/s) trong từ trường đều có vectơ cảm ứng từ $\\vec{B}$ vuông góc với trục quay; tốc độ góc $\\omega = 2\\pi n$ (rad/s).\n- Khi khung quay đều thì vectơ pháp tuyến $\\vec{n}$ của mặt phẳng khung cũng quay đều với tốc độ góc $\\omega$."
+ },
+ {
+  "ma": "H068",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K1",
+  "tieu_de": "Biểu thức từ thông qua khung dây",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 81,
+    "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "hai sơ đồ nhỏ"
+   }
+  ],
+  "ly_do": "Dùng lại hình khung dây/pháp tuyến.",
+  "noi_dung": "##TC Biểu thức từ thông qua khung dây\n$\\Phi = NBS\\cos(\\vec{B},\\vec{n}) = \\Phi_0\\cos(\\omega t + \\varphi)$\n- $\\Phi_0 = NBS$ là từ thông cực đại qua khung dây; $BS$ là từ thông cực đại qua một vòng dây.\n- Độ lớn pha ban đầu: $|\\varphi| = (\\vec{B},\\vec{n})_{t=0}$."
+ },
+ {
+  "ma": "H069",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K2",
+  "tieu_de": "Biểu thức suất điện động cảm ứng",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị Phi và e theo t (e trễ pha pi/2) sách không có.",
+  "noi_dung": "##TC Biểu thức suất điện động cảm ứng\n$e = -\\Phi'(t) = \\omega NBS\\cos\\left(\\omega t + \\varphi - \\dfrac{\\pi}{2}\\right) = E_0\\cos(\\omega t + \\varphi_e)$\n- $E_0 = \\omega NBS = \\omega\\Phi_0$ là suất điện động cực đại; pha ban đầu $\\varphi_e = \\varphi - \\dfrac{\\pi}{2}$.\n- Suất điện động hiệu dụng: $E = \\dfrac{E_0}{\\sqrt{2}} = \\dfrac{\\omega NBS}{\\sqrt{2}}$."
+ },
+ {
+  "ma": "H070",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K3",
+  "tieu_de": "Quan hệ giữa e và Φ",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị Phi-e vuông pha (elip): sách không có.",
+  "noi_dung": "##CY Quan hệ giữa e và Φ\n- Tại một thời điểm, suất điện động $e$ trễ pha $\\dfrac{\\pi}{2}$ so với từ thông $\\Phi$ (vuông pha).\n- $\\left(\\dfrac{\\Phi}{\\Phi_0}\\right)^2 + \\left(\\dfrac{e}{E_0}\\right)^2 = 1 \\;\\Leftrightarrow\\; \\Phi^2 + \\dfrac{e^2}{\\omega^2} = \\Phi_0^2 = (NBS)^2$."
+ },
+ {
+  "ma": "H071",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K4",
+  "tieu_de": "Máy phát điện xoay chiều một pha",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 82,
+    "chu_thich": "Hình (không số) máy phát điện xoay chiều một cặp cực / hai cặp cực",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Stato-rôto một và hai cặp cực.",
+  "noi_dung": "##TC Máy phát điện xoay chiều một pha\n- Phần cảm: tạo ra từ thông biến thiên, là vành tròn đặt $p$ cặp cực nam châm xếp xen kẽ cực bắc, cực nam đều nhau. Phần ứng: các cuộn dây giống nhau, xếp cách đều nhau trên một vòng tròn.\n- Một trong hai phần được đặt cố định, phần còn lại quay quanh một trục. Phần cố định gọi là stato, phần quay gọi là rôto.\n- Tần số: $f = np$ (Hz) nếu rôto quay $n$ (vòng/giây); $f = \\dfrac{Np}{60}$ (Hz) nếu rôto quay $N$ (vòng/phút).\n- Suất điện động cực đại ở hai đầu ra: $E_0 = \\omega\\,\\Phi_0\\,N\\,[\\text{số cuộn dây}]$, với $\\Phi_0$ là từ thông cực đại qua một vòng dây và $N$ là số vòng của một cuộn dây."
+ },
+ {
+  "ma": "H072",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K5",
+  "tieu_de": "Máy phát điện xoay chiều ba pha",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 82,
+    "chu_thich": "Hình (không số) máy phát điện xoay chiều ba pha (stato 3 cuộn, rôto nam châm)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ ba cuộn lệch 120 độ; có thể thêm đồ thị e1,e2,e3.",
+  "noi_dung": "##TC Máy phát điện xoay chiều ba pha\n- Phần cảm thường là nam châm điện, là rôto. Phần ứng gồm ba cuộn dây giống nhau quấn quanh lõi thép, đặt cách nhau $\\dfrac{1}{3}$ vòng tròn trên thân stato.\n- Ba suất điện động có cùng tần số, cùng biên độ, từng đôi một lệch pha nhau $\\dfrac{2\\pi}{3}$: $e_1 = E_0\\cos\\omega t$; $e_2 = E_0\\cos\\left(\\omega t + \\dfrac{2\\pi}{3}\\right)$; $e_3 = E_0\\cos\\left(\\omega t - \\dfrac{2\\pi}{3}\\right)$.\n- Tại mọi thời điểm: $e_1 + e_2 + e_3 = 0$; $e_1^2 + \\left(\\dfrac{e_2 - e_3}{\\sqrt{3}}\\right)^2 = E_0^2$; $e_2e_3 = e_1^2 - \\dfrac{3E_0^2}{4}$."
+ }
+]

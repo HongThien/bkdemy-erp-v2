@@ -1,0 +1,82 @@
+[
+ {
+  "ma": "H001",
+  "file": "H001.png",
+  "cach": 3,
+  "chu_thich": "Mô hình động học phân tử: phân tử chuyển động không ngừng, giữa chúng có lực hút và lực đẩy",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H006",
+  "file": "H006.png",
+  "cach": 3,
+  "chu_thich": "Nước đá (rắn) có khoảng cách giữa các phân tử lớn hơn nước (lỏng)",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H007",
+  "file": "H007.png",
+  "cach": 3,
+  "chu_thich": "Sáu quá trình chuyển thể giữa thể rắn, lỏng, khí",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H009",
+  "file": "H009.png",
+  "cach": 3,
+  "chu_thich": "Nóng chảy chất rắn kết tinh: trật tự tinh thể bị phá vỡ dần khi nhận nhiệt ở t_c",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H014",
+  "file": "H014.png",
+  "cach": 3,
+  "chu_thich": "Nhiệt tự truyền từ vật nóng sang vật lạnh; chiều ngược lại không tự xảy ra",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H017",
+  "file": "H017.png",
+  "cach": 3,
+  "chu_thich": "Hai vật tiếp xúc truyền nhiệt cho đến khi nhiệt độ bằng nhau (cân bằng nhiệt)",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H024",
+  "file": "H024.png",
+  "cach": 3,
+  "chu_thich": "Mô hình khí lí tưởng: phân tử là chất điểm, va chạm đàn hồi",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H026",
+  "file": "H026.png",
+  "cach": 3,
+  "chu_thich": "Đường đẳng nhiệt trên đồ thị p–V (hypebol) và p–1/V (đường thẳng qua gốc), T2 > T1",
+  "nguon": "Vẽ lại theo hình tr.108 sách Tập 1 (PDF tr.110), bổ sung hai đường T1<T2",
+  "ghi": ""
+ },
+ {
+  "ma": "H030",
+  "file": "H030.png",
+  "cach": 3,
+  "chu_thich": "Phân tử khí va chạm đàn hồi với thành bình lập phương cạnh l, tốc độ v",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H031",
+  "file": "H031.png",
+  "cach": 3,
+  "chu_thich": "Ba cặp mặt thành đối diện: mỗi phương có N/3 phân tử",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ }
+]

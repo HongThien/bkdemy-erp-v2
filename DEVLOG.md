@@ -79928,3 +79928,61 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: "file lớp 8 chọn câu mới vẫn bị 4 đáp án abcd". Gốc: _kho_snapshot_cau tự hiện form TN đã duyệt ⇒ câu TLN thành trắc nghiệm. Sửa: cờ giao dịch bk.snap_khong_form bật quanh vòng chụp ở fn_btnhe_luu_bai / fn_btnhe_in_test khi _btnhe_uu_tu_luan, tắt sau vòng; _kho_snapshot_cau giữ chữ ký, không cờ = như cũ.
 - Thử rollback 3 câu TLN có form (T108020702012…): K8 abcd→trả lời ngắn; K10 vẫn abcd. 13 bài test K8 16:43 chưa sửa, chờ Thùy.
 - (12/11 tối) File SQL Editor của lần tách đã vào DB (fn_kho_sua_tk + CHECK kho_sua_log có vatly/hoahoc, ACL không anon) ⇒ đã `--ghi-so`. DB: 0 hàm/ràng buộc/bảng còn dấu Lý hóa. **Vật lý + Hóa học: DB đủ.**
+
+## 12/11 18:0x — Sửa 13 bài test sau giờ K8 (Thùy "sửa khối 8 luôn đi", đã gật mục MẤT GÌ)
+- 13 bài bo_tro_test K8 (8A1×5 · 8A2×5 · 8B1×3, chưa nhập) chụp lại bằng fn_btnhe_luu_bai: cùng câu, cùng mã bài, giữ cau_hinh_in; 26 câu TLN gốc đang hiện form abcd → trả lời ngắn; tự luận giữ. Sau sửa: 0 bài sau giờ khối 3–9 còn câu trắc nghiệm (cả bài luyện). Bài đã in giấy phải in lại.
+- Bẫy: chạy script ghi qua `| head` ⇒ EPIPE giết tiến trình trước commit (may là rollback). Ghi ra file log, không pipe head.
+
+## 12/11 — In sau giờ: câu trả lời ngắn có dòng kẻ như tự luận (không đụng DB)
+- Thùy: "Các câu trả lời ngắn có thể thêm dòng như tự luận". ETPrintView nhanDe.tlnTheoDong (chỉ InSauGioET bật): câu TLN có btvnLinesByCau > 0 ⇒ in dòng kẻ qua CauFlow; còn lại vẫn bảng ô điền; chia đoạn liền nhau giữ thứ tự số câu. ET thường không đổi.
+- SoanBaiSauGio: ô "dòng" của câu TLN mặc định hiện 0 (= bảng), dùng lại ô dòng của KhoiCau.
+- Xem trên ERP local, bài test Bùi Thế Vinh 8A1 (cau_hinh_in có sẵn 15–20 dòng): bản HS in dòng kẻ, bản GV in đáp án + lời giải không dòng. Lưu ý 3 bài sau giờ đã lưu có sẵn số dòng ⇒ giờ in dòng thay cho bảng.
+
+## 12/11 18:46 — Bổ trợ yếu: trần đơn vị THEO TUẦN + vá CHECK don_vi (mig 202611121846 ĐÃ ÁP)
+- Thùy: "L2 chỉ 2 đơn vị trong bổ trợ khối" → chọn "Trần theo tuần". _ca_bo_tro_don_vi vốn đã đúng (L2 2 · L3 4/ca); đo: không em L2 nào vượt cho yếu (L2 chỉ 4 đv khi đi BÙ). Thêm _btyeu_dv_tuan; ung_vien ẩn em đủ trần tuần; xep chặn vượt. Bù/đuổi/vắng không đếm.
+- LỖI THẬT lộ khi thử: CHECK buoi_hoc_hs.don_vi chỉ (1,4) từ 202609242000, thang L1–L4 11/11 quên nới ⇒ mọi lần xếp em L2 vào ca khối bị chặn (và doi_level sang L2 khi có buổi). Nới (1,2,4). Bài học §2.1: thêm giá trị ⇒ nới CHECK kèm.
+- Thử rollback: xếp Nguyễn Thắng Tùng L2 ca 13/11 = 2 đv; ca cùng tuần không hiện em; xếp lần 2 bị chặn. 15 em L2 case mở, 0 em vượt.
+
+## 12/11 18:50 — Chuyển mọi em L3 về L2 (mig 202611121850 ĐÃ ÁP, dữ liệu thật, Thùy gật scope)
+- Thùy: "L3 mới là 4 đơn vị. Hiện tại tất cả các ca bổ trợ đều tính là L2". 14 em L3→L2 (K4 2·K4T 1·K5 3·K7 5·K8 2·K9 1; 11 có case mở) + hs_level_log nguon thang_l2_hien_tai_12_11; 11 đề xuất L3 đã duyệt → 2 (nối ghi chú, trigger log); 1 buổi chưa học (Phương Chi 18/11) don_vi 4→2. Sau áp: L1 151 · L2 29 · L3 0.
+
+## 12/11 (tối) — Vật lý 12: tải kho đề + đề xuất bản đồ 4 tầng từ đề thi (CHƯA ghi DB)
+- Làm: tải MapStudy kho đề trường–sở Lý 12 (238 PDF, .nhap-tam/vatly-mapstudy-12) + Thư viện học liệu mục luyện thi (276/277 file Word, .nhap-tam/vatly-thuvienhoclieu, ghép tên theo sha256).
+- Sai: tải TVHL bằng Chrome 'Browser 1' quá dày (fetch 300ms/bài) ⇒ Cloudflare 1015 chặn IP máy đó. Sửa: chuyển sang trình duyệt trong app, 10 s/yêu cầu, dừng ở 429 đầu tiên — 266 bài không bị chặn. Browser pane lưu file tải dạng GUID.tmp và XOÁ file trước khi file mới về ⇒ phải có bộ gom chép ngay (8 + 16 file đầu mất, tải bù theo sha).
+- Sai: trích docx dính câu (wp:posOffset của hình nằm cùng đoạn với 'Câu N') ⇒ câu sau bị nuốt; lọc /Bo-/ loại nhầm đề Bộ GD. Đã sửa trong lo-moi.cjs.
+- Quyết định (Thùy): chỉ khối 12; Đ/S không vào dạng (giống Toán); chỉ đề thật (bỏ bộ đề tự soạn, ĐGNL); đề có lời giải trước; lô 1 = 50 đề rồi mỗi lô 20 đề tới khi bão hoà.
+- Kết quả: lô 1 50 đề/1.122 câu → cây v1; lô 2 +20 đề/457 câu, 9 NEW → +2 dạng; lô 3 +20 đề/404 câu, 8 NEW lẻ → +0 ⇒ dừng 90 đề. Cây v3: 4 chủ đề · 17 chuyên đề · 33 nhóm · 67 dạng. kho-rules/vatly/k12/ (commit e6671405). Chờ Thùy duyệt HTML + 5 câu hỏi.
+
+## 12/11 (tối) — Kiểm lại bộ ~3.000 đề toanmath đã tải (GK/CK K6–K12) — CHỈ ĐO, chưa ghi DB
+- **Thùy:** "Kiểm tra lại 3000 file đề thi giữa kì - cuối kì đã tải. Mới giải hơn 1500 đề. Chuẩn bị giải hết các đề còn lại."
+- **Nguồn:** `E:\BK ACADEMY\Tài liệu tham khảo\_toanmath-danh-sach.csv` = 2.988 bài đăng (1 bài = 1 PDF và/hoặc thư mục Word giải nén) ⇒ 5.300 file.
+- **Đo:** `scripts/kho/de-thi/do-toanmath.mjs` (băm sha256 mọi file, so `tai_lieu.cau_hinh.deThi.sha256` · `nhap_kho_log` · `ten_de_goc`) → `kho-rules/dai/lo/toanmath/xep-hang-doi.mjs` ⇒ `hang-doi.json`.
+  **1.594 file / 1.139 bài đã có** (khớp "hơn 1.500"). Còn **1.324 bài chưa** (PDF 1.226 bài/1.311 file · Word 85 bài/300 file · 13 bài không có file — 11 "bộ đề KNTTVCS" CSV ghi không tải được) + **525 bài đề thi NGHI TRÙNG** (cùng khối+trường+năm+kỳ với đề đã có, khác file — phần lớn K6–K9 vào DB qua bộ đề cắt trang, sha không khớp; chưa kiểm nội dung, KHÔNG được coi là xong).
+- **Theo khối (chưa):** K6 102 · K7 147 · K8 181 · K9 239 · K10 124 · K11 154 · K12 377 (thi thử 199). Đề cương mọi khối gần như chưa làm (536 bài).
+- **Trong 1.139 bài đã có:** câu Đ/S chưa có lời giải K10 1.017 · K11 571 · K12 823; Hình K11 258 câu chưa lời giải. Câu TN/TLN/Hình K6–K9 đủ lời giải.
+- **Chưa làm gì ghi DB.** Chờ Thùy chốt phạm vi + thứ tự.
+- Thùy duyệt ("duyệt vào bản đồ vật lý, t đọc và sửa trên đấy") ⇒ ghi cây v3 vào vatly_bdm_* khối 12 (1 transaction, thử ROLLBACK trước, khớp 4·17·33·67). fn_vatly_bdm_cay có where la_thanh_vien() ⇒ gọi trần bằng claude_build ra null; kiểm bằng jwt claims nhân sự trong ROLLBACK. Commit 793c8e7c (chưa push).
+
+## 12/11 (tối, tiếp) — Kiểm 525 bài toanmath NGHI TRÙNG bằng nội dung (Thùy: "Kiểm 525 nghi trùng") — chỉ đọc DB, 0 AI
+- **Cách:** `kho-rules/dai/lo/toanmath/kiem-nghi-trung.mjs` — chữ file (pdftotext / document.xml) ↔ câu của đề ứng viên trong DB, so cụm 5 chữ liên tiếp (bỏ `$…$`, bỏ dấu); bỏ cụm có ở >2 đề (chữ mẫu "trong không gian với hệ toạ độ Oxyz…"); MỐC NHIỄU = max khớp với 3 đề NGẪU NHIÊN cùng khối (đo được: 366/401 bài = 0%, cao nhất 0,4 — một bộ đề).
+- **Luật chốt:** trùng = khớp ≥60% (≥4 câu đủ dài) · hoặc ≥40% và hơn mốc nhiễu ≥0,35 (PDF nhiều công thức ⇒ chữ vỡ) · hoặc 3 câu ≥67% nền <0,1. Bộ nhiều đề (bo-de/tuyen-tap/N-de, chữ >20k từ) ⇒ `mot_phan` làm lại. Khác/mơ hồ ⇒ làm lại (sai kiểu này chỉ nhân đôi ĐỀ, câu tự lọc trùng lúc ghi — rẻ hơn bỏ sót).
+- **Kết quả 525:** trùng **335** · scan không có chữ **124** (đều PDF, máy không có OCR ⇒ kiểm ở khâu đọc PDF, TRƯỚC khi soạn) · khác 47 · bộ đề một phần 11 · mơ hồ 8.
+- **Hàng đợi sau gộp** (`xep-hang-doi.mjs` tự đọc `kiem-nghi-trung.json`): đã có **1.474** · nghi trùng scan **124** · chưa **1.390** bài (Word 90 bài/314 file · PDF 1.287 bài · không file 13).
+- **Sai trong lúc làm:** chèn luật bằng chuỗi template ⇒ mất `\` trong regex (`/\w+/g` xoá sạch chữ) ⇒ lượt đó ra 0 trùng / 0 nhiễu; thấy vô lý, đọc lại file, sửa. Bài học: sửa code bằng script thay chuỗi thì kiểm lại đúng dòng vừa chèn trước khi tin kết quả.
+- Cờ "thiếu đề" (đếm "Câu 1") bỏ: phần dư là mã đề khác (đảo câu) + ma trận + đáp án, không phải đề mới.
+
+## 12/11 (tối, tiếp) — Lượt WORD của bộ toanmath: bóc máy 90 bài / 314 file (Thùy: "Word 90 bài trước") — 0 AI, chưa ghi DB
+- Thư mục làm việc `.nhap-tam/toanmath-word/` (ngoài git): `lap-ds.cjs` (danh sách + vai file: đề / đáp án / ma trận) · `doi-doc.cjs` + `doi1.ps1` (51 `.doc` → `.docx` qua Word COM: chép về máy, mở ReadOnly + mật khẩu giả để không treo hộp thoại, trần 90 s/file, quá hạn chỉ giết WINWORD mở sau lúc gọi) · `boc-het.cjs` (boc-word.mjs từng file) · `phan-loai.cjs` (mỗi bài chọn 1 mã đề tốt nhất).
+- **Sai:** (1) đường dẫn `E:\` mất `\` qua `node -e` trong bash ⇒ Word "không tìm thấy file" cả 51; dựng lại bằng `String.raw`. (2) Word COM ẩn treo ở file đầu (hộp thoại) 10 phút ⇒ dừng, giết đúng PID do lệnh mở (StartTime 19:23:40). (3) chạy thử `| head` song song với lượt thật ⇒ 4 file "đang mở" — chạy lại, 51/51.
+- **Kết quả:** 260/295 file bóc ra de.json. Theo bài: 75 bài có câu (K7 1 · K10 9 · K11 20 · K12 45 — K12 phần lớn thi thử) = **2.166 câu** (TN 1.152 · TLN 578 · Đ/S 360 · 76 chưa rõ loại); **gần như mọi bài chỉ có ĐỀ** (đáp án nằm ở PDF / file đáp án riêng): chỉ 3 bài đủ lời giải, 12 bài có công thức hỏng; 15 bài (chủ yếu K6–K9 tự luận) bóc ra 0 câu ⇒ chuyển sang lượt PDF.
+- Bảng số liệu bị duỗi thành từng dòng — phải dựng lại ở khâu soạn. Chưa đo trùng với kho (lọc trùng là so nguyên văn, ghi.mjs tự trỏ về câu cũ; đo cả kho thì để sau 22h).
+- Chờ Thùy gật phạm vi giải + ghi.
+
+## 12/11 — Lịch khối: Xoá thay Kết thúc + Chốt lịch tuần (Thùy)
+- mig `202611122233` (ĐÃ ÁP --only): `fn_lich_truc_xoa` (vướng ca có em ⇒ hỏi; chưa sinh ca ⇒ delete, đã sinh ⇒ hieu_luc_den = hôm qua vì ca cũ FK về) · bảng `lich_khoi_chot` (append, bản chụp) · `fn_lich_khoi_chot_tuan` · `fn_lich_khoi_chot_trang_thai` (so nội dung, có cả hiệu lực — lần đầu thiếu `den` nên xoá sau chốt không báo, đã sửa). Thử rollback: chốt tuần 09/11 sinh 3 · cập nhật 1 · huỷ 5 ca trống của lịch cũ; xoá vướng 1 ca 13/11 ⇒ hỏi ⇒ xác nhận huỷ 1 ca 1 buổi, hết trên lưới. App: 2 thẻ Tuần này/Tuần sau + popup vướng. CHƯA bấm chốt/xoá thật.
+
+## 12/11 (khuya) — Vật lý 12: ghi bản đồ + lý thuyết/ví dụ từ ebook Đỗ Ngọc Hà 2 tập + tách LT nhóm/dạng + làm hình minh hoạ
+- Làm: ghi cây v3 vào vatly_bdm_* khối 12 (4 chủ đề · 17 chuyên đề · 33 nhóm · 67 dạng; ghi-ban-do.mjs). Thùy đưa ebook Tập 1 (Nhiệt+Khí) rồi Tập 2 (Từ+HN) ⇒ trạm Sonnet chép mô tả/lý thuyết/ví dụ (luật: ví dụ nguyên sách, LT từ sách, SGK KNTT chỉ khi chắc 100% và tách trường riêng) ⇒ gộp + HTML ⇒ Thùy "Ghi đi" 2 lần (ghi-ly-thuyet.mjs --nguon ebook-tap1|ebook-tap2, chỉ ô trống). Kết quả: 32/33 nhóm có mô tả, 62/67 dạng có ví dụ (166 VD).
+- Sai: chỉ điền LT ở NHÓM, quên ô ly_thuyet của DẠNG (Toán dùng cả hai: 1.140/1.412 dạng có LT riêng) — Thùy "chưa thấy dạng nào có lý thuyết". Sửa: tách 183 khối nguyên văn theo bảng xếp (trạm xếp, Claude soát 6 chỗ) — Thùy: "nhóm là lý thuyết chung, từng dạng là lý thuyết riêng" — ghi (tach-lt-rap.mjs): 25 nhóm còn LT chung, 62/67 dạng có LT riêng. Bài học: trước khi điền một môn mới, đối chiếu môn đã chạy (Toán) xem ô nào đang được dùng.
+- Sai: Tập 2 số trang KHÔNG cố định (PDF = in−1 ở CĐ1–2, = in+5 từ CĐ4 vì chèn trang quảng cáo, đáp án = in+4) ⇒ 2 trạm đọc thiếu nửa chủ đề, phải gọi đọc bù. Trạm K/L/Z tự viết giải thích cho câu chỉ có bảng đáp án ⇒ đã mở trang sách đối chiếu, cắt về "Chọn X.". JSON trạm Z ghi "\text" chưa escape ⇒ TAB — soat2.cjs bắt, gộp sửa.
+- Hình minh hoạ LT: dò 183 khối ⇒ 112 cần/nên có hình. Thùy chọn "theo đề xuất": Tập 1 cắt sách (cat-anh.mjs, pdftoppm 200 dpi), Tập 2 vẽ lại bằng code (ve_hinh_lib), ảnh thật chỉ Wikimedia Commons giấy phép tự do. 7 trạm: CAT 20 ảnh · VE1 10 · VE3 23 · VE4 12 xong; VE2 (từ trường/lực từ 28 hình) · VE5 (hạt nhân 24) · WEB (12 ảnh) đang chạy lúc dừng. Ảnh ở kho-rules/vatly/k12/hinh-lt/anh, CHƯA upload, CHƯA ghi DB. Ghi: hinh-lt-rap.mjs --ghi (upload kho-anh/vatly_lt + chèn `![](url)` ngay sau khối, chỉ khi khối còn nguyên văn).

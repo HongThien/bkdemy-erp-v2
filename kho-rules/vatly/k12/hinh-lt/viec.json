@@ -1,0 +1,2506 @@
+[
+ {
+  "ma": "H001",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K0",
+  "tieu_de": "Mô hình động học phân tử về cấu tạo chất",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ba ý chữ; sơ đồ phân tử chuyển động + lực hút/đẩy giúp hình dung, sách không có hình tổng quát.",
+  "noi_dung": "##ĐN Mô hình động học phân tử về cấu tạo chất\n- Các chất được cấu tạo từ các hạt riêng biệt là phân tử.\n- Các phân tử chuyển động không ngừng. Nhiệt độ của vật càng cao thì tốc độ của các phân tử càng lớn.\n- Giữa các phân tử có lực tương tác (lực liên kết), bao gồm lực hút và lực đẩy."
+ },
+ {
+  "ma": "H002",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K2",
+  "tieu_de": "Tương tác phân tử",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 12,
+    "chu_thich": "Hình 1-4 Lực tương tác phân tử thay đổi theo khoảng cách",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.10; đường F_đ, F_h, F, mốc r0"
+   }
+  ],
+  "ly_do": "Đồ thị lực–khoảng cách là cốt lõi; sách có đồ thị sạch.",
+  "noi_dung": "##TC Tương tác phân tử\n- Giữa các phân tử có khoảng trống: chất khí dễ bị nén (khoảng trống lớn); thể tích hỗn hợp nước và rượu giảm sau khi trộn (chất lỏng); nguyên tử carbon khuếch tán vào bề mặt thép (chất rắn).\n- Rất khó giảm thể tích khối chì bằng cách nén ⇒ giữa các phân tử có lực đẩy; rất khó tăng thể tích khối chì bằng cách kéo ⇒ giữa các phân tử có lực hút.\n- Khi khoảng cách $r$ giữa các phân tử tăng thì độ lớn của lực đẩy $F_d$ và lực hút $F_h$ đều giảm, lực đẩy giảm nhanh hơn.\n- Khi $r = r_0$: $|F_d| = |F_h|$ và hợp lực $F = 0$.\n- Khi $r < r_0$: $|F_d| > |F_h|$, $F$ có tác dụng đẩy.\n- Khi $r > r_0$: $|F_d| < |F_h|$, $F$ có tác dụng hút.\n- $r_0$ vào cỡ $10^{-10}\\ \\text{m}$. Khi $r$ lớn hơn $10^{-9}\\ \\text{m}$, lực tương tác phân tử trở nên rất yếu và có thể bỏ qua."
+ },
+ {
+  "ma": "H003",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K3",
+  "tieu_de": "Cấu trúc chất rắn",
+  "noi": [
+   "LDB00068"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 13,
+    "chu_thich": "Hình 1-5 Cấu trúc chất rắn",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.11"
+   },
+   {
+    "trang_pdf": 13,
+    "chu_thich": "Hình 1-6 Tinh thể muối ăn",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "dùng thêm nếu cần minh hoạ chất rắn kết tinh"
+   }
+  ],
+  "ly_do": "Sơ đồ mạng phân tử sạch.",
+  "noi_dung": "##TC Cấu trúc chất rắn\n- Các phân tử ở rất gần nhau nên lực tương tác (hút và đẩy) rất mạnh, chỉ dao động nhiệt quanh vị trí cân bằng xác định. Vật rắn có thể tích và hình dạng riêng.\n- Chất rắn kết tinh (tinh thể) có cấu trúc tinh thể: các phân tử liên kết chặt, sắp xếp theo trật tự hình học tuần hoàn tạo thành mạng tinh thể (muối ăn, kim cương, hầu hết kim loại...).\n- Chất rắn vô định hình không có cấu trúc tinh thể (thủy tinh, nhựa đường, các chất dẻo...)."
+ },
+ {
+  "ma": "H004",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K4",
+  "tieu_de": "Cấu trúc chất khí",
+  "noi": [
+   "LDB00068"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 13,
+    "chu_thich": "Hình 1-7 Cấu trúc chất khí",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.11"
+   }
+  ],
+  "ly_do": "Sơ đồ phân tử khí sạch.",
+  "noi_dung": "##TC Cấu trúc chất khí\n- Các phân tử ở xa nhau (khoảng cách gấp hàng chục lần kích thước phân tử) nên lực tương tác rất yếu (trừ khi va chạm), chuyển động hỗn loạn, không ngừng về mọi phía, chiếm toàn bộ không gian của bình chứa.\n- Một lượng khí không có thể tích riêng và hình dạng riêng mà có thể tích và hình dạng của bình chứa."
+ },
+ {
+  "ma": "H005",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K5",
+  "tieu_de": "Cấu trúc chất lỏng",
+  "noi": [
+   "LDB00068"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 13,
+    "chu_thich": "Hình 1-8 Cấu trúc chất lỏng",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.11"
+   }
+  ],
+  "ly_do": "Sơ đồ phân tử lỏng sạch.",
+  "noi_dung": "##TC Cấu trúc chất lỏng\n- Chất lỏng là trung gian giữa chất rắn và chất khí: phân tử ở xa nhau hơn chất rắn, gần nhau hơn chất khí.\n- Lực tương tác mạnh hơn chất khí nên giữ các phân tử không bị phân tán, nhưng không đủ lớn như chất rắn: phân tử dao động quanh vị trí cân bằng nhưng các vị trí này có thể dịch chuyển.\n- Chất lỏng có thể tích xác định nhưng không có hình dạng riêng mà có hình dạng của phần bình chứa nó."
+ },
+ {
+  "ma": "H006",
+  "phan": "p1",
+  "nhom": "LNB00034",
+  "k": "K6",
+  "tieu_de": "Nước là trường hợp đặc biệt",
+  "noi": [
+   "LDB00068"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình; vẽ so sánh khoảng cách phân tử nước lỏng/nước đá.",
+  "noi_dung": "##CY Nước là trường hợp đặc biệt: khoảng cách trung bình giữa các phân tử ở thể lỏng nhỏ hơn ở thể rắn (nước đá), vì thế khối lượng riêng của nước đá nhỏ hơn của nước và nước đá nổi trên nước."
+ },
+ {
+  "ma": "H007",
+  "phan": "p1",
+  "nhom": "LNB00035",
+  "k": "K0",
+  "tieu_de": "Sự chuyển thể",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Cần sơ đồ 6 quá trình (nóng chảy, đông đặc, hoá hơi, ngưng tụ, thăng hoa, ngưng kết) giữa 3 thể; sách chỉ mô tả bằng chữ.",
+  "noi_dung": "##ĐN Sự chuyển thể\nKhi thay đổi nhiệt độ và áp suất, chất có thể biến đổi từ thể này sang thể khác.\n- Sự nóng chảy: quá trình chuyển từ thể rắn sang thể lỏng, vật thu nhiệt. Ngược lại là sự đông đặc (thể lỏng sang thể rắn), vật toả nhiệt.\n- Sự hoá hơi: quá trình chuyển từ thể lỏng sang thể khí, vật thu nhiệt. Ngược lại là sự ngưng tụ (thể khí sang thể lỏng), vật toả nhiệt.\n- Sự thăng hoa: quá trình chuyển trực tiếp từ thể rắn sang thể khí, vật thu nhiệt. Ngược lại là sự ngưng kết (thể khí sang thể rắn trực tiếp), vật toả nhiệt."
+ },
+ {
+  "ma": "H008",
+  "phan": "p1",
+  "nhom": "LNB00035",
+  "k": "K1",
+  "tieu_de": "Nóng chảy chất rắn kết tinh vs vô định hình",
+  "noi": [
+   "LDB00069"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 75,
+    "chu_thich": "Hình 5-1 Quá trình nóng chảy của chất rắn kết tinh (1) và vô định hình (2)",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.73; có mốc t_c"
+   }
+  ],
+  "ly_do": "Đồ thị nhiệt độ–thời gian sạch, đúng ý.",
+  "noi_dung": "##TC Sự nóng chảy của chất rắn kết tinh và chất rắn vô định hình\nSự nóng chảy của chất rắn kết tinh và chất rắn vô định hình là khác nhau.\n- Chất rắn kết tinh: khi nhiệt độ của vật tăng tới $t_c$, vật rắn bắt đầu nóng chảy, nhiệt độ của vật giữ nguyên ở giá trị $t_c$ đến khi toàn bộ vật rắn hoá lỏng; sau đó nhiệt độ chất lỏng tăng. Giá trị $t_c$ được gọi là nhiệt độ nóng chảy của chất.\n- Chất rắn vô định hình: không có nhiệt độ nóng chảy xác định. Vật rắn khi được cung cấp nhiệt lượng thì mềm dần cho đến khi trở thành lỏng và trong quá trình này nhiệt độ của nó tăng liên tục."
+ },
+ {
+  "ma": "H009",
+  "phan": "p1",
+  "nhom": "LNB00035",
+  "k": "K2",
+  "tieu_de": "Giải thích sự nóng chảy chất rắn kết tinh",
+  "noi": [
+   "LDB00069"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình; sơ đồ mạng tinh thể bị phá vỡ khi tới t_c.",
+  "noi_dung": "##TC Giải thích sự nóng chảy của chất rắn kết tinh\nKhi vật nóng lên, phân tử dao động mạnh dần; tới nhiệt độ $t_c$, phân tử bắt đầu thắng được lực tương tác phân tử và thoát khỏi liên kết, quá trình nóng chảy bắt đầu.\nNhiệt lượng vật nhận được tiếp tục phá vỡ liên kết tinh thể; khi trật tự tinh thể bị phá vỡ hoàn toàn thì quá trình nóng chảy kết thúc."
+ },
+ {
+  "ma": "H010",
+  "phan": "p1",
+  "nhom": "LNB00035",
+  "k": "K3",
+  "tieu_de": "Sự hoá hơi: bay hơi và sôi",
+  "noi": [
+   "LDB00070"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật nồi nước sôi có bọt / cốc nước bay hơi; sách không có hình.",
+  "noi_dung": "##TC Sự hoá hơi: bay hơi và sôi\nSự hoá hơi có thể xảy ra dưới hai hình thức là bay hơi và sôi.\n- Sự bay hơi: là sự hoá hơi xảy ra ở mặt thoáng chất lỏng. Một số phân tử có động năng lớn hơn nhiều so với giá trị trung bình, thắng được lực liên kết phân tử trong chất lỏng thì thoát ra ngoài mặt thoáng, trở thành hơi. Trong quá trình bay hơi, các phân tử có động năng lớn thoát ra khiến động năng trung bình của các phân tử còn lại giảm, nhiệt độ của chất lỏng giảm.\n- Sự sôi: là sự hoá hơi xảy ra đồng thời ở trong lòng và mặt thoáng của chất lỏng. Các bọt hơi hình thành trong lòng khối nước, nổi lên mặt nước, vỡ ra và toả hơi nước ra ngoài khí quyển; lúc đó ta nói nước sôi.\n- Trong quá trình sôi, nhiệt độ của khối chất lỏng không đổi, gọi là nhiệt độ sôi. Nhiệt độ sôi phụ thuộc vào áp suất khí trên mặt thoáng và bản chất của chất lỏng."
+ },
+ {
+  "ma": "H011",
+  "phan": "p1",
+  "nhom": "LNB00036",
+  "k": "K1",
+  "tieu_de": "Thế năng phân tử",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 37,
+    "chu_thich": "Hình 2-1 Thế năng và lực tương tác phụ thuộc khoảng cách (a) F–r, (b) E_t–r",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.35; hai đồ thị xếp dọc, có E_tmin"
+   }
+  ],
+  "ly_do": "Đồ thị E_t–r là điểm mấu chốt; sách có sạch.",
+  "noi_dung": "##ĐN Thế năng phân tử\nCác phân tử tương tác với nhau nên có thế năng, gọi là thế năng tương tác phân tử. Thế năng phân tử phụ thuộc vào khoảng cách giữa các phân tử.\n- Khi $r > r_0$ hợp lực tương tác là lực hút: để tăng $r$ phải thực hiện công thắng lực hút, nên thế năng phân tử $E_t$ tăng khi $r$ tăng.\n- Khi $r < r_0$ hợp lực tương tác là lực đẩy: để giảm $r$ phải thực hiện công thắng lực đẩy, nên $E_t$ tăng khi $r$ giảm.\n- Khi $r = r_0$ thì thế năng phân tử nhỏ nhất, $E_t = E_{t\\min}$.\nKhi thể tích của vật thay đổi, khoảng cách giữa các phân tử thay đổi nên thế năng phân tử cũng thay đổi. Do đó thế năng phân tử phụ thuộc vào thể tích của vật."
+ },
+ {
+  "ma": "H012",
+  "phan": "p1",
+  "nhom": "LNB00036",
+  "k": "K3",
+  "tieu_de": "Hai cách làm thay đổi nội năng",
+  "noi": [
+   "LDB00071"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật: bếp đun/nước nóng toả nhiệt và cưa gỗ/xoa tay; sách không có hình.",
+  "noi_dung": "##TC Hai cách làm thay đổi nội năng\n- Truyền nhiệt: nội năng của các vật được truyền cho nhau (bếp đun làm vật tăng nội năng; nước nóng tỏa nhiệt ra môi trường làm giảm nội năng).\n- Thực hiện công: các dạng năng lượng khác (như cơ năng) được chuyển hóa thành nội năng (hai bàn tay cọ xát nóng lên, cưa gỗ làm lưỡi cưa và gỗ nóng lên do ma sát).\n- Khi vật nhận công từ bên ngoài thì nội năng của vật tăng lên; khi vật thực hiện công ra bên ngoài thì nội năng của vật giảm đi."
+ },
+ {
+  "ma": "H013",
+  "phan": "p1",
+  "nhom": "LNB00037",
+  "k": "K1",
+  "tieu_de": "Quy ước dấu của A và Q",
+  "noi": [
+   "LDB00072",
+   "LDB00073"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 38,
+    "chu_thich": "Hình 2-2 Quy ước về dấu của Q và A",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.36"
+   }
+  ],
+  "ly_do": "Sơ đồ mũi tên vào/ra hệ sạch.",
+  "noi_dung": "##TC Quy ước dấu của A và Q\n- $A > 0$: hệ nhận công.\n- $A < 0$: hệ thực hiện công.\n- $Q > 0$: hệ nhận nhiệt lượng.\n- $Q < 0$: hệ truyền nhiệt lượng."
+ },
+ {
+  "ma": "H014",
+  "phan": "p1",
+  "nhom": "LNB00037",
+  "k": "K2",
+  "tieu_de": "Định luật II (Clausius)",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ nhiệt truyền từ nóng sang lạnh tự phát, chiều ngược cần công; sách không có.",
+  "noi_dung": "##ĐL Định luật II nhiệt động lực học (Clausius)\nKhông phải tất cả các quá trình tuân theo định luật bảo toàn năng lượng đều có thể diễn ra một cách tự phát.\nNhiệt truyền từ vật nhiệt độ cao sang vật nhiệt độ thấp một cách tự phát, nhưng quá trình ngược lại dù không vi phạm định luật bảo toàn năng lượng cũng chưa bao giờ xảy ra một cách tự phát.\nPhát biểu của Clausius: \"Nhiệt không thể tự truyền từ vật có nhiệt độ thấp sang vật có nhiệt độ cao mà không gây ra những biến đổi khác\"."
+ },
+ {
+  "ma": "H015",
+  "phan": "p1",
+  "nhom": "LNB00037",
+  "k": "K4",
+  "tieu_de": "Động cơ nhiệt",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 90,
+    "chu_thich": "Sơ đồ động cơ nhiệt: nguồn nóng T1, tác nhân, nguồn lạnh T2, Q1, Q2, A",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.88; không đánh số hình"
+   }
+  ],
+  "ly_do": "Sơ đồ khối sạch.",
+  "noi_dung": "##TC Động cơ nhiệt\nTác nhân nhận $Q_1$ từ nguồn nóng, biến đổi thành công $A$ và tỏa $Q_2$ còn lại cho nguồn lạnh: $A = Q_1 - Q_2$.\nHiệu suất động cơ nhiệt: $H = \\frac{A}{Q_1} = 1 - \\frac{Q_2}{Q_1}$.\nHiệu suất cực đại của động cơ nhiệt: $H_{\\max} = \\frac{T_1 - T_2}{T_1} = 1 - \\frac{T_2}{T_1}$.\n$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh."
+ },
+ {
+  "ma": "H016",
+  "phan": "p1",
+  "nhom": "LNB00037",
+  "k": "K5",
+  "tieu_de": "Máy lạnh",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 90,
+    "chu_thich": "Sơ đồ máy lạnh: nguồn nóng/lạnh, Q1, Q2, A",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.88; không đánh số hình"
+   }
+  ],
+  "ly_do": "Sơ đồ khối sạch, đối xứng với động cơ.",
+  "noi_dung": "##TC Máy lạnh\nTác nhân lấy $Q_2$ từ nguồn lạnh và nhờ nhận công $A$ sẽ truyền sang nguồn nóng $Q_1$: $A = Q_1 - Q_2$.\nHiệu năng của máy lạnh: $\\varepsilon = \\frac{Q_2}{A} = \\frac{Q_2}{Q_1 - Q_2}$.\nHiệu năng cực đại của máy lạnh: $\\varepsilon_{\\max} = \\frac{T_2}{T_1 - T_2}$.\n$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh."
+ },
+ {
+  "ma": "H017",
+  "phan": "p1",
+  "nhom": "LNB00038",
+  "k": "K0",
+  "tieu_de": "Nhiệt độ và cân bằng nhiệt",
+  "noi": [
+   "LDB00075"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ hai vật tiếp xúc, nhiệt truyền tới khi cân bằng (đồ thị T–t); sách không có.",
+  "noi_dung": "##ĐN Nhiệt độ và cân bằng nhiệt\nKhi hai vật có nhiệt độ chênh lệch tiếp xúc nhau thì nhiệt năng truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn. Trong quá trình truyền nhiệt này, các tham số trạng thái của hai vật ảnh hưởng lẫn nhau và thay đổi tương ứng. Sau một thời gian, nhiệt độ của hai vật bằng nhau và không có sự truyền nhiệt năng giữa chúng: hai vật đã đạt đến trạng thái cân bằng nhiệt.\nNhiệt độ cho biết trạng thái cân bằng nhiệt của các vật tiếp xúc nhau và chiều truyền nhiệt năng."
+ },
+ {
+  "ma": "H018",
+  "phan": "p1",
+  "nhom": "LNB00038",
+  "k": "K2",
+  "tieu_de": "Nhiệt kế",
+  "noi": [
+   "LDB00076"
+  ],
+  "cach": 2,
+  "so_hinh": 3,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật các loại nhiệt kế (thuỷ ngân, lưỡng kim, hồng ngoại, điện trở/cặp nhiệt); sách chỉ mô tả bằng chữ.",
+  "noi_dung": "##TC Nhiệt kế\nNhiệt kế là thiết bị dùng để đo nhiệt độ, được chế tạo dựa trên một số tính chất vật lí phụ thuộc vào nhiệt độ của các chất, các vật liệu, các linh kiện điện và điện tử.\n- Nhiệt kế thủy ngân: dựa trên sự dãn nở nhiệt của thủy ngân; xác định độ cao cột thủy ngân ở các nhiệt độ khác nhau để biết nhiệt độ cần đo.\n- Nhiệt kế lưỡng kim: ép hai tấm kim loại có độ dãn nở khác nhau vào nhau; khi nhiệt độ thay đổi, độ xoắn của tấm lưỡng kim thay đổi.\n- Nhiệt kế điện trở: dựa vào sự phụ thuộc điện trở của vật theo nhiệt độ; từ giá trị điện trở đo được xác định nhiệt độ cần đo.\n- Nhiệt kế cặp nhiệt điện: dựa trên suất điện động cặp nhiệt điện tạo ra bởi hai dây dẫn khác nhau hàn vào hai đầu của dây kim loại khác tạo thành mạch kín; chênh lệch nhiệt độ giữa hai mối hàn càng lớn thì suất điện động càng lớn.\n- Nhiệt kế hồng ngoại: dựa vào sự phụ thuộc vào nhiệt độ của bước sóng điện từ theo hệ thức Wien: $\\lambda_{\\max}T = 2900\\ \\mu\\text{m.K}$."
+ },
+ {
+  "ma": "H019",
+  "phan": "p1",
+  "nhom": "LNB00039",
+  "k": "K3",
+  "tieu_de": "Công thức chuyển nhiệt độ giữa các thang",
+  "noi": [
+   "LDB00077"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 51,
+    "chu_thich": "Hình 3-1 Các thang đo nhiệt độ (điểm sôi/đóng băng trên ba thang)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "in tr.49; nền xám sạn, chữ nhỏ"
+   }
+  ],
+  "ly_do": "Hình so sánh ba thang đúng ý nhưng hơi sạn; có thể vẽ lại sạch nếu muốn.",
+  "noi_dung": "##TC Công thức chuyển nhiệt độ giữa các thang\n$\\dfrac{t(^\\circ\\text{C})}{100} = \\dfrac{T(\\text{K}) - 273{,}15}{100} = \\dfrac{t(^\\circ\\text{F}) - 32}{180}$\nCelsius và Kelvin: $T(\\text{K}) = t(^\\circ\\text{C}) + 273{,}15$ ; $t(^\\circ\\text{C}) = T(\\text{K}) - 273{,}15$\nThường làm tròn số: $T(\\text{K}) = t(^\\circ\\text{C}) + 273$ ; $t(^\\circ\\text{C}) = T(\\text{K}) - 273$\nCelsius và Fahrenheit: $t(^\\circ\\text{F}) = \\dfrac{9}{5}t(^\\circ\\text{C}) + 32$ ; $t(^\\circ\\text{C}) = \\dfrac{5}{9}t(^\\circ\\text{F}) - \\dfrac{160}{9}$"
+ },
+ {
+  "ma": "H020",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K1",
+  "tieu_de": "Hiện tượng khuếch tán",
+  "noi": [
+   "LDB00085"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 11,
+    "chu_thich": "Hình 1-1 Hiện tượng khuếch tán (giọt mực lan trong cốc nước, 4 khung)",
+    "loai": "anh_that",
+    "chat_luong": "tam",
+    "ghi": "in tr.9; ảnh nhỏ, hơi mờ"
+   }
+  ],
+  "ly_do": "Ảnh thí nghiệm đúng ý, độ nét vừa; có thể tìm ảnh mạng nét hơn.",
+  "noi_dung": "##TC Hiện tượng khuếch tán\n- Nhỏ một giọt mực vào cốc nước thì mực lan dần ra: đó là hiện tượng khuếch tán.\n- Nhiệt độ nước càng cao thì mực lan càng nhanh, tức sự khuếch tán xảy ra càng nhanh.\n- Khuếch tán không phải do trọng lực hay đối lưu gây ra mà do chuyển động không ngừng của các phân tử."
+ },
+ {
+  "ma": "H021",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K2",
+  "tieu_de": "Chuyển động Brown",
+  "noi": [
+   "LDB00085"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 11,
+    "chu_thich": "Hình 1-2 Thí nghiệm của Brown (kính hiển vi + quỹ đạo hạt phấn hoa)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "in tr.9; lưới ô li, quỹ đạo gấp khúc"
+   }
+  ],
+  "ly_do": "Hình quỹ đạo Brown đúng ý.",
+  "noi_dung": "##ĐN Chuyển động Brown\nChuyển động hỗn loạn không ngừng của các hạt lơ lửng trong chất lỏng (hoặc chất khí) được gọi là chuyển động Brown. Chẳng hạn chuyển động của hạt phấn hoa trong nước (Robert Brown quan sát năm 1827), chuyển động của hạt khói trong không khí."
+ },
+ {
+  "ma": "H022",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K3",
+  "tieu_de": "Nguyên nhân và đặc điểm của chuyển động Brown",
+  "noi": [
+   "LDB00085"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 11,
+    "chu_thich": "Hình 1-3 Hạt phấn hoa chịu tác động của các phân tử nước",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "in tr.9"
+   }
+  ],
+  "ly_do": "Hình phân tử nước va đập hạt phấn hoa đúng ý.",
+  "noi_dung": "##TC Nguyên nhân và đặc điểm của chuyển động Brown\n- Nguyên nhân nằm ở bên trong chất lỏng: các phân tử nước chuyển động hỗn loạn, không ngừng va đập vào hạt phấn hoa từ mọi phía. Tại mỗi thời điểm, hạt phấn hoa bị tác động mạnh theo một hướng nhất định, thời điểm tiếp theo lại theo hướng khác nên hướng chuyển động của hạt thường xuyên thay đổi.\n- Chuyển động Brown vẫn tồn tại dù đã loại bỏ các tác động bên ngoài như rung động, đối lưu; miễn là các hạt lơ lửng đủ nhỏ thì có thể quan sát được.\n- Nhiệt độ của chất lỏng (hay chất khí) càng cao thì chuyển động Brown càng mạnh.\n- Chuyển động Brown phản ánh gián tiếp chuyển động nhiệt của các phân tử chất lỏng (hay chất khí)."
+ },
+ {
+  "ma": "H023",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K5",
+  "tieu_de": "Mô hình động học phân tử chất khí",
+  "noi": [
+   "LDB00085"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 13,
+    "chu_thich": "Hình 1-7 Cấu trúc chất khí",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.11"
+   }
+  ],
+  "ly_do": "Dùng lại hình cấu trúc khí.",
+  "noi_dung": "##TC Mô hình động học phân tử chất khí\n- Chất khí được cấu tạo từ các phân tử có kích thước rất nhỏ so với khoảng cách giữa chúng. Lực tương tác giữa các phân tử khí rất yếu so với ở thể lỏng và thể rắn.\n- Các phân tử khí chuyển động hỗn loạn, không ngừng. Chuyển động này càng nhanh thì nhiệt độ của khí càng cao.\n- Khi chuyển động hỗn loạn, các phân tử khí va chạm với nhau và với thành bình. Khi va chạm với thành bình các phân tử khí tác dụng lực, gây áp suất lên thành bình."
+ },
+ {
+  "ma": "H024",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K6",
+  "tieu_de": "Khí lí tưởng",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ phân tử là chất điểm, va chạm đàn hồi; sách không có.",
+  "noi_dung": "##ĐN Khí lí tưởng\nĐể tìm hiểu các tính chất của chất khí, người ta dùng một mô hình khí đơn giản hơn khí thực nhưng vẫn phản ánh được các đặc điểm cơ bản của khí này:\n- Các phân tử khí được coi là các chất điểm, không tương tác với nhau khi chưa va chạm.\n- Các phân tử khí tương tác khi va chạm với nhau và va chạm với thành bình. Các va chạm này là va chạm hoàn toàn đàn hồi.\nMô hình trên bỏ qua thể tích của phân tử khí, bỏ qua tương tác của các phân tử khí khi chưa va chạm và coi va chạm là hoàn toàn đàn hồi, làm cho việc mô tả các hiện tượng về chất khí trở nên đơn giản, dễ dàng. Chất khí trong mô hình trên được gọi là khí lí tưởng."
+ },
+ {
+  "ma": "H025",
+  "phan": "p1",
+  "nhom": "LNB00044",
+  "k": "K7",
+  "tieu_de": "Các thông số trạng thái của khí",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 1,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 101,
+    "chu_thich": "Bảng 6 sơ đồ xilanh–piston và công thức p (p0, p0+mg/S, …)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.99; mục 1.5 xác định áp suất"
+   },
+   {
+    "trang_pdf": 102,
+    "chu_thich": "Ống thuỷ tinh thẳng/nghiêng, ống chữ U, ống cắm bể chất lỏng + công thức p",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.100"
+   }
+  ],
+  "ly_do": "Chỉ cần nếu khối có mục xác định áp suất; sách có sơ đồ sạch.",
+  "noi_dung": "##ĐN Các thông số trạng thái của khí\nĐối với một lượng khí nhất định, trạng thái vĩ mô của khí có thể được mô tả bằng ba đại lượng vật lí: thể tích $V$, nhiệt độ $T$ và áp suất $p$. Các đại lượng này được gọi là các thông số trạng thái của khí.\n- Thể tích: khí chuyển động hỗn loạn về mọi phía, lấp đầy toàn bộ không gian bình chứa. Do đó, thể tích của khí thường bằng thể tích của bình chứa.\n- Nhiệt độ: biểu thị cho động năng trung bình của các phân tử. Động năng trung bình của các phân tử tăng lên (giảm đi) thì nhiệt độ của khí cũng tăng lên (giảm đi).\n- Áp suất: các phân tử khí chuyển động hỗn loạn và cũng thường xuyên va vào thành bình, khiến thành bình chịu áp suất. Áp suất mà các phân tử khí tác dụng lên thành bình chính là áp suất của chất khí."
+ },
+ {
+  "ma": "H026",
+  "phan": "p1",
+  "nhom": "LNB00045",
+  "k": "K4",
+  "tieu_de": "Đồ thị quá trình đẳng nhiệt",
+  "noi": [
+   "LDB00090"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 110,
+    "chu_thich": "Đồ thị đẳng nhiệt: p–V (hyperbol), p–1/V, p–T, V–T",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.108; mỗi hệ trục một đường, chưa có hai đường T1<T2"
+   }
+  ],
+  "ly_do": "Nội dung K4 nói hai đường T2>T1; sách chỉ vẽ một đường nên vẽ lại đủ ý.",
+  "noi_dung": "##TC Đồ thị quá trình đẳng nhiệt\nTrong quá trình đẳng nhiệt: $p = nRT \\times \\dfrac{1}{V}$.\n- Trên đồ thị $p$–$V$, đường đẳng nhiệt là một đường cong (hypebol); nhiệt độ $T_2 > T_1$ thì đường $T_2$ nằm xa gốc tọa độ hơn đường $T_1$.\n- Trên đồ thị $p$–$\\dfrac{1}{V}$, đường đẳng nhiệt là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $T_2 > T_1$ thì đường $T_2$ dốc hơn đường $T_1$."
+ },
+ {
+  "ma": "H027",
+  "phan": "p1",
+  "nhom": "LNB00045",
+  "k": "K5",
+  "tieu_de": "Đồ thị quá trình đẳng áp",
+  "noi": [
+   "LDB00090"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 111,
+    "chu_thich": "Đồ thị đẳng áp: V–T, V–t, p–T, p–V",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.109; nét đứt kéo về gốc"
+   }
+  ],
+  "ly_do": "Đồ thị sạch đúng ý.",
+  "noi_dung": "##TC Đồ thị quá trình đẳng áp\nTrong quá trình đẳng áp: $V = \\dfrac{nR}{p} \\times T$.\n- Trên đồ thị $V$–$T$ ($T$ tính bằng K), đường đẳng áp là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $p_2 > p_1$ thì đường $p_2$ ít dốc hơn đường $p_1$.\n- Trên đồ thị $V$–$t$ ($t$ tính bằng °C), đường đẳng áp là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$."
+ },
+ {
+  "ma": "H028",
+  "phan": "p1",
+  "nhom": "LNB00045",
+  "k": "K6",
+  "tieu_de": "Đồ thị quá trình đẳng tích",
+  "noi": [
+   "LDB00090"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 111,
+    "chu_thich": "Đồ thị đẳng tích: p–T, p–t, V–T, p–V",
+    "loai": "do_thi",
+    "chat_luong": "tot",
+    "ghi": "in tr.109"
+   }
+  ],
+  "ly_do": "Đồ thị sạch đúng ý.",
+  "noi_dung": "##TC Đồ thị quá trình đẳng tích\nTrong quá trình đẳng tích: $p = \\dfrac{nR}{V} \\times T$.\n- Trên đồ thị $p$–$T$ ($T$ tính bằng K), đường đẳng tích là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $V_2 > V_1$ thì đường $V_2$ ít dốc hơn đường $V_1$.\n- Trên đồ thị $p$–$t$ ($t$ tính bằng °C), đường đẳng tích là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$."
+ },
+ {
+  "ma": "H029",
+  "phan": "p1",
+  "nhom": "LNB00046",
+  "k": "K1",
+  "tieu_de": "Số mol, số phân tử, khối lượng và thể tích",
+  "noi": [
+   "LDB00094"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 14,
+    "chu_thich": "Hai sơ đồ tam giác N–m–V và N_A–M–V_m (×m0, ×V0, ×ρ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "in tr.12, mục \"Kiến thức cần nhớ\" bài tập Dạng 1"
+   }
+  ],
+  "ly_do": "Sơ đồ đổi đơn vị gọn, giúp nhớ quan hệ.",
+  "noi_dung": "##TC Số mol, số phân tử, khối lượng và thể tích\nMột mẫu vật có khối lượng $m$, thể tích $V$, chứa $N$ phân tử thì số mol $n$ của mẫu vật đó là:\n$n = \\dfrac{N}{N_A} = \\dfrac{m}{M} = \\dfrac{V}{V_m}$\n- $N$ là số phân tử, $n$ là số mol phân tử, $N_A$ là số Avogadro.\n- $m$ là khối lượng, $M$ là khối lượng mol, $m_0$ là khối lượng của một phân tử.\n- $V$ là thể tích, $V_m$ là thể tích mol, $V_0$ là thể tích trung bình một phân tử chiếm chỗ.\n- $\\rho$ là khối lượng riêng."
+ },
+ {
+  "ma": "H030",
+  "phan": "p1",
+  "nhom": "LNB00048",
+  "k": "K0",
+  "tieu_de": "Áp suất do phân tử khí tác dụng lên thành bình",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Suy luận dựa trên bình lập phương cạnh l, phân tử bật lại với tốc độ v; sách chỉ có chữ nên cần vẽ.",
+  "noi_dung": "##TC Áp suất do phân tử khí tác dụng lên thành bình\nXét bình hình lập phương cạnh dài $l$ chứa $N$ phân tử khí lí tưởng. Một phân tử khí chuyển động với tốc độ $v$ theo phương vuông góc với thành bình. Va chạm của phân tử với thành bình hoàn toàn đàn hồi nên sau va chạm phân tử chuyển động theo hướng ngược lại và vẫn có tốc độ $v$.\n- Độ biến thiên động lượng trong một lần va chạm: $\\Delta p = m_0 v - (-m_0 v) = 2m_0 v$.\n- Khoảng thời gian giữa hai lần va chạm liên tiếp với cùng một thành bình (đi tới thành đối diện rồi quay lại): $\\Delta t = \\dfrac{2l}{v}$.\n- Lực do một phân tử tác dụng lên thành bình: $F_0 = \\dfrac{\\Delta p}{\\Delta t} = \\dfrac{m_0 v^2}{l}$.\n- Áp suất do một phân tử tác dụng lên thành bình: $p_0 = \\dfrac{F_0}{S} = \\dfrac{m_0 v^2}{l^3} = \\dfrac{m_0 v^2}{V}$."
+ },
+ {
+  "ma": "H031",
+  "phan": "p1",
+  "nhom": "LNB00048",
+  "k": "K1",
+  "tieu_de": "Áp suất của khí trong bình",
+  "noi": [
+   "LDB00097",
+   "LDB00098"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ 3 cặp mặt thành đối diện (N/3 phân tử mỗi phương) giúp hiểu; sách không có.",
+  "noi_dung": "##TC Áp suất của khí trong bình\nBình khí có 6 mặt thành, tức 3 cặp mặt thành đối diện nhau, nên với mỗi hai mặt thành đối diện có $\\dfrac{N}{3}$ phân tử khí chuyển động theo phương vuông góc với hai mặt thành này. Do 3 phương chuyển động tương tự nhau nên:\n$p = \\dfrac{m_0}{3V}\\left(v_1^2 + v_2^2 + \\dots + v_N^2\\right)$\nĐặt $\\overline{v^2} = \\dfrac{v_1^2 + v_2^2 + \\dots + v_N^2}{N}$ là trung bình của bình phương tốc độ phân tử, ta có:\n$p = \\dfrac{N}{3V}\\, m_0\\, \\overline{v^2}$"
+ },
+ {
+  "ma": "H032",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K1",
+  "tieu_de": "Cảm ứng từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 8,
+    "chu_thich": "Hình 1-5 Đường sức từ và vectơ cảm ứng từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình 1-5 có vectơ B tiếp tuyến đường sức giúp hình dung chiều B.",
+  "noi_dung": "##ĐN Cảm ứng từ\nĐể đặc trưng cho từ trường về mặt gây ra lực từ, ta dùng đại lượng vectơ cảm ứng từ, kí hiệu $\\vec{B}$. Đơn vị của cảm ứng từ là tesla, kí hiệu T.\n- Phương của nam châm thử nằm cân bằng tại một điểm trong từ trường là phương của vectơ cảm ứng từ $\\vec{B}$ của từ trường tại điểm đó.\n- Quy ước: chiều từ cực Nam sang cực Bắc của nam châm thử là chiều của $\\vec{B}$."
+ },
+ {
+  "ma": "H033",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K2",
+  "tieu_de": "Từ phổ và đường sức từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 3,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 8,
+    "chu_thich": "Hình 1-4 Từ phổ của nam châm thẳng",
+    "loai": "anh_that",
+    "chat_luong": "tam",
+    "ghi": "ảnh mạt sắt đen trắng, hơi sạn"
+   },
+   {
+    "trang_pdf": 8,
+    "chu_thich": "Hình 1-5 Đường sức từ và vectơ cảm ứng từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 8,
+    "chu_thich": "Hình 1-6 Đường sức từ bên ngoài thanh nam châm",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "đường sức dày/thưa rõ"
+   }
+  ],
+  "ly_do": "Từ phổ + đường sức + nam châm: sách có đủ; từ phổ là ảnh thật hơi sạn, có thể thay bằng ảnh mạt sắt trên mạng.",
+  "noi_dung": "##ĐN Từ phổ và đường sức từ\nTừ phổ là hình ảnh những đường tạo ra bởi các mạt sắt mịn khi được đặt trong từ trường (các mạt sắt bị nhiễm từ, trở thành các nam châm thử).\nĐường sức từ là những đường vẽ trong không gian có từ trường sao cho tiếp tuyến với nó tại mỗi điểm trùng với phương của vectơ cảm ứng từ tại điểm đó. Chiều của đường sức từ là chiều của vectơ cảm ứng từ."
+ },
+ {
+  "ma": "H034",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K3",
+  "tieu_de": "Đặc điểm của đường sức từ",
+  "noi": [
+   "LDB00101"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 8,
+    "chu_thich": "Hình 1-6 Đường sức từ bên ngoài thanh nam châm",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "đường sức dày/thưa rõ"
+   }
+  ],
+  "ly_do": "Đường sức khép kín, dày/thưa: Hình 1-6 rõ.",
+  "noi_dung": "##TC Đặc điểm của đường sức từ\n- Tại mỗi điểm trong từ trường chỉ vẽ được một đường sức từ đi qua và chỉ một mà thôi.\n- Các đường sức từ là những đường cong khép kín.\n- Nơi nào từ trường mạnh hơn thì các đường sức từ ở đó vẽ dày hơn, nơi nào từ trường yếu hơn thì vẽ thưa hơn.\n- Từ trường đều là từ trường mà cảm ứng từ tại mọi điểm đều bằng nhau; đường sức của từ trường đều là những đường thẳng song song và cách đều nhau."
+ },
+ {
+  "ma": "H035",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K4",
+  "tieu_de": "Từ trường của dòng điện thẳng dài",
+  "noi": [
+   "LDB00102",
+   "LDB00103"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 9,
+    "chu_thich": "Hình 1-7(b) Đường sức từ dòng điện thẳng (đường tròn đồng tâm)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 9,
+    "chu_thich": "Hình 1-8 Từ trường của dòng điện thẳng (ký hiệu ⊗ ⊙ × •)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Đường sức tròn đồng tâm + ký hiệu ⊗⊙: có trong sách. Hình 1-7(a) từ phổ ảnh nhỏ, sạn (xấu).",
+  "noi_dung": "##TC Từ trường của dòng điện thẳng dài\n- Đường sức từ là những đường tròn nằm trong những mặt phẳng vuông góc với dòng điện, có tâm là giao điểm giữa dòng điện và mặt phẳng đó.\n- Càng gần dòng điện thẳng thì từ trường càng mạnh, càng xa dây thì từ trường càng yếu.\n- Kí hiệu $\\otimes$ và $\\odot$ biểu thị dòng điện (hoặc đường sức từ, vectơ cảm ứng từ) vuông góc với trang giấy, lần lượt đi vào và đi ra trang giấy; kí hiệu $\\times$ và $\\bullet$ biểu thị từ trường (đường sức từ, vectơ cảm ứng từ) lần lượt vuông góc với trang giấy hướng vào trong và hướng ra ngoài."
+ },
+ {
+  "ma": "H036",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K5",
+  "tieu_de": "Quy tắc nắm tay phải (dòng điện thẳng)",
+  "noi": [
+   "LDB00102"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 9,
+    "chu_thich": "Hình 1-7(c) Quy tắc nắm tay phải",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "bàn tay vẽ nét, đủ rõ"
+   }
+  ],
+  "ly_do": "Quy tắc nắm tay phải dòng thẳng: Hình 1-7(c).",
+  "noi_dung": "##ĐL Quy tắc nắm tay phải (dòng điện thẳng)\nGiơ ngón cái của bàn tay phải hướng theo chiều dòng điện, khum bốn ngón tay kia xung quanh dây dẫn thì chiều từ cổ tay đến bốn ngón tay đó là chiều của đường sức từ."
+ },
+ {
+  "ma": "H037",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K6",
+  "tieu_de": "Từ trường của dòng điện tròn",
+  "noi": [
+   "LDB00102"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 9,
+    "chu_thich": "Hình 1-9(b) Đường sức từ dòng điện tròn",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 9,
+    "chu_thich": "Hình 1-9(c) Quy tắc nắm tay phải (vòng dây)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Đường sức + nắm tay phải vòng dây: Hình 1-9(b,c). Hình 1-9(a) từ phổ ảnh xấu.",
+  "noi_dung": "##TC Từ trường của dòng điện tròn\n- Các đường sức từ của dòng điện tròn là những đường cong khép kín bao quanh dòng điện tròn; riêng đường sức từ qua tâm vòng dây thì vuông góc với mặt phẳng chứa vòng dây.\n- Quy tắc nắm tay phải: khum bàn tay phải theo vòng dây của dòng điện sao cho chiều từ cổ tay đến các ngón tay trùng với chiều dòng điện; khi đó ngón tay cái choãi ra chỉ chiều đường sức từ."
+ },
+ {
+  "ma": "H038",
+  "phan": "p2",
+  "nhom": "LNB00050",
+  "k": "K7",
+  "tieu_de": "Từ trường của ống dây hình trụ",
+  "noi": [
+   "LDB00102"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 10,
+    "chu_thich": "Hình 1-10(b) Đường sức từ ống dây",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 10,
+    "chu_thich": "Hình 1-10(c) Quy tắc nắm tay phải (ống dây)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Đường sức ống dây giống nam châm: Hình 1-10(b,c). Hình 1-10(a) từ phổ ảnh xấu.",
+  "noi_dung": "##TC Từ trường của ống dây hình trụ\n- Từ trường xung quanh ống dây tương tự từ trường xung quanh một thanh nam châm.\n- Khi các vòng dây được quấn chặt và chiều dài ống dây rất lớn so với bán kính các vòng dây, có thể xem từ trường bên trong ống dây là từ trường đều.\n- Quy tắc nắm tay phải: tưởng tượng bàn tay phải nắm lấy ống dây sao cho chiều khum các ngón tay là chiều dòng điện, khi đó ngón cái choãi ra cho ta chiều đường sức từ trong lòng ống dây."
+ },
+ {
+  "ma": "H039",
+  "phan": "p2",
+  "nhom": "LNB00051",
+  "k": "K0",
+  "tieu_de": "Lực từ (lực Ampere)",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 17,
+    "chu_thich": "Hình 2-1 Phương của lực từ vuông góc với đoạn dây và vectơ cảm ứng từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "3D xám, hơi mờ"
+   }
+  ],
+  "ly_do": "Một hình tổng quan lực từ lên dây.",
+  "noi_dung": "##ĐN Lực từ (lực Ampere)\nTừ trường tác dụng lực lên dây dẫn mang dòng điện đặt trong nó; lực đó gọi là lực từ (lực Ampere). Dựa vào hiện tượng này ta xác định được cảm ứng từ $\\vec{B}$ của từ trường."
+ },
+ {
+  "ma": "H040",
+  "phan": "p2",
+  "nhom": "LNB00051",
+  "k": "K1",
+  "tieu_de": "Phương của lực từ",
+  "noi": [
+   "LDB00104"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 17,
+    "chu_thich": "Hình 2-1 Phương của lực từ vuông góc với đoạn dây và vectơ cảm ứng từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "3D xám, hơi mờ"
+   }
+  ],
+  "ly_do": "Phương lực vuông góc cả dây và B: Hình 2-1.",
+  "noi_dung": "##TC Phương của lực từ\nPhương của lực từ tác dụng lên đoạn dây mang dòng điện đặt trong từ trường đều vuông góc với đoạn dây và vuông góc với đường sức từ của từ trường."
+ },
+ {
+  "ma": "H041",
+  "phan": "p2",
+  "nhom": "LNB00051",
+  "k": "K2",
+  "tieu_de": "Quy tắc bàn tay trái",
+  "noi": [
+   "LDB00104",
+   "LDB00107"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 17,
+    "chu_thich": "Hình 2-2 Quy tắc bàn tay trái",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Quy tắc bàn tay trái: Hình 2-2.",
+  "noi_dung": "##ĐL Quy tắc bàn tay trái\nĐặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều dòng điện.\nLúc này, chiều mà ngón cái chỉ là chiều của lực từ tác dụng lên dây dẫn mang dòng điện."
+ },
+ {
+  "ma": "H042",
+  "phan": "p2",
+  "nhom": "LNB00051",
+  "k": "K3",
+  "tieu_de": "Độ lớn của lực từ",
+  "noi": [
+   "LDB00105",
+   "LDB00106"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 18,
+    "chu_thich": "Hình 2-3 Quan hệ giữa B và chiều dòng điện (phân tích B vuông góc, B song song)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Phân tích B theo góc theta: Hình 2-3.",
+  "noi_dung": "##TC Độ lớn của lực từ\n- Đoạn dây dài $l$ mang dòng điện $I$ đặt vuông góc với đường sức từ trong từ trường đều có cảm ứng từ $B$: $F = BIl$ ($I$ tính theo A, $l$ theo m, $B$ theo T).\n- Khi $\\vec{B}$ hợp với đoạn dây một góc $\\theta$: phân tích $\\vec{B}$ thành thành phần $\\vec{B}_{\\perp}$ vuông góc với đoạn dây ($B_{\\perp} = B\\sin\\theta$) và thành phần $\\vec{B}_{\\parallel}$ song song với đoạn dây ($B_{\\parallel} = B\\cos\\theta$). Lực từ chỉ do $\\vec{B}_{\\perp}$ gây ra nên $F = BIl\\sin\\theta$."
+ },
+ {
+  "ma": "H043",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K1",
+  "tieu_de": "Chiều của lực Lorentz",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 28,
+    "chu_thich": "Hình 3-1 Phương của lực Lorentz vuông góc với v và B (a: v vuông góc B, b: không vuông góc)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 28,
+    "chu_thich": "Hình 3-2 Quy tắc bàn tay trái",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Phương lực + bàn tay trái: Hình 3-1, 3-2.",
+  "noi_dung": "##ĐL Chiều của lực Lorentz\nPhương của lực Lorentz vuông góc với phương chuyển động của hạt tích điện (vuông góc với $\\vec{v}$) và vuông góc với đường sức từ ($\\vec{B}$).\nQuy tắc bàn tay trái: đặt bàn tay trái sao cho ngón cái vuông góc với bốn ngón còn lại và nằm trong cùng mặt phẳng, lòng bàn tay để vectơ cảm ứng từ $\\vec{B}$ đi vào; chiều từ cổ tay đến bốn ngón tay theo chiều chuyển động của điện tích.\nNếu điện tích dương thì chiều của lực Lorentz là chiều ngón cái chỉ; nếu điện tích âm thì chiều của lực Lorentz ngược với chiều ngón cái chỉ."
+ },
+ {
+  "ma": "H044",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K2",
+  "tieu_de": "Độ lớn của lực Lorentz",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 28,
+    "chu_thich": "Hình 3-1 Phương của lực Lorentz vuông góc với v và B (a: v vuông góc B, b: không vuông góc)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình 3-1(b) thể hiện góc theta giữa v và B.",
+  "noi_dung": "##TC Độ lớn của lực Lorentz\n- Hạt điện tích $q$ chuyển động với vận tốc $\\vec{v}$ vuông góc với $\\vec{B}$ thì $F=|q|vB$ ($v$ tính theo m/s, $q$ theo C, $B$ theo T).\n- Khi $\\vec{v}$ song song với $\\vec{B}$ thì lực Lorentz bằng 0.\n- Khi $\\vec{v}$ hợp với $\\vec{B}$ một góc $\\theta$: chỉ thành phần $B_\\perp = B\\sin\\theta$ vuông góc với $\\vec{v}$ gây ra lực, nên $F=|q|vB\\sin\\theta$."
+ },
+ {
+  "ma": "H045",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K3",
+  "tieu_de": "Chuyển động của hạt tích điện trong từ trường đều",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 29,
+    "chu_thich": "Hình 3-3 Hạt tích điện chuyển động tròn đều trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Quỹ đạo tròn đều, lực hướng tâm: Hình 3-3.",
+  "noi_dung": "##TC Chuyển động của hạt tích điện trong từ trường đều\nHạt tích điện bay vào từ trường đều theo hướng vuông góc với đường sức từ thì lực Lorentz luôn vuông góc với vận tốc: chỉ làm đổi hướng vận tốc mà không làm đổi độ lớn vận tốc. Do đó độ lớn lực Lorentz không đổi và đóng vai trò lực hướng tâm, hạt chuyển động tròn đều trong mặt phẳng vuông góc với đường sức từ.\n- Lực hướng tâm: $|q|vB=m\\dfrac{v^2}{r}$, suy ra bán kính quỹ đạo $r=\\dfrac{mv}{|q|B}$.\n- Bán kính tỉ lệ thuận với khối lượng và tốc độ của hạt, tỉ lệ nghịch với độ lớn điện tích của hạt và độ lớn cảm ứng từ.\n- Chu kì chuyển động tròn đều: $T=\\dfrac{2\\pi m}{|q|B}$, không phụ thuộc tốc độ và bán kính quỹ đạo."
+ },
+ {
+  "ma": "H046",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K4",
+  "tieu_de": "Ống tia âm cực (đèn hình CRT)",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 42,
+    "chu_thich": "Hình 4-1 Nguyên lý hoạt động của đèn hình",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ, chữ chú thích bé"
+   }
+  ],
+  "ly_do": "Sơ đồ CRT có trong sách nhưng nhỏ; có thể thêm ảnh thật ống CRT.",
+  "noi_dung": "##TC Ống tia âm cực (đèn hình CRT)\nỐng tia âm cực là ống chùm tia điện tử dùng trong tivi, màn hình máy tính và các thiết bị điện tử khác. Các electron phát ra từ súng điện được gia tốc bởi một điện trường để tạo thành chùm tia điện tử. Từ trường biến thiên liên tục tạo bởi các cuộn dây lệch hướng (theo phương ngang và phương dọc) làm lực Lorentz đổi hướng chùm tia, nhờ đó chùm tia quét và hiển thị hình ảnh trên màn huỳnh quang."
+ },
+ {
+  "ma": "H047",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K5",
+  "tieu_de": "Máy quang phổ khối",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 42,
+    "chu_thich": "Hình 4-2 Nguyên lý hoạt động của máy quang phổ khối",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ máy quang phổ khối rõ.",
+  "noi_dung": "##TC Máy quang phổ khối\nHạt khối lượng $m$, độ lớn điện tích $q$ bay từ lỗ nhỏ $S_1$ với vận tốc ban đầu gần bằng 0 vào điện trường có hiệu điện thế $U$, rồi đi qua $S_3$ vào từ trường đều $B$ theo hướng vuông góc với đường sức từ và đập vào tấm ảnh.\n- Theo định lí biến thiên động năng: $\\dfrac{1}{2}mv^2=qU$, suy ra $v=\\sqrt{\\dfrac{2qU}{m}}$.\n- Trong từ trường hạt chuyển động tròn đều với bán kính $r=\\dfrac{mv}{qB}=\\dfrac{1}{B}\\sqrt{\\dfrac{2mU}{q}}$.\n- Các hạt cùng điện tích nhưng khối lượng khác nhau chuyển động theo các bán kính khác nhau nên bị tách ra và đập vào các phần khác nhau của tấm ảnh.\n- Máy quang phổ khối được Aston dùng để phát hiện neon-20 và neon-22, xác nhận sự tồn tại của các đồng vị."
+ },
+ {
+  "ma": "H048",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K6",
+  "tieu_de": "Máy gia tốc cyclotron",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 43,
+    "chu_thich": "Hình 4-3 Nguyên lý hoạt động của máy gia tốc đa tầng",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ"
+   },
+   {
+    "trang_pdf": 43,
+    "chu_thich": "Hình 4-4 Nguyên lý hoạt động của máy cyclotron",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "dựng 3D, sạch"
+   }
+  ],
+  "ly_do": "Hình 4-4 là hình chính; 4-3 chỉ để dẫn dắt.",
+  "noi_dung": "##TC Máy gia tốc cyclotron\nCyclotron có hai hộp kim loại rỗng hình chữ D ($D_1$, $D_2$) đặt trong từ trường đều vuông góc với bề mặt hộp, giữa hai hộp có hiệu điện thế xoay chiều $U$. Hạt tích điện từ nguồn đặt gần tâm được gia tốc bởi điện trường ở khe hở, rồi chuyển động tròn đều trong mỗi hộp.\n- Sau mỗi nửa vòng tròn hạt lại đến khe hở, hiệu điện thế đổi dấu nên hạt lại được gia tốc.\n- Chu kì chuyển động của hạt $T=\\dfrac{2\\pi m}{qB}$ không đổi khi tốc độ và bán kính tăng, nên chu kì của điện áp xoay chiều phải bằng chu kì của hạt (tần số $f=\\dfrac{qB}{2\\pi m}$).\n- Sau $n$ lần gia tốc từ trạng thái nghỉ: $\\dfrac{1}{2}mv_n^2=nqU$ và $r_n=\\dfrac{1}{B}\\sqrt{\\dfrac{2mnU}{q}}$.\n- Khi hạt ra khỏi máy ở bán kính cực đại $R$: $v_{max}=\\dfrac{qBR}{m}$, động năng cực đại $K_{max}=\\dfrac{q^2B^2R^2}{2m}$ (không phụ thuộc $U$)."
+ },
+ {
+  "ma": "H049",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K7",
+  "tieu_de": "Máy phát điện từ thủy động lực học (MHD)",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 44,
+    "chu_thich": "Hình 4-5 Nguyên lý hoạt động của máy phát điện từ thủy động lực học",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ MHD: Hình 4-5.",
+  "noi_dung": "##TC Máy phát điện từ thủy động lực học (MHD)\nChùm plasma (chứa nhiều ion dương và ion âm) được đưa vào từ trường giữa hai tấm kim loại song song A và B. Lực Lorentz làm các ion dương lệch về một tấm và các ion âm lệch về tấm kia, tạo ra hiệu điện thế giữa hai tấm; đồng thời xuất hiện điện trường giữa hai tấm. Khi lực điện cân bằng lực Lorentz $qE=qvB$ (tức $E=vB$) thì hiệu điện thế giữa hai tấm đạt cực đại, bằng suất điện động của máy phát: $U=Ed=Bvd$."
+ },
+ {
+  "ma": "H050",
+  "phan": "p2",
+  "nhom": "LNB00052",
+  "k": "K8",
+  "tieu_de": "Lưu lượng kế điện từ",
+  "noi": [
+   "LDB00109"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 45,
+    "chu_thich": "Hình 4-6 Nguyên lý hoạt động của lưu lượng kế điện từ",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình 4-6 sạch.",
+  "noi_dung": "##TC Lưu lượng kế điện từ\nLưu lượng kế điện từ dùng để đo lưu lượng của chất lỏng dẫn điện chảy trong ống đặt trong từ trường. Các ion dương và âm bị lực Lorentz làm lệch hướng, tạo ra hiệu điện thế giữa các điện cực ở hai bên thành ống. Khi lực điện trường cân bằng với lực Lorentz thì hiệu điện thế này ổn định; đo hiệu điện thế giữa hai điện cực là xác định được gián tiếp lưu lượng chất lỏng trong ống."
+ },
+ {
+  "ma": "H051",
+  "phan": "p2",
+  "nhom": "LNB00053",
+  "k": "K0",
+  "tieu_de": "Từ thông",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 52,
+    "chu_thich": "Hình 5-1 Từ thông (mặt S vuông góc B)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Mặt S vuông góc đường sức: Hình 5-1.",
+  "noi_dung": "##ĐN Từ thông\n- Trong từ trường đều có cảm ứng từ $\\vec{B}$, xét một mặt phẳng giới hạn có diện tích $S$ vuông góc với các đường sức từ. Tích của $B$ và $S$ gọi là từ thông đi qua mặt đó: $\\Phi = BS$.\n- Đơn vị của từ thông là vêbe (weber), kí hiệu Wb: $1\\ \\text{Wb} = 1\\ \\text{T}\\cdot\\text{m}^2$.\n- Từ thông là đại lượng vô hướng. Nếu quy ước từ thông có giá trị dương khi cảm ứng từ hướng sang phải thì từ thông có giá trị âm khi cảm ứng từ hướng sang trái."
+ },
+ {
+  "ma": "H052",
+  "phan": "p2",
+  "nhom": "LNB00053",
+  "k": "K1",
+  "tieu_de": "Cảm ứng từ là mật độ từ thông",
+  "noi": [
+   "LDB00110"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 52,
+    "chu_thich": "Hình 5-1 Từ thông (mặt S vuông góc B)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Mật độ đường sức dày/thưa minh hoạ tốt hơn; Hình 5-1 dùng tạm.",
+  "noi_dung": "##TC Cảm ứng từ là mật độ từ thông\n- $B = \\dfrac{\\Phi}{S}$: độ lớn cảm ứng từ bằng lượng từ thông đi qua một đơn vị diện tích vuông góc với hướng từ trường; vì vậy cảm ứng từ còn được gọi là mật độ từ thông.\n- Từ thông tỉ lệ thuận với cảm ứng từ nên từ thông đặc trưng cho số đường sức từ xuyên qua mặt giới hạn."
+ },
+ {
+  "ma": "H053",
+  "phan": "p2",
+  "nhom": "LNB00053",
+  "k": "K2",
+  "tieu_de": "Mặt phẳng không vuông góc với đường sức từ",
+  "noi": [
+   "LDB00111"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 52,
+    "chu_thich": "Hình 5-2 Mặt không vuông góc với đường sức từ (S, S')",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình chiếu S' = S cos alpha: Hình 5-2.",
+  "noi_dung": "##TC Mặt phẳng không vuông góc với đường sức từ\n- Gọi $\\alpha$ là góc giữa vectơ pháp tuyến của mặt $S$ và hướng của từ trường; diện tích hình chiếu của mặt $S$ theo phương vuông góc với đường sức từ là $S' = S\\cos\\alpha$.\n- Từ thông qua mặt $S$ bằng từ thông qua $S'$: $\\Phi = BS' = BS\\cos\\alpha$."
+ },
+ {
+  "ma": "H054",
+  "phan": "p2",
+  "nhom": "LNB00053",
+  "k": "K3",
+  "tieu_de": "Cuộn dây N vòng; giá trị lớn nhất, nhỏ nhất của từ thông",
+  "noi": [
+   "LDB00110",
+   "LDB00111"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 52,
+    "chu_thich": "Hình 5-2 Mặt không vuông góc với đường sức từ (S, S')",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Đồ thị Phi theo alpha và vị trí cực đại/cực tiểu sách chưa có; vẽ code rõ hơn.",
+  "noi_dung": "##TC Cuộn dây N vòng; giá trị lớn nhất, nhỏ nhất của từ thông\n- Từ thông qua cuộn dây gồm $N$ vòng: $\\Phi = NBS\\cos\\alpha$.\n- $|\\Phi|$ lớn nhất, bằng $NBS$, khi $\\alpha = 0$ hoặc $\\alpha = 180^\\circ$ (mặt phẳng vuông góc với đường sức từ); $\\Phi = 0$ khi $\\alpha = 90^\\circ$ (mặt phẳng song song với đường sức từ)."
+ },
+ {
+  "ma": "H055",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K0",
+  "tieu_de": "Hiện tượng cảm ứng điện từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 57,
+    "chu_thich": "Hình 4-1 (in nhầm số) Thí nghiệm nghiên cứu hiện tượng cảm ứng điện từ (a: nam châm-cuộn dây, b: hai cuộn dây)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "số hiệu in nhầm là 4-1"
+   }
+  ],
+  "ly_do": "Hai thí nghiệm nam châm-cuộn dây và hai cuộn dây: có trong sách.",
+  "noi_dung": "##ĐN Hiện tượng cảm ứng điện từ\n- Thí nghiệm 1: nối điện kế nhạy với cuộn dây $B$ thành mạch kín rồi đưa thanh nam châm vào cuộn dây, để nam châm đứng yên trong cuộn dây, hoặc rút nam châm ra. Khi đưa vào hoặc rút ra, từ trường qua cuộn dây thay đổi và kim điện kế lệch: trong cuộn dây xuất hiện dòng điện cảm ứng.\n- Thí nghiệm 2: cuộn dây $A$ nối với nguồn điện qua biến trở và công tắc, lắp vào trong cuộn dây $B$ (nối với điện kế), luồn thanh sắt mềm vào cuộn $A$. Khi đóng hoặc mở công tắc, hoặc khi đầu trượt của biến trở trượt nhanh, dòng điện trong cuộn $A$ thay đổi nhanh nên từ trường trong cuộn $B$ thay đổi nhanh và trong cuộn $B$ xuất hiện dòng điện cảm ứng.\n- Kết luận: nếu từ thông đi qua vòng dây dẫn kín thay đổi thì trong vòng dây dẫn đó xuất hiện dòng điện cảm ứng.\n- Hiện tượng xuất hiện dòng điện cảm ứng trong cuộn dây được gọi là hiện tượng cảm ứng điện từ."
+ },
+ {
+  "ma": "H056",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K1",
+  "tieu_de": "Định luật Lenz",
+  "noi": [
+   "LDB00112"
+  ],
+  "cach": 3,
+  "so_hinh": 4,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình Lenz; cần sơ đồ nam châm lại gần/ra xa, từ thông tăng/giảm, chiều dòng cảm ứng.",
+  "noi_dung": "##ĐL Định luật Lenz\n- Dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường do nó sinh ra có tác dụng chống lại sự biến thiên của từ thông qua mạch kín đó."
+ },
+ {
+  "ma": "H057",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K2",
+  "tieu_de": "Xác định chiều dòng điện cảm ứng",
+  "noi": [
+   "LDB00112"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ B, B cảm ứng khi Phi tăng/giảm; sách không có.",
+  "noi_dung": "##PP Xác định chiều dòng điện cảm ứng\nXác định chiều của $\\vec{B}$ qua mạch và xem từ thông qua mạch tăng hay giảm.\nTừ thông tăng thì từ trường cảm ứng $\\vec{B}_c$ ngược chiều $\\vec{B}$; từ thông giảm thì $\\vec{B}_c$ cùng chiều $\\vec{B}$ (chống lại sự biến thiên của từ thông).\nTừ chiều $\\vec{B}_c$, dùng quy tắc nắm tay phải suy ra chiều dòng điện cảm ứng $I_c$."
+ },
+ {
+  "ma": "H058",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K4",
+  "tieu_de": "Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Khung CDMN, MN dịch chuyển: Hình 7-1.",
+  "noi_dung": "##TC Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ\n- Đoạn dây $MN$ dài $l$ chuyển động với tốc độ $v$ cắt các đường sức của từ trường đều $\\vec{B}$ (mặt phẳng khung dây vuông góc với đường sức từ) làm thay đổi từ thông qua mạch kín, nên định luật Faraday có thể viết cụ thể hơn.\n- Trong thời gian $\\Delta t$ đoạn dây dịch chuyển một đoạn $v\\Delta t$, diện tích khung thay đổi $\\Delta S = lv\\Delta t$.\n- Độ lớn độ biến thiên từ thông: $\\Delta\\Phi = B\\Delta S = Blv\\Delta t$.\n- Độ lớn suất điện động cảm ứng: $E = \\dfrac{\\Delta\\Phi}{\\Delta t} = Blv$."
+ },
+ {
+  "ma": "H059",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K5",
+  "tieu_de": "Vận tốc hợp với đường sức từ một góc $\\theta$",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-2 Hướng chuyển động của đoạn dây không vuông góc với đường sức từ",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Phân tích v thành thành phần vuông góc và song song: Hình 7-2.",
+  "noi_dung": "##TC Vận tốc hợp với đường sức từ một góc $\\theta$\n- Khi hướng chuyển động vuông góc với đoạn dây nhưng hợp với đường sức từ một góc $\\theta$, phân tích $\\vec{v}$ thành hai thành phần: vuông góc với đường sức $v_1 = v\\sin\\theta$ và song song với đường sức $v_2 = v\\cos\\theta$.\n- Chỉ thành phần vuông góc cắt các đường sức từ mới tạo ra suất điện động cảm ứng: $E = Blv_1 = Blv\\sin\\theta$."
+ },
+ {
+  "ma": "H060",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K6",
+  "tieu_de": "Đoạn dây chuyển động là một nguồn điện",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 65,
+    "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Dùng lại Hình 7-1.",
+  "noi_dung": "##NX Đoạn dây chuyển động là một nguồn điện\n- Đoạn dây $MN$ chuyển động đóng vai trò như một nguồn điện có suất điện động $E$.\n- Chiều dòng điện chạy qua đoạn dây $MN$ có thể xác định theo quy tắc bàn tay phải."
+ },
+ {
+  "ma": "H061",
+  "phan": "p2",
+  "nhom": "LNB00054",
+  "k": "K8",
+  "tieu_de": "Quy tắc bàn tay phải",
+  "noi": [
+   "LDB00114"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 66,
+    "chu_thich": "Hình quy tắc bàn tay phải (thanh dẫn MN giữa hai cực nam châm, bàn tay vẽ nét)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "không thấy số hiệu"
+   }
+  ],
+  "ly_do": "Bàn tay phải + thanh MN + v, B: có trong sách (PDF 66).",
+  "noi_dung": "##ĐL Quy tắc bàn tay phải\n- Đặt bàn tay phải sao cho các đường sức từ hướng vào lòng bàn tay, ngón cái choãi ra $90^\\circ$ chỉ chiều chuyển động của đoạn dây.\n- Chiều từ cổ tay đến bốn ngón tay là chiều của dòng điện cảm ứng (chiều suất điện động) trong đoạn dây."
+ },
+ {
+  "ma": "H062",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K0",
+  "tieu_de": "Dòng điện xoáy (dòng Fu-cô)",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 105,
+    "chu_thich": "Hình (không số) khối kim loại trong từ trường biến thiên, dòng xoáy",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ, ở đầu trang"
+   }
+  ],
+  "ly_do": "Khối kim loại + dòng xoáy.",
+  "noi_dung": "##ĐN Dòng điện xoáy (dòng Fu-cô)\n- Khi một khối kim loại đặt trong từ trường biến thiên, từ thông qua khối kim loại thay đổi nên dòng điện cảm ứng xuất hiện bên trong khối.\n- Có thể coi khối kim loại gồm nhiều vòng dây ghép với nhau; dòng điện cảm ứng tạo thành các vòng khép kín giống như xoáy nước nên gọi là dòng điện xoáy hay dòng điện Foucault (Fu-cô)."
+ },
+ {
+  "ma": "H063",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K1",
+  "tieu_de": "Lò luyện kim",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 105,
+    "chu_thich": "Hình (không số) lò luyện kim, cuộn dây quấn ngoài",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ"
+   }
+  ],
+  "ly_do": "Sơ đồ lò luyện; cũng có ảnh thật lò cảm ứng.",
+  "noi_dung": "##TC Lò luyện kim\n- Lò luyện có cuộn dây quấn bên ngoài lò; khi dòng điện qua cuộn dây thay đổi nhanh thì gây ra dòng điện xoáy trong kim loại trong lò.\n- Nhiệt lượng do dòng điện xoáy tạo ra làm nóng chảy kim loại.\n- Ưu điểm: toàn bộ quá trình có thể thực hiện trong chân không, ngăn các tạp chất trong không khí xâm nhập vào kim loại và có thể nấu chảy các hợp kim chất lượng cao."
+ },
+ {
+  "ma": "H064",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K2",
+  "tieu_de": "Bếp từ",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 1,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 105,
+    "chu_thich": "Hình 9-3(a)(b)(c) Bếp từ: (a) ảnh bếp, (b) ảnh bên trong, (c) dòng xoáy ở đáy nồi",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "(a)(b) ảnh nhỏ hơi sạn; (c) sơ đồ rõ"
+   }
+  ],
+  "ly_do": "Hình 9-3(c) dùng được; ảnh thật bếp từ có thể lấy từ mạng.",
+  "noi_dung": "##TC Bếp từ\n- Bếp từ dùng dòng điện xoáy để tạo ra lượng nhiệt lớn nấu thức ăn. Mặt bếp làm bằng tấm vật liệu phi kim có độ phẳng cao.\n- Bếp từ mắc vào nguồn điện xoay chiều; thông qua thiết bị chuyển đổi, dòng điện xoay chiều tần số cao chạy qua cuộn dây, sinh ra từ trường thay đổi nhanh.\n- Khi đặt nồi sắt lên bếp, đáy nồi nằm trong từ trường biến đổi nhanh, tạo ra vô số dòng điện xoáy nhỏ về cơ bản nằm trong mặt phẳng thẳng đứng của đáy nồi, làm bản thân nồi nóng lên nhanh chóng, do đó làm nóng thức ăn."
+ },
+ {
+  "ma": "H065",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K3",
+  "tieu_de": "Hãm chuyển động bằng điện từ (phanh điện từ)",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 106,
+    "chu_thich": "Hình 9-4 Tấm kim loại dao động trong từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Con lắc tấm đồng giữa hai cực nam châm.",
+  "noi_dung": "##TC Hãm chuyển động bằng điện từ (phanh điện từ)\n- Tấm đồng (hoặc nhôm) dao động trong mặt phẳng thẳng đứng như con lắc, đặt giữa hai cực của nam châm: bên trong tấm kim loại xuất hiện dòng điện xoáy do từ thông thay đổi.\n- Điện trở của tấm đồng (hoặc nhôm) rất nhỏ nên dòng điện xoáy rất mạnh. Theo định luật Lenz, lực từ tác dụng lên dây dẫn mang dòng điện xoáy trong từ trường là lực cản, làm con lắc nhanh chóng dừng lại.\n- Tác dụng hãm của dòng điện xoáy được dùng trong phanh điện từ ở các xe có trọng tải lớn."
+ },
+ {
+  "ma": "H066",
+  "phan": "p2",
+  "nhom": "LNB00055",
+  "k": "K4",
+  "tieu_de": "Dòng điện xoáy cũng có hại, cần giảm tác hại",
+  "noi": [
+   "LDB00115"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 106,
+    "chu_thich": "Hình 9-5 Tấm thép silicon trong máy biến áp giúp giảm tổn thất do dòng điện xoáy",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Lõi thép ghép lá silicon: rõ.",
+  "noi_dung": "##CY Dòng điện xoáy cũng có hại, cần giảm tác hại\n- Trong lõi sắt của động cơ hay máy biến áp, dòng điện xoáy lớn sinh nhiệt, tiêu tốn một lượng lớn năng lượng điện, thậm chí có thể làm cháy các thiết bị.\n- Để giảm tổn thất do dòng điện xoáy: dùng thép silicon có điện trở suất cao làm vật liệu lõi; dùng nhiều lá thép silicon mỏng cách điện ghép lại, mặt phẳng của các tấm thép song song với đường sức từ."
+ },
+ {
+  "ma": "H067",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K0",
+  "tieu_de": "Hiện tượng cảm ứng điện từ trên khung dây",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 81,
+    "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "hai sơ đồ nhỏ"
+   }
+  ],
+  "ly_do": "Khung dây quay, pháp tuyến n.",
+  "noi_dung": "##ĐN Hiện tượng cảm ứng điện từ trên khung dây\n- Khi từ thông qua khung dây dẫn biến thiên thì trên khung dây xuất hiện một suất điện động cảm ứng.\n- Khung dây có $N$ vòng, diện tích $S$, quay đều với tốc độ $n$ (vòng/s) trong từ trường đều có vectơ cảm ứng từ $\\vec{B}$ vuông góc với trục quay; tốc độ góc $\\omega = 2\\pi n$ (rad/s).\n- Khi khung quay đều thì vectơ pháp tuyến $\\vec{n}$ của mặt phẳng khung cũng quay đều với tốc độ góc $\\omega$."
+ },
+ {
+  "ma": "H068",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K1",
+  "tieu_de": "Biểu thức từ thông qua khung dây",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 81,
+    "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "hai sơ đồ nhỏ"
+   }
+  ],
+  "ly_do": "Dùng lại hình khung dây/pháp tuyến.",
+  "noi_dung": "##TC Biểu thức từ thông qua khung dây\n$\\Phi = NBS\\cos(\\vec{B},\\vec{n}) = \\Phi_0\\cos(\\omega t + \\varphi)$\n- $\\Phi_0 = NBS$ là từ thông cực đại qua khung dây; $BS$ là từ thông cực đại qua một vòng dây.\n- Độ lớn pha ban đầu: $|\\varphi| = (\\vec{B},\\vec{n})_{t=0}$."
+ },
+ {
+  "ma": "H069",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K2",
+  "tieu_de": "Biểu thức suất điện động cảm ứng",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị Phi và e theo t (e trễ pha pi/2) sách không có.",
+  "noi_dung": "##TC Biểu thức suất điện động cảm ứng\n$e = -\\Phi'(t) = \\omega NBS\\cos\\left(\\omega t + \\varphi - \\dfrac{\\pi}{2}\\right) = E_0\\cos(\\omega t + \\varphi_e)$\n- $E_0 = \\omega NBS = \\omega\\Phi_0$ là suất điện động cực đại; pha ban đầu $\\varphi_e = \\varphi - \\dfrac{\\pi}{2}$.\n- Suất điện động hiệu dụng: $E = \\dfrac{E_0}{\\sqrt{2}} = \\dfrac{\\omega NBS}{\\sqrt{2}}$."
+ },
+ {
+  "ma": "H070",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K3",
+  "tieu_de": "Quan hệ giữa e và Φ",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị Phi-e vuông pha (elip): sách không có.",
+  "noi_dung": "##CY Quan hệ giữa e và Φ\n- Tại một thời điểm, suất điện động $e$ trễ pha $\\dfrac{\\pi}{2}$ so với từ thông $\\Phi$ (vuông pha).\n- $\\left(\\dfrac{\\Phi}{\\Phi_0}\\right)^2 + \\left(\\dfrac{e}{E_0}\\right)^2 = 1 \\;\\Leftrightarrow\\; \\Phi^2 + \\dfrac{e^2}{\\omega^2} = \\Phi_0^2 = (NBS)^2$."
+ },
+ {
+  "ma": "H071",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K4",
+  "tieu_de": "Máy phát điện xoay chiều một pha",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 2,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 82,
+    "chu_thich": "Hình (không số) máy phát điện xoay chiều một cặp cực / hai cặp cực",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Stato-rôto một và hai cặp cực.",
+  "noi_dung": "##TC Máy phát điện xoay chiều một pha\n- Phần cảm: tạo ra từ thông biến thiên, là vành tròn đặt $p$ cặp cực nam châm xếp xen kẽ cực bắc, cực nam đều nhau. Phần ứng: các cuộn dây giống nhau, xếp cách đều nhau trên một vòng tròn.\n- Một trong hai phần được đặt cố định, phần còn lại quay quanh một trục. Phần cố định gọi là stato, phần quay gọi là rôto.\n- Tần số: $f = np$ (Hz) nếu rôto quay $n$ (vòng/giây); $f = \\dfrac{Np}{60}$ (Hz) nếu rôto quay $N$ (vòng/phút).\n- Suất điện động cực đại ở hai đầu ra: $E_0 = \\omega\\,\\Phi_0\\,N\\,[\\text{số cuộn dây}]$, với $\\Phi_0$ là từ thông cực đại qua một vòng dây và $N$ là số vòng của một cuộn dây."
+ },
+ {
+  "ma": "H072",
+  "phan": "p2",
+  "nhom": "LNB00056",
+  "k": "K5",
+  "tieu_de": "Máy phát điện xoay chiều ba pha",
+  "noi": [
+   "LDB00116"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 82,
+    "chu_thich": "Hình (không số) máy phát điện xoay chiều ba pha (stato 3 cuộn, rôto nam châm)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ ba cuộn lệch 120 độ; có thể thêm đồ thị e1,e2,e3.",
+  "noi_dung": "##TC Máy phát điện xoay chiều ba pha\n- Phần cảm thường là nam châm điện, là rôto. Phần ứng gồm ba cuộn dây giống nhau quấn quanh lõi thép, đặt cách nhau $\\dfrac{1}{3}$ vòng tròn trên thân stato.\n- Ba suất điện động có cùng tần số, cùng biên độ, từng đôi một lệch pha nhau $\\dfrac{2\\pi}{3}$: $e_1 = E_0\\cos\\omega t$; $e_2 = E_0\\cos\\left(\\omega t + \\dfrac{2\\pi}{3}\\right)$; $e_3 = E_0\\cos\\left(\\omega t - \\dfrac{2\\pi}{3}\\right)$.\n- Tại mọi thời điểm: $e_1 + e_2 + e_3 = 0$; $e_1^2 + \\left(\\dfrac{e_2 - e_3}{\\sqrt{3}}\\right)^2 = E_0^2$; $e_2e_3 = e_1^2 - \\dfrac{3E_0^2}{4}$."
+ },
+ {
+  "ma": "H073",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K0",
+  "tieu_de": "Dòng điện xoay chiều",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị i theo t; sách trang này chỉ có công thức.",
+  "noi_dung": "##ĐN Dòng điện xoay chiều\nDòng điện xoay chiều (dạng sin hay cosin) là dòng điện có cường độ biến thiên tuần hoàn theo thời gian theo quy luật của hàm sin hoặc cosin. Dạng tổng quát: $i = I_0\\cos(\\omega t+\\varphi)$\n- $i$ là cường độ tức thời (giá trị của cường độ dòng điện ở thời điểm $t$).\n- $I_0 > 0$ là cường độ dòng điện cực đại.\n- $\\omega$ là tần số góc; $T = \\dfrac{2\\pi}{\\omega}$ là chu kì; $f = \\dfrac{\\omega}{2\\pi}$ là tần số.\n- $(\\omega t+\\varphi)$ là pha của $i$; $\\varphi$ là pha ban đầu."
+ },
+ {
+  "ma": "H074",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K1",
+  "tieu_de": "Điện áp xoay chiều",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị u theo t.",
+  "noi_dung": "##ĐN Điện áp xoay chiều\nHiệu điện thế biến thiên theo thời gian theo quy luật dạng sin gọi là điện áp xoay chiều: $u = U_0\\cos(\\omega t+\\varphi)$\n- $u$ là điện áp tức thời; $U_0 > 0$ là điện áp cực đại.\n- $\\omega$, $T = \\dfrac{2\\pi}{\\omega}$, $f = \\dfrac{\\omega}{2\\pi}$ là tần số góc, chu kì, tần số của $u$.\n- $(\\omega t+\\varphi)$ là pha của $u$; $\\varphi$ là pha ban đầu."
+ },
+ {
+  "ma": "H075",
+  "phan": "p2",
+  "nhom": "LNB00057",
+  "k": "K2",
+  "tieu_de": "Độ lệch pha giữa u và i",
+  "noi": [
+   "LDB00117"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị u, i lệch pha phi.",
+  "noi_dung": "##TC Độ lệch pha giữa u và i\nKhi đặt vào hai đầu mạch điện bất kì điện áp xoay chiều $u = U_0\\cos(\\omega t+\\varphi_u)$ thì cường độ dòng điện qua mạch có dạng $i = I_0\\cos(\\omega t+\\varphi_i)$.\nĐại lượng $\\varphi = \\varphi_u - \\varphi_i$ gọi là độ lệch pha của $u$ so với $i$."
+ },
+ {
+  "ma": "H076",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K1",
+  "tieu_de": "Cấu tạo và nguyên tắc hoạt động",
+  "noi": [
+   "LDB00118"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 92,
+    "chu_thich": "Hình (không số) cấu tạo máy biến áp: lõi sắt, cuộn sơ cấp/thứ cấp, ký hiệu",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Lõi sắt kín + hai cuộn dây.",
+  "noi_dung": "##TC Cấu tạo và nguyên tắc hoạt động\n- Máy biến áp gồm hai cuộn dây có số vòng khác nhau $N_1$ và $N_2$ quấn trên một lõi sắt kín. Lõi thường làm bằng các lá sắt hoặc thép pha silic ghép cách điện với nhau để giảm hao phí điện năng do dòng Fu-cô. Các cuộn dây thường làm bằng đồng, đặt cách điện với nhau và cách điện với lõi.\n- Hoạt động dựa trên hiện tượng cảm ứng điện từ. Cuộn dây nối với nguồn điện xoay chiều gọi là cuộn sơ cấp (số vòng $N_1$), cuộn còn lại gọi là cuộn thứ cấp (số vòng $N_2$). Dòng điện xoay chiều trong cuộn sơ cấp gây ra từ thông biến thiên qua cuộn thứ cấp, làm xuất hiện trong cuộn thứ cấp suất điện động xoay chiều. Nếu mạch thứ cấp kín thì có dòng điện chạy trong cuộn thứ cấp."
+ },
+ {
+  "ma": "H077",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K2",
+  "tieu_de": "Điện áp và cường độ dòng điện qua máy biến áp",
+  "noi": [
+   "LDB00119"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 92,
+    "chu_thich": "Hình (không số) sơ đồ máy biến áp N1, N2, u1, u2",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ điện kèm ký hiệu.",
+  "noi_dung": "##TC Điện áp và cường độ dòng điện qua máy biến áp\n- Từ thông qua mỗi vòng dây của cả hai cuộn là như nhau: $\\Phi = \\Phi_0\\cos\\omega t$. Suất điện động hiệu dụng trên hai cuộn: $E_1 = \\dfrac{\\omega N_1\\Phi_0}{\\sqrt{2}}$ và $E_2 = \\dfrac{\\omega N_2\\Phi_0}{\\sqrt{2}}$.\n- Máy biến áp lí tưởng (điện trở các cuộn dây không đáng kể): $U_1 = E_1$, $U_2 = E_2$ nên $\\dfrac{U_2}{U_1} = \\dfrac{N_2}{N_1}$.\n- Nếu $N_2 > N_1$ thì $U_2 > U_1$: máy tăng áp. Nếu $N_2 < N_1$ thì $U_2 < U_1$: máy hạ áp.\n- Máy biến áp lí tưởng không hao phí, điện năng được bảo toàn: $P_1 = U_1I_1 = P_2 = U_2I_2$, suy ra $\\dfrac{U_2}{U_1} = \\dfrac{I_1}{I_2} = \\dfrac{N_2}{N_1}$. Điện áp tăng lên bao nhiêu lần thì cường độ dòng điện giảm đi bấy nhiêu lần và ngược lại."
+ },
+ {
+  "ma": "H078",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K3",
+  "tieu_de": "Truyền tải điện năng đi xa",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 100,
+    "chu_thich": "Hình 1 Mô hình truyền tải điện năng đi xa",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Nhà máy-đường dây-nơi tiêu thụ.",
+  "noi_dung": "##ĐN Truyền tải điện năng đi xa\nĐiện năng chỉ được sản xuất ở một số nhà máy lớn nên phải truyền đi xa đến nơi tiêu thụ bằng đường dây dẫn. Yêu cầu: giảm hao phí điện năng trên đường dây xuống mức thấp nhất và giảm chi phí xây dựng đường dây."
+ },
+ {
+  "ma": "H079",
+  "phan": "p2",
+  "nhom": "LNB00058",
+  "k": "K4",
+  "tieu_de": "Công suất hao phí và hiệu suất truyền tải",
+  "noi": [
+   "LDB00119"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 100,
+    "chu_thich": "Hình 2 Sơ đồ mạch điện truyền tải rút gọn (R, U, U_R, U_tt)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ mạch có R đường dây.",
+  "noi_dung": "##TC Công suất hao phí và hiệu suất truyền tải\n- Truyền công suất $P$ từ nhà máy, điện áp hiệu dụng ở đầu đường dây là $U$, điện trở tổng cộng của đường dây là $R$: cường độ dòng điện hiệu dụng $I = \\dfrac{P}{U}$.\n- Công suất hao phí do tỏa nhiệt (hiệu ứng Jun – Len-xơ): $\\Delta P = I^2R = \\dfrac{P^2R}{U^2}$.\n- Gọi $U'$, $P'$ là điện áp hiệu dụng và công suất nơi tiêu thụ: $P' = U'I$, $P = P' + \\Delta P$. Độ sụt áp trên đường dây $\\Delta U = IR$, $U = U' + \\Delta U$.\n- Hiệu suất truyền tải: $H = \\dfrac{P'}{P} = \\dfrac{U'}{U} = 1 - \\dfrac{\\Delta P}{P}$, và $1 - H = \\dfrac{RP}{U^2} = \\dfrac{RP'}{HU^2}$."
+ },
+ {
+  "ma": "H080",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K0",
+  "tieu_de": "Điện trường xoáy",
+  "noi": [
+   "LDB00120"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Điện trường xoáy.",
+  "noi_dung": "##ĐN Điện trường xoáy\nTừ trường biến thiên theo thời gian sinh ra trong không gian xung quanh một điện trường. Đường sức của điện trường này là các đường cong kín, nên gọi là điện trường xoáy.\nĐiện trường xoáy tồn tại dù vòng dây kín có tồn tại hay không.\nTừ trường thay đổi đều thì điện trường xoáy không đổi; từ trường biến đổi tuần hoàn thì điện trường xoáy biến đổi tuần hoàn."
+ },
+ {
+  "ma": "H081",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K1",
+  "tieu_de": "Điện trường biến thiên tạo ra từ trường",
+  "noi": [
+   "LDB00120"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Tụ điện: E tăng sinh B.",
+  "noi_dung": "##TC Điện trường biến thiên tạo ra từ trường\n- Điện trường biến thiên theo thời gian cũng sinh ra từ trường xung quanh (Maxwell chỉ ra, điện trường giữa hai bản tụ điện biến thiên cũng sinh ra từ trường).\n- Cường độ điện trường thay đổi càng nhanh thì cảm ứng từ của từ trường sinh ra càng lớn."
+ },
+ {
+  "ma": "H082",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K2",
+  "tieu_de": "Điện từ trường",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   },
+   {
+    "trang_pdf": 109,
+    "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Tái dùng hai hình trên.",
+  "noi_dung": "##ĐN Điện từ trường\nTừ trường biến thiên sinh ra điện trường biến thiên, điện trường biến thiên sinh ra từ trường biến thiên trong không gian xung quanh. Hai trường biến thiên này cùng tồn tại trong không gian, chuyển hóa lẫn nhau trong một trường thống nhất gọi là điện từ trường."
+ },
+ {
+  "ma": "H083",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K3",
+  "tieu_de": "Sóng điện từ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 110,
+    "chu_thich": "Hình (không số) sóng điện từ: E và B vuông góc, lan truyền theo z",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sóng điện từ E,B,z.",
+  "noi_dung": "##ĐN Sóng điện từ\nSóng điện từ là quá trình lan truyền điện từ trường biến thiên trong không gian."
+ },
+ {
+  "ma": "H084",
+  "phan": "p2",
+  "nhom": "LNB00059",
+  "k": "K4",
+  "tieu_de": "Đặc điểm và tính chất của sóng điện từ",
+  "noi": [
+   "LDB00120",
+   "LDB00121"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 110,
+    "chu_thich": "Hình (không số) tam diện E, B, v",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "E vuông góc B vuông góc v.",
+  "noi_dung": "##TC Đặc điểm và tính chất của sóng điện từ\n- Truyền trong mọi môi trường vật chất và truyền được trong cả chân không (khác với sóng cơ). Tốc độ sóng điện từ trong chân không là $c \\approx 3\\cdot 10^{8}\\ \\text{m/s}$; trong các môi trường khác nhỏ hơn $c$.\n- Sóng điện từ có tần số $f$ (chu kì $T = \\dfrac{1}{f}$) thì trong chân không có bước sóng $\\lambda = \\dfrac{c}{f} = cT$.\n- Tại mỗi điểm trên phương truyền sóng, vectơ cường độ điện trường $\\vec{E}$ và vectơ cảm ứng từ $\\vec{B}$ luôn vuông góc với nhau và cùng vuông góc với phương truyền sóng: sóng điện từ là sóng ngang.\n- Tại mỗi điểm trong không gian, điện trường và từ trường biến thiên điều hòa theo thời gian và đồng pha với nhau.\n- Sóng điện từ tuân theo định luật truyền thẳng, phản xạ, khúc xạ như ánh sáng.\n- Sóng điện từ mang năng lượng, nhờ đó khi truyền đến anten sẽ làm cho các electron tự do trong anten dao động.\n- Nguồn phát sóng điện từ rất đa dạng: bất cứ vật thể nào tạo ra điện trường và từ trường biến thiên, chẳng hạn tia lửa điện, dây dẫn có dòng điện xoay chiều, cầu dao khi đóng ngắt mạch điện."
+ },
+ {
+  "ma": "H085",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K0",
+  "tieu_de": "Mô hình nguyên tử bánh mận",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 121,
+    "chu_thich": "Hình 1-1 Mô hình nguyên tử bánh mận (chấm điện tích dương + quả cầu cắt)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Cần hình để thấy điện tích dương phân bố đều + electron nhúng",
+  "noi_dung": "##ĐN Mô hình nguyên tử bánh mận\nNăm 1904, J. J. Thomson đề xuất mô hình nguyên tử bánh mận: nguyên tử là quả cầu đặc có điện tích dương phân bố đều, các electron được nhúng trong quả cầu như mận khô trong bánh.\nMô hình này giải thích được một số hiện tượng, nhưng các thí nghiệm tán xạ hạt alpha sau đó đã bác bỏ nó."
+ },
+ {
+  "ma": "H086",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K1",
+  "tieu_de": "Thí nghiệm tán xạ alpha của Rutherford",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 121,
+    "chu_thich": "Hình 1-2 Thí nghiệm tán xạ alpha (cấu tạo thiết bị + sơ đồ nhìn từ trên)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": "chú thích tiếng Việt rõ"
+   }
+  ],
+  "ly_do": "Cần sơ đồ bố trí thí nghiệm (nguồn Po, lá vàng, màn huỳnh quang)",
+  "noi_dung": "##TC Thí nghiệm tán xạ hạt alpha của Rutherford\n- Hạt alpha là ion helium, có điện tích $+2e$ và khối lượng gấp khoảng 7300 lần khối lượng của electron.\n- Rutherford cho các hạt $\\alpha$ tốc độ cao bắn vào một lá vàng dày chỉ khoảng $0{,}4\\ \\mu\\text{m}$.\n- Kết quả: phần lớn hạt alpha xuyên qua lá vàng; số hạt bị lệch so với phương ban đầu góc $\\theta$ khác nhau là khác nhau và giảm nhanh khi $\\theta$ tăng. Một số rất nhỏ hạt $\\alpha$ có góc tán xạ vượt quá $90^\\circ$, thậm chí bị bật trở lại."
+ },
+ {
+  "ma": "H087",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K2",
+  "tieu_de": "Phân tích kết quả thí nghiệm",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sách không có hình riêng; nên có quỹ đạo hạt α lệch so với mô hình Thomson",
+  "noi_dung": "##NX Phân tích kết quả thí nghiệm\n- Phần lớn hạt alpha xuyên qua lá vàng chứng tỏ nguyên tử không hoàn toàn đặc như mô hình của Thomson.\n- Sự lệch góc lớn của số ít hạt alpha không thể do electron gây ra, vì khối lượng electron chỉ bằng $\\dfrac{1}{7300}$ khối lượng hạt alpha. Độ lệch chủ yếu do phần điện tích dương, chiếm phần lớn khối lượng nguyên tử.\n- Theo mô hình Thomson, điện tích dương phân bố đều nên lực đẩy theo mọi hướng cân bằng nhau, tác động lên hạt $\\alpha$ không lớn; vì vậy mô hình này không giải thích được tán xạ góc lớn.\n- Rutherford cho rằng thực tế vật chất tích điện dương, chiếm phần lớn khối lượng nguyên tử, tập trung trong một phạm vi không gian rất nhỏ; điều này khiến hạt alpha chịu lực đẩy mạnh khi đi ngang qua, làm chúng bị lệch một góc lớn."
+ },
+ {
+  "ma": "H088",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K3",
+  "tieu_de": "Mô hình hành tinh nguyên tử",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 122,
+    "chu_thich": "Quỹ đạo hạt α lệch gần hạt nhân (mô hình hành tinh nguyên tử), không đánh số",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nhỏ, nét mảnh, góc phải trang"
+   }
+  ],
+  "ly_do": "Hình sách đúng ý nhưng nhỏ/mảnh; nếu cắt mờ thì vẽ lại",
+  "noi_dung": "##ĐN Mô hình đơn giản của nguyên tử (mô hình hành tinh nguyên tử)\nỞ trung tâm nguyên tử có một hạt nhân. Toàn bộ điện tích dương và gần như toàn bộ khối lượng của nguyên tử đều tập trung ở hạt nhân. Các electron quay quanh hạt nhân trong không gian ngoài hạt nhân.\nMô hình có phần giống hệ Mặt Trời (hạt nhân giống Mặt Trời, các electron giống các hành tinh) nên còn gọi là mô hình hành tinh nguyên tử.\nGiải thích tán xạ: khi hạt $\\alpha$ đi qua nguyên tử, các electron ít ảnh hưởng; yếu tố chính là hạt nhân. Hạt $\\alpha$ ở xa hạt nhân thì lực đẩy rất nhỏ, hầu như không bị ảnh hưởng; hạt $\\alpha$ bay gần hạt nhân chịu lực đẩy Coulomb rõ rệt nên bị lệch một góc lớn."
+ },
+ {
+  "ma": "H089",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K4",
+  "tieu_de": "Cấu trúc của hạt nhân",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ hạt nhân gồm p, n trong nguyên tử; sách không có",
+  "noi_dung": "##ĐN Cấu trúc của hạt nhân\n- Hạt nhân có kích thước rất nhỏ so với nguyên tử, được cấu tạo từ các hạt nhỏ hơn gọi là nucleon. Có hai loại nucleon: proton (kí hiệu p, mang điện tích nguyên tố dương) và neutron (kí hiệu n, không mang điện).\n- Nguyên tử của nguyên tố có số thứ tự $Z$ trong bảng tuần hoàn ($Z$ là số hiệu nguyên tử) có $Z$ electron ở lớp vỏ ngoài; hạt nhân có $Z$ proton và $N$ neutron. Electron mang điện $-Ze$, hạt nhân mang điện $+Ze$ nên nguyên tử trung hòa về điện.\n- Tổng $A = Z + N$ gọi là số khối.\n- Bán kính hạt nhân tăng chậm cùng với số khối: $R \\approx R_0 A^{\\frac{1}{3}}$, với $R_0 = 1{,}2\\cdot 10^{-15}\\ \\text{m}$."
+ },
+ {
+  "ma": "H090",
+  "phan": "p3",
+  "nhom": "LNB00060",
+  "k": "K6",
+  "tieu_de": "Đồng vị",
+  "noi": [
+   "LDB00122"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ 3 đồng vị hydrogen (p, n); sách không có",
+  "noi_dung": "##ĐN Đồng vị\nĐồng vị là những nguyên tử mà hạt nhân chứa cùng số proton $Z$ nhưng số neutron $N$ khác nhau (số khối $A$ khác nhau).\n- Hydrogen có 3 đồng vị: hydrogen thường $^{1}_{1}\\text{H}$; hydrogen nặng (deuterium) $^{2}_{1}\\text{H}$ hay $^{2}_{1}\\text{D}$; hydrogen siêu nặng (tritium) $^{3}_{1}\\text{H}$ hay $^{3}_{1}\\text{T}$.\n- Hầu hết các nguyên tố là hỗn hợp của nhiều đồng vị. Uranium có hai đồng vị chính là U235 và U238 (U238 chiếm tới 99,3%). Carbon có ba đồng vị chính là C12, C13, C14 (C12 và C13 chiếm 99%)."
+ },
+ {
+  "ma": "H091",
+  "phan": "p3",
+  "nhom": "LNB00061",
+  "k": "K4",
+  "tieu_de": "Năng lượng liên kết",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ nucleon rời sang hạt nhân, năng lượng liên kết; sách không có",
+  "noi_dung": "##ĐN Năng lượng liên kết\nNăng lượng liên kết các nucleon trong hạt nhân (gọi tắt là năng lượng liên kết của hạt nhân): $\\Delta E = \\Delta m\\,c^2 = \\left[\\left(Zm_p + (A-Z)m_n\\right) - m\\right]c^2$.\nNăng lượng $\\Delta E$ càng lớn thì liên kết giữa các nucleon càng mạnh, càng phải tốn nhiều năng lượng để phá vỡ liên kết giữa các nucleon."
+ },
+ {
+  "ma": "H092",
+  "phan": "p3",
+  "nhom": "LNB00061",
+  "k": "K5",
+  "tieu_de": "Năng lượng liên kết riêng",
+  "noi": [
+   "LDB00124",
+   "LDB00125"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Cần đồ thị ε theo A để thấy hạt nhân trung bình bền; sách không có",
+  "noi_dung": "##ĐN Năng lượng liên kết riêng\nNăng lượng liên kết tính trung bình cho mỗi nucleon gọi là năng lượng liên kết riêng của hạt nhân, kí hiệu $\\varepsilon$, đặc trưng cho sự bền vững của hạt nhân: $\\varepsilon = \\dfrac{\\Delta E}{A} = \\dfrac{\\Delta m\\,c^2}{A}$.\n- Hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững.\n- Hạt nhân có số khối trung bình thì bền vững hơn cả."
+ },
+ {
+  "ma": "H093",
+  "phan": "p3",
+  "nhom": "LNB00062",
+  "k": "K0",
+  "tieu_de": "Phản ứng hạt nhân",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ thí nghiệm Rutherford α + N14 sang O17 + p; sách không có",
+  "noi_dung": "##ĐN Phản ứng hạt nhân\nPhản ứng hạt nhân là mọi quá trình dẫn đến sự biến đổi hạt nhân. Năm 1909, Rutherford dùng chùm hạt α ($^{4}_{2}\\text{He}$) phóng ra từ nguồn phóng xạ $^{210}_{84}\\text{Po}$ bắn phá hạt nhân $^{14}_{7}\\text{N}$ trong không khí: nitơ bị phân rã và biến đổi thành oxygen và hydrogen.\n- Phản ứng hạt nhân tự phát: quá trình tự phân rã của một hạt nhân không bền vững thành các hạt nhân khác (vd: phóng xạ).\n- Phản ứng hạt nhân kích thích: quá trình các hạt nhân tương tác với nhau tạo ra các hạt nhân khác (vd: thí nghiệm Rutherford, phân hạch, nhiệt hạch)."
+ },
+ {
+  "ma": "H094",
+  "phan": "p3",
+  "nhom": "LNB00062",
+  "k": "K5",
+  "tieu_de": "Năng lượng toả ra hay thu vào",
+  "noi": [
+   "LDB00127"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ mức năng lượng trước/sau phản ứng; sách không có",
+  "noi_dung": "##TC Năng lượng toả ra hay thu vào trong phản ứng hạt nhân\nNăng lượng phản ứng hạt nhân W: $W = (m_{tr} - m_s)c^2 = (\\Delta m_s - \\Delta m_{tr})c^2 = \\Delta E_s - \\Delta E_{tr} = K_s - K_{tr}$.\nTrong đó $m_{tr}, \\Delta m_{tr}, \\Delta E_{tr}, K_{tr}$ và $m_s, \\Delta m_s, \\Delta E_s, K_s$ lần lượt là tổng khối lượng nghỉ, độ hụt khối, năng lượng liên kết, động năng các hạt nhân trước phản ứng và sau phản ứng.\n- Nếu $W > 0$ thì phản ứng toả năng lượng.\n- Nếu $W < 0$ thì phản ứng thu năng lượng."
+ },
+ {
+  "ma": "H095",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K0",
+  "tieu_de": "Phản ứng phân hạch",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ n + U235 sang U236* sang Y + Z + k n; sách không có hình",
+  "noi_dung": "##ĐN Phản ứng phân hạch\nPhản ứng phân hạch là phản ứng trong đó một hạt nhân nặng hấp thụ một neutron chậm vỡ thành hai hạt nhân trung bình, đồng thời phóng ra một số neutron và toả ra một năng lượng rất lớn (khoảng 200 MeV). Nhiên liệu chủ yếu thực hiện phản ứng phân hạch là $^{235}_{92}\\text{U}$ và $^{239}_{94}\\text{Pu}$.\nCơ chế: truyền cho hạt nhân mẹ X một năng lượng đủ lớn (năng lượng kích hoạt) bằng cách bắn một neutron vào X để X bắt neutron đó và chuyển sang trạng thái kích thích, sau đó mới phân hạch: $n + X \\to X^{*} \\to Y + Z + kn$.\nVí dụ phương trình: $^{1}_{0}\\text{n} + {}^{235}_{92}\\text{U} \\to {}^{236}_{92}\\text{U} \\to {}^{95}_{39}\\text{Y} + {}^{138}_{53}\\text{I} + 3\\,{}^{1}_{0}\\text{n}$."
+ },
+ {
+  "ma": "H096",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K1",
+  "tieu_de": "Phản ứng dây chuyền",
+  "noi": [
+   "LDB00128",
+   "LDB00129"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ neutron nhân lên theo k; sách không có",
+  "noi_dung": "##TC Phản ứng dây chuyền\nSự phân hạch của một hạt nhân uranium kèm theo sự giải phóng vài neutron mới; các neutron này lại có thể gây ra các phân hạch tiếp theo và cứ thế, sự phân hạch tiếp diễn thành phản ứng dây chuyền.\nGọi k là số neutron trung bình được giải phóng sau mỗi phân hạch đến kích thích các hạt nhân uranium khác để tạo nên những phân hạch mới (không phải mọi neutron sinh ra đều gây phân hạch, vì có neutron bị các tạp chất trong nhiên liệu hấp thụ hoặc bay ra ngoài khối nhiên liệu).\n- $k > 1$: số phân hạch tăng nhanh theo $k^1, k^2, k^3, \\dots$; phản ứng dây chuyền trở thành thác lũ không thể khống chế, hệ thống vượt hạn (cơ chế nổ của bom nguyên tử).\n- $k < 1$: phản ứng dây chuyền không thể xảy ra, hệ thống dưới hạn.\n- $k = 1$: phản ứng dây chuyền có thể khống chế, hệ thống tới hạn (cơ chế hoạt động của nhà máy điện nguyên tử).\nMuốn $k \\ge 1$ thì khối lượng uranium hoặc plutonium phải đạt đến một trị số tối thiểu gọi là khối lượng tới hạn."
+ },
+ {
+  "ma": "H097",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K2",
+  "tieu_de": "Lò phản ứng hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Sơ đồ lò tốt, cắt được ngay",
+  "noi_dung": "##TC Lò phản ứng hạt nhân\n- Lò phản ứng hạt nhân là thiết bị để tạo ra các phản ứng phân hạch dây chuyền tự duy trì và điều khiển được.\n- Nhiên liệu phân hạch trong lò thường là $^{235}\\text{U}$ hoặc $^{239}\\text{Pu}$.\n- Để đảm bảo $k = 1$, người ta dùng các thanh điều khiển chứa Bo hay Cd là các chất có tác dụng hấp thụ neutron (khi số neutron trong lò tăng quá nhiều thì cho các thanh điều khiển ngập sâu vào khu vực chứa nhiên liệu để hấp thụ số neutron thừa).\n- Năng lượng toả ra từ lò phản ứng không đổi theo thời gian."
+ },
+ {
+  "ma": "H098",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K3",
+  "tieu_de": "Phản ứng nhiệt hạch",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ D + T sang He + n; sách không có",
+  "noi_dung": "##ĐN Phản ứng nhiệt hạch\nPhản ứng nhiệt hạch là phản ứng kết hợp hai hạt nhân rất nhẹ thành hạt nhân nặng hơn ở nhiệt độ rất cao. Đây là phản ứng toả năng lượng, là nguồn gốc năng lượng của Mặt Trời, các ngôi sao."
+ },
+ {
+  "ma": "H099",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K4",
+  "tieu_de": "Lò phản ứng phân hạch hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Dùng sơ đồ lò (thanh uranium, cadmium, than chì, xi măng)",
+  "noi_dung": "##ĐN Lò phản ứng phân hạch hạt nhân\nLò phản ứng phân hạch hạt nhân là thiết bị giải phóng năng lượng hạt nhân thông qua phản ứng dây chuyền có thể kiểm soát được.\n- Lò phản ứng phân hạch hạt nhân đầu tiên trên thế giới được xây dựng tại Đại học Chicago (Hoa Kỳ) vào năm 1942.\n- Nhiên liệu của lò là thanh uranium, làm từ uranium tự nhiên hoặc uranium đã làm giàu (hàm lượng $^{235}\\text{U}$ chiếm từ 2% đến 4%)."
+ },
+ {
+  "ma": "H100",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K5",
+  "tieu_de": "Chất điều tiết",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình lò có chú thích than chì làm chất điều tiết",
+  "noi_dung": "##TC Chất điều tiết (làm chậm neutron)\nNeutron có tốc độ tương đương với chuyển động nhiệt (neutron nhiệt, hay neutron chậm) là thích hợp nhất để phân hạch hạt nhân. Neutron quá nhanh sẽ \"đi ngang qua\" hạt nhân $^{235}\\text{U}$ mà hạt nhân không \"bắt\" được nên phân hạch không xảy ra.\n- Phản ứng phân hạch tạo ra neutron tốc độ rất cao, vì vậy phải làm chậm chúng bằng bộ điều tiết đặt xung quanh thanh uranium: neutron nhanh va chạm với hạt nhân trong bộ điều tiết, năng lượng giảm và trở thành neutron chậm.\n- Chất điều tiết thường dùng: than chì, nước nặng ($\\text{D}_2\\text{O}$), nước thông thường (nước nhẹ).\n- Nước nhẹ hấp thụ neutron cao hơn nên lò dùng nước nhẹ phải dùng urani đã làm giàu; lò dùng nước nặng hoặc than chì làm chất làm chậm có thể dùng urani tự nhiên làm nhiên liệu."
+ },
+ {
+  "ma": "H101",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K6",
+  "tieu_de": "Thanh điều khiển",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 165,
+    "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+    "loai": "so_do",
+    "chat_luong": "tot",
+    "ghi": ""
+   }
+  ],
+  "ly_do": "Hình lò có thanh cadmium",
+  "noi_dung": "##TC Thanh điều khiển\nĐể điều chỉnh số lượng neutron nhằm kiểm soát tốc độ phản ứng, người ta chèn một số thanh cadmium vào giữa các thanh uranium. Cadmium hấp thụ neutron mạnh; loại thanh này gọi là thanh điều khiển.\n- Khi phản ứng dây chuyền tăng nhanh, đưa thanh cadmium vào sâu hơn để hấp thụ nhiều neutron hơn thì phản ứng dây chuyền chậm lại."
+ },
+ {
+  "ma": "H102",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K7",
+  "tieu_de": "Chất tải nhiệt và nhà máy điện hạt nhân",
+  "noi": [
+   "LDB00128",
+   "LDB00129"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 166,
+    "chu_thich": "Sơ đồ nhỏ máy điện hạt nhân (lò, bộ trao đổi nhiệt, tua bin, máy phát)",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "chữ chú thích nhỏ"
+   }
+  ],
+  "ly_do": "Sơ đồ nhà máy tạm dùng được; có thể thêm ảnh thật nhà máy",
+  "noi_dung": "##TC Chất tải nhiệt và nhà máy điện hạt nhân\nNăng lượng giải phóng bởi phân hạch làm tăng nhiệt độ vùng phản ứng. Các chất lỏng như nước hoặc natri kim loại lỏng lưu thông bên trong và bên ngoài lò để truyền nhiệt và đồng thời làm mát lò.\n- Nhiệt toả ra từ lò biến nước thành hơi; hơi nước có nhiệt độ và áp suất cao điều khiển tua-bin tạo ra điện.\n- Chỉ cần đốt cháy lượng nhiên liệu hạt nhân bằng một cây bút chì thì năng lượng giải phóng ra tương đương nhiệt lượng toả ra khi đốt cháy hoàn toàn 10 tấn than tiêu chuẩn.\n- Một nhà máy điện hạt nhân công suất một triệu kilowatt chỉ tiêu thụ khoảng 30 tấn uranium đã làm giàu mỗi năm, trong khi nhà máy nhiệt điện cùng công suất đốt $2{,}5 \\times 10^6$ tấn than mỗi năm."
+ },
+ {
+  "ma": "H103",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K8",
+  "tieu_de": "An toàn phóng xạ ở nhà máy điện hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "ảnh xám, tối"
+   }
+  ],
+  "ly_do": "Ảnh thật khu nhà máy/biển cảnh báo; ảnh sách xấu",
+  "noi_dung": "##CY An toàn phóng xạ ở nhà máy điện hạt nhân\nKhi xây dựng nhà máy điện hạt nhân phải ngăn ngừa rò rỉ phóng xạ và chất phóng xạ để tránh gây hại cho con người và ô nhiễm nguồn nước, không khí, nơi làm việc.\n- Xây lớp xi măng dày bên ngoài lò phản ứng để che chắn các tia phát ra từ các sản phẩm phân hạch.\n- Chất thải hạt nhân trong các lò có tính phóng xạ cao, được đưa vào các thùng chứa đặc biệt và chôn sâu dưới lòng đất."
+ },
+ {
+  "ma": "H104",
+  "phan": "p3",
+  "nhom": "LNB00064",
+  "k": "K0",
+  "tieu_de": "Hiện tượng phóng xạ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ hạt nhân mẹ phân rã ra hạt nhân con + tia",
+  "noi_dung": "##ĐN Hiện tượng phóng xạ\nHiện tượng một hạt nhân không bền vững tự phát phân rã, đồng thời phát ra các tia phóng xạ và biến đổi thành hạt nhân khác được gọi là hiện tượng phóng xạ.\nQuá trình này do các nguyên nhân bên trong gây ra nên không chịu tác động của các yếu tố thuộc môi trường ngoài như nhiệt độ, áp suất,..."
+ },
+ {
+  "ma": "H105",
+  "phan": "p3",
+  "nhom": "LNB00064",
+  "k": "K8",
+  "tieu_de": "So sánh các tia phóng xạ",
+  "noi": [
+   "LDB00130"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [],
+  "ly_do": "Sơ đồ lệch trong điện trường + khả năng xuyên qua giấy/nhôm/chì; sách không có",
+  "noi_dung": "##TC So sánh các tia phóng xạ\n- Tia $\\alpha$ và tia $\\beta^+$ mang điện dương nên trong điện trường lệch về phía bản âm; tia $\\beta^-$ mang điện âm nên lệch về phía bản dương; tia $\\gamma$ không mang điện nên không bị lệch.\n- Khả năng ion hoá: tia $\\alpha$ mạnh nhất, tia $\\gamma$ yếu nhất. Khả năng đâm xuyên: tia $\\gamma$ mạnh nhất, tia $\\alpha$ yếu nhất."
+ },
+ {
+  "ma": "H106",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K0",
+  "tieu_de": "Định luật phóng xạ",
+  "noi": [
+   "nhom"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 151,
+    "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+    "loai": "do_thi",
+    "chat_luong": "tam",
+    "ghi": "có đánh dấu điểm, đủ dùng"
+   }
+  ],
+  "ly_do": "Đồ thị N-t sách dùng được; vẽ lại nếu muốn sạch",
+  "noi_dung": "##ĐL Định luật phóng xạ\nThực nghiệm chứng tỏ rằng cứ sau một khoảng thời gian xác định $T$, một nửa số hạt nhân hiện có bị phân rã, biến đổi thành hạt nhân khác; $T$ được gọi là chu kì bán rã của chất phóng xạ.\nSau các khoảng thời gian $T, 2T, 3T, \\dots, kT$ ($k$ là số nguyên dương), số hạt nhân $N$ còn lại chưa bị phân rã bằng $\\dfrac{N_0}{2}, \\dfrac{N_0}{4}, \\dfrac{N_0}{8}, \\dots, \\dfrac{N_0}{2^k}$, tức là $N(kT) = N_0 \\cdot 2^{-k}$."
+ },
+ {
+  "ma": "H107",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K1",
+  "tieu_de": "Số hạt nhân và khối lượng còn lại",
+  "noi": [
+   "LDB00131"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 151,
+    "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+    "loai": "do_thi",
+    "chat_luong": "tam",
+    "ghi": "có đánh dấu điểm, đủ dùng"
+   }
+  ],
+  "ly_do": "Dùng lại đồ thị N-t",
+  "noi_dung": "##TC Số hạt nhân và khối lượng còn lại\n- Số hạt nhân còn lại: $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$.\n- Hằng số phóng xạ: $\\lambda = \\dfrac{0{,}693}{T}$ (vì $2 = e^{\\ln 2} \\approx e^{0{,}693}$).\n- Số hạt nhân đã bị phân rã: $\\Delta N = N_0 - N(t) = N_0\\left(1 - e^{-\\lambda t}\\right)$.\n- Khối lượng chất phóng xạ còn lại: $m(t) = m_0 \\cdot 2^{-\\frac{t}{T}} = m_0 e^{-\\lambda t}$ (khối lượng tỉ lệ với số hạt nên giảm theo cùng quy luật như số hạt nhân $N$)."
+ },
+ {
+  "ma": "H108",
+  "phan": "p3",
+  "nhom": "LNB00065",
+  "k": "K3",
+  "tieu_de": "Độ phóng xạ",
+  "noi": [
+   "LDB00132"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Đồ thị H-t giảm mũ; sách không có",
+  "noi_dung": "##ĐN Độ phóng xạ\n- Độ phóng xạ $H$ (hoạt độ phóng xạ) đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, có giá trị bằng số hạt nhân phân rã trong một giây.\n- $H_t = -\\dfrac{dN_t}{dt} = \\lambda N_0 e^{-\\lambda t} = \\lambda N_t$; độ phóng xạ ban đầu $H_0 = \\lambda N_0$.\n- Đơn vị của độ phóng xạ là becơren (Bq): $1\\ \\text{Bq} = 1$ phân rã/giây.\n- Độ phóng xạ của một chất phóng xạ giảm theo thời gian theo cùng quy luật hàm số mũ như số hạt nhân của nó: $H = H_0 \\cdot 2^{-\\frac{t}{T}}$."
+ },
+ {
+  "ma": "H109",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K0",
+  "tieu_de": "Nguyên tử đánh dấu",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 166,
+    "chu_thich": "Ảnh máy quét PET (bệnh nhân vào máy)",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "đen trắng, sạn"
+   }
+  ],
+  "ly_do": "Ảnh PET/thiết bị thật; ảnh sách xấu",
+  "noi_dung": "##TC Nguyên tử đánh dấu\nNếu trộn lẫn đồng vị phóng xạ với đồng vị bền không phóng xạ của một nguyên tố X và dùng dụng cụ phát hiện tia phóng xạ thì có thể tìm ra sự phân bố của nguyên tố đó. Đồng vị phóng xạ dùng cho mục đích này gọi là nguyên tử đánh dấu.\n- Trong điều trị y tế, bác sĩ đưa chất đánh dấu phóng xạ vào bệnh nhân bằng đường uống hoặc tiêm tĩnh mạch; chất này tham gia lưu thông, chuyển hóa như các chất của cơ thể và liên tục phát ra tia phóng xạ.\n- Theo dõi bằng thiết bị phát hiện tia, chẳng hạn chụp cắt lớp phát xạ positron (máy quét PET), có thể biết các cơ quan nội tạng của bệnh nhân có bị tổn thương hay không."
+ },
+ {
+  "ma": "H110",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K1",
+  "tieu_de": "Các ứng dụng khác của hiện tượng phóng xạ",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật: chiếu xạ tạo giống, pin hạt nhân; sách không có",
+  "noi_dung": "##TC Các ứng dụng khác của hiện tượng phóng xạ\n- Tạo giống cây mới trong nông nghiệp: dùng tia gamma chiếu xạ hạt giống để làm biến đổi vật chất di truyền trong hạt, tạo ra giống mới ưu việt hơn.\n- Pin hạt nhân: chuyển đổi năng lượng giải phóng khi đồng vị phóng xạ phân rã thành năng lượng điện; công suất cao, tuổi thọ dài, dùng làm nguồn năng lượng cho vệ tinh nhân tạo, tàu vũ trụ, cơ sở kỹ thuật hải đảo..."
+ },
+ {
+  "ma": "H111",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K2",
+  "tieu_de": "Đầu báo khói dùng tia alpha",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 3,
+  "so_hinh": 1,
+  "can_hinh": "can",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Sơ đồ đầu báo khói dùng tia alpha",
+    "loai": "so_do",
+    "chat_luong": "tam",
+    "ghi": "nét vẽ tay, hơi rối"
+   }
+  ],
+  "ly_do": "Sơ đồ sách đủ dùng nhưng rối; vẽ lại nếu cần",
+  "noi_dung": "##TC Đầu báo khói dùng tia alpha\nĐầu báo khói là thiết bị phát hiện khói trong không khí và tự động báo động. Máy dò chứa khoảng 0,2 mg Am, kim loại phóng xạ có chu kì bán rã 432 năm, phát ra tia alpha và gamma.\n- Các hạt alpha va chạm với oxy, nitơ và các phân tử khác trong khoang phát hiện, làm ion hóa các phân tử này; ion dương và ion âm chuyển động dưới tác dụng của lực điện trường tạo thành dòng điện rất nhỏ.\n- Khi khói đi vào buồng phát hiện, các hạt trong khói hấp phụ một số hạt $\\alpha$, làm giảm số lượng phân tử khí bị ion hóa, dòng điện giữa hai điện cực giảm; máy dò phát hiện thay đổi đó thì phát ra âm thanh báo động."
+ },
+ {
+  "ma": "H112",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K3",
+  "tieu_de": "Ô nhiễm phóng xạ và an toàn phóng xạ",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "ảnh xám, tối"
+   }
+  ],
+  "ly_do": "Biển cảnh báo/thùng chì; ảnh sách xấu (có thể vẽ lại biển)",
+  "noi_dung": "##CY Ô nhiễm phóng xạ và an toàn phóng xạ\nCon người luôn sống trong môi trường có chất phóng xạ (tia vũ trụ, đá trong lòng đất, một số thực phẩm và nhu yếu phẩm chứa kali 40, thuốc lá chứa polonium 210...), nhưng cường độ bức xạ của chúng nằm trong liều lượng an toàn.\n- Để tránh thiệt hại do tia phóng xạ, cần giảm thiểu thời gian tiếp xúc và thực hiện các biện pháp phòng ngừa cần thiết.\n- Nguồn phóng xạ dùng trong nghiên cứu khoa học, bệnh viện, phòng thí nghiệm trường học phải đặt trong thùng bằng chì; thùng chì có khóa và dán biển cảnh báo.\n- Chất thải công nghiệp hạt nhân phải đựng hộp kim loại nặng dày và chôn sâu trong đại dương.\n- Trong trường học chỉ dùng nguồn phóng xạ rất yếu; khi xử lí phải dùng nhíp đặc biệt và không để nguồn phóng xạ gần mắt.\n- Dùng tấm chắn (nước, xi măng...) giữa nguồn phóng xạ và cơ thể con người là một biện pháp bảo vệ."
+ }
+]

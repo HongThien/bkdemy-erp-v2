@@ -1,0 +1,186 @@
+[
+ {
+  "ma": "H055",
+  "file": "H055_1.png",
+  "cach": 3,
+  "chu_thich": "Thí nghiệm 1: đưa nam châm vào cuộn dây nối điện kế, kim điện kế lệch",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 52 (PDF 57)",
+  "ghi": ""
+ },
+ {
+  "ma": "H055",
+  "file": "H055_2.png",
+  "cach": 3,
+  "chu_thich": "Thí nghiệm 2: đóng/mở công tắc hoặc trượt biến trở ở cuộn A, cuộn B có dòng cảm ứng",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 52 (PDF 57)",
+  "ghi": ""
+ },
+ {
+  "ma": "H056",
+  "file": "H056_1.png",
+  "cach": 3,
+  "chu_thich": "Nam châm (cực N hướng vào cuộn) lại gần: Φ tăng, từ trường cảm ứng ngược chiều B, dòng cảm ứng I_c như hình",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Vòng dây vẽ phối cảnh: nửa gần người xem (nét đậm) mang mũi tên dòng I_c; đã kiểm bằng quy tắc nắm tay phải"
+ },
+ {
+  "ma": "H056",
+  "file": "H056_2.png",
+  "cach": 3,
+  "chu_thich": "Nam châm (cực N) ra xa: Φ giảm, từ trường cảm ứng cùng chiều B",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Vòng dây vẽ phối cảnh: nửa gần người xem (nét đậm) mang mũi tên dòng I_c; đã kiểm bằng quy tắc nắm tay phải"
+ },
+ {
+  "ma": "H056",
+  "file": "H056_3.png",
+  "cach": 3,
+  "chu_thich": "Nam châm (cực S hướng vào cuộn) lại gần: Φ tăng, từ trường cảm ứng ngược chiều B",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Vòng dây vẽ phối cảnh: nửa gần người xem (nét đậm) mang mũi tên dòng I_c; đã kiểm bằng quy tắc nắm tay phải"
+ },
+ {
+  "ma": "H056",
+  "file": "H056_4.png",
+  "cach": 3,
+  "chu_thich": "Nam châm (cực S) ra xa: Φ giảm, từ trường cảm ứng cùng chiều B",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": "Vòng dây vẽ phối cảnh: nửa gần người xem (nét đậm) mang mũi tên dòng I_c; đã kiểm bằng quy tắc nắm tay phải"
+ },
+ {
+  "ma": "H057",
+  "file": "H057_1.png",
+  "cach": 3,
+  "chu_thich": "B vào, Φ tăng: B cảm ứng hướng ra, dòng cảm ứng ngược chiều kim đồng hồ",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H057",
+  "file": "H057_2.png",
+  "cach": 3,
+  "chu_thich": "B vào, Φ giảm: B cảm ứng hướng vào, dòng cảm ứng cùng chiều kim đồng hồ",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H058",
+  "file": "H058.png",
+  "cach": 3,
+  "chu_thich": "Đoạn dây MN trượt trên khung CDMN trong từ trường đều: ΔS = l·vΔt",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 60 (PDF 65) Hình 7-1",
+  "ghi": ""
+ },
+ {
+  "ma": "H059",
+  "file": "H059.png",
+  "cach": 3,
+  "chu_thich": "Phân tích v thành v₁ = v·sinθ (vuông góc đường sức) và v₂ = v·cosθ (song song)",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 60 (PDF 65) Hình 7-2",
+  "ghi": ""
+ },
+ {
+  "ma": "H060",
+  "file": "H060.png",
+  "cach": 3,
+  "chu_thich": "Đoạn dây MN chuyển động là nguồn điện: dòng điện chạy từ N lên M trong dây (M là cực dương)",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 60 (PDF 65) Hình 7-1",
+  "ghi": "Chiều dòng điện đã kiểm: v sang phải, B vào trang => dòng trong MN hướng lên, mạch ngoài ngược chiều kim đồng hồ"
+ },
+ {
+  "ma": "H061",
+  "file": "H061.png",
+  "cach": 3,
+  "chu_thich": "Quy tắc bàn tay phải: B đâm vào lòng bàn tay, ngón cái choãi chỉ v, cổ tay→ngón tay chỉ chiều dòng cảm ứng",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 61 (PDF 66)",
+  "ghi": "bàn tay vẽ cách điệu đơn giản"
+ },
+ {
+  "ma": "H062",
+  "file": "H062.png",
+  "cach": 3,
+  "chu_thich": "Khối kim loại trong từ trường biến thiên: dòng điện xoáy khép kín trong khối",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 100 (PDF 105)",
+  "ghi": "B tăng, vào trang => dòng xoáy ngược chiều kim đồng hồ"
+ },
+ {
+  "ma": "H063",
+  "file": "H063.png",
+  "cach": 3,
+  "chu_thich": "Lò luyện kim: cuộn dây quanh lò, dòng xoay chiều gây dòng xoáy làm kim loại nóng chảy",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 100 (PDF 105)",
+  "ghi": ""
+ },
+ {
+  "ma": "H065",
+  "file": "H065.png",
+  "cach": 3,
+  "chu_thich": "Tấm đồng dao động qua từ trường: dòng xoáy sinh lực từ cản chuyển động (phanh điện từ)",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 101 (PDF 106) Hình 9-4",
+  "ghi": ""
+ },
+ {
+  "ma": "H066",
+  "file": "H066.png",
+  "cach": 3,
+  "chu_thich": "Lõi ghép từ các lá thép silic mỏng cách điện: dòng xoáy chỉ khép kín trong từng lá nên rất nhỏ",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 101 (PDF 106) Hình 9-5",
+  "ghi": "sơ đồ khái quát (mặt cắt vuông góc B)"
+ },
+ {
+  "ma": "H067",
+  "file": "H067.png",
+  "cach": 3,
+  "chu_thich": "Khung dây quay đều trong từ trường: pháp tuyến n hợp với B góc ωt",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 76 (PDF 81)",
+  "ghi": ""
+ },
+ {
+  "ma": "H068",
+  "file": "H068.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị từ thông Φ = Φ₀cos(ωt + φ) (vẽ với φ = π/3)",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 76 (PDF 81)",
+  "ghi": ""
+ },
+ {
+  "ma": "H069",
+  "file": "H069.png",
+  "cach": 3,
+  "chu_thich": "Φ và e biến thiên điều hoà; e trễ pha π/2 so với Φ (vẽ với φ = 0)",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H070",
+  "file": "H070.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị e theo Φ là elip: (Φ/Φ₀)² + (e/E₀)² = 1",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H071",
+  "file": "H071_1.png",
+  "cach": 3,
+  "chu_thich": "Máy phát điện xoay chiều một cặp cực",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 77 (PDF 82)",
+  "ghi": ""
+ },
+ {
+  "ma": "H071",
+  "file": "H071_2.png",
+  "cach": 3,
+  "chu_thich": "Máy phát điện xoay chiều hai cặp cực",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 77 (PDF 82)",
+  "ghi": ""
+ },
+ {
+  "ma": "H072",
+  "file": "H072.png",
+  "cach": 3,
+  "chu_thich": "Máy phát điện xoay chiều ba pha: ba cuộn dây đặt cách nhau 1/3 vòng tròn",
+  "nguon": "Vẽ lại theo hình sách Tập 2 tr.in 77 (PDF 82)",
+  "ghi": ""
+ }
+]

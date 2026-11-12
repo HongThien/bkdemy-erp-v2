@@ -1,0 +1,22 @@
+[
+{"ma":"H002","file":"H002.png","cach":1,"chu_thich":"Lực đẩy F_đ, lực hút F_h và hợp lực F phụ thuộc khoảng cách r giữa hai phân tử","nguon":"Sách Tập 1, trang PDF 12, Hình 1-4","ghi":"Scan hơi nghiêng, có chữ trang sau lộ mờ nền"},
+{"ma":"H003","file":"H003.png","cach":1,"chu_thich":"Cấu trúc chất rắn: phân tử xếp sát, dao động quanh vị trí cân bằng","nguon":"Sách Tập 1, trang PDF 13, Hình 1-5","ghi":""},
+{"ma":"H004","file":"H004.png","cach":1,"chu_thich":"Cấu trúc chất khí: phân tử xa nhau, chuyển động hỗn loạn","nguon":"Sách Tập 1, trang PDF 13, Hình 1-7","ghi":""},
+{"ma":"H005","file":"H005.png","cach":1,"chu_thich":"Cấu trúc chất lỏng: phân tử dao động quanh vị trí cân bằng có thể dịch chuyển","nguon":"Sách Tập 1, trang PDF 13, Hình 1-8","ghi":""},
+{"ma":"H008","file":"H008.png","cach":1,"chu_thich":"Nóng chảy: chất rắn kết tinh (1) giữ nhiệt độ t_c, chất rắn vô định hình (2) tăng liên tục","nguon":"Sách Tập 1, trang PDF 75, Hình 5-1","ghi":"có watermark mờ"},
+{"ma":"H011","file":"H011.png","cach":1,"chu_thich":"(a) Hợp lực tương tác F theo r; (b) thế năng tương tác E_t theo r, cực tiểu tại r0","nguon":"Sách Tập 1, trang PDF 37, Hình 2-1","ghi":"cao, nhãn khá nhỏ; cân nhắc vẽ lại"},
+{"ma":"H013","file":"H013.png","cach":1,"chu_thich":"Quy ước dấu: A, Q > 0 hệ nhận; A, Q < 0 hệ sinh/toả","nguon":"Sách Tập 1, trang PDF 38, Hình 2-2","ghi":""},
+{"ma":"H015","file":"H015.png","cach":1,"chu_thich":"Động cơ nhiệt: nhận Q1 từ nguồn nóng, sinh công A, toả Q2 cho nguồn lạnh","nguon":"Sách Tập 1, trang PDF 90, sơ đồ mục 1.3a","ghi":""},
+{"ma":"H016","file":"H016.png","cach":1,"chu_thich":"Máy lạnh: lấy Q2 từ nguồn lạnh, nhận công A, toả Q1 sang nguồn nóng","nguon":"Sách Tập 1, trang PDF 90, sơ đồ mục 1.3b","ghi":""},
+{"ma":"H019","file":"H019.png","cach":1,"chu_thich":"Điểm sôi và điểm đóng băng của nước trên thang Celsius, Kelvin, Fahrenheit","nguon":"Sách Tập 1, trang PDF 51, Hình 3-1","ghi":"chữ nhỏ khi thu về 360 px (ảnh rộng); nên cân nhắc vẽ lại"},
+{"ma":"H020","file":"H020.png","cach":1,"chu_thich":"Hiện tượng khuếch tán: giọt mực lan dần trong cốc nước","nguon":"Sách Tập 1, trang PDF 11, Hình 1-1","ghi":"ảnh chụp hơi mờ/xám"},
+{"ma":"H021","file":"H021.png","cach":1,"chu_thich":"Thí nghiệm Brown: kính hiển vi và quỹ đạo hạt phấn hoa","nguon":"Sách Tập 1, trang PDF 11, Hình 1-2","ghi":""},
+{"ma":"H022","file":"H022.png","cach":1,"chu_thich":"Hạt phấn hoa chịu va đập của các phân tử nước","nguon":"Sách Tập 1, trang PDF 11, Hình 1-3","ghi":""},
+{"ma":"H023","file":"H023.png","cach":1,"chu_thich":"Mô hình chất khí: phân tử ở xa nhau, chuyển động hỗn loạn, tương tác yếu","nguon":"Sách Tập 1, trang PDF 13, Hình 1-7","ghi":"cùng hình với H004"},
+{"ma":"H025_1","file":"H025_1.png","cach":1,"chu_thich":"Áp suất khí trong xilanh có piston: các trường hợp thường gặp","nguon":"Sách Tập 1, trang PDF 101, bảng xilanh–piston","ghi":"bảng 6 ô, rộng, chữ nhỏ ở 360 px; nên cắt/vẽ lại thành 2-3 hình"},
+{"ma":"H025_2","file":"H025_2.png","cach":1,"chu_thich":"Áp suất khí trong ống thuỷ tinh thẳng, nghiêng, chữ U và ống cắm vào bể chất lỏng","nguon":"Sách Tập 1, trang PDF 102, các bảng b–d","ghi":"rất cao (1231x1925) vượt khung 288 px; nên vẽ lại hoặc tách"},
+{"ma":"H027","file":"H027.png","cach":1,"chu_thich":"Đồ thị đẳng áp: V–T, V–t, p–T, p–V","nguon":"Sách Tập 1, trang PDF 111 (ghép 4 đồ thị 2x2)","ghi":"ghép từ 4 đồ thị; còn vệt chữ mờ nền"},
+{"ma":"H028","file":"H028.png","cach":1,"chu_thich":"Đồ thị đẳng tích: p–T, p–t, V–T, p–V","nguon":"Sách Tập 1, trang PDF 111 (ghép 4 đồ thị 2x2)","ghi":"ghép từ 4 đồ thị; còn vệt chữ mờ nền"},
+{"ma":"H029","file":"H029.png","cach":1,"chu_thich":"Sơ đồ chuyển đổi N–m–V và N_A–M–V_m","nguon":"Sách Tập 1, trang PDF 14 (Dạng 1, kiến thức cần nhớ)","ghi":"ảnh rộng, chữ nhỏ"},
+{"ma":"H064","file":"H064.png","cach":1,"chu_thich":"Bếp từ: dòng điện xoáy ở đáy nồi do từ trường biến thiên của cuộn dây","nguon":"Sách Tập 2, trang PDF 105, Hình 9-3(c)","ghi":"chỉ lấy hình (c); (a) (b) là ảnh chụp tối, bỏ; còn nhãn (c) dưới hình"}
+]

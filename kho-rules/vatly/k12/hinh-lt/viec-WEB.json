@@ -1,0 +1,138 @@
+[
+ {
+  "ma": "H010",
+  "phan": "p1",
+  "nhom": "LNB00035",
+  "k": "K3",
+  "tieu_de": "Sự hoá hơi: bay hơi và sôi",
+  "noi": [
+   "LDB00070"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật nồi nước sôi có bọt / cốc nước bay hơi; sách không có hình.",
+  "noi_dung": "##TC Sự hoá hơi: bay hơi và sôi\nSự hoá hơi có thể xảy ra dưới hai hình thức là bay hơi và sôi.\n- Sự bay hơi: là sự hoá hơi xảy ra ở mặt thoáng chất lỏng. Một số phân tử có động năng lớn hơn nhiều so với giá trị trung bình, thắng được lực liên kết phân tử trong chất lỏng thì thoát ra ngoài mặt thoáng, trở thành hơi. Trong quá trình bay hơi, các phân tử có động năng lớn thoát ra khiến động năng trung bình của các phân tử còn lại giảm, nhiệt độ của chất lỏng giảm.\n- Sự sôi: là sự hoá hơi xảy ra đồng thời ở trong lòng và mặt thoáng của chất lỏng. Các bọt hơi hình thành trong lòng khối nước, nổi lên mặt nước, vỡ ra và toả hơi nước ra ngoài khí quyển; lúc đó ta nói nước sôi.\n- Trong quá trình sôi, nhiệt độ của khối chất lỏng không đổi, gọi là nhiệt độ sôi. Nhiệt độ sôi phụ thuộc vào áp suất khí trên mặt thoáng và bản chất của chất lỏng."
+ },
+ {
+  "ma": "H012",
+  "phan": "p1",
+  "nhom": "LNB00036",
+  "k": "K3",
+  "tieu_de": "Hai cách làm thay đổi nội năng",
+  "noi": [
+   "LDB00071"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật: bếp đun/nước nóng toả nhiệt và cưa gỗ/xoa tay; sách không có hình.",
+  "noi_dung": "##TC Hai cách làm thay đổi nội năng\n- Truyền nhiệt: nội năng của các vật được truyền cho nhau (bếp đun làm vật tăng nội năng; nước nóng tỏa nhiệt ra môi trường làm giảm nội năng).\n- Thực hiện công: các dạng năng lượng khác (như cơ năng) được chuyển hóa thành nội năng (hai bàn tay cọ xát nóng lên, cưa gỗ làm lưỡi cưa và gỗ nóng lên do ma sát).\n- Khi vật nhận công từ bên ngoài thì nội năng của vật tăng lên; khi vật thực hiện công ra bên ngoài thì nội năng của vật giảm đi."
+ },
+ {
+  "ma": "H018",
+  "phan": "p1",
+  "nhom": "LNB00038",
+  "k": "K2",
+  "tieu_de": "Nhiệt kế",
+  "noi": [
+   "LDB00076"
+  ],
+  "cach": 2,
+  "so_hinh": 3,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật các loại nhiệt kế (thuỷ ngân, lưỡng kim, hồng ngoại, điện trở/cặp nhiệt); sách chỉ mô tả bằng chữ.",
+  "noi_dung": "##TC Nhiệt kế\nNhiệt kế là thiết bị dùng để đo nhiệt độ, được chế tạo dựa trên một số tính chất vật lí phụ thuộc vào nhiệt độ của các chất, các vật liệu, các linh kiện điện và điện tử.\n- Nhiệt kế thủy ngân: dựa trên sự dãn nở nhiệt của thủy ngân; xác định độ cao cột thủy ngân ở các nhiệt độ khác nhau để biết nhiệt độ cần đo.\n- Nhiệt kế lưỡng kim: ép hai tấm kim loại có độ dãn nở khác nhau vào nhau; khi nhiệt độ thay đổi, độ xoắn của tấm lưỡng kim thay đổi.\n- Nhiệt kế điện trở: dựa vào sự phụ thuộc điện trở của vật theo nhiệt độ; từ giá trị điện trở đo được xác định nhiệt độ cần đo.\n- Nhiệt kế cặp nhiệt điện: dựa trên suất điện động cặp nhiệt điện tạo ra bởi hai dây dẫn khác nhau hàn vào hai đầu của dây kim loại khác tạo thành mạch kín; chênh lệch nhiệt độ giữa hai mối hàn càng lớn thì suất điện động càng lớn.\n- Nhiệt kế hồng ngoại: dựa vào sự phụ thuộc vào nhiệt độ của bước sóng điện từ theo hệ thức Wien: $\\lambda_{\\max}T = 2900\\ \\mu\\text{m.K}$."
+ },
+ {
+  "ma": "H103",
+  "phan": "p3",
+  "nhom": "LNB00063",
+  "k": "K8",
+  "tieu_de": "An toàn phóng xạ ở nhà máy điện hạt nhân",
+  "noi": [
+   "LDB00128"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "ảnh xám, tối"
+   }
+  ],
+  "ly_do": "Ảnh thật khu nhà máy/biển cảnh báo; ảnh sách xấu",
+  "noi_dung": "##CY An toàn phóng xạ ở nhà máy điện hạt nhân\nKhi xây dựng nhà máy điện hạt nhân phải ngăn ngừa rò rỉ phóng xạ và chất phóng xạ để tránh gây hại cho con người và ô nhiễm nguồn nước, không khí, nơi làm việc.\n- Xây lớp xi măng dày bên ngoài lò phản ứng để che chắn các tia phát ra từ các sản phẩm phân hạch.\n- Chất thải hạt nhân trong các lò có tính phóng xạ cao, được đưa vào các thùng chứa đặc biệt và chôn sâu dưới lòng đất."
+ },
+ {
+  "ma": "H109",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K0",
+  "tieu_de": "Nguyên tử đánh dấu",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 166,
+    "chu_thich": "Ảnh máy quét PET (bệnh nhân vào máy)",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "đen trắng, sạn"
+   }
+  ],
+  "ly_do": "Ảnh PET/thiết bị thật; ảnh sách xấu",
+  "noi_dung": "##TC Nguyên tử đánh dấu\nNếu trộn lẫn đồng vị phóng xạ với đồng vị bền không phóng xạ của một nguyên tố X và dùng dụng cụ phát hiện tia phóng xạ thì có thể tìm ra sự phân bố của nguyên tố đó. Đồng vị phóng xạ dùng cho mục đích này gọi là nguyên tử đánh dấu.\n- Trong điều trị y tế, bác sĩ đưa chất đánh dấu phóng xạ vào bệnh nhân bằng đường uống hoặc tiêm tĩnh mạch; chất này tham gia lưu thông, chuyển hóa như các chất của cơ thể và liên tục phát ra tia phóng xạ.\n- Theo dõi bằng thiết bị phát hiện tia, chẳng hạn chụp cắt lớp phát xạ positron (máy quét PET), có thể biết các cơ quan nội tạng của bệnh nhân có bị tổn thương hay không."
+ },
+ {
+  "ma": "H110",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K1",
+  "tieu_de": "Các ứng dụng khác của hiện tượng phóng xạ",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 2,
+  "can_hinh": "nen",
+  "hinh_sach": [],
+  "ly_do": "Ảnh thật: chiếu xạ tạo giống, pin hạt nhân; sách không có",
+  "noi_dung": "##TC Các ứng dụng khác của hiện tượng phóng xạ\n- Tạo giống cây mới trong nông nghiệp: dùng tia gamma chiếu xạ hạt giống để làm biến đổi vật chất di truyền trong hạt, tạo ra giống mới ưu việt hơn.\n- Pin hạt nhân: chuyển đổi năng lượng giải phóng khi đồng vị phóng xạ phân rã thành năng lượng điện; công suất cao, tuổi thọ dài, dùng làm nguồn năng lượng cho vệ tinh nhân tạo, tàu vũ trụ, cơ sở kỹ thuật hải đảo..."
+ },
+ {
+  "ma": "H112",
+  "phan": "p3",
+  "nhom": "LNB00066",
+  "k": "K3",
+  "tieu_de": "Ô nhiễm phóng xạ và an toàn phóng xạ",
+  "noi": [
+   "LDB00134"
+  ],
+  "cach": 2,
+  "so_hinh": 1,
+  "can_hinh": "nen",
+  "hinh_sach": [
+   {
+    "trang_pdf": 167,
+    "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+    "loai": "anh_that",
+    "chat_luong": "xau",
+    "ghi": "ảnh xám, tối"
+   }
+  ],
+  "ly_do": "Biển cảnh báo/thùng chì; ảnh sách xấu (có thể vẽ lại biển)",
+  "noi_dung": "##CY Ô nhiễm phóng xạ và an toàn phóng xạ\nCon người luôn sống trong môi trường có chất phóng xạ (tia vũ trụ, đá trong lòng đất, một số thực phẩm và nhu yếu phẩm chứa kali 40, thuốc lá chứa polonium 210...), nhưng cường độ bức xạ của chúng nằm trong liều lượng an toàn.\n- Để tránh thiệt hại do tia phóng xạ, cần giảm thiểu thời gian tiếp xúc và thực hiện các biện pháp phòng ngừa cần thiết.\n- Nguồn phóng xạ dùng trong nghiên cứu khoa học, bệnh viện, phòng thí nghiệm trường học phải đặt trong thùng bằng chì; thùng chì có khóa và dán biển cảnh báo.\n- Chất thải công nghiệp hạt nhân phải đựng hộp kim loại nặng dày và chôn sâu trong đại dương.\n- Trong trường học chỉ dùng nguồn phóng xạ rất yếu; khi xử lí phải dùng nhíp đặc biệt và không để nguồn phóng xạ gần mắt.\n- Dùng tấm chắn (nước, xi măng...) giữa nguồn phóng xạ và cơ thể con người là một biện pháp bảo vệ."
+ }
+]
