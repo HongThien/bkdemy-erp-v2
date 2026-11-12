@@ -24,7 +24,8 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
   const [ch, setCh] = useState<CauHinhIn>({})
   const vaCh = (k: keyof CauHinhIn, m: string, v: unknown) => setCh((c) => { const o = { ...((c[k] ?? {}) as Record<string, unknown>) }; if (v == null) delete o[m]; else o[m] = v; return { ...c, [k]: o } })
   const cfg: CfgCau = {
-    lines: ch.btvnLinesByCau ?? {}, cols: ch.colByCau ?? {}, cheDo: ch.hinhCheDoByCau ?? {},
+    // Thùy 12/11: câu TRẢ LỜI NGẮN mặc định 0 dòng (= in bảng ô điền như cũ); đặt > 0 ⇒ in dòng kẻ như tự luận (ETPrintView nhanDe.tlnTheoDong)
+    lines: { ...Object.fromEntries([...cauMap.values()].filter((c) => c.loai_cau === 'tra_loi_ngan').map((c) => [c.ma_cau, 0])), ...(ch.btvnLinesByCau ?? {}) }, cols: ch.colByCau ?? {}, cheDo: ch.hinhCheDoByCau ?? {},
     onLine: (m, n) => vaCh('btvnLinesByCau', m, n), onLineAll: (ms, n) => ms.forEach((m) => vaCh('btvnLinesByCau', m, n)),
     onCol: (m, n) => vaCh('colByCau', m, n), onCheDo: (m, v) => vaCh('hinhCheDoByCau', m, v),
   }

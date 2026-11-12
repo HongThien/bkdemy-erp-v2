@@ -47,7 +47,7 @@ const DEFAULT_TLN_LINES = 2
 // PREVIEW ngay trong màn tạo ET, chưa cần lưu (Thùy 07-31).
 // deRieng / nhanDe (Thùy 11/11, bổ trợ sau giờ "header giống ET, bản HS – GV như builder"): mỗi em 1 ĐỀ RIÊNG (câu khác nhau) in cùng khuôn ET.
 export type DeRiengET = { id: string; hoTen: string; caus: CauHoi[]; ch?: CauHinh }   // ch = cấu hình in riêng của đề (dòng/cột/hình)
-export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride, deRieng, nhanDe }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
+export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, onReady, onRenderErr, perHS, fullOverride, varCauOverride, hinhOverride, deRieng, nhanDe }: { id: string; onClose: () => void; headless?: boolean; linkOnly?: boolean; onFail?: () => void; onReady?: () => void; onRenderErr?: (msg: string) => void; perHS?: { id: string; ho_ten: string; maDe: number }[]; fullOverride?: TaiLieuFull; varCauOverride?: Record<string, CauHoi>; hinhOverride?: EtHinh; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string; tlnTheoDong?: boolean } }) {
   const [full, setFull] = useState<TaiLieuFull | null>(null)
   const [err, setErr] = useState<string | null>(null)
   const [gv, setGv] = useState(false)
@@ -271,7 +271,7 @@ export default function ETPrintView({ id, onClose, headless, linkOnly, onFail, o
 // 3 MÃ ĐỀ (Thùy 07-31): đề gốc = câu phan 'custom'; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe
 // (neo theo CÂU GỐC, đúng thứ tự gốc → cùng nhóm form → in ra 3 phiếu cấu trúc y hệt, khác câu). ET cũ
 // (không etMaDe / chưa đủ) → in 1 đề như trước (backward-compatible).
-function ETAllDe({ full, gv, varCau, perHS, hinhDe, deRieng, nhanDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string } }) {
+function ETAllDe({ full, gv, varCau, perHS, hinhDe, deRieng, nhanDe }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; perHS?: { id: string; ho_ten: string; maDe: number }[]; hinhDe?: HinhDe | null; deRieng?: DeRiengET[]; nhanDe?: { tieuDe: string; nhan: string; tlnTheoDong?: boolean } }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   if (deRieng) return <>{deRieng.map((d) => <div key={d.id} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={{ ...ch, ...(d.ch ?? {}) }} gv={gv} hoTen={d.hoTen} nhanDe={nhanDe} /></div>)}</>
   const base = full.phans.find((p) => p.loai_phan === 'custom')?.caus ?? []
@@ -318,7 +318,7 @@ function ETAllDe({ full, gv, varCau, perHS, hinhDe, deRieng, nhanDe }: { full: T
   return <>{des.map((d, i) => <div key={i} className="pv-de-recto"><ETDoc ten={full.taiLieu.ten} nhanh={full.taiLieu.nhanh} caus={d.caus} ch={d.ch} hinh={d.hinh} gv={gv} badge={d.label} /></div>)}</>
 }
 
-function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; hinh?: MucIn[]; gv: boolean; badge?: string; hoTen?: string; nhanDe?: { tieuDe: string; nhan: string } }) {
+function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: string; nhanh?: string | null; caus: CauHoi[]; ch: CauHinh; hinh?: MucIn[]; gv: boolean; badge?: string; hoTen?: string; nhanDe?: { tieuDe: string; nhan: string; tlnTheoDong?: boolean } }) {
   const lines = ch.btvnLinesByCau ?? {}
   // ⭐ 07-20: KHÔNG gom lại theo loại ở đây nữa. Thứ tự in = ĐÚNG `thu_tu` của DB (đã gom theo nhóm
   // từ lúc LƯU — sortETCaus trong ETScreen.luu). Trước đây gom ở render nên "Câu 3" trên giấy khác
@@ -346,7 +346,19 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
   const tenLop = rawName.replace(/^ET\s+/, '')                    // "6S1"
   const made = badge ? badge.replace(/^Mã đề\s*/i, '') : ''       // "2" (từ "Mã đề 2")
   const cheDo = (c: CauHoi) => ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'
-  const soBaiHinh = (hinh ?? []).filter((m) => m.kieu === 'de').length   // ô Đ/C/S đầu phiếu: mỗi bài Hình 1 ô (khuôn ET Hình cũ)
+  const soBaiHinh = (hinh ?? []).filter((m) => m.kieu === 'de').length
+  // Phần trả lời ngắn bản HS = BẢNG. Riêng bổ trợ sau giờ (nhanDe.tlnTheoDong, Thùy 12/11 "câu trả lời ngắn có thể thêm dòng như tự luận"):
+  // câu TLN người soạn đặt số dòng > 0 ⇒ in dòng kẻ như tự luận; còn lại vẫn bảng. Chia theo đoạn LIỀN NHAU để giữ thứ tự / số câu.
+  const chiaTln = (g: number, items: CauHoi[]): { bang: boolean; items: CauHoi[] }[] => {
+    if (gv || g !== 1) return [{ bang: false, items }]
+    if (!nhanDe?.tlnTheoDong) return [{ bang: true, items }]
+    const ra: { bang: boolean; items: CauHoi[] }[] = []
+    for (const c of items) {
+      const bang = !((lines[c.ma_cau] ?? 0) > 0)
+      if (ra.length && ra[ra.length - 1].bang === bang) ra[ra.length - 1].items.push(c); else ra.push({ bang, items: [c] })
+    }
+    return ra
+  }   // ô Đ/C/S đầu phiếu: mỗi bài Hình 1 ô (khuôn ET Hình cũ)
   return (
     <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
     <AnhPhaiCtx.Provider value={anhPhaiCua(ch, nhanh)}>
@@ -354,22 +366,22 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
       <ETHeaderBK title={tenDe} ngay={ngayDe} lop={tenLop} made={made} hoTen={hoTen} soCau={caus.length + soBaiHinh} gv={gv} nhan={nhanDe?.nhan} />
       {runs.map((run, ri) => (
         <section key={ri} className="pv-sec"><h2 className="pv-h-dang">Phần {part()} · {GLBL[run.g]}</h2>
-          {(!gv && run.g === 1) ? (
+          {chiaTln(run.g, run.items).map((k, ki) => k.bang ? (
             // Trả lời ngắn (bản HS, Thùy: "đưa về dạng bảng — cột 1 đề, cột 2 điền đáp án") — BẢNG thay
             // dòng-kẻ-viết-tay (DEFAULT_TLN_LINES không còn dùng ở đây, xem TLNTable/PrintView.tsx).
-            <TLNTable rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c, cheDo(c)) } })} />
+            <TLNTable key={ki} rows={k.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, c, cheDo(c)) } })} />
           ) : (
             /* Số cột RIÊNG TỪNG CÂU (cau_hinh.colByCau) — CauFlow gom câu tag cột liền nhau; dòng kẻ chảy lấp trang. */
-            <CauFlow items={run.items.flatMap((c, i) => {
+            <CauFlow key={ki} items={k.items.flatMap((c, i) => {
               const n = next()
               const cols = ch.colByCau?.[c.ma_cau] ?? 1
               if (run.g === 0) return [{ key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv, cheDoHinh: cheDo(c) }) }]
               const cd = cheDo(c)
               // Hình–Học bài nhiều ý (Thùy 09/11 "ET phải gom ý lại"): ≥2 ý CÙNG BÀI liền nhau (sortETCaus đã xếp lúc lưu) ⇒
               // lời dẫn + hình in 1 lần ở đầu, từng ý in "Câu n. b) …" — số câu vẫn 1 ý = 1 câu, khớp phiếu chấm / màn Chấm ET.
-              const nhom = yCungBai(run.items, i)
+              const nhom = yCungBai(k.items, i)
               if (nhom) {
-                const dau = run.items[nhom.dau], cdDau = cheDo(dau)
+                const dau = k.items[nhom.dau], cdDau = cheDo(dau)
                 const ra: { key: string; cols: number; content: ReactNode; lines: number; hasImg: boolean }[] = []
                 if (i === nhom.dau) ra.push({
                   key: `${c.bai_y}:dan`, cols: 1, lines: 0, hasImg: !!dau.anh_de && cdDau !== 'khong',
@@ -405,7 +417,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
                 hasImg: !!c.anh_de && cd !== 'khong',
               }]
             })} />
-          )}
+          ))}
         </section>
       ))}
       {soBaiHinh > 0 && (

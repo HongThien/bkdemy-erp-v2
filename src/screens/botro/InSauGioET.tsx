@@ -24,6 +24,6 @@ export default function InSauGioET({ bais, lop, onDong }: { bais: BaiInGiay[]; l
   const deRieng: DeRiengET[] = bais.map((b) => ({ id: b.bai_test_id, hoTen: b.hs.ho_ten, caus: b.caus.map((k) => sangCauHoi(k, b)), ch: (b.cau_hinh_in ?? undefined) as DeRiengET['ch'] }))
   return (
     <ETPrintView id={full.taiLieu.id} onClose={onDong} fullOverride={full} deRieng={deRieng}
-      nhanDe={test ? { tieuDe: 'Bài kiểm tra bổ trợ sau giờ', nhan: 'Bài test bổ trợ' } : { tieuDe: 'Phiếu luyện bổ trợ sau giờ', nhan: 'Bài luyện bổ trợ' }} />
+      nhanDe={{ ...(test ? { tieuDe: 'Bài kiểm tra bổ trợ sau giờ', nhan: 'Bài test bổ trợ' } : { tieuDe: 'Phiếu luyện bổ trợ sau giờ', nhan: 'Bài luyện bổ trợ' }), tlnTheoDong: true }} />
   )
 }
