@@ -17,6 +17,10 @@
 //   anh_pdf '{"file":"<pdf>","trang":3,"vung":[x0,y0,x1,y1],"ten":"cau12"}'      cắt hình (vung = tỉ lệ 0–1 của trang) ⇒ in đường dẫn PNG
 //   anh_docx '{"file":"<docx>"}'                                                 tách mọi hình trong Word ⇒ in danh sách PNG
 //   gan_anh '{"ma_cau":"…","file":"<png đã cắt>","o":"de|dap_an|ca_hai"}'       upload + gắn vào câu. XEM ẢNH (Read) TRƯỚC khi gắn.
+//   gan_anh_khac '{"loai":"…","id":"…","o":"…","file":"<png>"}'                 gắn / THAY ảnh NGOÀI câu kho (12/11) — gắn lại = vẽ lại:
+//       loai cau_lop  (id = mã câu TRÊN LỚP / ví dụ giảng; o de|dap_an|ca_hai) · nhom (o ly_thuyet) · dang_bai (o ly_thuyet|vi_du) ·
+//       hh_bai (id HH…; o vi_du) · hinh_bai (id bài kho Hình–Luyện) · hinh_baitoan (id bài trong cây mô hình) · mo_hinh (id mô hình: ảnh cấu hình)
+//       Lý thuyết/ví dụ: ảnh là FILE KÈM của ô (màn hiện "📎 Tài liệu kèm"), không chèn giữa chữ.
 //   ve_hinh '{"ten":"cau12","w":420,"h":300,"luoi":30}' <<'HET'                 VẼ hình sạch (không watermark) từ nét SVG ⇒ in đường dẫn PNG
 //   <polygon points="60,240 300,240 300,80"/><text x="48" y="262" stroke="none" fill="#111" font-style="italic">A</text>
 //   HET     Chỉ thẻ vẽ: g line polyline polygon path circle ellipse rect text tspan (defs marker). Khung sẵn: nền trắng,
@@ -160,6 +164,19 @@ function kiemDinhDang(t, truong) {
   if (/^(?:Bước|B)\s*\d+\s*[:.]/m.test(t)) canh_bao.push('##PP không ghi "Bước N" — app tự đánh số')
   if (/(^|[^*])\*[^*\s][^*]*\*(?!\*)/.test(t)) canh_bao.push('chỉ dùng **đậm**, không *nghiêng*')
   return { loi, canh_bao }
+}
+
+// Upload 1 ảnh png/jpg lên bucket kho-anh (tên ngẫu nhiên, không ghi đè ảnh cũ) ⇒ trả URL công khai. Dùng chung gan_anh + gan_anh_khac.
+async function taiAnh(file) {
+  const { readFileSync: doc, existsSync: co } = await import('node:fs')
+  const { extname: duoiFile } = await import('node:path')
+  if (!co(file)) loi(`Không thấy file ${file}`)
+  const duoi = duoiFile(file).toLowerCase().replace('.', '')
+  if (!['png', 'jpg', 'jpeg'].includes(duoi)) loi('Chỉ gắn ảnh png / jpg.')
+  const duongDan = `${crypto.randomUUID()}.${duoi}`
+  const { error } = await svc.storage.from('kho-anh').upload(duongDan, doc(file), { contentType: duoi === 'png' ? 'image/png' : 'image/jpeg', upsert: false })
+  if (error) loi(`Upload lỗi: ${error.message}`)
+  return svc.storage.from('kho-anh').getPublicUrl(duongDan).data.publicUrl
 }
 
 function docStdin() {
@@ -411,16 +428,21 @@ if (lenh === 'anh_pdf' || lenh === 'anh_docx' || lenh === 'gan_anh') {
     for (const f of ds) console.log(`  ${join(ra, 'png', f)}`)
   } else {
     if (!ts.ma_cau) loi('Thiếu "ma_cau".')
-    const duoi = extname(ts.file).toLowerCase().replace('.', '')
-    if (!['png', 'jpg', 'jpeg'].includes(duoi)) loi('Chỉ gắn ảnh png / jpg.')
-    const duongDan = `${crypto.randomUUID()}.${duoi}`
-    const { error: eUp } = await svc.storage.from('kho-anh').upload(duongDan, readFileSync(ts.file), { contentType: duoi === 'png' ? 'image/png' : 'image/jpeg', upsert: false })
-    if (eUp) loi(`Upload lỗi: ${eUp.message}`)
-    const url = svc.storage.from('kho-anh').getPublicUrl(duongDan).data.publicUrl
+    const url = await taiAnh(ts.file)
     const { data, error } = await svc.rpc('fn_phien_kho_anh', { p_phien: PHIEN, p_ma_cau: ts.ma_cau, p_url: url, p_o: ts.o ?? 'ca_hai' })
     if (error) loi(error.message)
     console.log(`OK gan_anh ${data.ma_cau} (${data.o}): ${data.url}`)
   }
+  process.exit(0)
+}
+
+// 12/11 (Thùy: trưởng khối ra lệnh vẽ mới / vẽ lại hình của lý thuyết, ví dụ, kho bài) — gắn/THAY ảnh ngoài câu kho.
+if (lenh === 'gan_anh_khac') {
+  if (!ts.loai || !ts.id || !ts.file) loi('Cần "loai", "id", "file" (xem tro-giup).')
+  const url = await taiAnh(ts.file)
+  const { data, error } = await svc.rpc('fn_phien_anh_gan', { p_phien: PHIEN, p_ts: { loai: ts.loai, id: ts.id, o: ts.o, url, ten_file: String(ts.file).split(/[\\/]/).pop() } })
+  if (error) loi(error.message)
+  console.log(`OK gan_anh_khac ${data.loai} ${data.id} (${data.o}): ${data.url}`)
   process.exit(0)
 }
 
