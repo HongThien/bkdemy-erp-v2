@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-582 bảng · 39 view · 0 enum · 406 trigger · 1877 function
+583 bảng · 39 view · 0 enum · 406 trigger · 1881 function
 
 ## _app_secrets
 
@@ -5388,6 +5388,19 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | khung_co_ban | numeric | Y |  |  |  |
 | khung_nang_cao | numeric | Y |  |  |  |
+
+## lich_khoi_chot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | uuid |  | gen_random_uuid() | PK |  |
+| tuan | date |  |  |  |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+| chot_boi | uuid | Y |  |  |  |
+| ban_chup | jsonb |  |  |  |  |
+| ca_sinh | integer |  | 0 |  |  |
+| ca_cap_nhat | integer |  | 0 |  |  |
+| ca_huy | integer |  | 0 |  |  |
 
 ## lich_test_dong
 
@@ -11462,6 +11475,7 @@ WITH luot AS (
 - `_ky_hoc_touch()` → trigger
 - `_la_gv_kiem_ta(p_ns uuid)` → boolean
 - `_la_tac_vu_nen()` → boolean
+- `_lich_khoi_ban_chup(p_tuan date)` → jsonb
 - `_lich_test_cham_updated()` → trigger
 - `_lich_test_ghi_log()` → trigger
 - `_lop_dang_da_hoc_lam_moi(p_giay integer DEFAULT 20)` → integer
@@ -12482,9 +12496,12 @@ WITH luot AS (
 - `fn_ks_diem_thang(p_hs uuid, p_mon text, p_ym text)` → jsonb
 - `fn_ks_ds_ky(p_mon text)` → TABLE(buoi_id uuid, ngay date, ten text, loai_de text, dong boolean, so_hs integer, so_hs_xong integer, khoi text, de_id uuid)
 - `fn_ks_tao_ky(p_de uuid, p_ngay date)` → uuid
+- `fn_lich_khoi_chot_trang_thai(p_tuan date)` → jsonb
+- `fn_lich_khoi_chot_tuan(p_tuan date)` → jsonb
 - `fn_lich_truc_cua_hs(p_hoc_sinh uuid, p_mon text, p_ngay date DEFAULT NULL::date)` → jsonb
 - `fn_lich_truc_kiem_trung(p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_ns uuid, p_ns2 uuid, p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date, p_bo_qua uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_lich_truc_luu(p_id uuid, p_mon text, p_khoi text, p_bac text, p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_so_ta integer, p_ns uuid, p_ns2 uuid, p_suc_chua integer, p_hieu_luc_tu date, p_ghi_chu text, p_chap_nhan boolean DEFAULT false)` → jsonb
+- `fn_lich_truc_xoa(p_id uuid, p_xac_nhan boolean DEFAULT false)` → jsonb
 - `fn_lop_hs_thang(p_ym text)` → TABLE(hoc_sinh_id uuid, mon text, khoi text, ten_lop text)
 - `fn_luot_hoc_that_ket_qua(p_bai_lam_id uuid)` → jsonb
 - `fn_luyen_gioi_han_dat(p_bat boolean DEFAULT NULL::boolean, p_muc_do_de_toi_da smallint DEFAULT NULL::smallint, p_tran_cau_ngay integer DEFAULT NULL::integer)` → jsonb
@@ -13270,6 +13287,7 @@ WITH luot AS (
 | ky_hoc | ky_hoc_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | ky_hoc | ky_hoc_tu_thang_check | `CHECK ((tu_thang ~ '^\d{4}-(0[1-9]\|1[0-2])$'::text))` |
 | ky_thi | ky_thi_he_so_check | `CHECK ((he_so = ANY (ARRAY[1, 2])))` |
+| lich_khoi_chot | lich_khoi_chot_tuan_check | `CHECK ((EXTRACT(isodow FROM tuan) = (1)::numeric))` |
 | lich_test_khung | lich_test_khung_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | lich_test_khung | lich_test_khung_gio_bat_dau_check | `CHECK (((((EXTRACT(minute FROM gio_bat_dau))::integer % 15) = 0) AND (EXTRACT(second FROM gio_bat_dau) = (0)::numeric)))` |
 | lich_test_khung | lich_test_khung_gio_ket_thuc_check | `CHECK (((((EXTRACT(minute FROM gio_ket_thuc))::integer % 15) = 0) AND (EXTRACT(second FROM gio_ket_thuc) = (0)::numeric)))` |
