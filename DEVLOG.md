@@ -79843,3 +79843,9 @@ Thùy nêu 4 việc, làm được 3:
 - **ERP mở chậm vì file JS:** bundle chính 8,6 MB (gzip 2,34 MB) gồm ~90 màn + cả app HS. Đổi 62 màn NhanSuHome + HocSinhApp/DoiMatKhau sang tải-khi-mở (`src/lib/lazyMan.ts`: lỗi tải chunk sau deploy ⇒ tự reload 1 lần), HomeScreen/NhanSuHome gọi moBoTroTab/moTabTestDauVao bằng import động. Bundle chính → 3,8 MB (gzip 1,09 MB). Cần deploy ERP. Chưa mở thử trên app.
 - Lấy mẫu pg_stat_activity 60 s lúc 14:10: không có truy vấn người dùng nào chạy lâu (DB rảnh).
 - **CHƯA ÁP (đã so 0 lệch):** tự luyện + nông trại 202611112136_toi_uu_tl_nt_nhip_dht · 2216 cay_chon_dem_luu · 2216 sinh_lan_gap_mot_lan · 2222 tang_toc. Cron bxh (2212) + cron phòng (202611101538 — CHƯA từng chạy, số phòng đứng từ 10/11) chờ SQL Editor.
+
+## 12/11 — Môn Lý hóa (Thùy: "vai trò giống KHTN, có mặt mọi nơi như Toán", khối 10 11 12)
+- **Đo phạm vi:** KHTN dính 25 bảng `khtn_*`, ~87 hàm DB dùng bảng đó, 26 hàm rẽ nhánh theo chữ `'KHTN'`, 84 file TS. TSA (02/10) chỉ là bản sao một phần (10 bảng, không có bản đồ mới). Nhiều hàm rẽ nhánh kiểu `case when mon='KHTN' … else Toán` ⇒ môn mới thiếu nhánh sẽ ÂM THẦM rơi vào bảng Toán — đợt 2–4 phải sửa từng hàm, không chỉ thêm bảng.
+- **Chia 4 đợt:** (1) nền vận hành · (2) kho + bản đồ (`lyhoa_*` theo khuôn KHTN) · (3) tài liệu/giáo trình/ET/MT/BTVN/chấm/mastery/bổ trợ/kết quả/báo cáo PH · (4) app HS + phòng trưởng khối/phiên Claude + trợ lý.
+- **Đợt 1 ĐÃ ÁP + push:** mig 202611121420 (`_mon_khoi_hop_le`: Lý hóa ⇒ khối 10/11/12, CHECK `lop_mon_khoi_hop_le` chặn lớp Lý hóa khối khác; nới CHECK `sotay_ct_*`). `MON_LIST` thêm 'Lý hóa' (chưa vào `MON_APP_HS`). Ô Môn ở form tạo/sửa lớp đổi từ gõ tay sang chọn theo `MON_LIST` (gõ tay là nguồn nhãn lệch kiểu 'Anh' ≠ 'Tiếng Anh'). Màu/thứ tự Lý hóa ở Lớp · TKB · Phân công · Học phí · Phát sinh phòng. Chưa mở thử trên app.
+- Tên môn trong DB: `Lý hóa` (h thường, khớp lời Thùy).
