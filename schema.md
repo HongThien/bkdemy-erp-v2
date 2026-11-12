@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-557 bảng · 39 view · 0 enum · 376 trigger · 1830 function
+557 bảng · 39 view · 0 enum · 377 trigger · 1831 function
 
 ## _app_secrets
 
@@ -10275,6 +10275,7 @@ WITH luot AS (
 | bai_lam_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
 | bai_lam_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | bai_lam_cau | zz_hs_so_ban | BEFORE | INSERT/DELETE/UPDATE | _hs_so_ban_tg |
+| bai_test | trg_bai_test_mat_phieu_dong | BEFORE | UPDATE | _bai_test_mat_phieu_dong |
 | bai_test | trg_ta_retest_push_badge | AFTER | INSERT | _trg_ta_retest_push |
 | bai_test | zz_hs_so_ban | BEFORE | UPDATE | _hs_so_ban_tg |
 | bai_test_cau | tg_bt_dang_ph_auto_dang1 | AFTER | INSERT | fn_bt_tu_phat_hanh_dang1 |
@@ -10633,6 +10634,7 @@ WITH luot AS (
 
 ## Functions
 
+- `_bai_test_mat_phieu_dong()` → trigger
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
 - `_bao_cao_ph_ky_ghi_log()` → trigger
 - `_bao_cao_ph_ky_truoc()` → trigger
