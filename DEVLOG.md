@@ -79858,3 +79858,5 @@ Thùy nêu 4 việc, làm được 3:
 ### Sau giờ: nhập Đ/C/S trên ERP · cấp 1–2 tự luận / cấp 3 trắc nghiệm · soạn đủ builder — Thùy 12/11
 - mig 202611121501 ĐÃ ÁP: bai_test.cau_hinh_in (jsonb) · _btnhe_uu_tu_luan (khối <10 = tự luận trước) · _btnhe_chon_tu_luan / _btnhe_chon_cau (tự luận kho chuẩn có lời giải ↔ luật cũ TN→TLN, bù lẫn nhau) dùng ở fn_btnhe_soan / goi_y_dang / in_test · fn_btnhe_luu_bai 4 tham số (cấu hình in, bỏ chặn tự luận) · fn_btyeu_in_lay trả cau_hinh_in. Thử: K8 6 TL + 8 TLN · K10 32 TN.
 - Màn: SoanBaiSauGio KhoiCau đầy đủ (dòng/cột/hình/cỡ ảnh, AnhMmEditCtx) lưu cau_hinh_in; InSauGioET truyền ch từng đề vào ETPrintView (DeRiengET.ch); màn ca ERP nhập Đ/C/S bằng SauGioNhapTA chiBuoi. Kiểm khung soạn trên ERP local (không lưu).
+
+- mig 202611121506 ĐÃ ÁP (Thùy 12/11 "1 tuần chỉ bổ trợ sau giờ 1 lần"): _btnhe_dau_tuan · _btnhe_da_co_tuan; fn_btnhe_cho / lop_cho bỏ lớp đã có ca (không huỷ) từ thứ Hai này; hs_duyet cờ chờ theo tuần; fn_btnhe_tao 1 ca/em/tuần. Thử: 7 lớp rời danh sách, lần 2 bị chặn. Màn: chữ 1 lần/em/tuần.

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-531 bảng · 39 view · 0 enum · 347 trigger · 1777 function
+531 bảng · 39 view · 0 enum · 347 trigger · 1779 function
 
 ## _app_secrets
 
@@ -10179,7 +10179,9 @@ WITH luot AS (
 - `_btk_nhom_hs(p_hs uuid[], p_mon text)` → TABLE(hoc_sinh_id uuid, ma text, ten text, cha text, score numeric, n bigint, muc text, tin text)
 - `_btnhe_chon_cau(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer, p_tu_luan boolean, p_giu_lai integer DEFAULT 0)` → text[]
 - `_btnhe_chon_tu_luan(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]
+- `_btnhe_da_co_tuan(p_hs uuid, p_mon text)` → boolean
 - `_btnhe_dang_buoi(p_buoi uuid)` → TABLE(ma_dang text, ten_dang text, nhom_yeu boolean, thu_tu integer)
+- `_btnhe_dau_tuan()` → date
 - `_btnhe_duoc_tao(p_mon text, p_khoi text)` → boolean
 - `_btnhe_gio_lop(p_lop uuid, p_ngay date)` → TABLE(gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text)
 - `_btnhe_uu_tu_luan(p_hs uuid)` → boolean

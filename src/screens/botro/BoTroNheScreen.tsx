@@ -82,7 +82,7 @@ export default function BoTroNheScreen() {
             <button key={k} onClick={() => setSub(k)} className={`rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition ${sub === k ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{t}</button>
           ))}
         </div>
-        <span className="text-[12px] text-slate-400">15–20 phút sau buổi · TA nhập test là xong · ≤ 2 ca/em/tuần · vắng không bù</span>
+        <span className="text-[12px] text-slate-400">15–20 phút sau buổi · TA nhập test là xong · 1 lần/em/tuần · vắng không bù</span>
         <div className="ml-auto flex gap-2">
           <button onClick={tai} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[13px] text-slate-600 hover:bg-slate-50" title="Quét lại">↻</button>
           {sub === 'cho' && <button onClick={() => { setDau(null); setTao((v) => !v) }} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-700">{tao ? 'Đóng' : '＋ Khởi tạo ca'}</button>}
@@ -217,7 +217,7 @@ function FormKhoiTao({ lopDau, onXong }: { lopDau?: string | null; onXong: (caId
   useEffect(() => {
     setHs(null); setChon(new Set()); setBuois(null); setBuoi('')
     if (!lopId) return
-    hsDaDuyet(lopId).then((r) => { setHs(r); setChon(new Set(r.filter((h) => h.cho && h.so_ca_tuan < 2).map((h) => h.hoc_sinh_id))) })
+    hsDaDuyet(lopId).then((r) => { setHs(r); setChon(new Set(r.filter((h) => h.cho && h.so_ca_tuan < 1).map((h) => h.hoc_sinh_id))) })
       .catch((e) => { setHs([]); setLoi(e?.message ?? String(e)) })
     buoiCuaLop(lopId).then((r) => { setBuois(r); if (r.length) setBuoi(r[0].ngay) }).catch((e) => { setBuois([]); setLoi(e?.message ?? String(e)) })
   }, [lopId])
@@ -253,14 +253,14 @@ function FormKhoiTao({ lopDau, onXong }: { lopDau?: string | null; onXong: (caId
             : hs === null ? <p className="text-[13px] text-slate-400">Đang tải…</p>
             : hs.length === 0 ? <p className="text-[13px] text-slate-400">Lớp chưa có em nào được duyệt L1 (sau giờ).</p>
             : <div className="flex flex-col gap-1.5">{hs.map((h) => {
-                const het = h.so_ca_tuan >= 2, co = chon.has(h.hoc_sinh_id)
+                const het = h.so_ca_tuan >= 1,   /* Thùy 12/11: 1 lần/tuần */ co = chon.has(h.hoc_sinh_id)
                 return (
                   <label key={h.hoc_sinh_id} title={h.nhom.map((n) => n.ten).join('\n') + (h.ghi_chu ? '\n— ' + h.ghi_chu : '')}
                     className={`flex cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-1.5 text-[13px] ${het ? 'cursor-not-allowed opacity-50' : ''} ${co ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 bg-white'}`}>
                     <input type="checkbox" disabled={het} checked={co} onChange={() => setChon((x) => { const n = new Set(x); if (n.has(h.hoc_sinh_id)) n.delete(h.hoc_sinh_id); else n.add(h.hoc_sinh_id); return n })} />
                     <span className="font-medium text-slate-800">{h.ho_ten}</span>
                     <span className="text-[11.5px] text-slate-400">{h.so_dang} dạng</span>
-                    <span className={`ml-auto rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${h.cho ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500'}`}>{h.cho ? 'chờ khởi tạo' : `đã có ca · ${h.so_ca_tuan}/2 tuần này`}</span>
+                    <span className={`ml-auto rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${h.cho ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500'}`}>{h.cho ? 'chờ khởi tạo' : 'đã có ca tuần này'}</span>
                   </label>
                 )
               })}</div>}
