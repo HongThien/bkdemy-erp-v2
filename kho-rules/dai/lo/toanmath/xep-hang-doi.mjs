@@ -19,12 +19,19 @@ const out = kq.map((x) => {
   const word = x.files.filter((f) => /docx?$/.test(f.duoi)).length, pdf = x.files.filter((f) => f.duoi === 'pdf').length
   return { khoi: x.khoi, folder: x.folder, ten_bai: x.ten_bai, tt, trung, word, pdf, dinh_dang: !x.so_file ? 'khong_file' : word ? 'word' : 'pdf', files: x.files.filter((f) => !(f.tl || f.log || f.tdg)).map((f) => f.p) }
 })
+// Gộp kết quả kiem-nghi-trung.json (nhân chứng nội dung): trung ⇒ da_co · khong_doc ⇒ nghi_trung_scan (kiểm ở khâu đọc PDF, trước khi soạn)
+// · mot_phan/khac/mo_ho ⇒ chua (làm lại; câu trùng tự lọc lúc ghi).
+const fK = new URL('./kiem-nghi-trung.json', import.meta.url)
+if (fs.existsSync(fK)) { const kk = new Map(JSON.parse(fs.readFileSync(fK, 'utf8')).map((y) => [y.khoi + '|' + y.ten_bai, y]))
+  for (const x of out) { const y = kk.get(x.khoi + '|' + x.ten_bai); if (!y || x.tt !== 'nghi_trung') continue
+    x.kiem_noi_dung = y.ket_luan; x.trung = y.ung_vien[0] ? { id: y.ung_vien[0].id, ten: y.ung_vien[0].ten, ti_le: y.ung_vien[0].ti_le, nen: y.nen_max } : x.trung
+    x.tt = y.ket_luan === 'trung' ? 'da_co' : y.ket_luan === 'khong_doc' ? 'nghi_trung_scan' : 'chua' } }
 fs.writeFileSync(new URL('./hang-doi.json', import.meta.url), JSON.stringify(out, null, 1))
 const g = {}
-for (const x of out) { const k = `${x.khoi} ${x.folder.replace(/\/.*/, '')}`; g[k] ??= { bai: 0, da_co: 0, nghi_trung: 0, chua: 0, chua_word: 0, chua_pdf: 0, chua_file_word: 0, chua_file_pdf: 0, khong_file: 0 }
+for (const x of out) { const k = `${x.khoi} ${x.folder.replace(/\/.*/, '')}`; g[k] ??= { bai: 0, da_co: 0, nghi_trung: 0, nghi_trung_scan: 0, chua: 0, chua_word: 0, chua_pdf: 0, chua_file_word: 0, chua_file_pdf: 0, khong_file: 0 }
   const o = g[k]; o.bai++; o[x.tt]++; if (x.tt === 'chua') { if (x.dinh_dang === 'word') o.chua_word++; else if (x.dinh_dang === 'pdf') o.chua_pdf++; else o.khong_file++
     for (const f of x.files) /\.docx?$/i.test(f) ? o.chua_file_word++ : /\.pdf$/i.test(f) ? o.chua_file_pdf++ : 0 } }
-const T = {}; console.log('nhóm'.padEnd(22), 'bài  đã_có nghi_trùng chưa | chưa: word pdf không_file | file word pdf')
+const T = {}; console.log('nhóm'.padEnd(22), 'bài  đã_có nghi_scan chưa | chưa: word pdf không_file | file word pdf')
 for (const k of Object.keys(g).sort((a, b) => +a.slice(1, 3) - +b.slice(1, 3) || a.localeCompare(b))) { const o = g[k]; for (const z in o) T[z] = (T[z] || 0) + o[z]
-  console.log(k.padEnd(22), [o.bai, o.da_co, o.nghi_trung, o.chua].map((v) => String(v).padStart(5)).join(''), ' |', [o.chua_word, o.chua_pdf, o.khong_file].map((v) => String(v).padStart(5)).join(''), ' |', [o.chua_file_word, o.chua_file_pdf].map((v) => String(v).padStart(6)).join('')) }
+  console.log(k.padEnd(22), [o.bai, o.da_co, o.nghi_trung_scan, o.chua].map((v) => String(v).padStart(5)).join(''), ' |', [o.chua_word, o.chua_pdf, o.khong_file].map((v) => String(v).padStart(5)).join(''), ' |', [o.chua_file_word, o.chua_file_pdf].map((v) => String(v).padStart(6)).join('')) }
 console.log('TỔNG', T)
