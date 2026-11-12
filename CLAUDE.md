@@ -150,6 +150,10 @@
     Làm mới theo lịch (pg_cron, file `*_cron_sql_editor.sql` chạy ở SQL Editor) hoặc khi dữ liệu nguồn đổi (trigger/phiên bản);
     lượt làm mới có ngân sách giây, cũ nhất trước. Màn ghi "số tính lúc HH:MM". Mẫu: `phong_so_luu` + `_phong_so_lam_moi`
     (mig 202611101537) · cây/số đếm bản đồ lưu sẵn (mig 202611091907) · `dang_yeu_hien_tai`.
+  - **⭐ MỌI THỨ SUY TỪ LỊCH SỬ ĐO (mastery, dạng đã học, dạng yếu, nhóm yếu…) ⇒ CACHE là cách chuẩn (Thùy 12/11).**
+    Cấm hàm đọc quét lại toàn bộ lịch sử làm bài (gami_grades / bai_lam_cau / bt_grades) mỗi lượt gọi. Khuôn: bảng lưu sẵn +
+    điều kiện còn hiệu lực bám nhịp làm mới của cache mastery (`mastery_luu_san_tinh.tinh_at`) + cron làm mới có ngân sách;
+    hàm đọc GIỮ chữ ký, cache lệch/thiếu ⇒ tính trực tiếp như cũ. Mẫu: `mastery_luu_san` · `lop_dang_da_hoc_luu` (mig 202611121507) · `hs_so_luu`.
   - **Cấm polling ngắn** (60 s…) cho số tính sẵn; đọc lại nền ≥ 5 phút, và không gọi lại khi chỉ mở/đóng 1 khối trên cùng màn.
   - **Đo trước khi đưa lên màn:** hàm đọc > 1–2 s với dữ liệu thật (đo bằng tài khoản thật đông nhất — Giám đốc/toàn hệ) ⇒
     chuyển sang bảng tính sẵn hoặc thu hẹp phạm vi, KHÔNG để chạm trần 8 s. Đổi cách đọc ⇒ so cũ–mới khớp từng dòng trước khi áp.
