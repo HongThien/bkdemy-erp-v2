@@ -1332,7 +1332,7 @@ function HinhLuyenTrongBanDo({ khoi, chuDeId }: { khoi: string; chuDeId: string 
 }
 
 // Môn đang soạn (Thùy 29/10: KHTN có bản đồ mới riêng). Nhớ lựa chọn gần nhất (sở thích cá nhân).
-const DS_MON_BDM: BdmMon[] = ['Toán', 'KHTN']
+const DS_MON_BDM: BdmMon[] = ['Toán', 'KHTN', 'Lý hóa']
 const docMon = (): BdmMon => {
   try { const m = localStorage.getItem('bdm.mon'); return (DS_MON_BDM as string[]).includes(m ?? '') ? (m as BdmMon) : 'Toán' } catch { return 'Toán' }
 }
@@ -1348,10 +1348,10 @@ export default function BanDoMoiScreen() {
   useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])
   const chonKhoi = (
     <span className="flex items-center gap-0.5">
-      <span className="mr-2 flex gap-0.5 rounded-lg bg-slate-100 p-0.5">
+      <span className="mr-2 flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5">
         {DS_MON_BDM.map((m) => (
           <button key={m} onClick={() => setMon(m)}
-            className={`rounded-md px-2.5 py-0.5 text-xs font-semibold ${mon === m ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{m}</button>
+            className={`whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-semibold ${mon === m ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{m}</button>
         ))}
       </span>
       <span className="mr-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Khối</span>

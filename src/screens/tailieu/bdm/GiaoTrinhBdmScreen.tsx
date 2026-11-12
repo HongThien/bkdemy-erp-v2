@@ -48,7 +48,7 @@ export default function GiaoTrinhBdmScreen({ loai = 'giao_trinh' }: { loai?: Loa
   const me = useStore((s) => s.me)
   const { allowedMons, isAll } = useMonScope()
   const coQuyen = isAll || allowedMons.includes(mon)
-  const dsMon = BDM_DS_MON.filter((m) => isAll || allowedMons.includes(m))
+  const dsMon = BDM_DS_MON.filter((m) => BDM_MON[m].taiLieu && (isAll || allowedMons.includes(m)))   // Lý hóa: chưa nối giáo trình (đợt 3)
   // người chỉ được phân KHTN (vd trưởng bộ môn KHTN) ⇒ vào thẳng KHTN, không kẹt ở Toán
   useEffect(() => { if (dsMon.length && !dsMon.includes(mon)) setMonRaw(dsMon[0]) }, [dsMon.join('|')]) // eslint-disable-line react-hooks/exhaustive-deps
   const profileLoading = !isAll && me === null

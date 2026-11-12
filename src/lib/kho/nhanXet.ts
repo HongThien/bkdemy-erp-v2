@@ -3,7 +3,7 @@
 import { supabase } from '../supabase'
 
 export type DoiTuongNX = 'cau' | 'form_tn' | 'form_dien' | 'hinh_bai' | 'hinh_bien_the' | 'hinh_cach_giai' | 'clone' | 'de_thi'
-export type MonNX = 'toan' | 'khtn' | 'hgt' | 'hinh_hoc' | 'anh' | 'tsa'
+export type MonNX = 'toan' | 'khtn' | 'lyhoa' | 'hgt' | 'hinh_hoc' | 'anh' | 'tsa'
 export type KhauNX = 'de' | 'dap_an' | 'loi_giai' | 'dang' | 'hinh' | 'trinh_bay' | 'khac'
 export const KHAU_NX: { id: KhauNX; nhan: string }[] = [
   { id: 'de', nhan: 'Đề' }, { id: 'dap_an', nhan: 'Đáp án' }, { id: 'loi_giai', nhan: 'Lời giải' }, { id: 'dang', nhan: 'Dạng' },

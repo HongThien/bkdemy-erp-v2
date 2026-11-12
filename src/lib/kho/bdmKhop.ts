@@ -1,12 +1,12 @@
 // B4 DUYỆT KHỚP — duyệt câu xếp vào dạng bài của BẢN ĐỒ MỚI. mig 202610161046 · spec-ban-do-4-tang.md §B4.
 // Seam: UI chỉ gọi hàm ở đây; mọi đếm/lọc/phân quyền theo phạm vi nằm ở Postgres (CLAUDE.md §2.0).
 import { supabase } from '../supabase'
-import { layMonBdm } from './banDoMoi'
+import { layMonBdm, BDM_MON } from './banDoMoi'
 
 // Bộ hàm theo môn đang mở trên Bản đồ mới (05/11: KHTN có bộ fn_khtn_bdm_khop_* cùng chữ ký, mig 202611051543).
 // Phạm vi người duyệt (pham_vi/ung_vien/giao/go) chỉ Toán có — KHTN duyệt theo trưởng khối.
-const K = (x: string) => (layMonBdm() === 'KHTN' ? 'fn_khtn_bdm_khop_' : 'fn_bdm_khop_') + x
-export const khopCoPhamVi = () => layMonBdm() !== 'KHTN'
+const K = (x: string) => BDM_MON[layMonBdm()].ham + 'khop_' + x   // fn_bdm_khop_* · fn_khtn_bdm_khop_* · fn_lyhoa_bdm_khop_*
+export const khopCoPhamVi = () => layMonBdm() === 'Toán'
 
 export type KhopHang = 'de_xuat' | 'trong' | 'thieu' | 'mau'
 export const KHOP_HANG_LABEL: Record<KhopHang, string> = {
@@ -25,7 +25,7 @@ export type KhopCau = {
   ly_do: string | null; chac: string | null
   dang_bai_id: string | null; dang_bai: string | null; nhom: string | null; chu_de: string | null; chuyen_de: string | null
   dang_cu: string | null; chuyen_de_cu: string | null
-  nhanh?: 'dai' | 'hgt' | 'khtn'   // câu thuộc kho Đại / Hình giải tích (mig 202610221734) / KHTN (mig 202611051543)
+  nhanh?: 'dai' | 'hgt' | 'khtn' | 'lyhoa'   // câu thuộc kho Đại / Hình giải tích (mig 202610221734) / KHTN (mig 202611051543)
   nguon_tl?: string[]     // nguồn tài liệu của câu (mig 202610271607)
 }
 export type KhopDich = { id: string; dang_bai: string; mo_ta: string | null; nhom: string; nhom_id: string; chuyen_de: string; chuyen_de_id: string; chu_de: string; chu_de_id: string }

@@ -3,7 +3,7 @@ import * as api from '../../lib/kho/api'
 import type { MapRow, LyThuyet } from '../../lib/kho/api'
 
 export type BranchConfig = {
-  key: 'dai' | 'hinh' | 'khtn' | 'hinhgt' | 'hinhhoc' | 'anh' | 'tsa'
+  key: 'dai' | 'hinh' | 'khtn' | 'lyhoa' | 'hinhgt' | 'hinhhoc' | 'anh' | 'tsa'
   cauTbl?: string                                    // bảng câu theo môn (dai_cau_hoi/khtn_cau_hoi). undefined = nhánh chưa có câu (Hình)
   labels: { t1: string; t2: string; leaf: string }  // tầng1 / tầng2 / lá
   hasMucDo: boolean
@@ -75,6 +75,27 @@ export const khtnBranch: BranchConfig = {
   renameT2: api.renameKhtnChuyenDe,
   lyThuyet: { list: api.listKhtnLyThuyet, upsert: api.upsertKhtnLyThuyet, remove: api.deleteKhtnLyThuyet },
   lyThuyetT2: { list: api.listKhtnChuyenDeLyThuyet, upsert: api.upsertKhtnChuyenDeLyThuyet, remove: api.deleteKhtnChuyenDeLyThuyet },
+}
+
+// Lý hóa (12/11) = clone KHTN, bảng lyhoa_*, KHÔNG nhánh.
+export const lyhoaBranch: BranchConfig = {
+  key: 'lyhoa',
+  cauTbl: 'lyhoa_cau_hoi',
+  labels: { t1: 'Chủ đề', t2: 'Chuyên đề', leaf: 'Dạng' },
+  hasMucDo: true,
+  countLabel: 'câu',
+  chuan: api.CHUAN_SO_CAU,
+  list: api.listLyhoaMap,
+  count: api.countCauByDangLyhoa,
+  create: api.createLyhoaMap,
+  updateLeaf: api.updateLyhoaLeaf,
+  deleteLeaf: api.deleteLyhoaLeaf,
+  deleteLeaves: api.deleteLyhoaLeaves,
+  deleteCum: api.deleteLyhoaCum,
+  renameT1: api.renameLyhoaChuDe,
+  renameT2: api.renameLyhoaChuyenDe,
+  lyThuyet: { list: api.listLyhoaLyThuyet, upsert: api.upsertLyhoaLyThuyet, remove: api.deleteLyhoaLyThuyet },
+  lyThuyetT2: { list: api.listLyhoaChuyenDeLyThuyet, upsert: api.upsertLyhoaChuyenDeLyThuyet, remove: api.deleteLyhoaChuyenDeLyThuyet },
 }
 
 // TSA (Tư duy ĐH Bách khoa) = Toán ĐỘC LẬP: clone Đại/KHTN (Chủ-đề→Chuyên-đề→Dạng + bậc + độ khó), bảng tsa_*, KHÔNG nhánh.

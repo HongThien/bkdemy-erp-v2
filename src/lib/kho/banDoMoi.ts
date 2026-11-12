@@ -10,18 +10,20 @@ import type { LyThuyetApi } from '../../screens/kho/branches'
 // ⭐ MÔN (Thùy 29/10 — KHTN có bản đồ mới riêng, mig 202610291707/1712): mỗi môn một bộ bảng + hàm (§1.6 bảng riêng), dispatch qua
 // ĐÚNG 1 registry này. Màn BanDoMoi đặt môn đang soạn (datMonBdm); mọi hàm dưới đọc/ghi đúng bộ của môn đó.
 // coVung = chủ đề có cột "vùng" (Đại · HGT · Hình) — KHTN một vùng.
-export type BdmMon = 'Toán' | 'KHTN'
+export type BdmMon = 'Toán' | 'KHTN' | 'Lý hóa'
 // aiDuyet = luồng AI xếp câu (Duyệt kho · Đề xuất · Thiếu dạng · Chưa khớp · Đúng/Sai) · khoLop = kho trên lớp · mastery = công tắc mastery
 // chuaPhan = hiện "⚠ n câu chưa gán dạng bài · gán →" ở nhóm/chuyên đề (KHTN: câu không cụm sau chuyển 29/10)
 // chonQuaCay = chuyển câu sang dạng bài khác: chọn thẳng trên cây đang mở (Toán dùng DangPickerOne — nhiều khối, bản đồ cũ)
+// taiLieu = đã nối giáo trình / ET theo bản đồ mới (Lý hóa: CHƯA — đợt 3; DB fn_tl_bdm_* chưa có nhánh lyhoa ⇒ sẽ ra cây Toán)
 // nhanhTl = p_nhanh của cây chọn giáo trình / ET (fn_tl_bdm_cay_chon, mig 202611031655) cho vùng chính của môn
-export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string }> = {
-  'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan' },
-  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn' },
+export const BDM_MON: Record<BdmMon, { bang: string; ham: string; coVung: boolean; aiDuyet: boolean; khoLop: boolean; mastery: boolean; chuaPhan: boolean; chonQuaCay: boolean; nhanhTl: string; taiLieu: boolean }> = {
+  'Toán': { bang: 'dai_bdm_', ham: 'fn_bdm_', coVung: true, aiDuyet: true, khoLop: true, mastery: true, chuaPhan: false, chonQuaCay: false, nhanhTl: 'toan', taiLieu: true },
+  'KHTN': { bang: 'khtn_bdm_', ham: 'fn_khtn_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'khtn', taiLieu: true },
+  'Lý hóa': { bang: 'lyhoa_bdm_', ham: 'fn_lyhoa_bdm_', coVung: false, aiDuyet: true, khoLop: false, mastery: false, chuaPhan: true, chonQuaCay: true, nhanhTl: 'lyhoa', taiLieu: false },
 }
 export const BDM_DS_MON = Object.keys(BDM_MON) as BdmMon[]
 // Bảng câu GỐC của môn (popup Kho › ✎ Sửa — Thùy 08/11). Toán có 2 nhánh (Đại · Hình giải tích), mã câu không trùng giữa 2 bảng.
-const BANG_CAU_GOC: Record<BdmMon, string[]> = { 'Toán': ['dai_cau_hoi', 'hgt_cau_hoi'], 'KHTN': ['khtn_cau_hoi'] }
+const BANG_CAU_GOC: Record<BdmMon, string[]> = { 'Toán': ['dai_cau_hoi', 'hgt_cau_hoi'], 'KHTN': ['khtn_cau_hoi'], 'Lý hóa': ['lyhoa_cau_hoi'] }
 /** Nguyên dòng câu ở bảng gốc để mở màn sửa có sẵn (CauModal / DungSaiModal). `bang` = ép bảng (vd Hình–Học: hinh_hoc_cau_hoi). */
 export async function layCauDeSua(maCau: string, bang?: string): Promise<{ cau: CauHoi; tbl: string }> {
   for (const tbl of bang ? [bang] : BANG_CAU_GOC[monBdm]) {
