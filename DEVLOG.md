@@ -79940,3 +79940,6 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy chốt: hai tầng (TUẦN = số phải tăng · CHIẾN DỊCH 2–3 tuần = đạt) · BTVN tính vào mastery (đổi luật toàn hệ, phải so cũ–mới trước khi áp) · BTVN xếp chồng 3 buổi (buổi N gồm dạng N, N-1, N-2; tổng bài không đổi; chia 5–3–2 hay 4–3–3 chưa cần chốt).
 - Nợ: ôn ở nhà (không tính điểm), ĐO LẠI tại trung tâm sau giờ, ngày kiểm tra báo trước trên bảng thứ Hai; buổi nào thì chốt từng trường hợp theo lịch phòng. Đánh giá ở nhà để sau.
 - `spec-muc-tieu-tuan.md`: thêm §5 hai tầng · §5b BTVN · §5c vòng nợ · §9 bảng rủi ro (3 mục còn MỞ: dạng trọng tâm/tài liệu trước thứ Hai/chấm kịp · tải nhiều môn · ai xếp ngày kiểm tra).
+
+## 12/11 23:15 — Mục tiêu tuần: ca kiểm tra sau giờ chốt trong ngày thứ Hai
+- Thùy: thứ Hai là ngày chốt mọi thứ — lịch học, bổ trợ, kiểm tra sau giờ. ⇒ thứ Hai có 2 mốc: 00:00 máy chụp số → trong ngày người chốt → bảng phát cho HS SAU khi chốt xong (không phát 00:00). Rủi ro "bảng chưa có ngày kiểm tra" đóng; giờ phát cụ thể chưa định.

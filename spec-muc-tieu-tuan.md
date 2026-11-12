@@ -32,7 +32,7 @@
 | Q8 | **BTVN tính vào mastery** (không chỉ ET/MT như mặc định hiện nay) — đổi luật TOÀN HỆ, xem §5b. |
 | Q9 | **BTVN xếp chồng 3 buổi** (§5b): BTVN buổi N gồm dạng của buổi N, N-1, N-2; tổng số bài mỗi dạng không đổi. |
 | Q10 | **Dạng nợ đo lại TẠI TRUNG TÂM, sau giờ**, ngày kiểm tra báo trước trên bảng thứ Hai (§5c). Làm ở nhà = ôn, không tính điểm. |
-| Q11 | Kiểm tra sau giờ rơi vào buổi nào của tuần: **chốt từng trường hợp theo lịch phòng**, không đặt luật cứng. |
+| Q11 | Kiểm tra sau giờ rơi vào buổi nào của tuần: **chốt từng trường hợp theo lịch phòng**, không đặt luật cứng — và **chốt ngay trong ngày thứ Hai**, cùng lượt chốt lịch học + chốt bổ trợ (thứ Hai = ngày chốt mọi thứ). |
 
 Bảng này về bản chất là **dashboard của học sinh**: dữ liệu hiện nằm theo trục hành động (lớp làm ET, lớp nộp BTVN…),
 bảng xoay cùng dữ liệu đó sang trục học sinh. Một hàm, ba người xem (HS · phụ huynh · GV/TA) — không dựng bản sao thứ ba.
@@ -153,8 +153,10 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 5. **2–3 tuần không tăng:** hệ đề xuất trưởng khối chuyển lên bổ trợ yếu (ca riêng, có dạy lại) — dùng nút đổi mức L1 → L2/L3/L4 sẵn có.
 
 - Nợ trên bảng và case bổ trợ là **MỘT danh sách** — không để con nhận hai chỉ dẫn khác nhau cho cùng một dạng.
-- **Ngày kiểm tra: chốt từng trường hợp theo lịch phòng** (Q11). Hệ quả phải giữ: ngày đó cần có **trước giờ chốt thứ Hai**
-  thì bảng mới báo trước được; chưa xếp ⇒ bảng ghi "sẽ báo ngày" và việc xếp hiện thành việc tồn của người xếp lịch.
+- **Ngày kiểm tra: chốt từng trường hợp theo lịch phòng, trong ngày thứ Hai** (Q11) — cùng lượt chốt lịch học và chốt bổ trợ.
+  ⇒ Thứ Hai có HAI mốc: **00:00 máy chụp số** (kết quả tuần trước, danh sách nợ) → **trong ngày người chốt** lịch dạy + bổ trợ + ca sau giờ
+  → **bảng phát cho HS sau khi chốt xong**, đã có đủ ngày kiểm tra. Bảng KHÔNG phát lúc 00:00.
+  Lớp học đúng thứ Hai: buổi hôm đó không thể là buổi kiểm tra được báo trước ⇒ ca sau giờ của lớp này rơi vào buổi sau.
 - Câu kiểm tra **khác** câu đã ôn (cùng dạng, không trùng) ⇒ dạng thiếu câu trong kho thì không có đề (đã thấy ở vài dạng K5–K7, DEVLOG 12/11).
 - Trên bảng gọi là lượt trả nợ / cơ hội, không phải án phạt; em đạt được ghi nhận rõ.
 - Làm đánh giá ở nhà (nhẹ hơn cho trung tâm): **để sau, chưa nghĩ sâu.**
@@ -214,4 +216,4 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 | 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Vẫn cần đo phân bố thật trước khi phát cho phụ huynh |
 | 5 | Nợ tự biến mất sau 30 ngày không đo | **Đã gỡ:** nợ đọc từ sổ chốt tuần (§4) |
 | 6 | Tải: em 3 môn ~20 dòng/tuần (cần màn gộp có ưu tiên) · sức chứa ca sau giờ · em vắng (mục tiêu giữ, đường đi = buổi bù) · em mới vào lớp (không gánh nợ trước ngày vào) | **MỞ** |
-| 7 | Ngày kiểm tra chốt từng trường hợp ⇒ có tuần bảng thứ Hai chưa có ngày | **MỞ** — cần người chịu việc xếp + hạn (§5c) |
+| 7 | Ngày kiểm tra chốt từng trường hợp ⇒ có tuần bảng thứ Hai chưa có ngày | **Đã gỡ:** ca sau giờ chốt trong ngày thứ Hai cùng lịch học + bổ trợ; bảng phát SAU lượt chốt đó (§5c). Còn lại: giờ phát cụ thể chưa định |
