@@ -79923,3 +79923,8 @@ Thùy nêu 4 việc, làm được 3:
 - Code: 26 file thay "Lý hóa" bằng 2 môn (registry môn, kho, bản đồ mới, tài liệu/ET/đề thi, nhân sự/TKB/học phí, app HS màu = màu phân môn Lý/Hóa, Đấu trường, trợ lý, hướng dẫn phiên). Mở thử Kho: 6 tab môn đúng, Hóa học trống, 0 lỗi.
 - 4 script `_gen_mig_ly_hoa_*.mjs` + 5 mig Lý hóa giữ nguyên (lịch sử migration bất biến) — đã bị mig 202611121749 thay thế, ĐỪNG chạy lại script cũ.
 - **Bài học:** tên môn/đối tượng mới mà ghép 2 danh từ ("Lý hóa", "Sử địa"…) ⇒ hỏi 1 câu "một môn hay hai môn" TRƯỚC khi dựng.
+
+## 12/11 17:53 — Sau giờ cấp 1–2: chụp câu không hiện form TN (mig 202611121753 ĐÃ ÁP)
+- Thùy: "file lớp 8 chọn câu mới vẫn bị 4 đáp án abcd". Gốc: _kho_snapshot_cau tự hiện form TN đã duyệt ⇒ câu TLN thành trắc nghiệm. Sửa: cờ giao dịch bk.snap_khong_form bật quanh vòng chụp ở fn_btnhe_luu_bai / fn_btnhe_in_test khi _btnhe_uu_tu_luan, tắt sau vòng; _kho_snapshot_cau giữ chữ ký, không cờ = như cũ.
+- Thử rollback 3 câu TLN có form (T108020702012…): K8 abcd→trả lời ngắn; K10 vẫn abcd. 13 bài test K8 16:43 chưa sửa, chờ Thùy.
+- (12/11 tối) File SQL Editor của lần tách đã vào DB (fn_kho_sua_tk + CHECK kho_sua_log có vatly/hoahoc, ACL không anon) ⇒ đã `--ghi-so`. DB: 0 hàm/ràng buộc/bảng còn dấu Lý hóa. **Vật lý + Hóa học: DB đủ.**
