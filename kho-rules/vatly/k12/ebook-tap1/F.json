@@ -1,0 +1,92 @@
+{
+ "tram": "F",
+ "trang_doc": "137-168",
+ "nhom": [
+  {
+   "id": "LNB00048",
+   "mo_ta": "Dùng mô hình động học phân tử để suy ra áp suất khí lí tưởng: từ va chạm đàn hồi của phân tử với thành bình tới công thức $p = \\dfrac{N}{3V}m_0\\overline{v^2}$, tốc độ căn quân phương và áp suất theo động năng trung bình; gồm nhận biết công thức và tính áp suất, mật độ phân tử, tốc độ căn quân phương.",
+   "ly_thuyet": "##TC Áp suất do phân tử khí tác dụng lên thành bình\nXét bình hình lập phương cạnh dài $l$ chứa $N$ phân tử khí lí tưởng. Một phân tử khí chuyển động với tốc độ $v$ theo phương vuông góc với thành bình. Va chạm của phân tử với thành bình hoàn toàn đàn hồi nên sau va chạm phân tử chuyển động theo hướng ngược lại và vẫn có tốc độ $v$.\n- Độ biến thiên động lượng trong một lần va chạm: $\\Delta p = m_0 v - (-m_0 v) = 2m_0 v$.\n- Khoảng thời gian giữa hai lần va chạm liên tiếp với cùng một thành bình (đi tới thành đối diện rồi quay lại): $\\Delta t = \\dfrac{2l}{v}$.\n- Lực do một phân tử tác dụng lên thành bình: $F_0 = \\dfrac{\\Delta p}{\\Delta t} = \\dfrac{m_0 v^2}{l}$.\n- Áp suất do một phân tử tác dụng lên thành bình: $p_0 = \\dfrac{F_0}{S} = \\dfrac{m_0 v^2}{l^3} = \\dfrac{m_0 v^2}{V}$.\n\n##TC Áp suất của khí trong bình\nBình khí có 6 mặt thành, tức 3 cặp mặt thành đối diện nhau, nên với mỗi hai mặt thành đối diện có $\\dfrac{N}{3}$ phân tử khí chuyển động theo phương vuông góc với hai mặt thành này. Do 3 phương chuyển động tương tự nhau nên:\n$p = \\dfrac{m_0}{3V}\\left(v_1^2 + v_2^2 + \\dots + v_N^2\\right)$\nĐặt $\\overline{v^2} = \\dfrac{v_1^2 + v_2^2 + \\dots + v_N^2}{N}$ là trung bình của bình phương tốc độ phân tử, ta có:\n$p = \\dfrac{N}{3V}\\, m_0\\, \\overline{v^2}$\n\n##TC Tốc độ căn quân phương\nTừ công thức trên suy ra: $\\overline{v^2} = \\dfrac{3pV}{m_0 N} = \\dfrac{3pV}{m} = \\dfrac{3p}{\\rho}$, do đó $v_{cqp} = \\sqrt{\\overline{v^2}} = \\sqrt{\\dfrac{3p}{\\rho}}$ (với $m$ là khối lượng khí, $\\rho$ là khối lượng riêng).\nĐại lượng $v_{cqp} = \\sqrt{\\overline{v^2}}$ được gọi là tốc độ căn quân phương của phân tử khí.\n\n##TC Áp suất theo động năng trung bình của phân tử\nĐặt $\\overline{E_d} = \\dfrac{1}{2} m_0 \\overline{v^2}$ là động năng trung bình của phân tử khí, ta có:\n$p = \\dfrac{2N}{3V}\\,\\overline{E_d} = \\dfrac{2}{3}\\,\\mu\\,\\overline{E_d}$ (với $\\mu = \\dfrac{N}{V}$ là mật độ phân tử)",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    137,
+    138
+   ]
+  },
+  {
+   "id": "LNB00049",
+   "mo_ta": "Liên hệ giữa động năng tịnh tiến trung bình của phân tử khí và nhiệt độ: $\\overline{E_d} = \\dfrac{3}{2}kT$, hằng số Boltzmann $k$; gồm nhận biết sự phụ thuộc vào nhiệt độ và tính động năng trung bình, nhiệt độ, tốc độ căn quân phương.",
+   "ly_thuyet": "##TC Liên hệ giữa động năng phân tử và nhiệt độ\nTừ $p = \\dfrac{2N}{3V}\\overline{E_d}$ ta có $pV = \\dfrac{2}{3}N\\overline{E_d}$. Mặt khác, phương trình trạng thái khí lí tưởng là $pV = \\dfrac{N}{N_A}RT$. Vì vậy:\n$\\overline{E_d} = \\dfrac{3RT}{2N_A} = \\dfrac{3}{2}kT$\n\n##TC Hằng số Boltzmann\n$k = \\dfrac{R}{N_A} = \\dfrac{8{,}31}{6{,}02.10^{23}} = 1{,}38.10^{-23}\\ \\text{J/K}$ được gọi là hằng số Boltzmann.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    138
+   ]
+  },
+  {
+   "id": "LNB00045",
+   "mo_ta": "Ba định luật đẳng quá trình của chất khí (Boyle, Charles, đẳng tích): nhận biết phát biểu và biểu thức, tính các thông số trong từng quá trình, đọc và nhận dạng đồ thị $p$–$V$, $V$–$T$, $p$–$T$, và thí nghiệm kiểm chứng.",
+   "ly_thuyet": "##TC Đồ thị quá trình đẳng nhiệt\nTrong quá trình đẳng nhiệt: $p = nRT \\times \\dfrac{1}{V}$.\n- Trên đồ thị $p$–$V$, đường đẳng nhiệt là một đường cong (hypebol); nhiệt độ $T_2 > T_1$ thì đường $T_2$ nằm xa gốc tọa độ hơn đường $T_1$.\n- Trên đồ thị $p$–$\\dfrac{1}{V}$, đường đẳng nhiệt là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $T_2 > T_1$ thì đường $T_2$ dốc hơn đường $T_1$.\n\n##TC Đồ thị quá trình đẳng áp\nTrong quá trình đẳng áp: $V = \\dfrac{nR}{p} \\times T$.\n- Trên đồ thị $V$–$T$ ($T$ tính bằng K), đường đẳng áp là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $p_2 > p_1$ thì đường $p_2$ ít dốc hơn đường $p_1$.\n- Trên đồ thị $V$–$t$ ($t$ tính bằng °C), đường đẳng áp là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$.\n\n##TC Đồ thị quá trình đẳng tích\nTrong quá trình đẳng tích: $p = \\dfrac{nR}{V} \\times T$.\n- Trên đồ thị $p$–$T$ ($T$ tính bằng K), đường đẳng tích là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $V_2 > V_1$ thì đường $V_2$ ít dốc hơn đường $V_1$.\n- Trên đồ thị $p$–$t$ ($t$ tính bằng °C), đường đẳng tích là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    149
+   ]
+  },
+  {
+   "id": "LNB00047",
+   "mo_ta": "Vận dụng phương trình trạng thái cho các bài toán thực tế: lượng khí không đổi qua nhiều quá trình liên tiếp (ống thủy ngân, xilanh–piston, ngoại lực, chốt), nhiều khối khí cùng biến đổi (hai ngăn cách piston) và lượng khí thay đổi (bơm, thoát khí).",
+   "ly_thuyet": "##PP Khí đa quá trình\nVận dụng phương trình trạng thái của khí lí tưởng cho các quá trình xảy ra liên tiếp:\n$\\dfrac{p_1V_1}{T_1} = \\dfrac{p_2V_2}{T_2} = \\dots = \\dfrac{p_nV_n}{T_n}$\n\n##TC Các khối khí đồng thời biến đổi\nPhương trình trạng thái khí: $n = \\dfrac{pV}{RT}$, suy ra $n \\propto \\dfrac{pV}{T}$.\nTỉ lệ số mol khí của các khối khí luôn thỏa mãn: $n_1 : n_2 : n_3 : \\dots = \\dfrac{p_1V_1}{T_1} : \\dfrac{p_2V_2}{T_2} : \\dfrac{p_3V_3}{T_3} : \\dots$",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    142,
+    158
+   ]
+  },
+  {
+   "id": "LNB00036",
+   "mo_ta": "Nội năng của khí lí tưởng là tổng động năng của các phân tử khí: công thức cho khí đơn nguyên tử và đa nguyên tử, và hai cách làm thay đổi nội năng (thực hiện công, truyền nhiệt).",
+   "ly_thuyet": "##TC Nội năng của khí lí tưởng\nDo tương tác giữa các phân tử khí trong khí lí tưởng được bỏ qua nên nội năng của khí lí tưởng đơn giản chỉ là tổng động năng của các phân tử khí.\n- Khí lí tưởng đơn nguyên tử: động năng của phân tử khí chỉ có chuyển động tịnh tiến, nên nội năng là $U = N\\overline{E_d} = \\dfrac{3}{2}nRT = \\dfrac{3}{2}pV$.\n- Khí lí tưởng đa nguyên tử: động năng của phân tử khí gồm cả chuyển động tịnh tiến và chuyển động quay. Tổng quát, nội năng của khí lí tưởng là $U = \\dfrac{i}{2}nRT$, với $i$ là số bậc tự do phụ thuộc vào khí lí tưởng đang xét.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    162
+   ]
+  },
+  {
+   "id": "LNB00037",
+   "mo_ta": "Định luật I nhiệt động lực học $\\Delta U = A + Q$ cho chất khí: quy ước dấu của $A$, $Q$, các quá trình đặc biệt (đoạn nhiệt, đẳng tích, đẳng nhiệt), tính $\\Delta U$, $A$, $Q$ và vận dụng cho quá trình, chu trình của khí trên đồ thị $p$–$V$.",
+   "ly_thuyet": "##ĐL Định luật I của nhiệt động lực học cho chất khí\nĐộ biến thiên nội năng của khí: $\\Delta U = A + Q$\n\n##TC Quy ước về dấu của $A$ và $Q$\n- $A > 0$: khí nhận công.\n- $A < 0$: khí thực hiện công.\n- $Q > 0$: khí nhận nhiệt lượng.\n- $Q < 0$: khí truyền nhiệt lượng.\n\n##TC Các quá trình biến đổi đặc biệt của khí\n- Quá trình đoạn nhiệt ($Q = 0$): $\\Delta U = A$.\n- Quá trình đẳng tích ($A = 0$): $\\Delta U = Q$.\n- Quá trình đẳng nhiệt ($\\Delta U = 0$): $A = -Q$.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    162
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00095",
+   "vi_du": "##VD\nNhư hình vẽ, một ống thủy tinh đặt thẳng đứng, tiết diện đều, đủ dài, có đầu dưới kín và đầu trên hở. Trong ống có một cột thủy ngân dài $h = 15\\ \\text{cm}$ bịt kín một cột không khí ở nhiệt độ $27\\ ^\\circ\\text{C}$ có chiều dài $L = 40\\ \\text{cm}$. Biết áp suất khí quyển là $75\\ \\text{cmHg}$.\na) Áp suất ban đầu của khí trong ống là bao nhiêu?\nb) Nhiệt độ cột khí được giữ không đổi và xoay ống thủy tinh $180^\\circ$ tới phương thẳng đứng với đầu hở ở dưới thì chiều dài của cột khí trong ống là bao nhiêu?\nc) Tiếp tục xoay ống thủy tinh $180^\\circ$ tới phương thẳng đứng với đầu hở ở trên, nếu muốn chiều dài cột khí trong ống không đổi (như ở ý b) thì nhiệt độ của khí trong ống là bao nhiêu?\n\nBài giải:\na) Áp suất ban đầu của khí trong ống là: $p_1 = p_0 + h = 75 + 15 = 90\\ \\text{cmHg}$.\n\nb) Áp suất của khí lúc sau là: $p_2 = p_0 - h = 75 - 15 = 60\\ \\text{cmHg}$.\nVì ống thủy tinh có tiết diện đều nên $V \\propto L$, với $L$ là chiều dài cột khí. Ta có: $p_1 L = p_2 L'$.\nSuy ra: $L' = \\dfrac{p_1}{p_2}L = \\dfrac{90}{60} \\times 40 = 60\\ \\text{cm}$.\n\nc) Ta có: $\\dfrac{p_2}{T_2} = \\dfrac{p_3}{T_3}$, với $p_3 = p_1$ và $T_2 = T_1$ nên $T_3 = \\dfrac{p_1}{p_2}T_1$.\nThay số: $T_3 = \\dfrac{90}{60} \\times (27 + 273) = 450\\ \\text{K}$.\n\n##VD\nNhư hình H1, một xilanh nằm ngang trên mặt phẳng nằm ngang, piston có khối lượng $1\\ \\text{kg}$ đặt ở miệng xilanh bị kín một lượng khí ở nhiệt độ $27\\ ^\\circ\\text{C}$. Khi quay xilanh được từ từ theo chiều kim đồng hồ đến vị trí thẳng đứng như hình H2, vị trí của piston trong xilanh không thay đổi trong quá trình xilanh quay, nhiệt độ của khí lúc này là $177\\ ^\\circ\\text{C}$. Biết áp suất khí quyển là $10^5\\ \\text{Pa}$ và $g = 10\\ \\text{m/s}^2$. Bỏ qua ma sát giữa piston và xilanh.\na) Lúc này, áp suất khí bằng bao nhiêu?\nb) Sau đó, giữ nhiệt độ không đổi và thêm một gia trọng $\\Delta m$ phía trên piston thì piston nén thể tích khí giảm đi một nửa khi ổn định. Khối lượng $\\Delta m$ bằng bao nhiêu?\n\nBài giải:\na) Áp suất của khí là: $\\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2} \\to p_2 = \\dfrac{T_2}{T_1}p_0$.\nThay số: $p_2 = \\dfrac{177 + 273}{27 + 273} \\times 10^5 = 1{,}5.10^5\\ \\text{Pa}$.\n\nb) Tiết diện của piston là: $p_2 = p_0 + \\dfrac{mg}{S} \\to S = \\dfrac{mg}{p_2 - p_0}$.\nThay số: $S = \\dfrac{1.10}{1{,}5.10^5 - 10^5} = 2.10^{-4}\\ \\text{m}^2$.\nVì thể tích khí giảm đi một nửa khi cân bằng nên áp suất khí tăng gấp đôi khi cân bằng. Ta có: $p_3 = 2p_2$.\nHay $p_2 + \\dfrac{\\Delta m\\, g}{S} = 2p_2$.\nSuy ra: $\\Delta m = \\dfrac{p_2 S}{g}$.\nThay số: $\\Delta m = \\dfrac{1{,}5.10^5 \\cdot 2.10^{-4}}{10} = 3\\ \\text{kg}$.\n\n##VD\nNhư hình vẽ, một lượng khí được bịt kín trong một xilanh đặt thẳng đứng bởi một piston nhẹ. Piston có tiết diện $100\\ \\text{cm}^2$, độ dày không đáng kể, có thể trượt không ma sát trong xilanh giữa các chốt $a$ và các chốt $b$. Biết $bc = 10ab$ (theo hình, $c$ là đáy xilanh). Ban đầu, piston ở vị trí các chốt $a$, áp suất và nhiệt độ của khí trong xilanh bằng áp suất và nhiệt độ của khí quyển bên ngoài piston, lần lượt là $10^5\\ \\text{Pa}$ và $300\\ \\text{K}$. Tác dụng một ngoại lực $F$ thẳng đứng hướng xuống trên piston, tăng dần ngoại lực sao cho piston từ từ chạm tới các chốt $b$ (nhiệt độ khí coi như không thay đổi trong quá trình này), ngoại lực tiếp tục tăng lên $200\\ \\text{N}$ và giữ không đổi.\na) Tìm phản lực của các chốt $b$ lên piston lúc này.\nb) Sau đó đốt nóng khí trong xilanh để tăng dần nhiệt độ của khí. Khi piston vừa rời khỏi chốt $b$ thì nhiệt độ của khí là bao nhiêu?\n\nBài giải:\na) Xem xilanh có tiết diện đều nên $V \\propto L$, với $L$ là khoảng cách từ piston đến đáy xilanh.\nÁp suất của khí khi ngoại lực $F = 200\\ \\text{N}$ là: $p_1(ac) = p_2(bc)$.\nSuy ra: $p_2 = \\dfrac{ac}{bc}p_0$.\nThay số: $p_2 = \\dfrac{ac}{bc}p_0 = 1{,}1.10^5\\ \\text{Pa}$.\nXét piston khi ngoại lực $F = 200\\ \\text{N}$. Ta có: $p_2 S + N = p_0 S + F$.\nSuy ra: $N = (p_0 - p_2)S + F = (1 - 1{,}1).10^5 \\times 100.10^{-4} + 200 = 100\\ \\text{N}$.\n\nb) Khi piston vừa rời khỏi chốt $b$ thì $N = 0$. Suy ra áp suất khí lúc này là: $p_3 = p_0 + \\dfrac{F}{S} = 10^5 + \\dfrac{200}{100.10^{-4}} = 1{,}2.10^5\\ \\text{Pa}$.\nVì quá trình đốt nóng piston không di chuyển nên đây là quá trình đẳng tích. Suy ra nhiệt độ của khí lúc này là: $\\dfrac{p_2}{T_2} = \\dfrac{p_3}{T_3}$.\nSuy ra: $T_3 = \\dfrac{p_3}{p_2}T_1 = \\dfrac{1{,}2.10^5}{1{,}1.10^5} \\times 300 \\approx 327\\ \\text{K}$.",
+   "so_vd": 3,
+   "trang": [
+    142,
+    143,
+    144
+   ]
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 141,
+   "noi_dung": "Chủ đề 4, bài tập trắc nghiệm câu 19–20 (trộn hai khí lí tưởng đơn nguyên tử có số mol, nhiệt độ khác nhau; tìm nhiệt độ hỗn hợp): chỉ có đề, sách không giải trong khoảng trang này.",
+   "goi_y": "Không có dạng khớp rõ (gần LDB00100 hoặc dạng nhiệt độ hỗn hợp chưa có)."
+  },
+  {
+   "trang": "149-157",
+   "noi_dung": "Chủ đề 6, bài tập đồ thị (trắc nghiệm, đúng–sai, trả lời ngắn): toàn bộ cần hình vẽ, một phần đúng–sai 4 ý về nội năng/công/nhiệt của khí trên đồ thị p–V, V–T, p–T; không có ví dụ mẫu có lời giải.",
+   "goi_y": "LDB00090 (nhận dạng, đọc đồ thị) và LDB00074 (công, nhiệt, nội năng theo đồ thị)."
+  },
+  {
+   "trang": "162-166",
+   "noi_dung": "Chủ đề 8, bài tập (chu trình A→B→C→A, tính nhiệt lượng, công, độ tăng nội năng từ đồ thị; U = αT): chỉ có đề, không có ví dụ mẫu có lời giải; hầu hết cần hình.",
+   "goi_y": "LDB00074 và LDB00073."
+  }
+ ],
+ "ghi_chu": "Đáp án và hướng dẫn giải chi tiết nằm ở phần B sau trang 166, ngoài khoảng trang của trạm này (trang 167–168 là ảnh trang bìa mục B, 168 bị lật ngược/mờ). Trong khoảng trang chỉ có 3 ví dụ mẫu có lời giải (Chủ đề 5, in trang 140–142), nên chỉ LDB00095 có ví dụ. Mọi bài tập Chủ đề 4, 6, 7, 8 không kèm lời giải trong khoảng này. Chủ đề 7 chỉ có lý thuyết 2 dòng. Lý thuyết đồ thị Chủ đề 6 chỉ có công thức và hình 6-1..6-3, phần mô tả bằng lời (hypebol, đường thẳng qua gốc, độ dốc) được đọc từ hình và chú thích hình. Ví dụ 3 (LDB00095): đề gốc không nói c là đáy xilanh (nằm trên hình), đã thêm chú thích ngắn trong ngoặc; ví dụ 1 ý c sách in kết quả \"450 °C\" nhưng phép tính ra 450 K, đã ghi 450 K. Cả 3 ví dụ có hình trong sách (đề đọc hiểu được từ chữ). Chưa có ly_thuyet_sgk."
+}

@@ -1,0 +1,53 @@
+{
+ "tram": "I",
+ "trang_doc": "137-141, 208-209",
+ "nhom": [],
+ "dang": [
+  {
+   "id": "LDB00097",
+   "vi_du": "##VD\nChất khí có áp suất là $p$ và khối lượng riêng là $\\rho$ thì có tốc độ căn quân phương là\nA. $v_{cqp}=\\sqrt{\\dfrac{3p}{\\rho}}$.\nB. $v_{cqp}=\\sqrt{\\dfrac{p}{\\rho}}$.\nC. $v_{cqp}=\\sqrt{\\dfrac{p}{3\\rho}}$.\nD. $v_{cqp}=\\sqrt{\\dfrac{3p}{2\\rho}}$.\n\nBài giải:\nChọn A.\n\n##VD\nKhi chất khí có áp suất tăng 9 lần trong khi thể tích không đổi thì tốc độ căn quân phương của phân tử khí sẽ\nA. tăng 9 lần.\nB. tăng 3 lần.\nC. giảm 3 lần.\nD. giảm 9 lần.\n\nBài giải:\n$v_{cqp}\\propto\\sqrt{p}\\rightarrow v'_{cqp}=\\sqrt{\\dfrac{9p}{p}}\\,v_{cqp}=3v_{cqp}$. Chọn B.\n\n##VD\nKhi chất khí có áp suất giảm 4 lần và thể tích giảm 3 lần thì tốc độ căn quân phương của phân tử khí sẽ\nA. tăng $2\\sqrt{3}$ lần.\nB. tăng 12 lần.\nC. giảm $2\\sqrt{3}$ lần.\nD. giảm 12 lần.\n\nBài giải:\n$v_{cqp}\\propto\\sqrt{\\dfrac{p}{\\rho}}\\rightarrow v_{cqp}\\propto\\sqrt{pV}\\rightarrow v'_{cqp}=\\sqrt{\\dfrac{1}{4.3}}\\,v_{cqp}=\\dfrac{1}{2\\sqrt{3}}v_{cqp}$. Chọn C.",
+   "so_vd": 3,
+   "nguon": "BT tự luyện chủ đề 4 phần ① câu 5 — đề tr.PDF 139, giải tr.PDF 208 (chỉ đáp án) | BT tự luyện chủ đề 4 phần ① câu 6 — đề tr.PDF 139, giải tr.PDF 208 | BT tự luyện chủ đề 4 phần ① câu 7 — đề tr.PDF 139, giải tr.PDF 208",
+   "trang": [
+    139,
+    208
+   ]
+  },
+  {
+   "id": "LDB00098",
+   "vi_du": "##VD\nMột bình kín dung tích 3 lít chứa 2 g khí nitrogen (coi là khí lí tưởng) với tốc độ căn quân phương của phân tử khí là 150 m/s. Áp suất của khí trong bình là\nA. 6 kPa.\nB. 3 kPa.\nC. 5 kPa.\nD. 15 kPa.\n\nBài giải:\n$p=\\dfrac{m\\overline{v^2}}{3V}=\\dfrac{2.10^{-3}.150^2}{3.3.10^{-3}}=5\\ \\text{kPa}$. Chọn C.\n\n##VD\nChất khí có áp suất 200 Pa và khối lượng riêng là $1{,}7\\ \\text{g/m}^3$ thì có tốc độ căn quân phương của phân tử là\nA. 594 m/s.\nB. 343 m/s.\nC. 420 m/s.\nD. 280 m/s.\n\nBài giải:\n$v_{cqp}=\\sqrt{\\dfrac{3p}{\\rho}}=\\sqrt{\\dfrac{3.200}{1{,}7.10^{-3}}}\\approx 594\\ \\text{m/s}$. Chọn A.\n\n##VD\nMột bình kín dung tích 2 lít chứa 10 g khí lí tưởng ở áp suất $10^5$ Pa. Tốc độ căn quân phương của phân tử khí trong bình là bao nhiêu?\n\nBài giải:\n$v_{cqp}=\\sqrt{\\dfrac{3pV}{m}}=\\sqrt{\\dfrac{3.10^5.2.10^{-3}}{10.10^{-3}}}\\approx 245\\ \\text{m/s}$.\nĐáp án: 245 m/s.",
+   "so_vd": 3,
+   "nguon": "BT tự luyện chủ đề 4 phần ① câu 4 — đề tr.PDF 139, giải tr.PDF 208 | BT tự luyện chủ đề 4 phần ① câu 8 — đề tr.PDF 139, giải tr.PDF 208 | BT tự luyện chủ đề 4 phần ③ câu 1 — đề tr.PDF 141, giải tr.PDF 209",
+   "trang": [
+    139,
+    141,
+    208,
+    209
+   ]
+  },
+  {
+   "id": "LDB00099",
+   "vi_du": "##VD\nĐộng năng trung bình của phân tử của khí lí tưởng phụ thuộc vào\nA. nhiệt độ của khí.\nB. thể tích của khí.\nC. áp suất của khí.\nD. mật độ phân tử.\n\nBài giải:\nChọn A.\n\n##VD\nCho $k$ là hằng số Boltzmann. Chất khí ở nhiệt độ nhiệt động $T$, khối lượng của một phân tử khí là $m_0$. Tốc độ căn quân phương của phân tử là\nA. $v_{cqp}=\\sqrt{\\dfrac{2kT}{3m_0}}$.\nB. $v_{cqp}=\\sqrt{\\dfrac{kT}{3m_0}}$.\nC. $v_{cqp}=\\sqrt{\\dfrac{3kT}{m_0}}$.\nD. $v_{cqp}=\\sqrt{\\dfrac{3kT}{2m_0}}$.\n\nBài giải:\nChọn C.",
+   "so_vd": 2,
+   "nguon": "BT tự luyện chủ đề 4 phần ① câu 1 — đề tr.PDF 138, giải tr.PDF 208 (chỉ đáp án) | BT tự luyện chủ đề 4 phần ① câu 9 — đề tr.PDF 139, giải tr.PDF 208 (chỉ đáp án)",
+   "trang": [
+    138,
+    139,
+    208
+   ]
+  },
+  {
+   "id": "LDB00100",
+   "vi_du": "##VD\nĐộng năng trung bình của phân tử khí lí tưởng ở $37\\ {}^\\circ\\text{C}$ là\nA. $6{,}42.10^{-21}\\ \\text{J}$.\nB. $7{,}66.10^{-22}\\ \\text{J}$.\nC. $4{,}23.10^{-21}\\ \\text{J}$.\nD. $8{,}21.10^{-22}\\ \\text{J}$.\n\nBài giải:\n$\\overline{E_d}=\\dfrac{3}{2}kT=\\dfrac{3}{2}\\times 1{,}38.10^{-23}\\times(37+273)=6{,}42.10^{-21}\\ \\text{J}$. Chọn A.\n\n##VD\nKhí hydrogen có khối lượng mol là 2,02 g/mol. Tốc độ căn quân phương của phân tử ở nhiệt độ 300 K là\nA. $0{,}5.10^3\\ \\text{m/s}$.\nB. $1{,}4.10^3\\ \\text{m/s}$.\nC. $1{,}1.10^3\\ \\text{m/s}$.\nD. $1{,}9.10^3\\ \\text{m/s}$.\n\nBài giải:\n$v_{cqp}=\\sqrt{\\dfrac{3kTN_A}{M}}=\\sqrt{\\dfrac{3\\times 1{,}38.10^{-23}\\times 300\\times 6{,}02.10^{23}}{2{,}02.10^{-3}}}\\approx 1{,}9.10^3\\ \\text{m/s}$. Chọn D.\n\n##VD\nMột khối khí có nhiệt độ tăng từ $20\\ {}^\\circ\\text{C}$ tới $160\\ {}^\\circ\\text{C}$ thì tốc độ căn quân phương của phân tử tăng lên bao nhiêu lần?\nA. 1,22.\nB. 1,48.\nC. 8.\nD. 2,83.\n\nBài giải:\n$\\dfrac{v'_{cqp}}{v_{cqp}}=\\sqrt{\\dfrac{T'}{T}}=\\sqrt{\\dfrac{160+273}{20+273}}\\approx 1{,}22$. Chọn A.",
+   "so_vd": 3,
+   "nguon": "BT tự luyện chủ đề 4 phần ① câu 2 — đề tr.PDF 138, giải tr.PDF 208 | BT tự luyện chủ đề 4 phần ① câu 10 — đề tr.PDF 139, giải tr.PDF 208 | BT tự luyện chủ đề 4 phần ① câu 12 — đề tr.PDF 140, giải tr.PDF 208",
+   "trang": [
+    138,
+    140,
+    208
+   ]
+  }
+ ],
+ "khong_khop": [],
+ "ghi_chu": "Chỉ chủ đề 4 Chương 2; không cần chủ đề 1. Câu 1,5,9 phần B chỉ có bảng đáp án (chữ cái)."
+}

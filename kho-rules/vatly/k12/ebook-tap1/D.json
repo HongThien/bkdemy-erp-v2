@@ -1,0 +1,72 @@
+{
+ "tram": "D",
+ "trang_doc": "89-109",
+ "nhom": [
+  {
+   "id": "LNB00037",
+   "mo_ta": "Định luật II nhiệt động lực học (phát biểu Clausius, Kelvin) và máy nhiệt: động cơ nhiệt (công, hiệu suất, hiệu suất cực đại), máy lạnh (hiệu năng, hiệu năng cực đại).",
+   "ly_thuyet": "##ĐL Định luật II nhiệt động lực học (Clausius)\nKhông phải tất cả các quá trình tuân theo định luật bảo toàn năng lượng đều có thể diễn ra một cách tự phát.\nNhiệt truyền từ vật nhiệt độ cao sang vật nhiệt độ thấp một cách tự phát, nhưng quá trình ngược lại dù không vi phạm định luật bảo toàn năng lượng cũng chưa bao giờ xảy ra một cách tự phát.\nPhát biểu của Clausius: \"Nhiệt không thể tự truyền từ vật có nhiệt độ thấp sang vật có nhiệt độ cao mà không gây ra những biến đổi khác\".\n\n##ĐL Định luật II nhiệt động lực học (Kelvin)\nToàn bộ cơ năng có thể tự phát chuyển hóa thành nội năng, nhưng ngược lại nội năng không thể chuyển hóa hết thành cơ năng một cách tự phát.\nPhát biểu của Kelvin: \"Không thể hấp thụ nhiệt từ một nguồn nhiệt duy nhất và biến hoàn toàn thành công mà không tạo ra các biến đổi khác\".\n\n##TC Động cơ nhiệt\nTác nhân nhận $Q_1$ từ nguồn nóng, biến đổi thành công $A$ và tỏa $Q_2$ còn lại cho nguồn lạnh: $A = Q_1 - Q_2$.\nHiệu suất động cơ nhiệt: $H = \\frac{A}{Q_1} = 1 - \\frac{Q_2}{Q_1}$.\nHiệu suất cực đại của động cơ nhiệt: $H_{\\max} = \\frac{T_1 - T_2}{T_1} = 1 - \\frac{T_2}{T_1}$.\n$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh.\n\n##TC Máy lạnh\nTác nhân lấy $Q_2$ từ nguồn lạnh và nhờ nhận công $A$ sẽ truyền sang nguồn nóng $Q_1$: $A = Q_1 - Q_2$.\nHiệu năng của máy lạnh: $\\varepsilon = \\frac{Q_2}{A} = \\frac{Q_2}{Q_1 - Q_2}$.\nHiệu năng cực đại của máy lạnh: $\\varepsilon_{\\max} = \\frac{T_2}{T_1 - T_2}$.\n$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    89,
+    90
+   ]
+  },
+  {
+   "id": "LNB00042",
+   "mo_ta": "",
+   "ly_thuyet": "##TC Hiệu suất của quá trình chuyển hóa năng lượng\nNăng lượng được chuyển từ dạng này sang dạng khác, từ vật này sang vật khác, thì luôn có một phần bị hao phí. Để đánh giá tỉ lệ giữa năng lượng có ích và năng lượng toàn phần, người ta dùng khái niệm hiệu suất.\n$H = \\frac{W_{ci}}{W_{tp}}.100\\%$ hay $H = \\frac{P_{ci}}{P_{tp}}.100\\%$\n$P_{ci}$ là công suất có ích và $P_{tp}$ là công suất toàn phần.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    89
+   ]
+  },
+  {
+   "id": "LNB00044",
+   "mo_ta": "Mô hình động học phân tử chất khí, giả thuyết về khí lí tưởng và ba thông số trạng thái (thể tích, nhiệt độ, áp suất) của một lượng khí.",
+   "ly_thuyet": "##TC Mô hình động học phân tử chất khí\n- Chất khí được cấu tạo từ các phân tử có kích thước rất nhỏ so với khoảng cách giữa chúng. Lực tương tác giữa các phân tử khí rất yếu so với ở thể lỏng và thể rắn.\n- Các phân tử khí chuyển động hỗn loạn, không ngừng. Chuyển động này càng nhanh thì nhiệt độ của khí càng cao.\n- Khi chuyển động hỗn loạn, các phân tử khí va chạm với nhau và với thành bình. Khi va chạm với thành bình các phân tử khí tác dụng lực, gây áp suất lên thành bình.\n\n##ĐN Khí lí tưởng\nĐể tìm hiểu các tính chất của chất khí, người ta dùng một mô hình khí đơn giản hơn khí thực nhưng vẫn phản ánh được các đặc điểm cơ bản của khí này:\n- Các phân tử khí được coi là các chất điểm, không tương tác với nhau khi chưa va chạm.\n- Các phân tử khí tương tác khi va chạm với nhau và va chạm với thành bình. Các va chạm này là va chạm hoàn toàn đàn hồi.\nMô hình trên bỏ qua thể tích của phân tử khí, bỏ qua tương tác của các phân tử khí khi chưa va chạm và coi va chạm là hoàn toàn đàn hồi, làm cho việc mô tả các hiện tượng về chất khí trở nên đơn giản, dễ dàng. Chất khí trong mô hình trên được gọi là khí lí tưởng.\n\n##ĐN Các thông số trạng thái của khí\nĐối với một lượng khí nhất định, trạng thái vĩ mô của khí có thể được mô tả bằng ba đại lượng vật lí: thể tích $V$, nhiệt độ $T$ và áp suất $p$. Các đại lượng này được gọi là các thông số trạng thái của khí.\n- Thể tích: khí chuyển động hỗn loạn về mọi phía, lấp đầy toàn bộ không gian bình chứa. Do đó, thể tích của khí thường bằng thể tích của bình chứa.\n- Nhiệt độ: biểu thị cho động năng trung bình của các phân tử. Động năng trung bình của các phân tử tăng lên (giảm đi) thì nhiệt độ của khí cũng tăng lên (giảm đi).\n- Áp suất: các phân tử khí chuyển động hỗn loạn và cũng thường xuyên va vào thành bình, khiến thành bình chịu áp suất. Áp suất mà các phân tử khí tác dụng lên thành bình chính là áp suất của chất khí.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    100
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00074",
+   "vi_du": "##VD\nTác nhân của một động cơ nhiệt nhận của nguồn nóng nhiệt lượng $Q_1 = 1{,}5.10^6\\ \\text{J}$ và truyền cho nguồn lạnh nhiệt lượng $Q_2 = 1{,}2.10^6\\ \\text{J}$. Xác định công sinh ra và hiệu suất của động cơ này?\n\nBài giải:\nTa có liên hệ: $Q_1 = A + Q_2$\nSuy ra: $A = Q_1 - Q_2 = 1{,}5.10^6 - 1{,}2.10^6 = 0{,}3.10^6\\ \\text{J}$\nHiệu suất của động cơ này là: $H = \\frac{A}{Q_1} = \\frac{0{,}3.10^6}{1{,}5.10^6} = 0{,}2 = 20\\%$\n\n##VD\nMột đầu máy điêzen xe lửa có công suất $3.10^6\\ \\text{W}$ và có hiệu suất 25%. Cho biết năng suất tỏa nhiệt của nhiên liệu là $4{,}2.10^7\\ \\text{J/kg}$. Xác định lượng nhiên liệu tiêu thụ trong mỗi giờ nếu đầu máy chạy hết công suất?\n\nBài giải:\nNhiệt lượng cần cung cấp trong mỗi giờ nếu đầu máy chạy hết công suất là: $Q_1 = \\frac{A}{H} = \\frac{Pt}{H} = \\frac{3.10^6 \\times 3600}{0{,}25} = 4{,}32.10^{10}\\ \\text{J}$\nNăng lượng tiêu thụ trong mỗi giờ là: $Q_1 = mq \\to m = \\frac{Q_1}{q} = \\frac{4{,}32.10^{10}}{4{,}2.10^7} \\approx 1029\\ \\text{kg}$\n\n##VD\nMột máy lạnh có hiệu năng cực đại hoạt động giữa nguồn lạnh ở $-5\\ ^\\circ\\text{C}$ và nguồn nóng ở nhiệt độ $40\\ ^\\circ\\text{C}$. Nếu máy được cung cấp công từ một động cơ điện có công suất 90 W thì mỗi giờ máy lạnh có thể lấy đi từ nguồn lạnh một nhiệt lượng bao nhiêu?\n\nBài giải:\nHiệu năng cực đại của máy lạnh là: $\\varepsilon_{\\max} = \\frac{T_2}{T_1 - T_2} = \\frac{-5 + 273}{40 - (-5)} \\approx 6$\nNhiệt lượng máy lạnh có thể lấy đi từ nguồn lạnh là: $Q_2 = \\varepsilon_{\\max} A = \\varepsilon_{\\max} Pt = 6 \\times 90 \\times 3600 = 1{,}944.10^6\\ \\text{J}$",
+   "so_vd": 3,
+   "trang": [
+    90,
+    91
+   ]
+  },
+  {
+   "id": "LDB00083",
+   "vi_du": "##VD\nSử dụng khí đốt tự nhiên để đun nóng 2 kg nước từ $15\\ ^\\circ\\text{C}$ đến $95\\ ^\\circ\\text{C}$ với hiệu suất 40%. Biết nhiệt dung riêng của nước là $4200\\ \\text{J/(kg.K)}$ và nhiệt trị của khí (năng suất tỏa nhiệt) là $4{,}2.10^7\\ \\text{J/m}^3$. Quá trình đun nước này tiêu tốn lượng khí ga có thể tích là bao nhiêu?\n\nBài giải:\nNhiệt lượng khí đốt tỏa ra khi đun nước là: $Q_1 = \\frac{A}{H} = \\frac{mc\\Delta t}{H} = \\frac{2 \\times 4200 \\times (95 - 15)}{0{,}4} = 1{,}68.10^6\\ \\text{J}$\nLượng khí ga tiêu tốn trong quá trình đun nước là: $Q_1 = Vq \\to V = \\frac{Q_1}{q} = \\frac{1{,}68.10^6}{4{,}2.10^7} = 0{,}04\\ \\text{m}^3$\n\n##VD\nMột ấm điện trên nhãn mác có ghi các thông số: điện áp định mức 220 V; công suất định mức 1000 W; dung tích 1,5 lít. Đổ 1,5 lít nước ở $20\\ ^\\circ\\text{C}$ vào ấm điện, rồi mắc ấm điện vào hiệu điện thế 220 V thì 10 phút đun sôi nước. Biết nước có $\\rho = 1\\ \\text{kg/lít}$ và $c = 4{,}2\\ \\text{J/(g.K)}$.\na) Nhiệt lượng mà nước hấp thụ khi được đun sôi là bao nhiêu?\nb) Điện trở của ấm điện khi hoạt động bình thường là bao nhiêu?\nc) Hiệu suất của ấm điện là bao nhiêu?\n\nBài giải:\na) Nhiệt lượng mà nước hấp thụ khi được đun sôi là: $Q = (\\rho V)c\\Delta t = 1.1{,}5.4200.(100 - 20) = 504000\\ \\text{J}$\n\nb) Điện trở của ấm điện khi hoạt động bình thường là: $P = \\frac{U^2}{R} \\to R = \\frac{U^2}{P} = \\frac{220^2}{1000} = 48{,}4\\ \\Omega$\n\nc) Hiệu suất của ấm điện là: $H = \\frac{Q}{Pt} = \\frac{504000}{1000.10.60} = 0{,}84 = 84\\%$",
+   "so_vd": 2,
+   "trang": [
+    91,
+    92
+   ]
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 101,
+   "noi_dung": "Mục 1.4 Áp suất trong chất lỏng (kiến thức Vật lí 10): p = p0 + ρgh, Δp = ρgΔh. Mục 1.5a Áp suất khí trong xilanh có pittông (nằm ngang p = p0; thẳng đứng pittông ở trên p = p0 + mg/S; xilanh treo p = p0 - mg/S; thêm vật m0: p = p0 + (m+m0)g/S; thêm lực F: p = p0 + (mg+F)/S, hoặc p = p0 + (F-mg)/S). Toàn bộ ở dạng hình minh hoạ + công thức.",
+   "goi_y": "Cách xác định áp suất khí trong xilanh/ống thuỷ tinh (cần hình). Gần nhất: LNB00047 / LDB00095 (xilanh–pittông, cột thuỷ ngân) hoặc nên có nhóm riêng \"Xác định áp suất chất khí\"; ví dụ có lời giải: không có."
+  },
+  {
+   "trang": 102,
+   "noi_dung": "Mục 1.5b-d: ống thuỷ tinh chứa cột chất lỏng bịt kín khí (nằm ngang p = p0; thẳng đứng miệng hướng xuống p = p0 + ρgh, miệng hướng lên p = p0 - ρgh ở khí phía trên..., nghiêng góc α: p = p0 ± ρgh sinα), ống chữ U (p = p0 ± ρgh), ống cắm vào bể chất lỏng (p = p0 ± ρgh). Chỉ có hình + công thức.",
+   "goi_y": "Như trên (cần hình, dấu ± phụ thuộc chiều hình vẽ)."
+  },
+  {
+   "trang": 93,
+   "noi_dung": "Ví dụ 8 (ô tô chạy 6,9 km, mất 5 phút 45 s, tiêu tốn 1,5 kg nhiên liệu, lực kéo 2000 N, nhiệt trị 4,6.10^7 J/kg; 4 ý: tốc độ 20 m/s, Q1 = 6,9.10^7 J, P = 40000 W, H = 20%) và Ví dụ 7 (ấm điện 2 mức công suất, cần hình mạch điện).",
+   "goi_y": "VD8 hợp LDB00074 (hiệu suất động cơ) nhưng vượt 3 VD/dạng; VD7 bị bỏ vì cần sơ đồ mạch, hợp LDB00083."
+  }
+ ],
+ "ghi_chu": "Số trang dùng là số trang PDF. Chương 2 Chủ đề 1 (PDF 99-109) chỉ có kiến thức trọng tâm và bài tập tự luyện, KHÔNG có ví dụ mẫu có lời giải; phần bài tập tự luyện của cả hai chủ đề không có lời giải đọc được (trang đáp án PDF 98 bị mờ/ngược, không đọc được) nên không lấy làm ví dụ. Nhóm LNB00044 chỉ lấy 1.1-1.3; LDB00085 không có ví dụ."
+}

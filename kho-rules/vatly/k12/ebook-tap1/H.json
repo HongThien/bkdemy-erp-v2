@@ -1,0 +1,35 @@
+{
+ "tram": "H",
+ "trang_doc": "110-126,127-136,149-161,199-207,211-217",
+ "nhom": [],
+ "dang": [
+  {
+   "id": "LDB00086",
+   "vi_du": "##VD\nTrong bể nước có nhiệt độ không đổi, một bong bóng khí nổi dần lên từ đáy bể. Trong quá trình nổi lên thể tích và áp suất của bong bóng khí thay đổi như thế nào?\nA. Thể tích tăng và áp suất giảm.\nB. Thể tích và áp suất đều không đổi.\nC. Thể tích và áp suất đều tăng.\nD. Thể tích và áp suất đều giảm.\n\nBài giải:\nNhiệt độ không đổi nên quá trình là đẳng nhiệt, $p \\propto \\dfrac{1}{V}$.\nÁp suất giảm thì thể tích tăng. Chọn A.\n\n##VD\nMột khối khí nhất định được đựng trong một bình kín. Thay đổi nhiệt độ để áp suất của khí giảm. Nhận định nào sau đây đúng về khí trong bình?\nA. Khối lượng riêng của khí tăng.\nB. Động năng trung bình của các phân tử tăng.\nC. Khối lượng riêng của khí giảm.\nD. Động năng trung bình của các phân tử giảm.\n\nBài giải:\nChọn D.\n\n##VD\nỨng dụng thực tiễn của quá trình chất khí biến đổi đẳng tích trong đời sống là\nA. thổi bóng bay.\nB. giác hơi trị liệu.\nC. hút nước bằng ống.\nD. kích thủy lực.\n\nBài giải:\nChọn B.",
+   "so_vd": 3,
+   "trang": [
+    110,
+    121,
+    122,
+    199,
+    202
+   ],
+   "nguon": "BT tự luyện chủ đề 2 dạng 1 ①câu 7 — đề tr.PDF 114, giải tr.PDF 199 | BT tự luyện chủ đề 2 dạng 2 ①câu 6 — đề tr.PDF 122, giải tr.PDF 202 (chỉ có đáp án) | BT tự luyện chủ đề 2 dạng 2 ①câu 4 — đề tr.PDF 121, giải tr.PDF 202 (chỉ có đáp án)"
+  },
+  {
+   "id": "LDB00096",
+   "vi_du": "##VD\nMột bình đang chứa khí ở áp suất 1,0 atm và thể tích 6,0 lít, được bơm thêm một lượng khí có thể tích 9,0 lít và áp suất 1,0 atm. Giả sử rằng quá trình bơm khí có nhiệt độ không đổi. Áp suất khí trong bình chứa không khí sau đó là\nA. 1,0 atm.\nB. 1,5 atm.\nC. 2,0 atm.\nD. 2,5 atm.\n\nBài giải:\nQuá trình đẳng nhiệt: $p_2 = \\dfrac{p_1V_1}{V_2} = \\dfrac{1\\times(9+6)}{6} = 2{,}5\\ \\text{atm}$. Chọn D.\n\n##VD\nMột bình khí oxy có thể tích 20 lít và áp suất là 30 atm được mở van để oxy phân phối vào các lọ chân không có thể tích 5 lít. Áp suất trong các lọ sau khi phân phối là 2 atm. Biết quá trình phân phối nhiệt độ không đổi và không có rò rỉ khí. Số lọ có thể phân phối là\nA. 4.\nB. 50.\nC. 56.\nD. 60.\n\nBài giải:\nCuối cùng thu được $n$ lọ khí thể tích 5 lít và 1 bình khí 20 lít đều ở 2 atm.\n$p_1V_1 = p_2(V_1 + n\\Delta V) \\Leftrightarrow 30\\times 20 = 2\\times(20 + 5n) \\to n = 56$. Chọn C.\n\n##VD\nMột bình chứa một chất khí ở nhiệt độ $27\\ ^\\circ\\text{C}$ và áp suất 40 atm. Nếu một nửa lượng khí thoát ra khỏi bình và nhiệt độ của khí giảm xuống còn $12\\ ^\\circ\\text{C}$ thì áp suất khí là bao nhiêu?\n\nBài giải:\nMột nửa lượng khí thoát ra nên $n_2 = 0{,}5\\,n_1$.\n$p_2 = \\dfrac{n_2T_2}{n_1T_1}p_1 = \\dfrac{0{,}5\\times(12+273)}{1\\times(27+273)}\\times 40 = 19\\ \\text{atm}$.\nĐáp án: 19 atm.",
+   "so_vd": 3,
+   "trang": [
+    114,
+    115,
+    135,
+    199,
+    207
+   ],
+   "nguon": "BT tự luyện chủ đề 2 dạng 1 ①câu 10 — đề tr.PDF 114, giải tr.PDF 199 | BT tự luyện chủ đề 2 dạng 1 ①câu 12 — đề tr.PDF 115, giải tr.PDF 199 | BT tự luyện chủ đề 3 ③câu 4 — đề tr.PDF 135, giải tr.PDF 207"
+  }
+ ],
+ "khong_khop": [],
+ "ghi_chu": "LDB00091: các trang giao không có bài thí nghiệm kiểm chứng. LDB00090: mọi câu chủ đề 6 đều phải nhìn đồ thị, bỏ. Chủ đề 7 (khối khí đồng thời biến đổi, lượng khí mỗi bên không đổi) không thuộc LDB00096 nên không lấy."
+}

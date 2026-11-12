@@ -1,0 +1,108 @@
+{
+ "tram": "E",
+ "trang_doc": "110-136",
+ "nhom": [
+  {
+   "id": "LNB00045",
+   "mo_ta": "Ba quá trình biến đổi trạng thái của một lượng khí nhất định khi giữ không đổi một thông số: đẳng nhiệt (p tỉ lệ nghịch với V), đẳng áp (V tỉ lệ thuận với T), đẳng tích (p tỉ lệ thuận với T); gồm hệ thức giữa hai trạng thái, đồ thị và vận dụng vào bài toán khí trong xilanh, bong bóng, ống thuỷ tinh.",
+   "ly_thuyet": "##ĐN Ba quá trình đẳng quá trình\nKhí biến đổi mà nhiệt độ không đổi là quá trình đẳng nhiệt; khí biến đổi mà áp suất không đổi là quá trình đẳng áp; khí biến đổi mà thể tích không đổi là quá trình đẳng tích.\n\n##ĐL Quá trình đẳng nhiệt (Boyle – Mariotte)\nĐối với một lượng khí nhất định, khi nhiệt độ không đổi thì áp suất $p$ tỉ lệ nghịch với thể tích $V$: $p \\propto \\dfrac{1}{V} \\Leftrightarrow pV = \\text{const}$.\nGọi $p_1, V_1$ và $p_2, V_2$ lần lượt là áp suất và thể tích của khí ở hai trạng thái khác nhau 1 và 2 (cùng nhiệt độ) thì: $p_1V_1 = p_2V_2$.\n- Đồ thị p–V là một đường cong (hypebol); đồ thị p–$\\dfrac{1}{V}$ là đường thẳng kéo dài đi qua gốc toạ độ.\n- Trên đồ thị p–T và V–T, quá trình đẳng nhiệt là đoạn thẳng vuông góc với trục T.\n\n##ĐL Quá trình đẳng áp\nMột lượng khí nhất định với áp suất không đổi thì thể tích $V$ tỉ lệ thuận với nhiệt độ nhiệt động $T$ của khí: $V \\propto T \\Leftrightarrow \\dfrac{V}{T} = \\text{const}$.\nGọi $V_1, T_1$ và $V_2, T_2$ lần lượt là thể tích và nhiệt độ nhiệt động của khí ở hai trạng thái khác nhau 1 và 2 (cùng áp suất) thì: $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$.\n- Đồ thị V–T (nhiệt độ $T$ theo K) là đường thẳng kéo dài đi qua gốc toạ độ; đồ thị V–t (nhiệt độ $t$ theo $^\\circ\\text{C}$) là đường thẳng cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$.\n- Trên đồ thị p–T và p–V, quá trình đẳng áp là đoạn thẳng song song với trục hoành.\n\n##ĐL Quá trình đẳng tích\nMột lượng khí nhất định với thể tích không đổi thì áp suất $p$ tỉ lệ thuận với nhiệt độ nhiệt động $T$ của khí: $p \\propto T \\Leftrightarrow \\dfrac{p}{T} = \\text{const}$.\nGọi $p_1, T_1$ và $p_2, T_2$ lần lượt là áp suất và nhiệt độ nhiệt động của khí ở hai trạng thái khác nhau 1 và 2 (cùng thể tích) thì: $\\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2}$.\n- Đồ thị p–T (nhiệt độ $T$ theo K) là đường thẳng kéo dài đi qua gốc toạ độ; đồ thị p–t (nhiệt độ $t$ theo $^\\circ\\text{C}$) là đường thẳng cắt trục nhiệt độ tại $-273\\ ^\\circ\\text{C}$.\n- Trên đồ thị V–T, quá trình đẳng tích là đoạn thẳng song song với trục hoành; trên đồ thị p–V là đoạn thẳng vuông góc với trục V.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    110,
+    111
+   ]
+  },
+  {
+   "id": "LNB00046",
+   "mo_ta": "Phương trình trạng thái pV/T = hằng số cho một lượng khí xác định khi cả p, V, T cùng thay đổi, và phương trình Clapeyron pV = nRT; gồm hằng số khí lí tưởng R, khối lượng riêng, mật độ phân tử và số phân tử của khí.",
+   "ly_thuyet": "##TC Phương trình trạng thái của một lượng khí xác định\nXét quá trình biến đổi mà cả áp suất, thể tích và nhiệt độ của một lượng khí lí tưởng đều thay đổi.\n- Khi nhiệt độ không đổi thì áp suất tỉ lệ nghịch với thể tích: $p \\propto \\dfrac{1}{V}$.\n- Khi thể tích không đổi thì áp suất tỉ lệ thuận với nhiệt độ nhiệt động: $p \\propto T$.\n- Suy ra $p \\propto \\dfrac{T}{V}$. Do vậy áp suất $p$, thể tích $V$ và nhiệt độ nhiệt động $T$ của một lượng khí luôn thoả mãn: $\\dfrac{pV}{T} = \\text{const} = C$.\nĐộ lớn của hằng số $C$ phụ thuộc vào lượng khí đang xét. Phương trình trên được gọi là phương trình trạng thái của khí lí tưởng; với hai trạng thái 1 và 2 của cùng một lượng khí: $\\dfrac{p_1V_1}{T_1} = \\dfrac{p_2V_2}{T_2}$.\n\n##TC Phương trình Clapeyron\nĐộ lớn của hằng số $C$ phụ thuộc vào lượng khí đang xét (khối lượng và loại khí): $C = \\dfrac{m}{M}R = nR$.\nVậy một lượng khí bất kì luôn có: $\\dfrac{pV}{T} = nR = \\dfrac{m}{M}R = \\dfrac{N}{N_A}R$. Phương trình này được gọi là phương trình Clapeyron.\nVới 1 mol chất khí ở điều kiện tiêu chuẩn: $V = 22{,}4$ lít, $p = 1{,}013.10^5\\ \\text{Pa}$, $T = 273\\ \\text{K}$, ta rút ra: $R = \\dfrac{1{,}013.10^5 \\times 22{,}4.10^{-3}}{273} = 8{,}31\\ \\text{J/(mol.K)}$.\n$R$ được gọi là hằng số khí lí tưởng.\nTừ phương trình Clapeyron rút ra công thức xác định khối lượng riêng của lượng khí theo áp suất $p$ và nhiệt độ $T$: $\\rho = \\dfrac{m}{V} = \\dfrac{pM}{RT}$.\nCông thức xác định mật độ phân tử của khí: $\\mu = \\dfrac{N}{V} = \\dfrac{pN_A}{RT}$.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    127
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00087",
+   "vi_du": "##VD\nMột lượng khí được giữ ở một nhiệt độ xác định, khi áp suất là $10^5\\ \\text{Pa}$ thì có thể tích $10$ lít, khi áp suất là $1{,}25.10^5\\ \\text{Pa}$ thì thể tích là bao nhiêu?\n\nBài giải:\n$p_1V_1 = p_2V_2 \\Rightarrow V_2 = \\dfrac{p_1}{p_2}V_1 = \\dfrac{10^5}{1{,}25.10^5} \\times 10 = 8$ lít.",
+   "so_vd": 1,
+   "trang": [
+    112
+   ]
+  },
+  {
+   "id": "LDB00088",
+   "vi_du": "##VD\nTrong quá trình đẳng áp, nhiệt độ của một lượng khí nhất định tăng từ $27\\ ^\\circ\\text{C}$ lên $127\\ ^\\circ\\text{C}$ thì thể tích của nó tăng gấp bao nhiêu lần thể tích ban đầu?\n\nBài giải:\nTa có: $\\dfrac{V_2}{V_1} = \\dfrac{T_2}{T_1} = \\dfrac{127 + 273}{27 + 273} = \\dfrac{4}{3}$.\n\n##VD\nKhi tăng nhiệt độ của một lượng khí xác định từ $32\\ ^\\circ\\text{C}$ lên $117\\ ^\\circ\\text{C}$ và giữ áp suất không đổi thì thể tích tăng thêm $1{,}7$ lít. Tìm thể tích của lượng khí trước và sau khi tăng nhiệt độ?\n\nBài giải:\nGọi $V$ là thể tích lúc đầu của khí.\nTa có: $\\dfrac{V}{T_1} = \\dfrac{V + \\Delta V}{T_2} \\Leftrightarrow \\dfrac{V}{32 + 273} = \\dfrac{V + 1{,}7}{117 + 273} \\to V = 6{,}1$ lít.\nSuy ra thể tích khí lúc sau là: $V_2 = V + \\Delta V = 6{,}1 + 1{,}7 = 7{,}8$ lít.",
+   "so_vd": 2,
+   "trang": [
+    119,
+    120
+   ]
+  },
+  {
+   "id": "LDB00089",
+   "vi_du": "##VD\nMột lượng khí lí tưởng ban đầu có áp suất $3\\ \\text{atm}$ và nhiệt độ $150\\ \\text{K}$. Nếu thể tích không đổi, áp suất của khí lúc này là $5\\ \\text{atm}$ thì nhiệt độ của khí lúc này là bao nhiêu?\n\nBài giải:\nTa có: $\\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2} \\to T_2 = \\dfrac{p_2}{p_1}T_1 = \\dfrac{5}{3} \\times 150 = 250\\ \\text{K}$.\n\n##VD\nNếu đốt nóng khí lí tưởng trong một bình kín để nhiệt độ của nó tăng thêm $1\\ ^\\circ\\text{C}$ thì áp suất khí trong bình tăng thêm $0{,}4\\%$ so với ban đầu. Nhiệt độ ban đầu của khối khí trong bình là bao nhiêu?\n\nBài giải:\nTa có: $\\dfrac{p}{T} = \\dfrac{p + \\Delta p}{T + \\Delta T} \\Leftrightarrow \\dfrac{p}{T} = \\dfrac{p + \\dfrac{0{,}4}{100}p}{T + 1} \\to T = 250\\ \\text{K} = -23\\ ^\\circ\\text{C}$.",
+   "so_vd": 2,
+   "trang": [
+    119,
+    120
+   ]
+  },
+  {
+   "id": "LDB00092",
+   "vi_du": "##VD\nMột piston nhẹ bịt kín một khối khí lí tưởng trong xilanh, ban đầu khối khí có thể tích $3$ lít, nhiệt độ $300\\ \\text{K}$ và áp suất $10^5\\ \\text{Pa}$. Đẩy piston một đoạn để nén khí thì nhiệt độ và áp suất của khí thu được lần lượt là $320\\ \\text{K}$ và $1{,}6.10^5\\ \\text{Pa}$. Thể tích khí lúc này là bao nhiêu?\n\nBài giải:\nTa có: $\\dfrac{p_1V_1}{T_1} = \\dfrac{p_2V_2}{T_2}$.\nSuy ra: $V_2 = \\dfrac{p_1}{p_2} \\times \\dfrac{T_2}{T_1} \\times V_1 = \\dfrac{10^5}{1{,}6.10^5} \\times \\dfrac{320}{300} \\times 3 = 2$ lít.",
+   "so_vd": 1,
+   "trang": [
+    128
+   ]
+  },
+  {
+   "id": "LDB00093",
+   "vi_du": "##VD\nMột bình có thể tích $15$ lít chứa nitrogen ở áp suất $5.10^6\\ \\text{Pa}$ và nhiệt độ $17\\ ^\\circ\\text{C}$, coi nitrogen là khí lí tưởng. Khối lượng mol của nitrogen là $28\\ \\text{g/mol}$. Khối lượng nitrogen trong bình là bao nhiêu?\n\nBài giải:\nTa có: $pV = \\dfrac{m}{M}RT$.\nSuy ra: $m = \\dfrac{pVM}{RT} = \\dfrac{5.10^6 \\times 15.10^{-3} \\times 28}{8{,}31 \\times (17 + 273)} \\approx 871{,}4\\ \\text{g}$.\n\n##VD\nMột lượng khí lí tưởng ban đầu có khối lượng riêng $1{,}24\\ \\text{kg/m}^3$, áp suất $1{,}2\\ \\text{atm}$, nhiệt độ $27\\ ^\\circ\\text{C}$. Khi lượng khí này có áp suất $2{,}0\\ \\text{atm}$ và nhiệt độ $127\\ ^\\circ\\text{C}$ thì khối lượng riêng của nó là bao nhiêu?\n\nBài giải:\nTa có: $pV = \\dfrac{m}{M}RT \\to \\rho = \\dfrac{m}{V} = \\dfrac{pM}{RT} \\propto \\dfrac{p}{T}$.\nSuy ra: $\\dfrac{\\rho_1}{\\rho_2} = \\dfrac{p_1}{p_2} \\times \\dfrac{T_2}{T_1}$.\nDo đó: $\\rho_2 = \\dfrac{p_2}{p_1} \\times \\dfrac{T_1}{T_2} \\times \\rho_1$.\nThay số: $\\rho_2 = \\dfrac{2}{1{,}2} \\times \\dfrac{27 + 273}{127 + 273} \\times 1{,}24 = 1{,}55\\ \\text{kg/m}^3$.\n\n##VD\nMột căn phòng dung tích $30\\ \\text{m}^3$ có nhiệt độ tăng từ $17\\ ^\\circ\\text{C}$ đến $27\\ ^\\circ\\text{C}$ thì độ biến thiên khối lượng của không khí trong căn phòng là bao nhiêu? Biết áp suất khí quyển là $10^5\\ \\text{Pa}$ và khối lượng mol của không khí là $29\\ \\text{g/mol}$.\n\nBài giải:\nTa có: $pV = \\dfrac{m_1}{M}RT_1$ và $pV = \\dfrac{m_2}{M}RT_2$.\nSuy ra: $\\Delta m = m_2 - m_1 = \\dfrac{pVM}{R}\\left(\\dfrac{1}{T_2} - \\dfrac{1}{T_1}\\right)$.\nThay số: $\\Delta m = \\dfrac{10^5 \\times 30 \\times 29}{8{,}31}\\left(\\dfrac{1}{27 + 273} - \\dfrac{1}{17 + 273}\\right) \\approx -1203\\ \\text{g}$.",
+   "so_vd": 3,
+   "trang": [
+    129,
+    130
+   ]
+  },
+  {
+   "id": "LDB00095",
+   "vi_du": "##VD\nMột bong bóng khí nổi lên từ đáy của ao nước có độ sâu $5\\ \\text{m}$ thì thể tích của bong bóng khí sẽ tăng lên bao nhiêu lần khi nó nổi lên tới mặt nước? Coi nhiệt độ ở đáy và mặt ao như nhau, áp suất khí quyển $10^5\\ \\text{Pa}$, khối lượng riêng của nước $10^3\\ \\text{kg/m}^3$ và $g = 10\\ \\text{m/s}^2$.\n\nBài giải:\nÁp suất của bong bóng khí ở độ sâu $h$ là: $p_1 = p_0 + \\rho gh = 10^5 + 10^3.10.5 = 1{,}5.10^5\\ \\text{Pa}$.\nTa có: $\\dfrac{V_2}{V_1} = \\dfrac{p_1}{p_2} = \\dfrac{1{,}5.10^5}{10^5} = 1{,}5$.\n\n##VD\nMột piston có khối lượng không đáng kể được giữ trong một xilanh thẳng đứng tiết diện $5\\ \\text{cm}^2$, dưới piston là một lượng khí lí tưởng có thể tích $6.10^{-5}\\ \\text{m}^3$. Người ta tác dụng lực $F$ lên piston để nén khí từ từ, nhiệt độ của khí không đổi. Biết áp suất khí quyển là $10^5\\ \\text{Pa}$. Khi $F = 10\\ \\text{N}$ thì thể tích khí trong xilanh là bao nhiêu?\n\nBài giải:\nTa có: $p_1V_1 = p_2V_2 \\Leftrightarrow p_0V_1 = \\left(p_0 + \\dfrac{F}{S}\\right)V_2$.\nSuy ra: $V_2 = \\dfrac{p_0V_1}{p_0 + \\dfrac{F}{S}} = \\dfrac{10^5 \\times 6.10^{-5}}{10^5 + \\dfrac{10}{5.10^{-4}}} = 5.10^{-5}\\ \\text{m}^3$.\n\n##VD\nMột xilanh đặt thẳng đứng tiết diện $100\\ \\text{cm}^2$, piston nhẹ bịt một lượng khí trong xilanh. Ban đầu, nhiệt độ của khí trong xilanh là $27\\ ^\\circ\\text{C}$ và piston cách đáy xilanh $50\\ \\text{cm}$. Sau đó, đặt lên trên piston một quả cân có khối lượng $50\\ \\text{kg}$ thì piston dịch chuyển xuống đoạn $10\\ \\text{cm}$ khi ổn định. Nhiệt độ của khí trong xilanh lúc này là bao nhiêu?\n\nBài giải:\nTa có: $\\dfrac{p_0L_1}{T_1} = \\dfrac{\\left(p_0 + \\dfrac{mg}{S}\\right)L_2}{T_2}$.\nRút ra: $T_2 = \\dfrac{\\left(p_0 + \\dfrac{mg}{S}\\right)L_2}{p_0L_1}T_1$.\nThay số: $T_2 = \\dfrac{\\left(10^5 + \\dfrac{50.10}{100.10^{-4}}\\right) \\times 40}{10^5 \\times 50} \\times (27 + 273) = 360\\ \\text{K}$.",
+   "so_vd": 3,
+   "trang": [
+    112,
+    113,
+    128
+   ]
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 112,
+   "noi_dung": "Chủ đề 2, Dạng 1 Ví dụ 5: bơm khí từ bình 20 lít (60 atm) vào 20 bình chân không 20 lít, tính áp suất sau (p1V1 = p2V2, V2 = 20 + 20x20 = 420 lít, p2 ≈ 2,86 atm).",
+   "goi_y": "Lượng khí không đổi nhưng \"chia vào nhiều bình\" — ranh giới LDB00087 / LDB00096; chưa dùng làm ví dụ."
+  },
+  {
+   "trang": 112,
+   "noi_dung": "Chủ đề 2, Dạng 1 Ví dụ 3 (ống thuỷ tinh nằm ngang → thẳng đứng) và Ví dụ 4 (chuông lặn, có hình): đều LDB00095, không chọn vì đã đủ 3 ví dụ.",
+   "goi_y": "Có thể thay vào LDB00095 nếu muốn."
+  },
+  {
+   "trang": 119,
+   "noi_dung": "Chủ đề 2, Dạng 2 Ví dụ 5 (xilanh có vật rắn, đẳng áp) và Ví dụ 6 (ống thuỷ tinh, bơm thêm thuỷ ngân giữ V không đổi).",
+   "goi_y": "LDB00095 (thực tế, lượng khí không đổi); không chọn vì đã đủ 3 ví dụ."
+  },
+  {
+   "trang": 128,
+   "noi_dung": "Chủ đề 3 Ví dụ 2 (bong bóng cầu nổi, đường kính gấp đôi, nhiệt độ đổi), Ví dụ 4 (ống chữ U, đổi nhiệt độ), Ví dụ 8 (khinh khí cầu, ρ theo T).",
+   "goi_y": "LDB00095; VD8 không dùng vì lời giải sách ghi kí hiệu T_T, T_N không rõ nghĩa trong công thức m0 (không chắc đọc đúng)."
+  },
+  {
+   "trang": 129,
+   "noi_dung": "Bài tập tự luyện ở Chủ đề 3 có câu về số phân tử (câu 14, 15, 20 trắc nghiệm).",
+   "goi_y": "Thuộc LDB00094 nhưng sách không có VÍ DỤ mẫu cho dạng này nên không ghi vi_du."
+  }
+ ],
+ "ghi_chu": "Sách chỉ có phần Kiến thức trọng tâm cho Chủ đề 2 (tr.108-109) và Chủ đề 3 (tr.125); không có lý thuyết cho nhóm LNB00047 (Bài toán thực tế về chất khí). Đồ thị đẳng quá trình trong ly_thuyet LNB00045 mô tả bằng chữ theo các hình của sách. Ví dụ Chủ đề 3 VD1 sách in \"1,6.10^6\" ở bước thay số nhưng đề và kết quả (2 lít) khớp với 1,6.10^5 nên đã sửa theo đề. Chủ đề 2 Dạng 2 VD3 giữ nguyên số. Các dạng LDB00085/86/90/91/94/96/97-100 không có ví dụ mẫu trong khoảng trang này (hoặc cần hình). Trang trạm: PDF 110-136 = trang in 108-134 (tr.134 hết Chủ đề 3)."
+}

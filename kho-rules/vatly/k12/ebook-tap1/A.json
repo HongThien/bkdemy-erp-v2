@@ -1,0 +1,80 @@
+{
+ "tram": "A",
+ "trang_doc": "10-36",
+ "nhom": [
+  {
+   "id": "LNB00034",
+   "mo_ta": "Nội dung cơ bản của mô hình động học phân tử về cấu tạo chất, lực tương tác giữa các phân tử (lực hút, lực đẩy, đồ thị theo khoảng cách) và so sánh cấu trúc, đặc điểm của chất rắn, chất lỏng, chất khí.",
+   "ly_thuyet": "##ĐN Mô hình động học phân tử về cấu tạo chất\n- Các chất được cấu tạo từ các hạt riêng biệt là phân tử.\n- Các phân tử chuyển động không ngừng. Nhiệt độ của vật càng cao thì tốc độ của các phân tử càng lớn.\n- Giữa các phân tử có lực tương tác (lực liên kết), bao gồm lực hút và lực đẩy.\n\n##CY Thuật ngữ \"phân tử\" ở đây chỉ chung các hạt cấu tạo nên chất: phân tử, nguyên tử, ion.\n\n##TC Tương tác phân tử\n- Giữa các phân tử có khoảng trống: chất khí dễ bị nén (khoảng trống lớn); thể tích hỗn hợp nước và rượu giảm sau khi trộn (chất lỏng); nguyên tử carbon khuếch tán vào bề mặt thép (chất rắn).\n- Rất khó giảm thể tích khối chì bằng cách nén ⇒ giữa các phân tử có lực đẩy; rất khó tăng thể tích khối chì bằng cách kéo ⇒ giữa các phân tử có lực hút.\n- Khi khoảng cách $r$ giữa các phân tử tăng thì độ lớn của lực đẩy $F_d$ và lực hút $F_h$ đều giảm, lực đẩy giảm nhanh hơn.\n- Khi $r = r_0$: $|F_d| = |F_h|$ và hợp lực $F = 0$.\n- Khi $r < r_0$: $|F_d| > |F_h|$, $F$ có tác dụng đẩy.\n- Khi $r > r_0$: $|F_d| < |F_h|$, $F$ có tác dụng hút.\n- $r_0$ vào cỡ $10^{-10}\\ \\text{m}$. Khi $r$ lớn hơn $10^{-9}\\ \\text{m}$, lực tương tác phân tử trở nên rất yếu và có thể bỏ qua.\n\n##TC Cấu trúc chất rắn\n- Các phân tử ở rất gần nhau nên lực tương tác (hút và đẩy) rất mạnh, chỉ dao động nhiệt quanh vị trí cân bằng xác định. Vật rắn có thể tích và hình dạng riêng.\n- Chất rắn kết tinh (tinh thể) có cấu trúc tinh thể: các phân tử liên kết chặt, sắp xếp theo trật tự hình học tuần hoàn tạo thành mạng tinh thể (muối ăn, kim cương, hầu hết kim loại...).\n- Chất rắn vô định hình không có cấu trúc tinh thể (thủy tinh, nhựa đường, các chất dẻo...).\n\n##TC Cấu trúc chất khí\n- Các phân tử ở xa nhau (khoảng cách gấp hàng chục lần kích thước phân tử) nên lực tương tác rất yếu (trừ khi va chạm), chuyển động hỗn loạn, không ngừng về mọi phía, chiếm toàn bộ không gian của bình chứa.\n- Một lượng khí không có thể tích riêng và hình dạng riêng mà có thể tích và hình dạng của bình chứa.\n\n##TC Cấu trúc chất lỏng\n- Chất lỏng là trung gian giữa chất rắn và chất khí: phân tử ở xa nhau hơn chất rắn, gần nhau hơn chất khí.\n- Lực tương tác mạnh hơn chất khí nên giữ các phân tử không bị phân tán, nhưng không đủ lớn như chất rắn: phân tử dao động quanh vị trí cân bằng nhưng các vị trí này có thể dịch chuyển.\n- Chất lỏng có thể tích xác định nhưng không có hình dạng riêng mà có hình dạng của phần bình chứa nó.\n\n##CY Nước là trường hợp đặc biệt: khoảng cách trung bình giữa các phân tử ở thể lỏng nhỏ hơn ở thể rắn (nước đá), vì thế khối lượng riêng của nước đá nhỏ hơn của nước và nước đá nổi trên nước.\n\n##TC Bảng so sánh chất rắn, chất lỏng, chất khí\n- Khoảng cách giữa các phân tử: rắn rất nhỏ; lỏng nhỏ; khí rất lớn.\n- Lực tương tác giữa các phân tử: rắn rất mạnh; lỏng yếu hơn rắn nhưng mạnh hơn khí; khí rất yếu.\n- Sự sắp xếp của các phân tử: rắn có trật tự; lỏng kém trật tự hơn thể rắn; khí không có trật tự.\n- Chuyển động của các phân tử: rắn dao động quanh vị trí cân bằng cố định; lỏng dao động quanh vị trí cân bằng không cố định; khí chuyển động hỗn loạn.\n- Hình dạng: rắn xác định; lỏng và khí phụ thuộc bình chứa.\n- Thể tích: rắn và lỏng xác định; khí phụ thuộc bình chứa.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    10,
+    12,
+    13,
+    33
+   ]
+  },
+  {
+   "id": "LNB00044",
+   "mo_ta": "Giả thuyết của mô hình khí lí tưởng về phân tử khí và các hiện tượng chứng tỏ phân tử chuyển động nhiệt không ngừng: khuếch tán, chuyển động Brown, ảnh hưởng của nhiệt độ.",
+   "ly_thuyet": "##ĐN Chuyển động nhiệt\nCác phân tử cấu tạo nên vật chất chuyển động không ngừng; chuyển động không ngừng của các phân tử được gọi là chuyển động nhiệt. Nhiệt độ càng cao thì động năng trung bình của các phân tử càng lớn. Nhiệt độ là thước đo cho tốc độ chuyển động nhiệt của các phân tử.\n\n##TC Hiện tượng khuếch tán\n- Nhỏ một giọt mực vào cốc nước thì mực lan dần ra: đó là hiện tượng khuếch tán.\n- Nhiệt độ nước càng cao thì mực lan càng nhanh, tức sự khuếch tán xảy ra càng nhanh.\n- Khuếch tán không phải do trọng lực hay đối lưu gây ra mà do chuyển động không ngừng của các phân tử.\n\n##ĐN Chuyển động Brown\nChuyển động hỗn loạn không ngừng của các hạt lơ lửng trong chất lỏng (hoặc chất khí) được gọi là chuyển động Brown. Chẳng hạn chuyển động của hạt phấn hoa trong nước (Robert Brown quan sát năm 1827), chuyển động của hạt khói trong không khí.\n\n##TC Nguyên nhân và đặc điểm của chuyển động Brown\n- Nguyên nhân nằm ở bên trong chất lỏng: các phân tử nước chuyển động hỗn loạn, không ngừng va đập vào hạt phấn hoa từ mọi phía. Tại mỗi thời điểm, hạt phấn hoa bị tác động mạnh theo một hướng nhất định, thời điểm tiếp theo lại theo hướng khác nên hướng chuyển động của hạt thường xuyên thay đổi.\n- Chuyển động Brown vẫn tồn tại dù đã loại bỏ các tác động bên ngoài như rung động, đối lưu; miễn là các hạt lơ lửng đủ nhỏ thì có thể quan sát được.\n- Nhiệt độ của chất lỏng (hay chất khí) càng cao thì chuyển động Brown càng mạnh.\n- Chuyển động Brown phản ánh gián tiếp chuyển động nhiệt của các phân tử chất lỏng (hay chất khí).\n\n##CY Hạt bụi trong tia nắng ở phòng tối chuyển động không phải là chuyển động Brown: hạt bụi có kích thước và khối lượng lớn hơn rất nhiều so với hạt khói nên lực do các phân tử không khí tác dụng từ mọi phía triệt tiêu nhau. Hạt bụi chuyển động do trọng lực và dòng đối lưu trong không khí.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    11,
+    22,
+    23
+   ]
+  },
+  {
+   "id": "LNB00046",
+   "mo_ta": "Các phương trình liên hệ thông số trạng thái của khí lí tưởng (pV/T = hằng số, Clapeyron pV = nRT) và các hệ thức số mol, số phân tử, khối lượng một phân tử, thể tích mỗi phân tử qua hằng số Avogadro.",
+   "ly_thuyet": "##TC Hằng số Avogadro\nMột mol chất bất kì đều chứa cùng số phân tử, số này gọi là hằng số Avogadro, kí hiệu $N_A$.\n$N_A = 6,02.10^{23}\\ \\text{mol}^{-1}$\nĐường kính phân tử nói chung vào khoảng cỡ $10^{-10}\\ \\text{m}$. Hằng số Avogadro là cầu nối giữa các đại lượng vĩ mô và vi mô.\n\n##TC Số mol, số phân tử, khối lượng và thể tích\nMột mẫu vật có khối lượng $m$, thể tích $V$, chứa $N$ phân tử thì số mol $n$ của mẫu vật đó là:\n$n = \\dfrac{N}{N_A} = \\dfrac{m}{M} = \\dfrac{V}{V_m}$\n- $N$ là số phân tử, $n$ là số mol phân tử, $N_A$ là số Avogadro.\n- $m$ là khối lượng, $M$ là khối lượng mol, $m_0$ là khối lượng của một phân tử.\n- $V$ là thể tích, $V_m$ là thể tích mol, $V_0$ là thể tích trung bình một phân tử chiếm chỗ.\n- $\\rho$ là khối lượng riêng.\n\n##TC Khối lượng và thể tích của một phân tử\n- Khối lượng của một phân tử: $m_0 = \\dfrac{M}{N_A}$\n- Thể tích trung bình mà mỗi phân tử chiếm chỗ trong chất: $V_0 = \\dfrac{V_m}{N_A} = \\dfrac{M}{\\rho N_A}$\n- Liên hệ: $N = \\dfrac{m}{m_0} = \\dfrac{V}{V_0}$; $m = \\rho V$; $M = \\rho V_m$; $M = m_0 N_A$\n\n##CY $V_0$ không phải là thể tích của một phân tử (do giữa các phân tử có khoảng trống). Số phân tử trong 1 g nước là khoảng $3,34.10^{22}$ (1 mol nước có khối lượng 18 g chứa $6,02.10^{23}$ phân tử).",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    10,
+    14
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00068",
+   "vi_du": "##VD\nTính chất giống nhau của chất lỏng và chất khí là\nA. thể tích dễ bị nén.\nB. không có hình dạng xác định.\nC. có thể tích riêng.\nD. phân tử dao động xung quanh vị trí xác định.\n\nBài giải:\n- A sai vì chất lỏng khó bị nén.\n- C sai vì chất khí không có thể tích riêng.\n- D sai vì vị trí cân bằng của chất lỏng có thể dịch chuyển và chất khí chuyển động hỗn loạn về mọi phía.\nChọn B.\n\n##VD\nTính chất giống nhau của chất lỏng và chất rắn là\nA. có hình dạng xác định.\nB. phân tử đứng yên tại các vị trí xác định.\nC. thể tích khó bị nén.\nD. phân tử dao động xung quanh vị trí xác định.\n\nBài giải:\n- A sai vì chất lỏng không có hình dạng xác định.\n- B sai vì phân tử luôn chuyển động.\n- D sai vì vị trí cân bằng của chất lỏng có thể dịch chuyển.\nChọn C.",
+   "so_vd": 2,
+   "trang": [
+    33
+   ]
+  },
+  {
+   "id": "LDB00085",
+   "vi_du": "##VD\nPhát biểu nào sau đây là đúng khi nói về thí nghiệm của Brown?\nA. Chuyển động Brown là chuyển động của phân tử chất lỏng.\nB. Chuyển động Brown phản ánh gián tiếp chuyển động của phân tử chất lỏng.\nC. Chuyển động Brown được gọi là chuyển động nhiệt.\nD. Nhiệt độ của chất lỏng càng cao thì chuyển động Brown càng yếu.\n\nBài giải:\n- Chuyển động Brown là chuyển động của các hạt lơ lửng trong chất lỏng, còn chuyển động của phân tử chất lỏng được gọi là chuyển động nhiệt, nên A, C sai.\n- Chuyển động không ngừng của phân tử chất lỏng tác động lên các hạt lơ lửng trong chất lỏng (chẳng hạn như hạt phấn hoa) gây ra chuyển động của hạt lơ lửng trong chất lỏng, và chuyển động này được gọi là chuyển động Brown, nên B đúng.\n- Nhiệt độ chất lỏng càng cao thì chuyển động của các phân tử chất lỏng càng mạnh khiến cho chuyển động Brown cũng càng mạnh, nên D sai.\nChọn B.\n\n##VD\nTrong phòng tối, khi quan sát tia nắng mặt trời chiếu qua cửa sổ vào phòng, ta có thể thấy các hạt bụi trong ánh sáng chuyển động không ngừng. Chuyển động này có phải là chuyển động Brown không? Tại sao?\n\nBài giải:\nTa biết chuyển động của hạt khói trong không khí là chuyển động Brown. Tuy nhiên, chuyển động của hạt bụi ở đây không phải là chuyển động Brown. Các hạt bụi trong không khí mà ta nhìn thấy có kích thước và khối lượng lớn hơn rất nhiều so với các hạt khói, nên lực mà các phân tử không khí tác dụng lên các hạt bụi từ mọi phía sẽ triệt tiêu nhau và không có tác dụng làm các hạt bụi chuyển động hỗn loạn như vậy. Chúng ta thấy các hạt bụi chuyển động từ trên xuống dưới là do lực hút của Trái Đất, từ dưới lên là do dòng đối lưu trong không khí, theo các hướng khác nhau là do chúng va chạm vào nhau đổi hướng chuyển động.",
+   "so_vd": 2,
+   "trang": [
+    23,
+    24
+   ]
+  },
+  {
+   "id": "LDB00094",
+   "vi_du": "##VD\nBiết kẽm có khối lượng mol là 65 g/mol và khối lượng riêng của kẽm là 7 g/cm$^3$. Lấy $N_A = 6,02.10^{23}\\ \\text{mol}^{-1}$. Xác định:\na) Khối lượng của một nguyên tử kẽm.\nb) Thể tích không gian trung bình bị chiếm bởi mỗi nguyên tử kẽm.\nc) Số nguyên tử kẽm có trong 1 kg kẽm.\n\nBài giải:\na) Khối lượng của một nguyên tử kẽm là\n$m_0 = \\dfrac{M}{N_A} = \\dfrac{65}{6,02.10^{23}} \\approx 1,08.10^{-22}\\ \\text{g}$\n\nb) Vì $V_m = \\dfrac{M}{\\rho}$ nên thể tích không gian trung bình bị chiếm bởi một nguyên tử kẽm là\n$V_0 = \\dfrac{V_m}{N_A} = \\dfrac{M}{\\rho N_A} = \\dfrac{65}{7 \\times 6,02.10^{23}} \\approx 1,54.10^{-23}\\ \\text{cm}^3$\n\nc) Số nguyên tử kẽm có trong $m = 1\\ \\text{kg}$ kẽm là\n$N = nN_A = \\dfrac{m}{M} \\times N_A = \\dfrac{1000}{65} \\times 6,02.10^{23} \\approx 9,26.10^{24}$\n\n##VD\nMột phòng học diện tích sàn là 25 m$^2$ và chiều cao 3 m có chứa không khí ở điều kiện tiêu chuẩn. Biết không khí trong phòng có khối lượng mol là 29 g/mol và thể tích mol là 22,4 lít/mol. Lấy $N_A = 6,02.10^{23}\\ \\text{mol}^{-1}$. Xác định:\na) Khối lượng trung bình của một phân tử không khí.\nb) Số phân tử khí có trong phòng học.\nc) Khối lượng không khí trong phòng học.\n\nBài giải:\na) Khối lượng trung bình của một phân tử không khí là\n$m_0 = \\dfrac{M}{N_A} = \\dfrac{29}{6,02.10^{23}} \\approx 4,82.10^{-23}\\ \\text{g}$\n\nb) Thể tích của phòng học là $V = Sh = 25 \\times 3 = 75\\ \\text{m}^3$\nĐổi $V_m = 22,4.10^{-3}\\ \\text{m}^3\\text{/mol}$. Số phân tử khí có trong phòng học là\n$N = nN_A = \\dfrac{V}{V_m} \\times N_A = \\dfrac{75}{22,4.10^{-3}} \\times 6,02.10^{23} \\approx 2,02.10^{27}$\n\nc) Khối lượng không khí trong phòng học là\n$m = nM = \\dfrac{V}{V_m} \\times M = \\dfrac{75}{22,4.10^{-3}} \\times 29 \\approx 97100\\ \\text{g} = 97,1\\ \\text{kg}$\n\n##VD\nCoi rằng trong chất khí các phân tử khí cách đều nhau và mỗi phân tử khí nằm ở tâm của khối lập phương nhỏ giống nhau, các khối lập phương nhỏ liền kề tiếp xúc nhau (không chồng lấn lên nhau). Thể tích mol của chất khí ở điều kiện tiêu chuẩn là 22,4 lít/mol. Lấy $N_A = 6,02.10^{23}\\ \\text{mol}^{-1}$.\na) Tính độ dài cạnh của các hình lập phương nhỏ này ở điều kiện tiêu chuẩn.\nb) Cho đường kính của phân tử khí là $3.10^{-10}\\ \\text{m}$. Hãy tính tỉ số giữa chiều dài cạnh của hình lập phương nhỏ với đường kính của phân tử khí.\n\nBài giải:\na) Thể tích của khối lập phương mà mỗi phân tử chiếm giữ trong chất khí là\n$V_0 = \\dfrac{V_m}{N_A} = \\dfrac{22,4.10^{-3}}{6,02.10^{23}} \\approx 3,72.10^{-26}\\ \\text{m}^3$\nChiều dài cạnh của hình lập phương nhỏ là\n$a = \\sqrt[3]{V_0} = \\sqrt[3]{3,72.10^{-26}} = 3,34.10^{-9}\\ \\text{m}$\n\nb) Tỉ số giữa chiều dài cạnh của hình lập phương nhỏ với đường kính của phân tử khí là\n$\\delta = \\dfrac{a}{d_0} = \\dfrac{3,34.10^{-9}}{3.10^{-10}} \\approx 10$\nỞ đây, ta có thể coi $a$ là khoảng cách trung bình giữa các phân tử khí. Do vậy, khoảng cách trung bình giữa các phân tử khí gấp khoảng 10 lần đường kính phân tử khí.",
+   "so_vd": 3,
+   "trang": [
+    14,
+    15
+   ]
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 28,
+   "noi_dung": "Dạng 3 Ví dụ 1: \"Hiện tượng nào sau đây chứng tỏ có tồn tại lực đẩy giữa các phân tử? A. Chất lỏng khó bị nén lại...\" (Chọn A, có lời giải).",
+   "goi_y": "Lực hút/lực đẩy phân tử, không có dạng riêng; có thể thuộc nhóm LNB00034 (không có dạng con phù hợp)."
+  },
+  {
+   "trang": 29,
+   "noi_dung": "Dạng 3 Ví dụ 2: lực hút/đẩy khi khoảng cách giữa các phân tử tăng (Chọn B); lời giải dựa vào đồ thị F theo r.",
+   "goi_y": "Cần hình đồ thị; bỏ. Cùng nhóm LNB00034."
+  }
+ ],
+ "ghi_chu": "Trang PDF 10-36 (in 8-34). Phần bài tập tự luyện trong khoảng trang không có đáp án/lời giải nên không dùng làm ví dụ. Sách không có nội dung về chuyển thể, bay hơi/sôi trong khoảng trang này (LNB00035: LDB00069, LDB00070). Dạng 1 (Avogadro) nhóm vào LNB00046/LDB00094; Dạng 2 (Brown) vào LNB00044/LDB00085; Dạng 4 vào LNB00034/LDB00068."
+}

@@ -1,0 +1,982 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lý thuyết Vật lý 12</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1d1d1f;--mute:#6b6b70;--line:#e3e3e0;--acc:#2f5bd3;--eb:#1f7a4d;--sg:#b35c00}
+@media (prefers-color-scheme:dark){:root{--bg:#141416;--card:#1d1d20;--ink:#ececee;--mute:#9a9aa2;--line:#2f2f34;--acc:#8fb0ff;--eb:#6fd4a0;--sg:#ffb466}}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,"Segoe UI",sans-serif}main{max-width:980px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:23px;margin:0 0 4px}.sub{color:var(--mute)}section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+h2{font-size:18px;margin:0 0 10px}h3{font-size:15px;margin:14px 0 6px}.ma{font:12px Consolas,monospace;color:var(--mute);margin-right:6px}
+.o{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:8px 0}.o.sgk{border-color:var(--sg)}.nhan{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.03em}
+.src{font-size:11px;padding:1px 6px;border-radius:999px;margin-left:6px;text-transform:none}.eb{color:var(--eb);border:1px solid var(--eb)}.sg{color:var(--sg);border:1px solid var(--sg)}
+.pre{white-space:pre-wrap;margin:4px 0}.tr{font-size:11px;color:var(--mute)}.trong{color:var(--mute);font-style:italic}
+.the{display:inline-block;font:700 11px Consolas,monospace;padding:0 5px;border-radius:4px;margin-right:6px;background:#e8eefc;color:#2f5bd3}.the-VD{background:#fbe6f0;color:#b23a72}.the-CY{background:#fff0e0;color:#b35c00}
+.co-hoi{font-size:12px;color:var(--sg);font-weight:600}
+.dang{border-top:1px dashed var(--line);margin-top:10px}.dem{font-size:11px;color:var(--eb);margin-left:6px}.trongd{color:var(--sg)}
+.nd.vd{background:var(--bg);border-radius:8px;padding:8px 10px;margin:6px 0}.kq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+</style></head><body><main>
+<h1>Lý thuyết · mô tả · ví dụ — Vật lý 12 (Vật lí nhiệt + Khí lí tưởng)</h1>
+<p class="sub">Nguồn: ebook "Nắm trọn kiến thức Vật lí 12 – Tập 1" (Đỗ Ngọc Hà). Ví dụ chép nguyên sách (đề + lời giải). Đoạn viết theo SGK Kết nối tri thức đánh dấu cam. ĐỀ XUẤT — chưa ghi DB.</p>
+<div class="kq">Nhóm có lý thuyết từ ebook: <b>15/16</b> · nhóm có phần SGK: <b>0</b> · dạng có ví dụ: <b>30/33</b> (74 ví dụ) · lỗi định dạng: <b>0</b></div>
+<section><h2>Chỗ trạm chép đã sửa lỗi in của sách (chị soát)</h2><ul><li>Trạm B: sách in 'khi r &gt; r₀ thì hợp lực đẩy' — chép theo ý đúng r &lt; r₀ (lý thuyết lực phân tử, LNB00036/LNB00034).</li><li>Trạm E: ví dụ phương trình trạng thái — sách in 1,6.10⁶ ở bước thay số, sửa 1,6.10⁵ cho khớp đề; đã kiểm: (1/1,6)·(320/300)·3 = 2 lít.</li><li>Trạm F: ví dụ khí đa quá trình — sách in '450 °C' nhưng phép tính ra 450 K; ghi 450 K.</li></ul></section>
+<section><h2><span class="ma">LNB00034</span>Vật lí nhiệt › Cấu trúc của chất và sự chuyển thể › Mô hình động học phân tử của chất</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Nội dung cơ bản của mô hình động học phân tử về cấu tạo chất, lực tương tác giữa các phân tử (lực hút, lực đẩy, đồ thị theo khoảng cách) và so sánh cấu trúc, đặc điểm của chất rắn, chất lỏng, chất khí.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm A · trang PDF 10, 12, 13, 33</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Mô hình động học phân tử về cấu tạo chất</b>
+- Các chất được cấu tạo từ các hạt riêng biệt là phân tử.
+- Các phân tử chuyển động không ngừng. Nhiệt độ của vật càng cao thì tốc độ của các phân tử càng lớn.
+- Giữa các phân tử có lực tương tác (lực liên kết), bao gồm lực hút và lực đẩy.
+
+<span class="the the-CY">CY</span><b> Thuật ngữ "phân tử" ở đây chỉ chung các hạt cấu tạo nên chất: phân tử, nguyên tử, ion.</b>
+
+<span class="the the-TC">TC</span><b> Tương tác phân tử</b>
+- Giữa các phân tử có khoảng trống: chất khí dễ bị nén (khoảng trống lớn); thể tích hỗn hợp nước và rượu giảm sau khi trộn (chất lỏng); nguyên tử carbon khuếch tán vào bề mặt thép (chất rắn).
+- Rất khó giảm thể tích khối chì bằng cách nén ⇒ giữa các phân tử có lực đẩy; rất khó tăng thể tích khối chì bằng cách kéo ⇒ giữa các phân tử có lực hút.
+- Khi khoảng cách $r$ giữa các phân tử tăng thì độ lớn của lực đẩy $F_d$ và lực hút $F_h$ đều giảm, lực đẩy giảm nhanh hơn.
+- Khi $r = r_0$: $|F_d| = |F_h|$ và hợp lực $F = 0$.
+- Khi $r &lt; r_0$: $|F_d| &gt; |F_h|$, $F$ có tác dụng đẩy.
+- Khi $r &gt; r_0$: $|F_d| &lt; |F_h|$, $F$ có tác dụng hút.
+- $r_0$ vào cỡ $10^{-10}\ \text{m}$. Khi $r$ lớn hơn $10^{-9}\ \text{m}$, lực tương tác phân tử trở nên rất yếu và có thể bỏ qua.
+
+<span class="the the-TC">TC</span><b> Cấu trúc chất rắn</b>
+- Các phân tử ở rất gần nhau nên lực tương tác (hút và đẩy) rất mạnh, chỉ dao động nhiệt quanh vị trí cân bằng xác định. Vật rắn có thể tích và hình dạng riêng.
+- Chất rắn kết tinh (tinh thể) có cấu trúc tinh thể: các phân tử liên kết chặt, sắp xếp theo trật tự hình học tuần hoàn tạo thành mạng tinh thể (muối ăn, kim cương, hầu hết kim loại...).
+- Chất rắn vô định hình không có cấu trúc tinh thể (thủy tinh, nhựa đường, các chất dẻo...).
+
+<span class="the the-TC">TC</span><b> Cấu trúc chất khí</b>
+- Các phân tử ở xa nhau (khoảng cách gấp hàng chục lần kích thước phân tử) nên lực tương tác rất yếu (trừ khi va chạm), chuyển động hỗn loạn, không ngừng về mọi phía, chiếm toàn bộ không gian của bình chứa.
+- Một lượng khí không có thể tích riêng và hình dạng riêng mà có thể tích và hình dạng của bình chứa.
+
+<span class="the the-TC">TC</span><b> Cấu trúc chất lỏng</b>
+- Chất lỏng là trung gian giữa chất rắn và chất khí: phân tử ở xa nhau hơn chất rắn, gần nhau hơn chất khí.
+- Lực tương tác mạnh hơn chất khí nên giữ các phân tử không bị phân tán, nhưng không đủ lớn như chất rắn: phân tử dao động quanh vị trí cân bằng nhưng các vị trí này có thể dịch chuyển.
+- Chất lỏng có thể tích xác định nhưng không có hình dạng riêng mà có hình dạng của phần bình chứa nó.
+
+<span class="the the-CY">CY</span><b> Nước là trường hợp đặc biệt: khoảng cách trung bình giữa các phân tử ở thể lỏng nhỏ hơn ở thể rắn (nước đá), vì thế khối lượng riêng của nước đá nhỏ hơn của nước và nước đá nổi trên nước.</b>
+
+<span class="the the-TC">TC</span><b> Bảng so sánh chất rắn, chất lỏng, chất khí</b>
+- Khoảng cách giữa các phân tử: rắn rất nhỏ; lỏng nhỏ; khí rất lớn.
+- Lực tương tác giữa các phân tử: rắn rất mạnh; lỏng yếu hơn rắn nhưng mạnh hơn khí; khí rất yếu.
+- Sự sắp xếp của các phân tử: rắn có trật tự; lỏng kém trật tự hơn thể rắn; khí không có trật tự.
+- Chuyển động của các phân tử: rắn dao động quanh vị trí cân bằng cố định; lỏng dao động quanh vị trí cân bằng không cố định; khí chuyển động hỗn loạn.
+- Hình dạng: rắn xác định; lỏng và khí phụ thuộc bình chứa.
+- Thể tích: rắn và lỏng xác định; khí phụ thuộc bình chứa.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00068</span>Nhận biết đặc điểm phân tử chất rắn, lỏng, khí <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm A · trang PDF 33</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Tính chất giống nhau của chất lỏng và chất khí là
+A. thể tích dễ bị nén.
+B. không có hình dạng xác định.
+C. có thể tích riêng.
+D. phân tử dao động xung quanh vị trí xác định.
+
+Bài giải:
+- A sai vì chất lỏng khó bị nén.
+- C sai vì chất khí không có thể tích riêng.
+- D sai vì vị trí cân bằng của chất lỏng có thể dịch chuyển và chất khí chuyển động hỗn loạn về mọi phía.
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm A · trang PDF 33</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Tính chất giống nhau của chất lỏng và chất rắn là
+A. có hình dạng xác định.
+B. phân tử đứng yên tại các vị trí xác định.
+C. thể tích khó bị nén.
+D. phân tử dao động xung quanh vị trí xác định.
+
+Bài giải:
+- A sai vì chất lỏng không có hình dạng xác định.
+- B sai vì phân tử luôn chuyển động.
+- D sai vì vị trí cân bằng của chất lỏng có thể dịch chuyển.
+Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00035</span>Vật lí nhiệt › Cấu trúc của chất và sự chuyển thể › Sự chuyển thể</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Các quá trình chuyển thể (nóng chảy, đông đặc, hoá hơi, ngưng tụ, thăng hoa, ngưng kết), sự nóng chảy của chất rắn kết tinh và vô định hình, sự bay hơi và sự sôi.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm C · trang PDF 73, 74</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Sự chuyển thể</b>
+Khi thay đổi nhiệt độ và áp suất, chất có thể biến đổi từ thể này sang thể khác.
+- Sự nóng chảy: quá trình chuyển từ thể rắn sang thể lỏng, vật thu nhiệt. Ngược lại là sự đông đặc (thể lỏng sang thể rắn), vật toả nhiệt.
+- Sự hoá hơi: quá trình chuyển từ thể lỏng sang thể khí, vật thu nhiệt. Ngược lại là sự ngưng tụ (thể khí sang thể lỏng), vật toả nhiệt.
+- Sự thăng hoa: quá trình chuyển trực tiếp từ thể rắn sang thể khí, vật thu nhiệt. Ngược lại là sự ngưng kết (thể khí sang thể rắn trực tiếp), vật toả nhiệt.
+
+<span class="the the-TC">TC</span><b> Sự nóng chảy của chất rắn kết tinh và chất rắn vô định hình</b>
+Sự nóng chảy của chất rắn kết tinh và chất rắn vô định hình là khác nhau.
+- Chất rắn kết tinh: khi nhiệt độ của vật tăng tới $t_c$, vật rắn bắt đầu nóng chảy, nhiệt độ của vật giữ nguyên ở giá trị $t_c$ đến khi toàn bộ vật rắn hoá lỏng; sau đó nhiệt độ chất lỏng tăng. Giá trị $t_c$ được gọi là nhiệt độ nóng chảy của chất.
+- Chất rắn vô định hình: không có nhiệt độ nóng chảy xác định. Vật rắn khi được cung cấp nhiệt lượng thì mềm dần cho đến khi trở thành lỏng và trong quá trình này nhiệt độ của nó tăng liên tục.
+
+<span class="the the-TC">TC</span><b> Giải thích sự nóng chảy của chất rắn kết tinh</b>
+Khi vật nóng lên, phân tử dao động mạnh dần; tới nhiệt độ $t_c$, phân tử bắt đầu thắng được lực tương tác phân tử và thoát khỏi liên kết, quá trình nóng chảy bắt đầu.
+Nhiệt lượng vật nhận được tiếp tục phá vỡ liên kết tinh thể; khi trật tự tinh thể bị phá vỡ hoàn toàn thì quá trình nóng chảy kết thúc.
+
+<span class="the the-TC">TC</span><b> Sự hoá hơi: bay hơi và sôi</b>
+Sự hoá hơi có thể xảy ra dưới hai hình thức là bay hơi và sôi.
+- Sự bay hơi: là sự hoá hơi xảy ra ở mặt thoáng chất lỏng. Một số phân tử có động năng lớn hơn nhiều so với giá trị trung bình, thắng được lực liên kết phân tử trong chất lỏng thì thoát ra ngoài mặt thoáng, trở thành hơi. Trong quá trình bay hơi, các phân tử có động năng lớn thoát ra khiến động năng trung bình của các phân tử còn lại giảm, nhiệt độ của chất lỏng giảm.
+- Sự sôi: là sự hoá hơi xảy ra đồng thời ở trong lòng và mặt thoáng của chất lỏng. Các bọt hơi hình thành trong lòng khối nước, nổi lên mặt nước, vỡ ra và toả hơi nước ra ngoài khí quyển; lúc đó ta nói nước sôi.
+- Trong quá trình sôi, nhiệt độ của khối chất lỏng không đổi, gọi là nhiệt độ sôi. Nhiệt độ sôi phụ thuộc vào áp suất khí trên mặt thoáng và bản chất của chất lỏng.
+
+<span class="the the-TC">TC</span><b> Giải thích sự sôi của chất lỏng</b>
+Khi tới nhiệt độ sôi $t_s$ thì chất lỏng không tăng nhiệt độ, nhiệt lượng nhận được phá vỡ liên kết phân tử, khiến phân tử chuyển động tự do, chất lỏng chuyển dần thành chất khí.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00069</span>Nhận biết quá trình chuyển thể và đặc điểm <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Vào mùa đông ở miền Bắc, có thể thấy mọi người ở ngoài trời liên tục thở ra "khói trắng". Sự chuyển thể nào đã gây ra hiện tượng này?
+A. Nóng chảy.
+B. Ngưng tụ.
+C. Đông đặc.
+D. Hóa hơi.
+
+Bài giải:
+Hơi nước khi thở ra gặp không khí lạnh thì ngưng tụ thành các giọt nước li ti, mà trông như "khói trắng".
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi chất M chuyển thể thì quá trình cần hấp thụ nhiệt và trạng thái của M trước và sau chuyển thể đều có thể tích xác định. Khi đó sự thay đổi trạng thái là
+A. đông đặc.
+B. ngưng tụ.
+C. nóng chảy.
+D. thăng hoa.
+
+Bài giải:
+Thể tích xác định nên liên quan tới trạng thái rắn và lỏng. Mà quá trình này thu nhiệt nên đây là nóng chảy.
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong quá trình chất rắn kết tinh nóng chảy thì
+A. tổng thế năng phân tử giảm và nội năng tăng.
+B. tổng thế năng phân tử giảm và nội năng giảm.
+C. tổng thế năng phân tử tăng và nội năng tăng.
+D. tổng thế năng phân tử tăng và nội năng giảm.
+
+Bài giải:
+Chất rắn kết tinh nóng chảy ở nhiệt độ nóng chảy không đổi, nên động năng của các phân tử không đổi, mà nội năng tăng do hấp thụ nhiệt nên thế năng của các phân tử phải tăng.
+Chọn C.</div></div></div><div class="dang"><h3><span class="ma">LDB00070</span>Sự bay hơi, sự sôi và các yếu tố ảnh hưởng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Quần áo ướt phơi nắng sẽ khô đi; sau khi đun sôi nồi nước, nếu tiếp tục đun, lượng nước trong nồi sẽ giảm dần. Các hiện tượng này liên quan đến sự chuyển thể nào?
+A. Ngưng tụ.
+B. Hóa hơi.
+C. Thăng hoa.
+D. Nóng chảy.
+
+Bài giải:
+Quần áo phơi nắng khô đi do sự bay hơi, nước sôi cạn dần là do sự sôi. Sự bay hơi và sự sôi đều thuộc sự hóa hơi.
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Xoa cồn lên mu bàn tay sẽ có cảm giác mát lạnh là do cồn
+A. thu nhiệt trong quá trình hóa hơi.
+B. tỏa nhiệt trong quá trình ngưng tụ.
+C. thu nhiệt trong quá trình nóng chảy.
+D. tỏa nhiệt trong quá trình đông đặc.
+
+Bài giải:
+Cồn bay hơi thu nhiệt gây cảm giác mát lạnh trên mu bàn tay.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 77, 79, 187</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây về sự bay hơi và sự sôi là sai?
+A. Sự bay hơi có thể xảy ra ở mọi nhiệt độ.
+B. Sự sôi xảy ra ở nhiệt độ sôi.
+C. Sự bay hơi và sự sôi đều chỉ xảy ra ở mặt thoáng chất lỏng.
+D. Nhiệt độ sôi phụ thuộc vào áp suất khí trên mặt thoáng chất lỏng.
+
+Bài giải:
+Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00036</span>Vật lí nhiệt › Nội năng và định luật I nhiệt động lực học › Nội năng</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Nội năng của khí lí tưởng là tổng động năng của các phân tử khí: công thức cho khí đơn nguyên tử và đa nguyên tử, và hai cách làm thay đổi nội năng (thực hiện công, truyền nhiệt).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm B · trang PDF 37, 38</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Động năng phân tử</b>
+Các phân tử chuyển động không ngừng nên có động năng. Điều ta quan tâm là động năng trung bình của các phân tử: $\overline{E_d} = \dfrac{E_{d1}+E_{d2}+\dots+E_{dN}}{N} = \dfrac{1}{2}m_0\overline{v^2}$, với $\overline{v^2} = \dfrac{v_1^2+v_2^2+\dots+v_N^2}{N}$.
+Nhiệt độ càng cao, chuyển động nhiệt của các phân tử càng nhanh. Khi nhiệt độ của vật tăng thì động năng trung bình của các phân tử cũng tăng.
+
+<span class="the the-ĐN">ĐN</span><b> Thế năng phân tử</b>
+Các phân tử tương tác với nhau nên có thế năng, gọi là thế năng tương tác phân tử. Thế năng phân tử phụ thuộc vào khoảng cách giữa các phân tử.
+- Khi $r &gt; r_0$ hợp lực tương tác là lực hút: để tăng $r$ phải thực hiện công thắng lực hút, nên thế năng phân tử $E_t$ tăng khi $r$ tăng.
+- Khi $r &lt; r_0$ hợp lực tương tác là lực đẩy: để giảm $r$ phải thực hiện công thắng lực đẩy, nên $E_t$ tăng khi $r$ giảm.
+- Khi $r = r_0$ thì thế năng phân tử nhỏ nhất, $E_t = E_{t\min}$.
+Khi thể tích của vật thay đổi, khoảng cách giữa các phân tử thay đổi nên thế năng phân tử cũng thay đổi. Do đó thế năng phân tử phụ thuộc vào thể tích của vật.
+
+<span class="the the-ĐN">ĐN</span><b> Nội năng</b>
+Tổng động năng chuyển động nhiệt và thế năng tương tác của tất cả các phân tử cấu tạo nên vật được gọi là nội năng của vật. Nội năng kí hiệu là $U$, đơn vị là jun (J).
+Động năng trung bình của các phân tử phụ thuộc nhiệt độ, thế năng phân tử phụ thuộc thể tích nên nội năng của vật phụ thuộc nhiệt độ và thể tích của vật.
+Việc xác định độ lớn nội năng của một vật là rất khó, nên ta quan tâm đến độ biến thiên nội năng $\Delta U$ của vật.
+
+<span class="the the-TC">TC</span><b> Hai cách làm thay đổi nội năng</b>
+- Truyền nhiệt: nội năng của các vật được truyền cho nhau (bếp đun làm vật tăng nội năng; nước nóng tỏa nhiệt ra môi trường làm giảm nội năng).
+- Thực hiện công: các dạng năng lượng khác (như cơ năng) được chuyển hóa thành nội năng (hai bàn tay cọ xát nóng lên, cưa gỗ làm lưỡi cưa và gỗ nóng lên do ma sát).
+- Khi vật nhận công từ bên ngoài thì nội năng của vật tăng lên; khi vật thực hiện công ra bên ngoài thì nội năng của vật giảm đi.</div></div><div class="nd"><div class="tr">trạm F · trang PDF 162</div><div class="pre"><span class="the the-TC">TC</span><b> Nội năng của khí lí tưởng</b>
+Do tương tác giữa các phân tử khí trong khí lí tưởng được bỏ qua nên nội năng của khí lí tưởng đơn giản chỉ là tổng động năng của các phân tử khí.
+- Khí lí tưởng đơn nguyên tử: động năng của phân tử khí chỉ có chuyển động tịnh tiến, nên nội năng là $U = N\overline{E_d} = \dfrac{3}{2}nRT = \dfrac{3}{2}pV$.
+- Khí lí tưởng đa nguyên tử: động năng của phân tử khí gồm cả chuyển động tịnh tiến và chuyển động quay. Tổng quát, nội năng của khí lí tưởng là $U = \dfrac{i}{2}nRT$, với $i$ là số bậc tự do phụ thuộc vào khí lí tưởng đang xét.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00071</span>Khái niệm nội năng và cách làm thay đổi nội năng <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm B · trang PDF 39, 44</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trả lời ngắn gọn các câu hỏi sau:
+(1) Phát biểu: "Các vật có cùng nhiệt độ thì luôn có cùng nội năng", đúng hay sai?
+(2) Tại sao nội năng của một vật lại liên hệ với nhiệt độ và thể tích của vật đó?
+
+Bài giải:
+(1) Nhiệt độ như nhau có nghĩa là động năng trung bình của các phân tử của vật là như nhau, nhưng nội năng không nhất thiết phải bằng nhau.
+(2) Nội năng của vật là tổng động năng và thế năng của tất cả các phân tử có trong vật đó. Vì động năng trung bình của các phân tử có liên quan đến nhiệt độ của vật và thế năng của các phân tử có liên quan đến thể tích của vật nên nội năng của vật có liên quan đến nhiệt độ và thể tích của vật.</div></div><div class="nd vd"><div class="tr">trạm B · trang PDF 39, 44</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong các quá trình sau đây, nội năng của một vật bị biến đổi chủ yếu thông qua thực hiện công?
+A. Nước trong quần áo ướt bay hơi.
+B. Băng tan trong nước.
+C. Nhiệt độ của nước hồ bơi tăng lên dưới ánh sáng mặt trời.
+D. Cái đinh trở nên nóng lên sau khi bị búa đập vào.
+
+Bài giải:
+- A sai, vì nước trong quần áo nhận nhiệt, nhiệt này làm nước bay hơi.
+- B sai, vì băng nhận nhiệt từ nước, nhiệt này làm băng tan.
+- C sai, vì nước hồ bơi nhận nhiệt từ mặt trời.
+- D đúng, vì khi đập búa vào chiếc đinh, chiếc đinh nhận công và nóng lên.
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm B · trang PDF 39, 44</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong các trường hợp sau, nội năng của vật được thay đổi bằng cách nào và thay đổi như thế nào?
+(1) Ấm điện được bật nguồn làm nóng nước trong ấm.
+(2) Uốn tới uốn lui sợi dây sắt làm nó nóng lên.
+(3) Khối sắt nóng đỏ nguội dần khi đặt trong không khí.
+(4) Lốp xe nóng lên khi ô tô phanh gấp.
+
+Bài giải:
+(1) Nước trong ấm thu nhiệt làm nội năng tăng.
+(2) Dây sắt nhận công làm nội năng tăng.
+(3) Khối sắt tỏa nhiệt ra môi trường làm nội năng giảm.
+(4) Khi ô tô phanh gấp, lực ma sát do mặt đất tác dụng lên lốp, làm tăng nội năng của lốp.</div></div></div></section><section><h2><span class="ma">LNB00037</span>Vật lí nhiệt › Nội năng và định luật I nhiệt động lực học › Định luật I nhiệt động lực học</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Định luật I nhiệt động lực học $\Delta U = A + Q$ cho chất khí: quy ước dấu của $A$, $Q$, các quá trình đặc biệt (đoạn nhiệt, đẳng tích, đẳng nhiệt), tính $\Delta U$, $A$, $Q$ và vận dụng cho quá trình, chu trình của khí trên đồ thị $p$–$V$.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm B · trang PDF 38</div><div class="pre"><span class="the the-ĐL">ĐL</span><b> Định luật I của nhiệt động lực học</b>
+Định luật I nhiệt động lực học là sự vận dụng định luật bảo toàn năng lượng vào các quá trình thay đổi nội năng.
+Nếu hệ vừa nhận công vừa truyền nhiệt thì độ biến thiên nội năng của hệ bằng tổng công và nhiệt lượng mà hệ nhận được:
+$\Delta U = A + Q$
+Với quy ước về dấu thích hợp thì hệ thức trên áp dụng được cho các quá trình thay đổi nội năng khác như hệ truyền nhiệt, hệ thực hiện công, hệ vừa thực hiện công vừa truyền nhiệt.
+
+<span class="the the-TC">TC</span><b> Quy ước dấu của A và Q</b>
+- $A &gt; 0$: hệ nhận công.
+- $A &lt; 0$: hệ thực hiện công.
+- $Q &gt; 0$: hệ nhận nhiệt lượng.
+- $Q &lt; 0$: hệ truyền nhiệt lượng.</div></div><div class="nd"><div class="tr">trạm D · trang PDF 89, 90</div><div class="pre"><span class="the the-ĐL">ĐL</span><b> Định luật II nhiệt động lực học (Clausius)</b> <span class="co-hoi">⚠ ngoài SGK 2018 — sách bổ sung (đề 90 bộ chỉ có 2 câu động cơ nhiệt/tủ lạnh). Giữ hay bỏ?</span>
+Không phải tất cả các quá trình tuân theo định luật bảo toàn năng lượng đều có thể diễn ra một cách tự phát.
+Nhiệt truyền từ vật nhiệt độ cao sang vật nhiệt độ thấp một cách tự phát, nhưng quá trình ngược lại dù không vi phạm định luật bảo toàn năng lượng cũng chưa bao giờ xảy ra một cách tự phát.
+Phát biểu của Clausius: "Nhiệt không thể tự truyền từ vật có nhiệt độ thấp sang vật có nhiệt độ cao mà không gây ra những biến đổi khác".
+
+<span class="the the-ĐL">ĐL</span><b> Định luật II nhiệt động lực học (Kelvin)</b> <span class="co-hoi">⚠ ngoài SGK 2018 — sách bổ sung (đề 90 bộ chỉ có 2 câu động cơ nhiệt/tủ lạnh). Giữ hay bỏ?</span>
+Toàn bộ cơ năng có thể tự phát chuyển hóa thành nội năng, nhưng ngược lại nội năng không thể chuyển hóa hết thành cơ năng một cách tự phát.
+Phát biểu của Kelvin: "Không thể hấp thụ nhiệt từ một nguồn nhiệt duy nhất và biến hoàn toàn thành công mà không tạo ra các biến đổi khác".
+
+<span class="the the-TC">TC</span><b> Động cơ nhiệt</b> <span class="co-hoi">⚠ ngoài SGK 2018 — sách bổ sung (đề 90 bộ chỉ có 2 câu động cơ nhiệt/tủ lạnh). Giữ hay bỏ?</span>
+Tác nhân nhận $Q_1$ từ nguồn nóng, biến đổi thành công $A$ và tỏa $Q_2$ còn lại cho nguồn lạnh: $A = Q_1 - Q_2$.
+Hiệu suất động cơ nhiệt: $H = \frac{A}{Q_1} = 1 - \frac{Q_2}{Q_1}$.
+Hiệu suất cực đại của động cơ nhiệt: $H_{\max} = \frac{T_1 - T_2}{T_1} = 1 - \frac{T_2}{T_1}$.
+$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh.
+
+<span class="the the-TC">TC</span><b> Máy lạnh</b> <span class="co-hoi">⚠ ngoài SGK 2018 — sách bổ sung (đề 90 bộ chỉ có 2 câu động cơ nhiệt/tủ lạnh). Giữ hay bỏ?</span>
+Tác nhân lấy $Q_2$ từ nguồn lạnh và nhờ nhận công $A$ sẽ truyền sang nguồn nóng $Q_1$: $A = Q_1 - Q_2$.
+Hiệu năng của máy lạnh: $\varepsilon = \frac{Q_2}{A} = \frac{Q_2}{Q_1 - Q_2}$.
+Hiệu năng cực đại của máy lạnh: $\varepsilon_{\max} = \frac{T_2}{T_1 - T_2}$.
+$T_1$ và $T_2$ lần lượt là nhiệt độ nhiệt động (thang Kelvin) của nguồn nóng và nguồn lạnh.</div></div><div class="nd"><div class="tr">trạm F · trang PDF 162</div><div class="pre"><span class="the the-TC">TC</span><b> Các quá trình biến đổi đặc biệt của khí</b>
+- Quá trình đoạn nhiệt ($Q = 0$): $\Delta U = A$.
+- Quá trình đẳng tích ($A = 0$): $\Delta U = Q$.
+- Quá trình đẳng nhiệt ($\Delta U = 0$): $A = -Q$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00072</span>Quy ước dấu và phát biểu định luật I <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm B · trang PDF 46</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cấu tạo của một chiếc ghế như hình vẽ. Một khối khí xác định bị giam giữa hai ống M và N, M có thể trượt lên xuống dọc theo thành trong của N. Giả sử khí không trao đổi nhiệt với bên ngoài. M trượt xuống dưới thì
+A. chất khí nhận công và nội năng của chất khí tăng.
+B. chất khí nhận công và nội năng của chất khí giảm.
+C. chất khí thực hiện công và nội năng của chất khí tăng.
+D. chất khí thực hiện công và nội năng của chất khí giảm.
+
+Bài giải:
+- Khi M trượt xuống dưới thì thể tích khối khí giảm, khí nhận công $A &gt; 0$.
+- Vì khí không trao đổi nhiệt với bên ngoài nên $Q = 0$.
+- Suy ra $\Delta U = A &gt; 0$.
+Chọn A.</div></div></div><div class="dang"><h3><span class="ma">LDB00073</span>Tính ΔU, A hoặc Q từ ΔU = A + Q <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm B · trang PDF 46</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong quá trình nén khí, piston thực hiện công $2.10^5\ \text{J}$ lên khối khí và nội năng của khối khí tăng thêm $1{,}5.10^5\ \text{J}$. Khối khí này đã nhận hay truyền nhiệt lượng bao nhiêu?
+
+Bài giải:
+- Piston thực hiện công nên khí nhận công $A = 2.10^5\ \text{J}$.
+- Nội năng của khối khí tăng nên $\Delta U = 1{,}5.10^5\ \text{J}$.
+- Áp dụng định luật I nhiệt động lực học cho khối khí: $Q = \Delta U - A = 1{,}5.10^5 - 2.10^5 = -0{,}5.10^5\ \text{J} &lt; 0$.
+Vậy khối khí tỏa nhiệt lượng $0{,}5.10^5\ \text{J}$.</div></div><div class="nd vd"><div class="tr">trạm C · trang PDF 71</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một viên đạn chì khối lượng $m = 10\ \text{g}$ được bắn theo phương ngang vào khối gỗ có khối lượng $M = 2\ \text{kg}$ với vận tốc $v_0 = 200\ \text{m/s}$ nhưng không xuyên qua. Khối gỗ ban đầu nằm trên mặt phẳng ngang nhẵn và có thể trượt tự do. Biết nhiệt dung riêng của viên đạn là $133{,}8\ \text{J/(kg.K)}$. Nếu 50% cơ năng của hệ mất đi chuyển thành nội năng của viên đạn thì nhiệt độ của viên đạn chỉ sẽ tăng thêm bao nhiêu?
+
+Bài giải:
+Chọn mốc thế năng ở vị trí của khối gỗ.
+Cơ năng ban đầu của hệ (viên đạn + khối gỗ) là $W_1 = \dfrac{1}{2}mv_0^2 = \dfrac{1}{2} \times 0{,}01 \times 200^2 = 200\ \text{J}$.
+Gọi $v'$ là tốc độ lúc sau của hệ, áp dụng định luật bảo toàn động lượng cho hệ, ta có $mv_0 = (m + M)v' \rightarrow v' = \dfrac{m}{m + M}v_0 = \dfrac{0{,}01}{0{,}01 + 2} \times 200 \approx 1\ \text{m/s}$.
+Cơ năng lúc sau của hệ là $W_2 = \dfrac{1}{2}(m + M)(v')^2 = \dfrac{1}{2}(0{,}01 + 2) \times 1^2 = 1{,}005\ \text{J}$.
+Theo giả thiết, ta có $0{,}5(W_1 - W_2) = \Delta U = mc\Delta t \rightarrow \Delta t = \dfrac{0{,}5(W_1 - W_2)}{mc} = \dfrac{0{,}5(200 - 1{,}005)}{0{,}01 \cdot 133{,}8} \approx 74{,}4$ °C.</div></div></div><div class="dang"><h3><span class="ma">LDB00074</span>Định luật I cho quá trình của khí <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm D · trang PDF 90, 91</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Tác nhân của một động cơ nhiệt nhận của nguồn nóng nhiệt lượng $Q_1 = 1{,}5.10^6\ \text{J}$ và truyền cho nguồn lạnh nhiệt lượng $Q_2 = 1{,}2.10^6\ \text{J}$. Xác định công sinh ra và hiệu suất của động cơ này?
+
+Bài giải:
+Ta có liên hệ: $Q_1 = A + Q_2$
+Suy ra: $A = Q_1 - Q_2 = 1{,}5.10^6 - 1{,}2.10^6 = 0{,}3.10^6\ \text{J}$
+Hiệu suất của động cơ này là: $H = \frac{A}{Q_1} = \frac{0{,}3.10^6}{1{,}5.10^6} = 0{,}2 = 20\%$</div></div><div class="nd vd"><div class="tr">trạm D · trang PDF 90, 91</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một đầu máy điêzen xe lửa có công suất $3.10^6\ \text{W}$ và có hiệu suất 25%. Cho biết năng suất tỏa nhiệt của nhiên liệu là $4{,}2.10^7\ \text{J/kg}$. Xác định lượng nhiên liệu tiêu thụ trong mỗi giờ nếu đầu máy chạy hết công suất?
+
+Bài giải:
+Nhiệt lượng cần cung cấp trong mỗi giờ nếu đầu máy chạy hết công suất là: $Q_1 = \frac{A}{H} = \frac{Pt}{H} = \frac{3.10^6 \times 3600}{0{,}25} = 4{,}32.10^{10}\ \text{J}$
+Năng lượng tiêu thụ trong mỗi giờ là: $Q_1 = mq \to m = \frac{Q_1}{q} = \frac{4{,}32.10^{10}}{4{,}2.10^7} \approx 1029\ \text{kg}$</div></div><div class="nd vd"><div class="tr">trạm D · trang PDF 90, 91</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một máy lạnh có hiệu năng cực đại hoạt động giữa nguồn lạnh ở $-5\ ^\circ\text{C}$ và nguồn nóng ở nhiệt độ $40\ ^\circ\text{C}$. Nếu máy được cung cấp công từ một động cơ điện có công suất 90 W thì mỗi giờ máy lạnh có thể lấy đi từ nguồn lạnh một nhiệt lượng bao nhiêu?
+
+Bài giải:
+Hiệu năng cực đại của máy lạnh là: $\varepsilon_{\max} = \frac{T_2}{T_1 - T_2} = \frac{-5 + 273}{40 - (-5)} \approx 6$
+Nhiệt lượng máy lạnh có thể lấy đi từ nguồn lạnh là: $Q_2 = \varepsilon_{\max} A = \varepsilon_{\max} Pt = 6 \times 90 \times 3600 = 1{,}944.10^6\ \text{J}$</div></div></div></section><section><h2><span class="ma">LNB00038</span>Vật lí nhiệt › Nhiệt độ và thang nhiệt độ › Nhiệt độ và cân bằng nhiệt</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Nhiệt độ cho biết trạng thái cân bằng nhiệt và chiều truyền nhiệt; nhiệt độ không tuyệt đối (0 K); nguyên lý và các loại nhiệt kế.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm B · trang PDF 50, 51, 52</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Nhiệt độ và cân bằng nhiệt</b>
+Khi hai vật có nhiệt độ chênh lệch tiếp xúc nhau thì nhiệt năng truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn. Trong quá trình truyền nhiệt này, các tham số trạng thái của hai vật ảnh hưởng lẫn nhau và thay đổi tương ứng. Sau một thời gian, nhiệt độ của hai vật bằng nhau và không có sự truyền nhiệt năng giữa chúng: hai vật đã đạt đến trạng thái cân bằng nhiệt.
+Nhiệt độ cho biết trạng thái cân bằng nhiệt của các vật tiếp xúc nhau và chiều truyền nhiệt năng.
+
+<span class="the the-ĐN">ĐN</span><b> Nhiệt độ không tuyệt đối</b>
+Nhiệt độ không tuyệt đối (0 K) là nhiệt độ mà phân tử có động năng chuyển động nhiệt bằng không và thế năng tương tác giữa chúng là tối thiểu. Nghĩa là vật ở nhiệt độ không tuyệt đối sẽ có nội năng tối thiểu.
+
+<span class="the the-TC">TC</span><b> Nhiệt kế</b>
+Nhiệt kế là thiết bị dùng để đo nhiệt độ, được chế tạo dựa trên một số tính chất vật lí phụ thuộc vào nhiệt độ của các chất, các vật liệu, các linh kiện điện và điện tử.
+- Nhiệt kế thủy ngân: dựa trên sự dãn nở nhiệt của thủy ngân; xác định độ cao cột thủy ngân ở các nhiệt độ khác nhau để biết nhiệt độ cần đo.
+- Nhiệt kế lưỡng kim: ép hai tấm kim loại có độ dãn nở khác nhau vào nhau; khi nhiệt độ thay đổi, độ xoắn của tấm lưỡng kim thay đổi.
+- Nhiệt kế điện trở: dựa vào sự phụ thuộc điện trở của vật theo nhiệt độ; từ giá trị điện trở đo được xác định nhiệt độ cần đo.
+- Nhiệt kế cặp nhiệt điện: dựa trên suất điện động cặp nhiệt điện tạo ra bởi hai dây dẫn khác nhau hàn vào hai đầu của dây kim loại khác tạo thành mạch kín; chênh lệch nhiệt độ giữa hai mối hàn càng lớn thì suất điện động càng lớn.
+- Nhiệt kế hồng ngoại: dựa vào sự phụ thuộc vào nhiệt độ của bước sóng điện từ theo hệ thức Wien: $\lambda_{\max}T = 2900\ \mu\text{m.K}$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00075</span>Nhiệt độ, chiều truyền nhiệt, cân bằng nhiệt <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 53, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hai vật cho tiếp xúc sẽ không có sự truyền nhiệt nếu chúng có cùng
+A. nội năng.
+B. thể tích.
+C. khối lượng.
+D. nhiệt độ.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 53, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi có sự truyền nhiệt giữa hai vật thì chiều truyền nhiệt luôn là
+A. vật có nội năng cao hơn truyền nhiệt sang vật có nội năng thấp hơn.
+B. vật có khối lượng lớn hơn truyền nhiệt sang vật có khối lượng nhỏ hơn.
+C. vật có nhiệt độ cao hơn truyền nhiệt sang vật có nhiệt độ thấp hơn.
+D. vật chứa nhiều phân tử hơn truyền nhiệt sang vật có ít phân tử hơn.
+
+Bài giải:
+Chọn C.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 53, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Hai miếng kim loại có nhiệt độ khác nhau cho tiếp xúc, khi cân bằng nhiệt thì chúng sẽ có cùng đại lượng nào sau đây?
+A. Nội năng.
+B. Tổng động năng của các phân tử.
+C. Động năng trung bình của các phân tử.
+D. Tổng thế năng của các phân tử.
+
+Bài giải:
+Chọn C.</div></div></div><div class="dang"><h3><span class="ma">LDB00076</span>Nhiệt kế và nhiệt độ không tuyệt đối <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 54, 58, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Ở nhiệt độ không tuyệt đối, động năng chuyển động nhiệt của các phân tử
+A. bằng không.
+B. đạt giá trị cực đại.
+C. bằng độ lớn thế năng phân tử.
+D. khác nhau.
+
+Bài giải:
+Ở nhiệt độ không tuyệt đối, động năng của các phân tử bằng 0 và thế năng phân tử cực tiểu.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 54, 58, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Giải Nobel Vật lí năm 1997 đã được trao cho nghiên cứu về làm lạnh bằng laze. Hiện nay, laze đã được sử dụng để làm lạnh nhiệt độ của các nguyên tử cỡ $10^{-11}\ \text{K}$ (gần với 0 K). Phát biểu nào sau đây về "0 K" là đúng?
+A. 0 K là 0 °C, có thể đạt tới mốc nhiệt độ này nhờ sự phát triển khoa học.
+B. 0 K là 0 °C, có thể gần đạt tới mốc nhiệt độ này nhờ sự phát triển khoa học.
+C. 0 K là nhiệt độ không tuyệt đối, có thể đạt tới mốc nhiệt độ này nhờ sự phát triển khoa học.
+D. 0 K là nhiệt độ không tuyệt đối, có thể gần đạt tới mốc nhiệt độ này nhờ sự phát triển khoa học.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 54, 58, 179</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một nhiệt kế có vạch ngoài bị mờ. Khi nhúng bầu thủy tinh của nhiệt kế vào hỗn hợp nước và nước đá ở 0 °C thì cột chất lỏng màu đỏ trong nhiệt kế có chiều dài 3 cm, khi nhúng vào nước sôi ở 100 °C thì chiều dài cột chất lỏng màu đỏ đo được là 28 cm. Bây giờ dùng nhiệt kế này để đo nhiệt độ của một chất lỏng thì chiều dài của cột chất lỏng màu đỏ trong nhiệt kế là 18 cm. Nhiệt độ của chất lỏng đó là
+A. 50 °C.
+B. 30 °C.
+C. 60 °C.
+D. 75 °C.
+
+Bài giải:
+Chiều dài cột chất lỏng tăng $28 - 3 = 25\ \text{cm}$ ứng với $100\ ^\circ\text{C}$ nên $18 - 3 = 15\ \text{cm}$ ứng với $60\ ^\circ\text{C}$.
+Chọn C.</div></div></div></section><section><h2><span class="ma">LNB00039</span>Vật lí nhiệt › Nhiệt độ và thang nhiệt độ › Thang nhiệt độ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Ba thang nhiệt độ Celsius, Kelvin, Fahrenheit: mốc nhiệt độ, đơn vị và các công thức chuyển đổi giữa các thang, kể cả độ biến thiên nhiệt độ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm B · trang PDF 50, 51</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Thang nhiệt độ Celsius</b>
+Hai mốc của thang là nhiệt độ đóng băng và nhiệt độ sôi của nước tinh khiết ở áp suất tiêu chuẩn, lần lượt là $0\ ^\circ\text{C}$ và $100\ ^\circ\text{C}$. Khoảng cách giữa hai mốc được chia thành 100 phần bằng nhau, mỗi phần là 1 độ (°C). Các nhiệt độ cao hơn $0\ ^\circ\text{C}$ có giá trị dương, thấp hơn có giá trị âm.
+
+<span class="the the-ĐN">ĐN</span><b> Thang nhiệt độ Kelvin</b>
+Nhiệt độ trong thang Kelvin đều có giá trị dương, đơn vị là kelvin (K), là một trong bảy đơn vị cơ bản của hệ SI.
+Hai mốc của thang là nhiệt độ không tuyệt đối ($-273{,}15\ ^\circ\text{C}$) và nhiệt độ điểm ba của nước ($0{,}01\ ^\circ\text{C}$). Mỗi độ chia có độ lớn bằng $\dfrac{1}{273{,}16}$ khoảng cách giữa hai mốc này.
+Nhiệt độ không tuyệt đối (0 K) là nhiệt độ mà phân tử có động năng chuyển động nhiệt bằng không và thế năng tương tác giữa chúng là tối thiểu.
+Nhiệt độ điểm ba của nước ($273{,}16\ \text{K}$) là nhiệt độ mà nước tinh khiết tồn tại đồng thời ở thể rắn, lỏng và hơi ở áp suất tiêu chuẩn.
+
+<span class="the the-ĐN">ĐN</span><b> Thang nhiệt độ Fahrenheit</b>
+Đơn vị là độ F (°F). Trong thang này, nhiệt độ của nước đá đang tan là $32\ ^\circ\text{F}$, của nước đang sôi là $212\ ^\circ\text{F}$.
+
+<span class="the the-TC">TC</span><b> Công thức chuyển nhiệt độ giữa các thang</b>
+$\dfrac{t(^\circ\text{C})}{100} = \dfrac{T(\text{K}) - 273{,}15}{100} = \dfrac{t(^\circ\text{F}) - 32}{180}$
+Celsius và Kelvin: $T(\text{K}) = t(^\circ\text{C}) + 273{,}15$ ; $t(^\circ\text{C}) = T(\text{K}) - 273{,}15$
+Thường làm tròn số: $T(\text{K}) = t(^\circ\text{C}) + 273$ ; $t(^\circ\text{C}) = T(\text{K}) - 273$
+Celsius và Fahrenheit: $t(^\circ\text{F}) = \dfrac{9}{5}t(^\circ\text{C}) + 32$ ; $t(^\circ\text{C}) = \dfrac{5}{9}t(^\circ\text{F}) - \dfrac{160}{9}$</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00077</span>Đổi giữa thang Celsius, Kelvin, Fahrenheit <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm B · trang PDF 52, 53</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đổi nhiệt độ từ thang Celsius sang thang Kelvin, Fahrenheit: $37\ ^\circ\text{C}$, $-50\ ^\circ\text{C}$?
+
+Bài giải:
+Đổi $37\ ^\circ\text{C}$:
+- $t(^\circ\text{F}) = 1{,}8\,t(^\circ\text{C}) + 32 = 1{,}8 \times 37 + 32 = 98{,}6\ ^\circ\text{F}$.
+- $T(\text{K}) = t(^\circ\text{C}) + 273 = 37 + 273 = 310\ \text{K}$.
+Đổi $-50\ ^\circ\text{C}$:
+- $t(^\circ\text{F}) = 1{,}8\,t(^\circ\text{C}) + 32 = 1{,}8.(-50) + 32 = -58\ ^\circ\text{F}$.
+- $T(\text{K}) = t(^\circ\text{C}) + 273 = -50 + 273 = 223\ \text{K}$.</div></div><div class="nd vd"><div class="tr">trạm B · trang PDF 52, 53</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi một vật có nhiệt độ tăng từ $27\ ^\circ\text{C}$ đến $90\ ^\circ\text{C}$ thì theo thang Kelvin và thang Fahrenheit, nhiệt độ của vật đã tăng thêm tương ứng bao nhiêu?
+
+Bài giải:
+Ta có: $t(^\circ\text{F}) = 1{,}8\,t(^\circ\text{C}) + 32$ và $T(\text{K}) = t(^\circ\text{C}) + 273$, suy ra
+- $\Delta t(^\circ\text{F}) = 1{,}8\,\Delta t(^\circ\text{C}) = 1{,}8.(90 - 27) = 113{,}4\ ^\circ\text{F}$.
+- $\Delta T(\text{K}) = \Delta t(^\circ\text{C}) = 90 - 27 = 63\ \text{K}$.</div></div><div class="nd vd"><div class="tr">trạm B · trang PDF 52, 53</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nhiệt độ mà ở thang Celsius và thang Fahrenheit cùng biểu thị bởi một con số, thì ở thang Kelvin nhiệt độ đó bằng bao nhiêu?
+
+Bài giải:
+- Từ $t(^\circ\text{F}) = 1{,}8\,t(^\circ\text{C}) + 32$ với $t(^\circ\text{F}) = t(^\circ\text{C}) = t$: $t = 1{,}8t + 32$, suy ra $t = -40\ ^\circ\text{C}$.
+- $T(\text{K}) = t(^\circ\text{C}) + 273 = -40 + 273 = 233\ \text{K}$.</div></div></div></section><section><h2><span class="ma">LNB00040</span>Vật lí nhiệt › Nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng › Ý nghĩa và đơn vị của c, λ, L</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Định nghĩa, đơn vị và ý nghĩa vật lí của nhiệt dung riêng $c$, nhiệt nóng chảy riêng $\lambda$ và nhiệt hoá hơi riêng $L$ (nhận biết đơn vị J/(kg.K), J/kg và hiểu con số của từng hằng số).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm C · trang PDF 59, 75</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Nhiệt dung riêng</b>
+Thí nghiệm chứng tỏ: nhiệt lượng $Q$ cần cung cấp cho vật để nó nóng lên tỉ lệ thuận với khối lượng $m$ và độ tăng nhiệt độ $\Delta T$: $\dfrac{Q}{m\Delta T} = c$.
+Với mỗi chất, hằng số $c$ có độ lớn riêng; hằng số này gọi là nhiệt dung riêng của chất làm vật, đơn vị là $\text{J/(kg.K)}$.
+Nhiệt dung riêng của một chất là nhiệt lượng cần truyền cho 1 kg chất đó để làm cho nhiệt độ của nó tăng thêm 1 °C.
+
+<span class="the the-ĐN">ĐN</span><b> Nhiệt nóng chảy riêng</b>
+Thí nghiệm chứng tỏ: nhiệt lượng $Q$ cần truyền cho vật từ khi bắt đầu nóng chảy tới khi nóng chảy hoàn toàn tỉ lệ thuận với khối lượng của vật: $\dfrac{Q}{m} = \lambda$.
+Với mỗi chất, hằng số $\lambda$ có độ lớn riêng, gọi là nhiệt nóng chảy riêng của chất làm vật, đơn vị là $\text{J/kg}$.
+Nhiệt nóng chảy riêng của một chất là nhiệt lượng cần truyền cho 1 kg chất đó nóng chảy hoàn toàn ở nhiệt độ nóng chảy.
+
+<span class="the the-ĐN">ĐN</span><b> Nhiệt hoá hơi riêng</b>
+Thí nghiệm chứng tỏ: nhiệt lượng $Q$ cần cung cấp cho chất lỏng hoá hơi ở nhiệt độ không đổi tỉ lệ với khối lượng của chất lỏng: $\dfrac{Q}{m} = L$.
+Với mỗi chất lỏng, hằng số $L$ có độ lớn riêng, gọi là nhiệt hoá hơi riêng của chất làm vật, đơn vị là $\text{J/kg}$.
+Nhiệt hoá hơi riêng của một chất lỏng là nhiệt lượng cần để làm cho 1 kg chất lỏng đó hoá hơi hoàn toàn ở nhiệt độ xác định.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00078</span>Nhận biết định nghĩa, đơn vị, ý nghĩa của c, λ, L <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 60, 82, 180, 188</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây về nhiệt dung riêng là đúng?
+A. Nhiệt dung riêng của một vật phụ thuộc vào nhiệt độ của vật.
+B. Nhiệt dung riêng của một vật phụ thuộc vào nhiệt lượng mà vật hấp thụ hay tỏa ra.
+C. Nhiệt dung riêng của một vật phụ thuộc vào khối lượng của vật.
+D. Nhiệt dung riêng của một vật phụ thuộc vào chất cấu tạo nên vật.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 60, 82, 180, 188</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Biết nhiệt dung riêng của nước là 4200 J/(kg.K). Phát biểu nào sau đây là đúng?
+A. Nội năng của 1 kg nước ở 1 °C là 4200 J.
+B. Nhiệt lượng tỏa ra của 1 kg nước khi tăng 1 °C là 4200 J.
+C. Nhiệt lượng hấp thụ của 1 kg nước khi giảm 1 °C là 4200 J.
+D. Nhiệt lượng hấp thụ của 1 kg nước khi tăng 1 °C là 4200 J.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 60, 82, 180, 188</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đơn vị nào sau đây là đơn vị của nhiệt nóng chảy riêng của vật rắn?
+A. J/(kg.K).
+B. J/kg.
+C. J.
+D. J/K.
+
+Bài giải:
+Chọn B.</div></div></div></section><section><h2><span class="ma">LNB00041</span>Vật lí nhiệt › Nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng › Tính nhiệt lượng</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Các công thức tính nhiệt lượng: làm nóng/làm lạnh $Q = mc\Delta t$, nóng chảy $Q = m\lambda$, hoá hơi $Q = mL$; bài toán một vật qua nhiều giai đoạn (nước đá thành nước, thành hơi).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm C · trang PDF 59, 74, 75</div><div class="pre"><span class="the the-TC">TC</span><b> Nhiệt lượng làm thay đổi nhiệt độ của vật</b>
+Hệ thức tính nhiệt lượng trong quá trình truyền nhiệt làm thay đổi nhiệt độ của vật là $Q = mc\Delta T = C\Delta T$.
+Với $C = mc$ được gọi là nhiệt dung của vật.
+
+<span class="the the-TC">TC</span><b> Nhiệt lượng làm vật nóng chảy hoàn toàn</b>
+Hệ thức tính nhiệt lượng trong quá trình truyền nhiệt làm vật nóng chảy hoàn toàn là $Q = m\lambda$.
+
+<span class="the the-TC">TC</span><b> Nhiệt lượng làm chất lỏng hoá hơi hoàn toàn</b>
+Hệ thức tính nhiệt lượng cần cung cấp cho một lượng chất lỏng hoá hơi hoàn toàn ở nhiệt độ không đổi là $Q = mL$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00079</span>Tính nhiệt lượng làm nóng / làm lạnh Q = mcΔt <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm C · trang PDF 58</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một chất xác định có khối lượng mol là 50 g/mol. Khi cung cấp 314 J nhiệt lượng cho 6 mol phân tử chất này thì nhiệt độ của nó tăng từ 25 °C lên 45 °C. Xác định nhiệt dung riêng của chất này?
+
+Bài giải:
+Khối lượng của chất này là $m = nM = 6 \times 50 = 300\ \text{g} = 0{,}3\ \text{kg}$.
+Nhiệt dung riêng của chất là $c = \dfrac{Q}{m\Delta T} = \dfrac{314}{0{,}3 \times (45 - 25)} \approx 52{,}3\ \text{J/(kg.K)}$.</div></div><div class="nd vd"><div class="tr">trạm C · trang PDF 58</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Vật A và B có khối lượng bằng nhau. Vật A giảm 20 °C thì toả ra nhiệt lượng $Q_A$. Vật B thu nhiệt lượng $Q_B$ thì tăng thêm 15 °C. Biết $Q_B = 2Q_A$. Tỉ số giữa nhiệt dung riêng của A so với nhiệt dung riêng của B bằng bao nhiêu?
+
+Bài giải:
+Ta có $c = \dfrac{Q}{m\Delta t} \propto \dfrac{Q}{\Delta T}$
+$\rightarrow \dfrac{c_A}{c_B} = \dfrac{Q_A}{Q_B} \times \dfrac{\Delta T_B}{\Delta T_A} = \dfrac{1}{2} \times \dfrac{15}{20} = \dfrac{3}{8}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00080</span>Tính nhiệt lượng nóng chảy, hoá hơi Q = λm, Q = Lm <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm G · trang PDF 82, 84, 86, 188, 190, 191</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Biết nhiệt nóng chảy riêng của nước đá là $3{,}4.10^5\ \text{J/kg}$. Nhiệt lượng cần cung cấp để làm nóng chảy 5 kg nước đá ở 0 °C là
+A. $1{,}7.10^6\ \text{J}$.
+B. $1{,}7.10^9\ \text{J}$.
+C. $6{,}8.10^4\ \text{J}$.
+D. $6{,}8.10^7\ \text{J}$.
+
+Bài giải:
+$Q = m\lambda = 5 \times 3{,}4.10^5 = 1{,}7.10^6\ \text{J}$.
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 82, 84, 86, 188, 190, 191</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Biết nhiệt nóng chảy riêng của thiếc là $6{,}1.10^4\ \text{J/kg}$. Nhiệt lượng cần cung cấp cho cuộn thiếc hàn khối lượng 50 g nóng chảy hoàn toàn ở nhiệt độ nóng chảy là bao nhiêu?
+
+Bài giải:
+$Q = m\lambda = 50.10^{-3} \times 6{,}1.10^4 = 3050\ \text{J}$.
+Đáp số: 3050 J.</div></div><div class="nd vd"><div class="tr">trạm G · trang PDF 82, 84, 86, 188, 190, 191</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Rượu ethylic có nhiệt hóa hơi riêng là $9.10^5\ \text{J/kg}$ và khối lượng riêng là 0,8 kg/lít. Nhiệt lượng cần thiết để 10 lít rượu ethylic hóa hơi hoàn toàn ở nhiệt độ sôi là
+A. $8{,}9.10^5\ \text{J}$.
+B. $1{,}125.10^5\ \text{J}$.
+C. $7{,}2.10^6\ \text{J}$.
+D. $9.10^5\ \text{J}$.
+
+Bài giải:
+$Q = mL = \rho V L = 0{,}8 \times 10 \times 9.10^5 = 7{,}2.10^6\ \text{J}$.
+Chọn C.</div></div></div><div class="dang"><h3><span class="ma">LDB00081</span>Bài toán nhiều giai đoạn và đồ thị nhiệt độ <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm C · trang PDF 79</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Xác định nhiệt lượng cần cung cấp cho cục nước đá khối lượng 0,2 kg ở $-20$ °C thành nước ở 10 °C. Biết nước đá có nhiệt nóng chảy riêng là $3{,}4 \cdot 10^5\ \text{J/kg}$ và nhiệt dung riêng $2100\ \text{J/(kg.K)}$; nước có nhiệt dung riêng $4200\ \text{J/(kg.K)}$.
+
+Bài giải:
+Nhiệt lượng cần cung cấp để nhiệt độ của nước đá tăng đến nhiệt độ nóng chảy (0 °C) là $Q_1 = mc_1\Delta T = 0{,}2 \times 2100 \times 20 = 8400\ \text{J}$.
+Nhiệt lượng cần cung cấp để nước đá nóng chảy hoàn toàn ở 0 °C là $Q_2 = m\lambda = 0{,}2 \times 3{,}4 \cdot 10^5 = 68000\ \text{J}$.
+Nhiệt lượng cần cung cấp để nâng nhiệt độ của nước từ 0 °C lên 10 °C là $Q_3 = mc_2\Delta T = 0{,}2 \times 4200 \times 10 = 8400\ \text{J}$.
+Nhiệt lượng tổng cộng cần cung cấp là $Q = Q_1 + Q_2 + Q_3 = 8400 + 68000 + 8400 = 84800\ \text{J}$.</div></div></div></section><section><h2><span class="ma">LNB00042</span>Vật lí nhiệt › Nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng › Cân bằng nhiệt và nguồn nhiệt</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Phương trình cân bằng nhiệt khi hai vật trở lên trao đổi nhiệt (trộn chất, thả vật vào nước, cả trường hợp có nóng chảy/ngưng tụ hơi) để tìm nhiệt độ cân bằng, khối lượng hay nhiệt dung riêng.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm C · trang PDF 59</div><div class="pre"><span class="the the-TC">TC</span><b> Nhiệt độ của hệ khi có cân bằng nhiệt</b>
+Giả sử các vật có nhiệt dung $C_1, C_2, \dots, C_n$ có nhiệt độ tương ứng là $T_1, T_2, \dots, T_n$ trao đổi nhiệt với nhau. Khi có cân bằng nhiệt, nhiệt độ cuối cùng của hệ là $T$.
+Phương trình cân bằng nhiệt: $Q_1 + Q_2 + \dots + Q_n = 0$
+Hay: $C_1(T - T_1) + C_2(T - T_2) + \dots + C_n(T - T_n) = 0$
+Suy ra: $T = \dfrac{C_1T_1 + C_2T_2 + \dots + C_nT_n}{C_1 + C_2 + \dots + C_n}$
+Nếu viết theo khối lượng $m_1, m_2, \dots, m_n$ và nhiệt dung riêng $c_1, c_2, \dots, c_n$ của các vật thì: $T = \dfrac{m_1c_1T_1 + m_2c_2T_2 + \dots + m_nc_nT_n}{m_1c_1 + m_2c_2 + \dots + m_nc_n}$
+
+<span class="the the-TC">TC</span><b> Vật toả nhiệt và vật thu nhiệt</b>
+Trong một số trường hợp, xác định các vật toả nhiệt và thu nhiệt trong hệ sẽ giúp giải quyết vấn đề đơn giản hơn: $Q_{\text{toả}} = Q_{\text{thu}}$.
+Hay: $\sum C_i(T_i - T) = \sum C_j(T - T_j)$.</div></div><div class="nd"><div class="tr">trạm D · trang PDF 89</div><div class="pre"><span class="the the-TC">TC</span><b> Hiệu suất của quá trình chuyển hóa năng lượng</b>
+Năng lượng được chuyển từ dạng này sang dạng khác, từ vật này sang vật khác, thì luôn có một phần bị hao phí. Để đánh giá tỉ lệ giữa năng lượng có ích và năng lượng toàn phần, người ta dùng khái niệm hiệu suất.
+$H = \frac{W_{ci}}{W_{tp}}.100\%$ hay $H = \frac{P_{ci}}{P_{tp}}.100\%$
+$P_{ci}$ là công suất có ích và $P_{tp}$ là công suất toàn phần.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00082</span>Phương trình cân bằng nhiệt <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm C · trang PDF 63, 79, 84</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Đưa khối đồng có khối lượng 0,5 kg ở nhiệt độ 100 °C vào nước có khối lượng 2,5 kg ở nhiệt độ 30 °C. Biết nhiệt dung riêng của đồng và nước lần lượt là $380\ \text{J/(kg.K)}$ và $4180\ \text{J/(kg.K)}$. Nhiệt độ cân bằng của hệ là bao nhiêu?
+
+Bài giải:
+Ta có: $t_{cb} = \dfrac{m_{Cu}c_{Cu}t_{Cu} + m_{H_2O}c_{H_2O}t_{H_2O}}{m_{Cu}c_{Cu} + m_{H_2O}c_{H_2O}} = \dfrac{0{,}5 \cdot 380 \cdot 100 + 2{,}5 \cdot 4180 \cdot 30}{0{,}5 \cdot 380 + 2{,}5 \cdot 4180} = 31{,}25$ °C.</div></div><div class="nd vd"><div class="tr">trạm C · trang PDF 63, 79, 84</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Thả cục nước đá khối lượng 0,4 kg ở $-10$ °C vào 4 kg nước ở 30 °C. Cho nước đá có nhiệt nóng chảy riêng là $3{,}4 \cdot 10^5\ \text{J/kg}$ và nhiệt dung riêng $2100\ \text{J/(kg.K)}$; nước có nhiệt dung riêng $4200\ \text{J/(kg.K)}$.
+a) Nước đá có tan hết hay không?
+b) Tính nhiệt độ chung của hỗn hợp khi có cân bằng nhiệt.
+c) Tính lượng nước trong bình khi có cân bằng nhiệt.
+
+Bài giải:
+a) Giả sử nước đá vừa tan hết ở 0 °C, thì nhiệt lượng mà nước toả ra và nước đá thu vào là
+$Q_{\text{thu}} = m_1(-c_1t_1 + \lambda) = 0{,}4 \times (2100 \times 10 + 3{,}4 \cdot 10^5) = 144400\ \text{J}$
+$Q_{\text{toả}} = m_2c_2t_2 = 4 \times 4200 \times 30 = 504000\ \text{J}$
+Do $Q_{\text{toả}} &gt; Q_{\text{thu}}$ nên nước đá đã tan hết.
+
+b) Gọi $t$ là nhiệt độ của hệ khi cân bằng nhiệt, ta có: $m_1(-c_1t_1 + \lambda) + m_1c_2t = m_2c_2(t_2 - t)$
+Rút ra: $t = \dfrac{m_1c_1t_1 + m_2c_2t_2 - m_1\lambda}{(m_1 + m_2)c_2}$
+Thay số: $t = \dfrac{0{,}4 \times 2100 \times (-10) + 4 \times 4200 \times 30 - 0{,}4 \times 3{,}4 \cdot 10^5}{(0{,}4 + 4) \times 4200} \approx 19{,}5$ °C.
+
+c) Vì nước đá tan hết, nên lượng nước trong bình lúc sau là $M = m_1 + m_2 = 4 + 0{,}4 = 4{,}4\ \text{kg}$.</div></div><div class="nd vd"><div class="tr">trạm C · trang PDF 63, 79, 84</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Dẫn $m$ (g) hơi nước ở 100 °C vào bình cách nhiệt chứa nước ở 20 °C. Khi cân bằng nhiệt, thu được 368 g nước ở 55 °C. Biết nhiệt dung riêng của nước là $4{,}2\ \text{J/(g.K)}$ và nhiệt hoá hơi riêng của nước là $2240\ \text{J/g}$. Giá trị của $m$ là bao nhiêu?
+
+Bài giải:
+Khối lượng nước ban đầu trong bình cách nhiệt là $368 - m$.
+Ta có phương trình cân bằng nhiệt: $m\left[L + c_n(t_h - t_{cb})\right] = (368 - m)\,c_n(t_{cb} - t_n)$
+Thay số: $m \times \left[2240 + 4{,}2 \times (100 - 55)\right] = (368 - m) \times 4{,}2 \times (55 - 20)$
+Thu được: $m = 21\ \text{g}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00083</span>Nhiệt lượng từ nguồn có công suất, hiệu suất <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm D · trang PDF 91, 92</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Sử dụng khí đốt tự nhiên để đun nóng 2 kg nước từ $15\ ^\circ\text{C}$ đến $95\ ^\circ\text{C}$ với hiệu suất 40%. Biết nhiệt dung riêng của nước là $4200\ \text{J/(kg.K)}$ và nhiệt trị của khí (năng suất tỏa nhiệt) là $4{,}2.10^7\ \text{J/m}^3$. Quá trình đun nước này tiêu tốn lượng khí ga có thể tích là bao nhiêu?
+
+Bài giải:
+Nhiệt lượng khí đốt tỏa ra khi đun nước là: $Q_1 = \frac{A}{H} = \frac{mc\Delta t}{H} = \frac{2 \times 4200 \times (95 - 15)}{0{,}4} = 1{,}68.10^6\ \text{J}$
+Lượng khí ga tiêu tốn trong quá trình đun nước là: $Q_1 = Vq \to V = \frac{Q_1}{q} = \frac{1{,}68.10^6}{4{,}2.10^7} = 0{,}04\ \text{m}^3$</div></div><div class="nd vd"><div class="tr">trạm D · trang PDF 91, 92</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một ấm điện trên nhãn mác có ghi các thông số: điện áp định mức 220 V; công suất định mức 1000 W; dung tích 1,5 lít. Đổ 1,5 lít nước ở $20\ ^\circ\text{C}$ vào ấm điện, rồi mắc ấm điện vào hiệu điện thế 220 V thì 10 phút đun sôi nước. Biết nước có $\rho = 1\ \text{kg/lít}$ và $c = 4{,}2\ \text{J/(g.K)}$.
+a) Nhiệt lượng mà nước hấp thụ khi được đun sôi là bao nhiêu?
+b) Điện trở của ấm điện khi hoạt động bình thường là bao nhiêu?
+c) Hiệu suất của ấm điện là bao nhiêu?
+
+Bài giải:
+a) Nhiệt lượng mà nước hấp thụ khi được đun sôi là: $Q = (\rho V)c\Delta t = 1.1{,}5.4200.(100 - 20) = 504000\ \text{J}$
+
+b) Điện trở của ấm điện khi hoạt động bình thường là: $P = \frac{U^2}{R} \to R = \frac{U^2}{P} = \frac{220^2}{1000} = 48{,}4\ \Omega$
+
+c) Hiệu suất của ấm điện là: $H = \frac{Q}{Pt} = \frac{504000}{1000.10.60} = 0{,}84 = 84\%$</div></div></div></section><section><h2><span class="ma">LNB00043</span>Vật lí nhiệt › Nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng › Thí nghiệm đo c, λ, L</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p class="trong">— trống —</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><p class="trong">— sách không có —</p></div>
+  <div class="dang"><h3><span class="ma">LDB00084</span>Thí nghiệm đo nhiệt dung riêng, nhiệt nóng chảy/hoá hơi riêng <span class="dem trongd">chưa có ví dụ</span></h3>
+    </div></section><section><h2><span class="ma">LNB00044</span>Khí lí tưởng › Mô hình động học phân tử chất khí › Mô hình khí lí tưởng</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Giả thuyết của mô hình khí lí tưởng về phân tử khí và các hiện tượng chứng tỏ phân tử chuyển động nhiệt không ngừng: khuếch tán, chuyển động Brown, ảnh hưởng của nhiệt độ.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm A · trang PDF 11, 22, 23</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Chuyển động nhiệt</b>
+Các phân tử cấu tạo nên vật chất chuyển động không ngừng; chuyển động không ngừng của các phân tử được gọi là chuyển động nhiệt. Nhiệt độ càng cao thì động năng trung bình của các phân tử càng lớn. Nhiệt độ là thước đo cho tốc độ chuyển động nhiệt của các phân tử.
+
+<span class="the the-TC">TC</span><b> Hiện tượng khuếch tán</b>
+- Nhỏ một giọt mực vào cốc nước thì mực lan dần ra: đó là hiện tượng khuếch tán.
+- Nhiệt độ nước càng cao thì mực lan càng nhanh, tức sự khuếch tán xảy ra càng nhanh.
+- Khuếch tán không phải do trọng lực hay đối lưu gây ra mà do chuyển động không ngừng của các phân tử.
+
+<span class="the the-ĐN">ĐN</span><b> Chuyển động Brown</b>
+Chuyển động hỗn loạn không ngừng của các hạt lơ lửng trong chất lỏng (hoặc chất khí) được gọi là chuyển động Brown. Chẳng hạn chuyển động của hạt phấn hoa trong nước (Robert Brown quan sát năm 1827), chuyển động của hạt khói trong không khí.
+
+<span class="the the-TC">TC</span><b> Nguyên nhân và đặc điểm của chuyển động Brown</b>
+- Nguyên nhân nằm ở bên trong chất lỏng: các phân tử nước chuyển động hỗn loạn, không ngừng va đập vào hạt phấn hoa từ mọi phía. Tại mỗi thời điểm, hạt phấn hoa bị tác động mạnh theo một hướng nhất định, thời điểm tiếp theo lại theo hướng khác nên hướng chuyển động của hạt thường xuyên thay đổi.
+- Chuyển động Brown vẫn tồn tại dù đã loại bỏ các tác động bên ngoài như rung động, đối lưu; miễn là các hạt lơ lửng đủ nhỏ thì có thể quan sát được.
+- Nhiệt độ của chất lỏng (hay chất khí) càng cao thì chuyển động Brown càng mạnh.
+- Chuyển động Brown phản ánh gián tiếp chuyển động nhiệt của các phân tử chất lỏng (hay chất khí).
+
+<span class="the the-CY">CY</span><b> Hạt bụi trong tia nắng ở phòng tối chuyển động không phải là chuyển động Brown: hạt bụi có kích thước và khối lượng lớn hơn rất nhiều so với hạt khói nên lực do các phân tử không khí tác dụng từ mọi phía triệt tiêu nhau. Hạt bụi chuyển động do trọng lực và dòng đối lưu trong không khí.</b></div></div><div class="nd"><div class="tr">trạm D · trang PDF 100</div><div class="pre"><span class="the the-TC">TC</span><b> Mô hình động học phân tử chất khí</b>
+- Chất khí được cấu tạo từ các phân tử có kích thước rất nhỏ so với khoảng cách giữa chúng. Lực tương tác giữa các phân tử khí rất yếu so với ở thể lỏng và thể rắn.
+- Các phân tử khí chuyển động hỗn loạn, không ngừng. Chuyển động này càng nhanh thì nhiệt độ của khí càng cao.
+- Khi chuyển động hỗn loạn, các phân tử khí va chạm với nhau và với thành bình. Khi va chạm với thành bình các phân tử khí tác dụng lực, gây áp suất lên thành bình.
+
+<span class="the the-ĐN">ĐN</span><b> Khí lí tưởng</b>
+Để tìm hiểu các tính chất của chất khí, người ta dùng một mô hình khí đơn giản hơn khí thực nhưng vẫn phản ánh được các đặc điểm cơ bản của khí này:
+- Các phân tử khí được coi là các chất điểm, không tương tác với nhau khi chưa va chạm.
+- Các phân tử khí tương tác khi va chạm với nhau và va chạm với thành bình. Các va chạm này là va chạm hoàn toàn đàn hồi.
+Mô hình trên bỏ qua thể tích của phân tử khí, bỏ qua tương tác của các phân tử khí khi chưa va chạm và coi va chạm là hoàn toàn đàn hồi, làm cho việc mô tả các hiện tượng về chất khí trở nên đơn giản, dễ dàng. Chất khí trong mô hình trên được gọi là khí lí tưởng.
+
+<span class="the the-ĐN">ĐN</span><b> Các thông số trạng thái của khí</b>
+Đối với một lượng khí nhất định, trạng thái vĩ mô của khí có thể được mô tả bằng ba đại lượng vật lí: thể tích $V$, nhiệt độ $T$ và áp suất $p$. Các đại lượng này được gọi là các thông số trạng thái của khí.
+- Thể tích: khí chuyển động hỗn loạn về mọi phía, lấp đầy toàn bộ không gian bình chứa. Do đó, thể tích của khí thường bằng thể tích của bình chứa.
+- Nhiệt độ: biểu thị cho động năng trung bình của các phân tử. Động năng trung bình của các phân tử tăng lên (giảm đi) thì nhiệt độ của khí cũng tăng lên (giảm đi).
+- Áp suất: các phân tử khí chuyển động hỗn loạn và cũng thường xuyên va vào thành bình, khiến thành bình chịu áp suất. Áp suất mà các phân tử khí tác dụng lên thành bình chính là áp suất của chất khí.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00085</span>Nhận biết giả thuyết mô hình khí lí tưởng, chuyển động Brown <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm A · trang PDF 23, 24</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Phát biểu nào sau đây là đúng khi nói về thí nghiệm của Brown?
+A. Chuyển động Brown là chuyển động của phân tử chất lỏng.
+B. Chuyển động Brown phản ánh gián tiếp chuyển động của phân tử chất lỏng.
+C. Chuyển động Brown được gọi là chuyển động nhiệt.
+D. Nhiệt độ của chất lỏng càng cao thì chuyển động Brown càng yếu.
+
+Bài giải:
+- Chuyển động Brown là chuyển động của các hạt lơ lửng trong chất lỏng, còn chuyển động của phân tử chất lỏng được gọi là chuyển động nhiệt, nên A, C sai.
+- Chuyển động không ngừng của phân tử chất lỏng tác động lên các hạt lơ lửng trong chất lỏng (chẳng hạn như hạt phấn hoa) gây ra chuyển động của hạt lơ lửng trong chất lỏng, và chuyển động này được gọi là chuyển động Brown, nên B đúng.
+- Nhiệt độ chất lỏng càng cao thì chuyển động của các phân tử chất lỏng càng mạnh khiến cho chuyển động Brown cũng càng mạnh, nên D sai.
+Chọn B.</div></div><div class="nd vd"><div class="tr">trạm A · trang PDF 23, 24</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong phòng tối, khi quan sát tia nắng mặt trời chiếu qua cửa sổ vào phòng, ta có thể thấy các hạt bụi trong ánh sáng chuyển động không ngừng. Chuyển động này có phải là chuyển động Brown không? Tại sao?
+
+Bài giải:
+Ta biết chuyển động của hạt khói trong không khí là chuyển động Brown. Tuy nhiên, chuyển động của hạt bụi ở đây không phải là chuyển động Brown. Các hạt bụi trong không khí mà ta nhìn thấy có kích thước và khối lượng lớn hơn rất nhiều so với các hạt khói, nên lực mà các phân tử không khí tác dụng lên các hạt bụi từ mọi phía sẽ triệt tiêu nhau và không có tác dụng làm các hạt bụi chuyển động hỗn loạn như vậy. Chúng ta thấy các hạt bụi chuyển động từ trên xuống dưới là do lực hút của Trái Đất, từ dưới lên là do dòng đối lưu trong không khí, theo các hướng khác nhau là do chúng va chạm vào nhau đổi hướng chuyển động.</div></div></div></section><section><h2><span class="ma">LNB00045</span>Khí lí tưởng › Các định luật chất khí › Ba định luật đẳng quá trình</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Ba quá trình biến đổi trạng thái của một lượng khí nhất định khi giữ không đổi một thông số: đẳng nhiệt (p tỉ lệ nghịch với V), đẳng áp (V tỉ lệ thuận với T), đẳng tích (p tỉ lệ thuận với T); gồm hệ thức giữa hai trạng thái, đồ thị và vận dụng vào bài toán khí trong xilanh, bong bóng, ống thuỷ tinh.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm E · trang PDF 110, 111</div><div class="pre"><span class="the the-ĐN">ĐN</span><b> Ba quá trình đẳng quá trình</b>
+Khí biến đổi mà nhiệt độ không đổi là quá trình đẳng nhiệt; khí biến đổi mà áp suất không đổi là quá trình đẳng áp; khí biến đổi mà thể tích không đổi là quá trình đẳng tích.
+
+<span class="the the-ĐL">ĐL</span><b> Quá trình đẳng nhiệt (Boyle – Mariotte)</b>
+Đối với một lượng khí nhất định, khi nhiệt độ không đổi thì áp suất $p$ tỉ lệ nghịch với thể tích $V$: $p \propto \dfrac{1}{V} \Leftrightarrow pV = \text{const}$.
+Gọi $p_1, V_1$ và $p_2, V_2$ lần lượt là áp suất và thể tích của khí ở hai trạng thái khác nhau 1 và 2 (cùng nhiệt độ) thì: $p_1V_1 = p_2V_2$.
+- Đồ thị p–V là một đường cong (hypebol); đồ thị p–$\dfrac{1}{V}$ là đường thẳng kéo dài đi qua gốc toạ độ.
+- Trên đồ thị p–T và V–T, quá trình đẳng nhiệt là đoạn thẳng vuông góc với trục T.
+
+<span class="the the-ĐL">ĐL</span><b> Quá trình đẳng áp</b>
+Một lượng khí nhất định với áp suất không đổi thì thể tích $V$ tỉ lệ thuận với nhiệt độ nhiệt động $T$ của khí: $V \propto T \Leftrightarrow \dfrac{V}{T} = \text{const}$.
+Gọi $V_1, T_1$ và $V_2, T_2$ lần lượt là thể tích và nhiệt độ nhiệt động của khí ở hai trạng thái khác nhau 1 và 2 (cùng áp suất) thì: $\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$.
+- Đồ thị V–T (nhiệt độ $T$ theo K) là đường thẳng kéo dài đi qua gốc toạ độ; đồ thị V–t (nhiệt độ $t$ theo $^\circ\text{C}$) là đường thẳng cắt trục nhiệt độ tại $-273\ ^\circ\text{C}$.
+- Trên đồ thị p–T và p–V, quá trình đẳng áp là đoạn thẳng song song với trục hoành.
+
+<span class="the the-ĐL">ĐL</span><b> Quá trình đẳng tích</b>
+Một lượng khí nhất định với thể tích không đổi thì áp suất $p$ tỉ lệ thuận với nhiệt độ nhiệt động $T$ của khí: $p \propto T \Leftrightarrow \dfrac{p}{T} = \text{const}$.
+Gọi $p_1, T_1$ và $p_2, T_2$ lần lượt là áp suất và nhiệt độ nhiệt động của khí ở hai trạng thái khác nhau 1 và 2 (cùng thể tích) thì: $\dfrac{p_1}{T_1} = \dfrac{p_2}{T_2}$.
+- Đồ thị p–T (nhiệt độ $T$ theo K) là đường thẳng kéo dài đi qua gốc toạ độ; đồ thị p–t (nhiệt độ $t$ theo $^\circ\text{C}$) là đường thẳng cắt trục nhiệt độ tại $-273\ ^\circ\text{C}$.
+- Trên đồ thị V–T, quá trình đẳng tích là đoạn thẳng song song với trục hoành; trên đồ thị p–V là đoạn thẳng vuông góc với trục V.</div></div><div class="nd"><div class="tr">trạm F · trang PDF 149</div><div class="pre"><span class="the the-TC">TC</span><b> Đồ thị quá trình đẳng nhiệt</b>
+Trong quá trình đẳng nhiệt: $p = nRT \times \dfrac{1}{V}$.
+- Trên đồ thị $p$–$V$, đường đẳng nhiệt là một đường cong (hypebol); nhiệt độ $T_2 &gt; T_1$ thì đường $T_2$ nằm xa gốc tọa độ hơn đường $T_1$.
+- Trên đồ thị $p$–$\dfrac{1}{V}$, đường đẳng nhiệt là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $T_2 &gt; T_1$ thì đường $T_2$ dốc hơn đường $T_1$.
+
+<span class="the the-TC">TC</span><b> Đồ thị quá trình đẳng áp</b>
+Trong quá trình đẳng áp: $V = \dfrac{nR}{p} \times T$.
+- Trên đồ thị $V$–$T$ ($T$ tính bằng K), đường đẳng áp là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $p_2 &gt; p_1$ thì đường $p_2$ ít dốc hơn đường $p_1$.
+- Trên đồ thị $V$–$t$ ($t$ tính bằng °C), đường đẳng áp là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\ ^\circ\text{C}$.
+
+<span class="the the-TC">TC</span><b> Đồ thị quá trình đẳng tích</b>
+Trong quá trình đẳng tích: $p = \dfrac{nR}{V} \times T$.
+- Trên đồ thị $p$–$T$ ($T$ tính bằng K), đường đẳng tích là đường thẳng có đường kéo dài đi qua gốc tọa độ; với $V_2 &gt; V_1$ thì đường $V_2$ ít dốc hơn đường $V_1$.
+- Trên đồ thị $p$–$t$ ($t$ tính bằng °C), đường đẳng tích là đường thẳng có đường kéo dài cắt trục nhiệt độ tại $-273\ ^\circ\text{C}$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00086</span>Nhận biết phát biểu, biểu thức của định luật Boyle, Charles, đẳng tích <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm H · trang PDF 110, 121, 122, 199, 202</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong bể nước có nhiệt độ không đổi, một bong bóng khí nổi dần lên từ đáy bể. Trong quá trình nổi lên thể tích và áp suất của bong bóng khí thay đổi như thế nào?
+A. Thể tích tăng và áp suất giảm.
+B. Thể tích và áp suất đều không đổi.
+C. Thể tích và áp suất đều tăng.
+D. Thể tích và áp suất đều giảm.
+
+Bài giải:
+Nhiệt độ không đổi nên quá trình là đẳng nhiệt, $p \propto \dfrac{1}{V}$.
+Áp suất giảm thì thể tích tăng. Chọn A.</div></div><div class="nd vd"><div class="tr">trạm H · trang PDF 110, 121, 122, 199, 202</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khối khí nhất định được đựng trong một bình kín. Thay đổi nhiệt độ để áp suất của khí giảm. Nhận định nào sau đây đúng về khí trong bình?
+A. Khối lượng riêng của khí tăng.
+B. Động năng trung bình của các phân tử tăng.
+C. Khối lượng riêng của khí giảm.
+D. Động năng trung bình của các phân tử giảm.
+
+Bài giải:
+Chọn D.</div></div><div class="nd vd"><div class="tr">trạm H · trang PDF 110, 121, 122, 199, 202</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Ứng dụng thực tiễn của quá trình chất khí biến đổi đẳng tích trong đời sống là
+A. thổi bóng bay.
+B. giác hơi trị liệu.
+C. hút nước bằng ống.
+D. kích thủy lực.
+
+Bài giải:
+Chọn B.</div></div></div><div class="dang"><h3><span class="ma">LDB00087</span>Tính p, V trong quá trình đẳng nhiệt (Boyle) <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 112</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một lượng khí được giữ ở một nhiệt độ xác định, khi áp suất là $10^5\ \text{Pa}$ thì có thể tích $10$ lít, khi áp suất là $1{,}25.10^5\ \text{Pa}$ thì thể tích là bao nhiêu?
+
+Bài giải:
+$p_1V_1 = p_2V_2 \Rightarrow V_2 = \dfrac{p_1}{p_2}V_1 = \dfrac{10^5}{1{,}25.10^5} \times 10 = 8$ lít.</div></div></div><div class="dang"><h3><span class="ma">LDB00088</span>Tính V, T trong quá trình đẳng áp (Charles) <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 119, 120</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Trong quá trình đẳng áp, nhiệt độ của một lượng khí nhất định tăng từ $27\ ^\circ\text{C}$ lên $127\ ^\circ\text{C}$ thì thể tích của nó tăng gấp bao nhiêu lần thể tích ban đầu?
+
+Bài giải:
+Ta có: $\dfrac{V_2}{V_1} = \dfrac{T_2}{T_1} = \dfrac{127 + 273}{27 + 273} = \dfrac{4}{3}$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 119, 120</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi tăng nhiệt độ của một lượng khí xác định từ $32\ ^\circ\text{C}$ lên $117\ ^\circ\text{C}$ và giữ áp suất không đổi thì thể tích tăng thêm $1{,}7$ lít. Tìm thể tích của lượng khí trước và sau khi tăng nhiệt độ?
+
+Bài giải:
+Gọi $V$ là thể tích lúc đầu của khí.
+Ta có: $\dfrac{V}{T_1} = \dfrac{V + \Delta V}{T_2} \Leftrightarrow \dfrac{V}{32 + 273} = \dfrac{V + 1{,}7}{117 + 273} \to V = 6{,}1$ lít.
+Suy ra thể tích khí lúc sau là: $V_2 = V + \Delta V = 6{,}1 + 1{,}7 = 7{,}8$ lít.</div></div></div><div class="dang"><h3><span class="ma">LDB00089</span>Tính p, T trong quá trình đẳng tích <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 119, 120</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một lượng khí lí tưởng ban đầu có áp suất $3\ \text{atm}$ và nhiệt độ $150\ \text{K}$. Nếu thể tích không đổi, áp suất của khí lúc này là $5\ \text{atm}$ thì nhiệt độ của khí lúc này là bao nhiêu?
+
+Bài giải:
+Ta có: $\dfrac{p_1}{T_1} = \dfrac{p_2}{T_2} \to T_2 = \dfrac{p_2}{p_1}T_1 = \dfrac{5}{3} \times 150 = 250\ \text{K}$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 119, 120</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Nếu đốt nóng khí lí tưởng trong một bình kín để nhiệt độ của nó tăng thêm $1\ ^\circ\text{C}$ thì áp suất khí trong bình tăng thêm $0{,}4\%$ so với ban đầu. Nhiệt độ ban đầu của khối khí trong bình là bao nhiêu?
+
+Bài giải:
+Ta có: $\dfrac{p}{T} = \dfrac{p + \Delta p}{T + \Delta T} \Leftrightarrow \dfrac{p}{T} = \dfrac{p + \dfrac{0{,}4}{100}p}{T + 1} \to T = 250\ \text{K} = -23\ ^\circ\text{C}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00090</span>Đồ thị các đẳng quá trình <span class="dem trongd">chưa có ví dụ</span></h3>
+    </div><div class="dang"><h3><span class="ma">LDB00091</span>Thí nghiệm kiểm chứng định luật chất khí <span class="dem trongd">chưa có ví dụ</span></h3>
+    </div></section><section><h2><span class="ma">LNB00046</span>Khí lí tưởng › Phương trình trạng thái khí lí tưởng › Phương trình trạng thái</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Phương trình trạng thái pV/T = hằng số cho một lượng khí xác định khi cả p, V, T cùng thay đổi, và phương trình Clapeyron pV = nRT; gồm hằng số khí lí tưởng R, khối lượng riêng, mật độ phân tử và số phân tử của khí.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm A · trang PDF 10, 14</div><div class="pre"><span class="the the-TC">TC</span><b> Hằng số Avogadro</b>
+Một mol chất bất kì đều chứa cùng số phân tử, số này gọi là hằng số Avogadro, kí hiệu $N_A$.
+$N_A = 6,02.10^{23}\ \text{mol}^{-1}$
+Đường kính phân tử nói chung vào khoảng cỡ $10^{-10}\ \text{m}$. Hằng số Avogadro là cầu nối giữa các đại lượng vĩ mô và vi mô.
+
+<span class="the the-TC">TC</span><b> Số mol, số phân tử, khối lượng và thể tích</b>
+Một mẫu vật có khối lượng $m$, thể tích $V$, chứa $N$ phân tử thì số mol $n$ của mẫu vật đó là:
+$n = \dfrac{N}{N_A} = \dfrac{m}{M} = \dfrac{V}{V_m}$
+- $N$ là số phân tử, $n$ là số mol phân tử, $N_A$ là số Avogadro.
+- $m$ là khối lượng, $M$ là khối lượng mol, $m_0$ là khối lượng của một phân tử.
+- $V$ là thể tích, $V_m$ là thể tích mol, $V_0$ là thể tích trung bình một phân tử chiếm chỗ.
+- $\rho$ là khối lượng riêng.
+
+<span class="the the-TC">TC</span><b> Khối lượng và thể tích của một phân tử</b>
+- Khối lượng của một phân tử: $m_0 = \dfrac{M}{N_A}$
+- Thể tích trung bình mà mỗi phân tử chiếm chỗ trong chất: $V_0 = \dfrac{V_m}{N_A} = \dfrac{M}{\rho N_A}$
+- Liên hệ: $N = \dfrac{m}{m_0} = \dfrac{V}{V_0}$; $m = \rho V$; $M = \rho V_m$; $M = m_0 N_A$
+
+<span class="the the-CY">CY</span><b> $V_0$ không phải là thể tích của một phân tử (do giữa các phân tử có khoảng trống). Số phân tử trong 1 g nước là khoảng $3,34.10^{22}$ (1 mol nước có khối lượng 18 g chứa $6,02.10^{23}$ phân tử).</b></div></div><div class="nd"><div class="tr">trạm E · trang PDF 127</div><div class="pre"><span class="the the-TC">TC</span><b> Phương trình trạng thái của một lượng khí xác định</b>
+Xét quá trình biến đổi mà cả áp suất, thể tích và nhiệt độ của một lượng khí lí tưởng đều thay đổi.
+- Khi nhiệt độ không đổi thì áp suất tỉ lệ nghịch với thể tích: $p \propto \dfrac{1}{V}$.
+- Khi thể tích không đổi thì áp suất tỉ lệ thuận với nhiệt độ nhiệt động: $p \propto T$.
+- Suy ra $p \propto \dfrac{T}{V}$. Do vậy áp suất $p$, thể tích $V$ và nhiệt độ nhiệt động $T$ của một lượng khí luôn thoả mãn: $\dfrac{pV}{T} = \text{const} = C$.
+Độ lớn của hằng số $C$ phụ thuộc vào lượng khí đang xét. Phương trình trên được gọi là phương trình trạng thái của khí lí tưởng; với hai trạng thái 1 và 2 của cùng một lượng khí: $\dfrac{p_1V_1}{T_1} = \dfrac{p_2V_2}{T_2}$.
+
+<span class="the the-TC">TC</span><b> Phương trình Clapeyron</b>
+Độ lớn của hằng số $C$ phụ thuộc vào lượng khí đang xét (khối lượng và loại khí): $C = \dfrac{m}{M}R = nR$.
+Vậy một lượng khí bất kì luôn có: $\dfrac{pV}{T} = nR = \dfrac{m}{M}R = \dfrac{N}{N_A}R$. Phương trình này được gọi là phương trình Clapeyron.
+Với 1 mol chất khí ở điều kiện tiêu chuẩn: $V = 22{,}4$ lít, $p = 1{,}013.10^5\ \text{Pa}$, $T = 273\ \text{K}$, ta rút ra: $R = \dfrac{1{,}013.10^5 \times 22{,}4.10^{-3}}{273} = 8{,}31\ \text{J/(mol.K)}$.
+$R$ được gọi là hằng số khí lí tưởng.
+Từ phương trình Clapeyron rút ra công thức xác định khối lượng riêng của lượng khí theo áp suất $p$ và nhiệt độ $T$: $\rho = \dfrac{m}{V} = \dfrac{pM}{RT}$.
+Công thức xác định mật độ phân tử của khí: $\mu = \dfrac{N}{V} = \dfrac{pN_A}{RT}$.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00092</span>Phương trình pV/T = hằng số <span class="dem">1 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 128</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một piston nhẹ bịt kín một khối khí lí tưởng trong xilanh, ban đầu khối khí có thể tích $3$ lít, nhiệt độ $300\ \text{K}$ và áp suất $10^5\ \text{Pa}$. Đẩy piston một đoạn để nén khí thì nhiệt độ và áp suất của khí thu được lần lượt là $320\ \text{K}$ và $1{,}6.10^5\ \text{Pa}$. Thể tích khí lúc này là bao nhiêu?
+
+Bài giải:
+Ta có: $\dfrac{p_1V_1}{T_1} = \dfrac{p_2V_2}{T_2}$.
+Suy ra: $V_2 = \dfrac{p_1}{p_2} \times \dfrac{T_2}{T_1} \times V_1 = \dfrac{10^5}{1{,}6.10^5} \times \dfrac{320}{300} \times 3 = 2$ lít.</div></div></div><div class="dang"><h3><span class="ma">LDB00093</span>Phương trình Clapeyron pV = nRT <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 129, 130</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình có thể tích $15$ lít chứa nitrogen ở áp suất $5.10^6\ \text{Pa}$ và nhiệt độ $17\ ^\circ\text{C}$, coi nitrogen là khí lí tưởng. Khối lượng mol của nitrogen là $28\ \text{g/mol}$. Khối lượng nitrogen trong bình là bao nhiêu?
+
+Bài giải:
+Ta có: $pV = \dfrac{m}{M}RT$.
+Suy ra: $m = \dfrac{pVM}{RT} = \dfrac{5.10^6 \times 15.10^{-3} \times 28}{8{,}31 \times (17 + 273)} \approx 871{,}4\ \text{g}$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 129, 130</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một lượng khí lí tưởng ban đầu có khối lượng riêng $1{,}24\ \text{kg/m}^3$, áp suất $1{,}2\ \text{atm}$, nhiệt độ $27\ ^\circ\text{C}$. Khi lượng khí này có áp suất $2{,}0\ \text{atm}$ và nhiệt độ $127\ ^\circ\text{C}$ thì khối lượng riêng của nó là bao nhiêu?
+
+Bài giải:
+Ta có: $pV = \dfrac{m}{M}RT \to \rho = \dfrac{m}{V} = \dfrac{pM}{RT} \propto \dfrac{p}{T}$.
+Suy ra: $\dfrac{\rho_1}{\rho_2} = \dfrac{p_1}{p_2} \times \dfrac{T_2}{T_1}$.
+Do đó: $\rho_2 = \dfrac{p_2}{p_1} \times \dfrac{T_1}{T_2} \times \rho_1$.
+Thay số: $\rho_2 = \dfrac{2}{1{,}2} \times \dfrac{27 + 273}{127 + 273} \times 1{,}24 = 1{,}55\ \text{kg/m}^3$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 129, 130</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một căn phòng dung tích $30\ \text{m}^3$ có nhiệt độ tăng từ $17\ ^\circ\text{C}$ đến $27\ ^\circ\text{C}$ thì độ biến thiên khối lượng của không khí trong căn phòng là bao nhiêu? Biết áp suất khí quyển là $10^5\ \text{Pa}$ và khối lượng mol của không khí là $29\ \text{g/mol}$.
+
+Bài giải:
+Ta có: $pV = \dfrac{m_1}{M}RT_1$ và $pV = \dfrac{m_2}{M}RT_2$.
+Suy ra: $\Delta m = m_2 - m_1 = \dfrac{pVM}{R}\left(\dfrac{1}{T_2} - \dfrac{1}{T_1}\right)$.
+Thay số: $\Delta m = \dfrac{10^5 \times 30 \times 29}{8{,}31}\left(\dfrac{1}{27 + 273} - \dfrac{1}{17 + 273}\right) \approx -1203\ \text{g}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00094</span>Số mol, số phân tử, khối lượng một phân tử <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm A · trang PDF 14, 15</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Biết kẽm có khối lượng mol là 65 g/mol và khối lượng riêng của kẽm là 7 g/cm$^3$. Lấy $N_A = 6,02.10^{23}\ \text{mol}^{-1}$. Xác định:
+a) Khối lượng của một nguyên tử kẽm.
+b) Thể tích không gian trung bình bị chiếm bởi mỗi nguyên tử kẽm.
+c) Số nguyên tử kẽm có trong 1 kg kẽm.
+
+Bài giải:
+a) Khối lượng của một nguyên tử kẽm là
+$m_0 = \dfrac{M}{N_A} = \dfrac{65}{6,02.10^{23}} \approx 1,08.10^{-22}\ \text{g}$
+
+b) Vì $V_m = \dfrac{M}{\rho}$ nên thể tích không gian trung bình bị chiếm bởi một nguyên tử kẽm là
+$V_0 = \dfrac{V_m}{N_A} = \dfrac{M}{\rho N_A} = \dfrac{65}{7 \times 6,02.10^{23}} \approx 1,54.10^{-23}\ \text{cm}^3$
+
+c) Số nguyên tử kẽm có trong $m = 1\ \text{kg}$ kẽm là
+$N = nN_A = \dfrac{m}{M} \times N_A = \dfrac{1000}{65} \times 6,02.10^{23} \approx 9,26.10^{24}$</div></div><div class="nd vd"><div class="tr">trạm A · trang PDF 14, 15</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một phòng học diện tích sàn là 25 m$^2$ và chiều cao 3 m có chứa không khí ở điều kiện tiêu chuẩn. Biết không khí trong phòng có khối lượng mol là 29 g/mol và thể tích mol là 22,4 lít/mol. Lấy $N_A = 6,02.10^{23}\ \text{mol}^{-1}$. Xác định:
+a) Khối lượng trung bình của một phân tử không khí.
+b) Số phân tử khí có trong phòng học.
+c) Khối lượng không khí trong phòng học.
+
+Bài giải:
+a) Khối lượng trung bình của một phân tử không khí là
+$m_0 = \dfrac{M}{N_A} = \dfrac{29}{6,02.10^{23}} \approx 4,82.10^{-23}\ \text{g}$
+
+b) Thể tích của phòng học là $V = Sh = 25 \times 3 = 75\ \text{m}^3$
+Đổi $V_m = 22,4.10^{-3}\ \text{m}^3\text{/mol}$. Số phân tử khí có trong phòng học là
+$N = nN_A = \dfrac{V}{V_m} \times N_A = \dfrac{75}{22,4.10^{-3}} \times 6,02.10^{23} \approx 2,02.10^{27}$
+
+c) Khối lượng không khí trong phòng học là
+$m = nM = \dfrac{V}{V_m} \times M = \dfrac{75}{22,4.10^{-3}} \times 29 \approx 97100\ \text{g} = 97,1\ \text{kg}$</div></div><div class="nd vd"><div class="tr">trạm A · trang PDF 14, 15</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Coi rằng trong chất khí các phân tử khí cách đều nhau và mỗi phân tử khí nằm ở tâm của khối lập phương nhỏ giống nhau, các khối lập phương nhỏ liền kề tiếp xúc nhau (không chồng lấn lên nhau). Thể tích mol của chất khí ở điều kiện tiêu chuẩn là 22,4 lít/mol. Lấy $N_A = 6,02.10^{23}\ \text{mol}^{-1}$.
+a) Tính độ dài cạnh của các hình lập phương nhỏ này ở điều kiện tiêu chuẩn.
+b) Cho đường kính của phân tử khí là $3.10^{-10}\ \text{m}$. Hãy tính tỉ số giữa chiều dài cạnh của hình lập phương nhỏ với đường kính của phân tử khí.
+
+Bài giải:
+a) Thể tích của khối lập phương mà mỗi phân tử chiếm giữ trong chất khí là
+$V_0 = \dfrac{V_m}{N_A} = \dfrac{22,4.10^{-3}}{6,02.10^{23}} \approx 3,72.10^{-26}\ \text{m}^3$
+Chiều dài cạnh của hình lập phương nhỏ là
+$a = \sqrt[3]{V_0} = \sqrt[3]{3,72.10^{-26}} = 3,34.10^{-9}\ \text{m}$
+
+b) Tỉ số giữa chiều dài cạnh của hình lập phương nhỏ với đường kính của phân tử khí là
+$\delta = \dfrac{a}{d_0} = \dfrac{3,34.10^{-9}}{3.10^{-10}} \approx 10$
+Ở đây, ta có thể coi $a$ là khoảng cách trung bình giữa các phân tử khí. Do vậy, khoảng cách trung bình giữa các phân tử khí gấp khoảng 10 lần đường kính phân tử khí.</div></div></div></section><section><h2><span class="ma">LNB00047</span>Khí lí tưởng › Phương trình trạng thái khí lí tưởng › Bài toán thực tế về chất khí</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Vận dụng phương trình trạng thái cho các bài toán thực tế: lượng khí không đổi qua nhiều quá trình liên tiếp (ống thủy ngân, xilanh–piston, ngoại lực, chốt), nhiều khối khí cùng biến đổi (hai ngăn cách piston) và lượng khí thay đổi (bơm, thoát khí).</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm F · trang PDF 142, 158</div><div class="pre"><span class="the the-PP">PP</span><b> Khí đa quá trình</b>
+Vận dụng phương trình trạng thái của khí lí tưởng cho các quá trình xảy ra liên tiếp:
+$\dfrac{p_1V_1}{T_1} = \dfrac{p_2V_2}{T_2} = \dots = \dfrac{p_nV_n}{T_n}$
+
+<span class="the the-TC">TC</span><b> Các khối khí đồng thời biến đổi</b>
+Phương trình trạng thái khí: $n = \dfrac{pV}{RT}$, suy ra $n \propto \dfrac{pV}{T}$.
+Tỉ lệ số mol khí của các khối khí luôn thỏa mãn: $n_1 : n_2 : n_3 : \dots = \dfrac{p_1V_1}{T_1} : \dfrac{p_2V_2}{T_2} : \dfrac{p_3V_3}{T_3} : \dots$</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00095</span>Thực tế với LƯỢNG KHÍ KHÔNG ĐỔI <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm E · trang PDF 112, 113, 128</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bong bóng khí nổi lên từ đáy của ao nước có độ sâu $5\ \text{m}$ thì thể tích của bong bóng khí sẽ tăng lên bao nhiêu lần khi nó nổi lên tới mặt nước? Coi nhiệt độ ở đáy và mặt ao như nhau, áp suất khí quyển $10^5\ \text{Pa}$, khối lượng riêng của nước $10^3\ \text{kg/m}^3$ và $g = 10\ \text{m/s}^2$.
+
+Bài giải:
+Áp suất của bong bóng khí ở độ sâu $h$ là: $p_1 = p_0 + \rho gh = 10^5 + 10^3.10.5 = 1{,}5.10^5\ \text{Pa}$.
+Ta có: $\dfrac{V_2}{V_1} = \dfrac{p_1}{p_2} = \dfrac{1{,}5.10^5}{10^5} = 1{,}5$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 112, 113, 128</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một piston có khối lượng không đáng kể được giữ trong một xilanh thẳng đứng tiết diện $5\ \text{cm}^2$, dưới piston là một lượng khí lí tưởng có thể tích $6.10^{-5}\ \text{m}^3$. Người ta tác dụng lực $F$ lên piston để nén khí từ từ, nhiệt độ của khí không đổi. Biết áp suất khí quyển là $10^5\ \text{Pa}$. Khi $F = 10\ \text{N}$ thì thể tích khí trong xilanh là bao nhiêu?
+
+Bài giải:
+Ta có: $p_1V_1 = p_2V_2 \Leftrightarrow p_0V_1 = \left(p_0 + \dfrac{F}{S}\right)V_2$.
+Suy ra: $V_2 = \dfrac{p_0V_1}{p_0 + \dfrac{F}{S}} = \dfrac{10^5 \times 6.10^{-5}}{10^5 + \dfrac{10}{5.10^{-4}}} = 5.10^{-5}\ \text{m}^3$.</div></div><div class="nd vd"><div class="tr">trạm E · trang PDF 112, 113, 128</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một xilanh đặt thẳng đứng tiết diện $100\ \text{cm}^2$, piston nhẹ bịt một lượng khí trong xilanh. Ban đầu, nhiệt độ của khí trong xilanh là $27\ ^\circ\text{C}$ và piston cách đáy xilanh $50\ \text{cm}$. Sau đó, đặt lên trên piston một quả cân có khối lượng $50\ \text{kg}$ thì piston dịch chuyển xuống đoạn $10\ \text{cm}$ khi ổn định. Nhiệt độ của khí trong xilanh lúc này là bao nhiêu?
+
+Bài giải:
+Ta có: $\dfrac{p_0L_1}{T_1} = \dfrac{\left(p_0 + \dfrac{mg}{S}\right)L_2}{T_2}$.
+Rút ra: $T_2 = \dfrac{\left(p_0 + \dfrac{mg}{S}\right)L_2}{p_0L_1}T_1$.
+Thay số: $T_2 = \dfrac{\left(10^5 + \dfrac{50.10}{100.10^{-4}}\right) \times 40}{10^5 \times 50} \times (27 + 273) = 360\ \text{K}$.</div></div></div><div class="dang"><h3><span class="ma">LDB00096</span>Thực tế với LƯỢNG KHÍ THAY ĐỔI <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm H · trang PDF 114, 115, 135, 199, 207</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình đang chứa khí ở áp suất 1,0 atm và thể tích 6,0 lít, được bơm thêm một lượng khí có thể tích 9,0 lít và áp suất 1,0 atm. Giả sử rằng quá trình bơm khí có nhiệt độ không đổi. Áp suất khí trong bình chứa không khí sau đó là
+A. 1,0 atm.
+B. 1,5 atm.
+C. 2,0 atm.
+D. 2,5 atm.
+
+Bài giải:
+Quá trình đẳng nhiệt: $p_2 = \dfrac{p_1V_1}{V_2} = \dfrac{1\times(9+6)}{6} = 2{,}5\ \text{atm}$. Chọn D.</div></div><div class="nd vd"><div class="tr">trạm H · trang PDF 114, 115, 135, 199, 207</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình khí oxy có thể tích 20 lít và áp suất là 30 atm được mở van để oxy phân phối vào các lọ chân không có thể tích 5 lít. Áp suất trong các lọ sau khi phân phối là 2 atm. Biết quá trình phân phối nhiệt độ không đổi và không có rò rỉ khí. Số lọ có thể phân phối là
+A. 4.
+B. 50.
+C. 56.
+D. 60.
+
+Bài giải:
+Cuối cùng thu được $n$ lọ khí thể tích 5 lít và 1 bình khí 20 lít đều ở 2 atm.
+$p_1V_1 = p_2(V_1 + n\Delta V) \Leftrightarrow 30\times 20 = 2\times(20 + 5n) \to n = 56$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm H · trang PDF 114, 115, 135, 199, 207</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình chứa một chất khí ở nhiệt độ $27\ ^\circ\text{C}$ và áp suất 40 atm. Nếu một nửa lượng khí thoát ra khỏi bình và nhiệt độ của khí giảm xuống còn $12\ ^\circ\text{C}$ thì áp suất khí là bao nhiêu?
+
+Bài giải:
+Một nửa lượng khí thoát ra nên $n_2 = 0{,}5\,n_1$.
+$p_2 = \dfrac{n_2T_2}{n_1T_1}p_1 = \dfrac{0{,}5\times(12+273)}{1\times(27+273)}\times 40 = 19\ \text{atm}$.
+Đáp án: 19 atm.</div></div></div></section><section><h2><span class="ma">LNB00048</span>Khí lí tưởng › Áp suất và động năng phân tử khí › Áp suất khí theo mô hình động học</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Dùng mô hình động học phân tử để suy ra áp suất khí lí tưởng: từ va chạm đàn hồi của phân tử với thành bình tới công thức $p = \dfrac{N}{3V}m_0\overline{v^2}$, tốc độ căn quân phương và áp suất theo động năng trung bình; gồm nhận biết công thức và tính áp suất, mật độ phân tử, tốc độ căn quân phương.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm F · trang PDF 137, 138</div><div class="pre"><span class="the the-TC">TC</span><b> Áp suất do phân tử khí tác dụng lên thành bình</b>
+Xét bình hình lập phương cạnh dài $l$ chứa $N$ phân tử khí lí tưởng. Một phân tử khí chuyển động với tốc độ $v$ theo phương vuông góc với thành bình. Va chạm của phân tử với thành bình hoàn toàn đàn hồi nên sau va chạm phân tử chuyển động theo hướng ngược lại và vẫn có tốc độ $v$.
+- Độ biến thiên động lượng trong một lần va chạm: $\Delta p = m_0 v - (-m_0 v) = 2m_0 v$.
+- Khoảng thời gian giữa hai lần va chạm liên tiếp với cùng một thành bình (đi tới thành đối diện rồi quay lại): $\Delta t = \dfrac{2l}{v}$.
+- Lực do một phân tử tác dụng lên thành bình: $F_0 = \dfrac{\Delta p}{\Delta t} = \dfrac{m_0 v^2}{l}$.
+- Áp suất do một phân tử tác dụng lên thành bình: $p_0 = \dfrac{F_0}{S} = \dfrac{m_0 v^2}{l^3} = \dfrac{m_0 v^2}{V}$.
+
+<span class="the the-TC">TC</span><b> Áp suất của khí trong bình</b>
+Bình khí có 6 mặt thành, tức 3 cặp mặt thành đối diện nhau, nên với mỗi hai mặt thành đối diện có $\dfrac{N}{3}$ phân tử khí chuyển động theo phương vuông góc với hai mặt thành này. Do 3 phương chuyển động tương tự nhau nên:
+$p = \dfrac{m_0}{3V}\left(v_1^2 + v_2^2 + \dots + v_N^2\right)$
+Đặt $\overline{v^2} = \dfrac{v_1^2 + v_2^2 + \dots + v_N^2}{N}$ là trung bình của bình phương tốc độ phân tử, ta có:
+$p = \dfrac{N}{3V}\, m_0\, \overline{v^2}$
+
+<span class="the the-TC">TC</span><b> Tốc độ căn quân phương</b>
+Từ công thức trên suy ra: $\overline{v^2} = \dfrac{3pV}{m_0 N} = \dfrac{3pV}{m} = \dfrac{3p}{\rho}$, do đó $v_{cqp} = \sqrt{\overline{v^2}} = \sqrt{\dfrac{3p}{\rho}}$ (với $m$ là khối lượng khí, $\rho$ là khối lượng riêng).
+Đại lượng $v_{cqp} = \sqrt{\overline{v^2}}$ được gọi là tốc độ căn quân phương của phân tử khí.
+
+<span class="the the-TC">TC</span><b> Áp suất theo động năng trung bình của phân tử</b>
+Đặt $\overline{E_d} = \dfrac{1}{2} m_0 \overline{v^2}$ là động năng trung bình của phân tử khí, ta có:
+$p = \dfrac{2N}{3V}\,\overline{E_d} = \dfrac{2}{3}\,\mu\,\overline{E_d}$ (với $\mu = \dfrac{N}{V}$ là mật độ phân tử)</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00097</span>Nhận biết công thức áp suất p = (1/3)μmv², tốc độ căn quân phương <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm I · trang PDF 139, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Chất khí có áp suất là $p$ và khối lượng riêng là $\rho$ thì có tốc độ căn quân phương là
+A. $v_{cqp}=\sqrt{\dfrac{3p}{\rho}}$.
+B. $v_{cqp}=\sqrt{\dfrac{p}{\rho}}$.
+C. $v_{cqp}=\sqrt{\dfrac{p}{3\rho}}$.
+D. $v_{cqp}=\sqrt{\dfrac{3p}{2\rho}}$.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 139, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi chất khí có áp suất tăng 9 lần trong khi thể tích không đổi thì tốc độ căn quân phương của phân tử khí sẽ
+A. tăng 9 lần.
+B. tăng 3 lần.
+C. giảm 3 lần.
+D. giảm 9 lần.
+
+Bài giải:
+$v_{cqp}\propto\sqrt{p}\rightarrow v'_{cqp}=\sqrt{\dfrac{9p}{p}}\,v_{cqp}=3v_{cqp}$. Chọn B.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 139, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khi chất khí có áp suất giảm 4 lần và thể tích giảm 3 lần thì tốc độ căn quân phương của phân tử khí sẽ
+A. tăng $2\sqrt{3}$ lần.
+B. tăng 12 lần.
+C. giảm $2\sqrt{3}$ lần.
+D. giảm 12 lần.
+
+Bài giải:
+$v_{cqp}\propto\sqrt{\dfrac{p}{\rho}}\rightarrow v_{cqp}\propto\sqrt{pV}\rightarrow v'_{cqp}=\sqrt{\dfrac{1}{4.3}}\,v_{cqp}=\dfrac{1}{2\sqrt{3}}v_{cqp}$. Chọn C.</div></div></div><div class="dang"><h3><span class="ma">LDB00098</span>Tính áp suất, mật độ phân tử, tốc độ căn quân phương <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm I · trang PDF 139, 141, 208, 209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình kín dung tích 3 lít chứa 2 g khí nitrogen (coi là khí lí tưởng) với tốc độ căn quân phương của phân tử khí là 150 m/s. Áp suất của khí trong bình là
+A. 6 kPa.
+B. 3 kPa.
+C. 5 kPa.
+D. 15 kPa.
+
+Bài giải:
+$p=\dfrac{m\overline{v^2}}{3V}=\dfrac{2.10^{-3}.150^2}{3.3.10^{-3}}=5\ \text{kPa}$. Chọn C.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 139, 141, 208, 209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Chất khí có áp suất 200 Pa và khối lượng riêng là $1{,}7\ \text{g/m}^3$ thì có tốc độ căn quân phương của phân tử là
+A. 594 m/s.
+B. 343 m/s.
+C. 420 m/s.
+D. 280 m/s.
+
+Bài giải:
+$v_{cqp}=\sqrt{\dfrac{3p}{\rho}}=\sqrt{\dfrac{3.200}{1{,}7.10^{-3}}}\approx 594\ \text{m/s}$. Chọn A.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 139, 141, 208, 209</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một bình kín dung tích 2 lít chứa 10 g khí lí tưởng ở áp suất $10^5$ Pa. Tốc độ căn quân phương của phân tử khí trong bình là bao nhiêu?
+
+Bài giải:
+$v_{cqp}=\sqrt{\dfrac{3pV}{m}}=\sqrt{\dfrac{3.10^5.2.10^{-3}}{10.10^{-3}}}\approx 245\ \text{m/s}$.
+Đáp án: 245 m/s.</div></div></div></section><section><h2><span class="ma">LNB00049</span>Khí lí tưởng › Áp suất và động năng phân tử khí › Động năng tịnh tiến phân tử và nhiệt độ</h2>
+  <div class="o"><div class="nhan">Mô tả nhóm</div><p>Liên hệ giữa động năng tịnh tiến trung bình của phân tử khí và nhiệt độ: $\overline{E_d} = \dfrac{3}{2}kT$, hằng số Boltzmann $k$; gồm nhận biết sự phụ thuộc vào nhiệt độ và tính động năng trung bình, nhiệt độ, tốc độ căn quân phương.</p></div>
+  <div class="o"><div class="nhan">Lý thuyết <span class="src eb">chép ebook</span></div><div class="nd"><div class="tr">trạm F · trang PDF 138</div><div class="pre"><span class="the the-TC">TC</span><b> Liên hệ giữa động năng phân tử và nhiệt độ</b>
+Từ $p = \dfrac{2N}{3V}\overline{E_d}$ ta có $pV = \dfrac{2}{3}N\overline{E_d}$. Mặt khác, phương trình trạng thái khí lí tưởng là $pV = \dfrac{N}{N_A}RT$. Vì vậy:
+$\overline{E_d} = \dfrac{3RT}{2N_A} = \dfrac{3}{2}kT$
+
+<span class="the the-TC">TC</span><b> Hằng số Boltzmann</b>
+$k = \dfrac{R}{N_A} = \dfrac{8{,}31}{6{,}02.10^{23}} = 1{,}38.10^{-23}\ \text{J/K}$ được gọi là hằng số Boltzmann.</div></div></div>
+  <div class="dang"><h3><span class="ma">LDB00099</span>Nhận biết Wđ = (3/2)kT và phụ thuộc vào nhiệt độ <span class="dem">2 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm I · trang PDF 138, 139, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Động năng trung bình của phân tử của khí lí tưởng phụ thuộc vào
+A. nhiệt độ của khí.
+B. thể tích của khí.
+C. áp suất của khí.
+D. mật độ phân tử.
+
+Bài giải:
+Chọn A.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 138, 139, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Cho $k$ là hằng số Boltzmann. Chất khí ở nhiệt độ nhiệt động $T$, khối lượng của một phân tử khí là $m_0$. Tốc độ căn quân phương của phân tử là
+A. $v_{cqp}=\sqrt{\dfrac{2kT}{3m_0}}$.
+B. $v_{cqp}=\sqrt{\dfrac{kT}{3m_0}}$.
+C. $v_{cqp}=\sqrt{\dfrac{3kT}{m_0}}$.
+D. $v_{cqp}=\sqrt{\dfrac{3kT}{2m_0}}$.
+
+Bài giải:
+Chọn C.</div></div></div><div class="dang"><h3><span class="ma">LDB00100</span>Tính động năng trung bình, nhiệt độ, tốc độ căn quân phương <span class="dem">3 ví dụ</span></h3>
+    <div class="nd vd"><div class="tr">trạm I · trang PDF 138, 140, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Động năng trung bình của phân tử khí lí tưởng ở $37\ {}^\circ\text{C}$ là
+A. $6{,}42.10^{-21}\ \text{J}$.
+B. $7{,}66.10^{-22}\ \text{J}$.
+C. $4{,}23.10^{-21}\ \text{J}$.
+D. $8{,}21.10^{-22}\ \text{J}$.
+
+Bài giải:
+$\overline{E_d}=\dfrac{3}{2}kT=\dfrac{3}{2}\times 1{,}38.10^{-23}\times(37+273)=6{,}42.10^{-21}\ \text{J}$. Chọn A.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 138, 140, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Khí hydrogen có khối lượng mol là 2,02 g/mol. Tốc độ căn quân phương của phân tử ở nhiệt độ 300 K là
+A. $0{,}5.10^3\ \text{m/s}$.
+B. $1{,}4.10^3\ \text{m/s}$.
+C. $1{,}1.10^3\ \text{m/s}$.
+D. $1{,}9.10^3\ \text{m/s}$.
+
+Bài giải:
+$v_{cqp}=\sqrt{\dfrac{3kTN_A}{M}}=\sqrt{\dfrac{3\times 1{,}38.10^{-23}\times 300\times 6{,}02.10^{23}}{2{,}02.10^{-3}}}\approx 1{,}9.10^3\ \text{m/s}$. Chọn D.</div></div><div class="nd vd"><div class="tr">trạm I · trang PDF 138, 140, 208</div><div class="pre"><span class="the the-VD">VD</span><b></b>
+Một khối khí có nhiệt độ tăng từ $20\ {}^\circ\text{C}$ tới $160\ {}^\circ\text{C}$ thì tốc độ căn quân phương của phân tử tăng lên bao nhiêu lần?
+A. 1,22.
+B. 1,48.
+C. 8.
+D. 2,83.
+
+Bài giải:
+$\dfrac{v'_{cqp}}{v_{cqp}}=\sqrt{\dfrac{T'}{T}}=\sqrt{\dfrac{160+273}{20+273}}\approx 1{,}22$. Chọn A.</div></div></div></section>
+<section><h2>Nội dung sách chưa xếp được</h2><ul><li>trạm A · tr.28: Dạng 3 Ví dụ 1: "Hiện tượng nào sau đây chứng tỏ có tồn tại lực đẩy giữa các phân tử? A. Chất lỏng khó bị nén lại..." (Chọn A, có lời giải). <i>Lực hút/lực đẩy phân tử, không có dạng riêng; có thể thuộc nhóm LNB00034 (không có dạng con phù hợp).</i></li><li>trạm A · tr.29: Dạng 3 Ví dụ 2: lực hút/đẩy khi khoảng cách giữa các phân tử tăng (Chọn B); lời giải dựa vào đồ thị F theo r. <i>Cần hình đồ thị; bỏ. Cùng nhóm LNB00034.</i></li><li>trạm B · tr.39: Dạng 1 Nội năng — Ví dụ 1 (đồ thị F–r, 4 ý Đúng/Sai về động năng/thế năng phân tử): cần hình, dạng Đúng–Sai 4 ý nên bỏ. <i>Liên quan LDB00071 nhưng không đưa vào.</i></li><li>trạm B · tr.46: Dạng 3 Định luật I — sách chỉ có Ví dụ 2 và 3 (không có Ví dụ 1); không có ví dụ cho tính công/nhiệt của khí (pΔV, đẳng áp, đẳng tích) trong khoảng trang này. <i>LDB00074 không có ví dụ có lời giải trong tram B (chỉ có bài tập tự luyện không lời giải, câu 15–16 trang 49).</i></li><li>trạm B · tr.52: Chủ đề 3: các ví dụ chỉ về đổi thang nhiệt độ; không có ví dụ mẫu có lời giải về cân bằng nhiệt/chiều truyền nhiệt hay nhiệt kế (chỉ có bài tập tự luyện không lời giải, vd câu 35 nhiệt kế vạch ngoài b <i>LDB00075, LDB00076 không có ví dụ.</i></li><li>trạm C · tr.76-77: Chủ đề 5 Dạng 1, câu 15-20 (nội năng của vật khi nóng chảy/đông đặc: động năng, thế năng phân tử, nội năng nước–nước đá, hơi nước) <i>liên quan nhóm LNB00036 (Nội năng); chỉ có đề, không có hướng dẫn giải</i></li><li>trạm C · tr.71-72: Chủ đề 4 Dạng 3 (định luật I và nhiệt dung riêng): thác nước, búa đập, ma sát/thế năng chuyển thành nội năng <i>ví dụ mẫu (viên đạn chì) đã gán LDB00073; phần bài tập tự luyện chỉ có đề</i></li><li>trạm D · tr.101: Mục 1.4 Áp suất trong chất lỏng (kiến thức Vật lí 10): p = p0 + ρgh, Δp = ρgΔh. Mục 1.5a Áp suất khí trong xilanh có pittông (nằm ngang p = p0; thẳng đứng pittông ở trên p = p0 + mg/S; xilanh treo p = <i>Cách xác định áp suất khí trong xilanh/ống thuỷ tinh (cần hình). Gần nhất: LNB00047 / LDB00095 (xilanh–pittông, cột thuỷ ngân) hoặc nên có nhóm riêng "Xác định áp suất chất khí"; ví dụ có lời giải: không có.</i></li><li>trạm D · tr.102: Mục 1.5b-d: ống thuỷ tinh chứa cột chất lỏng bịt kín khí (nằm ngang p = p0; thẳng đứng miệng hướng xuống p = p0 + ρgh, miệng hướng lên p = p0 - ρgh ở khí phía trên..., nghiêng góc α: p = p0 ± ρgh sinα <i>Như trên (cần hình, dấu ± phụ thuộc chiều hình vẽ).</i></li><li>trạm D · tr.93: Ví dụ 8 (ô tô chạy 6,9 km, mất 5 phút 45 s, tiêu tốn 1,5 kg nhiên liệu, lực kéo 2000 N, nhiệt trị 4,6.10^7 J/kg; 4 ý: tốc độ 20 m/s, Q1 = 6,9.10^7 J, P = 40000 W, H = 20%) và Ví dụ 7 (ấm điện 2 mức cô <i>VD8 hợp LDB00074 (hiệu suất động cơ) nhưng vượt 3 VD/dạng; VD7 bị bỏ vì cần sơ đồ mạch, hợp LDB00083.</i></li><li>trạm E · tr.112: Chủ đề 2, Dạng 1 Ví dụ 5: bơm khí từ bình 20 lít (60 atm) vào 20 bình chân không 20 lít, tính áp suất sau (p1V1 = p2V2, V2 = 20 + 20x20 = 420 lít, p2 ≈ 2,86 atm). <i>Lượng khí không đổi nhưng "chia vào nhiều bình" — ranh giới LDB00087 / LDB00096; chưa dùng làm ví dụ.</i></li><li>trạm E · tr.112: Chủ đề 2, Dạng 1 Ví dụ 3 (ống thuỷ tinh nằm ngang → thẳng đứng) và Ví dụ 4 (chuông lặn, có hình): đều LDB00095, không chọn vì đã đủ 3 ví dụ. <i>Có thể thay vào LDB00095 nếu muốn.</i></li><li>trạm E · tr.119: Chủ đề 2, Dạng 2 Ví dụ 5 (xilanh có vật rắn, đẳng áp) và Ví dụ 6 (ống thuỷ tinh, bơm thêm thuỷ ngân giữ V không đổi). <i>LDB00095 (thực tế, lượng khí không đổi); không chọn vì đã đủ 3 ví dụ.</i></li><li>trạm E · tr.128: Chủ đề 3 Ví dụ 2 (bong bóng cầu nổi, đường kính gấp đôi, nhiệt độ đổi), Ví dụ 4 (ống chữ U, đổi nhiệt độ), Ví dụ 8 (khinh khí cầu, ρ theo T). <i>LDB00095; VD8 không dùng vì lời giải sách ghi kí hiệu T_T, T_N không rõ nghĩa trong công thức m0 (không chắc đọc đúng).</i></li><li>trạm E · tr.129: Bài tập tự luyện ở Chủ đề 3 có câu về số phân tử (câu 14, 15, 20 trắc nghiệm). <i>Thuộc LDB00094 nhưng sách không có VÍ DỤ mẫu cho dạng này nên không ghi vi_du.</i></li><li>trạm F · tr.141: Chủ đề 4, bài tập trắc nghiệm câu 19–20 (trộn hai khí lí tưởng đơn nguyên tử có số mol, nhiệt độ khác nhau; tìm nhiệt độ hỗn hợp): chỉ có đề, sách không giải trong khoảng trang này. <i>Không có dạng khớp rõ (gần LDB00100 hoặc dạng nhiệt độ hỗn hợp chưa có).</i></li><li>trạm F · tr.149-157: Chủ đề 6, bài tập đồ thị (trắc nghiệm, đúng–sai, trả lời ngắn): toàn bộ cần hình vẽ, một phần đúng–sai 4 ý về nội năng/công/nhiệt của khí trên đồ thị p–V, V–T, p–T; không có ví dụ mẫu có lời giải. <i>LDB00090 (nhận dạng, đọc đồ thị) và LDB00074 (công, nhiệt, nội năng theo đồ thị).</i></li><li>trạm F · tr.162-166: Chủ đề 8, bài tập (chu trình A→B→C→A, tính nhiệt lượng, công, độ tăng nội năng từ đồ thị; U = αT): chỉ có đề, không có ví dụ mẫu có lời giải; hầu hết cần hình. <i>LDB00074 và LDB00073.</i></li></ul></section>
+</main></body></html>

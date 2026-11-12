@@ -1,0 +1,100 @@
+{
+ "tram": "B",
+ "trang_doc": "37-58",
+ "nhom": [
+  {
+   "id": "LNB00036",
+   "mo_ta": "Khái niệm động năng phân tử, thế năng phân tử và nội năng của vật; nội năng phụ thuộc nhiệt độ và thể tích; hai cách làm thay đổi nội năng là thực hiện công và truyền nhiệt.",
+   "ly_thuyet": "##ĐN Động năng phân tử\nCác phân tử chuyển động không ngừng nên có động năng. Điều ta quan tâm là động năng trung bình của các phân tử: $\\overline{E_d} = \\dfrac{E_{d1}+E_{d2}+\\dots+E_{dN}}{N} = \\dfrac{1}{2}m_0\\overline{v^2}$, với $\\overline{v^2} = \\dfrac{v_1^2+v_2^2+\\dots+v_N^2}{N}$.\nNhiệt độ càng cao, chuyển động nhiệt của các phân tử càng nhanh. Khi nhiệt độ của vật tăng thì động năng trung bình của các phân tử cũng tăng.\n\n##ĐN Thế năng phân tử\nCác phân tử tương tác với nhau nên có thế năng, gọi là thế năng tương tác phân tử. Thế năng phân tử phụ thuộc vào khoảng cách giữa các phân tử.\n- Khi $r > r_0$ hợp lực tương tác là lực hút: để tăng $r$ phải thực hiện công thắng lực hút, nên thế năng phân tử $E_t$ tăng khi $r$ tăng.\n- Khi $r < r_0$ hợp lực tương tác là lực đẩy: để giảm $r$ phải thực hiện công thắng lực đẩy, nên $E_t$ tăng khi $r$ giảm.\n- Khi $r = r_0$ thì thế năng phân tử nhỏ nhất, $E_t = E_{t\\min}$.\nKhi thể tích của vật thay đổi, khoảng cách giữa các phân tử thay đổi nên thế năng phân tử cũng thay đổi. Do đó thế năng phân tử phụ thuộc vào thể tích của vật.\n\n##ĐN Nội năng\nTổng động năng chuyển động nhiệt và thế năng tương tác của tất cả các phân tử cấu tạo nên vật được gọi là nội năng của vật. Nội năng kí hiệu là $U$, đơn vị là jun (J).\nĐộng năng trung bình của các phân tử phụ thuộc nhiệt độ, thế năng phân tử phụ thuộc thể tích nên nội năng của vật phụ thuộc nhiệt độ và thể tích của vật.\nViệc xác định độ lớn nội năng của một vật là rất khó, nên ta quan tâm đến độ biến thiên nội năng $\\Delta U$ của vật.\n\n##TC Hai cách làm thay đổi nội năng\n- Truyền nhiệt: nội năng của các vật được truyền cho nhau (bếp đun làm vật tăng nội năng; nước nóng tỏa nhiệt ra môi trường làm giảm nội năng).\n- Thực hiện công: các dạng năng lượng khác (như cơ năng) được chuyển hóa thành nội năng (hai bàn tay cọ xát nóng lên, cưa gỗ làm lưỡi cưa và gỗ nóng lên do ma sát).\n- Khi vật nhận công từ bên ngoài thì nội năng của vật tăng lên; khi vật thực hiện công ra bên ngoài thì nội năng của vật giảm đi.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    37,
+    38
+   ]
+  },
+  {
+   "id": "LNB00037",
+   "mo_ta": "Phát biểu định luật I nhiệt động lực học $\\Delta U = A + Q$ và quy ước dấu của công $A$, nhiệt lượng $Q$; vận dụng để tính công, nhiệt, độ biến thiên nội năng của hệ.",
+   "ly_thuyet": "##ĐL Định luật I của nhiệt động lực học\nĐịnh luật I nhiệt động lực học là sự vận dụng định luật bảo toàn năng lượng vào các quá trình thay đổi nội năng.\nNếu hệ vừa nhận công vừa truyền nhiệt thì độ biến thiên nội năng của hệ bằng tổng công và nhiệt lượng mà hệ nhận được:\n$\\Delta U = A + Q$\nVới quy ước về dấu thích hợp thì hệ thức trên áp dụng được cho các quá trình thay đổi nội năng khác như hệ truyền nhiệt, hệ thực hiện công, hệ vừa thực hiện công vừa truyền nhiệt.\n\n##TC Quy ước dấu của A và Q\n- $A > 0$: hệ nhận công.\n- $A < 0$: hệ thực hiện công.\n- $Q > 0$: hệ nhận nhiệt lượng.\n- $Q < 0$: hệ truyền nhiệt lượng.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    38
+   ]
+  },
+  {
+   "id": "LNB00038",
+   "mo_ta": "Nhiệt độ cho biết trạng thái cân bằng nhiệt và chiều truyền nhiệt; nhiệt độ không tuyệt đối (0 K); nguyên lý và các loại nhiệt kế.",
+   "ly_thuyet": "##ĐN Nhiệt độ và cân bằng nhiệt\nKhi hai vật có nhiệt độ chênh lệch tiếp xúc nhau thì nhiệt năng truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn. Trong quá trình truyền nhiệt này, các tham số trạng thái của hai vật ảnh hưởng lẫn nhau và thay đổi tương ứng. Sau một thời gian, nhiệt độ của hai vật bằng nhau và không có sự truyền nhiệt năng giữa chúng: hai vật đã đạt đến trạng thái cân bằng nhiệt.\nNhiệt độ cho biết trạng thái cân bằng nhiệt của các vật tiếp xúc nhau và chiều truyền nhiệt năng.\n\n##ĐN Nhiệt độ không tuyệt đối\nNhiệt độ không tuyệt đối (0 K) là nhiệt độ mà phân tử có động năng chuyển động nhiệt bằng không và thế năng tương tác giữa chúng là tối thiểu. Nghĩa là vật ở nhiệt độ không tuyệt đối sẽ có nội năng tối thiểu.\n\n##TC Nhiệt kế\nNhiệt kế là thiết bị dùng để đo nhiệt độ, được chế tạo dựa trên một số tính chất vật lí phụ thuộc vào nhiệt độ của các chất, các vật liệu, các linh kiện điện và điện tử.\n- Nhiệt kế thủy ngân: dựa trên sự dãn nở nhiệt của thủy ngân; xác định độ cao cột thủy ngân ở các nhiệt độ khác nhau để biết nhiệt độ cần đo.\n- Nhiệt kế lưỡng kim: ép hai tấm kim loại có độ dãn nở khác nhau vào nhau; khi nhiệt độ thay đổi, độ xoắn của tấm lưỡng kim thay đổi.\n- Nhiệt kế điện trở: dựa vào sự phụ thuộc điện trở của vật theo nhiệt độ; từ giá trị điện trở đo được xác định nhiệt độ cần đo.\n- Nhiệt kế cặp nhiệt điện: dựa trên suất điện động cặp nhiệt điện tạo ra bởi hai dây dẫn khác nhau hàn vào hai đầu của dây kim loại khác tạo thành mạch kín; chênh lệch nhiệt độ giữa hai mối hàn càng lớn thì suất điện động càng lớn.\n- Nhiệt kế hồng ngoại: dựa vào sự phụ thuộc vào nhiệt độ của bước sóng điện từ theo hệ thức Wien: $\\lambda_{\\max}T = 2900\\ \\mu\\text{m.K}$.",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    50,
+    51,
+    52
+   ]
+  },
+  {
+   "id": "LNB00039",
+   "mo_ta": "Ba thang nhiệt độ Celsius, Kelvin, Fahrenheit: mốc nhiệt độ, đơn vị và các công thức chuyển đổi giữa các thang, kể cả độ biến thiên nhiệt độ.",
+   "ly_thuyet": "##ĐN Thang nhiệt độ Celsius\nHai mốc của thang là nhiệt độ đóng băng và nhiệt độ sôi của nước tinh khiết ở áp suất tiêu chuẩn, lần lượt là $0\\ ^\\circ\\text{C}$ và $100\\ ^\\circ\\text{C}$. Khoảng cách giữa hai mốc được chia thành 100 phần bằng nhau, mỗi phần là 1 độ (°C). Các nhiệt độ cao hơn $0\\ ^\\circ\\text{C}$ có giá trị dương, thấp hơn có giá trị âm.\n\n##ĐN Thang nhiệt độ Kelvin\nNhiệt độ trong thang Kelvin đều có giá trị dương, đơn vị là kelvin (K), là một trong bảy đơn vị cơ bản của hệ SI.\nHai mốc của thang là nhiệt độ không tuyệt đối ($-273{,}15\\ ^\\circ\\text{C}$) và nhiệt độ điểm ba của nước ($0{,}01\\ ^\\circ\\text{C}$). Mỗi độ chia có độ lớn bằng $\\dfrac{1}{273{,}16}$ khoảng cách giữa hai mốc này.\nNhiệt độ không tuyệt đối (0 K) là nhiệt độ mà phân tử có động năng chuyển động nhiệt bằng không và thế năng tương tác giữa chúng là tối thiểu.\nNhiệt độ điểm ba của nước ($273{,}16\\ \\text{K}$) là nhiệt độ mà nước tinh khiết tồn tại đồng thời ở thể rắn, lỏng và hơi ở áp suất tiêu chuẩn.\n\n##ĐN Thang nhiệt độ Fahrenheit\nĐơn vị là độ F (°F). Trong thang này, nhiệt độ của nước đá đang tan là $32\\ ^\\circ\\text{F}$, của nước đang sôi là $212\\ ^\\circ\\text{F}$.\n\n##TC Công thức chuyển nhiệt độ giữa các thang\n$\\dfrac{t(^\\circ\\text{C})}{100} = \\dfrac{T(\\text{K}) - 273{,}15}{100} = \\dfrac{t(^\\circ\\text{F}) - 32}{180}$\nCelsius và Kelvin: $T(\\text{K}) = t(^\\circ\\text{C}) + 273{,}15$ ; $t(^\\circ\\text{C}) = T(\\text{K}) - 273{,}15$\nThường làm tròn số: $T(\\text{K}) = t(^\\circ\\text{C}) + 273$ ; $t(^\\circ\\text{C}) = T(\\text{K}) - 273$\nCelsius và Fahrenheit: $t(^\\circ\\text{F}) = \\dfrac{9}{5}t(^\\circ\\text{C}) + 32$ ; $t(^\\circ\\text{C}) = \\dfrac{5}{9}t(^\\circ\\text{F}) - \\dfrac{160}{9}$",
+   "ly_thuyet_sgk": "",
+   "trang": [
+    50,
+    51
+   ]
+  }
+ ],
+ "dang": [
+  {
+   "id": "LDB00071",
+   "vi_du": "##VD\nTrả lời ngắn gọn các câu hỏi sau:\n(1) Phát biểu: \"Các vật có cùng nhiệt độ thì luôn có cùng nội năng\", đúng hay sai?\n(2) Tại sao nội năng của một vật lại liên hệ với nhiệt độ và thể tích của vật đó?\n\nBài giải:\n(1) Nhiệt độ như nhau có nghĩa là động năng trung bình của các phân tử của vật là như nhau, nhưng nội năng không nhất thiết phải bằng nhau.\n(2) Nội năng của vật là tổng động năng và thế năng của tất cả các phân tử có trong vật đó. Vì động năng trung bình của các phân tử có liên quan đến nhiệt độ của vật và thế năng của các phân tử có liên quan đến thể tích của vật nên nội năng của vật có liên quan đến nhiệt độ và thể tích của vật.\n\n##VD\nTrong các quá trình sau đây, nội năng của một vật bị biến đổi chủ yếu thông qua thực hiện công?\nA. Nước trong quần áo ướt bay hơi.\nB. Băng tan trong nước.\nC. Nhiệt độ của nước hồ bơi tăng lên dưới ánh sáng mặt trời.\nD. Cái đinh trở nên nóng lên sau khi bị búa đập vào.\n\nBài giải:\n- A sai, vì nước trong quần áo nhận nhiệt, nhiệt này làm nước bay hơi.\n- B sai, vì băng nhận nhiệt từ nước, nhiệt này làm băng tan.\n- C sai, vì nước hồ bơi nhận nhiệt từ mặt trời.\n- D đúng, vì khi đập búa vào chiếc đinh, chiếc đinh nhận công và nóng lên.\nChọn D.\n\n##VD\nTrong các trường hợp sau, nội năng của vật được thay đổi bằng cách nào và thay đổi như thế nào?\n(1) Ấm điện được bật nguồn làm nóng nước trong ấm.\n(2) Uốn tới uốn lui sợi dây sắt làm nó nóng lên.\n(3) Khối sắt nóng đỏ nguội dần khi đặt trong không khí.\n(4) Lốp xe nóng lên khi ô tô phanh gấp.\n\nBài giải:\n(1) Nước trong ấm thu nhiệt làm nội năng tăng.\n(2) Dây sắt nhận công làm nội năng tăng.\n(3) Khối sắt tỏa nhiệt ra môi trường làm nội năng giảm.\n(4) Khi ô tô phanh gấp, lực ma sát do mặt đất tác dụng lên lốp, làm tăng nội năng của lốp.",
+   "so_vd": 3,
+   "trang": [
+    39,
+    44
+   ]
+  },
+  {
+   "id": "LDB00072",
+   "vi_du": "##VD\nCấu tạo của một chiếc ghế như hình vẽ. Một khối khí xác định bị giam giữa hai ống M và N, M có thể trượt lên xuống dọc theo thành trong của N. Giả sử khí không trao đổi nhiệt với bên ngoài. M trượt xuống dưới thì\nA. chất khí nhận công và nội năng của chất khí tăng.\nB. chất khí nhận công và nội năng của chất khí giảm.\nC. chất khí thực hiện công và nội năng của chất khí tăng.\nD. chất khí thực hiện công và nội năng của chất khí giảm.\n\nBài giải:\n- Khi M trượt xuống dưới thì thể tích khối khí giảm, khí nhận công $A > 0$.\n- Vì khí không trao đổi nhiệt với bên ngoài nên $Q = 0$.\n- Suy ra $\\Delta U = A > 0$.\nChọn A.",
+   "so_vd": 1,
+   "trang": [
+    46
+   ]
+  },
+  {
+   "id": "LDB00073",
+   "vi_du": "##VD\nTrong quá trình nén khí, piston thực hiện công $2.10^5\\ \\text{J}$ lên khối khí và nội năng của khối khí tăng thêm $1{,}5.10^5\\ \\text{J}$. Khối khí này đã nhận hay truyền nhiệt lượng bao nhiêu?\n\nBài giải:\n- Piston thực hiện công nên khí nhận công $A = 2.10^5\\ \\text{J}$.\n- Nội năng của khối khí tăng nên $\\Delta U = 1{,}5.10^5\\ \\text{J}$.\n- Áp dụng định luật I nhiệt động lực học cho khối khí: $Q = \\Delta U - A = 1{,}5.10^5 - 2.10^5 = -0{,}5.10^5\\ \\text{J} < 0$.\nVậy khối khí tỏa nhiệt lượng $0{,}5.10^5\\ \\text{J}$.",
+   "so_vd": 1,
+   "trang": [
+    46
+   ]
+  },
+  {
+   "id": "LDB00077",
+   "vi_du": "##VD\nĐổi nhiệt độ từ thang Celsius sang thang Kelvin, Fahrenheit: $37\\ ^\\circ\\text{C}$, $-50\\ ^\\circ\\text{C}$?\n\nBài giải:\nĐổi $37\\ ^\\circ\\text{C}$:\n- $t(^\\circ\\text{F}) = 1{,}8\\,t(^\\circ\\text{C}) + 32 = 1{,}8 \\times 37 + 32 = 98{,}6\\ ^\\circ\\text{F}$.\n- $T(\\text{K}) = t(^\\circ\\text{C}) + 273 = 37 + 273 = 310\\ \\text{K}$.\nĐổi $-50\\ ^\\circ\\text{C}$:\n- $t(^\\circ\\text{F}) = 1{,}8\\,t(^\\circ\\text{C}) + 32 = 1{,}8.(-50) + 32 = -58\\ ^\\circ\\text{F}$.\n- $T(\\text{K}) = t(^\\circ\\text{C}) + 273 = -50 + 273 = 223\\ \\text{K}$.\n\n##VD\nKhi một vật có nhiệt độ tăng từ $27\\ ^\\circ\\text{C}$ đến $90\\ ^\\circ\\text{C}$ thì theo thang Kelvin và thang Fahrenheit, nhiệt độ của vật đã tăng thêm tương ứng bao nhiêu?\n\nBài giải:\nTa có: $t(^\\circ\\text{F}) = 1{,}8\\,t(^\\circ\\text{C}) + 32$ và $T(\\text{K}) = t(^\\circ\\text{C}) + 273$, suy ra\n- $\\Delta t(^\\circ\\text{F}) = 1{,}8\\,\\Delta t(^\\circ\\text{C}) = 1{,}8.(90 - 27) = 113{,}4\\ ^\\circ\\text{F}$.\n- $\\Delta T(\\text{K}) = \\Delta t(^\\circ\\text{C}) = 90 - 27 = 63\\ \\text{K}$.\n\n##VD\nNhiệt độ mà ở thang Celsius và thang Fahrenheit cùng biểu thị bởi một con số, thì ở thang Kelvin nhiệt độ đó bằng bao nhiêu?\n\nBài giải:\n- Từ $t(^\\circ\\text{F}) = 1{,}8\\,t(^\\circ\\text{C}) + 32$ với $t(^\\circ\\text{F}) = t(^\\circ\\text{C}) = t$: $t = 1{,}8t + 32$, suy ra $t = -40\\ ^\\circ\\text{C}$.\n- $T(\\text{K}) = t(^\\circ\\text{C}) + 273 = -40 + 273 = 233\\ \\text{K}$.",
+   "so_vd": 3,
+   "trang": [
+    52,
+    53
+   ]
+  }
+ ],
+ "khong_khop": [
+  {
+   "trang": 39,
+   "noi_dung": "Dạng 1 Nội năng — Ví dụ 1 (đồ thị F–r, 4 ý Đúng/Sai về động năng/thế năng phân tử): cần hình, dạng Đúng–Sai 4 ý nên bỏ.",
+   "goi_y": "Liên quan LDB00071 nhưng không đưa vào."
+  },
+  {
+   "trang": 46,
+   "noi_dung": "Dạng 3 Định luật I — sách chỉ có Ví dụ 2 và 3 (không có Ví dụ 1); không có ví dụ cho tính công/nhiệt của khí (pΔV, đẳng áp, đẳng tích) trong khoảng trang này.",
+   "goi_y": "LDB00074 không có ví dụ có lời giải trong tram B (chỉ có bài tập tự luyện không lời giải, câu 15–16 trang 49)."
+  },
+  {
+   "trang": 52,
+   "noi_dung": "Chủ đề 3: các ví dụ chỉ về đổi thang nhiệt độ; không có ví dụ mẫu có lời giải về cân bằng nhiệt/chiều truyền nhiệt hay nhiệt kế (chỉ có bài tập tự luyện không lời giải, vd câu 35 nhiệt kế vạch ngoài bị mờ, câu 34 Wien).",
+   "goi_y": "LDB00075, LDB00076 không có ví dụ."
+  }
+ ],
+ "ghi_chu": "Trang đọc 37-58 (PDF); số trang in = PDF - 2. Bài tập tự luyện của sách không có lời giải nên không dùng làm ví dụ. LDB00072 dùng ví dụ chiếc ghế (sách kèm hình minh hoạ cấu tạo ghế, đề tự đủ ý). Lý thuyết nhóm LNB00036 bỏ hình 2-1 (đồ thị thế năng/lực) chỉ giữ lời mô tả; sách có lỗi in \"khi r > r0 thì hợp lực đẩy\" (đúng là r < r0), đã chép theo ý đúng."
+}
