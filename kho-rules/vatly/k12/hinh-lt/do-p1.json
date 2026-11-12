@@ -1,0 +1,1003 @@
+{
+ "khoi": [
+  {
+   "nhom": "LNB00034",
+   "k": "K0",
+   "tieu_de": "Mô hình động học phân tử về cấu tạo chất",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Ba ý chữ; sơ đồ phân tử chuyển động + lực hút/đẩy giúp hình dung, sách không có hình tổng quát."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K1",
+   "tieu_de": "Thuật ngữ phân tử (chú ý)",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chú ý bằng chữ."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K2",
+   "tieu_de": "Tương tác phân tử",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 12,
+     "chu_thich": "Hình 1-4 Lực tương tác phân tử thay đổi theo khoảng cách",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.10; đường F_đ, F_h, F, mốc r0"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị lực–khoảng cách là cốt lõi; sách có đồ thị sạch."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K3",
+   "tieu_de": "Cấu trúc chất rắn",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 13,
+     "chu_thich": "Hình 1-5 Cấu trúc chất rắn",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.11"
+    },
+    {
+     "trang_pdf": 13,
+     "chu_thich": "Hình 1-6 Tinh thể muối ăn",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "dùng thêm nếu cần minh hoạ chất rắn kết tinh"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ mạng phân tử sạch."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K4",
+   "tieu_de": "Cấu trúc chất khí",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 13,
+     "chu_thich": "Hình 1-7 Cấu trúc chất khí",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.11"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ phân tử khí sạch."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K5",
+   "tieu_de": "Cấu trúc chất lỏng",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 13,
+     "chu_thich": "Hình 1-8 Cấu trúc chất lỏng",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.11"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ phân tử lỏng sạch."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K6",
+   "tieu_de": "Nước là trường hợp đặc biệt",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sách không có hình; vẽ so sánh khoảng cách phân tử nước lỏng/nước đá."
+  },
+  {
+   "nhom": "LNB00034",
+   "k": "K7",
+   "tieu_de": "Bảng so sánh rắn–lỏng–khí",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Bảng chữ, dựng thẳng thành bảng; sách có bảng ở PDF 33 (in tr.31)."
+  },
+  {
+   "nhom": "LNB00035",
+   "k": "K0",
+   "tieu_de": "Sự chuyển thể",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Cần sơ đồ 6 quá trình (nóng chảy, đông đặc, hoá hơi, ngưng tụ, thăng hoa, ngưng kết) giữa 3 thể; sách chỉ mô tả bằng chữ."
+  },
+  {
+   "nhom": "LNB00035",
+   "k": "K1",
+   "tieu_de": "Nóng chảy chất rắn kết tinh vs vô định hình",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 75,
+     "chu_thich": "Hình 5-1 Quá trình nóng chảy của chất rắn kết tinh (1) và vô định hình (2)",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.73; có mốc t_c"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị nhiệt độ–thời gian sạch, đúng ý."
+  },
+  {
+   "nhom": "LNB00035",
+   "k": "K2",
+   "tieu_de": "Giải thích sự nóng chảy chất rắn kết tinh",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sách không có hình; sơ đồ mạng tinh thể bị phá vỡ khi tới t_c."
+  },
+  {
+   "nhom": "LNB00035",
+   "k": "K3",
+   "tieu_de": "Sự hoá hơi: bay hơi và sôi",
+   "can_hinh": "nen",
+   "so_hinh": 2,
+   "hinh_sach": [],
+   "de_xuat": 2,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Ảnh thật nồi nước sôi có bọt / cốc nước bay hơi; sách không có hình."
+  },
+  {
+   "nhom": "LNB00035",
+   "k": "K4",
+   "tieu_de": "Giải thích sự sôi",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Giải thích bằng chữ."
+  },
+  {
+   "nhom": "LNB00036",
+   "k": "K0",
+   "tieu_de": "Động năng phân tử",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức trung bình."
+  },
+  {
+   "nhom": "LNB00036",
+   "k": "K1",
+   "tieu_de": "Thế năng phân tử",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 37,
+     "chu_thich": "Hình 2-1 Thế năng và lực tương tác phụ thuộc khoảng cách (a) F–r, (b) E_t–r",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.35; hai đồ thị xếp dọc, có E_tmin"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị E_t–r là điểm mấu chốt; sách có sạch."
+  },
+  {
+   "nhom": "LNB00036",
+   "k": "K2",
+   "tieu_de": "Nội năng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa chữ."
+  },
+  {
+   "nhom": "LNB00036",
+   "k": "K3",
+   "tieu_de": "Hai cách làm thay đổi nội năng",
+   "can_hinh": "nen",
+   "so_hinh": 2,
+   "hinh_sach": [],
+   "de_xuat": 2,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Ảnh thật: bếp đun/nước nóng toả nhiệt và cưa gỗ/xoa tay; sách không có hình."
+  },
+  {
+   "nhom": "LNB00036",
+   "k": "K4",
+   "tieu_de": "Nội năng của khí lí tưởng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ và công thức."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K0",
+   "tieu_de": "Định luật I nhiệt động lực học",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức ΔU=A+Q; hình quy ước dấu gán K1."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K1",
+   "tieu_de": "Quy ước dấu của A và Q",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 38,
+     "chu_thich": "Hình 2-2 Quy ước về dấu của Q và A",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.36"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ mũi tên vào/ra hệ sạch."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K2",
+   "tieu_de": "Định luật II (Clausius)",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ nhiệt truyền từ nóng sang lạnh tự phát, chiều ngược cần công; sách không có."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K3",
+   "tieu_de": "Định luật II (Kelvin)",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phát biểu chữ; sơ đồ động cơ nằm ở K4."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K4",
+   "tieu_de": "Động cơ nhiệt",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 90,
+     "chu_thich": "Sơ đồ động cơ nhiệt: nguồn nóng T1, tác nhân, nguồn lạnh T2, Q1, Q2, A",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.88; không đánh số hình"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ khối sạch."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K5",
+   "tieu_de": "Máy lạnh",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 90,
+     "chu_thich": "Sơ đồ máy lạnh: nguồn nóng/lạnh, Q1, Q2, A",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.88; không đánh số hình"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ khối sạch, đối xứng với động cơ."
+  },
+  {
+   "nhom": "LNB00037",
+   "k": "K6",
+   "tieu_de": "Các quá trình biến đổi đặc biệt của khí",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Ba hệ thức chữ."
+  },
+  {
+   "nhom": "LNB00038",
+   "k": "K0",
+   "tieu_de": "Nhiệt độ và cân bằng nhiệt",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ hai vật tiếp xúc, nhiệt truyền tới khi cân bằng (đồ thị T–t); sách không có."
+  },
+  {
+   "nhom": "LNB00038",
+   "k": "K1",
+   "tieu_de": "Nhiệt độ không tuyệt đối",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa chữ."
+  },
+  {
+   "nhom": "LNB00038",
+   "k": "K2",
+   "tieu_de": "Nhiệt kế",
+   "can_hinh": "nen",
+   "so_hinh": 3,
+   "hinh_sach": [],
+   "de_xuat": 2,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Ảnh thật các loại nhiệt kế (thuỷ ngân, lưỡng kim, hồng ngoại, điện trở/cặp nhiệt); sách chỉ mô tả bằng chữ."
+  },
+  {
+   "nhom": "LNB00039",
+   "k": "K0",
+   "tieu_de": "Thang Celsius",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ; thang gộp ở Hình 3-1 gán K3."
+  },
+  {
+   "nhom": "LNB00039",
+   "k": "K1",
+   "tieu_de": "Thang Kelvin",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ."
+  },
+  {
+   "nhom": "LNB00039",
+   "k": "K2",
+   "tieu_de": "Thang Fahrenheit",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ."
+  },
+  {
+   "nhom": "LNB00039",
+   "k": "K3",
+   "tieu_de": "Công thức chuyển nhiệt độ giữa các thang",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 51,
+     "chu_thich": "Hình 3-1 Các thang đo nhiệt độ (điểm sôi/đóng băng trên ba thang)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "in tr.49; nền xám sạn, chữ nhỏ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình so sánh ba thang đúng ý nhưng hơi sạn; có thể vẽ lại sạch nếu muốn."
+  },
+  {
+   "nhom": "LNB00040",
+   "k": "K0",
+   "tieu_de": "Nhiệt dung riêng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa + công thức."
+  },
+  {
+   "nhom": "LNB00040",
+   "k": "K1",
+   "tieu_de": "Nhiệt nóng chảy riêng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa + công thức."
+  },
+  {
+   "nhom": "LNB00040",
+   "k": "K2",
+   "tieu_de": "Nhiệt hoá hơi riêng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa + công thức."
+  },
+  {
+   "nhom": "LNB00041",
+   "k": "K0",
+   "tieu_de": "Nhiệt lượng làm thay đổi nhiệt độ",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00041",
+   "k": "K1",
+   "tieu_de": "Nhiệt lượng làm vật nóng chảy hoàn toàn",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00041",
+   "k": "K2",
+   "tieu_de": "Nhiệt lượng làm chất lỏng hoá hơi hoàn toàn",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00042",
+   "k": "K0",
+   "tieu_de": "Nhiệt độ của hệ khi có cân bằng nhiệt",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00042",
+   "k": "K1",
+   "tieu_de": "Vật toả nhiệt và vật thu nhiệt",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00042",
+   "k": "K2",
+   "tieu_de": "Hiệu suất chuyển hoá năng lượng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức; sách không có hình."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K0",
+   "tieu_de": "Chuyển động nhiệt",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa chữ."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K1",
+   "tieu_de": "Hiện tượng khuếch tán",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 11,
+     "chu_thich": "Hình 1-1 Hiện tượng khuếch tán (giọt mực lan trong cốc nước, 4 khung)",
+     "loai": "anh_that",
+     "chat_luong": "tam",
+     "ghi": "in tr.9; ảnh nhỏ, hơi mờ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2
+   ],
+   "ly_do": "Ảnh thí nghiệm đúng ý, độ nét vừa; có thể tìm ảnh mạng nét hơn."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K2",
+   "tieu_de": "Chuyển động Brown",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 11,
+     "chu_thich": "Hình 1-2 Thí nghiệm của Brown (kính hiển vi + quỹ đạo hạt phấn hoa)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "in tr.9; lưới ô li, quỹ đạo gấp khúc"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình quỹ đạo Brown đúng ý."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K3",
+   "tieu_de": "Nguyên nhân và đặc điểm của chuyển động Brown",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 11,
+     "chu_thich": "Hình 1-3 Hạt phấn hoa chịu tác động của các phân tử nước",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "in tr.9"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình phân tử nước va đập hạt phấn hoa đúng ý."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K4",
+   "tieu_de": "Chú ý: hạt bụi không phải chuyển động Brown",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chú ý chữ."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K5",
+   "tieu_de": "Mô hình động học phân tử chất khí",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 13,
+     "chu_thich": "Hình 1-7 Cấu trúc chất khí",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.11"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Dùng lại hình cấu trúc khí."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K6",
+   "tieu_de": "Khí lí tưởng",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ phân tử là chất điểm, va chạm đàn hồi; sách không có."
+  },
+  {
+   "nhom": "LNB00044",
+   "k": "K7",
+   "tieu_de": "Các thông số trạng thái của khí",
+   "can_hinh": "nen",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 101,
+     "chu_thich": "Bảng 6 sơ đồ xilanh–piston và công thức p (p0, p0+mg/S, …)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.99; mục 1.5 xác định áp suất"
+    },
+    {
+     "trang_pdf": 102,
+     "chu_thich": "Ống thuỷ tinh thẳng/nghiêng, ống chữ U, ống cắm bể chất lỏng + công thức p",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.100"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Chỉ cần nếu khối có mục xác định áp suất; sách có sơ đồ sạch."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K0",
+   "tieu_de": "Ba quá trình đẳng quá trình",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa chữ."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K1",
+   "tieu_de": "Quá trình đẳng nhiệt (Boyle–Mariotte)",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định luật chữ + công thức; đồ thị gán K4."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K2",
+   "tieu_de": "Quá trình đẳng áp",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ + công thức; đồ thị gán K5."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K3",
+   "tieu_de": "Quá trình đẳng tích",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ + công thức; đồ thị gán K6."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K4",
+   "tieu_de": "Đồ thị quá trình đẳng nhiệt",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 110,
+     "chu_thich": "Đồ thị đẳng nhiệt: p–V (hyperbol), p–1/V, p–T, V–T",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.108; mỗi hệ trục một đường, chưa có hai đường T1<T2"
+    }
+   ],
+   "de_xuat": 3,
+   "co_the": [
+    1
+   ],
+   "ly_do": "Nội dung K4 nói hai đường T2>T1; sách chỉ vẽ một đường nên vẽ lại đủ ý."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K5",
+   "tieu_de": "Đồ thị quá trình đẳng áp",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 111,
+     "chu_thich": "Đồ thị đẳng áp: V–T, V–t, p–T, p–V",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.109; nét đứt kéo về gốc"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị sạch đúng ý."
+  },
+  {
+   "nhom": "LNB00045",
+   "k": "K6",
+   "tieu_de": "Đồ thị quá trình đẳng tích",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 111,
+     "chu_thich": "Đồ thị đẳng tích: p–T, p–t, V–T, p–V",
+     "loai": "do_thi",
+     "chat_luong": "tot",
+     "ghi": "in tr.109"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị sạch đúng ý."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K0",
+   "tieu_de": "Hằng số Avogadro",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Hằng số chữ."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K1",
+   "tieu_de": "Số mol, số phân tử, khối lượng và thể tích",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 14,
+     "chu_thich": "Hai sơ đồ tam giác N–m–V và N_A–M–V_m (×m0, ×V0, ×ρ)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "in tr.12, mục \"Kiến thức cần nhớ\" bài tập Dạng 1"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ đổi đơn vị gọn, giúp nhớ quan hệ."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K2",
+   "tieu_de": "Khối lượng và thể tích của một phân tử",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K3",
+   "tieu_de": "Chú ý V0 và số phân tử trong 1 g nước",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chú ý chữ."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K4",
+   "tieu_de": "Phương trình trạng thái của một lượng khí",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00046",
+   "k": "K5",
+   "tieu_de": "Phương trình Clapeyron",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00047",
+   "k": "K0",
+   "tieu_de": "Khí đa quá trình",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức chữ."
+  },
+  {
+   "nhom": "LNB00047",
+   "k": "K1",
+   "tieu_de": "Các khối khí đồng thời biến đổi",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức chữ."
+  },
+  {
+   "nhom": "LNB00048",
+   "k": "K0",
+   "tieu_de": "Áp suất do phân tử khí tác dụng lên thành bình",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Suy luận dựa trên bình lập phương cạnh l, phân tử bật lại với tốc độ v; sách chỉ có chữ nên cần vẽ."
+  },
+  {
+   "nhom": "LNB00048",
+   "k": "K1",
+   "tieu_de": "Áp suất của khí trong bình",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ 3 cặp mặt thành đối diện (N/3 phân tử mỗi phương) giúp hiểu; sách không có."
+  },
+  {
+   "nhom": "LNB00048",
+   "k": "K2",
+   "tieu_de": "Tốc độ căn quân phương",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00048",
+   "k": "K3",
+   "tieu_de": "Áp suất theo động năng trung bình",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00049",
+   "k": "K0",
+   "tieu_de": "Liên hệ giữa động năng phân tử và nhiệt độ",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00049",
+   "k": "K1",
+   "tieu_de": "Hằng số Boltzmann",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Hằng số chữ."
+  }
+ ],
+ "hinh_le": [
+  {
+   "trang_pdf": 9,
+   "chu_thich": "Ảnh mở đầu chương 1: tảng băng nổi trên biển (ảnh thật)"
+  },
+  {
+   "trang_pdf": 110,
+   "chu_thich": "Hình 2-1 Đèn trời và Hình 2-2 Khinh khí cầu (ảnh thật xám, đầu chủ đề Đẳng quá trình); in tr.108"
+  },
+  {
+   "trang_pdf": 13,
+   "chu_thich": "Hình 1-6 Tinh thể muối ăn (đã ghi kèm K3 LNB00034)"
+  },
+  {
+   "trang_pdf": 33,
+   "chu_thich": "Bảng so sánh cấu trúc rắn–lỏng–khí (in tr.31, ở phần bài tập Dạng 4)"
+  }
+ ],
+ "trang_da_doc": "Tập 1, trang PDF: 9-14, 22-23, 33-40, 50-54, 58-61, 72-77, 88-93, 100-103, 110-113, 125-130, 136-141, 144, 160, 164. Lưu ý: trang PDF = số in + 2; các số trạm chép ghi thực ra là số IN, nên trang_pdf trong file này đã cộng 2 và ghi thêm số in trong cột ghi."
+}

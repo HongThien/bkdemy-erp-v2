@@ -1,0 +1,695 @@
+{
+ "khoi": [
+  {
+   "nhom": "LNB00060",
+   "k": "K0",
+   "tieu_de": "Mô hình nguyên tử bánh mận",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 121,
+     "chu_thich": "Hình 1-1 Mô hình nguyên tử bánh mận (chấm điện tích dương + quả cầu cắt)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Cần hình để thấy điện tích dương phân bố đều + electron nhúng"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K1",
+   "tieu_de": "Thí nghiệm tán xạ alpha của Rutherford",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 121,
+     "chu_thich": "Hình 1-2 Thí nghiệm tán xạ alpha (cấu tạo thiết bị + sơ đồ nhìn từ trên)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "chú thích tiếng Việt rõ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Cần sơ đồ bố trí thí nghiệm (nguồn Po, lá vàng, màn huỳnh quang)"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K2",
+   "tieu_de": "Phân tích kết quả thí nghiệm",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sách không có hình riêng; nên có quỹ đạo hạt α lệch so với mô hình Thomson"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K3",
+   "tieu_de": "Mô hình hành tinh nguyên tử",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 122,
+     "chu_thich": "Quỹ đạo hạt α lệch gần hạt nhân (mô hình hành tinh nguyên tử), không đánh số",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nhỏ, nét mảnh, góc phải trang"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình sách đúng ý nhưng nhỏ/mảnh; nếu cắt mờ thì vẽ lại"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K4",
+   "tieu_de": "Cấu trúc của hạt nhân",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ hạt nhân gồm p, n trong nguyên tử; sách không có"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K5",
+   "tieu_de": "Kí hiệu hạt nhân",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức/kí hiệu"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K6",
+   "tieu_de": "Đồng vị",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ 3 đồng vị hydrogen (p, n); sách không có"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K7",
+   "tieu_de": "Đơn vị khối lượng nguyên tử",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa + công thức"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K8",
+   "tieu_de": "Lực hạt nhân",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ là đủ"
+  },
+  {
+   "nhom": "LNB00060",
+   "k": "K9",
+   "tieu_de": "Tính số hạt trong khối lượng m gam chất",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phương pháp tính"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K0",
+   "tieu_de": "Khối lượng trong thuyết tương đối",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K1",
+   "tieu_de": "Hệ thức Anh-xtanh",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K2",
+   "tieu_de": "Các hệ quả của hệ thức Anh-xtanh",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K3",
+   "tieu_de": "Độ hụt khối",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K4",
+   "tieu_de": "Năng lượng liên kết",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ nucleon rời sang hạt nhân, năng lượng liên kết; sách không có"
+  },
+  {
+   "nhom": "LNB00061",
+   "k": "K5",
+   "tieu_de": "Năng lượng liên kết riêng",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Cần đồ thị ε theo A để thấy hạt nhân trung bình bền; sách không có"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K0",
+   "tieu_de": "Phản ứng hạt nhân",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ thí nghiệm Rutherford α + N14 sang O17 + p; sách không có"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K1",
+   "tieu_de": "Phương trình phản ứng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K2",
+   "tieu_de": "Các định luật bảo toàn",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K3",
+   "tieu_de": "Không có bảo toàn khối lượng…",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Một câu chữ"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K4",
+   "tieu_de": "Cân bằng phương trình phản ứng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phương pháp"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K5",
+   "tieu_de": "Năng lượng toả ra hay thu vào",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ mức năng lượng trước/sau phản ứng; sách không có"
+  },
+  {
+   "nhom": "LNB00062",
+   "k": "K6",
+   "tieu_de": "Phóng xạ, phương trình các loại",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K0",
+   "tieu_de": "Phản ứng phân hạch",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ n + U235 sang U236* sang Y + Z + k n; sách không có hình"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K1",
+   "tieu_de": "Phản ứng dây chuyền",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ neutron nhân lên theo k; sách không có"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K2",
+   "tieu_de": "Lò phản ứng hạt nhân",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 165,
+     "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ lò tốt, cắt được ngay"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K3",
+   "tieu_de": "Phản ứng nhiệt hạch",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ D + T sang He + n; sách không có"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K4",
+   "tieu_de": "Lò phản ứng phân hạch hạt nhân",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 165,
+     "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Dùng sơ đồ lò (thanh uranium, cadmium, than chì, xi măng)"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K5",
+   "tieu_de": "Chất điều tiết",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 165,
+     "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình lò có chú thích than chì làm chất điều tiết"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K6",
+   "tieu_de": "Thanh điều khiển",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 165,
+     "chu_thich": "Sơ đồ lò phản ứng hạt nhân dùng than chì làm chất điều tiết (thanh cadmium, uranium, xi măng bảo vệ)",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình lò có thanh cadmium"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K7",
+   "tieu_de": "Chất tải nhiệt và nhà máy điện hạt nhân",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 166,
+     "chu_thich": "Sơ đồ nhỏ máy điện hạt nhân (lò, bộ trao đổi nhiệt, tua bin, máy phát)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "chữ chú thích nhỏ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3,
+    2
+   ],
+   "ly_do": "Sơ đồ nhà máy tạm dùng được; có thể thêm ảnh thật nhà máy"
+  },
+  {
+   "nhom": "LNB00063",
+   "k": "K8",
+   "tieu_de": "An toàn phóng xạ ở nhà máy điện hạt nhân",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 167,
+     "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+     "loai": "anh_that",
+     "chat_luong": "xau",
+     "ghi": "ảnh xám, tối"
+    }
+   ],
+   "de_xuat": 2,
+   "co_the": [],
+   "ly_do": "Ảnh thật khu nhà máy/biển cảnh báo; ảnh sách xấu"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K0",
+   "tieu_de": "Hiện tượng phóng xạ",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ hạt nhân mẹ phân rã ra hạt nhân con + tia"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K1",
+   "tieu_de": "Phóng xạ là phản ứng hạt nhân tự phát",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ + phương trình"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K2",
+   "tieu_de": "Phóng xạ α",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phương trình; hình so sánh nằm ở K8"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K3",
+   "tieu_de": "Phóng xạ β",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K4",
+   "tieu_de": "Phóng xạ β-",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phương trình"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K5",
+   "tieu_de": "Phóng xạ β+",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Phương trình"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K6",
+   "tieu_de": "Neutrino",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Một câu chữ"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K7",
+   "tieu_de": "Phóng xạ γ",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chữ"
+  },
+  {
+   "nhom": "LNB00064",
+   "k": "K8",
+   "tieu_de": "So sánh các tia phóng xạ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ lệch trong điện trường + khả năng xuyên qua giấy/nhôm/chì; sách không có"
+  },
+  {
+   "nhom": "LNB00065",
+   "k": "K0",
+   "tieu_de": "Định luật phóng xạ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 151,
+     "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+     "loai": "do_thi",
+     "chat_luong": "tam",
+     "ghi": "có đánh dấu điểm, đủ dùng"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đồ thị N-t sách dùng được; vẽ lại nếu muốn sạch"
+  },
+  {
+   "nhom": "LNB00065",
+   "k": "K1",
+   "tieu_de": "Số hạt nhân và khối lượng còn lại",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 151,
+     "chu_thich": "Đồ thị N theo t (N0, N0/2, N0/8 tại T, 2T, 3T)",
+     "loai": "do_thi",
+     "chat_luong": "tam",
+     "ghi": "có đánh dấu điểm, đủ dùng"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Dùng lại đồ thị N-t"
+  },
+  {
+   "nhom": "LNB00065",
+   "k": "K2",
+   "tieu_de": "Hạt nhân mẹ và hạt nhân con",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Bảng/công thức"
+  },
+  {
+   "nhom": "LNB00065",
+   "k": "K3",
+   "tieu_de": "Độ phóng xạ",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị H-t giảm mũ; sách không có"
+  },
+  {
+   "nhom": "LNB00066",
+   "k": "K0",
+   "tieu_de": "Nguyên tử đánh dấu",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 166,
+     "chu_thich": "Ảnh máy quét PET (bệnh nhân vào máy)",
+     "loai": "anh_that",
+     "chat_luong": "xau",
+     "ghi": "đen trắng, sạn"
+    }
+   ],
+   "de_xuat": 2,
+   "co_the": [],
+   "ly_do": "Ảnh PET/thiết bị thật; ảnh sách xấu"
+  },
+  {
+   "nhom": "LNB00066",
+   "k": "K1",
+   "tieu_de": "Các ứng dụng khác của hiện tượng phóng xạ",
+   "can_hinh": "nen",
+   "so_hinh": 2,
+   "hinh_sach": [],
+   "de_xuat": 2,
+   "co_the": [],
+   "ly_do": "Ảnh thật: chiếu xạ tạo giống, pin hạt nhân; sách không có"
+  },
+  {
+   "nhom": "LNB00066",
+   "k": "K2",
+   "tieu_de": "Đầu báo khói dùng tia alpha",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 167,
+     "chu_thich": "Sơ đồ đầu báo khói dùng tia alpha",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nét vẽ tay, hơi rối"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ sách đủ dùng nhưng rối; vẽ lại nếu cần"
+  },
+  {
+   "nhom": "LNB00066",
+   "k": "K3",
+   "tieu_de": "Ô nhiễm phóng xạ và an toàn phóng xạ",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 167,
+     "chu_thich": "Biển cảnh báo phóng xạ trước nhà máy",
+     "loai": "anh_that",
+     "chat_luong": "xau",
+     "ghi": "ảnh xám, tối"
+    }
+   ],
+   "de_xuat": 2,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Biển cảnh báo/thùng chì; ảnh sách xấu (có thể vẽ lại biển)"
+  }
+ ],
+ "hinh_le": [
+  {
+   "trang_pdf": 124,
+   "chu_thich": "Câu 5 bài tập: 4 quỹ đạo tán xạ hạt α (A-D), chỉ trong bài tập"
+  },
+  {
+   "trang_pdf": 155,
+   "chu_thich": "Đồ thị ln(1-ΔN/N0)^-1 theo t và lnN theo t trong bài tập định luật phóng xạ (PDF 155-156)"
+  },
+  {
+   "trang_pdf": 169,
+   "chu_thich": "4 biển cảnh báo (sinh học, phóng xạ, điện, chú ý) + lặp lại sơ đồ lò, trong bài tập"
+  }
+ ],
+ "trang_da_doc": "121-130, 134-157, 163-172 (PDF = trang in + 5)"
+}

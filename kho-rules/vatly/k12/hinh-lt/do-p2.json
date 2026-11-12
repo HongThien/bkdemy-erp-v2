@@ -1,0 +1,1240 @@
+{
+ "khoi": [
+  {
+   "nhom": "LNB00050",
+   "k": "K0",
+   "tieu_de": "Từ trường",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa thuần chữ."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K1",
+   "tieu_de": "Cảm ứng từ",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 8,
+     "chu_thich": "Hình 1-5 Đường sức từ và vectơ cảm ứng từ",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình 1-5 có vectơ B tiếp tuyến đường sức giúp hình dung chiều B."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K2",
+   "tieu_de": "Từ phổ và đường sức từ",
+   "can_hinh": "can",
+   "so_hinh": 3,
+   "hinh_sach": [
+    {
+     "trang_pdf": 8,
+     "chu_thich": "Hình 1-4 Từ phổ của nam châm thẳng",
+     "loai": "anh_that",
+     "chat_luong": "tam",
+     "ghi": "ảnh mạt sắt đen trắng, hơi sạn"
+    },
+    {
+     "trang_pdf": 8,
+     "chu_thich": "Hình 1-5 Đường sức từ và vectơ cảm ứng từ",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 8,
+     "chu_thich": "Hình 1-6 Đường sức từ bên ngoài thanh nam châm",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "đường sức dày/thưa rõ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2,
+    3
+   ],
+   "ly_do": "Từ phổ + đường sức + nam châm: sách có đủ; từ phổ là ảnh thật hơi sạn, có thể thay bằng ảnh mạt sắt trên mạng."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K3",
+   "tieu_de": "Đặc điểm của đường sức từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 8,
+     "chu_thich": "Hình 1-6 Đường sức từ bên ngoài thanh nam châm",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "đường sức dày/thưa rõ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đường sức khép kín, dày/thưa: Hình 1-6 rõ."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K4",
+   "tieu_de": "Từ trường của dòng điện thẳng dài",
+   "can_hinh": "can",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 9,
+     "chu_thich": "Hình 1-7(b) Đường sức từ dòng điện thẳng (đường tròn đồng tâm)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 9,
+     "chu_thich": "Hình 1-8 Từ trường của dòng điện thẳng (ký hiệu ⊗ ⊙ × •)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đường sức tròn đồng tâm + ký hiệu ⊗⊙: có trong sách. Hình 1-7(a) từ phổ ảnh nhỏ, sạn (xấu)."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K5",
+   "tieu_de": "Quy tắc nắm tay phải (dòng điện thẳng)",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 9,
+     "chu_thich": "Hình 1-7(c) Quy tắc nắm tay phải",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "bàn tay vẽ nét, đủ rõ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Quy tắc nắm tay phải dòng thẳng: Hình 1-7(c)."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K6",
+   "tieu_de": "Từ trường của dòng điện tròn",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 9,
+     "chu_thich": "Hình 1-9(b) Đường sức từ dòng điện tròn",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 9,
+     "chu_thich": "Hình 1-9(c) Quy tắc nắm tay phải (vòng dây)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Đường sức + nắm tay phải vòng dây: Hình 1-9(b,c). Hình 1-9(a) từ phổ ảnh xấu."
+  },
+  {
+   "nhom": "LNB00050",
+   "k": "K7",
+   "tieu_de": "Từ trường của ống dây hình trụ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 10,
+     "chu_thich": "Hình 1-10(b) Đường sức từ ống dây",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 10,
+     "chu_thich": "Hình 1-10(c) Quy tắc nắm tay phải (ống dây)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2,
+    3
+   ],
+   "ly_do": "Đường sức ống dây giống nam châm: Hình 1-10(b,c). Hình 1-10(a) từ phổ ảnh xấu."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K0",
+   "tieu_de": "Lực từ (lực Ampere)",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 17,
+     "chu_thich": "Hình 2-1 Phương của lực từ vuông góc với đoạn dây và vectơ cảm ứng từ",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "3D xám, hơi mờ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Một hình tổng quan lực từ lên dây."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K1",
+   "tieu_de": "Phương của lực từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 17,
+     "chu_thich": "Hình 2-1 Phương của lực từ vuông góc với đoạn dây và vectơ cảm ứng từ",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "3D xám, hơi mờ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Phương lực vuông góc cả dây và B: Hình 2-1."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K2",
+   "tieu_de": "Quy tắc bàn tay trái",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 17,
+     "chu_thich": "Hình 2-2 Quy tắc bàn tay trái",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Quy tắc bàn tay trái: Hình 2-2."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K3",
+   "tieu_de": "Độ lớn của lực từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 18,
+     "chu_thich": "Hình 2-3 Quan hệ giữa B và chiều dòng điện (phân tích B vuông góc, B song song)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Phân tích B theo góc theta: Hình 2-3."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K4",
+   "tieu_de": "Chú ý",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Một câu chữ, không cần hình riêng."
+  },
+  {
+   "nhom": "LNB00051",
+   "k": "K5",
+   "tieu_de": "Cảm ứng từ và đơn vị tesla",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức và đơn vị."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K0",
+   "tieu_de": "Lực Lorentz",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa thuần chữ."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K1",
+   "tieu_de": "Chiều của lực Lorentz",
+   "can_hinh": "can",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 28,
+     "chu_thich": "Hình 3-1 Phương của lực Lorentz vuông góc với v và B (a: v vuông góc B, b: không vuông góc)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 28,
+     "chu_thich": "Hình 3-2 Quy tắc bàn tay trái",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Phương lực + bàn tay trái: Hình 3-1, 3-2."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K2",
+   "tieu_de": "Độ lớn của lực Lorentz",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 28,
+     "chu_thich": "Hình 3-1 Phương của lực Lorentz vuông góc với v và B (a: v vuông góc B, b: không vuông góc)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình 3-1(b) thể hiện góc theta giữa v và B."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K3",
+   "tieu_de": "Chuyển động của hạt tích điện trong từ trường đều",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 29,
+     "chu_thich": "Hình 3-3 Hạt tích điện chuyển động tròn đều trong từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Quỹ đạo tròn đều, lực hướng tâm: Hình 3-3."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K4",
+   "tieu_de": "Ống tia âm cực (đèn hình CRT)",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 42,
+     "chu_thich": "Hình 4-1 Nguyên lý hoạt động của đèn hình",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nhỏ, chữ chú thích bé"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2,
+    3
+   ],
+   "ly_do": "Sơ đồ CRT có trong sách nhưng nhỏ; có thể thêm ảnh thật ống CRT."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K5",
+   "tieu_de": "Máy quang phổ khối",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 42,
+     "chu_thich": "Hình 4-2 Nguyên lý hoạt động của máy quang phổ khối",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ máy quang phổ khối rõ."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K6",
+   "tieu_de": "Máy gia tốc cyclotron",
+   "can_hinh": "can",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 43,
+     "chu_thich": "Hình 4-3 Nguyên lý hoạt động của máy gia tốc đa tầng",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nhỏ"
+    },
+    {
+     "trang_pdf": 43,
+     "chu_thich": "Hình 4-4 Nguyên lý hoạt động của máy cyclotron",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": "dựng 3D, sạch"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2,
+    3
+   ],
+   "ly_do": "Hình 4-4 là hình chính; 4-3 chỉ để dẫn dắt."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K7",
+   "tieu_de": "Máy phát điện từ thủy động lực học (MHD)",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 44,
+     "chu_thich": "Hình 4-5 Nguyên lý hoạt động của máy phát điện từ thủy động lực học",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ MHD: Hình 4-5."
+  },
+  {
+   "nhom": "LNB00052",
+   "k": "K8",
+   "tieu_de": "Lưu lượng kế điện từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 45,
+     "chu_thich": "Hình 4-6 Nguyên lý hoạt động của lưu lượng kế điện từ",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình 4-6 sạch."
+  },
+  {
+   "nhom": "LNB00053",
+   "k": "K0",
+   "tieu_de": "Từ thông",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 52,
+     "chu_thich": "Hình 5-1 Từ thông (mặt S vuông góc B)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Mặt S vuông góc đường sức: Hình 5-1."
+  },
+  {
+   "nhom": "LNB00053",
+   "k": "K1",
+   "tieu_de": "Cảm ứng từ là mật độ từ thông",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 52,
+     "chu_thich": "Hình 5-1 Từ thông (mặt S vuông góc B)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Mật độ đường sức dày/thưa minh hoạ tốt hơn; Hình 5-1 dùng tạm."
+  },
+  {
+   "nhom": "LNB00053",
+   "k": "K2",
+   "tieu_de": "Mặt phẳng không vuông góc với đường sức từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 52,
+     "chu_thich": "Hình 5-2 Mặt không vuông góc với đường sức từ (S, S')",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hình chiếu S' = S cos alpha: Hình 5-2."
+  },
+  {
+   "nhom": "LNB00053",
+   "k": "K3",
+   "tieu_de": "Cuộn dây N vòng; giá trị lớn nhất, nhỏ nhất của từ thông",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 52,
+     "chu_thich": "Hình 5-2 Mặt không vuông góc với đường sức từ (S, S')",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 3,
+   "co_the": [
+    1
+   ],
+   "ly_do": "Đồ thị Phi theo alpha và vị trí cực đại/cực tiểu sách chưa có; vẽ code rõ hơn."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K0",
+   "tieu_de": "Hiện tượng cảm ứng điện từ",
+   "can_hinh": "can",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 57,
+     "chu_thich": "Hình 4-1 (in nhầm số) Thí nghiệm nghiên cứu hiện tượng cảm ứng điện từ (a: nam châm-cuộn dây, b: hai cuộn dây)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "số hiệu in nhầm là 4-1"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Hai thí nghiệm nam châm-cuộn dây và hai cuộn dây: có trong sách."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K1",
+   "tieu_de": "Định luật Lenz",
+   "can_hinh": "can",
+   "so_hinh": 4,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sách không có hình Lenz; cần sơ đồ nam châm lại gần/ra xa, từ thông tăng/giảm, chiều dòng cảm ứng."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K2",
+   "tieu_de": "Xác định chiều dòng điện cảm ứng",
+   "can_hinh": "nen",
+   "so_hinh": 2,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Sơ đồ B, B cảm ứng khi Phi tăng/giảm; sách không có."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K3",
+   "tieu_de": "Định luật Faraday",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định luật Faraday: chữ + công thức."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K4",
+   "tieu_de": "Suất điện động cảm ứng trong đoạn dây chuyển động cắt đường sức từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 65,
+     "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Khung CDMN, MN dịch chuyển: Hình 7-1."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K5",
+   "tieu_de": "Vận tốc hợp với đường sức từ một góc $\\theta$",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 65,
+     "chu_thich": "Hình 7-2 Hướng chuyển động của đoạn dây không vuông góc với đường sức từ",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Phân tích v thành thành phần vuông góc và song song: Hình 7-2."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K6",
+   "tieu_de": "Đoạn dây chuyển động là một nguồn điện",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 65,
+     "chu_thich": "Hình 7-1 Đoạn dây di chuyển trong mạch kín đặt trong từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Dùng lại Hình 7-1."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K7",
+   "tieu_de": "Suất điện động cảm ứng trong cuộn dây N vòng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức theo N vòng."
+  },
+  {
+   "nhom": "LNB00054",
+   "k": "K8",
+   "tieu_de": "Quy tắc bàn tay phải",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 66,
+     "chu_thich": "Hình quy tắc bàn tay phải (thanh dẫn MN giữa hai cực nam châm, bàn tay vẽ nét)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "không thấy số hiệu"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Bàn tay phải + thanh MN + v, B: có trong sách (PDF 66)."
+  },
+  {
+   "nhom": "LNB00055",
+   "k": "K0",
+   "tieu_de": "Dòng điện xoáy (dòng Fu-cô)",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 105,
+     "chu_thich": "Hình (không số) khối kim loại trong từ trường biến thiên, dòng xoáy",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nhỏ, ở đầu trang"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Khối kim loại + dòng xoáy."
+  },
+  {
+   "nhom": "LNB00055",
+   "k": "K1",
+   "tieu_de": "Lò luyện kim",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 105,
+     "chu_thich": "Hình (không số) lò luyện kim, cuộn dây quấn ngoài",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "nhỏ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2,
+    3
+   ],
+   "ly_do": "Sơ đồ lò luyện; cũng có ảnh thật lò cảm ứng."
+  },
+  {
+   "nhom": "LNB00055",
+   "k": "K2",
+   "tieu_de": "Bếp từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 105,
+     "chu_thich": "Hình 9-3(a)(b)(c) Bếp từ: (a) ảnh bếp, (b) ảnh bên trong, (c) dòng xoáy ở đáy nồi",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "(a)(b) ảnh nhỏ hơi sạn; (c) sơ đồ rõ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    2
+   ],
+   "ly_do": "Hình 9-3(c) dùng được; ảnh thật bếp từ có thể lấy từ mạng."
+  },
+  {
+   "nhom": "LNB00055",
+   "k": "K3",
+   "tieu_de": "Hãm chuyển động bằng điện từ (phanh điện từ)",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 106,
+     "chu_thich": "Hình 9-4 Tấm kim loại dao động trong từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Con lắc tấm đồng giữa hai cực nam châm."
+  },
+  {
+   "nhom": "LNB00055",
+   "k": "K4",
+   "tieu_de": "Dòng điện xoáy cũng có hại, cần giảm tác hại",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 106,
+     "chu_thich": "Hình 9-5 Tấm thép silicon trong máy biến áp giúp giảm tổn thất do dòng điện xoáy",
+     "loai": "so_do",
+     "chat_luong": "tot",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Lõi thép ghép lá silicon: rõ."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K0",
+   "tieu_de": "Hiện tượng cảm ứng điện từ trên khung dây",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 81,
+     "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "hai sơ đồ nhỏ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Khung dây quay, pháp tuyến n."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K1",
+   "tieu_de": "Biểu thức từ thông qua khung dây",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 81,
+     "chu_thich": "Hình (không số) khung dây quay trong từ trường: pháp tuyến n, góc omega t",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": "hai sơ đồ nhỏ"
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Dùng lại hình khung dây/pháp tuyến."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K2",
+   "tieu_de": "Biểu thức suất điện động cảm ứng",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị Phi và e theo t (e trễ pha pi/2) sách không có."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K3",
+   "tieu_de": "Quan hệ giữa e và Φ",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị Phi-e vuông pha (elip): sách không có."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K4",
+   "tieu_de": "Máy phát điện xoay chiều một pha",
+   "can_hinh": "can",
+   "so_hinh": 2,
+   "hinh_sach": [
+    {
+     "trang_pdf": 82,
+     "chu_thich": "Hình (không số) máy phát điện xoay chiều một cặp cực / hai cặp cực",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Stato-rôto một và hai cặp cực."
+  },
+  {
+   "nhom": "LNB00056",
+   "k": "K5",
+   "tieu_de": "Máy phát điện xoay chiều ba pha",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 82,
+     "chu_thich": "Hình (không số) máy phát điện xoay chiều ba pha (stato 3 cuộn, rôto nam châm)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ ba cuộn lệch 120 độ; có thể thêm đồ thị e1,e2,e3."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K0",
+   "tieu_de": "Dòng điện xoay chiều",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị i theo t; sách trang này chỉ có công thức."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K1",
+   "tieu_de": "Điện áp xoay chiều",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị u theo t."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K2",
+   "tieu_de": "Độ lệch pha giữa u và i",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [],
+   "de_xuat": 3,
+   "co_the": [],
+   "ly_do": "Đồ thị u, i lệch pha phi."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K3",
+   "tieu_de": "Giá trị hiệu dụng của cường độ dòng điện",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa + chứng minh bằng công thức."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K4",
+   "tieu_de": "Công thức giá trị hiệu dụng",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Công thức."
+  },
+  {
+   "nhom": "LNB00057",
+   "k": "K5",
+   "tieu_de": "Số liệu ghi trên thiết bị và dụng cụ đo",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Chú ý thuần chữ."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K0",
+   "tieu_de": "Máy biến áp",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Định nghĩa thuần chữ."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K1",
+   "tieu_de": "Cấu tạo và nguyên tắc hoạt động",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 92,
+     "chu_thich": "Hình (không số) cấu tạo máy biến áp: lõi sắt, cuộn sơ cấp/thứ cấp, ký hiệu",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Lõi sắt kín + hai cuộn dây."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K2",
+   "tieu_de": "Điện áp và cường độ dòng điện qua máy biến áp",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 92,
+     "chu_thich": "Hình (không số) sơ đồ máy biến áp N1, N2, u1, u2",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ điện kèm ký hiệu."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K3",
+   "tieu_de": "Truyền tải điện năng đi xa",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 100,
+     "chu_thich": "Hình 1 Mô hình truyền tải điện năng đi xa",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Nhà máy-đường dây-nơi tiêu thụ."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K4",
+   "tieu_de": "Công suất hao phí và hiệu suất truyền tải",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 100,
+     "chu_thich": "Hình 2 Sơ đồ mạch điện truyền tải rút gọn (R, U, U_R, U_tt)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sơ đồ mạch có R đường dây."
+  },
+  {
+   "nhom": "LNB00058",
+   "k": "K5",
+   "tieu_de": "Cách giảm hao phí",
+   "can_hinh": "khong",
+   "so_hinh": 0,
+   "hinh_sach": [],
+   "de_xuat": null,
+   "co_the": [],
+   "ly_do": "Nhận xét thuần chữ + công thức."
+  },
+  {
+   "nhom": "LNB00059",
+   "k": "K0",
+   "tieu_de": "Điện trường xoáy",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 109,
+     "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Điện trường xoáy."
+  },
+  {
+   "nhom": "LNB00059",
+   "k": "K1",
+   "tieu_de": "Điện trường biến thiên tạo ra từ trường",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 109,
+     "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Tụ điện: E tăng sinh B."
+  },
+  {
+   "nhom": "LNB00059",
+   "k": "K2",
+   "tieu_de": "Điện từ trường",
+   "can_hinh": "nen",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 109,
+     "chu_thich": "Hình (không số) từ trường biến thiên sinh điện trường xoáy (vòng dây, đường sức điện kín)",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    },
+    {
+     "trang_pdf": 109,
+     "chu_thich": "Hình (không số) điện trường biến thiên giữa hai bản tụ sinh từ trường",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Tái dùng hai hình trên."
+  },
+  {
+   "nhom": "LNB00059",
+   "k": "K3",
+   "tieu_de": "Sóng điện từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 110,
+     "chu_thich": "Hình (không số) sóng điện từ: E và B vuông góc, lan truyền theo z",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "Sóng điện từ E,B,z."
+  },
+  {
+   "nhom": "LNB00059",
+   "k": "K4",
+   "tieu_de": "Đặc điểm và tính chất của sóng điện từ",
+   "can_hinh": "can",
+   "so_hinh": 1,
+   "hinh_sach": [
+    {
+     "trang_pdf": 110,
+     "chu_thich": "Hình (không số) tam diện E, B, v",
+     "loai": "so_do",
+     "chat_luong": "tam",
+     "ghi": ""
+    }
+   ],
+   "de_xuat": 1,
+   "co_the": [
+    3
+   ],
+   "ly_do": "E vuông góc B vuông góc v."
+  }
+ ],
+ "hinh_le": [
+  {
+   "trang_pdf": 18,
+   "chu_thich": "Ví dụ 1 Chủ đề 2: bộ dụng cụ thí nghiệm lực từ lên dây ab (hình bài tập, không thuộc lý thuyết)"
+  },
+  {
+   "trang_pdf": 8,
+   "chu_thich": "Hình 1-4/1-7(a)/1-9(a)/1-10(a): ảnh từ phổ đen trắng, hạt sạn (xấu, nên thay ảnh mạt sắt chất lượng cao nếu cần)"
+  }
+ ],
+ "trang_da_doc": "Đã lướt PDF 8-20, 26-31, 35-112 ở dạng ảnh thu nhỏ; lý thuyết thật ở PDF 8-10, 17-18, 28-29, 42-45, 52, 57, 65-66, 70-71, 81-82, 92, 100, 105-106, 109-110. Trang PDF = trang in - 1 (chủ đề 1-3), từ Chủ đề 4 (sau trang quảng cáo PDF 35-36) = trang in + 5. Lưu ý: số trang trạm chép ghi lệch ±1-5, hình Lenz/Faraday/dòng điện xoay chiều không có trong sách."
+}
