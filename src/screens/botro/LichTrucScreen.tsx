@@ -3,14 +3,15 @@
 // Màn = (1) LƯỚI LỊCH PHÒNG y hệt Bổ trợ… Quản lý phòng › Tổng quan phòng (cùng component TongQuanTuanScreen, cùng nguồn DB fn_phong_lich)
 //       — bấm ô trống = xếp vào đúng ngày/phòng/giờ đó, bấm ô bổ trợ khối = sửa · (2) nút "+ Thêm lịch bổ trợ" → popup (LichKhoiModal)
 //       · (3) danh sách lịch khối đang hiệu lực (lọc môn/khối, "chưa có phòng").
+// 12/11: "Kết thúc" ⇒ "Xoá" (fn_lich_truc_xoa, hỏi khi còn ca có em) · khối CHỐT LỊCH TUẦN (fn_lich_khoi_chot_tuan — tuần nào cũng bấm 1 lần).
 // Lưu → DB ghi lich_truc_bo_tro ⇒ Tổng quan phòng tự thấy (cùng hàm), không có bản sao nào phải đồng bộ.
 // Sau lưu: vá đúng dòng trong danh sách + nạp lại NỀN lưới phòng (CLAUDE.md §2), không trắng màn.
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase'
-import { listLichTruc, ketThucLichTruc, type LichTruc } from '../../lib/botro_yeu'
+import { listLichTruc, type LichTruc } from '../../lib/botro_yeu'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
-import { listPhong, type Phong, type KhoiBanPhong, type LichKhoiInput } from '../../lib/phong'
-import { homNayVN, ddmmVN } from '../../lib/tuan'
+import { listPhong, xoaLichKhoi, trangThaiChotTuan, chotTuan, type Phong, type KhoiBanPhong, type LichKhoiInput, type CaVuong, type ChotTuan } from '../../lib/phong'
+import { homNayVN, ddmmVN, congNgay } from '../../lib/tuan'
 import TongQuanTuanScreen from '../phonghoc/TongQuanTuanScreen'
 import LichKhoiModal, { THU_TEN, thuTuNgay, type LopNho } from './LichKhoiModal'
 
@@ -43,6 +44,12 @@ export default function LichTrucScreen() {
   const [chuaPhong, setChuaPhong] = useState(NHO.chuaPhong)
   const [modal, setModal] = useState<{ init: Partial<LichKhoiInput>; cu: LichKhoiInput | null } | null>(null)
   const [vuaLuu, setVuaLuu] = useState<string | null>(null)
+  const [xoa, setXoa] = useState<{ r: LichTruc; vuong: CaVuong[] } | null>(null) // lịch còn ca đang chạy có em ⇒ hỏi
+  const [chot, setChot] = useState<ChotTuan[]>([])                              // [tuần này, tuần sau]
+  const [dangChot, setDangChot] = useState<string | null>(null)
+  const [chotXong, setChotXong] = useState<string | null>(null)
+  const taiChot = () => Promise.all([trangThaiChotTuan(homNay), trangThaiChotTuan(congNgay(homNay, 7))]).then(setChot).catch((e: any) => setLoi(e?.message ?? String(e)))
+  useEffect(() => { taiChot() }, [lamMoi]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     Promise.all([
@@ -76,10 +83,25 @@ export default function LichTrucScreen() {
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
     setLamMoi((n) => n + 1)
   }
-  async function ketThuc(r: LichTruc) {
-    if (!confirm(`Kết thúc lịch bổ trợ khối ${THU_TEN[r.thu]} ${hhmm(r.gio_bat_dau)}–${hhmm(r.gio_ket_thuc)} (khối ${r.khoi} · ${r.mon}) từ hôm nay? Buổi đã xếp không ảnh hưởng.`)) return
-    try { await ketThucLichTruc(r.id, homNay); setRows((prev) => prev.map((x) => x.id === r.id ? { ...x, hieu_luc_den: homNay } : x)); setLamMoi((n) => n + 1) }
-    catch (e: any) { setLoi(e?.message ?? String(e)) }
+  // Thùy 12/11: Kết thúc ⇒ XOÁ. Còn ca từ hôm nay có em ⇒ DB không xoá, trả danh sách để người dùng chọn.
+  async function xoaDong(r: LichTruc, xacNhan: boolean) {
+    if (!xacNhan && !confirm(`Xoá lịch bổ trợ khối ${THU_TEN[r.thu]} ${hhmm(r.gio_bat_dau)}–${hhmm(r.gio_ket_thuc)} (khối ${r.khoi} · ${r.mon})? Lịch biến khỏi lưới phòng từ hôm nay.`)) return
+    try {
+      const k = await xoaLichKhoi(r.id, xacNhan)
+      if (!k.ok) { setXoa({ r, vuong: k.vuong ?? [] }); return }
+      setXoa(null)
+      setRows((prev) => prev.filter((x) => x.id !== r.id))
+      setLamMoi((n) => n + 1)
+    } catch (e: any) { setLoi(e?.message ?? String(e)) }
+  }
+  async function bamChot(ngay: string) {
+    setDangChot(ngay); setChotXong(null)
+    try {
+      const k = await chotTuan(ngay)
+      setChotXong(`Đã chốt tuần ${ddmmVN(k.tuan)}: sinh ${k.ca_sinh} ca · cập nhật ${k.ca_cap_nhat} · huỷ ${k.ca_huy} ca trống của lịch đã xoá.`)
+      setTimeout(() => setChotXong(null), 6000)
+      setLamMoi((n) => n + 1)
+    } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setDangChot(null) }
   }
   function chonKhoi(ks: KhoiBanPhong[]) {
     const k = ks.find((x) => x.ref_id.startsWith('lt-'))
@@ -102,6 +124,30 @@ export default function LichTrucScreen() {
           <button onClick={() => moThem()} className="rounded-xl bg-teal-600 px-4 py-2.5 text-[14px] font-semibold text-white shadow-sm hover:bg-teal-700">+ Thêm lịch bổ trợ</button>
         </header>
       </div>
+
+      {/* CHỐT LỊCH TUẦN — mỗi tuần bấm 1 lần (kể cả không đổi gì) để đồng bộ ca cả tuần theo lịch khối */}
+      <div className="mx-6 mt-4 flex flex-wrap items-stretch gap-3">
+        {chot.map((c, i) => {
+          const can = !c.da_chot || c.doi_sau_chot
+          return (
+            <div key={c.tuan} className={`flex min-w-[320px] flex-1 items-center gap-3 rounded-2xl px-4 py-3 ring-1 ${!c.da_chot ? (i === 0 ? 'bg-rose-50 ring-rose-200' : 'bg-white ring-slate-200') : c.doi_sau_chot ? 'bg-amber-50 ring-amber-200' : 'bg-emerald-50 ring-emerald-200'}`}>
+              <div className="min-w-0 flex-1">
+                <div className="text-[13px] font-bold text-slate-800">{i === 0 ? 'Tuần này' : 'Tuần sau'} · {ddmmVN(c.tuan)}–{ddmmVN(congNgay(c.tuan, 6))}</div>
+                <div className="text-[12px] text-slate-600">
+                  {!c.da_chot ? (i === 0 ? '⛔ Chưa chốt — bấm Chốt để đồng bộ ca cả tuần' : 'Chưa chốt')
+                    : c.doi_sau_chot ? `⚠ Lịch đã đổi sau lần chốt ${new Date(c.chot_at!).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })} — chốt lại`
+                    : `✓ Đã chốt ${new Date(c.chot_at!).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })}${c.chot_boi ? ' · ' + c.chot_boi : ''}`}
+                </div>
+              </div>
+              <button onClick={() => bamChot(c.tuan)} disabled={dangChot !== null}
+                className={`shrink-0 rounded-xl px-4 py-2 text-[13px] font-semibold disabled:opacity-50 ${can ? 'bg-teal-600 text-white hover:bg-teal-700' : 'bg-white text-teal-700 ring-1 ring-teal-300 hover:bg-teal-50'}`}>
+                {dangChot === c.tuan ? 'Đang chốt…' : c.da_chot ? 'Chốt lại' : 'Chốt lịch tuần'}
+              </button>
+            </div>
+          )
+        })}
+      </div>
+      {chotXong && <p className="mx-6 mt-2 text-[12.5px] font-medium text-emerald-700">{chotXong}</p>}
 
       <div className="mx-6 mt-4 h-[62vh] min-h-[420px] overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
         <TongQuanTuanScreen mauTheo="nguon" lamMoi={lamMoi} ngayDau={NHO.ngayDau ?? undefined} onDoiNgay={(d) => { NHO.ngayDau = d }}
@@ -136,7 +182,7 @@ export default function LichTrucScreen() {
                   <td className="text-[12px] text-slate-500">{ddmmVN(String(r.hieu_luc_tu).slice(0, 10))}</td>
                   <td className="whitespace-nowrap text-right">
                     <button onClick={() => moSua(r)} className="mr-3 text-[12px] font-medium text-teal-700 hover:underline">Sửa</button>
-                    <button onClick={() => ketThuc(r)} className="text-[12px] text-slate-400 hover:text-rose-600">Kết thúc</button>
+                    <button onClick={() => xoaDong(r, false)} className="text-[12px] text-slate-400 hover:text-rose-600">Xoá</button>
                   </td>
                 </tr>
               ))}
@@ -145,6 +191,24 @@ export default function LichTrucScreen() {
         )}
       </div>
 
+      {xoa && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) setXoa(null) }}>
+          <div className="w-full max-w-[520px] overflow-hidden rounded-2xl bg-white shadow-xl">
+            <div className="bg-rose-600 px-5 py-3 text-[15px] font-bold text-white">Lịch này còn ca đang chạy</div>
+            <div className="space-y-3 p-5">
+              <p className="text-[13px] text-slate-600">Lịch {THU_TEN[xoa.r.thu]} {hhmm(xoa.r.gio_bat_dau)}–{hhmm(xoa.r.gio_ket_thuc)} · khối {xoa.r.khoi} · {xoa.r.mon} đã có em được xếp vào các ca sau ở Lịch phòng:</p>
+              <ul className="space-y-1 rounded-xl bg-slate-50 p-3 text-[12.5px] text-slate-700">
+                {xoa.vuong.map((v, i) => <li key={i}>• {ddmmVN(v.ngay)} · {v.gio_bat_dau}–{v.gio_ket_thuc}{v.phong ? ` · ${v.phong}` : ''} · <b>{v.so_em} em</b></li>)}
+              </ul>
+              <p className="text-[12.5px] text-slate-500">Xoá luôn thì các ca này bị huỷ, các em về lại hàng chờ để xếp ca khác.</p>
+              <div className="flex justify-end gap-2">
+                <button onClick={() => setXoa(null)} className="rounded-lg px-4 py-2 text-[13px] text-slate-600 hover:bg-slate-100">Không xoá</button>
+                <button onClick={() => xoaDong(xoa.r, true)} className="rounded-lg bg-rose-600 px-4 py-2 text-[13px] font-semibold text-white hover:bg-rose-700">Xoá luôn, huỷ {xoa.vuong.length} ca</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {modal && <LichKhoiModal init={modal.init} cu={modal.cu} lops={lops} nss={nss} phongs={phongs} onClose={() => setModal(null)} onSaved={daLuu} />}
     </section>
   )

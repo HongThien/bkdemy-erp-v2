@@ -166,3 +166,23 @@ export async function luuTKB(p: { id: string | null; lop_id: string | null; thu:
   if (error) throw error
   return data as any
 }
+
+// ── Lịch bổ trợ khối: XOÁ + CHỐT TUẦN (mig 202611122233, Thùy 12/11) ──
+export type CaVuong = { ngay: string; gio_bat_dau: string; gio_ket_thuc: string; phong: string | null; so_em: number }
+// xacNhan=false: còn ca từ hôm nay có em ⇒ không xoá, trả `vuong` để người dùng chọn. xacNhan=true ⇒ huỷ các ca đó rồi xoá.
+export async function xoaLichKhoi(id: string, xacNhan: boolean): Promise<{ ok: boolean; vuong?: CaVuong[]; xoa_han?: boolean; ca_huy?: number; buoi_huy?: number }> {
+  const { data, error } = await supabase.rpc('fn_lich_truc_xoa', { p_id: id, p_xac_nhan: xacNhan })
+  if (error) throw error
+  return data as any
+}
+export type ChotTuan = { tuan: string; da_chot: boolean; chot_at?: string; chot_boi?: string | null; doi_sau_chot?: boolean; ca_sinh?: number; ca_cap_nhat?: number; ca_huy?: number }
+export async function trangThaiChotTuan(ngay: string): Promise<ChotTuan> {
+  const { data, error } = await supabase.rpc('fn_lich_khoi_chot_trang_thai', { p_tuan: ngay })
+  if (error) throw error
+  return data as ChotTuan
+}
+export async function chotTuan(ngay: string): Promise<{ tuan: string; ca_sinh: number; ca_cap_nhat: number; ca_huy: number }> {
+  const { data, error } = await supabase.rpc('fn_lich_khoi_chot_tuan', { p_tuan: ngay })
+  if (error) throw error
+  return data as any
+}
