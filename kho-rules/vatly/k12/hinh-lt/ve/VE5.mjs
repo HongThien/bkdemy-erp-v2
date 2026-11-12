@@ -102,31 +102,37 @@ async function H087() {
   for (const [dx, dy] of [[-45, -30], [10, -52], [48, -10], [30, 40], [-20, 52], [-52, 22], [-6, 0]]) b += electron(c1[0] + dx, c1[1] + dy, 9)
   for (const [dx, dy] of [[-28, -14], [28, -34], [-54, -4], [10, 20], [52, 24], [-26, 30], [30, 6], [-4, -34]]) b += tx(c1[0] + dx, c1[1] + dy + 6, '+', { sz: 18, c: '#e08a82', b: true })
   b += polyline([[10, 110], [60, 110], [135, 114], [210, 120], [262, 124]], OR, 2.6)
-  b += tx(135, 282, 'Mô hình Thomson', { sz: 21, b: true }) + tx(135, 306, 'α lệch rất ít', { c: OR })
-  const c2 = [415, 150], R2 = 82
+  b += tx(135, 285, 'Mô hình Thomson', { sz: 21, b: true }) + tx(135, 309, 'α lệch rất ít', { c: OR })
+  const c2 = [415, 150], R2 = 82, flip = (pts) => pts.map(([x, y]) => [x, 2 * c2[1] - y])
   b += dashed(ball(c2[0], c2[1], R2, 'none', GY, 1.8))
   for (const [ang, rr] of [[40, 70], [160, 60], [265, 74]]) b += electron(c2[0] + rr * Math.cos(ang * Math.PI / 180), c2[1] - rr * Math.sin(ang * Math.PI / 180), 7)
-  for (const bb of [62, 22, 5]) b += polyline(clipPts(scatter(c2[0], c2[1], bb, 16, 292, 565), 285, 20, 560, 270), OR, 2.4)
-  b += polyline([[292, 215], [350, 215], [420, 215], [500, 215], [558, 215]], OR, 2.4)
+  b += polyline(clipPts(scatter(c2[0], c2[1], 84, 16, 292, 560), 285, 15, 556, 280), OR, 2.4)
+  b += polyline(clipPts(scatter(c2[0], c2[1], 40, 16, 292, 560), 285, 15, 556, 280), OR, 2.4)
+  b += polyline(clipPts(flip(scatter(c2[0], c2[1], 5, 16, 292, 560)), 285, 15, 556, 290), OR, 2.4)
   b += ball(c2[0], c2[1], 8, RD, '#8f2018', 1.5)
-  b += tx(c2[0] + 14, c2[1] + 30, 'hạt nhân (+)', { sz: 17, a: 'start', c: RD })
-  b += tx(415, 282, 'Mô hình Rutherford', { sz: 21, b: true }) + tx(415, 306, 'α lệch góc lớn', { c: OR })
-  await out('H087', 560, 330, b)
+  b += tx(c2[0] + 12, c2[1] + 28, 'hạt nhân (+)', { sz: 17, a: 'start', c: RD })
+  b += tx(415, 285, 'Mô hình Rutherford', { sz: 21, b: true }) + tx(415, 309, 'α lệch góc lớn', { c: OR })
+  await out('H087', 560, 325, b)
 }
 
 // ───────── H088 mô hình hành tinh nguyên tử ─────────
 async function H088() {
-  const cx = 300, cy = 190
-  let b = `<ellipse cx="${cx}" cy="${cy}" rx="150" ry="55" fill="none" stroke="${GY}" stroke-width="1.8" stroke-dasharray="6 5" transform="rotate(-25 ${cx} ${cy})"/>`
-  b += dashed(ball(cx, cy, 100, 'none', GY, 1.8))
-  b += electron(cx + 98 * Math.cos(2.1), cy - 98 * Math.sin(2.1), 10) + electron(cx + 100 * Math.cos(-0.5), cy - 100 * Math.sin(-0.5), 10)
-  const r25 = -25 * Math.PI / 180, ex = 150 * Math.cos(3.7), ey = 55 * Math.sin(3.7)
+  const cx = 270, cy = 190
+  let b = `<ellipse cx="${cx}" cy="${cy}" rx="140" ry="52" fill="none" stroke="${GY}" stroke-width="1.8" stroke-dasharray="6 5" transform="rotate(-25 ${cx} ${cy})"/>`
+  b += dashed(ball(cx, cy, 95, 'none', GY, 1.8))
+  b += electron(cx + 93 * Math.cos(2.1), cy - 93 * Math.sin(2.1), 10) + electron(cx + 95 * Math.cos(-0.5), cy - 95 * Math.sin(-0.5), 10)
+  const r25 = -25 * Math.PI / 180, ex = 140 * Math.cos(3.7), ey = 52 * Math.sin(3.7)
   b += electron(cx + ex * Math.cos(r25) - ey * Math.sin(r25), cy + ex * Math.sin(r25) + ey * Math.cos(r25), 10)
-  for (const bb of [150, 62, 20, 4]) b += polyline(clipPts(scatter(cx, cy, bb, 22, 20, 590), 10, 8, 595, 372), OR, 2.4)
-  b += polyline([[20, 336], [200, 336], [400, 336], [590, 336]], OR, 2.4)
+  const flip = (pts) => pts.map(([x, y]) => [x, 2 * cy - y])
+  b += polyline(clipPts(scatter(cx, cy, 150, 22, 14, 548), 8, 8, 552, 372), OR, 2.4)
+  b += polyline(clipPts(scatter(cx, cy, 60, 22, 14, 548), 8, 8, 552, 372), OR, 2.4)
+  b += polyline(clipPts(flip(scatter(cx, cy, 4, 22, 14, 548)), 8, 8, 552, 372), OR, 2.4)
   b += ball(cx, cy, 11, RD, '#8f2018', 1.5) + tx(cx, cy + 7, '+', { sz: 20, c: '#fff', b: true })
-  b += tx(cx + 16, cy + 38, 'hạt nhân', { sz: 19, a: 'start', c: RD }) + tx(cx + 112, cy - 98, 'electron', { sz: 19, a: 'start', c: BL }) + tx(22, 322, 'hạt α', { a: 'start', c: OR })
-  await out('H088', 600, 380, b)
+  const halo = (x, y, s, o) => tx(x, y, s, o).replace('stroke="none"', 'stroke="#fff" stroke-width="5" paint-order="stroke"')
+  b += halo(cx + 14, cy + 6, 'hạt nhân', { sz: 18, a: 'start', c: RD }).replace(`x="${f(cx + 14)}" y="${f(cy + 6)}"`, `x="${f(cx + 16)}" y="${f(cy + 8)}"`)
+  b += halo(cx + 108, cy - 100, 'electron', { sz: 19, a: 'start', c: BL })
+  b += tx(18, cy - 128, 'hạt α', { a: 'start', c: OR })
+  await out('H088', 560, 305, b)
 }
 
 // ───────── H089 cấu trúc hạt nhân ─────────
@@ -241,20 +247,19 @@ async function H094() {
 
 // ───────── H095 phân hạch ─────────
 async function H095() {
-  let b = ball(30, 150, 8, '#98a1b3', '#5d6678', 1.5) + arrow(42, 150, 92, 150, OR, 2.4, 10)
-  b += ball(135, 150, 36, '#c9d3e6', '#5d6678') + nuc(135, 158, 235, 92, 'U', 22)
-  b += tx(70, 195, 'neutron chậm', { sz: 17 })
-  b += arrow(178, 150, 232, 150, INK, 3, 12)
-  b += `<circle cx="285" cy="150" r="40" fill="#e8d6ee" stroke="${INK}" stroke-width="2.2" stroke-dasharray="3 3"/>` + nuc(285, 158, 236, 92, 'U*', 22) + tx(285, 212, 'kích thích', { sz: 17 })
-  b += arrow(330, 150, 382, 150, INK, 3, 12)
-  const cx = 470, cy = 150
-  b += ball(cx - 35, cy - 62, 26, '#b9d3c4', '#4a7a5e') + nuc(cx - 35, cy - 54, 95, 39, 'Y', 20)
-  b += ball(cx + 20, cy + 62, 30, '#e3cfb0', '#8a6d3a') + nuc(cx + 20, cy + 70, 138, 53, 'I', 20)
-  b += arrow(cx - 50, cy - 82, cx - 80, cy - 112, GR, 2.2, 9) + arrow(cx + 40, cy + 92, cx + 55, cy + 120, GR, 2.2, 9)
-  for (const [dx, dy] of [[75, -30], [92, 5], [70, 36]]) b += ball(cx + 5, cy, 6, '#98a1b3', '#5d6678', 1.4) + arrow(cx + 14, cy, cx + dx + 25, cy + dy, OR, 2.2, 9)
-  b += tx(cx + 40, cy - 52, '3 neutron', { sz: 17, a: 'start' })
-  b += tx(290, 300, 'Năng lượng toả ra ≈ 200 MeV', { b: true, c: RD })
-  await out('H095', 580, 335, b)
+  let b = ball(22, 150, 8, '#98a1b3', '#5d6678', 1.5) + arrow(32, 150, 68, 150, OR, 2.4, 10)
+  b += ball(110, 150, 34, '#c9d3e6', '#5d6678') + nuc(110, 158, 235, 92, 'U', 21)
+  b += tx(4, 210, 'neutron chậm', { sz: 17, a: 'start' })
+  b += arrow(150, 150, 195, 150, INK, 3, 12)
+  b += `<circle cx="245" cy="150" r="38" fill="#e8d6ee" stroke="${INK}" stroke-width="2.2" stroke-dasharray="3 3"/>` + nuc(245, 158, 236, 92, 'U*', 21) + tx(245, 212, 'kích thích', { sz: 17 })
+  b += arrow(290, 150, 335, 150, INK, 3, 12)
+  b += ball(385, 88, 26, '#b9d3c4', '#4a7a5e') + nuc(385, 96, 95, 39, 'Y', 19)
+  b += ball(415, 218, 30, '#e3cfb0', '#8a6d3a') + nuc(415, 226, 138, 53, 'I', 19)
+  b += arrow(368, 66, 345, 40, GR, 2.2, 9) + arrow(432, 246, 448, 272, GR, 2.2, 9)
+  for (const [dy, tag] of [[-48, 0], [0, 1], [48, 2]]) b += ball(445, 153, 6, '#98a1b3', '#5d6678', 1.4) + arrow(452, 153, 535, 153 + dy, OR, 2.2, 9)
+  b += tx(500, 215, '3 neutron', { sz: 17 })
+  b += tx(280, 305, 'Năng lượng toả ra ≈ 200 MeV', { b: true, c: RD })
+  await out('H095', 560, 325, b)
 }
 
 // ───────── H096 phản ứng dây chuyền ─────────
@@ -271,43 +276,42 @@ async function H096() {
 
 // ───────── lò phản ứng ─────────
 function lo(strong) {
-  const X0 = 90, Y0 = 70, W = 340, H = 240
+  const X0 = 50, Y0 = 62, W = 230, H = 210
   let b = `<defs><pattern id="hx" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="9" height="9" fill="#e4e4e4"/><line x1="0" y1="0" x2="0" y2="9" stroke="#9a9a9a" stroke-width="2"/></pattern></defs>`
-  b += `<rect x="${X0 - 28}" y="${Y0 - 12}" width="${W + 56}" height="${H + 40}" fill="url(#hx)" stroke="${INK}" stroke-width="2.2"/>`
+  b += `<rect x="${X0 - 24}" y="${Y0 - 14}" width="${W + 48}" height="${H + 38}" fill="url(#hx)" stroke="${INK}" stroke-width="2.2"/>`
   b += rect(X0, Y0, W, H, '#8d93a0', INK, 2)
-  ;[X0 + 40, X0 + 120, X0 + 200, X0 + 280].forEach((x) => { b += rect(x - 11, Y0 + 14, 22, H - 28, strong ? '#e0302a' : '#c8402f', '#7a1a12', strong ? 3 : 2) })
-  ;[[X0 + 80, 150], [X0 + 160, 80], [X0 + 240, 150]].forEach(([x, d]) => { b += rect(x - 6, Y0 - 52, 12, 52 + d, '#3d6fd6', '#1d3c99', 1.8) + rect(x - 14, Y0 - 58, 28, 8, '#555', INK, 1.5) })
+  ;[X0 + 28, X0 + 84, X0 + 140, X0 + 196].forEach((x) => { b += rect(x - 10, Y0 + 14, 20, H - 28, strong ? '#e0302a' : '#c8402f', '#7a1a12', strong ? 3 : 2) })
+  ;[[X0 + 56, 130], [X0 + 112, 70], [X0 + 168, 130]].forEach(([x, d]) => { b += rect(x - 6, Y0 - 48, 12, 48 + d, '#3d6fd6', '#1d3c99', 1.8) + rect(x - 13, Y0 - 54, 26, 8, '#555', INK, 1.5) })
   return { b, X0, Y0, W, H }
 }
 async function H097() {
-  const { b: b0, X0, Y0, W } = lo(false)
+  const { b: b0, X0, Y0, W, H } = lo(false)
   let b = b0
-  b += arrow(530, 255, X0 + 292, 255, INK, 1.6, 8) + tx(535, 262, 'Thanh uranium', { sz: 18, a: 'start' })
-  b += arrow(530, 118, X0 + 252, 118, INK, 1.6, 8) + tx(535, 125, 'Than chì', { sz: 18, a: 'start' }) + tx(535, 146, '(chất điều tiết)', { sz: 18, a: 'start' })
-  b += arrow(530, 40, X0 + 250, 40, INK, 1.6, 8) + tx(535, 47, 'Thanh cadmium', { sz: 18, a: 'start' }) + tx(535, 68, '(điều khiển)', { sz: 18, a: 'start' })
-  b += arrow(530, 335, X0 + W + 24, 325, INK, 1.6, 8) + tx(535, 342, 'Xi măng bảo vệ', { sz: 18, a: 'start' })
-  await out('H097', 690, 385, b)
+  b += arrow(345, Y0 + H - 40, X0 + 196 + 12, Y0 + H - 40, INK, 1.6, 8) + tx(350, Y0 + H - 34, 'Thanh uranium', { sz: 18, a: 'start' })
+  b += arrow(345, Y0 + 80, X0 + 150, Y0 + 80, INK, 1.6, 8) + tx(350, Y0 + 87, 'Than chì', { sz: 18, a: 'start' }) + tx(350, Y0 + 108, '(chất điều tiết)', { sz: 18, a: 'start' })
+  b += arrow(345, Y0 - 16, X0 + 168 + 8, Y0 - 16, INK, 1.6, 8) + tx(350, Y0 - 10, 'Thanh cadmium', { sz: 18, a: 'start' }) + tx(350, Y0 + 11, '(điều khiển)', { sz: 18, a: 'start' })
+  b += arrow(345, Y0 + H + 14, X0 + W + 18, Y0 + H + 10, INK, 1.6, 8) + tx(350, Y0 + H + 21, 'Xi măng bảo vệ', { sz: 18, a: 'start' })
+  await out('H097', 560, 315, b)
 }
 async function H099() {
-  const { b: b0, X0 } = lo(true)
+  const { b: b0, X0, Y0, H } = lo(true)
   let b = b0
-  b += arrow(530, 255, X0 + 292, 255, RD, 2, 9) + tx(535, 250, 'Thanh uranium', { sz: 19, a: 'start', c: RD, b: true }) + tx(535, 273, 'U tự nhiên hoặc', { sz: 17, a: 'start' }) + tx(535, 294, 'U làm giàu', { sz: 17, a: 'start' }) + tx(535, 315, '(^{235}U: 2–4%)', { sz: 17, a: 'start' })
-  b += tx(535, 125, 'Phản ứng dây chuyền', { sz: 17, a: 'start', c: '#444' }) + tx(535, 146, 'có kiểm soát', { sz: 17, a: 'start', c: '#444' })
-  await out('H099', 720, 385, b)
+  b += arrow(345, Y0 + H - 60, X0 + 196 + 12, Y0 + H - 60, RD, 2, 9) + tx(350, Y0 + H - 78, 'Thanh uranium', { sz: 19, a: 'start', c: RD, b: true }) + tx(350, Y0 + H - 54, 'U tự nhiên hoặc', { sz: 17, a: 'start' }) + tx(350, Y0 + H - 34, 'U làm giàu', { sz: 17, a: 'start' }) + tx(350, Y0 + H - 14, '(^{235}U: 2–4%)', { sz: 17, a: 'start' })
+  b += tx(350, Y0 + 40, 'Phản ứng dây chuyền', { sz: 17, a: 'start', c: '#444' }) + tx(350, Y0 + 61, 'có kiểm soát', { sz: 17, a: 'start', c: '#444' })
+  await out('H099', 560, 315, b)
 }
 async function H100() {
-  let b = rect(130, 40, 330, 250, '#c3c7cf', INK, 2)
-  b += rect(40, 100, 60, 130, '#c8402f', '#7a1a12', 2) + rect(490, 100, 60, 130, '#c8402f', '#7a1a12', 2)
-  b += tx(70, 175, 'U', { sz: 24, b: true, c: '#fff' }) + tx(520, 175, 'U', { sz: 24, b: true, c: '#fff' })
-  for (const [x, y] of [[215, 120], [262, 220], [338, 90], [380, 205], [300, 175], [225, 195], [430, 130], [420, 250], [185, 90]]) b += ball(x, y, 11, '#6e7480', '#444', 1.4)
-  b += polyline([[100, 160], [190, 160]], OR, 3.6, false)
-  b += polyline([[190, 160], [214, 156], [226, 172], [262, 208]], OR, 2.8, false)
-  b += polyline([[262, 208], [285, 190], [296, 170], [312, 150], [336, 113]], OR, 2.3, false)
-  b += polyline([[336, 113], [352, 128], [374, 156], [395, 175], [420, 196], [488, 215]], OR, 1.6, true)
-  b += tx(140, 140, 'neutron nhanh', { sz: 18, c: OR, b: true, a: 'start' }) + tx(400, 270, 'neutron chậm', { sz: 18, c: OR, b: true })
-  b += tx(295, 62, 'Than chì (chất điều tiết)') + tx(70, 90, 'phân hạch', { sz: 17 }) + tx(520, 90, 'phân hạch', { sz: 17 })
-  b += tx(295, 318, 'va chạm với nguyên tử C → neutron mất dần động năng', { sz: 17, c: '#444' })
-  await out('H100', 590, 335, b)
+  let b = rect(130, 40, 320, 250, '#c3c7cf', INK, 2)
+  b += rect(40, 100, 60, 130, '#c8402f', '#7a1a12', 2) + rect(470, 100, 60, 130, '#c8402f', '#7a1a12', 2)
+  const P = [[100, 160], [200, 160], [250, 215], [305, 165], [340, 110], [392, 185], [468, 222]]
+  const w = [3.8, 3, 2.4, 2, 1.7, 1.4]
+  for (let i = 0; i < 6; i++) b += polyline([P[i], P[i + 1]], OR, w[i], i === 5)
+  for (const [x, y] of [...P.slice(1, 6), [185, 90], [430, 110], [300, 262], [235, 105]]) b += ball(x, y, 11, '#6e7480', '#444', 1.4)
+  b += tx(70, 175, 'U', { sz: 24, b: true, c: '#fff' }) + tx(500, 175, 'U', { sz: 24, b: true, c: '#fff' })
+  b += tx(140, 144, 'neutron nhanh', { sz: 18, c: OR, b: true, a: 'start' }) + tx(395, 268, 'neutron chậm', { sz: 18, c: OR, b: true })
+  b += tx(290, 62, 'Than chì (chất điều tiết)') + tx(70, 90, 'phân hạch', { sz: 17 }) + tx(500, 90, 'phân hạch', { sz: 17 })
+  b += tx(280, 318, 'va chạm với nguyên tử C → neutron mất dần động năng', { sz: 17, c: '#444' })
+  await out('H100', 560, 335, b)
 }
 async function H101() {
   const panel = (x0, inside) => {
@@ -321,41 +325,42 @@ async function H101() {
     return s
   }
   let b = `<g transform="translate(0,30)">${panel(20, true) + panel(300, false)}</g>`
-  b += tx(145, 315, 'Thanh Cd cắm sâu', { sz: 20, b: true }) + tx(145, 309, 'hấp thụ nhiều neutron', { sz: 18 }) + tx(145, 333, 'phản ứng chậm lại', { sz: 18, c: GR, b: true })
-  b += tx(425, 285, 'Rút thanh Cd ra', { sz: 20, b: true }) + tx(425, 309, 'neutron tới thanh U khác', { sz: 18 }) + tx(425, 333, 'phản ứng nhanh lên', { sz: 18, c: RD, b: true })
+  b += tx(145, 315, 'Thanh Cd cắm sâu', { sz: 20, b: true }) + tx(145, 339, 'hấp thụ nhiều neutron', { sz: 18 }) + tx(145, 363, 'phản ứng chậm lại', { sz: 18, c: GR, b: true })
+  b += tx(425, 315, 'Rút thanh Cd ra', { sz: 20, b: true }) + tx(425, 339, 'neutron tới thanh U khác', { sz: 18 }) + tx(425, 363, 'phản ứng nhanh lên', { sz: 18, c: RD, b: true })
   await out('H101', 560, 380, b)
 }
 
 // ───────── H098 nhiệt hạch ─────────
 async function H098() {
-  let b = ball(55, 80, 17, '#f4c7c2', '#8f2018') + arrow(80, 92, 150, 128, OR, 2.6, 11) + nuc(55, 125, 2, 1, 'H', 22) + tx(55, 50, 'Đơteri', { sz: 17 })
-  b += ball(55, 205, 21, '#f4c7c2', '#8f2018') + arrow(82, 195, 150, 160, OR, 2.6, 11) + nuc(55, 255, 3, 1, 'H', 22) + tx(55, 278, 'Triti', { sz: 17 })
+  let b = ball(55, 80, 17, '#f4c7c2', '#8f2018') + arrow(80, 92, 150, 128, OR, 2.6, 11) + nuc(55, 125, 2, 1, 'H', 22) + tx(55, 48, 'Đơteri', { sz: 17 })
+  b += ball(55, 205, 21, '#f4c7c2', '#8f2018') + arrow(82, 195, 150, 160, OR, 2.6, 11) + nuc(55, 255, 3, 1, 'H', 22) + tx(55, 288, 'Triti', { sz: 17 })
   b += `<polygon points="190,138 200,118 210,134 224,114 228,134 246,128 236,144 252,152 234,158 242,176 224,168 218,186 208,168 192,180 196,160 176,156 194,148" fill="#ffd966" stroke="${OR}" stroke-width="2"/>`
   b += tx(212, 215, 'nhiệt độ rất cao', { sz: 17, c: RD, b: true })
   b += arrow(268, 148, 318, 148, INK, 3, 13)
   b += ball(385, 200, 28, '#f2b24b', '#a8741a') + nuc(385, 208, 4, 2, 'He', 22) + tx(385, 252, 'Helium', { sz: 17 })
-  b += ball(400, 160, 0.1, '#fff', '#fff', 0) + arrow(405, 170, 500, 100, OR, 2.6, 11) + ball(515, 90, 9, '#98a1b3', '#5d6678', 1.5) + tx(515, 128, 'neutron', { sz: 17 })
-  b += tx(300, 310, 'Toả năng lượng rất lớn', { sz: 21, b: true, c: RD })
-  await out('H098', 570, 330, b)
+  b += arrow(405, 170, 500, 100, OR, 2.6, 11) + ball(515, 90, 9, '#98a1b3', '#5d6678', 1.5) + tx(512, 128, 'neutron', { sz: 17 })
+  b += tx(300, 315, 'Toả năng lượng rất lớn', { sz: 21, b: true, c: RD })
+  await out('H098', 560, 335, b)
 }
 
 // ───────── H102 nhà máy điện hạt nhân ─────────
 async function H102() {
   const HOT = '#d33a2c', COLD = '#2f5bd3', STEAM = '#b35c00'
-  let b = line(150, 80, 215, 80, HOT, 6) + line(215, 120, 150, 120, COLD, 6)
-  b += rect(30, 50, 120, 100, '#c3c7cf', INK, 2.2) + rect(60, 62, 14, 50, '#c8402f', '#7a1a12', 1.5) + rect(90, 62, 14, 50, '#c8402f', '#7a1a12', 1.5) + rect(75, 40, 10, 40, '#3d6fd6', '#1d3c99', 1.5) + rect(105, 40, 10, 40, '#3d6fd6', '#1d3c99', 1.5)
-  b += tx(90, 172, 'Lò phản ứng', { sz: 17 })
-  b += rect(215, 50, 100, 100, '#eef2f8', INK, 2.2) + `<path d="M 215 80 H 295 V 100 H 235 V 120 H 215" fill="none" stroke="${HOT}" stroke-width="4"/>`
-  b += tx(265, 172, 'Bộ trao đổi nhiệt', { sz: 17 }) + tx(265, 192, '(sinh hơi)', { sz: 17 })
-  b += line(315, 70, 390, 70, STEAM, 6) + head(392, 70, 0, STEAM, 12)
-  b += `<polygon points="392,50 452,66 452,102 392,118" fill="#dfe3ea" stroke="${INK}" stroke-width="2.2"/>` + tx(422, 140, 'Tua-bin', { sz: 17 })
-  b += line(452, 84, 485, 84, INK, 5) + ball(512, 84, 27, '#fff', INK, 2.2) + tx(512, 93, 'G', { sz: 27, b: true }) + tx(512, 134, 'Máy phát', { sz: 17 })
-  b += polyline([[539, 84], [556, 84], [556, 36]], '#e0a800', 3, true) + tx(520, 28, 'điện', { sz: 19, b: true, c: '#a8741a' })
-  b += line(422, 118, 422, 215, STEAM, 5)
-  b += rect(380, 215, 100, 60, '#eaf1fb', INK, 2.2) + tx(430, 250, 'Bình ngưng', { sz: 17 })
-  b += polyline([[380, 245], [265, 245], [265, 156]], COLD, 5, false) + head(265, 152, -Math.PI / 2, COLD, 12)
-  b += tx(182, 64, 'nước nóng', { sz: 16, c: HOT }) + tx(182, 144, 'nước nguội', { sz: 16, c: COLD }) + tx(352, 54, 'hơi', { sz: 16, c: STEAM })
-  await out('H102', 590, 300, b)
+  let b = line(120, 80, 210, 80, HOT, 6) + line(210, 120, 120, 120, COLD, 6)
+  b += rect(20, 50, 100, 100, '#c3c7cf', INK, 2.2) + rect(40, 62, 14, 50, '#c8402f', '#7a1a12', 1.5) + rect(70, 62, 14, 50, '#c8402f', '#7a1a12', 1.5) + rect(55, 40, 10, 40, '#3d6fd6', '#1d3c99', 1.5) + rect(85, 40, 10, 40, '#3d6fd6', '#1d3c99', 1.5)
+  b += tx(70, 172, 'Lò phản ứng', { sz: 17 })
+  b += rect(210, 50, 120, 150, '#eef2f8', INK, 2.2) + `<path d="M 210 80 H 305 V 100 H 240 V 120 H 210" fill="none" stroke="${HOT}" stroke-width="4"/>`
+  b += tx(270, 150, 'Bộ trao đổi', { sz: 15 }) + tx(270, 167, 'nhiệt', { sz: 15 }) + tx(270, 184 - 0, '(sinh hơi)', { sz: 15 })
+  b += tx(165, 70, 'nước nóng', { sz: 15, c: HOT }) + tx(165, 143, 'nước nguội', { sz: 15, c: COLD })
+  b += line(330, 70, 392, 70, STEAM, 6) + head(394, 70, 0, STEAM, 12) + tx(360, 56, 'hơi', { sz: 16, c: STEAM })
+  b += `<polygon points="394,50 454,66 454,102 394,118" fill="#dfe3ea" stroke="${INK}" stroke-width="2.2"/>` + tx(424, 38, 'Tua-bin', { sz: 17 })
+  b += line(454, 84, 478, 84, INK, 5) + ball(503, 84, 25, '#fff', INK, 2.2) + tx(503, 93, 'G', { sz: 26, b: true }) + tx(503, 130, 'Máy phát', { sz: 16 })
+  b += polyline([[528, 84], [548, 84], [548, 44]], '#e0a800', 3, true) + tx(520, 34, 'điện', { sz: 18, b: true, c: '#a8741a' })
+  b += line(424, 112, 424, 225, STEAM, 5)
+  b += rect(385, 225, 100, 60, '#eaf1fb', INK, 2.2) + tx(435, 260, 'Bình ngưng', { sz: 16 })
+  b += polyline([[385, 255], [250, 255], [250, 206]], COLD, 5, false) + head(250, 202, -Math.PI / 2, COLD, 12)
+  b = `<g transform="translate(0,10)">${b}</g>`
+  await out('H102', 560, 310, b)
 }
 
 // ───────── H104 hiện tượng phóng xạ ─────────
@@ -375,11 +380,10 @@ async function H104() {
 async function H105() {
   const px1 = 70, px2 = 230, xs = 150, ys = 330, yTop = 60, yIn = 260
   let b = rect(px1 - 6, yTop, 6, yIn - yTop, BL, BL, 1) + rect(px2, yTop, 6, yIn - yTop, RD, RD, 1)
-  b += tx(px1 - 3, yTop - 10, '−', { sz: 28, c: BL, b: true }) + tx(px2 + 3, yTop - 10, '+', { sz: 28, c: RD, b: true })
-  b += rect(xs - 24, ys, 48, 28, '#9aa3b2', INK, 2) + tx(xs, ys + 20, 'nguồn', { sz: 14, b: true, c: '#fff' })
+  b += tx(px1 - 3, yIn + 26, '−', { sz: 28, c: BL, b: true }) + tx(px2 + 3, yIn + 26, '+', { sz: 28, c: RD, b: true })
+  b += line(xs, ys, xs, yIn, '#777', 3) + rect(xs - 26, ys, 52, 28, '#9aa3b2', INK, 2) + tx(xs, ys + 20, 'nguồn', { sz: 14, b: true, c: '#fff' })
   const traj = (D, col, lab) => {
     const a = D / 200 / 200, pts = []
-    for (let y = ys; y >= yIn; y -= 10) pts.push([xs, y])
     for (let y = yIn; y >= yTop; y -= 4) pts.push([xs + a * (yIn - y) ** 2, y])
     const slope = 2 * a * (yIn - yTop)
     pts.push([xs + a * (yIn - yTop) ** 2 + slope * 26, yTop - 26])
@@ -389,14 +393,14 @@ async function H105() {
   b += traj(0, GR, 'γ') + traj(-30, OR, 'α') + traj(-72, RD, 'β⁺') + traj(72, BL, 'β⁻')
   b += tx(150, 400, 'Lệch trong điện trường', { sz: 18, c: '#444' })
   const x0 = 310, sx = 440, yP = 265, yAl = 205, yPb = 120
-  b += rect(sx - 24, ys, 48, 28, '#9aa3b2', INK, 2) + tx(sx, ys + 20, 'nguồn', { sz: 14, b: true, c: '#fff' })
+  b += rect(sx - 62, ys, 124, 28, '#9aa3b2', INK, 2) + tx(sx, ys + 20, 'nguồn', { sz: 14, b: true, c: '#fff' })
   b += rect(x0, yP - 2, 230, 4, '#fff', INK, 1.6) + tx(x0 + 3, yP - 9, 'giấy', { sz: 17, a: 'start' })
   b += rect(x0, yAl - 6, 230, 12, '#cfd5de', INK, 1.6) + tx(x0 + 3, yAl - 13, 'nhôm', { sz: 17, a: 'start' })
   b += rect(x0, yPb - 14, 230, 28, '#6a6e78', INK, 1.6) + tx(x0 + 3, yPb - 21, 'chì', { sz: 17, a: 'start' })
-  b += polyline([[sx - 40, ys], [sx - 40, yP + 4]], OR, 2.8, true) + tx(sx - 40, yP + 28, 'α', { sz: 21, c: OR, b: true })
-  b += polyline([[sx, ys], [sx, yAl + 8]], RD, 2.8, true) + tx(sx, yAl + 32, 'β', { sz: 21, c: RD, b: true })
-  b += polyline([[sx + 40, ys], [sx + 40, yPb + 16]], GR, 2.8, true) + tx(sx + 40, yPb + 40, 'γ', { sz: 21, c: GR, b: true })
-  b += polyline([[sx + 40, yPb - 16], [sx + 40, yPb - 60]], GR, 1.6, true, 'stroke-dasharray="5 5"')
+  b += polyline([[sx - 40, ys], [sx - 40, yP + 4]], OR, 2.8, true) + tx(sx - 54, yP + 36, 'α', { sz: 21, c: OR, b: true })
+  b += polyline([[sx, ys], [sx, yAl + 8]], RD, 2.8, true) + tx(sx - 14, yAl + 36, 'β', { sz: 21, c: RD, b: true })
+  b += polyline([[sx + 40, ys], [sx + 40, yPb + 14]], GR, 2.8, false) + tx(sx + 54, yPb + 48, 'γ', { sz: 21, c: GR, b: true })
+  b += polyline([[sx + 40, yPb - 14], [sx + 40, yPb - 60]], GR, 1.6, true, 'stroke-dasharray="5 5"')
   b += tx(425, 400, 'Khả năng đâm xuyên', { sz: 18, c: '#444' })
   await out('H105', 560, 415, b)
 }
@@ -463,7 +467,10 @@ async function H111() {
     const sx = 170, sy = B0 - 16, len = smoke ? 40 : 80
     for (const dx of [-0.45, 0, 0.45]) s += arrow(sx, sy, sx + dx * len, sy - len * (dx ? 0.9 : 1), OR, 1.8, 8)
     const ions = [[120, 40], [150, 30], [200, 40], [225, 55], [170, 20], [130, 60], [215, 28]]
-    for (let i = 0; i < (smoke ? 3 : 7); i++) { const [ix, iy] = ions[i]; s += ball(ix + 8, T0 + iy + 30, 5, RD, RD, 0) + ball(ix - 8, T0 + iy + 30, 5, BL, BL, 0) }
+    for (let i = 0; i < (smoke ? 3 : 7); i++) {
+      const [ix, iy] = ions[i], yy = T0 + iy + 30
+      s += ball(ix + 8, yy, 5, RD, RD, 0) + arrow(ix + 15, yy, ix + 30, yy, RD, 1.4, 6) + ball(ix - 8, yy, 5, BL, BL, 0) + arrow(ix - 15, yy, ix - 30, yy, BL, 1.4, 6)
+    }
     if (smoke) for (const [ix, iy, r] of [[110, 40, 9], [140, 30, 7], [205, 45, 10], [230, 35, 7], [175, 55, 8], [250, 70, 7], [95, 75, 6], [150, 70, 8]]) s += `<circle cx="${ix + 20}" cy="${T0 + iy}" r="${r}" fill="#9aa0a6" fill-opacity="0.75" stroke="none"/>`
     s += line(Rr + 3, my, 366, my, INK, 2) + ball(400, my, 34, '#fff', INK, 2.2) + tx(400, my - 6, 'A', { sz: 22, b: true })
     const ang = smoke ? -0.6 : 0.9
@@ -473,8 +480,8 @@ async function H111() {
     return s
   }
   let b = row(30, false) + row(235, true)
-  b += tx(400, 135, 'dòng lớn', { sz: 19, c: GR, b: true }) + tx(80, 22, 'Không có khói', { sz: 19, a: 'start', b: true }) + tx(80, 227, 'Có khói', { sz: 19, a: 'start', b: true })
-  b += tx(400, 340, 'dòng giảm → báo động', { sz: 19, c: RD, b: true })
+  b += tx(400, 148, 'dòng lớn', { sz: 19, c: GR, b: true }) + tx(80, 22, 'Không có khói', { sz: 19, a: 'start', b: true }) + tx(80, 227, 'Có khói', { sz: 19, a: 'start', b: true })
+  b += tx(370, 355, 'dòng giảm → báo động', { sz: 18, c: RD, b: true })
   await out('H111', 540, 400, b)
 }
 

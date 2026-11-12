@@ -1,0 +1,226 @@
+[
+ {
+  "ma": "H032",
+  "file": "H032.png",
+  "cach": 3,
+  "chu_thich": "Vectơ cảm ứng từ B tiếp tuyến với đường sức; chiều B là chiều S→N của kim nam châm thử",
+  "nguon": "Vẽ lại theo Hình 1-5 sách Tập 2 tr.8 (bản in) / PDF tr.8",
+  "ghi": ""
+ },
+ {
+  "ma": "H033",
+  "file": "H033_1.png",
+  "cach": 3,
+  "chu_thich": "Từ phổ của nam châm thẳng: mạt sắt xếp theo đường sức",
+  "nguon": "Vẽ lại theo Hình 1-4 sách Tập 2, trang PDF 8 (mạt sắt vẽ bằng code, không phải ảnh thật)",
+  "ghi": ""
+ },
+ {
+  "ma": "H033",
+  "file": "H033_2.png",
+  "cach": 3,
+  "chu_thich": "Đường sức từ: tiếp tuyến tại mỗi điểm M trùng phương của B, chiều đường sức là chiều B",
+  "nguon": "Vẽ lại theo Hình 1-5 sách Tập 2, trang PDF 8",
+  "ghi": ""
+ },
+ {
+  "ma": "H033",
+  "file": "H033_3.png",
+  "cach": 3,
+  "chu_thich": "Kim nam châm thử: chiều từ cực Nam sang cực Bắc của kim là chiều của B",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ },
+ {
+  "ma": "H034",
+  "file": "H034.png",
+  "cach": 3,
+  "chu_thich": "Đường sức từ khép kín (ngoài nam châm từ N về S, trong nam châm từ S về N); chỗ gần cực dày, xa cực thưa",
+  "nguon": "Vẽ lại theo Hình 1-6 sách Tập 2, trang PDF 8",
+  "ghi": ""
+ },
+ {
+  "ma": "H035",
+  "file": "H035_1.png",
+  "cach": 3,
+  "chu_thich": "Mặt phẳng vuông góc dòng điện thẳng: đường sức là các đường tròn đồng tâm (I hướng ra khỏi trang, B ngược chiều kim đồng hồ)",
+  "nguon": "Vẽ lại theo Hình 1-7(b) sách Tập 2, trang PDF 9",
+  "ghi": ""
+ },
+ {
+  "ma": "H035",
+  "file": "H035_2.png",
+  "cach": 3,
+  "chu_thich": "Kí hiệu ⊙ và ⊗ chỉ hướng ra/vào trang giấy của từ trường hai bên dây thẳng đứng có dòng điện hướng lên",
+  "nguon": "Vẽ lại theo Hình 1-8 sách Tập 2, trang PDF 9",
+  "ghi": ""
+ },
+ {
+  "ma": "H036",
+  "file": "H036.png",
+  "cach": 3,
+  "chu_thich": "Quy tắc nắm tay phải: ngón cái theo chiều dòng điện, bốn ngón khum theo chiều đường sức từ",
+  "nguon": "Vẽ lại theo Hình 1-7(c) sách Tập 2, trang PDF 9",
+  "ghi": ""
+ },
+ {
+  "ma": "H037",
+  "file": "H037.png",
+  "cach": 3,
+  "chu_thich": "Từ trường của dòng điện tròn (mặt cắt chứa trục vòng dây): đường sức qua tâm vuông góc mặt phẳng vòng dây",
+  "nguon": "Vẽ lại theo Hình 1-9(b) sách Tập 2, trang PDF 9",
+  "ghi": ""
+ },
+ {
+  "ma": "H038",
+  "file": "H038.png",
+  "cach": 3,
+  "chu_thich": "Từ trường ống dây hình trụ: trong lòng ống đường sức song song, ngoài ống như nam châm thẳng",
+  "nguon": "Vẽ lại theo Hình 1-10(b) sách Tập 2, trang PDF 10",
+  "ghi": ""
+ },
+ {
+  "ma": "H039",
+  "file": "H039.png",
+  "cach": 3,
+  "chu_thich": "Dây dẫn mang dòng điện I đặt trong từ trường đều B (vào trang) chịu lực từ F vuông góc dây",
+  "nguon": "Vẽ lại theo Hình 2-1 sách Tập 2, trang PDF 17",
+  "ghi": ""
+ },
+ {
+  "ma": "H040",
+  "file": "H040.png",
+  "cach": 3,
+  "chu_thich": "Lực từ F vuông góc với đoạn dây (dòng điện I) và vuông góc với cảm ứng từ B",
+  "nguon": "Vẽ lại theo Hình 2-1 sách Tập 2, trang PDF 17",
+  "ghi": ""
+ },
+ {
+  "ma": "H041",
+  "file": "H041.png",
+  "cach": 3,
+  "chu_thich": "Quy tắc bàn tay trái: B vào lòng bàn tay, bốn ngón theo chiều I, ngón cái choãi 90° chỉ chiều lực từ F",
+  "nguon": "Vẽ lại theo Hình 2-2 sách Tập 2, trang PDF 17",
+  "ghi": ""
+ },
+ {
+  "ma": "H042",
+  "file": "H042.png",
+  "cach": 3,
+  "chu_thich": "Phân tích B hợp với dây góc θ: B∥ = B cosθ (dọc dây), B⊥ = B sinθ (vuông góc dây, gây ra lực từ)",
+  "nguon": "Vẽ lại theo Hình 2-3 sách Tập 2, trang PDF 18",
+  "ghi": ""
+ },
+ {
+  "ma": "H043",
+  "file": "H043_1.png",
+  "cach": 3,
+  "chu_thich": "Lực Lorentz F vuông góc với vận tốc v và cảm ứng từ B (hạt mang điện dương)",
+  "nguon": "Vẽ lại theo Hình 3-1(a) sách Tập 2, trang PDF 28",
+  "ghi": ""
+ },
+ {
+  "ma": "H043",
+  "file": "H043_2.png",
+  "cach": 3,
+  "chu_thich": "Quy tắc bàn tay trái cho hạt mang điện: bốn ngón theo chiều chuyển động, ngón cái chỉ chiều lực Lorentz (điện tích dương)",
+  "nguon": "Vẽ lại theo Hình 3-2 sách Tập 2, trang PDF 28",
+  "ghi": ""
+ },
+ {
+  "ma": "H044",
+  "file": "H044.png",
+  "cach": 3,
+  "chu_thich": "Vận tốc v hợp với B góc θ: chỉ thành phần B⊥ = B sinθ gây lực Lorentz F (hướng ra khỏi trang)",
+  "nguon": "Vẽ lại theo Hình 3-1(b) sách Tập 2, trang PDF 28",
+  "ghi": ""
+ },
+ {
+  "ma": "H045",
+  "file": "H045.png",
+  "cach": 3,
+  "chu_thich": "Hạt điện tích dương bay vuông góc vào từ trường đều chuyển động tròn đều; lực Lorentz hướng vào tâm làm lực hướng tâm",
+  "nguon": "Vẽ lại theo Hình 3-3 sách Tập 2, trang PDF 29",
+  "ghi": ""
+ },
+ {
+  "ma": "H046",
+  "file": "H046.png",
+  "cach": 3,
+  "chu_thich": "Sơ đồ ống tia âm cực (đèn hình CRT): súng điện, cuộn lệch hướng, màn huỳnh quang",
+  "nguon": "Vẽ lại theo Hình 4-1 sách Tập 2, trang PDF 42",
+  "ghi": ""
+ },
+ {
+  "ma": "H047",
+  "file": "H047.png",
+  "cach": 3,
+  "chu_thich": "Máy quang phổ khối: hạt tăng tốc qua hiệu điện thế U, vào từ trường B chuyển động nửa đường tròn, hạt khối lượng khác nhau đập vào chỗ khác nhau trên tấm ảnh",
+  "nguon": "Vẽ lại theo Hình 4-2 sách Tập 2, trang PDF 42",
+  "ghi": ""
+ },
+ {
+  "ma": "H048",
+  "file": "H048_1.png",
+  "cach": 3,
+  "chu_thich": "Cyclotron nhìn từ trên: hai hộp D1, D2, từ trường vuông góc, hạt chuyển động xoắn ra ngoài, hiệu điện thế xoay chiều ở khe",
+  "nguon": "Vẽ lại theo Hình 4-4 sách Tập 2, trang PDF 43",
+  "ghi": ""
+ },
+ {
+  "ma": "H048",
+  "file": "H048_2.png",
+  "cach": 3,
+  "chu_thich": "Cyclotron nhìn mặt cắt: nam châm N–S tạo từ trường đều vuông góc với hai hộp D, nguồn xoay chiều nối hai hộp",
+  "nguon": "Vẽ lại theo Hình 4-4 sách Tập 2, trang PDF 43",
+  "ghi": ""
+ },
+ {
+  "ma": "H049",
+  "file": "H049.png",
+  "cach": 3,
+  "chu_thich": "Máy phát MHD: plasma chuyển động vào từ trường, ion dương lệch về tấm A, ion âm về tấm B, xuất hiện điện trường E",
+  "nguon": "Vẽ lại theo Hình 4-5 sách Tập 2, trang PDF 44",
+  "ghi": ""
+ },
+ {
+  "ma": "H050",
+  "file": "H050.png",
+  "cach": 3,
+  "chu_thich": "Lưu lượng kế điện từ: chất lỏng dẫn điện chảy trong từ trường, hai điện cực ở hai bên thành ống nối với vôn kế",
+  "nguon": "Vẽ lại theo Hình 4-6 sách Tập 2, trang PDF 45",
+  "ghi": ""
+ },
+ {
+  "ma": "H051",
+  "file": "H051.png",
+  "cach": 3,
+  "chu_thich": "Từ thông qua mặt S vuông góc với các đường sức từ: Φ = BS",
+  "nguon": "Vẽ lại theo Hình 5-1 sách Tập 2, trang PDF 52",
+  "ghi": ""
+ },
+ {
+  "ma": "H052",
+  "file": "H052.png",
+  "cach": 3,
+  "chu_thich": "Cảm ứng từ là mật độ từ thông: cùng diện tích S, B lớn thì nhiều đường sức xuyên qua hơn",
+  "nguon": "Vẽ theo nội dung lý thuyết (tham khảo Hình 5-1 sách Tập 2, tr.52)",
+  "ghi": ""
+ },
+ {
+  "ma": "H053",
+  "file": "H053.png",
+  "cach": 3,
+  "chu_thich": "Mặt phẳng S không vuông góc với đường sức: hình chiếu S′ = S cosα, α là góc giữa pháp tuyến n và B",
+  "nguon": "Vẽ lại theo Hình 5-2 sách Tập 2, trang PDF 52",
+  "ghi": ""
+ },
+ {
+  "ma": "H054",
+  "file": "H054.png",
+  "cach": 3,
+  "chu_thich": "Đồ thị Φ = NBS cosα theo α: |Φ| cực đại bằng NBS tại α = 0° hoặc 180°, Φ = 0 tại α = 90° và 270°",
+  "nguon": "Vẽ theo nội dung lý thuyết",
+  "ghi": ""
+ }
+]

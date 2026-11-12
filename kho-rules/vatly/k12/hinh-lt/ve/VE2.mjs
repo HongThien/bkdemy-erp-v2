@@ -185,17 +185,17 @@ function hand(ox, oy, { fingerLab, fingerCol, thumbLab, thumbCol, extra = '' }) 
 {
   const w = 520, h = 340
   const ls = lines(A_MAG, [95, 135, -95, -135])
-  const tf = fitTf(ls, w, h, 36, 64)
+  const tf = fitTf(ls, w, h, 36, 78)
   let b = fieldPaths(ls, tf, [0.5, 0.82], BC, 2.2)
   b += magnet(tf, true)
   // điểm M trên đường sức 105° phía trên, vẽ tiếp tuyến
   const l = ls[2], a = atFrac(l, 0.22)
   const px = tf.tx(a.p.x), py = tf.ty(a.p.y), dl = Math.hypot(a.d.x, a.d.y), dx = a.d.x / dl, dy = a.d.y / dl
   b += ln(px - dx * 60, py - dy * 60, px + dx * 30, py + dy * 30, INK, 1.8, '6 5')
-  b += arrow(px, py, px + dx * 70, py + dy * 70, '#173a9c', 4, 15)
+  b += arrow(px, py, px + dx * 58, py + dy * 58, '#173a9c', 4, 15)
   b += circ(px, py, 5, INK, INK, 1)
   b += t(px + 20, py - 6, '*M*', { size: 22 })
-  b += t(px + dx * 92, py + dy * 92 - 4, '*B*', { size: 26, col: '#173a9c', bold: true })
+  b += t(px + dx * 78, py + dy * 78 - 2, '*B*', { size: 26, col: '#173a9c', bold: true })
   fig('H033_2', w, h, b)
 }
 
