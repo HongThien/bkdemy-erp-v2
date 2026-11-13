@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-616 bảng · 42 view · 0 enum · 451 trigger · 1937 function
+591 bảng · 42 view · 0 enum · 448 trigger · 1937 function
 
 ## _app_secrets
 
@@ -4956,184 +4956,6 @@ END |  |  |
 | khop_luc | timestamp with time zone | Y |  |  |  |
 | khop_boi | uuid | Y |  | FK→nhan_su.id |  |
 
-## kho_ban_do
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_dang | text |  |  |  |  |
-| khoi | text |  |  |  |  |
-| ma_chu_de | text |  |  |  |  |
-| ten_chu_de | text |  |  |  |  |
-| ma_chuyen_de | text |  |  |  |  |
-| ten_chuyen_de | text |  |  |  |  |
-| ten_dang | text |  |  |  |  |
-| muc_do | smallint |  |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| bac_toi_thieu | text |  |  |  |  |
-| mo_ta_ngan | text | Y |  |  |  |
-| xoa_at | timestamp with time zone | Y |  |  |  |
-| gop_vao | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_cau_thieu_dang
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cau | text |  |  |  |  |
-| ly_do | text |  |  |  |  |
-| nguon | text |  | 'ai'::text |  |  |
-| actor | uuid | Y | jwt_uid() |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| chu_de_id | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_chu_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | text |  |  |  |  |
-| khoi | text |  |  |  |  |
-| ten | text |  |  |  |  |
-| thu_tu | integer | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| updated_at | timestamp with time zone |  | now() |  |  |
-| nhanh | text | Y | 'toan'::text |  |  |
-| ma_cu | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_chuyen_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | text |  |  |  |  |
-| ten | text |  |  |  |  |
-| mo_ta | text |  | ''::text |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| updated_at | timestamp with time zone |  | now() |  |  |
-| ma_cu | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_dang_bai
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | text |  |  |  |  |
-| nhom_id | text |  |  |  |  |
-| ten | text |  |  |  |  |
-| mo_ta | text |  | ''::text |  |  |
-| vi_du | text |  | ''::text |  |  |
-| vi_du_file_url | text | Y |  |  |  |
-| vi_du_ten_file | text | Y |  |  |  |
-| thu_tu | integer | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| updated_at | timestamp with time zone |  | now() |  |  |
-| ly_thuyet | text |  | ''::text |  |  |
-| ly_thuyet_file_url | text | Y |  |  |  |
-| ly_thuyet_ten_file | text | Y |  |  |  |
-| muc_do | smallint | Y |  |  |  |
-| bac_toi_thieu | text | Y |  |  |  |
-| ma_cu | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_de_xuat
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cau | text |  |  |  |  |
-| dang_bai_id | text |  |  |  |  |
-| chac | text |  | 'vua'::text |  |  |
-| ly_do | text |  | ''::text |  |  |
-| nguon | text |  | 'ai'::text |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_gan_cau
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cau | text |  |  |  |  |
-| dang_bai_id | text |  |  |  |  |
-| nguon | text |  |  |  |  |
-| actor | uuid | Y | jwt_uid() |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_kiem_mau
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cau | text |  |  |  |  |
-| dang_bai_ai_id | text |  |  |  |  |
-| ket_qua | text |  |  |  |  |
-| actor | uuid | Y | jwt_uid() |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_log
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | bigint |  |  |  |  |
-| bang | text |  |  |  |  |
-| khoa | text | Y |  |  |  |
-| hanh_dong | text |  |  |  |  |
-| cu | jsonb | Y |  |  |  |
-| moi | jsonb | Y |  |  |  |
-| actor | uuid | Y | jwt_uid() |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_nhom
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | text |  |  |  |  |
-| chu_de_id | text |  |  |  |  |
-| chuyen_de_id | text |  |  |  |  |
-| ten | text |  |  |  |  |
-| mo_ta | text |  | ''::text |  |  |
-| ly_thuyet | text |  | ''::text |  |  |
-| ly_thuyet_file_url | text | Y |  |  |  |
-| ly_thuyet_ten_file | text | Y |  |  |  |
-| thu_tu | integer | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| updated_at | timestamp with time zone |  | now() |  |  |
-| ma_cu | text | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_nhom_tien_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| nhom_id | text |  |  |  |  |
-| tien_de_nhom_id | text |  |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_o
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| chu_de_id | text |  |  |  |  |
-| chuyen_de_id | text |  |  |  |  |
-| thu_tu | integer | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_bdm_tu_choi
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | bigint |  |  |  |  |
-| ma_cau | text |  |  |  |  |
-| dang_bai_ai_id | text | Y |  |  |  |
-| hang | text |  |  |  |  |
-| kho_rac | boolean |  | false |  |  |
-| ly_do | text |  |  |  |  |
-| actor | uuid | Y | jwt_uid() |  |  |
-| at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
 ## kho_cau_dang
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5142,101 +4964,6 @@ END |  |  |
 | ma_cau | text |  |  | PK |  |
 | dang_bai_id | text |  |  |  |  |
 | nguon | text |  |  |  | `gan_cau` · `de_xuat` |
-
-## kho_cau_form_tn
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() |  |  |
-| ma_cau | text |  |  |  |  |
-| lua_chon | jsonb |  |  |  |  |
-| dap_an | text |  |  |  |  |
-| key_gia_tri | text |  |  |  |  |
-| nguon | text |  | 'ai'::text |  |  |
-| ai_model | text | Y |  |  |  |
-| sinh_at | timestamp with time zone |  | now() |  |  |
-| da_duyet | boolean |  | false |  |  |
-| duyet_boi | uuid | Y |  |  |  |
-| duyet_at | timestamp with time zone | Y |  |  |  |
-| sua_truoc_duyet | boolean |  | false |  |  |
-| tu_choi_ly_do | text | Y |  |  |  |
-| xoa_at | timestamp with time zone | Y |  |  |  |
-| updated_at | timestamp with time zone |  | now() |  |  |
-| tu_choi_boi | uuid | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_cau_hoi
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cau | text |  |  |  |  |
-| dang_chinh | text |  |  |  |  |
-| loai_cau | text |  |  |  |  |
-| noi_dung | text |  |  |  |  |
-| lua_chon | jsonb | Y |  |  |  |
-| menh_de | jsonb | Y |  |  |  |
-| dap_an | text | Y |  |  |  |
-| loi_giai | text | Y |  |  |  |
-| anh_de | text | Y |  |  |  |
-| anh_dap_an | text | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| nguon | text |  | 'le'::text |  |  |
-| parent_ma_cau | text | Y |  |  |  |
-| clone_method | text | Y |  |  |  |
-| nguon_giai | text |  | 'nguoi'::text |  |  |
-| xoa_at | timestamp with time zone | Y |  |  |  |
-| ma_cum | text | Y |  |  |  |
-| da_duyet | boolean |  | false |  |  |
-| duyet_boi | uuid | Y |  |  |  |
-| duyet_at | timestamp with time zone | Y |  |  |  |
-| giai_method | text | Y |  |  |  |
-| loi_giai_ai | text | Y |  |  |  |
-| dap_an_ai | text | Y |  |  |  |
-| ai_model | text | Y |  |  |  |
-| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
-| kiem_may | text | Y |  |  |  |
-| kiem_may_at | timestamp with time zone | Y |  |  |  |
-| kiem_may_boi | text | Y |  |  |  |
-| kiem_may_ghi | text | Y |  |  |  |
-| duyet_nguon | text | Y |  |  |  |
-| dang_ai_de_xuat | text | Y |  |  |  |
-| kiem_may_lo | uuid | Y |  |  |  |
-| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
-| ten_de_goc | text | Y |  |  |  |
-| nguon_loai | text | Y |  |  |  |
-| muc_cau | smallint | Y |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_cau_hoi_yeu_cau_giai
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() |  |  |
-| ma_cau | text |  |  |  |  |
-| ghi_chu | text | Y |  |  |  |
-| nguoi_yeu_cau | uuid | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| xu_ly_at | timestamp with time zone | Y |  |  |  |
-| nguoi_giai | uuid | Y |  |  |  |
-| trang_thai | text |  | 'cho_claude'::text |  |  |
-| han_at | timestamp with time zone | Y |  |  |  |
-| nop_at | timestamp with time zone | Y |  |  |  |
-| cap_nhat_at | timestamp with time zone | Y |  |  |  |
-| loi_giai_nhap | text | Y |  |  |  |
-| anh_nhap | text | Y |  |  |  |
-| dap_an_nhap | text | Y |  |  |  |
-| tu_choi_lan | integer |  | 0 |  |  |
-| ly_do_tu_choi | text | Y |  |  |  |
-| tu_choi_at | timestamp with time zone | Y |  |  |  |
-| duyet_boi | uuid | Y |  |  |  |
-| duyet_at | timestamp with time zone | Y |  |  |  |
-| so_ky_tu | integer | Y | length(COALESCE(loi_giai_nhap, ''::text)) |  |  |
-| so_cong_thuc | integer | Y | ((length(COALESCE(loi_giai_nhap, ''::text)) - length(replace(COALESCE(loi_giai_nhap, ''::text), '$'::text, ''::text))) / 2) |  |  |
-| loi_giai_ai | text | Y |  |  |  |
-| ai_model | text | Y |  |  |  |
-| che_do | text |  | 'giai'::text |  |  |
-| y_nhap | jsonb | Y |  |  |  |
-| kho | text |  |  |  |  |
 
 ## kho_cau_khuon_log
 
@@ -5264,57 +4991,6 @@ END |  |  |
 | actor | uuid | Y |  |  |  |
 | ts | timestamp with time zone |  | now() |  |  |
 
-## kho_chuyen_de_ly_thuyet
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_chuyen_de | text |  |  |  |  |
-| noi_dung | text |  | ''::text |  |  |
-| file_url | text | Y |  |  |  |
-| ten_file | text | Y |  |  |  |
-| cap_nhat_at | timestamp with time zone |  | now() |  |  |
-| khong_can | boolean |  | false |  |  |
-| kho | text |  |  |  |  |
-
-## kho_cum_bai
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cum | text |  | ('DCUM'::text \|\| lpad((nextval('dai_cum_seq'::regclass))::text, 5, '0'::text)) |  |  |
-| ma_dang | text |  |  |  |  |
-| ten | text | Y |  |  |  |
-| thu_tu | smallint |  | 1 |  |  |
-| ghi_chu | text | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_cum_tien_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_cum | text |  |  |  |  |
-| tien_de_ma_cum | text |  |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_dang_ly_thuyet
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_dang | text |  |  |  |  |
-| file_url | text | Y |  |  |  |
-| ten_file | text | Y |  |  |  |
-| cap_nhat_at | timestamp with time zone |  | now() |  |  |
-| noi_dung | text |  | ''::text |  |  |
-| kho | text |  |  |  |  |
-
-## kho_dang_tien_de
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma_dang | text |  |  |  |  |
-| tien_de_ma_dang | text |  |  |  |  |
-| kho | text |  |  |  |  |
-
 ## kho_de_sau
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5326,47 +5002,6 @@ END |  |  |
 | man | text |  | ''::text |  |  |
 | nguoi | uuid | Y | current_nhan_su_id() | FK→nhan_su.id |  |
 | at | timestamp with time zone |  | now() |  |  |
-
-## kho_de_xuat
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| id | uuid |  | gen_random_uuid() |  |  |
-| loai | text |  |  |  |  |
-| khoi | text |  |  |  |  |
-| ma_chuyen_de | text |  |  |  |  |
-| ma_dang | text | Y |  |  |  |
-| ten | text | Y |  |  |  |
-| mo_ta_ngan | text | Y |  |  |  |
-| dang_gan_nhat | text | Y |  |  |  |
-| ly_do | text |  |  |  |  |
-| lo | text |  |  |  |  |
-| nguon | text |  | 'ai'::text |  |  |
-| ai_model | text | Y |  |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
-
-## kho_de_xuat_cau
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| de_xuat_id | uuid |  |  |  |  |
-| ma_cau | text |  |  |  |  |
-| kho | text |  |  |  |  |
-
-## kho_de_xuat_quyet_dinh
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| de_xuat_id | uuid |  |  |  |  |
-| hanh_dong | text |  |  |  |  |
-| ket_qua_ma_dang | text | Y |  |  |  |
-| ket_qua_ma_cum | text | Y |  |  |  |
-| tra_loi | text | Y |  |  |  |
-| so_cau_doi | integer |  | 0 |  |  |
-| nguoi | uuid |  |  |  |  |
-| quyet_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
 
 ## kho_doi_dang_log
 
@@ -5402,21 +5037,6 @@ END |  |  |
 | so_khong_kiem | integer |  | 0 |  |  |
 | ghi_chu | text | Y |  |  |  |
 | tao_at | timestamp with time zone |  | now() |  |  |
-
-## kho_mcq_rule
-
-| cột | kiểu | null | default | khóa | giá trị hợp lệ |
-|---|---|---|---|---|---|
-| ma | text |  |  |  |  |
-| ten | text |  |  |  |  |
-| mo_ta | text |  |  |  |  |
-| vi_du | text | Y |  |  |  |
-| nhom | text |  |  |  |  |
-| ap_dung | text[] |  | '{}'::text[] |  |  |
-| du_phong | boolean |  | false |  |  |
-| active | boolean |  | true |  |  |
-| created_at | timestamp with time zone |  | now() |  |  |
-| kho | text |  |  |  |  |
 
 ## kho_nhan_xet
 
@@ -11691,9 +11311,6 @@ WITH luot AS (
 | hs_moi_tick | hs_moi_tick_log_trg | AFTER | INSERT/DELETE | _hs_moi_tick_log |
 | hs_nhan_vat_chinh | hs_nhan_vat_chinh_log_trg | AFTER | INSERT/UPDATE | _hs_nhan_vat_chinh_ghi_log |
 | hsta_chot | trg_hsta_chot_log | AFTER | INSERT/DELETE/UPDATE | _hsta_chot_ghi_log |
-| kho_bdm_de_xuat | kho_cau_dang_dexuat | AFTER | INSERT/DELETE/UPDATE | _trg_kho_cau_dang |
-| kho_bdm_gan_cau | kho_cau_dang_gan | AFTER | INSERT/DELETE/UPDATE | _trg_kho_cau_dang |
-| kho_cau_hoi | kho_cau_dang_cau | AFTER | INSERT/DELETE/UPDATE | _trg_kho_cau_dang_cau |
 | kho_doi_dang_log | trg_kho_doi_dang_log_dong_bo_btyeu | AFTER | INSERT | _trg_btyeu_dong_bo_dang_ban_do |
 | khtn_ban_do | trg_khtn_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | khtn_ban_do | trg_khtn_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
