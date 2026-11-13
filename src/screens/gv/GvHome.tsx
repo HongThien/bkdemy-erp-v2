@@ -4,12 +4,12 @@
 // · Bottom-tab 5 nút: Hôm nay · Việc chấm · Học sinh · Lớp · Của tôi.
 // Việc = getMyTasks() lọc vai 'gv' (CÙNG derive với "Việc của tôi" ERP — 1 nguồn, TASKS_BY_VAI).
 // Phạm vi tab Học sinh/Lớp = lớp phân công vai 'gv' (chốt ④ 31/08 — khoá theo lớp phụ trách).
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import type { MyProfile } from '../../lib/nhansu'
 import type { Lop } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
-import { getMyTasks, buoiAoCuaNgay, type MyTask, type BuoiAo } from '../../lib/gami'
+import { getMyTasks, XONG_NGAY_MAC_DINH, buoiAoCuaNgay, type MyTask, type BuoiAo } from '../../lib/gami'
 import { gvDashboard, type GvDash } from '../../lib/gvdash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
 import ChamBuoiGv from './ChamBuoiGv'
@@ -59,10 +59,14 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
   }
   lopsGv.sort((a, b) => a.ten_lop.localeCompare(b.ten_lop, 'vi'))
 
+  // Việc đã xong mặc định chỉ tải 2 tuần (Thùy 13/11); bấm "Xem cũ hơn" ⇒ tải đủ lịch sử.
+  const xongHetRef = useRef(false)
+  const [xongHet, setXongHet] = useState(false)
+  const xemCuHon = () => { xongHetRef.current = true; setXongHet(true); reload(true) }
   async function reload(silent = false) {
     if (!silent) setLoading(true)
     try {
-      const all = await getMyTasks().catch(() => [] as MyTask[])
+      const all = await getMyTasks({ xongNgay: xongHetRef.current ? null : XONG_NGAY_MAC_DINH }).catch(() => [] as MyTask[])
       setTasks(all.filter((x) => x.vai === 'gv' && x.tab === 'danhgia'))
     } finally { setLoading(false) }
     gvDashboard(homNay.slice(0, 7)).then(setDashTom).catch(() => setDashTom(null)) // best-effort, không chặn trang chủ
@@ -89,7 +93,7 @@ export default function GvHome({ profile, quyen }: { profile: MyProfile; quyen: 
       <div className="min-h-0 flex-1 overflow-auto">
         {tab === 'home' && <TrangChu profile={profile} homNay={homNay} loading={loading} coQuyen={coQuyen} tasks={tasks} canLam={canLam} noCua={noCua} now={now} onGo={setTab} dashTom={dashTom}
           buoiHomNay={buoiHomNay} coLop={lopsGv.length > 0} onTruocBuoi={moTruocBuoi} onBaoCaoKy={() => setBcKy(true)} />}
-        {tab === 'viec' && <ViecTab tasks={tasks} now={now} homNay={homNay} onOpen={setView} />}
+        {tab === 'viec' && <ViecTab tasks={tasks} now={now} homNay={homNay} onOpen={setView} xongHet={xongHet} onXemCuHon={xemCuHon} />}
         {tab === 'hs' && <HocSinhView lops={lopsGv} />}
         {tab === 'lop' && <LopView key={lopInit?.n ?? 0} lops={lopsGv} init={lopInit} />}
         {tab === 'dash' && <DashGv />}
@@ -288,8 +292,8 @@ function RowMini({ t, now, homNay }: { t: MyTask; now: number; homNay: string })
 }
 
 // ── TAB VIỆC CHẤM: card việc CẢ 2 khâu, nhóm theo ngày + Đã xong collapse (khuôn ViecTab app TA) ──
-function ViecTab({ tasks, now, homNay, onOpen }: {
-  tasks: MyTask[]; now: number; homNay: string; onOpen: (v: BuoiViewGv) => void
+function ViecTab({ tasks, now, homNay, onOpen, xongHet, onXemCuHon }: {
+  tasks: MyTask[]; now: number; homNay: string; onOpen: (v: BuoiViewGv) => void; xongHet: boolean; onXemCuHon: () => void
 }) {
   const [xemXong, setXemXong] = useState(false)
   // GẦN → XA (CEO 31/08): ngày giảm dần — hôm nay trên cùng, nợ cũ dần xuống dưới.
@@ -336,6 +340,9 @@ function ViecTab({ tasks, now, homNay, onOpen }: {
           ))}
         </div>
 
+        {!xongHet && daXong.length === 0 && (
+          <button onClick={onXemCuHon} className="mt-3 px-1 text-left text-[12.5px] font-semibold text-slate-400">▸ Xem việc đã xong cũ hơn 2 tuần</button>
+        )}
         {daXong.length > 0 && (
           <div className="mt-3">
             <button onClick={() => setXemXong(!xemXong)} className="px-1 text-[12.5px] font-semibold text-slate-400">
@@ -352,6 +359,9 @@ function ViecTab({ tasks, now, homNay, onOpen }: {
                   </button>
                 ))}
               </div>
+            )}
+            {xemXong && !xongHet && (
+              <button onClick={onXemCuHon} className="mt-1.5 px-1 text-left text-[12.5px] font-semibold text-slate-400">▸ Xem việc đã xong cũ hơn 2 tuần</button>
             )}
           </div>
         )}

@@ -13,7 +13,7 @@ import HomeScreen from './HomeScreen'
 const MyPlanScreen = lazyMan(() => import('./myplan/MyPlanScreen'))
 import { getMyScope, type MyScope } from '../lib/nhansu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { getMyTasks, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
+import { getMyTasks, XONG_NGAY_MAC_DINH, moBuoi, diemDanhTienDo, danhGiaTienDo, type MyTask, type BuoiAo, type TabKey, type VaiViec } from '../lib/gami'
 import { getMyOpsTasks, getMyPrepTasks, myBuoiAoCuaKhoang, OPS_TASK_LABEL, type OpsTask, type MyPrepTask } from '../lib/opsvanhanh'
 import { listCanScanDaCham, listCanChamCuaToi, listCanTraBaiCuaToi, type CaTestChoScanDaCham, type CaTestChoCham } from '../lib/detest'
 import { homNayVN, tuanCuaNgay, khoangTuan, nhanTuan, mucDeadline, nhanConLai, thuCuaNgay, ddmmVN, ngayCuaTs, type DeadlineMuc } from '../lib/tuan'
@@ -266,6 +266,8 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   const [duocCaNhan, setDuocCaNhan] = useState(false)
   useEffect(() => { trolyCaNhanDuocDung().then(setDuocCaNhan).catch(() => setDuocCaNhan(false)) }, [])
   const [doneShown, setDoneShown] = useState(20)
+  // Việc đã xong mặc định chỉ tải 2 tuần (Thùy 13/11). Bấm "xem cũ hơn" hoặc lùi về tuần cũ hơn mốc đó ⇒ tải đủ lịch sử (nền, không xoá danh sách đang hiện).
+  const [xongHet, setXongHet] = useState(false)
   const [now, setNow] = useState(() => Date.now())
   // Report/Báo tan + Chuẩn bị phòng (Ops, xem opsvanhanh.ts) — Thùy 07-06: "các loại việc chính của
   // ops chưa được đưa vào Việc của tôi". Nguồn = phan_cong_ca/prep_phong (KHÁC phan_cong_lop/MyTask),
@@ -294,15 +296,16 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
   // "mục tiêu 1 màn nhìn thấy gần hết việc cần làm" — cùng pattern đã áp OpsReportScreen/PrepScreen).
   const [xemThem, setXemThem] = useState<Set<string>>(new Set())
 
+  useEffect(() => { if (!xongHet && tuan < tuanNay - 2) setXongHet(true) }, [tuan, tuanNay, xongHet])
   useEffect(() => {
-    getMyTasks().then(async (ts) => {
+    getMyTasks({ xongNgay: xongHet ? null : XONG_NGAY_MAC_DINH }).then(async (ts) => {
       setTasks(ts)
       // Việc "Đánh giá" chưa chốt: hỏi thêm ĐÃ ĐIỀN tới đâu (dòng thật), để card nói "5/6" thay vì
       // im lặng như buổi trắng — xem `danhGiaTienDo` (gami.ts) cho lý do.
       const ids = [...new Set(ts.filter((t) => t.tab === 'danhgia' && !t.done).map((t) => t.buoiId))]
       try { setDgTienDo(ids.length ? await danhGiaTienDo(ids) : {}) } catch { setDgTienDo({}) }
-    }).catch(() => setTasks([]))
-  }, [])
+    }).catch(() => { if (!xongHet) setTasks([]) })
+  }, [xongHet])
   useEffect(() => {
     const htMons = me?.hocThuatMons ?? []
     if (!htMons.length) { setChoDuyetDuoi(0); return }
@@ -532,9 +535,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
           )}
 
           <details className="mt-3">
-            <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong — lịch sử ({doneHistory.length})</summary>
+            <summary className="cursor-pointer text-[12px] font-medium text-emerald-700">✓ Đã xong — {xongHet ? 'lịch sử' : '2 tuần gần đây'} ({doneHistory.length})</summary>
             {doneHistory.length === 0 ? (
-              <p className="mt-2 text-[12px] text-slate-400">Chưa có việc nào hoàn thành.</p>
+              <p className="mt-2 text-[12px] text-slate-400">{xongHet ? 'Chưa có việc nào hoàn thành.' : 'Chưa có việc nào hoàn thành trong 2 tuần gần đây.'}</p>
             ) : (
               <>
                 <div className="mt-2 grid gap-1.5 [grid-template-columns:repeat(auto-fill,minmax(220px,1fr))]">
@@ -544,6 +547,9 @@ function VietCuaToi({ scope, onOpenBuoi }: { scope: MyScope | null; onOpenBuoi: 
                   <button onClick={() => setDoneShown((n) => n + 20)} className="mt-2 rounded-md border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Mở thêm ({doneHistory.length - doneShown})</button>
                 )}
               </>
+            )}
+            {!xongHet && (
+              <button onClick={() => setXongHet(true)} className="mt-2 ml-0 rounded-md border border-slate-200 px-3 py-1.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300">Xem việc đã xong cũ hơn 2 tuần</button>
             )}
           </details>
         </div>

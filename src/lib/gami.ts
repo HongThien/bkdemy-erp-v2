@@ -1134,8 +1134,9 @@ export const nhanViecBuoi = (tab: string, etOnline?: boolean | null): string =>
 // ref_key: khoá gậy tự động (vh:buoi|tab|nhansu) — tính SẴN ở fn_viec_buoi_thuong (§2.0), gay.ts đọc
 // THẲNG cột này, không tự ghép chuỗi lần 2 (1 nguồn duy nhất, đổi công thức chỉ sửa 1 chỗ).
 type ViecBuoiThuongRow = { nhan_su_id: string; buoi_id: string; lop_id: string; ten_lop: string; ngay: string; vai: VaiViec; tab: TabKey; dong_at: string | null; han: string | null; et_online: boolean; ref_key: string }
-async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: boolean): Promise<ViecBuoiThuongRow[]> {
-  const { data, error } = await supabase.rpc('fn_viec_buoi_thuong', { p_tu: tu, p_den: den, p_tat_ca: tatCa }).limit(LIMIT)
+// xongTu: mốc THỜI ĐIỂM (ISO) — việc ĐÃ XONG chỉ lấy những việc đóng từ mốc này; việc CHƯA xong luôn lấy đủ. null = đủ lịch sử.
+async function viecBuoiThuong(tu: string | null, den: string | null, tatCa: boolean, xongTu: string | null = null): Promise<ViecBuoiThuongRow[]> {
+  const { data, error } = await supabase.rpc('fn_viec_buoi_thuong_loc', { p_tu: tu, p_den: den, p_tat_ca: tatCa, p_xong_tu: xongTu }).limit(LIMIT)
   if (error) throw error
   return (data ?? []) as ViecBuoiThuongRow[]
 }
@@ -1153,12 +1154,18 @@ export const TASKS_BY_VAI: Record<'gv' | 'tg', { tab: TabKey; label: string }[]>
   gv: [{ tab: 'danhgia', label: 'Đánh giá sau buổi' }],   // Thùy 28/10: chấm bài trên lớp không còn là việc của GV
   tg: [{ tab: 'et', label: 'Chấm ET' }, { tab: 'btvn', label: 'Chấm BTVN' }],   // Thùy 15/10: chấm bài trên lớp không còn của TA
 }
-export async function getMyTasks(): Promise<MyTask[]> {
+// Thùy 13/11: việc ĐÃ XONG của buổi thường mặc định chỉ lấy 2 TUẦN gần nhất (trước kéo cả lịch sử: có người 900+ việc mỗi lần mở trang chủ,
+// tăng mãi theo thời gian). Muốn xem cũ hơn ⇒ màn gọi lại với { xongNgay: null } khi người dùng bấm "xem cũ hơn". Việc CHƯA xong luôn đủ.
+export const XONG_NGAY_MAC_DINH = 14
+export async function getMyTasks(opts: { xongNgay?: number | null } = {}): Promise<MyTask[]> {
   const prof = await getMyProfile()
   if (!prof) return []
   // Buổi THƯỜNG: owner + hạn + MT-thay-hẳn-các-khâu đều derive ở DB (fn_viec_buoi_thuong). Task XONG vẫn
   // trả về (done + doneAt) để hiện ở nhóm "Đã xong" — mở lại xem/sửa được.
-  const rows = await viecBuoiThuong(null, null, false)
+  const xongNgay = opts.xongNgay === undefined ? XONG_NGAY_MAC_DINH : opts.xongNgay
+  // mốc là một THỜI ĐIỂM (không phải ngày lịch VN) nên toISOString() ở đây là đúng — DB so với dong_at (timestamptz)
+  const xongTu = xongNgay == null ? null : new Date(Date.now() - xongNgay * 86400000).toISOString()
+  const rows = await viecBuoiThuong(null, null, false, xongTu)
   const out: MyTask[] = rows.filter((r) => r.tab !== 'ingame').map(taskTuRow) // Thùy 28/10: khâu ingame không còn là việc của ai
   const tgLops = new Set(prof.phanCong.filter((pc) => pc.vai_tro === 'tg').map((pc) => pc.lop_id))
   // ── DUYỆT BÁO SAI test online (spec test-online §9) — THAY cho task "Chấm ET" đã bỏ ở trên.

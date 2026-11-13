@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { uploadAvatar, updateMyProfile, type MyProfile } from '../../lib/nhansu'
 import type { MyQuyen } from '../../lib/quyen'
-import { getMyTasks, type MyTask } from '../../lib/gami'
+import { getMyTasks, XONG_NGAY_MAC_DINH, type MyTask } from '../../lib/gami'
 import { demNopTheoBuois, chamTuDongBat } from '../../lib/btvnnop'
 import { taDashboard, type TaDash } from '../../lib/tadash'
 import { homNayVN, ddmmVN, thuCuaNgay, mucDeadline, nhanConLai } from '../../lib/tuan'
@@ -102,11 +102,15 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
   const taiBoTro = () => { viecBoTroCuaToi().then(setBoTro).catch(() => {}); caBuCuaToi().then(setCaBu).catch((e) => setLoiTai(`Ca bù: ${e?.message ?? e}`)); caDuoiCuaToi().then(setCaDuoi).catch((e) => setLoiTai(`Ca đuổi: ${e?.message ?? e}`)); btvnBuCuaToi().then(setBtvnBu).catch(() => {}) }
   const coQuyen = quyen.laAdmin || quyen.chucNang.includes('buoihoc') // cùng leaf với tab chấm bên ERP
 
+  // Việc đã xong mặc định chỉ tải 2 tuần (Thùy 13/11); bấm "Xem cũ hơn" ở nhóm Đã xong ⇒ tải đủ lịch sử. Dùng ref để reload nền (visibilitychange) giữ đúng lựa chọn.
+  const xongHetRef = useRef(false)
+  const [xongHet, setXongHet] = useState(false)
+  const xemCuHon = () => { xongHetRef.current = true; setXongHet(true); reload(true) }
   async function reload(silent = false) {
     if (!silent) setLoading(true)
     try {
       setLoiTai(null)
-      const all = await getMyTasks().catch((e) => { setLoiTai(`Danh sách việc: ${e?.message ?? e}`); return [] as MyTask[] })
+      const all = await getMyTasks({ xongNgay: xongHetRef.current ? null : XONG_NGAY_MAC_DINH }).catch((e) => { setLoiTai(`Danh sách việc: ${e?.message ?? e}`); return [] as MyTask[] })
       // Giữ 3 nghiệp vụ chấm chính + task ĐÁNH GIÁ của buổi bù/đuổi (gom vào "Chấm ET" — xem
       // belongsToNv). Trước đây filter cứng tab ∈ {ingame,et,btvn} khiến task 'danhgia' buổi
       // bù/đuổi mất tiêu → buổi đuổi vô hình hoàn toàn trên app TA (không có 'et'), buổi bù thì
@@ -165,7 +169,7 @@ export default function TaHome({ profile, quyen, onAvatarChanged }: { profile: M
         {tab === 'botro' && <><CaBoTroTA viec={boTro} onDoi={taiBoTro} /><CaHinhTA /><CaOnThiTA /></>}
         {tab === 'cong' && <CongTA nsId={profile.nhanSu.id} onBack={() => setTab('home')} onDoi={taiCong} />}
         {tab === 'saugio' && <SauGioNhapTA onBack={() => setTab('home')} onDoi={taiBoTro} />}
-        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && tab !== 'saugio' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} now={now} homNay={homNay} onOpen={setView}
+        {tab !== 'home' && tab !== 'dash' && tab !== 'botro' && tab !== 'cong' && tab !== 'saugio' && <ViecTab key={tab} nv={nvOf(tab)} tasks={tasks.filter((t) => belongsToNv(t, tab))} nopCount={nopCount} xongHet={xongHet} onXemCuHon={xemCuHon} now={now} homNay={homNay} onOpen={setView}
           dauDs={tab === 'btvn' ? <>{tuDongBat && <NutChamTuDong onClick={() => setMoTuDong(true)} />}<DsBtvnBu ds={btvnBu} homNay={homNay} onMo={setMoBtvnBu} /></> : null} soThem={tab === 'btvn' ? noBtvnBu : 0} />}
       </div>
 
@@ -530,8 +534,8 @@ function RowMini({ t, now, homNay }: { t: MyTask; now: number; homNay: string })
 }
 
 // ── TAB 1 NGHIỆP VỤ: thanh đầu BK + list card việc (nhóm theo ngày) + Đã xong collapse ──
-function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }: {
-  nv: (typeof NGHIEP_VU)[number]; tasks: MyTask[]; nopCount: Record<string, number>
+function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0, xongHet, onXemCuHon }: {
+  nv: (typeof NGHIEP_VU)[number]; tasks: MyTask[]; nopCount: Record<string, number>; xongHet: boolean; onXemCuHon: () => void
   now: number; homNay: string; onOpen: (v: BuoiView) => void
   dauDs?: React.ReactNode; soThem?: number // mục riêng đầu danh sách (BTVN bù) + số việc của mục đó
 }) {
@@ -581,6 +585,9 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }
           </div>
         ))}
 
+        {!xongHet && daXong.length === 0 && (
+          <button onClick={onXemCuHon} className="mt-1 px-1 text-left text-[12px] font-bold text-[#63709A]">▸ Xem việc đã xong cũ hơn 2 tuần</button>
+        )}
         {daXong.length > 0 && (
           <div className="mt-1">
             <button onClick={() => setXemXong(!xemXong)} className="px-1 text-[12px] font-bold text-[#63709A]">
@@ -597,6 +604,9 @@ function ViecTab({ nv, tasks, nopCount, now, homNay, onOpen, dauDs, soThem = 0 }
                   </button>
                 ))}
               </div>
+            )}
+            {xemXong && !xongHet && (
+              <button onClick={onXemCuHon} className="mt-1 px-1 text-left text-[12px] font-bold text-[#63709A]">▸ Xem việc đã xong cũ hơn 2 tuần</button>
             )}
           </div>
         )}
