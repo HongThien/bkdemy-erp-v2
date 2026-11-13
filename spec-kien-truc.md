@@ -87,7 +87,8 @@ Khuôn: **dạng–câu** (Đại · Hình giải tích · KHTN · Lý · Hoá �
 - Hoàn tác: `alter table kho_<họ> detach partition <nhánh>_<họ>` rồi bỏ cột `kho`.
 - Kiểm bắt buộc mỗi họ: chạy thử trong transaction rồi rollback; số dòng + vân tay nội dung từng nhánh trước–sau; số trigger/khoá/policy/index không đổi; thử thêm · upsert · xoá qua tên cũ.
 
-**Tiến độ:** ✅ `bdm_cau_thieu_dang` (13/11). Còn 24 họ: 16 họ giống hệt (làm bằng script sinh migration) · 8 họ lệch 1–4 cột (`ban_do`, `cau_hoi`, `bdm_o`, `bdm_nhom`, `bdm_log`, `bdm_dang_bai`, `bdm_chu_de`, `bdm_chuyen_de`) phải làm khớp cột trước · `cau_hoi` và `ban_do` làm sau cùng (nhiều khoá ngoại trỏ vào; phải dò chỗ chép nguyên dòng).
+**Tiến độ (13/11):** ✅ 15 họ đã gộp: `bdm_cau_thieu_dang` · `bdm_de_xuat` · `bdm_gan_cau` · `bdm_kiem_mau` · `bdm_nhom_tien_de` · `cau_form_tn` · `cau_hoi_yeu_cau_giai` · `chuyen_de_ly_thuyet` · `cum_bai` · `cum_tien_de` · `dang_ly_thuyet` · `dang_tien_de` · `de_xuat_cau` · `de_xuat_quyet_dinh` · `mcq_rule` (công cụ: `node scripts/kien-truc/gop-khuon.mjs <họ>` — chạy thử rollback, so khớp, sinh SQL).
+Còn 10 họ: `bdm_tu_choi` (có cột tự tăng — phải xử lý cột đó trước) · `de_xuat` (4 hàm `fn_*_de_xuat_quyet` dùng kiểu dòng của bảng — sửa hàm trước) · 8 họ lệch 1–4 cột (`ban_do`, `cau_hoi`, `bdm_o`, `bdm_nhom`, `bdm_log`, `bdm_dang_bai`, `bdm_chu_de`, `bdm_chuyen_de`) phải làm khớp cột trước · `cau_hoi` và `ban_do` làm sau cùng.
 **Chưa làm ở bước gộp:** trigger và hàm vẫn là bản chép theo nhánh — gom dần về bảng chung sau, không chặn việc gộp.
 
 ## 3. Tầng Đo — một sổ sự kiện duy nhất
