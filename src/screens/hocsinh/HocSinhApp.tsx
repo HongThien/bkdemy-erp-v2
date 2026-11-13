@@ -770,7 +770,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
     onXongDang={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
-  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} />
+  if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)}
+    onMo={(d) => d === 'ly_thuyet' ? setDirect('so_tay') : d === 'luyen_tap' ? setDirect('tu_luyen_chon') : (setDirect(null), setKhu('giao_trinh'), setTab('chua'))} />
   if (direct === 'xep_hang') return <BangXepHangHS onBack={() => setDirect(null)} />   // MỌI cấp cùng 1 màn BXH (Thùy 11/10 "tất cả các cấp UI giống nhau")
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={manRong} gioiTinh={gt} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'bu_ca' && buCa) return <CaBuHS buoiId={buCa} onBack={() => { setBuCa(null); setDirect('lich_bo_tro') }}

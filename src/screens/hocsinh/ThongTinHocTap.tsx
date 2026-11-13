@@ -15,7 +15,8 @@ import {
   SRC_LABEL, type DangHocTap, type TongQuanHocTap, type RecentEval, type LichSuLamBaiRow, type XepHangTiLeRow, type XepHangRow,
 } from '../../lib/tuluyen'
 import { getBXHDiemMTKhoi, type BXHDiemMTRow } from '../../lib/thanhtich'
-import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD } from './skin/KhungHS'
+import { ManHS, DauTrangHS, MAU, THE, THE_TRON, HEAD, useMonHS } from './skin/KhungHS'
+import MucTieuTuanHS, { type DichMoMTT } from './MucTieuTuanHS'
 
 // THEME giữ hình dạng cũ chỉ để `BXHList` (prop `t`) + `_THEME_TTHT` (AppHS demo) còn chạy; mọi giá trị giờ là biến skin.
 const NAVY = MAU.ink
@@ -52,17 +53,20 @@ function ChevronTron() {
 }
 
 // ── MÀN CHÍNH: menu 3 box list-style, click mở màn con ─────────────────────────────
-type SubKey = 'dang_yeu' | 'lich_su' | 'xep_hang'
+type SubKey = 'muc_tieu' | 'dang_yeu' | 'lich_su' | 'xep_hang'
 type BoxDef = { key: SubKey; ten: string; mo_ta: string; icon: string }
 const BOXES: BoxDef[] = [
+  { key: 'muc_tieu', ten: 'Mục tiêu tuần này', mo_ta: 'Tuần này em cần nắm nhóm bài nào, em đang ở đâu và đã làm những việc gì.', icon: '🎯' },
   { key: 'dang_yeu', ten: 'Danh sách dạng yếu', mo_ta: 'Xem các dạng bài em còn yếu để tập trung luyện thêm.', icon: '⚠️' },
   { key: 'lich_su',  ten: 'Lịch sử làm bài trên app', mo_ta: 'Mỗi ngày em làm bao nhiêu câu, đúng bao nhiêu, mất bao lâu.', icon: '📓' },
   { key: 'xep_hang', ten: 'Bảng xếp hạng', mo_ta: 'So thứ hạng với bạn cùng khối: tỉ lệ đạt, điểm MT, số câu tự luyện.', icon: '🏅' },
 ]
 
-export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong }: { hocSinhId: string; gioiTinh: 'nam' | 'nu' | null; onXong: () => void }) {
+export default function ThongTinHocTap({ hocSinhId, gioiTinh, onXong, onMo }: { hocSinhId: string; gioiTinh: 'nam' | 'nu' | null; onXong: () => void; onMo?: (d: DichMoMTT) => void }) {
   const [sub, setSub] = useState<SubKey | null>(null)
+  const monDangChon = useMonHS()
   const t = THEME[gioiTinh === 'nu' ? 'nu' : 'nam'] // 2 nhánh giống nhau — giới tính không còn đổi màu
+  if (sub === 'muc_tieu') return <MucTieuMon mon={monDangChon} onBack={() => setSub(null)} onMo={onMo} />
   if (sub === 'dang_yeu') return <DangYeuScreen t={t} onBack={() => setSub(null)} />
   if (sub === 'lich_su')  return <LichSuScreen t={t} onBack={() => setSub(null)} />
   if (sub === 'xep_hang') return <XepHangScreen t={t} hocSinhId={hocSinhId} onBack={() => setSub(null)} />
@@ -410,3 +414,12 @@ function fmtThoiGian(giay: number): string {
 
 // Giữ tham chiếu supabase cho TS resolve (import chỉ dùng qua lib helpers)
 void supabase
+
+// Mục tiêu tuần — theo MÔN đang chọn ở màn chính (một tờ = một môn); chưa có thì hỏi môn của em (monCuaHS)
+function MucTieuMon({ mon, onBack, onMo }: { mon: string | null; onBack: () => void; onMo?: (d: DichMoMTT) => void }) {
+  const [m, setM] = useState<string | null | undefined>(mon ?? undefined)
+  useEffect(() => { if (mon) { setM(mon); return } let a = true; monCuaHS().then((x) => a && setM(x)).catch(() => a && setM(null)); return () => { a = false } }, [mon])
+  if (m === undefined) return <Kung title="Mục tiêu tuần này" onBack={onBack}><p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Đang tải…</p></Kung>
+  if (m === null) return <Kung title="Mục tiêu tuần này" onBack={onBack}><p className="mt-6 px-4 py-5 text-center text-[14.5px]" style={{ ...THE, color: MAU.muted }}>Em chưa có lớp nào.</p></Kung>
+  return <MucTieuTuanHS mon={m} onBack={onBack} onMo={onMo} />
+}

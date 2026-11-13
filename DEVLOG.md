@@ -80015,3 +80015,11 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 09:42 — Mục tiêu tuần: chốt 6 câu cuối, spec hết câu treo
 - Chưa chốt xong thì chưa hiện tờ tuần mới · không có lớp T7+CN liền nhau · nhiệm vụ (chơi) và mục tiêu tuần (học) tách riêng, sau này có thể gộp và bỏ nhiệm vụ cũ nhưng chưa làm · vắng = chưa hoàn thành (phải học bù) · mới vào lớp = chưa có dữ liệu phần trước · mỗi môn màn riêng · HS tự cam kết để sau.
+
+## 13/11 10:15 — BUILD Mục tiêu tuần: DB + ERP + app HS + app PH (chưa áp DB, chưa deploy)
+- Thùy: "build đến cuối luôn đi… ERP, app HS, app PH. test và build ra output". Phiên cloud không có kết nối DB ⇒ viết migration, kiểm trên Postgres 16 TẠM (bảng giả lập sinh từ schema.md + hàm mastery giả lập + dữ liệu mẫu 3 em / 1 lớp / 5 buổi / 1 ca sau giờ / tự luyện).
+- DB mig 202611131000: mtt_lop_chot (append-only) · mtt_dau (đầu tuần, bất biến) · mtt_luu (bảng đệm) · mtt_chot (sổ chốt, trigger chặn sửa/xoá) · mtt_top; _mtt_tinh = 1 nơi tính tờ; fn_mtt_cua_toi/hs/cac_tuan/top/trung_tam/chot_lop; _mtt_lam_moi cron 5 phút (202611131001, SQL Editor). FDW cho app PH: GRANT + policy.
+- Kiểm thử: mục tiêu tuần nhóm nợ 4 lần cũ 0·.5·0·.5 + 1 lần dự kiến ⇒ 36% (đúng tay) · BTVN 100% + chưa hết sức ⇒ Tạm ổn + ghi chú · em mới vào 10/11 không có BTVN 08/11 · vắng ⇒ "vang" · chốt lớp tính ngay 3 em · cron xếp hạng + top 20 · sổ chốt UPDATE bị chặn · HS lớp chưa chốt ⇒ chua_chot.
+- Sửa trong lúc kiểm: tiến độ đầu tuần tính nhóm chưa có số đầu tuần = 0 (trước đó bỏ ra ⇒ đầu tuần cao hơn hiện tại, sai nghĩa); thêm d / tien_do_d / hang_doi / viec_pct vào DB để app không tự trừ.
+- Quyết định CTO (ghi spec §14): nút "Chốt mục tiêu tuần" THEO LỚP ở tab trung tâm (tín hiệu "chưa chốt thì chưa hiện") · % nhóm đọc mastery CÓ BTVN như Dashboard học tập · nút Lý thuyết/Bài trên lớp/Luyện tập mở Sổ tay/Giáo trình/Tự luyện (chưa nhảy đúng nhóm).
+- check:style-hs RỚT ở CaBoTroHS.tsx (3 > mốc 2) — có sẵn từ commit 3ac6485 của phiên khác, không phải file phiên này; file mới MucTieuTuanHS.tsx 0 màu gõ tay.
