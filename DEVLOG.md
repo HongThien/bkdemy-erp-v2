@@ -79987,3 +79987,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:52 — Mục tiêu tuần: nhãn thái độ = Tốt / Chưa tốt
 - Thùy: thay "nghiêm túc" bằng Tốt / Chưa tốt. nghiem_tuc ⇒ Tốt, 3 mức còn lại ⇒ Chưa tốt; DB giữ 4 mức, màn trung tâm thấy đủ.
+
+## 13/11 08:54 — Mục tiêu tuần: tự luyện = thống kê không bắt buộc; bỏ khái niệm thái độ
+- Thùy: tự luyện không bắt buộc nhưng luôn ghi thống kê (kể cả 0), không tính vào x/y việc. Đã đổi sang Tốt / Chưa tốt nên không tính "thái độ" nữa — bỏ chữ "Thái độ:" và ô thái độ tuần. Hỏi lại: Tốt/Chưa tốt quyết từ đâu.

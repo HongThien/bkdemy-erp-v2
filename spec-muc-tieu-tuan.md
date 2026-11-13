@@ -117,20 +117,22 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    Nhóm mới có lần đo đầu tiên trong tuần ghi "mới đo". Thanh tiến độ tổng cũng có vạch đầu tuần.
 7. **"VIỆC CỦA CON TUẦN NÀY" = KHU VỰC RIÊNG, liệt kê theo HOẠT ĐỘNG, không theo nhóm bài** (Thùy 13/11, sửa bản gắn việc vào từng nhóm):
    ```
-   ET buổi 15/11            75%   Thái độ: Tốt
-   BTVN buổi 15/11          80%   Thái độ: Tốt
+   ET buổi 15/11            75%   Tốt
+   BTVN buổi 15/11          80%   Tốt
    Test sau giờ 12/11      100%
    Bổ trợ yếu T7 21/11     (sắp tới)
    ```
    - Mỗi dòng = một hoạt động có thật trong tuần: ET từng buổi · BTVN từng buổi · test sau giờ · ca bổ trợ (yếu / nhẹ / bù…).
      Kết quả (% đúng) + **thái độ** khi hoạt động đó có chấm thái độ (`btvn_ket_qua.thai_do`: nghiêm túc / chưa hết sức / chưa nghiêm túc / chống đối).
-   - **Nhãn hiển thị cho HS + phụ huynh = 2 mức "Tốt" / "Chưa tốt"** (Thùy 13/11): `nghiem_tuc` ⇒ Tốt; ba mức còn lại ⇒ Chưa tốt.
-     Ghi kèm chữ "Thái độ:" để không đọc nhầm thành đánh giá kết quả. DB giữ nguyên 4 mức; màn trung tâm vẫn thấy đủ 4 mức.
+   - **Nhãn đánh giá = "Tốt" / "Chưa tốt"** (Thùy 13/11), **không còn khái niệm "thái độ" trên màn** và không gộp "thái độ tuần".
+     *Chưa rõ — đã hỏi Thùy:* "Tốt / Chưa tốt" quyết từ đâu (đánh giá của TA như ô `thai_do` BTVN hiện nay, hay so kết quả với một ngưỡng)
+     và hoạt động nào có nhãn này.
+   - **Tự luyện trên app = KHÔNG bắt buộc, nhưng luôn có dòng thống kê** (Thùy 13/11), kể cả tuần không luyện (ghi "chưa luyện câu nào"):
+     số câu · số lượt · % đúng · nhóm bài đã luyện. Nằm khối riêng "Tự luyện · không bắt buộc", **không tính vào x/y việc**. Nguồn: `tu_luyen_*`.
    - Hai khối: **Đã làm** · **Sắp tới** (có ngày, hạn; BTVN chưa nộp quá hạn ghi rõ "chưa nộp"). Đầu màn có ô tổng "x/y việc đã xong".
    - Danh sách do HỆ suy từ lịch buổi + giáo trình + lượt chốt bổ trợ (pure-derive, CLAUDE §4), không ai giao tay, không nút tự đánh dấu.
    - Dòng nhóm bài ở Phần 1/2 trở lại gọn (tên · ▲/▼ · % · cờ 80%); bấm vào mới có lý thuyết / bài trên lớp / luyện tập.
    - **Ba tầng xem cùng dữ liệu:** học sinh · phụ huynh · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã xong, thái độ, em chưa làm gì). *Màn trung tâm: chưa vẽ.*
-   - *Chưa chốt:* tự luyện trên app có là một dòng không (hiện chỉ có dữ liệu đếm câu `tu_luyen_*`) · ET có chấm thái độ không hay chỉ BTVN.
 
 **Kênh phụ huynh (Thùy 13/11, thay "chụp ảnh gửi"):** màn này hiện **REALTIME trên app phụ huynh** (Cổng Phụ huynh — project riêng `bkdemy-ph`,
 đọc ERP qua FDW `erp_live`), cùng nội dung màn HS, chữ formal. ⇒ Hàm đọc phải đọc **bảng tính sẵn** (§2.0), không tính lại qua FDW mỗi lượt mở.
