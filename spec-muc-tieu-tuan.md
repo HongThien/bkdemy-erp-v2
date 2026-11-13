@@ -211,7 +211,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 
 ## 8. Thay đổi đi kèm ở hệ thống đang chạy
 
-### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11, chốt cách làm 13/11 — ĐÃ BUILD, mig `202611131635` CHƯA áp)
+### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11, chốt cách làm 13/11 — ĐÃ BUILD, mig `202611131635` ĐÃ ÁP 13/11)
 - **Trước:** BTVN buổi N = toàn bộ câu BTVN của buổi N ⇒ mỗi nhóm đo ở nhà MỘT lần, làm rất nhiều câu một lúc.
   **Sau:** việc luyện một buổi chia ra 3 phiếu — phiếu buổi N gồm một phần câu của buổi N + phần 2 của buổi N-1 + phần 3 của buổi N-2.
 - Tỉ lệ chia là **tham số**, mặc định **5–3–2**; trên màn chọn được 4–3–3 hoặc "Giao trọn buổi này" (10–0–0 = cách cũ). Tỉ lệ lưu theo phiếu (`cau_hinh.xepChong`).

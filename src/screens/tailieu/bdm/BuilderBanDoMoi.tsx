@@ -31,6 +31,11 @@ const chonCuaBuoi = (b: NdBuoi): ChonBuoi => b.nhom.map((n) => ({ nhom: n.id, da
 type MoChonCau = { buoi: NdBuoi; nhom: NdNhom; phanId: string; caus: string[]; uuTien: string | null }
 
 // laChuyenDe (Thùy 21/10): tài liệu CHUYÊN ĐỀ — cùng builder, KHÔNG đi với lớp (ẩn Gán lớp), đơn vị gọi là "Phần" thay "Buổi".
+// Thùy 13/11: Trên lớp / BTVN là HAI CHẾ ĐỘ XEM chuyển qua lại (trước đây xen kẽ trong cùng thẻ nhóm ⇒ khó theo dõi tài liệu).
+// Nhớ ở mức module: rời builder rồi quay lại vẫn đúng chế độ đang xem.
+type CheXem = 'lop' | 'btvn'
+let NHO_CHE_XEM: CheXem = 'lop'
+
 export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { id: string; onClose: () => void; laChuyenDe?: boolean }) {
   const NHAN = laChuyenDe ? 'Phần' : 'Buổi', nhan = NHAN.toLowerCase()
   const [nd, setNd] = useState<NoiDung | null>(null)
@@ -48,6 +53,8 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   const [xemBuoi, setXemBuoi] = useState<string | null>(null) // 👁 Xem nhanh bản in 1 buổi
   const [ganLop, setGanLop] = useState(false)                  // ⬇ Gán lớp (trích buổi → tài liệu của lớp)
   const [copyBuoi, setCopyBuoi] = useState(false)              // 📥 Copy buổi từ giáo trình lớp khác (Thùy 28/10)
+  const [cheXem, setCheXemState] = useState<CheXem>(laChuyenDe ? 'lop' : NHO_CHE_XEM)
+  const setCheXem = (v: CheXem) => { NHO_CHE_XEM = v; setCheXemState(v) }
   const [tlLopId, setTlLopId] = useState<string | null>(null)  // lop_id của giáo trình (RPC noi_dung chưa trả; fetch riêng)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
@@ -190,6 +197,12 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
               {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `${NHAN} ${b.thu_tu + 1}`}</option>)}
             </select>
           </label>
+          {!laChuyenDe && (
+            <span className="flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Chuyển giữa phần dạy TRÊN LỚP (lý thuyết · ví dụ · bài luyện) và phần BÀI TẬP VỀ NHÀ">
+              <button onClick={() => setCheXem('lop')} className={`whitespace-nowrap rounded-md px-3 py-1 text-[12.5px] font-semibold ${cheXem === 'lop' ? 'bg-white text-sky-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>📘 Trên lớp</button>
+              <button onClick={() => setCheXem('btvn')} className={`whitespace-nowrap rounded-md px-3 py-1 text-[12.5px] font-semibold ${cheXem === 'btvn' ? 'bg-white text-orange-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>📝 BTVN</button>
+            </span>
+          )}
           <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
           {!chiXem && !laChuyenDe && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
           {/* Lý thuyết TOÀN FILE (Thùy 21/10) — cùng cài `inLyThuyet` của builder cũ, PrintView đã đọc. Tắt ⇒ không in lý thuyết nào;
@@ -236,7 +249,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                   <div className="space-y-4 p-4">
                     {b.nhom.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có nhóm — bấm “+ Chọn nhóm / dạng bài”.</div>}
                     {b.nhom.map((n, i) => (
-                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau} laChuyenDe={laChuyenDe}
+                      <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau} laChuyenDe={laChuyenDe} cheXem={cheXem}
                         canUp={i > 0} canDown={i < b.nhom.length - 1}
                         onMove={(dir) => { const c = chonCuaBuoi(b); const j = i + dir; [c[i], c[j]] = [c[j], c[i]]; datChon(b, c) }}
                         onBoNhom={() => datChon(b, chonCuaBuoi(b).filter((x) => x.nhom !== n.id))}
@@ -246,7 +259,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onGoiY={(phanId, dangBai, so, hienCo) => goiYLai(b, n, phanId, dangBai, so, hienCo)}
                         onChonCau={(phanId, caus, uuTien) => setChonCau({ buoi: b, nhom: n, phanId, caus, uuTien })} />
                     ))}
-                    {b.chua_khop && (
+                    {b.chua_khop && cheXem === 'lop' && (
                       <KhoiCau tieuDe="⚠ Câu chưa khớp bản đồ mới" mau="amber" caus={b.chua_khop.caus} cauMap={cauMap} cfg={cauHinhCau} chiXem={chiXem}
                         onXoa={(m) => ghiCau(b.chua_khop!.phan_id, b.chua_khop!.caus.filter((x) => x !== m))} />
                     )}
@@ -304,8 +317,8 @@ export type CfgCau = {
 
 // ── 1 NHÓM trong buổi: LT nhóm → dạng bài (LT · ví dụ · bài luyện) → chưa phân → BTVN nhóm ──
 // Chuyên đề (Thùy 21/10): không phải giáo trình — KHÔNG có trên lớp / về nhà ⇒ ẩn khối BTVN, câu gọi chung "Bài tập".
-function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
-  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; laChuyenDe?: boolean; canUp: boolean; canDown: boolean
+function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
+  n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; laChuyenDe?: boolean; cheXem: CheXem; canUp: boolean; canDown: boolean
   onMove: (dir: -1 | 1) => void; onBoNhom: () => void; onDoiDangBai: (ds: string[]) => void
   onCo: (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => void
   onXoaCau: (phanId: string, caus: string[], m: string) => void
@@ -316,9 +329,10 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
   const doiCho = (i: number, j: number) => { const x = [...ids]; [x[i], x[j]] = [x[j], x[i]]; onDoiDangBai(x) }
   const coLt = !!(n.ly_thuyet?.trim() || n.ly_thuyet_file_url)
   const BAI = laChuyenDe ? '📘 Bài tập' : '📘 Bài luyện'
+  const xemBtvn = cheXem === 'btvn' && !laChuyenDe   // chế độ BTVN: chỉ khối BTVN của nhóm; Trên lớp: dạng bài + câu chưa phân
   return (
-    <div id={`p-${n.phan_id}`} className="scroll-mt-3 overflow-hidden rounded-xl border border-indigo-200">
-      <div className="flex items-center gap-2 bg-indigo-600 px-3 py-2 text-white">
+    <div id={`p-${n.phan_id}`} className={`scroll-mt-3 overflow-hidden rounded-xl border ${xemBtvn ? 'border-orange-200' : 'border-indigo-200'}`}>
+      <div className={`flex items-center gap-2 px-3 py-2 text-white ${xemBtvn ? 'bg-orange-500' : 'bg-indigo-600'}`}>
         {!chiXem && (
           <span className="flex shrink-0 flex-col leading-none" title="Đổi thứ tự nhóm trong buổi">
             <button onClick={() => onMove(-1)} disabled={!canUp} className="text-[10px] text-white/70 hover:text-white disabled:opacity-25">▲</button>
@@ -326,14 +340,15 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
           </span>
         )}
         <span className="text-[14px] font-semibold">Nhóm {n.stt}: {n.ten ?? <i className="font-normal opacity-80">(đã xoá khỏi bản đồ)</i>}</span>
-        <label className="ml-auto flex shrink-0 items-center gap-1.5 text-[11px] text-white/90" title="In lý thuyết của nhóm">
+        {xemBtvn && <span className="ml-auto shrink-0 text-[11px] text-white/90">{n.dang_bai.length} dạng bài · {n.btvn?.caus.length ?? 0} câu BTVN</span>}
+        <label className={`${xemBtvn ? 'hidden' : 'ml-auto flex'} shrink-0 items-center gap-1.5 text-[11px] text-white/90`} title="In lý thuyết của nhóm">
           <input type="checkbox" disabled={chiXem} checked={n.hien_lt} onChange={(e) => onCo(n.phan_id, { hien_lt: e.target.checked })} /> Lý thuyết nhóm
         </label>
-        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-medium ${coLt ? 'bg-white/20' : 'bg-amber-300 text-amber-900'}`}>{coLt ? 'có lý thuyết' : 'chưa có lý thuyết'}</span>
+        <span className={`${xemBtvn ? 'hidden ' : ''}shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-medium ${coLt ? 'bg-white/20' : 'bg-amber-300 text-amber-900'}`}>{coLt ? 'có lý thuyết' : 'chưa có lý thuyết'}</span>
         {!chiXem && <button onClick={onBoNhom} title="Bỏ nhóm khỏi buổi" className="shrink-0 text-[12px] text-white/70 hover:text-white">✕</button>}
       </div>
       <div className="space-y-3 bg-white p-3">
-        {n.dang_bai.map((d, i) => {
+        {!xemBtvn && n.dang_bai.map((d, i) => {
           const coLtD = !!(d.ly_thuyet?.trim() || d.ly_thuyet_file_url), coVd = !!(d.vi_du?.trim() || d.vi_du_file_url)
           return (
             <div key={d.phan_id} id={`p-${d.phan_id}`} className="scroll-mt-3 rounded-lg border border-slate-200">
@@ -364,7 +379,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
             </div>
           )
         })}
-        {n.chua_phan && (
+        {!xemBtvn && n.chua_phan && (
           <div className="rounded-lg border border-slate-200">
             <KhoiCau tieuDe={n.dang_bai.length ? `${BAI} · câu chưa phân dạng bài` : `${BAI} (nhóm chưa chia dạng bài)`} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
               soMacDinh={n.dang_bai.length ? undefined : { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }}
@@ -373,7 +388,8 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, canUp, canDown, 
               onChonCau={() => onChonCau(n.chua_phan!.phan_id, n.chua_phan!.caus, null)} />
           </div>
         )}
-        {n.btvn && !laChuyenDe && (
+        {xemBtvn && !n.btvn && <div className="text-[12px] italic text-slate-400">Nhóm này chưa có khối BTVN.</div>}
+        {xemBtvn && n.btvn && (
           <div className="rounded-lg border border-orange-200 bg-orange-50/30">
             <KhoiCau tieuDe="📝 BTVN của nhóm" mau="orange" btvn caus={n.btvn.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_BTVN_MAC_DINH}
               onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)}

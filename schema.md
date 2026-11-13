@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-590 bảng · 39 view · 0 enum · 433 trigger · 1920 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1925 function
 
 ## _app_secrets
 
@@ -4833,7 +4833,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6607,8 +6607,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -6931,6 +6931,8 @@ END |  |  |
 | nang_cao | boolean |  | false |  |  |
 | cha_id | uuid | Y |  | FK→tai_lieu_phan.id |  |
 | hien_vi_du | boolean |  | true |  |  |
+| lui_bac | smallint | Y |  |  |  |
+| lui_buoi | uuid | Y |  | FK→tai_lieu_phan.id |  |
 
 ## task_nhac_han
 
@@ -11651,6 +11653,7 @@ WITH luot AS (
 - `_mtt_moc(p_ngay date)` → timestamp with time zone
 - `_mtt_muc(p numeric)` → text
 - `_mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → text[]
+- `_mtt_nhom_lui(p_lop uuid, p_ngay date)` → text[]
 - `_mtt_ten_goi(p_ho_ten text)` → text
 - `_mtt_ten_nhom(p_ma text)` → text
 - `_mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → jsonb
@@ -11830,6 +11833,8 @@ WITH luot AS (
 - `_tinh_nang_ghi_vet()` → trigger
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
+- `_tl_bdm_btvn_chia(p_buoi uuid, p_ti_le integer[])` → TABLE(nhom text, thu_nhom integer, ma_cau text, thu integer, phan integer)
+- `_tl_bdm_btvn_lui(p_lop uuid, p_ngay date, p_buoi uuid, p_ti_le integer[])` → TABLE(bac integer, buoi uuid, master uuid, tieu_de text, ngay date, nhom text, thu_nhom integer, ma_cau text, thu integer)
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
@@ -12941,6 +12946,7 @@ WITH luot AS (
 - `fn_tinh_nang_lop_dat(p_ma text, p_lop_id uuid, p_mo boolean)` → void
 - `fn_tkb_kiem_trung(p_lop uuid, p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_tu date DEFAULT NULL::date, p_bo_qua uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_tkb_luu(p_id uuid, p_lop uuid, p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_hieu_luc_tu date, p_chap_nhan boolean DEFAULT false)` → jsonb
+- `fn_tl_bdm_btvn_xep_chong(p_master uuid, p_buoi uuid, p_lop uuid, p_ngay date, p_ti_le integer[] DEFAULT ARRAY[5, 3, 2])` → jsonb
 - `fn_tl_bdm_cau(p_nhom text)` → jsonb
 - `fn_tl_bdm_cay_chon(p_khoi text, p_nhanh text DEFAULT 'toan'::text)` → jsonb
 - `fn_tl_bdm_chuyen_luu_tru(p_cu uuid)` → jsonb
@@ -12953,6 +12959,7 @@ WITH luot AS (
 - `fn_tl_bdm_goi_y(p_nhom text, p_dang_bai text[], p_so jsonb, p_tru text[] DEFAULT '{}'::text[])` → text[]
 - `fn_tl_bdm_noi_dung(p_tai_lieu uuid, p_buoi uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_tl_bdm_on_tap_ung_vien(p_master uuid, p_buoi uuid)` → jsonb
+- `fn_tl_bdm_trich_btvn(p_master uuid, p_buoi uuid, p_den uuid, p_tieu_de text, p_phieu jsonb)` → void
 - `fn_tl_bdm_trich_buoi(p_master uuid, p_buoi uuid, p_den uuid, p_loai text, p_tieu_de text, p_on_tap jsonb DEFAULT '[]'::jsonb)` → void
 - `fn_tl_hh_cau(p_bai text)` → jsonb
 - `fn_tl_hh_cay_chon(p_khoi text)` → jsonb
@@ -13528,6 +13535,7 @@ WITH luot AS (
 | ta_luong_ky | ta_luong_ky_lan_check | `CHECK ((lan >= 1))` |
 | ta_luong_lop | ta_luong_lop_hieu_luc_tu_check | `CHECK ((EXTRACT(day FROM hieu_luc_tu) = (1)::numeric))` |
 | ta_luong_lop | ta_luong_lop_muc_check | `CHECK ((muc >= (0)::numeric))` |
+| tai_lieu_phan | tai_lieu_phan_lui_bac_check | `CHECK ((lui_bac = ANY (ARRAY[1, 2])))` |
 | task_phat_trien | task_phat_trien_check | `CHECK ((nguoi_giao_id <> nguoi_lam_id))` |
 | task_phat_trien | task_phat_trien_check1 | `CHECK (((trang_thai = 'da_duyet'::text) = (ket_qua_pct IS NOT NULL)))` |
 | task_phat_trien | task_phat_trien_ket_qua_pct_check | `CHECK (((ket_qua_pct >= (0)::numeric) AND (ket_qua_pct <= (100)::numeric)))` |
