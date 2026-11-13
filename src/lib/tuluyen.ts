@@ -99,6 +99,10 @@ export type LopMonHS = { mon: string; ten_lop: string; co_kho: boolean }
 export async function lopMonCuaHS(): Promise<LopMonHS[]> {
   const { data, error } = await supabase.rpc('hs_mon_hoc_cua_toi')
   if (error) throw error
+  return chuanLopMonHS(data)
+}
+/** Chuẩn hoá dòng thô của hs_mon_hoc_cua_toi — dùng chung cho lượt gọi lẻ và RPC gộp fn_hs_khoi_dong (lib/hs_home). */
+export function chuanLopMonHS(data: unknown): LopMonHS[] {
   return ((data ?? []) as LopMonHS[])
     .map((d) => ({ mon: String(d.mon), ten_lop: String(d.ten_lop ?? ''), co_kho: d.co_kho !== false }))
     .filter((d) => (MON_APP_HS as readonly string[]).includes(d.mon))
@@ -133,6 +137,9 @@ export type MonRiengHS = { mon: string; co_kho: boolean }
 export async function monRiengCuaHS(): Promise<MonRiengHS[]> {
   const { data, error } = await supabase.rpc('hs_mon_rieng_cua_toi')
   if (error) throw error
+  return chuanMonRiengHS(data)
+}
+export function chuanMonRiengHS(data: unknown): MonRiengHS[] {
   return ((data ?? []) as MonRiengHS[]).map((d) => ({ mon: String(d.mon), co_kho: d.co_kho !== false }))
 }
 export function chonMonHS(mon: string): void {
@@ -179,6 +186,9 @@ export type HoSoHS = { ho_ten: string; ma_hs: string; gioi_tinh: 'nam' | 'nu' | 
 export async function hoSoCuaToi(): Promise<HoSoHS | null> {
   const { data, error } = await supabase.rpc('hs_ho_so_cua_toi')
   if (error) throw error
+  return chuanHoSoHS(data)
+}
+export function chuanHoSoHS(data: unknown): HoSoHS | null {
   if (!data) return null
   const d = data as Record<string, unknown>
   return { ho_ten: String(d.ho_ten ?? ''), ma_hs: String(d.ma_hs ?? ''), gioi_tinh: d.gioi_tinh === 'nu' ? 'nu' : d.gioi_tinh === 'nam' ? 'nam' : null, anh_url: (d.anh_url as string | null) ?? null }

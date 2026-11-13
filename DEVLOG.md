@@ -80511,3 +80511,12 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm:** tsc sạch (trừ lỗi cũ pdfRender.ts), check:kien-truc không mục nào tăng. CHƯA thử trên app thật.
 - **Sai/lưu ý:** script chèn lần đầu hỏng (escape 
  trong heredoc) làm rác 21 dòng đầu nhansu.ts — đã sửa trước khi commit. Không đụng DB.
+
+## 14/11 (đêm) — [Kiến trúc · Đợt 4 client, bước 2] Home HS gộp lượt gọi: 13 lượt lẻ → 2 RPC (mig 202611140027 ĐÃ ÁP, client CHƯA deploy)
+- **Đo trước (pg_stat_statements):** mở app HS ~25 request, về màn chính ~10. Hàm nhẹ 3–159 ms; nặng: fn_thanh_tuu_cho_nhan 477 ms, fn_the_gioi_home 3.337 ms (KHÔNG gộp — Đợt 5/Đợt 3).
+- **DB (chỉ thêm, security invoker, không cấp anon):** `fn_hs_khoi_dong()` = cấp 1/2 · khối · hồ sơ · môn · môn riêng · nhân vật · giao diện · góp ý chưa đọc + kèm `man_chinh`; `fn_hs_man_chinh(p_home912)` = chuỗi · công tắc tính năng · tutorial · Elo/kỳ thi. Cả hai chỉ GỌI LẠI hàm lẻ đang có (công thức một nơi); không phải HS ⇒ trả null.
+- **Client:** `src/lib/hs_home.ts` (khoiDongHS / manChinhHS; RPC gộp lỗi ⇒ tự rơi về gọi lẻ, trường undefined = phần đó không tải được) · `HocSinhApp.tsx` bỏ 13 useEffect gọi lẻ, thay 1 effect khởi động + 1 effect về màn chính (ra khỏi một khu vẫn chỉ làm mới Elo/kỳ thi như cũ) · `tuluyen.ts` tách hàm chuẩn hoá dùng chung (chuanLopMonHS / chuanMonRiengHS / chuanHoSoHS).
+- **Kiểm:** hàm gộp so với gọi lẻ KHỚP 13/13 tài khoản HS (mỗi khối một em, cả trước khi áp trong transaction rollback lẫn sau khi áp); nhân sự gọi ⇒ null; anon không có quyền EXECUTE; hàm gộp 67–342 ms tính cả đường mạng. tsc sạch (trừ lỗi cũ pdfRender.ts); check:kien-truc không mục nào tăng.
+- **CHƯA kiểm:** chưa đăng nhập HS thật trên app để đếm request (không có tài khoản thử). `check:style-hs` RỚT ở CaBoTroHS.tsx (3 màu gõ tay > mốc 2) — có từ trước, không thuộc thay đổi này, chưa sửa.
+- **Chưa đạt đích spec "mở app ≤ 4 request":** còn danh sách bài, hòm thư (3), thành tựu, Thế giới, rank + nhiệm vụ, bổ trợ (3, poll 15 s), học từ đầu, may mắn, ghi mở app. Lượt kiemHTD đầu còn gọi lại hs_mon_hoc_cua_toi một lần (monCuaHS khi môn chưa về).
+- **Lưu ý môi trường:** `migrate --status` trên máy nhà báo 29 file treo của đợt trước (áp tay qua SQL Editor?) — chỉ áp file của mình bằng `--only`. Role claude_build không `set role authenticated` được ⇒ thử bằng đặt request.jwt.claims.

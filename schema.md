@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-591 bảng · 42 view · 0 enum · 448 trigger · 1938 function
+591 bảng · 42 view · 0 enum · 448 trigger · 1940 function
 
 ## _app_secrets
 
@@ -2222,7 +2222,7 @@
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| loai | text |  |  | PK | `ta` · `gv` |
+| loai | text |  |  | PK | `ta` · `gv` · `ops` |
 | ym | text |  |  | PK |  |
 | tinh_luc | timestamp with time zone |  |  |  |  |
 | dong | jsonb |  |  |  |  |
@@ -12735,6 +12735,7 @@ WITH luot AS (
 - `fn_hs_ho_so(p_mon text)` → jsonb
 - `fn_hs_home_912()` → jsonb
 - `fn_hs_khoe_dat(p_mon text, p_keys text[])` → jsonb
+- `fn_hs_khoi_dong()` → jsonb
 - `fn_hs_len_bac_da_xem(p_mon text)` → void
 - `fn_hs_len_bac_moi(p_mon text)` → jsonb
 - `fn_hs_lich_bo_tro()` → jsonb
@@ -12743,6 +12744,7 @@ WITH luot AS (
 - `fn_hs_luu_giao_dien(p_skin text, p_che_do text, p_hinh_nen text)` → jsonb
 - `fn_hs_luu_hieu_ung_game(p_bat boolean)` → jsonb
 - `fn_hs_luyen_con_lai(p_mon text, p_ma_dang text)` → integer
+- `fn_hs_man_chinh(p_home912 boolean DEFAULT true)` → jsonb
 - `fn_hs_mo_app()` → void
 - `fn_hs_moi_dashboard(p_so_tuan integer DEFAULT 4, p_khoi text DEFAULT NULL::text, p_chi_chua_full boolean DEFAULT true)` → jsonb
 - `fn_hs_moi_tick(p_hs uuid, p_buoc uuid, p_xong boolean)` → jsonb

@@ -19,8 +19,8 @@ import {
 import { diemDeThiCuaToi, type DiemCuaToi } from '../../lib/dethi'
 import { mucDeadline, nhanConLai } from '../../lib/tuan'
 import {
-  luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, laCap1HS, khoiCuaHS, hoSoCuaToi, xepHangTuLuyen,
-  lopMonCuaHS, chonMonHS, monDangChon, monRiengCuaHS, datMonTam, layMonTam, type MonRiengHS,
+  luotTuLuyenHomNay, sinhTuLuyen, sinhTuLuyenChuDe, monCuaHS, khoiCuaHS, xepHangTuLuyen,
+  chonMonHS, monDangChon, datMonTam, layMonTam, type MonRiengHS,
   TU_LUYEN_SO_CAU_MOI_LUOT, type XepHangRow, type LopMonHS,
 } from '../../lib/tuluyen'
 import ThanhChonMon from './ThanhChonMon'
@@ -29,14 +29,14 @@ import { GameNhungHS, GiaiVoDichHS, HocTapHS } from './hoctap/HocTapHS'
 import { ChinhPhucHS } from './hoctap/ChinhPhucHS'
 import { ChonNhanVatHS } from './hoctap/ChonNhanVatHS'
 import { datGioiDau, laNvChon, type NvId } from './skin/nhanVat'
-import { chonNhanVat, nhanVatCuaToi } from '../../lib/giaodien_hs'
+import { chonNhanVat } from '../../lib/giaodien_hs'
 import { NhungHet, type NhungDau } from './phieuluu/nhungDau'
 import { BaoLuotHS } from './BaoLuot'
 import GopYHS from './GopYHS'
 import { MungMocChuoi, BannerChuoi } from './ChuoiHS'
-import { chuoiCuaToi, type Chuoi } from '../../lib/chuoi'
-import { tinhNangMoCuaToi, MA_TINH_NANG_O, type TinhNangMo } from '../../lib/tinhnang'
-import { soGopYChuaDoc } from '../../lib/gopy_hs'
+import type { Chuoi } from '../../lib/chuoi'
+import { MA_TINH_NANG_O, type TinhNangMo } from '../../lib/tinhnang'
+import { khoiDongHS, manChinhHS, type ManChinhHS } from '../../lib/hs_home'
 import { TheTran, PHIEN, CLS_PHIEN, NgocChu, NUT_TRAN, HOP_LOI_GIAI, FONT_TRAN } from './skin/KhungTran'
 import { hocTapBat, phieuLuuBat } from './phieuluu/coBat'
 // Khu HỌC TẬP (5 đảo) — sau CỜ, mặc định TẮT ở bản thật (bật ở bản thử nghiệm / ?hoctap=1). Tắt ⇒ ô Tự luyện + màn chọn cũ như trước 03/10.
@@ -44,7 +44,7 @@ const HOC_TAP = hocTapBat()
 const PhieuLuuHS = lazy(() => import('./phieuluu/PhieuLuuHS'))
 const LuyenYeuDau = lazy(() => import('./luyen/LuyenYeuDau')) // khung đấu chung (kéo theo chunk PhieuLuuHS) — chỉ tải khi vào Luyện dạng yếu có hiệu ứng game
 import { ManCho as ManChoChuyen, napPhieuLuu } from './phieuluu/chuyenCanh'
-import { laCap2HS, mayManHSCuaToi } from '../../lib/maymai_hs'
+import { mayManHSCuaToi } from '../../lib/maymai_hs'
 import { htdCoMo, htdSinh, htdCauBaiTest, duoiTienTrinh, type CauHTD } from '../../lib/hoctudau'
 import BoTroDuoiHS from './BoTroDuoiHS'
 import { ChonChuDeHTD, ChonChuyenDeHTD, ChiTietDangHTD, LyThuyetHTD, dangDangHoc, type ChuDeNhom, type ChuyenDeNhom } from './HocTuDau'
@@ -60,7 +60,7 @@ import HomeHS, { type HomeCard } from './HomeHS'
 import HomeHS912 from './HomeHS912'
 import { KHOI_CHON_SKIN, laySkin, skinMacDinhTheoKhoi, type GiaoDien } from './skin/registry'
 import { useApSkinGoc, GD_MAC_DINH, GD_CAP1, ManHS, DauTrangHS, TheHS, TrongHS, MAU, THE, THE_TRON, HEAD, useMedia, useLoi } from './skin/KhungHS'
-import { giaoDienCuaToi, home912, type Home912 } from '../../lib/giaodien_hs'
+import { home912, type Home912 } from '../../lib/giaodien_hs'
 import DanhSachHS, { type DsRow } from './DanhSachHS'
 import MayManHS from './MayManHS'
 import MoiQuayMayMan from './MoiQuayMayMan'
@@ -90,7 +90,7 @@ import { LocMoGame } from './tutorial/LocMoGame'
 import { NutBaoLoiCau } from './gopy/BaoLoiCau'
 import { datMan, EVT_MO_GOP_Y } from './gopy/manHienTai'
 import { chuongMo, CHUONG_LOI, CHUONG_TIN_MOI, NGUOI_DAN_LOC, type DichThu } from './tutorial/noiDungTutorial'
-import { tutorialDaXem, tutorialGhi } from '../../lib/tutorial_hs'
+import { tutorialGhi } from '../../lib/tutorial_hs'
 import AlbumHS from './AlbumHS'
 import HoSoHS from './HoSoHS'
 import AvatarHS from './AvatarHS'
@@ -468,11 +468,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [lopMons, setLopMons] = useState<LopMonHS[]>([])
   const [monChon, setMonChon] = useState<string | null>(null)
   const [onThiBt, setOnThiBt] = useState<string | null>(null) // lượt Luyện tập đề cương đang mở
-  useEffect(() => { lopMonCuaHS().then((ds) => { setLopMons(ds); setMonChon(monDangChon(ds)) }).catch(() => {}) }, [])
   // Môn mở cho CẢ KHỐI (TSA khối 12, Thùy 03/10: "tự luyện TSA thành 1 mục riêng") — mỗi môn 1 ô riêng ở khối Học tập.
   // Bấm ô ⇒ đặt MÔN TẠM (màn con chạy theo môn đó, thanh chọn môn giữ nguyên); về màn chính ⇒ bỏ môn tạm.
   const [monRieng, setMonRieng] = useState<MonRiengHS[]>([])
-  useEffect(() => { monRiengCuaHS().then(setMonRieng).catch(() => {}) }, [])
 
   // Lỗi mạng/timeout thoáng qua thì thử lại vài lần; hết lượt vẫn lỗi ⇒ báo "không tải được" (trước đây gán [] ⇒ hiện "không có bài").
   const taiBai = async () => {
@@ -483,9 +481,6 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     setTests((cu) => cu ?? []); setLoiTaiBai(true)
   }
   useEffect(() => { void taiBai() }, []) // eslint-disable-line
-  useEffect(() => { laCap1HS().then(setCap1).catch(() => setCap1(false)) }, [])
-  useEffect(() => { laCap2HS().then(setCap2).catch(() => setCap2(false)) }, [])
-  useEffect(() => { hoSoCuaToi().then((h) => { setGioiTinh(h?.gioi_tinh ?? null); setAnhUrl(h?.anh_url ?? null) }).catch(() => setGioiTinh(null)) }, [])
   useEffect(() => { datGioiDau(gioiTinh) }, [gioiTinh]) // giới của linh vật ra trận ở style có bộ đánh riêng (Halloween — skin/nhanVat.ts)
   useEffect(() => { taiChuaDoc() }, [])
   // Khối 6–12 dùng HomeHS912 + skin tự chọn (spec-giao-dien-hs.md; Thùy 28/09: mọi skin mở cho mọi em, cấp 1 còn HomeCap1).
@@ -494,17 +489,13 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [giaoDien, setGiaoDien] = useState<GiaoDien | null | undefined>(undefined)
   // NHÂN VẬT CHÍNH (Thùy 03/10): undefined = đang tải · null = chưa chọn ⇒ bấm Học tập hiện màn chọn · mã = dùng cho bản đồ/đấu trường
   const [nhanVat, setNhanVat] = useState<NvId | null | undefined>(undefined)
-  useEffect(() => { if (HOC_TAP) nhanVatCuaToi().then((v) => setNhanVat(laNvChon(v) ? v : null)).catch(() => setNhanVat(null)) }, [])
   const [duLieu912, setDuLieu912] = useState<Home912 | null>(null)
   // số lời trả lời góp ý em chưa đọc (chấm đỏ ở menu ⋯) — đọc 1 lần lúc mở app; mở màn Góp ý ⇒ DB đánh dấu đã đọc, về Home thì về 0
   const [gopYMoi, setGopYMoi] = useState(0)
   // CHUỖI LÀM BÀI (spec-v1 §3): đọc lúc mở app + mỗi lần quay về màn chính (vừa luyện xong thì lửa sáng ngay). Tải lại NỀN — giữ số cũ tới khi có số mới.
   const [chuoi, setChuoi] = useState<Chuoi | null | undefined>(undefined)
-  useEffect(() => { soGopYChuaDoc().then(setGopYMoi).catch(() => {}) }, [])
-  useEffect(() => { if (direct === null) chuoiCuaToi().then(setChuoi).catch(() => setChuoi((c) => c ?? null)) }, [direct])
   // CÔNG TẮC TÍNH NĂNG (Thùy 07/10 — mở dần cho HS đỡ ngợp): hỏi DB mỗi lần về màn chính; lỗi ⇒ mở hết (công tắc hỏng không được làm mất app). Ô không có mã (bài trên lớp/ET/BTVN/bổ trợ) không bị ẩn.
   const [tn, setTn] = useState<TinhNangMo | undefined>(undefined)
-  useEffect(() => { if (direct === null) tinhNangMoCuaToi().then(setTn).catch(() => setTn((c) => c ?? 'tat_ca')) }, [direct])
   const moTN = (ma: string) => tn === 'tat_ca' || (!!tn && tn.has(ma))
   // Nông trại BẢO TRÌ (Thùy 03/11): công tắc 'nt_bao_tri' BẬT ⇒ bấm vào chỉ hiện thông báo. Lỗi đọc công tắc ('tat_ca') thì không coi là bảo trì (server vẫn tự chặn).
   const ntBaoTri = tn !== 'tat_ca' && !!tn && tn.has('nt_bao_tri')
@@ -524,7 +515,6 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [tutDs, setTutDs] = useState<string[] | null>(null) // null = cả hành trình theo công tắc · mảng = chỉ các chặng này
   const tutLanDau = useRef(false) // đang chạy lượt TỰ MỞ lần đầu (5 chặng lõi) ⇒ Bỏ qua = bỏ qua luôn mọi chặng đang mở (không nhắc từng cái)
   const daTuMoTut = useRef(false)
-  useEffect(() => { if (direct === null) tutorialDaXem().then(setTutXong).catch(() => {}) }, [direct])
   const chuongMoi = tn === undefined || tutXong === undefined ? [] : chuongMo(moTN).filter((c) => !tutXong.has(c.id))
   useEffect(() => {
     if (direct !== null || daTuMoTut.current || !tutXong || tn === undefined) return
@@ -543,13 +533,46 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const manRong = useMedia('(min-width: 768px)')
   const [khoiHS, setKhoiHS] = useState<string | null>(null)
   const gdMacDinh: GiaoDien = { ...GD_MAC_DINH, skin: skinMacDinhTheoKhoi(khoiHS) }
-  useEffect(() => { khoiCuaHS().then((k) => { setKhoiHS(k); setNhom912(!!k && KHOI_CHON_SKIN.has(k)) }).catch(() => setNhom912(false)) }, [])
+  // ── TẢI MÀN CHÍNH — GỘP LƯỢT GỌI (spec-kien-truc §5, Đợt 4 · mig 202611140027 · lib/hs_home) ──
+  // Mở app: MỘT RPC (khoiDongHS) thay 9 lượt gọi lẻ (cấp, khối, hồ sơ, môn, môn riêng, nhân vật, giao diện, góp ý) + kèm phần màn chính lượt đầu.
+  // Về màn chính: MỘT RPC (manChinhHS: chuỗi · công tắc tính năng · tutorial · Elo/kỳ thi) thay 3–4 lượt. RPC gộp lỗi ⇒ lib tự rơi về gọi lẻ.
+  // Trường undefined = phần đó không tải được ⇒ giữ đúng cách xử lý lỗi cũ của từng phần (ghi cạnh từng dòng).
+  const apManChinh = (m: ManChinhHS) => {
+    if (m.chuoi) setChuoi(m.chuoi); else setChuoi((c) => c ?? null)             // lỗi: giữ số cũ
+    if (m.tinhNang) setTn(m.tinhNang); else setTn((c) => c ?? 'tat_ca')         // lỗi: mở hết (công tắc hỏng không được làm mất app)
+    if (m.tutorial) setTutXong(m.tutorial)                                      // lỗi: im, không tự mở
+    if (m.home912) setDuLieu912(m.home912)
+  }
+  const daGoiKhoiDong = useRef(false)
+  const daKhoiDong = useRef(false)   // phần khởi động đã về ⇒ từ đây mỗi lần về màn chính mới hỏi riêng
+  const directTruoc = useRef(direct)
   useEffect(() => {
-    if (!nhom912) return
-    // Lỗi mạng ⇒ coi như đã có lựa chọn mặc định (không bật hướng dẫn chỉ vì 1 lần gọi hỏng).
-    giaoDienCuaToi().then(setGiaoDien).catch(() => setGiaoDien(gdMacDinh))
-  }, [nhom912])
-  useEffect(() => { if (nhom912 && !direct && !khu) home912().then(setDuLieu912).catch(() => {}) }, [nhom912, direct, khu])
+    if (daGoiKhoiDong.current) return
+    daGoiKhoiDong.current = true
+    khoiDongHS(HOC_TAP).then((k) => {
+      setCap1(k.cap1 ?? false); setCap2(k.cap2 ?? false)
+      if (k.hoSo !== undefined) { setGioiTinh(k.hoSo?.gioi_tinh ?? null); setAnhUrl(k.hoSo?.anh_url ?? null) } else setGioiTinh(null)
+      if (k.lopMons) { setLopMons(k.lopMons); setMonChon(monDangChon(k.lopMons)) }   // lỗi ⇒ rỗng ⇒ không vẽ thanh chọn môn
+      if (k.monRieng) setMonRieng(k.monRieng)
+      if (HOC_TAP) setNhanVat(k.nhanVat && laNvChon(k.nhanVat) ? k.nhanVat : null)
+      if (k.gopYChuaDoc !== undefined) setGopYMoi(k.gopYChuaDoc)
+      const kh = k.khoi ?? null
+      const la912 = !!kh && KHOI_CHON_SKIN.has(kh)
+      setKhoiHS(kh); setNhom912(la912)
+      // Lỗi tải giao diện ⇒ coi như đã có lựa chọn mặc định (không bật hướng dẫn chỉ vì 1 lần gọi hỏng).
+      if (la912) setGiaoDien(k.giaoDien !== undefined ? k.giaoDien : { ...GD_MAC_DINH, skin: skinMacDinhTheoKhoi(kh) })
+      apManChinh(la912 ? k.manChinh : { ...k.manChinh, home912: undefined })
+      if (la912 && !k.manChinh.home912) home912().then(setDuLieu912).catch(() => {})   // nhánh gọi lẻ chưa lấy Elo/kỳ thi
+      daKhoiDong.current = true
+    }).catch(() => { setCap1(false); setCap2(false); setGioiTinh(null); setNhom912(false); if (HOC_TAP) setNhanVat(null); setChuoi((c) => c ?? null); setTn((c) => c ?? 'tat_ca'); daKhoiDong.current = true })
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const doiDirect = directTruoc.current !== direct
+    directTruoc.current = direct
+    if (!daKhoiDong.current) return   // lượt đầu đã nằm trong khoiDongHS
+    if (direct === null && doiDirect) manChinhHS(!!nhom912 && !khu).then(apManChinh).catch(() => {})
+    else if (nhom912 && !direct && !khu) home912().then(setDuLieu912).catch(() => {})   // chỉ ra khỏi một khu: như trước, chỉ làm mới Elo/kỳ thi
+  }, [direct, khu]) // eslint-disable-line react-hooks/exhaustive-deps
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
   useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
