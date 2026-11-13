@@ -80025,3 +80025,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Đánh bù B001:** 7 câu Chưa chắc (HHC013979, HHC013995, HHC014001, HHC014020, T109000000900, T109000000946, T109000000969) ⇒ `kiem_may='nghi'`, lý do lấy từ canhBaoCau của đề. 1 transaction, chỉ commit khi đúng 7 dòng. Kiểm lại: cả 7 nghi/chưa duyệt.
 - **Phát hiện, CHƯA đụng (chờ Thùy):** (a) 74 câu `dai_cau_hoi` đang `kiem_may='nghi'` mà đã `duyet_nguon='ai'` (lọt trước khi có điều kiện mới). (b) 204 câu Chưa chắc của các đề nhập 10/10–03/11 KHÔNG có cờ nghi: 140 đã duyệt — 83 do AI tự duyệt (Đại 48 · HGT 1 · Hình 34), 57 do người duyệt.
 - `schema.md` regen chỉ khác xuống dòng (thân hàm không nằm trong schema) ⇒ không commit.
+
+## 13/11 — MCQ lớp 5 lô 4 (thập phân, hỗn số)
+- **Ghi 38 form** (`scripts/_k5/b4_thapphan.mjs`, `b4_lap_xep.mjs`): nhân với 10^k (5) · cộng/trừ thập phân (4) · viết số thập phân từ lời (1) · nêu phần nguyên/phần thập phân + đọc (5 − bỏ 2 do lời đọc kho khác quy ước) · lập số thập phân từ thẻ (19) · đọc hỗn số (5). `da_duyet=false`. Rule mới R424 (mig 202611130910, áp `--only`).
+- **Không làm được:** sắp xếp thập phân (khuôn T105040106 là TẬP — verify không phân biệt thứ tự ⇒ MCQ thứ tự không kiểm được, cần khuôn thứ tự riêng); T105040110018/019/020 kho liệt kê không theo thứ tự (khác 3 câu cùng mẫu) ⇒ bỏ; T105040110006 kho gõ sai "0.,47"; T105030102023 kho đọc "ba phần tư" (mẫu 4).
