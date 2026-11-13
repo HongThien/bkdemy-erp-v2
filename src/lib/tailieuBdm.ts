@@ -30,7 +30,8 @@ export type NdNhom = {
   dang_bai: NdDangBai[]; chua_phan: KhoiCau | null; btvn: KhoiCau | null
 }
 // on_tap = khối ÔN TẬP trong phiếu BTVN của lớp (loai_phan 'ontap_nhom') — giáo trình gốc luôn rỗng.
-export type NdOnTap = { phan_id: string; id: string; ten: string | null; caus: string[] }
+// lui_bac có giá trị = phần LUYỆN LẠI buổi trước do máy xếp chồng (1 = buổi liền trước, 2 = buổi trước nữa — mig 202611131635); không có = ôn tập GV chọn tay.
+export type NdOnTap = { phan_id: string; id: string; ten: string | null; caus: string[]; lui_bac?: number | null; lui_buoi?: string | null }
 export type NdBuoi = { id: string; tieu_de: string | null; thu_tu: number; nhom: NdNhom[]; chua_khop: KhoiCau | null; on_tap?: NdOnTap[] }
 export type NoiDung = {
   tai_lieu: { id: string; ten: string; khoi: string; mon: string; nhanh: string | null; ban_do: 'cu' | 'moi'; luu_tru_tu: string | null; cau_hinh: Record<string, unknown>; updated_at: string; lop_id?: string | null }
@@ -112,8 +113,27 @@ export async function xoaBuoi(buoiId: string): Promise<void> {
 // Gán lại cùng (lớp + ngày + loại) = THAY tài liệu cũ (như giáo trình cũ — unique uq_tai_lieu_van_hanh).
 // Nội dung đổ bằng fn_tl_bdm_trich_buoi (giữ cây nhóm → dạng bài, 1 transaction).
 export type OnTapChon = { nhom: string; caus: string[] }
+// ── BTVN XẾP CHỒNG 3 BUỔI (Thùy 13/11, spec-muc-tieu-tuan.md §8.1 · mig 202611131635) ──
+// Phiếu buổi N = một phần câu BTVN của buổi N + phần 2 của buổi trước + phần 3 của buổi trước nữa (mặc định 5–3–2).
+// Chia + chọn câu luyện lại ở DB (fn_tl_bdm_btvn_xep_chong); màn chỉ hiện đề xuất cho GV soát rồi ghi (fn_tl_bdm_trich_btvn).
+export type XepChongNhom = { nhom: string; ten: string | null; caus: string[]; tong?: number }
+export type XepChongLui = { bac: 1 | 2; buoi: string; tieu_de: string | null; ngay: string; nhom: XepChongNhom[] }
+export type XepChong = { ti_le: number[]; nay: XepChongNhom[]; lui: XepChongLui[] }
+export const TI_LE_XEP_CHONG: { nhan: string; ti_le: number[] }[] = [
+  { nhan: '5 – 3 – 2', ti_le: [5, 3, 2] },
+  { nhan: '4 – 3 – 3', ti_le: [4, 3, 3] },
+  { nhan: 'Giao trọn buổi này', ti_le: [10, 0, 0] },
+]
+export async function btvnXepChong(masterId: string, buoiId: string, lopId: string, ngay: string, tiLe: number[]): Promise<XepChong> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_btvn_xep_chong', { p_master: masterId, p_buoi: buoiId, p_lop: lopId, p_ngay: ngay, p_ti_le: tiLe })
+  if (error) throw error
+  return data as XepChong
+}
+export type PhieuXepChong = { ti_le: number[]; nay: OnTapChon[]; lui: { bac: number; buoi: string; nhom: string; caus: string[] }[] }
 export async function trichBuoiBdm(masterId: string, buoiId: string, o: {
   lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; loai: 'giao_trinh_buoi' | 'btvn'; onTap?: OnTapChon[]
+  /** Phiếu BTVN xếp chồng (chỉ loai 'btvn', không phải giáo trình Hình): ghi bằng fn_tl_bdm_trich_btvn. Không truyền = chép trọn BTVN của buổi như cũ. */
+  phieu?: PhieuXepChong
 }): Promise<{ id: string; loai: string }> {
   const { data: master, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon, nhanh').eq('id', masterId).single()
   if (e0) throw e0
@@ -133,9 +153,14 @@ export async function trichBuoiBdm(masterId: string, buoiId: string, o: {
   }).select('id, loai').single()
   if (e3) throw e3
   // Giáo trình Hình (Học + Luyện, mig 202610271757) có hàm chép riêng — cùng tham số.
-  const { error: e4 } = await supabase.rpc(m.nhanh === 'hinh' ? 'fn_tl_hinh_trich_buoi' : 'fn_tl_bdm_trich_buoi', {
-    p_master: masterId, p_buoi: buoiId, p_den: (doc as { id: string }).id, p_loai: o.loai === 'btvn' ? 'btvn' : 'gt', p_tieu_de: tieuDe, p_on_tap: o.onTap ?? [],
-  })
+  const xepChong = o.loai === 'btvn' && m.nhanh !== 'hinh' && o.phieu
+  const { error: e4 } = xepChong
+    ? await supabase.rpc('fn_tl_bdm_trich_btvn', {
+      p_master: masterId, p_buoi: buoiId, p_den: (doc as { id: string }).id, p_tieu_de: tieuDe, p_phieu: { ...o.phieu, on_tap: o.onTap ?? [] },
+    })
+    : await supabase.rpc(m.nhanh === 'hinh' ? 'fn_tl_hinh_trich_buoi' : 'fn_tl_bdm_trich_buoi', {
+      p_master: masterId, p_buoi: buoiId, p_den: (doc as { id: string }).id, p_loai: o.loai === 'btvn' ? 'btvn' : 'gt', p_tieu_de: tieuDe, p_on_tap: o.onTap ?? [],
+    })
   if (e4) {
     await supabase.from('tai_lieu').delete().eq('id', (doc as { id: string }).id) // vừa tạo, chưa có nội dung ⇒ gỡ để khỏi để lại tài liệu rỗng
     throw e4

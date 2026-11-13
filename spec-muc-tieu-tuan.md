@@ -211,12 +211,28 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 
 ## 8. Thay đổi đi kèm ở hệ thống đang chạy
 
-### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11 — sắp tới)
-- **Trước:** BTVN buổi dạy dạng X = toàn dạng X. **Sau:** BTVN buổi N gồm dạng của buổi N, N-1, N-2. Một dạng vẫn ~10 bài, rải qua 3 lần.
-- Tỉ lệ chia là **tham số**, mặc định **5–3–2** (4–3–3 cũng được).
-- Được: mỗi dạng ET + 3 lần BTVN = 4 lần đo trong ~1,5 tuần · luyện giãn cách · không tăng khối lượng · em vắng buổi 9 vẫn gặp dạng buổi 9.
-- **Hệ tự ghép BTVN, GV chỉ duyệt** (hệ biết dạng N-1, N-2 và câu đã dùng).
-- Hệ quả trên màn: một nhóm có thể nằm ở Phần 1 qua nhiều tuần; dòng nhóm ghi "đã học x/y dạng".
+### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11, chốt cách làm 13/11 — ĐÃ BUILD, mig `202611131635` CHƯA áp)
+- **Trước:** BTVN buổi N = toàn bộ câu BTVN của buổi N ⇒ mỗi nhóm đo ở nhà MỘT lần, làm rất nhiều câu một lúc.
+  **Sau:** việc luyện một buổi chia ra 3 phiếu — phiếu buổi N gồm một phần câu của buổi N + phần 2 của buổi N-1 + phần 3 của buổi N-2.
+- Tỉ lệ chia là **tham số**, mặc định **5–3–2**; trên màn chọn được 4–3–3 hoặc "Giao trọn buổi này" (10–0–0 = cách cũ). Tỉ lệ lưu theo phiếu (`cau_hinh.xepChong`).
+- Được: mỗi nhóm ET + 3 lần BTVN = 4 lần đo trong ~1,5 tuần · luyện giãn cách · không tăng khối lượng · em vắng buổi 9 vẫn gặp bài buổi 9.
+- **Giáo trình gốc KHÔNG đổi** — GV vẫn soạn đủ câu BTVN cho từng buổi. Việc chia xảy ra lúc **tạo phiếu của lớp** (màn BTVN + Ôn tập ở bước Gán lớp).
+- **Chia theo từng NHÓM của buổi** (giáo trình bản đồ mới soạn BTVN theo nhóm), số câu mỗi phần theo phương pháp số dư lớn nhất
+  (nhóm 10 câu 5–3–2 · 4 câu 2–1–1 · 3 câu 1–1–1 ⇒ nhóm ít câu vẫn đủ 3 lần đo), câu của mỗi phần **rải đều theo thứ tự câu** (không cắt khúc đầu/đuôi).
+- **Câu luyện lại lấy từ chính câu GV đã soạn** cho buổi đó, không bốc thêm từ kho; sau 3 phiếu em làm đủ mọi câu, không câu nào giao 2 lần.
+- **"Buổi trước" tính theo LỚP**: 2 giáo trình buổi bản đồ mới (Đại · HGT · KHTN, không phải Hình) gần nhất của lớp trước ngày đó, có câu BTVN.
+  Buổi ôn tập / kiểm tra không có BTVN thì bỏ qua. Buổi liền trước lấy phần 2; buổi trước nữa lấy phần 2 + 3 còn sót.
+- **Chuyển tiếp tự động, không cần ngày cắt:** chỉ lấy câu lớp CHƯA được giao ⇒ buổi đã phát trọn theo luật cũ thì không còn gì để rải.
+  Hệ quả: 2 phiếu đầu sau khi bật chỉ có khoảng nửa số câu (GV bấm "Giao trọn buổi này" nếu muốn đủ như cũ), từ phiếu thứ 3 về đúng khối lượng.
+- **Hệ tự ghép, GV chỉ soát:** màn hiện sẵn 3 khối (bài buổi này · luyện lại buổi trước · luyện lại buổi trước nữa), GV ✕ bỏ câu, đổi tỉ lệ, ↺ đặt lại, rồi Xác nhận.
+- **Ôn tập GV tick tay vẫn giữ** (≤ 2 nhóm × 2 câu, xếp theo mastery lớp) nhưng chỉ cho nhóm CŨ HƠN hai buổi trước; mặc định không tick.
+- Chấm · nộp · thái độ · dòng "Bài về nhà" ở Việc của con: không đổi (vẫn một phiếu mỗi buổi, % tính trên cả phiếu).
+- Mastery theo lần không đổi công thức: phiếu chứa 3 buổi tự ra lần đo riêng cho từng nhóm (1 lần = 1 bài làm × 1 nhóm).
+- **Mục tiêu tuần:** "nhóm của buổi" = kiến thức DẠY buổi đó (bỏ phần ôn / luyện lại trong phiếu); nhóm luyện lại trong phiếu của buổi thuộc cửa sổ
+  được **+1 lần đo dự kiến** và **ở lại Phần 1** tuần đó ⇒ một nhóm có thể nằm ở Phần 1 qua 2 tuần. Phiếu chưa tạo thì dự kiến theo tỉ lệ mặc định.
+- Lưu: phần luyện lại = `tai_lieu_phan.loai_phan 'ontap_nhom'` + `lui_bac` (1/2) + `lui_buoi` (mốc buổi gốc) — in, chấm, test online đọc như phần ôn tập sẵn có.
+  Hàm: `_tl_bdm_btvn_chia` · `_tl_bdm_btvn_lui` · `fn_tl_bdm_btvn_xep_chong` (đề xuất) · `fn_tl_bdm_trich_btvn` (ghi) · `_mtt_nhom_lui`. Kiểm: `scripts/_test_btvn_xep_chong.mjs` (46/46, ROLLBACK).
+- **Chưa làm:** giáo trình **Hình** (phiếu Hình chỉ 3–6 câu, hàm ghi riêng `fn_tl_hinh_trich_buoi`) · builder cũ (còn ~3 phiếu/tuần, đang tắt dần).
 
 ### 8.2 BTVN tính vào mastery
 - Đổi luật toàn hệ: dạng yếu, đề xuất bổ trợ, trend báo cáo tuần, KPI trưởng khối đều đọc mastery ⇒ chuỗi số gãy tại ngày đổi.

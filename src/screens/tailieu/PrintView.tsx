@@ -558,12 +558,13 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
     tieu_de: `Nhóm ${n.stt}: ${n.ten ?? ''}`, noi_dung: null, caus: caus(n.btvn!.caus), maCaus: n.btvn!.caus,
   })) as PhanResolved[]
   // Ôn tập (phiếu BTVN của lớp) → "PHẦN ÔN TẬP" của BtvnSheet, mỗi nhóm ôn 1 card, số câu chạy tiếp.
-  const onTapCua = (b: NoiDung['buoi'][number]) => (b.on_tap ?? []).filter((o) => o.caus.length).map((o, i) => ({
+  // lui = true ⇒ phần LUYỆN LẠI buổi trước (BTVN xếp chồng, mig 202611131635); false ⇒ ôn tập GV chọn tay.
+  const onTapCua = (b: NoiDung['buoi'][number], lui = false) => (b.on_tap ?? []).filter((o) => o.caus.length && !!o.lui_bac === lui).map((o, i) => ({
     id: o.phan_id, tai_lieu_id: taiLieu.id, thu_tu: i, loai_phan: 'ontap' as const, ref_ma: null,
     tieu_de: o.ten ?? '', noi_dung: null, caus: caus(o.caus), maCaus: o.caus,
   })) as PhanResolved[]
   const sheet = (b: NoiDung['buoi'][number], hoTen: string | undefined, key: string) => (
-    <BtvnSheet key={key} btvns={btvnCua(b)} ontaps={onTapCua(b)} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.tieu_de ?? ''} linesByCau={linesByCau} colByCau={colByCau}
+    <BtvnSheet key={key} btvns={btvnCua(b)} luis={onTapCua(b, true)} ontaps={onTapCua(b)} gv={gv} docTitle={taiLieu.ten} buoiTitle={b.tieu_de ?? ''} linesByCau={linesByCau} colByCau={colByCau}
       hinhCheDoByCau={hinhCheDoByCau} hoTen={hoTen} ngayPhat={ngayPhat} ngayNop={ngayNop} lopTen={lopTen} />
   )
   const pill = taiLieu.loai === 'chuyen_de' ? 'Bài tập' : 'Bài luyện'   // chuyên đề không có trên lớp / về nhà
@@ -834,9 +835,10 @@ function DangBlock({ p, gv, lt = true, colByCau, hinhCheDoByCau, batDau = 0 }: {
 
 // BTVN của 1 BUỔI = phiếu RIÊNG (sang trang mới), nhóm theo DẠNG (mirror trên lớp). HS viết thẳng vào dòng kẻ.
 // Đầu phiếu: tiêu đề = tên tài liệu · trái = Họ tên + Lớp · phải = ô Điểm. Bản GV = đáp án (bỏ ô điền, hiện lời giải).
-function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hinhCheDoByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '', deThi, hlBtvn }: {
+function BtvnSheet({ btvns, luis = [], ontaps = [], gv, docTitle, buoiTitle, linesByCau, colByCau, hinhCheDoByCau, hoTen, ngayPhat = '', ngayNop = '', lopTen = '', deThi, hlBtvn }: {
   hlBtvn?: CdhBtvnLuyen[]   // giáo trình Hình: bài BTVN của từng mô hình phần Luyện (Thùy 08/11) — in sau câu BTVN của Học, "Bài 1, 2…"
   btvns: PhanResolved[]; ontaps?: PhanResolved[]; gv: boolean; docTitle: string; buoiTitle: string; linesByCau: Record<string, number>; colByCau: Record<string, number>
+  luis?: PhanResolved[]   // BTVN xếp chồng: câu luyện lại của 2 buổi trước — in sau bài buổi này, trước ôn tập, số câu chạy tiếp
   hinhCheDoByCau?: Record<string, CheDoHinh>
   hoTen?: string; ngayPhat?: string; ngayNop?: string; lopTen?: string
   deThi?: { cau_hinh: CauHinh | null }   // BTVN gán từ ĐỀ THI (cau_hinh chép kèm deThi) ⇒ in theo khuôn đề
@@ -899,10 +901,17 @@ function BtvnSheet({ btvns, ontaps = [], gv, docTitle, buoiTitle, linesByCau, co
             <div className="gtbk-card-body pv-cdh">{v.bai.map((b) => { hno += 1; return <BaiHinhIn key={b.ma_bai} b={b} no={hno} gv={gv} lines={linesByCau[b.ma_bai] ?? DEFAULT_BTVN_LINES} cheDo={hinhCheDoByCau?.[b.ma_bai]} /> })}</div>
           </div>
         ))
+        const luiList = luis.filter((b) => b.caus.length)
         const ontapList = ontaps.filter((b) => b.caus.length)
         return <>
           {btvnBlocks}
           {hlBlocks}
+          {luiList.length > 0 && (
+            <div className="pv-sec pv-ontap">
+              <h2 className="pv-h-ontap">LUYỆN LẠI BÀI BUỔI TRƯỚC</h2>
+              {luiList.map(dangBlock)}
+            </div>
+          )}
           {ontapList.length > 0 && (
             <div className="pv-sec pv-ontap">
               <h2 className="pv-h-ontap">PHẦN ÔN TẬP</h2>
