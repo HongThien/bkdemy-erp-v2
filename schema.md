@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-590 bảng · 39 view · 0 enum · 433 trigger · 1931 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1932 function
 
 ## _app_secrets
 
@@ -11835,6 +11835,7 @@ WITH luot AS (
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_btvn_chia(p_buoi uuid, p_ti_le integer[])` → TABLE(nhom text, thu_nhom integer, ma_cau text, thu integer, phan integer)
 - `_tl_bdm_btvn_lui(p_lop uuid, p_ngay date, p_buoi uuid, p_ti_le integer[])` → TABLE(bac integer, buoi uuid, master uuid, tieu_de text, ngay date, nhom text, thu_nhom integer, ma_cau text, thu integer)
+- `_tl_bdm_buoi_truoc(p_tai_lieu uuid, p_buoi uuid)` → TABLE(bac integer, buoi uuid, tieu_de text, ngay date)
 - `_tl_bdm_cau_da_dung(p_buoi uuid, p_tru_phan uuid DEFAULT NULL::uuid)` → text[]
 - `_tl_bdm_cau_vi_tri(p_khoi text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)
 - `_tl_bdm_cau_vi_tri(p_khoi text, p_mon text)` → TABLE(ma_cau text, la_goc boolean, cum text, loai_cau text, dang_bai_id text, nhom_id text)

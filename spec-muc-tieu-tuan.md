@@ -211,7 +211,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 
 ## 8. Thay đổi đi kèm ở hệ thống đang chạy
 
-### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11 · chốt lại cách làm 13/11 chiều — ĐÃ BUILD; mig `202611131635` + `202611131755` ĐÃ ÁP, mig `202611131807` CHỜ ÁP)
+### 8.1 BTVN xếp chồng 3 buổi (Thùy 12/11 · chốt lại cách làm 13/11 chiều — ĐÃ BUILD; mig `202611131635` + `202611131755` + `202611131807` ĐÃ ÁP 13/11)
 - **Trước:** BTVN buổi N = toàn bộ câu BTVN của buổi N ⇒ mỗi nhóm đo ở nhà MỘT lần, làm rất nhiều câu một lúc.
   **Sau:** phiếu BTVN buổi N có **3 phần — ① bài của buổi này · ② luyện lại buổi trước · ③ luyện lại buổi trước nữa.**
 - **Soạn NGAY TRONG BUILDER giáo trình** (Thùy 13/11: "đây là phải gán mới thấy à … builder BTVN phải có 3 phần, mỗi buổi có sẵn dạng luôn để giáo viên chọn").
@@ -220,7 +220,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - **5–3–2 là TƯƠNG ĐỐI, không tuyệt đối:** chỉ là số câu mặc định của nút Gợi ý cho mỗi nhóm — buổi này 5 · buổi trước 3 · buổi trước nữa 2.
   GV đổi số từng loại câu rồi Gợi ý lại, hoặc chọn tay; hệ không ép tỉ lệ.
 - **"Buổi trước"** = 2 buổi CÓ NHÓM đứng ngay trước trong chính giáo trình đó (buổi không có nhóm thì bỏ qua).
-  **Thiếu thì lấy tiếp các buổi LỚP của giáo trình đã được gán gần nhất từ giáo trình KHÁC** (mig `…1807`, chờ áp) — đo 13/11: giáo trình làm theo lớp,
+  **Thiếu thì lấy tiếp các buổi LỚP của giáo trình đã được gán gần nhất từ giáo trình KHÁC** (mig `…1807`) — đo 13/11: giáo trình làm theo lớp,
   trung vị 2 buổi, nhiều cái 1 buổi, 11/39 lớp dùng ≥ 2 giáo trình trong 3 tuần ⇒ không có luật này thì buổi 1 của giáo trình mới không có gì để luyện lại.
 - **Câu luyện lại là câu MỚI từ kho** theo dạng bài của buổi đó, và **không được có ở bất cứ chỗ nào khác trong giáo trình** ⇒ HS không gặp một câu 2 lần.
 - **Gán lớp chỉ CHÉP** đúng 3 phần đã soạn (màn BTVN + Ôn tập: GV soát, ✕ bỏ câu nếu cần, có thể tick thêm ôn tập nhóm cũ hơn như trước). Không tự chia.
