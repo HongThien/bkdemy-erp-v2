@@ -79996,3 +79996,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 09:03 — Mục tiêu tuần: thái độ CHỈ xét ở BTVN; ngưỡng 80/50 cho mọi hoạt động
 - Thùy xác nhận. Không thêm ô thái độ cho test sau giờ/ET.
+
+## 13/11 09:10 — Mục tiêu tuần: màn trung tâm = tab Dashboard học tập + Phòng trưởng khối; bỏ bước đo trước
+- Thùy: màn tổng thể trung tâm là 1 tab trong Dashboard học tập và có trong Phòng trưởng khối (cùng một màn, phòng là lối tắt). BTVN tính mastery: xác nhận lại.
+- Bỏ bước "đo hiện trạng trước" (tỉ lệ buổi có tài liệu, phân bố mức đạt): trước đây không chạy theo nhịp này, chạy rồi mới có số.
+- Số câu luyện của nhóm ôn tập: không còn là câu hỏi — tự luyện đã chuyển thành thống kê không bắt buộc, không có chỉ tiêu.

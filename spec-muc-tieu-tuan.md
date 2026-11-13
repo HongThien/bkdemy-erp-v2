@@ -29,7 +29,7 @@
 | Q5 | **Ngưỡng đạt = đúng mastery đang chạy**, không đặt định nghĩa "đạt" thứ hai. |
 | Q6 | **Kênh = app học sinh là chính** (đẩy hằng tuần) + app GV. Phụ huynh: tạm thời chụp ảnh bảng gửi qua. |
 | Q7 | **Hai tầng mục tiêu** (§5): TUẦN = có lần đo mới và số phải TĂNG; CHIẾN DỊCH (2–3 tuần) = tới mức đạt. Một tuần không đòi "đạt". |
-| Q8 | **BTVN tính vào mastery** (không chỉ ET/MT như mặc định hiện nay) — đổi luật TOÀN HỆ, xem §5b. |
+| Q8 | **BTVN tính vào mastery** (không chỉ ET/MT như mặc định hiện nay) — đổi luật TOÀN HỆ, xem §5b. Thùy xác nhận lại 13/11. |
 | Q9 | **BTVN xếp chồng 3 buổi** (§5b): BTVN buổi N gồm dạng của buổi N, N-1, N-2; tổng số bài mỗi dạng không đổi. |
 | Q10 | **Dạng nợ đo lại TẠI TRUNG TÂM, sau giờ**, ngày kiểm tra báo trước trên bảng thứ Hai (§5c). Làm ở nhà = ôn, không tính điểm. |
 | Q12 | **Đơn vị ĐÁNH GIÁ = nhóm bài; đơn vị DẠY = dạng bài.** Mastery, tăng/giảm, nợ, kiểm tra sau giờ tính theo nhóm (`mastery_luu_san.cap = 'nhom'`); giáo trình và BTVN xếp chồng nói theo dạng. |
@@ -138,7 +138,9 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    - Hai khối: **Đã làm** · **Sắp tới** (có ngày, hạn; BTVN chưa nộp quá hạn ghi rõ "chưa nộp"). Đầu màn có ô tổng "x/y việc đã xong".
    - Danh sách do HỆ suy từ lịch buổi + giáo trình + lượt chốt bổ trợ (pure-derive, CLAUDE §4), không ai giao tay, không nút tự đánh dấu.
    - Dòng nhóm bài ở Phần 1/2 trở lại gọn (tên · ▲/▼ · % · cờ 80%); bấm vào mới có lý thuyết / bài trên lớp / luyện tập.
-   - **Ba tầng xem cùng dữ liệu:** học sinh · phụ huynh · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã xong, thái độ, em chưa làm gì). *Màn trung tâm: chưa vẽ.*
+   - **Ba tầng xem cùng dữ liệu:** học sinh · phụ huynh · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã xong, thái độ, em chưa làm gì). **Màn trung tâm (Thùy 13/11):** một **tab trong Dashboard học tập** + có mặt trong **Phòng làm việc trưởng khối**
+     — cùng một màn, phòng chỉ là lối đi tắt (không bản sao, đúng `spec-phong-truong-khoi.md`). Nội dung: tỉ lệ việc đã xong theo lớp/khối · mức đánh giá ·
+     em chưa làm gì · thái độ BTVN đủ 4 mức. *Chưa vẽ.*
 
 **Kênh phụ huynh (Thùy 13/11, thay "chụp ảnh gửi"):** màn này hiện **REALTIME trên app phụ huynh** (Cổng Phụ huynh — project riêng `bkdemy-ph`,
 đọc ERP qua FDW `erp_live`), cùng nội dung màn HS, chữ formal. ⇒ Hàm đọc phải đọc **bảng tính sẵn** (§2.0), không tính lại qua FDW mỗi lượt mở.
@@ -267,8 +269,8 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 
 ## 7. Việc cần làm khi build (chưa làm — thứ tự đề xuất)
 
-1. **Đo hiện trạng trước:** với 4 tuần gần nhất, bao nhiêu % buổi có tài liệu (giáo trình/BTVN) trên hệ **trước** thứ Hai của tuần đó?
-   Đây là điều kiện sống còn của cả ý tưởng. Thấp ⇒ thay đổi thói quen soạn bài là việc số 1, trước mọi code.
+1. ~~Đo hiện trạng trước (tỉ lệ buổi có tài liệu trước thứ Hai, phân bố mức đạt)~~ — **BỎ (Thùy 13/11):** trước đây không vận hành theo nhịp này,
+   số cũ không nói lên gì; chạy luồng mới rồi mới có số để xem. Chốt giáo trình cả tuần ở buổi thứ Hai là quy định mới, bắt buộc.
 2. Hàm DB `fn_muc_tieu_tuan_*` (mọi tính toán ở Postgres, §2.0): cắt cửa sổ theo hạn BTVN · gom dạng · đọc `mastery_luu_san` (không quét lại lịch sử đo).
 3. **Bảng chốt tuần** (immutable, ghi lúc chốt thứ Hai, chỉ tạo dòng khi có kết luận thật — §1.5): mục tiêu đã phát + kết luận từng dạng.
    Cron đầu thứ Hai, cùng nhịp `dang_yeu_dau_tuan`. Nợ tuần sau đọc từ bảng này.
@@ -301,7 +303,7 @@ Số mới cho quản lý: **tỉ lệ dạy đúng kế hoạch** (dạng thự
 | 1 | Mastery không nhúc nhích trong 1 tuần; mặc định không tính BTVN | **Đã gỡ bằng thiết kế:** hai tầng (§5) + BTVN xếp chồng tính vào mastery (§5b) |
 | 2 | Đường "hết yếu" không kết thúc bằng lần đo được tính; trùng với luồng bổ trợ | **Đã gỡ bằng thiết kế:** vòng nợ sau giờ (§5c), một danh sách với bổ trợ |
 | 3 | "GV không phải làm gì" hỏng ở: buổi ôn tập/luyện đề chạm 10–15 dạng (cần luật dạng trọng tâm) · tài liệu chưa lên hệ trước thứ Hai · chấm BTVN không kịp trước giờ chốt | **Giảm:** giáo trình và bổ trợ do người chốt ở hai lượt sẵn có (§3b), hệ chỉ ghép. Tài liệu: Thùy chốt BẮT BUỘC làm xong ở buổi họp. Chấm BTVN: mốc tính theo giờ chấm (§3) nên không còn "kịp trước 00:00", nhưng cần hạn chấm để lần đo không trôi tuần |
-| 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Vẫn cần đo phân bố thật trước khi phát cho phụ huynh |
+| 4 | Công khai số ⇒ đổi hành vi (Goodhart): chép BTVN, cày câu dễ; phụ huynh thấy toàn "chưa đạt"; bảng phơi lỗi của trung tâm | **Giảm một phần** (tầng tuần đòi TĂNG chứ không đòi đạt; cờ lệch BTVN–ET). Không đo trước (Thùy 13/11: luồng mới, chạy rồi mới có số) — theo dõi sau khi chạy |
 | 5 | Nợ tự biến mất sau 30 ngày không đo | **Đã gỡ:** nợ đọc từ sổ chốt tuần (§4) |
 | 6 | Tải: em 3 môn ~20 dòng/tuần (cần màn gộp có ưu tiên) · sức chứa ca sau giờ · em vắng (mục tiêu giữ, đường đi = buổi bù) · em mới vào lớp (không gánh nợ trước ngày vào) | **MỞ** |
 | 7 | Ngày kiểm tra chốt từng trường hợp ⇒ có tuần bảng thứ Hai chưa có ngày | **Đã gỡ:** ca sau giờ chốt trong ngày thứ Hai cùng lịch học + bổ trợ; bảng phát SAU lượt chốt đó (§5c). Còn lại: giờ phát cụ thể chưa định |
