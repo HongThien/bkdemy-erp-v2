@@ -8,6 +8,7 @@ import { supabase } from '../../lib/supabase'
 import { bangDashboardHocTap, lichSuO, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO } from '../../lib/dashboardHocTap'
 import { NHAN_TT } from '../../lib/boTroTk'
 import BoTroPopup from '../phongtk/BoTroPopup'
+import MucTieuTuanTab from './MucTieuTuanTab'
 
 // Dùng trong PHÒNG TRƯỞNG KHỐI (Thùy 10/11): chỉ các ô (môn, khối) trong phạm vi · cột Bổ trợ · bấm tên ⇒ Hồ sơ học tập.
 // dau: khối đặt ĐẦU thanh lọc (vd thanh 4 mục của Chất lượng) — Thùy 10/11: dồn hết thanh đầu về 1 dòng
@@ -18,8 +19,8 @@ type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: nu
 // Rời tab quay lại = đúng chỗ cũ, kể cả các cửa sổ đang mở (CLAUDE §React).
 const NHO: {
   mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }
-  bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number; tapTrung: boolean
-} = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false }
+  bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number; tapTrung: boolean; tab: 'bang' | 'mtt'
+} = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false, tab: 'bang' }
 
 const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuyên đề', nhom: 'nhóm bài' }
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
@@ -48,6 +49,9 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   // 11/11 (Thùy): chế độ TẬP TRUNG — chỉ hiện cột có ít nhất 1 ô YẾU trong danh sách đang xem (lọc hiển thị, không tính lại số)
   const [tapTrung, setTapTrung] = useState(NHO.tapTrung)
   useEffect(() => { NHO.tapTrung = tapTrung }, [tapTrung])
+  // 13/11 (spec-muc-tieu-tuan §9.3): tab "Mục tiêu tuần" — cùng thanh môn/khối; mở tab nào thì gọi dữ liệu tab đó (§2.0)
+  const [tab, setTab] = useState<'bang' | 'mtt'>(NHO.tab)
+  useEffect(() => { NHO.tab = tab }, [tab])
   const goc = useRef<HTMLDivElement>(null)
   // App có thể bọc trong khung `zoom` (cỡ chữ) ⇒ toạ độ fixed bên trong bị nhân theo; quy toạ độ chuột về đơn vị của khung.
   const tiLe = () => { const el = goc.current; return el && el.offsetWidth ? el.getBoundingClientRect().width / el.offsetWidth : 1 }
@@ -78,7 +82,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
 
   // Đổi ngữ cảnh (môn/khối/tuần/cấp) ⇒ tải lại bảng; quay lại tab cùng ngữ cảnh ⇒ dùng bảng đã nhớ
   useEffect(() => {
-    if (!khoi) return
+    if (!khoi || tab !== 'bang') return
     const khoa = [mon, khoi, soTuan, cap].join('|')
     if (lamMoi === 0 && NHO.bang && NHO.khoaBang === khoa) return
     let alive = true
@@ -89,7 +93,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
       .catch((e) => alive && setLoi('Không tải được bảng: ' + (e?.message ?? e)))
       .finally(() => alive && setDangTai(false))
     return () => { alive = false }
-  }, [mon, khoi, soTuan, cap, lamMoi])
+  }, [mon, khoi, soTuan, cap, lamMoi, tab])
 
   const lops = bang ? [...new Map(bang.hs.map((h) => [h.lop_id, h.lop])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'vi', { numeric: true })) : []
   const hien = (bang?.hs ?? []).filter((h) => !lopId || h.lop_id === lopId)
@@ -138,6 +142,10 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
     <div ref={goc} className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         {phong?.dau}
+        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
+          <button onClick={() => setTab('bang')} className={nut(tab === 'bang')}>Bảng học tập</button>
+          <button onClick={() => setTab('mtt')} className={nut(tab === 'mtt')}>🎯 Mục tiêu tuần</button>
+        </div>
         {mons.length > 1 ? (
           <select value={mon} onChange={(e) => { setMon(e.target.value); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] font-semibold text-slate-800">
             {mons.map((m) => <option key={m} value={m}>{m}</option>)}
@@ -147,7 +155,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
           {khois.length === 0 && <option value="">Chưa có lớp</option>}
           {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
         </select>
-        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
+        {tab === 'bang' && <><div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
           {([['chu_de', 'Chủ đề'], ['chuyen_de', 'Chuyên đề'], ['nhom', 'Nhóm bài']] as [CapDB, string][]).map(([v, l]) => (
             <button key={v} onClick={() => { setCap(v); if (sap.cot !== 'ten' && sap.cot !== 'lop') setSap({ cot: 'lop', tang: true }) }} className={nut(cap === v)}>{l}</button>
           ))}
@@ -161,10 +169,11 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             <option value="">Cả khối</option>
             {lops.map(([id, ten]) => <option key={id} value={id}>Lớp {ten}</option>)}
           </select>
-        )}
+        )}</>}
         <button onClick={() => setLamMoi((x) => x + 1)} title="Đọc lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
         {cua.length > 0 && <button onClick={() => setCua([])} className="ml-auto h-7 rounded-md px-3 text-[12px] font-semibold text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng {cua.length} cửa sổ</button>}
       </div>
+      {tab === 'mtt' ? <MucTieuTuanTab mon={mon} khoi={khoi} lamMoi={lamMoi} /> : <>
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!bang ? (dangTai ? <p className="text-sm text-slate-500">Đang tính bảng…</p> : null)
         : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có lần đo nào theo bản đồ mới.</div>
@@ -230,6 +239,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             </p>
           </>
         )}
+      </>}
       {boTro && <BoTroPopup hs={{ id: boTro.id, ten: boTro.ten, lop: boTro.lop }} mon={mon} onDong={() => setBoTro(null)}
         onXong={(kq) => { vaBt(boTro.id, { id: kq.id, tt: kq.tt }); setBoTro(null) }} />}
       {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} onXemThem={() => xemThem(c)} />)}

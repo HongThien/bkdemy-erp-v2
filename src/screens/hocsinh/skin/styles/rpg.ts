@@ -75,6 +75,7 @@ export const RPG: Skin = {
   anhO: {
     giao_trinh: `${A}/o_tren_lop.png`, et: `${A}/o_et.png`, btvn: `${A}/o_btvn.png`, tu_luyen: `${A}/o_tu_luyen.png`,
     thong_tin: `${A}/o_thong_tin.png`, so_tay: `${A}/o_so_tay.png`, de_thi_thu: `${A}/o_thi_thu.png`,
+    muc_tieu: `${A}/o_rank.png`, // 13/11 Mục tiêu tuần — dùng lại icon không hiện ở Home (Thùy: không trùng ở Home là được)
     bai_tap_giao: `${A}/o_bai_tap_giao.png`, thanh_tuu: `${A}/o_cup.png`, xep_hang: `${A}/bxh/o_xep_hang.png`, // 07/10: icon ô lớn riêng (Đơn 15)
     may_man: `${A}/o_ruong.png`, vi_xu: `${A}/o_vi_xu.png`, hoc_tu_dau: `${A}/o_hoc_tu_dau.png`,
     the_gioi: `${A}/o_pha_le.png`, // TẠM (cầu pha lê) — thay bằng tg_o_the_gioi khi kit Đơn 5 về

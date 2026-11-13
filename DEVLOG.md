@@ -80137,3 +80137,111 @@ Thùy nêu 4 việc, làm được 3:
 - Hiển thị: `toanmath/so-do-html.mjs` (nút "Xem sơ đồ tư duy" ẩn mặc định, tab Xuôi/Ngược, dải khúc) dùng trong `duyet-batch.mjs`; `mau-so-do.mjs` dựng trang mẫu. App HS CHƯA làm (chờ Thùy duyệt mẫu).
 - Mẫu 3 câu (chuyển từ Phần 1 cũ, lời giải không đổi chữ trừ bỏ 5 dòng tiêu đề con "Bước 1: …" / "Chứng minh …" ở B005-01 vì dải khúc thay chúng): B010-12 Câu 4.2 (6 ô) · B011-06 Bài 4 (9 ô) · B005-01 Câu 4.2 (K9, 9 ô). Cổng đạt, ghi thử mỗi đề 1 sơ đồ rồi rollback.
 - (14/11, sau) Thùy duyệt mẫu: "Chuẩn ý t rồi. ghi vào spec". Ghi luật vào `kho-rules/README.md` §3 "SƠ ĐỒ TƯ DUY" (luật chung) · ghi chú THAY ở `dai/k8.md` §1.6 và `hinh/k9.md` · `toanmath/_giao-tram.md` (trạm soạn/soát đè khuôn Phần 1). Commit trang mẫu `mau-so-do-tu-duy.html` làm mẫu đã duyệt. Còn: app HS, luồng kho kiểu 1, câu Hình cũ trong kho.
+
+## 12/11 22:56 — QUYẾT ĐỊNH: Mục tiêu tuần của học sinh (chỉ spec, CHƯA build)
+- Thùy (Sparring): công khai mục tiêu tuần cho HS + phụ huynh thành cái neo chung — bảng gồm dạng học mới + dạng nợ; tuần sau đánh giá lại.
+- Chốt: người đọc = HS và phụ huynh · mục tiêu hệ tự suy từ giáo trình · ngưỡng = mastery đang chạy · kênh = app HS là chính + app GV, phụ huynh tạm chụp ảnh.
+- Timeline (qua 4 phương án): MỘT ngày chốt = thứ Hai; cửa sổ mục tiêu = các buổi có HẠN BTVN rơi trong tuần ⇒ lùi một buổi so với lịch dạy (buổi cuối tuần trước + buổi đầu tuần này). Lịch dạy tuần của GV là chu kỳ riêng, không đổi.
+- Ghi ở `spec-muc-tieu-tuan.md` (§8 = 7 câu còn treo). Hiện trạng dữ liệu đọc từ schema.md/migration, CHƯA query DB thật; việc đầu tiên khi build = đo % buổi có tài liệu trên hệ trước thứ Hai.
+
+## 12/11 23:13 — Mục tiêu tuần: soát rủi ro + 5 quyết định thêm (spec cập nhật, vẫn CHƯA build)
+- Soát thiết kế với luật mastery đang chạy (TB ≤5 lần/30 ngày, mặc định chỉ ET+MT): một tuần không lật được ô ⇒ đòi "đạt trong tuần" là bất khả thi.
+- Thùy chốt: hai tầng (TUẦN = số phải tăng · CHIẾN DỊCH 2–3 tuần = đạt) · BTVN tính vào mastery (đổi luật toàn hệ, phải so cũ–mới trước khi áp) · BTVN xếp chồng 3 buổi (buổi N gồm dạng N, N-1, N-2; tổng bài không đổi; chia 5–3–2 hay 4–3–3 chưa cần chốt).
+- Nợ: ôn ở nhà (không tính điểm), ĐO LẠI tại trung tâm sau giờ, ngày kiểm tra báo trước trên bảng thứ Hai; buổi nào thì chốt từng trường hợp theo lịch phòng. Đánh giá ở nhà để sau.
+- `spec-muc-tieu-tuan.md`: thêm §5 hai tầng · §5b BTVN · §5c vòng nợ · §9 bảng rủi ro (3 mục còn MỞ: dạng trọng tâm/tài liệu trước thứ Hai/chấm kịp · tải nhiều môn · ai xếp ngày kiểm tra).
+
+## 12/11 23:15 — Mục tiêu tuần: ca kiểm tra sau giờ chốt trong ngày thứ Hai
+- Thùy: thứ Hai là ngày chốt mọi thứ — lịch học, bổ trợ, kiểm tra sau giờ. ⇒ thứ Hai có 2 mốc: 00:00 máy chụp số → trong ngày người chốt → bảng phát cho HS SAU khi chốt xong (không phát 00:00). Rủi ro "bảng chưa có ngày kiểm tra" đóng; giờ phát cụ thể chưa định.
+
+## 12/11 23:20 — Mục tiêu tuần: làm rõ "GV không phải làm gì" = không làm SỐ LIỆU, vẫn CHỐT
+- Thùy: buổi họp chiều thứ Hai chốt giáo trình cả tuần + vấn đề HS tuần trước + dạng bổ trợ trọng tâm của từng em (yếu 5 dạng ⇒ tuần này vào dạng nào). Hệ đưa sẵn toàn bộ danh sách, GV chỉ duyệt. Spec thêm §3b; còn treo: khối chưa chốt tới giờ phát thì phát bản đề xuất hay giữ.
+
+## 12/11 23:26 — Mục tiêu tuần: mốc tính lần đo = lúc CHẤM XONG, không phải lúc nộp
+- Thùy: BTVN buổi thứ Sáu nộp Chủ nhật, thứ Hai mới chấm ⇒ phải vào tuần mới. Sửa luật cắt cửa sổ §3 (cặp buổi không đổi). Tách "con đã nộp" (giờ nộp) khỏi "kết quả" (giờ chấm); bài chờ chấm là nợ của trung tâm. Tài liệu: bắt buộc xong ở buổi họp thứ Hai. Còn treo: hạn chấm BTVN.
+
+## 12/11 23:30 — Mục tiêu tuần: hạn chấm BTVN = hạn đang chạy
+- Thùy: lớp học từ 18:00, TA chấm BTVN xong 2 tiếng trước buổi học kế. Spec §3 dùng luôn hạn này (không đặt hạn mới). Lớp giờ khác chưa hỏi.
+
+## 12/11 23:31 — Mục tiêu tuần: hạn chấm BTVN lớp cuối tuần
+- Thùy: lớp học thứ Bảy/Chủ nhật (cả ngày) ⇒ chấm xong trước buổi kế một ngày. Chưa rõ ca lớp học hai ngày liền nhau.
+
+## 12/11 23:38 — Mục tiêu tuần: đơn vị đánh giá = NHÓM bài, đơn vị dạy = DẠNG bài
+- Thùy chốt. Dòng của bảng = nhóm (mastery cap nhom), bên trong ghi dạng dạy tuần này; nợ và kiểm tra sau giờ theo nhóm. Spec Q12 + §4.
+
+## 12/11 23:49 — SAI Ý: vẽ màn chốt riêng theo từng học sinh ⇒ bỏ
+- **Sai:** từ câu "GV chỉ việc duyệt" tôi suy ra một màn chốt mới (duyệt dạng trọng tâm từng em) và vẽ vào mockup. Thùy: "chốt từng học sinh quá vất vả".
+- **Đúng:** thứ Hai chỉ có 2 lượt chốt ĐANG CÓ — ① chốt giáo trình/tài liệu ② soi Dashboard học tập cả lớp rồi chốt bổ trợ ở Phòng làm việc trưởng khối. Chốt bổ trợ xong ⇒ hệ TỰ GHÉP vào mục tiêu tuần của từng HS. Không màn chốt mới, không đường duyệt mới. Spec §3b viết lại.
+- **Bài học:** "duyệt" trong lời Thùy = duyệt ở chỗ đang duyệt; đừng đẻ màn mới khi chưa hỏi luồng hiện tại chốt ở đâu.
+
+## 13/11 08:25 — Mục tiêu tuần: bố cục màn học sinh (mockup bản 1 lệch ý ⇒ vẽ lại)
+- Thùy: Phần 1 Kiến thức mới + Phần 2 Ôn tập kiến thức, mỗi dòng nhóm bài chỉ có mục tiêu (mặc định 80%) và % hiện tại; BẤM VÀO mới mở hướng dẫn (lý thuyết · bài trên lớp · luyện tập); thêm thanh tiến độ tổng tuần + xếp hạng tiến độ.
+- Spec thêm §4a. Chưa chốt: công thức tiến độ tổng, cách xếp hạng, mục tiêu nhóm ôn tập có luôn 80% không.
+
+## 13/11 08:31 — Mục tiêu tuần: xếp hạng toàn trung tâm + cờ đích 80%
+- Thùy: xếp hạng tiến độ đo toàn trung tâm, chỉ hiện hạng bản thân, bấm vào ra top 20. Mốc mục tiêu = lá cờ đích trên thanh, số 80% ghi dưới cờ, bỏ chữ "Mục tiêu 80%". Spec §4a + mockup màn 1 cập nhật.
+
+## 13/11 08:33 — Mục tiêu tuần: chốt xếp hạng
+- Thùy: mỗi môn một bảng · chung mọi khối · xếp theo tiến độ tổng của tuần (mục tiêu mỗi em đã theo yêu cầu riêng, em yếu dễ hơn ⇒ bảng đo thái độ là chính). Spec §4a.
+
+## 13/11 08:37 — Mục tiêu tuần: công thức tiến độ tổng
+- Thùy OK: trung bình min(%/mục tiêu, 1) trên nhóm ĐÃ ĐO, nhóm chưa đo không tính. Thùy muốn màn HS cũng là màn gửi phụ huynh — đang đánh giá khác biệt.
+
+## 13/11 08:46 — Mục tiêu tuần: "cần làm gì · đã làm gì" + tăng/giảm đầu tuần + app phụ huynh realtime + trend tuần
+- Thùy: màn hiện realtime trên app phụ huynh (Cổng PH, project bkdemy-ph, FDW erp_live) — bỏ phương án ảnh chụp. Sau mỗi lần chốt có dashboard trend theo tuần.
+- Lớp còn thiếu = mỗi nhóm bài có danh sách việc ✓/○ (hệ sinh, suy "đã làm" từ dữ liệu), xem ở 3 tầng HS · PH · trung tâm. Mỗi dòng hiện ▲/▼ so với đầu tuần.
+- Mockup: màn 1 cập nhật, màn 2 mới "Các tuần đã chốt", ảnh gửi PH đánh dấu BỎ. Spec §4a mục 6–7. Còn treo: N câu luyện, đo "xem lý thuyết", màn trung tâm chưa vẽ.
+
+## 13/11 08:51 — Mục tiêu tuần: "Việc của con" là khu vực riêng theo hoạt động
+- Thùy: liệt kê kiểu "ET 80% · BTVN 15/11 80% Nghiêm túc · Test sau giờ 100% · Bổ trợ yếu…", không gắn việc vào từng nhóm bài. Spec §4a mục 7 viết lại; mockup màn 1: dòng nhóm bài gọn lại, cột phải = Đã làm / Sắp tới.
+
+## 13/11 08:52 — Mục tiêu tuần: nhãn thái độ = Tốt / Chưa tốt
+- Thùy: thay "nghiêm túc" bằng Tốt / Chưa tốt. nghiem_tuc ⇒ Tốt, 3 mức còn lại ⇒ Chưa tốt; DB giữ 4 mức, màn trung tâm thấy đủ.
+
+## 13/11 08:54 — Mục tiêu tuần: tự luyện = thống kê không bắt buộc; bỏ khái niệm thái độ
+- Thùy: tự luyện không bắt buộc nhưng luôn ghi thống kê (kể cả 0), không tính vào x/y việc. Đã đổi sang Tốt / Chưa tốt nên không tính "thái độ" nữa — bỏ chữ "Thái độ:" và ô thái độ tuần. Hỏi lại: Tốt/Chưa tốt quyết từ đâu.
+
+## 13/11 09:02 — Mục tiêu tuần: nhãn đánh giá 3 mức
+- Thùy: Tốt · Tạm ổn · Chưa tốt. ET theo % (tính như Đ/C/S); BTVN + test sau giờ theo % rồi thái độ không nghiêm túc ⇒ hạ 1 mức + ghi chú dưới dòng. Ngưỡng giả định = ngưỡng mastery 80/50, chờ xác nhận. Test sau giờ chưa có ô thái độ.
+
+## 13/11 09:03 — Mục tiêu tuần: thái độ CHỈ xét ở BTVN; ngưỡng 80/50 cho mọi hoạt động
+- Thùy xác nhận. Không thêm ô thái độ cho test sau giờ/ET.
+
+## 13/11 09:10 — Mục tiêu tuần: màn trung tâm = tab Dashboard học tập + Phòng trưởng khối; bỏ bước đo trước
+- Thùy: màn tổng thể trung tâm là 1 tab trong Dashboard học tập và có trong Phòng trưởng khối (cùng một màn, phòng là lối tắt). BTVN tính mastery: xác nhận lại.
+- Bỏ bước "đo hiện trạng trước" (tỉ lệ buổi có tài liệu, phân bố mức đạt): trước đây không chạy theo nhịp này, chạy rồi mới có số.
+- Số câu luyện của nhóm ôn tập: không còn là câu hỏi — tự luyện đã chuyển thành thống kê không bắt buộc, không có chỉ tiêu.
+
+## 13/11 09:30 — Mục tiêu tuần: viết lại spec bản gộp sạch (Thùy duyệt mockup 3 màn)
+- `spec-muc-tieu-tuan.md` viết lại từ đầu, gộp mọi quyết định 12–13/11, bỏ các phần đã bị thay (màn chốt từng HS, ảnh gửi PH, việc gắn theo nhóm, nhãn 2 mức, bước đo trước). 13 mục: mục đích · khái niệm · timeline · nguồn · đo · việc của con · vòng nợ · thay đổi hệ đang chạy · màn hình · dữ liệu · thứ tự build · còn treo (9) · rủi ro.
+- CLAUDE.md: dòng trỏ spec cập nhật. Notion chưa đẩy được (connector chưa cấp quyền).
+
+## 13/11 09:35 — Mục tiêu tuần: 3 câu treo
+- Thùy: hệ tính được mục tiêu tuần từ số lần đánh giá của nhóm trong tuần (đang cân đặt dài hạn 80% hay tuần). Đề xuất ghi §5.2b: mục tiêu tuần = min(80%, mastery nếu mọi lần đo tuần này đều Tốt), cờ = tuần, 80% = đích dài hạn.
+- Hết vòng 3 buổi ở mức cần luyện: tạm thời không thành nợ. Tăng/giảm: không đặt ngưỡng (mastery đo theo lần).
+
+## 13/11 09:37 — Mục tiêu tuần: CHỐT cờ = mục tiêu tuần, 80% = đích dài hạn
+- Thùy OK đề xuất §5.2b. Tiến độ tổng + xếp hạng tính theo mục tiêu tuần. Mockup màn 1: cờ ở mục tiêu tuần, vạch mờ "đích 80%" ở nhóm ôn tập.
+
+## 13/11 09:42 — Mục tiêu tuần: chốt 6 câu cuối, spec hết câu treo
+- Chưa chốt xong thì chưa hiện tờ tuần mới · không có lớp T7+CN liền nhau · nhiệm vụ (chơi) và mục tiêu tuần (học) tách riêng, sau này có thể gộp và bỏ nhiệm vụ cũ nhưng chưa làm · vắng = chưa hoàn thành (phải học bù) · mới vào lớp = chưa có dữ liệu phần trước · mỗi môn màn riêng · HS tự cam kết để sau.
+
+## 13/11 10:15 — BUILD Mục tiêu tuần: DB + ERP + app HS + app PH (chưa áp DB, chưa deploy)
+- Thùy: "build đến cuối luôn đi… ERP, app HS, app PH. test và build ra output". Phiên cloud không có kết nối DB ⇒ viết migration, kiểm trên Postgres 16 TẠM (bảng giả lập sinh từ schema.md + hàm mastery giả lập + dữ liệu mẫu 3 em / 1 lớp / 5 buổi / 1 ca sau giờ / tự luyện).
+- DB mig 202611131000: mtt_lop_chot (append-only) · mtt_dau (đầu tuần, bất biến) · mtt_luu (bảng đệm) · mtt_chot (sổ chốt, trigger chặn sửa/xoá) · mtt_top; _mtt_tinh = 1 nơi tính tờ; fn_mtt_cua_toi/hs/cac_tuan/top/trung_tam/chot_lop; _mtt_lam_moi cron 5 phút (202611131001, SQL Editor). FDW cho app PH: GRANT + policy.
+- Kiểm thử: mục tiêu tuần nhóm nợ 4 lần cũ 0·.5·0·.5 + 1 lần dự kiến ⇒ 36% (đúng tay) · BTVN 100% + chưa hết sức ⇒ Tạm ổn + ghi chú · em mới vào 10/11 không có BTVN 08/11 · vắng ⇒ "vang" · chốt lớp tính ngay 3 em · cron xếp hạng + top 20 · sổ chốt UPDATE bị chặn · HS lớp chưa chốt ⇒ chua_chot.
+- Sửa trong lúc kiểm: tiến độ đầu tuần tính nhóm chưa có số đầu tuần = 0 (trước đó bỏ ra ⇒ đầu tuần cao hơn hiện tại, sai nghĩa); thêm d / tien_do_d / hang_doi / viec_pct vào DB để app không tự trừ.
+- Quyết định CTO (ghi spec §14): nút "Chốt mục tiêu tuần" THEO LỚP ở tab trung tâm (tín hiệu "chưa chốt thì chưa hiện") · % nhóm đọc mastery CÓ BTVN như Dashboard học tập · nút Lý thuyết/Bài trên lớp/Luyện tập mở Sổ tay/Giáo trình/Tự luyện (chưa nhảy đúng nhóm).
+- check:style-hs RỚT ở CaBoTroHS.tsx (3 > mốc 2) — có sẵn từ commit 3ac6485 của phiên khác, không phải file phiên này; file mới MucTieuTuanHS.tsx 0 màu gõ tay.
+
+## 13/11 12:28 — Mục tiêu tuần: ô riêng ở Home app HS · bỏ nút lý thuyết
+- Thùy: "chỗ lý thuyết ko cần. Bài trên lớp mở giáo trình là có hết rồi. Cần thêm ô mới ở Home… icon dùng lại 1 chút ko sao, ko trùng ở Home là dc".
+- KhuId 'muc_tieu' vào KHU + KHU_CAP2 (sau ô Học tập) + KIT_O; direct 'muc_tieu' → MucTieuTuanTheoMon (môn đang chọn). Bỏ ô mục tiêu trong Thông tin học tập (một lối vào).
+- Icon: RPG o_rank · Tối giản o_bai_tap_giao · Khối/Lo-fi/Đáng yêu/Halloween o_luyen_yeu — đều KHÔNG hiện ở Home. Chụp Home RPG/Lo-fi/Tối giản: ô hiện đúng, không trùng.
+- Nhóm bài bấm vào còn 2 nút: Xem lại bài trên lớp (khu giáo trình) · Luyện tập. App PH sửa câu nhắc.
+- Kiểm: tsc · build ERP/HS/PH · check:style-hs (ô mới đủ icon 6 style; còn RỚT cũ ở CaBoTroHS.tsx của phiên khác).
+
+## 13/11 12:50 — Mục tiêu tuần app HS: nền trắng
+- Thùy: "UI để nền trắng cho dễ nhìn chứ đừng để nền tối". MucTieuTuanHS bọc NenSang: đè biến --sk-* bằng bảng màu đọc (--sk-doc-*) + màu nhấn theo môn (mauDocMon) ⇒ mọi style ra nền trắng, không gõ màu tay. Ô ở Home giữ theo style. Mockup canvas đổi sang nền sáng.
+
+## 13/11 13:06 — Mục tiêu tuần ERP: trưởng khối có đủ view của HS/PH
+- Thùy hỏi trưởng khối đã có đủ view chưa ⇒ còn thiếu 3: thanh+cờ trong tờ của em, các tuần đã chốt của em, top 20. Đã thêm vào MucTieuTuanTab (popup tờ em có tab "Tuần này | Các tuần đã chốt"; nút Top 20; dòng đang xếp hàng / sắp học). Phòng trưởng khối dùng chung màn ⇒ tự có. Chụp kiểm qua harness.
