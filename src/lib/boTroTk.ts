@@ -3,13 +3,13 @@
 import { supabase } from './supabase'
 
 export type TrangThaiBtk = 'nhap' | 'cho_duyet' | 'da_duyet' | 'tra_lai' | 'huy'
-export type NhomGoiY = { ma: string; ten: string; cha: string | null; p: number; n: number; muc: 'yeu' | 'can_luyen' | 'dat'; tin: string; dang_chua_dat: number; dang_da_do: number; tick: boolean }
+export type NhomGoiY = { ma: string; ten: string; cha: string | null; p: number; n: number; muc: 'yeu' | 'can_luyen' | 'dat'; tin: string; dang_chua_dat: number; dang_da_do: number; dang_yeu?: number; tick: boolean }
 export type NhomChon = { ma: string; ten: string; cha: string | null; p: number | null; n: number | null; muc: string | null }
 export type DeXuat = {
   id: string; hoc_sinh_id: string; mon: string; khoi: string; nhom: NhomChon[]; muc: 1 | 2 | 3; uu_tien: 1 | 2 | 3; ghi_chu: string
   trang_thai: TrangThaiBtk; ly_do_tra: string | null
 }
-export type GoiY = { khoi: string; so_nhom_do: number; so_nhom_yeu: number; dang_yeu: number | null; nhom: NhomGoiY[]; de_xuat: DeXuat | null; dang_bo_tro: boolean }
+export type GoiY = { khoi: string; so_nhom_do: number; so_nhom_yeu: number; dang_yeu: number | null; dang_yeu_trong_nhom_yeu?: number; nhom: NhomGoiY[]; de_xuat: DeXuat | null; dang_bo_tro: boolean }
 export type DongBtk = {
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop: string | null; khoi: string
   nhom: NhomChon[]; muc: 1 | 2 | 3; uu_tien: 1 | 2 | 3; ghi_chu: string; trang_thai: TrangThaiBtk; ly_do_tra: string | null
@@ -36,6 +36,9 @@ const rpc = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> =>
 }
 export const goiYBoTro = (hs: string, mon: string) => rpc<GoiY>('fn_btk_goi_y', { p_hs: hs, p_mon: mon })
 // 11/11: mọi nhóm em đã đo (thấp → cao) — chỉ gọi khi bấm "Xem tất cả" trong popup
+// Bấm 1 nhóm ⇒ mọi dạng của nhóm + mức / điểm / số lần đo (Thùy 13/11, mig 202611131528 — mastery theo lần, đọc cache)
+export type DangTrongNhom = { ma_dang: string; ten_dang: string; muc: 'yeu' | 'can_luyen' | 'dat' | 'chua_do'; p: number | null; n: number }
+export const dangTrongNhom = (hs: string, mon: string, nhom: string) => rpc<DangTrongNhom[]>('fn_btk_dang_nhom', { p_hs: hs, p_mon: mon, p_nhom: nhom })
 export const tatCaNhomBoTro = (hs: string, mon: string) => rpc<NhomGoiY[]>('fn_btk_goi_y_tat_ca', { p_hs: hs, p_mon: mon })
 export const luuBoTro = (x: { id: string | null; hs: string; mon: string; nhom: string[]; muc: number; uuTien: number; ghiChu: string }) =>
   rpc<string>('fn_btk_luu', { p_id: x.id, p_hs: x.hs, p_mon: x.mon, p_nhom: x.nhom, p_muc: x.muc, p_uu_tien: x.uuTien, p_ghi_chu: x.ghiChu })

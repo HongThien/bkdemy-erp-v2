@@ -2,8 +2,12 @@
 // Hệ thống hiện 5 NHÓM có % thấp nhất (thấp → cao, mastery theo lần — fn_btk_goi_y), trưởng khối tick; nhóm YẾU tick sẵn.
 // Lưu ⇒ em vào Danh sách bổ trợ (nháp). Số liệu + luật ở DB; popup chỉ chọn và gửi.
 import { useEffect, useState } from 'react'
-import { goiYBoTro, tatCaNhomBoTro, luuBoTro, TEN_MUC, TEN_UU_TIEN, NHAN_TT, type GoiY, type NhomChon, type NhomGoiY } from '../../lib/boTroTk'
+import { goiYBoTro, tatCaNhomBoTro, luuBoTro, dangTrongNhom, TEN_MUC, TEN_UU_TIEN, NHAN_TT, type GoiY, type NhomChon, type NhomGoiY, type DangTrongNhom } from '../../lib/boTroTk'
 
+const NHAN_DANG: Record<DangTrongNhom['muc'], { t: string; c: string }> = {
+  yeu: { t: 'Yếu', c: 'bg-rose-100 text-rose-700' }, can_luyen: { t: 'Cần luyện', c: 'bg-amber-100 text-amber-800' },
+  dat: { t: 'Đạt', c: 'bg-emerald-100 text-emerald-700' }, chua_do: { t: 'Chưa đo', c: 'bg-slate-200 text-slate-500' },
+}
 const mauP = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'text-emerald-700' : p >= 50 ? 'text-amber-700' : 'text-rose-600'
 
 export default function BoTroPopup({ hs, mon, onDong, onXong }: {
@@ -22,6 +26,13 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
   const [tatCa, setTatCa] = useState<NhomGoiY[] | null>(null)
   const [dangMo, setDangMo] = useState(false)
   const [moRong, setMoRong] = useState(false)
+  // Thùy 13/11: bấm nhóm ⇒ xem từng dạng (yếu / cần luyện / đạt / chưa đo) — gọi DB lúc bấm, nhớ lại khi mở lần 2
+  const [moDang, setMoDang] = useState<Record<string, DangTrongNhom[] | 'dang'>>({})
+  const xemDang = (ma: string) => {
+    if (moDang[ma]) { setMoDang((x) => { const y = { ...x }; delete y[ma]; return y }); return }
+    setMoDang((x) => ({ ...x, [ma]: 'dang' }))
+    dangTrongNhom(hs.id, mon, ma).then((ds) => setMoDang((x) => ({ ...x, [ma]: ds }))).catch((e) => { setLoi(e?.message ?? String(e)); setMoDang((x) => { const y = { ...x }; delete y[ma]; return y }) })
+  }
   const moTatCa = () => {
     setMoRong(true)
     if (tatCa) return
@@ -55,7 +66,7 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
       <div className="flex max-h-[90vh] w-[min(620px,96vw)] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="bg-indigo-600 px-5 py-3 text-white">
           <div className="text-[16px] font-bold">Kế hoạch bổ trợ · {hs.ten}</div>
-          <div className="text-[12.5px] text-indigo-100">{[hs.lop, mon, gy ? `${gy.so_nhom_yeu} nhóm yếu${gy.dang_yeu != null ? ` · ${gy.dang_yeu} dạng yếu` : ''}` : null].filter(Boolean).join(' · ')}</div>
+          <div className="text-[12.5px] text-indigo-100">{[hs.lop, mon, gy ? `${gy.so_nhom_yeu} nhóm yếu${gy.dang_yeu != null ? ` · ${gy.dang_yeu} dạng yếu${gy.dang_yeu_trong_nhom_yeu != null ? ` (${gy.dang_yeu_trong_nhom_yeu} trong nhóm yếu)` : ''}` : ''}` : null].filter(Boolean).join(' · ')}</div>
         </div>
         <div className="min-h-0 flex-1 overflow-auto px-5 py-4">
           {loi && <p className="mb-3 rounded-lg bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</p>}
@@ -69,14 +80,31 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
                 <div className="space-y-1.5">
                   {[...(moRong && tatCa ? tatCa : [...gy.nhom, ...(tatCa ?? []).filter((x) => chon.has(x.ma) && !gy.nhom.some((g) => g.ma === x.ma))]).map((n) => ({ ...n, cu: false })),
                     ...them.filter((t) => !(tatCa ?? []).some((x) => x.ma === t.ma)).map((n) => ({ ...n, p: n.p ?? 0, n: n.n ?? 0, tin: '', dang_chua_dat: 0, dang_da_do: 0, tick: true, cu: true }))].map((n) => (
-                    <label key={n.ma} className={`flex cursor-pointer items-start gap-3 rounded-xl border px-3 py-2 ${chon.has(n.ma) ? 'border-indigo-300 bg-indigo-50/60' : 'border-slate-200 hover:bg-slate-50'}`}>
+                    <div key={n.ma}>
+                    <label className={`flex cursor-pointer items-start gap-3 rounded-xl border px-3 py-2 ${chon.has(n.ma) ? 'border-indigo-300 bg-indigo-50/60' : 'border-slate-200 hover:bg-slate-50'}`}>
                       <input type="checkbox" checked={chon.has(n.ma)} disabled={!!khoa} onChange={() => bat(n.ma)} className="mt-1 h-4 w-4 accent-indigo-600" />
                       <div className="min-w-0 flex-1">
                         <div className="text-[13.5px] font-semibold text-slate-800">{n.ten}</div>
-                        <div className="text-[11.5px] text-slate-500">{[n.cha, n.cu ? 'đã chọn trước đây' : `${n.n} lần đo`, !n.cu && n.dang_da_do ? `${n.dang_chua_dat}/${n.dang_da_do} dạng chưa đạt` : null].filter(Boolean).join(' · ')}</div>
+                        <div className="text-[11.5px] text-slate-500">{[n.cha, n.cu ? 'đã chọn trước đây' : `${n.n} lần đo`, !n.cu && n.dang_da_do ? `${(n as { dang_yeu?: number }).dang_yeu ? `${(n as { dang_yeu?: number }).dang_yeu} dạng yếu · ` : ''}${n.dang_chua_dat}/${n.dang_da_do} dạng chưa đạt` : null].filter(Boolean).join(' · ')}</div>
                       </div>
+                      <button type="button" onClick={(e) => { e.preventDefault(); xemDang(n.ma) }} className="shrink-0 self-center rounded-md px-1.5 py-0.5 text-[11.5px] font-semibold text-indigo-600 ring-1 ring-indigo-200 hover:bg-indigo-50">{moDang[n.ma] ? 'dạng ▴' : 'dạng ▾'}</button>
                       <div className={`shrink-0 text-[18px] font-extrabold tabular-nums ${mauP(n.cu ? null : n.p)}`}>{n.cu ? '' : `${n.p}%`}</div>
                     </label>
+                    {moDang[n.ma] && (
+                      <div className="mx-3 mb-1 rounded-b-lg border border-t-0 border-slate-200 bg-slate-50/70 px-3 py-1.5">
+                        {moDang[n.ma] === 'dang' ? <p className="text-[12px] text-slate-400">Đang đọc dạng…</p>
+                          : (moDang[n.ma] as DangTrongNhom[]).length === 0 ? <p className="text-[12px] text-slate-400">Nhóm chưa có dạng nào.</p>
+                          : (moDang[n.ma] as DangTrongNhom[]).map((d) => (
+                            <div key={d.ma_dang} className="flex items-center gap-2 py-0.5 text-[12px]">
+                              <span className={`w-[68px] shrink-0 rounded-full px-1.5 text-center text-[10.5px] font-semibold ${NHAN_DANG[d.muc].c}`}>{NHAN_DANG[d.muc].t}</span>
+                              <span className="min-w-0 flex-1 truncate text-slate-700" title={d.ten_dang}>{d.ten_dang}</span>
+                              <span className={`shrink-0 tabular-nums font-semibold ${mauP(d.p)}`}>{d.p == null ? '—' : `${d.p}%`}</span>
+                              <span className="w-[52px] shrink-0 text-right text-[11px] text-slate-400">{d.n} lần đo</span>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                    </div>
                   ))}
                 </div>
               )}
