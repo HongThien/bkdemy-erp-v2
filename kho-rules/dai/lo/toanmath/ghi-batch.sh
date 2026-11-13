@@ -11,7 +11,7 @@ LVG="${BK_LV:-C:/Users/WBPC/bk-kho-lam-viec}/de-thi/toanmath/$B"
 node kho-rules/dai/lo/toanmath/anh-batch.mjs keo "$B" || { echo "❌ kéo hình $B từ kho lỗi — dừng"; exit 1; }
 node kho-rules/dai/lo/toanmath/chuan-bi-batch.mjs "$B" >/dev/null
 for SOAN in kho-rules/dai/lo/toanmath/batch/$B/$B-*.soan.md; do
-  case "$SOAN" in *.goc.md) continue;; esac
+  case "$SOAN" in *.goc.md|*.k[0-9].soan.md|*.k[0-9][0-9].soan.md) continue;; esac  # khúc đã ghép vào <MA>.soan.md (ghep-khuc.mjs)
   MA="$(basename "$SOAN" .soan.md)"; LV="$LVG/$MA"; SOAT="${SOAN%.soan.md}.soat.md"
   [ -f "$LV/da-ghi.txt" ] && { echo "· $MA đã ghi trước ($(cat "$LV/da-ghi.txt"))"; continue; }
   grep -q "KẾT LUẬN:\**\s*ĐẠT" "$SOAT" 2>/dev/null || { echo "⏸ $MA: soát chưa ĐẠT / thiếu biên bản"; continue; }

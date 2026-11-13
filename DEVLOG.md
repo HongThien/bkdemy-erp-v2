@@ -80428,3 +80428,11 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm sau áp:** 23/23 bảng chung = tổng nhánh, RLS bật, anon không quyền; 8 sequence mới authenticated dùng được; gọi thật dưới claims admin: `fn_bdm_cay(7)` và `fn_khtn_bdm_cay(7)` trả cây bình thường (~1,5 s — bằng mức cũ).
 - **Sai của công cụ đã sửa:** phép so vân tay bỏ cột mới thêm ra khỏi CẢ những nhánh vốn có cột đó ⇒ báo lệch giả; sửa: chỉ bỏ cột vừa thêm cho chính nhánh đó.
 - **Còn 2 họ `cau_hoi`, `ban_do`:** dò thấy hàm sẽ vỡ/đổi nghĩa nếu thêm cột `kho`: `fn_dai_gan_mau_ds` (q.* vào TABLE cố định) · `fn_mt_ds_kho_cau` + `_mt_ds_kho` (tham số/cột trả tên `kho`) · `_kho_nguon_cau` (trần `kho`) · `fn_bdm_tien_do_nguon` (`nguon_loai`). CHƯA làm — phải sửa các hàm này trước, và chạy lúc vắng (so vân tay `dai_cau_hoi` giữ khoá vài giây).
+
+## 13/11 (tối, ~19h) — ĐÃ GHI DB đề cương cuối kì I K9 lượt Đại + K6 + K7 + K8 — Thùy "ghi luôn đi" (bỏ qua mốc 22h theo lệnh Thùy)
+- Mỗi khối chạy thử (ROLLBACK) trước, sạch rồi `--ghi` tuần tự. Mọi đề `da_duyet=false`, duyệt ở Kho đề thi tab Đề cương.
+  - K9 lượt Đại: 26 đề cương · 1.450 câu (1.330 mới · 120 trỏ câu cũ) — `k9-ck-ghi-dai-het.sh`, dấu `da-ghi-dai.txt`.
+  - K6 B027–B029: 18 · 1.949 câu (1.549 mới · 400 trỏ cũ — các đề cương cùng trường khác năm gom về câu cũ).
+  - K7 B021–B022: 12 · 997 câu (809 mới · 188 trỏ cũ).
+  - K8 B013–B015: 19 · 1.475 câu (1.356 mới · 119 trỏ cũ). B013-07 chưa làm (chờ Thùy).
+- Sửa `ghi-batch.sh`: bỏ qua tệp khúc `<MA>.k<N>.soan.md` (đã ghép vào `<MA>.soan.md`) — lần chạy thử đầu quét nhầm khúc.
