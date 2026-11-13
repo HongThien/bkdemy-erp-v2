@@ -10,7 +10,7 @@ const MA = process.argv[2]
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
 const ROOT = path.resolve(HERE, '../../../..')
 const katex = createRequire(path.join(ROOT, 'package.json'))('katex')
-const D = path.join(HERE, 'batch', MA), KV = `C:/Users/WBPC/bk-kho-lam-viec/de-thi/toanmath/${MA}`
+const D = path.join(HERE, 'batch', MA), KV = `${process.env.BK_LV || "C:/Users/WBPC/bk-kho-lam-viec"}/de-thi/toanmath/${MA}`
 const ds = JSON.parse(readFileSync(path.join(D, 'ds-de.json'), 'utf8'))
 const th = existsSync(path.join(D, 'tong-hop.json')) ? JSON.parse(readFileSync(path.join(D, 'tong-hop.json'), 'utf8')) : null
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

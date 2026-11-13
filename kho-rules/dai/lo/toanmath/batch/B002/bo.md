@@ -1,6 +1,8 @@
 # B002 — bài BỎ khỏi batch (13/11/2026)
 
-17 bài → 15 bài làm (17 đề) · bỏ 2 bài trùng đề đã có trong kho (2 nhân chứng: nội dung + xem trang thật).
+17 bài → 15 bài làm = **15 đề** · bỏ 2 bài trùng đề đã có trong kho (2 nhân chứng: nội dung + xem trang thật).
+Luật cũ (Thùy 13/11): đề có 2 mã chỉ lấy 1 mã — bỏ thêm Giang Biên **Đề 02** (trang 13–19) và Ngọc Lâm **mã 902** (trang 2).
+Đáp án của trường chỉ để THAM KHẢO; trạm soạn vẫn tự giải chi tiết, không làm bản sơ lược.
 
 | Bài | Trùng với đề trong kho | Bằng chứng |
 |---|---|---|
