@@ -80450,3 +80450,9 @@ Thùy nêu 4 việc, làm được 3:
 - **K21:** `fn_kho_cau_dang_lech()` (bảng lưu ↔ tính trực tiếp) đã là mục CỨNG trong `check:kien-truc`. authenticated không ghi được bảng tra (chỉ trigger security definer).
 - **Sai đã sửa trong lúc thử:** một hàm trigger dùng chung cho 3 bảng đọc `old.parent_ma_cau` trên bảng gán (không có cột đó) ⇒ tách hàm trigger riêng cho bảng câu.
 - **CHƯA chuyển:** view `bdm_cau_dang` và `_do_o_bdm*` vẫn đọc đường cũ. Bước kế: đổi view thành đọc `kho_cau_dang` (cùng cột) rồi đo.
+
+## 13/11 (tối) — ĐỢT 2 · BƯỚC 2b: view `bdm_cau_dang` đọc bảng tra (mig 202611132046 ĐÃ ÁP) — Thùy "Chuyển view"
+- **Làm:** `bdm_cau_dang` = `select ma_cau, kho, dang_bai_id, nguon from kho_cau_dang where kho in (dai, hgt)` (thay UNION 8 nhánh; giữ 4 cột, phạm vi, security_invoker). Không sửa hàm nào — `bdm_cau_hoi`, `_do_o_bdm*` tự hưởng.
+- **So khớp (chạy thử rollback, trước ↔ sau):** `bdm_cau_dang` 55.558 dòng nội dung khớp; `bdm_cau_hoi` khớp MỌI cột mọi dòng.
+- **Đo trước → sau (EXPLAIN ANALYZE, cùng phiên, claims admin):** đọc 30 câu theo mã qua `bdm_cau_hoi` 262 ms / 96.208 blk → 24 ms / 234 blk · đếm cả view 222 ms / 115.842 blk → 101 ms / 19.585 blk · câu của một dạng 10 ms → 3 ms · `_do_o_bdm` cho 30 câu 23 ms / 1.393 blk → 2 ms / 334 blk. (Đo một phiên, buổi tối; chưa có số pss sau vài ngày.)
+- **Kiểm sau áp:** bảng tra lệch 0; `fn_bdm_cay`, `fn_bdm_khop_dem`, `fn_bdm_tien_do_nguon` (admin) và `tu_luyen_chu_de_ds_dang`, `fn_ban_do_phieu_luu` (HS) chạy.
