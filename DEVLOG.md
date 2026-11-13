@@ -80057,3 +80057,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Ghi 195 form** (DB đếm 196 gồm 1 câu máy cũ), `da_duyet=false`, không rule mới: đặt tính nhân/chia + đổi tấn–kg + thế kỉ/phút–giây + m²–cm² + đọc số đo diện tích (79) · biểu thức nhiều phép tính + tính chất phân phối lời văn (35) · đoàn xe/thùng–hộp/pin mặt trời/lát sàn/thóc→gạo/chẵn lẻ (67) · bán gấp đôi/làm tròn/ghép thẻ (14).
 - **Kho SAI (đã bỏ):** T104010107004 (kho 49 380 ≠ 52 840 − 24 180:7), T104010107011 (kho "67 268.571429"), T104040204002/003/004/007 (kho lấy rộng = k thay vì dài chia k), T104040201045 (kho "linh tư" khác quy ước "linh bốn").
 - **Bỏ ~220 câu:** sắp xếp dãy số (verify coi là tập), dấu/Có–Không, nhiều ý, cần hình (thước đo góc 22 câu), biểu thức có chữ, và các dạng cuối pool chưa soạn. 36 dạng lớp 4 chưa có câu kho chuẩn — chưa xử lý.
+
+## 13/11 — MCQ lớp 3 (fork, `scripts/_k3/`)
+- **Ghi 264 form** (`da_duyet=false`), không rule/migration mới: cộng–trừ, biểu thức, tìm số hạng (77) · bảng nhân/chia, thừa số, gấp/giảm (50) · nhân/chia nhiều chữ số (120) · đổi cm/dm/m (6) · dãy đếm thêm/bớt (11). Nhiễu dùng rule sẵn có (R412–R415, R375–R378, R366, R385, R388, R365) nên hơi đơn điệu — chất lượng chẩn đoán lỗi thấp hơn lớp 5.
+- **Kho nghi sai (đã bỏ):** T103000000301, T103000000302 (kho 5 giá trị nhưng dãy chỉ 4 chỗ trống; máy ra 27;45;63;72 và 63;45;36;27).
+- **Còn 126 câu không làm được:** tia số cần ảnh (33), điền dấu 3 đáp án (24), đường tròn/hình (19), sắp xếp (2), ô tròn–tam giác/tháp số (~15), <3 nhiễu khác nhau (21), còn lại chưa soạn.
