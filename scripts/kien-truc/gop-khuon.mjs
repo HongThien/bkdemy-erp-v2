@@ -1,4 +1,6 @@
 // ============================================================================
+// ⛔⛔ KHÔNG DÙNG (13/11 tối): cách gắn PARTITION này làm PostgREST không lộ bảng nhánh ra API ⇒ app hỏng (đã cứu bằng mig 202611132053).
+// Giữ file làm tư liệu + để tái dùng phần so khớp/làm khớp cột cho cách gộp khác. Script tự dừng ngay bên dưới.
 // GỘP THEO KHUÔN (spec-kien-truc.md §2b): gắn các bảng <nhánh>_<họ> làm PHẦN của bảng chung kho_<họ>.
 //   node scripts/kien-truc/gop-khuon.mjs <họ> [<họ>…]            → CHẠY THỬ từng họ trong transaction rồi ROLLBACK, in bảng so khớp
 //   node scripts/kien-truc/gop-khuon.mjs --ghi <thư-mục> <họ>…   → như trên + ghi <thư-mục>/<họ>.sql cho họ ĐẠT (để đưa vào supabase/migrations)
@@ -17,6 +19,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import pg from 'pg'
 
+console.error('⛔ gop-khuon.mjs đã bị khoá: gắn partition làm app mất bảng qua API (xem spec-kien-truc.md §2b).'); process.exit(3)
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
 const NH = ['dai', 'hgt', 'khtn', 'vatly', 'hoahoc']
 const argv = process.argv.slice(2)

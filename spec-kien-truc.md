@@ -80,17 +80,16 @@ Khuôn: **dạng–câu** (Đại · Hình giải tích · KHTN · Lý · Hoá �
 
 **Vì sao sửa:** 25 họ bảng lặp ở 4–5 nhánh (115 bảng), 17 họ giống hệt từng cột; 45 họ hàm chép 3–5 lần; các bản chép đã lệch nhau (thiếu index ở một nhánh, hàm quên một nhánh); đọc xuyên nhánh phải dựng view UNION 8 nhánh. Mã giữa các nhánh không trùng nhau (đo 13/11: 0 mã trùng) nên gộp không đổi mã gốc.
 
-**Cách gộp (đã thử trên họ mẫu, mig 202611131904):** KHÔNG chép dữ liệu, KHÔNG đổi tên. Mỗi bảng nhánh thêm cột `kho` (hằng + check) rồi **gắn làm một PHẦN** của bảng chung `kho_<họ>` (chia phần theo `kho`).
-- Tên cũ vẫn là bảng thật ⇒ hàm, trigger, policy, khoá ngoại, script đang dùng tên cũ chạy nguyên.
-- Thêm/sửa cột ở bảng chung áp cho mọi nhánh; DB cấm thêm cột riêng một nhánh ⇒ hết lệch.
-- Đọc bảng chung theo một `kho` chỉ quét phần của kho đó. Ghi qua bảng chung tự rơi đúng nhánh; khoá ngoại của nhánh vẫn chặn mã sai nhánh.
-- Hoàn tác: `alter table kho_<họ> detach partition <nhánh>_<họ>` rồi bỏ cột `kho`.
-- Kiểm bắt buộc mỗi họ: chạy thử trong transaction rồi rollback; số dòng + vân tay nội dung từng nhánh trước–sau; số trigger/khoá/policy/index không đổi; thử thêm · upsert · xoá qua tên cũ.
+**⛔ CÁCH GỘP BẰNG PARTITION ĐÃ THẤT BẠI VÀ ĐÃ GỠ (13/11 tối).** Tôi gắn 115 bảng nhánh làm phần (partition) của 25 bảng chung `kho_<họ>` (mig 202611131904 … 202611132033). Trong DB mọi thứ khớp, nhưng **PostgREST không lộ bảng là partition ra API** ⇒ mọi chỗ app `.from('hgt_cau_hoi')`… báo "Could not find the table in the schema cache" (ET, kho, tài liệu). Lỗi kéo dài từ ~19:04 (họ đầu) tới 20:53; cứu bằng mig 202611132053 (tách hết phần). Tôi chỉ thử bằng SQL trong DB, không thử qua API — đó là lỗi kiểm.
 
-**Tiến độ (13/11): ✅ XONG 25/25 họ** — mỗi họ có bảng chung `kho_<họ>` (25 bảng chung, 115 phần): ban_do · bdm_cau_thieu_dang · bdm_chu_de · bdm_chuyen_de · bdm_dang_bai · bdm_de_xuat · bdm_gan_cau · bdm_kiem_mau · bdm_log · bdm_nhom · bdm_nhom_tien_de · bdm_o · bdm_tu_choi · cau_form_tn · cau_hoi · cau_hoi_yeu_cau_giai · chuyen_de_ly_thuyet · cum_bai · cum_tien_de · dang_ly_thuyet · dang_tien_de · de_xuat · de_xuat_cau · de_xuat_quyet_dinh · mcq_rule. Công cụ: `node scripts/kien-truc/gop-khuon.mjs <họ>` (dùng lại khi có họ mới / môn mới: thêm một phần = `create table <nhánh>_<họ> partition of kho_<họ> for values in (...)`).
-**Việc tiếp theo trên nền này:** (a) đọc xuyên nhánh chuyển từ view UNION sang bảng chung; (b) gom trigger/hàm chép theo nhánh về bảng chung (trigger đặt ở bảng chung tự áp cho mọi phần); (c) index mới tạo ở bảng chung.
-**Bẫy đã gặp khi gộp (kiểm cho mọi họ sau):** (1) hàm đọc `alias.*` / `select *` vào khuôn trả cố định; (2) biến/tham số/cột trả trùng tên cột mới (`kho`, cột thêm) — plpgsql báo mơ hồ, sql đổi nghĩa im lặng; (3) cột IDENTITY; (4) áp dồn nhiều migration đúng khe cron.
-**Chưa làm ở bước gộp:** trigger và hàm vẫn là bản chép theo nhánh — gom dần về bảng chung sau, không chặn việc gộp.
+**Còn lại sau khi gỡ (dùng được):** mọi bảng nhánh có cột `kho` (hằng + check) · các cột lệch giữa nhánh đã được làm khớp (thêm cột thiếu) · cột tự tăng IDENTITY đã đổi sang sequence · bảng tra `kho_cau_dang` + view `bdm_cau_dang` đọc bảng tra (đọc 3 họ qua view gộp `v_kho_cau_hoi` / `v_kho_bdm_gan_cau` / `v_kho_bdm_de_xuat`, trigger đặt trên từng bảng nhánh). 25 bảng `kho_<họ>` rỗng, chưa xoá.
+
+**Hướng gộp tiếp (CHƯA quyết, chưa làm) — phải thoả: app đọc bảng nhánh qua API vẫn chạy.**
+- *A. Kế thừa (`inherit`) thay partition:* bảng chung là bảng thường, bảng nhánh `inherit` nó — bảng nhánh vẫn là bảng thường nên API vẫn lộ; đọc bảng chung ra hợp các nhánh; thêm cột ở bảng chung áp cho mọi nhánh. Yếu hơn partition: trigger/khoá không tự lan, nhánh vẫn thêm được cột riêng. Phải thử qua API trước.
+- *B. Gộp thật + chuyển client:* một bảng có cột `kho`, sửa ~220 chỗ trong `src` và ~200 chỗ trong `scripts` sang đọc bảng chung. Sạch nhất, công lớn, phải deploy đồng bộ.
+- *C. Dừng ở mức hiện tại:* không gộp vật lý; chỉ cấm chép thêm (luật CLAUDE.md §1.6) và gom hàm về tham số `kho`.
+
+**Bẫy đã gặp (kiểm cho mọi lần đổi cấu trúc bảng):** (0) **bảng app đọc qua API: thử bằng REST, không chỉ bằng SQL**; (1) hàm đọc `alias.*` / `select *` vào khuôn trả cố định; (2) biến/tham số/cột trả trùng tên cột mới — plpgsql báo mơ hồ, sql đổi nghĩa im lặng; (3) cột IDENTITY; (4) áp dồn nhiều migration đúng khe cron; (5) công cụ dò bằng regex báo nhầm cả hai chiều — đọc thân hàm trước khi kết luận.
 
 ## 3. Tầng Đo — một sổ sự kiện duy nhất
 

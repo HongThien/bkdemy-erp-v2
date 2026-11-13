@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-616 bảng · 39 view · 0 enum · 451 trigger · 1937 function
+616 bảng · 42 view · 0 enum · 451 trigger · 1937 function
 
 ## _app_secrets
 
@@ -7103,7 +7103,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -11214,6 +11214,111 @@ SELECT h.id AS hoc_sinh_id,
   ORDER BY (( SELECT count(*) AS count
            FROM khao_sat_hs_quan_he r
           WHERE r.tu_hoc_sinh_id = h.id AND r.loai = 'da_ru'::text AND r.ket_qua_ru = 'co'::text)) DESC, (h.bo_me_ban_ph_lop = 'co'::text OR h.bo_me_chuc_vu_toa = 'co'::text) DESC, h.ho_ten;
+```
+
+### v_kho_bdm_de_xuat
+
+| cột | kiểu |
+|---|---|
+| ma_cau | text |
+| dang_bai_id | text |
+| kho | text |
+
+```sql
+SELECT dai_bdm_de_xuat.ma_cau,
+    dai_bdm_de_xuat.dang_bai_id,
+    dai_bdm_de_xuat.kho
+   FROM dai_bdm_de_xuat
+UNION ALL
+ SELECT hgt_bdm_de_xuat.ma_cau,
+    hgt_bdm_de_xuat.dang_bai_id,
+    hgt_bdm_de_xuat.kho
+   FROM hgt_bdm_de_xuat
+UNION ALL
+ SELECT khtn_bdm_de_xuat.ma_cau,
+    khtn_bdm_de_xuat.dang_bai_id,
+    khtn_bdm_de_xuat.kho
+   FROM khtn_bdm_de_xuat
+UNION ALL
+ SELECT vatly_bdm_de_xuat.ma_cau,
+    vatly_bdm_de_xuat.dang_bai_id,
+    vatly_bdm_de_xuat.kho
+   FROM vatly_bdm_de_xuat
+UNION ALL
+ SELECT hoahoc_bdm_de_xuat.ma_cau,
+    hoahoc_bdm_de_xuat.dang_bai_id,
+    hoahoc_bdm_de_xuat.kho
+   FROM hoahoc_bdm_de_xuat;
+```
+
+### v_kho_bdm_gan_cau
+
+| cột | kiểu |
+|---|---|
+| ma_cau | text |
+| dang_bai_id | text |
+| kho | text |
+
+```sql
+SELECT dai_bdm_gan_cau.ma_cau,
+    dai_bdm_gan_cau.dang_bai_id,
+    dai_bdm_gan_cau.kho
+   FROM dai_bdm_gan_cau
+UNION ALL
+ SELECT hgt_bdm_gan_cau.ma_cau,
+    hgt_bdm_gan_cau.dang_bai_id,
+    hgt_bdm_gan_cau.kho
+   FROM hgt_bdm_gan_cau
+UNION ALL
+ SELECT khtn_bdm_gan_cau.ma_cau,
+    khtn_bdm_gan_cau.dang_bai_id,
+    khtn_bdm_gan_cau.kho
+   FROM khtn_bdm_gan_cau
+UNION ALL
+ SELECT vatly_bdm_gan_cau.ma_cau,
+    vatly_bdm_gan_cau.dang_bai_id,
+    vatly_bdm_gan_cau.kho
+   FROM vatly_bdm_gan_cau
+UNION ALL
+ SELECT hoahoc_bdm_gan_cau.ma_cau,
+    hoahoc_bdm_gan_cau.dang_bai_id,
+    hoahoc_bdm_gan_cau.kho
+   FROM hoahoc_bdm_gan_cau;
+```
+
+### v_kho_cau_hoi
+
+| cột | kiểu |
+|---|---|
+| ma_cau | text |
+| parent_ma_cau | text |
+| kho | text |
+
+```sql
+SELECT dai_cau_hoi.ma_cau,
+    dai_cau_hoi.parent_ma_cau,
+    dai_cau_hoi.kho
+   FROM dai_cau_hoi
+UNION ALL
+ SELECT hgt_cau_hoi.ma_cau,
+    hgt_cau_hoi.parent_ma_cau,
+    hgt_cau_hoi.kho
+   FROM hgt_cau_hoi
+UNION ALL
+ SELECT khtn_cau_hoi.ma_cau,
+    khtn_cau_hoi.parent_ma_cau,
+    khtn_cau_hoi.kho
+   FROM khtn_cau_hoi
+UNION ALL
+ SELECT vatly_cau_hoi.ma_cau,
+    vatly_cau_hoi.parent_ma_cau,
+    vatly_cau_hoi.kho
+   FROM vatly_cau_hoi
+UNION ALL
+ SELECT hoahoc_cau_hoi.ma_cau,
+    hoahoc_cau_hoi.parent_ma_cau,
+    hoahoc_cau_hoi.kho
+   FROM hoahoc_cau_hoi;
 ```
 
 ### v_mcq_loi_hs
