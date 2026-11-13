@@ -2789,7 +2789,7 @@ export async function duyetFormTnBatch(mon: KhoMon, ids: string[], nguoiDuyet: s
 // DB chặn duyệt khi còn dạng chờ (trigger trg_chan_duyet_dang_cho) — người phải chọn dạng thật rồi mới Duyệt.
 export type HangDuyetLoc = 'cau_moi' | 'moi' | 'nghi' | 'khong_kiem' | 'ton_dong' | 'chua_dang' | 'dung_sai'
 export const HANG_DUYET_LABEL: Record<HangDuyetLoc, string> = {
-  cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Máy nghi đáp số', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
+  cau_moi: 'Câu mới chờ duyệt', moi: 'Lời giải mới từ Claude', nghi: 'Cần kiểm (máy/AI nghi)', khong_kiem: 'Không kiểm được', ton_dong: 'Tồn đọng (AI cũ)',
   chua_dang: 'Chưa phân dạng', dung_sai: 'Đúng/Sai',
 }
 /** Dạng chờ "Chưa phân dạng" — khớp public._kho_la_dang_cho(). Ẩn khỏi cây bản đồ/picker; câu ở dạng này không duyệt được. */

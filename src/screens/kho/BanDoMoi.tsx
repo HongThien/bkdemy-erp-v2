@@ -1549,7 +1549,7 @@ function CauKho({ r, nhom, onChuyen, onXoa, onDuyet, onSua }: { r: KhoCauRow; nh
         {!r.la_goc && chip('bg-slate-100 text-slate-500', 'bản sao')}
         {r.kho_chuan ? chip('bg-emerald-100 text-emerald-700', 'kho chuẩn') : r.da_duyet ? chip('bg-sky-100 text-sky-700', 'đã duyệt') : chip('bg-amber-100 text-amber-700', 'chưa duyệt')}
         {r.kiem_may === 'khop' && chip('bg-emerald-50 text-emerald-700', 'máy kiểm khớp')}
-        {r.kiem_may === 'nghi' && chip('bg-rose-100 text-rose-700', 'máy nghi đáp số')}
+        {r.kiem_may === 'nghi' && chip('bg-rose-100 text-rose-700', 'cần kiểm (máy/AI nghi)')}
         {r.kiem_may === 'khong_kiem_duoc' && chip('bg-slate-100 text-slate-500', 'máy không kiểm được')}
         {nguonGan && chip('bg-violet-50 text-violet-700', nguonGan)}
         {(nhom || r.nguon_gan.startsWith('de_xuat')) && r.dang_bai && <span className="text-[11px] text-violet-600">› <MathText>{r.dang_bai}</MathText></span>}

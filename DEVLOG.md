@@ -80029,3 +80029,8 @@ Thùy nêu 4 việc, làm được 3:
 ## 13/11 — MCQ lớp 5 lô 4 (thập phân, hỗn số)
 - **Ghi 38 form** (`scripts/_k5/b4_thapphan.mjs`, `b4_lap_xep.mjs`): nhân với 10^k (5) · cộng/trừ thập phân (4) · viết số thập phân từ lời (1) · nêu phần nguyên/phần thập phân + đọc (5 − bỏ 2 do lời đọc kho khác quy ước) · lập số thập phân từ thẻ (19) · đọc hỗn số (5). `da_duyet=false`. Rule mới R424 (mig 202611130910, áp `--only`).
 - **Không làm được:** sắp xếp thập phân (khuôn T105040106 là TẬP — verify không phân biệt thứ tự ⇒ MCQ thứ tự không kiểm được, cần khuôn thứ tự riêng); T105040110018/019/020 kho liệt kê không theo thứ tự (khác 3 câu cùng mẫu) ⇒ bỏ; T105040110006 kho gõ sai "0.,47"; T105030102023 kho đọc "ba phần tư" (mẫu 4).
+
+## 13/11 — Bộ lọc "nghi" của màn Duyệt lấy cả câu ở dạng chờ (Thùy "Sửa bộ lọc")
+- **Vì sao:** câu chưa chắc mới nhập luôn ở dạng chờ (bản đồ mới không đổi dang_chinh); bộ lọc 'nghi' loại câu dạng chờ CHƯA gán dạng bài (bản 2 tham số chỉ tha câu đã gán) ⇒ 3 câu Đại B001 không hiện ở bộ lọc nghi, chỉ lẫn trong "Chưa phân dạng".
+- **Mig 202611130911 (áp `--only`):** `_kho_loc_duyet_sql(text)` nhánh 'nghi' bỏ điều kiện dạng chờ (dựng từ bản đang chạy, chỉ sửa 1 nhánh). Thử rollback, so điều kiện lọc trước/sau: Đại 397 → 447 câu (+50 câu dạng chờ, có đủ 3 câu B001), HGT 8 → 8. Duyệt câu chưa có dạng vẫn bị `trg_chan_duyet_dang_cho` chặn — thẻ duyệt có sẵn nút nhận đề xuất / chọn dạng bài.
+- **UI:** nhãn bộ lọc "Máy nghi đáp số" → "Cần kiểm (máy/AI nghi)" (`src/lib/kho/api.ts`); chip Bản đồ mới "máy nghi đáp số" → "cần kiểm (máy/AI nghi)". Cần deploy ERP mới thấy nhãn mới (bộ lọc DB đã có hiệu lực ngay). Không mở trình duyệt kiểm (màn cần đăng nhập nhân sự thật).
