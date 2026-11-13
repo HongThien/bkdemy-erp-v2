@@ -3,6 +3,7 @@
 //
 //   node scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi 8            # chạy khô: tách + báo cáo, ghi bản nháp JSON, KHÔNG ghi DB
 //   node scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi 8 --ghi      # ghi DB (1 transaction); bài đã nhập (theo nguon_ma_cau) thì bỏ qua
+//   --chi-nhieu-y    chỉ nhập bài đã TÁCH được nhiều ý (bỏ bài 1 ý / trả lời ngắn / Đúng-Sai / không tách được) — Thùy 13/11 chuyên đề Hình CKI K8
 //   --loc '<regex>'  chỉ lấy đề có TÊN khớp (không phân biệt hoa thường), vd K7 19/10: --loc 'giữa học kì 1|giữa kì I'
 //
 // Luật tách (máy làm phần CHẮC, phần không chắc để nguyên và gắn cờ — §1.5 thà bỏ trống còn hơn đánh sai):
@@ -140,6 +141,8 @@ for (const r of nguon) {
   ra.push({ nguon_ma_cau: r.ma_cau, loai_cau: r.loai_cau, ten_de: r.ten_de, de_bai: (r.noi_dung || '').trim(), dap_an: r.dap_an || null,
     anh_de: r.anh_de || null, anh_loi_giai: r.anh_dap_an || null, da_co: daCo.has(r.ma_cau), ...t })
 }
+const CHI_NHIEU_Y = process.argv.includes('--chi-nhieu-y')
+if (CHI_NHIEU_Y) { const bo = ra.filter((x) => x.loai !== 'nhieu_y'); for (const x of bo) console.log(`  ✂ bỏ (${x.loai}) ${x.nguon_ma_cau}${x.loai === 'khong_tach' ? ' — ' + x.co.join(' · ') : ''}`); ra.splice(0, ra.length, ...ra.filter((x) => x.loai === 'nhieu_y')) }
 const dem = (f) => ra.filter(f).length
 console.log(`Khối ${khoi}: ${ra.length} bài nguồn (tự luận ${dem((x) => x.loai_cau === 'tu_luan')} · trả lời ngắn ${dem((x) => x.loai_cau === 'tra_loi_ngan')})`)
 console.log(`  tách nhiều ý: ${dem((x) => x.loai === 'nhieu_y')} bài → ${ra.filter((x) => x.loai === 'nhieu_y').reduce((s, x) => s + x.y.length, 0)} ý`)

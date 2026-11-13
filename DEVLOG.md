@@ -80456,3 +80456,9 @@ Thùy nêu 4 việc, làm được 3:
 - **So khớp (chạy thử rollback, trước ↔ sau):** `bdm_cau_dang` 55.558 dòng nội dung khớp; `bdm_cau_hoi` khớp MỌI cột mọi dòng.
 - **Đo trước → sau (EXPLAIN ANALYZE, cùng phiên, claims admin):** đọc 30 câu theo mã qua `bdm_cau_hoi` 262 ms / 96.208 blk → 24 ms / 234 blk · đếm cả view 222 ms / 115.842 blk → 101 ms / 19.585 blk · câu của một dạng 10 ms → 3 ms · `_do_o_bdm` cho 30 câu 23 ms / 1.393 blk → 2 ms / 334 blk. (Đo một phiên, buổi tối; chưa có số pss sau vài ngày.)
 - **Kiểm sau áp:** bảng tra lệch 0; `fn_bdm_cay`, `fn_bdm_khop_dem`, `fn_bdm_tien_do_nguon` (admin) và `tu_luyen_chu_de_ds_dang`, `fn_ban_do_phieu_luu` (HS) chạy.
+
+## 13/11/2026 — Chuyên đề Hình Cuối kì 1 (K8)
+- **Thùy:** "làm thành chuyên đề hình cuối kì 1 như giữa kì" — CHỈ bài hình nhiều ý (bài 4), không lấy câu Thalès dễ; không cần HTML.
+- **Làm:** `nhap_tu_de_thi.mjs --khoi 8 --loc cuối --chi-nhieu-y --ghi` (thêm cờ mới) ⇒ 136 bài / 434 ý vào Hình–Luyện K8 (hinh_bai, trang_thai tam); `scripts/_cd_hinh_ck1_8.mjs` (khuôn _cd_hinh_gk1_9) ⇒ tai_lieu chuyen_de "Chuyên đề Hình Cuối kì 1" K8 (4aca6aeb-1dcb-41c7-83bb-49b01e3d5629), 1 phần "Bài hình nhiều ý" = 116 bài ≥3 ý (20 bài 2 ý bỏ).
+- **Chưa:** 3 bài nhiều ý không tách được (HHC014575, HHC014616, HHC015636 — lời giải không chia a/b/c) chờ tách tay; chưa gán mô hình Tứ giác; 128/136 bài chưa có hình đề (có hình lời giải); 3 cặp đề trùng giữa các trường (HHC014559/578, HHC015531/558, HHC015556/572) giữ cả hai.
+- **Sai:** hiểu "như giữa kì" là bài Hình–Học "Ôn thi" rồi làm HTML duyệt — sai; giữa kì là tài liệu loai chuyen_de.
