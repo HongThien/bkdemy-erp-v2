@@ -79963,3 +79963,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Sai:** từ câu "GV chỉ việc duyệt" tôi suy ra một màn chốt mới (duyệt dạng trọng tâm từng em) và vẽ vào mockup. Thùy: "chốt từng học sinh quá vất vả".
 - **Đúng:** thứ Hai chỉ có 2 lượt chốt ĐANG CÓ — ① chốt giáo trình/tài liệu ② soi Dashboard học tập cả lớp rồi chốt bổ trợ ở Phòng làm việc trưởng khối. Chốt bổ trợ xong ⇒ hệ TỰ GHÉP vào mục tiêu tuần của từng HS. Không màn chốt mới, không đường duyệt mới. Spec §3b viết lại.
 - **Bài học:** "duyệt" trong lời Thùy = duyệt ở chỗ đang duyệt; đừng đẻ màn mới khi chưa hỏi luồng hiện tại chốt ở đâu.
+
+## 13/11 08:25 — Mục tiêu tuần: bố cục màn học sinh (mockup bản 1 lệch ý ⇒ vẽ lại)
+- Thùy: Phần 1 Kiến thức mới + Phần 2 Ôn tập kiến thức, mỗi dòng nhóm bài chỉ có mục tiêu (mặc định 80%) và % hiện tại; BẤM VÀO mới mở hướng dẫn (lý thuyết · bài trên lớp · luyện tập); thêm thanh tiến độ tổng tuần + xếp hạng tiến độ.
+- Spec thêm §4a. Chưa chốt: công thức tiến độ tổng, cách xếp hạng, mục tiêu nhóm ôn tập có luôn 80% không.
