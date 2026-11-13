@@ -79998,3 +79998,9 @@ Thùy nêu 4 việc, làm được 3:
 - Chạy thử ghi.mjs (rollback): 256 mới · 3 trùng. CHƯA ghi DB — chờ Thùy duyệt duyet-B001.html.
 - Công cụ mới: do-trung-batch.mjs, chuan-bi-batch.mjs, ghep-brief.mjs, tong-hop-batch.mjs, duyet-batch.mjs.
 - 12/11 Thùy "Ghi B001": ghi.mjs --ghi tuần tự 31/31 ✔ — 31 tai_lieu, 259 câu (Đại 193 · Hình 66 tạm HH00108), 256 mới · 3 trỏ câu cũ; kiểm DB khớp. HANDOFF thêm mục toanmath.
+
+## 13/11 — MCQ lớp 5 (tay + máy) lô 1–2
+- **Làm:** lớp 6 ghi 536 form (4 lô theo chủ đề), lớp 7 ghi 72, lớp 4 ghi 1 (máy `mcq-auto`). Lớp 5: máy chỉ sinh 12/472 (đáp số kho là chữ/nhiều phần/đơn vị) ⇒ viết bộ sinh riêng `scripts/_k5/` (parse đề → tính lại đáp số → CHỈ giữ câu khớp đáp số kho → nhiễu theo rule có sẵn). Lô 1: làm tròn 10 + đọc/viết số 10 + hàng–lớp 9 = 29 form. Lô 2: đổi đơn vị diện tích NDB02143 = 29 form. Tất cả `da_duyet=false`.
+- **Rule mới (mig 202611130845, áp bằng `--only`):** R421, R422 (làm tròn), R423 (hàng–lớp). Lý do: R395–R397 luôn trùng đáp án đúng khi chữ số sau hàng làm tròn gần 9.
+- **Phát hiện:** kho T105010101016 đáp số chữ sai ("không trăm hai trăm ba mươi"); T105100205022 kho "2,30" thừa số 0. `npm run migrate` có 28 file treo của phiên khác — LUÔN dùng `--only`.
+- **Còn lớp 5:** ~400 câu (lời văn R407–R415, 02139 đổi đơn vị, 02141, 02105, 02110, 02097…, nhiều câu cần hình/đa phần).
