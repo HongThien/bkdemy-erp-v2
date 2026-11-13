@@ -80477,3 +80477,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm sau xoá:** REST 13 bảng (câu, bản đồ, gán, form, tài liệu, bài test) đều 200; bảng tra lệch 0; `check:kien-truc` xanh.
 - **Hướng gộp CTO chọn:** gộp THẬT (một bảng có cột kho), cuốn chiếu theo họ, client đi trước, mỗi họ: bảng chung + đồng bộ hai chiều → chuyển client → thử qua API + Thùy xác nhận → song song vài ngày → mới bỏ bảng nhánh. Gom hàm chép theo nhánh trước (không đổi cấu trúc bảng). Không dùng partition (mất API) hay inherit (nửa vời). Chi tiết spec §2b.
 - **Thùy dán lại kết quả lệnh dò nhân sự/email (giống hệt bản 18:2x):** không có gì mới để xử lý — cổng nhân sự đã đổi ở mig 202611131831; KHÔNG xoá tài khoản/nhân sự nào theo danh sách này.
+
+## 13/11 (tối) — ĐỢT 0c-2: Thùy chạy tay ở SQL Editor (đã kiểm DB khớp, đã ghi sổ mig 202611132110-ish `*_sql_editor.sql`)
+- **Kho file:** `kho_anh_update/delete`, `kho_tl_insert/update/delete`, `avatars_update/delete` giờ có `la_thanh_vien()`; `avatars_insert` + `kho_anh_insert` vẫn mở cho tài khoản đăng nhập (HS tải ảnh đại diện, ảnh báo lỗi); đọc 3 kho vẫn công khai. Đọc lại `pg_policies` xác nhận.
+- **`_sk_ns_id()`** = `current_nhan_su_id()` (owner postgres). Hàm còn dùng email trong token: `self_link_account` (đã đóng với client), `trg_han_nop_ngoai_le_log` (chỉ ghi actor) ⇒ `check:kien-truc` 3 → 2, đã hạ trần.
+- **QLHT Test** đã nối `tai_khoan` (Thùy chạy lệnh nối).
+- **CHƯA thử trên app:** nhân sự tải ảnh câu hỏi lên kho · HS đổi ảnh đại diện · màn sự kiện.
