@@ -213,6 +213,11 @@
   - **Lịch sử migration bất biến:** sửa file đã áp thì DB và repo nói hai chuyện khác nhau — `--status`
     sẽ nêu cờ, nhưng script KHÔNG áp lại. Muốn đổi thì viết migration **MỚI** đè lên.
   - **⭐ AI ÁP đổi cả posture quyền (đo thật 18/09):** áp bằng **SQL Editor** ⇒ hàm thuộc owner `postgres` ⇒ dính `alter default privileges` của Supabase ⇒ `anon` được **grant TƯỜNG MINH**, nên `revoke … from public` **KHÔNG đủ**, phải `revoke execute … from anon`; áp bằng **`npm run migrate`** (owner `claude_build`) thì không dính, ACL không hề có `anon`. *(Cắn thật: mig 202609181946 tưởng đã kín, anon vẫn gọi được — vá ở mig 202609182334.)*
+  - **⭐ QUYỀN MẶC ĐỊNH = ĐÓNG với người chưa đăng nhập (mig 202611131750, đợt 0a của `spec-kien-truc.md`).** Đối tượng MỚI do `claude_build` tạo:
+    hàm ⇒ `PUBLIC`/`anon` **không** có EXECUTE (chỉ `authenticated` · `service_role` · `claude_ro` có sẵn); bảng ⇒ `anon` **không** có quyền gì.
+    Cần cho khách/bot gọi bằng khoá công khai ⇒ **`grant … to anon` TƯỜNG MINH trong migration, kèm một dòng lý do**. Role DB khác (`fdw_bkdemy_web`, `ph_nop`,
+    `web_lead_writer`) cũng phải grant tường minh. Bảng mới vẫn phải `enable row level security` + policy ngay trong migration tạo bảng.
+    Hàm `security definer` mới phải có cổng kiểm người gọi ở đầu thân; hàm tạo qua SQL Editor (owner `postgres`) vẫn dính mặc định cũ ⇒ tự `revoke … from anon`.
 - **Sau mỗi migration:** `npm run schema`, commit `schema.md` cùng migration (git diff thấy schema đổi gì).
 - **Đặt tên migration = TIMESTAMP, không phải số tăng dần:** `npm run new-migration ten_viec_snake_case`
   → `YYYYMMDDHHMM_ten_viec.sql` (giờ VN). Số tăng dần cấp bằng "nhìn file cuối +1" nên hai luồng làm
