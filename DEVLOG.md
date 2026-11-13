@@ -80013,3 +80013,8 @@ Thùy nêu 4 việc, làm được 3:
   2. Câu chưa chắc ⇒ vào danh sách cho người kiểm (như hiện tại).
   3. Câu có thể sai ⇒ người hậu kiểm, báo sai / xoá. Hệ thống phải tracking để sau này đo.
 - **Đối chiếu hệ thống hiện tại (chỉ đọc):** trigger `_bdm_tu_duyet_sau_gan` (mig 202611051930) tự duyệt khi gán mức cao nguon='ai' + đủ đáp án — KHÔNG xét "giải chắc chắn": cờ **Chưa chắc** của trạm soạn chỉ nằm ở `tai_lieu.cau_hinh.deThi.canhBaoCau` (ghi.mjs), câu vẫn `kiem_may` NULL ⇒ gán mức cao về sau là tự duyệt luôn câu chưa chắc. Hình (`hinh_hoc_cau_hoi`) không có đường tự duyệt. Hậu kiểm: có `kho_sua_log` (sửa theo khâu, `da_duyet_truoc`), `dai_bdm_log` (đổi gán), `bai_cau_bao_loi` (HS báo khi làm test online → TA duyệt) + loại phiên Claude "Câu bị báo sai" cho trưởng khối (mig 202611012151); XOÁ chỉ có `xoa_at` — không lưu ai xoá, vì sao. Chưa kiểm: đường nhân sự tự báo sai một câu khi hậu kiểm kho; chưa có số đo "câu AI tự duyệt về sau bị sửa / báo sai / xoá". Chưa sửa gì — chờ lệnh.
+
+## 13/11 — MCQ lớp 5 lô 3 (lời văn + so sánh số đo)
+- **Ghi:** 33 form lời văn (tem trung bình, bán 2 lần, tấn–kg×phân số, chia ruộng, vườn cây, lát gạch, hình chữ nhật cùng chu vi hình vuông) + 4 form so sánh số đo = 37 (`scripts/_k5/b3_loivan.mjs`, `b3_sosanh.mjs`), `da_duyet=false`.
+- **Kho SAI cần người xem (máy tính lại ≠ kho, lời giải kho khớp máy):** T105010205058/059/060 (đáp số kho 2000/6800/1875 nhưng lời giải ra 3375/7700/2400); T105110103038 (đề 50 cm² nhưng lời giải chia 60 → kho 14000; theo đề là 16800). Đã bỏ khỏi lô.
+- **NDB02139 phần phân số (13 câu):** đề "\dfrac{5}{8} tấn 75 tạ" không cách đọc nào khớp đáp số kho ⇒ bỏ, cần người xác nhận ý đề.
