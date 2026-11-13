@@ -240,8 +240,8 @@ try {
   for (const [b, k, kLG] of [[B1, 'BY1', 'BY1lg'], [B2, 'BY2', 'BY2']]) {
     const y = (await c.query(`insert into hinh_hoc_bai_y (dang_chinh, loi_dan, anh_de, thu_tu) values ($1,$2,$3,$4) returning ma_bai_y`, [BAI, b.loi_dan, urls[k], ++ttY])).rows[0]
     for (const yy of b.y) {
-      const q = (await c.query(`insert into hinh_hoc_cau_hoi (dang_chinh, noi_dung, bai_y, nhan_y, cau_hoi_y, da_biet, loi_giai, anh_dap_an, thu_tu, loai_cau, nguon_giai, giai_method, kho_chuan, da_duyet)
-        values ($1,'',$2,$3,$4,$5,$6,$7,$8,'tu_luan','ai','claude_code',true,false) returning ma_cau, noi_dung, anh_de`,
+      const q = (await c.query(`insert into hinh_hoc_cau_hoi (dang_chinh, noi_dung, bai_y, nhan_y, cau_hoi_y, da_biet, loi_giai, anh_dap_an, thu_tu, loai_cau, nguon_giai, giai_method, da_duyet)
+        values ($1,'',$2,$3,$4,$5,$6,$7,$8,'tu_luan','ai','claude_code',false) returning ma_cau, noi_dung, anh_de`, // kho_chuan = cột SUY (13/11)
         [BAI, y.ma_bai_y, yy.nhan, yy.cau_hoi, yy.da_biet, yy.loi_giai, urls[kLG], ++tt])).rows[0]
       ra.push({ bai_y: y.ma_bai_y, nhan: yy.nhan, ma_cau: q.ma_cau, de: q.noi_dung, anh: !!q.anh_de })
     }

@@ -3564,7 +3564,6 @@ END |  |  |
 | nguon_giai | text |  | 'nguoi'::text |  |  |
 | parent_ma_cau | text | Y |  | FK→hinh_hoc_cau_hoi.ma_cau |  |
 | clone_method | text | Y |  |  |  |
-| kho_chuan | boolean |  | true |  |  |
 | dang_ai_de_xuat | text | Y |  |  |  |
 | giai_method | text | Y |  |  |  |
 | kiem_may | text | Y |  |  |  |
@@ -3576,6 +3575,8 @@ END |  |  |
 | nhan_y | text | Y |  |  |  |
 | cau_hoi_y | text | Y |  |  |  |
 | da_biet | text | Y |  |  |  |
+| rut_khoi_kho | boolean |  | false |  |  |
+| kho_chuan | boolean | Y | ((NOT rut_khoi_kho) AND (da_duyet OR (kiem_may IS DISTINCT FROM 'nghi'::text))) |  |  |
 
 ## hinh_hoc_cau_hoi_yeu_cau_giai
 
