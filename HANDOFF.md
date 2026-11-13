@@ -17,6 +17,38 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+### ⭐⭐⭐ KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS (Thùy mở 13/11) — ĐỌC `spec-kien-truc.md` TRƯỚC khi thêm bảng / hàm / màn
+
+**Đích (Thùy chốt):** 1.000 → 2.000 → 10.000 đều là HS CỦA TRUNG TÂM (không có HS ngoài). Mốc 1.000 trong 6–12 tháng. Không vá từng lỗi — sửa kiến trúc từ trên + viết luật.
+**Nguồn:** `spec-kien-truc.md` (kiến trúc đích, luật K1–K23, phiếu 10 câu, lộ trình 7 đợt, §2b gộp theo khuôn) · bằng chứng `reports/audit-scale-13-11.md` (**chưa commit** — còn tên các lỗ chưa bịt) · nhật ký chi tiết DEVLOG 13/11.
+**Tiến độ ước ~25–30% khối lượng.** Phần chịu tải lớn (đợt 3, 4, 5) gần như chưa bắt đầu.
+
+**ĐÃ CHẠY TRÊN DB (đều đã ghi sổ, đã push):**
+- **Đợt 0 — quyền** (mig 202611131750 · 131804 · 131831 · 132159): RLS mọi bảng; thu EXECUTE của anon/PUBLIC (còn 61 hàm theo danh sách); 20 view kho `security_invoker`; 5 bảng ghi mở về nhân sự; cổng nhân sự = MỘT nguồn `current_nhan_su_id()` (tài khoản đã nối + `dang_lam`, bỏ nhánh email); kho file sửa/xoá chỉ nhân sự; **mặc định mới của `claude_build`: hàm/bảng mới KHÔNG cấp cho anon** (CLAUDE.md §2.1).
+- **Đợt 1 — hàng rào:** `npm run check:kien-truc` (`scripts/check-kien-truc.mjs`, số trần `scripts/kien-truc/tran.json`, danh sách cho phép `cho-phep.json`). Mục CỨNG = 0, mục TRẦN chỉ được giảm. **Chạy sau mỗi migrate và trước commit đụng src** (mới là luật trong CLAUDE.md, chưa gắn tự động).
+- **Đợt 2 — nền dữ liệu:** 20 index đường đọc nóng (mig 131843) · bảng tra `kho_cau_dang` (câu → dạng bài, mọi kho; trigger trên từng bảng nhánh; đối chiếu `fn_kho_cau_dang_lech()` là mục cứng) + view `bdm_cau_dang` đọc bảng tra (mig 132043 · 132046 · 132053): đọc 30 câu qua `bdm_cau_hoi` 262 ms/96k blk → 24 ms/234 blk · "Việc của tôi": lọc theo người gọi trước (mig 132206) + việc ĐÃ XONG mặc định 2 tuần, nút xem cũ hơn (`fn_viec_buoi_thuong_loc`, mig 132211; **client ERP/TA/GV đã push, CHƯA deploy**).
+- **Đợt 5 (làm sớm):** `fn_xephang_chung` + `fn_tich_luy` đọc bảng tính sẵn việc tháng (mig 132233): 1.466 → 56 ms.
+- DB có 3 hàm chỉ đọc cho audit (owner postgres, chỉ `claude_build` gọi): `_audit_pss()`, `_audit_cron_job()`, `_audit_cron_runs()`.
+
+**⛔ SỰ CỐ 13/11 TỐI — ĐỪNG LẶP:** gộp 115 bảng nhánh làm PARTITION của `kho_<họ>` ⇒ PostgREST không lộ bảng là partition ⇒ app báo "Could not find the table … in the schema cache", ET/kho/tài liệu hỏng ~1,5 giờ. Đã gỡ (mig 132053), đã xoá 25 bảng chung rỗng (mig 132100), `gop-khuon.mjs` đã khoá, `check:kien-truc` có mục cứng "bảng là partition = 0". **Đổi cấu trúc bảng app đọc trực tiếp phải thử qua REST + Thùy mở màn xác nhận trước khi nhân rộng.** Còn lại dùng được sau khi gỡ: mọi bảng nhánh có cột `kho` (hằng), cột lệch đã làm khớp, identity đã đổi sang sequence.
+
+**Quyết định kiến trúc đã chốt 13/11:** "riêng theo KHUÔN, chung trong cùng khuôn" (sửa ADR môn) — khuôn dạng–câu (Đại · HGT · KHTN · Lý · Hoá) / mô hình–bài–ý (Hình) / ngôn ngữ (Anh · Văn). Cấm tạo bảng `<nhánh>_<tên>` mới và chép hàm theo nhánh. Hướng gộp CTO chọn: **gộp THẬT từng họ, client đi trước** (bảng chung + đồng bộ hai chiều → chuyển client → thử qua API + Thùy xác nhận → song song vài ngày → mới bỏ bảng nhánh); gom hàm chép theo nhánh trước. Chưa bắt đầu.
+
+**CHỜ THÙY / CHƯA KIỂM TRÊN APP:**
+- Deploy ERP + app TA + app GV (đổi "Việc của tôi") rồi xem: nhóm "Đã xong — 2 tuần gần đây", nút xem cũ hơn, lùi 3–4 tuần số "Đã xong tuần" vẫn đúng.
+- Mở Dash TA / GV / OPS xem khối xếp hạng + tích luỹ.
+- Thử: nhân sự tải ảnh câu hỏi lên kho · HS đổi ảnh đại diện · màn sự kiện (sau khi khoá kho file + đổi `_sk_ns_id`).
+- Dashboard Supabase: "Allow new users to sign up", "Confirm email", API "Max rows" — chưa biết giá trị.
+- Hỏi lại ai làm kho/tài liệu tối 13/11 (19:04–20:53): thao tác qua API trong lúc sự cố đã thất bại, không có cách liệt kê.
+
+**VIỆC KẾ TIẾP (theo thứ tự đề xuất):**
+1. **Đợt 3 — một khuôn tính sẵn** (`ts_dang_ky` + hàng đợi bẩn + một bộ điều phối thay ~9 job cron); chuyển lần lượt: tin Thế giới → bxh → mục tiêu tuần / dạng yếu / dạng đã học → mastery (+Hình) → phòng / dashboard → cây bản đồ. Gộp luôn "một cửa đọc lịch sử đo". Thiết kế ở spec §4; hiện trạng 6 kiểu ở audit §2.4.
+2. **Đợt 4 — client:** cache `getMyProfile` + dữ liệu tham chiếu trong `src/lib` · bỏ poll `fn_hs_ep_cap_nhat` 30 s · `fn_the_gioi_home` TTL + không gọi khi tắt tính năng · gộp Home HS thành 1–2 RPC · hook `usePoll`.
+3. **Đợt 5 còn lại:** `fn_traogiai_thang`, `fn_bc_ky_chot_hs`, `fn_hs_album`, `fn_thanh_tuu_cho_nhan`, Thế giới BK (`_hs_hien` từng dòng).
+4. **Đợt 0 còn dở:** chuyển cấp tài khoản về máy chủ rồi đóng signup · chỉ admin ghi `tai_khoan` · tách cửa cho `_kho_snapshot_cau` · 3 trigger push đổi sang security definer rồi đóng `_push_bao_cap_nhat` · bỏ `ma_hs` khỏi BXH + buộc đổi mật khẩu mặc định · `bkdemy-ph-app/lib/admin-auth.ts` coi mọi token ERP là admin.
+5. **Đợt 6:** thử tải (k6) + chọn gói máy chủ (đang Micro: 60 kết nối, 256 MB đệm).
+
+
 - **⭐⭐⭐⭐ BỘ ĐỀ TOANMATH ĐÃ TẢI — GIẢI PHẦN CÒN LẠI THEO BATCH (12/11; Thùy: "chia từng batch để nắm tình hình vào báo cáo, không giải linh tinh"). B001 ĐÃ GHI DB.** Thư mục `kho-rules/dai/lo/toanmath/` — đọc `KE-HOACH.md` trước, tiến độ ở `so-theo-doi.md` (tự sinh).
   - **Đo:** 2.988 bài đăng (`E:\BK ACADEMY\Tài liệu tham khảo\_toanmath-danh-sach.csv`) · 1.474 đã có (sha256 + kiểm nghi trùng bằng NỘI DUNG, `kiem-nghi-trung.mjs`) · bỏ 96 đề cương K12 (Thùy: thi thử K12 đã quá nhiều) · bỏ 22 bài trùng bộ **Noctorium** (`kiem-noctorium.mjs`: nội dung cụm 6 chữ + tên trường) ⇒ **còn 1.383 bài / 130 batch**.
   - **Thứ tự (Thùy 12/11):** CUỐI KÌ trước, khối **9 → 8 → 7 → 6 → 11 → 10 → 12**; rồi giữa kì cùng thứ tự; rồi thi vào lớp trên (K12 thi thử sau cùng). Trong khối: đề thi (Word đã bóc → PDF → scan nghi trùng) rồi đề cương.

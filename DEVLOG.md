@@ -80502,3 +80502,5 @@ Thùy nêu 4 việc, làm được 3:
 - **Đo:** cả 2 hàm một lượt 1.466 ms → 56 ms (trong lần so); sau áp gọi thật 6 nhân sự tb 68 ms. Số tối đa cũ 10 phút (cùng nguồn `fn_ta_dashboard` / `fn_gv_dashboard`). Khoá `ops` chưa được cron hâm sẵn — tính lại một tháng chỉ 117 ms nên để tính khi đọc.
 - **Bẫy công cụ (2 cái, đều của tôi):** (1) `String.replace(a, b)` của JS coi dấu đô-la + nháy đơn / đô-la + & trong chuỗi thay là ký hiệu đặc biệt (thân hàm có regex kết thúc bằng đô-la rồi nháy) ⇒ chèn rác vào định nghĩa hàm, bị bắt ở chạy thử; đổi sang `split(a).join(b)`. Đã rà 17 hàm sửa tối nay: không thân nào chứa các mẫu đó, không hàm nào hỏng. (2) Ghi DEVLOG bằng `printf '...'` trong bash mà nội dung có nháy đơn + backtick ⇒ shell chạy các đoạn trong backtick như lệnh (không lệnh nào tồn tại nên không hại gì) và mục log KHÔNG được ghi; từ giờ ghi log qua file tạm.
 - **Chưa kiểm trên app:** chưa ai mở Dash TA / GV / OPS thật sau thay đổi.
+
+## 13/11 (đêm) — Distill cuối ngày: HANDOFF ① thêm mục "KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS", HANDOFF-BAI-HOC thêm "Bài học 13/11 — Kiến trúc / scale / quyền". Thùy về nhà làm tiếp.

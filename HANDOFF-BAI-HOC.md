@@ -5,6 +5,7 @@
 ---
 
 ## Mục lục (số dòng trong file này)
+- **Bài học 13/11 — Kiến trúc / scale / quyền** (ngay dưới tiêu đề ②; số dòng các mục bên dưới lệch thêm ~15 dòng)
 
 - Bài học 10→12/11 — Lịch phòng một nguồn · Lịch khối · Chốt tuần (ngay dưới mục lục ②)
 - dòng 36 — ⭐⭐⭐ LUẬT DUYỆT (Thùy 14/10, "nói bao lần rồi") — MỌI KHỐI, MỌI LÔ: muốn Thùy duy�
@@ -43,6 +44,22 @@
 ---
 
 ## ② BÀI HỌC CÒN HIỆU LỰC (đừng đạp lại)
+
+## Bài học 13/11 — Kiến trúc / scale / quyền (đừng đạp lại)
+
+- **⛔ Bảng app đọc qua API: thử bằng REST, không chỉ SQL.** Gắn bảng làm partition (`attach partition`) thì PostgREST không lộ nó nữa ⇒ `.from('<bảng>')` báo "Could not find the table … in the schema cache". So khớp dòng, thêm/sửa/xoá, gọi hàm dưới claims — tất cả đều qua SQL nên không lộ. Sau mọi thay đổi cấu trúc/quyền: `curl /rest/v1/<bảng>` bằng khoá công khai (mong 200, không 404) **và** để Thùy mở đúng màn trước khi nhân rộng. Làm mẫu một cái → chờ xác nhận trên app → mới làm hàng loạt.
+- **Số `pg_stat_statements` là CỘNG DỒN; `n_live_tup` chỉ đếm từ lần reset.** Đọc thẳng là kết luận sai (đã báo "fn_the_gioi_home 3,6 s" trong khi đợt tối ưu trước đó đã hạ còn ~270 ms; `gami_grades` 11,7k dòng thật ra ~175k). Muốn số hiện tại: lấy hiệu số hai lần chụp, số dòng lấy `reltuples`.
+- **Index đúng chưa đủ — EXPLAIN đúng câu lệnh của hàm.** `select min(ma_cau) … where md5(...) = …` khiến planner đi theo khoá chính (tối ưu min) và lọc từng dòng dù có index biểu thức; bọc truy vấn con + `offset 0` mới đi index. 4 index `*_khoa_trung_idx` cũ dựng nhầm `'s+'` thay `'\s+'` (mất dấu `\` khi dán tay) nên `idx_scan = 0` suốt — tạo index xong phải thấy được dùng.
+- **Đoán chỗ chậm rồi sửa là sai một nửa.** "Việc của tôi": tưởng chậm vì quét việc của người khác; đo thật thì phần tốn là trả cả lịch sử (900+ việc/người) — lọc theo người chỉ được 94 → 70 ms, cắt việc đã xong còn 2 tuần mới giảm 10 lần dữ liệu. Đo trước–sau cho từng bước, ghi số vào DEVLOG.
+- **Thu quyền PUBLIC trên hàm phải cấp lại tường minh cho MỌI role đang dựa vào nó** (authenticated, service_role, claude_ro, fdw_bkdemy_web, ph_nop, web_lead_writer) và so ma trận `has_function_privilege` trước–sau trong cùng transaction. Hàm dùng trong policy / default / check / view / index phải giữ cho anon (anon gặp policy vẫn phải gọi được để nhận false). `claude_build` không sửa được hàm owner `postgres` và schema `storage` ⇒ SQL cho Thùy chạy rồi `migrate --ghi-so`.
+- **Cổng danh tính một nguồn.** Trước có 6 hàm tự chép khối "tai_khoan hoặc khớp email", không lọc trạng thái ⇒ đăng ký bằng email của nhân sự chưa có tài khoản là thành nhân sự; nhân sự nghỉ vẫn đủ quyền. Giờ mọi hàm cổng dựa vào `current_nhan_su_id()`. Tài khoản tạo tay ở Dashboard không còn tự nối theo email — cấp qua nút "Cấp tài khoản" (nối luôn).
+- **View definer bỏ qua RLS.** View không `security_invoker` chạy bằng quyền chủ ⇒ HS đọc được kho câu + đáp án qua `bdm_cau_hoi`, ghi được qua view cập nhật được. Trước khi bật invoker: lần theo đồ thị import từ `main-hs.tsx` ở MỨC EXPORT của `src/lib` để chắc app HS không đi qua view đó (mức file thì quá rộng, không kết luận được).
+- **Cột thêm vào bảng: 3 loại hàm vỡ.** (1) đọc `alias.*` / `select *` vào khuôn trả cố định; (2) biến / tham số / cột trả trùng tên cột mới — plpgsql báo mơ hồ, sql đổi nghĩa im lặng; (3) insert không nêu danh sách cột. Công cụ dò bằng regex báo nhầm cả hai chiều — đọc thân hàm trước khi kết luận.
+- **Áp nhiều migration liên tiếp làm lỡ cron.** Máy 60 kết nối; vòng lặp mỗi họ 3 tiến trình đúng khe phút chia hết cho 5 ⇒ 6 job "job startup timeout". Giãn nhịp, tránh giây 200–345 của mỗi khe 5 phút.
+- **Bẫy script của chính mình:** JS `String.replace(a, b)` hiểu `$'` / `$&` trong chuỗi thay (thân hàm có regex kết thúc `$'`) ⇒ dùng `split(a).join(b)`. Bash: `printf '...'` có nháy đơn + backtick trong nội dung ⇒ shell chạy đoạn trong backtick; ghi DEVLOG qua file tạm rồi `sed 's/$/\r/' >> DEVLOG.md`. Heredoc trong lệnh nuốt `\\` ⇒ regex hỏng; script có regex thì ghi bằng Write rồi `node --input-type=module - < file`.
+- **Định hướng BK đi trước chuẩn ngành.** Bản spec đầu lấy Khan/Open edX/CQRS làm gốc và trái 4 quyết định đã chốt (bảng lịch sử riêng, bỏ `NHO`, cấm chép theo nhánh sai phạm vi, tự vẽ khối "HS ngoài"). Trước khi đề xuất kiến trúc: CLAUDE.md §0–§6, `ADR-mon.md`, HANDOFF-ARCHIVE "Quyết định & quy ước". Chỗ chưa có đích thì hỏi (10.000 là HS trung tâm, không có HS ngoài).
+
+
 
 ## Bài học 10→12/11 — Lịch phòng một nguồn · Lịch khối · Chốt tuần
 
