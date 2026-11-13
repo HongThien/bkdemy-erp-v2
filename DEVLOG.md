@@ -80034,3 +80034,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Vì sao:** câu chưa chắc mới nhập luôn ở dạng chờ (bản đồ mới không đổi dang_chinh); bộ lọc 'nghi' loại câu dạng chờ CHƯA gán dạng bài (bản 2 tham số chỉ tha câu đã gán) ⇒ 3 câu Đại B001 không hiện ở bộ lọc nghi, chỉ lẫn trong "Chưa phân dạng".
 - **Mig 202611130911 (áp `--only`):** `_kho_loc_duyet_sql(text)` nhánh 'nghi' bỏ điều kiện dạng chờ (dựng từ bản đang chạy, chỉ sửa 1 nhánh). Thử rollback, so điều kiện lọc trước/sau: Đại 397 → 447 câu (+50 câu dạng chờ, có đủ 3 câu B001), HGT 8 → 8. Duyệt câu chưa có dạng vẫn bị `trg_chan_duyet_dang_cho` chặn — thẻ duyệt có sẵn nút nhận đề xuất / chọn dạng bài.
 - **UI:** nhãn bộ lọc "Máy nghi đáp số" → "Cần kiểm (máy/AI nghi)" (`src/lib/kho/api.ts`); chip Bản đồ mới "máy nghi đáp số" → "cần kiểm (máy/AI nghi)". Cần deploy ERP mới thấy nhãn mới (bộ lọc DB đã có hiệu lực ngay). Không mở trình duyệt kiểm (màn cần đăng nhập nhân sự thật).
+
+## 13/11 — Rút 157 câu AI tự duyệt lọt về danh sách người kiểm (Thùy "tiếp đi")
+- **Phạm vi (chỉ câu AI tự duyệt, câu người đã duyệt giữ nguyên):** A = 74 câu `dai_cau_hoi` kiem_may='nghi' mà duyet_nguon='ai'; B = 83 câu Chưa chắc của đề nhập trước 12/11 mà AI tự duyệt (Đại 48 · HGT 1 · Hình 34). A∩B = 0.
+- **Làm:** 1 transaction, chỉ commit khi đúng 157 dòng còn y trạng thái lúc chụp: `da_duyet=false, duyet_nguon/duyet_at=null`; nhóm B thêm `kiem_may='nghi'` + lý do Chưa chắc từ canhBaoCau. **Hoàn tác:** `reports/rut-tu-duyet-13-11.undo.json` (trạng thái cũ từng câu).
+- **Đo ảnh hưởng trước khi rút:** 10 câu từng vào bài test (27 lượt) · 121 câu nằm trong 81 đề/tài liệu (đề vẫn dùng được) · 4 form MCQ đều chưa duyệt · bài HS đã làm không đổi.
+- **Kiểm sau:** Đại 122/122 và HGT 1/1 chưa duyệt + nghi + ra khỏi kho chuẩn; còn 0 câu Đại nghi mà AI đã duyệt.
+- **Phát hiện, CHƯA đụng:** `hinh_hoc_cau_hoi.kho_chuan` là cột THƯỜNG mặc định `true` (Đại/HGT là cột suy từ `_kho_cau_chuan`) ⇒ 28/34 câu Hình vừa rút vẫn `kho_chuan=true`. Lệch đối xứng Đại ↔ Hình — chờ Thùy quyết.
