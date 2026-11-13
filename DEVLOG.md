@@ -79970,3 +79970,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:31 — Mục tiêu tuần: xếp hạng toàn trung tâm + cờ đích 80%
 - Thùy: xếp hạng tiến độ đo toàn trung tâm, chỉ hiện hạng bản thân, bấm vào ra top 20. Mốc mục tiêu = lá cờ đích trên thanh, số 80% ghi dưới cờ, bỏ chữ "Mục tiêu 80%". Spec §4a + mockup màn 1 cập nhật.
+
+## 13/11 08:33 — Mục tiêu tuần: chốt xếp hạng
+- Thùy: mỗi môn một bảng · chung mọi khối · xếp theo tiến độ tổng của tuần (mục tiêu mỗi em đã theo yêu cầu riêng, em yếu dễ hơn ⇒ bảng đo thái độ là chính). Spec §4a.

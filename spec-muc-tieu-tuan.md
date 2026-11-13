@@ -108,9 +108,13 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    (Phần 2 thêm ngày kiểm tra lại sau giờ). Không bày nút và chữ giải thích sẵn trên mọi dòng.
 4. **Thanh tiến độ tổng mục tiêu của tuần** ở đầu màn.
 5. **Xếp hạng tiến độ — đo TOÀN TRUNG TÂM** (Thùy 13/11), màn chỉ hiện **hạng của bản thân**; bấm vào mới mở **bảng top 20** (em ngoài top 20 thấy dòng của mình ở cuối bảng).
+   - **Mỗi môn một bảng** (một tờ mục tiêu = một môn = một bảng xếp hạng).
+   - **Chung mọi khối** trong cùng bảng.
+   - **Xếp theo TIẾN ĐỘ TỔNG của tuần** (Thùy 13/11). Lý do so được giữa em giỏi và em yếu: mục tiêu của mỗi em đã theo chương trình
+     và yêu cầu riêng (em yếu yêu cầu dễ hơn), nên tiến độ là % đi tới mục tiêu CỦA MÌNH. Bảng này đo **thái độ** là chính, không đo năng lực.
 
 *Chưa chốt:* công thức tiến độ tổng (mockup tạm lấy trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài; nhóm chưa đo = 0) ·
-xếp hạng theo tiến độ tổng đó hay theo mức TĂNG trong tuần · xếp theo từng môn hay gộp môn · khối 6 và khối 9 có chung một bảng không ·
+
 mục tiêu của nhóm ôn tập có luôn 80% không (§5: một tuần thường không lật được từ yếu lên đạt).
 Mockup: canvas "Mục tiêu tuần — mockup", màn 1 bản 2.
 
