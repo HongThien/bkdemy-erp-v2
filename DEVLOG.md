@@ -80504,3 +80504,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Chưa kiểm trên app:** chưa ai mở Dash TA / GV / OPS thật sau thay đổi.
 
 ## 13/11 (đêm) — Distill cuối ngày: HANDOFF ① thêm mục "KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS", HANDOFF-BAI-HOC thêm "Bài học 13/11 — Kiến trúc / scale / quyền". Thùy về nhà làm tiếp.
+
+## 14/11 — [Kiến trúc · Đợt 4 client, bước 1] cache getMyProfile + poll ép cập nhật 30s→5 phút
+- **Làm:** `getMyProfile()` (src/lib/nhansu.ts) giờ cache 5 phút theo uid, gộp lượt gọi đang bay, uid lấy từ getSession() (local) thay getUser() (1 request mạng/lần); `xoaCacheHoSo()` gọi ở đầu 21 hàm ghi nhan_su/tai_khoan/vi_tri/lop/phan_cong/team/mon + khi SIGNED_IN/OUT/USER_UPDATED. Trả structuredClone nên màn sửa object không làm bẩn cache. 11 hàm src/lib gọi getMyProfile mỗi lượt không phải đổi.
+- `main-hs.tsx`: poll fn_hs_ep_cap_nhat 30s → 5 phút + hỏi ngay khi quay lại tab (độ trễ ép cập nhật tối đa 5 phút thay vì 30s — đánh đổi theo spec-kien-truc §6).
+- **Kiểm:** tsc sạch (trừ lỗi cũ pdfRender.ts), check:kien-truc không mục nào tăng. CHƯA thử trên app thật.
+- **Sai/lưu ý:** script chèn lần đầu hỏng (escape 
+ trong heredoc) làm rác 21 dòng đầu nhansu.ts — đã sửa trước khi commit. Không đụng DB.

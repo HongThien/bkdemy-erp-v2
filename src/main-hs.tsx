@@ -57,7 +57,7 @@ createRoot(document.getElementById('root')!).render(
 )
 
 // BẮT BUỘC CẬP NHẬT NGAY (Thùy 03/11, mig 202611032025): Thùy bấm ở Admin → "Mở tính năng app HS" ⇒ server ghi mốc. Máy mở app từ
-// TRƯỚC mốc (hỏi mỗi 30 giây khi màn đang hiện, có đăng nhập) sẽ kiểm bản mới rồi tải lại — CHỈ khi em đang ở MÀN CHÍNH (không làm
+// TRƯỚC mốc (hỏi mỗi 5 phút + lúc quay lại tab khi màn đang hiện, có đăng nhập) sẽ kiểm bản mới rồi tải lại — CHỈ khi em đang ở MÀN CHÍNH (không làm
 // mất bài đang làm); đang ở màn khác thì đợi em về màn chính. Mốc đã xử lý nhớ trong máy ⇒ đồng hồ máy lệch cũng không tải lại lặp.
 const NAP_LUC = Date.now()
 const KHOA_EP = 'hs_ep_cap_nhat_da'
@@ -80,5 +80,7 @@ async function hoiEp() {
   const m = String(data)
   if (new Date(m).getTime() > NAP_LUC && !daXuLy(m)) { mocEp = m; void taiLaiNeuDuoc() }
 }
-window.setInterval(() => { void hoiEp().catch(() => {}) }, 30_000)
+// Nhịp 5 phút (spec-kien-truc §6: số không realtime ≥ 5 phút) + hỏi ngay khi em quay lại tab — thay cho 30 s (10.000 HS × 2 lượt/phút = 333 lượt/giây vô ích).
+window.setInterval(() => { void hoiEp().catch(() => {}) }, 5 * 60_000)
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') void hoiEp().catch(() => {}) })
 window.addEventListener(EVT_MAN, () => { void taiLaiNeuDuoc() })

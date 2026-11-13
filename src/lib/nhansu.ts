@@ -109,15 +109,18 @@ export async function listNhanSu(): Promise<NhanSu[]> {
   return (data ?? []) as NhanSu[]
 }
 export async function createNhanSu(p: Partial<NhanSu> & { ho_ten: string }): Promise<NhanSu> {
+  xoaCacheHoSo()
   const { data, error } = await supabase.from('nhan_su').insert(p).select().single()
   if (error) throw error
   return data as NhanSu
 }
 export async function updateNhanSu(id: string, patch: Partial<NhanSu>): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
 export async function deleteNhanSu(id: string): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').delete().eq('id', id)
   if (error) throw error
 }
@@ -127,6 +130,7 @@ export async function deleteNhanSu(id: string): Promise<void> {
 // ⚠ Cần Dashboard tắt "Confirm email" 1 lần (Authentication → Sign In/Up), không thì tài khoản
 // mới phải bấm link trong mail mới đăng nhập được.
 export async function capTaiKhoan(nhanSuId: string, email: string, password: string): Promise<void> {
+  xoaCacheHoSo()
   const url = import.meta.env.VITE_SUPABASE_URL as string
   const key = import.meta.env.VITE_SUPABASE_KEY as string
   const tmp = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } })
@@ -142,6 +146,7 @@ export async function capTaiKhoan(nhanSuId: string, email: string, password: str
 }
 // Gỡ link tài khoản ↔ nhân sự (vd đã xóa user bên Auth Dashboard → dọn dòng nối mồ côi).
 export async function goTaiKhoan(nhanSuId: string): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('tai_khoan').delete().eq('nhan_su_id', nhanSuId)
   if (error) throw error
 }
@@ -224,7 +229,30 @@ export type MyProfile = {
   hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
   khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) được phân công Trưởng/Phó khối (fn_khoi_cua_toi ← phan_cong_quan_ly_khoi) — quyền chấm mọi lớp cùng khối
 }
+// Cache hồ sơ (spec-kien-truc §6): tải MỘT lần mỗi phiên, giữ 5 phút, gộp lượt gọi đang bay, xoá khi có ghi / đổi tài khoản.
+// uid lấy từ getSession() (đọc local) — getUser() là một request mạng mỗi lần gọi.
+const HOSO_TTL_MS = 5 * 60_000
+let hosoCache: { uid: string; at: number; v: MyProfile | null } | null = null
+let hosoBay: { uid: string; p: Promise<MyProfile | null> } | null = null
+/** Xoá cache hồ sơ — gọi sau MỌI ghi vào nhan_su / tai_khoan / vi_tri / phan_cong_lop / nhan_su_team / nhan_su_mon / lop. */
+export function xoaCacheHoSo(): void { hosoCache = null; hosoBay = null }
+supabase.auth.onAuthStateChange((e) => { if (e === 'SIGNED_OUT' || e === 'SIGNED_IN' || e === 'USER_UPDATED') xoaCacheHoSo() })
 export async function getMyProfile(): Promise<MyProfile | null> {
+  const { data: ss } = await supabase.auth.getSession()
+  const uid = ss.session?.user?.id
+  if (!uid) { xoaCacheHoSo(); return null }
+  if (hosoCache && hosoCache.uid === uid && Date.now() - hosoCache.at < HOSO_TTL_MS) return hosoCache.v ? structuredClone(hosoCache.v) : null
+  if (hosoBay && hosoBay.uid === uid) { const v = await hosoBay.p; return v ? structuredClone(v) : null }
+  const p = taiMyProfile()
+  const bay = { uid, p }
+  hosoBay = bay
+  try {
+    const v = await p
+    if (hosoBay === bay) hosoCache = { uid, at: Date.now(), v }   // bị xoá giữa chừng (có ghi) ⇒ không cất bản cũ
+    return v ? structuredClone(v) : null
+  } finally { if (hosoBay === bay) hosoBay = null }
+}
+async function taiMyProfile(): Promise<MyProfile | null> {
   const { data: au } = await supabase.auth.getUser()
   const u = au?.user
   if (!u) return null
@@ -350,6 +378,7 @@ export async function getMyScope(): Promise<MyScope | null> {
 
 // NS chỉ được sửa 3 trường cá nhân — whitelist ngay tại seam, UI không lách được.
 export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: string | null; email?: string | null; anh_url?: string | null }): Promise<void> {
+  xoaCacheHoSo()
   const patch: Record<string, unknown> = { updated_at: new Date().toISOString() }
   if ('so_dien_thoai' in p) patch.so_dien_thoai = p.so_dien_thoai
   if ('email' in p) patch.email = p.email
@@ -359,23 +388,27 @@ export async function updateMyProfile(nhanSuId: string, p: { so_dien_thoai?: str
 }
 // Phím tắt CÁ NHÂN cho mẫu công thức (mig 202609030144) — { templateId: 'Ctrl+Alt+F' }. Ghi đè cả map.
 export async function updatePhimTatCongThuc(nhanSuId: string, map: Record<string, string>): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').update({ phim_tat_cong_thuc: map, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 
 // Giao diện vỏ ERP tôi chọn (mig 202610131824) — {skin, nen, che_do} theo style app HS. Ghi đè cả object.
 export async function updateErpGiaoDien(nhanSuId: string, gd: { skin?: string; nen?: string | null; nen_url?: string | null; che_do?: 'sang' | 'toi'; canh?: string | null }): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').update({ erp_giao_dien: gd, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 // Mục menu YÊU THÍCH của tôi (mig 202610131649) — mảng id mục theo thứ tự thêm. Ghi đè cả mảng.
 export async function updateMenuYeuThich(nhanSuId: string, cay: import('./yeuThich').CayYT): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').update({ menu_yeu_thich: cay, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
 
 // Bố cục Trang chính của tôi (mig 202610140032) — {an:[id box ẩn]}. Ghi đè cả object.
 export async function updateHomeBoCuc(nhanSuId: string, bc: HomeBoCuc): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('nhan_su').update({ home_bo_cuc: bc, updated_at: new Date().toISOString() }).eq('id', nhanSuId)
   if (error) throw error
 }
@@ -391,6 +424,7 @@ export async function listNhanSuTeamMap(): Promise<Record<string, string[]>> {
 }
 // Set trọn bộ team của 1 NS (delete + insert — bảng nối nhỏ, đơn giản là đủ).
 export async function setTeamsOfNhanSu(nhanSuId: string, teamIds: string[]): Promise<void> {
+  xoaCacheHoSo()
   const { error: e1 } = await supabase.from('nhan_su_team').delete().eq('nhan_su_id', nhanSuId)
   if (e1) throw e1
   if (!teamIds.length) return
@@ -424,6 +458,7 @@ export async function listMonHocThuatCuaToi(nhanSuId: string): Promise<string[]>
 }
 // Set trọn bộ môn của 1 NS (delete + insert — bảng nối nhỏ).
 export async function setMonOfNhanSu(nhanSuId: string, mons: string[]): Promise<void> {
+  xoaCacheHoSo()
   const { error: e1 } = await supabase.from('nhan_su_mon').delete().eq('nhan_su_id', nhanSuId)
   if (e1) throw e1
   if (!mons.length) return
@@ -440,16 +475,19 @@ export async function listViTri(teamId?: string): Promise<ViTri[]> {
   return (data ?? []) as ViTri[]
 }
 export async function createViTri(p: Partial<ViTri> & { team_id: string }): Promise<ViTri> {
+  xoaCacheHoSo()
   const { data, error } = await supabase.from('vi_tri').insert(p).select().single()
   if (error) throw error
   return data as ViTri
 }
 export async function updateViTri(id: string, patch: Partial<Pick<ViTri, 'ten' | 'cap' | 'cha_id' | 'nhan_su_id' | 'mon'>>): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('vi_tri').update(patch).eq('id', id)
   if (error) throw error
 }
 // Xoá ghế: con của nó được nối lên ghế ông (không mồ côi cả nhánh).
 export async function deleteViTri(id: string): Promise<void> {
+  xoaCacheHoSo()
   const { data, error: e0 } = await supabase.from('vi_tri').select('cha_id').eq('id', id).single()
   if (e0) throw e0
   const { error: e1 } = await supabase.from('vi_tri').update({ cha_id: (data as ViTri).cha_id }).eq('cha_id', id)
@@ -467,15 +505,18 @@ export async function listLop(khoi?: string): Promise<Lop[]> {
   return (data ?? []) as Lop[]
 }
 export async function createLop(p: Partial<Lop> & { ten_lop: string; mon: string }): Promise<Lop> {
+  xoaCacheHoSo()
   const { data, error } = await supabase.from('lop').insert(p).select().single()
   if (error) throw error
   return data as Lop
 }
 export async function updateLop(id: string, patch: Partial<Lop>): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('lop').update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
   if (error) throw error
 }
 export async function deleteLop(id: string): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('lop').delete().eq('id', id)
   if (error) throw error
 }
@@ -504,6 +545,7 @@ export async function listPhanCongByLop(lopId: string): Promise<PhanCongLop[]> {
   return (data ?? []) as PhanCongLop[]
 }
 export async function addPhanCong(p: Omit<PhanCongLop, 'id'>): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('phan_cong_lop').insert(p)
   if (error) throw error
 }
@@ -516,6 +558,7 @@ export async function listPhanCongAll(): Promise<PhanCongLop[]> {
 // Set 1 SLOT của lớp (gv_chinh: 1 GV chịu trách nhiệm · gv_phu: 1 GV phụ · tg: 1 TG ôm toàn bộ chấm).
 // Xóa người cũ ở slot rồi gán mới. null = bỏ trống slot. Ghi vào phan_cong_lop (cùng seam với màn Lớp).
 export async function setPhanCongSlot(lopId: string, slot: 'gv_chinh' | 'gv_phu' | 'tg', nhanSuId: string | null): Promise<void> {
+  xoaCacheHoSo()
   const vai: 'gv' | 'tg' = slot === 'tg' ? 'tg' : 'gv'
   let del = supabase.from('phan_cong_lop').delete().eq('lop_id', lopId).eq('vai_tro', vai)
   if (slot === 'gv_chinh') del = del.eq('la_chinh', true)
@@ -528,6 +571,7 @@ export async function setPhanCongSlot(lopId: string, slot: 'gv_chinh' | 'gv_phu'
   }
 }
 export async function removePhanCong(id: string): Promise<void> {
+  xoaCacheHoSo()
   const { error } = await supabase.from('phan_cong_lop').delete().eq('id', id)
   if (error) throw error
 }
