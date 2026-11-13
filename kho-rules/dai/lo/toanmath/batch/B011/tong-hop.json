@@ -1,0 +1,296 @@
+{
+ "tong": {
+  "de": 16,
+  "soan": 16,
+  "soat": 16,
+  "dat": 16,
+  "sua": 16,
+  "cau": 239,
+  "hinh": 62,
+  "co_hd": 9,
+  "chua_chac": [
+   "B011-02 Câu 7",
+   "B011-02 Câu IV.1",
+   "B011-04 Câu 7",
+   "B011-04 Câu 8",
+   "B011-04 Bài 3.1",
+   "B011-06 Bài 3",
+   "B011-06 Bài 4",
+   "B011-12 Câu 7",
+   "B011-12 Câu 8",
+   "B011-15 Bài 3",
+   "B011-15 Bài 4"
+  ],
+  "loai": {
+   "trac_nghiem": 84,
+   "tu_luan": 130,
+   "tra_loi_ngan": 25
+  }
+ },
+ "de": [
+  {
+   "ma": "B011-01",
+   "don_vi": "Phòng GD&ĐT huyện Thạch Thất, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 21,
+   "loai": {
+    "trac_nghiem": 12,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 6,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-02",
+   "don_vi": "THCS Phan Chu Trinh, quận Ba Đình, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 6,
+   "chua_chac": [
+    "Câu 7",
+    "Câu IV.1"
+   ]
+  },
+  {
+   "ma": "B011-03",
+   "don_vi": "THCS Phan Đình Giót, quận Thanh Xuân, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 10,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-04",
+   "don_vi": "THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 9,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 4,
+   "chua_chac": [
+    "Câu 7",
+    "Câu 8",
+    "Bài 3.1"
+   ]
+  },
+  {
+   "ma": "B011-05",
+   "don_vi": "THPT Chuyên Hà Nội – Amsterdam, Tổ Toán – Tin học",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-06",
+   "don_vi": "THCS Đông Mỹ, xã Nam Phù, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 5,
+   "chua_chac": [
+    "Bài 3",
+    "Bài 4"
+   ]
+  },
+  {
+   "ma": "B011-07",
+   "don_vi": "THCS Đức Giang, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 16,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8
+   },
+   "hinh": 5,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-08",
+   "don_vi": "THCS Ngọc Lâm, phường Bồ Đề, Hà Nội (Mã đề 801)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 15,
+   "loai": {
+    "trac_nghiem": 4,
+    "tu_luan": 8,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-09",
+   "don_vi": "THCS Phan Chu Trinh, phường Giảng Võ, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 12,
+   "loai": {
+    "tu_luan": 10,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-10",
+   "don_vi": "THCS Giảng Võ 2, quận Ba Đình, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 4,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-11",
+   "don_vi": "Cụm chuyên môn số 14, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 16,
+   "loai": {
+    "trac_nghiem": 4,
+    "tu_luan": 10,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-12",
+   "don_vi": "THCS & THPT Lương Thế Vinh, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 9
+   },
+   "hinh": 5,
+   "chua_chac": [
+    "Câu 7",
+    "Câu 8"
+   ]
+  },
+  {
+   "ma": "B011-13",
+   "don_vi": "THCS Chu Văn An, phường Tây Hồ, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-14",
+   "don_vi": "THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 16,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8
+   },
+   "hinh": 6,
+   "chua_chac": []
+  },
+  {
+   "ma": "B011-15",
+   "don_vi": "THCS Nguyễn Trường Tộ, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 4,
+   "chua_chac": [
+    "Bài 3",
+    "Bài 4"
+   ]
+  },
+  {
+   "ma": "B011-16",
+   "don_vi": "THPT Chuyên Hà Nội – Amsterdam, Tổ Toán – Tin học",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tra_loi_ngan": 5,
+    "tu_luan": 5
+   },
+   "hinh": 2,
+   "chua_chac": []
+  }
+ ]
+}
