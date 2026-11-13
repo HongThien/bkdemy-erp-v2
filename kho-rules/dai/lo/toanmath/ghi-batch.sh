@@ -7,6 +7,9 @@ set -uo pipefail
 B="$1"; KHOI="$2"; GHI="${3:-}"
 REPO="$(cd "$(dirname "$0")/../../../.." && pwd)"; cd "$REPO"
 LVG="${BK_LV:-C:/Users/WBPC/bk-kho-lam-viec}/de-thi/toanmath/$B"
+# hình sống trên kho (anh-batch.mjs, Thùy 13/11) ⇒ kéo về những tệp máy này chưa có; thiếu goc.pdf/trang thì dựng lại từ PDF gốc
+node kho-rules/dai/lo/toanmath/anh-batch.mjs keo "$B" || { echo "❌ kéo hình $B từ kho lỗi — dừng"; exit 1; }
+node kho-rules/dai/lo/toanmath/chuan-bi-batch.mjs "$B" >/dev/null
 for SOAN in kho-rules/dai/lo/toanmath/batch/$B/$B-*.soan.md; do
   case "$SOAN" in *.goc.md) continue;; esac
   MA="$(basename "$SOAN" .soan.md)"; LV="$LVG/$MA"; SOAT="${SOAN%.soan.md}.soat.md"

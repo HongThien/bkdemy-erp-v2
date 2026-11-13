@@ -52,6 +52,7 @@ bóc xong mà batch > 300 câu thì tách thành `a`/`b`, mỗi nửa báo cáo 
 | 3 | **Sonnet giải chi tiết** | subagent Sonnet, lô ~60 câu, brief `de-hoc-ki/brief-giai-chi-tiet.md` + luật khối `kho-rules/dai/k<khối>.md` | đáp án + lời giải |
 | 4 | **Opus giải mù** | subagent Opus, KHÔNG thấy bài Sonnet | đáp số độc lập |
 | 5 | **So khớp** | máy | khớp · lệch · bỏ (câu hỏng / thiếu hình / đề sai) |
+| 5b | **Đẩy hình lên kho NGAY** | `anh-batch.mjs day <BATCH>` (Thùy 13/11: hình không được nằm ở máy) | máy nào cũng ghi được; `ghi-batch.sh` tự `keo` về |
 | 6 | **HTML duyệt** | `build-duyet-html.mjs` — ảnh gốc + đề + lời giải, câu lệch đứng đầu | **Thùy xem** |
 | 7 | **Ghi DB khi Thùy nói "ghi"** | `ghi.mjs --ghi` — `da_duyet=false`, dạng chờ `…000000`, tạo `tai_lieu` đề thi | số câu ghi, số câu trỏ về câu cũ |
 

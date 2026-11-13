@@ -26,5 +26,9 @@ Repo = `C:\Users\WBPC\Desktop\BKERP\bkdemy-erp-v2`. Với mỗi `<MA>` được 
   khi đề bắt chứng minh thẳng hàng, không kí hiệu vuông góc khi đó là điều phải chứng minh). Canvas cao ≤ 450px, nhãn không đè đường, không cụt mép.
 - Vẽ xong mở ảnh bằng Read kiểm; sai thì sửa.
 
+## 2b. Đẩy hình lên kho (BẮT BUỘC, xong mới trả lời)
+Chạy từ thư mục Repo: `node kho-rules/dai/lo/toanmath/anh-batch.mjs day <BATCH> <MA…>` (các MA bạn được giao). Phải in "⬆ đẩy … tệp" không có LỖI.
+Hình chỉ nằm ở máy là CHƯA XONG (Thùy 13/11).
+
 ## 3. Trả lời cuối (≤ 120 từ)
 Mỗi `<MA>`: số hình đề đã cắt / số hình giải đã vẽ, đủ chưa so với số dòng khai. Hình nào không tìm thấy / không chắc ⇒ nói rõ (MA + nhãn câu).
