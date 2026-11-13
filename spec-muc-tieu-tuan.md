@@ -231,9 +231,10 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 ### 9.1 Mục tiêu tuần này — app HS **và** app phụ huynh (mockup màn 1)
 - Đầu màn: tên tuần · lớp · chọn môn · nút "Các tuần trước".
 - Ba ô: **Tiến độ mục tiêu tuần** (% + vạch đầu tuần + ▲/▼ + cờ đích) · **Việc của con x/y** · **Xếp hạng tiến độ** (bấm ⇒ top 20).
+- Lối vào app HS: **ô "Mục tiêu tuần" ở Home** (Thùy 13/11), ngay sau ô Học tập.
 - Cột trái: **Phần 1 · Kiến thức mới** + **Phần 2 · Ôn tập kiến thức**. Mỗi dòng nhóm bài GỌN: tên · ▲/▼ · % · thanh có **lá cờ ở mốc mục tiêu TUẦN,
   số ghi dưới cờ** (§5.2b) + vạch mờ "đích 80%" khi mục tiêu tuần < 80% (không ghi chữ "Mục tiêu"). **Bấm vào** mới mở: một dòng mô tả (đã học x/y dạng · tuần này N lần đo, làm Tốt cả N lần thì lên X%) +
-  nút **Xem lại lý thuyết · Xem lại bài trên lớp · Luyện tập**.
+  nút **Xem lại bài trên lớp (khu giáo trình) · Luyện tập** (Thùy 13/11: bỏ "Xem lại lý thuyết").
 - Cột phải: **Việc của con tuần này** (§6).
 - **App phụ huynh: cùng nội dung, cập nhật liên tục** (Cổng Phụ huynh — project riêng `bkdemy-ph`, đọc ERP qua FDW `erp_live`), chữ formal.
   Thay hẳn phương án chụp ảnh gửi.
