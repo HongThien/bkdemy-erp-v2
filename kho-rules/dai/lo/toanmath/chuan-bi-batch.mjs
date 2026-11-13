@@ -10,7 +10,7 @@ import { createHash } from 'node:crypto'
 import path from 'node:path'
 const MA = process.argv[2]
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
-const GOC = 'E:/BK ACADEMY/Tài liệu tham khảo'
+const GOC = process.env.BK_GOC || 'E:/BK ACADEMY/Tài liệu tham khảo'
 const KV = `C:/Users/WBPC/bk-kho-lam-viec/de-thi/toanmath/${MA}`
 const batch = JSON.parse(readFileSync(path.join(HERE, 'batch.json'), 'utf8')).find((b) => b.ma === MA)
 const ds = JSON.parse(readFileSync(path.join(HERE, 'batch', MA, 'ds-de.json'), 'utf8'))
