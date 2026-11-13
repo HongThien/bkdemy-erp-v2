@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-583 bảng · 39 view · 0 enum · 406 trigger · 1881 function
+584 bảng · 39 view · 0 enum · 407 trigger · 1883 function
 
 ## _app_secrets
 
@@ -3636,6 +3636,17 @@ END |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
+## hinh_hoc_cau_so_do
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  | PK FK→hinh_hoc_cau_hoi.ma_cau |  |
+| mau_chot | text |  |  |  |  |
+| nut | jsonb |  |  |  |  |
+| nguon | text |  | 'claude'::text |  | `claude` · `nguoi` |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
 ## hinh_hoc_cum_bai
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -4821,7 +4832,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -10973,6 +10984,7 @@ WITH luot AS (
 | hinh_hoc_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hinh_hoc_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
 | hinh_hoc_cau_lop | trg_hinh_hoc_cau_lop_truoc_sua | BEFORE | UPDATE | _hinh_hoc_cau_lop_truoc_sua |
+| hinh_hoc_cau_so_do | hinh_hoc_cau_so_do_updated_at | BEFORE | UPDATE | _hh_so_do_cham_updated_at |
 | hinh_mo_hinh | hinh_mo_hinh_neo_chk_trg | BEFORE | INSERT/UPDATE | hinh_mo_hinh_neo_chk |
 | hinh_mo_hinh | trg_hl_mo_hinh_khop_nhom | BEFORE | INSERT/UPDATE | _hl_mo_hinh_khop_nhom |
 | hinh_mo_hinh | trg_hl_mo_hinh_vai_chk | BEFORE | UPDATE | _hl_mo_hinh_vai_chk |
@@ -11359,6 +11371,8 @@ WITH luot AS (
 - `_giai_thuong_xs_khoi_log_tg()` → trigger
 - `_giai_xu(p_khoi text)` → integer
 - `_he_thong_cong_tac_ghi_log()` → trigger
+- `_hh_so_do_cham_updated_at()` → trigger
+- `_hh_so_do_hop_le(p jsonb)` → boolean
 - `_hinh_bai_dong_bo_chuyen_de()` → trigger
 - `_hinh_hoc_cau_lop_truoc_sua()` → trigger
 - `_hk_can_hau_kiem(p_ns uuid)` → boolean
@@ -13231,6 +13245,8 @@ WITH luot AS (
 | hinh_form_dien | hinh_form_dien_check | `CHECK (((cach_giai_id IS NULL) <> (bien_the_id IS NULL)))` |
 | hinh_hoc_cau_hoi | hinh_hoc_cau_hoi_y_du | `CHECK ((((bai_y IS NULL) = (nhan_y IS NULL)) AND ((bai_y IS NULL) = (cau_hoi_y IS NULL))))` |
 | hinh_hoc_cau_lop | hinh_hoc_cau_lop_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
+| hinh_hoc_cau_so_do | hinh_hoc_cau_so_do_mau_chot_check | `CHECK ((btrim(mau_chot) <> ''::text))` |
+| hinh_hoc_cau_so_do | hinh_hoc_cau_so_do_nut_check | `CHECK (_hh_so_do_hop_le(nut))` |
 | hinh_hoc_cum_tien_de | hinh_hoc_cum_tien_de_check | `CHECK ((ma_cum <> tien_de_ma_cum))` |
 | hinh_mo_hinh | hinh_mo_hinh_cap_mo_hinh_check | `CHECK (((cap_mo_hinh >= 1) AND (cap_mo_hinh <= 4)))` |
 | hinh_mo_hinh_cha | hinh_mo_hinh_cha_check | `CHECK ((mo_hinh_id <> cha_id))` |

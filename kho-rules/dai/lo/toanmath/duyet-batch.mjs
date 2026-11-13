@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import path from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { createRequire } from 'node:module'
+import { docKhoiSoDo, htmlSoDo, htmlDoanLoiGiai, CSS_SO_DO } from './so-do-html.mjs'
 const MA = process.argv[2]
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
 const ROOT = path.resolve(HERE, '../../../..')
@@ -35,7 +36,8 @@ for (const d of ds) {
   for (const kc of (iGc >= 0 ? md.slice(0, iGc) : md).split(/^(?=### )/m).slice(1)) {
     const [nhan, ...meta] = kc.split('\n')[0].replace(/^### /, '').split(' | ')
     const mm = Object.fromEntries(meta.map((x) => x.split('=')))
-    const truoc = kc.split('**Phần 1. Hướng dẫn**')[0]
+    const truoc = kc.split(/\*\*(?:Phần 1\. Hướng dẫn|Sơ đồ tư duy)\*\*/)[0]
+    const sd = docKhoiSoDo(kc) // sơ đồ tư duy (14/11) — có thì vẽ nút xem + lời giải chia khúc
     const de = truoc.match(/\*\*Đề:\*\*([\s\S]*?)(?=\n\*\*(Hình|Hình giải|Ghi chú|Chưa chắc)|$)/)?.[1]?.trim() ?? ''
     const hinh = [...truoc.matchAll(/^\*\*Hình:\*\*\s*(.+)$/gm)].flatMap((m) => m[1].split(',').map((s) => s.trim()))
     const hg = [...truoc.matchAll(/^\*\*Hình giải:\*\*\s*(.+)$/gm)].flatMap((m) => m[1].split(',').map((s) => s.trim()))
@@ -47,7 +49,7 @@ for (const d of ds) {
     cs.push(`<div class="cau${cc.length ? ' cc' : ''}" id="${id}"><h3>${esc(nhan)} <small>${esc(mm.kho)} · ${esc(mm.loai)}${mm.dap_an && mm.dap_an !== '—' ? ' · đáp án <b>' + esc(mm.dap_an) + '</b>' : ''}</small></h3>
 <div class="dd">${toi(de)}</div>${hinh.map((x) => anh(d.ma, x)).join('')}
 ${ghi.map((x) => `<div class="ghi">Ghi chú: ${toi(x)}</div>`).join('')}${cc.map((x) => `<div class="viec">⚠ Chưa chắc: ${toi(x)}</div>`).join('')}
-<details><summary>Lời giải (Phần 2)</summary><div class="gi">${doan(tt)}${hg.map((x) => anh(d.ma, x)).join('')}</div></details></div>`)
+${sd ? htmlSoDo(sd, toi, id.replace(/\W/g, '')) : ''}<details${sd ? ' open' : ''}><summary>Lời giải (Phần 2)</summary><div class="gi">${sd ? htmlDoanLoiGiai(tt, sd, toi) : doan(tt)}${hg.map((x) => anh(d.ma, x)).join('')}</div></details></div>`)
   }
   khoi.push(`<section class="de" id="${d.ma}"><h2>${esc(d.ma)} — ${toi(ten)}</h2><p class="meta">${soat} · ${cs.length} câu · ${d.hd ? 'có hướng dẫn chấm' : 'không có hướng dẫn chấm'}</p>
 <details class="anh"><summary>Ảnh đề gốc</summary>${trangDe(d)}</details>
@@ -68,6 +70,7 @@ main{max-width:920px;margin:0 auto;padding:16px}h1{font-size:1.3rem}
 .anh img,.hinh{max-width:100%;border:1px solid var(--vien);border-radius:8px;margin:6px 0;display:block}.hinh{max-height:320px;width:auto}
 .viec{border-left:4px solid var(--cb);padding:5px 10px;margin:6px 0}.ghi{color:var(--mo);font-size:.94em;margin:4px 0}
 .dat{color:var(--ok);font-weight:600}.loi{color:#dc2626;font-weight:600}details{margin-top:6px}summary{cursor:pointer;color:var(--mo)}.gi p{margin:6px 0}
+${CSS_SO_DO}
 table{border-collapse:collapse}td,th{padding:3px 10px;border-bottom:1px solid var(--vien);text-align:left}
 </style><main>
 <h1>Duyệt ${MA} — ${esc(JSON.parse(readFileSync(path.join(HERE, 'batch.json'), 'utf8')).find((b) => b.ma === MA).ten)}</h1>
