@@ -45,6 +45,7 @@ export const CD = [
     ] },
     { ten: 'Đơn vị đo', tt: 'moi', nhom: [
       { ten: 'Đổi đơn vị đo', tt: 'moi', dang: ['Độ dài · khối lượng', 'Diện tích · thể tích', 'Thời gian (giờ–phút–giây) · dạng STP'], nguon: 'TLTK CĐ11 · khuôn 4T "Đo lường › Đổi đơn vị"', uu: 3 },
+      { ten: 'Số đo thời gian', tt: 'moi', dang: ['Đổi đơn vị thời gian (năm, tháng, tuần, ngày, giờ, phút, giây)', 'Cộng – trừ số đo thời gian', 'Nhân – chia số đo thời gian'], nguon: 'TLTK CĐ25 (số đo thời gian) · 35 câu thiếu dạng (Thùy 13/11 "cũng được")', uu: 1 },
     ] },
   ] },
   { id: 'C', ten: 'Bài toán tỉ số', ghi: 'Chủ đề hiện có (NCD00215) — giữ nguyên tên và mã. Đề xuất thêm các nhóm 🆕 còn thiếu so với TLTK + CLC (hai hiệu số, giả thiết tạm, khử, tính tuổi, tính ngược) và các dạng còn thiếu của phần trăm (từ 25 câu "chưa có dạng").', cdn: [

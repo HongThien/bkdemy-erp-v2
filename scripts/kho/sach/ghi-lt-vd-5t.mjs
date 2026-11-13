@@ -15,7 +15,7 @@ import { bien } from '../cau-hinh.mjs'
 const require = createRequire(import.meta.url)
 const katex = require('katex')
 
-const a = process.argv.slice(2), GHI = a.includes('--ghi'), tep = a.filter((x) => !x.startsWith('--'))
+const a = process.argv.slice(2), GHI = a.includes('--ghi'), DE = a.includes('--ghi-de'), tep = a.filter((x) => !x.startsWith('--'))
 if (!tep.length) { console.error('Dùng: node scripts/kho/sach/ghi-lt-vd-5t.mjs <lt-ra-N.md>… [--ghi]'); process.exit(2) }
 const THE = /^##(ĐN|ĐL|TC|CY|PP|NX)\s*$/
 
@@ -58,7 +58,7 @@ function kiem(c) {
     if (/\n[ \t]*\n/.test(de)) loi.push(`VD${i + 1}: đề có dòng trống (cắt khung)`)
     if (de.length < 20) loi.push(`VD${i + 1}: đề quá ngắn`)
     const lg = v.slice(j + 19).trim()
-    if (!/Đáp số/.test(lg)) loi.push(`VD${i + 1}: lời giải không có "Đáp số"`)
+    if (lg.length < 8) loi.push(`VD${i + 1}: lời giải rỗng`)   // bài Tính / điền kết quả không có dòng "Đáp số" (k5T.md §1.5) — không bắt buộc
   }
   for (const [ten, s] of [['mô tả', c.mo_ta], ['lý thuyết', c.ly_thuyet], ['ví dụ', c.vi_du]]) {
     if (/[⇒⇔∈∀≤≥]/.test(s)) loi.push(`${ten}: ký hiệu cấm (⇒ ⇔ ∈ ∀ ≤ ≥)`)
@@ -86,7 +86,7 @@ try {
     const moi = id >= 'NDB02900'
     const sets = [], val = [id]
     const them = (col, v, chiTrong) => { if (chiTrong && h[col]?.trim()) return; val.push(v); sets.push(`${col} = $${val.length}`) }
-    them('mo_ta', c.mo_ta, !moi); them('ly_thuyet', c.ly_thuyet, true); them('vi_du', c.vi_du, true)
+    them('mo_ta', c.mo_ta, !moi); them('ly_thuyet', c.ly_thuyet, !DE); them('vi_du', c.vi_du, !DE)   // --ghi-de: SỬA lại lý thuyết + ví dụ đã ghi (mô tả của người vẫn không đụng)
     if (sets.length) { await db.query(`update dai_bdm_dang_bai set ${sets.join(', ')} where id = $1`, val); dem.ghi++ }
   }
   for (const id of hien.keys()) if (!goi.has(id)) dem.khong_co++
