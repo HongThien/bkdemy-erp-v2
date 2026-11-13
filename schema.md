@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-590 bảng · 39 view · 0 enum · 433 trigger · 1912 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1916 function
 
 ## _app_secrets
 
@@ -2557,6 +2557,7 @@ END |  |  |
 | bai_lam_cau_id | uuid | Y |  | FK→bai_lam_cau.id |  |
 | nhan_xet | text | Y |  |  |  |
 | diem_dat | numeric | Y |  |  |  |
+| y_ket_qua | jsonb | Y |  |  |  |
 
 ## gami_mua
 
@@ -4832,7 +4833,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6606,8 +6607,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11629,6 +11630,7 @@ WITH luot AS (
 - `_mcq_kiem_kho(p_kho text)` → void
 - `_mon_khoi_hop_le(p_mon text, p_khoi text)` → boolean
 - `_mt_dong_bo_diem_thi(p_buoi uuid, p_hs uuid)` → void
+- `_mt_ds_kho()` → TABLE(ma_cau text, chu_de_id text, kho text)
 - `_mt_khung_tinh(p_buoi uuid)` → TABLE(id uuid, moi numeric, nc boolean, ngoai boolean, tl uuid, dbc jsonb)
 - `_mt_ky_thi(p_buoi uuid)` → uuid
 - `_mt_loai_ky_cua_buoi(p_buoi uuid)` → text
@@ -12680,8 +12682,11 @@ WITH luot AS (
 - `fn_mt_cham_ds_buoi(p_lop uuid)` → TABLE(buoi_id uuid, ngay date, ten text, loai_de text, dong boolean, so_hs integer, so_hs_xong integer)
 - `fn_mt_cham_hs(p_buoi uuid)` → TABLE(hoc_sinh_id uuid, ho_ten text, diem_danh text, so_cau integer, so_cham integer, so_thieu_diem integer, tinh_co_ban numeric, tinh_nang_cao numeric, khung_co_ban numeric, khung_nang_cao numeric, nguon text, diem_co_ban numeric, diem_nang_cao numeric, diem numeric, full_diem boolean, tl_co_ban numeric, tl_nang_cao numeric, full_thi_lai boolean, diem_thi_lai numeric)
 - `fn_mt_cham_hs_v2(p_buoi uuid)` → TABLE(hoc_sinh_id uuid, ho_ten text, diem_danh text, so_cau integer, so_cham integer, so_thieu_diem integer, tinh_co_ban numeric, tinh_nang_cao numeric, khung_co_ban numeric, khung_nang_cao numeric, nguon text, diem_co_ban numeric, diem_nang_cao numeric, diem numeric, full_diem boolean, tl_co_ban numeric, tl_nang_cao numeric, full_thi_lai boolean, diem_thi_lai numeric, lop_id uuid, ten_lop text, diem_that numeric)
+- `fn_mt_ds_chu_de(p_khoi text)` → TABLE(id text, ten text, so_cau integer)
+- `fn_mt_ds_cua_cau(p_ma text[])` → TABLE(ma_cau text, chu_de_id text, kho text)
 - `fn_mt_ds_de_da_thi(p_mon text)` → TABLE(de_id uuid, ten text, khoi text, loai_de text, ngay_moi date, so_lop integer)
 - `fn_mt_dung_diem_cau(p_buoi uuid, p_hs uuid)` → void
+- `fn_mt_goi_y_ds(p_chu_de text[], p_n integer DEFAULT 4, p_tru text[] DEFAULT '{}'::text[])` → TABLE(ma_cau text, chu_de_id text, kho text)
 - `fn_mt_hang_thang(p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, khoi text, tb numeric, hang integer, so_em integer, hang_quy integer, diem_bang integer, ngay date)
 - `fn_mt_khung_buoi(p_buoi uuid)` → jsonb
 - `fn_mt_luu_tong(p_buoi uuid, p_hs uuid, p_full boolean, p_tl_cb numeric, p_tl_nc numeric, p_full_tl boolean)` → void
@@ -13351,6 +13356,7 @@ WITH luot AS (
 | game_xep_chu_man | game_xep_chu_man_ms_check | `CHECK (((ms >= 0) AND (ms <= 86400000)))` |
 | game_xep_chu_man | game_xep_chu_man_ten_check | `CHECK (((length(ten) >= 1) AND (length(ten) <= 20)))` |
 | game_xep_chu_man | game_xep_chu_man_xong_check | `CHECK (((xong >= 1) AND (xong <= 10)))` |
+| gami_grades | gami_grades_y_ket_qua_check | `CHECK (((y_ket_qua IS NULL) OR ((jsonb_typeof(y_ket_qua) = 'array'::text) AND ((jsonb_array_length(y_ket_qua) >= 1) AND (jsonb_array_length(y_ket_qua) <= 8)))))` |
 | gami_mua | gami_mua_check | `CHECK (((thang_dau <= hh_thang_cuoi) AND (hh_thang_cuoi <= thang_cuoi)))` |
 | gami_mua | gami_mua_hh_thang_cuoi_check | `CHECK ((hh_thang_cuoi ~ '^\d{4}-\d{2}$'::text))` |
 | gami_mua | gami_mua_thang_cuoi_check | `CHECK ((thang_cuoi ~ '^\d{4}-\d{2}$'::text))` |

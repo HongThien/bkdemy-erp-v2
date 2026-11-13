@@ -100,7 +100,7 @@ export default function KetQuaBoTroTuan({ tu, den, loai = 'bo_tro_yeu', onDong }
               <div className="mt-2 overflow-hidden rounded-lg border border-slate-200 bg-white">
                 <table className="w-full text-left text-[13px]">
                   <thead className="bg-slate-50 text-[11.5px] uppercase tracking-wide text-slate-500">
-                    <tr><th className="px-3 py-1.5 font-semibold">Ca</th><th className="px-3 py-1.5 font-semibold">Học sinh</th><th className="px-3 py-1.5 font-semibold">Học</th><th className="px-3 py-1.5 font-semibold">Kết quả</th><th className="px-3 py-1.5 font-semibold">Luyện</th><th className="px-3 py-1.5 font-semibold">Test</th><th className="px-3 py-1.5 font-semibold">Theo dõi</th></tr>
+                    <tr><th className="px-3 py-1.5 font-semibold">Ca</th><th className="px-3 py-1.5 font-semibold">Học sinh</th><th className="px-3 py-1.5 font-semibold">Học</th><th className="px-3 py-1.5 font-semibold">Kết quả</th><th className="px-3 py-1.5 font-semibold">Luyện</th><th className="px-3 py-1.5 font-semibold">Test</th><th className="px-3 py-1.5 font-semibold" aria-label="Mở chi tiết" /></tr>
                   </thead>
                   <tbody>
                     {ds.length === 0 && <tr><td colSpan={7} className="px-3 py-4 text-center text-slate-400">Không có ca nào.</td></tr>}
@@ -141,7 +141,7 @@ function DongCa({ c, mo, onBam }: { c: CaKetQua; mo: boolean; onBam: () => void 
         </td>
         <td className="whitespace-nowrap px-3 py-2 text-slate-700">{lu[1] > 0 ? <>{lu[0]}/{lu[1]} <span className="text-[11.5px] text-slate-400">{pct(lu[0], lu[1])}%</span></> : '—'}</td>
         <td className="whitespace-nowrap px-3 py-2 text-slate-700">{te[1] > 0 ? <>{te[0]}/{te[1]} <span className="text-[11.5px] text-slate-400">{pct(te[0], te[1])}%</span></> : <span className="text-slate-400">{c.co_test ? (c.test_da_nop ? '—' : 'chưa nộp') : 'không test'}</span>}</td>
-        <td className="px-3 py-2 text-[12px] text-slate-500">{c.theo_doi ? (c.theo_doi.trang_thai === 'theo_doi' ? <span className="rounded-full bg-indigo-50 px-2 py-0.5 font-semibold text-indigo-700">👁 đang theo dõi</span> : c.theo_doi.trang_thai) : '—'}<span className="ml-1 text-slate-300">{mo ? '▾' : '▸'}</span></td>
+        <td className="px-3 py-2 text-[12px] text-slate-500">{/* 13/11 Thùy: bỏ cột "Theo dõi" (danh sách theo dõi của luồng duyệt cũ, không còn nghĩa với thang L1–L4) */}<span className="text-slate-300">{mo ? '▾' : '▸'}</span></td>
       </tr>
       {mo && (
         <tr className="bg-slate-50/60">
