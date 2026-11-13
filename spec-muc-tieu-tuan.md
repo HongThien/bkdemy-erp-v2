@@ -239,6 +239,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - **App phụ huynh: cùng nội dung, cập nhật liên tục** (Cổng Phụ huynh — project riêng `bkdemy-ph`, đọc ERP qua FDW `erp_live`), chữ formal.
   Thay hẳn phương án chụp ảnh gửi.
 - App HS dựng bằng khung style (`design/STYLE-HS.md`, `skin/KhungHS.tsx`), màn ngang trước (`spec-v1-app-hs.md`). Chữ theo `useLoi()`.
+- **NỀN TRẮNG ở mọi style** (Thùy 13/11: "để nền trắng cho dễ nhìn, đừng để nền tối"): màn này là màn ĐỌC ⇒ dùng bảng màu đọc nền sáng `--sk-doc-*` + màu nhấn theo môn `mauDocMon` (đè biến `--sk-*` trong phạm vi màn, không gõ màu tay). Ô ở Home vẫn theo style.
 
 ### 9.2 Các tuần đã chốt — HS + phụ huynh (mockup màn 2)
 - Sau mỗi lần chốt thứ Hai. Đọc **sổ chốt tuần**, không tính lại.

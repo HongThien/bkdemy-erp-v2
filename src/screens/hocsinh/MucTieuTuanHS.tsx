@@ -10,6 +10,23 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, NhomHS, TrongHS, MAU, THE, HEAD } from './skin/KhungHS'
 import { monCuaHS } from '../../lib/tuluyen'
+import { mauDocMon } from './skin/registry'
+
+// Thùy 13/11: "UI để nền trắng cho dễ nhìn, đừng để nền tối" — màn này là màn ĐỌC (design/STYLE-HS.md §Menu vs màn riêng):
+// mọi style đều dùng bảng màu đọc nền sáng (--sk-doc-*, registry DOC_MAC_DINH / Skin.doc) + màu nhấn theo MÔN (mauDocMon).
+// Đè biến --sk-* trong phạm vi màn ⇒ ManHS/TheHS/NutHS/MAU bên trong tự ra nền trắng, không gõ màu tay.
+function NenSang({ mon, children }: { mon: string | null; children: ReactNode }) {
+  const m = mauDocMon(mon)
+  const bien = {
+    '--sk-nen-trong': 'var(--sk-doc-nen)', '--sk-bg': 'var(--sk-doc-nen)', '--sk-surface': 'var(--sk-doc-giay)', '--sk-surface2': 'var(--sk-doc-vd)',
+    '--sk-ink': 'var(--sk-doc-ink)', '--sk-muted': 'var(--sk-doc-muted)', '--sk-line': 'var(--sk-doc-line)',
+    '--sk-acc': m.acc, '--sk-acc-ink': 'var(--sk-doc-giay)',
+    '--sk-card-border': '1px solid var(--sk-doc-line)', '--sk-card-left': '1px solid var(--sk-doc-line)', '--sk-card-shadow': 'var(--sk-doc-bong)',
+    '--sk-card-clip': 'none', '--sk-blur': 'none', '--sk-chu-bong': 'none',
+    '--sk-font': 'var(--sk-doc-font)', '--sk-font-head': 'var(--sk-doc-font)', '--sk-head-case': 'none', '--sk-head-track': 'normal',
+  } as CSSProperties
+  return <div style={bien}>{children}</div>
+}
 import {
   mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh,
   NHAN_MUC, NHAN_TT, TEN_VIEC,
@@ -29,8 +46,8 @@ export type DichMoMTT = 'bai_tren_lop' | 'luyen_tap'
 export function MucTieuTuanTheoMon({ mon, onBack, onMo }: { mon: string | null; onBack: () => void; onMo?: (d: DichMoMTT) => void }) {
   const [m, setM] = useState<string | null | undefined>(mon ?? undefined)
   useEffect(() => { if (mon) { setM(mon); return } let a = true; monCuaHS().then((x) => a && setM(x)).catch(() => a && setM(null)); return () => { a = false } }, [mon])
-  if (m === undefined) return <ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Đang tải…</TrongHS></ManHS>
-  if (m === null) return <ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Em chưa có lớp nào.</TrongHS></ManHS>
+  if (m === undefined) return <NenSang mon={null}><ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Đang tải…</TrongHS></ManHS></NenSang>
+  if (m === null) return <NenSang mon={null}><ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Em chưa có lớp nào.</TrongHS></ManHS></NenSang>
   return <MucTieuTuanHS mon={m} onBack={onBack} onMo={onMo} />
 }
 
@@ -46,10 +63,10 @@ export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBa
     return () => { alive = false }
   }, [mon])
 
-  if (man === 'cac_tuan') return <CacTuanHS mon={mon} onBack={() => setMan('tuan')} />
+  if (man === 'cac_tuan') return <NenSang mon={mon}><CacTuanHS mon={mon} onBack={() => setMan('tuan')} /></NenSang>
   const to = kq && !laChuaChot(kq) ? kq : null
   return (
-    <ManHS>
+    <NenSang mon={mon}><ManHS>
       <DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} theoMon
         phu={to ? `Tuần ${tenTuan(to.tuan, to.den_ngay)}${to.hs.lop ? ` · Lớp ${to.hs.lop}` : ''}` : undefined}
         phai={<NutHS phu onClick={() => setMan('cac_tuan')} className="!h-10 !px-3 !text-[14px]">Các tuần trước</NutHS>} />
@@ -64,7 +81,7 @@ export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBa
       )}
       {to && <ToTuan to={to} onTop={() => setMoTop(true)} onMo={onMo} />}
       {moTop && <BangTop mon={mon} toi={to} onDong={() => setMoTop(false)} />}
-    </ManHS>
+    </ManHS></NenSang>
   )
 }
 

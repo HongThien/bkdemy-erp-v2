@@ -80030,3 +80030,6 @@ Thùy nêu 4 việc, làm được 3:
 - Icon: RPG o_rank · Tối giản o_bai_tap_giao · Khối/Lo-fi/Đáng yêu/Halloween o_luyen_yeu — đều KHÔNG hiện ở Home. Chụp Home RPG/Lo-fi/Tối giản: ô hiện đúng, không trùng.
 - Nhóm bài bấm vào còn 2 nút: Xem lại bài trên lớp (khu giáo trình) · Luyện tập. App PH sửa câu nhắc.
 - Kiểm: tsc · build ERP/HS/PH · check:style-hs (ô mới đủ icon 6 style; còn RỚT cũ ở CaBoTroHS.tsx của phiên khác).
+
+## 13/11 12:50 — Mục tiêu tuần app HS: nền trắng
+- Thùy: "UI để nền trắng cho dễ nhìn chứ đừng để nền tối". MucTieuTuanHS bọc NenSang: đè biến --sk-* bằng bảng màu đọc (--sk-doc-*) + màu nhấn theo môn (mauDocMon) ⇒ mọi style ra nền trắng, không gõ màu tay. Ô ở Home giữ theo style. Mockup canvas đổi sang nền sáng.
