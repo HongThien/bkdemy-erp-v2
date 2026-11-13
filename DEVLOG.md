@@ -80052,3 +80052,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Mig 202611130919 (áp `--only`, Thùy gật xoá cột):** thêm `rut_khoi_kho` (chép 322 false — DO block xác nhận cả 322 là `ma_cau_goc` của hinh_hoc_bai_y) → drop index + drop cột `kho_chuan` → tạo lại cột suy `(not rut_khoi_kho) and (da_duyet or kiem_may is distinct from 'nghi')` + index y cũ. Thử rollback: đổi đúng 32 câu (đều nghi chưa duyệt, true→false), 0 câu false→true, ghi tay vào cột bị chặn. Kiểm sau áp: 6.121 câu · chuẩn 5.767 · rút 322 · ra vì nghi 32 · cột generated.
 - **Script đi kèm:** `kho-rules/hinh/lo/tach-y/ghi.mjs` rút câu cũ bằng `rut_khoi_kho = true` (kiểm "đã rút" đọc cột mới, bỏ kho_chuan khỏi insert ý) · `scripts/anh/nhap_hh_tu_draft.mjs` + `kho-rules/hinh/lo/k8-thales/bai-nhieu-y/nhap_bai_y.mjs` bỏ kho_chuan khỏi insert. `schema.md` regen kèm.
 - **Từ nay:** muốn rút câu Hình khỏi chọn câu ⇒ `rut_khoi_kho = true`, KHÔNG ghi kho_chuan.
+
+## 13/11 — MCQ lớp 4 (fork, `scripts/_k4/`)
+- **Ghi 195 form** (DB đếm 196 gồm 1 câu máy cũ), `da_duyet=false`, không rule mới: đặt tính nhân/chia + đổi tấn–kg + thế kỉ/phút–giây + m²–cm² + đọc số đo diện tích (79) · biểu thức nhiều phép tính + tính chất phân phối lời văn (35) · đoàn xe/thùng–hộp/pin mặt trời/lát sàn/thóc→gạo/chẵn lẻ (67) · bán gấp đôi/làm tròn/ghép thẻ (14).
+- **Kho SAI (đã bỏ):** T104010107004 (kho 49 380 ≠ 52 840 − 24 180:7), T104010107011 (kho "67 268.571429"), T104040204002/003/004/007 (kho lấy rộng = k thay vì dài chia k), T104040201045 (kho "linh tư" khác quy ước "linh bốn").
+- **Bỏ ~220 câu:** sắp xếp dãy số (verify coi là tập), dấu/Có–Không, nhiều ý, cần hình (thước đo góc 22 câu), biểu thức có chữ, và các dạng cuối pool chưa soạn. 36 dạng lớp 4 chưa có câu kho chuẩn — chưa xử lý.
