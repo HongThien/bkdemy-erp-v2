@@ -80483,3 +80483,9 @@ Thùy nêu 4 việc, làm được 3:
 - **`_sk_ns_id()`** = `current_nhan_su_id()` (owner postgres). Hàm còn dùng email trong token: `self_link_account` (đã đóng với client), `trg_han_nop_ngoai_le_log` (chỉ ghi actor) ⇒ `check:kien-truc` 3 → 2, đã hạ trần.
 - **QLHT Test** đã nối `tai_khoan` (Thùy chạy lệnh nối).
 - **CHƯA thử trên app:** nhân sự tải ảnh câu hỏi lên kho · HS đổi ảnh đại diện · màn sự kiện.
+
+## 13/11 (đêm) — ĐỢT 2 · BƯỚC 3: "Việc của tôi" lọc theo người gọi trước (mig 2026111322xx `dot2_buoc3_*` ĐÃ ÁP) — Thùy "đi tiếp thôi"
+- **Làm:** `fn_viec_buoi_thuong` thêm CTE `lop_toi` (lớp tôi được phân công ∪ lớp thuộc (môn, khối) tôi là khối vận hành) và chỉ dựng `b` trên các lớp đó khi `p_tat_ca = false`. Nhánh `p_tat_ca = true` không đổi. `mt_tk` vẫn tính đủ người cho các buổi trong tập (vì `mt_gv` cần biết buổi đã có TK chưa).
+- **So khớp trước khi áp (rollback):** 39 nhân sự đang làm + 1 HS × 3 khoảng ngày (mọi thời gian · tháng 11 · từ 01/09) = 120 cặp, vân tay kết quả LỆCH 0. Sau áp: gọi cho 39 nhân sự không lỗi, tổng việc bằng trước.
+- **Đo:** tb 94 → 70 ms/lượt (đo một phiên). Cải thiện NHỎ vì phần tốn còn lại không nằm ở chỗ quét của người khác: (1) hàm trả TOÀN BỘ lịch sử (có người 906 việc, tổng 6.363 việc cho 39 người) — client cố ý lấy cả việc đã xong để hiện nhóm "Đã xong"; (2) `fn_han_viec` (plpgsql, dò TKB) chạy cho từng dòng trả về.
+- **Chưa làm (cần Thùy quyết vì đổi cái người dùng thấy):** giới hạn việc ĐÃ XONG theo số ngày gần đây; lưu sẵn hạn theo (buổi, khâu).
