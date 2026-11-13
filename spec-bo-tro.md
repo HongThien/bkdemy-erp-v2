@@ -138,10 +138,11 @@
 
 Thùy 13/11: "Bỏ hết những logic trước đây mâu thuẫn với hiện tại". Danh sách dưới đây còn CHẠY hoặc còn nằm trong code; gỡ cần gật từng mục:
 
-1. **Danh sách "Theo dõi" + Duyệt 2 vòng + Chốt tuần** (thay bằng §2 từ 10/11): `fn_btyeu_hoan_tat` và `fn_btyeu_het_han_xu_ly` VẪN ghi em vào
-   `bo_tro_theo_doi` (nguồn `sau_bo_tro`) — không màn nào dùng nữa; màn `DuyetBoTroYeuScreen` (ẩn), `fn_botro_chot_tuan` / `fn_botro_danh_sach_tuan` /
-   `fn_botro_bao_dong` / `fn_botro_theo_doi_*`, engine quét TS `danhgia.ts listCandidatesLop` + `src/gami/danhgia.js` (4 kênh phát hiện).
-2. **Retest tầng 2** (HOLD từ 29/09, công tắc `_btyeu_retest_bat()` = false, `RETEST_BAT`): tab Chờ retest / 📝 Retest, `_btyeu_bu_retest`, 34 bài retest treo.
+1. ✅ **ĐÃ BỎ 13/11 — danh sách "Theo dõi" + Duyệt 2 vòng** (mig `202611131554`): hoàn tất ca / hết hạn 14 ngày thôi ghi `bo_tro_theo_doi`
+   (`_btyeu_vao_theo_doi_sau_case` = no-op); 30 em đang theo dõi kết thúc `go`. Bảng + màn `DuyetBoTroYeuScreen` (ẩn; `WidgetDangYeu` còn mượn khối
+   ET/BTVN) + `fn_botro_chot_tuan` / `danh_sach_tuan` / `theo_doi_*` giữ làm lịch sử, không còn đường nào ghi.
+2. ✅ **ĐÃ BỎ 13/11 — retest tầng 2**: công tắc `_btyeu_retest_bat()` / `RETEST_BAT` giữ `false` vĩnh viễn (mọi nhánh retest trong DB + app tắt theo nó);
+   25 bài retest treo đã đóng `dong`. Muốn có lại retest = thiết kế mới, không bật công tắc cũ.
 3. **Hình theo mô hình** (§20–21 cũ, ẩn từ 17/10): `fn_hinh_yeu_theo_mo_hinh`, `HinhYeuTA`, tab "Hình yếu".
 4. **Màn Nội dung bổ trợ yếu / Đánh giá ca bổ trợ** (bước ③ ⑦ cũ — dạng nay đổ lúc duyệt, đánh giá là việc học thuật).
 5. **`_sau_gio_dang`** (luật dạng sau giờ cũ, mọi dạng yếu): còn dùng ở `fn_btnhe_lop_hs` / `fn_btnhe_cho` / `fn_btnhe_hs_duyet` để đếm "x dạng"
