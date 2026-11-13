@@ -117,13 +117,15 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    Nhóm mới có lần đo đầu tiên trong tuần ghi "mới đo". Thanh tiến độ tổng cũng có vạch đầu tuần.
 7. **"VIỆC CỦA CON TUẦN NÀY" = KHU VỰC RIÊNG, liệt kê theo HOẠT ĐỘNG, không theo nhóm bài** (Thùy 13/11, sửa bản gắn việc vào từng nhóm):
    ```
-   ET buổi 15/11            75%   Nghiêm túc
-   BTVN buổi 15/11          80%   Nghiêm túc
+   ET buổi 15/11            75%   Thái độ: Tốt
+   BTVN buổi 15/11          80%   Thái độ: Tốt
    Test sau giờ 12/11      100%
    Bổ trợ yếu T7 21/11     (sắp tới)
    ```
    - Mỗi dòng = một hoạt động có thật trong tuần: ET từng buổi · BTVN từng buổi · test sau giờ · ca bổ trợ (yếu / nhẹ / bù…).
      Kết quả (% đúng) + **thái độ** khi hoạt động đó có chấm thái độ (`btvn_ket_qua.thai_do`: nghiêm túc / chưa hết sức / chưa nghiêm túc / chống đối).
+   - **Nhãn hiển thị cho HS + phụ huynh = 2 mức "Tốt" / "Chưa tốt"** (Thùy 13/11): `nghiem_tuc` ⇒ Tốt; ba mức còn lại ⇒ Chưa tốt.
+     Ghi kèm chữ "Thái độ:" để không đọc nhầm thành đánh giá kết quả. DB giữ nguyên 4 mức; màn trung tâm vẫn thấy đủ 4 mức.
    - Hai khối: **Đã làm** · **Sắp tới** (có ngày, hạn; BTVN chưa nộp quá hạn ghi rõ "chưa nộp"). Đầu màn có ô tổng "x/y việc đã xong".
    - Danh sách do HỆ suy từ lịch buổi + giáo trình + lượt chốt bổ trợ (pure-derive, CLAUDE §4), không ai giao tay, không nút tự đánh dấu.
    - Dòng nhóm bài ở Phần 1/2 trở lại gọn (tên · ▲/▼ · % · cờ 80%); bấm vào mới có lý thuyết / bài trên lớp / luyện tập.

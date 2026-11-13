@@ -79984,3 +79984,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:51 — Mục tiêu tuần: "Việc của con" là khu vực riêng theo hoạt động
 - Thùy: liệt kê kiểu "ET 80% · BTVN 15/11 80% Nghiêm túc · Test sau giờ 100% · Bổ trợ yếu…", không gắn việc vào từng nhóm bài. Spec §4a mục 7 viết lại; mockup màn 1: dòng nhóm bài gọn lại, cột phải = Đã làm / Sắp tới.
+
+## 13/11 08:52 — Mục tiêu tuần: nhãn thái độ = Tốt / Chưa tốt
+- Thùy: thay "nghiêm túc" bằng Tốt / Chưa tốt. nghiem_tuc ⇒ Tốt, 3 mức còn lại ⇒ Chưa tốt; DB giữ 4 mức, màn trung tâm thấy đủ.
