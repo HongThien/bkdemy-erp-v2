@@ -1,0 +1,15 @@
+import pg from 'pg'; import fs from 'fs'; import crypto from 'crypto';
+const S = process.env.SCR;
+const env = Object.fromEntries(fs.readFileSync('.env','utf8').split(/\r?\n/).filter(l=>l.includes('=')).map(l=>[l.slice(0,l.indexOf('=')).trim(), l.slice(l.indexOf('=')+1).trim()]));
+const c = new pg.Client({connectionString:env.DATABASE_URL, ssl:{rejectUnauthorized:false}}); await c.connect();
+const f = (await c.query(`select p.prosrc src, pg_get_functiondef(p.oid) def, p.oid::regprocedure::text sig from pg_proc p where p.proname='fn_phien_kho_them' and p.pronamespace='public'::regnamespace`)).rows;
+if (f.length !== 1) throw new Error('so ban: ' + f.length);
+const cu1 = 'execute format($q$select min(c.ma_cau) from %I c where c.xoa_at is null';
+const cu2 = String.raw`'\s+', '', 'g') = $1$q$, v_tbl)`;
+const src = f[0].src;
+if (src.split(cu1).length !== 2 || src.split(cu2).length !== 2) throw new Error('khong thay dung 1 cho de thay');
+const moi = src.replace(cu1, '-- [dot 2, 13/11] boc truy van con + offset 0: de planner di index <bang>_khoa_trung2_idx (dang min() truc tiep bi chon quet theo khoa chinh)\n      execute format($q$select min(s.ma_cau) from (select c.ma_cau from %I c where c.xoa_at is null').replace(cu2, String.raw`'\s+', '', 'g') = $1 offset 0) s$q$, v_tbl)`);
+const md5 = crypto.createHash('md5').update(src, 'utf8').digest('hex');
+const sql = `\n-- Hàm kiểm trùng của bot kho: dạng min() trực tiếp khiến planner quét theo khoá chính (3,9 giây/lượt) dù đã có index đúng.\ndo $g$ begin if (select md5(p.prosrc) from pg_proc p where p.oid = '${f[0].sig}'::regprocedure) is distinct from '${md5}' then raise exception 'dot 2: fn_phien_kho_them da doi — sinh lai'; end if; end $g$;\n\n${f[0].def.replace(src, moi).trim()};\n`;
+fs.writeFileSync(S + '/d2-buoc1.sql', fs.readFileSync(S + '/d2-index.sql', 'utf8') + sql);
+await c.query('begin'); try { await c.query(sql); const i = (await c.query(`select prosrc from pg_proc where proname='fn_phien_kho_them'`)).rows[0].prosrc; const k = i.indexOf('select min(s.ma_cau)'); console.log('thu thay ham: OK |', JSON.stringify(i.slice(k, k + 90)), '…', JSON.stringify(i.slice(i.indexOf('offset 0) s') - 20, i.indexOf('offset 0) s') + 30))); } catch (e) { console.log('LOI', e.message); } await c.query('rollback'); await c.end();
