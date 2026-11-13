@@ -80095,3 +80095,9 @@ Thùy nêu 4 việc, làm được 3:
 - `batch.json` lẫn CKI + CKII trong cùng batch "cuối kì" (B003 = 3 CKI + 14 CKII). Chuyển 3 bài CKI của B003 sang B005 ⇒ **B005 = 13 đề thi CKI K9** (3 + 10 "scan nghi trùng"); B003/B004 = đề thi CKII K9 (1/2, 2/2) — làm khi có file `K9\Đề thi\CKII`. `lap-batch.mjs` chạy lại sẽ đè sửa tay này.
 - Đo trùng: 13/13 là scan ⇒ do-trung `khong_doc`. Hai nhân chứng (tên trường + năm trùng đề trong kho; ảnh trang 1 so 3 câu đầu đề kho) ⇒ **11/13 đã có trong kho** (Phúc Đồng đủ 3 mã 901/902/903). Còn **2 đề**: Nguyễn Bỉnh Khiêm 2025-26 (mã 901), Marie Curie 2024-25. Chi tiết `batch/B005/bo.md`.
 - Sau B005, đề thi CKI K9 trong bộ toanmath coi như hết; CKI K9 còn đề cương (B006–B009, cần thư mục `K9\Đề cương\CKI`).
+
+## 13/11 — MCQ lớp 6 (fork, `scripts/_k6/`)
+- **Ghi 185 form** (`da_duyet=false`): máy `mcq-auto` sau khi đổi dấu nhân "." → `\cdot` (58) · chia nhóm bằng ƯCLN/tấm hình chữ nhật/đếm số ước/tổng số nguyên (64) · giá trị biểu thức khi biết biến + dãy luỹ thừa (35) · tìm 5 bội/tìm x để A ⋮ (x−k) (16) · tăng/giảm, tích=0, GTNN (12). Rule mới R510–R512, R514–R518 (mig 202611130952, 202611130955; R513 trống).
+- **Phát hiện:** kho viết dấu nhân bằng "." (vd `12.53+53.172-53.84`), `mcq-auto` cũ đọc thành số thập phân và tính sai ⇒ nguyên nhân phần lớn "MÁY ≠ KHO" lô đầu lớp 6. Chỉ đổi trong pool tạm, kho giữ nguyên. Cân nhắc dạy `mcq-auto` đọc "." là nhân khi có ≥2 toán hạng.
+- **Kho nghi sai:** T306000000226, T306000000242 (NDB01218), T1060000001444 (kho 0, máy −12).
+- **Còn 61 câu:** Có/Không (NDB00384/385), điền chữ số vào dấu * (nhiều đáp án), chuỗi \dots, SNT, năm sinh, `y` ẩn, v.v.
