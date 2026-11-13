@@ -120,7 +120,9 @@ try {
       const base = { dang_chinh: q.dang || 'CHUA', khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
         nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
         dang_bai: q.dang_bai ?? null, dang_bai_chac: q.dang_bai_chac, dang_bai_ly_do: q.dang_bai_ly_do, dang_bai_chot: q.dang_bai_chot,
-        chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot }
+        chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot,
+        // luật duyệt 13/11: câu có `**Chưa chắc:**` ⇒ kiem_may='nghi' (không tự duyệt, vào danh sách người kiểm)
+        kiem_may_nghi: (q.canh_bao ?? []).filter((x) => /^CHƯA CHẮC/.test(x)).join(' · ') || null }
       if (q.loai_cau === 'trac_nghiem') return { ...base, lua_chon: q.lua_chon, dap_an: q.dap_an ?? null, loi_giai: q.loi_giai ?? null }
       if (q.loai_cau === 'dung_sai') return { ...base, dap_an: null, loi_giai: q.loi_giai ?? null,
         menh_de: q.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, ma_dang: m.dang || 'CHUA', loi_giai: m.loi_giai ?? null })) }
