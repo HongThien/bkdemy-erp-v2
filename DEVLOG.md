@@ -80436,3 +80436,10 @@ Thùy nêu 4 việc, làm được 3:
   - K7 B021–B022: 12 · 997 câu (809 mới · 188 trỏ cũ).
   - K8 B013–B015: 19 · 1.475 câu (1.356 mới · 119 trỏ cũ). B013-07 chưa làm (chờ Thùy).
 - Sửa `ghi-batch.sh`: bỏ qua tệp khúc `<MA>.k<N>.soan.md` (đã ghép vào `<MA>.soan.md`) — lần chạy thử đầu quét nhầm khúc.
+
+## 13/11 (tối) — GỘP THEO KHUÔN XONG 25/25: `ban_do` + `cau_hoi` (mig 202611132032, 202611132033 ĐÃ ÁP) — Thùy "ốp luôn cũng được"
+- **5 hàm bị nghi vỡ là BÁO NHẦM của công cụ dò:** `fn_dai_gan_mau_ds` (q.* chỉ ở CTE, bước cuối chọn từng cột) · `fn_mt_ds_kho_cau`, `_mt_ds_kho`, `_kho_nguon_cau`, `fn_bdm_tien_do_nguon` (mọi chỗ dùng `kho`/`nguon_loai` đều có bí danh). Không sửa hàm nào.
+- **Dò thêm trước khi áp:** (1) hàm tĩnh dùng TRẦN tên cột mới thêm (ma_cu, nhanh, xoa_at, gop_vao, muc_cau, nguon_loai) trên các bảng liên quan: 0; (2) hàm SQL động: mọi chỗ `xoa_at` trần đều là truy vấn MỘT bảng; (3) hàm plpgsql có biến tên `kho`/`nhanh` (`fn_de_thi_cau`, `fn_kho_kiem_lo_thong_ke`, `_phien_kho_cau`…): chỉ gán/ghép chuỗi, không nằm trong câu SQL tĩnh trên bảng có cột đó.
+- **Làm khớp cột:** `xoa_at`, `gop_vao` thêm vào `{hgt,khtn,vatly,hoahoc}_ban_do`; `muc_cau` thêm vào `dai/hgt_cau_hoi`; `nguon_loai` thêm vào `{hgt,khtn,vatly,hoahoc}_cau_hoi` (đều cho rỗng).
+- **Kiểm sau áp:** 25/25 bảng chung = tổng nhánh (kho_cau_hoi: dai 77.085 · hgt 5.848 · khtn 12.635); gọi thật (rollback) dưới claims admin: view `bdm_cau_hoi` 55.558 dòng, `fn_bdm_cay`, `_kho_nguon_cau`, `fn_dai_gan_mau_ds`, `fn_bdm_tien_do_nguon`, `fn_mt_ds_kho_cau`, `count_cau_by_dang`; dưới claims HS: `tu_luyen_chu_de_ds_dang`, `fn_ban_do_phieu_luu`, `hs_sotay_cay_hs` — đều chạy.
+- **Chưa kiểm:** các đường GHI của màn kho (thêm/sửa câu, nhập kho bằng script của phiên khác) chưa có ai bấm thật sau khi gộp; chèn thiếu danh sách cột đã dò trong hàm DB nhưng CHƯA dò hết script `scripts/` của các phiên khác.

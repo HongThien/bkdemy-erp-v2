@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-613 bảng · 39 view · 0 enum · 433 trigger · 1932 function
+615 bảng · 39 view · 0 enum · 433 trigger · 1932 function
 
 ## _app_secrets
 
@@ -1567,6 +1567,7 @@
 | mo_ta_ngan | text | Y |  |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | gop_vao | text | Y |  | FK→dai_ban_do.ma_dang |  |
+| kho | text |  | 'dai'::text |  |  |
 
 ## dai_bdm_cau_chua_khop
 
@@ -1878,6 +1879,8 @@
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 | ten_de_goc | text | Y |  |  |  |
 | nguon_loai | text |  |  |  | `kho_cu` · `tai_lieu` · `de_thi` |
+| muc_cau | smallint | Y |  |  |  |
+| kho | text |  | 'dai'::text |  |  |
 
 ## dai_cau_hoi_clone_cho_duyet
 
@@ -2872,6 +2875,9 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| gop_vao | text | Y |  |  |  |
+| kho | text |  | 'hgt'::text |  |  |
 
 ## hgt_bdm_cau_thieu_dang
 
@@ -3003,6 +3009,9 @@ END |  |  |
 | kiem_may_lo | uuid | Y |  | FK→kho_kiem_lo.id |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 | ten_de_goc | text | Y |  |  |  |
+| nguon_loai | text | Y |  |  |  |
+| muc_cau | smallint | Y |  |  |  |
+| kho | text |  | 'hgt'::text |  |  |
 
 ## hgt_cau_hoi_yeu_cau_giai
 
@@ -3994,6 +4003,9 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| gop_vao | text | Y |  |  |  |
+| kho | text |  | 'hoahoc'::text |  |  |
 
 ## hoahoc_bdm_cau_thieu_dang
 
@@ -4215,6 +4227,8 @@ END |  |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 | ten_de_goc | text | Y |  |  |  |
 | muc_cau | smallint | Y |  |  |  |
+| nguon_loai | text | Y |  |  |  |
+| kho | text |  | 'hoahoc'::text |  |  |
 
 ## hoahoc_cau_hoi_yeu_cau_giai
 
@@ -4942,6 +4956,25 @@ END |  |  |
 | khop_luc | timestamp with time zone | Y |  |  |  |
 | khop_boi | uuid | Y |  | FK→nhan_su.id |  |
 
+## kho_ban_do
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_dang | text |  |  |  |  |
+| khoi | text |  |  |  |  |
+| ma_chu_de | text |  |  |  |  |
+| ten_chu_de | text |  |  |  |  |
+| ma_chuyen_de | text |  |  |  |  |
+| ten_chuyen_de | text |  |  |  |  |
+| ten_dang | text |  |  |  |  |
+| muc_do | smallint |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| bac_toi_thieu | text |  |  |  |  |
+| mo_ta_ngan | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| gop_vao | text | Y |  |  |  |
+| kho | text |  |  |  |  |
+
 ## kho_bdm_cau_thieu_dang
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5121,6 +5154,48 @@ END |  |  |
 | xoa_at | timestamp with time zone | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 | tu_choi_boi | uuid | Y |  |  |  |
+| kho | text |  |  |  |  |
+
+## kho_cau_hoi
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma_cau | text |  |  |  |  |
+| dang_chinh | text |  |  |  |  |
+| loai_cau | text |  |  |  |  |
+| noi_dung | text |  |  |  |  |
+| lua_chon | jsonb | Y |  |  |  |
+| menh_de | jsonb | Y |  |  |  |
+| dap_an | text | Y |  |  |  |
+| loi_giai | text | Y |  |  |  |
+| anh_de | text | Y |  |  |  |
+| anh_dap_an | text | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| nguon | text |  | 'le'::text |  |  |
+| parent_ma_cau | text | Y |  |  |  |
+| clone_method | text | Y |  |  |  |
+| nguon_giai | text |  | 'nguoi'::text |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| ma_cum | text | Y |  |  |  |
+| da_duyet | boolean |  | false |  |  |
+| duyet_boi | uuid | Y |  |  |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| giai_method | text | Y |  |  |  |
+| loi_giai_ai | text | Y |  |  |  |
+| dap_an_ai | text | Y |  |  |  |
+| ai_model | text | Y |  |  |  |
+| ai_de_xuat_at | timestamp with time zone | Y |  |  |  |
+| kiem_may | text | Y |  |  |  |
+| kiem_may_at | timestamp with time zone | Y |  |  |  |
+| kiem_may_boi | text | Y |  |  |  |
+| kiem_may_ghi | text | Y |  |  |  |
+| duyet_nguon | text | Y |  |  |  |
+| dang_ai_de_xuat | text | Y |  |  |  |
+| kiem_may_lo | uuid | Y |  |  |  |
+| kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
+| ten_de_goc | text | Y |  |  |  |
+| nguon_loai | text | Y |  |  |  |
+| muc_cau | smallint | Y |  |  |  |
 | kho | text |  |  |  |  |
 
 ## kho_cau_hoi_yeu_cau_giai
@@ -5408,6 +5483,9 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| gop_vao | text | Y |  |  |  |
+| kho | text |  | 'khtn'::text |  |  |
 
 ## khtn_bdm_cau_thieu_dang
 
@@ -5629,6 +5707,8 @@ END |  |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 | ten_de_goc | text | Y |  |  |  |
 | muc_cau | smallint | Y |  |  |  |
+| nguon_loai | text | Y |  |  |  |
+| kho | text |  | 'khtn'::text |  |  |
 
 ## khtn_cau_hoi_yeu_cau_giai
 
@@ -7015,7 +7095,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -8256,6 +8336,9 @@ END |  |  |
 | bac_toi_thieu | text |  |  | FK→lop_bac.ma |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | mo_ta_ngan | text | Y |  |  |  |
+| xoa_at | timestamp with time zone | Y |  |  |  |
+| gop_vao | text | Y |  |  |  |
+| kho | text |  | 'vatly'::text |  |  |
 
 ## vatly_bdm_cau_thieu_dang
 
@@ -8477,6 +8560,8 @@ END |  |  |
 | kho_chuan | boolean | Y | _kho_cau_chuan(da_duyet, kiem_may, created_at, giai_method) |  |  |
 | ten_de_goc | text | Y |  |  |  |
 | muc_cau | smallint | Y |  |  |  |
+| nguon_loai | text | Y |  |  |  |
+| kho | text |  | 'vatly'::text |  |  |
 
 ## vatly_cau_hoi_yeu_cau_giai
 
@@ -13742,6 +13827,7 @@ WITH luot AS (
 | chuoi_ngay_nghi | chuoi_ngay_nghi_ly_do_check | `CHECK ((length(btrim(ly_do)) > 0))` |
 | claude_phien_bot | claude_phien_bot_id_check | `CHECK ((id = 1))` |
 | claude_phien_tin | claude_phien_tin_nguoi_ck | `CHECK (((vai = 'nguoi'::text) = (nguoi_gui IS NOT NULL)))` |
+| dai_ban_do | dai_ban_do_kho_chk | `CHECK ((kho = 'dai'::text))` |
 | dai_ban_do | dai_ban_do_muc_do_check | `CHECK (((muc_do >= 1) AND (muc_do <= 5)))` |
 | dai_ban_do | dai_ban_do_xoa_mem_check | `CHECK ((((gop_vao IS NULL) OR (xoa_at IS NOT NULL)) AND (gop_vao IS DISTINCT FROM ma_dang)))` |
 | dai_bdm_cau_thieu_dang | dai_bdm_cau_thieu_dang_kho_chk | `CHECK ((kho = 'dai'::text))` |
@@ -13766,6 +13852,7 @@ WITH luot AS (
 | dai_bdm_tu_choi | dai_bdm_tu_choi_kho_chk | `CHECK ((kho = 'dai'::text))` |
 | dai_bdm_tu_choi | dai_bdm_tu_choi_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
 | dai_cau_form_tn | dai_cau_form_tn_kho_chk | `CHECK ((kho = 'dai'::text))` |
+| dai_cau_hoi | dai_cau_hoi_kho_chk | `CHECK ((kho = 'dai'::text))` |
 | dai_cau_hoi_yeu_cau_giai | dai_cau_hoi_yeu_cau_giai_kho_chk | `CHECK ((kho = 'dai'::text))` |
 | dai_cau_khuon | dai_cau_khuon_khuon_check | `CHECK ((khuon ~ '^[A-Za-z0-9_]{2,40}$'::text))` |
 | dai_cau_lop | dai_cau_lop_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
@@ -13847,6 +13934,7 @@ WITH luot AS (
 | giai_thuong_slot | giai_thuong_slot_tong | `CHECK (((((xuat_sac + tien_bo) + cham_chi) >= 1) AND (((xuat_sac + tien_bo) + cham_chi) <= 6)))` |
 | giai_thuong_slot | giai_thuong_slot_xuat_sac_check | `CHECK (((xuat_sac >= 0) AND (xuat_sac <= 6)))` |
 | han_nop_ngoai_le | han_nop_ngoai_le_thu_check | `CHECK ((thu_bat_dau = ANY (ARRAY[0, 2, 3, 4, 5, 6, 7, 8])))` |
+| hgt_ban_do | hgt_ban_do_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_bdm_cau_thieu_dang | hgt_bdm_cau_thieu_dang_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_bdm_de_xuat | hgt_bdm_de_xuat_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_bdm_gan_cau | hgt_bdm_gan_cau_kho_chk | `CHECK ((kho = 'hgt'::text))` |
@@ -13854,6 +13942,7 @@ WITH luot AS (
 | hgt_bdm_tu_choi | hgt_bdm_tu_choi_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_bdm_tu_choi | hgt_bdm_tu_choi_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
 | hgt_cau_form_tn | hgt_cau_form_tn_kho_chk | `CHECK ((kho = 'hgt'::text))` |
+| hgt_cau_hoi | hgt_cau_hoi_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_cau_hoi_yeu_cau_giai | hgt_cau_hoi_yeu_cau_giai_kho_chk | `CHECK ((kho = 'hgt'::text))` |
 | hgt_cau_khuon | hgt_cau_khuon_khuon_check | `CHECK ((khuon ~ '^[A-Za-z0-9_]{2,40}$'::text))` |
 | hgt_cau_menh_de | hgt_cau_menh_de_thu_tu_check | `CHECK ((thu_tu >= 1))` |
@@ -13878,6 +13967,7 @@ WITH luot AS (
 | hinh_nhom_bai_su_kien | hinh_nhom_bai_su_kien_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | hinh_nhom_mo_hinh | hinh_nhom_mo_hinh_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
 | hinh_y_nhan_de_xuat | hinh_y_nhan_de_xuat_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
+| hoahoc_ban_do | hoahoc_ban_do_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_bdm_cau_thieu_dang | hoahoc_bdm_cau_thieu_dang_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_bdm_chu_de | hoahoc_bdm_chu_de_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_bdm_chu_de | hoahoc_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
@@ -13896,6 +13986,7 @@ WITH luot AS (
 | hoahoc_bdm_o | hoahoc_bdm_o_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_bdm_tu_choi | hoahoc_bdm_tu_choi_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_cau_form_tn | hoahoc_cau_form_tn_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
+| hoahoc_cau_hoi | hoahoc_cau_hoi_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_cau_hoi | hoahoc_cau_hoi_muc_cau_check | `CHECK (((muc_cau >= 1) AND (muc_cau <= 5)))` |
 | hoahoc_cau_hoi_yeu_cau_giai | hoahoc_cau_hoi_yeu_cau_giai_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
 | hoahoc_chuyen_de_ly_thuyet | hoahoc_chuyen_de_ly_thuyet_kho_chk | `CHECK ((kho = 'hoahoc'::text))` |
@@ -13937,6 +14028,7 @@ WITH luot AS (
 | kho_nhan_xet | kho_nhan_xet_ma_check | `CHECK ((btrim(ma) <> ''::text))` |
 | kho_nhan_xet | kho_nhan_xet_noi_dung_check | `CHECK ((btrim(noi_dung) <> ''::text))` |
 | kho_nhan_xet_xu_ly | kho_nhan_xet_xu_ly_ghi_chu_check | `CHECK ((btrim(ghi_chu) <> ''::text))` |
+| khtn_ban_do | khtn_ban_do_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_bdm_cau_thieu_dang | khtn_bdm_cau_thieu_dang_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_bdm_chu_de | khtn_bdm_chu_de_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_bdm_chu_de | khtn_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
@@ -13955,6 +14047,7 @@ WITH luot AS (
 | khtn_bdm_o | khtn_bdm_o_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_bdm_tu_choi | khtn_bdm_tu_choi_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_cau_form_tn | khtn_cau_form_tn_kho_chk | `CHECK ((kho = 'khtn'::text))` |
+| khtn_cau_hoi | khtn_cau_hoi_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_cau_hoi | khtn_cau_hoi_muc_cau_check | `CHECK (((muc_cau >= 1) AND (muc_cau <= 5)))` |
 | khtn_cau_hoi_yeu_cau_giai | khtn_cau_hoi_yeu_cau_giai_kho_chk | `CHECK ((kho = 'khtn'::text))` |
 | khtn_chuyen_de_ly_thuyet | khtn_chuyen_de_ly_thuyet_kho_chk | `CHECK ((kho = 'khtn'::text))` |
@@ -14095,6 +14188,7 @@ WITH luot AS (
 | tsa_dang_tien_de | khtn_dang_tien_de_check | `CHECK ((ma_dang <> tien_de_ma_dang))` |
 | tu_cam | tu_cam_check | `CHECK (((cach <> 'dinh'::text) OR (mau !~ ' '::text)))` |
 | tu_cam | tu_cam_mau_check | `CHECK (((mau = lower(mau)) AND (mau = btrim(mau)) AND (mau ~ '^[a-zđàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹ0-9 ]+$'::text)))` |
+| vatly_ban_do | vatly_ban_do_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_bdm_cau_thieu_dang | vatly_bdm_cau_thieu_dang_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_bdm_chu_de | vatly_bdm_chu_de_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_bdm_chu_de | vatly_bdm_chu_de_ten_check | `CHECK ((btrim(ten) <> ''::text))` |
@@ -14113,6 +14207,7 @@ WITH luot AS (
 | vatly_bdm_o | vatly_bdm_o_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_bdm_tu_choi | vatly_bdm_tu_choi_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_cau_form_tn | vatly_cau_form_tn_kho_chk | `CHECK ((kho = 'vatly'::text))` |
+| vatly_cau_hoi | vatly_cau_hoi_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_cau_hoi | vatly_cau_hoi_muc_cau_check | `CHECK (((muc_cau >= 1) AND (muc_cau <= 5)))` |
 | vatly_cau_hoi_yeu_cau_giai | vatly_cau_hoi_yeu_cau_giai_kho_chk | `CHECK ((kho = 'vatly'::text))` |
 | vatly_chuyen_de_ly_thuyet | vatly_chuyen_de_ly_thuyet_kho_chk | `CHECK ((kho = 'vatly'::text))` |
