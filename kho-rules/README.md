@@ -127,6 +127,44 @@ so đáp án gốc) ⇒ ghi `dai_cau_hoi` với `nguon_giai='ai'`, `giai_method=
   - Không ghi "(như VD 8.1 của sách)" trong lời giải — HS không có cuốn sách.
   - Bước là **bước nghĩ** (làm gì, vì sao), không chép lại từng dòng tính của Phần 2.
   - Hiển thị card + mũi tên trên app / màn duyệt / bản in: ✅ 09/10 (§4 #8) — chỉ nhận chuỗi `**Bước k.**` **bên trong Phần 1**.
+- ⭐⭐ **SƠ ĐỒ TƯ DUY — câu CHỨNG MINH Hình (Thùy chốt 14/11, duyệt mẫu `lo/toanmath/mau-so-do-tu-duy.html`; THAY Phần 1 cho loại câu này):**
+  *"Sơ đồ tư duy là thuộc tính riêng của bài, lưu tách khỏi lời giải chi tiết, chỉ hiển thị kèm. Học sinh muốn xem thì bấm. Đáp án chi tiết
+  trình bày theo sơ đồ tư duy xuôi — mỗi khúc là một bước trong sơ đồ."* Lý do: câu c Hình K8–K9+ dài cả trang, HS không theo được.
+  - **Một đồ thị mốc, hai chiều xem.** Ô = **mốc trung gian** (kết luận bộ phận: "$\triangle AMB=\triangle CMK$", "$AKCI$ là hình bình hành"),
+    KHÔNG phải từng dòng trình bày; ô cuối mỗi ý = điều đề hỏi. **Xuôi** = giả thiết → kết luận, ô trái → phải, hết hàng xuống dòng (đúng thứ tự trình bày).
+    **Ngược** = phân tích đi lên ("muốn có ⑤ cần ③ và ④ — vì …") — **chính là Phần 1 "Hướng dẫn" cũ**, kể cả Mấu chốt (phân tích – tổng hợp, Pappus).
+    Hai chiều vẽ từ CÙNG một bộ ô ⇒ không bao giờ lệch nhau.
+  - **Lưu riêng** bảng `hinh_hoc_cau_so_do` (mig 202611131317): `ma_cau` · `mau_chot` · `nut` (mảng ô theo thứ tự xuôi: `k` khoá bất biến `n1`, `n2`… ·
+    `y` ý của đề, `-` nếu câu không chia ý · `noi_dung` mốc · `tu` = khoá ô ĐỨNG TRƯỚC và/hoặc `gt` · `ly_do` ngắn). DB chặn "từ" trỏ ô sau ⇒ không thể có vòng.
+    `loi_giai` của câu = chỉ Phần 2 (không còn Phần 1).
+  - **Lời giải chi tiết chia KHÚC theo sơ đồ xuôi:** mỗi ô đúng một khúc, đúng thứ tự; khúc mở bằng dòng riêng `[[so-do:nK]]` ⇒ app hiện **dải highlight
+    "③ <mốc>"** ở đầu khúc. Khúc móc vào **khoá**, số ①②③ là vị trí suy lúc vẽ (thêm/bớt ô ở giữa không gắn nhầm). Dòng ý `a)` `b)` `c)` đứng một mình,
+    mọi chữ của Phần 2 phải nằm trong một khúc. Bỏ các dòng tiêu đề con kiểu "Bước 1: chứng minh …" — dải khúc thay chúng.
+  - **Hiển thị:** nút "🧠 Xem sơ đồ tư duy" **ẩn mặc định**, mở ra có Mấu chốt + tab Xuôi / Ngược. Lời giải hiện sẵn, có dải khúc.
+  - **Phạm vi:** MỌI câu Hình có ý chứng minh (không chia theo độ dài — câu ngắn 1–2 ô, câu c dài nhiều ô). Ý *tính* trong cùng câu cũng thành ô
+    ("$BC=10$ cm"). Câu chỉ tính / trắc nghiệm / trả lời ngắn: giữ Phần 1 như cũ.
+  - **Khuôn trong tệp soạn** (thay `**Phần 1. Hướng dẫn**`):
+    ```
+    **Sơ đồ tư duy**
+
+    **Mấu chốt:** <ý tưởng then chốt — đường phụ, chọn cặp tam giác nào, vì sao>
+
+    - n1 | a | $ME\parallel AC$ | gt | $ME$ là đường trung bình của $\triangle ABC$
+    - n2 | b | $AEMF$ là hình bình hành | n1, gt | $AE\parallel MF$ và $ME\parallel AF$
+
+    **Phần 2. Trình bày**
+
+    a)
+
+    [[so-do:n1]]
+
+    Xét $\triangle ABC$ có: …
+    ```
+  - **Cổng máy** (`scripts/kho/de-thi/dung-de-tu-soan.mjs` → `docSoDo`): khối đúng khuôn, "từ" chỉ trỏ ô trước, mọi ô đúng một khúc đúng thứ tự,
+    khúc nằm đúng ý, không chữ ngoài khúc, KaTeX. `ghi.mjs` ghi sơ đồ cùng transaction với câu (câu trùng câu cũ ⇒ không gắn sơ đồ).
+    Trang duyệt: `lo/toanmath/so-do-html.mjs` (dùng trong `duyet-batch.mjs`, `mau-so-do.mjs`).
+  - **Đang nối tới đâu (14/11):** ✅ dây chuyền đề thi (`dung-de-tu-soan` → `ghi`) · ✅ trang duyệt · ⏳ **app HS** (nút xem + dải khúc) · ⏳ luồng kho kiểu 1
+    Hình (`nhap_hh_tu_draft.mjs`) và câu Hình đã có trong kho (Phần 1 cũ) — chưa chuyển.
 - **Tách ý (CEO 09/10 — áp mọi khối):** chỉ tách các bài **"Tính / thực hiện phép tính"** và **"Tìm $x$"** có nhiều ý a) b) c) — mỗi ý một câu.
   **Bài toán lời văn** (kể cả các ý độc lập nhau, vd vườn hình chữ nhật: a) tính dây rào, b) tính rau) **giữ chung một câu**, Phần 2 ghi a) b).
   Hình học: không tách (CEO 21/09).
