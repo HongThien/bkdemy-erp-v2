@@ -80269,3 +80269,14 @@ Thùy nêu 4 việc, làm được 3:
 - Màn: thông báo "Môn X chưa đo theo bản đồ kiến thức mới" khi `co_do=false` (Anh/TSA/Văn). Mở thử: KHTN K7 ra bảng 11 em × 15 chuyên đề; Anh hiện thông báo.
 - Đợt đầu 54 em KHTN đánh dấu bẩn ⇒ đọc thẳng (~1,3–1,9 s) tới khi cron 5 phút chụp xong (mốc lùi 2 phút).
 - **Chưa làm:** tab Mục tiêu tuần (`fn_mtt_*`, spec-muc-tieu-tuan.md đang làm ở phiên khác) — không đụng.
+
+## 13/11 15:28 — Sau giờ theo nhóm GV đã chốt + popup xem dạng + builder tự lưu (mig 202611131528 ĐÃ ÁP, Thùy gật scope)
+- Lỗi 1: fn_btnhe_fill_dang lấy mọi dạng yếu, bỏ qua nhóm GV tick. Nay _btnhe_dang_chot = dạng YẾU trong nhóm của lượt chốt mới nhất (L1 đã duyệt); nhóm không có dạng yếu ⇒ 1 dạng chưa đạt thấp nhất.
+- Lỗi 4: Thu Giang 10A1 mastery theo lần 6 nhóm yếu · 12 dạng yếu (7 trong nhóm yếu); "5 dạng" lấy dang_yeu_hien_tai = luật 2 cửa sổ cũ. Minh Khôi 3A1 0 nhóm/0 dạng yếu, GV chốt nhóm cần luyện 65 phần trăm ⇒ ca 0 dạng. fn_btk_goi_y đếm dạng yếu cùng luật nhóm. Cột "x dạng" bảng Dashboard học tập VẪN đọc dang_yeu_hien_tai.
+- Ý 2: fn_btk_dang_nhom ⇒ BoTroPopup nút "dạng ▾". Ý 3: bài luyện 1 bản/buổi, soan nạp bản đã lưu, SoanBaiSauGio tự lưu 1,2 s.
+- Dữ liệu: 59 em ca mở chưa nhập, 57 lệch ⇒ thêm dạng thiếu + đóng dạng ngoài nhóm chưa dạy; 5 em còn lệch vì dạng đã dạy. Chưa bấm thử popup/builder trên app.
+
+## 13/11 15:39 — MỘT luật dạng yếu (mig 202611131539 ĐÃ ÁP) + bỏ cột Theo dõi
+- Thùy: "hủy luật 2 cửa sổ, chỉ 1 luật". _btyeu_dang_theo_nhom = dạng muc yeu theo mastery theo lần (bỏ lọc đo trong 2 cửa sổ + bỏ lọc phải trong nhóm yếu); nhánh bài mô hình Hình bỏ lọc cửa sổ. Giữ chữ ký. dang_yeu_hien_tai.tinh_at lùi ⇒ cron tính lại. Thử 34 em: 146→216, Thu Giang 5→12, nhanh x5.
+- KetQuaBoTroTuan: bỏ cột "Theo dõi" (danh sách theo dõi luồng duyệt cũ).
+- 13/11 Thùy "duyệt làm ở Kho đề thi" ⇒ ghi luôn 6 batch soạn ở nhà (B005 B010 B011 B017 B018 B024): thư mục làm việc chỉ ở máy nhà ⇒ chuan-bi-batch dựng lại từ E: + 9 trạm Sonnet làm lại 140 hình (_brief-lam-lai-hinh.md) ⇒ ghi-batch.sh chạy thử rồi --ghi: 47 đề · 691 câu · 682 mới · 9 trỏ cũ · 17 câu nghi. Kiểm DB khớp theo khối (K6 128 · K7 83 · K8 464 · K9 16).
