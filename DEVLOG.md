@@ -80066,3 +80066,11 @@ Thùy nêu 4 việc, làm được 3:
 ## 13/11 — MCQ lớp 5 lô 6 (hỗn số, phân số thập phân) + npm run schema
 - `npm run schema` chạy xong (583 bảng; schema.md không đổi vì chỉ thêm dữ liệu rule/form, không đổi cấu trúc).
 - **Ghi 11 form** (`scripts/_k5/b6_phanso.mjs`): viết hỗn số thành tổng (5) · phân số thập phân từ số đo (6). Tổng lớp 5 = 205. Lớp 5 hết câu kiểm máy được; còn lại cần hình/dấu/nhiều ý/kho sai.
+
+## 13/11 — toanmath B002 (K9 đề thi cuối kì 1, 2/4): soạn + soát xong, CHƯA ghi DB
+- 15 đề (17 bài − 2 trùng kho; Giang Biên/Ngọc Lâm lấy 1 mã). Sonnet soạn 15 trạm song song → Opus soát mù từng đề ngay khi soạn xong. Chạy ở máy nhà (BK_GOC = bản chép PDF trong scratchpad, BK_LV = C:/Users/Admin/bk-kho-lam-viec; brief đổi đường dẫn WBPC→Admin).
+- **Kết quả:** 15/15 soát ĐẠT · 138 câu (98 tự luận · 40 trả lời ngắn) · 34 hình · đáp số giải mù khớp 100% (không câu nào đổi đáp số) · soát có sửa cả 15 đề (lập luận, hình giải đánh dấu sẵn điều phải chứng minh, ghi chú, phân kho).
+- **Lỗi thật bắt được ở soát:** B002-01 Bài 5 dùng AM=BN=CP=DQ chỉ có trên dấu gạch hình ⇒ tự chứng minh + đổi kho hinh_hoc · B002-04 IV.2 dùng vị trí điểm theo hình không chứng minh ⇒ thêm 3 chứng minh · B002-10 4.2c dùng tỉ số diện tích = bình phương tỉ số đồng dạng (chưa học) ⇒ thay cách · B002-09 IV.2c viết "K thuộc IC" sai vị trí.
+- **Hướng dẫn chấm của trường in sai:** 07 Bài 1a (dấu, −7,8 vs đúng −8,2) · 08 điều kiện x≠9 (đúng x≠4), ≥82 (đúng >82) · 15 đơn vị m³ (đúng cm³) · 10 OI·OE (đúng OI·IE) · 09, 12, 02, 05 gõ nhầm không đổi đáp số.
+- **Chờ Thùy quyết:** 2 Chưa chắc B002-12 (IV.1 độ dài cung/góc ở tâm; IV.3b bài đường trung bình) · brief k9-cki tự mâu thuẫn về đường trung bình (phần áp dụng cuối kì cho dùng, mục bẫy cấm; Thùy 20/10 "chỉ đề Hoàng Mai") — trạm soát B002-08 đã xoá câu "đường trung bình bị cấm" trong ghi chú · bài cực trị có hình xếp lệch kho (01, 09 hinh_hoc · 04 dai · 06 hinh_hoc).
+- **Ghi thử (rollback) 15/15 trót lọt:** 136 câu mới · 2 trùng kho (B002-09). Câu Hình vẫn vào bài tạm HH00108 như B001. Trang duyệt `batch/B002/duyet-B002.html` (5,4 MB, không commit).
