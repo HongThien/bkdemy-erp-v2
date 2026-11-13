@@ -1,0 +1,15 @@
+B002-01 2fd37b05-3d3d-4eac-9c83-f985c9c2c5ef | câu mới 9 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 6 · mệnh đề ở dạng chờ 0
+B002-02 239f6a2b-a83a-4539-9673-0d01afe17244 | câu mới 10 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 7 · mệnh đề ở dạng chờ 0
+B002-03 53fc9d60-6faf-4a88-956f-4f30431ee8c2 | câu mới 10 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 8 · mệnh đề ở dạng chờ 0
+B002-04 f1539ed2-78d4-4bf2-a65e-440b9bf806a3 | câu mới 10 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 8 · mệnh đề ở dạng chờ 0
+B002-05 bb02889a-bf25-4f65-9c79-fc8835e7c154 | câu mới 8 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 6 · mệnh đề ở dạng chờ 0
+B002-06 7850bf1c-4584-4559-938d-a63ee53b3d4f | câu mới 9 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 6 · mệnh đề ở dạng chờ 0
+B002-07 efff5ed4-8da3-443d-8427-0920eccad6a8 | câu mới 11 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 9 · mệnh đề ở dạng chờ 0
+B002-08 d8bd52b8-44f4-4c4d-893a-a11a22d0e120 | câu mới 9 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 7 · mệnh đề ở dạng chờ 0
+B002-09 36b30e85-56a5-4682-8272-6a7182b693f1 | câu mới 7 · trùng câu đã có (trỏ về câu cũ) 2 · câu ở dạng chờ 6 · mệnh đề ở dạng chờ 0
+B002-10 05cc29ce-e3a8-4335-86a9-5d97263f0001 | câu mới 9 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 7 · mệnh đề ở dạng chờ 0
+B002-11 a69d768e-c1b3-4ae2-ad5a-db09c0d3a390 | câu mới 8 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 6 · mệnh đề ở dạng chờ 0
+B002-12 dec74649-d5f9-43d1-881d-60451da771e0 | câu mới 10 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 7 · mệnh đề ở dạng chờ 0
+B002-13 806ca60b-11c2-4b52-95f8-60ea2bfe6f95 | câu mới 6 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 4 · mệnh đề ở dạng chờ 0
+B002-14 25bbbc04-1991-41e3-90b4-ec17409e68d5 | câu mới 11 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 10 · mệnh đề ở dạng chờ 0
+B002-15 f2c2b8bd-afb7-4647-8d2a-e4a8326ba8f8 | câu mới 9 · trùng câu đã có (trỏ về câu cũ) 0 · câu ở dạng chờ 7 · mệnh đề ở dạng chờ 0
