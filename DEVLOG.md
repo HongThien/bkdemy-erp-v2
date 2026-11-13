@@ -80323,3 +80323,6 @@ Thùy nêu 4 việc, làm được 3:
 - Verify dev (MT thử mới "[TEST Claude] Chon tay DS - xoa duoc", id b9819a62…): popup hiện 290 câu chủ đề 1, đủ 4 mệnh đề + đáp án; chọn 2 câu Đại + 1 câu HGT (tìm "mặt phẳng") ⇒ Phần II 3/4 đúng thứ tự, nhanhByCau câu HGT = hinh_gt. MT thử CHƯA xoá — chờ Thùy.
 
 - **[Dọn MT thử 2 — Thùy gật 13/11 "xóa đi"]** Xoá "[TEST Claude] Chon tay DS - xoa duoc": 3 tai_lieu_cau · 3 tai_lieu_phan · 1 tai_lieu, 1 transaction; không có dòng linkgen_jobs. Còn 0 MT thử.
+
+## 13/11 16:33 — Mục tiêu tuần: ĐÃ ÁP DB
+- Thùy áp ở máy công ty. Kiểm qua schema.md trên main: 5 bảng mtt_* · 23 hàm (_mtt_* + fn_mtt_*) · 2 trigger bất biến; không nằm trong 17 bảng điểm mù (đã áp bằng npm run migrate). Cron muc-tieu-tuan · PH 0038 · deploy: Thùy báo xong, phiên cloud không kiểm được. Việc tiếp: trưởng khối bấm "Chốt mục tiêu tuần" 1 lớp để thử; đo fn_mtt_trung_tam với khối đông nhất.
