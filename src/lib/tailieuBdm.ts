@@ -80,9 +80,10 @@ export const SO_LUI_MAC_DINH: Record<number, Record<string, number>> = {
 }
 
 // ── BTVN 3 PHẦN soạn trong giáo trình (Thùy 13/11 · mig 202611131755): buổi này · luyện lại buổi trước · buổi trước nữa ──
-// Khung = mỗi buổi → 2 buổi có nhóm đứng ngay trước, bày sẵn nhóm + dạng bài + câu đã chọn. Mọi chọn / kiểm trùng ở DB.
+// Khung = mỗi buổi → 2 buổi trước (đứng trước trong giáo trình; thiếu thì lấy buổi lớp đã được gán từ giáo trình khác), bày sẵn nhóm + dạng bài + câu đã chọn. Mọi chọn / kiểm trùng ở DB.
 export type KhungO = { nhom: string; ten: string | null; dang_bai: string[]; phan_id: string | null; caus: string[] }
-export type KhungLui = { bac: 1 | 2; buoi: string; tieu_de: string | null; nhom: KhungO[] }
+// ngay có giá trị = buổi của giáo trình KHÁC mà lớp đã được gán (ngày lớp học); không có = buổi đứng trước trong chính giáo trình này (mig 202611131807).
+export type KhungLui = { bac: 1 | 2; buoi: string; tieu_de: string | null; ngay?: string | null; nhom: KhungO[] }
 export type KhungLe = { phan_id: string; nhom: string; ten: string | null; caus: string[] }
 export type KhungBtvn = { tru: string[]; buoi: Record<string, { lui: KhungLui[]; le: KhungLe[] }> }
 export async function btvnKhung(taiLieuId: string): Promise<KhungBtvn> {

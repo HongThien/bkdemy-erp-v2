@@ -462,14 +462,14 @@ function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onChon, o
   const conTrong = kb.lui.some((l) => l.nhom.some((o) => !o.caus.length))
   return (
     <>
-      {kb.lui.length === 0 && kb.le.length === 0 && <div className="rounded-lg border border-dashed border-slate-300 p-3 text-center text-[12px] italic text-slate-400">Chưa có buổi nào đứng trước — buổi này không có phần luyện lại.</div>}
+      {kb.lui.length === 0 && kb.le.length === 0 && <div className="rounded-lg border border-dashed border-slate-300 p-3 text-center text-[12px] italic text-slate-400">Chưa có buổi nào đứng trước (trong giáo trình này lẫn các buổi lớp đã được gán) — buổi này không có phần luyện lại.</div>}
       {!chiXem && conTrong && (
         <button onClick={onGoiYBuoi} className="w-full rounded-lg border border-dashed border-amber-300 bg-amber-50/60 py-2 text-[12.5px] font-medium text-amber-800 hover:bg-amber-50" title="Điền các ô còn trống: 3 câu / nhóm của buổi trước · 2 câu / nhóm của buổi trước nữa">⚡ Gợi ý cả phần luyện lại (buổi trước 3 câu · buổi trước nữa 2 câu mỗi nhóm)</button>
       )}
       {kb.lui.map((l) => (
         <div key={l.buoi} className="overflow-hidden rounded-xl border border-amber-200">
           <div className="flex items-center gap-2 bg-amber-500 px-3 py-2 text-white">
-            <span className="text-[14px] font-semibold">{l.bac === 1 ? '② Luyện lại buổi trước' : '③ Luyện lại buổi trước nữa'} · {l.tieu_de ?? 'Buổi'}</span>
+            <span className="text-[14px] font-semibold">{l.bac === 1 ? '② Luyện lại buổi trước' : '③ Luyện lại buổi trước nữa'} · {l.tieu_de ?? 'Buổi'}{l.ngay ? ` (lớp học ${l.ngay.split('-').reverse().slice(0, 2).join('/')} · giáo trình khác)` : ''}</span>
             <span className="ml-auto shrink-0 text-[11px] text-white/90">{l.nhom.length} nhóm · {l.nhom.flatMap((o) => o.caus).length} câu</span>
           </div>
           <div className="space-y-3 bg-white p-3">

@@ -6,7 +6,7 @@ import fs from 'fs'
 
 const env = Object.fromEntries(fs.readFileSync('.env', 'utf8').split('\n').filter((l) => /^[A-Z_]+=/.test(l))
   .map((l) => [l.split('=')[0], l.slice(l.indexOf('=') + 1).trim().replace(/^"|"$/g, '')]))
-const MIG = 'supabase/migrations/202611131755_btvn_3_phan_trong_giao_trinh.sql'
+const MIG = 'supabase/migrations/202611131807_btvn_buoi_truoc_theo_lop.sql'   // 202611131755 đã áp; file này thay thân 5 hàm của nó
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL || env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
 await c.connect()
 
@@ -117,6 +117,18 @@ try {
   const [{ a: th }] = await q('select public._mtt_nhom_lui($1, $2) a', [lop.id, '2099-04-06'])
   const [{ a: nb }] = await q('select public._mtt_nhom_buoi($1, $2, null) a', [lop.id, '2099-04-06'])
   kiem('mục tiêu tuần: phiếu đã tạo ⇒ nhóm luyện lại đọc từ phiếu; nhóm của buổi không lẫn nhóm luyện lại', th.length > 0 && nb.length > 0)
+
+  // ── giáo trình KHÁC của cùng lớp (mỗi tuần một giáo trình): buổi 1 lấy buổi trước từ các buổi lớp đã được gán ──
+  const T3 = (await q(`insert into tai_lieu (loai, ten, khoi, mon, nhanh, theme, cau_hinh, ban_do, lop_id) values ('giao_trinh', '[THỬ] tuần sau', $1, $2, $3, $4, '{}', 'moi', $5) returning id`, [gt.khoi, gt.mon, gt.nhanh, gt.theme, lop.id]))[0].id
+  const [m3] = await q('select * from public.fn_tl_bdm_copy_buoi($1, $2, $3)', [gt.buoi[0], T3, 'Buổi tuần sau'])
+  const j3 = (await q('select public.fn_tl_bdm_btvn_khung($1) j', [T3]))[0].j
+  const l3 = j3.buoi[m3.buoi_moi_id].lui
+  kiem('giáo trình khác của lớp: buổi 1 có buổi trước = buổi lớp vừa được gán (ở giáo trình kia)', l3.length >= 1 && l3[0].buoi === B[2] && !!l3[0].ngay, JSON.stringify(l3.map((x) => [x.bac, x.buoi, x.ngay])))
+  kiem("'tru' gồm cả câu của buổi ở giáo trình kia", c3.every((m) => j3.tru.includes(m)))
+  const ds3 = (await q('select public.fn_tl_bdm_lui_goi_y($1,$2,$3,$4) a', [T3, m3.buoi_moi_id, B[2], l3[0].nhom[0].nhom]))[0].a
+  kiem('gợi ý luyện lại buổi của giáo trình kia: có câu, không trùng bài của buổi đó', ds3.length > 0 && ds3.every((m) => !c3.includes(m)), ds3.join(','))
+  const [{ a: tr1 }] = await q('select array(select t.buoi::text from public._tl_bdm_buoi_truoc($1, $2) t order by t.bac) a', [T, B[2]])
+  kiem('giáo trình không gắn lớp: buổi trước vẫn theo thứ tự trong giáo trình', tr1.join() === [B[1], B[0]].join(), tr1.join())
 
   // ── copy buổi sang giáo trình khác: không chép phần luyện lại ──
   const T2 = await taoTl('[THỬ] BTVN 3 phần — đích copy')

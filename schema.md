@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-590 bảng · 39 view · 0 enum · 433 trigger · 1925 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1931 function
 
 ## _app_secrets
 
@@ -11842,6 +11842,7 @@ WITH luot AS (
 - `_tl_bdm_ghi_cau(p_phan uuid, p_ma_caus text[])` → void
 - `_tl_bdm_khoi_nhom(p_nhom text)` → text
 - `_tl_bdm_kiem_buoi(p_tai_lieu uuid, p_buoi uuid)` → void
+- `_tl_bdm_lui_bac(p_tai_lieu uuid, p_buoi uuid, p_lui_buoi uuid)` → integer
 - `_tl_bdm_mon_nhom(p_nhom text)` → text
 - `_tl_bdm_phan_cua_buoi(p_buoi uuid)` → SETOF tai_lieu_phan
 - `_tl_bdm_so_lan_dung(p_ma_caus text[])` → TABLE(ma_cau text, n bigint)
@@ -12946,6 +12947,8 @@ WITH luot AS (
 - `fn_tinh_nang_lop_dat(p_ma text, p_lop_id uuid, p_mo boolean)` → void
 - `fn_tkb_kiem_trung(p_lop uuid, p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_tu date DEFAULT NULL::date, p_bo_qua uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_tkb_luu(p_id uuid, p_lop uuid, p_thu integer, p_gio_bd time without time zone, p_gio_kt time without time zone, p_phong text, p_hieu_luc_tu date, p_chap_nhan boolean DEFAULT false)` → jsonb
+- `fn_tl_bdm_bo_phan_lui(p_phan uuid)` → void
+- `fn_tl_bdm_btvn_khung(p_tai_lieu uuid)` → jsonb
 - `fn_tl_bdm_btvn_xep_chong(p_master uuid, p_buoi uuid, p_lop uuid, p_ngay date, p_ti_le integer[] DEFAULT ARRAY[5, 3, 2])` → jsonb
 - `fn_tl_bdm_cau(p_nhom text)` → jsonb
 - `fn_tl_bdm_cay_chon(p_khoi text, p_nhanh text DEFAULT 'toan'::text)` → jsonb
@@ -12953,10 +12956,13 @@ WITH luot AS (
 - `fn_tl_bdm_copy_buoi(p_buoi_nguon uuid, p_tai_lieu_dich uuid, p_ten_moi text DEFAULT NULL::text)` → TABLE(buoi_moi_id uuid, so_phan integer, so_cau integer)
 - `fn_tl_bdm_dat_buoi(p_tai_lieu uuid, p_buoi uuid, p_chon jsonb, p_so_luyen jsonb DEFAULT '{"_tong": 2, "tu_luan": 1, "trac_nghiem": 1}'::jsonb, p_so_luyen_nhom jsonb DEFAULT '{"_tong": 6, "tu_luan": 1, "trac_nghiem": 3, "tra_loi_ngan": 2}'::jsonb, p_so_btvn jsonb DEFAULT '{"_tong": 4, "tu_luan": 1, "trac_nghiem": 2, "tra_loi_ngan": 1}'::jsonb)` → jsonb
 - `fn_tl_bdm_dat_cau(p_phan uuid, p_ma_caus text[])` → void
+- `fn_tl_bdm_dat_cau_lui(p_tai_lieu uuid, p_buoi uuid, p_lui_buoi uuid, p_nhom text, p_ma_caus text[])` → void
 - `fn_tl_bdm_et_de_xuat(p_lop uuid, p_ngay date)` → jsonb
 - `fn_tl_bdm_et_ma_de(p_khoi text, p_base jsonb)` → jsonb
 - `fn_tl_bdm_et_vi_tri(p_khoi text, p_ma text[])` → TABLE(ma_cau text, dang_bai_id text, nhom_id text)
 - `fn_tl_bdm_goi_y(p_nhom text, p_dang_bai text[], p_so jsonb, p_tru text[] DEFAULT '{}'::text[])` → text[]
+- `fn_tl_bdm_lui_goi_y(p_tai_lieu uuid, p_buoi uuid, p_lui_buoi uuid, p_nhom text, p_so jsonb DEFAULT NULL::jsonb)` → text[]
+- `fn_tl_bdm_lui_goi_y_buoi(p_tai_lieu uuid, p_buoi uuid)` → integer
 - `fn_tl_bdm_noi_dung(p_tai_lieu uuid, p_buoi uuid DEFAULT NULL::uuid)` → jsonb
 - `fn_tl_bdm_on_tap_ung_vien(p_master uuid, p_buoi uuid)` → jsonb
 - `fn_tl_bdm_trich_btvn(p_master uuid, p_buoi uuid, p_den uuid, p_tieu_de text, p_phieu jsonb)` → void
