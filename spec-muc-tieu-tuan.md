@@ -122,14 +122,15 @@ Một tuần **không thể** lật ô từ yếu lên đạt (2 lần cũ 40% +
 - "Không có lần đo mới" ≠ "đi ngang" (con không làm bài / vắng, không phải không tiến bộ). "Chờ chấm" do trung tâm, ghi riêng.
 - Ví dụ đích: em 50% → 70%, em 20% → 40–50% trong tuần; em 20% cần 2–3 tuần mới tới đạt.
 
-### 5.2b Mục tiêu tuần tính được (Thùy 13/11 — ĐỀ XUẤT, Thùy đang cân "đặt dài hạn hay tuần")
+### 5.2b Mục tiêu tuần tính được (Thùy CHỐT 13/11)
 - Mastery đo **theo lần** (mỗi lần = TB câu của lần đó, mastery = TB ≤ 5 lần gần nhất trong 30 ngày; Hình–Học 3 lần) ⇒ thứ Hai hệ biết
   trước **tuần này nhóm đó có bao nhiêu lần đo** (ET + các lần BTVN có nhóm + test sau giờ đã chốt) ⇒ tính được mục tiêu tuần:
   **mục tiêu tuần = min(80%, mastery của nhóm nếu mọi lần đo trong tuần đều Tốt (80%))**, có tính cả lần cũ sẽ rơi khỏi cửa sổ 5 lần / 30 ngày.
   Ví dụ: 4 lần cũ 0 · 50 · 0 · 50, tuần này 2 lần ⇒ cửa sổ còn 50 · 0 · 50 · 80 · 80 ⇒ mục tiêu tuần **52%** (đích dài hạn vẫn 80%).
 - Chụp cùng sổ chốt thứ Hai, không đổi trong tuần. Nhóm tuần này không có lần đo nào ⇒ không có mục tiêu tuần, không tính vào tiến độ.
 - Nhóm mới (chưa có lần cũ) ⇒ mục tiêu tuần = 80%. Thực tế Phần 1 hầu hết là 80%, Phần 2 thấp hơn.
-- **Đề xuất của CTO:** cờ trên thanh = **mục tiêu tuần** (tiến độ tổng + xếp hạng tính theo nó); **80% vẫn hiện là đích dài hạn** (vạch mờ ở cuối chặng).
+- **Chốt:** cờ trên thanh = **mục tiêu tuần** (số ghi dưới cờ; tiến độ tổng + xếp hạng tính theo nó); **80% vẫn hiện là đích dài hạn**
+  (vạch mờ "đích 80%", ẩn khi mục tiêu tuần đã là 80%). Mở dòng nhóm ghi rõ "tuần này có N lần đo, làm Tốt cả N lần thì nhóm lên X%".
   Lý do: xếp hạng đo thái độ nên mục tiêu phải với tới được trong tuần; để 80% thì em yếu làm tốt hết vẫn không bao giờ đầy thanh.
 
 ### 5.3 Tăng/giảm so với đầu tuần
@@ -137,7 +138,7 @@ Mỗi dòng nhóm bài + thanh tiến độ tổng hiện **chênh so với số
 Nhóm có lần đo đầu tiên trong tuần ghi "mới đo". **Mọi chênh khác 0 đều là tăng/giảm** — không đặt ngưỡng (Thùy 13/11: đo theo lần, không theo số câu).
 
 ### 5.4 Tiến độ tổng của tuần
-**Trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài ĐÃ CÓ lần đo**; nhóm chưa đo không tính
+**Trung bình của min(% hiện tại / mục tiêu TUẦN, 1) trên các nhóm bài ĐÃ CÓ lần đo và có mục tiêu tuần**; nhóm chưa đo không tính
 (em không tụt vì trung tâm chưa dạy tới). Thanh tiến độ tổng có cờ đích ở cuối.
 
 ### 5.5 Xếp hạng tiến độ
@@ -231,7 +232,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - Đầu màn: tên tuần · lớp · chọn môn · nút "Các tuần trước".
 - Ba ô: **Tiến độ mục tiêu tuần** (% + vạch đầu tuần + ▲/▼ + cờ đích) · **Việc của con x/y** · **Xếp hạng tiến độ** (bấm ⇒ top 20).
 - Cột trái: **Phần 1 · Kiến thức mới** + **Phần 2 · Ôn tập kiến thức**. Mỗi dòng nhóm bài GỌN: tên · ▲/▼ · % · thanh có **lá cờ đích ở mốc 80%,
-  số 80% ghi dưới cờ** (không ghi chữ "Mục tiêu 80%"). **Bấm vào** mới mở: một dòng mô tả (đã học x/y dạng, số câu đã đo) +
+  số ghi dưới cờ = mục tiêu TUẦN** (§5.2b) + vạch mờ "đích 80%" khi mục tiêu tuần < 80% (không ghi chữ "Mục tiêu"). **Bấm vào** mới mở: một dòng mô tả (đã học x/y dạng, số câu đã đo) +
   nút **Xem lại lý thuyết · Xem lại bài trên lớp · Luyện tập**.
 - Cột phải: **Việc của con tuần này** (§6).
 - **App phụ huynh: cùng nội dung, cập nhật liên tục** (Cổng Phụ huynh — project riêng `bkdemy-ph`, đọc ERP qua FDW `erp_live`), chữ formal.
@@ -303,7 +304,7 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 
 ## 12. Còn treo
 
-1. **Cờ trên thanh = mục tiêu tuần hay đích dài hạn 80%** (§5.2b) — Thùy đang cân. Đề xuất: cờ = tuần, 80% = vạch đích dài hạn.
+1. ~~Cờ = mục tiêu tuần hay 80%~~ — chốt: cờ = mục tiêu tuần, 80% = đích dài hạn (§5.2b).
 2. ~~Ngưỡng chênh tăng/giảm~~ — chốt: không có ngưỡng (§5.3).
 3. ~~Hết vòng 3 buổi ở mức 50–79% có thành nợ không~~ — chốt **tạm thời KHÔNG** (Thùy 13/11): chỉ nhóm do lượt chốt bổ trợ đưa vào mới là nợ.
 4. **Lớp chưa chốt xong** tới giờ phát: hiện tờ mục tiêu theo phần đã có, hay giữ lại? Giờ phát cụ thể.

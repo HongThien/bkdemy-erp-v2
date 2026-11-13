@@ -80009,3 +80009,6 @@ Thùy nêu 4 việc, làm được 3:
 ## 13/11 09:35 — Mục tiêu tuần: 3 câu treo
 - Thùy: hệ tính được mục tiêu tuần từ số lần đánh giá của nhóm trong tuần (đang cân đặt dài hạn 80% hay tuần). Đề xuất ghi §5.2b: mục tiêu tuần = min(80%, mastery nếu mọi lần đo tuần này đều Tốt), cờ = tuần, 80% = đích dài hạn.
 - Hết vòng 3 buổi ở mức cần luyện: tạm thời không thành nợ. Tăng/giảm: không đặt ngưỡng (mastery đo theo lần).
+
+## 13/11 09:37 — Mục tiêu tuần: CHỐT cờ = mục tiêu tuần, 80% = đích dài hạn
+- Thùy OK đề xuất §5.2b. Tiến độ tổng + xếp hạng tính theo mục tiêu tuần. Mockup màn 1: cờ ở mục tiêu tuần, vạch mờ "đích 80%" ở nhóm ôn tập.
