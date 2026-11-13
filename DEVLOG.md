@@ -80005,3 +80005,7 @@ Thùy nêu 4 việc, làm được 3:
 ## 13/11 09:30 — Mục tiêu tuần: viết lại spec bản gộp sạch (Thùy duyệt mockup 3 màn)
 - `spec-muc-tieu-tuan.md` viết lại từ đầu, gộp mọi quyết định 12–13/11, bỏ các phần đã bị thay (màn chốt từng HS, ảnh gửi PH, việc gắn theo nhóm, nhãn 2 mức, bước đo trước). 13 mục: mục đích · khái niệm · timeline · nguồn · đo · việc của con · vòng nợ · thay đổi hệ đang chạy · màn hình · dữ liệu · thứ tự build · còn treo (9) · rủi ro.
 - CLAUDE.md: dòng trỏ spec cập nhật. Notion chưa đẩy được (connector chưa cấp quyền).
+
+## 13/11 09:35 — Mục tiêu tuần: 3 câu treo
+- Thùy: hệ tính được mục tiêu tuần từ số lần đánh giá của nhóm trong tuần (đang cân đặt dài hạn 80% hay tuần). Đề xuất ghi §5.2b: mục tiêu tuần = min(80%, mastery nếu mọi lần đo tuần này đều Tốt), cờ = tuần, 80% = đích dài hạn.
+- Hết vòng 3 buổi ở mức cần luyện: tạm thời không thành nợ. Tăng/giảm: không đặt ngưỡng (mastery đo theo lần).
