@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-590 bảng · 39 view · 0 enum · 433 trigger · 1916 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1920 function
 
 ## _app_secrets
 
@@ -11284,6 +11284,9 @@ WITH luot AS (
 
 ## Functions
 
+- `_audit_cron_job()` → SETOF cron.job
+- `_audit_cron_runs()` → SETOF cron.job_run_details
+- `_audit_pss()` → SETOF extensions.pg_stat_statements
 - `_bai_test_mat_phieu_dong()` → trigger
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
 - `_bao_cao_ph_ky_ghi_log()` → trigger
@@ -12685,6 +12688,7 @@ WITH luot AS (
 - `fn_mt_ds_chu_de(p_khoi text)` → TABLE(id text, ten text, so_cau integer)
 - `fn_mt_ds_cua_cau(p_ma text[])` → TABLE(ma_cau text, chu_de_id text, kho text)
 - `fn_mt_ds_de_da_thi(p_mon text)` → TABLE(de_id uuid, ten text, khoi text, loai_de text, ngay_moi date, so_lop integer)
+- `fn_mt_ds_kho_cau(p_chu_de text[], p_tim text DEFAULT NULL::text, p_offset integer DEFAULT 0, p_limit integer DEFAULT 40)` → TABLE(ma_cau text, chu_de_id text, kho text, so_lan_dung integer, tong integer, cau jsonb)
 - `fn_mt_dung_diem_cau(p_buoi uuid, p_hs uuid)` → void
 - `fn_mt_goi_y_ds(p_chu_de text[], p_n integer DEFAULT 4, p_tru text[] DEFAULT '{}'::text[])` → TABLE(ma_cau text, chu_de_id text, kho text)
 - `fn_mt_hang_thang(p_mon text, p_ym text)` → TABLE(hoc_sinh_id uuid, khoi text, tb numeric, hang integer, so_em integer, hang_quy integer, diem_bang integer, ngay date)

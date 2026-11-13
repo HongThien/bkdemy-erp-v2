@@ -163,6 +163,14 @@ export async function goiYCauDs(chuDe: string[], n: number, tru: string[]): Prom
   if (error) throw error
   return (data ?? []) as CauDs[]
 }
+// Chọn TAY câu Đ/S từ kho chủ đề (Thùy 13/11): 1 trang câu kèm nội dung (không lời giải), số lần đã dùng; ít dùng trước.
+export type CauDsKho = CauDs & { so_lan_dung: number; tong: number; cau: CauHoi }
+export async function khoCauDs(chuDe: string[], tim: string, offset: number, limit = 40): Promise<CauDsKho[]> {
+  if (!chuDe.length) return []
+  const { data, error } = await supabase.rpc('fn_mt_ds_kho_cau', { p_chu_de: chuDe, p_tim: tim || null, p_offset: offset, p_limit: limit })
+  if (error) throw error
+  return (data ?? []) as CauDsKho[]
+}
 export async function chuDeCuaCauDs(maCaus: string[]): Promise<CauDs[]> {
   if (!maCaus.length) return []
   const { data, error } = await supabase.rpc('fn_mt_ds_cua_cau', { p_ma: maCaus })

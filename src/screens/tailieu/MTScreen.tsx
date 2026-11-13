@@ -34,6 +34,7 @@ import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import SearchSelect from '../../components/SearchSelect'
 import MTPrintView from './MTPrintView'
+import ChonCauDsKho from './ChonCauDsKho'
 import { useIsMobile } from '../../hooks/useIsMobile'
 // ⭐ 28/10 (Thùy: "luồng tạo MT làm giống ET mới · chọn nhiều dạng nhiều câu · đổi thứ tự kéo thả / điền vị trí") — kế hoạch
 // nhiều dạng bài × N câu + popup chọn câu theo NHÓM của ET bản đồ mới (ETBdmEditor), chỉ ở khối đã chạy bản đồ mới.
@@ -333,6 +334,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const dsPid = ch.khuonThi?.phan?.ds ?? null
   const [chuDeDs, setChuDeDs] = useState<{ id: string; ten: string; so_cau: number }[]>([])
   const [dsBusy, setDsBusy] = useState(false)
+  const [chonDs, setChonDs] = useState<{ phanId: string; idx: number } | null>(null)   // popup chọn tay câu Đ/S
   useEffect(() => {
     if (!khuon || !d?.khoi) { setChuDeDs([]); return }
     let alive = true
@@ -665,6 +667,17 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       await napDs(rows); await luuPhan(phanId, rows)
       if (got.length < trong.length) setLoi(`Kho Đúng/Sai của các chủ đề đã chọn chỉ còn ${got.length} câu chưa dùng.`)
     } catch (e) { setLoi(loiDoc(e)) } finally { setDsBusy(false) }
+  }
+  // ✎ Chọn tay câu Đ/S (Thùy 13/11): câu đầu vào hàng đang mở, các câu sau điền tiếp hàng TRỐNG (sau hàng đó trước, rồi trước nó),
+  // hết hàng trống thì nối cuối phần.
+  async function chenDs(phanId: string, idx: number, items: { ma_cau: string; chu_de_id: string; kho: string }[]) {
+    const pk = vaiCua(phanId)
+    const rows = [...(rowsByPhan[phanId] ?? [])]
+    while (rows.length < (pk?.soCau ?? 0)) rows.push({ maDang: null, maCau: null, nhanh: nhanhMacDinh })
+    const cho = [Math.min(idx, rows.length), ...rows.map((r, i) => (!r.maCau && i > idx ? i : -1)).filter((i) => i >= 0),
+      ...rows.map((r, i) => (!r.maCau && i < idx ? i : -1)).filter((i) => i >= 0)]
+    items.forEach((x, k) => { const i = cho[k]; if (i === undefined || i >= rows.length) rows.push(rowDs(x)); else rows[i] = rowDs(x) })
+    await napDs(rows); await luuPhan(phanId, rows)
   }
   // ↻ Đổi 1 câu Đ/S: cùng chủ đề của hàng (hàng trống ⇒ các chủ đề đã chọn).
   async function doiCauDs(phanId: string, idx: number) {
@@ -1004,6 +1017,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       <div className="mt-2 flex items-center gap-2">
                         <button onClick={() => goiYDuDs(p.id)} disabled={dsBusy || !(ch.khuonThi?.dsChuDe ?? []).length}
                           className="rounded-md bg-teal-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-teal-500 disabled:opacity-40">{dsBusy ? 'Đang gợi ý…' : `⚡ Gợi ý đủ ${vaiCua(p.id)?.soCau ?? 4} câu (điền hàng trống)`}</button>
+                        <button onClick={() => { const rs = rowsByPhan[p.id] ?? []; const i = rs.findIndex((r) => !r.maCau); setChonDs({ phanId: p.id, idx: i >= 0 ? i : rs.length }) }}
+                          className="rounded-md border border-teal-400 bg-white px-3 py-1.5 text-[12px] font-medium text-teal-700 hover:bg-teal-50">✎ Chọn tay từ kho</button>
                         <span className="text-[11px] text-slate-500">Mỗi câu 4 ý — chấm từng ý ở màn Chấm MT.</span>
                       </div>
                     </div>
@@ -1131,11 +1146,11 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
                           <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
-                          <button onClick={() => (laDs ? doiCauDs(p.id, i) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để hệ gợi ý câu khác' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
+                          <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
                             className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
                             {laDs ? (
                               r.maDang ? <span className="line-clamp-2 text-slate-700"><span className="mr-1 rounded bg-teal-50 px-1 py-0.5 text-[10px] font-semibold text-teal-700">Đ/S</span>{chuDeDs.find((x) => x.id === r.maDang)?.ten ?? r.maDang}</span>
-                                : <span className="text-teal-600">+ gợi ý câu Đúng/Sai…</span>
+                                : <span className="text-teal-600">+ chọn câu Đúng/Sai từ kho…</span>
                             ) : dbInfo ? (
                               <span className="line-clamp-2 text-slate-700">
                                 {dbInfo.nhanh === 'hgt' && <span className="mr-1 rounded bg-sky-50 px-1 py-0.5 text-[10px] font-medium text-sky-700">HGT</span>}
@@ -1179,7 +1194,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           {r.maDang && (
                             <div className="flex shrink-0 gap-1 pt-0.5 max-md:order-3 max-md:pt-0">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
-                              {!laDs && <button onClick={() => (dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
+                              {<button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
                                 title="Chọn câu — tick NHIỀU câu được: câu thêm chèn ngay sau hàng này" className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>}
                             </div>
                           )}
@@ -1304,6 +1319,10 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
             onClose={() => setHinhPicker(null)} onPick={(pk) => { const { phanId, idx } = hinhPicker; setHinhPicker(null); pickHinh(phanId, idx, pk) }} />
         : <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/40" onClick={() => setHinhPicker(null)}><div className="rounded-xl bg-white px-5 py-3 text-sm text-slate-600">Đang tải kho Hình khối {d.khoi}… (bấm lại sau giây lát)</div></div>)}
       {chiaDe && <ChiaDeMTModal {...chiaDe} onClose={() => setChiaDe(null)} />}
+      {chonDs && (() => { const r = rowsByPhan[chonDs.phanId]?.[chonDs.idx]
+        return <ChonCauDsKho chuDe={chuDeDs} macDinh={ch.khuonThi?.dsChuDe?.length ? ch.khuonThi.dsChuDe : r?.maDang ? [r.maDang] : []}
+          selected={r?.maCau ? [r.maCau] : []} khoa={[...usedGlobal(chonDs.phanId, chonDs.idx)]} onClose={() => setChonDs(null)}
+          onConfirm={async (items) => { const x = chonDs; try { await chenDs(x.phanId, x.idx, items); setChonDs(null) } catch (e) { setLoi(loiDoc(e)) } }} /> })()}
       {nhanBan && onMo && <NhanBanMTModal goc={{ id, ten: d.ten }} onClose={() => setNhanBan(false)} onXong={(moi) => { setNhanBan(false); useStore.getState().enqueueLinkGen(id, 'mt'); onMo(moi) }} />}
     </div>
   )
