@@ -1,0 +1,178 @@
+[
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-6-nam-2024-2025-truong-ban-mai-school-ha-noi",
+  "ket_luan": "trung",
+  "so_tu": 1651,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — Trường BMS (mã đề 101)",
+   "ti_le": 0.82,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 1,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-6-nam-2024-2025-truong-m-v-lomonoxop-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS và THPT M.V. Lô-mô-nô-xốp, Nam Từ Liêm (đề 02)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.27,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-6-nam-2025-2026-truong-thcs-hat-mon-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 2143,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — Phòng GD&ĐT huyện Chương Mỹ, Hà Nội",
+   "ti_le": 0.2,
+   "cau": 15
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-6-nam-2025-2026-truong-thcs-giang-bien-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4121,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Ngô Sĩ Liên, phường Cửa Nam, Hà Nội (đề chính thức)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-6-nam-2025-2026-truong-thcs-ly-son-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 497,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Cụm chuyên môn số 14 (bộ sách Cánh Diều)",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-6-nam-2025-2026-truong-thcs-ngo-gia-tu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1098,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.02,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-6-nam-2024-2025-truong-thcs-phuc-dien-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS và THPT M.V. Lô-mô-nô-xốp, Nam Từ Liêm (đề 02)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.18,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-6-nam-2025-2026-truong-thcs-do-ngoc-du-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1273,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Ngô Sĩ Liên, phường Cửa Nam, Hà Nội (đề chính thức)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-6-nam-2025-2026-xa-dong-anh-ha-noi",
+  "ket_luan": "trung",
+  "so_tu": 1387,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Phòng Văn hóa – Xã hội xã Đông Anh, Hà Nội (đề chính thức)",
+   "ti_le": 0.89,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 0.54,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-6-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS và THPT M.V. Lô-mô-nô-xốp, Nam Từ Liêm (đề 02)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.18,
+  "trung_kho": false
+ },
+ {
+  "batch": "B024",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-ly-son-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS và THPT M.V. Lô-mô-nô-xốp, Nam Từ Liêm (đề 02)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.18,
+  "trung_kho": false
+ }
+]

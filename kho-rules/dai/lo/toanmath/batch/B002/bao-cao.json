@@ -1,0 +1,26 @@
+{
+ "trang_thai": "xong",
+ "ngay": "2026-11-13",
+ "bai": 17,
+ "de": 15,
+ "trung_kho_bai": 2,
+ "trung_kho_ghi": "Amsterdam 25-26 và phường Ba Đình 25-26 = đề đã có trong kho (do-trung + xem trang) — bỏ, không giải. Luật 2 mã lấy 1: bỏ Giang Biên Đề 02, Ngọc Lâm mã 902.",
+ "cau_boc": 138,
+ "trung_kho": 2,
+ "sonnet": 138,
+ "opus_khop": 138,
+ "lech": 0,
+ "bo": 0,
+ "ghi_db": 138,
+ "ghi_thu": "chạy thử ghi.mjs (rollback): 136 câu mới · 2 trỏ về câu cũ (B002-09)",
+ "soat_co_sua": 15,
+ "chua_chac": 2,
+ "hd_cham_sai": [
+  "B002-07 Bài 1a (chép đề '+√0,04' ⇒ −7,8; đề in dấu trừ ⇒ đúng −8,2)",
+  "B002-08 Bài II (ĐK x≠9 — đúng x≠4) · III.2 (≥82 — đề 'hơn 82' ⇒ >82)",
+  "B002-15 Bài V (đơn vị m³ — đúng cm³)",
+  "B002-10 4.2c (OI·OE — đúng OI·IE)"
+ ],
+ "ghi_chu": "15 đề (11 có HD chấm). Soát có sửa 15/15 — không chỗ nào sửa đáp số; lỗi thật: 01 Bài 5 dùng giả thiết chỉ có ở dấu gạch hình · 04 IV.2 vị trí điểm theo hình chưa CM · 10 4.2c dùng tỉ số diện tích = bình phương tỉ số đồng dạng · 09 IV.2c vị trí K. Chưa chắc: B002-12 IV.1 (độ dài cung/góc ở tâm), IV.3b (bài đường trung bình) — đã ghi kiem_may='nghi'. Chạy máy nhà (BK_GOC/BK_LV). 30 lượt subagent (15 Sonnet + 15 Opus).",
+ "ghi_ket_qua": "13/11: 15 tai_lieu de_thi · 138 câu (Đại 104 · Hình 34, Hình mới tạm HH00140 — B001 dùng HH00108) · 136 mới · 2 trỏ câu cũ · da_duyet=false · 2 câu nghi (HHC014097, HHC014099)"
+}

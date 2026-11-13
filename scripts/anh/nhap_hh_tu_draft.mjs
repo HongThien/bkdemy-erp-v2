@@ -102,8 +102,8 @@ try {
          values ($1,$2,$3,$4,$5,$6,$7,$8,'tài liệu soạn (Claude soạn lời giải)') returning ma_cau`,
         [maBai, LOP, tt++, x.loai, x.nd, x.lg, x.lc ? JSON.stringify(x.lc) : null, x.dapAn])
       : await c.query(
-      `insert into hinh_hoc_cau_hoi (dang_chinh, noi_dung, loi_giai, thu_tu, loai_cau, lua_chon, dap_an, nguon_giai, giai_method, kho_chuan, da_duyet)
-       values ($1,$2,$3,$4,$5,$6,$7,'ai','claude_code',true,$8) returning ma_cau`,
+      `insert into hinh_hoc_cau_hoi (dang_chinh, noi_dung, loi_giai, thu_tu, loai_cau, lua_chon, dap_an, nguon_giai, giai_method, da_duyet)
+       values ($1,$2,$3,$4,$5,$6,$7,'ai','claude_code',$8) returning ma_cau`, // kho_chuan = cột SUY (13/11), không ghi tay
       [maBai, x.nd, x.lg, tt++, x.loai, x.lc ? JSON.stringify(x.lc) : null, x.dapAn, DUYET_AI])
     if (DUYET_AI && !LOP) await c.query(`update hinh_hoc_cau_hoi set duyet_nguon = 'ai', duyet_at = now() where ma_cau = $1`, [r.rows[0].ma_cau])
     map.push({ nhan: x.nhan, ma_cau: r.rows[0].ma_cau, thu_tu: tt - 1, hinh: x.hinh, hinhLG: x.hinhLG })

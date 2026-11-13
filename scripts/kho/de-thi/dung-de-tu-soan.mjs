@@ -67,6 +67,59 @@ function kiemCongThuc(nhan, cho, s) {
   }
 }
 
+// ── SƠ ĐỒ TƯ DUY (Thùy 14/11, bảng hinh_hoc_cau_so_do — mig 202611131317) ─────────────────────────────────────────────
+// Thay Phần 1 của câu Hình chứng minh bằng khối:
+//   **Sơ đồ tư duy**
+//   **Mấu chốt:** <ý tưởng then chốt>
+//   - n1 | a | <mốc> | gt | <lý do>          một ô / dòng, THEO THỨ TỰ XUÔI (giả thiết → kết luận)
+//   - n2 | c | <mốc> | n1, gt | <lý do>      cột: khoá bất biến · ý · mốc · từ (khoá ô TRƯỚC và/hoặc gt) · lý do (tuỳ chọn)
+// Câu không chia ý ⇒ cột ý = "-". Phần 2: mỗi ô đúng MỘT khúc, mở bằng dòng riêng `[[so-do:<k>]]`, đúng thứ tự ô, nằm trong đúng ý
+// (dòng ý trong Phần 2 = chỉ "c)" đứng một mình, khúc theo sau). Mọi chữ của Phần 2 phải nằm trong một khúc.
+const SD_RE = /^\[\[so-do:(n\d+)\]\]$/, YP2_RE = /^\*{0,2}([a-h])\)\*{0,2}\s*(.*)$/
+function docSoDo(nhan, khoi, p2) {
+  const L = (s) => loi.push(`${nhan} Sơ đồ tư duy: ${s}`)
+  const dong = khoi.split('\n').map((s) => s.trim()).filter(Boolean)
+  let mauChot = null; const nut = [], khoa = new Set()
+  for (const d of dong.slice(1)) {
+    let m
+    if ((m = d.match(/^\*\*Mấu chốt:\*\*\s*(.+)$/))) { if (mauChot) L('hai dòng Mấu chốt'); mauChot = m[1].trim(); continue }
+    if (d.startsWith('- ')) {
+      const f = d.slice(2).split(' | ').map((s) => s.trim())
+      if (f.length < 4 || f.length > 5) { L(`dòng ô phải có 4–5 cột "k | ý | mốc | từ | lý do": «${d.slice(0, 60)}»`); continue }
+      const [k, y, noi, tu, ly] = f
+      if (!/^n\d+$/.test(k)) L(`khoá «${k}» phải dạng n1, n2…`)
+      if (khoa.has(k)) L(`khoá ${k} lặp`)
+      if (!/^([a-h]|-)$/.test(y)) L(`${k}: cột ý «${y}» phải là a–h hoặc "-"`)
+      if (!noi) L(`${k}: mốc rỗng`)
+      const tuDs = tu.split(',').map((s) => s.trim()).filter(Boolean)
+      if (!tuDs.length) L(`${k}: cột "từ" rỗng (ghi gt hoặc khoá ô trước)`)
+      for (const t of tuDs) if (t !== 'gt' && !khoa.has(t)) L(`${k}: "từ" trỏ «${t}» — chỉ được trỏ gt hoặc ô ĐỨNG TRƯỚC`)
+      kiemCongThuc(nhan, `sơ đồ ${k}`, noi); if (ly) kiemCongThuc(nhan, `sơ đồ ${k} lý do`, ly)
+      khoa.add(k); nut.push({ k, y, noi_dung: noi, tu: tuDs, ...(ly ? { ly_do: ly } : {}) })
+      continue
+    }
+    L(`dòng lạc «${d.slice(0, 60)}»`)
+  }
+  if (!mauChot) L('thiếu "**Mấu chốt:**"'); else kiemCongThuc(nhan, 'Mấu chốt', mauChot)
+  if (!nut.length || nut.length > 20) L(`số ô = ${nut.length}, phải 1–20`)
+  // Phần 2: khúc ↔ ô
+  const coY = nut.some((o) => o.y !== '-')
+  let yHt = coY ? null : '-', khucHt = null
+  const moc = []
+  for (const d0 of p2.split('\n').slice(1)) {
+    const d = d0.trim(); if (!d) continue
+    let m
+    if ((m = d.match(SD_RE))) { moc.push({ k: m[1], y: yHt }); khucHt = m[1]; continue }
+    if (/\[\[so-do/.test(d)) { L(`dòng móc sai khuôn «${d.slice(0, 40)}» — phải đứng riêng một dòng [[so-do:nK]]`); continue }
+    if (coY && (m = d.match(YP2_RE))) { yHt = m[1]; khucHt = null; if (m[2]) L(`Phần 2 ý ${m[1]}): dòng ý phải đứng một mình, khúc đầu tiên mở bằng [[so-do:…]] ngay sau`); continue }
+    if (!khucHt) L(`Phần 2: chữ nằm ngoài khúc (trước dòng [[so-do:…]] đầu tiên của ý): «${d.slice(0, 50)}»`)
+  }
+  const thuTu = nut.map((o) => o.k).join(','), thuTuMoc = moc.map((o) => o.k).join(',')
+  if (thuTu !== thuTuMoc) L(`các khúc Phần 2 phải móc đúng mọi ô, mỗi ô một lần, theo thứ tự xuôi — sơ đồ [${thuTu}] · Phần 2 [${thuTuMoc}]`)
+  for (const mc of moc) { const o = nut.find((x) => x.k === mc.k); if (o && o.y !== mc.y) L(`${o.k} thuộc ý ${o.y} nhưng khúc nằm ở ý ${mc.y ?? '?'}`) }
+  return { mau_chot: mauChot, nut }
+}
+
 const phan = [], cau = []
 const khoiPhan = md.split(/^(?=## PHẦN )/m).slice(1)
 if (!khoiPhan.length) loi.push('không có "## PHẦN …"')
@@ -83,8 +136,12 @@ for (const kp of khoiPhan) {
     const nhan = `P${thuTu} ${mc[1].trim()}`
     const kv = Object.fromEntries(mc[2].split('|').map((x) => x.trim().split('=').map((y) => y.trim())).map(([k, ...v]) => [k, v.join('=')]))
     const than = kc.slice(kc.indexOf('\n') + 1)
-    const i1 = than.indexOf('**Phần 1. Hướng dẫn**'), i2 = than.indexOf('**Phần 2. Trình bày**')
-    if (i1 < 0 || i2 < i1) { loi.push(`${nhan}: thiếu Phần 1 / Phần 2`); continue }
+    // ⭐ 14/11 (Thùy): câu Hình chứng minh có thể thay Phần 1 bằng "**Sơ đồ tư duy**" — lưu RIÊNG (bảng hinh_hoc_cau_so_do), không vào lời giải;
+    //   lời giải = Phần 2, chia khúc theo sơ đồ xuôi, mỗi khúc mở bằng dòng `[[so-do:<k>]]`. Xem docSoDo() dưới.
+    const iSd = than.indexOf('**Sơ đồ tư duy**')
+    const i1 = iSd >= 0 ? iSd : than.indexOf('**Phần 1. Hướng dẫn**'), i2 = than.indexOf('**Phần 2. Trình bày**')
+    if (i1 < 0 || i2 < i1) { loi.push(`${nhan}: thiếu Phần 1 (hoặc Sơ đồ tư duy) / Phần 2`); continue }
+    if (iSd >= 0 && than.includes('**Phần 1. Hướng dẫn**')) loi.push(`${nhan}: đã có Sơ đồ tư duy thì bỏ Phần 1 (sơ đồ ngược chính là Phần 1)`)
     // phần trước lời giải: đề · phương án · hình · ghi chú
     const noiDung = [], luaChon = {}, menh = [], anh = [], anhGiai = [], canhBao = []
     let dang = null
@@ -103,12 +160,16 @@ for (const kp of khoiPhan) {
       else if (d.trim()) loi.push(`${nhan}: dòng lạc trước lời giải: «${d.slice(0, 60)}»`)
     }
     const nd = gon(noiDung.join('\n'))
-    const loiGiai = gon(than.slice(i1))
+    const loiGiai = gon(than.slice(iSd >= 0 ? i2 : i1)) // có sơ đồ ⇒ lời giải chỉ còn Phần 2 (sơ đồ lưu riêng)
     const p1 = gon(than.slice(i1, i2))
     if (!nd) loi.push(`${nhan}: thiếu "**Đề:**"`)
     if (!KHO_DUOC.includes(kv.kho)) loi.push(`${nhan}: kho phải là ${KHO_DUOC.join(' / ')}`)
     if (!['trac_nghiem', 'dung_sai', 'tra_loi_ngan', 'tu_luan'].includes(kv.loai)) loi.push(`${nhan}: loai sai «${kv.loai}»`)
-    for (const l of kiemP1(p1)) loi.push(`${nhan} Phần 1: ${l}`)
+    let soDo = null
+    if (iSd >= 0) {
+      if (kv.kho !== 'hinh_hoc') loi.push(`${nhan}: Sơ đồ tư duy hiện chỉ cho câu kho=hinh_hoc`)
+      soDo = docSoDo(nhan, p1, loiGiai)
+    } else for (const l of kiemP1(p1)) loi.push(`${nhan} Phần 1: ${l}`)
     kiemCongThuc(nhan, 'đề', nd); kiemCongThuc(nhan, 'lời giải', loiGiai)
     let dapAn = null, lc = null
     if (kv.loai === 'trac_nghiem') {
@@ -133,7 +194,7 @@ for (const kp of khoiPhan) {
     if (anhGiai.length > 1) nhac.push(`${nhan}: ${anhGiai.length} hình giải — ERP chỉ giữ hình đầu`)
     if (anh.length > 1) nhac.push(`${nhan}: ${anh.length} hình — ERP chỉ giữ hình đầu`)
     cau.push({ phan: thuTu, so: ++so, nhan: chuanNhan(mc[1].trim()), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: kv.loai === 'dung_sai' ? null : dapAn, dap_an_nguon: 'claude_giai',
-      menh_de: kv.loai === 'dung_sai' ? menh.map((t, i) => ({ noi_dung: t, dap_an: dapAn?.[i], dang: null, loi_giai: null })) : null, loi_giai: loiGiai, anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
+      menh_de: kv.loai === 'dung_sai' ? menh.map((t, i) => ({ noi_dung: t, dap_an: dapAn?.[i], dang: null, loi_giai: null })) : null, loi_giai: loiGiai, ...(soDo ? { so_do: soDo } : {}), anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
   }
   if (!so) loi.push(`Phần ${thuTu}: không có câu nào`)
 }

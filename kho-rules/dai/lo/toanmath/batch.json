@@ -420,47 +420,11 @@
  {
   "ma": "B003",
   "nhom": "PDF",
-  "ten": "K9 đề thi cuối kì (3/4)",
-  "so_bai": 17,
+  "ten": "K9 đề thi cuối kì II (1/2)",
+  "so_bai": 14,
   "so_cau_boc": null,
   "ghi_chu": "",
   "bai": [
-   {
-    "khoi": "K9",
-    "folder": "Đề thi/CKI",
-    "ten_bai": "de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi",
-    "dinh_dang": "pdf",
-    "tt": "chua",
-    "cau": null,
-    "loai_boc": null,
-    "files": [
-     "K9\\Đề thi\\CKI\\de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi.pdf"
-    ]
-   },
-   {
-    "khoi": "K9",
-    "folder": "Đề thi/CKI",
-    "ten_bai": "de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi",
-    "dinh_dang": "pdf",
-    "tt": "chua",
-    "cau": null,
-    "loai_boc": null,
-    "files": [
-     "K9\\Đề thi\\CKI\\de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi.pdf"
-    ]
-   },
-   {
-    "khoi": "K9",
-    "folder": "Đề thi/CKI",
-    "ten_bai": "de-thi-hoc-ky-1-toan-9-nam-2024-2025-truong-marie-curie-ha-noi",
-    "dinh_dang": "pdf",
-    "tt": "chua",
-    "cau": null,
-    "loai_boc": null,
-    "files": [
-     "K9\\Đề thi\\CKI\\de-thi-hoc-ky-1-toan-9-nam-2024-2025-truong-marie-curie-ha-noi.pdf"
-    ]
-   },
    {
     "khoi": "K9",
     "folder": "Đề thi/CKII",
@@ -637,7 +601,7 @@
  {
   "ma": "B004",
   "nhom": "PDF",
-  "ten": "K9 đề thi cuối kì (4/4)",
+  "ten": "K9 đề thi cuối kì II (2/2)",
   "so_bai": 17,
   "so_cau_boc": null,
   "ghi_chu": "",
@@ -854,11 +818,47 @@
  {
   "ma": "B005",
   "nhom": "PDF",
-  "ten": "K9 đề thi cuối kì — scan nghi trùng",
-  "so_bai": 10,
+  "ten": "K9 đề thi cuối kì I (3/3 — còn lại + scan nghi trùng)",
+  "so_bai": 13,
   "so_cau_boc": null,
-  "ghi_chu": "Scan: bóc PDF xong so kho trước — trùng thì dừng, không giải.",
+  "ghi_chu": "Scan: bóc PDF xong so kho trước — trùng thì dừng, không giải. 13/11: thêm 3 bài CKI tách từ B003 — Thùy: làm hết cuối kì I trước.",
   "bai": [
+   {
+    "khoi": "K9",
+    "folder": "Đề thi/CKI",
+    "ten_bai": "de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi",
+    "dinh_dang": "pdf",
+    "tt": "chua",
+    "cau": null,
+    "loai_boc": null,
+    "files": [
+     "K9\\Đề thi\\CKI\\de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi.pdf"
+    ]
+   },
+   {
+    "khoi": "K9",
+    "folder": "Đề thi/CKI",
+    "ten_bai": "de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi",
+    "dinh_dang": "pdf",
+    "tt": "chua",
+    "cau": null,
+    "loai_boc": null,
+    "files": [
+     "K9\\Đề thi\\CKI\\de-hoc-ky-1-toan-9-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi.pdf"
+    ]
+   },
+   {
+    "khoi": "K9",
+    "folder": "Đề thi/CKI",
+    "ten_bai": "de-thi-hoc-ky-1-toan-9-nam-2024-2025-truong-marie-curie-ha-noi",
+    "dinh_dang": "pdf",
+    "tt": "chua",
+    "cau": null,
+    "loai_boc": null,
+    "files": [
+     "K9\\Đề thi\\CKI\\de-thi-hoc-ky-1-toan-9-nam-2024-2025-truong-marie-curie-ha-noi.pdf"
+    ]
+   },
    {
     "khoi": "K9",
     "folder": "Đề thi/CKI",

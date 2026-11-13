@@ -51,6 +51,16 @@ const SQL_CHUAN = (col) => `regexp_replace(lower(${col}), '\\s+', '', 'g')`
  * @returns {Promise<{maCauList: string[], trung: Array<{idx:number, ma_cau_cu:string, trong_lo?:boolean}>, chua_dang: number[], bdm: {khoi: string[], de_xuat: number, gan: number, kho_ds: number, doi_dang_cu: Array<{idx:number, ma_dang_cu:string}>}}>}
  *   maCauList[i] = ma_cau MỚI nếu insert, = ma_cau CŨ nếu trùng (không insert).
  */
+// LUẬT DUYỆT 13/11 (Thùy): câu lời giải CHƯA CHẮC (trạm soạn/soát ghi `**Chưa chắc:**`) KHÔNG được tự duyệt dù gán dạng mức cao ⇒
+// đánh `kiem_may='nghi'` ngay khi chèn (trigger `_bdm_tu_duyet_sau_gan` bỏ qua câu nghi; câu vào danh sách người kiểm).
+// `q.kiem_may_nghi` = lý do (chuỗi); vắng ⇒ không làm gì (mọi script gọi cũ chạy như trước).
+async function danhDauNghi(client, table, maCau, lyDo) {
+  if (!lyDo) return
+  await client.query(
+    `update ${table} set kiem_may = 'nghi', kiem_may_boi = 'claude_code', kiem_may_at = now(), kiem_may_ghi = $2 where ma_cau = $1`,
+    [maCau, String(lyDo).slice(0, 2000)])
+}
+
 export async function insertCauBatch({ client, subject, cauList, choTrung = false }) {
   if (!SUBJECTS.includes(subject)) throw new Error(`subject không hợp lệ: ${subject}`)
   if (!Array.isArray(cauList) || cauList.length === 0) throw new Error('cauList rỗng')
@@ -208,6 +218,7 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
         [q.dang_chinh, q.loai_cau, q.noi_dung, jn(q.lua_chon), jn(q.menh_de), q.dap_an ?? null, q.loi_giai ?? null,
          q.anh_de ?? null, q.anh_dap_an ?? null, q.nguon || 'de_thi', q.nguon_giai || 'nguoi', q.ma_cum ?? null])
       maCauByIdx[i] = r.ma_cau
+      await danhDauNghi(client, 'hinh_hoc_cau_hoi', r.ma_cau, q.kiem_may_nghi)
     }
     for (const t of trung) {
       if (t.ma_cau_cu) maCauByIdx[t.idx] = t.ma_cau_cu
@@ -282,6 +293,8 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
         q.dang_ai_de_xuat ?? q.dang_chinh,
       ]
     )
+    // Cờ "Chưa chắc" PHẢI đặt TRƯỚC mọi lệnh ghi bản đồ bên dưới: insert kho Đ/S nguon 'ai' bắn trigger tự duyệt ngay (luật duyệt 13/11)
+    await danhDauNghi(client, table, maCau, q.kiem_may_nghi)
     // Bản đồ mới: dạng bài (đề xuất AI / gán người đã chốt) · chủ đề kho Đ/S — chỉ câu MỚI chèn
     if (q._bdm && q.dang_bai) {
       if (q.dang_bai_chot) { await client.query(`select public._bdm_nguoi_gan_cau($1, $2, $3)`, [subject, maCau, q.dang_bai]); bdm.gan++ }

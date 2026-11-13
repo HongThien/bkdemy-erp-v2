@@ -1,0 +1,146 @@
+{
+ "tong": {
+  "de": 7,
+  "soan": 7,
+  "soat": 7,
+  "dat": 7,
+  "sua": 7,
+  "cau": 128,
+  "hinh": 0,
+  "co_hd": 3,
+  "chua_chac": [
+   "B024-03 Câu 4",
+   "B024-03 Câu 3",
+   "B024-05 Câu 4",
+   "B024-05 Câu 6",
+   "B024-07 Câu 3a"
+  ],
+  "loai": {
+   "trac_nghiem": 52,
+   "tu_luan": 30,
+   "tra_loi_ngan": 46
+  }
+ },
+ "de": [
+  {
+   "ma": "B024-01",
+   "don_vi": "THCS Hát Môn, xã Hát Môn, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 21,
+   "loai": {
+    "trac_nghiem": 12,
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 0,
+   "chua_chac": []
+  },
+  {
+   "ma": "B024-02",
+   "don_vi": "THCS Giang Biên, phường Việt Hưng, Hà Nội (Đề 01)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 19,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 2,
+    "tra_loi_ngan": 9
+   },
+   "hinh": 0,
+   "chua_chac": []
+  },
+  {
+   "ma": "B024-03",
+   "don_vi": "THCS Lý Sơn, phường Việt Hưng, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 4,
+    "tu_luan": 9,
+    "tra_loi_ngan": 5
+   },
+   "hinh": 0,
+   "chua_chac": [
+    "Câu 4",
+    "Câu 3"
+   ]
+  },
+  {
+   "ma": "B024-04",
+   "don_vi": "THCS Ngô Gia Tự, phường Việt Hưng, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 8,
+    "tra_loi_ngan": 8,
+    "tu_luan": 2
+   },
+   "hinh": 0,
+   "chua_chac": []
+  },
+  {
+   "ma": "B024-05",
+   "don_vi": "THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 8,
+    "tra_loi_ngan": 7,
+    "tu_luan": 3
+   },
+   "hinh": 0,
+   "chua_chac": [
+    "Câu 4",
+    "Câu 6"
+   ]
+  },
+  {
+   "ma": "B024-06",
+   "don_vi": "THCS Đỗ Ngọc Du, xã Đại Thanh, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 15,
+   "loai": {
+    "trac_nghiem": 4,
+    "tra_loi_ngan": 7,
+    "tu_luan": 4
+   },
+   "hinh": 0,
+   "chua_chac": []
+  },
+  {
+   "ma": "B024-07",
+   "don_vi": "THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 19,
+   "loai": {
+    "trac_nghiem": 8,
+    "tra_loi_ngan": 8,
+    "tu_luan": 3
+   },
+   "hinh": 0,
+   "chua_chac": [
+    "Câu 3a"
+   ]
+  }
+ ]
+}

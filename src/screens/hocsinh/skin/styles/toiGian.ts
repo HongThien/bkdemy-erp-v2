@@ -22,6 +22,7 @@ export const TOI_GIAN: Skin = {
   anhO: {
     giao_trinh: `${A}/o_giao_trinh.svg`, et: `${A}/o_et.svg`, btvn: `${A}/o_btvn.svg`, tu_luyen: `${A}/o_tu_luyen.svg`,
     thong_tin: `${A}/o_thong_tin.svg`, so_tay: `${A}/o_so_tay.svg`, de_thi_thu: `${A}/o_de_thi_thu.svg`,
+    muc_tieu: `${A}/o_bai_tap_giao.svg`, // 13/11 Mục tiêu tuần — dùng lại icon không hiện ở Home (Thùy: không trùng ở Home là được)
     bai_tap_giao: `${A}/o_bai_tap_giao.svg`, thanh_tuu: `${A}/o_thanh_tuu.svg`, xep_hang: `${A}/o_xep_hang.svg`,
     may_man: `${A}/o_may_man.svg`, vi_xu: `${A}/o_vi_xu.svg`, hoc_tu_dau: `${A}/o_hoc_tu_dau.svg`,
     the_gioi: `${A}/o_the_gioi.svg`, nhiem_vu: `${A}/o_nhiem_vu.svg`, rank: `${A}/o_rank.svg`,

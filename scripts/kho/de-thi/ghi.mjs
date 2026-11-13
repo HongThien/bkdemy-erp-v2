@@ -44,7 +44,12 @@ de.cau.forEach((q) => {
     if (q.dap_an != null && !/^[ABCD]$/.test(q.dap_an)) loi.push(`${ten}: đáp án TN phải là A/B/C/D`)
   }
   if (q.loai_cau === 'dung_sai' && (!q.menh_de?.length || q.menh_de.some((m) => !['D', 'S'].includes(m.dap_an)))) loi.push(`${ten}: mệnh đề Đúng/Sai thiếu đáp án`)
-  if (/\[\[(?!u\]\]|\/u\]\])/.test(JSON.stringify([q.noi_dung, q.lua_chon, q.menh_de, q.loi_giai]))) loi.push(`${ten}: còn ký hiệu [[…]] chưa xử lý trong nội dung`)
+  // [[so-do:nK]] = dòng mở khúc của lời giải chia theo sơ đồ tư duy (14/11) — hợp lệ khi câu có so_do chứa ô nK
+  if (/\[\[(?!u\]\]|\/u\]\]|so-do:n\d+\]\])/.test(JSON.stringify([q.noi_dung, q.lua_chon, q.menh_de, q.loi_giai]))) loi.push(`${ten}: còn ký hiệu [[…]] chưa xử lý trong nội dung`)
+  const moc = [...(q.loi_giai ?? '').matchAll(/\[\[so-do:(n\d+)\]\]/g)].map((m) => m[1])
+  if (moc.length && !q.so_do) loi.push(`${ten}: lời giải có [[so-do:…]] mà câu không có sơ đồ tư duy`)
+  if (q.so_do && q.kho !== 'hinh_hoc') loi.push(`${ten}: sơ đồ tư duy chỉ cho kho hinh_hoc`)
+  if (q.so_do && moc.join() !== q.so_do.nut.map((o) => o.k).join()) loi.push(`${ten}: khúc lời giải không khớp ô sơ đồ — chạy lại dung-de-tu-soan`)
 })
 if (loi.length) { console.error('❌ de.json chưa ghi được:\n  ' + loi.join('\n  ')); process.exit(3) }
 
@@ -120,7 +125,9 @@ try {
       const base = { dang_chinh: q.dang || 'CHUA', khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
         nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
         dang_bai: q.dang_bai ?? null, dang_bai_chac: q.dang_bai_chac, dang_bai_ly_do: q.dang_bai_ly_do, dang_bai_chot: q.dang_bai_chot,
-        chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot }
+        chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot,
+        // luật duyệt 13/11: câu có `**Chưa chắc:**` ⇒ kiem_may='nghi' (không tự duyệt, vào danh sách người kiểm)
+        kiem_may_nghi: (q.canh_bao ?? []).filter((x) => /^CHƯA CHẮC/.test(x)).join(' · ') || null }
       if (q.loai_cau === 'trac_nghiem') return { ...base, lua_chon: q.lua_chon, dap_an: q.dap_an ?? null, loi_giai: q.loi_giai ?? null }
       if (q.loai_cau === 'dung_sai') return { ...base, dap_an: null, loi_giai: q.loi_giai ?? null,
         menh_de: q.menh_de.map((m) => ({ noi_dung: m.noi_dung, dap_an: m.dap_an, ma_dang: m.dang || 'CHUA', loi_giai: m.loi_giai ?? null })) }
@@ -136,6 +143,14 @@ try {
       if (laDangCho(cauList[i].dang_chinh)) tk.dang_cho++
       if (cauList[i].menh_de) tk.menh_de_cho += cauList[i].menh_de.filter((m) => laDangCho(m.ma_dang)).length
     })
+    // sơ đồ tư duy (14/11): lưu RIÊNG, cùng transaction. Câu trùng câu cũ ⇒ câu cũ giữ lời giải của nó ⇒ KHÔNG gắn sơ đồ (khúc sẽ không khớp)
+    for (const [i, q] of grp.entries()) {
+      if (!q.so_do) continue
+      if (trung.has(i)) { console.log(`  ⚠ P${q.phan} câu ${q.so}: trùng câu cũ ${r.maCauList[i]} — bỏ sơ đồ tư duy`); continue }
+      await c.query(`insert into hinh_hoc_cau_so_do (ma_cau, mau_chot, nut, nguon) values ($1, $2, $3::jsonb, 'claude')`,
+        [r.maCauList[i], q.so_do.mau_chot, JSON.stringify(q.so_do.nut)])
+      tk.so_do = (tk.so_do ?? 0) + 1
+    }
   }
 
   // đề
@@ -185,7 +200,7 @@ try {
   const { rows: thieu } = await c.query(`select * from fn_de_thi_thieu($1)`, [tl.id]).catch((e) => ({ rows: [{ loi: e.message }] }))
 
   console.log(`\n${GHI ? 'GHI THẬT' : 'CHẠY THỬ (sẽ ROLLBACK)'} — "${de.ten}" · khối ${de.khoi} · ${de.cau.length} câu`)
-  console.log(`  câu mới ${tk.moi} · trùng câu đã có (trỏ về câu cũ) ${tk.trung} · câu ở dạng chờ ${tk.dang_cho} · mệnh đề ở dạng chờ ${tk.menh_de_cho}`)
+  console.log(`  câu mới ${tk.moi} · trùng câu đã có (trỏ về câu cũ) ${tk.trung} · câu ở dạng chờ ${tk.dang_cho} · mệnh đề ở dạng chờ ${tk.menh_de_cho}${tk.so_do ? ` · sơ đồ tư duy ${tk.so_do}` : ''}`)
   if (tk.de_xuat + tk.gan + tk.kho_ds + tk.doi_dang_cu) console.log(`  bản đồ mới: đề xuất dạng bài ${tk.de_xuat} · gán (người chốt) ${tk.gan} · kho Đ/S chủ đề ${tk.kho_ds}${tk.doi_dang_cu ? ` · ⚠ ${tk.doi_dang_cu} câu truyền mã dạng CŨ ⇒ vào dạng chờ` : ''}`)
   console.log(`  ảnh: ${[...anhCua.values()].flat().filter(Boolean).length} · PDF gốc: ${pdfGocUrl ? 'có' : 'không'} · tai_lieu ${tl.id}`)
   console.log('  STT | phần | kho | loại          | mã câu          | dạng         | đáp án | điểm | ghi chú')

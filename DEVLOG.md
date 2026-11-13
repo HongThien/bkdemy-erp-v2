@@ -80004,3 +80004,250 @@ Thùy nêu 4 việc, làm được 3:
 - **Đẩy vào bản đồ:** `k6/ckk-check/day-vao-ban-do.mjs --ghi` — 3 câu gán lệch đổi sang Số nguyên (T106000000033 → NDB01300 cộng trừ nhiều số nguyên; 288 → NDB01294 tập hợp của số nguyên; 487 → NDB01315 tìm x số hạng/số bị trừ; trước đó nằm dạng số tự nhiên); duyệt 24 câu gán rồi chưa duyệt (duyet_nguon='ai').
 - **Còn 7 câu chưa gán, chờ Thùy:** 040 (nguyên lí Dirichlet) · 590 (tìm SNT p,q) · 560 (bộ ba + ƯCLN, đề xuất NDB00416 mức vừa) · 564 (Đ/S tập hợp số nguyên, kho Đ/S) · 641/642/651 (Thống kê — bản đồ K6 chưa có chương dữ liệu; 642/651 có ảnh).
 - **Bài học:** gán 'nguoi' chưa duyệt vẫn có thể sai chủ đề (ℤ nhưng nằm dạng số tự nhiên) — soát câu có `mathbb{Z}`/số âm nằm ngoài NCD00189.
+
+## 13/11 — MCQ lớp 5 (tay + máy) lô 1–2
+- **Làm:** lớp 6 ghi 536 form (4 lô theo chủ đề), lớp 7 ghi 72, lớp 4 ghi 1 (máy `mcq-auto`). Lớp 5: máy chỉ sinh 12/472 (đáp số kho là chữ/nhiều phần/đơn vị) ⇒ viết bộ sinh riêng `scripts/_k5/` (parse đề → tính lại đáp số → CHỈ giữ câu khớp đáp số kho → nhiễu theo rule có sẵn). Lô 1: làm tròn 10 + đọc/viết số 10 + hàng–lớp 9 = 29 form. Lô 2: đổi đơn vị diện tích NDB02143 = 29 form. Tất cả `da_duyet=false`.
+- **Rule mới (mig 202611130845, áp bằng `--only`):** R421, R422 (làm tròn), R423 (hàng–lớp). Lý do: R395–R397 luôn trùng đáp án đúng khi chữ số sau hàng làm tròn gần 9.
+- **Phát hiện:** kho T105010101016 đáp số chữ sai ("không trăm hai trăm ba mươi"); T105100205022 kho "2,30" thừa số 0. `npm run migrate` có 28 file treo của phiên khác — LUÔN dùng `--only`.
+- **Còn lớp 5:** ~400 câu (lời văn R407–R415, 02139 đổi đơn vị, 02141, 02105, 02110, 02097…, nhiều câu cần hình/đa phần).
+
+## 13/11 — Gộp spec kho Toán (đọc lại) + LUẬT DUYỆT 13/11 (Thùy chốt)
+- **Làm:** đọc lại toàn bộ spec Toán (README kho-rules, spec-luong-kho*, kho-chuan, kho-v2, giai-bai-ai, mcq*, dien-o, de-thi, cum-bai, format-noidung, quy-tac-cham, ban-do-4-tang/k12/builder, hinh*, luật khối k4T…k11, HANDOFF-BAI-HOC, brief k9-cki) bằng 7 agent; tự đối chiếu 6 điểm với file gốc. Đề xuất cấu trúc: 1 file chung (thẻ nghiệp vụ cố định + ma trận khác biệt theo khối) + file riêng từng khối theo khuôn cố định. CHƯA viết spec.
+- **Quyết định (Thùy 13/11) — luật giải:** đến đâu cập nhật đến đấy. Vòng chuẩn: có luật base ⇒ giải ⇒ gặp vấn đề thì sửa luật base đó. (Khối chưa có file luật — K7, K10, K12 — dựng base rồi sửa dần, không chờ đủ.)
+- **Quyết định (Thùy 13/11) — LUẬT DUYỆT, HUỶ mọi luật duyệt trước:**
+  1. AI đẩy câu vào kho; câu AI tự tin phân dạng đúng ⇒ TỰ DUYỆT — với điều kiện lúc giải đã chắc chắn đúng theo luật giải.
+  2. Câu chưa chắc ⇒ vào danh sách cho người kiểm (như hiện tại).
+  3. Câu có thể sai ⇒ người hậu kiểm, báo sai / xoá. Hệ thống phải tracking để sau này đo.
+- **Đối chiếu hệ thống hiện tại (chỉ đọc):** trigger `_bdm_tu_duyet_sau_gan` (mig 202611051930) tự duyệt khi gán mức cao nguon='ai' + đủ đáp án — KHÔNG xét "giải chắc chắn": cờ **Chưa chắc** của trạm soạn chỉ nằm ở `tai_lieu.cau_hinh.deThi.canhBaoCau` (ghi.mjs), câu vẫn `kiem_may` NULL ⇒ gán mức cao về sau là tự duyệt luôn câu chưa chắc. Hình (`hinh_hoc_cau_hoi`) không có đường tự duyệt. Hậu kiểm: có `kho_sua_log` (sửa theo khâu, `da_duyet_truoc`), `dai_bdm_log` (đổi gán), `bai_cau_bao_loi` (HS báo khi làm test online → TA duyệt) + loại phiên Claude "Câu bị báo sai" cho trưởng khối (mig 202611012151); XOÁ chỉ có `xoa_at` — không lưu ai xoá, vì sao. Chưa kiểm: đường nhân sự tự báo sai một câu khi hậu kiểm kho; chưa có số đo "câu AI tự duyệt về sau bị sửa / báo sai / xoá". Chưa sửa gì — chờ lệnh.
+
+## 13/11 — MCQ lớp 5 lô 3 (lời văn + so sánh số đo)
+- **Ghi:** 33 form lời văn (tem trung bình, bán 2 lần, tấn–kg×phân số, chia ruộng, vườn cây, lát gạch, hình chữ nhật cùng chu vi hình vuông) + 4 form so sánh số đo = 37 (`scripts/_k5/b3_loivan.mjs`, `b3_sosanh.mjs`), `da_duyet=false`.
+- **Kho SAI cần người xem (máy tính lại ≠ kho, lời giải kho khớp máy):** T105010205058/059/060 (đáp số kho 2000/6800/1875 nhưng lời giải ra 3375/7700/2400); T105110103038 (đề 50 cm² nhưng lời giải chia 60 → kho 14000; theo đề là 16800). Đã bỏ khỏi lô.
+- **NDB02139 phần phân số (13 câu):** đề "\dfrac{5}{8} tấn 75 tạ" không cách đọc nào khớp đáp số kho ⇒ bỏ, cần người xác nhận ý đề.
+
+## 13/11 — Áp luật duyệt 13/11 bước 1–2: câu Chưa chắc không tự duyệt (Thùy "Làm bước 1–2")
+- **Làm:** `scripts/_kho_insert.mjs` thêm trường tuỳ chọn `kiem_may_nghi` (lý do) ⇒ ngay sau INSERT câu (TRƯỚC mọi lệnh ghi bản đồ) đặt `kiem_may='nghi'`, `kiem_may_boi='claude_code'`, `kiem_may_ghi`=lý do. Phải đặt trước vì insert kho Đ/S nguon 'ai' bắn trigger tự duyệt NGAY trong lượt ghi. `scripts/kho/de-thi/ghi.mjs` truyền `kiem_may_nghi` = các dòng `CHƯA CHẮC — …` của câu. Script gọi cũ không truyền ⇒ chạy như trước.
+- **Mig 202611130903 (áp `--only`):** `_bdm_tu_duyet_sau_gan` thêm `kiem_may is distinct from 'nghi'`. Dựng từ `pg_get_functiondef` bản đang chạy (đã có nhánh khtn/vatly/hoahoc) ⇒ luật áp mọi môn (đối xứng §1.6). Thử trước bằng thu-migration (rollback): câu nghi gán ai ⇒ vẫn chưa duyệt; câu thường ⇒ duyệt 'ai'. Thử đường ghi (rollback): 2 câu Đ/S vào kho Đ/S — câu chưa chắc nghi/false, câu thường true/'ai'. Kiểm sau áp: hàm mới có điều kiện, anon không execute.
+- **Đánh bù B001:** 7 câu Chưa chắc (HHC013979, HHC013995, HHC014001, HHC014020, T109000000900, T109000000946, T109000000969) ⇒ `kiem_may='nghi'`, lý do lấy từ canhBaoCau của đề. 1 transaction, chỉ commit khi đúng 7 dòng. Kiểm lại: cả 7 nghi/chưa duyệt.
+- **Phát hiện, CHƯA đụng (chờ Thùy):** (a) 74 câu `dai_cau_hoi` đang `kiem_may='nghi'` mà đã `duyet_nguon='ai'` (lọt trước khi có điều kiện mới). (b) 204 câu Chưa chắc của các đề nhập 10/10–03/11 KHÔNG có cờ nghi: 140 đã duyệt — 83 do AI tự duyệt (Đại 48 · HGT 1 · Hình 34), 57 do người duyệt.
+- `schema.md` regen chỉ khác xuống dòng (thân hàm không nằm trong schema) ⇒ không commit.
+
+## 13/11 — MCQ lớp 5 lô 4 (thập phân, hỗn số)
+- **Ghi 38 form** (`scripts/_k5/b4_thapphan.mjs`, `b4_lap_xep.mjs`): nhân với 10^k (5) · cộng/trừ thập phân (4) · viết số thập phân từ lời (1) · nêu phần nguyên/phần thập phân + đọc (5 − bỏ 2 do lời đọc kho khác quy ước) · lập số thập phân từ thẻ (19) · đọc hỗn số (5). `da_duyet=false`. Rule mới R424 (mig 202611130910, áp `--only`).
+- **Không làm được:** sắp xếp thập phân (khuôn T105040106 là TẬP — verify không phân biệt thứ tự ⇒ MCQ thứ tự không kiểm được, cần khuôn thứ tự riêng); T105040110018/019/020 kho liệt kê không theo thứ tự (khác 3 câu cùng mẫu) ⇒ bỏ; T105040110006 kho gõ sai "0.,47"; T105030102023 kho đọc "ba phần tư" (mẫu 4).
+
+## 13/11 — Bộ lọc "nghi" của màn Duyệt lấy cả câu ở dạng chờ (Thùy "Sửa bộ lọc")
+- **Vì sao:** câu chưa chắc mới nhập luôn ở dạng chờ (bản đồ mới không đổi dang_chinh); bộ lọc 'nghi' loại câu dạng chờ CHƯA gán dạng bài (bản 2 tham số chỉ tha câu đã gán) ⇒ 3 câu Đại B001 không hiện ở bộ lọc nghi, chỉ lẫn trong "Chưa phân dạng".
+- **Mig 202611130911 (áp `--only`):** `_kho_loc_duyet_sql(text)` nhánh 'nghi' bỏ điều kiện dạng chờ (dựng từ bản đang chạy, chỉ sửa 1 nhánh). Thử rollback, so điều kiện lọc trước/sau: Đại 397 → 447 câu (+50 câu dạng chờ, có đủ 3 câu B001), HGT 8 → 8. Duyệt câu chưa có dạng vẫn bị `trg_chan_duyet_dang_cho` chặn — thẻ duyệt có sẵn nút nhận đề xuất / chọn dạng bài.
+- **UI:** nhãn bộ lọc "Máy nghi đáp số" → "Cần kiểm (máy/AI nghi)" (`src/lib/kho/api.ts`); chip Bản đồ mới "máy nghi đáp số" → "cần kiểm (máy/AI nghi)". Cần deploy ERP mới thấy nhãn mới (bộ lọc DB đã có hiệu lực ngay). Không mở trình duyệt kiểm (màn cần đăng nhập nhân sự thật).
+
+## 13/11 — Rút 157 câu AI tự duyệt lọt về danh sách người kiểm (Thùy "tiếp đi")
+- **Phạm vi (chỉ câu AI tự duyệt, câu người đã duyệt giữ nguyên):** A = 74 câu `dai_cau_hoi` kiem_may='nghi' mà duyet_nguon='ai'; B = 83 câu Chưa chắc của đề nhập trước 12/11 mà AI tự duyệt (Đại 48 · HGT 1 · Hình 34). A∩B = 0.
+- **Làm:** 1 transaction, chỉ commit khi đúng 157 dòng còn y trạng thái lúc chụp: `da_duyet=false, duyet_nguon/duyet_at=null`; nhóm B thêm `kiem_may='nghi'` + lý do Chưa chắc từ canhBaoCau. **Hoàn tác:** `reports/rut-tu-duyet-13-11.undo.json` (trạng thái cũ từng câu).
+- **Đo ảnh hưởng trước khi rút:** 10 câu từng vào bài test (27 lượt) · 121 câu nằm trong 81 đề/tài liệu (đề vẫn dùng được) · 4 form MCQ đều chưa duyệt · bài HS đã làm không đổi.
+- **Kiểm sau:** Đại 122/122 và HGT 1/1 chưa duyệt + nghi + ra khỏi kho chuẩn; còn 0 câu Đại nghi mà AI đã duyệt.
+- **Phát hiện, CHƯA đụng:** `hinh_hoc_cau_hoi.kho_chuan` là cột THƯỜNG mặc định `true` (Đại/HGT là cột suy từ `_kho_cau_chuan`) ⇒ 28/34 câu Hình vừa rút vẫn `kho_chuan=true`. Lệch đối xứng Đại ↔ Hình — chờ Thùy quyết.
+
+## 13/11 — MCQ lớp 5 lô 5 (chẵn/lẻ, tiền–diện tích)
+- **Ghi 61 form** (`scripts/_k5/b5_chanle_tien.mjs`, `b5_tien.mjs` + 8 câu máy `mcq-auto` bị chặn lệch từ trước): chẵn/lẻ liền trước-sau & nhỏ/lớn nhất có k chữ số (22) · thu hoạch × giá (10) · lát nền ra tiền (6) · lát gạch theo hộp (5) · cửa sổ m²→dm² (10) · 8 máy. Rule R425–R428 (mig 202611130919). Tổng lớp 5 = 194 form.
+- **Lớp 5 còn ~278 câu không làm tự động được:** cần hình/tia số (02081, 02097, 02140, 02147–52, 02150), đáp án chỉ dấu/mảnh đất A-B-C (02110, 02141, 02102, 02103), nhiều ý, hoặc kho sai (đã ghi ở mục lô 3).
+- **Lớp 3, lớp 4:** giao 2 fork chạy song song (scripts/_k3, _k4; rule R430–R449 / R450–R469).
+
+## 13/11 — Hình: kho_chuan thành cột SUY, phương án B (Thùy "Phương án B")
+- **Vì sao:** `hinh_hoc_cau_hoi.kho_chuan` là cột thường mặc định true ⇒ 28 câu Hình vừa rút về người kiểm vẫn "chuẩn". Đo trước: làm Y HỆT Đại sẽ (a) đưa 322 câu cả bài cũ đã tách ý quay lại kho (false ở Hình còn nghĩa "rút vì tách ý", 09/11), (b) đẩy 1.989 câu Hình chưa duyệt (1.786 đang trong đề/giáo trình) khỏi kho chuẩn, trái quyết định 18/09 "câu Hình chưa duyệt vẫn chọn được cho giáo trình". Thùy chọn B: chỉ thêm luật "nghi mà chưa duyệt thì không chuẩn".
+- **Mig 202611130919 (áp `--only`, Thùy gật xoá cột):** thêm `rut_khoi_kho` (chép 322 false — DO block xác nhận cả 322 là `ma_cau_goc` của hinh_hoc_bai_y) → drop index + drop cột `kho_chuan` → tạo lại cột suy `(not rut_khoi_kho) and (da_duyet or kiem_may is distinct from 'nghi')` + index y cũ. Thử rollback: đổi đúng 32 câu (đều nghi chưa duyệt, true→false), 0 câu false→true, ghi tay vào cột bị chặn. Kiểm sau áp: 6.121 câu · chuẩn 5.767 · rút 322 · ra vì nghi 32 · cột generated.
+- **Script đi kèm:** `kho-rules/hinh/lo/tach-y/ghi.mjs` rút câu cũ bằng `rut_khoi_kho = true` (kiểm "đã rút" đọc cột mới, bỏ kho_chuan khỏi insert ý) · `scripts/anh/nhap_hh_tu_draft.mjs` + `kho-rules/hinh/lo/k8-thales/bai-nhieu-y/nhap_bai_y.mjs` bỏ kho_chuan khỏi insert. `schema.md` regen kèm.
+- **Từ nay:** muốn rút câu Hình khỏi chọn câu ⇒ `rut_khoi_kho = true`, KHÔNG ghi kho_chuan.
+
+## 13/11 — MCQ lớp 4 (fork, `scripts/_k4/`)
+- **Ghi 195 form** (DB đếm 196 gồm 1 câu máy cũ), `da_duyet=false`, không rule mới: đặt tính nhân/chia + đổi tấn–kg + thế kỉ/phút–giây + m²–cm² + đọc số đo diện tích (79) · biểu thức nhiều phép tính + tính chất phân phối lời văn (35) · đoàn xe/thùng–hộp/pin mặt trời/lát sàn/thóc→gạo/chẵn lẻ (67) · bán gấp đôi/làm tròn/ghép thẻ (14).
+- **Kho SAI (đã bỏ):** T104010107004 (kho 49 380 ≠ 52 840 − 24 180:7), T104010107011 (kho "67 268.571429"), T104040204002/003/004/007 (kho lấy rộng = k thay vì dài chia k), T104040201045 (kho "linh tư" khác quy ước "linh bốn").
+- **Bỏ ~220 câu:** sắp xếp dãy số (verify coi là tập), dấu/Có–Không, nhiều ý, cần hình (thước đo góc 22 câu), biểu thức có chữ, và các dạng cuối pool chưa soạn. 36 dạng lớp 4 chưa có câu kho chuẩn — chưa xử lý.
+
+## 13/11 — MCQ lớp 3 (fork, `scripts/_k3/`)
+- **Ghi 264 form** (`da_duyet=false`), không rule/migration mới: cộng–trừ, biểu thức, tìm số hạng (77) · bảng nhân/chia, thừa số, gấp/giảm (50) · nhân/chia nhiều chữ số (120) · đổi cm/dm/m (6) · dãy đếm thêm/bớt (11). Nhiễu dùng rule sẵn có (R412–R415, R375–R378, R366, R385, R388, R365) nên hơi đơn điệu — chất lượng chẩn đoán lỗi thấp hơn lớp 5.
+- **Kho nghi sai (đã bỏ):** T103000000301, T103000000302 (kho 5 giá trị nhưng dãy chỉ 4 chỗ trống; máy ra 27;45;63;72 và 63;45;36;27).
+- **Còn 126 câu không làm được:** tia số cần ảnh (33), điền dấu 3 đáp án (24), đường tròn/hình (19), sắp xếp (2), ô tròn–tam giác/tháp số (~15), <3 nhiễu khác nhau (21), còn lại chưa soạn.
+
+## 13/11 — MCQ lớp 5 lô 6 (hỗn số, phân số thập phân) + npm run schema
+- `npm run schema` chạy xong (583 bảng; schema.md không đổi vì chỉ thêm dữ liệu rule/form, không đổi cấu trúc).
+- **Ghi 11 form** (`scripts/_k5/b6_phanso.mjs`): viết hỗn số thành tổng (5) · phân số thập phân từ số đo (6). Tổng lớp 5 = 205. Lớp 5 hết câu kiểm máy được; còn lại cần hình/dấu/nhiều ý/kho sai.
+
+## 13/11 — toanmath B002 (K9 đề thi cuối kì 1, 2/4): soạn + soát xong, CHƯA ghi DB
+- 15 đề (17 bài − 2 trùng kho; Giang Biên/Ngọc Lâm lấy 1 mã). Sonnet soạn 15 trạm song song → Opus soát mù từng đề ngay khi soạn xong. Chạy ở máy nhà (BK_GOC = bản chép PDF trong scratchpad, BK_LV = C:/Users/Admin/bk-kho-lam-viec; brief đổi đường dẫn WBPC→Admin).
+- **Kết quả:** 15/15 soát ĐẠT · 138 câu (98 tự luận · 40 trả lời ngắn) · 34 hình · đáp số giải mù khớp 100% (không câu nào đổi đáp số) · soát có sửa cả 15 đề (lập luận, hình giải đánh dấu sẵn điều phải chứng minh, ghi chú, phân kho).
+- **Lỗi thật bắt được ở soát:** B002-01 Bài 5 dùng AM=BN=CP=DQ chỉ có trên dấu gạch hình ⇒ tự chứng minh + đổi kho hinh_hoc · B002-04 IV.2 dùng vị trí điểm theo hình không chứng minh ⇒ thêm 3 chứng minh · B002-10 4.2c dùng tỉ số diện tích = bình phương tỉ số đồng dạng (chưa học) ⇒ thay cách · B002-09 IV.2c viết "K thuộc IC" sai vị trí.
+- **Hướng dẫn chấm của trường in sai:** 07 Bài 1a (dấu, −7,8 vs đúng −8,2) · 08 điều kiện x≠9 (đúng x≠4), ≥82 (đúng >82) · 15 đơn vị m³ (đúng cm³) · 10 OI·OE (đúng OI·IE) · 09, 12, 02, 05 gõ nhầm không đổi đáp số.
+- **Chờ Thùy quyết:** 2 Chưa chắc B002-12 (IV.1 độ dài cung/góc ở tâm; IV.3b bài đường trung bình) · brief k9-cki tự mâu thuẫn về đường trung bình (phần áp dụng cuối kì cho dùng, mục bẫy cấm; Thùy 20/10 "chỉ đề Hoàng Mai") — trạm soát B002-08 đã xoá câu "đường trung bình bị cấm" trong ghi chú · bài cực trị có hình xếp lệch kho (01, 09 hinh_hoc · 04 dai · 06 hinh_hoc).
+- **Ghi thử (rollback) 15/15 trót lọt:** 136 câu mới · 2 trùng kho (B002-09). Câu Hình vẫn vào bài tạm HH00108 như B001. Trang duyệt `batch/B002/duyet-B002.html` (5,4 MB, không commit).
+
+## 13/11 — MCQ lớp 4 vòng 2 (fork)
+- **Ghi 55 form** (`scripts/_k4/b6_vong2.mjs`, `b7_chu.mjs`): dãy gấp đôi, giá 1 kg/chia 4 phần, năm nhuận, lát sàn/sân (gồm T104040202041/043), biểu thức chứa chữ, viết số/giá trị chữ số/làm tròn, điền chữ giao hoán–kết hợp. Rule mới R490–R494 (mig 202611130937, áp `--only`). Tổng lớp 4 ≈ 251.
+- **Kho SAI thêm (đã bỏ):** T104010402043–046, 049 (kho tính với a=1 thay vì số nhỏ nhất 3/4 chữ số); T104010402050 (lời giải 98×9+3021=3921, đúng 3903); T104040105087 (kho 18, lời giải ra 10 yến).
+- **Còn bỏ:** thước đo góc/ảnh (~22), dấu/Có–Không (NDB01783), sắp xếp dãy (NDB01761), nhiều ý (01758/01765/01773/01791/01754/01751), gạo–ngô (mỗi câu một khuôn), T104000000969 & T1040000001211 thiếu nhiễu.
+
+## 13/11 — MCQ lớp 3 vòng 2 (fork)
+- **Ghi 49 form** (`scripts/_k3/b4_conlai.mjs`, `b5_conlai2.mjs`, `b6_rest.mjs`): bảng nhân/chia–tính nhẩm–đặt tính (11), dãy phép tính (5), tìm số bị chia/số chia (6), hai số tiếp theo, ba số liên tiếp, lập số bằng thẻ, phân số đơn vị, khối hộp, tìm số còn thiếu… Rule mới 16 mã R470–R487 (mig 202611130937_mcq_rule_k3_vong2, áp `--only`; 14 mã đã dùng, R477 chưa dùng, R484 bỏ trống). Tổng lớp 3 ≈ 313.
+- **Kho nghi sai (đã bỏ):** T103000000056/057 (kho 5 số thiếu, đề 2 chỗ trống) ngoài T103000000301/302 đã ghi trước.
+- **Còn 77 câu:** tia số cần ảnh (31), điền dấu 3 đáp án (12), đường tròn/hình (14), sắp xếp (2), tháp số (1), lệch đề–kho (4), còn lại ~13.
+- 13/11 Thùy "Ghi": `ghi.mjs --ghi` tuần tự 15/15 ✔ (dấu `batch/B002/da-ghi.txt` = mã đề + tai_lieu id) — 15 tai_lieu de_thi · 138 câu (Đại 104 · Hình 34) · 136 mới · 2 trỏ câu cũ · da_duyet=false. Kiểm DB: 2 câu Chưa chắc B002-12 tự mang `kiem_may='nghi'` (HHC014097, HHC014099 — luật duyệt 13/11 chạy đúng ở lượt ghi thật đầu tiên). Câu Hình mới vào bài tạm **HH00140** (mặc định `DANG_HINH_K9` của dung-de-tu-soan) — B001 chạy với HH00108 ⇒ hai batch K9 CKI nằm 2 bài tạm khác nhau, cần xếp theo chủ đề sau. `bao-cao.json` + `so-theo-doi.md` cập nhật.
+
+## 13/11 — MCQ lớp 7 (fork, `scripts/_k7/`)
+- **Ghi 27 form** nhánh Đại/bdm (`da_duyet=false`), không rule mới: sửa 13 câu FAIL cũ (đáp số thập phân vs phương án phân số) bằng đổi phương án sang thập phân hữu hạn (chỉ giữ 3/13), chuẩn hoá đề (`.`→`\cdot`, `\dfrac7{13}`→`\dfrac{7}{13}`) để `mcq-auto` lấy thêm 26 câu, cân A–D bằng `b9_cancan_ghi.mjs`.
+- **Hình học lớp 7: KHÔNG làm** — `mcq-sinh.mjs` `BANG` chỉ có `dai`/`hgt`; DB có `hinh_hoc_cau_hoi`/`hinh_hoc_cau_form_tn` nhưng pipeline chưa nối (file mig 202610141749 không có trong repo). 818 tự luận (chứng minh/hình), 18 trả lời ngắn (làm được sau khi nối pipeline), 122 MCQ gốc.
+- **Bỏ ~54 + 40 câu:** đáp số chữ, toán thực tế máy trích số sai (T107000000255/399/455/553/649/714/769/771), phương trình mũ phức tạp, dãy \dots, tìm cặp x,y, chứng minh bất đẳng thức, đáp số biểu thức (T107010505007–017, 026), tọa độ trục số. T107000000455 nghi đề nhiều ý bị trích sai.
+
+## 13/11 — toanmath: gom hết đề thi CUỐI KÌ I K9 vào B005 (Thùy "đang chạy cuối kì I mà")
+- `batch.json` lẫn CKI + CKII trong cùng batch "cuối kì" (B003 = 3 CKI + 14 CKII). Chuyển 3 bài CKI của B003 sang B005 ⇒ **B005 = 13 đề thi CKI K9** (3 + 10 "scan nghi trùng"); B003/B004 = đề thi CKII K9 (1/2, 2/2) — làm khi có file `K9\Đề thi\CKII`. `lap-batch.mjs` chạy lại sẽ đè sửa tay này.
+- Đo trùng: 13/13 là scan ⇒ do-trung `khong_doc`. Hai nhân chứng (tên trường + năm trùng đề trong kho; ảnh trang 1 so 3 câu đầu đề kho) ⇒ **11/13 đã có trong kho** (Phúc Đồng đủ 3 mã 901/902/903). Còn **2 đề**: Nguyễn Bỉnh Khiêm 2025-26 (mã 901), Marie Curie 2024-25. Chi tiết `batch/B005/bo.md`.
+- Sau B005, đề thi CKI K9 trong bộ toanmath coi như hết; CKI K9 còn đề cương (B006–B009, cần thư mục `K9\Đề cương\CKI`).
+
+## 13/11 — MCQ lớp 6 (fork, `scripts/_k6/`)
+- **Ghi 185 form** (`da_duyet=false`): máy `mcq-auto` sau khi đổi dấu nhân "." → `\cdot` (58) · chia nhóm bằng ƯCLN/tấm hình chữ nhật/đếm số ước/tổng số nguyên (64) · giá trị biểu thức khi biết biến + dãy luỹ thừa (35) · tìm 5 bội/tìm x để A ⋮ (x−k) (16) · tăng/giảm, tích=0, GTNN (12). Rule mới R510–R512, R514–R518 (mig 202611130952, 202611130955; R513 trống).
+- **Phát hiện:** kho viết dấu nhân bằng "." (vd `12.53+53.172-53.84`), `mcq-auto` cũ đọc thành số thập phân và tính sai ⇒ nguyên nhân phần lớn "MÁY ≠ KHO" lô đầu lớp 6. Chỉ đổi trong pool tạm, kho giữ nguyên. Cân nhắc dạy `mcq-auto` đọc "." là nhân khi có ≥2 toán hạng.
+- **Kho nghi sai:** T306000000226, T306000000242 (NDB01218), T1060000001444 (kho 0, máy −12).
+- **Còn 61 câu:** Có/Không (NDB00384/385), điền chữ số vào dấu * (nhiều đáp án), chuỗi \dots, SNT, năm sinh, `y` ẩn, v.v.
+
+## 13/11 (đêm) — toanmath: giải hết đề thi CUỐI KÌ I K6–K9 (Thùy "giải hết 1 lượt toàn bộ… t đi ngủ") — CHƯA ghi DB
+- Dây chuyền mỗi đề: trạm chuẩn bị (Opus: đo trùng 2 nhân chứng, ds-de, _dau-brief phạm vi cuối HK1) → soạn (Sonnet) → soát mù (Opus, Pha 1 giải mù trước khi mở bản soạn) → cổng → `/tmp/xong-batch.sh` (tong-hop · ghi thử rollback · duyet-*.html). Khuôn giao trạm chung `toanmath/_giao-tram.md`, `_brief-chuan-bi-batch.md`; `ghep-brief.mjs` thêm khuôn k6/k7/k8.
+- Kết quả (đề / câu / ghi thử mới·trùng): B005 K9 2/16 · B017 K7 2/32 · B018 K7 3/51 · B024 K6 7/128 · B011 K8 16/239 (239·0) · B010 K8 17/225 (225·0). **47 đề, 691 câu.** B020 (K7) và B026 (K6) = 0 đề (scan nghi trùng, hai nhân chứng đều đã có trong kho). B012/B019/B025 chỉ có CKII.
+- Soát mù khớp đáp số bản soạn gần như tuyệt đối; lỗi bắt được chủ yếu: lập luận Hình thiếu mắt xích (vị trí điểm, "cùng phía", suy H∈BK), hình giải sai (không phải hình thoi, thiếu điểm, gạch thừa ngầm cho bằng nhau), Pythagore đảo/thuận lẫn chiều, phân loại (gộp bài chung dữ kiện theo k8 §10, đổi sang trả lời ngắn). HDC trường in sai nhiều chỗ (B010-05 3c, B010-06 1b/3a, B010-12 TN1 C→D và 3b đảo tỉ lệ…) — không chép HDC là đúng.
+- Câu còn **Chưa chắc** (đi vào kho bằng `kiem_may='nghi'` khi ghi ⇒ không tự duyệt): B024 5–7 · B011 11 · B010 13. Nhóm lớn nhất = **đường trung bình K8 ở đề cuối kì 1** (B010-01/03/04/05/12, B011-02/04/06/12/15) — Thùy chưa chốt; còn lại là đề in mơ hồ (B010-09 "nhỏ nhất", B010-11 bọc quà có đáy, B010-05 thiếu x, B010-10 A.B, B010-07 "thêm 10 sp", B024-03/05/07…).
+- Trạm soát B010-06 tự đổi `bo_sach` Cánh Diều → CTST (theo luật batch "không có hàm số ⇒ CTST"); trạm B010-17 gỡ cờ đường trung bình vì lời giải không dùng — cả hai đã nêu trong soat.md.
+
+## 14/11 — Thùy "Cho dùng" đường trung bình ở đề CUỐI KÌ 1 K8
+- Ghi luật vào `kho-rules/dai/k8.md` §12.2 (dưới luật 20/10 của giữa kì): đề cuối kì 1 theo KNTT được dùng đường trung bình tam giác (định nghĩa, tính chất, chiều đảo); đề Cánh Diều/CTST giữ luật bộ sách (học kì 2 ⇒ tự chứng minh). Vẫn cấm đường trung bình hình thang, đồng dạng, Pythagore; hệ quả Thalès vẫn tự chứng minh.
+- Gỡ 15 cờ `Chưa chắc` chỉ vì đường trung bình ở B010 (01, 03, 04, 05×2, 12×2) và B011 (02×2, 04×2, 06×2, 12, 15) → chuyển thành `Ghi chú` (gộp vào Ghi chú sẵn có của câu nếu có) kèm "gỡ cờ 14/11". Lời giải KHÔNG đổi (bản tự chứng minh bằng hình bình hành vẫn đúng). Cổng 10/10 đạt; tổng hợp lại: B010 còn 6 Chưa chắc, B011 còn 3. Ghi thử vẫn 225 + 239 mới · 0 trùng. Chưa ghi DB.
+
+## 13/11 — MCQ lớp 8–9: Hình giải tích + Hình học, độ khó 1–3 (20 form, chưa duyệt)
+- **Làm:** theo yêu cầu "lớp 8-9, chỉ hình và hình giải tích, độ khó 1–3". Đo kho: HGT chỉ có ở K9 (mức 1: 9 câu, mức 3: 198 câu — 186 đã có form từ trước ⇒ còn 13 câu). Hình học (`hinh_hoc_*`): `hinh_hoc_bai.muc_do` **chỉ gán cho 1 dạng** (HH00109 mức 1, 11 câu); K8 + 257 câu K9 còn lại mức NULL ⇒ KHÔNG lọc được "1–3", **không đụng** (NULL ≠ 1–3). Hình LUYỆN (`hinh_baitoan`, chứng minh) không có bảng form MCQ.
+- **Ghi:** 9 form `hgt_cau_form_tn` + 11 `hinh_hoc_cau_form_tn`, `da_duyet=false`, ai_model `claude-sonnet-5-5`. Script riêng `scripts/_k8/lam.mjs` (mcq-sinh chưa nối 2 bảng này và `parseHuuTi` không đọc phương án có căn/π/đơn vị): đáp số kho là nhân chứng, 20/20 máy tính lại khớp kho; nhiễu tính bằng công thức sai tương ứng; cổng 3 rule khác nhau / ≤1 dự phòng / duong_sai ≥8 / không lệch >40% giữ nguyên.
+- **Rule mới:** migration `202611131227_mcq_rule_k8_k9_hinh_hgt.sql` (R600–R648, 36 rule, vào cả `hgt_mcq_rule` và `hinh_hoc_mcq_rule`), áp bằng `--only`.
+- **Bỏ có chủ đích (4 câu HGT):** T309010301040/042 (chứng minh đẳng thức), T309010401004 (đáp số Có/Không, không đủ 4 phương án), T309010402008 (2 ý a, b).
+- **Còn lại / cần Thùy quyết:** gán `muc_do` cho các dạng Hình học K8–9 (324 câu có đáp án chưa form, ~13 dạng) thì chạy tiếp được ngay bằng `lam.mjs` mẫu; hoặc nói "làm hết, bỏ lọc mức".
+
+## 13/11 (chiều) — Hình học KHÔNG làm MCQ: gỡ 11 form lớp 8–9
+- Thùy: "nhầm, Hình không cần trắc nghiệm" — bổ trợ Hình chỉ hiện đề, in giấy, TA chấm ĐCS. Chỉ Hình giải tích (hgt) có MCQ.
+- Xoá mềm 11 form `hinh_hoc_cau_form_tn` (xoa_at + tu_choi_ly_do), xoá 36 rule R600–R648 khỏi `hinh_hoc_mcq_rule`. `hgt_mcq_rule` + 9 form HGT giữ nguyên. Migration 202611131227 vẫn nằm lịch sử (chép rule sang hinh_hoc); lịch sử migration bất biến nên không sửa.
+
+## 13/11 — Lương GV cấp 1 tháng 10/2026 (tính tiếp sau T7–T9)
+- Bộ sinh `reports/luong/_gen/gen_luong.cjs` nay nhận `thang: [10]` + màu tháng 10; dữ liệu SINH TỰ ĐỘNG từ DB bằng `node scripts/_luong_cap1_data.mjs` (ghi `data10_{va,tt,qm}.cjs`; MT nhận qua `gami_session_problems.phase='mt'`, sĩ số = số dòng `buoi_hoc_hs`). PDF in bằng Edge headless từ PowerShell → `reports/luong/Bang-luong-GV-*-T10-2026.pdf`.
+- Kết quả T10: Vân Anh 4A1 = 550k×7 = **3.850.000** (TB 7,71→8) · Thu Trà 3A1 450k×4×4/3 = 2.400.000 + 5A1 550k×7 = 3.850.000 → **6.250.000** · Quỳnh Mai 4A2 450k×4×5/3 = 3.000.000 + 5A2 550k×8 = 4.400.000 → **7.400.000**.
+- Ca cần Thùy biết: 5A2 sĩ số tụt 12→7 trong tháng (TB 9,88→10 nên vẫn 550k) · 4A1 17/10 + 21/10 còn `mo` nhưng đã điểm danh ⇒ tính · 3A1 05/10 và 5A2 19/10 mỗi buổi 1 ô điểm danh trống · 5A2 02/11 huỷ "không có nhân sự trông lớp" (T11, chưa tính). T11 chưa tính vì tháng chưa hết.
+
+## 14/11 — SƠ ĐỒ TƯ DUY cho câu Hình (Thùy: "lưu tách khỏi lời giải chi tiết, là thuộc tính riêng của bài; HS muốn xem thì bấm")
+- Chốt với Thùy: sơ đồ = MỘT đồ thị mốc, vẽ 2 chiều — XUÔI (ô trái→phải, hết hàng xuống dòng) và NGƯỢC (phân tích đi lên = Phần 1 "Hướng dẫn" cũ, kể cả Mấu chốt). Lời giải chi tiết trình bày THEO SƠ ĐỒ XUÔI, mỗi khúc = 1 ô, đầu khúc có dải highlight. Áp cho mọi ý chứng minh Hình (tuỳ chọn hiển thị ⇒ không cần chia theo độ dài). Tôi từng nhầm Phần 1 là thứ khác sơ đồ ngược — Thùy chỉnh: nó CHÍNH LÀ sơ đồ ngược.
+- DB: mig 202611131317 — bảng `hinh_hoc_cau_so_do` (ma_cau PK→hinh_hoc_cau_hoi · mau_chot · nut jsonb theo thứ tự xuôi · nguon), CHECK `_hh_so_do_hop_le`: khoá `n\d+` bất biến không lặp, mỗi ô có ý, mốc, "từ" chỉ trỏ gt hoặc ô ĐỨNG TRƯỚC (⇒ không thể có vòng). RLS member_all như bảng câu Hình. Đã thử: 5 ca sai đều bị chặn.
+- Khuôn soạn: thay "**Phần 1. Hướng dẫn**" bằng "**Sơ đồ tư duy**" + "**Mấu chốt:**" + dòng ô `- n1 | a | <mốc> | gt | <lý do>`; Phần 2 mỗi khúc mở bằng dòng riêng `[[so-do:nK]]`, dòng ý "c)" đứng một mình. Lời giải lưu vào kho = Phần 2 (sơ đồ lưu riêng). Khúc móc theo KHOÁ, số ①② là vị trí suy lúc vẽ.
+- Cổng `dung-de-tu-soan.mjs` (docSoDo): kiểm khối, "từ" chỉ trỏ ô trước, mọi ô đúng một khúc đúng thứ tự, khúc nằm đúng ý, không chữ ngoài khúc, KaTeX. Thử 3 ca hỏng (đảo khúc, trỏ ô sau, thiếu móc) đều bị bắt. `ghi.mjs` cho phép `[[so-do:nK]]`, ghi `hinh_hoc_cau_so_do` cùng transaction; câu trùng câu cũ ⇒ bỏ sơ đồ (lời giải cũ không có khúc).
+- Hiển thị: `toanmath/so-do-html.mjs` (nút "Xem sơ đồ tư duy" ẩn mặc định, tab Xuôi/Ngược, dải khúc) dùng trong `duyet-batch.mjs`; `mau-so-do.mjs` dựng trang mẫu. App HS CHƯA làm (chờ Thùy duyệt mẫu).
+- Mẫu 3 câu (chuyển từ Phần 1 cũ, lời giải không đổi chữ trừ bỏ 5 dòng tiêu đề con "Bước 1: …" / "Chứng minh …" ở B005-01 vì dải khúc thay chúng): B010-12 Câu 4.2 (6 ô) · B011-06 Bài 4 (9 ô) · B005-01 Câu 4.2 (K9, 9 ô). Cổng đạt, ghi thử mỗi đề 1 sơ đồ rồi rollback.
+- (14/11, sau) Thùy duyệt mẫu: "Chuẩn ý t rồi. ghi vào spec". Ghi luật vào `kho-rules/README.md` §3 "SƠ ĐỒ TƯ DUY" (luật chung) · ghi chú THAY ở `dai/k8.md` §1.6 và `hinh/k9.md` · `toanmath/_giao-tram.md` (trạm soạn/soát đè khuôn Phần 1). Commit trang mẫu `mau-so-do-tu-duy.html` làm mẫu đã duyệt. Còn: app HS, luồng kho kiểu 1, câu Hình cũ trong kho.
+
+## 12/11 22:56 — QUYẾT ĐỊNH: Mục tiêu tuần của học sinh (chỉ spec, CHƯA build)
+- Thùy (Sparring): công khai mục tiêu tuần cho HS + phụ huynh thành cái neo chung — bảng gồm dạng học mới + dạng nợ; tuần sau đánh giá lại.
+- Chốt: người đọc = HS và phụ huynh · mục tiêu hệ tự suy từ giáo trình · ngưỡng = mastery đang chạy · kênh = app HS là chính + app GV, phụ huynh tạm chụp ảnh.
+- Timeline (qua 4 phương án): MỘT ngày chốt = thứ Hai; cửa sổ mục tiêu = các buổi có HẠN BTVN rơi trong tuần ⇒ lùi một buổi so với lịch dạy (buổi cuối tuần trước + buổi đầu tuần này). Lịch dạy tuần của GV là chu kỳ riêng, không đổi.
+- Ghi ở `spec-muc-tieu-tuan.md` (§8 = 7 câu còn treo). Hiện trạng dữ liệu đọc từ schema.md/migration, CHƯA query DB thật; việc đầu tiên khi build = đo % buổi có tài liệu trên hệ trước thứ Hai.
+
+## 12/11 23:13 — Mục tiêu tuần: soát rủi ro + 5 quyết định thêm (spec cập nhật, vẫn CHƯA build)
+- Soát thiết kế với luật mastery đang chạy (TB ≤5 lần/30 ngày, mặc định chỉ ET+MT): một tuần không lật được ô ⇒ đòi "đạt trong tuần" là bất khả thi.
+- Thùy chốt: hai tầng (TUẦN = số phải tăng · CHIẾN DỊCH 2–3 tuần = đạt) · BTVN tính vào mastery (đổi luật toàn hệ, phải so cũ–mới trước khi áp) · BTVN xếp chồng 3 buổi (buổi N gồm dạng N, N-1, N-2; tổng bài không đổi; chia 5–3–2 hay 4–3–3 chưa cần chốt).
+- Nợ: ôn ở nhà (không tính điểm), ĐO LẠI tại trung tâm sau giờ, ngày kiểm tra báo trước trên bảng thứ Hai; buổi nào thì chốt từng trường hợp theo lịch phòng. Đánh giá ở nhà để sau.
+- `spec-muc-tieu-tuan.md`: thêm §5 hai tầng · §5b BTVN · §5c vòng nợ · §9 bảng rủi ro (3 mục còn MỞ: dạng trọng tâm/tài liệu trước thứ Hai/chấm kịp · tải nhiều môn · ai xếp ngày kiểm tra).
+
+## 12/11 23:15 — Mục tiêu tuần: ca kiểm tra sau giờ chốt trong ngày thứ Hai
+- Thùy: thứ Hai là ngày chốt mọi thứ — lịch học, bổ trợ, kiểm tra sau giờ. ⇒ thứ Hai có 2 mốc: 00:00 máy chụp số → trong ngày người chốt → bảng phát cho HS SAU khi chốt xong (không phát 00:00). Rủi ro "bảng chưa có ngày kiểm tra" đóng; giờ phát cụ thể chưa định.
+
+## 12/11 23:20 — Mục tiêu tuần: làm rõ "GV không phải làm gì" = không làm SỐ LIỆU, vẫn CHỐT
+- Thùy: buổi họp chiều thứ Hai chốt giáo trình cả tuần + vấn đề HS tuần trước + dạng bổ trợ trọng tâm của từng em (yếu 5 dạng ⇒ tuần này vào dạng nào). Hệ đưa sẵn toàn bộ danh sách, GV chỉ duyệt. Spec thêm §3b; còn treo: khối chưa chốt tới giờ phát thì phát bản đề xuất hay giữ.
+
+## 12/11 23:26 — Mục tiêu tuần: mốc tính lần đo = lúc CHẤM XONG, không phải lúc nộp
+- Thùy: BTVN buổi thứ Sáu nộp Chủ nhật, thứ Hai mới chấm ⇒ phải vào tuần mới. Sửa luật cắt cửa sổ §3 (cặp buổi không đổi). Tách "con đã nộp" (giờ nộp) khỏi "kết quả" (giờ chấm); bài chờ chấm là nợ của trung tâm. Tài liệu: bắt buộc xong ở buổi họp thứ Hai. Còn treo: hạn chấm BTVN.
+
+## 12/11 23:30 — Mục tiêu tuần: hạn chấm BTVN = hạn đang chạy
+- Thùy: lớp học từ 18:00, TA chấm BTVN xong 2 tiếng trước buổi học kế. Spec §3 dùng luôn hạn này (không đặt hạn mới). Lớp giờ khác chưa hỏi.
+
+## 12/11 23:31 — Mục tiêu tuần: hạn chấm BTVN lớp cuối tuần
+- Thùy: lớp học thứ Bảy/Chủ nhật (cả ngày) ⇒ chấm xong trước buổi kế một ngày. Chưa rõ ca lớp học hai ngày liền nhau.
+
+## 12/11 23:38 — Mục tiêu tuần: đơn vị đánh giá = NHÓM bài, đơn vị dạy = DẠNG bài
+- Thùy chốt. Dòng của bảng = nhóm (mastery cap nhom), bên trong ghi dạng dạy tuần này; nợ và kiểm tra sau giờ theo nhóm. Spec Q12 + §4.
+
+## 12/11 23:49 — SAI Ý: vẽ màn chốt riêng theo từng học sinh ⇒ bỏ
+- **Sai:** từ câu "GV chỉ việc duyệt" tôi suy ra một màn chốt mới (duyệt dạng trọng tâm từng em) và vẽ vào mockup. Thùy: "chốt từng học sinh quá vất vả".
+- **Đúng:** thứ Hai chỉ có 2 lượt chốt ĐANG CÓ — ① chốt giáo trình/tài liệu ② soi Dashboard học tập cả lớp rồi chốt bổ trợ ở Phòng làm việc trưởng khối. Chốt bổ trợ xong ⇒ hệ TỰ GHÉP vào mục tiêu tuần của từng HS. Không màn chốt mới, không đường duyệt mới. Spec §3b viết lại.
+- **Bài học:** "duyệt" trong lời Thùy = duyệt ở chỗ đang duyệt; đừng đẻ màn mới khi chưa hỏi luồng hiện tại chốt ở đâu.
+
+## 13/11 08:25 — Mục tiêu tuần: bố cục màn học sinh (mockup bản 1 lệch ý ⇒ vẽ lại)
+- Thùy: Phần 1 Kiến thức mới + Phần 2 Ôn tập kiến thức, mỗi dòng nhóm bài chỉ có mục tiêu (mặc định 80%) và % hiện tại; BẤM VÀO mới mở hướng dẫn (lý thuyết · bài trên lớp · luyện tập); thêm thanh tiến độ tổng tuần + xếp hạng tiến độ.
+- Spec thêm §4a. Chưa chốt: công thức tiến độ tổng, cách xếp hạng, mục tiêu nhóm ôn tập có luôn 80% không.
+
+## 13/11 08:31 — Mục tiêu tuần: xếp hạng toàn trung tâm + cờ đích 80%
+- Thùy: xếp hạng tiến độ đo toàn trung tâm, chỉ hiện hạng bản thân, bấm vào ra top 20. Mốc mục tiêu = lá cờ đích trên thanh, số 80% ghi dưới cờ, bỏ chữ "Mục tiêu 80%". Spec §4a + mockup màn 1 cập nhật.
+
+## 13/11 08:33 — Mục tiêu tuần: chốt xếp hạng
+- Thùy: mỗi môn một bảng · chung mọi khối · xếp theo tiến độ tổng của tuần (mục tiêu mỗi em đã theo yêu cầu riêng, em yếu dễ hơn ⇒ bảng đo thái độ là chính). Spec §4a.
+
+## 13/11 08:37 — Mục tiêu tuần: công thức tiến độ tổng
+- Thùy OK: trung bình min(%/mục tiêu, 1) trên nhóm ĐÃ ĐO, nhóm chưa đo không tính. Thùy muốn màn HS cũng là màn gửi phụ huynh — đang đánh giá khác biệt.
+
+## 13/11 08:46 — Mục tiêu tuần: "cần làm gì · đã làm gì" + tăng/giảm đầu tuần + app phụ huynh realtime + trend tuần
+- Thùy: màn hiện realtime trên app phụ huynh (Cổng PH, project bkdemy-ph, FDW erp_live) — bỏ phương án ảnh chụp. Sau mỗi lần chốt có dashboard trend theo tuần.
+- Lớp còn thiếu = mỗi nhóm bài có danh sách việc ✓/○ (hệ sinh, suy "đã làm" từ dữ liệu), xem ở 3 tầng HS · PH · trung tâm. Mỗi dòng hiện ▲/▼ so với đầu tuần.
+- Mockup: màn 1 cập nhật, màn 2 mới "Các tuần đã chốt", ảnh gửi PH đánh dấu BỎ. Spec §4a mục 6–7. Còn treo: N câu luyện, đo "xem lý thuyết", màn trung tâm chưa vẽ.
+
+## 13/11 08:51 — Mục tiêu tuần: "Việc của con" là khu vực riêng theo hoạt động
+- Thùy: liệt kê kiểu "ET 80% · BTVN 15/11 80% Nghiêm túc · Test sau giờ 100% · Bổ trợ yếu…", không gắn việc vào từng nhóm bài. Spec §4a mục 7 viết lại; mockup màn 1: dòng nhóm bài gọn lại, cột phải = Đã làm / Sắp tới.
+
+## 13/11 08:52 — Mục tiêu tuần: nhãn thái độ = Tốt / Chưa tốt
+- Thùy: thay "nghiêm túc" bằng Tốt / Chưa tốt. nghiem_tuc ⇒ Tốt, 3 mức còn lại ⇒ Chưa tốt; DB giữ 4 mức, màn trung tâm thấy đủ.
+
+## 13/11 08:54 — Mục tiêu tuần: tự luyện = thống kê không bắt buộc; bỏ khái niệm thái độ
+- Thùy: tự luyện không bắt buộc nhưng luôn ghi thống kê (kể cả 0), không tính vào x/y việc. Đã đổi sang Tốt / Chưa tốt nên không tính "thái độ" nữa — bỏ chữ "Thái độ:" và ô thái độ tuần. Hỏi lại: Tốt/Chưa tốt quyết từ đâu.
+
+## 13/11 09:02 — Mục tiêu tuần: nhãn đánh giá 3 mức
+- Thùy: Tốt · Tạm ổn · Chưa tốt. ET theo % (tính như Đ/C/S); BTVN + test sau giờ theo % rồi thái độ không nghiêm túc ⇒ hạ 1 mức + ghi chú dưới dòng. Ngưỡng giả định = ngưỡng mastery 80/50, chờ xác nhận. Test sau giờ chưa có ô thái độ.
+
+## 13/11 09:03 — Mục tiêu tuần: thái độ CHỈ xét ở BTVN; ngưỡng 80/50 cho mọi hoạt động
+- Thùy xác nhận. Không thêm ô thái độ cho test sau giờ/ET.
+
+## 13/11 09:10 — Mục tiêu tuần: màn trung tâm = tab Dashboard học tập + Phòng trưởng khối; bỏ bước đo trước
+- Thùy: màn tổng thể trung tâm là 1 tab trong Dashboard học tập và có trong Phòng trưởng khối (cùng một màn, phòng là lối tắt). BTVN tính mastery: xác nhận lại.
+- Bỏ bước "đo hiện trạng trước" (tỉ lệ buổi có tài liệu, phân bố mức đạt): trước đây không chạy theo nhịp này, chạy rồi mới có số.
+- Số câu luyện của nhóm ôn tập: không còn là câu hỏi — tự luyện đã chuyển thành thống kê không bắt buộc, không có chỉ tiêu.
+
+## 13/11 09:30 — Mục tiêu tuần: viết lại spec bản gộp sạch (Thùy duyệt mockup 3 màn)
+- `spec-muc-tieu-tuan.md` viết lại từ đầu, gộp mọi quyết định 12–13/11, bỏ các phần đã bị thay (màn chốt từng HS, ảnh gửi PH, việc gắn theo nhóm, nhãn 2 mức, bước đo trước). 13 mục: mục đích · khái niệm · timeline · nguồn · đo · việc của con · vòng nợ · thay đổi hệ đang chạy · màn hình · dữ liệu · thứ tự build · còn treo (9) · rủi ro.
+- CLAUDE.md: dòng trỏ spec cập nhật. Notion chưa đẩy được (connector chưa cấp quyền).
+
+## 13/11 09:35 — Mục tiêu tuần: 3 câu treo
+- Thùy: hệ tính được mục tiêu tuần từ số lần đánh giá của nhóm trong tuần (đang cân đặt dài hạn 80% hay tuần). Đề xuất ghi §5.2b: mục tiêu tuần = min(80%, mastery nếu mọi lần đo tuần này đều Tốt), cờ = tuần, 80% = đích dài hạn.
+- Hết vòng 3 buổi ở mức cần luyện: tạm thời không thành nợ. Tăng/giảm: không đặt ngưỡng (mastery đo theo lần).
+
+## 13/11 09:37 — Mục tiêu tuần: CHỐT cờ = mục tiêu tuần, 80% = đích dài hạn
+- Thùy OK đề xuất §5.2b. Tiến độ tổng + xếp hạng tính theo mục tiêu tuần. Mockup màn 1: cờ ở mục tiêu tuần, vạch mờ "đích 80%" ở nhóm ôn tập.
+
+## 13/11 09:42 — Mục tiêu tuần: chốt 6 câu cuối, spec hết câu treo
+- Chưa chốt xong thì chưa hiện tờ tuần mới · không có lớp T7+CN liền nhau · nhiệm vụ (chơi) và mục tiêu tuần (học) tách riêng, sau này có thể gộp và bỏ nhiệm vụ cũ nhưng chưa làm · vắng = chưa hoàn thành (phải học bù) · mới vào lớp = chưa có dữ liệu phần trước · mỗi môn màn riêng · HS tự cam kết để sau.
+
+## 13/11 10:15 — BUILD Mục tiêu tuần: DB + ERP + app HS + app PH (chưa áp DB, chưa deploy)
+- Thùy: "build đến cuối luôn đi… ERP, app HS, app PH. test và build ra output". Phiên cloud không có kết nối DB ⇒ viết migration, kiểm trên Postgres 16 TẠM (bảng giả lập sinh từ schema.md + hàm mastery giả lập + dữ liệu mẫu 3 em / 1 lớp / 5 buổi / 1 ca sau giờ / tự luyện).
+- DB mig 202611131000: mtt_lop_chot (append-only) · mtt_dau (đầu tuần, bất biến) · mtt_luu (bảng đệm) · mtt_chot (sổ chốt, trigger chặn sửa/xoá) · mtt_top; _mtt_tinh = 1 nơi tính tờ; fn_mtt_cua_toi/hs/cac_tuan/top/trung_tam/chot_lop; _mtt_lam_moi cron 5 phút (202611131001, SQL Editor). FDW cho app PH: GRANT + policy.
+- Kiểm thử: mục tiêu tuần nhóm nợ 4 lần cũ 0·.5·0·.5 + 1 lần dự kiến ⇒ 36% (đúng tay) · BTVN 100% + chưa hết sức ⇒ Tạm ổn + ghi chú · em mới vào 10/11 không có BTVN 08/11 · vắng ⇒ "vang" · chốt lớp tính ngay 3 em · cron xếp hạng + top 20 · sổ chốt UPDATE bị chặn · HS lớp chưa chốt ⇒ chua_chot.
+- Sửa trong lúc kiểm: tiến độ đầu tuần tính nhóm chưa có số đầu tuần = 0 (trước đó bỏ ra ⇒ đầu tuần cao hơn hiện tại, sai nghĩa); thêm d / tien_do_d / hang_doi / viec_pct vào DB để app không tự trừ.
+- Quyết định CTO (ghi spec §14): nút "Chốt mục tiêu tuần" THEO LỚP ở tab trung tâm (tín hiệu "chưa chốt thì chưa hiện") · % nhóm đọc mastery CÓ BTVN như Dashboard học tập · nút Lý thuyết/Bài trên lớp/Luyện tập mở Sổ tay/Giáo trình/Tự luyện (chưa nhảy đúng nhóm).
+- check:style-hs RỚT ở CaBoTroHS.tsx (3 > mốc 2) — có sẵn từ commit 3ac6485 của phiên khác, không phải file phiên này; file mới MucTieuTuanHS.tsx 0 màu gõ tay.
+
+## 13/11 12:28 — Mục tiêu tuần: ô riêng ở Home app HS · bỏ nút lý thuyết
+- Thùy: "chỗ lý thuyết ko cần. Bài trên lớp mở giáo trình là có hết rồi. Cần thêm ô mới ở Home… icon dùng lại 1 chút ko sao, ko trùng ở Home là dc".
+- KhuId 'muc_tieu' vào KHU + KHU_CAP2 (sau ô Học tập) + KIT_O; direct 'muc_tieu' → MucTieuTuanTheoMon (môn đang chọn). Bỏ ô mục tiêu trong Thông tin học tập (một lối vào).
+- Icon: RPG o_rank · Tối giản o_bai_tap_giao · Khối/Lo-fi/Đáng yêu/Halloween o_luyen_yeu — đều KHÔNG hiện ở Home. Chụp Home RPG/Lo-fi/Tối giản: ô hiện đúng, không trùng.
+- Nhóm bài bấm vào còn 2 nút: Xem lại bài trên lớp (khu giáo trình) · Luyện tập. App PH sửa câu nhắc.
+- Kiểm: tsc · build ERP/HS/PH · check:style-hs (ô mới đủ icon 6 style; còn RỚT cũ ở CaBoTroHS.tsx của phiên khác).
+
+## 13/11 12:50 — Mục tiêu tuần app HS: nền trắng
+- Thùy: "UI để nền trắng cho dễ nhìn chứ đừng để nền tối". MucTieuTuanHS bọc NenSang: đè biến --sk-* bằng bảng màu đọc (--sk-doc-*) + màu nhấn theo môn (mauDocMon) ⇒ mọi style ra nền trắng, không gõ màu tay. Ô ở Home giữ theo style. Mockup canvas đổi sang nền sáng.
+
+## 13/11 13:06 — Mục tiêu tuần ERP: trưởng khối có đủ view của HS/PH
+- Thùy hỏi trưởng khối đã có đủ view chưa ⇒ còn thiếu 3: thanh+cờ trong tờ của em, các tuần đã chốt của em, top 20. Đã thêm vào MucTieuTuanTab (popup tờ em có tab "Tuần này | Các tuần đã chốt"; nút Top 20; dòng đang xếp hàng / sắp học). Phòng trưởng khối dùng chung màn ⇒ tự có. Chụp kiểm qua harness.

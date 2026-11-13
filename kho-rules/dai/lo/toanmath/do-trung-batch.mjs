@@ -3,15 +3,15 @@
 // best vs nhì) + tên trường. Bài scan (không có lớp chữ) ⇒ khong_doc, phải xem ảnh.
 //   node --env-file=.env kho-rules/dai/lo/toanmath/do-trung-batch.mjs --batch B001
 // Ra: batch/<ma>/do-trung.json
-import pg from 'pg'; import fs from 'node:fs'; import path from 'node:path'; import { execFileSync } from 'node:child_process'
+import os from 'node:os'; import pg from 'pg'; import fs from 'node:fs'; import path from 'node:path'; import { execFileSync } from 'node:child_process'
 import { createRequire } from 'node:module'
 const JSZip = createRequire(import.meta.url)('jszip')
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d }
-const GOC = 'E:/BK ACADEMY/Tài liệu tham khảo', MA = arg('--batch')
+const GOC = process.env.BK_GOC || 'E:/BK ACADEMY/Tài liệu tham khảo', MA = arg('--batch')
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
 const ROOT = path.resolve(HERE, '../../../..')
 const B = JSON.parse(fs.readFileSync(path.join(HERE, 'batch.json'), 'utf8'))
-const ds = JSON.parse(fs.readFileSync(path.join(ROOT, '.nhap-tam/toanmath-word/danh-sach.json'), 'utf8'))
+const ds = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, '.nhap-tam/toanmath-word/danh-sach.json'), 'utf8')) } catch { return [] } })()
 const docx = new Map(ds.filter((x) => x.docx).map((x) => [path.normalize(x.file), x.docx]))
 const bai = B.find((b) => b.ma === MA).bai.map((x) => ({ ...x, batch: MA })), KHOI = bai[0].khoi.slice(1)
 
@@ -21,7 +21,10 @@ const cum = (w, k = K) => { const r = []; for (let i = 0; i + k <= w.length; i++
 const lam = (nd) => cum(tu(nd.replace(/\$[^$]*\$/g, ' ').replace(/\\[a-zA-Z]+/g, ' ')))
 const chuFile = async (p) => {
   try {
-    if (/\.pdf$/i.test(p)) return execFileSync('pdftotext', ['-q', '-enc', 'UTF-8', p, '-'], { maxBuffer: 1 << 28 }).toString('utf8')
+    if (/\.pdf$/i.test(p)) { // pdftotext bản msys không mở được đường dẫn có chữ có dấu ("Đề thi") ⇒ chép sang tên ASCII rồi đọc
+      const tmp = path.join(os.tmpdir(), 'dt-' + process.pid + '.pdf'); fs.copyFileSync(p, tmp)
+      try { return execFileSync('pdftotext', ['-q', '-enc', 'UTF-8', tmp, '-'], { maxBuffer: 1 << 28 }).toString('utf8') } finally { fs.rmSync(tmp, { force: true }) }
+    }
     const q = /\.doc$/i.test(p) ? docx.get(path.normalize(p)) : p
     if (q && /\.docx$/i.test(q)) { const z = await JSZip.loadAsync(fs.readFileSync(q)); return ((await z.file('word/document.xml')?.async('string')) || '').replace(/<\/w:p>/g, '\n').replace(/<[^>]+>/g, '') }
   } catch { return '' }

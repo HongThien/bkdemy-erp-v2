@@ -1,0 +1,274 @@
+[
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2024-2025-phong-gddt-ha-dong-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.57,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2024-2025-phong-gddt-quoc-oai-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1568,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2025-2026 — THCS Cổ Nhuế 2 (phường Đông Ngạc, Hà Nội)",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.38,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2025-2026-truong-thcs-giang-bien-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 4493,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2025-2026 — THCS Đền Lừ (phường Tương Mai)",
+   "ti_le": 0.25,
+   "cau": 4
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.29,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2025-2026-truong-thcs-ly-son-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 571,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-9-nam-2025-2026-truong-thcs-ngo-gia-tu-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1992,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 9 năm 2025-2026 — THCS Dịch Vọng Hậu (phường Cầu Giấy, Hà Nội) (Đề 2)",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2024-2025-phong-gddt-dong-anh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1831,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì I Toán 9 — THCS Thanh Âm (Hà Nội) · phần Hình",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.3,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2024-2025-phong-gddt-phuc-tho-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1388,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.57,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2024-2025-truong-thcs-phan-dinh-giot-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1621,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2025-2026 — THCS Đống Đa",
+   "ti_le": 0.2,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2025-2026-phuong-giang-vo-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2025-2026-truong-thcs-duc-giang-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1030,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2025-2026-truong-thcs-ngoc-lam-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-9-nam-2025-2026-truong-thpt-chuyen-ha-noi-amsterdam",
+  "ket_luan": "trung",
+  "so_tu": 2379,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2025-2026 — THPT Chuyên Hà Nội – Amsterdam, Tổ Toán – Tin học (đề chính thức, 120 phút)",
+   "ti_le": 0.6,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 1,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-9-nam-2024-2025-phong-gddt-hai-ba-trung-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1706,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.71,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-9-nam-2024-2025-truong-thcs-chu-van-an-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-9-nam-2024-2025-truong-thcs-ngo-si-lien-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-9-nam-2024-2025-truong-thcs-nhat-tan-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1542,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B002",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-9-nam-2025-2026-phuong-ba-dinh-ha-noi",
+  "ket_luan": "trung",
+  "so_tu": 1919,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2025-2026 — THCS Ba Đình (Phòng Văn hóa - Xã hội phường Ba Đình, Hà Nội)",
+   "ti_le": 0.4,
+   "cau": 5
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.57,
+  "trung_kho": false
+ }
+]

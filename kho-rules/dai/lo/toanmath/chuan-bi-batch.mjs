@@ -10,8 +10,8 @@ import { createHash } from 'node:crypto'
 import path from 'node:path'
 const MA = process.argv[2]
 const HERE = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'))
-const GOC = 'E:/BK ACADEMY/Tài liệu tham khảo'
-const KV = `C:/Users/WBPC/bk-kho-lam-viec/de-thi/toanmath/${MA}`
+const GOC = process.env.BK_GOC || 'E:/BK ACADEMY/Tài liệu tham khảo'
+const KV = `${process.env.BK_LV || "C:/Users/WBPC/bk-kho-lam-viec"}/de-thi/toanmath/${MA}`
 const batch = JSON.parse(readFileSync(path.join(HERE, 'batch.json'), 'utf8')).find((b) => b.ma === MA)
 const ds = JSON.parse(readFileSync(path.join(HERE, 'batch', MA, 'ds-de.json'), 'utf8'))
 const run = (c, a) => execFileSync(c, a, { stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 1 << 28 })
@@ -19,7 +19,9 @@ let n = 0
 for (const d of ds) {
   const LV = path.join(KV, d.ma); if (existsSync(path.join(LV, 'goc.pdf'))) continue
   const bai = batch.bai.find((x) => x.ten_bai === d.ten_bai); if (!bai) throw new Error('không thấy bài trong batch: ' + d.ten_bai)
-  const src = path.join(GOC, bai.files.find((f) => /\.pdf$/i.test(f)))
+  const src0 = path.join(GOC, bai.files.find((f) => /\.pdf$/i.test(f)))
+  // poppler bản msys không mở được đường dẫn có chữ có dấu ("Đề thi") ⇒ chép sang tên ASCII rồi dùng bản chép
+  mkdirSync(KV, { recursive: true }); const src = path.join(KV, '_src-' + d.ma + '.pdf'); copyFileSync(src0, src)
   for (const s of ['trang', 'img', 'tam']) mkdirSync(path.join(LV, s), { recursive: true })
   if (d.tach) { const [a, b] = d.de.split('-').map(Number); run('pdfseparate', ['-f', a, '-l', b || a, src, path.join(LV, 'tam', 'tr-%d.pdf')].map(String))
     const trs = []; for (let p = a; p <= (b || a); p++) trs.push(path.join(LV, 'tam', `tr-${p}.pdf`))
