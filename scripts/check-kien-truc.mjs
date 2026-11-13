@@ -80,6 +80,9 @@ if (!CHI_CODE) {
   r = await q(`select c.relname ten from pg_class c where c.relnamespace='public'::regnamespace and c.relkind in ('r','v') and (has_table_privilege('anon',c.oid,'insert') or has_table_privilege('anon',c.oid,'update') or has_table_privilege('anon',c.oid,'delete')) and (c.relkind='v' or not c.relrowsecurity) order by 1`)
   them('db_anon_ghi_khong_rls', 'Bảng/view người chưa đăng nhập GHI được mà không có RLS chặn — K14', 'cung', r.length, ds(r))
 
+  // BẢN CHIẾU phải khớp đường tính trực tiếp (K21). Bảng nào thêm vào khuôn tính sẵn thì thêm một dòng đối chiếu ở đây.
+  try { r = await q('select kho, ma_cau from public.fn_kho_cau_dang_lech() limit 20'); them('db_tra_cau_dang_lech', 'Bảng tra câu → dạng lệch so với tính trực tiếp — K21', 'cung', r.length, r.map((x) => x.kho + ':' + x.ma_cau)) } catch { /* chưa có bảng tra */ }
+
   // TRẦN
   r = await q(`select p.proname ten from pg_proc p where p.pronamespace='public'::regnamespace and p.prosecdef and p.prorettype <> 'trigger'::regtype
      and has_function_privilege('authenticated', p.oid, 'execute')
