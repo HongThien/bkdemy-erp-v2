@@ -1,0 +1,68 @@
+{
+ "tong": {
+  "de": 3,
+  "soan": 3,
+  "soat": 3,
+  "dat": 3,
+  "sua": 3,
+  "cau": 51,
+  "hinh": 11,
+  "co_hd": 1,
+  "chua_chac": [],
+  "loai": {
+   "trac_nghiem": 20,
+   "tu_luan": 23,
+   "tra_loi_ngan": 8
+  }
+ },
+ "de": [
+  {
+   "ma": "B018-01",
+   "don_vi": "THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B018-02",
+   "don_vi": "THCS Đỗ Ngọc Du, xã Đại Thanh, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 5,
+   "chua_chac": []
+  },
+  {
+   "ma": "B018-03",
+   "don_vi": "THCS Nguyễn Trường Tộ, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 4,
+    "tu_luan": 8,
+    "tra_loi_ngan": 5
+   },
+   "hinh": 3,
+   "chua_chac": []
+  }
+ ]
+}

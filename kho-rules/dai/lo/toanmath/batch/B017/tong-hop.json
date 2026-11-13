@@ -1,0 +1,51 @@
+{
+ "tong": {
+  "de": 2,
+  "soan": 2,
+  "soat": 2,
+  "dat": 2,
+  "sua": 2,
+  "cau": 32,
+  "hinh": 7,
+  "co_hd": 2,
+  "chua_chac": [],
+  "loai": {
+   "trac_nghiem": 12,
+   "tu_luan": 17,
+   "tra_loi_ngan": 3
+  }
+ },
+ "de": [
+  {
+   "ma": "B017-01",
+   "don_vi": "THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 21,
+   "loai": {
+    "trac_nghiem": 12,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 6,
+   "chua_chac": []
+  },
+  {
+   "ma": "B017-02",
+   "don_vi": "THCS Phan Đình Giót, quận Thanh Xuân, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 11,
+   "loai": {
+    "tu_luan": 9,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 1,
+   "chua_chac": []
+  }
+ ]
+}

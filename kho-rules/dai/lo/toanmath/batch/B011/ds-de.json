@@ -1,0 +1,18 @@
+[
+ {"ma":"B011-01","ten_bai":"de-hoc-ki-1-toan-8-nam-2024-2025-phong-gddt-thach-that-ha-noi","don_vi":"Phòng GD&ĐT huyện Thạch Thất, Hà Nội","nam":2024,"de":"1-2","hd":"3-5"},
+ {"ma":"B011-02","ten_bai":"de-hoc-ki-1-toan-8-nam-2024-2025-truong-thcs-phan-chu-trinh-ha-noi","don_vi":"THCS Phan Chu Trinh, quận Ba Đình, Hà Nội","nam":2024,"de":"1-2","hd":"3-5"},
+ {"ma":"B011-03","ten_bai":"de-hoc-ki-1-toan-8-nam-2024-2025-truong-thcs-phan-dinh-giot-ha-noi","don_vi":"THCS Phan Đình Giót, quận Thanh Xuân, Hà Nội","nam":2024,"de":"1","hd":"2-4"},
+ {"ma":"B011-04","ten_bai":"de-hoc-ki-1-toan-8-nam-2024-2025-truong-thcs-phuc-dien-ha-noi","don_vi":"THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội","nam":2024,"de":"1-2","hd":""},
+ {"ma":"B011-05","ten_bai":"de-hoc-ki-1-toan-8-nam-2024-2025-truong-thpt-chuyen-ha-noi-amsterdam","don_vi":"THPT Chuyên Hà Nội – Amsterdam, Tổ Toán – Tin học","nam":2024,"de":"1","hd":""},
+ {"ma":"B011-06","ten_bai":"de-hoc-ki-1-toan-8-nam-2025-2026-truong-thcs-dong-my-ha-noi","don_vi":"THCS Đông Mỹ, xã Nam Phù, Hà Nội","nam":2025,"de":"1-2","hd":""},
+ {"ma":"B011-07","ten_bai":"de-hoc-ki-1-toan-8-nam-2025-2026-truong-thcs-duc-giang-ha-noi","don_vi":"THCS Đức Giang, Hà Nội","nam":2025,"de":"1","hd":"2-3"},
+ {"ma":"B011-08","ten_bai":"de-hoc-ki-1-toan-8-nam-2025-2026-truong-thcs-ngoc-lam-ha-noi","don_vi":"THCS Ngọc Lâm, phường Bồ Đề, Hà Nội","nam":2025,"de":"1-2","hd":"","tach":"Mã đề 801"},
+ {"ma":"B011-09","ten_bai":"de-hoc-ki-1-toan-8-nam-2025-2026-truong-thcs-phan-chu-trinh-ha-noi","don_vi":"THCS Phan Chu Trinh, phường Giảng Võ, Hà Nội","nam":2025,"de":"1","hd":"2-5"},
+ {"ma":"B011-10","ten_bai":"de-hoc-ky-1-toan-8-nam-2024-2025-truong-thcs-giang-vo-2-ha-noi","don_vi":"THCS Giảng Võ 2, quận Ba Đình, Hà Nội","nam":2024,"de":"1-2","hd":"3-5"},
+ {"ma":"B011-11","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-cum-chuyen-mon-so-14-ha-noi","don_vi":"Cụm chuyên môn số 14, Hà Nội","nam":2025,"de":"1-2","hd":"3-4"},
+ {"ma":"B011-12","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-truong-luong-the-vinh-ha-noi","don_vi":"THCS & THPT Lương Thế Vinh, Hà Nội","nam":2025,"de":"1-2","hd":"3-4"},
+ {"ma":"B011-13","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-truong-thcs-chu-van-an-ha-noi","don_vi":"THCS Chu Văn An, phường Tây Hồ, Hà Nội","nam":2025,"de":"1","hd":"2-4"},
+ {"ma":"B011-14","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi","don_vi":"THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội","nam":2025,"de":"1-2","hd":""},
+ {"ma":"B011-15","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi","don_vi":"THCS Nguyễn Trường Tộ, Hà Nội","nam":2025,"de":"1-2","hd":""},
+ {"ma":"B011-16","ten_bai":"de-hoc-ky-1-toan-8-nam-2025-2026-truong-thpt-chuyen-ha-noi-amsterdam","don_vi":"THPT Chuyên Hà Nội – Amsterdam, Tổ Toán – Tin học","nam":2025,"de":"1","hd":""}
+]

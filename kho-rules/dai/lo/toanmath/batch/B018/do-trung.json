@@ -1,0 +1,242 @@
+[
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-phuc-dien-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-do-ngoc-du-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1479,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Phước Bửu (Đề 1)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-duc-giang-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1214,
+  "best": {
+   "ten": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ti_le": 0.11,
+   "cau": 28
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-ngoc-lam-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-xa-dong-anh-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1484,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — Phòng Văn hóa - Xã hội, xã Đông Anh (đề chính thức)",
+   "ti_le": 0.33,
+   "cau": 3
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.45,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2024-2025-phong-gddt-thach-that-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1301,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lý Tự Trọng (đề không ghi quận / phường / xã và không ghi mã đề)",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.08,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-nguyen-truong-to-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2025-2026-cum-chuyen-mon-so-14-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1281,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.1,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2025-2026-truong-marie-curie-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.1,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2025-2026-truong-thcs-le-ngoc-han-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1731,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Quế Thuận (đề chính)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-thi-hoc-ky-1-toan-7-nam-2024-2025-truong-marie-curie-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.1,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-ly-son-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B018",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-phuc-loi-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ }
+]

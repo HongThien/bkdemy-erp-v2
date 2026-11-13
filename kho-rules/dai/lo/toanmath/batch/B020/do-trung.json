@@ -1,0 +1,34 @@
+[
+ {
+  "batch": "B020",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thai-thinh-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B020",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0,
+   "cau": 13
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.3,
+  "trung_kho": false
+ }
+]
