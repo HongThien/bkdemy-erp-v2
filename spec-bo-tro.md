@@ -145,7 +145,7 @@ Thùy 13/11: "Bỏ hết những logic trước đây mâu thuẫn với hiện 
    25 bài retest treo đã đóng `dong`. Muốn có lại retest = thiết kế mới, không bật công tắc cũ.
 3. **Hình theo mô hình** (§20–21 cũ, ẩn từ 17/10): `fn_hinh_yeu_theo_mo_hinh`, `HinhYeuTA`, tab "Hình yếu".
 4. **Màn Nội dung bổ trợ yếu / Đánh giá ca bổ trợ** (bước ③ ⑦ cũ — dạng nay đổ lúc duyệt, đánh giá là việc học thuật).
-5. **`_sau_gio_dang`** (luật dạng sau giờ cũ, mọi dạng yếu): còn dùng ở `fn_btnhe_lop_hs` / `fn_btnhe_cho` / `fn_btnhe_hs_duyet` để đếm "x dạng"
-   ⇒ số hiện ở hàng chờ có thể khác số dạng thật in ra (§5). Sửa = đổi sang `_btnhe_dang_chot` (không xoá dữ liệu).
+5. ✅ **ĐÃ SỬA 13/11 — đếm dạng sau giờ** (mig `202611131609`): hàng chờ · form khởi tạo · tô em · số dạng lúc duyệt L1 đều đếm từ `_btnhe_dang_chot`
+   (cùng nguồn bài in). `_sau_gio_dang` không còn ai gọi (giữ hàm).
 6. **Luật trần 70 em / 20 Cao** vẫn đếm mọi case kể cả L1/L4 — chờ Thùy: L1 sau giờ / L4 riêng GV có tính vào trần không.
 7. **Bù theo nhóm cùng bài** chỉ áp ở bảng Lấp đầy; xếp ở Lịch phòng vẫn 4/em — chờ Thùy quyết có đổi luật xếp không.
