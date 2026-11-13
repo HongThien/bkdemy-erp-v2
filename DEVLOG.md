@@ -80033,3 +80033,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 12:50 — Mục tiêu tuần app HS: nền trắng
 - Thùy: "UI để nền trắng cho dễ nhìn chứ đừng để nền tối". MucTieuTuanHS bọc NenSang: đè biến --sk-* bằng bảng màu đọc (--sk-doc-*) + màu nhấn theo môn (mauDocMon) ⇒ mọi style ra nền trắng, không gõ màu tay. Ô ở Home giữ theo style. Mockup canvas đổi sang nền sáng.
+
+## 13/11 13:06 — Mục tiêu tuần ERP: trưởng khối có đủ view của HS/PH
+- Thùy hỏi trưởng khối đã có đủ view chưa ⇒ còn thiếu 3: thanh+cờ trong tờ của em, các tuần đã chốt của em, top 20. Đã thêm vào MucTieuTuanTab (popup tờ em có tab "Tuần này | Các tuần đã chốt"; nút Top 20; dòng đang xếp hàng / sắp học). Phòng trưởng khối dùng chung màn ⇒ tự có. Chụp kiểm qua harness.
