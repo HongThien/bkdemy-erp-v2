@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-589 bảng · 39 view · 0 enum · 409 trigger · 1906 function
+590 bảng · 39 view · 0 enum · 433 trigger · 1910 function
 
 ## _app_secrets
 
@@ -5584,6 +5584,20 @@ END |  |  |
 | muc | text |  |  |  |  |
 | tin | text |  |  |  |  |
 
+## mastery_luu_san_mon
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| mon | text |  |  | PK |  |
+| btvn | boolean |  |  | PK |  |
+| cap | text |  |  | PK |  |
+| nut | text |  |  | PK |  |
+| score | numeric |  |  |  |  |
+| n | integer |  |  |  |  |
+| muc | text |  |  |  |  |
+| tin | text |  |  |  |  |
+
 ## mastery_luu_san_tinh
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -6593,7 +6607,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11077,8 +11091,16 @@ WITH luot AS (
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| hoahoc_bdm_dang_bai | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| hoahoc_bdm_dang_bai | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| hoahoc_bdm_de_xuat | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| hoahoc_bdm_de_xuat | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| hoahoc_bdm_de_xuat | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hoahoc_bdm_gan_cau | trg_hoahoc_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_gan_cau | trg_hoahoc_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| hoahoc_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| hoahoc_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| hoahoc_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _hoahoc_bdm_tien_de_cung_o |
@@ -11118,8 +11140,16 @@ WITH luot AS (
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_dang_bai | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| khtn_bdm_dang_bai | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| khtn_bdm_de_xuat | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| khtn_bdm_de_xuat | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| khtn_bdm_de_xuat | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | khtn_bdm_gan_cau | trg_khtn_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_gan_cau | trg_khtn_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| khtn_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| khtn_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| khtn_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _khtn_bdm_tien_de_cung_o |
@@ -11217,10 +11247,18 @@ WITH luot AS (
 | vatly_bdm_chu_de | trg_vatly_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
 | vatly_bdm_chuyen_de | trg_vatly_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_chuyen_de | trg_vatly_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| vatly_bdm_dang_bai | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| vatly_bdm_dang_bai | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | vatly_bdm_dang_bai | trg_vatly_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_bump_nhom |
 | vatly_bdm_dang_bai | trg_vatly_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_dang_bai | trg_vatly_bdm_dang_bai_thu_tu | BEFORE | INSERT | _vatly_bdm_thu_tu |
 | vatly_bdm_dang_bai | trg_vatly_bdm_dang_bai_touch | BEFORE | UPDATE | _bdm_touch |
+| vatly_bdm_de_xuat | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| vatly_bdm_de_xuat | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| vatly_bdm_de_xuat | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| vatly_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
+| vatly_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
+| vatly_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | vatly_bdm_gan_cau | trg_vatly_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_gan_cau | trg_vatly_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
 | vatly_bdm_nhom | trg_vatly_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
@@ -11582,6 +11620,10 @@ WITH luot AS (
 - `_mastery_lan_do_quy(p_bdm boolean, p_khtn_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text)
 - `_mastery_luot_do_quy(p_bdm boolean, p_khtn_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text, luot text, cap1 boolean)
 - `_mastery_luu_san_doc(p_hs uuid[], p_btvn boolean, p_caps text[])` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
+- `_mastery_mon_cap(p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, mon text, cap text, nut text, score numeric, n bigint, muc text, tin text)
+- `_mastery_mon_d(p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, mon text, luot text, value numeric, t timestamp with time zone, src text, dang text, nhom text, chuyen_de text, chu_de text)
+- `_mastery_mon_doc(p_mon text, p_hs uuid[], p_include_btvn boolean, p_caps text[])` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
+- `_mastery_mon_ds()` → text[]
 - `_mastery_theo_lan_bat()` → boolean
 - `_mcq_kiem_kho(p_kho text)` → void
 - `_mon_khoi_hop_le(p_mon text, p_khoi text)` → boolean

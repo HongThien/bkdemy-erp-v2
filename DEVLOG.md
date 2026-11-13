@@ -80261,3 +80261,11 @@ Thùy nêu 4 việc, làm được 3:
 - `kho-rules/dai/lo/k4/cau-trung-sach-4A.html`: 81 câu của 5 đề GKI đối chiếu bản kho câu phiên khác nhập 07/11 (107 câu): 29 đề dùng thẳng câu sẵn có · 46 câu mới có bản tương ứng · 6 câu mới (bài nhiều ý a/b/c) phiên kia tách thành câu lẻ · 38 câu lẻ phía kia không ghép.
 - Đính chính: lần trước báo bản kia "hỏng chữ s→dấu cách" — kiểm lại nội dung hiện tại 0 câu dính, báo sai.
 - Câu phiên kia đang dùng ở bản đồ (96 dòng gán), giáo trình/BTVN/ET, form TN 28, HS đã làm. Chưa xoá/sửa gì.
+
+## 13/11 — Dashboard học tập cho MỌI môn (Thùy: "cần làm cho tất cả các môn")
+- **Gốc:** `fn_dbht_bang` chỉ lấy ô khi `_kho_ban_do_tbl(môn) = 'dai_ban_do'` (Toán); engine mastery theo lần (`_mastery_lan_d`) chỉ quy về cây bản đồ Toán. KHTN có 6.621 lần đo/30 ngày (55 em) mà bảng trống. Anh/TSA/Văn/Vật lý/Hóa học: 0 lần đo. Tính thẳng KHTN K9 ~3 s ⇒ phải cache (§2.0).
+- **Cách làm (mig 202611131522, `scripts/_gen_mig_dbht_moi_mon.mjs`):** Toán GIỮ NGUYÊN engine + cache. Môn MỘT VÙNG (registry `_mastery_mon_ds()` = KHTN · Vật lý · Hóa học) có engine riêng `_mastery_mon_d/_cap` (cùng luật 30 ngày · ≤5 lần · 80/50 · tin 5/3, quy qua `_mastery_luot_do_quy(cờ một-vùng=true)` rồi `tl_bdm_*_v` có cột mon) + cache `mastery_luu_san_mon` (thêm cột mon) làm mới TRONG `fn_mastery_lam_moi` cùng lượt, cùng sổ em bẩn; trigger em bẩn gắn thêm vào `<mon>_bdm_gan_cau/de_xuat/dang_bai`. `fn_dbht_bang` (+ cờ `co_do`) và `fn_dbht_o_lich_su` thêm nhánh môn một vùng, tên cột từ cây đúng môn.
+- **So cũ–mới (giao dịch huỷ):** Toán 18 ca (K6/7/8/9/10/12 × 3 cấp) lệch 0, lịch sử ô khớp, kể cả sau khi chạy `fn_mastery_lam_moi`. **ĐÃ ÁP.** Cache môn sau lượt cron đầu: 9.970 ô KHTN.
+- Màn: thông báo "Môn X chưa đo theo bản đồ kiến thức mới" khi `co_do=false` (Anh/TSA/Văn). Mở thử: KHTN K7 ra bảng 11 em × 15 chuyên đề; Anh hiện thông báo.
+- Đợt đầu 54 em KHTN đánh dấu bẩn ⇒ đọc thẳng (~1,3–1,9 s) tới khi cron 5 phút chụp xong (mốc lùi 2 phút).
+- **Chưa làm:** tab Mục tiêu tuần (`fn_mtt_*`, spec-muc-tieu-tuan.md đang làm ở phiên khác) — không đụng.

@@ -176,6 +176,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
       {tab === 'mtt' ? <MucTieuTuanTab mon={mon} khoi={khoi} lamMoi={lamMoi} /> : <>
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!bang ? (dangTai ? <p className="text-sm text-slate-500">Đang tính bảng…</p> : null)
+        : bang.co_do === false ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Môn {mon} chưa đo theo bản đồ kiến thức mới — bảng sẽ có số khi môn này có bản đồ mới và có lần đo (ET · MT · BTVN).</div>
         : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có lần đo nào theo bản đồ mới.</div>
         : (
           <>

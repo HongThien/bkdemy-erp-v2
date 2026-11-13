@@ -14,7 +14,7 @@ export type HSDB = {
   bao_dong?: { so: number; at: string; ghi_chu: string } | null
   bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' } | null
 }
-export type BangDB = { tu: string | null; tinh_at?: string | null; cot: CotDB[]; hs: HSDB[] }
+export type BangDB = { tu: string | null; tinh_at?: string | null; co_do?: boolean; cot: CotDB[]; hs: HSDB[] }   // co_do = môn đã đo theo bản đồ mới (DB quyết, mig 202611131522)
 
 export type CauDB = { ma_cau: string | null; dang: string; nhom: string; g: number }
 export type LuotDB = {
@@ -33,7 +33,7 @@ export async function bangDashboardHocTap(mon: string, khoi: string, soTuan: num
   const { data, error } = await supabase.rpc('fn_dbht_bang', { p_mon: mon, p_khoi: khoi, p_so_tuan: soTuan, p_cap: cap })
   if (error) throw error
   const j = (data ?? {}) as Partial<BangDB>
-  return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, cot: j.cot ?? [], hs: j.hs ?? [] }
+  return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, co_do: j.co_do ?? true, cot: j.cot ?? [], hs: j.hs ?? [] }
 }
 
 export async function lichSuO(hsId: string, mon: string, cap: CapDB, ma: string, soNgay = 30): Promise<LichSuO> {
