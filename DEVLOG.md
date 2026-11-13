@@ -79993,3 +79993,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 09:02 — Mục tiêu tuần: nhãn đánh giá 3 mức
 - Thùy: Tốt · Tạm ổn · Chưa tốt. ET theo % (tính như Đ/C/S); BTVN + test sau giờ theo % rồi thái độ không nghiêm túc ⇒ hạ 1 mức + ghi chú dưới dòng. Ngưỡng giả định = ngưỡng mastery 80/50, chờ xác nhận. Test sau giờ chưa có ô thái độ.
+
+## 13/11 09:03 — Mục tiêu tuần: thái độ CHỈ xét ở BTVN; ngưỡng 80/50 cho mọi hoạt động
+- Thùy xác nhận. Không thêm ô thái độ cho test sau giờ/ET.

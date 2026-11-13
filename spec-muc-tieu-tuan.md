@@ -126,11 +126,12 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
      Kết quả (% đúng) + **thái độ** khi hoạt động đó có chấm thái độ (`btvn_ket_qua.thai_do`: nghiêm túc / chưa hết sức / chưa nghiêm túc / chống đối).
    - **Nhãn đánh giá 3 mức: Tốt · Tạm ổn · Chưa tốt** (Thùy 13/11; thay bản 2 mức). Không còn khái niệm "thái độ" trên màn, không gộp "thái độ tuần".
      - **Mức gốc theo % của hoạt động**, % tính như Đ/C/S (Đ = 1 · C = 0,5 · S = 0, trung bình trên số câu).
-       Ngưỡng: *giả định dùng đúng ngưỡng mastery* ≥ 80% Tốt · 50–79% Tạm ổn · < 50% Chưa tốt — **chờ Thùy xác nhận**.
-     - **ET:** chỉ theo %.
-     - **BTVN và test sau giờ:** theo %, rồi **thái độ không phải "nghiêm túc" ⇒ hạ 1 mức** (Tốt → Tạm ổn, Tạm ổn → Chưa tốt; Chưa tốt giữ nguyên)
+       Ngưỡng (Thùy xác nhận 13/11, mọi hoạt động — ET · BTVN · test sau giờ — đều như nhau, trùng ngưỡng mastery):
+       **≥ 80% Tốt · 50–79% Tạm ổn · < 50% Chưa tốt.**
+     - **ET, test sau giờ:** chỉ theo %. Không xét thái độ (Thùy: "ở trung tâm thì ai cũng ngoan cả").
+     - **CHỈ BTVN xét thái độ:** thái độ không phải "nghiêm túc" ⇒ **hạ 1 mức** (Tốt → Tạm ổn, Tạm ổn → Chưa tốt; Chưa tốt giữ nguyên)
        và ghi **ghi chú ngay dưới dòng** (vd "thiếu nghiêm túc"). Ví dụ: BTVN 90% + chưa nghiêm túc ⇒ Tạm ổn + ghi chú.
-     - Thái độ lấy từ ô TA đang chấm (`btvn_ket_qua.thai_do`, 4 mức). Test sau giờ: *chưa thấy ô thái độ trong dữ liệu ca sau giờ — cần thêm khi build.*
+     - Thái độ lấy từ ô TA đang chấm (`btvn_ket_qua.thai_do`, 4 mức). Không thêm ô thái độ cho hoạt động nào khác.
      - Mức này **tính ở DB** (một hàm `fn_*`), không tính ở app (CLAUDE §2.0).
    - **Tự luyện trên app = KHÔNG bắt buộc, nhưng luôn có dòng thống kê** (Thùy 13/11), kể cả tuần không luyện (ghi "chưa luyện câu nào"):
      số câu · số lượt · % đúng · nhóm bài đã luyện. Nằm khối riêng "Tự luyện · không bắt buộc", **không tính vào x/y việc**. Nguồn: `tu_luyen_*`.
