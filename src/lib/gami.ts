@@ -42,7 +42,7 @@ export type Problem = {
 /** Ô chấm thuộc HÌNH: có node (hinh_baitoan_id) HOẶC là ý của bài kho Hình luyện (hinh_y_id, node có thể chưa gắn — 29/10).
  *  Ô Đại: cả hai trống. MỌI chỗ chia miền Đại/Hình đi qua hàm này (DB: cùng điều kiện ở _mt_khung_tinh/_mt_o_bai_cu/fn_mt_bang_ket_qua). */
 export const laOHinh = (p: { hinh_baitoan_id?: string | null; hinh_y_id?: string | null }): boolean => !!(p.hinh_baitoan_id || p.hinh_y_id)
-export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null }
+export type Grade = { id: string; problem_id: string; hoc_sinh_id: string; result: string; presentation: string; speed: string; points: number; loi?: string[]; muc?: number | null; nhan_xet?: string | null; diem_dat?: number | null; y_ket_qua?: boolean[] | null }
 export type ETResult = 'correct' | 'partial' | 'wrong'
 
 // ── helpers ngày/mã (giờ VN) ──────────────────────────────────────
@@ -706,6 +706,7 @@ export async function gradeET(p: { buoiId: string; problemId: string; hocSinhId:
 export async function gradeMTChiTiet(p: {
   buoiId: string; problemId: string; hocSinhId: string
   result?: ETResult | null; diemDat?: number | null; nhanXet?: string | null; loi?: string[]
+  yKetQua?: boolean[]   // 13/11: câu Đúng/Sai chấm TỪNG Ý — DB tự quy điểm (0,1/0,25/0,5/1), Đ/C/S và points (trigger _tg_gami_grades_mt_diem)
 }): Promise<Grade> {
   const { data: { user } } = await supabase.auth.getUser()
   const row: Record<string, any> = { buoi_hoc_id: p.buoiId, problem_id: p.problemId, hoc_sinh_id: p.hocSinhId, presentation: 'clean', speed: 'normal', graded_by: user?.id ?? null }
@@ -716,6 +717,13 @@ export async function gradeMTChiTiet(p: {
   if (p.diemDat !== undefined) row.diem_dat = p.diemDat
   if (p.nhanXet !== undefined) row.nhan_xet = p.nhanXet
   if (p.loi !== undefined) row.loi = p.loi
+  if (p.yKetQua !== undefined) {
+    row.y_ket_qua = p.yKetQua
+    if (p.result === undefined) { row.result = 'partial'; row.points = 0 }   // chỗ giữ cho cột NOT NULL — trigger ghi đè theo số ý đúng
+    const { data, error } = await supabase.from('gami_grades').upsert(row, { onConflict: 'problem_id,hoc_sinh_id' }).select().single()
+    if (error) throw error
+    return data as Grade
+  }
   if (p.result === undefined) {
     // ⚠ BUG THẬT 07/10: chỉ sửa điểm/nhận xét mà đi đường upsert ⇒ Postgres kiểm NOT NULL của dòng INSERT đề xuất
     // (thiếu result/points) TRƯỚC khi xét ON CONFLICT ⇒ từ chối, kể cả khi dòng đã tồn tại — điểm/nhận xét chưa

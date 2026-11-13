@@ -116,6 +116,60 @@ export async function addPhanMT(taiLieuId: string, tieuDe: string): Promise<TaiL
   return addPhan({ tai_lieu_id: taiLieuId, thu_tu: tt, loai_phan: 'custom', ref_ma: null, tieu_de: tieuDe, noi_dung: null, nang_cao: laTenPhanNangCao(tieuDe) })
 }
 
+// ── KHUÔN ĐỀ THI THẬT theo KHỐI (Thùy 13/11: "MT lớp 12 fix logic chuẩn như thi thật: 12 câu MCQ, 4 câu đúng sai, 6 câu trả lời
+// ngắn; đúng sai chọn từ kho đúng sai theo chủ đề" — chủ đề người soạn chọn tay). Khối 12 = đề thi tốt nghiệp THPT từ 2025.
+// Điểm câu: 0,25 · 1 (câu Đ/S, DB quy theo số ý đúng 0,1/0,25/0,5/1 — trigger _tg_gami_grades_mt_diem) · 0,5. Thêm khuôn khối
+// khác = thêm 1 dòng ở đây. Đề gốc nhớ phần nào giữ vai nào ở cau_hinh.khuonThi (id phần của đề gốc).
+export type VaiKhuon = 'tn' | 'ds' | 'tln'
+export type PhanKhuon = { vai: VaiKhuon; tieuDe: string; soCau: number; diem: number; form: 'trac_nghiem' | 'tra_loi_ngan' | null; loaiKho: string | null }
+export const KHUON_THI: Record<string, { ten: string; phan: PhanKhuon[] }> = {
+  '12': {
+    ten: 'Khuôn thi tốt nghiệp THPT',
+    phan: [
+      { vai: 'tn', tieuDe: 'Phần I. Trắc nghiệm nhiều phương án', soCau: 12, diem: 0.25, form: 'trac_nghiem', loaiKho: 'trac_nghiem' },
+      { vai: 'ds', tieuDe: 'Phần II. Trắc nghiệm đúng sai', soCau: 4, diem: 1, form: null, loaiKho: null },
+      { vai: 'tln', tieuDe: 'Phần III. Trả lời ngắn', soCau: 6, diem: 0.5, form: 'tra_loi_ngan', loaiKho: 'tra_loi_ngan' },
+    ],
+  },
+}
+const VAI_THEO_TEN: [VaiKhuon, RegExp][] = [['ds', /đúng\s*sai/i], ['tln', /trả\s*lời\s*ngắn/i], ['tn', /trắc\s*nghiệm/i]]
+// Dựng khuôn cho MT: đề CHƯA có phần ⇒ tạo đủ phần theo khuôn; đã có phần ⇒ nhận phần sẵn theo TÊN (Đúng sai / Trả lời ngắn /
+// Trắc nghiệm) — thiếu vai nào thì tạo thêm phần đó. Trả cau_hinh mới (đã ghi DB).
+export async function dungKhuonThi(taiLieuId: string, khoi: string): Promise<TaiLieu['cau_hinh']> {
+  const khuon = KHUON_THI[khoi]
+  if (!khuon) throw new Error(`Khối ${khoi} chưa có khuôn đề thi`)
+  const phans = (await listPhan(taiLieuId)).filter((p) => p.loai_phan === 'custom')
+  const phan: Partial<Record<VaiKhuon, string>> = {}
+  for (const p of phans) {
+    const vai = VAI_THEO_TEN.find(([, re]) => re.test(p.tieu_de ?? ''))?.[0]
+    if (vai && !phan[vai]) phan[vai] = p.id
+  }
+  for (const pk of khuon.phan) if (!phan[pk.vai]) phan[pk.vai] = (await addPhanMT(taiLieuId, pk.tieuDe)).id
+  const cur = await getMT(taiLieuId)
+  const ch = { ...(cur.cau_hinh ?? {}), khuonThi: { phan, dsChuDe: cur.cau_hinh?.khuonThi?.dsChuDe ?? [] } }
+  await updateTaiLieu(taiLieuId, { cau_hinh: ch })
+  return ch
+}
+// Kho câu Đúng/Sai theo CHỦ ĐỀ (dai_/hgt_bdm_kho_ds) — chủ đề có câu, gợi ý ít dùng nhất (rải đều chủ đề đã chọn), tra chủ đề của câu.
+export type CauDs = { ma_cau: string; chu_de_id: string; kho: 'dai' | 'hgt' }
+export async function dsChuDeKhoi(khoi: string): Promise<{ id: string; ten: string; so_cau: number }[]> {
+  const { data, error } = await supabase.rpc('fn_mt_ds_chu_de', { p_khoi: khoi })
+  if (error) throw error
+  return (data ?? []) as { id: string; ten: string; so_cau: number }[]
+}
+export async function goiYCauDs(chuDe: string[], n: number, tru: string[]): Promise<CauDs[]> {
+  if (!chuDe.length || n <= 0) return []
+  const { data, error } = await supabase.rpc('fn_mt_goi_y_ds', { p_chu_de: chuDe, p_n: n, p_tru: tru })
+  if (error) throw error
+  return (data ?? []) as CauDs[]
+}
+export async function chuDeCuaCauDs(maCaus: string[]): Promise<CauDs[]> {
+  if (!maCaus.length) return []
+  const { data, error } = await supabase.rpc('fn_mt_ds_cua_cau', { p_ma: maCaus })
+  if (error) throw error
+  return (data ?? []) as CauDs[]
+}
+
 // Câu ĐANG DÙNG xuyên MỌI PHẦN của 1 MT (khác ET: ET chỉ 1 "phần" nên rows tự gói gọn; MT có nhiều
 // phần nên phải gom cả để suggestCauForDang không gợi ý trùng câu giữa các phần).
 export async function usedCauCuaMT(taiLieuId: string): Promise<Set<string>> {

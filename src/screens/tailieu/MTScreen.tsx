@@ -9,6 +9,7 @@ import { useMonScope } from '../../hooks/useMonScope'
 import {
   listMT, createMT, renameMT, deleteMT, addPhanMT, nhanBanMT, ganMTVaoBuoi, listGanMT, pickCuaHinhRow,
   MT_LOAI_DE, mtMeta, mtLoaiDeLabel, type MTGanRow, type MTLoaiDe,
+  KHUON_THI, dungKhuonThi, dsChuDeKhoi, goiYCauDs, chuDeCuaCauDs, type PhanKhuon, type VaiKhuon,
 } from '../../lib/mt'
 import { homNayVN } from '../../lib/tuan'
 import {
@@ -235,7 +236,11 @@ function TaoMTModal({ mon, onClose, onCreated }: { mon: string; onClose: () => v
   async function tao() {
     if (!ten.trim()) return
     setBusy(true)
-    try { const d = await createMT({ ten: ten.trim(), khoi, mon, loaiDe, thang: thang || null }); onCreated(d.id) } finally { setBusy(false) }
+    try {
+      const d = await createMT({ ten: ten.trim(), khoi, mon, loaiDe, thang: thang || null })
+      if (KHUON_THI[khoi]) await dungKhuonThi(d.id, khoi)   // 13/11: khối có khuôn đề thi thật (K12) ⇒ dựng sẵn các phần
+      onCreated(d.id)
+    } finally { setBusy(false) }
   }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4" onClick={onClose}>
@@ -318,6 +323,25 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const hep = useIsMobile()
   const coBdm = dbs.size > 0
   const coHgt = [...dbs.values()].some((x) => x.nhanh === 'hgt')
+  // ── KHUÔN ĐỀ THI THẬT (13/11 — khối 12: 12 trắc nghiệm · 4 đúng sai · 6 trả lời ngắn, xem KHUON_THI ở lib/mt) ──
+  const khuon = d ? KHUON_THI[d.khoi] ?? null : null
+  const vaiCua = (phanId: string): PhanKhuon | null => {
+    const kt = ch.khuonThi?.phan; if (!khuon || !kt) return null
+    const vai = (Object.keys(kt) as VaiKhuon[]).find((v) => kt[v] === phanId)
+    return vai ? khuon.phan.find((x) => x.vai === vai) ?? null : null
+  }
+  const dsPid = ch.khuonThi?.phan?.ds ?? null
+  const [chuDeDs, setChuDeDs] = useState<{ id: string; ten: string; so_cau: number }[]>([])
+  const [dsBusy, setDsBusy] = useState(false)
+  useEffect(() => {
+    if (!khuon || !d?.khoi) { setChuDeDs([]); return }
+    let alive = true
+    dsChuDeKhoi(d.khoi).then((x) => { if (alive) setChuDeDs(x) }).catch(() => { if (alive) setChuDeDs([]) })
+    return () => { alive = false }
+  }, [!!khuon, d?.khoi]) // eslint-disable-line
+  const coPhuongAn = (ma: string) => !!(cau[ma]?.lua_chon?.length) || !!formTnByMa[ma]
+  // Câu hợp vai của phần khuôn (Phần I chỉ câu có phương án, Phần III chỉ câu trả lời ngắn của kho).
+  const hopLoai = (c: CauHoi, loai: string | null) => !loai || (loai === 'trac_nghiem' ? !!(c.lua_chon && c.lua_chon.length) : c.loai_cau === loai)
 
   // ⭐ 30/09 — Fetch form_tn presence cho câu MỚI THÊM vào cache. Group theo nhánh (bảng form_tn khác
   // nhau: dai_cau_form_tn / hgt_cau_form_tn); nhánh chưa có bảng (KHTN/etc.) → mark false luôn. Fetch
@@ -365,6 +389,16 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
           const x = byMa.get(ma); return x ? { maDang: x.dang_chinh, maCau: ma, nhanh: nhanhCuaCau(full.taiLieu, ma) } : null
         }).filter((r): r is Row => !!r)
         for (const x of p.caus) c[x.ma_cau] = x
+      }
+      // 13/11 Khuôn đề thi thật: hàng Đúng/Sai mang mã CHỦ ĐỀ (maDang) + nhánh theo kho; đệm hàng trống cho đủ số câu của khuôn.
+      const kt0 = ch0.khuonThi?.phan; const khuon0 = KHUON_THI[full.taiLieu.khoi]
+      if (kt0 && khuon0) for (const pk of khuon0.phan) {
+        const pid = kt0[pk.vai]; if (!pid || !rb[pid]) continue
+        if (pk.vai === 'ds') {
+          const m = new Map((await chuDeCuaCauDs(rb[pid].map((r) => r.maCau).filter((x): x is string => !!x))).map((x) => [x.ma_cau, x]))
+          rb[pid] = rb[pid].map((r) => { const x = r.maCau ? m.get(r.maCau) : null; return x ? { ...r, maDang: x.chu_de_id, nhanh: x.kho === 'hgt' ? 'hinh_gt' : (full.taiLieu.nhanh ?? null) } : r })
+        }
+        while (rb[pid].length < pk.soCau) rb[pid].push({ maDang: null, maCau: null, nhanh: full.taiLieu.nhanh ?? null })
       }
       // Nạp thêm nội dung câu MÃ ĐỀ 2/3 (etMaDe) — trên chỉ nạp câu GỐC (phan.caus) nên mở lại MT cũ,
       // cột Mã đề 2/3 chỉ thấy MÃ câu, không thấy đề (chỉ "…") dù dữ liệu vẫn còn nguyên trong cau_hinh.
@@ -501,14 +535,20 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   async function pickDang(phanId: string, idx: number, maDang: string, nhanh: string | null) {
     const tbl = tblCua(nhanh)
     await ensureCache(maDang, tbl)
-    const sug = await suggestCauForDang(maDang, usedGlobal(phanId, idx), tbl)
+    const ex = usedGlobal(phanId, idx); const loai = vaiCua(phanId)?.loaiKho ?? null
+    if (loai) for (const c of await listCauByDang(maDang, tbl)) if (!hopLoai(c, loai)) ex.add(c.ma_cau)
+    const sug = await suggestCauForDang(maDang, ex, tbl)
+    if (!sug && loai) { setLoi(`Dạng này chưa có câu ${loaiLabel(loai)} nào chưa dùng trong kho — chọn dạng khác.`); return }
     if (sug && !cau[sug]) { const list = await listCauByDang(maDang, tbl); setCau((p) => ({ ...p, ...Object.fromEntries(list.map((c) => [c.ma_cau, c])) })) }
     const rows = (rowsByPhan[phanId] ?? []).map((r, i) => (i === idx ? { maDang, maCau: sug, nhanh } : r))
     await luuPhan(phanId, rows)
   }
   async function doiCau(phanId: string, idx: number) {
     const r = (rowsByPhan[phanId] ?? [])[idx]; if (!r?.maDang) return
-    const sug = await suggestCauForDang(r.maDang, new Set([...usedGlobal(phanId, idx), r.maCau].filter(Boolean) as string[]), tblCua(r.nhanh))
+    if (phanId === dsPid) { await doiCauDs(phanId, idx); return }
+    const ex = new Set([...usedGlobal(phanId, idx), r.maCau].filter(Boolean) as string[]); const loai = vaiCua(phanId)?.loaiKho ?? null
+    if (loai) for (const c of await listCauByDang(r.maDang, tblCua(r.nhanh))) if (!hopLoai(c, loai)) ex.add(c.ma_cau)
+    const sug = await suggestCauForDang(r.maDang, ex, tblCua(r.nhanh))
     if (!sug) { alert('Hết câu khác cho dạng này (đã dùng hết trong MT).'); return }
     const rows = (rowsByPhan[phanId] ?? []).map((x, i) => (i === idx ? { ...x, maCau: sug } : x))
     await luuPhan(phanId, rows)
@@ -532,12 +572,15 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       const moi: Row[] = []; const thieu: string[] = []
       for (const p of ps) {
         const info = dbs.get(p.db); if (!info) { thieu.push(`${p.db}: không còn trên bản đồ`); continue }
-        const got = await goiYDangBai(info.nhom_id, p.db, p.soCau, used)
+        const got = await goiYDangBai(info.nhom_id, p.db, p.soCau, used, vaiCua(kh.phanId)?.loaiKho ?? null)
         got.forEach((m) => { used.push(m); moi.push({ maDang: p.db, maCau: m, nhanh: 'bdm' }) })
         if (got.length < p.soCau) thieu.push(`${info.ten}: chỉ được ${got.length}/${p.soCau} câu`)
       }
       await napBdm(moi.map((r) => r.maCau!))
-      await luuPhan(kh.phanId, [...(rowsByPhan[kh.phanId] ?? []).filter((r) => r.maCau || r.maDang), ...moi])
+      const sau = [...(rowsByPhan[kh.phanId] ?? []).filter((r) => r.maCau || r.maDang), ...moi]
+      const soKhuon = vaiCua(kh.phanId)?.soCau ?? 0                     // phần khuôn: giữ đủ số hàng của khuôn (hàng trống để điền tiếp)
+      while (sau.length < soKhuon) sau.push({ maDang: null, maCau: null, nhanh: nhanhMacDinh })
+      await luuPhan(kh.phanId, sau)
       setKh(null)
       if (thieu.length) setLoi(`Thiếu câu ở vài dạng bài (kho hết câu chưa dùng trong MT):\n${thieu.join('\n')}`)
     } catch (e) { setLoi(loiDoc(e)) } finally { setKhBusy(false) }
@@ -593,6 +636,68 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     for (let i = rows.length - 1; i >= 0; i--) if (rows[i].maCau || rows[i].maDang) return i + 1
     return 0
   }
+  // ── PHẦN ĐÚNG/SAI của khuôn: chủ đề người soạn chọn tay (cau_hinh.khuonThi.dsChuDe) → câu ít dùng nhất từ kho Đ/S chủ đề ──
+  const rowDs = (x: { ma_cau: string; chu_de_id: string; kho: string }): Row => ({ maDang: x.chu_de_id, maCau: x.ma_cau, nhanh: x.kho === 'hgt' ? 'hinh_gt' : nhanhMacDinh })
+  async function napDs(rows: Row[]) {
+    if (!d) return
+    const can = rows.filter((r) => r.maCau && !cau[r.maCau])
+    for (const nh of [...new Set(can.map((r) => r.nhanh))]) {
+      const rs = await fetchCausCuaTaiLieu({ mon: d.mon, nhanh: nh, cau_hinh: null }, can.filter((r) => r.nhanh === nh).map((r) => r.maCau!))
+      setCau((p) => ({ ...p, ...Object.fromEntries(rs.map((c) => [c.ma_cau, c])) }))
+    }
+  }
+  async function toggleChuDeDs(cd: string) {
+    const cur = chRef.current.khuonThi; if (!cur) return
+    const ds = cur.dsChuDe ?? []
+    await saveCh({ ...chRef.current, khuonThi: { ...cur, dsChuDe: ds.includes(cd) ? ds.filter((x) => x !== cd) : [...ds, cd] } })
+  }
+  // Điền mọi hàng trống của phần Đ/S (thiếu hàng thì thêm cho đủ số câu của khuôn).
+  async function goiYDuDs(phanId: string) {
+    const pk = vaiCua(phanId); const chuDe = chRef.current.khuonThi?.dsChuDe ?? []
+    if (!pk || !chuDe.length) { setLoi('Chọn ít nhất 1 chủ đề cho phần Đúng/Sai.'); return }
+    setDsBusy(true); setLoi(null)
+    try {
+      const rows = [...(rowsByPhan[phanId] ?? [])]
+      while (rows.length < pk.soCau) rows.push({ maDang: null, maCau: null, nhanh: nhanhMacDinh })
+      const trong = rows.map((r, i) => (r.maCau ? -1 : i)).filter((i) => i >= 0)
+      const got = await goiYCauDs(chuDe, trong.length, [...usedGlobal('', -1)])
+      got.forEach((x, k) => { rows[trong[k]] = rowDs(x) })
+      await napDs(rows); await luuPhan(phanId, rows)
+      if (got.length < trong.length) setLoi(`Kho Đúng/Sai của các chủ đề đã chọn chỉ còn ${got.length} câu chưa dùng.`)
+    } catch (e) { setLoi(loiDoc(e)) } finally { setDsBusy(false) }
+  }
+  // ↻ Đổi 1 câu Đ/S: cùng chủ đề của hàng (hàng trống ⇒ các chủ đề đã chọn).
+  async function doiCauDs(phanId: string, idx: number) {
+    const r = (rowsByPhan[phanId] ?? [])[idx]
+    const chuDe = r?.maDang ? [r.maDang] : (chRef.current.khuonThi?.dsChuDe ?? [])
+    if (!chuDe.length) { setLoi('Chọn ít nhất 1 chủ đề cho phần Đúng/Sai.'); return }
+    try {
+      const [x] = await goiYCauDs(chuDe, 1, [...usedGlobal(phanId, idx), ...(r?.maCau ? [r.maCau] : [])])
+      if (!x) { setLoi('Hết câu Đúng/Sai khác trong chủ đề này (đã dùng hết trong đề).'); return }
+      const rows = (rowsByPhan[phanId] ?? []).map((y, j) => (j === idx ? rowDs(x) : y))
+      await napDs(rows); await luuPhan(phanId, rows)
+    } catch (e) { setLoi(loiDoc(e)) }
+  }
+  // Câu nằm trong phần khuôn ⇒ điểm câu + dạng in theo khuôn, tự ghi vào đề (người soạn không chỉnh tay). Chạy lại mỗi khi hàng/câu
+  // đổi; chỉ ghi khi lệch (đề cũ áp khuôn cũng tự về đúng). Trắc nghiệm chỉ đặt cho câu có phương án — câu không có thì hàng cảnh báo.
+  useEffect(() => {
+    const kt = ch.khuonThi?.phan; if (!khuon || !kt) return
+    let nc: CauHinh = chRef.current; let doi = false
+    for (const pk of khuon.phan) {
+      const pid = kt[pk.vai]; if (!pid) continue
+      for (const r of rowsByPhan[pid] ?? []) {
+        const ma = r.maCau; if (!ma || r.nhanh === 'hinh' || !cau[ma]) continue
+        if ((nc.diemByCau?.[ma] ?? DEFAULT_DIEM_MT) !== pk.diem) {
+          const dbc = { ...(nc.diemByCau ?? {}) }
+          if (pk.diem === DEFAULT_DIEM_MT) delete dbc[ma]; else dbc[ma] = pk.diem
+          nc = { ...nc, diemByCau: dbc }; doi = true
+        }
+        const hop = pk.form === 'trac_nghiem' ? coPhuongAn(ma) : pk.form === 'tra_loi_ngan' ? !(cau[ma].menh_de?.length) : false
+        if (pk.form && hop && etFormOf(cau[ma], nc) !== pk.form) { nc = setFormInCh(nc, ma, pk.form, (m) => cau[m]); doi = true }
+      }
+    }
+    if (doi) saveCh(nc).catch((e) => setLoi(loiDoc(e)))
+  }, [rowsByPhan, cau, ch.khuonThi, formTnByMa]) // eslint-disable-line
   const themCau = (phanId: string) => setRowsByPhan((rb) => ({ ...rb, [phanId]: [...(rb[phanId] ?? []), { maDang: null, maCau: null, nhanh: nhanhMacDinh }] }))
   async function xoaRow(phanId: string, idx: number) {
     const rows = (rowsByPhan[phanId] ?? []).filter((_, i) => i !== idx)
@@ -656,7 +761,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   // Hàng Hình chưa có mã đề 2/3 (khoá theo sigHinh: chuỗi node, hoặc bài kho — khuôn ET Hình).
   const hinhTrong = (): number => hinhRowsAll().filter((r) => { const h = ch.hinhByMa?.[r.maCau!]; return !h || !ch.hinhMaDe?.[sigHinh(h)] }).length
   async function sinhMaDe() {
-    const rows = baseRows()
+    const rows = baseRows().filter((r) => !(dsPid && (rowsByPhan[dsPid] ?? []).includes(r)))
     const hinhRows = hinhRowsAll()
     if (!rows.length && !hinhRows.length) return
     // Sinh THEO NHÁNH (mỗi nhánh 1 bảng câu) rồi GỘP etMaDe — buildMaDe reset etMaDe từ base của lượt gọi
@@ -687,6 +792,20 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       chNext = { ...chNext, hinhMaDe: hm }
       if (thieu.length) alert(`Kho chưa đủ 2 bản khác cho ${thieu.length} bài Hình (chuỗi: biến thể CÙNG node; bài kho: bài khác cùng mô hình, cùng số ý — không tự sinh AI) — đã dùng lại bài gốc cho phần thiếu:\n${thieu.join('\n')}`)
     } else delete chNext.hinhMaDe
+    // 13/11 phần Đúng/Sai của khuôn: đề 2/3 = câu Đ/S khác cùng chủ đề + cùng kho (nhánh câu mã đề theo câu gốc); thiếu thì dùng lại câu gốc.
+    const dsRows = dsPid ? (rowsByPhan[dsPid] ?? []).filter((r) => r.maCau && r.maDang) : []
+    if (dsRows.length) {
+      const used = [...rows.map((r) => r.maCau!), ...dsRows.map((r) => r.maCau!), ...Object.values(chNext.etMaDe ?? {}).flat().filter((m): m is string => !!m)]
+      const etm = { ...(chNext.etMaDe ?? {}) }; const them: Row[] = []
+      for (const r of dsRows) {
+        const kho = r.nhanh === 'hinh_gt' ? 'hgt' : 'dai'
+        const got = (await goiYCauDs([r.maDang!], 6, used)).filter((x) => x.kho === kho).slice(0, 2)
+        got.forEach((x) => { used.push(x.ma_cau); them.push(rowDs(x)) })
+        etm[r.maCau!] = [got[0]?.ma_cau ?? r.maCau!, got[1]?.ma_cau ?? r.maCau!]
+      }
+      chNext = { ...chNext, etMaDe: etm }
+      await napDs(them)
+    }
     setCau((p) => { const n = { ...p }; for (const c of allCaus) n[c.ma_cau] = c; return n })
     await saveCh(chNext)
   }
@@ -836,6 +955,14 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                   : gen ? <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-600">✓ đủ 3 mã đề</span> : null}
               </div>
             ) })()}
+          {khuon && !ch.khuonThi && (
+            <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-teal-200 bg-teal-50/50 px-3 py-2">
+              <span className="text-[12.5px] text-teal-900">🎓 Khối {d.khoi} có <b>{khuon.ten}</b>: {khuon.phan.map((x) => `${x.soCau} ${x.vai === 'tn' ? 'trắc nghiệm' : x.vai === 'ds' ? 'đúng sai' : 'trả lời ngắn'}`).join(' · ')}.</span>
+              <button onClick={async () => { try { await dungKhuonThi(id, d.khoi); await reload(); markSaved() } catch (e) { setLoi(loiDoc(e)) } }}
+                className="ml-auto rounded-md bg-teal-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-teal-500"
+                title="Nhận các phần sẵn có theo tên (Trắc nghiệm / Đúng sai / Trả lời ngắn), thiếu phần nào thì tạo thêm; điểm câu và dạng in tự theo khuôn">Áp khuôn thi THPT</button>
+            </div>
+          )}
           <div className="space-y-3">
             {phans.map((p) => {
               const rows = rowsByPhan[p.id] ?? []
@@ -855,12 +982,32 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${p.nang_cao ? 'bg-rose-50 text-rose-700 ring-1 ring-rose-200' : 'bg-sky-50 text-sky-700 ring-1 ring-sky-200'}`}>
                       {p.nang_cao ? 'Nâng cao' : 'Cơ bản'}
                     </button>
-                    {coBdm && kh?.phanId !== p.id && (
+                    {(() => { const pk = vaiCua(p.id); if (!pk) return null; const n = rows.filter((r) => r.maCau).length
+                      return <span className={`rounded px-1.5 py-0.5 text-[11px] font-semibold ${n === pk.soCau ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800'}`}
+                        title={`${khuon?.ten}: phần này đúng ${pk.soCau} câu, mỗi câu ${String(pk.diem).replace('.', ',')} điểm${pk.vai === 'ds' ? ' (chấm từng ý: đúng 1/2/3/4 ý = 0,1/0,25/0,5/1)' : ''}`}>
+                        🎓 Khuôn THPT · {n}/{pk.soCau} câu · {String(pk.diem).replace('.', ',')}đ/câu</span> })()}
+                    {coBdm && kh?.phanId !== p.id && p.id !== dsPid && (
                       <button onClick={() => setKh({ phanId: p.id, nhanh: 'toan', plan: [] })}
                         className="rounded-md border border-dashed border-indigo-300 px-2 py-0.5 text-[11.5px] font-medium text-indigo-600 hover:bg-indigo-50">⚡ Thêm nhiều dạng</button>
                     )}
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
                   </div>
+                  {p.id === dsPid && (
+                    <div className="mb-3 rounded-xl border border-teal-100 bg-teal-50/40 p-3 max-md:p-2">
+                      <div className="mb-1.5 text-[12.5px] font-semibold text-teal-800">Chủ đề lấy câu Đúng/Sai <span className="font-normal text-slate-500">(chọn tay, nhiều chủ đề được — gợi ý rải đều các chủ đề đã chọn)</span></div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {chuDeDs.length === 0 ? <span className="text-[12px] italic text-slate-400">Khối {d.khoi} chưa có câu nào trong kho Đúng/Sai theo chủ đề.</span>
+                          : chuDeDs.map((cd) => { const on = (ch.khuonThi?.dsChuDe ?? []).includes(cd.id)
+                            return <button key={cd.id} onClick={() => toggleChuDeDs(cd.id)}
+                              className={`rounded-full px-2.5 py-1 text-[12px] font-medium ${on ? 'bg-teal-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:ring-teal-300'}`}>{cd.ten} <span className={on ? 'text-teal-100' : 'text-slate-400'}>· {cd.so_cau}</span></button> })}
+                      </div>
+                      <div className="mt-2 flex items-center gap-2">
+                        <button onClick={() => goiYDuDs(p.id)} disabled={dsBusy || !(ch.khuonThi?.dsChuDe ?? []).length}
+                          className="rounded-md bg-teal-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-teal-500 disabled:opacity-40">{dsBusy ? 'Đang gợi ý…' : `⚡ Gợi ý đủ ${vaiCua(p.id)?.soCau ?? 4} câu (điền hàng trống)`}</button>
+                        <span className="text-[11px] text-slate-500">Mỗi câu 4 ý — chấm từng ý ở màn Chấm MT.</span>
+                      </div>
+                    </div>
+                  )}
                   {kh?.phanId === p.id && (
                     <div className="mb-3 rounded-xl border border-indigo-100 bg-indigo-50/40 p-3 max-md:p-2">
                       <div className="flex flex-wrap items-center gap-2">
@@ -977,15 +1124,19 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       // không chỉ câu có lua_chon sẵn trên bảng gốc — CEO: "hệ đã sinh nhiều MCQ, tính vào".
                       const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length) || (c ? !!formTnByMa[c.ma_cau] : false))
                       const dbInfo = r.nhanh === 'bdm' && r.maDang ? dbs.get(r.maDang) ?? null : null
+                      const pkHang = vaiCua(p.id); const laDs = p.id === dsPid
                       return (
                         <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${vach(p.id, i)}`}>
                           {/* Điện thoại: wrap + order — dòng 1 = số · dạng (giãn) · ✕; dòng 2 = đề câu full bề ngang; dòng 3 = dòng kẻ ·
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
                           <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
-                          <button onClick={() => setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh })} title={dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
+                          <button onClick={() => (laDs ? doiCauDs(p.id, i) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để hệ gợi ý câu khác' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
                             className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
-                            {dbInfo ? (
+                            {laDs ? (
+                              r.maDang ? <span className="line-clamp-2 text-slate-700"><span className="mr-1 rounded bg-teal-50 px-1 py-0.5 text-[10px] font-semibold text-teal-700">Đ/S</span>{chuDeDs.find((x) => x.id === r.maDang)?.ten ?? r.maDang}</span>
+                                : <span className="text-teal-600">+ gợi ý câu Đúng/Sai…</span>
+                            ) : dbInfo ? (
                               <span className="line-clamp-2 text-slate-700">
                                 {dbInfo.nhanh === 'hgt' && <span className="mr-1 rounded bg-sky-50 px-1 py-0.5 text-[10px] font-medium text-sky-700">HGT</span>}
                                 <span className="text-slate-400">{dbInfo.nhom_ten} › </span>{dbInfo.ten}
@@ -1004,6 +1155,11 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             {c && (
                               <div className="mt-1 flex flex-wrap items-center gap-1.5">
                                 <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
+                                {pkHang ? (
+                                  pkHang.form === 'trac_nghiem' && !coPhuongAn(c.ma_cau)
+                                    ? <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title="Phần trắc nghiệm của khuôn THPT cần câu có 4 phương án">⚠ câu không có phương án — bấm ↻ Đổi</span>
+                                    : <span className="rounded bg-violet-50 px-1.5 py-0.5 text-[10px] font-medium text-violet-700">in: {pkHang.form ? loaiLabel(pkHang.form) : 'Đúng/Sai 4 ý'} (khuôn)</span>
+                                ) : <>
                                 <span className="text-[10px] text-slate-300">kho: {loaiLabel(c.loai_cau)} · in dạng:</span>
                                 <div className="flex gap-0.5">
                                   {formOpts.map((f) => (
@@ -1011,6 +1167,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                       className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
                                   ))}
                                 </div>
+                                </>}
                               </div>
                             )}
                           </div>
@@ -1022,8 +1179,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           {r.maDang && (
                             <div className="flex shrink-0 gap-1 pt-0.5 max-md:order-3 max-md:pt-0">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
-                              <button onClick={() => (dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
-                                title="Chọn câu — tick NHIỀU câu được: câu thêm chèn ngay sau hàng này" className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>
+                              {!laDs && <button onClick={() => (dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
+                                title="Chọn câu — tick NHIỀU câu được: câu thêm chèn ngay sau hàng này" className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>}
                             </div>
                           )}
                           {c && (
@@ -1032,7 +1189,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               2 cột
                             </label>
                           )}
-                          {c && (
+                          {c && pkHang && <span className="h-7 shrink-0 self-start rounded border border-slate-200 bg-slate-50 px-1.5 pt-1 text-[12px] font-medium text-slate-600 max-md:order-3 max-md:ml-auto max-md:self-center" title="Điểm theo khuôn thi THPT">{String(pkHang.diem).replace('.', ',')} đ</span>}
+                          {c && !pkHang && (
                             <select value={ch.diemByCau?.[c.ma_cau] ?? DEFAULT_DIEM_MT} onChange={(e) => setDiem(c.ma_cau, +e.target.value)}
                               title="Điểm câu này" className="h-7 shrink-0 self-start rounded border border-slate-300 bg-white px-1 text-[12px] font-medium text-slate-700 max-md:order-3 max-md:ml-auto max-md:self-center">
                               {MT_DIEM_OPTS.map((n) => <option key={n} value={n}>{n} đ</option>)}
@@ -1058,8 +1216,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                     ) : (
                                       <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — chưa có câu cùng dạng + form khác</span>
                                     )}
-                                    <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, nhanh: r.nhanh, form: f })}
-                                      className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>
+                                    {!laDs && <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, nhanh: r.nhanh, form: f })}
+                                      className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>}
                                   </div>
                                 )
                               })}

@@ -171,6 +171,12 @@ function ChamMTBody() {
     setLoi(null)
     try { va(await gradeMTChiTiet({ buoiId, problemId: p.id, hocSinhId: hsId, diemDat: v })); tongLai() } catch (e) { baoLoi(e) }
   }
+  // Chấm Đúng/Sai từng ý: đủ mọi ý mới ghi — DB tự quy điểm (4 ý: 0,1/0,25/0,5/1 × điểm câu), Đ/C/S, points.
+  async function chonY(p: Problem, y: boolean[]) {
+    if (!buoiId || !hsId || dong) return
+    setLoi(null)
+    try { va(await gradeMTChiTiet({ buoiId, problemId: p.id, hocSinhId: hsId, yKetQua: y })); tongLai() } catch (e) { baoLoi(e) }
+  }
   async function luuNX(p: Problem, text: string) {
     if (!buoiId || !hsId || !gradeOf(p.id)) return
     setLoi(null)
@@ -206,6 +212,9 @@ function ChamMTBody() {
     }
     return { p, nhom: p.ngoai_de ? '⚠ Không còn trong đề' : (phanCuaCau.get(p.ma_cau ?? '') ?? '—'), hinh: null }
   })
+  // 13/11 câu Đúng/Sai (có mệnh đề) ⇒ chấm TỪNG Ý; số ý theo nội dung câu trong đề.
+  const soYDs = new Map<string, number>()
+  for (const ph of phans) for (const c of ph.caus) if (c.menh_de && c.menh_de.length >= 2) soYDs.set(c.ma_cau, c.menh_de.length)
   const nhoms: { ten: string; dongs: Dong[] }[] = []
   for (const d of dongs) { const last = nhoms[nhoms.length - 1]; if (last && last.ten === d.nhom) last.dongs.push(d); else nhoms.push({ ten: d.nhom, dongs: [d] }) }
 
@@ -313,6 +322,7 @@ function ChamMTBody() {
                     <div key={ni} className="mb-2 break-inside-avoid-column">
                       <div className="px-1 pb-0.5 pt-1 text-[11.5px] font-semibold text-slate-500">{nh.ten}</div>
                       {nh.dongs.map((d) => <DongCau key={`${hsId}|${d.p.id}`} d={d} g={gradeOf(d.p.id)} dong={dong} moNX={moNX === d.p.id} lanLoi={lanLoi}
+                        soY={soYDs.get(d.p.ma_cau ?? '') ?? 0} onY={(y) => chonY(d.p, y)}
                         onKQ={(r) => chonKQ(d.p, r)} onDiem={(v) => chonDiem(d.p, v)} onMoNX={() => setMoNX(moNX === d.p.id ? null : d.p.id)} onNX={(t) => luuNX(d.p, t)} />)}
                     </div>
                   ))}
@@ -387,11 +397,22 @@ function ThiLai({ hs, onLuu }: { hs: MTHSCham; onLuu: (cb: number | null, nc: nu
   )
 }
 
-function DongCau({ d, g, dong, moNX, lanLoi, onKQ, onDiem, onMoNX, onNX }: {
+function DongCau({ d, g, dong, moNX, lanLoi, soY, onY, onKQ, onDiem, onMoNX, onNX }: {
   d: Dong; g: Grade | null; dong: boolean; moNX: boolean; lanLoi: number
+  soY: number; onY: (y: boolean[]) => void
   onKQ: (r: ETResult) => void; onDiem: (v: number | null) => void; onMoNX: () => void; onNX: (t: string) => void
 }) {
   const max = d.p.diem_toi_da ?? null
+  // Câu Đúng/Sai: ô từng ý (✓ em làm đúng ý đó · ✗ sai). Chấm đủ mọi ý mới gửi; "Chấm cả bài"/Đ-C-S cả câu vẫn dùng được (Đ = đủ điểm).
+  const yDb = g?.y_ket_qua && g.y_ket_qua.length === soY ? g.y_ket_qua : null
+  const [y, setY] = useState<(boolean | null)[]>(() => yDb ?? Array(soY).fill(null))
+  useEffect(() => { setY(yDb ?? Array(soY).fill(null)) }, [JSON.stringify(yDb), soY]) // eslint-disable-line
+  const bamY = (i: number) => {
+    if (dong) return
+    const n = y.map((v, j) => (j === i ? (v === true ? false : true) : v))
+    setY(n)
+    if (n.every((v) => v !== null)) onY(n as boolean[])
+  }
   const canChon = !!g && g.diem_dat == null   // C (hoặc ý Hình đề cũ) chưa có điểm ⇒ người chấm phải chọn
   return (
     <div className={`mb-[3px] rounded-md border px-1.5 py-px ${d.hinh ? 'border-amber-100 bg-amber-50/40' : 'border-slate-100 bg-white'}`}>
@@ -414,6 +435,18 @@ function DongCau({ d, g, dong, moNX, lanLoi, onKQ, onDiem, onMoNX, onNX }: {
         <button onClick={onMoNX} disabled={!g} title={g?.nhan_xet ? g.nhan_xet : g ? 'Thêm nhận xét riêng cho câu này' : 'Chọn Đ/C/S trước'}
           className={`ml-auto h-6 shrink-0 rounded px-1.5 text-[12px] disabled:opacity-30 ${g?.nhan_xet ? 'bg-violet-100 text-violet-700' : 'text-slate-400 hover:bg-slate-100'}`}>💬</button>
       </div>
+      {soY >= 2 && (
+        <div className="flex items-center gap-1 pb-0.5 pl-[58px]">
+          <span className="text-[10.5px] text-slate-400" title="Câu Đúng/Sai — chấm từng ý: đúng 1/2/3/4 ý = 0,1/0,25/0,5/1 điểm câu (quy chế thi THPT)">Từng ý:</span>
+          {y.map((v, i) => (
+            <button key={i} onClick={() => bamY(i)} disabled={dong}
+              title={`Ý ${String.fromCharCode(97 + i)}: ${v === true ? 'em làm ĐÚNG' : v === false ? 'em làm SAI' : 'chưa chấm'} — bấm để đổi`}
+              className={`h-5 w-8 rounded text-[11px] font-bold disabled:cursor-not-allowed ${v === true ? 'bg-emerald-500 text-white' : v === false ? 'bg-rose-500 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>
+              {String.fromCharCode(97 + i)}{v === true ? '✓' : v === false ? '✗' : ''}</button>
+          ))}
+          {y.some((v) => v === null) && y.some((v) => v !== null) && <span className="text-[10.5px] text-amber-700">chấm đủ {soY} ý để tính điểm</span>}
+        </div>
+      )}
       {moNX && g && (
         <input key={lanLoi} autoFocus defaultValue={g.nhan_xet ?? ''} placeholder="Nhận xét câu này — Enter để lưu"
           onKeyDown={(e) => { if (e.key === 'Enter') onNX(e.currentTarget.value); if (e.key === 'Escape') onMoNX() }}

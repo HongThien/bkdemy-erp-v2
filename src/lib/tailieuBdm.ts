@@ -189,8 +189,9 @@ export async function etMaDe(khoi: string, base: { ma_cau: string; dang_bai: str
   return data as { etMaDe: Record<string, string[]>; etFormByCau: Record<string, string> }
 }
 /** N câu ít dùng nhất của 1 dạng bài (né p_tru) — luật gợi ý chung của builder mới. */
-export async function goiYDangBai(nhomId: string, dangBaiId: string, n: number, tru: string[]): Promise<string[]> {
-  const { data, error } = await supabase.rpc('fn_tl_bdm_goi_y', { p_nhom: nhomId, p_dang_bai: [dangBaiId], p_so: { _tong: n }, p_tru: tru })
+// loai: chỉ lấy câu đúng loại kho (vd MT khối 12 khuôn THPT — Phần I chỉ trắc nghiệm, Phần III chỉ trả lời ngắn).
+export async function goiYDangBai(nhomId: string, dangBaiId: string, n: number, tru: string[], loai?: string | null): Promise<string[]> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_goi_y', { p_nhom: nhomId, p_dang_bai: [dangBaiId], p_so: loai ? { [loai]: n } : { _tong: n }, p_tru: tru })
   if (error) throw error
   return (data ?? []) as string[]
 }
