@@ -80074,3 +80074,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Hướng dẫn chấm của trường in sai:** 07 Bài 1a (dấu, −7,8 vs đúng −8,2) · 08 điều kiện x≠9 (đúng x≠4), ≥82 (đúng >82) · 15 đơn vị m³ (đúng cm³) · 10 OI·OE (đúng OI·IE) · 09, 12, 02, 05 gõ nhầm không đổi đáp số.
 - **Chờ Thùy quyết:** 2 Chưa chắc B002-12 (IV.1 độ dài cung/góc ở tâm; IV.3b bài đường trung bình) · brief k9-cki tự mâu thuẫn về đường trung bình (phần áp dụng cuối kì cho dùng, mục bẫy cấm; Thùy 20/10 "chỉ đề Hoàng Mai") — trạm soát B002-08 đã xoá câu "đường trung bình bị cấm" trong ghi chú · bài cực trị có hình xếp lệch kho (01, 09 hinh_hoc · 04 dai · 06 hinh_hoc).
 - **Ghi thử (rollback) 15/15 trót lọt:** 136 câu mới · 2 trùng kho (B002-09). Câu Hình vẫn vào bài tạm HH00108 như B001. Trang duyệt `batch/B002/duyet-B002.html` (5,4 MB, không commit).
+
+## 13/11 — MCQ lớp 4 vòng 2 (fork)
+- **Ghi 55 form** (`scripts/_k4/b6_vong2.mjs`, `b7_chu.mjs`): dãy gấp đôi, giá 1 kg/chia 4 phần, năm nhuận, lát sàn/sân (gồm T104040202041/043), biểu thức chứa chữ, viết số/giá trị chữ số/làm tròn, điền chữ giao hoán–kết hợp. Rule mới R490–R494 (mig 202611130937, áp `--only`). Tổng lớp 4 ≈ 251.
+- **Kho SAI thêm (đã bỏ):** T104010402043–046, 049 (kho tính với a=1 thay vì số nhỏ nhất 3/4 chữ số); T104010402050 (lời giải 98×9+3021=3921, đúng 3903); T104040105087 (kho 18, lời giải ra 10 yến).
+- **Còn bỏ:** thước đo góc/ảnh (~22), dấu/Có–Không (NDB01783), sắp xếp dãy (NDB01761), nhiều ý (01758/01765/01773/01791/01754/01751), gạo–ngô (mỗi câu một khuôn), T104000000969 & T1040000001211 thiếu nhiễu.
