@@ -79990,3 +79990,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:54 — Mục tiêu tuần: tự luyện = thống kê không bắt buộc; bỏ khái niệm thái độ
 - Thùy: tự luyện không bắt buộc nhưng luôn ghi thống kê (kể cả 0), không tính vào x/y việc. Đã đổi sang Tốt / Chưa tốt nên không tính "thái độ" nữa — bỏ chữ "Thái độ:" và ô thái độ tuần. Hỏi lại: Tốt/Chưa tốt quyết từ đâu.
+
+## 13/11 09:02 — Mục tiêu tuần: nhãn đánh giá 3 mức
+- Thùy: Tốt · Tạm ổn · Chưa tốt. ET theo % (tính như Đ/C/S); BTVN + test sau giờ theo % rồi thái độ không nghiêm túc ⇒ hạ 1 mức + ghi chú dưới dòng. Ngưỡng giả định = ngưỡng mastery 80/50, chờ xác nhận. Test sau giờ chưa có ô thái độ.

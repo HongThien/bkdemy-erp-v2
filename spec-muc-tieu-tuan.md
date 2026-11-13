@@ -117,16 +117,21 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    Nhóm mới có lần đo đầu tiên trong tuần ghi "mới đo". Thanh tiến độ tổng cũng có vạch đầu tuần.
 7. **"VIỆC CỦA CON TUẦN NÀY" = KHU VỰC RIÊNG, liệt kê theo HOẠT ĐỘNG, không theo nhóm bài** (Thùy 13/11, sửa bản gắn việc vào từng nhóm):
    ```
-   ET buổi 15/11            75%   Tốt
-   BTVN buổi 15/11          80%   Tốt
+   ET buổi 15/11            75%   Tạm ổn
+   BTVN buổi 15/11          90%   Tạm ổn   (ghi chú: thiếu nghiêm túc)
    Test sau giờ 12/11      100%
    Bổ trợ yếu T7 21/11     (sắp tới)
    ```
    - Mỗi dòng = một hoạt động có thật trong tuần: ET từng buổi · BTVN từng buổi · test sau giờ · ca bổ trợ (yếu / nhẹ / bù…).
      Kết quả (% đúng) + **thái độ** khi hoạt động đó có chấm thái độ (`btvn_ket_qua.thai_do`: nghiêm túc / chưa hết sức / chưa nghiêm túc / chống đối).
-   - **Nhãn đánh giá = "Tốt" / "Chưa tốt"** (Thùy 13/11), **không còn khái niệm "thái độ" trên màn** và không gộp "thái độ tuần".
-     *Chưa rõ — đã hỏi Thùy:* "Tốt / Chưa tốt" quyết từ đâu (đánh giá của TA như ô `thai_do` BTVN hiện nay, hay so kết quả với một ngưỡng)
-     và hoạt động nào có nhãn này.
+   - **Nhãn đánh giá 3 mức: Tốt · Tạm ổn · Chưa tốt** (Thùy 13/11; thay bản 2 mức). Không còn khái niệm "thái độ" trên màn, không gộp "thái độ tuần".
+     - **Mức gốc theo % của hoạt động**, % tính như Đ/C/S (Đ = 1 · C = 0,5 · S = 0, trung bình trên số câu).
+       Ngưỡng: *giả định dùng đúng ngưỡng mastery* ≥ 80% Tốt · 50–79% Tạm ổn · < 50% Chưa tốt — **chờ Thùy xác nhận**.
+     - **ET:** chỉ theo %.
+     - **BTVN và test sau giờ:** theo %, rồi **thái độ không phải "nghiêm túc" ⇒ hạ 1 mức** (Tốt → Tạm ổn, Tạm ổn → Chưa tốt; Chưa tốt giữ nguyên)
+       và ghi **ghi chú ngay dưới dòng** (vd "thiếu nghiêm túc"). Ví dụ: BTVN 90% + chưa nghiêm túc ⇒ Tạm ổn + ghi chú.
+     - Thái độ lấy từ ô TA đang chấm (`btvn_ket_qua.thai_do`, 4 mức). Test sau giờ: *chưa thấy ô thái độ trong dữ liệu ca sau giờ — cần thêm khi build.*
+     - Mức này **tính ở DB** (một hàm `fn_*`), không tính ở app (CLAUDE §2.0).
    - **Tự luyện trên app = KHÔNG bắt buộc, nhưng luôn có dòng thống kê** (Thùy 13/11), kể cả tuần không luyện (ghi "chưa luyện câu nào"):
      số câu · số lượt · % đúng · nhóm bài đã luyện. Nằm khối riêng "Tự luyện · không bắt buộc", **không tính vào x/y việc**. Nguồn: `tu_luyen_*`.
    - Hai khối: **Đã làm** · **Sắp tới** (có ngày, hạn; BTVN chưa nộp quá hạn ghi rõ "chưa nộp"). Đầu màn có ô tổng "x/y việc đã xong".
