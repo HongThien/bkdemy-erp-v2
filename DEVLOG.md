@@ -80256,3 +80256,8 @@ Thùy nêu 4 việc, làm được 3:
 - Pull 64 commit (DEVLOG xung đột ⇒ gộp union giữ cả hai phía) + bkdemy-ph-app 5 commit (có 0038).
 - Thùy "Áp migration": migrate.mjs --only 202611131000_muc_tieu_tuan.sql OK 08:07 — 5 bảng mtt_* · 23 hàm · fn_mtt_* anon=false/auth=true · policy FDW 3 bảng · claude_ro policy tự thêm. schema.md refresh.
 - Còn: cron 202611131001 (SQL Editor, Thùy) → --ghi-so · đo fn_mtt_trung_tam khối đông · PH 0038 → deploy PH · deploy ERP + HS.
+
+## 2026-11-13 — K4 sách 4A: danh sách câu trùng (Thùy "Liệt kê để xem")
+- `kho-rules/dai/lo/k4/cau-trung-sach-4A.html`: 81 câu của 5 đề GKI đối chiếu bản kho câu phiên khác nhập 07/11 (107 câu): 29 đề dùng thẳng câu sẵn có · 46 câu mới có bản tương ứng · 6 câu mới (bài nhiều ý a/b/c) phiên kia tách thành câu lẻ · 38 câu lẻ phía kia không ghép.
+- Đính chính: lần trước báo bản kia "hỏng chữ s→dấu cách" — kiểm lại nội dung hiện tại 0 câu dính, báo sai.
+- Câu phiên kia đang dùng ở bản đồ (96 dòng gán), giáo trình/BTVN/ET, form TN 28, HS đã làm. Chưa xoá/sửa gì.
