@@ -663,7 +663,7 @@ Vậy $B=63$.
 
 **Bước 2.** Khai căn bằng $\sqrt{A^2}=|A|$ và xét dấu để bỏ dấu giá trị tuyệt đối.
 
-**Bước 3.** Cộng hai kết quả và gộp các số hạng đồng dạng.
+**Bước 3.** Cộng hai kết quả, các số hạng không chứa căn triệt tiêu nhau.
 
 **Phần 2. Trình bày**
 
@@ -818,7 +818,7 @@ c) Tìm tất cả các giá trị của $x$ để biểu thức $P=2\cdot A\cdo
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** sau khi rút gọn $B$, biểu thức $P$ chỉ còn một phân thức cộng với $\sqrt{x}$, và hiệu $P-2$ gọn lại thành một phân thức có tử không âm.
+**Mấu chốt:** sau khi rút gọn $B$, biểu thức $P$ chỉ còn một phân thức cộng với $\sqrt{x}$, và hiệu của $P$ với một hằng số thích hợp gọn lại thành một phân thức có tử không âm.
 
 **Bước 1.** Ý a: kiểm tra $x=4$ thoả điều kiện rồi thay $\sqrt{x}=2$ vào biểu thức $A$ để tính.
 
@@ -971,13 +971,13 @@ d) Tìm giá trị nhỏ nhất của $P=\dfrac{1}{2}\cdot A\cdot B$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** $A\cdot B$ gọn lại thành $\dfrac{2(x+3)}{\sqrt{x}+1}$ nên ý c đưa về phương trình chứa căn đơn giản và ý d đưa về xét hiệu $P-2$ với điều kiện $x\ne1$.
+**Mấu chốt:** $A\cdot B$ gọn lại thành $\dfrac{2(x+3)}{\sqrt{x}+1}$ nên ý c đưa về phương trình chứa căn đơn giản và ý d đưa về xét hiệu của $P$ với một hằng số thích hợp, chú ý điều kiện $x\ne1$.
 
 **Bước 1.** Ý a và ý b: thay $\sqrt{x}=3$ vào $A$, rồi quy đồng với mẫu chung $x-1$ để rút gọn $B$.
 
 **Bước 2.** Ý c: thay $A$, $B$ vào $A\cdot B=6$, khử mẫu để đưa về phương trình tích theo $\sqrt{x}$ và loại nghiệm không thoả điều kiện.
 
-**Bước 3.** Ý d: viết $P=\dfrac{x+3}{\sqrt{x}+1}$, xét hiệu $P-2$ để biến đổi thành một bình phương chia cho số dương.
+**Bước 3.** Ý d: viết $P=\dfrac{x+3}{\sqrt{x}+1}$, dự đoán hằng số đó rồi xét hiệu của $P$ với nó để biến đổi thành một bình phương chia cho số dương.
 
 **Bước 4.** Ý d: đối chiếu điều kiện $x\ne1$ để biết dấu bằng có xảy ra hay không và rút ra kết luận.
 
@@ -1513,15 +1513,15 @@ Vậy giá trị lớn nhất của $P$ là $21$ và giá trị nhỏ nhất c�
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** dự đoán giá trị lớn nhất là $1$ rồi xét hiệu $1-A$, tử số của nó là một bình phương còn mẫu luôn dương.
+**Mấu chốt:** dự đoán giá trị lớn nhất (thử vài giá trị của $\sqrt{x}$) rồi xét hiệu giữa số đó và $A$, tử số của hiệu là một bình phương còn mẫu luôn dương.
 
 **Bước 1.** Đặt $t=\sqrt{x}$ để $A$ trở thành phân thức theo $t$ với $t\ge0$.
 
-**Bước 2.** Tính hiệu $1-A$ và biến đổi tử số thành một bình phương.
+**Bước 2.** Tính hiệu giữa số dự đoán và $A$, quy đồng rồi biến đổi tử số thành một bình phương.
 
 **Bước 3.** Chứng minh mẫu $t^2-t+1$ luôn dương bằng cách viết thành bình phương cộng một số dương.
 
-**Bước 4.** Kết luận $A\le1$ rồi tìm $t$ để dấu bằng xảy ra và đối chiếu điều kiện của $x$.
+**Bước 4.** Từ hiệu không âm suy ra chặn trên của $A$, rồi tìm $t$ để dấu bằng xảy ra và đối chiếu điều kiện của $x$.
 
 **Phần 2. Trình bày**
 

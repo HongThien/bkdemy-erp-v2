@@ -1,0 +1,9 @@
+[
+ {"ma":"B021-01","ten_bai":"de-cuong-cuoi-hoc-ki-1-toan-7-nam-2024-2025-truong-everest-schools-ha-noi","don_vi":"Everest Schools, Hà Nội","nam":2024,"de":"1-6","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":60},
+ {"ma":"B021-02","ten_bai":"de-cuong-cuoi-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-tho-loc-ha-noi","don_vi":"THCS Thọ Lộc (xã Phúc Thọ), Hà Nội","nam":2025,"de":"1-11","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":110},
+ {"ma":"B021-03","ten_bai":"de-cuong-cuoi-ky-1-toan-7-nam-2025-2026-truong-thcs-thanh-cong-ha-noi","don_vi":"THCS Thành Công, Hà Nội","nam":2025,"de":"1-4","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":50},
+ {"ma":"B021-04","ten_bai":"de-cuong-hki-toan-7-nam-2024-2025-truong-ngoi-sao-hoang-mai-ha-noi","don_vi":"Trường Ngôi Sao Hoàng Mai, Hà Nội","nam":2024,"de":"2-17","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":130},
+ {"ma":"B021-05","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2024-2025-he-thong-gd-archimedes-school-ha-noi","don_vi":"Hệ thống Giáo dục Archimedes School, Hà Nội","nam":2024,"de":"1-12","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":150},
+ {"ma":"B021-06","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-thang-long-ha-noi","don_vi":"THCS Thăng Long, Hà Nội","nam":2024,"de":"1-4","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":40},
+ {"ma":"B021-07","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-tho-loc-ha-noi","don_vi":"THCS Thọ Lộc, Hà Nội","nam":2024,"de":"1-6","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":70}
+]

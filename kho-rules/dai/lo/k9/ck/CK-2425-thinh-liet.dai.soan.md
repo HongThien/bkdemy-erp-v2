@@ -1401,7 +1401,6 @@ Vậy phương trình đã cho có nghiệm $x=\dfrac{100}{27}$.
 ### Bài 14c | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Giải phương trình: $\sqrt{x^2}+4x+4=1555$.
 **Ghi chú:** giải đúng theo đề in (dấu căn trên bản scan chỉ bao $x^2$). Nếu đề gốc là $\sqrt{x^2+4x+4}=1555$ thì nghiệm là $x=1553$ hoặc $x=-1557$.
-**Chưa chắc:** dấu căn trên bản scan chỉ bao $x^2$ nên giải $|x|+4x+4=1555$ ra $x=\dfrac{1551}{5}$; nhưng số $1555$ và biểu thức $x^2+4x+4=(x+2)^2$ gợi ý đề gốc là $\sqrt{x^2+4x+4}=1555$ (nghiệm $1553$ và $-1557$). CEO chọn cách hiểu.
 
 **Phần 1. Hướng dẫn**
 
@@ -1416,6 +1415,8 @@ Vậy phương trình đã cho có nghiệm $x=\dfrac{100}{27}$.
 **Bước 4.** Kết luận nghiệm của phương trình.
 
 **Phần 2. Trình bày**
+
+Lưu ý: giải theo đúng đề in (dấu căn chỉ bao $x^2$).
 
 Vì $\sqrt{x^2}=|x|$ nên phương trình trở thành $|x|+4x+4=1555$.
 
@@ -1436,7 +1437,6 @@ Vậy phương trình đã cho có nghiệm $x=\dfrac{1551}{5}$.
 ### Bài 14d | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Giải phương trình: $\sqrt{9x+9}-\dfrac{2}{3}\sqrt{4x+4}+\sqrt{16x+6}=0$.
 **Ghi chú:** giải đúng theo đề in ($\sqrt{16x+6}$); phương trình vô nghiệm. Nếu đề gốc là $\sqrt{16x+16}$ thì nghiệm là $x=-1$.
-**Chưa chắc:** các căn đầu có dạng $9x+9$, $4x+4$ nên $\sqrt{16x+6}$ có thể là in nhầm của $\sqrt{16x+16}$ (khi đó nghiệm $x=-1$); theo đúng đề in thì phương trình vô nghiệm. CEO chọn cách hiểu.
 
 **Phần 1. Hướng dẫn**
 
@@ -1451,6 +1451,8 @@ Vậy phương trình đã cho có nghiệm $x=\dfrac{1551}{5}$.
 **Bước 4.** Đối chiếu với điều kiện xác định rồi kết luận.
 
 **Phần 2. Trình bày**
+
+Lưu ý: giải theo đúng đề in ($\sqrt{16x+6}$).
 
 Điều kiện xác định: $9x+9\ge0$, $4x+4\ge0$, $16x+6\ge0$, tức là $x\ge-\dfrac{3}{8}$.
 
@@ -1595,7 +1597,7 @@ d) So sánh: $B$ và $B^2$.
 
 **Bước 2.** Ý b: nhân hai vế với mẫu dương để khử mẫu rồi giải bất phương trình bậc nhất theo $\sqrt{x}$.
 
-**Bước 3.** Ý c: xét hiệu $B-\dfrac{1}{2}$ và chỉ ra nó không âm, tìm điều kiện dấu bằng xảy ra.
+**Bước 3.** Ý c: viết $B=1-\dfrac{1}{\sqrt{x}+2}$, thấy $B$ nhỏ nhất khi $\sqrt{x}+2$ nhỏ nhất, từ đó đoán giá trị nhỏ nhất rồi chứng minh bằng cách xét hiệu, tìm điều kiện dấu bằng xảy ra.
 
 **Bước 4.** Ý d: xét hiệu $B-B^2=B(1-B)$ rồi xét dấu từng thừa số.
 
@@ -1654,7 +1656,7 @@ c) Tìm giá trị nhỏ nhất của biểu thức $P=C+2\sqrt{x}$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** rút gọn $B$ trước vì $C=A:B$, sau đó $P$ có dạng tổng của $2\sqrt{x}$ và một số hạng nghịch đảo nên chứng minh $P-3\ge0$ bằng hằng đẳng thức.
+**Mấu chốt:** rút gọn $B$ trước vì $C=A:B$, sau đó $P$ có dạng tổng của $2\sqrt{x}$ và một số hạng nghịch đảo nên đưa $P$ trừ đi một hằng số thích hợp về phân thức có tử là bình phương.
 
 **Bước 1.** Ý a: kiểm tra $x=25$ thoả điều kiện rồi thay vào $A$.
 
@@ -1662,7 +1664,7 @@ c) Tìm giá trị nhỏ nhất của biểu thức $P=C+2\sqrt{x}$.
 
 **Bước 3.** Ý c: đặt $t=\sqrt{x}$, viết $P$ theo $t$ và đưa về một phân thức có tử là bình phương.
 
-**Bước 4.** Ý c: từ $P-3\ge0$ suy ra giá trị nhỏ nhất và tìm $x$ để dấu bằng xảy ra, đối chiếu điều kiện.
+**Bước 4.** Ý c: từ hiệu không âm suy ra giá trị nhỏ nhất và tìm $x$ để dấu bằng xảy ra, đối chiếu điều kiện.
 
 **Phần 2. Trình bày**
 
@@ -1708,7 +1710,6 @@ a) Tìm giá trị của biểu thức $A$ khi $x=9$.
 b) Rút gọn biểu thức $B$.
 c) Tìm $x$ để $B<\dfrac{1}{4}$.
 d) Tìm tất cả các giá trị nguyên của $x$ để biểu thức $P=A:B$ đạt giá trị nguyên lớn nhất.
-**Chưa chắc:** ý d có hai cách hiểu. Cách 1 (đã giải): trong các số nguyên $x$ làm $P$ nguyên thì chọn $x$ cho $P$ lớn nhất, ra $x=9$ ($P=-2$; còn $x=121$ cho $P=-3$). Cách 2: $P$ nhận giá trị nguyên lớn nhất là $-1$ tại $x=\dfrac{1}{9}$, không phải số nguyên nên không có $x$ nguyên. CEO chọn cách hiểu.
 
 **Phần 1. Hướng dẫn**
 
@@ -1846,7 +1847,7 @@ Vì $x$, $y$ là số nguyên dương nên các vế của (1), (2) đều dươ
 
 Do đó $(x^2+1)(x^2+y^2)\ge2x(x^2+y^2)\ge2x\cdot2xy=4x^2y$.
 
-Phương trình đã cho xảy ra khi cả hai dấu "$=$" đều xảy ra.
+Do đó phương trình đã cho chỉ đúng khi cả hai dấu "$=$" đều xảy ra.
 
 Dấu "$=$" ở (1) xảy ra khi $x=1$, dấu "$=$" ở (2) xảy ra khi $x=y$.
 
@@ -1874,6 +1875,8 @@ Vậy $(x;y)=(1;1)$.
 
 **Phần 2. Trình bày**
 
+Lưu ý: đề ghi dấu "$>$" nhưng với tam giác đều hai vế bằng nhau, nên ta chứng minh bất đẳng thức với dấu "$\ge$" và chỉ ra khi nào xảy ra dấu bằng.
+
 Đặt $x=a+b-c$, $y=b+c-a$, $z=c+a-b$.
 
 Vì $a$, $b$, $c$ là ba cạnh của một tam giác nên $x>0$, $y>0$, $z>0$ (bất đẳng thức tam giác).
@@ -1898,7 +1901,7 @@ Suy ra $\dfrac{1}{a+b-c}+\dfrac{1}{b+c-a}+\dfrac{1}{c+a-b}\ge\dfrac{1}{a}+\dfrac
 
 Dấu "$=$" xảy ra khi $x=y=z$, tức là $a=b=c$ (tam giác đều).
 
-Lưu ý: đề ghi dấu "$>$" nhưng với tam giác đều hai vế bằng nhau; vậy bất đẳng thức chặt ($>$) chỉ đúng khi tam giác không đều, còn trong trường hợp tổng quát phải viết dấu "$\ge$".
+Vậy bất đẳng thức đã cho đúng với dấu "$\ge$"; dấu "$>$" chỉ đúng khi tam giác không đều.
 
 ## GHI CHÚ CHO NGƯỜI DUYỆT
 
@@ -1906,6 +1909,6 @@ Lưu ý: đề ghi dấu "$>$" nhưng với tam giác đều hai vế bằng nha
 - Bài 2k in lặp hệ 2i (giống hệt) nên nhập hai câu riêng; máy sẽ gom trùng khi ghi.
 - Bài 2c và Bài 2h: hệ vô nghiệm theo đúng đề in (đề không phải in nhầm rõ ràng). Bài 11c: vô nghiệm vì nghiệm ứng viên $x=-5$ làm mẫu bằng $0$.
 - Đề sai / lưu ý: Bài 3 (số liệu $AB=20\ \text{km}$ không thực tế, giải theo số liệu in), Bài 31 (dấu "$>$" sai khi tam giác đều, phải là "$\ge$").
-- Hai câu có cờ Chưa chắc do dấu căn trên scan / số in có thể sai: Bài 14c, Bài 14d. Một câu có cờ do hai cách hiểu của đề: Bài 19d.
+- Bài 14c, Bài 14d: đề in rõ, giải đúng theo đề in; có thể đề gốc là $\sqrt{x^2+4x+4}=1555$ ($x=1553$; $x=-1557$) và $\sqrt{16x+16}$ ($x=-1$) — xem Ghi chú từng câu (trạm soát bỏ cờ Chưa chắc theo luật đề sai 24/10). Bài 19d: chỉ $x=9$, $x=121$ làm $P$ nguyên ⇒ $x=9$.
 - Bài 12a, 13a: dấu giữa hai căn bị che một phần nên đọc là dấu trừ (nếu là dấu cộng thì kết quả là $6$ và $2\sqrt{5}$).
 - Lỗi chính tả trong đề đã sửa: Bài 7, 8, 9, 10; Bài 18 đánh lại nhãn ý.

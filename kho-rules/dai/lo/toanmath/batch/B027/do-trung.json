@@ -1,0 +1,114 @@
+[
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-1-toan-6-nam-2025-2026-truong-thcs-thanh-am-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1647,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Ngô Sĩ Liên, phường Cửa Nam, Hà Nội (đề chính thức)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-1-toan-6-nam-2025-2026-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-6-nam-2024-2025-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1296,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Cụm chuyên môn số 14 (bộ sách Cánh Diều)",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-6-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-6-nam-2025-2026-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 2987,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS Phan Đình Giót, quận Thanh Xuân (đề chính thức)",
+   "ti_le": 0.25,
+   "cau": 4
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.3,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hk1-toan-6-nam-2025-2026-truong-thcs-nguyen-trai-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 6325,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — Phòng Văn hóa – Xã hội xã Đông Anh, Hà Nội (đề chính thức)",
+   "ti_le": 0.44,
+   "cau": 9
+  },
+  "nhi": 0.23,
+  "so_de_khop": 0,
+  "giong_ten": 0.23,
+  "trung_kho": false
+ },
+ {
+  "batch": "B027",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hki-toan-6-nam-2024-2025-truong-ngoi-sao-hoang-mai-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4486,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 6 năm 2025-2026 — THCS Lê Ngọc Hân (bộ đề GKI 6, đề 14)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.22,
+  "trung_kho": false
+ }
+]

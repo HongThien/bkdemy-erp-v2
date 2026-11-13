@@ -1,0 +1,162 @@
+[
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-he-thong-gd-archimedes-school-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-ngoi-sao-hoang-mai-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1571,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Quế Thuận (đề chính)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-phuc-dien-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2735,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1344,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-le-quy-don-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2741,
+  "best": {
+   "ten": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Nguyễn Trường Tộ",
+   "ti_le": 0.04,
+   "cau": 24
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-7-nam-2024-2025-truong-thcs-ngoc-lam-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2135,
+  "best": {
+   "ten": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Cao Bá Quát",
+   "ti_le": 0.12,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-7-nam-2025-2026-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B022",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-7-nam-2024-2025-truong-thcs-phu-thi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3122,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Hát Môn (Phòng VH-XH xã Hát Môn), Hà Nội (đề chính thức)",
+   "ti_le": 0,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ }
+]

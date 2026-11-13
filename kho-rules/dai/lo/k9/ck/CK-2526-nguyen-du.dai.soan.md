@@ -776,7 +776,7 @@ Hai vòi cùng chảy thì đầy bể trong $80$ phút nên ta có $\dfrac{1}{x
 
 Vòi thứ nhất chảy $10$ phút, vòi thứ hai chảy $12$ phút thì được $\dfrac{2}{15}$ bể nên ta có $\dfrac{10}{x}+\dfrac{12}{y}=\dfrac{2}{15}$.
 
-Đặt $u=\dfrac{1}{x}$, $v=\dfrac{1}{y}$ ($u>0$, $v>0$), ta có hệ $\begin{cases} u+v=\dfrac{1}{80} \\ 10u+12v=\dfrac{2}{15} \end{cases}$
+Đặt $u=\dfrac{1}{x}$, $v=\dfrac{1}{y}$ ($u>0$, $v>0$), ta có hệ $\begin{cases} u+v=\dfrac{1}{80} \\ 10u+12v=\dfrac{2}{15} \end{cases}$.
 
 Từ phương trình thứ nhất, ta có $v=\dfrac{1}{80}-u$ (1).
 
@@ -1340,7 +1340,9 @@ Vậy $D=\sqrt{2}$.
 
 **Phần 2. Trình bày**
 
-$E=\left(\dfrac{\sqrt{7}\cdot\sqrt{2}-\sqrt{7}}{1-\sqrt{2}}+\dfrac{\sqrt{5}\cdot\sqrt{3}-\sqrt{5}}{1-\sqrt{3}}\right):\dfrac{1}{\sqrt{7}-\sqrt{5}}$
+$E=\left(\dfrac{\sqrt{14}-\sqrt{7}}{1-\sqrt{2}}+\dfrac{\sqrt{15}-\sqrt{5}}{1-\sqrt{3}}\right):\dfrac{1}{\sqrt{7}-\sqrt{5}}$
+
+$=\left(\dfrac{\sqrt{7}\cdot\sqrt{2}-\sqrt{7}}{1-\sqrt{2}}+\dfrac{\sqrt{5}\cdot\sqrt{3}-\sqrt{5}}{1-\sqrt{3}}\right):\dfrac{1}{\sqrt{7}-\sqrt{5}}$
 
 $=\left(\dfrac{\sqrt{7}(\sqrt{2}-1)}{1-\sqrt{2}}+\dfrac{\sqrt{5}(\sqrt{3}-1)}{1-\sqrt{3}}\right):\dfrac{1}{\sqrt{7}-\sqrt{5}}$
 
@@ -1448,7 +1450,7 @@ Vậy $H=\dfrac{1}{2}$.
 
 **Bước 2.** Đưa thừa số ra ngoài dấu căn ở $\sqrt{12x}$ và $\sqrt{27x}$ để mọi số hạng cùng chứa $\sqrt{3x}$.
 
-**Bước 3.** Cộng trừ các số hạng đồng dạng để được phương trình đơn giản rồi bình phương hai vế (hai vế không âm) để tìm $x$.
+**Bước 3.** Cộng trừ các số hạng cùng chứa $\sqrt{3x}$ để được phương trình đơn giản rồi bình phương hai vế (hai vế không âm) để tìm $x$.
 
 **Phần 2. Trình bày**
 
@@ -1480,7 +1482,7 @@ Vậy $x=\dfrac{16}{3}$.
 
 **Bước 2.** Phân tích các biểu thức dưới căn để đưa thừa số ra ngoài và cùng chứa $\sqrt{y-5}$.
 
-**Bước 3.** Gom các số hạng đồng dạng rồi bình phương hai vế (hai vế không âm) để tìm $y$ và đối chiếu điều kiện.
+**Bước 3.** Gom các số hạng cùng chứa $\sqrt{y-5}$ rồi bình phương hai vế (hai vế không âm) để tìm $y$ và đối chiếu điều kiện.
 
 **Phần 2. Trình bày**
 

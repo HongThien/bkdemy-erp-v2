@@ -1,0 +1,146 @@
+[
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-8-nam-2024-2025-truong-thcs-ngoc-lam-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thanh Xuân, Hà Nội",
+   "ti_le": 0,
+   "cau": 23
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.56,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-8-nam-2024-2025-truong-thcs-chu-van-an-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1988,
+  "best": {
+   "ten": "Đề khảo sát chất lượng giữa học kì 1 Toán 8 năm 2024-2025 — THCS Mỹ Tiến, thành phố Nam Định",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.29,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-8-nam-2024-2025-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3125,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 8 năm 2025-2026 — THCS Phương Đông, xã Trà Liên",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-8-nam-2025-2026-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thanh Xuân, Hà Nội",
+   "ti_le": 0,
+   "cau": 23
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.56,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-8-nam-2024-2025-truong-thcs-phu-thi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4067,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 8 năm 2025-2026 — THCS Đức Giang, Hà Nội",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.67,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-8-nam-2024-2025-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thanh Xuân, Hà Nội",
+   "ti_le": 0,
+   "cau": 23
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.56,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-8-nam-2024-2025-he-thong-gd-archimedes-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5711,
+  "best": {
+   "ten": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thanh Xuân, Hà Nội",
+   "ti_le": 0,
+   "cau": 23
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-8-nam-2024-2025-truong-archimedes-dong-anh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5734,
+  "best": {
+   "ten": "Nội dung ôn tập giữa học kì I Toán 8 năm 2026–2027 — Trường THCS Thanh Xuân, Hà Nội",
+   "ti_le": 0,
+   "cau": 23
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B015",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-8-nam-2025-2026-he-thong-gd-archimedes-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5816,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 8 năm 2024-2025 — Phòng GD&ĐT huyện Thạch Thất, Hà Nội",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ }
+]

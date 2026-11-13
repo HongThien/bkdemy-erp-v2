@@ -948,7 +948,7 @@ Vậy $0\le x<4$.
 
 **Phần 1. Hướng dẫn**
 
-**Mấu chốt:** sau khi rút gọn, $P=2-\dfrac{1}{\sqrt{x}+1}$ với $\sqrt{x}+1\ge1$, nên $P$ luôn thuộc khoảng từ $1$ đến dưới $2$ và mọi ý còn lại đều đọc được từ dạng này.
+**Mấu chốt:** sau khi rút gọn, viết được $P=2-\dfrac{1}{\sqrt{x}+1}$ với $\sqrt{x}+1\ge1$, và hầu hết các ý còn lại đều đọc được từ dạng này.
 
 **Bước 1.** Nêu điều kiện xác định, rút gọn từng ngoặc (quy đồng với mẫu chung $x-1$) rồi thực hiện phép chia bằng nhân với phân thức nghịch đảo.
 

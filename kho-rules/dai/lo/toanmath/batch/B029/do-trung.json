@@ -1,0 +1,130 @@
+[
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-6-nam-2024-2025-truong-thcs-ngoc-lam-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-6-nam-2024-2025-truong-thcs-chu-van-an-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2221,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — Phòng GD&ĐT huyện Chương Mỹ, Hà Nội",
+   "ti_le": 0.07,
+   "cau": 15
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-6-nam-2024-2025-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 2395,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2024-2025 — THCS Phan Đình Giót, quận Thanh Xuân (đề chính thức)",
+   "ti_le": 0.25,
+   "cau": 4
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.3,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-6-nam-2025-2026-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-6-nam-2024-2025-truong-thcs-phu-thi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2270,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-6-nam-2024-2025-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ky-2-toan-6-nam-2025-2026-truong-thcs-nguyen-truong-to-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2386,
+  "best": {
+   "ten": "Đề cương ôn tập nâng cao Toán 6 — Trường THCS Nam Từ Liêm (Phiếu bổ sung nâng cao + Ôn tập giữa kì I) năm 2026–2027",
+   "ti_le": 0.1,
+   "cau": 171
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.23,
+  "trung_kho": false
+ },
+ {
+  "batch": "B029",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-nghia-tan-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2734,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Tân Triều, Hà Nội (đề không ghi mã đề)",
+   "ti_le": 0,
+   "cau": 8
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.56,
+  "trung_kho": false
+ }
+]

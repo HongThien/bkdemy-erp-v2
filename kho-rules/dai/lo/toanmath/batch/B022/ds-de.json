@@ -1,0 +1,7 @@
+[
+ {"ma":"B022-01","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-he-thong-gd-archimedes-school-ha-noi","don_vi":"Hệ thống Giáo dục Archimedes School, Hà Nội","nam":2025,"de":"1-13","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":150},
+ {"ma":"B022-02","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-ngoi-sao-hoang-mai-ha-noi","don_vi":"Trường Ngôi Sao Hoàng Mai, Hà Nội","nam":2025,"de":"1-13","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":110},
+ {"ma":"B022-03","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-phuc-dien-ha-noi","don_vi":"THCS Phúc Diễn (UBND phường Phú Diễn), Hà Nội","nam":2025,"de":"1-9","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":75},
+ {"ma":"B022-04","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thang-long-ha-noi","don_vi":"THCS Thăng Long, Hà Nội","nam":2025,"de":"1-5","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":45},
+ {"ma":"B022-05","ten_bai":"on-tap-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-thanh-cong-ha-noi","don_vi":"THCS Thành Công, Hà Nội","nam":2024,"de":"1-8","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":55}
+]

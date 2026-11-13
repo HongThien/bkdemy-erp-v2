@@ -1143,7 +1143,7 @@ Vậy quãng đường $AB$ dài $180\ \text{km}$.
 
 ### Bài 8 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Một ca nô chạy trên sông trong $8$ giờ, xuôi dòng $81\ \text{km}$ và ngược dòng $105\ \text{km}$. Một lần khác cũng chạy trên khúc sông đó, ca nô này chạy trong $4$ giờ, xuôi dòng $54\ \text{km}$ và ngược dòng $42\ \text{km}$. Hãy tính vận tốc khi xuôi dòng và ngược dòng của ca nô, biết vận tốc của dòng nước và vận tốc riêng của ca nô không đổi.
-**Ghi chú:** vận tốc riêng của ca nô là $24\ \text{km/h}$ và vận tốc dòng nước là $3\ \text{km/h}$ (đề không hỏi).
+**Ghi chú:** đề in "chạy trên song", "khúc song" là lỗi in của "sông", đã sửa. Vận tốc riêng của ca nô là $24\ \text{km/h}$ và vận tốc dòng nước là $3\ \text{km/h}$ (đề không hỏi).
 
 **Phần 1. Hướng dẫn**
 
@@ -1193,6 +1193,7 @@ Vậy vận tốc xuôi dòng của ca nô là $27\ \text{km/h}$ và vận tốc
 
 ### Bài 9 | kho=dai | loai=tu_luan | dap_an=—
 **Đề:** Hai bạn An và Bình cùng may khẩu trang để ủng hộ địa phương đang có dịch bệnh Covid-19, thì mất $2$ ngày mới hoàn thành công việc. Nếu chỉ có một mình bạn An làm việc trong $4$ ngày rồi nghỉ và bạn Bình làm tiếp trong $1$ ngày nữa thì hoàn thành công việc. Hỏi mỗi người làm riêng một mình thì sau bao lâu sẽ hoàn thành công việc?
+**Ghi chú:** đề in "Hai ban An và Bình" là lỗi in của "Hai bạn", đã sửa.
 
 **Phần 1. Hướng dẫn**
 
