@@ -1,6 +1,6 @@
 # spec-kien-truc.md — Kiến trúc đích + bộ luật để chịu 1.000 → 2.000 → 10.000 người dùng
 
-> **Trạng thái: BẢN NHÁP 13/11/2026 (đã đối chiếu định hướng BK lần 1, chưa đọc được Notion) — chờ Thùy chốt.** Chưa có dòng code/DB nào đổi theo spec này.
+> **Trạng thái: THÙY CHỐT 13/11/2026** (đã đối chiếu định hướng BK lần 1; chưa đọc được Notion North Star/Pillars/Principles). **Đợt 0a ĐÃ ÁP 13/11** (mig 202611131750); các đợt sau: nêu phạm vi → Thùy gật → làm.
 > Bằng chứng hiện trạng: `reports/audit-scale-13-11.md`.
 > Đích (Thùy 13/11, đính chính tối 13/11): 1.000 → 2.000 → 10.000 đều là **HS CỦA TRUNG TÂM**. Không có khối HS ngoài trung tâm. Mốc 1.000 trong 6–12 tháng.
 > Nguyên tắc sửa (Thùy 13/11): **không vá từng lỗi — sửa kiến trúc từ trên xuống theo chuẩn ngành, và viết luật để tính năng sau không lặp lại.**

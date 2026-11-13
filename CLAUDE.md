@@ -306,6 +306,9 @@
 - [Pilot Điểm-danh → ET — 7 User Story](https://app.notion.com/p/375d4530bcdb8084b38bead35fdf0be7)
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
+- **`spec-kien-truc.md` — ĐỌC BẮT BUỘC trước khi thêm BẢNG / HÀM / MÀN mới hoặc bảng tính sẵn mới** (Thùy chốt 13/11, sau audit scale 1.000 → 10.000 HS trung tâm):
+  §0b định hướng BK → hệ quả kiến trúc · sổ gốc ↔ bảng tổng hợp (màn chỉ đọc số tính sẵn) · MỘT khuôn tính sẵn · hàm màn gọi chỉ tốn theo một người / một lớp,
+  một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K23 + phiếu 10 câu cho mọi tính năng mới (§9)** · lộ trình 7 đợt (§10; đợt 0a đã áp 13/11).
 - **`spec-v1-app-hs.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ việc gì trên app HS** (Thùy chốt 01/10): release V1.0 = 8 hạng mục (tutorial · chuỗi + nhiệm vụ ·
   Thế giới BK · Rank · UI "Giải cứu thế giới — đánh quái vật" 100% · ≥2 style · game tổ hợp · góp ý/báo lỗi) · **màn NGANG trước** (cấp 1–2 dùng iPad/PC) ·
   "lượt học thật" (≥5/10) là nền chung cho chuỗi/nhiệm vụ/game · bản đồ phiêu lưu: chủ đề = lục địa, chuyên đề = khu vực, dạng = màn, cụm = quái.
