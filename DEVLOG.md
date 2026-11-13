@@ -80119,3 +80119,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Rule mới:** migration `202611131227_mcq_rule_k8_k9_hinh_hgt.sql` (R600–R648, 36 rule, vào cả `hgt_mcq_rule` và `hinh_hoc_mcq_rule`), áp bằng `--only`.
 - **Bỏ có chủ đích (4 câu HGT):** T309010301040/042 (chứng minh đẳng thức), T309010401004 (đáp số Có/Không, không đủ 4 phương án), T309010402008 (2 ý a, b).
 - **Còn lại / cần Thùy quyết:** gán `muc_do` cho các dạng Hình học K8–9 (324 câu có đáp án chưa form, ~13 dạng) thì chạy tiếp được ngay bằng `lam.mjs` mẫu; hoặc nói "làm hết, bỏ lọc mức".
+
+## 13/11 (chiều) — Hình học KHÔNG làm MCQ: gỡ 11 form lớp 8–9
+- Thùy: "nhầm, Hình không cần trắc nghiệm" — bổ trợ Hình chỉ hiện đề, in giấy, TA chấm ĐCS. Chỉ Hình giải tích (hgt) có MCQ.
+- Xoá mềm 11 form `hinh_hoc_cau_form_tn` (xoa_at + tu_choi_ly_do), xoá 36 rule R600–R648 khỏi `hinh_hoc_mcq_rule`. `hgt_mcq_rule` + 9 form HGT giữ nguyên. Migration 202611131227 vẫn nằm lịch sử (chép rule sang hinh_hoc); lịch sử migration bất biến nên không sửa.
