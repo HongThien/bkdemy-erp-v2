@@ -80041,3 +80041,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Đo ảnh hưởng trước khi rút:** 10 câu từng vào bài test (27 lượt) · 121 câu nằm trong 81 đề/tài liệu (đề vẫn dùng được) · 4 form MCQ đều chưa duyệt · bài HS đã làm không đổi.
 - **Kiểm sau:** Đại 122/122 và HGT 1/1 chưa duyệt + nghi + ra khỏi kho chuẩn; còn 0 câu Đại nghi mà AI đã duyệt.
 - **Phát hiện, CHƯA đụng:** `hinh_hoc_cau_hoi.kho_chuan` là cột THƯỜNG mặc định `true` (Đại/HGT là cột suy từ `_kho_cau_chuan`) ⇒ 28/34 câu Hình vừa rút vẫn `kho_chuan=true`. Lệch đối xứng Đại ↔ Hình — chờ Thùy quyết.
+
+## 13/11 — MCQ lớp 5 lô 5 (chẵn/lẻ, tiền–diện tích)
+- **Ghi 61 form** (`scripts/_k5/b5_chanle_tien.mjs`, `b5_tien.mjs` + 8 câu máy `mcq-auto` bị chặn lệch từ trước): chẵn/lẻ liền trước-sau & nhỏ/lớn nhất có k chữ số (22) · thu hoạch × giá (10) · lát nền ra tiền (6) · lát gạch theo hộp (5) · cửa sổ m²→dm² (10) · 8 máy. Rule R425–R428 (mig 202611130919). Tổng lớp 5 = 194 form.
+- **Lớp 5 còn ~278 câu không làm tự động được:** cần hình/tia số (02081, 02097, 02140, 02147–52, 02150), đáp án chỉ dấu/mảnh đất A-B-C (02110, 02141, 02102, 02103), nhiều ý, hoặc kho sai (đã ghi ở mục lô 3).
+- **Lớp 3, lớp 4:** giao 2 fork chạy song song (scripts/_k3, _k4; rule R430–R449 / R450–R469).
