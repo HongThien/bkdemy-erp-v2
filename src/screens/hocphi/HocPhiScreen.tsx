@@ -382,7 +382,6 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
   const [busy, setBusy] = useState(false)
   const [showThu, setShowThu] = useState(false)
   const [thuSo, setThuSo] = useState('')
-  const [thuPT, setThuPT] = useState<PhuongThucThu | null>(null) // KHÔNG mặc định — người thu phải chọn TM/CK
   const [copied, setCopied] = useState(false)
   useEffect(() => { setRSt(r0) }, [r0])
   useEffect(() => { setOpen(moMacDinh) }, [moMacDinh])
@@ -417,9 +416,9 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       setCopied(true); setTimeout(() => setCopied(false), 1500)
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
-  async function ghiThu() {
+  // Hình thức = chính nút bấm (💵 / 🏦) — không có bước "chọn rồi mới bấm Ghi" (13/11: nút Ghi mờ chờ chọn ⇒ tưởng hỏng).
+  async function ghiThu(thuPT: PhuongThucThu) {
     const so = Number(thuSo.replace(/[.,]/g, '')); if (!so || so <= 0) { alert('Số tiền không hợp lệ.'); return }
-    if (!thuPT) return
     setBusy(true)
     try {
       await ghiThanhToan(r.hoaDonId!, so, thuPT)
@@ -427,7 +426,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
       const daThuMoi = r.daThuKy + so
       // Khớp trigger tg_thanh_toan_trang_thai: thu đủ → trạng thái thông báo tự thành "Đã hoàn thành"
       setR({ ...r, daThuKy: daThuMoi, thu: [{ so_tien: so, ngay, phuong_thuc: thuPT }, ...r.thu], trangThai: daThuMoi >= tong ? 'da_thu' : 'thu_mot_phan', trangThaiTB: daThuMoi >= tong ? 'hoan_thanh' : r.trangThaiTB })
-      setShowThu(false); setThuSo(''); setThuPT(null)
+      setShowThu(false); setThuSo('')
     } catch (e: any) { alert(e.message ?? String(e)) } finally { setBusy(false) }
   }
   const Seg = ({ k, label, onClick }: { k: NhomTT; label: string; onClick: () => void }) => (
@@ -486,7 +485,7 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
               <div className="inline-flex overflow-hidden rounded-md border border-slate-300">
                 <Seg k="chua_bao" label="Chưa báo" onClick={() => {}} />
                 <Seg k="da_bao" label={copied ? '✓ Copy' : 'Đã báo'} onClick={bao} />
-                <Seg k="da_thu" label="Đã thu" onClick={() => { setShowThu(true); setThuSo(String(conLai)); setThuPT(null) }} />
+                <Seg k="da_thu" label="Đã thu" onClick={() => { setShowThu(true); setThuSo(String(conLai)) }} />
               </div>
             ) : <span className="text-[11px] text-slate-400">Tích &quot;Chốt&quot; để bắt đầu thu tiền</span>}
             <button onClick={() => onAnh(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-[11px] font-medium text-slate-600 hover:border-indigo-300">📷 Ảnh QR</button>
@@ -495,12 +494,8 @@ function PhuHuynhCard({ r0, ky, onAnh, moMacDinh, onDoi }: { r0: DongSoHang; ky:
             <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-emerald-50 p-2">
               <span className="text-[11px] font-medium text-slate-600">Số tiền thu (mặc định = số thông báo):</span>
               <input value={thuSo} onChange={(e) => setThuSo(e.target.value)} className={`${inp} w-32`} />
-              <div className="inline-flex overflow-hidden rounded-md border border-slate-300 bg-white">
-                {(['tien_mat', 'chuyen_khoan'] as PhuongThucThu[]).map((p) => (
-                  <button key={p} onClick={() => setThuPT(p)} className={`px-2.5 py-1 text-[11px] font-semibold ${thuPT === p ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:bg-slate-100'}`}>{p === 'tien_mat' ? '💵 ' : '🏦 '}{PHUONG_THUC_LABEL[p]}</button>
-                ))}
-              </div>
-              <button disabled={busy || !thuPT} title={!thuPT ? 'Chọn Tiền mặt hoặc Chuyển khoản' : ''} onClick={ghiThu} className="rounded-md bg-emerald-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">Ghi đã thu</button>
+              <button disabled={busy} onClick={() => ghiThu('tien_mat')} className="rounded-md bg-amber-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">💵 Thu tiền mặt</button>
+              <button disabled={busy} onClick={() => ghiThu('chuyen_khoan')} className="rounded-md bg-sky-600 px-3 py-1 text-[11px] font-semibold text-white disabled:opacity-40">🏦 Thu chuyển khoản</button>
               <button onClick={() => setShowThu(false)} className="text-[11px] text-slate-400 hover:text-slate-600">Huỷ</button>
               <span className="text-[10px] text-slate-400">Thu ít hơn tổng → phần thiếu tự thành nợ.</span>
             </div>

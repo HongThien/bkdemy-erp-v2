@@ -80324,3 +80324,4 @@ Thùy nêu 4 việc, làm được 3:
 
 - **[Dọn MT thử 2 — Thùy gật 13/11 "xóa đi"]** Xoá "[TEST Claude] Chon tay DS - xoa duoc": 3 tai_lieu_cau · 3 tai_lieu_phan · 1 tai_lieu, 1 transaction; không có dòng linkgen_jobs. Còn 0 MT thử.
 - 13/11 chiều: K11 đề thi CKI chỉ đề trường (Thùy) — B031–B034 16 đề (trạm chuẩn bị Opus; ghep-brief thêm k11dc từ brief đề cương K11) · 16 Sonnet soạn + 16 Opus soát mù ĐẠT · lỗi \text→TAB (B032-02) và \notin→xuống dòng (B031-03, B033-01) do trạm ghi qua chuỗi JS ⇒ ghi-batch.sh chặn · ghi 356 câu · 318 mới · 38 trỏ cũ · 4 nghi. B003/B004 (K9 CKII) dừng giữa chừng theo lệnh Thùy.
+- **13/11 — Thu học phí: "không bấm Đã thu được"** (Thùy). Bản deploy đã có code TM/CK; RLS bình thường. Gốc: nút "Ghi đã thu" khoá mờ tới khi chọn TM/CK ⇒ trông như hỏng. Sửa: bỏ bước chọn, thay bằng 2 nút ghi thẳng 💵 Thu tiền mặt / 🏦 Thu chuyển khoản.
