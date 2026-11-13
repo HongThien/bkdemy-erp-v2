@@ -80004,3 +80004,12 @@ Thùy nêu 4 việc, làm được 3:
 - **Rule mới (mig 202611130845, áp bằng `--only`):** R421, R422 (làm tròn), R423 (hàng–lớp). Lý do: R395–R397 luôn trùng đáp án đúng khi chữ số sau hàng làm tròn gần 9.
 - **Phát hiện:** kho T105010101016 đáp số chữ sai ("không trăm hai trăm ba mươi"); T105100205022 kho "2,30" thừa số 0. `npm run migrate` có 28 file treo của phiên khác — LUÔN dùng `--only`.
 - **Còn lớp 5:** ~400 câu (lời văn R407–R415, 02139 đổi đơn vị, 02141, 02105, 02110, 02097…, nhiều câu cần hình/đa phần).
+
+## 13/11 — Gộp spec kho Toán (đọc lại) + LUẬT DUYỆT 13/11 (Thùy chốt)
+- **Làm:** đọc lại toàn bộ spec Toán (README kho-rules, spec-luong-kho*, kho-chuan, kho-v2, giai-bai-ai, mcq*, dien-o, de-thi, cum-bai, format-noidung, quy-tac-cham, ban-do-4-tang/k12/builder, hinh*, luật khối k4T…k11, HANDOFF-BAI-HOC, brief k9-cki) bằng 7 agent; tự đối chiếu 6 điểm với file gốc. Đề xuất cấu trúc: 1 file chung (thẻ nghiệp vụ cố định + ma trận khác biệt theo khối) + file riêng từng khối theo khuôn cố định. CHƯA viết spec.
+- **Quyết định (Thùy 13/11) — luật giải:** đến đâu cập nhật đến đấy. Vòng chuẩn: có luật base ⇒ giải ⇒ gặp vấn đề thì sửa luật base đó. (Khối chưa có file luật — K7, K10, K12 — dựng base rồi sửa dần, không chờ đủ.)
+- **Quyết định (Thùy 13/11) — LUẬT DUYỆT, HUỶ mọi luật duyệt trước:**
+  1. AI đẩy câu vào kho; câu AI tự tin phân dạng đúng ⇒ TỰ DUYỆT — với điều kiện lúc giải đã chắc chắn đúng theo luật giải.
+  2. Câu chưa chắc ⇒ vào danh sách cho người kiểm (như hiện tại).
+  3. Câu có thể sai ⇒ người hậu kiểm, báo sai / xoá. Hệ thống phải tracking để sau này đo.
+- **Đối chiếu hệ thống hiện tại (chỉ đọc):** trigger `_bdm_tu_duyet_sau_gan` (mig 202611051930) tự duyệt khi gán mức cao nguon='ai' + đủ đáp án — KHÔNG xét "giải chắc chắn": cờ **Chưa chắc** của trạm soạn chỉ nằm ở `tai_lieu.cau_hinh.deThi.canhBaoCau` (ghi.mjs), câu vẫn `kiem_may` NULL ⇒ gán mức cao về sau là tự duyệt luôn câu chưa chắc. Hình (`hinh_hoc_cau_hoi`) không có đường tự duyệt. Hậu kiểm: có `kho_sua_log` (sửa theo khâu, `da_duyet_truoc`), `dai_bdm_log` (đổi gán), `bai_cau_bao_loi` (HS báo khi làm test online → TA duyệt) + loại phiên Claude "Câu bị báo sai" cho trưởng khối (mig 202611012151); XOÁ chỉ có `xoa_at` — không lưu ai xoá, vì sao. Chưa kiểm: đường nhân sự tự báo sai một câu khi hậu kiểm kho; chưa có số đo "câu AI tự duyệt về sau bị sửa / báo sai / xoá". Chưa sửa gì — chờ lệnh.
