@@ -67,6 +67,12 @@
 - **Chỉ dữ liệu KHÔNG-học-tập mới CHUNG** (không nhãn môn): thông tin cá nhân HS, phụ huynh, **ví xu (wallet tổng)**, tài khoản…
 - **Tầng trên = (môn → nhánh)** đối xứng (Toán{Đại,Hình}·KHTN{Lý,Hóa,Sinh}…). **Tầng dưới = mỗi nhánh tự cấu trúc, BẢNG RIÊNG — KHÔNG gộp**
   (gộp = ghép cứng domain độc lập, lợi hiệu suất ~0). Dispatch môn→bảng qua **1 registry**, KHÔNG rải rác.
+- **⭐ SỬA 13/11 (Thùy chốt) — "RIÊNG THEO KHUÔN, CHUNG TRONG CÙNG KHUÔN".** Dòng "mỗi nhánh bảng riêng, không gộp" ở trên chỉ còn đúng giữa các KHUÔN khác nhau
+  (dạng–câu: Đại · Hình giải tích · KHTN · Lý · Hoá · môn mới cùng cấu trúc | mô hình–bài–ý: Hình học | ngôn ngữ: Anh · Văn). Trong CÙNG khuôn: **một bảng chung
+  `kho_<họ>` chia phần theo cột `kho`**, các bảng `<nhánh>_<họ>` là các PHẦN của nó (tên cũ vẫn là bảng thật, code cũ chạy nguyên). Hệ quả bắt buộc:
+  **(1) thêm/sửa cột, index chỉ làm ở bảng chung** (DB cấm sửa riêng một nhánh); **(2) CẤM tạo bảng mới kiểu `<nhánh>_<tên>` và cấm chép hàm theo nhánh** — bảng mới của
+  khuôn dạng–câu tạo thẳng dạng chung có cột `kho`, hàm mới nhận `kho`/`mon` làm tham số; **(3) đọc xuyên nhánh qua bảng chung, không dựng view UNION**.
+  Mẫu + cách hoàn tác: mig 202611131904 (`kho_bdm_cau_thieu_dang`). Tiến độ gộp từng họ: `spec-kien-truc.md` §2b.
 - **Symmetry test (tiêu chí đúng):** thao tác trên Toán phải chạy **y hệt** mọi môn. Thấy `if (mon === 'Toán')` đặc biệt trong code dùng chung = **sai**.
 
 ---

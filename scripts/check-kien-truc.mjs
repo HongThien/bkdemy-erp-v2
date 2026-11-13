@@ -62,7 +62,7 @@ if (!CHI_CODE) {
   const ds = (rows, k = 'ten') => rows.map((r) => r[k])
 
   // CỨNG
-  let r = await q(`select relname ten from pg_class where relnamespace='public'::regnamespace and relkind='r' and not relrowsecurity order by 1`)
+  let r = await q(`select relname ten from pg_class where relnamespace='public'::regnamespace and relkind in ('r','p') and not relrowsecurity order by 1`)
   them('db_bang_khong_rls', 'Bảng public chưa bật RLS — K14', 'cung', r.length, ds(r))
 
   r = await q(`select distinct p.proname ten from pg_proc p where p.pronamespace='public'::regnamespace and p.prorettype <> 'trigger'::regtype and has_function_privilege('anon', p.oid, 'execute') order by 1`)

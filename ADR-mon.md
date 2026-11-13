@@ -5,6 +5,8 @@
 
 ---
 
+> **⚠ SỬA 13/11/2026 (Thùy chốt):** §4 "mỗi môn/nhánh bộ bảng riêng" và §6 "KHÔNG gộp" được thay bằng **"riêng theo KHUÔN, chung trong cùng khuôn"** — xem `spec-kien-truc.md` §2b và CLAUDE.md §1.6. §1–§3 (mỗi môn một trung tâm, luật nhãn môn, đối xứng) giữ nguyên.
+
 ## 1. Nguyên tắc gốc
 
 **1 môn = 1 TRUNG TÂM riêng (bounded context).**

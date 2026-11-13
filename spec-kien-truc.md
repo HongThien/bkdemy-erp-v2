@@ -73,6 +73,23 @@ Mỗi bảng thuộc đúng MỘT miền. Miền khác **không đọc/ghi thẳ
 
 Bảng mới ⇒ tên có tiền tố miền, và spec tính năng ghi rõ bảng thuộc miền nào. Hàm nội bộ của miền (tiền tố `_`) **không cấp quyền gọi cho client**.
 
+## 2b. Gộp theo KHUÔN (Thùy chốt 13/11 — sửa ADR môn)
+
+**Quyết định:** tách theo KHUÔN cấu trúc, không theo môn. Cùng khuôn ⇒ một bảng chung + một bộ hàm, phân biệt bằng cột `kho`. Khác khuôn ⇒ bộ riêng.
+Khuôn: **dạng–câu** (Đại · Hình giải tích · KHTN · Lý · Hoá · môn mới cùng cấu trúc) · **mô hình–bài–ý** (Hình học) · **ngôn ngữ** (Anh · Văn, thiết kế theo bản chất môn).
+
+**Vì sao sửa:** 25 họ bảng lặp ở 4–5 nhánh (115 bảng), 17 họ giống hệt từng cột; 45 họ hàm chép 3–5 lần; các bản chép đã lệch nhau (thiếu index ở một nhánh, hàm quên một nhánh); đọc xuyên nhánh phải dựng view UNION 8 nhánh. Mã giữa các nhánh không trùng nhau (đo 13/11: 0 mã trùng) nên gộp không đổi mã gốc.
+
+**Cách gộp (đã thử trên họ mẫu, mig 202611131904):** KHÔNG chép dữ liệu, KHÔNG đổi tên. Mỗi bảng nhánh thêm cột `kho` (hằng + check) rồi **gắn làm một PHẦN** của bảng chung `kho_<họ>` (chia phần theo `kho`).
+- Tên cũ vẫn là bảng thật ⇒ hàm, trigger, policy, khoá ngoại, script đang dùng tên cũ chạy nguyên.
+- Thêm/sửa cột ở bảng chung áp cho mọi nhánh; DB cấm thêm cột riêng một nhánh ⇒ hết lệch.
+- Đọc bảng chung theo một `kho` chỉ quét phần của kho đó. Ghi qua bảng chung tự rơi đúng nhánh; khoá ngoại của nhánh vẫn chặn mã sai nhánh.
+- Hoàn tác: `alter table kho_<họ> detach partition <nhánh>_<họ>` rồi bỏ cột `kho`.
+- Kiểm bắt buộc mỗi họ: chạy thử trong transaction rồi rollback; số dòng + vân tay nội dung từng nhánh trước–sau; số trigger/khoá/policy/index không đổi; thử thêm · upsert · xoá qua tên cũ.
+
+**Tiến độ:** ✅ `bdm_cau_thieu_dang` (13/11). Còn 24 họ: 16 họ giống hệt (làm bằng script sinh migration) · 8 họ lệch 1–4 cột (`ban_do`, `cau_hoi`, `bdm_o`, `bdm_nhom`, `bdm_log`, `bdm_dang_bai`, `bdm_chu_de`, `bdm_chuyen_de`) phải làm khớp cột trước · `cau_hoi` và `ban_do` làm sau cùng (nhiều khoá ngoại trỏ vào; phải dò chỗ chép nguyên dòng).
+**Chưa làm ở bước gộp:** trigger và hàm vẫn là bản chép theo nhánh — gom dần về bảng chung sau, không chặn việc gộp.
+
 ## 3. Tầng Đo — một sổ sự kiện duy nhất
 
 Hiện trạng: 3 nguồn đo (`gami_grades`, `bai_lam_cau`, `bt_grades`) và 3 bộ đọc lịch sử song song. Đích:
