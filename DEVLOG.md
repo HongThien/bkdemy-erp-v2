@@ -80062,3 +80062,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Ghi 264 form** (`da_duyet=false`), không rule/migration mới: cộng–trừ, biểu thức, tìm số hạng (77) · bảng nhân/chia, thừa số, gấp/giảm (50) · nhân/chia nhiều chữ số (120) · đổi cm/dm/m (6) · dãy đếm thêm/bớt (11). Nhiễu dùng rule sẵn có (R412–R415, R375–R378, R366, R385, R388, R365) nên hơi đơn điệu — chất lượng chẩn đoán lỗi thấp hơn lớp 5.
 - **Kho nghi sai (đã bỏ):** T103000000301, T103000000302 (kho 5 giá trị nhưng dãy chỉ 4 chỗ trống; máy ra 27;45;63;72 và 63;45;36;27).
 - **Còn 126 câu không làm được:** tia số cần ảnh (33), điền dấu 3 đáp án (24), đường tròn/hình (19), sắp xếp (2), ô tròn–tam giác/tháp số (~15), <3 nhiễu khác nhau (21), còn lại chưa soạn.
+
+## 13/11 — MCQ lớp 5 lô 6 (hỗn số, phân số thập phân) + npm run schema
+- `npm run schema` chạy xong (583 bảng; schema.md không đổi vì chỉ thêm dữ liệu rule/form, không đổi cấu trúc).
+- **Ghi 11 form** (`scripts/_k5/b6_phanso.mjs`): viết hỗn số thành tổng (5) · phân số thập phân từ số đo (6). Tổng lớp 5 = 205. Lớp 5 hết câu kiểm máy được; còn lại cần hình/dấu/nhiều ý/kho sai.
