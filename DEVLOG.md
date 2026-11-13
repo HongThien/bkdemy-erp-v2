@@ -80251,3 +80251,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 13:06 — Mục tiêu tuần ERP: trưởng khối có đủ view của HS/PH
 - Thùy hỏi trưởng khối đã có đủ view chưa ⇒ còn thiếu 3: thanh+cờ trong tờ của em, các tuần đã chốt của em, top 20. Đã thêm vào MucTieuTuanTab (popup tờ em có tab "Tuần này | Các tuần đã chốt"; nút Top 20; dòng đang xếp hàng / sắp học). Phòng trưởng khối dùng chung màn ⇒ tự có. Chụp kiểm qua harness.
+
+## 13/11/2026 (sáng) — pull + áp mig Mục tiêu tuần
+- Pull 64 commit (DEVLOG xung đột ⇒ gộp union giữ cả hai phía) + bkdemy-ph-app 5 commit (có 0038).
+- Thùy "Áp migration": migrate.mjs --only 202611131000_muc_tieu_tuan.sql OK 08:07 — 5 bảng mtt_* · 23 hàm · fn_mtt_* anon=false/auth=true · policy FDW 3 bảng · claude_ro policy tự thêm. schema.md refresh.
+- Còn: cron 202611131001 (SQL Editor, Thùy) → --ghi-so · đo fn_mtt_trung_tam khối đông · PH 0038 → deploy PH · deploy ERP + HS.

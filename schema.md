@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-584 bảng · 39 view · 0 enum · 407 trigger · 1883 function
+589 bảng · 39 view · 0 enum · 409 trigger · 1906 function
 
 ## _app_secrets
 
@@ -4832,7 +4832,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5641,6 +5641,71 @@ END |  |  |
 | khoi | text |  |  | PK |  |
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ghi_chu | text | Y |  |  |  |
+
+## mtt_chot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| lop_id | uuid | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| tien_do | numeric | Y |  |  |  |
+| viec_xong | integer |  | 0 |  |  |
+| viec_tong | integer |  | 0 |  |  |
+| viec_den_han | integer |  | 0 |  |  |
+| hang | integer | Y |  |  |  |
+| so_hs | integer | Y |  |  |  |
+| payload | jsonb |  |  |  |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+
+## mtt_dau
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| nhom | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
+
+## mtt_lop_chot
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
+| chot_boi | uuid | Y |  | FK→nhan_su.id |  |
+
+## mtt_luu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| lop_id | uuid | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| tien_do | numeric | Y |  |  |  |
+| viec_xong | integer |  | 0 |  |  |
+| viec_tong | integer |  | 0 |  |  |
+| viec_den_han | integer |  | 0 |  |  |
+| hang | integer | Y |  |  |  |
+| hang_truoc | integer | Y |  |  |  |
+| hang_ngay | date | Y |  |  |  |
+| so_hs | integer | Y |  |  |  |
+| payload | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
+
+## mtt_top
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| ds | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
 
 ## muc_hoc_duoi
 
@@ -11077,6 +11142,8 @@ WITH luot AS (
 | lich_test_khung | trg_lich_test_khung_chan_trung | BEFORE | INSERT/UPDATE | _ts_khung_chan_trung |
 | lich_test_khung | trg_log_lich_test_khung | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | lich_test_khung | trg_updated_lich_test_khung | BEFORE | UPDATE | _lich_test_cham_updated |
+| mtt_chot | mtt_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
+| mtt_lop_chot | mtt_lop_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | nhan_su_plan | nhan_su_plan_log_trg | AFTER | INSERT/UPDATE | _nhan_su_plan_ghi_log |
 | nhan_su_plan | nhan_su_plan_truoc_trg | BEFORE | INSERT/UPDATE | _nhan_su_plan_truoc |
 | nhiem_vu_cau_hinh | a_hs_so_moc | AFTER | INSERT/DELETE/UPDATE/TRUNCATE | _hs_so_moc_tg |
@@ -11524,6 +11591,23 @@ WITH luot AS (
 - `_mt_loai_ky_cua_buoi(p_buoi uuid)` → text
 - `_mt_o_bai_cu(p_buoi uuid)` → TABLE(id uuid, k integer, tong numeric)
 - `_mt_phan_nang_cao(p_phan uuid)` → boolean
+- `_mtt_chot_bat_bien()` → trigger
+- `_mtt_dau_tinh(p_hs uuid, p_tuan date)` → jsonb
+- `_mtt_diem(p_hs uuid, p_buoi uuid, p_kieu text, p_den timestamp with time zone)` → TABLE(pct numeric, so_cau integer)
+- `_mtt_doc(p_hs uuid, p_mon text, p_tuan date, p_can_chot boolean)` → jsonb
+- `_mtt_ghi(p_hs uuid, p_mon text, p_tuan date)` → void
+- `_mtt_ha_muc(p_muc text)` → text
+- `_mtt_hom_nay()` → date
+- `_mtt_kem_hang(p_payload jsonb, p_hang integer, p_hang_truoc integer, p_so integer, p_tinh_at timestamp with time zone)` → jsonb
+- `_mtt_lam_moi(p_giay integer DEFAULT 40)` → jsonb
+- `_mtt_moc(p_ngay date)` → timestamp with time zone
+- `_mtt_muc(p numeric)` → text
+- `_mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → text[]
+- `_mtt_ten_goi(p_ho_ten text)` → text
+- `_mtt_ten_nhom(p_ma text)` → text
+- `_mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → jsonb
+- `_mtt_tuan(p_ngay date)` → date
+- `_mtt_xep_hang(p_tuan date, p_mon text)` → void
 - `_nguon_ngan(p text)` → text
 - `_nhac_han_hang_ngay()` → integer
 - `_nhan_su_plan_ghi_log()` → trigger
@@ -12558,6 +12642,12 @@ WITH luot AS (
 - `fn_mt_khung_buoi(p_buoi uuid)` → jsonb
 - `fn_mt_luu_tong(p_buoi uuid, p_hs uuid, p_full boolean, p_tl_cb numeric, p_tl_nc numeric, p_full_tl boolean)` → void
 - `fn_mt_nhan_ban(p_de uuid, p_ten text DEFAULT NULL::text)` → uuid
+- `fn_mtt_cac_tuan(p_mon text, p_hs uuid DEFAULT NULL::uuid, p_so integer DEFAULT 8)` → jsonb
+- `fn_mtt_chot_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_cua_toi(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_hs(p_hs uuid, p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_top(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_trung_tam(p_mon text, p_khoi text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_nguoi_truc_ca(p_thu smallint, p_ca text, p_ngay date)` → uuid
 - `fn_nhiem_vu_chang_thang(p_mon text, p_ym text, p_hs uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, diem_chang integer, cap integer, so_ruong integer, exp integer)
 - `fn_nhiem_vu_hoan_thanh(p_mon text, p_ym text, p_hs uuid[] DEFAULT NULL::uuid[])` → TABLE(hoc_sinh_id uuid, ma text, tang text, xong_ngay date, so integer)
