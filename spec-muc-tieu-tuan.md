@@ -113,6 +113,26 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    - **Xếp theo TIẾN ĐỘ TỔNG của tuần** (Thùy 13/11). Lý do so được giữa em giỏi và em yếu: mục tiêu của mỗi em đã theo chương trình
      và yêu cầu riêng (em yếu yêu cầu dễ hơn), nên tiến độ là % đi tới mục tiêu CỦA MÌNH. Bảng này đo **thái độ** là chính, không đo năng lực.
 
+6. **Mỗi dòng nhóm bài hiện TĂNG/GIẢM so với ĐẦU TUẦN** (Thùy 13/11): số đầu tuần lấy từ bản chụp 00:00 thứ Hai, hiện vạch đứt trên thanh + chip ▲/▼.
+   Nhóm mới có lần đo đầu tiên trong tuần ghi "mới đo". Thanh tiến độ tổng cũng có vạch đầu tuần.
+7. **"CON CẦN LÀM GÌ · ĐÃ LÀM GÌ" — lớp còn thiếu** (Thùy 13/11: "vừa nãy là set mục tiêu, cái này chính là cái mình thiếu").
+   Mỗi nhóm bài có một danh sách việc, hiện luôn dưới thanh (không cần bấm), mỗi việc ✓ / ○:
+   - Kiến thức mới: làm bài trên lớp · nộp từng lần bài về nhà có nhóm đó (BTVN xếp chồng ⇒ tới 3 lần).
+   - Ôn tập: xem lý thuyết · luyện N câu (đếm x/N) · có mặt buổi kiểm tra lại sau giờ.
+   Đầu màn có ô tổng "Việc con đã làm x/y". Việc do HỆ sinh từ giáo trình + lượt chốt bổ trợ, không ai giao tay;
+   "đã làm" suy từ dữ liệu có sẵn (pure-derive, CLAUDE §4), không có nút tự đánh dấu.
+   **Ba tầng xem cùng một dữ liệu:** học sinh (của mình) · phụ huynh (của con) · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã làm,
+   em nào chưa làm gì — vào dashboard học tập / báo cáo tuần trưởng khối). *Màn trung tâm: chưa vẽ.*
+   *Chưa chốt:* N câu luyện của một nhóm ôn tập là bao nhiêu (mockup tạm 10) · "xem lý thuyết" có đo được không (chưa thấy bảng ghi lượt xem lý thuyết;
+   tự luyện có `tu_luyen_dang_lan` / `tu_luyen_so_cau`) · việc nào làm muộn sau giờ chốt tính thế nào.
+
+**Kênh phụ huynh (Thùy 13/11, thay "chụp ảnh gửi"):** màn này hiện **REALTIME trên app phụ huynh** (Cổng Phụ huynh — project riêng `bkdemy-ph`,
+đọc ERP qua FDW `erp_live`), cùng nội dung màn HS, chữ formal. ⇒ Hàm đọc phải đọc **bảng tính sẵn** (§2.0), không tính lại qua FDW mỗi lượt mở.
+
+**Dashboard các tuần đã chốt** (Thùy 13/11): sau mỗi lần chốt thứ Hai, HS và phụ huynh xem trend theo tuần: tiến độ tuần · việc đã làm · hạng ·
+lưới nhóm bài × tuần. Đọc từ sổ chốt tuần (immutable), không tính lại. Mockup: màn 2 "Các tuần đã chốt".
+Màn "ảnh kết quả gửi phụ huynh" riêng và "nút ảnh gửi bố mẹ": BỎ (thay bằng app phụ huynh realtime + dashboard tuần).
+
 **Tiến độ tổng (Thùy 13/11):** trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài **ĐÃ CÓ lần đo**; nhóm chưa đo **không tính** (em không tụt hạng vì trung tâm chưa dạy tới).
 *Chưa chốt:*
 

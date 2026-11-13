@@ -79976,3 +79976,8 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:37 — Mục tiêu tuần: công thức tiến độ tổng
 - Thùy OK: trung bình min(%/mục tiêu, 1) trên nhóm ĐÃ ĐO, nhóm chưa đo không tính. Thùy muốn màn HS cũng là màn gửi phụ huynh — đang đánh giá khác biệt.
+
+## 13/11 08:46 — Mục tiêu tuần: "cần làm gì · đã làm gì" + tăng/giảm đầu tuần + app phụ huynh realtime + trend tuần
+- Thùy: màn hiện realtime trên app phụ huynh (Cổng PH, project bkdemy-ph, FDW erp_live) — bỏ phương án ảnh chụp. Sau mỗi lần chốt có dashboard trend theo tuần.
+- Lớp còn thiếu = mỗi nhóm bài có danh sách việc ✓/○ (hệ sinh, suy "đã làm" từ dữ liệu), xem ở 3 tầng HS · PH · trung tâm. Mỗi dòng hiện ▲/▼ so với đầu tuần.
+- Mockup: màn 1 cập nhật, màn 2 mới "Các tuần đã chốt", ảnh gửi PH đánh dấu BỎ. Spec §4a mục 6–7. Còn treo: N câu luyện, đo "xem lý thuyết", màn trung tâm chưa vẽ.
