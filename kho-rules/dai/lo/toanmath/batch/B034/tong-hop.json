@@ -1,0 +1,42 @@
+{
+ "tong": {
+  "de": 1,
+  "soan": 1,
+  "soat": 1,
+  "dat": 1,
+  "sua": 0,
+  "cau": 22,
+  "hinh": 7,
+  "co_hd": 0,
+  "chua_chac": [
+   "B034-01 Câu 2"
+  ],
+  "loai": {
+   "trac_nghiem": 12,
+   "dung_sai": 2,
+   "tra_loi_ngan": 4,
+   "tu_luan": 4
+  }
+ },
+ "de": [
+  {
+   "ma": "B034-01",
+   "don_vi": "THPT Trần Phú – Hoàn Kiếm, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": false,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 4
+   },
+   "hinh": 7,
+   "chua_chac": [
+    "Câu 2"
+   ]
+  }
+ ]
+}

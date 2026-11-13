@@ -80323,3 +80323,4 @@ Thùy nêu 4 việc, làm được 3:
 - Verify dev (MT thử mới "[TEST Claude] Chon tay DS - xoa duoc", id b9819a62…): popup hiện 290 câu chủ đề 1, đủ 4 mệnh đề + đáp án; chọn 2 câu Đại + 1 câu HGT (tìm "mặt phẳng") ⇒ Phần II 3/4 đúng thứ tự, nhanhByCau câu HGT = hinh_gt. MT thử CHƯA xoá — chờ Thùy.
 
 - **[Dọn MT thử 2 — Thùy gật 13/11 "xóa đi"]** Xoá "[TEST Claude] Chon tay DS - xoa duoc": 3 tai_lieu_cau · 3 tai_lieu_phan · 1 tai_lieu, 1 transaction; không có dòng linkgen_jobs. Còn 0 MT thử.
+- 13/11 chiều: K11 đề thi CKI chỉ đề trường (Thùy) — B031–B034 16 đề (trạm chuẩn bị Opus; ghep-brief thêm k11dc từ brief đề cương K11) · 16 Sonnet soạn + 16 Opus soát mù ĐẠT · lỗi \text→TAB (B032-02) và \notin→xuống dòng (B031-03, B033-01) do trạm ghi qua chuỗi JS ⇒ ghi-batch.sh chặn · ghi 356 câu · 318 mới · 38 trỏ cũ · 4 nghi. B003/B004 (K9 CKII) dừng giữa chừng theo lệnh Thùy.

@@ -1,0 +1,130 @@
+[
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ki-1-toan-11-nam-2024-2025-truong-thpt-kon-tum",
+  "ket_luan": "trung",
+  "so_tu": 5351,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Cánh Diều (Toán Từ Tâm, Đề số 6)",
+   "ti_le": 0.75,
+   "cau": 16
+  },
+  "nhi": 0.1,
+  "so_de_khop": 1,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-11-nam-2024-2025-truong-thpt-minh-ha-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5371,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Kẻ Sặt, Hải Dương (Mã đề 111)",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-11-nam-2024-2025-truong-thpt-ngo-gia-tu-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 4946,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Thanh Miện - Hải Phòng (Mã đề 1101)",
+   "ti_le": 0.13,
+   "cau": 15
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-11-nam-2024-2025-truong-thpt-bac-yen-thanh-nghe-an",
+  "ket_luan": "khac",
+  "so_tu": 6883,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 11 năm 2024 - 2025 trường THPT Lê Quý Đôn - TP HCM",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-11-nam-2024-2025-truong-thpt-hoa-vang-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 2928,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường THPT Dương Văn Dương - TP HCM (Mã đề 1102)",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-11-nam-2025-2026-truong-thpt-le-hong-phong-1-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 7816,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT số 1 Văn Bàn - Lào Cai (Đề 102)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-11-chuyen-nam-2024-2025-truong-chuyen-tran-phu-hai-phong",
+  "ket_luan": "trung",
+  "so_tu": 5701,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Cánh Diều (Toán Từ Tâm, Đề số 4)",
+   "ti_le": 0.57,
+   "cau": 14
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B031",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-chuyen-tran-phu-hai-phong",
+  "ket_luan": "trung",
+  "so_tu": 5819,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Cánh Diều (Toán Từ Tâm, Đề số 4)",
+   "ti_le": 0.5,
+   "cau": 14
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ }
+]

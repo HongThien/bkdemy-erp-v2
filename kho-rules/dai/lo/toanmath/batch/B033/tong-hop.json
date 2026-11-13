@@ -1,0 +1,76 @@
+{
+ "tong": {
+  "de": 3,
+  "soan": 3,
+  "soat": 3,
+  "dat": 3,
+  "sua": 3,
+  "cau": 73,
+  "hinh": 20,
+  "co_hd": 2,
+  "chua_chac": [
+   "B033-02 Câu 1"
+  ],
+  "loai": {
+   "trac_nghiem": 49,
+   "dung_sai": 6,
+   "tra_loi_ngan": 10,
+   "tu_luan": 8
+  }
+ },
+ "de": [
+  {
+   "ma": "B033-01",
+   "don_vi": "THPT Quế Sơn, Quảng Nam (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 31,
+   "loai": {
+    "trac_nghiem": 25,
+    "dung_sai": 2,
+    "tra_loi_ngan": 2,
+    "tu_luan": 2
+   },
+   "hinh": 8,
+   "chua_chac": []
+  },
+  {
+   "ma": "B033-02",
+   "don_vi": "THPT Quế Sơn, Đà Nẵng (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 21,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 3
+   },
+   "hinh": 7,
+   "chua_chac": [
+    "Câu 1"
+   ]
+  },
+  {
+   "ma": "B033-03",
+   "don_vi": "THPT Tây Thạnh, TP Hồ Chí Minh",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 21,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 3
+   },
+   "hinh": 5,
+   "chua_chac": []
+  }
+ ]
+}

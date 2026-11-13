@@ -1,0 +1,157 @@
+{
+ "tong": {
+  "de": 8,
+  "soan": 8,
+  "soat": 8,
+  "dat": 8,
+  "sua": 8,
+  "cau": 178,
+  "hinh": 60,
+  "co_hd": 8,
+  "chua_chac": [
+   "B031-04 Câu 6"
+  ],
+  "loai": {
+   "trac_nghiem": 100,
+   "dung_sai": 25,
+   "tra_loi_ngan": 40,
+   "tu_luan": 13
+  }
+ },
+ "de": [
+  {
+   "ma": "B031-01",
+   "don_vi": "THPT Kon Tum, tỉnh Kon Tum (Mã đề 111)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 7,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-02",
+   "don_vi": "THPT Minh Hà, Hà Nội (Mã đề 001)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 7,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-03",
+   "don_vi": "THPT Ngô Gia Tự, Đắk Lắk (Mã đề 401)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 7,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-04",
+   "don_vi": "THPT Bắc Yên Thành, Nghệ An (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 20,
+   "loai": {
+    "trac_nghiem": 8,
+    "dung_sai": 3,
+    "tra_loi_ngan": 4,
+    "tu_luan": 5
+   },
+   "hinh": 7,
+   "chua_chac": [
+    "Câu 6"
+   ]
+  },
+  {
+   "ma": "B031-05",
+   "don_vi": "THPT Hòa Vang, Đà Nẵng",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 4
+   },
+   "hinh": 7,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-06",
+   "don_vi": "THPT số 1 Lê Hồng Phong, Đắk Lắk (Mã đề 1246)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 7,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-07",
+   "don_vi": "THPT chuyên Trần Phú, Hải Phòng (môn Toán chuyên) (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 24,
+   "loai": {
+    "trac_nghiem": 16,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 2
+   },
+   "hinh": 9,
+   "chua_chac": []
+  },
+  {
+   "ma": "B031-08",
+   "don_vi": "THPT chuyên Trần Phú, Hải Phòng (môn Toán) (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 24,
+   "loai": {
+    "trac_nghiem": 16,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 2
+   },
+   "hinh": 9,
+   "chua_chac": []
+  }
+ ]
+}

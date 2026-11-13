@@ -15,6 +15,8 @@ for SOAN in kho-rules/dai/lo/toanmath/batch/$B/$B-*.soan.md; do
   MA="$(basename "$SOAN" .soan.md)"; LV="$LVG/$MA"; SOAT="${SOAN%.soan.md}.soat.md"
   [ -f "$LV/da-ghi.txt" ] && { echo "· $MA đã ghi trước ($(cat "$LV/da-ghi.txt"))"; continue; }
   grep -q "KẾT LUẬN:\**\s*ĐẠT" "$SOAT" 2>/dev/null || { echo "⏸ $MA: soát chưa ĐẠT / thiếu biên bản"; continue; }
+  # 13/11: `\text`, `\frac`, `\b…` bị ghi qua chuỗi JS thành TAB / form feed / backspace thật — cổng không bắt ⇒ chặn ở đây
+  node -e "const s=require('fs').readFileSync(process.argv[1],'utf8');process.exit(/[\x00-\x08\x0b\x0c\x0e-\x1f]|\t|\n(otin|abla|ewline|eq\b|eg\b)/.test(s)?1:0)" "$SOAN" || { echo "❌ $MA: tệp soạn có ký tự điều khiển hoặc lệnh \\n… bị tách dòng (\\text, \\frac, \\notin, \\neq bị hỏng)"; continue; }
   node scripts/kho/de-thi/dung-de-tu-soan.mjs "$SOAN" --lam-viec "$LV" --khoi "$KHOI" >/dev/null 2>"$LV/tam/cong.err" || { echo "❌ $MA cổng: $(head -3 "$LV/tam/cong.err")"; continue; }
   R="$(node --env-file=.env scripts/kho/de-thi/ghi.mjs "$LV" $GHI 2>&1)"
   TK="$(echo "$R" | grep -oE "câu mới [0-9]+ · trùng[^·]*[0-9]+" | tail -1)"

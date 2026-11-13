@@ -1,0 +1,90 @@
+{
+ "tong": {
+  "de": 4,
+  "soan": 4,
+  "soat": 4,
+  "dat": 4,
+  "sua": 4,
+  "cau": 83,
+  "hinh": 24,
+  "co_hd": 2,
+  "chua_chac": [
+   "B032-02 Câu 4"
+  ],
+  "loai": {
+   "trac_nghiem": 48,
+   "dung_sai": 14,
+   "tra_loi_ngan": 19,
+   "tu_luan": 2
+  }
+ },
+ "de": [
+  {
+   "ma": "B032-01",
+   "don_vi": "THPT Lê Quý Đôn, TP Hồ Chí Minh",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 4,
+   "chua_chac": []
+  },
+  {
+   "ma": "B032-02",
+   "don_vi": "THPT Nguyễn Trãi, Thái Bình (Mã đề 101)",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 22,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 6
+   },
+   "hinh": 7,
+   "chua_chac": [
+    "Câu 4"
+   ]
+  },
+  {
+   "ma": "B032-03",
+   "don_vi": "THPT Krông Bông, Đắk Lắk",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 19,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 4,
+    "tra_loi_ngan": 3
+   },
+   "hinh": 8,
+   "chua_chac": []
+  },
+  {
+   "ma": "B032-04",
+   "don_vi": "THPT Duy Tân, Quảng Ngãi",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 20,
+   "loai": {
+    "trac_nghiem": 12,
+    "dung_sai": 2,
+    "tra_loi_ngan": 4,
+    "tu_luan": 2
+   },
+   "hinh": 5,
+   "chua_chac": []
+  }
+ ]
+}

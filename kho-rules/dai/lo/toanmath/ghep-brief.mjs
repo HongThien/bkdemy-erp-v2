@@ -13,15 +13,18 @@ const MAP = { 'k9-cki': { lo: ['lo\\k9\\cki\\', 'lo/k9/cki/'], lv: ['K9-cki\\', 
   //   CHỈ thay chỗ trỏ tệp của đề (`lo\k8\<MA>`), KHÔNG thay `lo\k8\GKI-01.soan.md` (đề mẫu khuôn tệp — phải giữ đường dẫn thật)
   k8: { lo: ['lo\\k8\\<MA>', 'lo/k8/<MA>'], lv: ['de-thi\\K8\\', 'de-thi/K8/'] },
   k7: { lo: ['lo\\k7\\<MA>', 'lo/k7/<MA>'], lv: ['de-thi\\K7\\', 'de-thi/K7/'] },
-  k6: { lo: ['lo\\k6\\<MA>', 'lo/k6/<MA>'], lv: ['de-thi\\K6\\', 'de-thi/K6/'] } }[GOC]
+  k6: { lo: ['lo\\k6\\<MA>', 'lo/k6/<MA>'], lv: ['de-thi\\K6\\', 'de-thi/K6/'] },
+  // 13/11: đề thi THPT K11 — gốc = brief ĐỀ CƯƠNG K11 (24/10, có khuôn TN · Đ/S · TLN); một đề = một tệp ⇒ bỏ hậu tố khúc `.p<P>`
+  k11dc: { lo: ['lo\\k11\\de-cuong\\<MA>', 'lo/k11/de-cuong/<MA>'], lv: ['de-cuong\\K11\\', 'de-cuong/K11/'], boKhuc: true, src: (k) => `k11/de-cuong/brief-${k}.md` } }[GOC]
 if (!MAP) throw new Error('chưa có khuôn brief cho ' + GOC)
-const LVMOI = MAP.lv[0].startsWith('de-thi') ? [`de-thi\\toanmath\\${MA}\\`, `de-thi/toanmath/${MA}/`] : [`toanmath\\${MA}\\`, `toanmath/${MA}/`]
+const LVMOI = /^de-(thi|cuong)/.test(MAP.lv[0]) ? [`de-thi\\toanmath\\${MA}\\`, `de-thi/toanmath/${MA}/`] : [`toanmath\\${MA}\\`, `toanmath/${MA}/`]
 const DUOI = MAP.lo[0].endsWith('<MA>') ? '<MA>' : ''
 for (const kind of ['soan', 'soat']) {
-  let s = readFileSync(path.join(LO, `${GOC}-brief-${kind}.md`), 'utf8').replace(/\r\n/g, '\n')
+  let s = readFileSync(path.join(LO, MAP.src ? MAP.src(kind) : `${GOC}-brief-${kind}.md`), 'utf8').replace(/\r\n/g, '\n')
   s = s.replaceAll(MAP.lo[0], `lo\\toanmath\\batch\\${MA}\\${DUOI}`).replaceAll(MAP.lo[1], `lo/toanmath/batch/${MA}/${DUOI}`)
     .replaceAll(MAP.lv[0], LVMOI[0]).replaceAll(MAP.lv[1], LVMOI[1])
     .replaceAll(`lo\\${GOC}-brief-soan.md`, `lo\\toanmath\\batch\\${MA}\\brief-soan.md`).replaceAll(`lo/${GOC}-brief-soan.md`, `lo/toanmath/batch/${MA}/brief-soan.md`)
+  if (MAP.boKhuc) s = s.replaceAll('.p<P>', '').replaceAll('ve_p<P>', 've')
   writeFileSync(path.join(HERE, 'batch', MA, `brief-${kind}.md`), dau + '\n---\n\n' + s)
 }
 console.log(`✔ batch/${MA}/brief-soan.md, brief-soat.md (gốc ${GOC})`)

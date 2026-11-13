@@ -1,0 +1,178 @@
+[
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-que-son-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 4887,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-11-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 5232,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 năm 2025 - 2026 trường THPT Quế Sơn - Đà Nẵng",
+   "ti_le": 0.25,
+   "cau": 16
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-11-nam-2025-2026-truong-thpt-tay-thanh-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Tân Châu - An Giang (Mã đề 121)",
+   "ti_le": 0,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "10-de-on-tap-cuoi-hoc-ky-2-toan-11-nam-2025-2026-cau-truc-3-2-2-3",
+  "ket_luan": "khac",
+  "so_tu": 31787,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2024 - 2025 trường THPT Ngọc Lặc - Thanh Hóa",
+   "ti_le": 0.14,
+   "cau": 14
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "10-de-on-tap-kiem-tra-cuoi-hoc-ki-2-toan-11-ctst-cau-truc-moi-3-2-2-3",
+  "ket_luan": "mo_ho",
+  "so_tu": 42686,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Trung Thiên - Hà Tĩnh (Mã đề 111)",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-kiem-tra-cuoi-ky-2-toan-11-canh-dieu-nam-hoc-2024-2025",
+  "ket_luan": "trung",
+  "so_tu": 42221,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 2 Toán 11 năm 2024 - 2025 (Đề số 1) - Toán Từ Tâm (bộ đề KNTT)",
+   "ti_le": 0.56,
+   "cau": 16
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-kiem-tra-cuoi-ky-2-toan-11-ctst-nam-hoc-2024-2025",
+  "ket_luan": "khac",
+  "so_tu": 39996,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2024 - 2025 trường THPT Lạng Giang 1 - Bắc Giang (Mã đề 008)",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-kiem-tra-cuoi-ky-2-toan-11-knttvcs-nam-hoc-2024-2025",
+  "ket_luan": "trung",
+  "so_tu": 39228,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 2 Toán 11 năm 2024 - 2025 (Đề số 1) - Toán Từ Tâm (bộ đề KNTT)",
+   "ti_le": 0.56,
+   "cau": 16
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-2-mon-toan-11-le-minh-kha",
+  "ket_luan": "trung",
+  "so_tu": 53322,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Bỉnh Khiêm - Đắk Lắk (Mã đề 401)",
+   "ti_le": 0.67,
+   "cau": 12
+  },
+  "nhi": 0.36,
+  "so_de_khop": 1,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-2-mon-toan-11-theo-cau-truc-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 20627,
+  "best": {
+   "ten": "Đề ôn tập thi học kì 2 Toán 11 (Sách Cánh Diều - Đề 01) - GV Phạm Lê Duy, trường THPT Chu Văn An",
+   "ti_le": 0.43,
+   "cau": 14
+  },
+  "nhi": 0.43,
+  "so_de_khop": 0,
+  "giong_ten": 0.09,
+  "trung_kho": false
+ },
+ {
+  "batch": "B033",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-11-nam-2025-2026-truong-thpt-tay-thanh-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Tân Châu - An Giang (Mã đề 121)",
+   "ti_le": 0,
+   "cau": 9
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ }
+]
