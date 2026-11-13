@@ -2,13 +2,14 @@
 // MucTieuTuanHS — "Mục tiêu tuần" của em (spec-muc-tieu-tuan.md §9.1–9.2, Thùy chốt 12–13/11).
 //   · Đầu màn: Tiến độ mục tiêu tuần (vạch đầu tuần + cờ đích) · Việc của con x/y · Xếp hạng tiến độ (bấm ⇒ top 20 toàn trung tâm).
 //   · Cột trái: Phần 1 Kiến thức mới + Phần 2 Ôn tập — mỗi dòng nhóm GỌN (tên · ▲/▼ · % · cờ ở mục tiêu tuần); bấm mới mở
-//     Xem lại lý thuyết · Xem lại bài trên lớp · Luyện tập.
+//     Xem lại bài trên lớp (khu giáo trình) · Luyện tập.
 //   · Cột phải: Việc của con tuần này (Đã làm / Sắp tới / Tự luyện không bắt buộc), nhãn Tốt · Tạm ổn · Chưa tốt.
 //   · Lớp chưa chốt ⇒ "đang chốt mục tiêu tuần" (spec §12.4). "Các tuần trước" = sổ chốt (trend).
 // Mọi con số từ DB (fn_mtt_cua_toi · fn_mtt_top · fn_mtt_cac_tuan — mig 202611131000). Khung/màu theo style (design/STYLE-HS.md).
 // ============================================================================
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, NhomHS, TrongHS, MAU, THE, HEAD } from './skin/KhungHS'
+import { monCuaHS } from '../../lib/tuluyen'
 import {
   mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh,
   NHAN_MUC, NHAN_TT, TEN_VIEC,
@@ -22,7 +23,16 @@ const mauMuc = (m: MucDanhGia | null) => (m === 'tot' ? MAU.dung : m === 'tam_on
 const nenMuc = (m: MucDanhGia | null) => (m === 'tot' ? NEN.dung : m === 'tam_on' ? NEN.canhBao : m === 'chua_tot' ? NEN.sai : MAU.surface2)
 const mauChenh = (h?: string) => (h === 'len' ? MAU.dung : h === 'xuong' ? MAU.sai : MAU.muted)
 
-export type DichMoMTT = 'ly_thuyet' | 'bai_tren_lop' | 'luyen_tap'
+export type DichMoMTT = 'bai_tren_lop' | 'luyen_tap'
+
+// Ô "Mục tiêu tuần" ở Home: tờ của MÔN đang chọn (một tờ = một môn); chưa chọn môn thì hỏi môn của em
+export function MucTieuTuanTheoMon({ mon, onBack, onMo }: { mon: string | null; onBack: () => void; onMo?: (d: DichMoMTT) => void }) {
+  const [m, setM] = useState<string | null | undefined>(mon ?? undefined)
+  useEffect(() => { if (mon) { setM(mon); return } let a = true; monCuaHS().then((x) => a && setM(x)).catch(() => a && setM(null)); return () => { a = false } }, [mon])
+  if (m === undefined) return <ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Đang tải…</TrongHS></ManHS>
+  if (m === null) return <ManHS><DauTrangHS tieuDe="Mục tiêu tuần này" onBack={onBack} /><TrongHS>Em chưa có lớp nào.</TrongHS></ManHS>
+  return <MucTieuTuanHS mon={m} onBack={onBack} onMo={onMo} />
+}
 
 export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBack: () => void; onMo?: (dich: DichMoMTT) => void }) {
   const [man, setMan] = useState<'tuan' | 'cac_tuan'>('tuan')
@@ -218,7 +228,6 @@ function DongNhom({ n, mo, onBam, onMo, kiemTra }: { n: MttNhom; mo: boolean; on
             </div>
           ))}
           <div className="flex flex-wrap gap-2">
-            <NutHS phu onClick={() => onMo?.('ly_thuyet')} className="!text-[14px]">Xem lại lý thuyết</NutHS>
             <NutHS phu onClick={() => onMo?.('bai_tren_lop')} className="!text-[14px]">Xem lại bài trên lớp</NutHS>
             <NutHS onClick={() => onMo?.('luyen_tap')} className="!text-[14px]">Luyện tập</NutHS>
           </div>

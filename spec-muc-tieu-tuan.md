@@ -342,14 +342,14 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 |---|---|---|
 | DB | `supabase/migrations/202611131000_muc_tieu_tuan.sql` (bảng `mtt_lop_chot` · `mtt_dau` · `mtt_luu` · `mtt_chot` · `mtt_top`; hàm `_mtt_tinh` + `fn_mtt_*`; quyền + FDW cho app PH) · `202611131001_muc_tieu_tuan_cron_sql_editor.sql` (cron 5 phút) | Chạy trên Postgres 16 tạm với bảng giả lập theo `schema.md` + dữ liệu mẫu: tờ tuần, mục tiêu tuần (vd nhóm nợ 25% → mục tiêu 36%), việc của con, chốt lớp, cron, xếp hạng, top 20, sổ chốt bất biến, tab trung tâm, HS lớp chưa chốt ⇒ `chua_chot` |
 | ERP | `src/screens/danhgia/MucTieuTuanTab.tsx` + tab "🎯 Mục tiêu tuần" trong `DashboardHocTapScreen.tsx` (Phòng trưởng khối dùng chung màn này ⇒ tự có) · `src/lib/mucTieuTuan.ts` | `tsc` · `npm run build` |
-| App HS | `src/screens/hocsinh/MucTieuTuanHS.tsx` — ô "Mục tiêu tuần này" đầu màn Thông tin học tập (không thêm ô mới ở Home ⇒ không cần icon mới cho từng style) | `tsc` · `npm run build:hs` · `check:style-hs` (file mới 0 màu gõ tay) |
+| App HS | `src/screens/hocsinh/MucTieuTuanHS.tsx` — **ô "Mục tiêu tuần" ở Home** (Thùy 13/11), ngay sau ô Học tập, theo môn đang chọn. Icon mỗi style DÙNG LẠI 1 hình không hiện ở Home (RPG `o_rank` · Tối giản `o_bai_tap_giao` · Khối/Lo-fi/Đáng yêu/Halloween `o_luyen_yeu`) — Thùy: "không trùng ở Home là được" | `tsc` · `npm run build:hs` · `check:style-hs` (file mới 0 màu gõ tay) |
 | App PH | repo `bkdemy-ph-app`: `migrations/0038_muc_tieu_tuan_fdw.sql` · `app/actions/muc-tieu.ts` · `components/ph/MucTieuTuanScreen.tsx` · ô "🎯 Mục tiêu tuần" ở Home | `tsc` · `npm run build` |
 
 **Quyết định CTO khi build (Thùy xem lại được):**
 1. **"Chưa chốt thì chưa hiện" cần một tín hiệu rõ** ⇒ tab trung tâm có nút **"Chốt mục tiêu tuần" theo LỚP** (không theo từng em), bấm sau buổi họp thứ Hai khi đã chốt giáo trình + bổ trợ. Cột cạnh nút cho thấy lớp đã có tài liệu cho bao nhiêu buổi và còn bao nhiêu đề xuất bổ trợ chờ duyệt. Chỉ người có phạm vi (môn × khối) của lớp mới chốt được. Dòng chốt append-only.
 2. **% nhóm đọc mastery CÓ BTVN** (`p_include_btvn = true`, y như Dashboard học tập và bổ trợ đang đọc). Việc đổi luật mastery mặc định toàn hệ (§8.2) KHÔNG làm ở đây — còn phải so cũ–mới trên DB thật.
 3. **Phần 2 (nợ)** = nhóm trong đề xuất bổ trợ MỚI NHẤT đã duyệt từ thứ Hai tuần trước trở đi + dạng của case bổ trợ yếu còn mở (quy về nhóm). Số lần đo dự kiến của nhóm nợ = số ca test sau giờ / bổ trợ yếu của em trong tuần.
-4. **Nút Xem lại lý thuyết / Xem lại bài trên lớp / Luyện tập** trên app HS mở Sổ tay · khu Giáo trình · Tự luyện (chưa nhảy thẳng tới đúng nhóm — cần thêm tham số cho 3 màn đó). App PH chỉ ghi lời nhắc, vì phụ huynh không làm bài.
+4. **Bấm 1 nhóm chỉ còn 2 nút: Xem lại bài trên lớp (mở khu giáo trình — có đủ bài trên lớp) · Luyện tập (Tự luyện).** Bỏ "Xem lại lý thuyết" (Thùy 13/11: không cần). App PH chỉ ghi lời nhắc, vì phụ huynh không làm bài.
 5. **Xếp hạng "lên/xuống bậc"** so với hạng của hôm trước (chụp mỗi ngày lần đầu cron chạy).
 6. **Sổ chốt** = tính lại tờ tuần TẠI MỐC 00:00 thứ Hai (bài chấm sau mốc không vào bản chốt); hạng trong sổ = hạng cuối của bảng đệm.
 

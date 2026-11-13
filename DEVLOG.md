@@ -80023,3 +80023,10 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa trong lúc kiểm: tiến độ đầu tuần tính nhóm chưa có số đầu tuần = 0 (trước đó bỏ ra ⇒ đầu tuần cao hơn hiện tại, sai nghĩa); thêm d / tien_do_d / hang_doi / viec_pct vào DB để app không tự trừ.
 - Quyết định CTO (ghi spec §14): nút "Chốt mục tiêu tuần" THEO LỚP ở tab trung tâm (tín hiệu "chưa chốt thì chưa hiện") · % nhóm đọc mastery CÓ BTVN như Dashboard học tập · nút Lý thuyết/Bài trên lớp/Luyện tập mở Sổ tay/Giáo trình/Tự luyện (chưa nhảy đúng nhóm).
 - check:style-hs RỚT ở CaBoTroHS.tsx (3 > mốc 2) — có sẵn từ commit 3ac6485 của phiên khác, không phải file phiên này; file mới MucTieuTuanHS.tsx 0 màu gõ tay.
+
+## 13/11 12:28 — Mục tiêu tuần: ô riêng ở Home app HS · bỏ nút lý thuyết
+- Thùy: "chỗ lý thuyết ko cần. Bài trên lớp mở giáo trình là có hết rồi. Cần thêm ô mới ở Home… icon dùng lại 1 chút ko sao, ko trùng ở Home là dc".
+- KhuId 'muc_tieu' vào KHU + KHU_CAP2 (sau ô Học tập) + KIT_O; direct 'muc_tieu' → MucTieuTuanTheoMon (môn đang chọn). Bỏ ô mục tiêu trong Thông tin học tập (một lối vào).
+- Icon: RPG o_rank · Tối giản o_bai_tap_giao · Khối/Lo-fi/Đáng yêu/Halloween o_luyen_yeu — đều KHÔNG hiện ở Home. Chụp Home RPG/Lo-fi/Tối giản: ô hiện đúng, không trùng.
+- Nhóm bài bấm vào còn 2 nút: Xem lại bài trên lớp (khu giáo trình) · Luyện tập. App PH sửa câu nhắc.
+- Kiểm: tsc · build ERP/HS/PH · check:style-hs (ô mới đủ icon 6 style; còn RỚT cũ ở CaBoTroHS.tsx của phiên khác).
