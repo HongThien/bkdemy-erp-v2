@@ -1,0 +1,316 @@
+{
+ "tong": {
+  "de": 17,
+  "soan": 17,
+  "soat": 17,
+  "dat": 17,
+  "sua": 17,
+  "cau": 225,
+  "hinh": 56,
+  "co_hd": 7,
+  "chua_chac": [
+   "B010-01 Bài 3",
+   "B010-01 Bài 4.1",
+   "B010-03 Bài IV",
+   "B010-04 Bài 4",
+   "B010-05 Câu 2",
+   "B010-05 Câu 14a",
+   "B010-05 Bài 1",
+   "B010-05 Bài 3",
+   "B010-07 Bài 3",
+   "B010-10 Câu 1",
+   "B010-11 Câu 4B.2",
+   "B010-12 Câu 4.1",
+   "B010-12 Câu 4.2"
+  ],
+  "loai": {
+   "tu_luan": 125,
+   "tra_loi_ngan": 22,
+   "trac_nghiem": 78
+  }
+ },
+ "de": [
+  {
+   "ma": "B010-01",
+   "don_vi": "Phòng GD&ĐT huyện Thanh Trì, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 7,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Bài 3",
+    "Bài 4.1"
+   ]
+  },
+  {
+   "ma": "B010-02",
+   "don_vi": "Trường Ban Mai (Ban Mai School), Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "trac_nghiem": 4,
+    "tu_luan": 6
+   },
+   "hinh": 3,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-03",
+   "don_vi": "Trường THCS và THPT M.V. Lô-mô-nô-xốp, Phòng GD-ĐT Nam Từ Liêm, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 14,
+   "loai": {
+    "trac_nghiem": 6,
+    "tu_luan": 7,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Bài IV"
+   ]
+  },
+  {
+   "ma": "B010-04",
+   "don_vi": "THCS Ngọc Lâm, quận Long Biên, Hà Nội (Mã đề T801)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 15,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 7
+   },
+   "hinh": 3,
+   "chua_chac": [
+    "Bài 4"
+   ]
+  },
+  {
+   "ma": "B010-05",
+   "don_vi": "THCS Hát Môn, xã Hát Môn, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 23,
+   "loai": {
+    "trac_nghiem": 12,
+    "tu_luan": 9,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 6,
+   "chua_chac": [
+    "Câu 2",
+    "Câu 14a",
+    "Bài 1",
+    "Bài 3"
+   ]
+  },
+  {
+   "ma": "B010-06",
+   "don_vi": "THCS Ngô Sĩ Liên, phường Cửa Nam, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 13,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 4,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 5,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-07",
+   "don_vi": "THCS Ngọc Thụy, phường Bồ Đề, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tra_loi_ngan": 3,
+    "tu_luan": 5
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Bài 3"
+   ]
+  },
+  {
+   "ma": "B010-08",
+   "don_vi": "THCS Phúc Đồng, phường Phúc Lợi, Hà Nội (Mã đề 801)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 11,
+   "loai": {
+    "tu_luan": 10,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-09",
+   "don_vi": "THCS Thăng Long, phường Giảng Võ, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 13,
+   "loai": {
+    "tu_luan": 12,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-10",
+   "don_vi": "THCS Tân Triều, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 2,
+   "chua_chac": [
+    "Câu 1"
+   ]
+  },
+  {
+   "ma": "B010-11",
+   "don_vi": "Phòng GD&ĐT huyện Chương Mỹ, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 18,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 6,
+    "tra_loi_ngan": 4
+   },
+   "hinh": 7,
+   "chua_chac": [
+    "Câu 4B.2"
+   ]
+  },
+  {
+   "ma": "B010-12",
+   "don_vi": "THCS Nguyễn Công Trứ, quận Ba Đình, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 8,
+    "tra_loi_ngan": 1
+   },
+   "hinh": 4,
+   "chua_chac": [
+    "Câu 4.1",
+    "Câu 4.2"
+   ]
+  },
+  {
+   "ma": "B010-13",
+   "don_vi": "THCS Phúc Đồng, quận Long Biên, Hà Nội (Mã đề 801)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 15,
+   "loai": {
+    "trac_nghiem": 8,
+    "tra_loi_ngan": 2,
+    "tu_luan": 5
+   },
+   "hinh": 4,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-14",
+   "don_vi": "THCS Giang Biên, Hà Nội (Đề 01)",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 15,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 7
+   },
+   "hinh": 4,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-15",
+   "don_vi": "THCS Lý Sơn, phường Việt Hưng, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 10,
+   "loai": {
+    "tu_luan": 8,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-16",
+   "don_vi": "THCS Ngô Gia Tự, phường Việt Hưng, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 17,
+   "loai": {
+    "trac_nghiem": 8,
+    "tu_luan": 7,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 4,
+   "chua_chac": []
+  },
+  {
+   "ma": "B010-17",
+   "don_vi": "THCS Việt Hưng, phường Việt Hưng, Hà Nội",
+   "co_hd": true,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 9,
+   "loai": {
+    "tu_luan": 9
+   },
+   "hinh": 2,
+   "chua_chac": []
+  }
+ ]
+}
