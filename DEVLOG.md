@@ -80090,3 +80090,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Ghi 27 form** nhánh Đại/bdm (`da_duyet=false`), không rule mới: sửa 13 câu FAIL cũ (đáp số thập phân vs phương án phân số) bằng đổi phương án sang thập phân hữu hạn (chỉ giữ 3/13), chuẩn hoá đề (`.`→`\cdot`, `\dfrac7{13}`→`\dfrac{7}{13}`) để `mcq-auto` lấy thêm 26 câu, cân A–D bằng `b9_cancan_ghi.mjs`.
 - **Hình học lớp 7: KHÔNG làm** — `mcq-sinh.mjs` `BANG` chỉ có `dai`/`hgt`; DB có `hinh_hoc_cau_hoi`/`hinh_hoc_cau_form_tn` nhưng pipeline chưa nối (file mig 202610141749 không có trong repo). 818 tự luận (chứng minh/hình), 18 trả lời ngắn (làm được sau khi nối pipeline), 122 MCQ gốc.
 - **Bỏ ~54 + 40 câu:** đáp số chữ, toán thực tế máy trích số sai (T107000000255/399/455/553/649/714/769/771), phương trình mũ phức tạp, dãy \dots, tìm cặp x,y, chứng minh bất đẳng thức, đáp số biểu thức (T107010505007–017, 026), tọa độ trục số. T107000000455 nghi đề nhiều ý bị trích sai.
+
+## 13/11 — toanmath: gom hết đề thi CUỐI KÌ I K9 vào B005 (Thùy "đang chạy cuối kì I mà")
+- `batch.json` lẫn CKI + CKII trong cùng batch "cuối kì" (B003 = 3 CKI + 14 CKII). Chuyển 3 bài CKI của B003 sang B005 ⇒ **B005 = 13 đề thi CKI K9** (3 + 10 "scan nghi trùng"); B003/B004 = đề thi CKII K9 (1/2, 2/2) — làm khi có file `K9\Đề thi\CKII`. `lap-batch.mjs` chạy lại sẽ đè sửa tay này.
+- Đo trùng: 13/13 là scan ⇒ do-trung `khong_doc`. Hai nhân chứng (tên trường + năm trùng đề trong kho; ảnh trang 1 so 3 câu đầu đề kho) ⇒ **11/13 đã có trong kho** (Phúc Đồng đủ 3 mã 901/902/903). Còn **2 đề**: Nguyễn Bỉnh Khiêm 2025-26 (mã 901), Marie Curie 2024-25. Chi tiết `batch/B005/bo.md`.
+- Sau B005, đề thi CKI K9 trong bộ toanmath coi như hết; CKI K9 còn đề cương (B006–B009, cần thư mục `K9\Đề cương\CKI`).
