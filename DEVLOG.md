@@ -79998,3 +79998,9 @@ Thùy nêu 4 việc, làm được 3:
 - Chạy thử ghi.mjs (rollback): 256 mới · 3 trùng. CHƯA ghi DB — chờ Thùy duyệt duyet-B001.html.
 - Công cụ mới: do-trung-batch.mjs, chuan-bi-batch.mjs, ghep-brief.mjs, tong-hop-batch.mjs, duyet-batch.mjs.
 - 12/11 Thùy "Ghi B001": ghi.mjs --ghi tuần tự 31/31 ✔ — 31 tai_lieu, 259 câu (Đại 193 · Hình 66 tạm HH00108), 256 mới · 3 trỏ câu cũ; kiểm DB khớp. HANDOFF thêm mục toanmath.
+
+## 13/11/2026 — K6: check giải đề thi cuối kì + đẩy vào bản đồ
+- **Check (Thùy "Check giải đề thi cuối kì"):** 266 câu CKI K6 (19 đề). 217 câu có đáp số: 6 agent Sonnet giải MÙ (không thấy đáp án), tự kiểm bằng code ⇒ **215/215 khớp**, 2 câu cần ảnh (T106000000626, 641). 49 câu tự luận/Đ-S: Opus soát lời giải ⇒ **47 đúng**, 0 sai, 2 cần ảnh (642, 651). Script so: `k6/ckk-check/so-cki.cjs`. Không câu nào sai/đề lỗi.
+- **Đẩy vào bản đồ:** `k6/ckk-check/day-vao-ban-do.mjs --ghi` — 3 câu gán lệch đổi sang Số nguyên (T106000000033 → NDB01300 cộng trừ nhiều số nguyên; 288 → NDB01294 tập hợp của số nguyên; 487 → NDB01315 tìm x số hạng/số bị trừ; trước đó nằm dạng số tự nhiên); duyệt 24 câu gán rồi chưa duyệt (duyet_nguon='ai').
+- **Còn 7 câu chưa gán, chờ Thùy:** 040 (nguyên lí Dirichlet) · 590 (tìm SNT p,q) · 560 (bộ ba + ƯCLN, đề xuất NDB00416 mức vừa) · 564 (Đ/S tập hợp số nguyên, kho Đ/S) · 641/642/651 (Thống kê — bản đồ K6 chưa có chương dữ liệu; 642/651 có ảnh).
+- **Bài học:** gán 'nguoi' chưa duyệt vẫn có thể sai chủ đề (ℤ nhưng nằm dạng số tự nhiên) — soát câu có `mathbb{Z}`/số âm nằm ngoài NCD00189.
