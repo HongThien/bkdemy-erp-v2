@@ -80012,3 +80012,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 09:37 — Mục tiêu tuần: CHỐT cờ = mục tiêu tuần, 80% = đích dài hạn
 - Thùy OK đề xuất §5.2b. Tiến độ tổng + xếp hạng tính theo mục tiêu tuần. Mockup màn 1: cờ ở mục tiêu tuần, vạch mờ "đích 80%" ở nhóm ôn tập.
+
+## 13/11 09:42 — Mục tiêu tuần: chốt 6 câu cuối, spec hết câu treo
+- Chưa chốt xong thì chưa hiện tờ tuần mới · không có lớp T7+CN liền nhau · nhiệm vụ (chơi) và mục tiêu tuần (học) tách riêng, sau này có thể gộp và bỏ nhiệm vụ cũ nhưng chưa làm · vắng = chưa hoàn thành (phải học bù) · mới vào lớp = chưa có dữ liệu phần trước · mỗi môn màn riêng · HS tự cam kết để sau.

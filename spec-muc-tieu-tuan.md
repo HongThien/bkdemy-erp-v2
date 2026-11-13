@@ -1,6 +1,6 @@
 # Spec — MỤC TIÊU TUẦN của học sinh
 
-> **Trạng thái:** thiết kế đã chốt (Thùy, phiên Sparring 12–13/11/2026). **CHƯA build** — chưa có migration, chưa có màn.
+> **Trạng thái:** thiết kế đã chốt HẾT, không còn câu treo (Thùy, phiên Sparring 12–13/11/2026). **CHƯA build** — chưa có migration, chưa có màn.
 > **Mockup đã duyệt:** canvas "Mục tiêu tuần — mockup" (https://claude.ai/artifact/Pcfd6y2dSTxwNCqBJKpQeG)
 > — màn 1 Mục tiêu tuần này · màn 2 Các tuần đã chốt · màn 3 Tab trung tâm. Hai màn ghi "BỎ" trên canvas là phương án đã loại.
 > Lịch sử từng bước quyết định: `DEVLOG.md` 12/11–13/11. File này là bản gộp sạch, thay mọi bản trước.
@@ -302,17 +302,20 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 
 ---
 
-## 12. Còn treo
+## 12. Quyết định cuối (Thùy 13/11) — hết câu treo
 
-1. ~~Cờ = mục tiêu tuần hay 80%~~ — chốt: cờ = mục tiêu tuần, 80% = đích dài hạn (§5.2b).
-2. ~~Ngưỡng chênh tăng/giảm~~ — chốt: không có ngưỡng (§5.3).
-3. ~~Hết vòng 3 buổi ở mức 50–79% có thành nợ không~~ — chốt **tạm thời KHÔNG** (Thùy 13/11): chỉ nhóm do lượt chốt bổ trợ đưa vào mới là nợ.
-4. **Lớp chưa chốt xong** tới giờ phát: hiện tờ mục tiêu theo phần đã có, hay giữ lại? Giờ phát cụ thể.
-5. **Lớp học thứ Bảy và Chủ nhật liền nhau:** BTVN buổi thứ Bảy chấm lúc nào.
-6. **Quan hệ với "Nhiệm vụ"** sẵn có của app HS: gộp hay tách.
-7. **Em mới vào lớp** (không gánh nợ trước ngày vào?) · **em vắng** (mục tiêu giữ, đường đi = buổi bù?).
-8. **Em học nhiều môn:** có màn gộp các môn không, hay chỉ chuyển môn bằng nút.
-9. HS có được tự cam kết / chọn thêm mục tiêu không (goal-setting: có cam kết thì hiệu lực mạnh hơn) — để sau.
+| # | Câu | Chốt |
+|---|---|---|
+| 1 | Cờ = mục tiêu tuần hay 80% | Cờ = mục tiêu tuần, 80% = đích dài hạn (§5.2b) |
+| 2 | Ngưỡng chênh tăng/giảm | Không có ngưỡng — mọi chênh khác 0 (§5.3) |
+| 3 | Hết vòng 3 buổi ở mức 50–79% | Tạm thời KHÔNG thành nợ |
+| 4 | Lớp chưa chốt xong tới giờ phát | **Chưa chốt thì chưa hiện** tờ tuần mới (màn ghi "đang chốt mục tiêu tuần"); không phát bản dở |
+| 5 | Lớp học thứ Bảy + Chủ nhật liền nhau | Không có lớp nào như vậy — bỏ |
+| 6 | Quan hệ với "Nhiệm vụ" app HS | **Nhiệm vụ = chơi, mục tiêu tuần = học — tách riêng.** Sau này có thể gộp và bỏ nhiệm vụ cũ, nhưng KHÔNG làm trong đợt này |
+| 7 | Em vắng | Việc của buổi vắng tính **chưa hoàn thành** (vắng thì phải học bù — đường đi là buổi bù, R-BU) |
+| 7b | Em mới vào lớp | Phần trước ngày vào: **chưa có dữ liệu** (không tính nợ, không tính chưa hoàn thành) — đúng §1.5 "thiếu data = không có dòng" |
+| 8 | Em học nhiều môn | **Mỗi môn một màn riêng**, không có màn gộp |
+| 9 | HS tự cam kết mục tiêu | Để sau |
 
 ---
 
@@ -328,4 +331,4 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 | 6 | Nợ tự biến mất sau 30 ngày không đo | Nợ đọc từ sổ chốt tuần (§10) |
 | 7 | Đổi luật mastery làm gãy trend toàn hệ | So cũ–mới trước khi áp, ghi ngày đổi lên màn trend (§8.2) |
 | 8 | Màn chậm / chạm trần 8 s khi phụ huynh mở qua FDW hoặc khi tính hạng toàn trung tâm | Bảng tính sẵn + cache mastery (§10) |
-| 9 | Tải: em nhiều môn, sức chứa ca sau giờ, em vắng / em mới | MỞ (§12.7–8) |
+| 9 | Tải: em nhiều môn, sức chứa ca sau giờ, em vắng / em mới | Gỡ: mỗi môn màn riêng · số nhóm nợ = sức chứa ca (§7) · vắng = chưa hoàn thành, mới vào = chưa có dữ liệu (§12) |
