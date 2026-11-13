@@ -19,7 +19,13 @@ try {
   const [ad] = await q("select tk.id from tai_khoan tk join nhan_su ns on ns.id = tk.nhan_su_id where lower(ns.email) = 'admin@gmail.com' limit 1")
   await q("select set_config('request.jwt.claims', $1, true)", [JSON.stringify({ sub: ad.id, role: 'authenticated' })])
   const [daCo] = await q(`select id from tai_lieu where loai = 'chuyen_de' and ten = $1 and khoi = $2`, [TEN, KHOI])
-  if (daCo) throw new Error(`Đã có "${TEN}" khối ${KHOI} (${daCo.id}) — không tạo bản thứ 2.`)
+  if (daCo && !process.argv.includes('--lam-lai')) throw new Error(`Đã có "${TEN}" khối ${KHOI} (${daCo.id}) — không tạo bản thứ 2 (thêm --lam-lai để dựng lại: xoá chỉ các dòng tham chiếu của chuyên đề này).`)
+  if (daCo) {   // dựng lại: chuyên đề chỉ gồm dòng tham chiếu (tai_lieu_phan/tai_lieu_cau → mã bài kho) — bài kho Hình–Luyện KHÔNG bị đụng
+    await q(`delete from tai_lieu_cau where phan_id in (select id from tai_lieu_phan where tai_lieu_id = $1)`, [daCo.id])
+    await q(`update tai_lieu_phan set cha_id = null where tai_lieu_id = $1`, [daCo.id])
+    await q(`delete from tai_lieu_phan where tai_lieu_id = $1`, [daCo.id])
+    await q(`delete from tai_lieu where id = $1`, [daCo.id])
+  }
   const bai = await q(`select b.ma_bai, b.loai_cau, m.id mh_id, m.ma mh_ma, nm.id nhom_id, nm.ten nhom, nm.thu_tu nhom_tt, cd.thu_tu cd_tt,
                               (select count(*) from hinh_y y2 where y2.bai_id = b.id) ny
                          from hinh_bai b left join hinh_mo_hinh m on m.id = b.mo_hinh_id
@@ -42,11 +48,30 @@ try {
       await q(`select fn_tl_hl_dat_bai($1, $2)`, [m.phan_id, ds.map((b) => b.ma_bai)])
     }
   }
+  // Chia phần NHỎ (≤ MAX bài) để mỗi phần dựng/in được riêng bằng "👁 Xem phần" — gộp cả 116 bài vào một phần thì paged.js quá 30 s.
+  const MAX = 9
   const chuaMh = bai.filter((b) => !b.mh_id)
-  if (chuaMh.length) {
-    const [p] = await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, await sau(), 'Bài hình nhiều ý'])
-    const [{ k }] = await q(`select fn_tl_hl_them_khoi_khac($1, $2) k`, [tl.id, p.id])
-    await q(`select fn_tl_hl_dat_bai($1, $2)`, [k, chuaMh.sort(theoLoai).map((b) => b.ma_bai)])
+  const txtOf = Object.fromEntries((await q(`select b.ma_bai, lower(coalesce(b.gia_thiet_chung,'') || ' ' || coalesce(b.de_bai,'') || ' ' || coalesce((select string_agg(y.noi_dung, ' ¦ ' order by y.thu_tu) from hinh_y y where y.bai_id = b.id), '')) t from hinh_bai b where b.ma_bai = any($1)`, [chuaMh.map((b) => b.ma_bai)])).map((r) => [r.ma_bai, r.t]))
+  const nhomHinh = (m) => { const t = txtOf[m]; const d = t.slice(0, 300)
+    if (/hình thang/.test(t) && !/hình bình hành/.test(t.slice(0, 150))) return 'Hình thang'
+    if (/hình thoi|hình vuông/.test(d)) return 'Hình thoi · hình vuông'
+    if (/hình chữ nhật/.test(d)) return 'Hình chữ nhật'
+    if (/hình bình hành/.test(d)) return 'Hình bình hành'
+    if (/đường trung bình|thales|thalès|phân giác/.test(t)) return 'Thalès · đường trung bình · phân giác'
+    if (/vuông tại/.test(t.slice(0, 200))) return 'Tam giác vuông'
+    if (/tam giác/.test(t.slice(0, 120))) return 'Tam giác (cân · đều · thường)'
+    return 'Tứ giác khác' }
+  const THU_TU_NHOM = ['Hình bình hành', 'Hình chữ nhật', 'Hình thoi · hình vuông', 'Hình thang', 'Tứ giác khác', 'Tam giác vuông', 'Tam giác (cân · đều · thường)', 'Thalès · đường trung bình · phân giác']
+  const theoNhom = new Map(THU_TU_NHOM.map((n) => [n, []]))
+  for (const b of chuaMh.sort(theoLoai)) theoNhom.get(nhomHinh(b.ma_bai)).push(b)
+  for (const [ten, ds] of theoNhom) {
+    const soPhan = Math.ceil(ds.length / MAX) || 0
+    for (let k = 0; k < soPhan; k++) {
+      const lat = ds.slice(Math.floor((k * ds.length) / soPhan), Math.floor(((k + 1) * ds.length) / soPhan))
+      const [p] = await q(`insert into tai_lieu_phan (tai_lieu_id, thu_tu, loai_phan, tieu_de) values ($1, $2, 'buoi', $3) returning id`, [tl.id, await sau(), soPhan > 1 ? `${ten} (${k + 1}/${soPhan})` : ten])
+      const [{ k: kh }] = await q(`select fn_tl_hl_them_khoi_khac($1, $2) k`, [tl.id, p.id])
+      await q(`select fn_tl_hl_dat_bai($1, $2)`, [kh, lat.map((b) => b.ma_bai)])
+    }
   }
   const [{ kq }] = await q(`select fn_tl_hl_noi_dung($1) kq`, [tl.id])
   let tong = 0
