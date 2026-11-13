@@ -1,0 +1,49 @@
+{
+ "tong": {
+  "de": 2,
+  "soan": 2,
+  "soat": 2,
+  "dat": 2,
+  "sua": 2,
+  "cau": 16,
+  "hinh": 4,
+  "co_hd": 0,
+  "chua_chac": [],
+  "loai": {
+   "tu_luan": 12,
+   "tra_loi_ngan": 4
+  }
+ },
+ "de": [
+  {
+   "ma": "B005-01",
+   "don_vi": "THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tu_luan": 6,
+    "tra_loi_ngan": 2
+   },
+   "hinh": 2,
+   "chua_chac": []
+  },
+  {
+   "ma": "B005-02",
+   "don_vi": "THCS Marie Curie, Hà Nội",
+   "co_hd": false,
+   "soan": true,
+   "soat": "ĐẠT",
+   "sua": true,
+   "cau": 8,
+   "loai": {
+    "tra_loi_ngan": 2,
+    "tu_luan": 6
+   },
+   "hinh": 2,
+   "chua_chac": []
+  }
+ ]
+}
