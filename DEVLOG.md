@@ -80296,3 +80296,10 @@ Thùy nêu 4 việc, làm được 3:
 - App: `KHUON_THI` (lib/mt, registry theo khối — K12) + `dungKhuonThi` (tạo MT K12 tự dựng 3 phần; MT K12 cũ có nút "Áp khuôn thi THPT" nhận phần theo tên) · `cau_hinh.khuonThi` = {phan:{tn,ds,tln}, dsChuDe} · MTEditor: nhãn "🎓 Khuôn THPT · n/12", điểm + dạng in khoá theo khuôn (effect tự ghi khi lệch), Phần I/III gợi ý chỉ câu trắc nghiệm / trả lời ngắn (`goiYDangBai` thêm loai, pickDang/↻ lọc), Phần II chọn chủ đề + "Gợi ý đủ 4 câu" + ↻ cùng chủ đề, mã đề 2/3 Đ/S = câu khác cùng chủ đề + cùng kho · ChamMT: câu Đ/S có ô "Từng ý a b c d" (✓/✗, đủ ý mới ghi).
 - Verify dev (MT thử "[TEST Claude] Khuon THPT - xoa duoc", id 6af255dc…): khuôn tự dựng 12/4/6 hàng · Đ/S 4 câu (2 chủ đề, có câu HGT) · Phần I 4 câu TN 4 PA 0,25đ · Phần III 4 câu TLN 0,5đ · 3 mã đề đủ (Đ/S đề 2/3 cùng chủ đề cùng kho; TN dùng lại câu gốc vì kho hết câu cùng dạng+cụm). Màn chấm đề thật 12A1: Câu 13–16 có "Từng ý" (không bấm — dữ liệu thật). MT thử CHƯA xoá — chờ Thùy.
 - Chưa làm: ✎ Chọn tay câu Đ/S (mới có ↻ gợi ý) · tab MT ở Buổi học chưa có ô từng ý (chấm ở lá Chấm MT) · mastery theo từng mệnh đề Đ/S.
+
+## 13/11 15:54 — Bỏ Theo dõi + retest (mig 202611131554 ĐÃ ÁP, Thùy gật) + spec-bo-tro viết lại
+- spec-bo-tro.md viết lại theo hiện trạng (bỏ MCQ tuyệt đối, 2 vòng, chốt tuần, theo dõi, L1–L3 cũ, 2 cửa sổ, cụm, retest); §10 = logic cũ chờ gỡ.
+- _btyeu_vao_theo_doi_sau_case no-op; 30 theo_doi → go; 25 retest mo → dong. Còn chờ Thùy: Hình mô hình + màn Nội dung/Đánh giá ca; đếm "x dạng" hàng chờ sau giờ vẫn theo _sau_gio_dang.
+
+## 13/11 — Kho dạng bài: nút ◀ Dạng trước / Dạng sau ▶ trên header (Thùy)
+- KhoModal (BanDoMoi): thứ tự dạng bài cả khối từ cây (chủ đề › chuyên đề › nhóm › dạng); Hình–Học theo mo.hinh.bais. Đổi dạng = onDoi(setKhoMo) ⇒ tải kho dạng mới, giữ bộ lọc. Đã thử local: 1.1 → 1.2 (53 câu), "1.2 · 2/66". Không đụng DB.

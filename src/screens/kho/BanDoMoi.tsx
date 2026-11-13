@@ -487,7 +487,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
         <BangGanCau g={ganMo} onDong={() => setGanMo(null)} onDaGan={(n) => { thongBao(n); void napLai() }} />
       )}
 
-      {khoMo && <KhoModal mo={khoMo} khoi={khoi} cay={cay} onDong={() => setKhoMo(null)} onDaDoi={() => void napLai()} />}
+      {khoMo && <KhoModal mo={khoMo} khoi={khoi} cay={cay} onDong={() => setKhoMo(null)} onDaDoi={() => void napLai()} onDoi={setKhoMo} />}
       {lopMo && <KhoTrenLopModal dangBaiId={lopMo.id} ten={lopMo.ten} onDong={(doi) => { setLopMo(null); if (doi) demLopTheoDang(khoi).then(setDemLop).catch(() => {}) }} />}
       {lt && (
         <LyThuyetModal key={`${lt.loai}:${lt.id}:${lt.lan}`} ma={lt.id} ten={`${lt.loai === 'db_vd' ? 'Ví dụ' : 'Lý thuyết'} — ${lt.ten}`} current={lt.current}
@@ -1393,7 +1393,16 @@ const LOC_KHO: { id: KhoCauLoc; nhan: string }[] = [
   { id: 'tat_ca', nhan: 'Tất cả' }, { id: 'chua_duyet', nhan: 'Chưa duyệt' }, { id: 'da_duyet', nhan: 'Đã duyệt' }, { id: 'kho_chuan', nhan: 'Kho chuẩn' },
 ]
 const NHAN_LOAI: Record<string, string> = { trac_nghiem: 'Trắc nghiệm', dung_sai: 'Đúng/Sai', tra_loi_ngan: 'Trả lời ngắn', tu_luan: 'Tự luận' }
-function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string; cay: BdmCay | null; onDong: () => void; onDaDoi: () => void }) {
+function KhoModal({ mo, khoi, cay, onDong, onDaDoi, onDoi }: { mo: KhoMo; khoi: string; cay: BdmCay | null; onDong: () => void; onDaDoi: () => void; onDoi?: (m: KhoMo) => void }) {
+  // ◀ Dạng trước / Dạng sau ▶ (Thùy 13/11 "không phải thoát ra bản đồ rồi chuyển dạng"): đi theo thứ tự dạng bài trên cây CẢ KHỐI
+  // (chủ đề › chuyên đề › nhóm › dạng bài, đúng thứ tự màn bản đồ). Hình–Học: theo danh sách bài học của vùng mà popup đã mang (mo.hinh.bais).
+  const chuoi = useMemo((): { id: string; ten: string; so: string; so_cau: number | null }[] => (mo.loai !== 'dang_bai' ? []
+    : mo.hinh ? mo.hinh.bais.map((b, i) => ({ id: b.id, ten: b.ten, so: String(i + 1), so_cau: null }))
+    : cay ? cay.chu_de.flatMap((cd) => [...cd.o].sort((a, b) => a.so - b.so).flatMap((o) => o.nhom.flatMap((n) => n.dang_bai.map((d) => ({ id: d.id, ten: d.ten, so: `${n.so}.${d.so}`, so_cau: d.so_cau })))))
+    : []), [mo.loai, mo.hinh, cay])
+  const viTri = chuoi.findIndex((x) => x.id === mo.id)
+  const diToi = (i: number) => { const x = chuoi[i]; if (!x || !onDoi) return; setChuyen(null); setSua(null); onDoi({ loai: 'dang_bai', id: x.id, ten: x.ten, hinh: mo.hinh }) }
+  const nhanDi = (i: number) => { const x = chuoi[i]; return x ? `${x.so} ${x.ten}${x.so_cau == null ? '' : ` (${x.so_cau} câu)`}` : undefined }
   const [loc, setLoc] = useState<KhoCauLoc>('tat_ca')
   const [rows, setRows] = useState<KhoCauRow[]>([])
   const [tong, setTong] = useState(0)
@@ -1475,6 +1484,15 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi }: { mo: KhoMo; khoi: string;
       <div className="flex h-full max-h-[95vh] w-full max-w-[95vw] flex-col overflow-hidden rounded-xl bg-slate-50 shadow-2xl max-md:max-h-none max-md:max-w-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
         <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5 max-md:gap-x-2 max-md:gap-y-1.5 max-md:px-3 max-md:py-2">
           <span className="text-[14px] font-semibold text-slate-900">📚 {tieuDe}</span>
+          {viTri >= 0 && onDoi && (
+            <span className="flex shrink-0 items-center gap-1">
+              <button onClick={() => diToi(viTri - 1)} disabled={viTri <= 0} title={viTri > 0 ? `Dạng trước: ${nhanDi(viTri - 1)}` : undefined}
+                className="rounded-md border border-slate-300 px-2 py-0.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-700 disabled:opacity-30">◀ Dạng trước</button>
+              <span className="text-[11.5px] text-slate-400">{chuoi[viTri].so} · {viTri + 1}/{chuoi.length}</span>
+              <button onClick={() => diToi(viTri + 1)} disabled={viTri >= chuoi.length - 1} title={viTri < chuoi.length - 1 ? `Dạng sau: ${nhanDi(viTri + 1)}` : undefined}
+                className="rounded-md border border-slate-300 px-2 py-0.5 text-[12px] font-medium text-slate-600 hover:border-indigo-400 hover:text-indigo-700 disabled:opacity-30">Dạng sau ▶</button>
+            </span>
+          )}
           <span className="min-w-0 flex-1 truncate text-[13px] text-slate-600 max-md:order-1 max-md:basis-full"><MathText>{mo.ten}</MathText></span>
           <span className="text-[12px] text-slate-500"><b>{tong}</b> câu{rows.length < tong ? ` · đang hiện ${rows.length}` : ''}</span>
           <span className="flex items-center gap-0.5 rounded-lg bg-slate-100 p-0.5 max-md:order-2 max-md:w-full max-md:[&>button]:flex-1">
