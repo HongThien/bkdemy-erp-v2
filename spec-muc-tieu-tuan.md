@@ -113,7 +113,8 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
    - **Xếp theo TIẾN ĐỘ TỔNG của tuần** (Thùy 13/11). Lý do so được giữa em giỏi và em yếu: mục tiêu của mỗi em đã theo chương trình
      và yêu cầu riêng (em yếu yêu cầu dễ hơn), nên tiến độ là % đi tới mục tiêu CỦA MÌNH. Bảng này đo **thái độ** là chính, không đo năng lực.
 
-*Chưa chốt:* công thức tiến độ tổng (mockup tạm lấy trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài; nhóm chưa đo = 0) ·
+**Tiến độ tổng (Thùy 13/11):** trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài **ĐÃ CÓ lần đo**; nhóm chưa đo **không tính** (em không tụt hạng vì trung tâm chưa dạy tới).
+*Chưa chốt:*
 
 mục tiêu của nhóm ôn tập có luôn 80% không (§5: một tuần thường không lật được từ yếu lên đạt).
 Mockup: canvas "Mục tiêu tuần — mockup", màn 1 bản 2.

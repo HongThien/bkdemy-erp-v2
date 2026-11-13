@@ -79973,3 +79973,6 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 13/11 08:33 — Mục tiêu tuần: chốt xếp hạng
 - Thùy: mỗi môn một bảng · chung mọi khối · xếp theo tiến độ tổng của tuần (mục tiêu mỗi em đã theo yêu cầu riêng, em yếu dễ hơn ⇒ bảng đo thái độ là chính). Spec §4a.
+
+## 13/11 08:37 — Mục tiêu tuần: công thức tiến độ tổng
+- Thùy OK: trung bình min(%/mục tiêu, 1) trên nhóm ĐÃ ĐO, nhóm chưa đo không tính. Thùy muốn màn HS cũng là màn gửi phụ huynh — đang đánh giá khác biệt.
