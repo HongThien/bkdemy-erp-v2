@@ -115,16 +115,20 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
 
 6. **Mỗi dòng nhóm bài hiện TĂNG/GIẢM so với ĐẦU TUẦN** (Thùy 13/11): số đầu tuần lấy từ bản chụp 00:00 thứ Hai, hiện vạch đứt trên thanh + chip ▲/▼.
    Nhóm mới có lần đo đầu tiên trong tuần ghi "mới đo". Thanh tiến độ tổng cũng có vạch đầu tuần.
-7. **"CON CẦN LÀM GÌ · ĐÃ LÀM GÌ" — lớp còn thiếu** (Thùy 13/11: "vừa nãy là set mục tiêu, cái này chính là cái mình thiếu").
-   Mỗi nhóm bài có một danh sách việc, hiện luôn dưới thanh (không cần bấm), mỗi việc ✓ / ○:
-   - Kiến thức mới: làm bài trên lớp · nộp từng lần bài về nhà có nhóm đó (BTVN xếp chồng ⇒ tới 3 lần).
-   - Ôn tập: xem lý thuyết · luyện N câu (đếm x/N) · có mặt buổi kiểm tra lại sau giờ.
-   Đầu màn có ô tổng "Việc con đã làm x/y". Việc do HỆ sinh từ giáo trình + lượt chốt bổ trợ, không ai giao tay;
-   "đã làm" suy từ dữ liệu có sẵn (pure-derive, CLAUDE §4), không có nút tự đánh dấu.
-   **Ba tầng xem cùng một dữ liệu:** học sinh (của mình) · phụ huynh (của con) · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã làm,
-   em nào chưa làm gì — vào dashboard học tập / báo cáo tuần trưởng khối). *Màn trung tâm: chưa vẽ.*
-   *Chưa chốt:* N câu luyện của một nhóm ôn tập là bao nhiêu (mockup tạm 10) · "xem lý thuyết" có đo được không (chưa thấy bảng ghi lượt xem lý thuyết;
-   tự luyện có `tu_luyen_dang_lan` / `tu_luyen_so_cau`) · việc nào làm muộn sau giờ chốt tính thế nào.
+7. **"VIỆC CỦA CON TUẦN NÀY" = KHU VỰC RIÊNG, liệt kê theo HOẠT ĐỘNG, không theo nhóm bài** (Thùy 13/11, sửa bản gắn việc vào từng nhóm):
+   ```
+   ET buổi 15/11            75%   Nghiêm túc
+   BTVN buổi 15/11          80%   Nghiêm túc
+   Test sau giờ 12/11      100%
+   Bổ trợ yếu T7 21/11     (sắp tới)
+   ```
+   - Mỗi dòng = một hoạt động có thật trong tuần: ET từng buổi · BTVN từng buổi · test sau giờ · ca bổ trợ (yếu / nhẹ / bù…).
+     Kết quả (% đúng) + **thái độ** khi hoạt động đó có chấm thái độ (`btvn_ket_qua.thai_do`: nghiêm túc / chưa hết sức / chưa nghiêm túc / chống đối).
+   - Hai khối: **Đã làm** · **Sắp tới** (có ngày, hạn; BTVN chưa nộp quá hạn ghi rõ "chưa nộp"). Đầu màn có ô tổng "x/y việc đã xong".
+   - Danh sách do HỆ suy từ lịch buổi + giáo trình + lượt chốt bổ trợ (pure-derive, CLAUDE §4), không ai giao tay, không nút tự đánh dấu.
+   - Dòng nhóm bài ở Phần 1/2 trở lại gọn (tên · ▲/▼ · % · cờ 80%); bấm vào mới có lý thuyết / bài trên lớp / luyện tập.
+   - **Ba tầng xem cùng dữ liệu:** học sinh · phụ huynh · **trung tâm** (tổng theo lớp/khối: tỉ lệ việc đã xong, thái độ, em chưa làm gì). *Màn trung tâm: chưa vẽ.*
+   - *Chưa chốt:* tự luyện trên app có là một dòng không (hiện chỉ có dữ liệu đếm câu `tu_luyen_*`) · ET có chấm thái độ không hay chỉ BTVN.
 
 **Kênh phụ huynh (Thùy 13/11, thay "chụp ảnh gửi"):** màn này hiện **REALTIME trên app phụ huynh** (Cổng Phụ huynh — project riêng `bkdemy-ph`,
 đọc ERP qua FDW `erp_live`), cùng nội dung màn HS, chữ formal. ⇒ Hàm đọc phải đọc **bảng tính sẵn** (§2.0), không tính lại qua FDW mỗi lượt mở.

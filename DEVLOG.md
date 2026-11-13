@@ -79981,3 +79981,6 @@ Thùy nêu 4 việc, làm được 3:
 - Thùy: màn hiện realtime trên app phụ huynh (Cổng PH, project bkdemy-ph, FDW erp_live) — bỏ phương án ảnh chụp. Sau mỗi lần chốt có dashboard trend theo tuần.
 - Lớp còn thiếu = mỗi nhóm bài có danh sách việc ✓/○ (hệ sinh, suy "đã làm" từ dữ liệu), xem ở 3 tầng HS · PH · trung tâm. Mỗi dòng hiện ▲/▼ so với đầu tuần.
 - Mockup: màn 1 cập nhật, màn 2 mới "Các tuần đã chốt", ảnh gửi PH đánh dấu BỎ. Spec §4a mục 6–7. Còn treo: N câu luyện, đo "xem lý thuyết", màn trung tâm chưa vẽ.
+
+## 13/11 08:51 — Mục tiêu tuần: "Việc của con" là khu vực riêng theo hoạt động
+- Thùy: liệt kê kiểu "ET 80% · BTVN 15/11 80% Nghiêm túc · Test sau giờ 100% · Bổ trợ yếu…", không gắn việc vào từng nhóm bài. Spec §4a mục 7 viết lại; mockup màn 1: dòng nhóm bài gọn lại, cột phải = Đã làm / Sắp tới.
