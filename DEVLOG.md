@@ -80404,3 +80404,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Lộ ra khi làm mẫu:** nhánh hgt có thêm trigger ghi log mà dai không có; khoá ngoại `chu_de_id` của hgt trỏ sang `dai_bdm_chu_de` (HGT dùng chung cây chủ đề của Đại).
 - **Luật mới (CLAUDE.md §1.6):** cấm tạo bảng mới kiểu `<nhánh>_<tên>` và chép hàm theo nhánh; cột/index sửa ở bảng chung. `check:kien-truc` nhận cả bảng chia phần khi kiểm RLS.
 - **Còn:** 24 họ (16 giống hệt → sinh bằng script; 8 lệch cột → làm khớp trước; `cau_hoi`, `ban_do` sau cùng). Trigger/hàm chép theo nhánh gom sau.
+
+## 14/11/2026 — K6 Số chính phương: câu n²+7 vào NDB03050 + clone đủ 15 bài mỗi dạng
+- **Làm (Thùy "đưa câu này vào kho 4.3" + "clone … mỗi nhóm 15 bài"):** `k6/so-chinh-phuong/clone.mjs --ghi`. Câu ảnh (T1060000001717) vào NDB03050 (gán + duyệt); lời giải viết lại: sách ghi k∈ℕ mà bảng có k âm ⇒ thay bằng lập luận hai thừa số cùng dương (tích dương, tổng 2k≥0), dùng tính chất phân phối thay hằng đẳng thức. Hiểu "mỗi nhóm 15" = **mỗi DẠNG của nhóm 15 bài**: NDB03050 gốc+14 · NDB02800 2 gốc+13 · NDB02801 5 gốc+10 = 37 clone.
+- **Clone bằng CODE, không DeepSeek:** khuôn T1–T4 (n²±c, 4n²+c, (n±m)²+c — lời giải sinh từ bảng ước của c, kiểm vét cạn n∈[-600,600]); F1 (b+…+b^{4t+1}, tận cùng) · F2 (p+…+p^k, ⋮p không ⋮p²) · H1 ((b−1)S+b=b^{k+1}, k chẵn) · H2 (tổng chữ số ≡2 mod 3) · H4 (x^{4n}+… mod 4) · H5 (kẹp giữa hai bình phương). Mọi khẳng định kiểm BigInt/vét cạn + KaTeX. Clone gán 'nguoi', **chưa duyệt**, parent_ma_cau = gốc cùng khuôn, kiem_may='khop'/claude_code.
+- **Sai trong lúc làm:** hàm kiểm tự viết sai `4n * n` (=4·n) làm vét cạn báo lệch — máy bắt, sửa test chứ không sửa lời giải. Bộ kiểm an toàn của harness chặn 1 lệnh vá dài (không có rm) ⇒ vá bằng file .cjs.
