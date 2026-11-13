@@ -102,15 +102,15 @@ Bảng của mỗi em là ĐẦU RA tự động của hai việc thứ Hai mọ
 
 ## 4a. Bố cục màn học sinh (Thùy 13/11 — sau mockup bản 1 lệch ý)
 
-1. **Phần 1 · Kiến thức mới** — danh sách nhóm bài; mỗi dòng: tên nhóm · **mục tiêu đánh giá (mặc định 80%)** · **% hiện tại**.
+1. **Phần 1 · Kiến thức mới** — danh sách nhóm bài; mỗi dòng: tên nhóm · **% hiện tại** · thanh tiến độ có **lá cờ đích ở mốc mục tiêu (mặc định 80%), số 80% ghi dưới cờ** (Thùy 13/11: không ghi chữ "Mục tiêu 80%" riêng).
 2. **Phần 2 · Ôn tập kiến thức** — cùng khuôn với Phần 1 (các nhóm bài nợ, do lượt chốt bổ trợ đưa vào).
 3. **Dòng chỉ hiện gọn; BẤM VÀO mới mở hướng dẫn chi tiết:** xem lại lý thuyết · xem lại bài trên lớp · luyện tập
    (Phần 2 thêm ngày kiểm tra lại sau giờ). Không bày nút và chữ giải thích sẵn trên mọi dòng.
 4. **Thanh tiến độ tổng mục tiêu của tuần** ở đầu màn.
-5. **Xếp hạng tiến độ** (trong lớp) để tạo động lực.
+5. **Xếp hạng tiến độ — đo TOÀN TRUNG TÂM** (Thùy 13/11), màn chỉ hiện **hạng của bản thân**; bấm vào mới mở **bảng top 20** (em ngoài top 20 thấy dòng của mình ở cuối bảng).
 
 *Chưa chốt:* công thức tiến độ tổng (mockup tạm lấy trung bình của min(% hiện tại / mục tiêu, 1) trên các nhóm bài; nhóm chưa đo = 0) ·
-xếp hạng theo tiến độ tổng đó hay theo mức TĂNG trong tuần · hiện cả danh sách lớp hay chỉ hạng của mình + nhóm dẫn đầu ·
+xếp hạng theo tiến độ tổng đó hay theo mức TĂNG trong tuần · xếp theo từng môn hay gộp môn · khối 6 và khối 9 có chung một bảng không ·
 mục tiêu của nhóm ôn tập có luôn 80% không (§5: một tuần thường không lật được từ yếu lên đạt).
 Mockup: canvas "Mục tiêu tuần — mockup", màn 1 bản 2.
 

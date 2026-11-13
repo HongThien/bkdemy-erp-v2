@@ -79967,3 +79967,6 @@ Thùy nêu 4 việc, làm được 3:
 ## 13/11 08:25 — Mục tiêu tuần: bố cục màn học sinh (mockup bản 1 lệch ý ⇒ vẽ lại)
 - Thùy: Phần 1 Kiến thức mới + Phần 2 Ôn tập kiến thức, mỗi dòng nhóm bài chỉ có mục tiêu (mặc định 80%) và % hiện tại; BẤM VÀO mới mở hướng dẫn (lý thuyết · bài trên lớp · luyện tập); thêm thanh tiến độ tổng tuần + xếp hạng tiến độ.
 - Spec thêm §4a. Chưa chốt: công thức tiến độ tổng, cách xếp hạng, mục tiêu nhóm ôn tập có luôn 80% không.
+
+## 13/11 08:31 — Mục tiêu tuần: xếp hạng toàn trung tâm + cờ đích 80%
+- Thùy: xếp hạng tiến độ đo toàn trung tâm, chỉ hiện hạng bản thân, bấm vào ra top 20. Mốc mục tiêu = lá cờ đích trên thanh, số 80% ghi dưới cờ, bỏ chữ "Mục tiêu 80%". Spec §4a + mockup màn 1 cập nhật.
