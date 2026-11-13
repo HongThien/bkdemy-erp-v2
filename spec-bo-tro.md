@@ -1,573 +1,150 @@
-# BỔ TRỢ — tài liệu tổng (yếu · bù · đuổi)
+# BỔ TRỢ — tài liệu tổng (hiện trạng 13/11/2026)
 
-> **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản TỔNG HỢP các quyết định CEO (Thùy) đã chốt + những gì ĐÃ BUILT,
-> tính tới **28/09/2026** (xem §12 cho thay đổi 24–28/09). Lịch sử/số đo từng quyết định: `DEVLOG.md` theo ngày. Thiết kế gốc: `PLAN-botro-yeu.md` (phát hiện → duyệt →
-> nội dung → xếp → đánh giá) và `PLAN-botro-yeu-ca.md` (1 ca diễn ra thế nào, 2 app). Code/DB là chân lý runtime; file này là bản đồ.
-
-> ## ⏸ HOLD — RETEST tầng 2 ĐANG TẠM DỪNG (CEO 29/09)
-> Thùy 29/09: *"quy trình mới không chạy được retest — hold lại, không dùng nữa, ẩn đi, sau này làm."* Mọi chỗ trong file này nói tới
-> **retest tầng 2** (`bai_test.loai='retest'`, bước ⑥, tab Chờ retest / 📝 Retest, "retest đến hạn" trên app TA, "Bài kiểm tra lại" trên app HS)
-> là thiết kế **đang ngủ** — code vẫn còn, chỉ bị công tắc tắt. **Test cuối ca KHÔNG bị ảnh hưởng** (vẫn sinh, vẫn tính mastery).
-> - **Công tắc — 2 chỗ, lật CÙNG NHAU:** DB `public._btyeu_retest_bat()` (hiện `false`, mig `202609291037_hold_retest_bo_tro_yeu`) ·
->   client `RETEST_BAT` ở `src/lib/botro_yeu_ca.ts` (re-export qua `botro_yeu.ts`). Bật lại = migration MỚI cho hàm trả `true` + đổi hằng.
-> - **⭐ ĐIỂM KẾT THÚC (Thùy 29/09): bổ trợ yếu END khi em HẾT dạng yếu + TA ĐÓNG CA.** *"Chờ đánh giá là việc của học thuật — luồng khác."*
->   TA bấm **Hoàn tất ca** mà sau khi chốt dạng đã dạy, case không còn dạng cần dạy (chưa dạy / retest trượt) ⇒ `fn_btyeu_hoan_tat` gọi
->   `_btyeu_ket_thuc_case`: case `hoan_thanh`, **ket_qua `day_xong`** ("Hết dạng yếu" — KHÔNG phải "đạt", không đo thêm gì), `dong_boi` = người
->   hoàn tất, dạng còn mở ⇒ `dong_at` (dat giữ NULL), huỷ buổi đã xếp chưa học. **Level không đổi** (học thuật quyết). Mig `202609291055`.
->   Vòng case khi hold: **Chờ chọn dạng → Cần xếp → Đã xếp → Hoàn thành** — không còn Chờ retest / Chờ đánh giá ở màn Xếp và Trạng thái ca.
->   **Dạng đã học lấy từ DỮ LIỆU (Thùy 29/09, mig `202609291122`):** ca 📱 app (hoặc chưa chọn chế độ) = dạng em có làm ≥1 câu trong ca —
->   TA KHÔNG tick, DB bỏ qua mọi tick gửi lên (kể cả app TA bản cũ). Chỉ ca **📄 in giấy** TA mới tick, **mặc định không tick** (tick sẵn duy
->   nhất dạng có kết quả phiếu đã nhập). App TA hiện dạng em đã học + "còn N dạng" / "⚠ học hết ⇒ Hoàn tất là KẾT THÚC", sau hoàn tất báo "🎉 KẾT THÚC".
->   Màn "Đánh giá ca bổ trợ" (học thuật) giữ nguyên, không case nào tự rơi vào đó nữa.
-> - **Khi hold:** đóng ca / hoàn tất ca / mở màn Xếp **không sinh, không bổ sung** câu retest · màn Xếp ẩn tab Chờ retest + 📝 Retest, bỏ gợi ý
->   "cửa sổ retest 3–7 ngày" · popup dạng hiện "Đã dạy" · Đang diễn ra bỏ nút lọc Retest · app TA không còn "retest đến hạn" (badge không đếm) +
->   bỏ dòng "⚠ Không sinh được retest — báo OPS" · app HS không còn "Bài kiểm tra lại" · báo cáo trợ lý không báo "retest trễ", thông số ghi "tạm dừng".
-> - **Dữ liệu KHÔNG đụng:** 34 bài retest đã sinh (13 quá hạn, 19 ngày tới — số 29/09) giữ nguyên `trang_thai='mo'`, chỉ ẩn; `retest_diem/dat`
->   của dạng giữ nguyên (1 dạng trượt thật vẫn hiện "retest trượt · dạy lại"). Lịch sử + popup ca vẫn hiện bài retest **đã nộp**.
->   Lúc hold: 23 case đang "Chờ retest" ⇒ **17 case đóng hồi tố** `day_xong` (TA đã đóng buổi cuối; mốc = lúc đóng buổi đó) · 6 case còn 1 buổi TA
->   chưa hoàn tất ⇒ nằm ở Đã xếp, tự kết thúc khi TA bấm.
-> - **Khi bật lại phải quyết:** 34 bài treo kia (ngày đã qua từ lâu) — dời ngày, đóng, hay sinh lại · điểm kết thúc khi CÓ retest (hiện luật end
->   chỉ chạy khi hold; nhánh retest-bật vẫn là thiết kế cũ Chờ retest → Chờ đánh giá, trái với ý Thùy 29/09) · case đã đóng `day_xong` trong thời
->   gian hold KHÔNG truy sinh retest.
+> **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản HIỆN TRẠNG — chỉ ghi luật đang có hiệu lực.
+> Viết lại sạch ngày 13/11 theo lệnh Thùy ("cái nào outdate rồi bỏ đi"): mọi mục cũ đã bị thay (MCQ tuyệt đối, Duyệt 2 vòng + Chốt tuần,
+> danh sách Theo dõi, thang L1–L3 cũ, luật dạng yếu 2 cửa sổ, cụm bài, retest tầng 2…) đã bị BỎ khỏi file. Lịch sử từng quyết định:
+> `DEVLOG.md` theo ngày + bản cũ của file này trong git (`git log -p spec-bo-tro.md`). Code/DB là chân lý runtime; file này là bản đồ.
 
 ---
 
-## 0. Ba loại bổ trợ
+## 0. Các loại bổ trợ
 
-| Loại | `buoi_hoc.loai` | Kích hoạt | Bài trên app HS | Màn chính |
+| Loại | Kích hoạt | `buoi_hoc.loai` | Ai đứng | Màn ERP (Bổ trợ › …) |
 |---|---|---|---|---|
-| **Bổ trợ YẾU** | `bo_tro_yeu` | Máy phát hiện từ dữ liệu đo + người duyệt | **Có** (luyện · test cuối ca · retest) | nhóm "Bổ trợ yếu" + "Xếp bổ trợ yếu" + app TA + app HS |
-| **Bù** | `bu` | HS nghỉ buổi thường | Chưa (ET giấy, TA chấm) | `BoTroScreen` |
-| **Đuổi** | `bo_tro_duoi` | HS vào lớp giữa chừng | Chưa (tài liệu giấy, `bt_grades`) | `BoTroDuoiScreen` |
+| **Yếu — ca khối** (L2 · L3) | Trưởng khối chốt → trưởng bộ môn duyệt | `bo_tro_yeu` | TA trực ca khối | Yếu · Lịch phòng |
+| **Sau giờ** (L1) | như trên, mức L1 | `bo_tro_nhe` | GV/OPS mở + in, TA nhập | Sau giờ |
+| **Riêng với GV** (L4) | như trên, mức L4 | — (xếp tay, ngoài khối) | GV | — |
+| **Bù** | HS nghỉ buổi thường | `bu` | TA | Bù · Lịch phòng |
+| **Đuổi** | HS vào lớp giữa chừng | `bo_tro_duoi` | TA | Đuổi · Lịch phòng |
+| **Hình** | Trang/Lộc mở tay | `bo_tro_hinh` | TA/GV | Hình · Lịch phòng |
+| **Ôn thi** | Đợt ôn mỗi kỳ thi | `bo_tro_on_thi` | TA | Ôn thi |
 
-- App HS màn chính có box **"Bổ trợ"**: lịch sắp tới của CẢ 3 loại (`fn_hs_lich_bo_tro`) — "trigger cái nào thì cái đấy hiện"; ca yếu hôm nay đã
-  điểm danh ⇒ nút "Vào ca". Box **"Bài tập được giao"** = placeholder, CHƯA định nghĩa.
-- **Luật chung (CEO 19–20/09): mọi bài làm TRÊN APP của bổ trợ (yếu · bù · đuổi) CHỈ dùng TRẮC NGHIỆM (MCQ)** — xem §4. Bù/đuổi khi build
-  bài trên app PHẢI dùng đúng hàm điều kiện `_kho_dk_mcq_sql`, không viết điều kiện riêng.
-
-- **24/09 — KIẾN TRÚC MỚI (spec, chưa code): 3 loại gặp nhau ở NGUỒN LỰC** (ca trực TA tính bằng ĐƠN VỊ 30'×1 TA; phòng ≤2 ca/giờ), 1 lá "Bổ trợ" 5 sub-tab
-  (Đuổi · Bù · Yếu · Lịch phòng · Lịch trực). Đọc **** + mockup . Khi code, tab "Ca bổ trợ" +
-  "Lịch trực" của màn Yếu (§5) sẽ chuyển lên sub-tab chung.
-
-Phần còn lại của file nói về **BỔ TRỢ YẾU**.
+- Hub **Bổ trợ** (Vận hành, quyền `botro`): Dashboard · Đuổi · Bù · Sau giờ · Yếu · Hình · Ôn thi · Lịch phòng · Lịch khối.
+- App HS: box "Bổ trợ" = lịch sắp tới mọi loại (`fn_hs_lich_bo_tro`). App TA: mỗi loại 1 ô ca, 1 hàm nguồn (§9).
 
 ---
 
-## 1. Luồng tổng (bổ trợ yếu)
+## 1. MỘT LUẬT ĐO — dạng yếu / nhóm yếu (Thùy 13/11)
 
-```
-Dữ liệu đo (ET · MT · BTVN · báo động GV/TA)
-   → ① PHÁT HIỆN (máy, 4 kênh)            → màn Duyệt bổ trợ / Dashboard học tập
-   → ② DUYỆT (người chốt level L1–L3 + mức ưu tiên) → mở/gộp CASE `bo_tro_yeu`
-   → ③ NỘI DUNG (chọn dạng của case)       → màn Nội dung bổ trợ yếu
-   → ④ XẾP LỊCH (OPS, theo lịch trực khối+bậc, ca ≤3 em) → màn Xếp bổ trợ yếu
-   → ⑤ CA DIỄN RA (TA đứng ca; 📱 app hoặc 📄 giấy)      → app TA + app HS + tab "Đang diễn ra"
-   → ⑥ RETEST tầng 2 (sau ET buổi thường) → ⑦ ĐÁNH GIÁ CA (xong / theo dõi / bổ trợ tiếp / nâng mức)
-   ⏸ HOLD 29/09: ⑥ ⑦ bỏ — hết dạng yếu + TA hoàn tất ca cuối ⇒ case KẾT THÚC (day_xong). Đánh giá sau bổ trợ = học thuật, luồng khác.
-```
-Máy chỉ ĐỀ XUẤT — người duyệt mới đổi state; mọi lượt duyệt ghi `hs_level_log` (cả đề xuất máy lẫn chốt người).
+- **Nguồn duy nhất = mastery theo LẦN** (`_mastery_lan_cap_nhanh`, đọc bảng chụp `mastery_luu_san`): 1 lần = 1 bài làm, TB % 5 lần gần nhất,
+  mức `yeu` / `can_luyen` / `dat` ở cả 2 cấp **nhóm bài** (chính) và **dạng** (phụ). Công tắc `mastery_theo_lan` đang BẬT.
+- **Dạng yếu = dạng có mức `yeu`.** Nhóm yếu = nhóm có mức `yeu`. Hai số đếm độc lập trên cùng một nguồn — nhóm yếu không suy ra từ dạng yếu
+  và ngược lại (nhóm gộp mọi lần của các dạng trong nhóm). **ĐÃ BỎ luật "2 cửa sổ"** (dạng chưa đạt trong nhóm yếu + có đo trong 2 nửa tháng
+  gần nhất) — mig `202611131539`.
+- Mọi chỗ đếm "dạng yếu" đi qua `_btyeu_dang_theo_nhom` (giữ tên + chữ ký cũ, thân = luật trên): Dashboard học tập, QLCL (`dang_yeu_hien_tai`,
+  làm mới nền `_qlcl_lam_moi_nen`), chụp KPI báo cáo tuần (`_dang_yeu_tai_lo`), đổ dạng vào case yếu, "+N dạng yếu mới", popup chốt.
+  Số đã chụp/đóng băng trước 13/11 giữ nguyên (lịch sử).
+- "Đo đi theo câu": số đo quy về dạng HIỆN TẠI của câu (`_do_o_bdm`). Câu thiếu hình không vào bài nào (`_kho_dk_du_hinh_sql`).
+- Bản đồ mới 4 tầng **không có cụm** — mọi đường bổ trợ của bản đồ mới luyện "cả dạng".
 
-### 1.1 VÒNG bổ trợ — 4 trạng thái (CEO chốt 22/09, "linh động")
-| Trạng thái | Nghĩa | Ở đâu |
-|---|---|---|
-| **Chờ duyệt** | máy phát hiện, chưa có case | hàng đợi Duyệt bổ trợ |
-| **Đang bổ trợ** | case `dang_xu` còn ≥1 dạng CẦN DẠY (chưa dạy, hoặc retest trượt ⇒ dạy lại) | Xếp lịch: tab **Cần xếp** (chưa có buổi chờ) / **Đã xếp** (có buổi chờ học) |
-| **Chờ retest** | dạy hết dạng, còn dạng chưa retest đạt | Xếp lịch: tab **Chờ retest** (KHÔNG xếp lịch — retest sau ET buổi thường, app TA báo "retest đến hạn") |
-| **Hoàn thành** | mọi dạng retest đạt → người đánh giá ca chốt (`hoan_thanh`) | Đánh giá ca bổ trợ → tab **Hoàn thành** ở Xếp lịch (lưu HẾT, không cắt) |
+## 2. Quyết định bổ trợ — Phòng làm việc (trưởng khối → trưởng bộ môn)
 
-- Vào **Đang bổ trợ** rồi thì ở đó tới khi XONG TOÀN BỘ dạng: đang bổ trợ mà thêm dạng mới ⇒ vẫn đang bổ trợ (dạng vào CÙNG case), vẫn hiện ở màn Xếp.
-- **Không định mức dạng/buổi**: đóng ca chỉ chốt dạng em có luyện, dạng chưa kịp trôi sang buổi sau; retest trượt ⇒ dạng cần dạy lại (`dat=false`), dạy
-  lại xong `dat` về NULL ⇒ chờ retest mới. Học xong 2/3 dạng thì dạng thứ 3 chờ buổi kế — case tự quay lại cột Chờ xếp.
-- **Đã hoàn thành** = hết 1 vòng. Yếu lại ⇒ case MỚI nối `case_truoc_id` = **vòng n+1** (chip "vòng n" trên card).
-- **Dạng yếu MỚI của em đang bổ trợ:** máy ĐỀ XUẤT (`fn_btyeu_de_xuat_dang_moi`: yếu + ≥3 lần đo + CÓ LẦN ĐO SAU KHI MỞ CASE), card hiện nút
-  "🤖 +N dạng yếu mới — Thêm?" (xem tên/điểm, xác nhận) ⇒ vào case với `nguon='may'`. KHÔNG tự gộp — đo 22/09: tự gộp sẽ nhét 116 dạng yếu-cũ vào 63 case,
-  đè quyết định của người duyệt ở bước Nội dung. Case đang Chờ retest mà thêm dạng ⇒ về Đang bổ trợ.
-- **Báo động (chuông GV/TA) khi em ĐANG có case cùng môn ⇒ ADD THẲNG dạng vào case** (trigger `trg_btyeu_bao_dong_vao_case`, `nguon='bao_dong'`,
-  nhãn 🚨 trên card) — cờ cứng của người, không cần đề xuất. Chưa có case ⇒ vào hàng đợi Duyệt như cũ (báo động tự đủ tín hiệu). (CEO 22/09.)
-- **Ca đã xếp mà KHÔNG DIỄN RA** (qua ngày không điểm danh có mặt, hoặc TA huỷ) ⇒ tự huỷ buổi (giữ dấu, `ly_do_huy` ghi "tự động"), case về Cần xếp với tag
-  "⚠ Ca DD/MM không diễn ra · N lần" (`fn_btyeu_don_ca_khong_dien_ra`, chạy mỗi lần mở màn Xếp; lần đầu 23/09 huỷ 12 buổi treo). (CEO 23/09.)
-- **Luật buổi (CEO 24/09):** buổi CHƯA học xong mà bị huỷ ⇒ case về Cần xếp · buổi XONG ⇒ case sang trạng thái tiếp. Lúc HOÀN TẤT CA, TA tick
-  dạng đã dạy (mặc định tick hết dạng còn mở; bỏ tick = dạy buổi sau) — `fn_btyeu_hoan_tat(..., p_dang_day)`. Mọi dạng vừa dạy được bổ sung câu retest
-  (`_btyeu_bu_retest`; màn Xếp chạy `fn_btyeu_bu_retest_ton` mỗi lần mở — dạng chưa có MCQ tự thông khi có MCQ). Buổi đã đóng ca KHÔNG đổi được
-  ngày/giờ (trigger `trg_buoi_bo_tro_khoa_ngay`) — học tiếp = xếp buổi mới. Có mặt mà TA chưa đóng ca ⇒ card Xếp đỏ "TA CHƯA ĐÓNG CA — nhắc TA".
-- **Đổi mức ngay trên card màn Xếp (CEO 28/09):** ô chọn L0/L1/L2/L3 — `fn_btyeu_doi_level`. **L0 = em tự luyện hết yếu, dừng bổ trợ**: đóng case
-  (ket_qua `bo`, ghi chú lý do), huỷ buổi đã xếp chưa học, đóng retest chưa làm; có ca đã điểm danh chưa đóng thì chặn. L1↔L2 đổi đơn vị buổi chờ.
-  Ghi hs_level_log như Duyệt. **Màn Xếp + Lịch phòng hiện case L1/L2/L3, ẩn L0** (CEO 28/09 sửa: "Mức 3 cũng hiện luôn"). Hạ L0 ghi kết quả `bo` — CEO xác nhận đúng.
-- Nguồn dạng trong case: `bo_tro_yeu_dang.nguon` = duyet (bước Nội dung) · tay (+ Thêm dạng) · may (đề xuất máy, người bấm) · bao_dong (chuông, add thẳng).
+- **Trưởng khối** (Phòng làm việc › Chất lượng): Dashboard học tập (ô = TB 5 lần gần nhất; cột **Nhóm yếu · x dạng**; 🚨 báo động GV/TA 30 ngày;
+  cột **Bổ trợ**) → bấm **Bổ trợ** ⇒ popup `BoTroPopup`:
+  - 5 nhóm % thấp nhất (mở rộng được ra mọi nhóm đã đo), nhóm YẾU tick sẵn; mỗi nhóm có nút **"dạng ▾"** xổ từng dạng: Yếu / Cần luyện / Đạt /
+    Chưa đo + % + số lần đo (`fn_btk_dang_nhom`). Dòng đầu: "N nhóm yếu · M dạng yếu (K trong nhóm yếu)" — cùng luật §1 (`fn_btk_goi_y`).
+  - chọn **mức L1–L4** (§3) + ưu tiên Cao/Thường/Thấp + ghi chú ⇒ Lưu = dòng **nháp** `bo_tro_de_xuat` (1 em × 1 môn 1 dòng sống).
+- **Danh sách bổ trợ:** trưởng khối **Chốt & gửi** cả khối ⇒ chờ duyệt. **Trưởng bộ môn** Duyệt / Trả lại (bắt buộc lý do). Log `bo_tro_de_xuat_log` (trigger).
+- **Duyệt** (`fn_btk_duyet` = kiểm quyền TBM + `_btk_duyet_chay`): ghi `hs_level` + `hs_level_log`; L1 ⇒ vào hàng chờ Sau giờ (không mở case khối,
+  không kiểm trần); L2–L4 ⇒ kiểm trần 70 em / 20 Cao (`fn_btyeu_kiem_suc_chua`) rồi mở/gộp case `bo_tro_yeu` + đổ dạng ("nhóm quyết, dạng thực
+  thi": mọi dạng đã đo chưa đạt của các nhóm tick; nhóm mà mọi dạng đạt ⇒ dạng thấp nhất).
+- Quyền: trưởng khối = `_trong_pham_vi(môn, khối)` (`_btk_la_tk`); trưởng bộ môn = `fn_phong_che_do()='tbm'` + phạm vi (`_btk_la_tbm`).
 
----
+## 3. Thang mức L1–L4
 
-## 2. ① Phát hiện — ai vào hàng đợi "Duyệt bổ trợ" (`listCandidatesLop`, `src/lib/danhgia.ts`)
+| Mức | Nghĩa | Ca bổ trợ khối | Đơn vị / ca (`_ca_bo_tro_don_vi`) | Trần tuần |
+|---|---|---|---|---|
+| L0 | dừng bổ trợ (không có dòng `hs_level`) | — | — | — |
+| **L1** | **Sau giờ** (§5) | KHÔNG | 1 (chỉ khi lỡ gắn ca) | 1 ca sau giờ / tuần |
+| **L2** | ca khối 2 đơn vị | CÓ | **2** | **2 đơn vị / tuần** |
+| **L3** | ca khối 4 đơn vị | CÓ | **4** | **4 đơn vị / tuần** |
+| **L4** | riêng với GV, ngoài khối | KHÔNG | 4 (chỉ khi lỡ gắn ca) | — |
 
-- **4 kênh dữ liệu, mọi kênh chỉ nhìn 2 CỬA SỔ** (hiện tại + liền trước; cửa sổ = nửa tháng, tính theo `graded_at`):
-  - ① **Chuyên đề tụt qua ngưỡng** bucket (đạt→cần luyện / cần luyện→yếu). Qua ngưỡng là đủ, KHÔNG xét biên độ.
-  - ② **% dạng yếu: >15% HOẶC (>10% VÀ tỉ lệ dạng đạt <50%)** — chốt 10/09 (ca Đỗ Ngọc Tuấn 7K1: 2/19 yếu nhưng 14/19 đạt ⇒ không đáng bổ trợ).
-  - ③ **ET:** ≥2 buổi ET trong 2 cửa sổ, TB <90% TB lớp.  ④ **MT:** bài MT gần nhất trong 2 cửa sổ <90% TB lớp.
-- **Vào hàng đợi khi:** ≥1/4 kênh (đang CHẠY THỬ 1 tháng từ 23/08 — cuối 09 đo lại so với ≥2/4) **HOẶC** báo động (chuông 🚨 của GV/TA ở chấm
-  ET/MT/BTVN/Đánh giá sau buổi — `canh_bao_yeu.nguon`; hoặc "hổng nền") **HOẶC** case đang mở mà máy đề xuất level khác.
-- **Bị loại khỏi hàng đợi:** HS **đã có cờ bổ trợ (level ≥1)** — hàng đợi chỉ để MỞ cờ; HS có cờ xử ở Nội dung/Xếp/Đánh giá ca · HS đã chốt
-  (kể cả giữ L0) trong cửa sổ hiện tại.
-- Thái độ (từ `btvn_ket_qua`) + báo động **scope theo MÔN của buổi** (bug cross-môn 10/09: HS học 2 môn bị gộp); thái độ chỉ 2 cửa sổ gần nhất.
-- Mức yếu của 1 dạng = mastery **5 lần đo gần nhất** (không theo cửa sổ, cùng engine màn Kết quả học tập). Cửa sổ chỉ quyết dạng có ĐƯỢC ĐẾM.
-- Card duyệt có **chip "chạm: …"** (① ② ③ ④ · 🚨 · ⑤ thái độ · "Case mở") để biết em vào vì kênh nào.
-- ⚠ PostgREST cap cứng **1000 dòng/query** dù `.limit()` lớn hơn ⇒ đọc `gami_grades`/`btvn_ket_qua`… phải `fetchAllRows` (`src/lib/pgrest.ts`)
-  có `.order()` tất định. (09/09: 33/46 lớp từng bị cắt cụt, engine mù dữ liệu mới.)
+- **Hiện tại mọi ca bổ trợ khối tính L2** (Thùy 13/11): 14 em L3 đã chuyển về L2 (mig `202611121850`, log nguồn `thang_l2_hien_tai_12_11`).
+- Trần tuần (mig `202611121846`, `_btyeu_dv_tuan`): tuần = thứ Hai–CN theo ngày ca; đếm buổi `bo_tro_yeu` gắn ca khối, không huỷ, em không vắng.
+  Đủ trần ⇒ không hiện ứng viên, `fn_ca_bo_tro_xep` chặn. Bù/đuổi không đếm. CHECK `buoi_hoc_hs.don_vi` ∈ (1, 2, 4).
+- **Đổi mức:** ở card Xếp / Trạng thái ca: `fn_btyeu_doi_level` (0–4; L0 = đóng case `ket_qua 'bo'`). Ở Sau giờ: **Đổi mức → L2/L3/L4**
+  (`fn_btnhe_doi_muc`, §5) đi đúng đường chốt (đề xuất + duyệt, log). Log `hs_level_log` trước 11/11 dùng số CŨ (2 = buổi riêng TA, 3 = buổi riêng GV).
 
-## 3. ② Duyệt — level + MỨC ƯU TIÊN + máy ĐỔ DẠNG lúc mở case
+## 4. Bổ trợ yếu — ca khối (L2 · L3)
 
-- Level kiến thức: L1 = bổ trợ mức 1 (trước/sau giờ, TA) · L2 = buổi riêng (TA) · L3 = buổi riêng (GV cao cấp). L1–L3 mở case. Thái độ KHÔNG mở case.
-- **`bo_tro_yeu.uu_tien`** (khác level — cùng level vẫn cần trước/sau): **3 Cao · 2 Thường (mặc định) · 1 Thấp**. Đặt khi duyệt (gợi ý máy: báo
-  động hoặc ≥2 kênh kiến thức ⇒ Cao; chỉ ghi khi MỞ case mới); đổi nhanh bằng chip trên card ở Xếp lịch.
-  **Mọi danh sách chờ + tự ghép ca chạy theo: ưu tiên cao trước → case mở lâu hơn trước.**
-- **Dạng vào case LÚC MỞ (CEO 23/09 "cứ yếu là bổ trợ"): TẤT CẢ dạng mastery YẾU (<0,5) · ≥3 lần đo (bỏ tin thấp — "thấp = không
-  quan trọng") · có lần đo trong 2 CỬA SỔ gần nhất** (cùng phạm vi kênh ②). Engine `dien` (src/gami/danhgia.js) đổ khi bấm duyệt;
-  bản SQL cùng rule `fn_btyeu_dang_yeu_2_cua_so` / `fn_btyeu_fill_dang_yeu(case)` để đổ lại case rỗng. CHỈ THÊM, không xoá dạng
-  người chọn. Sau khi mở, máy KHÔNG tự đổ thêm — chỉ nút "🤖 +N dạng yếu mới" (§1.1) + người ở màn Nội dung. Case máy không tìm ra dạng
-  (chuông đỏ/thái độ, dạng yếu chưa đủ 3 lần đo — Hà Linh 11A1 09/09) ⇒ card Nội dung đỏ "Chưa có dạng — chọn tay".
+- **Case** `bo_tro_yeu` (`dang_xu` → `hoan_thanh`), dạng `bo_tro_yeu_dang` (nguồn duyet · tay · may · bao_dong). 1 case tối đa 1 buổi chờ học (trigger).
+- **Báo động** chuông GV/TA khi em đang có case cùng môn ⇒ add thẳng dạng vào case (`trg_btyeu_bao_dong_vao_case`).
+- **Xếp lịch (Lộc)** ở Lịch phòng theo ca trực khối (`lich_truc_bo_tro`: môn × khối × bậc × thứ × giờ × người trực). Ca đầy khi hết **suất**
+  (3 suất/TA; S = 0,5 · A = 0,75 · B/C = 1) HOẶC hết **đơn vị** (30′ × 1 TA = 3). Ứng viên `fn_ca_bo_tro_ung_vien` chỉ case L2 · L3. "+ Xếp" = đã chốt PH.
+- **Capacity khối** (`fn_btyeu_capacity_khoi`) = 0,4 × Σ đơn vị lịch trực của khối; đã dùng = case L2 · L3 đang mở. Chỉ hiển thị, không chặn.
+- **Ca diễn ra** (app TA `CaBoTroTA`): 📱 app hoặc 📄 giấy. Luyện ≠ test cuối ca (khác mã + khác đề). **Chọn câu:** MCQ trước; dạng 0 MCQ ⇒ câu trả lời
+  ngắn có đáp án (`_btyeu_chon_cau`, `_kho_dk_mcq_sql`). Test cuối ca (`bo_tro_test`) tính mastery kênh ET; luyện không tính.
+- **Kết thúc:** TA **Hoàn tất ca** ⇒ case `day_xong` ngay (1 tuần bổ trợ 1 lần, kể cả còn dạng chưa dạy — tuần sau trưởng khối chốt lại).
+  Case sống tối đa 14 ngày (`fn_btyeu_het_han_xu_ly`, `ket_qua 'het_han'`). Ca đã xếp mà không diễn ra ⇒ tự huỷ buổi, case về Cần xếp.
 
-## 4. Nội dung bài trên app — MCQ TUYỆT ĐỐI (ngoại lệ duy nhất: dạng mức độ 4–5 không có MCQ ⇒ trả lời ngắn, 28/09)
+## 5. Bổ trợ sau giờ (L1) — `BoTroNheScreen`
 
-- Mọi bài của ca (luyện · test cuối ca · retest · phiếu giấy) chọn câu qua **`_btyeu_chon_cau`** với điều kiện DUY NHẤT **`_kho_dk_mcq_sql`** =
-  `kho_chuan` + (trắc nghiệm gốc có đáp án | có `dai_cau_form_tn` ĐÃ DUYỆT). `_kho_snapshot_cau` tự hiện form thành 4 đáp án. Né câu em đã gặp
-  trong ca; cạn thì lặp lại câu MCQ.
-- **Ngoại lệ duy nhất (CEO 28/09):** dạng **mức độ 4–5** (bản đồ `muc_do`) mà cả dạng KHÔNG có câu MCQ nào ⇒ dùng câu **trả lời ngắn** có đáp án (kho chuẩn)
-  — trong `_btyeu_chon_cau`, áp cho luyện · test cuối ca · retest · phiếu giấy. Mức 1–3 (hoặc mức 4–5 có MCQ) vẫn MCQ tuyệt đối.
-- Ngoài ngoại lệ trên: **KHÔNG có nhánh lùi** sang trả lời ngắn/đúng-sai. (19/09 từng để "dạng 0 MCQ thì tạm ra TLN" — CEO bác 20/09: luật là luật.) Dạng chưa có MCQ ⇒
-  app báo "Dạng này chưa có câu TRẮC NGHIỆM — em học với thầy cô trên giấy"; việc cần làm là SINH + DUYỆT MCQ (phiên MCQ, `spec-mcq-quy-trinh-sinh.md`).
-- Dữ liệu cũ còn câu trả lời ngắn ⇒ TA được **tích lại Đúng/Sai câu TLN** trong ca (`fn_btyeu_ta_sua_ket_qua`; log `bai_lam_cau_sua_log`; giữ
-  `cham_at`; MCQ không cho chỉnh).
-- ⚠ CHƯA nối form **Điền Ô** (`dai_cau_form_dien` — "trắc nghiệm từng phần" cho dạng nâng cao K6–7) vào bổ trợ — chờ CEO chốt có tính là MCQ không.
+- **Hàng chờ:** em có đề xuất MỚI NHẤT = L1 đã duyệt, chưa có ca sau giờ tuần này (`fn_btnhe_cho`). Subtab **Chờ khởi tạo** (theo lớp) ·
+  **Đã khởi tạo**. **1 lần / em / tuần**; lớp đã khởi tạo tuần này rời danh sách. Vắng không bù, không suất, không qua Lộc.
+- **Khởi tạo** (`fn_btnhe_tao`): chọn lớp → em đã duyệt → buổi học 14 ngày tới (ca bắt đầu lúc buổi tan, cùng phòng, 20/25′) → TA cùng làm.
+  Xong mở **ảnh thông báo PH** (mỗi em 1 dòng). Huỷ ca được; ca huỷ ẩn (nút "xem ca đã huỷ").
+- **Dạng của em = dạng YẾU trong đúng các nhóm GV đã chốt** (lượt chốt mới nhất; nhóm chốt không có dạng yếu ⇒ 1 dạng chưa đạt điểm thấp nhất
+  của nhóm; không có lượt chốt ⇒ không có dạng) — `_btnhe_dang_chot` (mig `202611131528`), đổ vào case `nguon='nhe'` (`fn_btnhe_fill_dang`).
+- **Tài liệu — 3 thứ IN RIÊNG**, người in chọn (nút 📘 ✏️ 📝 trên từng em + 🖨 **In cả lớp · bài test**):
+  📘 lý thuyết + ví dụ từng dạng · ✏️ bài luyện · 📝 bài test (1 câu/dạng, **tối đa 10 câu**).
+  - **Builder** (`SoanBaiSauGio`, dùng `KhoiCau` + `ChonCauBdm` của builder giáo trình: dòng · cột · chế độ hình · cỡ ảnh): **TỰ LƯU** 1,2 s sau
+    mỗi lần chỉnh ("✓ Đã lưu HH:MM"); 🖨 In = in bản đã lưu. Mỗi buổi **1 bài luyện + 1 bài test**, sửa được tới khi có kết quả.
+    In cả lớp in đúng bản đã lưu của từng em (em chưa soạn ⇒ DB sinh theo dạng §5).
+  - **Bản in = khuôn ET** (`InSauGioET` → `ETPrintView` `deRieng`): header ET, "Câu 1, Câu 2…", bản HS / bản GV (GV có tên em + đáp án + lời giải).
+    Câu trả lời ngắn: mặc định bảng ô điền; đặt số dòng > 0 ⇒ in dòng kẻ như tự luận.
+- **Chọn câu:** cấp 1–2 (khối 3–9): tự luận + trả lời ngắn NGANG HÀNG, hết mới trắc nghiệm; **không hiện form trắc nghiệm** của câu TL/TLN
+  (cờ giao dịch `bk.snap_khong_form`). Cấp 3 (10–12): trắc nghiệm trước. Hàm `_btnhe_chon_cau` / `_btnhe_chon_loai`.
+- **Nhập kết quả:** TA (app TA ô **Bổ trợ sau giờ**, `SauGioNhapTA`) nhập **Đ / C / S** từng câu (`fn_btnhe_nhap_dcs`), không cần mở ca.
+  Nộp ⇒ em có mặt + ca xong (`nhe_xong / day_xong`); test = mastery kênh ET.
+- **Đổi mức** L1 → L2/L3/L4 ngay trên hàng chờ / thẻ ca (`fn_btnhe_doi_muc`); ca đã tạo không tự huỷ, thẻ hiện "Đã chuyển Lx".
+- **Chấm công TA:** ca sau giờ = đầu việc mặc định của TA phụ trách ca (loại việc `bo_tro_sau_gio`, tính vào giờ bổ trợ) — gợi ý `fn_ta_hom_nay`,
+  thiếu công `_ta_buoi_thieu_cong`, đối chiếu `_ta_doi_chieu`.
+- **Dashboard / chi tiết** riêng như Yếu (`BoTroDashboardScreen` dòng Sau giờ, `KetQuaBoTroTuan`).
 
-## 5. ④ Xếp lịch — Bổ trợ › Yếu › "Xếp bổ trợ" (5 tab: **Cần xếp · Đã xếp · Chờ retest · Hoàn thành · 📝 Retest**; từ 24/09 "Ca bổ trợ", "Lịch trực", "● Đang diễn ra" RỜI màn này — sang Bổ trợ › Lịch phòng / Lịch trực, xếp chung 3 loại theo đơn vị: `spec-xep-bo-tro-chung.md`)
+## 6. Bù · Đuổi · Hình · Ôn thi (tóm)
 
-- **Lịch trực** `lich_truc_bo_tro`: môn × **KHỐI × BẬC** × thứ × giờ × phòng × **người trực (bắt buộc)** × hiệu lực × `suc_chua` (mặc định **3**).
-  BK bổ trợ theo khối, KHÔNG theo lớp. Bậc theo `lop_bac.thu_tu`: **S > A > B > C** — **ca bậc cao nhận HS bậc thấp hơn, không ngược lại** (ca 7S
-  nhận HS 7A; ca 7A KHÔNG nhận 7S). Bậc HS = `lop.bac` của lớp em đang học môn đó. Kết thúc lịch = đặt `hieu_luc_den`, không xoá cứng.
-- **"Ca"** = nhóm buổi cùng (môn, ngày, giờ bắt đầu, NGƯỜI DẠY) — phòng không nằm trong khoá. **Tối đa 3 em/ca; đủ 3 ⇒ ca BIẾN MẤT khỏi mọi chỗ
-  chọn**; mọi chỗ hiện ca đều kèm n/3. **Không ưu tiên "cùng bậc trước" — ai chốt trước chiếm chỗ trước** (bổ trợ phải báo phụ huynh).
-- **Đề xuất ca cho 1 em:** (1) ca trực **khớp thứ + giờ của ca bổ trợ lần trước** ★ → (2) ca trực gần nhất còn chỗ → (3) không có lịch trực thì
-  mặc định cũ (mức 1: ngay sau giờ tan buổi thường theo TKB, TA lớp; mức 2/3: theo ca cũ; mức 3 không kéo người cũ).
-- **1 case tối đa 1 buổi "đã xếp, chưa học"** — trigger DB `trg_btyeu_mot_buoi_cho_hoc` chặn MỌI đường tạo buổi thứ hai (form, tự ghép…).
-  - Cột **"Chờ xếp lịch"** = chưa có buổi chờ học + còn dạng chưa dạy (em học xong 1 buổi còn dạng ⇒ quay lại đây).
-  - Cột **"Đã xếp · chưa bổ trợ"** = hiện ngày/giờ/phòng/người; quá ngày chưa học ⇒ viền vàng ⚠ (OPS soát).
-  - Dạng gộp thêm SAU khi đã xếp ("đợt duyệt mới") ⇒ nhãn "＋N dạng mới — học chung buổi đã xếp, KHÔNG xếp lại".
-  - Mở lại case đã xếp = **SỬA buổi đó**, không đẻ buổi mới. Giờ chọn bằng khung sẵn bước 30'. Báo trùng phòng = cảnh báo, không chặn.
-- Tab **Chờ retest**: case dạy hết dạng — chỉ hiện ngày retest sắp tới, không xếp; nút thêm dạng yếu mới nếu máy đề xuất. Tab **Hoàn thành**: mọi case đã đóng
-  vòng (kết quả đạt/một phần/chưa đạt/bỏ, ngày mở→đóng).
-- Tab **📝 Retest** (CEO 23/09 "xứng đáng 1 tab riêng"): mọi bài retest tầng 2 theo BÀI — chip Chờ làm · Quá hạn (đỏ, số ngày trễ) · Đã nộp 14 ngày;
-  mỗi bài: HS·lớp·TA lớp·ca bổ trợ gốc·từng dạng (số câu / đúng / ✓ đạt / ✗ trượt → dạy lại) · nút **📅 Dời ngày** (chỉ bài chưa nộp, ngày ≥ hôm nay —
-  `fn_btyeu_retest_doi_ngay`) · Lịch sử. Nguồn `fn_btyeu_retest_theo_doi`. Vẫn KHÔNG xếp lịch: retest làm sau ET buổi thường, TA lớp đưa iPad.
-- **Tab Ca bổ trợ:** ca 28 ngày tới + n/3 + **Tự ghép** các em chờ xếp vào ca trực còn chỗ (XEM TRƯỚC → xác nhận mới tạo buổi; theo thứ tự ưu tiên).
-- Filter môn + khối dùng chung các tab. RPC: `fn_btyeu_case_xep_lich` · `fn_lich_truc_cua_hs` · `fn_btyeu_ca_sap_toi`.
+- **Bù:** HS nghỉ buổi thường ⇒ xếp ca bù ở Lịch phòng (4 đơn vị/em khi xếp; bảng Lấp đầy tính theo nhóm cùng bài 1 em = 4, ≥2 em = 6).
+  Chọn câu luyện/test bù: MCQ trước, 0 MCQ ⇒ trả lời ngắn (`tu_luyen_chu_de_sinh` loại `bu_luyen`/`bu_test`). Đóng ET buổi bù KHÔNG đổi `trang_thai`.
+- **Đuổi:** mục tiêu = dạng GV chọn (`bo_tro_duoi_dang`); HS tự học ở nhà (lý thuyết → luyện → test, ≥50% xong dạng), TA làm cùng phần dở;
+  1 nguồn tiến trình `fn_duoi_tien_trinh`; khoá tuần tự theo bản đồ mới (K6–12).
+- **Hình** (`bo_tro_hinh`): case HS × đợt, Trang/Lộc mở tay; xếp như ca khối (thang đơn vị riêng của Hình); tài liệu gắn theo buổi; không test;
+  hoàn tất 1 buổi là xong. Trần 70/20 tính gộp Yếu + Hình.
+- **Ôn thi:** đợt ôn mỗi kỳ, Trang thêm em tay, ngoài hệ case, không đo; TA điểm danh + báo động; công TA ngoài gói (chờ đơn giá).
 
-## 6. ⑤ Ca diễn ra — HAI CHẾ ĐỘ, TA bấm chọn (21/09)
+## 7. Dashboard bổ trợ (3 subtab)
 
-`buoi_hoc_hs.btyeu_che_do` = `'app'` | `'giay'` (NULL = chưa chọn). App TA: sau Điểm danh có khối **"Em làm bài bằng gì?"** — 2 nút to; đổi được
-tới khi đóng ca.
+- **Tiến độ** (`fn_bo_tro_dashboard_tuan`): mỗi tuần × loại: đã chạy / chốt + **📊 Kết quả** (`fn_botro_ket_qua_tuan`: "Giảm" = dạng Yếu trước ca
+  (00:00 ngày ca) mà sau ca (hết ngày ca) không còn Yếu).
+- **Lấp đầy ca** (`fn_botro_lap_day_ca`): % theo HS và % theo đơn vị. **Chi tiết** (`fn_botro_chi_tiet`): 1 buổi = 1 dòng, lọc + tìm không dấu.
 
-| | 📱 **Trên iPad (app)** | 📄 **In giấy** (thiếu iPad) |
-|---|---|---|
-| Luyện | Em chọn dạng → cụm → lô 3 câu nối nhau trên app HS; máy chấm | TA **In phiếu luyện** (3/5/8/10 câu mỗi dạng, in NHIỀU phiếu được — phiếu sau né câu đã gặp) → em khoanh |
-| Ghi kết quả | tự động | TA **nhập đáp án EM KHOANH (A–D), MÁY chấm theo key** — TA không tự phán đúng/sai; bấm lại ô đang chọn = xoá |
-| Đóng ca | TA bấm Đóng ca → sinh test cuối buổi | như bên |
-| Test cuối ca | em làm trên iPad (chế độ thi, nộp 1 lần) | TA **In bài kiểm tra** → em làm → TA nhập → **Nộp** (câu chưa nhập = bỏ trống = sai; nộp rồi KHOÁ) |
-| Hoàn tất | nhận xét + mức → hoàn tất | như bên |
+## 8. Quy ước bắt buộc
 
-- Bài giấy KHÔNG phải đường riêng: là `bai_test` loại `bo_tro`/`bo_tro_test` có **`in_giay_at`**, sinh bằng CÙNG bộ chọn câu + snapshot của app ⇒
-  tiến độ luyện, test cuối ca, câu-đã-gặp, mastery đều thấy như bài app. RPC: `fn_btyeu_in_sinh · fn_btyeu_in_lay · fn_btyeu_giay_nhap ·
-  fn_btyeu_in_test · fn_btyeu_giay_nop`. Bản in: đề theo dạng (A–D 2 cột, ảnh, công thức), NGẮT TRANG, trang ĐÁP ÁN + lời giải cho thầy cô.
-- Retest tầng 2 (sau ET buổi thường, 3–7 ngày) vẫn làm trên app như `PLAN-botro-yeu-ca.md` §2.
-- App TA là PWA tự cập nhật ⇒ bản mới chỉ ăn sau khi ĐÓNG HẲN app mở lại.
-
-## 6b. Lịch sử bổ trợ (CEO 23/09) — nút 🕘 CHỈ ở card màn Duyệt bổ trợ (+ modal Dashboard), KHÔNG ở màn Xếp
-
-`fn_btyeu_lich_su_hs(hs, mon, 14)` → popup dòng thời gian TOÀN BỘ hoạt động 2 tuần (chọn 14/30/60 ngày): buổi yếu/bù/đuổi (điểm danh, dạng dạy, luyện,
-test cuối ca, nhận xét, 📱/📄, lý do huỷ) · retest (đạt/trượt từng dạng) · lượt duyệt level · báo động · case mở/đóng. `LichSuBoTroModal.tsx`.
-
-## 7. Theo dõi — "Đang diễn ra" (từ 24/09 nằm trong Bổ trợ › Lịch phòng, khu Lịch riêng + trạng thái sống trên card ca trực)
-
-`fn_btyeu_ca_theo_doi(ngay)`: mọi ca trong ngày, nhóm theo giờ, tự cập nhật 15s (không blank). Trạng thái: **Chưa điểm danh · Vắng · Đang luyện ·
-Im lâu (≥5', viền vàng) · Đã đóng chờ em làm test · Test xong chờ nhận xét · Hoàn tất**; badge chế độ 📱/📄/chưa chọn; ngay tại dòng ca:
-🖨 In tài liệu · ✎ Nhập kết quả · 🖨 In lại (cả phiếu luyện lẫn TEST cuối ca).
-**23/09: tab này = MỌI bổ trợ liên quan ngày đó** — toggle bar Yếu · Bù · Đuổi · Retest (`fn_bo_tro_trong_ngay`): bù/đuổi hiện giờ·phòng·người·HS·điểm danh
-(xử lý ở màn Bù/Đuổi); retest đến hạn hiện HS·lớp·TA lớp·đã nộp/quá hạn.
-
-## 8. Quy ước UI bắt buộc (đã ghi CLAUDE.md §2 React)
-
-Sau mutation **vá đúng phần tử tại chỗ, KHÔNG reload cả danh sách** (duyệt xong ca rời hàng đợi ngay, không trắng màn, không cuộn về đầu); màn
-hàng đợi **nhớ filter + list + vị trí cuộn + khối đang mở** khi rời màn quay lại (cache module-level, có nút ↻).
+- Mọi số + luật ở DB (`fn_*`), màn chỉ vẽ (CLAUDE.md §2.0). Sau mutation **vá tại chỗ**, không tải lại danh sách; màn hàng đợi nhớ trạng thái
+  ở module-level (`NHO`). Ô ca trên app TA: hôm nay trước, không cắt ca hôm nay, lỗi tải hiện banner đỏ (không nuốt).
+- Tự kiểm hiển thị: `fn_bo_tro_tu_kiem` (TA/HS có thấy ca) + `fn_btyeu_kiem_ca_hs` (ca HS dựng được) — dải đỏ ở Lịch phòng.
 
 ## 9. Bản đồ code / DB
 
-- **Lib:** `src/lib/danhgia.ts` (engine phát hiện, duyệt) · `src/lib/botro_yeu.ts` (case, dạng, xếp lịch, lịch trực, ca sắp tới, ưu tiên) ·
-  `src/lib/botro_yeu_ca.ts` (ca: app HS/TA, in giấy, chế độ, theo dõi, lịch HS) · `src/lib/pgrest.ts` (`fetchAllRows`) · `src/gami/danhgia.js` (engine thuần).
-- **Màn ERP:** `src/screens/danhgia/` — `DuyetBoTroYeuScreen` · `DashboardHocTapScreen` (`DuyetKhoi`, `KenhChips`) · `NoiDungBoTroYeuScreen` ·
-  `XepLichBoTroYeuScreen` (+ `TheoDoiCaBoTroTab`, import `TrangIn`/`NhapKetQua` từ `ta/PhieuGiayYeuTA.tsx`) · `TrangThaiCaBoTroScreen` · `DanhGiaCaBoTroScreen`.
-- **App TA:** `src/screens/ta/CaBoTroTA.tsx` (+ `PhieuGiayYeuTA.tsx`: `TrangIn`, `NhapKetQua` — TA-native, ERP import ngược lại từ đây).
-  **App HS:** `src/screens/hocsinh/CaBoTroHS.tsx` (+ `LichBoTroHS`, `BoTroBanner`, dùng chung `CardBai`/`Chevron` từ `HocTuDau.tsx`), `HomeHS.tsx`.
-- **Bảng:** `bo_tro_yeu` (+`uu_tien`) · `bo_tro_yeu_dang` · `lich_truc_bo_tro` · `hs_level` / `hs_level_log` · `canh_bao_yeu` ·
-  `buoi_hoc`/`buoi_hoc_hs` (+`btyeu_che_do`) · `bai_test` (+`in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` · `bai_lam_cau_sua_log`.
-- **Migration (09→21/09):** `202609091750` lịch HS · `202609141708` lịch trực · `202609161637/1639/1651` ca sắp tới, sức chứa, khối+bậc ·
-  `202609191317` + `202609191922` MCQ · `202609191717` TA chỉnh TLN · `202609201300` ưu tiên + chặn xếp lại · `202609211729` in giấy + theo dõi ·
-  `202609211801` 2 chế độ + test giấy · `202609221344` 4 trạng thái vòng (giai_doan, nguon dạng, dạy lại reset dat) · `202609221346` đề xuất dạng mới (không tự gộp) · `202609221354` báo động add thẳng · `202609231621` tab case + dọn ca không diễn ra + lịch sử + bổ trợ trong ngày · `202609231649` tab Retest (theo dõi + dời ngày, `_kho_ten_dang`) (không tự gộp).
-- **Script chẩn đoán (read-only):** `scripts/_diag_*` — vd `_diag_lydo_hs.ts` (vì sao 1 HS vào hàng đợi), `_diag_kenh2_nguong.ts`,
-  `_diag_mcq_nguon_botro.mjs`, `_diag_25dang_form.mjs`, `_diag_case_xep_lich.ts`, `_diag_ta_tln.ts`.
-
-## 10. Còn treo (21/09)
-
-1. **25 dạng đang nằm trong case mở chưa có MCQ** (12 case mà mọi dạng đều 0 MCQ ⇒ app không có gì để luyện) — việc của phiên MCQ: 92 form K9 đã
-   sinh chờ duyệt · K6–7 nâng cao là form Điền Ô (bổ trợ chưa đọc loại này) · K10–11 chưa sinh.
-2. In giấy: chưa chọn được in RIÊNG 1 dạng (mỗi phiếu lấy mọi dạng còn mở); trình bày bản in chưa chỉnh theo bản giấy thật.
-3. 8 buổi "đã xếp, quá ngày chưa học" (đo 20/09) đang chặn xếp buổi mới cho các em đó — OPS soát (học rồi chưa hoàn tất? vắng chưa huỷ?).
-4. Box "Bài tập được giao" ở app HS: chưa định nghĩa.
-5. Cuối 09: đo lại ngưỡng vào hàng đợi ≥1/4 kênh vs ≥2/4.
-6. `npm run migrate` đang vấp 4 migration treo của phiên Sổ tay (permission) ⇒ áp riêng bằng `node scripts/migrate.mjs --only <file>`.
-7. `lop.bac` lệch tên lớp ở vài lớp (6S1/6S2/7S3 ghi bậc A; 3A1 ghi S) — engine theo `lop.bac`; soát ở màn Lớp.
-
-## 11. Cập nhật 22/09 — đồng bộ giao diện với Bổ trợ Đuổi + mastery test/luyện
-
-- Card màn "ca diễn ra" (app HS: danh sách dạng/cụm) đổi sang khuôn CardBai (icon box +
-  tên/mô tả + chevron) — y hệt Bổ trợ Đuổi, dùng chung component từ HocTuDau.tsx.
-  Backdrop (trời/nhân vật/quote) đã bọc màn này từ trước — chỉ màn LamBai/LamET (đang
-  luyện/đang test) không bọc.
-- TrangIn/NhapKetQua (in phiếu giấy + nhập kết quả) chuyển từ màn ERP desktop
-  (TheoDoiCaBoTroTab.tsx) sang file TA-native (ta/PhieuGiayYeuTA.tsx) — ERP import
-  ngược lại từ đó. App TA không còn mượn component từ màn ERP desktop nữa (đúng luật
-  đã áp cho Đuổi).
-- fn_mastery_cells: test cuối ca (bai_test.loai='bo_tro_test') giờ tính vào mastery
-  chung của hệ thống (gán src='et', giống ET). Luyện (loai='bo_tro') VẪN không tính,
-  chỉ để em luyện. Retest tầng 2 / dat của case — KHÔNG đổi gì, vẫn chạy y hệt cũ.
-- KHÔNG đụng: 4 kênh phát hiện, duyệt+ưu tiên, lịch trực khối+bậc, cụm luyện+lô 3 câu,
-  4 trạng thái vòng, báo động chuông — giữ nguyên 100% như trước 22/09.
-
-## 12. Cập nhật 24–28/09 (tóm; chi tiết DEVLOG)
-
-- **Menu:** 1 lá "Bổ trợ" (Vận hành, quyền `botro`) → toggle Đuổi · Bù · Yếu · Lịch phòng · Lịch trực. Yếu = toggle Duyệt → Nội dung → Xếp → Trạng thái ca →
-  Đánh giá ca (cả folder "Bổ trợ yếu" ở Quản lý chất lượng chuyển vào; link cũ `botroyeu:*` mở đúng toggle).
-- **Xếp chung theo đơn vị** (`spec-xep-bo-tro-chung.md`): Yếu L1 = 1 đv, L2/L3 = 4; ca đầy khi đủ 3 em/TA hoặc đủ đơn vị; "+ Xếp" = đã chốt PH.
-- **Xếp chỉ hiện L1–L3** (L0 ẩn); **đổi mức trên card** — hạ L0 = dừng bổ trợ, đóng case `ket_qua=bo` (CEO xác nhận "Bỏ" là đúng).
-- **Trạng thái ca** (màn riêng): 1 dòng/case + thanh 6 mức (Chờ chọn dạng → Cần xếp → Đã xếp → Chờ retest → Chờ đánh giá → Hoàn thành), filter có số,
-  bấm ⇒ popup chi tiết (dạng · buổi · retest · lịch sử duyệt). Mức tính ở DB (`fn_btyeu_trang_thai_ca`, `fn_btyeu_chi_tiet_case`).
-- **Buổi xong ⇒ case tiến**: TA tick dạng đã dạy khi hoàn tất; mọi dạng vừa dạy có câu retest; buổi đã đóng ca khóa ngày/giờ; chạm lại nút điểm danh = bỏ.
-- **Dạng vào case lúc mở** = dạng yếu (<0,5) · ≥3 lần đo · có đo trong 2 cửa sổ (engine `dien` + `fn_btyeu_dang_yeu_2_cua_so`).
-- **Retest trên app TA** chỉ hiện từ NGÀY làm (`fn_btyeu_viec_cua_toi`: ngay ≤ hôm nay); ERP hiện cả sắp tới. Thùy: không cần push riêng.
-
-## 13. Cập nhật 29/09 — bổ trợ yếu BẬT cho nhánh Hình (Hình học · Hình giải tích)
-
-- **Thùy chốt (a):** bật luôn; dạng Hình chưa có câu trắc nghiệm ⇒ app/phiếu báo "học với thầy cô trên giấy", TA dạy giấy. Luật MCQ §4 KHÔNG đổi.
-  Hiện trạng kho (29/09): Hình học cấp 2 (khối 7/8/8T/9) **0 MCQ** — chỉ khối 11 (HH00087) có 61 MCQ; HGT có MCQ/form.
-- **Phát hiện (client `danhgia.ts napBanDo`):** tra dạng MỌI nhánh của môn (`dangInfoCuaMon`, registry `NHANH_CUA_MON`). Bài Hình học không có
-  chuyên đề ⇒ đứng ngoài kênh ① (không gom các Bài thành 1 "chuyên đề"), vẫn vào kênh ② + đổ dạng vào case; kênh ③④ theo buổi vốn đã gồm Hình.
-- **DB (mig 202609291219):** mọi `fn_btyeu_*` chọn bảng câu/lý thuyết/bản đồ/cụm theo `_kho_nhanh_cua_dang(mon, ma_dang)` của TỪNG dạng (mẫu `fn_duoi_*`);
-  tên dạng qua `_kho_ten_dang`. Tạo `hinh_hoc_cum_tien_de` (rỗng, đúng shape) cho màn ca HS. Case chỉ có Đại: `fn_btyeu_ca_ta`/`ca_cua_toi`/`in_lay`
-  cho ra JSON y hệt bản cũ (đo trên 60 ca + 30 bài thật).
-
-## 14. Cập nhật 29/09 — reset duyệt lại · trần 50/20 · sửa mức + ưu tiên ở mọi màn
-
-- **Reset (Thùy "OK reset", mig 202609291556_btyeu_reset_duyet_lai):** GIỮ 25 em đang có lịch (case mở có buổi chưa đóng ca). 72 em còn lại
-  về L0: đóng 55 case Cần xếp (`ket_qua 'bo'`, ghi chú "Reset 29/09 — chờ duyệt lại") + 17 em đã `day_xong` còn L1; xoá 71 dòng `hs_level`; ghi
-  72 log `hs_level_log` với `ly_do_may.nguon = 'reset_duyet_lai'`; đóng 8 retest mở của case bị đóng. Không xoá dạng/bài/buổi/retest.
-- **Hàng đợi Duyệt:** log kiến thức MỚI NHẤT của em (`fn_btyeu_log_kt_moi_nhat`) là `reset_duyet_lai` ⇒ em LUÔN vào hàng đợi (chip vàng
-  "↺ Reset — duyệt lại"), kể cả không còn tín hiệu, kể cả sang cửa sổ sau — tới khi người duyệt chốt (kể cả giữ L0). Log reset KHÔNG tính
-  "đã duyệt trong cửa sổ". Đo 29/09: 69/72 hiện (3 thiếu = 2 em đã nghỉ + 1 tài khoản TEST — đúng).
-- **Trần sức chứa (mig 202609291556_btyeu_suc_chua_50_20):** ≤ **50 em đang bổ trợ yếu cùng lúc** (case `dang_xu`, mọi môn), trong đó ≤ **20 ưu
-  tiên Cao**. Không cộng dồn theo tuần: tuần cũ còn 15 em thì chỉ duyệt thêm 35. Chặn CỨNG bằng trigger `trg_btyeu_suc_chua` (insert / mở lại
-  case / nâng ưu tiên lên Cao; advisory lock chống 2 người duyệt cùng lúc). Hằng số 1 chỗ: `_btyeu_tran_dang()` / `_btyeu_tran_cao()`.
-  Duyệt kiểm TRƯỚC bằng `fn_btyeu_kiem_suc_chua` (không ghi L1 mà không mở được case); màn Duyệt hiện "Đang bổ trợ x/50 · Ưu tiên Cao y/20".
-  Muốn thêm em khi đầy: hạ L0 / huỷ 1 em cũ, hoặc hạ ưu tiên 1 em Cao.
-- **Sửa ở mọi màn — 1 nguồn:** control chung `src/screens/botro/MucUuTienCase.tsx` (mức → `fn_btyeu_doi_level`, ưu tiên → `bo_tro_yeu.uu_tien`,
-  lỗi trần hiện ngay tại chỗ). Gắn ở: card Xếp · popup Trạng thái ca · hàng chờ Yếu trong popup "+ Xếp" của Lịch phòng. Giai đoạn (Cần xếp /
-  Đã xếp / Hoàn thành) là derive, không sửa tay. Chưa gắn: dòng em đã nằm trong ca ở Lịch phòng (RPC ca chưa trả case id).
-
-## 15. Chống "TA không thấy ca" (Thùy 30/09 — 29/09 bù Minh Trí/Cường, 30/09 đuổi Khánh Chi/Huyền)
-
-- **Gốc đã tìm ra:** ô Đuổi cũ (app TA) hiện `slice(0,5)` của TOÀN BỘ buổi đuổi của TA (cả đã xong), KHÔNG sắp ⇒ Huyền 9 buổi, ca hôm nay rơi vào
-  "+4 buổi nữa…" (chữ, không bấm được). Buổi bù cũ nằm lẫn trong ô "Chấm ET" (cuối danh sách chấm). DB luôn đúng — lỗi ở TẦNG GIAO DIỆN.
-- **Chặn 3 lớp:**
-  1. **1 nguồn DB cho mỗi ô ca:** yếu `fn_btyeu_viec_cua_toi` · bù `fn_bu_ca_cua_toi` · đuổi `fn_duoi_ca_cua_toi` (TA thấy ca mình, admin thấy mọi ca,
-     kể cả ngoài lịch trực). Ô bù/đuổi dùng chung `BoxBu`.
-  2. **Luật UI (bắt buộc cho mọi ô ca):** sắp HÔM NAY trước (theo giờ) → nợ cũ → sắp tới · ca hôm nay KHÔNG BAO GIỜ bị cắt · phần ẩn luôn có nút
-     "bấm xem hết". Lỗi tải danh sách việc hiện banner đỏ "⚠ Lỗi tải: …", không `.catch(() => [])` nuốt im.
-  3. **Tự kiểm hiển thị** `fn_bo_tro_tu_kiem(tu, den)` (mig 202609301510): với mọi ca yếu/bù/đuổi còn mở từ hôm nay, hệ ĐÓNG VAI đúng TA đứng ca
-     + từng HS (set jwt claims trong transaction, trả lại cuối hàm) rồi gọi ĐÚNG hàm app đang gọi; báo: chưa gán TA · TA không còn đang làm ·
-     TA/HS chưa có tài khoản · TA thiếu quyền "Buổi học" · app TA/HS không hiện ca · lỗi khi tải. Hiện ở ERP › Bổ trợ › **Lịch phòng** (hôm nay → 7
-     ngày; xanh = ổn, đỏ = liệt kê để OPS sửa trước giờ ca). Thử phá có chủ đích (rollback): bắt đủ 6 ca đuổi bị ẩn + 1 TA không tài khoản.
-  **Không kiểm được bằng DB:** cache app cũ trên máy, ô vẽ sai — lớp 2 lo.
-
-## 16. Cập nhật 09/10 — trần 70 · suất theo bậc lớp
-
-- **Trần bổ trợ yếu 50 → 70** em đang bổ trợ cùng lúc (thêm iPad); trần ưu tiên Cao giữ 20. Hằng số 1 chỗ: `_btyeu_tran_dang()`.
-- **Chỗ người của ca = 3 SUẤT/TA**, mỗi em chiếm suất theo **bậc lớp**: S = 0,5 · A = 0,75 · B/C (và lớp chưa gán bậc) = 1 ⇒ toàn lớp S
-  thì 1 TA nhận 6 em. Lớp tính suất = lớp gốc của lượt (bù = lớp buổi nghỉ · đuổi = lớp đợt đuổi · yếu = lớp case, không có thì lớp đang học
-  môn của ca). Em có 2 lượt trong cùng ca chỉ tính 1 lần. **Đơn vị (30'×TA) giữ nguyên** — ca vẫn đầy khi hết suất HOẶC hết đơn vị.
-  DB: `_bt_trong_so_lop` · `_ca_bo_tro_trong_so_bhh` · `_ca_bo_tro_suc_nguoi`; sửa `fn_ca_bo_tro_ngay/ung_vien/xep/xac_nhan` (mig 202610091449).
-  Lịch phòng hiện "N em · x/3 suất", hàng chờ báo "hết suất (còn x, em cần y)".
-
-## 17. Cập nhật 10/10 — dạng không có MCQ ⇒ trả lời ngắn (THAY §4)
-
-- **CEO 10/10:** "Với những dạng không có MCQ thì hệ thống ưu tiên hiển thị trả lời ngắn — như cũ là đang báo không có."
-  ⇒ luật chọn câu của bổ trợ: **MCQ trước; cả dạng 0 MCQ ⇒ câu trả lời ngắn có đáp án (kho chuẩn), MỌI mức độ.** §4 ("MCQ tuyệt đối",
-  ngoại lệ chỉ mức 4–5) và chốt 03/10 ("bù 100% MCQ, 0 MCQ thì khoá") HẾT hiệu lực.
-- Áp ở `_btyeu_chon_cau` (yếu: luyện · test cuối ca · retest · phiếu giấy) và `tu_luyen_chu_de_sinh` loai `bu_luyen`/`bu_test` (bù). Phiếu giấy:
-  câu trả lời ngắn in kèm dòng "Đáp số: …", màn Nhập kết quả hiện đáp án + 2 nút **Đúng / Sai** (`fn_btyeu_giay_nhap` nhận 1/0).
-- Đo 10/10 (152 dạng trong case mở): có câu để làm 138 → 149. Còn 3 dạng không có cả MCQ lẫn trả lời ngắn (T107010102 · T107010506 · HH00023)
-  ⇒ app báo học trên giấy, TA tick tay. "Học từ đầu" (đuổi) không đổi.
-
-
-## 18. Cập nhật 12/10 — dạng yếu tính theo dạng HIỆN TẠI của câu ("đo đi theo câu")
-
-- Gốc: số đo lưu kèm mã dạng lúc làm bài; câu đổi dạng / dạng bị gộp, xoá ở bản đồ ⇒ "dạng yếu" (app HS, đề xuất bổ trợ) còn tính theo mã cũ.
-- Luật (một hàm `_do_nhom_cua_o`, chi tiết ở `spec-ban-do-4-tang.md` §10): câu còn trong kho và đang thuộc dạng thật ⇒ số đo tính về dạng đó;
-  không có câu ⇒ theo mã lúc làm, mã đã bỏ thì theo dạng nhận (gop_vao, hoặc log gộp câu khi chỉ có đúng 1 dạng nhận). Không rõ ⇒ giữ mã cũ.
-- Áp cho: mastery (`fn_mastery_cells`) · màn Dạng yếu app HS (ẩn hẳn dạng không còn trong bản đồ) · dạng yếu 2 cửa sổ · đề xuất dạng mới · dạng của buổi bù.
-- Case yếu đang mở: dạng bị XOÁ MỀM ở bản đồ cũng tự đổi sang dạng nhận / đóng lại (trước chỉ bắt xoá cứng). Case đuổi: CHƯA áp.
-
-## 19. Cập nhật 13/10 — câu thiếu hình · Dashboard theo tuần
-
-- **Câu thiếu hình:** đề ghi "[hình…]" mà chưa đính hình ⇒ không chọn vào bất kỳ bài nào (luật chung `_kho_dk_du_hinh_sql`, nằm trong `_kho_dk_mcq_sql` và
-  `_kho_dk_tln_sql`). Câu vẫn ở kho; đính hình xong tự quay lại.
-- **Dashboard (tab đầu của hub Bổ trợ):** mỗi tuần (T2→CN) × Yếu · Bù · Đuổi: **đã chạy / chốt**, 3 tuần gần nhất, lùi/tới từng tuần.
-  Đơn vị = 1 lượt học sinh trong 1 ca. Chốt = mọi lượt đã xếp có ngày trong tuần (kể cả ca vắng / không diễn ra), trừ ca đã gỡ khỏi lịch.
-  Đã chạy = em có mặt. Mọi số + phân loại ở `fn_bo_tro_dashboard_tuan`; muốn đổi cách đếm thì sửa hàm này, không sửa màn.
-
-## 20. Cập nhật 14/10 — Hình yếu theo mô hình (bước 1)
-
-- Bổ trợ yếu theo dạng KHÔNG thấy Hình theo mô hình (số đo ở `fn_mastery_cells_hinh`, theo `hinh_baitoan_id`). Bước 1 = DANH SÁCH, chưa vào case:
-  ERP hub Bổ trợ › Yếu › "Hình yếu" · app TA hộp "Hình yếu theo mô hình" (chỉ lớp mình). Trợ giảng dạy trên giấy rồi bấm "Đã dạy" (ghi vết `hinh_yeu_da_day`);
-  đo lại sau ngày dạy mà vẫn yếu ⇒ cờ "dạy rồi vẫn yếu". Hàm: `fn_hinh_yeu_theo_mo_hinh` · `fn_hinh_yeu_danh_dau_day`.
-- Bước 2 (chờ Thùy): đưa mô hình vào case, luyện/test/retest, cách chấm bài chứng minh.
-
-## 21. Cập nhật 15/10 — bước 2: Hình theo mô hình vào case
-
-- **Dạng của case = 1 bài mô hình** (`ma_dang = hinh_baitoan.ma`). Kho câu = bài + biến thể của nó ("kho mỏng" — Thùy chấp nhận 14/10). Nhánh registry `hinh_mo_hinh` → view `hmh_ban_do/cau_hoi/dang_ly_thuyet/cum_bai/cum_tien_de`.
-- **Luôn dạy + chấm trên GIẤY** (bài chứng minh): luyện trên app báo "học trên giấy"; TA in phiếu (ca giấy: phiếu thường; ca app: "🖨 In phiếu Hình"), dạy, nhập Đúng/Sai; lời giải mẫu để đối chiếu.
-- **Vào case:** đề xuất tự động (`fn_btyeu_de_xuat_dang_moi`: yếu + có đo sau khi mở case) · engine Duyệt · nút "+ Đưa vào case" ở màn Hình yếu (chỉ case đang mở; không phá trần 70/20).
-- **Đo:** kết quả bổ trợ của bài mô hình vào `fn_mastery_cells_hinh` (test cuối ca = ET), không vào `fn_mastery_cells`.
-
-## 22. Cập nhật 15/10 — Bổ trợ Đuổi thống nhất (thay "Học từ đầu")
-
-- **Một sản phẩm:** mục tiêu = đúng các dạng giáo viên chọn (`bo_tro_duoi_dang`); HS tự hoàn thành ở nhà trên app (đọc lý thuyết → luyện → test, từ 50% đúng là xong dạng); đến buổi TA làm cùng phần còn dở.
-- **Một nguồn tiến trình:** `fn_duoi_tien_trinh(hs)` — HS (app), TA (ca đuổi), ERP cùng đọc. Mỗi dạng có trạng thái xong · đang học · tới lượt · khoá · trên giấy, và nơi làm (ở nhà / tại ca).
-- **Khoá tuần tự** theo độ khó trong chuyên đề của MỤC TIÊU; TA mở tay được (`fn_duoi_mo_dang`). Dạng ngoài mục tiêu KHÔNG hiện — học thêm thì ra phần Học tập.
-- **Đóng đợt** vẫn do giáo viên/TA xác nhận (hệ chỉ đề xuất khi đủ dạng / đủ buổi).
-- **26/10 — bản đồ mới (mig 202610261821):** K6–12 mục tiêu chọn theo dạng bài NDB (`fn_duoi_dang_chon`), khoá tuần tự theo thứ tự bản đồ mới (chủ đề → chuyên đề → nhóm → dạng bài); mã cũ chưa quy được (ứng ≥2 dạng bài) vẫn chạy bản đồ cũ. Cấp 1 không đổi.
-
-## 23. Cập nhật 16/10 — TA xem câu em đang làm + lời giải chi tiết
-
-- **Nhu cầu (Thùy):** app HS hiện câu nào thì app TA có chỗ nhìn đúng câu đó, kèm đáp án chi tiết, để TA giảng không cần nháp.
-- **Một nguồn:** `fn_ta_cau_cua_em(hs, buoi, so_ngay, gioi_han)` (chỉ nhân sự) đọc bản chụp `bai_test_cau` — đúng đề/hình/lựa chọn/ngữ liệu em thấy — cộng bài làm của em (chọn gì, đúng/sai). Phủ 7 loại bài: luyện · test cuối ca · retest · đuổi luyện/test · bù luyện/test.
-- **Màn:** khối "👁 Câu em đang làm" (`CauCuaEmTA`) trong ca yếu · ca đuổi (mỗi em có mặt) · ca bù. Câu em đang đứng tự mở; đáp án đúng + lời giải chi tiết (+ ảnh lời giải) chỉ hiện khi TA bấm hoặc em đã trả lời. Mặc định lấy bài của ngày buổi; nút "Xem 7 ngày gần nhất".
-- **Giới hạn biết trước:** câu chưa có lời giải trong kho hiện nút "(chưa có)"; "đang làm" suy từ câu chưa trả lời đầu tiên (HS có thể đang ở câu khác nếu làm nhảy cóc); dạng Hình theo mô hình học trên giấy nên không có câu app.
-
-## 24. Cập nhật 17/10 — BỔ TRỢ HÌNH (loại thứ 4, độc lập với Yếu Đại)
-
-- **Vì sao riêng:** Hình chưa có bản đồ kiến thức ⇒ không dạng, không kho MCQ, không đo, máy không đề xuất được. Mọi chỗ dính BẢN ĐỒ/KHO khác Yếu Đại; còn lại (ca trực, đơn vị, suất, trần) DÙNG CHUNG.
-  Thùy 17/10: *"hình đang xây bản đồ mới, logic có thể đổi nên bỏ cái cũ đi"* ⇒ nhánh "Hình theo mô hình" (§20–21) bị ẨN khỏi giao diện (tab "Hình yếu" ở Yếu, hộp `HinhYeuTA` ở app TA — code + DB giữ nguyên, chưa xoá).
-- **Case = HS × ĐỢT** (`bo_tro_hinh`: lý do bắt buộc · mức L1–L3 · ưu tiên · trạng thái dang_xu/hoan_thanh · ket_qua on/can_them/bo/day_xong · `case_truoc_id` vòng sau). Không có bảng dạng. Ghi vết bằng trigger vào `bo_tro_hinh_log`.
-- **Duyệt:** CHỈ Trang/Lộc tự mở (ERP › Bổ trợ › **Hình** › "+ Mở ca Hình"; `fn_bthinh_mo`). Giai đoạn tạm: chưa nhận báo động/đề xuất máy.
-- **Xếp lịch:** như Yếu — Lịch phòng › ca trực › "+ Xếp" › tab **Hình** (`fn_ca_bo_tro_ung_vien.hinh`, `fn_ca_bo_tro_xep(p_loai='hinh')`). Đơn vị L1 = 1, L2/L3 = 4; suất 3/TA theo bậc lớp; `buoi_hoc.loai='bo_tro_hinh'`, `buoi_hoc_hs.bo_tro_hinh_id`; 1 buổi chờ học/case (trigger).
-  **Trần 70 em / 20 Cao tính GỘP Yếu + Hình** (hai trigger cùng advisory lock).
-- **Tài liệu:** gắn theo BUỔI (`bo_tro_hinh_tai_lieu`, `fn_bthinh_gan_tai_lieu`) từ kho tài liệu (`tai_lieu`, môn Toán — gồm tài liệu builder). Hiện ở ERP (nút 📎) và app TA. Buổi chưa có tài liệu ⇒ chip vàng.
-- **Ca diễn ra (app TA, `CaHinhTA.tsx`):** điểm danh → tài liệu → nhận xét → Hoàn tất (`fn_bthinh_hoan_tat`). Không test, không đánh giá mức. Người đứng ca: L1/L2 là TA, L3 là GV (theo người trực của ca).
-- **Kết thúc:** như Đại — người dạy Hoàn tất ca ⇒ case `day_xong`, trừ tick "còn học tiếp". Trang/Lộc đóng tay được (`fn_bthinh_dong`: ổn / cần thêm / bỏ).
-- **Chưa làm (việc treo):** Dashboard tuần (`fn_bo_tro_dashboard_tuan`) · tự kiểm hiển thị (`fn_bo_tro_tu_kiem`) · lịch trên app HS (`fn_hs_lich_bo_tro`) · dọn ca không diễn ra (`fn_btyeu_don_ca_khong_dien_ra`) · theo dõi sống trong Lịch phòng · công/lương TA (`_ta_buoi_thieu_cong`) · báo cáo trợ lý · mở case từ báo động/máy khi có bản đồ Hình · đánh giá khi có bản đồ. Lịch phòng/app TA hiển thị OK; các hàm trên hiện chỉ biết Yếu/Bù/Đuổi.
-- **17/10 (phần 2, mig `202610171841`) — đã nối Hình vào các hàm biết 3 loại:** Dashboard tuần (cột Hình) · tự kiểm hiển thị (`fn_bo_tro_tu_kiem` đóng vai TA qua `fn_bthinh_viec_cua_toi`, vai HS qua `fn_hs_lich_bo_tro`) · dọn ca không diễn ra (`fn_btyeu_don_ca_khong_dien_ra`) · lịch app HS (nhãn "Bổ trợ Hình", chưa có màn "Vào ca" cho HS) · công TA (`_ta_buoi_thieu_cong`, `fn_ta_hom_nay`, `_ta_doi_chieu`, `_ta_lop_cua_buoi`).
-  **Công/lương: buổi Hình tính như buổi Yếu** (loại việc `bo_tro_yeu`, lớp suy từ lớp Toán em đang học) — Thùy chưa nói khác, đổi thì tách loại việc riêng.
-  Còn treo thật: theo dõi sống (Đang luyện/Im lâu) trong Lịch phòng cho Hình (không có dữ liệu luyện) · báo cáo trợ lý (`_troly_*`) chưa đếm Hình · mở case từ báo động/máy khi có bản đồ Hình.
-
-## 25. Cập nhật 17/10 — DUYỆT BỔ TRỢ 2 VÒNG + CHỐT TUẦN + 1 TUẦN BỔ TRỢ 1 LẦN (Thùy)
-
-- **Vấn đề:** hàng duyệt quá dài, duyệt dồn đầu thì cuối hết slot. **Giải pháp:** 2 vòng. Vòng 1 (tab **📉 Điểm thấp** + **🚨 Báo động**) chỉ đưa em vào **👁 Đang theo dõi** (không chiếm slot, không mở case). Vòng 2 (tab Đang theo dõi) mới **Duyệt chính thức** — đi đúng đường cũ (`kiemSucChua` → `duyetLevel` → mở case → `fn_btyeu_fill_dang_yeu`), lúc này mới trừ slot. Mockup: `docs/mockup-duyet-bo-tro-2-vong.html`.
-- **KHÔNG realtime:** thứ 2 người duyệt bấm **Chốt tuần** (engine TS cũ quét toàn bộ lớp của môn, vài chục giây) ⇒ ảnh chụp lưu `bo_tro_chot_tuan` + `bo_tro_chot_tuan_hs`. Điểm thấp + Đang theo dõi đọc ảnh chụp (mở màn không còn tự quét); **chỉ Báo động đọc live** (`fn_botro_bao_dong`: chuông trong 30 ngày, chưa có case/theo dõi/bị bỏ qua sau chuông). Em hết tín hiệu vẫn ở Đang theo dõi tới khi người duyệt **Gỡ tay**. Một em vừa báo động vừa điểm thấp hiện ở cả hai tab (chip lý do còn lại), duyệt xong ở tab nào thì biến mất ở cả hai.
-- **UI:** mỗi màn 1 học sinh (cột trái = danh sách em, ‹ › đổi em). **Máy KHÔNG đề xuất level.** Khối ET 4 buổi gần nhất + BTVN 4 buổi + điểm chuyên đề (ảnh chụp tuần); tab theo dõi có dải "từ lúc vào theo dõi → lần chốt gần nhất".
-- **ET 4 buổi — luật màu (tính ở DB `fn_botro_et_btvn`, từ `gami_grades` phase `et`; chưa gồm ET online `bai_lam_cau`):** điểm em = TB các câu ×100 (Đ=1 · C=0,5 · S=0), so với CẢ LỚP cùng buổi. **Đỏ đậm** = <85% TB lớp (**15% của TB lớp, không phải 15 điểm**) HOẶC thuộc 2 cuối lớp · **Đỏ nhạt** = 85% TB → TB · **Xanh nhạt** = từ TB trở lên · **Xanh** = >115% TB HOẶC 2 đầu lớp. "2 cuối/2 đầu" **đếm theo số người**: ngưỡng = điểm người thứ 2 từ cuối/đầu, ai ≤/≥ ngưỡng đều vào nhóm (4 bạn cùng điểm cuối ⇒ cả 4 đỏ đậm); nhóm cuối chỉ áp cho người dưới TB, nhóm đầu cho người trên TB, và chỉ khi lớp ≥ 4 bạn. Màn có chú thích để khỏi hiểu lầm. **Ngoại lệ (mig `202610180020`): luật "2 cuối/2 đầu lớp" KHÔNG áp khi QUÁ NỬA lớp cùng điểm với em** (vd 9/10 bạn cùng 50% ⇒ không ai là "2 cuối", rơi về luật so TB → đỏ nhạt). Hai mốc 85%/115% TB giữ nguyên.
-- **BTVN 4 buổi:** Đ/C/S + % đúng từng buổi (`gami_grades` phase `btvn`; Đ = correct · C = partial · S = wrong).
-- **1 TUẦN CHỈ BỔ TRỢ 1 LẦN:** `fn_btyeu_hoan_tat` ⇒ **kết thúc case ngay (`day_xong`) kể cả chưa hết dạng yếu** (ghi chú nêu còn dạng chưa dạy, tuần sau duyệt lại). **Bổ trợ Hình cũng vậy:** xong 1 buổi là xong (`fn_bthinh_hoan_tat` bỏ qua `p_con_tiep`; app TA bỏ ô "còn học tiếp"). Việc khẩn giữa tuần = loại **Bổ trợ Khẩn cấp** (CHƯA làm). Không dọn dữ liệu cũ (thực tế đã vận hành thế).
-- **Trần gộp Yếu + Hình:** `fn_btyeu_suc_chua` / `fn_btyeu_kiem_suc_chua` (bộ đếm + kiểm trước khi duyệt) trước đây chỉ đếm Yếu — đã sửa đếm cả Hình (trigger thì đã gộp từ §24).
-- **DB:** mig `202610172355_botro_duyet_2_vong_chot_tuan` (bảng `bo_tro_theo_doi` [theo_doi | bo_qua | len_chinh_thuc | go] · `bo_tro_chot_tuan` · `bo_tro_chot_tuan_hs`; `fn_botro_et_btvn` · `fn_botro_chot_tuan` · `fn_botro_danh_sach_tuan` · `fn_botro_bao_dong` · `fn_botro_theo_doi_vao` · `fn_botro_theo_doi_ket_thuc`). Code: `src/lib/botro_tuan.ts`, `DuyetBoTroYeuScreen.tsx` (viết lại), `danhgia.ts` `listCandidatesLop(lopId, giu?)`.
-- **Nợ biết trước:** (1) bước QUÉT của Chốt tuần vẫn là engine TS ở trình duyệt (vi phạm §2.0, chấp nhận vì chạy tay 1 lần/tuần) — port sang SQL khi có thời gian; (2) màn Duyệt cũ dùng `DuyetKhoi`/`CandidateDetailBody` không còn được màn này gọi (vẫn dùng ở Dashboard học tập); (3) thái độ không còn ở màn này; (4) chưa thử "Chốt tuần" và "Duyệt chính thức" bằng dữ liệu thật (sẽ ghi vào DB thật).
-
-## 26. Cập nhật 17/10 — Luyện ≠ test cuối ca
-
-- **Luật (Thùy 17/10):** trong một ca bổ trợ yếu, đề luyện và đề test cuối ca PHẢI khác nhau — khác mã câu VÀ khác đề (cùng chữ + hình + lựa chọn tính là một đề).
-- **Cách làm:** `_btyeu_chon_cau_khac` chỉ trả câu CHƯA gặp trong ca. Test cuối ca lấy theo cụm, thiếu thì sang cụm khác của dạng, không lặp. Luyện (app HS + phiếu giấy) chừa 2 câu mỗi dạng cho test; hết câu mới thì ôn lại câu em đã luyện trong ca. Dạng ≤2 câu đủ điều kiện ⇒ học trên giấy.
-- **Ngoại lệ có chủ đích:** hết câu mới ở mọi dạng đã luyện ⇒ test lấy lại 1 dạng kém nhất để khỏi rỗng (cờ `test_lap_cau`); retest (HOLD) và bù/đuổi chưa áp luật này.
-
-## 27. Cập nhật 23/10 — BỔ TRỢ ÔN THI (loại thứ 5, ngoài hệ case)
-
-- **Là gì (Thùy 23/10):** mỗi kỳ thi (4 đợt/năm: giữa kỳ I · cuối kỳ I · giữa kỳ II · cuối kỳ II) BK mở ca ôn cho TẤT CẢ học sinh trong ~2 tuần. Em đăng ký ca, đến luyện. **Không liên quan mastery, không app HS, không test/đo**; nếu thấy em kém thì TA báo động (lời văn), thông tin chốt riêng với phụ huynh.
-- **Mô hình:** `bo_tro_on_thi_dot` (tên · loại giữa/cuối kỳ · học kỳ · khối[] · từ–đến ngày) → CA = `buoi_hoc` loại `bo_tro_on_thi` (`on_thi_dot_id`, ngày, giờ, `phong`, `nguoi_day_tg` = TA trực; KHÔNG gắn ca trực `ca_bo_tro`, KHÔNG dùng suất 3 ca/TA, KHÔNG tính trần 70/20) → đăng ký = dòng `buoi_hoc_hs` (`on_thi_khong_dk` = em đến mà chưa đăng ký) → báo động `bo_tro_on_thi_bao_dong` (1 dòng/em/ca, `moi` → `da_xu_ly`).
-- **ERP (Bổ trợ › Ôn thi, `BoTroOnThiScreen`)** — Trang thêm học sinh tay (ô tìm tên/mã + dán danh sách mã), không giới hạn số ca/em, không sức chứa, huỷ/đổi ca được khi chưa điểm danh. 3 tab: **Ca & đăng ký** · **Thống kê** · **Báo động từ TA** (Trang xử lý + ghi chú, mở lại được).
-- **Thống kê** (`fn_onthi_thong_ke`, lọc khối): mẫu số = HS ĐANG HỌC thuộc khối của đợt. Mỗi em vào ĐÚNG 1 nhóm, ưu tiên **đã đi** (≥1 lượt có mặt) › **chờ đi** (có ca chưa diễn ra chưa điểm danh) › **không đi được** (đã đăng ký, vắng / ca đã qua không có mặt) › **chưa đi** (chưa đăng ký). Ca huỷ không tính. `thieu_diem_danh` ⊂ không đi được (ca đã qua TA chưa điểm danh). Bấm số xem tên (kèm lớp + chuỗi ca).
-- **App TA (`CaOnThiTA`, tab Bổ trợ):** TA thấy ca mình trực; điểm danh có mặt/vắng (chỉ tới ngày), cuối giờ "⚠ Báo động" (chỉ em có mặt), thêm em đến không đăng ký, **Hoàn tất ca** (phải điểm danh hết). Không mở ca, không dùng app HS. Push badge cho TA khi được giao ca.
-- **Công TA — việc PHÁT SINH, mức riêng:** `ta_loai_viec.bo_tro_on_thi` chuyển sang `ngoai_package`/giờ ⇒ lương = giờ × `ta_don_gia.gia_bo_tro_on_thi`, KHÔNG tính vào 8 giờ bổ trợ trong gói. **CHƯA có dòng đơn giá** ⇒ trả 0 + cờ `chua_don_gia` cho tới khi Thùy chốt mức (thêm 1 dòng `ta_don_gia`). Đã nối vào `fn_ta_hom_nay` (gợi ý khai công) · `_ta_buoi_thieu_cong` (nhắc ca đã diễn ra chưa ghi công) · `_ta_doi_chieu` (khớp buổi).
-- **Chưa làm / treo:** ca ôn thi chưa hiện trong **Lịch phòng** ⇒ có thể trùng phòng với ca bổ trợ khác (Trang tự để ý) · Dashboard tuần + tự kiểm + báo cáo trợ lý chưa đếm ôn thi · HS/PH chưa thấy lịch ôn thi trên app (Thùy: giai đoạn đầu để ngoài) · đăng ký tự phục vụ (web/app) chưa có — hiện Trang nhập tay.
-
-## 28. Cập nhật 26/10 — CHUẨN LẠI NHỊP ĐỘ BỔ TRỢ YẾU (chốt tuần · cộng dồn · sau bổ trợ vào theo dõi · tối đa 14 ngày)
-
-- **Nhịp tuần (Thùy 26/10):** Chốt tuần = ảnh chụp dữ liệu **sáng THỨ 2 hằng tuần, bấm tay** (không tự chạy). Màn Duyệt nhắc khi tuần này chưa có ảnh chụp (đỏ nếu hôm nay là thứ 2).
-- **Cộng dồn:** mỗi lần chốt = lượt Điểm thấp mới **+ phần CHƯA XỬ LÝ từ tuần trước** (có trong Điểm thấp của lần chốt cuối tuần trước, chưa vào theo dõi / bỏ qua / mở case từ sau lần chốt đó, chưa có trong lượt mới). Ghi thẳng vào ảnh chụp tuần này (ly_do đầu tiên "Tồn từ tuần dd/mm — chưa xử lý", chip 📌 "tồn tuần trước") ⇒ tuần sau tự nối tiếp. Làm ở `fn_botro_chot_tuan` (SQL, không đổi engine quét).
-- **Xong bổ trợ mà còn dạng yếu ⇒ vào "Đang theo dõi", KHÔNG quay lại xếp bổ trợ.** "Còn dạng yếu" = trong các dạng ĐÃ HỌC của case (`bo_tro_yeu_dang.day_at` không null), trạng thái HIỆN TẠI vẫn Yếu — cùng hàm đo lúc mở case (`fn_btyeu_dang_yeu_2_cua_so[_moi]` theo `bo_tro_yeu.ban_do`), gói ở `_btyeu_dang_con_yeu(case)`. `fn_btyeu_hoan_tat` gọi `_btyeu_vao_theo_doi_sau_case` sau khi đóng case: ghi `bo_tro_theo_doi` nguồn **`sau_bo_tro`** (ghi chú + `so_lieu_vao.sau_bo_tro` = danh sách dạng còn yếu + số dạng đã học). Hết dạng yếu ⇒ ra hẳn, không vào theo dõi. Em đã ở theo dõi thì thôi (unique 1 dòng).
-- **Mỗi case sống TỐI ĐA 14 ngày** (tính từ `bo_tro_yeu.created_at` = lúc Duyệt chính thức mở case): `fn_btyeu_het_han_xu_ly` đóng case (`ket_qua = 'het_han'`, huỷ các buổi chưa diễn ra của case), vào theo dõi nếu còn dạng yếu **hoặc chưa học dạng nào** (không để rơi mất). Case có buổi ĐANG diễn ra (em có mặt, chưa hoàn tất) hoãn tới lần gọi sau. **Chạy LƯỜI**: gọi khi mở ERP Duyệt / Lịch phòng / Chốt tuần / app TA (≤ 1 lần/10 phút/trình duyệt) — không dùng cron vì hàm đo dạng yếu đòi nhân sự đăng nhập.
-- **Chuyển hàng loạt 26/10 (Thùy gật):** 46 case đang mở quá 14 ngày (tuổi TB 18, max 26) ⇒ đóng 44 case + chuyển **hết** vào theo dõi nguồn `sau_bo_tro` (không đo dạng yếu vì chạy ngoài phiên đăng nhập; ghi chú "chưa học dạng nào" khi đúng vậy); 2 case đang học dở để hết hạn lần sau; 5 buổi chưa diễn ra bị huỷ theo. Đang theo dõi: 36 → 80.
-- **DB:** mig `202610261454_botro_yeu_nhip_14_ngay_theo_doi` (CHECK nguồn theo dõi thêm `sau_bo_tro`, `bo_tro_yeu.ket_qua` thêm `het_han`; `_btyeu_dang_con_yeu` · `_btyeu_vao_theo_doi_sau_case` · `_btyeu_dong_case_het_han` · `fn_btyeu_het_han_xu_ly`; dựng lại `fn_btyeu_hoan_tat` + `fn_botro_chot_tuan` từ định nghĩa đang chạy). Code: `botro_yeu_ca.ts` (`xuLyCaHetHan`, nhãn `het_han`), `botro_tuan.ts`, `DuyetBoTroYeuScreen.tsx` (nhắc chốt thứ 2 · chip nguồn/tồn), `LichPhongScreen.tsx`/`TaHome.tsx` (gọi lười), `CaBoTroTA.tsx` (câu chữ sau hoàn tất).
-- **Câu chữ cũ đã sửa:** "OPS xếp buổi sau" / "Em đã hết dạng yếu — KẾT THÚC" (sai khi case đóng mà còn dạng yếu). `ket_qua = 'day_xong'` nay nghĩa "xong bổ trợ" (đóng ca), KHÔNG đảm bảo hết dạng yếu.
-
-## 29. Cập nhật 26/10 — KẾT QUẢ BỔ TRỢ YẾU THEO TUẦN (Dashboard)
-
-- **Nhu cầu (Thùy 26/10):** hiểu kết quả của bổ trợ — từng em bổ trợ đã đạt được gì sau ca; ở tab Dashboard, bấm vào số ca ra chi tiết từng ca.
-- **Màn:** dòng **Yếu** của mỗi tuần ở Dashboard có nút **📊 Kết quả bổ trợ** (chỉ hiện khi tuần có ca đã chạy). Panel: **Giảm được X dạng yếu của Y em trong Z ca** · Vẫn còn yếu · Dạng đã học · Luyện/Test cuối ca đúng %. Dưới là từng (ca × em), lọc Tất cả / Có giảm yếu / Còn dạng vẫn yếu / Không học dạng nào; bấm dòng mở từng dạng: **trước ca → nay**, nhãn tiến bộ, luyện + test đúng/tổng, chip theo dõi. `KetQuaBoTroTuan.tsx`.
-- **Định nghĩa (quan trọng):** **"Giảm" = dạng ở mức Yếu TRƯỚC ca mà NAY không còn Yếu** — mastery đo đến 00:00 ngày ca (`p_den` của `fn_mastery_cells[_bdm]`) so với hiện tại, cùng bản đồ của case. Dạng không yếu từ trước ca KHÔNG tính là giảm (case mở sớm 7–35 ngày nên nhiều dạng đã khá lên trước ca) — nhãn "không yếu từ trước ca". Dạng chưa có số đo trước ca = "chưa đo trước". **Dạng đã học** = dạng case đánh dấu học ở buổi đó HOẶC dạng em trả lời ≥1 câu trong buổi (ca đang dở chưa đánh dấu). Thước "Yếu" ở đây là trạng thái mastery (không kèm điều kiện "có đo gần đây" của luật theo dõi §28) — nên số "còn yếu" có thể lệch 1–2 dạng so với danh sách tự vào Đang theo dõi.
-- **DB:** mig `202610261654_botro_ket_qua_tuan` — `fn_botro_ket_qua_tuan(từ, đến)` (≤ 32 ngày, chỉ nhân sự, tính theo LÔ: mastery 1 lần/ngày-ca; ~1 giây tuần 6 ca, ~4 giây tuần 26 ca) + `_botro_ca_yeu_tuan`. Lib `botro_dashboard.ts` (`ketQuaBoTroTuan`).
-- **Số đầu tiên (26/10):** tuần 19–25/10 — 6 ca · 5 em có học · 8 dạng yếu trước ca → **7 giảm** (4 em), 1 còn yếu · luyện 89%, test 83%. Tuần 12–18/10 — 26 ca · 26 em · 54 dạng yếu trước ca → **36 giảm** (19 em), 27 dạng đã học còn yếu (12 em) · luyện 74%, test 86%.
-- **Kèm (mig `202610261654_dua_4_em_sau_bo_tro_vao_theo_doi`, dữ liệu):** 4 em còn dạng yếu trong dạng đã học nhưng ca đóng trước luật §28 (Thảo My · Nguyễn Thắng Tùng · Minh Trí · Phí Vinh Gia Khiêm) được đưa vào Đang theo dõi, nguồn `sau_bo_tro`.
-
-## 30. Cập nhật 26/10 — BƯỚC QUÉT CHỐT TUẦN THEO BẢN ĐỒ MỚI
-
-- **Vấn đề (đo 26/10):** engine quét của Chốt tuần (`getStatSheetLop` → `listCandidatesLop`, TS ở trình duyệt) đọc thẳng `gami_grades` và gom theo mã dạng CHÉP trên dòng đo (toàn mã cũ `T…`), chuyên đề bản đồ cũ — không qua "đo đi theo câu" (`_do_o_bdm` / `_do_nhom_cua_o`) như mastery SQL. Ảnh chụp chốt 26/10: 93% chuyên đề khớp bản đồ cũ, 0% khớp bản đồ mới, dù công tắc `mastery_ban_do_moi` đã bật từ 24/10. Hệ quả: khối "điểm chuyên đề" ở Điểm thấp / Đang theo dõi theo bản đồ cũ trong khi dạng yếu của case + kết quả bổ trợ theo bản đồ mới.
-- **Cách làm (Thùy chọn "B"):** chỉ phần **nạp dòng đo** phụ thuộc bản đồ ⇒ chuyển xuống DB: `fn_botro_lan_do_lop(hs[], môn, chế độ)` (mig `202610261813`). Cùng ngữ nghĩa `napLanDo` cũ (gami_grades · phase et/mt/btvn · Đ=1 C=0,5 S=0 · môn theo lớp của buổi, buổi bù lùi về buổi gốc từng HS · t = ngày buổi · bài Hình mô hình theo `hinh_baitoan.ma`) CHỈ khác mã dạng: `'tho'` = mã chép (y hệt bản cũ, để đối chiếu) · `'cu'` = `_do_nhom_cua_o` · `'moi'` = `_do_o_bdm` (cấp 1 + Hình giữ cũ bên trong) · NULL = theo công tắc. Dòng không quy được dạng bị bỏ (cùng luật mastery §1.5). Trả 1 `jsonb` mảng (PostgREST cắt 1000 dòng với hàm trả bảng). `danhgia.ts` `napLanDo` gọi hàm này; chuyên đề/tên dạng tra qua `dangInfoCuaMon` (đã có nhánh `bdm_ban_do`).
-- **KHÔNG làm (có chủ đích):** KHÔNG port phần CHẤM ĐIỂM (pha 1/2, MA-3, các kênh ①–⑤, `gami/danhgia.js`) sang SQL — phần đó không phụ thuộc bản đồ, ~1.300 dòng đã chỉnh tay nhiều vòng, port = rủi ro lệch kết quả lớn mà không đổi được "bản đồ nào". Bước quét vẫn chạy ở trình duyệt (nợ §2.0 còn nguyên, ghi ở §25); nếu muốn port, làm riêng và dùng chế độ `'tho'` + bản TS làm chuẩn đối chiếu.
-- **Kiểm (26/10):** (1) Đối chiếu TỪNG DÒNG bản TS cũ ↔ hàm SQL `'tho'` trên 3 lớp (9S1 5.289 · 7A1 4.051 · 5A2 4.685 dòng): **0 dòng lệch**; hàm SQL nhanh hơn ~10–15 lần (0,25–0,38 s vs 3,3–3,9 s). (2) Quét cả môn Toán (41 lớp, không ghi DB): bản cũ tái tạo **175** em Điểm thấp (ảnh chụp thật 13:59 là 177 — lệch 2 do dữ liệu đổi trong ngày) · bản mới **168** (160 chung, 15 chỉ cũ, 8 chỉ mới), 0 lớp lỗi, ~18 giây. 5/6 lớp mẫu cho CÙNG danh sách ứng viên; 8A1 đổi (4 chỉ cũ / 1 chỉ mới) vì dạng + chuyên đề đổi theo bản đồ. (3) Lớp 8A1: chuyên đề mã `NCH…` (11 chuyên đề) thay vì `T108…` (14); ô dạng 874 thay vì 781.
-- **Lưu ý chuyển tiếp:** ảnh chụp cũ (trước lần chốt kế) còn chuyên đề mã cũ ⇒ dải "từ lúc vào theo dõi → chốt gần nhất" của em vào theo dõi trước 26/10 không ghép được chuyên đề cho tới khi chốt lại; em tồn tuần trước (§28) sao chép `du_lieu` cũ ở lần chốt đầu. Lần Chốt tuần kế (hoặc "Chốt lại tuần này") sẽ ghi ảnh chụp theo bản đồ mới — chưa ghi đè ảnh chụp 26/10 của Trang.
-- **Bẫy còn đó:** `chotTuan` bắt lỗi từng lớp bằng `.catch(() => [])` — lớp lỗi sẽ rụng im lặng khỏi ảnh chụp (đã thấy ở bài học 21/10). Chưa sửa; nên báo lỗi rõ khi có lớp rụng.
-
-## 31. Cập nhật 27/10 — CAPACITY BỔ TRỢ YẾU THEO KHỐI
-
-- **Thùy 27/10:** "Capacity bổ trợ yếu cần hiển thị theo khối để xếp bổ trợ. Capacity = 40% tổng số đơn vị bổ trợ trong lịch bổ trợ khối."
-- **Công thức:** capacity khối = 0,4 × Σ `lich_truc_bo_tro.don_vi` của khối (dòng còn hiệu lực hôm nay = 1 tuần điển hình; đơn vị = 3 × phút/30 × số TA). **Đã dùng** = Σ đơn vị các case ĐANG bổ trợ (`bo_tro_yeu` + `bo_tro_hinh` `dang_xu`) theo `_ca_bo_tro_don_vi` (L1 = 1, L2/L3 = 4); khối theo học sinh (cùng cách `fn_ca_bo_tro_ung_vien`).
-- **DB:** `fn_btyeu_capacity_khoi(p_mon)` → jsonb `[{khoi, dv_lich, capacity, dung, case_n, cao_n}]` (mig `202610271546`). CHỈ ĐỌC.
-- **UI:** `components/CapacityKhoiBar.tsx` — dải chip "K9 12/40,8" (vàng ≥80%, đỏ vượt; bấm chip = lọc khối) ở **Duyệt bổ trợ** và **Xếp bổ trợ**.
-- **Chưa chặn:** chỉ hiển thị. Trần 70 em / 20 Cao toàn trung tâm (§ sức chứa) vẫn là chốt chặn cứng; capacity khối KHÔNG khoá Duyệt/Xếp.
-- **Số đo 27/10 (Toán):** K5 đang 17/9,6 (vượt), K4 5/12, K7 16/25,2, K8 12/26,4, K9 12/40,8, K10 6/8,4, K11 7/9,6. Lịch trực chỉ có môn Toán nên capacity chỉ tính môn Toán.
-
-## 32. Cập nhật 28/10 — KẾT QUẢ BỔ TRỢ = TRƯỚC CA → NGAY SAU CA (sửa §29)
-
-- **Thùy 28/10:** bảng kết quả chi tiết "không đúng lắm" — "kết quả phải tính trước và ngay sau khi ca kết thúc, không phải theo tình hình hiện tại". Đúng: §29 cũ lấy cột "Nay" = mastery HIỆN TẠI, nên số trôi theo từng lần ET/BTVN sau ca (cùng 1 ca xem hôm nay ≠ xem tuần sau).
-- **Sửa (mig `202610281725_botro_ket_qua_sau_ca`):** `fn_botro_ket_qua_tuan` đo mastery 2 mốc theo NGÀY CA (mỗi ca/em một mốc, nên em học cùng dạng ở 2 buổi không còn dùng chung một "nay"): **trước** = đến 00:00 giờ VN ngày ca; **sau** = đến hết ngày ca (gồm luyện + test của chính ca). Khoá JSON `nay_*` giữ tên cũ nhưng nghĩa là **sau ca**; UI đổi nhãn "Nay" → "Sau ca". Bỏ phép đo "hiện nay" → kết quả CỐ ĐỊNH, không cần "Tính lại" để đúng.
-- **Giới hạn:** mốc cắt của dữ liệu theo buổi là NGÀY (không có giờ) ⇒ lần đo khác diễn ra cùng ngày với ca (ET/BTVN buổi thường) vẫn lọt vào "sau ca".
-- **Kiểm (dry-run, 28/10):** tuần 19–25/10 không đổi (7 giảm / 8 yếu trước); tuần 12–18/10 giảm **34 → 31** dạng giảm, vẫn yếu 17 → 20, em có giảm 18 → 16 (3 dạng trước đây tính là hết yếu chỉ nhờ đo sau ca).
-
-## 33. Cập nhật 29/10 — EM KHÔNG BẤM VÀO CA ĐƯỢC: GỐC RỄ + TỰ KIỂM
-
-- **Triệu chứng (Thùy 29/10, Hà Linh HS0115 + Quỳnh Chi HS0314, ca 16:30–17:30, Trang phụ trách):** mở app HS, nút/ô vào ca không bấm được. "Lỗi này gặp rất nhiều rồi, fix rồi mà vẫn bị."
-- **Gốc rễ (đo trên DB thật, chạy hàm đúng như 2 em):** `fn_btyeu_ca_cua_toi` NỔ — `relation "bdm_cum_tien_de" does not exist`. Hàm tự SUY tên bảng tiền đề từ tên bảng cụm bằng `replace('_cum_bai','_cum_tien_de')`; nhánh bản đồ mới (`bdm`, dạng `NDB*`) có `bdm_cum_bai` nhưng KHÔNG có bảng tiền đề. Từ 24/10 (bật bản đồ mới, 100% case `ban_do='moi'`) MỌI em có dạng `NDB*` trong case đều dính: **14 buổi / 14 em** từ 24/10. `fn_hs_lich_bo_tro` (lịch) vẫn đúng (`vao_ca=true`) nên ô "Bổ trợ" hiện lịch nhưng nút "Vào ca" ẩn, vì app ẩn nút khi `caCuaToi` không trả ca.
-- **Vì sao "fix rồi vẫn bị":** mỗi lần trước vá 1 nhánh/1 bảng cụ thể (cụm rỗng 13/10, nhánh Hình 29/09…); gốc là **tên bảng suy bằng chuỗi + SQL động + app HS nuốt lỗi** (`.catch(() => null)` ⇒ lỗi DB thành "em không có ca" im lặng) + KHÔNG có ai kiểm "mọi em có ca hôm nay thật sự dựng được ca không" ⇒ thêm nhánh/bản đồ mới là vỡ chỗ khác, và chỉ biết khi em báo.
-- **Sửa (mig `202610291637_btyeu_ca_hs_khong_bdm_tien_de`):** (1) bảng tiền đề không tồn tại (`to_regclass`) ⇒ `tien_de = []`. (2) Thân hàm tách thành `_btyeu_ca_cua_hs(p_hs, p_buoi)` (không cho client gọi), `fn_btyeu_ca_cua_toi` chỉ còn vỏ. (3) `fn_btyeu_kiem_ca_hs(p_ngay=7)` — nhân sự gọi: dựng thử ca của TỪNG em-buổi bổ trợ yếu từ hôm nay → +7 ngày (kể cả chưa điểm danh), trả em nào lỗi + thông báo lỗi. Rỗng = ổn. Thử cố tình làm hỏng bảng ⇒ bắt đủ 2 em.
-- **Giao diện:** Lịch phòng (ERP) hiện dải ĐỎ "N em sẽ KHÔNG vào được ca trên app HS" kèm thông báo lỗi (chạy nền, ≤1 lần/5 phút). App HS: `caCuaToi` lỗi KHÔNG còn nuốt — lịch báo `vao_ca` cho ca yếu thì vẫn hiện nút, màn ca hiện lỗi thật.
-- **Kiểm (29/10):** 2 em: ca dựng được (5 + 3 dạng), "luyện" ra bài 3 câu; tự kiểm 7 ngày tới 20 em-buổi, 0 lỗi (~8 s; nặng nên chạy nền).
-- **Còn nợ:** `fn_kho_duyet_cau` / `fn_kho_hang_duyet[_ds]` cũng suy tên bảng tiền đề theo cùng kiểu (công cụ Kho, chưa kiểm với nhánh bdm).
-
-## 34. Cập nhật 29/10 — BẢN ĐỒ MỚI KHÔNG CÓ CỤM (sửa tiếp §33)
-
-- **Thùy 29/10:** "Bản đồ mới 4 tầng, dạng là tầng cuối, không có cụm." §33 chỉ làm hàm thôi nổ lỗi; gốc là hệ thống bổ trợ vẫn coi mọi nhánh có cụm + tiền đề.
-- **Đo (29/10):** `bdm_cum_bai` chỉ là VIEW của bảng cụm CŨ `dai_cum_bai` (355 cụm / 145 dạng, toàn mã `T…`); 0/876 dạng `NDB*` có cụm. 6.579 câu bdm còn mang `ma_cum` (mã `DCUM…` kế thừa từ bản đồ cũ): 6.279 trỏ vào cụm của dạng KHÁC, 300 trỏ vào cụm không còn. Vô hại vì mọi đường bổ trợ bdm truyền `ma_cum = null` (luyện "Cả dạng").
-- **Sửa (mig `202610291649_btyeu_ca_hs_bdm_khong_cum`):** `_btyeu_ca_cua_hs` — nhánh `bdm` (và nhánh nào không có bảng cụm) trả `cums = []`, KHÔNG tra bảng cụm/tiền đề nữa. Nhánh cũ có bảng cụm giữ nguyên (đối chiếu 29 em-buổi dạng ngoài NDB: 0 khác, 4 em-buổi có cụm vẫn có). Hàm tự kiểm `fn_btyeu_kiem_ca_hs` nhanh hơn ~13 lần (8,1 s → 0,6 s) vì bỏ các truy vấn cụm vô nghĩa.
-- **KHÔNG làm (Luật xoá):** không xoá/null `ma_cum` trên 6.579 câu bdm; không bỏ view `bdm_cum_bai` (Kho còn dùng — chưa kiểm hết). Chờ Thùy gật nếu muốn dọn.
-- **Còn lại dùng cụm cho bdm:** `fn_btyeu_ca_ta` (app TA) vẫn left join `bdm_cum_bai` theo `ma_cum` của bài đã luyện — luôn null với bdm nên chỉ hiện "Cả dạng"; chưa đổi vì không lỗi.
-
-## 35. Cập nhật 29/10 — ĐÃ DỌN CỤM KHỎI CÂU BẢN ĐỒ MỚI (Thùy: "ko dùng nữa rồi")
-
-- **Đính chính §34:** em từng gọi mã cụm trên câu bdm là "rác riêng của bản đồ mới" — SAI. `bdm_cau_hoi` là VIEW trên chính các dòng `dai_cau_hoi`/`hgt_cau_hoi`, nên `ma_cum` là cột của bản đồ cũ trên cùng dòng câu. Dọn = các dạng mã cũ `T…` dùng chung câu đó cũng mất cụm.
-- **Đã làm (mig `202610291703_don_cum_cau_ban_do_moi`):** `dai_cau_hoi.ma_cum = null` cho **6.279 câu** kho `dai` đã gán dạng `NDB*` (còn 124 câu `dai` chưa gán NDB giữ cụm). **Bản lưu** `bdm_ma_cum_luu_20261029` (6.279 dòng); hoàn lại bằng `update dai_cau_hoi q set ma_cum = l.ma_cum from bdm_ma_cum_luu_20261029 l where l.ma_cau = q.ma_cau` (đã thử trong transaction: về đúng 6.403 câu có cụm).
-- **Hệ quả đã đo:** chỉ 2 dạng cũ đang xử mất danh sách cụm → luyện "Cả dạng" (K4 `T104050102`, K7 `T107020302`). Hai em Hà Linh/Quỳnh Chi vào ca + luyện bình thường.
-- **KHÔNG đụng:** 300 câu `hgt` (Hình có cụm riêng, đang chạy) · bảng cụm `dai_cum_bai` (355) · `dai_cum_tien_de` (20) · view `bdm_cum_bai` (vẫn có `fn_btyeu_ca_ta`, `fn_ban_do_phieu_luu` nhắc tới) · `bai_test_cau.ma_cum` (lịch sử luyện) · cụm của KHTN/TSA/Hình.
-- **Còn lại nếu muốn dọn sâu hơn (cần Thùy gật riêng):** bỏ view `bdm_cum_bai` (phải sửa 2 hàm trước) · xoá bảng cụm cũ · 124 câu `dai` chưa gán NDB.
-
-## 36. Cập nhật 29/10 — BỎ HẲN CỤM KHỎI BỔ TRỢ + BẢN ĐỒ MỚI (Thùy: "sửa thì sửa đến cùng")
-
-- **Đã làm (mig `202610291710_bo_view_bdm_cum_bai`):** bỏ view `bdm_cum_bai` (bí danh của bảng cụm cũ — nguồn của cả họ lỗi "suy tên bảng cụm/tiền đề") · `fn_btyeu_ca_ta` (màn TA): nhánh `bdm`/không-bảng-cụm không join cụm, lịch sử luyện theo cụm cũ (8/10) gộp thành 1 dòng "Cả dạng" thay vì mã `DCUM…` trần. Cùng §34–35: ca HS (`_btyeu_ca_cua_hs`) bỏ cụm; 6.279 câu NDB hết `ma_cum` (có bản lưu).
-- **Đối chiếu trước/sau (ROLLBACK):** ca HS của 2 em · màn TA 5 buổi (4 giống 100%, 1 khác chủ ý — dòng lịch sử cụm cũ) · `fn_ban_do_phieu_luu('Toán')` của 2 em: **giống 100%**. Không còn chỗ nào trong DB/app tra `bdm_cum_bai` (đã grep `src`, `scripts`).
-- **Họ lỗi này đã chặn tận gốc?** Phía bổ trợ: ✔ (không còn đường nào của bản đồ mới đi qua bảng cụm/tiền đề; hàm tự kiểm §33 + dải đỏ Lịch phòng bắt phần còn lại). KHÔNG thay đổi nhánh Hình/KHTN/TSA (cụm riêng, còn dùng).
-- **GIỚI HẠN — cụm Đại cũ CÒN ở công cụ Kho, KHÔNG phải bổ trợ:** `dai_cum_bai` (355) · `dai_cum_tien_de` (20) · `dai_bdm_doi_ung_cum` (247) · 124 câu dai chưa gán NDB còn `ma_cum` · `bai_test_cau.ma_cum` (24.588 dòng lịch sử) · khoá ngoại + 10 hàm (`fn_bdm_gan_cum`, `fn_bdm_dang_cu`, `fn_dai_de_xuat_quyet`, `dai_cum_hau_due`, …) · tab Kho "Cụm bài", Bản đồ mới (đối ứng cụm cũ → dạng mới), Đề xuất. Đó là chỗ công cụ soạn bản đồ mới còn mượn "cụm cũ" để gán câu vào dạng; xoá = phá công cụ Kho nên cần quyết riêng.
-
-## 37. Cập nhật 05/11 — CA BÙ BIẾN MẤT KHỎI MÀN CHÍNH TA SAU "XÁC NHẬN ET"
-
-- **Triệu chứng (Thùy 05/11, Ding Phạm Hoàng An 3A1, TA Hồ Mai Nhật An):** TA bấm nhầm "Xác nhận ET" khi em chưa làm ET; chưa đóng ca nhưng thoát ra vào lại app thì ca mất khỏi màn chính.
-- **Gốc rễ:** `fn_dong_phase` đặt MỌI buổi không-"thường" thành `trang_thai='hoan_tat'` ngay khi đóng 1 phase. Buổi bù có 2 mốc (ET + đánh giá), còn ô "Bổ trợ bù" của TA (`fn_bu_ca_cua_toi`) chỉ lấy `trang_thai='mo'` ⇒ đóng ET (kể cả bấm nhầm) là ca biến mất, TA không còn lối vào để đánh giá hay mở lại ET. Lần bấm nhầm còn cộng 250 EXP chuyên cần (`attend_floor`) cho em chưa làm ET.
-- **Trạng thái bù vốn lộn xộn theo thứ tự đóng (đo 05/11, buổi bù từ 01/09):** 142 buổi đã đủ ET + đánh giá vẫn `mo`, 23 `hoan_tat`, 1 `hoan_tat` mà chưa đánh giá (chính ca này). Đóng đánh giá RỒI ET ⇒ `hoan_tat`; ET RỒI đánh giá ⇒ `recomputeHoanTat` (gami.ts) kéo về `mo`.
-- **Xử lý ca Hoàng An (mig `202611051745` + `202611051746`):** về `mo`; mở lại ET bằng hàm chính thức `fn_mo_lai_phase` (thu hồi 250 EXP, gỡ `et_dong_at`; điều kiện chặn: chưa có dòng chấm ET nào). Kiểm như TA: ca hiện lại ở ô "Bổ trợ bù".
-- **Sửa gốc (mig `202611051748_bu_dong_et_khong_hoan_tat`):** `fn_dong_phase` — `loai='bu'` đóng phase KHÔNG đổi `trang_thai` (ô TA và danh sách bù đọc cờ `et_dong_at` / `danh_gia_xong_at`). Loại khác giữ nguyên. Tái hiện trong transaction: trước sửa đóng ET ⇒ `hoan_tat` + ô MẤT; sau sửa ⇒ `mo` + ô HIỆN (cả khi đã đóng ET + đánh giá, hôm nay vẫn hiện chip "xong").
-- **Chưa làm:** không backfill 23 buổi bù `hoan_tat` cũ (đã xong, vô hại). Các buổi không-"thường" khác (đuổi, MT…) vẫn `hoan_tat` ngay khi đóng 1 phase — chưa có báo cáo lỗi, chưa đụng.
-
-## 38. Cập nhật 06/11 — LỖI "STATEMENT TIMEOUT" KHI CHỐT TUẦN: GỐC RỄ + CHỐT CHẶN
-
-- **Triệu chứng (Thùy 06/11):** bấm "Chốt tuần" gặp `canceling statement due to statement timeout`, "rất hay gặp".
-- **Đo (DB thật, trần 8 s của role `authenticated` = PostgREST):** bước đầu của `chotTuan` là làm mới cache dạng yếu theo khối (`fn_qlcl_lam_moi`, lô 10 em/1 câu lệnh). **Khối 12 vượt 8 s**, các khối khác 2–4 s (sát trần). Khâu quét từng lớp ≤0,7 s/lớp, `fn_botro_chot_tuan` 1,9 s — không phải thủ phạm.
-- **Gốc rễ:** mỗi em Toán 12 tốn ~1,6 s vì `_do_o_bdm` (quy dạng theo câu), nhánh "câu ĐÃ XOÁ", quét toàn bộ anh em cùng dạng cũ rồi `count(distinct)`. Dạng cũ chung `T112000000` có **9.566 câu anh em** (82 ms/lần), ~20 câu xoá/em ⇒ 1,6 s/em ⇒ lô 10 em ~16 s. Kết quả của nhánh này gần như luôn NULL (anh em rải ≥2 dạng bài). **Quá trần = HUỶ CẢ LÔ, không lưu em nào** ⇒ lần sau lặp y hệt ⇒ lỗi "kẹt vĩnh viễn" với khối đó (cũng là lý do hay gặp: mỗi lần dữ liệu đổi thì một khối khác vượt trần).
-- **Sửa (mig `202611061457_do_o_bdm_anh_em_dung_som`):** (1) `_do_o_bdm` nhánh câu xoá **dừng sớm** khi thấy 2 dạng bài khác nhau — cùng kết quả (đối chiếu cũ↔mới: 0 khác trên 323 câu xoá đại diện 145 dạng cũ + 113 cặp thật của 1 em; 175 trường hợp có kết quả khác NULL); em khối 12 từ 1,58 s → 0,24 s; lô khối 12 từ >8 s → 0,8 s. (2) **Chốt chặn cấu trúc:** `fn_qlcl_lam_moi` làm theo **hộp thời gian ~4 s**, lưu từng em, trả số em còn cũ — app lặp tới khi hết (luôn tính ≥1 em/lần ⇒ luôn tiến). Cho dù dữ liệu lớn lên, một lệnh không thể chạm trần 8 s trừ khi **1 em riêng lẻ** > 8 s.
-- **App:** `chotTuan` thôi lặp khi không tiến triển 3 vòng liền (lượt chấm mới đổ vào) thay vì quay 100 vòng.
-- **Công cụ đo:** `node scripts/_do_thoi_gian_chot_tuan.mjs [Môn]` — kịch bản xấu nhất (cache cả môn hết hạn), từng khối 1 transaction rollback, mỗi lệnh chịu trần 8 s, thoát mã 1 nếu có lệnh >6 s. Kết quả sau sửa (Toán): 13 khối, mọi lệnh ≤3,7 s, 0 lỗi (trước sửa khối 12 lỗi). Chạy lại sau khi đụng mastery / `_do_o_bdm` / `fn_qlcl_lam_moi`, hoặc định kỳ.
-- **Lưu ý khi đo:** script xoá cache trong transaction ⇒ giữ khoá hàng vài giây; chạy ngoài giờ cao điểm (bản đầu em viết giữ khoá ~70 s, đã sửa).
-- **Còn nợ:** `WidgetDangYeu` (`catch {}` nuốt lỗi) và `chotTuan` (`.catch(() => [])` từng lớp) vẫn nuốt lỗi im lặng; các môn khác (Văn/Anh/KHTN) chưa đo (cùng hàm, dữ liệu nhỏ hơn).
-
-## 39. Cập nhật 10/11 — DASHBOARD BỔ TRỢ: 3 SUBTAB (Tiến độ · Lấp đầy ca · Chi tiết)
-
-- **Thùy 10/11:** (1) đưa bảng tần suất ca bổ trợ khối vào ERP, subtab cạnh "Tiến độ bổ trợ", với 2 tỉ lệ lấp đầy; (2) màn Tiến độ hiện quá to — thu gọn; (3) thêm subtab "Chi tiết bổ trợ" — bảng tra cứu cho vận hành, mỗi ca 1 dòng, có lọc + thanh tìm kiếm.
-- **Dashboard** (`BoTroDashboardScreen.tsx`) = vỏ 3 subtab (thanh chuyển đặt đúng chỗ tiêu đề cũ; nhớ subtab ở module-level). "Tiến độ bổ trợ" thu gọn: max-w 1000, mỗi loại 1 hàng (tên · đã chạy/chốt · thanh · ô trạng thái · nút Kết quả), padding/chữ nhỏ hơn — 3 tuần vừa 1 màn (thẻ tuần 420 → ~248 px).
-- **Lấp đầy ca** (`LapDayCaBoTro.tsx` + mig `202611101405` `fn_botro_lap_day_ca`): mỗi ca đo 2 tỉ lệ — **% theo HS** = HS ÷ (3 × số TA) · **% theo đơn vị** = đơn vị đã dùng ÷ đơn vị ca (60' × 1 TA = 6). Lọc Tuần / Tháng / Tất cả (◀ ▶), Khối, "Đã xếp | Chỉ có mặt". Thẻ: số ca · % HS · % đơn vị · ca trống · ca đầy · lượt học NGOÀI ca trực. Bảng: theo khung ca (khối × thứ × giờ) · theo khối · thứ · khung giờ · từng ca. Quy tắc: ca chưa huỷ, tính tới HÔM QUA; lượt chưa gắn ca ghép vào ca cùng ngày · khối · trùng giờ; đơn vị thiếu thì `_ca_bo_tro_don_vi`; ca có thể >100% (xếp lố). Mọi số tính ở DB (§2.0), màn chỉ vẽ + sắp xếp. Đối chiếu độc lập: tuần 2–8/11 = 56 ca · 19/168 HS (11,3%) · 76/330 đơn vị (23,0%); 1/10–9/11 = 348 ca · 184/1044 · 540/2079 · 105 lượt ngoài ca.
-- **Chi tiết bổ trợ** (`ChiTietBoTro.tsx` + mig `202611101406` `fn_botro_chi_tiet`): 1 BUỔI bổ trợ (bù · yếu · đuổi · hình · nhẹ · ôn thi) = 1 dòng — ngày · giờ · loại · trạng thái · môn · lớp · TA · phòng · HS (+ điểm danh, đơn vị) · tổng đơn vị · ca trực · mốc đóng ET / đánh giá · lý do huỷ. Lọc: khoảng ngày (+ preset) · loại · trạng thái · khối · đã/chưa gắn ca trực · tìm tên/mã HS, TA, lớp, phòng, mã buổi (KHÔNG DẤU, `fn_bo_dau`). Phân trang 100/trang ở DB, chỉ đọc. Mặc định: tuần này.
-- **Kiểm (10/11, ERP local, Admin):** 3 subtab chuyển được; số Lấp đầy khớp DB; Chi tiết: tuần này 38 buổi, tìm "nguyen quyen minh tri" ra đúng em, chỉ Bù 32, huỷ 55 kèm lý do "OPS gỡ ở Lịch phòng", chưa gắn ca trực 116, 30 ngày qua 272 buổi / 3 trang. `tsc` sạch (chỉ lỗi cũ `pdfRender`). Chưa kiểm cảm ứng/iPad.
-
-## 40. Cập nhật 10/11 — ĐƠN VỊ CỦA BÙ THEO NHÓM CÙNG BÀI (sửa §39)
-
-- **Thùy 10/11:** "3 học sinh cùng học 1 bài cùng bù 1 bài: 1 HS = 4, 2 HS = 6, 3 HS = 6 — độ khó không tăng tỉ lệ thuận." (trước đó spec xếp bù ghi cứng 4/em.)
-- **Đã làm — CHỈ bảng Lấp đầy ca (mig `202611101420_botro_lap_day_ca_bu_nhom`):** đơn vị của bù tính theo **nhóm = cùng ca + cùng buổi gốc (`bu_cho_buoi_id`)**: 1 em → 4, ≥2 em → 6; nhóm khác nhau cộng dồn; 1 em xếp trùng cùng bài chỉ tính 1 lần. Yếu · đuổi · hình giữ nguyên. Đo trên 1/10–9/11: chỉ 4 ca đổi (mỗi ca 2 em cùng bài, 8 → 6), tổng 540 → 532 đơn vị. Ca K6 CN 8/11 16:00 (TA Tùng) VẪN 12/6 vì là 3 bài bù khác nhau (3 buổi nghỉ khác nhau) — lố thật.
-- **CHƯA đổi — luật xếp ở Lịch phòng:** `_ca_bo_tro_don_vi` vẫn trả 4/em cho bù, `buoi_hoc_hs.don_vi` lưu sẵn 4/em (6 nhóm 2 em đang lưu 8), `fn_ca_bo_tro_xep` chặn theo "còn ≥4", `fn_ca_bo_tro_ngay.don_vi_dung` cộng theo từng em. Đổi sang luật nhóm sẽ làm: ca 6 đơn vị chứa được 3 em cùng bài (thay vì 1), Lịch phòng hiện đơn vị khác bảng Lấp đầy cho tới khi sửa. Cần Thùy quyết có đổi không (+ định nghĩa "cùng bài" = cùng buổi gốc, đúng chưa).
-
-## 41. Cập nhật 10/11 — DUYỆT BỔ TRỢ YẾU CHUYỂN VỀ PHÒNG LÀM VIỆC: TRƯỞNG KHỐI ĐỀ XUẤT → TRƯỞNG BỘ MÔN DUYỆT (THAY §25)
-
-- **Story (Thùy):** trưởng khối đọc Dashboard học tập, nắm tình hình chung và ra quyết định bổ trợ. Luồng này **thay hẳn** màn Duyệt 2 vòng (§25 Chốt tuần · Điểm thấp · Báo động · Đang theo dõi) — màn cũ ẩn khỏi Bổ trợ › Yếu (thay bằng dòng chỉ đường), code + bảng giữ nguyên. **Không còn retest.**
-- **Trưởng khối** (Phòng làm việc › Chất lượng, 4 mục): Dashboard học tập (chỉ ô trong phạm vi; ô = TB **5 lần** gần nhất trong 2–4 tuần, thay 10 câu; cột **Nhóm yếu** ngay sau tên = số nhóm bài yếu theo mastery theo lần là chính, số dạng yếu đi kèm; 🚨 nếu có báo động GV/TA 30 ngày chưa có quyết định; cột **Bổ trợ**; bấm tên ⇒ Hồ sơ học tập) · Tình hình chung (màn cũ) · Hồ sơ học tập (màn "Từng học sinh" của Kết quả học tập) · Danh sách bổ trợ.
-- **Popup Bổ trợ:** 5 nhóm % thấp nhất (thấp → cao, kèm số lần đo, số dạng chưa đạt), nhóm YẾU tick sẵn; mức L1/L2/L3 (mặc định L2); ưu tiên Cao/Thường/Thấp; ghi chú. Lưu ⇒ dòng **nháp**. Em đang có case mở ⇒ không thêm.
-- **Danh sách bổ trợ:** nháp sửa/bỏ; **Chốt & gửi trưởng bộ môn** (cả khối) ⇒ chờ duyệt (khoá sửa). Trưởng bộ môn (Chất lượng › Danh sách bổ trợ, mọi khối hoặc từng khối): **Duyệt** = mở case như cũ (kiểm trần 70/20 bằng `fn_btyeu_kiem_suc_chua` · ghi `hs_level` + `hs_level_log` · mở/gộp `bo_tro_yeu` nguon thu_cong · đổ dạng: mọi dạng đã đo CHƯA ĐẠT của các nhóm tick, nhóm mà mọi dạng đạt ⇒ dạng thấp nhất) ⇒ Lộc xếp lịch, TA dạy, test cuối ca như cũ; **Trả lại** bắt buộc lý do ⇒ trưởng khối sửa ⇒ nháp ⇒ gửi lại.
-- **DB:** mig `202611101645` — bảng `bo_tro_de_xuat` (1 em × 1 môn chỉ 1 dòng sống) + `bo_tro_de_xuat_log` (trigger) · `fn_btk_goi_y` · `fn_btk_luu` · `fn_btk_huy` · `fn_btk_gui` · `fn_btk_ds` · `fn_btk_duyet` · `fn_btk_tra_lai` · `_btk_nhom_hs`; `fn_dbht_bang` / `fn_dbht_o_lich_su` đổi đơn vị câu → lần + thêm trường. Quyền: trưởng khối = `_trong_pham_vi(môn, khối)`; trưởng bộ môn = `fn_phong_che_do()='tbm'` + `_phong_trong_pham_vi`. Mastery đọc qua `_mastery_lan_cap_nhanh` (bảng chụp `mastery_luu_san`).
-- **Client:** `src/lib/boTroTk.ts` · `phongtk/BoTroPopup.tsx` · `phongtk/ChatLuongPhong.tsx` (ChatLuongTK, DanhSachBoTro) · `DashboardHocTapScreen` prop `phong` · `KetQuaScreen` export `HoSoHocSinh` · `PhanViecPgd` ChatLuongTbm thêm mục.
-- **Đã biết / treo:** bảng chụp `mastery_luu_san` 10/11 còn 0 em vì `fn_mastery_lam_moi` lỗi trùng khoá (HH00023 — Hình–Học dạng = bài) ⇒ Dashboard khối 8 ~5 s (cũ ~2 s) tới khi bảng chụp chạy · nhóm yếu tính mọi thời điểm nên có thể lệch màu ô Dashboard (cửa sổ 2–4 tuần) · Hình–Luyện (mô hình) chưa vào nhóm yếu — đi Bổ trợ Hình.
-## 41. Cập nhật 10/11 — BỔ TRỢ YẾU THEO NHÓM (Thùy: luyện NHÓM yếu thay DẠNG yếu) — mig `202611101521_botro_yeu_theo_nhom`
-
-- **Nền:** mastery đo theo LẦN (mig `202611101427_mastery_theo_lan`, công tắc `mastery_theo_lan` BẬT 10/11 15:18): 1 lần = 1 bài làm, TB % 5 lần gần nhất, mọi lần ngang nhau, bỏ tự luyện (trừ cấp 1). Cấp **nhóm bài là chính**, dạng là phụ. So sánh trên dữ liệu thật: `reports/so-mastery-theo-lan.html`.
-- **Nhóm quyết, dạng thực thi:** em cần bổ trợ phần nào do **nhóm yếu** quyết; vào case vẫn là **dạng** của nhóm (`bo_tro_yeu_dang`) ⇒ chọn câu (`_btyeu_chon_cau`), luyện · test · retest · phiếu giấy · app TA/HS **không đổi**.
-- **Luật DUY NHẤT `_btyeu_dang_theo_nhom`** (thay luật dạng yếu ở §3 cho mọi chỗ: đổ dạng lúc mở case `fn_btyeu_fill_dang_yeu` · nút "+N dạng yếu mới" `fn_btyeu_de_xuat_dang_moi` · còn yếu `_btyeu_dang_con_yeu` · chụp đầu tuần/KPI `_dang_yeu_tai_lo` · QLCL `fn_qlcl_lam_moi` · bổ trợ nhẹ `fn_btnhe_lop_hs`):
-  - nhóm **yếu** (<0,5) + nhóm có đo trong **2 cửa sổ** gần nhất (đề xuất dạng mới: có đo từ ngày mở case);
-  - dạng vào = mọi dạng **đã đo** của nhóm **chưa đạt**, dạng yếu nhất trước; nhóm yếu mà mọi dạng đều đạt ⇒ vẫn lấy dạng thấp nhất; dạng chưa đo không vào;
-  - dạng không quy được nhóm (môn chưa có nhóm, vd KHTN) ⇒ luật dạng yếu cũ; Hình–Học nhóm = bài = dạng; Hình–Luyện (bài mô hình) giữ đường riêng.
-  - "Còn yếu" ⇒ dạng thôi còn yếu khi **nhóm ra khỏi yếu** hoặc chính dạng đã đạt.
-- **Công tắc:** tắt `mastery_theo_lan` ⇒ cả mastery lẫn bổ trợ về luật cũ (theo câu, dạng yếu) nguyên văn.
-- **Số (347 HS Toán, 10/11):** cũ 1.304 dạng yếu / 292 HS → mới 684 nhóm yếu, 1.322 dạng / 259 HS (256 HS trùng). KHTN chạy luật cũ (189 dạng / 41 HS).
-- **Tốc độ:** lô 10 em mốc T2 (Chốt tuần, trần 8 s) chậm nhất ~3–4 s (cũ 4,6 s); chụp cả môn chia lô 20 em trong hàm ⇒ 71 s (cũ 74 s). `_mastery_lan_cap` khai `rows 20000` để planner không nối lại bằng nested loop.
-- **Chưa làm:** màn Nội dung / Xếp lịch chưa hiện dạng theo NHÓM (vẫn danh sách dạng); kênh ② "% dạng yếu" của engine phát hiện (`src/gami/danhgia.js`, client) vẫn đếm dạng; KHTN chưa có nhóm; Dashboard kết quả tuần (`fn_botro_ket_qua_tuan`) vẫn so trước/sau theo dạng (dạng đã tính theo lần).
-
-## 42. Cập nhật 11/11 — THANG MỨC BỔ TRỢ YẾU L1–L4 (sửa §41 popup, §31 capacity, §39 lấp đầy ca) — mig `202611111553_botro_muc_l1_l4`
-
-- **Thùy 11/11:** "chốt bổ trợ của trưởng khối có L1 · L2 · L3; bổ trợ cuối giờ là 1 option riêng. L1: 2 đơn vị · L2: 4 đơn vị · L3: bổ trợ riêng với GV, không dùng vào bổ trợ khối · Bổ trợ sau giờ là 1 nhãn riêng, không liên quan bổ trợ khối" → hỏi lại: "Sau giờ là 1 mức … hoặc đổi toàn bộ thành L1234, m xem cái nào OK hơn".
-- **CHỐT (CTO chọn, giữ nghĩa dữ liệu cũ):** thang **L1–L4 theo độ nặng**, lưu ở `hs_level.level` (case) và `bo_tro_de_xuat.muc` (đề xuất trưởng khối):
-
-  | Mức | Nghĩa | Ca bổ trợ khối | Đơn vị khối (`_ca_bo_tro_don_vi`) |
-  |---|---|---|---|
-  | L0 | hết yếu, dừng bổ trợ (không có dòng `hs_level`) | — | — |
-  | **L1** | **Sau giờ** — TA kèm sau buổi học thường (= L1 cũ "trước/sau giờ") | KHÔNG | 1 (chỉ khi lỡ gắn ca; không vào ứng viên, không vào capacity) |
-  | **L2** | 2 đơn vị | CÓ | **2** |
-  | **L3** | 4 đơn vị (= L2 cũ "buổi riêng TA") | CÓ | **4** |
-  | **L4** | Bổ trợ riêng với GV (= L3 cũ "buổi riêng GV") | KHÔNG | 4 (chỉ khi lỡ gắn ca) |
-
-- **Không dùng L0 / "L1.2" cho sau giờ:** L0 đã nghĩa "dừng bổ trợ" (không có dòng); cột mức là số nguyên.
-- **Ứng viên ca khối** (`fn_ca_bo_tro_ung_vien`, Lịch phòng): chỉ case **L2 · L3**; đơn vị lấy từ `_ca_bo_tro_don_vi` (bỏ công thức chép tay "L1 = 1, còn lại 4"). **Capacity khối** (`fn_btyeu_capacity_khoi`): chỉ cộng case L2 · L3.
-- **Dời dữ liệu cũ (giữ nghĩa):** `hs_level` 2→3 (10 em), `bo_tro_de_xuat.muc` 2→3 (11 dòng chờ duyệt; trigger log ghi từng dòng); mỗi em dời có 1 dòng `hs_level_log` nguồn `doi_thang_l1_l4`. **Dòng `hs_level_log` trước 11/11 giữ số CŨ** (lịch sử bất biến) — đọc log trước 11/11: 2 = "buổi riêng TA", 3 = "buổi riêng GV".
-- **CHECK nới:** `hs_level` · `hs_level_log` (3 cột) 0–3 → 0–4 · `bo_tro_de_xuat.muc` 1–3 → 1–4. `fn_btyeu_doi_level` nhận 0–4 · `fn_btk_luu` nhận 1–4.
-- **Màn:** popup Bổ trợ (phòng trưởng khối) 4 nút L1–L4, mặc định **L3** (4 đơn vị — giữ mặc định cũ) · nhãn chung `MUC_TEN` (`botro/MucUuTienCase.tsx`) + `TEN_MUC` (`lib/boTroTk.ts`) · app TA `CaBoTroTA` · Lịch phòng vá đơn vị tại chỗ cùng bảng.
-- **KHÔNG đổi:** Bổ trợ Hình (`bo_tro_hinh.muc`, thang riêng) · trần 70 em / 20 Cao (`fn_btyeu_kiem_suc_chua`) vẫn đếm MỌI case kể cả L1/L4 — **chờ Thùy:** L1 sau giờ / L4 riêng GV có tính vào trần 70 không? · màn Xếp lịch cũ vẫn hiện L1–L4 (L1 xếp sau giờ tan như cũ; L4 xếp tay).
-
-## 43. Cập nhật 11/11 — BỔ TRỢ SAU GIỜ = L1 (nâng cấp Bổ trợ Nhẹ) — mig `202611111627_bo_tro_sau_gio`
-
-- **Thùy 11/11 (story):** in tài liệu hướng dẫn + bài test theo đúng dạng em đang yếu, mỗi dạng 1 bài; test xong nhập lại để có mastery. Chốt 6 câu: (1) mỗi dạng yếu 1 bài, dạng yếu trong NHÓM YẾU trước, dạng yếu của nhóm chưa yếu sau · (2) số câu test = số dạng yếu trong nhóm yếu · (3) lý thuyết · bài luyện · bài test IN RIÊNG, người in chọn (có em không cần lý thuyết/luyện) · (4) làm tại chỗ sau giờ · (5) GV/OPS in, TA nhập · (6) nhập xong là xong ("vừa giống ET vừa giống bổ trợ yếu"). + "cần khởi tạo". Thùy chọn **nâng cấp Bổ trợ Nhẹ** (spec-truong-khoi §8) thay vì hệ thứ hai; em được TBM duyệt L1 **vào hàng chờ sau giờ, không vào hàng xếp của Lộc**.
-- **Dạng** `_sau_gio_dang(hs, mon)` — đọc bảng chụp mastery theo lần: dạng mức yếu; nhóm yếu không có dạng nào mức yếu ⇒ lấy dạng thấp nhất chưa đạt của nhóm. Thứ tự: nhóm yếu trước. Dùng cho đổ dạng lúc khởi tạo (`fn_btnhe_fill_dang` thay `fn_btyeu_fill_dang_yeu` trong `fn_btnhe_tao`), tô em ở form tạo ca (`fn_btnhe_lop_hs`), thứ tự in (`_btnhe_dang_buoi`). **Khác** luật case khối (`_btyeu_dang_theo_nhom`, chỉ nhóm yếu) — có chủ ý theo câu (1).
-- **Khởi tạo:** tab Bổ trợ › **Sau giờ** (đổi tên từ Nhẹ): khung **Chờ khởi tạo** (`fn_btnhe_cho` = đề xuất da_duyet muc 1 chưa có case nguon nhe sau duyet_at, gom theo lớp) → "Khởi tạo ca" mở form tạo ca sẵn có, chọn sẵn lớp + em. Luật cũ giữ: ≤2 ca/em/tuần, vắng không bù, không suất, không qua Lộc.
-- **Duyệt L1** (`fn_btk_duyet` nhánh muc = 1): ghi hs_level + log, đề xuất da_duyet (case_id null, so_dang = số dạng sau giờ), **không** mở case dang_xu, **không** kiểm trần 70/20.
-- **In** (màn ca `CaDetail` khi ca sau giờ ⇒ khối `SauGioCa.tsx` thay bước 2–4): 📘 lý thuyết (`fn_btnhe_in_ly_thuyet`: lý thuyết registry `_kho_lt_tbl` + ví dụ bản đồ, Hình–Học `hinh_hoc_bai_ly_thuyet`; khung ##ĐL/##VD như bản in giáo trình) · ✏️ luyện (`fn_btyeu_in_sinh`, 3/5/8 câu/dạng; ca sau giờ cho in luyện cả sau khi đã có test, thứ tự dạng nhóm yếu trước) · 📝 test (`fn_btnhe_in_test`: 1 câu/dạng yếu trong nhóm yếu, em không còn nhóm yếu ⇒ mọi dạng; `_btyeu_chon_cau_khac` né câu đã in, cạn thì `_btyeu_chon_cau`; idempotent).
-- **Nhập:** app TA thấy ca sau giờ mình là TA cùng làm (`fn_btyeu_viec_cua_toi` + cờ `nhe`) → "Nhập kết quả & nộp" (`fn_btyeu_giay_nhap`/`fn_btyeu_giay_nop`). **Nộp ca sau giờ ⇒ em có mặt (nếu chưa điểm danh) + `danh_gia_xong_at`** ⇒ trigger cũ đóng case `nhe_xong / day_xong`. Test = `bo_tro_test` ⇒ mastery kênh ET (đã có).
-- **Thử (ROLLBACK, em K8 thật):** duyệt L1 88 ms → hàng chờ có em → khởi tạo → lý thuyết 3/3 dạng có LT+VD (71 ms) → luyện 9 câu → test 1 câu (1 dạng trong nhóm yếu) → luyện lần 2 sau test vẫn in → câu test trùng luyện 0 → nộp ⇒ có mặt, nhe_xong, day_xong, +1 lần đo ET → em rời hàng chờ. `fn_btnhe_lop_hs` lớp 17 em 0,26 s. Mẫu in: `.nhap-tam/mau-phieu-sau-gio.html` (file tạm, không commit).
-- **Chưa làm / chờ:** thử bằng tài khoản TA thật trên app TA · em chỉ 1 dạng trong nhóm yếu ⇒ test 1 câu (Thùy xem có quá ít) · nút "Tạo ca Nhẹ" ở widget dạng yếu chưa đổi chữ.
-
-- **Form khởi tạo theo BUỔI (Thùy 11/11, mig `202611111659`):** 1 chọn lớp (`fn_btnhe_lop_cho`: lớp có em đã duyệt L1) · 2 em ĐÃ DUYỆT của lớp (`fn_btnhe_hs_duyet`: đề xuất mới nhất của em là da_duyet mức 1; em chờ tick sẵn, đủ 2 ca/tuần khoá) · 3 chọn BUỔI HỌC 14 ngày tới (`fn_btnhe_buoi_lop`, nguồn buổi đã có/TKB như `_btnhe_gio_lop`) ⇒ ca bắt đầu lúc buổi tan, cùng phòng; thời lượng 20/25′. Bỏ form cũ (giờ khác, chọn mọi em lớp). Khởi tạo xong mở ngay **ảnh thông báo PH** (`ThongBaoSauGioAnh.tsx`, html2canvas như VinhDanhCard): logo · "Thông báo Bổ trợ yếu" · "Buổi học <thứ, ngày> các bạn <tên in đậm cam> sẽ cần ở lại bổ trợ các dạng yếu nên các con sẽ về muộn 20–25 phút. Bố mẹ nắm thông tin nhé!" · Copy ảnh / Tải ảnh; thẻ ca có nút làm lại ảnh.
-
-- **In ngay ở danh sách HS + in cả lớp + soạn như builder (Thùy 11/11, mig `202611111717`):** mỗi em trong thẻ ca có 3 nút 📘 ✏️ 📝 (`NutInSauGio`, dùng chung với màn ca). Thẻ ca có **🖨 In cả lớp · bài test** (mỗi em còn mở 1 bài test, chưa soạn thì DB sinh như nút 📝, sang trang giữa các em — `TrangInNhieu`). Bài luyện / bài test **soạn trước khi in** (`SoanBaiSauGio` dùng `KhoiCau` + `ChonCauBdm` của builder): `fn_btnhe_soan` đề xuất (không ghi; test đã có ⇒ câu hiện tại) · ✕ bỏ câu · ↻ gợi ý lại 1 dạng `fn_btnhe_goi_y_dang` (luật §4) · ✎ chọn câu kho (chỉ dạng bản đồ mới) · **Lưu & in** `fn_btnhe_luu_bai` (luyện = phiếu mới; test = thay câu khi chưa nhập kết quả; câu tự luận không có form TN ⇒ báo, không lưu). Đo: soạn luyện 11 dạng 2,5 s ở DB (bấm mới gọi, dưới trần 8 s).
+- **Lib:** `boTroTk.ts` (đề xuất/duyệt/popup) · `botro_yeu.ts` / `botro_yeu_ca.ts` (case, ca, in giấy) · `botro_nhe.ts` (sau giờ) · `botro_dashboard.ts`.
+- **Màn:** `phongtk/BoTroPopup.tsx`, `phongtk/ChatLuongPhong.tsx` · `botro/` (BoTroNheScreen, SoanBaiSauGio, NutInSauGio, InSauGioET,
+  ThongBaoSauGioAnh, LichPhongScreen, BoTroDashboardScreen, KetQuaBoTroTuan, ChiTietBoTro, MucUuTienCase) · `danhgia/XepLichBoTroYeuScreen`,
+  `TrangThaiCaBoTroScreen` · app TA `ta/CaBoTroTA.tsx`, `SauGioCa.tsx`, `SauGioNhapTA.tsx`, `PhieuGiayYeuTA.tsx` · app HS `hocsinh/CaBoTroHS.tsx`.
+- **Bảng:** `bo_tro_de_xuat`(+log) · `bo_tro_yeu` · `bo_tro_yeu_dang` · `hs_level` / `hs_level_log` · `lich_truc_bo_tro` · `ca_bo_tro` · `ca_bo_tro_nhe` ·
+  `buoi_hoc` / `buoi_hoc_hs` (`don_vi`, `btyeu_che_do`) · `bai_test` (`cau_hinh_in`, `in_giay_at`) / `bai_test_cau` / `bai_lam` / `bai_lam_cau` ·
+  `mastery_luu_san` · `dang_yeu_hien_tai`.
+
+## 10. Logic cũ còn trong code, MÂU THUẪN với hiện trạng — chờ Thùy gật để gỡ (Luật xoá)
+
+Thùy 13/11: "Bỏ hết những logic trước đây mâu thuẫn với hiện tại". Danh sách dưới đây còn CHẠY hoặc còn nằm trong code; gỡ cần gật từng mục:
+
+1. **Danh sách "Theo dõi" + Duyệt 2 vòng + Chốt tuần** (thay bằng §2 từ 10/11): `fn_btyeu_hoan_tat` và `fn_btyeu_het_han_xu_ly` VẪN ghi em vào
+   `bo_tro_theo_doi` (nguồn `sau_bo_tro`) — không màn nào dùng nữa; màn `DuyetBoTroYeuScreen` (ẩn), `fn_botro_chot_tuan` / `fn_botro_danh_sach_tuan` /
+   `fn_botro_bao_dong` / `fn_botro_theo_doi_*`, engine quét TS `danhgia.ts listCandidatesLop` + `src/gami/danhgia.js` (4 kênh phát hiện).
+2. **Retest tầng 2** (HOLD từ 29/09, công tắc `_btyeu_retest_bat()` = false, `RETEST_BAT`): tab Chờ retest / 📝 Retest, `_btyeu_bu_retest`, 34 bài retest treo.
+3. **Hình theo mô hình** (§20–21 cũ, ẩn từ 17/10): `fn_hinh_yeu_theo_mo_hinh`, `HinhYeuTA`, tab "Hình yếu".
+4. **Màn Nội dung bổ trợ yếu / Đánh giá ca bổ trợ** (bước ③ ⑦ cũ — dạng nay đổ lúc duyệt, đánh giá là việc học thuật).
+5. **`_sau_gio_dang`** (luật dạng sau giờ cũ, mọi dạng yếu): còn dùng ở `fn_btnhe_lop_hs` / `fn_btnhe_cho` / `fn_btnhe_hs_duyet` để đếm "x dạng"
+   ⇒ số hiện ở hàng chờ có thể khác số dạng thật in ra (§5). Sửa = đổi sang `_btnhe_dang_chot` (không xoá dữ liệu).
+6. **Luật trần 70 em / 20 Cao** vẫn đếm mọi case kể cả L1/L4 — chờ Thùy: L1 sau giờ / L4 riêng GV có tính vào trần không.
+7. **Bù theo nhóm cùng bài** chỉ áp ở bảng Lấp đầy; xếp ở Lịch phòng vẫn 4/em — chờ Thùy quyết có đổi luật xếp không.
