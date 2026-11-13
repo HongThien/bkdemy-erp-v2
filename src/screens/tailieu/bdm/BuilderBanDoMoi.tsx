@@ -8,7 +8,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, listBuoiTaiLieu, listTaiLieu, updatePhan, updateTaiLieu, fetchCausCuaTaiLieu, copyBuoiBdm, DEFAULT_BTVN_LINES, anhPhaiCua, type CauHinh, type TaiLieu } from '../../../lib/tailieu'
 import { listLop, type Lop } from '../../../lib/nhansu'
 import {
-  noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH,
+  noiDung, datBuoi, datCau, goiY, datCoPhan, xoaBuoi, cauCuaBuoi, loiDoc, SO_LUYEN_MAC_DINH, SO_BTVN_MAC_DINH, SO_LUI_MAC_DINH,
+  btvnKhung, datCauLui, boPhanLui, luiGoiY, luiGoiYBuoi, type KhungBtvn, type KhungLui, type KhungO,
   type NoiDung, type NdBuoi, type NdNhom, type ChonBuoi,
 } from '../../../lib/tailieuBdm'
 import { LOAI_CAU, khucY, deCuaY, type CauHoi } from '../../../lib/kho/api'
@@ -55,6 +56,9 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   const [copyBuoi, setCopyBuoi] = useState(false)              // 📥 Copy buổi từ giáo trình lớp khác (Thùy 28/10)
   const [cheXem, setCheXemState] = useState<CheXem>(laChuyenDe ? 'lop' : NHO_CHE_XEM)
   const setCheXem = (v: CheXem) => { NHO_CHE_XEM = v; setCheXemState(v) }
+  // BTVN 3 phần (Thùy 13/11): khung luyện lại của cả giáo trình — chỉ nạp khi đang ở chế độ BTVN, hỏi lại sau mỗi thao tác (1 RPC, không xoá màn).
+  const [khung, setKhung] = useState<KhungBtvn | null>(null)
+  const [chonLui, setChonLui] = useState<{ buoi: NdBuoi; lui: KhungLui; o: KhungO } | null>(null)
   const [tlLopId, setTlLopId] = useState<string | null>(null)  // lop_id của giáo trình (RPC noi_dung chưa trả; fetch riêng)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
@@ -126,8 +130,35 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   }
   const lam = async (f: () => Promise<void>) => { setBao(null); try { await f() } catch (e) { setBao(loiDoc(e)) } }
 
+  // ── BTVN 3 phần: nạp khung + chép phần luyện lại vào nd (để né trùng khi gợi ý / chọn câu ở phần khác) ──
+  async function napKhung() {
+    const k = await btvnKhung(id)
+    setKhung(k)
+    let hien: string[] = [], tlCtx: NoiDung['tai_lieu'] | null = null
+    setNd((p) => {
+      if (!p) return p
+      hien = p.buoi.map((b) => b.id); tlCtx = p.tai_lieu
+      return {
+        ...p, buoi: p.buoi.map((b) => {
+          const kb = k.buoi[b.id]
+          return kb ? {
+            ...b, on_tap: [
+              ...kb.lui.flatMap((l) => l.nhom.filter((o) => o.phan_id).map((o) => ({ phan_id: o.phan_id!, id: o.nhom, ten: o.ten, caus: o.caus, lui_bac: l.bac as number, lui_buoi: l.buoi as string | null }))),
+              ...kb.le.map((e) => ({ phan_id: e.phan_id, id: e.nhom, ten: e.ten, caus: e.caus, lui_bac: 1, lui_buoi: null })),
+            ],
+          } : b
+        }),
+      }
+    })
+    const ms = hien.flatMap((bid) => { const kb = k.buoi[bid]; return kb ? [...kb.lui.flatMap((l) => l.nhom.flatMap((o) => o.caus)), ...kb.le.flatMap((e) => e.caus)] : [] })
+    if (tlCtx && ms.length) await napCau({ buoi: [{ id: '', tieu_de: null, thu_tu: 0, nhom: [], chua_khop: { phan_id: '', caus: ms } }], tai_lieu: tlCtx }, cauMap)
+  }
+  const coNd = !!nd
+  useEffect(() => { if (cheXem === 'btvn' && !laChuyenDe && coNd) lam(napKhung) }, [cheXem, coNd, filterBuoi]) // eslint-disable-line
+  const luiOp = (f: () => Promise<unknown>) => lam(async () => { await f(); await napKhung(); markSaved() })
+
   // ── Thao tác ──
-  const datChon = (b: NdBuoi, chon: ChonBuoi) => lam(async () => vaBuoi(await datBuoi(id, b.id, chon)))
+  const datChon = (b: NdBuoi, chon: ChonBuoi) => lam(async () => { vaBuoi(await datBuoi(id, b.id, chon)); if (cheXem === 'btvn' && !laChuyenDe) await napKhung() })
   const ghiCau = (phanId: string, caus: string[]) => lam(async () => { await datCau(phanId, caus); vaCau(phanId, caus) })
   const batCo = (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => lam(async () => {
     vaCo(phanId, patch); markSaved()
@@ -248,6 +279,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                   </div>
                   <div className="space-y-4 p-4">
                     {b.nhom.length === 0 && <div className="text-[12px] italic text-slate-400">Chưa có nhóm — bấm “+ Chọn nhóm / dạng bài”.</div>}
+                    {cheXem === 'btvn' && !laChuyenDe && b.nhom.length > 0 && <div className="text-[12px] font-bold uppercase tracking-wide text-orange-600">① Bài của buổi này</div>}
                     {b.nhom.map((n, i) => (
                       <NhomCard key={n.phan_id} n={n} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau} laChuyenDe={laChuyenDe} cheXem={cheXem}
                         canUp={i > 0} canDown={i < b.nhom.length - 1}
@@ -259,6 +291,14 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onGoiY={(phanId, dangBai, so, hienCo) => goiYLai(b, n, phanId, dangBai, so, hienCo)}
                         onChonCau={(phanId, caus, uuTien) => setChonCau({ buoi: b, nhom: n, phanId, caus, uuTien })} />
                     ))}
+                    {cheXem === 'btvn' && !laChuyenDe && (
+                      <BtvnLui kb={khung?.buoi[b.id]} chiXem={chiXem} cauMap={cauMap} cfg={cauHinhCau}
+                        onGoiYBuoi={() => luiOp(async () => { const n = await luiGoiYBuoi(id, b.id); if (!n) throw new Error('Không gợi ý được ô nào — các nhóm buổi trước đã hết câu chưa dùng trong giáo trình.') })}
+                        onGoiY={(l, o, so) => luiOp(async () => { const ds = await luiGoiY(id, b.id, l.buoi, o.nhom, so); if (!ds.length) throw new Error('Nhóm này hết câu khác chưa dùng trong giáo trình.') })}
+                        onXoa={(l, o, m) => luiOp(() => datCauLui(id, b.id, l.buoi, o.nhom, o.caus.filter((x) => x !== m)))}
+                        onChon={(l, o) => setChonLui({ buoi: b, lui: l, o })}
+                        onBoLe={(phanId) => luiOp(() => boPhanLui(phanId))} />
+                    )}
                     {b.chua_khop && cheXem === 'lop' && (
                       <KhoiCau tieuDe="⚠ Câu chưa khớp bản đồ mới" mau="amber" caus={b.chua_khop.caus} cauMap={cauMap} cfg={cauHinhCau} chiXem={chiXem}
                         onXoa={(m) => ghiCau(b.chua_khop!.phan_id, b.chua_khop!.caus.filter((x) => x !== m))} />
@@ -288,6 +328,12 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
             khoa={cauCuaBuoi(chonCau.buoi).filter((m) => !chonCau.caus.includes(m))}
             onClose={() => setChonCau(null)}
             onConfirm={async (ms) => { await datCau(chonCau.phanId, ms); vaCau(chonCau.phanId, ms); setChonCau(null) }} />
+        )}
+        {chonLui && (
+          <ChonCauBdm tl={tl} nhomId={chonLui.o.nhom} uuTien={null} selected={chonLui.o.caus} coKhoLop={false} macDinh="luyen"
+            khoa={[...(khung?.tru ?? []), ...cauCuaBuoi(chonLui.buoi)].filter((m) => !chonLui.o.caus.includes(m))}
+            onClose={() => setChonLui(null)}
+            onConfirm={async (ms) => { await datCauLui(id, chonLui.buoi.id, chonLui.lui.buoi, chonLui.o.nhom, ms); setChonLui(null); await napKhung(); markSaved() }} />
         )}
         {inAll && <PrintView id={id} onClose={() => setInAll(false)} />}
         {xemBuoi && <PrintView id={id} onlyBuoiId={xemBuoi} onClose={() => setXemBuoi(null)} />}
@@ -399,6 +445,60 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
         )}
       </div>
     </div>
+  )
+}
+
+// ── BTVN 3 phần (Thùy 13/11): ② luyện lại BUỔI TRƯỚC · ③ luyện lại BUỔI TRƯỚC NỮA — bày sẵn nhóm của buổi đó, GV Gợi ý / Chọn câu ──
+// Số câu mặc định 3 · 2 (cùng 5 câu của buổi này = 5–3–2) chỉ là gợi ý: GV đổi số từng loại rồi ↻ Gợi ý, hoặc ✎ Chọn câu.
+function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onChon, onBoLe }: {
+  kb: KhungBtvn['buoi'][string] | undefined; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau
+  onGoiYBuoi: () => void
+  onGoiY: (l: KhungLui, o: KhungO, so: Record<string, number>) => void
+  onXoa: (l: KhungLui, o: KhungO, m: string) => void
+  onChon: (l: KhungLui, o: KhungO) => void
+  onBoLe: (phanId: string) => void
+}) {
+  if (!kb) return <div className="text-[12px] italic text-slate-400">Đang tải phần luyện lại…</div>
+  const conTrong = kb.lui.some((l) => l.nhom.some((o) => !o.caus.length))
+  return (
+    <>
+      {kb.lui.length === 0 && kb.le.length === 0 && <div className="rounded-lg border border-dashed border-slate-300 p-3 text-center text-[12px] italic text-slate-400">Chưa có buổi nào đứng trước — buổi này không có phần luyện lại.</div>}
+      {!chiXem && conTrong && (
+        <button onClick={onGoiYBuoi} className="w-full rounded-lg border border-dashed border-amber-300 bg-amber-50/60 py-2 text-[12.5px] font-medium text-amber-800 hover:bg-amber-50" title="Điền các ô còn trống: 3 câu / nhóm của buổi trước · 2 câu / nhóm của buổi trước nữa">⚡ Gợi ý cả phần luyện lại (buổi trước 3 câu · buổi trước nữa 2 câu mỗi nhóm)</button>
+      )}
+      {kb.lui.map((l) => (
+        <div key={l.buoi} className="overflow-hidden rounded-xl border border-amber-200">
+          <div className="flex items-center gap-2 bg-amber-500 px-3 py-2 text-white">
+            <span className="text-[14px] font-semibold">{l.bac === 1 ? '② Luyện lại buổi trước' : '③ Luyện lại buổi trước nữa'} · {l.tieu_de ?? 'Buổi'}</span>
+            <span className="ml-auto shrink-0 text-[11px] text-white/90">{l.nhom.length} nhóm · {l.nhom.flatMap((o) => o.caus).length} câu</span>
+          </div>
+          <div className="space-y-3 bg-white p-3">
+            {l.nhom.map((o) => (
+              <div key={o.nhom} className="rounded-lg border border-amber-200 bg-amber-50/30">
+                <KhoiCau tieuDe={`${o.ten ?? o.nhom}${o.dang_bai.length ? ` · ${o.dang_bai.length} dạng bài` : ''}`} mau="amber" btvn caus={o.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUI_MAC_DINH[l.bac]}
+                  onXoa={(m) => onXoa(l, o, m)} onGoiY={(so) => onGoiY(l, o, so)} onChonCau={() => onChon(l, o)} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      {kb.le.length > 0 && (
+        <div className="rounded-xl border border-rose-200 bg-rose-50/40 p-3">
+          <div className="mb-2 text-[12px] font-semibold text-rose-700">⚠ Phần luyện lại không còn khớp buổi trước (đổi thứ tự buổi / bỏ nhóm) — vẫn đang nằm trong phiếu BTVN của buổi này</div>
+          <div className="space-y-2">
+            {kb.le.map((e) => (
+              <div key={e.phan_id} className="rounded-lg border border-rose-200 bg-white">
+                <div className="flex items-center gap-2 px-3 pt-2 text-[12px]">
+                  <span className="font-semibold text-slate-700">{e.ten ?? e.nhom} · {e.caus.length} câu</span>
+                  {!chiXem && <button onClick={() => onBoLe(e.phan_id)} className="ml-auto rounded-md border border-rose-300 px-2 py-0.5 font-medium text-rose-600 hover:bg-rose-50">Bỏ khỏi phiếu</button>}
+                </div>
+                <KhoiCau tieuDe="" mau="amber" gon caus={e.caus} cauMap={cauMap} cfg={cfg} chiXem onXoa={() => {}} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

@@ -52,7 +52,8 @@ export async function noiDung(taiLieuId: string, buoiId?: string | null): Promis
 // ── Đặt nhóm + dạng bài cho 1 buổi (1 transaction ở DB) — trả lại buổi đó để vá tại chỗ ──
 export type ChonBuoi = { nhom: string; dang_bai: string[] }[]
 export async function datBuoi(taiLieuId: string, buoiId: string, chon: ChonBuoi): Promise<NdBuoi> {
-  const { data, error } = await supabase.rpc('fn_tl_bdm_dat_buoi', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_chon: chon })
+  // BTVN của nhóm MỚI thêm: mặc định 5 câu (Thùy 13/11 — 5 · 3 · 2: buổi này · buổi trước · buổi trước nữa)
+  const { data, error } = await supabase.rpc('fn_tl_bdm_dat_buoi', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_chon: chon, p_so_btvn: { ...SO_BTVN_MAC_DINH, _tong: 5 } })
   if (error) throw error
   return (data as NoiDung).buoi[0]
 }
@@ -71,7 +72,45 @@ export async function goiY(nhomId: string, dangBai: string[] | null, soLuong: Re
   return (data ?? []) as string[]
 }
 export const SO_LUYEN_MAC_DINH: Record<string, number> = { trac_nghiem: 1, tra_loi_ngan: 0, tu_luan: 1 }
-export const SO_BTVN_MAC_DINH: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 1 }
+export const SO_BTVN_MAC_DINH: Record<string, number> = { trac_nghiem: 2, tra_loi_ngan: 1, tu_luan: 2 }   // 5 câu / nhóm
+// Số câu mặc định của nút Gợi ý ở phần LUYỆN LẠI: buổi trước 3 câu, buổi trước nữa 2 câu (tương đối — GV đổi số rồi Gợi ý lại).
+export const SO_LUI_MAC_DINH: Record<number, Record<string, number>> = {
+  1: { trac_nghiem: 1, tra_loi_ngan: 1, tu_luan: 1 },
+  2: { trac_nghiem: 1, tra_loi_ngan: 0, tu_luan: 1 },
+}
+
+// ── BTVN 3 PHẦN soạn trong giáo trình (Thùy 13/11 · mig 202611131755): buổi này · luyện lại buổi trước · buổi trước nữa ──
+// Khung = mỗi buổi → 2 buổi có nhóm đứng ngay trước, bày sẵn nhóm + dạng bài + câu đã chọn. Mọi chọn / kiểm trùng ở DB.
+export type KhungO = { nhom: string; ten: string | null; dang_bai: string[]; phan_id: string | null; caus: string[] }
+export type KhungLui = { bac: 1 | 2; buoi: string; tieu_de: string | null; nhom: KhungO[] }
+export type KhungLe = { phan_id: string; nhom: string; ten: string | null; caus: string[] }
+export type KhungBtvn = { tru: string[]; buoi: Record<string, { lui: KhungLui[]; le: KhungLe[] }> }
+export async function btvnKhung(taiLieuId: string): Promise<KhungBtvn> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_btvn_khung', { p_tai_lieu: taiLieuId })
+  if (error) throw error
+  return data as KhungBtvn
+}
+export async function datCauLui(taiLieuId: string, buoiId: string, luiBuoi: string, nhom: string, maCaus: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_tl_bdm_dat_cau_lui', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_lui_buoi: luiBuoi, p_nhom: nhom, p_ma_caus: maCaus })
+  if (error) throw error
+}
+export async function boPhanLui(phanId: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_tl_bdm_bo_phan_lui', { p_phan: phanId })
+  if (error) throw error
+}
+/** Gợi ý + ghi luôn cho 1 ô luyện lại; trả bộ câu mới (rỗng = hết câu khác, bộ cũ giữ nguyên). */
+export async function luiGoiY(taiLieuId: string, buoiId: string, luiBuoi: string, nhom: string, soLuong: Record<string, number>): Promise<string[]> {
+  const tong = Object.values(soLuong).reduce((s, n) => s + n, 0) // tổng ô người gõ (UI)
+  const { data, error } = await supabase.rpc('fn_tl_bdm_lui_goi_y', { p_tai_lieu: taiLieuId, p_buoi: buoiId, p_lui_buoi: luiBuoi, p_nhom: nhom, p_so: { ...soLuong, _tong: tong } })
+  if (error) throw error
+  return (data ?? []) as string[]
+}
+/** Gợi ý cho mọi ô luyện lại còn trống của 1 buổi (3 câu / nhóm buổi trước · 2 câu / nhóm buổi trước nữa). Trả số ô đã điền. */
+export async function luiGoiYBuoi(taiLieuId: string, buoiId: string): Promise<number> {
+  const { data, error } = await supabase.rpc('fn_tl_bdm_lui_goi_y_buoi', { p_tai_lieu: taiLieuId, p_buoi: buoiId })
+  if (error) throw error
+  return (data ?? 0) as number
+}
 
 // ── Kho TRÊN LỚP của 1 nhóm (Thùy 22/10 — giáo trình chọn từ cả 2 kho; mig 202610221509) ──
 export type CauLopKho = { ma_cau: string; dang_bai_id: string; vai: 'giang' | 'luyen'; loai_cau: string; so_lan_dung: number }
@@ -113,26 +152,13 @@ export async function xoaBuoi(buoiId: string): Promise<void> {
 // Gán lại cùng (lớp + ngày + loại) = THAY tài liệu cũ (như giáo trình cũ — unique uq_tai_lieu_van_hanh).
 // Nội dung đổ bằng fn_tl_bdm_trich_buoi (giữ cây nhóm → dạng bài, 1 transaction).
 export type OnTapChon = { nhom: string; caus: string[] }
-// ── BTVN XẾP CHỒNG 3 BUỔI (Thùy 13/11, spec-muc-tieu-tuan.md §8.1 · mig 202611131635) ──
-// Phiếu buổi N = một phần câu BTVN của buổi N + phần 2 của buổi trước + phần 3 của buổi trước nữa (mặc định 5–3–2).
-// Chia + chọn câu luyện lại ở DB (fn_tl_bdm_btvn_xep_chong); màn chỉ hiện đề xuất cho GV soát rồi ghi (fn_tl_bdm_trich_btvn).
-export type XepChongNhom = { nhom: string; ten: string | null; caus: string[]; tong?: number }
-export type XepChongLui = { bac: 1 | 2; buoi: string; tieu_de: string | null; ngay: string; nhom: XepChongNhom[] }
-export type XepChong = { ti_le: number[]; nay: XepChongNhom[]; lui: XepChongLui[] }
-export const TI_LE_XEP_CHONG: { nhan: string; ti_le: number[] }[] = [
-  { nhan: '5 – 3 – 2', ti_le: [5, 3, 2] },
-  { nhan: '4 – 3 – 3', ti_le: [4, 3, 3] },
-  { nhan: 'Giao trọn buổi này', ti_le: [10, 0, 0] },
-]
-export async function btvnXepChong(masterId: string, buoiId: string, lopId: string, ngay: string, tiLe: number[]): Promise<XepChong> {
-  const { data, error } = await supabase.rpc('fn_tl_bdm_btvn_xep_chong', { p_master: masterId, p_buoi: buoiId, p_lop: lopId, p_ngay: ngay, p_ti_le: tiLe })
-  if (error) throw error
-  return data as XepChong
-}
-export type PhieuXepChong = { ti_le: number[]; nay: OnTapChon[]; lui: { bac: number; buoi: string; nhom: string; caus: string[] }[] }
+// ── PHIẾU BTVN 3 PHẦN của lớp (Thùy 13/11, spec-muc-tieu-tuan.md §8.1) ──
+// Phiếu = bài của buổi này + phần LUYỆN LẠI buổi trước / buổi trước nữa ĐÃ SOẠN trong giáo trình gốc (builder, chế độ BTVN).
+// Gán lớp chỉ chép (fn_tl_bdm_trich_btvn kiểm câu thuộc đúng phần đã soạn) — không tự chia.
+export type PhieuXepChong = { nay: OnTapChon[]; lui: { bac: number; buoi: string | null; nhom: string; caus: string[] }[] }
 export async function trichBuoiBdm(masterId: string, buoiId: string, o: {
   lopId: string; ngay: string; khoi: string; tenLop: string; tenBuoi: string; loai: 'giao_trinh_buoi' | 'btvn'; onTap?: OnTapChon[]
-  /** Phiếu BTVN xếp chồng (chỉ loai 'btvn', không phải giáo trình Hình): ghi bằng fn_tl_bdm_trich_btvn. Không truyền = chép trọn BTVN của buổi như cũ. */
+  /** Phiếu BTVN có phần luyện lại (chỉ loai 'btvn', không phải giáo trình Hình): ghi bằng fn_tl_bdm_trich_btvn. Không truyền = chép trọn BTVN của buổi như cũ. */
   phieu?: PhieuXepChong
 }): Promise<{ id: string; loai: string }> {
   const { data: master, error: e0 } = await supabase.from('tai_lieu').select('cau_hinh, theme, mon, nhanh').eq('id', masterId).single()
@@ -190,7 +216,7 @@ export const SO_CAU_ON_TAP = 2         // câu / nhóm ôn (như cũ: CAP_CAU_MO
 
 // Mọi mã câu đang có trong 1 buổi (để nạp nội dung câu + né trùng khi gợi ý).
 export function cauCuaBuoi(b: NdBuoi): string[] {
-  return b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.chua_phan?.caus ?? []), ...(n.btvn?.caus ?? [])]).concat(b.chua_khop?.caus ?? [])
+  return b.nhom.flatMap((n) => [...n.dang_bai.flatMap((d) => d.caus), ...(n.chua_phan?.caus ?? []), ...(n.btvn?.caus ?? [])]).concat(b.chua_khop?.caus ?? [], (b.on_tap ?? []).flatMap((o) => o.caus))
 }
 // ── ET theo bản đồ mới (mig 202610202008) — lưu y khuôn ET cũ (tai_lieu loai='et', ban_do='moi'), chỉ khác cách CHỌN câu ──
 export type EtDeXuat = { giao_trinh: string | null; dang_bai: { id: string; nhom_id: string; ten: string }[] }
