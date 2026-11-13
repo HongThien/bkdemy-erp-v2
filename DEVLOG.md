@@ -80413,3 +80413,4 @@ Thùy nêu 4 việc, làm được 3:
 
 ## 14/11/2026 — K6 Số nguyên: clone Đẳng thức tích + Đẳng thức dạng tổng đưa về tích (mỗi dạng 15 bài)
 - **Làm (Thùy "clone thêm câu đẳng thức dạng tích và tổng đưa về tích … cũng 15 câu"):** `k6/dang-tich/clone.mjs --ghi` — NDB01332 12→15 (+3) · NDB01334 1→15 (+14) = 17 clone máy sinh, gán 'nguoi', **chưa duyệt**. Họ A: xy+bx+cy=d ⇒ (x+c)(y+b)=d+bc (9 bài); họ B: 2xy+bx+cy=d (b chẵn, c lẻ) ⇒ (2x+c)(y+b/2)=d+cb/2, chỉ ước lẻ (5 bài); tích (x.y=a có điều kiện, (px+q)(ry+s)=N có ước bị loại vì không nguyên) 3 bài. Tập nghiệm mọi bài đối chiếu vét cạn x,y∈[-400,400] + KaTeX. parent = gốc cùng khuôn.
+- **Duyệt (14/11, Thùy "xong duyệt luôn đi"):** `dang-tich/duyet-clone.mjs --ghi` — 17 clone da_duyet=true (duyet_nguon='ai'); NDB01332 và NDB01334 mỗi dạng 15 bài đã duyệt.
