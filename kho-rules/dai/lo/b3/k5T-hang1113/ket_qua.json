@@ -1,0 +1,476 @@
+[
+ {
+  "ma_cau": "T15T000000052",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tính giá trị biểu thức: trộn hỗn số, phần trăm, số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000483",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tính giá trị biểu thức: trộn hỗn số, phần trăm, số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000485",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tính giá trị biểu thức: trộn hỗn số, phần trăm, số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000486",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tìm x: tìm thành phần chưa biết có tỉ số phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000487",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tìm x: tìm thành phần chưa biết có tỉ số phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000488",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tìm x: tìm thành phần chưa biết có tỉ số phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000489",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tìm x: tìm thành phần chưa biết có tỉ số phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000490",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: tổng–tỉ với tỉ số phần trăm (chu vi hình chữ nhật)"
+ },
+ {
+  "ma_cau": "T15T000000491",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: hiệu–tỉ, quy đồng tử số với phân số và phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000492",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: tổng–tỉ, quy đồng tử số với phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000493",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: tổng–tỉ ba người với tỉ số phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000495",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: hiệu–tỉ, chuyển gạo giữa hai kho"
+ },
+ {
+  "ma_cau": "T15T000000712",
+  "dang_bai_id": "NDB01823",
+  "chac": "cao",
+  "ly_do": "Hai máy gặt chung 2 giờ rồi chỉ máy hai làm tiếp, tìm máy một làm riêng: công việc đổi người giữa chừng."
+ },
+ {
+  "ma_cau": "T15T000000744",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tính giá trị biểu thức: trộn hỗn số, phần trăm, phân số, số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000480",
+  "dang_bai_id": "NDB02769",
+  "chac": "cao",
+  "ly_do": "Nhân số với tỉ số phần trăm (tìm 28% của 36); không phải biểu thức chỉ gồm các tỉ số phần trăm."
+ },
+ {
+  "ma_cau": "T15T000000053",
+  "dang_bai_id": "NDB02770",
+  "chac": "vua",
+  "ly_do": "Bước then chốt: tổ một còn 75% ứng với 24 người, chia cho 75%; nhưng có thể thuộc dạng tổng–tỉ chuyển qua lại."
+ },
+ {
+  "ma_cau": "T15T000000386",
+  "dang_bai_id": "NDB02775",
+  "chac": "vua",
+  "ly_do": "Sản lượng = diện tích × năng suất, nhân hai tỉ số phần trăm; chưa có dạng riêng cho tích diện tích–năng suất."
+ },
+ {
+  "ma_cau": "T15T000000717",
+  "dang_bai_id": "NDB03003",
+  "chac": "cao",
+  "ly_do": "Ba kích thước hình hộp chữ nhật thay đổi theo phần trăm, hỏi thể tích tăng giảm bao nhiêu phần trăm."
+ },
+ {
+  "ma_cau": "T15T000000383",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: thay đổi phần trăm của thương hai số (số bị chia giảm, số chia tăng), không phải doanh thu/diện tích/thể tích"
+ },
+ {
+  "ma_cau": "T15T000000061",
+  "dang_bai_id": "NDB03002",
+  "chac": "cao",
+  "ly_do": "Năng suất tăng 60% thì thời gian giảm bao nhiêu phần trăm: tích không đổi, dùng 100% chia tỉ số."
+ },
+ {
+  "ma_cau": "T15T000000384",
+  "dang_bai_id": "NDB03002",
+  "chac": "cao",
+  "ly_do": "Sức chảy (năng suất) giảm 60% thì thời gian chảy đầy bể tăng bao nhiêu phần trăm: tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000361",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Hạt tươi 70% nước, hạt khô 10% nước, phơi 48 kg: chất khô không đổi."
+ },
+ {
+  "ma_cau": "T15T000000051",
+  "dang_bai_id": "NDB03000",
+  "chac": "cao",
+  "ly_do": "Viết số thập phân, phân số, hỗn số thành tỉ số phần trăm."
+ },
+ {
+  "ma_cau": "T15T000000465",
+  "dang_bai_id": "NDB03000",
+  "chac": "cao",
+  "ly_do": "Đổi các tỉ số phần trăm ra số thập phân."
+ },
+ {
+  "ma_cau": "T15T000000466",
+  "dang_bai_id": "NDB03000",
+  "chac": "cao",
+  "ly_do": "Đổi các tỉ số phần trăm ra phân số tối giản."
+ },
+ {
+  "ma_cau": "T15T000000333",
+  "dang_bai_id": "NDB03001",
+  "chac": "cao",
+  "ly_do": "Tính tỉ số phần trăm của số nam, số nữ so với cả lớp: chia hai đại lượng đổi ra phần trăm."
+ },
+ {
+  "ma_cau": "T15T000000334",
+  "dang_bai_id": "NDB03001",
+  "chac": "cao",
+  "ly_do": "Tỉ số phần trăm số kẹo vani so với số kẹo sô-cô-la (tìm số gốc trước rồi chia)."
+ },
+ {
+  "ma_cau": "T15T000000054",
+  "dang_bai_id": "NDB03001",
+  "chac": "cao",
+  "ly_do": "Thực tế bằng bao nhiêu phần trăm kế hoạch và vượt bao nhiêu phần trăm: tỉ số hai đại lượng, trừ 100%."
+ },
+ {
+  "ma_cau": "T15T000000335",
+  "dang_bai_id": "NDB03001",
+  "chac": "cao",
+  "ly_do": "Tiền bảo hiểm chiếm bao nhiêu phần trăm tiền lương: tính tỉ số phần trăm của hai số."
+ },
+ {
+  "ma_cau": "T15T000000336",
+  "dang_bai_id": "NDB02773",
+  "chac": "vua",
+  "ly_do": "Bối cảnh giảm giá, tìm tỉ lệ giảm từ giá niêm yết và giá mua; dạng tính tỉ số phần trăm của hai đại lượng (NDB03001) cũng hợp."
+ },
+ {
+  "ma_cau": "T15T000000371",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Hạt tươi 70% nước, phơi khô nhẹ đi 80 kg, hỏi tỉ lệ nước trong hạt khô: chất khô không đổi."
+ },
+ {
+  "ma_cau": "T15T000000372",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Hạt tươi 90% nước, 80 kg thành 10 kg hạt khô, hỏi tỉ lệ nước còn lại: chất khô không đổi."
+ },
+ {
+  "ma_cau": "T15T000000373",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Cỏ tươi 55% nước, cỏ khô 10% nước, phơi 50 kg: chất khô không đổi."
+ },
+ {
+  "ma_cau": "T15T000000059",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Hạt tươi 80% nước, hạt khô 20% nước, phơi 60 kg: chất khô không đổi."
+ },
+ {
+  "ma_cau": "T15T000000374",
+  "dang_bai_id": "NDB03005",
+  "chac": "cao",
+  "ly_do": "Ngô tươi 46% nước, ngô khô 10% nước, cần 24 kg ngô khô: đi ngược từ chất khô."
+ },
+ {
+  "ma_cau": "T15T000000375",
+  "dang_bai_id": "NDB03006",
+  "chac": "cao",
+  "ly_do": "Số công nhân tăng 10% mỗi năm so với năm trước trong hai năm: tăng liên tiếp, không nói về bán hàng."
+ },
+ {
+  "ma_cau": "T15T000000376",
+  "dang_bai_id": "NDB03007",
+  "chac": "cao",
+  "ly_do": "Vay với lãi suất tháng, lãi nhập vốn, hỏi cả vốn lẫn lãi sau 2 tháng."
+ },
+ {
+  "ma_cau": "T15T000000379",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: hai đại lượng tỉ lệ thuận (chu vi–cạnh hình vuông) cùng thay đổi theo phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000385",
+  "dang_bai_id": "NDB03002",
+  "chac": "cao",
+  "ly_do": "Khối lượng công việc = năng suất × số người, tìm số người tăng bao nhiêu phần trăm bằng phép chia các tỉ số."
+ },
+ {
+  "ma_cau": "T15T000000388",
+  "dang_bai_id": "NDB03006",
+  "chac": "cao",
+  "ly_do": "Giá tăng 20% rồi tăng 10% liên tiếp, hỏi so với tháng đầu: nhân các tỉ số phần trăm."
+ },
+ {
+  "ma_cau": "T15T000000713",
+  "dang_bai_id": "NDB03001",
+  "chac": "cao",
+  "ly_do": "Tỉ số phần trăm số nam so với số nữ (tìm số nữ trước rồi chia): tỉ số hai đại lượng."
+ },
+ {
+  "ma_cau": "T15T000000719",
+  "dang_bai_id": "NDB03007",
+  "chac": "cao",
+  "ly_do": "Gửi tiết kiệm lãi suất tháng, lãi nhập vốn, sau 2 tháng cả vốn lẫn lãi."
+ },
+ {
+  "ma_cau": "T15T000000720",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu – tỉ: tổng–tỉ sau khi giảm 10% và tăng 20% làm hai giá bằng nhau"
+ },
+ {
+  "ma_cau": "T15T000000009",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000010",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, hiệu hai dãy thập phân cách đều (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000043",
+  "dang_bai_id": "NDB01807",
+  "chac": "cao",
+  "ly_do": "120 cm² ứng với 1/4 diện tích, biết một phần tìm cả số rồi đổi sang dm²."
+ },
+ {
+  "ma_cau": "T15T000000050",
+  "dang_bai_id": "NDB01816",
+  "chac": "cao",
+  "ly_do": "Dịch dấu phẩy sang trái một hàng, số giảm 18,54: đúng mô tả dạng lời văn số thập phân."
+ },
+ {
+  "ma_cau": "T15T000000113",
+  "dang_bai_id": "NDB01810",
+  "chac": "cao",
+  "ly_do": "Cộng trừ bốn phân số, gom các cặp cùng mẫu."
+ },
+ {
+  "ma_cau": "T15T000000114",
+  "dang_bai_id": "NDB01810",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba phân số có ngoặc, trừ đi một tổng."
+ },
+ {
+  "ma_cau": "T15T000000115",
+  "dang_bai_id": "NDB01810",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba phân số có ngoặc, trừ đi một hiệu."
+ },
+ {
+  "ma_cau": "T15T000000116",
+  "dang_bai_id": "NDB01810",
+  "chac": "cao",
+  "ly_do": "Cộng trừ bốn phân số, đổi chỗ gom cặp cùng mẫu."
+ },
+ {
+  "ma_cau": "T15T000000117",
+  "dang_bai_id": "NDB01810",
+  "chac": "cao",
+  "ly_do": "Cộng trừ số tự nhiên và các phân số, gom cặp cùng mẫu."
+ },
+ {
+  "ma_cau": "T15T000000119",
+  "dang_bai_id": "NDB02971",
+  "chac": "cao",
+  "ly_do": "Cộng trừ toàn hỗn số có ngoặc; hỗn số là trọng tâm, dạng sau thắng cộng trừ nhiều phân số."
+ },
+ {
+  "ma_cau": "T15T000000120",
+  "dang_bai_id": "NDB02971",
+  "chac": "cao",
+  "ly_do": "Cộng trừ các hỗn số (tách phần nguyên, phần phân số); dạng sau thắng cộng trừ nhiều phân số."
+ },
+ {
+  "ma_cau": "T15T000000155",
+  "dang_bai_id": "NDB01806",
+  "chac": "cao",
+  "ly_do": "Biết cả 15 kg gạo, tìm phân số của số (và số còn lại) theo từng giai đoạn bằng phép nhân."
+ },
+ {
+  "ma_cau": "T15T000000156",
+  "dang_bai_id": "NDB01806",
+  "chac": "cao",
+  "ly_do": "Biết ngày thứ nhất 250 m, tìm các ngày sau bằng phân số của số vừa tìm rồi cộng."
+ },
+ {
+  "ma_cau": "T15T000000162",
+  "dang_bai_id": "NDB01808",
+  "chac": "cao",
+  "ly_do": "22 tấn ứng với hiệu hai phân số chỉ phần còn lại của cùng số thóc ban đầu."
+ },
+ {
+  "ma_cau": "T15T000000172",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Hiệu gấp 3 lần số bé nên số lớn gấp 4 lần: tổng–tỉ có tỉ số giấu."
+ },
+ {
+  "ma_cau": "T15T000000173",
+  "dang_bai_id": "NDB01802",
+  "chac": "cao",
+  "ly_do": "Ba đại lượng, tỉ số nêu qua tổng hai đại lượng còn lại: đúng dạng tổng hợp."
+ },
+ {
+  "ma_cau": "T15T000000239",
+  "dang_bai_id": "NDB02993",
+  "chac": "vua",
+  "ly_do": "Hiệu tuổi suy từ quá khứ, cho tổng tuổi hiện nay, không có tỉ số; không dạng tuổi nào khớp hẳn."
+ },
+ {
+  "ma_cau": "T15T000000247",
+  "dang_bai_id": "NDB01797",
+  "chac": "vua",
+  "ly_do": "Trung bình cộng cho tổng, 1/3 số này = 1/4 số kia là tỉ số giấu; hai số nên không phải dãy tỉ số 3 đại lượng."
+ },
+ {
+  "ma_cau": "T15T000000248",
+  "dang_bai_id": "NDB01797",
+  "chac": "vua",
+  "ly_do": "Nửa chu vi là tổng, 2 lần dài = 3 lần rộng là tỉ số giấu; có thể thuộc chủ đề Hình học."
+ },
+ {
+  "ma_cau": "T15T000000268",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "Đổi phân số thập phân, so sánh từng hàng để tìm chữ số y."
+ },
+ {
+  "ma_cau": "T15T000000286",
+  "dang_bai_id": "NDB02980",
+  "chac": "vua",
+  "ly_do": "So sánh tổng số thập phân với phân số thập phân (đổi cùng loại); cũng có thể là dạng tính chất số thập phân NDB01812."
+ },
+ {
+  "ma_cau": "T15T000000288",
+  "dang_bai_id": "NDB01817",
+  "chac": "cao",
+  "ly_do": "Chữ cái đại diện chữ số, phân tích số thập phân theo hàng để so sánh hai vế."
+ },
+ {
+  "ma_cau": "T15T000000440",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Phân số buổi chiều là của số còn lại sau buổi sáng, biết lượng còn lại cuối: tính ngược."
+ },
+ {
+  "ma_cau": "T15T000000446",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Lần hai bán 1/2 số dừa còn lại, biết số còn cuối: tính ngược phân số phần còn lại."
+ },
+ {
+  "ma_cau": "T15T000000458",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000459",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000460",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000461",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số - Số tự nhiên: Dãy cách đều, tổng các số hạng thập phân (NDB02957)"
+ },
+ {
+  "ma_cau": "T15T000000462",
+  "dang_bai_id": "NDB02983",
+  "chac": "cao",
+  "ly_do": "y xuất hiện trong nhiều ngoặc khác nhau, gom các y rồi tìm y."
+ },
+ {
+  "ma_cau": "T15T000000463",
+  "dang_bai_id": "NDB01815",
+  "chac": "cao",
+  "ly_do": "y lặp lại ở mọi số hạng toàn số thập phân, đưa y ra ngoài ngoặc rồi tìm thừa số."
+ },
+ {
+  "ma_cau": "T15T000000679",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Cho tổng 234 và tỉ số giấu dạng 1/4 nữ = 2/5 nam, quy đồng tử số ra số phần."
+ },
+ {
+  "ma_cau": "T15T000000686",
+  "dang_bai_id": "NDB01806",
+  "chac": "cao",
+  "ly_do": "Biết cả kho 3 tạ, tìm phân số của số và của số còn lại bằng phép nhân, đổi sang kg."
+ },
+ {
+  "ma_cau": "T15T000000689",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "3/4 là phân số của số trang còn lại sau ngày đầu, biết phần cuối: tính ngược."
+ }
+]

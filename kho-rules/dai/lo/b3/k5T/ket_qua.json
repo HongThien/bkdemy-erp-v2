@@ -1,0 +1,3110 @@
+[
+ {
+  "ma_cau": "T15T000000737",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: lấy tất để chắc chắn có đôi hoa (phân biệt trái phải)"
+ },
+ {
+  "ma_cau": "T15T000000002",
+  "dang_bai_id": "NDB02958",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, hỏi số hạng thứ 30."
+ },
+ {
+  "ma_cau": "T15T000000755",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Phân số – tính nhanh: tổng dãy phân số triệt tiêu/tách hiệu"
+ },
+ {
+  "ma_cau": "T15T000000006",
+  "dang_bai_id": "NDB02957",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, tìm số số hạng rồi tính tổng."
+ },
+ {
+  "ma_cau": "T15T000000007",
+  "dang_bai_id": "NDB02956",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, hỏi số lượng số hạng."
+ },
+ {
+  "ma_cau": "T15T000000766",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Chia hết – bài toán thực tế: tổng khối lượng chia hết cho 3 để tìm thùng còn lại"
+ },
+ {
+  "ma_cau": "T15T000000768",
+  "dang_bai_id": "NDB02928",
+  "chac": "cao",
+  "ly_do": "Viết thêm chữ số 5 vào bên trái, số mới gấp 26 lần số cũ."
+ },
+ {
+  "ma_cau": "T15T000000108",
+  "dang_bai_id": "NDB02927",
+  "chac": "cao",
+  "ly_do": "Viết thêm chữ số 8 vào bên phải, số mới hơn số cũ 521."
+ },
+ {
+  "ma_cau": "T15T000000110",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: lấy tất để chắc chắn có đôi cùng màu (phân biệt trái phải)"
+ },
+ {
+  "ma_cau": "T15T000000001",
+  "dang_bai_id": "NDB02956",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, hỏi số lượng số hạng."
+ },
+ {
+  "ma_cau": "T15T000000762",
+  "dang_bai_id": "NDB02954",
+  "chac": "vua",
+  "ly_do": "Lập số ba chữ số từ bộ chữ số, chia hết cho 6, 15; gần dạng tìm chữ số chia hết nhưng đề là lập số."
+ },
+ {
+  "ma_cau": "T15T000000767",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Chia hết – bài toán thực tế: tổng số trứng chia hết cho 4 để tìm rổ còn lại"
+ },
+ {
+  "ma_cau": "T15T000000777",
+  "dang_bai_id": "NDB02936",
+  "chac": "cao",
+  "ly_do": "Đúng khuôn abcd + abc + ab + a = N."
+ },
+ {
+  "ma_cau": "T15T000000754",
+  "dang_bai_id": "NDB02967",
+  "chac": "cao",
+  "ly_do": "Ba dãy: cách đều, hiệu tăng đều, số chính phương; dạng sau thắng là số hạng theo số thứ tự."
+ },
+ {
+  "ma_cau": "T15T000000107",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Bội chung – số dư đồng thời: chia 3,4,5,7 đều dư kém 1 ⇒ thêm 1 chia hết"
+ },
+ {
+  "ma_cau": "T15T000000771",
+  "dang_bai_id": "NDB02933",
+  "chac": "cao",
+  "ly_do": "Số chia tổng các chữ số được thương 7 dư 6."
+ },
+ {
+  "ma_cau": "T15T000000105",
+  "dang_bai_id": "NDB02960",
+  "chac": "cao",
+  "ly_do": "Đếm số chữ số khi viết liên tiếp 1 đến 330."
+ },
+ {
+  "ma_cau": "T15T000000735",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: lấy bóng để chắc chắn đủ 5 màu"
+ },
+ {
+  "ma_cau": "T15T000000757",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Tìm a, b để 234a4b chia hết cho 2, 3, 5."
+ },
+ {
+  "ma_cau": "T15T000000751",
+  "dang_bai_id": "NDB02958",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều: viết thêm, số hạng thứ 211, số thuộc dãy, tổng 100 số; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T15T000000775",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số – ẩn chữ: phép chia 6ab:1ab=5, đổi chữ số hàng trăm, chưa có dạng khớp"
+ },
+ {
+  "ma_cau": "T15T000000739",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Suy luận logic: ghép tên thầy với môn dạy"
+ },
+ {
+  "ma_cau": "T15T000000734",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: lấy bóng để chắc chắn có 3 quả cùng màu"
+ },
+ {
+  "ma_cau": "T15T000000776",
+  "dang_bai_id": "NDB02937",
+  "chac": "cao",
+  "ly_do": "Tổng số thập phân aba,b + a,b: cộng theo cột tìm chữ số."
+ },
+ {
+  "ma_cau": "T15T000000003",
+  "dang_bai_id": "NDB02956",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều khoảng cách 1,1, hỏi số lượng số hạng."
+ },
+ {
+  "ma_cau": "T15T000000759",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Tìm a, b để 931a4b chẵn, chia 5 dư 3, chia hết cho 9."
+ },
+ {
+  "ma_cau": "T15T000000799",
+  "dang_bai_id": "NDB02944",
+  "chac": "vua",
+  "ly_do": "Đếm đường đi từ A đến B tránh C, phụ thuộc hình; khớp mô tả đếm đường đi."
+ },
+ {
+  "ma_cau": "T15T000000005",
+  "dang_bai_id": "NDB02956",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, hỏi số lượng số hạng."
+ },
+ {
+  "ma_cau": "T15T000000764",
+  "dang_bai_id": "NDB02970",
+  "chac": "cao",
+  "ly_do": "Đếm số hai chữ số không chia hết cho 3 bằng tổng trừ số chia hết."
+ },
+ {
+  "ma_cau": "T15T000000004",
+  "dang_bai_id": "NDB02958",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, hỏi số hạng thứ 50."
+ },
+ {
+  "ma_cau": "T15T000000106",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Chữ số viết thêm vào 695 để số lẻ và chia 9 dư 2: dùng tổng chữ số; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T15T000000732",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Hình học không gian: hình lập phương sơn mặt, diện tích toàn phần"
+ },
+ {
+  "ma_cau": "T15T000000770",
+  "dang_bai_id": "NDB02930",
+  "chac": "cao",
+  "ly_do": "Viết thêm chữ số 0 vào giữa hai chữ số, số mới gấp 7 lần."
+ },
+ {
+  "ma_cau": "T15T000000769",
+  "dang_bai_id": "NDB02928",
+  "chac": "cao",
+  "ly_do": "Viết thêm một chữ số bên trái, số mới gấp 7 lần số cũ."
+ },
+ {
+  "ma_cau": "T15T000000774",
+  "dang_bai_id": "NDB02928",
+  "chac": "cao",
+  "ly_do": "7 × ab = 3ab: chữ số 3 viết thêm bên trái, gấp 7 lần."
+ },
+ {
+  "ma_cau": "T15T000000761",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Viết thêm chữ số hai đầu 276, điều kiện chẵn, chia 5 dư 2, chia hết 9; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T15T000000733",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: lấy bóng để chắc chắn có quả đỏ"
+ },
+ {
+  "ma_cau": "T15T000000758",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Tìm a, b để 22aab chia hết cho 2, 5, 9."
+ },
+ {
+  "ma_cau": "T15T000000800",
+  "dang_bai_id": "NDB02944",
+  "chac": "vua",
+  "ly_do": "Đếm đường đi qua C theo hình, nhân hai chặng; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000736",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: số cặp màu khác nhau, học sinh lấy trùng"
+ },
+ {
+  "ma_cau": "T15T000000753",
+  "dang_bai_id": "NDB02957",
+  "chac": "cao",
+  "ly_do": "Tổng dãy cách đều: 110 số liên tiếp từ 85 và 60 số hạng đầu dãy."
+ },
+ {
+  "ma_cau": "T15T000000752",
+  "dang_bai_id": "NDB02957",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều 0,01 đến 1: số số hạng và tổng; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T15T000000756",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Phân số – tính nhanh: tổng dãy phân số tách hiệu triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000773",
+  "dang_bai_id": "NDB02927",
+  "chac": "cao",
+  "ly_do": "abc2 = abc + 4016: viết thêm chữ số 2 bên phải, hiệu 4016."
+ },
+ {
+  "ma_cau": "T15T000000798",
+  "dang_bai_id": "NDB02944",
+  "chac": "vua",
+  "ly_do": "Đếm đường kiến về nhà qua C theo hình, nhân hai chặng; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000772",
+  "dang_bai_id": "NDB02930",
+  "chac": "cao",
+  "ly_do": "Thêm chữ số 2 vào giữa, số mới chia số cũ thương 7 dư 26."
+ },
+ {
+  "ma_cau": "T15T000000763",
+  "dang_bai_id": "NDB02970",
+  "chac": "cao",
+  "ly_do": "Đếm số hai chữ số chia hết cho cả 3 và 5 (chia hết 15)."
+ },
+ {
+  "ma_cau": "T15T000000740",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Suy luận logic: ghép tên – nghề – quê bằng bảng loại trừ"
+ },
+ {
+  "ma_cau": "T15T000000741",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Suy luận logic: tìm thủ phạm từ các lời nói thật/dối"
+ },
+ {
+  "ma_cau": "T15T000000738",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Nguyên lí Dirichlet / trường hợp xấu nhất: rút găng tay để chắc chắn có đôi đỏ hoặc vàng"
+ },
+ {
+  "ma_cau": "T15T000000760",
+  "dang_bai_id": "NDB02954",
+  "chac": "cao",
+  "ly_do": "Tìm a, b để 234a4b chia hết cho 4 và 9."
+ },
+ {
+  "ma_cau": "T15T000000111",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Suy luận logic: ai nói đúng, giả sử từng bạn"
+ },
+ {
+  "ma_cau": "T15T000000008",
+  "dang_bai_id": "NDB02957",
+  "chac": "cao",
+  "ly_do": "Dãy cách đều thập phân, tính tổng các số hạng."
+ },
+ {
+  "ma_cau": "T15T000000765",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Bội chung – số dư đồng thời: chia 3,4,5,7 đều dư 1 ⇒ bớt 1 chia hết"
+ },
+ {
+  "ma_cau": "T15T000000749",
+  "dang_bai_id": "NDB02983",
+  "chac": "cao",
+  "ly_do": "y lặp ở hai vế, đưa y ra ngoài ngoặc rồi tìm thành phần chưa biết"
+ },
+ {
+  "ma_cau": "T15T000000136",
+  "dang_bai_id": "NDB02972",
+  "chac": "vua",
+  "ly_do": "tìm y nguyên kẹp giữa hai phân số: quy đồng mẫu để so sánh, không phải đẳng thức"
+ },
+ {
+  "ma_cau": "T15T000000131",
+  "dang_bai_id": "NDB02983",
+  "chac": "cao",
+  "ly_do": "y xuất hiện ở hai số hạng, gom y bằng nhân một số với một tổng"
+ },
+ {
+  "ma_cau": "T15T000000123",
+  "dang_bai_id": "NDB01811",
+  "chac": "cao",
+  "ly_do": "tích chỉ có phép nhân, đổi chỗ thừa số và rút gọn các thừa số đảo ngược"
+ },
+ {
+  "ma_cau": "T15T000000144",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang: bài lời văn chu vi, diện tích hình chữ nhật số phân số"
+ },
+ {
+  "ma_cau": "T15T000000040",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "tìm chữ số nằm giữa hai số thập phân, so sánh từng hàng"
+ },
+ {
+  "ma_cau": "T15T000000262",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo hàng đơn vị, phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000149",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Dãy số (dãy cách đều): so sánh hai phân số có tử là tổng dãy cách đều"
+ },
+ {
+  "ma_cau": "T15T000000194",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử là tổng hai thừa số ở mẫu, cộng trừ xen kẽ, tách thành hiệu rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000204",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "mẫu tích hai thừa số nối tiếp, đưa thừa số chung ra ngoài rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000137",
+  "dang_bai_id": "NDB02981",
+  "chac": "vua",
+  "ly_do": "tìm y kẹp giữa các phân số khác tử, giải bằng quy đồng tử số"
+ },
+ {
+  "ma_cau": "T15T000000208",
+  "dang_bai_id": "NDB02977",
+  "chac": "cao",
+  "ly_do": "tích các hỗn số 1+1/k, đổi ra phân số tử có dạng tích hai số, rút gọn dây chuyền"
+ },
+ {
+  "ma_cau": "T15T000000143",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Các bài toán về tỉ số (Các bài toán về phân số): bài lời văn tìm phân số của số"
+ },
+ {
+  "ma_cau": "T15T000000134",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "đẳng thức hai phân số, y một lần ở mẫu, rút gọn rồi cùng tử số"
+ },
+ {
+  "ma_cau": "T15T000000748",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "y là thừa số chưa biết trong đẳng thức phân số, vế phải tính trước"
+ },
+ {
+  "ma_cau": "T15T000000284",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang (hình chữ nhật): bài lời văn chu vi khu đất"
+ },
+ {
+  "ma_cau": "T15T000000140",
+  "dang_bai_id": "NDB02981",
+  "chac": "vua",
+  "ly_do": "so sánh 3/19 và 4/33 bằng quy đồng tử số; ví dụ dạng so sánh phân số dùng số trung gian"
+ },
+ {
+  "ma_cau": "T15T000000190",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử bằng hiệu hai thừa số ở mẫu, mẫu nối tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000127",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "y nhân 1/3 là số bị trừ, đẳng thức phân số một ẩn"
+ },
+ {
+  "ma_cau": "T15T000000124",
+  "dang_bai_id": "NDB01811",
+  "chac": "vua",
+  "ly_do": "chỉ nhân chia phân số, làm bằng rút gọn chéo; chưa chắc thuộc tính thuận tiện"
+ },
+ {
+  "ma_cau": "T15T000000285",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Các bài toán logic (Tỉ lệ thuận): bài lời văn hình vuông, rút về đơn vị"
+ },
+ {
+  "ma_cau": "T15T000000023",
+  "dang_bai_id": "NDB02975",
+  "chac": "cao",
+  "ly_do": "mẫu sau gấp đôi mẫu trước, nhân tổng với 2 rồi trừ đi"
+ },
+ {
+  "ma_cau": "T15T000000281",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang (hình chữ nhật): bài lời văn lát gạch"
+ },
+ {
+  "ma_cau": "T15T000000196",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử gấp 3 lần hiệu hai thừa số ở mẫu, tách rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000191",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử bằng hiệu hai thừa số ở mẫu, thừa số nối tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000264",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo các hàng, hàng không nhắc là 0"
+ },
+ {
+  "ma_cau": "T15T000000142",
+  "dang_bai_id": "NDB02981",
+  "chac": "cao",
+  "ly_do": "hai phân số lớn hơn 1, so sánh bằng phần thừa"
+ },
+ {
+  "ma_cau": "T15T000000274",
+  "dang_bai_id": "NDB02984",
+  "chac": "cao",
+  "ly_do": "đổi đơn vị khối lượng giữa tấn, tạ, yến, kg và số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000299",
+  "dang_bai_id": "NDB01814",
+  "chac": "cao",
+  "ly_do": "nhân 1000 dịch dấu phẩy rồi cộng, biểu thức hỗn hợp số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000192",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử là hiệu hai thừa số ở mẫu, mẫu nối tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000042",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang / Tỉ số: bài lời văn thửa ruộng tổng tỉ, tỉ lệ thuận"
+ },
+ {
+  "ma_cau": "T15T000000048",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Dãy số (Dãy cách đều): dãy số thập phân đếm số hạng và tính tổng"
+ },
+ {
+  "ma_cau": "T15T000000195",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử 2 gấp đôi hiệu 1 ở mẫu, đưa 2 ra ngoài rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000047",
+  "dang_bai_id": "NDB01817",
+  "chac": "cao",
+  "ly_do": "thay chữ cái bằng chữ số trong phép cộng số thập phân, xét từng hàng"
+ },
+ {
+  "ma_cau": "T15T000000129",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "số hạng chưa biết là 2/7 : y trong đẳng thức phân số"
+ },
+ {
+  "ma_cau": "T15T000000148",
+  "dang_bai_id": "NDB02981",
+  "chac": "cao",
+  "ly_do": "phân số có tử mẫu là tích, so sánh với 1 làm trung gian"
+ },
+ {
+  "ma_cau": "T15T000000199",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử tăng dần bằng nửa hiệu hai thừa số ở mẫu, nhân tổng rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000750",
+  "dang_bai_id": "NDB02983",
+  "chac": "cao",
+  "ly_do": "bỏ ngoặc, y lặp nhiều lần, đếm số y rồi tìm y"
+ },
+ {
+  "ma_cau": "T15T000000135",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "đẳng thức hai phân số có y ở tử, đưa về cùng mẫu số"
+ },
+ {
+  "ma_cau": "T15T000000742",
+  "dang_bai_id": "NDB01813",
+  "chac": "vua",
+  "ly_do": "nhiều biểu thức trộn số thập phân, hỗn số, số tự nhiên cần tính thuận tiện"
+ },
+ {
+  "ma_cau": "T15T000000133",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "đẳng thức hai phân số có y ở mẫu, đưa về cùng tử số"
+ },
+ {
+  "ma_cau": "T15T000000193",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử bằng hiệu hai thừa số ở mẫu, thừa số nối tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000209",
+  "dang_bai_id": "NDB02976",
+  "chac": "vua",
+  "ly_do": "tổng triệt tiêu 1/(n(n+1)) bằng 1/15 để tìm y, cũng có thể thuộc tìm y"
+ },
+ {
+  "ma_cau": "T15T000000280",
+  "dang_bai_id": "NDB02986",
+  "chac": "cao",
+  "ly_do": "nhân chia số đo thời gian với số tự nhiên"
+ },
+ {
+  "ma_cau": "T15T000000275",
+  "dang_bai_id": "NDB02986",
+  "chac": "cao",
+  "ly_do": "đổi giờ, phút, giây giữa dạng phức và số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000278",
+  "dang_bai_id": "NDB02984",
+  "chac": "vua",
+  "ly_do": "phép nhân trừ số đo khối lượng sau đổi cùng đơn vị hg; đề chỉ gần với đổi đơn vị"
+ },
+ {
+  "ma_cau": "T15T000000746",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số tự nhiên (tìm y số tự nhiên): quan hệ số chia và thương, chia cho 70"
+ },
+ {
+  "ma_cau": "T15T000000202",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "mẫu là tích hai số liên tiếp, tử 1, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000039",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "tìm số thập phân nằm giữa hai số, so sánh từng hàng"
+ },
+ {
+  "ma_cau": "T15T000000041",
+  "dang_bai_id": "NDB02985",
+  "chac": "cao",
+  "ly_do": "đổi đơn vị diện tích hệ số 100, km² hm² m² dm²"
+ },
+ {
+  "ma_cau": "T15T000000205",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "mẫu là hai lần tích hai số liên tiếp, nhân đôi tử rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000283",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Các bài toán về tỉ số (Các bài toán về phân số): bài lời văn tấn, kg, phần còn lại"
+ },
+ {
+  "ma_cau": "T15T000000146",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Các bài toán về tỉ số (Các bài toán về phân số): bài lời văn cắt dây, phần còn lại"
+ },
+ {
+  "ma_cau": "T15T000000747",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "biểu thức chứa y trong ngoặc là thừa số chưa biết, đẳng thức phân số"
+ },
+ {
+  "ma_cau": "T15T000000132",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "đẳng thức hai phân số y ở tử, cùng mẫu số thì tử bằng nhau"
+ },
+ {
+  "ma_cau": "T15T000000138",
+  "dang_bai_id": "NDB02972",
+  "chac": "cao",
+  "ly_do": "rút gọn rồi so sánh hai phân số cùng mẫu số"
+ },
+ {
+  "ma_cau": "T15T000000014",
+  "dang_bai_id": "NDB02983",
+  "chac": "cao",
+  "ly_do": "y lặp ở ba tích, gom y bằng nhân một số với tổng hiệu"
+ },
+ {
+  "ma_cau": "T15T000000122",
+  "dang_bai_id": "NDB02971",
+  "chac": "vua",
+  "ly_do": "nhân chia cộng hỗn số và phân số; có thể xem là biểu thức nhiều loại số"
+ },
+ {
+  "ma_cau": "T15T000000130",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "y:1/2 là số trừ trong đẳng thức phân số"
+ },
+ {
+  "ma_cau": "T15T000000022",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử bằng hiệu hai thừa số ở mẫu, nối tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000743",
+  "dang_bai_id": "NDB02982",
+  "chac": "vua",
+  "ly_do": "nhiều biểu thức trộn số tự nhiên, số thập phân, phân số; có giá trị đặc biệt bằng 0"
+ },
+ {
+  "ma_cau": "T15T000000259",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo từng hàng phần mười, phần trăm, phần nghìn"
+ },
+ {
+  "ma_cau": "T15T000000203",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tách phần nguyên, phần phân số có mẫu tích hai số lẻ liên tiếp, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000207",
+  "dang_bai_id": "NDB02977",
+  "chac": "cao",
+  "ly_do": "tích hỗn số 1+1/k, đổi ra phân số rồi rút gọn dây chuyền"
+ },
+ {
+  "ma_cau": "T15T000000261",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo hàng, hàng không nhắc là 0"
+ },
+ {
+  "ma_cau": "T15T000000200",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử 2 khác hiệu 3 ở mẫu, nhân chia lại rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000279",
+  "dang_bai_id": "NDB02985",
+  "chac": "vua",
+  "ly_do": "phép tính với số đo diện tích sau khi đổi dm² ra cm²; đề gần với đổi đơn vị"
+ },
+ {
+  "ma_cau": "T15T000000197",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử 1 khác hiệu 5 ở mẫu, nhân chia lại rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000128",
+  "dang_bai_id": "NDB02973",
+  "chac": "cao",
+  "ly_do": "biểu thức chứa y trong ngoặc là thừa số chưa biết, đẳng thức phân số"
+ },
+ {
+  "ma_cau": "T15T000000015",
+  "dang_bai_id": "NDB02981",
+  "chac": "cao",
+  "ly_do": "hai phân số tử kém mẫu 1 đơn vị, so sánh bằng phần bù"
+ },
+ {
+  "ma_cau": "T15T000000263",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo hàng phần mười, phần trăm"
+ },
+ {
+  "ma_cau": "T15T000000260",
+  "dang_bai_id": "NDB01812",
+  "chac": "cao",
+  "ly_do": "viết số thập phân theo hàng, hàng không nhắc là 0"
+ },
+ {
+  "ma_cau": "T15T000000206",
+  "dang_bai_id": "NDB02975",
+  "chac": "cao",
+  "ly_do": "mẫu sau gấp 4 lần mẫu trước, nhân tổng với 4 rồi trừ đi"
+ },
+ {
+  "ma_cau": "T15T000000276",
+  "dang_bai_id": "NDB02986",
+  "chac": "vua",
+  "ly_do": "điền dấu so sánh số đo trộn diện tích, độ dài, khối lượng, thời gian"
+ },
+ {
+  "ma_cau": "T15T000000287",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Cấu tạo số (Tổng các số cấu tạo ẩn chữ): so sánh tổng số cấu tạo chứa chữ cái"
+ },
+ {
+  "ma_cau": "T15T000000273",
+  "dang_bai_id": "NDB02984",
+  "chac": "cao",
+  "ly_do": "đổi đơn vị độ dài giữa km, hm, dam, m, dm, cm, mm và số thập phân"
+ },
+ {
+  "ma_cau": "T15T000000201",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử 3 khác hiệu 4 ở mẫu, nhân chia lại rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000277",
+  "dang_bai_id": "NDB02984",
+  "chac": "vua",
+  "ly_do": "cộng trừ số đo độ dài sau khi đổi cùng đơn vị cm; đề gần với đổi đơn vị"
+ },
+ {
+  "ma_cau": "T15T000000147",
+  "dang_bai_id": "NDB02981",
+  "chac": "cao",
+  "ly_do": "phân số có tử mẫu là tích, so sánh với 1 làm trung gian"
+ },
+ {
+  "ma_cau": "T15T000000141",
+  "dang_bai_id": "NDB02972",
+  "chac": "cao",
+  "ly_do": "so sánh với số trung gian 1, tử bé hơn mẫu và tử lớn hơn mẫu"
+ },
+ {
+  "ma_cau": "T15T000000198",
+  "dang_bai_id": "NDB02976",
+  "chac": "cao",
+  "ly_do": "tử 2 bằng nửa hiệu 4 ở mẫu, triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000121",
+  "dang_bai_id": "NDB01811",
+  "chac": "cao",
+  "ly_do": "3/4 xuất hiện ở hai số hạng, gom thừa số chung 3/4 rồi tính"
+ },
+ {
+  "ma_cau": "T15T000000282",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang (hình chữ nhật): bài lời văn khu rừng, đổi km ra héc-ta"
+ },
+ {
+  "ma_cau": "T15T000000210",
+  "dang_bai_id": "NDB02976",
+  "chac": "vua",
+  "ly_do": "tìm y trong tổng có mẫu tích hai số cách nhau 3, giải bằng triệt tiêu"
+ },
+ {
+  "ma_cau": "T15T000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tam giác và hình thang (hình chữ nhật): bài lời văn tính chu vi từ diện tích"
+ },
+ {
+  "ma_cau": "T15T000000139",
+  "dang_bai_id": "NDB02972",
+  "chac": "cao",
+  "ly_do": "khác mẫu, quy đồng mẫu số rồi so sánh tử số"
+ },
+ {
+  "ma_cau": "T15T000000101",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 30 câu đúng; đúng được 3 điểm, sai bị trừ 3 điểm, thay một câu giảm 6 điểm."
+ },
+ {
+  "ma_cau": "T15T000000250",
+  "dang_bai_id": "NDB01802",
+  "chac": "cao",
+  "ly_do": "Gộp hai tổ còn lại, tổng-hiệu tìm tổ một, rồi tổ hai-tổ ba qua dữ kiện phân số bằng nhau; ba đại lượng phức hợp."
+ },
+ {
+  "ma_cau": "T15T000000441",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Ba bạn cho nhau, cuối bằng nhau; đi ngược từ cuối, đúng ví dụ dạng tính ngược."
+ },
+ {
+  "ma_cau": "T15T000000405",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia kẹo hai cách: thừa 8 và thiếu 16, tìm số học sinh và số kẹo."
+ },
+ {
+  "ma_cau": "T15T000000245",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: ba đại lượng biết tổng và hai hiệu, không có tỉ số."
+ },
+ {
+  "ma_cau": "T15T000000414",
+  "dang_bai_id": "NDB02988",
+  "chac": "vua",
+  "ly_do": "Thừa 160000 đồng, và 3 bạn không được ăn phải đổi ra tiền; gần thừa đơn vị chứa nhưng cũng giống thừa-thiếu."
+ },
+ {
+  "ma_cau": "T15T000000448",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Phân số của số gạo ban đầu và phân số của số còn lại, biết lượng còn lại cuối, đi ngược."
+ },
+ {
+  "ma_cau": "T15T000000663",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Tìm nhóm số gói bằng tổng-tỉ, rồi giả sử tất cả là loại 2 kg để tách 2 loại với tổng khối lượng."
+ },
+ {
+  "ma_cau": "T15T000000659",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 52 tờ đều loại 5000 đồng rồi thay dần; đề cho hiệu số tiền hai loại."
+ },
+ {
+  "ma_cau": "T15T000000028",
+  "dang_bai_id": "NDB02998",
+  "chac": "vua",
+  "ly_do": "Cho nhau, tổng không đổi, hiệu cho ở lúc sau; có thể thuộc chủ đề Tổng – hiệu có thay đổi."
+ },
+ {
+  "ma_cau": "T15T000000439",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Chuỗi phép tính gấp 3, trừ 300, chia 5 được 60; trùng ví dụ tính ngược từ cuối."
+ },
+ {
+  "ma_cau": "T15T000000781",
+  "dang_bai_id": "NDB02995",
+  "chac": "cao",
+  "ly_do": "Dãy 6 số lẻ liên tiếp cách đều biết trung bình cộng; trung bình cộng của dãy cách đều."
+ },
+ {
+  "ma_cau": "T15T000000237",
+  "dang_bai_id": "NDB02995",
+  "chac": "vua",
+  "ly_do": "Dãy 5 số lẻ liên tiếp biết tổng, số giữa bằng trung bình cộng; có thể thuộc chủ đề dãy số cách đều."
+ },
+ {
+  "ma_cau": "T15T000000456",
+  "dang_bai_id": "NDB02998",
+  "chac": "vua",
+  "ly_do": "Đổ qua lại hai bình theo phân số số hiện có, biết lúc cuối; đi ngược, cũng gần tính ngược phân số."
+ },
+ {
+  "ma_cau": "T15T000000678",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Dịch dấu phẩy sang trái một hàng là giảm 10 lần; hiệu 117,45 và tỉ số 10, bài hiệu-tỉ."
+ },
+ {
+  "ma_cau": "T15T000000232",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: biết tổng và hiệu hai cạnh rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000408",
+  "dang_bai_id": "NDB02987",
+  "chac": "vua",
+  "ly_do": "Hai cách đi, cùng đi quá giờ vào học (thừa-thừa), lấy hiệu; thuộc kiểu chuyển động nhưng cấu trúc thừa-thiếu."
+ },
+ {
+  "ma_cau": "T15T000000027",
+  "dang_bai_id": "NDB02997",
+  "chac": "cao",
+  "ly_do": "Xe thứ ba bằng và xe thứ tư hơn trung bình cộng; quan hệ của số hạng với trung bình cộng cả nhóm."
+ },
+ {
+  "ma_cau": "T15T000000404",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Cùng số bút: mua loại 1 vừa đủ, loại 2 thiếu 30000 đồng; thừa-thiếu với chênh lệch giá mỗi chiếc."
+ },
+ {
+  "ma_cau": "T15T000000018",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Hiệu 12 kg và tỉ số giấu dưới dạng 2/3 số này bằng 1/2 số kia; hiệu-tỉ cơ bản."
+ },
+ {
+  "ma_cau": "T15T000000653",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 5 xe đều 16 chỗ rồi thay dần bằng xe 29 chỗ, biết tổng số người."
+ },
+ {
+  "ma_cau": "T15T000000779",
+  "dang_bai_id": "NDB02996",
+  "chac": "cao",
+  "ly_do": "Thêm một bạn vào nhóm hai bạn, trung bình cộng đổi; trùng ví dụ dạng thêm bớt."
+ },
+ {
+  "ma_cau": "T15T000000103",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai lần mua 5 máy 7 chì và 4 máy 9 chì, không cùng số lượng nào; gấp lên để khử."
+ },
+ {
+  "ma_cau": "T15T000000447",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Mỗi trạm xuống một phân số của số khách còn lại, biết 4 khách cuối; phần còn lại nhiều lần."
+ },
+ {
+  "ma_cau": "T15T000000104",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện 5 chó 7 mèo và chó hơn mèo 29; nhân điều kiện hai lên 5 lần để khử chó."
+ },
+ {
+  "ma_cau": "T15T000000418",
+  "dang_bai_id": "NDB02988",
+  "chac": "vua",
+  "ly_do": "Thừa 4 và thừa 6 nhưng 2 em không nhận, đổi 2 em ra số vở; gần thừa đơn vị chứa hoặc thừa-thừa."
+ },
+ {
+  "ma_cau": "T15T000000655",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 5,5 kg đều là táo; tiền thực trả là 300000 trừ 15000."
+ },
+ {
+  "ma_cau": "T15T000000671",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện hơn kém vịt và gà; nhân điều kiện hai lên 2 lần rồi cộng để khử vịt."
+ },
+ {
+  "ma_cau": "T15T000000669",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện sách hơn vở; nhân điều kiện đầu lên 2 lần để cùng 2 sách rồi trừ."
+ },
+ {
+  "ma_cau": "T15T000000782",
+  "dang_bai_id": "NDB02997",
+  "chac": "cao",
+  "ly_do": "Hân hơn trung bình cộng 1,2 kg; trùng ví dụ dạng quan hệ với trung bình cộng."
+ },
+ {
+  "ma_cau": "T15T000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: tổng hiệu có thêm bớt ở hai thời điểm khác nhau."
+ },
+ {
+  "ma_cau": "T15T000000652",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 18 con đều là mèo; đề cho hiệu số chân hai loại."
+ },
+ {
+  "ma_cau": "T15T000000697",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia vở hai cách đều thừa (60 và 2): thừa-thừa lấy hiệu hai số thừa."
+ },
+ {
+  "ma_cau": "T15T000000657",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Bỏ 5 câu không trả lời, giả sử 45 câu đều đúng; đúng cộng sai trừ điểm."
+ },
+ {
+  "ma_cau": "T15T000000661",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Ba loại xe, hai lượt giả thiết tạm theo số bánh xe rồi số chỗ ngồi."
+ },
+ {
+  "ma_cau": "T15T000000453",
+  "dang_bai_id": "NDB01800",
+  "chac": "cao",
+  "ly_do": "Chuyển sách rồi ba ngăn có tỉ số đôi một (gấp đôi, gấp đôi) ở lúc sau; giải tổng-tỉ rồi đi ngược."
+ },
+ {
+  "ma_cau": "T15T000000668",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện: sơ mi hơn phông 165000 và 3 sơ mi 2 phông; thay sơ mi bằng phông tức nhân rồi khử."
+ },
+ {
+  "ma_cau": "T15T000000413",
+  "dang_bai_id": "NDB02988",
+  "chac": "cao",
+  "ly_do": "Còn 30 người chưa sang và thừa 2 thuyền: đổi thuyền ra người theo sức chứa 20."
+ },
+ {
+  "ma_cau": "T15T000000450",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Hai bạn cho nhau, cuối bằng nhau; đi ngược từ cuối, tổng không đổi."
+ },
+ {
+  "ma_cau": "T15T000000234",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Hiệu 24 lít và 5 lần thùng một bằng 3 lần thùng hai; hiệu-tỉ cơ bản."
+ },
+ {
+  "ma_cau": "T15T000000666",
+  "dang_bai_id": "NDB02989",
+  "chac": "vua",
+  "ly_do": "Cộng hai lần mua để có tổng số kg rồi giả sử toàn na; có yếu tố khử gần dạng khử."
+ },
+ {
+  "ma_cau": "T15T000000409",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia cây hai cách đều thừa (3 và 15): thừa-thừa lấy hiệu."
+ },
+ {
+  "ma_cau": "T15T000000457",
+  "dang_bai_id": "NDB02998",
+  "chac": "vua",
+  "ly_do": "Ba giỏ chuyển cam theo phân số số hiện có, biết lúc cuối; đi ngược, có thể gần tính ngược phân số."
+ },
+ {
+  "ma_cau": "T15T000000656",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Tìm tổng số học sinh từ điều kiện chia hết và khoảng, rồi giả sử toàn nữ (5 cây) và nam (6 cây)."
+ },
+ {
+  "ma_cau": "T15T000000444",
+  "dang_bai_id": "NDB02999",
+  "chac": "vua",
+  "ly_do": "Nửa số tiền còn lại, cộng các khoản cụ thể, biết còn 40 nghìn, đi ngược; cũng gần tính ngược từ cuối."
+ },
+ {
+  "ma_cau": "T15T000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: biết hiệu, thêm bớt rồi biết tổng."
+ },
+ {
+  "ma_cau": "T15T000000670",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện 4Q-3H=51 và 2Q-H=33; nhân điều kiện hai lên 2 lần rồi trừ để khử Quang."
+ },
+ {
+  "ma_cau": "T15T000000681",
+  "dang_bai_id": "NDB01797",
+  "chac": "vua",
+  "ly_do": "Tổng 368, thương 9 dư 8: số lớn gấp 9 lần số bé thêm 8; tổng-tỉ có thêm số dư."
+ },
+ {
+  "ma_cau": "T15T000000417",
+  "dang_bai_id": "NDB02988",
+  "chac": "vua",
+  "ly_do": "Cùng thừa 6 em nhưng ít hơn 2 hàng, đổi 2 hàng ra số em; gần thừa đơn vị chứa."
+ },
+ {
+  "ma_cau": "T15T000000240",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: tổng hiệu có thêm bớt, hiệu ở lúc sau."
+ },
+ {
+  "ma_cau": "T15T000000698",
+  "dang_bai_id": "NDB02987",
+  "chac": "vua",
+  "ly_do": "Hai người cùng thiếu (69 và 13) sau cùng số ngày, lấy hiệu; cấu trúc thiếu-thiếu nhưng thuộc kiểu năng suất."
+ },
+ {
+  "ma_cau": "T15T000000174",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tỉ lệ bản đồ: chu vi, tổng-tỉ rồi tính diện tích trên bản đồ."
+ },
+ {
+  "ma_cau": "T15T000000032",
+  "dang_bai_id": "NDB02988",
+  "chac": "cao",
+  "ly_do": "Còn 6 bạn không chỗ và thừa 2 bàn: đổi 2 bàn ra 8 chỗ ngồi."
+ },
+ {
+  "ma_cau": "T15T000000019",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tỉ lệ bản đồ: đổi kích thước bản đồ ra thực tế và tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000784",
+  "dang_bai_id": "NDB02997",
+  "chac": "cao",
+  "ly_do": "Tổ Bốn ít hơn trung bình cộng 120 nghìn; quan hệ với trung bình cộng cả nhóm."
+ },
+ {
+  "ma_cau": "T15T000000031",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia táo hai cách: thừa 7 và thiếu 5, thừa-thiếu cổ điển."
+ },
+ {
+  "ma_cau": "T15T000000403",
+  "dang_bai_id": "NDB02987",
+  "chac": "vua",
+  "ly_do": "Vừa đủ ở cách một, thừa 16 ghế ở cách hai (thiếu 16 em); thừa-thiếu hoặc thừa đơn vị chứa."
+ },
+ {
+  "ma_cau": "T15T000000415",
+  "dang_bai_id": "NDB02988",
+  "chac": "cao",
+  "ly_do": "Thừa 5 em và còn trống một bàn; trùng ví dụ thừa đơn vị chứa."
+ },
+ {
+  "ma_cau": "T15T000000780",
+  "dang_bai_id": "NDB02995",
+  "chac": "cao",
+  "ly_do": "Dãy số chẵn hai chữ số cách đều, trung bình cộng bằng (đầu + cuối) : 2."
+ },
+ {
+  "ma_cau": "T15T000000674",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng – hiệu: tổng hiệu có thêm bớt, hiệu ở lúc sau."
+ },
+ {
+  "ma_cau": "T15T000000454",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Ba bạn chia kẹo cho nhau, cuối bằng nhau; đi ngược từ cuối, tổng không đổi."
+ },
+ {
+  "ma_cau": "T15T000000651",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Giả sử cả 17 quả đều là cam; biết tổng số miếng là 100."
+ },
+ {
+  "ma_cau": "T15T000000690",
+  "dang_bai_id": "NDB01808",
+  "chac": "cao",
+  "ly_do": "Các khối là phân số của tổng, biết hiệu khối 8 và khối 6; chia hiệu cho hiệu phân số."
+ },
+ {
+  "ma_cau": "T15T000000410",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia cà rốt hai cách đều thừa (8 và 2): thừa-thừa lấy hiệu."
+ },
+ {
+  "ma_cau": "T15T000000783",
+  "dang_bai_id": "NDB02997",
+  "chac": "cao",
+  "ly_do": "Xe thứ ba ít hơn trung bình cộng 16 tấn; trùng ví dụ quan hệ với trung bình cộng."
+ },
+ {
+  "ma_cau": "T15T000000445",
+  "dang_bai_id": "NDB01808",
+  "chac": "vua",
+  "ly_do": "Số cộng 1/2 số cộng 3/4 số rồi cộng 1; bỏ 1 và cộng các phân số rồi chia, giống biết tổng các phần."
+ },
+ {
+  "ma_cau": "T15T000000665",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai lần mua 2 cam 3 quýt và 4 cam 5 quýt; gấp lần một lên 2 lần rồi khử cam."
+ },
+ {
+  "ma_cau": "T15T000000164",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Phân số 1/8 của số ban đầu, 2/7 của số còn lại, biết lượng còn lại cuối."
+ },
+ {
+  "ma_cau": "T15T000000660",
+  "dang_bai_id": "NDB02989",
+  "chac": "vua",
+  "ly_do": "Hiệu số túi và hiệu khối lượng, bớt túi cho bằng số rồi ghép cặp; kiểu giả thiết tạm chưa rõ dạng."
+ },
+ {
+  "ma_cau": "T15T000000662",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Gộp nếp và tẻ thành nhóm 3 kg rồi giả sử toàn nhóm so với gạo lứt, biết tổng tiền."
+ },
+ {
+  "ma_cau": "T15T000000455",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Chuỗi chia bi gấp đôi giữa các bạn, biết kết quả cuối: đi ngược từ cuối."
+ },
+ {
+  "ma_cau": "T15T000000038",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Ba bạn cho nhận bóng, cuối bằng nhau: tính ngược theo bảng."
+ },
+ {
+  "ma_cau": "T15T000000102",
+  "dang_bai_id": "NDB02989",
+  "chac": "vua",
+  "ly_do": "Giả thiết bớt 12 xe máy, nhưng đề cho hiệu số xe chứ không cho tổng số vật."
+ },
+ {
+  "ma_cau": "T15T000000687",
+  "dang_bai_id": "NDB01806",
+  "chac": "cao",
+  "ly_do": "Tầng I, II tìm phân số của một số; dạng sau thắng, phần tổng-tỉ tầng III–IV là bước phụ."
+ },
+ {
+  "ma_cau": "T15T000000667",
+  "dang_bai_id": "NDB02991",
+  "chac": "vua",
+  "ly_do": "Quy đổi 5 bánh = 2 pizza bằng cách gấp lần mua lên; gần khử khác hệ số nhưng chỉ một lần mua."
+ },
+ {
+  "ma_cau": "T15T000000654",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Tổng số học sinh và tổng số cây, hai loại khác nhau: giả sử tất cả là nam."
+ },
+ {
+  "ma_cau": "T15T000000235",
+  "dang_bai_id": "NDB02995",
+  "chac": "cao",
+  "ly_do": "Hai nhóm xe chở khác nhau, tìm trung bình cộng bằng tổng chia số xe."
+ },
+ {
+  "ma_cau": "T15T000000253",
+  "dang_bai_id": "NDB01802",
+  "chac": "cao",
+  "ly_do": "Xanh bằng đỏ cộng vàng, xanh cộng đỏ gấp 5 lần vàng, ba đại lượng: bài tổng hợp."
+ },
+ {
+  "ma_cau": "T15T000000778",
+  "dang_bai_id": "NDB02995",
+  "chac": "cao",
+  "ly_do": "Hai giai đoạn vận tốc khác nhau, trung bình bằng tổng quãng đường chia tổng thời gian."
+ },
+ {
+  "ma_cau": "T15T000000030",
+  "dang_bai_id": "NDB01797",
+  "chac": "cao",
+  "ly_do": "Biết tổng hai số, tỉ số suy ra từ hai phân số bằng nhau: tổng-tỉ cơ bản."
+ },
+ {
+  "ma_cau": "T15T000000400",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia kẹo hai cách, thừa 5 và thiếu 5: bài thừa – thiếu."
+ },
+ {
+  "ma_cau": "T15T000000236",
+  "dang_bai_id": "NDB02996",
+  "chac": "cao",
+  "ly_do": "Bớt tổ trưởng khỏi nhóm 8 người, hai trung bình cộng: tìm số bị bớt qua hiệu hai tổng."
+ },
+ {
+  "ma_cau": "T15T000000672",
+  "dang_bai_id": "NDB02991",
+  "chac": "vua",
+  "ly_do": "Ba mặt hàng, lần mua 2 gấp đôi nhóm lần 1 nên chia đôi rồi khử; không hẳn gấp lên."
+ },
+ {
+  "ma_cau": "T15T000000238",
+  "dang_bai_id": "NDB02997",
+  "chac": "cao",
+  "ly_do": "Lớp 5C ít hơn trung bình cộng của ba lớp 6 cây: quan hệ với trung bình cộng cả nhóm."
+ },
+ {
+  "ma_cau": "T15T000000442",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Chuỗi phép tính nhân, cộng, chia, trừ với kết quả cuối: tính ngược từ cuối."
+ },
+ {
+  "ma_cau": "T15T000000673",
+  "dang_bai_id": "NDB02995",
+  "chac": "vua",
+  "ly_do": "Tìm hai số từ trung bình cộng và hiệu; trung bình cộng chỉ cho tổng, mấu chốt là tổng-hiệu."
+ },
+ {
+  "ma_cau": "T15T000000109",
+  "dang_bai_id": "NDB02997",
+  "chac": "vua",
+  "ly_do": "Hai nhóm so với tuổi trung bình chung, thiếu thừa theo trung bình; gần dạng quan hệ với trung bình cộng."
+ },
+ {
+  "ma_cau": "T15T000000036",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Chuỗi phép tính trừ, chia, cộng, nhân với kết quả cuối: tính ngược."
+ },
+ {
+  "ma_cau": "T15T000000443",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Chuỗi phép cộng, trừ, nhân, chia phân số với kết quả cuối: tính ngược từ cuối."
+ },
+ {
+  "ma_cau": "T15T000000691",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Mỗi lần nhận một phân số của số vở còn lại kèm số quyển, biết lớp cuối: tính ngược phần còn lại."
+ },
+ {
+  "ma_cau": "T15T000000416",
+  "dang_bai_id": "NDB02988",
+  "chac": "cao",
+  "ly_do": "Thiếu một xe và thừa một xe: đổi đơn vị chứa ra bao gạo rồi thừa – thiếu."
+ },
+ {
+  "ma_cau": "T15T000000100",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Tổng 14 xe hai loại 4 tạ và 6 tạ, biết tổng khối lượng: giả sử tất cả một loại."
+ },
+ {
+  "ma_cau": "T15T000000407",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia vở hai cách, thừa 36 và thừa 4: bài thừa – thừa."
+ },
+ {
+  "ma_cau": "T15T000000676",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng - hiệu: tìm hai số chẵn biết tổng và số chẵn ở giữa."
+ },
+ {
+  "ma_cau": "T15T000000401",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Bỏ bi vào túi hai cách, thừa 16 và vừa đủ: bài thừa – vừa đủ."
+ },
+ {
+  "ma_cau": "T15T000000449",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Mỗi ngày đi một phân số quãng đường còn lại cộng trừ vài km, biết đoạn cuối: tính ngược phần còn lại."
+ },
+ {
+  "ma_cau": "T15T000000683",
+  "dang_bai_id": "NDB01804",
+  "chac": "cao",
+  "ly_do": "Chuyển dầu giữa hai thùng, tổng không đổi, hai tình huống: hai tỉ số tổng không đổi."
+ },
+ {
+  "ma_cau": "T15T000000664",
+  "dang_bai_id": "NDB02991",
+  "chac": "cao",
+  "ly_do": "Hai điều kiện về giá táo và ổi không cùng số lượng: nhân lên để khử."
+ },
+ {
+  "ma_cau": "T15T000000452",
+  "dang_bai_id": "NDB02998",
+  "chac": "cao",
+  "ly_do": "Ba bạn cho nhau số vở gấp đôi số người nhận, cuối bằng nhau: tính ngược."
+ },
+ {
+  "ma_cau": "T15T000000658",
+  "dang_bai_id": "NDB02989",
+  "chac": "cao",
+  "ly_do": "Tổng số trận và tổng điểm, trận thắng 3 điểm trận hòa 2 điểm: giả sử mọi trận có đội thắng."
+ },
+ {
+  "ma_cau": "T15T000000696",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Chia kẹo hai cách, thừa 2 và thiếu 4: bài thừa – thiếu."
+ },
+ {
+  "ma_cau": "T15T000000411",
+  "dang_bai_id": "NDB02988",
+  "chac": "vua",
+  "ly_do": "Mất thêm 6 ngày và chậm 2 ngày đổi ra quãng đường như thừa đơn vị chứa; không thật khớp mô tả."
+ },
+ {
+  "ma_cau": "T15T000000402",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Tặng vở hai cách, thừa 54 và vừa hết: bài thừa – vừa đủ."
+ },
+ {
+  "ma_cau": "T15T000000243",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng - hiệu: thêm chữ số 4 bên trái số bé để biết hiệu."
+ },
+ {
+  "ma_cau": "T15T000000412",
+  "dang_bai_id": "NDB02987",
+  "chac": "cao",
+  "ly_do": "Đóng áo hai cách, thiếu 5 và thiếu 45: bài thiếu – thiếu."
+ },
+ {
+  "ma_cau": "T15T000000037",
+  "dang_bai_id": "NDB02999",
+  "chac": "cao",
+  "ly_do": "Mỗi ngày đọc một phân số số trang còn lại cộng vài trang, biết ngày cuối: tính ngược phần còn lại."
+ },
+ {
+  "ma_cau": "T15T000000695",
+  "dang_bai_id": "NDB02993",
+  "chac": "cao",
+  "ly_do": "Tỉ số tuổi bố con ở hai thời điểm, không cho tuổi nào: phân số của hiệu số tuổi."
+ },
+ {
+  "ma_cau": "T15T000000254",
+  "dang_bai_id": "NDB01804",
+  "chac": "cao",
+  "ly_do": "Chuyển thóc giữa hai kho, tổng không đổi, hai tình huống: hai tỉ số tổng không đổi."
+ },
+ {
+  "ma_cau": "T15T000000244",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Tổng - hiệu: tìm hai số chẵn biết tổng và số chẵn ở giữa."
+ },
+ {
+  "ma_cau": "T15T000000406",
+  "dang_bai_id": "NDB02988",
+  "chac": "vua",
+  "ly_do": "Muộn 3 phút và sớm 2 phút đổi ra quãng đường như thừa đơn vị chứa; không thật khớp mô tả."
+ },
+ {
+  "ma_cau": "T15T000000699",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Các bài toán về tỉ số: thừa đơn vị chứa (thừa phòng, thừa học sinh)"
+ },
+ {
+  "ma_cau": "T15T000000644",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chuyển động đi–về có đoạn lên dốc, xuống dốc: bản đồ thiếu dạng (tính quãng đường theo thời gian mỗi km lên và xuống)"
+ },
+ {
+  "ma_cau": "T15T000000575",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000088",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Một chuyển động nhiều chặng, có nghỉ, hỏi giờ đến; nhưng có hai vận tốc nên cũng gần vận tốc trung bình."
+ },
+ {
+  "ma_cau": "T15T000000598",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000607",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Hai xe cùng chiều xuất phát cùng lúc, cách nhau 40 km, hỏi giờ và chỗ đuổi kịp, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000573",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000592",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000625",
+  "dang_bai_id": "NDB03018",
+  "chac": "cao",
+  "ly_do": "Cho vận tốc xuôi, ngược dòng, tìm vận tốc dòng nước và vận tốc thực, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000587",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000562",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000595",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000580",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000568",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Chỉ đổi đơn vị vận tốc, chưa có đủ ba đại lượng s, v, t; gần nhất công thức và đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000093",
+  "dang_bai_id": "NDB03018",
+  "chac": "cao",
+  "ly_do": "Biết quãng đường và thời gian xuôi, ngược, tìm vận tốc ca nô khi nước lặng bằng (xuôi+ngược):2."
+ },
+ {
+  "ma_cau": "T15T000000634",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng thời gian, xe máy đi bằng 2/3 vận tốc ô tô nên quãng đường tỉ lệ thuận, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000096",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường, hai vận tốc khác nhau, hai giờ đến chênh nhau: vận tốc và thời gian tỉ lệ nghịch, hiệu–tỉ."
+ },
+ {
+  "ma_cau": "T15T000000591",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000600",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Quãng đường gồm hai chặng bằng hai phương tiện, có thời gian nghỉ, tính từng chặng bằng s=v×t; có hai vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000627",
+  "dang_bai_id": "NDB03017",
+  "chac": "cao",
+  "ly_do": "Thuyền ngược dòng, cho vận tốc thực và vận tốc dòng nước, tính giờ đến, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000648",
+  "dang_bai_id": "NDB03019",
+  "chac": "cao",
+  "ly_do": "Tàu qua hai cầu khác độ dài: hiệu hai thời gian ứng với hiệu chiều dài cầu, tìm vận tốc và chiều dài tàu."
+ },
+ {
+  "ma_cau": "T15T000000569",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Chỉ đổi đơn vị vận tốc, chưa có đủ ba đại lượng s, v, t; gần nhất công thức và đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000639",
+  "dang_bai_id": "NDB03009",
+  "chac": "cao",
+  "ly_do": "Hai nửa quãng đường có vận tốc khác nhau, hỏi vận tốc trung bình cả quãng, trùng dạng."
+ },
+ {
+  "ma_cau": "T15T000000567",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Chỉ đổi đơn vị vận tốc, chưa có đủ ba đại lượng s, v, t; gần nhất công thức và đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000615",
+  "dang_bai_id": "NDB03011",
+  "chac": "vua",
+  "ly_do": "Ngược chiều cùng lúc, tìm hai vận tốc từ thời gian gặp, quãng đường và tỉ số vận tốc (có yếu tố tổng–tỉ)."
+ },
+ {
+  "ma_cau": "T15T000000645",
+  "dang_bai_id": "NDB03019",
+  "chac": "cao",
+  "ly_do": "Tàu chạy qua cột điện: quãng đường bằng chiều dài tàu, biết vận tốc và thời gian tìm chiều dài."
+ },
+ {
+  "ma_cau": "T15T000000621",
+  "dang_bai_id": "NDB03011",
+  "chac": "vua",
+  "ly_do": "Hai xe ngược chiều cùng lúc, tìm AB theo phần quãng đường mỗi giờ (coi AB là 1); kiểu bài hơi khác ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000570",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000604",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Đi và về cùng một quãng đường, thời gian về ít hơn: vận tốc và thời gian tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000589",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000583",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000603",
+  "dang_bai_id": "NDB03008",
+  "chac": "cao",
+  "ly_do": "Biết vận tốc, giờ đi, giờ đến và thời gian nghỉ, tìm quãng đường bằng v×thời gian chạy thật."
+ },
+ {
+  "ma_cau": "T15T000000624",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Ba xe xuất phát cùng lúc từ hai đầu, ô tô gặp điểm chính giữa; thực chất ngược chiều cùng lúc, chia cho tổng vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000091",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Cùng đề có cả ngược chiều và cùng chiều; theo luật dạng sau thắng xếp vào đuổi kịp (hiệu vận tốc)."
+ },
+ {
+  "ma_cau": "T15T000000597",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000574",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000628",
+  "dang_bai_id": "NDB03017",
+  "chac": "cao",
+  "ly_do": "Thuyền xuôi dòng, cho vận tốc thực, vận tốc dòng nước và giờ đi, giờ đến, tính độ dài AB."
+ },
+ {
+  "ma_cau": "T15T000000608",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai xe cùng lúc ngược chiều, biết hai vận tốc và thời gian gặp, tìm quãng đường AB."
+ },
+ {
+  "ma_cau": "T15T000000090",
+  "dang_bai_id": "NDB03014",
+  "chac": "cao",
+  "ly_do": "Người đi xe đạp đã đi 40 km trước khi xe máy xuất phát cùng chiều, hỏi thời gian đuổi kịp, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000563",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000561",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000590",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000605",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Hành trình hai chặng với vận tốc khác nhau, hỏi giờ đến; có hai vận tốc nên không thuần công thức một vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000585",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000584",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000633",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, ô tô có vận tốc gấp rưỡi xe máy, tìm thời gian: vận tốc và thời gian tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000606",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai xe ngược chiều cùng lúc, biết hai vận tốc, hỏi giờ gặp và chỗ gặp, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000612",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Ô tô từ A đuổi xe máy từ B cùng lúc, sau 2,5 giờ đuổi kịp, tìm khoảng cách AB, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000086",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Chỉ đổi đơn vị vận tốc, chưa có đủ ba đại lượng s, v, t; gần nhất công thức và đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000623",
+  "dang_bai_id": "NDB03013",
+  "chac": "vua",
+  "ly_do": "Hai xe cùng chiều xuất phát cùng lúc, hỏi lúc quãng còn lại gấp đôi nhau; không phải đuổi kịp, gần nhất cùng chiều."
+ },
+ {
+  "ma_cau": "T15T000000646",
+  "dang_bai_id": "NDB03020",
+  "chac": "cao",
+  "ly_do": "Xe lửa vượt người đi xe đạp cùng chiều: tàu đi hơn một quãng bằng chiều dài tàu, chia hiệu vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000635",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng thời gian chạy, vận tốc người thứ nhất bằng 87,5% nên quãng đường tỉ lệ thuận với vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000609",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai ô tô ngược chiều cùng lúc, biết hai vận tốc và quãng AB, hỏi giờ gặp."
+ },
+ {
+  "ma_cau": "T15T000000638",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB đi và về, vận tốc chậm hơn 15 km/giờ nên thời gian lâu hơn: tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000582",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000560",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000637",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Đi và về cùng quãng đường AB, biết hai vận tốc và tổng thời gian: đổi tỉ số vận tốc thành tỉ số thời gian, tổng–tỉ."
+ },
+ {
+  "ma_cau": "T15T000000610",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai ô tô ngược chiều xuất phát cùng lúc, hỏi giờ gặp và chỗ gặp cách A."
+ },
+ {
+  "ma_cau": "T15T000000650",
+  "dang_bai_id": "NDB03015",
+  "chac": "cao",
+  "ly_do": "Hai bạn chạy cùng chiều trên đường tròn từ cùng một điểm, hỏi gặp lần thứ nhất, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000649",
+  "dang_bai_id": "NDB03015",
+  "chac": "vua",
+  "ly_do": "Một người chạy trên đường tròn chu vi 2,2 km, hỏi còn cách nhà bao xa sau 1 giờ; không phải hai người gặp nhau."
+ },
+ {
+  "ma_cau": "T15T000000578",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000572",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000098",
+  "dang_bai_id": "NDB03019",
+  "chac": "cao",
+  "ly_do": "Xe lửa vượt hết cầu: quãng đường bằng chiều dài cầu cộng chiều dài xe lửa, tìm chiều dài xe."
+ },
+ {
+  "ma_cau": "T15T000000576",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000571",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000632",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Vận tốc không đổi, tìm vận tốc từ s và t rồi tính thời gian cho quãng đường mới; cũng có thể xem là tỉ lệ thuận."
+ },
+ {
+  "ma_cau": "T15T000000611",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai xe ngược chiều cùng lúc gặp sau 2 giờ cách A 84 km, tìm vận tốc mỗi xe."
+ },
+ {
+  "ma_cau": "T15T000000094",
+  "dang_bai_id": "NDB03018",
+  "chac": "cao",
+  "ly_do": "Không cho quãng đường, tìm thời gian lá trôi theo dòng nước từ thời gian xuôi và ngược, coi AB là 1."
+ },
+ {
+  "ma_cau": "T15T000000630",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Dự kiến và thực tế cùng quãng đường AB, đến chậm 40 phút, hiệu–tỉ; trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000618",
+  "dang_bai_id": "NDB03012",
+  "chac": "cao",
+  "ly_do": "Hai xe ngược chiều xuất phát lệch giờ (7 giờ và 7 giờ 48), biết giờ gặp, tìm AB."
+ },
+ {
+  "ma_cau": "T15T000000643",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chuyển động đi–về có đoạn lên dốc, xuống dốc, biết tổng thời gian: bản đồ thiếu dạng"
+ },
+ {
+  "ma_cau": "T15T000000586",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000099",
+  "dang_bai_id": "NDB03019",
+  "chac": "cao",
+  "ly_do": "Tàu qua cột điện và qua cầu 480 m: hiệu thời gian ứng với chiều dài cầu, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000631",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, ô tô 5 giờ, xe máy 7 giờ, biết hiệu vận tốc: tỉ lệ nghịch, hiệu–tỉ."
+ },
+ {
+  "ma_cau": "T15T000000095",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Dự định và thực tế cùng quãng đường AB, vận tốc tăng 7 km/giờ: tỉ lệ nghịch, hiệu–tỉ."
+ },
+ {
+  "ma_cau": "T15T000000614",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Hai ô tô cùng chiều khởi hành cùng lúc, đuổi kịp sau 2,5 giờ, biết khoảng cách và tổng vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000092",
+  "dang_bai_id": "NDB03012",
+  "chac": "cao",
+  "ly_do": "Hai người ngược chiều xuất phát lệch giờ (7 giờ và 8 giờ), hỏi giờ và chỗ gặp, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000565",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000622",
+  "dang_bai_id": "NDB03011",
+  "chac": "vua",
+  "ly_do": "Hai xe ngược chiều cùng lúc, tìm AB theo phần quãng mỗi giờ (coi AB là 1); kiểu bài hơi khác ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000564",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000642",
+  "dang_bai_id": "NDB03009",
+  "chac": "cao",
+  "ly_do": "Nửa quãng đầu 12 km/giờ, nửa quãng sau 6 km/giờ, hỏi vận tốc trung bình cả quãng."
+ },
+ {
+  "ma_cau": "T15T000000596",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000566",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Chỉ đổi đơn vị vận tốc, chưa có đủ ba đại lượng s, v, t; gần nhất công thức và đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000620",
+  "dang_bai_id": "NDB03014",
+  "chac": "cao",
+  "ly_do": "Xe máy đi trước, ô tô xuất phát muộn 1 giờ 15 phút cùng chiều, hỏi giờ đuổi kịp, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000616",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Hai người cùng lúc, cùng chiều, cách nhau 7 km, hỏi giờ và chỗ gặp: chia khoảng cách cho hiệu vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000617",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Cùng đề có ngược chiều và cùng chiều; theo luật dạng sau thắng xếp vào đuổi kịp (tổng–hiệu vận tốc)."
+ },
+ {
+  "ma_cau": "T15T000000097",
+  "dang_bai_id": "NDB03009",
+  "chac": "cao",
+  "ly_do": "Hai nửa quãng đường có vận tốc 60 và 90 km/giờ, hỏi vận tốc trung bình, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000640",
+  "dang_bai_id": "NDB03019",
+  "chac": "cao",
+  "ly_do": "Đoàn tàu qua đường hầm: quãng đường bằng chiều dài hầm cộng chiều dài tàu, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000626",
+  "dang_bai_id": "NDB03017",
+  "chac": "cao",
+  "ly_do": "Ca nô xuôi dòng, cho vận tốc thực và vận tốc dòng nước, tính độ dài AB, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000613",
+  "dang_bai_id": "NDB03013",
+  "chac": "cao",
+  "ly_do": "Xe máy ở sau xe đạp 8 km, cùng chiều cùng lúc, hỏi thời gian đuổi kịp bằng khoảng cách : hiệu vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000619",
+  "dang_bai_id": "NDB03012",
+  "chac": "cao",
+  "ly_do": "Hai xe ngược chiều xuất phát lệch giờ (8 giờ và 9 giờ 30), hỏi giờ gặp nhau."
+ },
+ {
+  "ma_cau": "T15T000000599",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Vận tốc không đổi, tìm vận tốc từ s và t rồi tính thời gian cho quãng đường mới; cũng có thể xem là tỉ lệ thuận."
+ },
+ {
+  "ma_cau": "T15T000000602",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Cùng quãng đường AB, ô tô có vận tốc gấp rưỡi xe máy, tìm thời gian: vận tốc và thời gian tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000647",
+  "dang_bai_id": "NDB03020",
+  "chac": "cao",
+  "ly_do": "Xe lửa lướt qua người đi xe đạp ngược chiều: quãng đường bằng chiều dài tàu, chia tổng vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000636",
+  "dang_bai_id": "NDB03010",
+  "chac": "cao",
+  "ly_do": "Xe máy và ô tô đi cùng quãng đường dự định, khác vận tốc, hỏi giờ ô tô đến: tỉ lệ nghịch."
+ },
+ {
+  "ma_cau": "T15T000000089",
+  "dang_bai_id": "NDB03011",
+  "chac": "cao",
+  "ly_do": "Hai xe ngược chiều cùng lúc, biết hai vận tốc và AB, hỏi giờ gặp và chỗ gặp, trùng ví dụ."
+ },
+ {
+  "ma_cau": "T15T000000577",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000581",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000593",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000588",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000629",
+  "dang_bai_id": "NDB03018",
+  "chac": "cao",
+  "ly_do": "Tìm thời gian lá trôi theo dòng nước từ thời gian xuôi và ngược, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000641",
+  "dang_bai_id": "NDB03009",
+  "chac": "cao",
+  "ly_do": "Hai đoạn theo thời gian 1,5 giờ và 0,5 giờ, hỏi vận tốc trung bình, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000579",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: đổi đơn vị thời gian, không có chuyển động"
+ },
+ {
+  "ma_cau": "T15T000000594",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Số đo thời gian: phép tính cộng/trừ/nhân/chia số đo thời gian"
+ },
+ {
+  "ma_cau": "T15T000000601",
+  "dang_bai_id": "NDB03008",
+  "chac": "vua",
+  "ly_do": "Hành trình đi, nghỉ làm việc, về bằng xe khác vận tốc khác, hỏi giờ về; nhiều chặng, có nhiều vận tốc."
+ },
+ {
+  "ma_cau": "T15T000000087",
+  "dang_bai_id": "NDB03008",
+  "chac": "cao",
+  "ly_do": "Tìm vận tốc từ quãng đường và thời gian chạy thật sau khi trừ nghỉ, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000501",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Cho tổng hai đáy và chiều cao, tính diện tích hình thang."
+ },
+ {
+  "ma_cau": "T15T000000547",
+  "dang_bai_id": "NDB03043",
+  "chac": "cao",
+  "ly_do": "Xếp khít khối lập phương cạnh 5 cm vào hộp (đã đổi cm), số khối bằng tích ba chiều."
+ },
+ {
+  "ma_cau": "T15T000000796",
+  "dang_bai_id": "NDB03036",
+  "chac": "vua",
+  "ly_do": "Hình ghép các nửa hình tròn, nhưng cấu hình phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T15T000000518",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Hộp tôn không nắp tính diện tích 5 mặt; dạng hộp từ tấm bìa cũng có thể."
+ },
+ {
+  "ma_cau": "T15T000000394",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Hai tấm bìa cùng diện tích: tìm diện tích hình vuông rồi suy ngược chiều cao tam giác."
+ },
+ {
+  "ma_cau": "T15T000000823",
+  "dang_bai_id": "NDB03025",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: BC = 3×MC, chung đường cao hạ từ A, tỉ số diện tích bằng tỉ số đáy."
+ },
+ {
+  "ma_cau": "T15T000000085",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Sơn khối gỗ rồi xẻ thành khối nhỏ, đếm khối không sơn mặt nào."
+ },
+ {
+  "ma_cau": "T15T000000811",
+  "dang_bai_id": "NDB03035",
+  "chac": "vua",
+  "ly_do": "Cho đường chéo hình vuông, hỏi hình tròn nội tiếp; kiểu lồng nhau phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000785",
+  "dang_bai_id": "NDB03028",
+  "chac": "cao",
+  "ly_do": "Diện tích tam giác trong hình chữ nhật bằng hình chữ nhật trừ ba tam giác vuông ở góc."
+ },
+ {
+  "ma_cau": "T15T000000835",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Điểm chia cạnh theo tỉ số, M và N nằm trên phần kéo dài theo hình, cần tam giác trung gian."
+ },
+ {
+  "ma_cau": "T15T000000557",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Cho số khối sơn đúng 1 mặt, suy ngược cạnh khối lớn rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000509",
+  "dang_bai_id": "NDB03031",
+  "chac": "cao",
+  "ly_do": "Đáy lớn tăng thêm, diện tích tăng là tam giác cùng chiều cao; tìm chiều cao rồi hai đáy."
+ },
+ {
+  "ma_cau": "T15T000000065",
+  "dang_bai_id": "NDB03031",
+  "chac": "vua",
+  "ly_do": "Tam giác kéo dài đáy, phần tăng là tam giác cùng chiều cao; cùng kỹ thuật dạng hình thang."
+ },
+ {
+  "ma_cau": "T15T000000541",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Từ diện tích toàn phần tìm cạnh hình lập phương lớn rồi đếm khối nhỏ; dạng ghép khối cũng hợp."
+ },
+ {
+  "ma_cau": "T15T000000809",
+  "dang_bai_id": "NDB03035",
+  "chac": "vua",
+  "ly_do": "Số đo nằm trên hình; hình tròn nằm trong hình vuông, phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000528",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Cho diện tích xung quanh hình lập phương, tính diện tích toàn phần."
+ },
+ {
+  "ma_cau": "T15T000000847",
+  "dang_bai_id": "NDB03030",
+  "chac": "cao",
+  "ly_do": "Hai đoạn BN và CM cắt nhau tại O trong tam giác, trùng ví dụ dạng."
+ },
+ {
+  "ma_cau": "T15T000000728",
+  "dang_bai_id": "NDB03040",
+  "chac": "cao",
+  "ly_do": "Vật chìm chiếm chỗ trong bể, thể tích bể bằng nước cộng hai khối kim loại."
+ },
+ {
+  "ma_cau": "T15T000000830",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "S1 phân số của cả tam giác, hiệu S2 và S1 cho trước; các phần xác định theo hình."
+ },
+ {
+  "ma_cau": "T15T000000789",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Trung điểm và điểm chia AE = 2×EC, nối thêm đoạn; ý b phụ thuộc điểm F trên hình."
+ },
+ {
+  "ma_cau": "T15T000000074",
+  "dang_bai_id": "NDB03032",
+  "chac": "cao",
+  "ly_do": "Cho chu vi hình tròn, tìm bán kính rồi diện tích."
+ },
+ {
+  "ma_cau": "T15T000000839",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Tam giác chia ba phần S1, S2, S3 theo tỉ số đoạn; vị trí các phần xác định theo hình."
+ },
+ {
+  "ma_cau": "T15T000000504",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Cho diện tích và trung bình cộng hai đáy, suy ngược chiều cao hình thang."
+ },
+ {
+  "ma_cau": "T15T000000544",
+  "dang_bai_id": "NDB03043",
+  "chac": "cao",
+  "ly_do": "Xếp khít khối nhỏ cạnh 5 cm thành khối cạnh 15 cm, số khối bằng tích ba chiều."
+ },
+ {
+  "ma_cau": "T15T000000512",
+  "dang_bai_id": "NDB03032",
+  "chac": "cao",
+  "ly_do": "Từ chu vi hình tròn thứ nhất suy bán kính hình thứ hai, tính chu vi và diện tích."
+ },
+ {
+  "ma_cau": "T15T000000805",
+  "dang_bai_id": "NDB03026",
+  "chac": "vua",
+  "ly_do": "Hình thang, hai tam giác chung đáy có diện tích bằng nhau; vị trí điểm theo hình."
+ },
+ {
+  "ma_cau": "T15T000000505",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Hình thang cho trung bình cộng hai đáy và chiều cao, tính diện tích rồi sản lượng."
+ },
+ {
+  "ma_cau": "T15T000000531",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc chủ đề Đơn vị đo: đổi đơn vị đo thể tích"
+ },
+ {
+  "ma_cau": "T15T000000788",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Tứ giác bằng tam giác ABC bỏ ba tam giác góc, quy phân số của cả tam giác, 45 cm² ứng với số phần."
+ },
+ {
+  "ma_cau": "T15T000000794",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Hình thang con chiếm một nửa hình thang lớn qua tỉ số đoạn trên cạnh bên; dạng ghép miếng cũng hợp."
+ },
+ {
+  "ma_cau": "T15T000000814",
+  "dang_bai_id": "NDB03036",
+  "chac": "vua",
+  "ly_do": "Phần gạch chéo ghép từ bốn phần tư hình tròn và hình vuông, phụ thuộc hình vẽ."
+ },
+ {
+  "ma_cau": "T15T000000540",
+  "dang_bai_id": "NDB03040",
+  "chac": "cao",
+  "ly_do": "Hòn non bộ chiếm chỗ, nước cần đổ bằng thể tích tới mực nước trừ thể tích vật chìm."
+ },
+ {
+  "ma_cau": "T15T000000529",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Cho diện tích toàn phần hình lập phương, tính diện tích xung quanh."
+ },
+ {
+  "ma_cau": "T15T000000551",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Tính diện tích toàn phần sau khi lấy một khối nhỏ đi; bản đồ thiếu dạng khối khoét lõm."
+ },
+ {
+  "ma_cau": "T15T000000517",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Dán kín mặt ngoài hộp chữ nhật là diện tích toàn phần."
+ },
+ {
+  "ma_cau": "T15T000000827",
+  "dang_bai_id": "NDB03028",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: chia tứ giác thành tam giác trong hình chữ nhật, E trung điểm CD."
+ },
+ {
+  "ma_cau": "T15T000000072",
+  "dang_bai_id": "NDB03023",
+  "chac": "vua",
+  "ly_do": "Từ diện tích tam giác BMC suy ngược chiều cao hình thang; vị trí M theo hình."
+ },
+ {
+  "ma_cau": "T15T000000516",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "So sánh diện tích xung quanh với diện tích hai đáy của hộp chữ nhật."
+ },
+ {
+  "ma_cau": "T15T000000832",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: S_ABM cho trước, quy phân số của cả tam giác để tìm S_ABC và S_ABN."
+ },
+ {
+  "ma_cau": "T15T000000084",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Cho số khối sơn đúng 2 mặt, suy ngược cạnh khối lớn rồi tính diện tích toàn phần."
+ },
+ {
+  "ma_cau": "T15T000000511",
+  "dang_bai_id": "NDB03032",
+  "chac": "cao",
+  "ly_do": "Cho đường kính hình tròn, tính chu vi và diện tích."
+ },
+ {
+  "ma_cau": "T15T000000508",
+  "dang_bai_id": "NDB03031",
+  "chac": "cao",
+  "ly_do": "Hình thang vuông kéo dài đáy bé thành hình chữ nhật, phần tăng là tam giác vuông."
+ },
+ {
+  "ma_cau": "T15T000000535",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ diện tích xung quanh và chiều cao suy chu vi đáy, tổng hiệu, rồi tính thể tích."
+ },
+ {
+  "ma_cau": "T15T000000066",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Điểm H chia BC theo tỉ số, chung đường cao AH; hình vẽ định vị H nên hạ mức."
+ },
+ {
+  "ma_cau": "T15T000000837",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Tứ giác bằng tam giác trừ hai tam giác góc, nhưng thứ tự đỉnh tứ giác phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000840",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Tam giác chia ba phần S1, S2, S3 theo tỉ số đoạn; vị trí các phần theo hình."
+ },
+ {
+  "ma_cau": "T15T000000399",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "Điểm H chia BC theo tỉ số HB = 1/3 HC, suy diện tích cả tam giác."
+ },
+ {
+  "ma_cau": "T15T000000845",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Tỉ số diện tích khi hai điểm chia hai cạnh, nối thêm tam giác trung gian; nhiều ý, theo hình."
+ },
+ {
+  "ma_cau": "T15T000000070",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "N là trung điểm AM, mỗi cặp tam giác chung đường cao nên bằng một nửa."
+ },
+ {
+  "ma_cau": "T15T000000395",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Diện tích tam giác suy từ phân số của hình chữ nhật, suy ngược cạnh đáy."
+ },
+ {
+  "ma_cau": "T15T000000841",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Tam giác chia bốn phần theo tỉ số đoạn, S4 là phần còn lại; vị trí phần theo hình."
+ },
+ {
+  "ma_cau": "T15T000000817",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Thể tích khối còn lại bằng hộp trừ khối cắt; kích thước lấy từ hình."
+ },
+ {
+  "ma_cau": "T15T000000542",
+  "dang_bai_id": "NDB03043",
+  "chac": "vua",
+  "ly_do": "Xếp khối vào thùng, ý b có chiều dư nên không khít; dạng khít là gần nhất."
+ },
+ {
+  "ma_cau": "T15T000000077",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Hiệu tỉ tìm ba kích thước, tính diện tích toàn phần rồi lượng sơn."
+ },
+ {
+  "ma_cau": "T15T000000556",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: xếp đầy hộp 1 dm×6 cm×12 cm bằng khối 2 cm, đếm khối theo số mặt sơn."
+ },
+ {
+  "ma_cau": "T15T000000522",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ chu vi đáy, hiệu và tỉ số tìm kích thước, tính diện tích xung quanh."
+ },
+ {
+  "ma_cau": "T15T000000730",
+  "dang_bai_id": "NDB03043",
+  "chac": "vua",
+  "ly_do": "Tìm ba kích thước thùng từ diện tích xung quanh rồi xếp khối nhiều nhất; dạng tính S, V cũng hợp."
+ },
+ {
+  "ma_cau": "T15T000000525",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Hộp lập phương không nắp tính diện tích 5 mặt; dạng hộp từ tấm bìa cũng có thể."
+ },
+ {
+  "ma_cau": "T15T000000727",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Lát xung quanh và đáy bể bằng gạch: diện tích xung quanh cộng một đáy, chia diện tích gạch."
+ },
+ {
+  "ma_cau": "T15T000000521",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Lát đáy và xung quanh bể bơi: diện tích xung quanh cộng một đáy, số viên gạch."
+ },
+ {
+  "ma_cau": "T15T000000536",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Cho diện tích toàn phần hình lập phương, tính thể tích."
+ },
+ {
+  "ma_cau": "T15T000000828",
+  "dang_bai_id": "NDB03028",
+  "chac": "vua",
+  "ly_do": "S_ANC bằng S_ABC trừ hai miếng; vị trí M, N trên BC lấy từ hình."
+ },
+ {
+  "ma_cau": "T15T000000813",
+  "dang_bai_id": "NDB03035",
+  "chac": "vua",
+  "ly_do": "Hai hình tròn và hình vuông ở giữa, số đo nằm trên hình."
+ },
+ {
+  "ma_cau": "T15T000000506",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tính diện tích mảnh đất hình thang rồi phần trăm đất trồng cây."
+ },
+ {
+  "ma_cau": "T15T000000520",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Lát đáy và xung quanh bể: diện tích xung quanh cộng một đáy, chia diện tích viên gạch."
+ },
+ {
+  "ma_cau": "T15T000000816",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Các cạnh và diện tích mặt hình hộp chữ nhật suy từ hình vẽ."
+ },
+ {
+  "ma_cau": "T15T000000533",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Tính thể tích khối lập phương theo cm³ rồi nhân khối lượng riêng."
+ },
+ {
+  "ma_cau": "T15T000000815",
+  "dang_bai_id": "NDB03036",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: bốn nửa hình tròn trừ hình vuông ra diện tích bông hoa."
+ },
+ {
+  "ma_cau": "T15T000000548",
+  "dang_bai_id": "NDB03043",
+  "chac": "cao",
+  "ly_do": "Xếp đầy hộp bằng khối lập phương 5 cm (đã đổi dm), số khối bằng tích ba chiều."
+ },
+ {
+  "ma_cau": "T15T000000824",
+  "dang_bai_id": "NDB03025",
+  "chac": "cao",
+  "ly_do": "Trùng ví dụ dạng: AM = MB, AN = 1/3 AC, nối B với N lập chuỗi hai tỉ số."
+ },
+ {
+  "ma_cau": "T15T000000791",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Hình thang có E trung điểm BC, nhưng phụ thuộc hình; cũng gần dạng chung đường cao hai đáy hình thang."
+ },
+ {
+  "ma_cau": "T15T000000080",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Cạnh khối lớn tìm từ Sxq rồi suy số khối nhỏ: tìm kích thước ngược lại từ diện tích."
+ },
+ {
+  "ma_cau": "T15T000000502",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Hình thang cho đáy, chiều cao qua trung bình cộng hai đáy: đúng ví dụ tính diện tích hình thang."
+ },
+ {
+  "ma_cau": "T15T000000792",
+  "dang_bai_id": "NDB03026",
+  "chac": "vua",
+  "ly_do": "Hình chữ nhật có điểm E, F phụ thuộc hình; so sánh diện tích hai tam giác qua chung đáy/đường cao."
+ },
+ {
+  "ma_cau": "T15T000000844",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "Điểm chia cạnh bằng lời (trung điểm, tỉ số), hỏi tỉ số diện tích tam giác con so với cả tam giác."
+ },
+ {
+  "ma_cau": "T15T000000523",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ Sxq và chiều cao tìm chu vi đáy, tổng-hiệu ra dài rộng: tìm kích thước ngược lại."
+ },
+ {
+  "ma_cau": "T15T000000829",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Ba miếng ghép thành cả tam giác, hai miếng là phân số, miếng còn lại biết số đo: sơ đồ phần."
+ },
+ {
+  "ma_cau": "T15T000000526",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Thùng lập phương từ chu vi đáy, tính diện tích sơn các mặt: tính S của hình lập phương."
+ },
+ {
+  "ma_cau": "T15T000000725",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ Sxq, chiều cao và hiệu dài-rộng tìm kích thước rồi tính Stp, V."
+ },
+ {
+  "ma_cau": "T15T000000820",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Biết diện tích tam giác AMC và tỉ số đoạn thẳng trên BC, tìm cả tam giác ABC bằng phần bằng nhau."
+ },
+ {
+  "ma_cau": "T15T000000534",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Tỉ số thể tích khi cạnh gấp 3 lần; không có dạng riêng, gần nhất là tính V hình lập phương."
+ },
+ {
+  "ma_cau": "T15T000000806",
+  "dang_bai_id": "NDB03035",
+  "chac": "cao",
+  "ly_do": "Hình tròn nằm trong hình vuông chạm bốn cạnh, biết diện tích tròn tìm diện tích vuông."
+ },
+ {
+  "ma_cau": "T15T000000539",
+  "dang_bai_id": "NDB03040",
+  "chac": "cao",
+  "ly_do": "Bể đầy nước, thả khối sắt, nước tràn 54 lít bằng thể tích vật chìm."
+ },
+ {
+  "ma_cau": "T15T000000513",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: diện tích đáy cùng quan hệ hiệu-tỉ giữa các kích thước, tính Sxq, Stp, V."
+ },
+ {
+  "ma_cau": "T15T000000818",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Khối gỗ khoét lỗ xuyên, hình vẽ; chỉ dùng tính V hộp rồi trừ, không có dạng riêng."
+ },
+ {
+  "ma_cau": "T15T000000819",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Khối lập phương 4x4x4 sơn 6 mặt, đếm khối sơn 3, 2, 1 mặt và không sơn."
+ },
+ {
+  "ma_cau": "T15T000000831",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "AM = 3MC, biết diện tích phần ABM, tìm cả tam giác ABC theo số phần bằng nhau."
+ },
+ {
+  "ma_cau": "T15T000000786",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "Các điểm chia cạnh theo tỉ số, biết diện tích cả tam giác, tìm diện tích tam giác con qua chuỗi tỉ số."
+ },
+ {
+  "ma_cau": "T15T000000804",
+  "dang_bai_id": "NDB03026",
+  "chac": "vua",
+  "ly_do": "Hình thang hai đường chéo cắt nhau tạo bốn tam giác, hình vẽ; cũng gần dạng tỉ lệ cạnh."
+ },
+ {
+  "ma_cau": "T15T000000552",
+  "dang_bai_id": "NDB03041",
+  "chac": "vua",
+  "ly_do": "Khối lập phương lấy bớt khối ở cạnh rồi tính Stp; đếm theo vị trí nhưng có thêm phép lộ mặt mới."
+ },
+ {
+  "ma_cau": "T15T000000553",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Đếm khối không sơn mặt nào ở lõi của khối lập phương 5x5x5."
+ },
+ {
+  "ma_cau": "T15T000000838",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Biết hiệu hai miếng S2 - S1 để tìm cả tam giác, quy về phân số; S1, S2 xác định bằng hình."
+ },
+ {
+  "ma_cau": "T15T000000545",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ số khối và thể tích khối nhỏ tìm cạnh khối lớn, tính Sxq và V."
+ },
+ {
+  "ma_cau": "T15T000000537",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Tính thể tích bể và phần trăm nước; không có dạng riêng, gần dạng tính V (không có vật chìm)."
+ },
+ {
+  "ma_cau": "T15T000000802",
+  "dang_bai_id": "NDB03031",
+  "chac": "vua",
+  "ly_do": "Hình thang AMCD là hình thang ABCD bớt tam giác MBC cùng chiều cao; số đo trên hình, cũng gần suy ngược chiều cao."
+ },
+ {
+  "ma_cau": "T15T000000842",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "CD = 2DB, I chạy trên AD, hỏi tỉ số diện tích; phụ thuộc hình và cũng hợp dạng tỉ lệ cạnh."
+ },
+ {
+  "ma_cau": "T15T000000393",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: tam giác bằng diện tích hình vuông, biết chiều cao, tìm cạnh đáy."
+ },
+ {
+  "ma_cau": "T15T000000797",
+  "dang_bai_id": "NDB03037",
+  "chac": "vua",
+  "ly_do": "Hình 1 bằng hình 2 để tìm CD với hai phần tư hình tròn; phụ thuộc hình, cũng gần dạng hình hoa."
+ },
+ {
+  "ma_cau": "T15T000000514",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: biết Stp hình lập phương tìm cạnh, tính Sxq và V."
+ },
+ {
+  "ma_cau": "T15T000000538",
+  "dang_bai_id": "NDB03040",
+  "chac": "cao",
+  "ly_do": "Thả san hô chìm hoàn toàn, mực nước dâng 1 dm: thể tích bằng phần nước dâng."
+ },
+ {
+  "ma_cau": "T15T000000826",
+  "dang_bai_id": "NDB03028",
+  "chac": "cao",
+  "ly_do": "Tứ giác AECG là hình chữ nhật bỏ hai tam giác vuông ở góc: chia miếng ghép và trừ."
+ },
+ {
+  "ma_cau": "T15T000000559",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Khối lập phương 7x7x7 sơn bốn mặt xung quanh, đếm khối sơn 2 mặt trên cạnh đứng."
+ },
+ {
+  "ma_cau": "T15T000000524",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Diện tích đáy, hiệu-tỉ giữa dài và cao, tìm kích thước rồi tính Sxq, Stp."
+ },
+ {
+  "ma_cau": "T15T000000812",
+  "dang_bai_id": "NDB03035",
+  "chac": "cao",
+  "ly_do": "Hình vuông nội tiếp hình tròn bốn đỉnh trên đường tròn, biết cạnh vuông tìm diện tích tròn."
+ },
+ {
+  "ma_cau": "T15T000000807",
+  "dang_bai_id": "NDB03035",
+  "chac": "cao",
+  "ly_do": "Hình vuông nội tiếp hình tròn, biết cạnh hình vuông tìm diện tích hình tròn."
+ },
+ {
+  "ma_cau": "T15T000000076",
+  "dang_bai_id": "NDB03032",
+  "chac": "vua",
+  "ly_do": "Hai hình tròn riêng lẻ qua tổng bán kính và hiệu chu vi; dạng hình tròn đơn nhưng thêm tổng-hiệu."
+ },
+ {
+  "ma_cau": "T15T000000083",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Khối lập phương 216 khối sơn ngoài, đếm khối sơn đúng 2 mặt và 1 mặt."
+ },
+ {
+  "ma_cau": "T15T000000081",
+  "dang_bai_id": "NDB03043",
+  "chac": "vua",
+  "ly_do": "Xếp hộp bánh vào thùng lấy phần nguyên mỗi chiều, có phần dư; dạng này chỉ mô tả xếp khít."
+ },
+ {
+  "ma_cau": "T15T000000731",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Từ Stp tìm cạnh khối lớn, sơn rồi đếm khối sơn 3, 2, 1 mặt và không sơn."
+ },
+ {
+  "ma_cau": "T15T000000532",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Hình hộp tính thể tích, cạnh hình lập phương là trung bình cộng ba kích thước."
+ },
+ {
+  "ma_cau": "T15T000000398",
+  "dang_bai_id": "NDB03023",
+  "chac": "vua",
+  "ly_do": "Kéo dài AC để tam giác tăng thêm, suy chiều cao AB từ diện tích tăng; không có dạng riêng cho tam giác."
+ },
+ {
+  "ma_cau": "T15T000000082",
+  "dang_bai_id": "NDB03041",
+  "chac": "vua",
+  "ly_do": "Lấy khối ở đỉnh khỏi khối lớn rồi tính Stp; đếm khối theo vị trí nhưng thêm phép lộ mặt."
+ },
+ {
+  "ma_cau": "T15T000000071",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: biết diện tích, chiều cao và đáy lớn gấp rưỡi đáy bé, tìm từng đáy."
+ },
+ {
+  "ma_cau": "T15T000000068",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Biết S_CMN, trung điểm và 1/3 cạnh, tìm cả tam giác ABC qua tam giác trung gian."
+ },
+ {
+  "ma_cau": "T15T000000834",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Biết diện tích tam giác nhỏ BNP và các tỉ số cạnh, tìm cả tam giác ABC từng bước."
+ },
+ {
+  "ma_cau": "T15T000000726",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ Sxq và Stp tìm diện tích đáy, chiều rộng, chiều cao rồi tính thể tích."
+ },
+ {
+  "ma_cau": "T15T000000499",
+  "dang_bai_id": "NDB03028",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: hình chữ nhật bỏ ba tam giác vuông để tìm diện tích tam giác MNC."
+ },
+ {
+  "ma_cau": "T15T000000849",
+  "dang_bai_id": "NDB03029",
+  "chac": "vua",
+  "ly_do": "Đường thẳng MN cắt BA tại E ngoài tam giác, giải bằng hiệu-tỉ; phụ thuộc hình, ranh giới với dạng giao điểm."
+ },
+ {
+  "ma_cau": "T15T000000554",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Khối lập phương cạnh 8 xếp bằng khối 1 cm, đếm khối sơn ít nhất 2 mặt (đỉnh và cạnh)."
+ },
+ {
+  "ma_cau": "T15T000000069",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "D chính giữa AB, AE gấp đôi EC, biết diện tích cả tam giác, tìm tam giác con AED."
+ },
+ {
+  "ma_cau": "T15T000000787",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Tứ giác QBCK là tam giác bỏ tam giác AQK, qua tỉ số cạnh; cũng gần dạng miếng ghép."
+ },
+ {
+  "ma_cau": "T15T000000510",
+  "dang_bai_id": "NDB03031",
+  "chac": "cao",
+  "ly_do": "Kéo dài hai đáy thêm 4 m cùng phía, phần tăng là hình thang nhỏ cùng chiều cao."
+ },
+ {
+  "ma_cau": "T15T000000833",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "BM = 1/2 MC, AN = NM, biết diện tích cả tam giác, tìm tam giác con ACN."
+ },
+ {
+  "ma_cau": "T15T000000064",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tam giác biết tổng đáy-cao và hiệu 8 m, tìm hai số rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000803",
+  "dang_bai_id": "NDB03026",
+  "chac": "cao",
+  "ly_do": "Hình thang: tam giác ACD, BCD chung đáy CD, cùng đường cao nên diện tích bằng nhau; cánh AOD = BOC."
+ },
+ {
+  "ma_cau": "T15T000000530",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Cạnh hình lập phương gấp 4 lần, hỏi Sxq và Stp gấp mấy lần; không có dạng riêng, gần nhất là tính S."
+ },
+ {
+  "ma_cau": "T15T000000503",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Hình thang tìm đáy bé và chiều cao từ dữ kiện phụ, rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000396",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tam giác vuông: diện tích bằng tích hai cạnh góc vuông chia 2, cạnh còn lại 75% cạnh đã biết, đổi đơn vị."
+ },
+ {
+  "ma_cau": "T15T000000843",
+  "dang_bai_id": "NDB03030",
+  "chac": "vua",
+  "ly_do": "Hai đoạn nối đỉnh AE và BD cắt tại I, nhưng D không cho tỉ số; ranh giới với dạng sơ đồ phần."
+ },
+ {
+  "ma_cau": "T15T000000822",
+  "dang_bai_id": "NDB03025",
+  "chac": "vua",
+  "ly_do": "Biết diện tích ABM và BM, MC trên cạnh BC, tìm AMC; chung đường cao nhưng phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000507",
+  "dang_bai_id": "NDB03031",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: kéo dài đáy bé thêm 5 cm, diện tích tăng 30 cm2, tính diện tích hình thang."
+ },
+ {
+  "ma_cau": "T15T000000397",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tổng-tỉ tìm cạnh góc vuông của tam giác vuông rồi tính diện tích."
+ },
+ {
+  "ma_cau": "T15T000000546",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "27 khối xếp thành khối lập phương lớn, tính Stp và V qua cạnh khối lớn."
+ },
+ {
+  "ma_cau": "T15T000000549",
+  "dang_bai_id": "NDB03043",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: xếp khít thùng bằng khối lập phương, ít nhất khối nên cạnh lớn nhất."
+ },
+ {
+  "ma_cau": "T15T000000067",
+  "dang_bai_id": "NDB03027",
+  "chac": "cao",
+  "ly_do": "BM = 1/3 BC, biết diện tích cả tam giác, tìm diện tích tam giác con AMC."
+ },
+ {
+  "ma_cau": "T15T000000079",
+  "dang_bai_id": "NDB03040",
+  "chac": "cao",
+  "ly_do": "Bể có nước, thả đá chìm làm nước dâng, thể tích đá bằng thể tích phần nước dâng."
+ },
+ {
+  "ma_cau": "T15T000000801",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tính diện tích hình thang từ hai đáy và chiều cao ghi trên hình (lời giải xác nhận đủ số đo)."
+ },
+ {
+  "ma_cau": "T15T000000543",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Hai khối lập phương xếp chồng thành hình hộp, tìm kích thước rồi tính Sxq, Stp."
+ },
+ {
+  "ma_cau": "T15T000000550",
+  "dang_bai_id": "NDB03043",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: xếp đầy thùng bằng hộp lập phương, nhiều nhất cạnh 1, ít nhất cạnh lớn nhất."
+ },
+ {
+  "ma_cau": "T15T000000790",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Tứ giác ABCD chia bởi các điểm trên đường chéo AC theo tỉ số, chung đường cao; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T15T000000836",
+  "dang_bai_id": "NDB03029",
+  "chac": "cao",
+  "ly_do": "Biết diện tích tam giác AMN và hai tỉ số cạnh, tìm cả tam giác ABC qua tam giác trung gian."
+ },
+ {
+  "ma_cau": "T15T000000519",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Diện tích xung quanh căn phòng hình hộp, trừ diện tích các cửa."
+ },
+ {
+  "ma_cau": "T15T000000075",
+  "dang_bai_id": "NDB03032",
+  "chac": "vua",
+  "ly_do": "Hình tròn đường kính AB, tìm AB từ diện tích tam giác MAB; hình vẽ và thêm bước tam giác."
+ },
+ {
+  "ma_cau": "T15T000000808",
+  "dang_bai_id": "NDB03033",
+  "chac": "cao",
+  "ly_do": "Hai hình tròn cùng tâm O, tô đậm là tròn lớn trừ tròn bé (bán kính OE = OF - EF)."
+ },
+ {
+  "ma_cau": "T15T000000848",
+  "dang_bai_id": "NDB03030",
+  "chac": "cao",
+  "ly_do": "Hai đoạn nối đỉnh AN và CM cắt nhau tại I trong tam giác, tìm diện tích tứ giác MBNI."
+ },
+ {
+  "ma_cau": "T15T000000063",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Biết diện tích tam giác và cạnh đáy, tìm chiều cao."
+ },
+ {
+  "ma_cau": "T15T000000500",
+  "dang_bai_id": "NDB03027",
+  "chac": "vua",
+  "ly_do": "Chuỗi hai tỉ số cạnh tìm tam giác con; ý b lấy tam giác bỏ tam giác nên cũng gần miếng ghép."
+ },
+ {
+  "ma_cau": "T15T000000555",
+  "dang_bai_id": "NDB03041",
+  "chac": "vua",
+  "ly_do": "Sơn hai màu khác nhau, đếm khối nằm trên cạnh chung hai mặt khác màu; biến thể của đếm khối sơn."
+ },
+ {
+  "ma_cau": "T15T000000795",
+  "dang_bai_id": "NDB03035",
+  "chac": "cao",
+  "ly_do": "Hình vuông nội tiếp đường tròn tâm O, tô đậm là tròn trừ vuông."
+ },
+ {
+  "ma_cau": "T15T000000793",
+  "dang_bai_id": "NDB03030",
+  "chac": "vua",
+  "ly_do": "Hai đoạn AC và DE cắt nhau tại I trong hình chữ nhật, không phải tam giác như mô tả."
+ },
+ {
+  "ma_cau": "T15T000000729",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Từ Stp tìm cạnh hình lập phương rồi tính thể tích, suy số khối nhỏ cạnh 1 cm."
+ },
+ {
+  "ma_cau": "T15T000000527",
+  "dang_bai_id": "NDB03038",
+  "chac": "vua",
+  "ly_do": "Kiểm tra giấy HCN có cắt gấp được hình lập phương cạnh 5 không; so sánh diện tích, không có dạng riêng."
+ },
+ {
+  "ma_cau": "T15T000000515",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Tính chu vi đáy, Sxq và Stp của hình hộp chữ nhật cho ba kích thước."
+ },
+ {
+  "ma_cau": "T15T000000825",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Tam giác DEB đáy EB trên AB, đường cao AD, tính diện tích tam giác."
+ },
+ {
+  "ma_cau": "T15T000000724",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Tính Sxq và Stp của hình hộp chữ nhật cho ba kích thước."
+ },
+ {
+  "ma_cau": "T15T000000810",
+  "dang_bai_id": "NDB03034",
+  "chac": "cao",
+  "ly_do": "Đúng ví dụ: đường kính AB chia thành OA, OB làm đường kính hai hình tròn nhỏ, so sánh chu vi."
+ },
+ {
+  "ma_cau": "T15T000000078",
+  "dang_bai_id": "NDB03038",
+  "chac": "cao",
+  "ly_do": "Stp hơn Sxq là diện tích hai mặt đáy, tìm cạnh rồi tính thể tích hình lập phương."
+ },
+ {
+  "ma_cau": "T15T000000392",
+  "dang_bai_id": "NDB03022",
+  "chac": "cao",
+  "ly_do": "Đề cho sẵn đáy và chiều cao tương ứng, tính diện tích tam giác."
+ },
+ {
+  "ma_cau": "T15T000000821",
+  "dang_bai_id": "NDB03023",
+  "chac": "cao",
+  "ly_do": "Biết diện tích tam giác và chiều cao MH, tìm độ dài đáy NP."
+ },
+ {
+  "ma_cau": "T15T000000846",
+  "dang_bai_id": "NDB03030",
+  "chac": "cao",
+  "ly_do": "Hai đoạn nối đỉnh AM và BN cắt nhau tại O trong tam giác, biết diện tích AON tìm cả tam giác."
+ },
+ {
+  "ma_cau": "T15T000000073",
+  "dang_bai_id": "NDB03031",
+  "chac": "cao",
+  "ly_do": "Kéo dài đáy bé và đáy lớn thêm về cùng phía, phần tăng là hình thang nhỏ cùng chiều cao."
+ },
+ {
+  "ma_cau": "T15T000000558",
+  "dang_bai_id": "NDB03041",
+  "chac": "cao",
+  "ly_do": "Biết số khối không sơn ở lõi, suy ngược cạnh khối lớn rồi tính Stp."
+ }
+]
