@@ -217,7 +217,7 @@ Mỗi đợt: nêu phạm vi → Thùy gật → làm → số trước–sau �
 | Đợt | Việc | Xong khi |
 |---|---|---|
 | **0. Bịt lỗ đang hở** | RLS 8 bảng · thu quyền anon/PUBLIC + danh sách trắng · `security_invoker` cho view · cổng cho ~25 hàm · 5 policy ghi mở · storage · bỏ nhánh email, lọc đang làm · chuyển cấp tài khoản sang máy chủ rồi đóng đăng ký | Cổng §8 (4 dòng quyền) = 0; đăng nhập thật 8 app + app PH + game khách vẫn chạy |
-| **1. Dựng hàng rào** | `check:kien-truc` + số trần ratchet · bộ luật vào CLAUDE.md · phiếu 10 câu | Nợ mới không vào được |
+| **1. Dựng hàng rào** ✅ 13/11 | `npm run check:kien-truc` (`scripts/check-kien-truc.mjs`) + số trần `scripts/kien-truc/tran.json` + danh sách cho phép `cho-phep.json` · luật vào CLAUDE.md · phiếu 10 câu (§9) | Nợ mới không vào được |
 | **2. Nền dữ liệu** | Bộ index (audit §2.2) + tạo lại 4 index sai · bảng ánh xạ câu→dạng thay view 8 nhánh · một cửa đọc lịch sử đo · "Việc của tôi": lọc người trước, có cửa sổ ngày; hạn việc là **cache suy ra** theo (buổi, khâu) — việc vẫn pure-derive, không có dòng việc | Hết seq scan lớn; `fn_viec_buoi_thuong`, họ bốc câu, `_do_o_bdm` trong ngân sách; so khớp cũ–mới từng dòng |
 | **3. Khuôn tính sẵn** | `ts_*` + bộ điều phối · chuyển theo thứ tự: tin Thế giới → bxh → mục tiêu tuần/dạng yếu/dạng đã học → mastery (+Hình) → phòng/dashboard → cây bản đồ | 1 job cron; không lượt nào > 30 s; không lỗi kết nối cron |
 | **4. Lớp dữ liệu client** | Cache + gộp lượt gọi trong seam `src/lib` (danh tính, tham chiếu trước) · `usePoll` · gộp Home HS thành 1–2 RPC · Home nhân sự · nông trại ghi thưa | Mở app HS ≤ 4 request; về màn chính ≤ 1; 0 polling ngoài hook |

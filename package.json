@@ -21,6 +21,7 @@
     "build:gv": "vite build --config vite.config.gv.ts",
     "preview:gv": "vite preview --config vite.config.gv.ts --outDir dist-gv",
     "schema": "node scripts/introspect.mjs",
+    "check:kien-truc": "node scripts/check-kien-truc.mjs",
     "check:style-hs": "node scripts/check-style-hs.mjs",
     "smoke:sotay": "node scripts/smoke-sotay.mjs",
     "migrate": "node scripts/migrate.mjs",

@@ -80374,3 +80374,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Kiểm:** rollback trước khi áp, 5 loại người gọi trước–sau; sau khi áp trên DB thật: nhân sự đang làm qua cổng 38/38, đã nghỉ 0/9, HS không đổi.
 - **Hệ quả đã báo Thùy:** 9 người nghỉ + QLHT Test mất quyền; tài khoản tạo tay ở Dashboard không còn tự nối theo email (cấp qua nút "Cấp tài khoản" thì nối luôn); câu báo lỗi "app tự link theo email trùng" ở `capTaiKhoan` (src/lib/nhansu.ts) và bước tự nối trong `getMyProfile` giờ vô tác dụng — CHƯA sửa client.
 - **Còn:** `_sk_ns_id` (owner postgres, module sự kiện) vẫn khớp email ⇒ SQL cho Thùy chạy; `trg_han_nop_ngoai_le_log` chỉ dùng email để ghi actor (vô hại). Đề xuất thiết kế lại chưa làm: bảng `tai_khoan` mọi nhân sự ghi được (`tai_khoan_member_all`) ⇒ nên chỉ admin.
+
+## 13/11 (tối) — ĐỢT 1: hàng rào kiến trúc `npm run check:kien-truc` — Thùy "Làm đợt 1"
+- **Làm:** `scripts/check-kien-truc.mjs` (chỉ đọc DB + code) · `scripts/kien-truc/tran.json` (số trần hôm nay) · `scripts/kien-truc/cho-phep.json` (61 hàm người chưa đăng nhập được gọi + 7 view cửa app PH, mỗi mục có lý do) · script `check:kien-truc` trong package.json · CLAUDE.md ghi luật chạy sau mỗi migrate / trước commit đụng src.
+- **Mục CỨNG (=0, hiện đều 0):** bảng thiếu RLS · hàm anon ngoài danh sách · view chạy quyền chủ ngoài danh sách · policy ghi mở · bảng/view anon ghi được không RLS.
+- **Số TRẦN 13/11 (chỉ được giảm):** `.from(` thẳng bảng 1178 · setInterval 38 · limit lớn 521 · select hết cột 213 · so sánh môn/nhánh cứng 101 · hàm secdef không thấy cổng 137 (ước lượng theo từ khoá) · khoá ngoại thiếu index 411 · hàm dùng email token 3 · hàm nội bộ `_` client gọi được 320 · job cron 16.
+- **Cảnh báo (không chặn):** hàm client gọi tb ≥1 s: 39 (số cộng dồn) · cron lỗi 24h: 20 lượt "connection failed" — TẤT CẢ trước 17:50; từ lúc áp mig đợt 0 mọi job đều chạy ok (đã kiểm từng job).
+- **Giới hạn đã biết:** mục "secdef không cổng" là regex từ khoá (dương tính giả cả hai chiều); mục hàm chậm dùng pss cộng dồn; đếm code là đếm chuỗi, không phân tích cú pháp. Chưa gắn vào `migrate.mjs` hay git hook — hiện là lệnh chạy tay theo luật CLAUDE.md.
