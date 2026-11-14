@@ -230,6 +230,17 @@ export async function hsCoMatCuaBuoi(lopId: string, ngay: string): Promise<{ id:
     .map((h: any) => ({ id: h.id as string, ho_ten: h.ho_ten as string, ma_hs: (h.ma_hs ?? null) as string | null }))
     .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
 }
+// HS ĐANG HỌC của lớp (danh sách thô để in tên lên phiếu) — dùng khi tài liệu chưa gắn ngày nên chưa có "có mặt"
+// (in BTVN cả lớp ngay từ giáo trình gốc của lớp, Thùy 14/11).
+export async function hsDangHocCuaLop(lopId: string): Promise<{ id: string; ho_ten: string; ma_hs: string | null }[]> {
+  const { data, error } = await supabase.from('hoc_sinh_lop')
+    .select('hoc_sinh:hoc_sinh_id(id, ho_ten, ma_hs)').eq('lop_id', lopId).eq('trang_thai', 'dang_hoc').limit(500)   // một lớp không quá vài chục em
+  if (error) throw error
+  return ((data ?? []) as any[])
+    .map((r) => r.hoc_sinh).filter(Boolean)
+    .map((h: any) => ({ id: h.id as string, ho_ten: h.ho_ten as string, ma_hs: (h.ma_hs ?? null) as string | null }))
+    .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
+}
 // Tiến độ điểm danh nhiều buổi (1 query): buoiId → { tong, daDanh }. daDanh = số HS đã có trạng thái.
 // "Điểm danh xong" = daDanh >= tong (mọi HS đã đánh dấu). Dùng để OPS task tự rời khỏi "cần làm".
 export async function diemDanhTienDo(buoiIds: string[]): Promise<Record<string, { tong: number; daDanh: number }>> {

@@ -134,10 +134,8 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   async function napKhung() {
     const k = await btvnKhung(id)
     setKhung(k)
-    let hien: string[] = [], tlCtx: NoiDung['tai_lieu'] | null = null
     setNd((p) => {
       if (!p) return p
-      hien = p.buoi.map((b) => b.id); tlCtx = p.tai_lieu
       return {
         ...p, buoi: p.buoi.map((b) => {
           const kb = k.buoi[b.id]
@@ -150,8 +148,10 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         }),
       }
     })
-    const ms = hien.flatMap((bid) => { const kb = k.buoi[bid]; return kb ? [...kb.lui.flatMap((l) => l.nhom.flatMap((o) => o.caus)), ...kb.le.flatMap((e) => e.caus)] : [] })
-    if (tlCtx && ms.length) await napCau({ buoi: [{ id: '', tieu_de: null, thu_tu: 0, nhom: [], chua_khop: { phan_id: '', caus: ms } }], tai_lieu: tlCtx }, cauMap)
+    // Nạp nội dung câu luyện lại để GV xem được đề (14/11: bản đầu lấy danh sách buổi từ trong updater của setNd — updater chạy SAU ⇒ danh sách rỗng, câu hiện "…").
+    // Lấy thẳng từ khung: mọi câu luyện lại của giáo trình (ít), bối cảnh tài liệu từ nd đang có.
+    const ms = Object.values(k.buoi).flatMap((kb) => [...kb.lui.flatMap((l) => l.nhom.flatMap((o) => o.caus)), ...kb.le.flatMap((e) => e.caus)])
+    if (nd && ms.length) await napCau({ buoi: [{ id: '', tieu_de: null, thu_tu: 0, nhom: [], chua_khop: { phan_id: '', caus: ms } }], tai_lieu: nd.tai_lieu }, cauMap)
   }
   const coNd = !!nd
   useEffect(() => { if (cheXem === 'btvn' && !laChuyenDe && coNd) lam(napKhung) }, [cheXem, coNd, filterBuoi]) // eslint-disable-line

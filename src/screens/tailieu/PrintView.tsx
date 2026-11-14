@@ -5,7 +5,7 @@ import { getTaiLieuFull, setTaiLieuFileUrl, DEFAULT_BTVN_LINES, kieuCols, anhPha
 import type { CauHinh } from '../../lib/tailieu'
 import { type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { listLop } from '../../lib/nhansu'
-import { hsCoMatCuaBuoi, ngayBuoiHopLeCuaLop } from '../../lib/gami'
+import { hsCoMatCuaBuoi, hsDangHocCuaLop, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
 import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/ui'
@@ -234,6 +234,14 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
   // (btvn riêng hoặc giáo trình buổi) — không khóa theo loai để in cả lớp chạy cả khi xem BTVN từ giáo trình.
   useEffect(() => {
     const tl = full?.taiLieu as { lop_id?: string | null; ngay?: string | null } | undefined
+    // 14/11 (Thùy: "chưa có chế độ in bài cho cả lớp với BTVN mới"): BTVN 3 phần soạn ngay trong GIÁO TRÌNH GỐC của lớp (có lớp, chưa có ngày)
+    // ⇒ in cả lớp từ builder theo danh sách HS ĐANG HỌC của lớp (chưa có buổi nên không có "có mặt"). Tài liệu đã gắn ngày vẫn theo HS có mặt như cũ.
+    if (tl?.lop_id && !tl.ngay) {
+      let song = true
+      setNgayNop('')
+      hsDangHocCuaLop(tl.lop_id).then((r) => { if (song) setRoster(r) }).catch(() => { if (song) setRoster([]) })
+      return () => { song = false }
+    }
     if (!tl?.lop_id || !tl.ngay) { setRoster([]); setNgayNop(''); return }
     let alive = true
     const lopId = tl.lop_id, ngay = tl.ngay
@@ -411,7 +419,7 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
           <button onClick={() => setScope('btvn')} className={seg(scope === 'btvn')}>Chỉ BTVN</button>
         </div>}
         {scope === 'btvn' && (
-          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS có mặt — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa điểm danh có mặt → chỉ in bản trống'}>
+          <div className="flex gap-0.5 rounded-lg bg-slate-100 p-0.5" title={roster.length ? `${roster.length} HS ${(full?.taiLieu as { ngay?: string | null } | undefined)?.ngay ? 'có mặt' : 'đang học của lớp'} — in mỗi HS 1 phiếu, tên sẵn` : 'Chưa có danh sách học sinh (chưa điểm danh có mặt / giáo trình chưa gắn lớp) → chỉ in bản trống'}>
             <button onClick={() => setPerHS(false)} className={seg(!perHS)}>Bản trống</button>
             <button onClick={() => setPerHS(true)} disabled={!roster.length} className={`${seg(perHS)} disabled:opacity-40`}>🖨 Cả lớp{roster.length ? ` (${roster.length})` : ''}</button>
           </div>
