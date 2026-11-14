@@ -80734,3 +80734,8 @@ Thùy nêu 4 việc, làm được 3:
 - **Thử (rollback, `repeatable read`, 6 HS thật × 5 lượt gọi = 1.001 dòng xếp hạng):** ngoài cột `ma_hs` không khác gì (thứ hạng, tên, lớp, số liệu); mã của em khác còn lộ 0 (trước 987); dòng của chính em vẫn đúng mã. `tsc` sạch (trừ lỗi cũ `pdfRender`), `build:hs` qua.
 - **Bản app cũ chưa deploy:** vẫn chạy — ô tick hiện "—" cho em khác, khoá dòng rơi về mặc định.
 - **CHƯA bịt:** (1) mã đánh số tuần tự nên vẫn đoán được — lỗ gốc là mật khẩu mặc định = mã HS, chờ Thùy quyết; (2) `fn_bxh_diem_mt_khoi` / `fn_bxh_diem_ks_khoi` (invoker, dùng chung cho màn Kết quả của nhân sự và tab "Điểm MT" của HS) còn cột `ma_hs` — chưa đụng vì nhân sự cần mã; (3) còn ~40 hàm khác người đăng nhập gọi được có trả `ma_hs` (phần lớn của nhân sự, chưa rà từng hàm xem HS gọi ra gì).
+
+## 14/11 tối — toanmath CKI (tiếp) — TẠM DỪNG theo lệnh Thùy
+- Ghi DB thêm: K12 B052-03…09 · K11 B036-01(ghép)·03·04·05·06·07(ghép)·08 · B037-03(ghép)·06·07 · B038-02·03 · K10 đề cương B044-03·04·05 · B045-01·05.
+- SAI của tôi: (1) lệnh giao K10 ghi "Vectơ / hệ thức lượng ⇒ hgt" trái brief (chỉ Vectơ) — đã gửi đính chính cho mọi trạm K10 đang chạy, thêm vào `_lenh-tram.md`; các đề K10 đã ghi được soát xác nhận phân kho đúng. (2) B052-07, B044-05 bị ghi DB trước khi đẩy hình ~1 phút (ghi-batch nhặt mọi đề có .soat ĐẠT) — đã đẩy hình ngay sau; chưa mở màn Kho đề thi kiểm.
+- Trạng thái làm tiếp: `kho-rules/dai/lo/toanmath/_hang-doi-14-11.md` mục "TẠM DỪNG".

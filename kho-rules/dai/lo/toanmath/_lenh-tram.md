@@ -22,3 +22,5 @@ Không có khúc ⇒ tệp `<MA>.soan.md` / `.kiem.md` / `.soat.md` như thườ
 - Trạm SOÁT: Pha 0 lập danh sách câu từ ảnh (đúng phạm vi khúc) so tệp; Pha 1 giải mù TRƯỚC khi mở bản soạn (ghi `.kiem.md` dần); Pha 2 soát từng câu, sao bản gốc `.soan.goc.md` trước khi sửa; kiểm mọi hình; biên bản có dòng `KẾT LUẬN: ĐẠT` hoặc `KẾT LUẬN: CHƯA ĐẠT — …`.
 - KHÔNG ghi DB, KHÔNG commit, KHÔNG xoá gì. Không chạy `anh-batch.mjs` (người điều phối chạy).
 - Trả lời cuối NGẮN: số câu theo dạng thức · (soát: KẾT LUẬN, khớp, đã sửa) · Chưa chắc · đề sai.
+- **K10 phân kho (đính chính 14/11):** CHỈ câu Vectơ (khái niệm, tổng–hiệu–tích với số, tích vô hướng, toạ độ vectơ, đẳng thức vectơ, lực–vận tốc) là `hgt`; HỆ THỨC LƯỢNG trong tam giác và mọi phần khác là `dai`. Lệnh giao nào ghi "Vectơ / hệ thức lượng ⇒ hgt" là SAI — theo brief.
+- Chỉ sửa phương án khi HAI phương án cùng đúng / in trùng. KHÔNG phương án nào đúng ⇒ giữ nguyên văn, ghi đề sai, treo Chưa chắc — không thay phương án, không "chọn gần nhất".

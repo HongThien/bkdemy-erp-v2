@@ -37,3 +37,21 @@ B036-02 · 03 · 04 · 05 · 06 · 08 · B037-01 · 02 · 05 · 06 · 07 · B038
 - Khúc ĐẠT chờ ghép: B036-01 k1 (k2 đang soát) · B037-03 k1 (k2 đang soạn) · B037-08 k1 (k2, k3 đang soạn)
 - Đang soát: B036-03 · B036-06 · B037-06 · B052-07·08·09 · Đang soạn: B037-04 k1,k2 · B038-01 k1,k2 · K10 B044-01…06
 - Còn chờ giao K10: B044-07(khúc) · B044-08 · B045-* · B046-* · B047-*
+
+## ⏸ TẠM DỪNG 14/11 tối (Thùy bảo dừng) — trạng thái để làm tiếp
+**Đã ghi DB hôm nay (toàn bộ):** K12 B050-01·02 · B052-01…09 (đủ 11 đề) · K11 B036-01…08 (đủ) · B037-01·02·03·05·06·07 · B038-02·03 · K10 đề thi B041-01·02 · B042-01·02 · K10 đề cương B044-03·04·05 · B045-01·05.
+
+**Soát ĐẠT, CHƯA ghi DB (lượt sau: đẩy hình TRƯỚC rồi mới ghi — `ghi-batch.sh` tự nhặt mọi đề có .soat ĐẠT):**
+- B037-04 — đã ghép 2 khúc (`B037-04.soan.md`), CHƯA chạy cổng sau ghép, CHƯA đẩy hình, CHƯA ghi.
+- B044-06 — soát ĐẠT, CHƯA đẩy hình, CHƯA ghi.
+
+**Khúc ĐẠT chờ khúc còn lại rồi `ghep-khuc.mjs`:** B037-08 (k1 ✔ · k2 ✔ · k3 đang soát) · B038-01 (k1, k2 đang soát).
+
+**Đang chạy lúc dừng (tệp soạn/soát có thể dở dang — kiểm `.soat.md` có KẾT LUẬN chưa):**
+- Soát: B037-08 k3 · B038-01 k1, k2 · B044-01 · B044-02 · B044-08 · B045-03 · B045-04 · B045-06 · B046-02 · B046-08.
+- Soạn: B044-07 k1 (tr1–7), k2 (tr8–14) · B046-09 · B047-01.
+
+**Chưa giao:** B045-02 (k1 tr1–9, k2 tr10–18) · B045-07 · B045-08 · B045-09 (3 khúc) · B046-01 · 03 · 04 · 06 · 07 (khúc, xem trên) · B047-02 · ⏸ B046-05 chờ Thùy.
+
+**Lệch cần thống nhất:** câu tự luận có đáp số một số vừa 4 ô — K11 soát chuyển sang `tra_loi_ngan`, K10 (B044-03, B044-04) giữ `tu_luan` vì nằm ở phần tự luận của đề.
+**Đính chính K10 phân kho:** chỉ Vectơ là `hgt` (đã ghi vào `_lenh-tram.md`); lệnh giao K10 trước đó ghi sai "hệ thức lượng ⇒ hgt" — các đề K10 đã ghi DB đều được soát xác nhận đúng luật.
