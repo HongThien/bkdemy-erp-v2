@@ -741,7 +741,12 @@ export function BuoiDuoiDetail({ buoiId, readOnly = false, onClose }: { buoiId: 
                       <span key={d.ma_dang} title="HS đã xong dạng này (≥50% đúng)" className="rounded-lg border border-emerald-400 bg-emerald-500 px-2 py-0.5 font-mono text-[12px] font-medium text-white">✓ {d.ma_dang}</span>
                     )
                     if (kb === 1) return (
-                      <span key={d.ma_dang} title="Dạng có trắc nghiệm — em tự làm trên app, máy tự chấm" className="rounded-lg border border-slate-200 bg-white px-2 py-0.5 font-mono text-[12px] text-slate-500">📱 {d.ma_dang}</span>
+                      <span key={d.ma_dang} className="inline-flex items-center gap-0.5">
+                        <span title="Dạng có trắc nghiệm — em tự làm trên app, máy tự chấm" className="rounded-lg border border-slate-200 bg-white px-2 py-0.5 font-mono text-[12px] text-slate-500">📱 {d.ma_dang}</span>
+                        <button disabled={readOnly} onClick={() => setGiayPanel({ hocSinhId: r.hoc_sinh_id, mon: monDuoiCua(r.hoc_sinh_id), maDang: d.ma_dang })}
+                          title="Em không làm được trên app — in giấy cho dạng này, TA chấm ĐCS"
+                          className="rounded-lg border border-amber-300 bg-amber-50 px-1.5 py-0.5 text-[12px] text-amber-700 hover:bg-amber-100 disabled:opacity-50">🖨</button>
+                      </span>
                     )
                     if (kb === null) return (
                       <span key={d.ma_dang} className="rounded-lg border border-dashed border-slate-200 px-2 py-0.5 font-mono text-[12px] text-slate-400">{d.ma_dang}</span>

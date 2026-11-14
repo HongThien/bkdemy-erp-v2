@@ -13,6 +13,15 @@ import {
 import { MathText } from '../kho/ui'
 import { BKTabHeader } from '../../components/bk/BKUI'
 
+// [14/11] Bản in: chỉ còn phần đề (trước: window.print() in nguyên màn app, cả thanh đầu lẫn nút Đ/C/S).
+const CSS_IN = `@media print {
+  body * { visibility: hidden !important; }
+  #duoi-giay-print-area, #duoi-giay-print-area * { visibility: visible !important; }
+  #duoi-giay-print-area { position: absolute !important; left: 0; top: 0; width: 100%; border: 0 !important; box-shadow: none !important; }
+  #duoi-giay-print-area .duoi-giay-cham { display: none !important; }
+  #duoi-giay-print-area .duoi-giay-dau-in { display: block !important; }
+}`
+
 const DCS: { v: 'correct' | 'partial' | 'wrong'; lbl: string; cls: string; selCls: string }[] = [
   { v: 'correct', lbl: 'Đ', cls: 'border border-emerald-300 bg-white text-emerald-700', selCls: 'bg-emerald-600 text-white' },
   { v: 'partial', lbl: 'C', cls: 'border border-amber-300 bg-white text-amber-700', selCls: 'bg-amber-500 text-white' },
@@ -95,7 +104,11 @@ export default function DuoiGiayTA({ buoiId, hocSinhId, mon, maDang, hoTen, onBa
               <button onClick={() => window.print()} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] text-slate-600">🖨 In</button>
             </div>
             {/* Bảng câu của cả dạng — mỗi câu 1 dòng (Thùy 21/09), không phải card rời từng câu. */}
+            <style>{CSS_IN}</style>
             <div id="duoi-giay-print-area" className="divide-y divide-slate-100 overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+              <div className="duoi-giay-dau-in hidden p-3 text-[14px] font-bold text-slate-800">
+                {loai === 'htd_test' ? 'Bài kiểm tra' : 'Phiếu luyện'} · {maDang}{hoTen ? ` · ${hoTen}` : ''} · {mon}
+              </div>
               {caus.map((c, i) => (
                 <div key={c.id} className="flex items-start gap-2 p-3">
                   <span className="mt-0.5 w-5 shrink-0 text-[12px] font-bold text-slate-400">{i + 1}</span>

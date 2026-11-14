@@ -167,7 +167,15 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
                             }} className="shrink-0 rounded-lg border border-indigo-300 bg-indigo-50 px-2.5 py-1 text-[12px] font-bold text-indigo-700 disabled:opacity-50">{moBusy === d.ma_dang ? '…' : 'Mở khoá'}</button>
                           )}
                           {d.trang_thai !== 'khoa' && (kb === 1 && d.tren_app
-                            ? <span className="shrink-0 rounded-lg border border-slate-200 px-2 py-1 text-[11.5px] text-slate-500" title="Em tự làm trên app, máy tự chấm">📱 trên app</span>
+                            ? (
+                              // [14/11 · TA báo lỗi] dạng có trắc nghiệm trong buổi "có iPad" trước đây KHÔNG có đường in — em không làm được trên app thì kẹt.
+                              <span className="flex shrink-0 items-center gap-1.5">
+                                <span className="rounded-lg border border-slate-200 px-2 py-1 text-[11.5px] text-slate-500" title="Em tự làm trên app, máy tự chấm">📱 trên app</span>
+                                <button disabled={dgXong} onClick={() => setGiayPanel({ hocSinhId: r.hoc_sinh_id, mon, maDang: d.ma_dang })}
+                                  title="Em không làm được trên app — in giấy, TA chấm Đ/C/S"
+                                  className="rounded-lg border border-amber-300 bg-amber-50 px-2 py-1 text-[12px] font-bold text-amber-700 disabled:opacity-50">🖨 Giấy</button>
+                              </span>
+                            )
                             : kb === null && d.tren_app
                               ? <span className="shrink-0 rounded-lg border border-dashed border-slate-200 px-2 py-1 text-[11.5px] text-slate-400">chọn thiết bị</span>
                               : (

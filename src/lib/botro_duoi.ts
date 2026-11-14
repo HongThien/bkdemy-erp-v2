@@ -207,11 +207,14 @@ export async function setBuoiCoThietBi(buoiId: string, coThietBi: boolean): Prom
 // TA tự sinh (kịch bản 3, in giấy, có in_giay_at) hay chính em tự sinh qua "Học từ đầu" khi dạng chưa
 // có MCQ (kịch bản 2, có iPad nhưng không MCQ, KHÔNG có in_giay_at) — 1 điều kiện phủ cả 2 nguồn.
 export async function baiTestChoChamDuoi(hocSinhId: string, mon: string, maDang: string): Promise<{ bai_test_id: string } | null> {
-  const { data: bt } = await supabase.from('bai_test').select('id').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').limit(LIMIT)
+  const { data: bt } = await supabase.from('bai_test').select('id, in_giay_at').eq('hoc_sinh_id', hocSinhId).eq('mon', mon).eq('loai', 'htd_test').limit(LIMIT)
   const ids = ((bt ?? []) as any[]).map((r) => r.id)
+  // [14/11] Bài TA IN GIẤY (in_giay_at có giá trị — chỉ fn_duoi_giay_sinh đặt) luôn là bài TA chấm, kể cả khi toàn câu trắc nghiệm
+  // (dạng có trắc nghiệm mà em làm giấy). Bài online của em có in_giay_at = null ⇒ vẫn KHÔNG bị đụng (bài học 21/09 giữ nguyên).
+  const giay = new Set(((bt ?? []) as any[]).filter((r) => r.in_giay_at).map((r) => r.id as string))
   if (!ids.length) return null
   const { data: cau } = await supabase.from('bai_test_cau').select('bai_test_id, loai_cau').in('bai_test_id', ids).eq('ma_dang', maDang).limit(LIMIT)
-  const nonMcq = ((cau ?? []) as any[]).filter((c) => c.loai_cau !== 'trac_nghiem')
+  const nonMcq = ((cau ?? []) as any[]).filter((c) => c.loai_cau !== 'trac_nghiem' || giay.has(c.bai_test_id))
   if (!nonMcq.length) return null
   // Nhiều bài cùng dạng (em bấm "Đọc lại" nhiều lần) → lấy bài MỚI NHẤT chưa nộp.
   const btIds = [...new Set(nonMcq.map((c) => c.bai_test_id))]
