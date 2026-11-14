@@ -1,0 +1,478 @@
+{
+  "nhom": [
+    {
+      "id": "NNB01474",
+      "ten": "Chứng minh chia hết",
+      "dang": [
+        {
+          "ten": "Chứng minh chia hết bằng tích các số nguyên liên tiếp và phân tích thành nhân tử",
+          "mo_ta": "Biểu thức của n phân tích được thành tích; nhận ra tích k số nguyên liên tiếp luôn chia hết cho k! rồi ghép các thừa số nguyên tố cùng nhau (vd n(n²+1)(n²+4) chia hết 5, n⁵−n chia hết 30). Cách làm: phân tích nhân tử, chỉ ra trong tích có thừa số chia hết cho từng ước nguyên tố cùng nhau của số cần chứng minh.",
+          "cong_cu": "Phân tích đa thức thành nhân tử; tích k số nguyên liên tiếp chia hết cho k; a chia hết m, n nguyên tố cùng nhau thì chia hết mn",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "VHB1", "muc": "§8 chuyên đề Tính chia hết đối với số nguyên: VD38–39 + BT 186–191, 196–207", "so_bai": 20},
+            {"sach": "TVA", "muc": "§7 Dạng 1 VD1–3 (n(n²+1)(n²+4) chia hết 5; tích 3, 4 số liên tiếp)", "so_bai": 3},
+            {"sach": "TCDS", "muc": "§3 Dạng 2 (chứng minh chia hết biểu thức chứa chữ): 4 VD + 28 BT, dùng chung với dạng 2", "so_bai": 32},
+            {"sach": "NDT", "muc": "Ôn Chương I bài 59a (n⁵−n chia hết 30)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh chia hết bằng xét số dư theo từng trường hợp",
+          "mo_ta": "Không phân tích được thành tích liên tiếp ngay; đặt n = mk + r (r = 0..m−1) hoặc p = 6k ± 1 rồi xét từng trường hợp để chỉ ra biểu thức chia hết. Hay dùng khi chứng minh với p nguyên tố > 3 hoặc với biểu thức nhiều biến (tích các hiệu).",
+          "cong_cu": "Chia số nguyên theo số dư (3k, 3k+1, 3k+2; 6k±1); số chính phương mod 3, mod 4",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TVA", "muc": "§7 Dạng 1 VD8 (p>3 nguyên tố thì (p−1)(p+1) chia hết 24), VD10", "so_bai": 2},
+            {"sach": "TCDS", "muc": "§3 Dạng 2 VD2 ((a−b)(a−c)(a−d)(b−c)(b−d)(c−d) chia hết 12) — chung với dạng 1", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Chứng minh chia hết với biểu thức luỹ thừa: dùng hằng đẳng thức aⁿ − bⁿ và nhị thức Niu-tơn",
+          "mo_ta": "Đề cho tổng/hiệu các luỹ thừa (vd 2⁴ⁿ − 1 chia hết 15, 7¹⁹ + 7²⁰ + 7²¹ chia hết 57, 4²⁰ − 1 là hợp số). Dùng aⁿ − bⁿ chia hết a − b, a²ⁿ⁺¹ + b²ⁿ⁺¹ chia hết a + b, (a+b)ⁿ = BS a + bⁿ, hoặc đặt thừa số chung của luỹ thừa.",
+          "cong_cu": "Hằng đẳng thức aⁿ − bⁿ; tam giác Pa-xcan, nhị thức Niu-tơn; đặt thừa số chung",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB1", "muc": "§8 VD41–42 + BT 232–244", "so_bai": 15},
+            {"sach": "TVA", "muc": "§7 Dạng 1 VD11 (2⁴ⁿ−1 chia hết 15), VD16 (2ⁿ−1 chia hết 7)", "so_bai": 2},
+            {"sach": "NDT", "muc": "Chương I §3 bài 30, 32 + Phụ lục A bài 22 (aⁿ−bⁿ)", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh chia hết bằng đồng dư và định lí Phéc-ma nhỏ",
+          "mo_ta": "Số mũ lớn, số cụ thể (vd 2017(21³⁹ + 39²¹) chia hết 45, 4²ⁿ⁺¹ + 3ⁿ⁺² chia hết 13): tính dư của từng luỹ thừa theo mô-đun rồi cộng/nhân, hoặc dùng aᵖ ≡ a (mod p). Phân tích mô-đun thành các thừa số nguyên tố cùng nhau rồi chứng minh riêng từng phần.",
+          "cong_cu": "Đồng dư (mod m) và tính chất; định lí Phéc-ma nhỏ; phân tích mô-đun thành tích nguyên tố cùng nhau",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§3 mục 1 'Chia hết trên tập hợp số nguyên': VD1–3 + Bài 1–13", "so_bai": 16},
+            {"sach": "NDT", "muc": "Phụ lục A bài 7, 13, 24", "so_bai": 3}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Chứng minh chia hết bằng quy nạp toán học",
+          "mo_ta": "Mệnh đề phụ thuộc vào số tự nhiên n và có dạng truy hồi được (vd 16ⁿ − 15n − 1 chia hết 225, tích (n+1)(n+2)…(2n) chia hết 2ⁿ). Kiểm tra n đầu, giả sử đúng với n = k rồi suy ra n = k + 1 bằng cách tách biểu thức mới thành biểu thức cũ cộng bội của số cần chia.",
+          "cong_cu": "Phương pháp quy nạp toán học",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§7 Dạng 4 VD10, VD11 (16ⁿ−15n−1 chia hết 225); §9 VD6", "so_bai": 3},
+            {"sach": "TCDS", "muc": "§3 Dạng 2 Bài 9 (p-069), Bài 22 (p-077) giải bằng quy nạp", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "5 dạng, nhưng ranh giới dạng 3/4 và dạng 1/2 mờ: hồ sơ TCDS gộp chung 'đồng dư / tính chất luỹ thừa'; số bài của TCDS Dạng 2 (32) và NDT dùng chung nhiều dạng nên KHÔNG cộng dồn được. TVA §7 Dạng 1 (16 VD) hồ sơ chỉ đọc rõ đề của VD1–3, 8, 10, 11, 14–16 nên số bài theo dạng chỉ là phần thấy rõ. Chia hết ĐA THỨC (Bê-du, tìm hệ số) thuộc 1.3, không vào đây."
+    },
+    {
+      "id": "NNB01475",
+      "ten": "Số dư, chữ số tận cùng, đồng dư",
+      "dang": [
+        {
+          "ten": "Tìm số dư của luỹ thừa, tổng, tích bằng đồng dư",
+          "mo_ta": "Đề hỏi dư của aⁿ (hoặc biểu thức nhiều luỹ thừa) khi chia cho m. Tìm chu kỳ của dư (aᵏ ≡ 1 hoặc ≡ −1 mod m), hạ số mũ, hoặc viết a = BS m ± r / dùng nhị thức Niu-tơn rồi cộng, nhân các dư.",
+          "cong_cu": "Đồng dư (mod m); chu kỳ của luỹ thừa; nhị thức Niu-tơn (BS)",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§7 Dạng 3 VD1–2 (dư 2¹⁰⁰ cho 9, 25, 125; bội của 2003 dạng 2004…2004)", "so_bai": 2},
+            {"sach": "VHB1", "muc": "§8 BT 246–258 (trộn tìm dư, chữ số tận cùng, điền chữ số)", "so_bai": 13},
+            {"sach": "NDT", "muc": "Phụ lục C Đề 3 bài 6 (dư 2¹¹ⁿ cho 23)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tìm hai, ba chữ số tận cùng của một luỹ thừa",
+          "mo_ta": "Hỏi chữ số cuối (hai, ba, bốn chữ số cuối) của aⁿ, thực chất là tìm dư khi chia cho 100, 1000, 10000. Dùng đồng dư mod 4, 8, 25, 125 rồi ghép, hoặc dùng khai triển (10k ± 1)ⁿ; riêng 1 chữ số cuối dùng chu kỳ của chữ số tận cùng.",
+          "cong_cu": "Đồng dư mod 10ᵏ; chu kỳ chữ số tận cùng; nhị thức Niu-tơn; ghép các mô-đun nguyên tố cùng nhau",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§7 Dạng 3 VD3–VD7 (3 chữ số cuối 2¹⁰⁰, 5¹⁹⁹⁴, 3¹⁰⁰; 2 chữ số cuối 3⁹⁹⁹, 7⁷⁷)", "so_bai": 5},
+            {"sach": "NDT", "muc": "Phụ lục A bài 27 (ba chữ số cuối 2²⁰¹³)", "so_bai": 1},
+            {"sach": "VHB1", "muc": "§8 BT 256 (2 chữ số cuối 3⁹⁹⁹, 7⁷⁷) — thuộc BT 246–258", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "2 dạng. Hồ sơ VHB1 gộp 'tìm số dư; chữ số tận cùng; điền chữ số' (BT 246–258) nên không tách được theo dạng; phần 'điền chữ số' đã chuyển sang NNB01476. Ranh giới với NNB01474 dạng 4 (chia hết bằng đồng dư) rất mỏng — cùng công cụ, khác đích (chứng minh chia hết vs tính ra số dư)."
+    },
+    {
+      "id": "NNB01476",
+      "ten": "Tìm số, tìm điều kiện để chia hết",
+      "dang": [
+        {
+          "ten": "Tìm n nguyên để A(n) chia hết cho B(n)",
+          "mo_ta": "A, B là đa thức (hoặc biểu thức) của n. Chia A cho B được A = B·Q + dư hằng số (hoặc dư theo n), nên điều kiện thành 'B là ước của hằng số'; lập bảng ước rồi thử, loại nghiệm không thoả. Nếu bậc A ≥ bậc B lớn, có thể phải nhân/đánh giá thêm.",
+          "cong_cu": "Chia đa thức, tách phần nguyên; bảng ước; xét số dư",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§3 'Dạng 4' (mục IV): tìm điều kiện để chia hết cho một số hoặc một biểu thức — 5 VD + 39 BT", "so_bai": 44},
+            {"sach": "TVA", "muc": "§7 Dạng 1 VD14, VD15 (A=n³+2n²−3n+2 chia hết B=n²−n; n⁵+1 chia hết n³+1)", "so_bai": 2},
+            {"sach": "VHB1", "muc": "§8 'Tìm n để A(n) chia hết B(n)': VD46–49 + BT 226, 241–245 (ước)", "so_bai": 10},
+            {"sach": "NDT", "muc": "Ch I §7 bài 76, 79, 81 (tìm n nguyên để đa thức chia hết)", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tìm các chữ số chưa biết của một số (cấu tạo số, dấu hiệu chia hết)",
+          "mo_ta": "Số cho dưới dạng abcd… có chữ số ẩn kèm điều kiện chia hết/hệ thức. Viết số bằng cấu tạo thập phân (ab = 10a + b), dùng dấu hiệu chia hết cho 2, 3, 5, 9, 11 để thu hẹp các chữ số, rồi thử các giá trị còn lại.",
+          "cong_cu": "Cấu tạo số thập phân; dấu hiệu chia hết; bất đẳng thức giới hạn chữ số (0–9)",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§3 Dạng 1 'Tìm các chữ số chưa biết của một số': 5 VD + 16 BT", "so_bai": 21},
+            {"sach": "TVA", "muc": "§7 BT nhóm 'cấu tạo số, lập số' (BT 2, 6, 7, 9, 16, 17, 51–55) — đã gồm chữ số tận cùng", "so_bai": 11},
+            {"sach": "VHB1", "muc": "§8 BT 246–258 phần điền chữ số", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tìm cặp số nguyên dương (a; b) để biểu thức hai ẩn chia hết cho biểu thức kia",
+          "mo_ta": "Dạng A(a,b) chia hết B(a,b), vd (a + b²) chia hết (a²b − 1). Vì A ≥ B khi chia hết, dùng đánh giá (bất đẳng thức) để chặn miền rồi xét ước; khác dạng một ẩn ở chỗ phải thu hẹp bằng đánh giá chứ không chia đa thức.",
+          "cong_cu": "Đánh giá chặn miền; ước của số; vai trò hoán vị của hai ẩn",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§3 mục IV VD5 (HSG Thanh Hóa 2013–2014) và một số bài sau — hầu hết chỉ có đáp số", "so_bai": 1}
+          ],
+          "do_tin": "thap"
+        }
+      ],
+      "ghi_chu": "Dạng 3 chỉ có 1 ví dụ rõ trong hồ sơ nên độ tin thấp — có thể gộp vào dạng 1 nếu CEO không muốn tách. Dạng 'Tìm n để f(n) chia hết cho một số cụ thể' (vd VHB1 BT 226: n²+2n−4 chia hết 11) cũng cùng nhóm nhưng hồ sơ chỉ thấy lẻ tẻ, để trong dạng 1 (cách giải xét số dư). Sách TCDS giải mục IV hầu hết chỉ ghi đáp số, nên lời giải khi nhập phải tự soạn."
+    },
+    {
+      "id": "NNB01477",
+      "ten": "Số nguyên tố, hợp số",
+      "dang": [
+        {
+          "ten": "Tìm số nguyên tố p để các biểu thức của p cùng là số nguyên tố",
+          "mo_ta": "Đề cho vài biểu thức theo p (p² + 2ᵖ, 2p² − 1 và 3p² + 4…) đều phải nguyên tố. Xét p = 2, p = 3 riêng, rồi xét p chia 3 (hoặc chia 4, 5) dư 1, 2 để chỉ ra biểu thức luôn là bội của số đó (hợp số) khi p lớn hơn.",
+          "cong_cu": "Xét số dư theo mô-đun nhỏ (3, 4, 5); p>3 thì p = 6k ± 1; số nguyên tố chẵn duy nhất là 2",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§7 'Dạng 1: tìm số nguyên tố': 5 VD + 21 BT", "so_bai": 26},
+            {"sach": "VHB1", "muc": "§8 BT 192–195, 218, 221–222 (vd 4p²+1 và 6p²+1 cùng nguyên tố) — trộn nguyên tố/hợp số", "so_bai": 7}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh một số (một biểu thức) là hợp số hoặc là số nguyên tố",
+          "mo_ta": "Chứng minh số cụ thể/dãy số là hợp số bằng cách tách thành tích hai thừa số lớn hơn 1 hoặc chỉ ra ước. Với biến p nguyên tố cho trước điều kiện, dùng dạng 3k ± 1, 6k ± 1 để chứng minh biểu thức chia hết cho số khác 1 và khác chính nó.",
+          "cong_cu": "Phân tích thừa số (aⁿ − bⁿ, A = B·C); xét dạng số theo số dư; định nghĩa hợp số",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§7 'Dạng 2: vấn đề liên quan số nguyên tố và hợp số': 2 VD + 21 BT", "so_bai": 23},
+            {"sach": "NDT", "muc": "Ch I §2 bài 12; Phụ lục A bài 20, 34", "so_bai": 3},
+            {"sach": "VHB1", "muc": "§8 BT 238 (4²⁰−1, 1 000 001, 2⁵⁰+1 là hợp số)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tìm n để một biểu thức của n là số nguyên tố",
+          "mo_ta": "Biểu thức f(n) phân tích được thành tích hai thừa số A(n)·B(n) (đôi khi cần thêm bớt hạng tử); f(n) nguyên tố thì một thừa số phải bằng 1, giải ra n rồi kiểm tra thừa số còn lại có nguyên tố không.",
+          "cong_cu": "Phân tích đa thức thành nhân tử; định nghĩa số nguyên tố (chỉ có hai ước 1 và chính nó)",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch I §5 bài 46 (5n³−9n²+15n−27) và bài 60b ((n²−8)²+36)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "Dạng 3 chỉ thấy rõ ở NDT (2 bài), phần còn lại có thể nằm lẫn trong BT của TVA §7 (nhóm 'số chính phương, số nguyên tố, hợp số' ≈ 7 bài, BT 12, 18, 29, 36, 48–50) mà hồ sơ không tách theo dạng. Chủ đề số ước, tổng ước, ƯCLN, nguyên tố cùng nhau chỉ nằm ở phần kiến thức của TCDS §7, không có dạng bài riêng — xem nhom_thieu."
+    },
+    {
+      "id": "NNB01478",
+      "ten": "Chứng minh một số là (không là) số chính phương",
+      "dang": [
+        {
+          "ten": "Chứng minh không là số chính phương bằng chữ số tận cùng và xét số dư",
+          "mo_ta": "Số chính phương không tận cùng bằng 2, 3, 7, 8; có dạng 3n hoặc 3n+1, 4n hoặc 4n+1; chia 5 dư 0, 1, 4; chia 8 dư 0, 1, 4. Tính số dư (hoặc chữ số cuối) của số đề cho, thấy không rơi vào tập dư của số chính phương thì kết luận.",
+          "cong_cu": "Tính chất số chính phương theo chữ số tận cùng và theo số dư (mod 3, 4, 5, 8)",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 'Dạng 2: chứng minh một số là số chính phương hoặc không là': 8 VD + 22 BT (dùng chung dạng 1–4)", "so_bai": 30},
+            {"sach": "VHB1", "muc": "§8 VD40 + BT 208–217, 225*, 229* (số chính phương mod 3, 4; chữ số tận cùng)", "so_bai": 13},
+            {"sach": "NDT", "muc": "Ch I §2 bài 26d (1991³³³³+… không là lập phương), bài 26e", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh không là số chính phương bằng kẹp giữa hai số chính phương liên tiếp",
+          "mo_ta": "Chặn k giữa n² và (n+1)² (n² < k < (n+1)²) thì k không là số chính phương. Nhận ra khi đề là biểu thức bậc hai/bốn có thể so với (an + b)² và (an + b + 1)².",
+          "cong_cu": "Giữa hai số chính phương liên tiếp không có số chính phương; so sánh với bình phương của đa thức",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 tính chất 9 + các VD/Bài của Dạng 2 (dùng chung)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh một biểu thức là số chính phương bằng biến đổi về bình phương đúng",
+          "mo_ta": "Biến đổi thành bình phương của biểu thức nguyên, điển hình n(n+1)(n+2)(n+3) + 1 = (n² + 3n + 1)², các số dạng 11…1 22…2 5 hoặc 44…4 88…89 (viết qua 10ⁿ), tổng/hiệu bình phương. Nhận ra khi biểu thức có tích các thừa số liên tiếp cộng hằng số hoặc có dạng chữ số lặp.",
+          "cong_cu": "Hằng đẳng thức bình phương; đặt ẩn phụ; viết số dạng lặp chữ số qua 10ⁿ",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 Dạng 2 (VD1–8, Bài 1–22 dùng chung)", "so_bai": null},
+            {"sach": "NDT", "muc": "Phụ lục A bài 8 (dãy n+9, 2n+9,… chứa số chính phương), bài 25", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Chứng minh bằng tính chất thừa số nguyên tố với số mũ chẵn, hai số nguyên tố cùng nhau",
+          "mo_ta": "Số chính phương có mọi thừa số nguyên tố với số mũ chẵn; hai số nguyên tố cùng nhau mà tích là số chính phương thì mỗi số là số chính phương. Dùng khi đề cho tích/hệ thức của nhiều số có ước chung bằng 1 (vd ab chính phương, ƯCLN(a;b) = 1).",
+          "cong_cu": "Phân tích ra thừa số nguyên tố; ƯCLN, nguyên tố cùng nhau",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 tính chất 12 và các bài tương ứng của Dạng 2", "so_bai": null},
+            {"sach": "NDT", "muc": "Phụ lục C Đề 4 bài 6a (abcd chính phương)", "so_bai": 1}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "TCDS §8 chỉ cho số ví dụ/bài theo 'Dạng' của sách (không tách theo phương pháp bên trong Dạng 2), nên so_bai ghi null hoặc dùng chung — không cộng được. Tên dạng 2–4 là phương pháp sách nêu trong 'tìm hiểu về số chính phương' (4 cách giải), độ tin vừa-cao vì thiếu bản đọc lại từng bài. Dạng 1 'Tìm số chính phương' (abcd, ab − cd = 1) của TCDS đã chuyển sang NNB01479 vì đích là tìm số."
+    },
+    {
+      "id": "NNB01479",
+      "ten": "Tìm số để biểu thức là số chính phương",
+      "dang": [
+        {
+          "ten": "Kẹp biểu thức giữa hai số chính phương liên tiếp",
+          "mo_ta": "Tìm x nguyên để P(x) là số chính phương (vd x² + 2x + 20, x² + 8y với y²+8x). So P với (x + a)² và (x + a + 1)²: chỉ có hữu hạn giá trị x để P nằm 'chạm' một bình phương, giải ra rồi thử.",
+          "cong_cu": "Giữa hai bình phương liên tiếp không có bình phương; so sánh với bình phương đa thức",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 'Dạng 3: tìm giá trị của biến để biểu thức là số chính phương': 7 VD + 32 BT (dùng chung dạng 1–3)", "so_bai": 39}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đặt biểu thức bằng k² rồi đưa về phương trình ước số",
+          "mo_ta": "Đặt P(x) = k² rồi nhân/cộng để tạo hiệu hai bình phương: (2k)² − (2x + 2)² = hằng; phân tích thành tích hai thừa số rồi xét các cặp ước của hằng số.",
+          "cong_cu": "Hiệu hai bình phương; phương trình tích, bảng ước",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 Dạng 3 VD1, VD2 và nhiều bài (dùng chung với dạng 1)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Biểu thức có số mũ chứa ẩn (vd 2ˣ + 5ʸ) là số chính phương: xét số dư và tính chẵn lẻ của mũ",
+          "mo_ta": "Biểu thức gồm luỹ thừa với số mũ là ẩn nguyên. Xét x, y chẵn/lẻ, dùng mod 3, 4, 8 để loại trường hợp hoặc thu hẹp mũ, rồi đưa về phương trình tích.",
+          "cong_cu": "Đồng dư mod 3, 4, 8; tính chẵn lẻ của số mũ; phân tích về tích",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 Dạng 3 VD6 (2ˣ + 5ʸ chính phương), VD5; và các bài nhóm tương tự", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Tìm số chính phương thoả điều kiện về chữ số (cấu tạo số)",
+          "mo_ta": "Tìm số chính phương dạng abcd (hoặc số điện thoại 82xxyy) cho trước một hệ thức giữa các chữ số (vd ab − cd = 1). Viết số bằng cấu tạo thập phân, đưa về phương trình giữa hai số nguyên rồi dùng điều kiện chính phương để thử.",
+          "cong_cu": "Cấu tạo số thập phân; chữ số tận cùng của số chính phương; xét khoảng giá trị của căn",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§8 'Dạng 1: tìm số chính phương': 2 VD + 8 BT", "so_bai": 10}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "4 dạng; dạng 1–3 dùng chung 'Dạng 3' của TCDS (39 bài) nên không chia số bài từng dạng. Trùng khá nhiều với NNB01480/01482 (cùng kỹ thuật tích, kẹp) — xem chong_lan; CEO cần chốt nhóm nào là nơi cư trú chính của bài 'x² + … = k²'."
+    },
+    {
+      "id": "NNB01480",
+      "ten": "Phương trình nghiệm nguyên: đưa về tích, dùng tính chia hết",
+      "dang": [
+        {
+          "ten": "Phương trình bậc nhất hai ẩn ax + by = c: phát hiện tính chia hết của một ẩn",
+          "mo_ta": "Biểu thị ẩn có hệ số nhỏ theo ẩn kia (hoặc xét số dư theo hệ số), đặt ẩn phụ để tìm nghiệm riêng, rồi viết nghiệm tổng quát theo tham số nguyên t. Nhận ra khi phương trình tuyến tính hoặc chỉ cần chia hết được một ẩn.",
+          "cong_cu": "Chia hết, đồng dư; nghiệm tổng quát theo tham số nguyên",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục I 'Phương pháp phát hiện tính chia hết của một ẩn': 2 VD + 21 BT", "so_bai": 23},
+            {"sach": "TVA", "muc": "§7 BT 15 (19m + 84n = 1984), BT nhóm phương trình nghiệm nguyên 1, 3, 10, 11, 13, 19, 20, 21", "so_bai": 9}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đưa về phương trình ước số: tích các thừa số bằng một hằng số",
+          "mo_ta": "Dạng xy + ax + by = c: thêm bớt để được (x + b)(y + a) = c + ab (phương trình ước số), rồi lập bảng các cặp ước của vế phải. Nhận ra khi có hạng tử xy kèm các hạng tử bậc nhất của x, y.",
+          "cong_cu": "Nhóm hạng tử, phân tích thành nhân tử; bảng ước của hằng số",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục II 'Đưa về phương trình ước số': 2 VD + 5 BT", "so_bai": 7},
+            {"sach": "TVA", "muc": "§10 PP 2 'Đưa về phương trình tích': VD6–VD8", "so_bai": 3},
+            {"sach": "NDT", "muc": "Ch I §3 bài 31 (x(y+4) − 3(y+4) = 19)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Biểu thị một ẩn theo ẩn còn lại rồi dùng phép chia hết (tách phần nguyên)",
+          "mo_ta": "Rút x = f(y)/g(y) (hoặc y theo x), tách phần nguyên của phân thức, được 'g(y) là ước của một hằng số', lập bảng ước rồi thử. Dùng khi phương trình bậc nhất đối với một ẩn nhưng hệ số chứa ẩn kia.",
+          "cong_cu": "Tách phần nguyên của phân thức; ước của số; bảng giá trị",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục III 'Biểu thị một ẩn theo ẩn còn lại rồi dùng phép chia hết': 4 VD + 18 BT", "so_bai": 22}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "3 dạng. TVA §10 chỉ cho 3 phương pháp (mỗi phương pháp = 1 dạng của sách); 26 BT chưa chia dạng nên khi nhập phải tự gán. TCDS VI.V3 'Tạo ra dạng tích' (4 VD + 15 BT) về kỹ thuật thuộc nhóm này nhưng sách xếp vào 'tính chất số chính phương' nên tạm để ở NNB01482 dạng 3 (xem chong_lan). Phương trình đưa về tích mà hạng tử bậc cao (x³ + 3367 = 2ⁿ) cũng thuộc dạng 2 hay NNB01481 dạng 4 tuỳ cách giải sách."
+    },
+    {
+      "id": "NNB01481",
+      "ten": "Phương trình nghiệm nguyên: dùng bất đẳng thức, xét số dư",
+      "dang": [
+        {
+          "ten": "Sắp thứ tự các ẩn để chặn miền (ẩn có vai trò bình đẳng)",
+          "mo_ta": "Phương trình đối xứng nhiều ẩn (x + y + z = xyz; 1/x + 1/y + 1/z = 1): giả sử x ≤ y ≤ z, đánh giá để chặn ẩn nhỏ nhất (vd x ≤ 3), thay lần lượt rồi giải các ẩn còn lại.",
+          "cong_cu": "Giả sử thứ tự x ≤ y ≤ z; đánh giá bất đẳng thức; thử các giá trị hữu hạn",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục V1 'Phương pháp sắp thứ tự các ẩn': 3 VD + 20 BT", "so_bai": 23},
+            {"sach": "TVA", "muc": "§10 PP 1 VD5 (5(x+y+z+t)+10 = 2xyzt), VD2 (Cô-si 3 số)", "so_bai": 2},
+            {"sach": "NDT", "muc": "Phụ lục A bài 16 (xyz = x+y+z+9); Phụ lục C Đề 1 bài 6a", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đánh giá miền giá trị của biến bằng bất đẳng thức rồi thử trực tiếp",
+          "mo_ta": "Dùng bất đẳng thức (bình phương ≥ 0, Cô-si, tam thức bậc hai) để chặn |x|, |y| nhỏ (vd x² − 6xy + 13y² = 100 ⇒ y² ≤ 100/4), liệt kê các giá trị còn lại. Khác dạng 1 ở chỗ không dựa vào thứ tự các ẩn.",
+          "cong_cu": "Bất đẳng thức, đưa về tổng bình phương, chặn miền",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§10 PP 1 'Phương trình sử dụng bất đẳng thức': VD1 (x²−6xy+13y²=100), VD2 (Cô-si 3 số)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Nguyên lí kẹp giữa hai luỹ thừa liên tiếp (bậc ≥ 3)",
+          "mo_ta": "Chặn một vế giữa hai luỹ thừa bậc n liên tiếp của biểu thức theo x (vd x³ < x³ + x² + x + 1 < (x + 1)³ nên y³ không là lập phương nào trừ khi các giá trị biên), suy ra y = x + 1 hoặc vô nghiệm.",
+          "cong_cu": "Nguyên lí kẹp; x < y < x + 2 ⇒ y = x + 1; kẹp giữa hai luỹ thừa bậc ≥ 3",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục VI.V4 'Dùng nguyên lí kẹp': 6 VD + 12 BT", "so_bai": 18},
+            {"sach": "NDT", "muc": "Ch I §3 bài 37 (x³+x²+x+1 = y³); Phụ lục C Đề 4 bài 3", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Xét số dư hai vế để chứng minh vô nghiệm hoặc thu hẹp nghiệm",
+          "mo_ta": "Xét hai vế chia cho 3, 4, 8, 9 (hoặc xét chẵn lẻ) để thấy hai vế khác dư nên vô nghiệm, hoặc suy ra điều kiện chia hết cho ẩn (vd 19x² + 28y² = 729 chia hết 3; x² + y² + z² = 1999 vô nghiệm). Nhận ra khi có luỹ thừa/bình phương và hằng số lớn.",
+          "cong_cu": "Số dư của bình phương/lập phương theo mod 3, 4, 8, 9; tính chẵn lẻ",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục IV 'Xét số dư của từng vế': 4 VD + 4 BT", "so_bai": 8},
+            {"sach": "TVA", "muc": "§10 PP 3 'Tính chất chia hết, đồng dư': VD9, VD10", "so_bai": 2},
+            {"sach": "NDT", "muc": "Phụ lục A bài 6 (a³+b³+c³ = 2012 vô nghiệm, mod 9)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chỉ ra nghiệm của phương trình mũ rồi chứng minh duy nhất",
+          "mo_ta": "Phương trình có ẩn ở số mũ (2ˣ + 3ˣ = 5ˣ): thử tìm nghiệm nhỏ, chia hai vế cho một luỹ thừa chung rồi dùng tính đơn điệu (các hạng tử giảm) để chứng minh hết nghiệm khác.",
+          "cong_cu": "Tính đơn điệu của hàm mũ; chia hai vế cho luỹ thừa chung",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục V2 'Chỉ ra nghiệm nguyên': 2 VD + 2 BT", "so_bai": 4}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "5 dạng; dạng 5 ít bài (4) nên chỉ giữ nếu CEO thấy cần, có thể gộp vào dạng 4. Phân biệt dạng 3 với NNB01482 dạng 4: ở đây kẹp giữa hai luỹ thừa bậc ≥ 3 và trên nhiều ẩn, bên kia kẹp giữa hai BÌNH PHƯƠNG liên tiếp. TVA §10 PP 1 có 5 VD: VD2 và VD5 đã đưa vào dạng 1/2; hồ sơ nói VD3, VD4 là kẹp giữa hai bình phương nên tính cho NNB01482 dạng 4. Dạng 2 chỉ có 2 ví dụ rõ ở TVA nên độ tin vừa."
+    },
+    {
+      "id": "NNB01482",
+      "ten": "Phương trình nghiệm nguyên: dùng tính chất số chính phương",
+      "dang": [
+        {
+          "ten": "Tạo ra bình phương đúng: đưa phương trình về dạng (biểu thức)² = số",
+          "mo_ta": "Nhóm hạng tử bậc hai thành bình phương một nhị thức, phần còn lại là hằng số hoặc bình phương khác (vd 2x² + 4x = 19 − 3y² ⇒ 2(x+1)² + 3y² = 21). Từ đó giới hạn miền của biểu thức, xét các giá trị còn lại.",
+          "cong_cu": "Thêm bớt tạo bình phương; chặn miền theo bình phương không âm",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục VI.V1 'Tạo ra bình phương đúng': 2 VD + 5 BT", "so_bai": 7}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tạo ra tổng các bình phương bằng một số cho trước",
+          "mo_ta": "Phương trình đối xứng hai ẩn bậc hai (x² + y² − x − y = 8; 9x² + 3y² + 6xy − 6x + 2y − 35 = 0): nhân hai/bốn vế rồi nhóm thành A² + B² = k, liệt kê các cặp bình phương cộng ra k. Nhận ra khi toàn hạng tử bậc ≤ 2 và hệ số bình phương dương.",
+          "cong_cu": "Tổng hai bình phương; liệt kê bình phương nhỏ; nhân vế để khử mẫu/phân số",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục VI.V2 'Tạo ra tổng các bình phương': 4 VD + 19 BT", "so_bai": 23}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Coi là phương trình bậc hai theo một ẩn, điều kiện biệt thức là số chính phương",
+          "mo_ta": "Viết phương trình dạng bậc hai theo x với tham số y; nghiệm nguyên chỉ có khi Δ là số chính phương, đặt Δ = k² rồi đưa về phương trình tích hai thừa số. Sách xếp chung với 'tạo ra dạng tích'.",
+          "cong_cu": "Biệt thức Δ; số chính phương; phương trình tích",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "§9 mục VI.V3 'Tạo ra dạng tích': 4 VD + 15 BT (VD1: x²+x(3y−1)+2y²−5=0) — tạm gán, xem chong_lan", "so_bai": 19}
+          ],
+          "do_tin": "thap"
+        },
+        {
+          "ten": "Kẹp giữa hai bình phương liên tiếp của biểu thức theo ẩn",
+          "mo_ta": "Vế phải là bình phương y² còn vế trái nằm giữa (ax + b)² và (ax + b + 1)² nên y² chỉ có thể bằng một trong hai, suy ra x hữu hạn hoặc vô nghiệm (mẫu: chứng minh y² nằm giữa hai bình phương liên tiếp nên y² bằng một trong hai).",
+          "cong_cu": "Giữa hai bình phương liên tiếp không có bình phương; so sánh với (ax+b)²",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§10 VD3, VD4, BT 24 (kẹp giữa hai bình phương)", "so_bai": 3}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "Dạng 3 có độ tin thấp: hồ sơ chỉ cho tên mục 'tạo ra dạng tích' và hai bài trùng với TCDS mục III (BT 9 ≈ VI.V3 VD2; BT 14 ≈ VI.V3 BT 11), nghĩa là kỹ thuật thật có thể là 'đưa về tích' (NNB01480 dạng 2) hay 'điều kiện Δ chính phương' — cần xem lại 4 VD + 15 BT trong sách trước khi chốt. TVA §10: hồ sơ ghi BT nhóm 'số chính phương, tách chữ số' (BT 16, 17, 21, 24, 25) ≈ 5 bài, dùng cho dạng 4 nhưng không tách rõ."
+    }
+  ],
+  "nhom_thieu": [
+    {
+      "ten": "Cấu tạo số, toán chữ số (tìm chữ số chưa biết, lập số, tổng/hiệu chữ số)",
+      "chuyen_de": "4.1 Chia hết (nhóm ④ mới) — hoặc tạm để làm dạng 2 của NNB01476",
+      "nguon": "TCDS §3 Dạng 1 (5 VD + 16 BT); TVA §7 BT nhóm 'cấu tạo số, lập số' (≈ 11 BT) và VD5 Dạng 4; VHB1 §8 BT điền chữ số; NDT Phụ lục C Đề 7 bài 6a (tổng chữ số số chính phương)",
+      "so_bai": 32,
+      "ly_do": "≈ 21 (TCDS) + 11 (TVA) bài có đề riêng, kỹ thuật riêng (cấu tạo thập phân, dấu hiệu chia hết, giới hạn chữ số 0–9). Hiện chỉ đặt tạm dạng 2 của NNB01476 và NNB01479 dạng 4; nếu CEO muốn nhóm tách thì lấy ra khỏi hai chỗ đó."
+    },
+    {
+      "ten": "Ước và bội: số ước, tổng ước, ƯCLN – BCNN, nguyên tố cùng nhau",
+      "chuyen_de": "4.2 Số nguyên tố, số chính phương (gộp vào NNB01477) hoặc không lập",
+      "nguon": "TCDS §7 phần kiến thức (số ước (α+1)(β+1)…, tổng ước, nguyên tố cùng nhau); VHB1 BT 96–97 (ước chung / nguyên tố cùng nhau); TVA §7 BT 58 (ƯCLN)",
+      "so_bai": 3,
+      "ly_do": "Công cụ dùng trong nhiều dạng nhưng không có chuyên đề/dạng bài riêng trong 6 quyển: chỉ thấy 3 bài lẻ. Không đủ để lập nhóm — đề xuất ghi vào lý thuyết nhóm NNB01477 hoặc bỏ. Hệ đếm, số hoàn hảo, số thập phân tuần hoàn: grep trong 5 hồ sơ đã dùng không thấy chuyên đề nào."
+    },
+    {
+      "ten": "Tính tổng dãy số có quy luật (tổng luỹ thừa, tổng tách hiệu, tổng lập phương)",
+      "chuyen_de": "1.4 ② 'Tổng, tích có quy luật' (đã có, nhưng tên mới gắn với phân thức) — không thuộc Số học",
+      "nguon": "NDT Phụ lục A bài 29, 33; Phụ lục C Đề 2 bài 2 (tổng dãy phân số), Đề 8 bài 2 (S = 1³+…+100³); NDT Ch I §1 bài 13a (4¹⁹⁹³+…); TCDS §8 Dạng 3 Bài 14 (tổng bình phương)",
+      "so_bai": 6,
+      "ly_do": "Các bài nằm trong ranh giới Số học / Đại số, hồ sơ không có chuyên đề riêng. Nếu 1.4② chỉ nhận dãy phân thức thì tổng luỹ thừa và tổng lập phương mồ côi; nên mở rộng tên 1.4② hoặc xếp vào Biến đổi biểu thức."
+    },
+    {
+      "ten": "Toán đố, số học trong hình học và toán thực tế về số tự nhiên",
+      "chuyen_de": "Không lập; xếp rải vào NNB01476 hoặc để ngoài bản đồ",
+      "nguon": "NDT Phụ lục B bài 54, 63 (cạnh là số chẵn liên tiếp, tổng ba cạnh chia hết cạnh còn lại); TVA §7 BT 5, 30 (tam giác vuông cạnh nguyên); VHB1 §8 BT 227, 228, 230, 233 (đố vui năm sinh, Đi-rích-lê)",
+      "so_bai": 8,
+      "ly_do": "Tổng cộng khoảng 8 bài, mỗi bài một dạng khác nhau; chia hết/số dư là công cụ nhưng bối cảnh là hình hoặc đố. Không đủ dạng để lập nhóm. Bài Đi-rích-lê đi vào NNB (5.1) có sẵn."
+    },
+    {
+      "ten": "Bất biến, tô màu, đổi dấu (số học trong tổ hợp)",
+      "chuyen_de": "5 Tổ hợp và suy luận — thêm chuyên đề 5.2 (ngoài phạm vi Số học)",
+      "nguon": "NDT Phụ lục A bài 43, 44, 45; TCDS §3 Dạng 2 Bài 10–11 (bảng xoáy ốc), Bài 24; TCDS §10 (e) trò chơi/quy nạp/lát gạch",
+      "so_bai": 6,
+      "ly_do": "Ngoài 5.1 Đi-rích-lê và cực hạn; các bài dùng chẵn-lẻ, bất biến, đồng dư nhưng đích là tổ hợp. Nêu để CEO quyết có mở 5.2 không; hồ sơ không có chuyên đề riêng."
+    }
+  ],
+  "chong_lan": [
+    "NNB01474 (chứng minh chia hết) ↔ NNB01476 (tìm điều kiện để chia hết): dạng 'tìm n để A(n) chia hết B(n)' chứng minh/tìm là hai mặt của cùng kỹ thuật (chia đa thức, tách phần nguyên). Đề xuất phân theo ĐỀ: có sẵn kết luận cần chứng minh → 01474; hỏi 'tìm n/x/chữ số' → 01476. Bài 'chứng minh chia hết với mọi n' (TVA D1 VD15 n⁵+1 chia hết n³+1) sách xếp cùng nhóm với 'tìm n' — cần quy ước.",
+    "NNB01474 ↔ NNB01475: chứng minh chia hết bằng đồng dư/Phéc-ma (01474 dạng 4) và tìm dư bằng đồng dư (01475 dạng 1) dùng đúng một công cụ; TCDS §3 mục 1 không tách. Chốt: đích chứng minh → 01474, đích 'tính ra số dư' → 01475.",
+    "NNB01474 ↔ 5.1 ① Đi-rích-lê: chứng minh chia hết bằng nguyên lí Đi-rích-lê (tổng/hiệu chia hết cho n, vd TCDS §10 (a): 100 số có 10 số hiệu chia hết 11; TVA §7 Dạng 2 VD4, VD5) — thuộc 5.1 chứ không phải 01474; nhập số học chia hết cần quy ước gắn nhóm theo công cụ hay theo đích.",
+    "NNB01476 dạng 1 ↔ chuyên đề 1.3 ② (NDT bài 76, 79, 81 'tìm n nguyên để đa thức chia hết đa thức') và 1.4 ① ('tìm x nguyên để phân thức nguyên'): cùng kỹ thuật tách phần nguyên + bảng ước. TCDS §3 mục V (tìm hệ số, chứng minh đa thức chia hết đa thức: 23 BT + VHB1 §9 17 BT) thuộc 1.3, không vào Số học.",
+    "NNB01477 ↔ NNB01478: bài 'tìm p nguyên tố để 4p+1 là số chính phương' (TVA §7 Dạng 4 VD13), TVA nhóm BT 12, 18, 29, 36, 48–50 (7 bài) vừa nguyên tố vừa chính phương — cần quy ước theo ĐÍCH cuối cùng của câu hỏi.",
+    "NNB01478 ↔ NNB01479: cùng một bộ công cụ (kẹp bình phương, xét số dư, thừa số mũ chẵn); khác ở đích (chứng minh vs tìm giá trị) và TCDS §8 vì thế chia Dạng 2/Dạng 3. Bài 'tìm số chính phương abcd' (TCDS Dạng 1) tạm gán 01479.",
+    "NNB01479 ↔ NNB01480/NNB01482: đặt P(x) = k² rồi đưa về phương trình ước số chính là phương trình nghiệm nguyên (hiệu hai bình phương = hằng). TCDS §8 Dạng 3 và §9 mục VI trùng nhau về kỹ thuật; đề xuất 01479 chỉ giữ bài hỏi 'tìm giá trị của biến để biểu thức chính phương' (một biến chính) còn bài hai ẩn x²+y²=… về 01482.",
+    "NNB01480 ↔ NNB01482 (rủi ro lớn nhất): TCDS mục VI.V3 'Tạo ra dạng tích' (4 VD + 15 BT) về kỹ thuật là 'đưa về tích' (01480 dạng 2/3) nhưng sách xếp vào 'tính chất số chính phương'; hồ sơ ghi hai bài trùng: mục III Bài 9 ≈ VI.V3 VD2 (2x²−2xy−5x+y+19=0), mục III Bài 14 ≈ VI.V3 Bài 11 (2x³+2x²y+x²+2xy=x+10). Cần mở sách xem V3 trước khi chốt, hiện tạm đặt ở 01482 dạng 3 với độ tin thấp.",
+    "NNB01481 ↔ NNB01482: 'nguyên lí kẹp' của TCDS V4 (6 VD + 12 BT) gồm cả kẹp giữa bình phương lẫn kẹp giữa lập phương. Đề xuất cắt theo bậc: kẹp bậc ≥ 3 (01481 dạng 3), kẹp giữa hai bình phương liên tiếp (01482 dạng 4); TVA §10 VD3, VD4, BT 24 là loại sau. Dạng 'xét số dư hai vế' (01481 dạng 4) đôi khi dùng số dư của số chính phương nên liên quan 01482.",
+    "NNB01475 dạng 2 ↔ NNB01478 dạng 1: chữ số tận cùng của số chính phương (không tận cùng 2, 3, 7, 8) là công cụ chứng minh không phải số chính phương; còn 01475 dạng 2 hỏi chữ số tận cùng của luỹ thừa. Khác đích nên giữ riêng."
+  ]
+}

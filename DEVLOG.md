@@ -80654,3 +80654,8 @@ Thùy nêu 4 việc, làm được 3:
 - MCQ cho câu mới gán: 613 câu chuẩn chưa form ⇒ sinh 454, lọc (tập hợp/nhãn · số tròn · số âm) ⇒ 439 OK, ghi + duyệt (Thùy). 4T câu lên app 1.478 → 1.917.
 - Bẫy: 2/6 Sonnet tự nhận chỉ đọc lướt lý thuyết/ví dụ trong dich.md (giới hạn đọc) — luật 02/11 bắt đọc đủ; đồng thuận 2 model là lớp chặn. Agent con dùng chung scratchpad ⇒ lần sau giao mỗi agent một thư mục tạm riêng.
 - Hàng duyệt chờ Thùy/trưởng khối 4T: 275 câu de_xuat + 378 câu thiếu dạng (ly_do ghi dạng còn thiếu: tìm x/y, thuận tiện cộng trừ, biểu thức chữ, đo lường ngoài khối lượng, diện tích, phần hơn, xác suất, cấu tạo số thêm bên phải…).
+
+## 14/11 — 8T Hình–Học lô 1: chuyên đề Thalès (59 câu ghi DB)
+- Làm: Thùy "ưu tiên hình, chia dạng, giải xịn, vẽ lại hình 100%, ưu tiên Thalès + đường trung bình vì hôm nay học". 9 trạm Sonnet (NĐT Hình I §3, Hình III §1–2; TCHH CĐ5 bài 1–17): chép đề từ ảnh, chia dạng theo luật "kiến thức lời giải thật sự cần" + cấm kiến thức học sau (đồng dạng, diện tích), giải, vẽ lại hình, verify toạ độ (>70.000 phép, 0 FAIL). Opus soát đối chiếu ảnh từng trạm. Ghi 59 câu (HH00127 37 · HH00161 16 · HH00131 4 · HH00162 2), 12 bài nhiều ý theo mô hình bài–ý, 47 sơ đồ tư duy, 76 ảnh; tự duyệt. 5 bài DE_SAU.
+- Sai/sửa: brief giao trạm viết theo khuôn Phần 1 cũ trong khi luật Sơ đồ tư duy (README §3) ra cùng ngày — trạm G6 phát hiện; đổi khuôn bằng 4 trạm + cổng kiểm trong nhap_lo.mjs. Bài học: đọc git log các spec khuôn (README §3, k8.md) ngay trước khi viết brief lô mới.
+- Công cụ: `kho-rules/hinh/lo/k8T-thales/nhap_lo.mjs` (bài–ý + sơ đồ tư duy + trang duyệt --html + --chi-kiem), sổ soát `SOAT.md`.

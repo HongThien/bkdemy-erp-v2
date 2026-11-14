@@ -1,0 +1,613 @@
+{
+  "nhom": [
+    {
+      "id": "NNB01460",
+      "ten": "Phương trình đưa về bậc nhất, phương trình tích, chứa ẩn ở mẫu",
+      "dang": [
+        {
+          "ten": "Phương trình bậc nhất và phương trình đưa được về bậc nhất",
+          "mo_ta": "Phương trình có ngoặc, hệ số phân số, ẩn ở hai vế. Bỏ ngoặc, quy đồng, chuyển vế, thu gọn về ax+b=0 rồi xét a≠0 hay a=0 (nghiệm duy nhất / vô nghiệm / vô số nghiệm).",
+          "cong_cu": "quy tắc chuyển vế, quy tắc nhân, quy đồng",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §1-§2 bài 1-6, 13-18", "so_bai": 12},
+            {"sach": "TVA", "muc": "§4 Dạng 1 VD1", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình tích: phân tích thành nhân tử rồi giải từng nhân tử",
+          "mo_ta": "Vế trái phân tích được thành tích (đặt nhân tử chung, hằng đẳng thức, nhóm hạng tử), vế phải bằng 0. Dùng A.B=0 ⇔ A=0 hoặc B=0, giải từng phương trình rồi gộp nghiệm.",
+          "cong_cu": "phân tích đa thức thành nhân tử, A.B=0",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §3 bài 26-30; Ôn tập bài 65", "so_bai": 6}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình cộng (trừ) cùng một hằng số vào mỗi phân thức",
+          "mo_ta": "Nhiều phân thức mà tử là x cộng hằng số, mẫu là số lớn (vd (x+1)/2009 + (x+2)/2008 + ...). Cộng hoặc trừ cùng một số vào mỗi phân thức để mọi tử bằng nhau, đặt nhân tử chung, đưa về tích.",
+          "cong_cu": "cộng/trừ hằng số vào mỗi phân thức, đặt nhân tử chung",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §2 bài 21-25; Ôn tập bài 66", "so_bai": 8},
+            {"sach": "TVA", "muc": "§4 Dạng 1 VD2 + BT 3, 7", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§7 BT 277", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình chứa ẩn ở mẫu: ĐKXĐ, quy đồng khử mẫu, đối chiếu điều kiện",
+          "mo_ta": "Ẩn xuất hiện ở mẫu. Tìm ĐKXĐ, quy đồng khử mẫu, giải phương trình thu được, loại nghiệm không thỏa ĐKXĐ (nghiệm ngoại lai).",
+          "cong_cu": "ĐKXĐ, quy đồng khử mẫu, đối chiếu nghiệm",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §4 bài 38-43", "so_bai": 6},
+            {"sach": "TVA", "muc": "§4 Dạng 2 VD1-4, 6, 9, 10 (ước)", "so_bai": 6},
+            {"sach": "VHB2", "muc": "§9 VD 71, BT 291-292", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình chứa ẩn ở mẫu: đặt ẩn phụ",
+          "mo_ta": "Xuất hiện biểu thức lặp lại (vd x²-x, x+1/x, x²/(x+2)) nên không quy đồng thẳng được. Đặt biểu thức đó làm ẩn phụ, giải theo ẩn phụ rồi trở về ẩn x.",
+          "cong_cu": "đặt ẩn phụ, chia tử và mẫu cho x",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §4 bài 44, 47, 49b", "so_bai": 3},
+            {"sach": "TVA", "muc": "§4 Dạng 2 VD7, VD8", "so_bai": 2},
+            {"sach": "TCDS", "muc": "6.A.2 mục c) VD1-3 (đưa PT ẩn mẫu về bậc cao)", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình chứa ẩn ở mẫu: tách phân thức, rút gọn liên tiếp",
+          "mo_ta": "Vế trái là tổng các phân thức có mẫu là tích hai nhân tử liên tiếp (1/(x(x+1)), 1/((x+a)(x+a+1)) hoặc mẫu tam thức phân tích được). Tách mỗi phân thức thành hiệu hai phân thức để các số hạng triệt tiêu.",
+          "cong_cu": "tách phân thức thành hiệu, rút gọn liên tiếp",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §4 bài 45-46", "so_bai": 2},
+            {"sach": "TVA", "muc": "§4 Dạng 2 VD5, VD6", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "6 dạng. Các dạng co_ban (1, 2, 4) có nguy cơ trùng với 3 nhóm Cơ bản NNB01496-01498; nếu muốn tách bạch thì chỉ giữ 3 dạng nang_cao (3, 5, 6) ở nhóm này. Dạng 2 chỉ có NDT làm nguồn rõ (VHB2 §8 và TVA Dạng 5.1 đặt phân tích nhân tử bậc 3-4 vào nhóm bậc cao). so_bai là ước từ hồ sơ, chưa đếm câu thật."
+    },
+    {
+      "id": "NNB01461",
+      "ten": "Phương trình bậc cao",
+      "dang": [
+        {
+          "ten": "Đưa về phương trình tích: nhóm hạng tử, tách hạng tử, nhẩm nghiệm hữu tỉ",
+          "mo_ta": "Phương trình bậc 3, 4 không có dạng đặc biệt. Nhóm hoặc tách hạng tử, hoặc nhẩm nghiệm hữu tỉ (ước của hệ số tự do) rồi hạ bậc bằng chia đa thức / sơ đồ Hoóc-ne, đưa về tích các nhân tử bậc thấp.",
+          "cong_cu": "nhóm/tách hạng tử, nghiệm hữu tỉ, sơ đồ Hoóc-ne",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §3 bài 32, 37", "so_bai": 2},
+            {"sach": "VHB2", "muc": "§8 Dạng phân tích (VD 64, 66, 70a; BT 281)", "so_bai": 5},
+            {"sach": "TVA", "muc": "§4 Dạng 5 mục 1 (đưa về tích)", "so_bai": 6},
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 1 (2 VD + 9 BT) và lý thuyết nghiệm hữu tỉ", "so_bai": 11}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Ghép cặp bốn nhân tử, đặt ẩn phụ: (x+a)(x+b)(x+c)(x+d)=m",
+          "mo_ta": "Tích bốn nhị thức bậc nhất bằng hằng số (a+d=b+c) hoặc bằng mx² (ad=bc). Ghép cặp hai nhân tử sao cho tích có phần x chung, đặt ẩn phụ t, giải phương trình bậc hai theo t.",
+          "cong_cu": "ghép cặp nhân tử, đặt ẩn phụ",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §3 bài 33-35", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§8 VD 67, BT 282-284", "so_bai": 4},
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 3 mục a.7-a.8 + VD5 (Dạng 3 gồm 5 VD + 15 BT trộn nhiều kiểu)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình (x+a)^4 + (x+b)^4 = c: đặt y = x + (a+b)/2",
+          "mo_ta": "Tổng hai lũy thừa bậc 4 của hai nhị thức có hệ số x bằng nhau. Đặt y là trung bình cộng hai nhị thức, khai triển thành phương trình trùng phương theo y.",
+          "cong_cu": "đặt y = x + (a+b)/2, phương trình trùng phương",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §3 bài 36", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§8 VD 68, BT 285-287", "so_bai": 4},
+            {"sach": "TVA", "muc": "§4 Dạng 5 mục 2 VD3", "so_bai": 1},
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 3 mục a.6", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình đối xứng (hồi quy): chia cho x² đặt t = x + 1/x",
+          "mo_ta": "Hệ số đối xứng qua hạng tử giữa (bậc 4: a,b,c,b,a; hoặc phản đối xứng, bậc lẻ). Nhận xét x=0 không là nghiệm, chia hai vế cho x², đặt t=x+1/x (chú ý điều kiện |t|≥2).",
+          "cong_cu": "chia hai vế cho x², đặt t = x + 1/x",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "§8 VD 69, BT 288-289", "so_bai": 3},
+            {"sach": "TVA", "muc": "§4 Dạng 5 mục 2 VD2, VD4", "so_bai": 2},
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 3 mục a.3-a.5 (đối xứng, phản thương, hồi quy)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình trùng phương và dạng ax^(2n) + bx^n + c = 0",
+          "mo_ta": "Chỉ có các lũy thừa x^(2n), x^n. Đặt t = x^n (t≥0 khi n chẵn) đưa về phương trình bậc hai theo t, phân tích bằng nhân tử.",
+          "cong_cu": "đặt t = x^n, phân tích tam thức",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 3 mục a.1, a.9", "so_bai": null},
+            {"sach": "NDT", "muc": "Ôn tập cuối năm bài 10-14 (bậc 4 trùng phương)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Phương trình bậc cao dùng hệ số bất định",
+          "mo_ta": "Vế trái bậc 4 không nhẩm được nghiệm hữu tỉ, không có dạng đối xứng. Giả sử phân tích thành tích hai tam thức bậc hai, đồng nhất hệ số để tìm các hệ số.",
+          "cong_cu": "đồng nhất hệ số",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "6.A.2 Dạng 4 (1 VD + 9 BT)", "so_bai": 10}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh phương trình bậc cao vô nghiệm",
+          "mo_ta": "Phương trình có vế trái luôn dương (hoặc luôn cùng dấu). Đánh giá vế trái bằng tổng bình phương / xét các khoảng của x, hoặc nhân hai vế với x-1 rồi dùng bất đẳng thức (nhớ thử lại nghiệm).",
+          "cong_cu": "đánh giá vế trái, tổng bình phương",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "§8 VD 70 (a,b), BT 290 (a,b)", "so_bai": 3}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "7 dạng. Dạng 1 gộp nhóm hạng tử / tách hạng tử / nhẩm nghiệm hữu tỉ vì cùng mục tiêu là đưa về tích; nếu muốn mịn hơn có thể tách nhẩm nghiệm hữu tỉ + Hoóc-ne thành dạng riêng (TCDS chuyên đề 1 mục V). Dạng 5 và 7 chỉ dựa 1-2 quyển. TCDS Dạng 3 (5 VD + 15 BT) trộn mọi kiểu a.1-a.9 nên so_bai để null, không chia được. NDT §3 xếp bài 32-37 trong mục phương trình tích nhưng nội dung là bậc cao nên đặt ở nhóm này."
+    },
+    {
+      "id": "NNB01462",
+      "ten": "Phương trình có tham số",
+      "dang": [
+        {
+          "ten": "Tìm tham số để phương trình có nghiệm cho trước",
+          "mo_ta": "Đề cho một số là nghiệm của phương trình chứa tham số m. Thay nghiệm vào phương trình, giải phương trình theo m, kiểm tra điều kiện (nếu có).",
+          "cong_cu": "thay nghiệm vào phương trình",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §1 bài 7-9; §2 bài 19; §3 bài 31", "so_bai": 5}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Giải và biện luận phương trình bậc nhất ax+b=0; tìm tham số để vô nghiệm, vô số nghiệm",
+          "mo_ta": "Hệ số của ẩn chứa tham số, phải xét 3 trường hợp: a≠0 (nghiệm duy nhất), a=0 và b=0 (vô số nghiệm), a=0 và b≠0 (vô nghiệm). Câu hỏi vô nghiệm / vô số nghiệm chính là tìm tham số làm a=0.",
+          "cong_cu": "xét hệ số a, chia trường hợp",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §1 bài 10-12; Ôn tập bài 69", "so_bai": 4},
+            {"sach": "TVA", "muc": "§4 Dạng 4 (VD1-13) + BT 4, 5, 6, 8, 20", "so_bai": 18},
+            {"sach": "VHB2", "muc": "§7 VD 60-63, BT 276-280", "so_bai": 9}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tìm tham số để nghiệm thỏa điều kiện (dương, âm, nguyên)",
+          "mo_ta": "Giải phương trình theo m được x=f(m), rồi đặt điều kiện x>0, x<0 hoặc x nguyên để tìm m (bất phương trình hoặc điều kiện chia hết).",
+          "cong_cu": "biểu diễn nghiệm theo m, điều kiện chia hết",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§4 Dạng 6 VD1, VD3", "so_bai": 2},
+            {"sach": "VHB2", "muc": "§15 BT 357", "so_bai": 1}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Phương trình chứa ẩn ở mẫu có tham số: biện luận, loại nghiệm trùng ĐKXĐ",
+          "mo_ta": "Sau khi quy đồng khử mẫu, nghiệm tìm được phải khác các giá trị làm mẫu bằng 0. Biện luận theo tham số, chỉ ra giá trị tham số làm nghiệm bị loại hoặc phương trình vô nghiệm.",
+          "cong_cu": "ĐKXĐ theo tham số, loại nghiệm ngoại lai",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §4 bài 48", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§9 VD 72-73, BT 293-299", "so_bai": 9},
+            {"sach": "TCDS", "muc": "6.A.1 VD4", "so_bai": 1},
+            {"sach": "TVA", "muc": "§4 BT 14-19 (lẫn số và tham số, ước)", "so_bai": 6}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình bậc cao có tham số",
+          "mo_ta": "Phương trình bậc 2, 3 theo x có hệ số chứa a hoặc m. Phân tích thành nhân tử theo x (coi a là hằng) rồi biện luận số nghiệm / giá trị nghiệm theo a.",
+          "cong_cu": "phân tích thành nhân tử có tham số",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "6.A.1 (4 VD + 12 BT, trộn nhiều kiểu)", "so_bai": 16},
+            {"sach": "TVA", "muc": "§4 BT 26a, 29 (bậc ba có tham số)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Phương trình chữ a, b, c đối xứng: cộng hằng số vào mỗi phân thức",
+          "mo_ta": "Nhiều phân thức có tử x+a, x+b, x+c, mẫu b+c, c+a, a+b. Cộng (trừ) cùng một số vào mỗi phân thức để xuất hiện tử chung x+a+b+c, biện luận theo tổng a+b+c.",
+          "cong_cu": "cộng hằng số vào mỗi phân thức, biện luận",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §2 bài 23, 25", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "6 dạng. Dạng 6 chỉ có 2 bài của NDT, nếu CEO thấy quá nhỏ thì gộp vào dạng 2. Dạng 5 chồng với nhóm bậc cao (01461) nhưng đặc trưng là biện luận theo tham số nên đặt ở đây. TCDS A.1 là một mục trộn lẫn bậc cao, ẩn mẫu và chứng minh nên so_bai chỉ là tổng ước."
+    },
+    {
+      "id": "NNB01463",
+      "ten": "Phương trình chứa dấu giá trị tuyệt đối",
+      "dang": [
+        {
+          "ten": "Phương trình |A|=k và |A|=B: bỏ dấu GTTĐ theo hai trường hợp",
+          "mo_ta": "Một dấu GTTĐ ở một vế, vế kia là số hoặc biểu thức. Xét A≥0 và A<0 để bỏ dấu, hoặc dùng điều kiện B≥0 rồi A=±B; đối chiếu điều kiện của từng trường hợp. Kèm kỹ năng bỏ dấu GTTĐ, rút gọn biểu thức theo điều kiện của biến.",
+          "cong_cu": "định nghĩa |A|, chia hai trường hợp",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §3 bài 29-35, 37", "so_bai": 9},
+            {"sach": "TCDS", "muc": "6.A.3 Bài toán 1 (1 VD), Bài toán 3 (5 VD)", "so_bai": 6},
+            {"sach": "TVA", "muc": "§4 Dạng 3 VD1 + BT 9-13", "so_bai": 6}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình |A|=|B|",
+          "mo_ta": "Hai vế đều có dấu GTTĐ. Chuyển thành A=B hoặc A=-B (hoặc bình phương hai vế).",
+          "cong_cu": "|A|=|B| ⇔ A=±B",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §3 bài 36", "so_bai": 1},
+            {"sach": "TCDS", "muc": "6.A.3 Bài toán 2 (3 VD)", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phương trình có nhiều dấu GTTĐ: lập bảng xét dấu, chia khoảng",
+          "mo_ta": "Hai hoặc ba biểu thức trong GTTĐ (|x-1|+|x-3|=2, |2x|-|x+1|=2). Lập bảng xét dấu các nhị thức, chia trục số thành các khoảng, bỏ dấu GTTĐ ở từng khoảng rồi so với khoảng đó.",
+          "cong_cu": "bảng xét dấu nhị thức bậc nhất",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §3 bài 38-39", "so_bai": 2},
+            {"sach": "TCDS", "muc": "6.A.3 Bài toán 4 (5 VD)", "so_bai": 5},
+            {"sach": "VHB2", "muc": "§13 VD 81-82, BT 342-343", "so_bai": 4},
+            {"sach": "TVA", "muc": "§4 Dạng 3 VD2", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Dùng tính chất không âm và |A|+|B|≥|A+B| để đánh giá",
+          "mo_ta": "Tổng nhiều số hạng không âm bằng 0 hoặc bằng hằng số nhỏ (|x-4|^20+|x-3|^21=1). Dùng |A|≥0, |A|+|B|≥|A+B| và điều kiện dấu = để suy ra nghiệm hoặc khoảng nghiệm, không cần xét khoảng.",
+          "cong_cu": "|A|+|B|≥|A+B|, đánh giá",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §3 bài 40", "so_bai": 1},
+            {"sach": "TCDS", "muc": "6.A.3 Bài toán 3 VD4; 9 tính chất GTTĐ", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§13 VD 82 cách 2", "so_bai": 1}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "GTTĐ lồng nhau, đặt ẩn phụ |x|=t",
+          "mo_ta": "Dấu GTTĐ nằm trong dấu GTTĐ (||x|-3|=x+1) hoặc phương trình chỉ chứa x qua |x|. Đặt t=|x|≥0 hoặc bỏ dấu GTTĐ từ trong ra ngoài.",
+          "cong_cu": "đặt t=|x|, bỏ dấu từ trong ra ngoài",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "§13 VD 83, BT 344b, 345", "so_bai": 3}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Phương trình chứa GTTĐ có tham số: biện luận, số nghiệm",
+          "mo_ta": "Vế phải hoặc hệ số chứa tham số (|x-4|-x=2a, |2x-|2x-1||=-m²x). Bỏ dấu GTTĐ theo khoảng rồi biện luận số nghiệm / điều kiện của tham số trong từng khoảng.",
+          "cong_cu": "chia khoảng, biện luận theo tham số",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §3 bài 42", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§13 BT 346-347", "so_bai": 2},
+            {"sach": "TVA", "muc": "§4 Dạng 3 VD4", "so_bai": 1},
+            {"sach": "TCDS", "muc": "6.A.3 Bài tập tự luyện bài 14", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "6 dạng. NDT bài 41 (GTTĐ + ẩn ở mẫu) là bài lai, xếp tạm dạng 1. Dạng 4 và 5 chỉ có 1-3 bài mỗi quyển nên do_tin 'vua'. Ba ví dụ đầu của TVA §6 Dạng 3 thực chất là phương trình GTTĐ, đã tính vào nhóm này (không phải 01467). TVA §6 BT 2-3 cũng là phương trình GTTĐ."
+    },
+    {
+      "id": "NNB01464",
+      "ten": "Toán chuyển động (giải bài toán bằng cách lập phương trình)",
+      "dang": [
+        {
+          "ten": "Chuyển động cơ bản: gặp nhau, đuổi kịp, hơn kém thời gian (s=v.t)",
+          "mo_ta": "Hai (hoặc một) phương tiện đi trên quãng đường AB, biết hiệu vận tốc / thời gian. Gọi ẩn là vận tốc hoặc quãng đường, biểu diễn s=v.t cho từng phương tiện rồi lập phương trình theo quan hệ đề cho (tổng hoặc hiệu quãng đường, hiệu thời gian).",
+          "cong_cu": "s=v.t, bảng v-t-s",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 59", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 Dạng 1 VD2 + BT 3-7, 9, 15, 16, 21 (trộn các kiểu)", "so_bai": 10},
+            {"sach": "VHB2", "muc": "§10 BT 305, 307-309", "so_bai": 4}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Chuyển động xuôi dòng, ngược dòng",
+          "mo_ta": "Ca nô, thuyền đi trên sông có dòng nước. Vận tốc xuôi = vận tốc thực + vận tốc dòng, ngược = thực - dòng (thực > dòng); thường ẩn là vận tốc thực hoặc khoảng cách, lập phương trình theo thời gian xuôi và ngược.",
+          "cong_cu": "v_xuôi = v_thực + v_nước, v_ngược = v_thực - v_nước",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 58", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 Dạng 1 VD1", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Vận tốc trung bình",
+          "mo_ta": "Đề cho vận tốc trên các đoạn đường khác nhau và hỏi vận tốc trung bình. Vận tốc trung bình = tổng quãng đường / tổng thời gian (không phải trung bình cộng các vận tốc); lập phương trình để tìm vận tốc từng đoạn.",
+          "cong_cu": "v_tb = tổng s / tổng t, trung bình điều hòa",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III Ôn tập bài 70", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 Dạng 1 VD3 (chú ý trung bình điều hòa)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§10 BT 306", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chuyển động nâng cao: nhiều phương tiện, nghỉ giữa đường, xe buýt theo chu kì",
+          "mo_ta": "Ba phương tiện cùng lúc, có dừng nghỉ, hoặc xe buýt chạy theo chu kì (cứ 10 phút / 15 phút một chuyến) và người đi cùng / ngược chiều. Dùng thời gian hiệu dụng (trừ thời gian nghỉ) hoặc khoảng cách giữa hai chuyến, lập phương trình từ điều kiện gặp / vượt.",
+          "cong_cu": "thời gian hiệu dụng, khoảng cách giữa hai chuyến",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III Ôn tập bài 73", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 Dạng 1 VD4 (ba ô tô, HSG toàn quốc 1980)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "§10 BT 318*, 319*", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "4 dạng. Dạng 1 là rổ chung cho gặp nhau / đuổi kịp / hơn kém thời gian vì hồ sơ không tách (TVA tự gom BT 3-7, 9, 15, 16, 21 chung một nhóm 'chuyển động'). Chưa đủ chứng cứ để tách 'ngược chiều gặp nhau' và 'cùng chiều đuổi kịp' thành hai dạng; nếu CEO muốn thì tách khi có câu thật. so_bai là ước."
+    },
+    {
+      "id": "NNB01465",
+      "ten": "Năng suất - công việc và các loại khác (lập phương trình)",
+      "dang": [
+        {
+          "ten": "Năng suất, làm chung - làm riêng, vòi nước",
+          "mo_ta": "Công việc / bể nước coi là 1; một giờ (ngày) làm được 1/x công việc. Tổng các phần việc làm chung = 1; hoặc năng suất kế hoạch - thực tế, vượt / thiếu năng suất. Lập phương trình từ tổng phần việc (tổng các 1/x), thường phương trình chứa ẩn ở mẫu.",
+          "cong_cu": "khối lượng = năng suất x thời gian, 1/x công việc mỗi giờ",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 53-54", "so_bai": 2},
+            {"sach": "TVA", "muc": "§5 Dạng 2 VD1, Dạng 3 (công thức, không VD), Dạng 4 VD, BT 10, 17, 22", "so_bai": 6},
+            {"sach": "VHB2", "muc": "§10 BT 312", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bài toán về số: phân số, số có hai (ba) chữ số, cấu tạo thập phân",
+          "mo_ta": "Cho quan hệ giữa các chữ số hoặc tử và mẫu (thêm chữ số vào đầu / cuối, đổi chỗ chữ số, tăng tử và mẫu). Viết số dưới dạng ab=10a+b (hoặc 100a+10b+c), điều kiện chữ số 0-9 (a khác 0), lập phương trình.",
+          "cong_cu": "ab=10a+b, điều kiện chữ số",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 50, 55, 57, 63a", "so_bai": 4},
+            {"sach": "TVA", "muc": "§5 Dạng 5 VD1-4 + BT 20", "so_bai": 5},
+            {"sach": "VHB2", "muc": "§10 BT 301-302", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Tỉ số phần trăm, dung dịch, dân số",
+          "mo_ta": "Đại lượng tăng / giảm m%, nồng độ dung dịch, pha trộn nước nóng - lạnh, dân số năm trước - năm sau. Dùng m% của A là m/100.A, khối lượng chất tan không đổi khi pha, lập phương trình.",
+          "cong_cu": "m% của A, bảo toàn khối lượng chất tan",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 51, 60; Ôn tập bài 72", "so_bai": 3},
+            {"sach": "TVA", "muc": "§5 Dạng 6 VD1-2", "so_bai": 2},
+            {"sach": "VHB2", "muc": "§10 BT 310-311 (nhiệt độ, nồng độ)", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bài toán hình học: chu vi, diện tích khi tăng giảm các cạnh",
+          "mo_ta": "Hình chữ nhật (khu vườn, mảnh đất) cho chu vi hoặc diện tích và quan hệ khi tăng / giảm chiều dài, chiều rộng. Chọn ẩn là một cạnh, biểu diễn cạnh còn lại và diện tích rồi lập phương trình.",
+          "cong_cu": "công thức chu vi, diện tích",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 56", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 Dạng 7 VD1-2", "so_bai": 2},
+            {"sach": "VHB2", "muc": "§10 BT 304", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Toán tuổi và toán cổ",
+          "mo_ta": "Tuổi hai người sau (trước) n năm có quan hệ cho trước; hoặc bài thơ / toán cổ (Đi-ô-phăng, Py-ta-go). Biểu diễn tuổi (số học trò) ở các mốc bằng ẩn x, lập phương trình từ quan hệ tổng / gấp.",
+          "cong_cu": "biểu diễn theo mốc thời gian, dịch bài thơ thành phương trình",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 52", "so_bai": 1},
+            {"sach": "TVA", "muc": "§5 BT 1-2", "so_bai": 2},
+            {"sach": "VHB2", "muc": "§10 VD 74, BT 300, 303", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chia, bán theo quy luật: k phần và 1/n số còn lại (làm ngược từ cuối)",
+          "mo_ta": "Người thứ k nhận k vật và 1/n số còn lại (chia kẹo, bán cam, táo) mà mọi người nhận bằng nhau. Gọi tổng là x, lập phương trình từ điều kiện hai người liên tiếp nhận bằng nhau, hoặc tính ngược từ người cuối.",
+          "cong_cu": "so sánh phần của hai người liên tiếp, tính ngược",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.III §5 bài 61-62", "so_bai": 2},
+            {"sach": "TVA", "muc": "§5 BT 11, 12, 18, 19, 23 + Dạng 2 VD2", "so_bai": 6},
+            {"sach": "VHB2", "muc": "§10 BT 315 (bán cam)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bài toán cánh đồng cỏ mọc - bò ăn (Niu-tơn)",
+          "mo_ta": "Cỏ mọc đều mỗi ngày, số bò khác nhau ăn hết cỏ trong số ngày khác nhau. Đặt ẩn là lượng cỏ ban đầu và lượng cỏ mọc mỗi ngày, lập hệ hai phương trình từ hai tình huống rồi suy ra tình huống thứ ba.",
+          "cong_cu": "lượng cỏ ban đầu + cỏ mọc mỗi ngày",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§5 BT 13 (a,b), 14", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§10 BT 316*, 317*", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "7 dạng (đã gộp 'năng suất lao động' và 'làm chung - làm riêng' vì cùng công thức khối lượng = năng suất x thời gian). Dạng 4 và 5 là kiểu bài cơ bản của SGK, có thể gộp vào dạng 3 hoặc nhóm Cơ bản nếu CEO muốn bớt dạng. Các bài lẻ không thành dạng (TVA §5 Dạng 8: Ác-si-mét mũ vàng, tấm bìa tam giác chia diện tích nguyên, hình vuông abbb, ba người quen; VHB2 BT 313-314 trung bình cộng n số) đề nghị giữ ở nhóm này như bài lẻ, không lập dạng 'khác'."
+    },
+    {
+      "id": "NNB01466",
+      "ten": "Bất phương trình bậc nhất, có tham số",
+      "dang": [
+        {
+          "ten": "Giải bất phương trình bậc nhất một ẩn, biểu diễn tập nghiệm trên trục số",
+          "mo_ta": "Bất phương trình đưa được về ax+b>0 (có ngoặc, mẫu số). Chuyển vế, quy đồng, chia hai vế cho hệ số (đổi chiều nếu số âm), viết tập nghiệm và biểu diễn trên trục số.",
+          "cong_cu": "quy tắc chuyển vế, quy tắc nhân (đổi chiều khi nhân số âm)",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §2 bài 15-23; Ôn tập bài 50-52", "so_bai": 12},
+            {"sach": "VHB2", "muc": "§12 BT 329, 331", "so_bai": 2},
+            {"sach": "TCDS", "muc": "6.B.1 Dạng 1 VD2-5", "so_bai": 4}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất phương trình cộng (trừ) cùng một hằng số vào mỗi phân thức",
+          "mo_ta": "Nhiều phân thức có tử x+hằng số, mẫu là số. Cộng (trừ) cùng một số vào mỗi phân thức để các tử bằng nhau rồi đặt nhân tử chung và xét dấu thừa số còn lại (giống phương trình).",
+          "cong_cu": "cộng hằng số vào mỗi phân thức, nhân tử chung",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §2 bài 24-25", "so_bai": 2},
+            {"sach": "TVA", "muc": "§6 Dạng 1 VD3", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Hệ hai bất phương trình bậc nhất; tìm nghiệm nguyên",
+          "mo_ta": "Hai bất phương trình ràng buộc cùng một ẩn (hoặc tìm số nguyên thỏa cả hai). Giải từng bất phương trình rồi lấy giao hai tập nghiệm (trục số), chọn giá trị nguyên nếu đề yêu cầu.",
+          "cong_cu": "giao hai tập nghiệm trên trục số",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §2 bài 28", "so_bai": 1},
+            {"sach": "TVA", "muc": "§6 Dạng 1 VD1-2, BT 6", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§12 BT 330, 334", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất phương trình có tham số: giải và biện luận; tìm tham số để nghiệm thỏa điều kiện",
+          "mo_ta": "Hệ số của x chứa tham số (mx+1≥m²+x, ax+4>2x+a²). Chuyển về dạng (hệ số).x > (vế phải) rồi xét dấu hệ số (dương / âm / bằng 0) để chia chiều bất đẳng thức. Câu hỏi tìm tham số thì so sánh tập nghiệm với điều kiện cho trước (x>9, nghiệm dương).",
+          "cong_cu": "xét dấu hệ số của x, chia trường hợp",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §2 bài 26", "so_bai": 1},
+            {"sach": "TVA", "muc": "§6 Dạng 2 VD1-9, BT 1, 5; Dạng 6 VD5", "so_bai": 12},
+            {"sach": "VHB2", "muc": "§12 VD 78-79, BT 335-337", "so_bai": 5},
+            {"sach": "TCDS", "muc": "6.B.1 Dạng 1 VD1 (mx+1≥m²+x)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Rút gọn biểu thức rồi tìm x để biểu thức dương, âm, lớn hơn một số",
+          "mo_ta": "Cho biểu thức hữu tỉ A(x). Rút gọn A (kèm ĐKXĐ), rồi giải bất phương trình A>0, A<0, A>k để tìm x. Câu hỏi sau rút gọn thường quy về bất phương trình bậc nhất hoặc thương.",
+          "cong_cu": "rút gọn phân thức, ĐKXĐ, bất phương trình thương",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§6 Dạng 6 VD3-4, BT 4", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§12 BT 332-333; §15 BT 353-355", "so_bai": 5}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "5 dạng. Dạng 5 chồng với chuyên đề phân thức 1.4 (câu hỏi sau rút gọn) và nhóm 01467 (khi A là thương): đề nghị đặt ở nhóm nào có dạng bất phương trình thương hay gặp nhất sau khi CEO chốt. NDT bài 27 (lập bất phương trình từ đề bài, chỉ lập, không giải) chỉ 1 bài nên không lập dạng, để lẻ. Phần nguyên [x] có trong VHB2 §12, TVA §6 Dạng 6, TCDS B.1 nhưng không hợp tên nhóm này, đã đề xuất thành nhóm thiếu (xem nhom_thieu); nếu CEO không lập nhóm đó thì thêm 1 dạng 'Phương trình có phần nguyên [A]=n ⇔ n≤A<n+1' vào đây."
+    },
+    {
+      "id": "NNB01467",
+      "ten": "Bất phương trình tích, thương, chứa dấu giá trị tuyệt đối",
+      "dang": [
+        {
+          "ten": "Bất phương trình tích (và đa thức phân tích được): bảng xét dấu",
+          "mo_ta": "Vế trái là tích các nhị thức (hoặc tam thức phân tích được), vế phải 0 (x²-5x+6<0, (x-2)(x-5)>0). Phân tích thành nhân tử, lập bảng xét dấu từng nhị thức, đọc khoảng thỏa dấu cần tìm.",
+          "cong_cu": "phân tích thành nhân tử, bảng xét dấu nhị thức",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§6 Dạng 5 VD1-3", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§15 VD 86, BT 352a-b", "so_bai": 3},
+            {"sach": "TCDS", "muc": "6.B.2 Dạng 3 VD1a + Bài 1-4", "so_bai": 5}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất phương trình thương (ẩn ở mẫu): chuyển vế, quy đồng, bảng xét dấu",
+          "mo_ta": "Ẩn nằm ở mẫu, vế phải là số (1, 2) hoặc phân thức khác. Không khử mẫu (không biết dấu mẫu); chuyển hết về một vế, quy đồng, rồi xét dấu tử và mẫu bằng bảng xét dấu. Có cả thương bậc cao (phân tích cả tử và mẫu).",
+          "cong_cu": "chuyển vế - quy đồng, bảng xét dấu tử và mẫu",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Ch.IV §2 bài 28b", "so_bai": 1},
+            {"sach": "TVA", "muc": "§6 Dạng 4 VD1-3", "so_bai": 3},
+            {"sach": "VHB2", "muc": "§15 VD 87, BT 352c-d, 356", "so_bai": 4},
+            {"sach": "TCDS", "muc": "6.B.3 (2 VD + 6 BT)", "so_bai": 8}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất phương trình chứa một dấu GTTĐ: biến đổi tương đương |f|<a, |f|>a, |f|<g, |f|>g, |f|>|g|",
+          "mo_ta": "Một dấu GTTĐ: |f|<g ⇔ -g<f<g; |f|>g ⇔ f<-g hoặc f>g (g có thể là biểu thức); |f|>|g| ⇔ f²>g². Hoặc xét hai trường hợp f≥0, f<0.",
+          "cong_cu": "|f|<g ⇔ -g<f<g, |f|>|g| ⇔ f²>g²",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "§14 VD 84-85, BT 348-351", "so_bai": 6},
+            {"sach": "TVA", "muc": "§6 Dạng 3 VD5-6", "so_bai": 2},
+            {"sach": "TCDS", "muc": "6.B.2 Dạng 2 (4 VD, 0 BT)", "so_bai": 4}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất phương trình nhiều dấu GTTĐ: lập bảng xét dấu, chia khoảng",
+          "mo_ta": "Hai dấu GTTĐ trở lên (|x|-x+2≤2|x-4|, |x-1|+|x-5|>8). Lập bảng xét dấu các biểu thức trong GTTĐ, giải bất phương trình ở từng khoảng, gộp tập nghiệm.",
+          "cong_cu": "bảng xét dấu, chia khoảng",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§6 Dạng 3 VD4", "so_bai": 1},
+            {"sach": "TCDS", "muc": "6.B.2 Dạng 2 VD2", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "4 dạng. Dạng 4 chỉ hai ví dụ (trùng nhau giữa TVA và TCDS: |x|-x+2≤2|x-4|), nên 'vua'; có thể gộp vào dạng 3 nếu CEO thấy quá nhỏ. Không quyển nào cho bài tập BPT GTTĐ nhiều (TCDS 0 BT), nên dạng 3-4 sẽ ít câu."
+    }
+  ],
+  "nhom_thieu": [
+    {
+      "ten": "Phương trình, bất phương trình chứa phần nguyên [x]",
+      "chuyen_de": "2.1 Phương trình một ẩn (hoặc 2.3 Bất phương trình)",
+      "nguon": "VHB2 §12 VD 80, BT 341; TVA §6 Dạng 6 VD2, BT 7; TCDS 6.B.1 Bài 3",
+      "so_bai": 5,
+      "ly_do": "Cùng một kiểu bài ([A]=n ⇔ n≤A<n+1) xuất hiện ở 3 quyển nhưng nằm sai chỗ (đều ở mục bất phương trình bậc nhất) và tên 8 nhóm hiện có không nhận. Nếu CEO không muốn lập nhóm cho 5 bài thì thêm một dạng vào NNB01466."
+    },
+    {
+      "ten": "Hệ phương trình và tính biểu thức từ hệ điều kiện",
+      "chuyen_de": "1.5 Biến đổi các biểu thức đặc biệt (gần hơn chủ đề Phương trình)",
+      "nguon": "NDT Phụ lục A bài 14, 18; Đề 1 B2, Đề 5 B2; VHB2 §ứng dụng VD 55 (hệ từ Pytago, hình học)",
+      "so_bai": 5,
+      "ly_do": "Hệ hai ba phương trình (x³-9x²+29x-47=0 và y³-9y²+29y-19=0 tính x+y; ax+by=3, ax²+by²=5 ...) không nhận ở nhóm nào của chủ đề Phương trình. Kiểu bài là 'tính giá trị biểu thức từ điều kiện' nên tự nhiên hơn ở 1.5 ①; đề nghị xếp ở đó thay vì lập nhóm mới. Hệ phương trình là kiến thức lớp 9, chưa có chuyên đề riêng trong sách 8T."
+    }
+  ],
+  "chong_lan": [
+    "NNB01460 ↔ NNB01461: NDT Ch.III §3 xếp bài 32-37 (bậc 3, 4, đặt ẩn phụ, (x-6)^4+(x-8)^4) vào 'phương trình tích' nhưng nội dung là bậc cao; trong đề xuất này đặt ở 01461. TVA §4 Dạng 5 và VHB2 §8 cũng đặt phương trình tích bậc cao chung với bậc cao.",
+    "NNB01460 (dạng 5 'ẩn ở mẫu, đặt ẩn phụ') ↔ NNB01461: TCDS A.2 mục c) 'đưa phương trình ẩn ở mẫu về bậc cao' (13 bài) vừa là ẩn mẫu vừa là bậc cao; đã xếp ở 01460.",
+    "NNB01460 (dạng 3 cộng hằng số vào phân thức) ↔ NNB01462 (dạng 6 a,b,c đối xứng) ↔ NNB01466 (dạng 2 cùng kỹ thuật cho bất phương trình): ba nơi dùng cùng một thủ thuật; nên đặt tên dạng nhất quán và cân nhắc gộp lại thành một dạng 'cộng hằng số vào mỗi phân thức' xuyên nhóm.",
+    "NNB01460 (dạng 4 ẩn mẫu) ↔ NNB01462 (dạng 4 ẩn mẫu có tham số): ranh giới là có tham số hay không; TVA §4 BT 14-19 (8 bài trộn số và tham số) khó tách.",
+    "NNB01461 ↔ NNB01462 (dạng 5 bậc cao có tham số): TCDS A.1 (4 VD + 12 BT) là bậc cao có tham số; đã xếp ở 01462.",
+    "NNB01463 ↔ NNB01467: TVA §6 Dạng 3 có 3 ví dụ đầu là phương trình GTTĐ (tính vào 01463) và 3 ví dụ sau là bất phương trình (tính vào 01467); TVA §6 BT 2-3 cũng là phương trình. NDT đặt phương trình GTTĐ trong chương Bất phương trình (Ch.IV §3).",
+    "NNB01464 ↔ NNB01465: hồ sơ NDT/TVA/VHB2 đặt 'toán chuyển động' trong cùng mục lập phương trình; các bài chuyển động có điều kiện nghỉ / xe buýt (VHB2 318*, 319*, NDT 73) ranh giới với 'dạng khác' mờ.",
+    "NNB01466 (dạng 5) ↔ NNB01467 (dạng 2) ↔ chuyên đề 1.4 Phân thức: các bài 'rút gọn rồi tìm x để A>0' đều là bất phương trình thương.",
+    "NNB01466 (dạng 3 hệ hai bất phương trình) ↔ NNB01467: hệ bất phương trình bậc nhất giữ ở 01466; hệ gồm bất phương trình tích / thương nếu có thì xếp 01467.",
+    "Nhóm Cơ bản NNB01496-01498 ↔ các dạng co_ban của 01460 (dạng 1, 2, 4), 01463 (dạng 1, 2), 01466 (dạng 1, 3), 01462 (dạng 1): cùng loại bài SGK; cần CEO quyết ranh giới (giữ dạng cơ bản ở nhóm HSG hay chỉ để ở nhóm Cơ bản).",
+    "Không tính ở đây: NDT Ch.IV §1 và Ôn tập (bài 43-49) chỉ là bất đẳng thức, thuộc chuyên đề 3.1; phương trình nghiệm nguyên thuộc chuyên đề 4.3 (Số học)."
+  ]
+}

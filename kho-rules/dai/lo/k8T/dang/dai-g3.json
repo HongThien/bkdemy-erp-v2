@@ -1,0 +1,471 @@
+{
+  "nhom": [
+    {
+      "id": "NNB01468",
+      "ten": "Xét hiệu, biến đổi tương đương",
+      "dang": [
+        {
+          "ten": "Xét hiệu đưa về tổng các bình phương",
+          "mo_ta": "Dấu hiệu: hai vế là đa thức, thường đối xứng hoặc bậc chẵn, không có điều kiện ràng buộc. Lập A − B rồi nhóm/khai triển thành tổng các bình phương (a − b)², … (hoặc dạng m(...)² + n(...)²) và chỉ ra dấu \"=\" xảy ra khi nào.",
+          "cong_cu": "Hằng đẳng thức bình phương; A − B ≥ 0; hoàn thành bình phương; (a − b)² ≥ 0",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 1 (dùng định nghĩa)", "so_bai": 1},
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 1 (dùng định nghĩa): 5 VD + 12 BT", "so_bai": 17},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, dạng 1 Dùng định nghĩa (xét hiệu): VD88 + BT 358–371", "so_bai": 15},
+            {"sach": "NDT", "muc": "Chương IV §1 bài 10 (6 ý), bài 11 (5 ý)", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Xét hiệu rồi phân tích thành tích các nhân tử có dấu xác định",
+          "mo_ta": "Dấu hiệu: A − B khai triển không ra tổng bình phương nhưng phân tích được thành tích; các nhân tử có dấu rõ nhờ điều kiện của biến (a, b, c ≥ 1; x, y thuộc (0; 1/2]; ba cạnh tam giác). Xét dấu từng nhân tử rồi kết luận.",
+          "cong_cu": "Phân tích đa thức thành nhân tử; điều kiện của biến; quy tắc dấu của tích",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Hướng dẫn BT 22, 23 (\"xét hiệu … phân tích ra thừa số\")", "so_bai": 2},
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 2 VD1 (a, b, c ≥ 1)", "so_bai": 1}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Biến đổi tương đương liên tiếp tới bất đẳng thức hiển nhiên đúng",
+          "mo_ta": "Dấu hiệu: hai vế khó so sánh trực tiếp, không có điều kiện ràng buộc phức tạp. Biến đổi từng bước bằng các phép tương đương (⇔: chuyển vế, nhân hai vế với số dương, bình phương hai vế không âm) tới một bất đẳng thức hiển nhiên đúng, bước cuối chỉ ra dấu \"=\".",
+          "cong_cu": "Phép biến đổi tương đương; nhân/chia hai vế với số dương; nâng lũy thừa hai vế không âm",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 2 (24 ví dụ gộp nhiều kiểu: Cô-si, bình phương, tách phân thức, cạnh tam giác)", "so_bai": 24},
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 2 (biến đổi tương đương): 5 VD + 21 BT", "so_bai": 26},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, dạng 2 Biến đổi tương đương: VD89 (bài tập gộp chung 358–376 với dạng 1)", "so_bai": 1},
+            {"sach": "NDT", "muc": "Chương IV §1 bài 13 (bài thi HSG, nhiều ý)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Bất đẳng thức chứa phân thức: khử mẫu (mẫu dương) rồi biến đổi tương đương",
+          "mo_ta": "Dấu hiệu: hai vế là phân thức hoặc tổng phân thức với mẫu dương theo điều kiện. Quy đồng/nhân chéo bỏ mẫu (nêu rõ mẫu dương) để được bất đẳng thức đa thức, rồi xét hiệu hoặc biến đổi tương đương.",
+          "cong_cu": "Quy đồng; nhân chéo với mẫu dương; xét hiệu",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 2 VD3 (a²/b² + b²/c² + c²/a² ≥ c/b + b/a + a/c)", "so_bai": 1},
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 2 Bài 3 (x, y thuộc (0; 1/2])", "so_bai": 1},
+            {"sach": "NDT", "muc": "Chương IV §1 bài 13a (3 ý, BĐT phân thức)", "so_bai": 1}
+          ],
+          "do_tin": "thap"
+        }
+      ],
+      "ghi_chu": "4 dạng. Dạng 4 (phân thức) có thể chỉ là một nhánh của dạng 3 — hồ sơ không tách số bài; để CEO quyết gộp hay giữ. Số bài của dạng 3 bị phồng vì TVA Cách 2 (24 VD) và TCDS PP2 là rổ chung nhiều kiểu: khi gán dạng phải đọc lời giải chứ không đoán theo mục sách. Ranh giới với AM–GM: bài chỉ cần (a − b)² ≥ 0 hoặc a² + b² ≥ 2ab, không gọi tên Cô-si, vẫn ở đây (dạng 1); chỉ khi lời giải áp dụng AM–GM cho x₁, …, xₙ không âm hoặc dùng điểm rơi mới sang chuyên đề AM–GM. Bài có điều kiện ràng buộc cần thế/rút biến hoặc đặt ẩn phụ -> NNB01470."
+    },
+    {
+      "id": "NNB01469",
+      "ten": "Dùng bất đẳng thức quen thuộc (Cô-si, Bu-nhi-a-cốp-xki)",
+      "dang": [
+        {
+          "ten": "Dùng bất đẳng thức Bu-nhi-a-cốp-xki để chứng minh",
+          "mo_ta": "Dấu hiệu: vế có dạng tổng bình phương nhân tổng bình phương, hoặc tổng tích từng cặp, hoặc biểu thức hai/ba biến dựng được thành (a² + b² + c²)(x² + y² + z²) ≥ (ax + by + cz)². Chọn bộ số (có thể tách hằng số, ví dụ 1 = 1·1), áp dụng và tìm điều kiện dấu \"=\" (các tỉ số bằng nhau).",
+          "cong_cu": "Bất đẳng thức Bu-nhi-a-cốp-xki (a² + b²)(x² + y²) ≥ (ax + by)²; điều kiện dấu \"=\" a/x = b/y",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ4 PP3 mục 2 Sử dụng BĐT Bunhiacopski: 5 VD + 4 BT", "so_bai": 9},
+            {"sach": "NDT", "muc": "Phụ lục A bài 41 (bài toán phụ dạng Bunhiacopxki)", "so_bai": 1},
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 5 (5 VD gộp BĐT quen thuộc; chưa tách phần Bunhiacốpxki)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Chứng minh bất đẳng thức phụ (bổ đề) rồi cộng/nhân theo vế",
+          "mo_ta": "Dấu hiệu: vế cần chứng minh là tổng/tích ba cụm hoán vị vòng quanh mà từng cụm đánh giá được bằng một bất đẳng thức đơn giản (a³ + b³ ≥ ab(a + b), a² + b² ≥ 2ab…). Chứng minh bổ đề trước, áp dụng cho từng cụm rồi cộng (hoặc nhân, khi hai vế dương) theo vế.",
+          "cong_cu": "Bổ đề tự chứng minh bằng xét hiệu; cộng/nhân từng vế hai bất đẳng thức cùng chiều",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Phụ lục A bài 23, 41 (\"bài toán phụ\"); Phụ lục C Đề 6 bài 2 (a⁸ + b⁸ ≥ a⁷b + ab⁷)", "so_bai": 3},
+            {"sach": "TCDS", "muc": "CĐ4 PP3 mục 1 (có \"bài toán tổng quát\" p-118–119; chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Bất đẳng thức chứa giá trị tuyệt đối",
+          "mo_ta": "Dấu hiệu: đề có dấu | |. Dùng |a + b| ≤ |a| + |b|, |a − b| ≥ |a| − |b|, -|a| ≤ a ≤ |a|, xét dấu \"=\" xảy ra khi a, b cùng dấu (hoặc tích ab ≥ 0).",
+          "cong_cu": "|a + b| ≤ |a| + |b|; |a − b| ≥ |a| − |b|; điều kiện dấu \"=\"",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "NDT", "muc": "Chương IV §1 bài 14d; Phụ lục A bài 39", "so_bai": 2},
+            {"sach": "TVA", "muc": "§8 phần kiến thức (4 BĐT quen thuộc có chứng minh); không có VD riêng", "so_bai": 0},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, phần II Các hằng bất đẳng thức; không có VD riêng", "so_bai": 0}
+          ],
+          "do_tin": "thap"
+        }
+      ],
+      "ghi_chu": "3 dạng, đều KHÔNG phải AM–GM (đã chừa cho chuyên đề CEO). Dạng 3 rất mỏng (~2 bài thật) — chỉ giữ vì sách TVA, VHB2, TCDS đều nêu hằng BĐT giá trị tuyệt đối như công cụ riêng; nếu CEO thấy mỏng thì gộp vào NNB01470. CHỖ RANH GIỚI LỚN: hệ quả Cô-si một bước (a²+b² ≥ 2ab, (a+b)² ≥ 4ab, a/b + b/a ≥ 2, 1/a + 1/b ≥ 4/(a+b), (a+b+c)(1/a+1/b+1/c) ≥ 9) chiếm ~46 mục trong TCDS PP3 mục 1 và 5 VD TVA Cách 5; phần này trùng NNB01742/01745 của chuyên đề AM–GM (bổ đề cộng mẫu nằm ngay trong @LT nhom1 và nhom3 đã dựng). Đề nghị: chuyển sang AM–GM; nhóm này chỉ nhận Bu-nhi-a-cốp-xki, bổ đề phụ và giá trị tuyệt đối. Nhiều ví dụ ở TCDS mục BCS (VD1 a² + b² + c² ≥ ab + bc + ca) thực chất chỉ cần xét hiệu -> NNB01468 dạng 1."
+    },
+    {
+      "id": "NNB01470",
+      "ten": "Làm trội, phản chứng và các kỹ thuật khác",
+      "dang": [
+        {
+          "ten": "Làm trội để rút gọn tổng (tách hiệu, triệt tiêu liên tiếp)",
+          "mo_ta": "Dấu hiệu: tổng nhiều số hạng 1/k², 1/k³, 1/(k(k+1)…) với k chạy, cần chặn trên/dưới bởi hằng số. Làm trội/làm giảm từng số hạng để viết thành hiệu hai phân số liên tiếp (1/(k-1) − 1/k), cộng lại thì các số hạng giữa triệt tiêu.",
+          "cong_cu": "1/k² < 1/(k(k−1)) = 1/(k−1) − 1/k; tổng teo; làm trội/làm giảm",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, mục IV (VD96, VD97 + BT 402–415)", "so_bai": 16},
+            {"sach": "TVA", "muc": "§8 Cách 2 VD10, VD16; BT 29, 30", "so_bai": 4},
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 4 VD5 (1/5 + 1/13 + … < 1/2); PP4 gộp 5 VD + 5 BT chưa tách", "so_bai": 1},
+            {"sach": "NDT", "muc": "Phụ lục A bài 29, 33", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Làm trội/làm giảm từng phân số để chặn tổng giữa hai giá trị",
+          "mo_ta": "Dấu hiệu: tổng vài phân số có tử mẫu dạng a/(a+b+c), cần chứng minh 1 < S < 2. Thêm/bớt cùng một đại lượng vào mẫu (a/(a+b) > a/(a+b+c); a/b > (a+c)/(b+c) khi a/b < 1) để cả tổng quy về cùng mẫu rồi cộng.",
+          "cong_cu": "Tính chất phân số: a/b < 1 ⇒ a/b < (a+c)/(b+c); thêm/bớt vào mẫu",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ4 Phương pháp 4 VD3 (a, b, c, d > 0: 1 < S < 2); PP4 gộp chưa tách", "so_bai": 1},
+            {"sach": "TVA", "muc": "§8 không có dạng riêng (chỉ lẫn trong Cách 2)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Phương pháp phản chứng",
+          "mo_ta": "Dấu hiệu: kết luận có dạng \"≤\" hoặc \"không tồn tại\", điều ngược lại cho ra giả thiết dễ khai thác (a² + b² ≤ 2 ⇒ a + b ≤ 2). Giả sử điều ngược lại, suy ra mâu thuẫn với giả thiết hoặc bất đẳng thức hiển nhiên.",
+          "cong_cu": "Phủ định mệnh đề; mâu thuẫn với giả thiết; bình phương hai vế không âm",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 3 (a² + b² ≤ 2 ⇒ a + b ≤ 2, 2 cách)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, dạng 4 Phản chứng: VD95 + BT 378–384", "so_bai": 8}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đổi biến phụ hoặc thế điều kiện ràng buộc rồi chứng minh",
+          "mo_ta": "Dấu hiệu: giả thiết có điều kiện tổng/tích (a + b + c = 1; abc = 1) hoặc biểu thức lặp một cụm. Đặt ẩn phụ hoặc rút một biến từ điều kiện để đưa về ít biến hơn/bất đẳng thức quen thuộc, chú ý miền của biến mới.",
+          "cong_cu": "Đặt ẩn phụ; rút biến theo điều kiện; miền giá trị của biến mới",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 4 (5 VD, VD1: a + b + c = 1 ⇒ a² + b² + c² ≥ 1/3)", "so_bai": 5},
+            {"sach": "NDT", "muc": "Chương IV §1 bài 14 (điều kiện 0 ≤ a, b, c ≤ 2 và a + b + c = 3; 3 cách)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "Mục V Vài điểm chú ý — đổi biến (VD98 …; chưa tách số bài)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Sắp thứ tự các biến (giả sử a ≥ b ≥ c)",
+          "mo_ta": "Dấu hiệu: bất đẳng thức đối xứng (hoán vị các biến không đổi). Giả sử a ≥ b ≥ c không mất tính tổng quát, dùng thứ tự để xét dấu các hiệu a − b, b − c, … và đánh giá.",
+          "cong_cu": "Không mất tính tổng quát; xét dấu các hiệu theo thứ tự",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 6 (abc ≥ (b+c−a)(a+c−b)(a+b−c), 2 cách)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, mục V: VD99; BT 385–389 (\"có sắp thứ tự các biến\")", "so_bai": 6}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Xét từng khoảng giá trị của biến",
+          "mo_ta": "Dấu hiệu: một biến nhận mọi giá trị thực, biểu thức đổi dấu hoặc đổi dạng theo vị trí của biến (x⁸ − x⁷ + x² − x + 1 > 0). Chia thành các khoảng (x ≤ 0; 0 < x < 1; x ≥ 1), chứng minh riêng từng khoảng.",
+          "cong_cu": "Chia trường hợp theo khoảng giá trị; đánh giá từng miền",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 1 Cách 7 (x⁸ − x⁷ + x² − x + 1 > 0, 2 cách)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "CM bất đẳng thức, mục V: BT 377", "so_bai": 1}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Bất đẳng thức với độ dài ba cạnh của tam giác",
+          "mo_ta": "Dấu hiệu: đề nêu a, b, c là độ dài ba cạnh một tam giác. Dùng a < b + c (các hiệu b + c − a > 0, …), hoặc đặt x = b + c − a, y = c + a − b, z = a + b − c > 0 rồi chuyển về bất đẳng thức của x, y, z.",
+          "cong_cu": "Bất đẳng thức tam giác; đặt x = b + c − a (x, y, z > 0); chu vi cho trước",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Cách 2 VD5, VD20; BT 10, 22, 23", "so_bai": 5},
+            {"sach": "NDT", "muc": "Chương IV §1 bài 12; Phụ lục A bài 39; Phụ lục C Đề 2 bài 3, Đề 7 bài 3", "so_bai": 4},
+            {"sach": "VHB2", "muc": "VD99 + BT 390–401 (nhóm tổng hợp có cạnh tam giác; chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "7 dạng — nhiều hơn mức thường 2–6 nhưng cả 7 đều có tên riêng trong ít nhất một sách (TVA chia sẵn Cách 3–7, VHB2 chia sẵn mục IV–V, TCDS PP4). Có thể gộp \"sắp thứ tự\" và \"xét khoảng\" (mỗi dạng chỉ ~2–7 bài) thành \"Chia trường hợp theo thứ tự hoặc khoảng\" nếu CEO thấy dài. Dạng 2 (làm trội từng phân số) hồ sơ chỉ có 1 ví dụ rõ — do_tin vừa, có thể gộp vào dạng 1. Lô 12 từng lệch 21 câu giữa 030101/030102/030103 chính vì các kỹ thuật ở đây (Cách 3–7 của TVA) bị gán theo \"công cụ\" hay \"hình thức\"; xem mục chong_lan để có luật gán."
+    },
+    {
+      "id": "NNB01471",
+      "ten": "Giá trị lớn nhất, nhỏ nhất của đa thức",
+      "dang": [
+        {
+          "ten": "Đưa tam thức bậc hai một biến về bình phương đủ",
+          "mo_ta": "Dấu hiệu: A = ax² + bx + c (một biến, không điều kiện hoặc có miền rộng). Viết A = a(x + b/2a)² + k; a > 0 có GTNN = k, a < 0 có GTLN = k, nêu giá trị x để dấu \"=\" xảy ra.",
+          "cong_cu": "Hoàn thành bình phương; (...)² ≥ 0; điều kiện đủ để có cực trị",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 1 (7 VD: VD1 2x² − 8x + 1, −5x² − 4x + 1 …)", "so_bai": 7},
+            {"sach": "VHB2", "muc": "GTNN–GTLN: VD103, VD104 + BT 418 (mục II.1 tam thức bậc hai)", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đa thức hai biến: ghép thành tổng các bình phương",
+          "mo_ta": "Dấu hiệu: F(x; y) = ax² + by² + cxy + dx + ey + h không có điều kiện. Nhóm các số hạng thành tổng m(...)² + n(...)² + r (ghép (x − y)², (x − 1)²…), cực trị bằng r đạt khi từng bình phương bằng 0.",
+          "cong_cu": "Hoàn thành bình phương hai biến; hệ phương trình từ các bình phương bằng 0",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 Dạng 1: 2 VD + 4 VD bằng Casio + 10 BT", "so_bai": 16},
+            {"sach": "TVA", "muc": "§8 BT 27 (x² − 2x + y² + 4y + 5)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "GTNN–GTLN: BT 426 (hai biến)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Đa thức bậc cao hơn hai: ghép nhân tử, đặt ẩn phụ",
+          "mo_ta": "Dấu hiệu: tích các nhân tử bậc nhất liên tiếp hoặc đa thức bậc 3, 4 chứa một cụm lặp ((x − 1)(x − 3)(x² − 4x + 5), x(x+1)(x+2)(x+3)). Ghép nhân tử, đặt t = cụm chung, đưa về tam thức bậc hai theo t, chú ý miền của t.",
+          "cong_cu": "Ghép nhân tử; đặt ẩn phụ; miền giá trị của ẩn phụ (t ≥ −1…)",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục II.2: VD105 + BT 419 (a–g)", "so_bai": 2},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 2 (đổi biến; 4 VD gộp cả điều kiện, chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "3 dạng, không dạng nào có số bài lớn (đa thức không điều kiện là phần mỏng của chuyên đề cực trị trong các sách). Dạng 3 chỉ có 2 bài rõ ràng trong hồ sơ (VHB2). Ranh giới: đa thức có điều kiện ràng buộc giữa các biến (x + y = 1) -> NNB01473; cực trị đa thức mà phải dùng AM–GM -> chuyên đề AM–GM. Cực trị khi biến là số nguyên (VHB2 VD120–122, BT 445–454) chưa nhóm nào nhận — xem nhom_thieu."
+    },
+    {
+      "id": "NNB01472",
+      "ten": "Giá trị lớn nhất, nhỏ nhất của phân thức, biểu thức chứa dấu giá trị tuyệt đối",
+      "dang": [
+        {
+          "ten": "Phân thức tử hằng, mẫu là tam thức bậc hai",
+          "mo_ta": "Dấu hiệu: A = k/(ax² + bx + c), tử là hằng số. Mẫu đạt giá trị lớn nhất (hoặc nhỏ nhất) khi đưa về bình phương đủ thì A đạt cực trị ngược lại (chú ý dấu của k và mẫu ≠ 0).",
+          "cong_cu": "Hoàn thành bình phương ở mẫu; đổi chiều khi lấy nghịch đảo",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 Dạng III.1: 2 VD + 2 BT", "so_bai": 4},
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục II.3 (VD106…)", "so_bai": null},
+            {"sach": "TVA", "muc": "§8 BT 31–37 (vd 3/(4x² − 4x + 5))", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phân thức có mẫu là bình phương của một nhị thức (đặt y = 1/(x − a))",
+          "mo_ta": "Dấu hiệu: mẫu dạng (x − a)² và tử là tam thức bậc hai. Đặt y = 1/(x − a), A trở thành tam thức bậc hai theo y, tìm cực trị theo y rồi đối chiếu y ≠ 0.",
+          "cong_cu": "Đặt ẩn phụ y = 1/(x − a); biểu diễn tử qua (x − a)",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 Dạng III.2: 2 VD + 3 BT", "so_bai": 5},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 3 VD2 (3x² − 8x + 6)/(x² − 2x + 1), 2 cách", "so_bai": 1},
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục II.4 (phân thức mẫu bình phương nhị thức)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phân thức dạng khác: xét A − m (m là cực trị dự đoán) đưa tử về bình phương",
+          "mo_ta": "Dấu hiệu: phân thức mẫu x² + 1, x⁴ + x² + 1, tử là nhị thức/tam thức, không thuộc hai dạng trên. Dự đoán giá trị cực trị m, xét A − m = (bình phương)/(mẫu dương), kết luận và chỉ ra x đạt dấu \"=\"; hoặc đổi sang −A, 1/A, A² để đưa về bài đơn giản hơn.",
+          "cong_cu": "Xét hiệu A − m; thay điều kiện cực trị bằng điều kiện tương đương (−A, 1/A, A²); thêm bớt hằng số",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 Dạng III.3: 3 VD + 6 BT", "so_bai": 9},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 3 (12 VD gộp 2 dạng trên)", "so_bai": 12},
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục II.5 (VD108, VD112…)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Tổng các dấu giá trị tuyệt đối: dùng |A| + |B| ≥ |A + B|",
+          "mo_ta": "Dấu hiệu: biểu thức dạng |x − a| + |x − b| (hệ số 1) hoặc nhiều số hạng như |x−1| + |x−2| + … Dùng |A| + |B| ≥ |A + B| (dấu \"=\" khi AB ≥ 0), ghép các cặp đối xứng từ hai đầu để cực trị đạt trên một đoạn.",
+          "cong_cu": "|A| + |B| ≥ |A + B|; |A − B| ≥ |A| − |B|; điều kiện dấu \"=\"",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 Dạng 2 (đa thức có GTTĐ): 4 VD + 7 BT (gộp cả 2 dạng GTTĐ)", "so_bai": 11},
+            {"sach": "VHB2", "muc": "GTNN–GTLN: VD113–115 + BT 420, 443, 444", "so_bai": 6},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 4 (xét từng khoảng, 4 VD; VD2 |x − 2| + |x − 3|)", "so_bai": 4}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Biểu thức chứa giá trị tuyệt đối: lập bảng xét dấu, xét từng khoảng",
+          "mo_ta": "Dấu hiệu: hệ số khác nhau hoặc có hạng tử ngoài dấu giá trị tuyệt đối (|x−1| + 2|x−2| + x). Lập bảng xét dấu, phá dấu | | trên từng khoảng, tìm cực trị mỗi khoảng rồi so sánh (cực trị có thể đạt tại các điểm đổi dấu).",
+          "cong_cu": "Bảng xét dấu; phá dấu giá trị tuyệt đối; so sánh cực trị các khoảng",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 4 (4 VD, VD2 giải 2 cách)", "so_bai": 4},
+            {"sach": "TCDS", "muc": "CĐ5 Dạng 2 (gộp với dạng trên, chưa tách)", "so_bai": null},
+            {"sach": "VHB2", "muc": "GTNN–GTLN: VD113–115, BT 420, 443, 444 (gộp, chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "5 dạng. Hai dạng GTTĐ (4 và 5) được hồ sơ gộp chung một bảng nên số bài không tách được và độ tin chỉ \"vừa\"; nếu CEO thấy khó phân biệt có thể gộp thành \"Biểu thức chứa giá trị tuyệt đối\". Ranh giới: biểu thức dạng t + k/t (x > 0, đặt t = x + 1/x) -> chuyên đề AM–GM (NDB01599 \"AM-GM 1 biến dạng tổng\"), dù xuất hiện ở TVA §8 VD12, NDT Phụ lục A bài 30, Đề 10 bài 2. Phân thức mà có điều kiện giữa các biến -> NNB01473."
+    },
+    {
+      "id": "NNB01473",
+      "ten": "Giá trị lớn nhất, nhỏ nhất có điều kiện ràng buộc",
+      "dang": [
+        {
+          "ten": "Rút một biến từ điều kiện rồi đưa về một biến",
+          "mo_ta": "Dấu hiệu: điều kiện bậc nhất giữa các biến (x + y = 1; x + 2y = 1) và biểu thức bậc hai hoặc bậc ba. Thế y theo x để đưa về đa thức một biến, rồi hoàn thành bình phương hoặc đặt ẩn phụ; kiểm tra miền của biến còn lại.",
+          "cong_cu": "Thế biến theo điều kiện; hoàn thành bình phương; miền của biến còn lại",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục III: VD109, 110, 111 + BT 421–425, 433–435, 438, 439", "so_bai": 13},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 2 (đổi biến, 4 VD; VD1 x³ + y³ + xy, x + y = 1, 3 cách)", "so_bai": 4},
+            {"sach": "TCDS", "muc": "CĐ5 mục IV cách 1 \"biểu thị ẩn này qua ẩn kia\" (5 VD + 35 BT gộp 3 cách, chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Biến đổi điều kiện để làm xuất hiện biểu thức mới (đặt s = x + y, đổi biến)",
+          "mo_ta": "Dấu hiệu: điều kiện cho dưới dạng đẳng thức bậc hai hoặc đối xứng ((x + y)² + 7(x + y) + y² + 10 = 0; x = 1/2 + a). Biến đổi điều kiện để có biểu thức (s = x + y, hoặc a = x − 1/2) rồi chặn miền của s bằng (...)² ≥ 0, đưa bài toán về s.",
+          "cong_cu": "Đặt ẩn phụ s = x + y; miền giá trị suy từ điều kiện; (...)² ≥ 0",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ5 mục IV cách 2 \"làm xuất hiện biểu thức mới\" (gộp, chưa tách)", "so_bai": null},
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 1 VD7 ((x+y)² + 7(x+y) + y² + 10 = 0)", "so_bai": 1},
+            {"sach": "VHB2", "muc": "GTNN–GTLN mục III (đổi biến x = 1/2 + a; chưa tách số bài)", "so_bai": null}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Dùng bất đẳng thức Bu-nhi-a-cốp-xki tìm cực trị",
+          "mo_ta": "Dấu hiệu: điều kiện dạng tổng bình phương cho trước (x² + y² = 52) và biểu thức cần cực trị là tổng tuyến tính (2x + 3y), hoặc ngược lại. Áp dụng (ax + by)² ≤ (a² + b²)(x² + y²) rồi chỉ ra x, y để dấu \"=\" xảy ra.",
+          "cong_cu": "Bất đẳng thức Bu-nhi-a-cốp-xki; điều kiện dấu \"=\" (tỉ lệ)",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TVA", "muc": "§8 Dạng 2 Cách 5 (2 VD, VD2: x² + y² = 52, GTLN 2x + 3y)", "so_bai": 2},
+            {"sach": "VHB2", "muc": "GTNN–GTLN: VD116 + BT 436, 437*, 442", "so_bai": 4},
+            {"sach": "TCDS", "muc": "CĐ5 mục IV cách 3 (dùng BĐT Cô-si, Bunhiacopski; gộp, chưa tách)", "so_bai": null}
+          ],
+          "do_tin": "cao"
+        }
+      ],
+      "ghi_chu": "3 dạng. Phần lớn bài của TCDS mục IV (35 BT chỉ ghi đáp số) là cực trị đối xứng nhiều biến mà lời giải thật sự dùng AM–GM + điểm rơi -> thuộc chuyên đề AM–GM, không ép vào nhóm này. Đặc biệt TVA §8 Dạng 2 Cách 6 (tổng không đổi ⇒ tích lớn nhất khi bằng nhau; tích không đổi ⇒ tổng nhỏ nhất, 6 VD) và VHB2 VD117–119 + BT 432, 440, 441 chính là AM–GM 2 số (trùng NDB01600 \"AM-GM 1 biến dạng tích\"): không lập dạng ở đây, đề nghị chuyển sang AM–GM. Dạng 2 độ tin thấp hơn vì hồ sơ chỉ nêu tên cách giải, ít ví dụ rõ."
+    },
+    {
+      "id": "NNB01483",
+      "ten": "Đi-rích-lê trong số học và suy luận",
+      "dang": [
+        {
+          "ten": "Áp dụng trực tiếp nguyên lí Đi-rích-lê (đếm thỏ và lồng)",
+          "mo_ta": "Dấu hiệu: bài hỏi \"ít nhất\" một lồng có nhiều đồ vật (kẹo, bạn cùng ngày sinh, người cùng tuổi). Xác định thỏ và lồng, dùng nhốt n + 1 thỏ vào n lồng hoặc [n/k] + 1 thỏ cho một lồng; khi cần dùng phản chứng.",
+          "cong_cu": "Nguyên lí Đi-rích-lê dạng cơ bản và tổng quát [n/k] + 1; phản chứng",
+          "tang": "co_ban",
+          "nguon": [
+            {"sach": "TVA", "muc": "§7 Dạng 2 VD1 (bà già cho kẹo, 2 cách), VD6, VD7", "so_bai": 3},
+            {"sach": "VHB1", "muc": "Chuyên đề số học: BT 227, 228, 230, 231, 232, 233 (đố vui, Đi-rích-lê)", "so_bai": 6}
+          ],
+          "do_tin": "vua"
+        },
+        {
+          "ten": "Chuồng là các số dư: chứng minh chia hết, hiệu hoặc tổng chia hết",
+          "mo_ta": "Dấu hiệu: cho nhiều số nguyên, hỏi có hai số cùng số dư hoặc một nhóm số có tổng chia hết cho n. Chuồng = các số dư 0, 1, …, n − 1 (hoặc các tổng liên tiếp S₁, S₂, …, Sₙ xét theo n); thỏ = các số/tổng; hai số cùng dư ⇒ hiệu chia hết cho n.",
+          "cong_cu": "Nguyên lí Đi-rích-lê; tổng liên tiếp S₁, S₂, …; số dư; hiệu hai số cùng dư chia hết cho n",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ10 mục I VD2, VD4, VD10, Bài 1–3, 12–14; mục II Bài 18, 19", "so_bai": 11},
+            {"sach": "TVA", "muc": "§7 Dạng 2 VD4, VD5", "so_bai": 2}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Quen biết, bắt tay, tô màu đỉnh/cạnh (đồ thị)",
+          "mo_ta": "Dấu hiệu: nhóm n người, mỗi người quen một số người; hoặc các điểm/cạnh tô hai màu, hỏi tồn tại hai người có số người quen bằng nhau hoặc nhóm k người đôi một quen/lạ. Chuồng = số người quen có thể hoặc màu; thỏ = người hoặc cạnh; thường chọn một người rồi lặp lại.",
+          "cong_cu": "Nguyên lí Đi-rích-lê; chuồng = số quen biết hoặc màu; chọn một đỉnh làm mốc",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ10 mục I VD5, VD6, Bài 5, 8, 10; mục II Bài 5, 10, 21 (nội dung đồ thị dù nằm ở mục hình học tổ hợp)", "so_bai": 8},
+            {"sach": "TVA", "muc": "§7 Dạng 2 VD3 (bắt tay)", "so_bai": 1},
+            {"sach": "NDT", "muc": "Phụ lục C Đề 6 bài 6b, Đề 8 bài 6a, Đề 9 bài 6a", "so_bai": 3}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Giải đấu, bảng điểm, lịch, xếp hạng: suy luận tồn tại",
+          "mo_ta": "Dấu hiệu: bài về giải đấu vòng tròn, bảng điểm, lịch học/lịch tuần, hỏi điều kiện tồn tại (có 3 đội chưa đấu, hai đội cùng số trận). Lập các chuồng theo số trận/điểm có thể, dùng Đi-rích-lê kết hợp phản chứng và đếm tổng.",
+          "cong_cu": "Nguyên lí Đi-rích-lê; đếm tổng số trận/điểm; phản chứng",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ10 mục I VD7–9, Bài 17–23", "so_bai": 10},
+            {"sach": "NDT", "muc": "Phụ lục C Đề 1 bài 6b (12 đội), Đề 8 bài 6b (bảng bóng đá)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "4 dạng. Bài \"chọn số từ tập {1, …, n} sao cho có hai số hơn kém/gấp nhau\" (TCDS VD1 100 thẻ; TVA VD5 52 số) hồ sơ chỉ có 1–2 ví dụ — chưa lập dạng riêng, tạm xếp vào dạng 2 (chuồng = số dư) hoặc dạng 1; nếu sau này gặp ≥ 4 bài cùng kiểu thì tách. Ranh giới: bài chia hết thuần túy, không dùng Đi-rích-lê -> Số học 4.1; \"đố vui\" của VHB1 (BT 227–233) chỉ có một phần dùng Đi-rích-lê, phần còn lại nên để người xem."
+    },
+    {
+      "id": "NNB01484",
+      "ten": "Đi-rích-lê trong hình học tổ hợp",
+      "dang": [
+        {
+          "ten": "Chia hình thành các phần nhỏ (chuồng) rồi đếm điểm: hai điểm cách nhau không quá d",
+          "mo_ta": "Dấu hiệu: n điểm đặt trong hình vuông, tam giác đều, hình tròn; cần chứng minh tồn tại hai điểm có khoảng cách không quá d. Chia hình thành k phần nhỏ có đường kính ≤ d, với n > k thì có phần chứa ≥ 2 điểm.",
+          "cong_cu": "Nguyên lí Đi-rích-lê; chia hình thành các phần có đường kính nhỏ; đường kính của hình",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ10 mục I VD3, Bài 6 (hai bài), 7, 9, 11", "so_bai": 6},
+            {"sach": "TCDS", "muc": "CĐ10 mục II (2 VD + 27 BT; ~19 bài hình, chưa tách giữa dạng này và phủ hình)", "so_bai": null},
+            {"sach": "TVA", "muc": "§7 Dạng 2 VD2 (17 điểm trong tam giác đều cạnh 1)", "so_bai": 1}
+          ],
+          "do_tin": "cao"
+        },
+        {
+          "ten": "Phủ hình: có hình tròn/tam giác/hình vuông phủ ít nhất k điểm",
+          "mo_ta": "Dấu hiệu: N điểm trong hình lớn, cần chỉ ra một hình nhỏ cho trước (tròn bán kính r, tam giác đều cạnh a) phủ được ít nhất k điểm. Chia hình lớn thành m phần mỗi phần nằm trong hình nhỏ đó, N > (k − 1)·m thì có phần chứa ≥ k điểm.",
+          "cong_cu": "Nguyên lí Đi-rích-lê tổng quát [(N + m − 1)/m]; hình nhỏ phủ kín từng phần",
+          "tang": "nang_cao",
+          "nguon": [
+            {"sach": "TCDS", "muc": "CĐ10 mục II VD1 (101 điểm → hình tròn bán kính 1/7 phủ 5 điểm), Bài 7 (2014 điểm → tam giác đều cạnh 11)", "so_bai": 2}
+          ],
+          "do_tin": "vua"
+        }
+      ],
+      "ghi_chu": "2 dạng (hồ sơ TCDS mục II chỉ ghi \"hình học tổ hợp\" chung, không phân dạng; số bài thật chia giữa hai dạng chưa biết). Bài về diện tích (chuồng = diện tích, hai phần giao nhau) có nhưng hồ sơ không nêu đủ ví dụ để lập dạng riêng. Cực hạn (TCDS mục B) và lát gạch/bất biến KHÔNG thuộc nhóm này — xem nhom_thieu. Ranh giới: mục II Bài 5, 10, 21 của TCDS nội dung là đồ thị (quen biết/tô màu) -> NNB01483 dạng 3."
+    }
+  ],
+  "nhom_thieu": [
+    {
+      "ten": "Nguyên lí cực hạn",
+      "chuyen_de": "5.1 Nguyên lí Đi-rích-lê, nguyên lí cực hạn",
+      "nguon": "TCDS CĐ10 mục B (5 VD + 3 BT: 2013 điểm trong đa giác lồi, bốn đường tròn phủ tứ giác…)",
+      "so_bai": 8,
+      "ly_do": "Tên chuyên đề 5.1 có \"nguyên lí cực hạn\" nhưng cả hai nhóm 01483, 01484 đều mang tên \"Đi-rích-lê\"; bài cực hạn (xét phần tử nhỏ nhất/lớn nhất, đưa tới mâu thuẫn) cách giải khác hẳn Đi-rích-lê và nằm cả ở bài số học lẫn hình học. Nên có nhóm riêng hoặc đổi tên hai nhóm hiện có."
+    },
+    {
+      "ten": "Bất biến, tô màu bàn cờ, lát gạch và trò chơi chiến thuật",
+      "chuyen_de": "5.1 (hoặc chuyên đề Tổ hợp riêng)",
+      "nguon": "NDT Phụ lục A bài 43, 44, 45 (đổi màu đỉnh, đổi dấu, bất biến); TCDS CĐ10 mục I Bài 16, 24 và mục II Bài 13, 14, 16, 25, 27 (trò chơi, quy nạp, lát gạch hình L)",
+      "so_bai": 10,
+      "ly_do": "Cách giải (tìm đại lượng bất biến, tô màu chẵn lẻ, chiến lược đối xứng, quy nạp lát gạch) không dùng Đi-rích-lê nên không có nhóm nào nhận; hiện nếu gán vào 01483/01484 sẽ lệch."
+    },
+    {
+      "ten": "Cực trị với biến nguyên hoặc số tự nhiên",
+      "chuyen_de": "3.2 Giá trị lớn nhất, giá trị nhỏ nhất",
+      "nguon": "VHB2 mục V VD120–122, BT 445–454 (nhóm \"Bài toán cực trị với số tự nhiên\"); TVA §8 Dạng 2 Cách 6 VD6 (|11^m − 5^n|); NDT Phụ lục A bài 32 = Phụ lục C Đề 10 bài 3 (a, b, c hữu tỉ dương, GTLN a + b² + c³)",
+      "so_bai": 16,
+      "ly_do": "Lời giải cần chặn miền rồi xét số học (chia hết, chẵn lẻ, chữ số tận cùng), khác kỹ thuật đại số của 01471–01473. Nếu CEO không muốn thêm nhóm, có thể làm thành một dạng của 01473 (điều kiện ràng buộc: biến nguyên)."
+    },
+    {
+      "ten": "Bất đẳng thức khi các biến bị chặn trong một đoạn",
+      "chuyen_de": "3.1 Chứng minh bất đẳng thức",
+      "nguon": "NDT Chương IV §1 bài 14a (0 ≤ a, b, c ≤ 2); Phụ lục C Đề 3 bài 2 (x_i thuộc [0; 1], 2 ý), Đề 9 bài 3b (1 ≤ a, b, c ≤ 2); TCDS CĐ4 PP2 Bài 3 (x, y thuộc (0; 1/2]); VHB2 BT 392a (0 ≤ a ≤ 4)",
+      "so_bai": 6,
+      "ly_do": "Kỹ thuật riêng: dùng tích (x − m)(x − M) ≤ 0 từ điều kiện miền. Quá mỏng để thành nhóm; đề nghị làm một dạng bổ sung của NNB01470 (cùng với \"đổi biến, thế điều kiện\") chứ không lập nhóm."
+    },
+    {
+      "ten": "Đếm và tổ hợp rời rạc lẻ (đếm điểm trung điểm, xếp bàn tròn, đa giác lồi đường chéo bằng nhau)",
+      "chuyen_de": "5.1",
+      "nguon": "NDT Phụ lục C Đề 5 bài 6b, Đề 2 bài 6b, Đề 6 bài 6b (xếp bàn tròn), Đề 9 bài 6b (17 đường thẳng đồng quy)",
+      "so_bai": 4,
+      "ly_do": "Bài lẻ, mỗi bài một cách; chưa đủ để lập nhóm. Đề nghị để tạm trong dạng chờ hoặc xếp theo cách giải thật (Đề 9 bài 6b dùng Đi-rích-lê -> 01484)."
+    }
+  ],
+  "chong_lan": [
+    "ĐƯỜNG BIÊN 01468 ↔ 01469 ↔ 01470 (luật đề nghị để chấm lại 21 câu lô 12): gán theo CÁCH GIẢI QUYẾT ĐỊNH chứ không theo công cụ chạm qua. (1) Lời giải có làm trội/tổng teo, phản chứng, đổi biến/thế điều kiện, sắp thứ tự a ≥ b ≥ c, chia khoảng, hoặc đặt x = b + c − a -> NNB01470. (2) Có gọi tên Bu-nhi-a-cốp-xki, chứng minh bổ đề phụ rồi cộng vế, hoặc dùng |a + b| ≤ |a| + |b| -> NNB01469. (3) Chỉ dùng (a − b)² ≥ 0 / a² + b² ≥ 2ab, khai triển, nhân tử có dấu, biến đổi tương đương -> NNB01468. Cô-si một bước KHÔNG nhận ở 01469 (xem mục sau). Gây lệch lô 12: Cách 2 ví dụ 3, 4, 19, 20, 21 (030102 ↔ 030101), ví dụ 9 (030101 ↔ 020403), ví dụ 11, 14; Cách 3 ví dụ 1, Cách 4 ví dụ 1, 4, Cách 5 ví dụ 2, 5b, Cách 6 ví dụ 1, Cách 7 ví dụ 1; BT 6, 9, 17b, 17c, 24, 26 — theo luật trên các câu Cách 3, 4, 6, 7 đi vào 01470, Cách 2 vào 01468, trừ câu có BCS/bổ đề phụ.",
+    "Cô-si một bước (a²+b² ≥ 2ab, (a+b)² ≥ 4ab, a/b + b/a ≥ 2, 1/a + 1/b ≥ 4/(a+b), (a+b+c)(1/a+1/b+1/c) ≥ 9): TCDS PP3 mục 1 (~46 mục), TVA Cách 5 (5 VD), VHB2 dạng 3, NDT Chương IV §1 bài 11 — trùng chuyên đề AM–GM (NNB01742, NNB01745 và bổ đề cộng mẫu trong @LT). Nên chuyển sang AM–GM; nếu CEO muốn giữ ở 01469 thì phải bỏ \"Cô-si\" khỏi tên nhóm hoặc tạo thêm dạng và chấp nhận chồng.",
+    "TVA §8 Dạng 2 Cách 6 (tổng không đổi ⇒ tích lớn nhất…) và VHB2 VD117–119, BT 432, 440, 441: bản chất AM–GM hai số, trùng NDB01600 (AM-GM 1 biến dạng tích).",
+    "Biểu thức t + k/t (x > 0, đặt t = x + 1/x): TVA §8 VD12 (Dạng 2 Cách 3), NDT Phụ lục A bài 30, Đề 10 bài 2 — trùng NDB01599 (AM-GM 1 biến dạng tổng).",
+    "Cực trị 01471 ↔ 01473: đa thức hai biến không điều kiện -> 01471 dạng 2; có điều kiện giữa hai biến (x + y = 1) -> 01473 dạng 1. Phân thức có điều kiện giữa các biến -> 01473, không điều kiện -> 01472.",
+    "BĐT cạnh tam giác: 01468 dạng 2 (xét hiệu rồi phân tích tích, nhân tử có dấu nhờ a < b + c) ↔ 01470 dạng 7 (đặt x = b + c − a, dùng bất đẳng thức tam giác). Luật: lời giải đặt x, y, z hoặc chỉ dùng a < b + c rồi cộng vế -> 01470; lời giải khai triển A − B thành tích -> 01468.",
+    "Tìm x, y từ tổng bình phương bằng 0 / dùng bất đẳng thức để giải phương trình (VHB2 VD102, BT 416, 417; ví dụ x² + y² + z² = x(y + z)): thuộc nhóm 1.1② \"Đưa về tổng các bình phương\" (tìm x, y), không thuộc nhóm BĐT.",
+    "NDT Chương IV §1 bài 1–9 (so sánh theo liên hệ thứ tự và phép cộng, nhân) là tầng cơ bản — đã có nhóm Kiến thức cơ bản 020403 (Bất phương trình); không vào 01468–01470.",
+    "01483 ↔ 01484: bài Đi-rích-lê về đồ thị quen biết/tô màu nhưng nằm ở mục hình học tổ hợp của TCDS (mục II Bài 5, 10, 21) -> 01483 dạng 3. Bài chia hết dùng Đi-rích-lê (số dư) -> 01483 dạng 2, không phải Số học 4.1.",
+    "VHB1 BT 227–233 (\"đố vui, Đi-rích-lê\") nằm trong chuyên đề chia hết của VHB1: chỉ một phần dùng Đi-rích-lê; phần còn lại thuộc Số học 4.1 — hồ sơ không tách được nên gán sau khi đọc đề."
+  ]
+}
