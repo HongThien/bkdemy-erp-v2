@@ -80783,6 +80783,13 @@ Thùy nêu 4 việc, làm được 3:
 - **Bài học:** (a) **đo ẤM lẫn NGUỘI trước khi kết luận một nhánh "tốn"** — lượt đầu của kết nối gồm dựng kế hoạch + đọc đĩa; người dùng qua API hay gặp nguội
   (kết nối pool bị đóng khi rảnh) nên số thật của họ ≈ số nguội, nhưng sửa một nhánh chỉ có lợi nếu nó tốn cả khi ấm. (b) **Bảng tích luỹ pg_stat_statements là lịch sử**
   — chọn mục tiêu bằng hiệu số hai lần chụp. (c) Mẫu `lateral (select f(x) v) t` + dùng `t.v` nhiều lần = f chạy nhiều lần; hàm con nặng thì thêm `offset 0`.
+
+## 14/11 (tối) — Lịch khối ↔ Lịch phòng không đồng bộ (Thùy 14/11)
+- **Thùy:** "Lịch khối và Lịch phòng đang không đồng bộ" (+ "khi trùng phòng hệ thống có cảnh báo còn lại vẫn cho phép cùng phòng"; tin đầu bị cụt "Khi trungf").
+- **Đo & gốc:** xem spec §42. `sinh_ngay` bỏ im lặng dòng trùng người/giờ dù lúc lưu chỉ cảnh báo; `lich_khoi_chot` rỗng (chưa từng chốt tuần); 14 ca mồ côi.
+- **Làm:** mig `202611142221_lich_khoi_dong_bo_sinh_ca` (ĐÃ ÁP): bỏ 2 điều kiện bỏ-im-lặng, giữ chống dòng giống hệt; sau ghép buổi tính lại đơn vị bù nhóm (vá kẽ hở của mig 202611140851). `check:kien-truc` ✔.
+- **Tự phê:** mig bù-nhóm hôm qua bỏ sót đường ghép tự động (đặt cứng 4) — lẽ ra phải rà MỌI chỗ ghi `buoi_hoc_hs.don_vi`, không chỉ xếp/gỡ/vắng.
+- **Chưa làm (chờ Thùy):** xoá dòng Lịch khối nhân đôi (5 nhóm) · nới luật 2 ca/phòng? · bấm Chốt tuần · xử lý 2 ca mồ côi đã có em · chưa kiểm trên màn thật.
 - **22:17 — sau khi Thùy deploy ERP: Realtime KHÔNG đổi.** Đo 90 giây: 173 lượt đọc nhật ký ghi = 1,92 lượt/giây, 3,5 % một nhân (trước deploy 1,88 lượt/giây). Hai slot vẫn mở;
   Realtime giữ 7/60 kết nối (`realtime_rls` · `realtime_replication_connection` · 3 `subscription_manager` · 2 `realtime_connect`).
   ⇒ Giả thuyết "đăng ký chết ở màn phiên Claude giữ bộ đọc chạy" **CHƯA được xác nhận**. Còn 3 khả năng, chưa phân biệt được: (1) tab mở từ trước deploy vẫn chạy code cũ
@@ -80790,6 +80797,11 @@ Thùy nêu 4 việc, làm được 3:
   người nghe. `claude_build` không có quyền vào schema `realtime` ⇒ cần Thùy chạy ở SQL Editor (chỉ đọc):
   `select entity::text bang, count(*) so_dang_ky, max(created_at) moi_nhat from realtime.subscription group by 1 order by 2 desc;`
   0 dòng mà vẫn đọc ⇒ khả năng (3): muốn cắt phải tắt hẳn postgres_changes (màn Sự kiện đã có poll dự phòng 5 s) — quyết định của Thùy. Bản gỡ ở client vẫn đúng (đăng ký vô dụng), giữ.
+
+## 14/11 (tối) — Phòng dùng chung: test đầu vào / phát sinh chung được với ca bổ trợ (Thùy 14/11)
+- **Thùy:** trần 2 ca bổ trợ/phòng giữ, chung phòng được; hoạt động khác (vd test đầu vào) cũng chung được.
+- **Làm:** mig `202611142226_phong_chung_test_phat_sinh` (ĐÃ ÁP): chỉ chính khoá còn chặn khi lưu Lịch khối / tạo ca tay; test + phát sinh → cảnh báo. Spec §43. `check:kien-truc` ✔.
+- **Hiểu thế nào:** "hoạt động khác" = test đầu vào + hoạt động phát sinh (Phòng học); chính khoá giữ chặn — nếu Thùy muốn chính khoá cũng chung thì nói.
 - **22:25 — đo lại lần 2 sau deploy + TÌM RA: giả thuyết "đăng ký chết giữ bộ đọc Realtime" là SAI.** Vẫn 1,93 lượt đọc/giây (chi phí/lượt giảm còn ~7 ms vì đêm ít ghi ⇒ 1,3 % một nhân).
   Bằng chứng (đọc `pg_stat_all_tables` — schema `realtime` cấm vào nhưng thống kê thì đọc được): `realtime.subscription` **0 dòng sống, 0 lượt chèn, 0 lượt xoá** từ khi DB khởi động
   (11/11 20:46) ⇒ hơn 3 ngày KHÔNG có đăng ký postgres_changes nào được tạo (đăng ký của PhienClaudeTab vào bảng chưa phát chưa từng được ghi nhận; màn Sự kiện không ai mở).
