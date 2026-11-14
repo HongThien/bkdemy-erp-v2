@@ -80783,3 +80783,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Bài học:** (a) **đo ẤM lẫn NGUỘI trước khi kết luận một nhánh "tốn"** — lượt đầu của kết nối gồm dựng kế hoạch + đọc đĩa; người dùng qua API hay gặp nguội
   (kết nối pool bị đóng khi rảnh) nên số thật của họ ≈ số nguội, nhưng sửa một nhánh chỉ có lợi nếu nó tốn cả khi ấm. (b) **Bảng tích luỹ pg_stat_statements là lịch sử**
   — chọn mục tiêu bằng hiệu số hai lần chụp. (c) Mẫu `lateral (select f(x) v) t` + dùng `t.v` nhiều lần = f chạy nhiều lần; hàm con nặng thì thêm `offset 0`.
+
+## 14/11 (tối) — Lịch khối ↔ Lịch phòng không đồng bộ (Thùy 14/11)
+- **Thùy:** "Lịch khối và Lịch phòng đang không đồng bộ" (+ "khi trùng phòng hệ thống có cảnh báo còn lại vẫn cho phép cùng phòng"; tin đầu bị cụt "Khi trungf").
+- **Đo & gốc:** xem spec §42. `sinh_ngay` bỏ im lặng dòng trùng người/giờ dù lúc lưu chỉ cảnh báo; `lich_khoi_chot` rỗng (chưa từng chốt tuần); 14 ca mồ côi.
+- **Làm:** mig `202611142221_lich_khoi_dong_bo_sinh_ca` (ĐÃ ÁP): bỏ 2 điều kiện bỏ-im-lặng, giữ chống dòng giống hệt; sau ghép buổi tính lại đơn vị bù nhóm (vá kẽ hở của mig 202611140851). `check:kien-truc` ✔.
+- **Tự phê:** mig bù-nhóm hôm qua bỏ sót đường ghép tự động (đặt cứng 4) — lẽ ra phải rà MỌI chỗ ghi `buoi_hoc_hs.don_vi`, không chỉ xếp/gỡ/vắng.
+- **Chưa làm (chờ Thùy):** xoá dòng Lịch khối nhân đôi (5 nhóm) · nới luật 2 ca/phòng? · bấm Chốt tuần · xử lý 2 ca mồ côi đã có em · chưa kiểm trên màn thật.
