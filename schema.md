@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-594 bảng · 42 view · 0 enum · 448 trigger · 1941 function
+595 bảng · 42 view · 0 enum · 452 trigger · 1948 function
 
 ## _app_secrets
 
@@ -968,6 +968,14 @@
 | config | jsonb |  | '{}'::jsonb |  |  |
 | updated_by | uuid | Y |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+
+## bu_dv_cu_20261114
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| hh_id | uuid |  |  | PK |  |
+| don_vi_cu | smallint |  |  |  |  |
+| luu_at | timestamp with time zone |  | now() |  |  |
 
 ## buoi_ban_qua
 
@@ -11110,6 +11118,7 @@ WITH luot AS (
 | buoi_hoc | trg_btnhe_dong_case | AFTER | UPDATE | _trg_btnhe_dong_case |
 | buoi_hoc | trg_buoi_bo_tro_gan_ca | BEFORE | UPDATE | _trg_buoi_bo_tro_gan_ca |
 | buoi_hoc | trg_buoi_bo_tro_khoa_ngay | BEFORE | UPDATE | _trg_buoi_bo_tro_khoa_ngay |
+| buoi_hoc | trg_buoi_dv_bu | AFTER | UPDATE | _trg_buoi_dv_bu |
 | buoi_hoc | trg_buoi_giai_log | AFTER | UPDATE | _buoi_giai_log |
 | buoi_hoc | trg_buoi_hoc_huy_exp | AFTER | UPDATE | _trg_buoi_hoc_huy_exp |
 | buoi_hoc | trg_buoi_hoc_online_log | AFTER | UPDATE | _trg_buoi_hoc_online_log |
@@ -11118,6 +11127,9 @@ WITH luot AS (
 | buoi_hoc | trg_ta_buoi_hoc_push_badge | AFTER | INSERT/UPDATE | _trg_ta_buoi_hoc_push |
 | buoi_hoc_hs | trg_bthinh_mot_buoi_cho_hoc | BEFORE | INSERT | _trg_bthinh_mot_buoi_cho_hoc |
 | buoi_hoc_hs | trg_btyeu_mot_buoi_cho_hoc | BEFORE | INSERT | _trg_btyeu_mot_buoi_cho_hoc |
+| buoi_hoc_hs | trg_hh_dv_bu_del | AFTER | DELETE | _trg_hh_dv_bu |
+| buoi_hoc_hs | trg_hh_dv_bu_ins | AFTER | INSERT | _trg_hh_dv_bu |
+| buoi_hoc_hs | trg_hh_dv_bu_upd | AFTER | UPDATE | _trg_hh_dv_bu |
 | ca_bo_tro | trg_ca_bo_tro_phong | BEFORE | INSERT/UPDATE | _trg_ca_bo_tro_phong |
 | ca_test | tg_ca_test_phan_cong | BEFORE | INSERT | fn_ca_test_phan_cong_mac_dinh |
 | ca_test | trg_log_ca_test | AFTER | INSERT/UPDATE | log_ca_test |
@@ -11629,9 +11641,14 @@ WITH luot AS (
 - `_bxh_gia_tri(p_loai text, p_mon text, p_ky text, p_hs uuid[])` → TABLE(hs uuid, gia_tri numeric, phu numeric, dat_luc timestamp with time zone)
 - `_bxh_ky(p_ky text)` → TABLE(tu date, den date)
 - `_bxh_lam_moi(p_ngan_sach_giay integer DEFAULT 40, p_cu_phut integer DEFAULT 10)` → integer
+- `_ca_bo_tro_cap_nhat_dv_bu(p_ca uuid)` → void
 - `_ca_bo_tro_da_tung(p_hoc_sinh uuid, p_lich_truc uuid, p_ngay date)` → boolean
 - `_ca_bo_tro_don_vi(p_loai text, p_hs uuid, p_mon text)` → smallint
+- `_ca_bo_tro_dv_bu_moi_em(p_n bigint)` → smallint
+- `_ca_bo_tro_dv_bu_nhom(p_n bigint)` → integer
+- `_ca_bo_tro_dv_them_bu(p_ca uuid, p_bai uuid, p_hs uuid)` → integer
 - `_ca_bo_tro_khop(p_ngay date, p_tu time without time zone, p_den time without time zone, p_ta uuid)` → uuid
+- `_ca_bo_tro_n_bu(p_ca uuid, p_bai uuid, p_tru_hs uuid DEFAULT NULL::uuid)` → integer
 - `_ca_bo_tro_suc_nguoi(p_ca uuid, p_tru_bhh uuid DEFAULT NULL::uuid)` → numeric
 - `_ca_bo_tro_tinh(p_ca uuid, p_tru_bhh uuid DEFAULT NULL::uuid)` → TABLE(don_vi_dung integer, don_vi_cho integer, so_hs_xn integer, so_hs_cho integer)
 - `_ca_bo_tro_trong_so_bhh(p_bhh uuid)` → numeric
@@ -12098,6 +12115,7 @@ WITH luot AS (
 - `_trg_btyeu_suc_chua()` → trigger
 - `_trg_buoi_bo_tro_gan_ca()` → trigger
 - `_trg_buoi_bo_tro_khoa_ngay()` → trigger
+- `_trg_buoi_dv_bu()` → trigger
 - `_trg_buoi_hoc_huy_exp()` → trigger
 - `_trg_buoi_hoc_online_log()` → trigger
 - `_trg_buoi_hoc_phase_log()` → trigger
@@ -12109,6 +12127,7 @@ WITH luot AS (
 - `_trg_gami_exp_ledger_buoi_huy()` → trigger
 - `_trg_hh_bai_y_lan()` → trigger
 - `_trg_hh_bai_y_moc()` → trigger
+- `_trg_hh_dv_bu()` → trigger
 - `_trg_hh_y_ghep()` → trigger
 - `_trg_kho_cau_dang()` → trigger
 - `_trg_kho_cau_dang_cau()` → trigger
@@ -13523,7 +13542,7 @@ WITH luot AS (
 | buoi_hoc | buoi_hoc_khao_sat_chung_check | `CHECK (((loai <> 'khao_sat'::text) OR ((de_id IS NOT NULL) AND (lop_id IS NULL))))` |
 | buoi_hoc | buoi_hoc_on_thi_dot_ck | `CHECK (((loai <> 'bo_tro_on_thi'::text) OR (on_thi_dot_id IS NOT NULL)))` |
 | buoi_hoc | buoi_hoc_online_ck | `CHECK (((online_dong_at IS NULL) OR (online_mo_at IS NOT NULL)))` |
-| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[1, 2, 4]))))` |
+| buoi_hoc_hs | buoi_hoc_hs_don_vi_check | `CHECK (((don_vi IS NULL) OR (don_vi = ANY (ARRAY[1, 2, 3, 4]))))` |
 | ca_bo_tro | ca_bo_tro_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
 | ca_bo_tro | ca_bo_tro_so_ta_check | `CHECK (((so_ta >= 1) AND (so_ta <= 2)))` |
 | ca_bo_tro_nhe | ca_bo_tro_nhe_check | `CHECK ((gio_ket_thuc > gio_bat_dau))` |
