@@ -80621,3 +80621,4 @@ Thùy nêu 4 việc, làm được 3:
 - Thử rollback: số trước–sau đúng như danh sách; sửa task sau khi bỏ trigger vẫn được.
 - Mục 4 của đợt 0d (push app TA sau khi đổi trigger sang definer) VẪN chưa có bằng chứng: từ ~11:15 chưa buổi nào được đóng. Kiểm `net._http_response` sau buổi đóng kế tiếp.
 - Thùy xác nhận trên app: mục 1 (TA tự sửa hồ sơ — DB thấy Nguyễn Công Hải sửa 11:25:58) và mục 3 (Phân quyền / Sơ đồ tổ chức) đạt.
+- **14/11 — mig `202611141145` (buổi trước cùng nhánh) ĐÃ ÁP** (Thùy "Áp đi"; `--only`). Đo lại trên DB: 101 cặp buổi → buổi trước, 0 cặp khác nhánh. Bài thử 3 phần `--da-ap` 29/29; `check:kien-truc` không vi phạm.
