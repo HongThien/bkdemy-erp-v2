@@ -80614,3 +80614,10 @@ Thùy nêu 4 việc, làm được 3:
 - Sai/sửa: em lẫn chiều (đối tượng ↔ yêu cầu đề ↔ trước/sau đồng dạng) 3 lần trước khi Thùy chỉ ra — nguyên tắc nay ghi ở đầu script và trang đề xuất `kho-rules/dai/k8T-hinh-hoc-ban-do-de-xuat.html`.
 - Kế: nhập Hình theo thứ tự có đáp án (NĐT Hình I → …); bản đồ Đại 8T (Thùy: "cả bản đồ đại luôn").
 - **14/11 — Thùy: "Buổi trước là buổi trước cùng nhánh thôi, không cần khác nhánh"** (và không cần hàm DB riêng cho danh sách HS — giữ trần +1). Viết mig `202611141145`: `_tl_bdm_buoi_truoc` chỉ lấy buổi lớp đã gán từ giáo trình khác CÙNG NHÁNH. Thử ROLLBACK trên DB thật: 114 cặp (buổi → buổi trước) có 14 cặp khác nhánh ⇒ sau còn 101 cặp, 0 khác nhánh; 0 phần luyện lại đã soạn bị thành lẻ; bài thử 3 phần 29/29. **CHƯA ÁP** — lệnh áp bị chặn ở máy, chờ Thùy gật.
+
+## 14/11 (trưa) — Đợt 0e: XOÁ phần gửi push của app PT (mig 202611141147 ĐÃ ÁP) — Thùy "Xoá phần push PT" (không ai dùng app PT nữa)
+- Đã liệt kê trước, Thùy gật: xoá trigger `trg_task_pt_push_badge` (task_phat_trien) · hàm `_trg_task_pt_push` · 5 dòng `push_dang_ky` app = 'pt' · nhánh `'pt'` trong `_push_bao_cap_nhat`.
+- Không đụng: `task_phat_trien` (51 task còn nguyên), màn task ERP, push app TA (2 trigger + 19 đăng ký còn nguyên), bản thân app PT (mã nguồn / Vercel / tên miền).
+- Thử rollback: số trước–sau đúng như danh sách; sửa task sau khi bỏ trigger vẫn được.
+- Mục 4 của đợt 0d (push app TA sau khi đổi trigger sang definer) VẪN chưa có bằng chứng: từ ~11:15 chưa buổi nào được đóng. Kiểm `net._http_response` sau buổi đóng kế tiếp.
+- Thùy xác nhận trên app: mục 1 (TA tự sửa hồ sơ — DB thấy Nguyễn Công Hải sửa 11:25:58) và mục 3 (Phân quyền / Sơ đồ tổ chức) đạt.

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-597 bảng · 42 view · 0 enum · 453 trigger · 1953 function
+597 bảng · 42 view · 0 enum · 452 trigger · 1952 function
 
 ## _app_secrets
 
@@ -11471,7 +11471,6 @@ WITH luot AS (
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
 | tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
 | tai_lieu | trg_tl_dong_bo_cau_hinh_in | AFTER | UPDATE | _tl_dong_bo_cau_hinh_in |
-| task_phat_trien | trg_task_pt_push_badge | AFTER | INSERT/UPDATE | _trg_task_pt_push |
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
 | test_dau_vao_thoi_luong | trg_log_test_dau_vao_thoi_luong | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | test_dau_vao_thoi_luong | trg_updated_test_dau_vao_thoi_luong | BEFORE | UPDATE | _lich_test_cham_updated |
@@ -12170,7 +12169,6 @@ WITH luot AS (
 - `_trg_ta_buoi_hoc_push()` → trigger
 - `_trg_ta_retest_push()` → trigger
 - `_trg_tai_lieu_duyet_log()` → trigger
-- `_trg_task_pt_push()` → trigger
 - `_trg_vi_tri_dong_bo_team()` → trigger
 - `_troly_bc_btvn_ti_le(p_tu date, p_den date)` → jsonb
 - `_troly_bc_ca_yeu(p_tu date, p_den date)` → TABLE(ngay date, gio time without time zone, mon text, nguoi_day text, ho_ten text, ten_lop text, ket_qua text, ly_do_huy text, khoa_ca text)
