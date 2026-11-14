@@ -1,0 +1,146 @@
+[
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-10-nam-2024-2025-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9519,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 1 Toán 10 năm 2024 - 2025 trường THPT Việt Đức - Hà Nội (Đề số 1)",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-10-nam-2025-2026-truong-thpt-dai-mo-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3935,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2025 - 2026 trường THPT Chuyên Sơn La (Mã đề 1001)",
+   "ti_le": 0.1,
+   "cau": 20
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-10-nam-2025-2026-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 13344,
+  "best": {
+   "ten": "Đề cương ôn tập học kì I Toán 10 năm 2026–2027 — THPT Yên Hòa (Hà Nội)",
+   "ti_le": 0.22,
+   "cau": 180
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0.86,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-on-tap-hk1-toan-10-nam-2025-2026-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 9449,
+  "best": {
+   "ten": "Đề ôn tập giữa học kì 1 Toán 10 năm 2025 - 2026 - Đề số 05 (CTST-KN-CKP, Bồi dưỡng văn hóa Lam Sơn)",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0.09,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-toan-10-hoc-ki-1-nam-2026-2027-truong-thpt-nguyen-cong-tru-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 49756,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 10 năm 2025 - 2026 - Đề kiểm tra theo cấu trúc mới (bộ đề ôn tập, Đề số 5)",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.22,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-hoc-ki-1-toan-10-nam-2025-2026-truong-thpt-cau-giay-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 trường THPT Thanh Bình 1 - Đồng Tháp (Mã đề 101)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-hoc-ki-1-toan-10-nam-2025-2026-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 8640,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2025 - 2026 trường THPT Quế Sơn - Đà Nẵng (Mã đề 101)",
+   "ti_le": 0.43,
+   "cau": 7
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-10-nam-2024-2025-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 4809,
+  "best": {
+   "ten": "Đề minh họa giữa kì 1 Toán 10 năm 2024 - 2025 trường THPT Ngô Quyền - Đà Nẵng (Mã đề 101)",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.12,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B046",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-10-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6354,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2025 - 2026 trường THPT Quế Sơn - Đà Nẵng (Mã đề 101)",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ }
+]

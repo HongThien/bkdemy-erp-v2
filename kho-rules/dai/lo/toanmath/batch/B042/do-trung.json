@@ -1,0 +1,66 @@
+[
+ {
+  "batch": "B042",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-10-nam-2024-2025-truong-thpt-ngo-gia-tu-dak-lak",
+  "ket_luan": "khac",
+  "so_tu": 4169,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 10 năm 2024 - 2025 trường TH, THCS và THPT Văn Lang - Quảng Ninh (Mã đề 101)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.11,
+  "trung_kho": false
+ },
+ {
+  "batch": "B042",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-10-nam-2024-2025-truong-thpt-que-son-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 4494,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 trường THPT Thanh Bình 1 - Đồng Tháp (Mã đề 101)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B042",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-10-nam-2024-2025-truong-thpt-ngo-quyen-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 1512,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 trường THPT Thanh Bình 1 - Đồng Tháp (Mã đề 101)",
+   "ti_le": 0,
+   "cau": 12
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B042",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-10-nam-2024-2025-truong-thpt-ngu-hanh-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 1490,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường PTDTNT THPT Bình Phước - Đồng Nai (Mã đề 1003)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ }
+]

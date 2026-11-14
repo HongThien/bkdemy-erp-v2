@@ -1,0 +1,162 @@
+[
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-on-tap-hk1-toan-11-nam-2025-2026-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 9323,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2025 - 2026 trường TH-THCS-THPT Vạn Hạnh - TP HCM (Mã đề 0265)",
+   "ti_le": 0.23,
+   "cau": 13
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-11-nam-2024-2025-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 7661,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 năm 2024 - 2025 trường THPT Đặng Huy Trứ - TT Huế",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-11-nam-2024-2025-truong-thpt-tran-phu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9146,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 sở GD&ĐT Bắc Ninh",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-11-nam-2025-2026-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 5857,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Kết nối tri thức với cuộc sống (Toán Từ Tâm, Đề số 1)",
+   "ti_le": 0.4,
+   "cau": 10
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.08,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hk2-toan-11-nam-2024-2025-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 10444,
+  "best": {
+   "ten": "Đề ôn cuối kì 2 Toán 11 năm 2024 - 2025 trường THPT Hùng Vương - Bình Phước (Đề số 1)",
+   "ti_le": 0.27,
+   "cau": 15
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-11-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4362,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2025 - 2026 trường THPT Ninh Bình - Bạc Liêu - Ninh Bình (Mã đề 1104)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.11,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-2-toan-11-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 1895,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 11 năm 2024 - 2025 trường THPT Quế Sơn - Quảng Nam (Mã đề 101)",
+   "ti_le": 0.23,
+   "cau": 13
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-11-nam-2024-2025-truong-thpt-nguyen-viet-hong-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 2254,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2024 - 2025 trường THPT Ngọc Lặc - Thanh Hóa",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-11-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 4099,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị (Mã đề 1111)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B038",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-11-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 8688,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 11 năm 2024 - 2025 trường THPT Hướng Hóa - Quảng Trị (Mã đề 1101)",
+   "ti_le": 0.13,
+   "cau": 15
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.71,
+  "trung_kho": false
+ }
+]

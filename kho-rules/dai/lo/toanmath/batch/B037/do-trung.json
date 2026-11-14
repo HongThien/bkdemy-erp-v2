@@ -1,0 +1,146 @@
+[
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-thanh-khe-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 2776,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT số 1 Văn Bàn - Lào Cai (Đề 102)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "khac",
+  "so_tu": 3834,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 năm 2025 - 2026 trường THPT Nguyễn Văn Trỗi - Hà Tĩnh",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2025-2026-truong-thpt-duc-trong-lam-dong",
+  "ket_luan": "khac",
+  "so_tu": 9954,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 năm 2025 - 2026 trường THPT Nguyễn Văn Trỗi - Hà Tĩnh",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2025-2026-truong-thpt-gia-binh-1-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 9174,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Cánh Diều (Toán Từ Tâm, Đề số 7)",
+   "ti_le": 0.17,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2025-2026-truong-thpt-thanh-khe-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 2304,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 năm 2025 - 2026 trường THPT Nguyễn Trãi - Đà Nẵng",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-11-nam-2024-2025-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 8297,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 11 năm 2024 - 2025 trung tâm Lê Thị Hồng Gấm - TP HCM",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-11-nam-2025-2026-truong-thpt-xuan-phuong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5024,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Chí Thanh - Tây Ninh (Mã đề 111)",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-11-nam-2026-2027-truong-thpt-van-noi-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 17432,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 11 KNTTVCS năm 2024 - 2025 trường THPT Trần Quang Khải - Hưng Yên",
+   "ti_le": 0.25,
+   "cau": 12
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B037",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-hoc-ky-1-toan-11-nam-2024-2025-truong-thpt-yen-hoa-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 16899,
+  "best": {
+   "ten": "Đề cương ôn tập học kì I Toán 11 năm 2026–2027 — Trường THPT Yên Hòa, Hà Nội",
+   "ti_le": 0.22,
+   "cau": 241
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0.86,
+  "trung_kho": false
+ }
+]

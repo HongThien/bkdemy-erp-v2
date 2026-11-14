@@ -40,7 +40,7 @@ const loi = [], nhac = []
 // · khối 9 dấu nhân \cdot (k9.md §3), hệ thức lượng vào HGT (hgt/k9.md).
 // · tiểu học (khối 3–5, 4T, 5T) dấu nhân \times như vở (k5T.md §3) — không dấu chấm, không \cdot
 const TIEU_HOC = ['3', '4', '5', '4T', '5T'].includes(String(KHOI))
-const NHAN_CHAM = !TIEU_HOC && !['8', '9', '10', '11'].includes(String(KHOI))
+const NHAN_CHAM = !TIEU_HOC && !['8', '9', '10', '11', '12'].includes(String(KHOI)) // 14/11: K12 dấu nhân \cdot (k12-de/de-hoc-ki/brief-giai-chi-tiet.md)
 const KHO_DUOC = ['7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
 const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
@@ -62,7 +62,9 @@ function kiemCongThuc(nhan, cho, s) {
     else if (NHAN_CHAM) { if (/\\cdot|\\times/.test(m[1])) loi.push(`${nhan} (${cho}): dấu nhân phải là dấu chấm như SGK, gặp «${m[1].slice(0, 50)}»`) }
     else { // khối 8 (k8.md §3): dấu nhân tường minh là \cdot — không \times, không dấu chấm
       if (/\\times/.test(m[1])) loi.push(`${nhan} (${cho}): khối ${KHOI} không dùng \\times, dùng \\cdot — «${m[1].slice(0, 50)}»`)
-      if (/[0-9A-Za-z)}]\s*\.\s*[0-9A-Za-z(\\]/.test(m[1].replace(/\\text\{[^}]*\}/g, ''))) loi.push(`${nhan} (${cho}): dấu chấm làm dấu nhân — khối ${KHOI} viết \\cdot — «${m[1].slice(0, 50)}»`)
+      // 14/11: tên hình chóp / lăng trụ / hộp (S.ABCD · ABC.A'B'C' · ABCD.A_1B_1C_1D_1) là chấm TÊN HÌNH, không phải dấu nhân ⇒ bỏ qua
+      const boTenHinh = m[1].replace(/\\text\{[^}]*\}/g, '').replace(/\\(left|right)\./g, '').replace(/\b[A-Z]+\s*\.\s*[A-Z](?:[A-Z'_0-9]|\{[^}]*\}|\^\{?\\prime\}?)*/g, 'H') // \left. / \right. = ngoặc rỗng
+      if (/[0-9A-Za-z)}]\s*\.\s*[0-9A-Za-z(\\]/.test(boTenHinh)) loi.push(`${nhan} (${cho}): dấu chấm làm dấu nhân — khối ${KHOI} viết \\cdot — «${m[1].slice(0, 50)}»`)
     }
   }
 }

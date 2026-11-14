@@ -1,0 +1,258 @@
+[
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-tham-khao-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-thuan-thanh-1-bac-ninh",
+  "ket_luan": "khac",
+  "so_tu": 6920,
+  "best": {
+   "ten": "Đề ôn tập cuối kì 1 Toán 12 - bộ đề kiểm tra cuối học kì 1 cấu trúc trắc nghiệm mới (Đợt 2) - Đề 2",
+   "ti_le": 0.14,
+   "cau": 14
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "05-de-thi-thu-cuoi-hoc-ki-2-mon-toan-12-nam-hoc-2024-2025-co-dap-an",
+  "ket_luan": "khac",
+  "so_tu": 11008,
+  "best": {
+   "ten": "Đề khảo sát Toán 12 năm 2025 - 2026 trường THPT Lang Chánh - Thanh Hóa",
+   "ti_le": 0.08,
+   "cau": 12
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "10-de-on-tap-cuoi-ki-2-toan-12-nam-2025-2026-co-loi-giai-chi-tiet-truong-ngoc-vy",
+  "ket_luan": "mo_ho",
+  "so_tu": 61995,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2024 - 2025 trường THPT Lê Hồng Phong - Đắk Lắk (Mã đề 121)",
+   "ti_le": 0.21,
+   "cau": 14
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-kiem-tra-cuoi-hoc-ky-2-mon-toan-12-nam-hoc-2024-2025",
+  "ket_luan": "khac",
+  "so_tu": 65147,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2025 - 2026 trường THPT chuyên Lương Văn Chánh - Đắk Lắk (Đề số 1 - lớp 12 Văn)",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-2-mon-toan-12-theo-cau-truc-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 32297,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.29,
+   "cau": 7
+  },
+  "nhi": 0.16,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ky-2-mon-toan-12-nam-2025-2026",
+  "ket_luan": "khac",
+  "so_tu": 19779,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2025 - 2026 trường THPT chuyên Lương Văn Chánh - Đắk Lắk (Đề số 1 - lớp 12 Văn)",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-2-mon-toan-12-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 49098,
+  "best": {
+   "ten": "Đề thi thử TN THPT 2026 môn Toán đợt 1 liên trường THPT - Nghệ An",
+   "ti_le": 0.33,
+   "cau": 3
+  },
+  "nhi": 0.29,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-2-toan-12-chuan-cau-truc-moi-nam-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 138018,
+  "best": {
+   "ten": "Đề kiểm tra chất lượng Toán 12 năm 2025 - 2026 trường Tạ Quang Bửu - Hà Nội",
+   "ti_le": 0.29,
+   "cau": 7
+  },
+  "nhi": 0.19,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-dong-ha-quang-tri",
+  "ket_luan": "mo_ho",
+  "so_tu": 2027,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2025 - 2026 trường THPT Đông Hà - Quảng Trị (Mã đề 1202)",
+   "ti_le": 0.38,
+   "cau": 13
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.67,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ki-2-toan-12-nam-2024-2025-truong-thpt-binh-chieu-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 6829,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2024 - 2025 trường THPT Hoàng Quốc Việt - Quảng Ninh (Mã đề 101)",
+   "ti_le": 0.06,
+   "cau": 16
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2024-2025-truong-chuyen-le-thanh-tong-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 2828,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán sở GD&ĐT Cần Thơ_Phần 2",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2024-2025-truong-thpt-ngu-hanh-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 1893,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 12 năm 2024 - 2025 trường THPT Vĩnh Linh - Quảng Trị (Mã đề A)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-cuoi-ky-2-toan-12-nam-2025-2026-truong-thpt-chu-van-an-lam-dong",
+  "ket_luan": "trung",
+  "so_tu": 1669,
+  "best": {
+   "ten": "Đề kiểm tra cuối kì 2 Toán 12 năm 2025 - 2026 trường THPT Chu Văn An - Gia Nghĩa, Lâm Đồng (Mã đề 141)",
+   "ti_le": 0.5,
+   "cau": 16
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ki-2-toan-12-nam-2024-2025-truong-thpt-nguyen-gia-thieu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 4384,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 12 năm 2024 - 2025 trường THPT Lê Hồng Phong - Đắk Lắk (Mã đề 121)",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ki-2-toan-12-nam-2025-2026-truong-thpt-pham-van-sang-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 2 Toán 12 năm 2024 - 2025 trường THPT Nho Quan A (Mã đề 002)",
+   "ti_le": 0,
+   "cau": 15
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B053",
+  "folder": "Đề thi/CKII",
+  "ten_bai": "de-hoc-ky-2-toan-12-nam-2024-2025-truong-thcsthpt-tri-duc-tp-hcm",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 2 Toán 12 năm 2024 - 2025 trường THPT Nho Quan A (Mã đề 002)",
+   "ti_le": 0,
+   "cau": 15
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ }
+]

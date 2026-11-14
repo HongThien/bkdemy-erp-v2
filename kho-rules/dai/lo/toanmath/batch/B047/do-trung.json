@@ -1,0 +1,146 @@
+[
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-cuoi-ki-1-toan-10-nam-2025-2026-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 5715,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 10 năm 2025 - 2026 trường THPT Tôn Thất Tùng - Đà Nẵng (Mã đề 101)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.38,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "on-tap-hoc-ky-1-toan-10-nam-2025-2026-truong-thpt-nguyen-trai-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3495,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 10 năm 2025 - 2026 trường THPT Nguyễn Khuyến - TP HCM (Mã đề 273)",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.29,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hk2-toan-10-nam-2024-2025-truong-thpt-linh-trung-tp-hcm",
+  "ket_luan": "khac",
+  "so_tu": 7920,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 - Đề ôn tập cấu trúc 3-2-2-3 (Đề số 04)",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-10-nam-2025-2026-truong-thpt-viet-duc-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3611,
+  "best": {
+   "ten": "Đề học kì 2 Toán 10 năm 2024 - 2025 trường THPT Nguyễn Hữu Huân - TP HCM (Mã đề 1101)",
+   "ti_le": 0.13,
+   "cau": 16
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ki-2-toan-10-nam-2025-2026-truong-thpt-xuan-phuong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 9543,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 10 năm 2024 - 2025 (10 đề KNTT, Mã đề 02) - đề tham khảo giáo viên",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-2-toan-10-nam-2025-2026-truong-thpt-que-son-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 2073,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT chuyên Nguyễn Tất Thành - Kon Tum (Mã đề 101)",
+   "ti_le": 0.11,
+   "cau": 18
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.13,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-10-nam-2024-2025-truong-thpt-nguyen-viet-hong-can-tho",
+  "ket_luan": "khac",
+  "so_tu": 2001,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 2 Toán 10 năm 2025 - 2026 trường THPT Đông Hà, Quảng Trị (Mã đề 1001)",
+   "ti_le": 0.07,
+   "cau": 14
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-10-nam-2024-2025-truong-thpt-trung-vuong-binh-dinh",
+  "ket_luan": "mo_ho",
+  "so_tu": 5636,
+  "best": {
+   "ten": "Đề minh họa cuối kì 2 Toán 10 năm 2024 - 2025 trường THPT Hoàng Diệu - Đồng Nai",
+   "ti_le": 0.2,
+   "cau": 15
+  },
+  "nhi": 0.19,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ },
+ {
+  "batch": "B047",
+  "folder": "Đề cương/CKII",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-10-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "mo_ho",
+  "so_tu": 8916,
+  "best": {
+   "ten": "Đề cuối kì 2 Toán 10 năm 2025 - 2026 trường THPT Hướng Hóa - Quảng Trị (Mã đề 0101)",
+   "ti_le": 0.4,
+   "cau": 15
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.71,
+  "trung_kho": false
+ }
+]

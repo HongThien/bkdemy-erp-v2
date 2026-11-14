@@ -1,0 +1,242 @@
+[
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "05-de-on-thi-cuoi-hoc-ki-1-toan-12-nam-2025-2026-hoang-trong-nghia",
+  "ket_luan": "mo_ho",
+  "so_tu": 33647,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường PT Thực hành Sư phạm - Đại học Đồng Nai (Mã đề 101)",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "05-de-thi-thu-cuoi-hoc-ki-1-toan-12-nam-2024-2025-co-loi-giai-chi-tiet",
+  "ket_luan": "mo_ho",
+  "so_tu": 26617,
+  "best": {
+   "ten": "Đề thi thử cuối kì 1 Toán 12 năm 2025 - 2026 - thầy Chu Hoàng Minh (Đề số 1, Mã đề 101)",
+   "ti_le": 0.31,
+   "cau": 13
+  },
+  "nhi": 0.2,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-dinh-dang-trac-nghiem-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 49041,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Bình Xuyên - Phú Thọ",
+   "ti_le": 0.23,
+   "cau": 13
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-cuoi-hoc-ki-1-toan-12-cau-truc-trac-nghiem-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 57481,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường THPT Đoàn Thượng - Hải Dương (Mã đề 121)",
+   "ti_le": 0.41,
+   "cau": 17
+  },
+  "nhi": 0.28,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-cuoi-ki-1-toan-12-nam-hoc-2024-2025-co-dap-an-va-loi-giai",
+  "ket_luan": "khac",
+  "so_tu": 56554,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Văn Cừ - Hải Dương",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.17,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-tap-kiem-tra-hoc-ki-1-toan-12-nam-2025-2026-hoang-xuan-nhan",
+  "ket_luan": "khac",
+  "so_tu": 23196,
+  "best": {
+   "ten": "Đề thi thử TN THPT năm 2026 môn Toán trường THCS-THPT Nguyễn Khuyến - TP HCM",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "10-de-on-thi-cuoi-ki-1-toan-12-nam-hoc-2025-2026-truong-ngoc-vy",
+  "ket_luan": "mo_ho",
+  "so_tu": 57197,
+  "best": {
+   "ten": "Đề giữa học kỳ 1 Toán 12 năm 2025 - 2026 trường THPT Lý Tự Trọng - Đà Nẵng",
+   "ti_le": 0.25,
+   "cau": 8
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "17-de-tham-khao-cuoi-hoc-ky-1-toan-12-cau-truc-trac-nghiem-moi",
+  "ket_luan": "mo_ho",
+  "so_tu": 33395,
+  "best": {
+   "ten": "Đề khảo sát lần 1 Toán 12 năm 2025 - 2026 trường THPT chuyên Bắc Ninh",
+   "ti_le": 0.25,
+   "cau": 4
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "20-de-on-tap-cuoi-ki-1-toan-12-nam-2024-2025-truong-thcsthpt-hoa-sen-tp-hcm",
+  "ket_luan": "mo_ho",
+  "so_tu": 28896,
+  "best": {
+   "ten": "Đề giữa học kì 1 Toán 12 năm 2024 - 2025 trường THPT Dĩ An - Bình Dương",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.18,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-nam-hoc-2024-2025",
+  "ket_luan": "mo_ho",
+  "so_tu": 49764,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Công Trứ - TP HCM (Mã đề 124)",
+   "ti_le": 0.36,
+   "cau": 14
+  },
+  "nhi": 0.29,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-cuoi-ky-1-toan-12-nam-2025-2026-truong-thpt-dai-ngai-can-tho",
+  "ket_luan": "mo_ho",
+  "so_tu": 21568,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Khuyến - An Giang (Mã đề 101)",
+   "ti_le": 0.58,
+   "cau": 12
+  },
+  "nhi": 0.53,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ki-1-mon-toan-12-theo-cau-truc-moi",
+  "ket_luan": "khac",
+  "so_tu": 32263,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2025 - 2026 trường THPT Bình Minh - Vĩnh Long (Mã đề 1101)",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.15,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-tap-kiem-tra-cuoi-hoc-ky-1-mon-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 14959,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường THPT Nguyễn Công Trứ - TP HCM (Mã đề 124)",
+   "ti_le": 0.36,
+   "cau": 14
+  },
+  "nhi": 0.29,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-on-thi-cuoi-hoc-ki-1-mon-toan-12-ngo-duc-tai",
+  "ket_luan": "mo_ho",
+  "so_tu": 46406,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 12 năm 2024 - 2025 trường THPT Phan Ngọc Hiển - Cà Mau (Mã đề 101)",
+   "ti_le": 0.23,
+   "cau": 13
+  },
+  "nhi": 0.21,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B051",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "bo-de-tham-khao-on-tap-hoc-ky-1-mon-toan-12-nam-hoc-2025-2026",
+  "ket_luan": "mo_ho",
+  "so_tu": 63914,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 12 - bộ 10 đề kiểm tra có đáp án và lời giải chi tiết - Đề 02",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.33,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ }
+]

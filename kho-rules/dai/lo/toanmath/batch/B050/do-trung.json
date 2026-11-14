@@ -1,0 +1,34 @@
+[
+ {
+  "batch": "B050",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ki-1-toan-12-nam-2024-2025-truong-thpt-tran-quang-dieu-quang-ngai",
+  "ket_luan": "khac",
+  "so_tu": 7699,
+  "best": {
+   "ten": "Đề ôn tập giữa kì 1 Toán 12 (KNTT) số 01 - Lê Bá Bảo, CLB Giáo viên trẻ TP Huế 2025",
+   "ti_le": 0.14,
+   "cau": 7
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ },
+ {
+  "batch": "B050",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-12-nam-2024-2025-truong-chuyen-le-thanh-tong-quang-nam",
+  "ket_luan": "khac",
+  "so_tu": 3755,
+  "best": {
+   "ten": "Đề KSCL Toán 12 thi TN THPT 2026 lần 1 trường THPT Nguyễn Quán Nho - Thanh Hóa",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ }
+]

@@ -1,0 +1,146 @@
+[
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-11-nam-2024-2025-truong-thpt-hoang-van-thu-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6726,
+  "best": {
+   "ten": "Đề thi thử cuối học kì 1 Toán 11 năm 2024 - 2025 GV Chu Hoàng Minh (Đề số 1, Mã đề 101)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.29,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-11-nam-2024-2025-truong-thpt-xuan-dinh-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 10921,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Chu Văn An - Quảng Nam (Mã đề 111)",
+   "ti_le": 0.2,
+   "cau": 15
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-hoc-ky-1-toan-11-nam-2025-2026-truong-thpt-son-dong-3-bac-ninh",
+  "ket_luan": "mo_ho",
+  "so_tu": 1617,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 Sở GD&ĐT Bắc Giang (Mã đề 111)",
+   "ti_le": 0.27,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-11-nam-2025-2026-truong-thpt-bac-thang-long-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 5592,
+  "best": {
+   "ten": "Đề giữa kì 1 Toán 11 năm 2024 - 2025 trường THPT Hòa Vang - Đà Nẵng",
+   "ti_le": 0.11,
+   "cau": 9
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-11-nam-2025-2026-truong-thpt-ea-hleo-dak-lak",
+  "ket_luan": "mo_ho",
+  "so_tu": 5531,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 11 năm học 2025 - 2026 bộ sách Kết nối tri thức với cuộc sống (Toán Từ Tâm, Đề số 1)",
+   "ti_le": 0.2,
+   "cau": 10
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.08,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ki-1-toan-11-nam-2025-2026-truong-thpt-huong-hoa-quang-tri",
+  "ket_luan": "khac",
+  "so_tu": 7779,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT số 1 Văn Bàn - Lào Cai (Đề 102)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-ngo-quyen-da-nang",
+  "ket_luan": "khac",
+  "so_tu": 9654,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT số 1 Văn Bàn - Lào Cai (Đề 102)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.17,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-nguyen-binh-khiem-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 7097,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 11 năm 2024 - 2025 trường THPT Nguyễn Du - BR VT (Mã đề 123)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.29,
+  "trung_kho": false
+ },
+ {
+  "batch": "B036",
+  "folder": "Đề cương/CKI",
+  "ten_bai": "de-cuong-cuoi-ky-1-toan-11-nam-2024-2025-truong-thpt-phuc-tho-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 6416,
+  "best": {
+   "ten": "Đề giữa kì 2 Toán 11 năm 2025 - 2026 trường THPT Quảng Trị - Quảng Trị (Mã đề 1111)",
+   "ti_le": 0.09,
+   "cau": 11
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.14,
+  "trung_kho": false
+ }
+]

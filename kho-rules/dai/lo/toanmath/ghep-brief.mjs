@@ -15,7 +15,9 @@ const MAP = { 'k9-cki': { lo: ['lo\\k9\\cki\\', 'lo/k9/cki/'], lv: ['K9-cki\\', 
   k7: { lo: ['lo\\k7\\<MA>', 'lo/k7/<MA>'], lv: ['de-thi\\K7\\', 'de-thi/K7/'] },
   k6: { lo: ['lo\\k6\\<MA>', 'lo/k6/<MA>'], lv: ['de-thi\\K6\\', 'de-thi/K6/'] },
   // 13/11: đề thi THPT K11 — gốc = brief ĐỀ CƯƠNG K11 (24/10, có khuôn TN · Đ/S · TLN); một đề = một tệp ⇒ bỏ hậu tố khúc `.p<P>`
-  k11dc: { lo: ['lo\\k11\\de-cuong\\<MA>', 'lo/k11/de-cuong/<MA>'], lv: ['de-cuong\\K11\\', 'de-cuong/K11/'], boKhuc: true, src: (k) => `k11/de-cuong/brief-${k}.md` } }[GOC]
+  k11dc: { lo: ['lo\\k11\\de-cuong\\<MA>', 'lo/k11/de-cuong/<MA>'], lv: ['de-cuong\\K11\\', 'de-cuong/K11/'], boKhuc: true, src: (k) => `k11/de-cuong/brief-${k}.md` },
+  // 14/11: K10 (đề thi + đề cương CKI) — gốc = brief ĐỀ CƯƠNG K10 (25/10); một đề = một tệp ⇒ bỏ hậu tố `.p<P>`
+  k10dc: { lo: ['lo\\k10\\de-cuong\\<MA>', 'lo/k10/de-cuong/<MA>'], lv: ['de-cuong\\K10\\', 'de-cuong/K10/'], boKhuc: true, src: (k) => `k10/de-cuong/brief-${k}.md` } }[GOC]
 if (!MAP) throw new Error('chưa có khuôn brief cho ' + GOC)
 const LVMOI = /^de-(thi|cuong)/.test(MAP.lv[0]) ? [`de-thi\\toanmath\\${MA}\\`, `de-thi/toanmath/${MA}/`] : [`toanmath\\${MA}\\`, `toanmath/${MA}/`]
 const DUOI = MAP.lo[0].endsWith('<MA>') ? '<MA>' : ''

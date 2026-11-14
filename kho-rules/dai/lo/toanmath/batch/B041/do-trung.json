@@ -1,0 +1,66 @@
+[
+ {
+  "batch": "B041",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-hoc-ky-1-toan-10-nam-2024-2025-truong-thpt-minh-ha-ha-noi",
+  "ket_luan": "trung",
+  "so_tu": 5611,
+  "best": {
+   "ten": "Đề ôn tập cuối kì 1 Toán 10 năm 2025 - 2026 sách Kết Nối Tri Thức - Đề số 1 (bộ đề Toán Từ Tâm)",
+   "ti_le": 0.87,
+   "cau": 15
+  },
+  "nhi": 0.01,
+  "so_de_khop": 1,
+  "giong_ten": 0.22,
+  "trung_kho": false
+ },
+ {
+  "batch": "B041",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-10-chuyen-nam-2024-2025-truong-chuyen-tran-phu-hai-phong",
+  "ket_luan": "khac",
+  "so_tu": 4987,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 10 năm 2024 - 2025 trường THPT Quang Trung - Gia Lai",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B041",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-10-nam-2024-2025-truong-thpt-chuyen-tran-phu-hai-phong",
+  "ket_luan": "khac",
+  "so_tu": 5010,
+  "best": {
+   "ten": "Đề giữa kỳ 1 Toán 10 năm 2024 - 2025 trường THPT Quang Trung - Gia Lai",
+   "ti_le": 0.18,
+   "cau": 11
+  },
+  "nhi": 0.11,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B041",
+  "folder": "Đề thi/CKI",
+  "ten_bai": "de-cuoi-ky-1-toan-10-nam-2025-2026-truong-thpt-nguyen-trai-da-nang",
+  "ket_luan": "trung",
+  "so_tu": 5861,
+  "best": {
+   "ten": "Đề cuối kì 1 Toán 10 năm 2025 - 2026 trường THPT Nguyễn Trãi - Hội An - Đà Nẵng (Mã đề 1001)",
+   "ti_le": 0.83,
+   "cau": 12
+  },
+  "nhi": 0.08,
+  "so_de_khop": 1,
+  "giong_ten": 0.63,
+  "trung_kho": false
+ }
+]
