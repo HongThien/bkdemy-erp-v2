@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T000000401",
+  "dang_bai_id": "NDB01564",
+  "chac": "vua",
+  "ly_do": "Bài lời văn chỉ cần cộng hai phân số 1/5 + 1/6; dạng cộng trừ hai phân số mô tả phép tính trần."
+ },
+ {
+  "ma_cau": "T14T0000001048",
+  "dang_bai_id": "NDB01555",
+  "chac": "vua",
+  "ly_do": "Ý b rút gọn phân số dạng chuẩn; ý a nhận biết phân số tối giản bản đồ chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T14T000000475",
+  "dang_bai_id": "NDB01568",
+  "chac": "cao",
+  "ly_do": "Ba tích có thừa số chung 4/5, đặt ra ngoài ngoặc để tính thuận tiện."
+ },
+ {
+  "ma_cau": "T14T000000701",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tính ngược chuyển qua lại giữa 2–3 người (tổng không đổi)."
+ },
+ {
+  "ma_cau": "T14T0000001118",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tìm x trong biểu thức phân số (thành phần chưa biết)."
+ },
+ {
+  "ma_cau": "T14T000000391",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "Nhóm các phân số cùng mẫu số để tính thuận tiện tổng."
+ },
+ {
+  "ma_cau": "T14T0000001241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng điền chữ số vào phép tính (hiệu nhỏ nhất) theo hình."
+ },
+ {
+  "ma_cau": "T14T000000238",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thay đổi thừa số trong phép nhân."
+ },
+ {
+  "ma_cau": "T14T000000471",
+  "dang_bai_id": "NDB01571",
+  "chac": "vua",
+  "ly_do": "Gom hai số bị chia có chung số chia y rồi tìm y; phần tìm x chưa có dạng riêng."
+ },
+ {
+  "ma_cau": "T14T000000833",
+  "dang_bai_id": "NDB01513",
+  "chac": "cao",
+  "ly_do": "Đếm số có bốn chữ số khác nhau từ bốn chữ số khác 0, không điều kiện."
+ },
+ {
+  "ma_cau": "T14T000000544",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Đưa một phân số và một số tự nhiên về cùng mẫu số 9: quy đồng mẫu hai phân số."
+ },
+ {
+  "ma_cau": "T14T000000317",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "Chọn trong danh sách số có sẵn các số chia hết cho 9."
+ },
+ {
+  "ma_cau": "T14T000000579",
+  "dang_bai_id": "NDB01560",
+  "chac": "cao",
+  "ly_do": "72/73 và 71/74: tử lớn hơn mẫu bé hơn, hiệu tử-mẫu khác nhau, dùng phân số trung gian."
+ },
+ {
+  "ma_cau": "T14T000000059",
+  "dang_bai_id": "NDB01540",
+  "chac": "cao",
+  "ly_do": "Viết thêm chữ số 8 vào bên trái số có hai chữ số được số gấp 51 lần."
+ },
+ {
+  "ma_cau": "T14T0000001215",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng cân đĩa / khối lượng vật trên cân thăng bằng (có hình)."
+ },
+ {
+  "ma_cau": "T14T000000936",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tính thuận tiện kết hợp/giao hoán phép nhân số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000563",
+  "dang_bai_id": "NDB01563",
+  "chac": "cao",
+  "ly_do": "Sắp xếp dãy bốn phân số cùng mẫu từ bé đến lớn."
+ },
+ {
+  "ma_cau": "T14T0000001246",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: đếm cạnh và góc của hình vẽ, bản đồ chưa có dạng."
+ },
+ {
+  "ma_cau": "T14T000000597",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng viết phân số theo điều kiện (bé hơn một phân số cho trước)."
+ },
+ {
+  "ma_cau": "T14T000000183",
+  "dang_bai_id": "NDB01521",
+  "chac": "cao",
+  "ly_do": "Thêm vào số hạng này, bớt ở số hạng kia, biết tổng mới, tìm tổng ban đầu."
+ },
+ {
+  "ma_cau": "T14T000000514",
+  "dang_bai_id": "NDB01574",
+  "chac": "cao",
+  "ly_do": "Tử số 4 bằng hiệu hai thừa số ở mẫu, tách hiệu và triệt tiêu."
+ },
+ {
+  "ma_cau": "T14T000000369",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "Cộng ba phân số khác mẫu, quy đồng về mẫu chung."
+ },
+ {
+  "ma_cau": "T14T000000147",
+  "dang_bai_id": "NDB01521",
+  "chac": "cao",
+  "ly_do": "Thêm 21 vào một số hạng, biết tổng mới, tìm tổng ban đầu."
+ },
+ {
+  "ma_cau": "T14T000000785",
+  "dang_bai_id": "NDB01623",
+  "chac": "vua",
+  "ly_do": "Lõi tổng hiệu với nửa chu vi, nhưng tổng phải suy từ hai chu vi hình mới."
+ },
+ {
+  "ma_cau": "T14T0000001008",
+  "dang_bai_id": "NDB01540",
+  "chac": "cao",
+  "ly_do": "2abc = abc × 17: viết thêm chữ số 2 vào bên trái số ba chữ số."
+ },
+ {
+  "ma_cau": "T14T000000093",
+  "dang_bai_id": "NDB01510",
+  "chac": "cao",
+  "ly_do": "Số nhỏ nhất có ba chữ số, tổng các chữ số bằng 14."
+ },
+ {
+  "ma_cau": "T14T0000001059",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tìm quy luật viết tiếp dãy phân số."
+ },
+ {
+  "ma_cau": "T14T000000398",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "Rút gọn rồi nhóm các phân số cùng mẫu để tính thuận tiện."
+ },
+ {
+  "ma_cau": "T14T0000001232",
+  "dang_bai_id": "NDB01530",
+  "chac": "vua",
+  "ly_do": "Đọc bảng số liệu dạng tranh để so sánh số lượng; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T14T000000127",
+  "dang_bai_id": "NDB01623",
+  "chac": "cao",
+  "ly_do": "Chu vi 40 cm, tăng rộng giảm dài thành hình vuông: nửa chu vi và tổng hiệu, rồi diện tích."
+ },
+ {
+  "ma_cau": "T14T000000511",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tổng dãy phân số có mẫu gấp lên (nhân tổng với 5 rồi trừ)."
+ },
+ {
+  "ma_cau": "T14T000000718",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng giá trị chữ số theo hàng (đọc, viết số tự nhiên)."
+ },
+ {
+  "ma_cau": "T14T000000945",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "Tính số tấm còn lại rồi nhân với độ dài mỗi tấm; đã biết sẵn giá trị một phần."
+ },
+ {
+  "ma_cau": "T14T0000001066",
+  "dang_bai_id": "NDB01559",
+  "chac": "vua",
+  "ly_do": "So sánh một phân số với 1, gần dạng so sánh với 1 nhưng chỉ có một phân số."
+ },
+ {
+  "ma_cau": "T14T000000447",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "Dãy số liệu điểm: đếm số học sinh, trung bình cộng, đếm bạn dưới trung bình."
+ },
+ {
+  "ma_cau": "T14T000000197",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng phép tính với số đo diện tích (m², dm²)."
+ },
+ {
+  "ma_cau": "T14T0000001007",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng viết thêm chữ số vào bên phải số cho trước."
+ },
+ {
+  "ma_cau": "T14T000000801",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng so sánh số tự nhiên nhiều chữ số."
+ },
+ {
+  "ma_cau": "T14T000000190",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thay đổi thành phần trong phép trừ."
+ },
+ {
+  "ma_cau": "T14T0000001147",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tìm x từ hai phân số bằng nhau."
+ },
+ {
+  "ma_cau": "T14T000000662",
+  "dang_bai_id": "NDB01543",
+  "chac": "cao",
+  "ly_do": "Cho thẳng hiệu 6 và tỉ số 2/5, bài hiệu tỉ cơ bản."
+ },
+ {
+  "ma_cau": "T14T000000777",
+  "dang_bai_id": "NDB01541",
+  "chac": "cao",
+  "ly_do": "Cho thẳng tổng 182 và hiệu 24, tìm hai số."
+ },
+ {
+  "ma_cau": "T14T000000654",
+  "dang_bai_id": "NDB01543",
+  "chac": "cao",
+  "ly_do": "Cho thẳng hiệu 58 và tỉ số 7/5, bài hiệu tỉ cơ bản."
+ },
+ {
+  "ma_cau": "T14T000000420",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "Rút về một thùng (90:5) rồi tìm số thùng lúc đầu."
+ },
+ {
+  "ma_cau": "T14T000000090",
+  "dang_bai_id": "NDB01506",
+  "chac": "cao",
+  "ly_do": "Số lớn nhất có hai chữ số, tổng các chữ số là 16."
+ },
+ {
+  "ma_cau": "T14T000000924",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "Tính trung bình cộng ba số cho sẵn."
+ },
+ {
+  "ma_cau": "T14T000000655",
+  "dang_bai_id": "NDB01551",
+  "chac": "cao",
+  "ly_do": "Hiệu tuổi không đổi, tỉ số sau 3 năm, hiệu tỉ lúc sau rồi trả về hiện nay."
+ },
+ {
+  "ma_cau": "T14T0000001109",
+  "dang_bai_id": "NDB01568",
+  "chac": "cao",
+  "ly_do": "Đặt thừa số chung 9/13 rồi 7/12 ra ngoài ngoặc để tính thuận tiện."
+ },
+ {
+  "ma_cau": "T14T000000280",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng viết thêm chữ số vào bên phải (số tăng thêm bao nhiêu đơn vị)."
+ },
+ {
+  "ma_cau": "T14T0000001223",
+  "dang_bai_id": "NDB01523",
+  "chac": "vua",
+  "ly_do": "Dãy hình đưa về dãy cách đều, tìm số hạng thứ 12; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T14T000000539",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Quy đồng mẫu số hai phân số 5/7 và 4/9."
+ },
+ {
+  "ma_cau": "T14T000000906",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng diện tích thay đổi khi đổi kích thước (không quy về tổng hiệu)."
+ },
+ {
+  "ma_cau": "T14T000000233",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng thay đổi thừa số trong phép nhân."
+ },
+ {
+  "ma_cau": "T14T0000001185",
+  "dang_bai_id": "NDB01544",
+  "chac": "cao",
+  "ly_do": "Tỉ số 7 lần, tổng ẩn qua tổng tuổi sau 4 năm; tìm tổng hiện nay rồi tổng tỉ."
+ },
+ {
+  "ma_cau": "T14T000000627",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "Biết 3/8 của A là 24, lấy giá trị chia cho phân số."
+ },
+ {
+  "ma_cau": "T14T000000935",
+  "dang_bai_id": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Hai tích chung thừa số (35+65), đặt ra ngoài theo tính chất phân phối."
+ },
+ {
+  "ma_cau": "T14T000000129",
+  "dang_bai_id": "NDB01523",
+  "chac": "vua",
+  "ly_do": "Viết tiếp các số hạng của dãy cách đều; gần dạng tìm số hạng thứ n."
+ },
+ {
+  "ma_cau": "T14T000000506",
+  "dang_bai_id": "NDB01574",
+  "chac": "cao",
+  "ly_do": "Tử số 3 bằng hiệu hai thừa số ở mẫu, tách và triệt tiêu."
+ },
+ {
+  "ma_cau": "T14T0000001065",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức tích có 3636, 4848 lặp cụm chữ số."
+ },
+ {
+  "ma_cau": "T14T0000001014",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tìm thành phần chưa biết với số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000074",
+  "dang_bai_id": "NDB00647",
+  "chac": "cao",
+  "ly_do": "Tổng các ngoặc (x+1)+(x+5)+...+(x+117), dùng tổng dãy số để tìm x."
+ },
+ {
+  "ma_cau": "T14T000000428",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "Đếm số giá trị trong dãy số liệu để biết số học sinh."
+ },
+ {
+  "ma_cau": "T14T000000371",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "Cộng ba phân số, quy đồng về mẫu chung 24."
+ },
+ {
+  "ma_cau": "T14T000000387",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng tìm x (y) trong biểu thức cộng trừ phân số."
+ },
+ {
+  "ma_cau": "T14T000000933",
+  "dang_bai_id": "NDB01590",
+  "chac": "vua",
+  "ly_do": "Đổi trung bình cộng khi gấp một số lên; tìm số qua hiệu hai tổng, không khớp hẳn mô tả thêm bớt."
+ },
+ {
+  "ma_cau": "T14T000000492",
+  "dang_bai_id": "NDB01559",
+  "chac": "cao",
+  "ly_do": "Một phân số bé hơn 1, một phân số lớn hơn 1, so sánh với 1."
+ },
+ {
+  "ma_cau": "T14T0000001094",
+  "dang_bai_id": "NDB01565",
+  "chac": "vua",
+  "ly_do": "Bài lời văn cộng trừ nhiều phân số để tìm đoạn thứ ba."
+ },
+ {
+  "ma_cau": "T14T0000001219",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: diện tích hình ghép từ hình chữ nhật, bản đồ chưa có dạng diện tích."
+ },
+ {
+  "ma_cau": "T14T000000518",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Quy đồng mẫu số hai phân số 3/4 và 5/6."
+ },
+ {
+  "ma_cau": "T14T000000266",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bản đồ thiếu dạng viết thêm chữ số 0 vào bên phải số cho trước."
+ }
+]

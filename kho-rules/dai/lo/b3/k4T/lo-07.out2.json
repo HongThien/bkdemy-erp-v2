@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T0000001053",
+  "dang_bai_id": "NDB01584",
+  "chac": "cao",
+  "ly_do": "TBC nhóm hai loại toa, mỗi loại số lượng khác nhau"
+ },
+ {
+  "ma_cau": "T14T000000881",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính giá trị biểu thức số tự nhiên (thứ tự phép tính)"
+ },
+ {
+  "ma_cau": "T14T000000120",
+  "dang_bai_id": "NDB01512",
+  "chac": "vua",
+  "ly_do": "xoá chữ số giữ thứ tự để được số lớn nhất; mô tả dạng chưa nêu rõ biến thể xoá"
+ },
+ {
+  "ma_cau": "T14T000000773",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính thuận tiện cộng trừ số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000099",
+  "dang_bai_id": "NDB01510",
+  "chac": "cao",
+  "ly_do": "nhỏ nhất, cho 4 chữ số khác nhau và tổng chữ số"
+ },
+ {
+  "ma_cau": "T14T000000316",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "chọn số chia hết cho 3 trong danh sách cho sẵn"
+ },
+ {
+  "ma_cau": "T14T0000001054",
+  "dang_bai_id": "NDB01555",
+  "chac": "cao",
+  "ly_do": "rút gọn phân số chia cho số chung nhỏ"
+ },
+ {
+  "ma_cau": "T14T000000323",
+  "dang_bai_id": "NDB01534",
+  "chac": "cao",
+  "ly_do": "lập số từ chữ số cho trước chia hết cho 9"
+ },
+ {
+  "ma_cau": "T14T000000997",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính thuận tiện cộng trừ số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001115",
+  "dang_bai_id": "NDB01557",
+  "chac": "cao",
+  "ly_do": "hai phân số mẫu nhỏ, quy đồng mẫu rồi so sánh"
+ },
+ {
+  "ma_cau": "T14T0000001199",
+  "dang_bai_id": "NDB01546",
+  "chac": "cao",
+  "ly_do": "tổng ẩn qua TBC và tỉ ẩn \"gấp ba lần\"; dạng sau thắng chọn ẩn tỉ số"
+ },
+ {
+  "ma_cau": "T14T000000976",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm y với phép chia có dư số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000403",
+  "dang_bai_id": "NDB01574",
+  "chac": "cao",
+  "ly_do": "dãy 1/(n×(n+1)) tử bằng hiệu, tính rồi so với 1"
+ },
+ {
+  "ma_cau": "T14T000000657",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: lập tỉ số của hai đại lượng"
+ },
+ {
+  "ma_cau": "T14T000000728",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: bài lời văn nhiều phép tính về tiền"
+ },
+ {
+  "ma_cau": "T14T000000759",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính thuận tiện chia một số cho một tích"
+ },
+ {
+  "ma_cau": "T14T000000482",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm số tự nhiên x để phân số nằm giữa hai phân số"
+ },
+ {
+  "ma_cau": "T14T0000001003",
+  "dang_bai_id": "NDB01540",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số 4 vào bên trái, số mới gấp 17 lần"
+ },
+ {
+  "ma_cau": "T14T0000001061",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm y từ hai phân số bằng nhau"
+ },
+ {
+  "ma_cau": "T14T000000943",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm y với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000776",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính giá trị biểu thức số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000809",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: đặt tính cộng số nhiều chữ số"
+ },
+ {
+  "ma_cau": "T14T000000160",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: điền chữ số vào dấu * trong phép tính"
+ },
+ {
+  "ma_cau": "T14T000000180",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm x với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001043",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một thùng rồi nhân số thùng còn lại"
+ },
+ {
+  "ma_cau": "T14T000000376",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "cộng trừ ba phân số, quy đồng mẫu chung"
+ },
+ {
+  "ma_cau": "T14T000000796",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: diện tích hình chữ nhật"
+ },
+ {
+  "ma_cau": "T14T0000001067",
+  "dang_bai_id": "NDB01559",
+  "chac": "vua",
+  "ly_do": "nhận biết phân số lớn hơn 1 trong danh sách; dạng chỉ nói so sánh hai phân số"
+ },
+ {
+  "ma_cau": "T14T0000001178",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "biết giá trị 5/7 diện tích, tìm cả mảnh đất"
+ },
+ {
+  "ma_cau": "T14T000000700",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính ngược chuyển qua lại giữa hai người"
+ },
+ {
+  "ma_cau": "T14T0000001170",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: lập tỉ số của hai đại lượng"
+ },
+ {
+  "ma_cau": "T14T000000552",
+  "dang_bai_id": "NDB01557",
+  "chac": "cao",
+  "ly_do": "đúng ví dụ so sánh bằng quy đồng mẫu số"
+ },
+ {
+  "ma_cau": "T14T000000677",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "hai phân số của cùng số tiền, tìm phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000763",
+  "dang_bai_id": "NDB01518",
+  "chac": "vua",
+  "ly_do": "bài lời văn một phép nhân số nhiều chữ số; dạng hướng tới đặt tính"
+ },
+ {
+  "ma_cau": "T14T000000217",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: diện tích hình chữ nhật (thu hoạch theo m²)"
+ },
+ {
+  "ma_cau": "T14T0000001149",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "đọc dãy số liệu, tìm lớn nhất, bé nhất rồi lấy hiệu"
+ },
+ {
+  "ma_cau": "T14T000000897",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phép toán định nghĩa mới"
+ },
+ {
+  "ma_cau": "T14T000000395",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "rút gọn đặc biệt rồi cộng nhiều phân số; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T14T0000001129",
+  "dang_bai_id": "NDB01550",
+  "chac": "cao",
+  "ly_do": "chuyển từ tử xuống mẫu, tổng không đổi, tổng tỉ lúc sau"
+ },
+ {
+  "ma_cau": "T14T0000001214",
+  "dang_bai_id": "NDB01573",
+  "chac": "cao",
+  "ly_do": "tích các ngoặc dạng 1 cộng phân số, đổi rồi triệt tiêu"
+ },
+ {
+  "ma_cau": "T14T000000092",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: viết số biết thương các chữ số"
+ },
+ {
+  "ma_cau": "T14T000000572",
+  "dang_bai_id": "NDB01558",
+  "chac": "cao",
+  "ly_do": "tử dễ đưa về bằng nhau, quy đồng tử số"
+ },
+ {
+  "ma_cau": "T14T0000001075",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: đếm số tự nhiên n để phân số nằm giữa hai phân số"
+ },
+ {
+  "ma_cau": "T14T0000001038",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một hộp rồi nhân số hộp"
+ },
+ {
+  "ma_cau": "T14T000000893",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: đọc viết số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001239",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: cân đĩa (đo lường)"
+ },
+ {
+  "ma_cau": "T14T000000632",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "biết 2/3 của A bằng 72, tìm A"
+ },
+ {
+  "ma_cau": "T14T000000569",
+  "dang_bai_id": "NDB01558",
+  "chac": "cao",
+  "ly_do": "quy đồng tử số rồi so mẫu"
+ },
+ {
+  "ma_cau": "T14T000000459",
+  "dang_bai_id": "NDB01567",
+  "chac": "cao",
+  "ly_do": "tích ba phân số rút gọn chéo"
+ },
+ {
+  "ma_cau": "T14T000000456",
+  "dang_bai_id": "NDB01570",
+  "chac": "cao",
+  "ly_do": "biểu thức có phép chia phân số, chia trước trừ sau"
+ },
+ {
+  "ma_cau": "T14T000000096",
+  "dang_bai_id": "NDB01510",
+  "chac": "cao",
+  "ly_do": "chẵn nhỏ nhất, cho 6 chữ số và tổng chữ số"
+ },
+ {
+  "ma_cau": "T14T000000241",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quan hệ thành phần phép chia"
+ },
+ {
+  "ma_cau": "T14T000000318",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "chọn số chia hết cho 2, 5, 3 trong danh sách"
+ },
+ {
+  "ma_cau": "T14T000000236",
+  "dang_bai_id": "NDB01531",
+  "chac": "cao",
+  "ly_do": "chuỗi cộng 30 rồi chia 25, tính ngược"
+ },
+ {
+  "ma_cau": "T14T000000804",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: bài lời văn cộng nhiều bước"
+ },
+ {
+  "ma_cau": "T14T000000097",
+  "dang_bai_id": "NDB01506",
+  "chac": "cao",
+  "ly_do": "lớn nhất, có 3 chữ số, tổng chữ số 10"
+ },
+ {
+  "ma_cau": "T14T000000184",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: thay đổi thành phần phép trừ"
+ },
+ {
+  "ma_cau": "T14T000000668",
+  "dang_bai_id": "NDB01550",
+  "chac": "cao",
+  "ly_do": "tăng dài bớt rộng cùng 1 cm, tổng không đổi, tỉ lúc sau; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T14T0000001206",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "hai phân số của tổng, biết phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000306",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "chọn số chia hết cho 2 trong danh sách"
+ },
+ {
+  "ma_cau": "T14T000000057",
+  "dang_bai_id": "NDB01541",
+  "chac": "vua",
+  "ly_do": "tổng–hiệu ba số; mô tả dạng chỉ nói hai số"
+ },
+ {
+  "ma_cau": "T14T000000959",
+  "dang_bai_id": "NDB01506",
+  "chac": "cao",
+  "ly_do": "lớn nhất, 4 chữ số, tổng 19, điều kiện tận cùng"
+ },
+ {
+  "ma_cau": "T14T0000001084",
+  "dang_bai_id": "NDB01564",
+  "chac": "vua",
+  "ly_do": "lời văn cộng phân số hai bước; dạng mô tả biểu thức hai phân số"
+ },
+ {
+  "ma_cau": "T14T000000035",
+  "dang_bai_id": "NDB01527",
+  "chac": "vua",
+  "ly_do": "trùng ví dụ dạng tổng hợp; dạng 1 đầu cũng hợp"
+ },
+ {
+  "ma_cau": "T14T0000001174",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "phân số của tổng và của số còn lại, biết phần còn lại"
+ },
+ {
+  "ma_cau": "T14T0000001153",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "hai phân số của tổng, tìm phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000150",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính giá trị biểu thức chứa chữ"
+ },
+ {
+  "ma_cau": "T14T000000223",
+  "dang_bai_id": "NDB01625",
+  "chac": "cao",
+  "ly_do": "tổng tuổi ba người, tổng hiệu hai lượt"
+ },
+ {
+  "ma_cau": "T14T000000993",
+  "dang_bai_id": "NDB01538",
+  "chac": "cao",
+  "ly_do": "dãy màu lặp nhóm 5, chia lấy dư"
+ },
+ {
+  "ma_cau": "T14T000000609",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "số dạng abcabc, tách 1001 trong biểu thức tích"
+ }
+]

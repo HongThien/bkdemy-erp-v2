@@ -1,0 +1,564 @@
+[
+ {
+  "ma_cau": "T14T000000027",
+  "loai": "tra_loi_ngan",
+  "de": "Để chuẩn bị cho một hội nghị người ta kê 15 hàng ghế đủ chỗ cho 180 người ngồi. Trên thực tế có 204 người đến dự. Hỏi phải kê thêm bao nhiêu hàng ghế nữa? Biết rằng mỗi hàng ghế có số chỗ ngồi như nhau.",
+  "dap_an": "$2$ hàng ghế",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: rút về đơn vị — **một hàng ghế có mấy chỗ** ($180:15$). Biết một hàng thì tìm **số hàng** cần cho $204$ người (phép chia — dạng 2). Câu hỏi là **kê thêm**, nên trừ đi $15$ hàng đã có.\nChú ý: lỗi hay gặp là trả lời $17$ hàng (quên trừ).\n**Phần 2. Trình bày**\nTóm tắt:\n$15$ hàng: $180$ người\n… hàng: $204$ người\nBài giải\nMỗi hàng ghế có số chỗ ngồi là: $180:15=12$ (chỗ)\nSố hàng ghế cần kê cho $204$ người là: $204:12=17$ (hàng)\nSố hàng ghế phải kê thêm là: $17-15=2$ (hàng)\nĐáp số: $2$ hàng ghế",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000557",
+  "loai": "tu_luan",
+  "de": "Cho các phân số $\\dfrac{5}{6};\\dfrac{7}{17};\\dfrac{9}{4};\\dfrac{8}{12};\\dfrac{34}{21};\\dfrac{35}{35}$. Viết các phân số:\nbé hơn 1.",
+  "dap_an": "$\\dfrac{5}{6}$ ; $\\dfrac{7}{17}$ ; $\\dfrac{8}{12}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: so sánh tử số với mẫu số. Phân số có tử số **bé hơn** mẫu số thì bé hơn $1$. (Ngược lại: tử số lớn hơn mẫu số thì phân số lớn hơn $1$; tử số bằng mẫu số thì phân số bằng $1$.)\nXét lần lượt từng phân số trong sáu phân số rồi chọn các phân số thoả điều kiện.\nChú ý: $\\dfrac{8}{12}$ có tử số bé hơn mẫu số nên bé hơn $1$ (dù chưa rút gọn).\n**Phần 2. Trình bày**\n$\\dfrac{5}{6}$: tử số $5$ bé hơn mẫu số $6$ nên $\\dfrac{5}{6}<1$.\n$\\dfrac{7}{17}$: tử số $7$ bé hơn mẫu số $17$ nên $\\dfrac{7}{17}<1$.\n$\\dfrac{9}{4}$: tử số $9$ lớn hơn mẫu số $4$ nên $\\dfrac{9}{4}>1$.\n$\\dfrac{8}{12}$: tử số $8$ bé hơn mẫu số $12$ nên $\\dfrac{8}{12}<1$.\n$\\dfrac{34}{21}$: tử số $34$ lớn hơn m …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000042",
+  "loai": "tra_loi_ngan",
+  "de": "Tính:\n$\\dfrac{5}{4}:\\dfrac{25}{4}+\\dfrac{5}{2}:\\dfrac{25}{8}$",
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: làm **chia trước, cộng sau**. Chia cho một phân số = nhân với phân số **đảo ngược**; nhân xong rút gọn ngay. Hai kết quả $\\dfrac{1}{5}$ và $\\dfrac{4}{5}$ cùng mẫu nên cộng ra $1$.\n**Phần 2. Trình bày**\n$\\dfrac{5}{4}:\\dfrac{25}{4}+\\dfrac{5}{2}:\\dfrac{25}{8}$\n$=\\dfrac{5}{4}\\times\\dfrac{4}{25}+\\dfrac{5}{2}\\times\\dfrac{8}{25}$\n$=\\dfrac{1}{5}+\\dfrac{4}{5}$\n$=1$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001132",
+  "loai": "tra_loi_ngan",
+  "de": "Một tờ giấy hình vuông có cạnh dài 12 cm. Mai dùng $\\dfrac{7}{9}$ diện tích tờ giấy để làm thủ công. Tính diện tích giấy Mai đã dùng.",
+  "dap_an": "$112$ $cm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tờ giấy hình vuông nên diện tích $=$ cạnh $\\times$ cạnh $=12\\times 12$. Mai dùng $\\dfrac{7}{9}$ diện tích thì lấy diện tích **nhân** với $\\dfrac{7}{9}$.\nChú ý: đơn vị diện tích là $cm^2$, không phải cm.\n**Phần 2. Trình bày**\nBài giải\nDiện tích tờ giấy hình vuông là: $12\\times 12=144$ ($cm^2$)\nDiện tích giấy Mai đã dùng là: $144\\times\\dfrac{7}{9}=112$ ($cm^2$)\nĐáp số: $112$ $cm^2$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000721",
+  "loai": "tra_loi_ngan",
+  "de": "Giá trị của biểu thức $A=1520+\\left(375-n\\right)\\times 11$ với $n=5$ là:",
+  "dap_an": "$5590$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: thay $n$ bằng $5$ rồi tính theo thứ tự: trong ngoặc trước, sau đó nhân, cuối cùng cộng.\nChú ý: không cộng $1520$ với $370$ trước khi nhân với $11$.\n**Phần 2. Trình bày**\nThay $n=5$ vào biểu thức ta có:\n$A=1520+\\left(375-5\\right)\\times 11$\n$=1520+370\\times 11$\n$=1520+4070$\n$=5590$\nVậy giá trị của biểu thức $A$ là $5590$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001042",
+  "loai": "tra_loi_ngan",
+  "de": "Cho dãy số liệu vể số chiếc xe đạp mà cửa hàng bán được trong 1 tuần (từ thứ Hai đến Chủ Nhật) lần lượt như sau:\n28; 22; 19; 24; 32;30;31.\nHỏi vào thứ mấy trong tuần thì cửa hàng bán được số chiếc xe đạp nhiều nhất?",
+  "dap_an": "Thứ Sáu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm số **lớn nhất** trong dãy, rồi xem số đó đứng thứ mấy để biết ngày nào. Dãy có $7$ số ứng với $7$ ngày từ thứ Hai đến Chủ Nhật theo đúng thứ tự.\nChú ý: đề hỏi **thứ mấy** nên đáp số là tên ngày, không phải số xe đạp.\n**Phần 2. Trình bày**\nDãy số liệu có $7$ số, lần lượt ứng với các ngày từ thứ Hai đến Chủ Nhật:\nThứ Hai: $28$; Thứ Ba: $22$; Thứ Tư: $19$; Thứ Năm: $24$; Thứ Sáu: $32$; Thứ Bảy: $30$; Chủ Nhật: $31$.\nSố lớn nhất trong dãy là $32$, ứng với thứ Sáu.\nĐáp số: Thứ Sáu",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001060",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $y$, biết:\n$\\dfrac{y}{24}=\\dfrac{3}{8}$",
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: hai phân số bằng nhau mà **cùng mẫu số** thì tử số bằng nhau. $24:8=3$ nên nhân cả tử và mẫu của $\\dfrac{3}{8}$ với $3$ để được mẫu số $24$.\nChú ý: phải nhân cả tử số lẫn mẫu số với cùng một số.\n**Phần 2. Trình bày**\n$\\begin{array}{l} \\dfrac{y}{24}=\\dfrac{3}{8} \\\\ \\dfrac{y}{24}=\\dfrac{3\\times3}{8\\times3}=\\dfrac{9}{24} \\\\ y=9 \\end{array}$\nThử lại: $\\dfrac{9}{24}=\\dfrac{9:3}{24:3}=\\dfrac{3}{8}$\nVậy $y=9$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000265",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên có hai chữ số, biết rằng nếu viết thêm chữ số 3 ở cả bên trái và bên phải số đó thì được số mới lớn hơn số cần tìm 3381 đơn vị.",
+  "dap_an": "$42$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: viết thêm chữ số $3$ vào **cả bên trái và bên phải** số $\\overline{ab}$ thì được $\\overline{3ab3}$. Số $\\overline{ab}$ bị dịch sang trái một hàng (gấp $10$ lần), chữ số $3$ đứng đầu ở hàng nghìn (thêm $3000$) và chữ số $3$ ở hàng đơn vị: $\\overline{3ab3}=3000+\\overline{ab}\\times 10+3$.\nSố mới hơn số cũ $3381$ nên $\\overline{ab}\\times 10+3003=\\overline{ab}+3381$. Bớt cả hai vế đi $\\overline{ab}$ rồi tính ngược.\n**Phần 2. Trình bày**\nGọi số cần tìm là $\\overline{ab}$ ($a$ khác $0$; $a,b<10$).\nSố mới là $\\overline{3ab3}$.\nTa có: $\\overline{3ab3}=\\overline{ab}+3381$\n$3000+\\overline{ab}\\times 10+3=\\overline{ab}+3381$\n$\\overline{ab}\\times 9+3003=3381$ (Bớt cả hai vế …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000140",
+  "loai": "tu_luan",
+  "de": "Một dãy phố có 20 nhà. Số nhà của 20 nhà đó được đánh là các số chẵn liên tiếp. Biết tổng của 20 số nhà của dãy phố đó bằng 1380. Hãy cho biết số nhà đẩu tiên và số nhà cuối cùng của dãy phố đó.",
+  "dap_an": "Số nhà đầu tiên: $50$ ; số nhà cuối cùng: $88$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: $20$ số nhà là $20$ số chẵn liên tiếp (dãy cách đều $2$) nên tổng $=$ (số đầu $+$ số cuối) $\\times 20:2$. Từ đó tìm được **tổng** của số đầu và số cuối: $1380\\times 2:20=138$. Từ số đầu đến số cuối có $20-1=19$ khoảng cách, mỗi khoảng $2$ nên số cuối **hơn** số đầu $19\\times 2=38$. Có tổng và hiệu thì giải bài toán tổng–hiệu, tìm số bé (số nhà đầu tiên) trước.\n**Phần 2. Trình bày**\nBài giải\nTổng của số nhà đầu tiên và số nhà cuối cùng là: $1380\\times 2:20=138$\nSố nhà cuối cùng hơn số nhà đầu tiên là: $\\left(20-1\\right)\\times 2=38$\nTa có sơ đồ:\n(Số nhà đầu tiên 1 đoạn; Số nhà cuối cùng 1 đoạn và 38; tổng 138)\nSố nhà đầu tiên là: $\\left(138-38\\right):2=50$\nSố nh …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000748",
+  "loai": "tra_loi_ngan",
+  "de": "Sau khi đuổi hết giặc Minh về nước, Lê Lợi lên ngôi vua năm 1428 và sáng lập ra vương triều Lê. Năm đó thuộc thế kỉ:",
+  "dap_an": "thế kỉ XV",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: thế kỉ thứ nhất gồm các năm $1$ đến $100$, thế kỉ thứ hai từ năm $101$ đến $200$, … Muốn biết một năm thuộc thế kỉ nào ta lấy số năm chia cho $100$: nếu **còn dư** thì thế kỉ là thương **cộng $1$**; nếu chia hết thì thế kỉ đúng bằng thương.\nThế kỉ thường viết bằng chữ số La Mã: $15$ là $XV$.\nChú ý: năm $1428$ chia $100$ được $14$ dư $28$ nên thuộc thế kỉ thứ $15$, không phải thế kỉ $14$.\n**Phần 2. Trình bày**\nTa có $1428:100=14$ (dư $28$).\nVì còn dư nên năm $1428$ thuộc thế kỉ thứ: $14+1=15$\nThế kỉ thứ $15$ viết bằng chữ số La Mã là $XV$.\nVậy năm $1428$ thuộc thế kỉ XV.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001039",
+  "loai": "tra_loi_ngan",
+  "de": "Có hai con xúc xắc, mỗi con có 6 mặt được đánh số từ 1 đến 6. Hỏi có bao nhiêu khả năng có thể xảy ra khi gieo đồng thời 2 con xúc xắc đó xuất hiện hai mặt có số chấm mà tổng bằng 8 ?",
+  "dap_an": "$5$ khả năng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: **liệt kê có hệ thống**. Cho con xúc xắc thứ nhất ra lần lượt $1$, $2$, $3$, $4$, $5$, $6$ rồi tìm số chấm của con thứ hai sao cho tổng bằng $8$ (con thứ hai chỉ có thể ra từ $1$ đến $6$).\nChú ý: khi con thứ nhất ra $1$ thì con thứ hai cần $7$ chấm, không có mặt nào như vậy; hai kết quả như $2+6$ và $6+2$ là hai khả năng khác nhau.\n**Phần 2. Trình bày**\nGọi kết quả của hai con xúc xắc là (con thứ nhất ; con thứ hai).\nCon thứ nhất ra $1$ thì con thứ hai cần $7$ chấm: không có.\nCon thứ nhất ra $2$ thì con thứ hai ra $6$: $2+6=8$\nCon thứ nhất ra $3$ thì con thứ hai ra $5$: $3+5=8$\nCon thứ nhất ra $4$ thì con thứ hai ra $4$: $4+4=8$\nCon thứ nhất ra $5$ thì con thứ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000242",
+  "loai": "tu_luan",
+  "de": "Tích của hai số là 2860. Nếu thêm vào thừa số thứ nhất 30 đơn vị và giữ nguyên thừa số thứ hai thì được tích mới là 4810. Tìm hai số đó.",
+  "dap_an": "Thừa số thứ nhất: $44$; thừa số thứ hai: $65$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: thêm vào thừa số thứ nhất $30$ đơn vị, giữ nguyên thừa số thứ hai thì tích **tăng thêm $30$ lần thừa số thứ hai**. Tích tăng bao nhiêu thì tìm ra $30$ lần thừa số thứ hai bấy nhiêu, từ đó tìm thừa số thứ hai, rồi lấy tích cũ chia cho nó để ra thừa số thứ nhất.\nKiểm lại: $44\\times 65=2860$ và $\\left(44+30\\right)\\times 65=74\\times 65=4810$ đúng.\n**Phần 2. Trình bày**\nBài giải\nTích tăng thêm là: $4810-2860=1950$\nThêm vào thừa số thứ nhất $30$ đơn vị thì tích tăng thêm $30$ lần thừa số thứ hai.\nThừa số thứ hai là: $1950:30=65$\nThừa số thứ nhất là: $2860:65=44$\nĐáp số: Thừa số thứ nhất: $44$; thừa số thứ hai: $65$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000352",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta viết liên tiếp cụm từ ARCHIMEDES ACADEMY thành một dãy chữ liên tiếp ARCHIMEDESACADEMYARCHIMEDESACADEMY...\nMột bạn đếm được dãy có 50 chữ E. Hỏi bạn ấy đếm đúng hay sai? Tại sao? (Biết các cụm từ trong dãy được viết đảy đủ)",
+  "dap_an": "Sai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các cụm đều viết đầy đủ và mỗi cụm có đúng $3$ chữ E, nên **tổng số chữ E phải chia hết cho $3$**. Kiểm tra $50$ có chia hết cho $3$ không.\nChú ý: từ ARCHIMEDES có $2$ chữ E (A-R-C-H-I-M-E-D-E-S) và từ ACADEMY có $1$ chữ E, cộng lại $3$ chữ E mỗi cụm.\n**Phần 2. Trình bày**\nBài giải\nMỗi cụm ARCHIMEDES ACADEMY có $2+1=3$ chữ E.\nDo các cụm đều được viết đầy đủ nên số chữ E trong dãy phải chia hết cho $3$.\nTa có: $50:3=16$ (dư $2$) nên $50$ không chia hết cho $3$.\nVậy bạn đó đếm sai (với $16$ cụm có $48$ chữ E, với $17$ cụm có $51$ chữ E, không có trường hợp nào có $50$ chữ E).\nĐáp số: sai",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000507",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+…+\\dfrac{1}{1024}$",
+  "dap_an": "$A=\\dfrac{1023}{1024}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: mỗi số hạng **bằng nửa số hạng đứng trước** (hơn kém nhau $2$ lần). Nhân cả tổng với $2$ thì các số hạng dịch lên một bậc, hầu hết trùng với tổng cũ. Lấy $2\\times A-A$ thì phần trùng triệt tiêu, chỉ còn số hạng đầu của $2\\times A$ là $1$ và số hạng cuối của $A$ là $\\dfrac{1}{1024}$.\nChú ý: $2\\times A-A$ chính là $A$ nên không cần chia thêm cho $2$.\n**Phần 2. Trình bày**\n$A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+.....+\\dfrac{1}{1024}$\n$2\\times A=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+.....+\\dfrac{1}{512}$\n$2\\times A-A=1-\\dfrac{1}{1024}$\n$A=\\dfrac{1024}{1024}-\\dfrac{1}{1024}$\n$A=\\dfrac{1023}{1024}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000132",
+  "loai": "tu_luan",
+  "de": "Tính tổng:\n$A=1+3+5+7+\\ldots+195+197+199$\n$B=100+95+90+85+\\ldots+10+5$",
+  "dap_an": "$A=10000$ ; $B=1050$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: cả hai đều là tổng của **dãy số cách đều**. Tổng $=$ (số đầu $+$ số cuối) $\\times$ số số hạng $:2$. Trước hết phải đếm số số hạng $=$ (số cuối $-$ số đầu) $:$ khoảng cách $+1$.\n$A$ là các số lẻ từ $1$ đến $199$, cách nhau $2$. $B$ viết theo thứ tự giảm dần từ $100$ xuống $5$, cách nhau $5$; thứ tự viết không làm đổi tổng nên vẫn tính như dãy $5$ ; $10$ ; $\\ldots$ ; $100$.\nChú ý: số số hạng luôn là số khoảng cách cộng $1$, đừng quên cộng $1$.\n**Phần 2. Trình bày**\n$A=1+3+5+7+\\ldots+195+197+199$\nSố các số hạng của $A$ là: $\\left(199-1\\right):2+1=100$\nTổng $A$ là: $\\left(199+1\\right)\\times 100:2=10000$\n$B=100+95+90+85+\\ldots+10+5$\nSố các số hạng của $B$ là: $\\lef …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000760",
+  "loai": "tu_luan",
+  "de": "Cho dãy số: 4 ; 7 ; 10 ; 13 ; 16 ; …..\na) Tìm số hạng thứ 30 của dãy số trên.\nb) Tính tổng 30 số hạng đầu tiên của dãy số.",
+  "dap_an": "a) $91$; b) $1425$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: dãy $4$ ; $7$ ; $10$ ; $13$ ; … là dãy **cách đều**, mỗi số hơn số liền trước $3$ đơn vị. Ý a) dùng công thức số hạng thứ $n$. Ý b) dùng ngay số hạng thứ $30$ vừa tìm được ở ý a) làm **số cuối** để tính tổng.\nChú ý: số cuối của $30$ số hạng đầu là $91$, không phải $30$.\n**Phần 2. Trình bày**\nBài giải\na) Số hạng thứ $30$ của dãy là: $4+\\left(30-1\\right)\\times 3=91$\nb) Tổng $30$ số hạng đầu tiên của dãy là: $\\left(4+91\\right)\\times 30:2=1425$\nĐáp số: a) $91$; b) $1425$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000905",
+  "loai": "tra_loi_ngan",
+  "de": "Thực hiện các phép tính với số đo khối lượng:\n3 kg 2 g $\\times$ 5 : 2",
+  "dap_an": "$7$ kg $505$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đổi $3$ kg $2$ g ra gam: $3002$ g, rồi nhân $5$ và chia $2$ lần lượt từ trái sang phải. Cuối cùng đổi gam ra ki-lô-gam và gam.\nChú ý: $3$ kg $2$ g là $3002$ g (không phải $302$ g), vì $2$ g đứng ở hàng đơn vị.\n**Phần 2. Trình bày**\n$3$ kg $2$ g $=3002$ g\n$3$ kg $2$ g $\\times 5:2=3002$ g $\\times 5:2$\n$=15010$ g $:2$\n$=7505$ g\n$=7$ kg $505$ g\nĐáp số: $7$ kg $505$ g",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000110",
+  "loai": "tu_luan",
+  "de": "Viết các số tự nhiên\ncó ba chữ số khác nhau, tích các chữ số là 6.",
+  "dap_an": "$123$; $132$; $213$; $231$; $312$; $321$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: ba chữ số **khác nhau** có tích $6$. Phân tích $6=1\\times 2\\times 3$. Nếu có chữ số $6$ thì hai chữ số còn lại có tích $1$, tức đều là $1$, trùng nhau nên không được. Chữ số $0$ cũng không dùng được vì tích sẽ bằng $0$. Vậy ba chữ số là $1$; $2$; $3$, rồi **hoán đổi vị trí** để được các số.\nSố các số lập được: hàng trăm có $3$ cách chọn, hàng chục có $2$ cách, hàng đơn vị có $1$ cách, được $3\\times 2\\times 1=6$ số.\n**Phần 2. Trình bày**\nBa chữ số khác nhau có tích bằng $6$ chỉ có thể là: $1$; $2$; $3$ (vì $6=1\\times 2\\times 3$).\nHoán đổi vị trí ba chữ số này, ta được các số cần tìm là: $123$; $132$; $213$; $231$; $312$; $321$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000169",
+  "loai": "tra_loi_ngan",
+  "de": "Tính bằng cách thuận tiện.\n$2234-\\left(234-50\\right)$",
+  "dap_an": "$2050$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: một số trừ đi một hiệu thì bằng số đó trừ số bị trừ rồi **cộng** số trừ: $a-\\left(b-c\\right)=a-b+c$. Dấu hiệu: $2234-234=2000$ là số tròn nghìn.\nChú ý: bỏ ngoặc có dấu trừ đằng trước thì số trừ $50$ phải đổi thành **cộng**.\n**Phần 2. Trình bày**\n$2234-\\left(234-50\\right)$\n$=2234-234+50$\n$=2000+50$\n$=2050$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000008",
+  "loai": "tra_loi_ngan",
+  "de": "Cho dãy số: 11 ; 16 ; 21 ; 26 ; 31 ; ….\nTính tổng 100 số hạng đầu tiên của dãy số.",
+  "dap_an": "$25850$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tổng dãy cách đều bằng (số đầu + số cuối) nhân với số số hạng rồi chia $2$. Chưa biết số cuối nên phải tìm số hạng thứ $100$ trước (như câu 7a).\n**Phần 2. Trình bày**\nBài giải\nSố hạng thứ $100$ của dãy là: $11+\\left(100-1\\right)\\times 5=506$\nTổng $100$ số hạng đầu tiên của dãy là: $\\left(11+506\\right)\\times 100:2=25850$\nĐáp số: $25850$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000031",
+  "loai": "tra_loi_ngan",
+  "de": "Rút gọn các phân số sau:\n$\\dfrac{135135}{130130}$",
+  "dap_an": "$\\dfrac{27}{26}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tử và mẫu đều là **số có ba chữ số viết lặp lại hai lần** ($135135$, $130130$). Số dạng $\\overline{abcabc}=\\overline{abc}\\times 1001$ nên chia cả tử và mẫu cho $1001$ (như VD 16.1). Sau đó rút gọn tiếp $\\dfrac{135}{130}$: cả hai tận cùng $0$ hoặc $5$ ⇒ chia cho $5$.\n**Phần 2. Trình bày**\n$\\dfrac{135135}{130130}=\\dfrac{135135:1001}{130130:1001}=\\dfrac{135}{130}=\\dfrac{135:5}{130:5}=\\dfrac{27}{26}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000851",
+  "loai": "tra_loi_ngan",
+  "de": "Cho năm chữ số 0 ; 1 ; 4 ; 7 ; 9. Lập được bao nhiêu số chẵn có bốn chữ số khác nhau từ bốn trong năm chữ số trên?",
+  "dap_an": "$42$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: số chẵn thì chữ số hàng đơn vị là $0$ hoặc $4$, nên chia hai trường hợp và chọn hàng đơn vị **trước**. Trường hợp hàng đơn vị là $0$ thì không còn lo hàng nghìn bằng $0$. Trường hợp hàng đơn vị là $4$ thì hàng nghìn phải khác $0$ và khác $4$.\nChú ý: ở trường hợp hàng đơn vị là $4$, hàng trăm vẫn được là $0$ nên có $3$ cách chứ không phải $2$.\n**Phần 2. Trình bày**\nGọi số cần tìm là $\\overline{abcd}$ ($a$ khác $0$; bốn chữ số khác nhau).\nSố chẵn nên chữ số hàng đơn vị $d$ là $0$ hoặc $4$.\nTrường hợp 1: $d=0$.\nChữ số hàng nghìn $a$ có $4$ cách chọn (một trong các chữ số $1$ ; $4$ ; $7$ ; $9$), chữ số hàng trăm $b$ có $3$ cách chọn, chữ số hàng chục $c$ có $2$ cá …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000534",
+  "loai": "tu_luan",
+  "de": "Rút gọn các phân số sau:\n$\\dfrac{45}{27};\\dfrac{25}{50};\\dfrac{12}{21};\\dfrac{24}{56}$",
+  "dap_an": "$\\dfrac{5}{3}$ ; $\\dfrac{1}{2}$ ; $\\dfrac{4}{7}$ ; $\\dfrac{3}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: rút gọn một phân số là chia cả tử số và mẫu số cho cùng một số lớn hơn $1$ mà cả hai đều chia hết; làm đến khi tử số và mẫu số không còn cùng chia hết cho số nào lớn hơn $1$ thì được phân số tối giản.\nCác phân số rút gọn được như sau: $45$ và $27$ cùng chia hết cho $9$ ; $25$ và $50$ cùng chia hết cho $25$ ; $12$ và $21$ cùng chia hết cho $3$ ; $24$ và $56$ cùng chia hết cho $8$.\nChia cả tử và mẫu cho số **lớn nhất** mà cả hai cùng chia hết thì rút gọn một lần là xong; nếu chia cho số nhỏ hơn thì phải chia tiếp đến khi tối giản.\nChú ý: phân số có tử số lớn hơn mẫu số vẫn rút gọn như thường; nếu mẫu số sau khi rút gọn là $1$ thì phân số chính là số tự nhiên.\n** …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000455",
+  "loai": "tra_loi_ngan",
+  "de": "Tính:\n$\\dfrac{1}{2}\\times\\dfrac{1}{5}+\\dfrac{1}{5}$",
+  "dap_an": "$\\dfrac{3}{10}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: biểu thức có nhân và cộng thì **nhân trước, cộng sau**. Nhân xong được $\\dfrac{1}{10}$, rồi cộng với $\\dfrac{1}{5}$: hai phân số khác mẫu nên quy đồng ($\\dfrac{1}{5}=\\dfrac{2}{10}$).\n**Phần 2. Trình bày**\n$\\dfrac{1}{2}\\times\\dfrac{1}{5}+\\dfrac{1}{5}$\n$=\\dfrac{1}{10}+\\dfrac{1}{5}$\n$=\\dfrac{1}{10}+\\dfrac{2}{10}$\n$=\\dfrac{3}{10}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000009",
+  "loai": "tra_loi_ngan",
+  "de": "Cho dãy số: 11 ; 16 ; 21 ; 26 ; 31 ; ….\nSố 951 là số hạng thứ bao nhiêu của dãy số trên?",
+  "dap_an": "thứ $189$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: từ $11$ đến $951$ có $(951-11):5$ khoảng cách; số thứ tự bằng số khoảng cách **cộng $1$**. Trước khi tính phải kiểm tra $951$ có thuộc dãy không: $951-11=940$ chia hết cho $5$ nên thuộc dãy.\n**Phần 2. Trình bày**\nBài giải\nSố $951$ là số hạng thứ: $\\left(951-11\\right):5+1=189$\nĐáp số: thứ $189$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000830",
+  "loai": "tra_loi_ngan",
+  "de": "Viết số liền trước của số lẻ lớn nhất có sáu chữ số khác nhau.",
+  "dap_an": "$987652$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm số lẻ lớn nhất có sáu chữ số khác nhau trước, rồi lấy số đó trừ $1$. Các hàng cao lấy chữ số lớn nhất: $9$ ; $8$ ; $7$ ; $6$ ; $5$. Hàng đơn vị phải là chữ số lẻ chưa dùng: còn $3$ và $1$, chọn $3$ cho lớn nhất.\nChú ý: đề hỏi số **liền trước** của số lẻ đó, không phải chính số lẻ đó.\n**Phần 2. Trình bày**\nSố lớn nhất khi chữ số lớn nhất đứng ở hàng cao nhất, nên năm hàng đầu là $9$ ; $8$ ; $7$ ; $6$ ; $5$.\nSố lẻ nên chữ số hàng đơn vị là chữ số lẻ chưa dùng, lớn nhất là $3$.\nSố lẻ lớn nhất có sáu chữ số khác nhau là $987653$.\nSố liền trước của $987653$ là: $987653-1=987652$\nĐáp số: $987652$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000929",
+  "loai": "tra_loi_ngan",
+  "de": "Số thứ nhất là 255, số thứ hai là 179. Số thứ ba hơn trung bình cộng của cả ba số là 36 đơn vị. Tìm số thứ ba.",
+  "dap_an": "$271$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: gọi trung bình cộng là $1$ đoạn thì **số thứ ba là $1$ đoạn cộng thêm $36$**. Tổng ba số bằng $3$ đoạn trung bình cộng. Hai số đã biết cộng lại bằng $255+179$, và số thứ ba hơn trung bình cộng $36$, nên **hai lần trung bình cộng** bằng $255+179+36$.\nTìm trung bình cộng rồi cộng $36$ ra số thứ ba.\nChú ý: \"hơn $36$ đơn vị\" thì **cộng** $36$ vào trung bình cộng để ra số thứ ba (nếu \"kém\" thì trừ).\n**Phần 2. Trình bày**\nBài giải\nTa có sơ đồ:\nTổng của số thứ nhất và số thứ hai là: $255+179=434$\nHai lần trung bình cộng của ba số là: $434+36=470$\nTrung bình cộng của ba số là: $470:2=235$\nSố thứ ba là: $235+36=271$\nĐáp số: $271$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000191",
+  "loai": "tu_luan",
+  "de": "Trong phép tính dưới đây, mỗi chữ cái biểu diễn một chữ số. Tìm $a,b,c,d$và $e.$\n$\\overline{a56\\ b7}+\\overline{6c54\\ d}=\\overline{95e92}$",
+  "dap_an": "$a=2$; $b=4$; $c=9$; $d=5$; $e=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đặt tính cột dọc rồi xét **từng hàng, từ hàng đơn vị**, nhớ số nhớ sang hàng bên cạnh. Mỗi chữ cái là một chữ số; chữ số tận cùng của tổng ở mỗi hàng cho biết chữ số cần tìm.\nCác bước: hàng đơn vị tìm $d$; hàng chục tìm $b$; hàng trăm tìm $e$; hàng nghìn tìm $c$; hàng chục nghìn tìm $a$.\nChú ý: mỗi hàng nhớ cộng thêm số nhớ của hàng bên phải. Kiểm lại: $25647+69545=95192$ đúng.\n**Phần 2. Trình bày**\n$\\overline{a56b7}+\\overline{6c54d}=\\overline{95e92}$\nHàng đơn vị: $7+d$ có tận cùng là $2$ nên $7+d=12$, suy ra $d=5$ (viết $2$ nhớ $1$).\nHàng chục: $b+4+1$ có tận cùng là $9$ nên $b+5=9$, suy ra $b=4$ (không nhớ).\nHàng trăm: $6+5=11$, viết $1$ nhớ $1$ nên $e=1$.\nH …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000014",
+  "loai": "tu_luan",
+  "de": "Hiện nay, tổng số tuổi của hai mẹ con là 35 tuổi. Sau 5 năm nữa, tuổi con bằng $\\dfrac{1}{4}$ tuổi mẹ. Tính tuổi hiện nay của mỗi người.",
+  "dap_an": "Con: $4$ tuổi; Mẹ: $31$ tuổi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tỉ số $\\dfrac{1}{4}$ là của **5 năm sau**, nên phải vẽ sơ đồ ở thời điểm đó; tổng số tuổi khi ấy là $35+5\\times 2=45$. Giải tổng–tỉ ra tuổi con sau 5 năm, rồi **trừ 5** để về hiện nay.\nChú ý: lỗi hay gặp là lấy tổng $35$ chia $5$ phần.\n**Phần 2. Trình bày**\nBài giải\nSau $5$ năm nữa, tổng số tuổi của hai mẹ con là: $35+5\\times 2=45$ (tuổi)\nTa có sơ đồ sau $5$ năm nữa:\n(Tuổi con 1 phần; Tuổi mẹ 4 phần; tổng 45 tuổi)\nTổng số phần bằng nhau là: $1+4=5$ (phần)\nTuổi con sau $5$ năm nữa là: $45:5\\times 1=9$ (tuổi)\nTuổi con hiện nay là: $9-5=4$ (tuổi)\nTuổi mẹ hiện nay là: $35-4=31$ (tuổi)\nĐáp số: Con: $4$ tuổi; Mẹ: $31$ tuổi",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001104",
+  "loai": "tu_luan",
+  "de": "Có hai xe chở gạo, xe thứ nhất chở được 8 bao gạo, xe thứ hai chở được 6 bao gạo. Xe thứ nhất chở được nhiều hơn xe thứ hai 400 kg gạo. Hỏi mỗi xe chở được bao nhiêu tạ gạo? Biết các bao chứa khối lượng gạo như nhau.",
+  "dap_an": "Xe thứ nhất: $16$ tạ ; xe thứ hai: $12$ tạ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các bao chứa khối lượng gạo như nhau, nên xe thứ nhất hơn xe thứ hai $8-6=2$ bao. Hai bao nặng $400$ kg, từ đó tìm khối lượng **một bao** rồi tính cho từng xe.\nĐổi đơn vị: $1$ tạ $=100$ kg.\nChú ý: đề hỏi kết quả theo **tạ**, nên cuối cùng phải đổi từ ki-lô-gam sang tạ.\n**Phần 2. Trình bày**\nBài giải\nTa có sơ đồ:\nXe thứ nhất chở nhiều hơn xe thứ hai số bao gạo là: $8-6=2$ (bao)\nMỗi bao gạo nặng số ki-lô-gam là: $400:2=200$ (kg)\nXe thứ nhất chở được số ki-lô-gam gạo là: $200\\times8=1600$ (kg)\nXe thứ hai chở được số ki-lô-gam gạo là: $200\\times6=1200$ (kg)\nĐổi: $1600$ kg bằng $16$ tạ ; $1200$ kg bằng $12$ tạ\nĐáp số: Xe thứ nhất: $16$ tạ ; xe thứ hai: $12$ tạ",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001245",
+  "loai": "tra_loi_ngan",
+  "de": "Cạnh AE vuông góc với cạnh nào?",
+  "dap_an": "AB",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: hai cạnh vuông góc là hai cạnh tạo thành góc vuông (kiểm tra bằng ê ke).\nCách đọc hình: ngũ giác $ABCDE$ (hình ngôi nhà) có $5$ cạnh là $AB$, $BC$, $CD$, $DE$, $EA$. Cạnh $AE$ là một cạnh của mái nhà, nghiêng; xét các cạnh có chung đỉnh với nó: tại $A$ là cạnh $AB$, tại $E$ là cạnh $ED$.\nGóc $A$ (đỉnh mái) là góc vuông nên $AE$ vuông góc với $AB$. Góc $E$ là góc tù (không vuông) nên $AE$ không vuông góc với $ED$. Các cạnh $BC$, $CD$ không có chung đỉnh với $AE$ và không nằm vuông góc với nó.\n**Phần 2. Trình bày**\nBài giải\nCạnh $AE$ và cạnh $AB$ tạo thành góc vuông tại đỉnh $A$.\nCạnh $AE$ và cạnh $ED$ tạo thành góc tù tại đỉnh $E$, không vuông góc.\nVậy cạnh $AE …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000802",
+  "loai": "tra_loi_ngan",
+  "de": "Tính giá trị biểu thức $\\left(m+1\\right)\\times 2023$ với $m=4$.",
+  "dap_an": "$10115$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: thay $m=4$ vào biểu thức, tính phần trong ngoặc trước rồi mới nhân.\nChú ý: phải tính $4+1=5$ trước, không nhân $4\\times 2023$ rồi mới cộng $1$.\n**Phần 2. Trình bày**\nNếu $m=4$ thì $\\left(m+1\\right)\\times 2023=\\left(4+1\\right)\\times 2023=5\\times 2023=10115$\nĐáp số: $10115$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000695",
+  "loai": "tu_luan",
+  "de": "Hùng và Minh có tất cả 36 nhãn vở. Nếu Hùng cho Minh 7 nhãn vở và Minh lại cho Hùng 5 nhãn vở thì số nhãn vở của hai bạn bằng nhau. Hỏi lúc đầu, mỗi bạn có bao nhiêu nhãn vở?",
+  "dap_an": "Hùng: $20$ nhãn vở ; Minh: $16$ nhãn vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: sau hai lần cho nhau, hai bạn có số nhãn vở **bằng nhau**, mà tổng số nhãn vở không đổi ($36$), nên lúc cuối mỗi bạn có $36:2=18$ nhãn vở. Từ đó **tính ngược**: người đã cho đi thì lấy lại, người đã nhận thì trả bớt.\nCác bước: (1) Trước khi Minh cho Hùng $5$ nhãn vở: Hùng ít hơn $5$, Minh nhiều hơn $5$. (2) Trước khi Hùng cho Minh $7$ nhãn vở: Hùng nhiều hơn $7$, Minh ít hơn $7$. Thử lại: $20+16=36$; $20-7=13$, $16+7=23$; rồi $13+5=18$, $23-5=18$.\nChú ý: đi ngược thì lần cho **sau cùng** (Minh cho Hùng $5$) phải đảo trước, lần cho trước (Hùng cho Minh $7$) đảo sau.\n**Phần 2. Trình bày**\nBài giải\nLúc cuối hai bạn có số nhãn vở bằng nhau, mỗi bạn có số nhãn vở l …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000611",
+  "loai": "tra_loi_ngan",
+  "de": "Một thùng hoa quả chứa 144 kg táo, cam và thanh long. Biết $\\dfrac{1}{4}$ khối lượng quả trong thùng là táo, $\\dfrac{1}{3}$ khối lượng quả trong thùng là cam, còn lại là thanh long. Hỏi trong thùng có bao nhiêu ki-lô-gam thanh long?",
+  "dap_an": "$60$ kg thanh long",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đề cho phân số của táo và của cam so với **cả thùng**, phần \"còn lại\" là thanh long. Tìm số ki-lô-gam táo và cam bằng cách nhân $144$ với phân số, rồi lấy cả thùng trừ đi.\nCó hai cách. Cách 1 (trình bày dưới đây): tính số kg táo, số kg cam rồi lấy $144$ trừ cả hai. Cách 2: tìm thanh long chiếm bao nhiêu phần cả thùng là $1-\\left(\\dfrac{1}{4}+\\dfrac{1}{3}\\right)=\\dfrac{5}{12}$, rồi lấy $144\\times\\dfrac{5}{12}=60$ (kg).\nChú ý: số $1$ trong cách 2 chỉ **cả thùng quả**; phải trừ cả táo lẫn cam.\n**Phần 2. Trình bày**\nBài giải\nSố ki-lô-gam táo trong thùng là: $144\\times\\dfrac{1}{4}=36$ (kg)\nSố ki-lô-gam cam trong thùng là: $144\\times\\dfrac{1}{3}=48$ (kg)\nSố ki-lô-ga …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000806",
+  "loai": "tra_loi_ngan",
+  "de": "Điền dấu (>; =; <) thích hợp vào ô trống:\n$a\\times 1000+8\\times 100+b\\times 10+2\\boxed{\\text{ }}\\text{ }\\overline{a7b3}$",
+  "dap_an": "$>$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: viết vế trái thành số có bốn chữ số: $a\\times 1000+8\\times 100+b\\times 10+2=\\overline{a8b2}$ (chữ số hàng nghìn là $a$, hàng trăm là $8$, hàng chục là $b$, hàng đơn vị là $2$). Rồi so với $\\overline{a7b3}$ từ hàng cao xuống hàng thấp.\nChú ý: hai số có cùng chữ số hàng nghìn $a$, nên so tiếp hàng trăm: $8>7$ là đủ kết luận, không cần xét hàng đơn vị ($2<3$).\n**Phần 2. Trình bày**\nTa có: $a\\times 1000+8\\times 100+b\\times 10+2=\\overline{a8b2}$\nHai số $\\overline{a8b2}$ và $\\overline{a7b3}$ có cùng chữ số hàng nghìn là $a$.\nChữ số hàng trăm: $8>7$ nên $\\overline{a8b2}>\\overline{a7b3}$.\nVậy dấu cần điền là $>$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000752",
+  "loai": "tra_loi_ngan",
+  "de": "Một mảnh đất hình chữ nhật có chu vi là 56 m, chiều dài hơn chiều rộng 82dm. Tính diện tích của mảnh đất đó.",
+  "dap_an": "$17919$ $dm^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: chu vi cho bằng mét còn hiệu cho bằng đề-xi-mét, nên **đổi hết ra đề-xi-mét** ($1$ m $=10$ dm) để tính bằng số tự nhiên. Nửa chu vi là tổng chiều dài và chiều rộng, chiều dài hơn chiều rộng $82$ dm, đó là bài **tổng–hiệu**.\nBước 1: đổi và tìm nửa chu vi. Bước 2: tìm chiều rộng rồi chiều dài. Bước 3: tính diện tích.\nChú ý: $82$ dm không trừ trực tiếp với $56$ m; phải đổi cùng đơn vị. Có thể đổi kết quả: $17919$ $dm^2=179$ $m^2$ $19$ $dm^2$.\n**Phần 2. Trình bày**\nBài giải\nĐổi: $56$ m $=560$ dm\nNửa chu vi mảnh đất là: $560:2=280$ (dm)\nTa có sơ đồ:\nChiều rộng mảnh đất là: $\\left(280-82\\right):2=99$ (dm)\nChiều dài mảnh đất là: $99+82=181$ (dm)\nDiện tích mảnh đất là …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000412",
+  "loai": "tra_loi_ngan",
+  "de": "Để cưa một khúc gỗ thành 7 đoạn phải mất 48 phút. Hỏi muốn cưa khúc gỗ đó thành 4 đoạn phải mất bao nhiêu phút? Biết thời gian mỗi lần cưa là như nhau.",
+  "dap_an": "$24$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: cưa một khúc gỗ thành $7$ đoạn **không phải** cưa $7$ lần. Mỗi lần cưa thêm đúng $1$ đoạn (từ $1$ khúc ra $2$ đoạn, rồi $3$ đoạn,…) nên thành $7$ đoạn chỉ cần cưa $7-1=6$ lần. Thời gian mỗi lần cưa như nhau nên rút về **một lần cưa**.\nCác bước: số lần cưa thành $7$ đoạn, thời gian một lần cưa (chia), số lần cưa thành $4$ đoạn, thời gian cưa thành $4$ đoạn (nhân).\nChú ý: lỗi hay gặp là lấy $48:7$ hoặc lấy $4$ đoạn nhân với thời gian một lần; phải dùng **số lần cưa** = số đoạn trừ $1$.\n**Phần 2. Trình bày**\nTóm tắt:\nThành $7$ đoạn: $48$ phút\nThành $4$ đoạn: … phút?\nBài giải\nSố lần cưa để khúc gỗ thành $7$ đoạn là: $7-1=6$ (lần)\nThời gian cưa một lần là: $48:6=8$ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000719",
+  "loai": "tu_luan",
+  "de": "Cho dãy số 111 ; 112 ; 223 ; 335 ; 558 ; 893; …..; ……. Số thích hợp điền vào chỗ trống lần lượt là:",
+  "dap_an": "$1451$ ; $2344$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm quy luật. Ta thấy $111+112=223$, $112+223=335$, $223+335=558$, $335+558=893$. Vậy **kể từ số hạng thứ ba, mỗi số hạng bằng tổng hai số hạng đứng liền trước nó**.\nÁp dụng quy luật đó hai lần để tìm hai số tiếp theo.\nChú ý: dãy này không cách đều nên không dùng công thức dãy cách đều.\n**Phần 2. Trình bày**\nNhận xét: $111+112=223$ ; $112+223=335$ ; $223+335=558$ ; $335+558=893$.\nKể từ số hạng thứ ba, mỗi số hạng bằng tổng của hai số hạng đứng liền trước nó.\nSố hạng thứ bảy là: $558+893=1451$\nSố hạng thứ tám là: $893+1451=2344$\nVậy hai số cần điền vào chỗ trống lần lượt là $1451$ và $2344$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000988",
+  "loai": "tra_loi_ngan",
+  "de": "Đặt tính rồi tính:\n$98765+12328$",
+  "dap_an": "$111093$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đặt tính thẳng cột các chữ số cùng hàng, cộng từ phải sang trái, **nhớ** sang hàng kế tiếp khi tổng từ $10$ trở lên.\nTừng hàng: $5+8=13$ viết $3$ nhớ $1$; $6+2+1=9$; $7+3=10$ viết $0$ nhớ $1$; $8+2+1=11$ viết $1$ nhớ $1$; $9+1=10$ viết $10$.\n**Phần 2. Trình bày**\n$\\begin{array}{r} 98765 \\\\ +\\ 12328 \\\\ \\hline 111093 \\end{array}$\nVậy $98765+12328=111093$\nĐáp số: $111093$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000540",
+  "loai": "tu_luan",
+  "de": "Quy đồng mẫu số các phân số sau:\n$\\dfrac{3}{4};\\dfrac{5}{17}$",
+  "dap_an": "$\\dfrac{51}{68}$ ; $\\dfrac{20}{68}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: quy đồng mẫu số là đưa các phân số về **cùng một mẫu số** mà giá trị mỗi phân số không đổi, nên mỗi phân số phải nhân **cả tử số lẫn mẫu số** với cùng một số.\nHai mẫu số $4$ và $17$: $4$ và $17$ không chia hết cho nhau nên chọn mẫu số chung là tích $4\\times 17=68$.\nTừ mẫu số mỗi phân số lên mẫu số chung: $\\dfrac{3}{4}$ nhân tử và mẫu với $17$ ; $\\dfrac{5}{17}$ nhân tử và mẫu với $4$.\nChú ý: nếu một mẫu số đã bằng mẫu số chung thì phân số đó giữ nguyên, không cần nhân.\n**Phần 2. Trình bày**\nChọn mẫu số chung là: $68$.\n$\\dfrac{3}{4}=\\dfrac{3\\times 17}{4\\times 17}=\\dfrac{51}{68}$\n$\\dfrac{5}{17}=\\dfrac{5\\times 4}{17\\times 4}=\\dfrac{20}{68}$\nVậy quy đồng mẫu số hai …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001240",
+  "loai": "tra_loi_ngan",
+  "de": "Viết số tự nhiên gần nhất với 500 000 sử dụng các thẻ số bên dưới.",
+  "dap_an": "$501489$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: số gần $500000$ nhất có thể nằm ở hai phía của $500000$ (lớn hơn hoặc bé hơn), phải tìm số gần nhất ở MỖI phía rồi so sánh hai khoảng cách.\nCách đọc hình: có $6$ thẻ số là $0$; $1$; $4$; $5$; $8$; $9$. Số cần viết là số có sáu chữ số, dùng hết cả $6$ thẻ, mỗi thẻ một lần, và chữ số $0$ không được đứng đầu.\nSố có sáu chữ số muốn gần $500000$ thì chữ số hàng trăm nghìn chỉ có thể là $5$ (số lớn hơn $500000$) hoặc $4$ (số bé hơn $500000$); đặt $1$, $8$ hay $9$ ở đầu thì số cách $500000$ rất xa.\nPhía lớn hơn $500000$: bắt đầu bằng $5$, các thẻ còn lại xếp từ bé đến lớn để số nhỏ nhất có thể. Phía bé hơn $500000$: bắt đầu bằng $4$, các thẻ còn lại xếp từ lớn đến bé …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001103",
+  "loai": "tra_loi_ngan",
+  "de": "My làm được 16 tấm thiệp, Lan làm được 14 tấm thiệp, Ngọc làm được ít hơn trung bình cộng số thiệp của cả ba bạn là 2 tấm. Hỏi Ngọc làm được bao nhiêu tấm thiệp?",
+  "dap_an": "$12$ tấm thiệp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: Ngọc làm ít hơn trung bình cộng $2$ tấm nên số thiệp của Ngọc là **một đoạn trung bình cộng bớt $2$**. Ba bạn có $3$ đoạn trung bình cộng, trừ phần Ngọc thì My và Lan có **hai đoạn trung bình cộng thêm $2$**.\nVậy hai lần trung bình cộng $=16+14-2$. Tìm trung bình cộng rồi trừ $2$ ra số thiệp của Ngọc.\nChú ý: \"ít hơn\" thì **trừ** $2$.\n**Phần 2. Trình bày**\nBài giải\nTa có sơ đồ:\nMy và Lan làm được tất cả số tấm thiệp là: $16+14=30$ (tấm)\nHai lần trung bình cộng số thiệp của ba bạn là: $30-2=28$ (tấm)\nTrung bình cộng số thiệp của ba bạn là: $28:2=14$ (tấm)\nNgọc làm được số tấm thiệp là: $14-2=12$ (tấm)\nĐáp số: $12$ tấm thiệp",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000470",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm $y$, biết:\n$y\\times\\dfrac{21}{15}-y\\times\\dfrac{9}{15}=\\dfrac{8}{5}+\\dfrac{2}{3}$",
+  "dap_an": "$y=\\dfrac{17}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: vế trái có hai tích **chung thừa số** $y$, đưa $y$ ra ngoài ngoặc: $y\\times\\left(\\dfrac{21}{15}-\\dfrac{9}{15}\\right)=y\\times\\dfrac{12}{15}$. Vế phải $\\dfrac{8}{5}+\\dfrac{2}{3}$ quy đồng mẫu $15$. Sau đó $y$ là thừa số chưa biết: lấy tích chia cho thừa số đã biết.\nKiểm lại: $\\dfrac{17}{6}\\times\\dfrac{12}{15}=\\dfrac{34}{15}=\\dfrac{24}{15}+\\dfrac{10}{15}=\\dfrac{8}{5}+\\dfrac{2}{3}$ đúng.\n**Phần 2. Trình bày**\n$y\\times\\dfrac{21}{15}-y\\times\\dfrac{9}{15}=\\dfrac{8}{5}+\\dfrac{2}{3}$\n$\\begin{array}{l} y\\times\\left(\\dfrac{21}{15}-\\dfrac{9}{15}\\right)=\\dfrac{24}{15}+\\dfrac{10}{15} \\\\ y\\times\\dfrac{12}{15}=\\dfrac{34}{15} \\\\ y=\\dfrac{34}{15}:\\dfrac{12}{15} \\\\ y=\\dfrac{34}{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000003",
+  "loai": "tra_loi_ngan",
+  "de": "Từ các chữ số 0 ; 2 ; 5 ; 9 ; 6 ; 8. Viết số tự nhiên\nchẵn, lớn nhất, có ba chữ số khác nhau.",
+  "dap_an": "$986$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: số chẵn thì **chữ số hàng đơn vị phải chẵn**; số lớn nhất thì các hàng cao lấy chữ số lớn nhất còn lại. Lấy hàng trăm là $9$, hàng chục là $8$; hàng đơn vị chọn chữ số chẵn lớn nhất trong các chữ số còn lại ($0$; $2$; $5$; $6$) là $6$.\n**Phần 2. Trình bày**\nSố lớn nhất khi chữ số lớn nhất đứng ở hàng cao nhất, nên chữ số hàng trăm là $9$, chữ số hàng chục là $8$.\nSố cần tìm là số chẵn nên chữ số hàng đơn vị là chữ số chẵn lớn nhất trong các chữ số còn lại: $6$.\nVậy số cần tìm là $986$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000948",
+  "loai": "tra_loi_ngan",
+  "de": "Cô giáo có 216 cái bút đựng đều trong 9 hộp. Cô giáo lấy ra 8 hộp bút để chia đều cho học sinh, mỗi học sinh được 6 cái bút. Hỏi cô đã chia cho bao nhiêu học sinh?",
+  "dap_an": "$32$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: $216$ cái bút đựng đều trong $9$ hộp thì mỗi hộp có $216:9$ cái. Cô lấy $8$ hộp để chia nên số bút đem chia là số bút của $8$ hộp. Số học sinh là số bút đem chia chia cho số bút mỗi học sinh được ($6$).\nChú ý: số bút đem chia chỉ là của $8$ hộp ($192$ cái), không phải cả $216$ cái.\n**Phần 2. Trình bày**\nBài giải\nMỗi hộp đựng số cái bút là: $216:9=24$ (cái)\nCô giáo đem chia số cái bút là: $24\\times 8=192$ (cái)\nCô đã chia bút cho số học sinh là: $192:6=32$ (học sinh)\nĐáp số: $32$ học sinh",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001188",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $B=\\dfrac{1}{12}+\\dfrac{1}{20}+\\dfrac{1}{30}+\\ldots+\\dfrac{1}{72}+\\dfrac{1}{90}$",
+  "dap_an": "$\\dfrac{7}{30}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các mẫu số $12$; $20$; $30$; ...; $72$; $90$ là tích của **hai số liên tiếp**: $3\\times 4$, $4\\times 5$, $5\\times 6$, ..., $8\\times 9$, $9\\times 10$; tử số $1$ đúng bằng hiệu hai thừa số ở mẫu. Viết tử thành hiệu thì mỗi phân số tách thành hiệu hai phân số: $\\dfrac{4-3}{3\\times 4}=\\dfrac{1}{3}-\\dfrac{1}{4}$.\nCác số ở giữa triệt tiêu, chỉ còn số đầu trừ số cuối: $\\dfrac{1}{3}-\\dfrac{1}{10}$.\n**Phần 2. Trình bày**\n$B=\\dfrac{1}{12}+\\dfrac{1}{20}+\\dfrac{1}{30}+\\ldots+\\dfrac{1}{72}+\\dfrac{1}{90}$\n$B=\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}+\\ldots+\\dfrac{1}{8\\times 9}+\\dfrac{1}{9\\times 10}$\n$B=\\dfrac{4-3}{3\\times 4}+\\dfrac{5-4}{4\\times 5}+\\dfra …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000254",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm một số, biết rằng khi chia số đó cho 48 thì thấy dư 17 nhưng khi chia số đó cho 12 thì được thương là 65 và vẫn còn dư.",
+  "dap_an": "$785$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: $48=12\\times 4$ nên $48$ chia hết cho $12$. Vì vậy số đó chia cho $48$ dư $17$ thì chia cho $12$ có **cùng số dư với $17$ chia cho $12$** (phần $48\\times$ thương luôn chia hết cho $12$). Tìm được số dư khi chia cho $12$ rồi dùng thương $65$ để tìm số đó.\nKiểm lại: $785=48\\times 16+17$ và $785=12\\times 65+5$ (dư $5$, còn dư) đúng.\n**Phần 2. Trình bày**\nBài giải\nVì $48$ chia hết cho $12$ nên số đó chia cho $12$ có cùng số dư với $17$ chia cho $12$.\nTa có $17:12=1$ (dư $5$) nên số đó chia cho $12$ dư $5$.\nSố đó là: $12\\times 65+5=785$\nĐáp số: $785$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000964",
+  "loai": "tu_luan",
+  "de": "Tìm chữ số $a,b$ sao cho số $\\overline{2a37b}$ chia hết cho 45.",
+  "dap_an": "$a=6$, $b=0$ hoặc $a=1$, $b=5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: $45=5\\times 9$ và $5$, $9$ không có thừa số chung, nên số chia hết cho $45$ thì chia hết cho **cả $5$ và $9$**. Chia hết cho $5$: $b=0$ hoặc $b=5$. Chia hết cho $9$: tổng chữ số $2+a+3+7+b=12+a+b$ chia hết cho $9$.\nXét từng trường hợp của $b$. Tổng $12+a+b$ nhỏ nhất là $12$ và lớn nhất là $12+9+5=26$ nên chia hết cho $9$ chỉ có thể bằng $18$ (vì $27$ lớn hơn $26$).\nChú ý: chữ số $a$ chỉ từ $0$ đến $9$; đề không bắt $a$, $b$ khác nhau nên $a=b$ được nếu thoả mãn.\n**Phần 2. Trình bày**\nSố chia hết cho $45$ nên chia hết cho $5$ và $9$.\nChia hết cho $5$ nên $b=0$ hoặc $b=5$.\nChia hết cho $9$ nên tổng các chữ số $2+a+3+7+b=12+a+b$ chia hết cho $9$.\nVì $12+a+b$ lớn  …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000269",
+  "loai": "tu_luan",
+  "de": "Thay các chữ $a,b,c$ bằng các chữ số thích hợp:\n$\\overline{ab}=6\\times\\left(a+b\\right)$",
+  "dap_an": "$a=5$; $b=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tách $\\overline{ab}=a\\times 10+b$ và $6\\times\\left(a+b\\right)=a\\times 6+b\\times 6$. Bớt cả hai vế đi $a\\times 6$ và $b$ được $a\\times 4=b\\times 5$.\nTìm $a$, $b$ bằng cách thử: $b\\times 5$ phải chia hết cho $4$ (vì bằng $a\\times 4$) và $a$ phải là chữ số khác $0$.\n**Phần 2. Trình bày**\nSố $\\overline{ab}$ có $a$ khác $0$.\nTa có: $\\overline{ab}=6\\times\\left(a+b\\right)$\n$a\\times 10+b=a\\times 6+b\\times 6$\n$a\\times 4=b\\times 5$ (Bớt cả hai vế đi $a\\times 6$ và $b$)\nNếu $b=0$ thì $a=0$, không thoả mãn vì $a$ khác $0$.\nVới $b$ từ $1$ đến $9$ thì $b\\times 5$ lần lượt là: $5$; $10$; $15$; $20$; $25$; $30$; $35$; $40$; $45$.\nTrong các số đó chỉ có $20$ và $40$ chia hết c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000311",
+  "loai": "tu_luan",
+  "de": "Trong các số 1725 ; 3648 ; 5790 ; 5687 ; 3240, hãy tìm các số:\nchia hết cho cả 2 và 5.",
+  "dap_an": "$5790$ ; $3240$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: chia hết cho **cả $2$ và $5$** thì chữ số tận cùng chỉ có thể là $0$ (vừa chẵn, vừa là $0$ hoặc $5$). Chỉ cần tìm các số tận cùng bằng $0$.\nChú ý: chia hết cho cả $2$ và $5$ chặt hơn chia hết cho $2$ hay chia hết cho $5$; chỉ cần nhìn một điều kiện duy nhất là tận cùng bằng $0$.\n**Phần 2. Trình bày**\nSố chia hết cho cả $2$ và $5$ có chữ số tận cùng là $0$.\nTrong các số đã cho, các số có chữ số tận cùng là $0$ là: $5790$ ; $3240$.\nVậy các số chia hết cho cả $2$ và $5$ là: $5790$ ; $3240$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000561",
+  "loai": "tu_luan",
+  "de": "Viết tất cả các phân số bé hơn 1 có tổng của từ số và mẫu số là 10.",
+  "dap_an": "$\\dfrac{1}{9}$ ; $\\dfrac{2}{8}$ ; $\\dfrac{3}{7}$ ; $\\dfrac{4}{6}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: phân số **bé hơn $1$** thì tử số **bé hơn** mẫu số. Tử số và mẫu số cộng lại bằng $10$; tử số bé hơn mẫu số nên tử số bé hơn một nửa của $10$, tức là bé hơn $5$.\nTử số có thể là $1$ ; $2$ ; $3$ ; $4$, mẫu số bằng $10$ trừ đi tử số.\nChú ý: tử số $5$ cho mẫu số $5$, được $\\dfrac{5}{5}=1$, không bé hơn $1$ nên bị loại.\n**Phần 2. Trình bày**\nPhân số bé hơn $1$ có tử số bé hơn mẫu số.\nTổng tử số và mẫu số là $10$ nên tử số bé hơn $10:2=5$.\nTử số là $1$ thì mẫu số là $10-1=9$ ta có $\\dfrac{1}{9}$.\nTử số là $2$ thì mẫu số là $10-2=8$ ta có $\\dfrac{2}{8}$.\nTử số là $3$ thì mẫu số là $10-3=7$ ta có $\\dfrac{3}{7}$.\nTử số là $4$ thì mẫu số là $10-4=6$ ta có $\\dfrac{4}{6} …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000884",
+  "loai": "tra_loi_ngan",
+  "de": "Khi giảm thừa số thứ nhất đi 3 lần và giảm thừa số thứ hai đi 12 lần thì được tích mới là 92. Tìm tích ban đầu.",
+  "dap_an": "$3312$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: khi một thừa số giảm $3$ lần thì tích giảm $3$ lần; thừa số kia giảm $12$ lần thì tích lại giảm thêm $12$ lần. Vậy tích giảm đi $3\\times 12=36$ lần. Muốn tìm tích ban đầu, lấy tích mới nhân $36$.\nChú ý: số lần giảm của tích là **nhân** hai số lần ($3\\times 12$), không phải cộng ($3+12$). Thử lại: $3312:36=92$.\n**Phần 2. Trình bày**\nBài giải\nKhi giảm thừa số thứ nhất đi $3$ lần và giảm thừa số thứ hai đi $12$ lần thì tích giảm đi số lần là: $3\\times 12=36$ (lần)\nTích ban đầu là: $92\\times 36=3312$\nĐáp số: $3312$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000985",
+  "loai": "tu_luan",
+  "de": "Lily bỏ lần lượt các quả bóng nhựa vào thùng theo thứ tự: 2 quả đỏ, 3 quả xanh, 3 quả vàng, 1 quả trắng. Hỏi quả bóng thứ 250 Lily bỏ vào thùng có màu gì?",
+  "dap_an": "màu vàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các quả bóng lặp lại theo **nhóm**: $2$ đỏ, $3$ xanh, $3$ vàng, $1$ trắng, mỗi nhóm có $2+3+3+1=9$ quả. Chia $250$ cho $9$ để biết có bao nhiêu nhóm trọn vẹn và quả thứ $250$ là quả thứ mấy **trong nhóm cuối**.\nTrong một nhóm: quả $1$; $2$ màu đỏ, quả $3$ đến $5$ màu xanh, quả $6$ đến $8$ màu vàng, quả $9$ màu trắng.\nChú ý: nếu dư $0$ thì là quả cuối của nhóm (trắng). Ở đây dư $7$ nên là quả thứ $7$ của nhóm.\n**Phần 2. Trình bày**\nBài giải\nMỗi nhóm có số quả bóng là: $2+3+3+1=9$ (quả)\nTa có: $250:9=27$ (dư $7$)\nVậy quả bóng thứ $250$ là quả thứ $7$ của nhóm thứ $28$.\nTrong một nhóm, quả thứ $6$; $7$; $8$ có màu vàng nên quả thứ $7$ màu vàng.\nĐáp số: màu vàng",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001070",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm phân số có mẫu số là 48 và bằng phân số $\\dfrac{7}{42}$.",
+  "dap_an": "$\\dfrac{8}{48}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: rút gọn $\\dfrac{7}{42}$ về phân số tối giản $\\dfrac{1}{6}$ (chia cả tử và mẫu cho $7$), rồi nhân cả tử và mẫu của $\\dfrac{1}{6}$ với số lần mẫu số tăng: $48:6=8$.\nChú ý: phải nhân cả tử số lẫn mẫu số với $8$.\n**Phần 2. Trình bày**\n$\\dfrac{7}{42}=\\dfrac{7:7}{42:7}=\\dfrac{1}{6}$\nTa có $48:6=8$ nên $\\dfrac{1}{6}=\\dfrac{1\\times8}{6\\times8}=\\dfrac{8}{48}$\nVậy phân số cần tìm là $\\dfrac{8}{48}$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000032",
+  "loai": "tra_loi_ngan",
+  "de": "Quy đồng mẫu số các phân số sau:\n$\\dfrac{1}{3};\\dfrac{3}{5};\\dfrac{5}{7}$",
+  "dap_an": "$\\dfrac{35}{105};\\dfrac{63}{105};\\dfrac{75}{105}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: ba mẫu số $3$ ; $5$ ; $7$ không có mẫu nào chia hết cho mẫu khác, nên lấy mẫu số chung là **tích ba mẫu** $3\\times 5\\times 7=105$. Mỗi phân số nhân cả tử và mẫu với **tích hai mẫu còn lại**: $\\dfrac{1}{3}$ nhân $5\\times 7=35$; $\\dfrac{3}{5}$ nhân $3\\times 7=21$; $\\dfrac{5}{7}$ nhân $3\\times 5=15$.\n**Phần 2. Trình bày**\nChọn mẫu số chung là: $3\\times 5\\times 7=105$\n$\\dfrac{1}{3}=\\dfrac{1\\times 35}{3\\times 35}=\\dfrac{35}{105}$\n$\\dfrac{3}{5}=\\dfrac{3\\times 21}{5\\times 21}=\\dfrac{63}{105}$\n$\\dfrac{5}{7}=\\dfrac{5\\times 15}{7\\times 15}=\\dfrac{75}{105}$\nVậy quy đồng mẫu số ba phân số $\\dfrac{1}{3};\\dfrac{3}{5};\\dfrac{5}{7}$ ta được ba phân số $\\dfrac{35}{105};\\dfrac{ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000608",
+  "loai": "tra_loi_ngan",
+  "de": "Tính: $F=\\dfrac{30\\times 5\\times 11\\times 9}{25\\times 9\\times 12\\times 22}$",
+  "dap_an": "$F=\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tử số và mẫu số đều là một **tích** nên không cần nhân ra; ghép từng cặp thừa số ở tử và mẫu cùng chia hết cho một số rồi chia cả hai cho số đó. Ở đây: $30$ và $12$ cùng chia hết cho $6$; $5$ và $25$ cùng chia hết cho $5$; $11$ và $22$ cùng chia hết cho $11$; hai số $9$ giống nhau nên gạch đi. Kết quả còn rút gọn được thì rút gọn tiếp đến phân số tối giản.\n**Phần 2. Trình bày**\n$F=\\dfrac{30\\times 5\\times 11\\times 9}{25\\times 9\\times 12\\times 22}$\n$F=\\dfrac{5\\times 1\\times 1\\times 1}{5\\times 1\\times 2\\times 2}$ (chia $30$ và $12$ cho $6$ ; $5$ và $25$ cho $5$ ; $11$ và $22$ cho $11$ ; $9$ và $9$ cho $9$)\n$F=\\dfrac{5}{20}$\n$F=\\dfrac{5:5}{20:5}$\n$F=\\dfrac{1}{4}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000617",
+  "loai": "tu_luan",
+  "de": "Một hình chữ nhật có chiều rộng là $\\dfrac{1}{4}\\ m$, chiều dài bằng $\\dfrac{7}{2}$ chiều rộng. Tính chu vi và diện tích hình chữ nhật đó.",
+  "dap_an": "Chu vi: $\\dfrac{9}{4}$ m ; diện tích: $\\dfrac{7}{32}$ $m^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: chiều dài bằng $\\dfrac{7}{2}$ chiều rộng, tức là chiều dài $=$ chiều rộng $\\times\\dfrac{7}{2}$. Có đủ hai cạnh thì chu vi $=$ (dài $+$ rộng) $\\times\\,2$ và diện tích $=$ dài $\\times$ rộng.\nChú ý: chiều dài bằng $\\dfrac{7}{2}$ chiều rộng nên chiều dài **lớn hơn** chiều rộng; nếu tính ra chiều dài bé hơn chiều rộng là đã nhầm.\n**Phần 2. Trình bày**\nBài giải\nChiều dài của hình chữ nhật là: $\\dfrac{1}{4}\\times\\dfrac{7}{2}=\\dfrac{7}{8}$ (m)\nChu vi của hình chữ nhật là: $\\left(\\dfrac{1}{4}+\\dfrac{7}{8}\\right)\\times 2=\\left(\\dfrac{2}{8}+\\dfrac{7}{8}\\right)\\times 2=\\dfrac{9}{8}\\times 2=\\dfrac{9}{4}$ (m)\nDiện tích của hình chữ nhật là: $\\dfrac{1}{4}\\times\\dfrac{7}{8}=\\ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000613",
+  "loai": "tra_loi_ngan",
+  "de": "Lớp 4A có 40 học sinh, trong đó $\\dfrac{5}{8}$ số học sinh là nữ. Hỏi lớp 4A có bao nhiêu học sinh nữ?",
+  "dap_an": "$25$ học sinh nữ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: \"$\\dfrac{5}{8}$ số học sinh là nữ\" nghĩa là số học sinh nữ bằng $\\dfrac{5}{8}$ **của** $40$ học sinh, nên ta lấy $40$ nhân với $\\dfrac{5}{8}$.\nCách tính gọn: chia $40$ cho $8$ được $5$ học sinh ở mỗi phần, rồi nhân với $5$ phần.\n**Phần 2. Trình bày**\nBài giải\nSố học sinh nữ của lớp 4A là: $40\\times\\dfrac{5}{8}=(40:8)\\times 5=25$ (học sinh)\nĐáp số: $25$ học sinh nữ",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000673",
+  "loai": "tra_loi_ngan",
+  "de": "Tuổi em bằng $\\dfrac{1}{4}$ tuổi mẹ, tuổi anh bằng $\\dfrac{3}{8}$ tuổi mẹ. Hỏi tuổi em bằng mấy phần tuổi anh?",
+  "dap_an": "$\\dfrac{2}{3}$ tuổi anh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tuổi em và tuổi anh đều cho theo **tuổi mẹ**, nên lấy tuổi mẹ làm chuẩn. Quy đồng mẫu số để hai phân số có cùng mẫu: $\\dfrac{1}{4}=\\dfrac{2}{8}$. Chia tuổi mẹ thành $8$ phần bằng nhau thì tuổi em là $2$ phần, tuổi anh là $3$ phần.\nVậy tuổi em bằng $\\dfrac{2}{3}$ tuổi anh.\nChú ý: đề hỏi tuổi em bằng mấy phần tuổi **anh** (lấy tuổi anh làm chuẩn), không phải bằng mấy phần tuổi mẹ.\n**Phần 2. Trình bày**\nBài giải\nTa có $\\dfrac{1}{4}=\\dfrac{1\\times 2}{4\\times 2}=\\dfrac{2}{8}$.\nTa có sơ đồ:\nChia tuổi mẹ thành $8$ phần bằng nhau thì tuổi em là $2$ phần, tuổi anh là $3$ phần.\nTuổi em bằng số phần tuổi anh là: $2:3=\\dfrac{2}{3}$\nĐáp số: $\\dfrac{2}{3}$ tuổi anh",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000281",
+  "loai": "tra_loi_ngan",
+  "de": "Cho A là số tự nhiên có 2024 chữ số. Biết rằng A chia hết cho 9 ; B là tổng các chữ số của A; C là tổng các chữ số của B; D là tổng các chữ số của C. Tìm D.",
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: số chia hết cho $9$ thì tổng các chữ số của nó cũng chia hết cho $9$. Vì $A$ chia hết cho $9$ nên $B$ chia hết cho $9$, rồi $C$ chia hết cho $9$.\nKhông tính được $A$ nên phải **chặn** các số: $A$ có $2024$ chữ số, mỗi chữ số không quá $9$ nên $B$ không quá $9\\times 2024=18216$. Số $B$ có không quá $5$ chữ số nên $C$ không quá $9\\times 5=45$. $C$ chia hết cho $9$ và lớn hơn $0$ nên chỉ có vài khả năng, và tổng các chữ số của mỗi số đó đều bằng $9$.\n**Phần 2. Trình bày**\nSố chia hết cho $9$ thì tổng các chữ số cũng chia hết cho $9$.\nVì $A$ chia hết cho $9$ nên $B$ chia hết cho $9$, suy ra $C$ chia hết cho $9$.\n$A$ có $2024$ chữ số, mỗi chữ số không quá $9$ nên $ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000550",
+  "loai": "tu_luan",
+  "de": "Viết tất cả các phân số bằng phân số $\\dfrac{14}{18}$ sao cho tổng của tử số và mẫu số bé hơn 100.",
+  "dap_an": "$\\dfrac{7}{9}$ ; $\\dfrac{14}{18}$ ; $\\dfrac{21}{27}$ ; $\\dfrac{28}{36}$ ; $\\dfrac{35}{45}$ ; $\\dfrac{42}{54}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: mọi phân số bằng $\\dfrac{14}{18}$ đều bằng phân số tối giản của nó, nên rút gọn trước: $\\dfrac{14}{18}=\\dfrac{7}{9}$. Các phân số bằng $\\dfrac{7}{9}$ có được khi nhân cả tử số và mẫu số của $\\dfrac{7}{9}$ với cùng một số tự nhiên khác $0$.\nTử số và mẫu số của $\\dfrac{7}{9}$ cộng lại là $7+9=16$; khi nhân cả hai với một số thì tổng cũng nhân với số đó. Cần tổng bé hơn $100$ mà $16\\times 6=96<100$, còn $16\\times 7=112>100$, nên chỉ nhân với $1$ ; $2$ ; $3$ ; $4$ ; $5$ ; $6$.\nChú ý: $\\dfrac{7}{9}$ (nhân với $1$) và chính $\\dfrac{14}{18}$ (nhân với $2$) đều thuộc danh sách.\n**Phần 2. Trình bày**\n$\\dfrac{14}{18}=\\dfrac{14:2}{18:2}=\\dfrac{7}{9}$\nCác phân số bằng $\\d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000028",
+  "loai": "tu_luan",
+  "de": "Cho dãy số liệu về số cuốn sách các lớp khối Bốn của một trường Tiểu học quyên góp cho các bạn vùng cao:\n35; 34; 23; 48; 56; 87; 32; 45; 31; 49.\na) Khối Bốn trường Tiểu học đó có bao nhiêu lớp?\nb) Tính trung bình cộng số cuốn sách của các lớp khối Bốn quyên góp.\nc) Có bao nhiêu lớp quyên góp nhiều hơn trung bình cộng số cuốn sách của khối Bốn?",
+  "dap_an": "a) $10$ lớp; b) $44$ cuốn sách; c) $5$ lớp",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: mỗi số trong dãy là số sách của **một lớp** ⇒ đếm số các số là ra số lớp. Trung bình cộng = tổng các số : số lớp. Ý c: so từng số với trung bình cộng vừa tìm, đếm các số **lớn hơn**.\nChú ý: \"nhiều hơn\" không tính lớp bằng đúng trung bình cộng.\n**Phần 2. Trình bày**\nBài giải\na) Khối Bốn trường Tiểu học đó có $10$ lớp.\nb) Tổng số cuốn sách $10$ lớp quyên góp là:\n$35+34+23+48+56+87+32+45+31+49=440$ (cuốn)\nTrung bình cộng số cuốn sách của các lớp khối Bốn quyên góp là: $440:10=44$ (cuốn)\nc) Các lớp quyên góp nhiều hơn $44$ cuốn sách là các lớp quyên góp: $48$ ; $56$ ; $87$ ; $45$ ; $49$ cuốn.\nVậy có $5$ lớp quyên góp nhiều hơn trung bình cộng.\nĐáp số: a) $10$ lớp; …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001011",
+  "loai": "tra_loi_ngan",
+  "de": "Cô Lucy chia đều 1880 cái bánh quy vào các hộp, mỗi hộp 40 cái. Hỏi cô Lucy đã chia được bao nhiêu hộp bánh như thế?",
+  "dap_an": "$47$ hộp bánh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: biết tổng số bánh và số bánh trong mỗi hộp, muốn biết có bao nhiêu hộp thì lấy tổng số bánh **chia** cho số bánh của một hộp.\nPhép chia $1880:40$: cùng bỏ một chữ số $0$ ở số bị chia và số chia rồi chia $188:4$.\nChú ý: câu hỏi là \"bao nhiêu hộp\" nên đơn vị của đáp số là hộp, không phải cái bánh.\n**Phần 2. Trình bày**\nBài giải\nCô Lucy chia được số hộp bánh là: $1880:40=47$ (hộp)\nĐáp số: $47$ hộp bánh",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000375",
+  "loai": "tra_loi_ngan",
+  "de": "Tính:\n$\\dfrac{5}{12}+\\dfrac{5}{6}-\\dfrac{3}{4}$",
+  "dap_an": "$\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các mẫu số là $12$ ; $6$ ; $4$, mà $12$ chia hết cho cả $6$ và $4$ nên lấy $12$ làm mẫu số chung: $\\dfrac{5}{6}=\\dfrac{10}{12}$ ; $\\dfrac{3}{4}=\\dfrac{9}{12}$.\nTử số: $5+10-9=6$, được $\\dfrac{6}{12}$, rút gọn bằng cách chia cả tử và mẫu cho $6$.\n**Phần 2. Trình bày**\n$\\dfrac{5}{12}+\\dfrac{5}{6}-\\dfrac{3}{4}$\n$=\\dfrac{5}{12}+\\dfrac{10}{12}-\\dfrac{9}{12}$\n$=\\dfrac{6}{12}$\n$=\\dfrac{6:6}{12:6}$\n$=\\dfrac{1}{2}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000901",
+  "loai": "tra_loi_ngan",
+  "de": "Một hình chữ nhật có diện tích $56cm^{2}$. Nếu giữ nguyên chiều dài và bớt chiều rộng 4 cm thì được hình chữ nhật mới có diện tích là $24cm^{2}$. Tính chu vi của hình chữ nhật ban đầu.",
+  "dap_an": "$30$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: hai hình chữ nhật có cùng chiều dài. Phần bị bớt đi là hình chữ nhật có chiều dài bằng chiều dài ban đầu và chiều rộng $4$ cm, nên diện tích bớt đi chính là chiều dài nhân $4$. Từ đó tìm chiều dài, rồi chiều rộng, rồi chu vi.\nChú ý: thử lại: $8\\times\\left(7-4\\right)=24$ ($cm^2$) đúng với đề.\n**Phần 2. Trình bày**\nBài giải\nDiện tích bớt đi là: $56-24=32$ ($cm^2$)\nPhần bớt đi là hình chữ nhật có chiều rộng $4$ cm nên chiều dài hình chữ nhật ban đầu là: $32:4=8$ (cm)\nChiều rộng hình chữ nhật ban đầu là: $56:8=7$ (cm)\nChu vi hình chữ nhật ban đầu là: $\\left(8+7\\right)\\times 2=30$ (cm)\nĐáp số: $30$ cm",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000831",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm a để biểu thức $a:8+408$ có giá trị bằng 500.",
+  "dap_an": "$a=736$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: biểu thức có giá trị bằng $500$ nghĩa là $a:8+408=500$. Phép cộng: $a:8$ là **số hạng chưa biết** nên bằng tổng trừ số hạng kia. Phép chia: $a$ là **số bị chia** nên bằng thương nhân số chia.\nChú ý: sau khi có $a:8=92$ phải **nhân** với $8$ để tìm $a$.\n**Phần 2. Trình bày**\n$\\begin{array}{l} a:8+408=500 \\\\ a:8=500-408 \\\\ a:8=92 \\\\ a=92\\times 8 \\\\ a=736 \\end{array}$\nĐáp số: $a=736$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000866",
+  "loai": "tra_loi_ngan",
+  "de": "Để lát nền một căn phòng hình chữ nhật có chiều dài 8 m và chiều rộng 6 m, người ta dùng loại gạch men hình vuông có cạnh 2dm. Hỏi cần bao nhiêu viên gạch để lát kín nền căn phòng đó? Coi phần mạch vữa không đáng kể.",
+  "dap_an": "$1200$ viên gạch",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đổi các số đo về cùng một đơn vị: $8$ m $=80$ dm, $6$ m $=60$ dm. Số viên gạch = diện tích nền phòng chia diện tích một viên gạch.\nChú ý: phải đổi về cùng đơn vị đề-xi-mét rồi mới tính diện tích. Có thể thử lại: theo chiều dài xếp được $80:2=40$ viên, theo chiều rộng xếp được $60:2=30$ viên, $40\\times 30=1200$ viên.\n**Phần 2. Trình bày**\nBài giải\n$8$ m $=80$ dm ; $6$ m $=60$ dm\nDiện tích căn phòng là: $80\\times 60=4800$ ($dm^2$)\nDiện tích một viên gạch là: $2\\times 2=4$ ($dm^2$)\nSố viên gạch cần để lát kín nền căn phòng là: $4800:4=1200$ (viên)\nĐáp số: $1200$ viên gạch",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000594",
+  "loai": "tra_loi_ngan",
+  "de": "Sắp xếp các phân số sau theo thứ tự từ lớn đến bé: $\\dfrac{4}{5};\\dfrac{5}{6};\\dfrac{6}{7};\\dfrac{7}{8}$",
+  "dap_an": "$\\dfrac{7}{8}>\\dfrac{6}{7}>\\dfrac{5}{6}>\\dfrac{4}{5}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: bốn phân số đều bé hơn $1$ và có dạng \"mẫu số hơn tử số $1$ đơn vị\" nên dùng **phần bù**: phần bù của mỗi phân số là $1$ chia cho mẫu số của nó. Phần bù càng **bé** thì phân số càng **lớn**.\nBốn phần bù là $\\dfrac{1}{5}$ ; $\\dfrac{1}{6}$ ; $\\dfrac{1}{7}$ ; $\\dfrac{1}{8}$, cùng tử số $1$ nên mẫu số lớn hơn thì phần bù bé hơn. Phần bù bé nhất là $\\dfrac{1}{8}$ ứng với phân số lớn nhất $\\dfrac{7}{8}$.\nChú ý: đề yêu cầu xếp từ **lớn đến bé**, đừng xếp ngược.\n**Phần 2. Trình bày**\nBước 1: Tìm phần bù\n$1-\\dfrac{4}{5}=\\dfrac{1}{5}$\n$1-\\dfrac{5}{6}=\\dfrac{1}{6}$\n$1-\\dfrac{6}{7}=\\dfrac{1}{7}$\n$1-\\dfrac{7}{8}=\\dfrac{1}{8}$\nBước 2: So sánh phần bù với nhau, kết luận về c …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001034",
+  "loai": "tra_loi_ngan",
+  "de": "Một khu vườn trồng ba loại cây: cam, bưởi, táo. Trong đó có 40 cây cam, 30 cây bưởi, số cây táo nhiều hơn trung bình cộng của cả ba loại cây là 2 cây. Hỏi trong vườn có bao nhiêu cây táo?",
+  "dap_an": "$38$ cây táo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: cây táo nhiều hơn trung bình cộng $2$ cây nên số cây táo là **một đoạn trung bình cộng thêm $2$**. Ba loại cây có $3$ đoạn trung bình cộng, trừ cây táo thì cam và bưởi có **hai đoạn trung bình cộng bớt $2$**.\nVậy hai lần trung bình cộng $=40+30+2$. Tìm trung bình cộng rồi cộng thêm $2$ ra số cây táo.\nChú ý: \"nhiều hơn\" thì **cộng** $2$ (ngược với bài \"ít hơn\").\n**Phần 2. Trình bày**\nBài giải\nTa có sơ đồ:\nCam và bưởi có tất cả số cây là: $40+30=70$ (cây)\nHai lần trung bình cộng số cây của ba loại là: $70+2=72$ (cây)\nTrung bình cộng số cây của ba loại là: $72:2=36$ (cây)\nSố cây táo là: $36+2=38$ (cây)\nĐáp số: $38$ cây táo",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000739",
+  "loai": "tra_loi_ngan",
+  "de": "Có bao nhiêu số tự nhiên có ba chữ số mà chia hết cho 3 ?",
+  "dap_an": "$300$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: các số chia hết cho $3$ cách đều nhau $3$ đơn vị. Tìm số nhỏ nhất và lớn nhất có ba chữ số chia hết cho $3$, rồi đếm bằng công thức của dãy cách đều.\nSố lớn nhất là $999$ ($9+9+9=27$ chia hết cho $3$). Số nhỏ nhất: $100$, $101$ không chia hết cho $3$ (tổng chữ số $1$ và $2$), còn $102$ có tổng chữ số $3$ nên chia hết.\nKiểm lại bằng cách khác: từ $1$ đến $999$ có $999:3=333$ số chia hết cho $3$, từ $1$ đến $99$ có $99:3=33$ số, nên số có ba chữ số là $333-33=300$.\n**Phần 2. Trình bày**\nBài giải\nSố lớn nhất có ba chữ số chia hết cho $3$ là $999$, số nhỏ nhất là $102$.\nSố các số tự nhiên có ba chữ số chia hết cho $3$ là: $\\left(999-102\\right):3+1=300$ (số)\nĐáp số …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

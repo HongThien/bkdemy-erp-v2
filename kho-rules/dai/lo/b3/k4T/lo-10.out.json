@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T000000920",
+  "dang_bai_id": "NDB01586",
+  "chac": "cao",
+  "ly_do": "Trung bình cộng của dãy số cách đều, dùng (đầu + cuối) : 2"
+ },
+ {
+  "ma_cau": "T14T000000808",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng đếm số chữ số xuất hiện trong dãy số tự nhiên liên tiếp"
+ },
+ {
+  "ma_cau": "T14T000000937",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện phép nhân (giao hoán, kết hợp)"
+ },
+ {
+  "ma_cau": "T14T000000712",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng thay đổi kích thước hình chữ nhật làm diện tích tăng"
+ },
+ {
+  "ma_cau": "T14T000000574",
+  "dang_bai_id": "NDB01559",
+  "chac": "cao",
+  "ly_do": "hai phân số ở hai phía của 1, so với 1"
+ },
+ {
+  "ma_cau": "T14T000000195",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng phép tính với số đo (nhân số đo ghép)"
+ },
+ {
+  "ma_cau": "T14T000000615",
+  "dang_bai_id": "NDB01578",
+  "chac": "cao",
+  "ly_do": "đổi tạ ra kg rồi tìm phân số của một số; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T14T000000963",
+  "dang_bai_id": "NDB01537",
+  "chac": "cao",
+  "ly_do": "đếm số không chia hết cho 3 trong khoảng liên tiếp"
+ },
+ {
+  "ma_cau": "T14T000000868",
+  "dang_bai_id": "NDB01516",
+  "chac": "cao",
+  "ly_do": "đổi đơn vị khối lượng kg và g"
+ },
+ {
+  "ma_cau": "T14T000000050",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "hai phân số, phần thứ hai tính của số còn lại, nhiều bước"
+ },
+ {
+  "ma_cau": "T14T0000001031",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "chọn giá trị lớn nhất, bé nhất trong dãy rồi tính trung bình cộng"
+ },
+ {
+  "ma_cau": "T14T000000131",
+  "dang_bai_id": "NDB01537",
+  "chac": "vua",
+  "ly_do": "đếm số lẻ, chẵn, tròn chục trong dãy liên tiếp; có thể là dạng số số hạng"
+ },
+ {
+  "ma_cau": "T14T000000351",
+  "dang_bai_id": "NDB01538",
+  "chac": "cao",
+  "ly_do": "cụm chữ lặp lại, đếm mỗi loại chữ"
+ },
+ {
+  "ma_cau": "T14T0000001127",
+  "dang_bai_id": "NDB01578",
+  "chac": "vua",
+  "ly_do": "cần tính diện tích (bản đồ chưa có) rồi lấy phân số của số"
+ },
+ {
+  "ma_cau": "T14T000000960",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm a, b để chia hết cho 15 (3 và 5)"
+ },
+ {
+  "ma_cau": "T14T000000159",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng điền chữ số vào dấu * trong phép tính"
+ },
+ {
+  "ma_cau": "T14T000000667",
+  "dang_bai_id": "NDB01546",
+  "chac": "cao",
+  "ly_do": "xoá chữ số 0 tận cùng ⇒ gấp 10 lần, có hiệu: tỉ số ẩn"
+ },
+ {
+  "ma_cau": "T14T000000584",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng so sánh phân số bằng phần hơn"
+ },
+ {
+  "ma_cau": "T14T000000396",
+  "dang_bai_id": "NDB01566",
+  "chac": "vua",
+  "ly_do": "rút gọn phân số lặp rồi nhóm cùng mẫu; cũng có thể là rút gọn dạng đặc biệt"
+ },
+ {
+  "ma_cau": "T14T000000504",
+  "dang_bai_id": "NDB01576",
+  "chac": "cao",
+  "ly_do": "dãy 1/6+1/12+... mẫu chưa viết dạng tích"
+ },
+ {
+  "ma_cau": "T14T000000764",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính giá trị biểu thức chứa chữ"
+ },
+ {
+  "ma_cau": "T14T000000853",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000230",
+  "dang_bai_id": "NDB01525",
+  "chac": "cao",
+  "ly_do": "tổng 50 số hạng đầu của dãy cách đều"
+ },
+ {
+  "ma_cau": "T14T000000991",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng đặt tính phép trừ"
+ },
+ {
+  "ma_cau": "T14T000000690",
+  "dang_bai_id": "NDB01531",
+  "chac": "cao",
+  "ly_do": "chuỗi phép tính, đi ngược từ kết quả cuối"
+ },
+ {
+  "ma_cau": "T14T000000332",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm a, b để chia hết cho 2, 5, 9"
+ },
+ {
+  "ma_cau": "T14T0000001085",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "nhóm các phân số cùng mẫu số"
+ },
+ {
+  "ma_cau": "T14T000000030",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng bốc ít nhất để chắc chắn (xác suất, nguyên lí)"
+ },
+ {
+  "ma_cau": "T14T000000570",
+  "dang_bai_id": "NDB01558",
+  "chac": "cao",
+  "ly_do": "tử số dễ đưa về bằng nhau, quy đồng tử số"
+ },
+ {
+  "ma_cau": "T14T0000001135",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng xác suất"
+ },
+ {
+  "ma_cau": "T14T000000005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện cộng trừ (trừ một hiệu)"
+ },
+ {
+  "ma_cau": "T14T000000278",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm x, y để chia hết cho 36 (= 4 x 9)"
+ },
+ {
+  "ma_cau": "T14T000000267",
+  "dang_bai_id": "NDB01540",
+  "chac": "cao",
+  "ly_do": "1abc là abc viết thêm chữ số 1 vào bên trái"
+ },
+ {
+  "ma_cau": "T14T0000001251",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: đếm góc nhọn trong hình"
+ },
+ {
+  "ma_cau": "T14T000000713",
+  "dang_bai_id": "NDB01522",
+  "chac": "cao",
+  "ly_do": "chu vi hình chữ nhật nhân số vòng, đổi ra km"
+ },
+ {
+  "ma_cau": "T14T000000626",
+  "dang_bai_id": "NDB01579",
+  "chac": "vua",
+  "ly_do": "phân số của tổng cho từng bạn; cũng gần dạng phân số bằng quan hệ với phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000394",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "rút gọn rồi nhóm các phân số cùng mẫu"
+ },
+ {
+  "ma_cau": "T14T0000001134",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng so sánh phân số bằng phần hơn"
+ },
+ {
+  "ma_cau": "T14T000000406",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một ngày rồi nhân"
+ },
+ {
+  "ma_cau": "T14T0000001096",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "rút gọn rồi nhóm các phân số cùng mẫu"
+ },
+ {
+  "ma_cau": "T14T000000502",
+  "dang_bai_id": "NDB01567",
+  "chac": "cao",
+  "ly_do": "chỉ có phép nhân nhiều phân số, rút gọn chéo"
+ },
+ {
+  "ma_cau": "T14T000000224",
+  "dang_bai_id": "NDB01624",
+  "chac": "cao",
+  "ly_do": "hai số lẻ có tổng, giữa có 5 số chẵn nên hiệu ẩn"
+ },
+ {
+  "ma_cau": "T14T000000723",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng phép tính với số đo khối lượng"
+ },
+ {
+  "ma_cau": "T14T000000968",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện cộng (nhóm số tròn)"
+ },
+ {
+  "ma_cau": "T14T0000001250",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: góc của hai kim đồng hồ"
+ },
+ {
+  "ma_cau": "T14T000000261",
+  "dang_bai_id": "NDB01540",
+  "chac": "vua",
+  "ly_do": "xoá chữ số hàng trăm (bên trái) làm giảm 7 lần; dạng gần là thêm chữ số bên trái"
+ },
+ {
+  "ma_cau": "T14T000000381",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "bỏ ngoặc rồi nhóm phân số cùng mẫu"
+ },
+ {
+  "ma_cau": "T14T000000794",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng số dư lớn nhất của phép chia"
+ },
+ {
+  "ma_cau": "T14T000000468",
+  "dang_bai_id": "NDB01568",
+  "chac": "cao",
+  "ly_do": "rút gọn để lộ thừa số chung của hai tích"
+ },
+ {
+  "ma_cau": "T14T000000687",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "hai phân số của cả đoạn, biết phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000547",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng viết các phân số bằng nhau với phân số cho trước"
+ },
+ {
+  "ma_cau": "T14T000000909",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "trung bình cộng ba số"
+ },
+ {
+  "ma_cau": "T14T000000055",
+  "dang_bai_id": "NDB01624",
+  "chac": "cao",
+  "ly_do": "hai số lẻ có tổng, giữa có 8 số lẻ khác nên hiệu ẩn"
+ },
+ {
+  "ma_cau": "T14T000000044",
+  "dang_bai_id": "NDB01571",
+  "chac": "cao",
+  "ly_do": "các phép chia có chung số chia"
+ },
+ {
+  "ma_cau": "T14T000000012",
+  "dang_bai_id": "NDB01540",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số 3 vào bên trái được số gấp 5 lần"
+ },
+ {
+  "ma_cau": "T14T000000670",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "phân số của cả số và phân số của số còn lại"
+ },
+ {
+  "ma_cau": "T14T000000357",
+  "dang_bai_id": "NDB01536",
+  "chac": "vua",
+  "ly_do": "a798b có điều kiện chia 5 dư 2 và chia hết 9; cũng liên quan viết thêm chữ số"
+ },
+ {
+  "ma_cau": "T14T000000543",
+  "dang_bai_id": "NDB01554",
+  "chac": "cao",
+  "ly_do": "quy đồng mẫu số ba phân số"
+ },
+ {
+  "ma_cau": "T14T0000001125",
+  "dang_bai_id": "NDB01571",
+  "chac": "cao",
+  "ly_do": "các phép chia có chung số chia"
+ },
+ {
+  "ma_cau": "T14T000000730",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000782",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính tổng dãy cộng trừ xen kẽ ghép nhóm"
+ },
+ {
+  "ma_cau": "T14T000000010",
+  "dang_bai_id": "NDB01627",
+  "chac": "vua",
+  "ly_do": "tổng ở thời điểm quá khứ, hiệu không đổi; gần dạng tăng giảm đại lượng"
+ },
+ {
+  "ma_cau": "T14T000000322",
+  "dang_bai_id": "NDB01534",
+  "chac": "cao",
+  "ly_do": "viết tất cả số chia hết cho 5 từ các chữ số cho trước"
+ },
+ {
+  "ma_cau": "T14T000000451",
+  "dang_bai_id": "NDB01574",
+  "chac": "cao",
+  "ly_do": "tử là 1 bằng hiệu hai thừa số ở mẫu"
+ },
+ {
+  "ma_cau": "T14T000000163",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện cộng (nhóm số tròn)"
+ },
+ {
+  "ma_cau": "T14T000000473",
+  "dang_bai_id": "NDB01568",
+  "chac": "cao",
+  "ly_do": "ba tích có chung thừa số, đưa ra ngoài"
+ },
+ {
+  "ma_cau": "T14T000000389",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "nhóm các phân số cùng mẫu"
+ },
+ {
+  "ma_cau": "T14T000000890",
+  "dang_bai_id": "NDB01519",
+  "chac": "cao",
+  "ly_do": "đưa về hai tích có chung thừa số 2024"
+ },
+ {
+  "ma_cau": "T14T0000001005",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện cộng trừ nhiều số"
+ },
+ {
+  "ma_cau": "T14T0000001186",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng phân số của tổng khi tổng là số nguyên nhỏ hơn 100 (tìm bội chung)"
+ }
+]

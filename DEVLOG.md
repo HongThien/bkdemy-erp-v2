@@ -80646,3 +80646,11 @@ Thùy nêu 4 việc, làm được 3:
 - **Bài học (đưa vào HANDOFF-BAI-HOC cuối ngày):** chạy thử trong rollback KHÔNG vô hại — DDL trên bảng (`alter table`, `create index` không concurrently, `drop`) giữ khoá độc quyền tới khi giao dịch kết thúc. Bảng app đang đọc ⇒ DDL phải ở giao dịch riêng, ngắn; lượt thử dài chỉ được chứa `create or replace function` + DML.
 
 - **14/11 (tiếp) — mig 202611141211 + 202611141212 ĐÃ ÁP:** `fn_nt_ban_vuon` trả thêm giaoDien.doNha (chỉ mảng của kiểu nhà đang dùng) + giaoDien.san, lọc qua `_nt_ds_id_sach` (id đúng mẫu tên, ≤ 40 món); hàm lọc là nội bộ nên thu quyền authenticated (K1 về 319). Thử bằng vai 1 HS thật trong giao dịch rồi rollback: trả đúng, id lạ bị bỏ. ⇒ sang vườn bạn thấy món bạn tự chọn.
+
+## 14/11 — B3 4T: phân dạng 1.223 câu sách vào bản đồ mới (Thùy "Chạy bước 2")
+- `bdm-b3-xuat-lo.mjs 4T --chap-nhan-thieu` (5 dạng "Cụm" ⚠ THIẾU) ⇒ 18 lô, mẫu = 0 (4T chưa có câu người nối) ⇒ không đo precision được bằng mẫu ⇒ HAI người xếp độc lập (6 Sonnet .out.json · 6 Opus .out2.json, brief chung + `brief-4T.md`). Script mới `scripts/bdm-b3-hai-ben.mjs` ghép: cùng dạng + cả hai 'cao' ⇒ cao; còn lại ⇒ vua / trống.
+- Kết quả: 1.223 câu ⇒ cao 570 (46,6%) · vua 275 (cùng dạng chưa cùng chắc 154 · lệch dạng 35 · một bên trống 86) · trống 378 (bản đồ chưa có dạng). Hai bên cùng dạng ~90%. Kiểm độc lập: lý do trùng y nguyên 10/1.223 (câu đơn giản) — lô 3 (file tạm l3.txt bị ghi đè giữa agent, dùng chung scratchpad) 0 trùng.
+- Ghi: `bdm-b3-ghi-de-xuat.mjs` 570 gan_cau nguon 'ai' (trigger tự duyệt: 570/570 da_duyet) · `bdm-b3-nap-de-xuat.mjs` 275 de_xuat + 378 thieu_dang. Dạng 4T trống 41 → 5 (NDB01547/48/49 tỉ số nhiều đại lượng · 01553 quy đồng tử · 01577 tìm x dãy hiệu tích).
+- MCQ cho câu mới gán: 613 câu chuẩn chưa form ⇒ sinh 454, lọc (tập hợp/nhãn · số tròn · số âm) ⇒ 439 OK, ghi + duyệt (Thùy). 4T câu lên app 1.478 → 1.917.
+- Bẫy: 2/6 Sonnet tự nhận chỉ đọc lướt lý thuyết/ví dụ trong dich.md (giới hạn đọc) — luật 02/11 bắt đọc đủ; đồng thuận 2 model là lớp chặn. Agent con dùng chung scratchpad ⇒ lần sau giao mỗi agent một thư mục tạm riêng.
+- Hàng duyệt chờ Thùy/trưởng khối 4T: 275 câu de_xuat + 378 câu thiếu dạng (ly_do ghi dạng còn thiếu: tìm x/y, thuận tiện cộng trừ, biểu thức chữ, đo lường ngoài khối lượng, diện tích, phần hơn, xác suất, cấu tạo số thêm bên phải…).

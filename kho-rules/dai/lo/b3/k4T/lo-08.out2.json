@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T000000027",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một hàng ghế rồi tìm số hàng"
+ },
+ {
+  "ma_cau": "T14T000000557",
+  "dang_bai_id": "NDB01559",
+  "chac": "vua",
+  "ly_do": "nhận biết phân số bé hơn 1 trong danh sách; dạng chỉ nói so sánh hai phân số"
+ },
+ {
+  "ma_cau": "T14T000000042",
+  "dang_bai_id": "NDB01570",
+  "chac": "cao",
+  "ly_do": "biểu thức hai phép chia khác số chia, cộng"
+ },
+ {
+  "ma_cau": "T14T0000001132",
+  "dang_bai_id": "NDB01578",
+  "chac": "vua",
+  "ly_do": "phân số của diện tích; cần tính diện tích hình vuông (dạng chưa có)"
+ },
+ {
+  "ma_cau": "T14T000000721",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính giá trị biểu thức chứa chữ"
+ },
+ {
+  "ma_cau": "T14T0000001042",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "đọc dãy số liệu, tìm giá trị lớn nhất"
+ },
+ {
+  "ma_cau": "T14T0000001060",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm y từ hai phân số bằng nhau"
+ },
+ {
+  "ma_cau": "T14T000000265",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: viết thêm chữ số cả bên trái và bên phải"
+ },
+ {
+  "ma_cau": "T14T000000140",
+  "dang_bai_id": "NDB01624",
+  "chac": "vua",
+  "ly_do": "tổng dãy số chẵn liên tiếp suy ra tổng–hiệu số đầu, số cuối; trộn dãy số"
+ },
+ {
+  "ma_cau": "T14T000000748",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: thế kỉ (đo thời gian)"
+ },
+ {
+  "ma_cau": "T14T0000001039",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: liệt kê khả năng / xác suất"
+ },
+ {
+  "ma_cau": "T14T000000242",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: thay đổi thừa số trong phép nhân"
+ },
+ {
+  "ma_cau": "T14T000000352",
+  "dang_bai_id": "NDB01538",
+  "chac": "cao",
+  "ly_do": "cụm chữ lặp, đếm chữ E theo số cụm"
+ },
+ {
+  "ma_cau": "T14T000000507",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tổng dãy phân số mỗi số bằng nửa số trước"
+ },
+ {
+  "ma_cau": "T14T000000132",
+  "dang_bai_id": "NDB00646",
+  "chac": "cao",
+  "ly_do": "tổng viết sẵn dãy cách đều, cả dãy giảm"
+ },
+ {
+  "ma_cau": "T14T000000760",
+  "dang_bai_id": "NDB01525",
+  "chac": "cao",
+  "ly_do": "tìm số hạng thứ 30 rồi tổng 30 số hạng đầu"
+ },
+ {
+  "ma_cau": "T14T000000905",
+  "dang_bai_id": "NDB01516",
+  "chac": "vua",
+  "ly_do": "phép tính với số đo khối lượng; dạng chỉ đổi đơn vị"
+ },
+ {
+  "ma_cau": "T14T000000110",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: liệt kê số biết tích chữ số"
+ },
+ {
+  "ma_cau": "T14T000000169",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính thuận tiện trừ một hiệu số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000008",
+  "dang_bai_id": "NDB01525",
+  "chac": "cao",
+  "ly_do": "tổng 100 số hạng đầu, tìm số hạng thứ 100"
+ },
+ {
+  "ma_cau": "T14T000000031",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "số dạng abcabc, chia 1001 rồi rút gọn tiếp"
+ },
+ {
+  "ma_cau": "T14T000000851",
+  "dang_bai_id": "NDB01515",
+  "chac": "cao",
+  "ly_do": "đếm số chẵn 4 chữ số khác nhau, có chữ số 0"
+ },
+ {
+  "ma_cau": "T14T000000534",
+  "dang_bai_id": "NDB01555",
+  "chac": "cao",
+  "ly_do": "rút gọn các phân số dạng chuẩn"
+ },
+ {
+  "ma_cau": "T14T000000455",
+  "dang_bai_id": "NDB01569",
+  "chac": "cao",
+  "ly_do": "nhân trước cộng sau, đúng ví dụ dạng"
+ },
+ {
+  "ma_cau": "T14T000000009",
+  "dang_bai_id": "NDB01526",
+  "chac": "cao",
+  "ly_do": "số 951 là số hạng thứ mấy"
+ },
+ {
+  "ma_cau": "T14T000000830",
+  "dang_bai_id": "NDB01509",
+  "chac": "cao",
+  "ly_do": "số lẻ lớn nhất 6 chữ số khác nhau, chỉ biết số chữ số"
+ },
+ {
+  "ma_cau": "T14T000000929",
+  "dang_bai_id": "NDB01593",
+  "chac": "cao",
+  "ly_do": "số thứ ba hơn TBC cả ba số"
+ },
+ {
+  "ma_cau": "T14T000000191",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm chữ số trong phép cộng"
+ },
+ {
+  "ma_cau": "T14T000000014",
+  "dang_bai_id": "NDB01551",
+  "chac": "vua",
+  "ly_do": "cùng tăng tuổi rồi tỉ số; đề cho tổng, mô tả dạng cho hiệu"
+ },
+ {
+  "ma_cau": "T14T0000001104",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "hiệu số bao ứng 400 kg, rút về một bao"
+ },
+ {
+  "ma_cau": "T14T0000001245",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: cạnh vuông góc"
+ },
+ {
+  "ma_cau": "T14T000000802",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tính giá trị biểu thức chứa chữ"
+ },
+ {
+  "ma_cau": "T14T000000695",
+  "dang_bai_id": "NDB01626",
+  "chac": "cao",
+  "ly_do": "cho nhận, tổng không đổi, lúc sau bằng nhau"
+ },
+ {
+  "ma_cau": "T14T000000611",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "hai phân số của tổng, phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000806",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: so sánh số theo cấu tạo hàng"
+ },
+ {
+  "ma_cau": "T14T000000752",
+  "dang_bai_id": "NDB01623",
+  "chac": "cao",
+  "ly_do": "chu vi và hiệu hai cạnh, tính diện tích"
+ },
+ {
+  "ma_cau": "T14T000000412",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "cưa gỗ: số lần cưa = số đoạn − 1 (dạng 0 đầu) rồi rút về một lần; dạng sau thắng"
+ },
+ {
+  "ma_cau": "T14T000000719",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: dãy số quy luật không cách đều"
+ },
+ {
+  "ma_cau": "T14T000000988",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: đặt tính cộng số nhiều chữ số"
+ },
+ {
+  "ma_cau": "T14T000000540",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "quy đồng mẫu hai phân số"
+ },
+ {
+  "ma_cau": "T14T0000001240",
+  "dang_bai_id": "NDB01512",
+  "chac": "vua",
+  "ly_do": "lập số gần 500000 từ thẻ số; đề có hình, không hỏi lớn/nhỏ nhất"
+ },
+ {
+  "ma_cau": "T14T0000001103",
+  "dang_bai_id": "NDB01594",
+  "chac": "cao",
+  "ly_do": "Ngọc ít hơn TBC cả ba bạn"
+ },
+ {
+  "ma_cau": "T14T000000470",
+  "dang_bai_id": "NDB01568",
+  "chac": "vua",
+  "ly_do": "tìm y, đặt thừa số chung y; thiếu dạng tìm x phân số"
+ },
+ {
+  "ma_cau": "T14T000000003",
+  "dang_bai_id": "NDB01512",
+  "chac": "cao",
+  "ly_do": "từ chữ số cho trước viết số chẵn lớn nhất"
+ },
+ {
+  "ma_cau": "T14T000000948",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một hộp, tìm số học sinh"
+ },
+ {
+  "ma_cau": "T14T0000001188",
+  "dang_bai_id": "NDB01576",
+  "chac": "cao",
+  "ly_do": "mẫu viết dạng số, tách thành tích hai số liên tiếp"
+ },
+ {
+  "ma_cau": "T14T000000254",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: quan hệ số dư khi chia cho số và ước của nó"
+ },
+ {
+  "ma_cau": "T14T000000964",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm a, b để 2a37b chia hết cho 45"
+ },
+ {
+  "ma_cau": "T14T000000269",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: cấu tạo số ab = k×(a+b)"
+ },
+ {
+  "ma_cau": "T14T000000311",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "chọn số chia hết cho 2 và 5 trong danh sách"
+ },
+ {
+  "ma_cau": "T14T000000561",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: lập phân số theo điều kiện"
+ },
+ {
+  "ma_cau": "T14T000000884",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: thay đổi thừa số trong phép nhân"
+ },
+ {
+  "ma_cau": "T14T000000985",
+  "dang_bai_id": "NDB01538",
+  "chac": "cao",
+  "ly_do": "bóng lặp nhóm 9 quả, chia lấy dư"
+ },
+ {
+  "ma_cau": "T14T0000001070",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm phân số bằng phân số cho trước"
+ },
+ {
+  "ma_cau": "T14T000000032",
+  "dang_bai_id": "NDB01554",
+  "chac": "cao",
+  "ly_do": "quy đồng mẫu ba phân số"
+ },
+ {
+  "ma_cau": "T14T000000608",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "phân số dạng tích nhiều thừa số, rút gọn"
+ },
+ {
+  "ma_cau": "T14T000000617",
+  "dang_bai_id": "NDB01578",
+  "chac": "vua",
+  "ly_do": "tìm chiều dài bằng phân số của chiều rộng rồi chu vi, diện tích; trộn dạng"
+ },
+ {
+  "ma_cau": "T14T000000613",
+  "dang_bai_id": "NDB01578",
+  "chac": "cao",
+  "ly_do": "5/8 của 40 học sinh"
+ },
+ {
+  "ma_cau": "T14T000000673",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tỉ số hai đại lượng qua đại lượng chuẩn"
+ },
+ {
+  "ma_cau": "T14T000000281",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: suy luận tổng chữ số lặp với chia hết cho 9"
+ },
+ {
+  "ma_cau": "T14T000000550",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: phân số bằng nhau theo điều kiện"
+ },
+ {
+  "ma_cau": "T14T000000028",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "dãy số liệu: đếm, TBC, số giá trị lớn hơn TBC"
+ },
+ {
+  "ma_cau": "T14T0000001011",
+  "dang_bai_id": "NDB01520",
+  "chac": "vua",
+  "ly_do": "bài lời văn chia cho 40; dạng hướng tới đặt tính"
+ },
+ {
+  "ma_cau": "T14T000000375",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "cộng trừ ba phân số"
+ },
+ {
+  "ma_cau": "T14T000000901",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: diện tích hình chữ nhật thay đổi kích thước"
+ },
+ {
+  "ma_cau": "T14T000000831",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: tìm thành phần biểu thức số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000866",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thiếu dạng: lát gạch (diện tích)"
+ },
+ {
+  "ma_cau": "T14T000000594",
+  "dang_bai_id": "NDB01563",
+  "chac": "cao",
+  "ly_do": "sắp xếp bốn phân số bằng phần bù"
+ },
+ {
+  "ma_cau": "T14T0000001034",
+  "dang_bai_id": "NDB01593",
+  "chac": "cao",
+  "ly_do": "táo nhiều hơn TBC cả ba loại"
+ },
+ {
+  "ma_cau": "T14T000000739",
+  "dang_bai_id": "NDB01537",
+  "chac": "cao",
+  "ly_do": "đếm số 3 chữ số chia hết cho 3"
+ }
+]

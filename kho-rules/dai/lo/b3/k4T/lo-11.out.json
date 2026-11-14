@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T0000001050",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "tính trung bình cộng của dãy số liệu"
+ },
+ {
+  "ma_cau": "T14T000000219",
+  "dang_bai_id": "NDB01627",
+  "chac": "vua",
+  "ly_do": "tổng hiện nay, hiệu cho ở quá khứ; dạng tổng hiệu tuổi chưa tách riêng"
+ },
+ {
+  "ma_cau": "T14T000000343",
+  "dang_bai_id": "NDB01536",
+  "chac": "cao",
+  "ly_do": "56a vừa chia hết cho 2 vừa chia 5 dư 4"
+ },
+ {
+  "ma_cau": "T14T0000001172",
+  "dang_bai_id": "NDB01550",
+  "chac": "vua",
+  "ly_do": "bi chuyển từ bạn này sang bạn kia, tỉ số sau; đây là hiệu tỉ chứ không phải tổng tỉ"
+ },
+ {
+  "ma_cau": "T14T000000681",
+  "dang_bai_id": "NDB01580",
+  "chac": "vua",
+  "ly_do": "giá trị phân số của từng loại để tìm số học sinh, nhiều loại"
+ },
+ {
+  "ma_cau": "T14T000000063",
+  "dang_bai_id": "NDB01582",
+  "chac": "cao",
+  "ly_do": "72 kg ứng với hiệu hai phân số của số gạo"
+ },
+ {
+  "ma_cau": "T14T000000738",
+  "dang_bai_id": "NDB01525",
+  "chac": "cao",
+  "ly_do": "tổng 100 số tự nhiên liên tiếp"
+ },
+ {
+  "ma_cau": "T14T0000001112",
+  "dang_bai_id": "NDB01575",
+  "chac": "cao",
+  "ly_do": "mẫu tích hơn kém 4, tử là 2 chưa bằng hiệu"
+ },
+ {
+  "ma_cau": "T14T000000107",
+  "dang_bai_id": "NDB01511",
+  "chac": "cao",
+  "ly_do": "nhỏ nhất khi biết tổng chữ số, kèm điều kiện chẵn"
+ },
+ {
+  "ma_cau": "T14T000000082",
+  "dang_bai_id": "NDB01509",
+  "chac": "cao",
+  "ly_do": "lớn nhất có 4 chữ số khác nhau, lẻ"
+ },
+ {
+  "ma_cau": "T14T000000811",
+  "dang_bai_id": "NDB01518",
+  "chac": "vua",
+  "ly_do": "đặt tính nhân với thừa số một chữ số, mô tả dạng ghi thừa số nhiều chữ số"
+ },
+ {
+  "ma_cau": "T14T000000445",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một quyển truyện"
+ },
+ {
+  "ma_cau": "T14T000000271",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng xoá chữ số ở giữa của số"
+ },
+ {
+  "ma_cau": "T14T000000469",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với phân số"
+ },
+ {
+  "ma_cau": "T14T0000001176",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một hộp"
+ },
+ {
+  "ma_cau": "T14T000000837",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001102",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng xác suất"
+ },
+ {
+  "ma_cau": "T14T0000001130",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với phân số"
+ },
+ {
+  "ma_cau": "T14T000000956",
+  "dang_bai_id": "NDB01534",
+  "chac": "cao",
+  "ly_do": "lập số nhỏ nhất chia hết cho 2 và 5 từ các chữ số cho trước"
+ },
+ {
+  "ma_cau": "T14T000000840",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001200",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "phần của số cam và của số còn lại, biết giá trị phần cuối"
+ },
+ {
+  "ma_cau": "T14T000000011",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng viết nhầm thừa số trong phép nhân"
+ },
+ {
+  "ma_cau": "T14T000000616",
+  "dang_bai_id": "NDB01522",
+  "chac": "vua",
+  "ly_do": "có chu vi nhưng thêm diện tích (bản đồ chưa có dạng diện tích)"
+ },
+ {
+  "ma_cau": "T14T000000117",
+  "dang_bai_id": "NDB01512",
+  "chac": "vua",
+  "ly_do": "xoá chữ số giữ thứ tự để được số nhỏ nhất; mô tả dạng chưa nhắc xoá chữ số"
+ },
+ {
+  "ma_cau": "T14T000000331",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm a, b để chia hết cho 2, 3, 5"
+ },
+ {
+  "ma_cau": "T14T0000001193",
+  "dang_bai_id": "NDB01541",
+  "chac": "vua",
+  "ly_do": "các điều kiện chữ số đổi thành tổng hiệu; dạng cấu tạo số chưa có"
+ },
+ {
+  "ma_cau": "T14T0000001184",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm x với tỉ số"
+ },
+ {
+  "ma_cau": "T14T000000362",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng thế kỉ, lịch"
+ },
+ {
+  "ma_cau": "T14T000000620",
+  "dang_bai_id": "NDB01579",
+  "chac": "cao",
+  "ly_do": "hai phân số của cả lớp, phần còn lại"
+ },
+ {
+  "ma_cau": "T14T000000815",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính giá trị biểu thức chứa chữ"
+ },
+ {
+  "ma_cau": "T14T000000894",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng so sánh số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000762",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm x với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000742",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính thuận tiện phép chia số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T0000001124",
+  "dang_bai_id": "NDB01570",
+  "chac": "cao",
+  "ly_do": "biểu thức nhân chia phân số, đổi chia thành nhân đảo"
+ },
+ {
+  "ma_cau": "T14T0000001142",
+  "dang_bai_id": "NDB01545",
+  "chac": "cao",
+  "ly_do": "hiệu tuổi cho bằng lời (mẹ sinh con lúc 28), có tỉ số"
+ },
+ {
+  "ma_cau": "T14T000000205",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng lát gạch, diện tích"
+ },
+ {
+  "ma_cau": "T14T0000001120",
+  "dang_bai_id": "NDB01567",
+  "chac": "vua",
+  "ly_do": "rút gọn tích phân số rồi tìm số tự nhiên ở giữa"
+ },
+ {
+  "ma_cau": "T14T0000001179",
+  "dang_bai_id": "NDB01560",
+  "chac": "cao",
+  "ly_do": "chọn phân số trung gian"
+ },
+ {
+  "ma_cau": "T14T000000410",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "rút về một xe, nhưng qua hiệu số xe"
+ },
+ {
+  "ma_cau": "T14T0000001126",
+  "dang_bai_id": "NDB01570",
+  "chac": "cao",
+  "ly_do": "chuỗi nhân chia phân số, rút gọn"
+ },
+ {
+  "ma_cau": "T14T000000443",
+  "dang_bai_id": "NDB01584",
+  "chac": "cao",
+  "ly_do": "trung bình cộng nhóm có hai loại đại lượng"
+ },
+ {
+  "ma_cau": "T14T000000775",
+  "dang_bai_id": "NDB01627",
+  "chac": "cao",
+  "ly_do": "cả hai cùng thêm số khác nhau, hiệu cho ở lúc sau"
+ },
+ {
+  "ma_cau": "T14T000000336",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm hai chữ số * để chia hết cho 5 và 9"
+ },
+ {
+  "ma_cau": "T14T000000426",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "chọn ba giá trị lớn nhất rồi tính trung bình cộng"
+ },
+ {
+  "ma_cau": "T14T000000843",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng đọc, viết số"
+ },
+ {
+  "ma_cau": "T14T000000715",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng phép tính với số đo diện tích"
+ },
+ {
+  "ma_cau": "T14T000000478",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "rút về một lọ với phân số"
+ },
+ {
+  "ma_cau": "T14T000000938",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "trung bình cộng ba xe, đổi đơn vị trước"
+ },
+ {
+  "ma_cau": "T14T000000876",
+  "dang_bai_id": "NDB01522",
+  "chac": "vua",
+  "ly_do": "cho chu vi tìm cạnh rồi tính diện tích; dạng diện tích chưa có"
+ },
+ {
+  "ma_cau": "T14T000000335",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "tìm hai chữ số * để chia hết cho 5 và 9"
+ },
+ {
+  "ma_cau": "T14T0000001244",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: cặp cạnh song song"
+ },
+ {
+  "ma_cau": "T14T0000001152",
+  "dang_bai_id": "NDB01590",
+  "chac": "cao",
+  "ly_do": "tìm số thêm vào khi biết trung bình cộng trước và sau"
+ },
+ {
+  "ma_cau": "T14T0000001086",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "cộng ba phân số khác mẫu"
+ },
+ {
+  "ma_cau": "T14T0000001137",
+  "dang_bai_id": "NDB01531",
+  "chac": "cao",
+  "ly_do": "tính ngược chuỗi phép tính với phân số"
+ },
+ {
+  "ma_cau": "T14T000000914",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "trung bình cộng, đổi tấn ra tạ"
+ },
+ {
+  "ma_cau": "T14T000000951",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm x với số tự nhiên"
+ },
+ {
+  "ma_cau": "T14T000000696",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tính ngược cho nhận giữa ba người"
+ },
+ {
+  "ma_cau": "T14T000000568",
+  "dang_bai_id": "NDB01557",
+  "chac": "cao",
+  "ly_do": "quy đồng mẫu số rồi so sánh"
+ },
+ {
+  "ma_cau": "T14T000000765",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng bài toán lời văn nhân chia cơ bản"
+ },
+ {
+  "ma_cau": "T14T000000255",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng phép chia có dư với thương chưa biết"
+ },
+ {
+  "ma_cau": "T14T000000058",
+  "dang_bai_id": "NDB01546",
+  "chac": "vua",
+  "ly_do": "viết thêm chữ số vào bên phải; mô tả dạng chỉ nêu chữ số 0"
+ },
+ {
+  "ma_cau": "T14T000000361",
+  "dang_bai_id": "NDB01539",
+  "chac": "cao",
+  "ly_do": "số dư kém số chia 1 đơn vị"
+ },
+ {
+  "ma_cau": "T14T000000436",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng liệt kê sự kiện (xác suất)"
+ },
+ {
+  "ma_cau": "T14T0000001183",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm x với tỉ số"
+ },
+ {
+  "ma_cau": "T14T000000466",
+  "dang_bai_id": "NDB01568",
+  "chac": "cao",
+  "ly_do": "hai tích có chung thừa số 1/5"
+ },
+ {
+  "ma_cau": "T14T000000523",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng tìm y từ hai phân số bằng nhau"
+ },
+ {
+  "ma_cau": "T14T000000508",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "bản đồ thiếu dạng dãy phân số mỗi số bằng nửa số trước"
+ },
+ {
+  "ma_cau": "T14T000000128",
+  "dang_bai_id": "NDB01523",
+  "chac": "vua",
+  "ly_do": "điền tiếp số hạng của dãy cách đều"
+ },
+ {
+  "ma_cau": "T14T0000001173",
+  "dang_bai_id": "NDB01567",
+  "chac": "cao",
+  "ly_do": "tích ba phân số, rút gọn chéo"
+ },
+ {
+  "ma_cau": "T14T000000312",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "nhận biết số không chia hết cho 2 và 5 trong danh sách"
+ }
+]

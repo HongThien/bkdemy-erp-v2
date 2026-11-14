@@ -1,0 +1,268 @@
+[
+ {
+  "ma_cau": "T14T000000243",
+  "loai": "tra_loi_ngan",
+  "de": "Tích của hai số là 6270. Nếu giữ nguyên thừa số thứ nhất và bớt ở thừa số thứ hai đi 6 đơn vị thì được tích mới là 5 610. Tìm thừa số thứ nhất.",
+  "dap_an": "$110$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: giữ nguyên thừa số thứ nhất, bớt ở thừa số thứ hai $6$ đơn vị thì tích **giảm đi $6$ lần thừa số thứ nhất**. Tích giảm bao nhiêu thì $6$ lần thừa số thứ nhất bằng bấy nhiêu.\nKiểm lại: thừa số thứ hai là $6270:110=57$; $110\\times \\left(57-6\\right)=110\\times 51=5610$ đúng.\n**Phần 2. Trình bày**\nBài giải\nTích giảm đi là: $6270-5610=660$\nBớt ở thừa số thứ hai $6$ đơn vị thì tích giảm đi $6$ lần thừa số thứ nhất.\nThừa số thứ nhất là: $660:6=110$\nĐáp số: $110$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000460",
+  "loai": "tra_loi_ngan",
+  "de": "Tính:\n$\\dfrac{5}{17}\\times\\dfrac{21}{4}\\times\\dfrac{34}{15}\\times\\dfrac{1}{7}$",
+  "dap_an": "$\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: chỉ có phép nhân, viết thành một phân số rồi rút gọn chéo. Số lớn thì **phân tích thành tích** để thấy thừa số chung: $21=3\\times 7$; $34=2\\times 17$; $4=2\\times 2$; $15=5\\times 3$.\nSau khi gạch các thừa số giống nhau ở tử và mẫu, tử còn $1$, mẫu còn $2$.\n**Phần 2. Trình bày**\n$\\dfrac{5}{17}\\times\\dfrac{21}{4}\\times\\dfrac{34}{15}\\times\\dfrac{1}{7}$\n$=\\dfrac{5\\times 21\\times 34\\times 1}{17\\times 4\\times 15\\times 7}$\n$=\\dfrac{5\\times 3\\times 7\\times 2\\times 17\\times 1}{17\\times 2\\times 2\\times 5\\times 3\\times 7}$\n$=\\dfrac{\\cancel{5}\\times\\cancel{3}\\times\\cancel{7}\\times\\cancel{2}\\times\\cancel{17}\\times 1}{\\cancel{17}\\times\\cancel{2}\\times 2\\times\\cancel{5}\\times …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000962",
+  "loai": "tu_luan",
+  "de": "Tổng của hai số là số lớn nhất có ba chữ số chia hết cho 2, hiệu của hai số đó là số bé nhất có ba chữ số chia hết cho 5. Tìm hai số đó.",
+  "dap_an": "$549$ ; $449$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: **tổng** là số lớn nhất có ba chữ số chia hết cho $2$: chia hết cho $2$ thì tận cùng chẵn, lớn nhất là $8$, vậy số đó là $998$. **Hiệu** là số bé nhất có ba chữ số chia hết cho $5$: số bé nhất có ba chữ số là $100$ và $100$ chia hết cho $5$, nên hiệu là $100$.\nBiết tổng và hiệu thì dùng tổng – hiệu: số bé $=$ (tổng $-$ hiệu) chia cho $2$; số lớn $=$ số bé $+$ hiệu.\nChú ý: số lớn nhất có ba chữ số là $999$ nhưng $999$ lẻ, nên số chia hết cho $2$ lớn nhất là $998$.\n**Phần 2. Trình bày**\nBài giải\nTổng của hai số là $998$ (số lớn nhất có ba chữ số chia hết cho $2$).\nHiệu của hai số là $100$ (số bé nhất có ba chữ số chia hết cho $5$).\nTa có sơ đồ:\nSố bé là: $\\left( …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000529",
+  "loai": "tu_luan",
+  "de": "Khoanh tròn vào các phân số tối giản trong các phân số sau:\n$\\dfrac{12}{15};\\dfrac{8}{20};\\dfrac{9}{14};\\dfrac{25}{70};\\dfrac{14}{18};\\dfrac{19}{15}$",
+  "dap_an": "$\\dfrac{9}{14}$ ; $\\dfrac{19}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: phân số **tối giản** là phân số không rút gọn được nữa, tức là tử số và mẫu số **không cùng chia hết cho số nào lớn hơn $1$**. Muốn kiểm tra, xét mẫu số: phân tích mẫu số thành tích các thừa số rồi xem tử số có chia hết cho thừa số nào của mẫu không; nếu tử số không chia hết cho thừa số nào thì phân số đã tối giản.\nChú ý: phân số lớn hơn $1$ (tử số lớn hơn mẫu số) như $\\dfrac{19}{15}$ vẫn có thể là phân số tối giản; \"tối giản\" chỉ nói về việc rút gọn được hay không.\n**Phần 2. Trình bày**\nPhân số tối giản là phân số mà tử số và mẫu số không cùng chia hết cho số nào lớn hơn $1$.\n$\\dfrac{12}{15}$: tử số và mẫu số cùng chia hết cho $3$ nên chưa tối giản.\n$\\dfrac{8 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000164",
+  "loai": "tra_loi_ngan",
+  "de": "Tính bằng cách thuận tiện.\n$3456+4567+6544+5433$",
+  "dap_an": "$20000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: biểu thức chỉ có phép cộng nên được đổi chỗ, ghép các số hạng thành số tròn. Dấu hiệu: $3456+6544=10000$ và $4567+5433=10000$ (các chữ số hàng đơn vị cộng lại ra $10$).\n**Phần 2. Trình bày**\n$3456+4567+6544+5433$\n$=\\left(3456+6544\\right)+\\left(4567+5433\\right)$\n$=10000+10000$\n$=20000$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000791",
+  "loai": "tra_loi_ngan",
+  "de": "Khi giảm số bị chia đi ba lần và giảm số chia đi năm lần thì được thương mới là 2 025. Tìm thương ban đầu.",
+  "dap_an": "$1215$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: **giảm số bị chia** đi $3$ lần thì thương **giảm** $3$ lần; **giảm số chia** đi $5$ lần thì thương **tăng** $5$ lần. Vậy thương mới bằng thương ban đầu chia $3$ rồi nhân $5$.\nTính ngược lại: thương ban đầu bằng thương mới nhân $3$ rồi chia $5$.\nKiểm lại: $1215:3=405$; $405\\times 5=2025$ đúng.\nChú ý: hai thay đổi tác động ngược chiều lên thương (một giảm, một tăng), không được cộng gộp cùng chiều.\n**Phần 2. Trình bày**\nBài giải\nGiảm số bị chia đi $3$ lần thì thương giảm đi $3$ lần; giảm số chia đi $5$ lần thì thương tăng lên $5$ lần.\nNên thương mới bằng thương ban đầu chia $3$ rồi nhân $5$.\nThương ban đầu là: $2025\\times 3:5=1215$\nĐáp số: $1215$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001228",
+  "loai": "tra_loi_ngan",
+  "de": "Bảng dưới đây thể hiện số lượng mỗi loại xe trong bãi đỗ xe.\nXe ô tô\nXe máy\nXe đạp điện\nXe đạp\nMỗi hình tròn tượng trưng cho 5 chiếc xe.\nCó bao nhiêu chiếc xe máy trong bãi đỗ xe đó?",
+  "dap_an": "$60$ chiếc",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: Mỗi hình tròn tượng trưng cho $5$ chiếc xe, nên số xe = số hình tròn $\\times 5$.\nCách đọc hình: tìm dòng \"Xe máy\", đếm số hình tròn trên dòng đó (đếm lần lượt từng hình, không bỏ sót), rồi nhân với $5$.\n**Phần 2. Trình bày**\nBài giải\nQuan sát bảng, dòng \"Xe máy\" có $12$ hình tròn.\nSố chiếc xe máy trong bãi đỗ xe là: $12\\times 5=60$ (chiếc)\nĐáp số: $60$ chiếc xe máy",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000768",
+  "loai": "tra_loi_ngan",
+  "de": "Hai thùng xăng chứa tất cả 1750 lít xăng. Nếu đổ 65 lít xăng từ thùng thứ nhất sang thùng thứ hai thì lúc này thùng thứ nhất nhiều hơn thùng thứ hai 20 lít. Hỏi ban đầu thùng thứ nhất chứa bao nhiêu lít xăng?",
+  "dap_an": "$950$ lít",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đổ xăng từ thùng này sang thùng kia thì **tổng số xăng của hai thùng không đổi** ($1750$ lít). Sau khi đổ ta biết cả tổng ($1750$) lẫn hiệu ($20$), giải tổng–hiệu được số xăng **lúc sau** của từng thùng. Thùng thứ nhất đã đổ đi $65$ lít nên lúc đầu có thêm $65$ lít so với lúc sau.\nChú ý: cuối cùng phải **cộng** $65$ (không trừ) vì thùng thứ nhất là thùng đã đổ bớt đi.\n**Phần 2. Trình bày**\nBài giải\nĐổ xăng từ thùng này sang thùng kia thì tổng số xăng của hai thùng không đổi, vẫn là $1750$ lít.\nTa có sơ đồ:\nSố lít xăng ở thùng thứ hai lúc sau là: $\\left(1750-20\\right):2=865$ (lít)\nSố lít xăng ở thùng thứ nhất lúc sau là: $865+20=885$ (lít)\nBan đầu thùng thứ nhấ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000141",
+  "loai": "tra_loi_ngan",
+  "de": "Người ta dùng 492 chữ số để đánh số trang một quyển truyện bắt đầu từ trang 1. Hỏi trang cuối cùng được đánh số là trang bao nhiêu?",
+  "dap_an": "trang $200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: **số chữ số khác số trang**, nên đếm theo nhóm số chữ số của số trang. Trang $1$ đến $9$ mỗi trang dùng $1$ chữ số; trang $10$ đến $99$ mỗi trang dùng $2$ chữ số; từ trang $100$ trở đi mỗi trang dùng $3$ chữ số.\nTrang $1$ đến $99$ dùng hết $9+180=189$ chữ số, còn thiếu so với $492$ nên quyển truyện có trang ba chữ số. Số chữ số còn lại chia cho $3$ được số trang ba chữ số, rồi cộng với trang $99$ để ra trang cuối.\nChú ý: phép chia $303:3$ chia hết nên không có chữ số thừa.\n**Phần 2. Trình bày**\nBài giải\nSố chữ số dùng đánh trang $1$ đến trang $9$ là: $9\\times 1=9$ (chữ số)\nSố trang có hai chữ số (từ trang $10$ đến trang $99$) là: $99-10+1=90$ (trang)\nSố chữ số …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000517",
+  "loai": "tra_loi_ngan",
+  "de": "Quy đồng mẫu số các phân số $\\dfrac{12}{37}$ và $\\dfrac{5}{2}$.",
+  "dap_an": "$\\dfrac{24}{74}$ và $\\dfrac{185}{74}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: quy đồng mẫu số là đưa các phân số về **cùng một mẫu số** mà giá trị mỗi phân số không đổi; muốn vậy phải nhân **cả tử số lẫn mẫu số** với cùng một số.\nHai mẫu số $37$ và $2$ không chia hết cho nhau, nên chọn mẫu số chung là tích $37\\times 2=74$. Phân số $\\dfrac{12}{37}$ cần nhân tử và mẫu với $2$ (mẫu của phân số kia). Phân số $\\dfrac{5}{2}$ cần nhân tử và mẫu với $37$.\nChú ý: chỉ nhân mẫu mà quên nhân tử là làm đổi giá trị phân số.\n**Phần 2. Trình bày**\nChọn mẫu số chung là: $37\\times 2=74$\n$\\dfrac{12}{37}=\\dfrac{12\\times 2}{37\\times 2}=\\dfrac{24}{74}$\n$\\dfrac{5}{2}=\\dfrac{5\\times 37}{2\\times 37}=\\dfrac{185}{74}$\nVậy quy đồng mẫu số hai phân số $\\dfrac{12}{3 …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000883",
+  "loai": "tra_loi_ngan",
+  "de": "Một tổ được giao sản xuất 10 000 chiếc áo. Trong 7 ngày đầu, mỗi ngày tổ sản xuất được 1 235 chiếc áo. Hỏi tổ đó cần phải sản xuất thêm bao nhiêu chiếc áo nữa?",
+  "dap_an": "$1355$ chiếc áo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: số áo đã làm trong $7$ ngày đầu = $1235\\times 7$. Số áo cần làm thêm = số áo được giao − số áo đã làm.\nChú ý: phải nhân số áo mỗi ngày với $7$ ngày trước khi trừ.\n**Phần 2. Trình bày**\nBài giải\nTrong $7$ ngày đầu tổ sản xuất được số chiếc áo là: $1235\\times 7=8645$ (chiếc)\nTổ đó cần phải sản xuất thêm số chiếc áo là: $10000-8645=1355$ (chiếc)\nĐáp số: $1355$ chiếc áo",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000999",
+  "loai": "tra_loi_ngan",
+  "de": "Điền số thích hợp vào chỗ trống:\n2 giờ 24 phút +3 giờ 36 phút = … giờ",
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: cộng giờ với giờ, phút với phút. $24$ phút cộng $36$ phút được $60$ phút, tức là $1$ giờ; rồi cộng giờ: $2+3+1$.\nChú ý: $60$ phút $=1$ giờ, không để $60$ phút ở kết quả.\n**Phần 2. Trình bày**\nCộng số phút: $24+36=60$ (phút), mà $60$ phút $=1$ giờ.\n$2$ giờ $24$ phút $+3$ giờ $36$ phút $=5$ giờ $+60$ phút $=5$ giờ $+1$ giờ $=6$ giờ\nĐáp số: $6$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000171",
+  "loai": "tra_loi_ngan",
+  "de": "Tính bằng cách thuận tiện.\n$200-1-2-3-4$",
+  "dap_an": "$190$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: trừ liên tiếp nhiều số thì bằng trừ đi **tổng** của các số đó: $a-b-c-d-e=a-\\left(b+c+d+e\\right)$. Dấu hiệu: $1+2+3+4=10$ là số tròn chục.\n**Phần 2. Trình bày**\n$200-1-2-3-4$\n$=200-\\left(1+2+3+4\\right)$\n$=200-10$\n$=190$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000277",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số $\\overline{17a8\\ b}$ thỏa mãn điều kiện đồng thời chia hết cho 2 ; 5 và 9.",
+  "dap_an": "$17280$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: xét chia hết cho $2$ và $5$ **trước** vì nó chốt luôn chữ số hàng đơn vị: chia hết cho cả $2$ và $5$ thì tận cùng là $0$, nên $b=0$.\nSau đó dùng dấu hiệu chia hết cho $9$ (tổng các chữ số chia hết cho $9$) để tìm $a$.\n**Phần 2. Trình bày**\nSố $\\overline{17a8b}$ chia hết cho $2$ và $5$ nên $b=0$.\nThay $b=0$ thì $\\overline{17a80}$ chia hết cho $9$ khi $1+7+a+8+0=\\left(16+a\\right)$ chia hết cho $9$.\nSuy ra $a=2$.\nVậy số cần tìm là $17280$.\nĐáp số: $17280$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001141",
+  "loai": "tra_loi_ngan",
+  "de": "Điền số thích hợp vào chỗ trống:\n$\\dfrac{4}{7}$ của 252 kg là: …",
+  "dap_an": "$144$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $252\\times\\dfrac{4}{7}$. Kết quả giữ đơn vị ki-lô-gam.\nCách nghĩ: $252:7=36$ kg là một phần, lấy $4$ phần là $36\\times 4=144$ kg.\n**Phần 2. Trình bày**\n$\\dfrac{4}{7}$ của $252$ kg là: $252\\times\\dfrac{4}{7}=144$ (kg)\nĐáp số: $144$ kg",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000720",
+  "loai": "tra_loi_ngan",
+  "de": "Cho các số đo khối lượng sau: 1 kg 212g; 1 kg 2 hg ; 1 kg 21 dag; 10 hg 20 g. Số đo khối lượng lớn nhất là:",
+  "dap_an": "$1$ kg $212$ g",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đổi các số đo về **cùng một đơn vị** (gam) rồi so sánh. Nhớ: $1$ kg $=1000$ g; $1$ hg $=100$ g; $1$ dag $=10$ g.\nChú ý: $2$ hg là $200$ g, còn $21$ dag là $210$ g; đừng đọc nhầm hai đơn vị này.\n**Phần 2. Trình bày**\nĐổi các số đo ra gam:\n$1$ kg $212$ g $=1000+212=1212$ (g)\n$1$ kg $2$ hg $=1000+200=1200$ (g)\n$1$ kg $21$ dag $=1000+210=1210$ (g)\n$10$ hg $20$ g $=1000+20=1020$ (g)\nTa có $1212>1210>1200>1020$.\nVậy số đo khối lượng lớn nhất là $1$ kg $212$ g.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000797",
+  "loai": "tra_loi_ngan",
+  "de": "Trường Tiểu học Archimedes có 330 học sinh khối Bốn và 315 học sinh khối Năm. Mỗi học sinh khối Bốn mua 15 quyển vở, mỗi học sinh khối Năm mua 20 quyển vở. Hỏi cả hai khối mua tất cả bao nhiêu quyển vở?",
+  "dap_an": "$11250$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: mỗi khối mua số vở bằng số học sinh nhân số vở mỗi bạn mua; rồi cộng số vở của hai khối.\nChú ý: hai khối mua số quyển khác nhau ($15$ và $20$), không nhân chung một số.\n**Phần 2. Trình bày**\nBài giải\nKhối Bốn mua tất cả số quyển vở là: $330\\times 15=4950$ (quyển)\nKhối Năm mua tất cả số quyển vở là: $315\\times 20=6300$ (quyển)\nCả hai khối mua tất cả số quyển vở là: $4950+6300=11250$ (quyển)\nĐáp số: $11250$ quyển vở",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000685",
+  "loai": "tra_loi_ngan",
+  "de": "Hà có một phiếu bài tập gồm 50 câu trắc nghiệm. Hà làm hết và trả lời đúng 45 câu. Tìm tỉ số của số câu trả lời sai và số câu trả lời đúng.",
+  "dap_an": "$\\dfrac{1}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tỉ số của số câu **sai** và số câu **đúng**. Đề cho tổng số câu và số câu đúng nên phải tìm số câu sai trước.\nCác bước: số câu sai $=$ tổng số câu $-$ số câu đúng; rồi lập tỉ số sai : đúng và rút gọn.\nChú ý: mẫu số là số câu **đúng** ($45$), không phải tổng số câu ($50$).\n**Phần 2. Trình bày**\nBài giải\nHà trả lời sai số câu là: $50-45=5$ (câu)\nTỉ số của số câu trả lời sai và số câu trả lời đúng là: $5:45=\\dfrac{5}{45}=\\dfrac{5:5}{45:5}=\\dfrac{1}{9}$\nĐáp số: $\\dfrac{1}{9}$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000036",
+  "loai": "tra_loi_ngan",
+  "de": "Một người thợ mộc cưa một cây gỗ dài 5 m 4 dm thành những đoạn 45 cm. Mỗi lần cưa hết 3 phút. Cứ sau mỗi lần cưa, người thợ lại nghỉ 2 phút rồi mới cưa tiếp. Hỏi người thợ cưa xong cây gỗ đó hết bao nhiêu phút?",
+  "dap_an": "$53$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đổi $5$ m $4$ dm $=540$ cm, chia ra $12$ đoạn. Cưa thành $12$ đoạn chỉ cần $12-1=11$ lần cưa (như trồng cây không trồng ở hai đầu). **Bẫy thứ hai:** chỉ nghỉ khi còn cưa tiếp, nên sau lần cưa cuối **không nghỉ**: số lần nghỉ $=11-1=10$.\n**Phần 2. Trình bày**\nBài giải\n$5$ m $4$ dm $=540$ cm\nSố đoạn gỗ cưa được là: $540:45=12$ (đoạn)\nSố lần cưa là: $12-1=11$ (lần)\nSau lần cưa cuối cùng người thợ không nghỉ nên số lần nghỉ là: $11-1=10$ (lần)\nThời gian cưa là: $3\\times 11=33$ (phút)\nThời gian nghỉ là: $2\\times 10=20$ (phút)\nThời gian cưa xong cây gỗ là: $33+20=53$ (phút)\nĐáp số: $53$ phút",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000314",
+  "loai": "tu_luan",
+  "de": "Trong các số 123 ; 1890 ; 2010 ; 3945 ; 5768 ; 12846, hãy tìm các số:\nchia hết cho 5.",
+  "dap_an": "$1890$ ; $2010$ ; $3945$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: dấu hiệu chia hết cho $5$ chỉ nhìn **chữ số tận cùng**: là $0$ hoặc $5$ thì chia hết cho $5$.\nChú ý: số $3945$ là số lẻ nhưng tận cùng bằng $5$ nên vẫn chia hết cho $5$.\n**Phần 2. Trình bày**\nSố chia hết cho $5$ có chữ số tận cùng là $0$ hoặc $5$.\nCác số $1890$ ; $2010$ ; $3945$ có chữ số tận cùng lần lượt là $0$ ; $0$ ; $5$ (là $0$ hoặc $5$) nên chia hết cho $5$.\nCác số $123$ ; $5768$ ; $12846$ có chữ số tận cùng lần lượt là $3$ ; $8$ ; $6$ (không phải $0$ hay $5$) nên không chia hết cho $5$.\nVậy các số chia hết cho $5$ là: $1890$ ; $2010$ ; $3945$.",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000232",
+  "loai": "tra_loi_ngan",
+  "de": "Dọc quãng đường từ một cơ quan đến một bệnh viện, người ta mắc đèn cao áp ở một bên đường, đèn nọ cách đèn kia 50 m. Tổng số đèn phải mắc là 41 cái. Hỏi quãng đường từ cơ quan đến bệnh viện dài bao nhiêu mét, biết ngay trước cổng cơ quan có đèn còn ở cổng bệnh viện không có đèn?",
+  "dap_an": "$2050$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: đèn mắc ở **một bên** đường, nên $41$ đèn chính là số đèn của một bên (không chia $2$). Chỉ **một đầu** có đèn (trước cổng cơ quan), đầu kia (cổng bệnh viện) không có đèn nên số khoảng cách **bằng** số đèn. Quãng đường $=$ số khoảng cách $\\times 50$ m.\nChú ý: lỗi hay gặp là lấy số khoảng cách bằng số đèn trừ $1$ như trường hợp hai đầu đều có đèn.\nKiểm lại: $41$ đèn, đèn cuối cùng cách cổng bệnh viện $50$ m, đèn đầu ngay cổng cơ quan; $41\\times 50=2050$ m.\n**Phần 2. Trình bày**\nBài giải\nCổng cơ quan có đèn, cổng bệnh viện không có đèn nên số khoảng cách bằng số đèn và bằng $41$ khoảng cách.\nQuãng đường từ cơ quan đến bệnh viện dài là: $41\\times 50=2050$ (m)\nĐáp …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001140",
+  "loai": "tra_loi_ngan",
+  "de": "Điền số thích hợp vào chỗ trống:\n$\\dfrac{2}{9}$ của 27 m là: …",
+  "dap_an": "$6$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm phân số của một số thì lấy số đó **nhân** với phân số: $27\\times\\dfrac{2}{9}$. Kết quả giữ đơn vị mét như số đã cho.\nCách nghĩ: $27:9=3$ m là một phần, lấy $2$ phần là $6$ m.\n**Phần 2. Trình bày**\n$\\dfrac{2}{9}$ của $27$ m là: $27\\times\\dfrac{2}{9}=6$ (m)\nĐáp số: $6$ m",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001194",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm số tự nhiên $\\overline{ab}$, biết rằng: $\\overline{ab}=(a+b)\\times 8+3$",
+  "dap_an": "$51$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: phân tích cấu tạo số: $\\overline{ab}=a\\times 10+b$. Vế phải $\\left(a+b\\right)\\times 8+3=a\\times 8+b\\times 8+3$. Cho hai vế bằng nhau rồi **bớt cả hai vế đi $a\\times 8$ và $b$**, được $a\\times 2=b\\times 7+3$.\n$a$ là chữ số nên $a\\times 2$ không lớn hơn $18$, do đó $b\\times 7+3$ cũng không lớn hơn $18$; chỉ thử $b=0$; $1$; $2$.\nThử lại: $\\left(5+1\\right)\\times 8+3=51$.\n**Phần 2. Trình bày**\nGọi số cần tìm là $\\overline{ab}$ ($a$ khác $0$; $a$, $b$ là các chữ số).\nTa có: $\\overline{ab}=a\\times 10+b$ và $\\left(a+b\\right)\\times 8+3=a\\times 8+b\\times 8+3$.\nNên: $a\\times 10+b=a\\times 8+b\\times 8+3$\nBớt cả hai vế đi $a\\times 8$ và $b$ ta được: $a\\times 2=b\\times 7+3$\n …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001040",
+  "loai": "tra_loi_ngan",
+  "de": "Cân nặng của 5 học sinh lần lượt là 28 kg, 30 kg, 33 kg, 34 kg và 35 kg. Hỏi trung bình mỗi học sinh nặng bao nhiêu ki-lô-gam?",
+  "dap_an": "$32$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: trung bình cộng của nhiều số bằng **tổng các số chia cho số các số**.\nChú ý: có $5$ học sinh nên chia cho $5$.\n**Phần 2. Trình bày**\nBài giải\nTổng cân nặng của $5$ học sinh là: $28+30+33+34+35=160$ (kg)\nTrung bình mỗi học sinh nặng số ki-lô-gam là: $160:5=32$ (kg)\nĐáp số: $32$ kg",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000587",
+  "loai": "tra_loi_ngan",
+  "de": "So sánh các cặp phân số sau (giải thích cách làm):\n$\\dfrac{11}{14};\\dfrac{13}{16}$",
+  "dap_an": "$\\dfrac{11}{14}<\\dfrac{13}{16}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: hai phân số đều **bé hơn $1$** và gần $1$, nên viết phân số $=1-$ phần bù (**phần bù** $=1-$ phân số $=$ (mẫu số $-$ tử số) trên mẫu số). Phân số nào có **phần bù lớn hơn** thì phân số đó **bé hơn**.\nỞ đây mẫu số hơn tử số lần lượt là $3$ và $3$ nên phần bù là $\\dfrac{3}{14}$ và $\\dfrac{3}{16}$.\nHai phần bù cùng có tử số $3$, so sánh hai mẫu số: mẫu số lớn hơn thì phân số bé hơn.\nChú ý: kết luận **ngược chiều** với phần bù: phần bù lớn hơn thì phân số bé hơn. Đây là chỗ hay sai.\n**Phần 2. Trình bày**\nBước 1: Tìm phần bù\n$1-\\dfrac{11}{14}=\\dfrac{3}{14}$\n$1-\\dfrac{13}{16}=\\dfrac{3}{16}$\nBước 2: So sánh phần bù với nhau, kết luận về hai phân số cần so sánh\nVì $\\d …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000896",
+  "loai": "tra_loi_ngan",
+  "de": "Điền số thích hợp vào chỗ trống để được dãy số có quy luật:\n43 135; 43 155; 43 175; 43 195 ; …….; 43 235",
+  "dap_an": "$43215$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: tìm quy luật của dãy số bằng cách lấy hai số liền nhau trừ nhau: $43155-43135=20$, mỗi số hơn số liền trước $20$ đơn vị. Số cần điền đứng ngay sau $43195$.\nChú ý: thử lại bằng số cuối đã cho: số vừa tìm cộng thêm $20$ phải ra $43235$.\n**Phần 2. Trình bày**\nHai số liền nhau hơn kém nhau: $43155-43135=20$\nQuy luật: mỗi số bằng số liền trước cộng thêm $20$.\nSố cần điền là: $43195+20=43215$\nThử lại: $43215+20=43235$ (đúng với số cho trước).\nĐáp số: $43215$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000541",
+  "loai": "tu_luan",
+  "de": "Quy đồng mẫu số các phân số sau:\n$\\dfrac{11}{8};\\dfrac{7}{24}$",
+  "dap_an": "$\\dfrac{33}{24}$ ; $\\dfrac{7}{24}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: quy đồng mẫu số là đưa các phân số về **cùng một mẫu số** mà giá trị mỗi phân số không đổi, nên mỗi phân số phải nhân **cả tử số lẫn mẫu số** với cùng một số.\nHai mẫu số $8$ và $24$: $24$ chia hết cho $8$ nên chọn mẫu số chung là $24$.\nTừ mẫu số mỗi phân số lên mẫu số chung: $\\dfrac{11}{8}$ nhân tử và mẫu với $3$ ; $\\dfrac{7}{24}$ giữ nguyên.\nChú ý: nếu một mẫu số đã bằng mẫu số chung thì phân số đó giữ nguyên, không cần nhân.\n**Phần 2. Trình bày**\nChọn mẫu số chung là: $24$.\n$\\dfrac{11}{8}=\\dfrac{11\\times 3}{8\\times 3}=\\dfrac{33}{24}$\nPhân số $\\dfrac{7}{24}$ có mẫu số là $24$ nên giữ nguyên.\nVậy quy đồng mẫu số hai phân số $\\dfrac{11}{8}$ và $\\dfrac{7}{24}$ t …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T000000692",
+  "loai": "tu_luan",
+  "de": "Bảo và Bình có một số bi. Nếu Bảo cho Bình một số bi đúng bằng số bi mà Bình đang có, rồi Bình lại cho Bảo một số bi đúng bằng số bi còn lại của Bảo lúc đó thì Bình sẽ còn 35 viên bi và Bảo có 30 viên bi. Hỏi lúc đầu, mỗi bạn có bao nhiêu viên bi?",
+  "dap_an": "Bảo: $40$ viên bi ; Bình: $25$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: bài chuyển bi qua lại giữa hai bạn, ta **tính ngược** từ kết quả cuối ($30$ và $35$). Trong mỗi lần chuyển, người nhận được số bi đúng bằng số bi mình đang có, nên **số bi của người nhận gấp đôi lên**; đi ngược thì người nhận phải **chia đôi**, còn người cho thì **lấy lại** số bi đã cho.\nCác bước: (1) Bình cho Bảo số bi bằng số bi còn lại của Bảo: trước lần này Bảo có một nửa số bi cuối, Bình có số cuối cộng với số bi đã cho Bảo. (2) Bảo cho Bình số bi bằng số bi Bình đang có: trước lần này Bình có một nửa, Bảo có thêm số bi đã cho Bình. Tổng số bi hai bạn luôn là $30+35=65$; thử lại bằng cách đi xuôi.\nChú ý: số bi đã cho ở lần 2 là $25$ viên (bằng số bi lúc đ …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001158",
+  "loai": "tra_loi_ngan",
+  "de": "Một cửa hàng lương thực, buổi sáng bán được $\\dfrac{3}{5}$ tổng số gạo, buổi chiều bán được $\\dfrac{2}{7}$ tổng số gạo. Tính ra buổi sáng cửa hàng bán được nhiều hơn buổi chiều là 77 kg gạo. Hỏi cả hai buổi, cửa hàng đó bán được bao nhiêu ki-lô-gam gạo?",
+  "dap_an": "$217$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: cả hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{7}$ đều là phân số của **tổng số gạo**. Buổi sáng bán nhiều hơn buổi chiều $\\dfrac{3}{5}-\\dfrac{2}{7}=\\dfrac{11}{35}$ tổng số gạo, và đề cho phần chênh đó là $77$ kg. Biết giá trị của $\\dfrac{11}{35}$ thì tìm tổng số gạo bằng phép chia.\nChú ý: đề hỏi số gạo **đã bán** trong hai buổi, không phải tổng số gạo của cửa hàng. Hai buổi bán $\\dfrac{3}{5}+\\dfrac{2}{7}=\\dfrac{31}{35}$ tổng số gạo, còn dư $\\dfrac{4}{35}$ chưa bán nên không trả lời $245$ kg.\n**Phần 2. Trình bày**\nBài giải\nBuổi sáng bán nhiều hơn buổi chiều số phần tổng số gạo là: $\\dfrac{3}{5}-\\dfrac{2}{7}=\\dfrac{21}{35}-\\dfrac{10}{35}=\\dfrac{11}{35}$ (tổng số g …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001249",
+  "loai": "tra_loi_ngan",
+  "de": "Cho ba điểm A, B, C như hình vẽ bên. Hỏi có bao nhiêu vị trí đặt điểm D để 4 điểm A, B, C, D tạo thành một hình bình hành?",
+  "dap_an": "$3$ vị trí",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: hình bình hành có hai cặp cạnh đối diện song song và bằng nhau. Điểm $D$ phải ở vị trí \"đối diện\" với một trong ba điểm $A$, $B$, $C$; có $3$ cách chọn điểm đối diện với $D$, mỗi cách cho đúng một vị trí $D$.\nCách đọc hình (lưới ô vuông): từ $A$ đến $B$ là sang phải $3$ ô, lên $2$ ô. Từ $A$ đến $C$ là sang phải $5$ ô (cùng hàng ngang). Từ $B$ đến $C$ là sang phải $2$ ô, xuống $2$ ô. Ba điểm không thẳng hàng.\nCách tìm $D$: cạnh đối diện phải cùng hướng và cùng số ô với cạnh đã có, nên đếm ô trên lưới.\n**Phần 2. Trình bày**\nBài giải\nTrường hợp 1: $D$ đối diện với $B$ (hình bình hành $ABCD$).\nCạnh $DC$ song song và bằng cạnh $AB$ nên $D$ ở vị trí cách $C$ là: san …",
+  "co_hinh": true,
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001205",
+  "loai": "tra_loi_ngan",
+  "de": "Tim $\\overline{abc}$, biết: $\\overline{\\text{abc}1}+\\overline{1abc}=3707$",
+  "dap_an": "$246$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: gọi $\\overline{abc}$ là $A$ rồi viết hai số bằng cấu tạo số. Viết thêm chữ số $1$ vào bên **phải**: $\\overline{abc1}=A\\times 10+1$. Viết thêm chữ số $1$ vào bên **trái**: $\\overline{1abc}=1000+A$ (vì $A$ có ba chữ số).\nCộng hai số: $A\\times 10+A=A\\times 11$ và $1+1000=1001$.\nThử lại: $2461+1246=3707$.\n**Phần 2. Trình bày**\nGọi $\\overline{abc}$ là $A$.\nTa có: $\\overline{abc1}=A\\times 10+1$ và $\\overline{1abc}=1000+A$.\nNên: $A\\times 10+1+1000+A=3707$\n$\\begin{array}{l} A\\times 11+1001=3707 \\\\ A\\times 11=3707-1001 \\\\ A\\times 11=2706 \\\\ A=2706:11 \\\\ A=246 \\end{array}$\nVậy $\\overline{abc}=246$.\nĐáp số: $246$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001191",
+  "loai": "tra_loi_ngan",
+  "de": "Tìm một số, biết $\\dfrac{4}{7}$ của số đó bằng 64.",
+  "dap_an": "$112$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: biết giá trị ($64$) của $\\dfrac{4}{7}$ số cần tìm, thì số đó bằng $64$ **chia** cho $\\dfrac{4}{7}$.\nThử lại: $112\\times\\dfrac{4}{7}=64$.\n**Phần 2. Trình bày**\nSố cần tìm là: $64:\\dfrac{4}{7}=64\\times\\dfrac{7}{4}=112$\nĐáp số: $112$",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ },
+ {
+  "ma_cau": "T14T0000001212",
+  "loai": "tu_luan",
+  "de": "Trong ba ngày, công viên đã đón 2150 lượt khách. Trong đó, số lượt khách của ngày thứ nhất bằng $\\dfrac{3}{4}$ số lượt khách của ngày thứ hai, ngày thứ ba có 890 lượt khách. Tính số lượt khách của công viên đó trong ngày thứ nhất, ngày thứ hai.",
+  "dap_an": "Ngày thứ nhất: $540$ lượt ; ngày thứ hai: $720$ lượt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\nMấu chốt: ngày thứ ba đã biết ($890$ lượt) nên trừ đi để được **tổng của ngày thứ nhất và thứ hai**. Ngày thứ nhất bằng $\\dfrac{3}{4}$ ngày thứ hai: ngày thứ nhất $3$ phần, ngày thứ hai $4$ phần. Đây là bài tổng – tỉ.\nThử lại: $540+720+890=2150$ và $540:720=\\dfrac{3}{4}$.\nChú ý: đề cho tổng $2150$ của **ba ngày**, không phải của hai ngày; phải trừ $890$ trước.\n**Phần 2. Trình bày**\nBài giải\nSố lượt khách của ngày thứ nhất và ngày thứ hai là: $2150-890=1260$ (lượt)\nTa có sơ đồ:\nTổng số phần bằng nhau là: $3+4=7$ (phần)\nSố lượt khách của ngày thứ nhất là: $1260:7\\times 3=540$ (lượt)\nSố lượt khách của ngày thứ hai là: $1260-540=720$ (lượt)\nĐáp số: Ngày thứ nhất: $540$ lượt …",
+  "nhan_cu": "Chưa phân dạng › Chưa phân dạng"
+ }
+]

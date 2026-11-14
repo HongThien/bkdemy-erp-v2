@@ -1,0 +1,200 @@
+[
+ {
+  "ma_cau": "T14T000000243",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: quan hệ đại lượng trong phép nhân (bớt thừa số, tích đổi)."
+ },
+ {
+  "ma_cau": "T14T000000460",
+  "dang_bai_id": "NDB01567",
+  "chac": "cao",
+  "ly_do": "Tích bốn phân số, rút gọn chéo."
+ },
+ {
+  "ma_cau": "T14T000000962",
+  "dang_bai_id": "NDB01541",
+  "chac": "vua",
+  "ly_do": "Tổng và hiệu cho bằng lời (số lớn nhất, bé nhất) rồi giải tổng hiệu; không đúng hẳn mô tả."
+ },
+ {
+  "ma_cau": "T14T000000529",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: nhận biết phân số tối giản."
+ },
+ {
+  "ma_cau": "T14T000000164",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính thuận tiện cộng trừ (ghép số tròn)."
+ },
+ {
+  "ma_cau": "T14T000000791",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: quan hệ đại lượng trong phép chia (thương thay đổi)."
+ },
+ {
+  "ma_cau": "T14T0000001228",
+  "dang_bai_id": "NDB01530",
+  "chac": "vua",
+  "ly_do": "Đọc biểu đồ hình tròn tìm số xe máy; đề phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T14T000000768",
+  "dang_bai_id": "NDB01626",
+  "chac": "cao",
+  "ly_do": "Đổ xăng từ thùng này sang thùng kia, tổng không đổi, có hiệu lúc sau."
+ },
+ {
+  "ma_cau": "T14T000000141",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đếm chữ số đánh số trang."
+ },
+ {
+  "ma_cau": "T14T000000517",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Quy đồng mẫu số hai phân số 12/37 và 5/2."
+ },
+ {
+  "ma_cau": "T14T000000883",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài lời văn nhân rồi trừ (số tự nhiên)."
+ },
+ {
+  "ma_cau": "T14T000000999",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: cộng số đo thời gian."
+ },
+ {
+  "ma_cau": "T14T000000171",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính thuận tiện trừ liên tiếp."
+ },
+ {
+  "ma_cau": "T14T000000277",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số a, b để số chia hết cho 2, 5 và 9."
+ },
+ {
+  "ma_cau": "T14T0000001141",
+  "dang_bai_id": "NDB01578",
+  "chac": "cao",
+  "ly_do": "Tìm 4/7 của 252 kg bằng phép nhân."
+ },
+ {
+  "ma_cau": "T14T000000720",
+  "dang_bai_id": "NDB01516",
+  "chac": "vua",
+  "ly_do": "So sánh số đo khối lượng cần đổi về gam; gần dạng đổi đơn vị khối lượng."
+ },
+ {
+  "ma_cau": "T14T000000797",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài lời văn nhân hai nhóm rồi cộng."
+ },
+ {
+  "ma_cau": "T14T000000685",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tỉ số của hai đại lượng (số câu sai và đúng)."
+ },
+ {
+  "ma_cau": "T14T000000036",
+  "dang_bai_id": "NDB00650",
+  "chac": "cao",
+  "ly_do": "Cưa gỗ thành đoạn, số lần cưa bằng số đoạn trừ 1 (hai đầu không có điểm)."
+ },
+ {
+  "ma_cau": "T14T000000314",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "Chọn số chia hết cho 5 trong danh sách."
+ },
+ {
+  "ma_cau": "T14T000000232",
+  "dang_bai_id": "NDB00649",
+  "chac": "cao",
+  "ly_do": "Mắc đèn một bên đường, chỉ một đầu có đèn, số khoảng bằng số đèn."
+ },
+ {
+  "ma_cau": "T14T0000001140",
+  "dang_bai_id": "NDB01578",
+  "chac": "cao",
+  "ly_do": "Tìm 2/9 của 27 m bằng phép nhân."
+ },
+ {
+  "ma_cau": "T14T0000001194",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm số ab theo quan hệ với tổng chữ số."
+ },
+ {
+  "ma_cau": "T14T0000001040",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "Tính trung bình cộng cân nặng của 5 học sinh."
+ },
+ {
+  "ma_cau": "T14T000000587",
+  "dang_bai_id": "NDB01562",
+  "chac": "cao",
+  "ly_do": "Phần bù cùng tử 3, mẫu hơn tử cùng 3."
+ },
+ {
+  "ma_cau": "T14T000000896",
+  "dang_bai_id": "NDB01523",
+  "chac": "vua",
+  "ly_do": "Điền số vào dãy cách đều, tức tìm số hạng ở vị trí cho trước."
+ },
+ {
+  "ma_cau": "T14T000000541",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Quy đồng mẫu số hai phân số, mẫu 24 chia hết cho 8."
+ },
+ {
+  "ma_cau": "T14T000000692",
+  "dang_bai_id": "NDB01626",
+  "chac": "vua",
+  "ly_do": "Cho nhận qua lại giữa hai bạn, tính ngược từ kết quả; cũng có thể xếp tính ngược chuỗi."
+ },
+ {
+  "ma_cau": "T14T0000001158",
+  "dang_bai_id": "NDB01582",
+  "chac": "cao",
+  "ly_do": "Hai phân số của tổng số gạo, 77 kg ứng với hiệu hai phân số."
+ },
+ {
+  "ma_cau": "T14T0000001249",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thuộc Hình học: hình bình hành, đếm vị trí điểm D (đề có hình)."
+ },
+ {
+  "ma_cau": "T14T0000001205",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm abc khi viết thêm chữ số vào hai bên."
+ },
+ {
+  "ma_cau": "T14T0000001191",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "Biết 4/7 của số bằng 64, tìm số bằng phép chia."
+ },
+ {
+  "ma_cau": "T14T0000001212",
+  "dang_bai_id": "NDB01544",
+  "chac": "cao",
+  "ly_do": "Tổng hai ngày là 2150 trừ 890, rồi có tỉ số 3/4: tổng tỉ ẩn tổng."
+ }
+]

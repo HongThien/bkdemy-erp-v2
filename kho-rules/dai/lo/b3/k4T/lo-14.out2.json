@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T000000783",
+  "dang_bai_id": "NDB01624",
+  "chac": "cao",
+  "ly_do": "Tổng 2024, giữa hai số có 7 số tự nhiên khác: suy ra hiệu rồi giải tổng hiệu."
+ },
+ {
+  "ma_cau": "T14T000000781",
+  "dang_bai_id": "NDB01624",
+  "chac": "cao",
+  "ly_do": "Tổng năm sinh 3967, giữa có 3 số chẵn khác: suy hiệu từ chẵn lẻ, giải tổng hiệu."
+ },
+ {
+  "ma_cau": "T14T000000644",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "Bán 3/8 và 2/5 tổng số gà, còn 18 con: hai phần phân số, biết phần còn lại."
+ },
+ {
+  "ma_cau": "T14T000000770",
+  "dang_bai_id": "NDB01541",
+  "chac": "vua",
+  "ly_do": "Ba số có tổng 420 và hơn kém nhau 3: tổng hiệu ba số, dạng cơ bản chỉ nói hai số."
+ },
+ {
+  "ma_cau": "T14T0000001099",
+  "dang_bai_id": "NDB01563",
+  "chac": "vua",
+  "ly_do": "Tìm phân số lớn nhất trong ba phân số: so sánh nhiều phân số, gần dạng sắp xếp."
+ },
+ {
+  "ma_cau": "T14T000000744",
+  "dang_bai_id": "NDB01526",
+  "chac": "vua",
+  "ly_do": "Ba ý dãy cách đều: số hạng thứ n, tổng n số hạng, vị trí của 2024 — rải ba dạng."
+ },
+ {
+  "ma_cau": "T14T000000414",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "240 cây trong 12 hàng, rút về một hàng rồi tìm số hàng cho 720 cây."
+ },
+ {
+  "ma_cau": "T14T000000863",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bài lời văn cộng trừ tiền đơn giản: bản đồ thiếu dạng toán có lời văn cộng trừ cơ bản."
+ },
+ {
+  "ma_cau": "T14T000000778",
+  "dang_bai_id": "NDB01541",
+  "chac": "cao",
+  "ly_do": "Tổng tuổi 13, chị hơn em 5: tổng và hiệu cho thẳng."
+ },
+ {
+  "ma_cau": "T14T000000509",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tổng 1/3+1/9+…+1/729 (mỗi số hạng gấp 3 lần số sau, dùng 3A−A): bản đồ thiếu dạng dãy phân số này."
+ },
+ {
+  "ma_cau": "T14T000000365",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "Cộng trừ ba phân số khác mẫu, quy đồng về mẫu chung 20."
+ },
+ {
+  "ma_cau": "T14T000000239",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Gấp số chia lên 3 lần thì thương thay đổi: bản đồ thiếu dạng quan hệ đại lượng trong phép chia."
+ },
+ {
+  "ma_cau": "T14T000000813",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bài lời văn cộng trừ ba tổ rồi so sánh: bản đồ thiếu dạng toán có lời văn cộng trừ cơ bản."
+ },
+ {
+  "ma_cau": "T14T000000088",
+  "dang_bai_id": "NDB01512",
+  "chac": "cao",
+  "ly_do": "Từ các chữ số cho trước viết số nhỏ nhất có bốn chữ số khác nhau."
+ },
+ {
+  "ma_cau": "T14T000000674",
+  "dang_bai_id": "NDB01543",
+  "chac": "vua",
+  "ly_do": "Tìm tỉ số khi biết 2/5 số thứ nhất bằng 1/3 số thứ hai; chỉ hỏi tỉ số, không có tổng hiệu."
+ },
+ {
+  "ma_cau": "T14T0000001018",
+  "dang_bai_id": "NDB01542",
+  "chac": "vua",
+  "ly_do": "Tính trung bình cộng 7 ngày sau khi tìm ngày 7 bằng 1/5 sáu ngày đầu."
+ },
+ {
+  "ma_cau": "T14T000000745",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đếm số chữ số dùng đánh số trang sách: bản đồ thiếu dạng đếm chữ số đánh số trang."
+ },
+ {
+  "ma_cau": "T14T000000101",
+  "dang_bai_id": "NDB01508",
+  "chac": "cao",
+  "ly_do": "Số lớn nhất có các chữ số khác nhau, tổng chữ số 6, không cho số chữ số."
+ },
+ {
+  "ma_cau": "T14T000000580",
+  "dang_bai_id": "NDB01560",
+  "chac": "cao",
+  "ly_do": "So sánh 203/2024 và 204/2023 bằng phân số trung gian."
+ },
+ {
+  "ma_cau": "T14T0000001196",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "Bán 1/4, rồi 1/2 số còn lại, còn 150 quả: hai phần phân số, biết phần còn lại."
+ },
+ {
+  "ma_cau": "T14T0000001087",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm n để 1 < n/5 < 8/5: bản đồ thiếu dạng tìm phân số nằm giữa / so sánh cùng mẫu có ẩn."
+ },
+ {
+  "ma_cau": "T14T000000307",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "Chọn các số chia hết cho 5 trong danh sách cho sẵn."
+ },
+ {
+  "ma_cau": "T14T0000001026",
+  "dang_bai_id": "NDB01520",
+  "chac": "vua",
+  "ly_do": "Biểu thức trừ và chia cho số 31 (chia trước); bản đồ thiếu dạng tính giá trị biểu thức số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000018",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Chai đầy và chai nửa dung dịch, tìm khối lượng vỏ chai: bản đồ thiếu dạng bài toán vỏ–ruột."
+ },
+ {
+  "ma_cau": "T14T000000422",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "Tìm số túi từ số sticker lấy ra rồi chia đều; rút về đơn vị biến thể tìm số phần."
+ },
+ {
+  "ma_cau": "T14T000000091",
+  "dang_bai_id": "NDB01509",
+  "chac": "vua",
+  "ly_do": "Số nhỏ nhất có hai chữ số, hiệu các chữ số là 4; bản đồ không có dạng theo hiệu chữ số."
+ },
+ {
+  "ma_cau": "T14T000000268",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm ab = 2×(a+b) bằng cấu tạo số: bản đồ thiếu dạng cấu tạo số loại này."
+ },
+ {
+  "ma_cau": "T14T000000838",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm y với số tự nhiên (2086 + y − 1048 = 2755): bản đồ thiếu dạng \"tìm x với số tự nhiên\"."
+ },
+ {
+  "ma_cau": "T14T0000001154",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "2/3 của số nào bằng 24: tìm số khi biết giá trị phân số của nó."
+ },
+ {
+  "ma_cau": "T14T000000558",
+  "dang_bai_id": "NDB01559",
+  "chac": "vua",
+  "ly_do": "Chọn phân số lớn hơn 1 trong danh sách bằng so tử với mẫu; không phải so sánh hai phân số."
+ },
+ {
+  "ma_cau": "T14T000000430",
+  "dang_bai_id": "NDB01530",
+  "chac": "cao",
+  "ly_do": "Tìm giá trị lớn nhất trong dãy số liệu và ngày tương ứng."
+ },
+ {
+  "ma_cau": "T14T000000923",
+  "dang_bai_id": "NDB01589",
+  "chac": "vua",
+  "ly_do": "TBC 9 số 235, thêm 1; 2; …; 9 vào các số, tính TBC mới; số số hạng không đổi."
+ },
+ {
+  "ma_cau": "T14T000000227",
+  "dang_bai_id": "NDB01627",
+  "chac": "vua",
+  "ly_do": "Hiệu tuổi hiện nay, tổng sau 4 năm (cả hai cùng thêm): tổng hiệu có thay đổi, ngược khuôn dạng."
+ },
+ {
+  "ma_cau": "T14T000000641",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "Dùng 2/3 và 4/15 diện tích, phần còn lại 12 m²: biết phần còn lại, tìm cả mảnh."
+ },
+ {
+  "ma_cau": "T14T000000145",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tính giá trị biểu thức chứa chữ m+(735−n): bản đồ thiếu dạng biểu thức chứa chữ."
+ },
+ {
+  "ma_cau": "T14T0000001036",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Sắp xếp các số bốn chữ số: bản đồ thiếu dạng so sánh, sắp xếp số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000554",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "So sánh 2025/2024 và 2024/2023 bằng phần hơn: bản đồ thiếu dạng so sánh phần hơn."
+ },
+ {
+  "ma_cau": "T14T000000812",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Đặt tính chia cho số có một chữ số: bản đồ chỉ có chia cho số có hai chữ số."
+ },
+ {
+  "ma_cau": "T14T000000593",
+  "dang_bai_id": "NDB01562",
+  "chac": "vua",
+  "ly_do": "So sánh bằng phần bù khác tử (2/1010 và 4/2027), phải quy đồng tử phần bù."
+ },
+ {
+  "ma_cau": "T14T0000001213",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "Nhà 5/9, cây 11/25 diện tích nhà, kho 108 m²: hai phần phân số, biết phần còn lại."
+ },
+ {
+  "ma_cau": "T14T000000487",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "Rút gọn 2323/2424 bằng thừa số chung 101."
+ },
+ {
+  "ma_cau": "T14T0000001180",
+  "dang_bai_id": "NDB01584",
+  "chac": "cao",
+  "ly_do": "TBC mỗi giờ: 2 giờ 55 km và 3 giờ 50 km, nhóm nhiều loại số lượng khác nhau."
+ },
+ {
+  "ma_cau": "T14T000000366",
+  "dang_bai_id": "NDB01565",
+  "chac": "cao",
+  "ly_do": "Biểu thức ba phân số và số tự nhiên, cộng trừ có ngoặc."
+ },
+ {
+  "ma_cau": "T14T000000771",
+  "dang_bai_id": "NDB01623",
+  "chac": "vua",
+  "ly_do": "Chu vi tam giác trừ cạnh đã biết ra tổng, có hiệu hai cạnh: tổng hiệu ẩn tổng, dạng nói HCN."
+ },
+ {
+  "ma_cau": "T14T000000363",
+  "dang_bai_id": "NDB01564",
+  "chac": "cao",
+  "ly_do": "Cộng hai phân số khác mẫu."
+ },
+ {
+  "ma_cau": "T14T000000026",
+  "dang_bai_id": "NDB01529",
+  "chac": "vua",
+  "ly_do": "Rút về đơn vị hai thứ hàng (dép và giày) rồi cộng; bản đồ chỉ có rút về đơn vị một đại lượng."
+ },
+ {
+  "ma_cau": "T14T0000001181",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Bốc ít nhất bao nhiêu bi để chắc chắn đủ 3 màu: bản đồ thiếu dạng bốc chắc chắn (Dirichlet)."
+ },
+ {
+  "ma_cau": "T14T000000393",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "Tính thuận tiện, rút gọn rồi nhóm các phân số cùng mẫu thành số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000792",
+  "dang_bai_id": "NDB01531",
+  "chac": "cao",
+  "ly_do": "Số cộng 45 rồi chia 28 được 102: đi ngược chuỗi phép tính."
+ },
+ {
+  "ma_cau": "T14T000000855",
+  "dang_bai_id": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Tìm y từ y×9 − y×5 bằng tính chất phân phối; bản đồ thiếu dạng tìm x."
+ },
+ {
+  "ma_cau": "T14T000000639",
+  "dang_bai_id": "NDB01580",
+  "chac": "cao",
+  "ly_do": "160 học sinh giỏi ứng với 1/2 khối: tìm cả khối rồi tìm khá, trung bình; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T14T000000087",
+  "dang_bai_id": "NDB01512",
+  "chac": "cao",
+  "ly_do": "Từ các chữ số cho trước viết số lớn nhất có bốn chữ số khác nhau."
+ },
+ {
+  "ma_cau": "T14T0000001058",
+  "dang_bai_id": "NDB01588",
+  "chac": "vua",
+  "ly_do": "TBC tử mẫu cho tổng, mẫu hơn tử 500: tổng hiệu ẩn tổng bằng TBC, rồi rút gọn."
+ },
+ {
+  "ma_cau": "T14T000000464",
+  "dang_bai_id": "NDB01570",
+  "chac": "vua",
+  "ly_do": "Tìm y trong phép chia phân số; bản đồ thiếu dạng tìm thành phần chưa biết với phân số."
+ },
+ {
+  "ma_cau": "T14T000000912",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Gấp mỗi thừa số 3 lần thì tích thay đổi: bản đồ thiếu dạng quan hệ đại lượng trong phép nhân."
+ },
+ {
+  "ma_cau": "T14T0000001105",
+  "dang_bai_id": "NDB01541",
+  "chac": "cao",
+  "ly_do": "Tổng tử và mẫu 17, tử hơn mẫu 5: tổng hiệu cho thẳng."
+ },
+ {
+  "ma_cau": "T14T000000688",
+  "dang_bai_id": "NDB01545",
+  "chac": "cao",
+  "ly_do": "Hiệu là số tròn chục lớn nhất có ba chữ số, tỉ số 4/9: hiệu tỉ ẩn hiệu."
+ },
+ {
+  "ma_cau": "T14T0000001027",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm y với số tự nhiên (2882 − 882:y = 2833): bản đồ thiếu dạng \"tìm x với số tự nhiên\"."
+ },
+ {
+  "ma_cau": "T14T000000483",
+  "dang_bai_id": "NDB01570",
+  "chac": "vua",
+  "ly_do": "Tìm x/11 trong chuỗi chia phân số; bản đồ thiếu dạng tìm thành phần chưa biết với phân số."
+ },
+ {
+  "ma_cau": "T14T0000001117",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân số tử mẫu là tích, tách 35 = 5×7 gạch thừa số chung."
+ },
+ {
+  "ma_cau": "T14T000000689",
+  "dang_bai_id": "NDB01546",
+  "chac": "cao",
+  "ly_do": "Chu vi 50 (ẩn tổng) và dài gấp 4 rộng (ẩn tỉ) rồi tính diện tích; dạng sau thắng."
+ },
+ {
+  "ma_cau": "T14T000000033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "So sánh 2026/2023 và 2027/2024 bằng phần hơn: bản đồ thiếu dạng so sánh phần hơn."
+ },
+ {
+  "ma_cau": "T14T000000144",
+  "dang_bai_id": "NDB00651",
+  "chac": "cao",
+  "ly_do": "Trồng xen kẽ 2 phượng 1 bằng lăng, hai đầu là bằng lăng, hỏi số phượng."
+ },
+ {
+  "ma_cau": "T14T0000001062",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Tìm y từ hai phân số bằng nhau (y+4)/40 = 12/15: bản đồ thiếu dạng này."
+ },
+ {
+  "ma_cau": "T14T000000435",
+  "dang_bai_id": "NDB01584",
+  "chac": "cao",
+  "ly_do": "Bảng điểm: mỗi mức điểm có số học sinh khác nhau, tính TBC; dạng sau thắng dạng thống kê."
+ },
+ {
+  "ma_cau": "T14T000000980",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "Chọn số chia hết cho cả 2; 5 và 9 trong danh sách cho sẵn."
+ },
+ {
+  "ma_cau": "T14T000000573",
+  "dang_bai_id": "NDB01559",
+  "chac": "cao",
+  "ly_do": "So sánh 6/7 (bé hơn 1) và 9/8 (lớn hơn 1) qua số 1."
+ },
+ {
+  "ma_cau": "T14T000000601",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Viết phân số tử 3 nằm giữa 1/8 và 1/7: bản đồ thiếu dạng viết phân số nằm giữa hai phân số."
+ },
+ {
+  "ma_cau": "T14T0000001247",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "thuộc Hình học: cắt hình lập phương, nhận dạng hình khối."
+ },
+ {
+  "ma_cau": "T14T0000001145",
+  "dang_bai_id": "NDB01576",
+  "chac": "cao",
+  "ly_do": "Mẫu số viết dạng số 3; 15; 35… phải phân tích thành tích hai số lẻ liên tiếp rồi tách."
+ }
+]

@@ -1,0 +1,313 @@
+{
+ "tk": {
+  "cao": 570,
+  "vua_cung_dang": 154,
+  "vua_khac_dang": 35,
+  "vua_mot_ben_trong": 86,
+  "trong": 378
+ },
+ "theo_dang_cao": {
+  "NDB01578": 13,
+  "NDB01561": 2,
+  "NDB01530": 10,
+  "NDB01536": 6,
+  "NDB01559": 5,
+  "NDB01540": 7,
+  "NDB01511": 8,
+  "NDB01566": 17,
+  "NDB01563": 7,
+  "NDB01558": 6,
+  "NDB01579": 13,
+  "NDB01581": 27,
+  "NDB01586": 5,
+  "NDB00649": 2,
+  "NDB01543": 9,
+  "NDB01507": 2,
+  "NDB01582": 6,
+  "NDB01532": 17,
+  "NDB01544": 4,
+  "NDB01574": 10,
+  "NDB01525": 7,
+  "NDB01535": 2,
+  "NDB01575": 2,
+  "NDB01531": 13,
+  "NDB01554": 4,
+  "NDB01588": 3,
+  "NDB01538": 11,
+  "NDB01580": 19,
+  "NDB01509": 7,
+  "NDB01572": 1,
+  "NDB01556": 17,
+  "NDB01537": 8,
+  "NDB01624": 9,
+  "NDB01529": 25,
+  "NDB01506": 6,
+  "NDB01508": 9,
+  "NDB01565": 23,
+  "NDB01560": 7,
+  "NDB01526": 3,
+  "NDB01510": 7,
+  "NDB01555": 5,
+  "NDB01515": 5,
+  "NDB01520": 3,
+  "NDB00648": 1,
+  "NDB01568": 13,
+  "NDB01513": 4,
+  "NDB01521": 5,
+  "NDB01562": 7,
+  "NDB01518": 1,
+  "NDB01519": 5,
+  "NDB01623": 9,
+  "NDB01541": 5,
+  "NDB01542": 12,
+  "NDB01551": 3,
+  "NDB01552": 8,
+  "NDB00647": 3,
+  "NDB01564": 5,
+  "NDB01545": 2,
+  "NDB01550": 4,
+  "NDB01583": 4,
+  "NDB01528": 3,
+  "NDB01516": 4,
+  "NDB01514": 2,
+  "NDB01567": 8,
+  "NDB01533": 18,
+  "NDB01546": 4,
+  "NDB01539": 6,
+  "NDB01573": 2,
+  "NDB00651": 2,
+  "NDB01584": 5,
+  "NDB01534": 7,
+  "NDB01557": 5,
+  "NDB01570": 8,
+  "NDB01625": 1,
+  "NDB00646": 2,
+  "NDB01569": 1,
+  "NDB01593": 4,
+  "NDB01594": 3,
+  "NDB01512": 4,
+  "NDB01576": 4,
+  "NDB01522": 1,
+  "NDB01571": 2,
+  "NDB01627": 2,
+  "NDB01590": 1,
+  "NDB01523": 3,
+  "NDB01592": 1,
+  "NDB01589": 1,
+  "NDB01524": 1,
+  "NDB01626": 1,
+  "NDB00650": 1
+ },
+ "lech": [
+  {
+   "ma_cau": "T14T000000607",
+   "de": "Tính: $E=\\dfrac{21\\times 35}{9\\times 7\\times 5\\times 3}$",
+   "mot": "NDB01567",
+   "hai": "NDB01556"
+  },
+  {
+   "ma_cau": "T14T0000001195",
+   "de": "Hiện nay, anh hơn em 3 tuổi. Ba năm sau, tổng số tuổi của hai anh em là 33 tuổi. Tính tuổi em hiện nay.",
+   "mot": "NDB01541",
+   "hai": "NDB01627"
+  },
+  {
+   "ma_cau": "T14T0000001151",
+   "de": "Một miếng bìa hình chữ nhật có chu vi là 72 cm, chiều dài hơn chiều rộng 6 cm. Lan cắt $\\dfrac{4}{7}$ miếng bìa để gấp hộp. Tính diện tích còn lại của miếng bìa",
+   "mot": "NDB01623",
+   "hai": "NDB01578"
+  },
+  {
+   "ma_cau": "T14T0000001064",
+   "de": "Tính:\n$A=\\dfrac{24\\times 45}{3\\times 5\\times 8\\times 9}$",
+   "mot": "NDB01567",
+   "hai": "NDB01556"
+  },
+  {
+   "ma_cau": "T14T0000001166",
+   "de": "Một hình chữ nhật có chiều dài là 60 cm. Chiều rộng bằng $\\dfrac{2}{3}$ chiều dài. Tính chu vi của hình chữ nhật đó.",
+   "mot": "NDB01578",
+   "hai": "NDB01522"
+  },
+  {
+   "ma_cau": "T14T000000037",
+   "de": "Một khu vườn hình chữ nhật có chiều dài 32 m, chiều rộng 16 m. Người ta đóng cọc rào xung quanh vườn, cách 2 m đóng một cọc và chỉ trừ một cửa ra vào rộng 4 m. ",
+   "mot": "NDB01528",
+   "hai": "NDB00648"
+  },
+  {
+   "ma_cau": "T14T000000603",
+   "de": "Tính: $A=\\dfrac{2\\times 5\\times 7}{5\\times 7\\times 3}$",
+   "mot": "NDB01567",
+   "hai": "NDB01556"
+  },
+  {
+   "ma_cau": "T14T000000849",
+   "de": "Có bao nhiêu số tự nhiên có bốn chữ số khác nhau mà có tổng các chữ số là 6 ?",
+   "mot": "NDB01515",
+   "hai": "NDB01514"
+  },
+  {
+   "ma_cau": "T14T000000072",
+   "de": "Một cửa hàng bán gạo, ngày thứ nhất cửa hàng bán $\\dfrac{2}{5}$ số gạo, ngày thứ hai cửa hàng bán $\\dfrac{1}{3}$ số gạo còn lại sau ngày thứ nhất và 20 kg. Ngày",
+   "mot": "NDB01581",
+   "hai": "NDB01531"
+  },
+  {
+   "ma_cau": "T14T000000769",
+   "de": "Hiện nay, hiệu số tuổi của chị và Alice là 9 tuổi. Tính tuổi mỗi người hiện nay, biết 6 năm nữa tổng số tuổi của hai chị em là 55 tuổi.",
+   "mot": "NDB01627",
+   "hai": "NDB01541"
+  },
+  {
+   "ma_cau": "T14T000000606",
+   "de": "Tính: $D=\\dfrac{11\\times 15\\times 24}{8\\times 22\\times 30}$",
+   "mot": "NDB01567",
+   "hai": "NDB01556"
+  },
+  {
+   "ma_cau": "T14T000000049",
+   "de": "Một hình chữ nhật có chiều dài 36 m, chiều rộng bằng $\\dfrac{5}{6}$ chiều dài. Tính chu vi và diện tích hình chữ nhật đó.",
+   "mot": "NDB01522",
+   "hai": "NDB01578"
+  },
+  {
+   "ma_cau": "T14T0000001199",
+   "de": "Trung bình cộng của hai số là 72. Tìm hai số đó, biết số lớn gấp ba lần số bé.",
+   "mot": "NDB01544",
+   "hai": "NDB01546"
+  },
+  {
+   "ma_cau": "T14T000000035",
+   "de": "Dọc quãng đường từ một trường tiểu học đến bệnh viện, người ta mắc 150 đèn cao áp hai bên đường, đèn nọ cách đèn kia 45 m. Tính quãng đường từ trường đến cổng b",
+   "mot": "NDB00649",
+   "hai": "NDB01527"
+  },
+  {
+   "ma_cau": "T14T000000140",
+   "de": "Một dãy phố có 20 nhà. Số nhà của 20 nhà đó được đánh là các số chẵn liên tiếp. Biết tổng của 20 số nhà của dãy phố đó bằng 1380. Hãy cho biết số nhà đẩu tiên v",
+   "mot": "NDB01525",
+   "hai": "NDB01624"
+  },
+  {
+   "ma_cau": "T14T000000412",
+   "de": "Để cưa một khúc gỗ thành 7 đoạn phải mất 48 phút. Hỏi muốn cưa khúc gỗ đó thành 4 đoạn phải mất bao nhiêu phút? Biết thời gian mỗi lần cưa là như nhau.",
+   "mot": "NDB00650",
+   "hai": "NDB01529"
+  },
+  {
+   "ma_cau": "T14T0000001198",
+   "de": "Tính:\n$\\dfrac{7}{28}:\\dfrac{5}{9}-\\dfrac{7}{28}\\times\\dfrac{4}{5}$",
+   "mot": "NDB01568",
+   "hai": "NDB01570"
+  },
+  {
+   "ma_cau": "T14T0000001226",
+   "de": "Biểu đồ dưới đây cho biết số quyển vở khối Bốn của một trường Tiểu học đã quyên góp cho các bạn vùng cao.\nQuan sát biểu đồ trên và trả lời câu hỏi:\nTrung bình m",
+   "mot": "NDB01530",
+   "hai": "NDB01542"
+  },
+  {
+   "ma_cau": "T14T000000396",
+   "de": "Tính:\n$\\dfrac{124124}{186186}+\\dfrac{4}{5}+\\dfrac{1313}{6565}-\\dfrac{2}{3}$",
+   "mot": "NDB01566",
+   "hai": "NDB01565"
+  },
+  {
+   "ma_cau": "T14T0000001050",
+   "de": "Cho dãy số liệu về số tuổi của các thành viên trong câu lạc bộ Tin học của một trường Tiểu học là:\n7; 8; 9; 10; 9; 9; 10; 10; 10; 8; 9; 9.\nTính trung bình cộng ",
+   "mot": "NDB01542",
+   "hai": "NDB01530"
+  },
+  {
+   "ma_cau": "T14T000000219",
+   "de": "Hiện nay, tổng số tuổi của Anna và Mike 24 tuổi. Biết rằng cách đây 3 năm, Anna hơn Mike 6 tuổi. Tính tuổi của mỗi người hiện nay.",
+   "mot": "NDB01627",
+   "hai": "NDB01541"
+  },
+  {
+   "ma_cau": "T14T000000616",
+   "de": "Một hình chữ nhật có chiều dài $\\dfrac{3}{5}\\ m$, chiều rộng bằng $\\dfrac{3}{4}$ chiều dài. Tính chu vi và diện tích hình chữ nhật đó.",
+   "mot": "NDB01522",
+   "hai": "NDB01578"
+  },
+  {
+   "ma_cau": "T14T0000001193",
+   "de": "Tìm một số tự nhiên có ba chữ số, biết tổng các chữ số của nó bằng 18, chữ số hàng trăm kém tổng các chữ số hàng chục và hàng đơn vị là 2, chữ số hàng đơn vị hơ",
+   "mot": "NDB01541",
+   "hai": "NDB01625"
+  },
+  {
+   "ma_cau": "T14T000000957",
+   "de": "Tony có một số miếng lego ít hơn 65 nhưng nhiều hơn 56. Biết Tony đem số lego chia đều cho 5 bạn hoặc chia đều cho hai bạn thì cũng vừa hết. Hỏi Tony có bao nhi",
+   "mot": "NDB01532",
+   "hai": "NDB01539"
+  },
+  {
+   "ma_cau": "T14T000000137",
+   "de": "Tính tổng:\nCác số có hai chữ số mà mỗi số có chữ số tận cùng là 3.",
+   "mot": "NDB00646",
+   "hai": "NDB01525"
+  },
+  {
+   "ma_cau": "T14T000000450",
+   "de": "Một hình chữ nhật có diện tích là $\\dfrac{3}{8}\\ m^{2}$, chiều dài là $\\dfrac{7}{8}\\ m$. Tính chu vi hình chữ nhật đó.",
+   "mot": "NDB01522",
+   "hai": "NDB01570"
+  },
+  {
+   "ma_cau": "T14T000000674",
+   "de": "Tìm tỉ số của hai số, biết $\\dfrac{2}{5}$ số thứ nhất bằng $\\dfrac{1}{3}$ số thứ hai.",
+   "mot": "NDB01549",
+   "hai": "NDB01543"
+  },
+  {
+   "ma_cau": "T14T0000001018",
+   "de": "Một cửa hàng trong sáu ngày đầu bán được 3150 kg đường. Ngày thứ bảy bán được số đường bằng $\\dfrac{1}{5}$ tổng số đường của sáu ngày đầu. Hỏi trung bình mỗi ng",
+   "mot": "NDB01578",
+   "hai": "NDB01542"
+  },
+  {
+   "ma_cau": "T14T000000227",
+   "de": "Hiện nay, bố hơn con 31 tuổi. Bốn năm nữa, tổng số tuổi của hai bố con là 51 tuổi. Tính tuổi mỗi người hiện nay.",
+   "mot": "NDB01541",
+   "hai": "NDB01627"
+  },
+  {
+   "ma_cau": "T14T000000689",
+   "de": "Một hình chữ nhật có chu vi là 50 m. Tính diện tích hình chữ nhật đó, biết chiều dài gấp 4 lần chiểu rộng.",
+   "mot": "NDB01544",
+   "hai": "NDB01546"
+  },
+  {
+   "ma_cau": "T14T000000066",
+   "de": "Trong vườn có 48 cây gồm ba loại: cam, hồng, bưởi. Số cây cam chiếm $\\dfrac{1}{3}$ tổng số cây, số cây bưởi bằng $\\dfrac{5}{3}$ số cây hồng. Hỏi mỗi loại trong ",
+   "mot": "NDB01579",
+   "hai": "NDB01543"
+  },
+  {
+   "ma_cau": "T14T0000001169",
+   "de": "Cho hai số lẻ mà số lớn gấp 3 lần số bé. Biết giữa chúng có 13 số chẵn. Tìm hai số lẻ đó.",
+   "mot": "NDB01545",
+   "hai": "NDB01546"
+  },
+  {
+   "ma_cau": "T14T000000344",
+   "de": "Tìm các số có ba chữ số $\\overline{56a}$ thỏa mãn điều kiện sau:\nchia hết cho 3 nhưng không chia hết cho 2.",
+   "mot": "NDB01536",
+   "hai": "NDB01533"
+  },
+  {
+   "ma_cau": "T14T000000340",
+   "de": "Tìm các số có ba chữ số $\\overline{56a}$ thỏa mãn điều kiện sau:\nkhông chia hết cho 2.",
+   "mot": "NDB01536",
+   "hai": "NDB01533"
+  },
+  {
+   "ma_cau": "T14T000000692",
+   "de": "Bảo và Bình có một số bi. Nếu Bảo cho Bình một số bi đúng bằng số bi mà Bình đang có, rồi Bình lại cho Bảo một số bi đúng bằng số bi còn lại của Bảo lúc đó thì ",
+   "mot": "NDB01626",
+   "hai": "NDB01531"
+  }
+ ]
+}

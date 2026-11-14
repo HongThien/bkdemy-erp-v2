@@ -1,0 +1,422 @@
+[
+ {
+  "ma_cau": "T14T000000421",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài toán chia đều nhiều xe, vắng bớt học sinh."
+ },
+ {
+  "ma_cau": "T14T000000154",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính giá trị biểu thức chứa chữ."
+ },
+ {
+  "ma_cau": "T14T000000844",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phân tích cấu tạo thập phân của số."
+ },
+ {
+  "ma_cau": "T14T000000388",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y với phân số (số hạng chưa biết)."
+ },
+ {
+  "ma_cau": "T14T000000530",
+  "dang_bai_id": "NDB01555",
+  "chac": "vua",
+  "ly_do": "Nhận biết phân số tối giản, gần rút gọn dạng chuẩn."
+ },
+ {
+  "ma_cau": "T14T000000706",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đổi/tính đơn vị thời gian (thế kỉ, năm)."
+ },
+ {
+  "ma_cau": "T14T0000001122",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: diện tích hình vuông phân số tìm cạnh."
+ },
+ {
+  "ma_cau": "T14T000000816",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000902",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phép tính với số đo khối lượng."
+ },
+ {
+  "ma_cau": "T14T000000065",
+  "dang_bai_id": "NDB01544",
+  "chac": "cao",
+  "ly_do": "Chu vi cho tổng ẩn, tỉ số 2/3 giữa rộng và dài."
+ },
+ {
+  "ma_cau": "T14T000000725",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính tổng dãy cộng trừ xen kẽ ghép cặp."
+ },
+ {
+  "ma_cau": "T14T000000019",
+  "dang_bai_id": "NDB01623",
+  "chac": "cao",
+  "ly_do": "Chu vi HCN bằng chu vi HV suy ra nửa chu vi, hiệu 6."
+ },
+ {
+  "ma_cau": "T14T0000001098",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "Rút về một hộp bút chì."
+ },
+ {
+  "ma_cau": "T14T000000221",
+  "dang_bai_id": "NDB01541",
+  "chac": "vua",
+  "ly_do": "Viết thêm chữ số 4 bên trái làm hiệu ẩn 400; có thể thuộc cấu tạo số."
+ },
+ {
+  "ma_cau": "T14T0000001095",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "Thuận tiện: nhóm các phân số cùng mẫu thành số tròn."
+ },
+ {
+  "ma_cau": "T14T000000001",
+  "dang_bai_id": "NDB01507",
+  "chac": "cao",
+  "ly_do": "Số lớn nhất hai chữ số biết tích 24."
+ },
+ {
+  "ma_cau": "T14T000000989",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đặt tính cộng nhiều chữ số."
+ },
+ {
+  "ma_cau": "T14T000000910",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính giá trị biểu thức chứa chữ."
+ },
+ {
+  "ma_cau": "T14T000000433",
+  "dang_bai_id": "NDB01542",
+  "chac": "cao",
+  "ly_do": "Trung bình cộng 8 số liệu chiều cao."
+ },
+ {
+  "ma_cau": "T14T000000665",
+  "dang_bai_id": "NDB01546",
+  "chac": "cao",
+  "ly_do": "Phép chia hết có thương 5 suy ra tỉ số, biết tổng 288."
+ },
+ {
+  "ma_cau": "T14T000000118",
+  "dang_bai_id": "NDB01512",
+  "chac": "vua",
+  "ly_do": "Xóa chữ số giữ thứ tự để lập số lớn nhất; gần dạng từ chữ số cho trước."
+ },
+ {
+  "ma_cau": "T14T000000984",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh biểu thức trừ một hiệu."
+ },
+ {
+  "ma_cau": "T14T000000345",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số a để 56a chia hết 3 mà không chia hết 9."
+ },
+ {
+  "ma_cau": "T14T000000237",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: thay đổi thành phần phép nhân."
+ },
+ {
+  "ma_cau": "T14T000000852",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y với số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000684",
+  "dang_bai_id": "NDB01581",
+  "chac": "cao",
+  "ly_do": "Ngày hai đọc 3/5 số còn lại, ngày ba 60 trang: tìm cả sách."
+ },
+ {
+  "ma_cau": "T14T000000823",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y với số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T0000001089",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "Rút gọn biểu thức tích, gạch thừa số chung."
+ },
+ {
+  "ma_cau": "T14T000000922",
+  "dang_bai_id": "NDB01584",
+  "chac": "cao",
+  "ly_do": "Trung bình cộng hai khoảng thời gian có năng suất khác nhau."
+ },
+ {
+  "ma_cau": "T14T000000479",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x thỏa bất đẳng thức chia phân số."
+ },
+ {
+  "ma_cau": "T14T000000886",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính tổng các số lập từ chữ số cho trước."
+ },
+ {
+  "ma_cau": "T14T0000001236",
+  "dang_bai_id": "NDB01583",
+  "chac": "vua",
+  "ly_do": "Biểu đồ cột cho trung bình, tìm số tháng 4; phụ thuộc hình."
+ },
+ {
+  "ma_cau": "T14T000000749",
+  "dang_bai_id": "NDB01517",
+  "chac": "vua",
+  "ly_do": "Điền số khi tách thừa số 77 thành 7+70; gần tách số nhân."
+ },
+ {
+  "ma_cau": "T14T0000001187",
+  "dang_bai_id": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Thừa số chung 69, phân phối nhân với cộng trừ."
+ },
+ {
+  "ma_cau": "T14T000000519",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y từ hai phân số bằng nhau."
+ },
+ {
+  "ma_cau": "T14T000000400",
+  "dang_bai_id": "NDB01566",
+  "chac": "cao",
+  "ly_do": "Rút gọn 6/9 rồi nhóm các phân số cùng mẫu."
+ },
+ {
+  "ma_cau": "T14T0000001204",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: diện tích hình vuông phân số tìm cạnh."
+ },
+ {
+  "ma_cau": "T14T000000330",
+  "dang_bai_id": "NDB01533",
+  "chac": "cao",
+  "ly_do": "Tìm chữ số a để 83a chia hết cho 9."
+ },
+ {
+  "ma_cau": "T14T000000066",
+  "dang_bai_id": "NDB01579",
+  "chac": "vua",
+  "ly_do": "Cam là 1/3 rồi hồng bưởi theo tỉ số 5/3; có thể xếp tổng tỉ."
+ },
+ {
+  "ma_cau": "T14T000000731",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính tổng các số lập từ chữ số cho trước."
+ },
+ {
+  "ma_cau": "T14T000000818",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y với số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000900",
+  "dang_bai_id": "NDB01522",
+  "chac": "vua",
+  "ly_do": "Tính chu vi sân sau khi mở rộng một chiều; thay đổi kích thước."
+ },
+ {
+  "ma_cau": "T14T0000001012",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: chia có dư, làm tròn lên số khay."
+ },
+ {
+  "ma_cau": "T14T000000887",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính thuận tiện cộng số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000758",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính thuận tiện nhân số tự nhiên."
+ },
+ {
+  "ma_cau": "T14T000000463",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm y với phân số (thừa số chưa biết)."
+ },
+ {
+  "ma_cau": "T14T0000001046",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: đếm phân số theo tích tử và mẫu."
+ },
+ {
+  "ma_cau": "T14T0000001169",
+  "dang_bai_id": "NDB01545",
+  "chac": "cao",
+  "ly_do": "Hiệu ẩn từ giữa có 13 số chẵn, số lớn gấp 3 số bé."
+ },
+ {
+  "ma_cau": "T14T000000104",
+  "dang_bai_id": "NDB01508",
+  "chac": "cao",
+  "ly_do": "Số lẻ lớn nhất chữ số khác nhau, chỉ biết tổng."
+ },
+ {
+  "ma_cau": "T14T000000734",
+  "dang_bai_id": "NDB01524",
+  "chac": "cao",
+  "ly_do": "Đếm số số hạng của dãy cách đều 1 đến 2023."
+ },
+ {
+  "ma_cau": "T14T000000202",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: bài toán lịch (thứ, ngày trong tháng)."
+ },
+ {
+  "ma_cau": "T14T0000001077",
+  "dang_bai_id": "NDB01552",
+  "chac": "cao",
+  "ly_do": "Quy đồng mẫu số hai phân số."
+ },
+ {
+  "ma_cau": "T14T000000427",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: liệt kê sự kiện khi lấy ngẫu nhiên."
+ },
+ {
+  "ma_cau": "T14T000000538",
+  "dang_bai_id": "NDB01556",
+  "chac": "cao",
+  "ly_do": "Rút gọn phân số lặp cụm 123123 và 369369."
+ },
+ {
+  "ma_cau": "T14T0000001013",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tính thuận tiện chia số tự nhiên cùng số chia."
+ },
+ {
+  "ma_cau": "T14T000000402",
+  "dang_bai_id": "NDB01531",
+  "chac": "cao",
+  "ly_do": "Tìm phân số đầu, đi ngược từ kết quả sau hai phép cộng."
+ },
+ {
+  "ma_cau": "T14T000000308",
+  "dang_bai_id": "NDB01532",
+  "chac": "cao",
+  "ly_do": "Chọn số chia hết cho cả 2 và 5 trong danh sách."
+ },
+ {
+  "ma_cau": "T14T000000710",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: diện tích hình vuông từ chu vi."
+ },
+ {
+  "ma_cau": "T14T000000453",
+  "dang_bai_id": "NDB01570",
+  "chac": "cao",
+  "ly_do": "Nhân và chia phân số từ trái sang phải."
+ },
+ {
+  "ma_cau": "T14T000000944",
+  "dang_bai_id": "NDB01529",
+  "chac": "cao",
+  "ly_do": "Rút về một can mật ong."
+ },
+ {
+  "ma_cau": "T14T000000034",
+  "dang_bai_id": "NDB01562",
+  "chac": "vua",
+  "ly_do": "Hai phân số gần 1, phần bù khác tử (1/42 và 2/39), phải so tiếp."
+ },
+ {
+  "ma_cau": "T14T000000437",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: liệt kê khả năng xảy ra khi lấy bi."
+ },
+ {
+  "ma_cau": "T14T000000480",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: tìm x thỏa bất đẳng thức nhân chia phân số."
+ },
+ {
+  "ma_cau": "T14T0000001033",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: rút về đơn vị hai đại lượng (cốc và đĩa)."
+ },
+ {
+  "ma_cau": "T14T000000496",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: so sánh phân số bằng phần hơn."
+ },
+ {
+  "ma_cau": "T14T000000805",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: phép chia có dư tìm số bị chia."
+ },
+ {
+  "ma_cau": "T14T000000047",
+  "dang_bai_id": "NDB01576",
+  "chac": "cao",
+  "ly_do": "Mẫu 2, 6, 12... là tích hai số liên tiếp, tử 1."
+ },
+ {
+  "ma_cau": "T14T000000590",
+  "dang_bai_id": "NDB01562",
+  "chac": "cao",
+  "ly_do": "Hai phân số gần 1, mẫu hơn tử cùng 2, so sánh phần bù."
+ },
+ {
+  "ma_cau": "T14T000000622",
+  "dang_bai_id": "NDB01578",
+  "chac": "vua",
+  "ly_do": "Bán 3/4 số bột rồi chia phần còn lại cho phân số; ngoài một phép nhân."
+ },
+ {
+  "ma_cau": "T14T000000116",
+  "dang_bai_id": null,
+  "chac": null,
+  "ly_do": "Thiếu dạng: số nhỏ nhất biết tích các chữ số."
+ }
+]
