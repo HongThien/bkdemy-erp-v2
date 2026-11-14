@@ -312,7 +312,7 @@ const VI_TRI = [
   { cx: 25.0, cy: 44.2, d: 14.6, the: { l: 14.8, t: 62.6, w: 19.6, h: 12.6 }, mau: '#F1F3FF' },   // #2
   { cx: 74.9, cy: 44.2, d: 14.6, the: { l: 65.9, t: 61.9, w: 19.8, h: 12.6 }, mau: '#FFF1F4' },   // #3
 ]
-type BXHRow = { ma_hs: string; ho_ten: string; la_toi: boolean; nhan: string; phu: string }
+type BXHRow = { ma_hs: string | null; ho_ten: string; la_toi: boolean; nhan: string; phu: string }
 
 function BXHPodium({ top }: { top: BXHRow[] }) {
   return (

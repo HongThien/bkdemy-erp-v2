@@ -151,13 +151,12 @@ function MauBxh({ tt }: { tt: number }) {
   const [loai, setLoai] = useState(tt === 3 ? 'C1' : 'A1')
   const [pv, setPv] = useState<'khoi' | 'toan_bk'>('khoi')
   const [ky, setKy] = useState<'hom_nay' | 'tuan' | 'thang' | 'mua' | 'hien_tai'>('thang')
-  const [hienMa, setHienMa] = useState(false)
   const d = BXH_DM.find((x) => x.ma === loai) ?? BXH_DM[0]
   const kq: BxhKetQua = !d.san_sang ? { ma: d.ma, ten: d.ten, san_sang: false, ghi_chu: d.ghi_chu ?? 'Sắp có' }
     : { ma: d.ma, ten: d.ten, san_sang: true, don_vi: d.don_vi, ky, pham_vi: pv, khoi: '9', tong: pv === 'khoi' ? 78 : 339,
         top: BXH_TOP(tt === 1 ? 6 : null), toi: tt === 1 ? { hang: pv === 'khoi' ? 6 : 41, gia_tri: 14 } : null }
   return <BangXepHangView dm={BXH_DM} loai={loai} onLoai={(m) => { setLoai(m); setKy(BXH_DM.find((x) => x.ma === m)?.ky_mac_dinh ?? 'thang') }} pv={pv} onPv={setPv} ky={ky} onKy={setKy}
-    kq={kq} dangTai={false} loi={null} hienMa={hienMa} onHienMa={setHienMa} mon="Toán" />
+    kq={kq} dangTai={false} loi={null} mon="Toán" />
 }
 
 function Man({ man, tt }: { man: string; tt: number }) {

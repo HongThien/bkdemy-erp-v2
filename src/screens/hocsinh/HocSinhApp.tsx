@@ -1756,7 +1756,7 @@ export function BangXepHang({ onXong }: { onXong: () => void }) {
         // ĐÚNG ".classTable"+".row"+".rank"+".score" (ph-v3.css) — bảng xếp hạng cả lớp có sẵn
         <TheHS className="overflow-hidden">
           {rows.map((r, i) => (
-            <div key={r.ma_hs} className="grid grid-cols-[42px_1fr_64px] items-center gap-3.5 px-5 py-4 text-[15.5px]"
+            <div key={`${i}-${r.ho_ten}`} className="grid grid-cols-[42px_1fr_64px] items-center gap-3.5 px-5 py-4 text-[15.5px]"
               style={{ borderTop: i > 0 ? `1px solid ${MAU.line}` : undefined, background: r.la_toi ? NEN_ACC : undefined }}>
               {/* Top 3 = màu huy chương vàng/bạc/đồng (cố định, chữ trắng trên nền màu); em = màu nhấn skin. */}
               <span className="flex h-9 w-9 items-center justify-center text-[15.5px] font-black" style={{ borderRadius: R_TRONG, ...(

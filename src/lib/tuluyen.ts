@@ -225,7 +225,7 @@ export async function layDangHocTap(mon: string): Promise<TongQuanHocTap> {
   return { dangs, dat, canLuyen, yeu, chuaDanhGia }
 }
 
-export type XepHangRow = { ma_hs: string; ho_ten: string; so_cau_dung: number; la_toi: boolean }
+export type XepHangRow = { ma_hs: string | null; ho_ten: string; so_cau_dung: number; la_toi: boolean }   // ma_hs chỉ có ở dòng của chính em (mig 14/11)
 
 // Bảng xếp hạng Tự luyện theo khối (Thùy 21/08: "xếp hạng các bạn 5T về thành tích làm tự luyện ở
 // nhà"). Chỉ số = số câu ĐÚNG cộng dồn — tính năng mới ra nên chưa cần lọc theo mùa.
@@ -246,7 +246,7 @@ export async function layLichSuLamBai(mon: string, soNgay = 30): Promise<LichSuL
 
 // ── BXH tỉ lệ đạt DẠNG BÀI theo khối (Thùy 12/09). Định nghĩa "đạt" ở DB: tổng câu >=3 và
 // tỉ lệ đúng >=75%. Trả list rank giảm dần; HS chưa đo dạng nào → ti_le = null (rank cuối). ──
-export type XepHangTiLeRow = { ma_hs: string; ho_ten: string; ti_le: number | null; so_dat: number; so_dang: number; la_toi: boolean }
+export type XepHangTiLeRow = { ma_hs: string | null; ho_ten: string; ti_le: number | null; so_dat: number; so_dang: number; la_toi: boolean }
 export async function xepHangTiLeDat(mon: string, khoi: string): Promise<XepHangTiLeRow[]> {
   const { data, error } = await supabase.rpc('fn_hs_xep_hang_ti_le_dat', { p_mon: mon, p_khoi: khoi })
   if (error) throw error

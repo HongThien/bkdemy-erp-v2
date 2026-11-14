@@ -111,9 +111,9 @@ function Dai({ art, children }: { art?: AnhBxh; children: ReactNode }) {
     : <div className="flex items-center gap-2.5 px-3 py-2" style={{ ...THE, boxShadow: '0 0 10px var(--sk-acc)' }}>{children}</div>
 }
 
-export function BangXepHangView({ dm, loai, onLoai, pv, onPv, ky, onKy, kq, dangTai, loi, hienMa, onHienMa, mon, onBack }: {
+export function BangXepHangView({ dm, loai, onLoai, pv, onPv, ky, onKy, kq, dangTai, loi, mon, onBack }: {
   dm: BxhLoai[]; loai: string; onLoai: (m: string) => void; pv: BxhPhamVi; onPv: (p: BxhPhamVi) => void; ky: BxhKy; onKy: (k: BxhKy) => void
-  kq: BxhKetQua | null; dangTai: boolean; loi: string | null; hienMa: boolean; onHienMa: (b: boolean) => void; mon: string | null; onBack?: () => void
+  kq: BxhKetQua | null; dangTai: boolean; loi: string | null; mon: string | null; onBack?: () => void
 }) {
   const art = useSkinHT().anhBxh
   const cur = dm.find((d) => d.ma === loai)
@@ -170,9 +170,6 @@ export function BangXepHangView({ dm, loai, onLoai, pv, onPv, ky, onKy, kq, dang
               {kq.tinh_luc && <span className="block text-[12px] font-medium" style={{ color: MAU.muted }}>Số tính lúc {new Date(kq.tinh_luc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })}</span>}
             </span>
             {art && !kq.toi && <img src={art.trong} alt="" draggable={false} className="hidden h-[52px] shrink-0 object-contain sm:block" />}
-            <label className="mr-3 flex shrink-0 cursor-pointer items-center gap-1 text-[12.5px]" style={{ color: MAU.muted }}>
-              <input type="checkbox" checked={hienMa} onChange={(e) => onHienMa(e.target.checked)} /> Mã HS
-            </label>
           </Dai>
 
           {/* Danh sách — chiếm phần lớn màn; ngang: 2 cột 1–10 | 11–20 */}
@@ -190,7 +187,7 @@ export function BangXepHangView({ dm, loai, onLoai, pv, onPv, ky, onKy, kq, dang
                       ? { minHeight: rowH, ...kieuKhung(r.la_toi ? art.khungHangEm : art.khungHang, rowH, { background: 'rgba(17,23,47,0.4)', borderRadius: 12 }), paddingInline: 4 }
                       : { minHeight: 46, padding: '4px 8px', ...(r.la_toi ? { background: MAU.surface2, border: `1.5px solid ${MAU.acc}`, borderRadius: 'calc(var(--sk-radius) * 0.7)' } : { borderBottom: `1px solid ${MAU.line}` }) }}>
                     <HangHuy hang={r.hang} art={art} />
-                    <span className="min-w-0 flex-1 truncate text-[16px] font-bold leading-tight">{hienMa ? (r.ma_hs ?? '—') : r.ten}{r.la_toi ? ' (em)' : ''}</span>
+                    <span className="min-w-0 flex-1 truncate text-[16px] font-bold leading-tight">{r.ten}{r.la_toi ? ' (em)' : ''}</span>
                     {r.lop && <span className="w-12 shrink-0 text-center text-[13px] leading-tight sm:w-16" style={{ color: MAU.muted }}>{r.lop}</span>}
                     <b className="w-[74px] shrink-0 text-right text-[15.5px] tabular-nums sm:w-[90px]" style={{ color: MAU.acc }}>{so(r.gia_tri, dv)}</b>
                   </li>
@@ -215,7 +212,6 @@ export default function BangXepHangHS({ onBack }: { onBack: () => void }) {
   const [kq, setKq] = useState<BxhKetQua | null>(null)
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
-  const [hienMa, setHienMa] = useState(false)
 
   useEffect(() => { if (monCtx) setMon(monCtx); else monCuaHS().then((m) => setMon(m)).catch(() => undefined) }, [monCtx])
   useEffect(() => { bxhDanhMuc().then((d) => { setDm(d); if (d.length && !d.some((x) => x.ma === 'A1')) setLoai(d[0].ma) }).catch((e) => setLoi(e?.message ?? String(e))) }, [])
@@ -234,5 +230,5 @@ export default function BangXepHangHS({ onBack }: { onBack: () => void }) {
     return () => { bo = true }
   }, [dm, loai, pv, ky, mon])
 
-  return <BangXepHangView dm={dm} loai={loai} onLoai={doiLoai} pv={pv} onPv={setPv} ky={ky} onKy={setKy} kq={kq} dangTai={dangTai} loi={loi} hienMa={hienMa} onHienMa={setHienMa} mon={mon} onBack={onBack} />
+  return <BangXepHangView dm={dm} loai={loai} onLoai={doiLoai} pv={pv} onPv={setPv} ky={ky} onKy={setKy} kq={kq} dangTai={dangTai} loi={loi} mon={mon} onBack={onBack} />
 }
