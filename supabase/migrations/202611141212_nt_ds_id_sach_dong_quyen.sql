@@ -1,0 +1,11 @@
+-- ============================================================================
+-- 202611141212 — nt_ds_id_sach_dong_quyen
+-- ----------------------------------------------------------------------------
+-- VÌ SAO (không phải "làm gì" — đọc SQL là biết làm gì):
+--   _nt_ds_id_sach (mig 202611141211) là hàm NỘI BỘ, chỉ fn_nt_ban_vuon gọi (security definer, chủ claude_build).
+--   Quyền mặc định cho authenticated gọi được ⇒ check:kien-truc K1 tăng 319 → 320. Thu lại cho về mức cũ.
+--
+-- MẤT GÌ (nếu có delete/drop/alter thu hẹp — liệt kê CHÍNH XÁC, Luật xoá):
+--   Chỉ thu quyền EXECUTE của authenticated trên hàm nội bộ vừa tạo hôm nay; chưa có client nào gọi.
+-- ============================================================================
+revoke execute on function public._nt_ds_id_sach(jsonb) from authenticated;
