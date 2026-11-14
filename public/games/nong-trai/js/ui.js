@@ -496,7 +496,7 @@ function veCho() {
 }
 
 // ---------- KHO ----------
-const NHOM_KHO = [['cay', '🌾 Nông sản'], ['vat', '🥚 Trứng, sữa'], ['banh', '🍞 Bánh'], ['phan', '🌱 Phân bón'], ['trangtri', '🏮 Đồ trang trí'], ['quy', '💎 Đồ quý']];
+const NHOM_KHO = [['cay', '🌾 Nông sản'], ['vat', '🥚 Trứng, sữa'], ['ca', '🐟 Cá'],['banh', '🍞 Bánh'], ['phan', '🌱 Phân bón'], ['trangtri', '🏮 Đồ trang trí'], ['quy', '💎 Đồ quý']];
 function moKho() { moBang('Kho', veKho); }
 function veKho() {
   const key = JSON.stringify(s.kho);
@@ -671,30 +671,22 @@ const IC_NHA = { go: '🏡', viet: '🛖', nhat: '🏯', hylap: '🏛️' }, IC_
 const MO_NEN = { thuong: 'Nắng xanh, cỏ mướt', tet: 'Hoa đào, mai vàng', thu: 'Hoàng hôn, lá vàng rơi', tuyet: 'Tuyết rơi, người tuyết', trungthu: 'Trăng rằm, đèn ông sao', dem: 'Bí ngô, dơi, ma nhỏ' };
 function giaoDien() { if (!s.giaoDien || typeof s.giaoDien !== 'object') s.giaoDien = { nha: 'go', nen: 'thuong' }; return s.giaoDien; }
 // đang ở vườn bạn ⇒ nhà & cảnh của BẠN (bạn chưa chọn bao giờ ⇒ mặc định); về nhà ⇒ của em
-function apGiaoDien(st) { const g = xem != null ? ((st && st.giaoDien) || { nha: 'go', nen: 'thuong' }) : giaoDien(); if (S.doiNha) { S.doiNha(g.nha, g.doNha && g.doNha[g.nha]); S.doiNen(g.nen); S.doiSan(g.san); S.doiTenTrai(xem != null ? (st && st.ten) : (window.NT_CAU && NT_CAU.ten)); } }
-// TỰ TRANG TRÍ (Thùy 14/11): món của nhà (g.doNha[kiểu] = mảng id món trong KIEU_NHA[kiểu].mon) + đồ trong sân (g.san = mảng id SAN_DO) — miễn phí, lưu trong s.giaoDien.
-// Món nhà có "ô" (nền · tường · mái · cửa…): chọn món khác cùng ô là THAY, không bỏ trống được. Món không ô: bật / tắt. Chưa chọn bao giờ ⇒ bộ món mặc định của cảnh.
-function doNhaCua(g, KN) { const k = g.nha, co = g.doNha && Array.isArray(g.doNha[k]) && g.doNha[k].length; return co ? g.doNha[k].filter(id => KN[k].mon[id]) : NT_DOHOA.nhaDoVat(k, S.nhaMuc()); }
-function chonMonNha(g, KN, id) { const mon = KN[g.nha].mon, o = mon[id].o; let ds = doNhaCua(g, KN);
-  if (o) { if (ds.includes(id)) return false; ds = ds.filter(x => mon[x].o !== o).concat(id); } else ds = ds.includes(id) ? ds.filter(x => x !== id) : ds.concat(id);
-  if (!g.doNha || typeof g.doNha !== 'object') g.doNha = {}; g.doNha[g.nha] = Object.keys(mon).filter(x => ds.includes(x)); return true; }
+function apGiaoDien(st) { const g = xem != null ? ((st && st.giaoDien) || { nha: 'go', nen: 'thuong' }) : giaoDien(); if (S.doiNha) { S.doiNha(g.nha); S.doiNen(g.nen); S.doiSan(g.san); S.doiTenTrai(xem != null ? (st && st.ten) : (window.NT_CAU && NT_CAU.ten)); } }
+// ĐỒ TRONG SÂN (Thùy 14/11): em bật / tắt từng món (g.san = mảng id SAN_DO) — miễn phí, lưu trong s.giaoDien. Nhà đẹp dần theo MỨC (4 mức / kiểu, cách nâng làm sau), không chọn từng món.
 function moGiaoDien() {
   const KN = (window.NT_DOHOA && NT_DOHOA.KIEU_NHA) || {};
   moBang('Nhà & cảnh', () => {
     const g = giaoDien();
-    const theNha = Object.keys(KN).map(k => { const [ten, phu] = KN[k].ten.split(' — '); return `<button class="gdThe${g.nha === k ? ' chon' : ''}" data-nha="${k}"><span class="ic">${IC_NHA[k] || '🏠'}</span><b>${ten}</b><span class="nho">${phu || '&nbsp;'}</span></button>`; }).join('');
+    const theNha = Object.keys(KN).filter(k => !KN[k].an).map(k => { const [ten, phu] = KN[k].ten.split(' — '); return `<button class="gdThe${g.nha === k ? ' chon' : ''}" data-nha="${k}"><span class="ic">${IC_NHA[k] || '🏠'}</span><b>${ten}</b><span class="nho">${phu || '&nbsp;'}</span></button>`; }).join('');
     const theNen = Object.keys(S.NEN || {}).map(k => `<button class="gdThe nen-${k}${g.nen === k ? ' chon' : ''}" data-nen="${k}"><span class="ic">${IC_NEN[k] || '🌿'}</span><b>${S.NEN[k].ten}</b><span class="nho">${MO_NEN[k] || ''}</span></button>`).join('');
-    const dsNha = KN[g.nha] ? doNhaCua(g, KN) : [], dsSan = Array.isArray(g.san) ? g.san : S.SAN_MAC_DINH;
-    const monNha = KN[g.nha] ? Object.keys(KN[g.nha].mon).map(id => `<button class="gdMon${dsNha.includes(id) ? ' chon' : ''}" data-mon="${id}">${KN[g.nha].mon[id].ten}</button>`).join('') : '';
+    const dsSan = Array.isArray(g.san) ? g.san : S.SAN_MAC_DINH;
     const monSan = Object.keys(S.SAN_DO).map(id => `<button class="gdMon${dsSan.includes(id) ? ' chon' : ''}" data-san="${id}"><span>${S.SAN_DO[id].ic}</span> ${S.SAN_DO[id].ten}</button>`).join('');
-    return { key: 'gd' + g.nha + g.nen + dsNha.join() + '|' + dsSan.join(), html: `<div class="muc">🏡 Kiểu nhà</div><div class="gdLuoi">${theNha}</div>
-      <div class="muc">🔨 Trang trí nhà <span class="nho">— chạm để thêm, bớt hoặc đổi món</span></div><div class="gdMonDs">${monNha}</div>
-      <div class="muc">🪴 Đồ trong sân</div><div class="gdMonDs">${monSan}</div>
+    return { key: 'gd' + g.nha + g.nen + '|' + dsSan.join(), html: `<div class="muc">🏡 Kiểu nhà</div><div class="gdLuoi">${theNha}</div>
+      <div class="muc">🪴 Đồ trong sân <span class="nho">— chạm để thêm hoặc bớt</span></div><div class="gdMonDs">${monSan}</div>
       <div class="muc">🎨 Khung cảnh</div><div class="gdLuoi">${theNen}</div>
       <p class="nho" style="margin:10px 2px 0">Đổi lúc nào cũng được, miễn phí.</p>`,
       gan: el => {
         el.querySelectorAll('[data-nha]').forEach(b => b.onclick = () => { g.nha = b.dataset.nha; apGiaoDien(); E.luu(s); veBang(true); });
-        el.querySelectorAll('[data-mon]').forEach(b => b.onclick = () => { if (!chonMonNha(g, KN, b.dataset.mon)) return; apGiaoDien(); E.luu(s); veBang(true); });
         el.querySelectorAll('[data-san]').forEach(b => b.onclick = () => { const id = b.dataset.san, ds = Array.isArray(g.san) ? g.san : S.SAN_MAC_DINH.slice(); g.san = ds.includes(id) ? ds.filter(x => x !== id) : ds.concat(id); apGiaoDien(); E.luu(s); veBang(true); });
         el.querySelectorAll('[data-nen]').forEach(b => b.onclick = () => { g.nen = b.dataset.nen; S.doiNen(g.nen); E.luu(s); veBang(true); });
       } };
@@ -806,6 +798,7 @@ const cb = {
     if (chon.loai === 'hopThu') { dongBong(); return moThu(); }
     if (chon.loai === 'kho') { dongBong(); return moKho(); }
     if (chon.loai === 'nha') { dongBong(); return moGiaoDien(); }
+    if (chon.loai === 'cau') { dongBong(); return window.NT_CAUCA && window.NT_CAUCA.mo(); }   // cầu câu cá bên hồ (js/cauca.js)
   },
   batDauVuot(i) {
     if (xem != null) return false;

@@ -93,6 +93,32 @@ I.phan_bon = { id: 'phan_bon', ten: 'Phân bón', loai: 'phan', gia: 5 };   // b
 for (const k in TRANG_TRI) I[k] = { id: k, ten: TRANG_TRI[k].ten, loai: 'trangtri', gia: 10 };
 I.dong_xu_co = { id: 'dong_xu_co', ten: 'Đồng xu cổ', loai: 'quy', gia: 20 };   // 07/11: 50 → 20 (rơi ngẫu nhiên, nằm trong ngân sách)
 
+// ---------- CÂU CÁ (Thùy 14/11) ----------
+// 4 bậc: giá bán (EXP) 10 · 20 · 30 · 40, xác suất 70 · 25 · 4 · 1 % (Thùy chốt; chấp nhận xu tăng vì xu nông trại đang chưa đủ 20/tháng).
+// Trung bình 13,6 EXP/con ⇒ CAU.luot lượt/ngày, câu trúng hết ≈ 41 EXP/ngày. luot = TỰ ĐẶT (chỉnh nhịp xu câu cá bằng số này).
+// Độ khó theo bậc: vong = tốc độ vòng co giãn (rad/s) · sai = sai số cho phép của vòng (phần bán kính) · vung = bề rộng vùng giữa (phần thanh) · chay = giây cá chạy hết 1 lượt thanh
+const CAU = { luot: 3, bac: [
+  { id: 'pho_thong',   ten: 'Phổ thông',   p: 0.70, gia: 10, mau: '#6fae4e', vong: 2.6, sai: 0.17, vung: 0.26, chay: 0.95 },
+  { id: 'hiem',        ten: 'Hiếm',        p: 0.25, gia: 20, mau: '#3a9be0', vong: 3.2, sai: 0.14, vung: 0.21, chay: 0.82 },
+  { id: 'rat_hiem',    ten: 'Rất hiếm',    p: 0.04, gia: 30, mau: '#a765e0', vong: 3.9, sai: 0.115, vung: 0.17, chay: 0.70 },
+  { id: 'huyen_thoai', ten: 'Huyền thoại', p: 0.01, gia: 40, mau: '#f5a81c', vong: 4.6, sai: 0.095, vung: 0.14, chay: 0.60 },
+] };
+// kg = [nhẹ nhất, nặng nhất] — chỉ để ghi kỷ lục trong Sổ cá, không ảnh hưởng giá. Thêm loài = thêm 1 dòng (+ màu vẽ trong js/cauca.js).
+const CA = {
+  // 10 loài trước = 4 phổ thông · 3 hiếm · 2 rất hiếm · 1 huyền thoại (Thùy 14/11; sau lên ~20 loài 7·5·5·3 — js/cauca.js đã có sẵn màu vẽ 10 loài nữa). Trong 1 bậc các loài ra đều nhau.
+  ca_ro:        { ten: 'Cá rô',        bac: 'pho_thong',   kg: [0.1, 0.5] },
+  ca_diec:      { ten: 'Cá diếc',      bac: 'pho_thong',   kg: [0.2, 0.9] },
+  ca_ro_phi:    { ten: 'Cá rô phi',    bac: 'pho_thong',   kg: [0.3, 1.5] },
+  ca_chep:      { ten: 'Cá chép',      bac: 'pho_thong',   kg: [0.5, 3.0] },
+  ca_tre:       { ten: 'Cá trê',       bac: 'hiem',        kg: [0.8, 4.0] },
+  ca_loc:       { ten: 'Cá lóc',       bac: 'hiem',        kg: [1.0, 5.0] },
+  ca_tram:      { ten: 'Cá trắm cỏ',   bac: 'hiem',        kg: [1.5, 8.0] },
+  ca_chep_vang: { ten: 'Cá chép vàng', bac: 'rat_hiem',    kg: [1.5, 6.0] },
+  ca_koi:       { ten: 'Cá koi',       bac: 'rat_hiem',    kg: [2.0, 8.0] },
+  ca_rong:      { ten: 'Cá rồng',      bac: 'huyen_thoai', kg: [3.0, 12.0] },
+};
+for (const k in CA) { CA[k].id = k; I[k] = { id: k, ten: CA[k].ten, loai: 'ca', gia: CAU.bac.find(b => b.id === CA[k].bac).gia }; }
+
 // ---------- THÚ CƯNG (spec §5.8): mỗi con 1 lần/ngày, +5 thiện cảm, mốc 20/50/100 ----------
 const THU = {
   // DANH MỤC THÚ CƯNG (Thùy 18/10: màn quản lý thú cưng — nuôi thêm các bé khác nhưng PHẢI MUA). Thêm loài = thêm 1 dòng + mô hình trong scene.
@@ -184,5 +210,5 @@ const LUAT = {
   viecHom: true,
 };
 
-window.NT_DATA = { PHA, RUONG, MUA, VAT, LO_CAP, BANH, TRANG_TRI, I, THU, NN_MOC, QUA_CAP, BAN_AO, LUAT };
+window.NT_DATA = { PHA, RUONG, MUA, VAT, LO_CAP, BANH, TRANG_TRI, I, CA, CAU, THU, NN_MOC, QUA_CAP, BAN_AO, LUAT };
 })();

@@ -1,0 +1,54 @@
+/* Nông Trại BK — CÂU CÁ (js/cauca.js): bảng câu cá + sổ tay cá + màn trò chơi. Màu, nút lấy từ game.css (--kem, --go, .nut…). */
+#cauCa { position: fixed; inset: 0; z-index: 60; background: rgba(20, 45, 60, .45); display: grid; place-items: center; padding: 10px; }
+#cauCa.an { display: none; }
+
+.ccBang { width: min(96vw, 760px); max-height: min(92vh, 720px); display: flex; flex-direction: column; border-radius: 26px; background: var(--kem); border: 4px solid var(--go); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); overflow: hidden; }
+.ccDau { position: relative; display: flex; align-items: center; justify-content: center; padding: 8px 48px; background: linear-gradient(#3f9bd0, #256f9e); color: #fff; font-size: 21px; font-weight: 800; text-shadow: 0 2px 0 rgba(0, 0, 0, .3); }
+.ccDong { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(#ff8a70, var(--do)); color: #fff; font-size: 20px; font-weight: 800; box-shadow: 0 3px 0 var(--do-dam); border: 0; font-family: inherit; }
+.ccThan { padding: 12px 14px 14px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.ccThan .nho { font-size: 12.5px; color: var(--mo); font-weight: 500; }
+
+.ccTren { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: 18px; background: linear-gradient(#dff4ff, #c4e8fb); border: 2px solid #9fd3ee; }
+.ccLuot { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.ccMoi { display: flex; gap: 4px; }
+.ccMoi i { font-style: normal; font-size: 22px; filter: grayscale(1); opacity: .3; }
+.ccMoi i.con { filter: none; opacity: 1; }
+.ccTha { font-size: 18px; padding: 10px 22px; border: 0; font-family: inherit; }
+.ccTha[disabled] { pointer-events: none; }
+
+.ccBacDs { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.ccBac { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: #fff; background: var(--m); text-shadow: 0 1px 0 rgba(0, 0, 0, .25); }
+.ccNhom { display: flex; align-items: center; gap: 8px; margin: 10px 2px 6px; font-weight: 800; font-size: 14px; color: var(--m); }
+.ccNhom::after { content: ''; flex: 1; height: 3px; border-radius: 2px; background: var(--m); opacity: .35; order: 1; }
+.ccNhom i { order: 2; font-style: normal; font-size: 12.5px; color: var(--mo); }
+.ccLuoi { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; }
+.ccThe { display: flex; flex-direction: column; align-items: center; padding: 6px 6px 8px; border-radius: 16px; background: #efe6d2; border: 2px dashed #d9c9a6; text-align: center; line-height: 1.2; }
+.ccThe img { width: 64px; height: 64px; }
+.ccThe b { font-size: 14px; color: var(--mo); }
+.ccThe span { font-size: 11.5px; color: var(--mo); }
+.ccThe.co { background: #fff; border: 2px solid var(--m); box-shadow: 0 2px 0 rgba(0, 0, 0, .08); }
+.ccThe.co b { color: var(--chu); }
+
+.ccChoi { position: relative; width: min(94vw, 640px); height: min(86vh, 380px); border-radius: 26px; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, .4); overflow: hidden; background: #2e8fc4; }
+.ccChoi canvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: pointer; }
+.ccBo { position: absolute; right: 10px; top: 10px; padding: 4px 12px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, .28); color: #fff; font-family: inherit; font-weight: 700; font-size: 13px; }
+.ccKet { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(15, 50, 75, .55); padding: 10px; }
+.ccKet.an { display: none; }
+.ccQua { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: min(80%, 320px); padding: 12px 18px 14px; border-radius: 22px; background: var(--kem); border: 4px solid var(--m, var(--go)); box-shadow: 0 8px 24px rgba(0, 0, 0, .35); text-align: center; animation: ccNay .35s cubic-bezier(.3, 1.6, .5, 1); }
+.ccQua img { width: 104px; height: 104px; margin: -6px 0 -8px; }
+.ccQua > b { font-size: 22px; }
+.ccQua .ccSo { font-size: 16px; font-weight: 700; margin-top: 4px; }
+.ccQua .nho { font-size: 12.5px; color: var(--mo); }
+.ccQua .dongNut { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
+.ccQua .dongNut .nut { border: 0; font-family: inherit; }
+.ccTuyet { position: absolute; top: -16px; left: 50%; transform: translateX(-50%) rotate(-4deg); padding: 2px 14px; border-radius: 999px; background: linear-gradient(#ffe07a, var(--vang)); color: var(--chu); font-weight: 800; font-size: 16px; box-shadow: 0 3px 0 var(--vang-dam); white-space: nowrap; }
+.ccMoiLoai { font-size: 13.5px; font-weight: 800; color: var(--xanh-dam); }
+.ccHut { font-size: 46px; line-height: 1.1; }
+.ccQua.hut > b { font-size: 18px; }
+@keyframes ccNay { from { transform: scale(.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+@media (max-height: 420px) {
+  .ccQua img { width: 76px; height: 76px; }
+  .ccQua > b { font-size: 18px; }
+  .ccThe img { width: 52px; height: 52px; }
+}

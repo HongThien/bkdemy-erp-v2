@@ -862,7 +862,7 @@ function taoIcon(ids) {
   }
   R.dispose(); R.forceContextLoss && R.forceContextLoss();
 }
-function icon(id) { return ICON[id] || ''; }
+function icon(id) { return ICON[id] || (window.NT_CAUCA && window.NT_CAUCA.icon(id)) || ''; }   // cá: vẽ bằng canvas ở js/cauca.js
 
 window.NT_MODELS = { meo, chimCan, buNhin, chauHoa, ttModel, rungBong, cayQuaBong, cayQuaMesh, toOng, cumHoa, buiTron, ao, daLat, buom, layVatQ, chibi, qcPhan, tuoiMau, tai, kk, vua, nhanBan, cayMesh, datRuong, vat, bangDon, giayDon, nhaGa, mang, bun, giaoCo, congTruong, lanhDat, boDung, taoIcon, icon, rnd, mat };
 })();

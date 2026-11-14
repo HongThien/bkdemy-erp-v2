@@ -26,7 +26,8 @@ const VT = {
   trangTri: [[-12.4, -1.6], [-12.2, 6.8], [-5.0, 7.8], [1.4, 6.6], [12.1, -6.2], [12.0, -9.4], [-2.4, -5.0], [-5.0, -6.6]],
   meo: { x: 1.9, z: -7.2 }, chim: { x: 9.5, z: -8.3 },
   hopThu: { x: 7.3, z: -2.4 },
-  ao: { x: 9.4, z: 1.0, rx: 2.3, rz: 1.6 },                    // ao góc dưới phải (như ảnh)
+  ao: { x: 7.9, z: 3.4, rx: 3.9, rz: 2.7 },                    // hồ trước cổng sân (Thùy 14/11: to ra, đẹp hơn, có chỗ câu cá) — trước là ao nhỏ 2,3 × 1,6 ở (9,4 · 1,0)
+  cau: { x: 2.9, z: 3.4, dai: 2.7 },                           // cầu gỗ câu cá: gốc ở bờ trái hồ, chạy theo +x ra mặt nước
   cho: { x: 5.0, z: -1.7, hw: 0.6, hd: 0.5 }, nhaCho: { x: 3.3, z: -1.6 },   // chó giữ trại ngay trước cổng sân
   bien: { x0: -16, x1: 13.5, z0: -13.2, z1: 9.8 },
 };
@@ -363,7 +364,7 @@ function dungTheGioi() {
   doan(S.x0, S.x1, (x, L) => rao.push({ x, z: S.z0, xoay: Math.PI / 2, k: L }));
   for (const [a, b] of [[S.x0, S.cong - CONG_HO], [S.cong + CONG_HO, S.x1]]) doan(a, b, (x, L) => rao.push({ x, z: S.z1, xoay: Math.PI / 2, k: L }));
   doan(S.z0, S.z1, (z, L) => { rao.push({ x: S.x0, z, xoay: 0, k: L }); rao.push({ x: S.x1, z, xoay: 0, k: L }); });
-  sc.add(M.nhanBan('fence_wood_straight', rao, 1.0));
+  if (!MOI) sc.add(M.nhanBan('fence_wood_straight', rao, 1.0));   // bản mới: rào quanh sân theo KIỂU NHÀ (raoSan, đổi trong doiNha)
   dungSan();
   hopThuO = dat(hopThu(), VT.hopThu.x, VT.hopThu.z, 0); neo(VT.hopThu.x, VT.hopThu.z).add(hopCham(0.8, 1.6, 0.8, { loai: 'hopThu' }));
   // bờ bụi quanh trại, rừng bông xù vòng ngoài (dày ở mép, thưa dần ra xa)
@@ -425,7 +426,7 @@ function dungTrangTri() {
   ];
   for (const [x, z] of VT.trangTri) chiem.push([x - 1, x + 1, z - 1, z + 1]);
   const A = VT.ao; chiem.push([A.x - A.rx - 0.6, A.x + A.rx + 0.6, A.z - A.rz - 0.6, A.z + A.rz + 0.6]);
-  const bongMat = [[-13.8, -5.0], [12.2, 5.2], [-3.4, -11.4]];                                                     // vài cây tán to
+  const bongMat = [[-13.8, -5.0], [12.9, -1.0], [-3.4, -11.4]];                                                     // vài cây tán to
   for (const [x, z] of bongMat) chiem.push([x - 1, x + 1, z - 1, z + 1]);
   sc.add(M.rungBong(bongMat.map(([x, z], i) => ({ x, z, kieu: 'tron', xoay: i * 2, k: 1.35 }))));
   const trong = (x, z, pad) => !chiem.some(([a, b, c, d]) => x > a - pad && x < b + pad && z > c - pad && z < d + pad) && !ganDuong(x, z, pad + 0.15);
@@ -434,9 +435,16 @@ function dungTrangTri() {
   // ao sen
   hoNuoc(texHo, A, 1.35, 4);
   const bSen = M.boDung(), rSen = M.rnd(9);
-  for (let i = 0; i < 6; i++) { const a = rSen() * 6.283, d = 0.25 + rSen() * 0.5, x = A.x + Math.cos(a) * A.rx * d, z = A.z + Math.sin(a) * A.rz * d; bSen.tru(0.22, 0.22, 0.02, x, 0.075, z, i % 2 ? 0x5cc23a : 0x7fd64a, null, 12); if (i % 2 === 0) { bSen.cau(0.08, x + 0.04, 0.12, z, 0xff9ad5, { x: 1, y: 0.7, z: 1 }, null, 0); bSen.cau(0.045, x + 0.04, 0.16, z, 0xffe066, null, null, 0); } }
-  for (let i = 0; i < 7; i++) { const a = i / 7 * 6.283 + rSen(), x = A.x + Math.cos(a) * (A.rx + 0.75), z = A.z + Math.sin(a) * (A.rz + 0.75); bSen.cau(0.16 + rSen() * 0.1, x, 0.06, z, rSen() > 0.5 ? 0xd9d4c8 : 0xc9c2b2, { x: 1.2, y: 0.6, z: 1 }, { y: rSen() * 3 }, 1); }
+  const ganCau = (x, z) => x < A.x - 0.3 && Math.abs(z - A.z) < 1.3;   // chừa mặt nước trước cầu câu (phao, dây câu)
+  for (let i = 0; i < 14; i++) { const a = rSen() * 6.283, d = 0.25 + rSen() * 0.55, x = A.x + Math.cos(a) * A.rx * d, z = A.z + Math.sin(a) * A.rz * d, k = 0.9 + rSen() * 0.5; if (ganCau(x, z)) continue;
+    bSen.tru(0.22 * k, 0.22 * k, 0.02, x, 0.075, z, i % 2 ? 0x5cc23a : 0x7fd64a, null, 12); if (i % 2 === 0) { bSen.cau(0.08, x + 0.04, 0.12, z, i % 4 ? 0xff9ad5 : 0xffffff, { x: 1, y: 0.7, z: 1 }, null, 0); bSen.cau(0.045, x + 0.04, 0.16, z, 0xffe066, null, null, 0); } }
+  for (let i = 0; i < 13; i++) { const a = i / 13 * 6.283 + rSen() * 0.3, x = A.x + Math.cos(a) * (A.rx + 0.75), z = A.z + Math.sin(a) * (A.rz + 0.75); if (ganCau(x, z)) continue; bSen.cau(0.16 + rSen() * 0.12, x, 0.06, z, rSen() > 0.5 ? 0xd9d4c8 : 0xc9c2b2, { x: 1.2, y: 0.6, z: 1 }, { y: rSen() * 3 }, 1); }
+  // lau sậy + cỏ nến mọc thành cụm ở mép nước
+  for (const a0 of [0.35, 1.15, 1.95, 2.55, 3.85, 4.6, 5.45]) { const cx = A.x + Math.cos(a0) * A.rx * 0.97, cz = A.z + Math.sin(a0) * A.rz * 0.97;
+    for (let i = 0; i < 7; i++) { const x = cx + (rSen() - 0.5) * 0.7, z = cz + (rSen() - 0.5) * 0.5, h = 0.55 + rSen() * 0.6, ng = (rSen() - 0.5) * 0.3;
+      bSen.tru(0.012, 0.022, h, x, h / 2, z, rSen() > 0.5 ? 0x4f9a3c : 0x6fb24f, { z: ng }, 5); if (i % 2) bSen.tru(0.04, 0.04, 0.2, x - Math.sin(ng) * h * 0.5, h + 0.02, z, 0x7a4a26, { z: ng }, 6); } }
   sc.add(bSen.xong());
+  dungCau();
   // cây táo + bụi quả mọng + bụi hoa tròn (dựng 1 lưới gộp)
   const bTao = M.boDung(), bui = M.qcPhan('BushBerries_4'), nam2 = M.qcPhan('Mushroom_2'), nam4 = M.qcPhan('Mushroom_4'), co3 = M.qcPhan('Grass_3');
   const cayTao = [[-13.6, 7.8], [-8.6, 8.4], [11.8, 7.6], [12.4, -10.4], [-6.0, -9.6]];
@@ -484,17 +492,107 @@ function dungTrangTri() {
   chimO = M.chimCan(); dat(chimO, VT.chim.x, VT.chim.z, -0.4); neo(VT.chim.x, VT.chim.z).add(hopCham(0.9, 1.7, 0.9, { loai: 'thu', id: 'chim' }));
 }
 
+// ---------- CÂU CÁ (Thùy 14/11): cầu gỗ + ghế + cần câu + dù + biển "Câu cá" ở bờ trái hồ; phao và bóng cá dưới nước ----------
+// Chạm cầu / ghế / biển ⇒ { loai: 'cau' } (ui.js mở js/cauca.js). Luật ở engine (cauNem / cauXong). phao(tt): 0 nghỉ · 1 đang chờ cá · 2 cá cắn · 3 kéo lên.
+let cauO = null, phaoO = null, phaoTT = 0, dayCau = null, caBong = [];
+const PHAO = new T.Vector3(), DAU_CAN = new T.Vector3();
+function dungCau() {
+  const C = VT.cau, g = neo(C.x, C.z), b = M.boDung(), GO = [0xc98d55, 0xb97d47], DAM = 0x8a5530, dai = C.dai, n = Math.round(dai / 0.3), cx = dai - 0.75;
+  cauO = g;
+  for (let i = 0; i < n; i++) b.hop(dai / n * 0.9, 0.08, 1.2, (i + 0.5) * dai / n, 0.3, 0, GO[i % 2]);                                  // ván lát
+  for (const z of [-0.5, 0.5]) b.hop(dai, 0.1, 0.1, dai / 2, 0.22, z, DAM);                                                             // dầm
+  for (const x of [0.15, dai * 0.5, dai - 0.15]) for (const z of [-0.62, 0.62]) { b.tru(0.07, 0.08, 0.66, x, 0.2, z, DAM, null, 8); b.cau(0.085, x, 0.55, z, 0xa86d3e, null, null, 0); }
+  // ghế gỗ đệm đỏ, quay mặt ra hồ
+  for (const [dx, dz] of [[0.2, 0.2], [0.2, -0.2], [-0.2, 0.2], [-0.2, -0.2]]) b.hop(0.06, 0.3, 0.06, cx + dx, 0.49, dz, DAM);
+  b.hop(0.52, 0.06, 0.52, cx, 0.66, 0, 0xb97d47); b.hop(0.44, 0.07, 0.44, cx + 0.01, 0.72, 0, 0xe8553d);
+  b.hop(0.06, 0.52, 0.52, cx - 0.25, 0.95, 0, 0xb97d47, { z: 0.12 }); b.hop(0.07, 0.3, 0.44, cx - 0.22, 1.0, 0, 0xe8553d, { z: 0.12 });
+  // xô đựng cá + hộp mồi
+  b.tru(0.17, 0.13, 0.28, cx - 0.05, 0.48, 0.42, 0x5b8fd0, null, 10); b.tru(0.18, 0.18, 0.03, cx - 0.05, 0.62, 0.42, 0x3f6fb0, null, 10);
+  b.hop(0.26, 0.14, 0.2, cx - 0.55, 0.41, 0.4, 0x6fae4e);
+  // cần câu gác trên chạc, chĩa ra mặt nước
+  const gx = cx + 0.3, gz = -0.32, L = 2.3, ng = 1.05;
+  b.tru(0.014, 0.03, L, gx + Math.sin(ng) * L / 2, 0.5 + Math.cos(ng) * L / 2, gz, 0x6b4a2a, { z: -ng }, 6);
+  b.tru(0.02, 0.02, 0.36, gx + 0.3, 0.52, gz, DAM, null, 5); b.tru(0.05, 0.05, 0.06, gx + 0.16, 0.66, gz + 0.03, 0x444444, { x: 1.57 }, 8);
+  // dù che nắng sọc đỏ trắng (cắm lùi phía sau ghế — không che ghế khi nhìn từ camera)
+  const ux = cx - 0.75, uz = -0.5;
+  b.tru(0.025, 0.025, 1.9, ux, 1.28, uz, 0xf2efe6, null, 6);
+  for (let i = 0; i < 12; i++) b.geo(new T.ConeGeometry(0.95, 0.38, 1, 1, true, i / 12 * 6.2832, 6.2832 / 12), ux, 2.3, uz, i % 2 ? 0xffffff : 0xff6f5a);
+  b.cau(0.05, ux, 2.52, uz, 0xff6f5a, null, null, 0);
+  const m = b.xong(); m.material = m.material.clone(); m.material.side = T.DoubleSide; g.add(m);
+  const hc = hopCham(dai + 0.5, 1.7, 1.9, { loai: 'cau' }); hc.position.x = dai / 2; g.add(hc);
+  // biển gỗ "Câu cá" quay về phía camera
+  const sg = new T.Group(), sb = M.boDung(); sg.position.set(-0.55, 0, 1.25); sg.rotation.y = Math.atan2(HUONG.x, HUONG.z);
+  sb.tru(0.05, 0.06, 1.1, 0, 0.55, 0, DAM, null, 6); sb.hop(1.3, 0.56, 0.08, 0, 1.2, 0, 0x8a5530); sb.hop(1.2, 0.46, 0.09, 0, 1.2, 0, 0xd9a46a); sg.add(sb.xong());
+  const c = document.createElement('canvas'); c.width = 384; c.height = 128; const x = c.getContext('2d');
+  x.font = '900 68px system-ui, "Segoe UI", Arial, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round';
+  x.lineWidth = 10; x.strokeStyle = '#7a3f12'; x.strokeText('🎣 Câu cá', 192, 68); x.fillStyle = '#fff6dc'; x.fillText('🎣 Câu cá', 192, 68);
+  const tx = new T.CanvasTexture(c); tx.encoding = T.sRGBEncoding; tx.anisotropy = 4;
+  const pl = new T.Mesh(new T.PlaneGeometry(1.14, 0.38), new T.MeshBasicMaterial({ map: tx, transparent: true })); pl.position.set(0, 1.2, 0.05); sg.add(pl);
+  sg.add(hopCham(1.4, 1.7, 0.6, { loai: 'cau' })); g.add(sg);
+  // phao + dây câu
+  DAU_CAN.set(C.x + gx + Math.sin(ng) * L, 0.5 + Math.cos(ng) * L, C.z + gz); PHAO.set(DAU_CAN.x + 0.35, 0.03, C.z + gz + 0.1);
+  const pb = M.boDung(); pb.cau(0.075, 0, -0.01, 0, 0xffffff, null, null, 1); pb.cau(0.085, 0, 0.05, 0, 0xff4a3c, { x: 1, y: 0.8, z: 1 }, null, 1); pb.tru(0.012, 0.012, 0.2, 0, 0.19, 0, 0x333333, null, 5); pb.cau(0.025, 0, 0.3, 0, 0xffd23f, null, null, 0);
+  phaoO = pb.xong(false); phaoO.position.copy(PHAO); sc.add(phaoO);
+  dayCau = new T.Line(new T.BufferGeometry().setFromPoints([DAU_CAN, PHAO]), new T.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.75 })); dayCau.frustumCulled = false; sc.add(dayCau);
+  // bóng cá bơi lờ mờ dưới nước
+  const hinh = new T.Shape(); hinh.absellipse(0, 0, 0.3, 0.11, 0, 6.2832); const duoi = new T.Shape(); duoi.moveTo(-0.24, 0); duoi.lineTo(-0.5, 0.14); duoi.lineTo(-0.44, 0); duoi.lineTo(-0.5, -0.14); duoi.closePath();
+  const gc = new T.ShapeGeometry([hinh, duoi], 10); gc.rotateX(-Math.PI / 2);
+  const mc = new T.MeshBasicMaterial({ color: new T.Color(0x175066).convertSRGBToLinear(), transparent: true, opacity: 0.42, depthWrite: false });
+  for (let i = 0; i < 5; i++) { const f = new T.Mesh(gc, mc); f.renderOrder = 6; f.userData = { pha: i * 1.9, bk: 0.3 + (i % 3) * 0.2, v: (i % 2 ? -1 : 1) * (0.16 + i * 0.03), k: 0.8 + (i % 3) * 0.25 }; f.scale.setScalar(f.userData.k); f.position.y = 0.045; sc.add(f); caBong.push(f); }
+}
+function phao(tt) { phaoTT = tt; if (!phaoO) return; if (tt === 2) hatTai(new T.Vector3(PHAO.x, 0.1, PHAO.z), 'nuoc', 6); if (tt === 3) { hatTai(new T.Vector3(PHAO.x, 0.15, PHAO.z), 'nuoc', 12); phaoTT = 0; } }
+function hdCau() {
+  if (!phaoO) return;
+  const A = VT.ao;
+  phaoO.position.y = phaoTT === 2 ? -0.05 + Math.sin(tg * 16) * 0.035 : 0.03 + Math.sin(tg * 2.2) * (phaoTT === 1 ? 0.03 : 0.012);
+  phaoO.rotation.z = Math.sin(tg * 1.7) * 0.12;
+  const p = dayCau.geometry.attributes.position; p.setY(1, phaoO.position.y + 0.28); p.needsUpdate = true;
+  for (const f of caBong) { const u = f.userData, t = tg * u.v + u.pha, s = Math.sign(u.v);
+    f.position.x = A.x + 0.3 + Math.cos(t) * A.rx * u.bk; f.position.z = A.z + Math.sin(t) * A.rz * u.bk;
+    f.rotation.y = Math.atan2(-Math.cos(t) * A.rz * s, -Math.sin(t) * A.rx * s) + Math.sin(tg * 5 + u.pha) * 0.18; }
+}
+
 // ---------- NHÀ Ở: em tự chọn kiểu (Thùy 03/11) — 4 kiểu trong dohoa.js KIEU_NHA, mỗi kiểu 10 mức; mức vẫn theo ?nha= (mặc định 1) ----------
-const NHA_MUC = +new URLSearchParams(location.search).get('nha') || 6;   // Thùy 14/11 'làm kĩ phần nhà đẹp hơn': chưa tự chọn món ⇒ nhà mức 6 (ngói, tường sơn, hiên, đèn) thay vì chòi mức 1
+const NHA_MUC = +new URLSearchParams(location.search).get('nha') || 1;   // Thùy 14/11: mỗi kiểu 4 mức, mức 1 đã là nhà ngói tường sơn; cách NÂNG mức làm sau (hiện xem thử bằng ?nha=1..4)
 let nhaKieu = null, nhaKhoa = '';
 // doVat = mảng id món em tự chọn (Thùy 14/11: tự trang trí nhà); chưa chọn bao giờ ⇒ bộ món của mức NHA_MUC
 function doiNha(kieu, doVat) {
-  if (!MOI || !DH.KIEU_NHA[kieu]) kieu = 'go';
+  if (!MOI || !DH.KIEU_NHA[kieu] || DH.KIEU_NHA[kieu].an) kieu = 'go';
   const mon = DH.KIEU_NHA[kieu].mon, ds = Array.isArray(doVat) ? doVat.filter(id => mon[id]) : null, khoa = kieu + '|' + (ds && ds.length ? ds.join(',') : NHA_MUC);
   if (khoa === nhaKhoa && khoG.nha) return;
   if (khoG.nha) sc.remove(khoG.nha);
   khoG.nha = dat(DH.nhaMoi(kieu, ds && ds.length ? ds : NHA_MUC), VT.nha.x, VT.nha.z - 0.6); khoG.nha.scale.setScalar(VT.nha.rong / 2.3);
   nhaKieu = kieu; nhaKhoa = khoa; canBong = true;
+  if (MOI) { if (!raoO[kieu]) { raoO[kieu] = raoSan(kieu); sc.add(raoO[kieu]); } for (const k in raoO) raoO[k].visible = k === kieu; }
+}
+// ---------- RÀO QUANH SÂN THEO KIỂU NHÀ (Thùy 14/11 "bị khuôn viên trong khuôn viên… rào bên trong đẹp hơn, bỏ rào ngoài thay bằng rào bên trong") ----------
+// Nhà không còn rào riêng; rào sân = đúng kiểu rào của nhà: gỗ → cọc trắng nhọn đầu · Việt → hàng dâm bụt trên bờ gạch · Nhật → rào tre mắt cáo.
+const raoO = {};
+function raoSan(kieu) {
+  const S = VT.san, b = M.boDung(), r = M.rnd(53);
+  const canh = [[S.x0, S.z0, S.x1, S.z0], [S.x0, S.z0, S.x0, S.z1], [S.x1, S.z0, S.x1, S.z1], [S.x0, S.z1, S.cong - CONG_HO, S.z1], [S.cong + CONG_HO, S.z1, S.x1, S.z1]];
+  for (const [xa, za, xb, zb] of canh) {
+    const L = Math.hypot(xb - xa, zb - za), doc = xa === xb, P = t => [xa + (xb - xa) * t / L, za + (zb - za) * t / L], xm = (xa + xb) / 2, zm = (za + zb) / 2;
+    const thanh = (y, day, cao, mau) => b.hop(doc ? day : L, cao, doc ? L : day, xm, y, zm, mau);
+    const nTru = Math.max(1, Math.round(L / 1.7));
+    if (kieu === 'viet') { // hàng dâm bụt cắt tỉa trên bờ gạch, hoa đỏ
+      thanh(0.07, 0.42, 0.14, 0xb9654a); thanh(0.15, 0.3, 0.04, 0x5a3a22);
+      for (let t = 0.2; t < L; t += 0.4) { const [x, z] = P(t), k = 0.27 + r() * 0.05; b.cau(k, x, 0.2 + k * 0.75, z, [0x4f9a3c, 0x5ea344, 0x58a040][Math.floor(r() * 3)], { x: 1, y: 0.95, z: 1 }, null, 1);
+        for (let i = 0; i < 2; i++) { const a = r() * 6.283, e = 0.3 + r() * 0.9; b.cau(0.055, x + Math.cos(a) * Math.cos(e) * k, 0.2 + k * 0.75 + Math.sin(e) * k * 0.95, z + Math.sin(a) * Math.cos(e) * k, r() > 0.25 ? 0xe8323a : 0xffd23f, null, null, 0); } }
+    } else if (kieu === 'nhat') { // rào tre mắt cáo: cọc tre to + nan đứng + 3 thanh ngang
+      const TRE = 0xc8b06a, DAM = 0xa88f4e;
+      for (const y of [0.24, 0.52, 0.8]) b.tru(0.026, 0.026, L, xm, y, zm, DAM, doc ? { x: Math.PI / 2 } : { z: Math.PI / 2 }, 6);
+      for (let t = 0.15; t < L; t += 0.3) { const [x, z] = P(t); b.tru(0.024, 0.026, 0.86 + r() * 0.06, x, 0.45, z, TRE, null, 6); }
+      for (let i = 0; i <= nTru; i++) { const [x, z] = P(L * i / nTru); b.tru(0.06, 0.065, 1.08, x, 0.54, z, 0xb89a54, null, 8); b.tru(0.066, 0.066, 0.04, x, 1.07, z, 0x7a6a3a, null, 8); b.tru(0.066, 0.066, 0.03, x, 0.5, z, 0x7a6a3a, null, 8); }
+    } else { // cọc gỗ sơn trắng nhọn đầu, trụ có núm tròn
+      const TR = 0xfbf7ee, TR2 = 0xf1ece0;
+      for (const y of [0.26, 0.6]) thanh(y, 0.05, 0.075, TR2);
+      for (let t = 0.13; t < L; t += 0.26) { const [x, z] = P(t);
+        b.hop(doc ? 0.05 : 0.13, 0.74, doc ? 0.13 : 0.05, x, 0.39, z, TR); b.hop(doc ? 0.05 : 0.092, 0.092, doc ? 0.092 : 0.05, x, 0.76, z, TR, doc ? { x: Math.PI / 4 } : { z: Math.PI / 4 }); }
+      for (let i = 0; i <= nTru; i++) { const [x, z] = P(L * i / nTru); b.hop(0.17, 1.0, 0.17, x, 0.5, z, TR); b.hop(0.22, 0.05, 0.22, x, 1.0, z, TR2); b.cau(0.11, x, 1.1, z, TR, null, null, 1); }
+    }
+  }
+  return b.xong();
 }
 
 // ---------- SÂN NHÀ (Thùy 14/11 "sân chưa có trang trí gì — có sân, cây cảnh, đồ vật"): lối đá từ cổng vào cửa nhà (luôn có) + ĐỒ TRONG SÂN ----------
@@ -530,7 +628,7 @@ const SAN_DO = {
     chauHoa(b, c - 1.0, z1 - 0.75, 1, [0xff7eb6, 0xffffff]); chauHoa(b, c + 1.0, z1 - 0.75, 1, [0xffd23f, 0xff9a3c]);
     chauHoa(b, c - 1.0, -4.65, 0.85, [0xb58cff, 0xffffff]); chauHoa(b, c + 1.0, -4.65, 0.85, [0xff6f5a, 0xffd23f]); return b.xong(); } },
   luong: { ten: 'Luống hoa', ic: '🌷', ve() { const b = M.boDung(), S = VT.san; luong(b, S.x0 + 0.45, -11.2, S.x0 + 0.45, -8.6, 31); luong(b, S.x1 - 0.45, -8.4, S.x1 - 0.45, -6.7, 37); luong(b, 0.3, S.z0 + 0.45, 2.9, S.z0 + 0.45, 41); luong(b, 7.2, S.z0 + 0.45, 7.9, S.z0 + 0.45, 43); return b.xong(); } },
-  cayCanh: { ten: 'Cây cảnh', ic: '🌳', ve() { const b = M.boDung(); cayCanh(b, 2.3, -9.3, 1); cayCanh(b, 8.05, -8.0, 0.9); return b.xong(); } },
+  cayCanh: { ten: 'Cây cảnh', ic: '🌳', ve() { const b = M.boDung(); cayCanh(b, 1.5, -8.75, 1); cayCanh(b, 8.05, -8.0, 0.9); return b.xong(); } },
   gieng: { ten: 'Giếng nước', ic: '🪣', ve() { const b = M.boDung(), x = 0.2, z = -7.6;
     for (let i = 0; i < 10; i++) { const a = i / 10 * 6.283; b.hop(0.36, 0.5, 0.2, x + Math.cos(a) * 0.52, 0.25, z + Math.sin(a) * 0.52, [0xbdb6ab, 0xaaa398, 0xc9c3b7][i % 3], { y: -a + Math.PI / 2 }); }
     b.tru(0.5, 0.5, 0.04, x, 0.36, z, 0x3f98ad, null, 14);
@@ -545,8 +643,8 @@ const SAN_DO = {
     for (const [dx, dz] of [[-0.85, 0.1], [0.3, 0.72]]) { b.tru(0.24, 0.24, 0.06, x + dx, 0.38, z + dz, 0xb97d47, null, 10); b.tru(0.07, 0.1, 0.36, x + dx, 0.18, z + dz, 0x8a5530, null, 6); }
     return b.xong(); } },
   rom: { ten: 'Cuộn rơm', ic: '🌾', ve() { const b = M.boDung();
-    for (const [x, z, ry] of [[0.75, -10.3, 0.25], [1.6, -10.05, -0.45]]) { b.tru(0.38, 0.38, 0.7, x, 0.38, z, 0xe6c35a, { z: Math.PI / 2, y: ry }, 14); for (const d of [-0.2, 0.2]) b.tru(0.39, 0.39, 0.05, x + Math.cos(ry) * d, 0.38, z - Math.sin(ry) * d, 0xb98a3a, { z: Math.PI / 2, y: ry }, 14); }
-    b.hop(0.04, 1.1, 0.04, 1.2, 0.55, -10.6, 0x8a5530, { x: -0.25 }); for (const d of [-0.07, 0, 0.07]) b.hop(0.02, 0.24, 0.02, 1.2 + d, 1.15, -10.76, 0x8f8f9a, { x: -0.25 }); return b.xong(); } },
+    for (const [x, z, ry] of [[0.35, -10.4, 0.25], [1.15, -10.2, -0.45]]) { b.tru(0.38, 0.38, 0.7, x, 0.38, z, 0xe6c35a, { z: Math.PI / 2, y: ry }, 14); for (const d of [-0.2, 0.2]) b.tru(0.39, 0.39, 0.05, x + Math.cos(ry) * d, 0.38, z - Math.sin(ry) * d, 0xb98a3a, { z: Math.PI / 2, y: ry }, 14); }
+    b.hop(0.04, 1.1, 0.04, 0.8, 0.55, -10.75, 0x8a5530, { x: -0.25 }); for (const d of [-0.07, 0, 0.07]) b.hop(0.02, 0.24, 0.02, 0.8 + d, 1.15, -10.91, 0x8f8f9a, { x: -0.25 }); return b.xong(); } },
 };
 const SAN_MAC_DINH = ['cong', 'den', 'chau', 'luong', 'cayCanh', 'gieng'];
 const sanO = {}; let sanKhoa = null, tenTrai = '';
@@ -904,6 +1002,7 @@ function doiTuong(chon) {
   if (chon.loai === 'bang') return bangO;
   if (chon.loai === 'sap') return sapO;
   if (chon.loai === 'hopThu') return hopThuO;
+  if (chon.loai === 'cau') return cauO;
   if (chon.loai === 'tt') return ttO[chon.o] && ttO[chon.o].mo;
   if (chon.loai === 'thu') return chon.id === 'cho' ? choO && choO.goc : chon.id === 'meo' ? meoO : chimO;
   return null;
@@ -1189,9 +1288,10 @@ function khung(dtEp) {
   }
   // suối chảy + vịt bơi quanh hồ
   if (texSuoi) texSuoi.offset.x -= dt * 0.05;
-  vitDs.forEach((v, i) => { const u = v.userData, t = tg * 0.12 + u.pha, A = VT.ao, x = A.x + Math.cos(t) * A.rx * u.bk, z = A.z + Math.sin(t) * A.rz * u.bk; v.rotation.y = Math.atan2(-Math.cos(t) * A.rz, -Math.sin(t) * A.rx); v.position.set(x, 0.02 + Math.sin(tg * 2 + i) * 0.02, z); });
+  vitDs.forEach((v, i) => { const u = v.userData, t = tg * 0.12 + u.pha, A = VT.ao, x = A.x + 1.2 + Math.cos(t) * A.rx * u.bk * 0.7, z = A.z + Math.sin(t) * A.rz * u.bk; v.rotation.y = Math.atan2(-Math.cos(t) * A.rz, -Math.sin(t) * A.rx); v.position.set(x, 0.02 + Math.sin(tg * 2 + i) * 0.02, z); });
   // ao: lá sen dập dềnh
   if (aoO && aoO.userData.la) aoO.userData.la.position.y = Math.sin(tg * 1.5) * 0.01;
+  hdCau();
   // xe tải chạy đi rồi về
   if (xeChay > 0 && xeO) {
     xeChay = Math.max(0, xeChay - dt); const p = 1 - xeChay / 4, g = xeO.userData.goc;
@@ -1263,6 +1363,7 @@ function viTri(chon) {
   if (chon.loai === 'nha') return new T.Vector3(VT.nha.x, 4.2, VT.nha.z);
   if (chon.loai === 'sap') return new T.Vector3(VT.sap.x, 2.2, VT.sap.z);
   if (chon.loai === 'hopThu') return new T.Vector3(VT.hopThu.x, 1.5, VT.hopThu.z);
+  if (chon.loai === 'cau') return new T.Vector3(VT.cau.x + VT.cau.dai - 0.8, 1.7, VT.cau.z);
   if (chon.loai === 'tt') { const [x, z] = VT.trangTri[chon.o]; return new T.Vector3(x, 1.0, z); }
   if (chon.loai === 'thu') {
     if (chon.id === 'cho' && choO) { const p = new T.Vector3(); choO.goc.getWorldPosition(p); p.y = 0.8; return p; }
@@ -1275,5 +1376,5 @@ function nhinVe(chon) { const p = viTri(chon); if (p) { muc.x = p.x; muc.z = p.z
 // DEV: chụp canvas (pane ẩn thì rAF đứng — chạy tay vài khung trước khi chụp)
 function chup(ten, soKhung) { for (let i = 0; i < (soKhung || 1); i++) khung(0.05); return fetch('/_snap?name=' + (ten || 'farm'), { method: 'POST', body: cv.toDataURL('image/jpeg', 0.85) }).then(r => r.text()); }
 
-window.NT_SCENE = { init, doiNha, doiNen, doiSan, doiTenTrai, SAN_DO, SAN_MAC_DINH, nhaMuc: () => NHA_MUC, NEN, nen: () => nenId, nha: () => nhaKieu, datLe: (t, d) => { leTren = t; leDuoi = d; if (cv) { const cu = kcVua; doiCo(); if (cu === kcVua) return; } }, vaoGiua: () => { vaoGiua(); kc = kcVua; }, dongBo, datGiay, manHinh, viTri, batQuet, xeDi, nhinVe, dongHo, chup, nay, hat, VT, _dbg: () => ({ muc, kc, cam, sc, R, hk }), _datCam: (x, z, k) => { muc.x = x; muc.z = z; if (k) kc = k; } };
+window.NT_SCENE = { init, doiNha, doiNen, doiSan, doiTenTrai, SAN_DO, SAN_MAC_DINH, nhaMuc: () => NHA_MUC, NEN, nen: () => nenId, nha: () => nhaKieu, datLe: (t, d) => { leTren = t; leDuoi = d; if (cv) { const cu = kcVua; doiCo(); if (cu === kcVua) return; } }, vaoGiua: () => { vaoGiua(); kc = kcVua; }, dongBo, datGiay, manHinh, viTri, batQuet, xeDi, nhinVe, dongHo, chup, nay, hat, phao, VT, _dbg: () => ({ muc, kc, cam, sc, R, hk }), _datCam: (x, z, k) => { muc.x = x; muc.z = z; if (k) kc = k; } };
 })();

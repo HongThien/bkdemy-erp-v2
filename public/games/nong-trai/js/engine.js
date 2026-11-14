@@ -82,6 +82,7 @@ function lamMoi(s) {
   if (!s.hom || s.hom.d !== d) s.hom = { d, trom: 0, giup: 0, diem: 0, mua: 0, nn: 0 };
   if (s.hom.mua == null) s.hom.mua = 0;
   if (s.hom.nn == null) s.hom.nn = 0;
+  if (s.hom.cau == null) { s.hom.cau = 0; s.hom.cauXong = 0; }
   if (!s.tuan || s.tuan.k !== tuanCua(d)) s.tuan = { k: tuanCua(d), xu: 0 };
   if (!s.thang || s.thang.k !== thangCua(d)) s.thang = { k: thangCua(d), ra: 0, vao: 0, chi: 0 };
   if (s.thang.chi == null) s.thang.chi = 0;
@@ -346,6 +347,38 @@ function ban(s, id, n) {
   nhanExp(s, P.gia * n, su); dem(s, 'ban', n);
   return xong(su);
 }
+// ---------- CÂU CÁ (Thùy 14/11) ----------
+// Mỗi ngày D.CAU.luot lượt. cauNem = thả câu (TRỪ LƯỢT NGAY — tải lại trang giữa chừng không lấy lại được lượt) và cho biết con cá đang cắn
+// (bậc + loài suy từ hàm băm theo ngày + số lượt ⇒ chơi lại không đổi được cá). cauXong(ket) = kết quả trò chơi: 0 hụt · 1 được · 2 chuẩn tâm cả 2 pha (cá nặng hơn).
+// Cá vào kho, bán ở chợ như nông sản (giá theo bậc). Sổ cá s.ca = { loài: { n: đã câu, kg: con nặng nhất } }.
+function cauCa(s, i) {
+  const k = s.hat + '|ca|' + s.hom.d + '|' + i; let x = bam(k + '|bac'), bac = D.CAU.bac[0];
+  for (const B of D.CAU.bac) { bac = B; if (x < B.p) break; x -= B.p; }
+  const ds = Object.values(D.CA).filter(c => c.bac === bac.id);
+  return { C: ds[Math.floor(bam(k + '|loai') * ds.length)], bac, k };
+}
+function cauTT(s) { lamMoi(s); return { con: Math.max(0, D.CAU.luot - s.hom.cau), luot: D.CAU.luot, dang: s.hom.cau > s.hom.cauXong }; }
+function cauNem(s) {
+  lamMoi(s);
+  if (s.hom.cau >= D.CAU.luot) return loi('Hôm nay hết lượt câu rồi — mai câu tiếp nhé');
+  s.hom.cauXong = s.hom.cau; s.hom.cau++; dem(s, 'cauNem');
+  const c = cauCa(s, s.hom.cau);
+  return { ok: true, su: [], ca: c.C.id, bac: c.bac };
+}
+function cauXong(s, ket) {
+  lamMoi(s);
+  if (s.hom.cauXong >= s.hom.cau) return loi('');
+  s.hom.cauXong = s.hom.cau;
+  if (!(ket >= 1)) { dem(s, 'caHut'); return xong([{ loai: 'caHut' }]); }
+  const { C, k } = cauCa(s, s.hom.cau);
+  const kg = Math.round(Math.min(C.kg[1] * 1.2, (C.kg[0] + (C.kg[1] - C.kg[0]) * Math.pow(bam(k + '|kg'), 1.6)) * (ket >= 2 ? 1.2 : 1)) * 100) / 100;
+  if (!s.ca) s.ca = {};
+  const so1 = s.ca[C.id] || (s.ca[C.id] = { n: 0, kg: 0 }), kyLuc = kg > so1.kg;
+  so1.n++; if (kyLuc) so1.kg = kg;
+  them(s, C.id, 1); dem(s, 'ca');
+  return xong([{ loai: 'ca', id: C.id, kg, kyLuc, moi: so1.n === 1 }, { loai: 'mon', id: C.id, n: 1 }]);
+}
+
 function muaPhan(s, n) {
   n = n || 1;
   if (theoServer()) {
@@ -621,5 +654,6 @@ window.NT_ENGINE = {
   datDiem, thuMo, muaThu,
   BAN_THAT_K0, BAN_THAT, laBanThat, datBanThatDs, datVuonBan, banThatCua, banTong, soBanCoViec, ketQuaBanThat, apDungViec, tromCua,
   moO, gieo, tuoi, bon, batSau, thu, muaVat, choAn, thuVat, nuong, tangTocLo, layBanh, ban, muaPhan, lamLuot, choiThu, datTT, goTT, tromBan, giupBan, capNhat,
+  cauTT, cauNem, cauXong,
 };
 })();
