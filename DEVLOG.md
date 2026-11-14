@@ -80790,3 +80790,11 @@ Thùy nêu 4 việc, làm được 3:
   người nghe. `claude_build` không có quyền vào schema `realtime` ⇒ cần Thùy chạy ở SQL Editor (chỉ đọc):
   `select entity::text bang, count(*) so_dang_ky, max(created_at) moi_nhat from realtime.subscription group by 1 order by 2 desc;`
   0 dòng mà vẫn đọc ⇒ khả năng (3): muốn cắt phải tắt hẳn postgres_changes (màn Sự kiện đã có poll dự phòng 5 s) — quyết định của Thùy. Bản gỡ ở client vẫn đúng (đăng ký vô dụng), giữ.
+- **22:25 — đo lại lần 2 sau deploy + TÌM RA: giả thuyết "đăng ký chết giữ bộ đọc Realtime" là SAI.** Vẫn 1,93 lượt đọc/giây (chi phí/lượt giảm còn ~7 ms vì đêm ít ghi ⇒ 1,3 % một nhân).
+  Bằng chứng (đọc `pg_stat_all_tables` — schema `realtime` cấm vào nhưng thống kê thì đọc được): `realtime.subscription` **0 dòng sống, 0 lượt chèn, 0 lượt xoá** từ khi DB khởi động
+  (11/11 20:46) ⇒ hơn 3 ngày KHÔNG có đăng ký postgres_changes nào được tạo (đăng ký của PhienClaudeTab vào bảng chưa phát chưa từng được ghi nhận; màn Sự kiện không ai mở).
+  Vậy mà `realtime_rls` vẫn gọi `list_changes` đều ~1,9 lượt/giây ⇒ **bộ đọc chạy suốt khi dự án bật Realtime, không phụ thuộc người nghe.**
+  Chi phí mỗi lượt tỉ lệ với lượng ghi của CẢ DB (đêm 7 ms · tối 29 ms · lúc tôi ghi hàng loạt buổi trưa 65 ms) ⇒ 1,3 % → 5,4 % → 11 % một nhân. **Ghi gấp 10 thì khoản này cũng
+  phình theo — đưa vào bài thử tải đợt 6.** Cách cắt: chưa tìm được công tắc tắt riêng postgres_changes trong tài liệu Supabase (Dashboard → Realtime → Settings chỉ thấy nói về
+  giới hạn kết nối / kích thước pool); gỡ bảng khỏi publication không dừng được việc đọc. Bản gỡ ở PhienClaudeTab = dọn code vô dụng, vô hại, giữ nguyên.
+  **Bài học:** trước khi dựng giả thuyết về một dịch vụ không vào được, thử `pg_stat_all_tables` / `pg_stat_activity` — đọc được với mọi role và đủ để bác bỏ trong 1 phút.
