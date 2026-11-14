@@ -1,0 +1,550 @@
+[
+ {
+  "id": "NDB01541",
+  "ten": "Bài toán tổng hiệu cơ bản",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01723",
+  "nhom": "1. Bài toán tổng hiệu có ẩn đại lượng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080101025",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số biết rằng tổng hai số đó là 180, hiệu hai số đó là 60 ?",
+    "dap_an": "120, 60",
+    "loi_giai": "Số lớn là : $(180+60):2=120$\nSố bé là : $180-120=60$\nĐáp số : 120, 60"
+   },
+   {
+    "ma_cau": "T14T080101026",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số biết rằng tổng hai số đó là 48, hiệu hai số đó là 12 ?",
+    "dap_an": "30, 18",
+    "loi_giai": "Số lớn là : $(48+12):2=30$\nSố bé là : $48-30=18$\nĐáp số : 30, 18"
+   },
+   {
+    "ma_cau": "T14T080101006",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số biết rằng tổng hai số đó là 74, hiệu hai số đó là 12 ?",
+    "dap_an": "43, 31",
+    "loi_giai": "Số lớn là : $(74+12):2=43$\nSố bé là : $74-43=31$\nĐáp số : 43, 31"
+   },
+   {
+    "ma_cau": "T14T080101023",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số biết rằng tổng hai số đó là 56, hiệu hai số đó là 20 ?",
+    "dap_an": "38, 18",
+    "loi_giai": "Số lớn là : $(56+20):2=38$\nSố bé là : $56-38=18$\nĐáp số : 38, 18"
+   }
+  ]
+ },
+ {
+  "id": "NDB01623",
+  "ten": "Bài toán tổng hiệu ẩn tổng - Chu vi diện tích",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01723",
+  "nhom": "1. Bài toán tổng hiệu có ẩn đại lượng",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080102021",
+    "ten_de_goc": null,
+    "noi_dung": "Một mảnh đất hình chữ nhật có chu vi 128m. Biết chiều dài hơn chiều rộng 12m. Tính diện tích mảnh đất ?",
+    "dap_an": "988",
+    "loi_giai": "Nửa chu vi hình chữ nhật là : $128 : 2 = 64(m)$\nChiều dài hình chữ nhật là : $(64 + 12) : 2 = 38(m)$\nChiều rộng hình chữ nhật là : $64 - 38 = 26(m)$\nDiện tích mảnh đất là : $38 \\times 26 = 988(m^2)$\nĐáp số : $988(m^2)$"
+   },
+   {
+    "ma_cau": "T14T080102034",
+    "ten_de_goc": null,
+    "noi_dung": "Một mảnh đất hình chữ nhật có chu vi 86m. Biết chiều dài hơn chiều rộng 5m. Tính diện tích mảnh đất ?",
+    "dap_an": "456",
+    "loi_giai": "Nửa chu vi hình chữ nhật là : $86 : 2 = 43(m)$\nChiều dài hình chữ nhật là : $(43 + 5) : 2 = 24(m)$\nChiều rộng hình chữ nhật là : $43 - 24 = 19(m)$\nDiện tích mảnh đất là : $24 \\times 19 = 456(m^2)$\nĐáp số : $456(m^2)$"
+   },
+   {
+    "ma_cau": "T14T080102025",
+    "ten_de_goc": null,
+    "noi_dung": "Một mảnh đất hình chữ nhật có chu vi 84m. Biết chiều dài hơn chiều rộng 8m. Tính diện tích mảnh đất ?",
+    "dap_an": "425",
+    "loi_giai": "Nửa chu vi hình chữ nhật là : $84 : 2 = 42(m)$\nChiều dài hình chữ nhật là : $(42 + 8) : 2 = 25(m)$\nChiều rộng hình chữ nhật là : $42 - 25 = 17(m)$\nDiện tích mảnh đất là : $25 \\times 17 = 425(m^2)$\nĐáp số : $425(m^2)$"
+   },
+   {
+    "ma_cau": "T14T080102024",
+    "ten_de_goc": null,
+    "noi_dung": "Một mảnh đất hình chữ nhật có chu vi 150m. Biết chiều dài hơn chiều rộng 15m. Tính diện tích mảnh đất ?",
+    "dap_an": "1350",
+    "loi_giai": "Nửa chu vi hình chữ nhật là : $150 : 2 = 75(m)$\nChiều dài hình chữ nhật là : $(75 + 15) : 2 = 45(m)$\nChiều rộng hình chữ nhật là : $75 - 45 = 30(m)$\nDiện tích mảnh đất là : $45 \\times 30 = 1350(m^2)$\nĐáp số : $1350(m^2)$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01624",
+  "ten": "Bài toán tổng hiệu ẩn hiệu - Các số tự nhiên chẵn lẻ",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01723",
+  "nhom": "1. Bài toán tổng hiệu có ẩn đại lượng",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080103025",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số tự nhiên chẵn có tổng là 76 biết rằng giữa chúng có 1 số tự nhiên chẵn khác ?",
+    "dap_an": "40,36",
+    "loi_giai": "Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị\nKhoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị\nHai số tự nhiên chẵn mà giữa chúng có 1 số tự nhiên chẵn khác , nên tổng có 2 khoảng giữa số chẵn\nChẵn – Chẵn – Chẵn\nVậy hiệu hai số cần tìm là : $2 \\times 2 = 4$\nSố lớn là : $(76 + 4) : 2 = 40$\nSố bé là : $76 - 40 = 36$\nĐáp số : 40,36"
+   },
+   {
+    "ma_cau": "T14T080103018",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số tự nhiên chẵn có tổng là 110 biết rằng giữa chúng có 4 số tự nhiên chẵn khác ?",
+    "dap_an": "60,50",
+    "loi_giai": "Khoảng cách giữa 2 số chẵn hoặc 2 số lẻ liên tiếp là 2 đơn vị\nKhoảng cách giữa số chẵn và số lẻ liền nhau là 1 đơn vị\nHai số tự nhiên chẵn mà giữa chúng có 4 số tự nhiên chẵn khác , nên tổng có 5 khoảng giữa số chẵn\nChẵn – Chẵn – Chẵn – Chẵn – Chẵn – Chẵn\nVậy hiệu hai số cần tìm là : $5 \\times 2 = 10$\nSố lớn là : $(110 + 10) : 2 = 60$\nSố bé là : $110 - 60 = 50$\nĐáp số : 60,50"
+   },
+   {
+    "ma_cau": "T14T080103006",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số tự nhiên liên tiếp có tổng là 201 ?",
+    "dap_an": "100;101",
+    "loi_giai": "Hai số tự nhiên liên tiếp có hiệu là 1.\nSố lớn là : $(201 + 1):2 = 101$\nSố bé là : $101 - 1 = 100$\nĐáp số : 100,101"
+   },
+   {
+    "ma_cau": "T14T080103003",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm hai số tự nhiên liên tiếp có tổng là 85 ?",
+    "dap_an": "42;43",
+    "loi_giai": "Hai số tự nhiên liên tiếp có hiệu là 1.\nSố lớn là : $(85 + 1):2 = 43$\nSố bé là : $43 - 1 = 42$\nĐáp số : 42,43"
+   }
+  ]
+ },
+ {
+  "id": "NDB01625",
+  "ten": "Bài toán tổng hiệu liên quan đến tuổi",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01723",
+  "nhom": "1. Bài toán tổng hiệu có ẩn đại lượng",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080105002",
+    "ten_de_goc": null,
+    "noi_dung": "Tổng số tuổi của ông, bố và con hiện nay là 120 tuổi. Biết rằng tuổi ông hơn tổng số tuổi của bố và con là 16 tuổi, tuổi bố hơn tuổi con 24 tuổi. Tính số tuổi hiện nay của mỗi người.",
+    "dap_an": "68; 38; 14",
+    "loi_giai": "Tuổi ông hiện nay là:\n$(120 + 16) : 2 = 68$ (tuổi)\nTổng số tuổi của bố và con là:\n$120 - 68 = 52$ (tuổi)\nTuổi bố hiện nay là:\n$(52 + 24) : 2 = 38$ (tuổi)\nTuổi con hiện nay là:\n$52 - 38 = 14$ (tuổi)"
+   },
+   {
+    "ma_cau": "T14T080105003",
+    "ten_de_goc": null,
+    "noi_dung": "Tổng số tuổi của bà, mẹ và cháu hiện nay là 132 tuổi. Biết rằng tuổi bà hơn tổng số tuổi của mẹ và cháu là 20 tuổi, tuổi mẹ hơn tuổi cháu 26 tuổi. Tính số tuổi hiện nay của mỗi người.",
+    "dap_an": "76; 41; 15",
+    "loi_giai": "Tuổi bà hiện nay là:\n$(132 + 20) : 2 = 76$ (tuổi)\nTổng số tuổi của mẹ và cháu là:\n$132 - 76 = 56$ (tuổi)\nTuổi mẹ hiện nay là:\n$(56 + 26) : 2 = 41$ (tuổi)\nTuổi cháu hiện nay là:\n$56 - 41 = 15$ (tuổi)"
+   },
+   {
+    "ma_cau": "T14T080105004",
+    "ten_de_goc": null,
+    "noi_dung": "Tổng số tuổi của ông, bố và con hiện nay là 144 tuổi. Biết rằng tuổi ông hơn tổng số tuổi của bố và con là 24 tuổi, tuổi bố hơn tuổi con 28 tuổi. Tính số tuổi hiện nay của mỗi người.",
+    "dap_an": "84; 44; 16",
+    "loi_giai": "Tuổi ông hiện nay là:\n$(144 + 24) : 2 = 84$ (tuổi)\nTổng số tuổi của bố và con là:\n$144 - 84 = 60$ (tuổi)\nTuổi bố hiện nay là:\n$(60 + 28) : 2 = 44$ (tuổi)\nTuổi con hiện nay là:\n$60 - 44 = 16$ (tuổi)"
+   },
+   {
+    "ma_cau": "T14T080102042",
+    "ten_de_goc": null,
+    "noi_dung": "3 năm trước mẹ hơn con 26 tuổi. 5 năm nữa, tổng số tuổi của mẹ và con là 44 tuổi. Hỏi sang năm mẹ bao nhiêu tuổi ?",
+    "dap_an": "31",
+    "loi_giai": "Hiện tại, mẹ vẫn hơn con 26 tuổi.\nHiện tại, tổng số tuổi của mẹ và con là : $44 - 5 - 5 = 34$ (tuổi)\nTuổi mẹ hiện tại là : $(34 + 26) : 2 = 30$ (tuổi)\nTuổi mẹ sang năm là : $30 + 1 = 31$ (tuổi)\nĐáp số : 31 tuổi"
+   }
+  ]
+ },
+ {
+  "id": "NDB01626",
+  "ten": "Bài toán cho nhận",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01749",
+  "nhom": "2. Bài toán tổng hiệu có thay đổi đại lượng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080104005",
+    "ten_de_goc": null,
+    "noi_dung": "Tuấn và Hương có 120 cái kẹo. Nếu Tuấn cho Hương 10 cái kẹo thì Hương hơn Tuấn 8 cái kẹo. Hỏi mỗi bạn có bao nhiêu cái kẹo?",
+    "dap_an": "54; 66",
+    "loi_giai": "Khi Tuấn cho Hương 10 cái kẹo thì tổng số kẹo của 2 bạn không đổi vẫn là 120 cái kẹo\nSố kẹo của Hương lúc sau khi Tuấn cho 10 cái là : $(120+8):2 = 64$ (cái kẹo)\nSố kẹo của Hương ban đầu là : $64 - 10 = 54$ (cái kẹo)\nSố kẹo của Tuấn ban đầu là : $120 - 54 = 66$ (cái kẹo)"
+   },
+   {
+    "ma_cau": "T14T080104011",
+    "ten_de_goc": null,
+    "noi_dung": "Minh và Ngọc có 84 quả táo. Nếu Minh cho Ngọc 7 quả táo thì Ngọc hơn Minh 6 quả táo. Hỏi mỗi bạn có bao nhiêu quả táo?",
+    "dap_an": "38; 46",
+    "loi_giai": "Khi Minh cho Ngọc 7 quả táo thì tổng số táo của 2 bạn không đổi vẫn là 84 quả táo\nSố táo của Ngọc lúc sau khi Minh cho 7 quả là : $(84+6):2 = 45$ (quả táo)\nSố táo của Ngọc ban đầu là : $45 - 7 = 38$ (quả táo)\nSố táo của Minh ban đầu là : $84 - 38 = 46$ (quả táo)"
+   },
+   {
+    "ma_cau": "T14T080104002",
+    "ten_de_goc": null,
+    "noi_dung": "Hùng và Lan có 90 cái kẹo. Nếu Hùng cho Lan 5 cái kẹo thì Lan hơn Hùng 4 cái kẹo. Hỏi mỗi bạn có bao nhiêu cái kẹo?",
+    "dap_an": "42; 48",
+    "loi_giai": "Khi Hùng cho Lan 5 cái kẹo thì tổng số kẹo của 2 bạn không đổi vẫn là 90 cái kẹo\nSố kẹo của Lan lúc sau khi Hùng cho 5 cái là : $(90+4):2 = 47$ (cái kẹo)\nSố kẹo của Lan ban đầu là : $47 - 5 = 42$ (cái kẹo)\nSố kẹo của Hùng ban đầu là : $90 - 42 = 48$ (cái kẹo)"
+   },
+   {
+    "ma_cau": "T14T080104008",
+    "ten_de_goc": null,
+    "noi_dung": "Sơn và Hạnh có 150 cây bút. Nếu Sơn cho Hạnh 12 cây bút thì Hạnh hơn Sơn 10 cây bút. Hỏi mỗi bạn có bao nhiêu cây bút?",
+    "dap_an": "68; 82",
+    "loi_giai": "Khi Sơn cho Hạnh 12 cây bút thì tổng số bút của 2 bạn không đổi vẫn là 150 cây bút\nSố bút của Hạnh lúc sau khi Sơn cho 12 cây là : $(150+10):2 = 80$ (cây bút)\nSố bút của Hạnh ban đầu là : $80 - 12 = 68$ (cây bút)\nSố bút của Sơn ban đầu là : $150 - 68 = 82$ (cây bút)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01627",
+  "ten": "Bài toán tăng giảm đại lượng",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "1. Bài toán tổng hiệu",
+  "nhom_id": "NNB01749",
+  "nhom": "2. Bài toán tổng hiệu có thay đổi đại lượng",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T080104020",
+    "ten_de_goc": null,
+    "noi_dung": "Trong vườn có 40 cây hoa hồng và hoa cúc. Người ta trồng thêm 4 cây hoa hồng và 2 cây hoa cúc thì số cây hoa cúc hơn số cây hoa hồng là 2 cây. Tính số cây mỗi loại ban đầu ?",
+    "dap_an": "22; 18",
+    "loi_giai": "Tổng số cây sau khi trồng là : $40 + 4 + 2 = 46$ (cây)\nSố cây hoa cúc sau khi trồng là : $(46 + 2) : 2 = 24$ (cây)\nSố cây hoa cúc ban đầu : $24 - 2 = 22$ (cây)\nSố cây hoa hồng ban đầu : $40 - 22 = 18$ (cây)"
+   },
+   {
+    "ma_cau": "T14T080104014",
+    "ten_de_goc": null,
+    "noi_dung": "Trong trang trại có 100 con gà và vịt. Người ta nuôi thêm 12 con gà và 8 con vịt thì số con vịt hơn số con gà là 6 con. Tính số con mỗi loại ban đầu ?",
+    "dap_an": "55; 45",
+    "loi_giai": "Tổng số con sau khi nuôi thêm là : $100 + 12 + 8 = 120$ (con)\nSố con vịt sau khi nuôi thêm là : $(120 + 6) : 2 = 63$ (con)\nSố con vịt ban đầu : $63 - 8 = 55$ (con)\nSố con gà ban đầu : $100 - 55 = 45$ (con)"
+   },
+   {
+    "ma_cau": "T14T080104017",
+    "ten_de_goc": null,
+    "noi_dung": "Trong trường có 120 cây bàng và phượng. Người ta trồng thêm 14 cây bàng và 10 cây phượng thì số cây phượng hơn số cây bàng là 2 cây. Tính số cây mỗi loại ban đầu ?",
+    "dap_an": "63; 57",
+    "loi_giai": "Tổng số cây sau khi trồng là : $120 + 14 + 10 = 144$ (cây)\nSố cây phượng sau khi trồng là : $(144 + 2) : 2 = 73$ (cây)\nSố cây phượng ban đầu : $73 - 10 = 63$ (cây)\nSố cây bàng ban đầu : $120 - 63 = 57$ (cây)"
+   },
+   {
+    "ma_cau": "T14T080104022",
+    "ten_de_goc": null,
+    "noi_dung": "Trong vườn có 90 cây ổi và chanh. Người ta trồng thêm 12 cây ổi và 6 cây chanh thì số cây chanh hơn số cây ổi là 2 cây. Tính số cây mỗi loại ban đầu ?",
+    "dap_an": "49; 41",
+    "loi_giai": "Tổng số cây sau khi trồng là : $90 + 12 + 6 = 108$ (cây)\nSố cây chanh sau khi trồng là : $(108 + 2) : 2 = 55$ (cây)\nSố cây chanh ban đầu : $55 - 6 = 49$ (cây)\nSố cây ổi ban đầu : $90 - 49 = 41$ (cây)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01543",
+  "ten": "Bài toán tổng tỉ - hiệu tỉ cơ bản",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01725",
+  "nhom": "1. Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T220101057",
+    "ten_de_goc": null,
+    "noi_dung": "Hai loại xe đạp trong cửa hàng. Biết rằng $\\dfrac{1}{6}$ số xe đạp địa hình bằng $\\dfrac{2}{13}$ số xe đạp đua . Biết rằng số xe đạp địa hình nhiều hơn số xe đạp đua là 10 chiếc. Tính số xe đạp địa hình và xe đạp đua ?",
+    "dap_an": "120, 130",
+    "loi_giai": "Đổi $\\dfrac{1}{6} = \\dfrac{2}{12}$\nNhư vậy, $\\dfrac{2}{12}$ số xe đạp địa hình bằng $\\dfrac{2}{13}$ số xe đạp đua. Vậy ta coi số xe đạp địa hình là 12 phần thì số xe đạp đua sẽ là 13 phần.\nGiá trị 1 phần sẽ là : $10:(13-12)=10$ (chiếc)\nSố xe đạp địa hình là : $10 \\times 12=120$ (chiếc)\nSố xe đạp đua là : $10 \\times 13=130$ (chiếc)"
+   },
+   {
+    "ma_cau": "T14T220101060",
+    "ten_de_goc": null,
+    "noi_dung": "Một công ty có số nhân viên nam và nhân viên nữ. Biết rằng $\\dfrac{1}{7}$ số nhân viên nam bằng $\\dfrac{2}{15}$ số nhân viên nữ . Biết rằng số nhân viên nam nhiều hơn số nhân viên nữ là 10 người. Tính số nhân viên nam và nữ ?",
+    "dap_an": "140, 150",
+    "loi_giai": "Đổi $\\dfrac{1}{7} = \\dfrac{2}{14}$\nNhư vậy, $\\dfrac{2}{14}$ số nhân viên nam bằng $\\dfrac{2}{15}$ số nhân viên nữ. Vậy ta coi số nhân viên nam là 14 phần thì số nhân viên nữ sẽ là 15 phần.\nGiá trị 1 phần sẽ là : $10:(15-14)=10$ (người)\nSố nhân viên nam là : $10 \\times 14=140$ (người)\nSố nhân viên nữ là : $10 \\times 15=150$ (người)"
+   },
+   {
+    "ma_cau": "T14T220101061",
+    "ten_de_goc": null,
+    "noi_dung": "Trên một cánh đồng, số cây lúa và cây ngô. Biết rằng $\\dfrac{4}{5}$ số cây lúa bằng $\\dfrac{8}{11}$ số cây ngô . Biết rằng số cây lúa nhiều hơn số cây ngô là 400 cây. Tính số cây lúa và cây ngô ?",
+    "dap_an": "2000, 1600",
+    "loi_giai": "Đổi $\\dfrac{4}{5} = \\dfrac{8}{10}$\nNhư vậy, $\\dfrac{8}{10}$ số cây lúa bằng $\\dfrac{8}{11}$ số cây ngô. Vậy ta coi số cây lúa là 10 phần thì số cây ngô sẽ là 11 phần.\nGiá trị 1 phần sẽ là : $400:(11-10)=400$ (cây)\nSố cây lúa là : $400 \\times 10=4000$ (cây)\nSố cây ngô là : $400 \\times 11=4400$ (cây)"
+   },
+   {
+    "ma_cau": "T14T220101045",
+    "ten_de_goc": null,
+    "noi_dung": "Trong một cửa hàng, số lượng sách truyện tranh và sách giáo khoa. Biết rằng $\\dfrac{3}{8}$ số sách truyện tranh bằng $\\dfrac{6}{11}$ số sách giáo khoa . Biết rằng số sách truyện tranh nhiều hơn số sách giáo khoa là 90 quyển. Tính số sách truyện tranh và sách giáo khoa ?",
+    "dap_an": "288, 198",
+    "loi_giai": "Đổi $\\dfrac{3}{8} = \\dfrac{6}{16}$\nNhư vậy, $\\dfrac{6}{16}$ số sách truyện tranh bằng $\\dfrac{6}{11}$ số sách giáo khoa. Vậy ta coi số sách truyện tranh là 16 phần thì số sách giáo khoa sẽ là 11 phần.\nGiá trị 1 phần sẽ là : $90:(16-11)=18$ (quyển)\nSố sách truyện tranh là : $18 \\times 16=288$ (quyển)\nSố sách giáo khoa là : $18 \\times 11=198$ (quyển)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01544",
+  "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tổng",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01725",
+  "nhom": "1. Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01545",
+  "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn hiệu",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01725",
+  "nhom": "1. Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01546",
+  "ten": "Bài toán tổng tỉ - hiệu tỉ ẩn tỉ số",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01725",
+  "nhom": "1. Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01547",
+  "ten": "Bài toán tỉ số nhiều đại lượng - Quy về đại lượng nhỏ nhất",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01726",
+  "nhom": "2. Bài toán tỉ số có nhiều đại lượng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01548",
+  "ten": "Bài toán tỉ số nhiều đại lượng - Có tỉ số đôi một của các đại lượng",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01726",
+  "nhom": "2. Bài toán tỉ số có nhiều đại lượng",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01549",
+  "ten": "Bài toán tỉ số nhiều đại lượng - Cho phân số của các đại lượng bằng nhau",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01726",
+  "nhom": "2. Bài toán tỉ số có nhiều đại lượng",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01550",
+  "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Chuyển giữa các đại lượng",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01727",
+  "nhom": "3. Bài toán tỉ số có sự thay đổi đại lượng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01551",
+  "ten": "Bài toán tỉ số có sự thay đổi đại lượng - Tăng giảm các đại lượng",
+  "chu_de": "5. Các bài toán lời văn",
+  "chuyen_de": "3. Bài toán tổng tỉ - hiệu tỉ",
+  "nhom_id": "NNB01727",
+  "nhom": "3. Bài toán tỉ số có sự thay đổi đại lượng",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ }
+]

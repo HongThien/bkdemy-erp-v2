@@ -1,0 +1,292 @@
+[
+ {
+  "id": "NDB01532",
+  "ten": "Nhận biết số có tính chất chia hết",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "1. Dấu hiệu chia hết",
+  "nhom_id": "NNB01720",
+  "nhom": "1. Ứng dụng tính chất chia hết",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01533",
+  "ten": "Tìm chữ số để số đó chia hết cho 2,3,5,9",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "1. Dấu hiệu chia hết",
+  "nhom_id": "NNB01720",
+  "nhom": "1. Ứng dụng tính chất chia hết",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Tìm số $\\overline{43ab}$ thỏa mãn điều kiện đồng thời chia hết cho cả 2 ; 5 và 9.\n\n**Bài làm:**\n\nTa có $\\overline{43ab}$ chia hết cho 2 và 5 nên $b = 0$.\n\nThay $b=0$ thì $\\overline{43a0}$ chia hết cho 9 khi $4+3+a+0=(7+a)$ chia hết cho 9.\n\nSuy ra $a = 2$. Vậy số cần tìm là 4320.",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01534",
+  "ten": "Lập số từ các chữ số để chia hết cho 2,3,5,9",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "1. Dấu hiệu chia hết",
+  "nhom_id": "NNB01720",
+  "nhom": "1. Ứng dụng tính chất chia hết",
+  "thu_tu_dang": 7,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01535",
+  "ten": "Nhận biết số chia có dư theo điều kiện",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "2. Phép chia có dư",
+  "nhom_id": "NNB01721",
+  "nhom": "1. Ứng dụng dấu hiệu chia hết - chia có dư",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01536",
+  "ten": "Tìm số thỏa mãn điều kiện chia có dư",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "2. Phép chia có dư",
+  "nhom_id": "NNB01721",
+  "nhom": "1. Ứng dụng dấu hiệu chia hết - chia có dư",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "##VD\nTìm các số $\\overline{6a3b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 3, chia 9 dư 5\n\nBài giải:\n\nVì $\\overline{6a3b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\n\nVì $\\overline{6a3b}$ chia 5 dư 3 nên b có thể là 3, 8.\n\nVậy b = 3. Ta được số $\\overline{6a33}$.\n\nVì $\\overline{6a33}$ chia 9 dư 5 nên $6+a+3+3$ chia 9 dư 5\n\nHay $12+a$ chia 9 dư 5.\n\nSuy ra $a=2$.\n\nVậy số cần tìm là: 6233",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T110102005",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm các số $\\overline{4a6b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 4, chia 9 dư 8",
+    "dap_an": "4769",
+    "loi_giai": "Vì $\\overline{4a6b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\nVì $\\overline{4a6b}$ chia 5 dư 4 nên b có thể là 4, 9.\nVậy $b = 9$. Ta được số $\\overline{4a69}$.\nVì $\\overline{4a69}$ chia 9 dư 8 nên $4+a+6+9$ chia 9 dư 8\nHay $19+a$ chia 9 dư 8.\nSuy ra $a=7$.\nVậy số cần tìm là : 4769"
+   },
+   {
+    "ma_cau": "T14T110102004",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm các số $\\overline{8a1b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 3, chia 9 dư 3",
+    "dap_an": "8313",
+    "loi_giai": "Vì $\\overline{8a1b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\nVì $\\overline{8a1b}$ chia 5 dư 3 nên b có thể là 3, 8.\nVậy $b = 3$. Ta được số $\\overline{8a13}$.\nVì $\\overline{8a13}$ chia 9 dư 3 nên $8+a+1+3$ chia 9 dư 3\nHay $12+a$ chia 9 dư 3.\nSuy ra $a=0,9$.\nVậy số cần tìm là : 8013 , 8913"
+   },
+   {
+    "ma_cau": "T14T110102003",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm các số $\\overline{3a7b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 2, chia 9 dư 6",
+    "dap_an": "3177",
+    "loi_giai": "Vì $\\overline{3a7b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\nVì $\\overline{3a7b}$ chia 5 dư 2 nên b có thể là 2, 7.\nVậy $b = 7$. Ta được số $\\overline{3a77}$.\nVì $\\overline{3a77}$ chia 9 dư 6 nên $3+a+7+7$ chia 9 dư 6\nHay $17+a$ chia 9 dư 6.\nSuy ra $a=7$.\nVậy số cần tìm là : 3777"
+   },
+   {
+    "ma_cau": "T14T110102002",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm các số $\\overline{7a4b}$ thỏa mãn điều kiện sau: chia 2 dư 1, chia 5 dư 4, chia 9 dư 2",
+    "dap_an": "7141",
+    "loi_giai": "Vì $\\overline{7a4b}$ chia 2 dư 1 nên b có thể là 1, 3, 5, 7, 9.\nVì $\\overline{7a4b}$ chia 5 dư 4 nên b có thể là 4, 9.\nVậy $b = 9$. Ta được số $\\overline{7a49}$.\nVì $\\overline{7a49}$ chia 9 dư 2 nên $7+a+4+9$ chia 9 dư 2\nHay $20+a$ chia 9 dư 2.\nSuy ra $a=0,9$.\nVậy số cần tìm là : 7049, 7949"
+   }
+  ]
+ },
+ {
+  "id": "NDB01537",
+  "ten": "Tìm số lượng các số chia hết - chia có dư trong dãy số tự nhiên",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "2. Phép chia có dư",
+  "nhom_id": "NNB01721",
+  "nhom": "1. Ứng dụng dấu hiệu chia hết - chia có dư",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "##VD Ví dụ 1. \nCó bao nhiêu số có 3 chữ số chia hết cho 5 ?\n\nBài giải:\nCác số có 3 chữ số chia hết cho 5 là : 100, 105, 110, ..., 995\nSố các số là : $(995-100):5+1=200$ (số)\n\n##VD Ví dụ 2. \nCó bao nhiêu số có 3 chữ số chia hết cho 3 và 5.\n\nBài giải:\nSố vừa chia hết cho 3 và 5 thì sẽ chia hết cho 15.\nCác số có 3 chữ số chia hết cho 15 là : 105, 120, 135, 150, ..., 990\nSố các số là : $(990-105):15+1=60$ (số)\n\n##VD Ví dụ 3\nCó bao nhiêu số có 3 chữ số chia hết cho 3 và không chia hết cho 5.\n\nBài giải:\nĐể tìm các số chia hết cho 3 và không chia hết cho 5, ta sẽ làm như sau:\n* Tìm các số chia hết cho 3\n* Trong các số chia hết cho 3 có 2 loại : chia hết cho 5 và không chia hết cho 5.\n* Loại 1 : Vừa chia hết cho 3 vừa chia hết cho 5.\n* Loại 2 : Chia hết cho 3 nhưng không chia hết cho 5.\nLoại 2 là loại t cần tìm. Vậy ta lấy tổng các số chia hết cho 3 trừ đi loại 1 là xong.\nCác số có 3 chữ số chia hết cho 3 là : 102, 105, 108, ..., 999\nSố các số chia hết cho 3 là : $(999-102):3=300$ (số)\n\nCác số vừa chia hết cho 3, vừa chia hết cho 5 , tức là chia hết cho 15.\nCác số có 3 chữ số chia hết cho 15 là : 105, 120, 135, 150, ..., 990\nSố các số chia hết cho 3 và 5 là : $(990-105):15+1=60$ (số)\n\nVậy số các số chia hết cho 3 mà không chia hết cho 5 là : $300-60=240$ (số)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T110103001",
+    "ten_de_goc": null,
+    "noi_dung": "Có bao nhiêu số có 3 chữ số chia hết cho 3 và 5.",
+    "dap_an": "60",
+    "loi_giai": "Số vừa chia hết cho 3 và 5 thì sẽ chia hết cho 15.\nCác số có 3 chữ số chia hết cho 15 là: 105, 120, 135, 150, ..., 990\nSố các số là : $(990-105):15+1 = 60$ (số)"
+   },
+   {
+    "ma_cau": "T14T110103004",
+    "ten_de_goc": null,
+    "noi_dung": "Có bao nhiêu số có 3 chữ số chia hết cho 4 và 5.",
+    "dap_an": "45",
+    "loi_giai": "Số vừa chia hết cho 4 và 5 thì sẽ chia hết cho 20.\nCác số có 3 chữ số chia hết cho 20 là: 100, 120, 140, 160, ..., 980\nSố các số là : $(980-100):20+1 = 45$ (số)"
+   },
+   {
+    "ma_cau": "T14T110103005",
+    "ten_de_goc": null,
+    "noi_dung": "Có bao nhiêu số có 3 chữ số chia hết cho 2 và 5.",
+    "dap_an": "90",
+    "loi_giai": "Số vừa chia hết cho 2 và 5 thì sẽ chia hết cho 10.\nCác số có 3 chữ số chia hết cho 10 là: 100, 110, 120, 130, ..., 990\nSố các số là : $(990-100):10+1 = 90$ (số)"
+   },
+   {
+    "ma_cau": "T14T110103007",
+    "ten_de_goc": null,
+    "noi_dung": "Có bao nhiêu số có 3 chữ số chia hết cho 5 và 7.",
+    "dap_an": "26",
+    "loi_giai": "Số vừa chia hết cho 5 và 7 thì sẽ chia hết cho 35.\nCác số có 3 chữ số chia hết cho 35 là: 105, 140, 175, 210, ..., 980\nSố các số là : $(980-105):35+1 = 26$ (số)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01538",
+  "ten": "Bài toán về dãy đối tượng lặp lại",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "2. Phép chia có dư",
+  "nhom_id": "NNB01721",
+  "nhom": "1. Ứng dụng dấu hiệu chia hết - chia có dư",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "##VD Ví dụ 1 \n Người ta viết liên tiếp cụm từ THÂN ĐỒNG ĐẤT VIỆT thành một dãy chữ liên tiếp THANDONGDATVIETTHANDONGDATVIET... Hỏi chữ cái thứ 352 của dãy là chữ cái nào?\nCủa từ nào?\n\nBài giải:\n\nChữ THANDONGDATVIET gồm tổng cộng 15 chữ cái.\n\nSố 352 chia 15 bằng 23 dư 8.\n\nVậy 352 chữ số ta sẽ viết được 15 lần chữ THANDONGDATVIET và thêm 8 chữ cái nữa.\n\nNên chữ cái thứ 352 là chữ G.\n\n##VD Ví dụ 2\nNgười ta viết liên tiếp cụm từ BK ACADEMY thành một dãy chữ liên tiếp BKACADEMYBKACADEMY...... Người ta đếm được có 60 chữ A thì có bao nhiêu chữ B, bao nhiêu chữ A ? (Biết các cụm từ trong dãy được viết đầy đủ)\n\nBài giải:\n\nMỗi cụm từ BK ACADEMY gồm có 2 chữ A, 1 chữ B.\n\nNgười ta đếm được 60 chữ A. Vậy số cụm từ BKACADEMY là $60 : 2 = 30$ (từ)\n\nSố chữ B là : $30 \\times 1=30$ (chữ)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T110104001",
+    "ten_de_goc": null,
+    "noi_dung": "Người ta viết liên tiếp cụm từ THÂN ĐỒNG ĐẤT VIỆT thành một dãy chữ liên tiếp THANDONGDATVIETTHANDONGDATVIET... Hỏi chữ cái thứ 352 của dãy là chữ cái nào?\nCủa từ nào?",
+    "dap_an": "N",
+    "loi_giai": "Chữ THANDONGDATVIET gồm tổng cộng 15 chữ cái.\nSố 352 chia 15 bằng 23 dư 7.\nVậy 352 chữ số ta sẽ viết được 15 lần chữ THANDONGDATVIET và thêm 8 chữ cái nữa.\nNên chữ cái thứ 352 là chữ N của từ DONG"
+   },
+   {
+    "ma_cau": "T14T110104005",
+    "ten_de_goc": null,
+    "noi_dung": "Người ta viết liên tiếp cụm từ TUOITREDUYENHAI thành một dãy chữ liên tiếp TUOITREDUYENHAITUOITREDUYENHAI... Hỏi chữ cái thứ 320 của dãy là chữ cái nào? Của từ nào?",
+    "dap_an": "T",
+    "loi_giai": "Chữ TUOITREDUYENHAI gồm tổng cộng 15 chữ cái.\nSố 320 chia 15 bằng 21 dư 5.\nVậy 320 chữ số ta sẽ viết được 15 lần chữ TUOITREDUYENHAI và thêm 5 chữ cái nữa.\nNên chữ cái thứ 320 là chữ T của từ TRE."
+   },
+   {
+    "ma_cau": "T14T110104006",
+    "ten_de_goc": null,
+    "noi_dung": "Người ta viết liên tiếp cụm từ TRUONGSAHOANGSA thành một dãy chữ liên tiếp TRUONGSAHOANGSATRUONGSAHOANGSA... Hỏi chữ cái thứ 342 của dãy là chữ cái nào?\nCủa từ nào?",
+    "dap_an": "N",
+    "loi_giai": "Chữ TRUONGSAHOANGSA gồm tổng cộng 15 chữ cái.\nSố 342 chia 15 bằng 22 dư 12.\nVậy 342 chữ số ta sẽ viết được 22 lần chữ TRUONGSAHOANGSA và thêm 12 chữ cái nữa.\nNên chữ cái thứ 342 là chữ N của từ HOANG."
+   },
+   {
+    "ma_cau": "T14T110104004",
+    "ten_de_goc": null,
+    "noi_dung": "Người ta viết liên tiếp cụm từ QUYETCHIBENVUNG thành một dãy chữ liên tiếp QUYETCHIBENVUNGQUYETCHIBENVUNG... Hỏi chữ cái thứ 266 của dãy là chữ cái nào?\nCủa từ nào?",
+    "dap_an": "V",
+    "loi_giai": "Chữ QUYETCHIBENVUNG gồm tổng cộng 15 chữ cái.\nSố 266 chia 15 bằng 17 dư 11.\nVậy 266 chữ số ta sẽ viết được 15 lần chữ QUYETCHIBENVUNG và thêm 11 chữ cái nữa.\nNên chữ cái thứ 266 là chữ V."
+   }
+  ]
+ },
+ {
+  "id": "NDB01539",
+  "ten": "Tìm số tự nhiên khi biết điều kiện chia cho nhiều số khác nhau",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "2. Phép chia có dư",
+  "nhom_id": "NNB01721",
+  "nhom": "1. Ứng dụng dấu hiệu chia hết - chia có dư",
+  "thu_tu_dang": 5,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01540",
+  "ten": "Viết thêm chữ số vào bên trái số cho trước",
+  "chu_de": "4. Cấu tạo số",
+  "chuyen_de": "3. Cấu tạo số",
+  "nhom_id": "NNB01722",
+  "nhom": "1. Viết thêm chữ số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ }
+]

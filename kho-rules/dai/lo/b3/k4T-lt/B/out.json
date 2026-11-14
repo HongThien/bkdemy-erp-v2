@@ -1,0 +1,146 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01715",
+   "ly_thuyet": "##TC Dãy số cách đều\nDãy số cách đều là dãy số mà hai số hạng liền nhau hơn kém nhau cùng một số. Số đó gọi là khoảng cách.\nKhoảng cách $=$ số hạng sau $-$ số hạng liền trước.\n\n##TC Số số hạng\nSố số hạng $=$ (số cuối $-$ số đầu) $:$ khoảng cách $+1$.\n\n##TC Số hạng thứ $n$\nSố hạng thứ $n$ $=$ số đầu $+$ $\\left(n-1\\right)\\times$ khoảng cách.\n\n##TC Tổng của dãy số cách đều\nTổng $=$ (số đầu $+$ số cuối) $\\times$ số số hạng $:2$.\n\n##CY\nDãy giảm dần (ví dụ $100$; $95$; $90$; ...) thì lấy số lớn trừ số bé khi tính số số hạng.\nSố hạng thứ $n$ cách số đầu $n-1$ khoảng cách, không phải $n$ khoảng cách."
+  },
+  {
+   "nhom_id": "NNB01716",
+   "ly_thuyet": "##TC Số cây và số khoảng\nKhoảng là đoạn nằm giữa hai cây liền nhau. Số khoảng $=$ độ dài đoạn đường $:$ khoảng cách giữa hai cây liền nhau.\n\n##TC Ba trường hợp trên đường thẳng\nCả hai đầu đều có cây: số cây $=$ số khoảng $+1$.\nChỉ một đầu có cây: số cây $=$ số khoảng.\nCả hai đầu đều không có cây: số cây $=$ số khoảng $-1$.\n\n##TC Trồng quanh hình khép kín\nQuanh hình khép kín (sân, ao, vườn): số cây $=$ số khoảng $=$ chu vi $:$ khoảng cách.\n\n##CY\nĐề nói trồng ở cả hai bên đường thì tính một bên rồi nhân với $2$.\nĐọc kĩ đầu nào có cây, đầu nào không có cây trước khi chọn công thức.\nĐộ dài đường và khoảng cách phải cùng đơn vị đo."
+  },
+  {
+   "nhom_id": "NNB01717",
+   "ly_thuyet": "##TC Bài toán rút về đơn vị\nKhi đề cho giá trị của nhiều phần bằng nhau, ta tìm giá trị của MỘT phần (rút về đơn vị) bằng phép chia.\nDạng 1 (tìm giá trị của nhiều phần): giá trị một phần $\\times$ số phần cần tìm.\nDạng 2 (tìm số phần): tổng giá trị cần tìm $:$ giá trị một phần.\n\n##CY\nRút về đơn vị trước, tính tổng hay số phần sau.\nGhi đúng đơn vị của từng bước (kg, bộ, thùng, ...)."
+  },
+  {
+   "nhom_id": "NNB01718",
+   "ly_thuyet": "##TC Dãy số liệu\nSố giá trị trong dãy số liệu là số số hạng, đếm đủ cả những giá trị lặp lại.\nSố lớn nhất, số bé nhất của dãy: so sánh tất cả các giá trị.\nTrung bình cộng của dãy số liệu $=$ tổng các giá trị $:$ số giá trị.\n\n##CY\nMột giá trị xuất hiện mấy lần thì được cộng và đếm bấy nhiêu lần.\nĐọc bảng hoặc biểu đồ: xem kĩ mỗi hình ứng với bao nhiêu đơn vị."
+  },
+  {
+   "nhom_id": "NNB01719",
+   "ly_thuyet": "##TC Tính ngược từ cuối\nĐi từ kết quả cuối cùng, làm các phép tính ngược lại theo thứ tự ngược để tìm số ban đầu.\nPhép cộng và phép trừ ngược nhau; phép nhân và phép chia ngược nhau.\n\n##PP Cách làm chung\nViết sơ đồ các bước đề cho từ số ban đầu đến kết quả cuối.\nĐi từ cuối về đầu, mỗi bước làm phép tính ngược với bước đề cho.\nThử lại bằng cách đi xuôi từ số tìm được.\n\n##CY\nĐảo cả thứ tự lẫn phép tính (bước làm sau cùng thì được ngược lại trước tiên)."
+  }
+ ],
+ "dang": [
+  {
+   "id": "NDB01523",
+   "mo_ta": "Đề cho một dãy số cách đều (nêu vài số đầu, có thể có cả số cuối) và hỏi giá trị của số hạng đứng ở vị trí thứ $n$ cho trước. Khác dạng \"Tính số số hạng của dãy số\": ở đây đã biết vị trí và cần tìm số, còn dạng kia đã biết số cuối và cần tìm số lượng số hạng; khác dạng \"Tìm vị trí của một số\": dạng đó cho một số và hỏi nó đứng thứ mấy.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nCho dãy số $11$; $16$; $21$; $26$; $31$; ... Tìm số hạng thứ $85$ của dãy số trên.\n**Hướng dẫn giải:**\nHai số hạng liền nhau hơn kém nhau $5$ đơn vị. Số hạng thứ $85$ cách số đầu $84$ khoảng cách, nên bằng số đầu cộng $84$ lần khoảng cách.\n\nKhoảng cách giữa hai số hạng liền nhau là: $16-11=5$\n\nSố hạng thứ $85$ của dãy số là: $11+\\left(85-1\\right)\\times 5=431$\n\nĐáp số: $431$",
+   "nguon_vd": "sach LT 6.6a",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01524",
+   "mo_ta": "Đề cho một dãy số cách đều có số đầu và số cuối và hỏi dãy có bao nhiêu số hạng (bao nhiêu số). Khác dạng \"Tìm số hạng thứ n\": ở đó cho vị trí và tìm số, còn ở đây cho số cuối và tìm số lượng; khác dạng \"Tổng của dãy số cách đều\": ở đây chỉ hỏi số lượng số hạng, không cộng các số lại.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nCho dãy số $4$; $9$; $14$; $19$; ...; $249$. Hỏi dãy số trên có bao nhiêu số hạng?\n**Hướng dẫn giải:**\nSố số hạng bằng số khoảng cách giữa số đầu và số cuối, cộng thêm $1$.\n\nKhoảng cách giữa hai số hạng liền nhau là: $9-4=5$\n\nSố số hạng của dãy số là: $\\left(249-4\\right):5+1=50$ (số)\n\nĐáp số: $50$ số",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01525",
+   "mo_ta": "Đề cho một dãy số cách đều chỉ nêu vài số đầu (chưa nói số cuối) rồi hỏi tổng của $n$ số hạng đầu tiên, hoặc cho dãy tới số cuối rồi hỏi tổng cả dãy. Phải tìm số hạng thứ $n$ (hoặc số số hạng) rồi mới tính tổng. Khác dạng \"Tính tổng dãy số\": ở dạng đó đề viết sẵn tổng $a+b+\\ldots+z$ và phải tự tìm số lượng số hạng.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nCho dãy số $11$; $16$; $21$; $26$; $31$; ... Tính tổng $100$ số hạng đầu tiên của dãy số.\n**Hướng dẫn giải:**\nChưa biết số cuối, nên trước hết tìm số hạng thứ $100$, rồi coi nó là số cuối của dãy gồm $100$ số hạng.\n\nSố hạng thứ $100$ của dãy số là: $11+\\left(100-1\\right)\\times 5=506$\n\nTổng $100$ số hạng đầu tiên là: $\\left(11+506\\right)\\times 100:2=25850$\n\nĐáp số: $25850$",
+   "nguon_vd": "sach LT 6.6b",
+   "ghi_chu": "Dạng này và NDB00646 \"Tính tổng dãy số\" chồng lấn nhiều (câu đã gán ở cả hai nơi cùng có \"Cho dãy số 1, 5, 9, ... 397. Tính tổng\"). Mô tả tôi đề xuất tách: NDB01525 = tổng n số hạng đầu; NDB00646 = tổng viết sẵn dạng a+b+...+z. CEO xem có muốn gộp 2 dạng không."
+  },
+  {
+   "id": "NDB00646",
+   "mo_ta": "Đề viết sẵn một tổng nhiều số hạng theo quy luật, dạng $A=a+b+c+\\ldots+y+z$ (kể cả dãy giảm dần), và hỏi giá trị của tổng. Phải nhận ra các số cách đều, tự tìm số số hạng rồi tính tổng. Khác dạng \"Tổng của dãy số cách đều\": ở đó đề nói \"tổng $n$ số hạng đầu tiên của dãy\".",
+   "ly_thuyet": "##PP\nTìm khoảng cách giữa hai số hạng liền nhau để kiểm tra các số cách đều.\nTính số số hạng: (số lớn nhất $-$ số bé nhất) $:$ khoảng cách $+1$.\nTính tổng: (số đầu $+$ số cuối) $\\times$ số số hạng $:2$.\n\n##CY\nDãy giảm dần vẫn dùng đúng công thức: số đầu và số cuối là hai số ở hai đầu của tổng.",
+   "vi_du": "##VD\nTính tổng $B=100+95+90+85+\\ldots+10+5$.\n**Hướng dẫn giải:**\nCác số hạng giảm dần, mỗi số kém số liền trước $5$ đơn vị nên là dãy số cách đều. Tìm số số hạng rồi dùng công thức tính tổng.\n\nKhoảng cách giữa hai số hạng liền nhau là $5$.\n\nSố số hạng của tổng là: $\\left(100-5\\right):5+1=20$ (số)\n\nTổng $B$ là: $\\left(100+5\\right)\\times 20:2=1050$\n\nĐáp số: $1050$",
+   "nguon_vd": "sach LT 6.7",
+   "ghi_chu": "Xem ghi chú NDB01525 về chồng lấn với dạng \"Tổng của dãy số cách đều\"."
+  },
+  {
+   "id": "NDB00647",
+   "mo_ta": "Đề là một đẳng thức có chữ (tìm $x$) mà vế trái là tổng nhiều ngoặc dạng $\\left(x+a\\right)+\\left(x+b\\right)+\\ldots+\\left(x+z\\right)$, với các số cộng thêm $a,b,\\ldots,z$ cách đều nhau. Phải tách phần chứa $x$ và phần các số cộng thêm, dùng công thức tổng dãy số rồi mới tìm $x$.",
+   "ly_thuyet": "##PP\nĐếm số ngoặc: bằng số số hạng của dãy các số cộng thêm (số số hạng $=$ (số cuối $-$ số đầu) $:$ khoảng cách $+1$).\nTính tổng các số cộng thêm (không chứa $x$) bằng công thức tổng dãy số cách đều.\nTổng $=$ ($x\\times$ số ngoặc) $+$ tổng các số cộng thêm; lấy tổng đề cho trừ đi tổng các số cộng thêm được $x\\times$ số ngoặc.\nChia cho số ngoặc để tìm $x$.\n\n##CY\nCó bao nhiêu ngoặc thì có bấy nhiêu số $x$ được cộng lại, không phải một số $x$.",
+   "vi_du": "##VD\nTìm $x$, biết: $\\left(x+1\\right)+\\left(x+4\\right)+\\left(x+7\\right)+\\ldots+\\left(x+31\\right)+\\left(x+34\\right)=282$\n**Hướng dẫn giải:**\nMỗi ngoặc có một số $x$ cộng với một số. Các số cộng thêm $1$; $4$; $7$; ...; $34$ là dãy số cách đều. Tách riêng phần $x$ và phần các số cộng thêm.\n\nSố ngoặc (cũng là số số hạng của dãy $1$; $4$; $7$; ...; $34$) là: $\\left(34-1\\right):3+1=12$ (ngoặc)\n\nTổng các số cộng thêm là: $\\left(1+34\\right)\\times 12:2=210$\n\n$\\begin{array}{l} x\\times 12=282-210 \\\\ x\\times 12=72 \\\\ x=72:12 \\\\ x=6 \\end{array}$\n\nVậy $x=6$.",
+   "nguon_vd": "sach LT 6.8c",
+   "ghi_chu": "Dùng chữ x có sẵn trong đề, trình bày theo cột như VD 4.2 (k4T §1)."
+  },
+  {
+   "id": "NDB01526",
+   "mo_ta": "Đề cho một dãy số cách đều và một số cho trước, hỏi số đó có thuộc dãy không và nếu có thì là số hạng thứ mấy. Khác dạng \"Tìm số hạng thứ n\": đó là cho vị trí và tìm số, còn ở đây cho số và tìm vị trí; khác dạng \"Tính số số hạng\": ở đây số cho trước nằm trong dãy, chưa chắc là số cuối.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nCho dãy số $11$; $16$; $21$; $26$; $31$; ... Số $951$ có thuộc dãy số trên không? Nếu có thì là số hạng thứ mấy?\n**Hướng dẫn giải:**\nCác số trong dãy cách đều nhau $5$ đơn vị nên chia cho $5$ có cùng số dư. Kiểm tra số $951$ có cùng số dư đó không; nếu có thì coi $951$ là số cuối rồi đếm số số hạng.\n\nCác số hạng trong dãy đều chia cho $5$ dư $1$, mà $951$ cũng chia cho $5$ dư $1$ nên $951$ thuộc dãy số.\n\nVị trí của $951$ là số hạng thứ: $\\left(951-11\\right):5+1=189$\n\nĐáp số: số hạng thứ $189$",
+   "nguon_vd": "sach LT 6.6c",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01527",
+   "mo_ta": "Đề cho cây (cột đèn, cờ, cọc...) trồng cách đều nhau trên một đoạn đường thẳng, hỏi số cây hoặc độ dài đoạn đường, trong đó phải tự xác định đầu nào có cây, đầu nào không (có thể kèm trồng ở cả hai bên đường). Đây là dạng tổng hợp; các dạng \"2 đầu\", \"1 đầu\", \"0 đầu\", \"2 cây\" là các trường hợp riêng.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nDọc quãng đường từ một trường tiểu học đến bệnh viện, người ta mắc $150$ đèn cao áp ở hai bên đường, đèn nọ cách đèn kia $45$ m. Tính quãng đường từ trường đến cổng bệnh viện, biết trước cổng bệnh viện có đèn còn cổng trường không có đèn.\n**Hướng dẫn giải:**\nHai bên đường có số đèn như nhau nên tính một bên rồi suy ra. Một đầu có đèn, một đầu không có đèn nên số khoảng bằng số đèn.\n\nMỗi bên đường mắc số đèn là: $150:2=75$ (đèn)\n\nVì cổng bệnh viện có đèn còn cổng trường không có đèn nên số khoảng cách bằng số đèn, tức là $75$ khoảng.\n\nQuãng đường từ trường đến cổng bệnh viện dài là: $75\\times 45=3375$ (m)\n\nĐáp số: $3375$ m",
+   "nguon_vd": "sach LT 7.5",
+   "ghi_chu": "Dạng này trùng phạm vi với 4 dạng con (2 đầu, 1 đầu, 0 đầu, 2 cây) và cả hai bên đường. Cần CEO chốt: giữ làm dạng \"tổng hợp\" hay gộp/bỏ."
+  },
+  {
+   "id": "NDB00648",
+   "mo_ta": "Đề cho cây trồng cách đều trên đoạn đường, cả hai đầu đường đều có cây (thường trồng ở hai bên đường), hỏi tổng số cây. Số cây một bên $=$ số khoảng $+1$, rồi nhân $2$ nếu có hai bên. Khác dạng \"1 đầu\": ở đó chỉ một đầu có cây.",
+   "ly_thuyet": "##PP\nTính số khoảng một bên: độ dài đường $:$ khoảng cách giữa hai cây liền nhau.\nSố cây một bên (cả hai đầu có cây) $=$ số khoảng $+1$.\nNếu trồng ở cả hai bên đường thì nhân với $2$.\n\n##CY\nChỉ cộng $1$ khi hai đầu đều có cây, cộng $1$ cho mỗi bên rồi mới nhân $2$.",
+   "vi_du": "##VD\nNhân ngày thành lập Quân đội nhân dân Việt Nam $22/12$, các chú bộ đội cắm cờ dọc cả hai bên đoạn đường dài $450$ m vào doanh trại. Biết cách $5$ m cắm một lá cờ và cả hai đầu đường đều cắm cờ. Hỏi có tất cả bao nhiêu lá cờ trên đoạn đường đó?\n**Hướng dẫn giải:**\nCả hai đầu đường đều có cờ nên số cờ một bên bằng số khoảng cộng $1$. Cờ ở hai bên đường như nhau nên cuối cùng nhân $2$.\n\nSố cờ cắm dọc một bên đường là: $450:5+1=91$ (lá cờ)\n\nSố cờ trên cả đoạn đường là: $91\\times 2=182$ (lá cờ)\n\nĐáp số: $182$ lá cờ",
+   "nguon_vd": "sach LT 7.2",
+   "ghi_chu": "Hiểu \"2 đầu\" = hai đầu đường đều có cây (suy từ câu đã gán: cờ/hoa/đèn dọc hai bên, hai đầu đều có). CEO xác nhận."
+  },
+  {
+   "id": "NDB00649",
+   "mo_ta": "Đề cho cây trồng cách đều dọc đường, chỉ MỘT đầu có cây, đầu kia không (ví dụ \"cổng cơ quan không có đèn, còn cổng bưu điện có đèn\"), thường cho số cây và khoảng cách để tìm độ dài đường. Số khoảng $=$ số cây. Khác dạng \"2 đầu\": ở đó cả hai đầu đều có cây nên số cây hơn số khoảng $1$.",
+   "ly_thuyet": "##PP\nNhận ra chỉ một đầu có cây nên số khoảng bằng số cây.\nĐộ dài đường $=$ số khoảng $\\times$ khoảng cách giữa hai cây liền nhau.\n\n##CY\nKhông cộng thêm $1$ và không trừ đi $1$ vì chỉ một đầu có cây.",
+   "vi_du": "##VD\nDọc quãng đường từ cơ quan bố Hùng đến bưu điện, người ta mắc đèn cao áp ở một bên đường, đèn nọ cách đèn kia $50$ m. Hỏi quãng đường từ cơ quan bố Hùng đến bưu điện dài bao nhiêu mét? Biết số đèn là $35$ cái và cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn.\n**Hướng dẫn giải:**\nChỉ một đầu có đèn nên số khoảng bằng số đèn. Biết số khoảng và khoảng cách giữa hai đèn thì tìm được độ dài đường.\n\nVì cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn nên số khoảng bằng số đèn, tức là $35$ khoảng.\n\nQuãng đường từ cơ quan bố Hùng đến bưu điện dài là: $35\\times 50=1750$ (m)\n\nĐáp số: $1750$ m",
+   "nguon_vd": "sach LT 7.4",
+   "ghi_chu": "Hiểu \"1 đầu\" = chỉ một đầu có cây (suy từ câu đã gán). CEO xác nhận."
+  },
+  {
+   "id": "NDB00650",
+   "mo_ta": "Đề có các điểm chia đều trên một đoạn thẳng mà hai đầu KHÔNG có điểm nào, điển hình là cắt (cưa) một thanh thành nhiều đoạn bằng nhau: số lần cắt $=$ số đoạn $-1$, rồi hỏi số lần cắt hoặc thời gian cắt. Cũng gồm bài trồng cây mà cả hai đầu đường đều không có cây. Khác dạng \"2 đầu\": ở đó hai đầu đều có cây nên số cây hơn số khoảng $1$.",
+   "ly_thuyet": "##PP\nĐổi độ dài về cùng một đơn vị đo.\nTính số đoạn (hoặc số khoảng): độ dài cả thanh $:$ độ dài mỗi đoạn.\nSố lần cắt (hoặc số cây không ở hai đầu) $=$ số đoạn $-1$.\nNhân với thời gian mỗi lần cắt nếu đề hỏi thời gian.\n\n##CY\nCắt $2$ nhát thì được $3$ đoạn: số lần cắt luôn ít hơn số đoạn $1$.\nĐổi mét ra xăng-ti-mét trước khi chia.",
+   "vi_du": "##VD\nMột người thợ dùng máy để cắt một thanh sắt dài $15$ m thành các đoạn nhỏ, mỗi đoạn dài $50$ cm. Mỗi lần cắt hết $2$ phút. Hỏi cắt xong thanh sắt đó hết bao nhiêu phút?\n**Hướng dẫn giải:**\nHai đầu thanh sắt không phải cắt nên số lần cắt ít hơn số đoạn $1$. Tìm số đoạn, suy ra số lần cắt, rồi tìm thời gian.\n\nĐổi $15$ m $=1500$ cm.\n\nSố đoạn sắt sau khi cắt là: $1500:50=30$ (đoạn)\n\nSố lần cắt là: $30-1=29$ (lần)\n\nThời gian cắt xong thanh sắt là: $29\\times 2=58$ (phút)\n\nĐáp số: $58$ phút",
+   "nguon_vd": "sach LT 7.7",
+   "ghi_chu": "Hiểu \"0 đầu\" = hai đầu đều không có cây/điểm chia (câu đã gán toàn là bài cắt thanh sắt). CEO xác nhận."
+  },
+  {
+   "id": "NDB00651",
+   "mo_ta": "Đề trồng xen kẽ hai loại cây theo quy luật lặp lại (ví dụ cứ $2$ cây loại A thì đến $1$ cây loại B), cách đều nhau trên đoạn đường, hai đầu đều là cây loại B, hỏi số cây của một loại. Phải tính tổng số cây rồi số cây loại B. Khác dạng \"2 đầu\": ở đó chỉ có một loại cây, không có quy luật xen kẽ.",
+   "ly_thuyet": "##PP\nTính tổng số cây trên cả đoạn đường: độ dài đường $:$ khoảng cách giữa hai cây liền nhau $+1$ (hai đầu đều có cây).\nTìm khoảng cách giữa hai cây loại B liền nhau: số cây trong một nhóm lặp (cả loại A lẫn một cây B) nhân với khoảng cách hai cây liền nhau.\nSố cây loại B $=$ độ dài đường $:$ khoảng cách giữa hai cây B $+1$.\nSố cây loại A $=$ tổng số cây $-$ số cây loại B.\n\n##CY\nMột nhóm lặp gồm cả cây loại A và cây loại B (cứ $2$ cây phượng rồi $1$ cây bằng lăng thì một nhóm có $3$ cây).\nKiểm tra lại: hai cây loại B liền nhau có đúng $2$ cây loại A ở giữa, nên số cây loại A $=2\\times$ (số cây loại B $-1$).",
+   "vi_du": "##VD\nTrên quãng đường từ nhà Minh đến trường dài $960$ m, người ta trồng xen kẽ các cây phượng và bằng lăng ở một bên đường: cứ $2$ cây phượng rồi đến $1$ cây bằng lăng, hai cây liền nhau cách nhau $8$ m. Hỏi có bao nhiêu cây phượng trên quãng đường đó, biết cổng nhà Minh và cổng trường đều có cây bằng lăng?\n**Hướng dẫn giải:**\nHai đầu đều có cây nên tính được tổng số cây. Cứ $2$ cây phượng, $1$ cây bằng lăng là một nhóm $3$ cây, nên hai cây bằng lăng liền nhau cách $3$ khoảng. Số phượng bằng tổng số cây trừ số bằng lăng.\n\nTổng số cây trồng trên quãng đường là: $960:8+1=121$ (cây)\n\nKhoảng cách giữa hai cây bằng lăng liền nhau là: $8\\times 3=24$ (m)\n\nSố cây bằng lăng là: $960:24+1=41$ (cây)\n\nSố cây phượng là: $121-41=80$ (cây)\n\nĐáp số: $80$ cây",
+   "nguon_vd": "sach LT 7.15",
+   "ghi_chu": "Hiểu \"2 cây\" = trồng xen kẽ hai loại cây. CẢNH BÁO câu T14T070101054: đề ghi 800 m nhưng lời giải dùng 840 m, đáp án 100 trong khi lời giải ra 140; 800 không chia hết cho 12 nên đề đúng phải là 840 (đáp án 140). Cần sửa câu này."
+  },
+  {
+   "id": "NDB01528",
+   "mo_ta": "Đề trồng (cắm) cây quanh một hình khép kín như sân bóng, vườn, ao (đi một vòng trở về chỗ xuất phát), cho kích thước hình và khoảng cách giữa hai cây liền nhau, hỏi số cây. Phải tính chu vi trước, số cây bằng số khoảng. Khác các dạng trồng trên đường thẳng: ở đây không có \"đầu\" nên không cộng hay trừ $1$.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nMột sân bóng có chiều dài $90$ m và dài gấp hai lần chiều rộng. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau $3$ m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?\n**Hướng dẫn giải:**\nCắm cờ quanh sân là hình khép kín nên số cờ bằng số khoảng, bằng chu vi chia cho khoảng cách. Phải tìm chiều rộng trước rồi tính chu vi.\n\nChiều rộng sân bóng là: $90:2=45$ (m)\n\nChu vi sân bóng là: $\\left(90+45\\right)\\times 2=270$ (m)\n\nSố lá cờ cần cắm là: $270:3=90$ (lá cờ)\n\nĐáp số: $90$ lá cờ",
+   "nguon_vd": "sach LT 7.11",
+   "ghi_chu": "Lời giải câu đã gán ghi nhầm đơn vị \"(m)\" cho số cờ (T14T070102001) - nên sửa."
+  },
+  {
+   "id": "NDB01529",
+   "mo_ta": "Đề cho giá trị của một số phần bằng nhau (ví dụ $8$ thùng có $448$ kg táo; $5$ bộ cần $15$ m vải) rồi hỏi giá trị của số phần khác, hoặc hỏi số phần khi biết tổng giá trị. Phải tìm giá trị của MỘT phần trước (phép chia).",
+   "ly_thuyet": "##PP\nTìm giá trị của một phần: lấy tổng chia cho số phần (rút về đơn vị).\nDạng tìm giá trị nhiều phần: lấy giá trị một phần nhân với số phần cần tìm.\nDạng tìm số phần: lấy tổng giá trị cần tìm chia cho giá trị một phần.\n\n##CY\nĐề có thêm bớt, ăn đi, bán đi, ... thì tính số phần còn lại (hoặc tổng mới) rồi mới nhân hoặc chia.",
+   "vi_du": "##VD\nCó $448$ kg táo được đựng đều vào $8$ thùng. Hỏi $6$ thùng như thế có tất cả bao nhiêu ki-lô-gam táo?\n**Hướng dẫn giải:**\nCác thùng đựng số táo như nhau, nên trước hết rút về một thùng (phép chia), rồi tìm số táo của $6$ thùng (phép nhân).\n\nMột thùng đựng được số ki-lô-gam táo là: $448:8=56$ (kg)\n\n$6$ thùng có tất cả số ki-lô-gam táo là: $56\\times 6=336$ (kg)\n\nĐáp số: $336$ kg táo",
+   "nguon_vd": "sach VD 14.1",
+   "ghi_chu": "Dạng duy nhất của nhóm này, nên mọi bài rút về đơn vị (cả dạng 1 và dạng 2 của sách) sẽ rơi vào đây. Nếu cần phân biệt dạng 1/dạng 2 thì CEO tách thành 2 dạng."
+  },
+  {
+   "id": "NDB01530",
+   "mo_ta": "Đề cho một dãy số liệu (bảng hoặc biểu đồ) và hỏi các đại lượng cơ bản: có bao nhiêu giá trị (bao nhiêu bạn), giá trị lớn nhất hoặc bé nhất, trung bình cộng của dãy, hoặc trung bình cộng của một nhóm giá trị chọn ra (ba bạn nặng nhất...). Khác các bài trung bình cộng thuần: ở đây phải đọc, đếm và chọn số liệu từ dãy.",
+   "ly_thuyet": "##PP\nĐếm số giá trị của dãy số liệu (đếm đủ cả giá trị lặp lại).\nChọn các số liệu đề yêu cầu (lớn nhất, bé nhất, nhóm cần tính).\nTính tổng các số liệu rồi chia cho số giá trị để tìm trung bình cộng.\n\n##CY\nTrung bình cộng của một nhóm chọn ra thì chỉ cộng và chia trong nhóm đó, không dùng cả dãy.",
+   "vi_du": "##VD\nCho dãy số liệu về cân nặng (tính theo ki-lô-gam) của các bạn tổ I lớp $4$A trong một buổi kiểm tra sức khỏe cuối năm như sau: $40$; $43$; $45$; $48$; $44$; $45$; $39$; $40$. Hỏi: a) Tổ I có bao nhiêu bạn? b) Tính trung bình cộng cân nặng các bạn tổ I. c) Tính trung bình cộng cân nặng của ba bạn nặng nhất trong tổ I.\n**Hướng dẫn giải:**\nMỗi số liệu là cân nặng của một bạn nên đếm số liệu để biết số bạn. Trung bình cộng bằng tổng chia cho số bạn. Ở ý c) chỉ lấy ba số lớn nhất.\n\na) Tổ I của lớp $4$A có $8$ bạn.\n\nb) Tổng cân nặng của $8$ bạn là: $40+43+45+48+44+45+39+40=344$ (kg)\n\nTrung bình cộng cân nặng của các bạn tổ I là: $344:8=43$ (kg)\n\nc) Ba bạn nặng nhất có cân nặng là: $45$ kg, $45$ kg, $48$ kg.\n\nTrung bình cộng cân nặng của ba bạn nặng nhất là: $\\left(45+48+45\\right):3=46$ (kg)\n\nĐáp số: a) $8$ bạn; b) $43$ kg; c) $46$ kg",
+   "nguon_vd": "sach VD 15.1",
+   "ghi_chu": "Bài nhiều ý nên trình bày a) b) c) trong một ví dụ. Chuyên đề sách còn có biểu đồ/bảng tranh và xác suất (khả năng); nhóm này hiện chỉ có 1 dạng nên các bài đó chưa có chỗ gán."
+  },
+  {
+   "id": "NDB01531",
+   "mo_ta": "Đề kể một chuỗi các phép tính làm liên tiếp từ một số chưa biết (gấp lên, cộng thêm, chia, bớt...) đến kết quả cuối cùng cho trước, hỏi số ban đầu. Giải bằng cách đi ngược từ kết quả cuối, đảo từng phép tính.",
+   "ly_thuyet": "##PP\nVẽ sơ đồ các bước từ số cần tìm đến kết quả cuối.\nĐi ngược từ kết quả cuối: mỗi bước làm phép tính ngược (cộng thành trừ, trừ thành cộng, nhân thành chia, chia thành nhân).\nThử lại bằng cách đi xuôi từ số vừa tìm được.\n\n##CY\nPhải đi ngược theo đúng thứ tự: bước làm sau cùng thì được xử lý trước tiên.",
+   "vi_du": "##VD\nTìm một số, biết rằng lấy số đó gấp lên $3$ lần rồi cộng với $10$, được bao nhiêu chia cho $5$ thì được kết quả là $20$.\n**Hướng dẫn giải:**\nTa đi ngược từ kết quả cuối $20$: đảo phép chia cho $5$ thành nhân với $5$, đảo phép cộng $10$ thành trừ $10$, đảo phép gấp lên $3$ lần thành chia cho $3$.\n\nTa có sơ đồ: số cần tìm, gấp $3$ lần, cộng $10$, chia $5$, kết quả $20$.\n\nSố trước khi chia cho $5$ là: $20\\times 5=100$\n\nSố trước khi cộng $10$ là: $100-10=90$\n\nSố cần tìm là: $90:3=30$\n\nĐáp số: $30$",
+   "nguon_vd": "sach VD 24.1",
+   "ghi_chu": "Dạng duy nhất của nhóm \"Tìm số ban đầu trong chuỗi phép tính\"; bài sơ đồ phân số, chuyển bi/vở, bảng chuyển ngược (VD 24.2, 24.3) chưa có dạng riêng."
+  }
+ ]
+}

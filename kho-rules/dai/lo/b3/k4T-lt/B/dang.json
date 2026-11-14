@@ -1,0 +1,660 @@
+[
+ {
+  "id": "NDB01523",
+  "ten": "Tìm số hạng thứ n",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Công thức:  Số hạng thứ n = Số hạng thứ 1 + (n – 1)x khoảng cách.\n            Số hạng thứ n = Số hạng thứ 2 + (n – 2)x khoảng cách.\n            Số hạng thứ n = Số hạng thứ 3 + (n – 3)x khoảng cách.\n\nCho dãy số : 3, 7, 11, 15, 19, …………………, 599, 603. Tìm số hạng thứ 30\nBài giải:\nSố hạng thứ 30 là :  $3+\\left( 30-1 \\right)\\times 4=119$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060101001",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 3, 7, 11, 15, 19, ..........................., 599, 603. Tìm số hạng thứ 30",
+    "dap_an": "119",
+    "loi_giai": "Số hạng thứ 30 là : $3 + (30-1)\\times 4 = 119$"
+   },
+   {
+    "ma_cau": "T14T060101004",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 1, 6, 11, 16, ..........................., 291, 296. Tìm số hạng thứ 25",
+    "dap_an": "121",
+    "loi_giai": "Số hạng thứ 25 là : $1 + (25-1)\\times 5 = 121$"
+   },
+   {
+    "ma_cau": "T14T060101005",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 4, 10, 16, 22, ..........................., 322, 328. Tìm số hạng thứ 15",
+    "dap_an": "88",
+    "loi_giai": "Số hạng thứ 15 là : $4 + (15-1)\\times 6 = 88$"
+   },
+   {
+    "ma_cau": "T14T060101006",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 10, 15, 20, 25, ..........................., 375, 380. Tìm số hạng thứ 30",
+    "dap_an": "155",
+    "loi_giai": "Số hạng thứ 30 là : $10 + (30-1)\\times 5 = 155$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01524",
+  "ten": "Tính số số hạng của dãy số",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Công thức : Số số hạng = (Số cuối – Số đầu) : Khoảng cách + 1\n\n**Ví dụ :** Cho dãy số : 3, 7, 11, 15, 19, ……………… , 599, 603. Tính số số hạng của dãy số trên\n\nBài giải:\n\nSố số hạng của dãy số : $(603-3):4+1=151$ (số)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060102001",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 3, 7, 11, 15, 19, ............................, 599, 603. Tính số số hạng của dãy số trên",
+    "dap_an": "151",
+    "loi_giai": "Số số hạng của dãy số : $(603-3):4+1=151$ (số)"
+   },
+   {
+    "ma_cau": "T14T060102022",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 2,7,12,17,22,…………….502. Tính số số hạng của dãy số trên",
+    "dap_an": "101",
+    "loi_giai": "Giải\nSố số hạng của dãy số : $(502–2):5+1=101$ (số)"
+   },
+   {
+    "ma_cau": "T14T060102002",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 5, 8, 11, 14, 17, ............................, 299, 302. Tính số số hạng của dãy số trên",
+    "dap_an": "100",
+    "loi_giai": "Số số hạng của dãy số : $(302-5):3+1=100$ (số)"
+   },
+   {
+    "ma_cau": "T14T060102003",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 2, 7, 12, 17, 22, ............................, 392, 397. Tính số số hạng của dãy số trên",
+    "dap_an": "80",
+    "loi_giai": "Số số hạng của dãy số : $(397-2):5+1=80$ (số)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01525",
+  "ten": "Tổng của dãy số cách đều",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Công thức : Tổng của dãy số = (Số đầu + Số cuối) x Số số hạng : 2\n\n**Ví dụ.** Cho dãy số : $1, 5, 9, 13, .............397$. Tính tổng dãy số trên ?\nBài giải:\nSố số hạng của dãy số là : $(397-1):4+1=100$ (số)\nTổng của dãy số trên : $(1+397)\\times 100:2 = 19900$\n\n**Ví dụ.** Cho dãy số : $2, 6, 10, 14, 18, ............$.Tính tổng 100 số hạng đầu tiên của dãy ?\nBài giải:\nSố hạng thứ 100 là : $2+(100-1)\\times 4 = 398$\nCoi như dãy số này gồm 100 số hạng thì số hạng 100 chính là số cuối.\nTổng của 100 số hạng đầu tiên là : $(2+398)\\times 100:2 = 20000$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060103054",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 1,4,7, 10,...\nTính tổng 20 số hạng đầu tiên ?",
+    "dap_an": "590",
+    "loi_giai": "Số hạng thứ 20 là $1+(20-1)\\times 3=58$ \\n\nTổng của 20 số hạng đầu là : $(1+58)\\times 20:2=590"
+   },
+   {
+    "ma_cau": "T14T060103056",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 5,7,9, 11,...\nTính tổng 25 số hạng đầu tiên ?",
+    "dap_an": "725",
+    "loi_giai": "Số hạng thứ 25 là $5+(25-1)\\times 2=53$\nTổng của 25 số hạng đầu là : $(5+53)\\times 25:2=725"
+   },
+   {
+    "ma_cau": "T14T060103055",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 2,6,10, 14,...\nTính tổng 15 số hạng đầu tiên ?",
+    "dap_an": "450",
+    "loi_giai": "Số hạng thứ 15 là $2+(15-1)\\times 4=58$\nTổng của 15 số hạng đầu là : $(2+58)\\times 15:2=450"
+   },
+   {
+    "ma_cau": "T14T060103057",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 3,8,13, 18,...\nTính tổng 12 số hạng đầu tiên ?",
+    "dap_an": "366",
+    "loi_giai": "Số hạng thứ 12 là $3+(12-1)\\times 5=58$\nTổng của 12 số hạng đầu là : $(3+58)\\times 12:2=366"
+   }
+  ]
+ },
+ {
+  "id": "NDB00646",
+  "ten": "Tính tổng dãy số",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060103040",
+    "ten_de_goc": null,
+    "noi_dung": "Ví dụ : Tính $T = 2+4+6+...+98+100$",
+    "dap_an": "2550",
+    "loi_giai": "Ta có $2,4,6,...,100$ là 1 dãy số cách đều có khoảng cách là 2. T chính là tổng của dãy số\nSố số hạng của dãy là : $(100-2):2+1=50$ (số)\nTổng của dãy số là : $T=2+4+...+100 = (2+100)\\times 50:2=2550$"
+   },
+   {
+    "ma_cau": "T14T060103001",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 1, 5, 9, 13, ....................397. Tính tổng dãy số trên ?",
+    "dap_an": "19900",
+    "loi_giai": "Số số hạng của dãy số là : $(397-1):4+1=100$ (số)\nTổng của dãy số trên : $(1+397)\\times 100:2=19900"
+   },
+   {
+    "ma_cau": "T14T060103007",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 6, 13, 20, 27, ....................384. Tính tổng dãy số trên ?",
+    "dap_an": "10725",
+    "loi_giai": "Số số hạng của dãy số là : $(384-6):7+1=55$ (số)\nTổng của dãy số trên : $(6+384)\\times 55:2=10725"
+   },
+   {
+    "ma_cau": "T14T060103023",
+    "ten_de_goc": null,
+    "noi_dung": "Ví dụ : Tính $B = 2+4+6+...+198+200$",
+    "dap_an": "10100",
+    "loi_giai": "Ta có $2,4,6,...,200$ là 1 dãy số cách đều có khoảng cách là 2. B chính là tổng của dãy số\nSố số hạng của dãy là : $(200-2):2+1=100$ (số)\nTổng của dãy số là : $B=2+4+...+200 = (2+200)\\times 100:2=10100$"
+   }
+  ]
+ },
+ {
+  "id": "NDB00647",
+  "ten": "Tìm x dùng tổng dãy số",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 5,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060103050",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm x biết : $(x+1)+(x+2)+...+(x+18)=225$",
+    "dap_an": "3",
+    "loi_giai": "Ta có $(x+1)+(x+2)+...+(x+18)=225$\n$(x+x+...+x)+(1+2+...+18)=225$\n$x \\times 18+(1+2+...+18)=225$\nTa có $1+2+...+18 = \\dfrac{18 \\times (18+1)}{2} = 171$\nSuy ra $x \\times 18 + 171 = 225$\n$x \\times 18 = 225 - 171 = 54$\n$x = 54 : 18$\n$x = 3$"
+   },
+   {
+    "ma_cau": "T14T060103045",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm x biết : $(x+1)+(x+2)+...+(x+15)=180$",
+    "dap_an": "4",
+    "loi_giai": "Ta có $(x+1)+(x+2)+...+(x+15)=180$\n$(x+x+...+x)+(1+2+...+15)=180$\n$x \\times 15+(1+2+...+15)=180$\nTa có $1+2+...+15 = \\dfrac{15 \\times (15+1)}{2} = 120$\nSuy ra $x \\times 15 + 120 = 180$\n$x \\times 15 = 180 - 120 = 60$\n$x = 60 : 15$\n$x = 4$"
+   },
+   {
+    "ma_cau": "T14T060103047",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm x biết : $(x+1)+(x+2)+...+(x+12)=150$",
+    "dap_an": "6",
+    "loi_giai": "Ta có $(x+1)+(x+2)+...+(x+12)=150$\n$(x+x+...+x)+(1+2+...+12)=150$\n$x \\times 12+(1+2+...+12)=150$\nTa có $1+2+...+12 = \\dfrac{12 \\times (12+1)}{2} = 78$\nSuy ra $x \\times 12 + 78 = 150$\n$x \\times 12 = 150 - 78 = 72$\n$x = 72 : 12$\n$x = 6$"
+   },
+   {
+    "ma_cau": "T14T060103048",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm x biết : $(x+1)+(x+2)+...+(x+30)=495$",
+    "dap_an": "1",
+    "loi_giai": "Ta có $(x+1)+(x+2)+...+(x+30)=495$\n$(x+x+...+x)+(1+2+...+30)=495$\n$x \\times 30+(1+2+...+30)=495$\nTa có $1+2+...+30 = \\dfrac{30 \\times (30+1)}{2} = 465$\nSuy ra $x \\times 30 + 465 = 495$\n$x \\times 30 = 495 - 465 = 30$\n$x = 30 : 30$\n$x = 1$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01526",
+  "ten": "Tìm vị trí của một số trong dãy số ?",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "1. Dãy số cách đều",
+  "nhom_id": "NNB01715",
+  "nhom": "1. Dãy số cách đều",
+  "thu_tu_dang": 6,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Phương pháp :\n\n* Các số trong một dãy số cách đều luôn có cùng số dư khi chia cho khoảng cách. Dựa vào tính chất này để xác định số đã cho có thuộc dãy số không.\n* Nếu số đã cho có thuộc dãy số. Ta coi nó là số cuối của dãy số. Khi đó, vị trí của nó chính là số số hạng của dãy số (Nếu nó ở vị trí số 50 nghĩa là dãy có 50 số hạng )\n\n**Ví dụ.** Cho dãy số : $3, 7, 11, 15, 19, \\ldots, 599, 603$\n\nSố 407 có thuộc dãy trên không ? Nếu có là số hạng thứ mấy ?\n\nBài giải:\n\nTa thấy các số hạng trong dãy số khi chia cho 4 đều dư 3.\nMà 407 cũng chia 4 dư 3, nên 407 có thuộc dãy số.\nVị trí của 407 là số hạng thứ : $(407-3):4+1=102",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T060104001",
+    "ten_de_goc": null,
+    "noi_dung": "Ví dụ. Cho dãy số : 3, 7, 11, 15, 19, ........................., 599, 603\nSố 407 có thuộc dãy trên không ? Nếu có là số hạng thứ mấy ?",
+    "dap_an": "102",
+    "loi_giai": "Ta thấy các số hạng trong dãy số khi chia cho 4 đều dư 3.\nMà 407 cũng chia 4 dư 3, nên 407 có thuộc dãy số.\nVị trí của 407 là số hạng thứ : $(407-3):4+1=102$"
+   },
+   {
+    "ma_cau": "T14T060104018",
+    "ten_de_goc": null,
+    "noi_dung": "Cho dãy số : 2, 5, 8, 11, ..........Hỏi 100 có thuộc dãy số trên không ? nếu có thì nó là số hạng thứ\nbao nhiêu ?",
+    "dap_an": "Không",
+    "loi_giai": "Các số hạng trong dãy số trên khi chia cho 3 đều dư 2\nMà 100 chia 3 dư 1 nên 100 không thuộc dãy số trên ."
+   },
+   {
+    "ma_cau": "T14T060104002",
+    "ten_de_goc": null,
+    "noi_dung": "Ví dụ. Cho dãy số : 2, 7, 12, ........................., 492, 497\nSố 222 có thuộc dãy trên không ? Nếu có là số hạng thứ mấy ?",
+    "dap_an": "45",
+    "loi_giai": "Ta thấy các số hạng trong dãy số khi chia cho 5 đều dư 2.\nMà 222 cũng chia 5 dư 2, nên 222 có thuộc dãy số.\nVị trí của 222 là số hạng thứ : $(222-2):5+1=45$"
+   },
+   {
+    "ma_cau": "T14T060104003",
+    "ten_de_goc": null,
+    "noi_dung": "Ví dụ. Cho dãy số : 1, 4, 7, ........................., 595, 598\nSố 178 có thuộc dãy trên không ? Nếu có là số hạng thứ mấy ?",
+    "dap_an": "60",
+    "loi_giai": "Ta thấy các số hạng trong dãy số khi chia cho 3 đều dư 1.\nMà 178 cũng chia 3 dư 1, nên 178 có thuộc dãy số.\nVị trí của 178 là số hạng thứ : $(178-1):3+1=60$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01527",
+  "ten": "Bài toán trồng cây trên đường thẳng",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "- Công thức tính số cây - khi trồng cây ở cả 2 đầu\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/e2e91356-bd53-4a78-9d53-52ac97a0e7b9.png)\n\nLưu ý: Nếu đề bài cho cây thiếu ở 1 đầu hoặc 2 đầu thì ta trừ đi tương ứng 1, 2 cây tương ứng.\nTrong bài toán ngược, khi muốn tính khoảng cách, ta có công thức\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/cc09e2c7-6e65-47ca-b764-db243f8693a1.png)\n\nTrong đó số khoảng được tính theo số cây.\nNếu có cây ở 2 đầu thì: số khoảng = số cây - 1\nNếu thiếu 1 đầu thì: số khoảng = số cây\nNếu thiếu 2 đầu thì: số khoảng = số cây + 1\nVÍ DỤ 1. Nhân ngày thành lập Quân đội nhân dân Việt Nam 22/12, các chú bộ đội cắm cờ đỏ sao vàng dọc cả hai bên đoạn đường dài 450 m vào doanh trại. Biết cách 5 m cắm một lá cờ và cả hai đầu đường đều cắm cờ. Hỏi có tất cả bao nhiêu lá cờ trên đoạn đường đó?\nBài giải:\nSố cờ cắm dọc 1 bên đường là: $450:5+1=91$ (cây)\nSố cờ trên cả đoạn đường là: $91\\times 2=182$ (cây)\nĐáp số: 182 cây\nVÍ DỤ 2. Dọc quãng đường từ cơ quan bố Hùng đến bưu điện, người ta mắc đèn cao áp ở một bên đường, đèn nọ cách đèn kia 50 m. Hỏi quãng đường từ cơ quan bố Hùng đến bưu điện dài bao nhiêu mét? Biết số đèn là 35 cái và cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn.\nBài giải:\nVì cổng cơ quan không có đèn, còn ở cổng bưu điện có đèn nên số khoảng cách sẽ bằng số đèn là 35 khoảng.\nQuãng đường từ cơ quan bố Hùng đến bưu điện là: $35\\times 50=1750$(m)\nĐáp số: 1 750 m",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB00648",
+  "ten": "2 đầu",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T070101014",
+    "ten_de_goc": null,
+    "noi_dung": "Nhân dịp festival hoa, người ta trồng hoa dọc cả hai bên con đường dài 540 m. Biết cách 9 m trồng một khóm hoa và cả hai đầu đường đều trồng hoa. Hỏi có tất cả bao nhiêu khóm hoa trên đoạn đường đó?",
+    "dap_an": "122",
+    "loi_giai": "Số khóm hoa trồng dọc 1 bên đường là :\n$540 : 9 + 1 = 61$ (cây)\nSố khóm hoa trên cả đoạn đường là :\n$61 \\times 2 = 122$ (cây)\nĐáp số : 122 cây"
+   },
+   {
+    "ma_cau": "T14T070101012",
+    "ten_de_goc": null,
+    "noi_dung": "Nhân dịp ngày hội đọc sách, thư viện trường treo cờ dọc cả hai bên lối vào dài 300 m. Biết cách 5 m treo một lá cờ và cả hai đầu lối vào đều treo cờ. Hỏi có tất cả bao nhiêu lá cờ trên đoạn đường đó?",
+    "dap_an": "122",
+    "loi_giai": "Số cờ treo dọc 1 bên đường là :\n$300 : 5 + 1 = 61$ (cây)\nSố cờ trên cả đoạn đường là :\n$61 \\times 2 = 122$ (cây)\nĐáp số : 122 cây"
+   },
+   {
+    "ma_cau": "T14T070101017",
+    "ten_de_goc": null,
+    "noi_dung": "Nhân dịp tết Nguyên Đán, người ta treo đèn lồng đỏ dọc cả hai bên con đường dài 780 m. Biết cách 13 m treo một chiếc đèn và cả hai đầu đường đều treo đèn. Hỏi có tất cả bao nhiêu chiếc đèn lồng trên đoạn đường đó?",
+    "dap_an": "122",
+    "loi_giai": "Số đèn treo dọc 1 bên đường là :\n$780 : 13 + 1 = 61$ (cây)\nSố đèn trên cả đoạn đường là :\n$61 \\times 2 = 122$ (cây)\nĐáp số : 122 cây"
+   },
+   {
+    "ma_cau": "T14T070101021",
+    "ten_de_goc": null,
+    "noi_dung": "Nhân dịp kỷ niệm ngày thành lập Công đoàn Việt Nam, các cô chú treo cờ dọc cả hai bên con đường dài 500 m. Biết cách 10 m treo một lá cờ và cả hai đầu đường đều treo cờ. Hỏi có tất cả bao nhiêu lá cờ trên đoạn đường đó?",
+    "dap_an": "102",
+    "loi_giai": "Số cờ treo dọc 1 bên đường là :\n$500 : 10 + 1 = 51$ (cây)\nSố cờ trên cả đoạn đường là :\n$51 \\times 2 = 102$ (cây)\nĐáp số : 102 cây"
+   }
+  ]
+ },
+ {
+  "id": "NDB00649",
+  "ten": "1 đầu",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T070101030",
+    "ten_de_goc": null,
+    "noi_dung": "Dọc quãng đường từ trạm y tế xã đến cầu, người ta trồng cây hoa sữa ở một bên đường, cây nọ cách cây kia 35 m. Hỏi quãng đường từ trạm y tế xã đến cầu dài bao nhiêu mét? Biết số cây là 30 cây và trạm y tế không có cây, còn ở đầu cầu có cây.",
+    "dap_an": "1050",
+    "loi_giai": "Vì trạm y tế không có cây, còn ở đầu cầu có cây nên số khoảng cách sẽ bằng số cây là 30 khoảng.\nQuãng đường từ trạm y tế xã đến cầu là : $30 \\times 35 = 1050$ (m)\nĐáp số : 1 050 m"
+   },
+   {
+    "ma_cau": "T14T070101029",
+    "ten_de_goc": null,
+    "noi_dung": "Dọc quãng đường từ nhà Lan đến bưu điện, người ta mắc đèn tín hiệu ở một bên đường, đèn nọ cách đèn kia 65 m. Hỏi quãng đường từ nhà Lan đến bưu điện dài bao nhiêu mét? Biết số đèn là 24 cái và cổng nhà Lan không có đèn, còn ở cổng bưu điện có đèn.",
+    "dap_an": "1560",
+    "loi_giai": "Vì cổng nhà Lan không có đèn, còn ở cổng bưu điện có đèn nên số khoảng cách sẽ bằng số đèn là 24 khoảng.\nQuãng đường từ nhà Lan đến bưu điện là : $24 \\times 65 = 1560$ (m)\nĐáp số : 1 560 m"
+   },
+   {
+    "ma_cau": "T14T070101024",
+    "ten_de_goc": null,
+    "noi_dung": "Dọc quãng đường từ nhà Minh đến bến xe, người ta mắc đèn đường ở một bên đường, đèn nọ cách đèn kia 60 m. Hỏi quãng đường từ nhà Minh đến bến xe dài bao nhiêu mét? Biết số đèn là 30 cái và cổng nhà Minh không có đèn, còn ở cổng bến xe có đèn.",
+    "dap_an": "1800",
+    "loi_giai": "Vì cổng nhà Minh không có đèn, còn ở cổng bến xe có đèn nên số khoảng cách sẽ bằng số đèn là 30 khoảng.\nQuãng đường từ nhà Minh đến bến xe là : $30 \\times 60 = 1800$ (m)\nĐáp số : 1 800 m"
+   },
+   {
+    "ma_cau": "T14T070101032",
+    "ten_de_goc": null,
+    "noi_dung": "Dọc quãng đường từ nhà Hùng đến nhà bà ngoại, người ta trồng cây cau ở một bên đường, cây nọ cách cây kia 80 m. Hỏi quãng đường từ nhà Hùng đến nhà bà ngoại dài bao nhiêu mét? Biết số cây là 25 cây và cổng nhà Hùng không có cây, còn ở cổng nhà bà ngoại có cây.",
+    "dap_an": "2000",
+    "loi_giai": "Vì cổng nhà Hùng không có cây, còn ở cổng nhà bà ngoại có cây nên số khoảng cách sẽ bằng số cây là 25 khoảng.\nQuãng đường từ nhà Hùng đến nhà bà ngoại là : $25 \\times 80 = 2000$ (m)\nĐáp số : 2 000 m"
+   }
+  ]
+ },
+ {
+  "id": "NDB00650",
+  "ten": "0 đầu",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T070101042",
+    "ten_de_goc": null,
+    "noi_dung": "Một người thợ dùng máy để cắt một thanh sắt dài 25 m thành các đoạn nhỏ, mỗi đoạn dài 50 cm.\nMỗi lần cắt hết 3 phút. Hỏi cắt xong thanh sắt đó hết bao nhiêu phút?",
+    "dap_an": "147",
+    "loi_giai": "Đổi $25 \\text{ m} = 2500 \\text{ cm}$\nSố đoạn sắt sau khi cắt là:\n$2500 : 50 = 50$ (đoạn)\nSố lần cắt là:\n$50 - 1 = 49$ (lần)\nThời gian cắt thanh sắt là:\n$49 \\times 3 = 147$ (phút)"
+   },
+   {
+    "ma_cau": "T14T070101035",
+    "ten_de_goc": null,
+    "noi_dung": "Một người thợ dùng máy để cắt một thanh sắt dài 18 m thành các đoạn nhỏ, mỗi đoạn dài 60 cm.\nMỗi lần cắt hết 2 phút. Hỏi cắt xong thanh sắt đó hết bao nhiêu phút?",
+    "dap_an": "58",
+    "loi_giai": "Đổi $18 \\text{ m} = 1800 \\text{ cm}$\nSố đoạn sắt sau khi cắt là:\n$1800 : 60 = 30$ (đoạn)\nSố lần cắt là:\n$30 - 1 = 29$ (lần)\nThời gian cắt thanh sắt là:\n$29 \\times 2 = 58$ (phút)"
+   },
+   {
+    "ma_cau": "T14T070101040",
+    "ten_de_goc": null,
+    "noi_dung": "Một người thợ dùng máy để cắt một thanh sắt dài 15 m thành các đoạn nhỏ, mỗi đoạn dài 50 cm.\nMỗi lần cắt hết 3 phút. Hỏi cắt xong thanh sắt đó hết bao nhiêu phút?",
+    "dap_an": "87",
+    "loi_giai": "Đổi $15 \\text{ m} = 1500 \\text{ cm}$\nSố đoạn sắt sau khi cắt là:\n$1500 : 50 = 30$ (đoạn)\nSố lần cắt là:\n$30 - 1 = 29$ (lần)\nThời gian cắt thanh sắt là:\n$29 \\times 3 = 87$ (phút)"
+   },
+   {
+    "ma_cau": "T14T070101034",
+    "ten_de_goc": null,
+    "noi_dung": "Một người thợ dùng máy để cắt một thanh sắt dài 12 m thành các đoạn nhỏ, mỗi đoạn dài 40 cm.\nMỗi lần cắt hết 2 phút. Hỏi cắt xong thanh sắt đó hết bao nhiêu phút?",
+    "dap_an": "58",
+    "loi_giai": "Đổi $12 \\text{ m} = 1200 \\text{ cm}$\nSố đoạn sắt sau khi cắt là:\n$1200 : 40 = 30$ (đoạn)\nSố lần cắt là:\n$30 - 1 = 29$ (lần)\nThời gian cắt thanh sắt là:\n$29 \\times 2 = 58$ (phút)"
+   }
+  ]
+ },
+ {
+  "id": "NDB00651",
+  "ten": "2 cây",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 5,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": true,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T070101054",
+    "ten_de_goc": null,
+    "noi_dung": "Từ nhà Dũng đến bưu điện có trồng cây hoa sữa và bằng lăng. Cứ 4m người ta trồng 1 cây. Cứ 2 cây hoa sữa người ta trồng 1 cây bằng lăng. Biết nhà Dũng cách bưu điện 800m và cả nhà Dũng lẫn bưu điện đều trồng cây bằng lăng. Tính số cây hoa sữa?",
+    "dap_an": "100",
+    "loi_giai": "Tổng số cây trồng là : $840 : 4 + 1 = 211$ (cây)\nCứ 2 cây hoa sữa người ta trồng 1 cây bằng lăng nên khoảng cách giữa 2 cây bằng lăng là 12m.\nTổng số cây bằng lăng là : $840 : 12 + 1 = 71$ (cây)\nSố cây hoa sữa là : $211 - 71 = 140$ (cây)\nĐáp số 140 cây"
+   },
+   {
+    "ma_cau": "T14T070101055",
+    "ten_de_goc": null,
+    "noi_dung": "Từ nhà Hạnh đến đình làng có trồng cây đào và mai. Cứ 5m người ta trồng 1 cây. Cứ 4 cây đào người ta trồng 1 cây mai. Biết nhà Hạnh cách đình làng 900m và cả nhà Hạnh lẫn đình làng đều trồng cây mai. Tính số cây đào?",
+    "dap_an": "144",
+    "loi_giai": "Tổng số cây trồng là : $900 : 5 + 1 = 181$ (cây)\nCứ 4 cây đào người ta trồng 1 cây mai nên khoảng cách giữa 2 cây mai là 25m.\nTổng số cây mai là : $900 : 25 + 1 = 37$ (cây)\nSố cây đào là : $181 - 37 = 144$ (cây)\nĐáp số 144 cây"
+   },
+   {
+    "ma_cau": "T14T070101051",
+    "ten_de_goc": null,
+    "noi_dung": "Từ nhà An đến trường học có trồng cây phượng và xà cừ. Cứ 4m người ta trồng 1 cây. Cứ 3 cây phượng người ta trồng 1 cây xà cừ. Biết nhà An cách trường học 960m và cả nhà An lẫn trường học đều trồng cây xà cừ. Tính số cây phượng?",
+    "dap_an": "180",
+    "loi_giai": "Tổng số cây trồng là : $960 : 4 + 1 = 241$ (cây)\nCứ 3 cây phượng người ta trồng 1 cây xà cừ nên khoảng cách giữa 2 cây xà cừ là 16m.\nTổng số cây xà cừ là : $960 : 16 + 1 = 61$ (cây)\nSố cây phượng là : $241 - 61 = 180$ (cây)\nĐáp số 180 cây"
+   },
+   {
+    "ma_cau": "T14T070101053",
+    "ten_de_goc": null,
+    "noi_dung": "Từ nhà Chi đến chợ có trồng cây me và sấu. Cứ 6m người ta trồng 1 cây. Cứ 2 cây me người ta trồng 1 cây sấu. Biết nhà Chi cách chợ 720m và cả nhà Chi lẫn chợ đều trồng cây sấu. Tính số cây me?",
+    "dap_an": "80",
+    "loi_giai": "Tổng số cây trồng là : $720 : 6 + 1 = 121$ (cây)\nCứ 2 cây me người ta trồng 1 cây sấu nên khoảng cách giữa 2 cây sấu là 18m.\nTổng số cây sấu là : $720 : 18 + 1 = 41$ (cây)\nSố cây me là : $121 - 41 = 80$ (cây)\nĐáp số 80 cây"
+   }
+  ]
+ },
+ {
+  "id": "NDB01528",
+  "ten": "Bài toán trồng cây khép kín",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "2. Bài toán trồng cây",
+  "nhom_id": "NNB01716",
+  "nhom": "1. Bài toán trồng cây trên đường thẳng",
+  "thu_tu_dang": 6,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Công thức tính số cây:\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/0768cd79-af19-4352-ac07-541b90ce3aa2.png)\n\nVÍ DỤ. Một sân bóng có chiều dài $90$ m và rộng $60$m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau $3$ m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?\nBài giải:\nChu vi sân bóng là: $(90 + 60) \\times 2 = 300(m)$\nSố cờ cần cắm là: $300 : 3 = 100(m)$\nĐáp số: $100$m",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T070102001",
+    "ten_de_goc": null,
+    "noi_dung": "Một sân bóng có chiều dài 90 m và rộng 60m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau 3 m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?",
+    "dap_an": "100",
+    "loi_giai": "Chu vi sân bóng là : $(90 + 60) \\times 2 = 300(m)$\nSố cờ cần cắm là : $300 : 3 = 100(m)$\nĐáp số : 100m"
+   },
+   {
+    "ma_cau": "T14T070102002",
+    "ten_de_goc": null,
+    "noi_dung": "Một sân bóng có chiều dài 100 m và rộng 70 m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau 5 m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?",
+    "dap_an": "68",
+    "loi_giai": "Chu vi sân bóng là : $(100 + 70) \\times 2 = 340(m)$\nSố cờ cần cắm là : $340 : 5 = 68$\nĐáp số : 68"
+   },
+   {
+    "ma_cau": "T14T070102003",
+    "ten_de_goc": null,
+    "noi_dung": "Một sân bóng có chiều dài 120 m và rộng 80 m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau 10 m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?",
+    "dap_an": "40",
+    "loi_giai": "Chu vi sân bóng là : $(120 + 80) \\times 2 = 400(m)$\nSố cờ cần cắm là : $400 : 10 = 40$\nĐáp số : 40"
+   },
+   {
+    "ma_cau": "T14T070102004",
+    "ten_de_goc": null,
+    "noi_dung": "Một sân bóng có chiều dài 90 m và rộng 75 m. Người ta cắm cờ xung quanh sân bóng, hai lá cờ liên tiếp cách nhau 6 m. Hỏi cần bao nhiêu lá cờ để cắm đủ xung quanh sân bóng, biết mỗi góc sân đều cắm cờ?",
+    "dap_an": "55",
+    "loi_giai": "Chu vi sân bóng là : $(90 + 75) \\times 2 = 330(m)$\nSố cờ cần cắm là : $330 : 6 = 55$\nĐáp số : 55"
+   }
+  ]
+ },
+ {
+  "id": "NDB01529",
+  "ten": "Rút về đơn vị một đại lượng",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "3. Rút về đơn vị",
+  "nhom_id": "NNB01717",
+  "nhom": "1. Rút về đơn vị một đại lượng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01530",
+  "ten": "Xác định các đại lượng cơ bản của thống kê",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "4. Thống kê - Xác suất",
+  "nhom_id": "NNB01718",
+  "nhom": "1. Thống kê",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01531",
+  "ten": "Tìm số  ban đầu trong chuỗi phép tính",
+  "chu_de": "3. Các bài toán Logic",
+  "chuyen_de": "5. TÍnh ngược từ cuối",
+  "nhom_id": "NNB01719",
+  "nhom": "1. Tìm số  ban đầu trong chuỗi phép tính",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ }
+]

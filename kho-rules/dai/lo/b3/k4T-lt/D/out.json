@@ -1,0 +1,146 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01723",
+   "ly_thuyet": "##TC Tìm hai số khi biết tổng và hiệu\nSố lớn $=$ (tổng $+$ hiệu) $:2$.\nSố bé $=$ (tổng $-$ hiệu) $:2$.\nBiết một số rồi thì số kia $=$ tổng $-$ số đã biết, hoặc số lớn $=$ số bé $+$ hiệu.\n\n##PP Khi tổng hoặc hiệu chưa cho ngay\nĐọc kĩ đề để biết hai đại lượng nào là \"số lớn\", \"số bé\" và đề cho tổng, hiệu của chúng ở đâu.\nNếu tổng hoặc hiệu bị \"giấu\" (cho qua chu vi, qua \"hơn tổng của …\", qua \"giữa có … số\") thì tính ra trước, rồi mới áp công thức.\n\n##CY\nSố lớn dùng (tổng $+$ hiệu), số bé dùng (tổng $-$ hiệu), đừng đảo dấu.\nThử lại: hai số tìm được phải có tổng đúng và hiệu đúng như đề."
+  },
+  {
+   "nhom_id": "NNB01749",
+   "ly_thuyet": "##TC Điều gì thay đổi, điều gì không đổi\nCho nhận giữa hai đối tượng: người cho mất bao nhiêu thì người nhận được bấy nhiêu, nên tổng không đổi, còn hiệu thay đổi.\nCùng thêm (hoặc cùng bớt) vào cả hai đối tượng: tổng thay đổi đúng bằng lượng thêm (bớt) cả hai, hiệu chỉ giữ nguyên khi hai bên thêm (bớt) bằng nhau.\n\n##PP Cách làm chung\nXác định đại lượng nào (tổng hay hiệu) còn biết được sau thay đổi, rồi tính tổng và hiệu ở thời điểm lúc sau.\nTìm hai số lúc sau bằng công thức tổng và hiệu.\nLàm ngược phép thay đổi để quay về hai số ban đầu (đề hỏi số ban đầu).\n\n##CY\nHiệu cho trong đề là hiệu lúc sau, không phải hiệu ban đầu.\nTìm xong số lúc sau phải trả về ban đầu: người cho thì cộng lại phần đã cho, người nhận thì trừ phần đã nhận."
+  },
+  {
+   "nhom_id": "NNB01725",
+   "ly_thuyet": "##TC Tỉ số\nTỉ số của $a$ và $b$ là $a:b$ hay $\\dfrac{a}{b}$ ($b$ khác $0$, $a$ và $b$ cùng đơn vị). Tỉ số của hai số không có đơn vị.\n\n##TC Bài toán tổng tỉ\nTìm tổng số phần bằng nhau.\nGiá trị một phần $=$ tổng $:$ tổng số phần.\nMỗi số $=$ giá trị một phần $\\times$ số phần của số đó.\n\n##TC Bài toán hiệu tỉ\nTìm hiệu số phần bằng nhau.\nGiá trị một phần $=$ hiệu $:$ hiệu số phần.\nMỗi số $=$ giá trị một phần $\\times$ số phần của số đó.\n\n##CY\nPhải vẽ sơ đồ trước: số bé là mấy phần, số lớn là mấy phần.\nTổng tỉ thì cộng số phần, hiệu tỉ thì trừ số phần, đừng nhầm."
+  },
+  {
+   "nhom_id": "NNB01726",
+   "ly_thuyet": "##TC Bài toán có ba đại lượng trở lên\nChọn một đại lượng làm chuẩn, đưa mọi đại lượng khác về số phần bằng nhau so với đại lượng chuẩn.\nTổng số phần $=$ cộng số phần của tất cả các đại lượng.\nGiá trị một phần $=$ tổng $:$ tổng số phần, rồi mỗi đại lượng $=$ một phần $\\times$ số phần của nó.\n\n##PP Cách làm chung\nĐọc đề, xác định có bao nhiêu đại lượng và đề cho quan hệ giữa các đại lượng bằng cách nào.\nVẽ sơ đồ, mỗi đại lượng một đoạn thẳng, các đoạn dùng chung một độ dài \"một phần\".\nTìm số phần của từng đại lượng, cộng lại, chia tổng để được giá trị một phần.\n\n##CY\nĐại lượng nào xuất hiện ở hai quan hệ thì số phần của nó phải đồng nhất trong cả hai quan hệ.\nĐọc kĩ chiều so sánh: \"A gấp 2 lần B\" khác \"A bằng $\\dfrac{2}{3}$ B\"."
+  },
+  {
+   "nhom_id": "NNB01727",
+   "ly_thuyet": "##TC Điều gì không đổi khi các đại lượng thay đổi\nChuyển một lượng từ đại lượng này sang đại lượng kia: tổng không đổi (dùng tổng tỉ lúc sau).\nCùng thêm hoặc cùng bớt một lượng ở cả hai đại lượng: hiệu không đổi (dùng hiệu tỉ lúc sau).\nChỉ thêm ở một bên hay thêm khác nhau ở hai bên: cả tổng lẫn hiệu đều thay đổi, phải tính lại.\n\n##PP Cách làm chung\nTìm đại lượng không đổi (tổng hay hiệu) rồi vẽ sơ đồ theo tỉ số lúc sau.\nTính các số lúc sau bằng tổng tỉ hoặc hiệu tỉ.\nLàm ngược phép thay đổi để quay về số ban đầu.\n\n##CY\nTỉ số trong đề là tỉ số lúc sau (hoặc lúc trước), không dùng cho thời điểm khác.\nTìm xong số lúc sau còn phải trả về ban đầu nếu đề hỏi ban đầu."
+  }
+ ],
+ "dang": [
+  {
+   "id": "NDB01541",
+   "mo_ta": "đề bài cho tổng và hiệu của hai số (hay hai đại lượng như hai đội, hai bạn) ngay trong đề và hỏi từng số. Tổng và hiệu đều có sẵn, không cần tính thêm. Khác dạng ẩn tổng, ẩn hiệu: ở đây cả tổng lẫn hiệu cho thẳng bằng số.",
+   "ly_thuyet": "##PP\nXác định tổng và hiệu của hai số.\nTìm số lớn: (tổng $+$ hiệu) $:2$.\nTìm số bé: tổng $-$ số lớn, hoặc (tổng $-$ hiệu) $:2$.\nThử lại: tổng hai số và hiệu hai số khớp đề.",
+   "vi_du": "##VD\nTổng của hai số là $250$, hiệu của hai số là $38$. Tìm hai số đó.\n**Hướng dẫn giải:**\nĐề cho sẵn tổng và hiệu nên áp dụng ngay: tìm số lớn bằng (tổng $+$ hiệu) $:2$, số bé bằng tổng trừ số lớn.\nTa có sơ đồ: số bé là $1$ đoạn, số lớn là $1$ đoạn cộng thêm phần hiệu $38$; cả hai đoạn là tổng $250$.\n\nSố lớn là: $(250+38):2=144$\n\nSố bé là: $250-144=106$\n\nĐáp số: Số lớn: $144$; Số bé: $106$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01623",
+   "mo_ta": "đề bài cho chu vi của hình chữ nhật (hoặc mảnh đất, sân, vườn) và hiệu giữa chiều dài và chiều rộng, rồi hỏi chiều dài, chiều rộng hoặc diện tích. Tổng không cho thẳng mà là nửa chu vi. Khác dạng tổng hiệu cơ bản: tổng phải tìm bằng cách lấy chu vi chia $2$.",
+   "ly_thuyet": "##PP\nTính nửa chu vi: chu vi $:2$. Nửa chu vi chính là tổng của chiều dài và chiều rộng.\nTìm chiều dài: (nửa chu vi $+$ hiệu) $:2$.\nTìm chiều rộng: nửa chu vi $-$ chiều dài.\nNếu đề hỏi diện tích: diện tích $=$ chiều dài $\\times$ chiều rộng (nhớ đơn vị diện tích).\n\n##CY\nChu vi là cả bốn cạnh, phải chia $2$ ra nửa chu vi rồi mới dùng công thức tổng hiệu.\nĐề hỏi diện tích thì sau khi tìm hai cạnh còn một bước nhân.",
+   "vi_du": "##VD\nMột mảnh đất hình chữ nhật có chu vi là $130$ m, chiều rộng nhỏ hơn chiều dài là $35$ m. Người ta trồng khoai tây trên mảnh đất đó, cứ $1\\ m^{2}$ thì thu hoạch được $20$ kg khoai tây. Hỏi trên cả mảnh đất đó, người ta thu hoạch được bao nhiêu tấn khoai tây?\n**Hướng dẫn giải:**\nNửa chu vi là tổng chiều dài và chiều rộng, còn hiệu hai cạnh là $35$ m, nên đây là bài tìm hai số khi biết tổng và hiệu. Tìm hai cạnh, tính diện tích rồi tính số khoai tây thu hoạch.\n\nNửa chu vi mảnh đất là: $130:2=65$ (m)\n\nChiều dài mảnh đất là: $(65+35):2=50$ (m)\n\nChiều rộng mảnh đất là: $65-50=15$ (m)\n\nDiện tích mảnh đất là: $50\\times 15=750$ ($m^{2}$)\n\nSố ki-lô-gam khoai tây thu hoạch được là: $750\\times 20=15000$ (kg)\n\nĐổi $15000$ kg $=15$ tấn.\n\nĐáp số: $15$ tấn",
+   "nguon_vd": "sach PTL 2 bài 2",
+   "ghi_chu": "Ví dụ lấy từ Phiếu tự luyện 2 bài 2 của sách (tự giải, kiểm lại phép tính: 65, 50, 15, 750, 15000 kg = 15 tấn)."
+  },
+  {
+   "id": "NDB01624",
+   "mo_ta": "đề bài cho tổng của hai số tự nhiên chẵn (hoặc lẻ, hoặc liên tiếp) và nói giữa chúng có bao nhiêu số chẵn hoặc lẻ khác, rồi hỏi hai số. Hiệu không cho bằng số mà phải suy ra từ \"liên tiếp\", \"giữa có … số\". Khác dạng tổng hiệu cơ bản: hiệu phải tự tìm qua khoảng cách giữa các số chẵn lẻ.",
+   "ly_thuyet": "##TC Khoảng cách giữa các số chẵn, lẻ\nHai số chẵn liên tiếp (hoặc hai số lẻ liên tiếp) hơn kém nhau $2$ đơn vị.\nHai số tự nhiên liên tiếp hơn kém nhau $1$ đơn vị.\nGiữa hai số chẵn (hoặc lẻ) có $k$ số cùng loại khác thì có $k+1$ khoảng, mỗi khoảng $2$ đơn vị.\n\n##PP\nĐếm số khoảng cách giữa số bé và số lớn rồi nhân với $2$ (hoặc $1$) để tìm hiệu.\nSố lớn $=$ (tổng $+$ hiệu) $:2$.\nSố bé $=$ tổng $-$ số lớn.\n\n##CY\nGiữa có $k$ số thì có $k+1$ khoảng, không phải $k$ khoảng.\nHai số lẻ có tổng chẵn nên kết quả tìm ra phải cùng là số lẻ, dùng để thử lại.",
+   "vi_du": "##VD\nTìm hai số lẻ có tổng bằng $1004$, biết giữa chúng có $8$ số lẻ khác.\n**Hướng dẫn giải:**\nHai số lẻ liên tiếp hơn kém nhau $2$ đơn vị. Giữa hai số cần tìm có $8$ số lẻ khác nên từ số bé đến số lớn có $9$ khoảng, mỗi khoảng $2$ đơn vị. Từ đó tìm được hiệu rồi giải bài tổng hiệu.\n\nGiữa hai số có $8$ số lẻ khác nên có số khoảng là: $8+1=9$ (khoảng)\n\nHiệu của hai số là: $9\\times 2=18$\n\nSố lớn là: $(1004+18):2=511$\n\nSố bé là: $1004-511=493$\n\nĐáp số: Số lớn: $511$; Số bé: $493$",
+   "nguon_vd": "sach LT 8.14",
+   "ghi_chu": "Thử lại: 493 và 511 đều lẻ; các số lẻ xen giữa là 495, 497, ..., 509 (8 số). Tổng 1004 đúng."
+  },
+  {
+   "id": "NDB01625",
+   "mo_ta": "đề bài cho tổng số tuổi của ba người (ông, bố, con hay bà, mẹ, cháu) cùng hiệu giữa người lớn nhất với tổng hai người còn lại và hiệu giữa hai người còn lại, rồi hỏi tuổi của từng người. Dùng tổng hiệu hai lần. Khác dạng tổng hiệu cơ bản: có ba đại lượng nên phải làm hai lượt.",
+   "ly_thuyet": "##PP\nGom hai người nhỏ thành một nhóm: lúc này có hai \"số\" là người lớn nhất và nhóm còn lại, với tổng là tổng ba người.\nLần 1: tìm tuổi người lớn nhất $=$ (tổng ba người $+$ hiệu) $:2$, rồi tổng hai người còn lại $=$ tổng ba người $-$ tuổi người lớn nhất.\nLần 2: dùng tổng hai người còn lại và hiệu của họ để tìm tuổi từng người.\n\n##CY\nCâu \"hơn tổng số tuổi của hai người\" là hiệu giữa MỘT người và NHÓM hai người, không phải giữa hai người.\nThử lại: ba tuổi cộng lại đúng bằng tổng ba người.",
+   "vi_du": "##VD\nHiện nay, tổng số tuổi của bà, mẹ và con là $100$ tuổi. Tuổi bà hơn tổng số tuổi của hai mẹ con là $20$ tuổi. Mẹ hơn con $28$ tuổi. Tính tuổi mỗi người hiện nay.\n**Hướng dẫn giải:**\nCoi tuổi hai mẹ con là một nhóm, bài toán trở thành tìm hai số (tuổi bà và tuổi cả nhóm) biết tổng $100$ và hiệu $20$. Tìm được tổng tuổi mẹ và con thì làm tiếp lần hai với hiệu $28$.\nTa có sơ đồ: tuổi bà là $1$ đoạn dài hơn đoạn \"tuổi mẹ và con\" $20$ tuổi; cả hai đoạn là $100$ tuổi.\n\nTuổi bà hiện nay là: $(100+20):2=60$ (tuổi)\n\nTổng số tuổi của mẹ và con là: $100-60=40$ (tuổi)\n\nTuổi mẹ hiện nay là: $(40+28):2=34$ (tuổi)\n\nTuổi con hiện nay là: $40-34=6$ (tuổi)\n\nĐáp số: Bà: $60$ tuổi; Mẹ: $34$ tuổi; Con: $6$ tuổi",
+   "nguon_vd": "sach LT 8.12",
+   "ghi_chu": "Dạng này theo kho gán là ba người; sách còn bài tuổi hai người \"cách đây 3 năm\" (LT 8.4, 8.6) cũng có thể xếp vào dạng này, nên CEO xem tên dạng có muốn gộp."
+  },
+  {
+   "id": "NDB01626",
+   "mo_ta": "đề bài cho tổng của hai người (hai bạn, hai đội) và nói một người cho người kia một số đồ vật, sau đó cho biết hiệu lúc sau, rồi hỏi số của mỗi người ban đầu. Tổng không đổi sau khi cho nhận. Khác dạng tăng giảm đại lượng: ở đây vật chuyển từ người này sang người kia, tổng giữ nguyên.",
+   "ly_thuyet": "##PP\nTổng không đổi khi cho nhận, tổng lúc sau $=$ tổng ban đầu.\nTìm số của hai người lúc sau bằng công thức tổng và hiệu (hiệu cho trong đề là hiệu lúc sau).\nNgười nhận lúc đầu $=$ lúc sau $-$ số nhận; người cho lúc đầu $=$ lúc sau $+$ số cho (hoặc lấy tổng trừ số người kia).\n\n##CY\nKiểm tra: ai cho, ai nhận. Người nhận được thêm thì lúc đầu ít hơn lúc sau.\nCuối cùng thử lại: hai số ban đầu cộng lại bằng tổng.",
+   "vi_du": "##VD\nHai thùng có tất cả $90$ lít dầu. Nếu chuyển $6$ lít dầu từ thùng thứ nhất sang thùng thứ hai thì thùng thứ hai hơn thùng thứ nhất $14$ lít. Hỏi lúc đầu mỗi thùng có bao nhiêu lít dầu?\n**Hướng dẫn giải:**\nChuyển dầu từ thùng này sang thùng kia thì tổng số dầu của hai thùng vẫn là $90$ lít. Sau khi chuyển, biết tổng $90$ và hiệu $14$, tìm số dầu mỗi thùng lúc sau rồi trả về lúc đầu.\n\nThùng thứ hai lúc sau có số lít dầu là: $(90+14):2=52$ (lít)\n\nThùng thứ nhất lúc sau có số lít dầu là: $90-52=38$ (lít)\n\nThùng thứ nhất lúc đầu có số lít dầu là: $38+6=44$ (lít)\n\nThùng thứ hai lúc đầu có số lít dầu là: $52-6=46$ (lít)\n\nĐáp số: Thùng thứ nhất: $44$ lít; Thùng thứ hai: $46$ lít",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách không có bài cho nhận đúng khuôn tổng hiệu; ví dụ tự dựng (kiểm: 44+46=90; sau chuyển 38 và 52, hiệu 14)."
+  },
+  {
+   "id": "NDB01627",
+   "mo_ta": "đề bài cho tổng của hai số lượng, rồi cho cả hai cùng thêm (hoặc cùng bớt) những số khác nhau, sau đó cho hiệu lúc sau và hỏi số ban đầu. Tổng thay đổi đúng bằng số thêm cả hai bên. Khác dạng cho nhận: ở đây số lượng được THÊM từ ngoài vào (hoặc bớt đi hẳn), tổng lúc sau khác tổng ban đầu.",
+   "ly_thuyet": "##PP\nTính tổng lúc sau: tổng ban đầu $+$ số thêm của cả hai (hoặc trừ số bớt).\nTìm số của hai bên lúc sau bằng công thức tổng và hiệu.\nTrả về ban đầu: lấy số lúc sau trừ số đã thêm của chính bên đó (hoặc cộng số đã bớt).\n\n##CY\nPhải cộng số thêm của CẢ HAI bên vào tổng, không chỉ một bên.\nKhi trả về ban đầu, trừ đúng số thêm của từng bên (hai bên thêm khác nhau).",
+   "vi_du": "##VD\nCả hai ngày cửa hàng bán được $474$ m vải. Nếu ngày thứ nhất bán thêm $40$ m và ngày thứ hai bán thêm $28$ m thì ngày thứ nhất bán được ít hơn ngày thứ hai $16$ m vải. Hỏi mỗi ngày cửa hàng đó bán được bao nhiêu mét vải?\n**Hướng dẫn giải:**\nSau khi cả hai ngày cùng bán thêm, tổng số mét vải tăng thêm $40+28$. Tìm tổng mới, dùng hiệu $16$ để tìm số vải mỗi ngày lúc sau rồi trừ phần bán thêm để trở về số ban đầu.\n\nTổng số mét vải bán được sau khi bán thêm là: $474+40+28=542$ (m)\n\nNgày thứ hai bán được (sau khi thêm) số mét vải là: $(542+16):2=279$ (m)\n\nNgày thứ nhất bán được (sau khi thêm) số mét vải là: $542-279=263$ (m)\n\nNgày thứ nhất bán được số mét vải là: $263-40=223$ (m)\n\nNgày thứ hai bán được số mét vải là: $279-28=251$ (m)\n\nĐáp số: Ngày thứ nhất: $223$ m; Ngày thứ hai: $251$ m",
+   "nguon_vd": "sach LT 8.11",
+   "ghi_chu": "Thử lại: 223+251=474; sau thêm 263 và 279, hiệu 16."
+  },
+  {
+   "id": "NDB01543",
+   "mo_ta": "đề bài cho tổng (hoặc hiệu) của hai số và tỉ số của chúng (có thể cho dưới dạng \"$\\dfrac{a}{b}$ số này bằng $\\dfrac{c}{d}$ số kia\"), rồi hỏi hai số. Tổng hoặc hiệu, tỉ số đều cho thẳng. Khác dạng ẩn tổng, ẩn hiệu, ẩn tỉ số: ở đây không có đại lượng nào bị giấu.",
+   "ly_thuyet": "##PP\nXác định đề cho tổng hay hiệu, và tỉ số của hai số.\nNếu đề cho \"$\\dfrac{a}{b}$ số này bằng $\\dfrac{c}{d}$ số kia\" thì quy đồng cho tử số bằng nhau để suy ra số phần của mỗi số.\nVẽ sơ đồ: số bé mấy phần, số lớn mấy phần.\nTổng tỉ: tổng số phần $=$ cộng số phần; hiệu tỉ: hiệu số phần $=$ trừ số phần.\nGiá trị một phần $=$ tổng (hiệu) $:$ tổng (hiệu) số phần.\nMỗi số $=$ giá trị một phần $\\times$ số phần của nó.",
+   "vi_du": "##VD\nHiệu của hai số là $58$. Tỉ số của hai số đó là $\\dfrac{7}{5}$. Tìm hai số đó.\n**Hướng dẫn giải:**\nĐề cho hiệu và tỉ số nên đây là bài hiệu tỉ. Tỉ số $\\dfrac{7}{5}$ nghĩa là số lớn có $7$ phần, số bé có $5$ phần bằng nhau; hiệu số phần ứng với hiệu $58$.\nTa có sơ đồ: số bé $5$ phần, số lớn $7$ phần, số lớn hơn số bé $58$.\n\nHiệu số phần bằng nhau là: $7-5=2$ (phần)\n\nSố bé là: $58:2\\times 5=145$\n\nSố lớn là: $145+58=203$\n\nĐáp số: Số bé: $145$; Số lớn: $203$",
+   "nguon_vd": "sach VD 22.3",
+   "ghi_chu": "Các câu kho đã gán vào dạng này là hiệu tỉ cho dưới dạng 1/a số này bằng c/b số kia (đổi phân số), nên đã nêu trong mô tả và lý thuyết; ví dụ lấy hiệu tỉ cơ bản của sách. CEO xem có muốn tách \"phân số bằng nhau\" thành dạng riêng."
+  },
+  {
+   "id": "NDB01544",
+   "mo_ta": "đề bài cho tỉ số của hai số nhưng không cho tổng trực tiếp: tổng được giấu trong trung bình cộng, chu vi (nửa chu vi) hay một dữ kiện tương tự, rồi hỏi hai số. Phải tính tổng trước. Khác dạng tổng tỉ - hiệu tỉ cơ bản: tổng chưa có sẵn.",
+   "ly_thuyet": "##PP\nTìm tổng từ dữ kiện đề cho: trung bình cộng của hai số thì tổng $=$ trung bình cộng $\\times2$; chu vi hình chữ nhật thì tổng hai cạnh $=$ chu vi $:2$.\nCó tổng và tỉ số thì giải như bài tổng tỉ: tổng số phần, một phần, mỗi số.\n\n##CY\nTrung bình cộng của hai số nhân $2$ mới được tổng, đừng dùng trực tiếp trung bình cộng làm tổng.\nChu vi phải chia $2$ ra nửa chu vi mới là tổng hai cạnh.",
+   "vi_du": "##VD\nTìm hai số có trung bình cộng là $75$, biết số bé bằng $\\dfrac{3}{7}$ số lớn.\n**Hướng dẫn giải:**\nĐề không cho tổng nhưng cho trung bình cộng: tổng hai số bằng trung bình cộng nhân $2$. Có tổng và tỉ số $\\dfrac{3}{7}$ thì giải bài tổng tỉ.\nTa có sơ đồ: số bé $3$ phần, số lớn $7$ phần, cả hai số cộng lại là tổng vừa tìm.\n\nTổng của hai số là: $75\\times 2=150$\n\nTổng số phần bằng nhau là: $3+7=10$ (phần)\n\nSố bé là: $150:10\\times 3=45$\n\nSố lớn là: $150-45=105$\n\nĐáp số: Số bé: $45$; Số lớn: $105$",
+   "nguon_vd": "sach LT 22.8",
+   "ghi_chu": "Dạng chưa có câu nào gán; mô tả suy từ tên dạng và sách (TBC, chu vi). Ví dụ LT 22.9 (chu vi 500 m, rộng bằng 2/3 dài) cũng thuộc dạng này."
+  },
+  {
+   "id": "NDB01545",
+   "mo_ta": "đề bài cho tỉ số của hai số nhưng không cho hiệu bằng số mà bằng lời (số lớn nhất có hai chữ số, số tròn chục nhỏ nhất có ba chữ số, hơn kém nhau nhờ thêm/bớt chữ số…), rồi hỏi hai số. Phải tìm hiệu trước. Khác dạng tổng tỉ - hiệu tỉ cơ bản: hiệu chưa cho sẵn bằng số.",
+   "ly_thuyet": "##PP\nTìm hiệu từ dữ kiện đề cho (ví dụ \"số lớn nhất có hai chữ số\" là $99$; xoá một chữ số thì số mới giảm đi bao nhiêu).\nCó hiệu và tỉ số thì giải như bài hiệu tỉ: hiệu số phần, một phần, mỗi số.\n\n##CY\nĐọc kĩ cụm \"lớn nhất\", \"nhỏ nhất\", \"tròn chục\", \"tròn trăm\": viết ra đúng số rồi mới dùng làm hiệu.\nThử lại: hiệu hai số tìm được đúng bằng hiệu đã suy ra.",
+   "vi_du": "##VD\nHiệu của hai số là số lớn nhất có hai chữ số. Tỉ số của hai số đó là $\\dfrac{20}{9}$. Tìm hai số đó.\n**Hướng dẫn giải:**\nSố lớn nhất có hai chữ số là $99$ nên hiệu là $99$. Có hiệu và tỉ số $\\dfrac{20}{9}$ thì giải bài hiệu tỉ.\nTa có sơ đồ: số bé $9$ phần, số lớn $20$ phần, số lớn hơn số bé $99$.\n\nHiệu của hai số là $99$.\n\nHiệu số phần bằng nhau là: $20-9=11$ (phần)\n\nSố bé là: $99:11\\times 9=81$\n\nSố lớn là: $81+99=180$\n\nĐáp số: Số bé: $81$; Số lớn: $180$",
+   "nguon_vd": "sach LT 22.11",
+   "ghi_chu": "Dạng chưa có câu nào gán; mô tả suy từ tên dạng và sách (LT 22.11, 22.16)."
+  },
+  {
+   "id": "NDB01546",
+   "mo_ta": "đề bài cho tổng (hoặc hiệu) của hai số, nhưng tỉ số không cho sẵn mà phải suy ra từ quan hệ khác như \"gấp … lần\", \"viết thêm chữ số $0$ vào bên phải\", phép chia hết có thương cho trước, rồi hỏi hai số. Khác dạng tổng tỉ - hiệu tỉ cơ bản: tỉ số chưa cho thành phân số.",
+   "ly_thuyet": "##PP\nĐổi quan hệ đề cho thành tỉ số (số lớn gấp số bé $k$ lần thì số bé $1$ phần, số lớn $k$ phần; viết thêm chữ số $0$ vào bên phải thì số mới gấp $10$ lần; phép chia hết có thương $k$ thì số bị chia gấp số chia $k$ lần).\nCó tổng (hoặc hiệu) và tỉ số thì giải bài tổng tỉ (hiệu tỉ).\n\n##CY\n\"Gấp $k$ lần\" cho ta $k$ phần so với $1$ phần, không phải $k$ phần so với $k$ phần.\nKhi tổng phần tính cả $1+k$, đừng quên số bé là $1$ phần.",
+   "vi_du": "##VD\nTổng của hai số là $216$. Tìm hai số đó, biết rằng nếu gấp số bé lên bảy lần thì được số lớn.\n**Hướng dẫn giải:**\nGấp số bé lên bảy lần được số lớn nên số lớn gấp $7$ lần số bé, tức số bé là $1$ phần và số lớn là $7$ phần. Có tổng $216$ thì giải bài tổng tỉ.\nTa có sơ đồ: số bé $1$ phần, số lớn $7$ phần, cả hai số là $216$.\n\nTổng số phần bằng nhau là: $1+7=8$ (phần)\n\nSố bé là: $216:8\\times 1=27$\n\nSố lớn là: $216-27=189$\n\nĐáp số: Số bé: $27$; Số lớn: $189$",
+   "nguon_vd": "sach LT 22.12",
+   "ghi_chu": "Dạng chưa có câu nào gán; mô tả suy từ tên dạng và sách (LT 22.12, 22.13, 22.15)."
+  },
+  {
+   "id": "NDB01547",
+   "mo_ta": "đề bài cho tổng của ba (hoặc nhiều) đại lượng và nói các đại lượng đều gấp lên so với cùng MỘT đại lượng nhỏ nhất bằng một số lần, rồi hỏi từng đại lượng. Lấy đại lượng nhỏ nhất làm $1$ phần. Khác dạng tỉ số đôi một: tất cả đều so với cùng một đại lượng. Khác dạng phân số bằng nhau: dùng \"gấp … lần\", không dùng \"$\\dfrac{a}{b}$ của … bằng $\\dfrac{c}{d}$ của …\".",
+   "ly_thuyet": "##PP\nChọn đại lượng nhỏ nhất làm $1$ phần.\nCác đại lượng khác gấp đại lượng nhỏ nhất bao nhiêu lần thì có bấy nhiêu phần.\nTổng số phần $=$ cộng số phần của tất cả.\nMột phần $=$ tổng $:$ tổng số phần; mỗi đại lượng $=$ một phần $\\times$ số phần của nó.\n\n##CY\nĐại lượng nhỏ nhất cũng tính là $1$ phần khi cộng tổng số phần.",
+   "vi_du": "##VD\nBa bạn An, Hà, Lan có tất cả $96$ viên bi. Số bi của Hà gấp $2$ lần số bi của An, số bi của Lan gấp $5$ lần số bi của An. Hỏi mỗi bạn có bao nhiêu viên bi?\n**Hướng dẫn giải:**\nAn có ít bi nhất, hai bạn kia đều so với An, nên coi số bi của An là $1$ phần. Khi đó Hà có $2$ phần, Lan có $5$ phần.\nTa có sơ đồ: An $1$ phần, Hà $2$ phần, Lan $5$ phần, cả ba bạn là $96$ viên.\n\nTổng số phần bằng nhau là: $1+2+5=8$ (phần)\n\nSố bi của An là: $96:8\\times 1=12$ (viên)\n\nSố bi của Hà là: $12\\times 2=24$ (viên)\n\nSố bi của Lan là: $12\\times 5=60$ (viên)\n\nĐáp số: An: $12$ viên; Hà: $24$ viên; Lan: $60$ viên",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Tên dạng \"Quy về đại lượng nhỏ nhất\" hiểu là: các đại lượng đều cho gấp bao nhiêu lần đại lượng nhỏ nhất. Cần CEO xác nhận. Chưa có câu nào gán."
+  },
+  {
+   "id": "NDB01548",
+   "mo_ta": "đề bài cho tổng của ba đại lượng và cho tỉ số từng đôi một (ví dụ đại lượng I bằng $\\dfrac{2}{3}$ đại lượng II, đại lượng II bằng $\\dfrac{4}{5}$ đại lượng III), rồi hỏi từng đại lượng. Đại lượng nằm ở giữa xuất hiện hai lần với số phần khác nhau nên phải đồng nhất. Khác dạng quy về đại lượng nhỏ nhất: hai tỉ số có cùng đại lượng ở giữa, cần quy đồng số phần.",
+   "ly_thuyet": "##PP\nViết số phần của hai đại lượng theo từng tỉ số đôi một.\nTìm số phần chung của đại lượng nằm ở giữa (số nhỏ nhất mà số phần của nó ở cả hai tỉ số đều nhân lên được) rồi nhân cả hai tỉ số lên cho khớp.\nTổng số phần $=$ cộng số phần của ba đại lượng; một phần $=$ tổng $:$ tổng số phần.\n\n##CY\nĐại lượng ở giữa phải có cùng số phần ở cả hai tỉ số rồi mới ghép được sơ đồ ba đoạn.\nKhi nhân số phần lên, nhân cả hai số trong cùng một tỉ số.",
+   "vi_du": "##VD\nBa thùng đựng tất cả $245$ lít dầu. Số dầu thùng I bằng $\\dfrac{2}{3}$ số dầu thùng II, số dầu thùng II bằng $\\dfrac{4}{5}$ số dầu thùng III. Hỏi mỗi thùng đựng bao nhiêu lít dầu?\n**Hướng dẫn giải:**\nThùng II xuất hiện ở cả hai tỉ số: là $3$ phần so với thùng I và $4$ phần so với thùng III. Quy đồng cho thùng II có $12$ phần ở cả hai tỉ số rồi mới ghép được ba thùng.\nTa có sơ đồ: thùng I $8$ phần, thùng II $12$ phần, thùng III $15$ phần, cả ba thùng là $245$ lít.\n\nThùng I bằng $\\dfrac{2}{3}=\\dfrac{2\\times 4}{3\\times 4}=\\dfrac{8}{12}$ thùng II, nên thùng I có $8$ phần khi thùng II có $12$ phần.\n\nThùng II bằng $\\dfrac{4}{5}=\\dfrac{4\\times 3}{5\\times 3}=\\dfrac{12}{15}$ thùng III, nên thùng III có $15$ phần khi thùng II có $12$ phần.\n\nTổng số phần bằng nhau là: $8+12+15=35$ (phần)\n\nMỗi phần có số lít dầu là: $245:35=7$ (lít)\n\nThùng I có số lít dầu là: $7\\times 8=56$ (lít)\n\nThùng II có số lít dầu là: $7\\times 12=84$ (lít)\n\nThùng III có số lít dầu là: $7\\times 15=105$ (lít)\n\nĐáp số: Thùng I: $56$ lít; Thùng II: $84$ lít; Thùng III: $105$ lít",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Tên dạng \"Có tỉ số đôi một\" hiểu là: cho tỉ số từng cặp (I với II, II với III) và phải đồng nhất đại lượng giữa. Cần CEO xác nhận. Chưa có câu nào gán."
+  },
+  {
+   "id": "NDB01549",
+   "mo_ta": "đề bài cho tổng của ba (hoặc nhiều) đại lượng và nói một phần của đại lượng này bằng một phần của đại lượng kia (ví dụ $\\dfrac{1}{2}$ số thứ nhất bằng $\\dfrac{1}{3}$ số thứ hai bằng $\\dfrac{1}{4}$ số thứ ba), rồi hỏi từng đại lượng. Coi phần bằng nhau ấy là $1$ đơn vị. Khác dạng tỉ số đôi một: ở đây các phân số của các đại lượng bằng nhau chứ không cho tỉ số từng cặp.",
+   "ly_thuyet": "##PP\nGọi phần bằng nhau ấy là $1$ đoạn (một phần) trên sơ đồ.\n$\\dfrac{1}{a}$ của đại lượng nào bằng $1$ đoạn thì đại lượng đó có $a$ đoạn.\nTổng số phần $=$ cộng số đoạn của các đại lượng; một phần $=$ tổng $:$ tổng số phần.\n\n##CY\nPhân số $\\dfrac{1}{a}$ của đại lượng bằng $1$ đoạn nghĩa là đại lượng đó gấp $a$ lần đoạn ấy, không phải $\\dfrac{1}{a}$ đoạn.\nNếu tử số khác $1$ thì quy đồng cho các tử số bằng nhau trước (như sách VD 23.3).",
+   "vi_du": "##VD\nBa lớp 4A, 4B, 4C có tất cả $108$ học sinh. Biết $\\dfrac{1}{2}$ số học sinh lớp 4A bằng $\\dfrac{1}{3}$ số học sinh lớp 4B và bằng $\\dfrac{1}{4}$ số học sinh lớp 4C. Tính số học sinh mỗi lớp.\n**Hướng dẫn giải:**\nGọi phần bằng nhau ấy là $1$ đoạn. $\\dfrac{1}{2}$ số học sinh lớp 4A là $1$ đoạn nên lớp 4A có $2$ đoạn, tương tự lớp 4B có $3$ đoạn, lớp 4C có $4$ đoạn.\nTa có sơ đồ: lớp 4A $2$ phần, lớp 4B $3$ phần, lớp 4C $4$ phần, cả ba lớp là $108$ học sinh.\n\nTổng số phần bằng nhau là: $2+3+4=9$ (phần)\n\nMỗi phần có số học sinh là: $108:9=12$ (học sinh)\n\nLớp 4A có số học sinh là: $12\\times 2=24$ (học sinh)\n\nLớp 4B có số học sinh là: $12\\times 3=36$ (học sinh)\n\nLớp 4C có số học sinh là: $12\\times 4=48$ (học sinh)\n\nĐáp số: 4A: $24$ học sinh; 4B: $36$ học sinh; 4C: $48$ học sinh",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Tên dạng \"Cho phân số của các đại lượng bằng nhau\" hiểu là: phân số của đại lượng này = phân số của đại lượng kia = ... (sách LT 23.1–23.4 là hai đại lượng, bản ba đại lượng tự dựng). Cần CEO xác nhận. Chưa có câu nào gán."
+  },
+  {
+   "id": "NDB01550",
+   "mo_ta": "đề bài cho tổng của hai số lượng (hai bao, hai thùng, hai bạn), nói chuyển một số từ bên này sang bên kia thì hai bên có tỉ số mới, rồi hỏi số lúc đầu. Tổng không đổi nên dùng tổng tỉ lúc sau. Khác dạng tăng giảm các đại lượng: ở đây chuyển qua lại giữa hai bên, không thêm hay bớt từ ngoài.",
+   "ly_thuyet": "##PP\nTổng không đổi khi chuyển giữa hai bên, nên tổng lúc sau $=$ tổng lúc đầu.\nVẽ sơ đồ theo tỉ số lúc sau, tìm số của mỗi bên lúc sau (bài tổng tỉ).\nTrả về lúc đầu: bên chuyển đi thì cộng lại số đã chuyển, bên nhận thì trừ số đã nhận.\n\n##CY\nTỉ số trong đề là tỉ số SAU khi chuyển, không dùng cho số lúc đầu.\nĐề hỏi số lúc đầu nên không dừng ở số lúc sau.",
+   "vi_du": "##VD\nHai bao gạo chứa tất cả $85$ kg gạo. Nếu chuyển $5$ kg gạo từ bao I sang bao II thì số gạo ở bao I sẽ bằng $\\dfrac{2}{3}$ số gạo ở bao II. Hỏi mỗi bao chứa bao nhiêu ki-lô-gam gạo?\n**Hướng dẫn giải:**\nChuyển gạo từ bao này sang bao kia thì tổng số gạo vẫn là $85$ kg. Sau khi chuyển, bao I bằng $\\dfrac{2}{3}$ bao II nên giải bài tổng tỉ để tìm số gạo mỗi bao lúc sau, rồi trả về lúc đầu.\nTa có sơ đồ sau khi chuyển: bao I $2$ phần, bao II $3$ phần, cả hai bao là $85$ kg.\n\nTổng số phần bằng nhau là: $2+3=5$ (phần)\n\nSau khi chuyển, bao I có số ki-lô-gam gạo là: $85:5\\times 2=34$ (kg)\n\nLúc đầu, bao I có số ki-lô-gam gạo là: $34+5=39$ (kg)\n\nLúc đầu, bao II có số ki-lô-gam gạo là: $85-39=46$ (kg)\n\nĐáp số: Bao I: $39$ kg; Bao II: $46$ kg",
+   "nguon_vd": "sach LT 22.17",
+   "ghi_chu": "Thử lại: 39+46=85; sau chuyển 34 và 51, 34 = 2/3 của 51. Dạng chưa có câu nào gán."
+  },
+  {
+   "id": "NDB01551",
+   "mo_ta": "đề bài cho hiệu hai số (ví dụ tuổi mẹ hơn tuổi con) và tỉ số của chúng sau khi cùng thêm hoặc cùng bớt một lượng (sau vài năm nữa, cách đây vài năm), rồi hỏi số lúc đầu. Hiệu không đổi nên dùng hiệu tỉ lúc sau. Khác dạng chuyển giữa các đại lượng: ở đây cả hai cùng tăng hoặc cùng giảm như nhau, hiệu không đổi.",
+   "ly_thuyet": "##PP\nHiệu không đổi khi cả hai cùng thêm (hoặc cùng bớt) một lượng.\nVẽ sơ đồ theo tỉ số lúc sau, tìm số của hai bên lúc sau (bài hiệu tỉ).\nTrả về hiện nay: lấy số lúc sau trừ lượng đã thêm (hoặc cộng lượng đã bớt).\n\n##CY\nHiệu số tuổi luôn giữ nguyên theo thời gian.\nTỉ số trong đề là tỉ số của thời điểm sau (hoặc trước), không dùng cho hiện nay.",
+   "vi_du": "##VD\nHiện nay, mẹ hơn con $27$ tuổi. Sau $3$ năm nữa, tuổi mẹ gấp bốn lần tuổi con. Tính tuổi của mỗi người hiện nay.\n**Hướng dẫn giải:**\nHiệu số tuổi của hai mẹ con luôn không đổi, nên sau $3$ năm nữa mẹ vẫn hơn con $27$ tuổi. Sau $3$ năm nữa mẹ gấp $4$ lần con nên giải bài hiệu tỉ, rồi trừ $3$ năm để trở về hiện nay.\nTa có sơ đồ sau $3$ năm nữa: tuổi con $1$ phần, tuổi mẹ $4$ phần, mẹ hơn con $27$ tuổi.\n\nHiệu số phần bằng nhau là: $4-1=3$ (phần)\n\nTuổi con sau $3$ năm nữa là: $27:3\\times 1=9$ (tuổi)\n\nTuổi con hiện nay là: $9-3=6$ (tuổi)\n\nTuổi mẹ hiện nay là: $6+27=33$ (tuổi)\n\nĐáp số: Con: $6$ tuổi; Mẹ: $33$ tuổi",
+   "nguon_vd": "sach VD 22.4",
+   "ghi_chu": "Dạng chưa có câu nào gán; mô tả suy từ tên dạng và sách (VD 22.4, LT 22.19, 22.20)."
+  }
+ ]
+}

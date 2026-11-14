@@ -1,0 +1,758 @@
+[
+ {
+  "id": "NDB01506",
+  "ten": "Viết số tự nhiên lớn nhất khi biết tổng chữ số và số chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất khi biết tổng các chữ số và số chữ số ta làm như sau:\n\n* Chọn từ hàng lớn nhất trước và chọn chữ số lớn nhất có thể.\n* Chọn chữ số từ hàng thứ hai và lặp lại cách chọn như hàng 1.\n* Lưu ý điều kiện đề bài có yêu cầu khác nhau hay không\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ 1:** Tìm số tự nhiên lớn nhất có 3 chữ số có tổng là 23.\n\nBài giải:\n\nĐể tìm số tự nhiên lớp nhất có tổng là 23 và có 3 chữ số:\n\n* Chọn chữ số hàng trăm là 9\n* Vì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Vậy chọn hàng chục là 9 (do đề bài không yêu cầu khác nhau)\n* Hàng đơn vị còn: $23 - 9 - 9 = 5$\n* Vậy số cần tìm là 995\n\n**Ví dụ 2:** Tìm số tự nhiên lớn nhất có 3 chữ số khác nhau có tổng là 23.\n\nBài giải:\n\nĐể tìm số tự nhiên lớp nhất có tổng là 23 và có 3 chữ số:\n\n* Chọn chữ số hàng trăm là 9\n* Vì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Do hàng trăm là 9 nên hàng chục không thể là 9, vậy chọn hàng chục lớn nhất là 8.\n* Hàng đơn vị còn: $23 - 9 - 8 = 6$\n* Vậy số cần tìm là 986",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010101001",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có 3 chữ số có tổng là 23.",
+    "dap_an": "995",
+    "loi_giai": "Để tìm số tự nhiên lớn nhất có tổng là 23 và có 3 chữ số :\nChọn chữ số hàng trăm là 9\nVì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Vậy chọn hàng chục là 9 (do đề bài không yêu cầu khác nhau)\nHàng đơn vị còn : $23 - 9 - 9 = 5$\nVậy số cần tìm là 995"
+   },
+   {
+    "ma_cau": "T14T010101022",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có 3 chữ số khác nhau có tổng là 23",
+    "dap_an": "986",
+    "loi_giai": "Để tìm số tự nhiên lớn nhất có tổng là 23 và có 3 chữ số :\nChọn chữ số hàng trăm là 9\nVì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $23 - 9 = 14$. Do hàng trăm là 9 nên hàng chục không thể là 9, vậy chọn hàng chục lớn nhất là 8.\nHàng đơn vị còn : $23 - 9 - 8 = 6$\nVậy số cần tìm là 986"
+   },
+   {
+    "ma_cau": "T14T010101041",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có 3 chữ số khác nhau có tổng là 15",
+    "dap_an": "960",
+    "loi_giai": "Để tìm số tự nhiên lớn nhất có tổng là 15 và có 3 chữ số:\nChọn chữ số hàng trăm là 9\nVì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $15 - 9 = 6$. Vậy chọn hàng chục là 6\nHàng đơn vị còn: $15 - 9 - 6 = 0$\nVậy số cần tìm là 960"
+   },
+   {
+    "ma_cau": "T14T010101010",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có 3 chữ số có tổng là 26.",
+    "dap_an": "998",
+    "loi_giai": "Để tìm số tự nhiên lớn nhất có tổng là 26 và có 3 chữ số :\nChọn chữ số hàng trăm là 9\nVì hàng trăm là 9 nên tổng của hàng chục và hàng đơn vị là $26 - 9 = 17$. Vậy chọn hàng chục là 9 (do đề bài không yêu cầu khác nhau)\nHàng đơn vị còn : $26 - 9 - 9 = 8$\nVậy số cần tìm là 998"
+   }
+  ]
+ },
+ {
+  "id": "NDB01507",
+  "ten": "Viết số tự nhiên lớn nhất khi biết tích các chữ số và số chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tích đó thành tích của nhiều chữ số khác nhau nhất có thể\n* Nếu có nhiều cách tách mà số chữ số giống nhau, ta chọn cách mà các chữ số lớn nhất\n* Sau đó từ các chữ số đó ta sắp xếp để được số lớn nhất\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ :** Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 24\n\nBài giải:\n\nTa có $24 = 1 \\times 3 \\times 8 = 1 \\times 4 \\times 6 = 2 \\times 3 \\times 4$\n\n* Nếu dùng cách $24 = 1 \\times 3 \\times 8$ thì số lớn nhất là 831\n* Nếu dùng cách $24 = 1 \\times 4 \\times 6$ thì số lớn nhất là 641\n* Nếu dùng cách $24 = 2 \\times 3 \\times 4$ thì số lớn nhất là 432\n\nVậy số cần tìm là 831\n\n**Ví dụ :** Viết số tự nhiên lớn nhất có 4 chữ số khác nhau có tích bằng 24\n\nBài giải:\n\nTa có $24 = 1 \\times 2 \\times 3 \\times 4$\n\n* Chỉ có 1 cách tách duy nhất và số lớn nhất là 4 321\n\nVậy số cần tìm là 4321",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010102001",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 24",
+    "dap_an": "831",
+    "loi_giai": "Ta có $24 = 1 \\times 3 \\times 8 = 1 \\times 4 \\times 6 = 2 \\times 3 \\times 4$\nNếu dùng cách $24 = 1 \\times 3 \\times 8$ thì số lớn nhất là 831\nNếu dùng cách $24 = 1 \\times 4 \\times 6$ thì số lớn nhất là 641\nNếu dùng cách $24 = 2 \\times 3 \\times 4$ thì số lớn nhất là 432\nVậy số cần tìm là 831"
+   },
+   {
+    "ma_cau": "T14T010102017",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 42",
+    "dap_an": "761",
+    "loi_giai": "Ta có $42 = 1 \\times 6 \\times 7 = 2 \\times 3 \\times 7$\nNếu dùng cách $42 = 1 \\times 6 \\times 7$ thì số lớn nhất là 761\nNếu dùng cách $42 = 2 \\times 3 \\times 7$ thì số lớn nhất là 732\nVậy số cần tìm là 761"
+   },
+   {
+    "ma_cau": "T14T010102008",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 48",
+    "dap_an": "861",
+    "loi_giai": "Ta có $48 = 1 \\times 6 \\times 8 = 2 \\times 3 \\times 8 = 2 \\times 4 \\times 6$\nNếu dùng cách $48 = 1 \\times 6 \\times 8$ thì số lớn nhất là 861\nNếu dùng cách $48 = 2 \\times 3 \\times 8$ thì số lớn nhất là 832\nNếu dùng cách $48 = 2 \\times 4 \\times 6$ thì số lớn nhất là 642\nVậy số cần tìm là 861"
+   },
+   {
+    "ma_cau": "T14T010102009",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lớn nhất có 3 chữ số khác nhau có tích bằng 54",
+    "dap_an": "961",
+    "loi_giai": "Ta có $54 = 1 \\times 6 \\times 9 = 2 \\times 3 \\times 9$\nNếu dùng cách $54 = 1 \\times 6 \\times 9$ thì số lớn nhất là 961\nNếu dùng cách $54 = 2 \\times 3 \\times 9$ thì số lớn nhất là 932\nVậy số cần tìm là 961"
+   }
+  ]
+ },
+ {
+  "id": "NDB01508",
+  "ten": "Viết số tự nhiên lớn nhất  khi biết tổng chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để viết số tự nhiên lớn nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tổng đó thành tổng của nhiều chữ số khác nhau nhất có thể\n* Sau đó từ các chữ số đó ta sắp xếp để được số lớn nhất\n* Nếu đề bài cho điều kiện về chẵn lẻ, cần lưu ý chữ số cuối cùng.\n\n**Ví dụ 1:** Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 19\n\nBài giải:\n\nĐể tách 19 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\n\nTa có: $19 = 0 + 1 + 2 + 3 + 4 + 9$\n\nDo đó, số cần tìm là “ 943 210\n\n**Ví dụ 2:** Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 33\n\nBài giải:\n\nĐể tách 33 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\n\nTa có: $33 = 0 + 1 + 2 + 3 + 4 + 6 + 8 + 9$\n\nDo đó, số cần tìm là : 98 643 210",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010103001",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 19",
+    "dap_an": "943210",
+    "loi_giai": "Để tách 19 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\nTa có : $19 = 0 + 1 + 2 + 3 + 4 + 9$\nDo đó , số cần tìm là : 943210"
+   },
+   {
+    "ma_cau": "T14T010103022",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 33",
+    "dap_an": "98643210",
+    "loi_giai": "Để tách 33 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,\nTa có : $33 = 0 + 1 + 2 + 3 + 4 + 6 + 8 + 9$\nDo đó , số cần tìm là : 98 643 210"
+   },
+   {
+    "ma_cau": "T14T010103032",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 30",
+    "dap_an": "96543210",
+    "loi_giai": "Để tách 30 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,4,6,7,\nTa có : $30 = 0 + 1 + 2 + 3 + 4 + 5 + 6 + 9$\nDo đó , số cần tìm là : 96543210"
+   },
+   {
+    "ma_cau": "T14T010103002",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên lớn nhất có các chữ số khác nhau có tổng là 11",
+    "dap_an": "53210",
+    "loi_giai": "Để tách 11 thành tổng nhiều chữ số nhất có thể, ta ưu tiên tách theo các chữ số từ nhỏ nhất trước :\n0,1,2,3,\nTa có : $11 = 0 + 1 + 2 + 3 + 5$\nDo đó , số cần tìm là : 53210"
+   }
+  ]
+ },
+ {
+  "id": "NDB01509",
+  "ten": "Viết số tự nhiên lớn nhất - nhỏ nhất khi biết số chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Với số lớn nhất:\n* Từ trái qua phải chọn các chữ số lớn nhất trước\nVới số nhỏ nhất \n* Từ trái qua phải chọn các chữ số nhỏ nhất trước\nLuôn lưu ý điều kiện các chữ số có cần khác nhau nhau không\nLuôn lưu ý điều kiện chẵn lẻ để chọn chữ số cuối cùng.",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010104021",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lẻ, lớn nhất có 5 chữ số khác nhau",
+    "dap_an": "98765",
+    "loi_giai": "Số cần tìm là 98 765"
+   },
+   {
+    "ma_cau": "T14T010104001",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lẻ, lớn nhất có 5 chữ số khác nhau",
+    "dap_an": "98765",
+    "loi_giai": "Số cần tìm là 98 765"
+   },
+   {
+    "ma_cau": "T14T010104003",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lẻ, lớn nhất có 4 chữ số khác nhau",
+    "dap_an": "9875",
+    "loi_giai": "Số cần tìm là 9875"
+   },
+   {
+    "ma_cau": "T14T010104002",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên lẻ, lớn nhất có 3 chữ số khác nhau",
+    "dap_an": "987",
+    "loi_giai": "Số cần tìm là 987"
+   }
+  ]
+ },
+ {
+  "id": "NDB01510",
+  "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng chữ số và số chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 5,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để viết số tự nhiên nhỏ nhất khi biết tổng các chữ số và số chữ số ta làm như sau :\n\nChọn từ hàng lớn nhất trước và chọn chữ số bé nhất có thể (thông thường là số 1)\nChọn chữ số từ hàng thứ hai và lặp lại cách chọn như hàng 1\nLưu ý điều kiện đề bài có yêu cầu khác nhau hay không\n\n**Ví dụ :** Viết số tự nhiên nhỏ nhất có 3 chữ số khác nhau có tổng là 15.\n\nBài giải:\n\nChọn chữ số hàng trăm bé nhất là 1\nKhi đó tổng hàng chục và hàng đơn vị là : $15 - 1 = 14$. Để hàng chục bé nhất thì hàng chục là 5 còn hàng đơn vị là 9\nSố cần tìm là 159\n\n**Ví dụ :** Viết số tự nhiên nhỏ nhất có 4 chữ số khác nhau có tổng là 17\n\nBài giải:\n\nChọn chữ số hàng nghìn bé nhất là 1\nKhi đó tổng hàng trăm – chục – đơn vị là $17 - 1 = 16$.\nHàng trăm chọn bé nhất là số 0. Vậy tổng hàng chục - hàng đơn vị là 16\nVậy hàng chục bé nhất là 7 còn hàng đơn vị là 9\nSố cần tìm là 1079",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010105001",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có 3 chữ số khác nhau có tổng là 15.",
+    "dap_an": "159",
+    "loi_giai": "Chọn chữ số hàng trăm bé nhất là 1\nKhi đó tổng hàng chục và hàng đơn vị là : $15 - 1 = 14$. Để hàng chục bé nhất thì hàng chục là 5 còn hàng đơn vị là 9\nSố cần tìm là 159"
+   },
+   {
+    "ma_cau": "T14T010105007",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có 4 chữ số khác nhau có tổng là 17",
+    "dap_an": "1079",
+    "loi_giai": "Chọn chữ số hàng nghìn bé nhất là 1\nKhi đó tổng hàng trăm – chục – đơn vị là $17 - 1 = 16$.\nHàng trăm chọn bé nhất là số 0. Vậy tổng hàng chục - hàng đơn vị là 16\nVậy chữ số hàng chục bé nhất là 7 còn hàng đơn vị là 9\nSố cần tìm là 1079"
+   },
+   {
+    "ma_cau": "T14T010105018",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có 4 chữ số khác nhau có tổng là 17",
+    "dap_an": "1079",
+    "loi_giai": "Chọn chữ số hàng nghìn bé nhất là 1\nKhi đó tổng hàng trăm – chục – đơn vị là $17 - 1 = 16$.\nHàng trăm chọn bé nhất là số 0. Vậy tổng hàng chục - hàng đơn vị là 16\nVậy hàng chục bé nhất là 7 còn hàng đơn vị là 9\nSố cần tìm là 1079"
+   },
+   {
+    "ma_cau": "T14T010105028",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có 4 chữ số khác nhau có tổng là 27",
+    "dap_an": "3789",
+    "loi_giai": "Để tìm số nhỏ nhất, ta cần đặt các chữ số lớn nhất có thể vào hàng đơn vị, hàng chục và hàng trăm.\nHàng đơn vị: Chọn chữ số lớn nhất là 9.\nHàng chục: Chọn chữ số lớn nhất tiếp theo và khác 9 là 8.\nHàng trăm: Chọn chữ số lớn nhất tiếp theo và khác 9, 8 là 7.\nTổng của 3 chữ số đã chọn là:\\(9+8+7=24\\)\nHàng nghìn: Chữ số còn lại sẽ là:\\(27-24=3\\)\nSắp xếp các chữ số từ nhỏ đến lớn để được số nhỏ nhất, ta được số 3789."
+   }
+  ]
+ },
+ {
+  "id": "NDB01511",
+  "ten": "Viết số tự nhiên nhỏ nhất khi biết tổng các chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 6,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để viết số tự nhiên bé nhất có các chữ số khác nhau khi biết tổng các chữ số:\n\n* Ta cần tách tổng đó thành tổng của ít chữ số nhất có thể, nên sẽ luôn chọn các chữ số lớn trước.\n* Sau đó từ các chữ số đó ta sắp xếp để được số bé nhất\n\n**Ví dụ:** Tìm số tự nhiên nhỏ nhất có tổng các chữ số là 23\nBài giải:\nTa có: $23 = 9+9+5$ (do đề bài không yêu cầu chữ số khác nhau)\nVậy số nhỏ nhất là 599\n\n**Ví dụ:** Tìm số tự nhiên nhỏ nhất có các chữ số khác nhau có tổng các chữ số là 31\nBài giải:\nTa có: $31 = 9+8+7+6+1$ (do đề bài có yêu cầu chữ số khác nhau)\nVậy số nhỏ nhất là 16 789",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T010106012",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có các chữ số khác nhau có tổng các chữ số là 33",
+    "dap_an": "36789",
+    "loi_giai": "Ta tách : $33 = 9 + 8 + 7 + 6 + 3$Lỗi cú pháp:"
+   },
+   {
+    "ma_cau": "T14T010106001",
+    "ten_de_goc": null,
+    "noi_dung": "Tìm số tự nhiên nhỏ nhất có tổng các chữ số là 23",
+    "dap_an": "599",
+    "loi_giai": "Ta có : $23 = 9 + 9 + 5$ (do đề bài không yêu cầu chữ số khác nhau)\nVậy số nhỏ nhất là 599"
+   },
+   {
+    "ma_cau": "T14T010106030",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có các chữ số khác nhau có tổng các chữ số là 17",
+    "dap_an": "89",
+    "loi_giai": "Ta tách : $17=8+9$\nVậy số nhỏ nhất là 89"
+   },
+   {
+    "ma_cau": "T14T010106014",
+    "ten_de_goc": null,
+    "noi_dung": "Viết số tự nhiên nhỏ nhất có các chữ số khác nhau có tổng các chữ số là 34",
+    "dap_an": "46789",
+    "loi_giai": "Ta tách : $34 = 9 + 8 + 7 + 6 + 4$\nVậy số nhỏ nhất là 46789"
+   }
+  ]
+ },
+ {
+  "id": "NDB01512",
+  "ten": "Viết số lớn nhất - nhỏ nhất từ các chữ số cho trước",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "1. Viết số theo điều kiện cho trước",
+  "nhom_id": "NNB01708",
+  "nhom": "1. Viết số khi biết số chữ số",
+  "thu_tu_dang": 7,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01513",
+  "ten": "Đếm số các số tạo ra từ các chữ số khác 0 không có điều kiện",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "2. Đếm số và chữ số",
+  "nhom_id": "NNB01709",
+  "nhom": "1. Đếm số các số tạo ra từ các chữ số khác 0",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 4,5,6,7 viết được bao nhiêu số có 3 chữ số khác nhau ?\n\nBài giải:\nSố có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\nHàng trăm : chọn từ 4 chữ số nên có 4 cách chọn.\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\nVậy có tổng cộng : $4 \\times 3 \\times 2 = 24$ (số)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T020101001",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 4,5,6,7 viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "24",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\nHàng trăm : chọn từ 4 chữ số nên có 4 cách chọn.\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\nVậy có tổng cộng : $4 \\times 3 \\times 2 = 24$ (số)"
+   },
+   {
+    "ma_cau": "T14T020101022",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,4,5,6, viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "18",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.Hàng trăm : chọn từ 5 chữ số nên lẽ ra có 4 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 3 cách chọn.Hàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.Hàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.Vậy có tổng cộng : $3 \\times 3 \\times 2 = 18$ (số)"
+   },
+   {
+    "ma_cau": "T14T020101004",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 5,7,9 viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "6",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\nHàng trăm : chọn từ 3 chữ số nên có 3 cách chọn.\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 2 cách chọn.\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 1 cách chọn.\nVậy có tổng cộng : $3 \\times 2 \\times 1 = 6$ (số)"
+   },
+   {
+    "ma_cau": "T14T020101005",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 1,2,3,4 viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "24",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\nHàng trăm : chọn từ 4 chữ số nên có 4 cách chọn.\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\nVậy có tổng cộng : $4 \\times 3 \\times 2 = 24$ (số)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01514",
+  "ten": "Đếm các số tạo ra từ các chữ số có chữ số 0",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "2. Đếm số và chữ số",
+  "nhom_id": "NNB01709",
+  "nhom": "1. Đếm số các số tạo ra từ các chữ số khác 0",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 0,4,5,6, viết được bao nhiêu số có 3 chữ số khác nhau ?\n\nBài giải:\n\nSố có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.\n\nHàng trăm : chọn từ 5 chữ số nên lẽ ra có 4 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 3 cách chọn\n\nHàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.\n\nHàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.\n\nVậy có tổng cộng : $3 \\times 3 \\times 2 = 18$ (số)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T020102001",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,4,5,6, viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "18",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.Hàng trăm : chọn từ 5 chữ số nên lẽ ra có 4 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 3 cách chọn.Hàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 3 cách chọn.Hàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 2 cách chọn.Vậy có tổng cộng : $3 \\times 3 \\times 2 = 18$ (số)"
+   },
+   {
+    "ma_cau": "T14T020102003",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,1,2,3,4, viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "48",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.Hàng trăm : chọn từ 5 chữ số nên lẽ ra có 4 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 4 cách chọn.Hàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 4 cách chọn.Hàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 3 cách chọn.Vậy có tổng cộng : $4 \\times 4 \\times 3 = 48$ (số)"
+   },
+   {
+    "ma_cau": "T14T020102002",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,1,2, viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "4",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.Hàng trăm : chọn từ 3 chữ số nên lẽ ra có 2 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 2 cách chọn.Hàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 2 cách chọn.Hàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 1 cách chọn.Vậy có tổng cộng : $2 \\times 2 \\times 1 = 4$ (số)"
+   },
+   {
+    "ma_cau": "T14T020102004",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,1,2,3,4,5, viết được bao nhiêu số có 3 chữ số khác nhau ?",
+    "dap_an": "100",
+    "loi_giai": "Số có 3 chữ số sẽ gồm hàng trăm – hàng chục – hàng đơn vị.Hàng trăm : chọn từ 6 chữ số nên lẽ ra có 5 cách chọn, nhưng vì chữ số 0 ko đứng được ở đầu nên chỉ còn 5 cách chọn.Hàng chục : do hàng trăm đã chọn mất 1 chữ số rồi nên hàng chục chỉ còn 5 cách chọn.Hàng đơn vị : do hàng trăm và hàng chục đã chọn mất 2 chữ số rồi nên hàng đơn vị chỉ còn 4 cách chọn.Vậy có tổng cộng : $5 \\times 5 \\times 4 = 100$ (số)"
+   }
+  ]
+ },
+ {
+  "id": "NDB01515",
+  "ten": "Đếm các số lập từ các chữ số có điều kiện",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "2. Đếm số và chữ số",
+  "nhom_id": "NNB01709",
+  "nhom": "1. Đếm số các số tạo ra từ các chữ số khác 0",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "**Ví dụ 1:** Từ các chữ số 0,4,5,6, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?\n\nBài giải:\nBài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\n\nVì số chẵn nên hàng đơn vị sẽ là 0 , 4 hoặc 6.\n\n**Trường hợp 1:** Hàng đơn vị là 0\nNhư vậy. hàng trăm có 3 cách chọn (4,5,6).\nHàng chục có 2 cách chọn.\nVậy có $3 \\times 2 = 6$ (số).\n\n**Trường hợp 2:** Hàng đơn vị là 4\nHàng trăm có 2 cách chọn (vì phải khác 0,4).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\n\n**Trường hợp 3:** Hàng đơn vị là 6\nHàng trăm có 2 cách chọn (vì phải khác 0,6).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\n\nVậy tổng cộng có : $6 + 4 + 4 = 14$ (số).",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T020103001",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,4,5,6, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?",
+    "dap_an": "14",
+    "loi_giai": "Bài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\nVì số chẵn nên hàng đơn vị sẽ là 0, 4 hoặc 6.\nTrường hợp 1: Hàng đơn vị là 0\nNhư vậy. hàng trăm có 3 cách chọn (4,5,6).\nHàng chục có 2 cách chọn.\nVậy có $3 \\times 2 = 6$ (số).\nTrường hợp 2: Hàng đơn vị là 4\nHàng trăm có 2 cách chọn (vì phải khác 0,4).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\nTrường hợp 3: Hàng đơn vị là 6\nHàng trăm có 2 cách chọn (vì phải khác 0,6).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\nVậy tổng cộng có : $6 + 4 + 4 = 14$ (số)."
+   },
+   {
+    "ma_cau": "T14T020103007",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,4,5,6, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?",
+    "dap_an": "14",
+    "loi_giai": "Bài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\nVì số chẵn nên hàng đơn vị sẽ là 0, 4 hoặc 6.\nTrường hợp 1: Hàng đơn vị là 0\nNhư vậy. hàng trăm có 3 cách chọn (4,5,6).\nHàng chục có 2 cách chọn.\nVậy có $3 \\times 2 = 6$ (số).\nTrường hợp 2: Hàng đơn vị là 4\nHàng trăm có 2 cách chọn (vì phải khác 0,4).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\nTrường hợp 3: Hàng đơn vị là 6\nHàng trăm có 2 cách chọn (vì phải khác 0,6).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\nVậy tổng cộng có : $6+4+4=14$ (số)."
+   },
+   {
+    "ma_cau": "T14T020103002",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,1,2,3, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?",
+    "dap_an": "10",
+    "loi_giai": "Bài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\nVì số chẵn nên hàng đơn vị sẽ là 0 hoặc 2.\nTrường hợp 1: Hàng đơn vị là 0\nNhư vậy. hàng trăm có 3 cách chọn (1,2,3).\nHàng chục có 2 cách chọn.\nVậy có $3 \\times 2 = 6$ (số).\nTrường hợp 2: Hàng đơn vị là 2\nHàng trăm có 2 cách chọn (vì phải khác 0,2).\nHàng chục có 2 cách chọn.\nVậy có $2 \\times 2 = 4$ (số).\nVậy tổng cộng có : $6 + 4 = 10$ (số)."
+   },
+   {
+    "ma_cau": "T14T020103003",
+    "ten_de_goc": null,
+    "noi_dung": "Từ các chữ số 0,1,2,3,4, viết được bao nhiêu số chẵn có 3 chữ số khác nhau ?",
+    "dap_an": "30",
+    "loi_giai": "Bài toán này sẽ phức tạp vì vừa có yêu cầu số chẵn, lại vừa có chữ số 0. Phương án an toàn là ta sẽ tách riêng từng trường hợp.\nVì số chẵn nên hàng đơn vị sẽ là 0, 2 hoặc 4.\nTrường hợp 1: Hàng đơn vị là 0\nNhư vậy. hàng trăm có 4 cách chọn (1,2,3,4).\nHàng chục có 3 cách chọn.\nVậy có $4 \\times 3 = 12$ (số).\nTrường hợp 2: Hàng đơn vị là 2\nHàng trăm có 3 cách chọn (vì phải khác 0,2).\nHàng chục có 3 cách chọn.\nVậy có $3 \\times 3 = 9$ (số).\nTrường hợp 3: Hàng đơn vị là 4\nHàng trăm có 3 cách chọn (vì phải khác 0,4).\nHàng chục có 3 cách chọn.\nVậy có $3 \\times 3 = 9$ (số).\nVậy tổng cộng có : $12 + 9 + 9 = 30$ (số)."
+   }
+  ]
+ },
+ {
+  "id": "NDB01516",
+  "ten": "Đổi đơn vị đo khối lượng",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "3. Đo lường",
+  "nhom_id": "NNB01710",
+  "nhom": "1. Đổi đơn vị",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01517",
+  "ten": "Nhân các số có nhiều chữ số sử dụng tính chất phép nhân",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "4. Tính toán",
+  "nhom_id": "NNB01711",
+  "nhom": "1. Nhân số có nhiều chữ số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "• Muốn nhân 1 số với 10, 100, 1000 ta viết thêm 1,2,3 chữ số 0 vào phía sau của số đó.\n\n**Ví dụ**:\n$12\\times 10=120$\n$12\\times 100=1200$\n$12\\times 1000=12000$\n\n• Muốn nhân 1 số với một số có tận cùng là 0, 00, 000...ta bỏ các số 0 để nhân số như bình thường rồi thêm các số 0 vào\n\n**Ví dụ**:\nMuốn tính $25\\times 300$ thì ta tính $25\\times 3=75$ sau đó thêm 2 số 0 vào, ta sẽ được kết quả là $25\\times 300=7500$\n\n• Muốn nhân 1 số với số có nhiều chữ số, ta sẽ tách phép nhân ra thành nhiều phép nhân đơn giản hơn.\n\n**Ví dụ**:\n$12\\times 15=12\\times (10+5)=12\\times 10+12\\times 5=120+60=180$\n\n$13\\times 42=13\\times (40+2)=13\\times 40+13\\times 2=520+26=546$\n\n$35\\times 123=35\\times (100+20+3)=35\\times 100+35\\times 20+35\\times 3=3500+700+105=4305",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T040101022",
+    "ten_de_goc": null,
+    "noi_dung": "Tính theo cách tách số : $15 \\times 23$",
+    "dap_an": "345",
+    "loi_giai": "$15 \\times 23 = 15 \\times (20 + 3) = 15 \\times 20 + 15 \\times 3 = 300 + 45 = 345$"
+   },
+   {
+    "ma_cau": "T14T040101001",
+    "ten_de_goc": null,
+    "noi_dung": "Tính theo cách tách số : $15\\times 23$",
+    "dap_an": "345",
+    "loi_giai": "$15\\times 23 = 15\\times (20 + 3) = 15\\times 20 + 15\\times 3 = 300 + 45 = 345$"
+   },
+   {
+    "ma_cau": "T14T040101043",
+    "ten_de_goc": null,
+    "noi_dung": "Tính theo cách tách số : $125 \\times 234$",
+    "dap_an": "29250",
+    "loi_giai": "$125 \\times 234 = 125 \\times (200 + 30 + 4)$\n$= 125 \\times 200 + 125 \\times 30 + 125 \\times 4$\n$= 25000 + 3750 + 500 = 29250$"
+   },
+   {
+    "ma_cau": "T14T040101062",
+    "ten_de_goc": null,
+    "noi_dung": "Tính theo cách tách số :\n$37 \\times 97$",
+    "dap_an": "3589",
+    "loi_giai": "$37 \\times 97 = 37 \\times (100 - 3)$\n$= 37 \\times 100 - 37 \\times 3$\n$= 3700 - 111$\n$= 3589$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01518",
+  "ten": "Nhân số có nhiều chữ số sử dụng đặt tính",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "4. Tính toán",
+  "nhom_id": "NNB01711",
+  "nhom": "1. Nhân số có nhiều chữ số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T040102022",
+    "ten_de_goc": null,
+    "noi_dung": "Đặt tính rồi tính : $23 \\times 32$",
+    "dap_an": "736",
+    "loi_giai": "$23 \\times 32 = 736$"
+   },
+   {
+    "ma_cau": "T14T040102043",
+    "ten_de_goc": null,
+    "noi_dung": "Đặt tính rồi tính : $123 \\times 234$",
+    "dap_an": "28782",
+    "loi_giai": "$123 \\times 234 = 28782$"
+   },
+   {
+    "ma_cau": "T14T040102001",
+    "ten_de_goc": null,
+    "noi_dung": "Đặt tính rồi tính : $23 \\times 32$",
+    "dap_an": "736",
+    "loi_giai": "$23 \\times 32 = 736$"
+   },
+   {
+    "ma_cau": "T14T040102013",
+    "ten_de_goc": null,
+    "noi_dung": "Đặt tính rồi tính : $41 \\times 11$",
+    "dap_an": "451",
+    "loi_giai": "$41 \\times 11 = 451$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01519",
+  "ten": "Tính thuận tiện sử dụng tính chất phân phối của phép nhân với phép cộng trừ",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "4. Tính toán",
+  "nhom_id": "NNB01711",
+  "nhom": "1. Nhân số có nhiều chữ số",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Ta sử dụng tính chất\n$$A \\times B + A \\times C = A \\times (B + C)$$\n$$A \\times B - A \\times C = A \\times (B - C)$$\n\n**Ví dụ**. Tính thuận tiện :\n$15 \\times 23 + 15 \\times 76 + 15$\n\nBài giải:\n$15 \\times 23 + 15 \\times 76 + 15 = 15 \\times 23 + 15 \\times 76 + 15 \\times 1$\n$= 15 \\times (23 + 76 + 1) = 15 \\times 100 = 1500$\n\n**Ví dụ**. Tính thuận tiện :\n$15 \\times 123 - 15 \\times 24 + 15$\n\nBài giải:\n$15 \\times 123 - 15 \\times 24 + 15 = 15 \\times 123 - 15 \\times 24 + 15 \\times 1$\n$= 15 \\times (123 - 24 + 1) = 15 \\times 100 = 1500$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T040103001",
+    "ten_de_goc": null,
+    "noi_dung": "Tính thuận tiện :\n$15 \\times 23 + 15 \\times 76 + 15$",
+    "dap_an": "1500",
+    "loi_giai": "$15 \\times 23 + 15 \\times 76 + 15 = 15 \\times 23 + 15 \\times 76 + 15 \\times 1$\n$= 15 \\times (23 + 76 + 1) = 15 \\times 100 = 1500$"
+   },
+   {
+    "ma_cau": "T14T040103002",
+    "ten_de_goc": null,
+    "noi_dung": "Tính thuận tiện :\n$12 \\times 17 + 12 \\times 82 + 12$",
+    "dap_an": "1200",
+    "loi_giai": "$12 \\times 17 + 12 \\times 82 + 12 = 12 \\times 17 + 12 \\times 82 + 12 \\times 1$\n$= 12 \\times (17 + 82 + 1) = 12 \\times 100 = 1200$"
+   },
+   {
+    "ma_cau": "T14T040103003",
+    "ten_de_goc": null,
+    "noi_dung": "Tính thuận tiện :\n$25 \\times 34 + 25 \\times 65 + 25$",
+    "dap_an": "2500",
+    "loi_giai": "$25 \\times 34 + 25 \\times 65 + 25 = 25 \\times 34 + 25 \\times 65 + 25 \\times 1$\n$= 25 \\times (34 + 65 + 1) = 25 \\times 100 = 2500$"
+   },
+   {
+    "ma_cau": "T14T040103004",
+    "ten_de_goc": null,
+    "noi_dung": "Tính thuận tiện :\n$7 \\times 41 + 7 \\times 58 + 7$",
+    "dap_an": "700",
+    "loi_giai": "$7 \\times 41 + 7 \\times 58 + 7 = 7 \\times 41 + 7 \\times 58 + 7 \\times 1$\n$= 7 \\times (41 + 58 + 1) = 7 \\times 100 = 700$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01520",
+  "ten": "Chia số có 2 chữ số",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "4. Tính toán",
+  "nhom_id": "NNB01712",
+  "nhom": "2. Chia số có nhiều chữ số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để thực hiện phép chia $576:24$ ta làm các bước sau\nBước 1: Nhẩm tính $57:24$.\nTa ước lượng $5:2=2$. Nhân thử lại : $24 \\times 2 = 48 < 54$. Phù hợp. Vậy $57:24=2$\nBước 2: Viết kết quả nhân ngược: $24 \\times 2 = 48$\nBước 3: Tính $57-48=9$\nBước 4: Hạ số 6 xuống được 96\nBước 5: Nhẩm $96:24$\nTa ước lượng $9:2=4$. Nhân thử lại $24 \\times 4 = 96$. Phù hợp. Vậy $96:24=4$\nBước 6:Viết kết quả nhân ngược: $24 \\times 4=96$\nBước 7: Tính $96-96=0$\n\n![](https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/9f59b63d-b90f-4a4f-b30e-6f879b7f3cb0.png)",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T040201034",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $732 : 16$",
+    "dap_an": "45 dư 12",
+    "loi_giai": "Giải\n$732 : 16 = 45$ dư $12$"
+   },
+   {
+    "ma_cau": "T14T040201009",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $608 : 19$",
+    "dap_an": "32",
+    "loi_giai": "Giải\n$608 : 19 = 32$ dư $0$"
+   },
+   {
+    "ma_cau": "T14T040201038",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $725 : 37$",
+    "dap_an": "19 dư 22",
+    "loi_giai": "Giải\n$725 : 37 = 19$ dư $22$"
+   },
+   {
+    "ma_cau": "T14T040201040",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $736 : 30$",
+    "dap_an": "24 dư 16",
+    "loi_giai": "Giải\n$736 : 30 = 24$ dư $16$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01521",
+  "ten": "Thay đổi đại lượng trong phép cộng",
+  "chu_de": "1. Số tự nhiên",
+  "chuyen_de": "5. Quan hệ đại lượng trong phép toán",
+  "nhom_id": "NNB01713",
+  "nhom": "1. Quan hệ các đại lượng trong phép cộng",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01522",
+  "ten": "Tính chu vi các hình - dạng cơ bản",
+  "chu_de": "2. Hình học",
+  "chuyen_de": "1. Chu vi và diện tích các hình",
+  "nhom_id": "NNB01714",
+  "nhom": "1. Chu vi các hình",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ }
+]

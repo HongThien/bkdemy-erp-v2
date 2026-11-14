@@ -1,0 +1,479 @@
+[
+ {
+  "id": "NDB01552",
+  "ten": "Quy đồng mẫu số 2 phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "1. Phân số",
+  "nhom_id": "NNB01728",
+  "nhom": "1. Quy đồng phân số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01553",
+  "ten": "Quy đồng tử số 2 phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "1. Phân số",
+  "nhom_id": "NNB01728",
+  "nhom": "1. Quy đồng phân số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01554",
+  "ten": "Quy đồng mẫu số nhiều phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "1. Phân số",
+  "nhom_id": "NNB01728",
+  "nhom": "1. Quy đồng phân số",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01555",
+  "ten": "Rút gọn phân số dạng chuẩn",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "1. Phân số",
+  "nhom_id": "NNB01729",
+  "nhom": "2. Rút gọn phân số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01556",
+  "ten": "Rút gọn phân số dạng đặc biệt",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "1. Phân số",
+  "nhom_id": "NNB01729",
+  "nhom": "2. Rút gọn phân số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01557",
+  "ten": "So sánh phân số bằng quy đồng mẫu số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01730",
+  "nhom": "1. So sánh phân số trực tiếp",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "DC000006",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\frac{3}{5}$ và $\\frac{2}{3}$",
+    "dap_an": "B",
+    "loi_giai": "Quy đồng mẫu số:\\n Ta có: $\\frac{3}{5} = \\frac{3 \\times 3}{5 \\times 3} = \\frac{9}{15}$ và $\\frac{2}{3} = \\frac{2 \\times 5}{3 \\times 5} = \\frac{10}{15}$.\\n Vì $\\frac{9}{15} < \\frac{10}{15}$ nên $\\frac{3}{5} < \\frac{2}{3}$."
+   },
+   {
+    "ma_cau": "T14T170101002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{1}{2}$ và $\\dfrac{2}{3}$",
+    "dap_an": "B",
+    "loi_giai": "Quy đồng mẫu số:\\nTa có : $\\dfrac{1}{2} = \\dfrac{1 \\times 3}{2 \\times 3} = \\dfrac{3}{6}$ và $\\dfrac{2}{3} = \\dfrac{2 \\times 2}{3 \\times 2} = \\dfrac{4}{6}$\\n Vì $\\dfrac{3}{6} < \\dfrac{4}{6}$ nên $\\dfrac{1}{2} < \\dfrac{2}{3}$."
+   },
+   {
+    "ma_cau": "T14T170101003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{3}{4}$ và $\\dfrac{5}{6}$",
+    "dap_an": "B",
+    "loi_giai": "Quy đồng mẫu số:\\nTa có : $\\dfrac{3}{4} = \\dfrac{3 \\times 3}{4 \\times 3} = \\dfrac{9}{12}$ và $\\dfrac{5}{6} = \\dfrac{5 \\times 2}{6 \\times 2} = \\dfrac{10}{12}$\\n Vì $\\dfrac{9}{12} < \\dfrac{10}{12}$ nên $\\dfrac{3}{4} < \\dfrac{5}{6}$."
+   },
+   {
+    "ma_cau": "T14T170101004",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{7}{10}$ và $\\dfrac{4}{5}$",
+    "dap_an": "B",
+    "loi_giai": "Quy đồng mẫu số:\\nTa có : $\\dfrac{7}{10} = \\dfrac{7 \\times 1}{10 \\times 1} = \\dfrac{7}{10}$ và $\\dfrac{4}{5} = \\dfrac{4 \\times 2}{5 \\times 2} = \\dfrac{8}{10}$\\n Vì $\\dfrac{7}{10} < \\dfrac{8}{10}$ nên $\\dfrac{7}{10} < \\dfrac{4}{5}$."
+   }
+  ]
+ },
+ {
+  "id": "NDB01558",
+  "ten": "So sánh phân số bằng quy đồng tử số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01730",
+  "nhom": "1. So sánh phân số trực tiếp",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170102001",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{6}{29}$ và $\\dfrac{9}{44}$.",
+    "dap_an": "A",
+    "loi_giai": "Quy đồng tử số:\\nTa có: $\\dfrac{6}{29} = \\dfrac{6 \\times 3}{29 \\times 3} = \\dfrac{18}{87}$ và $\\dfrac{9}{44} = \\dfrac{9 \\times 2}{44 \\times 2} = \\dfrac{18}{88}$.\\nVì $\\dfrac{18}{87} > \\dfrac{18}{88}$ nên $\\dfrac{6}{29} > \\dfrac{9}{44}$."
+   },
+   {
+    "ma_cau": "T14T170102002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{3}{10}$ và $\\dfrac{5}{18}$.",
+    "dap_an": "A",
+    "loi_giai": "Quy đồng tử số:\\nTa có: $\\dfrac{3}{10} = \\dfrac{3 \\times 5}{10 \\times 5} = \\dfrac{15}{50}$ và $\\dfrac{5}{18} = \\dfrac{5 \\times 3}{18 \\times 3} = \\dfrac{15}{54}$.\\nVì $\\dfrac{15}{50} > \\dfrac{15}{54}$ nên $\\dfrac{3}{10} > \\dfrac{5}{18}$."
+   },
+   {
+    "ma_cau": "T14T170102003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{2}{7}$ và $\\dfrac{3}{11}$.",
+    "dap_an": "A",
+    "loi_giai": "Quy đồng tử số:\\nTa có: $\\dfrac{2}{7} = \\dfrac{2 \\times 3}{7 \\times 3} = \\dfrac{6}{21}$ và $\\dfrac{3}{11} = \\dfrac{3 \\times 2}{11 \\times 2} = \\dfrac{6}{22}$.\\nVì $\\dfrac{6}{21} > \\dfrac{6}{22}$ nên $\\dfrac{2}{7} > \\dfrac{3}{11}$."
+   },
+   {
+    "ma_cau": "T14T170102004",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{4}{15}$ và $\\dfrac{6}{20}$.",
+    "dap_an": "B",
+    "loi_giai": "Quy đồng tử số:\\nTa có: $\\dfrac{4}{15} = \\dfrac{4 \\times 3}{15 \\times 3} = \\dfrac{12}{45}$ và $\\dfrac{6}{20} = \\dfrac{6 \\times 2}{20 \\times 2} = \\dfrac{12}{40}$.\\nVì $\\dfrac{12}{45} < \\dfrac{12}{40}$ nên $\\dfrac{4}{15} < \\dfrac{6}{20}$."
+   }
+  ]
+ },
+ {
+  "id": "NDB01559",
+  "ten": "So sánh phân số bằng cách so sánh với 1",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01731",
+  "nhom": "2. So sánh phân số gián tiếp",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Đề bài. So sánh hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$\n\nA. $\\dfrac{3}{5} > \\dfrac{2}{3}$\nB. $\\dfrac{3}{5} < \\dfrac{2}{3}$\nC. $\\dfrac{3}{5} = \\dfrac{2}{3}$\nD. Không so sánh được\n\nĐáp án : B\n\nLời giải chi tiết\n\nQuy đồng mẫu số:\n\nTa có : $\\dfrac{3}{5} = \\dfrac{3 \\times 3}{5 \\times 3} = \\dfrac{9}{15}$ và $\\dfrac{2}{3} = \\dfrac{2 \\times 5}{3 \\times 5} = \\dfrac{10}{15}$\n\nVì $\\dfrac{9}{15} < \\dfrac{10}{15}$ nên $\\dfrac{3}{5} < \\dfrac{2}{3}$.",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170201001",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{24}{23}$ và $\\dfrac{17}{19}$",
+    "dap_an": "B",
+    "loi_giai": "Ta có : $\\dfrac{24}{23} > \\dfrac{23}{23} = 1$ và $\\dfrac{17}{19} < \\dfrac{19}{19} = 1$ nên $\\dfrac{24}{23} > 1 > \\dfrac{17}{19}$"
+   },
+   {
+    "ma_cau": "T14T170201009",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{10}{9}$ và $\\dfrac{2}{5}$",
+    "dap_an": "B",
+    "loi_giai": "Ta có : $\\dfrac{10}{9} > \\dfrac{9}{9} = 1$ và $\\dfrac{2}{5} < \\dfrac{5}{5} = 1$ nên $\\dfrac{10}{9} > 1 > \\dfrac{2}{5}$"
+   },
+   {
+    "ma_cau": "T14T170201002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{5}{4}$ và $\\dfrac{2}{3}$",
+    "dap_an": "B",
+    "loi_giai": "Ta có : $\\dfrac{5}{4} > \\dfrac{4}{4} = 1$ và $\\dfrac{2}{3} < \\dfrac{3}{3} = 1$ nên $\\dfrac{5}{4} > 1 > \\dfrac{2}{3}$"
+   },
+   {
+    "ma_cau": "T14T170201003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{7}{6}$ và $\\dfrac{3}{5}$",
+    "dap_an": "B",
+    "loi_giai": "Ta có : $\\dfrac{7}{6} > \\dfrac{6}{6} = 1$ và $\\dfrac{3}{5} < \\dfrac{5}{5} = 1$ nên $\\dfrac{7}{6} > 1 > \\dfrac{3}{5}$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01560",
+  "ten": "So sánh phân số bằng phân số trung gian",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01731",
+  "nhom": "2. So sánh phân số gián tiếp",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170202001",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{2023}{2026}$ và $\\dfrac{2024}{2025}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta chọn phân số trung gian $\\dfrac{2023}{2025}$.\\nVì $\\dfrac{2023}{2026} < \\dfrac{2023}{2025}$, $\\dfrac{2023}{2025} < \\dfrac{2024}{2025}$ nên $\\dfrac{2023}{2026} < \\dfrac{2024}{2025}$."
+   },
+   {
+    "ma_cau": "T14T170202002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{15}{18}$ và $\\dfrac{16}{17}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta chọn phân số trung gian $\\dfrac{15}{17}$.\\nVì $\\dfrac{15}{18} < \\dfrac{15}{17}$, $\\dfrac{15}{17} < \\dfrac{16}{17}$ nên $\\dfrac{15}{18} < \\dfrac{16}{17}$."
+   },
+   {
+    "ma_cau": "T14T170202003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{20}{23}$ và $\\dfrac{19}{24}$.",
+    "dap_an": "B",
+    "loi_giai": "Ta chọn phân số trung gian $\\dfrac{20}{24}$.\\nVì $\\dfrac{20}{23} > \\dfrac{20}{24}$, $\\dfrac{20}{24} > \\dfrac{19}{24}$ nên $\\dfrac{20}{23} > \\dfrac{19}{24}$."
+   },
+   {
+    "ma_cau": "T14T170202004",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{31}{34}$ và $\\dfrac{32}{33}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta chọn phân số trung gian $\\dfrac{31}{33}$.\\nVì $\\dfrac{31}{34} < \\dfrac{31}{33}$, $\\dfrac{31}{33} < \\dfrac{32}{33}$ nên $\\dfrac{31}{34} < \\dfrac{32}{33}$."
+   }
+  ]
+ },
+ {
+  "id": "NDB01561",
+  "ten": "So sánh phân số bằng phương pháp phần bù",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01731",
+  "nhom": "2. So sánh phân số gián tiếp",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170203001",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{2023}{2024}$ và $\\dfrac{2024}{2025}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{2023}{2024} = \\dfrac{1}{2024}$; $1 - \\dfrac{2024}{2025} = \\dfrac{1}{2025}$. Vì $\\dfrac{1}{2024} > \\dfrac{1}{2025}$ nên $\\dfrac{2023}{2024} < \\dfrac{2024}{2025}$."
+   },
+   {
+    "ma_cau": "T14T170203002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{5}{6}$ và $\\dfrac{6}{7}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{5}{6} = \\dfrac{1}{6}$; $1 - \\dfrac{6}{7} = \\dfrac{1}{7}$. Vì $\\dfrac{1}{6} > \\dfrac{1}{7}$ nên $\\dfrac{5}{6} < \\dfrac{6}{7}$."
+   },
+   {
+    "ma_cau": "T14T170203003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{9}{10}$ và $\\dfrac{10}{11}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{9}{10} = \\dfrac{1}{10}$; $1 - \\dfrac{10}{11} = \\dfrac{1}{11}$. Vì $\\dfrac{1}{10} > \\dfrac{1}{11}$ nên $\\dfrac{9}{10} < \\dfrac{10}{11}$."
+   },
+   {
+    "ma_cau": "T14T170203004",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{12}{13}$ và $\\dfrac{13}{14}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{12}{13} = \\dfrac{1}{13}$; $1 - \\dfrac{13}{14} = \\dfrac{1}{14}$. Vì $\\dfrac{1}{13} > \\dfrac{1}{14}$ nên $\\dfrac{12}{13} < \\dfrac{13}{14}$."
+   }
+  ]
+ },
+ {
+  "id": "NDB01562",
+  "ten": "So sánh phân số bằng phương pháp phần bù",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01731",
+  "nhom": "2. So sánh phân số gián tiếp",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170204001",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{2023}{2024}$ và $\\dfrac{2024}{2025}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{2023}{2024} = \\dfrac{1}{2024}$; $1 - \\dfrac{2024}{2025} = \\dfrac{1}{2025}$.\\nVì $\\dfrac{1}{2024} > \\dfrac{1}{2025}$ nên $\\dfrac{2023}{2024} < \\dfrac{2024}{2025}$."
+   },
+   {
+    "ma_cau": "T14T170204002",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{2019}{2020}$ và $\\dfrac{2020}{2021}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{2019}{2020} = \\dfrac{1}{2020}$; $1 - \\dfrac{2020}{2021} = \\dfrac{1}{2021}$.\\nVì $\\dfrac{1}{2020} > \\dfrac{1}{2021}$ nên $\\dfrac{2019}{2020} < \\dfrac{2020}{2021}$."
+   },
+   {
+    "ma_cau": "T14T170204003",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{99}{100}$ và $\\dfrac{98}{99}$.",
+    "dap_an": "B",
+    "loi_giai": "Ta có $1 - \\dfrac{99}{100} = \\dfrac{1}{100}$; $1 - \\dfrac{98}{99} = \\dfrac{1}{99}$.\\nVì $\\dfrac{1}{100} < \\dfrac{1}{99}$ nên $\\dfrac{99}{100} > \\dfrac{98}{99}$."
+   },
+   {
+    "ma_cau": "T14T170204004",
+    "ten_de_goc": null,
+    "noi_dung": "So sánh hai phân số $\\dfrac{48}{50}$ và $\\dfrac{50}{52}$.",
+    "dap_an": "A",
+    "loi_giai": "Ta có $1 - \\dfrac{48}{50} = \\dfrac{2}{50}$; $1 - \\dfrac{50}{52} = \\dfrac{2}{52}$.\\nVì $\\dfrac{2}{50} > \\dfrac{2}{52}$ nên $\\dfrac{48}{50} < \\dfrac{50}{52}$."
+   }
+  ]
+ },
+ {
+  "id": "NDB01563",
+  "ten": "Sắp xếp dãy phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "2. So sánh phân số",
+  "nhom_id": "NNB01731",
+  "nhom": "2. So sánh phân số gián tiếp",
+  "thu_tu_dang": 5,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để sắp xếp một dãy phân số nhanh chóng, ta thực hiện các bước sau :\nBước 1: Phân loại phân số thành 2 nhóm : lớn hơn 1 và bé hơn 1.\nBước 2 : Trong từng nhóm, xét các phân số phân dư - phần bù để áp dụng quy tắc so sánh nhanh của phần dư – phần bù\nBước 3 : So sánh các phân số trong nhóm với phân số còn lại nếu có.\n\nVí dụ: Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{3}{4}, \\dfrac{6}{5}, \\dfrac{2}{5}, \\dfrac{4}{3}, \\dfrac{2}{3}, \\dfrac{9}{7}$\n\nBài giải:\nĐầu tiên ta chia 2 nhóm :\n\nNhóm lớn hơn 1 : $\\dfrac{6}{5}; \\dfrac{4}{3}; \\dfrac{9}{7}$ và nhóm nhỏ hơn 1 : $\\dfrac{3}{4}; \\dfrac{2}{5}; \\dfrac{2}{3}$\n\nTrong nhóm lớn hơn 1, $\\dfrac{6}{5}$ và $\\dfrac{4}{3}$ là dãy phân dư có khoảng cách tử số và mẫu số là 1, còn $\\dfrac{9}{7}$ có khoảng cách tử số và mẫu số là 2. Đến đây có 2 cách xử lý\n\nCách 1: Đưa hết về cùng 1 dãy phần dư có khoảng cách là 2. $\\dfrac{6}{5} = \\dfrac{12}{10}$, $\\dfrac{4}{3} = \\dfrac{8}{6}$\n\nTheo quy tắc của dãy phần dư ta có: $\\dfrac{8}{6} > \\dfrac{9}{7} > \\dfrac{12}{10} \\Rightarrow \\dfrac{4}{3} > \\dfrac{9}{7} > \\dfrac{6}{5} > 1$\n\nCách 2 : Xét riêng. Vì $\\dfrac{6}{5}$ và $\\dfrac{4}{3}$ là cùng dãy phân dư nên ta có $\\dfrac{4}{3} > \\dfrac{6}{5}$\n\nSo sánh $\\dfrac{4}{3}$ và $\\dfrac{9}{7}$: $\\dfrac{4}{3} = \\dfrac{28}{21}$, $\\dfrac{9}{7} = \\dfrac{27}{21} \\Rightarrow \\dfrac{4}{3} > \\dfrac{9}{7}$\n\nSo sánh $\\dfrac{6}{5}$ và $\\dfrac{9}{7}$: $\\dfrac{6}{5} = \\dfrac{42}{35}$, $\\dfrac{9}{7} = \\dfrac{45}{35} \\Rightarrow \\dfrac{6}{5} < \\dfrac{9}{7}$\n\nSuy ra: $\\dfrac{4}{3} > \\dfrac{9}{7} > \\dfrac{6}{5} > 1$\n\nTương tự với nhóm nhỏ hơn 1: $\\dfrac{3}{4}; \\dfrac{2}{5}; \\dfrac{2}{3}$\n\nCó $\\dfrac{2}{3} < \\dfrac{3}{4}$ (tính chất dãy phần bù); $\\dfrac{2}{5} < \\dfrac{2}{3}$ nên $\\dfrac{2}{5} < \\dfrac{2}{3} < \\dfrac{3}{4} < 1$\n\nVậy thứ tự của dãy từ bé đến lớn là : $\\dfrac{2}{5}, \\dfrac{2}{3}, \\dfrac{3}{4}, \\dfrac{6}{5}, \\dfrac{9}{7}, \\dfrac{4}{3}$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T170205022",
+    "ten_de_goc": null,
+    "noi_dung": "Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{2}{5}$; $\\dfrac{9}{4}$; $\\dfrac{3}{7}$; $\\dfrac{10}{3}$; $\\dfrac{7}{6}$; $\\dfrac{4}{9}$",
+    "dap_an": "A",
+    "loi_giai": "Nhóm các phân số lớn hơn 1: $\\dfrac{7}{6}$; $\\dfrac{9}{4}$; $\\dfrac{10}{3}$ và nhóm các phân số nhỏ hơn 1: $\\dfrac{2}{5}$; $\\dfrac{3}{7}$; $\\dfrac{4}{9}$\nSo sánh các phân số lớn hơn 1:\nSo sánh $\\dfrac{7}{6}$ và $\\dfrac{9}{4}$: Ta quy đồng mẫu số. $\\dfrac{7}{6} = \\dfrac{14}{12}$; $\\dfrac{9}{4} = \\dfrac{27}{12} \\Rightarrow \\dfrac{7}{6} < \\dfrac{9}{4}$.\nSo sánh $\\dfrac{9}{4}$ và $\\dfrac{10}{3}$: Ta quy đồng mẫu số. $\\dfrac{9}{4} = \\dfrac{27}{12}$; $\\dfrac{10}{3} = \\dfrac{40}{12} \\Rightarrow \\dfrac{9}{4} < \\dfrac{10}{3}$.\nSuy ra thứ tự các phân số lớn hơn 1 từ bé đến lớn là: $\\dfrac{7}{6}$; $\\dfrac{9}{4}$; $\\dfrac{10}{3}$\nTương tự, so sánh các phân số nhỏ hơn 1:\nSo sánh $\\dfrac{2}{5}$ và $\\dfrac{3}{7}$: Ta quy đồng mẫu số. $\\dfrac{2}{5} = \\dfrac{14}{35}$; $\\dfrac{3}{7} = \\dfrac{15}{35} \\Rightarrow \\dfrac{2}{5} < \\dfrac{3}{7}$.\nSo sánh $\\dfrac{3}{7}$ và $\\dfrac{4}{9}$: Ta quy đồng mẫu số. $\\dfrac{3}{7} = \\dfrac{27}{63}$; $\\dfrac{4}{9} = \\dfrac{28}{63} \\Rightarrow \\dfrac{3}{7} < \\dfrac{4}{9}$.\nSuy ra thứ tự các phân số nhỏ hơn 1 từ bé đến lớn là: $\\dfrac{2}{5}$; $\\dfrac{3}{7}$; $\\dfrac{4}{9}$\nVậy thứ tự của dãy các phân số từ bé đến lớn là: $\\dfrac{2}{5}$; $\\dfrac{3}{7}$; $\\dfrac{4}{9}$; $\\dfrac{7}{6}$; $\\dfrac{9}{4}$; $\\dfrac{10}{3}$"
+   },
+   {
+    "ma_cau": "T14T170205029",
+    "ten_de_goc": null,
+    "noi_dung": "Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{3}{7}$; $\\dfrac{8}{3}$; $\\dfrac{2}{5}$; $\\dfrac{9}{4}$; $\\dfrac{5}{2}$; $\\dfrac{4}{11}$",
+    "dap_an": "A",
+    "loi_giai": "Nhóm các phân số lớn hơn 1: $\\dfrac{9}{4}$; $\\dfrac{8}{3}$; $\\dfrac{5}{2}$ và nhóm các phân số nhỏ hơn 1: $\\dfrac{4}{11}$; $\\dfrac{2}{5}$; $\\dfrac{3}{7}$\nSo sánh các phân số lớn hơn 1:\nSo sánh $\\dfrac{9}{4}$ và $\\dfrac{8}{3}$: Ta quy đồng mẫu số. $\\dfrac{9}{4} = \\dfrac{27}{12}$; $\\dfrac{8}{3} = \\dfrac{32}{12} \\Rightarrow \\dfrac{9}{4} < \\dfrac{8}{3}$.\nSo sánh $\\dfrac{8}{3}$ và $\\dfrac{5}{2}$: Ta quy đồng mẫu số. $\\dfrac{8}{3} = \\dfrac{16}{6}$; $\\dfrac{5}{2} = \\dfrac{15}{6} \\Rightarrow \\dfrac{8}{3} > \\dfrac{5}{2}$.\nSuy ra thứ tự các phân số lớn hơn 1 từ bé đến lớn là: $\\dfrac{9}{4}$; $\\dfrac{5}{2}$; $\\dfrac{8}{3}$\nTương tự, so sánh các phân số nhỏ hơn 1:\nSo sánh $\\dfrac{4}{11}$ và $\\dfrac{2}{5}$: Ta quy đồng mẫu số. $\\dfrac{4}{11} = \\dfrac{20}{55}$; $\\dfrac{2}{5} = \\dfrac{22}{55} \\Rightarrow \\dfrac{4}{11} < \\dfrac{2}{5}$.\nSo sánh $\\dfrac{2}{5}$ và $\\dfrac{3}{7}$: Ta quy đồng mẫu số. $\\dfrac{2}{5} = \\dfrac{14}{35}$; $\\dfrac{3}{7} = \\dfrac{15}{35} \\Rightarrow \\dfrac{2}{5} < \\dfrac{3}{7}$.\nSuy ra thứ tự các phân số nhỏ hơn 1 từ bé đến lớn là: $\\dfrac{4}{11}$; $\\dfrac{2}{5}$; $\\dfrac{3}{7}$\nVậy thứ tự của dãy các phân số từ bé đến lớn là: $\\dfrac{4}{11}$; $\\dfrac{2}{5}$; $\\dfrac{3}{7}$; $\\dfrac{9}{4}$; $\\dfrac{5}{2}$; $\\dfrac{8}{3}$"
+   },
+   {
+    "ma_cau": "T14T170205036",
+    "ten_de_goc": null,
+    "noi_dung": "Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{2}{3}$; $\\dfrac{9}{4}$; $\\dfrac{4}{7}$; $\\dfrac{11}{5}$; $\\dfrac{5}{2}$; $\\dfrac{3}{10}$",
+    "dap_an": "A",
+    "loi_giai": "Nhóm các phân số lớn hơn 1: $\\dfrac{9}{4}$; $\\dfrac{11}{5}$; $\\dfrac{5}{2}$ và nhóm các phân số nhỏ hơn 1: $\\dfrac{3}{10}$; $\\dfrac{4}{7}$; $\\dfrac{2}{3}$\nSo sánh các phân số lớn hơn 1:\nSo sánh $\\dfrac{9}{4}$ và $\\dfrac{11}{5}$: Ta quy đồng mẫu số. $\\dfrac{9}{4} = \\dfrac{45}{20}$; $\\dfrac{11}{5} = \\dfrac{44}{20} \\Rightarrow \\dfrac{9}{4} > \\dfrac{11}{5}$.\nSo sánh $\\dfrac{11}{5}$ và $\\dfrac{5}{2}$: Ta quy đồng mẫu số. $\\dfrac{11}{5} = \\dfrac{22}{10}$; $\\dfrac{5}{2} = \\dfrac{25}{10} \\Rightarrow \\dfrac{11}{5} < \\dfrac{5}{2}$.\nSuy ra thứ tự các phân số lớn hơn 1 từ bé đến lớn là: $\\dfrac{11}{5}$; $\\dfrac{9}{4}$; $\\dfrac{5}{2}$\nTương tự, so sánh các phân số nhỏ hơn 1:\nSo sánh $\\dfrac{3}{10}$ và $\\dfrac{4}{7}$: Ta quy đồng mẫu số. $\\dfrac{3}{10} = \\dfrac{21}{70}$; $\\dfrac{4}{7} = \\dfrac{40}{70} \\Rightarrow \\dfrac{3}{10} < \\dfrac{4}{7}$.\nSo sánh $\\dfrac{4}{7}$ và $\\dfrac{2}{3}$: Ta quy đồng mẫu số. $\\dfrac{4}{7} = \\dfrac{12}{21}$; $\\dfrac{2}{3} = \\dfrac{14}{21} \\Rightarrow \\dfrac{4}{7} < \\dfrac{2}{3}$.\nSuy ra thứ tự các phân số nhỏ hơn 1 từ bé đến lớn là: $\\dfrac{3}{10}$; $\\dfrac{4}{7}$; $\\dfrac{2}{3}$\nVậy thứ tự của dãy các phân số từ bé đến lớn là: $\\dfrac{3}{10}$; $\\dfrac{4}{7}$; $\\dfrac{2}{3}$; $\\dfrac{11}{5}$; $\\dfrac{9}{4}$; $\\dfrac{5}{2}$"
+   },
+   {
+    "ma_cau": "T14T170205038",
+    "ten_de_goc": null,
+    "noi_dung": "Sắp xếp các phân số sau từ bé đến lớn : $\\dfrac{3}{11}$; $\\dfrac{8}{3}$; $\\dfrac{2}{7}$; $\\dfrac{10}{9}$; $\\dfrac{6}{5}$; $\\dfrac{4}{9}$",
+    "dap_an": "D",
+    "loi_giai": "Nhóm các phân số lớn hơn 1: $\\dfrac{6}{5}$; $\\dfrac{10}{9}$; $\\dfrac{8}{3}$ và nhóm các phân số nhỏ hơn 1: $\\dfrac{2}{7}$; $\\dfrac{3}{11}$; $\\dfrac{4}{9}$\nSo sánh các phân số lớn hơn 1:\nSo sánh $\\dfrac{6}{5}$ và $\\dfrac{10}{9}$: Ta quy đồng mẫu số. $\\dfrac{6}{5} = \\dfrac{54}{45}$; $\\dfrac{10}{9} = \\dfrac{50}{45} \\Rightarrow \\dfrac{6}{5} > \\dfrac{10}{9}$.\nSo sánh $\\dfrac{10}{9}$ và $\\dfrac{8}{3}$: Ta quy đồng mẫu số. $\\dfrac{10}{9} = \\dfrac{10}{9}$; $\\dfrac{8}{3} = \\dfrac{24}{9} \\Rightarrow \\dfrac{10}{9} < \\dfrac{8}{3}$.\nSuy ra thứ tự các phân số lớn hơn 1 từ bé đến lớn là: $\\dfrac{10}{9}$; $\\dfrac{6}{5}$; $\\dfrac{8}{3}$\nTương tự, so sánh các phân số nhỏ hơn 1:\nSo sánh $\\dfrac{2}{7}$ và $\\dfrac{3}{11}$: Ta quy đồng mẫu số. $\\dfrac{2}{7} = \\dfrac{22}{77}$; $\\dfrac{3}{11} = \\dfrac{21}{77} \\Rightarrow \\dfrac{2}{7} > \\dfrac{3}{11}$.\nSo sánh $\\dfrac{3}{11}$ và $\\dfrac{4}{9}$: Ta quy đồng mẫu số. $\\dfrac{3}{11} = \\dfrac{27}{99}$; $\\dfrac{4}{9} = \\dfrac{44}{99} \\Rightarrow \\dfrac{3}{11} < \\dfrac{4}{9}$.\nSuy ra thứ tự các phân số nhỏ hơn 1 từ bé đến lớn là: $\\dfrac{3}{11}$; $\\dfrac{2}{7}$; $\\dfrac{4}{9}$\nVậy thứ tự của dãy các phân số từ bé đến lớn là: $\\dfrac{3}{11}$; $\\dfrac{2}{7}$; $\\dfrac{4}{9}$; $\\dfrac{10}{9}$; $\\dfrac{6}{5}$; $\\dfrac{8}{3}$"
+   }
+  ]
+ }
+]

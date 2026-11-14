@@ -1,0 +1,154 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01708",
+   "ly_thuyet": "##TC Số lớn nhất, số nhỏ nhất\nSố có nhiều chữ số hơn thì lớn hơn; hai số cùng số chữ số thì so từng hàng, bắt đầu từ hàng cao nhất.\nSố lớn nhất: chữ số lớn đứng ở hàng cao. Số nhỏ nhất: chữ số nhỏ đứng ở hàng cao, nhưng hàng cao nhất không được là $0$.\n\n##TC Các chữ số khác nhau\nĐề nói \"khác nhau\" thì mỗi chữ số chỉ được dùng một lần. Đề không nói thì được dùng lặp lại (ví dụ số $995$).\n\n##PP Chọn chữ số từng hàng\nĐọc kĩ điều kiện của đề: số chữ số, tổng hoặc tích các chữ số, chẵn hay lẻ, khác nhau hay không.\nChọn từng hàng từ hàng cao nhất xuống hàng đơn vị: tìm số lớn nhất thì mỗi hàng lấy chữ số lớn nhất có thể, tìm số nhỏ nhất thì mỗi hàng lấy chữ số bé nhất có thể, miễn là các hàng sau vẫn còn cách chọn để thỏa mãn đề.\nSố chẵn (lẻ) thì chữ số hàng đơn vị phải là chữ số chẵn (lẻ): luôn để dành một chữ số phù hợp cho hàng đơn vị.\nTính lại tổng (hoặc tích) các chữ số để kiểm tra có đúng đề không.\n\n##CY\nKhông đặt chữ số $0$ ở hàng cao nhất.\nKhi tìm số nhỏ nhất mà đề cho tổng các chữ số, các chữ số lớn phải đặt ở hàng thấp để tổng đủ."
+  },
+  {
+   "nhom_id": "NNB01709",
+   "ly_thuyet": "##TC Quy tắc nhân số cách chọn\nSố các số lập được bằng tích số cách chọn chữ số ở từng hàng.\nSố có ba chữ số có dạng $\\overline{abc}$ ($a$ khác $0$): chọn lần lượt hàng trăm, hàng chục, hàng đơn vị rồi nhân số cách chọn lại.\n\n##PP Đếm theo từng hàng\nGọi dạng của số cần đếm, ví dụ $\\overline{abc}$ với $a$ khác $0$.\nVới mỗi hàng, đếm xem có bao nhiêu cách chọn chữ số.\nNhân số cách chọn của các hàng với nhau.\n\n##CY\nĐề nói \"khác nhau\" thì chữ số đã chọn ở hàng trước không được chọn lại: số cách chọn các hàng sau giảm dần.\nCó chữ số $0$ thì hàng cao nhất không được chọn $0$.\nĐề cho số chẵn hoặc số lẻ thì chọn hàng đơn vị trước, rồi mới chọn các hàng còn lại."
+  },
+  {
+   "nhom_id": "NNB01711",
+   "ly_thuyet": "##TC Tính chất phân phối của phép nhân\nMột số nhân với một tổng: $A\\times\\left(B+C\\right)=A\\times B+A\\times C$.\nMột số nhân với một hiệu: $A\\times\\left(B-C\\right)=A\\times B-A\\times C$.\nDùng được theo cả hai chiều: tách một tích thành tổng (hiệu) các tích, hoặc gộp các tích có chung một thừa số thành một tích.\n\n##TC Nhân với 10, 100, 1000\nNhân một số với $10$; $100$; $1000$ thì viết thêm $1$; $2$; $3$ chữ số $0$ vào bên phải số đó.\nNhân với số tròn chục, tròn trăm: bỏ các chữ số $0$ ở cuối, nhân như bình thường rồi viết thêm các chữ số $0$ vào bên phải kết quả.\n\n##CY\nKhi tách một thừa số thành tổng hay hiệu, phải nhân thừa số còn lại với từng số hạng, không được bỏ sót số hạng nào."
+  }
+ ],
+ "dang": [
+  {
+   "id": "NDB01506",
+   "mo_ta": "Đề cho số chữ số của số cần viết và tổng các chữ số, hỏi số tự nhiên lớn nhất thỏa mãn (có thể kèm điều kiện các chữ số khác nhau). Dấu hiệu: đề nói rõ \"có N chữ số\" cùng với \"tổng các chữ số bằng S\". Khác dạng \"lớn nhất khi biết tổng chữ số\": dạng đó không cho số chữ số, phải tự tách tổng thành nhiều chữ số nhất; khác dạng \"nhỏ nhất khi biết tổng chữ số và số chữ số\": đề hỏi số nhỏ nhất.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên lớn nhất có năm chữ số, tổng các chữ số bằng $30$.\n**Hướng dẫn giải:**\nSố lớn nhất thì các chữ số ở hàng cao phải lớn nhất có thể. Ta chọn lần lượt từ trái sang phải, mỗi hàng lấy chữ số lớn nhất sao cho tổng không vượt quá $30$.\n\nBa hàng cao nhất (hàng chục nghìn, hàng nghìn, hàng trăm) đều chọn $9$. Tổng ba chữ số này là: $9+9+9=27$\n\nTổng hai chữ số còn lại (hàng chục và hàng đơn vị) là: $30-27=3$\n\nHàng chục chọn chữ số lớn nhất là $3$, khi đó hàng đơn vị là: $3-3=0$\n\nVậy số cần tìm là $99930$.\n\nĐáp số: $99930$",
+   "nguon_vd": "sach LT 1.7",
+   "ghi_chu": "Sách chỉ có đề LT 1.7b (không có lời giải); lời giải do tôi viết, đã thử lại: 9+9+9+3+0=30, thêm bất kỳ chữ số nào lớn hơn ở hàng thấp đều làm tổng vượt 30."
+  },
+  {
+   "id": "NDB01507",
+   "mo_ta": "Đề cho số chữ số của số cần viết và tích các chữ số, hỏi số tự nhiên lớn nhất thỏa mãn (thường kèm \"các chữ số khác nhau\"). Phải tách tích thành tích của đủ số chữ số rồi sắp xếp. Khác dạng \"lớn nhất khi biết tổng chữ số và số chữ số\": ở đây tách bằng phép nhân, không phải phép cộng.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên lớn nhất có hai chữ số, tích các chữ số bằng $24$.\n**Hướng dẫn giải:**\nMỗi chữ số không lớn hơn $9$ nên ta tách $24$ thành tích của hai chữ số, chỉ lấy những cách mà cả hai thừa số đều không quá $9$. Với mỗi cách, viết số lớn nhất rồi so sánh.\n\nTa có: $24=3\\times 8=4\\times 6$ (không lấy $24=1\\times 24$ và $24=2\\times 12$ vì có thừa số lớn hơn $9$).\n\nVới hai chữ số $3$ và $8$, số lớn nhất là $83$.\n\nVới hai chữ số $4$ và $6$, số lớn nhất là $64$.\n\nVì $83>64$ nên số cần tìm là $83$.\n\nĐáp số: $83$",
+   "nguon_vd": "sach LT 1.5",
+   "ghi_chu": "Sách chỉ có đề LT 1.5b; lời giải do tôi viết. Dạng 3 chữ số khác nhau tích 24 đã có sẵn ở lý thuyết của dạng (ví dụ của hệ thống)."
+  },
+  {
+   "id": "NDB01508",
+   "mo_ta": "Đề chỉ cho tổng các chữ số (và nói các chữ số khác nhau), hỏi số tự nhiên lớn nhất; không cho số chữ số, nên phải tự tách tổng thành nhiều chữ số khác nhau nhất có thể. Khác dạng \"lớn nhất khi biết tổng chữ số và số chữ số\": ở dạng đó số chữ số đã cho sẵn.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên lớn nhất có các chữ số khác nhau mà tổng các chữ số của số đó là $19$.\n**Hướng dẫn giải:**\nSố tự nhiên lớn nhất khi nó có nhiều chữ số nhất, và chữ số lớn đứng ở hàng cao nhất. Muốn nhiều chữ số thì phải chọn các chữ số nhỏ trước.\n\nViết $19$ thành tổng nhiều chữ số nhất nên các chữ số cần chọn càng nhỏ càng tốt. Do các chữ số khác nhau nên ta lần lượt chọn: $0$; $1$; $2$; ...\n\nTổng $0+1+2+3+4=10$, còn thiếu $19-10=9$ nên chữ số cuối cùng là $9$. Ta có: $19=0+1+2+3+4+9$\n\nSắp xếp các chữ số theo thứ tự từ lớn đến bé để được số cần tìm là $943210$.\n\nĐáp số: $943210$",
+   "nguon_vd": "sach VD 1.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01509",
+   "mo_ta": "Đề chỉ cho số chữ số của số cần viết (không cho tổng hay tích các chữ số), hỏi số lớn nhất hoặc nhỏ nhất, thường kèm điều kiện chẵn, lẻ, tròn chục, các chữ số khác nhau hoặc một hàng cho trước. Nếu đề có thêm tổng hoặc tích các chữ số thì thuộc các dạng \"biết tổng/tích chữ số\".",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên chẵn, nhỏ nhất, có năm chữ số khác nhau, biết chữ số hàng nghìn là $2$.\n**Hướng dẫn giải:**\nSố nhỏ nhất thì chọn từ trái sang phải, mỗi hàng lấy chữ số bé nhất có thể (hàng cao nhất không được là $0$). Số chẵn nên hàng đơn vị phải là chữ số chẵn.\n\nHàng chục nghìn bé nhất (khác $0$) là $1$. Hàng nghìn đề đã cho là $2$.\n\nHàng trăm bé nhất chưa dùng là $0$.\n\nHàng chục bé nhất chưa dùng là $3$ (vì $0$; $1$; $2$ đã dùng).\n\nSố chẵn nên hàng đơn vị là chữ số chẵn bé nhất chưa dùng, đó là $4$ (vì $0$ và $2$ đã dùng).\n\nVậy số cần tìm là $12034$.\n\nĐáp số: $12034$",
+   "nguon_vd": "sach LT 1.3",
+   "ghi_chu": "Sách chỉ có đề LT 1.3d; lời giải do tôi viết."
+  },
+  {
+   "id": "NDB01510",
+   "mo_ta": "Đề cho số chữ số và tổng các chữ số, hỏi số tự nhiên nhỏ nhất thỏa mãn (có thể kèm điều kiện khác nhau). Khác dạng \"lớn nhất khi biết tổng chữ số và số chữ số\": đề hỏi số nhỏ nhất nên hàng cao chọn chữ số bé, chữ số lớn dồn xuống hàng thấp; khác dạng \"nhỏ nhất khi biết tổng các chữ số\": ở dạng đó không cho số chữ số.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên nhỏ nhất có bốn chữ số, tổng các chữ số bằng $15$.\n**Hướng dẫn giải:**\nSố nhỏ nhất thì các chữ số ở hàng cao phải bé nhất có thể, còn chữ số lớn đặt ở hàng thấp. Hàng nghìn không được là $0$.\n\nHàng nghìn bé nhất là $1$. Tổng ba chữ số còn lại là: $15-1=14$\n\nHai hàng chục và đơn vị nhiều nhất cộng được $9+9=18$, lớn hơn $14$ nên hàng trăm chọn được chữ số bé nhất là $0$.\n\nHàng chục và hàng đơn vị có tổng là $14$. Hàng đơn vị lớn nhất là $9$ nên hàng chục là: $14-9=5$\n\nVậy số cần tìm là $1059$.\n\nĐáp số: $1059$",
+   "nguon_vd": "sach LT 1.6",
+   "ghi_chu": "Sách chỉ có đề LT 1.6b; lời giải do tôi viết, đã thử lại: 1+0+5+9=15, hàng chục nhỏ hơn 5 thì hàng đơn vị phải lớn hơn 9."
+  },
+  {
+   "id": "NDB01511",
+   "mo_ta": "Đề chỉ cho tổng các chữ số (có thể thêm \"các chữ số khác nhau\"), hỏi số tự nhiên nhỏ nhất; không cho số chữ số nên phải tự tách tổng thành ít chữ số nhất. Khác dạng \"nhỏ nhất khi biết tổng chữ số và số chữ số\": ở đó số chữ số đã cho sẵn.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nViết số tự nhiên nhỏ nhất có tổng các chữ số là $19$.\n**Hướng dẫn giải:**\nSố tự nhiên nhỏ nhất khi nó có ít chữ số nhất, và chữ số nhỏ đứng ở hàng cao nhất. Muốn ít chữ số thì phải chọn các chữ số lớn trước.\n\nViết $19$ thành tổng ít chữ số nhất nên các chữ số cần chọn càng lớn càng tốt. Do các chữ số không bị ràng buộc nên ta chọn: $9$; $9$; ...\n\nTa có: $19=9+9+1$\n\nSắp xếp các chữ số theo thứ tự từ nhỏ đến lớn để được số cần tìm là $199$.\n\nĐáp số: $199$",
+   "nguon_vd": "sach VD 1.3",
+   "ghi_chu": "Sách VD 1.2 (nhỏ nhất, các chữ số khác nhau, tổng 19 → 289) cũng thuộc dạng này; đã kiểm 2 chữ số tối đa 17 và 18 nên cần 3 chữ số."
+  },
+  {
+   "id": "NDB01512",
+   "mo_ta": "Đề cho sẵn một nhóm chữ số (ví dụ $0$; $2$; $5$; $9$; $6$; $8$) và yêu cầu dùng các chữ số đó viết số lớn nhất hoặc nhỏ nhất, thường kèm số chữ số, chẵn hay lẻ, các chữ số khác nhau. Chỉ được dùng chữ số trong nhóm đề cho. Khác dạng \"khi biết số chữ số\": ở dạng đó đề không cho sẵn nhóm chữ số.",
+   "ly_thuyet": "##PP\nĐọc kĩ đề: cần số lớn nhất hay nhỏ nhất, có mấy chữ số, chẵn hay lẻ, các chữ số có khác nhau không.\nSố lớn nhất: chọn lần lượt từ hàng cao nhất, mỗi hàng lấy chữ số lớn nhất chưa dùng.\nSố nhỏ nhất: chọn lần lượt từ hàng cao nhất, mỗi hàng lấy chữ số bé nhất chưa dùng, nhưng hàng cao nhất không được là $0$.\nĐề cho số chẵn (lẻ) thì khi chọn các hàng trên phải để lại ít nhất một chữ số chẵn (lẻ) cho hàng đơn vị, rồi chọn hàng đơn vị là chữ số thỏa mãn lớn nhất (bé nhất) còn lại.\n\n##CY\nChỉ được dùng các chữ số đề cho, mỗi chữ số dùng bao nhiêu lần theo đề (khác nhau thì dùng một lần).\nSố nhỏ nhất không được bắt đầu bằng $0$.",
+   "vi_du": "##VD\nTừ các chữ số $0$; $2$; $5$; $9$; $6$; $8$, viết số tự nhiên chẵn, lớn nhất, có ba chữ số khác nhau.\n**Hướng dẫn giải:**\nSố lớn nhất thì hàng cao phải là các chữ số lớn nhất có thể. Số chẵn nên hàng đơn vị phải là chữ số chẵn, ta luôn để lại một chữ số chẵn cho hàng đơn vị.\n\nCác chữ số chẵn trong nhóm là $0$; $2$; $6$; $8$.\n\nHàng trăm lớn nhất là $9$.\n\nHàng chục lớn nhất trong các chữ số còn lại là $8$ (vẫn còn các chữ số chẵn $0$; $2$; $6$ cho hàng đơn vị).\n\nSố chẵn nên hàng đơn vị là chữ số chẵn lớn nhất còn lại, đó là $6$.\n\nVậy số cần tìm là $986$.\n\nĐáp số: $986$",
+   "nguon_vd": "sach LT 1.4",
+   "ghi_chu": "Sách (LT 1.13 đến 1.15) còn có bài \"xóa bớt chữ số của một dãy số, giữ nguyên thứ tự\" để được số lớn nhất hoặc nhỏ nhất; theo k4T §5 mã cũ 010107 gộp cả hai kiểu, nhưng đề không cho nhóm chữ số mà cho dãy chữ số viết liền. Tôi KHÔNG đưa kiểu xóa chữ số vào mô tả/lý thuyết; CEO xác nhận có gộp vào dạng này không hay tách dạng riêng. Ví dụ LT 1.4a (đề sách), lời giải tôi viết."
+  },
+  {
+   "id": "NDB01513",
+   "mo_ta": "Đề cho vài chữ số đều khác $0$ và hỏi viết được bao nhiêu số tự nhiên có số chữ số cho trước (có thể \"khác nhau\" hoặc cho lặp lại), không thêm điều kiện chẵn, lẻ. Chỉ việc nhân số cách chọn của từng hàng. Khác dạng \"có chữ số 0\": ở đó nhóm chữ số có $0$ nên hàng cao nhất bớt một cách chọn; khác dạng \"có điều kiện\": không có điều kiện chẵn, lẻ, lớn hơn, nhỏ hơn.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTừ ba chữ số $2$; $3$; $5$, viết được bao nhiêu số tự nhiên có ba chữ số?\n**Hướng dẫn giải:**\nĐề không nói \"khác nhau\" nên mỗi hàng đều được chọn lại cả ba chữ số. Ta đếm số cách chọn ở từng hàng rồi nhân lại.\n\nGọi số có ba chữ số có dạng $\\overline{abc}$ ($a$ khác $0$; $a$, $b$, $c$ nhỏ hơn $10$).\n\nBa chữ số $2$; $3$; $5$ đều khác $0$. Chữ số hàng trăm ($a$), hàng chục ($b$) và hàng đơn vị ($c$) mỗi chữ số đều có $3$ cách chọn.\n\nTừ đó viết được số các số có ba chữ số là: $3\\times 3\\times 3=27$ (số)\n\nĐáp số: $27$ số",
+   "nguon_vd": "sach VD 2.1",
+   "ghi_chu": "Lấy ý a) của VD 2.1; ý b) (khác nhau, 3×2×1=6) cùng dạng, bỏ qua để giữ đúng 1 ví dụ."
+  },
+  {
+   "id": "NDB01514",
+   "mo_ta": "Đề cho một nhóm chữ số có chữ số $0$ và hỏi viết được bao nhiêu số (thường các chữ số khác nhau), không thêm điều kiện chẵn, lẻ. Dấu hiệu: nhóm chữ số có $0$ nên hàng cao nhất không được chọn $0$. Khác dạng \"các chữ số khác $0$\": ở đó mọi hàng cùng số cách chọn; khác dạng \"có điều kiện\": không có điều kiện chẵn, lẻ.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTừ các chữ số $0$; $1$; $2$; $3$, lập được tất cả bao nhiêu số tự nhiên có bốn chữ số khác nhau?\n**Hướng dẫn giải:**\nChữ số $0$ không được đứng ở hàng nghìn nên hàng nghìn có ít cách chọn hơn. Ta đếm số cách chọn từng hàng, bắt đầu từ hàng nghìn, rồi nhân lại.\n\nGọi số có bốn chữ số có dạng $\\overline{abcd}$ ($a$ khác $0$).\n\nHàng nghìn không được là $0$ nên có $3$ cách chọn ($1$; $2$; $3$).\n\nHàng trăm: đã dùng một chữ số ở hàng nghìn, còn $3$ chữ số (kể cả $0$) nên có $3$ cách chọn.\n\nHàng chục: còn $2$ cách chọn.\n\nHàng đơn vị: còn $1$ cách chọn.\n\nSố các số lập được là: $3\\times 3\\times 2\\times 1=18$ (số)\n\nĐáp số: $18$ số",
+   "nguon_vd": "sach PTL 1.2",
+   "ghi_chu": "Ý a) của bài 2 Phiếu tự luyện 1; lời giải tôi viết, đã kiểm 4×3×2×1 - 3×2×1 = 24 - 6 = 18."
+  },
+  {
+   "id": "NDB01515",
+   "mo_ta": "Đề cho một nhóm chữ số (thường có $0$) và hỏi lập được bao nhiêu số chẵn (hoặc lẻ, hoặc thỏa một điều kiện thêm) có số chữ số cho trước. Dấu hiệu: ngoài \"bao nhiêu số\" còn có điều kiện chẵn, lẻ nên phải chọn hàng đơn vị trước hoặc tách trường hợp. Khác hai dạng đếm còn lại cùng nhóm: ở đó không có điều kiện chẵn, lẻ.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTừ các chữ số $0$; $1$; $2$; $3$, lập được bao nhiêu số lẻ có bốn chữ số khác nhau?\n**Hướng dẫn giải:**\nSố lẻ nên hàng đơn vị phải là chữ số lẻ, ta chọn hàng đơn vị trước. Sau đó chọn hàng nghìn (không được là $0$), rồi các hàng còn lại, và nhân số cách chọn lại.\n\nGọi số lẻ có bốn chữ số khác nhau có dạng $\\overline{abcd}$ ($a$ khác $0$; $d$ là chữ số lẻ).\n\nHàng đơn vị là $1$ hoặc $3$ nên có $2$ cách chọn.\n\nHàng nghìn: không được là $0$ và khác chữ số hàng đơn vị nên còn $2$ cách chọn.\n\nHàng trăm: còn $2$ cách chọn (được chọn $0$).\n\nHàng chục: còn $1$ cách chọn.\n\nSố các số lẻ lập được là: $2\\times 2\\times 2\\times 1=8$ (số)\n\nĐáp số: $8$ số",
+   "nguon_vd": "sach PTL 1.2",
+   "ghi_chu": "Ý b) của bài 2 Phiếu tự luyện 1; đã liệt kê kiểm: tận cùng 1 có 4 số, tận cùng 3 có 4 số, tổng 8."
+  },
+  {
+   "id": "NDB01516",
+   "mo_ta": "Đề cho số đo khối lượng viết bằng một hoặc hai đơn vị (tấn, tạ, yến, ki-lô-gam, héc-tô-gam, đề-ca-gam, gam) và yêu cầu đổi sang một đơn vị khác, thường dạng \"điền số thích hợp vào chỗ trống\". Chỉ đổi đơn vị khối lượng; đổi đơn vị độ dài, diện tích, thời gian không thuộc dạng này.",
+   "ly_thuyet": "##TC Bảng đơn vị đo khối lượng\nHai đơn vị liền nhau hơn kém nhau $10$ lần: tấn, tạ, yến, ki-lô-gam (kg), héc-tô-gam (hg), đề-ca-gam (dag), gam (g).\n$1$ tấn $=10$ tạ $=1000$ kg; $1$ tạ $=10$ yến $=100$ kg; $1$ yến $=10$ kg.\n$1$ kg $=10$ hg $=100$ dag $=1000$ g; $1$ hg $=10$ dag $=100$ g; $1$ dag $=10$ g.\n\n##PP\nĐổi từ đơn vị lớn sang đơn vị bé: nhân với $10$; $100$; $1000$ tùy số bậc cách nhau.\nĐổi từ đơn vị bé sang đơn vị lớn: chia cho $10$; $100$; $1000$.\nSố đo có hai tên đơn vị: đổi từng phần ra đơn vị cần tìm rồi cộng lại.\n\n##CY\nĐừng bỏ sót đơn vị yến nằm giữa tạ và ki-lô-gam.\nPhải đổi từng phần về cùng một đơn vị trước khi cộng.",
+   "vi_du": "##VD\nĐiền số thích hợp vào chỗ trống: a) $1$ kg $6$ hg $=\\ldots$ dag; b) $4$ tấn $2$ tạ $=\\ldots$ kg.\n**Hướng dẫn giải:**\nSố đo có hai đơn vị thì ta đổi từng phần ra đơn vị cần tìm rồi cộng lại. Nhớ: $1$ kg $=100$ dag, $1$ hg $=10$ dag; $1$ tấn $=1000$ kg, $1$ tạ $=100$ kg.\n\na) $1$ kg $6$ hg $=100$ dag $+60$ dag $=160$ dag\n\nb) $4$ tấn $2$ tạ $=4000$ kg $+200$ kg $=4200$ kg\n\nĐáp số: a) $160$ dag; b) $4200$ kg",
+   "nguon_vd": "sach VD 3.1",
+   "ghi_chu": "Chỉ lấy 2 ý khối lượng của VD 3.1 (các ý độ dài, diện tích, thời gian bỏ). Kiểm: 1 hg = 10 dag nên 6 hg = 60 dag."
+  },
+  {
+   "id": "NDB01517",
+   "mo_ta": "Đề yêu cầu tính tích hai số nhiều chữ số \"theo cách tách số\", tức là tách một thừa số thành tổng (hoặc hiệu) các số tròn chục, tròn trăm rồi nhân từng phần và cộng (trừ) lại. Khác dạng \"đặt tính\": ở đây không đặt tính cột dọc mà viết các bước nhân từng phần; khác dạng \"tính thuận tiện\": ở đó đề đã cho sẵn tổng hoặc hiệu các tích có chung một thừa số cần gộp lại.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính theo cách tách số: $23\\times 46$.\n**Hướng dẫn giải:**\nTa tách thừa số $46$ thành tổng của số chục và số đơn vị: $46=40+6$. Sau đó nhân $23$ với từng số hạng rồi cộng lại.\n\n$23\\times 46=23\\times\\left(40+6\\right)$\n\n$=23\\times 40+23\\times 6$\n\n$=920+138$\n\n$=1058$\n\nĐáp số: $1058$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách 4T không có ví dụ tách số; tự dựng theo khuôn của các câu đã gán. Đã kiểm 23×46 = 920 + 138 = 1058."
+  },
+  {
+   "id": "NDB01518",
+   "mo_ta": "Đề yêu cầu \"đặt tính rồi tính\" phép nhân có thừa số hai, ba chữ số (thừa số kia cũng nhiều chữ số), phải nhân từng chữ số rồi cộng các tích riêng. Khác dạng \"tách số\": ở đây làm theo cột dọc, không tách thừa số thành tổng.",
+   "ly_thuyet": "##PP\nViết hai thừa số thẳng cột theo hàng đơn vị, thừa số có nhiều chữ số hơn viết ở trên.\nNhân thừa số trên với chữ số hàng đơn vị của thừa số dưới, được tích riêng thứ nhất (viết thẳng cột hàng đơn vị).\nNhân thừa số trên với chữ số hàng chục của thừa số dưới, được tích riêng thứ hai viết lùi sang trái một cột. Với chữ số hàng trăm thì tích riêng viết lùi sang trái hai cột.\nCộng các tích riêng với nhau được tích cần tìm.\n\n##CY\nTích riêng thứ hai phải lùi sang trái một cột; nếu để thẳng cột như phép cộng thì kết quả sai.\nNhớ cộng thêm số \"nhớ\" khi nhân từng chữ số.\nThử lại: kết quả phải có số chữ số hợp lí (ví dụ $142\\times 23$ nằm khoảng $140\\times 20=2800$ đến $150\\times 30=4500$).",
+   "vi_du": "##VD\nĐặt tính rồi tính: $142\\times 23$.\n**Hướng dẫn giải:**\nTa nhân $142$ lần lượt với chữ số hàng đơn vị rồi chữ số hàng chục của $23$. Tích riêng thứ hai (nhân với hàng chục) viết lùi sang trái một cột, sau đó cộng hai tích riêng.\n\nTích riêng thứ nhất: $142\\times 3=426$\n\nTích riêng thứ hai (nhân với $2$ chục, viết lùi sang trái một cột): $142\\times 20=2840$\n\nCộng các tích riêng: $426+2840=3266$\n\nVậy $142\\times 23=3266$.\n\nĐáp số: $3266$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách không có ví dụ đặt tính nhân; tự dựng. Đã kiểm 142×23: 142×3=426, 142×20=2840, tổng 3266. Cột dọc để máy/giáo viên vẽ sau, ở đây chỉ ghi từng tích riêng."
+  },
+  {
+   "id": "NDB01519",
+   "mo_ta": "Đề cho tổng hoặc hiệu các tích có chung một thừa số (có thể còn một số hạng riêng bằng chính thừa số đó, ví dụ cộng thêm $25$) và yêu cầu \"tính thuận tiện\" hoặc \"tính nhanh\". Dấu hiệu: cùng một số xuất hiện ở mọi tích. Khác dạng \"tách số\": ở đây gộp các tích lại thành một tích, không tách thừa số.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính thuận tiện: $36\\times 78-36\\times 28$.\n**Hướng dẫn giải:**\nHai tích đều có thừa số chung là $36$. Ta dùng tính chất một số nhân với một hiệu để gộp lại: hiệu $78-28$ được số tròn chục, dễ nhân.\n\n$36\\times 78-36\\times 28=36\\times\\left(78-28\\right)$\n\n$=36\\times 50$\n\n$=1800$\n\nĐáp số: $1800$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách 4T không có ví dụ phân phối nhân; tự dựng. Kiểm: 36×78=2808, 36×28=1008, hiệu 1800."
+  },
+  {
+   "id": "NDB01520",
+   "mo_ta": "Đề cho phép chia (chia hết hoặc có dư) mà số chia có hai chữ số, yêu cầu \"tính\" hoặc \"đặt tính rồi tính\". Dấu hiệu: phải ước lượng thương từng lần, thử bằng phép nhân. Khác phép chia cho số có một chữ số: ở đây số chia có hai chữ số nên phải nhẩm thử và chỉnh lại thương.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nĐặt tính rồi tính: $832:26$.\n**Hướng dẫn giải:**\nTa chia lần lượt từ trái sang phải. Mỗi lần ước lượng thương rồi nhân thử với số chia; nếu tích lớn hơn số bị chia thì giảm thương đi $1$.\n\nLấy $83$ chia cho $26$: ước lượng $8:2=4$, nhưng $26\\times 4=104$ lớn hơn $83$ nên chọn $3$. Ta có $26\\times 3=78$ và $83-78=5$.\n\nHạ $2$ xuống được $52$. Ta có $52:26=2$, $26\\times 2=52$ và $52-52=0$.\n\nVậy $832:26=32$.\n\nĐáp số: $32$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách 4T không có ví dụ chia số có 2 chữ số; tự dựng. Kiểm: 26×32 = 780 + 52 = 832, chia hết."
+  },
+  {
+   "id": "NDB01521",
+   "mo_ta": "Đề nói hai số (hoặc các số hạng) của một phép cộng bị thay đổi (thêm vào, bớt đi, gấp lên) rồi hỏi tổng ban đầu, tổng mới hoặc các số hạng. Chỉ xét thành phần của phép cộng; thay đổi thành phần của phép trừ, nhân, chia không thuộc dạng này.",
+   "ly_thuyet": "##TC Tổng thay đổi thế nào\nThêm vào một số hạng $a$ đơn vị, số hạng kia giữ nguyên thì tổng tăng $a$ đơn vị.\nBớt đi ở một số hạng $a$ đơn vị, số hạng kia giữ nguyên thì tổng giảm $a$ đơn vị.\nThêm $a$ đơn vị vào số hạng này và thêm $b$ đơn vị vào số hạng kia thì tổng tăng $a+b$ đơn vị.\nThêm $a$ đơn vị vào số hạng này và bớt $b$ đơn vị ở số hạng kia thì tổng tăng $a-b$ đơn vị (nếu $a$ lớn hơn $b$), giảm $b-a$ đơn vị (nếu $a$ bé hơn $b$).\nGấp một số hạng lên $k$ lần, số hạng kia giữ nguyên thì tổng tăng thêm $k-1$ lần số hạng đó.\n\n##PP\nXác định số hạng nào thay đổi và thay đổi thế nào (thêm, bớt hay gấp lên).\nNêu quy luật: tổng thay đổi bao nhiêu đơn vị.\nTổng mới $=$ tổng ban đầu $+$ phần tăng (hoặc $-$ phần giảm). Đề cho tổng mới thì làm phép ngược để tìm tổng ban đầu.\n\n##CY\nĐề cho tổng mới, hỏi tổng ban đầu thì phải làm phép tính ngược (thêm vào thì trừ đi, bớt đi thì cộng lại).\nĐề \"gấp lên $k$ lần\" thì phần tăng là $k-1$ lần số hạng đó, không phải $k$ lần.",
+   "vi_du": "##VD\nTìm tổng của hai số, biết rằng nếu thêm $21$ đơn vị vào số hạng thứ nhất và giữ nguyên số hạng thứ hai thì được tổng mới bằng $305$.\n**Hướng dẫn giải:**\nThêm vào một số hạng bao nhiêu đơn vị thì tổng tăng lên bấy nhiêu đơn vị. Vậy tổng ban đầu bé hơn tổng mới $21$ đơn vị.\n\nKhi thêm $21$ đơn vị vào số hạng thứ nhất và giữ nguyên số hạng thứ hai thì tổng tăng thêm $21$ đơn vị.\n\nTổng ban đầu là: $305-21=284$\n\nĐáp số: $284$",
+   "nguon_vd": "sach VD 4.3",
+   "ghi_chu": "Chép đúng VD 4.3; bài LT 4.10 đến 4.11 (thêm và bớt hai số hạng) và LT 4.16 đến 4.17 (gấp lên) cũng thuộc dạng này, đã đưa vào lý thuyết. Nhóm bản đồ chỉ có dạng \"phép cộng\" nên VD 4.4 (thêm vào số trừ) thuộc dạng khác chưa có."
+  },
+  {
+   "id": "NDB01522",
+   "mo_ta": "Đề cho các kích thước của hình vuông, hình chữ nhật và hỏi chu vi (hoặc cho chu vi, hỏi cạnh, chiều dài, chiều rộng), dùng thẳng công thức. Khác bài chu vi giải bằng tổng–hiệu: nếu đề cho chu vi cùng hiệu giữa chiều dài và chiều rộng (\"dài hơn rộng ... cm\", \"tăng rộng thêm ... thành hình vuông\") thì giải bằng nửa chu vi và tổng–hiệu, không thuộc dạng này; tính diện tích cũng chưa thuộc dạng này.",
+   "ly_thuyet": "##TC Chu vi hình vuông\nChu vi hình vuông $=$ cạnh $\\times 4$.\n\n##TC Chu vi hình chữ nhật\nChu vi hình chữ nhật $=$ (chiều dài $+$ chiều rộng) $\\times 2$.\nNửa chu vi $=$ chiều dài $+$ chiều rộng.\n\n##PP\nXác định hình (vuông hay chữ nhật) và các kích thước đề đã cho.\nTìm kích thước còn thiếu (nếu có), đổi về cùng đơn vị đo.\nDùng công thức chu vi, ghi đơn vị độ dài (cm, dm, m).\nĐề cho chu vi, hỏi cạnh: cạnh hình vuông $=$ chu vi $:4$; chiều dài (rộng) $=$ nửa chu vi $-$ chiều rộng (dài).\n\n##CY\nChu vi đo bằng đơn vị độ dài (cm, m), diện tích đo bằng đơn vị diện tích ($cm^2$, $m^2$).\nHai hình có chu vi bằng nhau thì nửa chu vi cũng bằng nhau.",
+   "vi_du": "##VD\nMột mảnh vườn hình chữ nhật có chiều rộng $25$ m, chiều dài gấp đôi chiều rộng. Hỏi muốn rào xung quanh mảnh vườn thì cần hàng rào dài bao nhiêu mét?\n**Hướng dẫn giải:**\nHàng rào xung quanh mảnh vườn chính là chu vi hình chữ nhật. Ta cần tìm chiều dài trước, rồi áp dụng công thức chu vi.\n\nChiều dài mảnh vườn là: $25\\times 2=50$ (m)\n\nChu vi mảnh vườn (độ dài hàng rào) là: $\\left(50+25\\right)\\times 2=150$ (m)\n\nĐáp số: $150$ m",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách chương 5 không có Ví dụ (chỉ có Luyện tập), tự dựng dựa theo đề Phiếu tự luyện 1 bài 4 (rộng 25 m, dài gấp đôi). Ranh giới với tổng–hiệu và diện tích theo k4T §5 (CEO 07/10)."
+  }
+ ]
+}

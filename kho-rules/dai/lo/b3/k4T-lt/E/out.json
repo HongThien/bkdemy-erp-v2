@@ -1,0 +1,118 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01728",
+   "ly_thuyet": "##TC Quy đồng phân số\nQuy đồng hai phân số là biến đổi chúng thành hai phân số mới bằng chúng và có cùng mẫu số (quy đồng mẫu số) hoặc cùng tử số (quy đồng tử số).\n\n##TC Tính chất cơ bản của phân số\nNhân cả tử số và mẫu số của một phân số với cùng một số tự nhiên khác $0$ thì được một phân số bằng phân số đã cho.\n\n##CY\nPhải nhân CẢ tử số LẪN mẫu số với cùng một số. Chỉ nhân mẫu số thì giá trị phân số bị đổi.\nGhi rõ phép nhân cả tử lẫn mẫu, đừng viết tắt."
+  },
+  {
+   "nhom_id": "NNB01729",
+   "ly_thuyet": "##TC Rút gọn phân số\nRút gọn phân số là chia cả tử số và mẫu số cho cùng một số tự nhiên lớn hơn $1$ để được một phân số bằng phân số đã cho.\n\n##TC Phân số tối giản\nPhân số mà tử số và mẫu số không cùng chia hết cho số tự nhiên nào lớn hơn $1$ gọi là phân số tối giản. Rút gọn cho đến khi được phân số tối giản.\n\n##CY\nPhải chia CẢ tử số LẪN mẫu số cho cùng một số.\nDùng dấu hiệu chia hết cho $2$, $3$, $5$, $9$ để tìm số chia nhanh."
+  },
+  {
+   "nhom_id": "NNB01730",
+   "ly_thuyet": "##TC So sánh hai phân số có cùng mẫu số hoặc cùng tử số\nHai phân số cùng mẫu số: phân số nào có tử số lớn hơn thì lớn hơn.\nHai phân số cùng tử số: phân số nào có mẫu số bé hơn thì lớn hơn.\n\n##PP Đưa về trường hợp cùng mẫu hoặc cùng tử\nQuy đồng mẫu số (hoặc quy đồng tử số) hai phân số.\nSo sánh hai phân số vừa quy đồng theo quy tắc trên.\nKết luận về hai phân số ban đầu bằng câu \"Vì … nên …\".\n\n##CY\nCùng mẫu thì so tử, nhưng cùng tử thì mẫu lớn hơn lại cho phân số BÉ hơn."
+  },
+  {
+   "nhom_id": "NNB01731",
+   "ly_thuyet": "##TC So sánh phân số với $1$\nPhân số có tử số bé hơn mẫu số thì bé hơn $1$; tử số lớn hơn mẫu số thì lớn hơn $1$; tử số bằng mẫu số thì bằng $1$.\nPhân số lớn hơn $1$ thì lớn hơn mọi phân số bé hơn $1$.\n\n##TC Phần bù và phần hơn\nVới phân số bé hơn $1$: phần bù là $1-$ phân số đó. Phần bù lớn hơn thì phân số bé hơn.\nVới phân số lớn hơn $1$: phần hơn là phân số đó $-\\,1$. Phần hơn lớn hơn thì phân số lớn hơn.\n\n##TC Phân số trung gian\nMuốn so sánh $\\dfrac{a}{b}$ và $\\dfrac{c}{d}$, ta chọn phân số trung gian $\\dfrac{a}{d}$ (hoặc $\\dfrac{c}{b}$) rồi so sánh từng phân số với nó. Nếu $\\dfrac{a}{b}$ bé hơn phân số trung gian và phân số trung gian bé hơn $\\dfrac{c}{d}$ thì $\\dfrac{a}{b}$ bé hơn $\\dfrac{c}{d}$.\n\n##CY\nChỉ dùng phần bù (phần hơn) khi hai phân số cùng bé hơn $1$ (cùng lớn hơn $1$). Hai phân số nằm hai phía của $1$ thì so với $1$ là xong."
+  }
+ ],
+ "dang": [
+  {
+   "id": "NDB01552",
+   "mo_ta": "Đề cho hai phân số khác mẫu số và yêu cầu quy đồng mẫu số hai phân số đó (viết thành hai phân số bằng chúng và có cùng mẫu số), không hỏi phân số nào lớn hơn. Khác dạng \"So sánh phân số bằng quy đồng mẫu số\": dạng này chỉ dừng ở việc đưa về cùng mẫu, không có bước kết luận so sánh. Khác dạng \"Quy đồng mẫu số nhiều phân số\": ở đây chỉ có đúng hai phân số.",
+   "ly_thuyet": "##PP\nChọn mẫu số chung: một số cùng chia hết cho hai mẫu số (cách chắc chắn nhất là lấy tích hai mẫu số, nhưng nên chọn số nhỏ hơn nếu thấy ngay).\nLấy mẫu số chung chia cho từng mẫu số cũ để biết cần nhân với số nào.\nNhân cả tử số và mẫu số của mỗi phân số với số đó.\nViết kết luận hai phân số mới có cùng mẫu số.\n\n##CY\nNếu một mẫu số chia hết cho mẫu số kia thì chỉ cần quy đồng một phân số, giữ nguyên phân số còn lại.",
+   "vi_du": "##VD\nQuy đồng mẫu số hai phân số $\\dfrac{3}{4}$ và $\\dfrac{5}{6}$.\n**Hướng dẫn giải:**\nHai mẫu số $4$ và $6$ cùng chia hết cho $12$ nên chọn $12$ làm mẫu số chung. Lấy $12:4=3$ và $12:6=2$ để biết nhân tử số và mẫu số với số nào.\n\nTa có: $\\dfrac{3}{4}=\\dfrac{3\\times 3}{4\\times 3}=\\dfrac{9}{12}$\n\n$\\dfrac{5}{6}=\\dfrac{5\\times 2}{6\\times 2}=\\dfrac{10}{12}$\n\nVậy quy đồng mẫu số hai phân số $\\dfrac{3}{4}$ và $\\dfrac{5}{6}$ ta được hai phân số $\\dfrac{9}{12}$ và $\\dfrac{10}{12}$.\n\nĐáp số: $\\dfrac{9}{12}$ và $\\dfrac{10}{12}$",
+   "nguon_vd": "sach VD 16.3",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01553",
+   "mo_ta": "Đề cho hai phân số khác tử số và yêu cầu quy đồng tử số hai phân số đó (viết thành hai phân số bằng chúng và có cùng tử số), không hỏi phân số nào lớn hơn. Khác dạng \"So sánh phân số bằng quy đồng tử số\": dạng này chỉ dừng ở việc đưa về cùng tử số, không có bước kết luận so sánh. Khác dạng quy đồng mẫu số: chọn TỬ số chung rồi nhân cả tử lẫn mẫu.",
+   "ly_thuyet": "##PP\nChọn tử số chung: một số cùng chia hết cho hai tử số (thường lấy tích hai tử số hoặc số nhỏ hơn nếu thấy ngay).\nLấy tử số chung chia cho từng tử số cũ để biết cần nhân với số nào.\nNhân cả tử số và mẫu số của mỗi phân số với số đó.\nViết kết luận hai phân số mới có cùng tử số.\n\n##CY\nQuy đồng tử số làm giống quy đồng mẫu số, chỉ khác là nhìn vào tử số để chọn số cần nhân. Vẫn phải nhân cả tử lẫn mẫu.",
+   "vi_du": "##VD\nQuy đồng tử số hai phân số $\\dfrac{4}{5}$ và $\\dfrac{6}{7}$.\n**Hướng dẫn giải:**\nSố $12$ chia hết cho cả hai tử số $4$ và $6$ nên chọn $12$ làm tử số chung. Lấy $12:4=3$ và $12:6=2$ để biết nhân tử số và mẫu số với số nào.\n\nTa có: $\\dfrac{4}{5}=\\dfrac{4\\times 3}{5\\times 3}=\\dfrac{12}{15}$\n\n$\\dfrac{6}{7}=\\dfrac{6\\times 2}{7\\times 2}=\\dfrac{12}{14}$\n\nVậy quy đồng tử số hai phân số $\\dfrac{4}{5}$ và $\\dfrac{6}{7}$ ta được hai phân số $\\dfrac{12}{15}$ và $\\dfrac{12}{14}$.\n\nĐáp số: $\\dfrac{12}{15}$ và $\\dfrac{12}{14}$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách (CĐ16) không có ví dụ quy đồng TỬ số thuần túy (chỉ có ở CĐ17 kèm so sánh), nên dựng mô phỏng theo khuôn VD 16.3."
+  },
+  {
+   "id": "NDB01554",
+   "mo_ta": "Đề cho từ ba phân số trở lên (có thể kèm số tự nhiên) và yêu cầu quy đồng mẫu số tất cả về cùng một mẫu số. Khác dạng \"Quy đồng mẫu số 2 phân số\": phải tìm một mẫu số chung cho cả ba mẫu số trở lên.",
+   "ly_thuyet": "##PP\nChọn mẫu số chung: một số cùng chia hết cho TẤT CẢ các mẫu số (nếu một mẫu số đã chia hết cho các mẫu còn lại thì lấy chính nó).\nVới mỗi phân số, lấy mẫu số chung chia cho mẫu số cũ được số cần nhân.\nNhân cả tử số và mẫu số của từng phân số với số đó (phân số đã có mẫu số chung thì giữ nguyên).\nViết kết luận các phân số mới có cùng mẫu số.\n\n##CY\nKiểm tra mẫu số chung chia hết cho từng mẫu số, không chỉ cho hai mẫu đầu.\nSố tự nhiên viết thành phân số có mẫu số $1$ rồi mới quy đồng.",
+   "vi_du": "##VD\nQuy đồng mẫu số các phân số $\\dfrac{4}{5}$; $\\dfrac{5}{10}$; $\\dfrac{7}{30}$.\n**Hướng dẫn giải:**\nMẫu số $30$ chia hết cho cả $5$, $10$ và $30$ nên chọn $30$ làm mẫu số chung. Phân số $\\dfrac{7}{30}$ đã có mẫu số $30$ nên giữ nguyên.\n\nTa có: $\\dfrac{4}{5}=\\dfrac{4\\times 6}{5\\times 6}=\\dfrac{24}{30}$\n\n$\\dfrac{5}{10}=\\dfrac{5\\times 3}{10\\times 3}=\\dfrac{15}{30}$\n\nVậy quy đồng mẫu số ba phân số ta được $\\dfrac{24}{30}$; $\\dfrac{15}{30}$; $\\dfrac{7}{30}$.\n\nĐáp số: $\\dfrac{24}{30}$; $\\dfrac{15}{30}$; $\\dfrac{7}{30}$",
+   "nguon_vd": "sach LT 16.8",
+   "ghi_chu": "Ví dụ lấy từ bài LUYỆN TẬP 16.8 f) (sách không có VD ba phân số); phần lời giải do tôi viết theo khuôn VD 16.3, đã tự kiểm phép tính."
+  },
+  {
+   "id": "NDB01555",
+   "mo_ta": "Đề cho một phân số có tử số và mẫu số vừa phải, cùng chia hết cho một số nhỏ ($2$, $3$, $5$, $9$…) và yêu cầu rút gọn hoặc đưa về phân số tối giản. Khác dạng \"Rút gọn phân số dạng đặc biệt\": ở đây chọn được số chia bằng dấu hiệu chia hết quen thuộc, không có tử và mẫu lặp lại cả cụm chữ số hay biểu thức tích.",
+   "ly_thuyet": "##PP\nTìm một số tự nhiên lớn hơn $1$ mà cả tử số và mẫu số cùng chia hết (dùng dấu hiệu chia hết cho $2$, $3$, $5$, $9$).\nChia cả tử số và mẫu số cho số đó.\nNếu phân số mới vẫn rút gọn được thì làm tiếp cho đến khi được phân số tối giản.\n\n##CY\nGhi rõ chia cho mấy ở cả tử lẫn mẫu: $\\dfrac{51}{57}=\\dfrac{51:3}{57:3}$.",
+   "vi_du": "##VD\nRút gọn phân số $\\dfrac{51}{57}$ để được phân số tối giản.\n**Hướng dẫn giải:**\nTổng các chữ số của $51$ là $6$, của $57$ là $12$, đều chia hết cho $3$ nên cả hai số chia hết cho $3$. Chia cả tử số và mẫu số cho $3$.\n\n$\\dfrac{51}{57}=\\dfrac{51:3}{57:3}=\\dfrac{17}{19}$\n\nPhân số $\\dfrac{17}{19}$ có tử số và mẫu số không cùng chia hết cho số nào lớn hơn $1$ nên là phân số tối giản.\n\nĐáp số: $\\dfrac{17}{19}$",
+   "nguon_vd": "sach VD 16.1",
+   "ghi_chu": "Lấy phân số đầu của VD 16.1 (sách có 3 phân số trong một ví dụ)."
+  },
+  {
+   "id": "NDB01556",
+   "mo_ta": "Đề cho phân số có tử số và mẫu số lớn, lặp lại cả cụm chữ số (như $1313$, $123123$, $20232023$…) hoặc cho biểu thức dạng tích/tích nhiều thừa số để rút gọn, và yêu cầu rút gọn. Dấu hiệu: số có dạng $\\overline{abab}$, $\\overline{abcabc}$ hoặc các thừa số giống nhau xuất hiện ở cả tử và mẫu. Khác dạng \"Rút gọn phân số dạng chuẩn\": phải nhận ra thừa số chung (như $101$, $1001$), không chỉ dựa vào dấu hiệu chia hết.",
+   "ly_thuyet": "##PP\nNhận ra thừa số chung: số có dạng $\\overline{abab}=\\overline{ab}\\times 101$, số có dạng $\\overline{abcabc}=\\overline{abc}\\times 1001$; với biểu thức tích, tìm thừa số giống nhau ở tử và mẫu.\nChia cả tử số và mẫu số cho thừa số chung đó (hoặc gạch bỏ thừa số giống nhau).\nRút gọn tiếp cho đến khi được phân số tối giản.\n\n##CY\nKiểm lại: số chia ($101$, $1001$…) phải chia hết được cả tử lẫn mẫu.\nRút gọn xong phải thử rút gọn tiếp (vd $\\dfrac{13}{39}$ còn rút gọn được cho $13$).",
+   "vi_du": "##VD\nRút gọn phân số $\\dfrac{1313}{3939}$ để được phân số tối giản.\n**Hướng dẫn giải:**\nTa có $1313=13\\times 101$ và $3939=39\\times 101$, nên cả tử số và mẫu số cùng chia hết cho $101$. Chia cả hai cho $101$ rồi rút gọn tiếp.\n\n$\\dfrac{1313}{3939}=\\dfrac{1313:101}{3939:101}=\\dfrac{13}{39}$\n\n$\\dfrac{13}{39}=\\dfrac{13:13}{39:13}=\\dfrac{1}{3}$\n\nĐáp số: $\\dfrac{1}{3}$",
+   "nguon_vd": "sach VD 16.1",
+   "ghi_chu": "Tên dạng \"đặc biệt\" chưa rõ nghĩa: tôi hiểu là phân số có số lặp cụm chữ số (abab, abcabc) và biểu thức tích rút gọn (sách LT 16.6, 16.7). CEO xác nhận giúp. Lấy phân số thứ hai của VD 16.1."
+  },
+  {
+   "id": "NDB01557",
+   "mo_ta": "Đề cho hai phân số khác mẫu số và hỏi phân số nào lớn hơn, bé hơn (hoặc điền dấu $>$, $<$, $=$). Dấu hiệu: mẫu số nhỏ, dễ tìm mẫu số chung và hai phân số không cùng phía của $1$ theo kiểu so sánh nhanh. Khác dạng \"So sánh phân số bằng quy đồng tử số\": ở đây quy đồng MẪU số rồi so tử số.",
+   "ly_thuyet": "##PP\nTìm mẫu số chung của hai phân số.\nQuy đồng mẫu số hai phân số (nhân cả tử lẫn mẫu).\nSo sánh hai tử số của hai phân số mới: tử số lớn hơn thì phân số lớn hơn.\nKết luận về hai phân số ban đầu bằng câu \"Vì … nên …\".\n\n##CY\nChỉ so sánh tử số SAU KHI hai phân số đã có cùng mẫu số.",
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$.\n**Hướng dẫn giải:**\nHai phân số khác mẫu số nên quy đồng mẫu số rồi so sánh tử số. Mẫu số chung là $5\\times 3=15$.\n\nQuy đồng mẫu số: $\\dfrac{3}{5}=\\dfrac{3\\times 3}{5\\times 3}=\\dfrac{9}{15}$; $\\dfrac{2}{3}=\\dfrac{2\\times 5}{3\\times 5}=\\dfrac{10}{15}$\n\nVì $\\dfrac{9}{15}<\\dfrac{10}{15}$ nên $\\dfrac{3}{5}<\\dfrac{2}{3}$.\n\nĐáp số: $\\dfrac{3}{5}<\\dfrac{2}{3}$",
+   "nguon_vd": "sach VD 17.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01558",
+   "mo_ta": "Đề cho hai phân số và hỏi phân số nào lớn hơn, bé hơn; dấu hiệu: tử số của hai phân số bằng nhau hoặc dễ đưa về bằng nhau (có thể nhân lên thành cùng một số), còn mẫu số lớn, khó quy đồng (như $\\dfrac{6}{29}$ và $\\dfrac{9}{44}$). Khác dạng \"So sánh phân số bằng quy đồng mẫu số\": quy đồng TỬ số rồi so MẪU số (mẫu số lớn hơn thì phân số bé hơn).",
+   "ly_thuyet": "##PP\nTìm tử số chung của hai phân số.\nQuy đồng tử số hai phân số (nhân cả tử lẫn mẫu).\nSo sánh hai mẫu số của hai phân số mới: mẫu số bé hơn thì phân số lớn hơn.\nKết luận về hai phân số ban đầu bằng câu \"Vì … nên …\".\n\n##CY\nCùng tử số thì mẫu số lớn hơn cho phân số BÉ hơn, ngược với cùng mẫu số.",
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{2}{9}$ và $\\dfrac{3}{7}$.\n**Hướng dẫn giải:**\nTử số $2$ và $3$ dễ đưa về cùng tử số $6$, trong khi mẫu số khác nhau. Quy đồng tử số rồi so sánh mẫu số: cùng tử số thì mẫu số lớn hơn cho phân số bé hơn.\n\nQuy đồng tử số: $\\dfrac{2}{9}=\\dfrac{2\\times 3}{9\\times 3}=\\dfrac{6}{27}$; $\\dfrac{3}{7}=\\dfrac{3\\times 2}{7\\times 2}=\\dfrac{6}{14}$\n\nVì $\\dfrac{6}{27}<\\dfrac{6}{14}$ nên $\\dfrac{2}{9}<\\dfrac{3}{7}$.\n\nĐáp số: $\\dfrac{2}{9}<\\dfrac{3}{7}$",
+   "nguon_vd": "sach VD 17.2",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01559",
+   "mo_ta": "Đề cho hai phân số mà một phân số lớn hơn $1$ (tử số lớn hơn mẫu số) và phân số kia bé hơn $1$ (tử số bé hơn mẫu số), hỏi phân số nào lớn hơn. Chỉ cần so mỗi phân số với $1$, không phải quy đồng. Khác dạng \"So sánh phân số bằng phân số trung gian\" và dạng phần bù: hai phân số ở HAI PHÍA của $1$.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{15}{8}$ và $\\dfrac{7}{9}$.\n**Hướng dẫn giải:**\nPhân số $\\dfrac{15}{8}$ có tử số lớn hơn mẫu số nên lớn hơn $1$. Phân số $\\dfrac{7}{9}$ có tử số bé hơn mẫu số nên bé hơn $1$. Vậy so từng phân số với $1$ là biết phân số nào lớn hơn.\n\nTa có: $\\dfrac{15}{8}>\\dfrac{8}{8}=1$ và $\\dfrac{7}{9}<\\dfrac{9}{9}=1$\n\nNên $\\dfrac{15}{8}>1>\\dfrac{7}{9}$.\n\nĐáp số: $\\dfrac{15}{8}>\\dfrac{7}{9}$",
+   "nguon_vd": "sach LT 17.7",
+   "ghi_chu": "LƯU Ý: ô ly_thuyet đang có sẵn của dạng này là SAI NỘI DUNG, đó là nguyên một bài so sánh $\\dfrac{3}{5}$ và $\\dfrac{2}{3}$ bằng quy đồng mẫu số (đề + đáp án B + lời giải), không phải lý thuyết so với 1. Tôi không viết lại theo luật \"ô đã có chữ\", đề nghị CEO thay bằng lý thuyết sau: ##PP / Phân số có tử số bé hơn mẫu số thì bé hơn 1; lớn hơn mẫu số thì lớn hơn 1. / So sánh mỗi phân số với 1 rồi kết luận. (nội dung này đã nằm trong lý thuyết nhóm \"So sánh phân số gián tiếp\")."
+  },
+  {
+   "id": "NDB01560",
+   "mo_ta": "Đề cho hai phân số khác cả tử số lẫn mẫu số, không cùng phía của $1$ hoặc không kém nhau cùng một đơn vị, mà một phân số có tử số bé hơn và mẫu số lớn hơn phân số kia (như $\\dfrac{2023}{2026}$ và $\\dfrac{2024}{2025}$), hỏi phân số nào lớn hơn. Khác dạng phần bù: hiệu mẫu số trừ tử số của hai phân số KHÔNG bằng nhau ($3$ và $1$), nên phải chọn phân số chen ở giữa.",
+   "ly_thuyet": "##PP\nChọn phân số trung gian: lấy tử số của phân số này và mẫu số của phân số kia, sao cho phân số trung gian cùng tử số với một phân số và cùng mẫu số với phân số còn lại.\nSo sánh phân số thứ nhất với phân số trung gian (cùng tử số: mẫu số lớn hơn thì bé hơn).\nSo sánh phân số trung gian với phân số thứ hai (cùng mẫu số: tử số lớn hơn thì lớn hơn).\nKết luận bằng câu \"Vì … nên …\".\n\n##CY\nPhân số trung gian phải cùng tử số với MỘT phân số và cùng mẫu số với phân số KIA, nếu không thì không so sánh được.",
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{2023}{2026}$ và $\\dfrac{2024}{2025}$.\n**Hướng dẫn giải:**\nHai phân số khác cả tử số lẫn mẫu số. Chọn phân số trung gian lấy tử số của phân số thứ nhất ($2023$) và mẫu số của phân số thứ hai ($2025$): đó là $\\dfrac{2023}{2025}$.\n\nTa chọn phân số trung gian $\\dfrac{2023}{2025}$.\n\nVì $\\dfrac{2023}{2026}<\\dfrac{2023}{2025}$ (cùng tử số, mẫu số $2026$ lớn hơn); $\\dfrac{2023}{2025}<\\dfrac{2024}{2025}$ (cùng mẫu số, tử số $2023$ bé hơn) nên $\\dfrac{2023}{2026}<\\dfrac{2024}{2025}$.\n\nĐáp số: $\\dfrac{2023}{2026}<\\dfrac{2024}{2025}$",
+   "nguon_vd": "sach VD 17.5",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01561",
+   "mo_ta": "Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số đúng $1$ đơn vị (dạng $\\dfrac{n}{n+1}$, như $\\dfrac{2023}{2024}$ và $\\dfrac{2024}{2025}$), hỏi phân số nào lớn hơn. Cách làm: tìm phần bù của mỗi phân số (đều có tử số $1$) rồi so sánh. Khác dạng \"phần bù\" thứ hai trong nhóm: ở đây phần bù là $\\dfrac{1}{\\text{mẫu}}$. Khác dạng so sánh phân số trung gian: hai phân số có cùng khoảng cách tử-mẫu.",
+   "ly_thuyet": "##PP\nBước 1: Tìm phần bù của mỗi phân số: lấy $1$ trừ đi phân số đó.\nBước 2: So sánh hai phần bù với nhau (cùng tử số $1$: mẫu số lớn hơn thì phần bù bé hơn).\nPhân số nào có phần bù lớn hơn thì bé hơn. Kết luận về hai phân số cần so sánh.\n\n##CY\nPhần bù LỚN hơn thì phân số BÉ hơn (ngược chiều).",
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{2023}{2024}$ và $\\dfrac{2024}{2025}$.\n**Hướng dẫn giải:**\nHai phân số đều bé hơn $1$ và mỗi phân số có mẫu số hơn tử số $1$ đơn vị nên ta so sánh phần bù (phần còn thiếu để bằng $1$). Phần bù lớn hơn thì phân số bé hơn.\n\nTìm phần bù:\n\n$1-\\dfrac{2023}{2024}=\\dfrac{1}{2024}$; $1-\\dfrac{2024}{2025}=\\dfrac{1}{2025}$\n\nSo sánh phần bù với nhau, kết luận về hai phân số cần so sánh:\n\nVì $\\dfrac{1}{2024}>\\dfrac{1}{2025}$ nên $\\dfrac{2023}{2024}<\\dfrac{2024}{2025}$.\n\nĐáp số: $\\dfrac{2023}{2024}<\\dfrac{2024}{2025}$",
+   "nguon_vd": "sach VD 17.4",
+   "ghi_chu": "LƯU Ý: dạng NDB01561 và NDB01562 TRÙNG TÊN (\"So sánh phân số bằng phương pháp phần bù\"), và cả 4 câu đã gán của hai dạng gần như giống hệt nhau (cùng câu 2023/2024 vs 2024/2025). Tôi phân biệt theo cách hiểu: 01561 = phần bù với mẫu hơn tử đúng 1 đơn vị (phần bù là 1/mẫu); 01562 = phần bù khi hiệu mẫu-tử bằng nhau nhưng lớn hơn 1 (phần bù có tử số k). Đề nghị CEO xác nhận hoặc đổi tên/gộp. Có thể dạng 01562 vốn dự định là \"phần hơn\" (sách VD 17.3, phân số lớn hơn 1) vì bản đồ chưa có dạng phần hơn nào."
+  },
+  {
+   "id": "NDB01562",
+   "mo_ta": "Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số cùng một số $k$ lớn hơn $1$ (như $\\dfrac{7}{9}$ và $\\dfrac{9}{11}$, đều có mẫu số hơn tử số $2$), hỏi phân số nào lớn hơn. Cách làm: phần bù có tử số $k$, so sánh hai phần bù cùng tử số. Khác dạng phần bù thứ nhất trong nhóm: ở đây tử số của phần bù là $k$ chứ không phải $1$.",
+   "ly_thuyet": "##PP\nBước 1: Tìm phần bù của mỗi phân số: lấy $1$ trừ đi phân số đó (tử số phần bù bằng hiệu của mẫu số và tử số).\nBước 2: Hai phần bù cùng tử số $k$, nên phần bù nào có mẫu số lớn hơn thì bé hơn.\nPhân số nào có phần bù lớn hơn thì bé hơn. Kết luận về hai phân số cần so sánh.\n\n##CY\nChỉ dùng được khi hai phân số có CÙNG hiệu mẫu số trừ tử số; khác hiệu thì phải dùng cách khác (phân số trung gian).",
+   "vi_du": "##VD\nSo sánh hai phân số $\\dfrac{7}{9}$ và $\\dfrac{9}{11}$.\n**Hướng dẫn giải:**\nHai phân số đều bé hơn $1$ và mẫu số đều hơn tử số $2$ đơn vị nên ta so sánh phần bù. Hai phần bù có cùng tử số $2$, phần bù nào có mẫu số lớn hơn thì bé hơn.\n\nTìm phần bù:\n\n$1-\\dfrac{7}{9}=\\dfrac{2}{9}$; $1-\\dfrac{9}{11}=\\dfrac{2}{11}$\n\nSo sánh phần bù với nhau, kết luận về hai phân số cần so sánh:\n\nVì $\\dfrac{2}{9}>\\dfrac{2}{11}$ nên $\\dfrac{7}{9}<\\dfrac{9}{11}$.\n\nĐáp số: $\\dfrac{7}{9}<\\dfrac{9}{11}$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Dạng trùng tên với NDB01561 (xem ghi chú ở đó). Tôi suy hiểu theo hiệu mẫu-tử k > 1, nhưng các câu đã gán cho dạng này (99/100 vs 98/99, 48/50 vs 50/52) lại lẫn cả k = 1 và k = 2. Dựng ví dụ mô phỏng (7/9 và 9/11) vì sách chỉ có VD 17.4 với k = 1."
+  },
+  {
+   "id": "NDB01563",
+   "mo_ta": "Đề cho từ ba phân số trở lên và yêu cầu sắp xếp theo thứ tự từ bé đến lớn hoặc từ lớn đến bé. Dấu hiệu: có chữ \"sắp xếp\" và một dãy phân số, có thể kết hợp nhiều cách so sánh (so với $1$, phần bù, phần hơn, quy đồng). Khác các dạng so sánh: so sánh chỉ có HAI phân số.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nSắp xếp các phân số $\\dfrac{4}{5}$; $\\dfrac{5}{6}$; $\\dfrac{6}{7}$; $\\dfrac{7}{8}$ theo thứ tự từ lớn đến bé.\n**Hướng dẫn giải:**\nCác phân số đều bé hơn $1$ và mỗi phân số có mẫu số hơn tử số $1$ đơn vị nên so sánh phần bù. Phân số nào có phần bù bé hơn thì lớn hơn.\n\nPhần bù của các phân số lần lượt là: $1-\\dfrac{4}{5}=\\dfrac{1}{5}$; $1-\\dfrac{5}{6}=\\dfrac{1}{6}$; $1-\\dfrac{6}{7}=\\dfrac{1}{7}$; $1-\\dfrac{7}{8}=\\dfrac{1}{8}$\n\nVì $\\dfrac{1}{5}>\\dfrac{1}{6}>\\dfrac{1}{7}>\\dfrac{1}{8}$ nên $\\dfrac{4}{5}<\\dfrac{5}{6}<\\dfrac{6}{7}<\\dfrac{7}{8}$.\n\nVậy thứ tự từ lớn đến bé là: $\\dfrac{7}{8}$; $\\dfrac{6}{7}$; $\\dfrac{5}{6}$; $\\dfrac{4}{5}$.\n\nĐáp số: $\\dfrac{7}{8}$; $\\dfrac{6}{7}$; $\\dfrac{5}{6}$; $\\dfrac{4}{5}$",
+   "nguon_vd": "sach LT 17.13",
+   "ghi_chu": "Ô ly_thuyet đang có sẵn không dùng thẻ ##PP/##TC và dùng chữ \"phân dư\" lẫn \"phần dư\" (sách gốc dùng \"phần hơn\"); nên chuẩn hoá về \"phần hơn\". Tôi không viết lại theo luật \"ô đã có chữ\"."
+  }
+ ]
+}

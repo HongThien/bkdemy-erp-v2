@@ -1,0 +1,580 @@
+[
+ {
+  "id": "NDB01564",
+  "ten": "Phép cộng trừ hai phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01732",
+  "nhom": "1. Cộng trừ phân số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Phép cộng – phép trừ hai phân số\n\nLuôn cần để ý việc quy đồng mẫu số trước khi tính và rút gọn phân số sau khi tính. Phân số không rút gọn sẽ coi là kết quả sai.\n\nCần ghi nhớ quy tắc tìm mẫu số chung :\n\nQuy tắc 1. Nếu 2 mẫu số không cùng chia hết cho số nào thì mẫu số chung là tích của hai mẫu số. Đây là trường hợp quy đồng nhân chéo phổ biến nhất.\n\nVí dụ 1: Tính $\\dfrac{4}{5} + \\dfrac{6}{7}$\n\nVì 5,7 không cùng chia hết cho số nào nên ta nhẩm mẫu số chung là 35. Sử dụng quy đồng nhân chéo.\n$$\\dfrac{4}{5} + \\dfrac{6}{7} = \\dfrac{28}{35} + \\dfrac{30}{35} = \\dfrac{28+30}{35} = \\dfrac{58}{35}$$\n\nQuy tắc 2: Nếu mẫu số lớn chia hết cho mẫu số bé thì mẫu số chung chính là mẫu số lớn.\n\nVí dụ 2: Tính $\\dfrac{4}{5} + \\dfrac{8}{15}$\n\nỞ đây ta thấy 15 chia hết cho 5 nên mẫu số chung là 15 luôn.\n$$\\dfrac{4}{5} + \\dfrac{8}{15} = \\dfrac{12}{15} + \\dfrac{8}{15} = \\dfrac{12+8}{15} = \\dfrac{20}{15} = \\dfrac{4}{3}$$\n\nQuy tắc 3: Nếu hai mẫu số cùng chia hết cho một số thì mẫu số chung là tích của hai mẫu số chia cho số đó. Nhớ chọn số lớn nhất có thể.\n\nVí dụ 3 : Tính    $\\dfrac{7}{12} + \\dfrac{11}{18}$\n\nMẫu số ở đây là 12 và 18 cùng chia hết cho 2,3,6.\nSố lớn nhất là 6 nên mẫu số chung là : $12\\times18:6=36$\n$$\\dfrac{7}{12} + \\dfrac{11}{18} = \\dfrac{21}{36} + \\dfrac{22}{36} = \\dfrac{21+22}{36} = \\dfrac{43}{36}$$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T180101001",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{4}{5} + \\dfrac{6}{7}$.",
+    "dap_an": "B",
+    "loi_giai": "Ta có: $\\dfrac{4}{5} + \\dfrac{6}{7} = \\dfrac{4 \\times 7}{5 \\times 7} + \\dfrac{6 \\times 5}{7 \\times 5} = \\dfrac{28}{35} + \\dfrac{30}{35} = \\dfrac{28 + 30}{35} = \\dfrac{58}{35}$.\nChọn B."
+   },
+   {
+    "ma_cau": "T14T180101022",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{4}{5} + \\dfrac{8}{15}$",
+    "dap_an": "C",
+    "loi_giai": "Ở đây ta thấy 15 chia hết cho 5 nên mẫu số chung là 15 luôn.\n$\\dfrac{4}{5} + \\dfrac{8}{15} = \\dfrac{12}{15} + \\dfrac{8}{15} = \\dfrac{12+8}{15} = \\dfrac{20}{15} = \\dfrac{4}{3}$."
+   },
+   {
+    "ma_cau": "T14T180101043",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{7}{12} + \\dfrac{11}{18}$",
+    "dap_an": "D",
+    "loi_giai": "Mẫu số ở đây là 12 và 18 cùng chia hết cho 2,3,6.\nSố lớn nhất là 6 nên mẫu số chung là : $12 \\times 18 : 6 = 36$\n$\\dfrac{7}{12} + \\dfrac{11}{18} = \\dfrac{21}{36} + \\dfrac{22}{36} = \\dfrac{21+22}{36} = \\dfrac{43}{36}$."
+   },
+   {
+    "ma_cau": "T14T180101017",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{6}{7} - \\dfrac{1}{2}$.",
+    "dap_an": "B",
+    "loi_giai": "Ta có: $\\dfrac{6}{7} - \\dfrac{1}{2} = \\dfrac{6 \\times 2}{7 \\times 2} - \\dfrac{1 \\times 7}{2 \\times 7} = \\dfrac{12}{14} - \\dfrac{7}{14} = \\dfrac{12 - 7}{14} = \\dfrac{5}{14}$.\nChọn B."
+   }
+  ]
+ },
+ {
+  "id": "NDB01565",
+  "ten": "Phép cộng trừ nhiều phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01732",
+  "nhom": "1. Cộng trừ phân số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để thực hiện phép cộng trừ nhiều phân số, ta sẽ thực hiện quy đồng tất cả phân số bằng việc tìm mẫu số chung của các phân số.\nThông thường, có 2 trường hợp :\nTrường hợp 1. Các mẫu số không có quan hệ gì với nhau\nVí dụ. Tính $\\dfrac{1}{3} + \\dfrac{3}{4} - \\dfrac{5}{7}$\nVới trường hợp này ta thấy : cặp 3,4 hay 4,7 hay 3,7 đều không cùng chia hết cho số nào . Vậy mẫu số chung sẽ là : $3 \\times 4 \\times 7 = 84$. Vậy ta sẽ quy đồng các phân số về mẫu số chung 84.\nSuy ra :\n$$ \\dfrac{1}{3} + \\dfrac{3}{4} - \\dfrac{5}{7} = \\dfrac{28}{84} + \\dfrac{63}{84} - \\dfrac{60}{84} = \\dfrac{28+63-60}{84} = \\dfrac{31}{84} $$\nTrường hợp 2. Các mẫu số có liên hệ với nhau.\nVí dụ. Tính $\\dfrac{5}{6} + \\dfrac{4}{9} - \\dfrac{11}{12}$\nTa thấy có nhiều liên hệ : 6,9 cùng chia hết cho 3; 12 chia hết cho 6, 9 và 12 cùng chia hết cho 3. Với trường hợp này, thông thường cách nhanh nhất là dựa vào mẫu số lớn nhất. Ta nhân lần lượt mẫu số lớn nhất để nhẩm mẫu số chung.\n•\t12 chia hết cho 6 nhưng không chia hết cho 9. Loại\n•\t$12 \\times 2 = 24$ chia hết cho 6 nhưng không chia hết cho 9. Loại\n•\t$12 \\times 3 = 36$ chia hết cho cả 6 và 9.\nVậy mẫu số chung là 36.\nSuy ra\n$$ \\dfrac{5}{6} + \\dfrac{4}{9} - \\dfrac{11}{12} = \\dfrac{30}{36} + \\dfrac{16}{36} - \\dfrac{33}{36} = \\dfrac{13}{36} $$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T180102027",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{2}{4} + \\dfrac{7}{9} - \\dfrac{5}{12}$",
+    "dap_an": "A",
+    "loi_giai": "Nhận xét:\n- 12 chia hết cho 4 nhưng không chia hết cho 9. Loại\n- $12 \\times 2 = 24$ chia hết cho 4 nhưng không chia hết cho 9. Loại\n- $12 \\times 3 = 36$ chia hết cho cả 4, 9 và 12.\nVậy mẫu số chung là 36.\nSuy ra\n$\\dfrac{2}{4} + \\dfrac{7}{9} - \\dfrac{5}{12} = \\dfrac{18}{36} + \\dfrac{28}{36} - \\dfrac{15}{36} = \\dfrac{31}{36}$"
+   },
+   {
+    "ma_cau": "T14T180102033",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{11}{12} + \\dfrac{13}{15} - \\dfrac{18}{20}$",
+    "dap_an": "A",
+    "loi_giai": "Nhận xét:\n- 20 không chia hết cho 12, không chia hết cho 15. Loại\n- $20 \\times 2 = 40$ chia hết cho 20 nhưng không chia hết cho 12, không chia hết cho 15. Loại\n- $20 \\times 3 = 60$ chia hết cho cả 12, 15 và 20.\nVậy mẫu số chung là 60.\nSuy ra\n$\\dfrac{11}{12} + \\dfrac{13}{15} - \\dfrac{18}{20} = \\dfrac{55}{60} + \\dfrac{52}{60} - \\dfrac{54}{60} = \\dfrac{53}{60}$"
+   },
+   {
+    "ma_cau": "T14T180102035",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{11}{12} - \\dfrac{17}{18} + \\dfrac{20}{24}$",
+    "dap_an": "D",
+    "loi_giai": "Nhận xét:\n- 24 chia hết cho 12 nhưng không chia hết cho 18. Loại\n- $24 \\times 2 = 48$ chia hết cho 12 nhưng không chia hết cho 18. Loại\n- $24 \\times 3 = 72$ chia hết cho cả 12, 18 và 24.\nVậy mẫu số chung là 72.\nSuy ra\n$\\dfrac{11}{12} - \\dfrac{17}{18} + \\dfrac{20}{24} = \\dfrac{66}{72} - \\dfrac{68}{72} + \\dfrac{60}{72} = (\\dfrac{66}{72} + \\dfrac{60}{72}) - \\dfrac{68}{72} = \\dfrac{126}{72} - \\dfrac{68}{72} = \\dfrac{58}{72}$\nKết quả không có trong các phương án A, B, C. Chọn D."
+   },
+   {
+    "ma_cau": "T14T180102039",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{7}{9} - \\dfrac{14}{15} + \\dfrac{17}{18}$",
+    "dap_an": "D",
+    "loi_giai": "Nhận xét:\n- 18 chia hết cho 9 nhưng không chia hết cho 15. Loại\n- $18 \\times 2 = 36$ chia hết cho 9 nhưng không chia hết cho 15. Loại\n- $18 \\times 3 = 54$ chia hết cho 9 nhưng không chia hết cho 15. Loại\n- $18 \\times 4 = 72$ chia hết cho 9 nhưng không chia hết cho 15. Loại\n- $18 \\times 5 = 90$ chia hết cho cả 9, 15 và 18.\nVậy mẫu số chung là 90.\nSuy ra\n$\\dfrac{7}{9} - \\dfrac{14}{15} + \\dfrac{17}{18} = \\dfrac{70}{90} - \\dfrac{84}{90} + \\dfrac{85}{90} = (\\dfrac{70}{90} + \\dfrac{85}{90}) - \\dfrac{84}{90} = \\dfrac{155}{90} - \\dfrac{84}{90} = \\dfrac{71}{90}$\nKết quả không có trong các phương án A, B, C. Chọn D."
+   }
+  ]
+ },
+ {
+  "id": "NDB01566",
+  "ten": "Tính thuận tiện biểu thức phân số dạng tổng hiệu",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01732",
+  "nhom": "1. Cộng trừ phân số",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Để thực hiện phép tính thuận tiện, ta sẽ nhóm các phân số có cùng mẫu số lại với nhau. Khi thực hiện nhóm phân số cần tuân theo các quy tắc sau.\n\n* Có thể di chuyển thay đổi thứ tự của phân số, nhưng dấu phải đi kèm.\n* Nắm vững các quy tắc của dấu trừ và ngoặc :\n    * $A-B-C=A-(B+C)$\n    * $A-B+C=A-(B-C)$\n\nVí dụ 1. Tính thuận tiện :\n$$ \\dfrac{15}{13} + \\dfrac{27}{16} + \\dfrac{11}{13} + \\dfrac{11}{16} $$\n\nBài giải:\n\nTa có :\n$$ \\dfrac{15}{13} + \\dfrac{27}{16} + \\dfrac{11}{13} + \\dfrac{11}{16}$$\n$$= \\dfrac{15}{13} + \\dfrac{11}{13} + \\dfrac{27}{16} + \\dfrac{11}{16} $$\n$$ = \\left( \\dfrac{15}{13} + \\dfrac{11}{13} \\right) + \\left( \\dfrac{27}{16} + \\dfrac{11}{16} \\right) $$\n$$ = \\dfrac{26}{13} + \\dfrac{16}{16} = 2+1=3 $$\n\nVí dụ 2. Tính thuận tiện :\n$$ \\dfrac{35}{11} - \\dfrac{11}{16} - \\dfrac{13}{11} - \\dfrac{21}{16} $$\n\nBài giải:\n\nTa có\n$$ \\dfrac{35}{11} - \\dfrac{11}{16} - \\dfrac{13}{11} - \\dfrac{21}{16}$$ \n$$ =\\dfrac{35}{11} - \\dfrac{13}{11} - \\dfrac{11}{16} - \\dfrac{21}{16} $$\n$$ = \\left( \\dfrac{35}{11} - \\dfrac{13}{11} \\right) - \\left( \\dfrac{11}{16} + \\dfrac{21}{16} \\right) $$\n$$ = \\dfrac{22}{11} - \\dfrac{32}{16} = 2-2=0 $$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T180103036",
+    "ten_de_goc": null,
+    "noi_dung": "Tính giá trị biểu thức sau bằng cách thuận tiện nhất: $\\dfrac{40}{7} - \\dfrac{5}{11} - \\dfrac{5}{7} - \\dfrac{28}{11}$",
+    "dap_an": "B",
+    "loi_giai": "Ta có:\n$\\dfrac{40}{7} - \\dfrac{5}{11} - \\dfrac{5}{7} - \\dfrac{28}{11}$\n$= \\dfrac{40}{7} - \\dfrac{5}{7} - \\dfrac{5}{11} - \\dfrac{28}{11}$\n$= (\\dfrac{40}{7} - \\dfrac{5}{7}) - (\\dfrac{5}{11} + \\dfrac{28}{11})$\n$= \\dfrac{35}{7} - \\dfrac{33}{11}$\n$= 5 - 3 = 2$\nChọn B."
+   },
+   {
+    "ma_cau": "T14T180103038",
+    "ten_de_goc": null,
+    "noi_dung": "Tính giá trị biểu thức sau bằng cách thuận tiện nhất: $\\dfrac{50}{11} - \\dfrac{2}{15} - \\dfrac{6}{11} - \\dfrac{13}{15}$",
+    "dap_an": "C",
+    "loi_giai": "Ta có:\n$\\dfrac{50}{11} - \\dfrac{2}{15} - \\dfrac{6}{11} - \\dfrac{13}{15}$\n$= \\dfrac{50}{11} - \\dfrac{6}{11} - \\dfrac{2}{15} - \\dfrac{13}{15}$\n$= (\\dfrac{50}{11} - \\dfrac{6}{11}) - (\\dfrac{2}{15} + \\dfrac{13}{15})$\n$= \\dfrac{44}{11} - \\dfrac{15}{15}$\n$= 4 - 1 = 3$\nChọn C."
+   },
+   {
+    "ma_cau": "T14T180103040",
+    "ten_de_goc": null,
+    "noi_dung": "Tính giá trị biểu thức sau bằng cách thuận tiện nhất: $\\dfrac{78}{15} - \\dfrac{1}{19} - \\dfrac{3}{15} - \\dfrac{37}{19}$",
+    "dap_an": "C",
+    "loi_giai": "Ta có:\n$\\dfrac{78}{15} - \\dfrac{1}{19} - \\dfrac{3}{15} - \\dfrac{37}{19}$\n$= \\dfrac{78}{15} - \\dfrac{3}{15} - \\dfrac{1}{19} - \\dfrac{37}{19}$\n$= (\\dfrac{78}{15} - \\dfrac{3}{15}) - (\\dfrac{1}{19} + \\dfrac{37}{19})$\n$= \\dfrac{75}{15} - \\dfrac{38}{19}$\n$= 5 - 2 = 3$\nChọn C."
+   },
+   {
+    "ma_cau": "T14T180103039",
+    "ten_de_goc": null,
+    "noi_dung": "Tính giá trị biểu thức sau bằng cách thuận tiện nhất: $\\dfrac{74}{13} - \\dfrac{4}{17} - \\dfrac{9}{13} - \\dfrac{30}{17}$",
+    "dap_an": "C",
+    "loi_giai": "Ta có:\n$\\dfrac{74}{13} - \\dfrac{4}{17} - \\dfrac{9}{13} - \\dfrac{30}{17}$\n$= \\dfrac{74}{13} - \\dfrac{9}{13} - \\dfrac{4}{17} - \\dfrac{30}{17}$\n$= (\\dfrac{74}{13} - \\dfrac{9}{13}) - (\\dfrac{4}{17} + \\dfrac{30}{17})$\n$= \\dfrac{65}{13} - \\dfrac{34}{17}$\n$= 5 - 2 = 3$\nChọn C."
+   }
+  ]
+ },
+ {
+  "id": "NDB01567",
+  "ten": "Chuỗi tích các phân số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01733",
+  "nhom": "2. Phép nhân phân số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T180201040",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{12}{28} \\times \\dfrac{35}{30} \\times \\dfrac{22}{15}$",
+    "dap_an": "B",
+    "loi_giai": "Nhận xét : Các cặp số có thể rút gọn là $12$ và $15$ (cùng chia hết cho $3$), $35$ và $28$ (cùng chia hết cho $7$), $22$ và $30$ (cùng chia hết cho $2$).\nTa có:\n$\\dfrac{12}{28} \\times \\dfrac{35}{30} \\times \\dfrac{22}{15} = \\dfrac{12 \\times 35 \\times 22}{28 \\times 30 \\times 15}$\nPhân tích và rút gọn:\n$12$ (chia cho $3$) được $4$; $15$ (chia cho $3$) được $5$.\n$35$ (chia cho $7$) được $5$; $28$ (chia cho $7$) được $4$.\n$22$ (chia cho $2$) được $11$; $30$ (chia cho $2$) được $15$.\nVậy biểu thức trở thành:\n$= \\dfrac{4 \\times 5 \\times 11}{4 \\times 15 \\times 5}$\n$= \\dfrac{220}{300} = \\dfrac{11}{15}$.\nVậy đáp án đúng là B."
+   },
+   {
+    "ma_cau": "T14T180201041",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{14}{40} \\times \\dfrac{36}{21} \\times \\dfrac{25}{18}$",
+    "dap_an": "C",
+    "loi_giai": "Nhận xét : Các cặp số có thể rút gọn là $14$ và $21$ (cùng chia hết cho $7$), $36$ và $18$ (cùng chia hết cho $18$), $25$ và $40$ (cùng chia hết cho $5$).\nTa có:\n$\\dfrac{14}{40} \\times \\dfrac{36}{21} \\times \\dfrac{25}{18} = \\dfrac{14 \\times 36 \\times 25}{40 \\times 21 \\times 18}$\nPhân tích và rút gọn:\n$14$ (chia cho $7$) được $2$; $21$ (chia cho $7$) được $3$.\n$36$ (chia cho $18$) được $2$; $18$ (chia cho $18$) được $1$.\n$25$ (chia cho $5$) được $5$; $40$ (chia cho $5$) được $8$.\nVậy biểu thức trở thành:\n$= \\dfrac{2 \\times 2 \\times 5}{8 \\times 3 \\times 1}$\n$= \\dfrac{20}{24} = \\dfrac{5}{6}$.\nVậy đáp án đúng là C."
+   },
+   {
+    "ma_cau": "T14T180201042",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{20}{35} \\times \\dfrac{24}{10} \\times \\dfrac{42}{36}$",
+    "dap_an": "A",
+    "loi_giai": "Nhận xét : Các cặp số có thể rút gọn là $20$ và $10$ (cùng chia hết cho $10$), $42$ và $35$ (cùng chia hết cho $7$), $24$ và $36$ (cùng chia hết cho $12$).\nTa có:\n$\\dfrac{20}{35} \times \\dfrac{24}{10} \times \\dfrac{42}{36} = \\dfrac{20 \times 24 \times 42}{35 \times 10 \times 36}$\nPhân tích và rút gọn:\n$20$ (chia cho $10$) được $2$; $10$ (chia cho $10$) được $1$.\n$42$ (chia cho $7$) được $6$; $35$ (chia cho $7$) được $5$.\n$24$ (chia cho $12$) được $2$; $36$ (chia cho $12$) được $3$.\nVậy biểu thức trở thành:\n$= \\dfrac{2 \times 2 \times 6}{5 \times 1 \times 3}$\n$= \\dfrac{24}{15} = \\dfrac{8}{5}$.\nVậy đáp án đúng là A."
+   },
+   {
+    "ma_cau": "T14T180201043",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{15}{28} \\times \\dfrac{42}{25} \\times \\dfrac{14}{30}$",
+    "dap_an": "C",
+    "loi_giai": "Nhận xét : Các cặp số có thể rút gọn là $15$ và $25$ (cùng chia hết cho $5$), $42$ và $28$ (cùng chia hết cho $14$), $14$ và $30$ (cùng chia hết cho $2$).\nTa có:\n$\\dfrac{15}{28} \\times \\dfrac{42}{25} \\times \\dfrac{14}{30} = \\dfrac{15 \\times 42 \\times 14}{28 \\times 25 \\times 30}$\nPhân tích và rút gọn:\n$15$ (chia cho $5$) được $3$; $25$ (chia cho $5$) được $5$.\n$42$ (chia cho $14$) được $3$; $28$ (chia cho $14$) được $2$.\n$14$ (chia cho $2$) được $7$; $30$ (chia cho $2$) được $15$.\nVậy biểu thức trở thành:\n$= \\dfrac{3 \\times 3 \\times 7}{2 \\times 5 \\times 15}$\n$= \\dfrac{63}{150} = \\dfrac{21}{50}$.\nVậy đáp án đúng là C."
+   }
+  ]
+ },
+ {
+  "id": "NDB01568",
+  "ten": "Tính thuận tiện phân số kết hợp phép nhân",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01733",
+  "nhom": "2. Phép nhân phân số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01569",
+  "ten": "Tính giá trị biểu thức chứa phép nhân",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01733",
+  "nhom": "2. Phép nhân phân số",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": "Luôn lưu ý quy tắc về thứ tự phép tính\n\n* Nếu biểu thức có ngoặc, tính biểu thức trong ngoặc trước.\n* Nếu biểu thức không có ngoặc, ưu tiên nhân chia trước – cộng trừ sau.\n\nVí dụ 1. Tính $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6}$\n\nBài giải:\nBiểu thức không có ngoặc. Vậy ta phải thực hiện phép nhân trước.\nTính ngoài nháp, nhớ là 3 và 6 có thể rút gọn : $\\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{\\overset{1}{3} \\times 7}{5 \\times \\underset{2}{6}} = \\dfrac{1 \\times 7}{5 \\times 2} = \\dfrac{7}{10}$\nTa có $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{2}{5} + \\dfrac{7}{10} = \\dfrac{4}{10} + \\dfrac{7}{10} = \\dfrac{11}{10}$\nLỗi thường gặp của bài này là thực hiện phép cộng trước do $\\dfrac{2}{5} + \\dfrac{3}{5} = \\dfrac{5}{5} = 1$ rất đẹp.\n\nVí dụ 2. Tính $\\left( \\dfrac{2}{3} + \\dfrac{1}{2} \\right) \\times \\left( \\dfrac{1}{7} + \\dfrac{1}{5} \\right)$\n\nBài giải:\nBiểu thức này có ngoặc nên ta phải tính biểu thức trong ngoặc trước\nTa có $\\left( \\dfrac{2}{3} + \\dfrac{1}{2} \\right) \\times \\left( \\dfrac{1}{7} + \\dfrac{1}{5} \\right) = \\left( \\dfrac{4}{6} + \\dfrac{3}{6} \\right) \\times \\left( \\dfrac{5}{35} + \\dfrac{7}{35} \\right)$\n$= \\dfrac{7}{6} \\times \\dfrac{12}{35} = \\dfrac{\\overset{1}{7} \\times \\overset{2}{12}}{\\underset{1}{6} \\times \\underset{5}{35}} = \\dfrac{1 \\times 2}{1 \\times 5} = \\dfrac{2}{5}$",
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": [
+   {
+    "ma_cau": "T14T180203001",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6}$",
+    "dap_an": "B",
+    "loi_giai": "Tính ngoài nháp, nhớ là $3$ và $6$ có thể rút gọn : $\\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{3 \\times 7}{5 \\times 6} = \\dfrac{1 \\times 7}{5 \\times 2} = \\dfrac{7}{10}$\nTa có $\\dfrac{2}{5} + \\dfrac{3}{5} \\times \\dfrac{7}{6} = \\dfrac{2}{5} + \\dfrac{7}{10} = \\dfrac{4}{10} + \\dfrac{7}{10} = \\dfrac{11}{10}$"
+   },
+   {
+    "ma_cau": "T14T180203022",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\left(\\dfrac{2}{3} + \\dfrac{1}{2}\\right) \\times \\left(\\dfrac{1}{7} + \\dfrac{1}{5}\\right)$",
+    "dap_an": "C",
+    "loi_giai": "Biểu thức này có ngoặc nên ta phải tính biểu thức trong ngoặc trước\nTa có $\\left(\\dfrac{2}{3} + \\dfrac{1}{2}\\right) \\times \\left(\\dfrac{1}{7} + \\dfrac{1}{5}\\right)$\n$= \\left(\\dfrac{4}{6} + \\dfrac{3}{6}\\right) \\times \\left(\\dfrac{5}{35} + \\dfrac{7}{35}\\right)$\n$= \\dfrac{7}{6} \\times \\dfrac{12}{35}$\n$= \\dfrac{\\cancel{7}^{\\text{1}} \\times \\cancel{12}^{\\text{2}}}{\\cancel{6}^{\\text{1}} \\times \\cancel{35}^{\\text{5}}} = \\dfrac{2}{5}$"
+   },
+   {
+    "ma_cau": "T14T180203005",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{1}{6} + \\dfrac{5}{6} \\times \\dfrac{12}{25}$",
+    "dap_an": "B",
+    "loi_giai": "Tính ngoài nháp, nhớ là $5$ và $25$ (hoặc $6$ và $12$) có thể rút gọn : $\\dfrac{5}{6} \\times \\dfrac{12}{25} = \\dfrac{5 \\times 12}{6 \\times 25} = \\dfrac{1 \\times 2}{1 \\times 5} = \\dfrac{2}{5}$\nTa có $\\dfrac{1}{6} + \\dfrac{5}{6} \\times \\dfrac{12}{25} = \\dfrac{1}{6} + \\dfrac{2}{5} = \\dfrac{5}{30} + \\dfrac{12}{30} = \\dfrac{17}{30}$"
+   },
+   {
+    "ma_cau": "T14T180203003",
+    "ten_de_goc": null,
+    "noi_dung": "Tính $\\dfrac{3}{8} + \\dfrac{5}{8} \\times \\dfrac{4}{15}$",
+    "dap_an": "B",
+    "loi_giai": "Tính ngoài nháp, nhớ là $5$ và $15$ (hoặc $4$ và $8$) có thể rút gọn : $\\dfrac{5}{8} \\times \\dfrac{4}{15} = \\dfrac{5 \\times 4}{8 \\times 15} = \\dfrac{1 \\times 1}{2 \\times 3} = \\dfrac{1}{6}$\nTa có $\\dfrac{3}{8} + \\dfrac{5}{8} \\times \\dfrac{4}{15} = \\dfrac{3}{8} + \\dfrac{1}{6} = \\dfrac{9}{24} + \\dfrac{4}{24} = \\dfrac{13}{24}$"
+   }
+  ]
+ },
+ {
+  "id": "NDB01570",
+  "ten": "Tính biểu thức phân số chứa phép chia",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01734",
+  "nhom": "3. Phép chia phân số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01571",
+  "ten": "Tính thuận tiện phân số kết hợp phép chia",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "3. Các phép tính cơ bản với phân số",
+  "nhom_id": "NNB01734",
+  "nhom": "3. Phép chia phân số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01572",
+  "ten": "Dãy phân số dạng tích - Dãy đơn",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01735",
+  "nhom": "1. Dãy phân số dạng tích",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01573",
+  "ten": "Dãy phân số dạng tích -  Dãy kép",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01735",
+  "nhom": "1. Dãy phân số dạng tích",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01574",
+  "ten": "Dãy phân số dạng hiệu tích chuẩn",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01736",
+  "nhom": "2. Dãy phân số dạng Hiệu - tích",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01575",
+  "ten": "Dãy phân số dạng Hiệu - tích có tử số chưa chuẩn",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01736",
+  "nhom": "2. Dãy phân số dạng Hiệu - tích",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01576",
+  "ten": "Dãy phân số dạng Hiệu - tích có mẫu số chưa chuẩn",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01736",
+  "nhom": "2. Dãy phân số dạng Hiệu - tích",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01577",
+  "ten": "Bài toán tìm x áp dụng tính chất dãy phân số hiệu tích",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "4. Bài toán về dãy phân số",
+  "nhom_id": "NNB01736",
+  "nhom": "2. Dãy phân số dạng Hiệu - tích",
+  "thu_tu_dang": 4,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01578",
+  "ten": "Ứng dụng tính giá trị phân số của một số",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "5. Giá trị phân số của một số",
+  "nhom_id": "NNB01737",
+  "nhom": "1. Giá trị phân số của một số",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01579",
+  "ten": "Ứng dụng giá trị của phân số nhiều bước",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "5. Giá trị phân số của một số",
+  "nhom_id": "NNB01737",
+  "nhom": "1. Giá trị phân số của một số",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01580",
+  "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Hai đại lượng",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "6. Tìm một số khi biết giá trị phân số",
+  "nhom_id": "NNB01738",
+  "nhom": "1. Tìm đại lượng khi biết giá trị của phân số của đại lượng đó",
+  "thu_tu_dang": 1,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01581",
+  "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Ba đại lượng",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "6. Tìm một số khi biết giá trị phân số",
+  "nhom_id": "NNB01738",
+  "nhom": "1. Tìm đại lượng khi biết giá trị của phân số của đại lượng đó",
+  "thu_tu_dang": 2,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ },
+ {
+  "id": "NDB01582",
+  "ten": "Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Biết giá trị tổng hiệu các thành phần",
+  "chu_de": "6. Phân số",
+  "chuyen_de": "6. Tìm một số khi biết giá trị phân số",
+  "nhom_id": "NNB01738",
+  "nhom": "1. Tìm đại lượng khi biết giá trị của phân số của đại lượng đó",
+  "thu_tu_dang": 3,
+  "thieu": [
+   "mo_ta",
+   "ly_thuyet",
+   "vi_du"
+  ],
+  "cum_nghi_ngo": false,
+  "co_san": {
+   "mo_ta": null,
+   "ly_thuyet": null,
+   "vi_du": null,
+   "nhom_mo_ta": null,
+   "nhom_ly_thuyet": null
+  },
+  "cau_da_gan": []
+ }
+]

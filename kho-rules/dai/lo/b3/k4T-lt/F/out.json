@@ -1,0 +1,186 @@
+{
+ "nhom": [
+  {
+   "nhom_id": "NNB01732",
+   "ly_thuyet": "##TC Cộng, trừ hai phân số\nCùng mẫu số: cộng (trừ) hai tử số, giữ nguyên mẫu số. Ví dụ $\\dfrac{2}{7}+\\dfrac{3}{7}=\\dfrac{2+3}{7}=\\dfrac{5}{7}$.\nKhác mẫu số: quy đồng mẫu số rồi cộng (trừ) như trên.\n\n##TC Tính chất của phép cộng phân số\nGiao hoán: $\\dfrac{1}{3}+\\dfrac{2}{5}=\\dfrac{2}{5}+\\dfrac{1}{3}$.\nKết hợp: $\\left(\\dfrac{1}{3}+\\dfrac{2}{5}\\right)+\\dfrac{4}{5}=\\dfrac{1}{3}+\\left(\\dfrac{2}{5}+\\dfrac{4}{5}\\right)$.\n\n##CY\nKết quả phải rút gọn về phân số tối giản.\nSố tự nhiên viết thành phân số mẫu số $1$ (hoặc cùng mẫu với phân số kia): $3=\\dfrac{3}{1}=\\dfrac{12}{4}$.\nBiểu thức có ngoặc thì tính trong ngoặc trước; không có ngoặc thì tính từ trái sang phải."
+  },
+  {
+   "nhom_id": "NNB01733",
+   "ly_thuyet": "##TC Nhân hai phân số\nMuốn nhân hai phân số, ta lấy tử số nhân với tử số, mẫu số nhân với mẫu số: $\\dfrac{2}{3}\\times\\dfrac{4}{5}=\\dfrac{2\\times 4}{3\\times 5}=\\dfrac{8}{15}$.\nSố tự nhiên viết thành phân số mẫu số $1$ rồi nhân.\n\n##TC Rút gọn trước khi nhân\nSố nào ở tử số cũng có thể rút gọn với số nào ở mẫu số (kể cả khác phân số) nếu cùng chia hết cho một số lớn hơn $1$.\n\n##TC Tính chất của phép nhân phân số\nGiao hoán, kết hợp: được đổi chỗ, được nhóm các thừa số.\nNhân một số với một tổng: $\\dfrac{2}{3}\\times\\left(\\dfrac{1}{5}+\\dfrac{4}{5}\\right)=\\dfrac{2}{3}\\times\\dfrac{1}{5}+\\dfrac{2}{3}\\times\\dfrac{4}{5}$.\n\n##CY\nRút gọn TRƯỚC khi nhân để số nhỏ, đỡ sai.\nKết quả cuối phải là phân số tối giản."
+  },
+  {
+   "nhom_id": "NNB01734",
+   "ly_thuyet": "##TC Chia hai phân số\nMuốn chia phân số cho phân số, ta lấy phân số thứ nhất nhân với phân số đảo ngược của phân số thứ hai (đổi chỗ tử số và mẫu số): $\\dfrac{2}{3}:\\dfrac{4}{5}=\\dfrac{2}{3}\\times\\dfrac{5}{4}=\\dfrac{10}{12}=\\dfrac{5}{6}$.\n\n##TC Chia với số tự nhiên\nPhân số chia cho số tự nhiên: $\\dfrac{3}{5}:2=\\dfrac{3}{5}\\times\\dfrac{1}{2}=\\dfrac{3}{10}$.\nSố tự nhiên chia cho phân số: $4:\\dfrac{2}{3}=4\\times\\dfrac{3}{2}=6$.\n\n##TC Chia một tổng (hiệu) cho một số\n$\\left(\\dfrac{2}{5}+\\dfrac{3}{5}\\right):\\dfrac{7}{4}=\\dfrac{2}{5}:\\dfrac{7}{4}+\\dfrac{3}{5}:\\dfrac{7}{4}$.\n\n##CY\nChỉ đảo ngược phân số đứng NGAY SAU dấu chia, không đảo số bị chia.\nBiểu thức chỉ có nhân và chia thì tính từ trái sang phải."
+  },
+  {
+   "nhom_id": "NNB01735",
+   "ly_thuyet": "##TC Dãy phân số nhân nối tiếp\nViết tích thành một phân số: tử số là tích các tử số, mẫu số là tích các mẫu số, chưa vội nhân ra.\nSố nào ở tử số và số giống hệt ở mẫu số thì gạch bỏ cho nhau (chia cả hai cho chính số đó).\n\n##TC Quy luật triệt tiêu\nKhi tử số của phân số sau bằng mẫu số của phân số đứng trước, các số ở giữa gạch hết, chỉ còn tử số của phân số đầu và mẫu số của phân số cuối: $\\dfrac{2}{3}\\times\\dfrac{3}{4}\\times\\dfrac{4}{5}=\\dfrac{2}{5}$.\n\n##CY\nKiểm tra quy luật trước khi gạch, và gạch đúng cặp số giống nhau.\nĐếm đúng số thừa số: số đầu và số cuối của dãy cho biết kết quả."
+  },
+  {
+   "nhom_id": "NNB01736",
+   "ly_thuyet": "##TC Tách phân số thành hiệu hai phân số\nKhi tử số bằng hiệu của hai thừa số ở mẫu số thì tách được thành hiệu hai phân số:\n$\\dfrac{1}{2\\times 3}=\\dfrac{3-2}{2\\times 3}=\\dfrac{3}{2\\times 3}-\\dfrac{2}{2\\times 3}=\\dfrac{1}{2}-\\dfrac{1}{3}$.\n$\\dfrac{2}{3\\times 5}=\\dfrac{5-3}{3\\times 5}=\\dfrac{1}{3}-\\dfrac{1}{5}$.\n\n##TC Cộng cả dãy\nSau khi tách, các số hạng liền nhau triệt tiêu nhau, chỉ còn số hạng đầu và số hạng cuối:\n$\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}=\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}=\\dfrac{1}{2}-\\dfrac{1}{5}$.\n\n##CY\nHai thừa số ở mẫu số của số hạng sau phải bắt đầu bằng thừa số cuối của số hạng trước (2×3, 3×4, 4×5, …).\nHiệu hai thừa số ở mẫu số của mọi số hạng phải bằng nhau."
+  },
+  {
+   "nhom_id": "NNB01737",
+   "ly_thuyet": "##TC Tìm giá trị phân số của một số\nMuốn tìm $\\dfrac{2}{5}$ của $750$ lít, ta lấy $750$ nhân với $\\dfrac{2}{5}$: $750\\times\\dfrac{2}{5}=300$ (lít).\nMuốn tìm một phân số của một số, ta lấy số đó nhân với phân số.\n\n##TC Phần còn lại\nĐã dùng $\\dfrac{1}{4}$ và $\\dfrac{1}{3}$ của tổng thì phần còn lại chiếm $1-\\left(\\dfrac{1}{4}+\\dfrac{1}{3}\\right)$ của tổng.\n\n##CY\nCác phân số \"của tổng\" đều lấy cùng một tổng ban đầu, trừ khi đề nói \"của số còn lại\"."
+  },
+  {
+   "nhom_id": "NNB01738",
+   "ly_thuyet": "##TC Tìm một số khi biết giá trị phân số của số đó\nBiết $\\dfrac{3}{8}$ của một số bằng $24$ thì số đó là $24:\\dfrac{3}{8}=64$.\nMuốn tìm một số biết giá trị một phân số của nó, ta lấy giá trị đó chia cho phân số.\n\n##TC Quy các phần về cùng một tổng\nGiá trị đề cho ứng với phần nào của tổng thì tìm phân số của đúng phần đó:\nphần còn lại $=1-$ (các phần đã dùng); phần hơn kém $=$ hiệu hai phân số.\n\n##CY\nChia giá trị đã biết cho phân số ỨNG VỚI NÓ, không phải phân số đề cho đầu tiên.\n\"Của số còn lại\" thì phân số ấy lấy trên số còn lại, phải đổi về phần của tổng ban đầu rồi mới trừ."
+  }
+ ],
+ "dang": [
+  {
+   "id": "NDB01564",
+   "mo_ta": "Đề bài cho đúng hai phân số (có thể một số là số tự nhiên) nối với nhau bằng một dấu cộng hoặc một dấu trừ và hỏi giá trị của phép tính. Khác dạng \"Phép cộng trừ nhiều phân số\": ở đây chỉ có hai số, một phép tính, chỉ cần tìm mẫu số chung của hai mẫu.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính: a) $\\dfrac{2}{3}+\\dfrac{3}{4}$; b) $\\dfrac{3}{4}-\\dfrac{2}{3}$.\n**Hướng dẫn giải:**\nHai mẫu số $3$ và $4$ không cùng chia hết cho số nào lớn hơn $1$ nên mẫu số chung là $3\\times 4=12$. Quy đồng rồi cộng (trừ) hai tử số.\n\na) $\\dfrac{2}{3}+\\dfrac{3}{4}=\\dfrac{8}{12}+\\dfrac{9}{12}=\\dfrac{17}{12}$\n\nb) $\\dfrac{3}{4}-\\dfrac{2}{3}=\\dfrac{9}{12}-\\dfrac{8}{12}=\\dfrac{1}{12}$",
+   "nguon_vd": "sach VD 18.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01565",
+   "mo_ta": "Đề bài cho biểu thức có từ ba phân số trở lên, chỉ có phép cộng và trừ (có thể có ngoặc) và hỏi giá trị; phải quy đồng tất cả về một mẫu số chung. Khác dạng \"Phép cộng trừ hai phân số\": có từ ba phân số trở lên. Khác dạng \"Tính thuận tiện biểu thức phân số dạng tổng hiệu\": ở đó đề yêu cầu tính thuận tiện và có các mẫu số trùng nhau để nhóm, ở đây cứ quy đồng rồi tính.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính: $\\dfrac{3}{4}+\\dfrac{7}{5}-\\dfrac{3}{10}$.\n**Hướng dẫn giải:**\nBa mẫu số là $4$; $5$; $10$. Số nhỏ nhất chia hết cho cả ba số là $20$ nên mẫu số chung là $20$. Quy đồng cả ba phân số rồi cộng trừ các tử số từ trái sang phải.\n\n$\\dfrac{3}{4}+\\dfrac{7}{5}-\\dfrac{3}{10}=\\dfrac{15}{20}+\\dfrac{28}{20}-\\dfrac{6}{20}=\\dfrac{37}{20}$",
+   "nguon_vd": "sach VD 18.2",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01566",
+   "mo_ta": "Đề bài cho một biểu thức cộng trừ nhiều phân số và yêu cầu \"tính bằng cách thuận tiện\". Dấu hiệu: có các phân số CÙNG MẪU SỐ rải rác trong biểu thức, nhóm lại thì ra số tự nhiên. Khác dạng \"Phép cộng trừ nhiều phân số\": ở đó quy đồng tất cả, ở đây đổi chỗ và nhóm các phân số cùng mẫu.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính bằng cách thuận tiện: $\\dfrac{10}{7}+\\dfrac{4}{9}+\\dfrac{4}{7}+\\dfrac{5}{9}$.\n**Hướng dẫn giải:**\nTrong biểu thức có hai phân số mẫu $7$ và hai phân số mẫu $9$. Đổi chỗ để nhóm các phân số cùng mẫu số lại với nhau rồi cộng trong từng ngoặc.\n\n$\\dfrac{10}{7}+\\dfrac{4}{9}+\\dfrac{4}{7}+\\dfrac{5}{9}$\n\n$=\\left(\\dfrac{10}{7}+\\dfrac{4}{7}\\right)+\\left(\\dfrac{4}{9}+\\dfrac{5}{9}\\right)$\n\n$=\\dfrac{14}{7}+\\dfrac{9}{9}$\n\n$=2+1=3$",
+   "nguon_vd": "sach LT 18.8",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01567",
+   "mo_ta": "Đề bài cho tích của ba hay nhiều phân số (chỉ có phép nhân) và hỏi giá trị; các tử số và mẫu số có nhiều cặp rút gọn được với nhau. Khác dạng \"Dãy phân số dạng tích - Dãy đơn\": số thừa số ít, không theo quy luật \"tử sau bằng mẫu trước\".",
+   "ly_thuyet": "##PP\nViết tích thành một phân số: tử số là tích các tử số, mẫu số là tích các mẫu số (chưa vội nhân ra).\nTìm các cặp một số ở tử số và một số ở mẫu số cùng chia hết cho một số lớn hơn $1$, kể cả khi chúng thuộc hai phân số khác nhau, rồi chia cả hai cho số đó.\nNhân các số còn lại ở tử số và ở mẫu số, rút gọn tiếp nếu còn rút gọn được.\n\n##CY\nRút gọn trước khi nhân, đừng nhân ra số lớn rồi mới rút gọn.\nChỉ rút gọn giữa một số ở tử số và một số ở mẫu số, không rút gọn hai số cùng ở tử số.\nSố bị rút gọn hết thì còn lại $1$, không bỏ trống.",
+   "vi_du": "##VD\nTính: $\\dfrac{5}{17}\\times\\dfrac{21}{4}\\times\\dfrac{34}{15}\\times\\dfrac{1}{7}$.\n**Hướng dẫn giải:**\nViết cả tích thành một phân số rồi tìm các cặp cùng chia hết cho một số: $5$ và $15$ (cho $5$), $21$ và $7$ (cho $7$), $34$ và $17$ (cho $17$).\n\n$\\dfrac{5}{17}\\times\\dfrac{21}{4}\\times\\dfrac{34}{15}\\times\\dfrac{1}{7}=\\dfrac{5\\times 21\\times 34\\times 1}{17\\times 4\\times 15\\times 7}$\n\n$=\\dfrac{1\\times 3\\times 2\\times 1}{1\\times 4\\times 3\\times 1}$\n\n$=\\dfrac{6}{12}=\\dfrac{1}{2}$",
+   "nguon_vd": "sach LT 19.2",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01568",
+   "mo_ta": "Đề bài cho biểu thức gồm các tích phân số cộng hoặc trừ nhau và yêu cầu tính bằng cách thuận tiện. Dấu hiệu: một phân số xuất hiện ở tất cả các tích (thừa số chung), phần còn lại cùng mẫu hoặc cộng lại ra số tròn. Khác dạng \"Tính giá trị biểu thức chứa phép nhân\": ở đó tính theo thứ tự phép tính, ở đây đặt thừa số chung ra ngoài ngoặc.",
+   "ly_thuyet": "##TC Đặt thừa số chung\nMột số nhân với một tổng: $\\dfrac{2}{3}\\times\\dfrac{1}{5}+\\dfrac{2}{3}\\times\\dfrac{2}{5}=\\dfrac{2}{3}\\times\\left(\\dfrac{1}{5}+\\dfrac{2}{5}\\right)$.\nTương tự với hiệu.\n\n##PP\nTìm phân số xuất hiện ở tất cả các tích (được đổi chỗ các thừa số trong từng tích).\nViết thừa số chung ra ngoài, các thừa số còn lại gom vào trong ngoặc, giữ nguyên dấu cộng, trừ trước mỗi tích.\nTính trong ngoặc (thường cùng mẫu số, hay ra $1$), rồi nhân.\n\n##CY\nDấu cộng, trừ trước mỗi tích giữ nguyên khi gom vào ngoặc.\nNếu thừa số chung nằm ở vị trí khác nhau trong các tích thì đổi chỗ cho giống nhau trước (phép nhân giao hoán).",
+   "vi_du": "##VD\nTính bằng cách thuận tiện: $\\dfrac{8}{9}\\times\\dfrac{4}{11}+\\dfrac{8}{9}\\times\\dfrac{5}{11}+\\dfrac{8}{9}\\times\\dfrac{2}{11}$.\n**Hướng dẫn giải:**\nPhân số $\\dfrac{8}{9}$ có mặt ở cả ba tích nên đặt ra ngoài ngoặc. Ba phân số còn lại cùng mẫu số $11$ nên cộng lại được số tròn.\n\n$\\dfrac{8}{9}\\times\\dfrac{4}{11}+\\dfrac{8}{9}\\times\\dfrac{5}{11}+\\dfrac{8}{9}\\times\\dfrac{2}{11}$\n\n$=\\dfrac{8}{9}\\times\\left(\\dfrac{4}{11}+\\dfrac{5}{11}+\\dfrac{2}{11}\\right)$\n\n$=\\dfrac{8}{9}\\times\\dfrac{11}{11}$\n\n$=\\dfrac{8}{9}\\times 1=\\dfrac{8}{9}$",
+   "nguon_vd": "sach VD 19.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01569",
+   "mo_ta": "Đề bài cho biểu thức có phép nhân xen với phép cộng hoặc trừ phân số (có thể có ngoặc) và hỏi giá trị; phải tính theo thứ tự phép tính (nhân trước, cộng trừ sau, ngoặc trước). Khác dạng \"Tính thuận tiện phân số kết hợp phép nhân\": ở đó số liệu cho phép đặt thừa số chung, ở đây tính từng bước theo thứ tự. Khác dạng \"Tính biểu thức phân số chứa phép chia\": ở đây không có phép chia.",
+   "ly_thuyet": null,
+   "vi_du": "##VD\nTính: $\\dfrac{1}{2}\\times\\dfrac{1}{5}+\\dfrac{1}{5}$.\n**Hướng dẫn giải:**\nBiểu thức không có ngoặc, có cả nhân và cộng nên tính phép nhân trước, rồi mới cộng.\n\n$\\dfrac{1}{2}\\times\\dfrac{1}{5}+\\dfrac{1}{5}=\\dfrac{1}{10}+\\dfrac{1}{5}$\n\n$=\\dfrac{1}{10}+\\dfrac{2}{10}=\\dfrac{3}{10}$",
+   "nguon_vd": "sach LT 19.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01570",
+   "mo_ta": "Đề bài cho biểu thức có phép chia phân số (có thể xen nhân, cộng, trừ, ngoặc) và hỏi giá trị: đổi phép chia thành nhân với phân số đảo ngược. Khác dạng \"Tính thuận tiện phân số kết hợp phép chia\": ở đó các phép chia có chung số chia để nhóm lại, ở đây tính theo thứ tự phép tính.",
+   "ly_thuyet": "##PP\nNhân và chia cùng cấp nên tính từ trái sang phải; có ngoặc thì tính trong ngoặc trước; có cộng trừ thì nhân chia trước.\nĐổi mỗi phép chia thành phép nhân với phân số đảo ngược của số chia.\nRút gọn rồi nhân, kết quả viết dưới dạng phân số tối giản.\n\n##CY\nChỉ đảo ngược phân số đứng ngay sau dấu chia, không đảo số bị chia.\nĐề không có ngoặc thì không tự nhóm các số sau dấu chia: $\\dfrac{2}{9}:\\dfrac{2}{3}\\times\\dfrac{1}{2}$ khác $\\dfrac{2}{9}:\\left(\\dfrac{2}{3}\\times\\dfrac{1}{2}\\right)$.",
+   "vi_du": "##VD\nTính: $\\dfrac{2}{9}:\\dfrac{2}{3}\\times\\dfrac{1}{2}$.\n**Hướng dẫn giải:**\nPhép chia và phép nhân cùng cấp nên tính từ trái sang phải. Đổi phép chia $\\dfrac{2}{9}:\\dfrac{2}{3}$ thành nhân với phân số đảo ngược của $\\dfrac{2}{3}$.\n\n$\\dfrac{2}{9}:\\dfrac{2}{3}\\times\\dfrac{1}{2}$\n\n$=\\dfrac{2}{9}\\times\\dfrac{3}{2}\\times\\dfrac{1}{2}$\n\n$=\\dfrac{2\\times 3\\times 1}{9\\times 2\\times 2}=\\dfrac{6}{36}$\n\n$=\\dfrac{1}{6}$",
+   "nguon_vd": "sach LT 19.1",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01571",
+   "mo_ta": "Đề bài cho các phép chia cùng một số chia (cùng một phân số đứng sau dấu chia) nối nhau bằng dấu cộng, trừ và yêu cầu tính thuận tiện: gom các số bị chia lại rồi chia một lần. Khác dạng \"Tính biểu thức phân số chứa phép chia\": ở đó các số chia khác nhau, đổi từng phép chia thành phép nhân và tính tuần tự.",
+   "ly_thuyet": "##TC Chia một tổng (hiệu) cho một số\n$\\left(\\dfrac{4}{5}+\\dfrac{3}{5}\\right):\\dfrac{7}{2}=\\dfrac{4}{5}:\\dfrac{7}{2}+\\dfrac{3}{5}:\\dfrac{7}{2}$, nên đọc ngược lại cũng được: gom các số bị chia vào ngoặc rồi chia một lần.\n\n##PP\nKiểm tra các phép chia đều có cùng một số chia.\nGom các số bị chia vào trong ngoặc, giữ nguyên dấu cộng, trừ trước mỗi số bị chia; số chia viết một lần ngoài ngoặc.\nTính trong ngoặc (thường cùng mẫu số, hay ra $1$), rồi thực hiện phép chia.\n\n##CY\nChỉ gom được khi số chia GIỐNG HỆT nhau ở mọi phép chia.\nDấu trước mỗi số bị chia giữ nguyên khi vào ngoặc.",
+   "vi_du": "##VD\nTính bằng cách thuận tiện: $\\dfrac{46}{27}:\\dfrac{7}{8}-\\dfrac{21}{27}:\\dfrac{7}{8}+\\dfrac{2}{27}:\\dfrac{7}{8}$.\n**Hướng dẫn giải:**\nCả ba phép chia đều chia cho $\\dfrac{7}{8}$ nên gom ba số bị chia vào ngoặc rồi chia một lần cho $\\dfrac{7}{8}$.\n\n$\\dfrac{46}{27}:\\dfrac{7}{8}-\\dfrac{21}{27}:\\dfrac{7}{8}+\\dfrac{2}{27}:\\dfrac{7}{8}$\n\n$=\\left(\\dfrac{46}{27}-\\dfrac{21}{27}+\\dfrac{2}{27}\\right):\\dfrac{7}{8}$\n\n$=\\dfrac{27}{27}:\\dfrac{7}{8}=1:\\dfrac{7}{8}$\n\n$=1\\times\\dfrac{8}{7}=\\dfrac{8}{7}$",
+   "nguon_vd": "sach LT 19.6",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01572",
+   "mo_ta": "Đề bài cho tích của nhiều phân số liên tiếp, có quy luật: tử số của phân số sau bằng mẫu số của phân số trước (hoặc viết gọn bằng dấu \"…\"), và hỏi giá trị. Mỗi thừa số đã là một phân số. Khác dạng \"Dãy phân số dạng tích - Dãy kép\": ở đó mỗi thừa số là một biểu thức dạng \"1 trừ phân số\" phải đổi thành phân số trước. Khác \"Chuỗi tích các phân số\": ở đó số thừa số ít, rút gọn từng cặp.",
+   "ly_thuyet": "##PP\nKiểm tra quy luật: tử số của mỗi phân số bằng mẫu số của phân số đứng trước.\nViết cả tích thành một phân số: tử số là tích các tử số, mẫu số là tích các mẫu số (viết hết, chưa nhân).\nGạch các số giống nhau ở tử số và mẫu số; còn lại tử số của phân số đầu, mẫu số của phân số cuối.\n\n##CY\nGạch từng cặp số giống hệt nhau; số nào không có cặp thì để lại.\nPhân số đầu có thể có tử số khác $1$: đừng bỏ sót.",
+   "vi_du": "##VD\nTính: $\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\dfrac{3}{4}\\times\\dfrac{4}{5}\\times\\dfrac{5}{6}\\times\\dfrac{6}{7}\\times\\dfrac{7}{8}\\times\\dfrac{8}{9}$.\n**Hướng dẫn giải:**\nTử số của mỗi phân số bằng mẫu số của phân số đứng trước nên khi viết cả tích thành một phân số, các số ở giữa gạch bỏ cho nhau.\n\n$\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\dfrac{3}{4}\\times\\dfrac{4}{5}\\times\\dfrac{5}{6}\\times\\dfrac{6}{7}\\times\\dfrac{7}{8}\\times\\dfrac{8}{9}$\n\n$=\\dfrac{1\\times 2\\times 3\\times 4\\times 5\\times 6\\times 7\\times 8}{2\\times 3\\times 4\\times 5\\times 6\\times 7\\times 8\\times 9}$\n\n$=\\dfrac{1}{9}$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Tên \"dãy đơn/dãy kép\" không có trong sách; tôi hiểu ĐƠN = mỗi thừa số đã là phân số kiểu n/(n+1) (tử sau = mẫu trước), KÉP = mỗi thừa số là một biểu thức dạng (1 − 1/n) hay (1 + 1/n) phải đổi thành phân số trước (PTL 5 bài 5b). Nếu CEO hiểu kép là khác (vd tích hai dãy xen kẽ) thì nội dung dạng này cần sửa. Ví dụ dạng đơn do tôi dựng (sách không có bài đúng dạng)."
+  },
+  {
+   "id": "NDB01573",
+   "mo_ta": "Đề bài cho tích nhiều thừa số, mỗi thừa số là một ngoặc dạng \"1 trừ một phân số\" (hoặc \"1 cộng một phân số\"), và hỏi giá trị. Cần đổi mỗi ngoặc thành một phân số rồi mới thấy quy luật triệt tiêu. Khác dạng \"Dãy phân số dạng tích - Dãy đơn\": ở đó các thừa số đã là phân số.",
+   "ly_thuyet": "##TC Đổi ngoặc thành phân số\n$1-\\dfrac{1}{2}=\\dfrac{1}{2}$; $1-\\dfrac{1}{3}=\\dfrac{2}{3}$; $1-\\dfrac{1}{4}=\\dfrac{3}{4}$; ... Tử số mới bằng mẫu số trừ $1$.\n$1+\\dfrac{1}{2}=\\dfrac{3}{2}$; $1+\\dfrac{1}{3}=\\dfrac{4}{3}$; ... Tử số mới bằng mẫu số cộng $1$.\n\n##PP\nĐổi từng ngoặc thành một phân số (viết $1$ dưới dạng phân số cùng mẫu).\nViết cả tích thành một phân số, tìm quy luật tử số sau bằng mẫu số trước.\nGạch các số giống nhau; còn lại tử số của phân số đầu và mẫu số của phân số cuối.\n\n##CY\nĐổi hết ngoặc trước rồi mới gạch, không gạch khi còn dấu trừ trong ngoặc.\nSố các thừa số tính theo ngoặc đầu và ngoặc cuối: ngoặc cuối quyết định mẫu số của kết quả.",
+   "vi_du": "##VD\nTính: $\\left(1-\\dfrac{1}{2}\\right)\\times\\left(1-\\dfrac{1}{3}\\right)\\times\\left(1-\\dfrac{1}{4}\\right)\\times\\ldots\\times\\left(1-\\dfrac{1}{20}\\right)$.\n**Hướng dẫn giải:**\nĐổi mỗi ngoặc thành một phân số: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$, $1-\\dfrac{1}{3}=\\dfrac{2}{3}$, ... Khi đó tử số của phân số sau bằng mẫu số của phân số trước nên các số ở giữa gạch bỏ cho nhau.\n\nTa có: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$; $1-\\dfrac{1}{3}=\\dfrac{2}{3}$; $1-\\dfrac{1}{4}=\\dfrac{3}{4}$; ...; $1-\\dfrac{1}{20}=\\dfrac{19}{20}$\n\nDo đó biểu thức bằng $\\dfrac{1}{2}\\times\\dfrac{2}{3}\\times\\dfrac{3}{4}\\times\\ldots\\times\\dfrac{19}{20}$\n\n$=\\dfrac{1\\times 2\\times 3\\times\\ldots\\times 19}{2\\times 3\\times 4\\times\\ldots\\times 20}$\n\n$=\\dfrac{1}{20}$",
+   "nguon_vd": "sach PTL 5 (bài 5b)",
+   "ghi_chu": "Xem ghi chú dạng \"Dãy đơn\": cách hiểu đơn/kép là của tôi, cần CEO xác nhận. Ví dụ lấy từ phiếu tự luyện 5, bài 5b (sách không có lời giải; lời giải do tôi viết, đã kiểm: tích = 1/20)."
+  },
+  {
+   "id": "NDB01574",
+   "mo_ta": "Đề bài cho tổng của dãy phân số có tử số là $1$ (hoặc tử số bằng hiệu hai thừa số ở mẫu) và mẫu số là tích hai số liên tiếp trong dãy cách đều: $\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\ldots$. Khác dạng \"tử số chưa chuẩn\": ở đây tử số ĐÃ bằng hiệu hai thừa số ở mẫu, tách ngay được. Khác dạng \"mẫu số chưa chuẩn\": ở đây mẫu số đã viết sẵn dạng tích hai thừa số.",
+   "ly_thuyet": "##PP\nKiểm tra: hiệu hai thừa số ở mẫu số của mỗi số hạng bằng tử số (ví dụ $3-2=1$, $5-3=2$).\nTách mỗi phân số thành hiệu hai phân số: viết tử số thành hiệu hai thừa số ở mẫu rồi tách.\nViết cả dãy, gạch các phân số liền nhau triệt tiêu nhau, còn lại số hạng đầu trừ số hạng cuối.\nTính hiệu còn lại.\n\n##CY\nChỉ còn lại số đầu và số cuối: đừng gạch nhầm cả số đầu hoặc số cuối.\nSố hạng cuối là $\\dfrac{1}{20}$ chứ không phải $\\dfrac{1}{19\\times 20}$ khi viết kết quả.",
+   "vi_du": "##VD\nTính: $A=\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\ldots+\\dfrac{1}{19\\times 20}$.\n**Hướng dẫn giải:**\nMỗi tử số $1$ bằng hiệu hai thừa số ở mẫu số ($3-2=1$; $4-3=1$; ...) nên viết tử số thành hiệu rồi tách thành hiệu hai phân số. Các phân số liền nhau triệt tiêu, chỉ còn số đầu và số cuối.\n\n$A=\\dfrac{3-2}{2\\times 3}+\\dfrac{4-3}{3\\times 4}+\\dfrac{5-4}{4\\times 5}+\\ldots+\\dfrac{20-19}{19\\times 20}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\ldots+\\dfrac{1}{19}-\\dfrac{1}{20}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{20}=\\dfrac{10}{20}-\\dfrac{1}{20}$\n\n$A=\\dfrac{9}{20}$",
+   "nguon_vd": "sach VD 19.3",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01575",
+   "mo_ta": "Đề bài cho dãy phân số có mẫu số là tích hai thừa số cách đều nhau nhưng tử số KHÔNG bằng hiệu hai thừa số ở mẫu (tử gấp mấy lần hiệu, hoặc nhỏ hơn hiệu), ví dụ $\\dfrac{4}{1\\times 3}+\\dfrac{4}{3\\times 5}+\\ldots$ (hiệu là $2$, tử là $4$). Khác dạng \"hiệu tích chuẩn\": phải biến đổi tử số trước (đưa thừa số chung ra ngoài). Khác dạng \"mẫu số chưa chuẩn\": mẫu số đã viết sẵn dạng tích, chỉ tử số lệch.",
+   "ly_thuyet": "##PP\nTính hiệu hai thừa số ở mẫu số (phải bằng nhau ở mọi số hạng).\nSo sánh tử số với hiệu đó: tử số gấp $k$ lần hiệu thì đặt $k$ ra ngoài làm thừa số chung, trong ngoặc còn dãy có tử số bằng hiệu.\nTách dãy trong ngoặc thành hiệu các phân số, triệt tiêu, còn số đầu và số cuối.\nNhân kết quả trong ngoặc với thừa số $k$ ở ngoài.\n\n##CY\nĐừng quên nhân với $k$ ở bước cuối.\nNếu tử số bé hơn hiệu (ví dụ tử $1$, hiệu $2$) thì nhân cả dãy với hiệu rồi chia lại cho hiệu ở cuối.",
+   "vi_du": "##VD\nTính: $E=\\dfrac{4}{1\\times 3}+\\dfrac{4}{3\\times 5}+\\dfrac{4}{5\\times 7}+\\ldots+\\dfrac{4}{99\\times 101}$.\n**Hướng dẫn giải:**\nHiệu hai thừa số ở mẫu số là $3-1=2$ nhưng tử số là $4$, gấp $2$ lần hiệu. Đặt $2$ ra ngoài thì trong ngoặc tử số bằng hiệu, tách được thành hiệu hai phân số.\n\n$E=2\\times\\left(\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+\\ldots+\\dfrac{2}{99\\times 101}\\right)$\n\n$E=2\\times\\left(1-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{7}+\\ldots+\\dfrac{1}{99}-\\dfrac{1}{101}\\right)$\n\n$E=2\\times\\left(1-\\dfrac{1}{101}\\right)=2\\times\\dfrac{100}{101}$\n\n$E=\\dfrac{200}{101}$",
+   "nguon_vd": "sach LT 19.15 (E)",
+   "ghi_chu": "Cách hiểu \"tử số chưa chuẩn\" = tử số khác hiệu hai thừa số ở mẫu (thường gấp k lần). Cần CEO xác nhận. Lời giải do tôi viết (sách không có), đã kiểm E = 200/101."
+  },
+  {
+   "id": "NDB01576",
+   "mo_ta": "Đề bài cho dãy phân số tử số $1$ nhưng mẫu số viết ra số (2; 6; 12; 20; 30; ...), chưa ở dạng tích; phải phân tích mỗi mẫu số thành tích hai số liên tiếp ($2=1\\times 2$; $6=2\\times 3$; ...) mới làm được. Khác dạng \"hiệu tích chuẩn\": ở đây mẫu số chưa viết sẵn dạng tích.",
+   "ly_thuyet": "##PP\nPhân tích từng mẫu số thành tích hai số tự nhiên liên tiếp: $2=1\\times 2$; $6=2\\times 3$; $12=3\\times 4$; $20=4\\times 5$; ...\nViết lại dãy với mẫu số dạng tích, kiểm tra hiệu hai thừa số bằng tử số.\nTách mỗi phân số thành hiệu hai phân số, triệt tiêu, còn số đầu trừ số cuối.\n\n##CY\nSố hạng đầu $\\dfrac{1}{2}$ là $\\dfrac{1}{1\\times 2}$, đừng bỏ qua thừa số $1$.\nNhận biết nhanh các tích hai số liên tiếp: $2; 6; 12; 20; 30; 42; 56; 72; 90; 110$.",
+   "vi_du": "##VD\nTính: $D=\\dfrac{1}{2}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{20}+\\dfrac{1}{30}+\\dfrac{1}{42}+\\dfrac{1}{56}+\\dfrac{1}{72}+\\dfrac{1}{90}$.\n**Hướng dẫn giải:**\nCác mẫu số $2; 6; 12; 20; ...; 90$ đều là tích của hai số liên tiếp. Viết mỗi mẫu số thành tích rồi tách phân số như dãy có mẫu số dạng tích.\n\nTa có: $2=1\\times 2$; $6=2\\times 3$; $12=3\\times 4$; $20=4\\times 5$; $30=5\\times 6$; $42=6\\times 7$; $56=7\\times 8$; $72=8\\times 9$; $90=9\\times 10$\n\n$D=\\dfrac{1}{1\\times 2}+\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\ldots+\\dfrac{1}{9\\times 10}$\n\n$D=1-\\dfrac{1}{2}+\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\ldots+\\dfrac{1}{9}-\\dfrac{1}{10}$\n\n$D=1-\\dfrac{1}{10}=\\dfrac{9}{10}$",
+   "nguon_vd": "sach LT 19.15 (D)",
+   "ghi_chu": "Cách hiểu \"mẫu số chưa chuẩn\" = mẫu số là các tích 2 số liên tiếp nhưng viết ra kết quả. Cần CEO xác nhận. Sách có dãy này (LT 19.15 D, PTL 5 bài 5d); lời giải do tôi viết, đã kiểm D = 9/10."
+  },
+  {
+   "id": "NDB01577",
+   "mo_ta": "Đề bài cho phép tính có một thành phần chưa biết $x$, trong đó có một dãy phân số hiệu - tích (tử số bằng hiệu hai thừa số ở mẫu) nằm ở một vế, và hỏi giá trị của $x$. Phải tính dãy trước rồi mới tìm thành phần chưa biết. Khác các dạng dãy hiệu - tích khác: ở đó đề hỏi giá trị của dãy, ở đây hỏi $x$.",
+   "ly_thuyet": "##TC Tìm thành phần chưa biết\nSố hạng $=$ tổng $-$ số hạng kia. Số bị trừ $=$ hiệu $+$ số trừ. Số trừ $=$ số bị trừ $-$ hiệu.\nThừa số $=$ tích $:$ thừa số kia. Số bị chia $=$ thương $\\times$ số chia. Số chia $=$ số bị chia $:$ thương.\n\n##PP\nTính giá trị của dãy phân số trong ngoặc (tách thành hiệu, triệt tiêu).\nViết lại phép tính chỉ còn $x$ và một số, xác định $x$ là thành phần nào (số hạng, số bị trừ, thừa số, ...).\nÁp dụng quy tắc tìm thành phần chưa biết rồi tính.\n\n##CY\nTính cả dãy trong ngoặc trước, không chuyển từng phân số.\nXác định đúng $x$ là số bị trừ hay số trừ trước khi chọn phép tính.",
+   "vi_du": "##VD\nTìm $x$, biết: $x-\\left(\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}\\right)=\\dfrac{1}{2}$.\n**Hướng dẫn giải:**\nTính trước giá trị của dãy trong ngoặc bằng cách tách mỗi phân số thành hiệu hai phân số. Sau đó $x$ là số bị trừ, nên $x$ bằng hiệu cộng số trừ.\n\nGiá trị của dãy trong ngoặc là: $\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\dfrac{1}{5\\times 6}=\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{6}=\\dfrac{1}{2}-\\dfrac{1}{6}=\\dfrac{1}{3}$\n\nTa có $x-\\dfrac{1}{3}=\\dfrac{1}{2}$\n\n$x=\\dfrac{1}{2}+\\dfrac{1}{3}$ ($x$ là số bị trừ)\n\n$x=\\dfrac{3}{6}+\\dfrac{2}{6}=\\dfrac{5}{6}$\n\nVậy $x=\\dfrac{5}{6}$",
+   "nguon_vd": "mo_phong",
+   "ghi_chu": "Sách không có bài tìm x với dãy hiệu - tích; ví dụ tôi dựng theo khuôn sách, đã kiểm dãy = 1/3 và x = 5/6 (5/6 − 1/3 = 1/2)."
+  },
+  {
+   "id": "NDB01578",
+   "mo_ta": "Đề bài cho một số (toàn thể) và cho biết một phân số \"của số đó\", hỏi giá trị của phần ấy hoặc phần còn lại; chỉ cần một phép nhân (có thể thêm một phép trừ). Khác dạng \"Ứng dụng giá trị của phân số nhiều bước\": ở đó có từ hai phân số hoặc phân số \"của số còn lại\".",
+   "ly_thuyet": "##PP\nTìm số toàn thể (số được lấy một phần) và phân số đi với chữ \"của\".\nLấy số toàn thể nhân với phân số.\nGhi đơn vị. Nếu đề hỏi phần còn lại thì lấy số toàn thể trừ đi phần vừa tìm.\n\n##CY\nPhân số đứng trước chữ \"của\", số toàn thể đứng sau: $\\dfrac{5}{8}$ của $40$ là $40\\times\\dfrac{5}{8}$.\nPhân số lớn hơn $1$ (như $\\dfrac{9}{2}$) vẫn nhân bình thường, kết quả lớn hơn số toàn thể.",
+   "vi_du": "##VD\nLớp 4A có $40$ học sinh, trong đó $\\dfrac{5}{8}$ số học sinh là nữ. Hỏi lớp 4A có bao nhiêu học sinh nữ?\n**Hướng dẫn giải:**\nSố học sinh nữ là $\\dfrac{5}{8}$ của $40$ học sinh, nên lấy $40$ nhân với $\\dfrac{5}{8}$.\n\nSố học sinh nữ của lớp 4A là: $40\\times\\dfrac{5}{8}=25$ (học sinh)\n\nĐáp số: $25$ học sinh",
+   "nguon_vd": "sach LT 20.2",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01579",
+   "mo_ta": "Đề bài cho một tổng ban đầu và hai hay nhiều phân số, mỗi phân số ứng với một phần (kể cả phần tính \"của số còn lại\" sau phần trước), hỏi giá trị của một phần hoặc của phần còn lại: phải làm hai phép tính trở lên. Khác dạng \"Ứng dụng tính giá trị phân số của một số\": ở đó chỉ một phân số, một phép nhân.",
+   "ly_thuyet": "##PP\nCách 1: tìm giá trị từng phần đã cho bằng phép nhân, lấy tổng ban đầu trừ các phần ấy để ra phần còn lại.\nCách 2: tìm phân số của phần còn lại $=1-$ (các phân số đã cho), rồi nhân với tổng ban đầu.\nNếu đề nói \"của số còn lại\" thì tính số còn lại trước, rồi mới nhân với phân số đó.\n\n##CY\nCác phân số \"của tổng\" đều lấy trên cùng một tổng ban đầu.\n\"Của số còn lại\" thì phải nhân với số còn lại, không nhân với tổng ban đầu.",
+   "vi_du": "##VD\nMột thùng hoa quả chứa $144$ kg táo, cam và thanh long. Biết $\\dfrac{1}{4}$ khối lượng quả trong thùng là táo, $\\dfrac{1}{3}$ khối lượng quả trong thùng là cam, còn lại là thanh long. Hỏi trong thùng có bao nhiêu ki-lô-gam thanh long?\n**Hướng dẫn giải:**\nTìm khối lượng táo và khối lượng cam bằng phép nhân với tổng $144$ kg, rồi lấy $144$ kg trừ đi hai số đó. (Cách khác: thanh long chiếm $1-\\left(\\dfrac{1}{4}+\\dfrac{1}{3}\\right)=\\dfrac{5}{12}$ tổng khối lượng, rồi nhân với $144$.)\n\nSố ki-lô-gam táo trong thùng là: $144\\times\\dfrac{1}{4}=36$ (kg)\n\nSố ki-lô-gam cam trong thùng là: $144\\times\\dfrac{1}{3}=48$ (kg)\n\nSố ki-lô-gam thanh long trong thùng là: $144-36-48=60$ (kg)\n\nĐáp số: $60$ kg thanh long",
+   "nguon_vd": "sach VD 20.3",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01580",
+   "mo_ta": "Đề bài cho giá trị của một phần (phần đã cho đi, phần còn lại, hoặc \"một phân số của nó bằng ...\") ứng với MỘT phân số của số cần tìm, và hỏi số ban đầu; có hai đại lượng: số cần tìm và phần đã biết giá trị. Khác dạng \"Ba đại lượng\": ở đó có hai phần đều đã cho bằng phân số của tổng, giá trị đã biết là phần còn lại. Khác dạng \"tổng hiệu các thành phần\": ở đó giá trị đã biết ứng với hiệu hay tổng hai phân số.",
+   "ly_thuyet": "##PP\nXác định số cần tìm (toàn thể) và phần đã biết giá trị.\nTìm phân số ứng với giá trị đã biết: nếu đề cho phân số đã dùng mà giá trị đã biết là phần còn lại thì phân số đó là $1$ trừ phân số đã dùng.\nLấy giá trị đã biết chia cho phân số ứng với nó.\n\n##CY\nLấy giá trị chia cho phân số, không nhân.\nGiá trị đã biết là phần CÒN LẠI thì không ứng với phân số đã dùng.",
+   "vi_du": "##VD\nNam có một số viên bi. Nam cho bạn $\\dfrac{7}{12}$ số bi của mình thì Nam còn lại $25$ viên bi. Hỏi ban đầu Nam có bao nhiêu viên bi?\n**Hướng dẫn giải:**\nNam cho đi $\\dfrac{7}{12}$ số bi nên $25$ viên bi còn lại ứng với $1-\\dfrac{7}{12}$ số bi ban đầu. Biết giá trị của một phân số của số cần tìm thì lấy giá trị đó chia cho phân số.\n\n$25$ viên bi còn lại chiếm số phần tổng số bi là: $1-\\dfrac{7}{12}=\\dfrac{5}{12}$ (số bi)\n\nSố viên bi ban đầu của Nam là: $25:\\dfrac{5}{12}=60$ (viên bi)\n\nĐáp số: $60$ viên bi",
+   "nguon_vd": "sach LT 21.5",
+   "ghi_chu": "Cách hiểu \"hai đại lượng\" = số ban đầu và một phần (đã dùng hoặc còn lại) có giá trị biết; \"ba đại lượng\" = hai phần đã dùng + phần còn lại. Cần CEO xác nhận. Phần \"của số còn lại\" (sách VD 21.3, LT 21.11) chưa có dạng riêng, tôi gợi ý xếp vào dạng \"Ba đại lượng\"."
+  },
+  {
+   "id": "NDB01581",
+   "mo_ta": "Đề bài cho hai phần, mỗi phần bằng một phân số của số cần tìm (phần thứ hai có thể tính \"của số còn lại\" sau phần thứ nhất), kèm giá trị phần còn lại, và hỏi số ban đầu. Phải tìm phân số ứng với phần còn lại rồi chia. Khác dạng \"Hai đại lượng\": ở đó chỉ một phân số đã dùng.",
+   "ly_thuyet": "##PP\nCộng các phân số đã dùng (nếu có phần \"của số còn lại\" thì đổi về phần của tổng bằng phép nhân).\nPhân số ứng với phần còn lại $=1-$ tổng các phân số đã dùng.\nSố ban đầu $=$ giá trị phần còn lại $:$ phân số ứng với nó.\n\n##CY\nĐổi hết về phần của cùng MỘT tổng ban đầu rồi mới trừ cho $1$.\nĐừng cộng hai phân số lấy trên hai số khác nhau.",
+   "vi_du": "##VD\nMinh có một số huy hiệu. Minh cho Lan $\\dfrac{1}{5}$ số huy hiệu và cho Bình $\\dfrac{2}{7}$ số huy hiệu thì Minh còn lại $18$ huy hiệu. Hỏi lúc đầu Minh có bao nhiêu huy hiệu?\n**Hướng dẫn giải:**\nCả hai phần cho đi đều là phân số của tổng số huy hiệu ban đầu, nên cộng chúng lại rồi lấy $1$ trừ đi để biết $18$ huy hiệu còn lại ứng với phân số nào. Sau đó lấy $18$ chia cho phân số đó.\n\nSố phần tổng số huy hiệu Minh đã cho đi là: $\\dfrac{1}{5}+\\dfrac{2}{7}=\\dfrac{17}{35}$ (số huy hiệu)\n\n$18$ huy hiệu còn lại chiếm số phần tổng số huy hiệu là: $1-\\dfrac{17}{35}=\\dfrac{18}{35}$ (số huy hiệu)\n\nSố huy hiệu lúc đầu của Minh là: $18:\\dfrac{18}{35}=35$ (huy hiệu)\n\nĐáp số: $35$ huy hiệu",
+   "nguon_vd": "sach VD 21.2",
+   "ghi_chu": null
+  },
+  {
+   "id": "NDB01582",
+   "mo_ta": "Đề bài cho hai phần bằng hai phân số của số cần tìm, nhưng giá trị đã biết là HIỆU (hơn kém) hoặc TỔNG của hai phần ấy, không phải giá trị một phần riêng hay phần còn lại; hỏi số ban đầu. Khác dạng \"Ba đại lượng\": ở đó giá trị đã biết là phần còn lại, ở đây là chênh lệch hay tổng của hai phần.",
+   "ly_thuyet": "##PP\nXác định hai phần và hai phân số của số cần tìm.\nGiá trị đã biết là hiệu thì phân số ứng với nó là hiệu hai phân số; là tổng thì là tổng hai phân số (quy đồng trước).\nSố cần tìm $=$ giá trị đã biết $:$ phân số ứng với nó.\n\n##CY\n\"Nhiều hơn\", \"ít hơn\" thì trừ hai phân số; \"cả hai\" thì cộng.\nPhải quy đồng mẫu số trước khi cộng trừ hai phân số.",
+   "vi_du": "##VD\nMột cửa hàng có một số cam. Buổi sáng cửa hàng bán $\\dfrac{4}{15}$ số cam, buổi chiều cửa hàng bán $\\dfrac{7}{10}$ số cam, tính ra buổi sáng bán được ít hơn buổi chiều $39$ kg cam. Hỏi cửa hàng có tất cả bao nhiêu ki-lô-gam cam?\n**Hướng dẫn giải:**\nBuổi chiều bán nhiều hơn buổi sáng $39$ kg, nên $39$ kg ứng với hiệu hai phân số $\\dfrac{7}{10}-\\dfrac{4}{15}$ của tổng số cam. Lấy $39$ chia cho hiệu đó để ra tổng số cam.\n\n$39$ kg cam chiếm số phần tổng số cam là: $\\dfrac{7}{10}-\\dfrac{4}{15}=\\dfrac{21}{30}-\\dfrac{8}{30}=\\dfrac{13}{30}$ (số cam)\n\nCửa hàng có tất cả số ki-lô-gam cam là: $39:\\dfrac{13}{30}=90$ (kg)\n\nĐáp số: $90$ kg cam",
+   "nguon_vd": "sach VD 21.4",
+   "ghi_chu": null
+  }
+ ]
+}
