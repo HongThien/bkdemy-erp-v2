@@ -3,6 +3,7 @@
 // → TA đóng ca (máy TA) → app thấy test cuối buổi (poll ~10s) → làm bằng LamET (chế độ thi) → xem kết quả.
 // Không có nút đóng ca / nhận xét ở đây — đó là việc của TA (tách quyền, chốt 03/09).
 // LamBai/LamET truyền vào qua props (không import ngược HocSinhApp → tránh vòng import).
+import { batPoll } from '../../lib/poll'
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties, type ReactNode } from 'react'
 import { buDangCuaToi, type BuDangHS } from '../../lib/botro_yeu_ca'
 import { caCuaToi, sinhLoLuyen, layBaiTestCaNhan, retestCuaToi, LOAI_BO_TRO_TEN, type CaCuaToi, type DangCaHS, type CumCaHS, type RetestCuaToi, type LichBoTro } from '../../lib/botro_yeu_ca'
@@ -54,8 +55,7 @@ export default function CaBoTroHS({ hocSinhId, desktop, onXong, LamBai, LamET }:
   useEffect(() => { taiCa() }, [])
   // Poll khi KHÔNG đang làm bài (đang luyện/thi thì không đổi màn dưới chân em).
   useEffect(() => {
-    const id = setInterval(() => { const k = viewRef.current.kind; if (k === 'dangs' || k === 'cums') taiCa() }, POLL_MS)
-    return () => clearInterval(id)
+    return batPoll(() => { const k = viewRef.current.kind; if (k === 'dangs' || k === 'cums') return taiCa() }, POLL_MS)
   }, [])
 
   async function luyen(maDang: string, maCum: string | null) {

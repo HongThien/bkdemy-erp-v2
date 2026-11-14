@@ -1,5 +1,6 @@
 // BK ĐẤU TỪ — khung game học 6 chế độ cho MỌI MÔN (demo, Thùy 02–03/10): Anh (từ vựng) · Toán · KHTN (kho MCQ thật). Bố cục học theo
 // Bufopia; hình theo skin RPG + bộ chiến đấu 2D Đấu trường. Content cắm qua nguon/ (registry môn).
+import { batPoll } from '../lib/poll'
 import { useEffect, useMemo, useState } from 'react'
 import { DS_MON, NGUON, khoCap, khoMon, nguonCua, useCap, useMon } from './nguon'
 import { KHOI_NHUNG, MON_NHUNG, NHUNG, VAO_NHUNG, baoThoat } from './lib/nhung'
@@ -145,8 +146,7 @@ function ThanhTren({ onHop, laNha }: { onHop: (h: HopThoai) => void; laNha: bool
     if (!laNha) return
     const tai = () => bangXepHang('xp').then((r) => setTop(r?.top.slice(0, 3) ?? [])).catch(() => {})
     tai()
-    const t = setInterval(tai, 60000)
-    return () => clearInterval(t)
+    return batPoll(tai, 5 * 60000)   // top 3 xếp hạng là số tính sẵn ⇒ 5 phút, dừng khi tab ẩn (trước: 60 s, chạy cả khi ẩn)
   }, [laNha])
   const db = h.db
   const pct = db?.can_cho_cap_sau ? (db.xp_trong_cap / db.can_cho_cap_sau) * 100 : 0

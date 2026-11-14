@@ -3,6 +3,7 @@
 // Detail 1 ca: điểm danh → tiến độ live (poll 10s, per dạng/cụm) → "Đóng ca & sinh test" (khoá sau khi có test)
 // → điểm test theo dạng → nhận xét (mẫu + gõ) + mức → "Hoàn tất ca" (khoá sau khi xong). Mọi số từ fn_btyeu_*.
 // KHÔNG import màn ERP desktop (luật app TA). Class màu literal (Tailwind JIT).
+import { batPoll } from '../../lib/poll'
 import { useEffect, useState, type ReactNode } from 'react'
 import { caTA, boDiemDanhYeu, dongCa, hoanTatCa, cauTlnCuaCa, suaKetQuaTln, listPhieuGiayCuaCa, inSinhBaiGiay, inSinhHinhGiay, inLayBaiGiay, layCheDoCa, datCheDoCa, inTestGiay, type CaTA, type ViecCaBoTro, type ViecRetest, type CauTlnTA, type BaiInGiay, type CheDoCa, RETEST_BAT } from '../../lib/botro_yeu_ca'
 import { TrangIn, NhapKetQua } from './PhieuGiayYeuTA'
@@ -178,7 +179,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
   }
   const tai = async () => { try { const c = await caTA(buoiId); setCa(c); if (c) layCheDoCa(c.buoi_hoc_hs_id).then((v) => setCheDo((cur) => cur ?? v)).catch(() => {}); if (c?.danh_gia) { setNx(c.danh_gia.nhan_xet ?? ''); setMucMa(c.danh_gia.muc_ma) } } catch (e: any) { setLoi(e?.message ?? String(e)); setCa(null) } }
   useEffect(() => { tai(); taiTln(); taiPhieu() }, [buoiId]) // eslint-disable-line
-  useEffect(() => { const id = setInterval(() => { tai(); taiTln(); setNow(Date.now()) }, POLL_MS); return () => clearInterval(id) }, [buoiId]) // eslint-disable-line
+  useEffect(() => batPoll(() => { setNow(Date.now()); taiTln(); return tai() }, POLL_MS), [buoiId]) // eslint-disable-line
   useEffect(() => { if (ca?.mon) timNhanXetMau(ca.mon, 'kien_thuc', '').then(setMau).catch(() => {}) }, [ca?.mon])
 
   async function chay(k: string, f: () => Promise<void>, xong?: string) {

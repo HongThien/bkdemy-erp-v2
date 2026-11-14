@@ -4,6 +4,7 @@
 //   trong ca) — bài in là 1 `bai_test.loai='bo_tro'` có `in_giay_at`, nên tiến độ luyện / test cuối ca thấy nó y như bài app.
 // ⭐ Kết quả bài giấy: nhân sự bấm lại đáp án EM KHOANH (A–D), MÁY chấm theo key (fn_btyeu_giay_nhap) — không tự phán đúng/sai.
 // Số liệu tổng hợp ở DB (fn_btyeu_ca_theo_doi — §2.0); ở đây chỉ render + đếm item đang hiện cho chip tóm tắt.
+import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { caTheoDoi, inSinhBaiGiay, inLayBaiGiay, boTroTrongNgay, type CaTheoDoi, type BaiInGiay, type BuoiNgay, type RetestNgay } from '../../lib/botro_yeu_ca'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
@@ -54,7 +55,7 @@ export default function TheoDoiCaBoTroTab({ monF, khoiF, ngay: ngayNgoai, anBuoi
   // Nạp NỀN: giữ rows cũ tới khi có rows mới (không blank khi poll) — CLAUDE.md §2 React.
   const tai = () => caTheoDoi(ngayRef.current).then((r) => { setRows(r); setLoi(null) }).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
   useEffect(() => { setLoading(true); setRows([]); tai(); taiKhac() }, [ngay]) // đổi ngày = đổi ngữ cảnh ⇒ reset là đúng
-  useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') { tai(); taiKhac(); setNow(Date.now()) } }, POLL_MS); return () => clearInterval(id) }, [])
+  useEffect(() => batPoll(() => { setNow(Date.now()); return Promise.all([tai(), taiKhac()]) }, POLL_MS), [])
 
   const hien = useMemo(() => rows.filter((c) => (!monF || c.mon === monF) && (!khoiF || c.khoi === khoiF) && !anBuoiIds?.has(c.buoi_id)), [rows, monF, khoiF, anBuoiIds])
   const kh = useMemo(() => ({ bu: khac.bu.filter((b) => !anBuoiIds?.has(b.buoi_id)), duoi: khac.duoi.filter((b) => !anBuoiIds?.has(b.buoi_id)), retest: khac.retest }), [khac, anBuoiIds])

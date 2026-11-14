@@ -1,10 +1,10 @@
 {
   "code_from_bang": 1179,
-  "code_set_interval": 38,
+  "code_set_interval": 22,
   "code_limit_lon": 521,
   "code_select_sao": 213,
   "code_mon_cung": 101,
-  "db_secdef_khong_cong": 136,
+  "db_secdef_khong_cong": 135,
   "db_fk_thieu_index": 398,
   "db_ham_dung_email": 2,
   "db_ham_noi_bo_mo": 319,

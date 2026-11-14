@@ -4,6 +4,7 @@
 //   → hiện đáp án + lời giải chi tiết của câu → "Câu tiếp". BTVN reveal ngay, làm lại tới hạn.
 // Skin = plain-clean; game (Fredoka/mascot/gradient) làm phiên design sau.
 // ============================================================================
+import { batPoll } from '../../lib/poll'
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { supabase } from '../../lib/supabase'
 import { MathText, ChuMon } from '../kho/ui'
@@ -575,7 +576,9 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }, [direct, khu]) // eslint-disable-line react-hooks/exhaustive-deps
   // Thẻ Thế giới BK ở màn chính — tải lại mỗi lần về Home (quay từ Thế giới về là thấy số mới); lỗi thì thẻ vẫn hiện, không số.
   const [tgHome, setTgHome] = useState<TheGioiHome | null>(null)
-  useEffect(() => { if (nhom912 && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, direct, khu])
+  // [14/11] tính năng Thế giới BK đang ĐÓNG với em ⇒ không gọi (thẻ không hiện); số giữ 2 phút trong lib/thegioi.
+  const tgMo = moTN('the_gioi')
+  useEffect(() => { if (nhom912 && tgMo && !direct && !khu) theGioiHome().then(setTgHome).catch(() => {}) }, [nhom912, tgMo, direct, khu])
   // Log mở app (TT04 "Vào app liên tiếp"): ghi khi mở app và mỗi lần quay lại tab (server idempotent: 1 dòng/ngày)
   useEffect(() => {
     const ghi = () => { if (document.visibilityState === 'visible') ghiMoApp().catch(() => undefined) }
@@ -655,17 +658,10 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
         setBoTro({ coCa: (!!ca && ca !== 'loi') || lich.some((l) => l.vao_ca && (l.loai === 'bo_tro_duoi' || l.loai === 'bu' || (ca === 'loi' && l.loai === 'bo_tro_yeu'))), soRetest: rt.filter((r) => !r.da_nop).length, lich })
       })
     tai()
-    // Có buổi bổ trợ HÔM NAY ⇒ hỏi 15 s/lần (TA vừa điểm danh là nút "Vào ca" hiện ngay). Không có ⇒ 60 s/lần (bắt ca sau giờ
-    // xếp trong ngày). Quay lại tab ⇒ hỏi ngay. Tab ẩn ⇒ không hỏi.
-    let dem = 0
-    const id = setInterval(() => {
-      if (document.visibilityState !== 'visible') return
-      dem += 1
-      if (homNay || dem % 4 === 0) tai()
-    }, 15000)
-    const hien = () => { if (document.visibilityState === 'visible') { dem = 0; tai() } }
-    document.addEventListener('visibilitychange', hien)
-    return () => { bo = true; clearInterval(id); document.removeEventListener('visibilitychange', hien) }
+    // Có buổi bổ trợ HÔM NAY ⇒ hỏi 15 s/lần (TA vừa điểm danh là nút "Vào ca" hiện ngay). Quay lại tab / về màn chính ⇒ hỏi ngay. Tab ẩn ⇒ không hỏi.
+    // [14/11 · spec-kien-truc §6] KHÔNG có buổi hôm nay ⇒ 5 PHÚT/lần (trước 60 s: 10.000 em × 2 lượt gọi/phút vô ích); có buổi hôm nay vẫn 15 s.
+    const dungPoll = batPoll(tai, () => (homNay ? 15000 : 5 * 60000), { khiHien: 'luon' })
+    return () => { bo = true; dungPoll() }
   }, [direct, khu])
 
   // Bổ trợ của MÔN đang chọn. Ca ĐANG TỚI GIỜ (vao_ca) của môn khác vẫn giữ — không để em lỡ ca chỉ vì đang đứng ở môn

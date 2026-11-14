@@ -6,6 +6,7 @@
 // tab này hỏi bot Claude Code đọc repo ("vì sao Elo tính thế này", "quy trình chấm ET
 // đi đường nào"). Bot chạy máy local nên trả lời KHÔNG tức thì (vài chục giây tới vài
 // phút) — UI phải nói rõ trạng thái chờ + heartbeat bot, không để người hỏi đoán.
+import { batPoll } from '../../lib/poll'
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { guiCauHoi, listHoiDap, getBotAliveAt, BOT_SONG_TRONG_MS, type HoiDap } from '../../lib/hoidap'
@@ -49,8 +50,7 @@ export default function HoiDapTab() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setMyId(data.user?.id ?? null))
     refresh()
-    const id = setInterval(refresh, POLL_MS)
-    return () => clearInterval(id)
+    return batPoll(refresh, POLL_MS)   // dừng khi tab ẩn
   }, []) // eslint-disable-line
 
   async function gui() {

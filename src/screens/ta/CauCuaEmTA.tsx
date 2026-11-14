@@ -2,6 +2,7 @@
 // Đọc fn_ta_cau_cua_em (bản chụp bai_test_cau = ĐÚNG cái em thấy). Dùng chung cho ca bổ trợ yếu · đuổi · bù. Mặc định gập; mở ra tự cập nhật 10s.
 // Câu em đang đứng (câu chưa trả lời đầu tiên của bài chưa nộp) tự mở sẵn; câu khác chạm để mở. Đáp án + lời giải chỉ hiện khi TA bấm
 // (hoặc câu em đã trả lời) — TA không lỡ để lộ khi em nhìn chung iPad.
+import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { cauCuaEm, LOAI_BAI_CAU_EM, type CauCuaEm } from '../../lib/botro_yeu_ca'
 import { chiSoCuaChu, chuCaiChon, type NguLieuSnap } from '../../lib/testonline'
@@ -148,8 +149,7 @@ export function CauCuaEmTA({ hocSinhId, buoiId, mon, soNgay = 0, tenHS, giay }: 
   const tai = () => cauCuaEm(hocSinhId, buoiId, lui, lui > 0 ? 120 : 40).then((r) => { setRows(chuanHoa(r)); setLoi(null) }).catch((e: any) => setLoi(e?.message ?? String(e)))
   useEffect(() => { setRows(null); tai() }, [hocSinhId, buoiId, lui, giay]) // eslint-disable-line
   useEffect(() => {
-    const id = setInterval(() => { if (moRef.current && document.visibilityState === 'visible') tai() }, POLL_MS)
-    return () => clearInterval(id)
+    return batPoll(() => { if (moRef.current) return tai() }, POLL_MS)
   }, [hocSinhId, buoiId, lui, giay]) // eslint-disable-line
 
   // Gom theo bài (giữ thứ tự mới nhất trước mà RPC đã xếp)

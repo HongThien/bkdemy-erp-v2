@@ -1,5 +1,6 @@
 // Entry RIÊNG cho bundle hs.bkacademy.edu.vn — KHÔNG import ./App (kéo theo toàn bộ màn staff),
 // KHÔNG có nhánh in-PDF (#pvjob, chỉ worker server dùng), KHÔNG chạy fitZoom (mật độ desktop staff).
+import { batPoll } from './lib/poll'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { registerSW } from 'virtual:pwa-register'
@@ -29,7 +30,7 @@ registerSW({
     if (!reg) return
     swReg = reg
     const kiem = () => { if (navigator.onLine && reg.installing == null) reg.update().catch(() => {}) }
-    setInterval(kiem, KIEM_BAN_MOI_MS)
+    batPoll(kiem, KIEM_BAN_MOI_MS, { khiHien: false })   // lúc quay lại app: listener ngay dưới lo
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') kiem() })
   },
 })
@@ -81,6 +82,6 @@ async function hoiEp() {
   if (new Date(m).getTime() > NAP_LUC && !daXuLy(m)) { mocEp = m; void taiLaiNeuDuoc() }
 }
 // Nhịp 5 phút (spec-kien-truc §6: số không realtime ≥ 5 phút) + hỏi ngay khi em quay lại tab — thay cho 30 s (10.000 HS × 2 lượt/phút = 333 lượt/giây vô ích).
-window.setInterval(() => { void hoiEp().catch(() => {}) }, 5 * 60_000)
+batPoll(() => hoiEp(), 5 * 60_000, { khiHien: false })   // lỗi ⇒ tự lùi dần; lúc quay lại tab: listener ngay dưới lo
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') void hoiEp().catch(() => {}) })
 window.addEventListener(EVT_MAN, () => { void taiLaiNeuDuoc() })

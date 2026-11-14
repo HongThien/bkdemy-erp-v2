@@ -16,6 +16,7 @@
 // PHÒNG GIÁM ĐỐC (Thùy 03/11, fn_phong_la_gd — ghế gốc team core) nằm TRÊN phòng trưởng bộ môn: nhân vật = trưởng vận hành (Lộc — chưa có
 //   cơ cấu phòng vận hành, ngồi tạm, chưa có số) + trưởng bộ môn từng môn (số gộp các ghế trưởng khối). Bấm trưởng bộ môn ⇒ phòng trưởng
 //   bộ môn của môn đó ⇒ bấm trưởng khối ⇒ phòng trưởng khối. Đồ vật (Quản trị / Chất lượng / Báo cáo tuần) dùng khuôn trưởng bộ môn, mọi môn.
+import { batPoll } from '../../lib/poll'
 import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
 import BanDoMoiScreen from '../kho/BanDoMoi'
@@ -84,8 +85,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         : (xemTk ? listCapDuoiCuaGhe(xemTk) : listCapDuoi()).then((d) => { NHO.ta = d; setDsTa(d); xong() }).catch(hong)
     }
     tai()
-    const id = setInterval(() => { if (document.visibilityState === 'visible' && !NHO.mo) tai() }, 300_000)
-    return () => clearInterval(id)
+    return batPoll(() => { if (!NHO.mo) return tai() }, 300_000)
   }, [cheDo, xemTk, laGd, xemMon])
 
   const sk = useSkinErp()

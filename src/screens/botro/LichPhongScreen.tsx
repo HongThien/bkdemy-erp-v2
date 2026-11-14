@@ -3,6 +3,7 @@
 // người + giờ (mig 202609241600) · (2) LỊCH RIÊNG — ca tạo tay + buổi xếp riêng không khớp ca trực nào (nhúng TheoDoiCaBoTroTab).
 // Màu theo loại (nền nhạt): Yếu đỏ · Đuổi xanh da trời · Bù cam. Ngày: 3 ô (qua · nay · mai quanh ngày chọn) + mũi tên + chọn thẳng.
 // Máy chỉ CHẶN (đơn vị, 3 em/TA, Đuổi ≥60', phòng ≤2 ca) — không tự xếp. Mọi mutation vá tại chỗ (CLAUDE.md §2), không reload list.
+import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useState } from 'react'
 import { tuKiemBoTro, type LoiHienThi } from '../../lib/ca_bo_tro'
 import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, LOAI_TEN, type CaBoTro, type HsTrongCa, type NgayTomTat, type UngVien, type UngVienCa, type LoaiBoTro } from '../../lib/ca_bo_tro'
@@ -51,7 +52,7 @@ export default function LichPhongScreen() {
   useEffect(() => { NHO.mon = monF }, [monF])
   useEffect(() => { xuLyCaHetHan().then((n) => { if (n > 0) { taiNgay(NHO.ngay ?? homNay); taiLive(NHO.ngay ?? homNay) } }).catch(() => {}) }, []) // eslint-disable-line -- 26/10 ca quá 14 ngày tự đóng
   useEffect(() => { kiemCaHS().then(setEmLoi).catch(() => {}) }, []) // 29/10 tự kiểm: em nào sẽ KHÔNG vào được ca trên app HS
-  useEffect(() => { const id = setInterval(() => { if (document.visibilityState === 'visible') taiLive(NHO.ngay ?? homNay) }, POLL_MS); return () => clearInterval(id) }, [])
+  useEffect(() => batPoll(() => taiLive(NHO.ngay ?? homNay), POLL_MS), [])
 
   const mons = useMemo(() => [...new Set(cas.map((c) => c.mon))].sort(), [cas])
   const hien = useMemo(() => cas.filter((c) => (!monF || c.mon === monF) && (hienHuy || c.trang_thai === 'mo')), [cas, monF, hienHuy])

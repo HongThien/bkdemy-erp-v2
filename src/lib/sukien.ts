@@ -1,5 +1,6 @@
 // Hệ thống SỰ KIỆN (spec-su-kien.md, Trung thu 26/09). Mọi phép tính ở Postgres (`fn_sk_*`,
 // mig 202609260129) — file này CHỈ gọi RPC + nghe realtime. Xu sự kiện là tiền RIÊNG, không phải ví BK.
+import { batPoll } from './poll'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from './supabase'
 
@@ -80,8 +81,8 @@ export function useSkLive(tables: string[], onChange: () => void, pollMs = 5000)
     const ch = supabase.channel('sk-live-' + key + '-' + Math.random().toString(36).slice(2))
     for (const tb of tables) ch.on('postgres_changes' as never, { event: '*', schema: 'public', table: tb } as never, fire)
     ch.subscribe()
-    const iv = setInterval(() => cb.current(), pollMs)
-    return () => { if (t) clearTimeout(t); clearInterval(iv); supabase.removeChannel(ch) }
+    const dungPoll = batPoll(() => cb.current(), pollMs, { khiHien: 'luon' })   // dự phòng khi rớt socket; tab ẩn thì dừng
+    return () => { if (t) clearTimeout(t); dungPoll(); supabase.removeChannel(ch) }
   }, [key, pollMs]) // eslint-disable-line
 }
 

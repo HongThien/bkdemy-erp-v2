@@ -3,6 +3,7 @@
 // Chữ là chính: tên người gửi / tiêu đề / vài dòng đầu nội dung, không icon lớn. Mở thư = tự đánh dấu đã đọc;
 // "Đánh dấu chưa đọc" lấy lại cờ. Nguồn thư do DB tự đẻ (mig 202610140053) — client chỉ đọc + đổi cờ da_doc.
 // Số chưa đọc đếm ở DB (head count); làm tươi mỗi 5 phút khi tab đang hiện + khi quay lại cửa sổ (11/11, trước là 60 s).
+import { batPoll } from '../lib/poll'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useStore } from '../store/useStore'
@@ -46,11 +47,11 @@ export default function HomThu({ di, duocDi, noiBat = false }: { di: (leaf: stri
   useEffect(() => {
     if (!coHoSo) return
     lamTuoiSo()
-    const t = setInterval(() => { if (!document.hidden) lamTuoiSo() }, 5 * 60000)
+    const dungPoll = batPoll(() => lamTuoiSo(), 5 * 60000, { khiHien: false })   // lúc quay lại tab: listener ngay dưới lo
     const khiHien = () => { if (!document.hidden) lamTuoiSo() }
     window.addEventListener('focus', khiHien)
     document.addEventListener('visibilitychange', khiHien)
-    return () => { clearInterval(t); window.removeEventListener('focus', khiHien); document.removeEventListener('visibilitychange', khiHien) }
+    return () => { dungPoll(); window.removeEventListener('focus', khiHien); document.removeEventListener('visibilitychange', khiHien) }
   }, [coHoSo, lamTuoiSo])
 
   // Mở: nạp danh sách (không xoá list đang hiện khi nạp lại).

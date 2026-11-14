@@ -3,6 +3,7 @@
 // (scripts/phien/bot.mjs) nên phải NÓI RÕ trạng thái: Claude sẵn sàng / đang làm / nghỉ hạn mức / mất liên lạc.
 // Chữ chạy: bot cập nhật dần 1 tin vai 'claude'; màn nghe Realtime theo phiên + poll nền làm lưới vớt.
 // Rời phòng rồi quay lại = đúng chỗ cũ: phiên đang mở + danh sách + nháp tin nhớ ở NHO (sống tới F5).
+import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import {
@@ -174,8 +175,7 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   const dangChay = tin.some((t) => ['cho', 'dang_xu', 'dang_viet'].includes(t.trang_thai)) || tt === 'dang_dong'
   useEffect(() => {
     if (!dangChay) return
-    const id = setInterval(taiLai, POLL_TIN_MS)
-    return () => clearInterval(id)
+    return batPoll(taiLai, POLL_TIN_MS)   // chỉ khi phiên đang có việc chạy (điều kiện dừng: dangChay)
   }, [dangChay, phien.id]) // eslint-disable-line
 
   useEffect(() => {
@@ -294,10 +294,10 @@ export default function PhienClaudeTab() {
   useEffect(() => {
     taiDs()
     // 11/11 (audit timeout): tab ẩn thì không hỏi; quay lại tab thì hỏi ngay 1 lần
-    const id = setInterval(() => { if (!document.hidden) taiDs() }, POLL_DS_MS)
+    const dungPoll = batPoll(taiDs, POLL_DS_MS, { khiHien: false })
     const khiHien = () => { if (!document.hidden) taiDs() }
     document.addEventListener('visibilitychange', khiHien)
-    return () => { clearInterval(id); document.removeEventListener('visibilitychange', khiHien) }
+    return () => { dungPoll(); document.removeEventListener('visibilitychange', khiHien) }
   }, [])
 
   const hien = (ds ?? []).filter((p) => loc === 'tat_ca' || p.trang_thai !== 'dong')

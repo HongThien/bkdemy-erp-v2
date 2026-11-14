@@ -43,7 +43,15 @@ export type BanBeTG = { ban: NguoiTG[]; loi_moi: LoiMoiTG[]; da_gui: string[] }
 export type GoiYTG = { id: string; nguoi: NguoiTG; ly_do: string | null; trang_thai: 'da_gui' | 'cho_em' | null }
 export type DanhMucTG = { ma: string; loai: 'icon' | 'cau' | 'sticker'; noi_dung: string; nhan?: string | null; nhom: string[]; thu_tu: number }
 
+// [14/11 · spec-kien-truc §6] Thẻ Thế giới ở màn chính: giữ 2 phút + gộp lượt gọi đang bay (trước: mỗi lần em về màn chính là một lượt gọi).
+// MỌI lượt gọi khác của Thế giới BK (xem kênh, thả cảm xúc, bình luận, khoe, kết bạn…) xoá bản giữ ⇒ "từ Thế giới quay về là thấy số mới" vẫn đúng.
+const TG_HOME_GIU_MS = 2 * 60_000
+let tgHomeNho: { at: number; v: TheGioiHome | null } | null = null
+let tgHomeBay: Promise<TheGioiHome | null> | null = null
+supabase.auth.onAuthStateChange(() => { tgHomeNho = null; tgHomeBay = null })   // đổi tài khoản trên cùng máy ⇒ không dùng số của em trước
+
 async function rpc<T>(fn: string, args?: Record<string, unknown>): Promise<T> {
+  if (fn !== 'fn_the_gioi_home') tgHomeNho = null
   const { data, error } = await supabase.rpc(fn, args)
   if (error) throw error
   return data as T
@@ -85,4 +93,13 @@ export const dangKhoe = (khoa: string, cau: string | null) => rpc<{ gioi_han: nu
 export const goKhoe = (khoa: string) => rpc<void>('fn_the_gioi_go_khoe', { p_khoa: khoa })
 
 export type TheGioiHome = { tuong_tac: { so: number; so_nguoi: number; nguoi: NguoiTG | null }; loi_moi: number; tin: TinTG[]; cho_khoe?: ChoKhoe | null }
-export const theGioiHome = () => rpc<TheGioiHome | null>('fn_the_gioi_home').then((h) => (h ? { ...h, tin: h.tin.filter((t) => !bo(t)) } : h))
+export const theGioiHome = (): Promise<TheGioiHome | null> => {
+  if (tgHomeNho && Date.now() - tgHomeNho.at < TG_HOME_GIU_MS) return Promise.resolve(tgHomeNho.v)
+  if (tgHomeBay) return tgHomeBay
+  const p: Promise<TheGioiHome | null> = rpc<TheGioiHome | null>('fn_the_gioi_home')
+    .then((h) => (h ? { ...h, tin: h.tin.filter((t) => !bo(t)) } : h))
+    .then((v) => { if (tgHomeBay === p) tgHomeNho = { at: Date.now(), v }; return v })
+    .finally(() => { if (tgHomeBay === p) tgHomeBay = null })
+  tgHomeBay = p
+  return p
+}

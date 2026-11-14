@@ -1,3 +1,4 @@
+import { batPoll } from '../../lib/poll'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 // (Ảnh gửi PH dùng html2canvas tải từ CDN TRONG popup — đúng pattern V1, không import vào bundle.)
@@ -1302,8 +1303,8 @@ export function LiveTab({ buoiId, roster, mon }: { buoiId: string; roster: BuoiH
     let stop = false
     async function tick() { try { if (!stop) await refresh() } catch { if (!stop) setLoading(false) } }
     tick()
-    const t = setInterval(tick, 7000)
-    return () => { stop = true; clearInterval(t) }
+    const dungPoll = batPoll(tick, 7000)   // màn đang trong buổi: giữ 7 s, nhưng dừng khi tab ẩn + không gọi chồng
+    return () => { stop = true; dungPoll() }
   }, [refresh])
 
   async function togglePhatHanh(maDang: string) {
