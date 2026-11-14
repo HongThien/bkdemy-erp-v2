@@ -80690,3 +80690,4 @@ Thùy nêu 4 việc, làm được 3:
 - Kết quả: 4T dạng trống 5 → 0 · câu lên app 1.917 → 2.117.
 
 - **14/11 (chiều, tiếp) — ĐÃ đồng bộ game sang ERP** (Thùy: "câu cá xong rồi, làm cho t test được"): `public/games/nong-trai` = game 6839cfd, gồm 3 kiểu nhà × 4 mức + rào sân theo kiểu nhà (phiên này) và câu cá 3d7731a (phiên khác: cauca.js, cauca.css, hồ to trước cổng). Kiểm: cú pháp mọi file js ✔, mở bản thử cổng 5270 không lỗi console, sân + hồ câu không đè nhau. CHƯA deploy, chưa thử trong app HS bằng tài khoản thật.
+- 14/11 (tiếp): Thùy "chưa thấy bản đồ hình lên sóng khối 8T". Gốc: bản đồ mới đọc bài Hình–Học qua hinh_hoc_bai.chu_de_id → dai_bdm_chu_de (nhanh=hinh), 8T chỉ có ma_chuyen_de (bản đồ cũ). `scripts/hinh-k8t-len-ban-do-moi.mjs --ghi`: thêm 5 chủ đề Hình 8T NCD00249–253 (thứ tự 6–10) + gắn chu_de_id 20 bài. Cây lưu sẵn dai_bdm_cay_nho 8T đã cũ phiên bản ⇒ lần mở kế tiếp tự tính lại. (Lượt chạy thử ăn mã NCD00244–248 — chỉ là lỗ số, không cấp lại.)
