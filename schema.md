@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-597 bảng · 42 view · 0 enum · 452 trigger · 1952 function
+597 bảng · 42 view · 0 enum · 453 trigger · 1953 function
 
 ## _app_secrets
 
@@ -11433,6 +11433,7 @@ WITH luot AS (
 | lich_test_khung | trg_updated_lich_test_khung | BEFORE | UPDATE | _lich_test_cham_updated |
 | mtt_chot | mtt_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | mtt_lop_chot | mtt_lop_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
+| nhan_su | trg_nhan_su_chan_ghi | BEFORE | INSERT/UPDATE | _trg_nhan_su_chan_ghi |
 | nhan_su_plan | nhan_su_plan_log_trg | AFTER | INSERT/UPDATE | _nhan_su_plan_ghi_log |
 | nhan_su_plan | nhan_su_plan_truoc_trg | BEFORE | INSERT/UPDATE | _nhan_su_plan_truoc |
 | nhiem_vu_cau_hinh | a_hs_so_moc | AFTER | INSERT/DELETE/UPDATE/TRUNCATE | _hs_so_moc_tg |
@@ -12161,6 +12162,7 @@ WITH luot AS (
 - `_trg_kho_cau_khuon_log()` → trigger
 - `_trg_log_doi_dang()` → trigger
 - `_trg_log_kho_sua()` → trigger
+- `_trg_nhan_su_chan_ghi()` → trigger
 - `_trg_pcqlk_dong_bo_ghe()` → trigger
 - `_trg_rank_len_bac()` → trigger
 - `_trg_sync_dai_menh_de()` → trigger
