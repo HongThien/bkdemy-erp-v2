@@ -80748,3 +80748,38 @@ Thùy nêu 4 việc, làm được 3:
 - **Sửa:** (1) kịch bản 1 thêm nút "🖨 Giấy" cạnh nhãn "trên app" (app TA + ERP); (2) bài TA in giấy (`in_giay_at` có giá trị — chỉ `fn_duoi_giay_sinh` đặt) luôn mở lại được để chấm, kể cả toàn trắc nghiệm; bài online của em (`in_giay_at` null) vẫn không bị đụng — giữ bài học 21/09; (3) `DuoiGiayTA` có CSS in: chỉ in phần đề + dòng "loại bài · mã dạng · tên em · môn", ẩn nút chấm.
 - **Kiểm:** `tsc` sạch, `build:ta` qua. Trọn luồng giấy cho dạng toàn trắc nghiệm bằng vai TA thật (rollback): sinh 3 câu → tìm lại được bài → chấm tay 3 câu → nộp (đúng 2/3) → dạng chuyển `xong`, đợt 4/8 → 5/8, `noi_lam = ca`. **Chưa kiểm trên app thật** (bản in ra giấy trông thế nào trên máy TA) — cần deploy app TA.
 - **Hai lỗ khác thấy khi dò, CHƯA sửa (cần Thùy quyết):** (a) đợt đuổi `can_duoi` mà GV chưa chọn dạng mục tiêu (2 đợt có buổi trong 14 ngày, vd em lớp 9C1 buổi 11/11 và 13/11, thiết bị = không) ⇒ màn TA không hiện dạng nào ⇒ không có gì để in; (b) đợt đã bấm "Hoàn thành" nhưng còn buổi đã xếp (đợt 54fb0815 còn buổi 14/11 và 15/11) ⇒ `fn_duoi_tien_trinh` chỉ trả đợt `can_duoi` ⇒ màn TA của buổi đó trống phần tiến trình.
+- **21:30 — Thùy xác nhận: đã deploy, TA in được** (nút "🖨 Giấy" cho dạng có trắc nghiệm trong buổi có iPad). Hai lỗ (a)(b) ở trên vẫn chờ quyết.
+
+- **Test đầu vào — nguồn đề chỉ còn MT (Thùy 14/11):** "chỉ lấy đề MT của BK, không lấy đề thi / đề cương học kì" ⇒ `LOAI_DE_TEST` trong `src/lib/detest.ts` từ `['mt','de_thi']` còn `['mt']` (đảo quyết định 07-27), sửa chữ ở `QuanLyDeTestScreen` + `TestDauVaoScreen`. Kiểm DB: 29 đề test đầu vào hiện có đều sinh từ MT, không phải dọn. Chỉ chặn ở màn chọn nguồn, DB chưa có rào. CHƯA DEPLOY ERP.
+- **Test đầu vào — thêm rào DB cho nguồn đề (Thùy 14/11 "Thêm rào DB"):** mig `202611142204_de_test_dau_vao_chi_nguon_mt` ĐÃ ÁP (--only) — trigger `trg_de_test_chi_nguon_mt` trên `tai_lieu` (before insert / update of loai, nguon_id): dòng `de_test_dau_vao` phải có `nguon_id` trỏ tài liệu `loai='mt'`. Ngoại lệ: nguồn → NULL trên đề test đã có (khoá ngoại ON DELETE SET NULL khi MT gốc bị xoá). Thử trong giao dịch huỷ: MT ghi được · Đề thi / không nguồn / đổi nguồn sang Đề thi / đổi loại Đề thi thành đề test đều bị chặn · đổi tên đề cũ vẫn được. check:kien-truc không mục nào tăng.
+
+### 14/11 tối (21:38–22:30) — "tối ưu nốt những cái còn lại" (Thùy) — ĐO LẠI TRƯỚC, sửa 2 chỗ, bỏ 3 chỗ định sửa
+
+- **Đo cao điểm 21:38–21:50 (12 phút, hiệu số pg_stat_statements):** cả DB dùng 117 s = **16 % một nhân**. Trong đó: Realtime của Supabase
+  (đọc nhật ký ghi `wal->>…`, 1.355 lượt × 29 ms) **39 s = 5,4 %** · bộ điều phối việc nền 2 lượt × 6,6 s = 2,2 % · **người dùng thật < 2 %**
+  (fn_thanh_tuu_cho_nhan 16 lượt × 105 ms, fn_the_gioi_home 10 × 154 ms) · phần còn lại là chính các phép đo của tôi.
+  ⇒ **Không còn điểm nóng lớn.** Bảng tích luỹ (`check:kien-truc` dòng "36 hàm ≥ 1 giây") là LỊCH SỬ trước khi sửa, không phản ánh hiện tại.
+- **Đo trực tiếp bằng vai thật (rollback), đã trừ ~40–50 ms đường truyền:** Home app HS — mọi hàm < 30 ms, thẻ Thế giới ~80 ms, thành tựu chờ nhận ~30 ms ấm /
+  ~100 ms nguội · sinh bài tự luyện tự động ~165 ms · luyện một dạng 130–270 ms · màn nhân sự: chỉ còn 3 hàm > 0,5 s:
+  `fn_de_thi_ds` 620 ms · `fn_traogiai_thang` 770 ms · `fn_btyeu_de_xuat_dang_moi` 500–800 ms (cả ba ít gọi: 106 / 358 / 142 lượt cộng dồn).
+- **✅ SỬA 1 — `fn_de_thi_ds` (mig 202611142201, ĐÃ ÁP):** `fn_de_thi_thieu` bị chạy **3 lần cho mỗi đề**. Gốc: `cross join lateral (select f(t.id) v) th`
+  rồi dùng `th.v` ở 3 cột ⇒ Postgres kéo subquery lên và chép lời gọi hàm STABLE vào từng chỗ tham chiếu. Thêm `offset 0` (rào tối ưu) ⇒ 1 lần/đề.
+  So cũ–mới 11 lượt gọi (2 môn × 5 tab + lọc khối), 708 dòng, lệch 0; 100 đề/lượt 25,0 s → 9,6 s; 25 đề 657 → 298 ms.
+  **Cùng mẫu có ở 10 hàm khác** (`_kho_ten_dang` × 2 ở 7 hàm bổ trợ yếu, `_task_xong_at` × 3, `han_nop_bai_test` × 2, `_do_o_bdm` × 2): đã thử cả 10 trong rollback
+  (161 ca, lệch 0) nhưng chênh < 10 % ⇒ **KHÔNG sửa** (không đáng đụng hàm đang chạy tốt). Script dò mẫu: scratchpad `lat.mjs`.
+- **✅ SỬA 2 — `PhienClaudeTab.tsx` (client, CHƯA DEPLOY ERP):** gỡ đăng ký Realtime `postgres_changes` trên `claude_phien_tin` / `claude_phien`. Hai bảng này
+  KHÔNG nằm trong publication `supabase_realtime` (chỉ có `hoi_dap_nhan_su` + 5 bảng `sk_*`) ⇒ đăng ký chưa từng nhận sự kiện nào; màn vẫn chạy nhờ `batPoll`.
+  **Giả thuyết (CHƯA kiểm được — `claude_build` không đọc được schema `realtime`):** tab mở màn này giữ một đăng ký ⇒ Supabase đọc nhật ký ghi của cả DB ~2 lần/giây
+  suốt ngày (5–11 % một nhân ở cả 4 cửa sổ đo hôm nay). Sau deploy đo lại số lượt `wal->>` trong 12 phút: về ~0 lúc không có sự kiện ⇒ đúng; không đổi ⇒
+  còn người nghe khác (màn Sự kiện `useSkLive` để mở trên TV?) — lúc đó hỏi Thùy.
+- **⛔ ĐỊNH SỬA RỒI BỎ (đo xong thấy không đáng):**
+  (1) `fn_mastery_lam_moi` gỡ nhánh "chụp bù cấp chuyên đề" (đã xong từ 10/11): đo nguội thấy 0,3 s/lượt, **đo ấm cũ 184 ms vs mới 182 ms** ⇒ không áp, hàm giữ nguyên.
+  (2) Lưu sẵn số thành tựu chờ nhận vào `hs_so_luu`: lợi ~70 ms trên một ô chỉ số không chặn màn, đổi lại 2 trigger vô hiệu hoá + số trễ tới 30 phút ⇒ không làm.
+  (3) Index khoá ngoại bảng lớn: số lượt quét toàn bảng của các bảng con rất thấp (bai_test_cau 133, tu_luyen_dang_lan 23, dtv_cau_log 13 lượt cộng dồn) ⇒ chưa cần.
+  `fn_traogiai_thang` (10 bảng tạm mỗi lượt) và `fn_btyeu_de_xuat_dang_moi`: viết lại rủi ro cao, màn dùng vài ngày/tháng ⇒ để nguyên, ghi nhận.
+- **Thấy thêm, chưa đụng:** `thong_bao_hs` (chủ `postgres`) có 3 policy gọi `my_hoc_sinh_id()` / `la_thanh_vien()` TRẦN (không bọc `(select …)`) ⇒ chạy mỗi dòng,
+  175 ms/lượt đọc (3.517 lượt cộng dồn); `claude_build` không sửa được và đọc bảng này ra 0 dòng ⇒ nếu làm phải qua SQL Editor. 28 policy trần còn lại chỉ có
+  một điều kiện hằng ⇒ Postgres tự chạy một lần, vô hại.
+- **Bài học:** (a) **đo ẤM lẫn NGUỘI trước khi kết luận một nhánh "tốn"** — lượt đầu của kết nối gồm dựng kế hoạch + đọc đĩa; người dùng qua API hay gặp nguội
+  (kết nối pool bị đóng khi rảnh) nên số thật của họ ≈ số nguội, nhưng sửa một nhánh chỉ có lợi nếu nó tốn cả khi ấm. (b) **Bảng tích luỹ pg_stat_statements là lịch sử**
+  — chọn mục tiêu bằng hiệu số hai lần chụp. (c) Mẫu `lateral (select f(x) v) t` + dùng `t.v` nhiều lần = f chạy nhiều lần; hàm con nặng thì thêm `offset 0`.

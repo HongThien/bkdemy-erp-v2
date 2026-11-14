@@ -163,13 +163,10 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   useEffect(() => {
     setTt(phien.trang_thai)
     taiLai()
-    const ch = supabase.channel(`phien:${phien.id}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'claude_phien_tin', filter: `phien_id=eq.${phien.id}` },
-        (m) => { if (m.new && (m.new as PhienTin).id) setTin((prev) => vaTin(prev, m.new as PhienTin)) })
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'claude_phien', filter: `id=eq.${phien.id}` },
-        (m) => { const t = (m.new as { trang_thai?: PhienTrangThai }).trang_thai; if (t) { setTt(t); onDoiTrangThai(phien.id, t) } })
-      .subscribe()
-    return () => { supabase.removeChannel(ch) }
+    // [14/11] ĐÃ GỠ đăng ký Realtime (postgres_changes) trên claude_phien_tin / claude_phien: hai bảng này KHÔNG nằm trong publication
+    // supabase_realtime ⇒ đăng ký chưa từng nhận được sự kiện nào (màn vẫn chạy nhờ batPoll bên dưới), nhưng mỗi tab mở màn này lại giữ
+    // một đăng ký ⇒ Supabase đọc nhật ký ghi của CẢ DB ~2 lần/giây (đo 14/11: 5–11 % một nhân, khoản tốn lớn nhất còn lại).
+    // Muốn tin hiện tức thì ⇒ thêm bảng vào publication TRƯỚC rồi mới đăng ký lại; đừng đăng ký bảng chưa được phát.
   }, [phien.id]) // eslint-disable-line
 
   const dangChay = tin.some((t) => ['cho', 'dang_xu', 'dang_viet'].includes(t.trang_thai)) || tt === 'dang_dong'
