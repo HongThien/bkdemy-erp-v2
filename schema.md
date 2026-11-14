@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-597 bảng · 42 view · 0 enum · 452 trigger · 1955 function
+597 bảng · 42 view · 0 enum · 453 trigger · 1956 function
 
 ## _app_secrets
 
@@ -11469,6 +11469,7 @@ WITH luot AS (
 | ta_luong_ky_dong | ta_luong_ky_dong_bat_bien | BEFORE | DELETE/UPDATE | _ta_luong_ky_bat_bien |
 | ta_luong_lop | ta_luong_lop_kiem | BEFORE | INSERT/DELETE/UPDATE | _ta_luong_lop_kiem |
 | ta_luong_lop | ta_luong_lop_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
+| tai_lieu | trg_de_test_chi_nguon_mt | BEFORE | INSERT/UPDATE | _de_test_chi_nguon_mt |
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
 | tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
 | tai_lieu | trg_tl_dong_bo_cau_hinh_in | AFTER | UPDATE | _tl_dong_bo_cau_hinh_in |
@@ -11692,6 +11693,7 @@ WITH luot AS (
 - `_dbht_cot(p_cap text, x_nhom text, x_chuyen_de text, x_chu_de text)` → text
 - `_dbht_kenh_tt(p_kenh text)` → integer
 - `_dbht_tu(p_so_tuan integer)` → date
+- `_de_test_chi_nguon_mt()` → trigger
 - `_de_thi_da_giao(p_de uuid)` → boolean
 - `_de_thi_dang_moi(p_kho text, p_ma_cau text)` → TABLE(he text, loai text, id text, ten text, chu_de_id text, chu_de text)
 - `_de_thi_hop_le_4o(p text)` → boolean
