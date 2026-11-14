@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-597 bảng · 42 view · 0 enum · 452 trigger · 1953 function
+597 bảng · 42 view · 0 enum · 452 trigger · 1955 function
 
 ## _app_secrets
 
@@ -11888,6 +11888,7 @@ WITH luot AS (
 - `_mastery_hs_sach(p_hs uuid[])` → uuid[]
 - `_mastery_lan_cap(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
 - `_mastery_lan_cap_nhanh(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text)
+- `_mastery_lan_cap_t(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_caps text[], p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, cap text, nut text, score numeric, n bigint, muc text, tin text, t_cuoi timestamp with time zone)
 - `_mastery_lan_core(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone, p_cap text, p_window integer, p_tin_cao integer, p_tin_tb integer)` → TABLE(hoc_sinh_id uuid, nut text, score numeric, n bigint, muc text, tin text)
 - `_mastery_lan_d(p_bdm boolean, p_hs uuid[], p_include_btvn boolean, p_since timestamp with time zone, p_den timestamp with time zone)` → TABLE(hoc_sinh_id uuid, luot text, value numeric, t timestamp with time zone, src text, dang text, nhom text, chuyen_de text, chu_de text, hh boolean)
 - `_mastery_lan_do(p_bdm boolean, p_hs uuid[], p_include_btvn boolean DEFAULT false, p_since timestamp with time zone DEFAULT NULL::timestamp with time zone, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, value numeric, t timestamp with time zone, src text)
@@ -12251,6 +12252,7 @@ WITH luot AS (
 - `_tu_dong_sang_t2()` → jsonb
 - `_tu_luyen_chon_dang(p_hs uuid, p_mon text, p_so integer DEFAULT 10)` → jsonb
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
+- `_tu_luyen_mastery_dang(p_hs uuid, p_moc timestamp with time zone)` → TABLE(ma_dang text, score numeric, muc text, gan_day boolean)
 - `_tu_luyen_so_cau_tinh(p_khoi text)` → integer
 - `_vatly_bdm_bump_nhom()` → trigger
 - `_vatly_bdm_duyet_duoc(p_khoi text)` → boolean
