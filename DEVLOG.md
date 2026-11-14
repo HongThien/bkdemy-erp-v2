@@ -80582,3 +80582,9 @@ Thùy nêu 4 việc, làm được 3:
 ## 14/11 (sáng) — Đợt 3 bước 7: hai job đêm vào danh mục điều phối (mig 202611141055 ĐÃ ÁP; 2 job cron cũ CHỜ Thùy tắt ở SQL Editor)
 - Đăng ký `mastery_luoi_dem` (02:02 VN, ưu tiên 5 — đánh dấu xong sổ mastery tính ngay cùng lượt) và `tu_luyen_so_cau` (05:02 VN, ưu tiên 90). Khuôn "mỗi ngày một lần" = `chu_ky_phut` 1200 + `gio_chay` một giờ. Lệnh giữ nguyên như job cũ.
 - Hai job cron cũ còn bật cho tới khi Thùy chạy lệnh tắt (cuối file migration). Chưa tắt kịp trước đêm ⇒ mỗi việc chạy 2 lần, thừa việc chứ không sai số. Sau khi tắt: cron còn 7 job ⇒ chạy `check:kien-truc --ha-tran`.
+
+## 14/11 (trưa) — Đo thật 12 phút (10:55–11:07): ai đang tốn DB lúc vắng người
+- Lấy hiệu số 2 lần chụp `_audit_pss()`. Tổng 67,8 s thời gian DB / 720 s (~9% một nhân). Bộ điều phối 19,1 s (3 lượt, tb 6,4 s) · **câu thăm WAL của Supabase Realtime 15,7 s / 1.401 lượt (~2 lượt/giây, chạy suốt, không phụ thuộc số người dùng)** · còn lại mỗi thứ < 5 s (`fn_the_gioi_home` 131 ms × 12 — con số 3,3 s trong cảnh báo là cộng dồn cũ).
+- Publication `supabase_realtime` chỉ có 6 bảng (`sk_*`, `hoi_dap_nhan_su`), cả 6 đều 0 lượt ghi. Client có 3 chỗ `postgres_changes` (`soan_cum` ×2… `claude_phien`, `claude_phien_tin`) — các bảng này KHÔNG nằm trong publication ⇒ cần kiểm 3 chỗ đó có đang nhận được gì không (chưa kiểm).
+- Sổ nền 90 phút gần nhất: bxh tb 2,3 s · mastery 0,7 s · tin 0,7 s · việc 0,6 s · dạng đã học 0,5 s · việc tháng 0,4 s · phòng 0,4 s · dạng yếu 0,15 s; 0 lỗi, 0 lượt bị cắt.
+- **Kết luận:** phía nền hết chỗ nặng. Chỗ còn lại phải đo giờ cao điểm ⇒ đang chạy bộ ghi chỉ-đọc, 30 phút một cửa sổ tới 22:35 (file trong scratchpad phiên: `pss-ngay/HHMM.txt`). Chọn mục tiêu đợt 5 từ số tối nay.
