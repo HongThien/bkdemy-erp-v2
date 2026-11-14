@@ -26,10 +26,11 @@ const LIMIT = 10000
 // thành đề hiện tại, đề cũ GIỮ làm lịch sử (không xoá). Điểm danh test gán đề = snapshot câu từ chính
 // tài liệu de_test_dau_vao này vào ca_test_cau (mirror MT/Đề thi — layCauTheoThuTu đã generic).
 // ============================================================================
-export const LOAI_DE_TEST = ['mt', 'de_thi'] as const // các loại nguồn dùng được để sinh đề test đầu vào
-export const TEN_LOAI_DE: Record<string, string> = { mt: 'MT', de_thi: 'Đề thi' }
+// ⭐ Thùy 14/11: test đầu vào CHỈ lấy đề MT của BK — KHÔNG lấy Đề thi / đề cương học kì (đảo 07-27 "MT + Đề thi").
+export const LOAI_DE_TEST = ['mt'] as const // các loại nguồn dùng được để sinh đề test đầu vào
+export const TEN_LOAI_DE: Record<string, string> = { mt: 'MT', de_thi: 'Đề thi' } // de_thi: chỉ còn để hiện nhãn nguồn của đề CŨ
 
-// NGUỒN dùng được để sinh đề (MT + Đề thi master, lop_id null). Lọc mon/khoi nếu truyền.
+// NGUỒN dùng được để sinh đề (chỉ MT master, lop_id null). Lọc mon/khoi nếu truyền.
 export async function listNguonDe(mon?: string, khoi?: string): Promise<TaiLieu[]> {
   let q = supabase.from('tai_lieu').select('*').in('loai', LOAI_DE_TEST as unknown as string[])
     .is('lop_id', null).order('created_at', { ascending: false }).limit(LIMIT)

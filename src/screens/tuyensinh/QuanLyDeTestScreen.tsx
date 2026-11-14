@@ -1,4 +1,4 @@
-// Quản lý đề test đầu vào (Thùy chốt 07-27) — SINH đề từ nguồn MT/Đề thi. Học thuật chọn khối×môn +
+// Quản lý đề test đầu vào (Thùy chốt 07-27) — SINH đề từ nguồn MT (14/11: chỉ MT của BK, không lấy Đề thi/đề cương). Học thuật chọn khối×môn +
 // chọn nguồn → hệ tạo 1 tài liệu "Đề test đầu vào · Khối X · <tên nguồn>" (copy nội dung). Mỗi khối×môn
 // 1 đề ĐANG DÙNG (bản mới nhất); sinh đề mới → thành đề hiện tại, bản cũ giữ làm LỊCH SỬ. Màn này liệt
 // kê đề đang dùng (theo khối×môn) + lịch sử. Điểm danh test lấy đề đang dùng khớp khối×môn (xem DiemDanhTestScreen).
@@ -66,7 +66,7 @@ export default function QuanLyDeTestScreen() {
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <div>
             <h2 className="text-[20px] font-semibold text-slate-800">Đề test đầu vào</h2>
-            <p className="text-[12px] text-slate-400">Kho đề test đầu vào theo khối × môn (sinh từ MT · Đề thi). Ca mới tự lấy đề <b>mặc định</b> (mới nhất); mọi đề trong kho đều chọn được ở Điểm danh / Chấm test — phiếu trả bài theo đề đã chọn.</p>
+            <p className="text-[12px] text-slate-400">Kho đề test đầu vào theo khối × môn (chỉ sinh từ đề MT của BK). Ca mới tự lấy đề <b>mặc định</b> (mới nhất); mọi đề trong kho đều chọn được ở Điểm danh / Chấm test — phiếu trả bài theo đề đã chọn.</p>
           </div>
           <button onClick={() => setForm(true)} className="ml-auto rounded-xl bg-indigo-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm hover:bg-indigo-500">+ Tạo đề test đầu vào</button>
         </div>
@@ -78,7 +78,7 @@ export default function QuanLyDeTestScreen() {
 
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p> : nhom.length === 0 ? (
           <div className="rounded-lg border border-dashed border-slate-200 py-14 text-center text-sm text-slate-400">
-            Chưa có đề test đầu vào nào{mon ? ` cho môn ${mon}` : ''}. Bấm "+ Tạo đề test đầu vào" để sinh từ MT / Đề thi.
+            Chưa có đề test đầu vào nào{mon ? ` cho môn ${mon}` : ''}. Bấm "+ Tạo đề test đầu vào" để sinh từ đề MT.
           </div>
         ) : (
           <div className="grid gap-3 sm:grid-cols-2">
@@ -194,7 +194,7 @@ function TaoDeModal({ onClose, onDone }: { onClose: () => void; onDone: () => vo
   useEffect(() => { if (nguonId && !nguonOpts.some((d) => d.id === nguonId)) setNguonId('') }, [khoi, mon]) // eslint-disable-line
 
   async function save() {
-    if (!nguonId) { setErr('Chọn 1 nguồn (MT / Đề thi) để sinh đề.'); return }
+    if (!nguonId) { setErr('Chọn 1 đề MT để sinh đề.'); return }
     setBusy(true); setErr(null)
     try { await sinhDeTestDauVao(nguonId, khoi, mon); onDone() }
     catch (e: any) { setErr(e.message ?? String(e)); setBusy(false) }
@@ -211,9 +211,9 @@ function TaoDeModal({ onClose, onDone }: { onClose: () => void; onDone: () => vo
             <div><Lbl>Môn</Lbl><select className={inputCls} value={mon} onChange={(e) => setMon(e.target.value as MonTS)}>{MON_OPTIONS.map((m) => <option key={m} value={m}>{m}</option>)}</select></div>
           </div>
           <div>
-            <Lbl>Nguồn (MT · Đề thi khớp khối × môn)</Lbl>
+            <Lbl>Nguồn (đề MT khớp khối × môn)</Lbl>
             <select className={inputCls} value={nguonId} onChange={(e) => setNguonId(e.target.value)}>
-              <option value="">{nguonOpts.length ? 'Chọn nguồn…' : '— Không có MT/Đề thi nào khớp —'}</option>
+              <option value="">{nguonOpts.length ? 'Chọn nguồn…' : '— Không có đề MT nào khớp —'}</option>
               {nguonOpts.map((d) => <option key={d.id} value={d.id}>{(TEN_LOAI_DE[d.loai] ?? d.loai)} · {d.ten}</option>)}
             </select>
           </div>
