@@ -80783,3 +80783,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Bài học:** (a) **đo ẤM lẫn NGUỘI trước khi kết luận một nhánh "tốn"** — lượt đầu của kết nối gồm dựng kế hoạch + đọc đĩa; người dùng qua API hay gặp nguội
   (kết nối pool bị đóng khi rảnh) nên số thật của họ ≈ số nguội, nhưng sửa một nhánh chỉ có lợi nếu nó tốn cả khi ấm. (b) **Bảng tích luỹ pg_stat_statements là lịch sử**
   — chọn mục tiêu bằng hiệu số hai lần chụp. (c) Mẫu `lateral (select f(x) v) t` + dùng `t.v` nhiều lần = f chạy nhiều lần; hàm con nặng thì thêm `offset 0`.
+- **22:17 — sau khi Thùy deploy ERP: Realtime KHÔNG đổi.** Đo 90 giây: 173 lượt đọc nhật ký ghi = 1,92 lượt/giây, 3,5 % một nhân (trước deploy 1,88 lượt/giây). Hai slot vẫn mở;
+  Realtime giữ 7/60 kết nối (`realtime_rls` · `realtime_replication_connection` · 3 `subscription_manager` · 2 `realtime_connect`).
+  ⇒ Giả thuyết "đăng ký chết ở màn phiên Claude giữ bộ đọc chạy" **CHƯA được xác nhận**. Còn 3 khả năng, chưa phân biệt được: (1) tab mở từ trước deploy vẫn chạy code cũ
+  cho tới khi tải lại; (2) có người nghe khác (màn Sự kiện `useSkLive` nghe 5 bảng `sk_*` — để mở trên TV?); (3) bộ đọc chạy suốt khi dự án bật Realtime, không phụ thuộc
+  người nghe. `claude_build` không có quyền vào schema `realtime` ⇒ cần Thùy chạy ở SQL Editor (chỉ đọc):
+  `select entity::text bang, count(*) so_dang_ky, max(created_at) moi_nhat from realtime.subscription group by 1 order by 2 desc;`
+  0 dòng mà vẫn đọc ⇒ khả năng (3): muốn cắt phải tắt hẳn postgres_changes (màn Sự kiện đã có poll dự phòng 5 s) — quyết định của Thùy. Bản gỡ ở client vẫn đúng (đăng ký vô dụng), giữ.
