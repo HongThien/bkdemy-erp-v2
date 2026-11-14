@@ -520,7 +520,7 @@ function dungCau() {
   const m = b.xong(); m.material = m.material.clone(); m.material.side = T.DoubleSide; g.add(m);
   const hc = hopCham(dai + 0.5, 1.7, 1.9, { loai: 'cau' }); hc.position.x = dai / 2; g.add(hc);
   // biển gỗ "Câu cá" quay về phía camera
-  const sg = new T.Group(), sb = M.boDung(); sg.position.set(-0.55, 0, 1.25); sg.rotation.y = Math.atan2(HUONG.x, HUONG.z);
+  const sg = new T.Group(), sb = M.boDung(); sg.position.set(-0.55, 0, 1.25); sg.rotation.y = Math.atan2(HUONG.x, HUONG.z); sg.scale.setScalar(1.4);   // Thùy 14/11: biển to hơn
   sb.tru(0.05, 0.06, 1.1, 0, 0.55, 0, DAM, null, 6); sb.hop(1.3, 0.56, 0.08, 0, 1.2, 0, 0x8a5530); sb.hop(1.2, 0.46, 0.09, 0, 1.2, 0, 0xd9a46a); sg.add(sb.xong());
   const c = document.createElement('canvas'); c.width = 384; c.height = 128; const x = c.getContext('2d');
   x.font = '900 68px system-ui, "Segoe UI", Arial, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.lineJoin = 'round';
