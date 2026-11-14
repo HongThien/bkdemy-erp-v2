@@ -80790,3 +80790,10 @@ Thùy nêu 4 việc, làm được 3:
 - **Làm:** mig `202611142221_lich_khoi_dong_bo_sinh_ca` (ĐÃ ÁP): bỏ 2 điều kiện bỏ-im-lặng, giữ chống dòng giống hệt; sau ghép buổi tính lại đơn vị bù nhóm (vá kẽ hở của mig 202611140851). `check:kien-truc` ✔.
 - **Tự phê:** mig bù-nhóm hôm qua bỏ sót đường ghép tự động (đặt cứng 4) — lẽ ra phải rà MỌI chỗ ghi `buoi_hoc_hs.don_vi`, không chỉ xếp/gỡ/vắng.
 - **Chưa làm (chờ Thùy):** xoá dòng Lịch khối nhân đôi (5 nhóm) · nới luật 2 ca/phòng? · bấm Chốt tuần · xử lý 2 ca mồ côi đã có em · chưa kiểm trên màn thật.
+- **22:17 — sau khi Thùy deploy ERP: Realtime KHÔNG đổi.** Đo 90 giây: 173 lượt đọc nhật ký ghi = 1,92 lượt/giây, 3,5 % một nhân (trước deploy 1,88 lượt/giây). Hai slot vẫn mở;
+  Realtime giữ 7/60 kết nối (`realtime_rls` · `realtime_replication_connection` · 3 `subscription_manager` · 2 `realtime_connect`).
+  ⇒ Giả thuyết "đăng ký chết ở màn phiên Claude giữ bộ đọc chạy" **CHƯA được xác nhận**. Còn 3 khả năng, chưa phân biệt được: (1) tab mở từ trước deploy vẫn chạy code cũ
+  cho tới khi tải lại; (2) có người nghe khác (màn Sự kiện `useSkLive` nghe 5 bảng `sk_*` — để mở trên TV?); (3) bộ đọc chạy suốt khi dự án bật Realtime, không phụ thuộc
+  người nghe. `claude_build` không có quyền vào schema `realtime` ⇒ cần Thùy chạy ở SQL Editor (chỉ đọc):
+  `select entity::text bang, count(*) so_dang_ky, max(created_at) moi_nhat from realtime.subscription group by 1 order by 2 desc;`
+  0 dòng mà vẫn đọc ⇒ khả năng (3): muốn cắt phải tắt hẳn postgres_changes (màn Sự kiện đã có poll dự phòng 5 s) — quyết định của Thùy. Bản gỡ ở client vẫn đúng (đăng ký vô dụng), giữ.
