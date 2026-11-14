@@ -80578,3 +80578,7 @@ Thùy nêu 4 việc, làm được 3:
 ## 14/11 (sáng) — Đợt 3 bước 6: `tinh_san_ban` thành nhật ký chỉ-chèn (mig 202611141028 ĐÃ ÁP) — Thùy "Đổi đi"
 - Bỏ khoá chính `(so, khoa)`, thêm `id` identity làm khoá chính, index `(so, khoa, at)` thay `(so, at)`. Migration tự dừng nếu bảng có dòng (bảng rỗng, chưa sổ nào dùng ⇒ không mất dữ liệu).
 - Lý do: xem mục bước 5 — đánh dấu bẩn bằng upsert trên khoá duy nhất chặn đường HS nộp bài khi có giao dịch dài. Khuôn dùng: trigger nguồn chỉ INSERT; bẩn = có dòng `at` > mốc của bảng lưu; dọn dòng dưới mốc sau khi tính.
+
+## 14/11 (sáng) — Đợt 3 bước 7: hai job đêm vào danh mục điều phối (mig 202611141055 ĐÃ ÁP; 2 job cron cũ CHỜ Thùy tắt ở SQL Editor)
+- Đăng ký `mastery_luoi_dem` (02:02 VN, ưu tiên 5 — đánh dấu xong sổ mastery tính ngay cùng lượt) và `tu_luyen_so_cau` (05:02 VN, ưu tiên 90). Khuôn "mỗi ngày một lần" = `chu_ky_phut` 1200 + `gio_chay` một giờ. Lệnh giữ nguyên như job cũ.
+- Hai job cron cũ còn bật cho tới khi Thùy chạy lệnh tắt (cuối file migration). Chưa tắt kịp trước đêm ⇒ mỗi việc chạy 2 lần, thừa việc chứ không sai số. Sau khi tắt: cron còn 7 job ⇒ chạy `check:kien-truc --ha-tran`.
