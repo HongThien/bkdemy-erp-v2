@@ -106,19 +106,19 @@ Hiện trạng: 3 nguồn đo (`gami_grades`, `bai_lam_cau`, `bt_grades`) và 3 
 - **Cấm** hàm đọc tự quét `gami_grades`/`bai_lam_cau`/`bt_grades`. Mọi thứ suy từ lịch sử đo đi qua mô hình đọc (§4).
 - Kỳ đã đóng (tháng, tuần, mùa) = **sổ chốt bất biến**, tính một lần lúc đóng, không tính lại.
 
-## 4. Tầng Mô hình đọc — một khuôn "Sổ tính sẵn" (`ts_*`)
+## 4. Tầng Mô hình đọc — một khuôn "Sổ tính sẵn" (`tinh_san_*`)
 
 Thay 6 kiểu hiện có bằng MỘT khuôn (chi tiết bảng ở audit §2.4):
 
-- `ts_dang_ky` — danh mục: mã sổ · bảng lưu · **đơn vị tính** (1 HS / HS×môn / lớp / nhân sự / khối) · hàm tính (nhận mảng khoá) · độ ưu tiên ·
+- `tinh_san_dang_ky` — danh mục: mã sổ · bảng lưu · **đơn vị tính** (1 HS / HS×môn / lớp / nhân sự / khối) · hàm tính (nhận mảng khoá) · độ ưu tiên ·
   ngân sách ms · trần 1 khoá · phụ thuộc sổ nào · chính sách khi bẩn (`tinh_truc_tiep` cho đơn vị nhỏ, `doc_cu_kem_co` cho đơn vị lớn).
-- `ts_ban` — **một hàng đợi bẩn duy nhất** `(mã sổ, khoá)`. Trigger ở bảng nguồn chỉ làm một việc: chèn dòng bẩn. Không còn TTL làm cơ chế chính.
+- `tinh_san_ban` — **một hàng đợi bẩn duy nhất** `(mã sổ, khoá)`. Trigger ở bảng nguồn chỉ làm một việc: chèn dòng bẩn. Không còn TTL làm cơ chế chính.
 - Bảng lưu nào cũng có: khoá · `tinh_at` · `moc` · phiên bản công thức. Ghi bằng upsert phần khác biệt, **cấm xoá hết chèn lại**.
-- **Một bộ điều phối `_ts_chay`**, một job cron: đi theo ưu tiên, cũ nhất trước, kiểm giờ **sau từng khoá**, mỗi khoá có trần riêng và bắt lỗi riêng
+- **Một bộ điều phối `_tinh_san_chay`**, một job cron: đi theo ưu tiên, cũ nhất trước, kiểm giờ **sau từng khoá**, mỗi khoá có trần riêng và bắt lỗi riêng
   (một khoá hỏng không huỷ cả lượt). Một kết nối thay cho ~9.
 - **Đơn vị tính luôn là đơn vị nhỏ nhất** (1 HS, 1 nhân sự). Số cấp trên (lớp, khối, toàn trung tâm, bảng xếp hạng) = GOM từ đơn vị nhỏ, không tính lại từ gốc.
 - Hàm đọc giữ chữ ký. Đơn vị lớn **không bao giờ tính trong lượt đọc của người dùng** — trả số cũ kèm "tính lúc HH:MM".
-- Quan sát: `ts_chay` (mỗi lượt: số khoá, còn lại, ms lớn nhất, lỗi) + màn admin (độ dài hàng đợi, tuổi khoá cũ nhất).
+- Quan sát: `tinh_san_chay` (mỗi lượt: số khoá, còn lại, ms lớn nhất, lỗi) + màn admin (độ dài hàng đợi, tuổi khoá cũ nhất).
 - Sổ chốt bất biến (chốt tuần, báo cáo kì, ảnh đầu tuần) KHÔNG thuộc khuôn này — đó là dữ liệu gốc.
 
 ## 5. Hợp đồng API (ranh giới màn hình ↔ DB)
@@ -187,7 +187,7 @@ ngày bật cổng ghi lại số hiện tại, từ đó số mới > số cũ 
 | Khoá ngoại không có index | catalog | chỉ giảm; bảng mới = 0 |
 | Index tạo quá 7 ngày mà `idx_scan = 0` | pg_stat | cảnh báo |
 | Hàm client gọi có trung bình > ngân sách (§5) | pg_stat_statements | cảnh báo → ✗ sau 2 tuần |
-| Job tính sẵn: tuổi khoá cũ nhất, lượt lỗi 24 h | `ts_chay` | cảnh báo |
+| Job tính sẵn: tuổi khoá cũ nhất, lượt lỗi 24 h | `tinh_san_chay` | cảnh báo |
 | `.from(` trên bảng nghiệp vụ trong `src/` | grep | chỉ giảm |
 | `setInterval` gọi DB ngoài `usePoll` | grep | 0 với code mới |
 | `limit ≥ 1000`, `select('*')` trên bảng lớn | grep | chỉ giảm |
@@ -202,7 +202,7 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
 - **K1. Miền sở hữu bảng.** Miền khác gọi hàm, không đụng bảng. — *Hết cảnh mỗi tính năng tự mở đường xuống DB.* — Review + tiền tố tên.
 - **K2. Hàm client gọi chỉ được chi phí theo MỘT người / MỘT lớp.** Cả khối/cả hệ ⇒ sổ tính sẵn. — *Hết "tính cả hệ rồi lọc".* — Khai `C1/C2/C3` + đo pss.
 - **K3. Không quét lịch sử đo trong hàm đọc.** Đi qua mô hình đọc. — *Chi phí tăng theo HS × thời gian.* — grep tên 3 bảng đo trong thân hàm `fn_*`.
-- **K4. Một khuôn tính sẵn.** Bảng tính sẵn mới = một dòng `ts_dang_ky`, không cron riêng, không TTL làm cơ chế chính. — *6 kiểu, 16 cron chồng nhau.* — catalog cron.
+- **K4. Một khuôn tính sẵn.** Bảng tính sẵn mới = một dòng `tinh_san_dang_ky`, không cron riêng, không TTL làm cơ chế chính. — *6 kiểu, 16 cron chồng nhau.* — catalog cron.
 - **K5. Đơn vị tính nhỏ nhất; cấp trên là gom.** Cấm 1 khoá = mọi HS. — *bxh 280 s/khoá ở 10k.*
 - **K6. Kỳ đã đóng thì chốt một lần.** — *Thành tựu, album, ĐHT tính lại cả mùa mỗi lượt.*
 - **K7. Mọi khoá ngoại và mọi cột lọc/nối của hàm mới đều có index; tạo xong phải thấy `idx_scan > 0`.** — *4 index sai biểu thức chưa từng được dùng.* — cổng.
@@ -240,7 +240,7 @@ Mỗi đợt: nêu phạm vi → Thùy gật → làm → số trước–sau �
 | **0. Bịt lỗ đang hở** | RLS 8 bảng · thu quyền anon/PUBLIC + danh sách trắng · `security_invoker` cho view · cổng cho ~25 hàm · 5 policy ghi mở · storage · bỏ nhánh email, lọc đang làm · chuyển cấp tài khoản sang máy chủ rồi đóng đăng ký | Cổng §8 (4 dòng quyền) = 0; đăng nhập thật 8 app + app PH + game khách vẫn chạy |
 | **1. Dựng hàng rào** ✅ 13/11 | `npm run check:kien-truc` (`scripts/check-kien-truc.mjs`) + số trần `scripts/kien-truc/tran.json` + danh sách cho phép `cho-phep.json` · luật vào CLAUDE.md · phiếu 10 câu (§9) | Nợ mới không vào được |
 | **2. Nền dữ liệu** | Bộ index (audit §2.2) + tạo lại 4 index sai · bảng ánh xạ câu→dạng thay view 8 nhánh · một cửa đọc lịch sử đo · "Việc của tôi": lọc người trước, có cửa sổ ngày; hạn việc là **cache suy ra** theo (buổi, khâu) — việc vẫn pure-derive, không có dòng việc | Hết seq scan lớn; `fn_viec_buoi_thuong`, họ bốc câu, `_do_o_bdm` trong ngân sách; so khớp cũ–mới từng dòng |
-| **3. Khuôn tính sẵn** | `ts_*` + bộ điều phối · chuyển theo thứ tự: tin Thế giới → bxh → mục tiêu tuần/dạng yếu/dạng đã học → mastery (+Hình) → phòng/dashboard → cây bản đồ | 1 job cron; không lượt nào > 30 s; không lỗi kết nối cron |
+| **3. Khuôn tính sẵn** | `tinh_san_*` + bộ điều phối · chuyển theo thứ tự: tin Thế giới → bxh → mục tiêu tuần/dạng yếu/dạng đã học → mastery (+Hình) → phòng/dashboard → cây bản đồ | 1 job cron; không lượt nào > 30 s; không lỗi kết nối cron |
 | **4. Lớp dữ liệu client** | Cache + gộp lượt gọi trong seam `src/lib` (danh tính, tham chiếu trước) · `usePoll` · gộp Home HS thành 1–2 RPC · Home nhân sự · nông trại ghi thưa | Mở app HS ≤ 4 request; về màn chính ≤ 1; 0 polling ngoài hook |
 | **5. Trả nợ hàm C3** | `fn_traogiai_thang`, `fn_bc_ky_*` (chốt theo lô), `fn_hs_album`, `fn_xephang_chung`/`fn_tich_luy`, thành tựu, Thế giới (bỏ `_hs_hien` từng dòng) | Không hàm client gọi nào > ngân sách |
 | **6. Sức chứa** | Thử tải ở 1.000 / 2.000 · chọn gói máy chủ theo số đo · hạn giữ log · chia bảng đo theo năm học | Qua thử tải mốc kế tiếp với dư 2 lần |

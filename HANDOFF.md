@@ -42,7 +42,7 @@
 - Hỏi lại ai làm kho/tài liệu tối 13/11 (19:04–20:53): thao tác qua API trong lúc sự cố đã thất bại, không có cách liệt kê.
 
 **VIỆC KẾ TIẾP (theo thứ tự đề xuất):**
-1. **Đợt 3 — một khuôn tính sẵn** (`ts_dang_ky` + hàng đợi bẩn + một bộ điều phối thay ~9 job cron); chuyển lần lượt: tin Thế giới → bxh → mục tiêu tuần / dạng yếu / dạng đã học → mastery (+Hình) → phòng / dashboard → cây bản đồ. Gộp luôn "một cửa đọc lịch sử đo". Thiết kế ở spec §4; hiện trạng 6 kiểu ở audit §2.4.
+1. **Đợt 3 — một khuôn tính sẵn** (`tinh_san_dang_ky` + hàng đợi bẩn + một bộ điều phối thay ~9 job cron); chuyển lần lượt: tin Thế giới → bxh → mục tiêu tuần / dạng yếu / dạng đã học → mastery (+Hình) → phòng / dashboard → cây bản đồ. Gộp luôn "một cửa đọc lịch sử đo". Thiết kế ở spec §4; hiện trạng 6 kiểu ở audit §2.4.
 2. **Đợt 4 — client:** cache `getMyProfile` + dữ liệu tham chiếu trong `src/lib` · bỏ poll `fn_hs_ep_cap_nhat` 30 s · `fn_the_gioi_home` TTL + không gọi khi tắt tính năng · gộp Home HS thành 1–2 RPC · hook `usePoll`.
 3. **Đợt 5 còn lại:** `fn_traogiai_thang`, `fn_bc_ky_chot_hs`, `fn_hs_album`, `fn_thanh_tuu_cho_nhan`, Thế giới BK (`_hs_hien` từng dòng).
 4. **Đợt 0 còn dở:** chuyển cấp tài khoản về máy chủ rồi đóng signup · chỉ admin ghi `tai_khoan` · tách cửa cho `_kho_snapshot_cau` · 3 trigger push đổi sang security definer rồi đóng `_push_bao_cap_nhat` · bỏ `ma_hs` khỏi BXH + buộc đổi mật khẩu mặc định · `bkdemy-ph-app/lib/admin-auth.ts` coi mọi token ERP là admin.

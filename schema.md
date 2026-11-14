@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-591 bảng · 42 view · 0 enum · 448 trigger · 1940 function
+594 bảng · 42 view · 0 enum · 448 trigger · 1941 function
 
 ## _app_secrets
 
@@ -7529,6 +7529,40 @@ END |  |  |
 | mo | boolean |  |  |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
 
+## tinh_san_ban
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| so | text |  |  | PK FK→tinh_san_dang_ky.ma |  |
+| khoa | text |  |  | PK |  |
+| at | timestamp with time zone |  | clock_timestamp() |  |  |
+
+## tinh_san_chay
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| so | text |  |  |  |  |
+| bat_dau | timestamp with time zone |  | clock_timestamp() |  |  |
+| ms | integer | Y |  |  |  |
+| ket_qua | text | Y |  |  |  |
+| loi | text | Y |  |  |  |
+
+## tinh_san_dang_ky
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| ma | text |  |  | PK |  |
+| ten | text |  |  |  |  |
+| lenh | text |  |  |  |  |
+| chu_ky_phut | integer |  |  |  |  |
+| gio_chay | integer[] | Y |  |  |  |
+| uu_tien | integer |  |  |  |  |
+| ngan_sach_giay | integer |  |  |  |  |
+| bat | boolean |  | true |  |  |
+| chay_gan_nhat | timestamp with time zone | Y |  |  |  |
+| ghi_chu | text | Y |  |  |  |
+
 ## tl_bdm_dem_luu
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -12019,6 +12053,7 @@ WITH luot AS (
 - `_thu_cua_ngay(p date)` → smallint
 - `_tich_luy_cua(p_ns uuid, p_ym text)` → TABLE(diem_thang integer, chuoi integer, ngay_cuoi date, ngay_trot date)
 - `_tinh_nang_ghi_vet()` → trigger
+- `_tinh_san_chay(IN p_giay integer DEFAULT 100)` → null
 - `_tk_dong_bo(p_ns uuid)` → void
 - `_tk_goc_team(p_team text, p_mon text)` → uuid
 - `_tl_bdm_btvn_chia(p_buoi uuid, p_ti_le integer[])` → TABLE(nhom text, thu_nhom integer, ma_cau text, thu integer, phan integer)
@@ -13857,6 +13892,8 @@ WITH luot AS (
 | thu_thach_luot | thu_thach_luot_check | `CHECK (((diem >= 0) AND (diem <= diem_goc)))` |
 | thu_thach_luot | thu_thach_luot_so_cau_check | `CHECK ((so_cau > 0))` |
 | thu_thach_luot | thu_thach_luot_so_dung_check | `CHECK ((so_dung >= 0))` |
+| tinh_san_dang_ky | tinh_san_dang_ky_chu_ky_phut_check | `CHECK ((chu_ky_phut >= 1))` |
+| tinh_san_dang_ky | tinh_san_dang_ky_ngan_sach_giay_check | `CHECK (((ngan_sach_giay >= 1) AND (ngan_sach_giay <= 100)))` |
 | toan_de_thi_cau | toan_de_thi_cau_1_of_2_check | `CHECK ((num_nonnulls(ma_cau_dai, ma_cau_hgt) = 1))` |
 | troly_nhan_dinh | troly_nhan_dinh_gac_ck | `CHECK (((quyet_dinh = 'gac'::text) = (gac_den IS NOT NULL)))` |
 | troly_ra_soat | troly_ra_soat_gac_ck | `CHECK (((ket_luan = 'gac'::text) = (gac_den IS NOT NULL)))` |
