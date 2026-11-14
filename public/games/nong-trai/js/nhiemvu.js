@@ -68,6 +68,8 @@ function hdMuc(s) { const B = hdBuoc(s); return B && B.muc ? B.muc(s) : null; }
 
 // mẹo lần đầu khi mở tính năng mới — cấp lấy từ bảng số liệu (tính năng pha sau có cấp SAU nên không bao giờ hiện)
 const MEO = [
+  // TIN MỚI 14/11 (Thùy: "cần có lời dẫn mới về Sự kiện Câu cá") — đứng đầu, cấp 1 ⇒ mọi em thấy 1 lần ngay lượt vào kế tiếp; mũi tên chỉ cây cầu gỗ bên hồ
+  { id: 'cau_ca', cap: 1, muc: () => ({ loai: 'cau' }), loi: 'Có SỰ KIỆN CÂU CÁ nè! Ra cây cầu gỗ bên hồ, chạm vào để thả câu. Mỗi ngày em có ' + D.CAU.luot + ' lượt: canh cho đúng lúc rồi kéo thật khéo là cá lên bờ. Hồ có ' + Object.keys(D.CA).length + ' loài, từ cá rô quen thuộc tới cá rồng huyền thoại — cá càng hiếm bán càng nhiều EXP. Câu được con nào, Sổ tay cá ghi lại con đó!' },
   // TIN MỚI 03/11 (Thùy: "tutorial đổi background, đổi nhà, máy chế biến" + giúp bạn có EXP) — cấp 1 ⇒ mọi em thấy 1 lần, lần lượt từng mẹo
   { id: 'nha_canh', cap: 1, muc: () => '#btnGiaoDien', loi: 'Có món mới nè! Chạm nút 🎨 NHÀ & CẢNH để chọn kiểu nhà em thích và đổi khung cảnh: Trang trại tuyết hay Đêm Halloween. Bạn sang chơi cũng thấy nhà của em đó!' },
   { id: 'may_cb', cap: D.LO_CAP, muc: () => ({ loai: 'lo' }), loi: 'MÁY CHẾ BIẾN mở rồi! Bỏ nông sản vào làm món mới: 3 lúa mì thành bánh mì, 3 khoai tây thành khoai tây nghiền… Chờ vài phút là xong, bán được nhiều EXP hơn bán thẳng. Đang chờ thì bấm ⚡ làm 3 câu toán, đúng 2 câu là máy chạy nhanh gấp đôi!' },

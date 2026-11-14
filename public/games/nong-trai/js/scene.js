@@ -494,7 +494,7 @@ function dungTrangTri() {
 
 // ---------- CÂU CÁ (Thùy 14/11): cầu gỗ + ghế + cần câu + dù + biển "Câu cá" ở bờ trái hồ; phao và bóng cá dưới nước ----------
 // Chạm cầu / ghế / biển ⇒ { loai: 'cau' } (ui.js mở js/cauca.js). Luật ở engine (cauNem / cauXong). phao(tt): 0 nghỉ · 1 đang chờ cá · 2 cá cắn · 3 kéo lên.
-let cauO = null, phaoO = null, phaoTT = 0, dayCau = null, caBong = [];
+let cauO = null, phaoO = null, phaoTT = 0, dayCau = null, caBong = [], nguoiCau = null;
 const PHAO = new T.Vector3(), DAU_CAN = new T.Vector3();
 function dungCau() {
   const C = VT.cau, g = neo(C.x, C.z), b = M.boDung(), GO = [0xc98d55, 0xb97d47], DAM = 0x8a5530, dai = C.dai, n = Math.round(dai / 0.3), cx = dai - 0.75;
@@ -509,10 +509,9 @@ function dungCau() {
   // xô đựng cá + hộp mồi
   b.tru(0.17, 0.13, 0.28, cx - 0.05, 0.48, 0.42, 0x5b8fd0, null, 10); b.tru(0.18, 0.18, 0.03, cx - 0.05, 0.62, 0.42, 0x3f6fb0, null, 10);
   b.hop(0.26, 0.14, 0.2, cx - 0.55, 0.41, 0.4, 0x6fae4e);
-  // cần câu gác trên chạc, chĩa ra mặt nước
-  const gx = cx + 0.3, gz = -0.32, L = 2.3, ng = 1.05;
-  b.tru(0.014, 0.03, L, gx + Math.sin(ng) * L / 2, 0.5 + Math.cos(ng) * L / 2, gz, 0x6b4a2a, { z: -ng }, 6);
-  b.tru(0.02, 0.02, 0.36, gx + 0.3, 0.52, gz, DAM, null, 5); b.tru(0.05, 0.05, 0.06, gx + 0.16, 0.66, gz + 0.03, 0x444444, { x: 1.57 }, 8);
+  // NHÂN VẬT NGỒI CÂU (Thùy 14/11 "cần có hoạt cảnh nhân vật ngồi câu"): bé đội mũ rơm ngồi ghế, 2 tay cầm cần — cử động theo phaoTT trong hdCau()
+  const L = 2.3, ng = 1.05;
+  nguoiCau = dungNguoiCau(L, ng); nguoiCau.g.position.set(cx + 0.02, 0.755, 0); nguoiCau.g.scale.setScalar(1.2); g.add(nguoiCau.g);
   // dù che nắng sọc đỏ trắng (cắm lùi phía sau ghế — không che ghế khi nhìn từ camera)
   const ux = cx - 0.75, uz = -0.5;
   b.tru(0.025, 0.025, 1.9, ux, 1.28, uz, 0xf2efe6, null, 6);
@@ -530,7 +529,7 @@ function dungCau() {
   const pl = new T.Mesh(new T.PlaneGeometry(1.14, 0.38), new T.MeshBasicMaterial({ map: tx, transparent: true })); pl.position.set(0, 1.2, 0.05); sg.add(pl);
   sg.add(hopCham(1.4, 1.7, 0.6, { loai: 'cau' })); g.add(sg);
   // phao + dây câu
-  DAU_CAN.set(C.x + gx + Math.sin(ng) * L, 0.5 + Math.cos(ng) * L, C.z + gz); PHAO.set(DAU_CAN.x + 0.35, 0.03, C.z + gz + 0.1);
+  g.updateMatrixWorld(true); nguoiCau.ngon.getWorldPosition(DAU_CAN); PHAO.set(DAU_CAN.x + 0.35, 0.03, DAU_CAN.z + 0.1);
   const pb = M.boDung(); pb.cau(0.075, 0, -0.01, 0, 0xffffff, null, null, 1); pb.cau(0.085, 0, 0.05, 0, 0xff4a3c, { x: 1, y: 0.8, z: 1 }, null, 1); pb.tru(0.012, 0.012, 0.2, 0, 0.19, 0, 0x333333, null, 5); pb.cau(0.025, 0, 0.3, 0, 0xffd23f, null, null, 0);
   phaoO = pb.xong(false); phaoO.position.copy(PHAO); sc.add(phaoO);
   dayCau = new T.Line(new T.BufferGeometry().setFromPoints([DAU_CAN, PHAO]), new T.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.75 })); dayCau.frustumCulled = false; sc.add(dayCau);
@@ -540,13 +539,61 @@ function dungCau() {
   const mc = new T.MeshBasicMaterial({ color: new T.Color(0x175066).convertSRGBToLinear(), transparent: true, opacity: 0.42, depthWrite: false });
   for (let i = 0; i < 5; i++) { const f = new T.Mesh(gc, mc); f.renderOrder = 6; f.userData = { pha: i * 1.9, bk: 0.3 + (i % 3) * 0.2, v: (i % 2 ? -1 : 1) * (0.16 + i * 0.03), k: 0.8 + (i % 3) * 0.25 }; f.scale.setScalar(f.userData.k); f.position.y = 0.045; sc.add(f); caBong.push(f); }
 }
-function phao(tt) { phaoTT = tt; if (!phaoO) return; if (tt === 2) hatTai(new T.Vector3(PHAO.x, 0.1, PHAO.z), 'nuoc', 6); if (tt === 3) { hatTai(new T.Vector3(PHAO.x, 0.15, PHAO.z), 'nuoc', 12); phaoTT = 0; } }
+function phao(tt) { phaoTT = tt; if (tt === 2) cauGiat = tg; if (tt === 3) cauKeo = tg; if (!phaoO) return; if (tt === 2) hatTai(new T.Vector3(PHAO.x, 0.1, PHAO.z), 'nuoc', 6); if (tt === 3) { hatTai(new T.Vector3(PHAO.x, 0.15, PHAO.z), 'nuoc', 12); phaoTT = 0; } }
+// bé ngồi câu: gốc ở mặt ghế, mặt quay ra hồ (+x). Trả { g, than, dau, tay, chan, ngon (đầu cần), ca (con cá văng lên lúc kéo) }
+function dungNguoiCau(L, ng) {
+  const DA = 0xffd9b5, AO = 0xfff3dc, YEM = 0x4f8fd8, YEM2 = 0x3f78c0, GIAY = 0x8a5530, ROM = 0xe6c35a;
+  const g = new T.Group(), than = new T.Group(), dau = new T.Group(), tay = new T.Group(), chan = new T.Group();
+  const nhom = (G, ve) => { const b = M.boDung(true); ve(b); G.add(b.xong()); };
+  nhom(than, b => { // thân: áo trắng kem + yếm xanh
+    b.cau(0.2, 0, 0.2, 0, AO, { x: 0.95, y: 1.15, z: 1 }, null, 2); b.cau(0.205, 0.01, 0.13, 0, YEM, { x: 0.95, y: 0.85, z: 1.02 }, null, 2);
+    b.hop(0.02, 0.2, 0.17, 0.17, 0.26, 0, YEM); for (const z of [-0.08, 0.08]) { b.hop(0.03, 0.2, 0.04, 0.1, 0.34, z, YEM2, { z: 0.35 }); b.cau(0.018, 0.18, 0.33, z, 0xffd23f, null, null, 0); }
+    for (const z of [-0.1, 0.1]) b.hop(0.3, 0.12, 0.13, 0.14, 0.03, z, YEM);   // đùi nằm ngang trên ghế
+  });
+  nhom(chan, b => { for (const z of [-0.1, 0.1]) { b.hop(0.1, 0.26, 0.11, 0, -0.13, z, DA); b.hop(0.17, 0.08, 0.12, 0.04, -0.28, z, GIAY); } });   // ống chân thõng + giày
+  chan.position.set(0.29, 0.02, 0);
+  nhom(dau, b => { // đầu to kiểu chibi, tóc nâu, mũ rơm vành rộng, má hồng
+    b.cau(0.2, 0, 0.19, 0, DA, null, null, 2); b.cau(0.205, -0.03, 0.22, 0, 0x6b4428, { x: 1, y: 0.92, z: 1.02 }, null, 2);
+    for (const z of [-0.075, 0.075]) { b.cau(0.026, 0.185, 0.2, z, 0x2a2a2a, { x: 0.5, y: 1.2, z: 1 }, null, 1); b.cau(0.03, 0.165, 0.13, z * 1.6, 0xffa8b4, { x: 0.4, y: 0.6, z: 1 }, null, 0); }
+    b.cau(0.02, 0.195, 0.13, 0, 0xe07a6a, { x: 0.5, y: 0.5, z: 1.4 }, null, 0);
+    b.tru(0.34, 0.36, 0.025, 0, 0.33, 0, ROM, null, 16); b.tru(0.16, 0.2, 0.15, 0, 0.41, 0, ROM, null, 14); b.tru(0.205, 0.205, 0.045, 0, 0.36, 0, 0xe8553d, null, 14);
+  });
+  dau.position.set(0.02, 0.42, 0);
+  nhom(tay, b => { // 2 tay đưa ra trước, chụm vào cán cần
+    for (const z of [-0.15, 0.15]) { b.hop(0.34, 0.085, 0.085, 0.17, -0.06, z * 0.72, AO, { z: -0.35, y: z > 0 ? 0.3 : -0.3 }); b.cau(0.055, 0.34, -0.12, z * 0.3, DA, null, null, 1); }
+  });
+  tay.position.set(0.06, 0.34, 0);
+  const can = new T.Group(); can.position.set(0.34, -0.12, 0); can.rotation.z = -ng; tay.add(can);
+  nhom(can, b => { b.tru(0.012, 0.03, L, 0, L / 2 - 0.2, 0, 0x6b4a2a, null, 6); b.tru(0.036, 0.036, 0.22, 0, -0.1, 0, 0x3a2a1c, null, 8); b.tru(0.05, 0.05, 0.05, 0.05, 0.1, 0, 0x444444, { z: 1.57 }, 8); });
+  const ngon = new T.Object3D(); ngon.position.set(0, L - 0.2, 0); can.add(ngon);
+  // con cá văng lên khi kéo được
+  const cb = M.boDung(true); cb.cau(0.11, 0, 0, 0, 0xff9a3c, { x: 1.7, y: 0.8, z: 0.55 }, null, 1); cb.non(0.09, 0.14, -0.22, 0, 0, 0xff7a2a, { z: -1.57 }, 5); cb.cau(0.02, 0.12, 0.03, 0.05, 0x222222, null, null, 0);
+  const ca = cb.xong(false); ca.visible = false; sc.add(ca);
+  g.add(than); g.add(chan); than.add(dau); than.add(tay);
+  return { g, than, dau, tay, chan, ngon, ca };
+}
+let cauGiat = -99, cauKeo = -99; const _ngon = new T.Vector3();
+function hdNguoiCau() { // nghỉ: gà gật · chờ cá: ngồi thẳng, đung đưa chân, ngó phao · cá cắn: giật mình, cần rung · kéo: ngả người giật cần, cá văng lên rồi rơi vào xô
+  const N = nguoiCau, k = tg - cauKeo, keo = k >= 0 && k < 1.3, tt = keo ? 3 : phaoTT;
+  let ngaThan = 0, cuiDau = 0, xoayDau = 0, tayZ = 0, chanZ = 0, nhun = 0;
+  if (tt === 0) { cuiDau = -0.3 + Math.sin(tg * 0.9) * 0.1; ngaThan = -0.05 + Math.sin(tg * 0.9) * 0.02; tayZ = -0.08 + Math.sin(tg * 0.9) * 0.02; }
+  else if (tt === 1) { ngaThan = -0.1; cuiDau = -0.06 + Math.sin(tg * 0.7) * 0.03; xoayDau = Math.sin(tg * 0.5) * 0.25; tayZ = Math.sin(tg * 1.6) * 0.03; chanZ = Math.sin(tg * 2.6) * 0.35; }
+  else if (tt === 2) { const d = Math.min(1, (tg - cauGiat) * 5); ngaThan = -0.2 * d; cuiDau = 0.12; tayZ = 0.1 * d + Math.sin(tg * 22) * 0.05; nhun = Math.abs(Math.sin(tg * 13)) * 0.03; chanZ = Math.sin(tg * 13) * 0.15; }
+  else { const u = Math.sin(Math.min(1, k / 0.45) * Math.PI / 2), ve = k > 0.8 ? (k - 0.8) / 0.5 : 0, m = u * (1 - ve); ngaThan = 0.32 * m; tayZ = 0.85 * m; cuiDau = 0.2 * m; chanZ = -0.5 * m; }
+  const mem = (o, kx, v) => { o.rotation[kx] += (v - o.rotation[kx]) * 0.25; };
+  mem(N.than, 'z', ngaThan); mem(N.dau, 'z', cuiDau); mem(N.dau, 'y', xoayDau); mem(N.tay, 'z', tayZ); mem(N.chan, 'z', chanZ); N.than.position.y = nhun;
+  N.ngon.getWorldPosition(_ngon);
+  N.ca.visible = keo && k < 1.0;
+  if (N.ca.visible) { const u = k / 1.0, C = VT.cau, bx = C.x + C.dai - 0.8, bz = C.z + 0.42; // bay vòng cung từ phao về xô cá
+    N.ca.position.set(PHAO.x + (bx - PHAO.x) * u, 0.1 + Math.sin(u * Math.PI) * 2.0 + u * 0.55, PHAO.z + (bz - PHAO.z) * u); N.ca.rotation.z = u * 9; N.ca.rotation.y = 0.6; }
+}
 function hdCau() {
   if (!phaoO) return;
   const A = VT.ao;
+  if (nguoiCau) hdNguoiCau();
   phaoO.position.y = phaoTT === 2 ? -0.05 + Math.sin(tg * 16) * 0.035 : 0.03 + Math.sin(tg * 2.2) * (phaoTT === 1 ? 0.03 : 0.012);
   phaoO.rotation.z = Math.sin(tg * 1.7) * 0.12;
-  const p = dayCau.geometry.attributes.position; p.setY(1, phaoO.position.y + 0.28); p.needsUpdate = true;
+  const p = dayCau.geometry.attributes.position; if (nguoiCau) p.setXYZ(0, _ngon.x, _ngon.y, _ngon.z); p.setY(1, phaoO.position.y + 0.28); p.needsUpdate = true;
   for (const f of caBong) { const u = f.userData, t = tg * u.v + u.pha, s = Math.sign(u.v);
     f.position.x = A.x + 0.3 + Math.cos(t) * A.rx * u.bk; f.position.z = A.z + Math.sin(t) * A.rz * u.bk;
     f.rotation.y = Math.atan2(-Math.cos(t) * A.rz * s, -Math.sin(t) * A.rx * s) + Math.sin(tg * 5 + u.pha) * 0.18; }
