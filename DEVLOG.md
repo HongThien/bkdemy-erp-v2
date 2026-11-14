@@ -80558,3 +80558,11 @@ Thùy nêu 4 việc, làm được 3:
 - **Đo sau (cron thật):** sổ phòng 7 ô 12,9–14,4 s → 0,42 s (09:17); sổ việc 0,55–0,6 s; lượt điều phối 15–23 s → 4,5–4,7 s; 0 lỗi, 0 lượt bị cắt.
 - **Còn lại trong lượt điều phối:** bxh ~3 s (A2 mùa Toán 1,9 s), mastery 0,7–4,5 s tuỳ số em bẩn.
 - **Ghi chú:** 6 hàm khác cũng gọi `fn_viec_buoi_thuong_lh` (`fn_ta_viec_thang`, `fn_gv_viec_thang`, `_troly_*`, `fn_bctk_so`) — chưa chuyển; chuyển khi đo thấy cần.
+
+## 14/11 (sáng) — Đợt 3 bước 4: tin Thế giới ghi phần khác biệt thay cho xoá hết chèn lại (mig 202611140924 ĐÃ ÁP) — Thùy "Tin Thế giới"
+- **Hiện trạng đo:** bảng `the_gioi_tin_luu` 516 dòng mà cộng dồn ~370 nghìn lượt chèn + xoá, 830 lượt autovacuum — mỗi 5 phút xoá 516 + chèn 516 (3 index, có GIN) dù hai lượt liền nhau không khác dòng nào.
+- **Làm:** `_the_gioi_tin_lam_moi` — xoá dòng không còn / đã đổi, chèn dòng mới / đã đổi (so cả dòng bằng `is not distinct from`, khoá `khoa` không trùng, không NULL). Không đổi bảng, không đổi `_the_gioi_tin` (hàm đọc), giá trị trả vẫn là số tin.
+- **Tôi nói sai ở lượt đề xuất, đã sửa trong báo cáo:** cách cũ KHÔNG có khoảnh khắc bảng trống với người đọc (xoá + chèn cùng một transaction). Lợi ích thật chỉ là bớt ghi / bớt dọn rác, không phải sửa sai số.
+- **Thử (rollback):** lượt thường ghi lại 0 / 516 dòng (so ctid), đối chiếu với `_the_gioi_tin_tinh` lệch 0; làm sai 1 dòng + xoá 1 + thêm 1 dòng giả ⇒ lượt sau ghi đúng 2 dòng, bỏ dòng giả, lệch 0.
+- **Đo sau (cron thật 09:32):** 269 ms, 0 dòng chèn, 0 dòng xoá.
+- **Đợt 3 còn lại:** mục tiêu tuần · dạng yếu · dạng đã học (đang bám mốc mastery, nhẹ) → mastery (+ Hình) chuyển sang `tinh_san_ban` → cây bản đồ; gộp `mastery_luoi_dem`, `tu_luyen_so_cau` vào danh mục; "một cửa đọc lịch sử đo".
