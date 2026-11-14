@@ -17,13 +17,13 @@ const VT = {
   // sân nới ra để chứa (11,4 × 8,8) và có đồ trang trí (SAN_DO bên dưới). Dải giữa x 3,7..6,5 = lối đi từ cổng vào cửa nhà.
   san: { x0: -0.6, x1: 10.8, z0: -12.0, z1: -3.2, cong: 5.1 },  // sân đất có rào (góc trên phải màn); cong = x của cổng ở cạnh trước
   nha: { x: 5.1, z: -9.7, rong: 4.14 },
-  barn: { x: 9.4, z: -10.5, rong: 2.6 },
+  barn: { x: -2.7, z: -5.3, rong: 2.6 },                        // Thùy 14/11: nhà kho đỏ (mô hình KayKit, lệch tông với nhà dựng bằng code) ra NGOÀI sân, đứng cạnh máy chế biến
   silo: null,                                                 // bỏ (thế giới Hay Day) — chạm kho nào cũng là mở kho
   bang: { x: -8.2, z: -4.8 },                                 // bảng tin lớp (chỗ bảng "Lịch canh tác")
   sap: { x: -13.2, z: 2.9, rong: 2.4 },                       // chợ
   chuong: { ga: { x: 1.9, z: -4.9, w: 3.6, d: 2.4 }, bo: { x: 8.4, z: -5.0, w: 3.8, d: 2.6 } },
   lo: { x: -2.6, z: -8.3, rong: 2.0 },                          // Thùy 14/11: máy chế biến đứng NGOÀI sân (bên trái rào), không chiếm khuôn viên nhà
-  trangTri: [[-12.4, -1.6], [-12.2, 6.8], [-5.0, 7.8], [1.4, 6.6], [12.1, -6.2], [12.0, -9.4], [-2.4, -5.0], [-5.0, -6.6]],
+  trangTri: [[-12.4, -1.6], [-12.2, 6.8], [-5.0, 7.8], [1.4, 6.6], [12.1, -6.2], [12.0, -9.4], [-5.2, -3.6], [-5.0, -7.4]],
   meo: { x: 1.9, z: -7.2 }, chim: { x: 9.5, z: -8.3 },
   hopThu: { x: 7.3, z: -2.4 },
   ao: { x: 7.9, z: 3.4, rx: 3.9, rz: 2.7 },                    // hồ trước cổng sân (Thùy 14/11: to ra, đẹp hơn, có chỗ câu cá) — trước là ao nhỏ 2,3 × 1,6 ở (9,4 · 1,0)
@@ -422,7 +422,7 @@ function dungTrangTri() {
     [VT.sap.x - 1.8, VT.sap.x + 1.8, VT.sap.z - 1.6, VT.sap.z + 1.6], [VT.bang.x - 1.6, VT.bang.x + 1.6, VT.bang.z - 1, VT.bang.z + 1],
     [VT.hopThu.x - 0.8, VT.hopThu.x + 0.8, VT.hopThu.z - 0.8, VT.hopThu.z + 0.8], [-1.4, 1.0, 5.4, 7.4],        // hộp thư · xe cút kít
     [VT.nhaCho.x - 1.1, VT.cho.x + 1.1, VT.cho.z - 1.1, VT.cho.z + 1.0],
-    [VT.lo.x - 1.5, VT.lo.x + 1.5, VT.lo.z - 1.5, VT.lo.z + 1.6],                                               // máy chế biến (ngoài sân)                                             // chó + nhà chó
+    [VT.lo.x - 1.5, VT.lo.x + 1.5, VT.lo.z - 1.5, VT.lo.z + 1.6], [VT.barn.x - 1.9, VT.barn.x + 1.8, VT.barn.z - 1.6, VT.barn.z + 2.0],                                               // máy chế biến (ngoài sân)                                             // chó + nhà chó
   ];
   for (const [x, z] of VT.trangTri) chiem.push([x - 1, x + 1, z - 1, z + 1]);
   const A = VT.ao; chiem.push([A.x - A.rx - 0.6, A.x + A.rx + 0.6, A.z - A.rz - 0.6, A.z + A.rz + 0.6]);
@@ -674,8 +674,8 @@ const SAN_DO = {
   chau: { ten: 'Chậu hoa', ic: '🪴', ve() { const b = M.boDung(), c = VT.san.cong, z1 = VT.san.z1;
     chauHoa(b, c - 1.0, z1 - 0.75, 1, [0xff7eb6, 0xffffff]); chauHoa(b, c + 1.0, z1 - 0.75, 1, [0xffd23f, 0xff9a3c]);
     chauHoa(b, c - 1.0, -4.65, 0.85, [0xb58cff, 0xffffff]); chauHoa(b, c + 1.0, -4.65, 0.85, [0xff6f5a, 0xffd23f]); return b.xong(); } },
-  luong: { ten: 'Luống hoa', ic: '🌷', ve() { const b = M.boDung(), S = VT.san; luong(b, S.x0 + 0.45, -11.2, S.x0 + 0.45, -8.6, 31); luong(b, S.x1 - 0.45, -8.4, S.x1 - 0.45, -6.7, 37); luong(b, 0.3, S.z0 + 0.45, 2.9, S.z0 + 0.45, 41); luong(b, 7.2, S.z0 + 0.45, 7.9, S.z0 + 0.45, 43); return b.xong(); } },
-  cayCanh: { ten: 'Cây cảnh', ic: '🌳', ve() { const b = M.boDung(); cayCanh(b, 1.5, -8.75, 1); cayCanh(b, 8.05, -8.0, 0.9); return b.xong(); } },
+  luong: { ten: 'Luống hoa', ic: '🌷', ve() { const b = M.boDung(), S = VT.san; luong(b, S.x0 + 0.45, -11.2, S.x0 + 0.45, -8.6, 31); luong(b, S.x1 - 0.45, -11.2, S.x1 - 0.45, -6.7, 37); luong(b, 0.3, S.z0 + 0.45, 2.9, S.z0 + 0.45, 41); luong(b, 7.9, S.z0 + 0.45, 10.2, S.z0 + 0.45, 43); return b.xong(); } },
+  cayCanh: { ten: 'Cây cảnh', ic: '🌳', ve() { const b = M.boDung(); cayCanh(b, 1.5, -8.75, 1); cayCanh(b, 9.0, -10.3, 1); return b.xong(); } },
   gieng: { ten: 'Giếng nước', ic: '🪣', ve() { const b = M.boDung(), x = 0.2, z = -7.6;
     for (let i = 0; i < 10; i++) { const a = i / 10 * 6.283; b.hop(0.36, 0.5, 0.2, x + Math.cos(a) * 0.52, 0.25, z + Math.sin(a) * 0.52, [0xbdb6ab, 0xaaa398, 0xc9c3b7][i % 3], { y: -a + Math.PI / 2 }); }
     b.tru(0.5, 0.5, 0.04, x, 0.36, z, 0x3f98ad, null, 14);
