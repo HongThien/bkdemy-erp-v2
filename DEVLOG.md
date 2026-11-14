@@ -80535,6 +80535,13 @@ Thùy nêu 4 việc, làm được 3:
 - **Quay lại nếu cần:** lệnh ở cuối file migration (bật lại 8 job, tắt job 24).
 - **Theo dõi tiếp:** `select so, max(ms), count(*) filter (where loi is not null), count(*) filter (where ms is null) from tinh_san_chay group by 1` — `ms` NULL = lượt bị cắt. Sổ nặng nhất: bxh, phòng ⇒ chuyển sang hàng đợi bẩn trước.
 
+## 14/11 — Luật đơn vị BÙ theo nhóm vào Lịch phòng (Thùy 14/11, ảnh ca K7 "8/6 LỐ")
+- **Thùy:** bù cùng lớp cùng buổi thì giảm đơn vị: 1 em 4 · 2 em 3/em · 3 em 2/em.
+- **Làm:** mig `202611140851_bu_nhom_don_vi_luat_xep` (nới CHECK thêm 3; hàm + trigger tính lại đơn vị lưu cả nhóm; `fn_ca_bo_tro_xep` chặn theo phần tăng; `fn_ca_bo_tro_ung_vien` hiện đơn vị theo nhóm; làm lại 10 dòng cũ, bản cũ ở `bu_dv_cu_20261114`) + `202611140855_bu_nhom_thu_quyen_ham_noi_bo` (hàng rào K1/K14). Spec §41. ĐÃ ÁP.
+- **Lỗi tự gây & sửa trong lúc làm:** (1) kiểu `bigint` của `count` ⇒ hàm tham số `integer` không khớp; (2) CHECK `don_vi in (1,2,4)` chặn giá trị 3 ⇒ nới; (3) hàm nội bộ mở cho `authenticated` + secdef thiếu cổng làm `check:kien-truc` TĂNG 2 mục ⇒ thu quyền bằng migration mới; (4) lúc kiểm em đọc nhầm dòng ứng viên (1 em có nhiều lần nghỉ ⇒ nhiều dòng) tưởng engine sai — không phải.
+- **Chưa kiểm bằng vai `authenticated` thật** (kết nối không đổi được vai): đã kiểm quyền (xep/ung_vien/go gọi được; hàm nội bộ không) + chạy kịch bản bằng vai chủ. Cần bấm thử trên Lịch phòng khi có ca bù thật (TA/Lộc).
+- **Nợ:** luật cho nhóm ≥4 em chưa có (đang 2/em); Dashboard Lấp đầy ≠ Lịch phòng ở chỗ buổi vắng và nhóm ≥4.
+
 ## 14/11 (sáng) — Đợt 3 bước 2: BXH "Tỉ lệ đạt" (A3) chỉ tính lại em vừa có điểm mới (mig 202611140830 ĐÃ ÁP) — Thùy "Làm"
 - **Đo trước:** trong 21 khoá bxh, một khoá chiếm gần hết: A3 Toán `hien_tai` 21,5 s / lượt (tính lại cả 307 em trên toàn bộ lịch sử `bai_lam_cau`, mỗi 10 phút; em nặng nhất 0,6 s). 10 phút chỉ ~3 em đổi, 24 giờ 64 em nộp bài.
 - **Làm:** `_bxh_lam_moi` — riêng khoá A3: em cần tính = chưa từng tính khoá | mốc `mastery_luu_san_tinh.tinh_at` ≥ lần tính trước − 2 phút | em chưa có dòng (mới vào lớp / chưa có mốc). Upsert từng em, bỏ dòng của em rời danh sách hoặc hết dữ liệu. 20 khoá khác giữ cách cũ. Chữ ký không đổi, `fn_bxh` không đổi.
