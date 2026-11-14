@@ -80528,3 +80528,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Thử:** chạy thử migration trong rollback (8 lệnh EXPLAIN hợp lệ; anon/authenticated không gọi được, không đọc được bảng). `call` không chạy được trong transaction (đúng thiết kế) ⇒ thử thật sau khi áp, ngoài khe cron (08:11): lượt 1 chạy 8 sổ 17,4 s (bxh 17,0 s tính lại 21 khoá; 7 sổ còn lại tổng 284 ms), 0 lỗi, số dòng 8 bảng lưu không đổi; lượt 2 ngay sau 44 ms (không sổ nào đến hạn). `check:kien-truc` không mục nào tăng.
 - **Lưu ý cho bước 1b:** trần câu lệnh của cron 120 s áp cho CẢ lệnh `call` ⇒ tổng ngân sách 100 s; sổ không còn đủ giờ thì nhường lượt sau. bxh đêm qua có lượt 123 s — khi gộp, một sổ chạy lố sẽ cắt các sổ đứng sau nó trong lượt đó (các sổ trước đã commit).
 - **Chưa làm:** bật job điều phối + tắt 8 job cũ (bước 1b, Thùy chạy SQL Editor).
+
+## 14/11 (sáng) — Đợt 3 bước 1b: BẬT bộ điều phối tính sẵn, TẮT 8 job cron cũ (Thùy chạy SQL Editor; mig 202611140816 ghi sổ)
+- **Làm:** job `tinh-san-dieu-phoi` (id 24, `2-59/5 * * * *`, `call public._tinh_san_chay(100)`) — lệch 2 phút so với khe phút chia hết cho 5 của các job còn lại. Tắt (`active = false`, KHÔNG xoá) 8 job: mastery_lam_moi · the-gioi-tin-luu · qlcl-dang-yeu-nen · dash-viec-thang · phong-so-luu-san · bxh-luu-san · lop-dang-da-hoc-luu · muc-tieu-tuan. Job đang bật 16 → 9.
+- **Kiểm:** pg_cron chạy `call` có COMMIT bên trong được (điều chưa chắc trước khi bật). Lượt 08:22 (job cũ còn bật): 8 sổ, 38,5 s, 0 lỗi (bxh 24,4 s · phòng 13,4 s). Lượt 08:27 (job cũ đã tắt): 6 sổ đến hạn, 4,2 s, 0 lỗi; hai sổ chu kỳ 10 phút không chạy — đúng thiết kế.
+- **Quay lại nếu cần:** lệnh ở cuối file migration (bật lại 8 job, tắt job 24).
+- **Theo dõi tiếp:** `select so, max(ms), count(*) filter (where loi is not null), count(*) filter (where ms is null) from tinh_san_chay group by 1` — `ms` NULL = lượt bị cắt. Sổ nặng nhất: bxh, phòng ⇒ chuyển sang hàng đợi bẩn trước.
