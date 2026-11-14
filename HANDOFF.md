@@ -355,6 +355,32 @@ otin` bị ghi thành TAB / xuống dòng thật (cổng không bắt) ⇒ `ghi-
   - **Cùng ngày (đã commit, chưa push):** K1 ẩn Rank (`rankBat()`), G4 nền đơn sắc màn trong, G2/G3/G1-tạm màn giới thiệu Luyện dạng yếu + khung đấu chung + boss = boss Thùy, V4 báo lượt chưa tính. Cần push `main` + fast-forward `thu-nghiem`, rồi Thùy bấm Create Deployment.
 
 
+### ▶ KHỐI 8T — BẢN ĐỒ + KHO HÌNH (cập nhật 14/11) — đọc `kho-rules/dai/k8T.md` (Đại) · `kho-rules/hinh/lo/k8T-thales/` (Hình)
+
+**Nguồn:** 7 PDF scan ở `E:\BK ACADEMY\Tài liệu tham khảo\8T\HSG\`; hồ sơ từng quyển `kho-rules/dai/lo/k8T/ho-so/<MÃ>.md`; ảnh trang 150 dpi `C:\Users\WBPC\bk-kho-lam-viec\sach\8T\<MÃ>\trang\p-NNN.png`.
+Đã dùng: **Đại** — NĐT phần Đại (619 câu) + TVA §1–3, §8–10 (401 câu); **Hình** — NĐT Hình I §3 + Hình III §1–2, TCHH CĐ5 (lô 1). Chưa đụng: TCDS, VHB1/VHB2 phần Đại, TVA §4–7, phần lớn Hình (NĐT Hình I/II/III còn lại, TCHH CĐ1–4/6/7, VHB). TUHOC không nhập (không lời giải).
+
+**Bản đồ Hình–Học 8T — CHỐT + GHI 14/11** (`scripts/hinh-k8t-ghi-ban-do.mjs`, `scripts/hinh-k8t-len-ban-do-moi.mjs`): **5 chủ đề · 20 bài**, thứ tự học lớp 8:
+Tứ giác (NCD00249: HH00089–94) → Định lí Thalès (NCD00250: Thalès HH00127 · Đường trung bình HH00161 · Phân giác HH00128 · Bổ đề hình thang HH00162 · Mê-nê-la-uýt, Xê-va HH00131)
+→ Tam giác đồng dạng (NCD00251: HH00129 · HH00163 · HH00164) → Đa giác và diện tích (NCD00252: HH00165 · HH00132 · HH00166) → Cực trị, quỹ tích, dựng hình (NCD00253: HH00134–136).
+- ⭐ **Luật chia (Thùy 14/11):** MỘT chiều = KIẾN THỨC (đối tượng / định lí có lý thuyết riêng). "Yêu cầu của đề" (chứng minh vuông góc, tính góc…) KHÔNG là tầng bản đồ. Câu xếp theo kiến thức lời giải thật sự cần ("dạng sau thắng").
+  **Mỗi chuyên đề nằm trọn một phía của đồng dạng** — chuyên đề Thalès CẤM đồng dạng / hệ thức lượng / diện tích (Thùy: "không được phép có đồng dạng").
+- Bài Hình–Học lên bản đồ mới qua `hinh_hoc_bai.chu_de_id` → `dai_bdm_chu_de` (nhanh `hinh`); `ma_chuyen_de` chỉ là cột bản đồ cũ. Đã xoá 4 bài cũ 0 câu (HH00125/126/130/133, Thùy gật).
+- 20 bài mới có mô tả; **CHƯA có lý thuyết + ví dụ** (bài Hình–Học cần đủ 5 phần như Đại).
+
+**Kho Hình 8T — lô 1 ĐÃ GHI 14/11 (đã tự duyệt):** 59 câu — Thalès 37 · Đường trung bình 16 · Mê-nê-la-uýt/Xê-va 4 · Bổ đề hình thang 2; 12 bài nhiều ý (mô hình bài–ý), 47 sơ đồ tư duy, 76 hình vẽ lại 100% bằng code.
+Trang xem: https://claude.ai/artifact/ShNsooAeo1xuj5MgsYGPSL (`kho-rules/hinh/k8T-thales-lo1-duyet.html`). Dây chuyền: `BRIEF.md` (trạm Sonnet) → Opus soát đối chiếu ảnh (`SOAT.md`) → `nhap_lo.mjs`
+(`--chi-kiem` cổng khuôn + từ cấm theo bài + sơ đồ tư duy · `--html` trang duyệt · `--ghi`). 5 bài DE_SAU (TCHH-5.1/5.8/5.15, NĐT H3.18b/18d) chờ lô Đồng dạng / Diện tích.
+
+**Lô 2 (Thalès + đường trung bình, nguồn còn lại) — ĐANG DỞ, CHƯA GHI DB:** brief `kho-rules/hinh/lo/k8T-thales/BRIEF-lo2.md`; nháp ở scratchpad `…\scratchpad\h8t2\drafts\draft_G10…G21.md`
+(máy công ty, thư mục tạm — mất thì chạy lại trạm). Xong nháp: G10 (TCHH CĐ3 VD1–10: 6 bài vào kho), G13 (B19–27: 2), G14 (B28–36: 1), G15 (B37–45: 0 — toàn KHAC).
+Đang/chưa: G11 (B1–9), G12 (B10–18), G16–G20 (VHB2 §13–14), G21 (VHB1 đường trung bình). **Việc kế:** soát từng trạm (đối chiếu ảnh) → `nhap_lo.mjs "<h8t2>" --chi-kiem` → `--html … --lo "lô 2" --nguon "…"` → `--ghi`.
+Bài `KHAC` (chỉ cần Tứ giác / tam giác lớp 7) ghi riêng trong nháp — làm khi tới lô Tứ giác. Nghi vấn đề sách đã ghi: TCHH CĐ3 B42 thiếu "tam giác nhọn", B38 in sai D/E.
+
+**Đại 8T:** bản đồ 5 chủ đề · 17 chuyên đề · 48 nhóm; **tầng dạng bài hiện = nhóm (1 dạng/nhóm, 07/11)** trừ AM–GM (11 dạng Thùy dựng, nội dung soạn sẵn ở `kho-rules/dai/lo/k8T/amgm/noi-dung-gop.json`,
+CHƯA ghi — chờ Thùy "ghi"; phân dạng câu AM–GM chờ theo). **Đề xuất tầng dạng thật 170 dạng** (4 agent đọc hồ sơ sách) ở `kho-rules/dai/lo/k8T/dang/dai-g1…g4.json` + nhóm thiếu
+(cấu tạo số ≈32 bài, nguyên lí cực hạn, bất biến – tô màu, cực trị biến nguyên…) — **CHƯA dựng trang, CHƯA ghi**; Thùy bảo làm Hình trước.
+
 ### ▶ CONTEXT 4T + 5T (Thùy mở 07/10 · cập nhật 08/10 tối) — kho tiểu học theo đường đi `kho-rules/README.md`
 
 **Đọc theo thứ tự, không bỏ:** `CLAUDE.md` (§1.5, §2.0, Luật xoá) → `kho-rules/README.md` (đường 7 bước · **§2b dây chuyền giải hàng loạt** · §3 luật chung · §4 việc kỹ thuật treo · §5 trạng thái khối) → `kho-rules/dai/k4T.md` (luật khối v1, §7 nhật ký CEO sửa, **§8 tiến độ + câu treo**) → `kho-rules/dai/k5T.md` (v0 + hồ sơ sách 31 CĐ + bản đồ hiện có + **§7 kế hoạch + 4 câu chờ CEO**) → memory `tach-y-hinh-vs-dai`. Bản đồ 4 tầng mới: `spec-ban-do-4-tang.md` §0.
