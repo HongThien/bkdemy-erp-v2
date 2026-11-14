@@ -55,3 +55,4 @@ B036-02 · 03 · 04 · 05 · 06 · 08 · B037-01 · 02 · 05 · 06 · 07 · B038
 
 **Lệch cần thống nhất:** câu tự luận có đáp số một số vừa 4 ô — K11 soát chuyển sang `tra_loi_ngan`, K10 (B044-03, B044-04) giữ `tu_luan` vì nằm ở phần tự luận của đề.
 **Đính chính K10 phân kho:** chỉ Vectơ là `hgt` (đã ghi vào `_lenh-tram.md`); lệnh giao K10 trước đó ghi sai "hệ thức lượng ⇒ hgt" — các đề K10 đã ghi DB đều được soát xác nhận đúng luật.
+- (sau dừng) Soát ĐẠT thêm: B038-01 k1 · B046-08 · B045-04 · B037-08 k3 ⇒ B037-08 đủ 3 khúc, chờ `ghep-khuc.mjs B037 B037-08`. ⚠ B037-08 đầu tệp các khúc ghi `nam: 2026–2027` — kiểm năm học thật trước khi ghép/ghi.
