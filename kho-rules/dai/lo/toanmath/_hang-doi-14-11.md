@@ -31,3 +31,9 @@ B036-02 · 03 · 04 · 05 · 06 · 08 · B037-01 · 02 · 05 · 06 · 07 · B038
 - K12: soạn xong B050-01 (đang soát) · B050-02 (đang soát) · B052-01 (đang soát) · đang soạn B052-02 · chờ soạn B052-03…09
 - K11: soát ĐẠT B036-02 (hình đã đẩy) · B036-07 k2 [x] giao
 - K11 soạn xong B037-05 — ⏳ CHỜ GIAO SOÁT (Đề 1 P3 C2 bỏ vì không có câu hỏi; Đề 2 P3 C4 sửa x=3→-3)
+
+## Cập nhật 14/11 chiều
+- ĐÃ GHI DB: K12 B052-03·04·05·06 · K11 B036-04·05·07(ghép 2 khúc)·08 · B037-07 · B038-02·03
+- Khúc ĐẠT chờ ghép: B036-01 k1 (k2 đang soát) · B037-03 k1 (k2 đang soạn) · B037-08 k1 (k2, k3 đang soạn)
+- Đang soát: B036-03 · B036-06 · B037-06 · B052-07·08·09 · Đang soạn: B037-04 k1,k2 · B038-01 k1,k2 · K10 B044-01…06
+- Còn chờ giao K10: B044-07(khúc) · B044-08 · B045-* · B046-* · B047-*
