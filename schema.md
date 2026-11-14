@@ -7541,9 +7541,10 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| so | text |  |  | PK FK→tinh_san_dang_ky.ma |  |
-| khoa | text |  |  | PK |  |
+| so | text |  |  | FK→tinh_san_dang_ky.ma |  |
+| khoa | text |  |  |  |  |
 | at | timestamp with time zone |  | clock_timestamp() |  |  |
+| id | bigint |  |  | PK |  |
 
 ## tinh_san_chay
 

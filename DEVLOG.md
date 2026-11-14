@@ -80574,3 +80574,7 @@ Thùy nêu 4 việc, làm được 3:
 - **Thử (rollback, 40 em, 10.894 dòng):** hàm cũ → chụp md5 hai bảng; phá 15 dòng (sửa điểm / xoá / thêm dòng giả ở cả hai bảng) → hàm mới: md5 hai bảng Y HỆT hàm cũ, ghi đúng 15 dòng; chạy lại khi không gì đổi: 0 dòng ghi. 8,7 s → 4,2 s cho 40 em. `fn_mastery_doi_chieu(60)` lệch 0.
 - **Đo sau (cron thật 10:17, 10:22):** 0 chèn, 0 xoá, 52 sửa (1 em đang làm bài); đối chiếu 60 em lệch 0.
 - **Chưa quan sát:** lượt 02:00 đêm nay (kỳ vọng: ~0 dòng ghi thay cho ~60 nghìn xoá + chèn, thời gian giảm khoảng một nửa).
+
+## 14/11 (sáng) — Đợt 3 bước 6: `tinh_san_ban` thành nhật ký chỉ-chèn (mig 202611141028 ĐÃ ÁP) — Thùy "Đổi đi"
+- Bỏ khoá chính `(so, khoa)`, thêm `id` identity làm khoá chính, index `(so, khoa, at)` thay `(so, at)`. Migration tự dừng nếu bảng có dòng (bảng rỗng, chưa sổ nào dùng ⇒ không mất dữ liệu).
+- Lý do: xem mục bước 5 — đánh dấu bẩn bằng upsert trên khoá duy nhất chặn đường HS nộp bài khi có giao dịch dài. Khuôn dùng: trigger nguồn chỉ INSERT; bẩn = có dòng `at` > mốc của bảng lưu; dọn dòng dưới mốc sau khi tính.
