@@ -13,22 +13,24 @@ let troiO = null, hemiL = null, sunL = null, nenTrong = null; // nền (thườn
 // Camera nhìn từ nam–đông nam (HUONG): +x = sang phải (hơi xuống) · −z = lên trên (hơi sang phải) trên màn hình.
 const VT = {
   ruong: { x: -8.65, z: -0.6, cot: 4, buoc: 2.45, co: 2.2 },    // 12 ô (4 × 3) liền nhau như ô đất Nông trại vui vẻ; co = cỡ 1 ô (m)
-  san: { x0: 1.0, x1: 9.2, z0: -10.2, z1: -3.2, cong: 5.1 },    // sân đất có rào (góc trên phải màn); cong = x của cổng ở cạnh trước
-  nha: { x: 4.6, z: -8.5, rong: 3.2 },
-  barn: { x: 8.0, z: -8.7, rong: 2.0 },
+  // Thùy 14/11 "nhà bị bé so với rào khu vực, rào cũng thế": nhà ×1,8 (trước ×1,39), rào đoạn ~1,6 m (cao ×1,6), kho + máy chế biến to theo;
+  // sân nới ra để chứa (11,4 × 8,8) và có đồ trang trí (SAN_DO bên dưới). Dải giữa x 3,7..6,5 = lối đi từ cổng vào cửa nhà.
+  san: { x0: -0.6, x1: 10.8, z0: -12.0, z1: -3.2, cong: 5.1 },  // sân đất có rào (góc trên phải màn); cong = x của cổng ở cạnh trước
+  nha: { x: 5.1, z: -9.7, rong: 4.14 },
+  barn: { x: 9.4, z: -10.5, rong: 2.6 },
   silo: null,                                                 // bỏ (thế giới Hay Day) — chạm kho nào cũng là mở kho
   bang: { x: -8.2, z: -4.8 },                                 // bảng tin lớp (chỗ bảng "Lịch canh tác")
   sap: { x: -13.2, z: 2.9, rong: 2.4 },                       // chợ
-  chuong: { ga: { x: 3.0, z: -4.9, w: 3.4, d: 2.4 }, bo: { x: 7.1, z: -5.0, w: 3.6, d: 2.8 } },
-  lo: { x: 1.9, z: -8.9, rong: 1.6 },
-  trangTri: [[-12.4, -1.6], [-12.2, 6.8], [-5.0, 7.8], [1.4, 6.6], [10.9, -4.4], [11.0, -9.0], [-0.8, -5.4], [-3.8, -6.8]],
-  meo: { x: 2.0, z: -7.2 }, chim: { x: 8.4, z: -7.2 },
-  hopThu: { x: 6.9, z: -2.4 },
+  chuong: { ga: { x: 1.9, z: -4.9, w: 3.6, d: 2.4 }, bo: { x: 8.4, z: -5.0, w: 3.8, d: 2.6 } },
+  lo: { x: -2.6, z: -8.3, rong: 2.0 },                          // Thùy 14/11: máy chế biến đứng NGOÀI sân (bên trái rào), không chiếm khuôn viên nhà
+  trangTri: [[-12.4, -1.6], [-12.2, 6.8], [-5.0, 7.8], [1.4, 6.6], [12.1, -6.2], [12.0, -9.4], [-2.4, -5.0], [-5.0, -6.6]],
+  meo: { x: 1.9, z: -7.2 }, chim: { x: 9.5, z: -8.3 },
+  hopThu: { x: 7.3, z: -2.4 },
   ao: { x: 9.4, z: 1.0, rx: 2.3, rz: 1.6 },                    // ao góc dưới phải (như ảnh)
   cho: { x: 5.0, z: -1.7, hw: 0.6, hd: 0.5 }, nhaCho: { x: 3.3, z: -1.6 },   // chó giữ trại ngay trước cổng sân
   bien: { x0: -16, x1: 13.5, z0: -13.2, z1: 9.8 },
 };
-const CAO_LO = 2.2, KHOI_LO = [0.55, 2.0, -0.35];
+const CAO_LO = 2.75, KHOI_LO = [0.69, 2.5, -0.44];
 // con vật Quaternius: chiều dài đích (kiểu chibi — nhỏ, tròn) + góc lệch hướng mặt của mô hình
 const Q_DAI = { bo: 1.15, cho: 0.6 }, Q_XOAY = 0;
 
@@ -47,7 +49,7 @@ function khungTu(ds, dem) { const K = { r: [1e9, -1e9], d: [1e9, -1e9] }; for (c
 const KHUNG_VUA = (() => { const R0 = VT.ruong, S0 = VT.san, A0 = VT.ao, n = R0.co / 2, x1 = R0.x + (R0.cot - 1) * R0.buoc + n, z1 = R0.z + 2 * R0.buoc + n;
   const loi = [[R0.x - n, R0.z - n], [x1, R0.z - n], [R0.x - n, z1], [x1, z1], [S0.x0, S0.z0], [S0.x1, S0.z0], [S0.x0, S0.z1], [S0.x1, S0.z1]];   // ruộng + sân
   const dt = khungTu(loi, 0.5), ip = khungTu(loi.concat([[A0.x + A0.rx * 0.5, A0.z], [VT.sap.x, VT.sap.z]]), 0.9);
-  dt.d[0] -= 1.6; ip.d[0] -= 1.6; return { dt, ip }; })();                          // nóc nhà cao hơn mặt sân
+  dt.d[0] -= 2.4; ip.d[0] -= 2.4; return { dt, ip }; })();                          // nóc nhà cao hơn mặt sân
 const KHUNG = { r: [KHUNG_VUA.ip.r[0] - 3, KHUNG_VUA.ip.r[1] + 3], d: [KHUNG_VUA.ip.d[0] - 1, KHUNG_VUA.ip.d[1] + 4] };
 // điện thoại ngang (màn dẹt): chỉ ôm ruộng + sân cho ô to; iPad (màn cao hơn): ôm thêm chợ + ao. Màn dọc chỉ hiện lời nhắc xoay máy (CEO 30/09: chơi màn ngang)
 const khungVua = () => cam.aspect > 1.75 ? KHUNG_VUA.dt : KHUNG_VUA.ip;
@@ -289,8 +291,12 @@ function congTrai() {
   const m = b.xong(); g.add(m);
   const c = document.createElement('canvas'); c.width = 512; c.height = 128; const x = c.getContext('2d');
   x.font = '900 70px system-ui, "Segoe UI", Arial, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle';
-  x.lineJoin = 'round'; x.lineWidth = 12; x.strokeStyle = '#7a3f12'; x.strokeText('NÔNG TRẠI BK', 256, 68); x.fillStyle = '#fff6dc'; x.fillText('NÔNG TRẠI BK', 256, 68);
-  const tx = new T.CanvasTexture(c); tx.encoding = T.sRGBEncoding; tx.anisotropy = 4;
+  x.lineJoin = 'round';
+  const chu = (t, y, co, net) => { let k = co; do { x.font = '900 ' + k + 'px system-ui, "Segoe UI", Arial, sans-serif'; k -= 2; } while (x.measureText(t).width > 484 && k > 20); x.lineWidth = net; x.strokeStyle = '#7a3f12'; x.strokeText(t, 256, y); x.fillStyle = '#fff6dc'; x.fillText(t, 256, y); };
+  const tx = new T.CanvasTexture(c);
+  // Thùy 14/11: biển đề TÊN HỌC SINH — dòng nhỏ "NÔNG TRẠI", dòng to tên em (tên dài tự thu chữ); chưa biết tên (bản thử) ⇒ "NÔNG TRẠI BK"
+  g.userData.ve = ten => { x.clearRect(0, 0, 512, 128); if (ten) { chu('NÔNG TRẠI', 31, 40, 9); chu(ten.toUpperCase(), 88, 62, 11); } else chu('NÔNG TRẠI BK', 68, 70, 12); tx.needsUpdate = true; };
+  g.userData.ve(tenTrai); tx.encoding = T.sRGBEncoding; tx.anisotropy = 4;
   const mt = new T.MeshBasicMaterial({ map: tx, transparent: true });
   for (const s of [1, -1]) { const p = new T.Mesh(new T.PlaneGeometry(2.3, 0.575), mt); p.position.set(s * 0.065, 1.92, 0); p.rotation.y = s * Math.PI / 2; g.add(p); }
   return g;
@@ -352,10 +358,13 @@ function dungTheGioi() {
   const B = VT.bien, S = VT.san, r2 = M.rnd(11);
   // sân đất + hàng rào gỗ quanh sân, chừa cổng ở cạnh trước
   sc.add(sanDat(S));
-  const rao = [], c0 = S.cong - 0.8, c1 = S.cong + 0.8;
-  for (let x = S.x0; x < S.x1 - 0.01; x += 1) { const L = Math.min(1, S.x1 - x), xm = x + L / 2; rao.push({ x: xm, z: S.z0, xoay: Math.PI / 2, k: L }); if (xm < c0 || xm > c1) rao.push({ x: xm, z: S.z1, xoay: Math.PI / 2, k: L }); }
-  for (let z = S.z0; z < S.z1 - 0.01; z += 1) { const L = Math.min(1, S.z1 - z); rao.push({ x: S.x0, z: z + L / 2, xoay: 0, k: L }); rao.push({ x: S.x1, z: z + L / 2, xoay: 0, k: L }); }
+  // rào: mỗi cạnh chia đều thành đoạn ~1,6 m (mô hình phóng theo chiều dài đoạn ⇒ cao ×1,6); cổng hở CONG_HO mỗi bên
+  const rao = [], doan = (a, b, f) => { const n = Math.max(1, Math.round((b - a) / 1.6)), L = (b - a) / n; for (let i = 0; i < n; i++) f(a + (i + 0.5) * L, L); };
+  doan(S.x0, S.x1, (x, L) => rao.push({ x, z: S.z0, xoay: Math.PI / 2, k: L }));
+  for (const [a, b] of [[S.x0, S.cong - CONG_HO], [S.cong + CONG_HO, S.x1]]) doan(a, b, (x, L) => rao.push({ x, z: S.z1, xoay: Math.PI / 2, k: L }));
+  doan(S.z0, S.z1, (z, L) => { rao.push({ x: S.x0, z, xoay: 0, k: L }); rao.push({ x: S.x1, z, xoay: 0, k: L }); });
   sc.add(M.nhanBan('fence_wood_straight', rao, 1.0));
+  dungSan();
   hopThuO = dat(hopThu(), VT.hopThu.x, VT.hopThu.z, 0); neo(VT.hopThu.x, VT.hopThu.z).add(hopCham(0.8, 1.6, 0.8, { loai: 'hopThu' }));
   // bờ bụi quanh trại, rừng bông xù vòng ngoài (dày ở mép, thưa dần ra xa)
   const bui = [];
@@ -386,9 +395,9 @@ function dungTheGioi() {
   // nhà ở (bản mới: nhà trang trí dựng bằng code theo MỨC ĐẸP — ?kieu=go|viet|nhat|hylap · ?nha=1..10, mặc định go mức 1)
   if (MOI) doiNha(new URLSearchParams(location.search).get('kieu') || 'go');
   else khoG.nha = dat(M.vua(M.kk('building_home_A_blue'), VT.nha.rong), VT.nha.x, VT.nha.z, Math.PI);
-  neo(VT.nha.x, VT.nha.z).add(hopCham(3, 3, 3, { loai: 'nha' }));
+  neo(VT.nha.x, VT.nha.z).add(hopCham(4.2, 3.8, 3.4, { loai: 'nha' }));
   if (!MOI) dat(M.vua(M.kk('lantern'), 0.5, 1.6), VT.nha.x + 1.9, VT.nha.z + 1.2);
-  dat(M.vua(M.kk('sack'), 0.7), VT.barn.x + 1.3, VT.barn.z + 1.3); dat(M.vua(M.kk('crate_open'), 0.8), VT.barn.x - 1.5, VT.barn.z + 1.2);
+  dat(M.vua(M.kk('sack'), 0.8), VT.barn.x + 0.4, VT.barn.z + 1.5); dat(M.vua(M.kk('crate_open'), 0.9), VT.barn.x - 1.05, VT.barn.z + 1.45);
   dat(M.vua(M.kk('wheelbarrow'), 1.1), -0.2, 6.4, -0.6);
   // kho hàng (silo bỏ)
   khoG.barn = dat(M.vua(M.kk('building_home_A_red'), VT.barn.rong), VT.barn.x, VT.barn.z, Math.PI);
@@ -411,11 +420,12 @@ function dungTrangTri() {
     [S0.x0 - 0.5, S0.x1 + 0.5, S0.z0 - 0.5, S0.z1 + 0.5],                                                       // sân nhà
     [VT.sap.x - 1.8, VT.sap.x + 1.8, VT.sap.z - 1.6, VT.sap.z + 1.6], [VT.bang.x - 1.6, VT.bang.x + 1.6, VT.bang.z - 1, VT.bang.z + 1],
     [VT.hopThu.x - 0.8, VT.hopThu.x + 0.8, VT.hopThu.z - 0.8, VT.hopThu.z + 0.8], [-1.4, 1.0, 5.4, 7.4],        // hộp thư · xe cút kít
-    [VT.nhaCho.x - 1.1, VT.cho.x + 1.1, VT.cho.z - 1.1, VT.cho.z + 1.0],                                             // chó + nhà chó
+    [VT.nhaCho.x - 1.1, VT.cho.x + 1.1, VT.cho.z - 1.1, VT.cho.z + 1.0],
+    [VT.lo.x - 1.5, VT.lo.x + 1.5, VT.lo.z - 1.5, VT.lo.z + 1.6],                                               // máy chế biến (ngoài sân)                                             // chó + nhà chó
   ];
   for (const [x, z] of VT.trangTri) chiem.push([x - 1, x + 1, z - 1, z + 1]);
   const A = VT.ao; chiem.push([A.x - A.rx - 0.6, A.x + A.rx + 0.6, A.z - A.rz - 0.6, A.z + A.rz + 0.6]);
-  const bongMat = [[-13.8, -5.0], [12.2, 5.2], [-2.4, -9.4]];                                                     // vài cây tán to
+  const bongMat = [[-13.8, -5.0], [12.2, 5.2], [-3.4, -11.4]];                                                     // vài cây tán to
   for (const [x, z] of bongMat) chiem.push([x - 1, x + 1, z - 1, z + 1]);
   sc.add(M.rungBong(bongMat.map(([x, z], i) => ({ x, z, kieu: 'tron', xoay: i * 2, k: 1.35 }))));
   const trong = (x, z, pad) => !chiem.some(([a, b, c, d]) => x > a - pad && x < b + pad && z > c - pad && z < d + pad) && !ganDuong(x, z, pad + 0.15);
@@ -475,14 +485,83 @@ function dungTrangTri() {
 }
 
 // ---------- NHÀ Ở: em tự chọn kiểu (Thùy 03/11) — 4 kiểu trong dohoa.js KIEU_NHA, mỗi kiểu 10 mức; mức vẫn theo ?nha= (mặc định 1) ----------
-const NHA_MUC = +new URLSearchParams(location.search).get('nha') || 1;
-let nhaKieu = null;
-function doiNha(kieu) {
+const NHA_MUC = +new URLSearchParams(location.search).get('nha') || 6;   // Thùy 14/11 'làm kĩ phần nhà đẹp hơn': chưa tự chọn món ⇒ nhà mức 6 (ngói, tường sơn, hiên, đèn) thay vì chòi mức 1
+let nhaKieu = null, nhaKhoa = '';
+// doVat = mảng id món em tự chọn (Thùy 14/11: tự trang trí nhà); chưa chọn bao giờ ⇒ bộ món của mức NHA_MUC
+function doiNha(kieu, doVat) {
   if (!MOI || !DH.KIEU_NHA[kieu]) kieu = 'go';
-  if (kieu === nhaKieu && khoG.nha) return;
+  const mon = DH.KIEU_NHA[kieu].mon, ds = Array.isArray(doVat) ? doVat.filter(id => mon[id]) : null, khoa = kieu + '|' + (ds && ds.length ? ds.join(',') : NHA_MUC);
+  if (khoa === nhaKhoa && khoG.nha) return;
   if (khoG.nha) sc.remove(khoG.nha);
-  khoG.nha = dat(DH.nhaMoi(kieu, NHA_MUC), VT.nha.x, VT.nha.z - 0.6); khoG.nha.scale.setScalar(VT.nha.rong / 2.3);
-  nhaKieu = kieu; canBong = true;
+  khoG.nha = dat(DH.nhaMoi(kieu, ds && ds.length ? ds : NHA_MUC), VT.nha.x, VT.nha.z - 0.6); khoG.nha.scale.setScalar(VT.nha.rong / 2.3);
+  nhaKieu = kieu; nhaKhoa = khoa; canBong = true;
+}
+
+// ---------- SÂN NHÀ (Thùy 14/11 "sân chưa có trang trí gì — có sân, cây cảnh, đồ vật"): lối đá từ cổng vào cửa nhà (luôn có) + ĐỒ TRONG SÂN ----------
+// Mỗi món = 1 nhóm hình đặt ở chỗ cố định (không đè chuồng / kho / máy), em bật tắt trong bảng "Nhà & cảnh" (s.giaoDien.san = mảng id).
+// Thêm món = thêm 1 mục vào SAN_DO (ten, ic, ve) — bảng chọn và bản lưu tự theo. Chưa chọn bao giờ ⇒ SAN_MAC_DINH.
+const CONG_HO = 1.45;
+function chauHoa(b, x, z, k, mau) { // chậu đất nung + bụi lá + hoa
+  b.tru(0.26 * k, 0.19 * k, 0.34 * k, x, 0.17 * k, z, 0xc9764e, null, 12); b.tru(0.29 * k, 0.29 * k, 0.07 * k, x, 0.36 * k, z, 0xd8845a, null, 12);
+  b.cau(0.3 * k, x, 0.58 * k, z, 0x5ea344, { x: 1, y: 0.8, z: 1 }, null, 1);
+  for (let i = 0; i < 6; i++) { const a = i * 1.047 + x; b.cau(0.075 * k, x + Math.cos(a) * 0.2 * k, (0.7 + (i % 2) * 0.1) * k, z + Math.sin(a) * 0.2 * k, mau[i % mau.length], null, null, 0); }
+}
+function cayCanh(b, x, z, k) { // cây cảnh cắt tỉa 3 tầng tròn trong chậu gỗ
+  b.hop(0.62 * k, 0.4 * k, 0.62 * k, x, 0.2 * k, z, 0xa9744a); b.hop(0.68 * k, 0.07 * k, 0.68 * k, x, 0.4 * k, z, 0x8a5530);
+  b.tru(0.06 * k, 0.08 * k, 1.5 * k, x, 1.1 * k, z, 0x7a5232, null, 8);
+  [[0.46, 0.85, 0x4f9a3c], [0.36, 1.42, 0x5ea344], [0.26, 1.88, 0x6fb24f]].forEach(([r, y, c]) => b.cau(r * k, x, y * k, z, c, { x: 1, y: 0.82, z: 1 }, null, 1));
+}
+function luong(b, x0, z0, x1, z1, seed) { // luống hoa viền gạch dọc hàng rào
+  const r = M.rnd(seed), dx = x1 - x0, dz = z1 - z0, L = Math.hypot(dx, dz), doc = Math.abs(dz) > Math.abs(dx), xm = (x0 + x1) / 2, zm = (z0 + z1) / 2, MAU = [0xff7eb6, 0xffd23f, 0xffffff, 0xb58cff, 0xff6f5a];
+  b.hop(doc ? 0.62 : L + 0.12, 0.14, doc ? L + 0.12 : 0.62, xm, 0.07, zm, 0xb9654a); b.hop(doc ? 0.48 : L, 0.05, doc ? L : 0.48, xm, 0.15, zm, 0x5a3a22);
+  for (let t = 0.2; t < L; t += 0.36) { const x = x0 + dx * t / L + (doc ? (r() - 0.5) * 0.2 : 0), z = z0 + dz * t / L + (doc ? 0 : (r() - 0.5) * 0.2), h = 0.2 + r() * 0.16;
+    b.cau(0.15, x, 0.22, z, r() > 0.5 ? 0x5ea344 : 0x6fb24f, { x: 1, y: 0.75, z: 1 }, null, 0); b.tru(0.014, 0.014, h, x, 0.26 + h / 2, z, 0x4f9a3c, null, 4); b.cau(0.085, x, 0.3 + h, z, MAU[Math.floor(r() * 5)], { x: 1, y: 0.7, z: 1 }, null, 0); }
+}
+const SAN_DO = {
+  cong: { ten: 'Cổng chào', ic: '🪧', ve() { const g = congTrai(); g.position.set(VT.san.cong, 0, VT.san.z1); g.rotation.y = Math.PI / 2; return g; } },
+  den: { ten: 'Cột đèn', ic: '🏮', ve() { const g = new T.Group(), b = M.boDung(), bs = M.boDung();
+    for (const x of [VT.san.cong - 1.05, VT.san.cong + 1.05]) { const z = -5.6;
+      b.tru(0.13, 0.17, 0.16, x, 0.08, z, 0x4a4a55, null, 10); b.tru(0.045, 0.06, 1.75, x, 1.0, z, 0x3d3c48, null, 8); b.hop(0.34, 0.04, 0.34, x, 1.9, z, 0x3d3c48);
+      for (const [dx, dz] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) b.hop(0.03, 0.34, 0.03, x + dx * 0.13, 2.08, z + dz * 0.13, 0x3d3c48);
+      b.non(0.27, 0.2, x, 2.35, z, 0x3d3c48, { y: Math.PI / 4 }, 4); b.cau(0.04, x, 2.48, z, 0xe8b84c, null, null, 0);
+      bs.hop(0.24, 0.3, 0.24, x, 2.08, z, 0xffe9a8); }
+    g.add(b.xong()); g.add(boSang(bs)); return g; } },
+  chau: { ten: 'Chậu hoa', ic: '🪴', ve() { const b = M.boDung(), c = VT.san.cong, z1 = VT.san.z1;
+    chauHoa(b, c - 1.0, z1 - 0.75, 1, [0xff7eb6, 0xffffff]); chauHoa(b, c + 1.0, z1 - 0.75, 1, [0xffd23f, 0xff9a3c]);
+    chauHoa(b, c - 1.0, -4.65, 0.85, [0xb58cff, 0xffffff]); chauHoa(b, c + 1.0, -4.65, 0.85, [0xff6f5a, 0xffd23f]); return b.xong(); } },
+  luong: { ten: 'Luống hoa', ic: '🌷', ve() { const b = M.boDung(), S = VT.san; luong(b, S.x0 + 0.45, -11.2, S.x0 + 0.45, -8.6, 31); luong(b, S.x1 - 0.45, -8.4, S.x1 - 0.45, -6.7, 37); luong(b, 0.3, S.z0 + 0.45, 2.9, S.z0 + 0.45, 41); luong(b, 7.2, S.z0 + 0.45, 7.9, S.z0 + 0.45, 43); return b.xong(); } },
+  cayCanh: { ten: 'Cây cảnh', ic: '🌳', ve() { const b = M.boDung(); cayCanh(b, 2.3, -9.3, 1); cayCanh(b, 8.05, -8.0, 0.9); return b.xong(); } },
+  gieng: { ten: 'Giếng nước', ic: '🪣', ve() { const b = M.boDung(), x = 0.2, z = -7.6;
+    for (let i = 0; i < 10; i++) { const a = i / 10 * 6.283; b.hop(0.36, 0.5, 0.2, x + Math.cos(a) * 0.52, 0.25, z + Math.sin(a) * 0.52, [0xbdb6ab, 0xaaa398, 0xc9c3b7][i % 3], { y: -a + Math.PI / 2 }); }
+    b.tru(0.5, 0.5, 0.04, x, 0.36, z, 0x3f98ad, null, 14);
+    for (const s of [-1, 1]) b.hop(0.1, 1.5, 0.1, x + s * 0.6, 0.75, z, 0x8a5530);
+    b.tru(0.05, 0.05, 1.3, x, 1.25, z, 0x6e4526, { z: Math.PI / 2 }, 8); b.tru(0.012, 0.012, 0.5, x, 1.0, z, 0xd9c9a0, null, 4);
+    b.hop(1.7, 0.07, 0.75, x, 1.72, z - 0.3, 0xd8705a, { x: -0.6 }); b.hop(1.7, 0.07, 0.75, x, 1.72, z + 0.3, 0xcc6450, { x: 0.6 });
+    b.tru(0.16, 0.12, 0.24, x, 0.72, z, 0xa9744a, null, 10); b.tru(0.17, 0.17, 0.03, x, 0.78, z, 0x6e4526, null, 10);
+    b.tru(0.17, 0.13, 0.26, x + 0.95, 0.13, z + 0.45, 0x8fa6b3, null, 10); return b.xong(); } },
+  ghe: { ten: 'Bàn ghế gỗ', ic: '🪑', ve() { const b = M.boDung(), x = 9.2, z = -7.4;
+    b.tru(0.5, 0.5, 0.07, x, 0.62, z, 0xc98d55, null, 14); b.tru(0.09, 0.14, 0.6, x, 0.3, z, 0x8a5530, null, 8);
+    b.tru(0.1, 0.08, 0.14, x + 0.1, 0.72, z, 0xfff6e6, null, 10); b.cau(0.1, x + 0.1, 0.86, z, 0xff7eb6, null, null, 0);
+    for (const [dx, dz] of [[-0.85, 0.1], [0.3, 0.72]]) { b.tru(0.24, 0.24, 0.06, x + dx, 0.38, z + dz, 0xb97d47, null, 10); b.tru(0.07, 0.1, 0.36, x + dx, 0.18, z + dz, 0x8a5530, null, 6); }
+    return b.xong(); } },
+  rom: { ten: 'Cuộn rơm', ic: '🌾', ve() { const b = M.boDung();
+    for (const [x, z, ry] of [[0.75, -10.3, 0.25], [1.6, -10.05, -0.45]]) { b.tru(0.38, 0.38, 0.7, x, 0.38, z, 0xe6c35a, { z: Math.PI / 2, y: ry }, 14); for (const d of [-0.2, 0.2]) b.tru(0.39, 0.39, 0.05, x + Math.cos(ry) * d, 0.38, z - Math.sin(ry) * d, 0xb98a3a, { z: Math.PI / 2, y: ry }, 14); }
+    b.hop(0.04, 1.1, 0.04, 1.2, 0.55, -10.6, 0x8a5530, { x: -0.25 }); for (const d of [-0.07, 0, 0.07]) b.hop(0.02, 0.24, 0.02, 1.2 + d, 1.15, -10.76, 0x8f8f9a, { x: -0.25 }); return b.xong(); } },
+};
+const SAN_MAC_DINH = ['cong', 'den', 'chau', 'luong', 'cayCanh', 'gieng'];
+const sanO = {}; let sanKhoa = null, tenTrai = '';
+// tên trên biển cổng: tên gọi của em (họ tên ≥ 3 chữ ⇒ lấy 2 chữ cuối, vd "Nguyễn Minh Anh" → "Minh Anh"); sang vườn bạn ⇒ tên bạn
+function doiTenTrai(ten) { const p = String(ten || '').trim().split(/\s+/).filter(Boolean), t = (p.length >= 3 ? p.slice(-2) : p).join(' ').slice(0, 18); if (t === tenTrai) return; tenTrai = t; if (sanO.cong) sanO.cong.userData.ve(t); }
+function dungSan() { // lối đá bước từ cổng vào cửa nhà — nền của sân, luôn có
+  const b = M.boDung(), r = M.rnd(23), S = VT.san;
+  for (let z = S.z1 + 0.25, i = 0; z > -8.2; z -= 0.62, i++) { const k = 0.27 + r() * 0.07; b.tru(k, k * 1.05, 0.05, S.cong + (i % 2 ? 0.2 : -0.2) + (r() - 0.5) * 0.12, 0.035, z, [0xcfc8bb, 0xbdb6a8, 0xd9d3c7][i % 3], { y: r() * 3 }, 9); }
+  const m = b.xong(false); sc.add(m);
+}
+function doiSan(ds) {
+  if (!Array.isArray(ds)) ds = SAN_MAC_DINH;
+  const khoa = ds.join(','); if (khoa === sanKhoa) return; sanKhoa = khoa;
+  for (const id in SAN_DO) { const co = ds.includes(id); if (co && !sanO[id]) { sanO[id] = SAN_DO[id].ve(); sc.add(sanO[id]); } if (sanO[id]) sanO[id].visible = co; }
+  canBong = true;
 }
 
 // ---------- NỀN: đồng quê · xuân Tết · chiều thu · tuyết · đêm Trung thu · đêm Halloween (Thùy 03/11) — đồ hoạ 100% bằng code, đổi tại chỗ không tải lại ----------
@@ -1179,9 +1258,9 @@ function viTri(chon) {
   if (chon.loai === 'ruong') { const p = ruongViTri(chon.i); return new T.Vector3(p.x, 0.6, p.z); }
   if (chon.loai === 'chuong') { const v = VT.chuong[chon.id]; return new T.Vector3(v.x, 1.2, v.z); }
   if (chon.loai === 'lo') return new T.Vector3(VT.lo.x, CAO_LO, VT.lo.z);
-  if (chon.loai === 'kho') { const v = VT[chon.id] || VT.barn; return new T.Vector3(v.x, 2.5, v.z); }
+  if (chon.loai === 'kho') { const v = VT[chon.id] || VT.barn; return new T.Vector3(v.x, 3.2, v.z); }
   if (chon.loai === 'bang') return new T.Vector3(VT.bang.x, 2, VT.bang.z);
-  if (chon.loai === 'nha') return new T.Vector3(VT.nha.x, 3.0, VT.nha.z);
+  if (chon.loai === 'nha') return new T.Vector3(VT.nha.x, 4.2, VT.nha.z);
   if (chon.loai === 'sap') return new T.Vector3(VT.sap.x, 2.2, VT.sap.z);
   if (chon.loai === 'hopThu') return new T.Vector3(VT.hopThu.x, 1.5, VT.hopThu.z);
   if (chon.loai === 'tt') { const [x, z] = VT.trangTri[chon.o]; return new T.Vector3(x, 1.0, z); }
@@ -1196,5 +1275,5 @@ function nhinVe(chon) { const p = viTri(chon); if (p) { muc.x = p.x; muc.z = p.z
 // DEV: chụp canvas (pane ẩn thì rAF đứng — chạy tay vài khung trước khi chụp)
 function chup(ten, soKhung) { for (let i = 0; i < (soKhung || 1); i++) khung(0.05); return fetch('/_snap?name=' + (ten || 'farm'), { method: 'POST', body: cv.toDataURL('image/jpeg', 0.85) }).then(r => r.text()); }
 
-window.NT_SCENE = { init, doiNha, doiNen, NEN, nen: () => nenId, nha: () => nhaKieu, datLe: (t, d) => { leTren = t; leDuoi = d; if (cv) { const cu = kcVua; doiCo(); if (cu === kcVua) return; } }, vaoGiua: () => { vaoGiua(); kc = kcVua; }, dongBo, datGiay, manHinh, viTri, batQuet, xeDi, nhinVe, dongHo, chup, nay, hat, VT, _dbg: () => ({ muc, kc, cam, sc, R, hk }), _datCam: (x, z, k) => { muc.x = x; muc.z = z; if (k) kc = k; } };
+window.NT_SCENE = { init, doiNha, doiNen, doiSan, doiTenTrai, SAN_DO, SAN_MAC_DINH, nhaMuc: () => NHA_MUC, NEN, nen: () => nenId, nha: () => nhaKieu, datLe: (t, d) => { leTren = t; leDuoi = d; if (cv) { const cu = kcVua; doiCo(); if (cu === kcVua) return; } }, vaoGiua: () => { vaoGiua(); kc = kcVua; }, dongBo, datGiay, manHinh, viTri, batQuet, xeDi, nhinVe, dongHo, chup, nay, hat, VT, _dbg: () => ({ muc, kc, cam, sc, R, hk }), _datCam: (x, z, k) => { muc.x = x; muc.z = z; if (k) kc = k; } };
 })();

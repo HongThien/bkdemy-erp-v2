@@ -731,7 +731,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   }
   // TRÒ CHƠI (06/10): danh sách game; Nông trại BK nhúng iframe (public/games/nong-trai — scripts/dong-bo-nong-trai.mjs)
   // Nông trại BK: công tắc riêng `nong_trai` (khoá tạm 12/10 — bản thử chưa lưu theo tài khoản). Đóng ⇒ trong ô Trò chơi hiện "Sắp ra mắt", không vào được.
-  if (direct === 'nong_trai' && moTN('nong_trai') && !ntBaoTri) return <GameNongTraiHS onBack={() => setDirect('tro_choi')} />
+  if (direct === 'nong_trai' && moTN('nong_trai') && !ntBaoTri) return <GameNongTraiHS hoTen={hoTen} onBack={() => setDirect('tro_choi')} />
   if (direct === 'tro_choi' || direct === 'nong_trai') return <>
     <TroChoiHS onBack={() => setDirect(null)} sapRa={{ nong_trai: !moTN('nong_trai') }}
       onChoi={(id) => { if (id === 'nong_trai' && moTN('nong_trai')) { if (ntBaoTri) setBaoTriNT(true); else setDirect('nong_trai') } }} />

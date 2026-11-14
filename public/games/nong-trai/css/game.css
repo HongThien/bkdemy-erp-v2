@@ -447,6 +447,11 @@ body.dangTham .cu[data-cu="gieo"], body.dangTham .cu[data-cu="bon"] { opacity: .
 .gdThe:active { transform: scale(.97); }
 .gdThe.chon { border-color: var(--xanh); box-shadow: 0 0 0 3px #c9f0b0; }
 .gdThe.chon::after { content: '✓'; position: absolute; top: -9px; right: -9px; width: 26px; height: 26px; border-radius: 50%; background: var(--xanh); color: #fff; font-weight: 800; display: grid; place-items: center; }
+.gdMonDs { display: flex; flex-wrap: wrap; gap: 7px; }
+.gdMon { padding: 7px 12px; border-radius: 999px; background: #fff; border: 2px solid #e8d4a6; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--mo); cursor: pointer; }
+.gdMon:active { transform: scale(.96); }
+.gdMon.chon { border-color: var(--xanh); background: #e9f9dc; color: var(--chu); }
+.gdMon.chon::before { content: '✓ '; color: var(--xanh); }
 .gdThe.nen-tuyet { background: linear-gradient(#eef5ff, #fff); }
 .gdThe.nen-dem { background: linear-gradient(#3a2a66, #5b3a7a); color: #fff; }
 .gdThe.nen-dem .nho { color: #e8d8ff; }

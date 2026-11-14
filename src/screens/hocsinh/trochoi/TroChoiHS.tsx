@@ -45,7 +45,7 @@ export default function TroChoiHS({ onBack, onChoi, sapRa }: { onBack: () => voi
 }
 
 /** Nông trại BK chạy trong khung (iframe cùng origin). Nút ‹ nổi ở góc dưới PHẢI (góc dưới trái đã có nút âm thanh/tuỳ chọn của game) để về danh sách game. */
-export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
+export function GameNongTraiHS({ onBack, hoTen }: { onBack: () => void; hoTen?: string }) {
   const khung = useRef<HTMLIFrameElement>(null)
   // CẦU NỐI LƯU THEO TÀI KHOẢN (bước 1 hoàn thiện, 12/10): game ↔ app bằng postMessage (js/cau.js trong game). App giữ phiên + gọi RPC; debounce 5s; xung đột thiết bị ⇒ báo game.
   const cap = useRef<string | null>(null)        // mốc cap_nhat đã đọc/ghi lần cuối (khoá lạc quan)
@@ -77,7 +77,7 @@ export function GameNongTraiHS({ onBack }: { onBack: () => void }) {
         // bản lưu + GIỜ SERVER + giờ chơi còn lại (nhịp đầu không cộng giờ). Không đọc được ⇒ game tự lùi về bản lưu trên máy.
         Promise.all([ntLuuDoc(), ntNhip()]).then(([r, h]) => {
           cap.current = r?.cap_nhat ?? null; sanSang.current = true
-          noi({ loai: 'nap', ok: true, state: r?.state ?? null, gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het, dhtSoDu: h.dht_so_du, dhtDaTieu: h.dht_da_tieu })
+          noi({ loai: 'nap', ok: true, ten: hoTen ?? '', state: r?.state ?? null, gioMs: h.gio_ms, conLaiGiay: h.con_lai_giay, het: h.het, dhtSoDu: h.dht_so_du, dhtDaTieu: h.dht_da_tieu })
         }).catch(() => noi({ loai: 'nap', ok: false }))
       } else if (d.loai === 'thoat') {
         onBack()

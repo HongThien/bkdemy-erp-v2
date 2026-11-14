@@ -34,7 +34,7 @@
   addEventListener('message', (e) => {
     if (e.source !== window.parent || e.origin !== NGUON) return;
     const d = e.data; if (!d || d.bk !== 'nt') return;
-    if (d.loai === 'nap' && cho) { C.docGio(d); cho(d); cho = null; }
+    if (d.loai === 'nap' && cho) { C.docGio(d); if (typeof d.ten === 'string') C.ten = d.ten; cho(d); cho = null; }   // ten = họ tên em (biển cổng nông trại)
     else if (d.loai === 'gio') C.docGio(d);
     else if (d.loai === 'rpc' && rpcCho[d.id]) { const f = rpcCho[d.id]; delete rpcCho[d.id]; f(d.kq || { ok: false, loi: 'mang' }); }
     else if (d.loai === 'xu') {
