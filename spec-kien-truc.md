@@ -113,6 +113,7 @@ Thay 6 kiểu hiện có bằng MỘT khuôn (chi tiết bảng ở audit §2.4)
 - `tinh_san_dang_ky` — danh mục: mã sổ · bảng lưu · **đơn vị tính** (1 HS / HS×môn / lớp / nhân sự / khối) · hàm tính (nhận mảng khoá) · độ ưu tiên ·
   ngân sách ms · trần 1 khoá · phụ thuộc sổ nào · chính sách khi bẩn (`tinh_truc_tiep` cho đơn vị nhỏ, `doc_cu_kem_co` cho đơn vị lớn).
 - `tinh_san_ban` — **một hàng đợi bẩn duy nhất** `(mã sổ, khoá)`. Trigger ở bảng nguồn chỉ làm một việc: chèn dòng bẩn. Không còn TTL làm cơ chế chính.
+  **Sửa 14/11 (đo trên mastery):** sổ bẩn trên đường GHI NÓNG (HS nộp bài) phải là **nhật ký chỉ-chèn** `(sổ, khoá, at)` + mốc `moc` ở bảng lưu — như `mastery_ban_log`. Khoá duy nhất `(sổ, khoá)` + upsert làm giao dịch dài (nhập kho, gán dạng hàng loạt) giữ khoá dòng và CHẶN HS nộp bài. `tinh_san_ban` hiện có khoá chính `(so, khoa)` và chưa sổ nào dùng ⇒ phải đổi thành chỉ-chèn trước khi dùng cho đường ghi nóng. Mastery GIỮ sổ bẩn riêng (đã đúng khuôn này, có đối chiếu `fn_mastery_doi_chieu`).
 - Bảng lưu nào cũng có: khoá · `tinh_at` · `moc` · phiên bản công thức. Ghi bằng upsert phần khác biệt, **cấm xoá hết chèn lại**.
 - **Một bộ điều phối `_tinh_san_chay`**, một job cron: đi theo ưu tiên, cũ nhất trước, kiểm giờ **sau từng khoá**, mỗi khoá có trần riêng và bắt lỗi riêng
   (một khoá hỏng không huỷ cả lượt). Một kết nối thay cho ~9.
