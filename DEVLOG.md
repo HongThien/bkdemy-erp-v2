@@ -80797,3 +80797,8 @@ Thùy nêu 4 việc, làm được 3:
   người nghe. `claude_build` không có quyền vào schema `realtime` ⇒ cần Thùy chạy ở SQL Editor (chỉ đọc):
   `select entity::text bang, count(*) so_dang_ky, max(created_at) moi_nhat from realtime.subscription group by 1 order by 2 desc;`
   0 dòng mà vẫn đọc ⇒ khả năng (3): muốn cắt phải tắt hẳn postgres_changes (màn Sự kiện đã có poll dự phòng 5 s) — quyết định của Thùy. Bản gỡ ở client vẫn đúng (đăng ký vô dụng), giữ.
+
+## 14/11 (tối) — Phòng dùng chung: test đầu vào / phát sinh chung được với ca bổ trợ (Thùy 14/11)
+- **Thùy:** trần 2 ca bổ trợ/phòng giữ, chung phòng được; hoạt động khác (vd test đầu vào) cũng chung được.
+- **Làm:** mig `202611142226_phong_chung_test_phat_sinh` (ĐÃ ÁP): chỉ chính khoá còn chặn khi lưu Lịch khối / tạo ca tay; test + phát sinh → cảnh báo. Spec §43. `check:kien-truc` ✔.
+- **Hiểu thế nào:** "hoạt động khác" = test đầu vào + hoạt động phát sinh (Phòng học); chính khoá giữ chặn — nếu Thùy muốn chính khoá cũng chung thì nói.

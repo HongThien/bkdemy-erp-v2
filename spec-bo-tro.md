@@ -167,3 +167,11 @@ Thùy 13/11: "Bỏ hết những logic trước đây mâu thuẫn với hiện 
 - **KHÔNG đổi:** luật tối đa **2 ca/phòng cùng giờ** (trigger `_trg_ca_bo_tro_phong` + mức `chan` ở `fn_lich_truc_kiem_trung`) — Thùy chưa nói nới; hỏi lại.
 - **5 nhóm dòng Lịch khối nhân đôi/ba (đang còn hiệu lực) — nên xoá dòng thừa bằng nút Xoá ở Lịch khối (em chưa xoá):** K8 T5 19:30 Khánh ×2 · K7 T6 17:00 Vân Anh ×2 · K7 T7 17:00 Vân Anh ×2 · K9 T7 15:30 Long ×3 · K9 CN 16:00 Hải ×2.
 - **Việc vận hành:** bấm **Chốt tuần** (Lịch khối) cho tuần này — chốt = sinh ca còn lại + ca chưa có em đi theo lịch hiện tại + huỷ ca chưa có em của lịch đã xoá (xử lý phần lớn 14 ca mồ côi). Ca mồ côi ĐÃ có em (K4 11/11 có 3 buổi, K5 13/11 có 1 buổi) cần người xử lý tay.
+
+## 43. Cập nhật 14/11 — PHÒNG DÙNG CHUNG: test đầu vào / hoạt động phát sinh chung được với ca bổ trợ
+
+- **Thùy 14/11:** "Trần 2 ca cho phép trùng (2 ca bổ trợ vẫn chung phòng được) … hoạt động khác cũng có thể chung, ví dụ test đầu vào chẳng hạn."
+- **Luật phòng sau 14/11:** (1) tối đa **2 ca bổ trợ/phòng cùng giờ**, chung phòng được (giữ nguyên); (2) **test đầu vào + hoạt động phát sinh chung phòng được** — chỉ CẢNH BÁO, không tính vào trần 2 ca; (3) **chính khoá (TKB)** vẫn là gốc ⇒ ca bổ trợ trùng chính khoá vẫn CHẶN; (4) trùng NGƯỜI TRỰC không đổi.
+- **Làm (mig `202611142226_phong_chung_test_phat_sinh`):** `fn_lich_truc_kiem_trung` (lưu Lịch khối): test/phát sinh `chan` → `canh_bao`; `fn_ca_bo_tro_tao` (tạo ca tay): bỏ chặn test/phát sinh. Chiều ngược lại vốn đã đúng: `fn_ts_khung_trung_phong` (xếp khung test) và `PhatSinhModal` ("Vẫn lưu") chỉ cảnh báo khi phòng có ca bổ trợ.
+- **Kiểm (dry-run ROLLBACK, dữ liệu thật):** phòng P303 14/11 có "Test đầu vào" 15:00–20:30: trước `chan` → sau `canh_bao`; tạo ca tay vào P303 ĐƯỢC; phòng P102 có chính khoá 7S3: vẫn `chan`, tạo ca tay vẫn bị chặn. Không có mẫu "phát sinh" trong 4 tuần tới để thử — cùng nhánh mã với test.
+- **Chưa nới:** `fn_tkb_kiem_trung` (lưu TKB chính khoá vẫn chặn trùng test/phát sinh) — Thùy chưa nói.
