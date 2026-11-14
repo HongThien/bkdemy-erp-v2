@@ -1,0 +1,220 @@
+<title>Bản đồ Hình học 8T</title>
+<meta name="description" content="Đề xuất bản đồ Hình–Học khối 8T dựng từ 4 quyển sách HSG, một chiều duy nhất là kiến thức — chưa ghi DB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --fg:#1e2430; --muted:#5d6676; --line:#e0dccf;
+  --accent:#2f5d8c; --have:#2d7a4f; --have-bg:#e5f3ea; --new:#b4571a; --new-bg:#fbebdc;
+  --ren:#6b4fa3; --ren-bg:#eee8f8; --tierA:#2d7a4f; --tierB:#a3761b; --tierA-bg:#e5f3ea; --tierB-bg:#f8efd6;
+  --no-bg:#f1eee6; --bad:#a33a3a; --bad-bg:#f9e3e3;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15181e; --card:#1d222b; --fg:#e8eaee; --muted:#9aa3b2; --line:#2e3542;
+  --accent:#8ab4e8; --have:#74c796; --have-bg:#1c3326; --new:#f0a56a; --new-bg:#3a2815;
+  --ren:#b9a2ee; --ren-bg:#2b2342; --tierA:#74c796; --tierB:#e3bb62; --tierA-bg:#1c3326; --tierB-bg:#3a3014; --no-bg:#262b35;
+  --bad:#f0a0a0; --bad-bg:#3d2020; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15181e; --card:#1d222b; --fg:#e8eaee; --muted:#9aa3b2; --line:#2e3542;
+  --accent:#8ab4e8; --have:#74c796; --have-bg:#1c3326; --new:#f0a56a; --new-bg:#3a2815;
+  --ren:#b9a2ee; --ren-bg:#2b2342; --tierA:#74c796; --tierB:#e3bb62; --tierA-bg:#1c3326; --tierB-bg:#3a3014; --no-bg:#262b35;
+  --bad:#f0a0a0; --bad-bg:#3d2020; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 "Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding-inline:16px;padding-block:24px 56px}
+main{max-width:980px;margin:0 auto}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+h2{font-size:19px;margin:36px 0 10px;text-wrap:balance}
+p{margin:0 0 10px;max-width:70ch}
+code{font-size:13px}
+.sub{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 12px;font-size:13px}
+.tag{display:inline-block;border-radius:5px;padding:1px 8px;font-size:12px;font-weight:600;white-space:nowrap}
+.tag.co{background:var(--have-bg);color:var(--have)} .tag.moi{background:var(--new-bg);color:var(--new)} .tag.doi{background:var(--ren-bg);color:var(--ren)} .tag.bo{background:var(--bad-bg);color:var(--bad)}
+.tier{display:inline-block;border-radius:5px;padding:0 7px;font-size:12px;font-weight:700}
+.tier.A{background:var(--tierA-bg);color:var(--tierA)} .tier.B{background:var(--tierB-bg);color:var(--tierB)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--no-bg)}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 18px;overflow:hidden}
+.cd>header{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.cd>header b{font-size:17px}
+.cd>header span{color:var(--muted);font-size:13px}
+.bai{padding:12px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr);gap:6px 20px}
+.bai:last-child{border-bottom:0}
+.bai h3{margin:0 0 4px;font-size:15px;font-weight:600}
+.bai .mo{color:var(--muted);font-size:13.5px;margin:6px 0 0}
+.bai .yc{font-size:12.5px;margin:6px 0 0;color:var(--muted)}
+.bai .yc i{font-style:normal;display:inline-block;border:1px dashed var(--line);border-radius:999px;padding:0 8px;margin:2px 4px 0 0}
+.src{list-style:none;margin:0;padding:0;font-size:13.5px}
+.src li{display:flex;gap:8px;align-items:baseline;padding:1px 0}
+.src .t{flex:1;min-width:0}
+.src .c{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.note{font-size:13px;color:var(--muted);margin-top:4px}
+@media (max-width:640px){.bai{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:12px 0}
+.box h3{margin:0 0 6px;font-size:15px}
+.box ul{margin:4px 0 0;padding-left:20px} .box li{margin:3px 0}
+.bo{display:grid;gap:8px;margin:8px 0}
+.bo div{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+</style>
+
+<main>
+<h1>Bản đồ Hình học 8T — sửa lại cho một chiều</h1>
+<p class="sub">Phần Hình–Học (<code>hinh_hoc_bai</code>), khối 8T, dựng từ hồ sơ NĐT, TCHH, VHB1, VHB2. <b>Chưa ghi gì vào DB</b> — chị bảo “ghi” thì em ghi.</p>
+
+<div class="box">
+<h3>Chị chỉ ra em lẫn chiều — đúng. Em chốt lại một chiều duy nhất:</h3>
+<ul>
+<li><b>Chuyên đề và bài = KIẾN THỨC cần có</b> để giải: một đối tượng (hình thoi, đa giác) hoặc một định lí / công cụ có lý thuyết riêng (Thalès, đồng dạng, Mê-nê-la-uýt, quỹ tích). Đúng như DB khối 8 đang làm: <i>Hình thoi</i>, <i>Định lý Thales</i>, <i>Đường trung bình của tam giác</i>.</li>
+<li><b>Dạng bài = YÊU CẦU của đề</b> (chứng minh vuông góc / song song / thẳng hàng, tính góc, tính độ dài, chứng minh hệ thức…). Đây <b>không phải tầng bản đồ</b>; nó là nhãn gắn ở từng câu, và hiện bên dưới mỗi bài ở dạng <i>“yêu cầu hay gặp”</i>.</li>
+<li>Câu cắt nhiều kiến thức ⇒ xếp theo kiến thức <b>đứng sau</b> trong bản đồ (luật “dạng sau thắng”).</li>
+<li><b>Mỗi chuyên đề nằm trọn một phía của “đồng dạng”</b>: chỉ dùng kiến thức trước đồng dạng (Tứ giác, Thalès) hoặc từ đồng dạng trở đi. Chưa học đồng dạng và đã học đồng dạng là hai cách giải khác hẳn nhau nên không trộn trong một bài.</li>
+</ul>
+<p style="margin-top:8px">Em lẫn ở chỗ: <i>Tam giác cân/đều, Tính số đo góc, Vuông góc–song song, Tính độ dài–góc đặt ẩn, Chứng minh hệ thức</i> đều là <b>yêu cầu / bối cảnh</b> của đề, không phải kiến thức — nên em bỏ hết khỏi bản đồ. Câu của chúng sẽ rải về bài mà lời giải thực sự dùng (Thalès, đồng dạng, hình bình hành…).</p>
+</div>
+
+<div class="chips">
+  <span class="chip"><span class="tag co">✔ giữ nguyên</span> 10 bài</span>
+  <span class="chip"><span class="tag doi">✎ đổi tên</span> 4 bài</span>
+  <span class="chip"><span class="tag moi">＋ mới</span> 6 bài</span>
+  <span class="chip"><span class="tag bo">✕ bỏ</span> 4 bài + 2 chuyên đề (đều 0 câu — chờ chị gật)</span>
+  <span class="chip">Sau chỉnh: <b>5 chuyên đề · 20 bài</b></span>
+  <span class="chip">Thứ tự lớp 8: <b>Tứ giác → Thalès (+ đường trung bình, phân giác) → Đồng dạng</b></span>
+</div>
+
+<h2>1. Thứ tự nhập theo mức có đáp án</h2>
+<p>Chị dặn ưu tiên bài có đáp án trước:</p>
+<div class="scroll"><table>
+<tr><th>Đợt</th><th>Nguồn</th><th>Đáp án / lời giải</th><th>Số bài Hình (ước, chưa lọc trùng)</th></tr>
+<tr><td class="n"><span class="tier A">A</span> Đợt 1</td><td>NĐT Hình I–III + ôn tập cuối năm + phụ lục B</td><td>Ngay sau từng bài, <b>đủ bước</b>, có hình</td><td class="n">≈ 230</td></tr>
+<tr><td class="n"><span class="tier A">A</span> Đợt 2</td><td>TCHH chuyên đề 1–3</td><td>“Hướng dẫn giải” ngay sau từng bài (đôi chỗ tắt)</td><td class="n">≈ 240</td></tr>
+<tr><td class="n"><span class="tier A">A</span> Đợt 3</td><td>TCHH chuyên đề 4–7 — phần đã có “Giải”</td><td>Ví dụ/bài đã giải; riêng CĐ7 lời giải ngắn</td><td class="n">≈ 70</td></tr>
+<tr><td class="n"><span class="tier B">B</span> Đợt 4</td><td>VHB1 + VHB2 phần Hình (bỏ hình không gian)</td><td>Dồn cuối sách: lúc đủ, lúc tắt, lúc chỉ đáp số</td><td class="n">≈ 335 + ví dụ</td></tr>
+<tr><td class="n">Không nhập</td><td>30 bài tự luyện TCHH CĐ4–6 · bài “bạn đọc tự chứng minh” · đề mất trang VHB1 (Hình 41–46) · hình không gian</td><td>Không có lời giải / đã chốt bỏ 10/10</td><td class="n">—</td></tr>
+</table></div>
+<p class="note">Đề các sách này hầu như không kèm hình ⇒ hình đề em vẽ bằng code, hình sách chỉ để đối chiếu. Mỗi đợt vẫn qua lọc trùng — TCHH lặp rất nhiều. <b>Vì TCHH CĐ1 (≈ 117 bài) và CĐ3 (≈ 82 bài) không còn bài riêng</b> nên chúng không được cộng vào bảng bên dưới: mỗi bài của chúng được chép rồi xếp theo kiến thức dùng.</p>
+
+<h2>2. Cây bản đồ đề xuất</h2>
+<div id="cay"></div>
+
+<h2>3. Câu của sách không có bài riêng sẽ đi đâu</h2>
+<div class="box">
+<ul>
+<li><b>TCHH CĐ1</b> (tam giác cân, đều, vuông cân; tính số đo góc bằng tam giác đều phụ) và <b>TCHH CĐ3</b> (vuông góc, song song): chép đề, rồi xếp theo kiến thức lời giải dùng — Pythagore/đồng dạng ⇒ Tam giác đồng dạng; đường trung bình ⇒ Thalès; hình bình hành/vuông ⇒ Tứ giác…</li>
+<li>Câu <b>chỉ dùng tam giác bằng nhau / tam giác cân</b> (kiến thức lớp 7, không có chủ đề nào trong 5 chuyên đề) ⇒ vào dạng chờ <code>HH8T000000</code>, như Đại. Đến lúc thấy số lượng thật chị quyết: lập bài hay bỏ.</li>
+<li>Nhãn <b>yêu cầu</b> (chứng minh vuông góc, tính góc…) gắn vào câu ở bước chép đề, không thêm bảng.</li>
+</ul>
+</div>
+
+<h2>4. Em cần chị chốt</h2>
+<div class="box">
+<h3>Bỏ 4 bài và 2 chuyên đề (Luật xoá — chờ chị gật)</h3>
+<p>Cả 6 mục tạo ngày 10/10, <b>0 câu, 0 lý thuyết</b>, chưa có gì tham chiếu:</p>
+<div class="bo">
+<div><span class="tag bo">✕</span><b>HH00125</b> Tam giác cân, tam giác đều, tam giác vuông cân</div>
+<div><span class="tag bo">✕</span><b>HH00126</b> Tính số đo góc (kẻ thêm hình)</div>
+<div><span class="tag bo">✕</span><b>HH00130</b> Vuông góc, song song</div>
+<div><span class="tag bo">✕</span><b>HH00133</b> Tính độ dài, góc (đặt ẩn, lập phương trình)</div>
+<div><span class="tag bo">✕</span><b>Chuyên đề HH8T02 “Tam giác”</b> — chỉ còn HH00125, HH00126 ⇒ rỗng sau khi bỏ</div>
+<div><span class="tag bo">✕</span><b>Chuyên đề HH8T04 “Chứng minh quan hệ hình học”</b> — HH00131 chuyển sang Thalès, chỉ còn HH00130 ⇒ rỗng sau khi bỏ</div>
+</div>
+<p class="note">Vì sao bỏ: là yêu cầu / bối cảnh của đề, không phải kiến thức (mục trên). Mã gốc bất biến nên em không dùng lại mã này cho thứ khác.</p>
+</div>
+<div class="box">
+<h3>Một chỗ em còn phân vân</h3>
+<ul>
+<li><b>“Cực trị hình học”</b> (HH00134): cực trị là yêu cầu của đề, nhưng khi giải dùng hệ thống riêng (đối xứng điểm, bất đẳng thức tam giác, Cô-si) nên em giữ như một bài kiến thức, cùng chuyên đề với Quỹ tích và Dựng hình (chị đã OK gom ba bài này 10/10). Chị thấy lẫn chiều thì em gỡ ra: câu cực trị về bài theo hình dùng.</li>
+</ul>
+</div>
+<p class="note">Số đếm lấy từ hồ sơ sách do agent lập (đã đối chiếu mẫu ảnh gốc) — để thấy bài nào dày/mỏng, <b>không phải số nhập</b>.</p>
+</main>
+
+<script>
+const D=[
+{id:'H1',ten:'Tứ giác',ghi:'HH8T01 · giữ nguyên 6 bài (HH00089 đổi tên)',bai:[
+ {m:'HH00089',ten:'Hình thang, hình thang cân',st:'doi',mo:'Kiến thức: định nghĩa, tổng góc tứ giác, hình thang vuông, hình thang cân, dấu hiệu nhận biết.',
+  y:['tính góc','chứng minh hình thang cân','so sánh đoạn thẳng','bất đẳng thức đoạn thẳng'],
+  s:[['NĐT','Hình I §1–2 (bài 1–18)','≈ 18','A'],['VHB1','§1–2 (VD 1–3, BT 1–13)','≈ 16','B']]},
+ {m:'HH00090',ten:'Hình bình hành',st:'co',mo:'Kiến thức: định nghĩa, tính chất, 5 dấu hiệu nhận biết.',
+  y:['chứng minh hình bình hành','thẳng hàng','đồng quy','dựng hình bình hành phụ'],
+  s:[['NĐT','Hình I §5 (37–45) + ôn tập','≈ 12','A'],['VHB1','§5 (VD 8–9, BT 47–57) — đầu § mất trang','≈ 11','B']]},
+ {m:'HH00091',ten:'Hình chữ nhật',st:'co',mo:'Kiến thức: định nghĩa, tính chất, dấu hiệu; trung tuyến ứng với cạnh huyền; khoảng cách giữa hai đường song song.',
+  y:['chứng minh hình chữ nhật','quỹ tích','bình phương khoảng cách'],
+  s:[['NĐT','Hình I §6 (46–55)','≈ 10','A'],['VHB1','§7 (VD 12–14, BT 62–72)','≈ 14','B']]},
+ {m:'HH00092',ten:'Hình thoi',st:'co',mo:'Kiến thức: định nghĩa, tính chất (hai đường chéo vuông góc, là phân giác), dấu hiệu.',
+  y:['chứng minh hình thoi','vuông góc','tính góc'],
+  s:[['NĐT','Hình I §7 (chung với hình vuông)','≈ 5','A'],['VHB1','§9 (VD 15, BT 73–79)','≈ 8','B']]},
+ {m:'HH00093',ten:'Hình vuông',st:'co',mo:'Kiến thức: tính chất của hình chữ nhật + hình thoi, 5 dấu hiệu nhận biết.',
+  y:['chứng minh hình vuông','tam giác vuông cân dựng ngoài','hệ thức 1/x²+1/y²=1/z²','thẳng hàng, điểm cố định','cực trị'],
+  s:[['TCHH','CĐ2 trọn chuyên đề (13 VD + 29 BT)','≈ 42','A'],['NĐT','Hình I §7 + ôn tập Ch.I (65–74)','≈ 14','A'],['VHB1','§10 (VD 16, BT 80–94)','≈ 16','B']]},
+ {m:'HH00094',ten:'Đối xứng trục, đối xứng tâm',st:'co',mo:'Kiến thức: hai điểm / hai hình đối xứng, hình có trục / tâm đối xứng; tâm đối xứng của hình bình hành.',
+  y:['chứng minh bằng điểm đối xứng','cực trị MA+MB','bất đẳng thức'],
+  s:[['NĐT','Hình I §4 (28–34) + §5 (39–40, 45b)','≈ 10','A'],['VHB1','§4 (BT 41–46, đề mất ảnh), §6 (BT 58–61)','≈ 10','B']],
+  ghi:'VHB1 §4: đề mất trang, còn lời giải ⇒ chỉ nhập bài đọc được đề.'}
+]},
+{id:'H2',ten:'Định lí Thalès',ghi:'HH8T03 (đổi tên từ “Thalès và tam giác đồng dạng”) · cả chuyên đề chỉ dùng kiến thức TRƯỚC đồng dạng',bai:[
+ {m:'HH00127',ten:'Định lí Thalès (thuận, đảo, hệ quả)',st:'co',mo:'Kiến thức: tỉ số hai đoạn thẳng, định lí Thalès, định lí đảo, hệ quả.',
+  y:['tính độ dài','chứng minh song song','chứng minh tỉ lệ thức','tỉ số không đổi'],
+  s:[['NĐT','Hình III §1–2 (bài 1–18)','≈ 18','A'],['TCHH','CĐ5 (17 bài đã giải)','≈ 17','A'],['VHB2','§13–14 (VD 31–35, BT 171–218)','≈ 53','B']]},
+ {m:'＋',ten:'Đường trung bình của tam giác, của hình thang',st:'moi',mo:'Kiến thức: đường trung bình của tam giác (song song cạnh thứ ba, bằng nửa cạnh ấy), của hình thang.',
+  y:['chứng minh trung điểm','chứng minh song song','EF ≤ (AB+CD)/2','lấy trung điểm phụ'],
+  s:[['NĐT','Hình I §3 (bài 19–27)','≈ 9','A'],['VHB1','BT 14–20','≈ 7','B']]},
+ {m:'HH00128',ten:'Tính chất đường phân giác',st:'co',mo:'Kiến thức: tính chất đường phân giác trong và ngoài của tam giác.',
+  y:['tính đoạn do phân giác chia','chứng minh song song','tính tỉ số','hệ thức đại số trong tam giác đặc biệt'],
+  s:[['NĐT','Hình III §3 (bài 19–27)','≈ 9','A'],['VHB2','§15 (VD 36, BT 219–228)','≈ 11','B']]},
+{m:'＋',ten:'Bổ đề hình thang',st:'moi',mo:'Kiến thức: giao hai đường chéo, giao hai cạnh bên, trung điểm hai đáy — ba điểm thẳng hàng.',
+  y:['chứng minh thẳng hàng','tính tỉ số','1/OE = 1/a + 1/b'],
+  s:[['VHB2','§13: VD 33, BT 172–174, 204*','≈ 5','B'],['TCHH','CĐ4 (phần lý thuyết + bài dùng bổ đề)','≈ 4','A']],
+  ghi:'Ít bài; phần lớn câu “đồng quy, thẳng hàng” của sách dùng kiến thức khác và về bài khác.'},
+ {m:'HH00131',ten:'Định lí Mê-nê-la-uýt, định lí Xê-va',st:'doi',mo:'Kiến thức: Mê-nê-la-uýt (thuận, đảo), Xê-va; chứng minh ba điểm thẳng hàng, ba đường đồng quy bằng tích tỉ số.',
+  y:['chứng minh thẳng hàng','chứng minh đồng quy','chứng minh hệ thức tỉ số'],
+  s:[['TCHH','CĐ4 Bài 4, 10–13; CĐ5 Bài 9 (13 bài đã giải; 10 bài tự luyện ⇒ bỏ)','≈ 6','A'],['VHB2','BT 205–206 (chứng minh hai định lí)','≈ 4','B']]}
+]},
+{id:'H3',ten:'Tam giác đồng dạng',ghi:'HH8T07 (chuyên đề mới, tách từ HH8T03) · 1 bài có sẵn, thêm 2 bài',bai:[
+ {m:'HH00129',ten:'Tam giác đồng dạng — ba trường hợp',st:'doi',mo:'Kiến thức: khái niệm, ba trường hợp c.c.c, c.g.c, g.g.',
+  y:['chứng minh đồng dạng','suy ra tỉ số, góc','chứng minh tích AB·AC = AD·AE','hình thang bằng đồng dạng'],
+  s:[['NĐT','Hình III §4–6 (bài 28–54)','≈ 27','A'],['VHB2','§16 (VD 37–38, BT 229–256)','≈ 30','B']]},
+ {m:'＋',ten:'Đồng dạng tam giác vuông, hệ thức lượng',st:'moi',mo:'Kiến thức: các trường hợp đồng dạng của tam giác vuông; AB² = BH·BC, AH² = BH·HC; Pythagore.',
+  y:['tính cạnh, đường cao','chứng minh hệ thức','chu vi, diện tích'],
+  s:[['NĐT','Hình III §7 (55–63)','≈ 9','A'],['VHB2','§17 (VD 39–40, BT 257–267)','≈ 13','B']]},
+ {m:'＋',ten:'Tỉ số đường cao, tỉ số diện tích hai tam giác đồng dạng',st:'moi',mo:'Kiến thức: tỉ số đường cao, tỉ số diện tích bằng bình phương tỉ số đồng dạng; kèm ứng dụng đo gián tiếp.',
+  y:['hình vuông nội tiếp tam giác','tính diện tích theo tỉ số','đo chiều cao, độ sâu'],
+  s:[['VHB2','§18–19 (VD 41–43, BT 268–281)','≈ 17','B'],['NĐT','Ôn tập Ch.III (64–73) — phần liên quan','≈ 5','A']]}
+]},
+{id:'H4',ten:'Đa giác và diện tích',ghi:'HH8T05 (đổi tên từ “Diện tích và tính toán”) · 1 bài có sẵn, thêm 2 bài',bai:[
+ {m:'＋',ten:'Đa giác, đa giác đều',st:'moi',mo:'Kiến thức: đa giác lồi, đa giác đều, tổng góc (n−2)·180°, số đường chéo.',
+  y:['tính góc, tìm số cạnh','lục giác có các góc bằng nhau','đếm đường chéo'],
+  s:[['NĐT','Hình II §1 (bài 1–9)','≈ 9','A'],['VHB1','§11 (VD 17–18, BT 95–103)','≈ 11','B'],['TCHH','CĐ7 Bài toán 1, 2, 5–7','≈ 5','A']]},
+ {m:'HH00132',ten:'Công thức diện tích',st:'doi',mo:'Kiến thức: diện tích hình chữ nhật, tam giác, hình thang, bình hành, thoi; chia đa giác thành tam giác.',
+  y:['tính diện tích theo số đo','diện tích thay đổi theo kích thước','chia đôi diện tích','cực trị diện tích'],
+  s:[['NĐT','Hình II §2–4 + ôn tập (bài 10–44)','≈ 35','A'],['VHB1','§12 (VD 19–22, BT 104–140)','≈ 41','B']]},
+ {m:'＋',ten:'Phương pháp diện tích',st:'moi',mo:'Kiến thức: tỉ số diện tích hai tam giác chung đường cao hoặc chung đáy; dùng diện tích để thiết lập quan hệ độ dài.',
+  y:['chứng minh quan hệ độ dài','chứng minh bằng nhau, phân giác','tổng khoảng cách không đổi','tính tỉ số diện tích'],
+  s:[['TCHH','CĐ7 Bài toán 8–19, 27, 28','≈ 15','A'],['NĐT','Phụ lục B (51, 56, 62) + Hình II §2 bài 16–17','≈ 6','A'],['VHB1','Chuyên đề (VD 28–30, BT 158–170)','≈ 16','B']]}
+]},
+{id:'H5',ten:'Cực trị, quỹ tích, dựng hình',ghi:'HH8T06 · giữ nguyên 3 bài',bai:[
+ {m:'HH00134',ten:'Cực trị hình học',st:'co',mo:'Kiến thức: cực trị bằng đối xứng, bất đẳng thức tam giác, Cô-si; hình nội tiếp; đường gấp khúc ngắn nhất.',
+  y:['min / max độ dài','min / max diện tích','đường đi ngắn nhất'],
+  s:[['VHB2','Chuyên đề cực trị (VD 58–68, BT 335–377)','≈ 54','B'],['NĐT','Hình I bài 9a, 32–34, 44, 55b; PL B 56, 62, 67','≈ 10','A']]},
+ {m:'HH00135',ten:'Tìm tập hợp điểm',st:'co',mo:'Kiến thức: quỹ tích cơ bản; phần thuận – giới hạn – phần đảo.',
+  y:['quỹ tích trung điểm, trọng tâm','điểm cố định, đường cố định'],
+  s:[['VHB1','Chuyên đề (VD 23–27, BT 141–157)','≈ 22','B'],['NĐT','Hình I §6 (49, 50, 54), ôn tập 73b; PL B 66','≈ 6','A']]},
+ {m:'HH00136',ten:'Dựng hình',st:'co',mo:'Kiến thức: bài toán dựng hình; các bước phân tích – cách dựng – chứng minh – biện luận.',
+  y:['dựng hình thang, tam giác theo yếu tố','dựng điểm thoả hệ thức','chia diện tích'],
+  s:[['NĐT','Hình I §4 (bài 29, 31, 35)','≈ 4','A'],['VHB1','§3 (VD 4–5, BT 21–40) + dựng chia diện tích','≈ 27','B'],['VHB2','§16–17 phần dựng (BT 253–256, 266–267)','≈ 6','B']]}
+]}
+];
+const lbl={co:['co','✔ giữ nguyên'],doi:['doi','✎ đổi tên'],moi:['moi','＋ mới']};
+const root=document.getElementById('cay');
+root.innerHTML=D.map(c=>{
+  const n=c.bai.length;
+  return `<section class="cd"><header><b>${c.id}. ${c.ten}</b><span>${c.ghi} · ${n} bài</span></header>`+
+  c.bai.map(b=>`<div class="bai"><div><h3>${b.ten}</h3><span class="tag ${lbl[b.st][0]}">${lbl[b.st][1]}</span> ${b.m.startsWith('HH')?`<span class="sub" style="font-size:12px">${b.m}</span>`:''}<p class="mo">${b.mo}</p>`+
+   (b.y?`<p class="yc">Yêu cầu hay gặp: ${b.y.map(t=>`<i>${t}</i>`).join('')}</p>`:'')+`</div>`+
+   `<div><ul class="src">${b.s.map(x=>`<li><span class="tier ${x[3]}">${x[3]}</span><span class="t"><b>${x[0]}</b> · ${x[1]}</span><span class="c">${x[2]}</span></li>`).join('')}</ul>${b.ghi?`<p class="note">${b.ghi}</p>`:''}</div></div>`).join('')+`</section>`;
+}).join('');
+</script>
