@@ -15,7 +15,7 @@ import { createClient } from '@supabase/supabase-js'
 process.loadEnvFile('.env')
 
 const argv = process.argv.slice(2)
-const TH = argv.find((a) => !a.startsWith('--') && !['--chi', '--bo', '--dir', '--html'].includes(argv[argv.indexOf(a) - 1]))
+const TH = argv.find((a) => !a.startsWith('--') && !['--chi', '--bo', '--dir', '--html', '--lo', '--nguon', '--loc'].includes(argv[argv.indexOf(a) - 1]))
 const GHI = argv.includes('--ghi')
 const gt = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null }
 const CHI = gt('--chi') ? new Set(gt('--chi').split(',')) : null
@@ -23,6 +23,7 @@ const BO = new Set((gt('--bo') || '').split(',').filter(Boolean))
 const DIR = gt('--dir') || 'drafts'           // thư mục bản nháp trong <TH> (drafts_v2 = bản đã đổi sang sơ đồ tư duy)
 const CHI_KIEM = argv.includes('--chi-kiem')  // chỉ đọc + kiểm bản nháp, KHÔNG mở DB (cho trạm tự kiểm)
 const HTML = gt('--html')                     // dựng trang duyệt rồi thoát (không DB)
+const TEN_LO = gt('--lo') || 'lô 1'
 const TEN_BAI = { HH00127: 'Định lí Thalès', HH00161: 'Đường trung bình', HH00128: 'Tính chất đường phân giác', HH00162: 'Bổ đề hình thang', HH00131: 'Mê-nê-la-uýt, Xê-va' }
 if (!TH || !existsSync(join(TH, DIR))) { console.error('Dùng: node nhap_lo.mjs <TH> [--dir drafts_v2] [--chi-kiem] [--ghi]'); process.exit(2) }
 
@@ -46,7 +47,7 @@ const phang = (s) => s.replace(/\$/g, '').replace(/\\[dt]?frac\s*(\{[^{}]*\}|\w)
 const doiDapAn = (y, ten) => {
   if (y.loai_cau === 'tu_luan') { y.dap_an = null; return } // tự luận: đáp số nằm trong lời giải, không lưu dap_an (như kho K8)
   if (y.loai_cau !== 'tra_loi_ngan' || !y.dap_an) return
-  const phan = phang(y.dap_an).replace(/\s*\(.*\)\s*$/, '').split(/\s*(?:;| và |,\s(?=[A-Za-z]))\s*/).filter(Boolean)
+  const phan = phang(y.dap_an).replace(/\s*\(.*\)\s*$/, '').split(/\s*(?:;| và | hoặc |,\s(?=[A-Za-z]))\s*/).filter(Boolean)
   const ra = []
   for (const p of phan) {
     const m = p.match(/^(.*?)=([^=]*)$/)
@@ -55,6 +56,8 @@ const doiDapAn = (y, ten) => {
     ra.push(m && phan.length > 1 ? `${m[1].trim()}=${ve}` : ve)
   }
   y.dap_an = ra.join('; ')
+  // căn thức / π: kho K8 giữ LaTeX trong $…$ (vd $R=\dfrac{a\sqrt3}{3}$) ⇒ dùng lại bản gốc (bỏ chữ giải thích) bọc đúng một cặp $
+  if (/\\sqrt|\\pi/.test(y.dap_an_goc)) y.dap_an = '$' + y.dap_an_goc.replace(/\$/g, '').replace(/\s*\(.*\)\s*$/, '').trim() + '$'
 }
 const doiLoai = []
 
@@ -117,10 +120,10 @@ for (const f of tep) {
   const khoi = txt.split(/\n(?=### )/).filter((k) => k.startsWith('### '))
   for (const k of khoi) {
     const dau = k.split('\n')[0]
-    const m = dau.match(/^### (\S+)\s*→\s*(HH\d{5}|DE_SAU.*)$/)
+    const m = dau.match(/^### (\S+)\s*→\s*(HH\d{5}|(?:DE_SAU|KHAC|TRUNG|KHONG_NHAP).*)$/)
     if (!m) { loi.push(`${f}: dòng đầu khối lạ: ${dau}`); continue }
     const [, nhan, dich] = m
-    if (dich.startsWith('DE_SAU')) { deSau.push({ f, nhan, dich, ly_do: truong(k, 'ly_do') }); continue }
+    if (!dich.startsWith('HH')) { deSau.push({ f, nhan, dich, ly_do: truong(k, 'ly_do') }); continue }
     const loai = truong(k, 'loai') || 'don'
     const b = { f, nhan, dich, loai, nguon: truong(k, 'nguon'), hinh: truong(k, 'hinh').split(/\s/)[0], nghi: truong(k, 'nghi_van'), y: [] }
     if (loai === 'nhieu_y') {
@@ -205,7 +208,8 @@ async function dungTrang(ra) {
     return d.trim() ? `<div>${toan(d)}</div>` : '<div class="trong"></div>'
   }).join('')
   const anh = (ten) => { const p = timHinh(ten); return p ? `<img src="data:image/png;base64,${readFileSync(p).toString('base64')}">` : '' }
-  const PDF = { NDT: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Chuyên đề bồi dưỡng HSG Toán 8-NĐT.pdf', TCHH: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Tuyển chọn cách đề bồi dưỡng HSG Toán 8 Hình học.pdf' }
+  const PDF = { NDT: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Chuyên đề bồi dưỡng HSG Toán 8-NĐT.pdf', TCHH: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/Tuyển chọn cách đề bồi dưỡng HSG Toán 8 Hình học.pdf',
+    VHB1: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/nang-cao-va-phat-trien-toan-8-vu-huu-binh-tap-1 (1).pdf', VHB2: 'E:/BK ACADEMY/Tài liệu tham khảo/8T/HSG/nang-cao-va-phat-trien-toan-8-vu-huu-binh-tap-2.pdf' }
   const tam = mkdtempSync(join(tmpdir(), 'h8t-'))
   const trang = new Map()
   const anhTrang = (sach, p) => {
@@ -215,8 +219,9 @@ async function dungTrang(ra) {
     const v = `data:image/jpeg;base64,${readFileSync(o + '.jpg').toString('base64')}`; trang.set(k, v); return v
   }
   const the = []
-  for (const b of [...chon, ...deSau.map((d) => ({ ...d, deSau: true }))]) {
-    const sach = b.nhan.startsWith('TCHH') ? 'TCHH' : 'NDT'
+  const LOC = (gt('--loc') || '').split(',').filter(Boolean), khop = (n) => !LOC.length || LOC.some((p) => n.startsWith(p))
+  for (const b of [...chon, ...deSau.map((d) => ({ ...d, deSau: true }))].filter((b) => khop(b.nhan))) {
+    const sach = PDF[b.nhan.split('-')[0]] ? b.nhan.split('-')[0] : 'NDT'
     const ps = [...new Set(((b.nguon || '').match(/@p(\d+)(?:[–-](\d+))?/) || []).slice(1).filter(Boolean).map(Number))]
     const trangHtml = ps.map((p) => `<details><summary>Trang sách PDF ${p}</summary><img src="${anhTrang(sach, p)}"></details>`).join('')
     if (b.deSau) { the.push(`<section class="the sau"><h3>${esc(b.nhan)} <span class="nhan">${esc(b.dich)}</span></h3><p>${toan(b.ly_do || '')}</p></section>`); continue }
@@ -229,7 +234,7 @@ async function dungTrang(ra) {
       ${b.nghi ? `<p class="nghi"><b>Ghi chú soát / nghi vấn:</b> ${toan(b.nghi)}</p>` : ''}${trangHtml}</section>`)
   }
   const dem = Object.entries(chon.reduce((a, b) => (a[b.dich] = (a[b.dich] || 0) + b.y.length, a), {})).map(([k, v]) => `${TEN_BAI[k] || k}: ${v} câu`).join(' · ')
-  writeFileSync(ra, `<title>Hình 8T Thalès lô 1</title>
+  writeFileSync(ra, `<title>Hình 8T Thalès ${TEN_LO}</title>
 <meta name="description" content="Trang duyệt lô Hình–Học 8T chuyên đề Thalès (NĐT + TCHH): đề, hình vẽ lại, sơ đồ tư duy, lời giải, trang sách gốc.">
 <style>
 :root{--bg:#f5f3ee;--card:#fff;--fg:#1d2330;--muted:#5e6676;--line:#e2ddd0;--accent:#2f5d8c;--band:#e8f0fa;--warn:#a3561b;--warn-bg:#fbeee2}
@@ -246,8 +251,8 @@ main{max-width:900px;margin:0 auto}h1{font-size:24px;margin:0 0 6px}.sub{color:v
 .nghi{background:var(--warn-bg);color:var(--fg);border-radius:8px;padding:8px 12px;font-size:13.5px}.nghi b{color:var(--warn)}
 details{margin-top:8px}summary{cursor:pointer;color:var(--accent);font-size:13px}details img{max-width:100%;border:1px solid var(--line)}
 math{font-size:1.05em}
-</style><main><h1>Hình 8T — chuyên đề Thalès, lô 1</h1>
-<p class="sub">NĐT Hình I §3 (đường trung bình) + Hình III §1–2 (Thalès) · TCHH chuyên đề 5. ${dem}. Đã tự duyệt theo luật 8T; hình vẽ lại 100% bằng code. Mỗi thẻ: đề → hình → sơ đồ tư duy (câu chứng minh) → lời giải; bấm "Trang sách" để đối chiếu.</p>
+</style><main><h1>Hình 8T — chuyên đề Thalès, ${TEN_LO}</h1>
+<p class="sub">${gt('--nguon') || 'NĐT Hình I §3 (đường trung bình) + Hình III §1–2 (Thalès) · TCHH chuyên đề 5'}. ${dem}. Để riêng (không vào kho lô này): ${deSau.length} bài — xem các thẻ mờ cuối trang. Đã tự duyệt theo luật 8T; hình vẽ lại 100% bằng code. Mỗi thẻ: đề → hình → sơ đồ tư duy (câu chứng minh) → lời giải; bấm "Trang sách" để đối chiếu.</p>
 ${the.join('\n')}</main>`)
   console.log(`Trang duyệt: ${ra} (${the.length} thẻ, ${trang.size} trang sách)`)
 }

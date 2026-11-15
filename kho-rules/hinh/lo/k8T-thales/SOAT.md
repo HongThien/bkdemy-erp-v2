@@ -22,3 +22,11 @@ Luật script `nhap_lo.mjs` thêm khi soát: đáp án trả lời ngắn là m�
 **Đã ghi 14/11:** 59 câu (47 bài, 12 bài nhiều ý) — HH00127 Thalès 37 · HH00161 Đường trung bình 16 · HH00131 Mê-nê-la-uýt/Xê-va 4 · HH00162 Bổ đề hình thang 2;
 47 sơ đồ tư duy; 76 ảnh vẽ lại đã đẩy lên kho-anh; tự duyệt (8T). 5 bài DE_SAU (TCHH-5.1, 5.8, 5.15 · NĐT H3.18b, 18d) — lô Đồng dạng / Diện tích làm.
 Trang duyệt: `kho-rules/hinh/k8T-thales-lo1-duyet.html`. Bản nháp + script vẽ/kiểm của trạm: `drafts/`, `ve/`.
+
+## Lô 2 (15/11) — Thalès + đường trung bình, nguồn còn lại
+12 trạm Sonnet (G10–G21): TCHH CĐ3 phần II (VD1–10, Bài 1–45) · VHB2 §13–14 (VD31–35, BT 171–218) · VHB1 §2 (BT 14–20). Luật thêm: KHÔNG đồng dạng (Thùy 14/11); bài chỉ cần Tứ giác / tam giác lớp 7 ghi `KHAC`; bài trùng lô 1 ghi `TRUNG`.
+Phiên bị ngắt giữa chừng, 6 trạm mất bản nháp ⇒ resume bằng SendMessage; bản nháp ghi file sớm.
+Soát: Opus đọc mẫu sơ đồ + hình (G16, G20 bài 216…); cổng `nhap_lo.mjs --chi-kiem` 0 lỗi. Bỏ khỏi lô: TCHH-3.II.18 (ý b cực trị bằng Cô-si ⇒ chuyên đề Cực trị). Đáp án quan hệ ⇒ tự luận; căn thức giữ LaTeX `$…$`; "35 hoặc 10" ⇒ "35; 10".
+**Đã ghi:** 103 câu (79 bài): Thalès +70 · Đường trung bình +20 · Phân giác +9 · Bổ đề hình thang +3 · Mê-nê-la-uýt +1; 88 sơ đồ tư duy; 139 ảnh; tự duyệt.
+**Để riêng (43 khối, trong nháp):** DE_SAU (đồng dạng / diện tích / cực trị) · KHAC (tam giác lớp 7, hình chữ nhật…) · TRUNG · bài sách không lời giải.
+Trang xem: lô 2A (TCHH) https://claude.ai/artifact/KcLUMiACR1XoQkW1dk4GVa · lô 2B (VHB) https://claude.ai/artifact/6xej727EgonVfkBAEcfcb3.

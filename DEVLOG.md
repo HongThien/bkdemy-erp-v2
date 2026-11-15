@@ -80810,3 +80810,8 @@ Thùy nêu 4 việc, làm được 3:
   phình theo — đưa vào bài thử tải đợt 6.** Cách cắt: chưa tìm được công tắc tắt riêng postgres_changes trong tài liệu Supabase (Dashboard → Realtime → Settings chỉ thấy nói về
   giới hạn kết nối / kích thước pool); gỡ bảng khỏi publication không dừng được việc đọc. Bản gỡ ở PhienClaudeTab = dọn code vô dụng, vô hại, giữ nguyên.
   **Bài học:** trước khi dựng giả thuyết về một dịch vụ không vào được, thử `pg_stat_all_tables` / `pg_stat_activity` — đọc được với mọi role và đủ để bác bỏ trong 1 phút.
+
+## 15/11 — 8T Hình–Học lô 2: Thalès + đường trung bình (103 câu ghi DB)
+- Làm: Thùy "tập trung Thalès, đường trung bình trước", "không được phép có đồng dạng", "đẩy tiếp đi". 12 trạm Sonnet từ TCHH CĐ3 II, VHB2 §13–14, VHB1 §2; cổng `nhap_lo.mjs` chặn đồng dạng/diện tích/hệ thức lượng. Ghi 103 câu (Thalès +70 · Đường trung bình +20 · Phân giác +9 · Bổ đề hình thang +3 · Mê-nê-la-uýt +1), 88 sơ đồ tư duy, 139 ảnh, tự duyệt. Kho Thalès nay: 107 · 36 · 9 · 5 · 5 = 162 câu. 43 khối để riêng (DE_SAU/KHAC/TRUNG).
+- Sai/sửa: phiên bị ngắt giữa chừng — 6 trạm chưa kịp ghi file, resume bằng SendMessage (bản nháp phải ghi file sớm, brief đã dặn); trang duyệt 17 MB vượt trần Artifact 16 MB ⇒ thêm `--loc` tách trang theo nguồn (2A TCHH 4 MB, 2B VHB 13 MB). TCHH-3.II.18 bỏ (ý b cực trị).
+- Việc kế: bài thiếu lý thuyết + ví dụ (Thalès, Đường trung bình, Phân giác, Bổ đề, Mê-nê-la-uýt) · chuyển ví dụ sách vào kho trên lớp (`--lop giang`) · lô Đồng dạng · lô Tứ giác (các bài KHAC).
