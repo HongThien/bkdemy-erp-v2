@@ -80935,3 +80935,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   (3) `fn_hs_album` (cộng dồn tb 2,8 s × 44 lượt) tính lại huy hiệu từng tháng của cả mùa mỗi lượt mở — đúng ca K6 đã ghi trong spec, chưa làm.
 - Số pss ở trên là CỘNG DỒN từ lần reset thống kê gần nhất, có cả giai đoạn trước các đợt tối ưu 13–15/11 ⇒ chỉ để xếp thứ tự, không phải số hiện tại.
 - `spec-kien-truc.md` K25: thay "chưa soát" bằng kết quả soát. Thân 16 hàm chỉ nằm ở scratchpad phiên (`k25/*.sql`), lấy lại bằng `pg_get_functiondef`.
+
+## 14/11/2026 — 2 bài ĐTB vào Hình–Học K8 (HH00143)
+- **Thùy:** ảnh 2 bài (HCN + BH⊥AC, I/M/K trung điểm · tam giác cân + HI⊥AC, K/E trung điểm) — "Giải và đưa 2 bài này vào kho bài tập Hình học: Chứng minh đường trung bình".
+- **Làm:** `kho-rules/hinh/lo/k8-dtb-2bai/` (ve.mjs vẽ hình bằng code, du-lieu.mjs lời giải, nhap.mjs) ⇒ HHB000879 (HHC016797-98) + HHB000880 (HHC016799-800) trong HH00143, mô hình bài–ý, da_duyet=false. Hình đề = hình lời giải (1 hình/bài).
+- **Cách giải:** cả 4 ý đều về đường trung bình + TRỰC TÂM: b1 M là trực tâm △IBC ⇒ CM⊥BI, mà IK∥CM; b2 K là trực tâm △AHE ⇒ AK⊥HE, mà HE∥BI (ĐTB △BIC). Kiểm 500 bộ toạ độ ngẫu nhiên: 8/8 khẳng định đúng hết.
+- **Chưa chắc:** Thùy nói "Chứng minh đường trung bình" — có 2 bài tên gần giống (HH00143 Đường trung bình của Tam giác · HH00151 Chứng minh Trung điểm ứng dụng ĐTB). Chọn HH00143 vì không ý nào yêu cầu chứng minh một điểm là trung điểm.
