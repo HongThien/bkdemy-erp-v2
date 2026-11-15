@@ -1,226 +1,84 @@
 ---
-description: Quét folder Drive-sync, trích câu từ đề (có/không lời giải), INSERT vào kho với da_duyet=false
+description: Quét folder Drive-sync, trích câu từ tài liệu, giải theo spec-giai-bai.md, INSERT vào kho
 argument-hint: <co_giai|khong_giai>
 ---
 
 # /nhap-kho — Nhập kho câu từ folder Drive-sync
 
-`$ARGUMENTS` = `co_giai` (luồng A, có lời giải sẵn) hoặc `khong_giai` (luồng B, chỉ có đề).
+`$ARGUMENTS` = `co_giai` (tài liệu có lời giải) hoặc `khong_giai` (chỉ có đề).
 
-## ⭐ SÁCH THAM KHẢO — VÍ DỤ vào KHO TRÊN LỚP, BÀI TẬP vào KHO VỀ NHÀ (Thùy 27/10, mọi khối)
+**LUẬT: `spec-giai-bai.md` — đọc Phần A + mục khối ở Phần B + Phần C TRƯỚC khi làm.** File này chỉ là THAO TÁC MÁY. Lệch nhau ⇒ spec đúng.
+Hai luồng giống nhau ở mọi trạm (phân dạng trước · Sonnet giải · Opus kiểm · điều kiện vào kho §C6); khác duy nhất: `co_giai` thì lời giải in kèm là
+nhân chứng (spec §A4 — vẫn tự giải trước). Sách tham khảo: ví dụ → kho trên lớp, bài tập → kho về nhà (spec §A9).
+Đề thi / đề cương ⇒ dùng `/nhap-de-thi` (lưu cả cấu trúc đề).
 
-Tài liệu là sách tham khảo (có phần ví dụ mẫu + phần bài tập): **ví dụ hướng dẫn** ⇒ kho TRÊN LỚP (`dai_cau_lop`, gắn dạng bài mới, vai `giang`, qua `fn_dai_lop_them`), **bài tập** ⇒ kho VỀ NHÀ (kho câu luyện như các mục dưới). Không nhập ví dụ vào kho câu luyện. Khối/nhánh chưa có kho trên lớp ⇒ để riêng ví dụ, báo Thùy. Chi tiết: `kho-rules/README.md` §3.
-
-## ⭐ BẢN ĐỒ MỚI — Toán Đại/HGT khối K6–12 (Thùy 26/10 "chuyển hẳn sang bản đồ + kho mới") — ĐÈ các mục về dạng bên dưới
-
-Khối nào chạy bản đồ mới: DB quyết — `select public._bdm_ds_khoi_chay()` (hiện 6–12). **Cấp 1 (3/4/4T/5/5T), KHTN, Hình: giữ y như các mục bên dưới.**
-Luật đầy đủ nằm ở đầu `scripts/_kho_insert.mjs` (engine chung — script TỰ áp, không cần nhớ cờ):
-
-- **Không ghi mã dạng cũ.** Câu luôn vào dạng chờ của khối (`"khoi": "8"`, không `dang_chinh`). Lỡ truyền mã cũ ⇒ script đổi sang dạng chờ + cảnh báo (mã cũ giữ ở `dang_ai_de_xuat`).
-- **Dạng = DẠNG BÀI** (mã `NDB…`) ghi ở field **`dang_bai`** ⇒ script tạo **ĐỀ XUẤT** `<kho>_bdm_de_xuat` (nguon 'ai') chờ người duyệt — luật "đề xuất trước, ghi sau".
-  Kèm `dang_bai_chac` ('cao' | 'vua') + `dang_bai_ly_do`. **Chỉ khi người đã chốt trong chat** mới thêm `"dang_bai_chot": true` (ghi thẳng gán nguon 'nguoi').
-  Không chắc ⇒ bỏ `dang_bai` (câu chưa phân dạng, §1.5). Dạng bài phải cùng nhánh với kho (Đại ↔ HGT) — script kiểm.
-- **Đọc bản đồ mới**: `select ma_dang, ten_chu_de, ten_chuyen_de, ten_nhom, ten_dang from bdm_ban_do where khoi='12' and nhanh_bdm='toan' order by thu_tu_chu_de, thu_tu_chuyen_de, thu_tu_nhom, thu_tu_dang` (`nhanh_bdm='hgt'` cho kho HGT). Luật "Dạng sau thắng" vẫn áp.
-- **Câu Đúng/Sai**: KHÔNG gán dạng (cả câu lẫn từng ý — Thùy 26/10). Ghi field **`chu_de`** (mã `NCD…`, `select id, ten from dai_bdm_chu_de where khoi=… and nhanh=…`) ⇒ kho Đ/S của chủ đề `<kho>_bdm_kho_ds`; mệnh đề bỏ `ma_dang`.
-- **Mã câu** = dạng chờ + STT do script/DB cấp (cùng luật & khoá với màn Nhập kho `fn_bdm_nhap_cau`) — vẫn KHÔNG truyền `ma_cau`.
-- Output `insert` có thêm `bdm: { khoi, de_xuat, gan, kho_ds, doi_dang_cu }` — báo CEO số đề xuất / chủ đề Đ/S.
-- **Chạy khô**: `node scripts/nhap_kho.mjs insert --subject dai --json <f> --thu` (ROLLBACK, không ghi). Kiểm engine: `node scripts/_test_kho_insert_bdm.mjs`.
-
-## Nguyên tắc bất di
-
-1. **KHÔNG tự giải luồng A.** Có lời giải sẵn ⇒ trích nguyên văn, không diễn giải, không "sửa cho gọn".
-2. **KHÔNG thả DOCX MathType** (WMF câm). Chỉ Read PDF (`pages=1-N`, max 20 trang/lần).
-3. **`ma_cau` do script cấp tự động** theo convention `<dang_chinh> + lpad(STT, 3, '0')`. **KHÔNG truyền trong JSON**.
-4. **`dang_ai_de_xuat = dang_chinh`** (script tự set). Người duyệt đổi `dang_chinh` sau nếu Claude gán sai; `dang_ai_de_xuat` giữ vết bản gốc → đo được precision AI.
-5. **`da_duyet = false`.** Duyệt do người ở màn "Duyệt câu" (`DuyetCauTab`).
-6. **Thà bỏ trống còn hơn đánh sai** (§1.5 CLAUDE.md). Không chắc 100% `dang_chinh` → **KHÔNG đoán bừa**, đưa câu vào **DẠNG CHỜ "Chưa phân dạng"** (CEO 13/09): để `"dang_chinh": null` (hoặc bỏ field) và ghi `"khoi": "12"` → script tự gán `dang_chinh = <prefix><khoi>000000` (`T312000000`). Mệnh đề ĐS không chắc dạng: bỏ `ma_dang`, câu cha phải có `khoi`. Câu vào kho `da_duyet=false`, hiện ở màn Duyệt › tab **"Chưa phân dạng"**; DB chặn duyệt tới khi người chọn dạng thật. **Chỉ `fail` file** khi cả file không đọc được / không có lời giải.
-6b. **Lọc trùng tự động**: script so khoá `noi_dung + lua_chon + menh_de` (lower + bỏ khoảng trắng; chỉ so đề thì TN cùng đề khác phương án bị bắt nhầm) với kho và trong cùng lô → câu trùng **KHÔNG insert**, output `trung: [{idx, ma_cau_cu}]`, `ma_cau_list[idx]` = mã câu cũ. Báo CEO số câu trùng. CEO cố ý nhập bản thứ 2 ⇒ `--cho-trung`.
-7. **Batch nhỏ 5–10 câu/insert.** ROLLBACK cả lô nếu 1 câu lỗi — batch nhỏ đau ít.
-8. **1 file = 1 lượt done.** Log ma_cau_list đủ, move đúng ngày. Fail giữa chừng ⇒ `fail` để log; file ở nguyên chỗ, chạy lại.
-
-## Flow
-
-### Bước 1: `list`
+## Bước 1 — `list`
 
 ```bash
 node scripts/nhap_kho.mjs list --mode $ARGUMENTS
 ```
 
-Nhận JSON `{ mode, root, files: [...] }`. Mỗi `files[i]` có: `path, name, khoi_folder, size_bytes, sha256, seen_before, prev_log?`.
+JSON `{ mode, root, files:[{ path, name, khoi_folder, size_bytes, sha256, seen_before, prev_log? }] }`.
+`seen_before=true` có `prev_log.so_cau_moi > 0` ⇒ bỏ qua. Chỉ có `prev_log.loi` ⇒ chạy lại được.
 
-Với mỗi file `seen_before=true` **có `prev_log.so_cau_moi > 0`** ⇒ **BỎ QUA** (đã nhập rồi). Nếu `seen_before=true` chỉ có `prev_log.loi` (fail cũ) ⇒ **CÓ THỂ chạy lại** (CEO chắc đã sửa file).
+## Bước 2 — Đọc
 
-### Bước 2: mỗi file — quyết subject + đọc PDF
+- Kho theo nội dung: `dai` (đại số, giải tích, xác suất…) · `hgt` (lượng giác, vectơ, toạ độ) · `hinh_hoc` (hình phẳng THCS, hình không gian) · `khtn`. Không rõ ⇒ `fail` file `error="chua_ro_subject"`, hỏi.
+- Word MathType: `scripts/kho/mathtype-thu/doc-docx.mjs` · Word OMML: `scripts/docx-doc.mjs` · PDF: Read tool `pages=…` (≤ 20 trang/lần) hoặc `scripts/kho/de-thi/boc-pdf.mjs`.
+- Hình cần để giải: `node scripts/kho_anh.mjs cat --pdf "<file>" --page <N> --bbox x0,y0,x1,y1 --out <png>` → Read PNG kiểm → `node scripts/kho_anh.mjs up --png <png> --ten <tên>` ⇒ `anh_de` (hình lời giải ⇒ `anh_dap_an`).
 
-Subject dispatch theo tên file + nội dung câu:
+## Bước 3 — Phân dạng + giải + kiểm theo spec Phần C
 
-| Tín hiệu | Subject | Bảng |
-|---|---|---|
-| `Ch5` L12 = mặt phẳng, `Hinh`, `HGT`, các bài hình học phẳng/không gian | `hgt` | `hgt_cau_hoi` + `hgt_ban_do` |
-| Đại số, phương trình, hàm số, dãy số, thống kê, xác suất | `dai` | `dai_cau_hoi` + `dai_ban_do` |
-| Lý, Hoá, Sinh | `khtn` | `khtn_cau_hoi` + `khtn_ban_do` |
+Đọc bản đồ của khối ngay đầu lượt (khối chạy bản đồ mới: `select public._bdm_ds_khoi_chay()`):
 
-**Không rõ ⇒ fail file với `error="chua_ro_subject"`, hỏi CEO.**
-
-Read PDF: `Read` tool với `pages="1-20"` (nếu PDF > 20 trang thì đọc theo range). Vision đọc math trực tiếp, không OCR.
-
-### Bước 2b: HÌNH VẼ — cắt từ PDF, upload, gắn `anh_de` (CEO 13/09: "không thấy câu nào có hình")
-
-Câu mà đề **cần hình mới giải được** (hình chóp/lăng trụ có ký hiệu trên hình, "gắn hệ trục như hình vẽ", đồ thị, bảng biến thiên) **KHÔNG bỏ nữa** — cắt hình và gắn vào câu:
-1. Nhìn trang PDF (ảnh ~827×1169), ước lượng khung hình theo **tỷ lệ trang** `x0,y0,x1,y1` (0..1, gốc trên-trái), chừa mép ~2%.
-2. `node scripts/kho_anh.mjs cat --pdf "<file>" --page <N> --bbox 0.33,0.55,0.72,0.82 --out <scratchpad>/h_<tên>.png` → **Read PNG kiểm tra** (thiếu nhãn/đứt cạnh ⇒ nới bbox, chạy lại).
-3. `node scripts/kho_anh.mjs up --png <png> --ten <tên>` → `{url}` (bucket `kho-anh/nhap_kho/<YYYY-MM>/…`, dùng `SUPABASE_SERVICE_ROLE` trong `.env.local`; anon key bị RLS chặn). Hoặc `anh` = cat + up một lệnh.
-4. Đưa URL vào JSON câu: `"anh_de": "<url>"` (hình trong LỜI GIẢI ⇒ `"anh_dap_an"`). Câu hình chỉ minh hoạ (chữ đủ giải) ⇒ không bắt buộc, nhưng có thì tốt.
-
-### Bước 3.0: đọc BÀI HỌC ĐỔI DẠNG trước khi gán (CEO 13/09)
-
-**Query bản đồ NGAY TRƯỚC lúc gán dạng của MỖI lô, không dùng danh sách lấy đầu phiên.** 13/09: bản đồ K12 thêm 702–706/901–902/109 lúc 12:00–12:26, tôi nhập 4 file lúc 12:31–12:56 bằng danh sách cũ ⇒ ~60 câu + 36 mệnh đề lệch dạng, CEO duyệt kế thừa luôn, phải chuyển lại tay.
-
-```bash
-node scripts/kho_doi_dang.mjs --subject hgt --khoi 12
+```sql
+select ma_dang, ten_chu_de, ten_chuyen_de, ten_nhom, ten_dang from bdm_ban_do
+where khoi='<khối>' and nhanh_bdm='toan' order by thu_tu_chu_de, thu_tu_chuyen_de, thu_tu_nhom, thu_tu_dang;   -- 'hgt' cho kho HGT
 ```
-In các cặp `dạng cũ → dạng mới` người duyệt đã sửa (bảng `kho_doi_dang_log`, trigger tự ghi khi `dang_chinh` đổi) kèm 3 ví dụ đề. Đề lô mới **giống ví dụ đã bị sửa ⇒ gán thẳng dạng MỚI**, không lặp lỗi cũ. Cặp có `(dạng không còn)` = renumber bản đồ, không phải lỗi gán.
 
-### Bước 3: gán `dang_chinh` — quy trình chống đoán bừa
-
-1. Query bản đồ theo khối để lấy dạng ứng viên (không có psql trên Windows — viết 1 node one-off vào scratchpad):
-   ```js
-   // scratchpad/_bd.mjs
-   import pg from 'pg'; import fs from 'node:fs';
-   const env = Object.fromEntries(fs.readFileSync('.env','utf8').split(/\r?\n/).filter(l=>l&&!l.startsWith('#')&&l.includes('=')).map(l=>{const i=l.indexOf('=');return [l.slice(0,i).trim(), l.slice(i+1).trim()];}));
-   const c = new pg.Client({connectionString: env.DATABASE_URL_RO || env.DATABASE_URL});
-   await c.connect();
-   const r = await c.query(`select ma_dang, ma_chu_de, ten_dang from hgt_ban_do where khoi=$1 order by ma_dang`, ['12']);
-   r.rows.forEach(x => console.log(x.ma_dang, '|', x.ma_chu_de, '|', x.ten_dang));
-   await c.end();
-   ```
-   Đặt file trong repo (scripts/ tạm) rồi `node scripts/_bd.mjs`; xoá sau khi xong.
-
-2. Đọc `ten_dang` + so với đề: match ≥ 80% ⇒ gán. Match mập mờ ⇒ **để trống câu đó, insert các câu chắc trước; câu mập mờ → log riêng ở stderr, KHÔNG INSERT**.
-
-### Bước 4: build JSON câu
-
-Format 1 câu (theo memory `nhap-cau-hgt-tu-pdf.md`):
+## Bước 4 — JSON câu
 
 ```json
 {
-  "dang_chinh": "T312010107",
-  "loai_cau": "trac_nghiem",       // trac_nghiem | dung_sai | tra_loi_ngan
-  "noi_dung": "Cho ... $\\vec{a}=(1,2,3)$ ...",
-  "lua_chon": ["$A. ...$.", "$B. ...$.", "$C. ...$.", "$D. ...$."],   // trac_nghiem
-  "dap_an": "A",                    // trac_nghiem: 'A'/'B'/'C'/'D' (KHÔNG bọc $); tra_loi_ngan số đơn giản: '12,5' (KHÔNG bọc $)
-  // tra_loi_ngan mà đáp án là BIỂU THỨC LaTeX (phân số/căn/…) ⇒ BẮT BUỘC bọc "$…$" — vd "$\\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$".
-  // Lý do (CEO 14/09, phát hiện 55 câu K9 hiện vỡ): MathText chỉ auto-katex chữ TRẦN khi lệnh có ngoặc KHÔNG LỒNG
-  // ("\dfrac{23}{3}" ok trần) — "\dfrac{\sqrt{x}}{\sqrt{x}-2}" có \sqrt{x} LỒNG trong đối số ⇒ regex fallback đứt giữa
-  // chừng, hiện vỡ/thiếu nếu để trần. Bọc $ luôn cho chắc, không phải đoán khi nào cần.
-  "loi_giai": "Ta có $\\vec{a} \\cdot \\vec{b} = ...$ ...",
-  "anh_de": null,
-  "anh_dap_an": null,
-  "ma_cum": null,
-  "ten_de_goc": "NBV_L12_Ch5_F",
-  "nguon": "de_thi",
-  "nguon_giai": "nguoi"
+  "khoi": "8", "loai_cau": "trac_nghiem",
+  "noi_dung": "…", "lua_chon": ["$A. …$.", "$B. …$.", "$C. …$.", "$D. …$."], "dap_an": "A",
+  "loi_giai": "…", "anh_de": null, "anh_dap_an": null,
+  "dang_bai": "NDB…", "dang_bai_chac": "cao", "dang_bai_ly_do": "…",
+  "ten_de_goc": "…", "nguon": "…", "nguon_giai": "ai", "giai_method": "claude_code", "ai_model": "claude-sonnet-5-5"
 }
 ```
 
-### Câu ĐÚNG-SAI (loai_cau='dung_sai') — format KHÁC
+- Không truyền `ma_cau` (script cấp) và không truyền mã dạng cũ `dang_chinh` với khối bản đồ mới. Không chắc dạng ⇒ bỏ `dang_bai` (câu vào dạng chờ của khối).
+- `dap_an` trắc nghiệm: `A`–`D`, không bọc `$`. Trả lời ngắn là biểu thức ⇒ bọc `$…$`.
+- Câu Đúng/Sai: không `dap_an`, `lua_chon`; có `menh_de: [{noi_dung, dap_an:"D"|"S", loi_giai}]` + `chu_de: "NCD…"`; mệnh đề không mang dạng.
+- Câu có cờ chưa chắc: thêm `"kiem_may_nghi": "<lý do>"` ⇒ vào hàng duyệt trưởng khối.
+- Ghi JSON ra scratchpad `nhap_kho_<sha8>.json` bằng Write tool.
 
-**Model:** 1 câu ĐS có N mệnh đề (thường 4), MỖI mệnh đề là 1 DẠNG bài RIÊNG. Bảng con
-`<mon>_cau_menh_de` (mig 202609121432) capture điều này qua trigger tự sync từ jsonb.
-Câu ĐS có **`dang_chinh` = dạng đại diện của chuyên đề nhà** (giữ convention hiện tại
-của `createCauDungSai` — [src/lib/kho/api.ts:415](src/lib/kho/api.ts:415)), KHÔNG null.
-
-**KHTN chưa hỗ trợ câu ĐS** — script `_kho_insert.mjs` sẽ refuse. Chờ tách Lý/Hoá/Sinh
-(memory `[doi-xung-cap-mon-vs-nhanh]`).
-
-```json
-{
-  "dang_chinh": "T312010101",       // dạng đại diện chuyên đề nhà (câu cha)
-  "loai_cau": "dung_sai",
-  "noi_dung": "Cho hàm số $f(x)=x^3-3x+1$. Xét các mệnh đề sau:",
-  "menh_de": [
-    {"ma_dang": "T112010502", "noi_dung": "$f'(x)=3x^2-3$.", "dap_an": "D", "loi_giai": "..."},
-    {"ma_dang": "T112010101", "noi_dung": "$f$ đồng biến trên $(-\\infty;-1)$.", "dap_an": "D", "loi_giai": "..."},
-    {"ma_dang": "T112010401", "noi_dung": "GTLN của $f$ trên $[-2;2]$ bằng $3$.", "dap_an": "S", "loi_giai": "..."},
-    {"ma_dang": "T112020104", "noi_dung": "PT $f(x)=0$ có $3$ nghiệm phân biệt.", "dap_an": "D", "loi_giai": "..."}
-  ],
-  "loi_giai": null,                 // câu cha thường không cần (giải nằm ở mỗi mệnh đề)
-  "ten_de_goc": "NBV_L12_Ch5_F",
-  "nguon": "de_thi"
-}
-```
-
-**KHÔNG có `dap_an`, `lua_chon` cho câu ĐS** (mỗi mệnh đề có `dap_an` D/S riêng).
-
-**Trigger DB tự động:** sau INSERT câu cha, `trg_sync_menh_de` đọc jsonb `menh_de` → insert
-bảng con `<mon>_cau_menh_de` với FK cứng tới bản đồ. Mệnh đề có `ma_dang` không hợp lệ
-(sau renumber) sẽ bị **skip silently** — bảng con có gap thu_tu, UI Duyệt sẽ hiển thị
-"mệnh đề X chưa gán dạng". Đây là behavior mong muốn (không fail cứng INSERT câu cha).
-
-**LaTeX convention** (KaTeX renderer): inline `$…$`, `\dfrac`, `\vec{...}`, `\sqrt{...}`, `\begin{cases}...\end{cases}`, `\Rightarrow`, `\Leftrightarrow`. **KHÔNG** dùng `\(...\)`. Kết thúc mỗi phương án `A/B/C/D` bằng `.` cuối, **KHÔNG** tiền tố `A.`/`B.` (đã có KaTeX render trong `$…$`, xem sample: `"$A. \\dfrac{1}{2}.$"` — dấu `A.` NẰM TRONG `$…$`).
-
-Ghi ra file tạm scratchpad: `<scratchpad>/nhap_kho_<sha8>.json`.
-
-### Bước 5: `insert`
+## Bước 5 — `insert` (chạy thử trước)
 
 ```bash
-node scripts/nhap_kho.mjs insert --subject <hgt|dai|khtn> --json <scratchpad>/nhap_kho_<sha8>.json
+node scripts/nhap_kho.mjs insert --subject <dai|hgt|khtn> --json <f> --thu     # ROLLBACK
+node scripts/nhap_kho.mjs insert --subject <dai|hgt|khtn> --json <f>
 ```
 
-Nhận JSON `{ ok: true, ma_cau_list: [...], inserted: N }`. Ghi `ma_cau_list` ra `<scratchpad>/nhap_kho_<sha8>_ids.json`.
+Lô 5–10 câu/lần (một câu lỗi ⇒ rollback cả lô). Trùng kho ⇒ không insert, `ma_cau_list[idx]` = mã câu cũ (`--cho-trung` chỉ khi cố ý nhập bản thứ hai).
+Ghi `ma_cau_list` ra `nhap_kho_<sha8>_ids.json`. `ok:false` ⇒ đọc `error`, sửa, chạy lại; chưa insert OK thì chưa `done`.
 
-Nếu `ok:false` ⇒ đọc `error`, sửa (thường là dạng sai hoặc thiếu cột), chạy lại. **Đừng move file cho tới khi insert OK.**
-
-### Bước 6: `done`
+## Bước 6 — `done`
 
 ```bash
-node scripts/nhap_kho.mjs done \
-  --file "<path>" \
-  --mode $ARGUMENTS \
-  --sha <sha256> \
-  --subject <hgt|dai|khtn> \
-  --ma_cau_json <scratchpad>/nhap_kho_<sha8>_ids.json
+node scripts/nhap_kho.mjs done --file "<path>" --mode $ARGUMENTS --sha <sha256> --subject <…> --ma_cau_json <ids.json>
 ```
 
-Script sẽ:
-1. Verify sha256 file khớp (chống có ai sửa file giữa chừng).
-2. INSERT `nhap_kho_log`.
-3. Move file → `<root>/DaXuLy/<YYYY-MM-DD>/<name>`.
+Kiểm sha256 · ghi `nhap_kho_log` · dời file sang `<root>/DaXuLy/<YYYY-MM-DD>/`.
 
-### Bước 7: báo cáo
+## Lỗi thường gặp
 
-Sau khi quét hết:
-- N file đã xử lý — mỗi file: subject, số câu, list `ma_cau` (5 đầu + `... và K câu nữa`).
-- Q file skip (đã có trong log).
-- F file fail — kèm lý do.
-- Nhắc CEO mở màn **"Duyệt câu"** (`DuyetCauTab`) để duyệt lô mới.
-
-## Nếu `$ARGUMENTS = khong_giai` (luồng B)
-
-Bước 4 khác: KHÔNG có lời giải sẵn. Claude phải tự giải + verify (spec `spec-giai-bai-ai.md`).
-
-Set:
-- `loi_giai` = lời giải Claude tự viết
-- `nguon_giai` = `"ai"`
-- `giai_method` = `"ai_extract_solve"` (thêm vào JSON)
-- `ai_model` = `"claude-opus-4-7"` (thêm vào JSON)
-- Câu nhiều ý: dùng lại kết quả ý trước, không chứng minh lại từ đầu.
-
-**Verify trước khi INSERT** — 1 câu mà sai sẽ nhân lên nhiều HS ⇒ luồng B nếu chưa chắc chắn 100% ⇒ fail file, để worktree `builder-hgt` / worker `hangdoi-giai` xử.
-
-## Xử lý lỗi thường gặp
-
-| Lỗi | Nguyên nhân | Xử |
-|---|---|---|
-| `dang_chinh không có trong <mon>_ban_do` | Gán sai code dạng | Query lại bản đồ, sửa JSON, chạy lại. Không chắc dạng ⇒ `dang_chinh: null` + `khoi` (dạng chờ), KHÔNG đoán |
-| `thiếu dang_chinh — muốn đưa vào "Chưa phân dạng" thì phải ghi "khoi"` | Câu không dạng nhưng thiếu `khoi` | Thêm `"khoi": "<khối>"` vào câu đó |
-| Output `trung` không rỗng | Câu đã có trong kho / lặp trong lô | Bình thường — câu đó KHÔNG insert, `ma_cau_list[idx]` = mã cũ. Báo CEO; cố ý nhập bản 2 ⇒ `--cho-trung` |
-| `duplicate key value violates unique constraint "*_pkey"` | STT collision (race) | Chạy lại — advisory lock trong script sẽ chờ |
-| `sha256 file hiện tại (...) khác sha truyền vào` | Ai đó sửa file giữa `list` và `done` | Chạy lại từ `list` để lấy sha mới |
-| Read PDF trả về "cannot read encrypted" | PDF khoá | `fail` với `error="pdf_encrypted"` |
-| `done` trả `moved:false` + `canh_bao` EBUSY | File bị khoá (Google Drive đang sync `E:\BK ACADEMY`, hoặc PDF đang mở) | Script đã retry 3× rồi **vẫn ghi log** (kèm `CHUA_MOVE`) — dedup theo sha nên lần sau `list` không bóc lại. Báo CEO kéo tay file sang `DaXuLy/<ngày>/`. KHÔNG chạy `done` lại (sẽ thêm 1 dòng log trùng). |
-| Insert OK nhưng `done` lỗi DB (không phải EBUSY) | Log chưa ghi | File có thể đã move (move trước log). Kiểm `moved_to` trong output; chạy `done` lại với `--file` là đường dẫn MỚI nếu đã move. |
-
-## Chạy thử tay 1 file trước khi bulk
-
-Đợt đầu (chưa quen): CEO thả 1 file mẫu vào `L7/`, gõ `/nhap-kho co_giai`. Xong đọc log stderr + query `select * from hgt_cau_hoi where ten_de_goc='<basename>' limit 3` để soi format. OK rồi mới thả bulk.
+| Lỗi | Xử |
+|---|---|
+| `thiếu dang_chinh — … phải ghi "khoi"` | Thêm `"khoi"` |
+| `duplicate key … _pkey` | Chạy lại (advisory lock chờ) |
+| `sha256 file hiện tại khác sha truyền vào` | Chạy lại từ `list` |
+| PDF khoá | `fail` với `error="pdf_encrypted"` |
+| `done` trả `moved:false` + EBUSY | Log đã ghi (kèm `CHUA_MOVE`); báo người kéo tay file sang `DaXuLy/<ngày>/`, **không** chạy `done` lại |
+| Insert OK nhưng `done` lỗi DB | Kiểm `moved_to`; chạy `done` lại với đường dẫn mới nếu đã dời |

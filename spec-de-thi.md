@@ -2,6 +2,7 @@
 
 > CEO chốt đích 20/09/2026 (phiên hỏi–đáp 9 câu). Bản này là spec build; paste-ready sang Notion » ERP V2.
 > Trạng thái: CEO chốt đích 20–22/09; 27/09 CEO "làm đi thôi" ⇒ build P2 (Duyệt đề) + P3 (thi trên lớp) theo §9. P4 (tự luyện) chưa làm.
+> **⚠ 15/11 (Thùy): mọi luật GIẢI · đáp án · gán dạng · duyệt câu của đề thi nằm ở `spec-giai-bai.md`** (thay các dòng "không tự giải", "người đánh đáp án", "Duyệt đề duyệt mọi câu" bên dưới). File này chỉ còn là spec cấu trúc đề + luồng thi.
 
 ---
 
@@ -305,7 +306,8 @@ Số lượng không lớn ⇒ chạy **có người ngồi cùng** là đủ; c
 - Người dùng màn duyệt: **CEO + học thuật** (vài người quen việc) ⇒ ưu tiên nhanh, đủ thông tin; không cần hướng dẫn từng bước.
 - **Dạng:** Claude đề xuất lúc nhập (ghi `dang_chinh` + `dang_ai_de_xuat`), **người chốt ở màn Duyệt đề**. Bản đồ do CEO tự xây; dạng chưa có ⇒ dạng chờ, đề vẫn vào.
 - **Đáp án:** lấy từ file (gạch chân / "Chọn X" / "a) Đúng." / bảng đáp án / file đáp án riêng). Hai dấu hiệu lệch nhau ⇒ nêu cờ cho người duyệt
-  (đo 28/09: 4/253 câu file gốc tự mâu thuẫn, gạch chân đúng — `scripts/kho/mathtype-thu/README.md`). File không có đáp án ⇒ để trống, người đánh. **Không tự giải.**
+  (đo 28/09: 4/253 câu file gốc tự mâu thuẫn, gạch chân đúng — `scripts/kho/mathtype-thu/README.md`). ~~File không có đáp án ⇒ để trống, người đánh. **Không tự giải.**~~
+  **THAY 15/11 (Thùy): giải / đáp án / dạng / điều kiện vào kho theo `spec-giai-bai.md`** — mọi câu tự giải (đáp án in kèm là nhân chứng), file này chỉ còn là spec CẤU TRÚC đề + luồng thi.
 - **Hình:** lấy ảnh từ file gốc (Word: ảnh nhúng; PDF: cắt trang). Vẽ lại để sau.
 
 ### 10.3 Luồng

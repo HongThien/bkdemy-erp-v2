@@ -43,6 +43,14 @@ batch (đo trùng kho sau khi bóc) sẽ bắt, câu trùng tự trỏ về câu
 Cỡ batch: Word ≤ ~280 câu · PDF đề thi ≤ 20 bài · PDF đề cương ≤ 10 bài. Số câu PDF chỉ biết sau khi bóc —
 bóc xong mà batch > 300 câu thì tách thành `a`/`b`, mỗi nửa báo cáo riêng.
 
+## 2–3. ~~Một batch đi qua 7 bước · báo cáo sau mỗi batch~~ — THAY 15/11 (Thùy)
+
+**Quy trình, luật, điều kiện vào kho: `spec-giai-bai.md` Phần C** (8 trạm · phân dạng trước · Sonnet giải, Opus kiểm một phần · câu đủ 4 điều kiện tự vào kho,
+chưa chắc → trưởng khối · không HTML duyệt, không chờ "ghi" · lô mẫu một lần mỗi khối × loại kì). Brief batch: `ghep-brief.mjs <BATCH> <khối>` (cắt từ spec).
+**Tình trạng: `TINH-TRANG.md`** (`tinh-trang.mjs`, chạy lại sau mỗi việc). Phần dưới đây giữ làm lịch sử, không làm theo.
+
+<details><summary>Bản cũ 12/11</summary>
+
 ## 2. Một batch đi qua 7 bước — xong batch này mới mở batch sau
 
 | # | Bước | Ai/công cụ | Ra |
@@ -78,6 +86,8 @@ Luật áp ở mọi batch:
 Sau **B001 (batch thử)** dừng lại báo: tỉ lệ khớp, tỉ lệ trùng, thời gian/batch ⇒ Thùy quyết nhịp
 (1 batch/lượt hay gộp 2–3) và có cần chỉnh brief không, rồi mới sang B002.
 B001 = 16 đề thi cuối kì K9 dạng PDF ⇒ đo luôn cả khâu bóc Gemini và tách câu Hình (vào `hinh_hoc_*`) — hai khâu chặng 1 dùng nhiều nhất.
+
+</details>
 
 ## 4. Việc còn treo, không nằm trong batch
 

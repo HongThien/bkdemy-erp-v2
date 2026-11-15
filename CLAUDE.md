@@ -328,9 +328,11 @@
   (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.
 - **`spec-lunar-cherry.md` — ĐỌC BẮT BUỘC trước khi sửa game gia đình Lunar Cherry** (BKGame/LunarCherry, repo riêng): Toán + Tiếng Anh (12 đảo, 6 chế độ theo kỹ năng, nói = máy nghe chấm rộng, kéo thả = nhìn rồi kéo, sticker, truyện, Thỏ Talking Tom), deploy Vercel, luật commit email.
 - `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
-- **`spec-giai-bai-ai.md` — ĐỌC BẮT BUỘC trước khi chạy "quét/giải câu chưa có đáp án" bằng AI**
-  (Đại/KHTN/HGT/Hình). Rule quan trọng nhất: bài nhiều ý phải dùng lại kết quả ý trước, không chứng
-  minh lại từ đầu; cách xử lý khi `gia_thiet_rieng` mâu thuẫn hình vẽ; verify trước khi ghi DB.
+- **⭐⭐ `spec-giai-bai.md` — LUẬT DUY NHẤT cho MỌI việc đưa tài liệu vào kho: phân dạng · giải · kiểm · ghi (Thùy chốt 15/11, thay toàn bộ luật cũ).**
+  ĐỌC TRƯỚC khi giải / nhập bài / giải đề cho BẤT KỲ khối, phần kiến thức nào (Đại · Hình · Hình giải tích), kể cả lệnh `/nhap-kho`, `/nhap-de-thi`.
+  Phần A luật chung · Phần B luật từng khối × phần kiến thức · Phần C dây chuyền (phân dạng TRƯỚC rồi giải · Sonnet giải, Opus kiểm một phần ·
+  câu đủ 4 điều kiện tự vào kho, câu chưa chắc về trưởng khối · lô mẫu một lần mỗi khối × loại kì · sổ tình trạng toanmath `TINH-TRANG.md` cập nhật sau mỗi việc) ·
+  Phần D sổ sai lầm hậu kiểm. **Luật mới, sai lầm mới chỉ ghi vào file này**, không mở file luật thứ hai, không viết brief luật theo lô.
 - `spec-kho-chuan.md` — KHO CHUẨN (CEO chốt 09/09): 1 cửa duyệt câu hợp nhất, "vào kho" định nghĩa bằng hàm `_kho_cau_chuan`
   (câu mới phải `da_duyet`; câu cũ tạm dùng tới khi quét), quét lại toàn kho 3 mức (máy → Claude → người). Cửa 2 = form trắc nghiệm.
 - `spec-dien-o.md` — Form ĐIỀN Ô (CEO chốt 09/09): lời giải chi tiết có 2–3 ô trống, mỗi ô 4 phương án (faded worked examples);
@@ -364,19 +366,9 @@
   **công thức chữ trước, thay số sau** · **cắt lát chỉ cho bài thiết diện; bài tròn xoay chia miền rồi lắp thẳng công thức** · **bài tròn xoay = MỘT trang chuyên đề `tron-xoay.html`,
   thêm bài = thêm một mục dữ liệu vào `tron-xoay-bai.js`** (địa chỉ cố định `?bai=<id>`, `&nhung=1` để sau gắn vào bài giải trên app HS) · khung chung `khung.js` + `khung.css` ·
   làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có những bài nào: `docs/hinh-3d/so-theo-doi.md`.
-- **`docs/luong-kho-kieu-1-hinh-hoc.md` — ĐỌC BẮT BUỘC trước khi nhập một BÀI HỌC Hình (phần HỌC, `hinh_hoc_*`) từ file Word** (CEO chốt 07–08/10, "kho kiểu 1"): Word → trích (WMF→PNG) → tạo bài → lý thuyết (= whitelist) → subagent Sonnet soạn câu + vẽ hình bằng code → soát → `nhap_hh_tu_draft.mjs` → `gan_hinh.mjs` (hình ở cả đề và lời giải). Kèm rule R1/R2 + luồng hình ở `docs/log-giai-hinh-hoc-bai.md`, mẫu brief ở `docs/mau-brief-soan-hinh-hoc.md`.
 - `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
-- **`kho-rules/README.md` — ĐỌC BẮT BUỘC trước khi giải / nhập bài cho BẤT KỲ khối nào** (CEO chốt 08/10, §0 — khối nào cũng làm thế này):
-  **(1)** Claude đọc sách → giải thử → CEO duyệt → rút luật giải ghi vào `kho-rules/dai/k<khối>.md` · **(2)** luật đủ tốt (một lô không bị sửa = v1)
-  ⇒ giải TOÀN BỘ tài liệu, lên DB chờ sẵn ở dạng chờ `…000000` · **(3)** CEO làm xong bản đồ kiến thức khối đó ⇒ Claude xếp các bài vào bản đồ ⇒ CEO duyệt.
-  ~~Bản đồ kiến thức là việc của CEO~~ — **THAY 01/11: Claude dựng nháp bản đồ + lý thuyết dạng + phân dạng, trưởng khối trở lên duyệt/sửa/chốt qua phiên Claude** (`spec-phong-truong-khoi.md`; bước 1–2 luật giải vẫn do Thùy cầm lái). Khối nào đang ở bước nào: README §5.
-- **⭐ LUẬT DUYỆT KHO — MỌI KHỐI (Thùy 05/11): câu đã gán dạng bài mức CAO (`dai/hgt_bdm_gan_cau` nguon 'ai') hoặc vào kho Đ/S chủ đề (`*_bdm_kho_ds` nguon 'ai') ⇒ DB TỰ duyệt (`da_duyet=true, duyet_nguon='ai'`) nếu có đáp án đầy đủ** — trigger `_bdm_tu_duyet_sau_gan` (mig 202611051930), KHÔNG còn bước "nhớ chạy script duyệt cao". Mức "vừa", gán nguon cum/doi_ung/nguoi, câu thiếu đáp án vẫn chờ người. Script `duyet-cao-moi-khoi.mjs` chỉ còn để vá tồn đọng.
+- Trigger tự duyệt hiện có `_bdm_tu_duyet_sau_gan` (mig 202611051930, Thùy 05/11): gán dạng mức cao nguon 'ai' + có đáp án ⇒ `da_duyet=true`. Điều kiện ĐÍCH (4 điều kiện, có nhân chứng đáp số) ở `spec-giai-bai.md` §C6 — code còn nợ §C10.
 - **`spec-hinh-cay-nhanh.md` — ĐỌC BẮT BUỘC trước khi đụng bản đồ HÌNH phần LUYỆN** (CEO duyệt mockup 14/10): mô hình = cây nhánh (thân 1.1→1.2, rẽ nhánh từ bài mẹ thành 1.6.1, 1.6.1.1) · số hiển thị = vị trí (suy), mã bất biến · giả thiết hiệu lực = đường gốc→nhánh (bỏ luật 17/08) · xếp chỗ CHỈ xuống/sang phải, nhánh phía sau ưu tiên hàng 1, nhánh trước không đè · thẻ giả thiết thêm lục giác khác thẻ bài · popup đề·hình·đáp án. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`. Phần tách ý/nhập kho: `spec-hinh-luyen.md`.
-- **`spec-luong-kho.md` — ĐỌC BẮT BUỘC trước khi đụng LUỒNG KHO** (tài liệu vào → bản đồ + câu đạt chuẩn; CEO chốt 28/09): 3 lớp
-  Tri thức / Dây chuyền / Đo · luật phân tầng dạng–cụm–biến thể · cổng ghi "không biên bản kiểm thì không ghi" · luật lên cấp tự duyệt
-  (đo tỉ lệ LỌT, câu bẫy, ngưỡng theo mức nặng) · hậu kiểm báo sai · phương pháp build 6 việc (dựng bài thi trước). Toán Đại, K12 trước.
-  **Luồng tự giải bài cũ (`auto-giai-scheduler.mjs`) ĐÃ NGỪNG 28/09** — đừng bật lại, đừng viết luồng mới theo kiểu một phiên tự làm tự kiểm tự ghi.
-  Pha đang làm: **`spec-luong-kho-p0.md`** (đã có gì · đã kiểm gì · việc kế tiếp · lệnh chạy ở máy công ty).
 - **`spec-che-do-game.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ chế độ game học nào (mọi môn)** (Thùy chốt 03/10): 6 chế độ giữ nguyên, chỉ đổi content ·
   Luyện tập = Tự luyện · Thử thách = Tournament với bot (giữ luật, có Rank) · Tháp tổng + tháp chủ đề × Sinh tồn / Vô tận Normal / Hard (xếp hạng thuần) ·
   sai = khoá cả câu · phạm vi = dạng em đã học · câu nhanh/dài đo bằng thời gian làm thật · câu trả lời game ghi lại nhưng CHƯA tính mastery.
