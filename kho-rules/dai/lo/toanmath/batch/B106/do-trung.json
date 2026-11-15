@@ -1,0 +1,34 @@
+[
+ {
+  "batch": "B106",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ki-2-toan-12-nam-2025-2026-truong-thpt-nui-thanh-da-nang",
+  "ket_luan": "mo_ho",
+  "so_tu": 6133,
+  "best": {
+   "ten": "Đề kiểm tra cuối kì 2 Toán 12 năm học 2025 - 2026 trường THPT Núi Thành - Đà Nẵng (Mã đề 1001)",
+   "ti_le": 0.21,
+   "cau": 14
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.67,
+  "trung_kho": false
+ },
+ {
+  "batch": "B106",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-ky-2-toan-12-nam-2025-2026-truong-thpt-binh-duong-gia-lai",
+  "ket_luan": "khac",
+  "so_tu": 7932,
+  "best": {
+   "ten": "Đề thi thử tốt nghiệp THPT năm 2026 môn Toán sở GD&ĐT Cần Thơ_Phần 2",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.1,
+  "so_de_khop": 0,
+  "giong_ten": 0,
+  "trung_kho": false
+ }
+]
