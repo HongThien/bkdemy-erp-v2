@@ -1,12 +1,12 @@
 // so-hinh.mjs — BỘ ĐẾM HÌNH ĐỀ theo khối (spec-giai-bai.md §A8, §C12 — Thùy 15/11). Số tính ở DB (fn_kho_hinh_dem), script chỉ ghi sổ.
 //   node scripts/kho/so-hinh.mjs                         — dựng kho-rules/SO-HINH.md (chỉ đọc DB)
-//   node scripts/kho/so-hinh.mjs lenh --kho <dai|hgt|hinh_hoc|hinh_hoc_lop|hinh_luyen> (--khoi <k> | --ma <mã,mã…> | --de "<tên đề, khớp ten_de_goc>")
+//   node scripts/kho/so-hinh.mjs lenh --kho <dai|hgt|hinh_hoc|hinh_hoc_lop|hinh_luyen|hinh_luyen_y> (--khoi <k> | --ma <mã,mã…> | --de "<tên đề, khớp ten_de_goc>")
 //        --ra-boi "<người ra lệnh>" [--ly-do "<…>"] [--ghi]  — RA LỆNH VẼ LẠI cho các câu có hình đề trong phạm vi (mặc định chạy thử, ROLLBACK)
 //   Nhãn nguồn khi gắn hình: dùng ghiNhanHinh() (export) trong CÙNG transaction với lệnh gắn anh_de.
 // Không chạy lượt nặng 17–22h (K22) — hàm đếm cả kho ~0,2–0,5 s.
 import fs from 'node:fs'; import path from 'node:path'; import pg from 'pg'
 
-export const KHO_HINH = { dai: 'dai_cau_hoi', hgt: 'hgt_cau_hoi', hinh_hoc: 'hinh_hoc_cau_hoi', hinh_hoc_lop: 'hinh_hoc_cau_lop', hinh_luyen: 'hinh_bai' }
+export const KHO_HINH = { dai: 'dai_cau_hoi', hgt: 'hgt_cau_hoi', hinh_hoc: 'hinh_hoc_cau_hoi', hinh_hoc_lop: 'hinh_hoc_cau_lop', hinh_luyen: 'hinh_bai', hinh_luyen_y: 'hinh_y' }
 export const NGUON_HINH = ['goc', 've_lai', 've_lenh', 've_moi']
 // Đọc phần đuôi dòng **Hình:** trong tệp soạn: "<tệp> | nguon=ve_lai:ab" ⇒ { nguon: 've_lai', ma_loi: 'ab' }. Sai khuôn ⇒ throw (cổng trả lại).
 export function docNhanHinh(s) {
@@ -28,7 +28,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace
 const env = () => Object.fromEntries(fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim()]))
 const THU_TU = ['3', '4', '4T', '5', '5T', '6', '7', '8', '8T', '9', '10', '11', '12', '?']
 const thuTu = (k) => { const i = THU_TU.indexOf(k); return i < 0 ? 99 : i }
-const TEN_KHO = { dai: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình (học)', hinh_hoc_lop: 'Hình — trên lớp', hinh_luyen: 'Hình luyện (bài)' }
+const TEN_KHO = { dai: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình (học)', hinh_hoc_lop: 'Hình — trên lớp', hinh_luyen: 'Hình luyện (bài)', hinh_luyen_y: 'Hình luyện (ý)' }
 
 async function soMd() {
   const E = env(); const c = new pg.Client({ connectionString: E.DATABASE_URL_RO || E.DATABASE_URL }); await c.connect()
@@ -66,16 +66,17 @@ async function raLenh(a) {
   const E = env(); const c = new pg.Client({ connectionString: E.DATABASE_URL }); await c.connect()
   try {
     await c.query('begin'); await c.query("set local statement_timeout = '20s'")
-    const khoa = kho === 'hinh_luyen' ? 'ma_bai' : 'ma_cau'
-    const xoa = kho === 'hinh_luyen' ? '' : 'and c.xoa_at is null'
+    const khoa = kho === 'hinh_luyen' ? 'ma_bai' : kho === 'hinh_luyen_y' ? 'ma_y' : 'ma_cau'
+    const xoa = kho.startsWith('hinh_luyen') ? '' : 'and c.xoa_at is null'
     let dk, p
     if (ma) { dk = `c.${khoa} = any($1)`; p = [ma.split(',').map((x) => x.trim()).filter(Boolean)] }
-    else if (de) { if (kho === 'hinh_luyen' || kho === 'hinh_hoc_lop') throw new Error('--de chỉ dùng cho kho có ten_de_goc'); dk = `c.ten_de_goc = $1`; p = [de] }
+    else if (de) { if (kho.startsWith('hinh_luyen') || kho === 'hinh_hoc_lop') throw new Error('--de chỉ dùng cho kho có ten_de_goc'); dk = `c.ten_de_goc = $1`; p = [de] }
     else {
       // khối: suy GIỐNG HỆT fn_kho_hinh_dem (sửa cách suy khối ⇒ sửa cả hai chỗ)
       if (kho === 'dai' || kho === 'hgt') { dk = `(case when substr(c.dang_chinh,3,2) ~ '^0[0-9]$' then substr(c.dang_chinh,4,1) else substr(c.dang_chinh,3,2) end) = $1`; p = [khoi] }
       else if (kho === 'hinh_hoc') { dk = `coalesce((select b.khoi from hinh_hoc_bai b where b.ma_bai = c.dang_chinh), case when length(c.dang_chinh)=10 then ltrim(substr(c.dang_chinh,3,2),'0') end) = $1`; p = [khoi] }
       else if (kho === 'hinh_hoc_lop') { dk = `(select b.khoi from hinh_hoc_bai b where b.ma_bai = c.dang_bai_id) = $1`; p = [khoi] }
+      else if (kho === 'hinh_luyen_y') { dk = `(select h.khoi from hinh_bai h where h.id = c.bai_id) = $1`; p = [khoi] }
       else { dk = `c.khoi = $1`; p = [khoi] }
     }
     const r = await c.query(`insert into kho_hinh_lenh_ve (kho, ma_cau, url_luc_ra, ly_do, ra_boi)

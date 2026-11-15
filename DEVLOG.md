@@ -81158,3 +81158,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   Tối 11/11 (đỉnh 58): 21:00–23:00 chỉ 20 file ⇒ Storage không liên quan đỉnh đó (khớp ảnh: Storage 2).
 - **Ghi nhận:** 15/11 21:00–21:10 có 464 file đẩy lên kho trong khung 17–22 h (lô của phiên khác) — đúng loại việc K22 muốn tách khỏi giờ HS dùng app.
 - **Kết luận cho câu hỏi của Thùy:** chạy nhiều context có đẩy kết nối lên (script nối thẳng DB ⇒ "Other roles"; đẩy ảnh hàng loạt ⇒ Storage), nhưng nền của hệ lúc không ai làm gì đã là ~36 kết nối nằm im, riêng PostgREST 17. Nâng gói Small (90) giải quyết cả hai; hạ pool PostgREST là lựa chọn thay thế nếu không nâng.
+
+- (nốt — Thùy "nốt đi") **mig 202611152255 ĐÃ ÁP**: bộ đếm thêm kho `hinh_luyen_y` (hinh_y, khối qua bài cha) — 157 hình (K7 20 · K8 137), tổng 13.463; chỉ nới check 2 bảng mới + thay thân hàm (chữ ký giữ). Thử rollback trước.
+  `gan_hinh.mjs` nhận `hinh_y` · `so-hinh.mjs lenh --kho hinh_luyen_y` (thử K8: 137 câu) · `nhap_hh_tu_draft.mjs` in sẵn lệnh gắn kèm `--nguon`.
+  `anh-batch.mjs` hoá ra chỉ đẩy hình nháp lên thư mục làm việc, không gắn anh_de ⇒ không cần nhãn (ghi nợ trước đó sai). Spec §C10.13 xoá, §C12 cập nhật.

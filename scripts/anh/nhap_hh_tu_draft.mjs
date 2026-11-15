@@ -126,5 +126,6 @@ if (RA && HINH_DIRS.length) {
     }
   }
   writeFileSync(join(RA, '_map.json'), JSON.stringify(map, null, 1))
-  console.log(`✔ Chép ${n} hình sang ${RA} (tên = <ma_cau>_<nhan>.png) — chạy gan_hinh.mjs trên thư mục này.`)
+  console.log(`✔ Chép ${n} hình sang ${RA} (tên = <ma_cau>_<nhan>.png) — gắn bằng (kèm nhãn nguồn hình, spec-giai-bai §A8 — gói trộn nguồn thì tách gói):`)
+  console.log(`  node --env-file=.env scripts/anh/gan_hinh.mjs "${RA}" --nguon <goc | ve_lai:<a–f> | ve_lenh | ve_moi> --ghi`)
 }

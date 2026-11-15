@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-599 bảng · 42 view · 0 enum · 453 trigger · 1959 function
+599 bảng · 42 view · 0 enum · 453 trigger · 1961 function
 
 ## _app_secrets
 
@@ -5036,7 +5036,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | id | bigint |  |  | PK |  |
 | mon | text |  | 'Toán'::text |  |  |
-| kho | text |  |  |  | `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` · `hinh_luyen` |
+| kho | text |  |  |  | `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` · `hinh_luyen` · `hinh_luyen_y` |
 | ma_cau | text |  |  |  |  |
 | url_luc_ra | text | Y |  |  |  |
 | ly_do | text | Y |  |  |  |
@@ -5049,7 +5049,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | id | bigint |  |  | PK |  |
 | mon | text |  | 'Toán'::text |  |  |
-| kho | text |  |  |  | `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` · `hinh_luyen` |
+| kho | text |  |  |  | `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` · `hinh_luyen` · `hinh_luyen_y` |
 | ma_cau | text |  |  |  |  |
 | url | text |  |  |  |  |
 | nguon | text |  |  |  | `goc` · `ve_lai` · `ve_lenh` · `ve_moi` |
@@ -11578,6 +11578,8 @@ WITH luot AS (
 
 - `_audit_cron_job()` → SETOF cron.job
 - `_audit_cron_runs()` → SETOF cron.job_run_details
+- `_audit_ket_noi()` → TABLE(vai text, ung_dung text, loai text, trang_thai text, so integer, im_lau_nhat_s integer, gd_lau_nhat_s integer, mo_lau_nhat_s integer)
+- `_audit_kho_file_moi(p_tu timestamp with time zone, p_den timestamp with time zone)` → TABLE(luc timestamp with time zone, bucket text, so_file integer, khong_chu integer)
 - `_audit_pss()` → SETOF extensions.pg_stat_statements
 - `_bai_test_mat_phieu_dong()` → trigger
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid

@@ -1,6 +1,6 @@
 # SỔ HÌNH ĐỀ — theo khối
 
-> Tự sinh bởi `scripts/kho/so-hinh.mjs` lúc 2026-11-15 22:52 (giờ VN) từ `fn_kho_hinh_dem` (2527 ms) — KHÔNG sửa tay. Luật: `spec-giai-bai.md` §A8 (gốc ổn giữ · gốc quá tệ vẽ lại · có lệnh vẽ lại), §C12.
+> Tự sinh bởi `scripts/kho/so-hinh.mjs` lúc 2026-11-15 22:56 (giờ VN) từ `fn_kho_hinh_dem` (196 ms) — KHÔNG sửa tay. Luật: `spec-giai-bai.md` §A8 (gốc ổn giữ · gốc quá tệ vẽ lại · có lệnh vẽ lại), §C12.
 > **Chưa rõ nguồn** = câu có hình đề mà chưa có nhãn khớp hình hiện tại (mọi ảnh ghi trước 15/11 nằm ở đây cho tới khi được xét / có lệnh).
 > Mã lỗi: a không đọc chắc · b cụt / dính chữ · c lộ đáp án · d vênh đề · e scan bẩn / méo · f hình dính nhau.
 
@@ -14,14 +14,14 @@
 | 5 | 468 | 0 | 0 |  | 0 | 0 | 468 |  |
 | 5T | 72 | 0 | 0 |  | 0 | 0 | 72 |  |
 | 6 | 391 | 0 | 0 |  | 0 | 0 | 391 |  |
-| 7 | 1018 | 0 | 0 |  | 0 | 0 | 1018 |  |
-| 8 | 613 | 0 | 0 |  | 0 | 0 | 613 |  |
+| 7 | 1038 | 0 | 0 |  | 0 | 0 | 1038 |  |
+| 8 | 750 | 0 | 0 |  | 0 | 0 | 750 |  |
 | 8T | 162 | 0 | 0 |  | 0 | 0 | 162 |  |
 | 9 | 1194 | 0 | 0 |  | 0 | 0 | 1194 |  |
 | 10 | 2090 | 0 | 0 |  | 0 | 0 | 2090 |  |
 | 11 | 1875 | 0 | 0 |  | 0 | 0 | 1875 |  |
 | 12 | 4340 | 0 | 0 |  | 0 | 0 | 4340 |  |
-| **Tổng** | 13306 | 0 | 0 |  | 0 | 0 | 13306 |  |
+| **Tổng** | 13463 | 0 | 0 |  | 0 | 0 | 13463 |  |
 
 ## 2. Theo kho × khối
 
@@ -75,6 +75,13 @@
 | 7 | 44 | 0 | 0 |  | 0 | 0 | 44 |  |
 | 8 | 93 | 0 | 0 |  | 0 | 0 | 93 |  |
 | 9 | 388 | 0 | 0 |  | 0 | 0 | 388 |  |
+
+### Hình luyện (ý) (`hinh_luyen_y`)
+
+| Khối | Có hình đề | Giữ gốc | Vẽ lại (gốc tệ) | Theo mã lỗi | Vẽ theo lệnh | Vẽ mới | Chưa rõ nguồn | Lệnh đang chờ |
+|---|---|---|---|---|---|---|---|---|
+| 7 | 20 | 0 | 0 |  | 0 | 0 | 20 |  |
+| 8 | 137 | 0 | 0 |  | 0 | 0 | 137 |  |
 
 ## 3. Lệnh vẽ lại đang chờ (0)
 

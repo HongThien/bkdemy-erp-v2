@@ -5,7 +5,7 @@
 // Tên file:  <ma_cau>[+<ma_cau2>…][_ghi_chu].png|jpg|jpeg      vd  HHC001914_2A.png  ·  HHC001924+HHC001935_11.png (2 câu dùng chung 1 hình)
 //            đuôi _lg = chỉ gắn hình lời giải (anh_dap_an) · đuôi _de = chỉ gắn hình đề (anh_de) · không đuôi = gắn cả hai
 // --nguon <goc|ve_lai:<a–f>|ve_lenh|ve_moi> (spec-giai-bai §A8, Thùy 15/11): nhãn NGUỒN cho mọi hình ĐỀ của gói ⇒ ghi kho_hinh_nguon cùng transaction (bộ đếm so-hinh.mjs).
-//   Bắt buộc khi --thay trên kho có đếm (hinh_hoc_cau_hoi · hinh_hoc_cau_lop · hinh_bai · hgt_cau_hoi). Gói trộn nhiều nguồn ⇒ tách gói.
+//   Bắt buộc khi --thay trên kho có đếm (hinh_hoc_cau_hoi · hinh_hoc_cau_lop · hinh_bai · hinh_y · hgt_cau_hoi). Gói trộn nhiều nguồn ⇒ tách gói.
 // --thay (luồng vẽ lại hình 13/10): đè hình đã có; URL cũ ghi vào scripts/anh/bien_ban/gan-hinh-<lúc>.json TRƯỚC khi UPDATE, ảnh cũ không bị xoá khỏi bucket.
 // Tiền tố mã → bảng: xem BANG bên dưới (thêm dòng khi cần, KHÔNG đoán bảng từ tên).
 // --bang (phần LUYỆN của kho Hình, 13/10): bảng đích do NGƯỜI GỌI khai, không suy từ tên tệp — xem LUYEN bên dưới (bảng, cột khoá, cột ảnh):
@@ -28,7 +28,7 @@ import { randomUUID } from 'node:crypto'
 import { createClient } from '@supabase/supabase-js'
 import { docNhanHinh, ghiNhanHinh } from '../kho/so-hinh.mjs'
 // bảng → kho của bộ đếm hình (spec-giai-bai §C12); bảng không có ở đây thì không đếm
-const KHO_DEM = { hinh_hoc_cau_hoi: 'hinh_hoc', hinh_hoc_cau_lop: 'hinh_hoc_lop', hinh_bai: 'hinh_luyen', hgt_cau_hoi: 'hgt' }
+const KHO_DEM = { hinh_hoc_cau_hoi: 'hinh_hoc', hinh_hoc_cau_lop: 'hinh_hoc_lop', hinh_bai: 'hinh_luyen', hinh_y: 'hinh_luyen_y', hgt_cau_hoi: 'hgt' }
 
 const BANG = { HHC: 'hinh_hoc_cau_hoi', HH: 'hinh_hoc_cau_hoi', HHL: 'hinh_hoc_cau_lop' } // HH… = mã câu kiểu cũ (HH00087012), cùng bảng · HHL = kho trên lớp (mig 202611051603)
 // Cách gắn của một bảng: khoa = cột khoá ghi trong tên tệp · song = điều kiện "dòng còn sống" · cot[kiểu] = các cột ảnh được ghi
