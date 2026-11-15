@@ -17,7 +17,7 @@ import {
   GAY_DON_GIA, MA_LOI_CHAM_DEADLINE, MA_LOI_KHONG_DAT_CHUAN, kyHienTai, nhanKy,
   listGayLoi, createGayLoi, updateGayLoi, listGayHoatDong, createGayHoatDong, updateGayHoatDong,
   quetGayTuDong, listDeXuat, chotDeXuat, boQuaDeXuat,
-  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, listTaskCuaNhanSu, tienDoTask,
+  danhGayThuCong, goGay, thuHoiGay, bangGay, chotThang, listChotThang, listMienGay, setMienGay, gayDuocDoiMien,listTaskCuaNhanSu, tienDoTask,
   phamViKhoi, PHAM_VI_KHOI_RONG, deXuatLop, type PhamViKhoi, type DeXuatLop,
   type GayLoi, type GayHoatDong, type GayDeXuatFull, type BangGayRow, type GayChotThangFull, type NsMienGay,
   type KhoangNgay, type TaskCuaNhanSu, type TienDoTask,
@@ -638,8 +638,12 @@ function PanelMienGay({ onBao }: { onBao: (ok: boolean, msg: string) => void }) 
   const [mien, setMien] = useState<NsMienGay[]>([])
   const [nsAll, setNsAll] = useState<NhanSu[]>([])
   const [themId, setThemId] = useState('')
+  const [duocDoi, setDuocDoi] = useState(false)   // 15/11: chỉ trưởng khối trở lên bật / tắt được (DB quyết, màn chỉ ẩn nút)
   const load = () => { listMienGay().then(setMien).catch(() => setMien([])) }
-  useEffect(() => { load(); listNhanSu().then((l) => setNsAll(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => setNsAll([])) }, [])
+  useEffect(() => {
+    load(); listNhanSu().then((l) => setNsAll(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => setNsAll([]))
+    gayDuocDoiMien().then(setDuocDoi).catch(() => setDuocDoi(false))
+  }, [])
 
   const doi = async (nsId: string, m: boolean) => {
     try { await setMienGay(nsId, m); onBao(true, m ? 'Đã miễn gậy tự động.' : 'Đã bỏ miễn — quét lại sẽ tính người này.'); setThemId(''); load() }
@@ -654,16 +658,16 @@ function PanelMienGay({ onBao }: { onBao: (ok: boolean, msg: string) => void }) 
       {!mien.length ? <p className="text-sm text-slate-400">Chưa miễn ai.</p> : mien.map((m) => (
         <div key={m.id} className="flex items-center gap-2 border-b border-slate-50 py-2 text-sm text-slate-700">
           <span className="flex-1">{m.ho_ten}{m.ma_ns ? <span className="ml-1.5 text-xs text-slate-400">({m.ma_ns})</span> : null}</span>
-          <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => doi(m.id, false)}>Bỏ miễn</button>
+          {duocDoi && <button className={btnGhost + ' !px-2 !py-1 !text-xs'} onClick={() => doi(m.id, false)}>Bỏ miễn</button>}
         </div>
       ))}
-      <div className="mt-3 flex gap-2">
+      {!duocDoi ? <p className="mt-3 text-xs text-slate-400">Chỉ trưởng khối trở lên bật / tắt được miễn gậy.</p> : <div className="mt-3 flex gap-2">
         <select className={inputCls + ' flex-1'} value={themId} onChange={(e) => setThemId(e.target.value)}>
           <option value="">— chọn nhân sự để miễn —</option>
           {nsAll.filter((n) => !mienIds.has(n.id)).map((n) => <option key={n.id} value={n.id}>{n.ho_ten}{n.ma_ns ? ` (${n.ma_ns})` : ''}</option>)}
         </select>
         <button className={btnPrimary} disabled={!themId} onClick={() => doi(themId, true)}>+ Miễn</button>
-      </div>
+      </div>}
     </div>
   )
 }

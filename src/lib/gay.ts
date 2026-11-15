@@ -454,6 +454,12 @@ export async function listMienGay(): Promise<NsMienGay[]> {
   if (error) throw error
   return (data ?? []) as NsMienGay[]
 }
+// Thùy 15/11: bật / tắt miễn gậy chỉ từ TRƯỞNG KHỐI trở lên (mig 202611152136). DB chặn ở trigger nhan_su; màn hỏi cùng hàm đó để ẩn nút.
+export async function gayDuocDoiMien(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_gay_duoc_doi_mien')
+  if (error) throw error
+  return data === true
+}
 export async function setMienGay(nhanSuId: string, mien: boolean): Promise<void> {
   const { error } = await supabase.from('nhan_su').update({ mien_gay: mien }).eq('id', nhanSuId)
   if (error) throw error
