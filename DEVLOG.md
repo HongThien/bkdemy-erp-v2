@@ -80821,3 +80821,34 @@ Thùy nêu 4 việc, làm được 3:
 - **Gốc:** `itemsGomY` dựng bài nhiều ý thành nhiều khối rời — đầu bài (lời dẫn `break-after:avoid` + hình FULL ngang, 227px) + mỗi ý 1 `.pv-cau` — rồi khối đầu dính vào `.pv-bt-dau` (break-inside:avoid) ⇒ paged.js đẩy cả cụm sang trang. Bỏ riêng `break-after` KHÔNG hết (đã thử).
 - **Sửa:** cả bài = 1 CauPart như câu thường: `DeVaHinh` (lời dẫn + ý a) b)… bên trái, hình nửa phải), dòng kẻ (BTVN) = số ở ý đầu, sau cả bài. Áp mọi chỗ dùng `itemsGomY` (giáo trình bản đồ mới, DangBlock, BTVN).
 - **Kiểm (app local, khung trình duyệt phải HIỆN — ẩn thì paged.js quá 30 s):** GT 8S0 10 → 8 trang, HH00161 nằm liền sau card trước, "Câu 4 – 5" 1 khối hình phải; BTVN "Câu 1 – 2", "Câu 3 – 4" 1 khối + 5 dòng sau bài.
+
+## 15/11 (sáng Chủ nhật, 09:25–10:20) — "tối ưu tiếp" (Thùy): tìm ra gốc ĐỌC ĐĨA — bảng dòng rộng bị tra để lấy vài cột hẹp
+
+- **Qua đêm:** việc nền 0 lỗi. Lượt 02:00 đánh dấu 376 em ⇒ mastery tính lại cả hệ trong 3 lượt (20 s + 21 s + 12 s = 54 s, ~145 ms/em). `tu_luyen_so_cau` 05:02 15 s.
+  Việc nền theo giờ: đêm 18–35 s/giờ, sáng CN có lớp 46–72 s/giờ (≤ 2 % một nhân).
+- **Đo sáng CN đang có lớp, 09:37–09:49 (hiệu số, có tên hàm — script `pss2.mjs`):** cả DB 85 s = **11,9 % một nhân**; 44/60 kết nối, 6 kết nối mới / 90 s.
+  Bộ điều phối nền 20,3 s · Realtime 17,5 s · **`fn_traogiai_thang` 4 lượt × 1,6 s (đang có người dùng màn Trao giải)** · `fn_phien_bd_xem` 1 lượt 4,5 s (bot phiên Claude) ·
+  `fn_bao_sai_cho_duyet_cua_toi` 3 × 0,68 s · còn lại < 2 s.
+- **✅ SỬA 1 — `fn_traogiai_thang` (mig 202611150954, ĐÃ ÁP):** hàm dựng 10 bảng tạm rồi với TỪNG (lớp × HS) chạy 11 truy vấn con tra `_tg_mt` / `_tg_mt_truoc` / `_tg_pct` /
+  `_tg_btvn_giao` — bảng tạm không index, không thống kê ⇒ mỗi lượt tra quét cả bảng. Thêm 5 index + `analyze` ngay trong hàm, **công thức không đổi một chữ**.
+  So cũ–mới: 4 tháng × (cả trường + 13 khối) = 56 ca, 1,58 triệu ký tự JSON, **lệch 0**. Cả trường 1,34–1,47 s → ~0,6 s; trên DB thật sau áp: tháng 10 = 516 ms (trước 1,4–3,0 s).
+- **✅ SỬA 2 — hai INDEX HẸP (mig 202611151001 để ghi sổ; trên DB sống tạo bằng `CREATE INDEX CONCURRENTLY`, 2,6 s + 0,9 s, không khoá ghi):**
+  `bai_test_cau_id_hep_idx (id) include (bai_test_id, ma_dang, ma_cau, loai_cau, thu_tu)` 11 MB · `tu_luyen_dang_lan_hs_cau_idx (hoc_sinh_id, ma_cau) include (tao_at)` 6 MB.
+  **Gốc:** `bai_test_cau` heap 173 MB / 117 nghìn dòng (~1,5 KB/dòng — nguyên văn đề + lời giải chụp theo bài). Mọi đường đi từ bài làm của em
+  (`bai_lam_cau → bai_test_cau.id`) chỉ cần `ma_cau`/`ma_dang`/`bai_test_id` nhưng phải mở dòng rộng ⇒ mỗi câu em từng làm = 1 trang heap.
+  Một lượt sinh bài tự luyện: 3.449 trang heap `bai_test_cau`, **719/934 trang đọc đĩa là của bảng này**; `_hs_cau_lan_gap` nguội 1,1 s.
+  Cộng dồn: `fn_tu_luyen_sinh_tu_dong` = 32,8 % lượng đọc đĩa của cả DB, `tu_luyen_chu_de_sinh` 11,7 %.
+  **Sau (cùng em, cùng lượt gọi):** `bai_test_cau` heap 3.488 → 134 trang · `tu_luyen_dang_lan` sang Index Only Scan (152 → 44 trang) · lượt sinh bài đọc đĩa 934 → 52–237 trang,
+  822 → 185–390 ms · lịch sử gặp câu 1.110 → 63–279 ms. Không sửa hàm nào; mastery / xếp hạng A3 / báo sai chờ duyệt tự chuyển sang index mới (đã kiểm `pg_stat_user_indexes`).
+  43 hàm chỉ cần 6 cột trong index. Visibility map `bai_test_cau` 100 % ⇒ Index Only Scan thật.
+- **Đã đo, KHÔNG làm:** index hẹp thứ ba cho `dai_cau_hoi (ma_cau) include (dang_chinh, xoa_at…)` — đường mastery còn 250–316 trang đĩa/20 em ở bảng này nhưng visibility map chỉ 49 %
+  (bảng bị sửa nhiều) và chỉ lợi cho việc nền · index bán phần cho điều kiện chọn câu (điều kiện có regex trên `noi_dung` ⇒ mỗi lượt chọn đọc heap mọi câu của dạng, ~120 câu × 10 lượt):
+  phần này ấm chỉ 30–50 ms · sổ bảng xếp hạng (một vòng 5,25 s / 10 phút) · `fn_bao_sai_cho_duyet_cua_toi` (ấm 11 ms, chậm là do đọc đĩa — đã hết nhờ index mới: 62 ms).
+- **⛔ LỖI CỦA TÔI khi thử (09:5x, giờ có lớp):** lượt so cũ–mới đầu tiên gọi `fn_traogiai_thang` **150+ lượt trong MỘT giao dịch**; mỗi lượt tạo/xoá ~15 bảng tạm, khoá giữ tới hết giao dịch
+  ⇒ chạm trần bảng khoá chung (`max_locks_per_transaction` 64 × 60 kết nối), giao dịch của tôi lỗi và rollback. Kiểm sau: việc nền 0 lỗi, nhưng tôi KHÔNG chứng minh được không có
+  lượt gọi nào của người dùng bị lỗi trong vài giây đó. Sửa cách thử: mỗi ca MỘT giao dịch ngắn (gọi cũ → áp → gọi mới → rollback).
+  **Bài học:** hàm có `create temp table` thì không gọi lặp trong một giao dịch; phép thử cũng phải tính ngân sách khoá, không chỉ ngân sách giây.
+- **Bài học chính (đề nghị đưa vào spec-kien-truc khi chốt ngày):** (a) **bảng dòng RỘNG bị tra theo khoá để lấy vài cột hẹp ⇒ index INCLUDE các cột đó**; dấu hiệu nhận biết =
+  `pg_statio_user_tables.heap_blks_read` cao + số "nguội" gấp nhiều lần số "ấm". Đây là gốc của mọi con số nguội/ấm lệch nhau tôi gặp từ 14/11, và sẽ nặng dần theo dữ liệu
+  (10× HS ⇒ `bai_test_cau` ~1,7 GB, không thể nằm trong bộ nhớ). (b) Bảng tạm trong hàm phải có index + `analyze` nếu bị tra lặp. (c) Xếp hạng theo **đọc đĩa**
+  (`shared_blks_read`) cho ra thủ phạm khác hẳn xếp hạng theo thời gian — phải xem cả hai.
