@@ -81084,3 +81084,19 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Lượt chạy cả khối lúc ~22:05 không vào DB vẫn CHƯA rõ nguyên nhân; chia nhỏ thì chạy được ⇒ SQL đưa người chạy tay: khối nhỏ, độc lập.
 - **Chưa đo lại** lượt đọc `thong_bao_hs` (trước 175 ms): `claude_build` không phải chủ bảng và không đóng vai `authenticated` được ⇒ đọc thẳng ra 0 dòng; cần số từ app HS thật / thống kê người dùng.
 - Dò policy còn gọi hàm trần mới chỉ theo HAI hàm trên; các hàm kiểm quyền khác không nhận cột (`co_quyen_ghi('x')`, `current_nhan_su_id()`…) chưa dò lại sau mig 202611021935.
+
+### 15/11 (22:35) — Kết nối DB: con số "59/60" ĐẾM THỪA — mổ lại (Thùy "59/60 là như nào. list ra xem cái nào giảm dc")
+
+- **Sửa nhận định cũ:** các mục 15:30 / HANDOFF ghi "kết nối 59/60, sát trần". 59 là số DÒNG của `pg_stat_activity`, gồm cả tiến trình nền (5), pg_cron scheduler, pg_net, bộ gửi nhật ký của Realtime (`realtime_replication_connection`) —
+  các dòng này có suất riêng (`max_worker_processes` 6, `max_wal_senders` 10), KHÔNG tính vào `max_connections` = 60 (`superuser_reserved_connections` = 3 ⇒ người thường dùng tối đa 57). Kết nối client thật lúc 15:27 ước ~50, không phải 59.
+- **Đo 22:31 CN (vắng) — 36 dòng, trong đó ~28 kết nối client:** `authenticator` / PostgREST 14.5: 9 · `fdw_bkdemy_web` / Supavisor (app phụ huynh đọc qua FDW): 7 · `supabase_admin`: Realtime 6 (subscription_manager_pub 2, realtime_connect 2, realtime_rls 1, subscription_manager 1) + 1 bộ gửi nhật ký ·
+  postgres_exporter 1 · 2 dòng trống tên · pg_cron 1 · pg_net 1 · `pgbouncer` / Supavisor (auth_query): 2 · `claude_build` (script này): 1 · nền 5. Storage API: 0 (15:27 là 15) ⇒ chỉ mở khi có người xem / tải file, tự đóng khi rảnh.
+- **Giới hạn của phép đo:** `claude_build` chỉ thấy tên vai + tên ứng dụng của kết nối người khác, KHÔNG thấy `state` / `state_change` / `backend_type` ⇒ không biết bao nhiêu kết nối đang chạy thật, bao nhiêu nằm im, đỉnh trong ngày là bao nhiêu.
+  `idle_session_timeout` = 0 (kết nối nằm im không bị cắt). Không role nào có giới hạn kết nối riêng (`rolconnlimit`).
+- **Cái nào giảm được (CHƯA làm gì, mới liệt kê):**
+  ① FDW app phụ huynh 7 kết nối giữ thường trực — postgres_fdw mặc định giữ kết nối mở theo từng phiên của DB bên kia; tắt giữ (`keep_connections 'off'` trên foreign server ở DB bkdemy-ph) hoặc giảm số phiên bên app phụ huynh. Phải làm ở DB bkdemy-ph; đổi lại mỗi lượt đọc tốn thêm thời gian mở kết nối.
+  ② PostgREST 9 — cỡ pool chỉnh ở dashboard Supabase (cài đặt Data API). Chưa có số đỉnh đồng thời nên chưa nên hạ.
+  ③ Realtime 6–7 — cỡ pool của Realtime chỉnh ở dashboard; tắt hẳn Realtime thì phải rà trước các chỗ đang dùng (màn Sự kiện `sk_*`, `hoi_dap_nhan_su`, các game dùng kênh broadcast).
+  ④ Storage API tới 15 lúc có người xem file — chưa biết có chỉnh được không.
+  ⑤ Script / bot chạy bằng `claude_build` qua pooler: mỗi cái 1 kết nối trong lúc chạy (nhiều phiên Claude song song + bot ⇒ cộng dồn).
+  ⑥ Nâng gói máy: cách chắc nhất khi lên 1.000 HS (trần kết nối tăng theo gói).
