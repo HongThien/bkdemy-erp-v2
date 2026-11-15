@@ -81050,3 +81050,23 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   **CHƯA kiểm được:** app phụ huynh có hiện thông báo không, cron `/api/cron/push` có đẩy tới điện thoại không (không vào được app PH / DB bkdemy-ph). Ghi chú: `anon` có GRANT SELECT trên `thong_bao_ph` (mặc định của bảng tạo qua SQL Editor) nhưng RLS không có policy cho `anon` ⇒ đọc ra 0 dòng.
 - **mig 202611152212 ĐÃ ÁP:** `thong_bao_ph_member_all` bọc `(select la_thanh_vien())` (bảng giờ thuộc `claude_build`). File 202611152145 sửa lại: bỏ dòng đổi chủ + policy `thong_bao_ph`, còn **18 policy / 16 bảng của `postgres` — CHƯA chạy, chưa ghi sổ**.
 - `check:kien-truc` ✔. HANDOFF sửa 3 dòng (SQL còn chờ · giải tháng đã áp · số policy còn lại).
+
+
+## 15/11 (tối) — Thống nhất LUẬT GIẢI BÀI thành một file `spec-giai-bai.md`, xoá luật cũ (Thùy chốt + gật xoá)
+- **Làm:** rà 5 đường nhập kho (sách · đề thi toanmath · bài học Hình · /nhap-de-thi · /nhap-kho) — mỗi đường một bộ luật, ~180 brief lệch nhau, nhãn `nguon_giai='nguoi'` cho lời giải AI ở `ghi.mjs`.
+  Thùy chốt 7 nguyên tắc + trả lời: Giải tích = Hình giải tích · không cần HTML · câu chắc tự vào kho, chấp nhận lỗi + hậu kiểm · trưởng khối duyệt chưa chắc · lô mẫu theo khối × loại kì · Hình không giãn dòng (+20% UI).
+  6 subagent chưng cất luật khối → bảng phân xử 29 điểm (luật mới nhất thắng, nhãn "CTO phân xử 15/11") → 1 subagent gộp Phần B. Spec 2.2k dòng: A chung (A1–A18) · B Hình chung + 12 khối · C dây chuyền (C1–C10) · D sổ sai lầm.
+  Công cụ: `scripts/kho/cat-luat.mjs` (brief cắt từ spec, mã phiên bản, kéo luật khối bắc cầu) · `toanmath/tinh-trang.mjs` → `TINH-TRANG.md` (suy từ tệp; `da-ghi.json`, `treo.json`) · `ghep-brief.mjs` dùng cat-luat.
+  Trỏ CLAUDE.md, /nhap-kho, /nhap-de-thi, spec-de-thi, 12 tài liệu khác về spec. HANDOFF ① thêm mục đầu.
+- **Xoá (Thùy gật "xoá hết"):** 212 file trong repo (9 spec/tài liệu · 11 file khối · 94 brief lô · 12 tệp điều phối toanmath · 87 brief batch đã xong) + 22 ghi nhớ Claude. 2 brief K9 chưa từng vào git ⇒ commit trước rồi mới xoá.
+  Brief 4 batch dở B044–B047: `_dau-brief` giữ bảng đề, bỏ phần luật; brief dựng lại từ spec (luat 88e8fce10253). GIỮ: 28 brief điền LT/VD bản đồ, KHTN, Vật lý.
+- **Sai:** ghép Phần B bằng `String.replace(mốc, chuỗi)` — `$'` `` $` `` trong LaTeX là lệnh chép ⇒ spec thành 27.578 dòng. **Sửa:** dựng lại từ đầu/đuôi còn nguyên, ghép bằng slice; luật ghi vào spec §A5.
+  Nhãn "P6/P11…" của bảng phân xử rò vào spec ⇒ thay bằng số mục. Ban đầu ghi nhầm "chốt 15/11" cho quyết định của CTO ⇒ đổi "CTO phân xử 15/11".
+- **Chưa làm:** code nợ spec §C10 (nhãn AI ở ghi.mjs, xếp làn 4 điều kiện, cổng kiểm mã luật, mẫu 15%, cổng K6/K12 nhận hinh_hoc…). 4 chỗ chờ Thùy xác nhận. HANDOFF chưa distill các mục cũ về quy trình kho (chỉ đánh dấu lịch sử).
+
+### 15/11 (22:15) — ⚠ Commit 9c10de48 cuốn theo phần sửa HANDOFF.md CHƯA COMMIT của phiên khác
+
+- Lúc commit phần báo giải tháng, `git status` đã hiện ` M HANDOFF.md` TRƯỚC khi Claude (phiên kiến trúc) sửa — tức phiên khác đang sửa dở HANDOFF (đổi các chỗ trỏ `kho-rules/README.md` → `spec-giai-bai.md`
+  ở mục K9 đề cương, Khối 7, Khối 8T, Context 4T+5T, bảng Skill 1–7…). Claude vẫn commit `-- HANDOFF.md` nên ~12 dòng đó vào chung commit 9c10de48 (đã push) dưới thông điệp "[Giải tháng] …".
+- **Không mất gì:** nội dung của phiên kia nằm nguyên trong commit và trong thư mục làm việc; phiên đó commit tiếp thì phần HANDOFF của họ sẽ không còn diff. KHÔNG sửa lịch sử (không `push -f`).
+- **Bài học (nhắc lại memory "nhiều phiên song song"):** file dùng chung (HANDOFF / DEVLOG / spec) mà `git status` đã hiện M TRƯỚC khi mình đụng ⇒ không commit theo tên file; chỉ đưa đúng phần của mình vào (tạo patch của riêng mình rồi `git apply --cached`), hoặc ghi vào DEVLOG trước và sửa HANDOFF sau khi phiên kia commit.
