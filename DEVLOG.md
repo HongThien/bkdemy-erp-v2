@@ -81100,3 +81100,12 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   ④ Storage API tới 15 lúc có người xem file — chưa biết có chỉnh được không.
   ⑤ Script / bot chạy bằng `claude_build` qua pooler: mỗi cái 1 kết nối trong lúc chạy (nhiều phiên Claude song song + bot ⇒ cộng dồn).
   ⑥ Nâng gói máy: cách chắc nhất khi lên 1.000 HS (trần kết nối tăng theo gói).
+
+### 15/11 (22:45) — Kết nối DB: biểu đồ dashboard Supabase 24 giờ + 7 ngày (Thùy chụp, Observability → Database → Database Connections)
+
+- **Số Supabase tự đếm lúc 22:09:** 32 / 60 — PostgREST 10 · Other roles 10 · Reserved 8 · Storage 3 · Auth 1 · Postgres 0. Pooler (Dedicated Pooler Client Connections): 11 / 200.
+- **24 giờ (14/11 22:36 → 15/11 22:36), từng nhóm (đọc bằng mắt từ ảnh, số ĐÃ LẤY TRUNG BÌNH theo khoảng nên đỉnh ngắn bị san phẳng):** PostgREST 8 → ~13 · Other roles 6 → ~13 · Reserved ~8 · Storage 0 → ~7 · Auth ~1. Cộng cùng lúc cao nhất ước ~40.
+- **7 ngày (08/11 → 15/11):** PostgREST dao động 8 → **~20** (có nhiều đoạn nằm ngang ở ~20) ⇒ pool của PostgREST KHÔNG cố định 9–10 như đã ghi lúc 22:35 mà nở tới ~20 khi có tải · Other roles có đỉnh **~23** · Storage có nhiều gai **~15** · Reserved 8–10.
+  Không nhóm nào tự nó gần 60. Chưa đọc được TỔNG ở đỉnh (cần rê chuột vào điểm cao nhất); nếu ba nhóm cùng lên đỉnh thì 20 + 23 + 15 + 10 + 2 = 70 > 60 — chưa có bằng chứng điều đó đã xảy ra, cũng chưa có bằng chứng là không.
+- **Suy đoán CHƯA kiểm:** gai của "Other roles" (ngoài 7 kết nối thường trực của app phụ huynh + 2 của pooler) và gai Storage nhiều khả năng là script / trạm chạy song song của các phiên Claude (soạn–soát đề, đẩy ảnh lên kho) — cùng loại rủi ro với K22 (việc máy chen giờ học). Muốn chắc: đếm `pg_stat_activity` theo `usename` trong lúc một lô đang chạy.
+- **Kết luận tạm:** chưa cần giảm gì gấp; rủi ro là lúc lô của máy trùng giờ có lớp. Đề xuất chưa làm: đặt trần kết nối riêng cho `claude_build` (`alter role … connection limit N`, phải chạy bằng `postgres`) để lô của máy không ăn hết chỗ của app — hỏng thì script báo lỗi chứ app không sao.
