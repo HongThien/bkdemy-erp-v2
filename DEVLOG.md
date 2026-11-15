@@ -81116,3 +81116,13 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   ⇒ Số 59 Claude đếm lúc 15:27 hoá ra gần với cách Supabase tự đếm (họ tính cả nhóm "Reserved" vào 60); mục 22:35 nói "đếm thừa" là đúng về cơ chế nhưng KHÔNG làm rủi ro nhỏ đi. Chạm 60 ⇒ lượt kết nối mới bị từ chối (app báo lỗi, cron lỗi kết nối).
 - **Đề xuất (chưa làm, đều cần Thùy):** ① nâng gói máy Micro → Small (trần kết nối cao hơn, RAM gấp đôi — cũng đỡ hiện tượng "lượt nguội chậm gấp nhiều lần" đo cả ngày nay; nâng gói phải khởi động lại DB vài phút ⇒ làm ngoài giờ học) ·
   ② đặt trần kết nối cho `claude_build` (`alter role claude_build connection limit N`, chạy bằng `postgres`) để lô của máy không ăn chỗ của app · ③ xem nhóm nào phình ở đúng điểm đỉnh rồi mới quyết giảm pool PostgREST / FDW app phụ huynh / Realtime.
+
+### 15/11 (22:55) — Kết nối DB: đỉnh 58/60 là 22:00 thứ Tư 11/11 = tối DB NGHẼN TOÀN HỆ (trước các đợt tối ưu), không phải ngày thường
+
+- **Ảnh Thùy rê chuột tại đỉnh 7 ngày — 11/11 22:00, tổng 58 (96,7 %):** Other roles **24** · PostgREST **21** · Reserved 7 · Auth 3 · Storage 2 · Postgres 1. Pooler riêng 1/200.
+- **Đối chiếu DEVLOG + git tối 11/11:** đúng lúc đó là mục "Audit timeout toàn hệ + tối ưu đợt 1" — DB nghẽn chung (truy vấn 5 ms có lần 7–8 s; `fn_the_gioi_home` 5.943 lượt × 4,0 s), commit 22:02 → 22:23, mig 202611112200 áp đúng 22:00.
+  ⇒ PostgREST 21 (bình thường 8–10) = lượt gọi của app xếp hàng chờ các hàm chậm, mỗi lượt giữ một kết nối tới trần 8 s ⇒ pool nở tới mức tối đa ~20. Other roles 24 (bình thường 8–10: app phụ huynh 7 + pooler 2) = thêm ~15 kết nối `claude_build` của các phiên Claude đang audit / so cũ–mới tối đó.
+  Đây là SUY từ trùng thời điểm, không có log kết nối theo role của tối đó để khẳng định từng kết nối.
+- **Từ sau các đợt tối ưu:** biểu đồ 24 giờ gần nhất (CN 15/11, có lớp buổi sáng) mỗi nhóm ≤ ~13, tổng ước ≤ ~40 (số trung bình theo khoảng; gai ngắn như Storage 15 lúc 15:27 không hiện).
+- **Kết luận:** kết nối cạn là HỆ QUẢ của hàm chậm + lô của máy chạy cùng lúc, không phải bệnh riêng. Hàm chậm đã xử lý ⇒ ngày thường còn dư ~20 chỗ. Nhưng nhu cầu tối đa của chính hệ (PostgREST ~20 + Storage ~15 + Reserved ~8 + app phụ huynh 7 + pooler tới 8 + Auth 3 ≈ 61) vẫn LỚN HƠN trần 60 ⇒ một tối nghẽn nữa là chạm trần lại.
+- **Đề xuất (chưa làm):** ① trần kết nối cho `claude_build` — `alter role claude_build connection limit 10;` (chạy bằng `postgres`; quá 10 script cùng lúc thì script báo lỗi, app không sao) · ② nâng gói máy trước mốc 1.000 HS · ③ không giảm pool PostgREST / FDW / Realtime (không phải thủ phạm ở đỉnh).
