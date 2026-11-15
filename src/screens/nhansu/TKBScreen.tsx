@@ -202,10 +202,13 @@ const PHAN_ANH = [
 ]
 const laPhongSo = (p: Phong) => /^P\d+$/.test(p.ten_phong)
 // Nhãn phòng trên bản in: "P101" → "101"; phòng có tên → tên ("Tầng lửng" → "Lửng").
-function nhanPhong(p: Phong): string {
-  if (laPhongSo(p)) return p.ten_phong.slice(1)
+// THEO DANH MỤC `phong`: phòng có tên ghi tên + số của mã ("Lễ tân - 100", "Lửng - 103").
+// gon = thẻ ca ban ngày (1 dòng chung với giờ, không đủ chỗ cho tên) ⇒ chỉ số phòng.
+function nhanPhong(p: Phong, gon = false): string {
+  const so = p.ma_phong.replace(/^P(?=\d)/, '')
+  if (laPhongSo(p) || gon) return so
   const t = p.ten_phong.replace(/^Tầng\s+/i, '')
-  return t.charAt(0).toUpperCase() + t.slice(1)
+  return `${t.charAt(0).toUpperCase() + t.slice(1)} - ${so}`
 }
 
 function TkbAnh({ view, mon, dsPhong, onClose }: { view: TKBSlot[]; mon: string; dsPhong: Phong[]; onClose: () => void }) {
@@ -290,7 +293,7 @@ function TkbAnh({ view, mon, dsPhong, onClose }: { view: TKBSlot[]; mon: string;
                           return (
                             <td key={thu} style={{ background: '#f8fafc', borderRadius: 5, padding: 2, verticalAlign: 'top' }}>
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-                                {phongs.map((p, i) => o[i] ? the(o[i]!, nhanPhong(p)) : (
+                                {phongs.map((p, i) => o[i] ? the(o[i]!, nhanPhong(p, !co.xep)) : (
                                   <div key={p.ma_phong} style={{ height: co.h, border: '1px dashed #e2e8f0', borderRadius: 4, color: '#cbd5e1', fontSize: co.phu, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{nhanPhong(p)}</div>
                                 ))}
                                 {du.map((s) => the(s, s.phong ? s.phong.replace(/^P(?=\d)/, '') : '—'))}
