@@ -80852,3 +80852,8 @@ Thùy nêu 4 việc, làm được 3:
   `pg_statio_user_tables.heap_blks_read` cao + số "nguội" gấp nhiều lần số "ấm". Đây là gốc của mọi con số nguội/ấm lệch nhau tôi gặp từ 14/11, và sẽ nặng dần theo dữ liệu
   (10× HS ⇒ `bai_test_cau` ~1,7 GB, không thể nằm trong bộ nhớ). (b) Bảng tạm trong hàm phải có index + `analyze` nếu bị tra lặp. (c) Xếp hạng theo **đọc đĩa**
   (`shared_blks_read`) cho ra thủ phạm khác hẳn xếp hạng theo thời gian — phải xem cả hai.
+
+## 15/11 — Giải tháng 10: lớp 8 có xu + báo app phụ huynh (Thùy: "t đã chốt kết quả. M hãy làm thông báo cho App HS và app PH luôn đi" · "lớp 8 cũng có xu giải nhé")
+- **Hiện trạng đo:** Thùy bấm "Chốt kết quả tháng" 15/11 10:21 ⇒ 76 giải tháng 10 công bố; app HS đã có 76 tin (`hs_tin_moi`, chưa ai đọc); xu: 36 em lớp 3–7 × 30 = 1.080. App PH: kênh `thong_bao_ph` có sẵn từ 18/09 nhưng **chưa ai ghi**, và `fdw_bkdemy_web` (role FDW app PH đọc) **không có policy RLS** ⇒ kể cả thông báo nhập tay cũng ra 0 dòng bên PH.
+- **mig 202611151041 ĐÃ ÁP --only:** `giai_thuong_gia_tri` 3–7 → 3–8 (30 xu) · 9 giải lớp 8 tháng 10 'khong_xu' → 'tu_dong', +270 xu, lời tin app HS thêm "Phần thưởng 30 xu đã vào ví của em." Kiểm: lớp 8 9/9 có dòng sổ + lời tin. Không bù tháng 8, 9.
+- **mig 202611151055 CHƯA ÁP:** `thong_bao_ph` do postgres sở hữu ⇒ claude_build "must be owner" ⇒ chờ Thùy chạy SQL Editor `alter table public.thong_bao_ph owner to claude_build;`. File: policy đọc cho fdw_bkdemy_web · cột `ref` + unique · `_giai_ghi_nhan` ghi thêm thông báo PH scope ca_nhan (hiện 30 ngày) · gửi bù 76 giải tháng 10. File tự chặn nếu chưa đổi chủ.
