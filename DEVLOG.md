@@ -80889,3 +80889,9 @@ Thùy nêu 4 việc, làm được 3:
 - **Distill:** HANDOFF ① viết lại mục "KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS" (tiến độ theo đợt, số đo hiện tại, đã chạy trên DB, chờ Thùy, việc kế, việc đã đo cố ý không làm) +
   khối trỏ DEVLOG cho việc 14–15/11 của các phiên khác chưa có mục riêng. HANDOFF-BAI-HOC thêm "Bài học 14→15/11 — Tối ưu · đo · chạy thử trên DB sống".
   KHÔNG sửa mục của phiên khác. `spec-kien-truc.md` chưa thêm luật mới (chờ Thùy gật).
+
+## 15/11 — Clone 60 câu véc tơ K10 (chủ đề Véc tơ, chuyên đề Các phép toán với Vector: 5.1 · 6.1 · 6.2)
+- Thùy: "clone thêm ~20 bài mỗi dạng". Số hiển thị = vị trí: 5.1 = NDB01401 (cực trị véc tơ), 6.1 = NDB00909 (Tách véc tơ), 6.2 = NDB00913 (chứng minh 2 véc tơ cùng phương).
+- Làm: 3 agent Sonnet sinh 24 biến thể/dạng từ câu gốc KHÔNG hình (spec-clone-ai.md), tự kiểm số bằng script toạ độ; 3 agent Opus GIẢI MÙ từng câu (chỉ thấy đề), 72/72 đáp án trùng, ok_de hết. `kho-rules/dai/lo/k10-vecto-clone/ghi.mjs --ghi`: 20 câu/dạng vào hgt_cau_hoi (nguon clone, clone_method claude_code_soat_mu, kiem_may khop) + gán hgt_bdm_gan_cau nguon ai ⇒ trigger tự duyệt (60/60 da_duyet).
+- Sửa sau soát: 5 câu NDB01401 (trắc nghiệm) đáp án đều C ⇒ xáo vị trí phương án ở file nguồn TRƯỚC khi ghi; 3 câu NDB00913 "a,b∈ℝ" → "a,b∈ℤ" (sửa trong DB sau ghi vì chỗ sửa file nguồn không khớp chuỗi).
+- Lưu ý: NDB01401 chỉ có 6 câu gốc dùng được ⇒ 20 câu là 4–5 biến thể/gốc, cấu trúc na ná nhau (đổi số). Câu clone KHÔNG có hình (đề tự đủ bằng chữ).
