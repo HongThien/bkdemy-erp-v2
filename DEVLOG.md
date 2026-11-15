@@ -80961,3 +80961,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Kiểm: tsc sạch, mở trên app (đăng nhập nhanh DEV) — 2 trang cao 696 / 620 px (trần ~740), không ô nào tràn chữ. CHƯA bấm in thật ra giấy.
 - Lệch tên phòng chờ Thùy: Thùy gọi "Lễ tân - 103, Lửng - 104" nhưng danh mục đang là Lễ tân = `P100`, Tầng lửng = `P103` ⇒ bản in chỉ ghi tên, không ghi số; chưa đổi DB.
 - **Sửa tiếp (Thùy: "ghi theo danh mục phòng, t nhầm"):** phòng có tên ghi tên + số của mã trong danh mục — "Lễ tân - 100", "Lửng - 103" (ô trống và thẻ buổi tối); thẻ ca ban ngày chật nên chỉ ghi số (100 / 103). Mục "lệch tên phòng chờ Thùy" ở trên đã đóng, không đổi DB.
+
+## 15/11 — toanmath K12 GIỮA KÌ II
+- Chuẩn bị B106 (2) + B108 phần GKII (3 giữ, 4 bỏ: 3 bộ ôn tập + Nguyễn Hữu Cầu bộ 3 đề ôn). Brief đầu đè `_brief-chuan-bi-k12-gkii.md`.
+- Sonnet soạn + Opus soát mù: 5/5 ĐẠT, khớp mù và khớp đáp án trường 100%. Ghi DB 21:02 (Thùy "ghi đi"): B106-01·02, B108-01·02·03 = 110 câu mới, 0 trùng.
+- Còn cho Thùy: B106-02 TL3 dùng "giá trị trung bình của hàm số trên đoạn" (chưa xác nhận có trong KNTT 12). Tệp tạm `_tmp_q_b106.mjs` (trạm chuẩn bị để ở gốc repo) chưa gỡ.
