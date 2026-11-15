@@ -80985,3 +80985,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đóng ET / BTVN (`fn_recompute_exp_thang`, điểm thấy thêm số 2) — mới ĐỌC danh mục, chưa đo (đo sau 22:00):** các bảng đều nhỏ (`gami_exp_ledger` 15 nghìn dòng · `gami_elo_history` 5,7 nghìn · `btvn_ket_qua` 8 nghìn · `gami_grades` 203 nghìn / 35 MB).
   `gami_elo_history` chỉ có index khoá chính (lọc theo `buoi_hoc_id` là quét cả bảng); `gami_exp_ledger` không có index theo `ref_buoi_hoc_id`; `btvn_ket_qua` khoá (hoc_sinh_id, buoi_hoc_id) không đi được theo buổi — hôm nay chưa thành vấn đề vì bảng nhỏ.
   Nghi vấn chính cần đo: phép nối `gami_grades` ⋈ `gami_session_problems` ⋈ bảng tạm `_ret_buoi` (4–12 dòng nhưng KHÔNG có thống kê ⇒ planner có thể đoán ~170 dòng và chọn quét cả `gami_grades` 35 MB) — nếu đúng thì đây chính là ca "bảng tạm thiếu `analyze`" của K25 và kết luận "0 / 16" lúc soát phải sửa lại.
+- 15/11 tối (Thùy "ghi đi" lần 2): ghép B037-08 (3 khúc; sửa `nam` 2026–2027 → 2026) + B038-01 (2 khúc); đẩy hình rồi ghi DB 12 đề:
+  K11 B037-04 (210 mới) · B037-08 (331) · B038-01 (195) · K10 B044-01 (110) · 02 (100) · 06 (103) · 08 (118) · B045-03 (133) · 04 (56) · 06 (109) · B046-02 (84) · 08 (60) = 1.609 câu mới.
+- Còn treo: soát B046-09, B047-01, B044-07 (2 khúc soạn xong); chưa giao B045-02·07·08·09, B046-01·03·04·06·07, B047-02; ⏸ B046-05.
