@@ -81076,3 +81076,11 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Sau deploy, thống kê vai `authenticated` CHƯA có lượt gọi nào của `fn_gay_duoc_doi_mien` (màn Gậy) và `fn_duoi_buoi_tinh_trang` (màn buổi đuổi TA) ⇒ chưa ai mở hai màn; chưa có xác nhận trên màn thật.
   Không còn buổi đuổi nào mở từ hôm nay (0 buổi) ⇒ hai khối giải thích mới chỉ thấy được khi có buổi đuổi kế tiếp. Vẫn 2 người đang được miễn gậy.
 - Số cộng dồn đóng ET / BTVN lúc 22:17 (để so sau này, sau mig 202611152202 lúc ~22:06): `fn_recompute_exp_thang` 151 lượt tb 834 ms · `fn_dong_phase` 206 lượt tb 780 ms · `fn_dong_btvn` 240 lượt tb 600 ms (đều là số TRƯỚC khi sửa; lượt đóng thật đầu tiên sau sửa sẽ kéo trung bình xuống — xem hiệu số).
+
+### 15/11 (22:22) — 18 policy của bảng do `postgres` sở hữu: Thùy chạy xong ở SQL Editor, đã ghi sổ
+
+- Thùy hỏi "18 dòng là như nào" ⇒ giải thích + chia thành 3 khối nhỏ (thông báo HS 3 dòng · giải thưởng + giáo trình Hình 5 dòng · sự kiện 10 dòng). Thùy chạy, báo "xong r".
+- **Đối chiếu 22:22:** `pg_policies` schema `public` còn **0** policy có `using` / `with check` là `la_thanh_vien()` hoặc `(hoc_sinh_id = my_hoc_sinh_id())` trần (trước: 19 → 18 → 0). `migrate.mjs --ghi-so 202611152145_policy_initplan_bang_chu_postgres_sql_editor.sql`.
+- Lượt chạy cả khối lúc ~22:05 không vào DB vẫn CHƯA rõ nguyên nhân; chia nhỏ thì chạy được ⇒ SQL đưa người chạy tay: khối nhỏ, độc lập.
+- **Chưa đo lại** lượt đọc `thong_bao_hs` (trước 175 ms): `claude_build` không phải chủ bảng và không đóng vai `authenticated` được ⇒ đọc thẳng ra 0 dòng; cần số từ app HS thật / thống kê người dùng.
+- Dò policy còn gọi hàm trần mới chỉ theo HAI hàm trên; các hàm kiểm quyền khác không nhận cột (`co_quyen_ghi('x')`, `current_nhan_su_id()`…) chưa dò lại sau mig 202611021935.
