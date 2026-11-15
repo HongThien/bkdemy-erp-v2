@@ -80879,3 +80879,13 @@ Thùy nêu 4 việc, làm được 3:
   `pg_stat_statements.track = top` ⇒ không thấy câu lệnh lồng trong hàm; muốn biết hàm con nào tốn phải đo tay từng khúc.
 - **`schema.md` đang lệch 1 dòng (FK `sotay_ct_*`) do migration của phiên khác — KHÔNG commit kèm.**
 - **Chưa làm:** `_mastery_mon_d` 0,58 s/em (ô môn một vùng + mọi chỗ gọi nó) · `fn_bdm_khop_dem` 1,4 s nguội (ấm 47 ms) · số THẬT của người dùng sau các index (đang theo dõi 10 phút).
+
+### 15/11 (15:30) — Chốt ngày 14–15/11 (Thùy "Chốt ngày đi")
+
+- **Số người dùng thật 13:55–14:05 CN (`theo.mjs`, cửa sổ vắng):** `fn_bao_sai_cho_duyet_cua_toi` 3 lượt × 99 ms, 0 trang đọc đĩa · `fn_tl_bdm_cay_chon` 2 lượt × 73 ms (cộng dồn trước 861 ms) ·
+  các hàm khác trong danh sách theo dõi (sinh bài tự luyện, ô lịch sử, gợi ý lùi buổi, cây bản đồ…) 0 lượt ⇒ CHƯA có số giờ đông cho các index 15/11.
+- **Kết nối 15:27 CN: 59/60** (Storage API 15 · PostgREST 9 · FDW app phụ huynh 7 · pgbouncer 8 · Realtime 7 · còn lại nền). Sáng có lớp 44/60. Chưa mổ — ghi vào việc đợt 6.
+- **Cron:** 7 job bật, 10 job cũ tắt (cả `mastery_luoi_dem`, `tu_luyen_so_cau`). Sổ nền 24 giờ: 0 lỗi, 0 lượt bị cắt.
+- **Distill:** HANDOFF ① viết lại mục "KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS" (tiến độ theo đợt, số đo hiện tại, đã chạy trên DB, chờ Thùy, việc kế, việc đã đo cố ý không làm) +
+  khối trỏ DEVLOG cho việc 14–15/11 của các phiên khác chưa có mục riêng. HANDOFF-BAI-HOC thêm "Bài học 14→15/11 — Tối ưu · đo · chạy thử trên DB sống".
+  KHÔNG sửa mục của phiên khác. `spec-kien-truc.md` chưa thêm luật mới (chờ Thùy gật).
