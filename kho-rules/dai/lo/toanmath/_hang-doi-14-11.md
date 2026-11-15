@@ -56,3 +56,5 @@ B036-02 · 03 · 04 · 05 · 06 · 08 · B037-01 · 02 · 05 · 06 · 07 · B038
 **Lệch cần thống nhất:** câu tự luận có đáp số một số vừa 4 ô — K11 soát chuyển sang `tra_loi_ngan`, K10 (B044-03, B044-04) giữ `tu_luan` vì nằm ở phần tự luận của đề.
 **Đính chính K10 phân kho:** chỉ Vectơ là `hgt` (đã ghi vào `_lenh-tram.md`); lệnh giao K10 trước đó ghi sai "hệ thức lượng ⇒ hgt" — các đề K10 đã ghi DB đều được soát xác nhận đúng luật.
 - (sau dừng) Soát ĐẠT thêm: B038-01 k1 · B046-08 · B045-04 · B037-08 k3 ⇒ B037-08 đủ 3 khúc, chờ `ghep-khuc.mjs B037 B037-08`. ⚠ B037-08 đầu tệp các khúc ghi `nam: 2026–2027` — kiểm năm học thật trước khi ghép/ghi.
+- (15/11) Soát ĐẠT thêm, CHƯA ghi: B046-02 · B044-01 · B044-02 · B044-08 · B045-03 · B045-06 · B045-04 · B046-08 · B044-06 · B038-01 k2 (⇒ B038-01 đủ 2 khúc, chờ ghép). Soạn xong chờ soát: B047-01. Còn chạy: soạn B046-09, B044-07 k1/k2.
+- (15/11) Thùy giao mới: K12 GIỮA KÌ II — B106 (Word) + B108 phần GKII. Brief đầu đè `_brief-chuan-bi-k12-gkii.md`; đang chuẩn bị batch.
