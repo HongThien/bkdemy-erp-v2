@@ -80941,3 +80941,17 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Làm:** `kho-rules/hinh/lo/k8-dtb-2bai/` (ve.mjs vẽ hình bằng code, du-lieu.mjs lời giải, nhap.mjs) ⇒ HHB000879 (HHC016797-98) + HHB000880 (HHC016799-800) trong HH00143, mô hình bài–ý, da_duyet=false. Hình đề = hình lời giải (1 hình/bài).
 - **Cách giải:** cả 4 ý đều về đường trung bình + TRỰC TÂM: b1 M là trực tâm △IBC ⇒ CM⊥BI, mà IK∥CM; b2 K là trực tâm △AHE ⇒ AK⊥HE, mà HE∥BI (ĐTB △BIC). Kiểm 500 bộ toạ độ ngẫu nhiên: 8/8 khẳng định đúng hết.
 - **Chưa chắc:** Thùy nói "Chứng minh đường trung bình" — có 2 bài tên gần giống (HH00143 Đường trung bình của Tam giác · HH00151 Chứng minh Trung điểm ứng dụng ĐTB). Chọn HH00143 vì không ý nào yêu cầu chứng minh một điểm là trung điểm.
+
+### 15/11 (20:05) — Dashboard OPS đọc bảng tính sẵn (Thùy "Sửa dashboard OPS") — mig 202611151957 ĐÃ ÁP
+
+- **Trước:** `fn_ops_dashboard` (tab "Của tôi" app OPS) mỗi lượt mở gọi thẳng `fn_ops_viec_thang(v_tu, v_den)` = tính việc cả tháng của mọi OPS. TA / GV đã đọc bảng tính sẵn từ 11/11, OPS bị sót
+  dù `dash_viec_thang_luu` loai 'ops' đã có từ 13/11 (bảng xếp hạng chung + tích luỹ trên CÙNG màn đang đọc nó ⇒ hai khối trên một màn có thể lệch nhau tới 10 phút).
+- **Sau:** đọc `_dash_viec_thang('ops', p_ym)` (≤ 10 phút), trả thêm `tinhLuc`. Công thức đếm / xếp hạng / ngưỡng không đổi; khoá `ten_lop` trong items giữ nghĩa (tên việc). Quyền gọi (ACL) giữ nguyên, hàm vẫn invoker.
+  Migration có khoá md5 thân hàm cũ. Bảng tạm giữ nguyên (đã soát K25: không cần index) ⇒ mục cổng K25 vẫn 16.
+- **So cũ–mới (19:59, vai OPS thật qua `request.jwt.claims`, mỗi ca MỘT giao dịch `repeatable read`: làm tươi bảng tính sẵn → gọi cũ → áp → gọi mới → rollback):**
+  **8 / 8 ca chạy được KHỚP** (4 nhân sự có việc OPS + 1 nhân sự ngoài OPS × tháng 10, 11; so mọi khoá trừ `tinhLuc`, thứ tự items cũng trùng). 4 ca còn lại (2 tài khoản) không giả vai được:
+  hàm CŨ đã báo "Không xác định được nhân sự" trước khi áp bản mới (tài khoản không còn nối được nhân sự đang làm) ⇒ không phải lệch.
+  Thời gian đo từ máy làm việc (gồm ~40–50 ms đường truyền): cũ tb 130 ms → mới tb 56 ms. Số cộng dồn pss trước đó (tb 449 ms × 14 lượt) gồm cả lượt nguội.
+- **Sau khi áp (20:01):** gọi lại bằng vai OPS đông việc nhất (60 việc, hạng 1/4), ba lượt trong một giao dịch rồi rollback: lượt đầu 138 ms (bảng tính sẵn đã quá 10 phút ⇒ tính lại, bằng mức cũ), lượt 2–3 **45 ms / 44 ms** (đọc bảng tính sẵn; gần như chỉ còn đường truyền). `check:kien-truc` ✔ (không mục nào tăng). `tsc` chỉ còn lỗi cũ `src/lib/pdfRender.ts` (không phải của lượt này).
+- **Client:** `src/lib/opsdash.ts` thêm `tinhLuc?`; `src/screens/ops/DashOps.tsx` chú thích khối tiến trình ghi "Số tính lúc HH:MM (làm mới ≤10 phút)" như màn TA. CHƯA mở trên app bằng tài khoản OPS thật (không có phiên đăng nhập OPS) — DB chạy được ngay không cần deploy; dòng "số tính lúc" chỉ hiện sau khi Thùy deploy app OPS.
+- `npm run schema` KHÔNG chạy: chữ ký hàm không đổi, và `schema.md` đang có một dòng lệch của phiên khác (không cuốn vào commit này).

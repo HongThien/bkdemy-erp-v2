@@ -118,7 +118,7 @@ export default function DashOps({ profile }: { profile?: MyProfile }) {
             {box === 'huongdan' && <HuongDanScreen vaiTro="ops" />}
             {box === 'tientrinh' && (data
               ? <DatChuanScreen me={me} items={data.items} tabTen={TAB_TEN} lyDoTen={{}}
-                  chuThich="Việc = Report + Điểm danh + Báo tan + Chuẩn bị phòng + Coi test đầu vào, mỗi loại gộp theo CA bạn trực thành 1 việc (đạt khi ≥90% mục trong ca đó đạt). Trễ/thiếu tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt."
+                  chuThich={`Việc = Report + Điểm danh + Báo tan + Chuẩn bị phòng + Coi test đầu vào, mỗi loại gộp theo CA bạn trực thành 1 việc (đạt khi ≥90% mục trong ca đó đạt). Trễ/thiếu tính theo GẬY đã chốt. Việc trước 01/09/2026 luôn tính đạt.${data.tinhLuc ? ` Số tính lúc ${new Date(data.tinhLuc).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })} (làm mới ≤10 phút).` : ''}`}
                 />
               : <p className="text-center text-[13px] text-[#63709A]">Đang tính…</p>)}
           </div>
