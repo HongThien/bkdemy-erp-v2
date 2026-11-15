@@ -81126,3 +81126,11 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Từ sau các đợt tối ưu:** biểu đồ 24 giờ gần nhất (CN 15/11, có lớp buổi sáng) mỗi nhóm ≤ ~13, tổng ước ≤ ~40 (số trung bình theo khoảng; gai ngắn như Storage 15 lúc 15:27 không hiện).
 - **Kết luận:** kết nối cạn là HỆ QUẢ của hàm chậm + lô của máy chạy cùng lúc, không phải bệnh riêng. Hàm chậm đã xử lý ⇒ ngày thường còn dư ~20 chỗ. Nhưng nhu cầu tối đa của chính hệ (PostgREST ~20 + Storage ~15 + Reserved ~8 + app phụ huynh 7 + pooler tới 8 + Auth 3 ≈ 61) vẫn LỚN HƠN trần 60 ⇒ một tối nghẽn nữa là chạm trần lại.
 - **Đề xuất (chưa làm):** ① trần kết nối cho `claude_build` — `alter role claude_build connection limit 10;` (chạy bằng `postgres`; quá 10 script cùng lúc thì script báo lỗi, app không sao) · ② nâng gói máy trước mốc 1.000 HS · ③ không giảm pool PostgREST / FDW / Realtime (không phải thủ phạm ở đỉnh).
+
+### 15/11 (23:00) — Kết nối DB sau các đợt tối ưu: đỉnh 45 / 60 · giá nâng gói máy Supabase (Thùy hỏi)
+
+- **Ảnh Thùy gửi — đỉnh SAU khi sửa: 14/11 14:00, tổng 45 (75 %):** Storage **15** · Other roles 12 · PostgREST 9 · Reserved 8 · Auth 1 · Postgres 0. Nhóm đẩy đỉnh giờ là Storage (trần pool của nó có vẻ là 15), không còn là PostgREST.
+  Chưa biết Storage 15 lúc đó là người dùng xem ảnh / tài liệu hay script đẩy ảnh lên kho của các phiên Claude (14/11 chiều có nhiều lô đề đang chạy) — chưa kiểm.
+- **Giá gói máy Supabase (tra trang giá + tài liệu của Supabase 15/11; tính theo giờ, số tháng là xấp xỉ):** Micro ~10 USD (1 GB RAM, 60 kết nối, pooler 200) · Small ~15 USD (2 GB, 90, 400) · Medium ~60 USD (4 GB, 120, 600) · Large ~110 USD (8 GB, CPU riêng, 160, 800) · XL từ ~210 USD.
+  Gói Pro có sẵn 10 USD tín dụng máy mỗi tháng (đủ một máy Micro) ⇒ Micro → Small cho project ERP = **thêm ~5 USD / tháng**; lên Medium = thêm ~50 USD / tháng.
+- **Đề xuất:** Small là đủ cho hiện tại (45 / 90 = 50 %, RAM gấp đôi ⇒ bớt lượt nguội); Medium / Large để dành cho mốc 1.000+ sau khi có số thử tải (đợt 6). Đổi gói phải khởi động lại DB ⇒ làm ngoài giờ học. Chưa làm — Thùy quyết và bấm trên dashboard.
