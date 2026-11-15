@@ -187,7 +187,7 @@ ngày bật cổng ghi lại số hiện tại, từ đó số mới > số cũ 
 | Hàm security definer không có cổng (regex + danh sách miễn có lý do) | catalog | chỉ giảm |
 | View không `security_invoker` | catalog | 0 |
 | Khoá ngoại không có index | catalog | chỉ giảm; bảng mới = 0 |
-| Hàm dựng bảng tạm mà thân thiếu `create index` hoặc `analyze` (K25) | catalog | chỉ giảm (15/11: 16) |
+| Hàm dựng bảng tạm mà thân thiếu `analyze` (K25) | catalog | chỉ giảm (15/11: 15) |
 | Index tạo quá 7 ngày mà `idx_scan = 0` | pg_stat | cảnh báo |
 | Hàm client gọi có trung bình > ngân sách (§5) | pg_stat_statements | cảnh báo → ✗ sau 2 tuần |
 | Job tính sẵn: tuổi khoá cũ nhất, lượt lỗi 24 h | `tinh_san_chay` | cảnh báo |
@@ -234,12 +234,16 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
   Bảng mới có cột nội dung dài: khai đường đọc hẹp ngay lúc tạo bảng (phiếu câu 8). — *`bai_test_cau` ~1,5 KB/dòng: sinh bài tự luyện mở 3.449 trang heap; `dai_cau_hoi`
   ~1,2 KB/dòng: lấy câu khối 12 mở 17.410 trang → 3 sau khi có index. Ở 10× HS, `bai_test_cau` ~1,7 GB không nằm trong bộ nhớ được.* — `explain (analyze, buffers)` ra
   Index Only Scan với Heap Fetches ≈ 0; hiệu số `pg_statio_user_tables.heap_blks_read` trước–sau; đo cả ẤM lẫn NGUỘI (K19).
-- **K25. Hàm còn dùng bảng tạm: tra lặp thì phải có index + `analyze` ngay trong hàm, và không được gọi lặp trong MỘT giao dịch.** K8 vẫn giữ: hàm đọc mới không dùng bảng tạm.
-  Luật này cho hàm ghi / hàm tổng hợp theo kỳ và hàm cũ chưa viết lại: bảng tạm bị truy vấn con quét nhiều lần ⇒ `create index` trên cột tra + `analyze` trước khi dùng.
+- **K25. Hàm còn dùng bảng tạm: `analyze` ngay sau khi tạo; bị tra lặp thì thêm index; và không được gọi lặp trong MỘT giao dịch.** K8 vẫn giữ: hàm đọc mới không dùng bảng tạm.
+  Luật này cho hàm ghi / hàm tổng hợp theo kỳ và hàm cũ chưa viết lại. **Bảng tạm mới KHÔNG có thống kê ⇒ planner coi nó ~10 trang (bảng 2 cột ≈ 1.700 dòng) dù thật chỉ vài dòng
+  ⇒ đem nối với bảng lớn là chọn quét cả bảng lớn** — `analyze <bảng tạm>` (dưới 1 ms) là bắt buộc trước câu nối đầu tiên. Bảng tạm bị truy vấn con quét nhiều lần ⇒ thêm `create index` trên cột tra.
   Mỗi lượt gọi hàm kiểu này giữ khoá tới hết giao dịch ⇒ vòng lặp gọi nhiều lần phải commit / rollback giữa các lượt. — *`fn_traogiai_thang`: 10 bảng tạm, mỗi (lớp × HS)
   chạy 11 truy vấn con quét cả bảng; thêm 5 index + analyze, công thức không đổi một chữ: 1,4–3,0 s → 0,5 s. Gọi 150+ lượt trong một giao dịch ⇒ cạn bảng khoá chung giờ có lớp (15/11).* —
-  đếm hàm `public` có `create temp table` mà thân thiếu `create index` hoặc `analyze` (`pg_proc.prosrc`): **15/11 = 16 / 17 hàm**; đã soát cả 16 bằng cách đọc thân hàm (chưa đo): không hàm nào đang chậm VÌ bảng tạm thiếu index, nên 16 là mức nền để chặn hàm mới, không phải 16 việc phải trả (chi tiết DEVLOG 15/11);
-  số này chỉ được giảm. Cổng `check:kien-truc` đếm ở mục `db_ham_bang_tam_thieu_index` (trần 16, thêm 15/11) — hàm mới dựng bảng tạm mà thiếu index/analyze ⇒ ✗.
+  *`fn_recompute_exp_thang` (chạy mỗi lượt đóng ET / BTVN): bảng tạm 4–9 buổi không có thống kê ⇒ quét cả `gami_grades` 35 MB mỗi lượt; thêm MỘT câu `analyze`: 97 → 44 ms khi ấm,
+  câu nối 70 → 1–3 ms, lượt nguội từng tới 1,7 s (mig 202611152202; so cũ–mới 66 ca, 6.126 dòng sổ, lệch 0).* —
+  đếm hàm `public` có `create temp table` mà thân thiếu `analyze` (`pg_proc.prosrc`): **15/11 = 15 hàm** — số này chỉ được giảm; cổng `check:kien-truc` mục `db_ham_bang_tam_thieu_analyze` (trần 15), hàm mới ⇒ ✗.
+  **Bài học về cách soát (15/11):** lượt soát đầu chỉ ĐỌC thân 16 hàm và kết luận "0 hàm cần sửa" — SAI một hàm: đọc code thấy bảng tạm nhỏ, không thấy được kế hoạch nối nó với bảng lớn.
+  Muốn biết thì phải `explain (analyze, buffers)` câu nối có / không có `analyze`. 15 hàm còn lại đã đọc lại theo tiêu chí này: bảng tạm của chúng không nối với bảng lớn (chi tiết DEVLOG 15/11) — chưa đo từng hàm.
 - **K26. Chạy thử trên DB sống phải tính ngân sách KHOÁ, GIÂY và GIỜ — rollback không có nghĩa là vô hại.**
   (a) DDL trên bảng app đang đọc (`alter table`, `create index` không concurrently, `drop`) KHÔNG nằm trong giao dịch thử dài: migration riêng, giao dịch ngắn. Lượt thử dài chỉ chứa
   `create or replace function` + DML rồi rollback. (b) So cũ–mới: mỗi ca một giao dịch ngắn (gọi cũ → áp → gọi mới → rollback), mức `repeatable read` để dữ liệu không đổi giữa hai lượt gọi.

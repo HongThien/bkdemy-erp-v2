@@ -81014,3 +81014,26 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   Mig 202611151055 của phiên giải tháng (báo app phụ huynh) cần dòng đổi chủ này; nó GỬI 76 THÔNG BÁO cho phụ huynh ⇒ Claude không tự áp, chờ Thùy nói rõ.
 - `check:kien-truc` ✔ sau 3 migration (không mục nào tăng). `npm run schema` không chạy (schema.md đang lệch 1 dòng của phiên khác; các migration trên không đổi cột / chữ ký hàm cũ, chỉ thêm 2 hàm mới).
 - Đo đóng ET (`fn_recompute_exp_thang`): kịch bản `et-do.mjs` hẹn chạy sau 22:00 — kết quả ở mục sau.
+
+### 15/11 (22:01–22:15) — Đóng ET / BTVN: `fn_recompute_exp_thang` quét cả `gami_grades` vì bảng tạm thiếu `analyze` — mig 202611152202 ĐÃ ÁP · SỬA kết luận soát K25
+
+- **Đo 22:01 (ngoài khung 17–22, DB 1 lượt đang chạy / 38 kết nối; `et-do.mjs`: mỗi ca MỘT giao dịch rồi rollback, thời gian từng câu lệnh đo TRONG DB bằng `clock_timestamp()` trong khối DO):**
+  6 ca (3 lớp × tháng 10, 11). Hàm thật khi ấm 92–116 ms; **lượt đầu tiên của phiên đo (nguội) 1.718 ms**.
+  Từng bước (ms, ca điển hình): tạo `_ret_buoi` 1 · `_ret_et` 4–11 · `_ret_btvn` 10–15 · **`_ret_acc` 55–78** · `_ret_hs` 2–4 · `_ret_adj` 2–4 · 3 lệnh xoá sổ 0,5–4 · chèn sổ + trigger 4–12 · tổng ~100.
+- **Gốc:** `_ret_buoi` (4–9 buổi) không có thống kê ⇒ planner ước 1.700 dòng (bảng mới = 10 trang) ⇒ bước `_ret_acc` chọn Hash Join + Seq Scan `gami_grades` (204.829 dòng, 4.513 trang = 35 MB) + Seq Scan `gami_session_problems` (760 trang):
+  câu nối 70–86 ms, 5.273 trang. Có `analyze _ret_buoi` ⇒ ước 4–9 dòng ⇒ Nested Loop theo `gami_session_problems_ma_cau_idx` + `gami_grades_problem_id_hoc_sinh_id_key`: **0,6–3,3 ms, 300–2.400 trang**.
+  Hai câu nối còn lại (`gami_elo_history`, `btvn_ket_qua`) vẫn quét cả bảng ở cả hai kế hoạch (bảng nhỏ 6 nghìn / 8 nghìn dòng, 2–3 ms; không có index theo `buoi_hoc_id`) — chưa đáng thêm index.
+  Số cộng dồn của người dùng thật (tb ~0,8 s, max 7,4 s) khớp với lượt NGUỘI: 35 MB `gami_grades` không nằm sẵn trong bộ nhớ thì mỗi lượt đóng phải đọc lại từ đĩa.
+- **Sửa:** chèn một câu `analyze _ret_buoi;` ngay sau khi tạo bảng tạm (thay chuỗi khớp đúng một lần + khoá md5). Không đổi công thức.
+- **So cũ–mới (22:05, `et-so.mjs`, mỗi ca MỘT giao dịch `repeatable read`: gọi cũ → chụp sổ của lớp-tháng → rollback về mốc → áp → gọi mới 2 lượt → chụp → so → rollback):**
+  22 lớp (2 lớp nhiều sổ nhất mỗi khối 3 → 12, 4T, 5T + 1 lớp không có sổ) × tháng 9, 10, 11 = **66 ca, 6.126 dòng `gami_exp_ledger` — KHỚP 66 / 66** (cả giá trị hàm trả lẫn từng dòng sổ).
+  Thời gian trong DB: **cũ tb 97 ms (trung vị 98, max 163) → mới tb 44 ms (trung vị 43, max 64)**. Lợi lúc nguội và lúc dữ liệu gấp 10 lớn hơn nhiều (bản cũ quét cả bảng, bản mới chỉ đọc đúng câu của các buổi trong tháng) — CHƯA đo được lượt nguội của bản mới.
+- **⛔ SỬA KẾT LUẬN SOÁT K25 (mục "tối, sau mục 19:55" ở trên ghi "0 / 16 hàm đang chậm vì bảng tạm" — SAI một hàm).** Lượt soát đó chỉ ĐỌC thân hàm: thấy bảng tạm nhỏ, số lần đọc cố định ⇒ kết luận không cần gì.
+  Đọc code không thấy được KẾ HOẠCH nối bảng tạm với bảng lớn. Đúng phải là: **1 / 16 hàm cần sửa (`fn_recompute_exp_thang`, thiếu `analyze`), đã sửa.**
+  Đã đọc lại 15 hàm còn lại theo đúng tiêu chí "bảng tạm có nối với bảng lớn không": dashboard TA/GV/OPS + xếp hạng chung (chỉ nối `nhan_su`) · `fn_hs_rank_cua_toi`, `fn_thanh_tuu_thang`, `_ts_dang_ky_test`, `fn_btyeu_dong_ca` (không nối bảng lớn) ·
+  `fn_hs_album` (`hs_huy_hieu_dat` nhỏ) · `fn_the_gioi_kenh` (bảng tin / bình luận nhỏ) · `fn_dong_phase` (`gami_elo` nhỏ; `gami_elo_history` quét cả bảng vì không có index — không do bảng tạm) ·
+  `fn_tl_bdm_et_ma_de` (`ma_cau in (select … from _et_vt3)` vào 6 bảng câu hỏi: ước ~430 dòng, đi index `ma_cau`) · `fn_chap_nhan_dap_an` (cập nhật `bai_lam_cau` theo khoá chính) · `fn_tl_bdm_chuyen_luu_tru`, `fn_dai_chuyen_chuyen_de` (công cụ một lần).
+  Vẫn là ĐỌC, chưa `explain` từng hàm ⇒ độ tin thấp hơn một phép đo; hai hàm đáng đo nếu sau này chậm: `fn_tl_bdm_et_ma_de`, `fn_chap_nhan_dap_an`.
+- **Cổng + spec:** mục cổng đổi tiêu chí từ "thiếu index HOẶC analyze" (16) sang **"thiếu analyze" (15)** — khoá `db_ham_bang_tam_thieu_analyze` thay `db_ham_bang_tam_thieu_index` trong `tran.json` (lý do: thứ gây hại đo được là thiếu thống kê; index chỉ cần khi tra lặp, không dò được bằng chữ).
+  `spec-kien-truc.md` K25 viết lại: `analyze` ngay sau khi tạo bảng tạm là bắt buộc, kèm số đo và bài học "soát bằng đọc code không thay được `explain`". `check:kien-truc` ✔.
+- **Báo giải tháng sang app phụ huynh (mig 202611151055 của phiên khác):** Thùy chọn "Áp ngay tối nay", nhưng 21:59 `thong_bao_ph` vẫn thuộc chủ `postgres` (SQL ở file 202611152145 chưa chạy) ⇒ CHƯA áp. Đã soát trước: thân `_giai_ghi_nhan` trong mig khớp bản đang chạy + đúng phần thêm; 76 giải tháng 10 (45 có xu, 31 không xu).
