@@ -81109,3 +81109,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   Không nhóm nào tự nó gần 60. Chưa đọc được TỔNG ở đỉnh (cần rê chuột vào điểm cao nhất); nếu ba nhóm cùng lên đỉnh thì 20 + 23 + 15 + 10 + 2 = 70 > 60 — chưa có bằng chứng điều đó đã xảy ra, cũng chưa có bằng chứng là không.
 - **Suy đoán CHƯA kiểm:** gai của "Other roles" (ngoài 7 kết nối thường trực của app phụ huynh + 2 của pooler) và gai Storage nhiều khả năng là script / trạm chạy song song của các phiên Claude (soạn–soát đề, đẩy ảnh lên kho) — cùng loại rủi ro với K22 (việc máy chen giờ học). Muốn chắc: đếm `pg_stat_activity` theo `usename` trong lúc một lô đang chạy.
 - **Kết luận tạm:** chưa cần giảm gì gấp; rủi ro là lúc lô của máy trùng giờ có lớp. Đề xuất chưa làm: đặt trần kết nối riêng cho `claude_build` (`alter role … connection limit N`, phải chạy bằng `postgres`) để lô của máy không ăn hết chỗ của app — hỏng thì script báo lỗi chứ app không sao.
+
+### 15/11 (22:50) — Kết nối DB: Thùy đọc trên dashboard "Max chắc là 58 59 gì đấy" ⇒ ĐỈNH THẬT SÁT TRẦN 60
+
+- Sửa kết luận tạm của mục 22:45 ("chưa cần giảm gì gấp"): tổng kết nối ở điểm cao nhất trong 7 ngày là **~58–59 / 60** (Thùy rê chuột trên biểu đồ; chưa có ảnh nên chưa biết nhóm nào chiếm bao nhiêu ở điểm đó, và chưa biết đỉnh rơi vào giờ nào).
+  ⇒ Số 59 Claude đếm lúc 15:27 hoá ra gần với cách Supabase tự đếm (họ tính cả nhóm "Reserved" vào 60); mục 22:35 nói "đếm thừa" là đúng về cơ chế nhưng KHÔNG làm rủi ro nhỏ đi. Chạm 60 ⇒ lượt kết nối mới bị từ chối (app báo lỗi, cron lỗi kết nối).
+- **Đề xuất (chưa làm, đều cần Thùy):** ① nâng gói máy Micro → Small (trần kết nối cao hơn, RAM gấp đôi — cũng đỡ hiện tượng "lượt nguội chậm gấp nhiều lần" đo cả ngày nay; nâng gói phải khởi động lại DB vài phút ⇒ làm ngoài giờ học) ·
+  ② đặt trần kết nối cho `claude_build` (`alter role claude_build connection limit N`, chạy bằng `postgres`) để lô của máy không ăn chỗ của app · ③ xem nhóm nào phình ở đúng điểm đỉnh rồi mới quyết giảm pool PostgREST / FDW app phụ huynh / Realtime.
