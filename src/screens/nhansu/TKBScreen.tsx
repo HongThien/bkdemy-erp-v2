@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { listAllTKB, listLop, dongTKB, type TKBSlot, type Lop } from '../../lib/nhansu'
-import { listPhong, kiemTrungTKB, luuTKB } from '../../lib/phong'
+import { listPhong, kiemTrungTKB, luuTKB, type Phong } from '../../lib/phong'
 import TrungPhongList, { useKiemTrung } from '../../components/TrungPhongList'
 import SearchSelect from '../../components/SearchSelect'
 import { Shell, Field, inp } from '../kho/ui'
@@ -57,6 +57,7 @@ export default function TKBScreen() {
   const [slots, setSlots] = useState<TKBSlot[]>([])
   const [dsLop, setDsLop] = useState<Lop[]>([])
   const [rooms, setRooms] = useState<string[]>([]) // ma_phong theo thu_tu, nguồn danh mục `phong`
+  const [dsPhong, setDsPhong] = useState<Phong[]>([]) // danh mục đủ (tên phòng) — cho bản chụp ảnh / in
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [sel, setSel] = useState<TKBSlot | null>(null)
@@ -66,7 +67,7 @@ export default function TKBScreen() {
 
   async function reload() {
     setLoading(true); setErr(null)
-    try { const [s, l, p] = await Promise.all([listAllTKB(), listLop(), listPhong()]); setSlots(s); setDsLop(l); setRooms(p.map((x) => x.ma_phong)) }
+    try { const [s, l, p] = await Promise.all([listAllTKB(), listLop(), listPhong()]); setSlots(s); setDsLop(l); setRooms(p.map((x) => x.ma_phong)); setDsPhong(p) }
     catch (e: any) { setErr(e.message ?? String(e)) } finally { setLoading(false) }
   }
   useEffect(() => { reload() }, [])
@@ -168,7 +169,7 @@ export default function TKBScreen() {
 
       {sel && <SlotModal s={sel} rooms={rooms} slots={slots} onClose={() => setSel(null)} onChanged={() => { setSel(null); reload() }} />}
       {adding && <AddModal thu={adding.thu} tu={adding.tu} den={adding.den} dsLop={dsLop} rooms={rooms} onClose={() => setAdding(null)} onAdded={() => { setAdding(null); reload() }} />}
-      {anh && <TkbAnh view={view} mon={mon} onClose={() => setAnh(false)} />}
+      {anh && <TkbAnh view={view} mon={mon} dsPhong={dsPhong} onClose={() => setAnh(false)} />}
     </div>
   )
 }
@@ -191,12 +192,29 @@ const MON_HEX: Record<string, { bd: string; bg: string; fg: string }> = {
 }
 const monHex = (m?: string) => (m && MON_HEX[m]) || { bd: '#cbd5e1', bg: '#f8fafc', fg: '#334155' }
 
-// Chụp ảnh TKB = bảng INLINE-HEX trong popup sạch → html2canvas (CDN) → clipboard (paste Zalo). Đúng pattern V1.
-function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose: () => void }) {
+// Chụp ảnh / in TKB = bảng INLINE-HEX trong popup sạch → html2canvas (CDN) → clipboard (paste Zalo) hoặc in. Đúng pattern V1.
+// Bố cục (Thùy 15/11): 2 PHẦN — Ban ngày (khung trước 18h) · Buổi tối (khung từ 18h) — mỗi phần 1 trang A4 NGANG.
+// Mỗi ô (khung × thứ) = lưới 2 CỘT đủ MỌI phòng ở vị trí cố định (phòng số trước, phòng có tên sau); phòng trống vẫn chừa chỗ.
+const MOC_TOI = 1080 // 18:00
+const PHAN_ANH = [
+  { ten: 'Ban ngày', gio: '8h – 18h', loc: (b: Band) => b.lo < MOC_TOI, co: { h: 25, ten: 11, phu: 7, xep: false } },
+  { ten: 'Buổi tối', gio: '18h – 21h', loc: (b: Band) => b.lo >= MOC_TOI, co: { h: 46, ten: 15, phu: 9, xep: true } }, // tối chỉ 2 khung ⇒ thẻ cao, phòng và giờ mỗi thứ 1 dòng
+]
+const laPhongSo = (p: Phong) => /^P\d+$/.test(p.ten_phong)
+// Nhãn phòng trên bản in: "P101" → "101"; phòng có tên → tên ("Tầng lửng" → "Lửng").
+function nhanPhong(p: Phong): string {
+  if (laPhongSo(p)) return p.ten_phong.slice(1)
+  const t = p.ten_phong.replace(/^Tầng\s+/i, '')
+  return t.charAt(0).toUpperCase() + t.slice(1)
+}
+
+function TkbAnh({ view, mon, dsPhong, onClose }: { view: TKBSlot[]; mon: string; dsPhong: Phong[]; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const inBand = (b: Band, thu: number) => view.filter((s) => s.thu === thu && toMin(s.gio_bat_dau) < b.hi && toMin(s.gio_ket_thuc) > b.lo).sort((a, b2) => toMin(a.gio_bat_dau) - toMin(b2.gio_bat_dau))
-  const bands = BANDS.filter((b) => !b.an || THU_COLS.some((t) => inBand(b, t).length > 0))
   const tieu_de = `Thời khóa biểu${mon !== 'all' ? ` · ${mon}` : ''}`
+  // Thứ tự vị trí: phòng số theo mã (101 102 201 … 401), rồi phòng có tên (Lễ tân, Lửng) theo thu_tu.
+  const phongs = [...dsPhong.filter(laPhongSo).sort((a, b) => a.ma_phong.localeCompare(b.ma_phong)), ...dsPhong.filter((p) => !laPhongSo(p))]
+  const maPhong = phongs.map((p) => p.ma_phong)
 
   function handleCopy() {
     const el = cardRef.current
@@ -205,12 +223,14 @@ function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose:
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${location.origin}/">
 <title>${tieu_de}</title>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
-<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f3f4f6;padding:12px;display:flex;flex-direction:column;align-items:center}
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f3f4f6;padding:12px;display:flex;flex-direction:column;align-items:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .btn-row{display:flex;gap:8px;margin-bottom:12px}.btn{padding:10px 14px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}.btn-copy{background:#16a34a;color:#fff}.btn-print{background:#2563eb;color:#fff}.btn:hover{opacity:.85}
-#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}@media print{.btn-row,#msg{display:none!important}}</style></head><body>
-<div class="btn-row"><button class="btn btn-copy" onclick="copyImg()">📋 Copy ảnh (paste vào Zalo)</button><button class="btn btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button></div>
-<div id="cap">${el.outerHTML}</div><p id="msg"></p>
-<script>async function copyImg(){var msg=document.getElementById('msg');msg.textContent='⏳ Đang xử lý...';try{var node=document.getElementById('cap');var canvas=await html2canvas(node,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false,windowWidth:node.scrollWidth,windowHeight:node.scrollHeight,width:node.scrollWidth,height:node.scrollHeight});canvas.toBlob(async function(blob){try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);msg.textContent='✅ Đã copy! Paste (Ctrl+V) vào Zalo.';}catch(e){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=${JSON.stringify(fname)};a.click();URL.revokeObjectURL(url);msg.textContent='✅ Đã tải file ảnh!';}},'image/png');}catch(e){msg.textContent='Lỗi: '+e.message;}}<\/script>
+#msg{font-size:12px;color:#16a34a;margin-top:6px;min-height:18px}
+@page{size:A4 landscape;margin:7mm}
+@media print{.btn-row,#msg{display:none!important}body{background:#fff;padding:0;display:block}.trang{box-shadow:none!important;border-radius:0!important;padding:0!important;margin:0 auto!important;break-after:page;page-break-after:always}.trang:last-child{break-after:auto;page-break-after:auto}}</style></head><body>
+<div class="btn-row"><button class="btn btn-copy" onclick="copyImg()">📋 Copy ảnh (paste vào Zalo)</button><button class="btn btn-print" onclick="window.print()">🖨️ In A4 ngang / Lưu PDF</button></div>
+<div id="cap">${el.innerHTML}</div><p id="msg"></p>
+<script>async function copyImg(){var msg=document.getElementById('msg');msg.textContent='⏳ Đang xử lý...';try{var node=document.getElementById('cap');var canvas=await html2canvas(node,{scale:2,backgroundColor:'#f3f4f6',useCORS:true,logging:false,windowWidth:node.scrollWidth,windowHeight:node.scrollHeight,width:node.scrollWidth,height:node.scrollHeight});canvas.toBlob(async function(blob){try{await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);msg.textContent='✅ Đã copy! Paste (Ctrl+V) vào Zalo.';}catch(e){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=${JSON.stringify(fname)};a.click();URL.revokeObjectURL(url);msg.textContent='✅ Đã tải file ảnh!';}},'image/png');}catch(e){msg.textContent='Lỗi: '+e.message;}}<\/script>
 </body></html>`
     const popup = window.open('', '_blank', 'width=1200,height=860,scrollbars=yes')
     if (!popup) { alert('Trình duyệt chặn popup. Bật "Allow pop-ups" cho site này.'); return }
@@ -220,46 +240,71 @@ function TkbAnh({ view, mon, onClose }: { view: TKBSlot[]; mon: string; onClose:
   return (
     <div className="fixed inset-0 z-[90] flex flex-col bg-slate-900/70" onClick={onClose}>
       <div className="flex items-center gap-3 border-b border-slate-700 bg-slate-800 px-4 py-2.5 text-white" onClick={(e) => e.stopPropagation()}>
-        <span className="text-sm font-semibold">Chụp ảnh thời khóa biểu</span>
-        <button onClick={handleCopy} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500">📋 Copy ảnh</button>
+        <span className="text-sm font-semibold">Chụp ảnh / in thời khóa biểu</span>
+        <span className="text-[12px] text-slate-300">2 trang A4 ngang: Ban ngày · Buổi tối</span>
+        <button onClick={handleCopy} className="ml-auto rounded-md bg-indigo-600 px-3 py-1 text-sm font-medium hover:bg-indigo-500">📋 Copy ảnh / 🖨️ In</button>
         <button onClick={onClose} className="rounded-md border border-slate-500 px-3 py-1 text-sm hover:bg-slate-700">Đóng</button>
       </div>
       <div className="min-h-0 flex-1 overflow-auto p-4" onClick={(e) => e.stopPropagation()}>
-        {/* Bảng INLINE-HEX (không class màu Tailwind) — đúng cái html2canvas chụp */}
-        <div ref={cardRef} style={{ margin: '0 auto', width: 'fit-content', background: '#ffffff', borderRadius: 14, padding: 16, boxShadow: '0 2px 8px rgba(0,0,0,.1)' }}>
-          <div style={{ fontSize: 18, fontWeight: 800, color: '#1e293b', marginBottom: 12, textAlign: 'center' }}>{tieu_de}</div>
-          <table style={{ borderCollapse: 'separate', borderSpacing: 4 }}>
-            <thead><tr>
-              <th style={{ width: 56 }}></th>
-              {THU_COLS.map((t) => <th key={t} style={{ background: '#1e293b', color: '#fff', fontSize: 12, fontWeight: 700, padding: '4px 8px', borderRadius: 6 }}>{THU_LABEL[t]}</th>)}
-            </tr></thead>
-            <tbody>
-              {bands.map((b) => (
-                <tr key={b.ten}>
-                  <td style={{ background: '#f1f5f9', borderRadius: 6, padding: 4, textAlign: 'center', verticalAlign: 'middle' }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: '#334155' }}>{b.ten.split('\n')[0]}</div>
-                    <div style={{ fontSize: 9, color: '#94a3b8' }}>{b.ten.split('\n')[1]}</div>
-                  </td>
-                  {THU_COLS.map((thu) => {
-                    const cell = inBand(b, thu)
-                    return (
-                      <td key={thu} style={{ minWidth: 96, background: '#f8fafc', borderRadius: 6, padding: 3, verticalAlign: 'top' }}>
-                        {cell.map((s) => {
-                          const c = monHex(s.lop?.mon)
+        {/* Bảng INLINE-HEX (không class màu Tailwind) — đúng cái html2canvas chụp. Rộng 1056px = vừa A4 ngang (lề 7mm). */}
+        <div ref={cardRef} style={{ margin: '0 auto', width: 'fit-content' }}>
+          {PHAN_ANH.map((ph) => {
+            const bands = BANDS.filter(ph.loc).filter((b) => !b.an || THU_COLS.some((t) => inBand(b, t).length > 0))
+            // Ban ngày có thêm khung trưa (5 khung) ⇒ hạ chiều cao thẻ để vẫn vừa 1 trang.
+            const co = !ph.co.xep && bands.length > 4 ? { ...ph.co, h: 22, ten: 10 } : ph.co
+            const the = (s: TKBSlot, nhan: string) => {
+              const c = monHex(s.lop?.mon)
+              return (
+                <div key={s.id} style={{ height: co.h, border: `1px solid ${c.bd}`, background: c.bg, color: c.fg, borderRadius: 4, padding: '0 2px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' }}>
+                  <div style={{ fontSize: co.ten, fontWeight: 700, lineHeight: 1.15, textAlign: 'center', whiteSpace: 'nowrap' }}>{s.lop?.ten_lop ?? '?'}</div>
+                  <div style={{ fontSize: co.phu, lineHeight: 1.15, display: 'flex', flexDirection: co.xep ? 'column' : 'row', alignItems: co.xep ? 'center' : undefined, justifyContent: 'space-between', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontWeight: 700 }}>{nhan}</span><span style={{ opacity: .85 }}>{hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)}</span>
+                  </div>
+                </div>
+              )
+            }
+            return (
+              <div key={ph.ten} className="trang" style={{ background: '#ffffff', borderRadius: 14, padding: 12, marginBottom: 16, boxShadow: '0 2px 8px rgba(0,0,0,.1)' }}>
+                <div style={{ fontSize: 16, fontWeight: 800, color: '#1e293b', marginBottom: 4, textAlign: 'center' }}>{tieu_de} · {ph.ten} ({ph.gio})</div>
+                <table style={{ width: 1056, tableLayout: 'fixed', borderCollapse: 'separate', borderSpacing: 3 }}>
+                  <thead><tr>
+                    <th style={{ width: 40 }}></th>
+                    {THU_COLS.map((t) => <th key={t} style={{ background: '#1e293b', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 8px', borderRadius: 5 }}>{THU_LABEL[t]}</th>)}
+                  </tr></thead>
+                  <tbody>
+                    {bands.map((b) => (
+                      <tr key={b.ten}>
+                        <td style={{ background: '#f1f5f9', borderRadius: 5, padding: 2, textAlign: 'center', verticalAlign: 'middle' }}>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: '#334155' }}>{b.ten.split('\n')[0]}</div>
+                          <div style={{ fontSize: 9, color: '#94a3b8' }}>{b.ten.split('\n')[1]}</div>
+                        </td>
+                        {THU_COLS.map((thu) => {
+                          // Ca có phòng trong danh mục → đúng vị trí phòng. Ca chưa gán phòng / phòng lạ / trùng chỗ → vẽ thêm bên dưới (không nuốt, không nhét sai phòng).
+                          const o: (TKBSlot | null)[] = maPhong.map(() => null)
+                          const du: TKBSlot[] = []
+                          for (const s of inBand(b, thu)) {
+                            const i = maPhong.indexOf(s.phong ?? '')
+                            if (i >= 0 && !o[i]) o[i] = s
+                            else du.push(s)
+                          }
                           return (
-                            <div key={s.id} style={{ border: `1.5px solid ${c.bd}`, background: c.bg, color: c.fg, borderRadius: 6, padding: '3px 5px', marginBottom: 3, textAlign: 'center' }}>
-                              <div style={{ fontSize: 12, fontWeight: 700, lineHeight: 1.2 }}>{s.lop?.ten_lop ?? '?'}</div>
-                              <div style={{ fontSize: 9, opacity: .8 }}>{hhmm(s.gio_bat_dau)}–{hhmm(s.gio_ket_thuc)} · {s.phong ?? '—'}</div>
-                            </div>
+                            <td key={thu} style={{ background: '#f8fafc', borderRadius: 5, padding: 2, verticalAlign: 'top' }}>
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+                                {phongs.map((p, i) => o[i] ? the(o[i]!, nhanPhong(p)) : (
+                                  <div key={p.ma_phong} style={{ height: co.h, border: '1px dashed #e2e8f0', borderRadius: 4, color: '#cbd5e1', fontSize: co.phu, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{nhanPhong(p)}</div>
+                                ))}
+                                {du.map((s) => the(s, s.phong ? s.phong.replace(/^P(?=\d)/, '') : '—'))}
+                              </div>
+                            </td>
                           )
                         })}
-                      </td>
-                    )
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
