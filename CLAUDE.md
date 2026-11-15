@@ -315,7 +315,7 @@
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - **`spec-kien-truc.md` — ĐỌC BẮT BUỘC trước khi thêm BẢNG / HÀM / MÀN mới hoặc bảng tính sẵn mới** (Thùy chốt 13/11, sau audit scale 1.000 → 10.000 HS trung tâm):
   §0b định hướng BK → hệ quả kiến trúc · sổ gốc ↔ bảng tổng hợp (màn chỉ đọc số tính sẵn) · MỘT khuôn tính sẵn · hàm màn gọi chỉ tốn theo một người / một lớp,
-  một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K23 + phiếu 10 câu cho mọi tính năng mới (§9)** · lộ trình 7 đợt (§10; đợt 0 + 1 đã xong 13/11).
+  một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K26 + phiếu 10 câu cho mọi tính năng mới (§9)** · lộ trình 7 đợt (§10; đợt 0 + 1 đã xong 13/11).
   **⭐ `npm run check:kien-truc` phải ✔ sau MỖI `npm run migrate` và trước commit đụng `src/lib` · `src/screens`** (chỉ đọc DB + code). Mục CỨNG phải = 0
   (bảng thiếu RLS · hàm/view hở với người chưa đăng nhập ngoài `scripts/kien-truc/cho-phep.json` · policy ghi mở). Mục TRẦN là nợ cũ, **chỉ được giảm**
   (`.from(` thẳng bảng · `setInterval` · `limit` lớn · `select('*')` · so sánh môn cứng · khoá ngoại thiếu index · hàm secdef không cổng · job cron…).

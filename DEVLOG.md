@@ -80896,3 +80896,12 @@ Thùy nêu 4 việc, làm được 3:
 - Sửa sau soát: 5 câu NDB01401 (trắc nghiệm) đáp án đều C ⇒ xáo vị trí phương án ở file nguồn TRƯỚC khi ghi; 3 câu NDB00913 "a,b∈ℝ" → "a,b∈ℤ" (sửa trong DB sau ghi vì chỗ sửa file nguồn không khớp chuỗi).
 - Lưu ý: NDB01401 chỉ có 6 câu gốc dùng được ⇒ 20 câu là 4–5 biến thể/gốc, cấu trúc na ná nhau (đổi số). Câu clone KHÔNG có hình (đề tự đủ bằng chữ).
 - Đính chính 15/11: 3 câu "a,b∈ℝ" của NDB00913 (chỉ số 21–23) KHÔNG nằm trong 20 câu đã ghi (4 câu cuối bị cắt do vượt số lượng) ⇒ không cần sửa DB. 3 câu GC000135–137 còn "k∈ℝ" là đúng (k thực).
+
+### 15/11 (17:40) — Thêm K24–K26 vào spec-kien-truc.md (Thùy "Thêm vào spec")
+
+- **K24** bảng dòng rộng phải có đường đọc hẹp (index `include`, hạ autovacuum scale factor, `create index concurrently` ngoài migrate rồi migration ghi sổ) · **K25** hàm còn dùng bảng tạm:
+  tra lặp ⇒ index + analyze trong hàm, không gọi lặp trong một giao dịch (K8 vẫn cấm bảng tạm trong hàm đọc mới) · **K26** chạy thử trên DB sống tính ngân sách khoá / giây / giờ.
+- **Số gốc cho K25 (đọc `pg_proc`, 17:35):** 17 hàm `public` có `create temp table`, 16 hàm thân thiếu `create index` hoặc `analyze` — `_ts_dang_ky_test`, `fn_btyeu_dong_ca`, `fn_chap_nhan_dap_an`,
+  `fn_dai_chuyen_chuyen_de`, `fn_dong_phase`, `fn_gv_dashboard`, `fn_hs_album`, `fn_hs_rank_cua_toi`, `fn_ops_dashboard`, `fn_recompute_exp_thang`, `fn_ta_dashboard`, `fn_thanh_tuu_thang`,
+  `fn_the_gioi_kenh`, `fn_tl_bdm_chuyen_luu_tru`, `fn_tl_bdm_et_ma_de`, `fn_xephang_chung`. CHƯA soát hàm nào thật sự tra lặp bảng tạm (bảng tạm vài dòng tra một lần thì không cần sửa).
+- **Chưa làm:** cổng `check:kien-truc` chưa có mục đếm cho K25; K26 chưa có máy kiểm (nợ K23). Phiếu 10 câu: câu 8 thêm vế đường đọc hẹp. CLAUDE.md + HANDOFF.md đổi chỗ trỏ "K1–K23" → "K1–K26".

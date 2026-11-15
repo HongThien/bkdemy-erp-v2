@@ -2,6 +2,7 @@
 
 > **Trạng thái: THÙY CHỐT 13/11/2026** (đã đối chiếu định hướng BK lần 1; chưa đọc được Notion North Star/Pillars/Principles). **Đợt 0a ĐÃ ÁP 13/11** (mig 202611131750); các đợt sau: nêu phạm vi → Thùy gật → làm.
 > Bằng chứng hiện trạng: `reports/audit-scale-13-11.md`.
+> **Cập nhật 15/11 (Thùy gật):** thêm **K24–K26** vào §9, rút từ bài học 14→15/11 (`HANDOFF-BAI-HOC.md`): bảng dòng rộng phải có đường đọc hẹp · bảng tạm trong hàm · chạy thử trên DB sống.
 > Đích (Thùy 13/11, đính chính tối 13/11): 1.000 → 2.000 → 10.000 đều là **HS CỦA TRUNG TÂM**. Không có khối HS ngoài trung tâm. Mốc 1.000 trong 6–12 tháng.
 > Nguyên tắc sửa (Thùy 13/11): **không vá từng lỗi — sửa kiến trúc từ trên xuống theo chuẩn ngành, và viết luật để tính năng sau không lặp lại.**
 
@@ -226,11 +227,31 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
 - **K22. Cách ly tải của máy khỏi giờ học.** Việc hàng loạt (bot kho, phiên Claude ghi nhiều dòng, script, làm mới nặng) chạy theo hàng đợi có ngân sách,
   ngoài 17–22 h, và **không được đánh bẩn số của HS vì thay đổi phía kho** trừ khi kết quả của em thật sự đổi. — *Bot gán câu buổi tối làm bẩn mastery hàng loạt; cron lỗi kết nối đúng giờ HS học.*
 - **K23. Luật nào cũng phải có máy kiểm hoặc số đo.** Luật chỉ dựa vào "phiên sau nhớ" coi như không có. — *System over Stars: nhiều phiên Claude song song, không nhớ nhau.*
+- **K24. Bảng dòng RỘNG phải có đường đọc HẸP.** Bảng mang cột nội dung dài (đề, lời giải, jsonb chụp — dòng từ ~1 KB) mà hàm tra theo khoá chỉ để lấy vài cột ngắn
+  ⇒ index `include` đúng các cột đó, và hàm chỉ chọn những cột index có. Bảng bị sửa nhiều ⇒ hạ `autovacuum_vacuum_scale_factor` cho bảng đó (Index Only Scan chỉ khỏi mở heap
+  với trang đã đánh dấu trong visibility map). Trên DB sống: `create index concurrently` chạy NGOÀI `migrate.mjs`, rồi một migration `create index if not exists` để ghi sổ.
+  Bảng mới có cột nội dung dài: khai đường đọc hẹp ngay lúc tạo bảng (phiếu câu 8). — *`bai_test_cau` ~1,5 KB/dòng: sinh bài tự luyện mở 3.449 trang heap; `dai_cau_hoi`
+  ~1,2 KB/dòng: lấy câu khối 12 mở 17.410 trang → 3 sau khi có index. Ở 10× HS, `bai_test_cau` ~1,7 GB không nằm trong bộ nhớ được.* — `explain (analyze, buffers)` ra
+  Index Only Scan với Heap Fetches ≈ 0; hiệu số `pg_statio_user_tables.heap_blks_read` trước–sau; đo cả ẤM lẫn NGUỘI (K19).
+- **K25. Hàm còn dùng bảng tạm: tra lặp thì phải có index + `analyze` ngay trong hàm, và không được gọi lặp trong MỘT giao dịch.** K8 vẫn giữ: hàm đọc mới không dùng bảng tạm.
+  Luật này cho hàm ghi / hàm tổng hợp theo kỳ và hàm cũ chưa viết lại: bảng tạm bị truy vấn con quét nhiều lần ⇒ `create index` trên cột tra + `analyze` trước khi dùng.
+  Mỗi lượt gọi hàm kiểu này giữ khoá tới hết giao dịch ⇒ vòng lặp gọi nhiều lần phải commit / rollback giữa các lượt. — *`fn_traogiai_thang`: 10 bảng tạm, mỗi (lớp × HS)
+  chạy 11 truy vấn con quét cả bảng; thêm 5 index + analyze, công thức không đổi một chữ: 1,4–3,0 s → 0,5 s. Gọi 150+ lượt trong một giao dịch ⇒ cạn bảng khoá chung giờ có lớp (15/11).* —
+  đếm hàm `public` có `create temp table` mà thân thiếu `create index` hoặc `analyze` (`pg_proc.prosrc`): **15/11 = 16 / 17 hàm**, chưa soát hàm nào thật sự tra lặp;
+  số này chỉ được giảm. Cổng `check:kien-truc` CHƯA có mục này — đếm tay cho tới khi thêm.
+- **K26. Chạy thử trên DB sống phải tính ngân sách KHOÁ, GIÂY và GIỜ — rollback không có nghĩa là vô hại.**
+  (a) DDL trên bảng app đang đọc (`alter table`, `create index` không concurrently, `drop`) KHÔNG nằm trong giao dịch thử dài: migration riêng, giao dịch ngắn. Lượt thử dài chỉ chứa
+  `create or replace function` + DML rồi rollback. (b) So cũ–mới: mỗi ca một giao dịch ngắn (gọi cũ → áp → gọi mới → rollback), mức `repeatable read` để dữ liệu không đổi giữa hai lượt gọi.
+  (c) Lượt thử lớn (hàng trăm ca, nhiều vòng) chạy ngoài giờ có người dùng và ngoài 17–22 h (K22). (d) Trước khi bấm chạy, viết ra: lượt này giữ khoá gì, trong bao lâu, bao nhiêu khoá,
+  ngốn bao nhiêu giây CPU. — *14/11: `alter table mastery_luu_san add column` gộp chung với 402 lượt so cũ–mới ⇒ bảng khoá ~7 phút, mọi lượt đọc treo tới trần 8 s.
+  15/11: 150+ lượt gọi hàm có bảng tạm trong một giao dịch chạm trần bảng khoá (`max_locks_per_transaction` 64 × 60 kết nối). 402 HS × 3 vòng ngốn 62 % một nhân trong 30 phút.* —
+  trong lúc thử, `pg_stat_activity` + `pg_locks`: không giao dịch nào của mình sống quá 60 s mà giữ `AccessExclusiveLock`, không phiên nào đang `wait_event_type = 'Lock'`;
+  ghi số đó vào DEVLOG cùng số trước–sau. Chưa có máy kiểm tự động — đây là luật đang nợ K23.
 
 ### Phiếu 10 câu cho MỌI tính năng mới (dán vào đầu spec tính năng)
 1. Thuộc miền nào, sở hữu bảng nào? 2. Mã gốc là cột nào, ai cấp? 3. Có nhãn `mon` chưa? 4. Ai được đọc/ghi — policy và cổng hàm là gì?
 5. Màn gọi những RPC nào lúc mở (mục tiêu: 1)? 6. Mỗi hàm đọc thuộc lớp chi phí nào, đo được bao nhiêu ms? 7. Có số nào cần tính sẵn — đơn vị tính, cái gì đánh bẩn?
-8. Index cho từng cột lọc/nối? 9. Có polling/realtime không — điều kiện dừng? 10. Dữ liệu lớn theo gì, hạn giữ bao lâu?
+8. Index cho từng cột lọc/nối — bảng dòng rộng đã có đường đọc hẹp chưa (K24)? 9. Có polling/realtime không — điều kiện dừng? 10. Dữ liệu lớn theo gì, hạn giữ bao lâu?
 
 ## 10. Lộ trình chuyển đổi (strangler — không viết lại, không dừng tính năng)
 
@@ -256,6 +277,6 @@ Dọn nhân bản hàm theo nhánh môn (35 họ × 3) và 137 hàm không ai g�
 
 ## 11. Chờ Thùy quyết
 
-1. **Chốt bộ luật K1–K23** ⇒ tôi đưa vào CLAUDE.md, có hiệu lực với mọi tính năng mới từ ngày chốt.
+1. **Chốt bộ luật K1–K23** (K24–K26 thêm 15/11, đã chốt) ⇒ tôi đưa vào CLAUDE.md, có hiệu lực với mọi tính năng mới từ ngày chốt.
 2. **Thứ tự**: đợt 0 trước tất cả (đề xuất), hay Thùy muốn ưu tiên khác.
 3. Cần Thùy xem giúp trên dashboard Supabase (tôi không đọc được): Authentication → "Allow new users to sign up" và "Confirm email"; API → "Max rows".

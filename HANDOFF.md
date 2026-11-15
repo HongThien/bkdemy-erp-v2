@@ -20,7 +20,7 @@
 ### ⭐⭐⭐ KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS (Thùy mở 13/11 · cập nhật 15/11) — ĐỌC `spec-kien-truc.md` TRƯỚC khi thêm bảng / hàm / màn
 
 **Đích (Thùy chốt):** 1.000 → 2.000 → 10.000 đều là HS CỦA TRUNG TÂM (không có HS ngoài). Mốc 1.000 trong 6–12 tháng. Không vá từng lỗi — sửa kiến trúc từ trên + viết luật.
-**Nguồn:** `spec-kien-truc.md` (kiến trúc đích, luật K1–K23, phiếu 10 câu, lộ trình 7 đợt, §2b gộp theo khuôn, §4 khuôn tính sẵn) · bằng chứng `reports/audit-scale-13-11.md` (**chưa commit** — còn tên các lỗ chưa bịt) · nhật ký chi tiết DEVLOG 13 → 15/11.
+**Nguồn:** `spec-kien-truc.md` (kiến trúc đích, luật K1–K26 — K24–K26 thêm 15/11: đường đọc hẹp cho bảng dòng rộng · bảng tạm trong hàm · chạy thử trên DB sống —, phiếu 10 câu, lộ trình 7 đợt, §2b gộp theo khuôn, §4 khuôn tính sẵn) · bằng chứng `reports/audit-scale-13-11.md` (**chưa commit** — còn tên các lỗ chưa bịt) · nhật ký chi tiết DEVLOG 13 → 15/11.
 **Tiến độ theo đợt (15/11):** đợt 0 quyền — còn 3 mục · đợt 1 hàng rào — xong · đợt 2 nền dữ liệu — xong phần đã định · đợt 3 tính sẵn — xong khuôn + các sổ nặng · đợt 4 client — xong phần chính · đợt 5 hàm chậm — hết điểm nóng đo được · **đợt 6 thử tải + chọn gói máy — CHƯA** · **gộp bảng theo khuôn — CHƯA bắt đầu**.
 
 **SỐ ĐO HIỆN TẠI (hiệu số hai lần chụp `_audit_pss()`, không phải số cộng dồn):**
@@ -61,7 +61,6 @@
 - 19 người có quyền ghi `gay` đều bật/tắt được miễn gậy cho người khác — có siết về người quản lý không?
 - Reset `pg_stat_statements` để dòng cảnh báo "hàm ≥ 1 giây" phản ánh hiện tại (tuỳ chọn).
 - Dashboard Supabase: "Allow new users to sign up", "Confirm email", API "Max rows" — chưa biết giá trị.
-- Bổ sung luật vào `spec-kien-truc.md` từ bài học 14→15/11 (index hẹp cho bảng dòng rộng · bảng tạm phải có index + analyze · luật chạy thử trên DB sống) — Claude đề xuất, chưa viết.
 
 **VIỆC KẾ TIẾP (đo một cửa sổ hiệu số trước khi chọn — memory `toi-uu-do-hieu-so-am-nguoi`):**
 1. **Xác nhận bằng số người dùng thật giờ đông** cho các index 15/11 (sinh bài tự luyện, gợi ý lùi buổi, cây bản đồ): script `theo.mjs` / `pss2.mjs` chỉ nằm ở scratchpad phiên 15/11 (có thể đã bị dọn) — cách làm: chụp `_audit_pss()` hai lần (lọc `rolname = 'authenticated'`, `query ~ 'pgrst_call'`, lấy hiệu số 10 phút). Cửa sổ 13:55–14:05 CN quá vắng, mới có 5 lượt.
