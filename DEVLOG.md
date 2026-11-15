@@ -81037,3 +81037,16 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Cổng + spec:** mục cổng đổi tiêu chí từ "thiếu index HOẶC analyze" (16) sang **"thiếu analyze" (15)** — khoá `db_ham_bang_tam_thieu_analyze` thay `db_ham_bang_tam_thieu_index` trong `tran.json` (lý do: thứ gây hại đo được là thiếu thống kê; index chỉ cần khi tra lặp, không dò được bằng chữ).
   `spec-kien-truc.md` K25 viết lại: `analyze` ngay sau khi tạo bảng tạm là bắt buộc, kèm số đo và bài học "soát bằng đọc code không thay được `explain`". `check:kien-truc` ✔.
 - **Báo giải tháng sang app phụ huynh (mig 202611151055 của phiên khác):** Thùy chọn "Áp ngay tối nay", nhưng 21:59 `thong_bao_ph` vẫn thuộc chủ `postgres` (SQL ở file 202611152145 chưa chạy) ⇒ CHƯA áp. Đã soát trước: thân `_giai_ghi_nhan` trong mig khớp bản đang chạy + đúng phần thêm; 76 giải tháng 10 (45 có xu, 31 không xu).
+
+### 15/11 (22:07–22:20) — Báo giải tháng 10 sang app phụ huynh: mig 202611151055 ĐÃ ÁP (Thùy "Áp ngay tối nay" → "Chạy xong rồi" → "Báo Success")
+
+- **Lượt 1 (22:07) — Thùy báo đã chạy cả khối SQL (file 202611152145) nhưng DB KHÔNG đổi:** 17 bảng vẫn chủ `postgres`, 19 policy vẫn gọi hàm trần. Đã loại trừ: `postgres` LÀ thành viên của `claude_build` (đổi chủ được phép) ·
+  không phiên nào giữ khoá 17 bảng · không giao dịch nào mở > 5 s. `pg_stat_statements` không dùng làm bằng chứng được (lệnh chạy 1 lần bị đẩy khỏi bảng: 12 lệnh `alter policy` của chính Claude lúc 21:48 chỉ còn thấy 2).
+  CHƯA RÕ nguyên nhân (nghi: chạy nhầm project, hoặc một dòng lỗi làm huỷ cả khối mà màn vẫn hiện Success ở tab khác). Bài học: SQL đưa người chạy tay ⇒ tách thành khối NHỎ độc lập, dòng nào việc khác đang chờ thì để riêng.
+- **Lượt 2 (22:10):** Thùy chạy riêng `alter table public.thong_bao_ph owner to claude_build;` → DB đổi thật (đối chiếu `pg_class.relowner`).
+- **Áp `migrate --only 202611151055_giai_bao_app_phu_huynh.sql` (22:11)** — migration của phiên giải tháng, Thùy gật rõ "Áp ngay tối nay". Trước khi áp đã so thân `_giai_ghi_nhan` trong file với bản đang chạy: chỉ khác đúng phần thêm thông báo PH.
+  **Kiểm sau áp:** `thong_bao_ph` có 76 dòng `ref like 'giai:%'`, 76 ref khác nhau, 72 em, scope `ca_nhan`, hiện 15/11 → 15/12; khớp 1–1 với 76 dòng `hs_giai_thuong` tháng 10 (lệch HS 0, lệch câu "xu đã vào ví" 0; 45 có xu / 31 không xu) ·
+  policy `thong_bao_ph_fdw_read` (SELECT, `fdw_bkdemy_web`, true) có · `fdw_bkdemy_web` có quyền SELECT bảng · index `ux_tbph_ref` có · `_giai_ghi_nhan` đã ghi kèm `thong_bao_ph`. `migrate` tự thêm policy `claude_ro_select`.
+  **CHƯA kiểm được:** app phụ huynh có hiện thông báo không, cron `/api/cron/push` có đẩy tới điện thoại không (không vào được app PH / DB bkdemy-ph). Ghi chú: `anon` có GRANT SELECT trên `thong_bao_ph` (mặc định của bảng tạo qua SQL Editor) nhưng RLS không có policy cho `anon` ⇒ đọc ra 0 dòng.
+- **mig 202611152212 ĐÃ ÁP:** `thong_bao_ph_member_all` bọc `(select la_thanh_vien())` (bảng giờ thuộc `claude_build`). File 202611152145 sửa lại: bỏ dòng đổi chủ + policy `thong_bao_ph`, còn **18 policy / 16 bảng của `postgres` — CHƯA chạy, chưa ghi sổ**.
+- `check:kien-truc` ✔. HANDOFF sửa 3 dòng (SQL còn chờ · giải tháng đã áp · số policy còn lại).
