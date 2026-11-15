@@ -80966,3 +80966,22 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Chuẩn bị B106 (2) + B108 phần GKII (3 giữ, 4 bỏ: 3 bộ ôn tập + Nguyễn Hữu Cầu bộ 3 đề ôn). Brief đầu đè `_brief-chuan-bi-k12-gkii.md`.
 - Sonnet soạn + Opus soát mù: 5/5 ĐẠT, khớp mù và khớp đáp án trường 100%. Ghi DB 21:02 (Thùy "ghi đi"): B106-01·02, B108-01·02·03 = 110 câu mới, 0 trùng.
 - Còn cho Thùy: B106-02 TL3 dùng "giá trị trung bình của hàm số trên đoạn" (chưa xác nhận có trong KNTT 12). Tệp tạm `_tmp_q_b106.mjs` (trạm chuẩn bị để ở gốc repo) chưa gỡ.
+
+### 15/11 (21:20) — Dashboard OPS: lượt thật sau deploy · Album huy hiệu: đo và KHÔNG sửa (Thùy "t vừa thử vào ops r. m check đi rồi đi tiếp")
+
+- **Dashboard OPS sau deploy:** pss vai `authenticated` của `fn_ops_dashboard` 14 → 15 lượt, trung bình 449 → 427 ms, min 171 → 119 ms ⇒ lượt Thùy mở ≈ 119 ms, và là lượt PHẢI tính lại
+  (bảng tính sẵn 'ops' 2026-11 có `tinh_luc` 20:56:40 = đúng lúc đó; bản cũ từ 19:39 đã quá 10 phút). Lượt đọc sẵn thì chưa có số thật (cần lượt mở thứ hai trong 10 phút). Hàm không lỗi.
+- **Album huy hiệu `fn_hs_album` (điểm thấy thêm số 3 lúc soát K25) — đo 21:05 bằng vai một HS khối 9 đông dữ liệu, mỗi phép đo một giao dịch rồi rollback (DB lúc đó 1 lượt đang chạy / 36 kết nối):**
+  trọn 3.678 ms (lượt đầu) · 1.895 ms (lượt 2, ấm) — gồm ~46 ms đường truyền. Từng khúc (đã gồm đường truyền): `fn_huy_hieu_thang` mỗi tháng 239–337 ms × 5 tháng (07 → 11) ·
+  `fn_thanh_tuu_thang` tháng này 1 em 233 ms · `fn_rank_dua_thang` cả khối 82 ms · `fn_mt_hang_thang` ~0 ms · `fn_mastery_cells_moi` 1 em 62–105 ms × 3 lượt · `fn_btvn_bu_theo_buoi_me` cả môn ~9 ms.
+  - **Vì sao chậm: CHƯA THÁNG NÀO ĐƯỢC CHỐT.** Cơ chế K6 đã có sẵn từ 28/09: `fn_huy_hieu_thang` đọc `hs_thanh_tuu_thang` nếu tháng đã chốt, chưa chốt thì tính sống `fn_thanh_tuu_thang`.
+    `hs_thanh_tuu_thang` đang 0 dòng (heap 0 byte; index còn 1,4 MB ⇒ từng có dữ liệu rồi bị xoá — không rõ ai/lúc nào, không thấy lệnh xoá trong migration) và `hs_huy_hieu_dat` 0 dòng
+    ⇒ mỗi lượt mở album tính sống cả 4 tháng đã qua (07–10) + tháng này, và tháng này bị tính HAI lần (một lần trong `_thang`, một lần trong `_nay`).
+    Chốt chỉ làm được bằng nút admin (`fn_huy_hieu_chot_thang`, quyền ghi Huy hiệu, từ ngày 10 tháng sau, theo thứ tự) — tháng 7, 8, 9, 10 đều đã đủ điều kiện chốt.
+    **Chốt là quyết định nghiệp vụ của Thùy** (ghi sao vào `hs_huy_hieu_dat` ⇒ EXP thành tựu ⇒ xu, việc trao bản cứng ★4–5, tin Thế giới) ⇒ Claude KHÔNG bấm, không tự chạy.
+  - **Không sửa hàm:** album ít người mở (cộng dồn 44 lượt, so với màn chính HS 957 lượt cùng kỳ). Bỏ lượt tính trùng tháng này chỉ lợi ~12 % (≈ 0,2 s / 1,9 s) trên hàm ít dùng;
+    làm bảng tính sẵn riêng cho tháng chưa chốt là dựng thêm một sổ để bù cho một thao tác vận hành chưa làm. Chốt xong 4 tháng thì album còn ~1 lượt tính sống (ước ~0,6–0,9 s — CHƯA đo được vì chưa có tháng chốt).
+  - Lưu ý đo: `claude_build` là CHỦ các bảng này nên đọc thẳng không bị RLS che (0 dòng ở đây là 0 thật); `pg_stat_all_tables.n_live_tup` của các bảng nhỏ này đều 0 dù có dữ liệu (thống kê chưa cập nhật) ⇒ không dùng nó làm bằng chứng rỗng, dùng `pg_relation_size` + đếm thẳng bằng chủ bảng.
+- **Đóng ET / BTVN (`fn_recompute_exp_thang`, điểm thấy thêm số 2) — mới ĐỌC danh mục, chưa đo (đo sau 22:00):** các bảng đều nhỏ (`gami_exp_ledger` 15 nghìn dòng · `gami_elo_history` 5,7 nghìn · `btvn_ket_qua` 8 nghìn · `gami_grades` 203 nghìn / 35 MB).
+  `gami_elo_history` chỉ có index khoá chính (lọc theo `buoi_hoc_id` là quét cả bảng); `gami_exp_ledger` không có index theo `ref_buoi_hoc_id`; `btvn_ket_qua` khoá (hoc_sinh_id, buoi_hoc_id) không đi được theo buổi — hôm nay chưa thành vấn đề vì bảng nhỏ.
+  Nghi vấn chính cần đo: phép nối `gami_grades` ⋈ `gami_session_problems` ⋈ bảng tạm `_ret_buoi` (4–12 dòng nhưng KHÔNG có thống kê ⇒ planner có thể đoán ~170 dòng và chọn quét cả `gami_grades` 35 MB) — nếu đúng thì đây chính là ca "bảng tạm thiếu `analyze`" của K25 và kết luận "0 / 16" lúc soát phải sửa lại.
