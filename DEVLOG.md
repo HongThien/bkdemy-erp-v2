@@ -81171,3 +81171,16 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   cổng API trả lời (HTTP 401 với khoá công khai ở đường gốc = cổng sống) · cổng đăng nhập HTTP 200 · kết nối client 18 / 90 lúc 23:12 (PostgREST mới mở lại 4).
 - **Lưu ý:** bộ nhớ đệm vừa trống ⇒ sáng mai các lượt đầu sẽ "nguội"; `pg_stat_statements` có thể đã giữ hoặc mất số cộng dồn — kiểm khi đo lần tới. Mọi số ms đã ghi trước 23:09 là của máy 1 GB, chưa đo lại.
 - **Chưa làm:** số người dùng thật giờ đông trên máy mới (tối thứ Hai) · không đặt trần kết nối cho `claude_build` nữa (trần 90 đủ chỗ; trần 10 có thể làm hỏng các lô chạy song song của Thùy).
+
+### 15/11 (23:20–23:40) — Tổng kết đợt sửa + RÀ KIẾN TRÚC HẰNG THÁNG + danh mục thiết kế sai thành luật (Thùy chốt)
+
+- **Thùy:** "tổng kết lại đợt fix này đi. định kì 1 tháng 1 lần sẽ review kiến trúc. các thiết kế ngu ngốc lần trước phải viết thành rule và mọi design sau này phải đọc rule trước để ko bị tình trạng viết hàm quét cả DB để hiển thị vài con số như trước nữa."
+- **`spec-kien-truc.md`:** thêm **§12 — 18 thiết kế sai đã trả giá** (mỗi dòng: mẫu sai → số đo thật → làm đúng + luật; chia A đọc · B ghi và việc nền · C cấu trúc / quyền / cách làm việc; danh mục chỉ thêm) ·
+  **§13 — rà kiến trúc mỗi tháng** (7 bước, lần đầu tuần đầu 12/2026) · **K27** policy không gọi hàm theo từng dòng · **K28** thêm trigger / đánh dấu bẩn phải đo lệnh ghi · **K29** rà hằng tháng + thiết kế mới phải đọc §12.
+- **`CLAUDE.md` §2.0:** thêm khối "TRƯỚC KHI THIẾT KẾ bảng / hàm / màn mới — ĐỌC §12" với 7 mẫu sai hay gặp nhất + dòng rà mỗi tháng (CLAUDE.md được nạp ở mọi phiên ⇒ là chỗ chắc chắn được đọc). Chỗ trỏ K1–K26 → K1–K29.
+- **Cổng `check:kien-truc`:** mục mới `db_policy_goi_ham_tran` (K27) — policy gọi hàm kiểm quyền không nhận cột mà không bọc `(select …)`; dò 9 hàm không đối số + `co_quyen_ghi / co_chuc_nang / co_quyen_xem('hằng')`. Số gốc 1 (`claude_phien.claude_phien_doc`: `jwt_uid()` trần) ⇒ trần 1 trong `tran.json` (mục MỚI). Đã thử đối chứng 7 mẫu chuỗi (3 trần bắt được, 4 dạng bọc / nhận cột không bắt). Cổng ✔.
+- **`npm run ra:kien-truc`** (`scripts/ra-kien-truc.mjs`, chỉ đọc): máy + kết nối · việc nền 30 ngày · hàm người dùng gọi (cộng dồn) · dung lượng + 12 bảng lớn nhất · đợt script đẩy file trong khung 17–22 h · số trần của cổng → `reports/ra-kien-truc-YYYY-MM.md` (không đè file đã có).
+  **Bản gốc `reports/ra-kien-truc-2026-11.md`** đã ghi lúc 23:30 kèm tổng kết đợt sửa 11 → 15/11 (mục 7) và việc kế (mục 8).
+- **Thấy khi chạy script lần đầu:** `pg_stat_statements` đã bắt đầu lại từ 0 sau lần khởi động 23:09 (mục 3 gần như trống) ⇒ việc "reset thống kê" coi như đã xong · DB 1.087 MB; bảng lớn nhất `bai_test_cau` 213 MB, `dai_cau_hoi` 125 MB, `gami_grades` 65 MB ·
+  30 ngày có nhiều đợt script đẩy ≥ 300 file lên kho trong khung 17–22 h (15/11 21:00, 03/11 18:10, 02/11 20:40–21:30, 13/11 19:40) · lịch sử cron 7 ngày còn lượt không thành công của các job cũ và của `viec_chup_phu_trach` 9 · `buoi-tu-dong-et-btvn-trong` 8 · `btvn-app-cap3-tu-dong` 8 (24 giờ gần nhất: 0) — chưa xem từng lượt là lỗi gì.
+- **Chưa làm:** chưa đặt lịch tự nhắc rà hằng tháng (mới ghi trong CLAUDE.md / HANDOFF / spec) · K26, K28, K29 chưa có máy kiểm · phiếu 10 câu chưa thêm câu về policy.

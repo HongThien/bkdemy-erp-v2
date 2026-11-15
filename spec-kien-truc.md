@@ -2,6 +2,7 @@
 
 > **Trạng thái: THÙY CHỐT 13/11/2026** (đã đối chiếu định hướng BK lần 1; chưa đọc được Notion North Star/Pillars/Principles). **Đợt 0a ĐÃ ÁP 13/11** (mig 202611131750); các đợt sau: nêu phạm vi → Thùy gật → làm.
 > Bằng chứng hiện trạng: `reports/audit-scale-13-11.md`.
+> **Cập nhật 15/11 tối (Thùy chốt):** thêm **§12 — những thiết kế sai đã trả giá (ĐỌC TRƯỚC KHI THIẾT KẾ)** · **§13 — rà kiến trúc mỗi tháng** · **K27–K29**. Gói máy Supabase đã nâng Micro → Small (trần kết nối 90).
 > **Cập nhật 15/11 (Thùy gật):** thêm **K24–K26** vào §9, rút từ bài học 14→15/11 (`HANDOFF-BAI-HOC.md`): bảng dòng rộng phải có đường đọc hẹp · bảng tạm trong hàm · chạy thử trên DB sống.
 > Đích (Thùy 13/11, đính chính tối 13/11): 1.000 → 2.000 → 10.000 đều là **HS CỦA TRUNG TÂM**. Không có khối HS ngoài trung tâm. Mốc 1.000 trong 6–12 tháng.
 > Nguyên tắc sửa (Thùy 13/11): **không vá từng lỗi — sửa kiến trúc từ trên xuống theo chuẩn ngành, và viết luật để tính năng sau không lặp lại.**
@@ -188,6 +189,7 @@ ngày bật cổng ghi lại số hiện tại, từ đó số mới > số cũ 
 | View không `security_invoker` | catalog | 0 |
 | Khoá ngoại không có index | catalog | chỉ giảm; bảng mới = 0 |
 | Hàm dựng bảng tạm mà thân thiếu `analyze` (K25) | catalog | chỉ giảm (15/11: 15) |
+| Policy gọi hàm kiểm quyền không nhận cột mà không bọc `(select …)` (K27) | catalog | chỉ giảm (15/11: 1) |
 | Index tạo quá 7 ngày mà `idx_scan = 0` | pg_stat | cảnh báo |
 | Hàm client gọi có trung bình > ngân sách (§5) | pg_stat_statements | cảnh báo → ✗ sau 2 tuần |
 | Job tính sẵn: tuổi khoá cũ nhất, lượt lỗi 24 h | `tinh_san_chay` | cảnh báo |
@@ -253,6 +255,13 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
   trong lúc thử, `pg_stat_activity` + `pg_locks`: không giao dịch nào của mình sống quá 60 s mà giữ `AccessExclusiveLock`, không phiên nào đang `wait_event_type = 'Lock'`;
   ghi số đó vào DEVLOG cùng số trước–sau. Chưa có máy kiểm tự động — đây là luật đang nợ K23.
 
+- **K27. Luật phân quyền không được gọi hàm cho từng dòng.** Trong policy, mọi hàm kiểm quyền KHÔNG nhận cột của dòng (`la_thanh_vien()`, `my_hoc_sinh_id()`, `current_nhan_su_id()`, `co_quyen_ghi('x')`…)
+  phải viết `(select fn())` để Postgres tính MỘT lần mỗi câu lệnh. Bảng mới tạo ở migration nào thì policy viết đúng dạng này ngay ở migration đó. — *`gami_grades` / `bai_test_cau` đọc thẳng vượt trần 8 s (02/11);
+  `thong_bao_hs` 175 ms mỗi lượt; sau đợt sửa 373 bảng ngày 02/11 vẫn sót 31 policy ở bảng tạo mới (sửa 15/11).* — cổng `check:kien-truc` mục `db_policy_goi_ham_tran` (trần 1, chỉ được giảm).
+- **K28. Thêm trigger hoặc cơ chế đánh dấu "bẩn" lên bảng có người ghi thì phải đo lệnh GHI trước–sau** (`explain analyze` 1 dòng và 50 dòng), không chỉ đo đường đọc. Đánh dấu bẩn = nhật ký chỉ-chèn + mốc, không upsert trên khoá duy nhất. —
+  *Trigger bảng tra câu → dạng làm mỗi dòng gán dạng chậm thêm 128 ms, lô nhập kho 65 s, hôm sau mới ai thấy (13/11).* — số trước–sau của lệnh ghi ghi vào DEVLOG (K19).
+- **K29. Rà kiến trúc mỗi tháng một lần theo §13; thiết kế mới phải đọc §12 trước.** Mỗi sự cố trong tháng thành một dòng ở §12 và, nếu được, một mục cổng. — *Thùy 15/11, sau đợt sửa 13–15/11: các lỗi cùng một kiểu lặp lại ở nhiều màn vì không ai đọc lại bài học cũ trước khi thiết kế.* — file `reports/ra-kien-truc-YYYY-MM.md` mỗi tháng; `npm run ra:kien-truc`.
+
 ### Phiếu 10 câu cho MỌI tính năng mới (dán vào đầu spec tính năng)
 1. Thuộc miền nào, sở hữu bảng nào? 2. Mã gốc là cột nào, ai cấp? 3. Có nhãn `mon` chưa? 4. Ai được đọc/ghi — policy và cổng hàm là gì?
 5. Màn gọi những RPC nào lúc mở (mục tiêu: 1)? 6. Mỗi hàm đọc thuộc lớp chi phí nào, đo được bao nhiêu ms? 7. Có số nào cần tính sẵn — đơn vị tính, cái gì đánh bẩn?
@@ -285,3 +294,46 @@ Dọn nhân bản hàm theo nhánh môn (35 họ × 3) và 137 hàm không ai g�
 1. **Chốt bộ luật K1–K23** (K24–K26 thêm 15/11, đã chốt) ⇒ tôi đưa vào CLAUDE.md, có hiệu lực với mọi tính năng mới từ ngày chốt.
 2. **Thứ tự**: đợt 0 trước tất cả (đề xuất), hay Thùy muốn ưu tiên khác.
 3. Cần Thùy xem giúp trên dashboard Supabase (tôi không đọc được): Authentication → "Allow new users to sign up" và "Confirm email"; API → "Max rows".
+
+## 12. NHỮNG THIẾT KẾ SAI ĐÃ TRẢ GIÁ — đọc TRƯỚC khi thiết kế bất kỳ bảng / hàm / màn nào (Thùy 15/11)
+
+> Thùy 15/11: *"các thiết kế ngu ngốc lần trước phải viết thành rule và mọi design sau này phải đọc rule trước để không bị tình trạng viết hàm quét cả DB để hiển thị vài con số như trước nữa."*
+> Mỗi dòng: **mẫu sai** → *đã xảy ra thật (số đo)* → **làm đúng** (luật). Thiết kế mới trùng một mẫu dưới đây ⇒ dừng, làm theo cột "làm đúng". Danh mục này CHỈ THÊM: mỗi sự cố mới sau buổi rà tháng (§13) thành một dòng.
+
+**A. Đọc — "quét cả DB để hiện vài con số"**
+1. **Hàm của một màn tính lại số của CẢ HỆ rồi lọc ra phần của người đang xem.** — *Thẻ Thế giới ở màn chính HS 4,0 s × 5.943 lượt (11/11, cả hệ nghẽn) · phòng Giám đốc 29,7 s · dashboard TA / GV / OPS tính việc cả tháng của mọi nhân sự mỗi lượt mở · bảng xếp hạng 21,5 s.* — **Hàm màn gọi chỉ tốn theo MỘT người / MỘT lớp; số của cả khối / cả hệ là sổ tính sẵn, màn chỉ đọc (K2, K4, K5).**
+2. **Quét lại toàn bộ lịch sử làm bài mỗi lượt đọc** (mastery, dạng đã học, dạng yếu, nhóm yếu). — *Chi phí tăng theo số HS × thời gian; lượt tính lại mastery cả 376 em 54 s.* — **Lịch sử đo chỉ đi qua mô hình đọc đã lưu sẵn (K3).**
+3. **Kỳ đã đóng vẫn tính lại mỗi lượt mở.** — *Album huy hiệu tính lại 5 tháng của mùa mỗi lượt: 1,9–3,7 s.* — **Kỳ đã đóng thì chốt một lần rồi đọc sổ (K6).**
+4. **Một màn mở ra bắn hàng chục lượt gọi.** — *Màn chính app HS 13–30 lượt gọi.* — **Một màn = một lượt gọi cho phần đang hiện; phần chưa mở thì chưa gọi (K11).**
+5. **Hỏi đi hỏi lại theo chu kỳ ngắn ở mọi tab.** — *Polling 30–60 s; ở 10.000 HS là 333 lượt/giây chỉ để hỏi "có gì mới không".* — **Chỉ một cửa polling (`src/lib/poll.ts`), tab ẩn thì dừng, nhịp dưới 5 phút phải có điều kiện dừng (K13).**
+6. **Luật phân quyền gọi hàm cho TỪNG DÒNG.** — *`gami_grades`, `bai_test_cau` đọc thẳng vượt trần 8 s (02/11); `thong_bao_hs` 182 dòng mà 175 ms mỗi lượt; sau đợt sửa 02/11 vẫn sót thêm 31 policy ở bảng tạo mới (15/11).* — **Hàm kiểm quyền không nhận cột của dòng phải viết `(select fn())` (K27 — cổng đếm).**
+7. **Bảng dòng rộng bị tra để lấy vài cột ngắn.** — *Lấy câu khối 12 mở 17.410 trang; sinh bài tự luyện mở 3.449 trang; lượt nguội gấp nhiều lần lượt ấm.* — **Index chứa sẵn các cột cần (K24).**
+8. **Bảng tạm trong hàm không có thống kê / không index.** — *Đóng ET quét cả `gami_grades` 35 MB mỗi lượt (97 → 44 ms sau một câu `analyze`); trao giải tháng 1,4–3 s → 0,5 s.* — **`analyze` ngay sau khi tạo; tra lặp thì thêm index (K25, K8).**
+9. **Hàm con nặng bị gọi lặp mà không biết.** — *`fn_de_thi_ds` gọi hàm con 3 lần mỗi đề (mẫu `cross join lateral (select f(x)) t` dùng `t.v` nhiều chỗ).* — **Thêm `offset 0`; hàm plpgsql không chạy trên từng dòng của tập lớn (K8).**
+
+**B. Ghi và việc nền**
+10. **Đánh dấu "bẩn" bằng upsert trên khoá duy nhất / thêm trigger mà không đo đường ghi.** — *Trigger bảng tra câu → dạng làm mỗi dòng gán dạng chậm thêm 128 ms, lô nhập kho 65 s (13/11).* — **Đánh dấu bẩn = nhật ký chỉ-chèn + mốc; thêm trigger thì đo lệnh GHI trước–sau (K28).**
+11. **Bảng tính sẵn làm mới bằng xoá hết rồi chèn lại.** — *`the_gioi_tin_luu` 516 dòng mà 370 nghìn lượt chèn + xoá.* — **Ghi phần khác biệt (K21).**
+12. **Mỗi bảng tính sẵn một cron riêng.** — *6 kiểu, 16 job chồng nhau, lỗi kết nối đúng giờ học.* — **Một khuôn tính sẵn, một bộ điều phối có ngân sách giây (K4).**
+13. **Lô của máy chạy chen giờ học / ăn hết kết nối.** — *Đỉnh 58 / 60 kết nối tối 11/11; 464 file đẩy lên kho lúc 21:00 ngày 15/11; bot gán câu làm bẩn mastery hàng loạt.* — **Việc hàng loạt chạy ngoài 17–22 h, có ngân sách (K22).**
+
+**C. Cấu trúc, quyền, cách làm việc**
+14. **Gộp bảng app đang đọc thành partition.** — *PostgREST không lộ bảng ⇒ ET, kho, tài liệu hỏng ~1,5 giờ (13/11).* — **Cấm; đổi cấu trúc bảng app đọc trực tiếp phải thử qua API trước (CLAUDE.md §1.6).**
+15. **Quyền mở mặc định.** — *8 bảng không RLS, 131 hàm người chưa đăng nhập gọi được; TA tự bật quyền admin qua API được.* — **Từ chối mặc định, cấp tường minh (K14, K15).**
+16. **Client tự tính / tự đọc thẳng bảng.** — *177 chỗ tính ở client; 1.179 chỗ `.from(` thẳng bảng.* — **Tính ở DB, màn gọi hàm (CLAUDE.md §2.0, K12).**
+17. **Chạy thử trên DB sống mà không tính khoá.** — *Khoá `mastery_luu_san` ~7 phút; cạn bảng khoá chung giờ có lớp (14–15/11).* — **K26.**
+18. **Kết luận bằng đọc code hoặc bằng số cộng dồn thay cho phép đo.** — *"0 / 16 hàm cần sửa" sai một hàm; "59 / 60 kết nối" đếm thừa rồi lại nói "không sát trần" khi đỉnh thật là 58; giả thuyết Realtime sai.* — **Mọi kết luận hiệu suất phải kèm số đo trước–sau: hiệu số hai lần chụp, ấm lẫn nguội, `explain (analyze, buffers)` (K19, K23).**
+
+## 13. RÀ KIẾN TRÚC ĐỊNH KỲ — mỗi tháng một lần (Thùy 15/11)
+
+> Mục đích: bắt thiết kế sai MỚI trước khi nó thành sự cố, và giữ cho §12 + bộ luật luôn là thứ đang được dùng. Lần đầu: **tuần đầu tháng 12/2026**; sau đó tuần đầu mỗi tháng. Người làm: Claude (CTO), Thùy đọc báo cáo và quyết phần cần quyết.
+> Kết quả mỗi lần: một file `reports/ra-kien-truc-YYYY-MM.md` (số đo + phát hiện + việc phải làm) · HANDOFF mục kiến trúc cập nhật "SỐ ĐO HIỆN TẠI" · §12 thêm dòng mới nếu có sự cố.
+
+**Các bước (khoảng 1–2 giờ; bước 1–2 chạy được bằng một lệnh):**
+1. **`npm run ra:kien-truc`** (`scripts/ra-kien-truc.mjs`, chỉ đọc) — in sẵn: cài đặt máy · kết nối đang mở (`_audit_ket_noi`) · việc nền 30 ngày (lỗi, lượt bị cắt, ms lớn nhất theo sổ) · hàm người dùng gọi tốn nhiều nhất và hàm trung bình ≥ 0,5 s (số cộng dồn — chỉ để chọn chỗ đo tiếp) · dung lượng DB + 12 bảng lớn nhất · file đẩy lên kho trong khung 17–22 h · số trần của cổng.
+2. **`npm run check:kien-truc`** — mục CỨNG phải = 0; mục TRẦN nào đã giảm thì `--ha-tran`. Mục nào tăng trong tháng ⇒ tìm commit gây ra, sửa hoặc ghi lý do.
+3. **Đo giờ đông (bắt buộc, không thay bằng số cộng dồn):** một tối có lớp, chụp `_audit_pss()` hai lần cách nhau 10 phút, lấy hiệu số của vai `authenticated`: xếp theo tổng thời gian VÀ theo trang đọc đĩa. Hàm màn gọi vượt ngân sách §5 ⇒ vào danh sách việc.
+4. **Kết nối:** đỉnh trong tháng trên dashboard Supabase (Observability → Database → Database Connections) so với trần của gói; `_audit_ket_noi()` lúc đông xem ai giữ.
+5. **Thứ MỚI trong tháng:** `git log --since` trên `supabase/migrations/` và `src/screens/` — mỗi bảng / hàm / màn mới: có phiếu 10 câu không, có rơi vào mẫu nào của §12 không. Đây là bước bắt "hàm quét cả DB" mới sinh.
+6. **Sự cố trong tháng:** đọc DEVLOG tìm timeout, nghẽn, lỗi kết nối, số sai. Mỗi sự cố ⇒ một dòng mới ở §12 + (nếu được) một mục cổng để máy bắt lần sau (K23).
+7. **Viết báo cáo + cập nhật HANDOFF**, nêu rõ việc nào làm ngay, việc nào chờ Thùy quyết, và ngày rà kế tiếp.

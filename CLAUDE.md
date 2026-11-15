@@ -164,6 +164,16 @@
   - **Cấm polling ngắn** (60 s…) cho số tính sẵn; đọc lại nền ≥ 5 phút, và không gọi lại khi chỉ mở/đóng 1 khối trên cùng màn.
   - **Đo trước khi đưa lên màn:** hàm đọc > 1–2 s với dữ liệu thật (đo bằng tài khoản thật đông nhất — Giám đốc/toàn hệ) ⇒
     chuyển sang bảng tính sẵn hoặc thu hẹp phạm vi, KHÔNG để chạm trần 8 s. Đổi cách đọc ⇒ so cũ–mới khớp từng dòng trước khi áp.
+- **⭐⭐ TRƯỚC KHI THIẾT KẾ bảng / hàm / màn mới — ĐỌC `spec-kien-truc.md` §12 "Những thiết kế sai đã trả giá" (Thùy chốt 15/11, sau đợt sửa hiệu suất 11–15/11).**
+  Thiết kế trùng một mẫu dưới đây ⇒ DỪNG, làm theo luật ghi bên cạnh (danh mục đủ 18 mẫu + số đo ở §12):
+  - Hàm của một màn tính số của CẢ HỆ rồi lọc ra phần của người đang xem (thẻ Thế giới 4 s × 5.943 lượt làm nghẽn cả DB tối 11/11) ⇒ hàm màn gọi chỉ tốn theo MỘT người / MỘT lớp; số của cả khối / cả hệ là sổ tính sẵn (K2, K4).
+  - Quét lại lịch sử đo mỗi lượt đọc ⇒ đọc bảng lưu sẵn (K3) · kỳ đã đóng thì chốt một lần rồi đọc sổ (K6).
+  - Policy gọi hàm kiểm quyền cho TỪNG DÒNG ⇒ viết `(select fn())` ngay trong migration tạo bảng (K27).
+  - Bảng dòng rộng bị tra để lấy vài cột ngắn ⇒ index chứa sẵn các cột đó (K24) · bảng tạm trong hàm ⇒ `analyze` ngay sau khi tạo (K25).
+  - Một màn bắn nhiều lượt gọi / tự hỏi lại theo chu kỳ ngắn ⇒ một lượt gọi cho phần đang hiện, một cửa polling `src/lib/poll.ts` (K11, K13).
+  - Thêm trigger / cơ chế đánh dấu "bẩn" ⇒ đo lệnh GHI trước–sau (K28) · lô của máy ⇒ chạy ngoài 17–22 h (K22).
+  - Kết luận về hiệu suất ⇒ phải có số đo trước–sau (hiệu số hai lần chụp, ấm lẫn nguội, `explain (analyze, buffers)`); không kết luận bằng đọc code hay bằng số cộng dồn (K19).
+  **Rà kiến trúc MỖI THÁNG một lần** theo `spec-kien-truc.md` §13: `npm run ra:kien-truc` → `reports/ra-kien-truc-YYYY-MM.md`; lần đầu tuần đầu tháng 12/2026. Sự cố mới trong tháng ⇒ thêm một dòng vào §12 và (nếu được) một mục cổng `check:kien-truc`.
 - Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
   Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
 
@@ -315,7 +325,7 @@
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - **`spec-kien-truc.md` — ĐỌC BẮT BUỘC trước khi thêm BẢNG / HÀM / MÀN mới hoặc bảng tính sẵn mới** (Thùy chốt 13/11, sau audit scale 1.000 → 10.000 HS trung tâm):
   §0b định hướng BK → hệ quả kiến trúc · sổ gốc ↔ bảng tổng hợp (màn chỉ đọc số tính sẵn) · MỘT khuôn tính sẵn · hàm màn gọi chỉ tốn theo một người / một lớp,
-  một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K26 + phiếu 10 câu cho mọi tính năng mới (§9)** · lộ trình 7 đợt (§10; đợt 0 + 1 đã xong 13/11).
+  một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K29 + phiếu 10 câu cho mọi tính năng mới (§9)** · **§12 danh mục thiết kế sai đã trả giá (đọc trước khi thiết kế)** · **§13 rà kiến trúc mỗi tháng** · lộ trình 7 đợt (§10; đợt 0 + 1 đã xong 13/11).
   **⭐ `npm run check:kien-truc` phải ✔ sau MỖI `npm run migrate` và trước commit đụng `src/lib` · `src/screens`** (chỉ đọc DB + code). Mục CỨNG phải = 0
   (bảng thiếu RLS · hàm/view hở với người chưa đăng nhập ngoài `scripts/kien-truc/cho-phep.json` · policy ghi mở). Mục TRẦN là nợ cũ, **chỉ được giảm**
   (`.from(` thẳng bảng · `setInterval` · `limit` lớn · `select('*')` · so sánh môn cứng · khoá ngoại thiếu index · hàm secdef không cổng · job cron…).

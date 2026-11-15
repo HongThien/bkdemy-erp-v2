@@ -110,6 +110,13 @@ if (!CHI_CODE) {
      and p.prosrc !~* '(^|[^a-z_])analyze\\s' order by 1`)
   them('db_ham_bang_tam_thieu_analyze', 'Hàm dựng bảng tạm mà thân thiếu analyze — K25', 'tran', r.length, ds(r))
 
+  // K27: policy gọi hàm kiểm quyền KHÔNG nhận cột của dòng mà không bọc (select …) ⇒ hàm chạy lại cho TỪNG DÒNG (thong_bao_hs 182 dòng = 175 ms mỗi lượt đọc).
+  // Dò các hàm kiểm quyền không đối số + co_quyen_ghi / co_chuc_nang / co_quyen_xem với đối số là hằng. Hàm nhận cột (hs_o_lop(lop_id)…) không tính.
+  // Hàm kiểm quyền MỚI không đối số thì thêm tên vào danh sách dưới đây. Số gốc 15/11 = 1 (claude_phien_doc: jwt_uid()).
+  r = await q(`select tablename||'.'||policyname ten from pg_policies where schemaname='public' and (coalesce(qual,'') ~ $1 or coalesce(with_check,'') ~ $1) order by 1`,
+    ["(?<!SELECT )(?<![a-z0-9_])(la_thanh_vien|my_hoc_sinh_id|current_nhan_su_id|chi_me_id|jwt_uid|jwt_email|la_admin|_task_la_admin|_qlcl_toan_he)\\(\\)|(?<!SELECT )(?<![a-z0-9_])(co_quyen_ghi|co_chuc_nang|co_quyen_xem)\\('[a-z_]+'(::text)?\\)"])
+  them('db_policy_goi_ham_tran', 'Policy gọi hàm kiểm quyền theo từng dòng (không bọc select) — K27', 'tran', r.length, ds(r))
+
   // cron + hàm chậm: cần hàm _audit_* (owner postgres). Không có thì bỏ qua, không coi là lỗi.
   try {
     r = await q(`select jobname ten from public._audit_cron_job() where active order by 1`)

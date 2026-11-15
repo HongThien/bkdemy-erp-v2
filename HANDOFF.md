@@ -29,7 +29,8 @@
 ### ⭐⭐⭐ KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS (Thùy mở 13/11 · cập nhật 15/11) — ĐỌC `spec-kien-truc.md` TRƯỚC khi thêm bảng / hàm / màn
 
 **Đích (Thùy chốt):** 1.000 → 2.000 → 10.000 đều là HS CỦA TRUNG TÂM (không có HS ngoài). Mốc 1.000 trong 6–12 tháng. Không vá từng lỗi — sửa kiến trúc từ trên + viết luật.
-**Nguồn:** `spec-kien-truc.md` (kiến trúc đích, luật K1–K26 — K24–K26 thêm 15/11: đường đọc hẹp cho bảng dòng rộng · bảng tạm trong hàm · chạy thử trên DB sống —, phiếu 10 câu, lộ trình 7 đợt, §2b gộp theo khuôn, §4 khuôn tính sẵn) · bằng chứng `reports/audit-scale-13-11.md` (**chưa commit** — còn tên các lỗ chưa bịt) · nhật ký chi tiết DEVLOG 13 → 15/11.
+**Nguồn:** `spec-kien-truc.md` (kiến trúc đích, luật K1–K29 — K24–K29 thêm 15/11 —, **§12 danh mục 18 thiết kế sai đã trả giá (ĐỌC TRƯỚC KHI THIẾT KẾ; tóm tắt nằm trong CLAUDE.md §2.0)**, **§13 rà kiến trúc mỗi tháng**, phiếu 10 câu, lộ trình 7 đợt, §2b gộp theo khuôn, §4 khuôn tính sẵn) · bằng chứng `reports/audit-scale-13-11.md` (**chưa commit** — còn tên các lỗ chưa bịt) · nhật ký chi tiết DEVLOG 13 → 15/11.
+**⭐ RÀ KIẾN TRÚC MỖI THÁNG (Thùy chốt 15/11):** tuần đầu mỗi tháng, lần đầu tuần đầu 12/2026 — `npm run ra:kien-truc` (lấy số, chỉ đọc) + các bước ở `spec-kien-truc.md` §13 → `reports/ra-kien-truc-YYYY-MM.md`. **Bản gốc để so: `reports/ra-kien-truc-2026-11.md`** (có tổng kết cả đợt sửa 11 → 15/11). Sự cố mới ⇒ thêm dòng vào §12 + mục cổng.
 **Tiến độ theo đợt (15/11):** đợt 0 quyền — còn 3 mục · đợt 1 hàng rào — xong · đợt 2 nền dữ liệu — xong phần đã định · đợt 3 tính sẵn — xong khuôn + các sổ nặng · đợt 4 client — xong phần chính · đợt 5 hàm chậm — hết điểm nóng đo được · **đợt 6 thử tải + chọn gói máy — CHƯA** · **gộp bảng theo khuôn — CHƯA bắt đầu**.
 
 **SỐ ĐO HIỆN TẠI (hiệu số hai lần chụp `_audit_pss()`, không phải số cộng dồn):**
@@ -73,7 +74,7 @@
 - App HS + app GV đã deploy nhưng **chưa ai xem trên màn:** nút "Vào ca" ở màn chính HS khi TA điểm danh · màn theo dõi ca / lịch phòng / buổi học trực tiếp tự cập nhật · "Việc của tôi" nhóm "Đã xong — 2 tuần gần đây".
 - **Huy hiệu: Thùy 15/11 "tạm thời chưa dùng"** ⇒ không chốt tháng 7–10, không tối ưu `fn_hs_album` (1,9–3,7 s vì `hs_thanh_tuu_thang` trống ⇒ tính sống cả 5 tháng mỗi lượt mở). HS vẫn mở được Album từ Hồ sơ / Thành tựu. Bật lại ⇒ việc đầu tiên là chốt tháng theo thứ tự.
 - Miễn gậy (đã làm 15/11, mig 202611152136): nhánh "trưởng/phó team core" trong `fn_gay_duoc_doi_mien()` là Claude tự xếp vào "trưởng khối trở lên" (1 người — trưởng Vận hành) — Thùy không muốn thì bỏ nhánh đó.
-- Reset `pg_stat_statements` để dòng cảnh báo "hàm ≥ 1 giây" phản ánh hiện tại (tuỳ chọn).
+- ~~Reset `pg_stat_statements`~~ — thống kê cộng dồn đã tự bắt đầu lại khi DB khởi động lại lúc nâng gói 15/11 23:09 ⇒ từ nay dòng cảnh báo "hàm ≥ 1 giây" của cổng phản ánh số SAU các đợt sửa.
 - Dashboard Supabase: "Allow new users to sign up", "Confirm email", API "Max rows" — chưa biết giá trị.
 
 **VIỆC KẾ TIẾP (đo một cửa sổ hiệu số trước khi chọn — memory `toi-uu-do-hieu-so-am-nguoi`):**
