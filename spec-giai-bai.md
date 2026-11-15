@@ -120,6 +120,19 @@
 
 - AI viết **mô tả có cấu trúc / mã vẽ**, máy render; không để AI vẽ điểm ảnh. Số liệu ⇒ kích thước thật, máy tự kiểm.
 - Hình dựng **đúng dữ kiện đề bằng toạ độ**; hình của đề **không vẽ sẵn điều phải chứng minh / đáp án**.
+- ⭐ **NGUỒN HÌNH ĐỀ — DÙNG LẠI ẢNH GỐC hay VẼ LẠI** (Thùy 15/11 — thay luật 13/10 "câu Hình học luôn vẽ lại", áp MỌI khối, mọi kho):
+  1. **Ảnh gốc ỔN ⇒ GIỮ NGUYÊN** (cắt sạch từ tài liệu: chừa biên trắng nhỏ, đúng câu, đủ nhãn).
+  2. **Ảnh gốc QUÁ TỆ ⇒ VẼ LẠI bằng code.** "Quá tệ" = có ít nhất một lỗi sau (ghi đúng mã):
+     `a` không đọc chắc nhãn / số / ký hiệu ở cỡ hiển thị trên app · `b` cụt, thiếu phần hình, dính chữ câu khác hoặc lời giải ·
+     `c` lộ đáp án / điều phải chứng minh (vẽ sẵn, ghi đáp số, vết khoanh / viết tay) · `d` vênh dữ kiện đề (tên điểm, số đo, vị trí) ·
+     `e` scan méo / nghiêng / nền bẩn / vùng tô thành khối đen / chữ chìm che hình · `f` nhiều hình dính nhau, không tách được hình của câu.
+     **Không phải "tệ"**: xấu, nét mảnh, khác phong cách hình code, hình GeoGebra có màu — vẫn GIỮ.
+  3. **Có LỆNH VẼ LẠI** (Thùy / trưởng khối; theo câu, đề, bài hoặc cả khối) ⇒ vẽ lại dù ảnh gốc ổn.
+  4. **Mỗi hình đề mang nhãn nguồn** — trong tệp soạn: `**Hình:** <tệp> | nguon=<goc | ve_lai:<mã a–f> | ve_lenh | ve_moi>`
+     (`ve_moi` = đề không có hình, vẽ thêm để minh hoạ). Thiếu nhãn ⇒ trạm kiểm trả lại. Hình lời giải (`**Hình giải:**`) luôn là hình code, không cần nhãn.
+  5. Vẽ lại vẫn GIỮ ĐỦ thông tin của ảnh gốc mà đề cần (luật "Vẽ lại" ở Hình chung). Không vẽ lại được cho đúng ⇒ giữ ảnh gốc + `**Chưa chắc:**`. Ảnh cũ bị thay không xoá (lưu URL cũ).
+  6. Trạm kiểm xem từng hình đề: nhãn `goc` mà thấy lỗi a–f ⇒ đổi thành vẽ lại; nhãn `ve_lai` mà gốc thật ra ổn ⇒ trả về `goc` (đỡ công vẽ, đỡ sai).
+  - Đếm theo khối: §C12.
 - Vẽ xong ⇒ **đẩy lên kho ngay** (Thùy 13/11) — máy làm việc chỉ là bản tạm.
 - Đọc đề từ **ảnh trang phóng to** — lớp chữ PDF hay mất ký hiệu, ngoặc, số mũ.
 - Chi tiết vẽ hình Hình học: Phần B mục "Hình — luật chung".
@@ -337,7 +350,8 @@
 ### Vẽ hình
 
 **Nguồn hình** (Hình chung)
-- **Câu Hình học (`hinh_hoc`) ⇒ VẼ LẠI bằng code** (SVG → PNG 2x qua `ve_hinh_lib.mjs`) — không ảnh AI, không ảnh cắt từ sách / PDF [07/10, 13/10 · Thùy]. Đồ thị / bảng / hình minh hoạ của câu Đại, Hình giải tích ⇒ được cắt từ PDF (tạm, chưa có máy vẽ).
+- **Dùng lại ảnh gốc hay vẽ lại: theo §A8 "Nguồn hình đề"** (Thùy 15/11 — thay luật 07/10, 13/10 "câu Hình học luôn vẽ lại"): gốc ổn giữ · gốc quá tệ (mã a–f) vẽ lại · có lệnh thì vẽ lại.
+  Vẽ thì bằng code (SVG → PNG 2x qua `ve_hinh_lib.mjs`) — không ảnh AI. Đồ thị / bảng của câu Đại, Hình giải tích gốc tệ mà chưa có máy vẽ loại đó ⇒ giữ gốc + `**Chưa chắc:**`.
 - MỌI câu vẽ được thì phải có hình, kể cả câu đề dựng bằng lời [07/10 · Thùy]. Chỉ bỏ khi thật sự không có gì để vẽ.
 
 **Dựng**
@@ -371,8 +385,8 @@
 - Render xong gom bảng (`bang_hinh.mjs`, `to_soat.mjs`, `ve_lai_bang.mjs`) rồi MỞ ẢNH: nhãn cắt đáy, nhãn đè nét, sai / thiếu ký hiệu, sai dữ kiện, vẽ sẵn đáp án, khung quá rộng. Sửa tới khi sạch. Đừng nối `| head` sau lệnh chạy tệp vẽ (EPIPE làm script chết).
 - Đẩy lên kho ngay (§A8): đề thi toanmath `anh-batch.mjs day <BATCH> <MA…>` (phải in "⬆ đẩy … tệp", không LỖI); kho Hình `gan_hinh.mjs … --ghi`. Upload dùng `SUPABASE_SERVICE_ROLE` có sẵn trong `.env.local` (không in ra) — kiểm tên khoá trước, không đòi cấp key.
 
-**Vẽ lại hình cắt từ sách** [13/10 · Thùy]
-- Mọi ảnh kho Hình không nằm ở `kho-anh/hinh_hoc/` (GeoGebra, quét sách, chụp giấy) thay bằng hình code: `ve_lai_xuat.mjs` → trạm Sonnet → `ve_lai_bang.mjs` (trái cũ | phải mới, mở TỪNG bảng) → `gan_hinh.mjs <gói>/moi --thay --ghi` (URL cũ lưu `scripts/anh/bien_ban/gan-hinh-*.json`; ảnh cũ KHÔNG xoá).
+**Vẽ lại** — khi §A8 cho vẽ lại (gốc tệ hoặc có lệnh) [13/10 · Thùy; phạm vi đổi 15/11]
+- Không còn "vẽ lại mọi ảnh không nằm ở `kho-anh/hinh_hoc/`": chỉ ảnh có mã lỗi a–f hoặc có lệnh. Đường đi: `ve_lai_xuat.mjs` → trạm Sonnet → `ve_lai_bang.mjs` (trái cũ | phải mới, mở TỪNG bảng) → `gan_hinh.mjs <gói>/moi --thay --ghi` (URL cũ lưu `scripts/anh/bien_ban/gan-hinh-*.json`; ảnh cũ KHÔNG xoá).
 - Hình theo ĐỀ; ảnh cũ vênh đề ⇒ theo đề + ghi báo cáo; không phân xử được ⇒ không vẽ, giữ ảnh cũ, báo. Thà bỏ trống còn hơn vẽ sai.
 - Giữ ĐỦ thông tin ảnh cũ mà đề cần (câu "Cho hình vẽ…" sống nhờ hình): mọi nhãn, số đo, ẩn, góc đánh số, ký hiệu giả thiết; vị trí tương đối giữ nguyên. Chỉ THÊM khi đề của chính bài nêu tên mà ảnh thiếu, và ô vuông cho góc vuông đề cho. Ảnh GeoGebra không có ký hiệu ⇒ hình mới cũng không thêm. **Không giữ** đường phụ lời giải, nét / cung của điều phải chứng minh (Hình chung).
 - Biến thể vẽ theo đề CỦA BIẾN THỂ; tên tệp uuid chép nguyên từ `viec.md`.
@@ -556,7 +570,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Phần 2 ghi ra các số đọc từ hình trước khi tính** ("Quan sát biểu đồ, số quyển vở của các lớp 4A, 4B, … lần lượt là: …") — đọc lời giải không cần nhìn hình.
 - Phần 1 nói cách đọc hình (đếm gì, nhìn đâu, bẫy) + mấu chốt. Bài đếm góc, gọi tên cạnh: Phần 2 = lập luận ngắn + "Vậy …". Không sơ đồ đoạn thẳng cho bài đọc hình.
 - Bài có hình nhiều ý: giữ một câu, Phần 2 ghi a) b) (tách ý chỉ theo §A7 — bài Tính / Tìm $x$).
-- Hình đề = hình gốc của sách (EMF → PNG), gắn `anh_de` ở cổng ghi; hình sách hỏng ⇒ vẽ lại bằng code.
+- Hình đề = hình gốc của sách (EMF → PNG), gắn `anh_de` ở cổng ghi; nguồn hình theo §A8 (hỏng ⇒ vẽ lại bằng code).
 - `dap_an` bài hình: số kèm đơn vị (`$350$ g`, `$117$ $cm^2$`) · `Chu vi: $…$ cm; Diện tích: $…$ $cm^2$` · `a) …; b) …` · câu Có/Không mở bằng `Có` / `Không` rồi lí do ngắn · "loại nào": tên loại, số lượng trong ngoặc · điền số vào hình: số ở ô đỉnh tăng dần cách `; ` rồi số ở ô giữa cạnh · gọi tên cạnh theo thứ tự đi vòng (EGHI ⇒ EG, GH, HI, IE) · `… cạnh; … góc`.
 
 **(c) Sai lầm cần tránh**
@@ -880,7 +894,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Hình giải** (bài không có hình sẵn mà cần hình để giải): `**Hình giải:** giai_<nhãn>.png`, một tệp / bài, đủ mọi điểm. Câu chỉ hỏi "hình gì / diện tích / chu vi" với số đã cho ⇒ không bắt buộc hình giải.
 
 **(c) Sai lầm cần tránh**
-- [10/10] hình cắt dính chữ câu khác / cụt; hình scan méo ⇒ vẽ lại bằng code (Hình chung).
+- [10/10] hình cắt dính chữ câu khác / cụt; hình scan méo ⇒ vẽ lại bằng code (§A8 mã b, e).
 - [20/10] dùng số đo góc, "đường chéo chia đôi nhau" của hình thoi, "cạnh đối bằng nhau" làm dấu hiệu ⇒ ngoài SGK 6 Tập 1, cấm.
 
 ### Theo loại nguồn
@@ -1028,7 +1042,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
   nên $\triangle ABM=\triangle ACM$ (c.g.c).
   ```
 - **Câu tính góc**: `tu_luan` khi nhiều đáp số; Phần 2 mỗi phép tính một dòng có lí do, kết "Vậy …"; hình: góc cần tìm ghi `x` hoặc để trống.
-- Hình là một phần dữ kiện (số đo góc, kích thước) ⇒ có `**Hình:**` (vẽ lại bằng code, Hình chung) VÀ chép số liệu vào phần Đề.
+- Hình là một phần dữ kiện (số đo góc, kích thước) ⇒ có `**Hình:**` (nguồn theo §A8) VÀ chép số liệu vào phần Đề.
 - **Dạng "Viết tam giác bằng nhau và tính chất suy ra"** (bài đọc hình, giảng trên lớp — TL1.k của HH00099/101/102/103) [05/11]:
   - Đề KHÔNG ghi các đẳng thức bằng chữ (ngoại lệ có chủ đích của luật "đề tự đủ dữ kiện"). Khuôn đề: "Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau). a) Viết các yếu tố bằng nhau mà đề bài cho trên hình. b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau. c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau)."
   - Hình phải đúng và ĐỦ mọi ký hiệu như ảnh gốc (số gạch, số cung, ô vuông), không thêm ký hiệu nào. Cạnh chung không ký hiệu — lời giải ghi `(cạnh chung)`.
@@ -1195,7 +1209,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - [K8-27] Cách nghĩ sơ đồ = **phân tích – tổng hợp** (Pappus; Pólya *working backwards*): đứng ở kết luận hỏi "muốn có cái này thì cần cái gì?", lùi tới giả thiết; mỗi nhánh phải chạm giả thiết / điều đã có. Lí do mỗi bước = đúng tên trong whitelist; kết quả chưa học phải tự chứng minh ⇒ ô riêng. Chuỗi dài quá ~6 tầng ⇒ chọn mốc trung gian (vd "$AKCI$ là hình bình hành"). Mấu chốt luôn nói "kẻ gì, vì dấu hiệu nào trong đề". Trình bày đi xuôi; mỗi mũi tên của sơ đồ = đúng một bước trình bày, cùng lí do — không thêm, không bỏ.
 - Căn cứ đúng tên, vd `(định lý trung tuyến ứng với cạnh huyền)`, `(tính chất hai đường chéo hình chữ nhật)`, `(dấu hiệu nhận biết hình bình hành)`, `(trường hợp c.g.c)`.
 - [K8-32] Định dạng: `\parallel` (tài liệu gõ `//`), tích độ dài $AB\cdot CD$, dấu nhân `\cdot`.
-- [K8-33] Hình (Hình chung): hình đề của câu `hinh_hoc` vẽ lại bằng code; dòng `**Ghi chú:** Đọc hình: …` (dữ kiện đọc trên hình gốc). Bài đề KHÔNG cho hình (và bài yêu cầu vẽ hình / biểu đồ / đồ thị) ⇒ vẽ bằng code, khai `**Hình giải:** giai_<nhãn>.png` — một tệp / bài, đủ mọi điểm của mọi ý, chỉ ở lời giải (`anh_dap_an`); điểm phụ lời giải không dùng ⇒ bỏ. Câu trắc nghiệm hình không cần hình giải. Ảnh jpeg trong HDG file Word là hình của bài.
+- [K8-33] Hình (Hình chung): hình đề của câu `hinh_hoc` theo §A8 (gốc ổn giữ, tệ / có lệnh vẽ lại); dòng `**Ghi chú:** Đọc hình: …` (dữ kiện đọc trên hình gốc). Bài đề KHÔNG cho hình (và bài yêu cầu vẽ hình / biểu đồ / đồ thị) ⇒ vẽ bằng code, khai `**Hình giải:** giai_<nhãn>.png` — một tệp / bài, đủ mọi điểm của mọi ý, chỉ ở lời giải (`anh_dap_an`); điểm phụ lời giải không dùng ⇒ bỏ. Câu trắc nghiệm hình không cần hình giải. Ảnh jpeg trong HDG file Word là hình của bài.
 - [K8-35] HDG Hình của tài liệu rất tắt ("Dễ dàng chứng minh…") ⇒ chỉ là hướng đi; lời giải kho đủ từng bước.
 
 **(c) Sai lầm cần tránh**
@@ -1692,7 +1706,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 | Chứng minh hệ thức | "Vế trái $=$ …" từng dòng → "$=$ Vế phải." → "Vậy …" (từ định nghĩa trong một tam giác vuông cụ thể) | Chọn tam giác vuông chứa góc cần xét |
 
 - Tách ý: bài có tam giác / hình ⇒ không tách, Phần 2 ghi a) b). Bài "Tính giá trị biểu thức / So sánh" thuần số nhiều ý độc lập ⇒ tách như Đại.
-- Hình: bài có tam giác, hình thực tế ⇒ **có hình**; hình thực tế (tháp, cây, thang, máy bay) vẽ thành **mô hình tam giác** ghi số liệu đề (Hình chung: câu `hgt` được cắt từ PDF khi chưa có máy vẽ; vẽ được thì vẽ). Bài thuần số ⇒ không hình. Số liệu chỉ có trên hình (vd $BC=5{,}8$ m, góc $60^\circ$) ⇒ viết thêm vào lời văn. Hình đề cương lệch lời văn ⇒ không đưa hình đó vào đề, lời giải vẽ hình theo lời văn.
+- Hình: bài có tam giác, hình thực tế ⇒ **có hình**; hình thực tế (tháp, cây, thang, máy bay) vẽ thành **mô hình tam giác** ghi số liệu đề (nguồn hình theo §A8). Bài thuần số ⇒ không hình. Số liệu chỉ có trên hình (vd $BC=5{,}8$ m, góc $60^\circ$) ⇒ viết thêm vào lời văn. Hình đề cương lệch lời văn ⇒ không đưa hình đó vào đề, lời giải vẽ hình theo lời văn.
 - `dap_an`: `$AC\approx7{,}7$ cm` · `$\widehat{B}\approx37^\circ$` · giải tam giác `$BC=10$ cm; $\widehat{B}\approx53^\circ$; $\widehat{C}\approx37^\circ$`. Hai kết quả ⇒ `tu_luan`.
 
 **(c) Sai lầm cần tránh**
@@ -1735,7 +1749,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 - Phần riêng K9 của khuôn §A10: tên đề `Đề kiểm tra <giữa|cuối> học kì 1 Toán 9 năm <năm học> — <trường (phường/quận)> (<mã đề>)` · `nam:` = năm đầu năm học · `bo_sach: KNTT` (đề rõ bộ khác ⇒ ghi đúng) · dòng câu `kho=dai|hinh_hoc|hgt`. Đề không ghi tên trường ⇒ ghi theo phòng / huyện.
 - Giữ đúng chữ "Câu" hay "Bài" của đề. Nhãn La Mã (Bài IIa, III.1) ⇒ cổng tự đổi số Ả Rập. Đề in hai lần cùng số bài ⇒ đánh lại + `**Ghi chú:**`. Lời dẫn các ý khác nhau (1a "Giải phương trình", 1b "Giải bất phương trình") ⇒ vẫn MỘT bài trên đề, mỗi ý giữ lời dẫn riêng.
 - Bài "học sinh chọn một trong hai ý" ⇒ nhập cả hai. Chỉ trang ĐỀ là đề; bỏ trang quảng cáo cuối. Hai mã đề cùng trường ⇒ soạn nguyên từng đề.
-- Hình: câu `hinh_hoc` vẽ lại bằng code (Hình chung); hình của câu Đại / `hgt` cắt từ `goc.pdf` (`pdftoppm -r 150`) vào `img\`, mở ảnh kiểm (đúng câu, không cụt, không dính chữ câu khác). Bài hình tự luận đề không cho hình ⇒ vẽ hình giải bằng code.
+- Hình: nguồn hình đề theo §A8 (gốc ổn ⇒ cắt từ `goc.pdf`, `pdftoppm -r 150`, vào `img\`), mở ảnh kiểm (đúng câu, không cụt, không dính chữ câu khác). Bài hình tự luận đề không cho hình ⇒ vẽ hình giải bằng code.
 - Không có hướng dẫn chấm ⇒ lời giải chi tiết đủ khuôn (không viết sơ lược); chỗ không tự kiểm được bằng máy ⇒ `**Chưa chắc:**`.
 
 **Đề cương**
@@ -1745,7 +1759,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 - Ý in đánh số 1)–n) hoặc bỏ chữ (a, b, c, d, e, g, h — thiếu f) ⇒ nhập lại liên tiếp a, b, c… đúng thứ tự. Đề in sai số câu ⇒ đánh lại theo thứ tự + `**Ghi chú:**`. Không đánh số bài ⇒ `Bài 1a–1e`. "Bài V" ⇒ `Bài 5`; hai bài con 1), 2) ⇒ `Bài 4.1`, `4.2`.
 - Phần trộn trắc nghiệm với tự luận ⇒ tách thành các `## PHẦN` riêng, mỗi phần MỘT loại, giữ tên gốc + "(trắc nghiệm)" / "(tự luận)".
 - **Đề cương cuối kì làm hai lượt**: lượt Hình (mọi bài / ý hình, kể cả "tính giá trị biểu thức lượng giác" thuần số và cực trị có hình) rồi lượt Đại (mọi bài còn lại; trước khi gõ liệt kê bài lượt Hình đã lấy để không nhập đôi).
-- Đề cương cuối kì: hình có sẵn chỉ để tham khảo — vẽ lại bằng code (cả hình đề lẫn hình giải).
+- Đề cương cuối kì: hình đề theo §A8 (gốc ổn giữ, tệ vẽ lại); hình giải vẽ bằng code.
 - Hai tệp cùng trường hai năm học trùng nguyên đề ⇒ chỉ ghi một bản.
 - Sau mỗi đề cương mới có bài Hình ⇒ chạy lại `nhap_tu_de_thi.mjs` để đẩy vào Hình–Luyện.
 
@@ -1862,7 +1876,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 - Đầu tệp: `# ĐỀ | Đề kiểm tra <kì> Toán 10 năm <năm học> — <trường> (Mã đề <mã>)` · `nam:` · `bo_sach:` · `thoi_gian_phut:` (thường 90). KHÔNG có `kieu: de_cuong`.
 - `## PHẦN 1 | Trắc nghiệm nhiều phương án | trac_nghiem` · `## PHẦN 2 | Đúng/Sai | dung_sai` · `## PHẦN 3 | Trả lời ngắn | tra_loi_ngan` · (`## PHẦN 4 | Tự luận | tu_luan` nếu có). Số câu đúng như đề (không mặc định 12 TN); nhãn giữ như in (mỗi phần đánh lại từ "Câu 1"). Đề gom "Phần I TNKQ" gồm 3 mục ⇒ vẫn tách 3 PHẦN + ghi cách tách.
 - Đề nhiều mã ⇒ chỉ lấy MỘT mã (mã đầu). Bảng đáp án gộp nhiều mã ⇒ lấy đúng cột / dòng của mã đang làm.
-- Đồ thị, bảng, hình minh hoạ của câu Đại / Hình giải tích ⇒ cắt từ PDF vào `**Hình:**` (Hình chung).
+- Đồ thị, bảng, hình minh hoạ của câu Đại / Hình giải tích ⇒ cắt từ PDF vào `**Hình:**` nếu gốc ổn (§A8).
 
 **Đề cương**
 - Đầu tệp `kieu: de_cuong`; tên `# ĐỀ | Đề cương ôn tập <kì> Toán 10 năm <năm học> — <trường>`; năm học theo ảnh tiêu đề (`2025–2026`).
@@ -2084,7 +2098,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 - `## PHẦN 1 | Trắc nghiệm nhiều phương án | trac_nghiem` · `## PHẦN 2 | Đúng/Sai | dung_sai` · `## PHẦN 3 | Trả lời ngắn | tra_loi_ngan` · (`## PHẦN 4 | Tự luận | tu_luan` nếu có). Số câu đúng như đề (có đề 16 TN); nhãn như in (mỗi phần đánh lại từ "Câu 1"); Đ/S đủ 4 ý. Đề gom "Phần I TNKQ" gồm 3 mục ⇒ vẫn tách 3 PHẦN + ghi cách tách.
 - **Đề nhiều mã ⇒ chỉ lấy MỘT mã (mã đầu).** Chỉ lấy đề của MỘT trường / sở; **bỏ bộ ôn tập nhiều đề** [13/11 · Thùy].
 - PDF và Word cùng đề ⇒ dùng PDF làm đề; Word đáp án là nhân chứng. Câu Word hỏng công thức ⇒ giữ câu + `**Chưa chắc:**` (§A14).
-- Hình đề (đồ thị $f$ / $f'$, hình phẳng tô đậm, vườn hoa, cửa parabol, thùng rượu, nhà kho, chóp cụt trong Oxyz) ⇒ cắt từ PDF vào `**Hình:**` (Hình chung). Câu hình không gian thuần ⇒ vẽ lại bằng code (mục Hình).
+- Hình đề (đồ thị $f$ / $f'$, hình phẳng tô đậm, vườn hoa, cửa parabol, thùng rượu, nhà kho, chóp cụt trong Oxyz) ⇒ cắt từ PDF vào `**Hình:**` nếu gốc ổn (§A8). Câu hình không gian thuần: cũng theo §A8.
 
 **Đề học kì / khảo sát — câu rời JSON (nguồn Word, không có ảnh)**
 - Câu thiếu dữ kiện / "như hình vẽ" mà chữ không đủ / đề lỗi nặng ⇒ giữ câu, `dap_an: null`, `**Chưa chắc:**` ghi lí do ("cần hình") (§A14). Thà `null` còn hơn đoán.
@@ -2222,6 +2236,7 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 10 | `nhap_hh_tu_draft.mjs` (bài học Hình) hiểu mô hình bài–ý + khối Sơ đồ tư duy | Chưa |
 | 11 | Đọc trường `dang=` / `chac=` của dòng câu (§A10) khi ghi ⇒ đề xuất / gán dạng | Chưa |
 | 12 | Hai quy ước dữ liệu dòng (đề thi: đoạn cách dòng trống, màn hình gộp · bài học Hình: `\n` đơn) — thống nhất về một | Chưa |
+| 13 | Bộ đếm hình đề theo khối (§C12): chỗ ghi nhãn nguồn hình + lệnh vẽ lại, hàm đếm, cổng đọc `nguon=` ở dòng `**Hình:**` | Chưa — chờ Thùy gật phạm vi |
 
 Cho tới khi mục 2–6 xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false` như cũ (chưa có làn tự vào kho).
 
@@ -2245,6 +2260,13 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 6. Không cần lô mẫu (§C3) — người chỉ định đã nhìn bài. Không ghi vào sổ toanmath.
 
 ---
+
+## C12. Bộ đếm HÌNH ĐỀ theo khối (Thùy 15/11)
+
+- Đếm theo **môn × kho × khối**: câu có hình đề · `goc` (giữ ảnh gốc) · `ve_lai` (chia theo mã a–f) · `ve_lenh` · `ve_moi` · **chưa rõ nguồn** (ảnh ghi trước 15/11 — chưa ai xét) · **lệnh vẽ lại đang chờ** (đã ra lệnh, chưa có hình mới).
+- Pure-derive (§4 CLAUDE.md): "chưa rõ nguồn" = câu có `anh_de` mà không có dòng nhãn nguồn — không đẻ dòng chờ. Lệnh vẽ lại là một dòng thật (ai · lúc nào · phạm vi); "đang chờ" = lệnh trừ hình mới đã gắn.
+- Số tính ở Postgres (hàm `fn_*`), không tính ở client; số đếm cả kho ⇒ bảng tính sẵn theo khuôn §2.0 CLAUDE.md.
+- **Chưa build** — nợ §C10.13. Đo 15/11: đường dẫn ảnh trong bucket KHÔNG cho biết ảnh là gốc hay vẽ (cả hai nằm ở `nhap_kho/…`), nên phải có chỗ ghi nhãn nguồn.
 
 # PHẦN D — SỔ SAI LẦM (hậu kiểm)
 
