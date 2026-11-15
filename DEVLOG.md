@@ -80857,3 +80857,25 @@ Thùy nêu 4 việc, làm được 3:
 - **Hiện trạng đo:** Thùy bấm "Chốt kết quả tháng" 15/11 10:21 ⇒ 76 giải tháng 10 công bố; app HS đã có 76 tin (`hs_tin_moi`, chưa ai đọc); xu: 36 em lớp 3–7 × 30 = 1.080. App PH: kênh `thong_bao_ph` có sẵn từ 18/09 nhưng **chưa ai ghi**, và `fdw_bkdemy_web` (role FDW app PH đọc) **không có policy RLS** ⇒ kể cả thông báo nhập tay cũng ra 0 dòng bên PH.
 - **mig 202611151041 ĐÃ ÁP --only:** `giai_thuong_gia_tri` 3–7 → 3–8 (30 xu) · 9 giải lớp 8 tháng 10 'khong_xu' → 'tu_dong', +270 xu, lời tin app HS thêm "Phần thưởng 30 xu đã vào ví của em." Kiểm: lớp 8 9/9 có dòng sổ + lời tin. Không bù tháng 8, 9.
 - **mig 202611151055 CHƯA ÁP:** `thong_bao_ph` do postgres sở hữu ⇒ claude_build "must be owner" ⇒ chờ Thùy chạy SQL Editor `alter table public.thong_bao_ph owner to claude_build;`. File: policy đọc cho fdw_bkdemy_web · cột `ref` + unique · `_giai_ghi_nhan` ghi thêm thông báo PH scope ca_nhan (hiện 30 ngày) · gửi bù 76 giải tháng 10. File tự chặn nếu chưa đổi chủ.
+
+### 15/11 chiều (13:35–14:10) — tối ưu tiếp: ô lịch sử Dashboard học tập + index hẹp cho kho câu
+
+- **Đo 8 phút trên lưu lượng thật sau hai index sáng nay (10:03–10:11, `io3.mjs`):** cả DB đọc đĩa 125 MB; `bai_test_cau` còn 2,5 % (cộng dồn trước 8,7 %), hai hàm sinh bài
+  không còn trong nhóm đọc đĩa; `fn_bao_sai_cho_duyet_cua_toi` 12 lượt × 78 ms (trước 679 ms). Bảng đọc đĩa nhiều nhất giờ là `dai_cau_hoi` 34 %.
+  Người dùng thật còn chậm: `fn_dbht_o_lich_su` 8 × 2,2 s · `fn_tl_bdm_lui_goi_y` 6 × 1,3 s · `fn_bdm_cay` 1,5 s · `fn_bdm_khop_dem` 1,4 s.
+- **✅ SỬA 3 — `fn_dbht_o_lich_su` (mig 202611151348, ĐÃ ÁP):** bấm một ô TOÁN vẫn chạy trọn nhánh "môn một vùng" (`_mastery_mon_d` của em, ~0,58 s) rồi mới lọc
+  `x.mon = p_mon` ra 0 dòng. Thêm `p_mon = any(_mastery_mon_ds())` — tương đương tuyệt đối (hàm đó chỉ trả dòng của các môn này) và không phụ thuộc dòng ⇒ Postgres bỏ hẳn nhánh.
+  So cũ–mới 160 ca (42 ô Toán + 30 ô KHTN + 8 ô lệch môn, × 30/90 ngày): **lệch 0**. Ô Toán ấm 1.133 → 433 ms; trên DB thật ~370 ms. Ô môn một vùng không đổi (682 ms —
+  `_mastery_mon_d` tự nó 0,58 s cho một em, CHƯA mổ).
+- **✅ SỬA 4 — hai INDEX HẸP cho `dai_cau_hoi` (mig 202611151354 để ghi sổ; DB sống tạo CONCURRENTLY 1,8 s + 1,6 s) + VACUUM (ANALYZE) 5 s + hạ ngưỡng autovacuum:**
+  `dai_cau_hoi_ma_cau_hep_idx (ma_cau) include (dang_chinh, parent_ma_cau, ma_cum, loai_cau, kho_chuan, xoa_at)` 5,5 MB ·
+  `dai_cau_hoi_dang_hep_idx (dang_chinh) include (ma_cau, parent_ma_cau, ma_cum, loai_cau, kho_chuan) where xoa_at is null` 5,4 MB.
+  **Gốc của `fn_tl_bdm_lui_goi_y` 1,3 s:** ấm chỉ ~0,1 s; chậm vì `_tl_bdm_cau_vi_tri(khối)` + `_bdm_cau_giai` đọc MỌI câu của khối (2.856–13.182 câu) từ bảng dòng rộng.
+  Trang HEAP `dai_cau_hoi` mỗi lượt, trước → sau (pg_statio, đã ép đẩy thống kê sau từng lượt): `_tl_bdm_cau_vi_tri` khối 9: 11.332 → 3 · khối 12: 17.410 (2.404 đọc đĩa, 1.070 ms) → 3 ·
+  `fn_tl_bdm_cay_chon` 4.314 → 3 · `fn_bdm_cay` 1.229 → 2 · `fn_tl_bdm_goi_y` 2.744 (472 đĩa) → 3. Không sửa hàm nào.
+  Visibility map `dai_cau_hoi` 49 % → 100 % sau VACUUM; bảng bị sửa nhiều nên hạ `autovacuum_vacuum_scale_factor` 0,2 → 0,02 (+ threshold 500) để dấu không rớt lại
+  (Index Only Scan chỉ khỏi mở heap với trang đã đánh dấu). Vẫn mở heap, đúng thiết kế: `fn_de_thi_thieu` (cần nội dung câu) · mastery ~2.400 trang / 20 em (đã nằm trong bộ nhớ, đĩa 0).
+- **Mẹo đo:** `pg_statio_user_tables` của phiên mình trễ tới lượt giao dịch sau ⇒ số bị lệch một dòng. Gọi `select pg_stat_force_next_flush()` ngay sau rollback thì khớp từng lượt.
+  `pg_stat_statements.track = top` ⇒ không thấy câu lệnh lồng trong hàm; muốn biết hàm con nào tốn phải đo tay từng khúc.
+- **`schema.md` đang lệch 1 dòng (FK `sotay_ct_*`) do migration của phiên khác — KHÔNG commit kèm.**
+- **Chưa làm:** `_mastery_mon_d` 0,58 s/em (ô môn một vùng + mọi chỗ gọi nó) · `fn_bdm_khop_dem` 1,4 s nguội (ấm 47 ms) · số THẬT của người dùng sau các index (đang theo dõi 10 phút).
