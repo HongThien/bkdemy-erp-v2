@@ -600,7 +600,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Cuối kì I**: HK1 — số thập phân, phép tính STP, đơn vị đo, hình tam giác / hình thang / hình tròn + kiến thức lớp 4 (tổng–hiệu, tổng–tỉ…).
 - **Cuối kì II**: + HK2 — tỉ số, tỉ số phần trăm, thể tích, hình hộp – hình lập phương, số đo thời gian, vận tốc, biểu đồ hình quạt…
 - **Giữa kì I / giữa kì II**: phần đầu của học kì tương ứng — chưa có luật chi tiết, lô mẫu đầu tiên sẽ rút.
-- **Thi vào lớp 6**: bộ đề CLC nhập ở Khối 6 (mục Theo loại nguồn).
+- **Thi vào lớp 6**: bộ đề CLC thuộc **Khối 5T** (mục Theo loại nguồn của 5T).
 - **CẤM**: kiến thức lớp 6 trở lên; gọi ẩn / chuyển vế; `⇒ ⇔ ∈ ≤ ≥` trong lập luận; `\widehat`, `\angle` (góc viết như SGK 5: "góc đỉnh A, cạnh AB, AC").
 
 ### Phân kho
@@ -746,6 +746,20 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Câu kho cũ giải lại (Số thập phân)**: giữ `dap_an`, chỉ đổi lời giải.
 - **Câu máy sinh theo mẫu (clone) chuyên đề phần trăm** [08/11 · Thùy]: tham số "số đẹp" — mọi số tiền là **bội của 1000 đồng**; phần trăm tròn; lãi ngày thường ≤ 100%, lãi còn lại từ 5% đến dưới 100%; nhân/chia hai tỉ số % ra số thập phân hữu hạn. Bộ kiểm độc lập: đọc CHỮ của đề, tính lại bằng phân số BigInt, tính cả chuỗi `a=b=c` mọi dòng Phần 2, "Đáp số" = `dap_an`, card 3–6 bước, KaTeX, không ký hiệu cấm, 0 trùng đề. Cơ cấu: bán hàng cơ bản (giá gốc · lãi · giá bán · tỉ lệ lãi · tỉ lệ bán) mỗi loại 20 câu · lãi theo giá bán ~40 · giảm giá 2 kiểu × 30. Khuôn: lãi theo giá bán ⇒ coi giá bán 100%, giá gốc = (100−a)%; giảm giá kiểu 1 ⇒ coi giá nhập 100%: (100+p)% × (100−d)% − 100%; kiểu 2 ⇒ (100+q)% : (100−d)% − 100%. Ghi `nguon='clone'`, `clone_method='may_sinh_theo_mau'`. Vào kho theo §C6.
 
+**Bộ đề thi vào lớp 6 CLC Hà Nội (kiến thức Toán 5 nâng cao; HS lớp 5 đọc)**
+- Chỉ giải 58 đề của `TUYỂN TẬP ĐỀ THI CLC 2025-2026.docx` [10/10 · Thùy]. Phần chuyên đề (738 bài) "cũng là từ đề ra" ⇒ không nhập. Đề cũ 2005–2014, bài trung tâm tự soạn, bài bổ trợ từng HS: ngoài phạm vi. Câu ghi vào **khối 5T** (Thùy 15/11: bộ đề thi vào lớp 6 CLC thuộc 5T).
+- Luật giải = luật Khối 5T bên trên (2 phần, card, luật sơ đồ, cách chốt A–H, bảng CẤM tiểu học) + phần riêng dưới.
+- Tách ý theo §A7. `ma_nguon` = `"<mã đề> · <số>"` / `"<mã đề> · P<phần>.<số>"`; mã đề = trường + năm bắt đầu năm học (`LTV 2018`, `ARC 2020-CB`, `NTT-MH1`…).
+- Kiểu câu: `dien` (`dap_an` gọn như HS ghi vào ô — số + đơn vị; Phần 2 trình bày đầy đủ như tự luận lớp 5) · `trac_nghiem` (giải ra rồi `Chọn B.`; không thử từng phương án trừ bài đúng là "thử chọn") · `tu_luan` (`a) …; b) …`, ý sau dùng lại kết quả ý trước) · `dung_sai` (`a) Đúng; b) Sai; …` đủ mệnh đề; tính số liệu chung trước rồi mỗi mệnh đề một đoạn kết "Đúng." / "Sai.").
+- Kiến thức lớp 5: không đặt ẩn / phương trình / chuyển vế, không số âm, không kiến thức lớp 6+ (đồng dạng, Ta-lét, luỹ thừa, căn, đồng dư…), trừ kí hiệu đề đã dùng. Chia hết chỉ dùng dấu hiệu chia hết và phép chia có dư.
+- **Sơ đồ quá lớn thì BỎ** [10/10 · Thùy]: một hàng hơn 12 phần ⇒ không vẽ, không ghi "Ta có sơ đồ:", viết bằng lời "… là 83 phần, … là 60 phần". Nhãn sơ đồ không lộ đáp số.
+- Câu ngoài khuôn sách (lịch – thứ ngày, suy luận lôgic, đếm, xoá chữ số): Phần 2 lập luận bằng câu văn ngắn + phép tính.
+- Định dạng CLC6 (lớp 5): `\dfrac`, nhân `\times`, chia `:`, dấu phẩy thập phân, đơn vị ngoài công thức hoặc `\text{cm}^2`; không chữ Việt trong `$…$`.
+- Đề có vấn đề — không bịa dữ kiện: thiếu hình / dữ kiện, số liệu vô lí ⇒ `**Chưa chắc:**` (thiếu gì, đã hiểu thế nào). Đề hỏi lửng ("là:") ⇒ giữ nguyên. TN kết quả không trùng phương án nào ⇒ theo §A4. Có `luu_y_de` (cách hiểu đã chốt) ⇒ làm theo và nói rõ giả thiết trong lời giải.
+- Ba nguồn đáp số độc lập: bản soạn (không mở PDF / lời giải sẵn) · code (phân số chính xác; hình dựng toạ độ; đếm vét cạn) · cột Đáp số của sách. Lời giải sẵn có chỗ sai (LTV 2018 câu 13) ⇒ phân xử bằng máy.
+- **Đề lấy từ Word** (MathType → LaTeX), PDF để đối chiếu / lấy đáp số (pdftotext vỡ phân số ⇒ nhìn ảnh). Word có lỗi chép so với PDF (mất phân số, đảo 512↔152) ⇒ đối chiếu đề TỪNG câu; lệch ⇒ sửa theo PDF (PDF rõ sai thì không sửa, nói rõ). PDF có hình mà Word thiếu ⇒ bù hình (kể cả bảng số liệu / biểu đồ) [10/10 · Thùy].
+- Trạm kiểm phân mức: `sai` (bắt buộc sửa) · `nen_sua` · `hoi` (chỉ báo).
+
 ### Công cụ riêng
 
 - `scripts/kho/so-do-doan-thang.mjs` — như 4T. Giá trị hàng = phan × gia_tri_phan + them − bot; `tong` = tổng các hàng; `hieu` = chênh lệch hai hàng đầu; số thập phân trong nhãn dùng dấu phẩy. Mẫu: `kho-rules/dai/so-do/5T-LT-6-8.json`, `5T-LT-7-5.json` (hai hiệu số), `5T-LT-13-24.json` (dịch dấu phẩy), `5T-ON-22.json` (thêm chữ số).
@@ -759,6 +773,8 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - `kho-rules/dai/lo/k5T-card-3-6.json` — bản Phần 1 hiện hành của 836 câu sách (Phần 1 trong `lo/k5T-lo*.json` cũ hơn, không ghi ngược lại).
 
 ---
+- CLC6: `scripts/kho/mathtype-thu/doc-docx.mjs` · `scripts/kho/de-thi/tach-clc6.mjs` · `scripts/kho/de-thi/dau-vao-clc6.mjs`. `ghi-lo.mjs` của sách chưa nhận `lua_chon` (TN) — mở rộng trước khi ghi TN.
+
 
 ## Khối 6
 
@@ -771,7 +787,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Giữa kì I**: Ch I–II + hình trực quan Ch IV (tam giác đều, hình vuông, lục giác đều, hình chữ nhật, hình thoi, hình bình hành, hình thang cân; chu vi, diện tích). Không số nguyên âm (Ch III) trừ khi đề cương ghi rõ; không phân số / số thập phân ngoài phần tiểu học.
 - **Cuối kì I**: Ch I–V + toàn bộ tiểu học (phân số của một số, tỉ số phần trăm). Bản đồ mới đã có lý thuyết Số nguyên, Nhận biết một số hình phẳng, Tính chất đối xứng (13/11) ⇒ trình bày theo đó; phần bản đồ chưa có (chu vi – diện tích hình phẳng…) theo SGK.
 - **Giữa kì II / cuối kì II**: chưa có luật — lô mẫu đầu tiên sẽ rút.
-- **Thi vào lớp 6 (bộ CLC)**: kiến thức Toán 5 nâng cao — mục Theo loại nguồn.
+- **Thi vào lớp 6 (bộ CLC)**: thuộc **Khối 5T** (Thùy 15/11), không làm ở Khối 6.
 - **CẤM ở mọi mốc HK1**: chuyển vế đổi dấu · giá trị tuyệt đối (cấm hẳn) · phân số âm và phép tính phân số Ch VI, số thập phân âm · $(a^m)^n$, $(ab)^n$ như quy tắc có sẵn · dấu hiệu chia hết cho 4, 8, 11, 25 (chỉ 2, 5, 3, 9) · $\text{ƯCLN}(a,b).\text{BCNN}(a,b)=a.b$ và thuật toán Euclid như quy tắc · hằng đẳng thức · đồng dư · $\dfrac{n(n+1)}{2}$ dùng như đã biết · số đo góc, đoạn thẳng – trung điểm (Ch VIII) · "tập nghiệm", "phương trình", phương trình bậc hai, Viète.
 
 ### Phân kho
@@ -891,19 +907,6 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - Phương pháp đúng cho MỌI đề thuộc dạng. Sách chỉ là tham khảo — viết lại theo khuôn K6, không chép nguyên văn dài. Nguồn: SGK KNTT 6 tập 1, sách phân dạng KNTT, sách Củng cố, tệp dạng bài `E:\BK ACADEMY\Kho dạng bài\K6\`. K6 được tự soạn lý thuyết / ví dụ theo các nguồn này.
 - Mô tả dạng mâu thuẫn tên / không phân biệt được với anh em / ví dụ cũ sai dạng ⇒ ghi `ghi_chu` kèm mã.
 
-**Bộ đề thi vào lớp 6 CLC Hà Nội (kiến thức Toán 5 nâng cao; HS lớp 5 đọc)**
-- Chỉ giải 58 đề của `TUYỂN TẬP ĐỀ THI CLC 2025-2026.docx` [10/10 · Thùy]. Phần chuyên đề (738 bài) "cũng là từ đề ra" ⇒ không nhập. Đề cũ 2005–2014, bài trung tâm tự soạn, bài bổ trợ từng HS: ngoài phạm vi. Khối ghi câu của bộ CLC: chờ Thùy xác nhận.
-- Luật giải = **dùng luật Khối 5T** (2 phần, card, luật sơ đồ, cách chốt A–H, bảng CẤM tiểu học) + phần riêng dưới.
-- Tách ý theo §A7. `ma_nguon` = `"<mã đề> · <số>"` / `"<mã đề> · P<phần>.<số>"`; mã đề = trường + năm bắt đầu năm học (`LTV 2018`, `ARC 2020-CB`, `NTT-MH1`…).
-- Kiểu câu: `dien` (`dap_an` gọn như HS ghi vào ô — số + đơn vị; Phần 2 trình bày đầy đủ như tự luận lớp 5) · `trac_nghiem` (giải ra rồi `Chọn B.`; không thử từng phương án trừ bài đúng là "thử chọn") · `tu_luan` (`a) …; b) …`, ý sau dùng lại kết quả ý trước) · `dung_sai` (`a) Đúng; b) Sai; …` đủ mệnh đề; tính số liệu chung trước rồi mỗi mệnh đề một đoạn kết "Đúng." / "Sai.").
-- Kiến thức lớp 5: không đặt ẩn / phương trình / chuyển vế, không số âm, không kiến thức lớp 6+ (đồng dạng, Ta-lét, luỹ thừa, căn, đồng dư…), trừ kí hiệu đề đã dùng. Chia hết chỉ dùng dấu hiệu chia hết và phép chia có dư.
-- **Sơ đồ quá lớn thì BỎ** [10/10 · Thùy]: một hàng hơn 12 phần ⇒ không vẽ, không ghi "Ta có sơ đồ:", viết bằng lời "… là 83 phần, … là 60 phần". Nhãn sơ đồ không lộ đáp số.
-- Câu ngoài khuôn sách (lịch – thứ ngày, suy luận lôgic, đếm, xoá chữ số): Phần 2 lập luận bằng câu văn ngắn + phép tính.
-- Định dạng CLC6 (lớp 5): `\dfrac`, nhân `\times`, chia `:`, dấu phẩy thập phân, đơn vị ngoài công thức hoặc `\text{cm}^2`; không chữ Việt trong `$…$`.
-- Đề có vấn đề — không bịa dữ kiện: thiếu hình / dữ kiện, số liệu vô lí ⇒ `**Chưa chắc:**` (thiếu gì, đã hiểu thế nào). Đề hỏi lửng ("là:") ⇒ giữ nguyên. TN kết quả không trùng phương án nào ⇒ theo §A4. Có `luu_y_de` (cách hiểu đã chốt) ⇒ làm theo và nói rõ giả thiết trong lời giải.
-- Ba nguồn đáp số độc lập: bản soạn (không mở PDF / lời giải sẵn) · code (phân số chính xác; hình dựng toạ độ; đếm vét cạn) · cột Đáp số của sách. Lời giải sẵn có chỗ sai (LTV 2018 câu 13) ⇒ phân xử bằng máy.
-- **Đề lấy từ Word** (MathType → LaTeX), PDF để đối chiếu / lấy đáp số (pdftotext vỡ phân số ⇒ nhìn ảnh). Word có lỗi chép so với PDF (mất phân số, đảo 512↔152) ⇒ đối chiếu đề TỪNG câu; lệch ⇒ sửa theo PDF (PDF rõ sai thì không sửa, nói rõ). PDF có hình mà Word thiếu ⇒ bù hình (kể cả bảng số liệu / biểu đồ) [10/10 · Thùy].
-- Trạm kiểm phân mức: `sai` (bắt buộc sửa) · `nen_sua` · `hoi` (chỉ báo).
 
 ### Công cụ riêng
 
@@ -914,7 +917,6 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - `kho-rules/dai/lo/k6/de-cuong/dc-lib.mjs` + `<MA>.build.mjs` — dựng đề cương (kiểm KaTeX, `\cdot`, `\times`, chữ Việt ngoài `\text{}`, thiếu hình), sinh `de.json` + khung `.p<N>.soan.md`.
 - `kho-rules/dai/lo/k6/ban-do-moi/kiem-goi.mjs "<goi>" "<out>"` — cổng lý thuyết / ví dụ bản đồ K6.
 - `pdftoppm -r <150|260|300|400> -f <tr> -l <tr> -x -y -W -H -png [-singlefile] goc.pdf <ra>` — cắt hình / phóng to.
-- CLC6: `scripts/kho/mathtype-thu/doc-docx.mjs` · `scripts/kho/de-thi/tach-clc6.mjs` · `scripts/kho/de-thi/dau-vao-clc6.mjs`. `ghi-lo.mjs` của sách chưa nhận `lua_chon` (TN) — mở rộng trước khi ghi TN.
 - Mẫu đã duyệt: `kho-rules/dai/lo/k6/GKI-01.soan.md` (giữa kì); `kho-rules/dai/lo/k6/CKI-*.soan.md` (cuối kì).
 - JSON / LaTeX viết bằng `.mjs` với `String.raw` + `JSON.stringify` hoặc Write.
 
@@ -1463,8 +1465,8 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 | Phương trình, hệ, bất phương trình, căn thức, lập phương trình / hệ, hàm số $y=ax^2$, thống kê – xác suất | `kho=dai` (`dai_cau_hoi`) | |
 | Bài cực trị / tối ưu thực tế bối cảnh hình (hình hộp, máng nước, hàng rào) mà lời giải thuần đại số | `kho=dai` | Có nội dung hình thật (tam giác bằng nhau / Pythagore / đồng dạng) ⇒ Hình |
 | Đường tròn, tiếp tuyến, tứ giác nội tiếp, mọi câu hình phẳng (chứng minh, tính trên hình) | `kho=hinh_hoc` (`hinh_hoc_cau_hoi`) | CTO phân xử 15/11. Sách ⇒ phần Học, kho kiểu 1, `dang_chinh` = mã bài HH00105–HH00110 |
-| Tỉ số lượng giác góc nhọn, hệ thức lượng: câu thuần tính / biến đổi tỉ số lượng giác, giải tam giác vuông đứng riêng (kể cả bài thực tế tháp, hải đăng, cột cờ, thang) | `kho=hgt` (`hgt_cau_hoi`, bản đồ hgt K9) | CTO phân xử 15/11 — chờ Thùy xác nhận |
-| Lượng giác nằm trong một bài Hình nhiều ý / có chứng minh | `kho=hinh_hoc` theo bài | CTO phân xử 15/11 — chờ Thùy xác nhận |
+| Tỉ số lượng giác góc nhọn, hệ thức lượng: câu thuần tính / biến đổi tỉ số lượng giác, giải tam giác vuông đứng riêng (kể cả bài thực tế tháp, hải đăng, cột cờ, thang) | `kho=hgt` (`hgt_cau_hoi`, bản đồ hgt K9) | Thùy chốt 15/11 |
+| Lượng giác nằm trong một bài Hình nhiều ý / có chứng minh | `kho=hinh_hoc` theo bài | Thùy chốt 15/11 |
 | Hình học không gian (trụ – nón – cầu) | `kho=dai` — chủ đề NCD00164 của bản đồ Đại 9 | Chưa có luật trình bày |
 
 - **Bài lai** (ý a đại số, ý b hình) ⇒ không tách; ghi `**Ghi chú:**` để người ghép quyết.
@@ -1659,7 +1661,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 
 ### Hình giải tích
 
-> Lượng giác K9 = KNTT Chương IV (Bài 11 Tỉ số lượng giác của góc nhọn · Bài 12 Hệ thức giữa cạnh, góc trong tam giác vuông). "Lượng giác mới là hgt, còn đường tròn là hình học" [09/10 · Thùy]. Câu nào vào `hgt`: mục Phân kho (CTO phân xử 15/11 — chờ Thùy xác nhận). Lượng giác nằm trong bài Hình ⇒ cũng theo luật dưới đây về công cụ.
+> Lượng giác K9 = KNTT Chương IV (Bài 11 Tỉ số lượng giác của góc nhọn · Bài 12 Hệ thức giữa cạnh, góc trong tam giác vuông). "Lượng giác mới là hgt, còn đường tròn là hình học" [09/10 · Thùy]. Câu nào vào `hgt`: mục Phân kho (Thùy chốt 15/11). Lượng giác nằm trong bài Hình ⇒ cũng theo luật dưới đây về công cụ.
 
 **(a) Công cụ được phép / cấm**
 - **Được dùng**: định nghĩa $\sin,\cos,\tan,\cot$ góc nhọn trong tam giác vuông (đối / huyền, kề / huyền, đối / kề, kề / đối) · tỉ số lượng giác hai góc phụ nhau · bảng góc đặc biệt $30^\circ,45^\circ,60^\circ$ · máy tính cầm tay · **hệ thức cạnh – góc** (cạnh góc vuông $=$ huyền $\cdot\sin$ góc đối $=$ huyền $\cdot\cos$ góc kề $=$ cạnh góc vuông kia $\cdot\tan$ góc đối $=$ cạnh góc vuông kia $\cdot\cot$ góc kề) · Pythagore · tổng ba góc · tam giác đồng dạng · tam giác cân, đều, đường cao.
@@ -1899,7 +1901,7 @@ Biến thể còn thiếu mẫu (gặp thì soạn theo cách giải của dạn
 ### Phân kho
 
 - `kho=hinh_hoc` cho câu **quan hệ song song / hình học không gian**: giao tuyến, giao điểm, thiết diện, đường thẳng // mặt phẳng, hai mặt phẳng song song, phép chiếu song song, hình chóp / lăng trụ / hình hộp (CTO phân xử 15/11).
-- `kho=dai` cho mọi câu còn lại, **kể cả lượng giác C1** — lượng giác K11 hiện nằm bản đồ Đại (`dai_bdm_*`, chủ đề `NCD00090` Lượng giác) ⇒ `dai` (chờ Thùy xác nhận).
+- `kho=dai` cho mọi câu còn lại, **kể cả lượng giác C1** — lượng giác K11 hiện nằm bản đồ Đại (`dai_bdm_*`, chủ đề `NCD00090` Lượng giác) ⇒ `dai` (Thùy chốt 15/11).
 - K11 không dùng `kho=hgt`. Cổng `--khoi 11` nhận `kho=dai|hinh_hoc`. Câu nhập nhằng (vd toạ độ) ⇒ chọn theo bản chất + `**Ghi chú:**`.
 
 ### Đại
