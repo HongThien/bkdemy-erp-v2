@@ -161,7 +161,7 @@ Ngoài ra:
 - Có lỗi đánh máy ("Lan will you join…", "tum up").
 - PDF Collo Check đánh số sai: Unit 2 có 2 câu số 12; Unit 6 đánh lại từ 1 ở phần II.
 
-⇒ Dạng lỗi "**nhiều đáp án cùng đúng**" là lỗi điển hình của câu trắc nghiệm tiếng Anh. **Không có phép tính nào để máy tự kiểm** như ở Toán. Phải dùng một giám khảo độc lập, được giao đúng việc "đi tìm đáp án đúng thứ 2", cộng người duyệt. Đây chính là luật cổng ghi của `spec-luong-kho.md`: không có biên bản kiểm thì không ghi.
+⇒ Dạng lỗi "**nhiều đáp án cùng đúng**" là lỗi điển hình của câu trắc nghiệm tiếng Anh. **Không có phép tính nào để máy tự kiểm** như ở Toán. Phải dùng một giám khảo độc lập, được giao đúng việc "đi tìm đáp án đúng thứ 2", cộng người duyệt. Đây chính là luật cổng ghi của `spec-giai-bai.md`: không có biên bản kiểm thì không ghi.
 
 ### 3.4 Định dạng kỹ thuật (quyết định cách nhập)
 
@@ -253,7 +253,7 @@ Ngoài ra:
 - Danh mục mã lỗi theo CLC error coding.
 - **GV Anh làm chủ học thuật**, duyệt bản đồ lẫn câu (tương đương B6 của Toán).
 
-**Dây chuyền kho** (theo khung trạm T0–T8 của `spec-luong-kho.md`, bỏ các trạm không cần)
+**Dây chuyền kho** (theo khung trạm T0–T8 của `spec-giai-bai.md`, bỏ các trạm không cần)
 - Trạm đọc **.docx có định dạng**: màu tô = đáp án, gạch chân = đề phát âm, ảnh nhúng, gắn transcript với audio.
 - Trạm gán nhãn: KP chính + dạng đề + ngữ liệu.
 - **Trạm kiểm "tìm đáp án thứ 2"**: giám khảo độc lập. Đây là trạm quan trọng nhất của môn Anh.

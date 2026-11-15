@@ -14,12 +14,12 @@
 ## Các bước (mỗi lượt)
 
 1. **Lấy việc:** `node scripts/kho/nhan-xet.mjs --ds --ra <scratchpad>/nx.json` — mỗi đối tượng kèm mọi nhận xét đang mở + nội dung đầy đủ (dòng DB; bài Hình kèm các ý; đề thi kèm danh sách câu).
-2. **Đọc luật trước khi sửa** theo loại việc: `kho-rules/README.md` + `kho-rules/<nhánh>/k<khối>.md` của khối câu đó · `spec-giai-bai-ai.md` (lời giải) · luật trình bày đã chốt (lời giải hiện liền dòng, Hình không dòng trống thừa…) · hình vẽ: `scripts/anh/ve_hinh_lib` + `gan_hinh.mjs` (vẽ bằng code, không cắt ảnh sách).
+2. **Đọc luật trước khi sửa** theo loại việc: `spec-giai-bai.md` (Phần A + mục khối của câu đó) · luật trình bày đã chốt (lời giải hiện liền dòng, Hình không dòng trống thừa…) · hình vẽ: `scripts/anh/ve_hinh_lib` + `gan_hinh.mjs` (vẽ bằng code, không cắt ảnh sách).
 3. **Sửa ĐÚNG điều nhận xét yêu cầu**, không "nhân tiện" sửa chỗ khác. Đổi đáp án ⇒ tự giải lại kiểm (bài nhiều ý dùng lại kết quả ý trước). Đổi đáp án câu có form trắc nghiệm ⇒ ghi chú để người duyệt biết form có thể cần sinh lại.
 4. **Không đồng ý / thiếu dữ kiện / nhận xét mơ hồ** ⇒ KHÔNG đoán (§1.5 "thà bỏ trống còn hơn đánh sai"): `--khong <id,id> "lý do cụ thể, cần người nói rõ gì"` — người duyệt thấy lý do ngay trên thẻ, ghi nhận xét mới nếu cần.
 5. **Ghi:** viết `goi.json` (`nhan_xet` · `ghi_chu` = đã sửa GÌ, đủ để người duyệt kiểm nhanh · `thay` = cột đổi) → `node scripts/kho/nhan-xet.mjs --sua goi.json` (chạy thử, ROLLBACK) → đọc số → thêm `--ghi`. Sửa + ghi xử lý cùng 1 transaction. Script chỉ cho sửa cột trong registry `DT`/`CON`, **không đụng `da_duyet`**.
 6. **Khâu "dạng" ở Bản đồ mới:** dạng bài do người chọn ngay tại màn Duyệt kho — Claude chỉ đổi `dang_chinh` (bản đồ cũ) khi nhận xét ghi rõ mã; còn lại `--khong` kèm gợi ý dạng bài.
-7. **Học lại:** `node scripts/kho/nhan-xet.mjs --thong-ke`. Lỗi cùng kiểu lặp ≥3 lần ở một khối/loại ⇒ rút thành luật trong `kho-rules/<nhánh>/k<khối>.md` (ghi nguồn: "từ nhận xét duyệt #id…") để lô soạn sau không mắc lại.
+7. **Học lại:** `node scripts/kho/nhan-xet.mjs --thong-ke`. Lỗi cùng kiểu lặp ≥3 lần ở một khối/loại ⇒ rút thành luật trong `spec-giai-bai.md` (ghi nguồn: "từ nhận xét duyệt #id…") để lô soạn sau không mắc lại.
 8. **Báo + log:** DEVLOG (append) — số đã sửa / không sửa, luật mới rút. Commit theo pathspec.
 
 ## Luật cứng

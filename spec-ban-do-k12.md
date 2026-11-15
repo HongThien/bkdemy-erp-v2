@@ -3,7 +3,7 @@
 > **Trạng thái: ĐỀ XUẤT v2 của CTO (28/09 tối) — CEO đã trả lời vòng 1 (§6): khung "gần SGK, không 100%" · xoá rác: gật ·
 > dạng seed nháp CTO: gật · 673 câu thực tế: "bỏ qua cái đã phân, đề xuất theo góc nhìn của CTO" ⇒ §2b + §3b. Chờ CEO chốt vòng 2.**
 > Số liệu đo trên DB live 28/09 (phiên read-only).
-> Là pha **P1** của `spec-luong-kho.md` §7. Đích P1: *học thuật chốt bản đồ K12; 1.516 câu đang nằm dạng chờ có chỗ để về;
+> Là pha **P1** của `spec-giai-bai.md` Đích P1: *học thuật chốt bản đồ K12; 1.516 câu đang nằm dạng chờ có chỗ để về;
 > thứ tự chủ đề tường minh (cho luật phạm vi C8); hồ sơ dạng bắt đầu có.* Chưa build gì cho tới khi §6 được trả lời.
 
 ## 1. Hiện trạng bản đồ K12 (DB 28/09)
@@ -32,7 +32,7 @@
 C5 ~52 · C2 ~46 · C6 ~13 · **698 không nhận ra bằng từ khoá** (nhiều câu thực tế / xác suất viết bằng lời).
 
 **Kết luận hiện trạng:** câu dồn vào dạng chờ **không phải vì AI gán kém**, mà vì **bản đồ thiếu 2 chương + 1 chương mới chỉ là khung**.
-Nguồn K12 sắp nhập (171 đề có đáp án + NBV/PNL/Từ Tâm) đều theo cấu trúc SGK ⇒ khung phải có trước khi chạy T2 (đúng `spec-luong-kho.md` §7 + `spec-de-thi.md` quyết định #10).
+Nguồn K12 sắp nhập (171 đề có đáp án + NBV/PNL/Từ Tâm) đều theo cấu trúc SGK ⇒ khung phải có trước khi chạy T2 (đúng `spec-giai-bai.md` + `spec-de-thi.md` quyết định #10).
 
 ## 2. Khung đề xuất: CHỦ ĐỀ = CHƯƠNG SGK · CHUYÊN ĐỀ = BÀI SGK · thứ tự = thứ tự SGK
 
@@ -88,7 +88,7 @@ II: 3 · III: 1 · IV: 3 · V: 4 · VI: 2) · ~77 dạng cũ dời chỗ + dạn
 
 ## 3. Dạng — độ hạt, nguồn seed, và các chuyên đề mới
 
-- **Độ hạt giữ của BK** (77 dạng so với 38 "dạng" của PNL): dạng = *kiến thức + kĩ năng + phương pháp* (luật §2 `spec-luong-kho.md`);
+- **Độ hạt giữ của BK** (77 dạng so với 38 "dạng" của PNL): dạng = *kiến thức + kĩ năng + phương pháp* (luật §2 `spec-giai-bai.md`);
   "dạng" của PNL là nhóm bài học, thô hơn. Mục lục PNL/NBV chỉ làm **khung chuyên đề**, dạng phải rút từ câu.
 - **Dạng cho chuyên đề mới — CTO nháp theo luật §2, học thuật duyệt; lô đầu chạy làn 🟡 sẽ sửa:**
 
@@ -109,7 +109,7 @@ II: 3 · III: 1 · IV: 3 · V: 4 · VI: 2) · ~77 dạng cũ dời chỗ + dạn
 ### 3b. 673 câu "ứng dụng thực tế" — đọc lại từ đầu (mẫu ngẫu nhiên 70 câu, 28/09)
 
 Hai dạng hiện có chia theo **đề cho gì** ("có sẵn mô hình" 383 câu / "có sẵn biểu thức" 290 câu). Đó là cắt theo *bề mặt đề bài*.
-Đọc 70 câu theo **phương pháp giải** (cấu trúc sâu, luật §2 `spec-luong-kho.md`) thì chúng rơi vào **4 họ KP, đều đã có chỗ trong B1–B3 + 1 KP chưa có chỗ**:
+Đọc 70 câu theo **phương pháp giải** (cấu trúc sâu, luật §2 `spec-giai-bai.md`) thì chúng rơi vào **4 họ KP, đều đã có chỗ trong B1–B3 + 1 KP chưa có chỗ**:
 
 | Họ KP (phương pháp thật) | Dấu hiệu | Mẫu / 70 | Về chuyên đề | Dạng đề xuất (mỗi dạng = 1 cách LẬP HÀM khác nhau; bước sau — tìm max/min — giống nhau) |
 |---|---|---|---|---|

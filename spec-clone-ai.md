@@ -1,7 +1,7 @@
 # spec-clone-ai.md — Luật cho Claude khi CLONE câu đã đặt hàng trong kho (luồng 2)
 
 > Đọc BẮT BUỘC trước khi xử lý hàng đợi clone (`scripts/hangdoi-clone.mjs`). Luồng 1 (giải bài) có spec riêng:
-> `spec-giai-bai-ai.md`. Luật trình bày ở đây chép từ prompt clone đang chạy trong ERP (`buildCloneFromGocPrompt`
+> `spec-giai-bai.md`. Luật trình bày ở đây chép từ prompt clone đang chạy trong ERP (`buildCloneFromGocPrompt`
 > + `FMT_RULES`, `src/lib/kho/api.ts`) — nguồn luật là ở đó; sửa luật thì sửa cả 2 nơi.
 
 ## 1. Luồng

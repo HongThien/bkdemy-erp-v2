@@ -5,7 +5,7 @@
 > **⭐ Cập nhật 12/10 (CEO):** bản đồ mới **K12 chỉ chủ đề Nguyên hàm – Tích phân (`NCD00095`) là chuẩn**; các chủ đề K12 còn lại trong bản nháp CHƯA chuẩn.
 > ⇒ B5 Chuyển và việc dựng tài liệu/giáo trình/ET theo bản đồ mới của K12 chỉ áp **theo chủ đề NH-TP**, không theo cả khối; chủ đề khác giữ bản đồ cũ. Điều kiện "khối xong khi về 0" (§9.2) và "1 lần/khối" (§0, §11) hiểu là **theo chủ đề** cho K12.
 > **Phạm vi đợt này:** nhánh **Đại** (`dai_*`). HGT/KHTN cùng khuôn ⇒ áp sau qua registry. Hình (`hinh_*`) và Tiếng Anh tự cấu trúc riêng (§1.6 CLAUDE.md), không nằm trong spec này.
-> **Thay thế một phần:** `spec-cum-bai.md` (định nghĩa "cụm") và `spec-luong-kho.md` §2 (phân tầng Dạng / Cụm / Biến thể). Hai file đó vẫn đúng ở các phần khác.
+> **Thay thế một phần:** `spec-cum-bai.md` (định nghĩa "cụm") và `spec-giai-bai.md` (phân tầng Dạng / Cụm / Biến thể). Hai file đó vẫn đúng ở các phần khác.
 > Số liệu đo trên DB live 07/10 trong phiên read-only.
 
 ---
@@ -32,7 +32,7 @@
 > **⭐ Cập nhật 08/10 chiều (CEO):** CEO **dựng bản đồ mới TỪ ĐẦU**, không bám bản đồ cũ ("sửa trên vỏ cũ còn mất công hơn").
 > ⇒ Màn soạn **tắt mọi phần tham chiếu bản đồ cũ** (công tắc `HIEN_KHOP_CU = false` trong `BanDoMoi.tsx`: ngăn 📦, nhãn dạng cũ,
 > ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB của §9.2 **giữ nguyên, không xoá** — dùng lại ở bước XẾP BÀI.
-> **Xếp bài** = `kho-rules/README.md` bước (3): CEO làm xong bản đồ khối nào ⇒ Claude ĐỌC bản đồ mới (mô tả · lý thuyết · ví dụ)
+> **Xếp bài** = `spec-giai-bai.md` bước (3): CEO làm xong bản đồ khối nào ⇒ Claude ĐỌC bản đồ mới (mô tả · lý thuyết · ví dụ)
 > ⇒ (a) đề xuất gắn dạng cũ → bản mới ở mức dạng (học thuật xác nhận) · (b) gán từng câu gốc (bản sao theo gốc) ⇒ CEO/học thuật duyệt.
 > Vỏ đã chép (§9.3) CEO đang sửa tiếp (≈200 lần sửa trong buổi chiều 08/10) — KHÔNG xoá.
 
@@ -513,7 +513,7 @@ Nguồn dựng: SGK Toán 6 KNTT tập 1 Chương III (Bài 13–17) · sách C�
 
 ## 15. Đề thi vào bản đồ mới + K8 (Thùy 20/10): phân dạng câu của Kho đề thi, đợt bổ sung K7·K8·K9, dạng K8 còn thiếu
 
-> Nguồn: Thùy 20/10 — "m chia dạng các đề thi trong kho đề thi theo bản đồ mới đi, t thấy còn nhiều câu chưa phân dạng"; "đường trung bình chỉ dùng giải đề Hoàng Mai thôi"; "m đề xuất xem các dạng còn thiếu là có những dạng gì để t chốt". Chi tiết chạy: DEVLOG 20/10. Đề xuất đầy đủ: `kho-rules/dai/ban-do-moi-k8-de-xuat-dang-thieu.md`. Luật K8: `kho-rules/dai/k8.md` §12.2–§12.3.
+> Nguồn: Thùy 20/10 — "m chia dạng các đề thi trong kho đề thi theo bản đồ mới đi, t thấy còn nhiều câu chưa phân dạng"; "đường trung bình chỉ dùng giải đề Hoàng Mai thôi"; "m đề xuất xem các dạng còn thiếu là có những dạng gì để t chốt". Chi tiết chạy: DEVLOG 20/10. Đề xuất đầy đủ: `kho-rules/dai/ban-do-moi-k8-de-xuat-dang-thieu.md`. Luật K8: `spec-giai-bai.md`§12.3.
 
 ### 15.1 Kho đề thi đọc bản đồ MỚI (mig `202610201623` + `202610201632`)
 - Câu thường của kho `dai` (Đại) / `hgt` ⇒ **dạng bài** mới (`_bdm_cau_giai`: gán câu > gán cụm > đối ứng); câu **Đúng/Sai** ⇒ **chủ đề** ở kho Đ/S (`dai_bdm_kho_ds`). Kho chưa có bản đồ mới (`hinh_hoc`, Anh…) giữ bản đồ cũ (`he='cu'`).

@@ -1,6 +1,6 @@
 # TÌNH TRẠNG batch toanmath
 
-> Tự sinh bởi `tinh-trang.mjs` lúc 2026-11-15 22:06 (giờ VN) — KHÔNG sửa tay. Luật cập nhật: `spec-giai-bai.md` §C8.
+> Tự sinh bởi `tinh-trang.mjs` lúc 2026-11-15 22:14 (giờ VN) — KHÔNG sửa tay. Luật cập nhật: `spec-giai-bai.md` §C8.
 > Số câu đếm từ tệp soạn (dòng `### … | kho= | loai=`); đề chưa soạn thì chưa có số.
 
 ## 1. Tổng theo chặng × khối

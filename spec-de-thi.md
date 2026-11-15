@@ -306,7 +306,7 @@ Số lượng không lớn ⇒ chạy **có người ngồi cùng** là đủ; c
 - Người dùng màn duyệt: **CEO + học thuật** (vài người quen việc) ⇒ ưu tiên nhanh, đủ thông tin; không cần hướng dẫn từng bước.
 - **Dạng:** Claude đề xuất lúc nhập (ghi `dang_chinh` + `dang_ai_de_xuat`), **người chốt ở màn Duyệt đề**. Bản đồ do CEO tự xây; dạng chưa có ⇒ dạng chờ, đề vẫn vào.
 - **Đáp án:** lấy từ file (gạch chân / "Chọn X" / "a) Đúng." / bảng đáp án / file đáp án riêng). Hai dấu hiệu lệch nhau ⇒ nêu cờ cho người duyệt
-  (đo 28/09: 4/253 câu file gốc tự mâu thuẫn, gạch chân đúng — `scripts/kho/mathtype-thu/README.md`). ~~File không có đáp án ⇒ để trống, người đánh. **Không tự giải.**~~
+  (đo 28/09: 4/253 câu file gốc tự mâu thuẫn, gạch chân đúng — `scripts/kho/mathtype-thu/README.md`).
   **THAY 15/11 (Thùy): giải / đáp án / dạng / điều kiện vào kho theo `spec-giai-bai.md`** — mọi câu tự giải (đáp án in kèm là nhân chứng), file này chỉ còn là spec CẤU TRÚC đề + luồng thi.
 - **Hình:** lấy ảnh từ file gốc (Word: ảnh nhúng; PDF: cắt trang). Vẽ lại để sau.
 
@@ -333,7 +333,7 @@ Thả file vào  E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\  
 | **B. Duyệt hàng loạt** | — | **Hàng đợi "Đề chờ duyệt"**: bảng đề (tên · khối · số câu · còn thiếu gì từ `fn_de_thi_thieu` · ngày nhập), lọc, mở đề, quay lại đúng chỗ. **Duyệt đề** bổ sung: bản gốc cạnh bên · dạng Claude đề xuất hiện sẵn · cờ "đáp án 2 nguồn lệch" | CEO duyệt xong 1 đề thật từ hàng đợi; 345 đề cũ cũng hiện trong hàng đợi |
 | **C. Sử dụng** | — | Bấm thử thật: in · phát hành cho 1 lớp · HS thi · kết quả (đã build 27/09, chưa ai dùng) — sửa lỗi lộ ra | 1 lớp thi 1 đề, điểm khớp chấm tay |
 | **D. Đề chỉ có PDF** | Đường đọc ảnh trang cho đề không có Word (2 lượt: lập mục lục câu ↔ trang, rồi đọc từng câu) + cắt hình | — | 1 đề PDF scan của Sở vào được như lát A |
-| Sau | Tự động hoá (chạy nền, kiểm độc lập, gợi ý dạng theo hồ sơ dạng — `spec-luong-kho.md`) · tải file ngay trên ERP · đề tự luận / lớp dưới | | |
+| Sau | Tự động hoá (chạy nền, kiểm độc lập, gợi ý dạng theo hồ sơ dạng — `spec-giai-bai.md`) · tải file ngay trên ERP · đề tự luận / lớp dưới | | |
 
 Lát A–C không phụ thuộc bản đồ kiến thức, không phụ thuộc skill gán dạng / gán mẫu (đã GÁC 01/10).
 

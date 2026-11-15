@@ -43,51 +43,11 @@ batch (đo trùng kho sau khi bóc) sẽ bắt, câu trùng tự trỏ về câu
 Cỡ batch: Word ≤ ~280 câu · PDF đề thi ≤ 20 bài · PDF đề cương ≤ 10 bài. Số câu PDF chỉ biết sau khi bóc —
 bóc xong mà batch > 300 câu thì tách thành `a`/`b`, mỗi nửa báo cáo riêng.
 
-## 2–3. ~~Một batch đi qua 7 bước · báo cáo sau mỗi batch~~ — THAY 15/11 (Thùy)
+## 2. Quy trình (Thùy 15/11)
 
 **Quy trình, luật, điều kiện vào kho: `spec-giai-bai.md` Phần C** (8 trạm · phân dạng trước · Sonnet giải, Opus kiểm một phần · câu đủ 4 điều kiện tự vào kho,
 chưa chắc → trưởng khối · không HTML duyệt, không chờ "ghi" · lô mẫu một lần mỗi khối × loại kì). Brief batch: `ghep-brief.mjs <BATCH> <khối>` (cắt từ spec).
-**Tình trạng: `TINH-TRANG.md`** (`tinh-trang.mjs`, chạy lại sau mỗi việc). Phần dưới đây giữ làm lịch sử, không làm theo.
-
-<details><summary>Bản cũ 12/11</summary>
-
-## 2. Một batch đi qua 7 bước — xong batch này mới mở batch sau
-
-| # | Bước | Ai/công cụ | Ra |
-|---|---|---|---|
-| 1 | **Bóc** | Word: `boc-word.mjs` (máy, 0 AI) · PDF: `boc-pdf.mjs` (Gemini) | số câu, bài bóc 0 câu, câu hỏng công thức |
-| 2 | **Đo trùng kho TRƯỚC khi giải** | so nội dung chuẩn hoá với kho (cùng luật `insertCauBatch`), chỉ đọc DB, **ngoài 17–22h** | câu trùng ⇒ loại khỏi lượt giải (đỡ tốn AI) |
-| 3 | **Sonnet giải chi tiết** | subagent Sonnet, lô ~60 câu, brief `de-hoc-ki/brief-giai-chi-tiet.md` + luật khối `kho-rules/dai/k<khối>.md` | đáp án + lời giải |
-| 4 | **Opus giải mù** | subagent Opus, KHÔNG thấy bài Sonnet | đáp số độc lập |
-| 5 | **So khớp** | máy | khớp · lệch · bỏ (câu hỏng / thiếu hình / đề sai) |
-| 5b | **Đẩy hình lên kho NGAY** | `anh-batch.mjs day <BATCH>` (Thùy 13/11: hình không được nằm ở máy) | máy nào cũng ghi được; `ghi-batch.sh` tự `keo` về |
-| 6 | **HTML duyệt** | `build-duyet-html.mjs` — ảnh gốc + đề + lời giải, câu lệch đứng đầu | **Thùy xem** |
-| 7 | **Ghi DB khi Thùy nói "ghi"** | `ghi.mjs --ghi` — `da_duyet=false`, dạng chờ `…000000`, tạo `tai_lieu` đề thi | số câu ghi, số câu trỏ về câu cũ |
-
-Luật áp ở mọi batch:
-- Chỉ ghi câu **Sonnet và Opus ra cùng đáp số**. Câu lệch không ghi — liệt kê trong báo cáo.
-- Câu Hình (K6–K9) vào `hinh_hoc_*`; câu Đúng/Sai vào kho Đ/S cấp chủ đề, không gán dạng cả câu.
-- Đề sai: giải bình thường, ghi rõ đề sai. Đường trung bình chỉ dùng cho đề Hoàng Mai.
-- Batch scan nghi trùng: bóc xong so kho trước — nếu trùng thì dừng ở bước 2, không giải.
-- Phân dạng (B3) **không** nằm trong batch — làm sau theo khối, khi bản đồ khối đó sẵn sàng.
-
-## 3. Báo cáo sau mỗi batch (gửi Thùy, ghi `batch/<ma>/bao-cao.json`)
-
-| Mục | Ví dụ |
-|---|---|
-| Bài · câu bóc · bài bóc 0 câu | 7 bài · 142 câu · 0 |
-| Trùng kho (loại trước khi giải) | 18 câu |
-| Sonnet giải · Opus khớp · lệch · bỏ | 124 · 110 · 9 · 5 |
-| Ghi DB (mới / trỏ câu cũ) | 110 (104 / 6) |
-| Lỗi phát sinh + cách sửa | … |
-| Thời gian · lượt AI | … |
-| Link HTML duyệt | … |
-
-Sau **B001 (batch thử)** dừng lại báo: tỉ lệ khớp, tỉ lệ trùng, thời gian/batch ⇒ Thùy quyết nhịp
-(1 batch/lượt hay gộp 2–3) và có cần chỉnh brief không, rồi mới sang B002.
-B001 = 16 đề thi cuối kì K9 dạng PDF ⇒ đo luôn cả khâu bóc Gemini và tách câu Hình (vào `hinh_hoc_*`) — hai khâu chặng 1 dùng nhiều nhất.
-
-</details>
+**Tình trạng: `TINH-TRANG.md`** (`tinh-trang.mjs`, chạy lại sau mỗi việc). 
 
 ## 4. Việc còn treo, không nằm trong batch
 

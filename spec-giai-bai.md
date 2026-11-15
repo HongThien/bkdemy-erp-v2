@@ -1213,7 +1213,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 ### Theo loại nguồn
 
 **Sách Word theo bài (kho kiểu 1 — Hình) [K8-37]**
-- Đường đi: `docs/luong-kho-kieu-1-hinh-hoc.md`. Lời giao trạm phải chép nguyên bảng whitelist của bài + bảng vi phạm của tài liệu.
+- Đường đi: dây chuyền Phần C + mục "Hình — luật chung" (bài học Hình từ Word bài giảng). Lời giao trạm phải chép nguyên bảng whitelist của bài + bảng vi phạm của tài liệu.
 - Công thức MathType OLE ⇒ `doc-docx.mjs` (không mất dấu mũ góc); ảnh jpeg bằng `docx_trich.mjs`.
 - Ưu tiên bài "B" + tự luyện; lọc trùng với câu Hình 8 cũ (HH00058–66) — bộ 1A/1B phổ biến.
 

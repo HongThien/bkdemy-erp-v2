@@ -76,7 +76,7 @@ Lõi của phần 1 là **thứ tự đỉnh** (lỗi số 1 của HS lớp 7).
   trùng △ABC ⇒ ba cạnh chỉ ghép được một tam giác. **Bản lề** hai cạnh: góc mở đổi thì cạnh thứ ba đổi ⇒ hai cạnh chưa đủ.
 - Có ca **cạnh chung** (kiểu diều, chung đường chéo, chồng lên nhau) và ca **không bằng nhau** (2 cặp cạnh bằng, cặp thứ 3 lệch).
 
-### A7. Trình bày 5 dòng (theo luật lời giải Hình — `docs/log-giai-hinh-hoc-bai.md` R1/R2)
+### A7. Trình bày 5 dòng (theo luật lời giải Hình — `spec-giai-bai.md` R1/R2)
 ```
 Xét △ABC và △DEF có:
 AB = DE (giả thiết);

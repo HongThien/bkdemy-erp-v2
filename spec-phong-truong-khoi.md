@@ -2,7 +2,7 @@
 
 > **Đọc file này TRƯỚC khi sửa phiên Claude (bảng `claude_phien*`, `scripts/phien/`) hoặc Phòng làm việc trưởng khối.**
 > Thùy chốt qua chuỗi Sparring 30/10 → 01/11/2026. Bản paste-ready cho Notion = cả file này.
-> Liên quan: `spec-truong-khoi.md` (phân quyền · hai tầng · KPI) · `kho-rules/README.md` (quy trình kho) · `spec-ban-do-4-tang.md` (bản đồ).
+> Liên quan: `spec-truong-khoi.md` (phân quyền · hai tầng · KPI) · `spec-giai-bai.md` (quy trình kho) · `spec-ban-do-4-tang.md` (bản đồ).
 
 ---
 
@@ -20,7 +20,7 @@ Nhân sự hiểu bản đồ rất sâu — thứ thiếu chỉ là **đường
 
 | # | Chốt |
 |---|---|
-| 1 | **Claude làm**: draft bản đồ, lý thuyết dạng, giải bài, phân dạng. **Người duyệt.** (Thay luật cũ "bản đồ là việc của CEO" — `kho-rules/README.md` §0 đã sửa.) |
+| 1 | **Claude làm**: draft bản đồ, lý thuyết dạng, giải bài, phân dạng. **Người duyệt.** (Thay luật cũ "bản đồ là việc của CEO" — `spec-giai-bai.md` đã sửa.) |
 | 2 | Nhận xét / duyệt / **chốt** bản đồ: **trưởng khối trở lên** (Phó không). Luật giải mới: **trưởng khối gật là đủ**. |
 | 3 | **Mọi việc duyệt, sửa về trưởng khối** (kể cả câu lời giải không chắc). Thùy chỉ **phát động**. Phát động giải bài **chưa giao** (logic phía sau phức tạp). |
 | 4 | **Không pilot — làm mọi khối.** Nhưng chạy thử trước rồi mới tính VPS. |
@@ -42,7 +42,7 @@ PHASE 3 — NHẬP KHO & PHÂN DẠNG (vòng xoáy, sau khi Thùy phát động 
                                  → sửa mô tả / thêm dạng (đụng ngược phase 1–2) → bảo Claude PHÂN LẠI → lặp
 ```
 
-- **Tự duyệt** = đủ cả 3: dạng khớp mô tả và không dạng thứ hai ngang ngửa · lời giải đúng luật `kho-rules/<nhánh>/k<khối>.md` ·
+- **Tự duyệt** = đủ cả 3: dạng khớp mô tả và không dạng thứ hai ngang ngửa · lời giải đúng luật `spec-giai-bai.md` ·
   **kiểm độc lập khớp** (code tính lại hoặc model khác giải mù). "Chắc" KHÔNG phải Claude tự thấy chắc. (Đảo luật 09/09 "lời giải
   Claude ghi phải duyệt" — chờ Thùy xác nhận cứng khi mở Phase 3.)
 - **Lưới an toàn**: trợ giảng **báo sai** ⇒ câu tự rút khỏi kho (spec-luong-kho §5.7) · trưởng khối xem mẫu nhỏ câu tự duyệt · tỉ lệ

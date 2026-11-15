@@ -17,6 +17,15 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+### ⭐⭐⭐⭐ LUẬT GIẢI BÀI / GIẢI ĐỀ / NHẬP KHO = MỘT FILE `spec-giai-bai.md` (Thùy chốt 15/11) — ĐỌC TRƯỚC mọi việc đưa tài liệu vào kho
+- Thay toàn bộ luật cũ: file khối `kho-rules/*/k*.md`, `kho-rules/README.md`, `spec-giai-bai-ai.md`, `spec-luong-kho*.md`, luồng kho kiểu 1, ~180 brief theo lô — **đã XOÁ 15/11** (Thùy gật), còn trong git.
+  Mục nào bên dưới còn tả "quy trình 3 bước", "rút luật vào k<khối>.md", "CEO duyệt lô / HTML duyệt", "giải trước — dạng chờ" ⇒ **lịch sử, không làm theo**.
+- Chốt 15/11: phân dạng TRƯỚC rồi giải · Sonnet giải, Opus kiểm một phần (§C5) · câu đủ 4 điều kiện máy kiểm tự vào kho, chưa chắc → **trưởng khối** (§C6) · không HTML duyệt ·
+  lô mẫu một lần mỗi khối × loại kì (§C3, bảng §C9) · Hình không giãn dòng (UI +20%, nợ code) · "Giải tích" = Hình giải tích (kho `hgt`).
+- Brief trạm: `node scripts/kho/cat-luat.mjs <khối>` / toanmath `ghep-brief.mjs <BATCH> <khối>` — không viết luật tay. Toanmath: sổ `kho-rules/dai/lo/toanmath/TINH-TRANG.md`, chạy `tinh-trang.mjs` sau MỖI việc.
+- Code còn nợ so với luật (nhãn `nguoi` sai ở `ghi.mjs`, xếp làn 4 điều kiện, cổng kiểm mã luật, rút mẫu 15%…): spec §C10. Cho tới khi xong: câu vẫn ghi `da_duyet=false`.
+- 4 chỗ "chờ Thùy xác nhận" trong spec (lượng giác K9, K11, CLC6) · 2 đề toanmath treo (B046-05, B013-07).
+
 ### ⭐⭐⭐ KIẾN TRÚC ĐỂ CHỊU 1.000 → 10.000 HS (Thùy mở 13/11 · cập nhật 15/11) — ĐỌC `spec-kien-truc.md` TRƯỚC khi thêm bảng / hàm / màn
 
 **Đích (Thùy chốt):** 1.000 → 2.000 → 10.000 đều là HS CỦA TRUNG TÂM (không có HS ngoài). Mốc 1.000 trong 6–12 tháng. Không vá từng lỗi — sửa kiến trúc từ trên + viết luật.

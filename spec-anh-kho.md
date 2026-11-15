@@ -26,7 +26,7 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
 
 - ① đọc **thẳng .docx**: đáp án = phương án tô màu (hoặc chữ cái ghi tại chỗ trống ở dạng điền câu); câu phát âm giữ `<u>…</u>`;
   biển báo lấy ảnh nhúng. Chỉ lấy câu TRẮC NGHIỆM; phần NGHE (để sau) và bài tự luận được ĐẾM, không lấy.
-- ② và ③ là 2 lượt độc lập (không đọc file của nhau) — đúng luật "người làm ≠ người kiểm" (`spec-luong-kho.md`).
+- ② và ③ là 2 lượt độc lập (không đọc file của nhau) — đúng luật "người làm ≠ người kiểm" (`spec-giai-bai.md`).
   ② không được xem đáp án ⇒ đáp án GV được một nhân chứng thứ hai xác nhận, không phải chép lại.
 
 ### 2.1 Luật CHẮC CHẮN (đưa thẳng vào kho) — đủ cả 5
@@ -58,7 +58,7 @@ file Word bản GV ─► ① TRẠM ĐỌC (máy, code)        ─► câu + ng
   câu đã ở kho thì chạy lượt A+B mới trên riêng các câu đó rồi `kiem_lai_anh.mjs` (lên kho / giữ / HẠ về chờ duyệt).
   Lượt kiểm lại chỉ đụng dòng máy còn quản (chắc chắn do AI hoặc chờ duyệt do máy ghi) — người đã duyệt/sửa thì để nguyên.
 - Câu trùng y hệt (dạng đề + đề + phương án + đoạn văn) trong lô hoặc với kho ⇒ không nhập.
-- Hậu kiểm: câu "chắc chắn" vẫn có thể bị báo sai về sau ⇒ rút khỏi kho (cùng luật hậu kiểm `spec-luong-kho.md` §5.7).
+- Hậu kiểm: câu "chắc chắn" vẫn có thể bị báo sai về sau ⇒ rút khỏi kho (cùng luật hậu kiểm `spec-giai-bai.md`
 
 ### 2.2 Số đo trạm đọc (12 unit "BTBT Form 2025", 02/10)
 

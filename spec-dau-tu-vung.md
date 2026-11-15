@@ -3,7 +3,7 @@
 > Khởi nguồn: Thùy 02/10 gửi https://bufopia.pages.dev ("làm lại game này cho HS BK"). CTO phân tích bản gốc (đọc mã nguồn) → Thùy chốt 5 điểm.
 > File này: **Phần A = logic** (chốt trước) · **Phần B = chi tiết bàn sau** (số, tên, quà) — theo luật "chốt logic trước, detail sau".
 > **03/10: 6 chế độ là KHUNG CHUNG mọi môn — luật chung (bản đồ chế độ, chọn câu, sai khoá cả câu, đo lường) ở `spec-che-do-game.md`.**
-> Đọc kèm: `spec-v1-app-hs.md` (hạng mục 9) · `design/STYLE-HS.md` · `spec-anh-ban-do-k9.md` §3.3 · `spec-luong-kho.md` (cổng ghi).
+> Đọc kèm: `spec-v1-app-hs.md` (hạng mục 9) · `design/STYLE-HS.md` · `spec-anh-ban-do-k9.md` §3.3 · `spec-giai-bai.md` (cổng ghi).
 
 ---
 
@@ -148,7 +148,7 @@ Luật:
 - khối, nguồn (sách + unit, hoặc danh sách nào), cấp CEFR, chủ đề;
 - nhóm nghĩa (dùng để chặn đáp án sai trùng nghĩa).
 
-**Cổng ghi** (`spec-luong-kho.md`: không có biên bản kiểm thì không ghi):
+**Cổng ghi** (`spec-giai-bai.md`: không có biên bản kiểm thì không ghi):
 - Nghĩa và loại từ do máy soạn phải được **một nhân chứng thứ hai độc lập** kiểm. Ví dụ: một lượt soạn khác không nhìn bản đầu, cộng đối chiếu từ điển.
 - Hai bên khớp ⇒ vào kho, trạng thái **"máy duyệt"**.
 - Lệch ⇒ **chờ GV**, không vào trận.
