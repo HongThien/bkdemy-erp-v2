@@ -23,6 +23,7 @@ import { join, basename } from 'node:path'
 import { createRequire } from 'node:module'
 import { kiemP1 } from '../sach/kiem-p1-card.mjs'
 import { GOC_REPO } from '../cau-hinh.mjs'
+import { docNhanHinh } from '../so-hinh.mjs'
 
 const katex = createRequire(join(GOC_REPO, 'package.json'))('katex')
 const args = process.argv.slice(2)
@@ -146,6 +147,7 @@ for (const kp of khoiPhan) {
     if (iSd >= 0 && than.includes('**Phần 1. Hướng dẫn**')) loi.push(`${nhan}: đã có Sơ đồ tư duy thì bỏ Phần 1 (sơ đồ ngược chính là Phần 1)`)
     // phần trước lời giải: đề · phương án · hình · ghi chú
     const noiDung = [], luaChon = {}, menh = [], anh = [], anhGiai = [], canhBao = []
+    let anhNguon = null
     let dang = null
     for (const d of than.slice(0, i1).split('\n')) {
       let m
@@ -153,7 +155,11 @@ for (const kp of khoiPhan) {
       else if ((m = d.match(/^([A-D])\.\s+(.+)$/)) && kv.loai === 'trac_nghiem') { dang = 'lc'; luaChon[m[1]] = m[2].trim() }
       else if ((m = d.match(/^([a-d])\)\s+(.*)$/)) && kv.loai === 'dung_sai') { dang = 'md'; menh.push(m[2]) } // Đúng/Sai (K11): 4 ý a) b) c) d), mỗi ý 1 mệnh đề
       else if (dang === 'md' && d.trim() && !/^\*\*/.test(d)) menh[menh.length - 1] += '\n' + d
-      else if ((m = d.match(/^\*\*Hình:\*\*\s*(.+)$/))) { dang = null; anh.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
+      else if ((m = d.match(/^\*\*Hình:\*\*\s*(.+)$/))) { // "<tệp>[, tệp] | nguon=goc|ve_lai:<a–f>|ve_lenh|ve_moi" (spec-giai-bai §A8.4, 15/11)
+        dang = null
+        try { anhNguon = docNhanHinh(m[1]) } catch (e) { loi.push(`${nhan}: ${e.message}`) }
+        anh.push(...m[1].split('|')[0].split(',').map((x) => x.trim()).filter(Boolean))
+      }
       // hình CHỈ của lời giải (bài hình đề không cho hình, HS tự vẽ — K8 10/10): không hiện ở đề, ghi.mjs đưa vào anh_dap_an
       else if ((m = d.match(/^\*\*Hình giải:\*\*\s*(.+)$/))) { dang = null; anhGiai.push(...m[1].split(',').map((x) => x.trim()).filter(Boolean)) }
       else if ((m = d.match(/^\*\*Ghi chú:\*\*\s*(.+)$/))) { dang = null; canhBao.push(m[1].trim()) }
@@ -195,8 +201,9 @@ for (const kp of khoiPhan) {
     for (const f of [...anh, ...anhGiai]) if (!existsSync(join(LV, 'img', f))) loi.push(`${nhan}: không có hình img/${f}`)
     if (anhGiai.length > 1) nhac.push(`${nhan}: ${anhGiai.length} hình giải — ERP chỉ giữ hình đầu`)
     if (anh.length > 1) nhac.push(`${nhan}: ${anh.length} hình — ERP chỉ giữ hình đầu`)
+    if (anh.length && !anhNguon) nhac.push(`${nhan}: hình đề thiếu nhãn nguồn (| nguon=…, spec §A8) — ghi vào kho sẽ ở mục "chưa rõ nguồn"`)
     cau.push({ phan: thuTu, so: ++so, nhan: chuanNhan(mc[1].trim()), kho: kv.kho, loai_cau: kv.loai, noi_dung: nd, lua_chon: lc, dap_an: kv.loai === 'dung_sai' ? null : dapAn, dap_an_nguon: 'claude_giai',
-      menh_de: kv.loai === 'dung_sai' ? menh.map((t, i) => ({ noi_dung: t, dap_an: dapAn?.[i], dang: null, loi_giai: null })) : null, loi_giai: loiGiai, ...(soDo ? { so_do: soDo } : {}), anh, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
+      menh_de: kv.loai === 'dung_sai' ? menh.map((t, i) => ({ noi_dung: t, dap_an: dapAn?.[i], dang: null, loi_giai: null })) : null, loi_giai: loiGiai, ...(soDo ? { so_do: soDo } : {}), anh, anh_nguon: anhNguon, anh_giai: anhGiai, dang: String(KHOI) === '9' && kv.kho === 'hinh_hoc' ? DANG_HINH_K9 : null, canh_bao: canhBao })
   }
   if (!so) loi.push(`Phần ${thuTu}: không có câu nào`)
 }

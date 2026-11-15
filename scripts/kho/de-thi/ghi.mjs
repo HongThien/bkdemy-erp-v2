@@ -23,6 +23,7 @@ import { createClient } from '@supabase/supabase-js'
 import { insertCauBatch, laDangCho } from '../../_kho_insert.mjs'
 import { bien, docEnv, GOC_REPO } from '../cau-hinh.mjs'
 import { tinhNhomBai } from './nhom-bai.mjs'
+import { ghiNhanHinh } from '../so-hinh.mjs'
 
 const args = process.argv.slice(2)
 const dir = args.find((a) => !a.startsWith('--'))
@@ -151,6 +152,13 @@ try {
         [r.maCauList[i], q.so_do.mau_chot, JSON.stringify(q.so_do.nut)])
       tk.so_do = (tk.so_do ?? 0) + 1
     }
+    // nhãn NGUỒN hình đề (spec-giai-bai §A8.4, Thùy 15/11): cùng transaction. Câu trùng câu cũ ⇒ không đổi ảnh câu cũ ⇒ không ghi nhãn.
+    for (const [i, q] of grp.entries()) {
+      const [anhDe] = anhCua.get(q)
+      if (!q.anh_nguon || !anhDe || trung.has(i)) continue
+      await ghiNhanHinh(c, { kho, ma_cau: r.maCauList[i], url: anhDe, nguon: q.anh_nguon.nguon, ma_loi: q.anh_nguon.ma_loi })
+      tk.nhan_hinh = (tk.nhan_hinh ?? 0) + 1
+    }
   }
 
   // đề
@@ -200,7 +208,7 @@ try {
   const { rows: thieu } = await c.query(`select * from fn_de_thi_thieu($1)`, [tl.id]).catch((e) => ({ rows: [{ loi: e.message }] }))
 
   console.log(`\n${GHI ? 'GHI THẬT' : 'CHẠY THỬ (sẽ ROLLBACK)'} — "${de.ten}" · khối ${de.khoi} · ${de.cau.length} câu`)
-  console.log(`  câu mới ${tk.moi} · trùng câu đã có (trỏ về câu cũ) ${tk.trung} · câu ở dạng chờ ${tk.dang_cho} · mệnh đề ở dạng chờ ${tk.menh_de_cho}${tk.so_do ? ` · sơ đồ tư duy ${tk.so_do}` : ''}`)
+  console.log(`  câu mới ${tk.moi} · trùng câu đã có (trỏ về câu cũ) ${tk.trung} · câu ở dạng chờ ${tk.dang_cho} · mệnh đề ở dạng chờ ${tk.menh_de_cho}${tk.so_do ? ` · sơ đồ tư duy ${tk.so_do}` : ''} · nhãn nguồn hình ${tk.nhan_hinh ?? 0}/${de.cau.filter((q) => q.anh?.length).length}`)
   if (tk.de_xuat + tk.gan + tk.kho_ds + tk.doi_dang_cu) console.log(`  bản đồ mới: đề xuất dạng bài ${tk.de_xuat} · gán (người chốt) ${tk.gan} · kho Đ/S chủ đề ${tk.kho_ds}${tk.doi_dang_cu ? ` · ⚠ ${tk.doi_dang_cu} câu truyền mã dạng CŨ ⇒ vào dạng chờ` : ''}`)
   console.log(`  ảnh: ${[...anhCua.values()].flat().filter(Boolean).length} · PDF gốc: ${pdfGocUrl ? 'có' : 'không'} · tai_lieu ${tl.id}`)
   console.log('  STT | phần | kho | loại          | mã câu          | dạng         | đáp án | điểm | ghi chú')

@@ -166,7 +166,7 @@
 - **Thân câu, đúng thứ tự**:
   1. `**Đề:**` — nguyên văn (đã sửa lỗi in hiển nhiên), xuống dòng đơn; bỏ "(0,5 điểm)", "(1 điểm)"; ô trống viết `…`. Câu tách ý: đề = lời dẫn của bài + đúng ý đó, tự đủ nghĩa.
   2. Phương án (nếu có).
-  3. Các dòng tuỳ chọn, mỗi loại MỘT dòng: `**Hình:** <tệp>` · `**Hình giải:** <tệp>` · `**Ghi chú:** …` · `**Chưa chắc:** …`.
+  3. Các dòng tuỳ chọn, mỗi loại MỘT dòng: `**Hình:** <tệp> | nguon=<goc | ve_lai:<a–f> | ve_lenh | ve_moi>` (nhãn nguồn §A8 — cổng báo sai khuôn, nhắc khi thiếu) · `**Hình giải:** <tệp>` · `**Ghi chú:** …` · `**Chưa chắc:** …`.
   4. `**Phần 1. Hướng dẫn**` (hoặc `**Sơ đồ tư duy**` — §A6).
   5. `**Phần 2. Trình bày**`.
 - **Cuối tệp**: `## GHI CHÚ CHO NGƯỜI DUYỆT` — câu không nhập + vì sao, bộ sách đoán theo nội dung, phạm vi kiến thức đã áp; không có gì ⇒ ghi `Không`.
@@ -2236,7 +2236,7 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 10 | `nhap_hh_tu_draft.mjs` (bài học Hình) hiểu mô hình bài–ý + khối Sơ đồ tư duy | Chưa |
 | 11 | Đọc trường `dang=` / `chac=` của dòng câu (§A10) khi ghi ⇒ đề xuất / gán dạng | Chưa |
 | 12 | Hai quy ước dữ liệu dòng (đề thi: đoạn cách dòng trống, màn hình gộp · bài học Hình: `\n` đơn) — thống nhất về một | Chưa |
-| 13 | Bộ đếm hình đề theo khối (§C12): chỗ ghi nhãn nguồn hình + lệnh vẽ lại, hàm đếm, cổng đọc `nguon=` ở dòng `**Hình:**` | Chưa — chờ Thùy gật phạm vi |
+| 13 | Bộ đếm hình: nối nhãn nguồn vào `nhap_hh_tu_draft.mjs` (bài học Hình) và `anh-batch.mjs`; đếm hình theo ý (`hinh_y`) | Phần chính đã build 15/11 (§C12); còn 2 đường ghi này |
 
 Cho tới khi mục 2–6 xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false` như cũ (chưa có làn tự vào kho).
 
@@ -2261,12 +2261,22 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 
 ---
 
-## C12. Bộ đếm HÌNH ĐỀ theo khối (Thùy 15/11)
+## C12. Bộ đếm HÌNH ĐỀ theo khối (Thùy 15/11 — ĐÃ BUILD, mig 202611152245)
 
-- Đếm theo **môn × kho × khối**: câu có hình đề · `goc` (giữ ảnh gốc) · `ve_lai` (chia theo mã a–f) · `ve_lenh` · `ve_moi` · **chưa rõ nguồn** (ảnh ghi trước 15/11 — chưa ai xét) · **lệnh vẽ lại đang chờ** (đã ra lệnh, chưa có hình mới).
-- Pure-derive (§4 CLAUDE.md): "chưa rõ nguồn" = câu có `anh_de` mà không có dòng nhãn nguồn — không đẻ dòng chờ. Lệnh vẽ lại là một dòng thật (ai · lúc nào · phạm vi); "đang chờ" = lệnh trừ hình mới đã gắn.
-- Số tính ở Postgres (hàm `fn_*`), không tính ở client; số đếm cả kho ⇒ bảng tính sẵn theo khuôn §2.0 CLAUDE.md.
-- **Chưa build** — nợ §C10.13. Đo 15/11: đường dẫn ảnh trong bucket KHÔNG cho biết ảnh là gốc hay vẽ (cả hai nằm ở `nhap_kho/…`), nên phải có chỗ ghi nhãn nguồn.
+- **Sổ: `kho-rules/SO-HINH.md`** — tự sinh bởi `node scripts/kho/so-hinh.mjs` (chỉ đọc DB, ~0,2–0,7 s), không sửa tay.
+  Theo khối (gộp kho) và theo kho × khối: có hình đề · giữ gốc · vẽ lại (chia mã a–f) · vẽ theo lệnh · vẽ mới · **chưa rõ nguồn** · **lệnh đang chờ**; cuối sổ là danh sách lệnh đang chờ.
+  `ghi-batch.sh --ghi` tự dựng lại sổ; lượt ghi hình khác ⇒ chạy tay lệnh trên rồi commit sổ cùng việc đó.
+- **Dữ liệu (pure-derive):** `kho_hinh_nguon` — một dòng nhãn lúc GẮN hình (kho · mã câu · URL · nguồn · mã lỗi) · `kho_hinh_lenh_ve` — một dòng mỗi câu được ra lệnh.
+  Đếm ở `fn_kho_hinh_dem(mon)`. "Chưa rõ nguồn" = câu có hình đề mà không có nhãn khớp URL hiện tại (ảnh đổi mà không ghi nhãn ⇒ tự rơi về đây). "Đang chờ" = lệnh chưa có nhãn vẽ ghi sau nó.
+  Kho đếm: `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` (Hình trên lớp) · `hinh_luyen` (bài Hình luyện). Hình theo ý (`hinh_y`) chưa đếm.
+- **Ảnh cũ (trước 15/11, 13.306 hình đề):** để "chưa rõ nguồn" — CHỈ xét khi có lệnh theo khối (Thùy 15/11). Không chạy lượt AI xét hàng loạt khi chưa có lệnh.
+- **Ghi nhãn — ở đâu:**
+  - Đề thi / đề cương: dòng `**Hình:** <tệp> | nguon=…` trong tệp soạn ⇒ cổng `dung-de-tu-soan.mjs` đọc (sai khuôn ⇒ lỗi; thiếu ⇒ nhắc) ⇒ `ghi.mjs` ghi nhãn cùng transaction (tóm tắt in "nhãn nguồn hình x/y").
+  - Gắn / thay hình kho Hình, HGT, Hình luyện: `gan_hinh.mjs <gói> --nguon <goc|ve_lai:<a–f>|ve_lenh|ve_moi> [--thay] --ghi` — **`--thay` không kèm `--nguon` bị chặn**. Gói trộn nhiều nguồn ⇒ tách gói.
+  - Script khác cần ghi nhãn: `import { ghiNhanHinh } from 'scripts/kho/so-hinh.mjs'`, gọi trong CÙNG transaction với lệnh gắn `anh_de`.
+- **Ra lệnh vẽ lại** (Thùy / trưởng khối nói trong chat ⇒ điều phối chạy):
+  `node scripts/kho/so-hinh.mjs lenh --kho <dai|hgt|hinh_hoc|hinh_hoc_lop|hinh_luyen> (--khoi <k> | --ma <mã,…> | --de "<tên đề>") --ra-boi "<người>" [--ly-do "…"]` (chạy thử) rồi thêm `--ghi`.
+  Vẽ xong gắn bằng `gan_hinh.mjs … --thay --nguon ve_lenh --ghi` ⇒ lệnh tự hết chờ.
 
 # PHẦN D — SỔ SAI LẦM (hậu kiểm)
 

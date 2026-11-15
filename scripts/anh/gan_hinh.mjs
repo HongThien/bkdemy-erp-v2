@@ -4,6 +4,8 @@
 //
 // Tên file:  <ma_cau>[+<ma_cau2>…][_ghi_chu].png|jpg|jpeg      vd  HHC001914_2A.png  ·  HHC001924+HHC001935_11.png (2 câu dùng chung 1 hình)
 //            đuôi _lg = chỉ gắn hình lời giải (anh_dap_an) · đuôi _de = chỉ gắn hình đề (anh_de) · không đuôi = gắn cả hai
+// --nguon <goc|ve_lai:<a–f>|ve_lenh|ve_moi> (spec-giai-bai §A8, Thùy 15/11): nhãn NGUỒN cho mọi hình ĐỀ của gói ⇒ ghi kho_hinh_nguon cùng transaction (bộ đếm so-hinh.mjs).
+//   Bắt buộc khi --thay trên kho có đếm (hinh_hoc_cau_hoi · hinh_hoc_cau_lop · hinh_bai · hgt_cau_hoi). Gói trộn nhiều nguồn ⇒ tách gói.
 // --thay (luồng vẽ lại hình 13/10): đè hình đã có; URL cũ ghi vào scripts/anh/bien_ban/gan-hinh-<lúc>.json TRƯỚC khi UPDATE, ảnh cũ không bị xoá khỏi bucket.
 // Tiền tố mã → bảng: xem BANG bên dưới (thêm dòng khi cần, KHÔNG đoán bảng từ tên).
 // --bang (phần LUYỆN của kho Hình, 13/10): bảng đích do NGƯỜI GỌI khai, không suy từ tên tệp — xem LUYEN bên dưới (bảng, cột khoá, cột ảnh):
@@ -24,6 +26,9 @@ import { readFileSync, readdirSync, existsSync, writeFileSync, mkdirSync } from 
 import { join, extname } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { createClient } from '@supabase/supabase-js'
+import { docNhanHinh, ghiNhanHinh } from '../kho/so-hinh.mjs'
+// bảng → kho của bộ đếm hình (spec-giai-bai §C12); bảng không có ở đây thì không đếm
+const KHO_DEM = { hinh_hoc_cau_hoi: 'hinh_hoc', hinh_hoc_cau_lop: 'hinh_hoc_lop', hinh_bai: 'hinh_luyen', hgt_cau_hoi: 'hgt' }
 
 const BANG = { HHC: 'hinh_hoc_cau_hoi', HH: 'hinh_hoc_cau_hoi', HHL: 'hinh_hoc_cau_lop' } // HH… = mã câu kiểu cũ (HH00087012), cùng bảng · HHL = kho trên lớp (mig 202611051603)
 // Cách gắn của một bảng: khoa = cột khoá ghi trong tên tệp · song = điều kiện "dòng còn sống" · cot[kiểu] = các cột ảnh được ghi
@@ -44,8 +49,12 @@ const KIEU = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' 
 
 const argv = process.argv.slice(2)
 const iBang = argv.indexOf('--bang'), TEN_BANG = iBang >= 0 ? argv[iBang + 1] : null
-const dir = argv.find((a, i) => !a.startsWith('--') && !(iBang >= 0 && i === iBang + 1))
+const dir = argv.find((a, i) => !a.startsWith('--') && !(iBang >= 0 && i === iBang + 1) && argv[i - 1] !== '--nguon')
 const GHI = argv.includes('--ghi'), THAY = argv.includes('--thay')
+const iNguon = argv.indexOf('--nguon')
+let NHAN = null
+try { NHAN = iNguon >= 0 ? docNhanHinh('| nguon=' + (argv[iNguon + 1] ?? '')) : null } catch (e) { console.error('❌', e.message); process.exit(2) }
+if (iNguon >= 0 && !NHAN) { console.error('--nguon chỉ nhận: goc | ve_lai:<a–f> | ve_lenh | ve_moi'); process.exit(2) }
 if (iBang >= 0 && !LUYEN[TEN_BANG]) { console.error(`--bang chỉ nhận: ${Object.keys(LUYEN).join(' | ')}`); process.exit(2) }
 if (!dir || !existsSync(dir)) { console.error('Dùng: node --env-file=.env scripts/anh/gan_hinh.mjs <thu_muc> [--ghi] [--thay] [--bang baitoan|bienthe|mohinh|cachgiai|hlbai|hly]'); process.exit(2) }
 // cach(mã) → cách gắn của mã đó; null = mã không hợp lệ với bảng đang gắn
@@ -94,6 +103,8 @@ for (const v of viec) {
     v.dong.push({ ...k, cot: k.cot[v.kg], ma: m, cu: r })
   }
 }
+const canNhan = viec.some((v) => v.dong.some((d) => KHO_DEM[d.bang] && d.cot.includes('anh_de')))
+if (THAY && canNhan && !NHAN) { console.error('❌ --thay hình đề kho có bộ đếm phải kèm --nguon ve_lai:<a–f> | ve_lenh | goc | ve_moi (spec-giai-bai §A8)'); loi++ }
 if (loi) { console.error(`\n${loi} lỗi — không làm gì cả.`); await c.end(); process.exit(1) }
 console.log(`Kiểm xong ${viec.length} file → ${viec.reduce((s, v) => s + v.dong.length, 0)} câu. ${GHI ? 'GHI THẬT' : 'CHẠY THỬ (thêm --ghi để ghi)'}`)
 for (const v of viec) console.log(`  ${v.ten}  →  ${v.dong.map((d) => `${d.ma} (${d.bang}.${d.cot.join(' + ')})`).join(', ')}`)
@@ -126,6 +137,7 @@ try {
   for (const { v, link } of daUp) for (const d of v.dong) {
     const r = await c.query(`update ${d.bang} set ${d.cot.map((cot) => `${cot} = $1`).join(', ')}${d.bump} where ${d.khoa}::text = $2${d.song}`, [link, d.ma])
     if (r.rowCount !== 1) throw new Error(`UPDATE ${d.ma} rowCount=${r.rowCount}`)
+    if (NHAN && KHO_DEM[d.bang] && d.cot.includes('anh_de')) await ghiNhanHinh(c, { kho: KHO_DEM[d.bang], ma_cau: d.ma, url: link, nguon: NHAN.nguon, ma_loi: NHAN.ma_loi })
   }
   await c.query('commit')
 } catch (e) { await c.query('rollback'); console.error('❌ UPDATE lỗi, đã rollback DB (ảnh đã up còn nằm trong bucket):', e.message); await c.end(); process.exit(5) }

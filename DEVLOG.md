@@ -81134,3 +81134,13 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Giá gói máy Supabase (tra trang giá + tài liệu của Supabase 15/11; tính theo giờ, số tháng là xấp xỉ):** Micro ~10 USD (1 GB RAM, 60 kết nối, pooler 200) · Small ~15 USD (2 GB, 90, 400) · Medium ~60 USD (4 GB, 120, 600) · Large ~110 USD (8 GB, CPU riêng, 160, 800) · XL từ ~210 USD.
   Gói Pro có sẵn 10 USD tín dụng máy mỗi tháng (đủ một máy Micro) ⇒ Micro → Small cho project ERP = **thêm ~5 USD / tháng**; lên Medium = thêm ~50 USD / tháng.
 - **Đề xuất:** Small là đủ cho hiện tại (45 / 90 = 50 %, RAM gấp đôi ⇒ bớt lượt nguội); Medium / Large để dành cho mốc 1.000+ sau khi có số thử tải (đợt 6). Đổi gói phải khởi động lại DB ⇒ làm ngoài giờ học. Chưa làm — Thùy quyết và bấm trên dashboard.
+
+
+## 15/11 (khuya) — Luật nguồn hình đề + bộ đếm hình theo khối (Thùy chốt: sổ md, làm trước; ảnh cũ để "chưa rõ nguồn" tới khi có lệnh)
+- **Luật** (spec-giai-bai §A8): gốc ổn giữ · gốc quá tệ (mã a–f) vẽ lại · có lệnh vẽ lại · mỗi hình đề nhãn `nguon=goc|ve_lai:<a–f>|ve_lenh|ve_moi`. Thay luật 13/10 "Hình học luôn vẽ lại"; sửa 10 dòng mục khối trỏ §A8.
+- **Đo:** 13.306 hình đề Toán (dai 8.539 · hgt 1.160 · hinh_hoc 2.998 · Hình trên lớp 84 · Hình luyện bài …). Đường dẫn bucket KHÔNG phân biệt gốc / vẽ ⇒ cần bảng nhãn.
+- **mig 202611152245 ĐÃ ÁP** (`--only`, sổ có 28 file treo của phiên khác): `kho_hinh_nguon` · `kho_hinh_lenh_ve` (RLS, đọc authenticated, claude_ro policy tự thêm) · `fn_kho_hinh_dem(mon)` (invoker, anon không gọi được).
+  Thử trước trong transaction rollback: 26 nhóm kho×khối, 0 câu mất khối; ca nhãn/lệnh/URL lệch/vẽ theo lệnh ĐẠT. Hàm 166–471 ms (ấm), 2,5 s một lượt nguội lúc 23h — chỉ cho sổ CLI, không cho màn.
+- **Sai:** lượt thử đầu lệch vì `now()` cố định trong một transaction ⇒ nhãn/lệnh hoà dấu giờ. Sửa: `default clock_timestamp()`, hoà xếp theo `id`. Lỗi đếm mã lỗi nhân dòng + NULL ở điều kiện "lệnh chờ" bắt được khi tự soát trước lượt thử.
+- **Code:** `scripts/kho/so-hinh.mjs` (sổ `kho-rules/SO-HINH.md` + `lenh` ra lệnh vẽ lại + `ghiNhanHinh`/`docNhanHinh`) · cổng `dung-de-tu-soan.mjs` đọc nhãn (sai khuôn ⇒ lỗi, thiếu ⇒ nhắc) · `ghi.mjs` ghi nhãn cùng transaction (thử bản sao B047-01: 2/8 nhãn, rollback) · `gan_hinh.mjs --nguon` (`--thay` thiếu nhãn ⇒ chặn; thử không `--ghi`) · `ghi-batch.sh --ghi` tự dựng lại sổ.
+- `check:kien-truc` ✔ không mục nào tăng. **Chưa:** nhãn ở `nhap_hh_tu_draft.mjs`, `anh-batch.mjs`; đếm `hinh_y` (spec §C10.13).

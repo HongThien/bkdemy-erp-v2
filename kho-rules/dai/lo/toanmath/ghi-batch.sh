@@ -25,3 +25,5 @@ for SOAN in kho-rules/dai/lo/toanmath/batch/$B/$B-*.soan.md; do
     else echo "❌ $MA: $(echo "$R" | grep -E "❌|✘|LỖI|lỗi|Error|thiếu" | head -3)"; fi
   else echo "$MA | ${TK:-?} $(echo "$R" | grep -E "❌|✘|LỖI|Error|thiếu" | head -2)"; fi
 done
+# Thùy 15/11: sổ hình đề theo khối (spec-giai-bai §C12) cập nhật sau mỗi lượt ghi thật
+[ "$GHI" = "--ghi" ] && node scripts/kho/so-hinh.mjs
