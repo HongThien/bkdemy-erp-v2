@@ -81162,3 +81162,12 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - (nốt — Thùy "nốt đi") **mig 202611152255 ĐÃ ÁP**: bộ đếm thêm kho `hinh_luyen_y` (hinh_y, khối qua bài cha) — 157 hình (K7 20 · K8 137), tổng 13.463; chỉ nới check 2 bảng mới + thay thân hàm (chữ ký giữ). Thử rollback trước.
   `gan_hinh.mjs` nhận `hinh_y` · `so-hinh.mjs lenh --kho hinh_luyen_y` (thử K8: 137 câu) · `nhap_hh_tu_draft.mjs` in sẵn lệnh gắn kèm `--nguon`.
   `anh-batch.mjs` hoá ra chỉ đẩy hình nháp lên thư mục làm việc, không gắn anh_de ⇒ không cần nhãn (ghi nợ trước đó sai). Spec §C10.13 xoá, §C12 cập nhật.
+
+### 15/11 (23:09–23:15) — Thùy nâng gói máy Supabase project ERP: Micro → SMALL
+
+- **Vì sao:** đỉnh kết nối 58/60 (tối 11/11) và 45/60 (sau tối ưu); nền lúc vắng đã 31–36 kết nối nằm im; Thùy hay chạy 4–5 context cùng lúc (script nối thẳng DB + đẩy ảnh). Chênh ~5 USD/tháng ($0,0206/giờ so với $0,01344/giờ).
+- **Sau khi nâng (đo 23:10):** `max_connections` **90** (trước 60) · `shared_buffers` 512 MB (trước 256) · `effective_cache_size` 1,5 GB (trước 768 MB) · `work_mem` 5 MB (trước 3,5). `pg_postmaster_start_time` = 23:09:26 15/11 (lần khởi động trước: 20:46 ngày 11/11 — tức tối nghẽn 11/11 DB vừa khởi động lại, bộ nhớ đệm trống).
+- **Kiểm sau khởi động lại:** lượt bộ điều phối 23:12 chạy đủ 8 sổ đến hạn, 0 lỗi (mastery 40 ms · dạng đã học 17 · mục tiêu tuần 10 · dạng yếu 306 · tin Thế giới 429 · việc 585 · phòng 916 · bxh 2.407) · 7 job cron vẫn bật, 2 lượt cron sau khởi động đều thành công ·
+  cổng API trả lời (HTTP 401 với khoá công khai ở đường gốc = cổng sống) · cổng đăng nhập HTTP 200 · kết nối client 18 / 90 lúc 23:12 (PostgREST mới mở lại 4).
+- **Lưu ý:** bộ nhớ đệm vừa trống ⇒ sáng mai các lượt đầu sẽ "nguội"; `pg_stat_statements` có thể đã giữ hoặc mất số cộng dồn — kiểm khi đo lần tới. Mọi số ms đã ghi trước 23:09 là của máy 1 GB, chưa đo lại.
+- **Chưa làm:** số người dùng thật giờ đông trên máy mới (tối thứ Hai) · không đặt trần kết nối cho `claude_build` nữa (trần 90 đủ chỗ; trần 10 có thể làm hỏng các lô chạy song song của Thùy).
