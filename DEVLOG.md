@@ -81144,3 +81144,17 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai:** lượt thử đầu lệch vì `now()` cố định trong một transaction ⇒ nhãn/lệnh hoà dấu giờ. Sửa: `default clock_timestamp()`, hoà xếp theo `id`. Lỗi đếm mã lỗi nhân dòng + NULL ở điều kiện "lệnh chờ" bắt được khi tự soát trước lượt thử.
 - **Code:** `scripts/kho/so-hinh.mjs` (sổ `kho-rules/SO-HINH.md` + `lenh` ra lệnh vẽ lại + `ghiNhanHinh`/`docNhanHinh`) · cổng `dung-de-tu-soan.mjs` đọc nhãn (sai khuôn ⇒ lỗi, thiếu ⇒ nhắc) · `ghi.mjs` ghi nhãn cùng transaction (thử bản sao B047-01: 2/8 nhãn, rollback) · `gan_hinh.mjs --nguon` (`--thay` thiếu nhãn ⇒ chặn; thử không `--ghi`) · `ghi-batch.sh --ghi` tự dựng lại sổ.
 - `check:kien-truc` ✔ không mục nào tăng. **Chưa:** nhãn ở `nhap_hh_tu_draft.mjs`, `anh-batch.mjs`; đếm `hinh_y` (spec §C10.13).
+
+### 15/11 (22:55) — Hai hàm audit mới (Thùy chạy ở SQL Editor) · kết nối và kho file nhìn được từ trong DB
+
+- **`_audit_ket_noi()` + `_audit_kho_file_moi(tu, den)`** — chủ `postgres`, chỉ `claude_build` + `service_role` gọi được (`anon` / `authenticated`: không). File 202611152252 đã `--ghi-so`. `check:kien-truc` ✔.
+- **Kết nối lúc 22:54 (lần đầu thấy được trạng thái):** 45 dòng, 36 là kết nối client, **chỉ 1 đang chạy** (chính script này) — 35 cái còn lại NẰM IM.
+  PostgREST **17, tất cả nằm im**, cái lâu nhất im 195.217 s (~54 giờ) ⇒ pool của PostgREST nở ra lúc có tải rồi GIỮ, không co lại; đây là nhóm chiếm chỗ lớn nhất lúc vắng.
+  App phụ huynh (FDW) 7 nằm im (lâu nhất 645 s, mở 2 giờ) · Realtime 6 + 1 bộ gửi nhật ký · pooler xác thực 2 · exporter 1 · auth 1 · 1 kết nối `supabase_admin` không tên im 56.471 s. Còn lại là tiến trình nền (không tính vào trần).
+- **Kho file — có phải script của các context đẩy Storage lên 15?** Có bằng chứng một phần:
+  7 ngày: bucket `kho-anh` 4.346 file mới, **4.248 không gắn người đăng nhập** (đẩy bằng khoá dịch vụ = script); `kho-tailieu` 1.345 / 1.338. 10 khoảng 10 phút nhiều nhất: 15/11 21:00 **464 file** · 13/11 15:50 367 · 14/11 12:30 339 · 13/11 19:40 290 · 14/11 12:50 271 · 14/11 12:40 204 · 13/11 18:10 201 · 11/11 16:50 193 · 14/11 12:20 191 · 11/11 17:20 189 — gần như 100 % là script.
+  Điểm đỉnh sau tối ưu (dashboard ghi "14/11 14:00", Storage 15): 13:00–15:00 KHÔNG có file mới nào, nhưng 12:20–12:50 có ~1.000 file do script đẩy ⇒ nhiều khả năng điểm "14:00" của biểu đồ 7 ngày (khoảng gộp thô) chính là đợt này — chưa chắc vì không biết biểu đồ gộp theo khoảng nào.
+  15/11 15:27 (Claude đếm trực tiếp Storage 15): 14:30–16:00 chỉ 7 file mới ⇒ lần này KHÔNG phải do đẩy file; có thể là đọc / liệt kê / tải ảnh (hàm chỉ đếm file TẠO MỚI, không thấy lượt đọc). Chưa rõ.
+  Tối 11/11 (đỉnh 58): 21:00–23:00 chỉ 20 file ⇒ Storage không liên quan đỉnh đó (khớp ảnh: Storage 2).
+- **Ghi nhận:** 15/11 21:00–21:10 có 464 file đẩy lên kho trong khung 17–22 h (lô của phiên khác) — đúng loại việc K22 muốn tách khỏi giờ HS dùng app.
+- **Kết luận cho câu hỏi của Thùy:** chạy nhiều context có đẩy kết nối lên (script nối thẳng DB ⇒ "Other roles"; đẩy ảnh hàng loạt ⇒ Storage), nhưng nền của hệ lúc không ai làm gì đã là ~36 kết nối nằm im, riêng PostgREST 17. Nâng gói Small (90) giải quyết cả hai; hạ pool PostgREST là lựa chọn thay thế nếu không nâng.
