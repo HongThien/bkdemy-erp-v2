@@ -80988,3 +80988,29 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - 15/11 tối (Thùy "ghi đi" lần 2): ghép B037-08 (3 khúc; sửa `nam` 2026–2027 → 2026) + B038-01 (2 khúc); đẩy hình rồi ghi DB 12 đề:
   K11 B037-04 (210 mới) · B037-08 (331) · B038-01 (195) · K10 B044-01 (110) · 02 (100) · 06 (103) · 08 (118) · B045-03 (133) · 04 (56) · 06 (109) · B046-02 (84) · 08 (60) = 1.609 câu mới.
 - Còn treo: soát B046-09, B047-01, B044-07 (2 khúc soạn xong); chưa giao B045-02·07·08·09, B046-01·03·04·06·07, B047-02; ⏸ B046-05.
+
+### 15/11 (21:30–21:50) — Thùy: "app HS và GV t deploy rồi · cái nào cần chạy sql đưa t · Miễn gậy chỉ có từ trưởng khối trở lên · Bổ trợ đuổi fix đi" + "Tạm thời chưa dùng Huy hiệu"
+
+- **Huy hiệu tạm thời chưa dùng (Thùy):** để nguyên `fn_hs_album`, không chốt tháng 7–10. HS vẫn mở được Album (thấy số "tạm tính"). Bật lại ⇒ chốt tháng theo thứ tự trước.
+- **App HS + app GV:** Thùy xác nhận đã deploy. Chưa ai xem các điểm cần xem trên màn (nút "Vào ca", màn tự cập nhật, "Việc của tôi" nhóm đã xong).
+- **✅ MIỄN GẬY chỉ từ trưởng khối trở lên — mig 202611152136 ĐÃ ÁP (commit f78f25f2):**
+  - Trước: ai có quyền ghi `gay` (20 người kể cả admin) hoặc quyền ghi hồ sơ `ns` đều đổi được `nhan_su.mien_gay` của người khác.
+  - Sau: `_trg_nhan_su_chan_ghi` xét `fn_gay_duoc_doi_mien()` (hàm mới, chỉ trả lời về người gọi) TRƯỚC lối tắt `co_quyen_ghi('ns')`. Đủ điều kiện = admin · trưởng/phó QLCL (`_qlcl_toan_he`) ·
+    quản lý môn · trưởng khối (`phan_cong_quan_ly_khoi.vai = 'truong'`, PHÓ không được) · **trưởng/phó team core — nhánh này Claude tự thêm** (1 người: trưởng Vận hành, phó core; không có nhánh này thì người đó mất quyền) ⇒ đã nêu với Thùy.
+  - Đo: 15 người đủ điều kiện · 5 người mất quyền (3 thành viên thường + 2 phó khối đang có quyền ghi `gay`). 2 người đang được miễn giữ nguyên.
+  - Thử (rollback, giả vai 8 loại người bằng `request.jwt.claims` + `bk.thu_goi_truc_tiep`): admin / QLCL / quản lý môn / trưởng khối / core → miễn người khác ĐƯỢC; phó khối / thành viên có ghi gậy / nhân sự thường → CHẶN "Chỉ trưởng khối trở lên…"; tự sửa SĐT của mình vẫn được ở cả 8 loại. Tự đổi `mien_gay` của chính mình: như cũ (chỉ người có quyền ghi `ns`).
+  - Client: `gayDuocDoiMien()` (`src/lib/gay.ts`) + `PanelMienGay` ẩn nút "+ Miễn" / "Bỏ miễn", hiện dòng "Chỉ trưởng khối trở lên…". CHƯA mở trên màn (cần đăng nhập thật) — `tsc` sạch. Cần deploy ERP.
+- **✅ BỔ TRỢ ĐUỔI — hai lỗ màn TA trống — mig 202611152141 ĐÃ ÁP (commit f49bc4d6):**
+  - Hiện trạng đo (buổi đuổi còn mở từ hôm nay − 7): 6 buổi; lỗ (a) 1 đợt `can_duoi` 0 dạng, chưa duyệt, ĐÃ DẠY 2 buổi (11/11, 13/11); lỗ (b) 1 đợt hoàn thành 13/11 còn buổi 14/11 và 15/11 (7/8 dạng xong).
+  - Tự quyết theo luật sẵn có (CLAUDE.md §4 suy, không cascade; thiết kế cũ ở `BoTroDuoiScreen`: "Ops có thể xếp lịch trước, nhưng GV dạy chưa có dạng để bám tới khi duyệt"): KHÔNG chặn xếp buổi, KHÔNG tự huỷ buổi, KHÔNG đổi `fn_duoi_tien_trinh` (app HS + app TA đang chạy giữ nguyên).
+  - DB: hàm mới `fn_duoi_buoi_tinh_trang(p_buoi)` (chỉ nhân sự; mỗi em: trạng thái đợt, `hoan_thanh_at`, số dạng / đã xong, dạng chưa xong, kế hoạch duyệt chưa, GV lớp, số buổi còn xếp sau) — 45–107 ms/buổi gồm đường truyền.
+    `fn_bo_tro_tu_kiem` thêm 2 dòng báo cho buổi đuổi CHƯA dạy xong (đợt hoàn thành ⇒ "buổi này thừa: gỡ em hoặc huỷ buổi"; đợt 0 dạng ⇒ "TA không có gì để dạy / in") — sửa bằng thay chuỗi khớp đúng một lần + khoá md5. Thử: tự kiểm 49 ca trước/sau, dòng lỗi cũ giữ nguyên.
+  - Client `DuoiCaTA`: khối xanh "✓ Đợt đuổi đã hoàn thành ngày … · x/y dạng xong" (+ dạng chưa xong, nhắc báo Vận hành gỡ em) · khối vàng "⚠ Đợt đuổi chưa có dạng mục tiêu — team học thuật <môn> chưa chốt (giáo viên lớp: …)" · ẩn nút "✓ Đã bắt kịp" khi đợt đã hoàn thành · hộp xác nhận "Đã bắt kịp" nhắc số buổi còn xếp sau. `tsc` sạch. CHƯA mở trên app TA thật. Cần deploy app TA.
+  - Chưa làm: màn ERP `BuoiDuoiDetail` (ERP đã có dòng "⚠ Chưa duyệt dạng" ở chi tiết đợt) · không có việc tự động nhắc team học thuật chốt dạng (chỉ có dòng ở tự kiểm + màn TA).
+- **✅ Policy gọi hàm kiểm quyền theo từng dòng — 12 bảng của `claude_build` — mig 202611152146 ĐÃ ÁP:** `btvn_ai_cau/lan/yeu_cau`, `bu_dv_cu_20261114`, `claude_phien_bot`, `dht_hoan`, `giai_thuong_xs_khoi(+_log)`,
+  `hoc_sinh_anh_chan_dung`, `hoc_sinh_kho_anh`, `nt_thu_hoi_phan`, `viec_phu_trach_snap` — bọc `(select la_thanh_vien())` như mig 202611021935. Chưa đo trước–sau từng bảng (cơ chế đã đo 02/11 và 14/11: ~0,5–1 ms mỗi dòng).
+  Sau khi áp: còn 19 policy gọi trần, TẤT CẢ thuộc bảng do `postgres` sở hữu.
+- **⏳ SQL đưa Thùy chạy ở SQL Editor — file `202611152145_policy_initplan_bang_chu_postgres_sql_editor.sql` (CHƯA chạy, chưa ghi sổ):** đổi chủ `thong_bao_ph` → `claude_build` + 19 policy của 17 bảng (`thong_bao_hs` ×3, `thong_bao_ph`, `giai_thuong`, `giai_thuong_lop_thang`, `hinh_giao_trinh`, `hinh_gt_bai`, `hinh_gt_buoi`, 10 bảng `sk_*`).
+  Mig 202611151055 của phiên giải tháng (báo app phụ huynh) cần dòng đổi chủ này; nó GỬI 76 THÔNG BÁO cho phụ huynh ⇒ Claude không tự áp, chờ Thùy nói rõ.
+- `check:kien-truc` ✔ sau 3 migration (không mục nào tăng). `npm run schema` không chạy (schema.md đang lệch 1 dòng của phiên khác; các migration trên không đổi cột / chữ ký hàm cũ, chỉ thêm 2 hàm mới).
+- Đo đóng ET (`fn_recompute_exp_thang`): kịch bản `et-do.mjs` hẹn chạy sau 22:00 — kết quả ở mục sau.
