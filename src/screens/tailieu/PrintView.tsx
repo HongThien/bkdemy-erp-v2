@@ -1220,19 +1220,18 @@ export function itemsGomY(cs: CauHoi[], o: {
     const anh = cd === 'khong' ? null
       : cd === 'o_trong' ? (o.gv && dau.anh_de ? <AnhDe ma={dau.ma_cau} src={dau.anh_de} /> : <div className="pv-vebox" />)
         : (dau.anh_de ? <AnhDe ma={dau.ma_cau} src={dau.anh_de} /> : null)
-    out.push({
-      key: `bai-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: 0, hasImg: !!anh,
-      content: <><div className="pv-math" style={{ breakAfter: 'avoid' }}><MathText prefix={`<span class="pv-cau-no">Câu ${so[0]} – ${so[so.length - 1]}.</span> `}>{k.dan}</MathText></div>{anh}</>,
-    })
     // ⭐ Thùy 09/11 (BTVN): ý chỉ ghi "a)" (không "Câu 3. a)"), các ý LIỀN NHAU, ô trống/dòng kẻ là của CẢ BÀI ⇒ 1 khối dòng kẻ
     // sau ý cuối. Số dòng của bài = số dòng đặt ở Ý ĐẦU (builder chỉ có 1 ô "dòng" ở đầu khối bài, ghi vào ý đầu).
-    let ke = 0
-    ys.forEach((y, t) => {
-      const p = cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` })
-      if (t === 0) ke = p.lines
-      out.push({ key: y.ma_cau, cols: o.col(y), nhom: dau.bai_y!, ...p, lines: 0 })
+    // ⭐ Thùy 15/11 ("tự sang trang · đang gom toàn bộ các bài vào 1 cấu trúc, chuẩn phải là hiển thị từng bài"): cả bài = MỘT khối
+    // y như câu thường — lời dẫn + các ý bên trái, hình nửa phải (DeVaHinh), dòng kẻ sau cả bài. Trước đây đầu bài (lời dẫn +
+    // hình full ngang, break-after:avoid) và từng ý là các khối rời ⇒ paged.js đẩy cả cụm sang trang, bỏ trắng ~2/3 trang (GT 8S0).
+    const ps = ys.map((y, t) => cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` }))
+    out.push({
+      key: `bai-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: ps[0]?.lines ?? 0, hasImg: !!anh,
+      content: <DeVaHinh ma={dau.ma_cau} anh={anh}
+        de={<div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${so[0]} – ${so[so.length - 1]}.</span> `}>{k.dan}</MathText></div>}
+        y={<>{ps.map((p, t) => <div key={ys[t].ma_cau} className="pv-y-bai">{p.content}</div>)}</>} />,
     })
-    if (ke > 0) out.push({ key: `ke-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: ke, hasImg: false, content: null })
     i = k.cuoi + 1
   }
   return out
