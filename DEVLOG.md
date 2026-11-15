@@ -81070,3 +81070,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   ở mục K9 đề cương, Khối 7, Khối 8T, Context 4T+5T, bảng Skill 1–7…). Claude vẫn commit `-- HANDOFF.md` nên ~12 dòng đó vào chung commit 9c10de48 (đã push) dưới thông điệp "[Giải tháng] …".
 - **Không mất gì:** nội dung của phiên kia nằm nguyên trong commit và trong thư mục làm việc; phiên đó commit tiếp thì phần HANDOFF của họ sẽ không còn diff. KHÔNG sửa lịch sử (không `push -f`).
 - **Bài học (nhắc lại memory "nhiều phiên song song"):** file dùng chung (HANDOFF / DEVLOG / spec) mà `git status` đã hiện M TRƯỚC khi mình đụng ⇒ không commit theo tên file; chỉ đưa đúng phần của mình vào (tạo patch của riêng mình rồi `git apply --cached`), hoặc ghi vào DEVLOG trước và sửa HANDOFF sau khi phiên kia commit.
+
+### 15/11 (22:17) — Thùy: "đã deploy" (ERP + app TA)
+
+- Sau deploy, thống kê vai `authenticated` CHƯA có lượt gọi nào của `fn_gay_duoc_doi_mien` (màn Gậy) và `fn_duoi_buoi_tinh_trang` (màn buổi đuổi TA) ⇒ chưa ai mở hai màn; chưa có xác nhận trên màn thật.
+  Không còn buổi đuổi nào mở từ hôm nay (0 buổi) ⇒ hai khối giải thích mới chỉ thấy được khi có buổi đuổi kế tiếp. Vẫn 2 người đang được miễn gậy.
+- Số cộng dồn đóng ET / BTVN lúc 22:17 (để so sau này, sau mig 202611152202 lúc ~22:06): `fn_recompute_exp_thang` 151 lượt tb 834 ms · `fn_dong_phase` 206 lượt tb 780 ms · `fn_dong_btvn` 240 lượt tb 600 ms (đều là số TRƯỚC khi sửa; lượt đóng thật đầu tiên sau sửa sẽ kéo trung bình xuống — xem hiệu số).
