@@ -102,6 +102,12 @@ if (!CHI_CODE) {
   r = await q(`select count(*)::int n from pg_proc p where p.pronamespace='public'::regnamespace and p.prorettype <> 'trigger'::regtype and p.proname like E'\\\\_%' and has_function_privilege('authenticated', p.oid, 'execute')`)
   them('db_ham_noi_bo_mo', 'Hàm nội bộ (tên bắt đầu _) mà client gọi được — K1', 'tran', r[0].n)
 
+  // K25: hàm dựng bảng tạm mà thân không có cả `create index` lẫn `analyze`. Ước lượng theo chữ trong thân hàm — bảng tạm vài dòng tra một lần thì không cần sửa,
+  // nên đây là mục TRẦN (hàm MỚI không được thêm vào), không phải mục cứng. Số gốc 15/11 = 16.
+  r = await q(`select p.proname ten from pg_proc p where p.pronamespace='public'::regnamespace and p.prosrc ~* 'create\\s+(temp|temporary)\\s+table'
+     and not (p.prosrc ~* 'create\\s+(unique\\s+)?index' and p.prosrc ~* '(^|[^a-z_])analyze\\s') order by 1`)
+  them('db_ham_bang_tam_thieu_index', 'Hàm dựng bảng tạm mà thân thiếu create index hoặc analyze — K25', 'tran', r.length, ds(r))
+
   // cron + hàm chậm: cần hàm _audit_* (owner postgres). Không có thì bỏ qua, không coi là lỗi.
   try {
     r = await q(`select jobname ten from public._audit_cron_job() where active order by 1`)

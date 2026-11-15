@@ -80905,3 +80905,12 @@ Thùy nêu 4 việc, làm được 3:
   `fn_dai_chuyen_chuyen_de`, `fn_dong_phase`, `fn_gv_dashboard`, `fn_hs_album`, `fn_hs_rank_cua_toi`, `fn_ops_dashboard`, `fn_recompute_exp_thang`, `fn_ta_dashboard`, `fn_thanh_tuu_thang`,
   `fn_the_gioi_kenh`, `fn_tl_bdm_chuyen_luu_tru`, `fn_tl_bdm_et_ma_de`, `fn_xephang_chung`. CHƯA soát hàm nào thật sự tra lặp bảng tạm (bảng tạm vài dòng tra một lần thì không cần sửa).
 - **Chưa làm:** cổng `check:kien-truc` chưa có mục đếm cho K25; K26 chưa có máy kiểm (nợ K23). Phiếu 10 câu: câu 8 thêm vế đường đọc hẹp. CLAUDE.md + HANDOFF.md đổi chỗ trỏ "K1–K23" → "K1–K26".
+
+### 15/11 (19:55) — Cổng check:kien-truc có mục K25 (Thùy "Thêm vào cổng")
+
+- `scripts/check-kien-truc.mjs`: thêm mục TRẦN `db_ham_bang_tam_thieu_index` = hàm `public` có `create temp table` mà thân không có đủ `create index` + `analyze` (đọc `pg_proc.prosrc`).
+  `scripts/kien-truc/tran.json`: trần 16 (mục MỚI, số gốc đo 17:35 — không phải nới trần mục cũ). Hàm mới dựng bảng tạm thiếu index/analyze ⇒ cổng ✗.
+- Chạy cả cổng 19:50 (chỉ đọc; DB lúc đó 39/60 kết nối, 1 đang chạy): mục mới ra 16 = trần, mọi mục khác = trần, mục cứng = 0, exit 0.
+  Lượt chạy cổng có một câu đối chiếu `fn_kho_cau_dang_lech` trung bình ~2,8 s (đã đo từ thống kê trước khi chạy) — nằm trong giờ 17–22, chạy đúng một lượt.
+- Giới hạn: mục này dò theo CHỮ trong thân hàm, không biết bảng tạm có bị tra lặp hay không ⇒ 16 là danh sách cần soát, chưa phải 16 lỗi. K26 vẫn chưa có máy kiểm.
+- `spec-kien-truc.md`: K25 ghi tên mục cổng; bảng §8 thêm một dòng.

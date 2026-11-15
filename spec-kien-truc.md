@@ -187,6 +187,7 @@ ngày bật cổng ghi lại số hiện tại, từ đó số mới > số cũ 
 | Hàm security definer không có cổng (regex + danh sách miễn có lý do) | catalog | chỉ giảm |
 | View không `security_invoker` | catalog | 0 |
 | Khoá ngoại không có index | catalog | chỉ giảm; bảng mới = 0 |
+| Hàm dựng bảng tạm mà thân thiếu `create index` hoặc `analyze` (K25) | catalog | chỉ giảm (15/11: 16) |
 | Index tạo quá 7 ngày mà `idx_scan = 0` | pg_stat | cảnh báo |
 | Hàm client gọi có trung bình > ngân sách (§5) | pg_stat_statements | cảnh báo → ✗ sau 2 tuần |
 | Job tính sẵn: tuổi khoá cũ nhất, lượt lỗi 24 h | `tinh_san_chay` | cảnh báo |
@@ -238,7 +239,7 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
   Mỗi lượt gọi hàm kiểu này giữ khoá tới hết giao dịch ⇒ vòng lặp gọi nhiều lần phải commit / rollback giữa các lượt. — *`fn_traogiai_thang`: 10 bảng tạm, mỗi (lớp × HS)
   chạy 11 truy vấn con quét cả bảng; thêm 5 index + analyze, công thức không đổi một chữ: 1,4–3,0 s → 0,5 s. Gọi 150+ lượt trong một giao dịch ⇒ cạn bảng khoá chung giờ có lớp (15/11).* —
   đếm hàm `public` có `create temp table` mà thân thiếu `create index` hoặc `analyze` (`pg_proc.prosrc`): **15/11 = 16 / 17 hàm**, chưa soát hàm nào thật sự tra lặp;
-  số này chỉ được giảm. Cổng `check:kien-truc` CHƯA có mục này — đếm tay cho tới khi thêm.
+  số này chỉ được giảm. Cổng `check:kien-truc` đếm ở mục `db_ham_bang_tam_thieu_index` (trần 16, thêm 15/11) — hàm mới dựng bảng tạm mà thiếu index/analyze ⇒ ✗.
 - **K26. Chạy thử trên DB sống phải tính ngân sách KHOÁ, GIÂY và GIỜ — rollback không có nghĩa là vô hại.**
   (a) DDL trên bảng app đang đọc (`alter table`, `create index` không concurrently, `drop`) KHÔNG nằm trong giao dịch thử dài: migration riêng, giao dịch ngắn. Lượt thử dài chỉ chứa
   `create or replace function` + DML rồi rollback. (b) So cũ–mới: mỗi ca một giao dịch ngắn (gọi cũ → áp → gọi mới → rollback), mức `repeatable read` để dữ liệu không đổi giữa hai lượt gọi.
