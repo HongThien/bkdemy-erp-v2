@@ -6,7 +6,7 @@
 // BuoiDuoiDetail GIỮ NGUYÊN, chỉ còn dùng ở ERP (NhanSuHome — nơi Mức học đuổi thuộc về).
 import { useEffect, useState } from 'react'
 import {
-  getBuoiDuoiHsInfo, getDangCuaBuoiDuoi, kichBanDuoi, setBuoiCoThietBi, hoanThanhKhoaDuoi, type DangDuoiBuoi,
+  getBuoiDuoiHsInfo, getDangCuaBuoiDuoi, getTinhTrangBuoiDuoi, kichBanDuoi, setBuoiCoThietBi, hoanThanhKhoaDuoi, type DangDuoiBuoi, type TinhTrangDotBuoi,
 } from '../../lib/botro_duoi'
 import { getRoster, getBuoi, huyBuoi, xoaHSKhoiBuoi, diemDanh, getDanhGia, setNhanXet, dongDanhGia, moLaiDanhGia, type BuoiHocHS } from '../../lib/gami'
 import SuaBuoiModal from '../botro/SuaBuoiModal'
@@ -27,6 +27,7 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
   const [hsInfo, setHsInfo] = useState<Record<string, { lop: string; mon: string }>>({})
   const [dangByCase, setDangByCase] = useState<Record<string, DangDuoiBuoi[]>>({})
   const [tienTrinh, setTienTrinh] = useState<Record<string, DotDuoiHS>>({}) // caseId → tiến trình đợt (cùng nguồn app HS)
+  const [tinhTrang, setTinhTrang] = useState<Record<string, TinhTrangDotBuoi>>({}) // caseId → tình trạng đợt (15/11: đợt chưa có dạng / đợt đã hoàn thành)
   const [moBusy, setMoBusy] = useState<string | null>(null)
   const [coThietBi, setCoThietBiState] = useState<boolean | null>(null)
   const [daTai, setDaTai] = useState(false)
@@ -37,6 +38,7 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
   async function reload() {
     const [b, r, dg, hi, dc] = await Promise.all([getBuoi(buoiId), getRoster(buoiId), getDanhGia(buoiId), getBuoiDuoiHsInfo(buoiId), getDangCuaBuoiDuoi(buoiId)])
     setDangByCase(dc)
+    getTinhTrangBuoiDuoi(buoiId).then(setTinhTrang).catch(() => setTinhTrang({})) // lỗi hàm này không làm hỏng màn (chỉ mất dòng giải thích)
     // Tiến trình thống nhất (15/10): MỘT nguồn với app HS — em làm ở nhà/tại ca, dạng còn dở. Lỗi 1 em không làm hỏng cả màn.
     const hsIds = [...new Set(((r ?? []) as BuoiHocHS[]).filter((x) => x.bo_tro_duoi_id).map((x) => x.hoc_sinh_id))]
     Promise.all(hsIds.map((h) => duoiTienTrinh(h).catch(() => [] as DotDuoiHS[]))).then((arr) => {
@@ -68,7 +70,8 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
     catch (e: any) { alert(e.message ?? String(e)); setBusy(false) }
   }
   async function onHoanThanhKhoa(caseId: string, ten: string) {
-    if (!confirm(`Hoàn thành ĐỢT bổ trợ đuổi của ${ten}? Đợt sẽ chuyển sang tab Hoàn thành (kết thúc sớm nếu chưa đủ số buổi dự kiến).`)) return
+    const sau = tinhTrang[caseId]?.so_buoi_sau ?? 0
+    if (!confirm(`Hoàn thành ĐỢT bổ trợ đuổi của ${ten}? Đợt sẽ chuyển sang tab Hoàn thành (kết thúc sớm nếu chưa đủ số buổi dự kiến).${sau > 0 ? `\n\nĐợt này còn ${sau} buổi đã xếp sau buổi hôm nay — nhớ báo Vận hành gỡ em khỏi các buổi đó.` : ''}`)) return
     try { await hoanThanhKhoaDuoi(caseId); await reload() } catch (e: any) { alert(e.message ?? String(e)) }
   }
 
@@ -119,10 +122,30 @@ export default function DuoiCaTA({ buoiId, onClose }: { buoiId: string; onClose:
               <div className="mt-2 flex gap-2">
                 <button disabled={dgXong} onClick={() => setDD(r, 'co_mat')} className={`flex-1 rounded-xl py-2 text-[13px] font-bold disabled:opacity-50 ${r.diem_danh === 'co_mat' ? 'bg-emerald-600 text-white' : 'border border-slate-200 text-slate-600'}`}>✓ Có mặt</button>
                 <button disabled={dgXong} onClick={() => setDD(r, 'vang')} className={`flex-1 rounded-xl py-2 text-[13px] font-bold disabled:opacity-50 ${r.diem_danh === 'vang' ? 'bg-rose-500 text-white' : 'border border-slate-200 text-slate-600'}`}>Vắng</button>
-                {r.bo_tro_duoi_id && (
+                {r.bo_tro_duoi_id && (tinhTrang[r.bo_tro_duoi_id]?.trang_thai_dot ?? 'can_duoi') === 'can_duoi' && (
                   <button onClick={() => onHoanThanhKhoa(r.bo_tro_duoi_id!, r.hoc_sinh?.ho_ten ?? 'HS')} title="Em đã bắt kịp → kết thúc đợt đuổi sớm" className="rounded-xl bg-slate-800 px-3 py-2 text-[12.5px] font-bold text-white">✓ Đã bắt kịp</button>
                 )}
               </div>
+
+              {/* 15/11 (Thùy "Bổ trợ đuổi fix đi"): hai ca trước đây màn TRỐNG không lời giải thích — đợt đã hoàn thành mà buổi còn xếp · đợt chưa có dạng mục tiêu. */}
+              {(() => {
+                const tt = r.bo_tro_duoi_id ? tinhTrang[r.bo_tro_duoi_id] : undefined
+                if (!tt) return null
+                if (tt.trang_thai_dot !== 'can_duoi') return (
+                  <div className="mt-2.5 rounded-xl bg-emerald-50 p-3 ring-1 ring-emerald-200">
+                    <p className="text-[13px] font-bold text-emerald-800">✓ Đợt đuổi của em đã hoàn thành{tt.hoan_thanh_at ? ` ngày ${new Date(tt.hoan_thanh_at).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', timeZone: 'Asia/Ho_Chi_Minh' })}` : ''} · {tt.so_dang_xong}/{tt.so_dang} dạng xong</p>
+                    {tt.dang_chua_xong.length > 0 && <p className="mt-1 text-[12px] text-slate-600">Dạng chưa xong lúc kết thúc: {tt.dang_chua_xong.map((d) => d.ten_dang).join(' · ')}</p>}
+                    <p className="mt-1 text-[12px] text-slate-600">Buổi này được xếp từ trước khi đợt kết thúc nên không còn dạng nào để dạy / in. Em không cần học nữa thì báo Vận hành gỡ em khỏi buổi.</p>
+                  </div>
+                )
+                if (tt.so_dang === 0) return (
+                  <div className="mt-2.5 rounded-xl bg-amber-50 p-3 ring-1 ring-amber-200">
+                    <p className="text-[13px] font-bold text-amber-800">⚠ Đợt đuổi của em chưa có dạng mục tiêu</p>
+                    <p className="mt-1 text-[12px] text-slate-700">Team học thuật{monDuoiCua(r.hoc_sinh_id) ? ` ${monDuoiCua(r.hoc_sinh_id)}` : ''} chưa chốt dạng cần đuổi{tt.gv.length ? ` (giáo viên lớp: ${tt.gv.join(', ')})` : ''} nên chưa có gì để dạy / in. Nhắn họ chốt ở ERP → Bổ trợ đuổi → mở đợt của em → “Chốt & duyệt”; xong, mở lại buổi này là có danh sách dạng.</p>
+                  </div>
+                )
+                return null
+              })()}
 
               {/* TIẾN TRÌNH ĐUỔI (15/10) — cùng danh sách + cùng thanh với app HS. Kịch bản làm bài = f(dạng có MCQ, buổi có thiết bị):
                   📱 em tự làm trên app · ✏️ TA chấm (có iPad, dạng không MCQ) · 🖨 TA chấm (in giấy). Dạng khoá: TA mở tay. */}

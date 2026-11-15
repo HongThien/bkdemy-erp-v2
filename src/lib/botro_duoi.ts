@@ -181,6 +181,20 @@ export async function getDangCuaBuoiDuoi(buoiId: string): Promise<Record<string,
   return out
 }
 
+// Tình trạng ĐỢT của từng em trong buổi đuổi (Thùy 15/11, mig 202611152141) — để màn TA nói RÕ vì sao không có gì để dạy / in:
+// đợt chưa có dạng mục tiêu (giáo viên chưa chốt kế hoạch) · đợt đã hoàn thành mà buổi còn xếp. Mọi số tính ở DB.
+export type TinhTrangDotBuoi = {
+  hoc_sinh_id: string; bo_tro_duoi_id: string; trang_thai_dot: string; hoan_thanh_at: string | null; ke_hoach_duyet: boolean
+  so_dang: number; so_dang_xong: number; dang_chua_xong: { ma_dang: string; ten_dang: string }[]; gv: string[]; so_buoi_sau: number
+}
+export async function getTinhTrangBuoiDuoi(buoiId: string): Promise<Record<string, TinhTrangDotBuoi>> {
+  const { data, error } = await supabase.rpc('fn_duoi_buoi_tinh_trang', { p_buoi: buoiId })
+  if (error) throw error
+  const out: Record<string, TinhTrangDotBuoi> = {}
+  for (const r of (data ?? []) as TinhTrangDotBuoi[]) out[r.bo_tro_duoi_id] = r
+  return out
+}
+
 // Kịch bản 1/2/3 (Thùy 21/09) cho 1 dạng: phụ thuộc "dạng có MCQ" (derive, per dạng) × "buổi có thiết
 // bị" (TA tự khai, 1 lần/buổi) — spec-bo-tro.md §6-tương-đương cho Đuổi. `null` coThietBi = TA CHƯA chọn.
 export type KichBanDuoi = 1 | 2 | 3 | null // null = chưa chọn thiết bị, chưa biết kịch bản
