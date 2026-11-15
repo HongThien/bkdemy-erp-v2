@@ -238,7 +238,7 @@ Mỗi luật: điều cấm/bắt buộc — *vì sao* — kiểm bằng gì.
   Luật này cho hàm ghi / hàm tổng hợp theo kỳ và hàm cũ chưa viết lại: bảng tạm bị truy vấn con quét nhiều lần ⇒ `create index` trên cột tra + `analyze` trước khi dùng.
   Mỗi lượt gọi hàm kiểu này giữ khoá tới hết giao dịch ⇒ vòng lặp gọi nhiều lần phải commit / rollback giữa các lượt. — *`fn_traogiai_thang`: 10 bảng tạm, mỗi (lớp × HS)
   chạy 11 truy vấn con quét cả bảng; thêm 5 index + analyze, công thức không đổi một chữ: 1,4–3,0 s → 0,5 s. Gọi 150+ lượt trong một giao dịch ⇒ cạn bảng khoá chung giờ có lớp (15/11).* —
-  đếm hàm `public` có `create temp table` mà thân thiếu `create index` hoặc `analyze` (`pg_proc.prosrc`): **15/11 = 16 / 17 hàm**, chưa soát hàm nào thật sự tra lặp;
+  đếm hàm `public` có `create temp table` mà thân thiếu `create index` hoặc `analyze` (`pg_proc.prosrc`): **15/11 = 16 / 17 hàm**; đã soát cả 16 bằng cách đọc thân hàm (chưa đo): không hàm nào đang chậm VÌ bảng tạm thiếu index, nên 16 là mức nền để chặn hàm mới, không phải 16 việc phải trả (chi tiết DEVLOG 15/11);
   số này chỉ được giảm. Cổng `check:kien-truc` đếm ở mục `db_ham_bang_tam_thieu_index` (trần 16, thêm 15/11) — hàm mới dựng bảng tạm mà thiếu index/analyze ⇒ ✗.
 - **K26. Chạy thử trên DB sống phải tính ngân sách KHOÁ, GIÂY và GIỜ — rollback không có nghĩa là vô hại.**
   (a) DDL trên bảng app đang đọc (`alter table`, `create index` không concurrently, `drop`) KHÔNG nằm trong giao dịch thử dài: migration riêng, giao dịch ngắn. Lượt thử dài chỉ chứa

@@ -80914,3 +80914,24 @@ Thùy nêu 4 việc, làm được 3:
   Lượt chạy cổng có một câu đối chiếu `fn_kho_cau_dang_lech` trung bình ~2,8 s (đã đo từ thống kê trước khi chạy) — nằm trong giờ 17–22, chạy đúng một lượt.
 - Giới hạn: mục này dò theo CHỮ trong thân hàm, không biết bảng tạm có bị tra lặp hay không ⇒ 16 là danh sách cần soát, chưa phải 16 lỗi. K26 vẫn chưa có máy kiểm.
 - `spec-kien-truc.md`: K25 ghi tên mục cổng; bảng §8 thêm một dòng.
+
+### 15/11 (tối, sau mục 19:55) — Soát 16 hàm dùng bảng tạm của mục K25 (Thùy "Soát 16 hàm")
+
+Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bảng tạm chứa gì, bao nhiêu dòng theo cách dùng, bị đọc bao nhiêu lần, có nằm trong vòng lặp / truy vấn con theo từng dòng không) + số lượt gọi CỘNG DỒN từ `_audit_pss()`.
+**KHÔNG chạy hàm nào, không đo `explain`** (đang trong giờ 17–22, nhiều hàm là hàm ghi) ⇒ kết luận dưới đây là đọc code, cỡ bảng tạm là ước lượng.
+
+- **Kết luận: 0 / 16 hàm đang chậm vì bảng tạm thiếu index + analyze.** Không sửa hàm nào. Trần 16 giữ nguyên làm mức nền chặn hàm mới.
+- **Bảng tạm nhỏ, đọc số lần cố định (13 hàm) — không cần gì:** `fn_ta_dashboard` · `fn_gv_dashboard` · `fn_ops_dashboard` · `fn_xephang_chung` (bảng tổng theo nhân sự vài chục dòng, đọc 3–4 lần) ·
+  `fn_hs_rank_cua_toi` (bảng hạng một khối, đọc 2 lần) · `fn_hs_album` (≤ vài chục dòng) · `fn_dong_phase` (HS một buổi ≤ ~30) · `fn_recompute_exp_thang` (một lớp × một tháng, vài trăm dòng; truy vấn con theo HS quét ≤ vài trăm dòng × ≤ 30 em) ·
+  `fn_btyeu_dong_ca` (≤ ~10 dòng) · `_ts_dang_ky_test` (≤ 4 dòng) · `fn_chap_nhan_dap_an` (dùng 3 lần, nối theo khoá chính) · `fn_the_gioi_kenh` (vài trăm tin; nhóm theo loại tin ≤ ~8 nhóm, mỗi nhóm quét lại bảng) ·
+  `fn_dai_chuyen_chuyen_de` (bảng tạm CÓ `primary key` — mục cổng báo oan phần index, chỉ thiếu analyze).
+- **Bảng tạm bị quét trong vòng lặp nhưng số vòng nhỏ (1 hàm):** `fn_tl_bdm_et_ma_de` — mỗi câu của đề (~10–20 vòng) quét bảng vị trí câu (vài trăm–nghìn dòng). Phần tốn của hàm (cộng dồn tb 1,6 s × 186 lượt) nằm ở `_tl_bdm_cau_vi_tri` và 6 lượt đọc dòng rộng mỗi ứng viên (đúng mẫu K24), không ở bảng tạm.
+- **Đúng mẫu tra lặp nhưng chạy hiếm (2 hàm) — để nguyên, ghi lại:**
+  `fn_tl_bdm_chuyen_luu_tru` (mỗi buổi × nhóm × dạng bài quét lại cả `_srct`; công cụ chuyển giáo trình dùng một lần mỗi giáo trình, pss 0 lượt) ·
+  `fn_thanh_tuu_thang` (mỗi HS × mỗi thành tựu quét `_dua` VÀ quét các CTE `dd/bt/tl/tt/bai/mt_nay/mt_moc/ll` ⇒ chi phí ~N². Gọi từ album thì N = 1 em, không sao; gọi chốt huy hiệu tháng thì N = cả môn. Index cho `_dua` không cứu được vì CTE không đánh index được ⇒ muốn sửa phải viết lại thành nối theo HS. Việc của mốc 10.000 HS — chốt tháng, mỗi tháng một lượt).
+- **Thấy thêm khi đọc (KHÔNG thuộc K25, chưa làm, chưa đo):**
+  (1) `fn_ops_dashboard` vẫn gọi thẳng `fn_ops_viec_thang(v_tu, v_den)` (tính việc cả tháng của mọi OPS mỗi lượt mở) trong khi `_dash_viec_thang('ops', ym)` đã có sẵn từ 13/11 (đưa `ten_viec` vào cột `ten_lop`) và `fn_xephang_chung` đang dùng. Hai hàm TA/GV đã chuyển, OPS thì sót. Cộng dồn 14 lượt, tb 449 ms ⇒ ít người dùng, không gấp.
+  (2) `fn_recompute_exp_thang` cộng dồn tb ~0,8 s (150 lượt, max 7,4 s) — là phần lớn thời gian chờ của `fn_dong_phase` (tb 0,78 s) và `fn_dong_btvn` (tb 0,6 s) khi TA đóng ET / BTVN. Bảng tạm không phải nguyên nhân; chưa biết khúc nào tốn (hai lượt gọi `fn_btvn_bu_theo_buoi_me`, xoá + chèn `gami_exp_ledger` kèm trigger…). Hàm GHI ⇒ muốn đo phải chạy trong giao dịch ngắn rồi rollback, NGOÀI giờ 17–22 (K26).
+  (3) `fn_hs_album` (cộng dồn tb 2,8 s × 44 lượt) tính lại huy hiệu từng tháng của cả mùa mỗi lượt mở — đúng ca K6 đã ghi trong spec, chưa làm.
+- Số pss ở trên là CỘNG DỒN từ lần reset thống kê gần nhất, có cả giai đoạn trước các đợt tối ưu 13–15/11 ⇒ chỉ để xếp thứ tự, không phải số hiện tại.
+- `spec-kien-truc.md` K25: thay "chưa soát" bằng kết quả soát. Thân 16 hàm chỉ nằm ở scratchpad phiên (`k25/*.sql`), lấy lại bằng `pg_get_functiondef`.
