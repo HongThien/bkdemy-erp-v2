@@ -11,6 +11,7 @@
 // ⭐ Thái độ THUẦN không qua đây (PLAN §0 mục 10) — chỉ `loai='kien_thuc'` mở case. Caller (UI)
 //   chịu trách nhiệm không gọi hàm này cho case thái độ.
 import { supabase } from './supabase'
+import { monXemDuoc, locMon } from './monQuyen'
 import { getMasteryHS, dangInfoCuaMon } from './mastery'
 import { homNayVN, congNgay } from './tuan'
 import { RESULT_VALUE } from '../gami/mastery.js'
@@ -108,6 +109,7 @@ export async function listCaseDangMo(mon?: string): Promise<CaseBoTroYeuItem[]> 
     .select('id, hoc_sinh_id, mon, nguon, ly_do, created_at, ban_do, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs, khoi), bo_tro_yeu_dang(id)')
     .eq('trang_thai', 'dang_xu').order('created_at', { ascending: true }).limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
+  q = locMon(q, 'mon', await monXemDuoc())   // 16/11: quyền môn
   const { data, error } = await q
   if (error) throw error
   return (data ?? []).map((r: any) => ({
@@ -566,6 +568,7 @@ export async function listLichTruc(mon?: string): Promise<LichTruc[]> {
     .select('*, lop:lop_id(ten_lop), ns:nhan_su_id(ho_ten), ns2:nhan_su_2_id(ho_ten)')
     .order('mon').order('khoi').order('thu').order('gio_bat_dau').limit(LIMIT)
   if (mon) q = q.eq('mon', mon)
+  q = locMon(q, 'mon', await monXemDuoc())   // 16/11: quyền môn
   const { data, error } = await q
   if (error) throw error
   return ((data ?? []) as any[]).map(({ lop, ns, ns2, ...r }) => ({ ...r, lop_ten: lop?.ten_lop ?? null, nhan_su_ten: ns?.ho_ten ?? null, nhan_su_2_ten: ns2?.ho_ten ?? null }))

@@ -23,7 +23,7 @@ export default function LichKhoiModal({ init, cu, lops, nss, phongs, onClose, on
   onClose: () => void
   onSaved: (id: string) => void
 }) {
-  const [mon, setMon] = useState(init.mon ?? 'Toán')
+  const [mon, setMon] = useState(init.mon ?? '')   // 16/11: không mặc định môn — trống thì lấy môn đầu của danh sách (theo quyền) ở dưới
   const [khoi, setKhoi] = useState(init.khoi ?? '')
   const [bac, setBac] = useState(init.bac ?? 'A')
   const [thu, setThu] = useState(init.thu ?? 2)
@@ -41,7 +41,8 @@ export default function LichKhoiModal({ init, cu, lops, nss, phongs, onClose, on
   const [busy, setBusy] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
 
-  const mons = useMemo(() => [...new Set(lops.map((l) => l.mon))].sort(), [lops])
+  const mons = useMemo(() => [...new Set(lops.map((l) => l.mon))].sort(), [lops])   // lops = lớp thuộc quyền môn (LichTrucScreen lọc ở câu truy vấn)
+  useEffect(() => { if (!mon && mons.length) setMon(mons[0]) }, [mon, mons])
   const khois = useMemo(() => [...new Set(lops.filter((l) => l.mon === mon).map((l) => l.khoi).filter(Boolean) as string[])].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true })), [lops, mon])
   const nsOpts = useMemo(() => nss.map((n) => ({ id: n.id, label: n.ho_ten, sub: n.ma_ns })), [nss])
   const phongOpts = useMemo(() => phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong, sub: p.suc_chua != null ? `${p.suc_chua} chỗ` : undefined })), [phongs])

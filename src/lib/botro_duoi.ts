@@ -14,6 +14,7 @@
 // đã có sẵn (trước đọc day_at) — chỉ đổi nguồn dữ liệu, không xây flow mới.
 import { supabase } from './supabase'
 import { getMyProfile } from './nhansu'
+import { monXemDuoc, locMon, inner } from './monQuyen'
 
 const LIMIT = 10000
 
@@ -57,9 +58,10 @@ async function xongMapCho(caseInfo: Record<string, { hs: string; mon: string }>)
 // buoi_hoc_hs có 2 FK về buoi_hoc (buoi_hoc_id + bu_cho_buoi_id) → KHÔNG embed được, tách 2 bước
 // (bài học HANDOFF §PostgREST-embed).
 export async function listDotDuoi(done: boolean): Promise<DotDuoi[]> {
-  const { data: cases } = await supabase.from('bo_tro_duoi')
-    .select('id, hoc_sinh_id, lop_id, nguon, ly_do, so_buoi_du_kien, created_at, hoan_thanh_at, dang_duyet_at, duyet_boi:dang_duyet_boi(ho_ten), hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id(ten_lop, mon, khoi)')
-    .eq('trang_thai', done ? 'hoan_thanh' : 'can_duoi').order('created_at', { ascending: !done }).limit(LIMIT)
+  const ds = await monXemDuoc()   // 16/11: quyền môn
+  const { data: cases } = await locMon(supabase.from('bo_tro_duoi')
+    .select(`id, hoc_sinh_id, lop_id, nguon, ly_do, so_buoi_du_kien, created_at, hoan_thanh_at, dang_duyet_at, duyet_boi:dang_duyet_boi(ho_ten), hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), lop:lop_id${inner(ds)}(ten_lop, mon, khoi)`)
+    .eq('trang_thai', done ? 'hoan_thanh' : 'can_duoi'), 'lop.mon', ds).order('created_at', { ascending: !done }).limit(LIMIT)
   if (!cases?.length) return []
   const caseIds = (cases as any[]).map((c) => c.id)
   const caseInfo: Record<string, { hs: string; mon: string }> = {}
@@ -294,14 +296,16 @@ export async function listCaDuoi(done: boolean): Promise<CaDuoi[]> {
   const { data: buois } = await supabase.from('buoi_hoc')
     .select('id, ngay, gio_bat_dau, gio_ket_thuc, phong, trang_thai, danh_gia_xong_at, nguoi_day, nguoi_day_tg, muc_hoc_duoi_id')
     .eq('loai', 'bo_tro_duoi').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
-  const filt = (buois ?? []).filter((b: any) => (done ? !!b.danh_gia_xong_at : !b.danh_gia_xong_at))
-  if (!filt.length) return []
-  const ids = filt.map((b: any) => b.id)
-  const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), duoi:bo_tro_duoi_id(lop:lop_id(ten_lop, mon, khoi))')
-    .in('buoi_hoc_id', ids).limit(LIMIT)
+  const filt0 = (buois ?? []).filter((b: any) => (done ? !!b.danh_gia_xong_at : !b.danh_gia_xong_at))
+  if (!filt0.length) return []
+  const ids = filt0.map((b: any) => b.id)
+  const ds = await monXemDuoc()   // 16/11: quyền môn
+  const { data: hs } = await locMon(supabase.from('buoi_hoc_hs')
+    .select(`buoi_hoc_id, hoc_sinh_id, diem_danh, bo_tro_duoi_id, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), duoi:bo_tro_duoi_id${inner(ds)}(lop:lop_id${inner(ds)}(ten_lop, mon, khoi))`)
+    .in('buoi_hoc_id', ids), 'duoi.lop.mon', ds).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
+  const filt = ds ? filt0.filter((b: any) => by[b.id]?.length) : filt0   // có lọc môn: buổi không có em nào thuộc môn được xem thì không hiện
   return filt.map((b: any) => ({
     ...b, hs: (by[b.id] ?? []).map((r: any) => ({
       hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
@@ -396,8 +400,8 @@ export async function lopCuaHS(hocSinhId: string): Promise<{ id: string; ten_lop
 // tab 1 và 3 đơn vị là ĐỢT, chỉ tab 2 là buổi).
 export async function demTabDuoi(): Promise<Record<string, number>> {
   const [{ count: dang }, { count: xong }, l2] = await Promise.all([
-    supabase.from('bo_tro_duoi').select('id', { count: 'exact', head: true }).eq('trang_thai', 'can_duoi'),
-    supabase.from('bo_tro_duoi').select('id', { count: 'exact', head: true }).eq('trang_thai', 'hoan_thanh'),
+    monXemDuoc().then((ds) => locMon(supabase.from('bo_tro_duoi').select(`id, lop:lop_id${inner(ds)}(mon)`, { count: 'exact', head: true }).eq('trang_thai', 'can_duoi'), 'lop.mon', ds)),   // 16/11: quyền môn
+    monXemDuoc().then((ds) => locMon(supabase.from('bo_tro_duoi').select(`id, lop:lop_id${inner(ds)}(mon)`, { count: 'exact', head: true }).eq('trang_thai', 'hoan_thanh'), 'lop.mon', ds)),
     listCaDuoi(false),
   ])
   return { canduoi: dang ?? 0, daxep: l2.length, xong: xong ?? 0 }

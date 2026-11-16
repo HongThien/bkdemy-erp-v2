@@ -8,6 +8,7 @@
 // Sau lưu: vá đúng dòng trong danh sách + nạp lại NỀN lưới phòng (CLAUDE.md §2), không trắng màn.
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import { monXemDuoc, locMon } from '../../lib/monQuyen'
 import { listLichTruc, type LichTruc } from '../../lib/botro_yeu'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { listPhong, xoaLichKhoi, trangThaiChotTuan, chotTuan, type Phong, type KhoiBanPhong, type LichKhoiInput, type CaVuong, type ChotTuan } from '../../lib/phong'
@@ -54,7 +55,7 @@ export default function LichTrucScreen() {
   useEffect(() => {
     Promise.all([
       listLichTruc(),
-      supabase.from('lop').select('mon, khoi').eq('trang_thai', 'dang_hoc').limit(1000).then(({ data }) => (data ?? []) as LopNho[]),
+      monXemDuoc().then((ds) => locMon(supabase.from('lop').select('mon, khoi').eq('trang_thai', 'dang_hoc'), 'mon', ds).limit(1000)).then(({ data }) => (data ?? []) as LopNho[]),   // 16/11: chỉ môn thuộc quyền
     ]).then(([r, l]) => { setRows(r); setLops(l) }).catch((e: any) => setLoi(e?.message ?? String(e))).finally(() => setLoading(false))
     listNhanSu().then((l) => setNss(l.filter((n) => n.trang_thai === 'dang_lam'))).catch(() => {})
     listPhong().then(setPhongs).catch(() => {})
@@ -71,7 +72,7 @@ export default function LichTrucScreen() {
   [dangHL, monF, khoiF, chuaPhong])
   const soChuaPhong = dangHL.filter((r) => !r.phong).length // đếm dòng đang render cho badge
 
-  const moThem = (init: Partial<LichKhoiInput> = {}) => setModal({ init: { mon: monF || 'Toán', khoi: khoiF || undefined, ...init }, cu: null })
+  const moThem = (init: Partial<LichKhoiInput> = {}) => setModal({ init: { mon: monF || undefined, khoi: khoiF || undefined, ...init }, cu: null })
   const moSua = (r: LichTruc) => { const x = sangInput(r); setModal({ init: x, cu: x }) }
 
   async function daLuu(id: string) {

@@ -2,6 +2,7 @@
 // TÁI DÙNG buoi_hoc loai='bu' + buoi_hoc_hs.bu_cho_buoi_id (link per-HS về buổi mẹ). Funnel pure-derive.
 import { supabase } from './supabase'
 import { loadETForBuoi, listProblems } from './gami'
+import { monXemDuoc, locMon, inner } from './monQuyen'
 
 const LIMIT = 10000
 
@@ -106,12 +107,14 @@ async function taiCaBoTro(): Promise<CaBoTroFull[]> {
     .eq('loai', 'bu').neq('trang_thai', 'huy').order('ngay', { ascending: false }).limit(LIMIT)
   if (!(buois ?? []).length) return []
   const ids = (buois ?? []).map((b: any) => b.id)
-  const { data: hs } = await supabase.from('buoi_hoc_hs')
-    .select('buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id(ngay, lop:lop_id(ten_lop, mon, khoi))')
-    .in('buoi_hoc_id', ids).limit(LIMIT)
+  const ds = await monXemDuoc()   // 16/11: quyền môn
+  const { data: hs } = await locMon(supabase.from('buoi_hoc_hs')
+    .select(`buoi_hoc_id, hoc_sinh_id, diem_danh, hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), bu_cho:bu_cho_buoi_id${inner(ds)}(ngay, lop:lop_id${inner(ds)}(ten_lop, mon, khoi))`)
+    .in('buoi_hoc_id', ids), 'bu_cho.lop.mon', ds).limit(LIMIT)
   const by: Record<string, any[]> = {}
   for (const r of hs ?? []) (by[(r as any).buoi_hoc_id] ??= []).push(r)
-  return (buois ?? []).map((b: any) => {
+  // có lọc môn: buổi bù không có em nào thuộc môn được xem thì không hiện
+  return (buois ?? []).filter((b: any) => !ds || by[b.id]?.length).map((b: any) => {
     const ros: CaBoTroHS[] = (by[b.id] ?? []).map((r: any) => ({
       hoc_sinh_id: r.hoc_sinh_id, ho_ten: r.hoc_sinh?.ho_ten ?? '?', ma_hs: r.hoc_sinh?.ma_hs ?? null,
       diem_danh: r.diem_danh, lop_bu: r.bu_cho?.lop?.ten_lop ?? '', mon: r.bu_cho?.lop?.mon ?? '', khoi: r.bu_cho?.lop?.khoi ?? null,
@@ -136,8 +139,10 @@ export async function listCaBoTroTraVe(): Promise<CaBoTro[]> {
 }
 
 export async function listKhongBu(): Promise<{ id: string; absId: string; loai: string; ly_do: string | null; ho_ten: string; ma_hs: string | null; info: string }[]> {
-  const { data } = await supabase.from('bang_khong_bu')
-    .select('id, buoi_hoc_hs_id, loai, ly_do, abs:buoi_hoc_hs_id(hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id(ngay, lop:lop_id(ten_lop, mon)))')
+  const ds = await monXemDuoc()   // 16/11: quyền môn
+  const n = inner(ds)
+  const { data } = await locMon(supabase.from('bang_khong_bu')
+    .select(`id, buoi_hoc_hs_id, loai, ly_do, abs:buoi_hoc_hs_id${n}(hoc_sinh:hoc_sinh_id(ho_ten, ma_hs), buoi:buoi_hoc_id${n}(ngay, lop:lop_id${n}(ten_lop, mon)))`), 'abs.buoi.lop.mon', ds)
     .order('created_at', { ascending: false }).limit(LIMIT)
   return (data ?? []).map((r: any) => ({
     id: r.id, absId: r.buoi_hoc_hs_id, loai: r.loai, ly_do: r.ly_do,
@@ -275,7 +280,8 @@ export async function ensureBuoiBuETProblems(makeupId: string): Promise<void> {
 
 export async function demTabBoTro(): Promise<Record<string, number>> {
   const [l1, cas] = await Promise.all([listCanBu(), taiCaBoTro()])
-  const { count } = await supabase.from('bang_khong_bu').select('id', { count: 'exact', head: true })
+  const ds = await monXemDuoc(), n = inner(ds)   // 16/11: quyền môn
+  const { count } = await locMon(supabase.from('bang_khong_bu').select(`id, abs:buoi_hoc_hs_id${n}(buoi:buoi_hoc_id${n}(lop:lop_id${n}(mon)))`, { count: 'exact', head: true }), 'abs.buoi.lop.mon', ds)
   const song = cas.filter((c) => !c.daTraVe)
   return { canbu: l1.length, daxep: song.filter((c) => !c.xong).length, xong: song.filter((c) => c.xong).length, khongbu: count ?? 0 }
 }

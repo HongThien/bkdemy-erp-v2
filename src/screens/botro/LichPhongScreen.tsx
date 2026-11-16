@@ -10,6 +10,8 @@ import { caCuaNgay, tomTatNgay, ungVienCa, xepVaoCa, goKhoiCa, huyCa, taoCaTay, 
 import { caTheoDoi, xuLyCaHetHan, kiemCaHS, type CaTheoDoi, type EmKhongVaoDuocCa } from '../../lib/botro_yeu_ca'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
+import { MON_LIST } from '../../lib/mon'
+import { useMonChon } from '../../hooks/useMonScope'
 import { listPhong, type Phong } from '../../lib/phong'
 import SearchSelect from '../../components/SearchSelect'
 import TheoDoiCaBoTroTab, { TT, trangThai } from '../danhgia/TheoDoiCaBoTroTab'
@@ -272,7 +274,8 @@ function UngVienModal({ ca, onDong, onXep }: { ca: CaBoTro; onDong: () => void; 
 
 function TaoCaForm({ ngay, nss, phongs, mons, onXong, onDong }: { ngay: string; nss: NhanSu[]; phongs: Phong[]; mons: string[]; onXong: (id: string) => void; onDong: () => void }) {
   const [gio, setGio] = useState('17:00'), [gioKt, setGioKt] = useState('18:00')
-  const [mon, setMon] = useState(mons[0] ?? 'Toán'), [khoi, setKhoi] = useState(''), [phong, setPhong] = useState<string | null>(null)
+  const monChon = useMonChon(MON_LIST, mons[0]), mon = monChon.mon, setMon = monChon.setMon   // 16/11: môn theo quyền, không mặc định 'Toán'
+  const [khoi, setKhoi] = useState(''), [phong, setPhong] = useState<string | null>(null)
   const [soTa, setSoTa] = useState<1 | 2>(1), [ns, setNs] = useState<string | null>(null), [ns2, setNs2] = useState<string | null>(null)
   const [busy, setBusy] = useState(false), [loi, setLoi] = useState<string | null>(null)
   const sel = 'w-full rounded-lg border border-slate-300 px-2 py-1.5 text-[13px]'
@@ -290,7 +293,7 @@ function TaoCaForm({ ngay, nss, phongs, mons, onXong, onDong }: { ngay: string; 
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
         <div><label className="mb-1 block text-[11px] text-slate-500">Bắt đầu</label><select value={gio} onChange={(e) => setGio(e.target.value)} className={sel}>{KHUNG_GIO.map((g) => <option key={g}>{g}</option>)}</select></div>
         <div><label className="mb-1 block text-[11px] text-slate-500">Kết thúc</label><select value={gioKt} onChange={(e) => setGioKt(e.target.value)} className={sel}>{KHUNG_GIO.filter((g) => g > gio).map((g) => <option key={g}>{g}</option>)}</select></div>
-        <div><label className="mb-1 block text-[11px] text-slate-500">Môn</label><select value={mon} onChange={(e) => setMon(e.target.value)} className={sel}>{['Toán', 'KHTN', 'Vật lý', 'Hóa học', 'Văn', 'Tiếng Anh'].map((m) => <option key={m}>{m}</option>)}</select></div>
+        <div><label className="mb-1 block text-[11px] text-slate-500">Môn</label><select value={mon} onChange={(e) => setMon(e.target.value)} className={sel}>{monChon.mons.map((m) => <option key={m}>{m}</option>)}</select></div>
         <div><label className="mb-1 block text-[11px] text-slate-500">Khối (trống = mọi khối)</label><input value={khoi} onChange={(e) => setKhoi(e.target.value)} placeholder="vd 7" className={sel} /></div>
         <div><label className="mb-1 block text-[11px] text-slate-500">Phòng</label><SearchSelect value={phong} onChange={setPhong} options={phongs.map((p) => ({ id: p.ma_phong, label: p.ten_phong }))} placeholder="Chọn phòng…" /></div>
         <div><label className="mb-1 block text-[11px] text-slate-500">Số TA</label><select value={soTa} onChange={(e) => setSoTa(Number(e.target.value) as 1 | 2)} className={sel}><option value={1}>1 TA</option><option value={2}>2 TA</option></select></div>
