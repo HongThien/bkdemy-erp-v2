@@ -15,6 +15,9 @@ export type GttCa = {
   buoi: GttBuoi | null
   da_gan: { tai_lieu_id: string; khop: boolean } | null   // đã gán buổi cho lớp ngày dạy (bản chép) — khớp buổi đã lên kế hoạch không
   sua_sau_duyet: boolean
+  // ĐỀ XUẤT (mig 202611161902, Thùy 16/11 "tự load bài"): buổi kế tiếp chưa gán của giáo trình dạy thứ này — suy ra, CHƯA ghi.
+  // Chỉ có ở ca chưa gắn buổi, trong kết quả fn_gtt_man_tuan (kết quả của hàm ghi 1 ca không kèm).
+  de_xuat?: Omit<GttBuoi, 'luu_tru'> | null
 }
 export type GttGiaoTrinh = { id: string; ten: string; nhanh: string | null }
 export type GttLop = { id: string; ten_lop: string; giao_trinh: GttGiaoTrinh[]; ca: GttCa[] }
@@ -58,6 +61,12 @@ export async function datKhung(lopId: string, ngay: string, chon: ChonBuoi | Khu
 /** Gửi duyệt · Duyệt · Trả lại. Trả cả màn tuần. */
 export async function chuyen(mon: string, khoi: string, tuan: string, hanhDong: GttHanhDong, ghiChu?: string | null): Promise<GttMan> {
   const { data, error } = await supabase.rpc('fn_gtt_chuyen', { p_mon: mon, p_khoi: khoi, p_tuan: tuan, p_hanh_dong: hanhDong, p_ghi_chu: ghiChu ?? null })
+  if (error) throw error
+  return data as GttMan
+}
+/** Nhận MỌI đề xuất của (môn × khối × tuần) — ghi thành liên kết ca ⇄ buổi. Trả cả màn tuần. */
+export async function nhanDeXuat(mon: string, khoi: string, tuan: string): Promise<GttMan> {
+  const { data, error } = await supabase.rpc('fn_gtt_nhan_de_xuat', { p_mon: mon, p_khoi: khoi, p_tuan: tuan })
   if (error) throw error
   return data as GttMan
 }

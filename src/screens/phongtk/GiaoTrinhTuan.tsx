@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  oCuaToi, manTuan, chonBuoi, datKhung, chuyen, ngayBuoi, thuHaiTuanSau, congNgay, ddmm, gio, THU, khungThanhChon,
+  oCuaToi, manTuan, chonBuoi, datKhung, chuyen, ngayBuoi, nhanDeXuat, thuHaiTuanSau, congNgay, ddmm, gio, THU, khungThanhChon,
   type GttMan, type GttCa, type GttLop, type GttO, type GttGiaoTrinh, type GttHanhDong, type KhungHinh,
 } from '../../lib/giaoTrinhTuan'
 import { noiDung, loiDoc, type NdBuoi, type ChonBuoi } from '../../lib/tailieuBdm'
@@ -84,6 +84,10 @@ export default function GiaoTrinhTuan() {
     try { setMan(await chuyen(man.mon, man.khoi, man.tuan, hd, gc)); setGhiChu(null); baoLuu(hd === 'gui' ? 'Đã gửi duyệt' : hd === 'duyet' ? 'Đã duyệt' : 'Đã trả lại') }
     catch (e) { setLoi(loiDoc(e)) }
   }
+  async function nhanTatCa() {
+    if (!man) return
+    try { setMan(await nhanDeXuat(man.mon, man.khoi, man.tuan)); baoLuu(`Đã nhận ${soDeXuat} đề xuất`) } catch (e) { setLoi(loiDoc(e)) }
+  }
 
   const ngays = Array.from({ length: 7 }, (_, i) => congNgay(tuan, i))
   const lopMo = mo && man ? man.lop.find((l) => l.id === mo.lop) ?? null : null
@@ -91,6 +95,7 @@ export default function GiaoTrinhTuan() {
   // đếm ô đang hiện (badge) — không phải số nghiệp vụ
   const caHien = (man?.lop ?? []).flatMap((l) => l.ca.filter((c) => !c.huy))
   const soTrong = caHien.filter((c) => !c.buoi || c.buoi.khung.length === 0).length
+  const soDeXuat = caHien.filter((c) => !c.buoi && c.de_xuat).length   // ca trống có buổi đề xuất (Thùy 16/11 "tự load bài")
   const tt = man?.trang_thai?.hanh_dong ?? null
   const coGui = !!man?.sua && tt !== 'gui'
   const coDuyet = !!man?.duyet && tt === 'gui'
@@ -127,6 +132,7 @@ export default function GiaoTrinhTuan() {
             {tt ? TT[tt].chu : 'Chưa gửi duyệt'}{man.trang_thai?.ho_ten ? ` · ${man.trang_thai.ho_ten}` : ''}{man.trang_thai ? ` · ${fmtLuc(man.trang_thai.at)}` : ''}
           </span>}
           {man && caHien.length > 0 && <span className={`text-[12.5px] ${soTrong ? 'text-rose-600' : 'text-emerald-700'}`}>{soTrong ? `còn ${soTrong}/${caHien.length} ca chưa có khung` : `đủ khung ${caHien.length} ca`}</span>}
+          {man?.sua && soDeXuat > 0 && <button onClick={nhanTatCa} title="Gắn mỗi ca trống với buổi kế tiếp chưa gán của giáo trình (theo thứ tự thời gian)" className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-1.5 text-[13px] font-semibold text-amber-800 hover:bg-amber-100">⤓ Nhận {soDeXuat} đề xuất</button>}
           {coGui && <button onClick={() => lamChuyen('gui')} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">📤 {tt === 'duyet' ? 'Gửi duyệt lại' : 'Gửi duyệt'}</button>}
           {coDuyet && <button onClick={() => lamChuyen('duyet')} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-emerald-700">✅ Duyệt</button>}
           {coTraLai && <button onClick={() => setGhiChu({ hd: 'tra_lai' })} className="rounded-lg border border-rose-200 px-3 py-1.5 text-[13px] font-semibold text-rose-700 hover:bg-rose-50">↩ Trả lại</button>}
@@ -187,7 +193,7 @@ export default function GiaoTrinhTuan() {
 
       {lopMo && caMo && man && createPortal(
         <KhungCa key={`${lopMo.id}|${caMo.ngay}`} lop={lopMo} ca={caMo} mon={man.mon} khoi={man.khoi} sua={man.sua}
-          onDong={() => setMo(null)} onVa={(ca) => { vaCa(ca); baoLuu() }} onBuilder={setBuilder} />, document.body,
+          onDong={() => setMo(null)} onVa={(ca) => { vaCa(ca); baoLuu(); if (soDeXuat > 0) tai(true) }} onBuilder={setBuilder} />, document.body,
       )}
 
       {ghiChu && createPortal(<GhiChuPopup onDong={() => setGhiChu(null)} onXong={(gc) => lamChuyen(ghiChu.hd, gc)} />, document.body)}
@@ -207,23 +213,29 @@ function OCa({ ca, dangMo, onMo }: { ca: GttCa; dangMo: boolean; onMo: () => voi
         <span>{gio(ca.gio_bat_dau)}–{gio(ca.gio_ket_thuc)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
         {ca.sua_sau_duyet && <span title="Đã sửa sau khi trưởng bộ môn duyệt" className="ml-auto rounded bg-amber-100 px-1 font-semibold text-amber-700">sửa sau duyệt</span>}
       </div>
-      {!b ? <div className="mt-0.5 text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
+      {!b && ca.de_xuat ? (
+        <div className="mt-0.5 rounded border border-dashed border-amber-300 bg-amber-50/60 px-1.5 py-1" title="Đề xuất: buổi kế tiếp chưa gán của giáo trình — chưa lưu">
+          <div className="truncate text-[11px] font-semibold text-amber-800">Đề xuất · {tenBuoi(ca.de_xuat.stt, ca.de_xuat.tieu_de)}</div>
+          {ca.de_xuat.khung.slice(0, 3).map((k) => <div key={k.loai + k.ma} className="truncate text-[11.5px] text-slate-700">{k.ten ?? k.ma}</div>)}
+        </div>
+      ) : !b ? <div className="mt-0.5 text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
         <>
-          <div className="mt-0.5 truncate text-[11.5px] font-semibold text-slate-600">Buổi {b.stt}{b.tieu_de && !/^Buổi \d+$/.test(b.tieu_de) ? ` · ${b.tieu_de.replace(/^Buổi \d+:?\s*/, '')}` : ''}</div>
+          <div className="mt-0.5 truncate text-[11.5px] font-semibold text-slate-600">{tenBuoi(b.stt, b.tieu_de)}</div>
           {trong ? <div className="text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
             <ul className="mt-0.5 space-y-0.5">
-              {b.khung.map((k) => (
-                <li key={k.loai + k.ma} className="leading-snug">
+              {b.khung.slice(0, 4).map((k) => (   // ô lưới gọn: tối đa 4 dòng, đủ ở khung bên phải
+                <li key={k.loai + k.ma} className="truncate leading-snug">
                   {k.loai === 'mo_hinh' && <span className="text-teal-700">Luyện · </span>}
                   <span className="font-medium text-slate-800">{k.ten ?? k.ma}</span>
                   {k.con.length > 0 && <span className="text-slate-500"> · {k.con.length} dạng</span>}
                 </li>
               ))}
+              {b.khung.length > 4 && <li className="text-[11px] text-slate-400">+{b.khung.length - 4} khác</li>}
             </ul>
           )}
         </>
       )}
-      {ca.da_gan && <div className={`mt-0.5 text-[10.5px] ${ca.da_gan.khop ? 'text-emerald-600' : 'text-rose-600'}`}>{ca.da_gan.khop ? '✓ đã gán ngày dạy' : '⚠ ngày dạy gán buổi khác'}</div>}
+      {ca.da_gan && <div className={`mt-0.5 text-[10.5px] ${ca.da_gan.khop === false ? 'text-rose-600' : 'text-emerald-600'}`}>{ca.da_gan.khop === false ? '⚠ ngày dạy gán buổi khác' : '✓ đã gán ngày dạy'}</div>}
     </button>
   )
 }
@@ -237,7 +249,7 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
   const [busy, setBusy] = useState(false)
   // bộ chọn đang mở: nhóm › dạng bài (BoChonNhom) · bài học Hình (ChonBaiHoc) · mô hình Hình (ChonMoHinh). gt ≠ null ⇒ tạo buổi mới ở giáo trình đó.
   const [boChon, setBoChon] = useState<{ kieu: 'nhom'; gt: GttGiaoTrinh | null; daChon: ChonBuoi } | { kieu: 'bai'; gt: GttGiaoTrinh | null; daChon: string[] } | { kieu: 'mo_hinh'; gt: GttGiaoTrinh | null; daChon: string[] } | null>(null)
-  const [chonCoSan, setChonCoSan] = useState(!ca.buoi)   // ca chưa gắn ⇒ mở sẵn phần chọn buổi
+  const [chonCoSan, setChonCoSan] = useState(!ca.buoi && !ca.de_xuat)   // ca chưa gắn, không có đề xuất ⇒ mở sẵn phần chọn buổi
   const b = ca.buoi
   const laKhuonNhom = (nhanh: string | null) => !laNhanhMoHinh(nhanh)   // Hình = khuôn mô hình–bài–ý: khung = bài học + mô hình
   // Ghi khung Hình: bộ chọn của builder Hình tự đóng khi bấm xong ⇒ lỗi báo ở khung bên phải.
@@ -265,15 +277,15 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
         <div className="min-h-0 flex-1 space-y-4 overflow-auto px-4 py-3 text-[13px]">
           {loi && <p className="rounded-lg bg-rose-50 px-3 py-2 text-rose-700">{loi}</p>}
           {ca.sua_sau_duyet && <p className="rounded-lg bg-amber-50 px-3 py-2 text-amber-800">Ca này đã sửa sau khi trưởng bộ môn duyệt.</p>}
-          {ca.da_gan && <p className={`rounded-lg px-3 py-2 ${ca.da_gan.khop ? 'bg-emerald-50 text-emerald-800' : 'bg-rose-50 text-rose-700'}`}>
-            {ca.da_gan.khop ? 'GV đã gán buổi này cho lớp (ngày dạy). Sửa khung bây giờ không đổi bản đã gán.' : 'Ngày dạy, GV đã gán một buổi KHÁC buổi kế hoạch.'}
+          {ca.da_gan && <p className={`rounded-lg px-3 py-2 ${ca.da_gan.khop === false ? 'bg-rose-50 text-rose-700' : 'bg-emerald-50 text-emerald-800'}`}>
+            {ca.da_gan.khop === false ? 'Ngày dạy, GV đã gán một buổi KHÁC buổi kế hoạch.' : 'GV đã gán buổi cho lớp (ngày dạy). Sửa khung bây giờ không đổi bản đã gán.'}
           </p>}
 
           {b ? (
             <section className="rounded-xl border border-slate-200">
               <div className="border-b border-slate-100 px-3 py-2">
                 <div className="flex items-center gap-1.5 text-[12px] text-slate-500"><TheNhanh mon={mon} nhanh={b.nhanh} />{b.ten_gt}{b.luu_tru ? ' · bản lưu trữ' : ''}</div>
-                <div className="font-semibold">Buổi {b.stt}{b.tieu_de ? ` · ${b.tieu_de}` : ''}</div>
+                <div className="font-semibold">{tenBuoi(b.stt, b.tieu_de)}</div>
               </div>
               <div className="px-3 py-2">
                 {b.khung.length === 0 ? <p className="text-slate-400">{laKhuonNhom(b.nhanh) ? 'Chưa có nhóm / dạng nào.' : 'Chưa có bài học / mô hình nào.'}</p> : (
@@ -303,6 +315,24 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
                 {sua && <button disabled={busy} onClick={() => setChonCoSan((v) => !v)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-50">🔁 Đổi buổi</button>}
                 {sua && <button disabled={busy} onClick={() => lam(() => chonBuoi(lop.id, ca.ngay, null))} className="rounded-lg px-3 py-1.5 text-rose-600 hover:bg-rose-50">Bỏ gắn</button>}
               </div>
+            </section>
+          ) : ca.de_xuat ? (
+            <section className="rounded-xl border border-dashed border-amber-300 bg-amber-50/40">
+              <div className="border-b border-amber-100 px-3 py-2">
+                <div className="text-[11.5px] font-semibold uppercase tracking-wide text-amber-700">Đề xuất · buổi kế tiếp chưa gán (chưa lưu)</div>
+                <div className="mt-0.5 flex items-center gap-1.5 text-[12px] text-slate-500"><TheNhanh mon={mon} nhanh={ca.de_xuat.nhanh} />{ca.de_xuat.ten_gt}</div>
+                <div className="font-semibold">{tenBuoi(ca.de_xuat.stt, ca.de_xuat.tieu_de)}</div>
+              </div>
+              <ul className="space-y-1 px-3 py-2">
+                {ca.de_xuat.khung.length === 0 ? <li className="text-slate-400">Buổi này chưa có nhóm / dạng.</li>
+                  : ca.de_xuat.khung.map((k) => <li key={k.loai + k.ma}>{k.ten ?? k.ma}{k.con.length > 0 && <span className="text-slate-500"> · {k.con.length} dạng</span>}</li>)}
+              </ul>
+              {sua && (
+                <div className="flex flex-wrap gap-2 border-t border-amber-100 px-3 py-2">
+                  <button disabled={busy} onClick={() => lam(() => chonBuoi(lop.id, ca.ngay, ca.de_xuat!.id))} className="rounded-lg bg-amber-600 px-3 py-1.5 font-semibold text-white hover:bg-amber-700 disabled:opacity-50">✓ Nhận đề xuất</button>
+                  <button disabled={busy} onClick={() => setChonCoSan((v) => !v)} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-slate-700 hover:bg-slate-50">Chọn buổi khác</button>
+                </div>
+              )}
             </section>
           ) : !sua ? <p className="text-slate-500">Ca này chưa có khung.</p> : null}
 
@@ -410,3 +440,9 @@ function TheNhanh({ mon, nhanh }: { mon: string; nhanh: string | null }) {
   return <span className={'shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ' + mau}>{t}</span>
 }
 const thuTuNhanh = (nhanh: string | null) => (!nhanh ? 0 : laNhanhMoHinh(nhanh) ? 2 : 1)
+
+// Tiêu đề buổi: "Buổi <số>" + phần tên riêng (bỏ "Buổi N:" người soạn gõ sẵn — số hiển thị là số suy ra, không lặp).
+const tenBuoi = (stt: number, tieuDe: string | null) => {
+  const rieng = (tieuDe ?? '').replace(/^\s*Buổi\s*\d+\s*[:.\-–]?\s*/i, '').trim()
+  return `Buổi ${stt}${rieng ? ` · ${rieng}` : ''}`
+}
