@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 455 trigger · 1985 function
+602 bảng · 42 view · 0 enum · 456 trigger · 1986 function
 
 ## _app_secrets
 
@@ -11540,6 +11540,7 @@ WITH luot AS (
 | ta_luong_lop | ta_luong_lop_log | AFTER | INSERT/UPDATE | _ta_cong_ghi_log |
 | tai_lieu | trg_de_test_chi_nguon_mt | BEFORE | INSERT/UPDATE | _de_test_chi_nguon_mt |
 | tai_lieu | trg_et_khong_tron_ban_do | BEFORE | INSERT/UPDATE | _et_khong_tron_ban_do |
+| tai_lieu | trg_gtt_theo_ngay_day | AFTER | INSERT/UPDATE | _gtt_theo_ngay_day |
 | tai_lieu | trg_tai_lieu_duyet_log | AFTER | UPDATE | _trg_tai_lieu_duyet_log |
 | tai_lieu | trg_tl_dong_bo_cau_hinh_in | AFTER | UPDATE | _tl_dong_bo_cau_hinh_in |
 | test_dau_vao_phan_cong | trg_log_test_dau_vao_phan_cong | BEFORE | INSERT/UPDATE | log_test_dau_vao_phan_cong |
@@ -11833,6 +11834,7 @@ WITH luot AS (
 - `_gtt_la_tbm(p_mon text)` → boolean
 - `_gtt_snap(p_mon text, p_khoi text, p_tuan date)` → jsonb
 - `_gtt_snap_duyet(p_mon text, p_khoi text, p_tuan date)` → jsonb
+- `_gtt_theo_ngay_day()` → trigger
 - `_gtt_trang_thai(p_mon text, p_khoi text, p_tuan date)` → gtt_duyet
 - `_he_thong_cong_tac_ghi_log()` → trigger
 - `_hh_so_do_cham_updated_at()` → trigger

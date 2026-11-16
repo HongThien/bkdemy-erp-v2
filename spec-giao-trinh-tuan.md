@@ -123,8 +123,8 @@ Hàm nội bộ `_gtt_*` không cấp cho client. Đo 16/11 (vai Tạ Quốc Cư
 1. Migration `gtt_*` + hàm + thử qua REST (CLAUDE §1.6) · `npm run check:kien-truc` ✔.
 2. ✅ Màn lưới + khung bên phải (Toán Đại/HGT, KHTN) trong Phòng trưởng khối; builder hiện nhãn ngày trên buổi. Còn thiếu: lớp chưa có giáo trình thì màn chỉ nhắc đi tạo (chưa tạo tại chỗ); builder Hình hiện nhãn ngày từ bước 3.
 3. ✅ Hình (16/11, mig `202611161740`): khung = bài học (phần HỌC, `dang`) + mô hình (phần LUYỆN, `hl_mo_hinh`); `fn_gtt_dat_khung` nhận `{bai?, mo_hinh?}` cho giáo trình Hình và gọi đúng `fn_tl_hh_dat_bai` / `fn_tl_hl_dat_mo_hinh`; màn tuần dùng `ChonBaiHoc` / `ChonMoHinh` của builder Hình; builder Hình hiện nhãn ngày.
-4. Duyệt của trưởng bộ môn + bản chụp.
-5. Luồng gán ngày dạy chọn sẵn buổi đã liên kết.
+4. ✅ Duyệt của trưởng bộ môn + bản chụp (làm cùng bước 1–2: `fn_gtt_chuyen`, nút Duyệt / Trả lại, cờ "sửa sau duyệt").
+5. ✅ Luồng gán ngày dạy (16/11, mig `202611161747`): hộp Gán lớp (`GanLopBdm`, Đại · HGT · KHTN · Hình) mặc định gán buổi vào đúng ngày kế hoạch, nhãn "📅 Kế hoạch …", ngày đã dành cho buổi khác không bị chọn làm mặc định; trigger `trg_gtt_theo_ngay_day` trên dòng gán `tai_lieu` (`giao_trinh_buoi`) chuyển liên kết theo buổi thật được dạy, cùng giao dịch (buổi giáo trình chung / bản đồ cũ ⇒ bỏ qua, không chặn gán). Hệ quả: gán ngày dạy KHÔNG có kế hoạch trước cũng đẻ liên kết (ca đó dạy buổi đó) ⇒ màn tuần + builder thấy luôn.
 6. `_mtt_nhom_buoi` đọc khung kế hoạch (so cũ–mới từng dòng trước khi áp, K18).
 
 ## 9. Chờ Thùy quyết

@@ -14,6 +14,7 @@ import { useStore, type PickItem } from '../../../store/useStore'
 import { cdhNoiDung } from '../../../lib/chuyenDeHinh'
 import { ensureHinhGtBuoiForBuoi, saveBuoiSelectionPhan, type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import BtvnOnTapBdm from './BtvnOnTapBdm'
+import { ngayBuoi } from '../../../lib/giaoTrinhTuan'
 
 type BuoiGoc = { id: string; tieu_de: string | null; thu_tu: number }
 
@@ -41,12 +42,17 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
   const [loading, setLoading] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const [btvn, setBtvn] = useState<{ buoi: BuoiGoc; no: number; ngay: string; tenBuoi: string } | null>(null)
+  // Giáo trình tuần (spec-giao-trinh-tuan §3.6, Thùy 16/11): buổi nào đã lên kế hoạch cho ca (lớp, ngày) nào ⇒ mặc định gán đúng ngày đó.
+  // Gán buổi vào ngày khác ⇒ DB tự chuyển kế hoạch theo (trigger trg_gtt_theo_ngay_day, mig 202611161747).
+  const [keHoachAll, setKeHoachAll] = useState<{ buoi_id: string; lop_id: string; ngay: string }[]>([])
+  const napKeHoach = () => ngayBuoi(masterId).then(setKeHoachAll).catch(() => { /* thiếu thì gán như cũ */ })
   const lop = lops.find((l) => l.id === lopId)
 
   useEffect(() => {
     listBuoiTaiLieu(masterId).then(setBuois).catch((e) => setLoi(loiDoc(e)))
     listLop().then(setLops).catch(() => { })
-  }, [masterId])
+    napKeHoach()
+  }, [masterId]) // eslint-disable-line react-hooks/exhaustive-deps
   async function napLop(id: string) {
     setLoading(true)
     const today = homNayVN()
@@ -62,7 +68,10 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
 
   // Ngày mặc định = buổi TKB gần nhất CHƯA có tài liệu của lớp (từ hôm nay; hết thì lùi về buổi trống gần nhất đã qua) — như cũ.
   const daGan = new Set(boLop.map((b) => b.ngay))
-  const trong = tkb.filter((d) => !daGan.has(d))
+  const keHoach = new Map(keHoachAll.filter((x) => x.lop_id === lopId).map((x) => [x.buoi_id, x.ngay]))
+  const ngayKeHoach = new Set(keHoach.values())
+  // ngày trống = có buổi TKB, chưa gán, và chưa được kế hoạch tuần dành cho buổi khác
+  const trong = tkb.filter((d) => !daGan.has(d) && !ngayKeHoach.has(d))
   const today = homNayVN()
   const ngayMacDinh = trong.find((d) => d >= today) ?? trong[trong.length - 1] ?? ''
   const sttLop = (buoiId: string) => boLop.find((b) => b.nguon_buoi === buoiId)?.stt
@@ -76,7 +85,7 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
       const doi = new Map((await renumberBuoiLop(lop.id)).map((d) => [d.id, d]))
       doi.delete(doc.id)
       doi.forEach((d) => useStore.getState().enqueueLinkGen(d.id, d.loai))
-      await napLop(lop.id)
+      await Promise.all([napLop(lop.id), napKeHoach()])
     } catch (e) { setLoi(loiDoc(e)) }
   }
 
@@ -112,7 +121,7 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
                 <p className="mb-2 text-[12px] text-slate-400">Mỗi buổi của giáo trình gốc → gán cho 1 ngày học của lớp <b>{lop.ten_lop}</b> (tạo giáo trình buổi). {hinh ? 'BTVN (câu về nhà của các bài học) tạo ở bước riêng.' : 'BTVN + ôn tập làm ở bước riêng, có xem trước.'}</p>
                 <div className="space-y-2">
                   {buois.map((b, i) => (
-                    <DongBuoi key={b.id} b={b} no={i + 1} st={state[b.id]} sttLop={sttLop(b.id)} lopId={lop.id} ngayMacDinh={state[b.id]?.ngay ? '' : ngayMacDinh}
+                    <DongBuoi key={b.id} b={b} no={i + 1} st={state[b.id]} sttLop={sttLop(b.id)} lopId={lop.id} ngayMacDinh={state[b.id]?.ngay ? '' : keHoach.get(b.id) ?? ngayMacDinh} keHoach={keHoach.get(b.id)}
                       onGan={(ngay) => gan(b, i + 1, ngay)} nhanBtvn={hinh ? '+ BTVN' : undefined}
                       onBtvn={() => { const st = state[b.id]; if (!st?.ngay) return; if (hinh) void btvnHinh(b, i + 1, st.ngay); else setBtvn({ buoi: b, no: i + 1, ngay: st.ngay, tenBuoi: b.tieu_de || `Buổi ${i + 1}` }) }} />
                   ))}
@@ -153,8 +162,9 @@ export default function GanLopBdm({ masterId, khoi, tl, onClose, hinh = false }:
 }
 
 // 1 buổi gốc: chưa gán ⇒ "Gán vào <ngày mặc định>" (đổi ngày được) · đã gán ⇒ số buổi của lớp + GT/BTVN + "+ BTVN / Ôn tập".
-function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, onGan, onBtvn, nhanBtvn = '+ BTVN / Ôn tập' }: {
+function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, keHoach, onGan, onBtvn, nhanBtvn = '+ BTVN / Ôn tập' }: {
   b: BuoiGoc; no: number; st?: TrichState; sttLop?: number; lopId: string; ngayMacDinh: string
+  keHoach?: string   // ngày Giáo trình tuần đã lên kế hoạch cho buổi này (lớp đang chọn)
   onGan: (ngay: string) => Promise<void>; onBtvn: () => void; nhanBtvn?: string
 }) {
   const [ngay, setNgay] = useState(ngayMacDinh)
@@ -169,6 +179,7 @@ function DongBuoi({ b, no, st, sttLop, lopId, ngayMacDinh, onGan, onBtvn, nhanBt
       <div className="flex flex-wrap items-center gap-2.5">
         <span className="w-6 shrink-0 text-center text-[13px] font-bold text-indigo-600">{no}</span>
         <div className="min-w-[120px] flex-1 text-[13px] font-semibold text-slate-800">{b.tieu_de || `Buổi ${no}`}</div>
+        {keHoach && <span title="Giáo trình tuần đã lên kế hoạch buổi này cho ngày này. Gán sang ngày khác thì kế hoạch đổi theo." className="rounded-full bg-blue-100 px-2.5 py-1 text-[12px] font-semibold text-blue-700">📅 Kế hoạch {thuCuaNgay(keHoach)} · {ddmmVN(keHoach)}</span>}
         {st?.ngay ? (
           <div className="flex flex-wrap items-center gap-2">
             {sttLop && <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[12px] font-semibold text-indigo-700">→ Buổi {sttLop} của lớp</span>}
