@@ -96,9 +96,11 @@ Hệ quả: mọi nhóm của tuần đều đủ vòng đo (ET + BTVN) trước
 
 1. **00:00 thứ Hai — MÁY chốt kết quả tuần trước** (Thùy 16/11: "chốt thì để máy chốt, người xem thôi"): đóng sổ tuần trước (kết luận từng nhóm, việc đã làm, hạng)
    vào sổ chốt tuần — bất biến, không ai bấm; chụp số "đầu tuần" của tuần mới; chụp danh sách nợ làm đầu vào cho buổi chốt.
-2. **Chiều thứ Hai — người chốt MỤC TIÊU tuần mới** ở buổi họp đang có (§4), bằng nút "Chốt mục tiêu tuần" theo lớp — **chốt bổ trợ TRƯỚC, chốt mục tiêu SAU** (bổ trợ duyệt sau giờ chốt ⇒ "thêm sau khi chốt"). Bấm = hệ đọc giáo trình + bổ trợ đã chốt
+2. **Thứ Hai — hệ MỞ tuần mới, dựng NHÁP cho mọi lớp** (Thùy 16/11): bộ điều phối đọc giáo trình + bổ trợ của tuần, dựng tờ của từng em (nhóm · dạng · cờ · việc);
+   nháp tự cập nhật khi sửa giáo trình / duyệt bổ trợ; chỉ nhân sự thấy, không xếp hạng, không vào sổ. **Trưởng khối trở lên xem theo từng lớp** (bấm tên lớp ⇒ cả lớp ⇒ tờ từng em).
+3. **Chiều thứ Hai — người CÔNG BỐ** ở buổi họp đang có (§4), bằng nút "Công bố" theo lớp (DB: `fn_mtt_chot_lop`) — **chốt bổ trợ TRƯỚC, chốt mục tiêu SAU** (bổ trợ duyệt sau giờ chốt ⇒ "thêm sau khi chốt"). Bấm = hệ đọc giáo trình + bổ trợ đã chốt
    của tuần này và **KHOÁ kế hoạch** của từng em (bảng `mtt_ke_hoach`: nhóm bài · phần · cờ mục tiêu tuần · số lần đo dự kiến · danh sách việc), rồi mở cho HS + PH xem.
-3. **Trong tuần — đo realtime** (bộ điều phối, 5 phút): chỉ số đo (%, đã làm/chưa làm) chạy; mục tiêu đứng yên. Sửa giáo trình / duyệt thêm bổ trợ SAU chốt ⇒ không đổi mục
+4. **Trong tuần — đo realtime** (bộ điều phối, 5 phút): chỉ số đo (%, đã làm/chưa làm) chạy; mục tiêu đứng yên. Sửa giáo trình / duyệt thêm bổ trợ SAU chốt ⇒ không đổi mục
    tiêu tuần này: nhóm mới ghi "thêm sau khi chốt" (chỉ nhân sự thấy, không tính tiến độ), việc mới (vd ca bổ trợ xếp thêm) vẫn hiện và gắn nhãn "thêm sau khi chốt".
 
 - **Bản đã chốt không sửa.** Bài chấm sau giờ chốt vẫn tính vào mastery và hiện ở tuần sau.
@@ -402,6 +404,11 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
    Kiểm trên Postgres tạm: chốt xong thêm dạng mới vào giáo trình + một ca bổ trợ yếu ⇒ nhóm giữ nguyên, nhóm mới vào `them_sau_chot`, ca mới `them_sau = true`, tiến độ không đổi; UPDATE kế hoạch bị chặn.
    **Sửa theo spec-kien-truc (16/11):** `fn_mtt_chot_lop` CHỈ ghi dòng chốt (bỏ vòng tính cả lớp ≤ 4 s trong lượt bấm — §5 ghi ≤ 500 ms, §12 mẫu 1); tờ + bản khoá do bộ điều phối ở lượt kế (≤ 5 phút),
    HS mở app trong lúc chờ ⇒ tính trực tiếp 1 em. Thử tạm: bấm chốt 1,5 ms; lượt điều phối kế ghi bản khoá cho 3/3 em. **Phần 2 chỉ lấy lượt chốt bổ trợ duyệt trong tuần của tờ** (khớp mig 202611161614).
+9. **(16/11, Thùy mô tả lại luồng) Nháp · Công bố · Dạng** — cùng mig `202611161632`: bộ điều phối dựng NHÁP cho mọi em đang học từ thứ Hai (trước đây chỉ lớp đã chốt ⇒ trưởng khối
+   mở danh sách lớp chưa chốt thấy trống); xếp hạng + sổ kết quả tuần chỉ lấy tờ đã công bố; nút đổi tên "Công bố" (cảnh báo nếu lớp còn đề xuất bổ trợ chưa duyệt).
+   **Mỗi nhóm kèm DẠNG của tuần** (`_mtt_dang_nhom`: câu ET / BTVN / giáo trình của buổi trong cửa sổ + dạng case bổ trợ yếu đang mở) — app HS bấm nhóm ⇒ danh sách dạng ⇒ bấm dạng
+   ⇒ **màn dạng của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test — Thùy chọn 16/11: dẫn tới màn có sẵn, không dựng màn mới), Quay lại về tờ mục tiêu. Nhóm chưa thấy dạng
+   (tài liệu chưa thành bài trên hệ) ⇒ nút chung như cũ. App PH hiện tên dạng. Lưu ý: Luyện tập bị chặn với dạng lớp CHƯA học tới (`_dang_da_hoc_ok`, luật 14/10) — lý thuyết vẫn đọc được.
 8. **(16/11) Danh sách cả lớp** — mig `202611161608_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
 
 **Chưa làm (cần máy công ty / DB thật):**

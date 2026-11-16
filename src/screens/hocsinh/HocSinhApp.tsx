@@ -433,6 +433,8 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
   const [htdChuDe, setHtdChuDe] = useState<ChuDeNhom | null>(null)
   const [htdChuyenDe, setHtdChuyenDe] = useState<ChuyenDeNhom | null>(null)
   const [htdDang, setHtdDang] = useState<{ ma_dang: string; ten_dang: string; xong: boolean } | null>(null)
+  // 16/11: vào màn dạng từ tờ Mục tiêu tuần ⇒ Quay lại / Xong dạng trả về tờ mục tiêu (không về cây Chủ đề → Chuyên đề)
+  const [htdTuMtt, setHtdTuMtt] = useState(false)
   const [cap1, setCap1] = useState<boolean | null>(null) // null = chưa biết — chờ trước khi vẽ lưới ô
   const [cap2, setCap2] = useState<boolean | null>(null) // Thùy 11/09: cấp 2 (lớp 6-9) có layout KHU riêng
   const [ttCho, setTtCho] = useState(0) // số THẺ thành tựu đang chờ nhận quà — chỉ số trên ô Thành tựu
@@ -770,7 +772,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
       desktop={manRong} />
   }
   if (direct === 'htd_chu_de' && htdMon) return <ChonChuDeHTD mon={htdMon} gioiTinh={gt}
-    onPick={(cd) => { setDuoiLoTrinhMon(null); setBuCa(null); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
+    onPick={(cd) => { setDuoiLoTrinhMon(null); setBuCa(null); setHtdTuMtt(false); setHtdChuDe(cd); setDirect('htd_chuyen_de') }}
     onBack={() => setDirect(null)} />
   if (direct === 'htd_chuyen_de' && htdChuDe) return <ChonChuyenDeHTD chuDe={htdChuDe} gioiTinh={gt}
     onPick={(cde) => {
@@ -784,7 +786,7 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     onLyThuyet={() => setDirect('htd_ly_thuyet')}
     onLuyenTap={() => setDirect('htd_luyen')}
     onTest={() => setDirect('htd_test')}
-    onBack={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
+    onBack={() => setDirect(htdTuMtt ? 'muc_tieu' : buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chuyen_de')} />
   if (direct === 'htd_ly_thuyet' && htdMon && htdDang) return <LyThuyetHTD mon={htdMon} dang={htdDang} gioiTinh={gt}
     onBack={() => setDirect('htd_dang')} />
   if ((direct === 'htd_luyen' || direct === 'htd_test') && htdMon && htdDang) return <LamHTD
@@ -792,17 +794,24 @@ export default function HocSinhApp({ hocSinhId, hoTen, maHS }: { hocSinhId: stri
     desktop={manRong}
     onVeChiTiet={() => setDirect('htd_dang')}
     onSangTest={() => setDirect('htd_test')}
-    onXongDang={() => setDirect(buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
+    onXongDang={() => setDirect(htdTuMtt ? 'muc_tieu' : buCa ? 'bu_ca' : duoiLoTrinhMon ? 'duoi_lo_trinh' : 'htd_chu_de')} />
   if (direct === 'thong_tin') return <ThongTinHocTap hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} />
-  // Mục tiêu tuần (13/11): "Xem lại bài trên lớp" mở khu giáo trình (có đủ bài trên lớp), "Luyện tập" mở Tự luyện
+  // Mục tiêu tuần: bấm DẠNG (16/11) ⇒ màn dạng của Học từ đầu (Đọc lý thuyết · Luyện tập · Test), quay lại về tờ mục tiêu.
+  //   Nhóm chưa có dạng (13/11): "Xem lại bài trên lớp" mở khu giáo trình, "Luyện tập" mở Tự luyện.
   if (direct === 'muc_tieu') return <MucTieuTuanTheoMon mon={monChon} onBack={() => setDirect(null)}
-    onMo={(d) => d === 'luyen_tap' ? setDirect('tu_luyen_chon') : (setDirect(null), setKhu('giao_trinh'), setTab('chua'))} />
+    onMo={(d) => {
+      if (typeof d === 'object') {
+        setBuCa(null); setDuoiLoTrinhMon(null); setHtdChuyenDe(null); setHtdTuMtt(true)
+        setHtdMon(d.mon); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang')
+      } else if (d === 'luyen_tap') setDirect('tu_luyen_chon')
+      else { setDirect(null); setKhu('giao_trinh'); setTab('chua') }
+    }} />
   if (direct === 'xep_hang') return <BangXepHangHS onBack={() => setDirect(null)} />   // MỌI cấp cùng 1 màn BXH (Thùy 11/10 "tất cả các cấp UI giống nhau")
   if (direct === 'bo_tro') return <CaBoTroHS hocSinhId={hocSinhId} desktop={manRong} gioiTinh={gt} onXong={() => setDirect(null)} LamBai={LamBai} LamET={LamET} />
   if (direct === 'bu_ca' && buCa) return <CaBuHS buoiId={buCa} onBack={() => { setBuCa(null); setDirect('lich_bo_tro') }}
-    onPickDang={(d, mon) => { setHtdMon(mon); setHtdChuyenDe(null); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang') }} />
+    onPickDang={(d, mon) => { setHtdTuMtt(false); setHtdMon(mon); setHtdChuyenDe(null); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: false }); setDirect('htd_dang') }} />
   if (direct === 'duoi_lo_trinh' && duoiLoTrinhMon) return <BoTroDuoiHS
-    onPickDang={(d, mon, cung) => { setHtdMon(mon); setHtdChuyenDe({ ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, dangs: cung } as any); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
+    onPickDang={(d, mon, cung) => { setHtdTuMtt(false); setHtdMon(mon); setHtdChuyenDe({ ma_chuyen_de: d.ma_chuyen_de, ten_chuyen_de: d.ten_chuyen_de, dangs: cung } as any); setHtdDang({ ma_dang: d.ma_dang, ten_dang: d.ten_dang, xong: d.xong }); setDirect('htd_dang') }}
     onBack={() => setDirect(null)} />
   if (direct === 'retest') return <RetestHS hocSinhId={hocSinhId} gioiTinh={gt} onXong={() => setDirect(null)} LamET={LamET} />
   if (direct === 'lich_bo_tro') return <LichBoTroHS lich={lichMon} coCa={boTro.coCa} gioiTinh={gt} onXong={() => setDirect(null)} onVaoCa={onVaoCaBoTro} />

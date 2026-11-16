@@ -1,5 +1,5 @@
 // Tab "Mục tiêu tuần" — Dashboard học tập (cũng hiện trong Phòng làm việc trưởng khối vì phòng dùng chung màn này).
-// spec-muc-tieu-tuan.md §9.3: lọc môn · khối · tuần · 4 ô tổng · bảng theo lớp (kèm trạng thái chốt + nút Chốt mục tiêu tuần) ·
+// spec-muc-tieu-tuan.md §9.3: lọc môn · khối · tuần · 4 ô tổng · bảng theo lớp (nháp / đã công bố + nút Công bố) ·
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useState } from 'react'
 import {
@@ -45,14 +45,15 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
     return () => { alive = false }
   }, [mon, khoi, tuan, lamMoi]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // chốt 1 lớp: vá đúng dòng lớp đó ngay, rồi đọc lại NỀN (số của cả khối đổi theo) — không xoá bảng
-  const chot = async (lopId: string) => {
+  // công bố 1 lớp: vá đúng dòng lớp đó ngay, rồi đọc lại NỀN (số của cả khối đổi theo) — không xoá bảng
+  const chot = async (lopId: string, boTroCho = 0) => {
     if (!khoi) return
+    if (boTroCho > 0 && !window.confirm(`Lớp còn ${boTroCho} đề xuất bổ trợ chưa duyệt. Công bố bây giờ thì phần đó không vào mục tiêu tuần này (sẽ hiện "thêm sau khi công bố"). Vẫn công bố?`)) return
     setDangChot(lopId); setLoi(null); setTb(null)
     try {
       const r = await mttChotLop(lopId, tuan)
       setData((d) => d && ({ ...d, lop: d.lop.map((l) => l.lop_id === lopId ? { ...l, chot_at: r.chot_at } : l) }))
-      setTb(`Đã chốt — hệ đang ghi mục tiêu cho ${r.tong} em (khoá theo giáo trình + bổ trợ hiện tại), vài phút nữa số của lớp hiện đủ. Học sinh mở app lúc này vẫn thấy tờ ngay.`)
+      setTb(`Đã công bố — hệ đang khoá mục tiêu cho ${r.tong} em (theo giáo trình + bổ trợ hiện tại), vài phút nữa xong. Học sinh mở app lúc này đã thấy tờ.`)
       const moi = await mttTrungTam(mon, khoi, tuan)
       NHO.data = moi; NHO.khoa = [mon, khoi, tuan].join('|'); setData(moi)
     } catch (e) {
@@ -72,7 +73,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
           <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau">›</button>
         </div>
         {data?.tinh_at && <span className="text-[12px] text-slate-500">Số tính lúc {gioPhut(data.tinh_at)}</span>}
-        {tuan === nay && <span className="text-[12px] text-slate-500">Lớp chưa chốt thì học sinh và phụ huynh chưa thấy tờ tuần này.</span>}
+        {tuan === nay && <span className="text-[12px] text-slate-500">Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp).</span>}
         <button onClick={() => setMoTop(true)} className="ml-auto h-8 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">🏆 Top 20 toàn trung tâm · {mon}</button>
       </div>
       {tb && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{tb}</div>}
@@ -117,7 +118,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                     <th className="px-3 py-2 text-left">Lớp</th><th className="px-2 py-2">Sĩ số</th>
                     <th className="px-2 py-2" title="Buổi trong tuần đã có tài liệu trên hệ / tổng buổi">Giáo trình</th>
                     <th className="px-2 py-2" title="Đề xuất bổ trợ còn nháp / chờ duyệt">Bổ trợ chờ</th>
-                    <th className="px-2 py-2">Mục tiêu tuần</th>
+                    <th className="px-2 py-2" title="Nháp = hệ đã dựng mục tiêu, học sinh chưa thấy. Công bố = khoá mục tiêu + đưa lên app HS / PH">Công bố</th>
                     <th className="px-2 py-2" title="Trung bình các em của lớp. Tiến độ 1 em = em đã đi được bao nhiêu % tới mục tiêu TUẦN của chính em (100% = đạt hết mục tiêu tuần), chỉ tính nhóm bài đã có số">Tiến độ TB ⓘ</th><th className="px-2 py-2">Việc xong</th>
                     <th className="px-2 py-2">BTVN T · TÔ · CT</th><th className="px-2 py-2">Chưa làm gì</th>
                   </tr>
@@ -134,13 +135,13 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                       <td className={`px-2 py-2 text-center ${l.so_buoi > 0 && l.so_buoi_co_tl < l.so_buoi ? 'font-semibold text-orange-700' : ''}`}>{l.so_buoi_co_tl}/{l.so_buoi}</td>
                       <td className={`px-2 py-2 text-center ${l.bo_tro_cho > 0 ? 'font-semibold text-orange-700' : ''}`}>{l.bo_tro_cho}</td>
                       <td className="px-2 py-2 text-center">
-                        {l.chot_at ? <span className="text-emerald-700">Đã chốt {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}</span>
+                        {l.chot_at ? <span className="text-emerald-700">Đã công bố {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}</span>
                           : data.dang_chay ? (
-                            <button onClick={() => chot(l.lop_id)} disabled={dangChot !== null}
+                            <button onClick={() => chot(l.lop_id, l.bo_tro_cho)} disabled={dangChot !== null}
                               className="h-7 rounded-md bg-slate-800 px-2.5 text-[12px] font-semibold text-white hover:bg-slate-700 disabled:opacity-50">
-                              {dangChot === l.lop_id ? 'Đang chốt…' : 'Chốt mục tiêu tuần'}
+                              {dangChot === l.lop_id ? 'Đang công bố…' : 'Công bố'}
                             </button>
-                          ) : <span className="text-slate-400">Không chốt</span>}
+                          ) : <span className="text-slate-400">Không công bố</span>}
                       </td>
                       <td className="px-2 py-2 text-center">
                         <span className="font-semibold">{so(l.tien_do_tb, '%')}</span>
@@ -154,8 +155,8 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                 </tbody>
               </table>
               <div className="space-y-1 px-4 pb-3 pt-1 text-[11.5px] text-slate-500">
-                <p><b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách cả lớp ⇒ bấm tên em ⇒ tờ mục tiêu tuần của em (giống em và phụ huynh thấy).</p>
-                <p><b className="text-slate-700">Chốt mục tiêu tuần</b> = hệ đọc giáo trình + bổ trợ đã chốt của tuần này và <b>khoá mục tiêu</b> của từng em (nhóm bài, cờ mục tiêu tuần, danh sách việc), rồi mở cho học sinh và phụ huynh xem. Bấm sau buổi họp thứ Hai. Chưa bấm thì app HS / PH ghi "đang chốt mục tiêu tuần"; nhân sự vẫn xem trước được. Sửa giáo trình / duyệt thêm bổ trợ sau khi chốt ⇒ không đổi mục tiêu tuần này, hiện thành "thêm sau khi chốt".</p>
+                <p><b className="text-slate-700">Thứ Hai</b> hệ tự đọc giáo trình + bổ trợ của tuần và dựng mục tiêu tuần cho từng em (bản NHÁP, tự cập nhật khi sửa giáo trình / duyệt bổ trợ). <b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách cả lớp ⇒ bấm tên em ⇒ tờ của em để kiểm.</p>
+                <p><b className="text-slate-700">Công bố</b> = khoá mục tiêu của từng em (nhóm bài, dạng, cờ mục tiêu tuần, danh sách việc) và đưa lên app học sinh + phụ huynh. Bấm sau khi đã chốt bổ trợ. Sửa giáo trình / duyệt thêm bổ trợ sau khi công bố ⇒ không đổi mục tiêu tuần này, hiện thành "thêm sau khi công bố".</p>
                 <p><b className="text-slate-700">Kết quả tuần</b> do máy tự chốt lúc 00:00 thứ Hai vào sổ (không sửa được); người chỉ xem. Trong tuần chỉ số đo chạy (vài phút một lần).</p>
                 <p><b className="text-slate-700">Tiến độ</b> của 1 em = trung bình các nhóm bài (đã có số) của em: % hiện tại ÷ mục tiêu TUẦN, tối đa 100%. Vd mục tiêu tuần 80%, em đang 40% ⇒ 50%. Đầu tuần thường thấp vì nhiều lần đo trong tuần chưa diễn ra.</p>
               </div>
@@ -216,8 +217,8 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
             <div className="text-[17px] font-bold text-slate-900">{hs.ten}{to?.hs.lop ? ` · ${to.hs.lop}` : ''}</div>
             <div className="text-[12.5px] text-slate-500">
               Mục tiêu tuần {to ? `${ngayNgan(to.tuan)} – ${ngayNgan(to.den_ngay)}` : ''} · {mon}
-              {to && !to.chot && ' · lớp CHƯA chốt (học sinh chưa thấy)'}
-              {to?.ke_hoach_at && ` · mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}`}
+              {to && !to.chot && ' · NHÁP — lớp chưa công bố (học sinh chưa thấy)'}
+              {to?.ke_hoach_at && ` · công bố, mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}`}
               {to?.da_chot_so && ' · sổ đã chốt'}
             </div>
           </div>
@@ -249,7 +250,7 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
             </div>
             {(to.them_sau_chot?.length ?? 0) > 0 && (
               <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900">
-                <b>Thêm sau khi chốt</b> (không vào mục tiêu tuần này, học sinh không thấy): {to.them_sau_chot!.map((x) => `${x.ten} (phần ${x.phan})`).join(' · ')}
+                <b>Thêm sau khi công bố</b> (không vào mục tiêu tuần này, học sinh không thấy): {to.them_sau_chot!.map((x) => `${x.ten} (phần ${x.phan})`).join(' · ')}
               </div>
             )}
             {(to.xep_hang_cho.length > 0 || to.sap_hoc) && (
@@ -296,6 +297,7 @@ function DongNhom({ n }: { n: MttNhom }) {
       <div className="text-[11.5px] text-slate-500">
         Cờ = mục tiêu tuần {n.mt == null ? '— (tuần này không có lần đo)' : `${n.mt}%`} · đích {n.dich}% · {n.k} lần đo trong tuần{n.n != null ? ` · ${n.n} lần đã đo` : ''}
       </div>
+      {(n.dang?.length ?? 0) > 0 && <div className="text-[11.5px] text-slate-600">Dạng tuần này: {n.dang!.map((d) => d.ten).join(' · ')}</div>}
     </div>
   )
 }
@@ -304,7 +306,7 @@ function DongViec({ v }: { v: MttViec }) {
   return (
     <div className="flex items-center gap-3 px-3 py-2">
       <span className="min-w-0 flex-1">
-        <span className="block text-[13px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi chốt</span>}</span>
+        <span className="block text-[13px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi công bố</span>}</span>
         <span className="block text-[11.5px] text-slate-500">{[moTaViec(v), v.ghi_chu].filter(Boolean).join(' · ')}</span>
       </span>
       {v.thai_do && <span className="text-[11px] text-slate-500">{NHAN_THAI_DO[v.thai_do] ?? v.thai_do}</span>}

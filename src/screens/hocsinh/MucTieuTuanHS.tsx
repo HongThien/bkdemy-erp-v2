@@ -2,9 +2,10 @@
 // MucTieuTuanHS — "Mục tiêu tuần" của em (spec-muc-tieu-tuan.md §9.1–9.2, Thùy chốt 12–13/11).
 //   · Đầu màn: Tiến độ mục tiêu tuần (vạch đầu tuần + cờ đích) · Việc của con x/y · Xếp hạng tiến độ (bấm ⇒ top 20 toàn trung tâm).
 //   · Cột trái: Phần 1 Kiến thức mới + Phần 2 Ôn tập — mỗi dòng nhóm GỌN (tên · ▲/▼ · % · cờ ở mục tiêu tuần); bấm mới mở
-//     Xem lại bài trên lớp (khu giáo trình) · Luyện tập.
+//     danh sách DẠNG của nhóm trong tuần — bấm dạng ⇒ màn dạng của Học từ đầu (Đọc lý thuyết · Luyện tập · Test; Thùy 16/11).
+//     Nhóm chưa thấy dạng nào (giáo trình chưa lên hệ) ⇒ nút chung Xem lại bài trên lớp · Luyện tập.
 //   · Cột phải: Việc của con tuần này (Đã làm / Sắp tới / Tự luyện không bắt buộc), nhãn Tốt · Tạm ổn · Chưa tốt.
-//   · Lớp chưa chốt ⇒ "đang chốt mục tiêu tuần" (spec §12.4). "Các tuần trước" = sổ chốt (trend).
+//   · Lớp chưa công bố ⇒ "thầy cô đang soạn mục tiêu tuần" (spec §12.4). "Các tuần trước" = sổ chốt (trend).
 // Mọi con số từ DB (fn_mtt_cua_toi · fn_mtt_top · fn_mtt_cac_tuan — mig 202611131000). Khung/màu theo style (design/STYLE-HS.md).
 // ============================================================================
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
@@ -40,7 +41,10 @@ const mauMuc = (m: MucDanhGia | null) => (m === 'tot' ? MAU.dung : m === 'tam_on
 const nenMuc = (m: MucDanhGia | null) => (m === 'tot' ? NEN.dung : m === 'tam_on' ? NEN.canhBao : m === 'chua_tot' ? NEN.sai : MAU.surface2)
 const mauChenh = (h?: string) => (h === 'len' ? MAU.dung : h === 'xuong' ? MAU.sai : MAU.muted)
 
-export type DichMoMTT = 'bai_tren_lop' | 'luyen_tap'
+export type DichMoMTT = 'bai_tren_lop' | 'luyen_tap' | { mon: string; ma_dang: string; ten_dang: string }
+
+// nhớ tờ + nhóm đang mở tới F5 — đi sang màn dạng rồi quay lại thì đứng đúng chỗ cũ, không chớp trắng (CLAUDE.md §2)
+const NHO: { mon: string | null; kq: MttKetQua | undefined; mo: string | null } = { mon: null, kq: undefined, mo: null }
 
 // Ô "Mục tiêu tuần" ở Home: tờ của MÔN đang chọn (một tờ = một môn); chưa chọn môn thì hỏi môn của em
 export function MucTieuTuanTheoMon({ mon, onBack, onMo }: { mon: string | null; onBack: () => void; onMo?: (d: DichMoMTT) => void }) {
@@ -53,13 +57,14 @@ export function MucTieuTuanTheoMon({ mon, onBack, onMo }: { mon: string | null; 
 
 export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBack: () => void; onMo?: (dich: DichMoMTT) => void }) {
   const [man, setMan] = useState<'tuan' | 'cac_tuan'>('tuan')
-  const [kq, setKq] = useState<MttKetQua | undefined>(undefined)
+  const [kq, setKq] = useState<MttKetQua | undefined>(NHO.mon === mon ? NHO.kq : undefined)
   const [loi, setLoi] = useState<string | null>(null)
   const [moTop, setMoTop] = useState(false)
   useEffect(() => {
     let alive = true
-    setKq(undefined); setLoi(null)
-    mttCuaToi(mon).then((r) => alive && setKq(r)).catch((e) => alive && setLoi(String(e?.message ?? e)))
+    if (NHO.mon !== mon) { setKq(undefined); NHO.mo = null }   // đổi môn = đổi ngữ cảnh ⇒ tải lại; về lại cùng môn ⇒ giữ tờ cũ, làm mới nền
+    setLoi(null)
+    mttCuaToi(mon).then((r) => { if (alive) { NHO.mon = mon; NHO.kq = r; setKq(r) } }).catch((e) => alive && setLoi(String(e?.message ?? e)))
     return () => { alive = false }
   }, [mon])
 
@@ -75,7 +80,7 @@ export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBa
       {kq === null && <TrongHS>Em chưa có lớp môn {mon} trong tuần này.</TrongHS>}
       {kq && laChuaChot(kq) && (
         <TheHS className="px-5 py-6 text-center">
-          <p className="text-[18px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Thầy cô đang chốt mục tiêu tuần</p>
+          <p className="text-[18px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Thầy cô đang soạn mục tiêu tuần</p>
           <p className="mt-1 text-[14.5px]" style={{ color: MAU.muted }}>Sau buổi họp chiều thứ Hai, mục tiêu tuần {ngayNgan(kq.tuan)} của em sẽ hiện ở đây. Em xem kết quả tuần trước ở “Các tuần trước”.</p>
         </TheHS>
       )}
@@ -87,7 +92,8 @@ export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBa
 
 // ── tờ tuần ─────────────────────────────────────────────────────────────────
 function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: DichMoMTT) => void }) {
-  const [mo, setMo] = useState<string | null>(null)
+  const [mo, setMoS] = useState<string | null>(NHO.mo)
+  const setMo = (x: string | null) => { NHO.mo = x; setMoS(x) }
   const p1 = to.nhom.filter((n) => n.phan === 1)
   const p2 = to.nhom.filter((n) => n.phan === 2)
   const daLam = to.viec.filter((v) => v.tt !== 'sap_toi')
@@ -129,10 +135,10 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
       <div className="grid items-start gap-4 lg:grid-cols-[1.45fr_1fr]">
         <div className="flex flex-col gap-3">
           <Phan ten="Phần 1 · Kiến thức mới" phu={`${p1.length} nhóm bài`} rong="Tuần này chưa có nhóm bài mới.">
-            {p1.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} />)}
+            {p1.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon} />)}
           </Phan>
           <Phan ten="Phần 2 · Ôn tập kiến thức" phu={`${p2.length} nhóm bài`} rong="Tuần này em không có nhóm ôn tập.">
-            {p2.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo}
+            {p2.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon}
               kiemTra={to.viec.filter((v) => v.loai === 'sau_gio' || v.loai === 'bo_tro')} />)}
           </Phan>
           {to.xep_hang_cho.length > 0 && (
@@ -204,7 +210,7 @@ function Co({ className = '', style }: { className?: string; style?: CSSProperti
 }
 
 // dòng nhóm GỌN — cờ ở mục tiêu TUẦN (số dưới cờ) + vạch mờ "đích 80%" khi mục tiêu tuần còn thấp hơn
-function DongNhom({ n, mo, onBam, onMo, kiemTra }: { n: MttNhom; mo: boolean; onBam: () => void; onMo?: (d: DichMoMTT) => void; kiemTra?: MttViec[] }) {
+function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolean; onBam: () => void; onMo?: (d: DichMoMTT) => void; mon: string; kiemTra?: MttViec[] }) {
   const c = nhanChenh(n.p, n.d)
   const mt = n.mt
   return (
@@ -244,10 +250,24 @@ function DongNhom({ n, mo, onBam, onMo, kiemTra }: { n: MttNhom; mo: boolean; on
               {TEN_VIEC[v.loai]}: {thuNgay(v.ngay)}{v.gio ? `, ${v.gio}` : ''}{v.phong ? ` · phòng ${v.phong}` : ''}
             </div>
           ))}
-          <div className="flex flex-wrap gap-2">
-            <NutHS phu onClick={() => onMo?.('bai_tren_lop')} className="!text-[14px]">Xem lại bài trên lớp</NutHS>
-            <NutHS onClick={() => onMo?.('luyen_tap')} className="!text-[14px]">Luyện tập</NutHS>
-          </div>
+          {(n.dang?.length ?? 0) > 0 ? (
+            <div className="flex flex-col gap-1.5">
+              <p className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Dạng bài tuần này — bấm để đọc lý thuyết, luyện tập</p>
+              {n.dang!.map((d) => (
+                <button key={d.ma} onClick={() => onMo?.({ mon, ma_dang: d.ma, ten_dang: d.ten })}
+                  className="flex items-center gap-2 px-3 py-2.5 text-left transition active:scale-[0.99]" style={{ ...THE, borderRadius: 'var(--sk-radius)' }}>
+                  <span aria-hidden>📖</span>
+                  <span className="min-w-0 flex-1 text-[14.5px] font-semibold" style={{ color: MAU.ink }}>{d.ten}</span>
+                  <span className="text-[13px] font-bold" style={{ color: MAU.acc }}>Học ›</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              <NutHS phu onClick={() => onMo?.('bai_tren_lop')} className="!text-[14px]">Xem lại bài trên lớp</NutHS>
+              <NutHS onClick={() => onMo?.('luyen_tap')} className="!text-[14px]">Luyện tập</NutHS>
+            </div>
+          )}
         </div>
       )}
     </div>

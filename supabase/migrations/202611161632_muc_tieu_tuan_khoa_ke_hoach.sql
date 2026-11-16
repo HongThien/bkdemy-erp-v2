@@ -41,6 +41,41 @@ create trigger mtt_ke_hoach_bat_bien_trg before update or delete on public.mtt_k
 alter table public.mtt_ke_hoach enable row level security;
 revoke all on public.mtt_ke_hoach from anon, authenticated;
 
+
+-- dạng (mã dạng của câu — cùng mã Học từ đầu / tự luyện dùng: dang_chinh = ma_dang) của tuần, gom theo nhóm:
+--   Phần 1 = câu ET / BTVN / giáo trình của các buổi trong CỬA SỔ tuần (gami_session_problems + bai_test của lớp ngày đó);
+--   Phần 2 = dạng của case bổ trợ yếu còn mở. Trả {ma_nhom: [{ma, ten}]}. Chi phí C2 (1 em, vài buổi).
+create or replace function public._mtt_dang_nhom(p_hs uuid, p_mon text, p_buoi jsonb, p_den timestamptz, p_bdm boolean)
+returns jsonb
+language sql stable security definer set search_path to 'public' as $$
+  with b as (
+    select (e->>'id')::uuid as id, (e->>'lop_id')::uuid as lop_id, (e->>'ngay')::date as ngay
+      from jsonb_array_elements(coalesce(p_buoi, '[]'::jsonb)) e
+     where (e->>'s')::boolean
+  ),
+  d as (
+    select coalesce(sp.ma_cau, '') as ma_cau, sp.ma_dang
+      from b join gami_session_problems sp on sp.buoi_hoc_id = b.id
+     where sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null and sp.ma_dang is not null
+    union
+    select coalesce(btc.ma_cau, ''), btc.ma_dang
+      from b join bai_test bt on bt.lop_id = b.lop_id and bt.ngay = b.ngay
+      join bai_test_cau btc on btc.bai_test_id = bt.id
+     where bt.loai in ('giao_trinh', 'et', 'btvn') and (bt.hoc_sinh_id is null or bt.hoc_sinh_id = p_hs) and btc.ma_dang is not null
+    union
+    select '', yd.ma_dang
+      from bo_tro_yeu y join bo_tro_yeu_dang yd on yd.bo_tro_yeu_id = y.id
+     where y.hoc_sinh_id = p_hs and y.mon = p_mon and y.trang_thai in ('dang_xu', 'nhe_mo') and yd.dong_at is null and y.created_at < p_den
+  ),
+  q as (select distinct public._do_o_quy(p_bdm, false, d.ma_cau, d.ma_dang) as nhom, d.ma_dang from d),
+  g as (
+    select q.nhom, jsonb_agg(jsonb_build_object('ma', q.ma_dang, 'ten', coalesce(public._kho_ten_dang(p_mon, q.ma_dang), q.ma_dang)) order by q.ma_dang) as ds
+      from q where q.nhom is not null group by q.nhom
+  )
+  select coalesce(jsonb_object_agg(g.nhom, g.ds), '{}'::jsonb) from g
+$$;
+revoke execute on function public._mtt_dang_nhom(uuid, text, jsonb, timestamptz, boolean) from public, anon, authenticated;
+
 create or replace function public._mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamptz default null)
 returns jsonb
 language plpgsql stable security definer set search_path to 'public' as $$
@@ -68,6 +103,7 @@ declare
   v_td     numeric;
   v_td_dau numeric;
   v_kh     record;
+  v_dmap   jsonb;
   v_them   jsonb := '[]'::jsonb;
 begin
   select h.id, h.ho_ten, h.khoi into v_hs from hoc_sinh h where h.id = p_hs;
@@ -229,6 +265,13 @@ begin
       from y;
   end if;
 
+  -- DẠNG của từng nhóm trong tuần (Thùy 16/11: "học sinh có mục tiêu học dạng A, click vào dạng A ⇒ lý thuyết · luyện tập") — để app mở thẳng màn dạng
+  -- của Học từ đầu. Không khoá: là đường dẫn, đơn vị đánh giá vẫn là NHÓM. Nhóm không có dạng nào thấy được ⇒ 'dang' = [] (app hiện nút chung).
+  v_dmap := public._mtt_dang_nhom(p_hs, p_mon, v_buoi, v_den, v_bdm);
+  select coalesce(jsonb_agg(e || jsonb_build_object('dang', coalesce(v_dmap->(e->>'ma'), '[]'::jsonb)) order by o), '[]'::jsonb)
+    into v_nhom
+    from jsonb_array_elements(v_nhom) with ordinality as t(e, o);
+
   -- đầu tuần: cùng tập nhóm đang tính tiến độ; nhóm CHƯA có số lúc đầu tuần (kiến thức mới) tính 0 — chưa học thì chưa tới đâu
   select round(100 * avg((e->>'tien')::numeric), 1),
          round(100 * avg(coalesce((e->>'tien_dau')::numeric, 0)) filter (where e->>'tien' is not null), 1)
@@ -382,8 +425,8 @@ begin
     viec_tong = excluded.viec_tong, viec_den_han = excluded.viec_den_han, payload = excluded.payload, tinh_at = excluded.tinh_at;
 end $$;
 
-revoke execute on function public._mtt_tinh(uuid, text, date, timestamptz) from public, anon;
-revoke execute on function public._mtt_ghi(uuid, text, date) from public, anon;
+revoke execute on function public._mtt_tinh(uuid, text, date, timestamptz) from public, anon, authenticated;
+revoke execute on function public._mtt_ghi(uuid, text, date) from public, anon, authenticated;
 
 -- chốt mục tiêu tuần của 1 lớp: CHỈ ghi dòng chốt (C1). Tính tờ + khoá kế hoạch = bộ điều phối, lượt kế (≤ 5 phút).
 create or replace function public.fn_mtt_chot_lop(p_lop uuid, p_tuan date default null)
@@ -410,3 +453,135 @@ begin
 end $$;
 revoke execute on function public.fn_mtt_chot_lop(uuid, date) from public, anon;
 grant execute on function public.fn_mtt_chot_lop(uuid, date) to authenticated;
+
+-- ── 16/11 (Thùy mô tả lại luồng): NHÁP cho mọi lớp từ thứ Hai · trưởng khối xem theo lớp · CÔNG BỐ mới lên app HS / PH ──
+-- Bản sao từ mig 202611131000, chỉ đổi các chỗ ghi "16/11".
+create or replace function public._mtt_xep_hang(p_tuan date, p_mon text)
+returns void
+language plpgsql volatile security definer set search_path to 'public' as $$
+declare v_hom_nay date := public._mtt_hom_nay();
+begin
+  with r as (
+    select hoc_sinh_id, rank() over (order by tien_do desc) as h, count(*) over () as so
+      from mtt_luu where tuan = p_tuan and mon = p_mon and tien_do is not null
+         and coalesce((payload->>'chot')::boolean, false)   /* 16/11: chỉ xếp hạng em của lớp ĐÃ CÔNG BỐ — nháp không vào bảng */
+  )
+  update mtt_luu m set
+    hang_truoc = case when m.hang_ngay is distinct from v_hom_nay then m.hang else m.hang_truoc end,
+    hang_ngay  = v_hom_nay,
+    hang = rr.h, so_hs = rr.so
+  from (select x.hoc_sinh_id, r.h, r.so from mtt_luu x left join r on r.hoc_sinh_id = x.hoc_sinh_id
+         where x.tuan = p_tuan and x.mon = p_mon) rr
+  where m.tuan = p_tuan and m.mon = p_mon and m.hoc_sinh_id = rr.hoc_sinh_id
+    and (m.hang is distinct from rr.h or m.so_hs is distinct from rr.so or m.hang_ngay is distinct from v_hom_nay);
+
+  insert into mtt_top (tuan, mon, ds, tinh_at)
+  select p_tuan, p_mon, coalesce((
+           select jsonb_agg(jsonb_build_object('hang', t.hang, 'ten', public._mtt_ten_goi(h.ho_ten),
+                                               'lop', t.payload->'hs'->>'lop', 'tien_do', round(t.tien_do)::int) order by t.hang, h.ho_ten)
+             from (select * from mtt_luu where tuan = p_tuan and mon = p_mon and hang is not null and hang <= 20) t
+             join hoc_sinh h on h.id = t.hoc_sinh_id), '[]'::jsonb), now()
+  on conflict (tuan, mon) do update set ds = excluded.ds, tinh_at = excluded.tinh_at;
+end $$;
+
+create or replace function public._mtt_lam_moi(p_giay integer default 40)
+returns jsonb
+language plpgsql volatile security definer set search_path to 'public' as $$
+declare
+  v_bat   timestamptz := clock_timestamp();
+  v_w     date := public._mtt_tuan(public._mtt_hom_nay());
+  v_p     date := v_w - 7;
+  r       record;
+  v_chot  int := 0;
+  v_tinh  int := 0;
+  v_mon   text;
+  v_pl    jsonb;
+begin
+  -- (a) SỔ CHỐT tuần vừa qua: tính lại TẠI MỐC 00:00 thứ Hai (bài chấm sau mốc không vào bản chốt), hạng = hạng cuối của bảng đệm
+  for r in
+    select m.hoc_sinh_id, m.mon, m.lop_id, m.khoi, m.hang, m.so_hs
+      from mtt_luu m
+     where m.tuan = v_p and coalesce((m.payload->>'chot')::boolean, false)   /* 16/11: chỉ tờ ĐÃ CÔNG BỐ vào sổ kết quả */
+       and not exists (select 1 from mtt_chot c where c.tuan = v_p and c.mon = m.mon and c.hoc_sinh_id = m.hoc_sinh_id)
+     order by m.mon, m.hoc_sinh_id
+  loop
+    exit when clock_timestamp() - v_bat > make_interval(secs => p_giay * 0.5);
+    v_pl := public._mtt_tinh(r.hoc_sinh_id, r.mon, v_p, public._mtt_moc(v_w));
+    if v_pl is not null then
+      insert into mtt_chot (tuan, mon, hoc_sinh_id, lop_id, khoi, tien_do, viec_xong, viec_tong, viec_den_han, hang, so_hs, payload)
+      values (v_p, r.mon, r.hoc_sinh_id, r.lop_id, r.khoi, (v_pl->>'tien_do')::numeric, (v_pl->>'viec_xong')::int,
+              (v_pl->>'viec_tong')::int, (v_pl->>'viec_den_han')::int, r.hang, r.so_hs, v_pl)
+      on conflict do nothing;
+      v_chot := v_chot + 1;
+    end if;
+  end loop;
+
+  -- (b) tờ tuần này cho MỌI em đang học (16/11, Thùy: "thứ Hai mở mục tiêu tuần mới · hệ đọc bổ trợ + giáo trình dựng mục tiêu · trưởng khối xem
+  --     theo từng lớp · bấm công bố mới lên app"). Lớp chưa công bố = NHÁP (payload chot = false): chỉ nhân sự đọc, không xếp hạng, không vào sổ.
+  --     Thứ tự: lớp vừa công bố mà tờ còn là nháp / chưa khoá ⇒ thiếu tờ ⇒ cũ nhất (cache mastery mới hơn lần tính, hoặc quá 20 phút).
+  for r in
+    select x.hoc_sinh_id, x.mon from (
+      select hl.hoc_sinh_id, l.mon, bool_or(c.lop_id is not null) as cong_bo
+        from lop l
+        join hoc_sinh_lop hl on hl.lop_id = l.id and hl.trang_thai = 'dang_hoc'
+        join hoc_sinh h on h.id = hl.hoc_sinh_id and h.trang_thai = 'dang_hoc'
+        left join mtt_lop_chot c on c.tuan = v_w and c.lop_id = l.id
+       group by hl.hoc_sinh_id, l.mon
+    ) x
+    left join mtt_luu m on m.tuan = v_w and m.mon = x.mon and m.hoc_sinh_id = x.hoc_sinh_id
+    left join mastery_luu_san_tinh t on t.hoc_sinh_id = x.hoc_sinh_id
+   where m.hoc_sinh_id is null or m.tinh_at < now() - interval '20 minutes' or m.tinh_at < t.tinh_at
+      or (x.cong_bo and (not coalesce((m.payload->>'chot')::boolean, false) or m.payload->>'ke_hoach_at' is null))
+   order by (x.cong_bo and m.hoc_sinh_id is not null and (not coalesce((m.payload->>'chot')::boolean, false) or m.payload->>'ke_hoach_at' is null)) desc,
+            (m.hoc_sinh_id is not null), m.tinh_at nulls first
+  loop
+    exit when clock_timestamp() - v_bat > make_interval(secs => p_giay * 0.9);
+    perform public._mtt_ghi(r.hoc_sinh_id, r.mon, v_w);
+    v_tinh := v_tinh + 1;
+  end loop;
+
+  -- (c) xếp hạng + top 20 từng môn của tuần này
+  for v_mon in select distinct mon from mtt_luu where tuan = v_w loop
+    perform public._mtt_xep_hang(v_w, v_mon);
+  end loop;
+
+  return jsonb_build_object('tuan', v_w, 'chot_so', v_chot, 'tinh', v_tinh,
+                            'giay', round(extract(epoch from clock_timestamp() - v_bat)::numeric, 1));
+end $$;
+
+create or replace function public._mtt_doc(p_hs uuid, p_mon text, p_tuan date, p_can_chot boolean)
+returns jsonb
+language plpgsql stable security definer set search_path to 'public' as $$
+declare
+  v_w date := public._mtt_tuan(public._mtt_hom_nay());
+  v_t date := public._mtt_tuan(coalesce(p_tuan, public._mtt_hom_nay()));
+  v   jsonb;
+  m   record;
+begin
+  if v_t < v_w then   -- tuần đã qua ⇒ sổ chốt (chưa chốt sổ thì đọc bảng đệm cuối)
+    select c.payload, c.hang, c.so_hs, c.chot_at into m from mtt_chot c where c.tuan = v_t and c.mon = p_mon and c.hoc_sinh_id = p_hs;
+    if found then return public._mtt_kem_hang(m.payload, m.hang, null, m.so_hs, m.chot_at) || jsonb_build_object('da_chot_so', true); end if;
+  end if;
+  select l.payload, l.hang, l.hang_truoc, l.so_hs, l.tinh_at, l.lop_id into m from mtt_luu l where l.tuan = v_t and l.mon = p_mon and l.hoc_sinh_id = p_hs;
+  if found then
+    if p_can_chot and not coalesce((m.payload->>'chot')::boolean, false) then
+      -- 16/11: dòng đệm còn là NHÁP nhưng lớp vừa công bố (bộ điều phối chưa tới lượt) ⇒ tính trực tiếp 1 em, không bắt chờ
+      if v_t = v_w and exists (select 1 from mtt_lop_chot c where c.tuan = v_t and c.lop_id = m.lop_id) then
+        v := public._mtt_tinh(p_hs, p_mon, v_t, null);
+        if coalesce((v->>'chot')::boolean, false) then return v; end if;
+      end if;
+      return jsonb_build_object('chua_chot', true, 'tuan', v_t, 'mon', p_mon);
+    end if;
+    return public._mtt_kem_hang(m.payload, m.hang, m.hang_truoc, m.so_hs, m.tinh_at);
+  end if;
+  v := public._mtt_tinh(p_hs, p_mon, v_t, case when v_t < v_w then public._mtt_moc(v_t + 7) end);   -- cron chưa kịp ⇒ tính trực tiếp
+  if v is null then return null; end if;
+  if p_can_chot and not coalesce((v->>'chot')::boolean, false) then
+    return jsonb_build_object('chua_chot', true, 'tuan', v_t, 'mon', p_mon);
+  end if;
+  return v;
+end $$;
+
+revoke execute on function public._mtt_xep_hang(date, text) from public, anon, authenticated;
+revoke execute on function public._mtt_lam_moi(integer) from public, anon, authenticated;
+revoke execute on function public._mtt_doc(uuid, text, date, boolean) from public, anon, authenticated;

@@ -12,6 +12,7 @@ export type MttNhom = {
   ma: string; ten: string; phan: 1 | 2
   p: number | null; n: number | null; p_dau: number | null; d: number | null; mt: number | null; dich: number
   k: number; tong_dang: number; ngay_hoc: string[]; tien: number | null; tien_dau: number | null
+  dang?: { ma: string; ten: string }[]   // dạng của nhóm trong tuần (mig 202611161632) — bấm ⇒ màn dạng Học từ đầu
 }
 export type MttViec = {
   loai: LoaiViec; buoi_id: string; ngay: string; han: string | null; tt: TrangThaiViec
@@ -94,7 +95,7 @@ export async function mttDsLop(lopId: string, tuan?: string | null): Promise<Mtt
   if (error) throw error
   return (data ?? []) as MttEmLop[]
 }
-// chốt lớp (mig 202611161632): CHỈ ghi dòng chốt; tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút) ⇒ da_tinh luôn 0
+// CÔNG BỐ lớp (mig 202611161632; DB giữ tên fn_mtt_chot_lop): CHỈ ghi dòng công bố; tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút) ⇒ da_tinh luôn 0
 export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{ tuan: string; lop_id: string; chot_at: string; da_tinh: number; tong: number }> {
   const { data, error } = await supabase.rpc('fn_mtt_chot_lop', { p_lop: lopId, p_tuan: tuan ?? null })
   if (error) throw error
