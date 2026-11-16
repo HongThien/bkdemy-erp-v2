@@ -15,6 +15,16 @@ ${o.ys.map((y) => `<div class="y"><div><b class="ny">${y.nhan})</b> ${esc(y.cau_
 ${o.lg_dau ? `<div class="canh">⚠ Lời giải có đoạn trước ý a (sẽ mất nếu không xử lý): ${esc(o.lg_dau)}</div>` : ''}</div></div></section>`
   }
 }
+// 16/11: thêm mục BÀI MÁY CẮT LỆCH (không ghi ở bước 2) — đề gốc + lý do, để Thùy quyết từng bài.
+const lech = d.filter((o) => !o.sach)
+const lyDo = (o) => (!o.loi_dan ? 'không có lời dẫn chung trước ý đầu' : o.ys.some((y) => !y.cau_hoi) ? 'có ý rỗng' : `không cắt được lời giải theo ý (đề: ${o.nhan_de} · lời giải: ${o.nhan_lg || 'không chia nhãn'})`)
+let bodyLech = ''
+if (lech.length) {
+  bodyLech = `<h2 id="lech" style="color:#b45309">Máy cắt LỆCH — ${lech.length} bài, CHƯA tách (không ghi ở bước 2)</h2>`
+  for (const o of lech) bodyLech += `<section class="bai"><div class="dau"><b>${o.ma_cau}</b> · Khối ${o.khoi} · ${esc(o.ten_bai)}${o.da_duyet ? ' · đã duyệt' : ''}</div>
+<div class="canh">Lý do: ${esc(lyDo(o))}</div><div class="tx">${esc(o.noi_dung)}</div>${o.anh_de ? `<img src="${o.anh_de}">` : ''}
+<details><summary>Lời giải đang lưu (cả bài)</summary><div class="lg">${esc(o.loi_giai)}</div></details></section>`
+}
 const html = `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tách ý Hình – Học</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -28,6 +38,6 @@ const html = `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta n
 nav a{margin-right:12px}@media(max-width:760px){.hai{flex-direction:column}}</style></head><body>
 <h1>Tách ý kho Hình – Học — máy cắt (${sach.length} bài sạch, chưa ghi DB)</h1>
 <p>Trái: đề gốc như đang lưu (1 câu cả bài). Phải: sau khi tách = lời dẫn chung + từng ý (mỗi ý thành 1 câu, lời giải của riêng ý đó). Chưa có dòng "Đã biết".</p>
-<nav>${Object.entries(theoKhoi).map(([k, ds]) => `<a href="#k${k}">Khối ${k} (${ds.length})</a>`).join('')}</nav>${body}</body></html>`
+<nav>${Object.entries(theoKhoi).map(([k, ds]) => `<a href="#k${k}">Khối ${k} (${ds.length})</a>`).join('')}${lech.length ? `<a href="#lech">Máy cắt lệch (${lech.length})</a>` : ''}</nav>${body}${bodyLech}</body></html>`
 fs.writeFileSync('kho-rules/hinh/lo/tach-y/duyet-tach-y-may.html', html)
 console.log('ok', sach.length, 'bài; có đoạn lời giải trước ý a:', sach.filter((o) => o.lg_dau).length)
