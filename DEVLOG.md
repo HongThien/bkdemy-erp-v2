@@ -81243,3 +81243,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai:** 16/11 mình tạo chủ đề mới NCD00255 "Thẳng hàng" cho 3 bài. Thùy: Thẳng hàng nằm trong "Tam giác bằng nhau", chỉ là thêm bài mới, cùng cấp bài với Tam giác cân.
 - **Sửa:** `scripts/hinh-k7-thang-hang-ve-tgbn.mjs --ghi` — HH00170/171/172 `chu_de_id` → NCD00210 (thứ tự 22–24 sau HH00104). Chủ đề NCD00255 nay RỖNG, không tham chiếu từ đâu, **chưa xoá** (chờ Thùy gật theo Luật xoá). Spec `spec-giai-bai.md` đã sửa 2 chỗ (dòng whitelist + bảng 3 bài).
 - **Thùy chỉnh cách hiểu đánh giá (chưa làm):** ý a–b của một bài tính cho Tam giác cân, ý c tính cho Thẳng hàng, nhưng ở bài Thẳng hàng phải HIỆN ĐỦ a–b–c (thiếu a–b thì khó nghĩ ý c). Hiện tại bài_y mới ở 3 bài thẳng hàng chỉ có MỖI ý c ⇒ chưa đúng ý. Đề xuất cách sửa ở lượt trả lời; chờ Thùy chọn.
+
+## 16/11 (tiếp 4) — Ghi mô tả + lý thuyết + ví dụ 3 bài Thẳng hàng (Thùy: "t gửi file rồi mà")
+- `scripts/hinh-k7-thang-hang-noidung.mjs --ghi`: HH00170/171/172 có `mo_ta`, `hinh_hoc_bai_ly_thuyet`, `vi_du` (nội dung từ "thẳng hàng.pdf"; xem k7-thang-hang-nhap.html). Trước đó giữ nháp chờ "ghi" — Thùy xác nhận đã gửi file là muốn vào luôn. Hình ví dụ chưa gắn.
