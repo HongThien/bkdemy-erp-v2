@@ -422,7 +422,7 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 8. **(16/11) Danh sách cả lớp** — mig `202611161713_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
 
 **Chưa làm (cần máy công ty / DB thật):**
-1. ✅ mig `202611131000` đã áp (13/11). **Còn treo: `202611161713` + `202611161844`** — `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
+1. ✅ mig `202611131000` đã áp (13/11). **`202611161713` + `202611161844` Thùy áp qua SQL Editor 16/11 tối** (kèm đoạn thu quyền `anon` + ghi sổ `_migrations`; Claude chưa tự kiểm được) — `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
 2. ~~Cron riêng~~ — đợt 3 kiến trúc (mig 202611140808) đã đưa `_mtt_lam_moi(40)` vào bộ điều phối (sổ `muc_tieu_tuan`, 5 phút), job `muc-tieu-tuan` đã gỡ. Không chạy lại file cron cũ.
 3. Đo `fn_mtt_trung_tam` + `_mtt_ghi` bằng dữ liệu thật (khối đông nhất) — trần 8 s; `_mtt_tinh` gọi `_mastery_lan_d` (30 ngày) 1 lần/em/tuần khi chụp đầu tuần.
 4. App PH: áp `migrations/0038_muc_tieu_tuan_fdw.sql` ở DB `bkdemy-ph` SAU khi ERP đã áp, rồi deploy (`npx vercel --prod --yes`).

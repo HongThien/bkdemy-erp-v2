@@ -311,4 +311,4 @@ Quá hạn chưa nộp ⇒ **đề xuất gậy** "Nộp báo cáo tuần trễ"
 1. ~~Giáo trình tuần — hạn H1 / H2, có gậy không~~ — ✅ Thùy chốt 16/11: H1 = 23:59 T6 · H2 = 12:00 T7 · trễ ⇒ đề xuất gậy (§3.8, đã build).
 2. **Báo cáo tuần** (bàn sau 03/11): giờ hạn nộp (đề xuất 17:00 T2) · mức gậy trễ · BTVN "nộp" tính cả muộn hay chỉ đúng hạn · ngưỡng màu chỉ số · % trưởng khối điền có ghi ngược vào `task_phat_trien` không.
    `gay_de_xuat.nguon` CHECK chỉ có `vanhanh · giaoviec` ⇒ đề xuất báo cáo trễ tạm dùng `vanhanh` (muốn `bao_cao` riêng phải alter — Luật xoá).
-3. **Mục tiêu tuần**: sổ kết quả tuần 09–15/11 (`mtt_chot`) mang lỗi quy câu → nhóm, bất biến — muốn chụp lại phải xoá dòng sổ tuần đó (Luật xoá). Mig `1713` + `1844` còn treo (phiên Mục tiêu tuần).
+3. **Mục tiêu tuần**: sổ kết quả tuần 09–15/11 (`mtt_chot`) mang lỗi quy câu → nhóm, bất biến — muốn chụp lại phải xoá dòng sổ tuần đó (Luật xoá). Mig `1713` + `1844` Thùy áp qua SQL Editor 16/11 tối (Claude chưa tự kiểm được — đối chiếu `schema.md` sau `npm run schema`).
