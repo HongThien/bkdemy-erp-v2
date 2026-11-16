@@ -4,7 +4,8 @@
 import { supabase } from './supabase'
 import type { ChonBuoi } from './tailieuBdm'
 
-export type GttKhungMuc = { ma: string; loai: 'nhom' | 'dang'; ten: string | null; con: { ma: string; ten: string | null }[] }
+// loai: 'nhom' = khuôn nhóm › dạng bài (con = dạng bài) · 'dang' = Hình phần HỌC (bài học) · 'mo_hinh' = Hình phần LUYỆN (mô hình)
+export type GttKhungMuc = { ma: string; loai: 'nhom' | 'dang' | 'mo_hinh'; ten: string | null; con: { ma: string; ten: string | null }[] }
 export type GttBuoi = {
   id: string; tai_lieu_id: string; ten_gt: string; nhanh: string | null; luu_tru: boolean
   tieu_de: string | null; stt: number; khung: GttKhungMuc[]
@@ -47,7 +48,9 @@ export async function chonBuoi(lopId: string, ngay: string, buoiId: string | nul
   return data as GttCa
 }
 /** Đặt khung (nhóm / dạng bài) — ghi bằng đúng hàm builder. Ca chưa gắn buổi ⇒ truyền taiLieuId để tạo buổi mới cuối giáo trình. */
-export async function datKhung(lopId: string, ngay: string, chon: ChonBuoi, taiLieuId?: string | null): Promise<GttCa> {
+/** Khung giáo trình Hình (khuôn mô hình–bài–ý): khoá nào vắng thì phần đó giữ nguyên. */
+export type KhungHinh = { bai?: string[]; mo_hinh?: string[] }
+export async function datKhung(lopId: string, ngay: string, chon: ChonBuoi | KhungHinh, taiLieuId?: string | null): Promise<GttCa> {
   const { data, error } = await supabase.rpc('fn_gtt_dat_khung', { p_lop: lopId, p_ngay: ngay, p_chon: chon, p_tai_lieu: taiLieuId ?? null })
   if (error) throw error
   return data as GttCa

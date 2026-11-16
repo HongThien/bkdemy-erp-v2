@@ -11,6 +11,7 @@ import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../..
 import { MathText, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
+import { ngayBuoi, THU, ddmm, tuDate } from '../../../lib/giaoTrinhTuan'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
 import { KhoiCau, CopyBuoiModal, type CfgCau } from './BuilderBanDoMoi'
@@ -45,6 +46,9 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
     setNd(n); setTen(n.tai_lieu?.ten ?? ''); setCh((n.tai_lieu?.cau_hinh ?? {}) as CauHinh)
   }
   useEffect(() => { tai().catch((e) => setErr(loiDoc(e))) }, [id]) // eslint-disable-line
+  // Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): buổi nào đã lên kế hoạch cho ca nào — cùng dòng với màn tuần ở Phòng trưởng khối.
+  const [ngayKeHoach, setNgayKeHoach] = useState<Map<string, string>>(new Map())
+  useEffect(() => { if (laGiaoTrinh) ngayBuoi(id).then((ds) => setNgayKeHoach(new Map(ds.map((x) => [x.buoi_id, x.ngay])))).catch(() => { /* nhãn phụ — lỗi thì không hiện */ }) }, [id, laGiaoTrinh])
   const lam = async (f: () => Promise<void>) => { setBao(null); try { await f() } catch (e) { setBao(loiDoc(e)) } }
   const vaPhan = (p: CdhPhan) => { setNd((x) => (x ? { ...x, buoi: x.buoi.map((b) => (b.id === p.id ? p : b)) } : x)); markSaved() }
 
@@ -154,6 +158,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                   <input defaultValue={p.tieu_de ?? ''} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== p.tieu_de) doiTenPhan(p, v) }}
                     className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
                   <span className="text-[12px] text-slate-400">{laGiaoTrinh ? `${(p.hoc ?? []).length} bài học · ` : ''}{p.mo_hinh.length} mô hình · {p.mo_hinh.reduce((s, m) => s + m.bai.length, 0) + (p.khac?.bai.length ?? 0)} bài</span>
+                  {ngayKeHoach.get(p.id) && <span title="Giáo trình tuần: buổi này đã lên kế hoạch cho ca của lớp ngày này (sửa bài học / mô hình ở đây là sửa luôn kế hoạch)" className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[11.5px] font-semibold text-blue-700">📅 {THU[(tuDate(ngayKeHoach.get(p.id)!).getDay() + 6) % 7]} {ddmm(ngayKeHoach.get(p.id)!)}</span>}
                   <button onClick={() => setXemPhan(p.id)} className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem {nhan}</button>
                   {laGiaoTrinh && <button onClick={() => setChonHoc(p)} className="shrink-0 whitespace-nowrap rounded-md bg-sky-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-sky-500">+ Bài học</button>}
                   <button onClick={() => setChonMh(p)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ {laGiaoTrinh ? 'Mô hình' : 'Chọn mô hình'}</button>
@@ -327,7 +332,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
 
 // ── Bộ chọn mô hình: chủ đề Hình–Luyện → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
 // 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): bỏ tầng nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
-function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (ids: string[]) => void }) {
+export function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (ids: string[]) => void }) {
   const [cay, setCay] = useState<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] } | null>(null)
   const [dem, setDem] = useState<Map<string, DemKho>>(new Map())
   const [chon, setChon] = useState<string[]>(daChon)

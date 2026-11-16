@@ -95,7 +95,7 @@ Xoá buổi trong builder ⇒ liên kết mất theo (cascade), ô trở về "c
 |---|---|
 | `fn_gtt_man_tuan(mon, khoi, tuan)` | MỘT lượt gọi cho cả lưới (jsonb): lớp · giáo trình của lớp · ca · buổi đã gắn (tiêu đề, số thứ tự, khung nhóm › dạng) · đã gán ngày dạy chưa / khớp không · trạng thái duyệt + 10 dòng sổ · cờ `sua_sau_duyet` · `mo_coi`. Ca suy bằng `_gtt_ca(lớp[], từ, đến)` — cùng luật phần 1–2 của `fn_phong_lich` nhưng chỉ cho các lớp được hỏi (K2; `fn_phong_lich` tính cả trung tâm) |
 | `fn_gtt_chon_buoi(lop, ngay, buoi_id \| null)` | gắn ca với buổi CÓ SẴN của giáo trình lớp; `null` = bỏ gắn. Buổi đã gắn ca khác ⇒ báo lỗi (1-1) |
-| `fn_gtt_dat_khung(lop, ngay, chon, tai_lieu?)` | đặt khung. Ca chưa gắn buổi ⇒ tạo buổi mới cuối giáo trình `tai_lieu` rồi gắn, cùng giao dịch (không đẻ buổi rỗng). Ghi bằng **đúng hàm builder `fn_tl_bdm_dat_buoi`** (cùng luật kiểm, cùng gợi ý câu như khi GV chọn nhóm trong builder — giữ nguyên để hai cửa sổ hành xử y hệt). Giáo trình Hình ⇒ báo "mở builder Hình" (bước 3) |
+| `fn_gtt_dat_khung(lop, ngay, chon, tai_lieu?)` | đặt khung. Ca chưa gắn buổi ⇒ tạo buổi mới cuối giáo trình `tai_lieu` rồi gắn, cùng giao dịch (không đẻ buổi rỗng). Ghi bằng **đúng hàm builder `fn_tl_bdm_dat_buoi`** (cùng luật kiểm, cùng gợi ý câu như khi GV chọn nhóm trong builder — giữ nguyên để hai cửa sổ hành xử y hệt). Giáo trình Hình: `chon` = `{bai?, mo_hinh?}` ⇒ gọi đúng `fn_tl_hh_dat_bai` / `fn_tl_hl_dat_mo_hinh` của builder Hình (khoá vắng = giữ nguyên); gửi sai khuôn ⇒ báo lỗi |
 | `fn_gtt_chuyen(mon, khoi, tuan, 'gui' \| 'duyet' \| 'tra_lai', ghi_chu?)` | ghi `gtt_duyet`; `duyet` chụp khung trong cùng giao dịch; trả lại phải có lý do; trả cả màn tuần |
 | luồng gán ngày dạy | (bước 5) đọc `gtt_ca` để chọn sẵn; gán khác ⇒ cập nhật `gtt_ca` trong cùng giao dịch |
 
@@ -121,8 +121,8 @@ Hàm nội bộ `_gtt_*` không cấp cho client. Đo 16/11 (vai Tạ Quốc Cư
 ## 8. Thứ tự build
 
 1. Migration `gtt_*` + hàm + thử qua REST (CLAUDE §1.6) · `npm run check:kien-truc` ✔.
-2. ✅ Màn lưới + khung bên phải (Toán Đại/HGT, KHTN) trong Phòng trưởng khối; builder hiện nhãn ngày trên buổi. Còn thiếu: lớp chưa có giáo trình thì màn chỉ nhắc đi tạo (chưa tạo tại chỗ); builder Hình chưa hiện nhãn ngày (bước 3).
-3. Hình (builder Hình, khung = mô hình/dạng của Hình).
+2. ✅ Màn lưới + khung bên phải (Toán Đại/HGT, KHTN) trong Phòng trưởng khối; builder hiện nhãn ngày trên buổi. Còn thiếu: lớp chưa có giáo trình thì màn chỉ nhắc đi tạo (chưa tạo tại chỗ); builder Hình hiện nhãn ngày từ bước 3.
+3. ✅ Hình (16/11, mig `202611161740`): khung = bài học (phần HỌC, `dang`) + mô hình (phần LUYỆN, `hl_mo_hinh`); `fn_gtt_dat_khung` nhận `{bai?, mo_hinh?}` cho giáo trình Hình và gọi đúng `fn_tl_hh_dat_bai` / `fn_tl_hl_dat_mo_hinh`; màn tuần dùng `ChonBaiHoc` / `ChonMoHinh` của builder Hình; builder Hình hiện nhãn ngày.
 4. Duyệt của trưởng bộ môn + bản chụp.
 5. Luồng gán ngày dạy chọn sẵn buổi đã liên kết.
 6. `_mtt_nhom_buoi` đọc khung kế hoạch (so cũ–mới từng dòng trước khi áp, K18).

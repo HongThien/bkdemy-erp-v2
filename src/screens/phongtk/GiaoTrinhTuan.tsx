@@ -2,20 +2,21 @@
 // Thứ Sáu họp: trưởng khối điền cho TỪNG CA trong thời khoá biểu tuần sau ca đó học nhóm / dạng nào (chỉ khung); trưởng bộ môn duyệt.
 // Thay Google Sheet. Khung lưu MỘT chỗ — dưới nút buổi trong builder; màn này chỉ là cửa sổ thứ hai nhìn vào đúng các dòng đó
 // (gtt_ca giữ liên kết 1-1 ca ⇄ buổi) ⇒ sửa ở đây hay ở builder đều là một.
-// Dùng lại nguyên module: BoChonNhom (bộ chọn nhóm của builder) · BuilderBanDoMoi / ChuyenDeHinhBuilder ("Mở trong builder").
+// Dùng lại nguyên module: BoChonNhom (bộ chọn nhóm của builder) · ChonBaiHoc / ChonMoHinh (bộ chọn của builder Hình) ·
+// BuilderBanDoMoi / ChuyenDeHinhBuilder ("Mở trong builder"). Hình = khuôn mô hình–bài–ý: khung = bài học (Học) + mô hình (Luyện).
 // Một lượt gọi cho cả lưới (fn_gtt_man_tuan); bấm ô mới gọi chi tiết; mutation vá đúng ô (CLAUDE.md §2 React); rời màn quay lại = đúng chỗ cũ (NHO).
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
   oCuaToi, manTuan, chonBuoi, datKhung, chuyen, ngayBuoi, thuHaiTuanSau, congNgay, ddmm, gio, THU, khungThanhChon,
-  type GttMan, type GttCa, type GttLop, type GttO, type GttGiaoTrinh, type GttHanhDong,
+  type GttMan, type GttCa, type GttLop, type GttO, type GttGiaoTrinh, type GttHanhDong, type KhungHinh,
 } from '../../lib/giaoTrinhTuan'
 import { noiDung, loiDoc, type NdBuoi, type ChonBuoi } from '../../lib/tailieuBdm'
 import { nhanhCayChon } from '../../lib/kho/banDoMoi'
 import { laNhanhMoHinh, thuTuMon } from '../../lib/mon'
 import BoChonNhom from '../tailieu/bdm/BoChonNhom'
 import BuilderBanDoMoi from '../tailieu/bdm/BuilderBanDoMoi'
-import ChuyenDeHinhBuilder from '../tailieu/bdm/ChuyenDeHinhBuilder'
+import ChuyenDeHinhBuilder, { ChonBaiHoc, ChonMoHinh } from '../tailieu/bdm/ChuyenDeHinhBuilder'
 
 type Mo = { lop: string; ngay: string } | null
 const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
@@ -212,7 +213,8 @@ function OCa({ ca, dangMo, onMo }: { ca: GttCa; dangMo: boolean; onMo: () => voi
           {trong ? <div className="text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
             <ul className="mt-0.5 space-y-0.5">
               {b.khung.map((k) => (
-                <li key={k.ma} className="leading-snug">
+                <li key={k.loai + k.ma} className="leading-snug">
+                  {k.loai === 'mo_hinh' && <span className="text-teal-700">Luyện · </span>}
                   <span className="font-medium text-slate-800">{k.ten ?? k.ma}</span>
                   {k.con.length > 0 && <span className="text-slate-500"> · {k.con.length} dạng</span>}
                 </li>
@@ -233,10 +235,16 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
 }) {
   const [loi, setLoi] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
-  const [boChon, setBoChon] = useState<{ gt: GttGiaoTrinh | null; daChon: ChonBuoi } | null>(null)
+  // bộ chọn đang mở: nhóm › dạng bài (BoChonNhom) · bài học Hình (ChonBaiHoc) · mô hình Hình (ChonMoHinh). gt ≠ null ⇒ tạo buổi mới ở giáo trình đó.
+  const [boChon, setBoChon] = useState<{ kieu: 'nhom'; gt: GttGiaoTrinh | null; daChon: ChonBuoi } | { kieu: 'bai'; gt: GttGiaoTrinh | null; daChon: string[] } | { kieu: 'mo_hinh'; gt: GttGiaoTrinh | null; daChon: string[] } | null>(null)
   const [chonCoSan, setChonCoSan] = useState(!ca.buoi)   // ca chưa gắn ⇒ mở sẵn phần chọn buổi
   const b = ca.buoi
-  const laKhuonNhom = (nhanh: string | null) => !laNhanhMoHinh(nhanh)   // Hình = khuôn mô hình–bài–ý: khung sửa trong builder Hình (bước 3)
+  const laKhuonNhom = (nhanh: string | null) => !laNhanhMoHinh(nhanh)   // Hình = khuôn mô hình–bài–ý: khung = bài học + mô hình
+  // Ghi khung Hình: bộ chọn của builder Hình tự đóng khi bấm xong ⇒ lỗi báo ở khung bên phải.
+  async function ghiHinh(chon: KhungHinh, gt: GttGiaoTrinh | null) {
+    setBoChon(null); setBusy(true); setLoi(null)
+    try { onVa(await datKhung(lop.id, ca.ngay, chon, gt?.id ?? null)); setChonCoSan(false) } catch (e) { setLoi(loiDoc(e)) } finally { setBusy(false) }
+  }
 
   async function lam(f: () => Promise<GttCa>) {
     setBusy(true); setLoi(null)
@@ -268,11 +276,11 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
                 <div className="font-semibold">Buổi {b.stt}{b.tieu_de ? ` · ${b.tieu_de}` : ''}</div>
               </div>
               <div className="px-3 py-2">
-                {b.khung.length === 0 ? <p className="text-slate-400">Chưa có nhóm / dạng nào.</p> : (
+                {b.khung.length === 0 ? <p className="text-slate-400">{laKhuonNhom(b.nhanh) ? 'Chưa có nhóm / dạng nào.' : 'Chưa có bài học / mô hình nào.'}</p> : (
                   <ul className="space-y-1.5">
                     {b.khung.map((k) => (
-                      <li key={k.ma}>
-                        <div className="font-medium">{k.ten ?? k.ma}</div>
+                      <li key={k.loai + k.ma}>
+                        <div className="font-medium">{k.loai === 'dang' && <span className="mr-1 rounded bg-sky-100 px-1.5 text-[11px] font-semibold text-sky-700">Học</span>}{k.loai === 'mo_hinh' && <span className="mr-1 rounded bg-teal-100 px-1.5 text-[11px] font-semibold text-teal-700">Luyện</span>}{k.ten ?? k.ma}</div>
                         {k.con.length > 0 && <div className="mt-0.5 flex flex-wrap gap-1">{k.con.map((d) => <span key={d.ma} className="rounded bg-slate-100 px-1.5 py-0.5 text-[11.5px] text-slate-600">{d.ten ?? d.ma}</span>)}</div>}
                       </li>
                     ))}
@@ -281,10 +289,15 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
               </div>
               <div className="flex flex-wrap gap-2 border-t border-slate-100 px-3 py-2">
                 {sua && laKhuonNhom(b.nhanh) && !b.luu_tru && (
-                  <button disabled={busy} onClick={() => setBoChon({ gt: null, daChon: khungThanhChon(b.khung) })}
+                  <button disabled={busy} onClick={() => setBoChon({ kieu: 'nhom', gt: null, daChon: khungThanhChon(b.khung) })}
                     className="rounded-lg bg-indigo-600 px-3 py-1.5 font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">✏️ Sửa khung</button>
                 )}
-                {!laKhuonNhom(b.nhanh) && <span className="self-center text-[12px] text-slate-500">Khung Hình sửa trong builder Hình.</span>}
+                {sua && !laKhuonNhom(b.nhanh) && !b.luu_tru && (<>
+                  <button disabled={busy} onClick={() => setBoChon({ kieu: 'bai', gt: null, daChon: b.khung.filter((k) => k.loai === 'dang').map((k) => k.ma) })}
+                    className="rounded-lg bg-sky-600 px-3 py-1.5 font-semibold text-white hover:bg-sky-700 disabled:opacity-50">✏️ Bài học</button>
+                  <button disabled={busy} onClick={() => setBoChon({ kieu: 'mo_hinh', gt: null, daChon: b.khung.filter((k) => k.loai === 'mo_hinh').map((k) => k.ma) })}
+                    className="rounded-lg bg-teal-600 px-3 py-1.5 font-semibold text-white hover:bg-teal-700 disabled:opacity-50">✏️ Mô hình</button>
+                </>)}
                 <button onClick={() => onBuilder({ id: b.tai_lieu_id, hinh: !laKhuonNhom(b.nhanh) })}
                   className="rounded-lg border border-slate-200 px-3 py-1.5 font-semibold text-slate-700 hover:bg-slate-50">📖 Mở trong builder</button>
                 {sua && <button disabled={busy} onClick={() => setChonCoSan((v) => !v)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-50">🔁 Đổi buổi</button>}
@@ -298,7 +311,7 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
               {lop.giao_trinh.length === 0 && <p className="rounded-lg bg-rose-50 px-3 py-2 text-rose-700">Lớp chưa có giáo trình (bản đồ mới). Tạo ở <b>Làm tài liệu › Giáo trình (bản đồ mới)</b> rồi quay lại.</p>}
               {lop.giao_trinh.map((g) => (
                 <ChonBuoiCuaGt key={g.id} gt={g} lop={lop} ca={ca} busy={busy}
-                  onMoi={laKhuonNhom(g.nhanh) ? () => setBoChon({ gt: g, daChon: [] }) : null}
+                  onMoi={() => setBoChon(laKhuonNhom(g.nhanh) ? { kieu: 'nhom', gt: g, daChon: [] } : { kieu: 'bai', gt: g, daChon: [] })}
                   onChon={(buoiId) => lam(async () => { const r = await chonBuoi(lop.id, ca.ngay, buoiId); setChonCoSan(false); return r })} />
               ))}
             </section>
@@ -308,12 +321,14 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
 
       {boChon && (
         <div onClick={(e) => e.stopPropagation()}>
-          <BoChonNhom khoi={khoi} nhanh={nhanhCayChon(mon, boChon.gt?.nhanh ?? b?.nhanh)} daChon={boChon.daChon} onClose={() => setBoChon(null)}
+          {boChon.kieu === 'bai' ? <ChonBaiHoc khoi={khoi} daChon={boChon.daChon} onClose={() => setBoChon(null)} onConfirm={(mas) => ghiHinh({ bai: mas }, boChon.gt)} />
+          : boChon.kieu === 'mo_hinh' ? <ChonMoHinh khoi={khoi} daChon={boChon.daChon} onClose={() => setBoChon(null)} onConfirm={(ids) => ghiHinh({ mo_hinh: ids }, boChon.gt)} />
+          : <BoChonNhom khoi={khoi} nhanh={nhanhCayChon(mon, boChon.gt?.nhanh ?? b?.nhanh)} daChon={boChon.daChon} onClose={() => setBoChon(null)}
             onConfirm={async (c) => {
               // lỗi ném ra ⇒ BoChonNhom giữ popup + lựa chọn, báo tại chỗ
               const r = await datKhung(lop.id, ca.ngay, c, boChon.gt?.id ?? null)
               onVa(r); setBoChon(null); setChonCoSan(false)
-            }} />
+            }} />}
         </div>
       )}
     </div>
@@ -322,7 +337,7 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
 
 // Danh sách buổi của MỘT giáo trình (bấm mới tải) — buổi đã gắn ca khác hiện ngày, không chọn được (1-1).
 function ChonBuoiCuaGt({ gt, lop, ca, busy, onMoi, onChon }: {
-  gt: GttGiaoTrinh; lop: GttLop; ca: GttCa; busy: boolean; onMoi: (() => void) | null; onChon: (buoiId: string) => void
+  gt: GttGiaoTrinh; lop: GttLop; ca: GttCa; busy: boolean; onMoi: () => void; onChon: (buoiId: string) => void
 }) {
   const [mo, setMo] = useState(false)
   const [buoi, setBuoi] = useState<NdBuoi[] | null>(null)
@@ -340,7 +355,7 @@ function ChonBuoiCuaGt({ gt, lop, ca, busy, onMoi, onChon }: {
         <span className="font-semibold">{gt.ten}</span>
         {laNhanhMoHinh(gt.nhanh) && <span className="rounded bg-slate-100 px-1.5 text-[11px] text-slate-500">Hình</span>}
         <div className="ml-auto flex gap-1.5">
-          {onMoi && <button disabled={busy} onClick={onMoi} className="rounded-lg bg-indigo-600 px-2.5 py-1 text-[12.5px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">+ Buổi mới</button>}
+          {<button disabled={busy} onClick={onMoi} className="rounded-lg bg-indigo-600 px-2.5 py-1 text-[12.5px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">+ Buổi mới</button>}
           <button onClick={() => setMo((v) => !v)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12.5px] text-slate-700 hover:bg-slate-50">{mo ? 'Ẩn buổi' : 'Chọn buổi có sẵn'}</button>
         </div>
       </div>
