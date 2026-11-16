@@ -649,31 +649,33 @@ function CayTrai({ nd, ten, nhan, onJump }: { nd: NoiDung; ten: string; nhan: st
 
 // ⭐ Thùy 28/10: Copy 1 buổi từ giáo trình LỚP KHÁC (cùng khối + môn + nhánh) sang giáo trình đang mở.
 // Flow: chọn lớp → chọn giáo trình của lớp đó → chọn 1 buổi → "📥 Copy vào cuối". Chép ĐỘC LẬP (câu + cấu hình).
-function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, onClose, onDone }: {
-  tlId: string; tlLopId: string | null; khoi: string; mon: string; nhanh: string | null
+// 16/11: dùng chung cho builder giáo trình Hình (ChuyenDeHinhBuilder) — cùng khuôn buổi → phần → câu/bài, cùng hàm fn_tl_bdm_copy_buoi.
+//   tlLopId bỏ trống ⇒ tự lấy lớp của giáo trình đang mở từ chính danh sách giáo trình (không thêm lượt gọi).
+export function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, moTa, onClose, onDone }: {
+  tlId: string; tlLopId?: string | null; khoi: string; mon: string; nhanh: string | null; moTa?: string
   onClose: () => void; onDone: (r: { buoiMoiId: string; soPhan: number; soCau: number }) => void
 }) {
-  const [lops, setLops] = useState<Lop[]>([])
+  const [lopAll, setLopAll] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(null)
-  const [gts, setGts] = useState<TaiLieu[]>([])
+  const [gtAll, setGtAll] = useState<TaiLieu[] | null>(null)
   const [gtId, setGtId] = useState<string | null>(null)
   const [buois, setBuois] = useState<{ id: string; tieu_de: string | null; thu_tu: number }[]>([])
   const [buoiId, setBuoiId] = useState<string | null>(null)
   const [tenMoi, setTenMoi] = useState('')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  // Lớp cùng khối+môn, loại chính lớp của GT đang mở (không copy từ chính mình).
+  // Lớp cùng khối+môn đang học + giáo trình bản đồ mới cùng nhánh (không phải phase 0) — tải MỘT lần lúc mở.
   useEffect(() => {
-    listLop(khoi).then((ls) => setLops(ls.filter((l) => l.mon === mon && l.id !== tlLopId && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop))))
+    listLop(khoi).then((ls) => setLopAll(ls.filter((l) => l.mon === mon && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop))))
       .catch((e) => setErr(e.message ?? String(e)))
-  }, [khoi, mon, tlLopId])
-  // Giáo trình của lớp đã chọn (bản đồ mới, cùng nhánh, không phải phase 0).
-  useEffect(() => {
-    if (!lopId) { setGts([]); setGtId(null); return }
     listTaiLieu(khoi, 'giao_trinh', mon, nhanh ?? undefined, { banDo: 'moi', limit: 100 })
-      .then((all) => setGts(all.filter((t) => t.lop_id === lopId)))
-      .catch((e) => setErr(e.message ?? String(e)))
-  }, [lopId, khoi, mon, nhanh])
+      .then(setGtAll).catch((e) => setErr(e.message ?? String(e)))
+  }, [khoi, mon, nhanh])
+  // Lớp của giáo trình đang mở — loại khỏi danh sách (không copy từ chính mình).
+  const lopCuaToi = tlLopId ?? gtAll?.find((t) => t.id === tlId)?.lop_id ?? null
+  const lops = useMemo(() => lopAll.filter((l) => l.id !== lopCuaToi), [lopAll, lopCuaToi])
+  const gts = useMemo(() => (lopId ? (gtAll ?? []).filter((t) => t.lop_id === lopId && t.id !== tlId) : []), [gtAll, lopId, tlId])
+  useEffect(() => { setGtId(null) }, [lopId])
   // Buổi của GT đã chọn
   useEffect(() => {
     if (!gtId) { setBuois([]); setBuoiId(null); return }
@@ -699,7 +701,8 @@ function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, onClose, onDone }: {
       </Field>
       {lopId && (
         <Field label="2. Giáo trình của lớp">
-          {gts.length === 0 ? <div className="text-[12px] italic text-slate-400">Lớp này chưa có giáo trình bản đồ mới (cùng nhánh).</div>
+          {!gtAll ? <div className="text-[12px] italic text-slate-400">Đang tải…</div>
+            : gts.length === 0 ? <div className="text-[12px] italic text-slate-400">Lớp này chưa có giáo trình bản đồ mới (cùng nhánh).</div>
             : <select value={gtId ?? ''} onChange={(e) => setGtId(e.target.value || null)} className={inp}>
               <option value="">— Chọn giáo trình —</option>
               {gts.map((t) => <option key={t.id} value={t.id}>{t.ten}</option>)}
@@ -721,7 +724,7 @@ function CopyBuoiModal({ tlId, tlLopId, khoi, mon, nhanh, onClose, onDone }: {
         </Field>
       )}
       {err && <p className="mb-2 text-xs text-rose-600">{err}</p>}
-      <div className="mb-3 text-[11px] text-slate-400">Chép <b>ĐỘC LẬP</b>: toàn bộ nhóm/dạng bài/BTVN/câu + cấu hình in của câu. Sau khi copy, 2 lớp sửa riêng không ảnh hưởng nhau.</div>
+      <div className="mb-3 text-[11px] text-slate-400">Chép <b>ĐỘC LẬP</b>: {moTa ?? 'toàn bộ nhóm/dạng bài/BTVN/câu + cấu hình in của câu'}. Sau khi copy, 2 lớp sửa riêng không ảnh hưởng nhau.</div>
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>
         <button onClick={copy} disabled={!buoiId || busy} className="rounded-md bg-violet-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40">{busy ? 'Đang copy…' : '📥 Copy vào cuối'}</button>

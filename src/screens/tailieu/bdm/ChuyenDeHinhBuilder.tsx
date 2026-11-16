@@ -13,7 +13,7 @@ import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
-import { KhoiCau, type CfgCau } from './BuilderBanDoMoi'
+import { KhoiCau, CopyBuoiModal, type CfgCau } from './BuilderBanDoMoi'
 import { AnhMmEditCtx } from '../anhMmCtx'
 import type { CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
@@ -36,6 +36,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const [chonHoc, setChonHoc] = useState<CdhPhan | null>(null)                                    // + Bài học (giáo trình)
   const [chonCauHoc, setChonCauHoc] = useState<{ p: CdhPhan; h: HhBai; btvn: boolean } | null>(null)
   const [ganLop, setGanLop] = useState(false)
+  const [copyBuoi, setCopyBuoi] = useState(false)   // 📥 Lấy buổi từ giáo trình Hình của lớp khác (16/11 — trước chỉ builder Đại/HGT có)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
@@ -268,7 +269,12 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                 </div>
               </div>
             ))}
-            <button onClick={themPhan} className="w-full rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
+            <div className="flex gap-2">
+              <button onClick={themPhan} className="flex-1 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
+              {laGiaoTrinh && (
+                <button onClick={() => setCopyBuoi(true)} className="rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 px-4 py-3 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50" title={`Copy buổi từ giáo trình Hình lớp khác (cùng khối ${khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy buổi từ lớp khác</button>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -299,6 +305,20 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
           coKhoLop macDinh={btvn ? 'luyen' : 'lop'}
           onClose={() => setChonCauHoc(null)} onConfirm={async (mas) => { setChonCauHoc(null); await datCauHoc(p, phanId, mas) }} />
       })()}
+      {copyBuoi && (
+        <CopyBuoiModal tlId={id} khoi={khoi} mon={nd.tai_lieu.mon} nhanh={nd.tai_lieu.nhanh}
+          moTa="toàn bộ bài học (lý thuyết · bài luyện · BTVN), mô hình + bài và BTVN của mô hình, kèm cấu hình in (dòng kẻ, hình)"
+          onClose={() => setCopyBuoi(false)}
+          onDone={(r) => {
+            setCopyBuoi(false)
+            // thêm buổi = đổi khung ⇒ đọc lại nền (giữ màn), cấu hình in của bài vừa chép nằm ở cau_hinh ⇒ lấy luôn bản mới
+            lam(async () => {
+              const n = await cdhNoiDung(id)
+              setNd(n); setCh((n.tai_lieu?.cau_hinh ?? {}) as CauHinh); markSaved()
+              setTimeout(() => jump(r.buoiMoiId), 50)
+            })
+          }} />
+      )}
       {ganLop && <GanLopBdm hinh masterId={id} khoi={khoi} tl={{ mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch }} onClose={() => setGanLop(false)} />}
     </div>
     </AnhMmEditCtx.Provider>
