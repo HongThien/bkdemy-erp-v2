@@ -12,6 +12,8 @@ const LIMIT = 10000
 // nguLieuTbl = bảng NGỮ LIỆU (đoạn văn / thông báo / biển báo dùng chung nhiều câu) — chỉ môn có ngữ liệu (Tiếng Anh); null = môn không có.
 // formTnTbl = phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu — spec-mcq-form.md. Mới có bảng dai_ (pool 1 lớp 7);
 // khtn_/hgt_ là TÊN theo quy ước, bảng tạo cùng DDL khi môn đó cần — gọi sớm thì PostgREST báo lỗi to, không im lặng.
+// Thiếu môn khi GHI dữ liệu học tập = lỗi (§1.6: không có dữ liệu "chung chung"); trước 16/11 các hàm tạo tự điền 'Toán'.
+const canMon = (mon: string | null | undefined, viec: string): string => { if (!mon) throw new Error(`Thiếu môn khi ${viec} — không tự điền môn.`); return mon }
 export function khoCuaMon(mon?: string | null, nhanh?: string | null): { cauTbl: string; banDoTbl: string; ltDangTbl: string; ltCdTbl: string; formTnTbl: string; nguLieuTbl: string | null; listMap: (khoi: string) => Promise<MapRow[]> } {
   return mon === 'KHTN'
     ? { cauTbl: 'khtn_cau_hoi', banDoTbl: 'khtn_ban_do', ltDangTbl: 'khtn_dang_ly_thuyet', ltCdTbl: 'khtn_chuyen_de_ly_thuyet', formTnTbl: 'khtn_cau_form_tn', nguLieuTbl: null, listMap: listKhtnMap }
@@ -363,7 +365,7 @@ export async function listTaiLieuFacets(): Promise<{ loai: string; mon: string }
 export async function createTaiLieu(input: { loai?: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; ma_chuyen_de?: string | null; theme?: string; ban_do?: 'cu' | 'moi'; lopId?: string | null }): Promise<TaiLieu> {
   const { data: { user } } = await supabase.auth.getUser() // người tạo = session hiện tại
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', lop_id: input.lopId ?? null, created_by: user?.id ?? null })
+    .insert({ loai: input.loai ?? 'giao_trinh', ten: input.ten, khoi: input.khoi, mon: canMon(input.mon, 'tạo tài liệu'), nhanh: input.nhanh ?? null, ma_chuyen_de: input.ma_chuyen_de ?? null, theme: input.theme ?? 'bkdemy', ban_do: input.ban_do ?? 'cu', lop_id: input.lopId ?? null, created_by: user?.id ?? null })
     .select().single()
   if (error) throw error
   return data as TaiLieu
@@ -750,7 +752,7 @@ export async function listET(lopId?: string): Promise<ETDoc[]> {
 export async function createET(input: { lopId: string; ngay: string; ten: string; khoi: string; mon?: string; nhanh?: string | null; banDo?: 'cu' | 'moi' }): Promise<ETDoc> {
   const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase.from('tai_lieu')
-    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: input.mon ?? 'Toán', nhanh: input.nhanh ?? null, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null, ...(input.banDo ? { ban_do: input.banDo } : {}) })
+    .insert({ loai: 'et', ten: input.ten, khoi: input.khoi, mon: canMon(input.mon, 'tạo ET'), nhanh: input.nhanh ?? null, lop_id: input.lopId, ngay: input.ngay, created_by: user?.id ?? null, ...(input.banDo ? { ban_do: input.banDo } : {}) })
     .select().single()
   if (error) throw error
   return data as ETDoc
@@ -778,7 +780,7 @@ export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_i
   const s = src as any
   const { data: { user } } = await supabase.auth.getUser()
   const { data: nw, error } = await supabase.from('tai_lieu').insert({
-    loai: s.loai, ten: over.ten, khoi: s.khoi, mon: s.mon ?? 'Toán', nhanh: s.nhanh ?? null, ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
+    loai: s.loai, ten: over.ten, khoi: s.khoi, mon: canMon(s.mon, 'nhân bản tài liệu'), nhanh: s.nhanh ?? null, ma_chuyen_de: s.ma_chuyen_de, theme: s.theme, cau_hinh: s.cau_hinh,
     lop_id: over.lop_id ?? null, ngay: over.ngay ?? null, created_by: user?.id ?? null,
   }).select().single()
   if (error) throw error
@@ -913,7 +915,7 @@ export async function trichXuatBuoi(masterId: string, buoiPhanId: string, opts: 
     // Re-trích = THAY THẾ doc cũ cùng (lớp+ngày+loại) — chống trùng (unique uq_tai_lieu_van_hanh).
     await supabase.from('tai_lieu').delete().eq('loai', loai).eq('lop_id', opts.lopId).eq('ngay', opts.ngay)
     const { data, error } = await supabase.from('tai_lieu').insert({
-      loai, ten: tenDocBuoi(loai, opts.tenLop, opts.ngay, tieuDeLop), khoi: opts.khoi, mon: (master as any)?.mon ?? 'Toán', nhanh: (master as any)?.nhanh ?? null, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
+      loai, ten: tenDocBuoi(loai, opts.tenLop, opts.ngay, tieuDeLop), khoi: opts.khoi, mon: canMon((master as any)?.mon, 'trích tài liệu buổi (không đọc được giáo trình gốc)'), nhanh: (master as any)?.nhanh ?? null, theme: (master as any)?.theme ?? 'bkdemy', cau_hinh: (master as any)?.cau_hinh ?? {},
       lop_id: opts.lopId, ngay: opts.ngay, nguon_id: masterId, nguon_buoi: buoiPhanId, stt_lop: stt, created_by: user?.id ?? null,
     }).select().single()
     if (error) throw error

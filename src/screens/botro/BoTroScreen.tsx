@@ -527,7 +527,8 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
       const byMon: Record<string, Set<string>> = {}
       for (const prob of p) {
         if (!prob.ma_dang || !prob.hoc_sinh_id) continue
-        const mon = hi[prob.hoc_sinh_id]?.mon || 'Toán'
+        const mon = hi[prob.hoc_sinh_id]?.mon   // 16/11: không biết môn của em thì không tra tên (không đoán Toán)
+        if (!mon) continue
         ;(byMon[mon] ??= new Set()).add(prob.ma_dang)
       }
       const dt: Record<string, string> = {}
@@ -538,7 +539,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
       setDangTen(dt)
     } catch { /* */ }
   }
-  const tenDang = (md: string, hocSinhId: string) => { const mon = hsInfo[hocSinhId]?.mon || 'Toán'; return dangTen[`${mon}|${md}`] ?? md }
+  const tenDang = (md: string, hocSinhId: string) => { const mon = hsInfo[hocSinhId]?.mon; return (mon && dangTen[`${mon}|${md}`]) || md }
   useEffect(() => { (async () => { try { await ensureBuoiBuETProblems(buoiId) } catch { /* */ } reload() })() }, []) // eslint-disable-line
   const coMat = roster.filter((r) => r.diem_danh === 'co_mat')
   // Đã đánh giá = có nhận xét không rỗng HOẶC ≥1 ô chấm dạng (cùng công thức `danhGiaTienDo`, gami.ts).
@@ -629,7 +630,7 @@ export function BuoiBuDetail({ buoiId, readOnly = false, onClose }: { buoiId: st
                     </div>
                     </div>
                     {/* Câu em đang làm (luyện/test bù) + đáp án + lời giải chi tiết — TA giảng không cần nháp (Thùy 16/10) */}
-                    <CauCuaEmTA hocSinhId={r.hoc_sinh_id} buoiId={buoiId} mon={info?.mon || 'Toán'} tenHS={tenHT[i]} />
+                    {info?.mon && <CauCuaEmTA hocSinhId={r.hoc_sinh_id} buoiId={buoiId} mon={info.mon} tenHS={tenHT[i]} />}
                     <div>
                       <div className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-slate-400">Nhận xét của GV</div>
                       <textarea value={nx[r.hoc_sinh_id] ?? ''} disabled={readOnly} onChange={(e) => setNx((m) => ({ ...m, [r.hoc_sinh_id]: e.target.value }))} onBlur={() => luuNhanXet(r.hoc_sinh_id)}

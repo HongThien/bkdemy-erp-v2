@@ -28,7 +28,7 @@ export default function TangTocToanHS({ onXong }: { onXong: (kq: KqTangToc) => v
   const [kq, setKq] = useState<NtTangTocNop | null>(null)
   const [dang, setDang] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
-  useEffect(() => { ntTangTocDe().then(setDe).catch((e) => setLoi('Chưa tải được câu hỏi — ' + ((e as Error).message ?? e))) }, [])
+  useEffect(() => { ntTangTocDe('Toán').then(setDe)   /* game Tăng tốc TOÁN — môn là của chính trò chơi */.catch((e) => setLoi('Chưa tải được câu hỏi — ' + ((e as Error).message ?? e))) }, [])
 
   const nop = async () => {
     if (!de || !de.ok || dang || chon.some((c) => c < 0)) return

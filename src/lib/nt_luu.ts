@@ -55,7 +55,7 @@ export type NtTangTocDe = { ok: true; de_id: string; can_dung: number; giam: num
   | { ok: false; loi: string; cho_giay?: number; con_luot?: number }
 export type NtTangTocNop = { ok: true; so_dung: number; dat: boolean; giam: number; dap_an: number[]; con_luot: number; cho_giay: number }
   | { ok: false; loi: string }
-export async function ntTangTocDe(mon = 'Toán'): Promise<NtTangTocDe> {
+export async function ntTangTocDe(mon: string): Promise<NtTangTocDe> {   // 16/11: môn bắt buộc (DB không còn mặc định 'Toán')
   const { data, error } = await supabase.rpc('fn_nt_tang_toc_de', { p_muc_tieu: 'may', p_mon: mon })
   if (error) throw error
   return data as NtTangTocDe

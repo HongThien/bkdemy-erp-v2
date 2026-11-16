@@ -19,8 +19,8 @@ import { dsHSChamMT, type MTHSCham } from '../../lib/chamMT'
 import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import TruocBuoiTab from './TruocBuoiTab'
 import XepHangBuoi from './XepHangBuoi'
-import { listDaiDang, listBdmMap, type CauHoi } from '../../lib/kho/api'
-import { nhanhChonCuaKhoi } from '../../lib/tailieu'
+import { listBdmMap, type CauHoi } from '../../lib/kho/api'
+import { nhanhChonCuaKhoi, khoCuaMon } from '../../lib/tailieu'
 import { MathText } from '../kho/ui'
 import SearchSelect from '../../components/SearchSelect'
 import { BuoiPickEditor } from '../kho/hinh/SoanTaiLieu'
@@ -326,13 +326,14 @@ export function BuoiDetail({ id, onClose, tabs, initialTab, canManage = true, on
   async function reload() {
     const [b, r, ns] = await Promise.all([getBuoi(id), getRoster(id), listNhanSu()])
     setBuoi(b); setRoster(onlyHsId ? r.filter((x) => x.hoc_sinh_id === onlyHsId) : r); setDsNS(ns)
-    // dạng theo khối của lớp (cho picker chấm bài + tên dạng ở đánh giá). Toán: bản đồ cũ + dạng bài bản đồ mới (NDB…) của khối.
-    const khoi = (b as any).lop?.khoi
-    if (khoi) {
+    // dạng theo khối + MÔN của lớp (cho picker chấm bài + tên dạng ở đánh giá): bản đồ cũ của môn + dạng bài bản đồ mới (NDB…) nếu khối đã chạy.
+    // 16/11: trước luôn đọc kho Toán (listDaiDang + nhanhChonCuaKhoi('Toán')) ⇒ buổi lớp KHTN chọn được / hiện tên dạng Toán.
+    const khoi = (b as any).lop?.khoi, mon = (b as any).lop?.mon as string | undefined
+    if (khoi && mon) {
       try {
-        const cu = (await listDaiDang(khoi)).map((d) => ({ ma_dang: d.ma_dang, ten: d.ten_dang }))
-        const coMoi = (await nhanhChonCuaKhoi('Toán', khoi)).some((n) => n.ma === 'bdm')
-        const moi = coMoi ? (await listBdmMap(khoi)).map((d) => ({ ma_dang: d.leafMa, ten: d.leafTen })) : []
+        const cu = (await khoCuaMon(mon).listMap(khoi)).map((d) => ({ ma_dang: d.leafMa, ten: d.leafTen }))
+        const coMoi = (await nhanhChonCuaKhoi(mon, khoi)).some((n) => n.ma === 'bdm')
+        const moi = coMoi ? (await listBdmMap(khoi, mon)).map((d) => ({ ma_dang: d.leafMa, ten: d.leafTen })) : []
         setDangOpts([...moi, ...cu])
       } catch { /* */ }
     }
