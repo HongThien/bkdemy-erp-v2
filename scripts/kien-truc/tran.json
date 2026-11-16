@@ -1,14 +1,16 @@
 {
-  "code_from_bang": 1179,
+  "code_from_bang": 1178,
   "code_set_interval": 22,
-  "code_limit_lon": 521,
+  "code_limit_lon": 520,
   "code_select_sao": 213,
-  "code_mon_cung": 101,
+  "code_mon_cung": 100,
   "db_secdef_khong_cong": 135,
   "db_fk_thieu_index": 398,
   "db_ham_dung_email": 2,
-  "db_ham_noi_bo_mo": 319,
+  "db_ham_noi_bo_mo": 320,
   "db_cron_job": 7,
   "db_ham_bang_tam_thieu_analyze": 15,
-  "db_policy_goi_ham_tran": 1
+  "db_policy_goi_ham_tran": 1,
+  "code_mon_mac_dinh": 40,
+  "db_ham_mon_mac_dinh": 16
 }

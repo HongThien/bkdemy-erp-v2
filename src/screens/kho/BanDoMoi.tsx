@@ -36,6 +36,7 @@ import KhoTrenLopModal from './KhoTrenLopModal'
 import DangPickerOne from '../../components/DangPickerOne'
 import MasteryBdmCongTac from './MasteryBdmCongTac'
 import { useStore } from '../../store/useStore'
+import { useMonScope } from '../../hooks/useMonScope'
 import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
@@ -1338,7 +1339,11 @@ const docMon = (): BdmMon => {
 }
 export default function BanDoMoiScreen() {
   const [khoi, setKhoi] = useState<string>(docKhoi)
-  const [mon, setMon] = useState<BdmMon>(docMon)
+  // 16/11: môn trên thanh chọn = môn có bản đồ mới ∩ quyền môn; môn nhớ ở máy mà ngoài quyền (hoặc chưa nhớ ⇒ 'Toán') thì lấy môn đầu trong quyền
+  const quyenMon = useMonScope()
+  const dsMon = DS_MON_BDM.filter((m) => quyenMon.allowed(m))
+  const [monChon, setMon] = useState<BdmMon>(docMon)
+  const mon: BdmMon = dsMon.includes(monChon) || !dsMon.length ? monChon : dsMon[0]
   datMonBdm(mon)   // đặt TRƯỚC khi màn con tải cây (mọi hàm banDoMoi.ts đọc bộ bảng của môn này)
   useEffect(() => { try { localStorage.setItem('bdm.mon', mon) } catch { /* bỏ qua */ } }, [mon])
   // KHÔNG reset môn khi rời màn bằng effect cleanup: StrictMode chạy cleanup ngay lần dựng đầu ⇒ cây tải nhầm bộ Toán (dính 29/10).
@@ -1349,7 +1354,7 @@ export default function BanDoMoiScreen() {
   const chonKhoi = (
     <span className="flex items-center gap-0.5">
       <span className="mr-2 flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5">
-        {DS_MON_BDM.map((m) => (
+        {dsMon.map((m) => (
           <button key={m} onClick={() => setMon(m)}
             className={`whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-semibold ${mon === m ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{m}</button>
         ))}

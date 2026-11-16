@@ -4,20 +4,26 @@ import { useEffect, useState } from 'react'
 import { listThanhTich, listGamiMons, type ThanhTichRow } from '../../lib/gami'
 import BangThanhTich from './BangThanhTich'
 import { tenHienThiDs } from '../../lib/hoten'
+import { thuTuMon } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 
 export default function ThanhTichScreen() {
   const [mons, setMons] = useState<string[]>([])
   const [mon, setMon] = useState('')
+  const quyenMon = useMonScope()   // 16/11: môn = môn có điểm ∩ quyền môn
   const [rows, setRows] = useState<ThanhTichRow[]>([])
   const [seasonLbl, setSeasonLbl] = useState('')
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [open, setOpen] = useState<{ id: string; ten: string; maHs: string | null; khoi: string | null } | null>(null)
 
-  useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m[0]) }).catch(() => {}) }, [])
+  useEffect(() => { listGamiMons().then((tat) => { const m = tat.filter((x) => quyenMon.allowed(x)).sort((a, b) => thuTuMon(a) - thuTuMon(b)); setMons(m); if (m.length) setMon(m[0]); else setLoading(false) }).catch(() => {}) }, []) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
+    if (!mon) return   // 16/11: chưa biết môn thì không gọi (mon rỗng = lấy MỌI môn)
+    let song = true
     setLoading(true)
-    listThanhTich(mon || undefined).then((r) => { setRows(r.rows); setSeasonLbl(r.seasonLabel) }).finally(() => setLoading(false))
+    listThanhTich(mon).then((r) => { if (song) { setRows(r.rows); setSeasonLbl(r.seasonLabel) } }).finally(() => song && setLoading(false))
+    return () => { song = false }
   }, [mon])
 
   // FULL-SCREEN: chọn 1 HS → bảng chiếm trọn màn (không phải popup).

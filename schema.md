@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-599 bảng · 42 view · 0 enum · 453 trigger · 1963 function
+599 bảng · 42 view · 0 enum · 453 trigger · 1966 function
 
 ## _app_secrets
 
@@ -11935,6 +11935,7 @@ WITH luot AS (
 - `_mastery_mon_ds()` → text[]
 - `_mastery_theo_lan_bat()` → boolean
 - `_mcq_kiem_kho(p_kho text)` → void
+- `_mon_duoc_xem(p_mon text)` → boolean
 - `_mon_khoi_hop_le(p_mon text, p_khoi text)` → boolean
 - `_mt_dong_bo_diem_thi(p_buoi uuid, p_hs uuid)` → void
 - `_mt_ds_kho()` → TABLE(ma_cau text, chu_de_id text, kho text)
@@ -12605,6 +12606,7 @@ WITH luot AS (
 - `fn_dai_sinh_ma_chuyen_de(p_ma_chu_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_dai_sinh_ma_dang(p_ma_chuyen_de text, p_stt smallint DEFAULT NULL::smallint)` → text
 - `fn_dbht_bang(p_mon text, p_khoi text, p_so_tuan integer DEFAULT 4, p_cap text DEFAULT 'chuyen_de'::text)` → jsonb
+- `fn_dbht_o()` → TABLE(mon text, khoi text, so_lop integer)
 - `fn_dbht_o_lich_su(p_hs uuid, p_mon text, p_cap text, p_ma text, p_so_ngay integer DEFAULT 30)` → jsonb
 - `fn_de_test_dat_dang_dung(p_tai_lieu_id uuid)` → void
 - `fn_de_test_xoa(p_tai_lieu_id uuid)` → void
@@ -13004,6 +13006,7 @@ WITH luot AS (
 - `fn_mcq_metric(p_kho text, p_tu date DEFAULT NULL::date, p_den date DEFAULT NULL::date)` → jsonb
 - `fn_mcq_rule(p_kho text)` → TABLE(ma text, ten text, nhom text, du_phong boolean)
 - `fn_mo_lai_phase(p_buoi_id uuid, p_phase text)` → void
+- `fn_mon_cua_toi()` → jsonb
 - `fn_mt_bang_chuyen_de(p_de uuid)` → jsonb
 - `fn_mt_bang_ket_qua(p_de uuid, p_cap text)` → jsonb
 - `fn_mt_cham_ca_hs(p_buoi uuid, p_hs uuid, p_result text)` → integer

@@ -41,7 +41,8 @@ export function ChatLuongTK({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
       {muc !== 'dashboard' && thanhMuc}
       {muc === 'dashboard' && (cacO ? <DashboardHocTapScreen phong={{ o: cacO.map((x) => ({ mon: x.mon, khoi: x.khoi })), onMoHoSo: moHoSo, dau: thanhMuc }} /> : <>{thanhMuc}<p className="text-[13px] text-slate-400">Đang tải các khối…</p></>)}
       {muc === 'chung' && <><WidgetDangYeu className="" onTaoCaNhe={onTaoCaNhe} theoNhom /><BaoCaoCaNhan chiMuc={['tuan']} /></>}
-      {muc === 'hoso' && <HoSoHocSinh key={hoSo ? `${hoSo.mon}|${hoSo.hs}` : 'trong'} monDau={hoSo?.mon ?? cacO?.[0]?.mon ?? 'Toán'} hsDau={hoSo?.hs ?? null} />}
+      {/* 16/11: chờ có ô phạm vi rồi mới dựng — trước đây ô chưa về thì môn đầu rơi về 'Toán' và giữ luôn */}
+      {muc === 'hoso' && (cacO ? <HoSoHocSinh key={hoSo ? `${hoSo.mon}|${hoSo.hs}` : 'trong'} monDau={hoSo?.mon ?? cacO[0]?.mon} hsDau={hoSo?.hs ?? null} /> : <p className="text-[13px] text-slate-400">Đang tải các khối…</p>)}
       {muc === 'bo_tro' && (cacO ? <DanhSachBoTro che="tk" cacO={cacO} onMoHoSo={moHoSo} /> : null)}
     </div>
   )
@@ -50,7 +51,7 @@ export function ChatLuongTK({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
 // Danh sách bổ trợ — cùng 1 màn cho 2 ghế: tk (sửa · bỏ · chốt & gửi) · tbm (duyệt · trả lại). Chọn 1 ô (môn × khối) để xem.
 export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO: OTongQuan[]; onMoHoSo?: (hs: string, mon: string) => void }) {
   const mons = [...new Set(cacO.map((o) => o.mon))]
-  const [mon, setMon] = useState(mons[0] ?? 'Toán')
+  const [mon, setMon] = useState(mons[0] ?? '')
   const khois = cacO.filter((o) => o.mon === mon).map((o) => o.khoi)
   const [khoi, setKhoi] = useState<string | null>(che === 'tk' ? (khois[0] ?? null) : null)   // tbm: null = mọi khối
   const khoa = `${mon}|${khoi ?? '*'}`
@@ -65,6 +66,7 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
   useEffect(() => {   // đổi ô = đổi ngữ cảnh ⇒ đọc lại (giữ bản đã nhớ của ô đó cho tới khi có bản mới)
     let song = true
     setDs(NHO.ds[khoa] ?? null); setLoi(null)
+    if (!mon) { setDs([]); return }   // phạm vi rỗng ⇒ không gọi (trước: gọi với 'Toán')
     dsBoTro(mon, khoi).then((d) => { if (song) { NHO.ds[khoa] = d; setDs(d) } }).catch((e) => song && setLoi(e?.message ?? String(e)))
     return () => { song = false }
   }, [khoa, lamMoi]) // eslint-disable-line react-hooks/exhaustive-deps

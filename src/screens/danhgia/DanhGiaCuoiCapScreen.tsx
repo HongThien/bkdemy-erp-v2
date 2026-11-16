@@ -3,6 +3,7 @@
 // Bấm ô ⇒ danh sách các lần của nút đó. Mọi con số từ DB (fn_dgcc_*, §2.0); client chỉ gom cột để vẽ, sắp, định dạng.
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
+import { useMonScope } from '../../hooks/useMonScope'
 import { bangLop, cacLan, khoiCuoiCap, nguongTang, TEN_KENH, XU_HUONG, type LanCC, type OCC, type TangCC } from '../../lib/danhGiaCuoiCap'
 
 type Lop = { id: string; ten_lop: string; khoi: string; mon: string }
@@ -34,6 +35,7 @@ export default function DanhGiaCuoiCapScreen() {
   useEffect(() => { if (khung.current) khung.current.scrollTop = NHO.cuon }, [rows])
 
   // lớp đang học thuộc các khối áp dụng (khối lấy từ DB)
+  const quyenMon = useMonScope()
   useEffect(() => {
     let alive = true
     khoiCuoiCap().then((ks) =>
@@ -41,9 +43,11 @@ export default function DanhGiaCuoiCapScreen() {
     ).then(({ data, error }) => {
       if (!alive) return
       if (error) { setLoi('Không tải được danh sách lớp: ' + error.message); return }
-      const ds = ((data ?? []) as Lop[]).sort((a, b) => a.mon.localeCompare(b.mon, 'vi') || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
+      const ds = ((data ?? []) as Lop[]).filter((l) => quyenMon.allowed(l.mon))   // 16/11: chỉ lớp thuộc quyền môn của người đăng nhập
+        .sort((a, b) => a.mon.localeCompare(b.mon, 'vi') || a.ten_lop.localeCompare(b.ten_lop, 'vi', { numeric: true }))
       setLops(ds)
-      if (!NHO.lopId && ds.length) setLopId((ds.find((l) => l.mon === 'Toán') ?? ds[0]).id)
+      if ((!NHO.lopId || !ds.some((l) => l.id === NHO.lopId)) && ds.length) setLopId(ds[0].id)   // lớp đầu của danh sách đã lọc — không ưu tiên môn nào
+      else if (!ds.length) setLopId(null)
     }).catch((e) => alive && setLoi('Không tải được danh sách lớp: ' + (e?.message ?? e)))
     return () => { alive = false }
   }, [])

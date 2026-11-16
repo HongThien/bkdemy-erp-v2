@@ -5,20 +5,20 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import { dsDeDaThi, bangChuyenDe, type DeDaThi, type BangCD, type BangCDCot, type BangCDHS } from '../../lib/chamMT'
 import { MON_CO_KHO } from '../../lib/mon'
+import { useMonChon } from '../../hooks/useMonScope'
 
-const MON = MON_CO_KHO
 // Bề rộng cột (px): chuyên đề tối thiểu COT_MIN rồi giãn đều theo màn; các cột còn lại cố định.
 const COT_TEN = 190, COT_LOP = 60, COT_DIEM = 64, COT_HANG = 64, COT_MIN = 92
 // Rời tab quay lại = đúng chỗ cũ (CLAUDE §React).
 type Cap = 'chuyen_de' | 'chu_de'
-const NHO: { mon: string; deId: string | null; lopId: string | null; cap: Cap; sap: { cot: string; tang: boolean }; huong: Huong } = { mon: 'Toán', deId: null, lopId: null, cap: 'chuyen_de', sap: { cot: 'hang', tang: true }, huong: 'ngang' }
+const NHO: { mon: string; deId: string | null; lopId: string | null; cap: Cap; sap: { cot: string; tang: boolean }; huong: Huong } = { mon: '', deId: null, lopId: null, cap: 'chuyen_de', sap: { cot: 'hang', tang: true }, huong: 'ngang' }
 
 const mauPct = (p: number | undefined) => p == null ? 'bg-slate-50 text-slate-300'
   : p >= 80 ? 'bg-emerald-100 text-emerald-800' : p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'
 const nhanLoai = (v: string | null) => v === 'khao_sat_giua_thang' ? 'Khảo sát' : v === 'khao_sat_thang' ? 'MT' : v === 'test_dau_vao' ? 'Test đầu vào' : v === 'thi_thu' ? 'Thi thử' : v === 'luyen' ? 'Luyện' : 'MT'
 
 export default function BangChuyenDeView() {
-  const [mon, setMon] = useState(NHO.mon)
+  const { mons: MON, mon, setMon } = useMonChon(MON_CO_KHO, NHO.mon)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [des, setDes] = useState<DeDaThi[]>([])
   const [deId, setDeId] = useState<string | null>(NHO.deId)
   const [bang, setBang] = useState<BangCD | null>(null)

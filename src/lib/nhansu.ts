@@ -227,6 +227,9 @@ export type MyProfile = {
   phanCong: (PhanCongLop & { lop?: Lop })[]       // phân công lớp (chỉ xem)
   mons: string[]                                  // môn được phân (scope④ — gate kho/tài liệu theo môn)
   hocThuatMons: string[]                          // môn NS là team học thuật (ghế hoc_thuat) — quyền chốt/duyệt kế hoạch (vd duyệt dạng đuổi)
+  // QUYỀN MÔN — nguồn duy nhất ở DB (fn_mon_cua_toi, mig 202611161701): tat_ca = thấy mọi môn · mon = môn riêng (được phân môn ∪ phạm vi quản lý).
+  // null = chưa đọc được (hook useMonScope rơi về luật cũ ở client). Màn có bộ chọn môn dùng hook, KHÔNG tự dựng danh sách môn.
+  monQuyen?: { tat_ca: boolean; mon: string[] } | null
   khoiPhuTrach: { khoi: string; mon: string }[]   // (khối × môn) được phân công Trưởng/Phó khối (fn_khoi_cua_toi ← phan_cong_quan_ly_khoi) — quyền chấm mọi lớp cùng khối
 }
 // Cache hồ sơ (spec-kien-truc §6): tải MỘT lần mỗi phiên, giữ 5 phút, gộp lượt gọi đang bay, xoá khi có ghi / đổi tài khoản.
@@ -271,7 +274,7 @@ async function taiMyProfile(): Promise<MyProfile | null> {
     }
   }
   if (!nsId) return null
-  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows, htMonRows, pkRes] = await Promise.all([
+  const [nsRes, teamAll, teamMap, vtRes, pcRes, monRows, htMonRows, pkRes, mqRes] = await Promise.all([
     supabase.from('nhan_su').select('*').eq('id', nsId).single(),
     listTeam(), listNhanSuTeamMap(),
     supabase.from('vi_tri').select('*').eq('nhan_su_id', nsId).limit(LIMIT),
@@ -280,6 +283,7 @@ async function taiMyProfile(): Promise<MyProfile | null> {
     listMonHocThuatCuaToi(nsId),
     // Trưởng/Phó khối được phân công (phan_cong_quan_ly_khoi, Thùy 29/10) ⇒ chấm được mọi lớp cùng khối + môn
     supabase.rpc('fn_khoi_cua_toi'),
+    supabase.rpc('fn_mon_cua_toi'),
   ])
   if (nsRes.error) throw nsRes.error
   const tmById = new Map(teamAll.map((t) => [t.id, t]))
@@ -291,6 +295,7 @@ async function taiMyProfile(): Promise<MyProfile | null> {
     mons: monRows,
     hocThuatMons: htMonRows,
     khoiPhuTrach: (pkRes.data ?? []) as { khoi: string; mon: string }[],
+    monQuyen: mqRes.error || !mqRes.data ? null : { tat_ca: (mqRes.data as { tat_ca?: boolean }).tat_ca === true, mon: ((mqRes.data as { mon?: string[] }).mon ?? []) },
   }
 }
 // ── SCOPE ENGINE — "ai thấy task nào" (Thùy chốt 12/06) ──────────

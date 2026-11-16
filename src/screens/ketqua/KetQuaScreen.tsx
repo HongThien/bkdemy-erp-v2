@@ -15,6 +15,7 @@ import { BuoiDetail } from '../gami/BuoiHocScreen'
 import type { TabKey } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
 import { MON_CO_KHO } from '../../lib/mon'
+import { useMonChon } from '../../hooks/useMonScope'
 
 // Chỉ môn CÓ KHO mới suy được mastery (khoCuaMon dispatch dai_/khtn_). Anh/Văn chưa có kho.
 const DAYS = [30, 60, 90] as const
@@ -63,8 +64,11 @@ function PerHocSinh() { return <HoSoHocSinh /> }
 
 // Hồ sơ 1 học sinh — dùng chung cho tab "Từng học sinh" và tab Hồ sơ học tập ở Phòng trưởng khối (Thùy 10/11).
 // monDau/hsDau: mở sẵn 1 em (cha đổi em ⇒ đổi `key` để mount lại). monCoDinh: ẩn nút chọn môn khác.
-export function HoSoHocSinh({ monDau = 'Toán', hsDau = null, monCoDinh = false }: { monDau?: string; hsDau?: string | null; monCoDinh?: boolean } = {}) {
-  const [mon, setMon] = useState(monDau)
+export function HoSoHocSinh({ monDau, hsDau = null, monCoDinh = false }: { monDau?: string; hsDau?: string | null; monCoDinh?: boolean } = {}) {
+  // 16/11: môn trên thanh chọn = quyền môn của người đăng nhập (useMonChon); monCoDinh ⇒ đúng môn cha truyền, không cho đổi
+  const monChon = useMonChon(MON_CO_KHO, monDau)
+  const [monCD] = useState(monDau ?? '')
+  const mon = monCoDinh ? monCD : monChon.mon, setMon = monChon.setMon
   const [hsId, setHsId] = useState<string | null>(hsDau)
   const monTruoc = useRef(mon)   // chỉ xoá em đang chọn khi NGƯỜI DÙNG đổi môn (không phải lúc mount / StrictMode chạy lại)
   const [lopId, setLopId] = useState<string | null>(null) // lớp hiển thị ở cột trái
@@ -107,7 +111,7 @@ export function HoSoHocSinh({ monDau = 'Toán', hsDau = null, monCoDinh = false 
       {/* Bộ lọc: môn + tìm HS */}
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {(monCoDinh ? [mon] : MON_CO_KHO).map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {(monCoDinh ? [mon] : monChon.mons).map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-72"><SearchSelect value={hsId} onChange={pickHS} options={hsOpts} placeholder="Tìm học sinh…" avatars /></div>
       </div>
 
@@ -522,7 +526,7 @@ function ActivityHistory({ mon, lopId, hocSinhId }: { mon: string; lopId?: strin
 
 // Tab "Theo buổi (raw)" — CHỈ lọc theo LỚP (lọc theo HS đã chuyển vào "Từng học sinh › Lịch sử hoạt động").
 function RawBuoi() {
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   useEffect(() => {
@@ -534,7 +538,7 @@ function RawBuoi() {
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-56"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
       </div>
       {!lopId
@@ -552,7 +556,7 @@ const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
 function ClassMatrixView() {
   const [mode, setMode] = useState<'all' | 'detail'>('all')   // Tất cả lớp (tổng quan) ↔ Chi tiết 1 lớp
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   const [phase, setPhase] = useState<MatrixPhase>('btvn')
@@ -589,7 +593,7 @@ function ClassMatrixView() {
           <button onClick={() => setMode('detail')} className={modeBtn(mode === 'detail')}>Chi tiết lớp</button>
         </div>
         <span className="ml-1 text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         {mode === 'detail' && <div className="ml-2 w-56"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>}
         {/* điều hướng THÁNG: prev ‹ · nhãn · next › */}
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
@@ -744,7 +748,7 @@ function ActivityCard({ c, onOpen }: { c: ActCard; onOpen: () => void }) {
 type SortKey = 'yeu' | 'can_luyen' | 'dat' | 'ten'
 const HE_OPTS: Opt[] = [{ id: 'S', label: 'Hệ S' }, { id: 'A', label: 'Hệ A' }, { id: 'B', label: 'Hệ B' }, { id: 'C', label: 'Hệ C' }]
 function LopKhoiRollup() {
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(null)
   const [khoi, setKhoi] = useState<string | null>(null)
   const [he, setHe] = useState<string | null>(null)
@@ -789,7 +793,7 @@ function LopKhoiRollup() {
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-48"><SearchSelect value={lopId} onChange={(v) => { setLopId(v); if (v) { setKhoi(null); setHe(null) } }} options={lopOpts} placeholder="Theo lớp…" /></div>
         <span className="text-[12px] text-slate-400">·</span>
         <div className="w-36"><SearchSelect value={khoi} onChange={(v) => { setKhoi(v); if (v) { setLopId(null); setHe(null) } }} options={khoiOpts} placeholder="Theo khối…" /></div>
@@ -868,7 +872,7 @@ function RollupRow({ h, ten, showLop }: { h: HSRollup; ten: string; showLop: boo
 // ── #3 THEO DẠNG / CHUYÊN ĐỀ: pivot — mỗi dạng (hoặc chuyên đề) 1 thanh phân bố HS → chỗ nào lớp yếu nhất ──
 type PivotItem = { key: string; title: string; sub?: string; dat: number; can_luyen: number; yeu: number; total: number }
 function TheoDang() {
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(null)
   const [khoi, setKhoi] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
@@ -919,7 +923,7 @@ function TheoDang() {
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-52"><SearchSelect value={lopId} onChange={(v) => { setLopId(v); if (v) setKhoi(null) }} options={lopOpts} placeholder="Theo lớp…" /></div>
         <span className="text-[12px] text-slate-400">hoặc</span>
         <div className="w-40"><SearchSelect value={khoi} onChange={(v) => { setKhoi(v); if (v) setLopId(null) }} options={khoiOpts} placeholder="Theo khối…" /></div>
@@ -1009,7 +1013,7 @@ function DiemThiTab() {
 // rank, `tb` null hiển thị "—" — luật MT giữ nguyên văn, xem thanhtich.ts §BXH).
 // 23/10: `ks` = BXH KHẢO SÁT GIỮA THÁNG (fn_bxh_diem_ks_khoi) — cùng luật xếp, cửa sổ = cả tháng dương lịch.
 function BXHDiemMTView({ ks = false }: { ks?: boolean }) {
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [ym, setYm] = useState(curYM())
   const [khoi, setKhoi] = useState<string | null>(null)
   const [khoiOpts, setKhoiOpts] = useState<string[]>([])
@@ -1058,7 +1062,7 @@ function BXHDiemMTView({ ks = false }: { ks?: boolean }) {
     <>
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 flex items-center gap-0.5 rounded-md ring-1 ring-slate-200">
           <button onClick={() => setYm(shiftYM(ym, -1))} className="h-7 rounded-l-md px-2 text-slate-500 hover:bg-slate-100" title="Tháng trước">‹</button>
           <span className="min-w-[92px] text-center text-[13px] font-semibold tabular-nums text-slate-700">Tháng {Number(mm)}/{yy}</span>
@@ -1151,7 +1155,7 @@ function BXHRow({ r }: { r: BXHDiemMTRow }) {
 // theo lớp/khối; sort theo tên hoặc từng đợt (điểm cao lên đầu, chưa thi xuống cuối).
 type DiemSortKey = 'ten' | typeof DOT_ORDER[number]
 function DiemThiTruongView() {
-  const [mon, setMon] = useState('Toán')
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(null)
   const [khoi, setKhoi] = useState<string | null>(null)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
@@ -1197,7 +1201,7 @@ function DiemThiTruongView() {
     <>
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <span className="text-[12px] font-semibold uppercase tracking-wider text-slate-500">Môn</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-48"><SearchSelect value={lopId} onChange={(v) => { setLopId(v); if (v) setKhoi(null) }} options={lopOpts} placeholder="Theo lớp…" /></div>
         <span className="text-[12px] text-slate-400">hoặc</span>
         <div className="w-36"><SearchSelect value={khoi} onChange={(v) => { setKhoi(v); if (v) setLopId(null) }} options={khoiOpts} placeholder="Theo khối…" /></div>
