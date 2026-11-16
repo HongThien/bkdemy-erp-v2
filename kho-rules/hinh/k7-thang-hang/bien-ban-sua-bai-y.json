@@ -1,0 +1,416 @@
+{
+ "loi_dan_cu": {
+  "HHB000441": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4: Cho $\\triangle ABC$ vuông tại A. Trên cạnh BC lấy điểm E sao cho $BA = BE$. Tia phân giác của góc B cắt cạnh AC tại K. a) Chứng minh $\\triangle ABK = \\triangle EBK$ và $AK = KE$",
+  "HHB000442": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 5: Cho $\\triangle ABC$ , tia $Ax$ đi qua trung điểm $M$ của cạnh $BC$. Kẻ $BE, CF$ vuông góc với $Ax$ ($E,F \\in Ax$) Chứng minh rằng:",
+  "HHB000443": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 6: Cho góc $xOy$, phân giác $Om$, $A \\in Om$, $H$ là trung điểm của $OA$. Qua H kẻ đường thẳng vuông góc với $OH$, đường thẳng này cắt $Ox$, $Oy$ tại B và C. Chứng minh:",
+  "HHB000444": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7: Cho tam giác ABC, gọi M là trung điểm của BC, trên tia đối của tia MA lấy điểm D sao cho $MD = MA$. a) Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$",
+  "HHB000445": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 8: Cho $\\triangle ABC$ có $\\widehat{A}=90^\\circ$, $AB = AC$, gọi K là trung điểm BC. a) Chứng minh $\\triangle AKB=\\triangle AKC$",
+  "HHB000446": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 9: Cho $\\triangle ABC$, M là trung điểm của AB. Trên tia đối của tia MC lấy điểm N sao cho $MC = MN$ a) Chứng minh $NB \\parallel AC$ và $NB = AC$",
+  "HHB000447": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 8: Cho $\\triangle ABC$ có $AB=AC$. Tia phân giác góc A cắt BC tại D. a) Chứng minh: $\\triangle ABD = \\triangle ACD$",
+  "HHB000448": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 10: Cho tam giác ABC cân ở A($AB = AC$ ), D,E lần lượt là trung điểm của AC, AB a) Chứng minh rằng: $BD = CE$",
+  "HHB000449": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 17. Cho $\\triangle ABC$ vuông tại A. Vẽ BD là tia phân giác ABC. Trên BC lấy điểm E sao cho $BE = BA$ a) Chứng minh $\\triangle ABD=\\triangle EBD$.",
+  "HHB000450": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 18. Cho $\\triangle ABC$, có $AB = AC$, tia phân giác góc A cắt BC tại H. Trên tia đối của tia BC lấy điểm D, trên tia đối của tia CB lấy điểm E sao cho $BD = CE$. a) Chứng minh $ABC = ACB$",
+  "HHB000451": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 19. Cho tam giác ABC có $AB = AC$, lấy M là trung điểm của BC. a) Chứng minh $\\triangle ABM = \\triangle ACM$",
+  "HHB000452": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4.7. Cho tam giác $ABC$ có $AB = AC$. Gọi M là trung điểm của $BC$. a) Chứng minh tam giác $ABM$ và tam giác $ACM$ bằng nhau.",
+  "HHB000453": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4.8. Cho tam giác ABC, gọi D là trung điểm của đoạn thẳng AC, E là trung điểm của đoạn thẳng AB. Trên tia đối của tia DB lấy điểm M sao cho $DM = DB$. Trên tia đối của tia EC lấy điểm N sao cho $EN = EC$. Chứng minh rằng:",
+  "HHB000454": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4.9. Cho $\\triangle ABC$ có $\\widehat{A}=90^\\circ$. Trên cạnh BC lấy điểm D bất kì (D khác C, D khác B). Từ D kẻ $DH \\perp AC$ ($H \\in AC$). a) Chứng minh rằng: $\\widehat{HDA} = \\widehat{BAD}$.",
+  "HHB000455": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4.10. Cho tam giác ABC vuông tại A. Gọi M là trung điểm của cạnh BC. Trên tia đối của tia MA lấy điểm E sao cho $ME = MA$. Chứng minh rằng: a) $\\triangle AMB = \\triangle EMC$",
+  "HHB000456": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 6. Cho $\\triangle ABC$ cân tại A. Gọi M là trung điểm của BC. a) Chứng minh: $\\triangle ABM = \\triangle ACM$ .",
+  "HHB000457": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7. Cho $\\triangle ABC$ ($AB < AC$) có M là trung điểm của AC. Trên tia đối của tia MB lấy điểm D sao cho $MB = MD$. a) Chứng minh $\\triangle AMB = \\triangle CMD$",
+  "HHB000458": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 8. Cho $\\triangle ABC$ vuông tại A. Kẻ BD là tia phân giác của $\\triangle ABC$ ($D \\in AC$). Trên cạnh BC lấy điểm E sao cho $BE = BA$. a) Chứng minh $\\triangle ABD = \\triangle EBD$.",
+  "HHB000459": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 9. Cho $\\triangle MAB$ nhọn có $MA < MB$ . Trên cạnh MB lấy điểm C sao cho $MA = MC$ . Tia phân giác của góc AMB cắt cạnh AB tại E. Gọi F là giao điểm của MA và CE. a) Chứng minh $EA = EC$ .",
+  "HHB000460": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 10. Cho góc $\\widehat{xAy}$ là góc nhọn trên Ax và Ay lần lượt lấy điểm B và C sao cho $AB = AC$. Vẽ Az là phân giác góc $\\widehat{xAy}$, Az cắt BC tại điểm D. a) Chứng minh $\\triangle ABD = \\triangle ACD$.",
+  "HHB000461": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho $\\triangle ABC$ có $AB < AC$. Tia phân giác của $\\widehat{BAC}$ cắt BC tại I.\nTrên cạnh AC lấy điểm K sao cho $AK = AB$. a) Chứng minh rằng: $\\triangle ABI = \\triangle AKI$",
+  "HHB000462": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho tam giác ABC, lấy M là trung điểm của BC. Trên tia đối của tia MA lấy điểm D sao cho\n$MA = MD$. a) Chứng minh $\\triangle AMC = \\triangle DMB$.",
+  "HHB000463": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho góc $xOy$ bằng $80^\\circ$. Vẽ Om là tia phân giác của góc $xOy$. Trên tia Ox lấy điểm A. Vẽ đường thẳng qua A và song song với Oy, đường thẳng này cắt tia Om tại E. a) Tính số đo các góc của $\\triangle AOE$.",
+  "HHB000464": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4 (3 điểm) Cho $\\triangle ABC$ có $AB = AC$. Kẻ AD là tia phân giác của góc A, D thuộc BC. a) Chứng minh $\\triangle ABD = \\triangle ACD$.",
+  "HHB000900": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7: Cho tam giác ABC, gọi M là trung điểm của BC, trên tia đối của tia MA lấy điểm D sao cho $MD = MA$. a) Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$",
+  "HHB000901": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 17. Cho $\\triangle ABC$ vuông tại A. Vẽ BD là tia phân giác ABC. Trên BC lấy điểm E sao cho $BE = BA$ a) Chứng minh $\\triangle ABD=\\triangle EBD$.",
+  "HHB000902": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7. Cho $\\triangle ABC$ ($AB < AC$) có M là trung điểm của AC. Trên tia đối của tia MB lấy điểm D sao cho $MB = MD$. a) Chứng minh $\\triangle AMB = \\triangle CMD$",
+  "HHB000903": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 8. Cho $\\triangle ABC$ vuông tại A. Kẻ BD là tia phân giác của $\\triangle ABC$ ($D \\in AC$). Trên cạnh BC lấy điểm E sao cho $BE = BA$. a) Chứng minh $\\triangle ABD = \\triangle EBD$.",
+  "HHB000904": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 9. Cho $\\triangle MAB$ nhọn có $MA < MB$ . Trên cạnh MB lấy điểm C sao cho $MA = MC$ . Tia phân giác của góc AMB cắt cạnh AB tại E. Gọi F là giao điểm của MA và CE. a) Chứng minh $EA = EC$ .",
+  "HHB000905": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 10. Cho góc $\\widehat{xAy}$ là góc nhọn trên Ax và Ay lần lượt lấy điểm B và C sao cho $AB = AC$. Vẽ Az là phân giác góc $\\widehat{xAy}$, Az cắt BC tại điểm D. a) Chứng minh $\\triangle ABD = \\triangle ACD$.",
+  "HHB000906": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho tam giác ABC, lấy M là trung điểm của BC. Trên tia đối của tia MA lấy điểm D sao cho\n$MA = MD$. a) Chứng minh $\\triangle AMC = \\triangle DMB$.",
+  "HHB000907": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho góc $xOy$ bằng $80^\\circ$. Vẽ Om là tia phân giác của góc $xOy$. Trên tia Ox lấy điểm A. Vẽ đường thẳng qua A và song song với Oy, đường thẳng này cắt tia Om tại E. a) Tính số đo các góc của $\\triangle AOE$.",
+  "HHB000908": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4 (3 điểm) Cho $\\triangle ABC$ có $AB = AC$. Kẻ AD là tia phân giác của góc A, D thuộc BC. a) Chứng minh $\\triangle ABD = \\triangle ACD$."
+ },
+ "them_y_a": [
+  {
+   "ma_cau": "HHC017086",
+   "bai_y": "HHB000441",
+   "cau_hoi_y": "Chứng minh $\\triangle ABK = \\triangle EBK$ và $AK = KE$"
+  },
+  {
+   "ma_cau": "HHC017087",
+   "bai_y": "HHB000444",
+   "cau_hoi_y": "Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$"
+  },
+  {
+   "ma_cau": "HHC017088",
+   "bai_y": "HHB000445",
+   "cau_hoi_y": "Chứng minh $\\triangle AKB=\\triangle AKC$"
+  },
+  {
+   "ma_cau": "HHC017089",
+   "bai_y": "HHB000446",
+   "cau_hoi_y": "Chứng minh $NB \\parallel AC$ và $NB = AC$"
+  },
+  {
+   "ma_cau": "HHC017090",
+   "bai_y": "HHB000447",
+   "cau_hoi_y": "Chứng minh: $\\triangle ABD = \\triangle ACD$"
+  },
+  {
+   "ma_cau": "HHC017091",
+   "bai_y": "HHB000448",
+   "cau_hoi_y": "Chứng minh rằng: $BD = CE$"
+  },
+  {
+   "ma_cau": "HHC017092",
+   "bai_y": "HHB000449",
+   "cau_hoi_y": "Chứng minh $\\triangle ABD=\\triangle EBD$."
+  },
+  {
+   "ma_cau": "HHC017093",
+   "bai_y": "HHB000450",
+   "cau_hoi_y": "Chứng minh $ABC = ACB$"
+  },
+  {
+   "ma_cau": "HHC017094",
+   "bai_y": "HHB000451",
+   "cau_hoi_y": "Chứng minh $\\triangle ABM = \\triangle ACM$"
+  },
+  {
+   "ma_cau": "HHC017095",
+   "bai_y": "HHB000452",
+   "cau_hoi_y": "Chứng minh tam giác $ABM$ và tam giác $ACM$ bằng nhau."
+  },
+  {
+   "ma_cau": "HHC017096",
+   "bai_y": "HHB000454",
+   "cau_hoi_y": "Chứng minh rằng: $\\widehat{HDA} = \\widehat{BAD}$."
+  },
+  {
+   "ma_cau": "HHC017097",
+   "bai_y": "HHB000455",
+   "cau_hoi_y": "$\\triangle AMB = \\triangle EMC$"
+  },
+  {
+   "ma_cau": "HHC017098",
+   "bai_y": "HHB000456",
+   "cau_hoi_y": "Chứng minh: $\\triangle ABM = \\triangle ACM$ ."
+  },
+  {
+   "ma_cau": "HHC017099",
+   "bai_y": "HHB000457",
+   "cau_hoi_y": "Chứng minh $\\triangle AMB = \\triangle CMD$"
+  },
+  {
+   "ma_cau": "HHC017100",
+   "bai_y": "HHB000458",
+   "cau_hoi_y": "Chứng minh $\\triangle ABD = \\triangle EBD$."
+  },
+  {
+   "ma_cau": "HHC017101",
+   "bai_y": "HHB000459",
+   "cau_hoi_y": "Chứng minh $EA = EC$ ."
+  },
+  {
+   "ma_cau": "HHC017102",
+   "bai_y": "HHB000460",
+   "cau_hoi_y": "Chứng minh $\\triangle ABD = \\triangle ACD$."
+  },
+  {
+   "ma_cau": "HHC017103",
+   "bai_y": "HHB000461",
+   "cau_hoi_y": "Chứng minh rằng: $\\triangle ABI = \\triangle AKI$"
+  },
+  {
+   "ma_cau": "HHC017104",
+   "bai_y": "HHB000462",
+   "cau_hoi_y": "Chứng minh $\\triangle AMC = \\triangle DMB$."
+  },
+  {
+   "ma_cau": "HHC017105",
+   "bai_y": "HHB000463",
+   "cau_hoi_y": "Tính số đo các góc của $\\triangle AOE$."
+  },
+  {
+   "ma_cau": "HHC017106",
+   "bai_y": "HHB000464",
+   "cau_hoi_y": "Chứng minh $\\triangle ABD = \\triangle ACD$."
+  }
+ ],
+ "them_y_boi_canh": [
+  {
+   "ma_cau": "HHC017107",
+   "tu": "HHC017087",
+   "bai_y": "HHB000900",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017108",
+   "tu": "HHC012866",
+   "bai_y": "HHB000900",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017109",
+   "tu": "HHC017092",
+   "bai_y": "HHB000901",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017110",
+   "tu": "HHC012879",
+   "bai_y": "HHB000901",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017111",
+   "tu": "HHC012880",
+   "bai_y": "HHB000901",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017112",
+   "tu": "HHC017099",
+   "bai_y": "HHB000902",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017113",
+   "tu": "HHC012902",
+   "bai_y": "HHB000902",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017114",
+   "tu": "HHC012903",
+   "bai_y": "HHB000902",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017115",
+   "tu": "HHC017100",
+   "bai_y": "HHB000903",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017116",
+   "tu": "HHC012906",
+   "bai_y": "HHB000903",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017117",
+   "tu": "HHC012907",
+   "bai_y": "HHB000903",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017118",
+   "tu": "HHC017101",
+   "bai_y": "HHB000904",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017119",
+   "tu": "HHC012909",
+   "bai_y": "HHB000904",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017120",
+   "tu": "HHC017102",
+   "bai_y": "HHB000905",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017121",
+   "tu": "HHC012911",
+   "bai_y": "HHB000905",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017122",
+   "tu": "HHC012912",
+   "bai_y": "HHB000905",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017123",
+   "tu": "HHC017104",
+   "bai_y": "HHB000906",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017124",
+   "tu": "HHC012916",
+   "bai_y": "HHB000906",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017125",
+   "tu": "HHC012917",
+   "bai_y": "HHB000906",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017126",
+   "tu": "HHC017105",
+   "bai_y": "HHB000907",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017127",
+   "tu": "HHC012919",
+   "bai_y": "HHB000907",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017128",
+   "tu": "HHC017106",
+   "bai_y": "HHB000908",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017129",
+   "tu": "HHC012921",
+   "bai_y": "HHB000908",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017130",
+   "tu": "HHC012997",
+   "bai_y": "HHB000909",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017131",
+   "tu": "HHC012998",
+   "bai_y": "HHB000909",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017132",
+   "tu": "HHC013000",
+   "bai_y": "HHB000910",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017133",
+   "tu": "HHC013001",
+   "bai_y": "HHB000910",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017134",
+   "tu": "HHC013037",
+   "bai_y": "HHB000911",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017135",
+   "tu": "HHC013038",
+   "bai_y": "HHB000911",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017136",
+   "tu": "HHC013039",
+   "bai_y": "HHB000911",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017137",
+   "tu": "HHC013070",
+   "bai_y": "HHB000912",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017138",
+   "tu": "HHC013071",
+   "bai_y": "HHB000912",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017139",
+   "tu": "HHC013072",
+   "bai_y": "HHB000912",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017140",
+   "tu": "HHC013081",
+   "bai_y": "HHB000913",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017141",
+   "tu": "HHC013082",
+   "bai_y": "HHB000913",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017142",
+   "tu": "HHC013083",
+   "bai_y": "HHB000913",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017143",
+   "tu": "HHC013254",
+   "bai_y": "HHB000914",
+   "nhan_y": "1"
+  },
+  {
+   "ma_cau": "HHC017144",
+   "tu": "HHC013255",
+   "bai_y": "HHB000914",
+   "nhan_y": "2"
+  },
+  {
+   "ma_cau": "HHC017145",
+   "tu": "HHC013282",
+   "bai_y": "HHB000915",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017146",
+   "tu": "HHC013283",
+   "bai_y": "HHB000915",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017147",
+   "tu": "HHC013285",
+   "bai_y": "HHB000916",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017148",
+   "tu": "HHC013286",
+   "bai_y": "HHB000916",
+   "nhan_y": "b"
+  },
+  {
+   "ma_cau": "HHC017149",
+   "tu": "HHC013287",
+   "bai_y": "HHB000916",
+   "nhan_y": "c"
+  },
+  {
+   "ma_cau": "HHC017150",
+   "tu": "HHC013291",
+   "bai_y": "HHB000917",
+   "nhan_y": "a"
+  },
+  {
+   "ma_cau": "HHC017151",
+   "tu": "HHC013292",
+   "bai_y": "HHB000917",
+   "nhan_y": "b"
+  }
+ ]
+}
