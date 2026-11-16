@@ -77,9 +77,12 @@ Hệ quả: mọi nhóm của tuần đều đủ vòng đo (ET + BTVN) trước
 
 ### 3.3 Thứ Hai — hai mốc
 
-1. **00:00 thứ Hai — máy chụp:** đóng sổ tuần trước (kết luận từng nhóm, việc đã làm, hạng) vào sổ chốt tuần; chụp số "đầu tuần" của tuần mới;
-   chụp danh sách nợ làm đầu vào cho buổi chốt.
-2. **Chiều thứ Hai — người chốt** ở buổi họp đang có (§4). Chốt xong ⇒ tờ mục tiêu tuần mới của từng em được ghép và hiện lên app.
+1. **00:00 thứ Hai — MÁY chốt kết quả tuần trước** (Thùy 16/11: "chốt thì để máy chốt, người xem thôi"): đóng sổ tuần trước (kết luận từng nhóm, việc đã làm, hạng)
+   vào sổ chốt tuần — bất biến, không ai bấm; chụp số "đầu tuần" của tuần mới; chụp danh sách nợ làm đầu vào cho buổi chốt.
+2. **Chiều thứ Hai — người chốt MỤC TIÊU tuần mới** ở buổi họp đang có (§4), bằng nút "Chốt mục tiêu tuần" theo lớp. Bấm = hệ đọc giáo trình + bổ trợ đã chốt
+   của tuần này và **KHOÁ kế hoạch** của từng em (bảng `mtt_ke_hoach`: nhóm bài · phần · cờ mục tiêu tuần · số lần đo dự kiến · danh sách việc), rồi mở cho HS + PH xem.
+3. **Trong tuần — đo realtime** (cron 5 phút): chỉ số đo (%, đã làm/chưa làm) chạy; mục tiêu đứng yên. Sửa giáo trình / duyệt thêm bổ trợ SAU chốt ⇒ không đổi mục
+   tiêu tuần này: nhóm mới ghi "thêm sau khi chốt" (chỉ nhân sự thấy, không tính tiến độ), việc mới (vd ca bổ trợ xếp thêm) vẫn hiện và gắn nhãn "thêm sau khi chốt".
 
 - **Bản đã chốt không sửa.** Bài chấm sau giờ chốt vẫn tính vào mastery và hiện ở tuần sau.
 - Lớp học đúng thứ Hai: buổi hôm đó không thể là buổi test sau giờ được báo trước ⇒ ca sau giờ của lớp này rơi vào buổi sau.
@@ -377,9 +380,13 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 4. **Bấm 1 nhóm chỉ còn 2 nút: Xem lại bài trên lớp (mở khu giáo trình — có đủ bài trên lớp) · Luyện tập (Tự luyện).** Bỏ "Xem lại lý thuyết" (Thùy 13/11: không cần). App PH chỉ ghi lời nhắc, vì phụ huynh không làm bài.
 5. **Xếp hạng "lên/xuống bậc"** so với hạng của hôm trước (chụp mỗi ngày lần đầu cron chạy).
 6. **Sổ chốt** = tính lại tờ tuần TẠI MỐC 00:00 thứ Hai (bài chấm sau mốc không vào bản chốt); hạng trong sổ = hạng cuối của bảng đệm.
+7. **(16/11) Khoá mục tiêu lúc chốt lớp** — mig `202611161622_muc_tieu_tuan_khoa_ke_hoach.sql`: bảng `mtt_ke_hoach` (append-only, trigger bất biến); `_mtt_ghi` ghi kế hoạch
+   lần đầu thấy lớp đã chốt; `_mtt_tinh` đọc nhóm/mục tiêu/k từ kế hoạch, số đo vẫn tính sống; payload thêm `ke_hoach_at`, `them_sau_chot`, `viec[].them_sau`.
+   Kiểm trên Postgres tạm: chốt xong thêm dạng mới vào giáo trình + một ca bổ trợ yếu ⇒ nhóm giữ nguyên, nhóm mới vào `them_sau_chot`, ca mới `them_sau = true`, tiến độ không đổi; UPDATE kế hoạch bị chặn.
+8. **(16/11) Danh sách cả lớp** — mig `202611161608_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
 
 **Chưa làm (cần máy công ty / DB thật):**
-1. Áp mig `202611131000` bằng `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
+1. ✅ mig `202611131000` đã áp (13/11). **Còn treo: `202611161608` + `202611161622`** — `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
 2. Chạy `202611131001_muc_tieu_tuan_cron_sql_editor.sql` ở SQL Editor, rồi `node scripts/migrate.mjs --ghi-so <file>`.
 3. Đo `fn_mtt_trung_tam` + `_mtt_ghi` bằng dữ liệu thật (khối đông nhất) — trần 8 s; `_mtt_tinh` gọi `_mastery_lan_d` (30 ngày) 1 lần/em/tuần khi chụp đầu tuần.
 4. App PH: áp `migrations/0038_muc_tieu_tuan_fdw.sql` ở DB `bkdemy-ph` SAU khi ERP đã áp, rồi deploy (`npx vercel --prod --yes`).

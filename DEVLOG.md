@@ -81192,3 +81192,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ## 16/11 16:11 — Mục tiêu tuần: xem tờ từng em + chú thích Chốt / Tiến độ
 - Thùy hỏi: xem mục tiêu từng HS ở đâu · nút Chốt nghĩa là gì · chốt lớp 6 hiện 56% là sao. Trước đó chỉ mở được em trong "Em cần để ý" (thiếu). Thêm fn_mtt_ds_lop (mig 202611161608, CHƯA ÁP) + bấm tên lớp ⇒ danh sách cả lớp ⇒ bấm em ⇒ tờ. Chú thích dưới bảng: nghĩa nút Chốt, công thức Tiến độ. Kiểm: Postgres tạm + harness chụp + tsc + build + check:kien-truc --chi-code (không mục nào tăng).
 - Sai trong lúc làm: lỡ commit DEVLOG còn dấu xung đột (script gộp dừng vì DEVLOG có sẵn chuỗi "<<<<<<<" trong nội dung cũ) — phát hiện trước khi đẩy, sửa bằng amend commit chưa đẩy.
+
+### 16/11 — Mục tiêu tuần: khoá mục tiêu lúc chốt lớp
+- **Thùy hỏi:** "Chốt mục tiêu tuần" đang chỉ là cờ mở cho HS/PH xem; mục tiêu vẫn tính lại theo giáo trình/bổ trợ hiện tại ⇒ đổi giáo trình giữa tuần là mục tiêu đổi theo. Đúng ra chốt = hệ đọc giáo trình + bổ trợ tuần này rồi GHI ra mục tiêu. Kết quả tuần thì máy chốt 00:00 thứ Hai, người chỉ xem.
+- **Làm:** mig `202611161622_muc_tieu_tuan_khoa_ke_hoach.sql` — bảng `mtt_ke_hoach` (tuan, mon, hoc_sinh_id; nhom [{ma,ten,phan,mt,k,ngay_hoc}]; viec [{loai,buoi_id,ngay}]; chot_at) bất biến bằng `_mtt_chot_bat_bien`; `_mtt_ghi` ghi kế hoạch lần đầu thấy lớp đã chốt (cron 5 phút hoặc `fn_mtt_chot_lop`); `_mtt_tinh` có kế hoạch ⇒ nhóm/mt/k lấy từ kế hoạch, số đo sống; nhóm mới ⇒ `them_sau_chot`; việc mới ⇒ `them_sau=true`.
+- **ERP:** tờ em ghi "mục tiêu khoá lúc …", khối vàng "Thêm sau khi chốt", nhãn trên việc thêm; ghi chú tab giải thích lại nút Chốt + "kết quả tuần do máy chốt".
+- **Kiểm:** Postgres 16 tạm — kế hoạch [NNB00001, NNB00003, NNB00002] mt [80,80,36]; thêm NNB00004 vào giáo trình + 1 ca bổ trợ yếu ⇒ nhóm giữ nguyên, them_sau_chot=[NNB00004], ca mới them_sau, tiến độ 77.3 không đổi; UPDATE kế hoạch bị trigger chặn. `tsc` (trừ lỗi cũ pdfRender) · `check:kien-truc --chi-code` ✔.
+- **Chưa áp DB** (202611161608 + 202611161622) — Thùy áp.

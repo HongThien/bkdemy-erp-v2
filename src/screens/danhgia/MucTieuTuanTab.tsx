@@ -152,7 +152,8 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
               </table>
               <div className="space-y-1 px-4 pb-3 pt-1 text-[11.5px] text-slate-500">
                 <p><b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách cả lớp ⇒ bấm tên em ⇒ tờ mục tiêu tuần của em (giống em và phụ huynh thấy).</p>
-                <p><b className="text-slate-700">Chốt mục tiêu tuần</b> = "lớp này đã chốt giáo trình cả tuần + chốt bổ trợ xong, cho học sinh và phụ huynh xem". Bấm sau buổi họp thứ Hai. Chưa bấm thì app HS / PH của lớp ghi "đang chốt mục tiêu tuần"; nhân sự vẫn xem trước được. Chốt rồi không bỏ được — số trên tờ vẫn tự cập nhật theo điểm chấm.</p>
+                <p><b className="text-slate-700">Chốt mục tiêu tuần</b> = hệ đọc giáo trình + bổ trợ đã chốt của tuần này và <b>khoá mục tiêu</b> của từng em (nhóm bài, cờ mục tiêu tuần, danh sách việc), rồi mở cho học sinh và phụ huynh xem. Bấm sau buổi họp thứ Hai. Chưa bấm thì app HS / PH ghi "đang chốt mục tiêu tuần"; nhân sự vẫn xem trước được. Sửa giáo trình / duyệt thêm bổ trợ sau khi chốt ⇒ không đổi mục tiêu tuần này, hiện thành "thêm sau khi chốt".</p>
+                <p><b className="text-slate-700">Kết quả tuần</b> do máy tự chốt lúc 00:00 thứ Hai vào sổ (không sửa được); người chỉ xem. Trong tuần chỉ số đo chạy (vài phút một lần).</p>
                 <p><b className="text-slate-700">Tiến độ</b> của 1 em = trung bình các nhóm bài (đã có số) của em: % hiện tại ÷ mục tiêu TUẦN, tối đa 100%. Vd mục tiêu tuần 80%, em đang 40% ⇒ 50%. Đầu tuần thường thấp vì nhiều lần đo trong tuần chưa diễn ra.</p>
               </div>
             </div>
@@ -213,6 +214,7 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
             <div className="text-[12.5px] text-slate-500">
               Mục tiêu tuần {to ? `${ngayNgan(to.tuan)} – ${ngayNgan(to.den_ngay)}` : ''} · {mon}
               {to && !to.chot && ' · lớp CHƯA chốt (học sinh chưa thấy)'}
+              {to?.ke_hoach_at && ` · mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}`}
               {to?.da_chot_so && ' · sổ đã chốt'}
             </div>
           </div>
@@ -242,6 +244,11 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
                 </div>
               ))}
             </div>
+            {(to.them_sau_chot?.length ?? 0) > 0 && (
+              <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900">
+                <b>Thêm sau khi chốt</b> (không vào mục tiêu tuần này, học sinh không thấy): {to.them_sau_chot!.map((x) => `${x.ten} (phần ${x.phan})`).join(' · ')}
+              </div>
+            )}
             {(to.xep_hang_cho.length > 0 || to.sap_hoc) && (
               <div className="space-y-1 rounded-lg bg-slate-50 px-3 py-2 text-[12.5px] text-slate-600">
                 {to.xep_hang_cho.length > 0 && <p><b className="text-slate-800">Đang xếp hàng:</b> {to.xep_hang_cho.map((x) => `${x.ten} ${x.p}%`).join(' · ')}</p>}
@@ -294,7 +301,7 @@ function DongViec({ v }: { v: MttViec }) {
   return (
     <div className="flex items-center gap-3 px-3 py-2">
       <span className="min-w-0 flex-1">
-        <span className="block text-[13px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}</span>
+        <span className="block text-[13px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi chốt</span>}</span>
         <span className="block text-[11.5px] text-slate-500">{[moTaViec(v), v.ghi_chu].filter(Boolean).join(' · ')}</span>
       </span>
       {v.thai_do && <span className="text-[11px] text-slate-500">{NHAN_THAI_DO[v.thai_do] ?? v.thai_do}</span>}

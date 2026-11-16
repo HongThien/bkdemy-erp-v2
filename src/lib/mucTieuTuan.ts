@@ -18,9 +18,12 @@ export type MttViec = {
   pct: number | null; so_cau: number | null; muc: MucDanhGia | null
   thai_do: string | null; nop: string | null; dd: string | null; ghi_chu: string | null
   nhom: string[] | null; gio: string | null; phong: string | null
+  them_sau?: boolean   // việc không có trong kế hoạch đã khoá lúc chốt (vd ca bổ trợ xếp thêm giữa tuần)
 }
 export type MttTo = {
   tuan: string; den_ngay: string; mon: string; chot: boolean
+  ke_hoach_at?: string | null   // lúc khoá mục tiêu (bấm chốt lớp) — null = chưa khoá
+  them_sau_chot?: { ma: string; ten: string; phan: 1 | 2 }[]   // nhóm xuất hiện SAU khi chốt (không vào mục tiêu tuần này)
   hs: { id: string; ten: string; khoi: string | null; lop_id: string | null; lop: string | null }
   tien_do: number | null; tien_do_dau: number | null; tien_do_d: number | null
   nhom: MttNhom[]; xep_hang_cho: { ma: string; ten: string; p: number }[]
