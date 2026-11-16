@@ -22,6 +22,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
   const [dangTai, setDangTai] = useState(false)
   const [loi, setLoi] = useState<string | null>(null)
   const [dangChot, setDangChot] = useState<string | null>(null)
+  const [tb, setTb] = useState<string | null>(null)
   const [xemHs, setXemHs] = useState<{ id: string; ten: string } | null>(null)
   const [moTop, setMoTop] = useState(false)
   const [xemLop, setXemLop] = useState<{ id: string; ten: string } | null>(null)
@@ -47,10 +48,11 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
   // chốt 1 lớp: vá đúng dòng lớp đó ngay, rồi đọc lại NỀN (số của cả khối đổi theo) — không xoá bảng
   const chot = async (lopId: string) => {
     if (!khoi) return
-    setDangChot(lopId); setLoi(null)
+    setDangChot(lopId); setLoi(null); setTb(null)
     try {
       const r = await mttChotLop(lopId, tuan)
       setData((d) => d && ({ ...d, lop: d.lop.map((l) => l.lop_id === lopId ? { ...l, chot_at: r.chot_at } : l) }))
+      setTb(`Đã chốt — hệ đang ghi mục tiêu cho ${r.tong} em (khoá theo giáo trình + bổ trợ hiện tại), vài phút nữa số của lớp hiện đủ. Học sinh mở app lúc này vẫn thấy tờ ngay.`)
       const moi = await mttTrungTam(mon, khoi, tuan)
       NHO.data = moi; NHO.khoa = [mon, khoi, tuan].join('|'); setData(moi)
     } catch (e) {
@@ -73,6 +75,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
         {tuan === nay && <span className="text-[12px] text-slate-500">Lớp chưa chốt thì học sinh và phụ huynh chưa thấy tờ tuần này.</span>}
         <button onClick={() => setMoTop(true)} className="ml-auto h-8 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">🏆 Top 20 toàn trung tâm · {mon}</button>
       </div>
+      {tb && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{tb}</div>}
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!data ? (dangTai ? <p className="text-sm text-slate-500">Đang tải…</p> : null) : (
         <div className={`space-y-3 ${dangTai ? 'opacity-60' : ''}`}>

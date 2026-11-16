@@ -1,5 +1,6 @@
 -- ============================================================================
--- 202611161622 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11)
+-- 202611161632 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11)
+--   (đổi tên từ 202611161622: trùng giờ với mig 202611161632_sau_gio_reset_dang_ky_dieu_phoi đã áp ở phiên khác — file này CHƯA áp)
 -- ----------------------------------------------------------------------------
 -- VÌ SAO: "Hành vi chốt phải là: hệ thống đọc bổ trợ và giáo trình của tuần này để ghi ra mục tiêu" + luồng tuần Thùy duyệt 16/11:
 --   · 00:00 thứ Hai MÁY chốt KẾT QUẢ tuần cũ vào sổ (mtt_chot — đã có, cron _mtt_lam_moi). Người chỉ xem.
@@ -8,11 +9,18 @@
 --   Trước mig này: chỉ số đầu tuần bị khoá, danh sách nhóm + cờ mục tiêu tuần tính lại mỗi 5 phút ⇒ mục tiêu trôi.
 -- GỒM:
 --   · mtt_ke_hoach (tuan, mon, hoc_sinh_id) — bản khoá: nhom [{ma, ten, phan, mt, k, ngay_hoc}] · viec [{loai, buoi_id, ngay}] · chot_at.
---     Bất biến (trigger chặn sửa/xoá). Ghi 1 lần ở lần đầu _mtt_ghi tính tờ sau khi lớp chốt (lúc bấm chốt: trong ngân sách 4 s;
---     em còn lại: cron ≤ 5 phút). Em vào lớp giữa tuần ⇒ khoá lúc tờ của em được tính lần đầu.
+--     Bất biến (trigger chặn sửa/xoá). Ghi 1 lần ở lần đầu _mtt_ghi tính tờ sau khi lớp chốt — do bộ điều phối (_tinh_san_chay → sổ
+--     'muc_tieu_tuan' → _mtt_lam_moi, 5 phút, em thiếu tờ được tính trước). Em vào lớp giữa tuần ⇒ khoá lúc tờ của em được tính lần đầu.
 --   · _mtt_tinh: có bản khoá ⇒ nhóm/phần/mục tiêu/số lần đo lấy từ bản khoá, số đo tính trực tiếp; nhóm mới sau chốt ⇒ 'them_sau_chot'
 --     (chỉ nhân sự thấy); việc không có trong bản khoá (vd ca bổ trợ xếp thêm) ⇒ vẫn hiện, gắn 'them_sau'.
 --   · _mtt_ghi: lớp đã chốt + em chưa có bản khoá ⇒ ghi bản khoá rồi tính lại theo bản khoá.
+--   · fn_mtt_chot_lop: CHỈ ghi dòng chốt (bỏ vòng tính ≤ 4 s cả lớp trong lượt bấm — sai spec-kien-truc §5 "thao tác ghi ≤ 500 ms" / §12 mẫu 1).
+--     Tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút); trong lúc chờ, HS mở tờ ⇒ _mtt_doc tính trực tiếp 1 em (C2).
+--   · Phần 2 (nợ) chỉ lấy lượt chốt bổ trợ duyệt TRONG tuần của tờ (khớp mig 202611161614: "lượt chốt chỉ có hiệu lực trong tuần được duyệt";
+--     trước đây lấy cả tuần trước ⇒ thứ Hai, trước buổi chốt, Phần 2 còn nợ của tuần cũ).
+--   · Index hoc_sinh_id cho khoá ngoại của mtt_ke_hoach (K7).
+-- LỚP CHI PHÍ (spec-kien-truc §5): _mtt_tinh / _mtt_ghi = C2 (1 em × 1 môn × 1 tuần), chỉ gọi từ bộ điều phối hoặc khi đọc 1 em thiếu tờ.
+--   fn_mtt_chot_lop = C1 (1 dòng). CHƯA ĐO trên DB thật (phiên cloud không có kết nối DB) — đo ở máy công ty trước khi coi là xong (K10, K19).
 -- MẤT GÌ (Luật xoá): không — thêm 1 bảng; create or replace 2 hàm (thân cũ giữ nguyên, chỉ thêm khối khoá).
 -- ============================================================================
 
@@ -25,7 +33,8 @@ create table if not exists public.mtt_ke_hoach (
   chot_at     timestamptz not null default now(),
   primary key (tuan, mon, hoc_sinh_id)
 );
-comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161622). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
+create index if not exists mtt_ke_hoach_hs_idx on public.mtt_ke_hoach (hoc_sinh_id);
+comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161632). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
 drop trigger if exists mtt_ke_hoach_bat_bien_trg on public.mtt_ke_hoach;
 create trigger mtt_ke_hoach_bat_bien_trg before update or delete on public.mtt_ke_hoach
   for each row execute function public._mtt_chot_bat_bien();
@@ -127,7 +136,7 @@ begin
      where d.hoc_sinh_id = p_hs and d.mon = p_mon and d.trang_thai = 'da_duyet'
        and d.id = (select d2.id from bo_tro_de_xuat d2 where d2.hoc_sinh_id = p_hs and d2.mon = p_mon
                      and d2.tao_at < v_den order by d2.tao_at desc limit 1)
-       and coalesce(d.duyet_at, d.tao_at) >= public._mtt_moc(v_tu - 7) and coalesce(d.duyet_at, d.tao_at) < v_den
+       and coalesce(d.duyet_at, d.tao_at) >= public._mtt_moc(v_tu) and coalesce(d.duyet_at, d.tao_at) < v_den   /* 16/11: lượt chốt chỉ hiệu lực trong tuần duyệt */
     union all
     select public._do_o_quy(v_bdm, false, '', yd.ma_dang)
       from bo_tro_yeu y join bo_tro_yeu_dang yd on yd.bo_tro_yeu_id = y.id
@@ -188,7 +197,7 @@ begin
     into v_nhom
     from t3;
 
-  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161622): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
+  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161632): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
   -- số đo (% hiện tại, đầu tuần, tiến độ) vẫn tính trực tiếp. Nhóm mới xuất hiện sau khi chốt ⇒ them_sau_chot (chỉ để nhân sự thấy).
   select k.nhom, k.viec, k.chot_at into v_kh from mtt_ke_hoach k where k.tuan = p_tuan and k.mon = p_mon and k.hoc_sinh_id = p_hs;
   if found then
@@ -353,7 +362,7 @@ begin
   end if;
   v := public._mtt_tinh(p_hs, p_mon, p_tuan, null);
   if v is null then return; end if;
-  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161622): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
+  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161632): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
   if coalesce((v->>'chot')::boolean, false) and v->>'ke_hoach_at' is null then
     insert into mtt_ke_hoach (tuan, mon, hoc_sinh_id, nhom, viec)
     values (p_tuan, p_mon, p_hs,
@@ -375,3 +384,29 @@ end $$;
 
 revoke execute on function public._mtt_tinh(uuid, text, date, timestamptz) from public, anon;
 revoke execute on function public._mtt_ghi(uuid, text, date) from public, anon;
+
+-- chốt mục tiêu tuần của 1 lớp: CHỈ ghi dòng chốt (C1). Tính tờ + khoá kế hoạch = bộ điều phối, lượt kế (≤ 5 phút).
+create or replace function public.fn_mtt_chot_lop(p_lop uuid, p_tuan date default null)
+returns jsonb
+language plpgsql volatile security definer set search_path to 'public' as $$
+declare
+  v_t   date := public._mtt_tuan(coalesce(p_tuan, public._mtt_hom_nay()));
+  v_l   record;
+begin
+  if not public.la_thanh_vien() then raise exception 'Chỉ nhân sự.'; end if;
+  select l.id, l.mon, l.khoi into v_l from lop l where l.id = p_lop;
+  if not found then raise exception 'Không thấy lớp.'; end if;
+  if not exists (select 1 from public.fn_pham_vi_cua_toi() p where p.mon = v_l.mon and p.khoi = v_l.khoi) then
+    raise exception 'Lớp ngoài phạm vi của bạn.';
+  end if;
+  if v_t < public._mtt_tuan(public._mtt_hom_nay()) then raise exception 'Không chốt được tuần đã qua.'; end if;
+  insert into mtt_lop_chot (tuan, lop_id, chot_boi) values (v_t, p_lop, public.current_nhan_su_id())
+  on conflict (tuan, lop_id) do nothing;
+  return jsonb_build_object('tuan', v_t, 'lop_id', p_lop,
+                            'chot_at', (select c.chot_at from mtt_lop_chot c where c.tuan = v_t and c.lop_id = p_lop),
+                            'da_tinh', 0,
+                            'tong', (select count(*) from hoc_sinh_lop hl join hoc_sinh h on h.id = hl.hoc_sinh_id
+                                      where hl.lop_id = p_lop and hl.trang_thai = 'dang_hoc' and h.trang_thai = 'dang_hoc'));
+end $$;
+revoke execute on function public.fn_mtt_chot_lop(uuid, date) from public, anon;
+grant execute on function public.fn_mtt_chot_lop(uuid, date) to authenticated;
