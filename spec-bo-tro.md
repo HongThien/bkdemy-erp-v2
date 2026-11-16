@@ -80,7 +80,8 @@
 
 ## 5. Bổ trợ sau giờ (L1) — `BoTroNheScreen`
 
-- **Hàng chờ:** em có đề xuất MỚI NHẤT = L1 đã duyệt, chưa có ca sau giờ tuần này (`fn_btnhe_cho`). Subtab **Chờ khởi tạo** (theo lớp) ·
+- **Hàng chờ:** em có đề xuất MỚI NHẤT = L1 đã duyệt **TRONG TUẦN NÀY** (lượt chốt chỉ có hiệu lực T2–CN của tuần duyệt; thứ Hai hàng chờ rỗng
+  tới khi trưởng khối chốt + TBM duyệt lượt mới — mig `202611161614`), chưa có ca sau giờ tuần này (`fn_btnhe_cho`). Subtab **Chờ khởi tạo** (theo lớp) ·
   **Đã khởi tạo**. **1 lần / em / tuần**; lớp đã khởi tạo tuần này rời danh sách. Vắng không bù, không suất, không qua Lộc.
 - **Khởi tạo** (`fn_btnhe_tao`): chọn lớp → em đã duyệt → buổi học 14 ngày tới (ca bắt đầu lúc buổi tan, cùng phòng, 20/25′) → TA cùng làm.
   Xong mở **ảnh thông báo PH** (mỗi em 1 dòng). Huỷ ca được; ca huỷ ẩn (nút "xem ca đã huỷ").
