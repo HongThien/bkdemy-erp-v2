@@ -1,0 +1,54 @@
+{
+ "HHC002422": {
+  "deNguyen": "Không phải bài hình nhiều ý: 4 khẳng định Đúng/Sai về cùng một hình; lời giải ý c dùng lại ví dụ của ý a nên tách ra là lời giải ý c thiếu. Hợp là MỘT câu đúng–sai."
+ },
+ "HHC014632": {
+  "deNguyen": "Không phải bài hình nhiều ý: 4 phát biểu Đúng/Sai rời nhau, không có hình, không có giả thiết chung. Hợp là MỘT câu đúng–sai."
+ },
+ "HHC002063": {
+  "deNguyen": "Không có lời dẫn chung: a) và b) là hai phép tính không liên quan nhau (độ dài cung · chu vi). Đây là HAI câu rời, không phải một bài hai ý."
+ },
+ "HHC004444": {
+  "veLoiDan": [
+   "Chú ý: Các kết quả tính toán của ý 1"
+  ],
+  "ghiChu": "Dòng \"Chú ý: … làm tròn … Kết quả ý 1 không được sử dụng cho ý 2\" là ghi chú cho cả bài ⇒ đưa lên lời dẫn (máy để nó dính vào ý 2)."
+ },
+ "HHC000871": {
+  "veLoiDan": [
+   "(Chú ý: Các kết quả tính độ dài"
+  ],
+  "ghiChu": "Dòng \"(Chú ý: … làm tròn 2 chữ số …)\" là ghi chú cho cả câu 1 ⇒ đưa lên lời dẫn (máy để nó dính vào ý 1c)."
+ },
+ "HHC000867": {
+  "thayNhan": [
+   [
+    "b), c) Chứng minh hoàn toàn tương tự",
+    "b) Chứng minh hoàn toàn tương tự"
+   ],
+   [
+    "\nTương tự lập luận đã trình bày ở Câu 28 phần c)",
+    "\nc) Tương tự lập luận đã trình bày ở Câu 28 phần c)"
+   ]
+  ],
+  "ghiChu": "⚠ LỜI GIẢI YẾU: ý b và c chỉ viết \"tương tự Câu 28\" (một câu khác trong tài liệu gốc, không nằm trong bài này) — đã cắt đúng đoạn cho từng ý nhưng lời giải ý c chỉ là tóm tắt. Nên viết lại lời giải b, c trước hoặc sau khi tách."
+ },
+ "HHC002549": {
+  "ghiChu": "Ý lồng: 1) · 2) a) b) ⇒ ba ý 1 · 2a · 2b; đề ý 2a, 2b mang cả câu \"Kẻ đường cao AH… Chứng minh:\"."
+ },
+ "HHC011383": {
+  "ghiChu": "Ý 4 có hai yêu cầu a) b) viết liền trong một dòng ⇒ giữ là MỘT ý 4 (đề gốc không xuống dòng tách)."
+ },
+ "HHC003168": {
+  "veLoiDan": [
+   "Chú ý: Các kết quả tính toán của ý 1"
+  ],
+  "ghiChu": "Dòng \"Chú ý: … làm tròn … Kết quả ý 1 không được sử dụng cho ý 2\" là ghi chú cho cả bài ⇒ đưa lên lời dẫn (máy để nó dính vào ý 2)."
+ },
+ "HHC003214": {
+  "veLoiDan": [
+   "Chú ý: Các kết quả tính độ dài"
+  ],
+  "ghiChu": "Dòng \"Chú ý: … làm tròn 2 chữ số …\" là ghi chú cho cả câu 1 ⇒ đưa lên lời dẫn (máy để nó dính vào ý 1c)."
+ }
+}

@@ -81390,3 +81390,12 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **K28 đo lệnh GHI (insert 1 dòng giao_trinh_buoi, explain analyze):** trước 2,62 ms (lượt nguội) · sau 0,62–2,79 ms; riêng trigger mới 0,05 ms (bỏ qua) · 0,52 ms (giáo trình chung) · 1,03 ms (đúng kế hoạch) · 2,24 ms (chuyển ngày).
 - **Bằng chứng trên DB sống:** 17:48 cô Lộ Thị Dương gán Buổi 12 cho 3A1 ngày 16/11 qua Gán lớp ⇒ trigger đẻ liên kết (3A1, 16/11) + 1 dòng log; dòng gán `tai_lieu` vẫn tạo bình thường. Trên app (admin, chỉ xem): hộp Gán lớp 8A1 mở đúng như cũ, console sạch.
 - **Chưa thấy trên app:** nhãn "📅 Kế hoạch" trong hộp Gán lớp (cần dòng kế hoạch tương lai thật).
+
+## 16/11 18:25 — Tách ý Hình–Học K8 + K9: CẮT TAY 32 bài máy cắt lệch — ĐỀ XUẤT, chưa ghi DB (Thùy: "Cắt tay 32 bài")
+- **Cách làm:** quyết định do đọc từng bài (file `kho-rules/hinh/lo/tach-y/tach-tay-quyet-dinh.json`), chữ thì máy lắp NGUYÊN VĂN từ đề / lời giải gốc (`tach-tay.mjs` → `nhap-tay.json` → `html-tay.mjs` → `duyet-tach-y-tay.html`). Không gõ lại lời giải. Không đụng DB.
+- **Vì sao máy cắt lệch (31/32 là lời giải):** bước Phần 1 gắn nhiều ý ("Ý a và c:", "Ý a, b:", "Ý a–b:", "Ý 1a, 1b:") — máy cũ chỉ nhận một ý mỗi bước; ý LỒNG "1) a) b) c) 2)"; Phần 1 không chia bước; lời giải gộp nhãn "b), c)".
+- **Kết quả:** **29 bài → 130 ý** (K8 2 bài / 7 ý · K9 27 bài / 123 ý; 26 bài đã duyệt; 1 bài K8 ở dạng chờ chưa duyệt). Tự kiểm: mọi dòng của đề và lời giải gốc đều nằm trong lời dẫn hoặc ít nhất một ý — 0 dòng mất.
+- **Quyết định tay:** (1) ý lồng ⇒ nhãn `1a · 1b · 1c · 2` (6 bài: HHC002549 · 004444 · 000870 · 000871 · 003168 · 003214), đề ý con = dòng ý cha + dòng ý con; (2) dòng "Chú ý: … làm tròn …" cuối đề là ghi chú cả bài ⇒ đưa lên lời dẫn (4 bài); (3) bước gắn nhiều ý vào lời giải của TỪNG ý, giữ nguyên chữ "Ý a và b: …"; (4) HHC011383 ý 4 có a) b) viết liền ⇒ giữ một ý; (5) HHC000867 lời giải "b), c) tương tự Câu 28" ⇒ cắt theo đoạn, **lời giải yếu, cần viết lại**.
+- **Đề xuất ĐỂ NGUYÊN 3 bài (không phải bài hình nhiều ý):** HHC002422, HHC014632 (4 phát biểu Đúng/Sai — hợp là một câu đúng–sai) · HHC002063 (hai phép tính rời, không lời dẫn chung — là hai câu).
+- Nhãn hai ký tự ("1a") là MỚI trong `nhan_y` (trước chỉ có a–h, 1–9, b*): bảng không có CHECK chặn; màn hiện "1a)". Chưa thử trên app.
+- Bước ghi (khi Thùy nói "ghi"): `ghi.mjs` đang đọc cứng `nhap.json` ⇒ cần cho nhận file `nhap-tay.json`.
