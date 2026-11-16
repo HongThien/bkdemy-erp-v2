@@ -81374,3 +81374,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm (rollback, vai Tạ Quốc Cường, 8A1 T5 26/11 giáo trình Hình):** gửi mảng cho Hình ⇒ lỗi khuôn; buổi mới + 2 bài học (Buổi 5, 11 câu gợi ý như builder); thêm mô hình giữ nguyên bài; bỏ 1 bài; gửi đối tượng cho giáo trình Đại ⇒ lỗi khuôn. Trên app (admin, chỉ xem): "+ Buổi mới" của giáo trình Hình mở đúng bộ chọn bài học Hình khối 8, Huỷ không ghi; DB `gtt_ca`/`gtt_duyet`/`gtt_ca_log` vẫn 0.
 - **Sai + sửa:** giáo trình Đại có `nhanh` null ⇒ `v_hinh := nhanh = 'hinh'` ra null ⇒ câu kiểm khuôn bị bỏ qua (builder vẫn chặn ở lớp sau, sai câu lỗi) ⇒ `coalesce(..., false)`; bắt được trong lượt thử trước khi áp.
 - **Cổng:** tsc chỉ còn lỗi cũ `pdfRender.ts`; `check:kien-truc` ✔.
+
+## 16/11 17:50 — Tách ý Hình–Học K8 + K9 ĐÃ GHI (Thùy: "ghi luôn liên quan gì sau 22h")
+- `ghi.mjs 8,9 --ghi` (1 giao dịch, 2 phút 01 giây gồm mạng, tự kiểm sau ghi rồi mới commit): **534 bài → 1.566 ý** (K8 138 bài → 440 ý · K9 396 bài → 1.126 ý). Kiểm trong giao dịch: đề ghép sai 0 · hình/bài học sai 0 · trạng thái kho sai 0 · câu gốc chưa rút 0. Bỏ qua 1 bài K8 ở dạng chờ đã duyệt (HHC002480). 534 câu cả bài cũ `rut_khoi_kho = true`, không xoá, không sửa nội dung.
+- Sau ghi (đếm lại DB): ý đã tách K8 926 / 303 bài · K9 1.126 / 396 bài. Câu nhiều ý còn chưa tách (ước theo mẫu chữ): K8 8 · K9 24 (các bài máy cắt lệch + 1 bài bỏ qua) · K7 122 · 8T 15 (ngoài phạm vi lượt này).
+- Hàm chọn câu của builder `fn_tl_hh_cau` qua phiên thành viên: K8 HH00139 trả 347 câu, 193 là ý của 63 bài; K9 HH00109 trả 303 câu, 268 là ý của 89 bài; 0 câu cả-bài đã rút lọt vào; 114–216 ms gồm mạng. Chưa mở màn kho / builder trên app sau khi ghi.
+- **Về "sau 22h":** tôi đề xuất hoãn theo K22 (lô của máy ngoài 17–22 h); Thùy quyết ghi ngay. Lượt ghi giữ khoá dòng trên 534 câu cũ + dòng mới trong 2 phút; không đo `pg_stat_activity` trong lúc chạy nên không có số về lượt đọc bị chờ.
+- Còn lại: 32 bài lệch (4 K8 + 28 K9) ở cuối `duyet-tach-y-may.html` chờ Thùy quyết; buổi đã soạn vẫn trỏ câu cả bài cũ.
