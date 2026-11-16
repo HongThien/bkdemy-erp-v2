@@ -82,7 +82,7 @@
 
 - **Hàng chờ:** em có đề xuất MỚI NHẤT = L1 đã duyệt **TRONG TUẦN NÀY** (lượt chốt chỉ có hiệu lực T2–CN của tuần duyệt; thứ Hai hàng chờ rỗng
   tới khi trưởng khối chốt + TBM duyệt lượt mới — mig `202611161614`), chưa có ca sau giờ tuần này (`fn_btnhe_cho`).
-- **Reset thứ Hai (Thùy 16/11, CHỈ bổ trợ sau giờ — bổ trợ yếu ca khối KHÔNG reset):** 00:05 thứ Hai (pg_cron, file `*_sau_gio_reset_thu_hai_cron_sql_editor.sql`)
+- **Reset thứ Hai (Thùy 16/11, CHỈ bổ trợ sau giờ — bổ trợ yếu ca khối KHÔNG reset):** mỗi ngày 0h giờ VN qua bộ điều phối `_tinh_san_chay` (dòng `tinh_san_dang_ky` mã `sau_gio_reset_tuan` — KHÔNG cron riêng, spec-kien-truc K4; thứ Hai mới có việc)
   `_btnhe_reset_tuan` HUỶ mọi buổi sau giờ chưa thực hiện của tuần cũ (chưa xong, chưa có kết quả nhập; ca có ngày hoặc khởi tạo trước thứ Hai),
   lý do "Hết tuần — reset thứ Hai dd/mm"; ca hết buổi sống ⇒ huỷ ca; case sau giờ đóng `bo`. Không xoá dòng; chạy lại được nhiều lần.
   Khởi tạo ca bị chặn nếu em không có lượt chốt L1 duyệt trong đúng tuần của ngày ca. Lần đầu chạy tay 16/11: 19 lượt / 5 ca (3 ca huỷ cả ca). Subtab **Chờ khởi tạo** (theo lớp) ·
