@@ -68,7 +68,8 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const baiCuaBuoi = (p: CdhPhan) => [...p.mo_hinh.flatMap((m) => m.bai.map((b) => b.ma_bai)), ...(p.btvn_luyen ?? []).flatMap((v) => v.bai.map((b) => b.ma_bai))]
   const doiChoMh = (p: CdhPhan, i: number, j: number) => { const ids = p.mo_hinh.map((m) => m.id!).filter(Boolean); if (j < 0 || j >= ids.length) return; [ids[i], ids[j]] = [ids[j], ids[i]]; datMoHinh(p, ids) }
   const doiChoBai = (p: CdhPhan, mh: CdhMoHinh, i: number, j: number) => { const ms = mh.bai.map((b) => b.ma_bai); if (j < 0 || j >= ms.length) return; [ms[i], ms[j]] = [ms[j], ms[i]]; datBai(p, mh, ms) }
-  const themPhan = () => lam(async () => { await addBuoi(id, NHAN); setNd(await cdhNoiDung(id)); markSaved() })
+  // buổi mới nằm CUỐI danh sách mà nút tạo giờ ở thanh trên ⇒ tạo xong cuộn tới buổi vừa tạo
+  const themPhan = () => lam(async () => { await addBuoi(id, NHAN); const n = await cdhNoiDung(id); setNd(n); markSaved(); const moi = n.buoi[n.buoi.length - 1]; if (moi) setTimeout(() => jump(moi.id), 50) })
   // ── HỌC (giáo trình): bài học → câu luyện + BTVN. Sau ghi đọc lại ĐÚNG buổi đó (câu mới cần nội dung) ──
   const docLaiBuoi = async (p: CdhPhan) => { const moi = (await cdhNoiDung(id, p.id)).buoi[0]; if (moi) vaPhan(moi) }
   const datBaiHoc = (p: CdhPhan, mas: string[]) => lam(async () => vaPhan(await hhDatBai(id, p.id, mas)))
@@ -116,6 +117,9 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">{laGiaoTrinh ? '🆕 Giáo trình · Hình (Học + Luyện)' : '🆕 Chuyên đề · Hình (Luyện)'}</span>
         <span className="text-[12px] text-slate-400">Khối {khoi}</span>
         <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
+        {/* Thùy 16/11: nút tạo buổi lên THANH TRÊN (trước nằm cuối danh sách buổi), tên "Tạo buổi mới" */}
+        <button onClick={themPhan} className="shrink-0 whitespace-nowrap rounded-md border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100">＋ Tạo {nhan} mới</button>
+        {laGiaoTrinh && <button onClick={() => setCopyBuoi(true)} className="shrink-0 whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title={`Copy buổi từ giáo trình Hình lớp khác (cùng khối ${khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy buổi từ lớp khác</button>}
         {laGiaoTrinh && <button onClick={() => setGanLop(true)} className="ml-auto whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title="Gán giáo trình cho 1 lớp → mỗi buổi thành giáo trình buổi + BTVN bám ngày học">⬇ Gán lớp</button>}
         <button onClick={() => setInAll(true)} className={`${laGiaoTrinh ? '' : 'ml-auto '}whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
         <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu
@@ -150,7 +154,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
         </aside>
         <div className="min-h-0 overflow-auto p-5">
           <div className="mx-auto max-w-[900px] space-y-4">
-            {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “+ Thêm {nhan}” để bắt đầu.</div>}
+            {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “＋ Tạo {nhan} mới” ở thanh trên để bắt đầu.</div>}
             {nd.buoi.map((p) => (
               <div key={p.id} className="rounded-xl border border-slate-200 bg-white">
                 <div id={`cdh-${p.id}`} className="flex scroll-mt-3 items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
@@ -274,12 +278,6 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                 </div>
               </div>
             ))}
-            <div className="flex gap-2">
-              <button onClick={themPhan} className="flex-1 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
-              {laGiaoTrinh && (
-                <button onClick={() => setCopyBuoi(true)} className="rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 px-4 py-3 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50" title={`Copy buổi từ giáo trình Hình lớp khác (cùng khối ${khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy buổi từ lớp khác</button>
-              )}
-            </div>
           </div>
         </div>
       </div>

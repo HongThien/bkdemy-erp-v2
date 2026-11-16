@@ -201,7 +201,7 @@ function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL;
       </>) : (
         <Field label={`Tên ${T.mot}`}><input value={tenTuDo} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder="vd: Chuyên đề Số hữu tỉ" autoFocus /></Field>
       )}
-      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm {loai === 'chuyen_de' ? 'phần' : 'buổi'}</b> → <b>+ Chọn nhóm / dạng bài</b>, hoặc <b>📥 Lấy bài từ lớp khác</b> để copy từ giáo trình lớp cùng hệ.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
+      <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>＋ Tạo {loai === 'chuyen_de' ? 'phần' : 'buổi'} mới</b> → <b>+ Chọn nhóm / dạng bài</b>, hoặc <b>📥 Lấy bài từ lớp khác</b> để copy từ giáo trình lớp cùng hệ.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">
         <button onClick={onClose} className="rounded-md px-3 py-1.5 text-sm text-slate-500 hover:bg-slate-100">Huỷ</button>

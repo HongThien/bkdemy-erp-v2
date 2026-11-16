@@ -218,10 +218,10 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   return (
     <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false, phai: anhPhaiCua(ch, nd.tai_lieu.nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
       <div className="flex h-full flex-col bg-[#fafafb]">
-        <div className="flex items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-slate-200 bg-white px-5 py-2.5">
           {/* Như builder cũ: điểm "xong 1 lượt sửa" DUY NHẤT là lúc đóng ⇒ xếp hàng làm link PDF ở đây (không mỗi lần tự lưu). */}
           <button onClick={() => { if (!chiXem) useStore.getState().enqueueLinkGen(id, 'giao_trinh'); onClose() }} className="text-[13px] font-medium text-slate-400 hover:text-indigo-600">← Thư viện</button>
-          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder={laChuyenDe ? 'Tên chuyên đề' : 'Tên giáo trình'} />
+          <input value={ten} disabled={chiXem} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 min-w-[180px] max-w-[420px] flex-1 font-semibold`} placeholder={laChuyenDe ? 'Tên chuyên đề' : 'Tên giáo trình'} />
           <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700" title="Theo bản đồ kiến thức mới (nhóm bài · dạng bài)">🆕 {laChuyenDe ? 'Chuyên đề · ' : ''}Bản đồ mới</span>
           {chiXem && <span className="rounded bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Bản lưu trữ · chỉ xem</span>}
           <span className="text-[12px] text-slate-400">Khối {nd.tai_lieu.khoi}</span>
@@ -232,6 +232,11 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
               {buoiList.map((b) => <option key={b.id} value={b.id}>{b.tieu_de || `${NHAN} ${b.thu_tu + 1}`}</option>)}
             </select>
           </label>
+          {/* Thùy 16/11: nút tạo buổi lên THANH TRÊN (trước nằm cuối danh sách buổi, giáo trình dài phải cuộn hết mới thấy), tên "Tạo buổi mới" */}
+          {!chiXem && <button onClick={themBuoi} className="shrink-0 whitespace-nowrap rounded-md border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100">＋ Tạo {nhan} mới</button>}
+          {!chiXem && !laChuyenDe && tlLopId && (
+            <button onClick={() => setCopyBuoi(true)} className="shrink-0 whitespace-nowrap rounded-md border border-violet-300 px-3 py-1.5 text-sm font-medium text-violet-700 hover:bg-violet-50" title={`Copy ${nhan} từ giáo trình lớp khác (cùng khối ${nd.tai_lieu.khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy {nhan} từ lớp khác</button>
+          )}
           {!laChuyenDe && (
             <span className="flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Chuyển giữa phần dạy TRÊN LỚP (lý thuyết · ví dụ · bài luyện) và phần BÀI TẬP VỀ NHÀ">
               <button onClick={() => setCheXem('lop')} className={`whitespace-nowrap rounded-md px-3 py-1 text-[12.5px] font-semibold ${cheXem === 'lop' ? 'bg-white text-sky-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>📘 Trên lớp</button>
@@ -269,7 +274,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
           </aside>
           <div className="min-h-0 overflow-auto p-5">
             <div className="mx-auto max-w-[900px] space-y-4">
-              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “+ Thêm {nhan}” để bắt đầu.</div>}
+              {nd.buoi.length === 0 && <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-[13px] text-slate-400">Chưa có {nhan} nào. Bấm “＋ Tạo {nhan} mới” ở thanh trên để bắt đầu.</div>}
               {nd.buoi.map((b) => (
                 <div key={b.id} className="rounded-xl border border-slate-200 bg-white">
                   <div id={`p-${b.id}`} className="scroll-mt-3 flex items-center gap-2 rounded-t-xl border-b border-slate-100 bg-indigo-50/50 px-4 py-2.5">
@@ -311,14 +316,6 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                   </div>
                 </div>
               ))}
-              {!chiXem && (
-                <div className="flex gap-2">
-                  <button onClick={themBuoi} className="flex-1 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 py-3 text-[14px] font-medium text-indigo-700 transition hover:bg-indigo-50">+ Thêm {nhan}</button>
-                  {!laChuyenDe && tlLopId && (
-                    <button onClick={() => setCopyBuoi(true)} className="rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 px-4 py-3 text-[14px] font-medium text-violet-700 transition hover:bg-violet-50" title={`Copy ${nhan.toLowerCase()} từ giáo trình lớp khác (cùng khối ${nd.tai_lieu.khoi}) — chép độc lập, sau này sửa riêng không ảnh hưởng`}>📥 Lấy {nhan.toLowerCase()} từ lớp khác</button>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </div>
