@@ -46,6 +46,12 @@ const dem = (re, loc = () => true) => { let n = 0; const top = []; for (const f 
   them('code_select_sao', "select('*') / select() lấy hết cột — K9", 'tran', n4, t4)
   const [n5, t5] = dem(/\b(?:mon|nhanh)\s*(?:===|!==)\s*['"`](?:toan|Toán|dai|hgt|hinh|hinh_gt|khtn|KHTN|anh|van|vatly|hoahoc)['"`]/g, (f) => !/[\\/]lib[\\/](mon|kho[\\/]branches)\.ts$/.test(f))
   them('code_mon_cung', 'So sánh môn/nhánh cứng ngoài registry — K16', 'tran', n5, t5)
+  // §12 dòng 19 (16/11): môn MẶC ĐỊNH gõ cứng — useState('Toán') · `mon: 'Toán'` / `mon = 'Toán'` (hằng nhớ, tham số mặc định) · `?? 'Toán'` · `|| 'Toán'` ·
+  // includes('Toán'). Nhân sự môn khác mở màn ra là thấy Toán (Dashboard học tập + 11 màn cùng mẫu). Màn nhân sự lấy môn từ quyền môn: hook useMonChon / useMonScope.
+  // App HS (môn theo lớp của em), mock, bộ gõ công thức và danh mục môn không tính.
+  const [n6, t6] = dem(/useState(?:<[^>]*>)?\(\s*['"`]Toán['"`]\s*\)|(?:\?\?|\|\|)\s*['"`]Toán['"`]|\bmon\s*[:=]\s*['"`]Toán['"`]|includes\(\s*['"`]Toán['"`]\s*\)/g,
+    (f) => !/[\\/](mock|soan|dautu|screens[\\/]hocsinh)[\\/]|[\\/]lib[\\/]mon\.ts$|AppHS\.tsx$/.test(f))
+  them('code_mon_mac_dinh', "Môn mặc định gõ cứng 'Toán' ở màn / lib nhân sự — §12 dòng 19", 'tran', n6, t6)
 }
 
 // ───────────────────────── DB ─────────────────────────
@@ -116,6 +122,12 @@ if (!CHI_CODE) {
   r = await q(`select tablename||'.'||policyname ten from pg_policies where schemaname='public' and (coalesce(qual,'') ~ $1 or coalesce(with_check,'') ~ $1) order by 1`,
     ["(?<!SELECT )(?<![a-z0-9_])(la_thanh_vien|my_hoc_sinh_id|current_nhan_su_id|chi_me_id|jwt_uid|jwt_email|la_admin|_task_la_admin|_qlcl_toan_he)\\(\\)|(?<!SELECT )(?<![a-z0-9_])(co_quyen_ghi|co_chuc_nang|co_quyen_xem)\\('[a-z_]+'(::text)?\\)"])
   them('db_policy_goi_ham_tran', 'Policy gọi hàm kiểm quyền theo từng dòng (không bọc select) — K27', 'tran', r.length, ds(r))
+
+  // §12 dòng 19 (16/11): hàm tự điền môn khi thiếu — tham số `p_mon … default 'Toán'` hoặc `coalesce(…, 'Toán')` trong thân. Thiếu môn phải là lỗi / không áp dụng,
+  // không được lặng lẽ thành Toán (§1.6: không có dữ liệu học tập "chung chung"). Số gốc 16/11 = 16; hàm MỚI không được thêm.
+  r = await q(`select p.proname ten from pg_proc p where p.pronamespace='public'::regnamespace
+     and (pg_get_function_arguments(p.oid) ~ $1 or p.prosrc ~* $2) order by 1`, ["'Toán'", "coalesce\\([^;]{0,120},\\s*'Toán'\\s*\\)"])
+  them('db_ham_mon_mac_dinh', "Hàm tự điền môn 'Toán' khi thiếu (tham số mặc định / coalesce) — §12 dòng 19", 'tran', r.length, ds(r).slice(0, 8))
 
   // cron + hàm chậm: cần hàm _audit_* (owner postgres). Không có thì bỏ qua, không coi là lỗi.
   try {

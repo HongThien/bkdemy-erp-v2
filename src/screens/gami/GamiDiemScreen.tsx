@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { listGamiBangTong, listGamiMons, getDiemHS, getExpThang, listCaHoc, getEloBreakdown, type DiemRow, type DiemHS, type ExpRow, type CaHoc, type EloBreakdown } from '../../lib/gami'
 import { tenHienThiDs } from '../../lib/hoten'
+import { thuTuMon } from '../../lib/mon'
+import { useMonScope } from '../../hooks/useMonScope'
 import { KHOI_OPTIONS } from '../../lib/kho/api'
 
 type Phase = 'ingame' | 'et' | 'mt'
@@ -67,12 +69,13 @@ export default function GamiDiemScreen() {
 function RankView({ onOpenHS }: { onOpenHS: (r: DiemRow) => void }) {
   const [mons, setMons] = useState<string[]>([])
   const [mon, setMon] = useState<string>('')
+  const quyenMon = useMonScope()   // 16/11: môn trên thanh chọn = môn có điểm ∩ quyền môn; môn đầu = đầu danh sách (không ưu tiên 'Toán')
   const [rows, setRows] = useState<DiemRow[]>([])
   const [loading, setLoading] = useState(true)
   const [q, setQ] = useState('')
   const [khoi, setKhoi] = useState('all')
   const [he, setHe] = useState('all')
-  useEffect(() => { listGamiMons().then((m) => { setMons(m); if (m.length) setMon(m.includes('Toán') ? 'Toán' : m[0]) }).catch(() => {}) }, [])
+  useEffect(() => { listGamiMons().then((tat) => { const m = tat.filter((x) => quyenMon.allowed(x)).sort((a, b) => thuTuMon(a) - thuTuMon(b)); setMons(m); if (m.length) setMon(m[0]) }).catch(() => {}) }, []) // eslint-disable-line react-hooks/exhaustive-deps
   // ⚠ BUG CÓ SẴN, phát hiện 07-21 khi thêm cột Lớp/Hệ: bảng ghi "Toán" nhưng hiện CẢ 307 dòng mọi môn.
   // Effect này chạy lần đầu lúc `mon` còn '' → gọi listGamiBangTong(undefined) = LẤY HẾT MỌI MÔN; ngay
   // sau đó listGamiMons trả về → setMon('Toán') → gọi lần 2. Lần 1 nặng hơn nên về SAU, ghi đè kết quả

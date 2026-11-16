@@ -13,6 +13,7 @@ import { ChonKy, BaoCaoKyBody } from './BaoCaoKy'
 import { NutThangNhanXet } from './ThangNhanXet'
 import { congBoLopBcKy, listBcKyTrangThai, chotSoLieuBcKy, laAdminBcKy, nghiLechBcKy, type BcKyTT } from '../../lib/baoCaoKy'
 import { MON_CO_KHO } from '../../lib/mon'
+import { useMonChon } from '../../hooks/useMonScope'
 
 const curYM = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` }
 const shiftYM = (ym: string, delta: number) => { const [y, m] = ym.split('-').map(Number); const i = y * 12 + (m - 1) + delta; return `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, '0')}` }
@@ -55,10 +56,10 @@ type RosterHS = { id: string; ho_ten: string; ma_hs: string | null; anh_url: str
 // Nhớ màn khi rời tab (Thùy 07/11 "thoát ra tab khác vào lại không phải chọn lại từ đầu"): màn bị unmount khi đổi tab ⇒ giữ
 // lựa chọn + vị trí cuộn ở module-level (sống tới F5). Lần mount sau dùng lại, KHÔNG xoá lớp/em như khi người dùng tự đổi môn/lớp.
 const NHO_RP: { mon: string; lopId: string | null; hsId: string | null; ym: string; cheDo: 'thang' | 'ky'; kyId: string | null; cuon: number } =
-  { mon: 'Toán', lopId: null, hsId: null, ym: curYM(), cheDo: 'thang', kyId: null, cuon: 0 }
+  { mon: '', lopId: null, hsId: null, ym: curYM(), cheDo: 'thang', kyId: null, cuon: 0 }
 
 export default function ReportPHScreen() {
-  const [mon, setMon] = useState(NHO_RP.mon)
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO, NHO_RP.mon)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lopId, setLopId] = useState<string | null>(NHO_RP.lopId)
   const [lopOpts, setLopOpts] = useState<Opt[]>([])
   const [hsId, setHsId] = useState<string | null>(NHO_RP.hsId)
@@ -188,7 +189,7 @@ Số liệu tính lúc này sẽ được giữ cố định, không tính lại
     <div className="flex h-full min-w-0 flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-3 py-2.5 md:px-6">
         <span className="mr-2 text-sm font-semibold text-slate-900">Report phụ huynh</span>
-        {MON_CO_KHO.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
+        {monDs.map((m) => <button key={m} onClick={() => setMon(m)} className={monBtn(mon === m)}>{m}</button>)}
         <div className="ml-2 w-44"><SearchSelect value={lopId} onChange={setLopId} options={lopOpts} placeholder="Chọn lớp…" /></div>
         <div className="ml-2 flex rounded-md bg-slate-100 p-0.5">
           <button onClick={() => setCheDo('thang')} className={monBtn(cheDo === 'thang')}>Tháng</button>

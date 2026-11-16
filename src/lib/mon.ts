@@ -2,6 +2,8 @@
 // Giá trị = chuỗi hiển thị, khớp lop.mon / ung_vien.mon trong DB.
 export const MON_LIST = ['Toán', 'KHTN', 'Vật lý', 'Hóa học', 'Tiếng Anh', 'Văn', 'TSA'] as const // TSA = Toán luyện thi ĐH Bách khoa (môn ĐỘC LẬP với Toán, 02/10)
 export type Mon = typeof MON_LIST[number]
+// Thứ tự môn trên thanh chọn = thứ tự danh mục này (môn lạ xếp cuối). Màn sắp môn bằng hàm này, không ưu tiên một môn bằng tên gõ tay.
+export const thuTuMon = (m: string): number => { const i = (MON_LIST as readonly string[]).indexOf(m); return i < 0 ? MON_LIST.length : i }
 // Môn có GÓC HỌC TẬP trong app Học sinh (Thùy 01/10: "chọn môn Toán, KHTN, Tiếng Anh") — thứ tự = thứ tự nút ở thanh chọn môn.
 // Môn có lớp mà không nằm đây (Văn) thì app HS chưa hiện. Mở thêm môn = thêm vào đây (kho câu: `_kho_co_mon` ở DB).
 // Vật lý · Hóa học (Thùy 12/11 — cấp 3 KHTN tách môn; tên ĐẦY ĐỦ để không lẫn phân môn "Lý"/"Hóa" của KHTN) = mỗi môn 1 trung tâm như KHTN,

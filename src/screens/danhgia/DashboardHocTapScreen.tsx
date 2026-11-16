@@ -4,8 +4,7 @@
 // Kênh song song với mastery (công thức khác có chủ ý — xem mig 202610231524). Mọi con số từ DB (§2.0); client chỉ lọc lớp,
 // sắp cột đang bấm, định dạng.
 import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from 'react'
-import { supabase } from '../../lib/supabase'
-import { bangDashboardHocTap, lichSuO, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO } from '../../lib/dashboardHocTap'
+import { bangDashboardHocTap, lichSuO, oDashboardHocTap, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO, type ODashboard } from '../../lib/dashboardHocTap'
 import { NHAN_TT } from '../../lib/boTroTk'
 import BoTroPopup from '../phongtk/BoTroPopup'
 import MucTieuTuanTab from './MucTieuTuanTab'
@@ -17,10 +16,12 @@ export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (h
 type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string; dangThem?: boolean }
 
 // Rời tab quay lại = đúng chỗ cũ, kể cả các cửa sổ đang mở (CLAUDE §React).
+// mon KHÔNG có mặc định gõ cứng (Thùy 16/11: nhân sự KHTN mở ra thấy Toán): môn đầu = ô đầu tiên trong QUYỀN MÔN của người đăng nhập
+// (DB: fn_dbht_o ← fn_mon_cua_toi); môn nhớ từ trước mà không còn trong quyền (đổi tài khoản không F5) thì bỏ, kể cả bảng đã nhớ.
 const NHO: {
-  mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }
+  o: ODashboard[] | null; mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }
   bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number; tapTrung: boolean; tab: 'bang' | 'mtt'
-} = { mon: 'Toán', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false, tab: 'bang' }
+} = { o: null, mon: '', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false, tab: 'bang' }
 
 const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuyên đề', nhom: 'nhóm bài' }
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
@@ -32,6 +33,7 @@ const ngayVN = (d: string | null) => d ? d.split('-').reverse().slice(0, 2).join
 const gioVN = (t: string) => new Date(t).toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit' })
 
 export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhong } = {}) {
+  const [oLa, setOLa] = useState<ODashboard[] | null>(NHO.o)   // lá ở sảnh: ô theo quyền môn (DB); trong phòng dùng phong.o
   const [mons, setMons] = useState<string[]>([])
   const [khois, setKhois] = useState<string[]>([])
   const [mon, setMon] = useState(NHO.mon)
@@ -57,32 +59,34 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   const tiLe = () => { const el = goc.current; return el && el.offsetWidth ? el.getBoundingClientRect().width / el.offsetWidth : 1 }
   useEffect(() => { Object.assign(NHO, { mon, khoi, soTuan, cap, lopId, sap, bang, cua }) }, [mon, khoi, soTuan, cap, lopId, sap, bang, cua])
 
-  // danh sách môn / khối = lớp đang học (chỉ để dựng nút lọc)
+  // Ô (môn × khối) được xem: phòng ⇒ ô trong phạm vi của ghế (cha truyền) · lá ở sảnh ⇒ DB trả theo quyền môn (một lượt, nhớ tới F5)
   useEffect(() => {
-    if (phong) {   // phòng: chỉ ô trong phạm vi của ghế
-      setMons([...new Set(phong.o.map((x) => x.mon))].sort((a, b) => a.localeCompare(b, 'vi')))
-      const ks = [...new Set(phong.o.filter((x) => x.mon === mon).map((x) => x.khoi))].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
-      setKhois(ks)
-      if (!ks.length && phong.o.length && phong.o[0].mon !== mon) { setMon(phong.o[0].mon); return }
-      if (!khoi || !ks.includes(khoi)) setKhoi(ks[0] ?? null)
+    if (phong || NHO.o) return
+    let alive = true
+    oDashboardHocTap().then((d) => { if (alive) { NHO.o = d; setOLa(d) } }).catch((e) => alive && setLoi('Không tải được danh sách môn: ' + (e?.message ?? e)))
+    return () => { alive = false }
+  }, [phong])
+  const cacO = phong ? phong.o : oLa
+  // môn / khối trên thanh lọc = đúng các ô được xem; môn đang chọn không thuộc danh sách ⇒ về môn đầu của danh sách (không có môn "mặc định")
+  useEffect(() => {
+    if (!cacO) return
+    const ms = [...new Set(cacO.map((x) => x.mon))]
+    if (phong) ms.sort((a, b) => a.localeCompare(b, 'vi'))   // lá ở sảnh giữ thứ tự DB (môn nhiều lớp nhất trước)
+    setMons(ms)
+    if (!ms.includes(mon)) {
+      NHO.bang = null; NHO.khoaBang = ''; setBang(null); setCua([]); setLopId(null); setKhois([]); setKhoi(null)
+      setMon(ms[0] ?? '')
       return
     }
-    let alive = true
-    supabase.from('lop').select('mon, khoi').eq('trang_thai', 'dang_hoc').limit(1000).then(({ data }) => {
-      if (!alive) return
-      const ds = (data ?? []) as { mon: string; khoi: string | null }[]
-      setMons([...new Set(ds.map((l) => l.mon))].sort((a, b) => a.localeCompare(b, 'vi')))
-      const ks = [...new Set(ds.filter((l) => l.mon === mon && l.khoi).map((l) => l.khoi as string))]
-        .sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
-      setKhois(ks)
-      if (!khoi || !ks.includes(khoi)) setKhoi(ks.find((k) => k === '6') ?? ks[0] ?? null)
-    })
-    return () => { alive = false }
-  }, [mon, phong]) // eslint-disable-line react-hooks/exhaustive-deps
+    const ks = [...new Set(cacO.filter((x) => x.mon === mon).map((x) => x.khoi))].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
+    setKhois(ks)
+    if (!khoi || !ks.includes(khoi)) setKhoi(phong ? (ks[0] ?? null) : (ks.find((k) => k === '6') ?? ks[0] ?? null))
+  }, [mon, phong, oLa]) // eslint-disable-line react-hooks/exhaustive-deps
+  const monHopLe = mons.includes(mon)   // chỉ gọi / hiện dữ liệu khi môn đang chọn nằm trong các ô được xem
 
   // Đổi ngữ cảnh (môn/khối/tuần/cấp) ⇒ tải lại bảng; quay lại tab cùng ngữ cảnh ⇒ dùng bảng đã nhớ
   useEffect(() => {
-    if (!khoi || tab !== 'bang') return
+    if (!khoi || !monHopLe || tab !== 'bang') return
     const khoa = [mon, khoi, soTuan, cap].join('|')
     if (lamMoi === 0 && NHO.bang && NHO.khoaBang === khoa) return
     let alive = true
@@ -93,7 +97,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
       .catch((e) => alive && setLoi('Không tải được bảng: ' + (e?.message ?? e)))
       .finally(() => alive && setDangTai(false))
     return () => { alive = false }
-  }, [mon, khoi, soTuan, cap, lamMoi, tab])
+  }, [mon, khoi, soTuan, cap, lamMoi, tab, monHopLe])
 
   const lops = bang ? [...new Map(bang.hs.map((h) => [h.lop_id, h.lop])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'vi', { numeric: true })) : []
   const hien = (bang?.hs ?? []).filter((h) => !lopId || h.lop_id === lopId)
@@ -150,7 +154,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
           <select value={mon} onChange={(e) => { setMon(e.target.value); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] font-semibold text-slate-800">
             {mons.map((m) => <option key={m} value={m}>{m}</option>)}
           </select>
-        ) : <span className="px-1 text-[13px] font-semibold text-slate-700">{mon}</span>}
+        ) : <span className="px-1 text-[13px] font-semibold text-slate-700">{monHopLe ? mon : ''}</span>}
         <select value={khoi ?? ''} onChange={(e) => { setKhoi(e.target.value || null); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] text-slate-800">
           {khois.length === 0 && <option value="">Chưa có lớp</option>}
           {khois.map((k) => <option key={k} value={k}>Khối {k}</option>)}
@@ -173,9 +177,12 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
         <button onClick={() => setLamMoi((x) => x + 1)} title="Đọc lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
         {cua.length > 0 && <button onClick={() => setCua([])} className="ml-auto h-7 rounded-md px-3 text-[12px] font-semibold text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng {cua.length} cửa sổ</button>}
       </div>
-      {tab === 'mtt' ? <MucTieuTuanTab mon={mon} khoi={khoi} lamMoi={lamMoi} /> : <>
+      {cacO && mons.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">{phong ? 'Ghế của bạn chưa có khối nào trong phạm vi.' : 'Tài khoản của bạn chưa được phân môn nào có lớp đang học — nhờ quản trị phân môn ở màn Nhân sự.'}</div>
+      : !monHopLe ? (loi ? <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div> : <p className="text-sm text-slate-500">Đang tải…</p>)
+      : tab === 'mtt' ? <MucTieuTuanTab mon={mon} khoi={khoi} lamMoi={lamMoi} /> : <>
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!bang ? (dangTai ? <p className="text-sm text-slate-500">Đang tính bảng…</p> : null)
+        : bang.ngoai_quyen ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Môn {mon} không thuộc quyền môn của tài khoản này.</div>
         : bang.co_do === false ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Môn {mon} chưa đo theo bản đồ kiến thức mới — bảng sẽ có số khi môn này có bản đồ mới và có lần đo (ET · MT · BTVN).</div>
         : bang.cot.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Khối này chưa có lần đo nào theo bản đồ mới.</div>
         : (

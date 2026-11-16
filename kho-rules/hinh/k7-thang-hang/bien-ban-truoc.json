@@ -1,0 +1,170 @@
+[
+ {
+  "ma_cau": "HHC000772",
+  "dang_chinh": "HH00026",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$. Trên tia đối của tia AB lấy điểm F sao cho $AF = CE$. Chứng minh ba điểm F, D, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000776",
+  "dang_chinh": "HH00026",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$. Trên tia đối của tia KM lấy điểm H sao cho $KH = KC$. Chứng minh ba điểm B, A, H thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000780",
+  "dang_chinh": "HH00026",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$. Trên tia đối của tia AB lấy điểm F sao cho $AF = CE$. Chứng minh D, F, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000783",
+  "dang_chinh": "HH00026",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$. Lấy điểm M là trung điểm của đoạn thẳng QC. Chứng minh ba điểm B, D, M thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000786",
+  "dang_chinh": "HH00026",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$. Gọi $H$ là trung điểm của $FB$. Chứng minh $M,E,H$ thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC000816",
+  "dang_chinh": "HH00096",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ có $AB = AC$. Gọi K là trung điểm của CN. Trên tia đối của tia KD lấy điểm E sao cho $KE = KD$. Chứng minh M, N, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000819",
+  "dang_chinh": "HH00096",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$ có $AB = AC$. Gọi I là trung điểm của EF. Chứng minh 3 điểm A, I, D thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000822",
+  "dang_chinh": "HH00097",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$. Qua M vẽ đường thẳng vuông góc với AC tại I, và đường thẳng vuông góc với BD tại K. Chứng minh rằng ba điểm I, M, K thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000832",
+  "dang_chinh": "HH00097",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$. Gọi $N$ là trung điểm của $AB$. Trên tia đối của tia $NC$ lấy điểm K sao cho $NC = NK$. Chứng minh 3 điểm $D, A, K$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC000837",
+  "dang_chinh": "HH00097",
+  "bai_y": null,
+  "noi_dung": "Cho $\\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$. Gọi $I$ là trung điểm của $AC$, vẽ điểm $E$ sao cho $I$ là trung điểm của $BE$. Chứng minh ba điểm $E, C, D$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012867",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000444",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7: Cho tam giác ABC, gọi M là trung điểm của BC, trên tia đối của tia MA lấy điểm D sao cho $MD = MA$. a) Chứng minh rằng: $\\triangle AMB = \\triangle DMC$ và $AB = DC$\nQua M vẽ đường thẳng vuông góc với AC tại I, và đường thẳng vuông góc với BD tại K.\nChứng minh rằng ba điểm I, M, K thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012881",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000449",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 17. Cho $\\triangle ABC$ vuông tại A. Vẽ BD là tia phân giác ABC. Trên BC lấy điểm E sao cho $BE = BA$ a) Chứng minh $\\triangle ABD=\\triangle EBD$.\nTrên tia đối của tia AB lấy điểm F sao cho $AF = CE$.\nChứng minh ba điểm F, D, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012904",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000457",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 7. Cho $\\triangle ABC$ ($AB < AC$) có M là trung điểm của AC. Trên tia đối của tia MB lấy điểm D sao cho $MB = MD$. a) Chứng minh $\\triangle AMB = \\triangle CMD$\nGọi N là trung điểm của AB. Trên tia đối của tia NC lấy điểm K sao cho $NC = NK$.\nChứng minh 3 điểm D, A, K thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012908",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000458",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 8. Cho $\\triangle ABC$ vuông tại A. Kẻ BD là tia phân giác của $\\triangle ABC$ ($D \\in AC$). Trên cạnh BC lấy điểm E sao cho $BE = BA$. a) Chứng minh $\\triangle ABD = \\triangle EBD$.\nTrên tia đối của tia AB lấy điểm F sao cho $AF = CE$.Chứng minh D, F, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012910",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000459",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 9. Cho $\\triangle MAB$ nhọn có $MA < MB$ . Trên cạnh MB lấy điểm C sao cho $MA = MC$ . Tia phân giác của góc AMB cắt cạnh AB tại E. Gọi F là giao điểm của MA và CE. a) Chứng minh $EA = EC$ .\nGọi H là trung điểm của FB. Chứng minh M,E,H thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC012913",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000460",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 10. Cho góc $\\widehat{xAy}$ là góc nhọn trên Ax và Ay lần lượt lấy điểm B và C sao cho $AB = AC$. Vẽ Az là phân giác góc $\\widehat{xAy}$, Az cắt BC tại điểm D. a) Chứng minh $\\triangle ABD = \\triangle ACD$.\nGọi K là trung điểm của CN. Trên tia đối của tia KD lấy điểm E sao cho $KE = KD$.\nChứng minh M, N, E thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012918",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000462",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho tam giác ABC, lấy M là trung điểm của BC. Trên tia đối của tia MA lấy điểm D sao cho\n$MA = MD$. a) Chứng minh $\\triangle AMC = \\triangle DMB$.\nGọi I là trung điểm của AC, vẽ điểm E sao cho I là trung điểm của BE. Chứng minh ba điểm E, C, D thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012920",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000463",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Cho góc $xOy$ bằng $80^\\circ$. Vẽ Om là tia phân giác của góc $xOy$. Trên tia Ox lấy điểm A. Vẽ đường thẳng qua A và song song với Oy, đường thẳng này cắt tia Om tại E. a) Tính số đo các góc của $\\triangle AOE$.\nLấy M thuộc đoạn thẳng OA, N thuộc đoạn thẳng EB sao cho $AM = BN$. Nối AB cắt tia Om tại I. Chứng minh: M, I, N thẳng hàng"
+ },
+ {
+  "ma_cau": "HHC012922",
+  "dang_chinh": "HH00025",
+  "bai_y": "HHB000464",
+  "noi_dung": "Cho hình vẽ. Biết $\\widehat{xOt}=33^\\circ$. Tính $\\widehat{zOy}$. Bài 4 (3 điểm) Cho $\\triangle ABC$ có $AB = AC$. Kẻ AD là tia phân giác của góc A, D thuộc BC. a) Chứng minh $\\triangle ABD = \\triangle ACD$.\nGọi I là trung điểm của EF. Chứng minh 3 điểm A, I, D thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC012999",
+  "dang_chinh": "HH00101",
+  "bai_y": "HHB000492",
+  "noi_dung": "Cho tam giác $ABC$, trên tia đối của tia $AB$ lấy điểm $M$, trên tia đối của tia $AC$ lấy điểm $N$ sao cho $AM=AB$; $AN=AC$.\nLấy điểm $H$ trên cạnh $BC$ và điểm $K$ trên cạnh $MN$ sao cho $BH=MK$. Chứng minh $\\triangle AKM=\\triangle AHB$. Từ đó chứng minh $A, K, H$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013002",
+  "dang_chinh": "HH00101",
+  "bai_y": "HHB000493",
+  "noi_dung": "Cho tam giác $ABC$, trên tia đối của tia $BA$ lấy điểm $E$, trên tia đối của tia $BC$ lấy điểm $F$ sao cho $BA=BE$; $BC=BF$.\nLấy $M$ thuộc đoạn $AC$ và $N$ thuộc đoạn $FE$ sao cho $AM=NE$. Chứng minh $B, M, N$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013040",
+  "dang_chinh": "HH00102",
+  "bai_y": "HHB000508",
+  "noi_dung": "Cho tam giác $ABC$. Điểm $E$ là trung điểm của $BC$. Lấy $D$ thuộc tia đối của tia $EA$ sao cho $ED=EA$.\nChứng minh $I$, $E$, $K$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013073",
+  "dang_chinh": "HH00103",
+  "bai_y": "HHB000520",
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$ có $BM$ là tia phân giác của $\\widehat{ABC}$ ($M$ thuộc $AC$). Kẻ $MD\\perp BC$ tại $D$. Kéo dài $DM$ cắt đường thẳng $AB$ tại $E$.\nChứng minh $B, M, N$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013084",
+  "dang_chinh": "HH00103",
+  "bai_y": "HHB000523",
+  "noi_dung": "Cho $\\triangle ABC$ có $AB=AC$. Lấy điểm $E$ thuộc tia phân giác của $\\widehat{BAC}$ sao cho $E$ nằm ngoài $\\triangle ABC$. Kẻ $EN\\perp AB$ tại $N$, $EP\\perp AC$ tại $P$. Chứng minh:\nGọi $M$ là trung điểm của $BC$. Chứng minh $A$, $M$, $E$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013256",
+  "dang_chinh": "HH07000000",
+  "bai_y": "HHB000587",
+  "noi_dung": "Cho tam giác $ABC$ vuông tại $A$. Trên cạnh $BC$ lấy điểm $D$ sao cho $BD=AB$, tia phân giác của $\\widehat{ABC}$ cắt cạnh $AC$ tại $E$.\nGọi $H$ là trung điểm của $AD$. Chứng minh: ba điểm $B$, $H$, $E$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013284",
+  "dang_chinh": "HH07000000",
+  "bai_y": "HHB000598",
+  "noi_dung": "Cho $\\triangle ABC$ vuông tại $A$. Vẽ $BD$ là tia phân giác của $\\widehat{ABC}$ ($D\\in AC$). Kẻ $DE$ vuông góc với $BC$ ($E\\in BC$).\nLấy điểm $M$ là trung điểm của đoạn thẳng $QC$. Chứng minh ba điểm $B$, $D$, $M$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013288",
+  "dang_chinh": "HH07000000",
+  "bai_y": "HHB000599",
+  "noi_dung": "Cho tam giác $ABC$, lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MA=MD$.\nGọi $I$ là trung điểm của $AC$, vẽ điểm $E$ sao cho $I$ là trung điểm của $BE$. Chứng minh ba điểm $E$, $C$, $D$ thẳng hàng."
+ },
+ {
+  "ma_cau": "HHC013293",
+  "dang_chinh": "HH07000000",
+  "bai_y": "HHB000601",
+  "noi_dung": "Cho $\\triangle ABC$ có $AB=AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.\nGọi $I$ là trung điểm của $EF$. Chứng minh $3$ điểm $A$, $I$, $D$ thẳng hàng."
+ }
+]

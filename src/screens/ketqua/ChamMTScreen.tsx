@@ -19,10 +19,11 @@ import { laMaHinh, MT_DIEM_OPTS } from '../../lib/tailieu'
 import type { MTPhanCaus } from '../../lib/mt'
 import BangChuyenDeView from './BangChuyenDeView'
 import { MON_CO_KHO } from '../../lib/mon'
+import { useMonChon } from '../../hooks/useMonScope'
 
 // che: 'mt' = MT theo lớp (đề gán vào buổi của lớp) · 'ks' = KHẢO SÁT CHUNG (Thùy 23/10: thi chung cả khối, không theo lớp).
 type Che = 'mt' | 'ks'
-const NHO: { che: Che; mon: string; lopId: string | null; buoiId: string | null; hsId: string | null; lopLoc: string | null } = { che: 'mt', mon: 'Toán', lopId: null, buoiId: null, hsId: null, lopLoc: null }
+const NHO: { che: Che; mon: string; lopId: string | null; buoiId: string | null; hsId: string | null; lopLoc: string | null } = { che: 'mt', mon: '', lopId: null, buoiId: null, hsId: null, lopLoc: null }
 const homNayVN = () => { const v = new Date(Date.now() + 7 * 3600 * 1000); return `${v.getUTCFullYear()}-${String(v.getUTCMonth() + 1).padStart(2, '0')}-${String(v.getUTCDate()).padStart(2, '0')}` }
 
 type Dong = { p: Problem; nhom: string; hinh: string | null }
@@ -67,7 +68,7 @@ function ChamMTBody() {
   const [lopLoc, setLopLoc] = useState<string | null>(NHO.lopLoc) // khảo sát chung: lọc HS theo lớp (chỉ xem)
   const [them, setThem] = useState(false)
   const [lanDs, setLanDs] = useState(0) // tăng ⇒ tải lại danh sách đề/kỳ (sau khi thêm)
-  const [mon, setMon] = useState(NHO.mon)
+  const { mons: monDs, mon, setMon } = useMonChon(MON_CO_KHO, NHO.mon)   // 16/11: theo quyền môn, không mặc định 'Toán'
   const [lops, setLops] = useState<Lop[]>([])
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
   const [buois, setBuois] = useState<MTBuoiCham[]>([])
@@ -238,7 +239,7 @@ function ChamMTBody() {
           ))}
         </div>
         <div className="flex items-center gap-1">
-          {MON_CO_KHO.map((m) => <button key={m} onClick={() => { setMon(m); setLopId(null) }} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
+          {monDs.map((m) => <button key={m} onClick={() => { setMon(m); setLopId(null) }} className={`h-7 rounded-md px-3 text-[13px] font-semibold ${mon === m ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:bg-slate-100'}`}>{m}</button>)}
         </div>
         {che === 'mt' && (
           <select value={lopId ?? ''} onChange={(e) => setLopId(e.target.value || null)} className="h-8 w-full rounded border border-slate-300 px-2 text-[13px]">

@@ -1,6 +1,6 @@
 -- ============================================================================
--- 202611161632 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11)
---   (đổi tên từ 202611161622: trùng giờ với mig 202611161632_sau_gio_reset_dang_ky_dieu_phoi đã áp ở phiên khác — file này CHƯA áp)
+-- 202611161714 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11) — đổi tên 1622 → 1632 → 1714 để chạy SAU mig 202611161701 (quyền môn); CHƯA áp
+--   (đổi tên 202611161622 → 1632 → 1714: trùng giờ với mig 202611161622_sau_gio_reset_dang_ky_dieu_phoi đã áp ở phiên khác — file này CHƯA áp)
 -- ----------------------------------------------------------------------------
 -- VÌ SAO: "Hành vi chốt phải là: hệ thống đọc bổ trợ và giáo trình của tuần này để ghi ra mục tiêu" + luồng tuần Thùy duyệt 16/11:
 --   · 00:00 thứ Hai MÁY chốt KẾT QUẢ tuần cũ vào sổ (mtt_chot — đã có, cron _mtt_lam_moi). Người chỉ xem.
@@ -34,7 +34,7 @@ create table if not exists public.mtt_ke_hoach (
   primary key (tuan, mon, hoc_sinh_id)
 );
 create index if not exists mtt_ke_hoach_hs_idx on public.mtt_ke_hoach (hoc_sinh_id);
-comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161632). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
+comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161714). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
 drop trigger if exists mtt_ke_hoach_bat_bien_trg on public.mtt_ke_hoach;
 create trigger mtt_ke_hoach_bat_bien_trg before update or delete on public.mtt_ke_hoach
   for each row execute function public._mtt_chot_bat_bien();
@@ -267,7 +267,7 @@ begin
     into v_nhom
     from t3;
 
-  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161632): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
+  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161714): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
   -- số đo (% hiện tại, đầu tuần, tiến độ) vẫn tính trực tiếp. Nhóm mới xuất hiện sau khi chốt ⇒ them_sau_chot (chỉ để nhân sự thấy).
   select k.nhom, k.viec, k.chot_at into v_kh from mtt_ke_hoach k where k.tuan = p_tuan and k.mon = p_mon and k.hoc_sinh_id = p_hs;
   if found then
@@ -439,7 +439,7 @@ begin
   end if;
   v := public._mtt_tinh(p_hs, p_mon, p_tuan, null);
   if v is null then return; end if;
-  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161632): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
+  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161714): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
   if coalesce((v->>'chot')::boolean, false) and v->>'ke_hoach_at' is null then
     insert into mtt_ke_hoach (tuan, mon, hoc_sinh_id, nhom, viec)
     values (p_tuan, p_mon, p_hs,

@@ -1010,7 +1010,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 ### Hình
 
 **(a) Công cụ được phép — whitelist theo bài** [08/10, 05/11]
-- Bản đồ K7 không có Hình ⇒ whitelist Hình = lý thuyết các bài Hình 7 trên ERP (`hinh_hoc_bai_ly_thuyet` join `hinh_hoc_bai` where `khoi='7'`; dump: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`; nguồn sống là DB).
+- Whitelist Hình K7 = lý thuyết các bài Hình 7 trên ERP (bản đồ Hình–Học K7 có chủ đề NCD00177 Đường thẳng song song · NCD00210 Tam giác bằng nhau · NCD00255 Thẳng hàng — cập nhật 16/11) (`hinh_hoc_bai_ly_thuyet` join `hinh_hoc_bai` where `khoi='7'`; dump: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`; nguồn sống là DB).
 - Nền chung: lớp 6 + lớp 7 trước chương Tam giác bằng nhau: hai góc kề bù (tổng $180^\circ$), đối đỉnh (bằng nhau), góc bẹt; tia phân giác (định nghĩa); tia nằm giữa ⇒ $\widehat{xOz}+\widehat{zOy}=\widehat{xOy}$; so le trong / đồng vị / trong cùng phía; dấu hiệu nhận biết song song; tiên đề Euclid; tính chất hai đường song song; cùng song song / cùng vuông góc với đường thứ ba; định lí, GT–KL; hình bình hành là tứ giác có các cạnh đối song song; tổng ba góc $180^\circ$; tam giác vuông hai góc nhọn phụ nhau; góc ngoài bằng tổng hai góc trong không kề (HH00001); định nghĩa hai tam giác bằng nhau.
 
 | Bài | Được thêm | CẤM |
@@ -1021,7 +1021,19 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 | HH00103 tam giác vuông | + (cgv - cgv), (cgv - gn), (ch - gn), (ch - cgv) — viết tắt đúng như vậy | tam giác cân / đều, trung trực, Pytago |
 | HH00104 tam giác cân – trung trực | + tam giác cân (định nghĩa, hai góc đáy, dấu hiệu), vuông cân (45°), đều (60°; dấu hiệu ba cạnh / ba góc / cân có góc 60°), trung trực (ĐỊNH NGHĨA + TÍNH CHẤT thuận) | chiều ĐẢO của trung trực (dù lý thuyết tài liệu có ghi); "trong tam giác cân phân giác / đường cao / trung tuyến trùng nhau"; Pytago, đồng dạng, hình bình hành, đường trung bình, lượng giác |
 
-- Chứng minh một đường là trung trực ⇒ dùng ĐỊNH NGHĨA (vuông góc tại trung điểm, qua tam giác bằng nhau), không chiều đảo.
+- Chứng minh một đường là trung trực ⇒ dùng ĐỊNH NGHĨA (vuông góc tại trung điểm, qua tam giác bằng nhau), không chiều đảo. **Ngoại lệ duy nhất: ba bài Thẳng hàng HH00170–172** (xem dưới bảng) [16/11 · Thùy].
+- **Chuyên đề Thẳng hàng — chủ đề NCD00255, ba bài HH00170 · HH00171 · HH00172** [16/11 · Thùy chốt; nội dung từ tài liệu "thẳng hàng.pdf" của Thùy]:
+
+  | Bài | Được thêm | CẤM |
+  |---|---|---|
+  | HH00170 Phương pháp cùng đường | chứng minh ba điểm cùng thuộc MỘT đường thẳng cho trước: **hai tia cùng là tia phân giác của một góc ⇒ trùng nhau** · **đường trung trực, dùng CẢ chiều thuận lẫn chiều ĐẢO** (điểm cách đều hai đầu đoạn thẳng ⇒ thuộc trung trực; trung điểm thuộc trung trực) | Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác; "trong tam giác cân phân giác / đường cao / trung tuyến trùng nhau" (vẫn phải tự chứng minh) |
+  | HH00171 Phương pháp cộng góc | $\widehat{AMD}=180^\circ$ ⇒ $A, M, D$ thẳng hàng (hai góc kề nhau có tổng $180^\circ$ ⇒ hai tia ngoài cùng đối nhau); bài hai góc đối đỉnh bằng nhau dẫn tới ba điểm thẳng hàng. **Phải nêu vì sao tia chung nằm giữa** (hai điểm ở hai phía của đường thẳng đã cho) | như trên |
+  | HH00172 Dùng tiên đề Euclide (Ơ-clit) | hệ quả tiên đề Ơ-clit: hai đường cùng qua một điểm và cùng song song với một đường thứ ba thì trùng nhau ⇒ thẳng hàng; thường qua hai cặp tam giác bằng nhau cho góc so le trong | như trên |
+
+  - **Ngoại lệ chiều đảo trung trực CHỈ có hiệu lực trong ba bài này** (và câu xếp vào chúng). Các bài khác (HH00104…) vẫn cấm như bảng trên.
+  - Cả ba bài tự có lý thuyết riêng làm whitelist (đúng luật "lý thuyết của chính bài + mọi bài đứng trước"). Nội dung gốc: `scripts/hinh-k7-thang-hang-noidung.mjs`.
+  - **Phân dạng câu "chứng minh ba điểm thẳng hàng"** (chờ Thùy xác nhận): xếp vào MỘT trong ba bài theo PHƯƠNG PHÁP của lời giải (cùng đường / cộng góc / tiên đề Ơ-clit); câu nhiều ý mà ý trọng tâm là thẳng hàng thì cả câu theo bài đó; hai phương pháp cùng hợp ⇒ dạng sau thắng (HH00172 > HH00171 > HH00170).
+  - Ví dụ trong lý thuyết bài thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
 - "Tam giác cân: phân giác ở đỉnh cũng là đường cao / trung tuyến" ⇒ tự chứng minh bằng tam giác bằng nhau.
 - CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
 - Hình khối ($V=S_{\text{đáy}}.h$, $S_{xq}=C_{\text{đáy}}.h$…) thuộc Ch X tập 2 — không thuộc HK1. Khi tới mốc kì II: `Thể tích hình hộp chữ nhật là: $V=a.b.c=\dots$ ($cm^3$)`; lăng trụ `$S_{\text{đáy}}=\dfrac12.a.h$` rồi `$V=S_{\text{đáy}}.h$`; đổi đơn vị trước khi tính.

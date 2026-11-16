@@ -1,6 +1,6 @@
 # Spec — MỤC TIÊU TUẦN của học sinh
 
-> **Trạng thái:** thiết kế đã chốt HẾT (Thùy, Sparring 12–13/11/2026). **ĐÃ build + chạy** (mig 202611131000 áp 13/11; ERP · app HS · app PH). 16/11: khoá mục tiêu lúc chốt lớp + danh sách cả lớp (mig 202611161608 + 202611161632, chưa áp). Hiện trạng: §14.
+> **Trạng thái:** thiết kế đã chốt HẾT (Thùy, Sparring 12–13/11/2026). **ĐÃ build + chạy** (mig 202611131000 áp 13/11; ERP · app HS · app PH). 16/11: khoá mục tiêu lúc chốt lớp + danh sách cả lớp (mig 202611161713 + 202611161714, chưa áp). Hiện trạng: §14.
 > **Mockup đã duyệt:** canvas "Mục tiêu tuần — mockup" (https://claude.ai/artifact/Pcfd6y2dSTxwNCqBJKpQeG)
 > — màn 1 Mục tiêu tuần này · màn 2 Các tuần đã chốt · màn 3 Tab trung tâm. Hai màn ghi "BỎ" trên canvas là phương án đã loại.
 > Lịch sử từng bước quyết định: `DEVLOG.md` 12/11–13/11. File này là bản gộp sạch, thay mọi bản trước.
@@ -297,7 +297,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - **Em cần để ý** (kèm lý do: chưa làm việc nào · tụt nhiều tuần · BTVN chưa nghiêm túc / chống đối · vắng test sau giờ · nộp muộn liền) —
   bấm tên ⇒ mở màn 9.1 của em đó. Ở đây thấy đủ 4 mức thái độ BTVN.
 - Theo phạm vi phân công (`fn_pham_vi_cua_toi`, `spec-truong-khoi.md`).
-- **Xem tờ của TỪNG em (Thùy 16/11):** bấm tên lớp trong bảng "Theo lớp" ⇒ danh sách cả lớp (tiến độ · ▲/▼ đầu tuần · việc · nhóm/nợ · hạng; `fn_mtt_ds_lop`, mig 202611161608 — chỉ đọc bảng đệm/sổ của 1 lớp) ⇒ bấm em ⇒ tờ của em. Dưới bảng có chú thích nghĩa của "Chốt mục tiêu tuần" và "Tiến độ".
+- **Xem tờ của TỪNG em (Thùy 16/11):** bấm tên lớp trong bảng "Theo lớp" ⇒ danh sách cả lớp (tiến độ · ▲/▼ đầu tuần · việc · nhóm/nợ · hạng; `fn_mtt_ds_lop`, mig 202611161713 — chỉ đọc bảng đệm/sổ của 1 lớp) ⇒ bấm em ⇒ tờ của em. Dưới bảng có chú thích nghĩa của "Chốt mục tiêu tuần" và "Tiến độ".
 - **Trưởng khối xem được ĐỦ các view của HS/PH** (Thùy 13/11): bấm tên em ⇒ tờ tuần của em (thanh + cờ mục tiêu tuần + vạch đầu tuần, Phần 1/2, xếp hàng, sắp học, việc của em kèm thái độ 4 mức) · tab "Các tuần đã chốt" của em (tiến độ · việc · hạng · nhóm × tuần) · nút "🏆 Top 20 toàn trung tâm" (đúng bảng HS/PH thấy). Xem được cả khi lớp CHƯA chốt (HS/PH chưa thấy).
 
 ### 9.4 Đã loại
@@ -399,24 +399,24 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
 4. **Bấm 1 nhóm chỉ còn 2 nút: Xem lại bài trên lớp (mở khu giáo trình — có đủ bài trên lớp) · Luyện tập (Tự luyện).** Bỏ "Xem lại lý thuyết" (Thùy 13/11: không cần). App PH chỉ ghi lời nhắc, vì phụ huynh không làm bài.
 5. **Xếp hạng "lên/xuống bậc"** so với hạng của hôm trước (chụp mỗi ngày lần đầu cron chạy).
 6. **Sổ chốt** = tính lại tờ tuần TẠI MỐC 00:00 thứ Hai (bài chấm sau mốc không vào bản chốt); hạng trong sổ = hạng cuối của bảng đệm.
-7. **(16/11) Khoá mục tiêu lúc chốt lớp** — mig `202611161632_muc_tieu_tuan_khoa_ke_hoach.sql`: bảng `mtt_ke_hoach` (append-only, trigger bất biến); `_mtt_ghi` ghi kế hoạch
+7. **(16/11) Khoá mục tiêu lúc chốt lớp** — mig `202611161714_muc_tieu_tuan_khoa_ke_hoach.sql`: bảng `mtt_ke_hoach` (append-only, trigger bất biến); `_mtt_ghi` ghi kế hoạch
    lần đầu thấy lớp đã chốt; `_mtt_tinh` đọc nhóm/mục tiêu/k từ kế hoạch, số đo vẫn tính sống; payload thêm `ke_hoach_at`, `them_sau_chot`, `viec[].them_sau`.
    Kiểm trên Postgres tạm: chốt xong thêm dạng mới vào giáo trình + một ca bổ trợ yếu ⇒ nhóm giữ nguyên, nhóm mới vào `them_sau_chot`, ca mới `them_sau = true`, tiến độ không đổi; UPDATE kế hoạch bị chặn.
    **Sửa theo spec-kien-truc (16/11):** `fn_mtt_chot_lop` CHỈ ghi dòng chốt (bỏ vòng tính cả lớp ≤ 4 s trong lượt bấm — §5 ghi ≤ 500 ms, §12 mẫu 1); tờ + bản khoá do bộ điều phối ở lượt kế (≤ 5 phút),
    HS mở app trong lúc chờ ⇒ tính trực tiếp 1 em. Thử tạm: bấm chốt 1,5 ms; lượt điều phối kế ghi bản khoá cho 3/3 em. **Phần 2 chỉ lấy lượt chốt bổ trợ duyệt trong tuần của tờ** (khớp mig 202611161614).
-9. **(16/11, Thùy mô tả lại luồng) Nháp · Công bố · Dạng** — cùng mig `202611161632`: bộ điều phối dựng NHÁP cho mọi em đang học từ thứ Hai (trước đây chỉ lớp đã chốt ⇒ trưởng khối
+9. **(16/11, Thùy mô tả lại luồng) Nháp · Công bố · Dạng** — cùng mig `202611161714`: bộ điều phối dựng NHÁP cho mọi em đang học từ thứ Hai (trước đây chỉ lớp đã chốt ⇒ trưởng khối
    mở danh sách lớp chưa chốt thấy trống); xếp hạng + sổ kết quả tuần chỉ lấy tờ đã công bố; nút đổi tên "Công bố" (cảnh báo nếu lớp còn đề xuất bổ trợ chưa duyệt).
    **Mỗi nhóm kèm DẠNG của tuần** (`_mtt_dang_nhom`: câu ET / BTVN / giáo trình của buổi trong cửa sổ + dạng case bổ trợ yếu đang mở) — app HS bấm nhóm ⇒ danh sách dạng ⇒ bấm dạng
    ⇒ **màn dạng của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test — Thùy chọn 16/11: dẫn tới màn có sẵn, không dựng màn mới), Quay lại về tờ mục tiêu. Nhóm chưa thấy dạng
    (buổi chưa có tài liệu trên hệ) ⇒ nút chung như cũ. App PH hiện tên dạng. Lưu ý: Luyện tập bị chặn với dạng lớp CHƯA học tới (`_dang_da_hoc_ok`, luật 14/10) — lý thuyết vẫn đọc được.
 10. **(16/11) SỬA LỖI quy câu → nhóm (có từ 13/11):** `_do_o_quy` trả **ô đo = mã DẠNG BÀI** (NDB…; Hình–Học: mã bài), không phải nhóm; mastery gom ô → nhóm
    qua `dai_bdm_dang_bai.nhom_id`. Tờ cũ dùng thẳng ô làm nhóm ở Phần 1 (buổi), nhóm từ case bổ trợ yếu và nhóm của lượt tự luyện ⇒ % nhóm không khớp ("Chưa đo"), tên hiện mã.
-   Phần 2 từ đề xuất bổ trợ + số đầu tuần đã đúng. Sửa bằng `_mtt_nhom_cua_o` (cùng mig 202611161632). **Sổ kết quả tuần 09–15/11 (`mtt_chot`, chụp 00:00 16/11) mang lỗi này và
+   Phần 2 từ đề xuất bổ trợ + số đầu tuần đã đúng. Sửa bằng `_mtt_nhom_cua_o` (cùng mig 202611161714). **Sổ kết quả tuần 09–15/11 (`mtt_chot`, chụp 00:00 16/11) mang lỗi này và
    bất biến** — muốn chụp lại phải xoá dòng sổ tuần đó (Luật xoá, chờ Thùy). Danh sách dạng đọc thẳng câu trong TÀI LIỆU đã chốt của buổi (+ câu ET/BTVN trên app, + dạng case yếu).
-8. **(16/11) Danh sách cả lớp** — mig `202611161608_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
+8. **(16/11) Danh sách cả lớp** — mig `202611161713_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
 
 **Chưa làm (cần máy công ty / DB thật):**
-1. ✅ mig `202611131000` đã áp (13/11). **Còn treo: `202611161608` + `202611161632`** — `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
+1. ✅ mig `202611131000` đã áp (13/11). **Còn treo: `202611161713` + `202611161714`** — `npm run migrate` (role ghi, chuỗi kết nối truyền lúc gọi), rồi `npm run schema` + commit `schema.md`.
 2. ~~Cron riêng~~ — đợt 3 kiến trúc (mig 202611140808) đã đưa `_mtt_lam_moi(40)` vào bộ điều phối (sổ `muc_tieu_tuan`, 5 phút), job `muc-tieu-tuan` đã gỡ. Không chạy lại file cron cũ.
 3. Đo `fn_mtt_trung_tam` + `_mtt_ghi` bằng dữ liệu thật (khối đông nhất) — trần 8 s; `_mtt_tinh` gọi `_mastery_lan_d` (30 ngày) 1 lần/em/tuần khi chụp đầu tuần.
 4. App PH: áp `migrations/0038_muc_tieu_tuan_fdw.sql` ở DB `bkdemy-ph` SAU khi ERP đã áp, rồi deploy (`npx vercel --prod --yes`).

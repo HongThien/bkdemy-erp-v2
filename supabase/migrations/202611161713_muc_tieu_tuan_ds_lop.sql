@@ -16,6 +16,7 @@ declare
   v_mon text;
 begin
   if not public.la_thanh_vien() then raise exception 'Chỉ nhân sự.'; end if;
+  if not public._mon_duoc_xem((select l.mon from lop l where l.id = p_lop)) then raise exception 'Lớp ngoài quyền môn của bạn.'; end if;   -- cổng quyền môn (mig 202611161701)
   select l.mon into v_mon from lop l where l.id = p_lop;
   if v_mon is null then raise exception 'Không thấy lớp.'; end if;
   return coalesce((

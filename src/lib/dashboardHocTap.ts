@@ -14,7 +14,16 @@ export type HSDB = {
   bao_dong?: { so: number; at: string; ghi_chu: string } | null
   bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' } | null
 }
-export type BangDB = { tu: string | null; tinh_at?: string | null; co_do?: boolean; cot: CotDB[]; hs: HSDB[] }   // co_do = môn đã đo theo bản đồ mới (DB quyết, mig 202611131522)
+// co_do = môn đã đo theo bản đồ mới (DB quyết, mig 202611131522) · ngoai_quyen = môn không thuộc quyền môn của người gọi (DB chặn, mig 202611161701)
+export type BangDB = { tu: string | null; tinh_at?: string | null; co_do?: boolean; ngoai_quyen?: boolean; cot: CotDB[]; hs: HSDB[] }
+// Ô (môn × khối) người đăng nhập được xem ở Dashboard học tập — DB lọc theo QUYỀN MÔN (fn_mon_cua_toi), môn nhiều lớp nhất đứng đầu.
+// Màn KHÔNG tự dựng danh sách môn từ bảng lop và KHÔNG gõ cứng môn mặc định (Thùy 16/11: nhân sự KHTN mở ra thấy Toán).
+export type ODashboard = { mon: string; khoi: string }
+export async function oDashboardHocTap(): Promise<ODashboard[]> {
+  const { data, error } = await supabase.rpc('fn_dbht_o').limit(200)
+  if (error) throw error
+  return ((data ?? []) as ODashboard[]).map((x) => ({ mon: x.mon, khoi: x.khoi }))
+}
 
 export type CauDB = { ma_cau: string | null; dang: string; nhom: string; g: number }
 export type LuotDB = {
@@ -33,7 +42,7 @@ export async function bangDashboardHocTap(mon: string, khoi: string, soTuan: num
   const { data, error } = await supabase.rpc('fn_dbht_bang', { p_mon: mon, p_khoi: khoi, p_so_tuan: soTuan, p_cap: cap })
   if (error) throw error
   const j = (data ?? {}) as Partial<BangDB>
-  return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, co_do: j.co_do ?? true, cot: j.cot ?? [], hs: j.hs ?? [] }
+  return { tu: j.tu ?? null, tinh_at: j.tinh_at ?? null, co_do: j.co_do ?? true, ngoai_quyen: j.ngoai_quyen === true, cot: j.cot ?? [], hs: j.hs ?? [] }
 }
 
 export async function lichSuO(hsId: string, mon: string, cap: CapDB, ma: string, soNgay = 30): Promise<LichSuO> {
