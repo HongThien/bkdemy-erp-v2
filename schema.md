@@ -201,7 +201,7 @@
 | lop_id | uuid |  |  | FK→lop.id |  |
 | ngay | date |  |  |  |  |
 | loai | text |  |  |  | `et` · `btvn` · `giao_trinh` · `de_thi` · `tu_luyen` · `bo_tro` · `bo_tro_test` · `retest` · `htd_luyen` · `htd_test` · `bu_luyen` · `bu_test` · `on_thi_luyen` · `thi_thu` |
-| mon | text |  | 'Toán'::text |  |  |
+| mon | text |  |  |  |  |
 | trang_thai | text |  | 'mo'::text |  | `mo` · `dong` |
 | mo_at | timestamp with time zone |  | now() |  |  |
 | dong_at | timestamp with time zone | Y |  |  |  |
@@ -7072,7 +7072,7 @@ END |  |  |
 | ngay | date | Y |  |  |  |
 | nguon_id | uuid | Y |  | FK→tai_lieu.id |  |
 | nguon_buoi | text | Y |  |  |  |
-| mon | text |  | 'Toán'::text |  |  |
+| mon | text |  |  |  |  |
 | hoc_sinh_id | uuid | Y |  | FK→hoc_sinh.id |  |
 | file_url | text | Y |  |  |  |
 | stt_lop | integer | Y |  |  |  |
