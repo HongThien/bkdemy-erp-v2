@@ -81527,3 +81527,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Lượt đầu lỗi `fn_mtt_ds_lop does not exist` (chạy đoạn thu quyền trước file 1713) rồi lỗi cú pháp (dán cả dòng báo lỗi vào ô SQL) — cả hai là lượt bị huỷ nguyên khối, không ghi gì.
 - **Chưa kiểm được từ phía Claude** (không có kết nối DB): chờ `npm run schema` (phải thấy `mtt_ke_hoach`, `fn_mtt_ds_lop`, `_mtt_o_buoi`, `_mtt_dang_nhom`, `_mtt_buoi_tuan`) + `npm run check:kien-truc`.
 - Lưu ý về sau: các hàm MỚI của 2 file giờ thuộc chủ `postgres` (không phải `claude_build`) ⇒ migration sau chạy bằng `npm run migrate` muốn `create or replace` chúng có thể báo "must be owner" — khi đó áp lại bằng SQL Editor hoặc đổi chủ.
+
+### 16/11 tối — Kho Đại K8: bài chia hết (ảnh Thùy) + 10 clone vào dạng NDB03054 — ĐÃ GHI, đã duyệt
+- Thùy gửi ảnh "Chứng minh n^3 - 16n chia hết cho 48 với n là số chẵn", lệnh: vào bản đồ khối 8 (không phải 8T), chuyên đề nâng cao PTĐTTNT, dạng "Bài toán về chia hết" (NDB03054, Thùy vừa tạo 16/11), clone 10 bài; giữa chừng nhắn "tự duyệt luôn".
+- **Đề in SAI**: n = 2 cho -24; n chẵn chỉ bảo đảm chia hết cho 24 (ƯCLN mọi giá trị = 24, máy quét n trên [-3000; 3000]). Sửa hệ số 16 thành 4 ⇒ bài gốc trong kho là "n^3 - 4n chia hết cho 48 với n là số nguyên chẵn" (lý do ghi ở ten_de_goc + kiem_may_ghi). Biểu thức n^3 - 16n giữ lại ở một bài clone với điều kiện đúng (n chia hết cho 4 ⇒ chia hết cho 384).
+- Luồng bài lẻ spec-giai-bai §C11: dạng người chỉ định (gán nguon 'nguoi'), kho về nhà dai_cau_hoi (Thùy không nói trên lớp hay về nhà — chọn về nhà vì là bài luyện + clone). Điều phối chọn 11 mệnh đề + kiểm máy → Sonnet soạn → Opus giải mù + soát (sửa 5 chỗ ở 4 bài, biên bản ĐẠT) → ghi MỘT transaction.
+- Mã câu: gốc T1080000002507 · clone T1080000002508–T1080000002517 (parent_ma_cau = gốc, clone_method claude_may_sinh, nguon_giai ai, giai_method claude_code, da_duyet true / duyet_nguon ai, kiem_may khop).
+- Tệp: kho-rules/dai/lo/k8/bai-le-chia-het-1611/ (kiem-menh-de.mjs · bai.soan.md · bai.soan.goc.md · bai.kiem.md · tram-soan-kiem.mjs · ghi.mjs · ma-cau.json). Dạng NDB03054 vẫn CHƯA có lý thuyết / ví dụ (không tự điền — chờ Thùy).
