@@ -81206,3 +81206,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ## 16/11 (tiếp) — spec-giai-bai.md: ghi chuyên đề Thẳng hàng K7
 - Đọc spec tổng: bản nháp Thẳng hàng lệch luật HH00104 (cấm chiều đảo trung trực). Thùy chốt: **cho dùng** trong 3 bài HH00170–172. Ghi vào `spec-giai-bai.md` mục Khối 7 › Hình: câu "Whitelist" (K7 giờ có Hình–Học NCD00177/00210/00255) · ngoại lệ ở dòng trung trực · bảng 3 bài (được thêm / cấm) + luật phân dạng câu thẳng hàng (chờ Thùy xác nhận) . Nội dung 3 bài vẫn là NHÁP (chưa ghi DB, chờ Thùy nói "ghi").
+
+## 16/11 (tiếp 2) — Kho Hình K7: đẩy câu "chứng minh thẳng hàng" vào HH00170/171/172 (Thùy)
+- Kiểm kho Hình K7: 132 câu nhắc "thẳng hàng" (đa số chỉ là giả thiết). Lọc theo câu hỏi cuối / ý: 28 mục chuyển được: **18 ý** của bài–ý (ý c/d → bài_y MỚI cùng lời dẫn + hình, `dang_chinh` đích; các ý a–b ở lại bài cũ — theo lời Thùy "thẳng hàng là câu c, a–b thuộc tam giác cân") + **10 câu đơn** (đổi `dang_chinh`). Đích: HH00170 cùng đường 9 · HH00171 cộng góc 8 · HH00172 tiên đề Ơ-clit 11. Script `scripts/hinh-k7-day-thang-hang.mjs`; trạng thái cũ ở `kho-rules/hinh/k7-thang-hang/bien-ban-truoc.json`; xem `day-thang-hang.html`.
+- Phân phương pháp bằng đọc lời giải từng câu. Gán "qua một điểm chỉ có một đường vuông góc ⇒ hai đường trùng" (6 câu) vào 172 vì spec K7 coi là hệ quả tiên đề Euclid — **chờ Thùy xác nhận**.
+- Không gán: HHC012872, HHC000825 (lời giải dùng đường chéo hình bình hành). Chưa đụng: 32 câu nhiều ý CHƯA tách bài–ý (31 chưa duyệt, chủ yếu ở dạng chờ HH07000000) có ý thẳng hàng — cần tách bài–ý trước.
+- Ràng buộc gặp: `hinh_hoc_bai_y_goc_uq` (ma_cau_goc duy nhất) ⇒ bài_y mới để `ma_cau_goc` trống. Trigger `trg_a_hh_y_ghep` ép `dang_chinh` của ý = bài_y ⇒ muốn ý c ở bài khác ý a–b thì phải là bài_y khác (cùng lời dẫn).
