@@ -36,6 +36,9 @@ export async function layCauDeSua(maCau: string, bang?: string): Promise<{ cau: 
 }
 /** Cờ của môn tài liệu (giáo trình / ET); môn chưa có bản đồ mới ⇒ null. */
 export const bdmCuaMon = (mon: string | null | undefined) => (mon && mon in BDM_MON ? BDM_MON[mon as BdmMon] : null)
+/** p_nhanh của cây chọn nhóm (fn_tl_bdm_cay_chon) cho MỘT giáo trình — chuyên đề HGT có nhánh riêng. Một chỗ cho builder + Giáo trình tuần. */
+export const nhanhCayChon = (mon: string | null | undefined, nhanh: string | null | undefined) =>
+  nhanh === 'hinh_gt' ? 'hgt' : bdmCuaMon(mon)?.nhanhTl ?? 'toan'
 export const tinhNangBdm = () => BDM_MON[monBdm]
 let monBdm: BdmMon = 'Toán'
 export function datMonBdm(m: BdmMon): void { monBdm = m }

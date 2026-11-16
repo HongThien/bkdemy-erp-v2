@@ -18,6 +18,10 @@ export const MON_CO_KHO: readonly string[] = ['Toán', 'KHTN', 'Vật lý', 'Hó
 export const MON_LUYEN_CHUNG_MINH: readonly string[] = ['Toán']
 // Team LIÊN-MÔN (thấy nội dung mọi môn) — dùng chung cho hook useMonScope (ERP) và các bundle không có useStore (tool giải bài).
 export const CROSS_MON_TEAMS = ['ops', 'media', 'marketing']
+// Nhánh giáo trình theo KHUÔN mô hình–bài–ý (Hình học) — builder riêng (ChuyenDeHinhBuilder), khung buổi là 'dang' chứ không phải nhóm › dạng bài.
+// Khuôn khác nhau mới được tách (CLAUDE.md §1.6 "riêng theo khuôn"); thêm nhánh cùng khuôn = thêm vào đây.
+export const NHANH_KHUON_MO_HINH: readonly string[] = ['hinh']
+export const laNhanhMoHinh = (nhanh: string | null | undefined): boolean => !!nhanh && NHANH_KHUON_MO_HINH.includes(nhanh)
 
 // ⚠ File này phải là HẰNG SỐ THUẦN (lib data-layer import nó) — hook useMonScope (scope④ theo môn,
 // dính useStore) ĐÃ DỜI sang src/hooks/useMonScope.ts (08-29, app OPS: nằm chung file là mọi bundle

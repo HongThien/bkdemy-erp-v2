@@ -1,6 +1,6 @@
 # Spec — GIÁO TRÌNH TUẦN (kế hoạch dạy tuần tới của từng ca học)
 
-> **Trạng thái: Thùy DUYỆT 16/11/2026.** Bước 1 (DB) ĐÃ ÁP: mig `202611161716_giao_trinh_tuan` + `202611161722_giao_trinh_tuan_mot_cong`. Chưa có màn (bước 2).
+> **Trạng thái: Thùy DUYỆT 16/11/2026.** Bước 1 (DB) ĐÃ ÁP: mig `202611161716` + `1722`. **Bước 2 (màn) XONG 16/11:** mig `1726` (`fn_gtt_ngay_buoi`) + `1727` (BTVN như builder); màn `src/screens/phongtk/GiaoTrinhTuan.tsx` (đồ vật 📅 trong Phòng) · `src/lib/giaoTrinhTuan.ts` · builder Đại/HGT/KHTN hiện nhãn ngày trên buổi.
 > Nguồn: Thùy trả lời 12 câu (phiên 16/11) · đọc `spec-kien-truc.md` (§0b, §9, §12) · `spec-muc-tieu-tuan.md` · dữ liệu thật ngày 16/11.
 
 ---
@@ -121,7 +121,7 @@ Hàm nội bộ `_gtt_*` không cấp cho client. Đo 16/11 (vai Tạ Quốc Cư
 ## 8. Thứ tự build
 
 1. Migration `gtt_*` + hàm + thử qua REST (CLAUDE §1.6) · `npm run check:kien-truc` ✔.
-2. Màn lưới + khung bên phải (Toán Đại/HGT, KHTN) trong Phòng trưởng khối; builder hiện nhãn ngày trên buổi.
+2. ✅ Màn lưới + khung bên phải (Toán Đại/HGT, KHTN) trong Phòng trưởng khối; builder hiện nhãn ngày trên buổi. Còn thiếu: lớp chưa có giáo trình thì màn chỉ nhắc đi tạo (chưa tạo tại chỗ); builder Hình chưa hiện nhãn ngày (bước 3).
 3. Hình (builder Hình, khung = mô hình/dạng của Hình).
 4. Duyệt của trưởng bộ môn + bản chụp.
 5. Luồng gán ngày dạy chọn sẵn buổi đã liên kết.

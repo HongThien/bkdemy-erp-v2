@@ -28,6 +28,7 @@ import { ChatLuongTK } from './ChatLuongPhong'
 import BaoCaoTuanTK from './BaoCaoTuanTK'
 import BaoCaoTuanTBM from './BaoCaoTuanTBM'
 import HoiVanHanhTa from './HoiVanHanhTa'
+import GiaoTrinhTuan from './GiaoTrinhTuan'
 import DuyetCongScreen from '../tacong/DuyetCongScreen'
 import { ChonGiaoDien } from '../HomeScreen'
 import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listGheTbm, monTbm, soLuc, type CapDuoi, type GheGd, type GheTbm } from '../../lib/phongTk'
@@ -37,7 +38,7 @@ import { HEAD } from '../home/khung'
 
 type Mo = DoVat | null
 type CheDo = 'tk' | 'tbm'
-const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công' }
+const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công', giao_trinh_tuan: '📅 Giáo trình tuần' }
 const nhanKhoi = (o: string[]) => `Khối ${o.join(' · ')}`
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách không trắng (CLAUDE.md §2 React).
 const NHO: { mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null } =
@@ -172,7 +173,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         {/* PHẦN VIỆC — mở từ đồ vật trong cảnh. Nền trắng riêng cho dễ đọc. */}
         {mo && mo !== 'phien' && (
           <div className="min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8">
-            <div className={`mx-auto w-full ${mo === 'duyet_cong' || mo === 'chat_luong' ? 'max-w-none' : mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
+            <div className={`mx-auto w-full ${mo === 'duyet_cong' || mo === 'chat_luong' || mo === 'giao_trinh_tuan' ? 'max-w-none' : mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
               {mo === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
               {/* Quản trị = báo cáo sư phạm (việc TA) · Chất lượng = dạng yếu + học tập tuần (chất lượng học của HS). */}
               {mo === 'quan_tri' && (
@@ -183,6 +184,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
               {mo === 'hoi_ta' && cheDo === 'tbm' && <div className="rounded-2xl bg-white p-4 shadow-sm"><HoiVanHanhTa mon={mon} /></div>}
               {/* Duyệt công trợ giảng (Thùy 09/11): cùng màn ở sảnh; DB chỉ trả công thuộc khối của người mở (fn_ta_cong_duoc_duyet). */}
               {mo === 'duyet_cong' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><DuyetCongScreen /></div>}
+              {/* Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): thứ Sáu trưởng khối điền khung từng ca tuần sau, trưởng bộ môn duyệt — cùng màn cho cả hai, DB lọc phạm vi. */}
+              {mo === 'giao_trinh_tuan' && <div className="rounded-2xl bg-white p-4 shadow-sm"><GiaoTrinhTuan /></div>}
               {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (
                 <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">

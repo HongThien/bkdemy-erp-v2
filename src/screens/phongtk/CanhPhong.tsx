@@ -9,7 +9,7 @@
 // nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
 export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong'
+export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong' | 'giao_trinh_tuan'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -204,8 +204,17 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         <text x={1453} y={(coHoiTa ? 424 : 332) + 64} textAnchor="middle" fontSize={30}>🗂</text>
       </g>
 
-      {/* chậu cây */}
-      <g><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />
+      {/* LỊCH KẾ HOẠCH = Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11) — ngay dưới lịch Báo cáo tuần (đối xứng cột phải) */}
+      <g className="dv" onClick={() => onMoDoVat('giao_trinh_tuan')} role="button" aria-label="Mở Giáo trình tuần">
+        {/* lệch trái + hẹp hơn lịch Báo cáo tuần: thẻ tên ghế hàng sau bên trái (x 320) phủ tới ~x 165 */}
+        <rect className="vien" x={24} y={424} width={128} height={78} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
+        <rect x={24} y={424} width={128} height={24} rx={6} fill="#2563eb" />
+        <text x={88} y={441} textAnchor="middle" fontSize={11.5} fontWeight={800} fill="#fff">GIÁO TRÌNH TUẦN</text>
+        <text x={88} y={488} textAnchor="middle" fontSize={30}>📅</text>
+      </g>
+
+      {/* chậu cây — dời xuống dưới lịch Giáo trình tuần */}
+      <g transform="translate(0 70)"><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />
         <ellipse cx={60} cy={470} rx={30} ry={52} fill="#5fa86b" /><ellipse cx={95} cy={480} rx={26} ry={44} fill="#6dbb78" /></g>
 
       {/* hàng sau rồi hàng trước (vẽ sau đè lên trước) */}

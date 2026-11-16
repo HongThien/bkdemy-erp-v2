@@ -22,7 +22,8 @@ import ChonCauBdm from './ChonCauBdm'
 import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
 import { useStore } from '../../../store/useStore'
-import { bdmCuaMon } from '../../../lib/kho/banDoMoi'
+import { bdmCuaMon, nhanhCayChon } from '../../../lib/kho/banDoMoi'
+import { ngayBuoi, THU, ddmm, tuDate } from '../../../lib/giaoTrinhTuan'
 
 const loaiLabel = (v: string) => LOAI_CAU.find((x) => x.value === v)?.label ?? v
 const filterKey = (id: string) => `tlb_buoi_${id}`   // buổi đang soạn — tiện ích riêng mỗi máy (như builder cũ)
@@ -60,12 +61,14 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   const [khung, setKhung] = useState<KhungBtvn | null>(null)
   const [chonLui, setChonLui] = useState<{ buoi: NdBuoi; lui: KhungLui; o: KhungO } | null>(null)
   const [tlLopId, setTlLopId] = useState<string | null>(null)  // lop_id của giáo trình (RPC noi_dung chưa trả; fetch riêng)
+  // Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): buổi nào đã lên kế hoạch cho ca nào — cùng dòng với màn tuần ở Phòng trưởng khối.
+  const [ngayKeHoach, setNgayKeHoach] = useState<Map<string, string>>(new Map())
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
   const tl = nd ? { mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch } : null
   const monBdm = bdmCuaMon(nd?.tai_lieu.mon)   // registry môn (Toán · KHTN)
-  const nhanhBdm = nd?.tai_lieu.nhanh === 'hinh_gt' ? 'hgt' : monBdm?.nhanhTl ?? 'toan'   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
+  const nhanhBdm = nhanhCayChon(nd?.tai_lieu.mon, nd?.tai_lieu.nhanh)   // nhánh bản đồ mới của tài liệu (chuyên đề HGT)
   const chiXem = !!nd?.tai_lieu.luu_tru_tu   // bản lưu trữ: chỉ xem (DB cũng chặn ghi)
 
   // Nạp nội dung câu còn thiếu (theo mã) — chỉ đọc, không tính gì.
@@ -94,6 +97,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
         const { supabase } = await import('../../../lib/supabase')
         const { data: tlRow } = await supabase.from('tai_lieu').select('lop_id').eq('id', id).single()
         setTlLopId(((tlRow as any)?.lop_id as string | null) ?? null)
+        if (!laChuyenDe) ngayBuoi(id).then((ds) => setNgayKeHoach(new Map(ds.map((x) => [x.buoi_id, x.ngay])))).catch(() => { /* nhãn phụ — lỗi thì không hiện */ })
         let nho: string | null = null
         // Chuyên đề luôn mở "Tất cả" (Thùy 21/10: nhớ lọc 1 phần ⇒ tưởng thiếu câu); giáo trình nhớ buổi đang soạn như cũ.
         if (!laChuyenDe) try { nho = localStorage.getItem(filterKey(id)) } catch { /* ignore */ }
@@ -273,6 +277,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                     <input defaultValue={b.tieu_de ?? ''} disabled={chiXem} onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== b.tieu_de) doiTenBuoi(b, v) }}
                       className="w-[220px] rounded-md border border-transparent bg-transparent px-1.5 py-1 text-[15px] font-bold text-indigo-800 outline-none hover:border-slate-200 focus:border-indigo-400 focus:bg-white" />
                     <span className="text-[12px] text-slate-400">{b.nhom.length} nhóm · {b.nhom.reduce((s, n) => s + n.dang_bai.length, 0)} dạng bài</span>
+                    {ngayKeHoach.get(b.id) && <span title="Giáo trình tuần: buổi này đã lên kế hoạch cho ca của lớp ngày này (sửa nhóm / dạng ở đây là sửa luôn kế hoạch)" className="shrink-0 rounded-full bg-blue-100 px-2 py-0.5 text-[11.5px] font-semibold text-blue-700">📅 {THU[(tuDate(ngayKeHoach.get(b.id)!).getDay() + 6) % 7]} {ddmm(ngayKeHoach.get(b.id)!)}</span>}
                     <button onClick={() => setXemBuoi(b.id)} title={`Xem nhanh bản in CHỈ ${nhan} này`} className="ml-auto shrink-0 whitespace-nowrap rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-[12px] font-medium text-indigo-600 hover:bg-indigo-50">👁 Xem {nhan}</button>
                     {!chiXem && <button onClick={() => setBoChon(b)} className="shrink-0 whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[12px] font-medium text-white hover:bg-indigo-500">+ Chọn nhóm / dạng bài</button>}
                     {!chiXem && <button onClick={() => boBuoi(b)} title={`Xoá ${nhan}`} className="rounded border border-slate-200 px-1.5 py-1 text-[12px] text-slate-400 hover:border-rose-300 hover:text-rose-600">✕</button>}
