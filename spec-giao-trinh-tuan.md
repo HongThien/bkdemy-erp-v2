@@ -1,5 +1,8 @@
 # Spec — GIÁO TRÌNH TUẦN (kế hoạch dạy tuần tới của từng ca học)
 
+> ⛔ **ĐÃ GỘP (Thùy 16/11) vào `spec-van-hanh-tuan.md` §3** — nguồn đúng là file đó (bản mới hơn: buổi kế tiếp theo giáo trình, tên giáo trình, 1 giáo trình = 1 lớp).
+> File này đóng băng làm lịch sử, KHÔNG sửa nữa.
+
 > **Trạng thái: Thùy DUYỆT 16/11/2026.** Bước 1 (DB) ĐÃ ÁP: mig `202611161716` + `1722`. **Bước 2 (màn) XONG 16/11:** mig `1726` (`fn_gtt_ngay_buoi`) + `1727` (BTVN như builder); màn `src/screens/phongtk/GiaoTrinhTuan.tsx` (đồ vật 📅 trong Phòng) · `src/lib/giaoTrinhTuan.ts` · builder Đại/HGT/KHTN hiện nhãn ngày trên buổi.
 > Nguồn: Thùy trả lời 12 câu (phiên 16/11) · đọc `spec-kien-truc.md` (§0b, §9, §12) · `spec-muc-tieu-tuan.md` · dữ liệu thật ngày 16/11.
 

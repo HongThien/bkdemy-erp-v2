@@ -1,5 +1,8 @@
 # Spec — MỤC TIÊU TUẦN của học sinh
 
+> 🔗 **Nhịp tuần + luật nghiệp vụ Mục tiêu tuần đã gom vào `spec-van-hanh-tuan.md` (§1, §4) — Thùy 16/11.** File này giữ chi tiết kỹ thuật,
+> quyết định build và nhật ký (§10–§14) cho tới khi gộp hẳn. Luật nghiệp vụ MỚI ghi ở `spec-van-hanh-tuan.md`.
+
 > **Trạng thái:** thiết kế đã chốt HẾT (Thùy, Sparring 12–13/11/2026). **ĐÃ build + chạy** (mig 202611131000 áp 13/11; ERP · app HS · app PH). 16/11: khoá mục tiêu lúc chốt lớp + danh sách cả lớp (mig 202611161713 + 202611161844, chưa áp). Hiện trạng: §14.
 > **Mockup đã duyệt:** canvas "Mục tiêu tuần — mockup" (https://claude.ai/artifact/Pcfd6y2dSTxwNCqBJKpQeG)
 > — màn 1 Mục tiêu tuần này · màn 2 Các tuần đã chốt · màn 3 Tab trung tâm. Hai màn ghi "BỎ" trên canvas là phương án đã loại.

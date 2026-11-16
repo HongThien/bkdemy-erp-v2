@@ -392,11 +392,16 @@
 - **`spec-truong-khoi.md` — ĐỌC BẮT BUỘC trước khi sửa PHÂN QUYỀN (ghế · phạm vi môn×khối · ai duyệt gì) hoặc trợ lý/dashboard Trưởng khối–Trang** (Thùy chốt 29/10):
   team QLCL = Thùy + Trang + 6 trưởng khối · khối là đơn vị thấp nhất, có tính môn · phạm vi = bảng PHÂN CÔNG (môn × khối) sửa trên màn, không mặc định, cấm uuid (1 hàm `fn_pham_vi_cua_toi`) ·
   trưởng khối quyết, Trang hậu kiểm · KPI dạng yếu đóng băng lúc Trang Chốt tuần (Vào/Ra/Độ phủ, chưa chốt số) · Lộc xếp lịch như cũ.
-- **`spec-muc-tieu-tuan.md` — ĐỌC BẮT BUỘC trước khi build/sửa MỤC TIÊU TUẦN của học sinh** (Thùy chốt 12–13/11, chưa build): tờ HS × môn × tuần =
+- **⭐ `spec-van-hanh-tuan.md` — ĐỌC BẮT BUỘC trước khi build/sửa BẤT KỲ việc chạy theo nhịp TUẦN** (Thùy gộp 16/11 "ghi chung vào 1 spec — Vận hành hàng tuần";
+  luật vận hành tuần MỚI chỉ ghi ở đây): §1 nhịp tuần (T6 họp điền Giáo trình tuần → trưởng bộ môn duyệt · CN 24:00 máy chụp sổ · chiều T2 chốt bổ trợ + công bố
+  mục tiêu tuần + nộp Báo cáo tuần · T2–T3 duyệt báo cáo, chiếu TV) · §2 luật chung (nhãn môn, phạm vi, sổ bất biến, việc tồn = invariant, tên "Giáo trình <lớp>" +
+  thẻ nhánh, 1 giáo trình = 1 lớp) · §3 **Giáo trình tuần** (ca TKB ⇄ buổi builder 1-1, khung chỉ ở builder, buổi kế tiếp theo giáo trình người chọn — hệ KHÔNG
+  đoán Đại/Hình cho ca, trigger theo ngày dạy) · §4 Mục tiêu tuần (luật nghiệp vụ) · §5 **Báo cáo tuần** (gộp trọn) · §8 việc chờ Thùy (hạn H1/H2…).
+- **`spec-muc-tieu-tuan.md` — chi tiết kỹ thuật MỤC TIÊU TUẦN (luật nghiệp vụ + nhịp: `spec-van-hanh-tuan.md` §1, §4)** (Thùy chốt 12–13/11, chưa build): tờ HS × môn × tuần =
   Phần 1 Kiến thức mới (từ giáo trình) + Phần 2 Ôn tập (từ lượt chốt bổ trợ) + Việc của con (ET · BTVN · test sau giờ · bổ trợ, nhãn Tốt/Tạm ổn/Chưa tốt) ·
   đánh giá theo NHÓM bài, mục tiêu 80% = mastery · cửa sổ lùi một buổi, lần đo thuộc tuần chấm xong · KHÔNG có màn chốt mới · app HS + app phụ huynh realtime ·
   tab trung tâm ở Dashboard học tập + Phòng trưởng khối · sổ chốt tuần bất biến 00:00 thứ Hai · đã chốt hết (§12).
-- **`spec-bao-cao-tuan.md` — ĐỌC BẮT BUỘC trước khi build/sửa BÁO CÁO TUẦN** (Thùy chốt 03/11): trưởng khối nộp chiều T2 (kỳ T2→CN tuần trước) · bấm Nộp là SNAP, không tính lại ·
+- **`spec-bao-cao-tuan.md` — ĐÃ GỘP vào `spec-van-hanh-tuan.md` §5, đóng băng làm lịch sử** (Thùy chốt 03/11): trưởng khối nộp chiều T2 (kỳ T2→CN tuần trước) · bấm Nộp là SNAP, không tính lại ·
   cá nhân = task phát triển (đã duyệt tự điền) · quản lý = ET · BTVN · dạng yếu · HS yếu (≥1 dạng) · bổ trợ Yếu+Nhẹ · trend 4 tuần, toàn khối + từng lớp · tự viết Plans/Progress/Problems ·
   dạng yếu tại mốc D = 1 hàm tính ngược (chỉ lần đo ≤ D), chụp tự động T2 00:00 · nộp trễ ⇒ gậy · trưởng bộ môn duyệt/trả lại → ghép Báo cáo Chuyên môn tuần theo môn → chiếu TV cho CEO.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·

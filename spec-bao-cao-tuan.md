@@ -1,5 +1,8 @@
 # BÁO CÁO TUẦN — Trưởng khối → Trưởng bộ môn → CEO — spec
 
+> ⛔ **ĐÃ GỘP (Thùy 16/11) vào `spec-van-hanh-tuan.md` §5** (nguyên văn quyết định + phần đã build) — nguồn đúng là file đó.
+> File này đóng băng làm lịch sử, KHÔNG sửa nữa.
+
 > **Đọc file này TRƯỚC khi build/sửa Báo cáo tuần trưởng khối, Báo cáo Chuyên môn tuần, hoặc phần chiếu TV của nó.**
 > Thùy chốt qua Sparring 03/11/2026. Bản paste-ready cho Notion = cả file này.
 > Liên quan: `spec-truong-khoi.md` (phạm vi · hai tầng · KPI dạng yếu §4) · `spec-phong-truong-khoi.md` §4 (phòng làm việc) ·
