@@ -81488,3 +81488,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Đo: mỗi khối 55–96 ms; toàn trung tâm 131 ms · 14 đề xuất (16–29/11) — vd 8A2 T5 19/11 → Hình Buổi 4 (các T5 trước dạy Hình), 9C1 T5 26/11 → Đại "Ôn tập đại số". Ít đề xuất vì chỉ 23 buổi soạn trước chưa gán.
 - Mig `202611161907_giao_trinh_tuan_bu_lien_ket_da_gan`: bù liên kết cho lượt gán ngày dạy từ 16/11 làm TRƯỚC khi có trigger (28/32 thêm, 0 xung đột) — trước đó màn báo nhầm "ngày dạy gán buổi khác".
 - Màn: ô trống có đề xuất hiện khung vàng "Đề xuất · Buổi N"; khung bên phải "✓ Nhận đề xuất" / "Chọn buổi khác"; thanh trên "⤓ Nhận N đề xuất"; sau mỗi lần sửa 1 ca đọc lại nền (đề xuất ca sau có thể dịch). Sửa: tiêu đề buổi không lặp "Buổi 4 · Buổi 4:", "gán buổi khác" chỉ khi có kế hoạch mà lệch, ô lưới tối đa 4 dòng. Kiểm trên app (admin, chỉ xem, không bấm nhận).
+
+## 16/11 19:20 — Giáo trình tuần: đề xuất theo GIÁO TRÌNH người chọn, không đoán theo ca (Thùy sửa)
+- Thùy: "t muốn khi giáo viên chọn thì hệ thống tự đề xuất — vì còn liên quan đến đại · hình, mỗi lớp có 2 cái giáo trình nên hệ thống chọn được đâu". Bỏ đề xuất theo ca trên lưới + nút "Nhận N đề xuất" (mig 1902 vừa làm).
+- Mig `202611161916_giao_trinh_tuan_buoi_ke_tiep`: `_gtt_ke_tiep(giáo trình)` = buổi đầu tiên sau buổi đã dùng cuối (gán ngày dạy / gắn ca); `fn_gtt_man_tuan` bỏ `de_xuat`, thêm `ke_tiep` cho mỗi giáo trình của lớp. Đo: khối 8 · 9 · 6 = 90 · 72 · 66 ms. Vd 8A2: Đại → Buổi 2, Hình → Buổi 4; 8S1: Đại → Buổi 4, Hình hết buổi soạn sẵn.
+- Màn: khung bên phải, mỗi giáo trình có nút "✓ Dùng buổi kế tiếp — Buổi N · …" (hết thì nhắc + Buổi mới); gắn xong đọc lại nền để buổi kế tiếp dịch. Kiểm trên app (chỉ xem).
+- `_gtt_de_xuat` · `fn_gtt_nhan_de_xuat` (mig 1902) không còn ai gọi — chờ Thùy gật mới drop. Liên kết bù ở mig 1907 vẫn giữ (đúng việc trigger bước 5).

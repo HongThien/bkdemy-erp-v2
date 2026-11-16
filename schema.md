@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 456 trigger · 1989 function
+602 bảng · 42 view · 0 enum · 456 trigger · 1990 function
 
 ## _app_secrets
 
@@ -11828,6 +11828,7 @@ WITH luot AS (
 - `_gtt_ca_json(p_lop uuid, p_ngay date, p_snap jsonb)` → jsonb
 - `_gtt_ca_kiem()` → trigger
 - `_gtt_de_xuat(p_lops uuid[], p_tu date, p_den date)` → TABLE(lop_id uuid, ngay date, buoi_id uuid, tai_lieu_id uuid)
+- `_gtt_ke_tiep(p_tai_lieu uuid)` → uuid
 - `_gtt_khung(p_buoi uuid)` → jsonb
 - `_gtt_khung_khoa(p_buoi uuid)` → text[]
 - `_gtt_kiem_ca(p_lop uuid, p_ngay date)` → lop
