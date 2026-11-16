@@ -81399,3 +81399,4 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đề xuất ĐỂ NGUYÊN 3 bài (không phải bài hình nhiều ý):** HHC002422, HHC014632 (4 phát biểu Đúng/Sai — hợp là một câu đúng–sai) · HHC002063 (hai phép tính rời, không lời dẫn chung — là hai câu).
 - Nhãn hai ký tự ("1a") là MỚI trong `nhan_y` (trước chỉ có a–h, 1–9, b*): bảng không có CHECK chặn; màn hiện "1a)". Chưa thử trên app.
 - Bước ghi (khi Thùy nói "ghi"): `ghi.mjs` đang đọc cứng `nhap.json` ⇒ cần cho nhận file `nhap-tay.json`.
+- 16/11 18:35 — **Thùy chốt "Giữ như đề xuất"**: giữ mon default 'Toán' ở 12 bảng kho chỉ của Toán (hinh_* · kho_hinh_* · dai_cau_lop · bo_tro_hinh) và ung_vien. Đừng đề xuất bỏ lại trừ khi kho Hình / Đại mở cho môn khác.
