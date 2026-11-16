@@ -151,13 +151,17 @@ const NHANH_CD: { id: string | null; ten: string; mo: boolean; ghi: string }[] =
 function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL; mon: BdmMon; khoi: string; lopAll: Lop[]; onClose: () => void; onCreated: (id: string, nhanh: string | null) => void }) {
   const T = TEN[loai]
   const [nhanh, setNhanh] = useState<string | null>(null)
-  const [ten, setTen] = useState('')
+  const [tenTuDo, setTen] = useState('')      // chuyên đề: đặt tên tự do
+  const [moTa, setMoTa] = useState('')        // giáo trình: phần mô tả thêm (tuỳ chọn) sau " · "
   // ⭐ Thùy 28/10: giáo trình đi theo LỚP — bắt buộc chọn lớp lúc tạo. Chuyên đề KHÔNG gắn lớp (giữ nguyên).
   const [lopId, setLopId] = useState<string | null>(null)
   const lopKhoi = useMemo(() => lopAll.filter((l) => l.khoi === khoi && l.trang_thai === 'dang_hoc').sort((a, b) => a.ten_lop.localeCompare(b.ten_lop)), [lopAll, khoi])
   const canCapLop = loai === 'giao_trinh'
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // ⭐ Thùy 16/11: tên giáo trình THỐNG NHẤT = "Giáo trình <tên lớp>" (+ " · mô tả" nếu cần phân biệt); nhánh Đại / Hình / HGT là thẻ, không vào tên.
+  const lopChon = lopKhoi.find((x) => x.id === lopId)
+  const ten = canCapLop ? (lopChon ? `Giáo trình ${lopChon.ten_lop}${moTa.trim() ? ' · ' + moTa.trim() : ''}` : '') : tenTuDo
   async function create() {
     if (!ten.trim()) return
     if (canCapLop && !lopId) { setError('Giáo trình phải gắn 1 lớp. Chọn lớp ở trên.'); return }
@@ -165,13 +169,6 @@ function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL;
     try { const tl = await createTaiLieu({ loai, ten: ten.trim(), khoi, mon, nhanh, ban_do: 'moi', lopId: canCapLop ? lopId : null }); onCreated(tl.id, nhanh) }
     catch (e: any) { setError(e.message ?? String(e)); setBusy(false) }
   }
-  // Gợi ý tên GT theo lớp đã chọn (chỉ khi người dùng chưa gõ tên).
-  useEffect(() => {
-    if (!canCapLop || !lopId) return
-    const l = lopKhoi.find((x) => x.id === lopId); if (!l) return
-    if (!ten.trim()) setTen(`Giáo trình ${l.ten_lop}`)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lopId])
   return (
     <Shell title={`Tạo ${T.mot} bản đồ mới · ${mon} · Khối ${khoi}`} onClose={onClose}>
       {BDM_MON[mon].coVung && (   // KHTN một vùng ⇒ không chọn nhánh (nhanh = null như giáo trình KHTN cũ)
@@ -198,7 +195,12 @@ function TaoMoi({ loai, mon, khoi, lopAll, onClose, onCreated }: { loai: LoaiTL;
           )}
         </Field>
       )}
-      <Field label={`Tên ${T.mot}`}><input value={ten} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder={loai === 'chuyen_de' ? 'vd: Chuyên đề Số hữu tỉ' : 'vd: Giáo trình 7A'} autoFocus /></Field>
+      {canCapLop ? (<>
+        <Field label="Mô tả thêm (tuỳ chọn — vd chủ đề, khi lớp có nhiều giáo trình)"><input value={moTa} onChange={(e) => setMoTa(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder="để trống nếu lớp chỉ có 1 giáo trình mỗi nhánh" /></Field>
+        <div className="mb-3 text-[12.5px] text-slate-600">Tên: <b>{ten || 'Giáo trình <chọn lớp>'}</b> <span className="text-[11px] text-slate-400">(theo mẫu chung; nhánh hiện thành thẻ)</span></div>
+      </>) : (
+        <Field label={`Tên ${T.mot}`}><input value={tenTuDo} onChange={(e) => setTen(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && create()} className={inp} placeholder="vd: Chuyên đề Số hữu tỉ" autoFocus /></Field>
+      )}
       <div className="mb-3 text-[11px] text-slate-400">Tạo xong vào builder → <b>+ Thêm {loai === 'chuyen_de' ? 'phần' : 'buổi'}</b> → <b>+ Chọn nhóm / dạng bài</b>, hoặc <b>📥 Lấy bài từ lớp khác</b> để copy từ giáo trình lớp cùng hệ.{loai === 'chuyen_de' && ' Chuyên đề không gắn lớp — in / xuất PDF dùng ở đâu cũng được.'}</div>
       {error && <p className="mb-2 text-xs text-rose-600">{error}</p>}
       <div className="flex justify-end gap-2">

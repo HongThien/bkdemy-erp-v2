@@ -13,7 +13,7 @@ import {
 } from '../../lib/giaoTrinhTuan'
 import { noiDung, loiDoc, type NdBuoi, type ChonBuoi } from '../../lib/tailieuBdm'
 import { nhanhCayChon } from '../../lib/kho/banDoMoi'
-import { laNhanhMoHinh, thuTuMon } from '../../lib/mon'
+import { laNhanhMoHinh, thuTuMon, theNhanh } from '../../lib/mon'
 import BoChonNhom from '../tailieu/bdm/BoChonNhom'
 import BuilderBanDoMoi from '../tailieu/bdm/BuilderBanDoMoi'
 import ChuyenDeHinhBuilder, { ChonBaiHoc, ChonMoHinh } from '../tailieu/bdm/ChuyenDeHinhBuilder'
@@ -272,7 +272,7 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
           {b ? (
             <section className="rounded-xl border border-slate-200">
               <div className="border-b border-slate-100 px-3 py-2">
-                <div className="text-[12px] text-slate-500">{b.ten_gt}{b.luu_tru ? ' · bản lưu trữ' : ''}</div>
+                <div className="flex items-center gap-1.5 text-[12px] text-slate-500"><TheNhanh mon={mon} nhanh={b.nhanh} />{b.ten_gt}{b.luu_tru ? ' · bản lưu trữ' : ''}</div>
                 <div className="font-semibold">Buổi {b.stt}{b.tieu_de ? ` · ${b.tieu_de}` : ''}</div>
               </div>
               <div className="px-3 py-2">
@@ -309,8 +309,8 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
           {sua && chonCoSan && (
             <section className="space-y-3">
               {lop.giao_trinh.length === 0 && <p className="rounded-lg bg-rose-50 px-3 py-2 text-rose-700">Lớp chưa có giáo trình (bản đồ mới). Tạo ở <b>Làm tài liệu › Giáo trình (bản đồ mới)</b> rồi quay lại.</p>}
-              {lop.giao_trinh.map((g) => (
-                <ChonBuoiCuaGt key={g.id} gt={g} lop={lop} ca={ca} busy={busy}
+              {[...lop.giao_trinh].sort((a, b) => thuTuNhanh(a.nhanh) - thuTuNhanh(b.nhanh)).map((g) => (   // chỉ sắp để hiện: nhánh chính (Đại) trước, Hình sau
+                <ChonBuoiCuaGt key={g.id} gt={g} mon={mon} lop={lop} ca={ca} busy={busy}
                   onMoi={() => setBoChon(laKhuonNhom(g.nhanh) ? { kieu: 'nhom', gt: g, daChon: [] } : { kieu: 'bai', gt: g, daChon: [] })}
                   onChon={(buoiId) => lam(async () => { const r = await chonBuoi(lop.id, ca.ngay, buoiId); setChonCoSan(false); return r })} />
               ))}
@@ -336,8 +336,8 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
 }
 
 // Danh sách buổi của MỘT giáo trình (bấm mới tải) — buổi đã gắn ca khác hiện ngày, không chọn được (1-1).
-function ChonBuoiCuaGt({ gt, lop, ca, busy, onMoi, onChon }: {
-  gt: GttGiaoTrinh; lop: GttLop; ca: GttCa; busy: boolean; onMoi: () => void; onChon: (buoiId: string) => void
+function ChonBuoiCuaGt({ gt, mon, lop, ca, busy, onMoi, onChon }: {
+  gt: GttGiaoTrinh; mon: string; lop: GttLop; ca: GttCa; busy: boolean; onMoi: () => void; onChon: (buoiId: string) => void
 }) {
   const [mo, setMo] = useState(false)
   const [buoi, setBuoi] = useState<NdBuoi[] | null>(null)
@@ -352,8 +352,7 @@ function ChonBuoiCuaGt({ gt, lop, ca, busy, onMoi, onChon }: {
   return (
     <div className="rounded-xl border border-slate-200">
       <div className="flex flex-wrap items-center gap-2 px-3 py-2">
-        <span className="font-semibold">{gt.ten}</span>
-        {laNhanhMoHinh(gt.nhanh) && <span className="rounded bg-slate-100 px-1.5 text-[11px] text-slate-500">Hình</span>}
+        <TheNhanh mon={mon} nhanh={gt.nhanh} /><span className="font-semibold">{gt.ten}</span>
         <div className="ml-auto flex gap-1.5">
           {<button disabled={busy} onClick={onMoi} className="rounded-lg bg-indigo-600 px-2.5 py-1 text-[12.5px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-50">+ Buổi mới</button>}
           <button onClick={() => setMo((v) => !v)} className="rounded-lg border border-slate-200 px-2.5 py-1 text-[12.5px] text-slate-700 hover:bg-slate-50">{mo ? 'Ẩn buổi' : 'Chọn buổi có sẵn'}</button>
@@ -402,3 +401,12 @@ function GhiChuPopup({ onDong, onXong }: { onDong: () => void; onXong: (gc: stri
     </div>
   )
 }
+
+// Thẻ nhánh cạnh tên giáo trình (Thùy 16/11: tên = "Giáo trình <lớp>", nhánh là thẻ). Nhãn từ registry lib/mon.ts.
+function TheNhanh({ mon, nhanh }: { mon: string; nhanh: string | null }) {
+  const t = theNhanh(mon, nhanh)
+  if (!t) return null
+  const mau = laNhanhMoHinh(nhanh) ? 'bg-teal-100 text-teal-700' : nhanh ? 'bg-violet-100 text-violet-700' : 'bg-indigo-100 text-indigo-700'
+  return <span className={'shrink-0 rounded px-1.5 py-0.5 text-[11px] font-semibold ' + mau}>{t}</span>
+}
+const thuTuNhanh = (nhanh: string | null) => (!nhanh ? 0 : laNhanhMoHinh(nhanh) ? 2 : 1)

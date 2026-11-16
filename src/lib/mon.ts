@@ -22,6 +22,12 @@ export const CROSS_MON_TEAMS = ['ops', 'media', 'marketing']
 // Khuôn khác nhau mới được tách (CLAUDE.md §1.6 "riêng theo khuôn"); thêm nhánh cùng khuôn = thêm vào đây.
 export const NHANH_KHUON_MO_HINH: readonly string[] = ['hinh']
 export const laNhanhMoHinh = (nhanh: string | null | undefined): boolean => !!nhanh && NHANH_KHUON_MO_HINH.includes(nhanh)
+// Thẻ nhánh của giáo trình (Thùy 16/11: tên = "Giáo trình <lớp>", nhánh hiện thành thẻ, không nằm trong tên).
+// nhanh rỗng = nhánh chính của môn (Toán: Đại); môn một vùng (KHTN…) không có thẻ.
+const NHANH_THE: Record<string, string> = { hinh: 'Hình', hinh_gt: 'HGT' }
+const NHANH_CHINH_THEO_MON: Record<string, string> = { 'Toán': 'Đại', 'TSA': 'Đại' }
+export const theNhanh = (mon: string | null | undefined, nhanh: string | null | undefined): string | null =>
+  nhanh ? NHANH_THE[nhanh] ?? nhanh : (mon ? NHANH_CHINH_THEO_MON[mon] ?? null : null)
 
 // ⚠ File này phải là HẰNG SỐ THUẦN (lib data-layer import nó) — hook useMonScope (scope④ theo môn,
 // dính useStore) ĐÃ DỜI sang src/hooks/useMonScope.ts (08-29, app OPS: nằm chung file là mọi bundle

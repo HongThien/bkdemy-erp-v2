@@ -81476,3 +81476,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - "Giáo trình 4A" (bản đồ mới, b68cd3e8…) có lop_id rỗng ⇒ màn tuần báo 4A1 "chưa có giáo trình". Nhân chứng: 5/5 lượt gán ngày dạy của giáo trình này đều cho 4A1. Đo: là giáo trình bản đồ mới còn hiệu lực DUY NHẤT chưa gắn lớp.
 - Mig `202611161843_gan_giao_trinh_4a_cho_4a1` (update có chặn: vẫn rỗng + mọi lượt gán vẫn là 4A1). Không đổi tên. Màn tuần Toán khối 4: 4A1 hết cờ "chưa có giáo trình".
 - Ghi chú: Vite dev tự nạp lại cả trang mỗi khi có file đổi trong `supabase/migrations/` (kể cả của phiên khác) — lý do trang dev hay tự tải lại.
+
+## 16/11 18:50 — Thống nhất tên giáo trình: "Giáo trình <lớp>" + thẻ nhánh (Thùy)
+- Mig `202611161850_ten_giao_trinh_theo_lop`: đổi tên 36/68 giáo trình bản đồ mới đang gắn lớp về "Giáo trình <tên lớp>"; nhánh (Đại · Hình · HGT) bỏ khỏi tên; phần mô tả riêng giữ sau " · " (KHTN theo chủ đề: "Giáo trình 7K1 · Sơ lược bảng tuần hoàn…", "Giáo trình 10B1 · test"). Bảng tên cũ ↔ mới nằm trong file migration. Chặn: chỉ đổi dòng còn đúng tên cũ.
+- KHÔNG đổi 2 giáo trình của 5A2 ("Giáo trình 5A2", "Giáo trình 5A"): cả hai gán lẫn cho 5A1 (10, 13/11 · 06/11) và 5A2 (09, 16/11 · 12/11); 5A1 không có giáo trình riêng ⇒ chờ Thùy chỉ cái nào của lớp nào.
+- Thẻ nhánh: `theNhanh(mon, nhanh)` ở registry `lib/mon.ts` (nhánh rỗng của Toán = Đại; KHTN không thẻ). Màn Giáo trình tuần: thẻ cạnh tên giáo trình ở khung bên phải, Đại xếp trước Hình. Kiểm trên app: 8S1 T2 23/11 hiện "[Đại] Giáo trình 8S1", "[Hình] Giáo trình 8S1".
+- Tạo giáo trình (`GiaoTrinhBdmScreen` → TaoMoi): tên khoá theo mẫu "Giáo trình <lớp>", chỉ gõ thêm phần mô tả (tuỳ chọn); chuyên đề vẫn đặt tên tự do. (Đổi tên trong builder vẫn được — chưa khoá.)
