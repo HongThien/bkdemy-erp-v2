@@ -124,6 +124,7 @@ function catLoiGiai(o, ys, tay) {
 
 const ra = [], bao = []
 for (let o of d) {
+  const goc = o   // bản gốc (thayNhan chỉ dùng để cắt — bản ghi giữ lời giải gốc cho ghi.mjs so với DB)
   const tay = TAY[o.ma_cau] ?? {}
   if (tay.deNguyen) { ra.push({ ...o, tach: false, ly_do: tay.deNguyen, ghi_chu: tay.ghiChu ?? null }); bao.push(`${o.ma_cau} K${o.khoi}  ĐỂ NGUYÊN — ${tay.deNguyen}`); continue }
   let deGoc = o.noi_dung.replace(/\r\n/g, '\n'); const len = []
@@ -138,7 +139,7 @@ for (let o of d) {
   const chuan = (s) => s.replace(/\*\*Bước \d+\.\*\*\s*/g, '').replace(/^[ \t]*(?:\*\*)?(?:\d\)\s*)?(?:\d?[a-h]\*?\)|\d\))(?:\*\*)?[ \t]*/, '').replace(/^Ý\s+\S+?\s*[:,]\s*/, '').trim().toLowerCase()
   const kho = (de.loi_dan + '\n' + ys.map((y) => y.cau_hoi + '\n' + (y.loi_giai ?? '')).join('\n')).toLowerCase()
   const mat = [...L(o.noi_dung), ...L(o.loi_giai)].map((x) => x.trim()).filter(Boolean).filter((ln) => { const c = chuan(ln); return c && !kho.includes(c) && !lg.bo.includes(ln) })
-  ra.push({ ...o, tach: true, sach: ok, loi_dan: de.loi_dan, ys, bo_dong: lg.bo, mat_dong: mat, buoc: lg.buoc ?? null, ghi_chu: tay.ghiChu ?? null })
+  ra.push({ ...goc, tach: true, sach: ok, loi_dan: de.loi_dan, ys, bo_dong: lg.bo, mat_dong: mat, buoc: lg.buoc ?? null, ghi_chu: tay.ghiChu ?? null })
   bao.push(`${o.ma_cau} K${o.khoi}  ${ok ? 'OK ' : 'CHƯA'}  ý: ${ys.map((y) => y.nhan + (y.loi_giai ? '' : '(thiếu LG)')).join(',')}${lg.buoc ? '  | ' + lg.buoc : ''}${lg.bo.length ? `  | bỏ ${lg.bo.length} dòng tổng kết` : ''}${mat.length ? `  | ⚠ ${mat.length} dòng gốc không thấy: ${mat.map((x) => x.slice(0, 50)).join(' ¦ ')}` : ''}`)
 }
 fs.writeFileSync(DIR + 'nhap-tay.json', JSON.stringify(ra, null, 1))

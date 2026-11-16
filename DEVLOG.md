@@ -81406,3 +81406,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Sau: hàm mới `_tl_hh_goi_y_nguyen_bai` (mig 202611161750; khoá hàm nội bộ ở 202611161752: security invoker, thu EXECUTE của authenticated — cổng check:kien-truc K1/K14): đơn vị = bài_y đủ ý (hoặc câu đơn); lấy nguyên bài tới khi ≥ p_n câu, không cắt dở; bài đã có ý nào bị chọn thì không gợi ý lại. `fn_tl_hh_goi_y` + `fn_tl_hh_dat_bai` dùng hàm mới. `_tl_hh_goi_y` GIỮ cho `fn_tl_hh_goi_y_bai` (hàng ET Hình học: mỗi hàng 1 câu).
 - Thử (rollback, dữ liệu thật): HH00170 n=4 → 2 bài (3+3 ý = 6 câu, cũ 4 câu rời); HH00104 n=4 → 1 câu đơn + bài 2 ý + bài 3 ý; tru 1 ý ⇒ loại cả bài; n=0 ⇒ rỗng. `npm run check:kien-truc` ✔ (không vượt trần). Nhãn gợi ý ở `ChuyenDeHinhBuilder.tsx` đổi chữ. Spec: `spec-giai-bai.md` Hình › Tách ý, mục 4.
 - Chưa thử trên app (đăng nhập thật) — chỉ thử ở DB.
+
+## 16/11 18:40 — Tách ý Hình–Học K8 + K9: 29 bài cắt tay ĐÃ GHI (Thùy: "Ghi 29 bài")
+- `ghi.mjs` thêm `--file=<tệp>` (mặc định vẫn `nhap.json`); `tach-tay.mjs` giữ lời giải GỐC trong bản ghi (sửa nhãn "b), c)" chỉ dùng lúc cắt) để lệnh ghi so được với DB.
+- `ghi.mjs 8,9 --file=nhap-tay.json --ghi`: 1 giao dịch, 11 giây gồm mạng. **29 bài → 130 ý**; kiểm trước commit: đề ghép sai 0 · hình/bài học sai 0 · trạng thái kho sai 0 · câu gốc chưa rút 0; không bài nào bị bỏ qua. 29 câu cả bài cũ `rut_khoi_kho = true`, không xoá.
+- Sau ghi: K8 933 ý / 305 bài · K9 1.249 ý / 423 bài (tự luận còn trong kho). Bài ý lồng HHB001454 (gốc HHC004444) qua `fn_tl_hh_cau` phiên thành viên: thứ tự trả 1a → 1b → 1c → 2, đề ghép = lời dẫn + dòng chú ý + dòng ý cha + câu hỏi ý; câu cả bài cũ không lọt bộ chọn. Chưa mở màn kho / builder trên app.
+- Còn nguyên (chưa tách): HHC002422 · HHC014632 · HHC002063 (đề xuất để nguyên, chờ Thùy) + HHC002480 (K8, dạng chờ đã duyệt). HHC000867: lời giải ý b, c vẫn là bản "tương tự Câu 28" — cần viết lại.

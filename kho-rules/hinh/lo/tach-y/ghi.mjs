@@ -10,7 +10,9 @@ import pg from 'pg'; import fs from 'fs'
 const khois = (process.argv[2] ?? '').split(',').filter(Boolean)
 const ghi = process.argv.includes('--ghi')
 if (!khois.length) { console.error('Thiếu danh sách khối, vd 7,8'); process.exit(1) }
-const L = JSON.parse(fs.readFileSync('kho-rules/hinh/lo/tach-y/nhap.json', 'utf8')).filter((o) => o.sach && khois.includes(o.khoi))
+// 16/11: --file=nhap-tay.json để ghi lượt cắt tay (cùng khuôn dữ liệu; mặc định vẫn nhap.json của máy cắt)
+const tep = (process.argv.find((a) => a.startsWith('--file=')) ?? '--file=nhap.json').slice(7)
+const L = JSON.parse(fs.readFileSync('kho-rules/hinh/lo/tach-y/' + tep, 'utf8')).filter((o) => o.sach && khois.includes(o.khoi))
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL }); await c.connect()
 await c.query('begin')
 let nBai = 0, nY = 0; const boQua = []
