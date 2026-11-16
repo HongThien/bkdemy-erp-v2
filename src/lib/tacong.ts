@@ -111,6 +111,9 @@ export const duyetCong = (ca: string[], viec: string[], ketQua: 'da_duyet' | 'tu
 export type LichSuCong = { luc: string; nguoi: string; viec: string; chi_tiet: string }
 export const lichSuCong = (id: string) => rpc<LichSuCong[]>('fn_ta_cong_lich_su', { p_id: id })
 export const nguoiDuyet = (tu: string, den: string) => rpc<{ id: string; nguoi: string; luc: string }[]>('fn_ta_cong_nguoi_duyet', { p_tu: tu, p_den: den })
+// Thùy 16/11: sĩ số ca bổ trợ cho người chấm công — số em hẹn / có mặt / vắng / chưa điểm danh (đếm ở DB, mig 202611161613)
+export type SiSoCa = { viec_id: string; hen: number; co_mat: number; vang: number; chua_dd: number; ten_vang: string | null }
+export const siSoCa = (tu: string, den: string) => rpc<SiSoCa[]>('fn_ta_cong_si_so', { p_tu: tu, p_den: den })
 export const chotGio = (id: string, ngay: string, vao: string, ra: string) => rpc<null>('fn_ta_chot_gio', { p_id: id, p_vao: tsVN(ngay, vao), p_ra: tsVN(ngay, ra) })
 // Chốt giờ theo việc trong ca (Thùy 04/11): DB tính vào = sớm hơn (checkin, việc đầu), ra = việc cuối
 export const chotGioTheoViec = (id: string) => rpc<{ vao: string; ra: string }>('fn_ta_chot_gio_theo_viec', { p_id: id })

@@ -12,7 +12,7 @@ import { useStore } from '../../store/useStore'
 import SearchSelect from '../../components/SearchSelect'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import {
-  doiChieu, duocDuyet, thieuCong, duyetCong, lichSuCong, nguoiDuyet, type LichSuCong, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
+  doiChieu, duocDuyet, thieuCong, duyetCong, lichSuCong, nguoiDuyet, siSoCa, type LichSuCong, type SiSoCa, chotGio, chotGioTheoViec, nhapHoCa, nhapHoViec, dsLoaiViec, dsLop, dsNhanSuDangLam,
   gioVN, hm, nhanCo, type DongCong, type ThieuCong, type LoaiViec,
 } from '../../lib/tacong'
 
@@ -73,6 +73,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   const [ban, setBan] = useState(false)
   const [nguoi, setNguoi] = useState('')                          // lọc theo 1 TA (Thùy 04/11) — '' = mọi người
   const [nd, setNd] = useState<Map<string, { nguoi: string; luc: string }>>(new Map())   // người xử lý gần nhất mỗi dòng (Thùy 11/11)
+  const [siSo, setSiSo] = useState<Map<string, SiSoCa>>(new Map())   // sĩ số ca bổ trợ theo việc (Thùy 16/11)
   const [locNd, setLocNd] = useState('')                          // tab Đã xử lý: lọc theo người duyệt
   const khoang = loc === 'cho' ? [MOC, homNay] : loc === 'nay' ? [homNay, homNay] : loc === 'qua' ? [congNgay(homNay, -1), congNgay(homNay, -1)] : [tu, den]
 
@@ -80,8 +81,8 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
   const tai = useCallback(async (xoa: boolean) => {
     if (xoa) { setRows(null); setBoChon(new Set()); setMo(null) }
     try {
-      const [r, d, n] = await Promise.all([doiChieu(khoang[0], khoang[1]), duocDuyet(khoang[0], khoang[1]), nguoiDuyet(khoang[0], khoang[1]).catch(() => [])])
-      setDuocDs(d ? new Set(d) : null); setRows(r); setNd(new Map(n.map((x) => [x.id, { nguoi: x.nguoi, luc: x.luc }])))
+      const [r, d, n, ss] = await Promise.all([doiChieu(khoang[0], khoang[1]), duocDuyet(khoang[0], khoang[1]), nguoiDuyet(khoang[0], khoang[1]).catch(() => []), siSoCa(khoang[0], khoang[1]).catch(() => [])])
+      setDuocDs(d ? new Set(d) : null); setRows(r); setNd(new Map(n.map((x) => [x.id, { nguoi: x.nguoi, luc: x.luc }]))); setSiSo(new Map(ss.map((x) => [x.viec_id, x])))
     } catch (e) { bao(loiCua(e), false); if (xoa) setRows([]) }
   }, [khoang[0], khoang[1]]) // eslint-disable-line
   useEffect(() => { tai(true) }, [tai])
@@ -147,7 +148,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
     catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
 
-  const props = { duoc, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec, moLai, nd }
+  const props = { duoc, boChon, doiChon, mo, setMo, ban, tuChoi, chot, chotTheoViec, moLai, nd, siSo }
   return (
     <div className="flex flex-col gap-3">
       <div className={`${card} flex flex-wrap items-center gap-2 px-3 py-2`}>
@@ -189,8 +190,14 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 type DongProps = {
   duoc: (id: string) => boolean; boChon: Set<string>; doiChon: (id: string) => void; mo: string | null; setMo: (m: string | null) => void; ban: boolean
   tuChoi: (r: DongCong, lyDo: string) => void; chot: (r: DongCong, vao: string, ra: string) => void; chotTheoViec: (r: DongCong) => void
-  moLai: (r: DongCong, lyDo: string) => void; nd: Map<string, { nguoi: string; luc: string }>
+  moLai: (r: DongCong, lyDo: string) => void; nd: Map<string, { nguoi: string; luc: string }>; siSo: Map<string, SiSoCa>
 }
+// Sĩ số ca bổ trợ: 👥 có mặt/hẹn — đỏ khi có em hẹn mà vắng hoặc ca không em nào; cam khi chưa điểm danh hết
+const SiSo = ({ s }: { s?: SiSoCa }) => !s ? null : (
+  <span className={`ml-2 rounded px-1.5 text-xs font-semibold ${s.hen === 0 || s.vang > 0 ? 'bg-red-50 text-red-700' : s.chua_dd > 0 ? 'bg-amber-50 text-amber-700' : 'bg-sky-50 text-sky-700'}`}
+    title={s.hen === 0 ? 'Ca này không có em nào hẹn' : `Hẹn ${s.hen} em · có mặt ${s.co_mat} · vắng ${s.vang}${s.ten_vang ? ' (' + s.ten_vang + ')' : ''} · chưa điểm danh ${s.chua_dd}`}>
+    👥 {s.hen === 0 ? '0 em hẹn' : `${s.co_mat}/${s.hen} em`}{s.vang > 0 && ` · vắng ${s.vang}`}{s.chua_dd > 0 && ` · ${s.chua_dd} chưa ĐD`}
+  </span>)
 const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <span className={`mr-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{children}</span>
 const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.duoc(r.id)
   ? <input type="checkbox" aria-label="chọn dòng" checked={!p.boChon.has(r.id)} onChange={() => p.doiChon(r.id)} className="h-4 w-4 accent-indigo-600" /> : null)
@@ -241,7 +248,7 @@ function DongViecQL({ v, hienTen, ...p }: { v: DongCong; hienTen?: boolean } & D
       <tr className="border-t border-slate-100">
         <td className="px-2 py-1.5"><Chk r={v} p={p} /></td>
         <td className="px-2 py-1.5 text-xs text-slate-500">{hienTen ? <><span className="text-sm font-semibold text-slate-800">{v.ho_ten}</span><span className="ml-2">{thuNgan(v.ngay)} {ddmmVN(v.ngay)}</span></> : null}</td>
-        <td className="px-2 py-1.5 pl-6" title={[v.ten_loai, v.ten_lop, v.lam_ho && 'làm hộ ' + v.lam_ho, v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}><span className="text-slate-800">{v.ten_loai}</span>{v.ten_lop && <b className="ml-1 text-slate-900">· {v.ten_lop}</b>}
+        <td className="px-2 py-1.5 pl-6" title={[v.ten_loai, v.ten_lop, v.lam_ho && 'làm hộ ' + v.lam_ho, v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}><span className="text-slate-800">{v.ten_loai}</span>{v.ten_lop && <b className="ml-1 text-slate-900">· {v.ten_lop}</b>}<SiSo s={p.siSo.get(v.id)} />
           {v.lam_ho && <span className="ml-2 rounded bg-violet-50 px-1.5 text-xs text-violet-700">làm hộ {v.lam_ho}</span>}
           {(v.hoc_sinh || v.ghi_chu) && <span className="ml-2 text-xs text-slate-500">{[v.hoc_sinh, v.ghi_chu].filter(Boolean).join(' · ')}</span>}</td>
         <td className="px-2 py-1.5 text-slate-700">{hm(v.gio_bat_dau)}–{hm(v.gio_ket_thuc)}</td>
