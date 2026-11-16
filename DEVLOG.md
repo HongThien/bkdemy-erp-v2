@@ -81440,3 +81440,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Đã ghi K7: `hinh_hoc_bai_y.loi_dan` 32 · câu đơn `noi_dung` 71 · `cau_hoi_y` 42 · `loi_giai` 93 (đề ghép của ý do trigger tính lại). Giá trị cũ: `kho-rules/hinh/k7-thang-hang/bien-ban-chuan-hoa-chu-cai-k7.json`.
 - Lỗi công cụ gặp khi chạy thử (đã sửa trước khi ghi): bọc hai lần danh sách ("D$, $E"); gộp nhầm `$A$, $B$` đã đúng; `$$…$$` bị bọc; `Ox'` tách dấu phẩy; "Ta/Ba/Em" là từ Việt (chỉ nhận hậu tố x,y,z,t và Om/On).
 - CHƯA làm: khối 6/8/9, Luyện (hinh_bai/hinh_y), hgt, đề thi toanmath — chưa đo, chờ Thùy nói phạm vi.
+
+## 16/11 18:07 — Giáo trình tuần bước 6 ĐÃ ÁP (Thùy: "áp ngay")
+- Mig `202611161754_muc_tieu_tuan_doc_ke_hoach` (đưa từ scratchpad về, thêm `lock_timeout 3s`). Trước khi áp kiểm md5 thân 3 hàm trên DB = bản gốc em dùng để vá (không phiên nào sửa giữa chừng).
+- Sau áp, gọi thật `_mtt_tinh` tuần 16/11 cho 7 lớp khối 8 (Toán + KHTN, mỗi lớp 1 em): không lỗi; 5/7 có Phần 1, mọi em có "sắp học" (19–22/11). 8F1 (chưa có giáo trình) 0 nhóm; 8A1 Phần 1 = 0 vì nhóm buổi của nó đang là nợ Phần 2 (nợ ưu tiên).
+- `mtt_luu` tuần này 17 dòng, lượt làm mới gần nhất 18:02 (trước khi áp) — cron mục tiêu tuần 5 phút sẽ tính lại theo hàm mới.
+- `check:kien-truc` ✔.
