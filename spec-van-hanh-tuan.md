@@ -21,8 +21,8 @@ Mọi bước đọc chung **một bộ dữ liệu** (ca TKB · buổi giáo tr
 | Lúc | Ai | Việc | Ở đâu | Ra gì |
 |---|---|---|---|---|
 | **Thứ Sáu, buổi họp** | Trưởng khối (cả đội GV cùng soạn) | Điền **Giáo trình tuần sau**: mỗi ca TKB T2→CN học buổi nào, nhóm › dạng nào (Hình: bài học + mô hình). Bấm **Gửi duyệt** | Phòng trưởng khối › 📅 Giáo trình tuần (§3) | `gtt_ca` · `gtt_duyet(gui)` |
-| **Hạn H1** (chờ chốt — §8) | Trưởng khối | Đủ khung mọi ca tuần sau | — | Thiếu = việc tồn (§3.8) |
-| **Sau họp → hạn H2** | Trưởng bộ môn | **Duyệt** / **Trả lại** (có lý do) giáo trình tuần từng khối | Phòng trưởng bộ môn › 📅 Giáo trình tuần | `gtt_duyet(duyet)` + **bản chụp khung** |
+| **23:59 thứ Sáu (H1)** | Trưởng khối | Đã bấm **Gửi duyệt** giáo trình tuần sau | — | Trễ ⇒ đề xuất gậy (§3.8) |
+| **Sau họp → 12:00 thứ Bảy (H2)** | Trưởng bộ môn | **Duyệt** / **Trả lại** (có lý do) giáo trình tuần từng khối | Phòng trưởng bộ môn › 📅 Giáo trình tuần | `gtt_duyet(duyet)` + **bản chụp khung** |
 | **CN 24:00 (= T2 00:00)** | Máy | Chụp **dạng yếu đầu tuần** mọi HS × môn (`_tu_dong_sang_t2`) · chốt **sổ Mục tiêu tuần** tuần cũ (`mtt_chot`, bất biến) · chụp số **đầu tuần** tuần mới (`mtt_dau`) | Bộ điều phối `_tinh_san_chay` | Sổ bất biến (§2.3) |
 | **T2 sáng** | Máy | Báo cáo tuần trước MỞ (nháp, số tính sẵn) · tờ Mục tiêu tuần NHÁP dựng cho mọi em | — | — |
 | **Chiều T2** | Trưởng khối | (1) Soi Dashboard học tập, **chốt bổ trợ** tuần (Phần 2 Mục tiêu tuần + ca test sau giờ) · (2) bấm **Công bố mục tiêu tuần** theo lớp · (3) **Nộp Báo cáo tuần** tuần trước (snap) | Phòng trưởng khối › Chất lượng · Dashboard học tập › 🎯 · 📝 Báo cáo tuần | `mtt_lop_chot` · `bao_cao_tuan_khoi` |
@@ -141,11 +141,17 @@ Builder giáo trình CỦA LỚP ───────────────�
 - **Không gộp hai lượt chốt**: duyệt giáo trình tuần (thứ Sáu, trưởng bộ môn) ≠ công bố mục tiêu tuần (thứ Hai, trưởng khối sau khi chốt bổ trợ). Cột "Giáo trình x/y" của tab trung tâm Mục tiêu tuần đếm ca TKB + buổi kế hoạch.
 - Sau này: chỉ số **"tỉ lệ dạy đúng giáo trình đã chốt"** = so `gtt_duyet.khung` với bản chép ngày dạy (dữ liệu đã có).
 
-### 3.8 Việc tồn (pure-derive)
+### 3.8 Hạn · việc tồn · gậy (Thùy chốt 16/11 "như đề xuất"; mig `202611161949`)
 
-- ∀ ca thường tuần sau trong phạm vi trưởng khối ⇒ ∃ `gtt_ca` có ≥ 1 mục khung, trước **H1** ⇒ thiếu = việc tồn trưởng khối.
-- ∀ (môn × khối × tuần) đã `gui` ⇒ ∃ `duyet` trước **H2** ⇒ thiếu = việc tồn trưởng bộ môn.
-- **CHƯA build** — chờ Thùy chốt H1 / H2 + có gậy hay không (§8).
+- **H1 = 23:59 thứ Sáu** trước tuần: trưởng khối đã **Gửi duyệt** (mốc "điền xong" = bấm Gửi; ca trống vẫn gửi được, màn đếm "còn x/y ca chưa có khung").
+- **H2 = 12:00 thứ Bảy** trước tuần: trưởng bộ môn đã **Duyệt hoặc Trả lại** bản gửi trước H2.
+- Việc tồn = invariant, không bảng: `_gtt_han_json(môn, khối, tuần)` (một chỗ định nghĩa "trễ") — màn tuần hiện "Hạn gửi … · hạn duyệt …", đỏ khi trễ.
+- **Trễ ⇒ đề xuất gậy** (`gay_de_xuat`, nguon `vanhanh`, ref `gtt_dien:<môn>|<khối>|<tuần>|<người>` / `gtt_duyet:…`, chạy lại không trùng):
+  H1 → trưởng khối của ô (Trang quyết) · H2 → người giữ ghế trưởng bộ môn của môn (CEO quyết). Ô không có trưởng khối ⇒ không gậy H1.
+  Chỉ xét ô có lớp đã có giáo trình bản đồ mới (môn chưa dùng thì chưa có gì để điền). Kỳ đầu = tuần 23/11 (hạn 20/11 · 21/11).
+- Chạy: dòng `gtt_gay_tre` trong `tinh_san_dang_ky` (mỗi 60 phút, xét tuần này + tuần sau) → `_gtt_gay_tre_chay()` → `_gtt_de_xuat_tre(tuần)`.
+  Thử 16/11 (rollback, hạ mốc kỳ đầu về tuần 16/11): 16 đề xuất H1 + 1 đề xuất H2 đúng người, chạy lần 2 = 0.
+- Chưa có: nhắc ở Việc của tôi / huy hiệu trên đồ vật 📅 ngoài cảnh phòng (hiện chỉ thấy khi mở màn tuần).
 
 ### 3.9 Còn thiếu
 
@@ -302,7 +308,7 @@ Quá hạn chưa nộp ⇒ **đề xuất gậy** "Nộp báo cáo tuần trễ"
 
 ## 8. Chờ Thùy quyết
 
-1. **Giáo trình tuần — hạn H1** (trưởng khối điền xong) và **H2** (trưởng bộ môn duyệt xong). Đề xuất: H1 = 23:59 thứ Sáu · H2 = 12:00 thứ Bảy. Trễ có **gậy** không, hay chỉ hiện việc tồn?
+1. ~~Giáo trình tuần — hạn H1 / H2, có gậy không~~ — ✅ Thùy chốt 16/11: H1 = 23:59 T6 · H2 = 12:00 T7 · trễ ⇒ đề xuất gậy (§3.8, đã build).
 2. **Báo cáo tuần** (bàn sau 03/11): giờ hạn nộp (đề xuất 17:00 T2) · mức gậy trễ · BTVN "nộp" tính cả muộn hay chỉ đúng hạn · ngưỡng màu chỉ số · % trưởng khối điền có ghi ngược vào `task_phat_trien` không.
    `gay_de_xuat.nguon` CHECK chỉ có `vanhanh · giaoviec` ⇒ đề xuất báo cáo trễ tạm dùng `vanhanh` (muốn `bao_cao` riêng phải alter — Luật xoá).
 3. **Mục tiêu tuần**: sổ kết quả tuần 09–15/11 (`mtt_chot`) mang lỗi quy câu → nhóm, bất biến — muốn chụp lại phải xoá dòng sổ tuần đó (Luật xoá). Mig `1713` + `1844` còn treo (phiên Mục tiêu tuần).

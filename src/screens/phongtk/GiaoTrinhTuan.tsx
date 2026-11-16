@@ -126,6 +126,7 @@ export default function GiaoTrinhTuan() {
           {man && <span className={`rounded-full px-2.5 py-1 text-[12px] font-semibold ${tt ? TT[tt].cls : 'bg-slate-100 text-slate-600'}`}>
             {tt ? TT[tt].chu : 'Chưa gửi duyệt'}{man.trang_thai?.ho_ten ? ` · ${man.trang_thai.ho_ten}` : ''}{man.trang_thai ? ` · ${fmtLuc(man.trang_thai.at)}` : ''}
           </span>}
+          {man?.han && <HanTuan han={man.han} />}
           {man && caHien.length > 0 && <span className={`text-[12.5px] ${soTrong ? 'text-rose-600' : 'text-emerald-700'}`}>{soTrong ? `còn ${soTrong}/${caHien.length} ca chưa có khung` : `đủ khung ${caHien.length} ca`}</span>}
           {coGui && <button onClick={() => lamChuyen('gui')} className="rounded-lg bg-indigo-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">📤 {tt === 'duyet' ? 'Gửi duyệt lại' : 'Gửi duyệt'}</button>}
           {coDuyet && <button onClick={() => lamChuyen('duyet')} className="rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-semibold text-white hover:bg-emerald-700">✅ Duyệt</button>}
@@ -426,4 +427,16 @@ const thuTuNhanh = (nhanh: string | null) => (!nhanh ? 0 : laNhanhMoHinh(nhanh) 
 const tenBuoi = (stt: number, tieuDe: string | null) => {
   const rieng = (tieuDe ?? '').replace(/^\s*Buổi\s*\d+\s*[:.\-–]?\s*/i, '').trim()
   return `Buổi ${stt}${rieng ? ` · ${rieng}` : ''}`
+}
+
+// Hạn của tuần (việc tồn = invariant, CLAUDE §4): đỏ khi đã trễ; trễ thì bộ điều phối đề xuất gậy (spec-van-hanh-tuan §3.8).
+function HanTuan({ han }: { han: GttMan['han'] }) {
+  const moc = (s: string) => new Date(s).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+  return (
+    <span className="text-[12px] text-slate-500">
+      <span className={han.tre_dien ? 'font-semibold text-rose-600' : ''}>Hạn gửi {moc(han.dien)}{han.tre_dien ? (han.gui_at ? ' · gửi trễ' : ' · quá hạn') : ''}</span>
+      {' · '}
+      <span className={han.tre_duyet ? 'font-semibold text-rose-600' : ''}>hạn duyệt {moc(han.duyet)}{han.tre_duyet ? ' · quá hạn' : ''}</span>
+    </span>
+  )
 }

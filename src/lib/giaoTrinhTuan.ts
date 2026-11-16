@@ -24,6 +24,8 @@ export type GttDong = { hanh_dong: GttHanhDong; at: string; ghi_chu: string | nu
 export type GttMan = {
   mon: string; khoi: string; tuan: string; den: string
   sua: boolean; duyet: boolean
+  // hạn (Thùy 16/11, mig 202611161949): gửi duyệt trước 23:59 T6 · duyệt / trả lại trước 12:00 T7 — trễ ⇒ đề xuất gậy (bộ điều phối)
+  han: { dien: string; duyet: string; gui_at: string | null; xu_ly_at: string | null; tre_dien: boolean; tre_duyet: boolean }
   trang_thai: GttDong | null; lich_su: GttDong[]
   lop: GttLop[]
   mo_coi: { lop_id: string; ngay: string; buoi_id: string }[]
