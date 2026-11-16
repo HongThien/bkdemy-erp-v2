@@ -81501,3 +81501,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sửa:** một dòng — nhãn của ý trên ET = `a)` (cùng kiểu chữ nhãn câu). Dòng lời dẫn vẫn mang dải số "Câu 1 – 3." để đối với bảng điểm (ý thứ t của khúc = Câu n + t). Không đổi cách đánh số, không đổi phiếu chấm / màn Chấm ET.
 - **Kiểm trên app** (dev, admin, mở trang in ET 7S2 · 16/11/2026 — 3 ý của một bài): nhãn trên phiếu = "Câu 1 – 3." · "a)" · "b)" · "c)"; dòng ý đọc được "a) Chứng minh △ABD=△ACD." `tsc` sạch ở file sửa · `check:kien-truc` ✔.
 - **Chưa đụng:** ET chỉ có MỘT ý của bài (không thành khúc) vẫn in như một câu thường "Câu n. <lời dẫn + câu hỏi>", không có nhãn a). Link PDF đã sinh trước đó của các ET cũ không tự đổi — phải sinh lại.
+
+## 16/11 19:26 — Clone giáo trình riêng cho 5A1 (Thùy: "5A1 5A2 đang dùng chung … clone ra 1 cái riêng của 5A1")
+- Thùy đã tự xoá giáo trình trùng ("Giáo trình 5A"). Còn "Giáo trình 5A2" (ca112473…, 2 buổi: 30 · 31) mà cả 5A1 (10, 13/11) lẫn 5A2 (09, 16/11) đã dạy.
+- Mig `202611161926_clone_giao_trinh_rieng_5a1`: tạo "Giáo trình 5A1" (8197afa2…, gắn 5A1, chép theme + cấu hình in), copy 2 buổi bằng `fn_tl_bdm_copy_buoi` (35 phần · 85 câu = bản gốc); chuyển 4 dòng lịch sử CỦA 5A1 (giao_trinh_buoi + btvn 10/11, 13/11) sang nguồn = bản clone (buổi tương ứng) ⇒ trigger bước 5 tự đẻ liên kết ca 5A1 10/11, 13/11. Dòng của 5A2 giữ nguyên. Thử rollback trước rồi mới áp.
+- Màn tuần Toán 5: 5A1 có "[Đại] Giáo trình 5A1", buổi kế tiếp = hết (cả 2 buổi đã dạy) ⇒ nhắc + Buổi mới.
