@@ -81184,3 +81184,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Thấy khi chạy script lần đầu:** `pg_stat_statements` đã bắt đầu lại từ 0 sau lần khởi động 23:09 (mục 3 gần như trống) ⇒ việc "reset thống kê" coi như đã xong · DB 1.087 MB; bảng lớn nhất `bai_test_cau` 213 MB, `dai_cau_hoi` 125 MB, `gami_grades` 65 MB ·
   30 ngày có nhiều đợt script đẩy ≥ 300 file lên kho trong khung 17–22 h (15/11 21:00, 03/11 18:10, 02/11 20:40–21:30, 13/11 19:40) · lịch sử cron 7 ngày còn lượt không thành công của các job cũ và của `viec_chup_phu_trach` 9 · `buoi-tu-dong-et-btvn-trong` 8 · `btvn-app-cap3-tu-dong` 8 (24 giờ gần nhất: 0) — chưa xem từng lượt là lỗi gì.
 - **Chưa làm:** chưa đặt lịch tự nhắc rà hằng tháng (mới ghi trong CLAUDE.md / HANDOFF / spec) · K26, K28, K29 chưa có máy kiểm · phiếu 10 câu chưa thêm câu về policy.
+- **[Dọn MT thử 2 — Thùy gật 13/11 "xóa đi"]** Xoá "[TEST Claude] Chon tay DS - xoa duoc": 3 tai_lieu_cau · 3 tai_lieu_phan · 1 tai_lieu, 1 transaction; không có dòng linkgen_jobs. Còn 0 MT thử.
+
+## 13/11 16:33 — Mục tiêu tuần: ĐÃ ÁP DB
+- Thùy áp ở máy công ty. Kiểm qua schema.md trên main: 5 bảng mtt_* · 23 hàm (_mtt_* + fn_mtt_*) · 2 trigger bất biến; không nằm trong 17 bảng điểm mù (đã áp bằng npm run migrate). Cron muc-tieu-tuan · PH 0038 · deploy: Thùy báo xong, phiên cloud không kiểm được. Việc tiếp: trưởng khối bấm "Chốt mục tiêu tuần" 1 lớp để thử; đo fn_mtt_trung_tam với khối đông nhất.
