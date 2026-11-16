@@ -80,6 +80,17 @@ export async function mttTrungTam(mon: string, khoi: string, tuan?: string | nul
   if (error) throw error
   return data as MttTrungTam
 }
+export type MttEmLop = {
+  id: string; ten: string; co_to: boolean; tien_do: number | null; tien_do_d: number | null
+  viec_xong: number | null; viec_tong: number | null; viec_den_han: number | null; hang: number | null; so_hs: number | null
+  so_nhom: number | null; so_no: number | null
+}
+// danh sách CẢ LỚP (fn_mtt_ds_lop, mig 202611161608) — chỉ đọc bảng đệm / sổ chốt của 1 lớp
+export async function mttDsLop(lopId: string, tuan?: string | null): Promise<MttEmLop[]> {
+  const { data, error } = await supabase.rpc('fn_mtt_ds_lop', { p_lop: lopId, p_tuan: tuan ?? null })
+  if (error) throw error
+  return (data ?? []) as MttEmLop[]
+}
 export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{ tuan: string; lop_id: string; chot_at: string; da_tinh: number; tong: number }> {
   const { data, error } = await supabase.rpc('fn_mtt_chot_lop', { p_lop: lopId, p_tuan: tuan ?? null })
   if (error) throw error

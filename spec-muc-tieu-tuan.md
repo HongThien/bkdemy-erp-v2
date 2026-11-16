@@ -275,6 +275,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - **Em cần để ý** (kèm lý do: chưa làm việc nào · tụt nhiều tuần · BTVN chưa nghiêm túc / chống đối · vắng test sau giờ · nộp muộn liền) —
   bấm tên ⇒ mở màn 9.1 của em đó. Ở đây thấy đủ 4 mức thái độ BTVN.
 - Theo phạm vi phân công (`fn_pham_vi_cua_toi`, `spec-truong-khoi.md`).
+- **Xem tờ của TỪNG em (Thùy 16/11):** bấm tên lớp trong bảng "Theo lớp" ⇒ danh sách cả lớp (tiến độ · ▲/▼ đầu tuần · việc · nhóm/nợ · hạng; `fn_mtt_ds_lop`, mig 202611161608 — chỉ đọc bảng đệm/sổ của 1 lớp) ⇒ bấm em ⇒ tờ của em. Dưới bảng có chú thích nghĩa của "Chốt mục tiêu tuần" và "Tiến độ".
 - **Trưởng khối xem được ĐỦ các view của HS/PH** (Thùy 13/11): bấm tên em ⇒ tờ tuần của em (thanh + cờ mục tiêu tuần + vạch đầu tuần, Phần 1/2, xếp hàng, sắp học, việc của em kèm thái độ 4 mức) · tab "Các tuần đã chốt" của em (tiến độ · việc · hạng · nhóm × tuần) · nút "🏆 Top 20 toàn trung tâm" (đúng bảng HS/PH thấy). Xem được cả khi lớp CHƯA chốt (HS/PH chưa thấy).
 
 ### 9.4 Đã loại

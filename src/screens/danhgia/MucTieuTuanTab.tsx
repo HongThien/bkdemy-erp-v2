@@ -3,9 +3,9 @@
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useState } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttChotLop, mttCacTuan, mttTop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
+  mttTrungTam, mttCuaHs, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
-  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop,
+  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop,
 } from '../../lib/mucTieuTuan'
 
 // rời tab quay lại = đúng chỗ cũ (CLAUDE §React)
@@ -24,6 +24,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
   const [dangChot, setDangChot] = useState<string | null>(null)
   const [xemHs, setXemHs] = useState<{ id: string; ten: string } | null>(null)
   const [moTop, setMoTop] = useState(false)
+  const [xemLop, setXemLop] = useState<{ id: string; ten: string } | null>(null)
   const [lanDau, setLanDau] = useState(lamMoi)
   useEffect(() => { NHO.tuan = tuan }, [tuan])
 
@@ -114,7 +115,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                     <th className="px-2 py-2" title="Buổi trong tuần đã có tài liệu trên hệ / tổng buổi">Giáo trình</th>
                     <th className="px-2 py-2" title="Đề xuất bổ trợ còn nháp / chờ duyệt">Bổ trợ chờ</th>
                     <th className="px-2 py-2">Mục tiêu tuần</th>
-                    <th className="px-2 py-2">Tiến độ TB</th><th className="px-2 py-2">Việc xong</th>
+                    <th className="px-2 py-2" title="Trung bình các em của lớp. Tiến độ 1 em = em đã đi được bao nhiêu % tới mục tiêu TUẦN của chính em (100% = đạt hết mục tiêu tuần), chỉ tính nhóm bài đã có số">Tiến độ TB ⓘ</th><th className="px-2 py-2">Việc xong</th>
                     <th className="px-2 py-2">BTVN T · TÔ · CT</th><th className="px-2 py-2">Chưa làm gì</th>
                   </tr>
                 </thead>
@@ -122,7 +123,10 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                   {data.lop.length === 0 && <tr><td colSpan={9} className="px-3 py-6 text-center text-slate-500">Khối này chưa có lớp đang học.</td></tr>}
                   {data.lop.map((l) => (
                     <tr key={l.lop_id} className="border-t border-slate-100">
-                      <td className="px-3 py-2 font-semibold text-slate-800">{l.ten_lop}</td>
+                      <td className="px-3 py-2">
+                        <button onClick={() => setXemLop({ id: l.lop_id, ten: l.ten_lop })} title="Xem mục tiêu tuần của từng em trong lớp"
+                          className="font-semibold text-indigo-700 hover:underline">{l.ten_lop} ›</button>
+                      </td>
                       <td className="px-2 py-2 text-center">{l.si_so}</td>
                       <td className={`px-2 py-2 text-center ${l.so_buoi > 0 && l.so_buoi_co_tl < l.so_buoi ? 'font-semibold text-orange-700' : ''}`}>{l.so_buoi_co_tl}/{l.so_buoi}</td>
                       <td className={`px-2 py-2 text-center ${l.bo_tro_cho > 0 ? 'font-semibold text-orange-700' : ''}`}>{l.bo_tro_cho}</td>
@@ -146,7 +150,11 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                   ))}
                 </tbody>
               </table>
-              <p className="px-4 pb-3 pt-1 text-[11.5px] text-slate-500">Chốt sau buổi họp thứ Hai, khi đã chốt giáo trình cả tuần và chốt bổ trợ ở Phòng làm việc. Bấm chốt là học sinh và phụ huynh lớp đó thấy tờ tuần này.</p>
+              <div className="space-y-1 px-4 pb-3 pt-1 text-[11.5px] text-slate-500">
+                <p><b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách cả lớp ⇒ bấm tên em ⇒ tờ mục tiêu tuần của em (giống em và phụ huynh thấy).</p>
+                <p><b className="text-slate-700">Chốt mục tiêu tuần</b> = "lớp này đã chốt giáo trình cả tuần + chốt bổ trợ xong, cho học sinh và phụ huynh xem". Bấm sau buổi họp thứ Hai. Chưa bấm thì app HS / PH của lớp ghi "đang chốt mục tiêu tuần"; nhân sự vẫn xem trước được. Chốt rồi không bỏ được — số trên tờ vẫn tự cập nhật theo điểm chấm.</p>
+                <p><b className="text-slate-700">Tiến độ</b> của 1 em = trung bình các nhóm bài (đã có số) của em: % hiện tại ÷ mục tiêu TUẦN, tối đa 100%. Vd mục tiêu tuần 80%, em đang 40% ⇒ 50%. Đầu tuần thường thấp vì nhiều lần đo trong tuần chưa diễn ra.</p>
+              </div>
             </div>
 
             <div className="rounded-xl border border-slate-200 bg-white">
@@ -170,6 +178,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
       )}
       {xemHs && <ToHsPopup hs={xemHs} mon={mon} tuan={tuan} onDong={() => setXemHs(null)} />}
       {moTop && <TopPopup mon={mon} tuan={tuan} onDong={() => setMoTop(false)} />}
+      {xemLop && !xemHs && <LopPopup lop={xemLop} tuan={tuan} onDong={() => setXemLop(null)} onMoEm={(id, ten) => setXemHs({ id, ten })} />}
     </div>
   )
 }
@@ -348,6 +357,57 @@ function TopPopup({ mon, tuan, onDong }: { mon: string; tuan: string; onDong: ()
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  )
+}
+
+// danh sách CẢ LỚP — bấm em ⇒ tờ của em (ToHsPopup). Đọc 1 lần khi mở (fn_mtt_ds_lop), quay lại từ tờ em không đọc lại.
+const NHO_LOP: Record<string, MttEmLop[]> = {}
+function LopPopup({ lop, tuan, onDong, onMoEm }: { lop: { id: string; ten: string }; tuan: string; onDong: () => void; onMoEm: (id: string, ten: string) => void }) {
+  const khoa = lop.id + '|' + tuan
+  const [ds, setDs] = useState<MttEmLop[] | null>(NHO_LOP[khoa] ?? null)
+  const [loi, setLoi] = useState<string | null>(null)
+  useEffect(() => {
+    if (NHO_LOP[khoa]) return
+    let alive = true
+    mttDsLop(lop.id, tuan).then((d) => { NHO_LOP[khoa] = d; if (alive) setDs(d) }).catch((e) => alive && setLoi(String(e?.message ?? e)))
+    return () => { alive = false }
+  }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-900/40 p-4" onClick={onDong}>
+      <div className="w-full max-w-3xl rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-start gap-3">
+          <div className="flex-1">
+            <div className="text-[17px] font-bold text-slate-900">Lớp {lop.ten} · mục tiêu tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))}</div>
+            <div className="text-[12.5px] text-slate-500">Bấm tên em để mở tờ mục tiêu tuần của em. Tiến độ = % đi tới mục tiêu tuần của chính em.</div>
+          </div>
+          <button onClick={onDong} className="h-8 rounded-md px-3 text-[13px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng</button>
+        </div>
+        {loi && <p className="mt-4 text-[13px] text-rose-600">{loi}</p>}
+        {!ds && !loi && <p className="mt-4 text-[13px] text-slate-500">Đang tải…</p>}
+        {ds && ds.length === 0 && <p className="mt-4 text-[13px] text-slate-500">Lớp chưa có em nào.</p>}
+        {ds && ds.length > 0 && (
+          <table className="mt-3 min-w-full text-[13px]">
+            <thead className="bg-slate-50 text-[11.5px] font-semibold text-slate-600">
+              <tr><th className="px-3 py-2 text-left">Học sinh</th><th className="px-2 py-2">Tiến độ</th><th className="px-2 py-2">So đầu tuần</th>
+                <th className="px-2 py-2">Việc đã làm</th><th className="px-2 py-2">Nhóm bài · nợ</th><th className="px-2 py-2">Hạng</th></tr>
+            </thead>
+            <tbody>
+              {ds.map((e) => (
+                <tr key={e.id} className="cursor-pointer border-t border-slate-100 hover:bg-indigo-50/40" onClick={() => onMoEm(e.id, e.ten)}>
+                  <td className="px-3 py-2 font-semibold text-indigo-700">{e.ten}</td>
+                  <td className="px-2 py-2 text-center font-bold text-slate-900">{e.co_to ? so(e.tien_do, '%') : <span className="font-normal text-slate-400">chưa có tờ</span>}</td>
+                  <td className={`px-2 py-2 text-center text-[12px] font-bold ${e.tien_do_d == null ? 'text-slate-400' : e.tien_do_d > 0 ? 'text-emerald-700' : e.tien_do_d < 0 ? 'text-rose-600' : 'text-slate-500'}`}>
+                    {e.tien_do_d == null ? '—' : e.tien_do_d > 0 ? `▲ ${e.tien_do_d}` : e.tien_do_d < 0 ? `▼ ${-e.tien_do_d}` : '= 0'}</td>
+                  <td className="px-2 py-2 text-center">{e.co_to ? `${e.viec_xong ?? 0}/${e.viec_tong ?? 0}` : '—'}</td>
+                  <td className="px-2 py-2 text-center">{e.co_to ? `${e.so_nhom ?? 0} · ${e.so_no ?? 0}` : '—'}</td>
+                  <td className="px-2 py-2 text-center">{e.hang ? `#${e.hang}` : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   )

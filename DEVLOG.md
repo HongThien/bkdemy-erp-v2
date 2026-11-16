@@ -81188,3 +81188,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ## 13/11 16:33 — Mục tiêu tuần: ĐÃ ÁP DB
 - Thùy áp ở máy công ty. Kiểm qua schema.md trên main: 5 bảng mtt_* · 23 hàm (_mtt_* + fn_mtt_*) · 2 trigger bất biến; không nằm trong 17 bảng điểm mù (đã áp bằng npm run migrate). Cron muc-tieu-tuan · PH 0038 · deploy: Thùy báo xong, phiên cloud không kiểm được. Việc tiếp: trưởng khối bấm "Chốt mục tiêu tuần" 1 lớp để thử; đo fn_mtt_trung_tam với khối đông nhất.
+
+## 16/11 16:11 — Mục tiêu tuần: xem tờ từng em + chú thích Chốt / Tiến độ
+- Thùy hỏi: xem mục tiêu từng HS ở đâu · nút Chốt nghĩa là gì · chốt lớp 6 hiện 56% là sao. Trước đó chỉ mở được em trong "Em cần để ý" (thiếu). Thêm fn_mtt_ds_lop (mig 202611161608, CHƯA ÁP) + bấm tên lớp ⇒ danh sách cả lớp ⇒ bấm em ⇒ tờ. Chú thích dưới bảng: nghĩa nút Chốt, công thức Tiến độ. Kiểm: Postgres tạm + harness chụp + tsc + build + check:kien-truc --chi-code (không mục nào tăng).
+- Sai trong lúc làm: lỡ commit DEVLOG còn dấu xung đột (script gộp dừng vì DEVLOG có sẵn chuỗi "<<<<<<<" trong nội dung cũ) — phát hiện trước khi đẩy, sửa bằng amend commit chưa đẩy.
