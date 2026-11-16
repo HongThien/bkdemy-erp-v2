@@ -1,0 +1,20 @@
+[
+ {
+  "ma_cau": "HHC018730",
+  "nhan_y": "b",
+  "loi_giai": "Chứng minh hoàn toàn tương tự Câu 28 (chỉ khác số liệu ở câu a): Xét $\\triangle AHM$ và $\\triangle ABH$ (g-g) suy ra $AM\\cdot AB=AH^2$; xét $\\triangle AHN$ và $\\triangle ACH$ (g-g) suy ra $AN\\cdot AC=AH^2$; từ đó $AM\\cdot AB=AN\\cdot AC$ (đpcm).",
+  "noi_dung": "Cho tam giác $ABC$ vuông tại $A$ ($AB<AC$), đường cao $AH$.\nGọi $M$ và $N$ lần lượt là chân các đường vuông góc kẻ từ điểm $H$ đến các đường thẳng $AB$ và $AC$. Chứng minh $AM\\cdot AB=AN\\cdot AC$.",
+  "da_duyet": true,
+  "nguon_giai": "nguoi",
+  "giai_method": null
+ },
+ {
+  "ma_cau": "HHC018731",
+  "nhan_y": "c",
+  "loi_giai": "Tương tự lập luận đã trình bày ở Câu 28 phần c) (tứ giác $AMHN$ là hình chữ nhật nên trung điểm $AH$ nằm trên $MN$; chứng minh $\\triangle KAC$ cân tại $K$ và $I$ là trung điểm $AH$ nhờ định lí Ta-lét trong $\\triangle BCK$), ta suy ra $I$ chính là trung điểm của $AH$, do đó $I$ thuộc đường thẳng $MN$. Vậy ba điểm $M$, $I$, $N$ thẳng hàng (đpcm).",
+  "noi_dung": "Cho tam giác $ABC$ vuông tại $A$ ($AB<AC$), đường cao $AH$.\nĐường thẳng đi qua điểm $A$ và song song với đường thẳng $MN$ cắt đường thẳng đi qua điểm $C$ và song song với đường thẳng $AH$ tại điểm $K$. Gọi $I$ là giao điểm của $AH$ và $BK$. Chứng minh rằng ba điểm $M$, $I$, $N$ là ba điểm thẳng hàng.",
+  "da_duyet": true,
+  "nguon_giai": "nguoi",
+  "giai_method": null
+ }
+]
