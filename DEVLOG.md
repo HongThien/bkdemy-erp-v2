@@ -81400,3 +81400,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Nhãn hai ký tự ("1a") là MỚI trong `nhan_y` (trước chỉ có a–h, 1–9, b*): bảng không có CHECK chặn; màn hiện "1a)". Chưa thử trên app.
 - Bước ghi (khi Thùy nói "ghi"): `ghi.mjs` đang đọc cứng `nhap.json` ⇒ cần cho nhận file `nhap-tay.json`.
 - 16/11 18:35 — **Thùy chốt "Giữ như đề xuất"**: giữ mon default 'Toán' ở 12 bảng kho chỉ của Toán (hinh_* · kho_hinh_* · dai_cau_lop · bo_tro_hinh) và ung_vien. Đừng đề xuất bỏ lại trừ khi kho Hình / Đại mở cho môn khác.
+
+## 16/11 (tiếp 10) — Gợi ý câu giáo trình Hình theo NGUYÊN BÀI (Thùy: "đề xuất full các ý của 1 bài, không đề xuất từng ý")
+- Trước: `_tl_hh_goi_y` chọn N CÂU ít dùng nhất ⇒ rời từng ý của bài nhiều ý (ý c lẻ loi, thiếu a–b).
+- Sau: hàm mới `_tl_hh_goi_y_nguyen_bai` (mig 202611161750; khoá hàm nội bộ ở 202611161752: security invoker, thu EXECUTE của authenticated — cổng check:kien-truc K1/K14): đơn vị = bài_y đủ ý (hoặc câu đơn); lấy nguyên bài tới khi ≥ p_n câu, không cắt dở; bài đã có ý nào bị chọn thì không gợi ý lại. `fn_tl_hh_goi_y` + `fn_tl_hh_dat_bai` dùng hàm mới. `_tl_hh_goi_y` GIỮ cho `fn_tl_hh_goi_y_bai` (hàng ET Hình học: mỗi hàng 1 câu).
+- Thử (rollback, dữ liệu thật): HH00170 n=4 → 2 bài (3+3 ý = 6 câu, cũ 4 câu rời); HH00104 n=4 → 1 câu đơn + bài 2 ý + bài 3 ý; tru 1 ý ⇒ loại cả bài; n=0 ⇒ rỗng. `npm run check:kien-truc` ✔ (không vượt trần). Nhãn gợi ý ở `ChuyenDeHinhBuilder.tsx` đổi chữ. Spec: `spec-giai-bai.md` Hình › Tách ý, mục 4.
+- Chưa thử trên app (đăng nhập thật) — chỉ thử ở DB.
