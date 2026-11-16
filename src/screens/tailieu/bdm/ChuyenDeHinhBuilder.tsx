@@ -8,7 +8,7 @@ import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, typ
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
 import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
-import { MathText, GiaThietY, inp } from '../../kho/ui'
+import { MathText, DeY, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
 import { ngayBuoi, THU, ddmm, tuDate } from '../../../lib/giaoTrinhTuan'
@@ -677,8 +677,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
                               <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded text-[11px] font-bold ${on ? 'bg-sky-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{on ? so(y.ma_cau) : ''}</span>
                               <b className="shrink-0 text-[13.5px] text-violet-700">{y.nhan_y})</b>
                               <div className="min-w-0 flex-1 text-[13.5px] text-slate-700">
-                                <GiaThietY>{y.da_biet}</GiaThietY>
-                                <MathText>{y.cau_hoi_y ?? ''}</MathText>
+                                <DeY daBiet={y.da_biet} cauHoi={y.cau_hoi_y ?? ''} />
                               </div>
                               <span className="shrink-0 text-[10.5px] text-slate-400">{y.ma_cau} · dùng {y.so_lan_dung}</span>
                             </button>

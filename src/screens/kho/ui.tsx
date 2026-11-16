@@ -6,6 +6,7 @@ import { fixAccentScript, widenSingleHat } from '../../lib/math/latex-fix'
 import { parseLyThuyetBlocks, splitPhuongPhapBuoc, splitViDu, splitLoiGiaiLabel, laDauNhomBaiTap, type LyThuyetBlock } from '../../lib/lythuyetBlocks'
 import { MON_CHU_THUONG } from '../../lib/mon'
 import { tachChuoiBuoc, type LoiGiaiBuoc } from '../../lib/loiGiaiBuoc'
+import { tachGiaThietCauHoi } from '../../lib/kho/giaThietY'
 
 // Render text có LaTeX ($…$ inline, $$…$$ block) thành công thức đẹp.
 const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -318,16 +319,28 @@ export function MathText({ children, className, prefix, editable }: { children: 
   return <div className={`katex-text ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: lines.map((l, i) => `<div class="mline">${(i === 0 ? head : '') + (l || '&nbsp;')}</div>`).join('') }} />
 }
 
+// GIẢ THIẾT của một ý (Hình–Học bài nhiều ý). Thùy 16/11: không ghi chữ "Đã biết", chỉ TÔ NỀN để phân biệt giả thiết với câu hỏi
+// (cùng tông xanh của dải lời dẫn = giả thiết chung của bài). Một chỗ dùng chung cho thẻ kho bài nhiều ý · bộ chọn câu của builder Hình ·
+// khối câu của builder giáo trình.
+export function GiaThietY({ children, className, title = 'Giả thiết' }: { children: string | null | undefined; className?: string; title?: string }) {
+  if (!children?.trim()) return null
+  return <div title={title} className={`mb-1 rounded border-l-[3px] border-teal-500 bg-teal-50 px-2 py-0.5 text-teal-900 ${className ?? ''}`}><MathText>{children.trim()}</MathText></div>
+}
+// ĐỀ CỦA MỘT Ý = [giả thiết lấy từ ý trước (cột da_biet)] + đề riêng của ý, trong đó phần giả thiết riêng ("Vẽ CI ⊥ AT tại I. Gọi M…")
+// cũng tô nền, phần yêu cầu ("Chứng minh…") để thường. Cách tách: lib/kho/giaThietY.ts (chỉ hiển thị).
+export function DeY({ daBiet, cauHoi, className }: { daBiet?: string | null; cauHoi: string | null | undefined; className?: string }) {
+  return (
+    <>
+      <GiaThietY className={className} title="Giả thiết (dựng ở ý trước)">{daBiet}</GiaThietY>
+      {tachGiaThietCauHoi(cauHoi).map((k, i) => (k.gt
+        ? <GiaThietY key={i} className={className} title="Giả thiết của ý">{k.text}</GiaThietY>
+        : <MathText key={i} className={className}>{k.text}</MathText>))}
+    </>
+  )
+}
 // ── TIẾNG ANH: chữ THƯỜNG, không công thức. KHÔNG dùng MathText cho câu Anh: MathText tự in đậm từ VIẾT HOA ("NOT", "TV"),
 // hiểu "$5 and $10" thành công thức và escape cả <u> (gạch chân là ĐỀ BÀI của câu phát âm). Ở đây: escape mọi thứ, chỉ
 // thả lại đúng <u>…</u>, xuống dòng → <br>. MathText giữ nguyên (dùng khắp app, kể cả trang in).
-// GIẢ THIẾT THÊM của một ý (cột da_biet — giả thiết dựng ở ý trước mà ý này dùng lại). Thùy 16/11: không ghi chữ "Đã biết",
-// chỉ TÔ NỀN để phân biệt giả thiết với câu hỏi (cùng tông xanh của dải lời dẫn = giả thiết chung của bài). Một chỗ dùng chung cho
-// thẻ kho bài nhiều ý · bộ chọn câu của builder Hình · khối câu của builder giáo trình.
-export function GiaThietY({ children, className }: { children: string | null | undefined; className?: string }) {
-  if (!children?.trim()) return null
-  return <div title="Giả thiết (dựng ở ý trước)" className={`mb-1 rounded border-l-[3px] border-teal-500 bg-teal-50 px-2 py-0.5 text-teal-900 ${className ?? ''}`}><MathText>{children.trim()}</MathText></div>
-}
 export function TextAnh({ children, className }: { children: string | null | undefined; className?: string }) {
   const html = esc((children ?? '').trim())
     .replace(/&lt;u&gt;/g, '<u class="decoration-2 underline-offset-2">').replace(/&lt;\/u&gt;/g, '</u>')

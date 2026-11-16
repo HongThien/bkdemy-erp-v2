@@ -14,7 +14,7 @@ import {
 } from '../../../lib/tailieuBdm'
 import { LOAI_CAU, khucY, deCuaY, type CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
-import { MathText, GiaThietY, Shell, Field, inp } from '../../kho/ui'
+import { MathText, DeY, Shell, Field, inp } from '../../kho/ui'
 import { AnhMmEditCtx } from '../anhMmCtx'
 import { ColSel, MaCau, AnhXem, AnhMmCtl, CheDoHinhBtn, ApplyLinesAll, MAU_PRESET } from '../TaiLieuBuilder'
 import BoChonNhom from './BoChonNhom'
@@ -578,7 +578,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                         <div key={y.ma_cau} className="flex items-start gap-2 rounded border border-slate-100 bg-white px-2 py-1">
                           <span className="shrink-0 text-[12px] font-bold text-slate-400">{i + t + 1}.</span>
                           <b className="shrink-0 text-[13px] text-violet-700">{y.nhan_y})</b>
-                          <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700"><GiaThietY>{y.da_biet}</GiaThietY><MathText>{y.cau_hoi_y ?? deCuaY(y)}</MathText></div>
+                          <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700"><DeY daBiet={y.da_biet} cauHoi={y.cau_hoi_y ?? deCuaY(y)} /></div>
                           <MaCau ma={y.ma_cau} />
                           {!chiXem && (
                             <span className="flex shrink-0 items-center gap-2">
