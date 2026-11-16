@@ -1,5 +1,7 @@
+set local lock_timeout = '3s';
 -- ============================================================================
--- 202611161714 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11) — đổi tên 1622 → 1632 → 1714 để chạy SAU mig 202611161701 (quyền môn); CHƯA áp
+-- 202611161844 — muc_tieu_tuan_khoa_ke_hoach  (Thùy 16/11) — đổi tên 1622 → 1632 → 1714 → 1844: chạy SAU mig 202611161701 (quyền môn) và 202611161754
+--   (Giáo trình tuần, phiên khác) — hàm _mtt_tinh / _mtt_nhom_buoi / _mtt_nhom_lui ở đây DỰNG TRÊN bản 1754, không đè. CHƯA áp
 --   (đổi tên 202611161622 → 1632 → 1714: trùng giờ với mig 202611161622_sau_gio_reset_dang_ky_dieu_phoi đã áp ở phiên khác — file này CHƯA áp)
 -- ----------------------------------------------------------------------------
 -- VÌ SAO: "Hành vi chốt phải là: hệ thống đọc bổ trợ và giáo trình của tuần này để ghi ra mục tiêu" + luồng tuần Thùy duyệt 16/11:
@@ -34,7 +36,7 @@ create table if not exists public.mtt_ke_hoach (
   primary key (tuan, mon, hoc_sinh_id)
 );
 create index if not exists mtt_ke_hoach_hs_idx on public.mtt_ke_hoach (hoc_sinh_id);
-comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161714). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
+comment on table public.mtt_ke_hoach is 'Mục tiêu tuần ĐÃ KHOÁ lúc lớp chốt (mig 202611161844). Bất biến. Số đo vẫn tính trực tiếp trong _mtt_tinh.';
 drop trigger if exists mtt_ke_hoach_bat_bien_trg on public.mtt_ke_hoach;
 create trigger mtt_ke_hoach_bat_bien_trg before update or delete on public.mtt_ke_hoach
   for each row execute function public._mtt_chot_bat_bien();
@@ -53,22 +55,98 @@ language sql stable security definer set search_path to 'public' as $$
 $$;
 revoke execute on function public._mtt_nhom_cua_o(text) from public, anon, authenticated;
 
-create or replace function public._mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)
-returns text[]
-language sql stable security definer set search_path to 'public' as $$
-  with c as (
+-- NGUỒN câu của buổi = MỘT chỗ: thân y hệt _mtt_nhom_buoi / _mtt_nhom_lui của mig 202611161754 (bản chép · câu ET/BTVN trên app · buổi KẾ HOẠCH
+-- Giáo trình tuần gtt_ca · bỏ phần ôn; phần luyện lại lùi bậc), chỉ đổi tên ⇒ trả Ô ĐO. Nhóm (_mtt_nhom_buoi / _mtt_nhom_lui) và dạng (_mtt_dang_nhom)
+-- cùng đọc hai hàm này ⇒ không có công thức nguồn thứ hai.
+CREATE OR REPLACE FUNCTION public._mtt_o_buoi(p_lop uuid, p_ngay date, p_buoi uuid)
+ RETURNS text[]
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+  with ot as (
+    select distinct tc.ma_cau
+      from tai_lieu t join tai_lieu_phan tp on tp.tai_lieu_id = t.id join tai_lieu_cau tc on tc.phan_id = tp.id
+     where t.lop_id = p_lop and t.ngay = p_ngay and t.loai = 'btvn' and t.hoc_sinh_id is null
+       and tp.loai_phan in ('ontap', 'ontap_nhom') and tc.ma_cau is not null
+  ),
+  c as (
     select distinct coalesce(tc.ma_cau, '') as kc, '' as kd
       from tai_lieu t join tai_lieu_phan tp on tp.tai_lieu_id = t.id join tai_lieu_cau tc on tc.phan_id = tp.id
      where t.lop_id = p_lop and t.ngay = p_ngay and t.loai in ('giao_trinh_buoi', 'et', 'btvn') and t.hoc_sinh_id is null
-       and tc.ma_cau is not null
+       and tc.ma_cau is not null and tp.loai_phan not in ('ontap', 'ontap_nhom')
     union
     select distinct coalesce(sp.ma_cau, ''), coalesce(sp.ma_dang, '')
       from gami_session_problems sp
      where sp.buoi_hoc_id = p_buoi and sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null
+       and not (sp.phase = 'btvn' and exists (select 1 from ot where ot.ma_cau = sp.ma_cau))
+    union
+    -- 16/11 Giáo trình tuần: lớp CHƯA có bản chép giáo trình buổi cho ngày này ⇒ câu của buổi KẾ HOẠCH trong builder (gtt_ca),
+    -- bỏ phần ôn / luyện lại (ontap, ontap_nhom) — cùng luật với nhánh bản chép ở trên; quy câu → nhóm bằng đúng _do_o_quy bên dưới.
+    select distinct tc.ma_cau, ''
+      from gtt_ca g
+      join lateral (select p.id, p.loai_phan from tai_lieu_phan p where p.cha_id = g.buoi_id
+                    union all
+                    select q.id, q.loai_phan from tai_lieu_phan p join tai_lieu_phan q on q.cha_id = p.id
+                     where p.cha_id = g.buoi_id and p.loai_phan not in ('ontap', 'ontap_nhom')) ph on true
+      join tai_lieu_cau tc on tc.phan_id = ph.id
+     where g.lop_id = p_lop and g.ngay = p_ngay and ph.loai_phan not in ('ontap', 'ontap_nhom') and tc.ma_cau is not null
+       and not exists (select 1 from tai_lieu t where t.lop_id = p_lop and t.ngay = p_ngay and t.loai = 'giao_trinh_buoi' and t.hoc_sinh_id is null)
   )
   select coalesce(array_agg(distinct n) filter (where n is not null), '{}')
-    from (select public._mtt_nhom_cua_o(public._do_o_quy(public._mastery_bdm_bat(), false, c.kc, c.kd)) as n from c) x
+    from (select public._do_o_quy(public._mastery_bdm_bat(), false, c.kc, c.kd) as n from c) x
+$function$;
+
+CREATE OR REPLACE FUNCTION public._mtt_o_lui(p_lop uuid, p_ngay date)
+ RETURNS text[]
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
+  with phieu as (
+    select t.id from tai_lieu t where t.lop_id = p_lop and t.ngay = p_ngay and t.loai = 'btvn' and t.hoc_sinh_id is null
+  ),
+  c as (
+    select tc.ma_cau
+      from phieu f join tai_lieu_phan tp on tp.tai_lieu_id = f.id join tai_lieu_cau tc on tc.phan_id = tp.id
+     where tp.loai_phan in ('ontap', 'ontap_nhom') and tc.ma_cau is not null
+    union
+    select tc.ma_cau
+      from tai_lieu t
+      join tai_lieu_phan k on k.cha_id = case when t.nguon_buoi ~ '^[0-9a-fA-F-]{36}$' then t.nguon_buoi::uuid end
+                          and k.loai_phan = 'ontap_nhom' and k.lui_bac is not null
+      join tai_lieu_cau tc on tc.phan_id = k.id
+     where t.lop_id = p_lop and t.ngay = p_ngay and t.loai = 'giao_trinh_buoi' and t.ban_do = 'moi' and t.hoc_sinh_id is null
+       and not exists (select 1 from phieu)
+    union
+    -- 16/11 Giáo trình tuần: chưa có cả phiếu lẫn bản chép giáo trình buổi ⇒ phần luyện lại đã soạn ở buổi KẾ HOẠCH (gtt_ca)
+    select tc.ma_cau
+      from gtt_ca g
+      join tai_lieu_phan k on k.cha_id = g.buoi_id and k.loai_phan = 'ontap_nhom' and k.lui_bac is not null
+      join tai_lieu_cau tc on tc.phan_id = k.id
+     where g.lop_id = p_lop and g.ngay = p_ngay
+       and not exists (select 1 from phieu)
+       and not exists (select 1 from tai_lieu t where t.lop_id = p_lop and t.ngay = p_ngay and t.loai = 'giao_trinh_buoi' and t.hoc_sinh_id is null)
+  )
+  select coalesce(array_agg(distinct n) filter (where n is not null), '{}')
+    from (select public._do_o_quy(public._mastery_bdm_bat(), false, c.ma_cau, '') as n from c) x
+$function$;
+
+create or replace function public._mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)
+returns text[]
+language sql stable security definer set search_path to 'public' as $$
+  select coalesce(array_agg(distinct n) filter (where n is not null), '{}')
+    from (select public._mtt_nhom_cua_o(o) as n from unnest(public._mtt_o_buoi(p_lop, p_ngay, p_buoi)) o) x
 $$;
+
+create or replace function public._mtt_nhom_lui(p_lop uuid, p_ngay date)
+returns text[]
+language sql stable security definer set search_path to 'public' as $$
+  select coalesce(array_agg(distinct n) filter (where n is not null), '{}')
+    from (select public._mtt_nhom_cua_o(o) as n from unnest(public._mtt_o_lui(p_lop, p_ngay)) o) x
+$$;
+revoke execute on function public._mtt_o_buoi(uuid, date, uuid) from public, anon, authenticated;
+revoke execute on function public._mtt_o_lui(uuid, date) from public, anon, authenticated;
 
 -- DẠNG (ô đo — NDB…, Hình–Học: bài) của tuần, gom theo NHÓM. Cùng nguồn với danh sách nhóm của tờ:
 --   Phần 1 = câu trong TÀI LIỆU đã chốt của buổi trong cửa sổ (giáo trình buổi · ET · BTVN) + câu ET/BTVN đã giao trên app của buổi đó;
@@ -78,26 +156,20 @@ create or replace function public._mtt_dang_nhom(p_hs uuid, p_mon text, p_buoi j
 returns jsonb
 language sql stable security definer set search_path to 'public' as $$
   with b as (
-    select (e->>'id')::uuid as id, (e->>'lop_id')::uuid as lop_id, (e->>'ngay')::date as ngay
+    select nullif(e->>'id', '')::uuid as id, (e->>'lop_id')::uuid as lop_id, (e->>'ngay')::date as ngay
       from jsonb_array_elements(coalesce(p_buoi, '[]'::jsonb)) e
      where (e->>'s')::boolean
   ),
-  d as (
-    select tc.ma_cau as kc, '' as kd
-      from b join tai_lieu t on t.lop_id = b.lop_id and t.ngay = b.ngay
-      join tai_lieu_phan tp on tp.tai_lieu_id = t.id join tai_lieu_cau tc on tc.phan_id = tp.id
-     where t.loai in ('giao_trinh_buoi', 'et', 'btvn') and t.hoc_sinh_id is null and tc.ma_cau is not null
+  o as (
+    select x.o from b cross join lateral unnest(public._mtt_o_buoi(b.lop_id, b.ngay, b.id)) as x(o)
     union
-    select coalesce(sp.ma_cau, ''), coalesce(sp.ma_dang, '')
-      from b join gami_session_problems sp on sp.buoi_hoc_id = b.id
-     where sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null
+    select x.o from b cross join lateral unnest(public._mtt_o_lui(b.lop_id, b.ngay)) as x(o)
     union
-    select '', yd.ma_dang
+    select public._do_o_quy(p_bdm, false, '', yd.ma_dang)
       from bo_tro_yeu y join bo_tro_yeu_dang yd on yd.bo_tro_yeu_id = y.id
      where y.hoc_sinh_id = p_hs and y.mon = p_mon and y.trang_thai in ('dang_xu', 'nhe_mo') and yd.dong_at is null and y.created_at < p_den
   ),
-  o as (select distinct public._do_o_quy(p_bdm, false, d.kc, d.kd) as o from d),
-  q as (select o.o, public._mtt_nhom_cua_o(o.o) as nhom from o where o.o is not null),
+  q as (select distinct o.o, public._mtt_nhom_cua_o(o.o) as nhom from o where o.o is not null),
   g as (
     select q.nhom,
            jsonb_agg(jsonb_build_object('ma', q.o, 'ten', coalesce(db.ten, hh.ten_bai, public._kho_ten_dang(p_mon, q.o), q.o))
@@ -110,9 +182,13 @@ language sql stable security definer set search_path to 'public' as $$
 $$;
 revoke execute on function public._mtt_dang_nhom(uuid, text, jsonb, timestamptz, boolean) from public, anon, authenticated;
 
-create or replace function public._mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamptz default null)
-returns jsonb
-language plpgsql stable security definer set search_path to 'public' as $$
+-- _mtt_tinh = bản ĐANG CHẠY của mig 202611161754 (ca chiếu TKB · luyện lại 'lui' · ca chiếu không thành việc) + phần 16/11 của file này.
+CREATE OR REPLACE FUNCTION public._mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ STABLE SECURITY DEFINER
+ SET search_path TO 'public'
+AS $function$
 declare
   v_bdm    boolean := public._mastery_bdm_bat();
   v_tu     date := p_tuan;
@@ -153,18 +229,29 @@ begin
   v_chot := exists (select 1 from mtt_lop_chot c where c.tuan = p_tuan and c.lop_id = any(v_lop));
 
   -- buổi thường của lớp quanh tuần + buổi kế (lead) — chỉ buổi em đã ở trong lớp
-  with b as (
-    select bh.id, bh.lop_id, bh.ngay, bh.gio_bat_dau,
-           lead(bh.ngay) over (partition by bh.lop_id order by bh.ngay, bh.gio_bat_dau) as sau
+  -- 16/11 Giáo trình tuần (spec-giao-trinh-tuan §6): buổi thường tương lai chưa có dòng buoi_hoc (sinh lúc mở buổi) ⇒ thêm CA CHIẾU từ TKB
+  -- (_gtt_ca, từ hôm nay trở đi, chưa có buổi thường, không huỷ; id null). Nhờ vậy cửa sổ "buổi cuối tuần trước + buổi đầu tuần này" đủ ngay
+  -- thứ Hai (lead 'sau' thấy buổi kế), và nhóm của buổi sắp dạy lấy từ kế hoạch tuần (_mtt_nhom_buoi nhánh gtt_ca).
+  with b0 as (
+    select bh.id, bh.lop_id, bh.ngay, bh.gio_bat_dau
       from buoi_hoc bh
      where bh.lop_id = any(v_lop) and bh.loai = 'thuong' and bh.trang_thai <> 'huy'
        and bh.ngay between v_tu - 28 and v_toi + 21
+    union all
+    select null::uuid, c.lop_id, c.ngay, c.gio_bat_dau
+      from public._gtt_ca(v_lop, greatest(v_tu - 28, v_today), v_toi + 21) c
+     where c.buoi_hoc_id is null and not c.huy
+  ),
+  b as (
+    select b0.*, lead(b0.ngay) over (partition by b0.lop_id order by b0.ngay, b0.gio_bat_dau) as sau from b0
   )
   select coalesce(jsonb_agg(jsonb_build_object(
            'id', b.id, 'lop_id', b.lop_id, 'ngay', b.ngay, 'sau', b.sau,
            'w', b.ngay between v_tu and v_toi, 's', coalesce(b.sau between v_tu and v_toi, false),
            'dd', (select x.diem_danh from buoi_hoc_hs x where x.buoi_hoc_id = b.id and x.hoc_sinh_id = p_hs limit 1),
-           'nhom', to_jsonb(public._mtt_nhom_buoi(b.lop_id, b.ngay, b.id))) order by b.ngay, b.gio_bat_dau), '[]'::jsonb)
+           'nhom', to_jsonb(public._mtt_nhom_buoi(b.lop_id, b.ngay, b.id)),
+           'lui', case when coalesce(b.sau between v_tu and v_toi, false)
+                       then to_jsonb(public._mtt_nhom_lui(b.lop_id, b.ngay)) else '[]'::jsonb end) order by b.ngay, b.gio_bat_dau), '[]'::jsonb)
     into v_buoi
     from b
    where (b.ngay between v_tu and v_toi or b.sau between v_tu and v_toi)
@@ -217,11 +304,19 @@ begin
   -- NHÓM của tờ: Phần 1 (dạy trong cửa sổ) + Phần 2 (nợ). Một nhóm chỉ ở 1 phần (nợ ưu tiên).
   with bb as (select e as b from jsonb_array_elements(v_buoi) e),
   n1 as (   -- nhóm của buổi thuộc cửa sổ (s) + số lần đo dự kiến trong tuần: ET của buổi trong tuần (w) + BTVN của buổi cửa sổ (s)
-    select n.value #>> '{}' as ma,
-           sum((case when (bb.b->>'w')::boolean then 1 else 0 end) + (case when (bb.b->>'s')::boolean then 1 else 0 end))::int as k,
-           bool_or((bb.b->>'s')::boolean) as trong_cua_so,
-           jsonb_agg(distinct bb.b->'ngay') filter (where (bb.b->>'s')::boolean) as ngay_hoc
-      from bb cross join lateral jsonb_array_elements(bb.b->'nhom') n
+    -- 13/11 BTVN xếp chồng: nhóm luyện lại trong phiếu của buổi cửa sổ (lui) = thêm 1 lần đo, vẫn thuộc Phần 1
+    select x.ma, sum(x.k)::int as k, bool_or(x.s) as trong_cua_so,
+           jsonb_agg(distinct x.ngay) filter (where x.s and x.goc) as ngay_hoc
+      from (
+        select n.value #>> '{}' as ma,
+               (case when (bb.b->>'w')::boolean then 1 else 0 end) + (case when (bb.b->>'s')::boolean then 1 else 0 end) as k,
+               (bb.b->>'s')::boolean as s, true as goc, bb.b->'ngay' as ngay
+          from bb cross join lateral jsonb_array_elements(bb.b->'nhom') n
+        union all
+        select n.value #>> '{}', 1, true, false, bb.b->'ngay'
+          from bb cross join lateral jsonb_array_elements(coalesce(bb.b->'lui', '[]'::jsonb)) n
+         where not coalesce(bb.b->'nhom', '[]'::jsonb) @> jsonb_build_array(n.value)
+      ) x
      group by 1
   ),
   tat as (
@@ -267,7 +362,7 @@ begin
     into v_nhom
     from t3;
 
-  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161714): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
+  -- ⭐ KẾ HOẠCH ĐÃ KHOÁ lúc chốt lớp (mig 202611161844): danh sách nhóm · phần · mục tiêu tuần · số lần đo = bản khoá;
   -- số đo (% hiện tại, đầu tuần, tiến độ) vẫn tính trực tiếp. Nhóm mới xuất hiện sau khi chốt ⇒ them_sau_chot (chỉ để nhân sự thấy).
   select k.nhom, k.viec, k.chot_at into v_kh from mtt_ke_hoach k where k.tuan = p_tuan and k.mon = p_mon and k.hoc_sinh_id = p_hs;
   if found then
@@ -332,11 +427,11 @@ begin
   with bb as (select e as b from jsonb_array_elements(v_buoi) e),
   et as (
     select 'et'::text as loai, (bb.b->>'id')::uuid as buoi_id, (bb.b->>'ngay')::date as ngay, null::date as han, bb.b->>'dd' as dd, 1 as o
-      from bb where (bb.b->>'w')::boolean
+      from bb where (bb.b->>'w')::boolean and bb.b->>'id' is not null   -- ca chiếu (chưa mở buổi) không thành việc của con
   ),
   bt as (
     select 'btvn'::text, (bb.b->>'id')::uuid, (bb.b->>'ngay')::date, (bb.b->>'sau')::date, bb.b->>'dd', 2
-      from bb where (bb.b->>'s')::boolean
+      from bb where (bb.b->>'s')::boolean and bb.b->>'id' is not null
   ),
   ht as (
     select case h.value->>'loai' when 'bo_tro_nhe' then 'sau_gio' else 'bo_tro' end, (h.value->>'id')::uuid, (h.value->>'ngay')::date,
@@ -425,7 +520,7 @@ begin
     'viec_den_han', (select count(*) from jsonb_array_elements(v_viec) e where e->>'tt' <> 'sap_toi'),
     'tu_luyen', v_tl,
     'tinh_at', now());
-end $$;
+end $function$;
 
 create or replace function public._mtt_ghi(p_hs uuid, p_mon text, p_tuan date)
 returns void
@@ -439,7 +534,7 @@ begin
   end if;
   v := public._mtt_tinh(p_hs, p_mon, p_tuan, null);
   if v is null then return; end if;
-  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161714): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
+  -- ⭐ KHOÁ KẾ HOẠCH tuần (mig 202611161844): lần đầu tính tờ SAU KHI LỚP CHỐT ⇒ ghi cứng nhóm · phần · mục tiêu tuần · số lần đo · danh sách việc
   if coalesce((v->>'chot')::boolean, false) and v->>'ke_hoach_at' is null then
     insert into mtt_ke_hoach (tuan, mon, hoc_sinh_id, nhom, viec)
     values (p_tuan, p_mon, p_hs,
@@ -619,3 +714,41 @@ end $$;
 revoke execute on function public._mtt_xep_hang(date, text) from public, anon, authenticated;
 revoke execute on function public._mtt_lam_moi(integer) from public, anon, authenticated;
 revoke execute on function public._mtt_doc(uuid, text, date, boolean) from public, anon, authenticated;
+
+
+-- ── 16/11: cột "Giáo trình x/y" của tab trung tâm đọc Giáo trình tuần (1-1 với giáo trình) ──
+-- Buổi thường của lớp trong tuần = buổi đã có dòng buoi_hoc + CA CHIẾU từ TKB chưa mở buổi (cùng nguồn _gtt_ca như _mtt_tinh mig 202611161754).
+-- "Có giáo trình" = có bản chép tài liệu ngày đó HOẶC có buổi kế hoạch (gtt_ca) ngày đó.
+create or replace function public._mtt_buoi_tuan(p_lop uuid, p_tuan date)
+returns table(ngay date)
+language sql stable security definer set search_path to 'public' as $$
+  select b.ngay from buoi_hoc b
+   where b.lop_id = p_lop and b.loai = 'thuong' and b.trang_thai <> 'huy' and b.ngay between p_tuan and p_tuan + 6
+  union all
+  select c.ngay from public._gtt_ca(array[p_lop], greatest(p_tuan, public._mtt_hom_nay()), p_tuan + 6) c
+   where c.buoi_hoc_id is null and not c.huy
+$$;
+revoke execute on function public._mtt_buoi_tuan(uuid, date) from public, anon, authenticated;
+
+-- fn_mtt_trung_tam: VÁ đúng 1 đoạn trên thân ĐANG CHẠY (giữ cổng quyền môn của mig 202611161701) — cùng cách vá của mig 202611131635.
+do $do$
+declare
+  d text; n text; c int;
+  cu text := replace($a$           (select count(*) from buoi_hoc b where b.lop_id = lk.id and b.loai = 'thuong' and b.trang_thai <> 'huy'
+             and b.ngay between v_t and v_t + 6)::int as so_buoi,
+           (select count(*) from buoi_hoc b where b.lop_id = lk.id and b.loai = 'thuong' and b.trang_thai <> 'huy'
+             and b.ngay between v_t and v_t + 6
+             and exists (select 1 from tai_lieu tl where tl.lop_id = lk.id and tl.ngay = b.ngay and tl.hoc_sinh_id is null
+                           and tl.loai in ('giao_trinh_buoi', 'et', 'btvn')))::int as so_buoi_co_tl,$a$, E'\r', '');
+  moi text := replace($a$           (select count(*) from public._mtt_buoi_tuan(lk.id, v_t))::int as so_buoi,
+           (select count(*) from public._mtt_buoi_tuan(lk.id, v_t) bt
+             where exists (select 1 from tai_lieu tl where tl.lop_id = lk.id and tl.ngay = bt.ngay and tl.hoc_sinh_id is null
+                             and tl.loai in ('giao_trinh_buoi', 'et', 'btvn'))
+                or exists (select 1 from gtt_ca g where g.lop_id = lk.id and g.ngay = bt.ngay))::int as so_buoi_co_tl,   /* 16/11: + buổi kế hoạch Giáo trình tuần */$a$, E'\r', '');
+begin
+  select replace(pg_get_functiondef('public.fn_mtt_trung_tam(text,text,date)'::regprocedure), E'\r', '') into d;
+  c := (length(d) - length(replace(d, cu, ''))) / length(cu);
+  if c <> 1 then raise exception 'fn_mtt_trung_tam đã đổi: thấy % chỗ đếm buổi / giáo trình, cần đúng 1', c; end if;
+  n := replace(d, cu, moi);
+  execute n;
+end $do$;
