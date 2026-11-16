@@ -27,7 +27,7 @@ import { KHOI_OPTIONS, DEFAULT_KHOI, duyetCauAuto, listDangOptions, type LyThuye
 import { CauModal } from './DangHub'
 import { DungSaiModal } from './DungSaiBank'
 import { LyThuyetModal } from './BanDo'
-import { MathText, LoiGiaiXem, inp } from './ui'
+import { MathText, GiaThietY, LoiGiaiXem, inp } from './ui'
 import KhopBanDoMoiTab from '../duyetloigiai/KhopBanDoMoiTab'
 import HinhLuyenChuaPhanTab from '../duyetloigiai/HinhLuyenChuaPhanTab'
 import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
@@ -1646,7 +1646,7 @@ function BaiYKho({ ys, onXoa, onDuyet, onSua }: { ys: KhoCauRow[]; onXoa: (r: Kh
                 {y.kho_chuan ? chip('bg-emerald-100 text-emerald-700', 'kho chuẩn') : y.da_duyet ? chip('bg-sky-100 text-sky-700', 'đã duyệt') : chip('bg-amber-100 text-amber-700', 'chưa duyệt')}
                 <ThaoTacCau r={y} onXoa={(ca) => onXoa(y, ca)} onDuyet={(d) => onDuyet(y, d)} onSua={() => onSua(y)} />
               </div>
-              {y.da_biet && <div className="mb-0.5 text-[13px] italic text-slate-500"><MathText>{y.da_biet}</MathText></div>}
+              <GiaThietY className="text-[15px] leading-relaxed">{y.da_biet}</GiaThietY>
               <div className="flex gap-2.5 text-[15px] leading-relaxed text-slate-800">
                 <b className="shrink-0 text-violet-700">{y.nhan_y})</b>
                 <div className="min-w-0 flex-1"><MathText>{y.cau_hoi_y ?? y.noi_dung}</MathText></div>

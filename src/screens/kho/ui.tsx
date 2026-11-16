@@ -321,6 +321,13 @@ export function MathText({ children, className, prefix, editable }: { children: 
 // ── TIẾNG ANH: chữ THƯỜNG, không công thức. KHÔNG dùng MathText cho câu Anh: MathText tự in đậm từ VIẾT HOA ("NOT", "TV"),
 // hiểu "$5 and $10" thành công thức và escape cả <u> (gạch chân là ĐỀ BÀI của câu phát âm). Ở đây: escape mọi thứ, chỉ
 // thả lại đúng <u>…</u>, xuống dòng → <br>. MathText giữ nguyên (dùng khắp app, kể cả trang in).
+// GIẢ THIẾT THÊM của một ý (cột da_biet — giả thiết dựng ở ý trước mà ý này dùng lại). Thùy 16/11: không ghi chữ "Đã biết",
+// chỉ TÔ NỀN để phân biệt giả thiết với câu hỏi (cùng tông xanh của dải lời dẫn = giả thiết chung của bài). Một chỗ dùng chung cho
+// thẻ kho bài nhiều ý · bộ chọn câu của builder Hình · khối câu của builder giáo trình.
+export function GiaThietY({ children, className }: { children: string | null | undefined; className?: string }) {
+  if (!children?.trim()) return null
+  return <div title="Giả thiết (dựng ở ý trước)" className={`mb-1 rounded border-l-[3px] border-teal-500 bg-teal-50 px-2 py-0.5 text-teal-900 ${className ?? ''}`}><MathText>{children.trim()}</MathText></div>
+}
 export function TextAnh({ children, className }: { children: string | null | undefined; className?: string }) {
   const html = esc((children ?? '').trim())
     .replace(/&lt;u&gt;/g, '<u class="decoration-2 underline-offset-2">').replace(/&lt;\/u&gt;/g, '</u>')
