@@ -81495,3 +81495,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Màn: khung bên phải, mỗi giáo trình có nút "✓ Dùng buổi kế tiếp — Buổi N · …" (hết thì nhắc + Buổi mới); gắn xong đọc lại nền để buổi kế tiếp dịch. Kiểm trên app (chỉ xem).
 - `_gtt_de_xuat` · `fn_gtt_nhan_de_xuat` (mig 1902) không còn ai gọi — chờ Thùy gật mới drop. Liên kết bù ở mig 1907 vẫn giữ (đúng việc trigger bước 5).
 - 19:20 Thùy "Xoá đi": mig `202611161920` drop `fn_gtt_nhan_de_xuat` + `_gtt_de_xuat` (không còn ai gọi — pg_proc + src/scripts). `fn_gtt_man_tuan` gọi thử sau khi xoá: chạy bình thường. check:kien-truc ✔.
+
+## 16/11 21:45 — Phiếu ET: ý của bài nhiều ý chỉ in "a)", bỏ "Câu n." đứng trước (Thùy: "t đã dặn ET chỉ hiện ý a ko hiện cái Câu 1 cơ mà ?")
+- **Sai ở đâu:** `ETPrintView.tsx` (khúc gom ≥2 ý cùng bài, làm 09/11) in từng ý là "Câu 1. a) …" — trong khi phiếu giáo trình (`PrintView.tsx`) vốn đã in chỉ "a) …". ET là chỗ lệch duy nhất.
+- **Sửa:** một dòng — nhãn của ý trên ET = `a)` (cùng kiểu chữ nhãn câu). Dòng lời dẫn vẫn mang dải số "Câu 1 – 3." để đối với bảng điểm (ý thứ t của khúc = Câu n + t). Không đổi cách đánh số, không đổi phiếu chấm / màn Chấm ET.
+- **Kiểm trên app** (dev, admin, mở trang in ET 7S2 · 16/11/2026 — 3 ý của một bài): nhãn trên phiếu = "Câu 1 – 3." · "a)" · "b)" · "c)"; dòng ý đọc được "a) Chứng minh △ABD=△ACD." `tsc` sạch ở file sửa · `check:kien-truc` ✔.
+- **Chưa đụng:** ET chỉ có MỘT ý của bài (không thành khúc) vẫn in như một câu thường "Câu n. <lời dẫn + câu hỏi>", không có nhãn a). Link PDF đã sinh trước đó của các ET cũ không tự đổi — phải sinh lại.

@@ -378,7 +378,9 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
               if (run.g === 0) return [{ key: c.ma_cau, cols, ...cauItemParts({ no: n, c, gv, cheDoHinh: cheDo(c) }) }]
               const cd = cheDo(c)
               // Hình–Học bài nhiều ý (Thùy 09/11 "ET phải gom ý lại"): ≥2 ý CÙNG BÀI liền nhau (sortETCaus đã xếp lúc lưu) ⇒
-              // lời dẫn + hình in 1 lần ở đầu, từng ý in "Câu n. b) …" — số câu vẫn 1 ý = 1 câu, khớp phiếu chấm / màn Chấm ET.
+              // lời dẫn + hình in 1 lần ở đầu (mang dải số "Câu n – m."), từng ý CHỈ in nhãn "a) …" — KHÔNG in "Câu n." trước ý
+              // (Thùy 16/11 nhắc lại: "ET chỉ hiện ý a, không hiện cái Câu 1"; phiếu giáo trình vốn đã in vậy). Số câu vẫn 1 ý = 1 câu:
+              // ý thứ t của khúc = Câu n + t trên bảng điểm / phiếu chấm / màn Chấm ET.
               const nhom = yCungBai(k.items, i)
               if (nhom) {
                 const dau = k.items[nhom.dau], cdDau = cheDo(dau)
@@ -394,7 +396,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
                   key: c.ma_cau, cols, hasImg: false,
                   content: (<>
                     {c.da_biet?.trim() && <div className="pv-math"><i><MathText>{c.da_biet.trim()}</MathText></i></div>}
-                    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n}.</span> <b>${c.nhan_y})</b> `}>{c.cau_hoi_y ?? ''}</MathText></div>
+                    <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${c.nhan_y})</span> `}>{c.cau_hoi_y ?? ''}</MathText></div>
                     {gv && <GvAnswer c={c} />}
                   </>),
                   lines: gv ? 0 : (lines[c.ma_cau] ?? (run.g === 1 ? DEFAULT_TLN_LINES : DEFAULT_TL_LINES)),
