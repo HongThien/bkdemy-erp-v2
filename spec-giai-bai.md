@@ -1010,7 +1010,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 ### Hình
 
 **(a) Công cụ được phép — whitelist theo bài** [08/10, 05/11]
-- Whitelist Hình K7 = lý thuyết các bài Hình 7 trên ERP (bản đồ Hình–Học K7 có chủ đề NCD00177 Đường thẳng song song · NCD00210 Tam giác bằng nhau · NCD00255 Thẳng hàng — cập nhật 16/11) (`hinh_hoc_bai_ly_thuyet` join `hinh_hoc_bai` where `khoi='7'`; dump: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`; nguồn sống là DB).
+- Whitelist Hình K7 = lý thuyết các bài Hình 7 trên ERP (bản đồ Hình–Học K7 có chủ đề NCD00177 Đường thẳng song song · NCD00210 Tam giác bằng nhau — cập nhật 16/11; ba bài Thẳng hàng HH00170–172 nằm TRONG NCD00210, cùng cấp bài với Tam giác cân HH00104) (`hinh_hoc_bai_ly_thuyet` join `hinh_hoc_bai` where `khoi='7'`; dump: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`; nguồn sống là DB).
 - Nền chung: lớp 6 + lớp 7 trước chương Tam giác bằng nhau: hai góc kề bù (tổng $180^\circ$), đối đỉnh (bằng nhau), góc bẹt; tia phân giác (định nghĩa); tia nằm giữa ⇒ $\widehat{xOz}+\widehat{zOy}=\widehat{xOy}$; so le trong / đồng vị / trong cùng phía; dấu hiệu nhận biết song song; tiên đề Euclid; tính chất hai đường song song; cùng song song / cùng vuông góc với đường thứ ba; định lí, GT–KL; hình bình hành là tứ giác có các cạnh đối song song; tổng ba góc $180^\circ$; tam giác vuông hai góc nhọn phụ nhau; góc ngoài bằng tổng hai góc trong không kề (HH00001); định nghĩa hai tam giác bằng nhau.
 
 | Bài | Được thêm | CẤM |
@@ -1022,7 +1022,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 | HH00104 tam giác cân – trung trực | + tam giác cân (định nghĩa, hai góc đáy, dấu hiệu), vuông cân (45°), đều (60°; dấu hiệu ba cạnh / ba góc / cân có góc 60°), trung trực (ĐỊNH NGHĨA + TÍNH CHẤT thuận) | chiều ĐẢO của trung trực (dù lý thuyết tài liệu có ghi); "trong tam giác cân phân giác / đường cao / trung tuyến trùng nhau"; Pytago, đồng dạng, hình bình hành, đường trung bình, lượng giác |
 
 - Chứng minh một đường là trung trực ⇒ dùng ĐỊNH NGHĨA (vuông góc tại trung điểm, qua tam giác bằng nhau), không chiều đảo. **Ngoại lệ duy nhất: ba bài Thẳng hàng HH00170–172** (xem dưới bảng) [16/11 · Thùy].
-- **Chuyên đề Thẳng hàng — chủ đề NCD00255, ba bài HH00170 · HH00171 · HH00172** [16/11 · Thùy chốt; nội dung từ tài liệu "thẳng hàng.pdf" của Thùy]:
+- **Chuyên đề Thẳng hàng — ba bài HH00170 · HH00171 · HH00172 trong chủ đề Tam giác bằng nhau (NCD00210), cùng cấp bài với Tam giác cân** [16/11 · Thùy chốt; nội dung từ tài liệu "thẳng hàng.pdf" của Thùy]:
 
   | Bài | Được thêm | CẤM |
   |---|---|---|

@@ -81238,3 +81238,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đo hiện trạng:** 30 ngày có 225/261 lượt gán buổi giáo trình được tạo đúng ngày dạy ⇒ trước ngày dạy hệ không biết học dạng gì (Thùy: đang chốt trên Google Sheet, họp thứ Sáu cho T2–CN tuần sau). Buổi thường tương lai không có dòng `buoi_hoc` (ca suy từ `thoi_khoa_bieu`, mỗi lớp ≤ 1 ca/ngày, 0 trùng). 14 ngày: 4/165 lượt gán dùng giáo trình chưa gắn lớp.
 - **Quyết định thiết kế (CTO):** khung dạng chỉ lưu trong builder (dưới nút buổi); bảng mới `gtt_ca` chỉ giữ liên kết 1-1 giữa ca `(lop_id, ngay)` và `buoi_id` ⇒ đổi bên này thì bên kia đổi, không có bản sao. Duyệt của trưởng bộ môn ghi vào sổ chỉ thêm `gtt_duyet`, có bản chụp khung; sau duyệt vẫn sửa được, có dấu "sửa sau duyệt". Không gộp với `mtt_lop_chot`; `_mtt_nhom_buoi` sẽ đọc khung kế hoạch khi lớp chưa có bản chép.
 - **Chờ Thùy:** hạn H1/H2 · trễ hạn có tính gậy không · duyệt spec.
+
+## 16/11 (tiếp 3) — Sửa: Thẳng hàng KHÔNG phải chủ đề mới (Thùy)
+- **Sai:** 16/11 mình tạo chủ đề mới NCD00255 "Thẳng hàng" cho 3 bài. Thùy: Thẳng hàng nằm trong "Tam giác bằng nhau", chỉ là thêm bài mới, cùng cấp bài với Tam giác cân.
+- **Sửa:** `scripts/hinh-k7-thang-hang-ve-tgbn.mjs --ghi` — HH00170/171/172 `chu_de_id` → NCD00210 (thứ tự 22–24 sau HH00104). Chủ đề NCD00255 nay RỖNG, không tham chiếu từ đâu, **chưa xoá** (chờ Thùy gật theo Luật xoá). Spec `spec-giai-bai.md` đã sửa 2 chỗ (dòng whitelist + bảng 3 bài).
+- **Thùy chỉnh cách hiểu đánh giá (chưa làm):** ý a–b của một bài tính cho Tam giác cân, ý c tính cho Thẳng hàng, nhưng ở bài Thẳng hàng phải HIỆN ĐỦ a–b–c (thiếu a–b thì khó nghĩ ý c). Hiện tại bài_y mới ở 3 bài thẳng hàng chỉ có MỖI ý c ⇒ chưa đúng ý. Đề xuất cách sửa ở lượt trả lời; chờ Thùy chọn.
