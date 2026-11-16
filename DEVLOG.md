@@ -81187,3 +81187,4 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ## 16/11 — Bản đồ Hình–Học K7: thêm chủ đề "Thẳng hàng" + 3 bài (Thùy)
 - `scripts/hinh-k7-them-thang-hang.mjs`: chủ đề NCD00254 "Thẳng hàng" (khoi 7, nhanh 'hinh', thứ tự 5) + 3 bài `hinh_hoc_bai`: HH00167 Phương pháp cùng đường · HH00168 Phương pháp cộng góc · HH00169 Dùng tiên đề Euclide. Làm đúng như `createHinhHocBai` (da_duyet=false, ma_dang tự sinh). Chưa có lý thuyết/ví dụ/câu.
+- Đính chính mã (sequence không lùi sau dry-run): thực tế ghi là chủ đề **NCD00255**, bài **HH00170 / HH00171 / HH00172** (không phải NCD00254 / HH00167–169 ở dòng trên).
