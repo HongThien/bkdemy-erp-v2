@@ -81494,3 +81494,4 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Mig `202611161916_giao_trinh_tuan_buoi_ke_tiep`: `_gtt_ke_tiep(giáo trình)` = buổi đầu tiên sau buổi đã dùng cuối (gán ngày dạy / gắn ca); `fn_gtt_man_tuan` bỏ `de_xuat`, thêm `ke_tiep` cho mỗi giáo trình của lớp. Đo: khối 8 · 9 · 6 = 90 · 72 · 66 ms. Vd 8A2: Đại → Buổi 2, Hình → Buổi 4; 8S1: Đại → Buổi 4, Hình hết buổi soạn sẵn.
 - Màn: khung bên phải, mỗi giáo trình có nút "✓ Dùng buổi kế tiếp — Buổi N · …" (hết thì nhắc + Buổi mới); gắn xong đọc lại nền để buổi kế tiếp dịch. Kiểm trên app (chỉ xem).
 - `_gtt_de_xuat` · `fn_gtt_nhan_de_xuat` (mig 1902) không còn ai gọi — chờ Thùy gật mới drop. Liên kết bù ở mig 1907 vẫn giữ (đúng việc trigger bước 5).
+- 19:20 Thùy "Xoá đi": mig `202611161920` drop `fn_gtt_nhan_de_xuat` + `_gtt_de_xuat` (không còn ai gọi — pg_proc + src/scripts). `fn_gtt_man_tuan` gọi thử sau khi xoá: chạy bình thường. check:kien-truc ✔.
