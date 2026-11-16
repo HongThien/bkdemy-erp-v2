@@ -1,6 +1,6 @@
 # Spec — GIÁO TRÌNH TUẦN (kế hoạch dạy tuần tới của từng ca học)
 
-> **Trạng thái: BẢN NHÁP chờ Thùy duyệt (16/11/2026).** Chưa có migration, chưa có màn.
+> **Trạng thái: Thùy DUYỆT 16/11/2026.** Bước 1 (DB) ĐÃ ÁP: mig `202611161716_giao_trinh_tuan` + `202611161722_giao_trinh_tuan_mot_cong`. Chưa có màn (bước 2).
 > Nguồn: Thùy trả lời 12 câu (phiên 16/11) · đọc `spec-kien-truc.md` (§0b, §9, §12) · `spec-muc-tieu-tuan.md` · dữ liệu thật ngày 16/11.
 
 ---
@@ -93,11 +93,14 @@ Xoá buổi trong builder ⇒ liên kết mất theo (cascade), ô trở về "c
 
 | Hàm | Việc |
 |---|---|
-| `fn_gtt_man_tuan(mon, khoi, tuan)` | MỘT lượt gọi cho cả lưới: ca suy từ TKB (cùng logic `fn_phong_lich`, dùng lại, không chép) + liên kết + tên nhóm/dạng + trạng thái duyệt + cờ (ca trống · sửa sau duyệt · ca mồ côi) |
-| `fn_gtt_chon_buoi(lop, ngay, buoi_id \| null)` | gắn ca với buổi có sẵn, hoặc tạo buổi mới cuối giáo trình của lớp rồi gắn |
-| khung nhóm/dạng | **dùng lại hàm builder** (`fn_tl_bdm_dat_buoi` / `fn_tl_hinh_*`), chế độ chỉ khung, không tự bốc câu. Thiếu chế độ đó ⇒ thêm tham số, không viết hàm thứ hai |
-| `fn_gtt_gui` · `fn_gtt_duyet` · `fn_gtt_tra_lai` | ghi `gtt_duyet`; `duyet` chụp khung trong cùng giao dịch |
-| luồng gán ngày dạy | đọc `gtt_ca` để chọn sẵn; gán khác ⇒ cập nhật `gtt_ca` trong cùng giao dịch |
+| `fn_gtt_man_tuan(mon, khoi, tuan)` | MỘT lượt gọi cho cả lưới (jsonb): lớp · giáo trình của lớp · ca · buổi đã gắn (tiêu đề, số thứ tự, khung nhóm › dạng) · đã gán ngày dạy chưa / khớp không · trạng thái duyệt + 10 dòng sổ · cờ `sua_sau_duyet` · `mo_coi`. Ca suy bằng `_gtt_ca(lớp[], từ, đến)` — cùng luật phần 1–2 của `fn_phong_lich` nhưng chỉ cho các lớp được hỏi (K2; `fn_phong_lich` tính cả trung tâm) |
+| `fn_gtt_chon_buoi(lop, ngay, buoi_id \| null)` | gắn ca với buổi CÓ SẴN của giáo trình lớp; `null` = bỏ gắn. Buổi đã gắn ca khác ⇒ báo lỗi (1-1) |
+| `fn_gtt_dat_khung(lop, ngay, chon, tai_lieu?)` | đặt khung. Ca chưa gắn buổi ⇒ tạo buổi mới cuối giáo trình `tai_lieu` rồi gắn, cùng giao dịch (không đẻ buổi rỗng). Ghi bằng **đúng hàm builder `fn_tl_bdm_dat_buoi`** (cùng luật kiểm, cùng gợi ý câu như khi GV chọn nhóm trong builder — giữ nguyên để hai cửa sổ hành xử y hệt). Giáo trình Hình ⇒ báo "mở builder Hình" (bước 3) |
+| `fn_gtt_chuyen(mon, khoi, tuan, 'gui' \| 'duyet' \| 'tra_lai', ghi_chu?)` | ghi `gtt_duyet`; `duyet` chụp khung trong cùng giao dịch; trả lại phải có lý do; trả cả màn tuần |
+| luồng gán ngày dạy | (bước 5) đọc `gtt_ca` để chọn sẵn; gán khác ⇒ cập nhật `gtt_ca` trong cùng giao dịch |
+
+Cổng: `_gtt_kiem_pham_vi` (= `_trong_pham_vi`: trưởng/phó khối · trưởng bộ môn · QLCL toàn hệ) cho mọi hàm; duyệt / trả lại thêm `_gtt_la_tbm` (trưởng bộ môn của môn · QLCL toàn hệ).
+Hàm nội bộ `_gtt_*` không cấp cho client. Đo 16/11 (vai Tạ Quốc Cường / Đào Xuân Thùy, giao dịch rollback): đọc cả khối 9 (6 lớp) ~65 ms gồm ~47 ms đường truyền; đặt khung tạo buổi mới ~280 ms (gợi ý câu của builder).
 
 ## 6. Nối với Mục tiêu tuần
 
