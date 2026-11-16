@@ -186,6 +186,14 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 ### 4.5 Vòng nợ
 - Ở nhà ôn (không tính mastery) → **test sau giờ ở trung tâm** (lần đo chính thức). Nợ trên tờ và case bổ trợ là **một danh sách**; nợ chưa được chọn ⇒ "đang xếp hàng". Câu test khác câu đã ôn.
+- **Phần 2 chỉ lấy lượt chốt bổ trợ duyệt TRONG tuần của tờ** (cùng luật sau giờ, mig `1614`): thứ Hai trước buổi chốt, Phần 2 rỗng — không kéo nợ tuần cũ.
+
+### 4.6 Nháp · Công bố · học theo dạng (Thùy 16/11)
+- **Thứ Hai hệ dựng NHÁP cho mọi lớp** (đọc Giáo trình tuần + bổ trợ, tự cập nhật khi sửa). Nháp chỉ nhân sự thấy, không xếp hạng, không vào sổ. **Trưởng khối trở lên xem theo từng lớp** (tên lớp ⇒ cả lớp ⇒ tờ từng em).
+- **Công bố** (nút theo lớp) = khoá mục tiêu + đưa lên app HS / PH. Lớp còn đề xuất bổ trợ chưa duyệt ⇒ hệ hỏi lại trước khi công bố.
+- **Mỗi nhóm kèm DẠNG của tuần** (cùng nguồn câu với nhóm: buổi kế hoạch / bản chép / ET · BTVN trên app / case bổ trợ yếu). App HS bấm nhóm ⇒ danh sách dạng ⇒ bấm dạng ⇒
+  **màn dạng có sẵn của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test) — dẫn tới màn sẵn có, không dựng màn mới. App PH hiện tên dạng.
+- **Dạng lớp CHƯA học tới thì chưa luyện được** (luật 14/10 `_dang_da_hoc_ok`, Thùy giữ 16/11: muốn luyện trước thì vào tính năng riêng); lý thuyết vẫn đọc được.
 
 ---
 
