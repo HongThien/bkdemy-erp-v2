@@ -44,6 +44,8 @@ const LUYEN = {
   // câu HGT (hgt_cau_hoi) — chỉ hình ĐỀ, không đụng hình lời giải (Thùy 08/11, vẽ lại hình vectơ)
   hgt: { bang: 'hgt_cau_hoi', khoa: 'ma_cau', mau: /^T\d+$/, song: ' and xoa_at is null', cot: { chung: ['anh_de'], de: ['anh_de'] }, bump: '' },
   hly: { bang: 'hinh_y', khoa: 'ma_y', mau: /^HLY\d+$/, song: '', cot: { chung: ['anh_de'] }, bump: ', updated_at = now()' },
+  // bài nhiều ý của Hình–HỌC (hinh_hoc_bai_y, mã HHB…) — hình ĐỀ gắn vào BÀI (trigger trg_hh_bai_y_lan lan sang mọi ý; ghi thẳng anh_de của ý sẽ bị trg_a_hh_y_ghep ghi đè) — Thùy 16/11
+  baiy: { bang: 'hinh_hoc_bai_y', khoa: 'ma_bai_y', mau: /^HHB\d+$/, song: ' and xoa_at is null', cot: { chung: ['anh_de'], de: ['anh_de'] }, bump: ', updated_at = now()' },
 }
 const KIEU = { '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' }
 
