@@ -1,0 +1,23 @@
+{
+ "HHC012952": { "bo": "Bài đọc hình (\"Cho hình vẽ bên\"): M, N nằm trên hình của bài, không cần nhắc lại." },
+ "HHC018319": { "bo": "Ý b tự nêu lại \"hai tiếp tuyến AM, BM\"; A, B nằm trên hình của bài." },
+ "HHC017843": { "bo": "A, B là hai vị trí của con lắc chỉ có trên hình của bài — không viết lời thay hình khi chưa xem hình. Chờ người xem." },
+ "HHC017325": { "da_biet": "$BD$ đi qua trung điểm $O$ của $AM$ (ý b)." },
+ "HHC017326": { "da_biet": "$BD$ đi qua trung điểm $O$ của $AM$ (ý b).\n$BD$ cắt $AC$ tại $I$ (ý c)." },
+ "HHC017637": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $B$, $D$, $C$, $E$ (ý a)." },
+ "HHC017755": { "da_biet": "Gọi $K$ là điểm đối xứng của $H$ qua $I$ (ý a).\n$O$ là tâm của đường tròn đi qua bốn điểm $A$, $B$, $K$, $C$ (ý b)." },
+ "HHC017788": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $A$, $B$, $K$, $C$ (ý b)." },
+ "HHC017789": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $A$, $B$, $K$, $C$ (ý b)." },
+ "HHC017797": { "da_biet": "$M$ là tâm của đường tròn đi qua bốn điểm $A$, $E$, $H$, $D$ (ý a).\nGọi $I$ là trung điểm của cạnh $BC$ (ý b)." },
+ "HHC017817": { "da_biet": "$M$ là tâm của đường tròn đi qua bốn điểm $B$, $C$, $E$, $F$ (ý a).\nGọi $EF$ cắt $BC$ tại $K$ (ý c)." },
+ "HHC017820": { "da_biet": "$I$ là tâm của đường tròn đi qua bốn điểm $A$, $E$, $H$, $F$ (ý a)." },
+ "HHC017934": { "da_biet": "$OH$ là đường cao của tam giác $AOB$ (ý a)." },
+ "HHC017935": { "da_biet": "$OH$ là đường cao của tam giác $AOB$ (ý a)." },
+ "HHC017937": { "da_biet": "Đường tròn $(O;5\\text{ cm})$ cắt $BC$ tại hai điểm $M$, $N$ (ý a)." },
+ "HHC017951": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $A$, $E$, $H$, $F$ (ý a)." },
+ "HHC018002": { "da_biet": "$CD$ là tiếp tuyến của đường tròn $(O)$, $H$ là tiếp điểm (ý b)." },
+ "HHC018003": { "da_biet": "$CD$ là tiếp tuyến của đường tròn $(O)$, $H$ là tiếp điểm (ý b)." },
+ "HHC018080": { "da_biet": "$I$ là tâm của đường tròn đi qua bốn điểm $B$, $E$, $D$, $C$ (ý a)." },
+ "HHC018538": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $B$, $E$, $D$, $C$ (ý a)." },
+ "HHC018550": { "da_biet": "$O$ là tâm của đường tròn đi qua bốn điểm $B$, $E$, $D$, $C$ (ý a)." }
+}
