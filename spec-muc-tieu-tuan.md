@@ -408,7 +408,11 @@ Không đo hiện trạng trước khi chạy (Thùy 13/11): trước đây khô
    mở danh sách lớp chưa chốt thấy trống); xếp hạng + sổ kết quả tuần chỉ lấy tờ đã công bố; nút đổi tên "Công bố" (cảnh báo nếu lớp còn đề xuất bổ trợ chưa duyệt).
    **Mỗi nhóm kèm DẠNG của tuần** (`_mtt_dang_nhom`: câu ET / BTVN / giáo trình của buổi trong cửa sổ + dạng case bổ trợ yếu đang mở) — app HS bấm nhóm ⇒ danh sách dạng ⇒ bấm dạng
    ⇒ **màn dạng của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test — Thùy chọn 16/11: dẫn tới màn có sẵn, không dựng màn mới), Quay lại về tờ mục tiêu. Nhóm chưa thấy dạng
-   (tài liệu chưa thành bài trên hệ) ⇒ nút chung như cũ. App PH hiện tên dạng. Lưu ý: Luyện tập bị chặn với dạng lớp CHƯA học tới (`_dang_da_hoc_ok`, luật 14/10) — lý thuyết vẫn đọc được.
+   (buổi chưa có tài liệu trên hệ) ⇒ nút chung như cũ. App PH hiện tên dạng. Lưu ý: Luyện tập bị chặn với dạng lớp CHƯA học tới (`_dang_da_hoc_ok`, luật 14/10) — lý thuyết vẫn đọc được.
+10. **(16/11) SỬA LỖI quy câu → nhóm (có từ 13/11):** `_do_o_quy` trả **ô đo = mã DẠNG BÀI** (NDB…; Hình–Học: mã bài), không phải nhóm; mastery gom ô → nhóm
+   qua `dai_bdm_dang_bai.nhom_id`. Tờ cũ dùng thẳng ô làm nhóm ở Phần 1 (buổi), nhóm từ case bổ trợ yếu và nhóm của lượt tự luyện ⇒ % nhóm không khớp ("Chưa đo"), tên hiện mã.
+   Phần 2 từ đề xuất bổ trợ + số đầu tuần đã đúng. Sửa bằng `_mtt_nhom_cua_o` (cùng mig 202611161632). **Sổ kết quả tuần 09–15/11 (`mtt_chot`, chụp 00:00 16/11) mang lỗi này và
+   bất biến** — muốn chụp lại phải xoá dòng sổ tuần đó (Luật xoá, chờ Thùy). Danh sách dạng đọc thẳng câu trong TÀI LIỆU đã chốt của buổi (+ câu ET/BTVN trên app, + dạng case yếu).
 8. **(16/11) Danh sách cả lớp** — mig `202611161608_muc_tieu_tuan_ds_lop.sql` (`fn_mtt_ds_lop`): bấm tên lớp trong tab ⇒ bảng từng em, bấm em ⇒ tờ của em.
 
 **Chưa làm (cần máy công ty / DB thật):**

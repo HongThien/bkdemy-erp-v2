@@ -42,9 +42,38 @@ alter table public.mtt_ke_hoach enable row level security;
 revoke all on public.mtt_ke_hoach from anon, authenticated;
 
 
--- dạng (mã dạng của câu — cùng mã Học từ đầu / tự luyện dùng: dang_chinh = ma_dang) của tuần, gom theo nhóm:
---   Phần 1 = câu ET / BTVN / giáo trình của các buổi trong CỬA SỔ tuần (gami_session_problems + bai_test của lớp ngày đó);
---   Phần 2 = dạng của case bổ trợ yếu còn mở. Trả {ma_nhom: [{ma, ten}]}. Chi phí C2 (1 em, vài buổi).
+-- ── SỬA LỖI 16/11 (có từ mig 202611131000): _do_o_quy trả "Ô ĐO" = mã DẠNG BÀI của bản đồ mới (NDB…; Hình–Học = mã bài), KHÔNG phải nhóm.
+--    Mastery gom ô → nhóm bằng dai_bdm_dang_bai.nhom_id (Hình–Học: bài = nhóm) — _mastery_lan_d. Tờ cũ dùng thẳng ô làm "nhóm" ⇒ Phần 1 (buổi học),
+--    nhóm từ case bổ trợ yếu và nhóm của lượt tự luyện mang mã DẠNG: tra % nhóm không khớp (hiện "Chưa đo"), tên hiện mã. Phần 2 từ đề xuất bổ trợ
+--    (mã nhóm sẵn) và số đầu tuần (đọc _mastery_lan_d) đã đúng. Sửa: mọi chỗ quy câu → nhóm đi qua _mtt_nhom_cua_o, y như mastery.
+create or replace function public._mtt_nhom_cua_o(p_o text) returns text
+language sql stable security definer set search_path to 'public' as $$
+  select coalesce((select hh.ma_bai from hinh_hoc_bai hh where hh.ma_bai = p_o),
+                  (select db.nhom_id from dai_bdm_dang_bai db where db.id = p_o))
+$$;
+revoke execute on function public._mtt_nhom_cua_o(text) from public, anon, authenticated;
+
+create or replace function public._mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)
+returns text[]
+language sql stable security definer set search_path to 'public' as $$
+  with c as (
+    select distinct coalesce(tc.ma_cau, '') as kc, '' as kd
+      from tai_lieu t join tai_lieu_phan tp on tp.tai_lieu_id = t.id join tai_lieu_cau tc on tc.phan_id = tp.id
+     where t.lop_id = p_lop and t.ngay = p_ngay and t.loai in ('giao_trinh_buoi', 'et', 'btvn') and t.hoc_sinh_id is null
+       and tc.ma_cau is not null
+    union
+    select distinct coalesce(sp.ma_cau, ''), coalesce(sp.ma_dang, '')
+      from gami_session_problems sp
+     where sp.buoi_hoc_id = p_buoi and sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null
+  )
+  select coalesce(array_agg(distinct n) filter (where n is not null), '{}')
+    from (select public._mtt_nhom_cua_o(public._do_o_quy(public._mastery_bdm_bat(), false, c.kc, c.kd)) as n from c) x
+$$;
+
+-- DẠNG (ô đo — NDB…, Hình–Học: bài) của tuần, gom theo NHÓM. Cùng nguồn với danh sách nhóm của tờ:
+--   Phần 1 = câu trong TÀI LIỆU đã chốt của buổi trong cửa sổ (giáo trình buổi · ET · BTVN) + câu ET/BTVN đã giao trên app của buổi đó;
+--   Phần 2 = dạng của case bổ trợ yếu còn mở. Mã dạng = mã Học từ đầu / Sổ tay / tự luyện dùng (_kho_nhanh_cua_dang: NDB ⇒ nhánh 'bdm').
+--   Trả {ma_nhom: [{ma, ten}]}. Chi phí C2 (1 em, vài buổi).
 create or replace function public._mtt_dang_nhom(p_hs uuid, p_mon text, p_buoi jsonb, p_den timestamptz, p_bdm boolean)
 returns jsonb
 language sql stable security definer set search_path to 'public' as $$
@@ -54,23 +83,28 @@ language sql stable security definer set search_path to 'public' as $$
      where (e->>'s')::boolean
   ),
   d as (
-    select coalesce(sp.ma_cau, '') as ma_cau, sp.ma_dang
-      from b join gami_session_problems sp on sp.buoi_hoc_id = b.id
-     where sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null and sp.ma_dang is not null
+    select tc.ma_cau as kc, '' as kd
+      from b join tai_lieu t on t.lop_id = b.lop_id and t.ngay = b.ngay
+      join tai_lieu_phan tp on tp.tai_lieu_id = t.id join tai_lieu_cau tc on tc.phan_id = tp.id
+     where t.loai in ('giao_trinh_buoi', 'et', 'btvn') and t.hoc_sinh_id is null and tc.ma_cau is not null
     union
-    select coalesce(btc.ma_cau, ''), btc.ma_dang
-      from b join bai_test bt on bt.lop_id = b.lop_id and bt.ngay = b.ngay
-      join bai_test_cau btc on btc.bai_test_id = bt.id
-     where bt.loai in ('giao_trinh', 'et', 'btvn') and (bt.hoc_sinh_id is null or bt.hoc_sinh_id = p_hs) and btc.ma_dang is not null
+    select coalesce(sp.ma_cau, ''), coalesce(sp.ma_dang, '')
+      from b join gami_session_problems sp on sp.buoi_hoc_id = b.id
+     where sp.phase in ('et', 'btvn') and sp.hoc_sinh_id is null
     union
     select '', yd.ma_dang
       from bo_tro_yeu y join bo_tro_yeu_dang yd on yd.bo_tro_yeu_id = y.id
      where y.hoc_sinh_id = p_hs and y.mon = p_mon and y.trang_thai in ('dang_xu', 'nhe_mo') and yd.dong_at is null and y.created_at < p_den
   ),
-  q as (select distinct public._do_o_quy(p_bdm, false, d.ma_cau, d.ma_dang) as nhom, d.ma_dang from d),
+  o as (select distinct public._do_o_quy(p_bdm, false, d.kc, d.kd) as o from d),
+  q as (select o.o, public._mtt_nhom_cua_o(o.o) as nhom from o where o.o is not null),
   g as (
-    select q.nhom, jsonb_agg(jsonb_build_object('ma', q.ma_dang, 'ten', coalesce(public._kho_ten_dang(p_mon, q.ma_dang), q.ma_dang)) order by q.ma_dang) as ds
-      from q where q.nhom is not null group by q.nhom
+    select q.nhom,
+           jsonb_agg(jsonb_build_object('ma', q.o, 'ten', coalesce(db.ten, hh.ten_bai, public._kho_ten_dang(p_mon, q.o), q.o))
+                     order by db.thu_tu nulls last, q.o) as ds
+      from q left join dai_bdm_dang_bai db on db.id = q.o left join hinh_hoc_bai hh on hh.ma_bai = q.o
+     where q.nhom is not null
+     group by q.nhom
   )
   select coalesce(jsonb_object_agg(g.nhom, g.ds), '{}'::jsonb) from g
 $$;
@@ -174,7 +208,7 @@ begin
                      and d2.tao_at < v_den order by d2.tao_at desc limit 1)
        and coalesce(d.duyet_at, d.tao_at) >= public._mtt_moc(v_tu) and coalesce(d.duyet_at, d.tao_at) < v_den   /* 16/11: lượt chốt chỉ hiệu lực trong tuần duyệt */
     union all
-    select public._do_o_quy(v_bdm, false, '', yd.ma_dang)
+    select public._mtt_nhom_cua_o(public._do_o_quy(v_bdm, false, '', yd.ma_dang))   /* 16/11: ô → nhóm */
       from bo_tro_yeu y join bo_tro_yeu_dang yd on yd.bo_tro_yeu_id = y.id
      where y.hoc_sinh_id = p_hs and y.mon = p_mon and y.trang_thai in ('dang_xu', 'nhe_mo')
        and yd.dong_at is null and y.created_at < v_den
@@ -358,7 +392,7 @@ begin
   select jsonb_build_object('so_cau', count(*), 'so_luot', count(distinct bl.id),
            'pct', case when count(*) > 0 then round(100 * avg(case blc.verdict when 'correct' then 1.0 when 'partial' then 0.5 else 0 end))::int end,
            'nhom', coalesce((select jsonb_agg(distinct public._mtt_ten_nhom(q.n)) from (
-                     select public._do_o_quy(v_bdm, false, coalesce(btc2.ma_cau, ''), coalesce(btc2.ma_dang, '')) as n
+                     select public._mtt_nhom_cua_o(public._do_o_quy(v_bdm, false, coalesce(btc2.ma_cau, ''), coalesce(btc2.ma_dang, ''))) as n   /* 16/11: ô → nhóm */
                        from bai_lam bl2 join bai_test bt2 on bt2.id = bl2.bai_test_id
                        join bai_lam_cau blc2 on blc2.bai_lam_id = bl2.id join bai_test_cau btc2 on btc2.id = blc2.bai_test_cau_id
                       where bl2.hoc_sinh_id = p_hs and bt2.loai = 'tu_luyen' and bt2.mon = p_mon and blc2.verdict is not null
