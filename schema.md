@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-599 bảng · 42 view · 0 enum · 453 trigger · 1961 function
+599 bảng · 42 view · 0 enum · 453 trigger · 1962 function
 
 ## _app_secrets
 
@@ -13181,6 +13181,7 @@ WITH luot AS (
 - `fn_ta_cong_duoc_duyet(p_tu date, p_den date DEFAULT NULL::date)` → uuid[]
 - `fn_ta_cong_lich_su(p_id uuid)` → TABLE(luc timestamp with time zone, nguoi text, viec text, chi_tiet text)
 - `fn_ta_cong_nguoi_duyet(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(id uuid, nguoi text, luc timestamp with time zone)
+- `fn_ta_cong_si_so(p_tu date, p_den date DEFAULT NULL::date)` → TABLE(viec_id uuid, hen integer, co_mat integer, vang integer, chua_dd integer, ten_vang text)
 - `fn_ta_cong_thang(p_ns uuid, p_ky date)` → TABLE(id uuid, ngay date, loai_viec text, ten_loai text, ten_lop text, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, gio numeric, hoc_sinh text, ghi_chu text, nguon text, trang_thai text, ly_do_duyet text)
 - `fn_ta_dashboard(p_ym text)` → jsonb
 - `fn_ta_dat_don_gia(p_ma text, p_gia numeric, p_hieu_luc_tu date, p_ten text DEFAULT NULL::text, p_si_tu integer DEFAULT NULL::integer, p_si_den integer DEFAULT NULL::integer, p_ghi_chu text DEFAULT ''::text)` → uuid
