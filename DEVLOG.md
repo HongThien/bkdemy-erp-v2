@@ -81298,3 +81298,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đề xuất (chờ Thùy gật, chưa làm):** sửa CTE `cap` của `_mastery_luot_do_quy` thành "đường nhanh theo tập + phần còn lại qua `_do_o_quy`" (không đổi hàm quy cũ, không đổi chữ ký).
   Phép thử ĐẦY ĐỦ làm được vì kết quả quy chỉ phụ thuộc cặp: lấy MỌI cặp (câu, mã chép) có trong lịch sử của cả hệ, so đường mới với `_do_o_quy` từng cặp — chạy sau 22:00 theo lô (ước ~1 ms mỗi cặp), lệch 1 cặp là không áp. Sau đó so `fn_tong_quan_hs` + ô mastery cũ–mới trên một mẫu HS.
   Việc tách riêng, chưa đề xuất làm: Report phụ huynh gọi 15 lượt song song cho một lớp (K11) · tháng đã qua thì tổng quan gần như bất biến, có thể chốt sổ (K6).
+
+## 16/11 (tiếp 5) — Vẽ 5 hình cho ví dụ 3 bài Thẳng hàng (Thùy: "trong file của t có hình rồi")
+- `scripts/anh/ve_hinh_k7_thang_hang.mjs` → `kho-rules/hinh/k7-thang-hang/hinh/HH00170_vd1|vd2, HH00171_vd1|vd2, HH00172_vd1` (png + svg). Dựng theo hình trong PDF, toạ độ kiểm 17 phép, chỉ đánh dấu giả thiết, KHÔNG nối sẵn 3 điểm phải chứng minh (PDF có nét đứt nối — bỏ).
+- CHƯA gắn vào DB: nội dung ví dụ `hinh_hoc_bai.vi_du` là text (`##VD`), spec-format-noidung §5 nói lý thuyết không chứa hình ⇒ không có chỗ gắn hình. Hình chỉ gắn được khi ví dụ là CÂU của kho trên lớp (`hinh_hoc_cau_lop`, `anh_de`/`anh_dap_an`). Chờ Thùy chọn.
