@@ -81188,3 +81188,21 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ## 16/11 — Bản đồ Hình–Học K7: thêm chủ đề "Thẳng hàng" + 3 bài (Thùy)
 - `scripts/hinh-k7-them-thang-hang.mjs`: chủ đề NCD00254 "Thẳng hàng" (khoi 7, nhanh 'hinh', thứ tự 5) + 3 bài `hinh_hoc_bai`: HH00167 Phương pháp cùng đường · HH00168 Phương pháp cộng góc · HH00169 Dùng tiên đề Euclide. Làm đúng như `createHinhHocBai` (da_duyet=false, ma_dang tự sinh). Chưa có lý thuyết/ví dụ/câu.
 - Đính chính mã (sequence không lùi sau dry-run): thực tế ghi là chủ đề **NCD00255**, bài **HH00170 / HH00171 / HH00172** (không phải NCD00254 / HH00167–169 ở dòng trên).
+
+## 16/11 16:14 — Sau giờ: lượt chốt chỉ có hiệu lực trong tuần duyệt (mig 202611161614 ĐÃ ÁP)
+- Thùy: "hết chủ nhật reset, thứ 2 phải chờ chốt mới". fn_btnhe_cho / fn_btnhe_lop_cho / fn_btnhe_hs_duyet thêm duyet_at >= _btnhe_dau_tuan(). Sáng 16/11: 52 em / 19 lớp chốt tuần trước → 0; duyệt lại 1 em ⇒ hiện đúng.
+- Không đụng _btnhe_dang_chot (in cho ca đã tạo), _mtt_tinh (đã lọc tuần), chấm công. Ca 3A1 16/11 (3 em, tạo 13/11 từ chốt cũ) để Thùy quyết. check:kien-truc K14 +1 không do mig này.
+
+### 16/11 16:20 — [Duyệt công TA] Sĩ số ca bổ trợ trên màn duyệt (mig 202611161613 + 1615 ĐÃ ÁP)
+- Thùy: chấm công ca bổ trợ cần thấy số HS, vì có ca em hẹn mà không đến. fn_ta_cong_si_so(từ,đến): mỗi việc bổ trợ nối được ca trực/buổi (ca_bo_tro_id · buổi→ca · định kì chưa gắn ca ⇒ ca duy nhất TA trực hôm đó) ⇒ hẹn/có mặt/vắng/chưa điểm danh + tên em vắng, đếm từ buoi_hoc_hs (cùng nguồn fn_ca_bo_tro_ngay). Ca nối được mà 0 em ⇒ hiện 0. 01–16/11: 93/125 việc bổ trợ có số (38 ca 0 em hẹn, 9 việc có em vắng); 32 việc chỉ ghi tên HS bằng chữ ⇒ không đếm được. 47 ms.
+- Màn: nhãn 👥 có mặt/hẹn cạnh tên việc (đỏ: có vắng / 0 em; cam: chưa điểm danh), rê chuột xem tên em vắng. Mig 1615 viết cổng tường minh cho check:kien-truc K14.
+
+## 16/11 16:17 — Sau giờ: reset thứ Hai (mig 202611161617 ĐÃ ÁP + chạy tay tuần 09–15/11)
+- Thùy: thứ Hai huỷ mọi sau giờ chưa thực hiện, chờ chốt mới; "Hủy bổ trợ sau giờ chứ bổ trợ yếu trong bổ trợ khối ko reset". _btnhe_reset_tuan (tác vụ nền, idempotent) huỷ buổi bo_tro_nhe chưa xong + không bai_lam, ca ngày/khởi tạo trước T2. fn_btnhe_tao chặn em không có lượt chốt duyệt trong tuần của ngày ca.
+- Chạy 16/11: 19 lượt (K3 3·K4 6·K9 4·K11 6) ở 5 ca (9A1 11/11, 4A1 14/11, 11B1 15/11 — 6 em có mặt chưa nhập, 9A2 15/11, 3A1 16/11 tạo 13/11); 3 ca huỷ cả ca; 0 buổi khối. Cron 00:05 T2 ở file _cron_sql_editor — CHỜ THÙY CHẠY SQL EDITOR.
+
+## 16/11 16:22 — Reset sau giờ chuyển vào bộ điều phối (mig 202611161622 ĐÃ ÁP)
+- Thùy hỏi đã đọc kiến trúc chưa: CHƯA — file cron riêng sai K4. Đăng ký tinh_san_dang_ky sau_gio_reset_tuan (0h, 1200 phút, 30 s); xoá file 202611161617_*_cron_sql_editor (chưa chạy, Thùy gật). Bài học: việc theo lịch ⇒ đọc spec-kien-truc §4 trước, đăng ký điều phối.
+
+## 16/11 (tiếp) — spec-giai-bai.md: ghi chuyên đề Thẳng hàng K7
+- Đọc spec tổng: bản nháp Thẳng hàng lệch luật HH00104 (cấm chiều đảo trung trực). Thùy chốt: **cho dùng** trong 3 bài HH00170–172. Ghi vào `spec-giai-bai.md` mục Khối 7 › Hình: câu "Whitelist" (K7 giờ có Hình–Học NCD00177/00210/00255) · ngoại lệ ở dòng trung trực · bảng 3 bài (được thêm / cấm) + luật phân dạng câu thẳng hàng (chờ Thùy xác nhận) . Nội dung 3 bài vẫn là NHÁP (chưa ghi DB, chờ Thùy nói "ghi").
