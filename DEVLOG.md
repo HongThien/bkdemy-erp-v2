@@ -81199,3 +81199,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **ERP:** tờ em ghi "mục tiêu khoá lúc …", khối vàng "Thêm sau khi chốt", nhãn trên việc thêm; ghi chú tab giải thích lại nút Chốt + "kết quả tuần do máy chốt".
 - **Kiểm:** Postgres 16 tạm — kế hoạch [NNB00001, NNB00003, NNB00002] mt [80,80,36]; thêm NNB00004 vào giáo trình + 1 ca bổ trợ yếu ⇒ nhóm giữ nguyên, them_sau_chot=[NNB00004], ca mới them_sau, tiến độ 77.3 không đổi; UPDATE kế hoạch bị trigger chặn. `tsc` (trừ lỗi cũ pdfRender) · `check:kien-truc --chi-code` ✔.
 - **Chưa áp DB** (202611161608 + 202611161622) — Thùy áp.
+
+## 16/11 — Bản đồ Hình–Học K7: thêm chủ đề "Thẳng hàng" + 3 bài (Thùy)
+- `scripts/hinh-k7-them-thang-hang.mjs`: chủ đề NCD00254 "Thẳng hàng" (khoi 7, nhanh 'hinh', thứ tự 5) + 3 bài `hinh_hoc_bai`: HH00167 Phương pháp cùng đường · HH00168 Phương pháp cộng góc · HH00169 Dùng tiên đề Euclide. Làm đúng như `createHinhHocBai` (da_duyet=false, ma_dang tự sinh). Chưa có lý thuyết/ví dụ/câu.
+- Đính chính mã (sequence không lùi sau dry-run): thực tế ghi là chủ đề **NCD00255**, bài **HH00170 / HH00171 / HH00172** (không phải NCD00254 / HH00167–169 ở dòng trên).
