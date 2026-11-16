@@ -81246,3 +81246,17 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ## 16/11 (tiếp 4) — Ghi mô tả + lý thuyết + ví dụ 3 bài Thẳng hàng (Thùy: "t gửi file rồi mà")
 - `scripts/hinh-k7-thang-hang-noidung.mjs --ghi`: HH00170/171/172 có `mo_ta`, `hinh_hoc_bai_ly_thuyet`, `vi_du` (nội dung từ "thẳng hàng.pdf"; xem k7-thang-hang-nhap.html). Trước đó giữ nháp chờ "ghi" — Thùy xác nhận đã gửi file là muốn vào luôn. Hình ví dụ chưa gắn.
+
+### 16/11 (17:15–17:40) — `fn_tong_quan_hs` 1,4 s: mổ xong, CHƯA sửa (Thùy "Xem luôn") — gốc là bước quy dạng từng câu của lõi mastery
+
+- **Số người dùng thật trên máy mới (thống kê bắt đầu lại từ 23:09 ngày 15/11):** hàm người dùng gọi duy nhất vượt 1 s là `fn_tong_quan_hs` — 66 lượt, tb 1.371 ms, min 391, max 3.589; đọc đĩa 8 trang, 4,3 triệu lượt chạm trang trong bộ nhớ (≈ 65 nghìn trang mỗi lượt) ⇒ tốn CPU, không phải tốn đĩa.
+  Ai gọi: Report phụ huynh (`ReportPHScreen` gọi MỖI HS của lớp một lượt — một lớp 15 em = 15 lượt song song), `ReportCard`, `VinhDanhCard`, `HocSinhView`, `KetQuaScreen`, trợ lý tra cứu.
+- **Đo từng khúc (`explain analyze`, 2 HS, chỉ đọc):** trọn hàm 830–1.127 ms · **nguồn lần đo `_mastery_lan_do_quy` 803–1.062 ms (≈ 95 %)** · `_tq_dang_info` vài ms · câu BTVN bỏ trống 4–8 ms + quy dạng 10–14 ms.
+  Trong nguồn lần đo, phần tốn là CTE `cap`: gọi `_do_o_quy(…)` cho TỪNG cặp (câu, mã dạng chép) — mỗi cặp ~1 ms vì đi qua chuỗi `_btyeu_la_hinh_mh` → `_khtn_la_lan_do` → `_vatly_la_lan_do` → `_hoahoc_la_lan_do` → `_do_o_bdm` (plpgsql, definer). Một em có 800–1.200 cặp ⇒ 0,6–0,8 s.
+  Đây chính là "lõi mastery" đã ghi ở HANDOFF việc kế tiếp số 3; dùng chung bởi `_mastery_lan_d`, `_mastery_lan_do`, `_mastery_mon_d` (lượt làm mới mastery nền) và `fn_tong_quan_hs`.
+- **Thử ý tưởng (CHỈ ĐỌC, không sửa gì):** quy dạng theo TẬP cho "đường thường" — câu còn ở kho Đại, không phải câu KHTN / Lý / Hoá, mã chép không phải bài mô hình Hình, có dạng bài hoặc câu chưa xoá ⇒ nhóm = `bdm_cau_dang.dang_bai_id`; cặp còn lại vẫn qua hàm cũ.
+  3 HS mẫu: khối 8 — 1.180 cặp, 59 % đi đường nhanh (em này có 444 cặp KHTN), bước quy 775 ms → 26 + 247 ms · khối 4 — 883 cặp, 100 %, 713 → 16 ms · khối 7 — 784 cặp, 94 %, 636 → 15 + 67 ms. **Lệch so với hàm cũ: 0 / 2.309 cặp đi đường nhanh.**
+  ⇒ ước `fn_tong_quan_hs` còn 0,15–0,4 s; lượt làm mới mastery cũng nhẹ theo. Thêm đường nhanh cho câu KHTN thì em khối 8 xuống tiếp (chưa thử).
+- **Đề xuất (chờ Thùy gật, chưa làm):** sửa CTE `cap` của `_mastery_luot_do_quy` thành "đường nhanh theo tập + phần còn lại qua `_do_o_quy`" (không đổi hàm quy cũ, không đổi chữ ký).
+  Phép thử ĐẦY ĐỦ làm được vì kết quả quy chỉ phụ thuộc cặp: lấy MỌI cặp (câu, mã chép) có trong lịch sử của cả hệ, so đường mới với `_do_o_quy` từng cặp — chạy sau 22:00 theo lô (ước ~1 ms mỗi cặp), lệch 1 cặp là không áp. Sau đó so `fn_tong_quan_hs` + ô mastery cũ–mới trên một mẫu HS.
+  Việc tách riêng, chưa đề xuất làm: Report phụ huynh gọi 15 lượt song song cho một lớp (K11) · tháng đã qua thì tổng quan gần như bất biến, có thể chốt sổ (K6).
