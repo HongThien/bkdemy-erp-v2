@@ -81650,3 +81650,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Thùy hỏi sao báo cáo vẫn 296 / 445: bản K9 đã duyệt chụp số lúc nộp (17/11 12:53, phien_ban 2, dạng yếu đầu tuần theo luật 2 cửa sổ). Chụp lại cột `so` = fn_bctk_so + trend, giữ da_duyet / tu_viet / người duyệt, thêm 1 dòng log.
 - Sau chụp: dạng 321 → còn 271 (hết 50, 15,6%%) + phát sinh 174 = 445; nhóm 160 → còn 126 (hết 34, 21,3%%) + 41 = 167; phien_ban 3, 7 lớp. check:kien-truc ✔.
 - Còn 4 bản tuần 09/11 khác cũng chụp theo luật cũ (2 đã duyệt, 2 đã nộp) — chưa đụng, hỏi Thùy.
+
+## 17/11 17:06 — Chụp lại 4 bản báo cáo tuần 09–15/11 còn lại (mig 202611171706 ĐÃ ÁP, Thùy "Chụp lại cả 4")
+- K6 dạng 189→203 đầu · K7+8 407→411 · K10–12 439→561 · K3–5 105→137 (đầu tuần cũ → mới; cuối tuần không đổi). Giữ trạng thái/tu_viet, mỗi bản 1 dòng log. Cả 5 bản tuần 09/11 giờ phien_ban 3.
+- Hai chiều dạng: K6 203→170 (hết 33) +22 · K7+8 411→345 (hết 66) +216 · K10–12 561→421 (hết 125, rời 15) +68 · K3–5 137→96 (hết 41) +35.
