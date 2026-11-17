@@ -544,7 +544,7 @@ function Luong({ nsId }: { nsId: string }) {
               </p>
             ))}
             {l.chi_tiet.ngoai_package.length > 0 && <div className="flex justify-between px-3 text-[13px] font-bold text-[#16224D]"><span>Ngoài package</span><span>{tien(l.ngoai_package)}</span></div>}
-            {Number(l.tien_phat) > 0 && <div className="flex justify-between rounded-2xl bg-[#FFE4EA] px-3 py-2 text-[13px] font-bold text-[#C0355A]"><span>Phạt (gậy đã chốt)</span><span>−{tien(l.tien_phat)}</span></div>}
+            {Number(l.tien_phat) > 0 && <div className="flex justify-between rounded-2xl bg-[#FFE4EA] px-3 py-2 text-[13px] font-bold text-[#C0355A]" title="Thùy 17/11: gậy không trừ vào lương — tiền phạt gậy ghi ở sổ phạt riêng"><span>Sổ phạt gậy (thu riêng, không trừ lương)</span><span>{tien(l.tien_phat)}</span></div>}
           </div>
           <p className="mt-2 text-[11.5px] text-[#63709A]">{l.da_chot ? 'Tháng này đã chốt: số liệu cố định, công của tháng không sửa được nữa. Thấy sai thì báo quản lý để mở lại kỳ.' : 'Chỉ tính việc đã duyệt thuộc ca đã duyệt. Số có thể còn thay đổi tới khi quản lý chốt kỳ (sau ngày 3 tháng sau).'} BTVN lấy thẳng từ bài bạn đã chấm trên ERP, không cần ghi công.</p>
         </div>

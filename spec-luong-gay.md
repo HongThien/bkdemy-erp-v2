@@ -285,8 +285,8 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 
 | # | Việc | Từ câu |
 |---|---|---|
-| 1 | **Tách gậy khỏi lương:** công thức lương TA (`_ta_luong_tinh`) bỏ dòng trừ tiền phạt gậy; bảng lương realtime hiện gậy là thông tin (số gậy · tiền ở sổ phạt riêng), KHÔNG trừ vào net. `fn_gay_bang` + màn Gậy giữ số tiền (sổ phạt). Đưa đơn giá 20.000đ vào bảng thông số thay vì viết cứng 3 nơi. | 1 |
-| 2 | **Bịt quyền sổ gậy:** policy `gay_*` đang ALL cho mọi thành viên; `fn_gay_chot_thang` / `fn_tich_luy_chot_thang` không cổng — đưa đánh / gỡ / thu hồi / quyết đề xuất về hàm có cổng theo phạm vi | lệch 9.2 |
+| 1 | ✅ **ĐÃ LÀM 17/11** (mig `202611172225`): `_ta_luong_tinh` net = gross, không trừ gậy; cột `tien_phat` giữ để HIỆN số ở sổ phạt. Màn lương ERP + app TA đổi nhãn "Sổ phạt gậy (thu riêng, không trừ lương)" — chờ deploy. So trước–sau: tháng 10 17 TA 33.796.287đ, tháng 11 15 TA 23.611.468đ — không đổi. *Chưa làm:* đưa đơn giá 20.000đ vào bảng thông số. | 1 |
+| 2 | ✅ **ĐÃ LÀM 17/11** (mig `202611172225`): mọi bảng `gay_*` ai cũng đọc; GHI sổ / quyết đề xuất / danh mục chỉ người có quyền quản gậy (`fn_gay_duoc_doi_mien` — 14 / 44 nhân sự) và KHÔNG được ghi dòng của chính mình; đề xuất máy quét vẫn chèn được ở trạng thái chờ; sổ chốt tháng + nhật ký chỉ đọc. `fn_gay_chot_thang` / `fn_tich_luy_chot_thang` có cổng (trưởng / phó QLCL hoặc quản trị), thu quyền 3 role lạ. *Giới hạn:* phạm vi "trưởng khối chỉ quyết gậy khối mình" vẫn kiểm ở client. | lệch 9.2 |
 | 3 | Ân xá đề xuất gậy có hạn trước 01/11 (đánh dấu bỏ qua, có lý do) · hạn quyết 7 ngày · quá 30 ngày máy tự bỏ qua · gậy tính theo tháng của việc trễ · máy quét gậy chuyển từ client xuống DB | 8 |
 | 4 | Thứ tự chốt tháng (ngày 1–3 · 4 · 5) + chặn chốt lương khi gậy tháng chưa chốt + dòng "điều chỉnh" cho kỳ đã trả; chốt kỳ tháng 10 (đủ điều kiện từ 05/11; 1 TA có dòng lớp thiếu mức) | 9 |
 | 5 | Ô bổ trợ của điểm hiệu suất đọc cùng số với lương; bỏ chốt tay `hsta_chot` | 7 |

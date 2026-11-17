@@ -94,7 +94,7 @@ function TabLuong({ bao, coGhi }: { bao: (t: string, ok?: boolean) => void; coGh
         <table className="w-full min-w-[900px] border-collapse text-sm tabular-nums">
           <thead><tr className="bg-slate-50 text-left text-[11px] uppercase tracking-wide text-slate-500">
             <th className="px-3 py-2">Trợ giảng</th><th className="px-3 py-2 text-right">Theo lớp (TG 40% · BTVN 20%)</th><th className="px-3 py-2 text-right">Bổ trợ (40%)</th>
-            <th className="px-3 py-2 text-right">Ngoài package</th><th className="px-3 py-2 text-right">Phạt</th><th className="px-3 py-2 text-right">Thực nhận</th><th className="w-20 px-3 py-2"></th>
+            <th className="px-3 py-2 text-right">Ngoài package</th><th className="px-3 py-2 text-right" title="Tiền phạt gậy đã chốt — ghi ở SỔ PHẠT RIÊNG, KHÔNG trừ vào Thực nhận (Thùy 17/11)">Sổ phạt gậy</th><th className="px-3 py-2 text-right">Thực nhận</th><th className="w-20 px-3 py-2"></th>
           </tr></thead>
           <tbody>
             {rows === null && <tr><td colSpan={7} className="p-6 text-center text-slate-400">Đang tính…</td></tr>}
@@ -105,7 +105,7 @@ function TabLuong({ bao, coGhi }: { bao: (t: string, ok?: boolean) => void; coGh
           </tbody>
           {tong && rows && rows.length > 0 && <tfoot><tr className="border-t-2 border-slate-300 bg-slate-50 font-semibold text-slate-800">
             <td className="px-3 py-2">Tổng ({tong.so_ta} TA)</td><td className="px-3 py-2 text-right">{tien(tong.package_lop)}</td><td className="px-3 py-2 text-right">{tien(tong.bo_tro_tien)}</td>
-            <td className="px-3 py-2 text-right">{tien(tong.ngoai_package)}</td><td className="px-3 py-2 text-right">{Number(tong.tien_phat) ? '−' + tien(tong.tien_phat) : '—'}</td><td className="px-3 py-2 text-right text-emerald-700">{tien(tong.net)}</td><td></td>
+            <td className="px-3 py-2 text-right">{tien(tong.ngoai_package)}</td><td className="px-3 py-2 text-right">{Number(tong.tien_phat) ? tien(tong.tien_phat) : '—'}</td><td className="px-3 py-2 text-right text-emerald-700">{tien(tong.net)}</td><td></td>
           </tr></tfoot>}
         </table>
       </div>
@@ -206,7 +206,7 @@ function FragmentLuong({ r, mo, onMo, tenLoai }: { r: LuongThang; mo: boolean; o
         <td className="px-3 py-2 text-right">{tien(r.package_lop)}</td>
         <td className="px-3 py-2 text-right">{tien(r.bo_tro_tien)}<div className="text-[11px] text-slate-500">{so(r.bo_tro_gio)}/{so(bt.chi_tieu)} giờ</div></td>
         <td className="px-3 py-2 text-right">{tien(r.ngoai_package)}{r.chi_tiet.ngoai_package.some((x) => x.thieu_don_gia) && <div className="text-[11px] text-amber-700">có việc chưa có giá</div>}</td>
-        <td className="px-3 py-2 text-right">{Number(r.tien_phat) > 0 ? <span className="text-red-600">−{tien(r.tien_phat)}</span> : '—'}</td>
+        <td className="px-3 py-2 text-right">{Number(r.tien_phat) > 0 ? <span className="text-slate-500">{tien(r.tien_phat)}</span> : '—'}</td>
         <td className="px-3 py-2 text-right font-bold text-slate-900">{tien(r.net)}</td>
         <td className="px-3 py-2"><button className={btnGhost} onClick={onMo}>{mo ? 'Thu gọn' : 'Chi tiết'}</button></td>
       </tr>
