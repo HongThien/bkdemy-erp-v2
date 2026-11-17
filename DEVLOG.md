@@ -81733,3 +81733,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Thùy: "nút preview cái sẽ gửi cho PH — giao diện điện thoại dọc" ⇒ tờ của em (`ToHsPanel`, `MucTieuTuanTab`) có nút **📱 Xem như phụ huynh**: popup khung điện thoại 390×844 nhúng trang `/xem-mtt` của app PH (repo bkdemy-ph-app), ERP postMessage đưa sẵn tờ đang xem (fn_mtt_hs, xem được cả NHÁP trước khi Công bố) ⇒ đúng component PH, không chép giao diện, không DB mới. `PH_BASE` export từ `lib/ph-login.ts`.
 - Thùy: "header từng phần rõ ràng: trên lớp, ôn tập, Hoạt động tuần này" ⇒ đổi nhãn ở cả 3 mặt: ERP tờ · app HS (`MucTieuTuanHS`) · app PH (header có vạch màu).
 - Cần deploy CẢ app PH (trang /xem-mtt) thì nút mới chạy. build ✔ · check:kien-truc --chi-code ✔ · check:style-hs vẫn RỚT ở CaBoTroHS.tsx (phiên khác, không phải file này).
+### 17/11 tối — Spec #18 Bổ trợ: NHÁP `spec-bo-tro.NHAP.md` (Thùy: "có cái nào chưa chắc nhớ hỏi lại t")
+- Agent dựng 341 dòng §0–§14, chỉ LOGIC bổ trợ; xếp lịch / phòng / báo PH (§41–§43 bản cũ + `spec-xep-bo-tro-chung`) ghi mục chuyển #8; app TA → #10. `spec-bo-tro.md` đang dùng CHƯA thay.
+- **Tôi đo lại (khớp):** case mở 54 `dang_xu` + 63 `nhe_mo` · mức L1 143 / L2 66 / L3 1, 93 em mang mức mà không có case mở · kết cục 30 ngày ca khối: hết hạn 60 · dạy xong 51 · bỏ 30; sau giờ: dạy xong 88 · bỏ 49; **0 dòng đạt / chưa đạt** · trần 70 / 20, retest tắt, Hình 0 case.
+- Hàm bổ trợ đang chạy đều đọc mastery qua bản chụp theo luật mới (agent kiểm, tôi chưa kiểm lại từng hàm). 12 câu hỏi cho Thùy ở §12.1, 15 lệch kỹ thuật §12.2.
