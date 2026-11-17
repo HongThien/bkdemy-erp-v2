@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Bản đồ Hình = CÂY NHÁNH BÀI (Chủ đề → Mô hình → Nhánh → Bài)
 
 > **Trạng thái 14/10/2026:** CEO đã duyệt mockup + chốt 3 điểm mở (§8) (`docs/mockup-hinh-mo-hinh-2tab.html`, bấm được). **Chưa build.**

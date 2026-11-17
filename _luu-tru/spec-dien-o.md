@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` (#3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Spec — Form ĐIỀN Ô: lời giải chi tiết có ô trống, mỗi ô 4 phương án
 
 > CEO chốt 09/09/2026. Câu tự luận (tính toán, tìm x) không bắt HS gõ đáp án: hiện **lời giải chi tiết**, bỏ trống 2–3 chỗ

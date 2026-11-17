@@ -164,7 +164,7 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 | 3 | Hình–Luyện công thức cũ (theo câu, trọng số, không 30 ngày, có luyện + retest) | **Chuyển sang luật mới toàn bộ** (§6) | ✅ mig `202611171010` + `202611171025` (cấp quyền) ĐÃ ÁP 17/11. Đưa Hình–Luyện lại vào Dashboard theo nhóm: việc sau |
 | 4 | CLAUDE.md §1 ghi "KP = dạng" | **Sửa** — nhóm là cấp chính | ✅ đã sửa CLAUDE.md §1 (17/11). Notion chưa |
 | 5 | Hai định nghĩa HS yếu (báo cáo tuần theo dạng · box trưởng khối theo nhóm) | **Thống nhất theo nhóm yếu** (§5) | ✅ mig `202611171134` · `…1135` · `…1137` ĐÃ ÁP 17/11; client chưa deploy |
-| 6 | Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ, Dashboard bỏ qua 345T | "tính sau" (Thùy 23/10) | ghi để nhớ |
+| 6 | ~~Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ~~ — đối chiếu 17/11: `_bdm_khoi_giu_cu()` = false ⇒ **mọi khối kể cả 3 · 4 · 5 · 4T · 5T chạy bản đồ mới** (Thùy chốt 17/11, `spec-ban-do-toan` §12 L3). Dashboard bỏ qua 345T | "tính sau" (Thùy 23/10) | ghi để nhớ |
 
 **Số thử mig `202611171010` (17/11 10:12, giao dịch ROLLBACK, 361 HS đang học, 58 HS KHTN · Lý · Hoá):**
 - **Toán, mọi nguồn:** ô dạng 14.641 → 14.634 (7 ô chỉ có luyện thành "chưa đo") · dạng yếu 1.668 → 1.679 · nhóm yếu 740 → 754 · 53 ô dạng + 52 ô nhóm đổi mức (17 + 18 ô thành yếu, 4 + 4 ô hết yếu) · HS có ≥ 1 nhóm yếu 260 → 259.

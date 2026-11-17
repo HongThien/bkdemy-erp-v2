@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2) (phần thẻ lý thuyết) và `spec-kho-cau-hoi.md` §12 (phần hiển thị câu). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-format-noidung.md — Đóng khung nội dung lý thuyết (định lý · định nghĩa · tính chất · chú ý · phương pháp giải · ví dụ · nhận xét · bài tập)
 
 > ĐỌC trước khi đụng `LyThuyetModal` (src/screens/kho/BanDo.tsx) hoặc `LyThuyetBody`/PrintView.

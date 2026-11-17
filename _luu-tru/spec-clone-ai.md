@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` (#3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-clone-ai.md — Luật cho Claude khi CLONE câu đã đặt hàng trong kho (luồng 2)
 
 > Đọc BẮT BUỘC trước khi xử lý hàng đợi clone (`scripts/hangdoi-clone.mjs`). Luồng 1 (giải bài) có spec riêng:

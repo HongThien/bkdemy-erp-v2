@@ -351,26 +351,11 @@
   Phần D sổ sai lầm hậu kiểm. **Luật mới, sai lầm mới chỉ ghi vào file này**, không mở file luật thứ hai, không viết brief luật theo lô.
 - `spec-kho-chuan.md` — KHO CHUẨN (CEO chốt 09/09): 1 cửa duyệt câu hợp nhất, "vào kho" định nghĩa bằng hàm `_kho_cau_chuan`
   (câu mới phải `da_duyet`; câu cũ tạm dùng tới khi quét), quét lại toàn kho 3 mức (máy → Claude → người). Cửa 2 = form trắc nghiệm.
-- `spec-dien-o.md` — Form ĐIỀN Ô (CEO chốt 09/09): lời giải chi tiết có 2–3 ô trống, mỗi ô 4 phương án (faded worked examples);
-  ô = "vừa thực hiện một phép tính con" tìm bằng máy, tách bước theo dấu `=`; đo theo CÂU (Đ/C/S, S khi sai >60% ô); hiện
-  đúng/sai từng ô; logic chọn form cho HS (yếu → ĐIỀN, ổn → TN; TLN/tự luận để sau).
-- `spec-mcq-form.md` — Phiên bản TRẮC NGHIỆM (distractor theo lỗi) của câu tính toán, pool 1 lớp 7 "Số hữu tỉ".
-  CEO chốt 08/09: MCQ ưu tiên, là form THÊM (bảng `dai_cau_form_tn`), **không đổ `lua_chon` vào câu gốc**.
-  **CEO chốt 19/09: MỌI luồng bài làm trên app của BỔ TRỢ (yếu · bù · đuổi) chỉ dùng MCQ** — điều kiện chọn câu DUY NHẤT =
-  `_kho_dk_mcq_sql(cautbl)` (kho_chuan + trắc nghiệm gốc | form_tn đã duyệt; `_kho_snapshot_cau` tự hiện form thành 4 đáp án).
-  **CEO chốt lại 10/10 (thay 20/09 "tuyệt đối" và 28/09 "chỉ mức 4–5"): MCQ TRƯỚC; cả dạng 0 MCQ ⇒ câu TRẢ LỜI NGẮN có đáp án (kho chuẩn),
-  mọi mức độ** — áp ở `_btyeu_chon_cau` (yếu: luyện · test · retest · phiếu giấy, TA chấm Đúng/Sai câu trả lời ngắn trên giấy) và
-  `tu_luyen_chu_de_sinh` loai `bu_luyen`/`bu_test` (bù). Dạng không có cả MCQ lẫn trả lời ngắn thì app báo rõ, em học trên giấy.
-  Luồng bổ trợ mới PHẢI đi qua 2 hàm này, không viết điều kiện chọn câu riêng (xem spec-bo-tro.md §4).
-- **`spec-mcq-quy-trinh-sinh.md` — ĐỌC BẮT BUỘC trước khi thêm 1 dạng mới vào pipeline MCQ** (mọi khối,
-  không riêng Pool 1). QUY TRÌNH kỹ thuật (khác `spec-mcq-form.md` là quyết định phạm vi): tiêu chí dạng
-  RÕ RÀNG (tự quyết) vs MƠ HỒ (phải hỏi CEO) · kiến trúc `SPECIAL_DANG`/`TEXT_DANG` · cách xử lý 1 `dang_chinh`
-  trộn nhiều sub-shape · quy ước đặt mã rule khi 2 luồng (khối 8-9 / khối 6-7) chạy song song · bẫy kỹ thuật
-  hay gặp. Viết 12/09 theo yêu cầu Thùy tách 2 luồng riêng.
-- **`spec-mcq-tung-phan.md` — ĐỌC trước khi mở context mới làm "trắc nghiệm 1 phần"/từng bước.** Cầu nối
-  cụ thể: "trắc nghiệm 1 phần" = triển khai **Phase 2 (Đại) của `spec-dien-o.md`** đã CEO chốt 09/09 nhưng
-  CHƯA XÂY (`scripts/mcq-dien.mjs` + bảng `dai_cau_form_dien` chưa tồn tại) — không phải spec mới. Kèm hàng
-  đợi cụ thể các dạng đã xác nhận không hợp khuôn "4 đáp án nguyên câu" (12/09).
+- **`spec-kho-cau-hoi.md` — ĐỌC trước khi đụng KHO CÂU: một câu gồm gì · vào kho · MCQ · điền ô · clone · báo sai · nhập kho từ ảnh / tài liệu / đề thi · quy chuẩn hiển thị · vẽ lại hình** (Thùy chốt 17/11, thay `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai`).
+  Luật giải / phân dạng / kiểm / trình bày vẫn DUY NHẤT ở `spec-giai-bai.md` — spec kho giữ quy trình + công cụ + dữ liệu.
+  **MCQ là form THÊM** (bảng `*_cau_form_tn`), không đổ `lua_chon` vào câu gốc. **Bổ trợ (yếu · bù · đuổi) trên app: MCQ TRƯỚC; cả dạng 0 MCQ ⇒ câu TRẢ LỜI NGẮN có đáp án (kho chuẩn), mọi mức độ**
+  (CEO 10/10) — điều kiện chọn câu DUY NHẤT `_kho_dk_mcq_sql(cautbl)`, áp ở `_btyeu_chon_cau` và `tu_luyen_chu_de_sinh` (`bu_luyen`/`bu_test`); luồng bổ trợ mới PHẢI đi qua 2 hàm này (spec-bo-tro.md §4).
+  Điền ô Đại ĐÓNG BĂNG (17/11) — điền ô chỉ còn ở Hình chứng minh. Việc DB/app từ Q1–Q13 (§8) chỉ làm khi có lệnh.
 - **`spec-khtn-du-hanh.md` — ĐỌC trước khi sửa/làm bài KHTN dạng thế giới 3D** (thư mục `khtn-site/`, CEO chốt 29/09): 2 kiểu bài du hành / tương tác ·
   nhịp trạm (phim lời dẫn → giao việc quan sát → bay tự do → trả lời lúc nào cũng được) · trạm luyện tập bộ 6 câu + hoạt cảnh theo đáp án ·
   KHÔNG lộ đáp án trước khi trả lời · ngôn ngữ hình ion/cộng hoá trị · chưa đo, web riêng deploy tay. Bài đã có: Liên kết hoá học (KHTN 7).
@@ -383,7 +368,7 @@
   thêm bài = thêm một mục dữ liệu vào `tron-xoay-bai.js`** (địa chỉ cố định `?bai=<id>`, `&nhung=1` để sau gắn vào bài giải trên app HS) · khung chung `khung.js` + `khung.css` ·
   làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có những bài nào: `docs/hinh-3d/so-theo-doi.md`.
 - Trigger tự duyệt hiện có `_bdm_tu_duyet_sau_gan` (mig 202611051930, Thùy 05/11): gán dạng mức cao nguon 'ai' + có đáp án ⇒ `da_duyet=true`. Điều kiện ĐÍCH (4 điều kiện, có nhân chứng đáp số) ở `spec-giai-bai.md` §C6 — code còn nợ §C10.
-- **`spec-hinh-cay-nhanh.md` — ĐỌC BẮT BUỘC trước khi đụng bản đồ HÌNH phần LUYỆN** (CEO duyệt mockup 14/10): mô hình = cây nhánh (thân 1.1→1.2, rẽ nhánh từ bài mẹ thành 1.6.1, 1.6.1.1) · số hiển thị = vị trí (suy), mã bất biến · giả thiết hiệu lực = đường gốc→nhánh (bỏ luật 17/08) · xếp chỗ CHỈ xuống/sang phải, nhánh phía sau ưu tiên hàng 1, nhánh trước không đè · thẻ giả thiết thêm lục giác khác thẻ bài · popup đề·hình·đáp án. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`. Phần tách ý/nhập kho: `spec-hinh-luyen.md`.
+- **`spec-ban-do-toan.md` — ĐỌC BẮT BUỘC trước khi đụng BẢN ĐỒ TOÁN (Đại · Giải tích · Hình–Học · Hình–Luyện)** (Thùy chốt 17/11, thay `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` · phần thẻ của `spec-format-noidung`): 4 tầng chủ đề → chuyên đề → nhóm → dạng, mã bất biến, số hiển thị suy ra · thẻ lý thuyết `##ĐN/ĐL/TC/CY/PP/VD` (lý thuyết KHÔNG chứa ví dụ) · Hình–Luyện = cây nhánh (giả thiết hiệu lực = đường gốc→nốt; tầng nhóm mô hình đã BỎ) · Hình–Học bài nhiều ý là luật chính thức · việc chờ lệnh §12b. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`.
 - **`spec-che-do-game.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ chế độ game học nào (mọi môn)** (Thùy chốt 03/10): 6 chế độ giữ nguyên, chỉ đổi content ·
   Luyện tập = Tự luyện · Thử thách = Tournament với bot (giữ luật, có Rank) · Tháp tổng + tháp chủ đề × Sinh tồn / Vô tận Normal / Hard (xếp hạng thuần) ·
   sai = khoá cả câu · phạm vi = dạng em đã học · câu nhanh/dài đo bằng thời gian làm thật · câu trả lời game ghi lại nhưng CHƯA tính mastery.

@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` (#3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Cầu nối — "Trắc nghiệm 1 phần" = triển khai Phase 2 (Đại) của `spec-dien-o.md`
 
 > Viết 12/09/2026 cho context MỚI mà Thùy sẽ mở riêng để làm việc này (tách khỏi context `form-tn` — context

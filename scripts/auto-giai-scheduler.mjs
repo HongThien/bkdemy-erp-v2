@@ -119,7 +119,7 @@ Sau đó xử lý hàng đợi giải bài hiện có, đúng luồng đã ghi t
 5) Xoá 2 file scripts/_auto_ds.json và scripts/_auto_ketqua.json.
 Bài nào không chắc chắn (đề thiếu dữ kiện, hình mâu thuẫn không giải quyết được) → dùng --bo <mon> <yeu_cau_id> "<lý do>" thay vì ghi liều — thà bỏ trống còn hơn đánh sai (CLAUDE.md §1.5).
 `
-  const promptClone = `LUỒNG 2 — CLONE CÂU ĐÃ ĐẶT HÀNG (${tongClone} yêu cầu treo). Đọc kỹ file spec-clone-ai.md ở thư mục gốc TRƯỚC — luật bám gốc, số đẹp, tự kiểm, khi nào phải --bo.
+  const promptClone = `LUỒNG 2 — CLONE CÂU ĐÃ ĐẶT HÀNG (${tongClone} yêu cầu treo). Đọc kỹ spec-kho-cau-hoi.md §5 (clone) ở thư mục gốc TRƯỚC — luật bám gốc, số đẹp, tự kiểm, khi nào phải --bo.
 Sau đó xử lý đúng luồng ghi trong scripts/hangdoi-clone.mjs (đọc chú thích đầu file đó):
 1) node scripts/hangdoi-clone.mjs --list --out scripts/_auto_clone_ds.json
 2) Đọc file đó. Với mỗi yêu cầu: sinh đúng số biến thể cần (so_bien_the − so_da_co) theo spec, MỖI biến thể phải giải lại độc lập để kiểm đáp số trước khi ghi. Yêu cầu có co_hinh=true hoặc câu đúng/sai → --bo kèm lý do, không sinh.

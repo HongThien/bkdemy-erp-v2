@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Bản đồ kiến thức 4 tầng (Chủ đề · Chuyên đề · Nhóm bài · Dạng bài) + thứ tự học
 
 > **Trạng thái (08/10):** CEO chốt **phương án "bản đồ mới trên ERP"** (§0). Đã build: bảng nháp + màn soạn (B1, mig `202610081147`, tab Kho › 🆕 Bản đồ mới).

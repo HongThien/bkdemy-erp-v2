@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` (#3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Spec — Phiên bản TRẮC NGHIỆM (MCQ) của câu tính toán, distractor theo lỗi
 
 > Trạng thái: **CEO chốt hướng 08/09/2026**, spec để build. Pool 1 = Toán lớp 7, chủ đề "Số hữu tỉ",

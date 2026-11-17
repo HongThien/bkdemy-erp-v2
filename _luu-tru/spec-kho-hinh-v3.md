@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Kho Hình học (nhánh `hinh`) · BKdemy ERP v2
 
 > **BẢN CUỐI. Thay thế hoàn toàn `spec-kho-hinh.md` (v1) và `spec-kho-hinh-v2.md` (v2).** Nếu hai file kia còn trong repo → xoá, chúng sai tầng model.

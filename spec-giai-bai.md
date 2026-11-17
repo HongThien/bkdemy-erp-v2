@@ -924,7 +924,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - Chia trạm ≤ ~12 câu (đếm sau tách ý), bài liền nhau cùng trạm, bài nâng cao ở trạm ít câu.
 
 **Bản đồ kiến thức K6 (lý thuyết nhóm · lý thuyết dạng · ví dụ dạng)**
-- Lý thuyết NHÓM = kiến thức chung mọi dạng trong nhóm: `##ĐN`/`##ĐL` → `##TC` → `##PP` (mỗi dòng một bước, 3–6 bước, tự đánh số, không gõ "Bước 1") → `##CY`. Nhóm có dạng bài: không `##VD`; nhóm không có dạng: thêm 2 `##VD` cuối.
+- Lý thuyết NHÓM = kiến thức chung mọi dạng trong nhóm: `##ĐN`/`##ĐL` → `##TC` → `##PP` (mỗi dòng một bước, 3–6 bước, tự đánh số, không gõ "Bước 1") → `##CY`. Lý thuyết nhóm và dạng **KHÔNG chứa ví dụ** (Thùy 19/10; chốt lại 17/11 — `spec-ban-do-toan` §12 L5): nhóm chưa có dạng thì tạo 1 dạng bài để chứa ví dụ, không thêm `##VD` vào lý thuyết nhóm.
 - Lý thuyết DẠNG [14/10 · Thùy] = phần riêng của dạng: quy tắc dùng + phương pháp 3–5 bước khớp cách giải trong ví dụ của chính dạng + dấu hiệu nhận biết + bẫy riêng (phân biệt dạng anh em). 1–4 khối, 3–8 dòng (nâng cao ≤ ~15); không chép lại lý thuyết nhóm, không `##VD`.
 - Ví dụ DẠNG: 2 ví dụ (dạng rất hẹp / nâng cao khó: 1–2); ví dụ 1 điển hình, ví dụ 2 khó hơn một nấc; số tính tay được; khuôn `##VD` → đề → `**Hướng dẫn giải:**` → lời giải theo khuôn nhóm → "Vậy …". Ví dụ đúng mô tả dạng. Dạng đã có ví dụ: không đè, chỉ bổ sung ví dụ KHÁC. Mỗi ví dụ kèm biểu thức kiểm độc lập trả `true` (BigInt, vét cạn).
 - Phương pháp đúng cho MỌI đề thuộc dạng. Sách chỉ là tham khảo — viết lại theo khuôn K6, không chép nguyên văn dài. Nguồn: SGK KNTT 6 tập 1, sách phân dạng KNTT, sách Củng cố, tệp dạng bài `E:\BK ACADEMY\Kho dạng bài\K6\`. K6 được tự soạn lý thuyết / ví dụ theo các nguồn này.

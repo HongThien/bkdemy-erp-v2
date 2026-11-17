@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Bản đồ kiến thức HÌNH · phần LUYỆN (kho bài nhiều ý → mô hình)
 
 > **⚠ 14/10: tầng MÔ HÌNH/NHÁNH/BÀI + cách hiển thị đã chuyển sang `spec-hinh-cay-nhanh.md` (CEO duyệt mockup). Trong file này: §0 bảng khái niệm, §2.5 luật 1 phần "bài kế thừa GT bài cha", §2.6 (cành nhỏ `hinh_mo_hinh_nhom`) đã BỊ THAY — đọc spec mới. Phần kho bài/ý/pipeline nhập (§1, §3, §4) vẫn đúng.**

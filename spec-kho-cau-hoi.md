@@ -1,6 +1,6 @@
 # spec-kho-cau-hoi.md — KHO CÂU HỎI: đưa câu vào kho (ảnh · tài liệu · đề thi) · clone · quy chuẩn hiển thị · vẽ lại hình · một câu gồm gì · trắc nghiệm · điền ô · báo sai (spec #3 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — chờ Thùy duyệt.** Chưa thay file nguồn nào; chừng nào Thùy chưa duyệt, file nguồn vẫn là nguồn đúng (`SPEC-INDEX.md` bảng A).
+> **Trạng thái: THÙY CHỐT 17/11/2026** ("Chốt theo đề xuất" Q1–Q13, bảng cuối §8). Spec này là nguồn đúng; nguồn đã gộp trọn chuyển `_luu-tru/` (còn ở gốc: `spec-kho-chuan.md` phần quy trình duyệt → chờ #5 · `spec-de-thi.md` phần màn/duyệt/thi → chờ #4).
 > **Gộp từ:** `spec-mcq-form.md` · `spec-mcq-quy-trinh-sinh.md` · `spec-mcq-tung-phan.md` · `spec-dien-o.md` · `spec-clone-ai.md` · `spec-kho-chuan.md` (phần định nghĩa "câu vào kho") ·
 > **lượt 2 (17/11, Thùy định lại phạm vi: "Cách nhập kho từ ảnh, cách nhập kho từ đề thi, clone kho, quy chuẩn hiển thị trong kho, vẽ lại hình của kho…"):**
 > `spec-de-thi.md` (phần bóc câu + lưu cấu trúc đề) · `spec-format-noidung.md` (phần hiển thị câu / lời giải) · `.claude/commands/nhap-kho.md` · `.claude/commands/nhap-de-thi.md` (thao tác máy — giữ tại chỗ, spec này trỏ) · đầu tệp các script `scripts/anh/*` · `scripts/kho/*` · `scripts/nhap_kho.mjs`.
@@ -300,6 +300,23 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 - **Q11.** Clone trong ERP (L17): giữ nút clone-ngay (ghi thẳng kho, "Duyệt luôn") hay chỉ còn nút đưa vào hàng đợi (đường 1, có nhân chứng)? CTO nghiêng: bỏ "Duyệt luôn", clone ERP ghi `da_duyet=false` và đi chung hàng duyệt của Q5.
 - **Q12.** Số thập phân trong dữ liệu kho (L18): dấu phẩy theo `spec-giai-bai` cho mọi đường? CTO đề xuất: có — sửa `FMT_RULES` cho khớp (bộ hiển thị đã hiện đúng phẩy thập phân).
 - **Q13.** Nhập chuỗi câu từ ảnh / PDF trong ERP (L19): giữ cho nhân sự dùng, hay gỡ như đã gỡ nhập đề thi bằng Gemini 01/10 (mọi tài liệu đi folder + Claude, §10)? Chưa đo được còn ai dùng (đường này không ghi nhãn riêng).
+
+**✅ THÙY CHỐT 17/11 — "Chốt theo đề xuất"** (Q1–Q13; việc DB / app chỉ làm khi có lệnh riêng, một bước một lần):
+| Q | Quyết định |
+|---|---|
+| Q1 | **Đóng băng điền ô Đại** (449 form giữ nguyên, không sinh thêm, không làm hàm duyệt / `fn_chon_form`). Điền ô chỉ còn ở Hình chứng minh. |
+| Q2 | **Hình theo luật chung**: `kho_chuan` của Hình đổi về `_kho_cau_chuan` (câu mới phải `da_duyet`). Khi làm: đo trước số câu rời kho (17/11: 3.692) + báo trưởng khối Hình. |
+| Q3 | **Bật trigger thu hồi form TN khi sửa đáp số** (như điền ô). 13 form đang lệch ⇒ trưởng khối môn soát. |
+| Q4 | **25 form TN Hình chờ ⇒ kho rác** (`xoa_at`, không xoá cứng). |
+| Q5 | **Bỏ bảng nháp clone**: clone ghi thẳng kho `da_duyet=false`, đi chung một hàng duyệt; đáp số clone có nhân chứng máy/Opus trước khi duyệt. 5.665 nháp cũ: đưa qua cùng hàng hoặc rác — hỏi khi làm. |
+| Q6 | **Bỏ vế "câu cũ tạm dùng"** (kho chuẩn = `da_duyet` thuần) ngay khi quét xong 353 Đại + 1 HGT còn lại. |
+| Q7 | **Cho máy ký** form TN (`duyet_nguon` kiểu `may`) khi verify 0 FAIL + độ lừa đủ; form không qua ⇒ trưởng khối môn duyệt. |
+| Q8 | **Ranh giới:** `spec-giai-bai` giữ LUẬT; spec này giữ QUY TRÌNH + CÔNG CỤ + DỮ LIỆU. `SPEC-INDEX` đã sửa (dòng 3 thêm `spec-de-thi` phần bóc câu + `spec-format-noidung` phần hiển thị câu; dòng 5 bỏ `spec-de-thi`). |
+| Q9 | Sửa `ghi.mjs` ghi `nguon_giai='ai'`, `giai_method='claude_code'`, `ai_model` **trước batch kế tiếp**; vá câu cũ CHỈ với đề có `.soan.md` làm nhân chứng. |
+| Q10 | Mọi đường gắn `anh_de` lúc tạo câu gọi `ghiNhanHinh` cùng transaction, mặc định `goc`; 118 câu mới gắn `goc` khi có lệnh. |
+| Q11 | **Bỏ "Duyệt luôn"** ở clone ERP: ghi `da_duyet=false`, đi chung hàng duyệt Q5. |
+| Q12 | **Dấu phẩy thập phân** cho mọi đường; sửa `FMT_RULES` cho khớp `spec-giai-bai`. |
+| Q13 | (không có đề xuất ghi sẵn — CTO chọn) **Giữ tạm** đường nhập ảnh/PDF trong ERP, thêm nhãn nguồn để đo lượt dùng; 2 tuần không ai dùng ⇒ gỡ như nhập đề thi 01/10. |
 
 ## 9. Lịch sử quyết định
 

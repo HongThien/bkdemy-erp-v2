@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-ban-do-toan.md` (#2). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-ban-do-k12.md — P1 LUỒNG KHO: BẢN ĐỒ KHỐI 12 (khung chuyên đề + thứ tự + dạng)
 
 > **Trạng thái: ĐỀ XUẤT v2 của CTO (28/09 tối) — CEO đã trả lời vòng 1 (§6): khung "gần SGK, không 100%" · xoá rác: gật ·

@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` (#3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Quy trình kỹ thuật — Sinh câu TRẮC NGHIỆM (MCQ) cho câu tự luận trong kho
 
 > Tài liệu này KHÁC `spec-mcq-form.md` (đó là quyết định PHẠM VI/Ý ĐỊNH của CEO cho Pool 1 gốc — 08/09).
