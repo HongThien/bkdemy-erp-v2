@@ -81612,3 +81612,21 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **PH:** app phụ huynh chưa có màn Mục tiêu tuần (repo `bkdemy-ph-app`), chỉ ghi luật vào spec.
 
 ## 17/11 12:30 — HANDOFF: mục 17/11 (gộp spec + mastery luật mới + HS yếu theo nhóm + sự cố quyền Mục tiêu tuần) — Thùy chuyển sang máy công ty làm tiếp
+
+### 17/11 (13:40–14:00) — Lõi mastery: quy dạng theo tập — mig 202611171340 ĐÃ ÁP (Thùy "Sửa đi" 16/11; so đầy đủ lệch 0)
+
+- **Vì sao tới hôm nay:** job nền hẹn 22:02 ngày 16/11 KHÔNG chạy (phiên bị đóng trước giờ đó, không để lại file kết quả). Trong lúc đó phiên khác đã đổi `_mastery_luot_do_quy` (mig 202611171010 + 171244: chỉ bài TEST tính mastery)
+  ⇒ khoá md5 của bản viết 16/11 không còn khớp. Đã kiểm: hai mốc thay vẫn khớp đúng một lần trên thân mới; `_do_o_quy` / `_do_o_bdm` không đổi luật (có thêm `_do_o_bdm_core` dùng chỗ khác).
+  File đổi tên `202611161722_…` → **`202611171340_mastery_quy_dang_theo_tap.sql`** (chưa từng áp; để xếp SAU hai migration sáng nay khi dựng lại DB từ repo), khoá md5 mới `a0cfd8b7…`.
+- **Phép so đầy đủ 13:41 (`quy-so.mjs`, ngoài giờ HS; mọi lượt áp thử trong giao dịch `repeatable read` rồi rollback; gọi bằng vai admin thật):**
+  (1) **31.542 cặp (câu, mã chép) của cả hệ** × 2 bộ cờ (bdm bật, khtn bật / tắt): 25.728 cặp (82 %) đi đường nhanh, **lệch 0, trùng dòng 0** (26 s).
+  (2) Nguồn lần đo cũ ↔ mới, 60 HS trải đều khối 4 → 12 × 2 bộ cờ: **khớp 120 / 120** (md5 trên 106.756 dòng lần đo).
+  (3) `fn_tong_quan_hs` cũ ↔ mới, 60 HS × (Toán mọi lúc · Toán 2026-11 · Toán 2026-10 · KHTN): **khớp 240 / 240** (239.601 ký tự kết quả, không rỗng).
+  Thời gian `fn_tong_quan_hs` (Toán, mọi lúc, trong DB): **tb 736 → 324 ms · trung vị 631 → 202 ms · max 2.859 → 2.265 ms**.
+- **Áp 13:48** (`migrate --only`). Sau áp: md5 `cc04254c…`, có `cap_n`; đo lại 5 HS bằng vai admin: khối 4 → 243 ms · 5T → 248 · 9 → 501 · 8 → 602 · **một em khối 7 vẫn 1.155 ms** (63 nghìn lượt chạm trang).
+  Lượt làm mới mastery nền đầu tiên sau áp: 397 ms, 0 lỗi. `check:kien-truc` ✔.
+- **Còn chậm ở đâu:** 18 % cặp vẫn qua hàm cũ — chủ yếu câu KHTN / Lý / Hoá (em học hai môn), câu không còn ở kho Đại, câu HGT. Em nào nhiều cặp loại này thì vẫn ~1 s. Bước kế (chưa làm, chưa đề xuất chính thức): đường nhanh cho câu KHTN / Lý / Hoá + HGT, cùng cách thử.
+  Và `fn_tong_quan_hs` hỏi môn Toán vẫn kéo cả lần đo môn khác rồi mới lọc theo dạng của môn.
+- **`spec-mastery.md` §3:** thêm đoạn "Đường nhanh theo tập" + cảnh báo: đổi luật quy ở `_do_o_quy` / `_do_o_bdm` thì phải đổi cả `cap_n` và so lại mọi cặp.
+- **Thấy thêm (không phải của lượt này):** cổng báo `fn_bctk_lay` (báo cáo tuần trưởng khối) trung bình 1.173 ms × 36 lượt — hàm vừa được phiên khác sửa sáng nay; chưa xem.
+- **Bài học:** hẹn việc bằng job nền qua đêm không sống qua lúc đóng phiên, và file kết quả cũng không có ⇒ việc "chạy sau 22 giờ" phải được nói rõ là CHƯA chạy cho tới khi thấy file kết quả; đừng báo trước là "sáng mai có kết quả".

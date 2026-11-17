@@ -63,6 +63,8 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 - Không quy được ⇒ NULL ⇒ ô trống, tự lấp khi câu được gán (CLAUDE §1.5: không đoán).
 - **Cuộn lên 4 cấp** (`_mastery_lan_d`): dạng bài → nhóm (`dai_bdm_dang_bai.nhom_id`) → chuyên đề → chủ đề. **Hình–Học: bài học = dạng = nhóm = chuyên đề** (Thùy 28/10), chủ đề lấy từ bài học. KHTN · Lý · Hoá cuộn qua `tl_bdm_dang_bai_v` / `tl_bdm_nhom_v`.
 - Quy dạng là bước tốn nhất của lõi ⇒ tính **một lần cho mỗi cặp (câu, mã chép)** (CTE `materialized`), không chạy lại cho từng lượt đo.
+- **Đường nhanh theo tập (17/11, mig 202611171340):** trong `_mastery_luot_do_quy`, cặp thuộc "đường thường" — bản đồ mới BẬT · câu có trong `dai_cau_hoi` · không có trong kho KHTN / Lý / Hoá · mã chép không phải bài mô hình · (đã có dạng bài hoặc câu chưa xoá) — được quy **cả tập một lượt** bằng bảng tra `bdm_cau_dang` (CTE `cap_n`), đúng bằng nhánh "câu có ở kho Đại ⇒ `dang_bai_id`" của `_do_o_bdm`. Mọi cặp khác vẫn gọi `_do_o_quy` từng cặp. Đã so 31.542 cặp của cả hệ + 60 HS: lệch 0; hàm tổng quan HS trung vị 631 → 202 ms.
+  **⚠ Đổi luật quy ở `_do_o_quy` / `_do_o_bdm` (thứ tự ưu tiên, điều kiện câu đã xoá, khối giữ bản đồ cũ…) thì PHẢI đổi cả `cap_n` trong `_mastery_luot_do_quy`**, rồi so lại mọi cặp (kịch bản: so `cap_n` với `_do_o_quy` trên toàn bộ cặp của `gami_session_problems` ∪ `bai_test_cau` ∪ `bt_grades`). Bảy bảng `cap_n` đọc cùng một policy `la_thanh_vien()`; đổi policy của một bảng thì xem lại.
 
 ## 4. Công thức — MỘT chỗ
 
