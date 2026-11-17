@@ -3,7 +3,7 @@
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useRef, useState } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
+  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh, nhanHoc,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
 } from '../../lib/mucTieuTuan'
@@ -246,9 +246,10 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
             <div className="grid gap-4 xl:grid-cols-2">
               {([1, 2] as const).map((ph) => (
                 <div key={ph}>
-                  <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Phần 1 · Kiến thức mới' : 'Phần 2 · Ôn tập kiến thức'}</div>
+                  <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Phần 1 · Bài trên lớp' : 'Phần 2 · Ôn tập kiến thức'}</div>
                   {to.nhom.filter((n) => n.phan === ph).length === 0 && <p className="text-[12.5px] text-slate-400">Không có nhóm.</p>}
                   {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} hsId={hs.id} mon={mon} />)}
+                  {ph === 1 && to.sap_hoc && <p className="text-[12px] text-slate-500">Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào tuần sau (BTVN chấm trước buổi kế).</p>}
                 </div>
               ))}
             </div>
@@ -288,7 +289,7 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
   return (
     <div className="mb-1.5 rounded-lg border border-slate-200 px-3 py-2">
       <div className="flex items-baseline gap-2">
-        <span className="flex-1 text-[13px] font-semibold text-slate-800">{n.ten}</span>
+        <span className="flex-1 text-[13px] font-semibold text-slate-800">{n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[11.5px] font-normal text-slate-500">· {nhanHoc(n.ngay_hoc)}</span>}</span>
         {c && <span className={`text-[11.5px] font-bold ${mauChenh(c.huong)}`}>{c.chu}</span>}
         <span className="text-[13px] font-bold text-slate-900">{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
       </div>

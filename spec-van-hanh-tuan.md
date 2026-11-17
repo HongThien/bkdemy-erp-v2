@@ -31,7 +31,7 @@ Mọi bước đọc chung **một bộ dữ liệu** (ca TKB · buổi giáo tr
 | **Trong tuần** | GV / TA | Gán buổi ngày dạy (hệ chọn sẵn buổi kế hoạch — §3.4) · ET · BTVN · chấm · bổ trợ | Builder › Gán lớp · màn buổi | Lần đo ⇒ mastery ⇒ tờ tuần cập nhật |
 | **Liên tục** | HS · PH | Xem tờ tuần (Phần 1 kiến thức mới · Phần 2 ôn tập · Việc của con · hạng) | App HS · app PH | — |
 
-~~Hai chu kỳ lệch nhau một buổi~~ — **BỎ 17/11 (Thùy):** lịch dạy (Giáo trình tuần) và mục tiêu học sinh CÙNG phạm vi: các buổi diễn ra TRONG tuần (§4.2).
+**Hai chu kỳ lệch nhau một buổi** (Thùy chốt lại tối 17/11, thay luật sáng 17/11): lịch dạy (Giáo trình tuần) = các buổi diễn ra trong tuần; mục tiêu học sinh = các buổi có **buổi kế** rơi vào tuần (BTVN chấm xong trong tuần) — ET và BTVN của buổi đi cùng buổi (§4.2).
 
 ## 2. Luật chung của mọi việc theo tuần
 
@@ -136,7 +136,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 ### 3.7 Nối với Mục tiêu tuần
 
-- `_mtt_tinh` thấy **ca chiếu từ TKB** (`_gtt_ca`, từ hôm nay — buổi tương lai chưa có dòng `buoi_hoc`) ⇒ thấy đủ buổi của tuần ngay thứ Hai (mig `1754`; từ 17/11 chỉ lấy buổi TRONG tuần, bỏ "lùi một buổi").
+- `_mtt_tinh` thấy **ca chiếu từ TKB** (`_gtt_ca`, từ hôm nay — buổi tương lai chưa có dòng `buoi_hoc`) ⇒ thấy đủ buổi của tuần ngay thứ Hai (mig `1754`). Buổi thuộc tuần theo luật §4.2 (buổi kế rơi vào tuần — mig `1800`, tối 17/11); ca chiếu thuộc tuần cũng thành việc "sắp tới".
 - Nhóm của buổi: lớp đã có bản chép ngày đó ⇒ đọc bản chép (như cũ); chưa có ⇒ câu của **buổi kế hoạch** (`gtt_ca` → builder), quy nhóm bằng đúng `_do_o_quy`. Phiên Mục tiêu tuần gom nguồn câu về `_mtt_o_buoi` / `_mtt_o_lui` (mig `1844`).
 - **Không gộp hai lượt chốt**: duyệt giáo trình tuần (thứ Sáu, trưởng bộ môn) ≠ công bố mục tiêu tuần (thứ Hai, trưởng khối sau khi chốt bổ trợ). Cột "Giáo trình x/y" của tab trung tâm Mục tiêu tuần đếm ca TKB + buổi kế hoạch.
 - Sau này: chỉ số **"tỉ lệ dạy đúng giáo trình đã chốt"** = so `gtt_duyet.khung` với bản chép ngày dạy (dữ liệu đã có).
@@ -172,7 +172,13 @@ Builder giáo trình CỦA LỚP ───────────────�
 - Ba người xem **cùng dữ liệu, một bộ hàm**: app HS · app PH · tab trung tâm (Dashboard học tập / Phòng trưởng khối; trưởng khối xem được đủ view của em).
 
 ### 4.2 Cửa sổ & mốc
-- **⭐ SỬA 17/11 (Thùy): KIẾN THỨC MỚI = BÀI CHƯA HỌC, TUẦN TỚI LÀ TUẦN HỌC.** Phần 1 chỉ gồm nhóm của buổi học trong tuần (thứ Hai–CN). Bài của buổi cuối tuần trước đã học xong ⇒ không vào Phần 1, và BTVN của buổi đó không hiện ở Việc của con tuần mới. Luật "lùi một buổi" (13/11) BỎ. Dòng "cuối tuần này con sẽ học thêm… (tính vào tuần sau)" BỎ. Số lần đo: ET buổi trong tuần + BTVN của buổi trong tuần mà buổi kế còn trong tuần (BTVN buổi cuối tuần tính tuần sau). Chi tiết: §4.7 (cũ §3.2).
+- **⭐⭐ LUẬT CỬA SỔ (Thùy chốt tối 17/11, mig `202611171800` — thay luật sáng 17/11):** đơn vị Phần 1 là **BUỔI HỌC**. Buổi thuộc tuần chứa **buổi kế** của lớp
+  (BTVN được chấm xong trước buổi kế — "lùi một buổi"). **ET và BTVN của buổi đi CÙNG buổi** vào tuần đó: Phần 1 = nhóm của các buổi đó, mỗi buổi 2 lần đo dự kiến;
+  Việc của con = ET + BTVN của các buổi đó. **Chỉ bổ trợ (ôn kiến thức đã học — Phần 2) đi theo ngày diễn ra ca.** Lớp 2 buổi/tuần ⇒ mỗi tuần 2 buổi.
+  Vd 6S1 (T3 · T6): tuần 16–22/11 = buổi T6 13/11 + T3 17/11 (ET + BTVN của 2 buổi này); buổi T6 20/11 (ET + BTVN) thuộc tuần 23–29/11.
+  Màn: tên **"Phần 1 · Bài trên lớp"**, mỗi nhóm ghi "học T6 13/11"; buổi trong tuần mà buổi kế sang tuần sau ⇒ dòng "Bài T6 20/11: tính vào tuần sau".
+  **Khởi điểm** của nhóm = mastery TRƯỚC buổi sớm nhất của nhóm trong tuần (ET đã làm trước thứ Hai vẫn là phần tăng của tuần); **mục tiêu** = mastery nếu các lần đo của tuần đều Tốt.
+- ~~SỬA 17/11 sáng: "Kiến thức mới = bài chưa học, Phần 1 = buổi diễn ra trong tuần" (mig 1216 · 1222)~~ — **BỎ tối 17/11**: trộn 2 đồng hồ (bài theo ngày dạy, lần đo theo ngày chấm) ⇒ BTVN buổi cuối tuần rơi vào khe, không thuộc tuần nào.
 - **Lần đo thuộc tuần mà nó được CHẤM XONG** (không theo giờ nộp). "Đã nộp / đúng hạn" theo giờ nộp; "kết quả" theo giờ chấm; đã nộp chưa chấm = "chờ chấm" (việc tồn TA, không tính cho con).
 - Hạn chấm BTVN = hạn đang chạy (lớp từ 18:00 ⇒ xong 2 tiếng trước buổi kế; lớp T7/CN ⇒ trước buổi kế một ngày). Buổi huỷ ⇒ hạn trôi.
 - **00:00 thứ Hai máy chụp** (sổ tuần cũ bất biến · số đầu tuần · nợ). **Chiều thứ Hai người chốt** ở buổi họp sẵn có (bổ trợ) rồi **Công bố** theo lớp. **Không có màn chốt từng em.**
@@ -208,7 +214,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 > Chép NGUYÊN VĂN các mục kỹ thuật của file cũ (file cũ đã chuyển `_luu-tru/spec-muc-tieu-tuan.md`, lịch sử git giữ qua `git mv`).
 > Nhãn "(cũ §x)" = số mục trong file cũ — code / DEVLOG trỏ "spec-muc-tieu-tuan §x" thì tìm nhãn đó ở đây.
 > Mục KHÔNG chép (đã có ở §4.1–§4.6 hoặc §1): mục đích · khái niệm · hai chu kỳ / mốc thứ Hai · nguồn của tờ · mức thành thạo · vòng nợ · thứ tự build.
-> **Khi luật ở §4.1–§4.6 khác chữ trong phụ lục này ⇒ §4.1–§4.6 đúng** (phụ lục là bản ghi kỹ thuật, có đoạn đã cũ — vd luật "lùi một buổi" đã bỏ 17/11).
+> **Khi luật ở §4.1–§4.6 khác chữ trong phụ lục này ⇒ §4.1–§4.6 đúng** (phụ lục là bản ghi kỹ thuật, có đoạn đã cũ — vd đoạn "SỬA 17/11 sáng: Phần 1 = bài học trong tuần" ĐÃ BỎ tối 17/11, luật hiện hành là §4.2).
 
 #### (cũ §0) Phiếu 10 câu (spec-kien-truc.md §9 — soát 16/11 sau khi Thùy sửa kiến trúc 13–15/11)
 
@@ -227,7 +233,8 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 #### (cũ §3.2) Luật cắt cửa sổ
 
-> ⭐ **SỬA 17/11 (Thùy chốt, mig 202611171216) — PHẦN 1 = BÀI HỌC TRONG TUẦN.** "Kiến thức mới phải là bài CHƯA học, và tuần tới là tuần học." Phần 1 chỉ gồm nhóm của các buổi diễn ra
+> ⛔ **ĐOẠN DƯỚI ĐÃ BỎ tối 17/11** (Thùy chốt lại "lùi một buổi", ET + BTVN đi cùng buổi — mig `202611171800`, luật ở §4.2). Giữ để truy lịch sử.
+> ~~⭐ **SỬA 17/11 (Thùy chốt, mig 202611171216) — PHẦN 1 = BÀI HỌC TRONG TUẦN.**~~ "Kiến thức mới phải là bài CHƯA học, và tuần tới là tuần học." Phần 1 chỉ gồm nhóm của các buổi diễn ra
 > trong tuần (thứ Hai–CN). Bài của buổi cuối tuần trước đã học xong ⇒ KHÔNG vào Phần 1 (BTVN của buổi đó vẫn là việc của con nếu hạn nộp rơi trong tuần). Dòng "sẽ học thêm (tính vào tuần sau)" bỏ.
 > Số lần đo k giữ công thức (ET buổi trong tuần + BTVN của buổi mà buổi kế còn trong tuần). Bảng "cửa sổ" bên dưới là luật CŨ 13/11 — chỉ còn đúng cho phần **chấm BTVN**, không còn quyết định nhóm Phần 1.
 > Lớp đã Công bố giữ bản khoá cũ (mtt_ke_hoach) — đổi phải mở khoá.
@@ -248,7 +255,7 @@ Hệ quả: mọi nhóm của tuần đều đủ vòng đo (ET + BTVN) trước
 - **Hạn chấm BTVN = hạn đang chạy thực tế** (không đặt hạn mới): lớp học từ 18:00 ⇒ chấm xong **2 tiếng trước buổi học kế**;
   lớp học thứ Bảy / Chủ nhật (cả ngày) ⇒ chấm xong **trước buổi kế một ngày**.
 - Buổi huỷ / tuần nghỉ ⇒ hạn trôi, lần đo đi theo hạn.
-- ~~Buổi thứ hai của tuần hiện dòng "cuối tuần này con sẽ học thêm… (tính vào tuần sau)"~~ — **BỎ 17/11**: buổi cuối tuần giờ thuộc Phần 1 của chính tuần này; ở app HS · PH · ERP không còn dòng đó.
+- Buổi trong tuần mà buổi kế sang tuần sau ⇒ dòng "Bài T6 20/11: tính vào tuần sau" (bỏ sáng 17/11, **khôi phục tối 17/11** cùng luật §4.2; app HS · PH · ERP).
 
 #### (cũ §5.2b) Mục tiêu tuần tính được (Thùy CHỐT 13/11)
 - Mastery đo **theo lần** (mỗi lần = TB câu của lần đó, mastery = TB ≤ 5 lần gần nhất trong 30 ngày; Hình–Học 3 lần) ⇒ thứ Hai hệ biết

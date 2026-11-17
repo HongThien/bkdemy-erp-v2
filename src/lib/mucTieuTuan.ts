@@ -127,6 +127,8 @@ export function thuNgan(d: string): string {
   return THU[new Date(Date.UTC(y, m - 1, n)).getUTCDay()]
 }
 export const thuNgay = (d: string | null | undefined) => (d ? `${thuNgan(d)} ${ngayNgan(d)}` : '')
+// nhãn ngày học của nhóm (17/11 tối: Phần 1 = bài trên lớp của các buổi thuộc tuần — buổi kế rơi vào tuần; ghi ngày cho khỏi hiểu nhầm "bài chưa học")
+export const nhanHoc = (ngay: string[] | null | undefined) => (ngay && ngay.length ? 'học ' + [...ngay].sort().map(thuNgay).join(', ') : '')
 export const tenTuan = (tuan: string, den: string) => `${ngayNgan(tuan)} – ${ngayNgan(den)}`
 // cộng ngày trên chuỗi 'YYYY-MM-DD' (Date.UTC, không lệch múi giờ)
 export function congNgay(d: string, so: number): string {

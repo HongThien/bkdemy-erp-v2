@@ -1,7 +1,7 @@
 // ============================================================================
 // MucTieuTuanHS — "Mục tiêu tuần" của em (spec-muc-tieu-tuan.md §9.1–9.2, Thùy chốt 12–13/11).
 //   · Đầu màn: Tiến độ mục tiêu tuần (vạch đầu tuần + cờ đích) · Việc của con x/y · Xếp hạng tiến độ (bấm ⇒ top 20 toàn trung tâm).
-//   · Cột trái: Phần 1 Kiến thức mới + Phần 2 Ôn tập — mỗi dòng nhóm GỌN (tên · ▲/▼ · % · cờ ở mục tiêu tuần); bấm mới mở
+//   · Cột trái: Phần 1 Bài trên lớp (buổi thuộc tuần — lùi một buổi, 17/11 tối) + Phần 2 Ôn tập — mỗi dòng nhóm GỌN (tên · ▲/▼ · % · cờ ở mục tiêu tuần); bấm mới mở
 //     danh sách DẠNG của nhóm trong tuần — bấm dạng ⇒ màn dạng của Học từ đầu (Đọc lý thuyết · Luyện tập · Test; Thùy 16/11).
 //     Nhóm chưa thấy dạng nào (giáo trình chưa lên hệ) ⇒ nút chung Xem lại bài trên lớp · Luyện tập.
 //   · Cột phải: Việc của con tuần này (Đã làm / Sắp tới / Tự luyện không bắt buộc), nhãn Tốt · Tạm ổn · Chưa tốt.
@@ -30,7 +30,7 @@ function NenSang({ mon, children }: { mon: string | null; children: ReactNode })
   return <div style={bien}>{children}</div>
 }
 import {
-  mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh,
+  mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh, nhanHoc,
   NHAN_MUC, NHAN_TT, TEN_VIEC,
   type MttKetQua, type MttTo, type MttNhom, type MttViec, type MttTop, type MttTuanCu, type MucDanhGia,
 } from '../../lib/mucTieuTuan'
@@ -135,8 +135,13 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
 
       <div className="grid items-start gap-4 lg:grid-cols-[1.45fr_1fr]">
         <div className="flex flex-col gap-3">
-          <Phan ten="Phần 1 · Kiến thức mới" phu={`${p1.length} nhóm bài`} rong="Tuần này chưa có nhóm bài mới.">
+          <Phan ten="Phần 1 · Bài trên lớp" phu={`${p1.length} nhóm bài`} rong="Tuần này chưa có bài trên lớp.">
             {p1.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon} />)}
+            {to.sap_hoc && (
+              <p className="px-1 text-[13px]" style={{ color: MAU.muted }}>
+                Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào mục tiêu tuần sau — bài về nhà được chấm trước buổi học kế tiếp.
+              </p>
+            )}
           </Phan>
           <Phan ten="Phần 2 · Ôn tập kiến thức" phu={`${p2.length} nhóm bài`} rong="Tuần này em không có nhóm ôn tập.">
             {p2.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon}
@@ -232,7 +237,9 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
     <div style={THE} className="overflow-hidden">
       <button onClick={onBam} className="w-full px-4 pb-1.5 pt-3 text-left" aria-expanded={mo} aria-label={`Mở chi tiết nhóm ${n.ten}`}>
         <div className="flex items-center gap-2.5">
-          <span className="min-w-0 flex-1 text-[15.5px] font-bold" style={{ color: MAU.ink }}>{n.ten}</span>
+          <span className="min-w-0 flex-1 text-[15.5px] font-bold" style={{ color: MAU.ink }}>
+            {n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[12.5px] font-semibold" style={{ color: MAU.muted }}>· {nhanHoc(n.ngay_hoc)}</span>}
+          </span>
           {c && <span className="text-[12.5px] font-bold" style={{ color: mauChenh(c.huong) }}>{c.chu}</span>}
           <span className="text-[18px] font-extrabold" style={{ color: mauPct(n.p) }}>{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
           <span className="text-[14px]" style={{ color: MAU.muted, transform: mo ? 'rotate(180deg)' : 'none' }}>⌄</span>
