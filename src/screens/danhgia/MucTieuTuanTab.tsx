@@ -1,7 +1,7 @@
 // Tab "Mục tiêu tuần" — Dashboard học tập (cũng hiện trong Phòng làm việc trưởng khối vì phòng dùng chung màn này).
 // spec-muc-tieu-tuan.md §9.3: lọc môn · khối · tuần · 4 ô tổng · bảng theo lớp (nháp / đã công bố + nút Công bố) ·
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   mttTrungTam, mttCuaHs, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
@@ -9,7 +9,7 @@ import {
 } from '../../lib/mucTieuTuan'
 
 // rời tab quay lại = đúng chỗ cũ (CLAUDE §React)
-const NHO: { tuan: string | null; khoa: string; data: MttTrungTam | null } = { tuan: null, khoa: '', data: null }
+const NHO: { tuan: string | null; khoa: string; data: MttTrungTam | null; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null } = { tuan: null, khoa: '', data: null, lop: null, hs: null }
 
 const mauMuc = (m: MucDanhGia | null) => m === 'tot' ? 'bg-emerald-100 text-emerald-800' : m === 'tam_on' ? 'bg-amber-100 text-amber-800' : m === 'chua_tot' ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-500'
 const mauChenh = (h?: string) => h === 'len' ? 'text-emerald-700' : h === 'xuong' ? 'text-rose-600' : 'text-slate-500'
@@ -23,11 +23,15 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
   const [loi, setLoi] = useState<string | null>(null)
   const [dangChot, setDangChot] = useState<string | null>(null)
   const [tb, setTb] = useState<string | null>(null)
-  const [xemHs, setXemHs] = useState<{ id: string; ten: string } | null>(null)
+  const [xemHs, setXemHs] = useState<{ id: string; ten: string } | null>(NHO.hs)
   const [moTop, setMoTop] = useState(false)
-  const [xemLop, setXemLop] = useState<{ id: string; ten: string } | null>(null)
+  const [xemLop, setXemLop] = useState<{ id: string; ten: string } | null>(NHO.lop)
   const [lanDau, setLanDau] = useState(lamMoi)
   useEffect(() => { NHO.tuan = tuan }, [tuan])
+  useEffect(() => { NHO.lop = xemLop; NHO.hs = xemHs }, [xemLop, xemHs])
+  // đổi môn / khối ⇒ lớp và em đang xem không còn thuộc ngữ cảnh mới ⇒ về tổng quan (lần mount đầu giữ chỗ cũ)
+  const ngCanh = useRef(mon + '|' + khoi)
+  useEffect(() => { const k = mon + '|' + khoi; if (ngCanh.current !== k) { ngCanh.current = k; setXemLop(null); setXemHs(null) } }, [mon, khoi])
 
   // đổi ngữ cảnh (môn/khối/tuần) hoặc bấm ↻ ⇒ tải lại; quay lại tab cùng ngữ cảnh ⇒ dùng bản đã nhớ
   useEffect(() => {
@@ -78,7 +82,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
       </div>
       {tb && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{tb}</div>}
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
-      {!data ? (dangTai ? <p className="text-sm text-slate-500">Đang tải…</p> : null) : (
+      {!data ? (dangTai ? <p className="text-sm text-slate-500">Đang tải…</p> : null) : (xemLop || xemHs) ? null : (
         <div className={`space-y-3 ${dangTai ? 'opacity-60' : ''}`}>
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
             <div className={tile}>
@@ -128,7 +132,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                   {data.lop.map((l) => (
                     <tr key={l.lop_id} className="border-t border-slate-100">
                       <td className="px-3 py-2">
-                        <button onClick={() => setXemLop({ id: l.lop_id, ten: l.ten_lop })} title="Xem mục tiêu tuần của từng em trong lớp"
+                        <button onClick={() => setXemLop({ id: l.lop_id, ten: l.ten_lop })} title="Mở danh sách học sinh của lớp"
                           className="font-semibold text-indigo-700 hover:underline">{l.ten_lop} ›</button>
                       </td>
                       <td className="px-2 py-2 text-center">{l.si_so}</td>
@@ -155,7 +159,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
                 </tbody>
               </table>
               <div className="space-y-1 px-4 pb-3 pt-1 text-[11.5px] text-slate-500">
-                <p><b className="text-slate-700">Thứ Hai</b> hệ tự đọc giáo trình + bổ trợ của tuần và dựng mục tiêu tuần cho từng em (bản NHÁP, tự cập nhật khi sửa giáo trình / duyệt bổ trợ). <b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách cả lớp ⇒ bấm tên em ⇒ tờ của em để kiểm.</p>
+                <p><b className="text-slate-700">Thứ Hai</b> hệ tự đọc giáo trình + bổ trợ của tuần và dựng mục tiêu tuần cho từng em (bản NHÁP, tự cập nhật khi sửa giáo trình / duyệt bổ trợ). <b className="text-slate-700">Bấm tên lớp</b> ⇒ danh sách học sinh bên trái ⇒ bấm tên em ⇒ tờ mục tiêu của em hiện bên phải.</p>
                 <p><b className="text-slate-700">Công bố</b> = khoá mục tiêu của từng em (nhóm bài, dạng, cờ mục tiêu tuần, danh sách việc) và đưa lên app học sinh + phụ huynh. Bấm sau khi đã chốt bổ trợ. Sửa giáo trình / duyệt thêm bổ trợ sau khi công bố ⇒ không đổi mục tiêu tuần này, hiện thành "thêm sau khi công bố".</p>
                 <p><b className="text-slate-700">Kết quả tuần</b> do máy tự chốt lúc 00:00 thứ Hai vào sổ (không sửa được); người chỉ xem. Trong tuần chỉ số đo chạy (vài phút một lần).</p>
                 <p><b className="text-slate-700">Tiến độ</b> của 1 em = trung bình các nhóm bài (đã có số) của em: % hiện tại ÷ mục tiêu TUẦN, tối đa 100%. Vd mục tiêu tuần 80%, em đang 40% ⇒ 50%. Đầu tuần thường thấp vì nhiều lần đo trong tuần chưa diễn ra.</p>
@@ -169,7 +173,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
               </div>
               {data.em.length === 0 && <p className="px-4 pb-4 text-[13px] text-slate-500">Không có em nào cần để ý.</p>}
               {data.em.map((e) => (
-                <button key={e.id} onClick={() => setXemHs({ id: e.id, ten: e.ten })} className="flex w-full items-start gap-3 border-t border-slate-100 px-4 py-2.5 text-left hover:bg-slate-50">
+                <button key={e.id} onClick={() => { const l = data.lop.find((x) => x.ten_lop === e.lop); setXemLop(l ? { id: l.lop_id, ten: l.ten_lop } : null); setXemHs({ id: e.id, ten: e.ten }) }} className="flex w-full items-start gap-3 border-t border-slate-100 px-4 py-2.5 text-left hover:bg-slate-50">
                   <span className="min-w-0 flex-1">
                     <span className="block text-[13.5px] font-semibold text-slate-800">{e.ten} <span className="font-normal text-slate-500">· {e.lop ?? ''}</span></span>
                     <span className="block text-[12px] text-slate-500">{e.ly_do.join(' · ')}</span>
@@ -181,15 +185,17 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
           </div>
         </div>
       )}
-      {xemHs && <ToHsPopup hs={xemHs} mon={mon} tuan={tuan} onDong={() => setXemHs(null)} />}
+      {data && (xemLop || xemHs) && (
+        <KhongGianLop lops={data.lop} lop={xemLop} hs={xemHs} mon={mon} tuan={tuan}
+          onChonLop={(l) => { setXemLop(l); setXemHs(null) }} onChonHs={setXemHs} onVe={() => { setXemLop(null); setXemHs(null) }} />
+      )}
       {moTop && <TopPopup mon={mon} tuan={tuan} onDong={() => setMoTop(false)} />}
-      {xemLop && !xemHs && <LopPopup lop={xemLop} tuan={tuan} onDong={() => setXemLop(null)} onMoEm={(id, ten) => setXemHs({ id, ten })} />}
     </div>
   )
 }
 
 // ── tờ của 1 em (nhân sự xem được cả khi lớp chưa chốt) ─────────────────────
-function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string }; mon: string; tuan: string; onDong: () => void }) {
+function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: string; tuan: string }) {
   const [to, setTo] = useState<MttTo | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
   const [xem, setXem] = useState<'tuan' | 'cac_tuan'>('tuan')
@@ -210,8 +216,7 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
     return () => { alive = false }
   }, [hs.id, mon, tuan])
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-900/40 p-4" onClick={onDong}>
-      <div className="w-full max-w-3xl rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+    <div>
         <div className="flex items-start gap-3">
           <div className="flex-1">
             <div className="text-[17px] font-bold text-slate-900">{hs.ten}{to?.hs.lop ? ` · ${to.hs.lop}` : ''}</div>
@@ -226,7 +231,6 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
             <button onClick={() => setXem('tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Tuần này</button>
             <button onClick={() => setXem('cac_tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'cac_tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Các tuần đã chốt</button>
           </div>
-          <button onClick={onDong} className="h-8 rounded-md px-3 text-[13px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng</button>
         </div>
         {xem === 'cac_tuan' && <CacTuanEm ds={cac} />}
         {xem === 'tuan' && loi && <p className="mt-4 text-[13px] text-slate-500">{loi}</p>}
@@ -239,7 +243,7 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
               <span className="rounded-lg bg-slate-50 px-3 py-1.5">Hạng <b>{to.hang ?? '—'}</b>{to.so_hs ? ` / ${to.so_hs}` : ''}</span>
               <span className="rounded-lg bg-slate-50 px-3 py-1.5">Tự luyện <b>{to.tu_luyen.so_cau}</b> câu{to.tu_luyen.pct != null ? ` · đúng ${to.tu_luyen.pct}%` : ''}</span>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 xl:grid-cols-2">
               {([1, 2] as const).map((ph) => (
                 <div key={ph}>
                   <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Phần 1 · Kiến thức mới' : 'Phần 2 · Ôn tập kiến thức'}</div>
@@ -268,7 +272,6 @@ function ToHsPopup({ hs, mon, tuan, onDong }: { hs: { id: string; ten: string };
             </div>
           </div>
         )}
-      </div>
     </div>
   )
 }
@@ -374,53 +377,70 @@ function TopPopup({ mon, tuan, onDong }: { mon: string; tuan: string; onDong: ()
   )
 }
 
-// danh sách CẢ LỚP — bấm em ⇒ tờ của em (ToHsPopup). Đọc 1 lần khi mở (fn_mtt_ds_lop), quay lại từ tờ em không đọc lại.
+// KHÔNG GIAN LỚP (Thùy 17/11): bấm lớp ⇒ KHÔNG popup, chuyển sang màn làm việc chính của trưởng khối —
+// trái = danh sách học sinh của lớp, phải = tờ mục tiêu tuần của em đang chọn. Đọc danh sách 1 lần khi mở (fn_mtt_ds_lop), đổi em không đọc lại.
 const NHO_LOP: Record<string, MttEmLop[]> = {}
-function LopPopup({ lop, tuan, onDong, onMoEm }: { lop: { id: string; ten: string }; tuan: string; onDong: () => void; onMoEm: (id: string, ten: string) => void }) {
+function KhongGianLop({ lops, lop, hs, mon, tuan, onChonLop, onChonHs, onVe }: {
+  lops: { lop_id: string; ten_lop: string }[]; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null
+  mon: string; tuan: string; onChonLop: (l: { id: string; ten: string }) => void; onChonHs: (h: { id: string; ten: string }) => void; onVe: () => void
+}) {
+  const chip = (on: boolean) => `h-7 rounded-full px-3 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`
+  return (
+    <div className="space-y-3">
+      <div className="no-nut-ve flex flex-wrap items-center gap-1.5">
+        <button onClick={onVe} className="mr-1 h-7 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">← Tổng quan khối</button>
+        {lops.map((l) => <button key={l.lop_id} onClick={() => onChonLop({ id: l.lop_id, ten: l.ten_lop })} className={chip(lop?.id === l.lop_id)}>{l.ten_lop}</button>)}
+      </div>
+      <div className="grid gap-3 lg:h-[calc(100vh-250px)] lg:min-h-[460px] lg:grid-cols-[minmax(300px,380px)_minmax(0,1fr)]">
+        <div className="overflow-y-auto rounded-xl border border-slate-200 bg-white">
+          {lop ? <DanhSachEm lop={lop} tuan={tuan} chon={hs?.id ?? null} onChon={onChonHs} />
+            : <p className="p-4 text-[13px] text-slate-500">Chọn một lớp ở trên để xem danh sách học sinh.</p>}
+        </div>
+        <div className="overflow-y-auto rounded-xl border border-slate-200 bg-white p-4">
+          {hs ? <ToHsPanel key={hs.id + '|' + tuan} hs={hs} mon={mon} tuan={tuan} />
+            : <div className="flex h-full min-h-[200px] items-center justify-center text-[13.5px] text-slate-400">Bấm tên một học sinh bên trái để xem tờ mục tiêu tuần của em.</div>}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DanhSachEm({ lop, tuan, chon, onChon }: { lop: { id: string; ten: string }; tuan: string; chon: string | null; onChon: (h: { id: string; ten: string }) => void }) {
   const khoa = lop.id + '|' + tuan
   const [ds, setDs] = useState<MttEmLop[] | null>(NHO_LOP[khoa] ?? null)
   const [loi, setLoi] = useState<string | null>(null)
   useEffect(() => {
+    setDs(NHO_LOP[khoa] ?? null); setLoi(null)
     if (NHO_LOP[khoa]) return
     let alive = true
     mttDsLop(lop.id, tuan).then((d) => { NHO_LOP[khoa] = d; if (alive) setDs(d) }).catch((e) => alive && setLoi(String(e?.message ?? e)))
     return () => { alive = false }
   }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-900/40 p-4" onClick={onDong}>
-      <div className="w-full max-w-3xl rounded-2xl bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-start gap-3">
-          <div className="flex-1">
-            <div className="text-[17px] font-bold text-slate-900">Lớp {lop.ten} · mục tiêu tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))}</div>
-            <div className="text-[12.5px] text-slate-500">Bấm tên em để mở tờ mục tiêu tuần của em. Tiến độ = % đi tới mục tiêu tuần của chính em.</div>
-          </div>
-          <button onClick={onDong} className="h-8 rounded-md px-3 text-[13px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng</button>
-        </div>
-        {loi && <p className="mt-4 text-[13px] text-rose-600">{loi}</p>}
-        {!ds && !loi && <p className="mt-4 text-[13px] text-slate-500">Đang tải…</p>}
-        {ds && ds.length === 0 && <p className="mt-4 text-[13px] text-slate-500">Lớp chưa có em nào.</p>}
-        {ds && ds.length > 0 && (
-          <table className="mt-3 min-w-full text-[13px]">
-            <thead className="bg-slate-50 text-[11.5px] font-semibold text-slate-600">
-              <tr><th className="px-3 py-2 text-left">Học sinh</th><th className="px-2 py-2">Tiến độ</th><th className="px-2 py-2">So đầu tuần</th>
-                <th className="px-2 py-2">Việc đã làm</th><th className="px-2 py-2">Nhóm bài · nợ</th><th className="px-2 py-2">Hạng</th></tr>
-            </thead>
-            <tbody>
-              {ds.map((e) => (
-                <tr key={e.id} className="cursor-pointer border-t border-slate-100 hover:bg-indigo-50/40" onClick={() => onMoEm(e.id, e.ten)}>
-                  <td className="px-3 py-2 font-semibold text-indigo-700">{e.ten}</td>
-                  <td className="px-2 py-2 text-center font-bold text-slate-900">{e.co_to ? so(e.tien_do, '%') : <span className="font-normal text-slate-400">chưa có tờ</span>}</td>
-                  <td className={`px-2 py-2 text-center text-[12px] font-bold ${e.tien_do_d == null ? 'text-slate-400' : e.tien_do_d > 0 ? 'text-emerald-700' : e.tien_do_d < 0 ? 'text-rose-600' : 'text-slate-500'}`}>
-                    {e.tien_do_d == null ? '—' : e.tien_do_d > 0 ? `▲ ${e.tien_do_d}` : e.tien_do_d < 0 ? `▼ ${-e.tien_do_d}` : '= 0'}</td>
-                  <td className="px-2 py-2 text-center">{e.co_to ? `${e.viec_xong ?? 0}/${e.viec_tong ?? 0}` : '—'}</td>
-                  <td className="px-2 py-2 text-center">{e.co_to ? `${e.so_nhom ?? 0} · ${e.so_no ?? 0}` : '—'}</td>
-                  <td className="px-2 py-2 text-center">{e.hang ? `#${e.hang}` : '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+    <div>
+      <div className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2.5">
+        <div className="text-[14px] font-bold text-slate-800">Lớp {lop.ten}{ds ? ` · ${ds.length} em` : ''}</div>
+        <div className="text-[11.5px] text-slate-500">Tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))} · tiến độ = % đi tới mục tiêu tuần của chính em</div>
       </div>
+      {loi && <p className="p-4 text-[13px] text-rose-600">{loi}</p>}
+      {!ds && !loi && <p className="p-4 text-[13px] text-slate-500">Đang tải…</p>}
+      {ds && ds.length === 0 && <p className="p-4 text-[13px] text-slate-500">Lớp chưa có em nào.</p>}
+      {ds?.map((e) => (
+        <button key={e.id} onClick={() => onChon({ id: e.id, ten: e.ten })}
+          className={`flex w-full items-center gap-2 border-b border-slate-100 px-4 py-2 text-left hover:bg-indigo-50/50 ${chon === e.id ? 'bg-indigo-50 ring-1 ring-inset ring-indigo-200' : ''}`}>
+          <span className="min-w-0 flex-1">
+            <span className={`block truncate text-[13.5px] font-semibold ${chon === e.id ? 'text-indigo-800' : 'text-slate-800'}`}>{e.ten}</span>
+            <span className="block text-[11.5px] text-slate-500">
+              {e.co_to ? `Việc ${e.viec_xong ?? 0}/${e.viec_tong ?? 0} · ${e.so_nhom ?? 0} nhóm · nợ ${e.so_no ?? 0}${e.hang ? ` · #${e.hang}` : ''}` : 'chưa có tờ'}
+            </span>
+          </span>
+          {e.co_to && <span className="text-right">
+            <span className="block text-[14px] font-bold text-slate-900">{so(e.tien_do, '%')}</span>
+            <span className={`block text-[11px] font-bold ${e.tien_do_d == null ? 'text-slate-400' : e.tien_do_d > 0 ? 'text-emerald-700' : e.tien_do_d < 0 ? 'text-rose-600' : 'text-slate-500'}`}>
+              {e.tien_do_d == null ? '—' : e.tien_do_d > 0 ? `▲ ${e.tien_do_d}` : e.tien_do_d < 0 ? `▼ ${-e.tien_do_d}` : '= 0'}</span>
+          </span>}
+        </button>
+      ))}
     </div>
   )
 }
