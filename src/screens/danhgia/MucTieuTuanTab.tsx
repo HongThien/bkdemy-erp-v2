@@ -3,9 +3,9 @@
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useRef, useState } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
+  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
-  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop,
+  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
 } from '../../lib/mucTieuTuan'
 
 // rời tab quay lại = đúng chỗ cũ (CLAUDE §React)
@@ -248,7 +248,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
                 <div key={ph}>
                   <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Phần 1 · Kiến thức mới' : 'Phần 2 · Ôn tập kiến thức'}</div>
                   {to.nhom.filter((n) => n.phan === ph).length === 0 && <p className="text-[12.5px] text-slate-400">Không có nhóm.</p>}
-                  {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} />)}
+                  {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} hsId={hs.id} mon={mon} />)}
                 </div>
               ))}
             </div>
@@ -276,9 +276,16 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
   )
 }
 
-function DongNhom({ n }: { n: MttNhom }) {
+function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
   const c = nhanChenh(n.p, n.d)
-  const [moDang, setMoDang] = useState(false)   // dạng bài ẩn mặc định — bấm "Chi tiết" mới hiện
+  const [moDang, setMoDang] = useState(false)   // dạng bài ẩn mặc định — bấm "Chi tiết" mới hiện (và mới gọi tình trạng từng dạng)
+  const [tt, setTt] = useState<Map<string, MttDangTT> | null>(null)
+  useEffect(() => {
+    if (!moDang || tt || !(n.dang?.length)) return
+    let alive = true
+    mttDangTinhTrang(hsId, mon, n.dang.map((d) => d.ma)).then((r) => alive && setTt(new Map(r.map((x) => [x.ma, x])))).catch(() => alive && setTt(new Map()))
+    return () => { alive = false }
+  }, [moDang]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="mb-1.5 rounded-lg border border-slate-200 px-3 py-2">
       <div className="flex items-baseline gap-2">
@@ -308,12 +315,17 @@ function DongNhom({ n }: { n: MttNhom }) {
       </div>
       {moDang && (
         <div className="mt-1.5 divide-y divide-slate-100 rounded-md border border-slate-100">
-          {n.dang!.map((d) => (
-            <div key={d.ma} className="flex items-center gap-2 px-2.5 py-1.5 text-[12px]">
-              <span className="min-w-0 flex-1 truncate text-slate-700" title={d.ten}>{d.ten}</span>
-              {d.p !== undefined && <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${d.p == null ? 'bg-slate-100 text-slate-500' : d.p >= 80 ? 'bg-emerald-100 text-emerald-800' : d.p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{d.p == null ? 'Chưa đo' : `${d.p}%`}</span>}
-            </div>
-          ))}
+          {n.dang!.map((d) => {
+            const x = tt?.get(d.ma)
+            return (
+              <div key={d.ma} className="flex items-center gap-2 px-2.5 py-1.5 text-[12px]">
+                <span className="min-w-0 flex-1 truncate text-slate-700" title={d.ten}>{d.ten}</span>
+                {!tt ? <span className="shrink-0 text-[10.5px] text-slate-400">…</span>
+                  : x ? <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${x.p == null ? 'bg-slate-100 text-slate-500' : x.p >= 80 ? 'bg-emerald-100 text-emerald-800' : x.p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{x.p == null ? 'Chưa đo' : `${x.p}%`}</span>
+                  : null}
+              </div>
+            )
+          })}
         </div>
       )}
     </div>

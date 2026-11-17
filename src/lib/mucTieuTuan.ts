@@ -95,6 +95,13 @@ export async function mttDsLop(lopId: string, tuan?: string | null): Promise<Mtt
   if (error) throw error
   return (data ?? []) as MttEmLop[]
 }
+// Tình trạng (%) từng DẠNG của một em — gọi khi bấm "Chi tiết" của một nhóm (mig 202611171118). Dạng không có dòng ⇒ không hiện nhãn.
+export type MttDangTT = { ma: string; p: number | null; n: number; muc: 'dat' | 'can_luyen' | 'yeu' | null }
+export async function mttDangTinhTrang(hsId: string, mon: string, ma: string[]): Promise<MttDangTT[]> {
+  const { data, error } = await supabase.rpc('fn_mtt_dang_tinh_trang', { p_hs: hsId, p_mon: mon, p_ma: ma })
+  if (error) throw error
+  return (data ?? []) as MttDangTT[]
+}
 // CÔNG BỐ lớp (mig 202611161844; DB giữ tên fn_mtt_chot_lop): CHỈ ghi dòng công bố; tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút) ⇒ da_tinh luôn 0
 export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{ tuan: string; lop_id: string; chot_at: string; da_tinh: number; tong: number }> {
   const { data, error } = await supabase.rpc('fn_mtt_chot_lop', { p_lop: lopId, p_tuan: tuan ?? null })
