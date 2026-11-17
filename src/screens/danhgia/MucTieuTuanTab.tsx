@@ -278,6 +278,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
 
 function DongNhom({ n }: { n: MttNhom }) {
   const c = nhanChenh(n.p, n.d)
+  const [moDang, setMoDang] = useState(false)   // dạng bài ẩn mặc định — bấm "Chi tiết" mới hiện
   return (
     <div className="mb-1.5 rounded-lg border border-slate-200 px-3 py-2">
       <div className="flex items-baseline gap-2">
@@ -297,10 +298,24 @@ function DongNhom({ n }: { n: MttNhom }) {
           <span className="absolute top-[22px] -translate-x-1/2 text-[10.5px] font-bold text-slate-700" style={{ left: `${n.mt}%` }}>{n.mt}%</span>
         </>}
       </div>
-      <div className="text-[11.5px] text-slate-500">
-        Cờ = mục tiêu tuần {n.mt == null ? '— (tuần này không có lần đo)' : `${n.mt}%`} · đích {n.dich}% · {n.k} lần đo trong tuần{n.n != null ? ` · ${n.n} lần đã đo` : ''}
+      <div className="flex items-center gap-2 text-[11.5px] text-slate-500">
+        <span className="flex-1">{n.mt == null ? 'Tuần này chưa có lần đo' : `Mục tiêu tuần ${n.mt}% · đích ${n.dich}% · ${n.k} lần đo`}</span>
+        {(n.dang?.length ?? 0) > 0 && (
+          <button onClick={() => setMoDang((v) => !v)} className="font-semibold text-indigo-700 hover:underline">
+            {moDang ? 'Ẩn chi tiết ▴' : `Chi tiết · ${n.dang!.length} dạng ▾`}
+          </button>
+        )}
       </div>
-      {(n.dang?.length ?? 0) > 0 && <div className="text-[11.5px] text-slate-600">Dạng tuần này: {n.dang!.map((d) => d.ten).join(' · ')}</div>}
+      {moDang && (
+        <div className="mt-1.5 divide-y divide-slate-100 rounded-md border border-slate-100">
+          {n.dang!.map((d) => (
+            <div key={d.ma} className="flex items-center gap-2 px-2.5 py-1.5 text-[12px]">
+              <span className="min-w-0 flex-1 truncate text-slate-700" title={d.ten}>{d.ten}</span>
+              {d.p !== undefined && <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${d.p == null ? 'bg-slate-100 text-slate-500' : d.p >= 80 ? 'bg-emerald-100 text-emerald-800' : d.p >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{d.p == null ? 'Chưa đo' : `${d.p}%`}</span>}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

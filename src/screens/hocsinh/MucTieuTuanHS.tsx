@@ -11,6 +11,7 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { ManHS, DauTrangHS, TheHS, NutHS, NhanHS, NhomHS, TrongHS, MAU, THE, HEAD } from './skin/KhungHS'
 import { monCuaHS } from '../../lib/tuluyen'
+import { htdLoTrinh, type DangHTD } from '../../lib/hoctudau'
 import { mauDocMon } from './skin/registry'
 
 // Thùy 13/11: "UI để nền trắng cho dễ nhìn, đừng để nền tối" — màn này là màn ĐỌC (design/STYLE-HS.md §Menu vs màn riêng):
@@ -210,8 +211,28 @@ function Co({ className = '', style }: { className?: string; style?: CSSProperti
 }
 
 // dòng nhóm GỌN — cờ ở mục tiêu TUẦN (số dưới cờ) + vạch mờ "đích 80%" khi mục tiêu tuần còn thấp hơn
+// tình trạng từng dạng = lộ trình Học từ đầu của chính em (htd_lo_trinh) — chỉ đọc khi mở chi tiết 1 nhóm có dạng, nhớ theo môn
+const NHO_LO_TRINH: Record<string, Map<string, DangHTD>> = {}
+function useTinhTrangDang(mon: string, can: boolean) {
+  const [m, setM] = useState<Map<string, DangHTD> | null>(NHO_LO_TRINH[mon] ?? null)
+  useEffect(() => {
+    if (!can || NHO_LO_TRINH[mon]) { if (NHO_LO_TRINH[mon]) setM(NHO_LO_TRINH[mon]); return }
+    let alive = true
+    htdLoTrinh(mon).then((ds) => { const x = new Map(ds.map((d) => [d.ma_dang, d])); NHO_LO_TRINH[mon] = x; if (alive) setM(x) }).catch(() => {})
+    return () => { alive = false }
+  }, [mon, can])
+  return m
+}
+const tinhTrangDang = (d?: DangHTD): { chu: string; mau: string } =>
+  !d ? { chu: 'Chưa học', mau: MAU.muted }
+  : d.xong ? { chu: '✓ Đã xong', mau: MAU.dung }
+  : !d.mo ? { chu: '🔒 Chưa mở', mau: MAU.muted }
+  : d.doc_ly_thuyet ? { chu: 'Đang luyện', mau: MAU.canhBao }
+  : { chu: 'Chưa học', mau: MAU.muted }
+
 function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolean; onBam: () => void; onMo?: (d: DichMoMTT) => void; mon: string; kiemTra?: MttViec[] }) {
   const c = nhanChenh(n.p, n.d)
+  const tt = useTinhTrangDang(mon, mo && (n.dang?.length ?? 0) > 0)
   const mt = n.mt
   return (
     <div style={THE} className="overflow-hidden">
@@ -252,15 +273,18 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
           ))}
           {(n.dang?.length ?? 0) > 0 ? (
             <div className="flex flex-col gap-1.5">
-              <p className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Dạng bài tuần này — bấm để đọc lý thuyết, luyện tập</p>
-              {n.dang!.map((d) => (
-                <button key={d.ma} onClick={() => onMo?.({ mon, ma_dang: d.ma, ten_dang: d.ten })}
-                  className="flex items-center gap-2 px-3 py-2.5 text-left transition active:scale-[0.99]" style={{ ...THE, borderRadius: 'var(--sk-radius)' }}>
-                  <span aria-hidden>📖</span>
-                  <span className="min-w-0 flex-1 text-[14.5px] font-semibold" style={{ color: MAU.ink }}>{d.ten}</span>
-                  <span className="text-[13px] font-bold" style={{ color: MAU.acc }}>Học ›</span>
-                </button>
-              ))}
+              <p className="text-[12.5px] font-semibold" style={{ color: MAU.muted }}>Các dạng bài tuần này · bấm một dạng để học</p>
+              {n.dang!.map((d) => {
+                const t = tinhTrangDang(tt?.get(d.ma))
+                return (
+                  <button key={d.ma} onClick={() => onMo?.({ mon, ma_dang: d.ma, ten_dang: d.ten })}
+                    className="flex items-center gap-2 px-3 py-2.5 text-left transition active:scale-[0.99]" style={{ ...THE, borderRadius: 'var(--sk-radius)' }}>
+                    <span className="min-w-0 flex-1 truncate text-[14px] font-semibold" style={{ color: MAU.ink }} title={d.ten}>{d.ten}</span>
+                    <span className="shrink-0 text-[12px] font-bold" style={{ color: tt ? t.mau : MAU.muted }}>{tt ? t.chu : '…'}</span>
+                    <span className="shrink-0 text-[13px] font-bold" style={{ color: MAU.acc }}>›</span>
+                  </button>
+                )
+              })}
             </div>
           ) : (
             <div className="flex flex-wrap gap-2">

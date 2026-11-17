@@ -12,7 +12,7 @@ export type MttNhom = {
   ma: string; ten: string; phan: 1 | 2
   p: number | null; n: number | null; p_dau: number | null; d: number | null; mt: number | null; dich: number
   k: number; tong_dang: number; ngay_hoc: string[]; tien: number | null; tien_dau: number | null
-  dang?: { ma: string; ten: string }[]   // dạng của nhóm trong tuần (mig 202611161844) — bấm ⇒ màn dạng Học từ đầu
+  dang?: { ma: string; ten: string; p?: number | null }[]   // dạng của nhóm trong tuần (mig 202611161844) — bấm ⇒ màn dạng Học từ đầu
 }
 export type MttViec = {
   loai: LoaiViec; buoi_id: string; ngay: string; han: string | null; tt: TrangThaiViec
