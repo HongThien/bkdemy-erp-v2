@@ -4,7 +4,7 @@
 import { supabase } from './supabase'
 
 export type MucDanhGia = 'tot' | 'tam_on' | 'chua_tot'
-export type LoaiViec = 'et' | 'btvn' | 'sau_gio' | 'bo_tro'
+export type LoaiViec = 'et' | 'btvn' | 'mt' | 'sau_gio' | 'bo_tro'   // mt: buổi có MT thay ET (17/11 tối)
 export type TrangThaiViec = 'xong' | 'cho_cham' | 'sap_toi' | 'chua_nop' | 'vang' | 'xin_phep'
 
 // 1 nhóm bài trên tờ. p / p_dau / mt = % (0–100) · mt = mục tiêu TUẦN (null = tuần này không có lần đo nào) · dich = đích dài hạn 80
@@ -12,6 +12,7 @@ export type MttNhom = {
   ma: string; ten: string; phan: 1 | 2
   p: number | null; n: number | null; p_dau: number | null; d: number | null; mt: number | null; dich: number
   k: number; tong_dang: number; ngay_hoc: string[]; tien: number | null; tien_dau: number | null
+  muc?: MucNhom | null   // mức hiện tại của nhóm (mig 202611171800)
   dang?: { ma: string; ten: string; p?: number | null }[]   // dạng của nhóm trong tuần (mig 202611161844) — bấm ⇒ màn dạng Học từ đầu
 }
 export type MttViec = {
@@ -111,7 +112,10 @@ export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{
 
 // ── định dạng hiển thị (không tính nghiệp vụ) ────────────────────────────────
 export const NHAN_MUC: Record<MucDanhGia, string> = { tot: 'Tốt', tam_on: 'Tạm ổn', chua_tot: 'Chưa tốt' }
-export const TEN_VIEC: Record<LoaiViec, string> = { et: 'Bài trên lớp', btvn: 'Bài về nhà', sau_gio: 'Test sau giờ', bo_tro: 'Bổ trợ yếu' }
+export const TEN_VIEC: Record<LoaiViec, string> = { et: 'ET', btvn: 'BTVN', mt: 'MT', sau_gio: 'Bổ trợ sau giờ', bo_tro: 'Bổ trợ yếu' }   // Thùy 17/11 tối: tên việc đúng như trung tâm gọi
+// mức của nhóm (từ mastery, ngưỡng 80/50 ở DB) — Thùy 17/11 tối: hiện cạnh %
+export type MucNhom = 'dat' | 'can_luyen' | 'yeu'
+export const NHAN_MUC_NHOM: Record<MucNhom, string> = { dat: 'Đạt', can_luyen: 'Chưa đạt', yeu: 'Yếu' }
 export const NHAN_TT: Record<TrangThaiViec, string> = {
   xong: 'Đã xong', cho_cham: 'Đã nộp · chờ chấm', sap_toi: 'Sắp tới', chua_nop: 'Chưa nộp', vang: 'Vắng', xin_phep: 'Xin phép',
 }
@@ -161,6 +165,6 @@ export function moTaViec(v: MttViec): string {
 // chênh so với đầu tuần (d do DB tính) — nhãn hiển thị
 export function nhanChenh(p: number | null, d: number | null): { chu: string; huong: 'len' | 'xuong' | 'ngang' | 'moi' } | null {
   if (p == null) return null
-  if (d == null) return { chu: 'mới đo', huong: 'moi' }
+  if (d == null) return null   // Thùy 17/11 tối: bỏ chữ "mới đo"
   return d > 0 ? { chu: `▲ ${d}`, huong: 'len' } : d < 0 ? { chu: `▼ ${-d}`, huong: 'xuong' } : { chu: '= 0', huong: 'ngang' }
 }

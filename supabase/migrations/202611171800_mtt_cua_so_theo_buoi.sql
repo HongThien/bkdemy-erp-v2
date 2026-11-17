@@ -13,6 +13,8 @@ set local lock_timeout = '3s';
 --     mastery nếu các lần đo của tuần đều Tốt ⇒ ET đã làm trước thứ Hai (vd ET T6 13/11 trong tuần 16–22) vẫn hiện là phần tăng của tuần, không đếm 2 lần.
 --   · Khôi phục dòng "sắp học — tính vào tuần sau" (buổi trong tuần mà buổi kế sang tuần sau).
 --   · Việc "thêm sau khi công bố" so theo (loại, NGÀY) thay vì mã buổi — lúc công bố buổi sắp dạy chưa có mã.
+--   · Nhóm mang thêm 'muc' (dat · can_luyen · yeu của mastery) ⇒ màn hiện Đạt · Chưa đạt · Yếu (Thùy 17/11 tối).
+--   · Buổi có MT (tài liệu mt_buoi) ⇒ việc MT thay ET; điểm MT = gami phase 'mt' (_mtt_diem thêm kiểu 'mt').
 --   · Ảnh đầu tuần (mtt_dau) giữ tới 10 lần / nhóm (trước: ≤ cs) để cắt "trước buổi" còn đủ lần. Ảnh tuần đã chụp giữ nguyên (≤ cs lần).
 -- CÁCH LÀM: vá ĐÚNG từng đoạn trên thân ĐANG CHẠY (pg_get_functiondef), mỗi đoạn phải khớp đúng 1 chỗ, lệch ⇒ raise, không ghi gì
 --   (cùng cách mig 1216 · 1221 · 1222). Chạy ở SQL Editor; cuối file trả chủ hàm mới về claude_build (bài học sự cố 15 giờ 16–17/11).
@@ -73,6 +75,19 @@ declare d text; c int;
            coalesce(public._mtt_dau_buoi(v_dau->tat.ma, tat.ngay_hoc)->'lan', '[]'::jsonb) as lan,$a$, E'\r', '');
   cu7 text := replace($a$(v_dau->x.ma->>'s')::numeric as p_dau,$a$, E'\r', '');
   mo7 text := replace($a$(public._mtt_dau_buoi(v_dau->x.ma, x.ngay_hoc)->>'s')::numeric as p_dau,   /* 17/11 tối: khởi điểm trước buổi */$a$, E'\r', '');
+  cu8 text := replace($a$           'p', case when t3.p is not null then round(100 * t3.p)::int end, 'n', t3.n,$a$, E'\r', '');
+  mo8 text := replace($a$           'p', case when t3.p is not null then round(100 * t3.p)::int end, 'n', t3.n,
+           'muc', v_p->t3.ma->>'muc',   /* 17/11 tối: mức của nhóm (dat · can_luyen · yeu — ngưỡng 80/50 của mastery) ⇒ màn hiện Đạt · Chưa đạt · Yếu */$a$, E'\r', '');
+  cu9 text := replace($a$             'p', case when y.p is not null then round(100 * y.p)::int end, 'n', y.n,$a$, E'\r', '');
+  mo9 text := replace($a$             'p', case when y.p is not null then round(100 * y.p)::int end, 'n', y.n,
+             'muc', v_p->y.ma->>'muc',   /* 17/11 tối */$a$, E'\r', '');
+  cu10 text := replace($a$    select 'et'::text as loai, (bb.b->>'id')::uuid as buoi_id, (bb.b->>'ngay')::date as ngay, null::date as han, bb.b->>'dd' as dd, 1 as o$a$, E'\r', '');
+  mo10 text := replace($a$    select case when exists (select 1 from tai_lieu tl where tl.loai = 'mt_buoi' and tl.lop_id = (bb.b->>'lop_id')::uuid
+                                and tl.ngay = (bb.b->>'ngay')::date and tl.hoc_sinh_id is null)
+                then 'mt' else 'et' end::text as loai,   /* 17/11 tối: buổi có MT ⇒ việc MT thay ET (như việc nhân sự: buổi gán MT chỉ có Chấm MT) */
+           (bb.b->>'id')::uuid as buoi_id, (bb.b->>'ngay')::date as ngay, null::date as han, bb.b->>'dd' as dd, 1 as o$a$, E'\r', '');
+  cu11 text := replace($a$public._mtt_diem(p_hs, tat.buoi_id, case when tat.loai = 'btvn' then 'btvn' else 'et' end, p_den)$a$, E'\r', '');
+  mo11 text := replace($a$public._mtt_diem(p_hs, tat.buoi_id, case when tat.loai in ('btvn', 'mt') then tat.loai else 'et' end, p_den)$a$, E'\r', '');
 begin
   select replace(pg_get_functiondef('public._mtt_tinh(uuid,text,date,timestamptz)'::regprocedure), E'\r', '') into d;
   c := (length(d) - length(replace(d, cu0, ''))) / length(cu0);
@@ -99,6 +114,18 @@ begin
   c := (length(d) - length(replace(d, cu7, ''))) / length(cu7);
   if c <> 1 then raise exception '_mtt_tinh đã đổi: đoạn "khởi điểm (bản khoá)" khớp % chỗ, cần đúng 1', c; end if;
   d := replace(d, cu7, mo7);
+  c := (length(d) - length(replace(d, cu8, ''))) / length(cu8);
+  if c <> 1 then raise exception '_mtt_tinh đã đổi: đoạn "muc (bản nháp)" khớp % chỗ, cần đúng 1', c; end if;
+  d := replace(d, cu8, mo8);
+  c := (length(d) - length(replace(d, cu9, ''))) / length(cu9);
+  if c <> 1 then raise exception '_mtt_tinh đã đổi: đoạn "muc (bản khoá)" khớp % chỗ, cần đúng 1', c; end if;
+  d := replace(d, cu9, mo9);
+  c := (length(d) - length(replace(d, cu10, ''))) / length(cu10);
+  if c <> 1 then raise exception '_mtt_tinh đã đổi: đoạn "việc ET/MT" khớp % chỗ, cần đúng 1', c; end if;
+  d := replace(d, cu10, mo10);
+  c := (length(d) - length(replace(d, cu11, ''))) / length(cu11);
+  if c <> 1 then raise exception '_mtt_tinh đã đổi: đoạn "điểm ET/MT" khớp % chỗ, cần đúng 1', c; end if;
+  d := replace(d, cu11, mo11);
   execute d;
 end $do$;
 
@@ -135,6 +162,23 @@ begin
   if c <> 1 then raise exception '_mtt_dau_tinh đã đổi: đoạn "lần trong ảnh" khớp % chỗ, cần đúng 1', c; end if;
   d := replace(d, cu0, mo0);
   execute d;
+end $do$;
+
+-- ── 3b. _mtt_diem: thêm kiểu 'mt' (điểm MT của buổi = gami phase 'mt'; MT không có bài làm trên app) ──
+do $do$
+declare d text; c int;
+  cu0 text := replace($a$       and sp.phase = case when p_kieu = 'btvn' then 'btvn' else 'et' end$a$, E'\r', '');
+  mo0 text := replace($a$       and sp.phase = case p_kieu when 'btvn' then 'btvn' when 'mt' then 'mt' else 'et' end   /* 17/11 tối: + MT */$a$, E'\r', '');
+  cu1 text := replace($a$       and case when p_kieu = 'btvn' then bt.loai = 'btvn' else bt.loai not in ('btvn', 'tu_luyen') end$a$, E'\r', '');
+  mo1 text := replace($a$       and case when p_kieu = 'btvn' then bt.loai = 'btvn' when p_kieu = 'mt' then false else bt.loai not in ('btvn', 'tu_luyen') end$a$, E'\r', '');
+begin
+  select replace(pg_get_functiondef('public._mtt_diem(uuid,uuid,text,timestamptz)'::regprocedure), E'\r', '') into d;
+  c := (length(d) - length(replace(d, cu0, ''))) / length(cu0);
+  if c <> 1 then raise exception '_mtt_diem đã đổi: đoạn phase khớp % chỗ, cần đúng 1', c; end if;
+  d := replace(d, cu0, mo0);
+  c := (length(d) - length(replace(d, cu1, ''))) / length(cu1);
+  if c <> 1 then raise exception '_mtt_diem đã đổi: đoạn bài làm khớp % chỗ, cần đúng 1', c; end if;
+  execute replace(d, cu1, mo1);
 end $do$;
 
 -- ── 4. Quyền (áp ở SQL Editor ⇒ hàm mới thuộc postgres): trả chủ về claude_build như mọi hàm _mtt_* ──

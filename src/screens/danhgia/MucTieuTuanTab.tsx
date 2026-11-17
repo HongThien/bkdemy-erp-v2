@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react'
 import {
   mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh, nhanHoc,
-  NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
+  NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC, NHAN_MUC_NHOM,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
 } from '../../lib/mucTieuTuan'
 
@@ -292,6 +292,7 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
         <span className="flex-1 text-[13px] font-semibold text-slate-800">{n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[11.5px] font-normal text-slate-500">· {nhanHoc(n.ngay_hoc)}</span>}</span>
         {c && <span className={`text-[11.5px] font-bold ${mauChenh(c.huong)}`}>{c.chu}</span>}
         <span className="text-[13px] font-bold text-slate-900">{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
+        {n.p != null && n.muc && <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
       </div>
       <div className="relative mt-1 h-[34px]">
         <div className="absolute inset-x-0 top-[12px] h-[7px] overflow-hidden rounded-full bg-slate-100">
@@ -306,7 +307,7 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
         </>}
       </div>
       <div className="flex items-center gap-2 text-[11.5px] text-slate-500">
-        <span className="flex-1">{n.mt == null ? 'Tuần này chưa có lần đo' : `Mục tiêu tuần ${n.mt}% · đích ${n.dich}% · ${n.k} lần đo`}</span>
+        <span className="flex-1" />
         {(n.dang?.length ?? 0) > 0 && (
           <button onClick={() => setMoDang((v) => !v)} className="font-semibold text-indigo-700 hover:underline">
             {moDang ? 'Ẩn chi tiết ▴' : `Chi tiết · ${n.dang!.length} dạng ▾`}
