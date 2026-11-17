@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 465 trigger · 1999 function
+602 bảng · 42 view · 0 enum · 464 trigger · 2001 function
 
 ## _app_secrets
 
@@ -11213,7 +11213,6 @@ WITH luot AS (
 | bo_tro_hinh | trg_bthinh_log | AFTER | INSERT/UPDATE | _trg_bthinh_log |
 | bo_tro_hinh | trg_bthinh_suc_chua | BEFORE | INSERT/UPDATE | _trg_bthinh_suc_chua |
 | bo_tro_yeu | trg_btyeu_ban_do_luc_mo | BEFORE | INSERT | _btyeu_ban_do_luc_mo |
-| bo_tro_yeu | trg_btyeu_suc_chua | BEFORE | INSERT/UPDATE | _trg_btyeu_suc_chua |
 | bt_grades | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
 | bt_grades | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
 | bt_grades | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
@@ -11705,6 +11704,7 @@ WITH luot AS (
 - `_botro_ca_tuan(p_tu date, p_den date, p_loai text)` → TABLE(buoi uuid, ngay date, gio time without time zone, hs uuid, case_id uuid, ban_do text, mon text, nguoi_day uuid, hoan_tat boolean)
 - `_botro_ca_yeu_tuan(p_tu date, p_den date)` → TABLE(buoi uuid, ngay date, gio time without time zone, hs uuid, case_id uuid, ban_do text, mon text, nguoi_day uuid, hoan_tat boolean)
 - `_bt_cau_trang_thai_json(p_bt uuid, p_cau uuid[])` → jsonb
+- `_bt_muc_het_tuan()` → integer
 - `_bt_trong_so_lop(p_lop uuid)` → numeric
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_bthinh_ket_thuc(p_case uuid, p_ns uuid, p_ket_qua text, p_ghi_chu text, p_at timestamp with time zone)` → void
@@ -11742,6 +11742,7 @@ WITH luot AS (
 - `_btyeu_dong_bo_dang_ban_do()` → jsonb
 - `_btyeu_dong_case_het_han(p_case uuid, p_tinh_yeu boolean DEFAULT true, p_bat_buoc boolean DEFAULT false)` → boolean
 - `_btyeu_dv_tuan(p_hs uuid, p_mon text, p_ngay date)` → integer
+- `_btyeu_het_han_chay()` → integer
 - `_btyeu_ket_thuc_case(p_case uuid, p_ns uuid, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_btyeu_la_hinh_mh(p_ma_dang text)` → boolean
 - `_btyeu_moc_2_cua_so()` → date

@@ -267,6 +267,14 @@ màn `phongtk/BoTroPopup` · `phongtk/ChatLuongPhong` · `botro/*` · `danhgia/X
 | 10 | Đồng ý đề xuất | Lượt bù tồn KHÔNG có hạn — chỉ đóng khi đã bù hoặc người ghi "không bù" có lý do; tô đỏ lượt quá 14 ngày. | tô đỏ ở màn bù |
 | 12 | (theo câu 6) | Bổ trợ Hình bỏ hẳn. | xem câu 6 |
 
+### 12.0b Đã sửa code / DB cho khớp (17/11, Thùy "có lệch gì thì fix luôn") — mig `202611172100` ĐÃ ÁP; phần màn chờ DEPLOY ERP + app TA
+- ✅ **Bỏ trần:** gỡ trigger `trg_btyeu_suc_chua`; `fn_btyeu_kiem_suc_chua` luôn trả null; màn Duyệt bỏ "x/70", "Cao x/20", bỏ khoá duyệt khi đầy. (`_btyeu_tran_*` + trigger bên Hình còn — đi cùng việc gỡ Hình.)
+- ✅ **L3 · L4 vào ứng viên ca khối** như L2 (`fn_ca_bo_tro_ung_vien`: mức ≥ 2). Nhãn mức trên màn sửa: L2 ca khối (TA) · L3 ca khối (giáo viên) · L4 ca khối (đổi giáo viên). *Chưa có:* ràng buộc "người dạy ca phải là giáo viên" với em L3 / L4 — hiện do người xếp tự chọn đúng người.
+- ✅ **Mức về L0 khi hết lượt chốt tuần:** `_bt_muc_het_tuan()` chạy mỗi ngày 01h (bộ điều phối, sổ `bt_muc_het_tuan`), ghi `hs_level_log`. Chạy thử: 53 em sẽ về L0 ở lượt đầu.
+- ✅ **Hạn 14 ngày tự chạy:** `_btyeu_het_han_chay()` mỗi ngày 01h (sổ `btyeu_het_han`) — trước chỉ chạy khi có người mở màn Xếp.
+- ✅ **Ẩn tab Hình** ở hub Bổ trợ (chưa xoá gì).
+- ⏳ **Chưa làm (là xây thêm, không phải sửa nhanh):** báo động theo tuần ở màn duyệt của trưởng khối (câu 7) · số "chốt mà không chạy" + tỉ lệ "ca không test" theo TA trên Dashboard (câu 3, 9) · tô đỏ lượt bù quá 14 ngày (câu 10) · gỡ hẳn Bổ trợ Hình (Luật xoá) · các lệch §12.2 còn lại.
+
 ### 12.1b Hỏi lại cho rõ (phát sinh từ câu trả lời)
 - **4b.** ✅ Thùy 17/11: L3 cũng là giáo viên; L4 đặc biệt nghiêm trọng thì chuẩn bị kỹ hơn và đổi giáo viên. *(L2 = TA trực ca khối là tôi hiểu theo hiện trạng — Thùy chưa nói ngược lại.)*
 - **8b.** ✅ Thùy 17/11: "hệ vẫn gợi ý". ~~"Giáo viên chủ động" = người dạy ca tự chọn dạng trong các nhóm đã chốt (hệ vẫn điền sẵn gợi ý, sửa được) — hay hệ để trống hoàn toàn cho người dạy chọn? Áp cho cả L1 sau giờ lẫn ca khối?

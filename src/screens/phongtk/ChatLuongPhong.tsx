@@ -183,7 +183,7 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
       <p className="text-[11.5px] text-slate-400">
         {che === 'tk'
           ? 'Nháp sửa / bỏ được. "Chốt & gửi" gửi mọi em nháp của khối cho trưởng bộ môn; bị trả lại thì sửa rồi gửi lại. Đã duyệt = đã mở case bổ trợ như cũ (Lộc xếp lịch · TA dạy · test cuối ca).'
-          : 'Duyệt = mở case bổ trợ như cũ (kiểm trần 70 em / 20 Cao, Lộc xếp lịch, TA dạy, test cuối ca). Dạng vào case = các dạng chưa đạt của nhóm đã chọn. Trả lại phải ghi lý do.'}
+          : 'Duyệt = mở case bổ trợ như cũ (Lộc xếp lịch theo lịch khối; L2 TA dạy · L3, L4 giáo viên dạy; test cuối ca). Dạng vào case = các dạng chưa đạt của nhóm đã chọn. Trả lại phải ghi lý do.'}
       </p>
       {sua && <BoTroPopup hs={{ id: sua.hoc_sinh_id, ten: sua.ho_ten, lop: sua.lop }} mon={mon} onDong={() => setSua(null)}
         onXong={() => { setSua(null); setLamMoi((x) => x + 1); bao('Đã lưu') }} />}

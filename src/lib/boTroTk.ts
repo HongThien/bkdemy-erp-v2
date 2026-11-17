@@ -26,7 +26,7 @@ export const NHAN_TT: Record<TrangThaiBtk | 'dang_bo_tro', { t: string; cls: str
   dang_bo_tro: { t: 'Đang bổ trợ', cls: 'bg-indigo-100 text-indigo-700' },
 }
 // Thang L1–L4 (Thùy 11/11): L1 & L4 ngoài ca bổ trợ khối
-export const TEN_MUC: Record<number, string> = { 1: 'L1 · sau giờ (TA kèm sau buổi học)', 2: 'L2 · 2 đơn vị ca bổ trợ khối', 3: 'L3 · 4 đơn vị ca bổ trợ khối', 4: 'L4 · bổ trợ riêng với GV (ngoài khối)' }
+export const TEN_MUC: Record<number, string> = { 1: 'L1 · sau giờ (TA kèm sau buổi học)', 2: 'L2 · ca bổ trợ khối (TA dạy)', 3: 'L3 · ca bổ trợ khối (giáo viên dạy)', 4: 'L4 · ca bổ trợ khối (nghiêm trọng: chuẩn bị kỹ + đổi giáo viên)' }
 export const TEN_UU_TIEN: Record<number, string> = { 3: 'Cao', 2: 'Thường', 1: 'Thấp' }
 
 const rpc = async <T,>(fn: string, args: Record<string, unknown>): Promise<T> => {

@@ -81746,3 +81746,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 17/11 tối — Tờ Mục tiêu tuần (ERP) 3 cột (Thùy)
 - Thùy: "cột tên học sinh co bé lại" · "Trên lớp – Ôn tập – Hoạt động tuần chia làm 3 cột" · "mỗi phần header chữ trắng nền màu, 3 việc 3 màu" ⇒ `MucTieuTuanTab`: cột DS em 300–380 → 200–240 px (dòng phụ còn Việc · nợ, số nhóm/hạng vào tooltip); tờ của em = lưới 3 cột (lg) Trên lớp (xanh dương) · Ôn tập (cam) · Hoạt động tuần này (xanh lá), header dải màu chữ trắng; dòng nhóm/việc thu gọn cho cột hẹp ("Đang xếp hàng" vào cột Ôn tập, thái độ vào dòng phụ việc). Chụp 1500 px ✔.
+### 17/11 chiều — Sửa code/DB bổ trợ cho khớp spec mới (Thùy: "Hiện tại có lệch gì ko thì fix luôn đã")
+- *(Ghi chú giờ: các mục DEVLOG hôm nay tôi ghi "tối" là SAI — giờ VN thực lúc này ~14h; mọi migration hôm nay áp ngoài khung 17–22h.)*
+- **mig `202611172100` ĐÃ ÁP** (chạy thử transaction + rollback trước): gỡ trigger trần `trg_btyeu_suc_chua`, `fn_btyeu_kiem_suc_chua` trả null · `fn_ca_bo_tro_ung_vien` mức ≥ 2 (L4 vào ca khối) · `_btyeu_het_han_chay()` + `_bt_muc_het_tuan()` đăng ký bộ điều phối 01h mỗi ngày. Chạy thử: hết hạn 0 case, mức về L0 **53 em** (còn L1 101 · L2 55 · L3 1) — lượt thật chạy 01h đêm nay.
+- **Client:** `DuyetBoTroYeuScreen` bỏ x/70 · Cao x/20 · khoá khi đầy; nhãn mức ở `MucUuTienCase` · `boTroTk` · `CaBoTroTA` · `ChatLuongPhong`; `BoTroHubScreen` ẩn tab Hình. tsc sạch (lỗi cũ pdfRender).
+- **Chưa làm:** báo động theo tuần ở màn duyệt · 2 số Dashboard mới · tô đỏ bù quá 14 ngày · ràng buộc người dạy L3/L4 là giáo viên · gỡ hẳn Hình (Luật xoá). Ghi ở `spec-bo-tro.md` §12.0b.

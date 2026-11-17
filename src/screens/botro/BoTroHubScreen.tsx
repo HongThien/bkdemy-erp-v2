@@ -23,7 +23,7 @@ const TABS: { k: BoTroTab; ten: string; mo_ta: string }[] = [
   { k: 'bu', ten: 'Bù', mo_ta: 'HS nghỉ buổi thường — lần nghỉ cần bù' },
   { k: 'nhe', ten: 'Sau giờ', mo_ta: 'Bổ trợ sau giờ (L1): khởi tạo ca 15–20 phút sau buổi cho em đã duyệt L1 — in lý thuyết/luyện/test, TA nhập test là xong' },
   { k: 'yeu', ten: 'Yếu', mo_ta: 'Trọn luồng bổ trợ yếu: duyệt → nội dung → xếp → trạng thái → đánh giá ca' },
-  { k: 'hinh', ten: 'Hình', mo_ta: 'Bổ trợ Hình (17/10): độc lập với Yếu — Trang/Lộc tự mở ca, xếp ở Lịch phòng, tài liệu theo buổi, cuối buổi chỉ nhận xét' },
+  // Thùy 17/11: BỎ HẲN Bổ trợ Hình (0 case từ 17/10) — tab ẩn; màn / bảng / hàm còn nguyên, gỡ theo Luật xoá khi có lệnh (spec-bo-tro §7.5).
   { k: 'onthi', ten: 'Ôn thi', mo_ta: 'Bổ trợ ôn thi (23/10): mỗi kỳ thi mở ca cho TẤT CẢ học sinh — đợt · ca · đăng ký · TA điểm danh + báo động · thống kê theo khối' },
   { k: 'lichphong', ten: 'Lịch phòng', mo_ta: 'Đang diễn ra của cả 3 loại + xếp chung theo đơn vị ca trực' },
   { k: 'lichtruc', ten: 'Lịch khối', mo_ta: 'Xếp lịch bổ trợ khối hằng tuần (giờ · phòng · người trực) trên lịch phòng chung — báo trùng, tự hiện ở Tổng quan phòng' }, // Thùy 10/11
@@ -68,7 +68,7 @@ function DuyetDaChuyen() {
 
 // `mo`: mở thẳng 1 tab (vd link cũ "Duyệt bổ trợ") — ghi vào NHO trước khi YeuTab đọc, không setState lúc render.
 export default function BoTroHubScreen({ mo }: { mo?: { tab: BoTroTab; yeu?: YeuSub } } = {}) {
-  const [tab, setTabState] = useState<BoTroTab>(() => { if (mo) { NHO.tab = mo.tab; if (mo.yeu) NHO.yeu = mo.yeu } return NHO.tab })
+  const [tab, setTabState] = useState<BoTroTab>(() => { if (mo) { NHO.tab = mo.tab; if (mo.yeu) NHO.yeu = mo.yeu } if (NHO.tab === 'hinh') NHO.tab = 'dashboard'; return NHO.tab })
   capNhat = setTabState
   const setTab = (t: BoTroTab) => { NHO.tab = t; setTabState(t) }
   return (

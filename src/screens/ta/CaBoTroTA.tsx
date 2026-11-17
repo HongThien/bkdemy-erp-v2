@@ -17,7 +17,7 @@ import { BKTabHeader, BKRowCard, MaHS } from '../../components/bk/BKUI'
 
 const POLL_MS = 10000
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
-const MUC_TEN: Record<number, string> = { 1: 'L1 · sau giờ', 2: 'L2 · ca khối', 3: 'L3 · ca khối', 4: 'L4 · riêng với GV' }   // thang L1–L4 (Thùy 11/11)
+const MUC_TEN: Record<number, string> = { 1: 'L1 · sau giờ', 2: 'L2 · ca khối', 3: 'L3 · ca khối', 4: 'L4 · ca khối' }   // thang L1–L4 (Thùy 11/11; 17/11: L2–L4 cùng ca khối, khác người dạy)
 
 type TrangThai = 'cho_em' | 'vang' | 'dang_luyen' | 'cho_test' | 'cho_nhan_xet' | 'hoan_tat' | 'sap_toi'
 function trangThaiCa(c: ViecCaBoTro, homNay: string): TrangThai {

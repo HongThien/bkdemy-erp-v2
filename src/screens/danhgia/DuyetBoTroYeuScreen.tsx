@@ -200,7 +200,7 @@ export default function DuyetBoTroYeuScreen() {
 
   const duLieu: DuLieuTuan | null = !e ? null : tab === 'bd' ? { chuyen_de: (e as BaoDong).chuyen_de ?? [], et_btvn: (e as BaoDong).et_btvn } : (e as DangTheoDoi | UngVienDiemThap).du_lieu
   const etBtvn: EtBtvn | null = duLieu?.et_btvn ?? null
-  const dangSlot = sucChua && sucChua.dang >= sucChua.tran
+  const dangSlot = false   // Thùy 17/11: BỎ TRẦN 70/20 — không còn khoá duyệt theo số em (spec-bo-tro §3)
 
   return (
     <section className="min-h-0 flex-1 overflow-auto bg-[#f5f5f7] px-6 pb-4 pt-3">
@@ -219,11 +219,10 @@ export default function DuyetBoTroYeuScreen() {
 
         {sucChua && (
           <div className="mb-2 flex flex-wrap items-center gap-1.5 text-[12px]">
-            <span className={`rounded-full px-2.5 py-0.5 font-bold ${dangSlot ? 'bg-rose-600 text-white' : 'border border-slate-300 bg-white text-slate-700'}`}>Đang bổ trợ chính thức {sucChua.dang}/{sucChua.tran}</span>
-            <span className={`rounded-full px-2.5 py-0.5 font-bold ${sucChua.cao >= sucChua.tran_cao ? 'bg-rose-600 text-white' : 'border border-slate-300 bg-white text-slate-700'}`}>Ưu tiên Cao {sucChua.cao}/{sucChua.tran_cao}</span>
+            <span className={`rounded-full px-2.5 py-0.5 font-bold ${dangSlot ? 'bg-rose-600 text-white' : 'border border-slate-300 bg-white text-slate-700'}`}>Đang bổ trợ chính thức {sucChua.dang}</span>
+            <span className="rounded-full border border-slate-300 bg-white px-2.5 py-0.5 font-bold text-slate-700">Ưu tiên Cao {sucChua.cao}</span>
             <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 font-bold text-indigo-700">👁 Đang theo dõi {du?.td?.length ?? '…'} — không chiếm slot</span>
-            <span className="text-slate-500">{dangSlot ? 'Đã đầy — Duyệt chính thức bị khoá, vẫn Giữ/Gỡ được.' : `còn ${sucChua.tran - sucChua.dang} slot`}</span>
-          </div>
+                      </div>
         )}
 
         <CapacityKhoiBar mon={mon} khoi={khoi} onChon={setKhoi} nap={napCap} />
@@ -296,7 +295,7 @@ export default function DuyetBoTroYeuScreen() {
                       <select value={muc} onChange={(x) => setMuc(Number(x.target.value))} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
                         {[1, 2, 3, 4].map((m) => <option key={m} value={m}>{MUC_TEN[m]}</option>)}</select>
                       <select value={uuTien} onChange={(x) => setUuTien(Number(x.target.value) as UuTienCase)} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
-                        <option value={2}>Ưu tiên Thường</option><option value={3}>Ưu tiên Cao ({sucChua?.cao ?? '?'}/{sucChua?.tran_cao ?? 20})</option><option value={1}>Ưu tiên Thấp</option></select></>}
+                        <option value={2}>Ưu tiên Thường</option><option value={3}>Ưu tiên Cao</option><option value={1}>Ưu tiên Thấp</option></select></>}
                     <input value={ghiChu} onChange={(x) => setGhiChu(x.target.value)} placeholder={tab === 'td' ? 'Lý do duyệt / gỡ (tuỳ chọn)…' : 'Ghi chú vì sao theo dõi (không bắt buộc)…'} className="min-w-[160px] flex-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]" />
                     {tab === 'td' ? <>
                       <button disabled={busy || !!dangSlot} onClick={chinhThuc} title={dangSlot ? 'Đã đủ slot' : ''} className="rounded-lg bg-green-600 px-4 py-2 text-[13px] font-bold text-white hover:bg-green-700 disabled:opacity-40">{busy ? '…' : '✅ Duyệt chính thức'}</button>

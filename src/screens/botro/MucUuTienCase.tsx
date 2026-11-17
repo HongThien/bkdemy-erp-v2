@@ -5,9 +5,9 @@
 import { useState } from 'react'
 import { doiLevelCase, datUuTienCase, UU_TIEN_TEN, RETEST_BAT, type UuTienCase } from '../../lib/botro_yeu'
 
-// Thang mức L1–L4 (Thùy 11/11, mig 202611111553): L1 sau giờ · L2 2 đơn vị ca khối · L3 4 đơn vị ca khối · L4 riêng với GV.
-// L1 và L4 KHÔNG vào ca bổ trợ khối, không tính đơn vị khối. L0 = hết yếu, dừng bổ trợ.
-export const MUC_TEN: Record<number, string> = { 1: 'L1 · sau giờ', 2: 'L2 · 2 đơn vị (ca khối)', 3: 'L3 · 4 đơn vị (ca khối)', 4: 'L4 · riêng với GV' }
+// Thang mức L1–L4 (Thùy 11/11; sửa 17/11 — spec-bo-tro §3): L1 sau giờ (TA) · L2 ca khối (TA) · L3 ca khối (giáo viên) · L4 ca khối (chuẩn bị kỹ + đổi giáo viên).
+// L2–L4 xếp CÙNG một đường theo lịch khối, chỉ khác người dạy. L1 không vào ca khối. L0 = không bổ trợ.
+export const MUC_TEN: Record<number, string> = { 1: 'L1 · sau giờ', 2: 'L2 · ca khối (TA)', 3: 'L3 · ca khối (giáo viên)', 4: 'L4 · ca khối (đổi giáo viên)' }
 export const MUC_CLS: Record<number, string> = { 0: 'bg-slate-50 text-slate-400', 1: 'bg-slate-100 text-slate-600', 2: 'bg-sky-50 text-sky-700', 3: 'bg-amber-50 text-amber-700', 4: 'bg-rose-50 text-rose-700' }
 export const UU_CLS: Record<UuTienCase, string> = { 3: 'bg-rose-600 text-white', 2: 'bg-slate-100 text-slate-600', 1: 'bg-slate-50 text-slate-400' }
 
