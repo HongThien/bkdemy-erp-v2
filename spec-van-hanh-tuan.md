@@ -187,7 +187,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 ### 4.3 Đo & đánh giá
 - **% nhóm = mastery đang chạy** (Đ/C/S = 1 / 0,5 / 0, TB ≤ 5 lần gần nhất trong 30 ngày; Hình–Học 3 lần), đọc có BTVN. Nhóm chưa đo = "chưa đo", không gộp vào 0.
 - **Mục tiêu tuần** = min(80 %, mastery của nhóm nếu mọi lần đo trong tuần đều Tốt), tính lúc chụp thứ Hai (biết trước số lần đo). Nhóm mới ⇒ 80 %. 80 % vẫn hiện là đích dài hạn.
-- Tăng / giảm so với số chụp 00:00 thứ Hai (không ngưỡng). **Tiến độ tổng** = TB min(% / mục tiêu tuần, 1) trên nhóm đã đo và có mục tiêu tuần.
+- Tăng / giảm so với số chụp 00:00 thứ Hai (không ngưỡng). ~~**Tiến độ tổng** = TB min(% / mục tiêu tuần, 1) trên nhóm đã đo và có mục tiêu tuần.~~ **Tiến độ (Thùy 17/11 khuya, mig `202611172340`) = số nhóm ĐẠT ÷ MỌI nhóm trên tờ** (Bài trên lớp + Ôn tập kiến thức, kể cả chưa đo). Đạt = % hiện tại ≥ mục tiêu tuần; nhóm không có mục tiêu tuần ⇒ so với đích 80; chưa đo = chưa đạt. Đầu tuần đếm trên % lúc 00:00 thứ Hai. Lý do bỏ công thức cũ: nó đo mức hiện tại (em khá nào cũng 92–99% dù chưa làm việc nào). **Tính sẵn** ở bộ điều phối, màn chỉ đọc; sổ tuần đã chốt giữ số cũ.
 - **Xếp hạng tiến độ** toàn trung tâm, mỗi môn một bảng, chung mọi khối (đo thái độ); màn hiện hạng mình + lên/xuống, bấm ⇒ top 20. Chỉ lấy tờ đã công bố.
 - **Không tăng** ⇒ soi theo thứ tự: trung tâm làm phần mình chưa (dạy đúng giáo trình đã chốt · giao BTVN · chấm kịp · xếp ca) → con làm phần con chưa → kết quả đo.
 
