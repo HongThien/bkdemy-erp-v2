@@ -81640,3 +81640,13 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đối chiếu 17/11:** `gami_session_problems` (ma_dang, ma_cau) · `canh_bao_yeu` (ma_dang) · `tai_lieu_cau` (ma_cau) **vẫn chưa có cột mon/kho** ⇒ ghi là nợ mở §2a. `fn_mastery_cells` không còn (thay bằng engine theo lần). Client còn tính: `getTongQuanHS` (mastery.ts) · `getStatSheetLop`/`listCandidatesLop` (danhgia.ts) · `quetGayTuDong` (gay.ts); `nguongTuCohort` đã hết.
 - **Sai phát hiện:** §2b có đoạn bị dán đè từ commit 4abdfc2d (13/11) — câu "25 bảng rỗng và 4 index k" cụt + dòng mồ côi "CLAUDE.md §1.6) và gom hàm…". Đã sửa lại theo nội dung commit đó (đã dọn ở mig 202611132100).
 - CLAUDE.md 3 dòng trỏ → §2a/§14; SPEC-INDEX dòng 1. 2 file nguồn gắn biển "đã gộp", **chưa `git mv` sang `_luu-tru/` — chờ Thùy duyệt**.
+
+## 17/11 14:21 — Báo cáo tuần HAI CHIỀU (mig 202611171404 ĐÃ ÁP, Thùy gật)
+- Thùy: dạng/nhóm yếu báo cáo tuần phải khớp Tình hình chung + tách 2 chiều (đầu→cuối · phát sinh mới). Đo: báo cáo + Tình hình chung cùng đọc dang_yeu_dau_tuan; nhưng ảnh 09/11 phần DẠNG chụp 10/11 theo luật 2 cửa sổ cũ (Toán 1494) vs 16/11 luật mới (1921).
+- fn_bctk_so thêm hai_chieu {dang,nhom} (dau · con_yeu · het_yeu · roi · phat_sinh · cuoi · ti_le_het_yeu) toàn khối + từng lớp, phien_ban 3; chụp lại 09/11 (_dang_yeu_chup_tuan, 49 s; Toán dạng 1494→1731, nhóm 803→807). K8 tuần 09–15: nhóm 111→còn 85 (hết 26) +8 phát sinh = 93; dạng 246→210 (hết 36) +119 = 329. fn_bctk_so K8 428 ms. Đầu tuần khớp Tình hình chung 12/13 khối (8T không dữ liệu).
+- Màn BaoCaoTuanTK: ô OHaiChieu (① hết yếu ② phát sinh, trend 2 dãy), bảng lớp đầu → còn −hết +phát sinh. Chưa xem trên app.
+
+## 17/11 16:51 — Chụp lại báo cáo tuần K9 tuần 09–15/11 (mig 202611171651 ĐÃ ÁP, Thùy "Tính lại")
+- Thùy hỏi sao báo cáo vẫn 296 / 445: bản K9 đã duyệt chụp số lúc nộp (17/11 12:53, phien_ban 2, dạng yếu đầu tuần theo luật 2 cửa sổ). Chụp lại cột `so` = fn_bctk_so + trend, giữ da_duyet / tu_viet / người duyệt, thêm 1 dòng log.
+- Sau chụp: dạng 321 → còn 271 (hết 50, 15,6%%) + phát sinh 174 = 445; nhóm 160 → còn 126 (hết 34, 21,3%%) + 41 = 167; phien_ban 3, 7 lớp. check:kien-truc ✔.
+- Còn 4 bản tuần 09/11 khác cũng chụp theo luật cũ (2 đã duyệt, 2 đã nộp) — chưa đụng, hỏi Thùy.
