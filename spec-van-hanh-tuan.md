@@ -219,7 +219,7 @@ trưởng bộ môn đọc, duyệt / trả lại → ghép **Báo cáo Chuyên 
 | 2 | **Báo cáo cứng**: bấm Nộp là **snap** toàn bộ phần số, **không bao giờ tính lại**. |
 | 3 | Phần **cá nhân** = task phát triển của trưởng khối. Task **đã được người giao duyệt** ⇒ tự điền. Nhân sự chủ yếu điền task chưa xong. |
 | 4 | Phần **quản lý** = hệ tự tổng hợp: ET · BTVN · dạng yếu · HS yếu · bổ trợ · trend 4 tuần — **toàn khối và từng lớp**. |
-| 5 | **HS yếu = có ≥ 1 dạng yếu.** "Khó giảm cũng phải giảm", giữ định nghĩa. |
+| 5 | ~~HS yếu = có ≥ 1 dạng yếu~~ → **HS yếu = có ≥ 1 NHÓM yếu** (Thùy 17/11, §5.5 dòng 4). "Khó giảm cũng phải giảm". |
 | 6 | **Dữ liệu có thời gian ⇒ suy ngược được mọi khung thời gian** (dạng yếu tại mốc bất kỳ = chỉ dùng các lần đo trước mốc). |
 | 7 | Ảnh dạng yếu **đầu tuần chụp tự động**. |
 | 8 | Bổ trợ tính **Bổ trợ Yếu + Bổ trợ Nhẹ (sau giờ)**. Bù · đuổi · ôn thi chưa đưa vào. |
@@ -256,7 +256,8 @@ Mọi chỉ số tính ở **một hàm DB** theo `(ô, khoảng ngày)` — dù
 | 1 | **ET** | Tỉ lệ chấm ET đúng hạn · Điểm ET TB | Việc chấm ET của buổi trong kỳ (trừ ET online); **đúng hạn = lần đóng đầu ≤ hạn**. Điểm TB trên lượt. |
 | 2 | **BTVN** | Tỉ lệ nộp · Điểm BTVN TB | Trên kết quả BTVN của buổi trong kỳ, **không tính xin phép**; tách đúng hạn / muộn. |
 | 3 | **Dạng yếu** | Đầu · Cuối · Đã giảm · Tỉ lệ giảm · **Vào · Ra có bằng chứng · Rớt cửa sổ · Độ phủ đo** | Đầu = tại **T2 00:00**; cuối = tại **CN 24:00**. Vào / Ra / Độ phủ theo `spec-truong-khoi` §4.2. |
-| 4 | **HS yếu** | Đầu · Cuối · Đã giảm · Tỉ lệ · **Danh sách HS còn yếu** | Em · lớp · số dạng yếu · **trạng thái xử lý** (ca Nhẹ / đang bổ trợ Yếu / đã đề xuất / chưa xử lý — "chưa xử lý" lên đầu). |
+| 3b | **Nhóm yếu** (Thùy 17/11) | Đầu · Cuối · Đã giảm · Tỉ lệ giảm | Nhóm mức Yếu theo mastery (`spec-mastery` §5), đầu = T2 00:00, cuối = CN 24:00. Toàn khối + từng lớp. |
+| 4 | **HS yếu** | Đầu · Cuối · Đã giảm · Tỉ lệ · **Danh sách HS còn yếu** | **HS yếu = em có ≥ 1 NHÓM yếu** (Thùy 17/11, thay "≥ 1 dạng yếu" của 03/11; báo cáo phien_ban 2). Danh sách: em · lớp · số nhóm yếu · số dạng yếu · **trạng thái xử lý** (ca Nhẹ / đang bổ trợ Yếu / đã đề xuất / chưa xử lý — "chưa xử lý" lên đầu). |
 | 5 | **Bổ trợ** | Số ca (Yếu · Nhẹ) · lượt HS · **Độ phủ** · **Hết yếu sau ca** | Ca không huỷ, ≥ 1 em có mặt. Độ phủ = HS yếu đầu tuần đã được ≥ 1 ca / HS yếu đầu tuần. |
 | 6 | **Trend** | Mỗi chỉ số, theo khối, **4 tuần gần nhất** | Tuần đã nộp ⇒ số snap; chưa ⇒ tính ngược bằng chính hàm trên. Mũi tên so TB 3 tuần trước. |
 

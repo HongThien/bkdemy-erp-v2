@@ -7,6 +7,8 @@ export type NhomSo = {
   btvn: { can_nop: number; dung_han: number; muon: number; ti_le_nop: number | null; ti_le_dung_han: number | null; so_luot: number; diem_tb: number | null }
   dang_yeu: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null }
   hs_yeu: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null; si_so: number }
+  // 17/11 (phien_ban 2): HS yếu = ≥ 1 NHÓM yếu + chỉ số Nhóm yếu. Bản snap cũ (phien_ban 1) không có khối này, HS yếu tính theo dạng.
+  nhom_yeu?: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null }
 }
 export type TongSo = NhomSo & {
   dong_chay: { vao: number; ra_bang_chung: number; ra_cua_so: number } | null
@@ -14,9 +16,10 @@ export type TongSo = NhomSo & {
   bo_tro: { ca_yeu: number; ca_nhe: number; luot_hs: number; hs_yeu_dau: number | null; hs_yeu_duoc_bt: number | null; do_phu: number | null; het_yeu_sau_ca: number | null }
 }
 export type LopSo = NhomSo & { lop_id: string; ten_lop: string; mon: string; khoi: string }
-export type HsConYeu = { hoc_sinh_id: string; ho_ten: string; ten_lop: string; mon: string; so_dang_yeu: number; dang: string[]; xu_ly: 'bo_tro_yeu' | 'ca_nhe' | 'theo_doi' | 'chua' }
+export type HsConYeu = { hoc_sinh_id: string; ho_ten: string; ten_lop: string; mon: string; so_dang_yeu: number; dang: string[]; so_nhom_yeu?: number; nhom?: string[]; xu_ly: 'bo_tro_yeu' | 'ca_nhe' | 'theo_doi' | 'chua' }
 export type SoBaoCao = {
   tu: string; den: string; co_anh_dau: boolean; co_anh_cuoi: boolean
+  hs_yeu_theo?: 'nhom'   // không có = bản snap cũ: HS yếu đếm theo DẠNG
   tong: TongSo; lop: LopSo[]; hs_con_yeu: HsConYeu[]; trend: { tuan: string; tong: TongSo }[]
 }
 export type DongCaNhan = {

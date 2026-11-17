@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 457 trigger · 1995 function
+602 bảng · 42 view · 0 enum · 457 trigger · 1997 function
 
 ## _app_secrets
 
@@ -2194,6 +2194,8 @@
 | dang | jsonb |  | '[]'::jsonb |  |  |
 | tinh_at | timestamp with time zone |  |  |  |  |
 | chot_id | uuid | Y |  | FK→bo_tro_chot_tuan.id |  |
+| so_nhom_yeu | integer |  | 0 |  |  |
+| nhom | jsonb |  | '[]'::jsonb |  |  |
 
 ## dang_yeu_hien_tai
 
@@ -2205,6 +2207,8 @@
 | dang | jsonb |  | '[]'::jsonb |  |  |
 | moc | date |  |  |  |  |
 | tinh_at | timestamp with time zone |  | now() |  |  |
+| so_nhom_yeu | integer |  | 0 |  |  |
+| nhom | jsonb |  | '[]'::jsonb |  |  |
 
 ## danhgia_ai_job
 
@@ -6802,7 +6806,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -11652,6 +11656,7 @@ WITH luot AS (
 - `_bctk_han(p_tuan date)` → timestamp with time zone
 - `_bctk_loc_nhap(p jsonb)` → jsonb
 - `_bctk_nhom(et_viec bigint, et_dung bigint, et_luot bigint, et_tb numeric, bt_can bigint, bt_dung bigint, bt_muon bigint, bt_luot bigint, bt_tb numeric, dy_dau bigint, dy_cuoi bigint, hy_dau bigint, hy_cuoi bigint, si_so bigint)` → jsonb
+- `_bctk_ny(ny_dau bigint, ny_cuoi bigint)` → jsonb
 - `_bctk_o_cua_mon(p_mon text)` → jsonb
 - `_bctk_o_cua_toi()` → jsonb
 - `_bctk_pct(a numeric, b numeric)` → numeric
@@ -12035,6 +12040,7 @@ WITH luot AS (
 - `_nhac_han_hang_ngay()` → integer
 - `_nhan_su_plan_ghi_log()` → trigger
 - `_nhan_su_plan_truoc()` → trigger
+- `_nhom_yeu_tai_lo(p_hs uuid[], p_mon text, p_moc timestamp with time zone)` → TABLE(hoc_sinh_id uuid, nhom text, ten_nhom text, score numeric, n integer)
 - `_nst_dong_bo(p_ns uuid, p_team uuid)` → void
 - `_nt_bam(p_k text)` → double precision
 - `_nt_bao_tri()` → boolean

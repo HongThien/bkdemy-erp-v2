@@ -83,7 +83,11 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 - **Tại một mốc:** `_dang_yeu_tai_lo(HS[], môn, mốc)` (chia lô 20 em) = luật trên + bài mô hình Hình–Luyện mức yếu. **Chụp tự động 00:00 thứ Hai** (`_dang_yeu_chup_tuan` → `dang_yeu_dau_tuan`); ảnh là bộ đệm, lệch thì tính lại từ hàm.
 - **Hiện tại:** sổ tính sẵn `dang_yeu` (`_qlcl_lam_moi_nen`, 5 phút) → `dang_yeu_hien_tai`.
 - **HS yếu = em có ≥ 1 NHÓM yếu** ở môn đó (Thùy 17/11 — thống nhất theo nhóm; box trưởng khối chia ≥ 3 · 2 · 1 nhóm).
-  Hiện code: box trưởng khối đã theo nhóm; **Báo cáo tuần còn đếm theo dạng** (`fn_bctk_so`, `_bctk_nhom`, `fn_qlcl_tong_quan`) — chưa sửa (§10.5).
+  Ảnh chụp `dang_yeu_hien_tai` / `dang_yeu_dau_tuan` có cột **`so_nhom_yeu` + `nhom`** (tên · % · số lần), một nguồn **`_nhom_yeu_tai_lo(HS[], môn, mốc)`**
+  (mig `202611171134` · chụp bù `…1135` cho ảnh hiện tại + tuần 09/11, 16/11). Đếm theo nhóm ở: Báo cáo tuần `fn_bctk_so` (phien_ban 2, thêm chỉ số **Nhóm yếu**) ·
+  QLCL `fn_qlcl_tong_quan` · box trưởng khối `fn_qlcl_nhom_yeu` (trước 17/11 đếm "nhóm có chứa dạng yếu" — sai luật) · `fn_qlcl_dang_yeu_hs` (mig `202611171137`).
+  Đo 17/11 (Toán): HS yếu theo dạng 312 → theo nhóm 261. Báo cáo đã nộp trước 17/11 giữ số snap theo dạng (phien_ban 1, màn ghi "bản cũ").
+  Em chỉ yếu ở bài mô hình Hình–Luyện (không có nhóm) không tính là HS yếu.
 - Số đã chụp / đóng băng trước 13/11 giữ nguyên (lịch sử, sổ bất biến).
 
 ## 6. Hình–Luyện (bài mô hình) — đường đo riêng
@@ -138,7 +142,7 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 | 2 | `bu_test` · `htd_test` ở kênh btvn, `bo_tro_test` ở kênh ET | **Cả ba loại test tính như ET** | ✅ mig `202611171010` ĐÃ ÁP 17/11 |
 | 3 | Hình–Luyện công thức cũ (theo câu, trọng số, không 30 ngày, có luyện + retest) | **Chuyển sang luật mới toàn bộ** (§6) | ✅ mig `202611171010` + `202611171025` (cấp quyền) ĐÃ ÁP 17/11. Đưa Hình–Luyện lại vào Dashboard theo nhóm: việc sau |
 | 4 | CLAUDE.md §1 ghi "KP = dạng" | **Sửa** — nhóm là cấp chính | ✅ đã sửa CLAUDE.md §1 (17/11). Notion chưa |
-| 5 | Hai định nghĩa HS yếu (báo cáo tuần theo dạng · box trưởng khối theo nhóm) | **Thống nhất theo nhóm yếu** (§5) | chưa sửa — cần scope riêng: `fn_bctk_so` · `_bctk_nhom` · `fn_qlcl_tong_quan` · sổ chụp đầu tuần |
+| 5 | Hai định nghĩa HS yếu (báo cáo tuần theo dạng · box trưởng khối theo nhóm) | **Thống nhất theo nhóm yếu** (§5) | ✅ mig `202611171134` · `…1135` · `…1137` ĐÃ ÁP 17/11; client chưa deploy |
 | 6 | Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ, Dashboard bỏ qua 345T | "tính sau" (Thùy 23/10) | ghi để nhớ |
 
 **Số thử mig `202611171010` (17/11 10:12, giao dịch ROLLBACK, 361 HS đang học, 58 HS KHTN · Lý · Hoá):**

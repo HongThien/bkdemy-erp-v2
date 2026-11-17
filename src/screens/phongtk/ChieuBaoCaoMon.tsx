@@ -77,7 +77,7 @@ function dungTrang(bc: BaoCaoMon): Trang[] {
               <p className="mb-1.5 text-[14px] font-bold text-slate-700">Khối {k.o.map(tenO).join(' · ')} — {ds.length} em</p>
               <ul className="space-y-1">{ds.map((h) => (
                 <li key={`${h.hoc_sinh_id}|${h.mon}`} className="flex items-baseline gap-2 text-[14px]">
-                  <b className="text-slate-800">{h.ho_ten}</b><span className="text-slate-500">{h.ten_lop} · {h.so_dang_yeu} dạng yếu</span>
+                  <b className="text-slate-800">{h.ho_ten}</b><span className="text-slate-500">{h.ten_lop} · {h.so_nhom_yeu != null ? `${h.so_nhom_yeu} nhóm yếu · ` : ''}{h.so_dang_yeu} dạng yếu</span>
                 </li>
               ))}</ul>
             </div>

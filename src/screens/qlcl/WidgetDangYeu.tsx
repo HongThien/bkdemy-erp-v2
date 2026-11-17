@@ -1,5 +1,5 @@
 // WIDGET DẠNG YẾU — màn chính ERP (Việc của tôi), Thùy 29/10, spec-truong-khoi.md §8.4.
-// Mỗi ô (môn × khối) trong phạm vi của tôi: số dạng yếu · HS có dạng yếu. 2 số: đầu tuần (đóng băng lúc Chốt tuần — chờ P3) | hiện tại.
+// Mỗi ô (môn × khối) trong phạm vi của tôi: số dạng yếu · HS yếu (17/11: HS yếu = em có ≥ 1 NHÓM yếu — đếm ở DB). 2 số: đầu tuần (đóng băng lúc Chốt tuần — chờ P3) | hiện tại.
 // Bấm ô ⇒ bảng chi tiết em yếu + trạng thái xử lý · bấm em ⇒ popup (dạng yếu · ET · BTVN như màn Duyệt bổ trợ).
 // Số tính ở DB, lưu sẵn (dang_yeu_hien_tai). 11/11 (audit timeout): DB tự làm mới NỀN theo lịch (_qlcl_lam_moi_nen, pg_cron) — widget
 // mở ra CHỈ ĐỌC; trước đây mỗi lần mở widget là tự chạy fn_qlcl_lam_moi qua MỌI ô trong phạm vi (Giám đốc = cả hệ). Còn em chờ cập nhật
@@ -228,7 +228,7 @@ function BangChiTiet({ o, onDong, onTaoCaNhe }: { o: OTongQuan; onDong: () => vo
         <div className="max-h-[75vh] overflow-auto px-5 py-3">
           {loi ? <p className="text-[13px] text-rose-600">{loi}</p>
             : ds === null ? <p className="text-[13px] text-slate-400">Đang tải…</p>
-            : ds.length === 0 ? <p className="text-[13px] text-slate-400">Không có em nào có dạng yếu.</p>
+            : ds.length === 0 ? <p className="text-[13px] text-slate-400">Không có em nào có nhóm yếu.</p>
             : (
               <table className="w-full text-[13px]">
                 <thead><tr className="text-left text-[11px] uppercase tracking-wider text-slate-400">
