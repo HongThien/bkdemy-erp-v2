@@ -13,7 +13,7 @@
 |---|---|---|---|
 | 1 | `spec-kien-truc.md` (giữ tên) | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · `ADR-mon` · `AUDIT-client-tinh-toan` |
 | 2 | `spec-ban-do-toan.md` | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
-| 3 | `spec-kho-cau-hoi.md` | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone** | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
+| 3 | `spec-kho-cau-hoi.md` — **NHÁP 17/11, chờ Thùy duyệt** (7 câu hỏi §8; nguồn chưa chuyển) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone** | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
 | 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-de-thi` (phần bóc câu) · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |

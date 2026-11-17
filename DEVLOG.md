@@ -81599,3 +81599,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ## 17/11 11:55 — Gộp spec #20 Mastery: CHỐT
 - spec-mastery §9.1 nhận trọn luật Đánh giá cuối cấp (L1–L6, cửa sổ/ngưỡng theo hàm đang chạy `_dgcc_cua_so` / `_dgcc_nguong`, phạm vi `_dgcc_tham_so`, khác mastery chính: khảo sát · điểm đạt/tối đa · thời điểm nộp · không 30 ngày · không cache).
 - `git mv` spec-danh-gia-cuoi-cap.md + PLAN-mastery-ban-do-moi.md → `_luu-tru/`; SPEC-INDEX dòng 20 = đã viết, bảng B thêm 2 file; CLAUDE §5 trỏ spec-mastery.
+
+## 17/11 12:20 — Gộp spec #3: spec-kho-cau-hoi.md bản NHÁP
+- Agent dựng nháp (đọc 6 file nguồn + đối chiếu DB chỉ đọc); tôi tự kiểm lại 5 khẳng định chính bằng DB: điền ô Đại `dai_cau_form_dien` 366 chờ + 83 rác, 0 duyệt, FK `bai_test_cau.form_dien_id` → `hinh_form_dien`, không có `fn_chon_form` · 3.692 câu Hình sau 08/09 chưa duyệt vẫn `kho_chuan` · chỉ có trigger thu hồi cho điền ô (`dai_cau_hoi_thu_hoi_dien`), không có cho form TN · `hinh_hoc_cau_form_tn` 25 chờ + 11 rác · `dai_cau_hoi_clone_cho_duyet` 5.665 dòng — đều đúng.
+- 13 điểm lệch + 7 câu hỏi Q1–Q7 ở §8. Nguồn chưa chuyển vào `_luu-tru/` (chờ Thùy duyệt).
