@@ -1,6 +1,6 @@
 # spec-mastery.md — MASTERY / ĐO LƯỜNG (spec #20 của bộ 20 spec)
 
-> **Trạng thái: 17/11/2026 — Thùy đã chốt 5 điểm lệch (§10); mig `202611171010` + `202611171025` (điểm 1–3) ĐÃ ÁP 10:2x; điểm 5 chưa làm.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
+> **Trạng thái: ĐÃ VIẾT 17/11/2026 — Thùy chốt 5 điểm lệch + xoá A–F (§10), tất cả ĐÃ ÁP; nguồn cũ (`spec-danh-gia-cuoi-cap`, `PLAN-mastery-ban-do-moi`) đã vào `_luu-tru/`.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
 > `spec-bo-tro.md` §1 · `spec-van-hanh-tuan.md` §4.3, §5.6 · HANDOFF (mục "Mastery theo lần", "Dashboard học tập") · DEVLOG 10 → 16/11.
 > **Mọi luật ở §2–§7 đã đối chiếu với hàm ĐANG CHẠY trong DB ngày 17/11** (`pg_get_functiondef`). Chỗ code lệch luật Thùy đã nói ⇒ không tự sửa, ghi ở §10.
 > Spec này thắng các file nguồn ở phần đo lường. Luật mastery MỚI chỉ ghi vào đây.
@@ -130,7 +130,26 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 
 ## 9. Kênh nhìn thêm — KHÁC công thức có chủ ý
 
-- **Đánh giá cuối cấp** (`fn_dgcc_*`, leaf `db_cuoicap`; lớp 5T · khối 9 · 12; lần từ 15/06/2026): **xu hướng**, không phải mức. Theo lần như mastery, nhưng cửa sổ theo tầng (chủ đề / chuyên đề 5 / 10 · nhóm 3 / 5), so **TB ngắn − TB dài** ra nhãn ↑↑ ↑ → ↓ ↓↓ (ngưỡng chủ đề / chuyên đề 3 / 10 · nhóm 5 / 15 — lấy từ SD thật, `_dgcc_nguong`); số lần ≤ cửa sổ ngắn ⇒ "chưa đủ lần". Nguồn: ET · MT · khảo sát · BTVN · test bổ trợ (`bo_tro_test` · `bu_test` · `htd_test`); **không** tự luyện, luyện bổ trợ, retest, thi thử. Tham số ở một hàm `_dgcc_tham_so()`.
+### 9.1 Đánh giá cuối cấp — xu hướng theo lần (Thùy duyệt 23/10; gộp từ `spec-danh-gia-cuoi-cap.md` 17/11)
+
+**Đích:** lớp cuối cấp thấy **em đang lên hay xuống** ở từng mảng qua thời gian dài, không để một bài nhiều câu lấn át. Là **màn nhìn THÊM** (leaf `db_cuoicap`, khu Quản lý chất lượng) — mastery chính và bổ trợ không đọc nó.
+**Phạm vi:** khối trong `_dgcc_tham_so()` = **5T · 9 · 12**; lần từ **15/06/2026** (năm học này). Khối nào còn bản đồ cũ: `_bdm_khoi_giu_cu` (5T đã sang bản đồ mới 31/10). Khối 9 Hình: chỉ tầng Chủ đề.
+
+| # | Luật (Thùy 23/10) |
+|---|---|
+| L1 | **Một lần = một bài làm** (1 BTVN · 1 ET · 1 MT · 1 khảo sát · 1 test bổ trợ). Cùng ngày BTVN + ET ⇒ 2 lần. |
+| L2 | **Mỗi tầng tự gộp lần của mình** (1 BTVN rải 3 chuyên đề cùng chủ đề ⇒ chủ đề 1 lần, chuyên đề 3 lần). |
+| L3 | **% một lần** = điểm các câu của lần thuộc nút / số câu đó. **Không trọng số** lần, không trọng số nguồn. |
+| L4 | Lần 1 câu vẫn tính. |
+| L5 | **Nguồn:** ET · MT · khảo sát · BTVN (giấy, app, giáo trình) · test bổ trợ `bo_tro_test` · `bu_test` · `htd_test`. **Không:** tự luyện, game, luyện bổ trợ, retest, thi thử. |
+| L6 | **Cửa sổ** (`_dgcc_cua_so`): Chủ đề **5 / 10** · Chuyên đề **5 / 10** · Nhóm bài **3 / 5** (TB ngắn / TB dài, chồng lấn). |
+
+- **Xu hướng = TB ngắn − TB dài** (điểm %). Ngưỡng `_dgcc_nguong` (lấy từ SD thật trên 2.342 ô, ≈ 0,5 SD / 1,5 SD): chủ đề, chuyên đề **3 / 10** · nhóm **5 / 15**
+  ⇒ `> rõ` ↑↑ · `nhẹ … rõ` ↑ · `±nhẹ` → · ↓ · ↓↓. Số lần **≤ cửa sổ ngắn** ⇒ "chưa đủ lần" (không hiện xu hướng); giữa ngắn và dài ⇒ TB dài lấy hết số lần đang có. Luôn hiện **số lần** cạnh TB.
+- **Khác mastery chính (có chủ ý):** có khảo sát · điểm câu dùng **điểm đạt / điểm tối đa** khi có (không chỉ Đ / C / S) · thời điểm bài app = lúc **nộp** · không giới hạn 30 ngày (từ 15/06) · không lưu sẵn (tính lúc mở).
+- Câu quy về nút bằng `_dgcc_nut` (cùng quy câu của bản đồ mới); không quy được ⇒ bỏ (§1.5). Hai hàm cùng xếp "gần nhất" phải chung khoá xếp, kể cả khi hoà (bài học 23/10).
+- **Hàm:** `_dgcc_cau` (nguồn câu) → `_dgcc_lan` (lần × nút) → `fn_dgcc_hs` · `fn_dgcc_lop(lớp, tầng)` · `fn_dgcc_lan_nut` / `fn_dgcc_lich_su_nut` (popup từng lần); tham số `_dgcc_tham_so` · `_dgcc_cua_so` · `_dgcc_nguong` · `_dgcc_ten`.
+  **Màn:** chọn lớp → tầng → lưới HS × nút (ô = TB dài + mũi tên + số lần), bấm ô ⇒ danh sách lần. Đo 23/10: khối 9 cả khối ~5 s, một lớp ~1 s.
 - **Dashboard học tập** từ 10/11 tối **đọc mastery chính** (không còn kênh "10 câu gần nhất" riêng, không lọc tuần); popup ô = từng lần của nút.
 - Elo / EXP / điểm rank app HS **không phải mastery** (`spec-kinh-te-nhiem-vu`).
 

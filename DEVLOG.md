@@ -81595,3 +81595,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Client (chưa deploy ERP):** `baoCaoTuan.ts` type `nhom_yeu?` · `hs_yeu_theo?` · `so_nhom_yeu?`; `BaoCaoTuanTK` thêm ô Nhóm yếu + cột Nhóm yếu bảng lớp + ghi "em có ≥ 1 nhóm yếu" / "bản cũ: ≥ 1 dạng yếu"; `ChieuBaoCaoMon` + danh sách HS còn yếu hiện số nhóm; `WidgetDangYeu` chữ. tsc chỉ lỗi cũ pdfRender; check:kien-truc ✔.
 - spec-mastery §5 + §10 · spec-van-hanh-tuan §5.1 #5, §5.5 (thêm dòng 3b Nhóm yếu, sửa dòng 4).
 - Còn: `_dy_nhom_ds` không còn ai gọi (xoá phải hỏi). Em chỉ yếu ở bài mô hình Hình–Luyện không thành HS yếu (Hình–Luyện chưa có nhóm).
+
+## 17/11 11:55 — Gộp spec #20 Mastery: CHỐT
+- spec-mastery §9.1 nhận trọn luật Đánh giá cuối cấp (L1–L6, cửa sổ/ngưỡng theo hàm đang chạy `_dgcc_cua_so` / `_dgcc_nguong`, phạm vi `_dgcc_tham_so`, khác mastery chính: khảo sát · điểm đạt/tối đa · thời điểm nộp · không 30 ngày · không cache).
+- `git mv` spec-danh-gia-cuoi-cap.md + PLAN-mastery-ban-do-moi.md → `_luu-tru/`; SPEC-INDEX dòng 20 = đã viết, bảng B thêm 2 file; CLAUDE §5 trỏ spec-mastery.

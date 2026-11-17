@@ -14,7 +14,7 @@
 | 1 | `spec-kien-truc.md` (giữ tên) | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · `ADR-mon` · `AUDIT-client-tinh-toan` |
 | 2 | `spec-ban-do-toan.md` | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
 | 3 | `spec-kho-cau-hoi.md` | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone** | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
-| 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) · `PLAN-mastery-ban-do-moi` (phần builder) |
+| 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-de-thi` (phần bóc câu) · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
 | 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · `spec-muc-tieu-tuan` |
@@ -30,7 +30,7 @@
 | 17 | `spec-bai-hoc-tuong-tac.md` | Bài học tương tác | `spec-day-hinh-3d` · `spec-toan-du-hanh` · `spec-khtn-du-hanh` |
 | 18 | `spec-bo-tro.md` (giữ tên) | **Chỉ logic bổ trợ**: các level, cách kết luận, theo dõi… (xếp lịch, báo PH ⇒ #8) | `spec-bo-tro` |
 | 19 | `spec-tai-chinh.md` | **Số liệu** tài chính (cách thu ⇒ #8, lương ⇒ #11) | `SPEC-tai-chinh-luong-gv-ta` (phần cơ cấu tài chính) · `PLAN-thu-chi` (phần số liệu) |
-| 20 | `spec-mastery.md` — **NHÁP 17/11, chờ Thùy duyệt** (file nguồn chưa chuyển) | **Mastery / đo lường — spec riêng** (lần đo, mastery, dạng yếu, cache, Dashboard học tập) | `spec-danh-gia-cuoi-cap` (đo theo lần) · `PLAN-mastery-ban-do-moi` (phần mastery) · `spec-van-hanh-tuan` §5.6 (dạng yếu tại mốc) · *CLAUDE.md §5 · mục HANDOFF "Mastery theo lần", "Dashboard học tập"* |
+| 20 | ✅ **`spec-mastery.md` — ĐÃ VIẾT 17/11** (Thùy chốt 5 điểm lệch + xoá A–F; nguồn đã chuyển `_luu-tru/`) | **Mastery / đo lường — spec riêng** (lần đo, mastery, dạng yếu · nhóm yếu · HS yếu, cache, Cuối cấp, Dashboard học tập) | *đã gộp:* `spec-danh-gia-cuoi-cap` · `PLAN-mastery-ban-do-moi` · CLAUDE.md §5 (giữ ý, trỏ sang) · mục HANDOFF mastery. `spec-van-hanh-tuan` §5.6 giữ tại chỗ (trỏ §5) |
 
 **Không vào bộ 20 spec:**
 - **Anh, Văn — gác lại (Thùy 17/11):** `spec-anh-kho` · `spec-anh-ban-do-k9` · `nghien-cuu-mon-anh` giữ nguyên ở gốc, chưa gộp.
@@ -63,4 +63,5 @@
 | `de-xuat-huy-hieu.md` · `de-xuat-nhiem-vu.md` · `phan-tich-diem-rank.md` | Đề xuất chi tiết 28/09 | `spec-thanh-tuu-nhiem-vu.md` · `spec-kinh-te-nhiem-vu.md` |
 | `BUILD-BACKLOG-HS-06-10.md` | Backlog 06/10 | `spec-v1-app-hs.md` · HANDOFF |
 | `docs/2026-07-21-thay-cau-chet.md` · `docs/spec-kho-hinh-soan-chuoi.md` · `docs/v1-kho-hientrang.md` | Ghi chú 06–08/2026 | `spec-giai-bai.md` · `spec-hinh-cay-nhanh.md` |
+| `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |
 | *(đã xoá 15/11, còn trong git)* `spec-giai-bai-ai.md` · `spec-luong-kho.md` · `spec-luong-kho-p0.md` · `kho-rules/README.md` · `kho-rules/*/k*.md` · `docs/luong-kho-kieu-1-hinh-hoc.md` | Thay bằng luật kho mới | `spec-giai-bai.md` |

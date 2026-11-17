@@ -267,6 +267,8 @@
 
 ## 5. Lớp Measurement
 
+> **Luật đo chi tiết (nguồn lần đo, công thức ≤5 lần / 30 ngày, ngưỡng, dạng yếu · nhóm yếu · HS yếu, cache, Cuối cấp): `spec-mastery.md`.** Mục này giữ nguyên tắc nền.
+
 - **Mỗi ô (HS × dạng) có 3 trạng thái:** `đạt` / `yếu` / **`chưa-đo`**. KHÔNG gộp `chưa-đo` vào `yếu`/0.
   - `mat_bai` (mất bài) = đường-đóng-không-data, **≠ điểm 0** (mất bài = quy trình; 0 = năng lực).
   - **vắng-không-bù** → `bang_khong_bu` đóng vận hành; ô (HS × dạng) **để trống**, chờ dạng lặp lại lấp. Vô hại.
