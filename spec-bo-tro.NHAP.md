@@ -248,6 +248,22 @@ màn `phongtk/BoTroPopup` · `phongtk/ChatLuongPhong` · `botro/*` · `danhgia/X
 
 ## 12. Câu hỏi cho Thùy · lệch kỹ thuật
 
+### 12.0 Thùy trả lời 17/11 (thắng mọi "đề xuất" ở 12.1; chỗ nào thân spec §1–§11 còn trái thì theo bảng này — sửa thân khi chốt hẳn)
+
+| Câu | Thùy trả lời (nguyên ý) | Hệ quả cho spec | Việc code / DB (chỉ làm khi có lệnh) |
+|---|---|---|---|
+| 4 | **L3, L4 CÓ dùng, nhưng ít. Cách xếp GIỐNG L2, chỉ khác NGƯỜI DẠY.** | L2 · L3 · L4 cùng một đường: case ca khối → xếp theo lịch khối. Bỏ câu "L4 riêng với GV, ngoài khối, chưa có đường ra" và "mọi ca khối tính L2". Mức quyết định **ai dạy**, không quyết định đường xếp. *Ai dạy từng mức: chờ Thùy nói rõ (§12.1b).* | L4 vào ứng viên ca khối; gán người dạy theo mức |
+| 5 | **BỎ TRẦN. Bổ trợ yếu theo lịch khối tính từ L2 trở lên.** | Xoá luật trần 70 em / 20 Cao (§3). "Bổ trợ yếu theo lịch khối" = L2 + L3 + L4; L1 = sau giờ, không thuộc lịch khối. | Gỡ kiểm trần lúc duyệt + trigger trần lúc mở case, `_btyeu_tran_dang` / `_btyeu_tran_cao`, chữ "trần" trên màn |
+| 6 | **BỎ HẲN Bổ trợ Khẩn cấp và Bổ trợ Hình.** | Loại "Khẩn cấp" không tồn tại. Bổ trợ Hình (§7.5) ra khỏi spec — còn: yếu (L1 sau giờ · L2–L4 ca khối) · bù · đuổi · ôn thi. (Đóng luôn câu 12.) | Ẩn / gỡ tab Hình, Lịch phòng tab Hình, `CaHinhTA`, bảng `bo_tro_hinh*` + `fn_bthinh_*` (0 case) — **xoá = Luật xoá, liệt kê rồi chờ gật** |
+| 7 | **Báo động hiện THEO TUẦN ở màn Dashboard duyệt bổ trợ của trưởng khối.** | Báo động của GV / TA là tín hiệu của TUẦN, nằm ngay nơi trưởng khối đề xuất / duyệt bổ trợ (không phải 🚨 30 ngày ở Dashboard học tập). | Đưa báo động của tuần vào màn duyệt bổ trợ trưởng khối |
+| 8 | **Cái này giáo viên chủ động.** | Dạng đưa vào bài không do hệ áp cứng theo mức — người dạy chủ động chọn. *Cần rõ: "giáo viên" = người dạy ca (TA / GV), và hệ vẫn gợi ý sẵn hay để trống (§12.1b).* | theo câu trả lời 12.1b |
+| 11 | **Cần review lại bổ trợ ĐUỔI kỹ hơn.** | §7.4 Đuổi = **CHƯA CHỐT**, review riêng với Thùy (ngưỡng 50 % · hoàn thành tay · 17 / 89 đợt hoàn thành chưa chốt dạng · client ghi thẳng không log). Không đổi gì ở đuổi trước buổi review. | — |
+| 1 · 2 · 3 · 9 · 10 | *chưa trả lời* | giữ nguyên câu hỏi ở 12.1 | — |
+
+### 12.1b Hỏi lại cho rõ (phát sinh từ câu trả lời)
+- **4b.** Ai dạy từng mức? Hiểu tạm theo thang 11/11: L2 = TA trực ca khối · L3 = ? · L4 = giáo viên. Thùy cho đúng tên vai của L3 và L4.
+- **8b.** "Giáo viên chủ động" = người dạy ca tự chọn dạng trong các nhóm đã chốt (hệ vẫn điền sẵn gợi ý, sửa được) — hay hệ để trống hoàn toàn cho người dạy chọn? Áp cho cả L1 sau giờ lẫn ca khối?
+
 ### 12.1 Câu hỏi (xếp theo mức quan trọng — trả lời 1 dòng mỗi câu)
 
 1. **Case có cần một KẾT LUẬN "đạt / chưa đạt" không?**
