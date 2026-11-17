@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11** — logic bổ trợ đã thay bằng `spec-bo-tro.md` mới (Thùy chốt 17/11). **NGOẠI LỆ: §41–§43 (đơn vị bù theo nhóm ở Lịch phòng · lịch khối ↔ lịch phòng · phòng dùng chung) CÒN HIỆU LỰC** cho xếp lịch tới khi spec #8 `spec-van-hanh-trung-tam.md` viết xong.
+
 # BỔ TRỢ — tài liệu tổng (hiện trạng 13/11/2026)
 
 > **Đọc file này TRƯỚC khi sửa bất cứ gì thuộc luồng bổ trợ.** Đây là bản HIỆN TRẠNG — chỉ ghi luật đang có hiệu lực.

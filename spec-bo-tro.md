@@ -1,6 +1,7 @@
-# spec-bo-tro.md — BỔ TRỢ: loại · mức · kết luận · theo dõi (spec #18 của bộ 20 spec)
+# spec-bo-tro.md — BỔ TRỢ: logic (loại · mức · đề xuất – duyệt · vòng đời case · nội dung ca · theo dõi) (spec #18 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — CHỜ THÙY DUYỆT.** File này là `spec-bo-tro.NHAP.md`; `spec-bo-tro.md` (bản 13/11 + §41–§43) vẫn là nguồn đang dùng tới khi Thùy trả lời §12.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời 12 câu — bảng §12.0). Riêng **§7.4 Đuổi CHƯA CHỐT** (Thùy: "cần review lại kỹ hơn"). Thay bản tổng 13/11 (nay ở `_luu-tru/spec-bo-tro-ban-13-11.md` — **§41–§43 xếp lịch của bản đó + `spec-xep-bo-tro-chung.md` CÒN HIỆU LỰC tới khi spec #8 viết xong**).
+> Việc code / DB phát sinh từ quyết định (gỡ trần, gỡ Bổ trợ Hình, L3/L4 vào ca khối, báo động theo tuần…) **chỉ làm khi Thùy ra lệnh** — danh sách §12.0 cột cuối + §12.2.
 > **Gộp từ:** `spec-bo-tro.md` §0–§10 · `spec-xep-bo-tro-chung.md` (chỉ phần mức ↔ đơn vị, ưu tiên trong loại) · `_luu-tru/PLAN-botro-yeu.md` · `_luu-tru/PLAN-botro-yeu-ca.md` ·
 > `_luu-tru/BKDEMY_CANHBAO_BOTRO_SPEC.md` (lịch sử, chỉ giữ ý "không quy kết nhân quả") · HANDOFF (mục bổ trợ 28/09 → 17/11) · DEVLOG 09/09 → 17/11 (quyết định có ngày, ghi `(Thùy dd/mm)`) · CLAUDE.md §1, §1.5, §4, §5 + đoạn MCQ bổ trợ.
 > **Đối chiếu DB 17/11** (chỉ đọc: `pg_constraint`, `pg_trigger`, `pg_get_functiondef` 197 hàm, đếm dòng). Số trong file là số ngày 17/11. Chỗ DB / code lệch nguồn ⇒ **không sửa**, ghi §11–§12.
@@ -31,9 +32,9 @@
 | **Riêng với GV** (L4) | như trên, mức L4 | như trên | GV kèm riêng, ngoài ca khối | *chưa có luồng — §12 câu 4* | — |
 | **Bù** | Em vắng buổi thường | Tự sinh từ điểm danh (R-BU, §7.3) | Nội dung buổi đã nghỉ: luyện → test bù | Em có mặt buổi bù · hoặc ghi `bang_khong_bu` | `bu` |
 | **Đuổi** | Em vào lớp giữa chừng | Học thuật / tuyển sinh mở đợt, GV chọn dạng | Tự học ở nhà + TA làm cùng phần dở | Người phụ trách bấm Hoàn thành đợt | `bo_tro_duoi` |
-| **Hình** | Em yếu Hình | Trang / Lộc mở tay | Tài liệu GV gắn theo buổi, không test | TA hoàn tất 1 buổi · hoặc đóng tay | `bo_tro_hinh` |
+| ~~Hình~~ | **BỎ HẲN (Thùy 17/11)** — 0 case từ 17/10; code / DB còn, gỡ theo Luật xoá khi có lệnh | | | | |
 | **Ôn thi** | Em được thêm vào đợt ôn | Trang lập đợt mỗi kỳ thi | Luyện đề, không đo | Hết đợt | `bo_tro_on_thi` |
-| *Khẩn cấp* | — | — | *nêu 17/10, chưa làm — §12 câu 6* | — | — |
+| ~~Khẩn cấp~~ | **BỎ HẲN (Thùy 17/11)** — trưởng khối đề xuất / duyệt được bất kỳ ngày nào | | | | |
 
 - Một em có thể cùng lúc ở nhiều loại (bù riêng, yếu riêng — không gộp, Thùy 24/09). Mỗi (em × môn) tối đa **một case Yếu đang mở**.
 - Số 30 ngày tới 17/11 (lượt HS có mặt / lượt xếp, buổi không huỷ): Sau giờ 89 / 97 · Yếu ca khối 61 / 61 (thêm 41 buổi huỷ) · Bù 106 / 137 · Đuổi 16 / 17 · Ôn thi 33 / 76 · **Hình 0** (bảng `bo_tro_hinh` chưa có dòng nào).
@@ -55,9 +56,9 @@
 |---|---|---|---|---|
 | L0 | Không bổ trợ | Hạ L0 (`fn_btyeu_doi_level`, bắt buộc lý do) | — | Hạ L0 = đóng case `bo`, huỷ buổi chưa học |
 | **L1** | **Sau giờ** — 1 ca 20–25′ / tuần | Duyệt đề xuất L1 | Nhập kết quả test · reset thứ Hai | Không mở case khối, không qua Lộc, không kiểm trần |
-| **L2** | Ca khối, **2 đơn vị / tuần** | Duyệt đề xuất L2 · Đổi mức từ L1 | Hoàn tất ca · hết hạn 14 ngày | **Hiện mọi ca khối tính L2** (Thùy 12/11) |
-| **L3** | Ca khối, 4 đơn vị / tuần | Duyệt đề xuất L3 | như L2 | 12/11 đã chuyển 14 em L3 → L2; có mở lại không: §12 câu 4 |
-| **L4** | Riêng với GV, ngoài khối | Duyệt đề xuất L4 | *chưa có* | §12 câu 4 |
+| **L2** | Ca khối theo lịch khối — **TA trực ca khối dạy** | Duyệt đề xuất L2 · Đổi mức từ L1 | Hoàn tất ca · hết hạn 14 ngày · hết tuần chốt (mức về L0) | |
+| **L3** | Ca khối, **xếp y như L2** — **GIÁO VIÊN dạy** (Thùy 17/11); ít em | Duyệt đề xuất L3 | như L2 | |
+| **L4** | Ca khối, **xếp y như L2** — **đặc biệt nghiêm trọng: chuẩn bị kỹ hơn và ĐỔI giáo viên** (Thùy 17/11); rất ít em | Duyệt đề xuất L4 | như L2 | code hiện chưa đưa L4 vào ứng viên ca khối — §12.0 |
 
 - Đổi mức: trên thẻ case (`fn_btyeu_doi_level`, 0–4) · trên hàng chờ / thẻ ca Sau giờ **L1 → L2/L3/L4** (`fn_btnhe_doi_muc`, trưởng khối trở lên; đi đúng đường đề xuất + duyệt; ca sau giờ đã tạo không tự huỷ, thẻ ghi "Đã chuyển Lx") (Thùy 12/11).
 - Mọi lần đổi mức có dòng `hs_level_log` (mức cũ → mới, lý do, người, nguồn). Log trước 11/11 dùng số thang cũ (2 = buổi riêng TA, 3 = buổi riêng GV).
@@ -66,7 +67,9 @@
 
 **Ưu tiên của case:** Cao (3) · Thường (2) · Thấp (1), do trưởng khối chọn lúc đề xuất, sửa được trên thẻ. Thứ tự hiện ứng viên ca: ưu tiên cao → case mở lâu hơn (không xét bậc lớp).
 
-**Trần toàn trung tâm (Thùy 09/10; gộp Hình 17/10):** tối đa **70 em đang bổ trợ** và **20 em ưu tiên Cao**, đếm case `dang_xu` của Yếu + Hình. Đủ trần ⇒ không duyệt thêm; muốn thêm phải hạ L0 / huỷ một em. Chặn hai lớp: hàm kiểm lúc duyệt + trigger lúc mở case. Hiện 54 / 70 · Cao 8 / 20. L1 sau giờ không mở case `dang_xu` nên không tính (§12 câu 5).
+**Trần toàn trung tâm: BỎ (Thùy 17/11 "Bỏ trần").** Luật cũ 70 em / 20 Cao (09/10) hết hiệu lực; code còn kiểm trần lúc duyệt + trigger lúc mở case — gỡ khi có lệnh (§12.0). **"Bổ trợ yếu theo lịch khối" = L2 trở lên** (L2 · L3 · L4); L1 = sau giờ.
+
+**Mức thuộc về LƯỢT CHỐT TUẦN (Thùy 17/11, câu 2):** case đóng / hết tuần ⇒ em về L0; "em đang bổ trợ" = có case mở hoặc lượt duyệt trong tuần. Lịch sử mức còn ở `hs_level_log`. (Code hiện giữ mức tới khi có người đổi — sửa khi có lệnh.)
 
 ## 4. Đề xuất → duyệt → chốt tuần (Thùy 10/11)
 
@@ -75,7 +78,7 @@
 3. **Trưởng bộ môn** (Chất lượng › Danh sách bổ trợ): **Duyệt** hoặc **Trả lại** (bắt buộc lý do). Trạng thái dòng: `nhap` → `cho_duyet` → `da_duyet` | `tra_lai` | `huy`. Mọi đổi trạng thái tự ghi `bo_tro_de_xuat_log` (trigger).
 4. **Duyệt làm gì** (`fn_btk_duyet` → `_btk_duyet_chay`, một transaction): ghi mức + log ·
    - **L1** ⇒ em vào hàng chờ Sau giờ (§7.2); không mở case khối.
-   - **L2–L4** ⇒ kiểm trần 70 / 20 ⇒ mở case mới hoặc **gộp vào case đang mở** ⇒ đổ dạng: **"nhóm quyết, dạng thực thi"** — mọi dạng đã đo **chưa đạt** của các nhóm đã tick; nhóm mà mọi dạng đều đạt ⇒ lấy 1 dạng điểm thấp nhất.
+   - **L2–L4** ⇒ ~~kiểm trần~~ (bỏ 17/11) ⇒ mở case mới hoặc **gộp vào case đang mở** ⇒ đổ dạng: **"nhóm quyết, dạng thực thi"** — mọi dạng đã đo **chưa đạt** của các nhóm đã tick; nhóm mà mọi dạng đều đạt ⇒ lấy 1 dạng điểm thấp nhất.
 5. **Nhịp:** chiều thứ Hai trưởng khối soi Dashboard và chốt bổ trợ tuần (`spec-van-hanh-tuan.md` §1). Đề xuất + duyệt **làm được bất kỳ ngày nào**; lượt chốt L1 chỉ có hiệu lực **trong tuần được duyệt** (T2–CN, Thùy 16/11). Lượt chốt là nguồn Phần 2 của Mục tiêu tuần.
 6. **Quyền:** trưởng khối = trong phạm vi môn × khối (`_btk_la_tk`); trưởng bộ môn = chế độ `tbm` + phạm vi (`_btk_la_tbm`). Phạm vi là bảng phân công — `spec-truong-khoi.md`.
 - Số (17/11): đã duyệt mọi thời L1 208 · L2 73 · L3 1; **tuần này** đã duyệt L1 82 · L2 36 · L3 1, chờ duyệt 21, nháp 2.
@@ -129,7 +132,7 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 
 ## 7. Từng loại
 
-### 7.1 Yếu — ca khối (L2 · L3)
+### 7.1 Yếu — ca khối (L2 · L3 · L4)
 - Theo §3–§6. Dạng trong case có nguồn: `duyet` (lúc duyệt) · `tay` · `may` · `bao_dong`. Dạng bị xoá / gộp ở bản đồ ⇒ case tự đổi sang dạng nhận hoặc đóng dạng (`_btyeu_dong_bo_dang_ban_do`).
 - Hạn 14 ngày: `fn_btyeu_het_han_xu_ly` (§12 kỹ thuật 2).
 - Hiện (17/11): 54 case đang mở, 31 đã có buổi chờ học.
@@ -152,7 +155,8 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 - Ô trống mastery do vắng-không-bù **để trống**, chờ dạng lặp lại lấp (CLAUDE §5).
 - Số: 30 ngày 221 lượt vắng — 88 đã bù có mặt · 66 ghi không bù; **đang tồn 44 lượt cần xếp** (cũ nhất 03/10).
 
-### 7.4 Đuổi (thống nhất 15/10, thay "Học từ đầu")
+### 7.4 Đuổi (thống nhất 15/10, thay "Học từ đầu") — ⚠ CHƯA CHỐT
+> **Thùy 17/11: "cần review lại bổ trợ đuổi kỹ hơn".** Dưới đây là HIỆN TRẠNG code / DB, không phải luật đã chốt. Điểm cần review: cổng "xong dạng" ≥ 50 % (mastery Đạt ≥ 80 %) · đợt hoàn thành bấm tay (17 / 89 đợt hoàn thành chưa từng chốt dạng mục tiêu) · hoàn thành / xoá đợt ghi thẳng từ client không log · cổng 50 % chỉ đếm câu đúng hẳn. Không đổi gì ở đuổi trước buổi review.
 - **Đợt đuổi** = em × lớp (`bo_tro_duoi`: `can_duoi` → `hoan_thanh`; nguồn `thu_cong` · `tuyen_sinh`). **Mục tiêu = đúng các dạng GV chọn** (`bo_tro_duoi_dang`); dạng ngoài mục tiêu ẩn.
 - Em **tự học ở nhà**: đọc lý thuyết → luyện → test từng dạng; đến ca TA làm cùng phần dở. **Xong một dạng = test dạng đó đúng ≥ 50 %** (Thùy 21/09; chỉ đếm câu đúng hoàn toàn).
 - Khoá tuần tự theo bản đồ; TA **mở tay** được (`fn_duoi_mo_dang`). Một nguồn tiến trình `fn_duoi_tien_trinh` (nhà / ca suy từ ngày nộp test).
@@ -160,11 +164,8 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 - Kết thúc: người phụ trách bấm **Hoàn thành** (tay). `htd_test` tính mastery như ET (17/11).
 - Hiện: 6 đợt đang đuổi (2 chưa chốt dạng) · 89 đã hoàn thành.
 
-### 7.5 Hình (Thùy 17/10 — độc lập với Yếu)
-- Case = em × đợt (`bo_tro_hinh`), **Trang / Lộc mở tay**, bắt buộc lý do; mức L1–L3 (thang **cũ**) + ưu tiên. Không dạng, không đo, không máy đề xuất (Hình chưa có bản đồ dùng cho bổ trợ).
-- GV gắn tài liệu theo **buổi**; TA điểm danh → tài liệu → nhận xét → Hoàn tất. **Không test.** Hoàn tất 1 buổi ⇒ case `day_xong`; Trang / Lộc đóng tay: `on` · `can_them` · `bo`.
-- Tính chung trần 70 / 20 với Yếu.
-- **Chưa từng chạy** (0 case). Nhánh cũ "Hình theo mô hình" đã ẩn (§11).
+### 7.5 Hình — BỎ HẲN (Thùy 17/11)
+- Bổ trợ Hình độc lập (17/10) chưa từng chạy (0 case). Thùy 17/11: bỏ hẳn. Còn trong code / DB: tab Hình ở hub Bổ trợ, Lịch phòng tab Hình, `CaHinhTA`, bảng `bo_tro_hinh` (+ `_log`, `_tai_lieu`), hàm `fn_bthinh_*`, trigger `trg_bthinh_*` — **gỡ = Luật xoá: liệt kê chính xác rồi chờ Thùy gật**. Nhánh cũ "Hình theo mô hình" cũng nằm trong danh sách gỡ (§11).
 
 ### 7.6 Ôn thi
 - **Đợt ôn** mỗi kỳ (`bo_tro_on_thi_dot`: giữa kỳ / cuối kỳ × học kỳ × khối × từ–đến ngày). Trang thêm em tay. Ngoài hệ case, ngoài trần, **không đo** (`on_thi_luyen` không tính mastery).
@@ -258,13 +259,19 @@ màn `phongtk/BoTroPopup` · `phongtk/ChatLuongPhong` · `botro/*` · `danhgia/X
 | 7 | **Báo động hiện THEO TUẦN ở màn Dashboard duyệt bổ trợ của trưởng khối.** | Báo động của GV / TA là tín hiệu của TUẦN, nằm ngay nơi trưởng khối đề xuất / duyệt bổ trợ (không phải 🚨 30 ngày ở Dashboard học tập). | Đưa báo động của tuần vào màn duyệt bổ trợ trưởng khối |
 | 8 | **Cái này giáo viên chủ động.** | Dạng đưa vào bài không do hệ áp cứng theo mức — người dạy chủ động chọn. *Cần rõ: "giáo viên" = người dạy ca (TA / GV), và hệ vẫn gợi ý sẵn hay để trống (§12.1b).* | theo câu trả lời 12.1b |
 | 11 | **Cần review lại bổ trợ ĐUỔI kỹ hơn.** | §7.4 Đuổi = **CHƯA CHỐT**, review riêng với Thùy (ngưỡng 50 % · hoàn thành tay · 17 / 89 đợt hoàn thành chưa chốt dạng · client ghi thẳng không log). Không đổi gì ở đuổi trước buổi review. | — |
-| 1 · 2 · 3 · 9 · 10 | *chưa trả lời* | giữ nguyên câu hỏi ở 12.1 | — |
+| 8 (rõ thêm) | **Hệ vẫn gợi ý.** | Hệ điền sẵn dạng gợi ý; người dạy chủ động sửa / chọn. | — |
+| 1 | Đồng ý đề xuất | Case KHÔNG ghi nhãn "đạt / chưa đạt" — kết quả là số suy từ mastery (test cuối ca là một lần đo); muốn nhìn nhanh thì hiện nhãn suy lúc đọc. | — |
+| 2 | Đồng ý đề xuất | Mức thuộc lượt chốt tuần: case đóng / hết tuần ⇒ L0 (§3). | job / hàm hạ mức cuối tuần |
+| 3 | Đồng ý đề xuất | Case ca khối giữ hạn 14 ngày, không reset thứ Hai. Thêm số **"chốt mà không chạy"** theo khối ở Dashboard bổ trợ. | số mới trên Dashboard |
+| 9 | Đồng ý đề xuất | Ca có mặt mà không test vẫn tính Độ phủ; hiện tỉ lệ **"ca không test" theo TA**. | số mới trên Dashboard |
+| 10 | Đồng ý đề xuất | Lượt bù tồn KHÔNG có hạn — chỉ đóng khi đã bù hoặc người ghi "không bù" có lý do; tô đỏ lượt quá 14 ngày. | tô đỏ ở màn bù |
+| 12 | (theo câu 6) | Bổ trợ Hình bỏ hẳn. | xem câu 6 |
 
 ### 12.1b Hỏi lại cho rõ (phát sinh từ câu trả lời)
 - **4b.** ✅ Thùy 17/11: L3 cũng là giáo viên; L4 đặc biệt nghiêm trọng thì chuẩn bị kỹ hơn và đổi giáo viên. *(L2 = TA trực ca khối là tôi hiểu theo hiện trạng — Thùy chưa nói ngược lại.)*
-- **8b.** "Giáo viên chủ động" = người dạy ca tự chọn dạng trong các nhóm đã chốt (hệ vẫn điền sẵn gợi ý, sửa được) — hay hệ để trống hoàn toàn cho người dạy chọn? Áp cho cả L1 sau giờ lẫn ca khối?
+- **8b.** ✅ Thùy 17/11: "hệ vẫn gợi ý". ~~"Giáo viên chủ động" = người dạy ca tự chọn dạng trong các nhóm đã chốt (hệ vẫn điền sẵn gợi ý, sửa được) — hay hệ để trống hoàn toàn cho người dạy chọn? Áp cho cả L1 sau giờ lẫn ca khối?
 
-### 12.1 Câu hỏi (xếp theo mức quan trọng — trả lời 1 dòng mỗi câu)
+### 12.1 Câu hỏi gốc (ĐÃ TRẢ LỜI HẾT ở 12.0 — giữ làm bối cảnh; "đề xuất" dưới đây là trước khi Thùy chốt)
 
 1. **Case có cần một KẾT LUẬN "đạt / chưa đạt" không?**
    Hiện: case chỉ đóng bằng "dạy xong" · "hết hạn" · "bỏ". Em khá lên hay không chỉ thấy ở Dashboard (dạng Giảm / Vẫn yếu) và Báo cáo tuần — hệ không ghi kết luận lên case.
@@ -348,10 +355,8 @@ màn `phongtk/BoTroPopup` · `phongtk/ChatLuongPhong` · `botro/*` · `danhgia/X
 
 **Sang #6 `spec-quan-ly-chat-luong.md`:** phạm vi trưởng khối / trưởng bộ môn · KPI dạng yếu đóng băng lúc Trang Chốt tuần.
 
-## 14. Khi Thùy duyệt
+## 14. Đã làm khi Thùy chốt (17/11)
 
-1. Thùy trả lời §12.1 ⇒ sửa §3, §5, §7 theo câu trả lời, chuyển §12.1 thành bảng "Thùy chốt dd/11".
-2. Đổi tên file này thành `spec-bo-tro.md` (thay bản 13/11); bản cũ + `spec-xep-bo-tro-chung.md` giữ tới khi #8 viết xong rồi mới vào `_luu-tru/`.
-3. Cập nhật `SPEC-INDEX.md` dòng #18 (✅) + CLAUDE.md đoạn trỏ `spec-bo-tro.md`.
-4. Mục §11 nào Thùy gật gỡ ⇒ migration + xoá code riêng từng mục, liệt kê cái mất trước (Luật xoá).
-5. Việc §12.2 làm theo lệnh, mỗi việc đo trước–sau.
+- File này thay bản 13/11 (bản cũ → `_luu-tru/spec-bo-tro-ban-13-11.md`; §41–§43 của nó + `spec-xep-bo-tro-chung.md` còn hiệu lực cho xếp lịch tới khi #8 viết xong).
+- `SPEC-INDEX.md` dòng #18 ✅. CLAUDE.md đoạn trỏ `spec-bo-tro.md` giữ nguyên (cùng tên file).
+- **Còn nợ:** review Đuổi với Thùy (§7.4) · mọi việc code / DB ở §12.0 + §12.2 chờ lệnh · mục §11 gỡ theo Luật xoá.
