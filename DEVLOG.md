@@ -81757,3 +81757,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
   header = MỘT dòng (🎯 · ô môn×khối · ↻ do `MucTieuTuanPhong` đưa qua prop `dau` + tuần + ← Khối + chip lớp + "số lúc HH:MM ⓘ" + 🏆 Top 20); các câu giải thích vào tooltip;
   đầu tờ em = 1 dòng (tên · lớp · nhãn Nháp/Đã công bố · tiến độ · việc · hạng · tự luyện · 📱 Xem như PH · Tuần này/Các tuần) thay khối tiêu đề + 4 ô;
   thẻ nhóm 2 dòng: tên (1 dòng, …) + nhãn Đạt/Chưa đạt/Yếu · thanh ngắn 38% (vạch đầu tuần, vạch mục tiêu, không số) + "Mục tiêu x% · Tăng a → b%" + "n dạng ▾"; header 3 cột "Bài trên lớp · Ôn tập kiến thức · Hoạt động tuần này"; "Bài … → tuần sau ⓘ". Khung lớp cao 100vh−170. Chụp 1500×820: trọn một màn ✔.
+
+### 17/11 khuya — Hoạt động tuần: dạng ẩn mặc định, nút Chi tiết cùng dòng (Thùy)
+- Thùy: "các dạng trong hoạt động không cần hiện mặc định; có nút chi tiết cùng dòng, bấm mới hiện kết quả từng dạng" + "lưu ý không quét cả DB" ⇒ DongViec (ERP): dòng phụ bỏ tên nhóm; ET · MT · BTVN đã có % ⇒ "Chi tiết ▾" cùng dòng, bấm mới gọi.
+- Hàm fn_mtt_viec_dang(hs, môn, buổi, loại) (mig 202611172310_mtt_viec_ket_qua_dang.sql, CHƯA ÁP, vân tay ff3c493bf5aa4fb6): tốn theo MỘT em × MỘT buổi, mọi đường đọc có index sẵn (gami_grades (buoi_hoc_id, hoc_sinh_id) · bai_test (buoi_hoc_id) · bai_lam (hoc_sinh_id) · bai_lam_cau unique (bai_lam_id, bai_test_cau_id)); không đọc lịch sử đo, không tính mastery. Nguồn câu như _mtt_diem ⇒ tổng khớp % việc. Thử Postgres tạm khớp ✔. Chưa đo DB thật (K19).
+- Popup mở bài ET: ERP chưa có màn xem bài ET một em × một buổi ⇒ chưa làm. Commit lên nhánh phiên; CHƯA đẩy main (chờ Thùy gật lại sau lượt ngắt).

@@ -3,9 +3,9 @@
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanHoc,
+  mttTrungTam, mttCuaHs, mttViecDang, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, nhanHoc,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC, NHAN_MUC_NHOM,
-  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
+  type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT, type MttViecDang,
 } from '../../lib/mucTieuTuan'
 import { PH_BASE } from '../../lib/ph-login'
 
@@ -261,7 +261,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
                 <div className="mb-1.5 rounded-lg bg-emerald-600 px-3 py-1 text-[13px] font-bold text-white">Hoạt động tuần này</div>
                 <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
                   {to.viec.length === 0 && <p className="px-3 py-2 text-[12.5px] text-slate-400">Chưa có việc.</p>}
-                  {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}
+                  {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} hsId={hs.id} mon={mon} />)}
                 </div>
               </div>
             </div>
@@ -367,15 +367,54 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
   )
 }
 
-function DongViec({ v }: { v: MttViec }) {
+// dòng phụ GỌN (không liệt kê nhóm/dạng — Thùy 17/11): nộp / hạn / giờ phòng / ghi chú / thái độ
+function moTaGon(v: MttViec): string {
+  const x: (string | null | undefined)[] = []
+  if (v.loai === 'btvn') x.push(v.tt === 'sap_toi' ? (v.han ? `hạn trước buổi ${thuNgay(v.han)}` : null) : v.tt === 'chua_nop' ? 'chưa nộp' : v.tt === 'cho_cham' ? 'đã nộp, đang chấm'
+    : v.nop === 'nop_muon' ? 'nộp muộn' : v.nop === 'nop_dung_han' ? 'nộp đúng hạn' : null)
+  if (v.loai === 'sau_gio' || v.loai === 'bo_tro') x.push(v.gio, v.phong ? `phòng ${v.phong}` : null)
+  x.push(v.ghi_chu, v.thai_do ? (NHAN_THAI_DO[v.thai_do] ?? v.thai_do) : null)
+  return x.filter(Boolean).join(' · ')
+}
+
+// 1 việc: dòng gọn + nút "Chi tiết" cùng dòng ⇒ bấm mới gọi kết quả từng dạng (fn_mtt_viec_dang)
+function DongViec({ v, hsId, mon }: { v: MttViec; hsId: string; mon: string }) {
+  const [mo, setMo] = useState(false)
+  const [ds, setDs] = useState<MttViecDang[] | null>(null)
+  const [loi, setLoi] = useState<string | null>(null)
+  const coChiTiet = (v.loai === 'et' || v.loai === 'mt' || v.loai === 'btvn') && v.pct != null
+  useEffect(() => {
+    if (!mo || ds) return
+    let alive = true
+    mttViecDang(hsId, mon, v.buoi_id, v.loai).then((r) => alive && setDs(r)).catch((e) => alive && setLoi(String(e?.message ?? e)))
+    return () => { alive = false }
+  }, [mo]) // eslint-disable-line react-hooks/exhaustive-deps
+  const phu = moTaGon(v)
   return (
-    <div className="flex items-center gap-2 px-2.5 py-1.5">
-      <span className="min-w-0 flex-1">
-        <span className="block text-[12.5px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi công bố</span>}</span>
-        <span className="block text-[11px] text-slate-500">{[moTaViec(v), v.ghi_chu, v.thai_do ? (NHAN_THAI_DO[v.thai_do] ?? v.thai_do) : null].filter(Boolean).join(' · ')}</span>
-      </span>
-      <span className="shrink-0 text-[12.5px] font-bold text-slate-800">{v.pct == null ? '' : `${v.pct}%`}</span>
-      <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${v.muc ? mauMuc(v.muc) : 'bg-slate-100 text-slate-500'}`}>{v.muc ? NHAN_MUC[v.muc] : NHAN_TT[v.tt]}</span>
+    <div className="px-2.5 py-1.5">
+      <div className="flex items-center gap-2">
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[12.5px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi công bố</span>}</span>
+          {phu && <span className="block truncate text-[11px] text-slate-500" title={phu}>{phu}</span>}
+        </span>
+        {coChiTiet && <button onClick={() => setMo((x) => !x)} className="shrink-0 text-[11px] font-semibold text-indigo-700 hover:underline">{mo ? 'Ẩn ▴' : 'Chi tiết ▾'}</button>}
+        <span className="shrink-0 text-[12.5px] font-bold text-slate-800">{v.pct == null ? '' : `${v.pct}%`}</span>
+        <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${v.muc ? mauMuc(v.muc) : 'bg-slate-100 text-slate-500'}`}>{v.muc ? NHAN_MUC[v.muc] : NHAN_TT[v.tt]}</span>
+      </div>
+      {mo && (
+        <div className="mt-1 divide-y divide-slate-100 rounded-md border border-slate-100 bg-slate-50/60">
+          {loi && <p className="px-2.5 py-1 text-[11.5px] text-rose-600">{loi}</p>}
+          {!ds && !loi && <p className="px-2.5 py-1 text-[11.5px] text-slate-400">Đang tải…</p>}
+          {ds && ds.length === 0 && <p className="px-2.5 py-1 text-[11.5px] text-slate-400">Chưa có câu nào được chấm.</p>}
+          {ds?.map((d) => (
+            <div key={d.ma ?? '_'} className="flex items-center gap-2 px-2.5 py-1 text-[11.5px]">
+              <span className={`min-w-0 flex-1 truncate ${d.ma ? 'text-slate-700' : 'italic text-slate-400'}`} title={d.ten}>{d.ten}</span>
+              <span className="shrink-0 text-slate-400">{d.so_cau} câu</span>
+              <span className={`w-10 shrink-0 text-right font-bold ${d.pct >= 80 ? 'text-emerald-700' : d.pct >= 50 ? 'text-amber-700' : 'text-rose-600'}`}>{d.pct}%</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

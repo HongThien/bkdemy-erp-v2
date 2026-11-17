@@ -103,6 +103,13 @@ export async function mttDangTinhTrang(hsId: string, mon: string, ma: string[]):
   if (error) throw error
   return (data ?? []) as MttDangTT[]
 }
+// kết quả TỪNG DẠNG của một việc ET · MT · BTVN (fn_mtt_viec_dang, mig 202611172310) — gọi khi bấm "Chi tiết"
+export type MttViecDang = { ma: string | null; ten: string; so_cau: number; pct: number }
+export async function mttViecDang(hsId: string, mon: string, buoiId: string, loai: string): Promise<MttViecDang[]> {
+  const { data, error } = await supabase.rpc('fn_mtt_viec_dang', { p_hs: hsId, p_mon: mon, p_buoi: buoiId, p_loai: loai })
+  if (error) throw error
+  return (data ?? []) as MttViecDang[]
+}
 // CÔNG BỐ lớp (mig 202611161844; DB giữ tên fn_mtt_chot_lop): CHỈ ghi dòng công bố; tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút) ⇒ da_tinh luôn 0
 export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{ tuan: string; lop_id: string; chot_at: string; da_tinh: number; tong: number }> {
   const { data, error } = await supabase.rpc('fn_mtt_chot_lop', { p_lop: lopId, p_tuan: tuan ?? null })
