@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `16` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `mtt_ke_hoach` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 456 trigger · 1992 function
+603 bảng · 42 view · 0 enum · 457 trigger · 1998 function
 
 ## _app_secrets
 
@@ -4957,7 +4957,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5874,6 +5874,17 @@ END |  |  |
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
 | nhom | jsonb |  |  |  |  |
 | tinh_at | timestamp with time zone |  | now() |  |  |
+
+## mtt_ke_hoach
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
+| nhom | jsonb |  |  |  |  |
+| viec | jsonb |  |  |  |  |
+| chot_at | timestamp with time zone |  | now() |  |  |
 
 ## mtt_lop_chot
 
@@ -6798,7 +6809,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -11502,6 +11513,7 @@ WITH luot AS (
 | lich_test_khung | trg_log_lich_test_khung | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | lich_test_khung | trg_updated_lich_test_khung | BEFORE | UPDATE | _lich_test_cham_updated |
 | mtt_chot | mtt_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
+| mtt_ke_hoach | mtt_ke_hoach_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | mtt_lop_chot | mtt_lop_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | nhan_su | trg_nhan_su_chan_ghi | BEFORE | INSERT/UPDATE | _trg_nhan_su_chan_ghi |
 | nhan_su_plan | nhan_su_plan_log_trg | AFTER | INSERT/UPDATE | _nhan_su_plan_ghi_log |
@@ -12005,7 +12017,9 @@ WITH luot AS (
 - `_mt_loai_ky_cua_buoi(p_buoi uuid)` → text
 - `_mt_o_bai_cu(p_buoi uuid)` → TABLE(id uuid, k integer, tong numeric)
 - `_mt_phan_nang_cao(p_phan uuid)` → boolean
+- `_mtt_buoi_tuan(p_lop uuid, p_tuan date)` → TABLE(ngay date)
 - `_mtt_chot_bat_bien()` → trigger
+- `_mtt_dang_nhom(p_hs uuid, p_mon text, p_buoi jsonb, p_den timestamp with time zone, p_bdm boolean)` → jsonb
 - `_mtt_dau_tinh(p_hs uuid, p_tuan date)` → jsonb
 - `_mtt_diem(p_hs uuid, p_buoi uuid, p_kieu text, p_den timestamp with time zone)` → TABLE(pct numeric, so_cau integer)
 - `_mtt_doc(p_hs uuid, p_mon text, p_tuan date, p_can_chot boolean)` → jsonb
@@ -12017,7 +12031,10 @@ WITH luot AS (
 - `_mtt_moc(p_ngay date)` → timestamp with time zone
 - `_mtt_muc(p numeric)` → text
 - `_mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → text[]
+- `_mtt_nhom_cua_o(p_o text)` → text
 - `_mtt_nhom_lui(p_lop uuid, p_ngay date)` → text[]
+- `_mtt_o_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → text[]
+- `_mtt_o_lui(p_lop uuid, p_ngay date)` → text[]
 - `_mtt_ten_goi(p_ho_ten text)` → text
 - `_mtt_ten_nhom(p_ma text)` → text
 - `_mtt_tinh(p_hs uuid, p_mon text, p_tuan date, p_den timestamp with time zone DEFAULT NULL::timestamp with time zone)` → jsonb
@@ -13093,6 +13110,7 @@ WITH luot AS (
 - `fn_mtt_cac_tuan(p_mon text, p_hs uuid DEFAULT NULL::uuid, p_so integer DEFAULT 8)` → jsonb
 - `fn_mtt_chot_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_cua_toi(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_ds_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_hs(p_hs uuid, p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_top(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_trung_tam(p_mon text, p_khoi text, p_tuan date DEFAULT NULL::date)` → jsonb

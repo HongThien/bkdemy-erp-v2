@@ -81559,3 +81559,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Thử ROLLBACK 10:12** (`.tmp-claude/thu-mig.mjs`, 361 HS, 24 s): Toán mọi nguồn dạng yếu 1.668→1.679, nhóm yếu 740→754, 7 ô chỉ có luyện mất, HS có nhóm yếu 260→259 · ET+MT thêm 45 ô dạng · KHTN/Lý/Hoá 0 đổi · Hình–Luyện ô 3.586→456, yếu 497→133 — toàn bộ do cửa sổ 30 ngày (công thức cũ cắt 30 ngày cũng ra 456/133) · fn_mastery_cells_hinh = _tai lệch 0.
 - File mig để ở `.tmp-claude/` (KHÔNG để trong `supabase/migrations/` — phiên khác chạy `npm run migrate` sẽ áp nhầm). Chờ Thùy cho áp ⇒ chuyển vào migrations, `migrate --only`, `fn_mastery_danh_dau_tat_ca()`, `npm run schema`, `check:kien-truc`.
 - (5) chưa làm: chỗ đếm HS yếu theo dạng = `fn_bctk_so` · `_bctk_nhom` · `fn_qlcl_tong_quan` (+ sổ chụp đầu tuần chỉ lưu dạng) — cần scope riêng.
+
+## 17/11 10:25 — ĐÃ ÁP mig 202611171010 (mastery: chỉ test tính · 3 loại test = ET · Hình–Luyện theo lần) — Thùy "Cho áp"
+- `migrate --only` OK (chốt md5 qua — hàm không bị phiên khác đổi từ lúc sinh). Kiểm thân hàm sống: đủ 3 chỗ mới.
+- **⚠ Lỗi của tôi, vá ngay:** `fn_mastery_cells_hinh` (invoker, app gọi bằng authenticated) thành lớp mỏng gọi `_mastery_cells_hinh_tai`, mà `_tai` chỉ `claude_build` có EXECUTE ⇒ màn gọi sẽ "permission denied". Lượt thử rollback chạy bằng claude_build nên KHÔNG lộ. Vá mig `202611171025` (ĐÃ ÁP): grant `_tai` cho đúng bộ vai của `fn_mastery_cells_hinh` (authenticated · service_role · claude_ro · fdw_bkdemy_web · ph_nop · web_lead_writer; không anon). Kiểm `has_function_privilege`: authenticated ✔ · anon ✘. Bài học: đổi hàm A sang gọi hàm B ⇒ so ACL của B với mọi vai gọi được A (thử bằng claude_build không thấy lỗi quyền).
+- `check:kien-truc` K1 "hàm nội bộ client gọi được" 321 → 322 do grant trên ⇒ nâng trần `tran.json` lên 322 (lý do: giữ MỘT công thức Hình–Luyện; hàm chỉ đọc, invoker, RLS người gọi vẫn áp). Mọi mục khác ✔.
+- `fn_mastery_danh_dau_tat_ca()` ⇒ 376 em bẩn; cache chụp lại qua sổ `mastery` (đọc trong lúc chờ = tính trực tiếp theo luật mới, vẫn đúng). `npm run schema` đã chạy.
+- Sau áp: cache chụp lại hết (còn 1 em bẩn = đang làm bài) · `fn_mastery_doi_chieu(40)` lệch 0.

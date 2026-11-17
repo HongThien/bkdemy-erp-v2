@@ -1,6 +1,6 @@
 # spec-mastery.md — MASTERY / ĐO LƯỜNG (spec #20 của bộ 20 spec)
 
-> **Trạng thái: 17/11/2026 — Thùy đã chốt 5 điểm lệch (§10); mig `202611171010` (điểm 1–3) đã thử, CHƯA ÁP; điểm 5 chưa làm.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
+> **Trạng thái: 17/11/2026 — Thùy đã chốt 5 điểm lệch (§10); mig `202611171010` + `202611171025` (điểm 1–3) ĐÃ ÁP 10:2x; điểm 5 chưa làm.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
 > `spec-bo-tro.md` §1 · `spec-van-hanh-tuan.md` §4.3, §5.6 · HANDOFF (mục "Mastery theo lần", "Dashboard học tập") · DEVLOG 10 → 16/11.
 > **Mọi luật ở §2–§7 đã đối chiếu với hàm ĐANG CHẠY trong DB ngày 17/11** (`pg_get_functiondef`). Chỗ code lệch luật Thùy đã nói ⇒ không tự sửa, ghi ở §10.
 > Spec này thắng các file nguồn ở phần đo lường. Luật mastery MỚI chỉ ghi vào đây.
@@ -132,9 +132,9 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 
 | # | Lệch phát hiện | Thùy chốt 17/11 | Tình trạng |
 |---|---|---|---|
-| 1 | Code xếp mọi `bai_test.loai` lạ vào kênh btvn ⇒ luyện bổ trợ `bo_tro` (1.050 câu / 30 ngày) · `bu_luyen` 323 · `htd_luyen` 107 đang tính | **Chỉ test mới tính, luyện không tính** | mig `202611171010` — **CHƯA ÁP** |
-| 2 | `bu_test` · `htd_test` ở kênh btvn, `bo_tro_test` ở kênh ET | **Cả ba loại test tính như ET** | mig `202611171010` — **CHƯA ÁP** |
-| 3 | Hình–Luyện công thức cũ (theo câu, trọng số, không 30 ngày, có luyện + retest) | **Chuyển sang luật mới toàn bộ** (§6) | mig `202611171010` — **CHƯA ÁP**. Đưa Hình–Luyện lại vào Dashboard theo nhóm: việc sau |
+| 1 | Code xếp mọi `bai_test.loai` lạ vào kênh btvn ⇒ luyện bổ trợ `bo_tro` (1.050 câu / 30 ngày) · `bu_luyen` 323 · `htd_luyen` 107 đang tính | **Chỉ test mới tính, luyện không tính** | ✅ mig `202611171010` ĐÃ ÁP 17/11 |
+| 2 | `bu_test` · `htd_test` ở kênh btvn, `bo_tro_test` ở kênh ET | **Cả ba loại test tính như ET** | ✅ mig `202611171010` ĐÃ ÁP 17/11 |
+| 3 | Hình–Luyện công thức cũ (theo câu, trọng số, không 30 ngày, có luyện + retest) | **Chuyển sang luật mới toàn bộ** (§6) | ✅ mig `202611171010` + `202611171025` (cấp quyền) ĐÃ ÁP 17/11. Đưa Hình–Luyện lại vào Dashboard theo nhóm: việc sau |
 | 4 | CLAUDE.md §1 ghi "KP = dạng" | **Sửa** — nhóm là cấp chính | ✅ đã sửa CLAUDE.md §1 (17/11). Notion chưa |
 | 5 | Hai định nghĩa HS yếu (báo cáo tuần theo dạng · box trưởng khối theo nhóm) | **Thống nhất theo nhóm yếu** (§5) | chưa sửa — cần scope riêng: `fn_bctk_so` · `_bctk_nhom` · `fn_qlcl_tong_quan` · sổ chụp đầu tuần |
 | 6 | Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ, Dashboard bỏ qua 345T | "tính sau" (Thùy 23/10) | ghi để nhớ |
