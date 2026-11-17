@@ -1,0 +1,5127 @@
+[
+ {
+  "cu_id": "7a835338-a758-44cc-bba7-b5679d10949d",
+  "cu_ma": "BT.07.031.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.031",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Kề bù – mô hình mới \"Quan hệ các loại góc\" chưa có nốt nào"
+ },
+ {
+  "cu_id": "8e22b532-4097-4957-b987-4516ff390466",
+  "cu_ma": "BT.07.031.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.031",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Kề bù, tính góc – MH.090 chưa có nốt"
+ },
+ {
+  "cu_id": "02276fb4-1578-48c6-b2b2-68392b0f849c",
+  "cu_ma": "BT.07.032.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.032",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "3 góc bù – MH.090 chưa có nốt (cần nút giả thiết \"thêm tia Ot\")"
+ },
+ {
+  "cu_id": "21f66ab0-d97f-4691-bc45-17f833d43e3d",
+  "cu_ma": "BT.07.032.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.032",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "6e3fb20c-2541-4405-9891-90df43541a8c",
+  "cu_ma": "BT.07.038.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.038",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Đối đỉnh – MH.090 chưa có nốt"
+ },
+ {
+  "cu_id": "e393467e-315c-451b-9727-4303ba2dabda",
+  "cu_ma": "BT.07.038.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.038",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Đối đỉnh, tính góc – đề dựa vào hình"
+ },
+ {
+  "cu_id": "bc886c36-5af5-45d3-b6b5-d2cba4799f26",
+  "cu_ma": "BT.07.039.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.039",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Đối đỉnh thêm tia Oa – cần nút giả thiết \"kẻ tia Oa\""
+ },
+ {
+  "cu_id": "0a8d1cdc-6191-4359-85ad-2afcbb907098",
+  "cu_ma": "BT.07.040.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.040",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Phân giác của góc, tính góc"
+ },
+ {
+  "cu_id": "d2b81361-0388-4f61-8c24-bff6b529dbd9",
+  "cu_ma": "BT.07.045.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 15,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "52fff607-6a05-4b0b-aeeb-3bf94355d3cb",
+  "cu_ma": "BT.07.045.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 13,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "37aaa79f-7bab-4e7d-b514-e6457c77f04c",
+  "cu_ma": "BT.07.045.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 15,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "6bf8da58-981d-4da8-82a1-143237a233ea",
+  "cu_ma": "BT.07.045.04",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 12,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "e459cca6-e0b2-4332-954e-d4dec0e4be1b",
+  "cu_ma": "BT.07.045.05",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 7,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "a04d2395-0cee-4699-81cb-e97ed3285a23",
+  "cu_ma": "BT.07.045.06",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 8,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "fbc62863-91ef-45be-a0cf-7e158257e8c8",
+  "cu_ma": "BT.07.045.07",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 9,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "50d10188-72fc-4e23-87bd-4945c6ac7d28",
+  "cu_ma": "BT.07.045.08",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 9,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "3e8ec35a-24c9-445c-bf3d-b83791af166c",
+  "cu_ma": "BT.07.045.09",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 11,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "4477ab69-99f5-46de-9831-fbe76f00a100",
+  "cu_ma": "BT.07.045.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "bcf77a6c-f308-4fef-8fad-ccb52bd0a1b6",
+  "cu_ma": "BT.07.045.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "025c7dff-1383-49d8-ae26-e6cecba339eb",
+  "cu_ma": "BT.07.045.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "ea1b2e73-849a-49c3-a557-99fb081ee1c3",
+  "cu_ma": "BT.07.045.13",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "2def132c-2cf5-4ada-8b3e-6add25f282f8",
+  "cu_ma": "BT.07.045.14",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "5c442e86-b637-4ae2-943b-b6ef60b93827",
+  "cu_ma": "BT.07.045.15",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "a9cc287c-4663-4762-8122-bdee8acce2eb",
+  "cu_ma": "BT.07.045.16",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "4cc52d98-ea34-4d2e-ab3e-c492684fb2fa",
+  "cu_ma": "BT.07.045.17",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "05f09040-7c73-4aee-a527-0e61592de623",
+  "cu_ma": "BT.07.045.18",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "54d561ba-07a9-44fd-a144-3fb1382ab31f",
+  "cu_ma": "BT.07.045.19",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "95007476-3d8b-4e96-8511-e9a62c4d4ef8",
+  "cu_ma": "BT.07.045.20",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "7ced9d2c-e341-454b-a44a-d769c97a4943",
+  "cu_ma": "BT.07.045.21",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "9b0d54a9-7528-44f6-a6f0-9a7bb6ee2341",
+  "cu_ma": "BT.07.045.22",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "kho_luyen": {
+   "ma_bai": "HLB00258",
+   "mo_hinh": "MH.076",
+   "do_trung": 0.91
+  },
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình) · Kho Luyện đã có nội dung này: HLB00258 (đã gán MH.076), trùng 91%"
+ },
+ {
+  "cu_id": "1c4616ca-e005-48fa-9b86-2d736ca2620e",
+  "cu_ma": "BT.07.045.23",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "ade71cbf-2ebf-4ef5-9e8e-2d4f469ca95c",
+  "cu_ma": "BT.07.045.24",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "kho_luyen": {
+   "ma_bai": "HLB00258",
+   "mo_hinh": "MH.076",
+   "do_trung": 1
+  },
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình) · Kho Luyện đã có nội dung này: HLB00258 (đã gán MH.076), trùng 100%"
+ },
+ {
+  "cu_id": "cb72883a-3127-4b2d-bba2-d2549bff5a49",
+  "cu_ma": "BT.07.045.25",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "64c6cfd8-9a14-4cd4-b199-8e901340d2a7",
+  "cu_ma": "BT.07.045.26",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 8,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "fa1ad16d-e34c-467a-9ec3-68e447db13bd",
+  "cu_ma": "BT.07.045.27",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 8,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "ca62c0f5-9f47-4abe-aeda-8aed7d81cfce",
+  "cu_ma": "BT.07.045.28",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.045",
+  "so_luot_hs": 8,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.076",
+  "de_xuat_cha_ma": "MH.076",
+  "ly_do": "Gốc MH.076 \"Hai đường thẳng song song\" chưa có nốt; mỗi bài một hình riêng — nếu hình là đầu cá/đuôi cá/vây cá/ziczac thì đặt vào MH.086–089 (phải xem hình)"
+ },
+ {
+  "cu_id": "8dd263db-3797-4f62-89ca-25fa3e40d451",
+  "cu_ma": "BT.07.046.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "3a3e324f-b887-44ec-8c00-9182c3deb83e",
+  "cu_ma": "BT.07.046.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "0c7803a8-d6c7-4e32-9fae-b8425444534c",
+  "cu_ma": "BT.07.046.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "7bee28e5-ab69-4a8a-8721-f83202de7c44",
+  "cu_ma": "BT.07.046.04",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "74646ad8-8101-4d72-b30c-0daf3e210c5c",
+  "cu_ma": "BT.07.046.05",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "c9a56c29-9b63-43f0-a5f1-08007ad10588",
+  "cu_ma": "BT.07.046.06",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "1dd96a82-7886-4298-858a-8f56cc8187fa",
+  "cu_ma": "BT.07.046.07",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "6df855c5-d8cb-488f-9baf-14a9009f9b8e",
+  "cu_ma": "BT.07.046.08",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "daa93a89-e83f-496d-a683-e89a7bcac12c",
+  "cu_ma": "BT.07.046.09",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "926be2c4-e641-43cf-9f88-ae9094a76981",
+  "cu_ma": "BT.07.046.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "bb0c5619-ae58-4429-8117-fc46b9121452",
+  "cu_ma": "BT.07.046.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "d1d4ce07-d4c5-4b85-a099-498ca20cf207",
+  "cu_ma": "BT.07.046.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.046",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.085",
+  "de_xuat_cha_ma": "MH.085",
+  "ly_do": "Gốc MH.085 \"Ba đường thẳng song song\" chưa có nốt; đề dựa vào hình (xem hình trước khi đặt)"
+ },
+ {
+  "cu_id": "689452a8-e60d-4a54-89ed-ce32b71ce2b2",
+  "cu_ma": "BT.07.054.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Câu 1 ý (tính góc theo hình) – MH.090 chưa có nốt"
+ },
+ {
+  "cu_id": "eafbc5b4-82a8-416b-b55b-a900fb1d7bc2",
+  "cu_ma": "BT.07.054.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Câu 1 ý theo hình"
+ },
+ {
+  "cu_id": "9e96955a-d579-4e11-87af-a99ca1bf654f",
+  "cu_ma": "BT.07.054.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Câu trắc nghiệm kề bù theo hình"
+ },
+ {
+  "cu_id": "33d5570f-8183-4a83-99fc-d5a95828ab8f",
+  "cu_ma": "BT.07.054.04",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.090",
+  "de_xuat_cha_ma": "MH.090",
+  "ly_do": "Phân giác, tính góc"
+ },
+ {
+  "cu_id": "21760b39-681f-4cd4-9eb1-fc0e79b8d1c6",
+  "cu_ma": "BT.07.054.05",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9",
+   "e9bde07b-f6d7-460f-a31b-f346124af95b",
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.05",
+   "BT.07.126.07",
+   "BT.07.126.06"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "kho_luyen": {
+   "ma_bai": "HLB01275",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.97
+  },
+  "ly_do": "gần khớp — chờ Thùy: a) cũ hỏi thêm AK = KE (cạnh tương ứng) so với 126.05; b) cũ chỉ hỏi EK ⊥ BC, 126.07 hỏi DE = DA và DE ⊥ BC; c) trùng 126.06 · Kho Luyện đã có nội dung này: HLB01275 (đã gán MH.126), trùng 97%"
+ },
+ {
+  "cu_id": "2a0c264f-b224-45b2-8e49-93075e8a0f3e",
+  "cu_ma": "BT.07.054.06",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K7a",
+  "mo_hinh_moi": "K7 · Đường thẳng qua trung điểm một cạnh, hạ vuông góc từ hai đầu mút (Cho ΔABC, tia Ax qua trung điểm M của BC, BE ⊥ Ax, CF ⊥ Ax)",
+  "ly_do": "Không cây K7 nào có \"đường thẳng qua trung điểm + 2 đường vuông góc từ B, C\""
+ },
+ {
+  "cu_id": "6c6cd388-b155-4171-b98f-2e5bca505bfa",
+  "cu_ma": "BT.07.054.07",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K7b",
+  "mo_hinh_moi": "K7 · Tia phân giác của một góc – điểm trên tia phân giác (Cho góc xOy, Om phân giác; dựng đường ⊥ / ∥ qua điểm trên Om, cắt hai cạnh góc)",
+  "ly_do": "Không cây K7 nào có góc xOy + phân giác + đường ⊥ tại trung điểm OA"
+ },
+ {
+  "cu_id": "d95da274-6af9-4f90-ad35-e46a29f7f6b1",
+  "cu_ma": "BT.07.054.08",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "3817767c-9afa-4ddc-8140-37aab965bedd",
+   "a6955167-13bc-4f56-9624-1d00d3fa9bf8",
+   "40e6f5a6-ac18-4a86-af8f-74f82466f167"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.01",
+   "BT.07.131.13",
+   "BT.07.131.21"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01290",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.98
+  },
+  "ly_do": "gần khớp — chờ Thùy: a) cũ hỏi thêm AB = DC so với 131.01; b) = 131.13; c) = 131.21 (đổi vai B ↔ C: MI ⊥ AC, MK ⊥ BD) · Kho Luyện đã có nội dung này: HLB01290 (đã gán MH.131), trùng 98%"
+ },
+ {
+  "cu_id": "ef9e20ea-2e6a-4367-8b8a-936d2f9f9bd1",
+  "cu_ma": "BT.07.054.09",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "ΔABC vuông cân, K trung điểm BC: cây MH.132 dùng phân giác AD, chưa có biến thể trung tuyến + vuông; ý c, d (EC ∥ AK, CB = CE) không có nốt"
+ },
+ {
+  "cu_id": "8b00473f-2def-4adf-9054-cc24624a8f60",
+  "cu_ma": "BT.07.054.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01291",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.97
+  },
+  "ly_do": "Cụng đầu quanh cạnh AB (= 063.04–06): ý a gần 131.03; ý b, c (E đối xứng N qua B; A, E, F thẳng hàng) chưa có nút · Kho Luyện đã có nội dung này: HLB01291 (đã gán MH.131), trùng 97%"
+ },
+ {
+  "cu_id": "8dacccf0-7c85-404d-b08f-d7a921c74a16",
+  "cu_ma": "BT.07.054.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01282",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.98
+  },
+  "ly_do": "= 062.01–04: ý a = 132.01; ý b–d (Cx ⊥ BC, Ay ∥ BC, K = Ay ∩ Cx) chưa có nút · Kho Luyện đã có nội dung này: HLB01282 (đã gán MH.132), trùng 98%"
+ },
+ {
+  "cu_id": "b6fed3c1-9f15-4d26-98d1-e83856d3c93f",
+  "cu_ma": "BT.07.054.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.133",
+  "de_xuat_cha_ma": "MH.133",
+  "ly_do": "= 062.05–07 + ý d tính góc: cần nút \"ΔABC cân tại A\" dưới MH.133"
+ },
+ {
+  "cu_id": "fe3c8459-cf1e-4439-a5ee-cd5dcfd49b68",
+  "cu_ma": "BT.07.054.13",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Hai đoạn cắt nhau tại trung điểm O (cụng đầu): ý a = 131.01 (đổi tên); ý b (DK ∥ BH ⇒ BH = DK) chưa có; ý c đề cụt, thiếu yêu cầu"
+ },
+ {
+  "cu_id": "715c99e1-e58a-49c7-b1f2-460f260acf30",
+  "cu_ma": "BT.07.054.14",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9",
+   "e9bde07b-f6d7-460f-a31b-f346124af95b",
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c",
+   "7dc88e7d-3afb-4fa1-8424-a8df29cdc7cd",
+   "d2f931cb-421e-4fd5-819c-0d028eb2920a"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.05",
+   "BT.07.126.07",
+   "BT.07.126.06",
+   "BT.07.126.09",
+   "BT.07.126.12"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "kho_luyen": {
+   "ma_bai": "HLB01276",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.88
+  },
+  "ly_do": "gần khớp — chờ Thùy: a, b, d trùng 126.05 / 126.07 / 126.12; c) \"BD ⊥ AE; IA = IE (I ∈ AE)\" ⊂ 126.06 (trung trực) + 126.09, nhưng đề cũ không nói rõ I là giao AE ∩ BD · Kho Luyện đã có nội dung này: HLB01276 (đã gán MH.126), trùng 88%"
+ },
+ {
+  "cu_id": "0709131a-bea8-4507-9dc3-ad2757414925",
+  "cu_ma": "BT.07.054.15",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01284",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.95
+  },
+  "ly_do": "= 062.08–11: ý b = 132.02; ý a (góc đáy), c, d (D, E trên tia đối BC, CB) chưa có nút · Kho Luyện đã có nội dung này: HLB01284 (đã gán MH.132), trùng 95%"
+ },
+ {
+  "cu_id": "85bcc4ee-a86c-4ee4-b739-baf0d36d663e",
+  "cu_ma": "BT.07.054.16",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "kho_luyen": {
+   "ma_bai": "HLB01285",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.97
+  },
+  "ly_do": "= 062.12–16 (M trung điểm thay phân giác): ý b AE = AF không có nốt; các ý khác gần 132.01/132.09/132.05/132.10 · Kho Luyện đã có nội dung này: HLB01285 (đã gán MH.132), trùng 97%"
+ },
+ {
+  "cu_id": "703ec728-0308-43a2-b9be-428de1169409",
+  "cu_ma": "BT.07.054.17",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.126",
+  "kho_luyen": {
+   "ma_bai": "HLB01277",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.9
+  },
+  "ly_do": "Dựng E là trung điểm AM với BA = BM (khác 3 thành viên hiện có) – đề xuất thêm thành viên thứ 4 cho nhóm bài MH.126; ý d gần 126.11 · Kho Luyện đã có nội dung này: HLB01277 (đã gán MH.126), trùng 90%"
+ },
+ {
+  "cu_id": "d49b94b9-b031-43b4-86cf-5995863a00ca",
+  "cu_ma": "BT.07.054.18",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01286",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.97
+  },
+  "ly_do": "= 062.17–19: M trung điểm BC, cây MH.132 cho phân giác — cần biến thể trung tuyến (gốc thành nhóm bài phân giác ⇔ trung tuyến) · Kho Luyện đã có nội dung này: HLB01286 (đã gán MH.132), trùng 97%"
+ },
+ {
+  "cu_id": "9532c3e4-6bbc-4bfc-8531-3b5d0314d759",
+  "cu_ma": "BT.07.054.19",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": [
+   "45de1b43-5a3c-4a5f-ac1b-7a2e0dbb394e",
+   "fb633d79-751b-4794-a66b-87695d8a6969",
+   "ee8d5a6d-cb52-48f1-93ad-73fa2cb4216c"
+  ],
+  "moi_ma": [
+   "BT.07.133.01",
+   "BT.07.133.02",
+   "BT.07.133.03"
+  ],
+  "ly_do": "Đề nhiều ý: a, b, c trùng 133.01 / 133.02 / 133.03 (cùng GT)"
+ },
+ {
+  "cu_id": "2fef5357-43ad-4d69-a32b-1ea91c204bae",
+  "cu_ma": "BT.07.054.20",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K7c",
+  "mo_hinh_moi": "K7 · Tam giác vuông – điểm D trên cạnh huyền, DH ⊥ AC, M đối xứng D qua H",
+  "ly_do": "Không cây K7 nào có điểm D trên cạnh huyền + đối xứng qua cạnh góc vuông"
+ },
+ {
+  "cu_id": "98b73bca-b64c-4671-8133-948a6cd1a66f",
+  "cu_ma": "BT.07.054.21",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "= 063.07–09: cần nút \"ΔABC vuông tại A\" dưới MH.131 (AC ⊥ CE, BC = 2AM)"
+ },
+ {
+  "cu_id": "861132c1-8377-425b-a936-d5dec1185da6",
+  "cu_ma": "BT.07.054.22",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01287",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.98
+  },
+  "ly_do": "= 062.20–23 (M trung điểm): ý b không có nốt; ý a, c, d gần 132.01/132.09/132.05 · Kho Luyện đã có nội dung này: HLB01287 (đã gán MH.132), trùng 98%"
+ },
+ {
+  "cu_id": "7e9e70d9-ab10-4150-8b89-1d71fc815c01",
+  "cu_ma": "BT.07.054.23",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "3817767c-9afa-4ddc-8140-37aab965bedd",
+   "06108c53-9285-4a92-b164-2d469e2b3147",
+   "a6955167-13bc-4f56-9624-1d00d3fa9bf8",
+   "b35cd77b-e4bb-4e79-a767-d66ddf5132d4",
+   "74ae588e-adcf-4e5a-af3b-a0c9bb21811d"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.01",
+   "BT.07.131.14",
+   "BT.07.131.13",
+   "BT.07.131.17",
+   "BT.07.131.18"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.229",
+  "kho_luyen": {
+   "ma_bai": "HLB01293",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.98
+  },
+  "ly_do": "a, b, e trùng (đổi tên); c gần 131.13 (+ AD = CB); d) \"D, A, K thẳng hàng\" ứng với 131.17 nhưng 131.17 trên cây đang ghi \"K, A, D thẳng hàng\" — kiểm bằng toạ độ thì sai, đúng phải là \"K, B, D thẳng hàng\" ⇒ sửa 131.17 thì trùng · Kho Luyện đã có nội dung này: HLB01293 (đã gán MH.131), trùng 98%"
+ },
+ {
+  "cu_id": "2da645c8-aa7b-4a20-aaaa-6b4e3b4b6634",
+  "cu_ma": "BT.07.054.24",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9",
+   "e9bde07b-f6d7-460f-a31b-f346124af95b",
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c",
+   "d2f931cb-421e-4fd5-819c-0d028eb2920a"
+  ],
+  "moi_ma": [
+   "BT.07.126.05",
+   "BT.07.126.07",
+   "BT.07.126.06",
+   "BT.07.126.12"
+  ],
+  "kho_luyen": {
+   "ma_bai": "HLB01278",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.98
+  },
+  "ly_do": "Đề nhiều ý: a, b, c, d trùng 126.05 / 126.07 / 126.06 / 126.12 (GT thành viên 1 + F với AF = EC) · Kho Luyện đã có nội dung này: HLB01278 (đã gán MH.126), trùng 98%"
+ },
+ {
+  "cu_id": "42fe4c4d-d77d-459d-8faa-b92346579dea",
+  "cu_ma": "BT.07.054.25",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "45651319-ba6a-4854-bfcc-c7fea3eed5a9",
+   "d1e6b88a-aeb5-4d74-9372-95fb1df72b13",
+   "8b1ea50d-32ea-472b-a39c-0197f79c63a5"
+  ],
+  "ung_vien_ma": [
+   "BT.07.130.01",
+   "BT.07.130.03",
+   "BT.07.130.05"
+  ],
+  "de_xuat_goc_ma": "MH.130",
+  "de_xuat_cha_ma": "MH.172",
+  "kho_luyen": {
+   "ma_bai": "HLB01280",
+   "mo_hinh": "MH.130",
+   "do_trung": 0.97
+  },
+  "ly_do": "gần khớp — chờ Thùy: đổi tên M→A, A→B, B→C, C→K, E→I; b, c trùng 130.03 / 130.05; a) EA = EC chỉ là hệ quả của 130.01 (ΔABI = ΔAKI), không phải cùng câu hỏi · Kho Luyện đã có nội dung này: HLB01280 (đã gán MH.130), trùng 97%"
+ },
+ {
+  "cu_id": "73b46bb1-9ef7-4b7a-9d74-10800a5a96a3",
+  "cu_ma": "BT.07.054.26",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "kho_luyen": {
+   "ma_bai": "HLB01288",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.98
+  },
+  "ly_do": "= 062.24–27: ý a = 132.01; ý b (trung trực) hỏi hơn 132.02; ý c, d (M chân ⊥, N với AN = AM; E đối xứng D qua K) chưa có · Kho Luyện đã có nội dung này: HLB01288 (đã gán MH.132), trùng 98%"
+ },
+ {
+  "cu_id": "77f51fe3-09cc-4aab-90a0-9b46533d1704",
+  "cu_ma": "BT.07.054.27",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": [
+   "45651319-ba6a-4854-bfcc-c7fea3eed5a9",
+   "16cbb896-8af4-4553-bf30-270dbdb7466b",
+   "5bdc0590-6fdc-4d6d-9869-86dcf2deb96f"
+  ],
+  "moi_ma": [
+   "BT.07.130.01",
+   "BT.07.130.02",
+   "BT.07.130.04"
+  ],
+  "kho_luyen": {
+   "ma_bai": "HLB01281",
+   "mo_hinh": "MH.130",
+   "do_trung": 1
+  },
+  "ly_do": "Đề nhiều ý: a, b, c trùng 130.01 / 130.02 / 130.04 (cùng GT gốc MH.130) · Kho Luyện đã có nội dung này: HLB01281 (đã gán MH.130), trùng 100%"
+ },
+ {
+  "cu_id": "f7d21880-8250-463a-a8eb-7bab3205db1c",
+  "cu_ma": "BT.07.054.28",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "b1e2ed71-8baf-4d3e-b6fe-a8373bed1f67",
+   "a6955167-13bc-4f56-9624-1d00d3fa9bf8",
+   "a5ce91f3-78cb-4f25-83d7-d7955a80e4dc",
+   "b35cd77b-e4bb-4e79-a767-d66ddf5132d4"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.02",
+   "BT.07.131.13",
+   "BT.07.131.20",
+   "BT.07.131.17"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.229",
+  "kho_luyen": {
+   "ma_bai": "HLB01294",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "a, b, c trùng 131.02 / 131.13 / 131.20; d) \"E, C, D thẳng hàng\" (E đối xứng B qua trung điểm AC) là ảnh đối xứng B ↔ C của 131.17 — nhưng 131.17 đang ghi sai \"K, A, D\" (đúng: K, B, D) · Kho Luyện đã có nội dung này: HLB01294 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "b50bc67f-5ea2-4342-9755-c9d6b307d247",
+  "cu_ma": "BT.07.054.29",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K7b",
+  "mo_hinh_moi": "K7 · Tia phân giác của một góc – điểm trên tia phân giác (Cho góc xOy, Om phân giác; dựng đường ⊥ / ∥ qua điểm trên Om, cắt hai cạnh góc)",
+  "ly_do": "Góc xOy = 80°, Om phân giác, đường qua A ∥ Oy – không cây K7 nào khớp"
+ },
+ {
+  "cu_id": "4629b691-ebdb-47e9-aa48-887fa7abc45e",
+  "cu_ma": "BT.07.054.30",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.054",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.244",
+  "kho_luyen": {
+   "ma_bai": "HLB01289",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.94
+  },
+  "ly_do": "= 062.28–30: ý a = 132.01; ý b DE = DF chưa có nốt; ý c gần 132.08 · Kho Luyện đã có nội dung này: HLB01289 (đã gán MH.132), trùng 94%"
+ },
+ {
+  "cu_id": "7e272e38-d531-44a0-8661-396df32c4d2a",
+  "cu_ma": "BT.07.061.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.05"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "kho_luyen": {
+   "ma_bai": "HLB01275",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.97
+  },
+  "ly_do": "gần khớp — chờ Thùy: cùng GT thành viên 1; cũ hỏi ΔABK = ΔEBK và thêm AK = KE (cạnh tương ứng) · Kho Luyện đã có nội dung này: HLB01275 (đã gán MH.126), trùng 97%"
+ },
+ {
+  "cu_id": "7cebbfa6-a025-4f16-a116-13e0fef7412f",
+  "cu_ma": "BT.07.061.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "e9bde07b-f6d7-460f-a31b-f346124af95b"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.07"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "ly_do": "gần khớp — chờ Thùy: cũ chỉ hỏi EK ⊥ BC; 126.07 hỏi DE = DA và DE ⊥ BC (bài mới gộp)"
+ },
+ {
+  "cu_id": "5b6fe107-ecf0-457f-bf43-8b26ee9edf81",
+  "cu_ma": "BT.07.061.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "abd638db-1b0d-4f0d-95ed-a26301d53d7c",
+  "moi_ma": "BT.07.126.06",
+  "kho_luyen": {
+   "ma_bai": "HLB01275",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "Cùng GT thành viên 1 (BA = BE, phân giác B); BK trung trực AE = 126.06 · Kho Luyện đã có nội dung này: HLB01275 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "ada96f89-d976-4327-82ea-8fc2b949fea0",
+  "cu_ma": "BT.07.061.13",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "a56628a0-d825-4c1e-8b14-21671bd11df9",
+  "moi_ma": "BT.07.126.05",
+  "kho_luyen": {
+   "ma_bai": "HLB01276",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.91
+  },
+  "ly_do": "Cùng GT thành viên 1; ΔABD = ΔEBD · Kho Luyện đã có nội dung này: HLB01276 (đã gán MH.126), trùng 91%"
+ },
+ {
+  "cu_id": "114f198d-31a3-4369-a833-552d90abe24d",
+  "cu_ma": "BT.07.061.14",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "e9bde07b-f6d7-460f-a31b-f346124af95b",
+  "moi_ma": "BT.07.126.07",
+  "ly_do": "DE = AD và DE ⊥ BC – trùng nguyên"
+ },
+ {
+  "cu_id": "afb0aae4-dc8d-4bff-834f-5aa90fb9f60b",
+  "cu_ma": "BT.07.061.15",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.06"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "ly_do": "gần khớp — chờ Thùy: cũ hỏi BD ⊥ AE; 126.06 hỏi BD là trung trực AE (rộng hơn); ứng viên khác: 126.08/126.09 (nút I = AE ∩ BD)"
+ },
+ {
+  "cu_id": "8325e30a-24e9-4e7d-baa1-8b0fe95cc133",
+  "cu_ma": "BT.07.061.16",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d2f931cb-421e-4fd5-819c-0d028eb2920a",
+  "moi_ma": "BT.07.126.12",
+  "kho_luyen": {
+   "ma_bai": "HLB01276",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "F trên tia đối AB, AF = CE ⇒ F, D, E thẳng hàng = thành viên 1.1 (GT mới ghi thêm DE ⊥ BC – hệ quả đã chứng minh) · Kho Luyện đã có nội dung này: HLB01276 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "6daf7ff1-073d-42b1-9ba3-298db66ea85e",
+  "cu_ma": "BT.07.061.21",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "a56628a0-d825-4c1e-8b14-21671bd11df9",
+  "moi_ma": "BT.07.126.05",
+  "kho_luyen": {
+   "ma_bai": "HLB01278",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.97
+  },
+  "ly_do": "Cùng GT thành viên 1; ΔABD = ΔEBD · Kho Luyện đã có nội dung này: HLB01278 (đã gán MH.126), trùng 97%"
+ },
+ {
+  "cu_id": "64574f7d-8645-4851-8f51-83b3ac8f3a1f",
+  "cu_ma": "BT.07.061.22",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "e9bde07b-f6d7-460f-a31b-f346124af95b",
+  "moi_ma": "BT.07.126.07",
+  "ly_do": "DE = AD và DE ⊥ BC"
+ },
+ {
+  "cu_id": "ad206bed-8540-468d-b208-12ddb5b241d1",
+  "cu_ma": "BT.07.061.23",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "abd638db-1b0d-4f0d-95ed-a26301d53d7c",
+  "moi_ma": "BT.07.126.06",
+  "ly_do": "BD trung trực AE"
+ },
+ {
+  "cu_id": "9ff26483-5765-4328-81c9-2abaa18a766c",
+  "cu_ma": "BT.07.061.24",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d2f931cb-421e-4fd5-819c-0d028eb2920a",
+  "moi_ma": "BT.07.126.12",
+  "kho_luyen": {
+   "ma_bai": "HLB01278",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "AF = CE ⇒ D, F, E thẳng hàng = thành viên 1.1 · Kho Luyện đã có nội dung này: HLB01278 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "e6848b22-f0ab-4f43-98be-1c219691c3f4",
+  "cu_ma": "BT.07.061.25",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "ec3dd9cb-b28c-49e4-8e0e-dfa4cddc0bfa",
+  "moi_ma": "BT.07.126.14",
+  "kho_luyen": {
+   "ma_bai": "HLB01279",
+   "mo_hinh": "MH.126",
+   "do_trung": 0.97
+  },
+  "ly_do": "GT thành viên 2 (phân giác + DE ⊥ BC); ΔABD = ΔEBD · Kho Luyện đã có nội dung này: HLB01279 (đã gán MH.126), trùng 97%"
+ },
+ {
+  "cu_id": "8ed3ac0d-fcb1-4ab9-a084-e1c0de8ca7bf",
+  "cu_ma": "BT.07.061.26",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "cb4f2586-5197-4ebf-a371-8b31f1504b88",
+  "moi_ma": "BT.07.126.23",
+  "ly_do": "Q = BA ∩ ED ⇒ DQ = DC = thành viên 1.3 (F = BA ∩ ED, DC = DF); GT mới ghi thêm BE = BA (hệ quả)"
+ },
+ {
+  "cu_id": "44e9371c-8e96-4f3b-a5aa-d4b2ffe4fcc2",
+  "cu_ma": "BT.07.061.27",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "f399292f-2e76-432c-ae10-218c429cba46",
+  "moi_ma": "BT.07.126.13",
+  "kho_luyen": {
+   "ma_bai": "HLB01279",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "M trung điểm QC ⇒ B, D, M thẳng hàng = 126.13 (nút MH.242) · Kho Luyện đã có nội dung này: HLB01279 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "d7eac0e7-34e4-4696-9be4-b9a201058f24",
+  "cu_ma": "BT.07.061.28",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "45651319-ba6a-4854-bfcc-c7fea3eed5a9"
+  ],
+  "ung_vien_ma": [
+   "BT.07.130.01"
+  ],
+  "de_xuat_goc_ma": "MH.130",
+  "de_xuat_cha_ma": "MH.130",
+  "kho_luyen": {
+   "ma_bai": "HLB01280",
+   "mo_hinh": "MH.130",
+   "do_trung": 0.97
+  },
+  "ly_do": "gần khớp — chờ Thùy: đổi tên M→A, A→B, B→C, C→K, E→I; cũ hỏi EA = EC, 130.01 hỏi ΔABI = ΔAKI (EA = EC là hệ quả) · Kho Luyện đã có nội dung này: HLB01280 (đã gán MH.130), trùng 97%"
+ },
+ {
+  "cu_id": "e84c4d0f-da30-4a25-8c5f-f64e49c09be9",
+  "cu_ma": "BT.07.061.29",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d1e6b88a-aeb5-4d74-9372-95fb1df72b13",
+  "moi_ma": "BT.07.130.03",
+  "ly_do": "Đổi tên M→A, A→B, B→C, C→K, E→I, F→E: ΔAEF = ΔCEB ↔ ΔBIE = ΔKIC"
+ },
+ {
+  "cu_id": "1733a16b-0747-402e-85e1-fc28b959abe2",
+  "cu_ma": "BT.07.061.30",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "8b1ea50d-32ea-472b-a39c-0197f79c63a5",
+  "moi_ma": "BT.07.130.05",
+  "kho_luyen": {
+   "ma_bai": "HLB01280",
+   "mo_hinh": "MH.130",
+   "do_trung": 1
+  },
+  "ly_do": "H trung điểm FB ⇒ M, E, H thẳng hàng ↔ H trung điểm EC ⇒ A, I, H thẳng hàng · Kho Luyện đã có nội dung này: HLB01280 (đã gán MH.130), trùng 100%"
+ },
+ {
+  "cu_id": "1d0105fc-7cb8-4420-8db8-aaa4b82e7935",
+  "cu_ma": "BT.07.061.31",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "45651319-ba6a-4854-bfcc-c7fea3eed5a9",
+  "moi_ma": "BT.07.130.01",
+  "kho_luyen": {
+   "ma_bai": "HLB01281",
+   "mo_hinh": "MH.130",
+   "do_trung": 0.96
+  },
+  "ly_do": "Cùng GT gốc MH.130; ΔABI = ΔAKI · Kho Luyện đã có nội dung này: HLB01281 (đã gán MH.130), trùng 96%"
+ },
+ {
+  "cu_id": "9ae1c80d-a6c2-4948-81c6-dd22e7e330f7",
+  "cu_ma": "BT.07.061.32",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "16cbb896-8af4-4553-bf30-270dbdb7466b",
+  "moi_ma": "BT.07.130.02",
+  "kho_luyen": {
+   "ma_bai": "HLB01281",
+   "mo_hinh": "MH.130",
+   "do_trung": 1
+  },
+  "ly_do": "O = AI ∩ BK ⇒ AI ⊥ BK · Kho Luyện đã có nội dung này: HLB01281 (đã gán MH.130), trùng 100%"
+ },
+ {
+  "cu_id": "3fd8fe7e-6d0f-4dd3-88cc-e553d9e24abc",
+  "cu_ma": "BT.07.061.33",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "5bdc0590-6fdc-4d6d-9869-86dcf2deb96f",
+  "moi_ma": "BT.07.130.04",
+  "kho_luyen": {
+   "ma_bai": "HLB01281",
+   "mo_hinh": "MH.130",
+   "do_trung": 1
+  },
+  "ly_do": "E = AB ∩ KI ⇒ BK ∥ EC · Kho Luyện đã có nội dung này: HLB01281 (đã gán MH.130), trùng 100%"
+ },
+ {
+  "cu_id": "57ebbf4f-dbf5-4a19-aea4-6f49745cce41",
+  "cu_ma": "BT.07.062.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d6c45d29-9bd3-4a79-8254-28116c4f8963",
+  "moi_ma": "BT.07.132.01",
+  "kho_luyen": {
+   "ma_bai": "HLB01282",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.93
+  },
+  "ly_do": "Cùng GT gốc MH.132 (cân + phân giác AD); ΔABD = ΔACD · Kho Luyện đã có nội dung này: HLB01282 (đã gán MH.132), trùng 93%"
+ },
+ {
+  "cu_id": "466d36ec-500c-4cb1-9b82-19ccb8dbefad",
+  "cu_ma": "BT.07.062.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01282",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "Cần nút giả thiết mới dưới MH.132: \"Cx ⊥ BC tại C, Ay ∥ BC\" (ŷAC = ÂBC) · Kho Luyện đã có nội dung này: HLB01282 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "9ca60203-5f2e-4072-b2c9-5f3c7905d538",
+  "cu_ma": "BT.07.062.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "Cùng nút mới \"Cx ⊥ BC, Ay ∥ BC\": AD ∥ Cx"
+ },
+ {
+  "cu_id": "7d4b6bdc-7ad7-4dfe-b35c-779d87ee827b",
+  "cu_ma": "BT.07.062.04",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01282",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "Nút mới con của nút trên: \"I trung điểm AC, K = Ay ∩ Cx\" ⇒ I trung điểm DK · Kho Luyện đã có nội dung này: HLB01282 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "6d7bba7a-6d0f-4223-b960-4559eeca8942",
+  "cu_ma": "BT.07.062.05",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.133",
+  "de_xuat_cha_ma": "MH.133",
+  "kho_luyen": {
+   "ma_bai": "HLB01283",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.95
+  },
+  "ly_do": "MH.133 (D, E trung điểm AC, AB) khớp phần dựng; cần nút giả thiết mới \"ΔABC cân tại A\" ⇒ BD = CE · Kho Luyện đã có nội dung này: HLB01283 (đã gán MH.132), trùng 95%"
+ },
+ {
+  "cu_id": "b3006492-efc4-47d0-8eb1-3bf21531483e",
+  "cu_ma": "BT.07.062.06",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "ee8d5a6d-cb52-48f1-93ad-73fa2cb4216c"
+  ],
+  "ung_vien_ma": [
+   "BT.07.133.03"
+  ],
+  "de_xuat_goc_ma": "MH.133",
+  "de_xuat_cha_ma": "MH.133",
+  "kho_luyen": {
+   "ma_bai": "HLB01283",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: cùng kết luận \"A trung điểm MN\" với 133.03, nhưng đề cũ thêm giả thiết cân (thừa cho ý này) · Kho Luyện đã có nội dung này: HLB01283 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "ad9a1622-8609-4911-b0f0-08da7f8482c4",
+  "cu_ma": "BT.07.062.07",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.133",
+  "de_xuat_cha_ma": "MH.133",
+  "kho_luyen": {
+   "ma_bai": "HLB01283",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "Nút mới \"ΔABC cân tại A\" dưới MH.133: I = BD ∩ CE ⇒ AI phân giác · Kho Luyện đã có nội dung này: HLB01283 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "b0ec8cfa-aee7-4859-999d-65ab8baf33c8",
+  "cu_ma": "BT.07.062.08",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01284",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.97
+  },
+  "ly_do": "Góc ở đáy tam giác cân – chưa có nốt dưới MH.132 · Kho Luyện đã có nội dung này: HLB01284 (đã gán MH.132), trùng 97%"
+ },
+ {
+  "cu_id": "9e6ad72b-fb53-4173-9942-28ba9141a74e",
+  "cu_ma": "BT.07.062.09",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "73d32c78-de77-419a-9d71-fef6642495e8",
+  "moi_ma": "BT.07.132.02",
+  "ly_do": "Cân + phân giác AH ⇒ AH ⊥ BC = 132.02 (đề cũ có thêm D, E không dùng ở ý này)"
+ },
+ {
+  "cu_id": "e047423c-e281-494f-9b96-c0db68da14f0",
+  "cu_ma": "BT.07.062.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "Cần nút mới \"D, E trên tia đối BC, CB với BD = CE\" ⇒ AD = AE"
+ },
+ {
+  "cu_id": "1ca3d728-c890-480f-8b4b-ed7dcebe8a0d",
+  "cu_ma": "BT.07.062.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "Cùng nút mới trên ⇒ AH phân giác DAE"
+ },
+ {
+  "cu_id": "1dcd7dd0-9f80-4b4b-92a7-98772d485b8f",
+  "cu_ma": "BT.07.062.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "d6c45d29-9bd3-4a79-8254-28116c4f8963"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.01"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01285",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.94
+  },
+  "ly_do": "gần khớp — chờ Thùy: cũ cho M trung điểm BC, mới cho AD phân giác (tương đương trong Δ cân nhưng GT khác) · Kho Luyện đã có nội dung này: HLB01285 (đã gán MH.132), trùng 94%"
+ },
+ {
+  "cu_id": "ed9f017e-e440-421c-9dfd-79e032100bd6",
+  "cu_ma": "BT.07.062.13",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.244",
+  "ly_do": "AE = AF (từ chân vuông góc) – thành viên 1 MH.244 chưa có nốt; đề cũ dùng trung điểm M thay phân giác D"
+ },
+ {
+  "cu_id": "15b3ad4e-e887-41ae-9116-c9d491d7c46a",
+  "cu_ma": "BT.07.062.14",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "0728215e-47a8-4fc1-9341-69cce88ea864"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.09"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.247",
+  "ly_do": "gần khớp — chờ Thùy: AK ⊥ EF như 132.09, nhưng cũ: M trung điểm + E, F chân vuông góc; mới: phân giác + AE = AF"
+ },
+ {
+  "cu_id": "774fd7e5-ece0-4bd6-9b09-43269e232d33",
+  "cu_ma": "BT.07.062.15",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a6e61bcc-9c3f-42cd-9858-5853c2cd5833"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.05"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "ly_do": "gần khớp — chờ Thùy: EF ∥ BC như 132.05 (chữ trùng), nhưng GT cũ dùng trung điểm M thay phân giác D"
+ },
+ {
+  "cu_id": "af593414-7db2-4a4b-a1a3-143b1302908b",
+  "cu_ma": "BT.07.062.16",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "d0b7f873-bf53-4663-b6d6-2119b4082c2f"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.10"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.249",
+  "kho_luyen": {
+   "ma_bai": "HLB01285",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: cùng dựng \"từ C kẻ ∥ cắt tia BA\" ⇒ A trung điểm; khác ở trung điểm M ↔ phân giác D · Kho Luyện đã có nội dung này: HLB01285 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "491012a4-5f31-4a97-b0ea-5a4b08948c19",
+  "cu_ma": "BT.07.062.17",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "d6c45d29-9bd3-4a79-8254-28116c4f8963"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.01"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01286",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.95
+  },
+  "ly_do": "gần khớp — chờ Thùy: M trung điểm thay phân giác · Kho Luyện đã có nội dung này: HLB01286 (đã gán MH.132), trùng 95%"
+ },
+ {
+  "cu_id": "dd267720-0919-4ecd-9685-9267ad0e8d00",
+  "cu_ma": "BT.07.062.18",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01286",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "Cho M trung điểm, hỏi AM phân giác + ⊥ BC: ngược với cây (cây cho phân giác) — cần biến thể trung tuyến · Kho Luyện đã có nội dung này: HLB01286 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "001c24c6-28dd-47e5-a0f2-001a1b4d997f",
+  "cu_ma": "BT.07.062.19",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "cee8cc04-b4ed-4548-891a-fa0d41eea29d"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.06"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "kho_luyen": {
+   "ma_bai": "HLB01286",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: D bất kì trên AM ⇒ DB = DC như 132.06, nhưng M trung điểm thay phân giác · Kho Luyện đã có nội dung này: HLB01286 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "5d2bb16a-430b-4546-a5c8-2af3e4346789",
+  "cu_ma": "BT.07.062.20",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "d6c45d29-9bd3-4a79-8254-28116c4f8963"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.01"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "kho_luyen": {
+   "ma_bai": "HLB01287",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.93
+  },
+  "ly_do": "gần khớp — chờ Thùy: M trung điểm thay phân giác · Kho Luyện đã có nội dung này: HLB01287 (đã gán MH.132), trùng 93%"
+ },
+ {
+  "cu_id": "e7197948-e7af-497b-b23c-2fab80ffa9ef",
+  "cu_ma": "BT.07.062.21",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "Như 062.18 – cần biến thể trung tuyến"
+ },
+ {
+  "cu_id": "b09e9efd-d0fd-476b-bd24-b014a51211d0",
+  "cu_ma": "BT.07.062.22",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "0728215e-47a8-4fc1-9341-69cce88ea864"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.09"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.247",
+  "kho_luyen": {
+   "ma_bai": "HLB01287",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: AH = AK, I = HK ∩ AM ⇒ AI ⊥ HK như 132.09; khác ở trung điểm M ↔ phân giác D · Kho Luyện đã có nội dung này: HLB01287 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "6ea3da71-d58a-4bc4-a79b-d72e4f8408d2",
+  "cu_ma": "BT.07.062.23",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a6e61bcc-9c3f-42cd-9858-5853c2cd5833"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.05"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "ly_do": "gần khớp — chờ Thùy: HK ∥ BC như 132.05; khác ở trung điểm M ↔ phân giác D"
+ },
+ {
+  "cu_id": "ba29650e-3c13-49e3-915d-3a235f6be4b7",
+  "cu_ma": "BT.07.062.24",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d6c45d29-9bd3-4a79-8254-28116c4f8963",
+  "moi_ma": "BT.07.132.01",
+  "kho_luyen": {
+   "ma_bai": "HLB01288",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.98
+  },
+  "ly_do": "Góc xAy, AB = AC, Az phân giác = Δ cân + phân giác; ΔABD = ΔACD · Kho Luyện đã có nội dung này: HLB01288 (đã gán MH.132), trùng 98%"
+ },
+ {
+  "cu_id": "c67a8399-cf53-44a6-84e3-2109b02b8fa9",
+  "cu_ma": "BT.07.062.25",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.132",
+  "ly_do": "AD là trung trực BC — hỏi hơn 132.02 (thêm D trung điểm BC); chưa có nốt"
+ },
+ {
+  "cu_id": "b13f5bea-86b7-407c-9d5f-058d8df73b2c",
+  "cu_ma": "BT.07.062.26",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "kho_luyen": {
+   "ma_bai": "HLB01288",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "Cách dựng thứ ba (M chân ⊥ từ D, N trên AC với AN = AM) – đề xuất thành viên mới của nhóm MH.243 · Kho Luyện đã có nội dung này: HLB01288 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "134e22b1-5c93-46b7-a228-01010f69be6e",
+  "cu_ma": "BT.07.062.27",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.243",
+  "kho_luyen": {
+   "ma_bai": "HLB01288",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "K trung điểm CN, E đối xứng D qua K ⇒ M, N, E thẳng hàng – nút mới sau đầu ra MH.243 · Kho Luyện đã có nội dung này: HLB01288 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "e856edef-9a7f-4531-b9c7-bdedea8fd362",
+  "cu_ma": "BT.07.062.28",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "d6c45d29-9bd3-4a79-8254-28116c4f8963",
+  "moi_ma": "BT.07.132.01",
+  "kho_luyen": {
+   "ma_bai": "HLB01289",
+   "mo_hinh": "MH.132",
+   "do_trung": 0.96
+  },
+  "ly_do": "Cùng GT gốc MH.132; ΔABD = ΔACD · Kho Luyện đã có nội dung này: HLB01289 (đã gán MH.132), trùng 96%"
+ },
+ {
+  "cu_id": "89c7b295-c93f-406d-9c45-7f5ca3b01e81",
+  "cu_ma": "BT.07.062.29",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.244",
+  "kho_luyen": {
+   "ma_bai": "HLB01289",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "DE = DF (DE ⊥ AB, DF ⊥ AC) – thành viên 1 MH.244 chưa có nốt · Kho Luyện đã có nội dung này: HLB01289 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "bcf6ff92-b13d-4b95-9245-00db1499f146",
+  "cu_ma": "BT.07.062.30",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.062",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "812ee2bb-ea04-489e-b695-aea2fbeca380"
+  ],
+  "ung_vien_ma": [
+   "BT.07.132.08"
+  ],
+  "de_xuat_goc_ma": "MH.132",
+  "de_xuat_cha_ma": "MH.248",
+  "kho_luyen": {
+   "ma_bai": "HLB01289",
+   "mo_hinh": "MH.132",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: I trung điểm EF ⇒ A, I, D thẳng hàng như 132.08, nhưng cũ dựng E, F là chân vuông góc, 132.08 (thành viên 1.2) dựng AE = AF · Kho Luyện đã có nội dung này: HLB01289 (đã gán MH.132), trùng 100%"
+ },
+ {
+  "cu_id": "7e11840d-7754-4ccd-8e6b-6eaeb2488552",
+  "cu_ma": "BT.07.063.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "3817767c-9afa-4ddc-8140-37aab965bedd"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.01"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01290",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.98
+  },
+  "ly_do": "gần khớp — chờ Thùy: cùng GT; cũ hỏi thêm AB = DC (cạnh tương ứng) · Kho Luyện đã có nội dung này: HLB01290 (đã gán MH.131), trùng 98%"
+ },
+ {
+  "cu_id": "a48fa7f2-c331-4e18-a639-3f777c45f511",
+  "cu_ma": "BT.07.063.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "a6955167-13bc-4f56-9624-1d00d3fa9bf8",
+  "moi_ma": "BT.07.131.13",
+  "ly_do": "BD ∥ AC"
+ },
+ {
+  "cu_id": "5510f305-845e-4e7f-bbdc-38cbe92300cb",
+  "cu_ma": "BT.07.063.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "40e6f5a6-ac18-4a86-af8f-74f82466f167",
+  "moi_ma": "BT.07.131.21",
+  "kho_luyen": {
+   "ma_bai": "HLB01290",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "Đổi vai B ↔ C: MI ⊥ AC, MK ⊥ BD ⇒ I, M, K thẳng hàng ↔ MS ⊥ AB, MT ⊥ CD ⇒ S, M, T · Kho Luyện đã có nội dung này: HLB01290 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "60fa2257-6e56-4d3a-8f52-cb336de5d48d",
+  "cu_ma": "BT.07.063.04",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "e6b303a2-70ae-419b-9956-04b5a726ab59"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.03"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01291",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.96
+  },
+  "ly_do": "gần khớp — chờ Thùy: cụng đầu quanh cạnh AB (đổi tên C→A, A→B, B→C, N→D): NB ∥ AC ↔ AB ∥ CD (131.03); cũ hỏi thêm NB = AC · Kho Luyện đã có nội dung này: HLB01291 (đã gán MH.131), trùng 96%"
+ },
+ {
+  "cu_id": "0b647eca-e0e9-4dbf-b676-faf6ec593438",
+  "cu_ma": "BT.07.063.05",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01291",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "Nút mới \"E đối xứng D qua C\" (đổi tên) – chưa có · Kho Luyện đã có nội dung này: HLB01291 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "0576e11d-31f5-405e-bdef-b225b25de67f",
+  "cu_ma": "BT.07.063.06",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01291",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "Con của nút mới trên: F trung điểm ⇒ A, E, F thẳng hàng · Kho Luyện đã có nội dung này: HLB01291 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "a65acc33-8978-49a0-9f62-5f4f017f2bb2",
+  "cu_ma": "BT.07.063.07",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "3817767c-9afa-4ddc-8140-37aab965bedd"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.01"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "kho_luyen": {
+   "ma_bai": "HLB01292",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.98
+  },
+  "ly_do": "gần khớp — chờ Thùy: cùng kết luận 131.01 nhưng đề cũ thêm \"vuông tại A\" (thừa cho ý này) · Kho Luyện đã có nội dung này: HLB01292 (đã gán MH.131), trùng 98%"
+ },
+ {
+  "cu_id": "230233df-b625-4142-a79a-a45e412a6fbe",
+  "cu_ma": "BT.07.063.08",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Cần nút giả thiết mới \"ΔABC vuông tại A\" dưới MH.131 ⇒ AC ⊥ CE"
+ },
+ {
+  "cu_id": "45ac2781-0ecc-423a-9d6a-37e2480af4f0",
+  "cu_ma": "BT.07.063.09",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Cùng nút \"vuông tại A\" ⇒ BC = 2AM"
+ },
+ {
+  "cu_id": "9cc5c22e-2d91-4c00-b54d-8df8fce7478e",
+  "cu_ma": "BT.07.063.10",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "3817767c-9afa-4ddc-8140-37aab965bedd",
+  "moi_ma": "BT.07.131.01",
+  "kho_luyen": {
+   "ma_bai": "HLB01293",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.96
+  },
+  "ly_do": "Cụng đầu quanh AC (đổi tên B→A, A→B): ΔAMB = ΔCMD ↔ ΔABM = ΔDCM · Kho Luyện đã có nội dung này: HLB01293 (đã gán MH.131), trùng 96%"
+ },
+ {
+  "cu_id": "75b03cfe-c49a-4d11-b415-1adad88f8298",
+  "cu_ma": "BT.07.063.11",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "06108c53-9285-4a92-b164-2d469e2b3147",
+  "moi_ma": "BT.07.131.14",
+  "ly_do": "Đổi tên B→A, A→B: ΔABC = ΔCDA ↔ ΔABC = ΔDCB"
+ },
+ {
+  "cu_id": "830c1351-8f7c-42a3-8bff-f764a3688ae5",
+  "cu_ma": "BT.07.063.12",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a6955167-13bc-4f56-9624-1d00d3fa9bf8"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.13"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "gần khớp — chờ Thùy: AD ∥ CB ↔ AC ∥ BD (131.13); cũ hỏi thêm AD = CB"
+ },
+ {
+  "cu_id": "54ce4c8b-98fa-4a97-85c4-5ea05c05659a",
+  "cu_ma": "BT.07.063.13",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "b35cd77b-e4bb-4e79-a767-d66ddf5132d4"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.17"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.229",
+  "kho_luyen": {
+   "ma_bai": "HLB01293",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "Ứng với 131.17 (đổi tên B→A, A→B) — nhưng 131.17 đang ghi \"K, A, D thẳng hàng\", kiểm toạ độ là SAI (đúng: K, B, D). Sửa 131.17 thì trùng hoàn toàn · Kho Luyện đã có nội dung này: HLB01293 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "7df4c2eb-0312-4686-88c0-80246c459c55",
+  "cu_ma": "BT.07.063.14",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "74ae588e-adcf-4e5a-af3b-a0c9bb21811d",
+  "moi_ma": "BT.07.131.18",
+  "ly_do": "Đổi tên B→A, A→B: CE ⊥ AD, AF ⊥ BC ⇒ DE = BF ↔ CE ⊥ BD, BF ⊥ AC ⇒ DE = AF"
+ },
+ {
+  "cu_id": "5d536823-de70-4648-9c04-e7e01cf9dc82",
+  "cu_ma": "BT.07.063.15",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "b1e2ed71-8baf-4d3e-b6fe-a8373bed1f67",
+  "moi_ma": "BT.07.131.02",
+  "kho_luyen": {
+   "ma_bai": "HLB01294",
+   "mo_hinh": "MH.131",
+   "do_trung": 0.96
+  },
+  "ly_do": "ΔAMC = ΔDMB · Kho Luyện đã có nội dung này: HLB01294 (đã gán MH.131), trùng 96%"
+ },
+ {
+  "cu_id": "efe2ecc0-2d5d-4270-8a57-29189498a17d",
+  "cu_ma": "BT.07.063.16",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "a6955167-13bc-4f56-9624-1d00d3fa9bf8",
+  "moi_ma": "BT.07.131.13",
+  "ly_do": "AC ∥ BD"
+ },
+ {
+  "cu_id": "7e47926c-b925-4409-96a5-3b423f8c8b17",
+  "cu_ma": "BT.07.063.17",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "a5ce91f3-78cb-4f25-83d7-d7955a80e4dc",
+  "moi_ma": "BT.07.131.20",
+  "ly_do": "AH ⊥ BC, DK ⊥ BC ⇒ AH = DK"
+ },
+ {
+  "cu_id": "9631b974-0244-4aaf-a7c1-cd2035df0283",
+  "cu_ma": "BT.07.063.18",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.063",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "b35cd77b-e4bb-4e79-a767-d66ddf5132d4"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.17"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.229",
+  "kho_luyen": {
+   "ma_bai": "HLB01294",
+   "mo_hinh": "MH.131",
+   "do_trung": 1
+  },
+  "ly_do": "E đối xứng B qua trung điểm AC ⇒ E, C, D thẳng hàng = ảnh đối xứng B ↔ C của 131.17 — nhưng 131.17 đang ghi sai (xem 063.13) · Kho Luyện đã có nội dung này: HLB01294 (đã gán MH.131), trùng 100%"
+ },
+ {
+  "cu_id": "d87aa36e-e3eb-4a36-a544-3108d4a0323e",
+  "cu_ma": "BT.07.064.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.064",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "45de1b43-5a3c-4a5f-ac1b-7a2e0dbb394e",
+  "moi_ma": "BT.07.133.01",
+  "ly_do": "Trùng nguyên văn (GT gốc MH.133)"
+ },
+ {
+  "cu_id": "6dc727d9-c6e6-46e1-bbde-391f702e940f",
+  "cu_ma": "BT.07.064.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.064",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "fb633d79-751b-4794-a66b-87695d8a6969",
+  "moi_ma": "BT.07.133.02",
+  "ly_do": "Trùng nguyên văn"
+ },
+ {
+  "cu_id": "1926f2e9-6ff4-47ca-88bf-064764c0199b",
+  "cu_ma": "BT.07.064.03",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.064",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "ee8d5a6d-cb52-48f1-93ad-73fa2cb4216c",
+  "moi_ma": "BT.07.133.03",
+  "ly_do": "Trùng nguyên văn"
+ },
+ {
+  "cu_id": "2c236bdb-16d7-4342-93de-989ad492e0f9",
+  "cu_ma": "BT.07.126.01",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9",
+   "e9bde07b-f6d7-460f-a31b-f346124af95b",
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.05",
+   "BT.07.126.07",
+   "BT.07.126.06"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "kho_luyen": {
+   "ma_bai": "HLB01275",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: đề 3 ý (trùng 054.05 và 126.02): a cũ hỏi thêm AK = KE; b cũ chỉ hỏi EK ⊥ BC; c trùng 126.06 · Kho Luyện đã có nội dung này: HLB01275 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "646e83d5-5d48-4aef-bbba-ee979e4fdc06",
+  "cu_ma": "BT.07.126.02",
+  "khoi": 7,
+  "mo_hinh_cu_ma": "MH.061",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a56628a0-d825-4c1e-8b14-21671bd11df9",
+   "e9bde07b-f6d7-460f-a31b-f346124af95b",
+   "abd638db-1b0d-4f0d-95ed-a26301d53d7c"
+  ],
+  "ung_vien_ma": [
+   "BT.07.126.05",
+   "BT.07.126.07",
+   "BT.07.126.06"
+  ],
+  "de_xuat_goc_ma": "MH.126",
+  "de_xuat_cha_ma": "MH.234",
+  "kho_luyen": {
+   "ma_bai": "HLB01275",
+   "mo_hinh": "MH.126",
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: bản chép y hệt 126.01 · Kho Luyện đã có nội dung này: HLB01275 (đã gán MH.126), trùng 100%"
+ },
+ {
+  "cu_id": "67274d46-0dd4-4c52-b193-3bf66e5dce9e",
+  "cu_ma": "BT.08.020.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.020",
+  "so_luot_hs": 11,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Cây K8 mới chưa có mô hình Tứ giác; đề \"Cho hình vẽ trên\" — cần hình"
+ },
+ {
+  "cu_id": "f16c5a1b-2bf4-441e-a745-2784e0c228f5",
+  "cu_ma": "BT.08.020.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.020",
+  "so_luot_hs": 9,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Tổng các góc tứ giác"
+ },
+ {
+  "cu_id": "10cbe573-89db-4910-b80e-6db4f90bd862",
+  "cu_ma": "BT.08.020.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.020",
+  "so_luot_hs": 9,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Bất đẳng thức đường chéo"
+ },
+ {
+  "cu_id": "2d25c611-4cae-4198-830c-0af2976ebdbf",
+  "cu_ma": "BT.08.020.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.020",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Bất đẳng thức đường chéo"
+ },
+ {
+  "cu_id": "887898dc-59ca-4c76-bb99-39bd2ff6f076",
+  "cu_ma": "BT.08.022.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.022",
+  "so_luot_hs": 9,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Hình thang cân"
+ },
+ {
+  "cu_id": "6cf1e1bd-a2b1-45dd-8a1d-61740da92874",
+  "cu_ma": "BT.08.022.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.022",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Hình thang cân, đường cao AH, BK"
+ },
+ {
+  "cu_id": "4805fc96-c0e9-4f06-9c16-9311c6474021",
+  "cu_ma": "BT.08.022.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.022",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "7d22146a-a128-4bb0-8496-de70c796bed2",
+  "cu_ma": "BT.08.023.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "HBH, AH ⊥ CD, CK ⊥ AB – MH.075 chỉ có trung điểm hai cạnh"
+ },
+ {
+  "cu_id": "c942bd8b-2a68-43a2-b9b7-ed725fbc2fa6",
+  "cu_ma": "BT.08.023.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.075",
+  "de_xuat_cha_ma": "MH.075",
+  "ly_do": "HBH, M, N trung điểm AB, CD = GT gốc MH.075 (K, E); MH.075 chưa có nốt"
+ },
+ {
+  "cu_id": "ef9b89c1-0e8a-4d48-913c-16f8dae99c44",
+  "cu_ma": "BT.08.023.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "HBH, AH, CK ⊥ BD (MH.077 là HCN, GT mạnh hơn)"
+ },
+ {
+  "cu_id": "b24da602-b32f-4990-ad38-229bbbe9e86d",
+  "cu_ma": "BT.08.023.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Đường thẳng qua O"
+ },
+ {
+  "cu_id": "b2ca5f06-101f-4c89-9a51-1bbdbdd293f1",
+  "cu_ma": "BT.08.023.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Ngữ cảnh H, K của 023.03 (bài cũ không tự ghi GT)"
+ },
+ {
+  "cu_id": "30123572-2ea8-4a9c-bde9-2150b9637d52",
+  "cu_ma": "BT.08.023.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "1cc33dcc-2258-420c-9049-1b603ba71354",
+  "cu_ma": "BT.08.023.07",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "e5831b6c-f851-485f-a3a3-7275c21f4e50",
+  "cu_ma": "BT.08.023.08",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "O trung điểm BD ⇒ A, O, C thẳng hàng"
+ },
+ {
+  "cu_id": "4397723b-39a4-4181-beac-3f3e19505161",
+  "cu_ma": "BT.08.023.09",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.023",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Ngữ cảnh H, K mồ côi"
+ },
+ {
+  "cu_id": "0fa523f0-549a-45ac-bf9c-c0b0b51f09f8",
+  "cu_ma": "BT.08.027.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.027",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Đề thiếu định nghĩa điểm I (có lẽ giao phân giác góc E, F)"
+ },
+ {
+  "cu_id": "2a605e25-e4c8-4905-b1df-82b984540a62",
+  "cu_ma": "BT.08.028.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.028",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Tứ giác B + D = 180°, CB = CD"
+ },
+ {
+  "cu_id": "df78a2cd-0a51-40f7-a532-dffca64c562c",
+  "cu_ma": "BT.08.028.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.028",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "f7f63678-42a9-46da-aff2-33f9147b8dc2",
+  "cu_ma": "BT.08.029.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.029",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Giao hai phân giác"
+ },
+ {
+  "cu_id": "8df9c267-c102-4988-8a39-54a1b6131f41",
+  "cu_ma": "BT.08.030.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.030",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "Â = B̂, AD = BC (dẫn tới hình thang cân)"
+ },
+ {
+  "cu_id": "7d05258e-ec9f-4e6a-a226-07a033c5afbc",
+  "cu_ma": "BT.08.030.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.030",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "709919d5-1d2f-45a5-a705-cfe66eae39d9",
+  "cu_ma": "BT.08.030.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.030",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8a",
+  "mo_hinh_moi": "K8 · Tứ giác (tổng các góc, bất đẳng thức cạnh–đường chéo, giao hai phân giác, tứ giác có B + D = 180°, có Â = B̂ và AD = BC)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "fbce5cda-1b4b-4fb2-9e49-bab52c4c456a",
+  "cu_ma": "BT.08.041.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.041",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Hình thang có BD phân giác góc D"
+ },
+ {
+  "cu_id": "70725f9a-57ca-4164-bb14-cd7fa4b30763",
+  "cu_ma": "BT.08.041.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.041",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Đảo của 041.01"
+ },
+ {
+  "cu_id": "71eb0173-dad8-406a-8906-c08d8de51584",
+  "cu_ma": "BT.08.041.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.041",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Đảo của 041.01"
+ },
+ {
+  "cu_id": "660a0621-400c-47ff-a87b-86e150c41842",
+  "cu_ma": "BT.08.042.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.042",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Hình thang cân, O = AD ∩ BC"
+ },
+ {
+  "cu_id": "57d94557-1c1e-4a17-b933-61993f71b2ef",
+  "cu_ma": "BT.08.042.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.042",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "kho_luyen": {
+   "ma_bai": "HLB01489",
+   "mo_hinh": null,
+   "do_trung": 0.97
+  },
+  "ly_do": "như trên · Kho Luyện đã có nội dung này: HLB01489 (chưa gán mô hình), trùng 97%"
+ },
+ {
+  "cu_id": "a506e25e-23df-4aae-b38b-2c328f29ba93",
+  "cu_ma": "BT.08.042.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.042",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "292714c1-127e-478f-b223-118e4f86d886",
+  "cu_ma": "BT.08.042.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.042",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "kho_luyen": {
+   "ma_bai": "HLB01489",
+   "mo_hinh": null,
+   "do_trung": 0.91
+  },
+  "ly_do": "như trên · Kho Luyện đã có nội dung này: HLB01489 (chưa gán mô hình), trùng 91%"
+ },
+ {
+  "cu_id": "f7faac0f-a4f9-4345-87f6-0e85d4376f1b",
+  "cu_ma": "BT.08.042.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.042",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "39252475-0be6-4b8c-af5e-be681f0feedb",
+  "cu_ma": "BT.08.043.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Tam giác cân, AD = AE ⇒ hình thang cân"
+ },
+ {
+  "cu_id": "664d2c81-0325-41ac-b8e2-9bfd9a78ed2b",
+  "cu_ma": "BT.08.043.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 10,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Tam giác cân, đường cao BD, CE"
+ },
+ {
+  "cu_id": "8cef3623-651a-44c2-80e9-85c44c8c7445",
+  "cu_ma": "BT.08.043.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 10,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "ed3d889c-30b3-495f-a019-86e15e808326",
+  "cu_ma": "BT.08.043.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Tam giác cân, D, E trung điểm"
+ },
+ {
+  "cu_id": "4baeed08-dcc2-49df-ab55-471653a95454",
+  "cu_ma": "BT.08.043.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "5ca667c1-8564-458b-9b72-4f7254e08020",
+  "cu_ma": "BT.08.043.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Tam giác cân, BD, CE phân giác"
+ },
+ {
+  "cu_id": "84ee770e-de2f-4545-b120-b537e1749ba9",
+  "cu_ma": "BT.08.043.07",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.043",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "d7d9af2c-aea2-4b09-bf15-2543b70a410c",
+  "cu_ma": "BT.08.044.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "Hình thang cân, trung điểm hai đáy"
+ },
+ {
+  "cu_id": "603b54e6-2f4a-4e7b-b0af-8dbd4efbaf41",
+  "cu_ma": "BT.08.044.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "d5d22b59-3fae-4afa-9529-fe674061ad7a",
+  "cu_ma": "BT.08.044.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "1dcde7a3-7267-412c-9c67-8af9759489eb",
+  "cu_ma": "BT.08.044.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "97d2bff8-9fe9-4a6c-b4f2-985a5bad358c",
+  "cu_ma": "BT.08.044.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "a6453626-4ffb-4958-9490-6542db4e96b7",
+  "cu_ma": "BT.08.044.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.044",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8b",
+  "mo_hinh_moi": "K8 · Hình thang – hình thang cân (phân giác góc đáy; đường cao AH, BK; O = AD ∩ BC, E = AC ∩ BD; trung điểm hai đáy; tam giác cân cắt bởi AD = AE)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "3f94820b-3792-4130-bd2a-c4a54d4a1d4a",
+  "cu_ma": "BT.08.047.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.075",
+  "de_xuat_cha_ma": "MH.075",
+  "ly_do": "Trung điểm hai cạnh đối HBH – MH.075 chưa có nốt"
+ },
+ {
+  "cu_id": "26dc54ac-353b-4661-a27f-09e70eb1e570",
+  "cu_ma": "BT.08.047.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.075",
+  "de_xuat_cha_ma": "MH.075",
+  "ly_do": "Đề có vẻ gõ nhầm \"AC cắt DM, NM\" (đúng: DM, BN)"
+ },
+ {
+  "cu_id": "0de8c2de-4749-4b52-8288-58cf4aebe573",
+  "cu_ma": "BT.08.047.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.075",
+  "de_xuat_cha_ma": "MH.075",
+  "ly_do": "AC, BD, MN đồng quy"
+ },
+ {
+  "cu_id": "1b18daa4-968d-4125-b50f-954dc4c9c85a",
+  "cu_ma": "BT.08.047.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.075",
+  "de_xuat_cha_ma": "MH.075",
+  "ly_do": "O trung điểm AC ⇒ M, O, N thẳng hàng"
+ },
+ {
+  "cu_id": "87031181-e0e0-44cd-9066-1fa29e13c0e4",
+  "cu_ma": "BT.08.047.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "BM = DN (tổng quát hơn trung điểm) – không khớp GT MH.075"
+ },
+ {
+  "cu_id": "785c13dd-84e9-4caa-ad6e-d4f6cf8ade10",
+  "cu_ma": "BT.08.047.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.047",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Ngữ cảnh BM = DN của 047.05"
+ },
+ {
+  "cu_id": "cb76bf84-cf92-45c6-9c19-91dd77cb3319",
+  "cu_ma": "BT.08.048.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.048",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Phân giác hai góc đối HBH"
+ },
+ {
+  "cu_id": "1410c456-a331-46b9-8371-60a40adaac40",
+  "cu_ma": "BT.08.048.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.048",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "e8ff29f2-5b2c-4eb9-b1ca-b07d8824bc58",
+  "cu_ma": "BT.08.048.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.048",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "b7c1550f-6567-4540-84b9-71f709453d54",
+  "cu_ma": "BT.08.048.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.048",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "5b2e6bb5-34af-465b-b58d-6763fc9ba009",
+  "cu_ma": "BT.08.049.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.049",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "Đường thẳng qua tâm O"
+ },
+ {
+  "cu_id": "c67c4309-8f9a-4e80-b97d-4913b85256ab",
+  "cu_ma": "BT.08.049.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.049",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "c5315095-1f29-4b48-a592-fa78661f4270",
+  "cu_ma": "BT.08.050.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.050",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "AH, CK ⊥ BD trong HBH"
+ },
+ {
+  "cu_id": "6cd0928a-13f3-4315-8d11-f987e91bb950",
+  "cu_ma": "BT.08.050.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.050",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "3339166c-7a69-47ec-98fb-b64192296acc",
+  "cu_ma": "BT.08.050.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.050",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8c",
+  "mo_hinh_moi": "K8 · Hình bình hành – gốc chung ABCD, O = AC ∩ BD (nhánh: kẻ vuông góc tới cạnh / tới đường chéo BD, đường thẳng qua O, phân giác hai góc đối, BM = DN)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "2e583ec3-7263-4056-8bb9-ad8668160615",
+  "cu_ma": "BT.08.051.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.051",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8d",
+  "mo_hinh_moi": "K8 · Mô hình trực tâm (ΔABC trực tâm H; qua B kẻ ⊥ AB, qua C kẻ ⊥ AC, cắt nhau tại I)",
+  "ly_do": "Mô hình trực tâm – chưa có cây"
+ },
+ {
+  "cu_id": "ac5f6cae-716e-4d8f-ab41-445744c199e3",
+  "cu_ma": "BT.08.051.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.051",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8d",
+  "mo_hinh_moi": "K8 · Mô hình trực tâm (ΔABC trực tâm H; qua B kẻ ⊥ AB, qua C kẻ ⊥ AC, cắt nhau tại I)",
+  "ly_do": "Đề lỗi: \"M trung điểm HI ⇒ H, M, I thẳng hàng\" hiển nhiên (có lẽ M trung điểm BC)"
+ },
+ {
+  "cu_id": "9d76ccc6-1cb3-4a3b-af44-429090e46656",
+  "cu_ma": "BT.08.053.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.053",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8e",
+  "mo_hinh_moi": "K8 · Đường trung bình của tam giác (ΔABC, M, N trung điểm AB, AC)",
+  "ly_do": "Đường trung bình tam giác thường – MH.072 là tam giác vuông + chân vuông góc, GT khác"
+ },
+ {
+  "cu_id": "c6b6de60-65d0-4333-b42a-014a91cb4fb7",
+  "cu_ma": "BT.08.053.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.053",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8e",
+  "mo_hinh_moi": "K8 · Đường trung bình của tam giác (ΔABC, M, N trung điểm AB, AC)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "af56f647-6bdc-437a-bc48-3a69acf9b5fc",
+  "cu_ma": "BT.08.053.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.053",
+  "so_luot_hs": 7,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8e",
+  "mo_hinh_moi": "K8 · Đường trung bình của tam giác (ΔABC, M, N trung điểm AB, AC)",
+  "ly_do": "như trên"
+ },
+ {
+  "cu_id": "9b5e8e55-d2cf-4890-ae00-62a234e4fa4f",
+  "cu_ma": "BT.08.057.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.057",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "ly_do": "Vuông + M trung điểm BC: MA = BC/2 – MH.072 chưa có nốt này (gốc MH.072 thêm MD, ME không dùng)"
+ },
+ {
+  "cu_id": "8a10dce1-73b9-4bf1-98b5-4b360a2d5096",
+  "cu_ma": "BT.08.058.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 1,
+  "loai": 1,
+  "moi_id": "38e77036-fe18-4770-bf78-a4b2e14d3127",
+  "moi_ma": "BT.08.073.01",
+  "ly_do": "Vuông, đường cao AH, HD ⊥ AB, HE ⊥ AC ⇒ ADHE HCN (đề cũ thêm trung tuyến AM không dùng)"
+ },
+ {
+  "cu_id": "6b37c88a-216c-4179-b7ec-f6fffd8e0cc4",
+  "cu_ma": "BT.08.058.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 0,
+  "loai": 1,
+  "moi_id": "9efc3a0b-8cf4-4ff7-b019-44b559cbfce8",
+  "moi_ma": "BT.08.073.02",
+  "ly_do": "M trung điểm BC ⇒ AM ⊥ DE (nút MH.116)"
+ },
+ {
+  "cu_id": "1d40ba5a-d630-4daa-9f26-0a1813953a16",
+  "cu_ma": "BT.08.058.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 1,
+  "loai": 3,
+  "ung_vien_id": [
+   "afd15a5a-ab4d-484b-80bf-c22be286591a"
+  ],
+  "ung_vien_ma": [
+   "BT.08.074.01"
+  ],
+  "de_xuat_goc_ma": "MH.074",
+  "de_xuat_cha_ma": "MH.074",
+  "ly_do": "gần khớp — chờ Thùy: cùng kết luận AHCE là HCN; đề cũ thừa giả thiết vuông tại A và hỏi dạng chứng minh, 074.01 hỏi \"là hình gì?\""
+ },
+ {
+  "cu_id": "eff5c2d3-56eb-4bf3-aa9d-1e7db55174a5",
+  "cu_ma": "BT.08.058.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "ly_do": "Nút mới \"I, K trung điểm AB, AC\" dưới MH.073 (gốc thừa HD, HE)"
+ },
+ {
+  "cu_id": "a83c2de8-a762-4606-8aa9-7acef6977eb0",
+  "cu_ma": "BT.08.058.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "ly_do": "Cùng nút mới trên: IHK = 90°"
+ },
+ {
+  "cu_id": "3e2ba5e2-475c-40b0-80dd-7ed9f212fb31",
+  "cu_ma": "BT.08.058.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.058",
+  "so_luot_hs": 1,
+  "loai": 3,
+  "ung_vien_id": [
+   "e91a0b35-50f2-4419-b021-ec078a7ce1aa"
+  ],
+  "ung_vien_ma": [
+   "BT.08.073.04"
+  ],
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.118",
+  "kho_luyen": {
+   "ma_bai": "HLB00097",
+   "mo_hinh": "MH.073",
+   "do_trung": 1
+  },
+  "ly_do": "Bài cũ mồ côi: D, E chỉ được định nghĩa ở 058.01, còn ngay trước đó (058.04/05) K là trung điểm AC — nếu hiểu D, E là chân vuông góc từ H thì trùng 073.04 · Kho Luyện đã có nội dung này: HLB00097 (đã gán MH.073), trùng 100%"
+ },
+ {
+  "cu_id": "5ab17794-5875-4296-b59e-5cab47b4ecef",
+  "cu_ma": "BT.08.059.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.059",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.079",
+  "de_xuat_cha_ma": "MH.079",
+  "ly_do": "GT trùng gốc MH.079 (M bất kì trên BC, MD, ME ⊥) – MH.079 chưa có nốt"
+ },
+ {
+  "cu_id": "a1c6ee27-3f7b-4046-b34b-40fde4ff3fe9",
+  "cu_ma": "BT.08.059.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.059",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.079",
+  "de_xuat_cha_ma": "MH.079",
+  "ly_do": "Nút I trung điểm DE"
+ },
+ {
+  "cu_id": "85034b5e-562f-44eb-8456-fcb44f57e04d",
+  "cu_ma": "BT.08.059.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.059",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.079",
+  "de_xuat_cha_ma": "MH.079",
+  "ly_do": "Nút mới P, Q đối xứng M qua D, E (072.22 là ca M trung điểm, GT khác)"
+ },
+ {
+  "cu_id": "216dbebe-0f28-4458-be4d-bd7c75f24e95",
+  "cu_ma": "BT.08.060.01",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "3817767c-9afa-4ddc-8140-37aab965bedd"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.01"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Chữ trùng 131.01, nhưng đề cũ ghi \"tia đối của tia AM\" (lỗi, đúng: MA), thêm \"nhọn\", và là khối 8 còn cây MH.131 là K7"
+ },
+ {
+  "cu_id": "025b579a-c3ab-4cea-ba52-2f24d28194cd",
+  "cu_ma": "BT.08.060.02",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "ΔABD = ΔDCA (đường chéo kia) – chưa có nốt; đề gốc có lỗi \"tia đối AM\""
+ },
+ {
+  "cu_id": "d853d6a4-f805-4a76-917f-7994e38bf55c",
+  "cu_ma": "BT.08.060.03",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "a6955167-13bc-4f56-9624-1d00d3fa9bf8"
+  ],
+  "ung_vien_ma": [
+   "BT.07.131.13"
+  ],
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Chữ trùng 131.13 nhưng cùng lỗi GT như 060.01"
+ },
+ {
+  "cu_id": "f331ba1d-4a0f-426b-8491-c8d263add987",
+  "cu_ma": "BT.08.060.04",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "E, F trung điểm DC, AC; G = AE ∩ CM ⇒ D, G, F (trọng tâm) – nút mới"
+ },
+ {
+  "cu_id": "5cbbffbd-0bf1-4b27-99f4-2fffb8d5fafc",
+  "cu_ma": "BT.08.060.05",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "de_xuat_goc_ma": "MH.131",
+  "de_xuat_cha_ma": "MH.131",
+  "ly_do": "Đề lỗi: H không được dùng; \"E, M, F thẳng hàng\" không đúng tổng quát — cần Thùy xem lại đề gốc"
+ },
+ {
+  "cu_id": "1fb81529-6ae8-42af-90f2-8d11d0696d29",
+  "cu_ma": "BT.08.060.06",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.100",
+  "kho_luyen": {
+   "ma_bai": "HLB01468",
+   "mo_hinh": null,
+   "do_trung": 0.95
+  },
+  "ly_do": "a = 072.01 (đổi tên E↔F); b (D trung điểm MC = Q của MH.100, H = AM ∩ EF: AHDC hình gì) và c chưa có nốt · Kho Luyện đã có nội dung này: HLB01468 (chưa gán mô hình), trùng 95%"
+ },
+ {
+  "cu_id": "1d7e125a-fb9e-4db7-b7d6-3620d20ea6b3",
+  "cu_ma": "BT.08.060.07",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01436",
+   "mo_hinh": null,
+   "do_trung": 0.94
+  },
+  "ly_do": "Vuông cân + trung điểm ba cạnh – cần nút \"AB = AC\"; ý c (phân giác BE, CE = 2NI) chưa có · Kho Luyện đã có nội dung này: HLB01436 (chưa gán mô hình), trùng 94%"
+ },
+ {
+  "cu_id": "aa4927a8-446f-4280-99ce-8b261b2e2bc3",
+  "cu_ma": "BT.08.060.08",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.121",
+  "kho_luyen": {
+   "ma_bai": "HLB01439",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "a = 073.01; b gần 073.09 (cũ hỏi AC ∥ HK); c (đường qua A ⊥ MN cắt BC tại G ⇒ G trung điểm) là đảo của 073.02 – chưa có · Kho Luyện đã có nội dung này: HLB01439 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "7713efbf-c120-4088-8bb2-625e071b423d",
+  "cu_ma": "BT.08.060.09",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8f",
+  "mo_hinh_moi": "K8 · Hình chữ nhật – đường qua đỉnh song song với đường chéo (HCN ABCD, xy qua B ∥ AC cắt AD tại E)",
+  "kho_luyen": {
+   "ma_bai": "HLB01438",
+   "mo_hinh": null,
+   "do_trung": 0.97
+  },
+  "ly_do": "HCN + xy qua B ∥ AC – MH.077/MH.081 không khớp · Kho Luyện đã có nội dung này: HLB01438 (chưa gán mô hình), trùng 97%"
+ },
+ {
+  "cu_id": "6fcc5e7e-98d8-4798-85d4-1f5686d11887",
+  "cu_ma": "BT.08.060.10",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.102",
+  "ly_do": "a = 072.01, b gần 072.06 (đổi tên); c (K đối xứng B qua C ⇒ MP phân giác BMK) chưa có"
+ },
+ {
+  "cu_id": "030912e2-532d-4b84-8030-b0a24be4e368",
+  "cu_ma": "BT.08.060.11",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K8g",
+  "mo_hinh_moi": "K8 · Tam giác có đường phân giác – tính chất tỉ lệ (ΔABC, AM phân giác; trung điểm, hình bình hành)",
+  "kho_luyen": {
+   "ma_bai": "HLB01441",
+   "mo_hinh": null,
+   "do_trung": 0.99
+  },
+  "ly_do": "Tính chất đường phân giác (tỉ lệ) – chưa có cây · Kho Luyện đã có nội dung này: HLB01441 (chưa gán mô hình), trùng 99%"
+ },
+ {
+  "cu_id": "e9ccc4d3-3c84-4840-a18b-f830a379d352",
+  "cu_ma": "BT.08.060.12",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.105",
+  "kho_luyen": {
+   "ma_bai": "HLB01442",
+   "mo_hinh": null,
+   "do_trung": 0.99
+  },
+  "ly_do": "Cũ cho N, P là trung điểm (mới cho chân vuông góc); b gần 072.12, c gần 072.22; a (MN ∥ AB) không có nốt · Kho Luyện đã có nội dung này: HLB01442 (chưa gán mô hình), trùng 99%"
+ },
+ {
+  "cu_id": "7adf7d89-9d71-4b62-951e-c4438134bffe",
+  "cu_ma": "BT.08.060.13",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "38e77036-fe18-4770-bf78-a4b2e14d3127",
+   "16871f6e-74b0-4213-b431-44e08bb32dfb",
+   "0a302c8f-a3d4-4c26-92f0-de22a52bbd23"
+  ],
+  "ung_vien_ma": [
+   "BT.08.073.01",
+   "BT.08.073.09",
+   "BT.08.073.12"
+  ],
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.122",
+  "kho_luyen": {
+   "ma_bai": "HLB01447",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: a = 073.01, c = 073.12 (AK = 3AD); b cũ hỏi AC ∥ HK, 073.09 hỏi AHKC là HBH (rộng hơn) · Kho Luyện đã có nội dung này: HLB01447 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "fee38d27-b707-469a-9d88-2c4f1d193902",
+  "cu_ma": "BT.08.060.14",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01448",
+   "mo_hinh": null,
+   "do_trung": 0.94
+  },
+  "ly_do": "a = 072.01; b gần 072.06 (cũ hỏi \"hình gì\"); c (G = BN ∩ AI ⇒ BG = 2GN) chưa có · Kho Luyện đã có nội dung này: HLB01448 (chưa gán mô hình), trùng 94%"
+ },
+ {
+  "cu_id": "a19b67bf-1ee9-4495-8c84-aeb1ab107302",
+  "cu_ma": "BT.08.060.15",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01449",
+   "mo_hinh": null,
+   "do_trung": 0.97
+  },
+  "ly_do": "Vuông tại B (đổi tên): a = 072.01, b một phần = 072.03; nút mới \"F đối xứng E qua M\" (AFCE HBH, FC = 6IK) chưa có · Kho Luyện đã có nội dung này: HLB01449 (chưa gán mô hình), trùng 97%"
+ },
+ {
+  "cu_id": "d1b9a1ac-91a7-428d-a487-5c81ee97a650",
+  "cu_ma": "BT.08.060.16",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.101",
+  "kho_luyen": {
+   "ma_bai": "HLB01457",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "a = 072.01; b, c (I đối xứng A qua H, K đối xứng B qua H: ABIK hình thoi, AK ⊥ IC) chưa có · Kho Luyện đã có nội dung này: HLB01457 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "511f1763-9914-4fa2-97b4-7f0563a0e582",
+  "cu_ma": "BT.08.060.17",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "38e77036-fe18-4770-bf78-a4b2e14d3127",
+   "16871f6e-74b0-4213-b431-44e08bb32dfb",
+   "0a302c8f-a3d4-4c26-92f0-de22a52bbd23"
+  ],
+  "ung_vien_ma": [
+   "BT.08.073.01",
+   "BT.08.073.09",
+   "BT.08.073.12"
+  ],
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.122",
+  "kho_luyen": {
+   "ma_bai": "HLB01458",
+   "mo_hinh": null,
+   "do_trung": 0.95
+  },
+  "ly_do": "gần khớp — chờ Thùy: a = 073.01, c = 073.12; b cũ hỏi HE = AC (E đối xứng A qua K), 073.09 hỏi AHKC là HBH · Kho Luyện đã có nội dung này: HLB01458 (chưa gán mô hình), trùng 95%"
+ },
+ {
+  "cu_id": "5a11c9db-e23f-4b21-b896-0149da72f86a",
+  "cu_ma": "BT.08.060.18",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01460",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "a = 072.01; b (qua I ∥ AC cắt BC tại D…), c chưa có · Kho Luyện đã có nội dung này: HLB01460 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "63f78e1b-5f06-426a-888d-a4f52bd83f2f",
+  "cu_ma": "BT.08.060.19",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "kho_luyen": {
+   "ma_bai": "HLB01462",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "a tính BC; b gần 073.01 (+ AH = MN); c (HBED hình thoi, HD ⊥ AE) chưa có · Kho Luyện đã có nội dung này: HLB01462 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "3d755518-3f50-4098-98d5-7cdab4dd055a",
+  "cu_ma": "BT.08.060.20",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "kho_luyen": {
+   "ma_bai": "HLB01463",
+   "mo_hinh": null,
+   "do_trung": 0.95
+  },
+  "ly_do": "a gần 073.01 (+ OH = OF); b, c (FD ⊥ BC, đồng dạng, DK ⊥ AB) chưa có · Kho Luyện đã có nội dung này: HLB01463 (chưa gán mô hình), trùng 95%"
+ },
+ {
+  "cu_id": "78db71c7-dff7-4226-846a-a591d8857848",
+  "cu_ma": "BT.08.060.21",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "kho_luyen": {
+   "ma_bai": "HLB01464",
+   "mo_hinh": null,
+   "do_trung": 0.99
+  },
+  "ly_do": "Đường cao AH, đối xứng qua H (ABEM hình thoi, M trực tâm) – gốc MH.073 thừa HD, HE; cân nhắc mô hình riêng · Kho Luyện đã có nội dung này: HLB01464 (chưa gán mô hình), trùng 99%"
+ },
+ {
+  "cu_id": "8818e186-5cb3-4602-b9e8-95e99c30faba",
+  "cu_ma": "BT.08.060.22",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01466",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "= 060.15 (bản khác): nút \"F đối xứng E qua M\" chưa có · Kho Luyện đã có nội dung này: HLB01466 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "6a359c0b-61fd-4e88-81d5-61ad3696ba09",
+  "cu_ma": "BT.08.060.23",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.102",
+  "kho_luyen": {
+   "ma_bai": "HLB01467",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "a = 072.01 (+ ME đường trung bình); b = 072.12 (đổi tên D↔K); c (P, I, J thẳng hàng) chưa có · Kho Luyện đã có nội dung này: HLB01467 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "bf1f6b60-430d-4097-8926-0021b9ab5aef",
+  "cu_ma": "BT.08.060.24",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01443",
+   "mo_hinh": null,
+   "do_trung": 0.93
+  },
+  "ly_do": "= 060.22 · Kho Luyện đã có nội dung này: HLB01443 (chưa gán mô hình), trùng 93%"
+ },
+ {
+  "cu_id": "20cff3de-12be-414a-ae62-d05e349bdfbe",
+  "cu_ma": "BT.08.060.25",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.102",
+  "ly_do": "Cũ cho E trung điểm AB (mới: chân ⊥); D đối xứng M qua F = K của MH.102; c (BH = HK = KD) chưa có"
+ },
+ {
+  "cu_id": "5b8af205-9d03-45c3-88a7-cf7f1b55a2fa",
+  "cu_ma": "BT.08.060.26",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.074",
+  "de_xuat_cha_ma": "MH.074",
+  "kho_luyen": {
+   "ma_bai": "HLB01440",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "Tam giác cân + dựng ⊥: AHCD HCN ≈ 074.01; b, c chưa có · Kho Luyện đã có nội dung này: HLB01440 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "561f87aa-05bc-4ba1-b87d-7b663edb1a89",
+  "cu_ma": "BT.08.060.27",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.116",
+  "kho_luyen": {
+   "ma_bai": "HLB01445",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "a = 073.01; b gần 073.02 (+ ΔAMC cân); c (K trên tia đối HI, AK phân giác) chưa có · Kho Luyện đã có nội dung này: HLB01445 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "d59e3d9f-a812-4352-8259-35314d437000",
+  "cu_ma": "BT.08.060.28",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.116",
+  "kho_luyen": {
+   "ma_bai": "HLB01450",
+   "mo_hinh": null,
+   "do_trung": 0.99
+  },
+  "ly_do": "a = 073.01, c = 073.02; b (tính BC, DE theo số) chưa có · Kho Luyện đã có nội dung này: HLB01450 (chưa gán mô hình), trùng 99%"
+ },
+ {
+  "cu_id": "7c65c3eb-8c23-4636-9a2b-f24ca4989a3a",
+  "cu_ma": "BT.08.060.29",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.074",
+  "de_xuat_cha_ma": "MH.074",
+  "kho_luyen": {
+   "ma_bai": "HLB01453",
+   "mo_hinh": null,
+   "do_trung": 0.99
+  },
+  "ly_do": "Δ cân tại B, H, M trung điểm: BKCH HCN ≈ 074.01 (đổi vai); a, c chưa có · Kho Luyện đã có nội dung này: HLB01453 (chưa gán mô hình), trùng 99%"
+ },
+ {
+  "cu_id": "58fccb5e-c779-4f75-9a69-6bd127994530",
+  "cu_ma": "BT.08.060.30",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 3,
+  "ung_vien_id": [
+   "38e77036-fe18-4770-bf78-a4b2e14d3127",
+   "16871f6e-74b0-4213-b431-44e08bb32dfb",
+   "6f20d00b-1fd8-4032-b530-6a4fff00f6ba",
+   "0a302c8f-a3d4-4c26-92f0-de22a52bbd23"
+  ],
+  "ung_vien_ma": [
+   "BT.08.073.01",
+   "BT.08.073.09",
+   "BT.08.073.11",
+   "BT.08.073.12"
+  ],
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.122",
+  "kho_luyen": {
+   "ma_bai": "HLB01454",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "gần khớp — chờ Thùy: a = 073.01, c = 073.11 (CFEK ↔ DECK), d = 073.12; b cũ hỏi CK ∥ AH, 073.09 hỏi AHKC là HBH · Kho Luyện đã có nội dung này: HLB01454 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "278677cc-2d94-4742-877f-6b40d3cffd0b",
+  "cu_ma": "BT.08.060.31",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.074",
+  "de_xuat_cha_ma": "MH.074",
+  "ly_do": "Δ cân, AM đường cao, N đối xứng M qua I: AMCN HCN ≈ 074.01; b, c chưa có"
+ },
+ {
+  "cu_id": "1d46990a-acf4-46bc-818a-fd6e88c67e73",
+  "cu_ma": "BT.08.060.32",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.073",
+  "de_xuat_cha_ma": "MH.073",
+  "kho_luyen": {
+   "ma_bai": "HLB01461",
+   "mo_hinh": null,
+   "do_trung": 0.95
+  },
+  "ly_do": "Thales (AN/NC = BH/HC), đường qua O song song – chưa có nốt · Kho Luyện đã có nội dung này: HLB01461 (chưa gán mô hình), trùng 95%"
+ },
+ {
+  "cu_id": "ddadefab-d52f-4272-98ba-bbca25f48f87",
+  "cu_ma": "BT.08.060.33",
+  "khoi": 8,
+  "mo_hinh_cu_ma": "MH.060",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.072",
+  "de_xuat_cha_ma": "MH.072",
+  "kho_luyen": {
+   "ma_bai": "HLB01435",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "a = 072.01; b, c (H trên tia EM, EF = 3MI) chưa có · Kho Luyện đã có nội dung này: HLB01435 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "243f2241-1aa3-4579-9573-015c4a64665f",
+  "cu_ma": "BT.09.010.01",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9a",
+  "mo_hinh_moi": "K9 · Tam giác vuông – tỉ số lượng giác, giải tam giác vuông (chưa có đường cao)",
+  "ly_do": "Giải tam giác vuông / tỉ số lượng giác, không dùng đường cao"
+ },
+ {
+  "cu_id": "9f20c027-ebc2-4945-a666-d3ff82ca8a5f",
+  "cu_ma": "BT.09.010.02",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9b",
+  "mo_hinh_moi": "K9 · Tam giác nhọn có đường cao – tỉ số lượng giác, diện tích (ΔMNP nhọn, đường cao MK)",
+  "kho_luyen": {
+   "ma_bai": "HLB00508",
+   "mo_hinh": null,
+   "do_trung": 0.89
+  },
+  "ly_do": "Tam giác nhọn MNP có đường cao MK · Kho Luyện đã có nội dung này: HLB00508 (chưa gán mô hình), trùng 89%"
+ },
+ {
+  "cu_id": "3a9cb1eb-0ae7-4ef1-8e64-b45f76c66d4c",
+  "cu_ma": "BT.09.010.03",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9b",
+  "mo_hinh_moi": "K9 · Tam giác nhọn có đường cao – tỉ số lượng giác, diện tích (ΔMNP nhọn, đường cao MK)",
+  "ly_do": "Tam giác nhọn MNP có đường cao MK"
+ },
+ {
+  "cu_id": "2124fd7f-b1c5-4286-ac70-2d9c474a5c5d",
+  "cu_ma": "BT.09.010.04",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9b",
+  "mo_hinh_moi": "K9 · Tam giác nhọn có đường cao – tỉ số lượng giác, diện tích (ΔMNP nhọn, đường cao MK)",
+  "kho_luyen": {
+   "ma_bai": "HLB00508",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác nhọn MNP có đường cao MK · Kho Luyện đã có nội dung này: HLB00508 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "fbda65e0-6a61-4678-925d-f2923f4ec72a",
+  "cu_ma": "BT.09.010.05",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9a",
+  "mo_hinh_moi": "K9 · Tam giác vuông – tỉ số lượng giác, giải tam giác vuông (chưa có đường cao)",
+  "kho_luyen": {
+   "ma_bai": "HLB00506",
+   "mo_hinh": null,
+   "do_trung": 0.87
+  },
+  "ly_do": "Giải tam giác vuông / tỉ số lượng giác, không dùng đường cao · Kho Luyện đã có nội dung này: HLB00506 (chưa gán mô hình), trùng 87%"
+ },
+ {
+  "cu_id": "bcc7c971-bde0-4e66-8b1b-fdec2b0bf07f",
+  "cu_ma": "BT.09.010.06",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.125",
+  "de_xuat_cha_ma": "MH.125",
+  "kho_luyen": {
+   "ma_bai": "HLB00506",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Có điểm trên cạnh góc vuông + đường vuông góc hạ xuống BD (khớp gốc MH.125: D ∈ AC, AK ⊥ BD; đổi tên) · Kho Luyện đã có nội dung này: HLB00506 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "cdebfa40-96ca-48fb-a14c-26fb5e6bdd57",
+  "cu_ma": "BT.09.010.07",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.079",
+  "de_xuat_cha_ma": "MH.079",
+  "kho_luyen": {
+   "ma_bai": "HLB00506",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "M trên BC, hình chiếu P, Q lên AB, AC (cực trị PQ) – khớp GT gốc MH.079 nhưng mô hình đó là K8; hoặc mô hình K9 mới · Kho Luyện đã có nội dung này: HLB00506 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "0f9429db-5d15-4e3a-a575-87350d6adc6c",
+  "cu_ma": "BT.09.010.08",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9a",
+  "mo_hinh_moi": "K9 · Tam giác vuông – tỉ số lượng giác, giải tam giác vuông (chưa có đường cao)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 0.86
+  },
+  "ly_do": "Giải tam giác vuông / tỉ số lượng giác, không dùng đường cao · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 86%"
+ },
+ {
+  "cu_id": "291c92cd-ef63-4fce-bde4-647d4457b8ef",
+  "cu_ma": "BT.09.010.09",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "d66e980b-de67-48be-bfd0-2ddc958aed74",
+  "cu_ma": "BT.09.010.10",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "ce439106-4e1e-4141-a8d8-1027c8f86850",
+  "cu_ma": "BT.09.010.11",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00490",
+   "mo_hinh": null,
+   "do_trung": 0.93
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00490 (chưa gán mô hình), trùng 93%"
+ },
+ {
+  "cu_id": "5df7ebf3-b808-4f9e-8a72-6af5fff984b3",
+  "cu_ma": "BT.09.010.12",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 8,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00490",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00490 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "4be59a08-da62-45fc-b16c-2902f01004ec",
+  "cu_ma": "BT.09.010.13",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.125",
+  "de_xuat_cha_ma": "MH.125",
+  "kho_luyen": {
+   "ma_bai": "HLB00490",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Có điểm trên cạnh góc vuông + đường vuông góc hạ xuống BD (khớp gốc MH.125: D ∈ AC, AK ⊥ BD; đổi tên) · Kho Luyện đã có nội dung này: HLB00490 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "e1f9eb41-c55e-4908-9c30-0dade54fe2f2",
+  "cu_ma": "BT.09.010.14",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9d",
+  "mo_hinh_moi": "K9 · Tam giác vuông – điểm M trên cạnh huyền, BK ⊥ AM, CH ⊥ AM",
+  "kho_luyen": {
+   "ma_bai": "HLB00496",
+   "mo_hinh": null,
+   "do_trung": 0.97
+  },
+  "ly_do": "M trên cạnh huyền, BK ⊥ AM (và CH ⊥ AM) · Kho Luyện đã có nội dung này: HLB00496 (chưa gán mô hình), trùng 97%"
+ },
+ {
+  "cu_id": "ca0025ba-68b4-4b49-b779-0500c52f1b7e",
+  "cu_ma": "BT.09.010.15",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9d",
+  "mo_hinh_moi": "K9 · Tam giác vuông – điểm M trên cạnh huyền, BK ⊥ AM, CH ⊥ AM",
+  "ly_do": "M trên cạnh huyền, BK ⊥ AM (và CH ⊥ AM)"
+ },
+ {
+  "cu_id": "7e9cff30-c5b3-4e93-a51e-d614dbf69d07",
+  "cu_ma": "BT.09.010.16",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9d",
+  "mo_hinh_moi": "K9 · Tam giác vuông – điểm M trên cạnh huyền, BK ⊥ AM, CH ⊥ AM",
+  "ly_do": "M trên cạnh huyền, BK ⊥ AM (và CH ⊥ AM)"
+ },
+ {
+  "cu_id": "406aaa4e-7214-4a34-bb4a-77587692bc80",
+  "cu_ma": "BT.09.010.17",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00467",
+   "mo_hinh": null,
+   "do_trung": 0.93
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00467 (chưa gán mô hình), trùng 93%"
+ },
+ {
+  "cu_id": "f58d4524-da50-4a0d-b6c6-ff58e7b81a1a",
+  "cu_ma": "BT.09.010.18",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 3,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "962d1b03-60ee-4980-8b8b-f7ef3a646976",
+  "cu_ma": "BT.09.010.19",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 7,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00467",
+   "mo_hinh": null,
+   "do_trung": 0.96
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00467 (chưa gán mô hình), trùng 96%"
+ },
+ {
+  "cu_id": "e7b8bf33-ea50-40bc-926d-2c0aa65380a6",
+  "cu_ma": "BT.09.010.20",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 7,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00467",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00467 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "fd819b35-ff38-4c65-bad4-258e98370ffa",
+  "cu_ma": "BT.09.010.21",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.010",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00467",
+   "mo_hinh": null,
+   "do_trung": 0.89
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00467 (chưa gán mô hình), trùng 89%"
+ },
+ {
+  "cu_id": "8c7a7818-33e9-48d8-a64c-e3bed5506b34",
+  "cu_ma": "BT.09.011.01",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "44c9fd82-932b-4716-ba25-17c005c9e3ef",
+  "cu_ma": "BT.09.011.02",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00412",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00412 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "bc878af7-8ab6-4d91-85c0-3616cc92b03f",
+  "cu_ma": "BT.09.011.03",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00412",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00412 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "302307b2-aa1c-4234-9b1b-32c25a525a46",
+  "cu_ma": "BT.09.011.04",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "36d84fa2-8a4e-4b5f-94e2-8d25ed895b0e",
+  "cu_ma": "BT.09.011.05",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "f9b4ff55-1051-4f72-bc6d-7377da7b0e9e",
+  "cu_ma": "BT.09.011.06",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00416",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00416 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "ae2da505-0eda-416f-937d-7ec3215ff516",
+  "cu_ma": "BT.09.011.07",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "86b0c5cd-9e8a-418c-b04c-0710edef639c",
+  "cu_ma": "BT.09.011.08",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00421",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00421 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "52a88ec0-c1c8-4220-ba9b-c01d32ff978f",
+  "cu_ma": "BT.09.011.09",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.124",
+  "de_xuat_cha_ma": "MH.124",
+  "kho_luyen": {
+   "ma_bai": "HLB00421",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Vuông + đường cao AH + M trung điểm BC (khớp gốc MH.124) · Kho Luyện đã có nội dung này: HLB00421 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "fd167275-ae28-4ae0-9292-9a43e5d9ffd2",
+  "cu_ma": "BT.09.011.10",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00421",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00421 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "80e3c1b9-28de-40e8-b8ae-a7c0da9d97b8",
+  "cu_ma": "BT.09.011.11",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "1582d7b9-6a1e-4ec1-8b5c-57be84bbc32b",
+  "cu_ma": "BT.09.011.12",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 6,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00524",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00524 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "20835c7d-d643-4510-9647-a912f3ec5655",
+  "cu_ma": "BT.09.011.13",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00524",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00524 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "27a28c14-7277-453f-a233-13a519124b38",
+  "cu_ma": "BT.09.011.14",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "ef05afa8-88f2-470d-a0a2-72f376240119",
+  "cu_ma": "BT.09.011.15",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 0.86
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 86%"
+ },
+ {
+  "cu_id": "14c9cb52-b372-4f86-a464-8b9234d549e1",
+  "cu_ma": "BT.09.011.16",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 2,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "045860a5-3cef-43f4-b387-734dde53303b",
+  "cu_ma": "BT.09.011.17",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00504",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00504 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "2bf383dc-7f60-420e-b1a9-8783f2977989",
+  "cu_ma": "BT.09.011.18",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9a",
+  "mo_hinh_moi": "K9 · Tam giác vuông – tỉ số lượng giác, giải tam giác vuông (chưa có đường cao)",
+  "kho_luyen": {
+   "ma_bai": "HLB00479",
+   "mo_hinh": null,
+   "do_trung": 0.9
+  },
+  "ly_do": "Giải tam giác vuông / tỉ số lượng giác, không dùng đường cao · Kho Luyện đã có nội dung này: HLB00479 (chưa gán mô hình), trùng 90%"
+ },
+ {
+  "cu_id": "18577965-99e7-4f35-9607-2b236102cca7",
+  "cu_ma": "BT.09.011.19",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00479",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00479 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "b6097351-69f7-4f03-94f0-0ec349265275",
+  "cu_ma": "BT.09.011.20",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.125",
+  "de_xuat_cha_ma": "MH.125",
+  "kho_luyen": {
+   "ma_bai": "HLB00479",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Có điểm trên cạnh góc vuông + đường vuông góc hạ xuống BD (khớp gốc MH.125: D ∈ AC, AK ⊥ BD; đổi tên) · Kho Luyện đã có nội dung này: HLB00479 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "19e92576-e8d7-4d8e-bda6-6e1b17badff1",
+  "cu_ma": "BT.09.011.21",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00492",
+   "mo_hinh": null,
+   "do_trung": 0.98
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00492 (chưa gán mô hình), trùng 98%"
+ },
+ {
+  "cu_id": "f082feab-05d0-4ebd-9bab-bd8e936780d4",
+  "cu_ma": "BT.09.011.22",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00492",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00492 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "56be69b3-6a30-477e-a094-da9d237394c2",
+  "cu_ma": "BT.09.011.23",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00487",
+   "mo_hinh": null,
+   "do_trung": 0.92
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00487 (chưa gán mô hình), trùng 92%"
+ },
+ {
+  "cu_id": "e925a1ed-e4fb-4e81-9cfa-a32d34dd2bb9",
+  "cu_ma": "BT.09.011.24",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00487",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00487 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "34befcf9-c86b-4530-b468-3ccc252f6264",
+  "cu_ma": "BT.09.011.25",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.125",
+  "de_xuat_cha_ma": "MH.125",
+  "kho_luyen": {
+   "ma_bai": "HLB00487",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Có điểm trên cạnh góc vuông + đường vuông góc hạ xuống BD (khớp gốc MH.125: D ∈ AC, AK ⊥ BD; đổi tên) · Kho Luyện đã có nội dung này: HLB00487 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "aa59dfc9-3d1b-4d44-aeeb-a1fa1aafc6e2",
+  "cu_ma": "BT.09.011.26",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 4,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00485",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00485 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "9a9359d9-b3e2-48ff-8cd3-ab09417b578b",
+  "cu_ma": "BT.09.011.27",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 5,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.124",
+  "de_xuat_cha_ma": "MH.124",
+  "kho_luyen": {
+   "ma_bai": "HLB00485",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Vuông + đường cao AH + M trung điểm BC (khớp gốc MH.124) · Kho Luyện đã có nội dung này: HLB00485 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "9d6bcd50-a4b9-4d66-a1a0-e166cec798e8",
+  "cu_ma": "BT.09.011.28",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.011",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.124",
+  "de_xuat_cha_ma": "MH.124",
+  "ly_do": "Vuông + đường cao AH + M trung điểm BC (khớp gốc MH.124)"
+ },
+ {
+  "cu_id": "edf60198-206e-423e-84d6-f3b4f660a16b",
+  "cu_ma": "BT.09.055.01",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu)"
+ },
+ {
+  "cu_id": "a5fb5992-538d-45ce-b63d-4a51d04180cb",
+  "cu_ma": "BT.09.055.02",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "d6f83160-6ce5-4e4d-b6a5-fcdbcb2e8ca4",
+  "cu_ma": "BT.09.055.03",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01157",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.87
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01157 (đã gán MH.128), trùng 87%"
+ },
+ {
+  "cu_id": "e87e1dc5-4fbd-4d3a-96ba-f67cd5ab48d2",
+  "cu_ma": "BT.09.055.04",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "f697d9dc-4b3d-47c7-8781-0fc78c74c717",
+  "cu_ma": "BT.09.055.05",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "e8833193-fea5-4ca8-811e-8734be80ea49",
+  "cu_ma": "BT.09.055.06",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "3de7bfe5-11a7-4a2e-9e0f-3df4d4869b96",
+  "cu_ma": "BT.09.055.07",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01157",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.97
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01157 (đã gán MH.128), trùng 97%"
+ },
+ {
+  "cu_id": "101c33d9-b057-45fe-93d9-761d68fc07b9",
+  "cu_ma": "BT.09.055.08",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01164",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.85
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01164 (đã gán MH.128), trùng 85%"
+ },
+ {
+  "cu_id": "26b0443a-fc7f-4b6e-a621-c4c9a4fe5dc7",
+  "cu_ma": "BT.09.055.09",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01162",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01162 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "30f71741-be9d-41e9-9da9-c9e84966ddcd",
+  "cu_ma": "BT.09.055.10",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01172",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01172 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "748486e6-3cd6-4f30-9ff8-cb8ccf3d5a74",
+  "cu_ma": "BT.09.055.11",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "755cf0fa-fd5b-4af6-a763-f3ed06632854",
+  "cu_ma": "BT.09.055.12",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01168",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01168 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "5eaf7c04-050b-4e6e-b64c-5f1d04d1c308",
+  "cu_ma": "BT.09.055.13",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01155",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.93
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01155 (đã gán MH.128), trùng 93%"
+ },
+ {
+  "cu_id": "5dcdc67d-d71a-4380-9381-4a2f95831c32",
+  "cu_ma": "BT.09.055.14",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "kho_luyen": {
+   "ma_bai": "HLB01174",
+   "mo_hinh": "MH.129",
+   "do_trung": 0.99
+  },
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu) · Kho Luyện đã có nội dung này: HLB01174 (đã gán MH.129), trùng 99%"
+ },
+ {
+  "cu_id": "1fb4868f-8bf2-43c2-8bfd-90e3a80af3ad",
+  "cu_ma": "BT.09.055.15",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01180",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.99
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01180 (đã gán MH.128), trùng 99%"
+ },
+ {
+  "cu_id": "2cb77f71-e855-448c-8beb-863e6f89894d",
+  "cu_ma": "BT.09.055.16",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "kho_luyen": {
+   "ma_bai": "HLB01194",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm · Kho Luyện đã có nội dung này: HLB01194 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "62a62d3d-b762-4199-b8b4-e6fee61c0fc2",
+  "cu_ma": "BT.09.055.17",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01182",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01182 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "6a21366b-cd30-4100-ac2e-e94e4641d11c",
+  "cu_ma": "BT.09.055.18",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01192",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.94
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01192 (đã gán MH.128), trùng 94%"
+ },
+ {
+  "cu_id": "06d35e56-29be-4022-91cb-ce4a1f61b5d1",
+  "cu_ma": "BT.09.055.19",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01159",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01159 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "679b258e-2e10-4b7d-9e16-3a46e55546a5",
+  "cu_ma": "BT.09.055.20",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01160",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.96
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01160 (đã gán MH.128), trùng 96%"
+ },
+ {
+  "cu_id": "15c6fa7b-cefc-4b17-83bc-6b1ea6db3675",
+  "cu_ma": "BT.09.055.21",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01186",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01186 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "04ee6c74-7d9b-4446-a91e-2b34b7cdc22c",
+  "cu_ma": "BT.09.055.22",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01170",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01170 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "a3970a56-ef3a-41f5-bf0e-2558a1175674",
+  "cu_ma": "BT.09.055.23",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01188",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01188 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "3d930b97-b93e-4b9f-a72c-b192fd89b13a",
+  "cu_ma": "BT.09.055.24",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01184",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.99
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01184 (đã gán MH.128), trùng 99%"
+ },
+ {
+  "cu_id": "03e092d0-7038-40d6-b7e4-e107bbf99ff5",
+  "cu_ma": "BT.09.055.25",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01153",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01153 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "a372690a-a75b-47e8-b485-a73885656b96",
+  "cu_ma": "BT.09.055.26",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01178",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.94
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01178 (đã gán MH.128), trùng 94%"
+ },
+ {
+  "cu_id": "2b2f0805-3bef-4fa5-932f-f9634398be16",
+  "cu_ma": "BT.09.055.27",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01190",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.98
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01190 (đã gán MH.128), trùng 98%"
+ },
+ {
+  "cu_id": "e48db1fe-07a4-458d-9bdd-0dc89a53009e",
+  "cu_ma": "BT.09.055.28",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "85581c80-fc38-4da4-8a66-5a32b70aa0b8",
+  "cu_ma": "BT.09.055.29",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "0ef05efb-6ab4-4e3b-b187-4abc69479269",
+  "cu_ma": "BT.09.055.30",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01166",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.98
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01166 (đã gán MH.128), trùng 98%"
+ },
+ {
+  "cu_id": "642fb333-7c3b-4611-a041-ac994803727a",
+  "cu_ma": "BT.09.055.31",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu)"
+ },
+ {
+  "cu_id": "3f9aad82-4b2c-4f65-ad6c-0d6118211def",
+  "cu_ma": "BT.09.055.32",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "4cd89063-9c47-4b84-8341-c38e2e7e7013",
+  "cu_ma": "BT.09.055.33",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "0467c940-71a2-4965-8ea2-f0309d92910a",
+  "cu_ma": "BT.09.055.34",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9f",
+  "mo_hinh_moi": "K9 · Nửa đường tròn đường kính AB – hình chiếu và dây (M, N trên nửa đường tròn, hình chiếu của M xuống AB, AN)",
+  "kho_luyen": {
+   "ma_bai": "HLB00870",
+   "mo_hinh": null,
+   "do_trung": 0.94
+  },
+  "ly_do": "Nửa đường tròn, hình chiếu, dây · Kho Luyện đã có nội dung này: HLB00870 (chưa gán mô hình), trùng 94%"
+ },
+ {
+  "cu_id": "b4f40319-6755-48f3-82ae-91f838d4cc1d",
+  "cu_ma": "BT.09.055.35",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB00871",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB00871 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "69fe56ca-b815-473c-9d55-ad262bc2af54",
+  "cu_ma": "BT.09.055.36",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "9c6581d3-6802-4874-8ea0-9575d2647c9e",
+  "cu_ma": "BT.09.055.37",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01172",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.96
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01172 (đã gán MH.128), trùng 96%"
+ },
+ {
+  "cu_id": "ed8388f7-917c-49b8-a860-3985ed7c0c63",
+  "cu_ma": "BT.09.055.38",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "09aec6ea-6d2a-46bc-a40f-fccefd5f8887",
+  "cu_ma": "BT.09.055.39",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB01164",
+   "mo_hinh": "MH.128",
+   "do_trung": 0.86
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB01164 (đã gán MH.128), trùng 86%"
+ },
+ {
+  "cu_id": "791677fd-4494-4eeb-b75c-43e596f54c6d",
+  "cu_ma": "BT.09.055.40",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu)"
+ },
+ {
+  "cu_id": "f5682835-2dd7-4a82-aa39-a35f9fb289fe",
+  "cu_ma": "BT.09.055.41",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "2bcac9a4-31a0-49af-a109-09b21cd2d5d8",
+  "cu_ma": "BT.09.055.42",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "cdca738a-3304-48c4-90d7-8e7b926631df",
+  "cu_ma": "BT.09.055.43",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu)"
+ },
+ {
+  "cu_id": "95171939-64b0-48c7-8a56-a5a3b9ad87d5",
+  "cu_ma": "BT.09.055.44",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "kho_luyen": {
+   "ma_bai": "HLB00940",
+   "mo_hinh": "MH.128",
+   "do_trung": 1
+  },
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128) · Kho Luyện đã có nội dung này: HLB00940 (đã gán MH.128), trùng 100%"
+ },
+ {
+  "cu_id": "59df6dc9-c7e7-45fd-a0a5-c94e8985661e",
+  "cu_ma": "BT.09.055.45",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "0b95b93f-eb5a-4ede-8c23-e5897fa4bb27",
+  "cu_ma": "BT.09.055.46",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.129",
+  "de_xuat_cha_ma": "MH.129",
+  "ly_do": "Đường kính AB + tiếp tuyến tại đầu mút + tiếp tuyến tại một điểm trên đường tròn (gốc MH.129; đề thiếu By thì là nhánh tối thiểu)"
+ },
+ {
+  "cu_id": "ddf95c33-8a5c-481b-a93d-6d869eda9fc3",
+  "cu_ma": "BT.09.055.47",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "a88fef46-5eb2-4a83-b9f3-82900c7ddefb",
+  "cu_ma": "BT.09.055.48",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "28584ea7-2125-4c5d-9b40-c81b500856bc",
+  "cu_ma": "BT.09.055.49",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "b89b62cf-3914-48f4-b471-42ccb2779389",
+  "cu_ma": "BT.09.055.50",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "5b69e517-32ce-4feb-ae3f-be8c712bfca3",
+  "cu_ma": "BT.09.055.51",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "9724fe74-0a4c-44ad-a279-d24a36faafa2",
+  "cu_ma": "BT.09.055.52",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "95b8171f-3a92-4953-9a41-bebd6b88160f",
+  "cu_ma": "BT.09.055.53",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MH.128",
+  "de_xuat_cha_ma": "MH.128",
+  "ly_do": "Từ một điểm ngoài kẻ hai tiếp tuyến (gốc MH.128)"
+ },
+ {
+  "cu_id": "3b0d60de-ef1e-49bd-b3c5-5cf2bf814675",
+  "cu_ma": "BT.09.055.54",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "e48bbca3-0c5c-44d1-a762-5ac22612b0ee",
+  "cu_ma": "BT.09.055.55",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "0d699360-3b23-406e-8da0-f03901ddfcf4",
+  "cu_ma": "BT.09.055.56",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "1b4d1129-f7a6-48f9-b210-507429787603",
+  "cu_ma": "BT.09.055.57",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 0,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9e",
+  "mo_hinh_moi": "K9 · Tam giác nhọn – các đường cao, bốn điểm cùng thuộc một đường tròn (AD, BE, CF đồng quy tại H)",
+  "ly_do": "Tam giác nhọn, các đường cao, đường tròn đi qua 4 điểm"
+ },
+ {
+  "cu_id": "0db6a36c-c470-4588-ba34-68f663b4f8f0",
+  "cu_ma": "BT.09.055.58",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu"
+ },
+ {
+  "cu_id": "361d93a1-c990-433b-b8c8-404a0c573cc6",
+  "cu_ma": "BT.09.055.59",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00472",
+   "mo_hinh": null,
+   "do_trung": 1
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00472 (chưa gán mô hình), trùng 100%"
+ },
+ {
+  "cu_id": "59f6d86d-6bfd-4030-a73b-3c9209f62296",
+  "cu_ma": "BT.09.055.60",
+  "khoi": 9,
+  "mo_hinh_cu_ma": "MH.055",
+  "so_luot_hs": 1,
+  "loai": 2,
+  "de_xuat_goc_ma": "MỚI-K9c",
+  "mo_hinh_moi": "K9 · Tam giác vuông có đường cao AH – hệ thức lượng (gốc của MH.124/MH.125: chưa có trung điểm M, chưa có điểm D; nhánh: HD ⊥ AB, HE ⊥ AC · phân giác BD · đường ⊥ BC tại B cắt AC tại D)",
+  "kho_luyen": {
+   "ma_bai": "HLB00472",
+   "mo_hinh": null,
+   "do_trung": 0.91
+  },
+  "ly_do": "Tam giác vuông có đường cao AH – hệ thức lượng; MH.124/MH.125 có thêm M / D nên không phải gốc tối thiểu · Kho Luyện đã có nội dung này: HLB00472 (chưa gán mô hình), trùng 91%"
+ }
+]
