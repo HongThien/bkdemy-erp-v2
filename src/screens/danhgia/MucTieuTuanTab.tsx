@@ -285,15 +285,17 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
 // ⇒ đúng giao diện PH (cùng component), xem được cả bản NHÁP trước khi bấm Công bố. Trang PH không đọc dữ liệu gì, chỉ hiển thị tờ ERP đưa.
 function XemNhuPh({ to, mon, ten, onDong }: { to: MttTo; mon: string; ten: string; onDong: () => void }) {
   const khung = useRef<HTMLIFrameElement>(null)
-  const nguon = new URL(PH_BASE).origin
+  // Nhận diện theo KHUNG (e.source = đúng iframe này), không theo tên miền: PH_BASE có thể chuyển hướng (www, tên miền Vercel…)
+  // ⇒ so origin cứng là im lặng không gửi (Thùy 17/11: "vẫn bị lỗi chờ dữ liệu"). Chỉ gửi vào đúng iframe của mình.
   useEffect(() => {
     const nghe = (e: MessageEvent) => {
-      if (e.origin !== nguon || (e.data as { loai?: string })?.loai !== 'mtt-san-sang') return
-      khung.current?.contentWindow?.postMessage({ loai: 'mtt-to', to, mon }, nguon)
+      const k = khung.current?.contentWindow
+      if (!k || e.source !== k || (e.data as { loai?: string })?.loai !== 'mtt-san-sang') return
+      k.postMessage({ loai: 'mtt-to', to, mon }, e.origin)
     }
     window.addEventListener('message', nghe)
     return () => window.removeEventListener('message', nghe)
-  }, [to, mon, nguon])
+  }, [to, mon])
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4" onClick={onDong}>
       <div className="flex flex-col items-center gap-2" onClick={(e) => e.stopPropagation()}>
