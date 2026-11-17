@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — chấm công: `spec-tro-giang.md` §7 · lương, chốt kỳ: `spec-luong-gay.md` §1, §7. Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Chấm công & lương Trợ giảng (CEO chốt 12–13/10/2026)
 
 > **Đích:** lương TA tính hoàn toàn từ ERP, không qua file sheet; **mọi hoạt động của TA đều được ghi lại**, kể cả hoạt động thay thế và ngoài quy trình chính; CEO xem lại được mọi đơn giá.

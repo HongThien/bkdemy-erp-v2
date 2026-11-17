@@ -1,6 +1,7 @@
 # spec-luong-gay.md — TÍNH LƯƠNG · TÍNH GẬY (spec #11 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — chờ Thùy duyệt.** Chưa phải nguồn đúng. Tới khi Thùy chốt, `spec-cham-cong-ta.md` §7–§8 (công thức lương TA) vẫn là nguồn đang dùng.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời từng câu — bảng §9.0, **thắng mọi dòng thân spec §1–§8 còn trái**, nhất là: GẬY KHÔNG TRỪ TIỀN · giáo viên khung lương cứng · chấm muộn ⇒ gậy, không cắt tiền). `spec-cham-cong-ta.md` đã chuyển `_luu-tru/`.
+> Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh — danh sách §9.0b.
 > Đây là spec về **tiền của nhân sự**: chỗ nào nguồn mâu thuẫn / nguồn ≠ DB / số không có ngày chốt ⇒ **không tự chọn**, ghi §9.1. Việc code / DB chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-cham-cong-ta.md` (§1 dòng 11–19, §7, §8 phần chốt kỳ, §9 — phần còn lại đã ở `spec-tro-giang.md` §7) ·
 > **`SPEC-tai-chinh-luong-gv-ta.md` — đọc từ nhánh CHƯA MERGE `origin/docs/tai-chinh-luong-gv-ta` (commit `53b1d3f8`, 03/09, 253 dòng; không checkout, không merge)** — lấy §3 (lương GV), §4 (lương TA), ghi nhãn **[nhánh 03/09]** ·
@@ -271,7 +272,7 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 | 2 | (hết cần — theo câu 1) | Không ai bị trừ tiền vì gậy, kể cả người không có lương trên ERP. Chốt tháng gậy (nếu giữ) chỉ để chốt điểm / đối chiếu. | — |
 | 3 | "giáo viên full time có vai học thuật – trưởng khối ko có lương bổ trợ, ko có lương gì khác" | **Giáo viên full-time giữ vai học thuật / trưởng khối: KHÔNG có tiền dạy bổ trợ, không có khoản nào khác ngoài lương của họ.** 247 buổi bổ trợ do giáo viên đứng không sinh công / tiền. | Giáo viên KHÔNG full-time (nếu có người như vậy dạy bổ trợ) thì sao? |
 | 4 | "GV có khung lương cứng" | **Giáo viên có khung lương CỨNG** — không tính theo thang buổi × sĩ số. Thang 03/09 (300–750 nghìn / buổi) bỏ. | Khung lương cứng lưu ở đâu — ngoài ERP (kế toán giữ) hay đưa số vào hệ? |
-| 5 | "Giáo viên bình thường – có 3 gv tiểu học như m nói" | Tôi hiểu: **ngoài khung lương cứng, chỉ còn 3 giáo viên tiểu học tính theo thang buổi 09/10** (§2.1) như đang làm. | xác nhận cách hiểu; 5 ý nhỏ (buổi bù · MT · sĩ số em vắng · 90/10 · đưa vào ERP) chỉ còn áp cho 3 người này |
+| 5 | "Giáo viên bình thường – có 3 gv tiểu học như m nói" → xác nhận **"Đúng"** | **Giáo viên hưởng KHUNG LƯƠNG CỨNG. Riêng 3 giáo viên tiểu học tính theo BUỔI theo thang 09/10** (§2.1: 350.000 → 650.000đ / buổi 1,5 giờ). 5 ý nhỏ (buổi bù · MT · sĩ số em vắng · 90/10 · đưa vào ERP) Thùy chưa trả lời riêng — giữ như đang làm cho 3 người này, không tự đổi. | khung lương cứng lưu ở đâu (ngoài ERP hay vào hệ) — hỏi khi cần đưa lương GV vào ERP |
 | 6 | "Bản 12/10 thay hẳn" | Thang TA gói / buổi theo sĩ số (03/09) là LỊCH SỬ; công thức 12/10 (mức lớp × 40 / 20 / 40) là luật. | — |
 | 7 | "Ko hiểu" → hỏi lại → **"cái này cố định số rồi mà nhỉ. tháng trước Trang nó tính lương r mà"** | Tiền bổ trợ của TA: công thức CỐ ĐỊNH, máy tự tính từ giờ bổ trợ đã duyệt — không hỏi gì thêm. Ô "bổ trợ" trong ĐIỂM hiệu suất (số của quản lý, không ra tiền) **lấy luôn số máy đã tính cho lương, không chốt tay**. | — (ghi nhận: ERP chưa có kỳ lương nào được bấm chốt, kể cả tháng 10 — Trang tính lương theo số tạm tính) |
 | 8 | OK | 314 đề xuất gậy tồn: **ân xá phần có hạn trước 01/11**, làm lại từ tháng 11. Về sau: hạn quyết 7 ngày, quá hạn về khay Trang, quá 30 ngày máy tự bỏ qua; **gậy tính theo tháng của việc trễ**. | — |
@@ -280,7 +281,18 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 | 11 | "ý là có deadline của BTVN mà" → làm rõ: **"Nếu TA chấm muộn thì bị phạt ở gậy, không trừ vào lương."** | **Chấm BTVN trễ hạn VẪN được tính tiền phần BTVN** (như code đang chạy: buổi có chấm trước ngày 3 tháng sau là tính). Trễ hạn chấm ⇒ **gậy**, không cắt phần tiền BTVN — không phạt hai lần. Chấm ET cũng vậy (trễ ⇒ gậy). | — |
 | 12 | ok | Gậy đã vào sổ mà tháng chưa chốt hiện "tạm trừ" trong bảng lương realtime; bỏ màn "Tiến trình" + điểm hiệu suất khỏi app TA khi bảng xong (giữ Xếp hạng · Gậy của tôi · Shopping). | — |
 
-### 9.1 Câu hỏi (xếp theo mức ảnh hưởng tới tiền người nhận)
+### 9.0b Việc code / DB phát sinh — CHỈ làm khi Thùy ra lệnh
+
+| # | Việc | Từ câu |
+|---|---|---|
+| 1 | **Gỡ tiền khỏi gậy:** `fn_gay_bang` / `fn_gay_bang_khoang` bỏ `tien_phat` 20.000đ · công thức lương TA (`_ta_luong_tinh`) bỏ trừ tiền phạt gậy · màn Gậy + `GAY_DON_GIA` ở client bỏ số tiền | 1 |
+| 2 | **Bịt quyền sổ gậy:** policy `gay_*` đang ALL cho mọi thành viên; `fn_gay_chot_thang` / `fn_tich_luy_chot_thang` không cổng — đưa đánh / gỡ / thu hồi / quyết đề xuất về hàm có cổng theo phạm vi | lệch 9.2 |
+| 3 | Ân xá đề xuất gậy có hạn trước 01/11 (đánh dấu bỏ qua, có lý do) · hạn quyết 7 ngày · quá 30 ngày máy tự bỏ qua · gậy tính theo tháng của việc trễ · máy quét gậy chuyển từ client xuống DB | 8 |
+| 4 | Thứ tự chốt tháng (ngày 1–3 · 4 · 5) + chặn chốt lương khi gậy tháng chưa chốt + dòng "điều chỉnh" cho kỳ đã trả; chốt kỳ tháng 10 (đủ điều kiện từ 05/11; 1 TA có dòng lớp thiếu mức) | 9 |
+| 5 | Ô bổ trợ của điểm hiệu suất đọc cùng số với lương; bỏ chốt tay `hsta_chot` | 7 |
+| 6 | Bảng lương realtime của TA: thêm "đã làm – được duyệt – gậy"; bỏ màn Tiến trình + điểm hiệu suất khỏi app TA | 12 |
+
+### 9.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 9.0 — giữ làm bối cảnh; "đề xuất" là trước khi Thùy chốt)
 
 1. **Gậy có trừ vào lương không, mỗi gậy bao nhiêu?**
    29/08: 1 gậy = 20.000đ, "chốt tháng chỉ để đối chiếu, không dính lương". 12/10: "sai thì gậy + phạt, không trần" — công thức lương trừ tiền phạt gậy đã chốt. 05/11: mỗi gậy −50 **điểm** hiệu suất (không phải tiền).
@@ -360,8 +372,9 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 **⇒ #19 `spec-tai-chinh.md` (chưa viết)** — từ `SPEC-tai-chinh-luong-gv-ta.md` [nhánh 03/09]: §1 thông số đầu vào (học phí, sĩ số, mặt bằng, quỹ) · §2 benchmark ngành + giá thị trường · §3.4 bảng lãi lớp theo sĩ số · §5 bảng chi phí GV + TA theo sĩ số và mốc "GV + TA ≤ 30 doanh thu" · §6 cơ cấu tài chính cơ sở ổn định, hai sổ P&L cơ sở / HQ · §7 việc treo số 1, 9–12 (số buổi / tháng, thuế, pháp nhân, phí HQ, sheet kịch bản) · bảng tỉ lệ lương / doanh thu của thang GV 2026. **Spec này không chép các số đó.**
 **⇒ #6:** ghế + phạm vi trưởng khối, hậu kiểm (cơ chế chung), KPI trưởng khối, Phòng làm việc. **⇒ #10:** khai / duyệt công, điểm hiệu suất, Tiến trình, tích luỹ – Shopping. **⇒ #7:** hạn H1 / H2, hạn nộp Báo cáo tuần. **⇒ #8:** việc OPS, tự đạt sau 7 ngày, học phí.
 
-## 11. Khi Thùy duyệt
+## 11. Đã làm khi Thùy chốt (17/11)
 
-- `spec-cham-cong-ta.md` → `_luu-tru/` (đã hết phần còn hiệu lực: §1–§6 ở #10, §7–§9 ở đây) · sửa dòng #11 + bảng B của `SPEC-INDEX.md` · CLAUDE.md §7 thêm dòng spec này · `spec-tro-giang.md` đầu file bỏ câu "giữ ở gốc tới khi #11…" · HANDOFF mục "Lương GV cấp 1" trỏ về §2.1.
-- **Nhánh `docs/tai-chinh-luong-gv-ta`: không merge** (HANDOFF trên nhánh đã cũ 2,5 tháng). Khi viết #19: chép nguyên văn file bản 03/09 vào `_luu-tru/SPEC-tai-chinh-luong-gv-ta.md` bằng `git show`, ghi rõ "bản 03/09, thiếu §3.1b + §3B". Xoá nhánh = theo Luật xoá, chỉ khi Thùy gật.
-- Thêm bảng "§9.0 THÙY CHỐT" từ câu trả lời §9.1 (như `spec-tro-giang.md` §12.0), rồi sửa thân spec cho khớp. Việc code / DB (§9.2, bảng lương realtime §6, công GV §2.4, thứ tự chốt §7) chờ lệnh riêng.
+- `spec-cham-cong-ta.md` → `_luu-tru/` (chấm công: `spec-tro-giang.md` §7 · lương: spec này §1, §7).
+- Nhánh `origin/docs/tai-chinh-luong-gv-ta` KHÔNG merge; bản 03/09 của nó là lịch sử (thang TA / GV theo buổi đã bị thay); phần cơ cấu tài chính chờ spec #19. Xoá nhánh chỉ khi Thùy gật.
+- `SPEC-INDEX.md` dòng #11 ✅ · CLAUDE.md §7 · `spec-tro-giang.md` trỏ sang.
+- **Còn nợ:** §9.0b (6 việc code, chờ lệnh) · khung lương cứng của giáo viên chưa có trong hệ · lương OPS / trưởng khối không có nguồn (§3 để trống).
