@@ -323,6 +323,8 @@
 - [Pilot Điểm-danh → ET — 7 User Story](https://app.notion.com/p/375d4530bcdb8084b38bead35fdf0be7)
 
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
+- **`SPEC-INDEX.md` — chỉ mục spec (17/11):** mảng nào đọc file nào · file cũ đã chuyển vào `_luu-tru/` thì nguồn đúng là gì.
+  Code/DEVLOG trỏ tên file không còn ở thư mục gốc ⇒ tra ở đây. File trong `_luu-tru/` là lịch sử, KHÔNG làm theo khi trái spec đang dùng.
 - **`spec-kien-truc.md` — ĐỌC BẮT BUỘC trước khi thêm BẢNG / HÀM / MÀN mới hoặc bảng tính sẵn mới** (Thùy chốt 13/11, sau audit scale 1.000 → 10.000 HS trung tâm):
   §0b định hướng BK → hệ quả kiến trúc · sổ gốc ↔ bảng tổng hợp (màn chỉ đọc số tính sẵn) · MỘT khuôn tính sẵn · hàm màn gọi chỉ tốn theo một người / một lớp,
   một màn một lượt gọi, có ngưỡng ms · quyền mặc định đóng · **bộ luật K1–K29 + phiếu 10 câu cho mọi tính năng mới (§9)** · **§12 danh mục thiết kế sai đã trả giá (đọc trước khi thiết kế)** · **§13 rà kiến trúc mỗi tháng** · lộ trình 7 đợt (§10; đợt 0 + 1 đã xong 13/11).
@@ -335,9 +337,8 @@
   "lượt học thật" (≥5/10) là nền chung cho chuỗi/nhiệm vụ/game · bản đồ phiêu lưu: chủ đề = lục địa, chuyên đề = khu vực, dạng = màn, cụm = quái.
 - **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · bù · đuổi).** Bản tổng hợp quyết định CEO + hiện trạng build (21/09):
   4 kênh phát hiện & ngưỡng · mức ưu tiên case · lịch trực khối+bậc, ca ≤3 em, không xếp lại · MCQ tuyệt đối · 2 chế độ ca 📱 app / 📄 giấy
-  (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc: `PLAN-botro-yeu.md`, `PLAN-botro-yeu-ca.md`.
+  (in phiếu, nhập kết quả, nộp test) · màn theo dõi · bản đồ code/DB · việc còn treo. Thiết kế gốc (lưu trữ): `_luu-tru/PLAN-botro-yeu.md`, `_luu-tru/PLAN-botro-yeu-ca.md`.
 - **`spec-lunar-cherry.md` — ĐỌC BẮT BUỘC trước khi sửa game gia đình Lunar Cherry** (BKGame/LunarCherry, repo riêng): Toán + Tiếng Anh (12 đảo, 6 chế độ theo kỹ năng, nói = máy nghe chấm rộng, kéo thả = nhìn rồi kéo, sticker, truyện, Thỏ Talking Tom), deploy Vercel, luật commit email.
-- `spec-kho-v2.md` — Kho Canonical Knowledge (Đại + Hình). Schema đã build vào DB v2.
 - **⭐⭐ `spec-giai-bai.md` — LUẬT DUY NHẤT cho MỌI việc đưa tài liệu vào kho: phân dạng · giải · kiểm · ghi (Thùy chốt 15/11, thay toàn bộ luật cũ).**
   ĐỌC TRƯỚC khi giải / nhập bài / giải đề cho BẤT KỲ khối, phần kiến thức nào (Đại · Hình · Hình giải tích), kể cả lệnh `/nhap-kho`, `/nhap-de-thi`.
   Phần A luật chung · Phần B luật từng khối × phần kiến thức · Phần C dây chuyền (phân dạng TRƯỚC rồi giải · Sonnet giải, Opus kiểm một phần ·
@@ -376,7 +377,6 @@
   **công thức chữ trước, thay số sau** · **cắt lát chỉ cho bài thiết diện; bài tròn xoay chia miền rồi lắp thẳng công thức** · **bài tròn xoay = MỘT trang chuyên đề `tron-xoay.html`,
   thêm bài = thêm một mục dữ liệu vào `tron-xoay-bai.js`** (địa chỉ cố định `?bai=<id>`, `&nhung=1` để sau gắn vào bài giải trên app HS) · khung chung `khung.js` + `khung.css` ·
   làm bài mới: đọc Phần A + Phần S (sổ tay, có phiếu cho các bài còn lại). Đã có những bài nào: `docs/hinh-3d/so-theo-doi.md`.
-- `erp-v2-ui-spec.md` — Shell UI/UX **view-first**: React + Vite + Zustand + Tailwind, **mock data, CHƯA đụng Supabase**. Đơn vị = ROLE; derive nav/queue theo role; 2 loại việc (vận hành derive / phát triển giao tay) tách hẳn. Kho = 1 lá "Bản đồ kiến thức" trong cây Admin.
 - Trigger tự duyệt hiện có `_bdm_tu_duyet_sau_gan` (mig 202611051930, Thùy 05/11): gán dạng mức cao nguon 'ai' + có đáp án ⇒ `da_duyet=true`. Điều kiện ĐÍCH (4 điều kiện, có nhân chứng đáp số) ở `spec-giai-bai.md` §C6 — code còn nợ §C10.
 - **`spec-hinh-cay-nhanh.md` — ĐỌC BẮT BUỘC trước khi đụng bản đồ HÌNH phần LUYỆN** (CEO duyệt mockup 14/10): mô hình = cây nhánh (thân 1.1→1.2, rẽ nhánh từ bài mẹ thành 1.6.1, 1.6.1.1) · số hiển thị = vị trí (suy), mã bất biến · giả thiết hiệu lực = đường gốc→nhánh (bỏ luật 17/08) · xếp chỗ CHỈ xuống/sang phải, nhánh phía sau ưu tiên hàng 1, nhánh trước không đè · thẻ giả thiết thêm lục giác khác thẻ bài · popup đề·hình·đáp án. Mockup: `docs/mockup-hinh-mo-hinh-2tab.html`. Phần tách ý/nhập kho: `spec-hinh-luyen.md`.
 - **`spec-che-do-game.md` — ĐỌC BẮT BUỘC trước khi làm BẤT KỲ chế độ game học nào (mọi môn)** (Thùy chốt 03/10): 6 chế độ giữ nguyên, chỉ đổi content ·
@@ -401,9 +401,6 @@
   Phần 1 Kiến thức mới (từ giáo trình) + Phần 2 Ôn tập (từ lượt chốt bổ trợ) + Việc của con (ET · BTVN · test sau giờ · bổ trợ, nhãn Tốt/Tạm ổn/Chưa tốt) ·
   đánh giá theo NHÓM bài, mục tiêu 80% = mastery · cửa sổ lùi một buổi, lần đo thuộc tuần chấm xong · KHÔNG có màn chốt mới · app HS + app phụ huynh realtime ·
   tab trung tâm ở Dashboard học tập + Phòng trưởng khối · sổ chốt tuần bất biến 00:00 thứ Hai · đã chốt hết (§12).
-- **`spec-bao-cao-tuan.md` — ĐÃ GỘP vào `spec-van-hanh-tuan.md` §5, đóng băng làm lịch sử** (Thùy chốt 03/11): trưởng khối nộp chiều T2 (kỳ T2→CN tuần trước) · bấm Nộp là SNAP, không tính lại ·
-  cá nhân = task phát triển (đã duyệt tự điền) · quản lý = ET · BTVN · dạng yếu · HS yếu (≥1 dạng) · bổ trợ Yếu+Nhẹ · trend 4 tuần, toàn khối + từng lớp · tự viết Plans/Progress/Problems ·
-  dạng yếu tại mốc D = 1 hàm tính ngược (chỉ lần đo ≤ D), chụp tự động T2 00:00 · nộp trễ ⇒ gậy · trưởng bộ môn duyệt/trả lại → ghép Báo cáo Chuyên môn tuần theo môn → chiếu TV cho CEO.
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·
   Tổng kết tuần = dashboard theo BẢNG, ngưỡng của mọi chỉ số là **thường đạt** (trung bình 8 tuần gần nhất đã lọc nhiễu), trình chiếu mỗi bảng một màn ·
