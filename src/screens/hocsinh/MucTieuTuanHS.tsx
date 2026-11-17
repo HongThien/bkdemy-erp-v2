@@ -136,7 +136,7 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
 
       <div className="grid items-start gap-4 lg:grid-cols-[1.45fr_1fr]">
         <div className="flex flex-col gap-3">
-          <Phan ten="Phần 1 · Bài trên lớp" phu={`${p1.length} nhóm bài`} rong="Tuần này chưa có bài trên lớp.">
+          <Phan ten="Trên lớp" phu={`${p1.length} nhóm bài`} rong="Tuần này chưa có bài trên lớp.">
             {p1.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon} />)}
             {to.sap_hoc && (
               <p className="px-1 text-[13px]" style={{ color: MAU.muted }}>
@@ -144,7 +144,7 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
               </p>
             )}
           </Phan>
-          <Phan ten="Phần 2 · Ôn tập kiến thức" phu={`${p2.length} nhóm bài`} rong="Tuần này em không có nhóm ôn tập.">
+          <Phan ten="Ôn tập" phu={`${p2.length} nhóm bài`} rong="Tuần này em không có nhóm ôn tập.">
             {p2.map((n) => <DongNhom key={n.ma} n={n} mo={mo === n.ma} onBam={() => setMo(mo === n.ma ? null : n.ma)} onMo={onMo} mon={to.mon}
               kiemTra={to.viec.filter((v) => v.loai === 'sau_gio' || v.loai === 'bo_tro')} />)}
           </Phan>
@@ -158,7 +158,7 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
 
         <TheHS className="p-4">
           <div className="flex items-baseline gap-2">
-            <span className="flex-1 text-[17px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Việc của con tuần này</span>
+            <span className="flex-1 text-[17px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Hoạt động tuần này</span>
             <span className="text-[13px]" style={{ color: MAU.muted }}>{to.viec_xong}/{to.viec_tong} đã làm</span>
           </div>
           {to.viec.length === 0 && <p className="mt-2 text-[14px]" style={{ color: MAU.muted }}>Tuần này chưa có việc nào.</p>}

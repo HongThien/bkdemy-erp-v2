@@ -2,7 +2,7 @@
 // Xác thực bằng JWT staff ERP (ph-app verify qua Supabase ERP). ERP chỉ đọc, không giữ secret.
 import { supabase } from './supabase'
 
-const PH_BASE = (import.meta.env.VITE_PH_ADMIN_URL as string | undefined) || 'https://ph.bkacademy.edu.vn'
+export const PH_BASE = (import.meta.env.VITE_PH_ADMIN_URL as string | undefined) || 'https://ph.bkacademy.edu.vn'
 
 // Màn hình trong app PH (khoá route `s` của PhApp.tsx bên bkdemy-ph-app).
 export type PhManHinh =

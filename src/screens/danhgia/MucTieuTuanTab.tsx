@@ -7,6 +7,7 @@ import {
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC, NHAN_MUC_NHOM,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
 } from '../../lib/mucTieuTuan'
+import { PH_BASE } from '../../lib/ph-login'
 
 // rời tab quay lại = đúng chỗ cũ (CLAUDE §React)
 const NHO: { tuan: string | null; khoa: string; data: MttTrungTam | null; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null } = { tuan: null, khoa: '', data: null, lop: null, hs: null }
@@ -200,6 +201,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
   const [loi, setLoi] = useState<string | null>(null)
   const [xem, setXem] = useState<'tuan' | 'cac_tuan'>('tuan')
   const [cac, setCac] = useState<MttTuanCu[] | null>(null)
+  const [xemPh, setXemPh] = useState(false)
   // bấm tab nào gọi tab đó (§2.0): các tuần đã chốt chỉ đọc khi mở
   useEffect(() => {
     if (xem !== 'cac_tuan' || cac) return
@@ -227,11 +229,14 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
               {to?.da_chot_so && ' · sổ đã chốt'}
             </div>
           </div>
+          {to && <button onClick={() => setXemPh(true)} title="Xem đúng màn phụ huynh sẽ thấy, khung điện thoại dọc (kể cả bản nháp chưa công bố)"
+            className="h-8 rounded-md bg-white px-3 text-[12.5px] font-semibold text-indigo-700 ring-1 ring-indigo-200 hover:bg-indigo-50">📱 Xem như phụ huynh</button>}
           <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
             <button onClick={() => setXem('tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Tuần này</button>
             <button onClick={() => setXem('cac_tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'cac_tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Các tuần đã chốt</button>
           </div>
         </div>
+        {xemPh && to && <XemNhuPh to={to} mon={mon} ten={hs.ten} onDong={() => setXemPh(false)} />}
         {xem === 'cac_tuan' && <CacTuanEm ds={cac} />}
         {xem === 'tuan' && loi && <p className="mt-4 text-[13px] text-slate-500">{loi}</p>}
         {xem === 'tuan' && !to && !loi && <p className="mt-4 text-[13px] text-slate-500">Đang tải…</p>}
@@ -246,7 +251,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
             <div className="grid gap-4 xl:grid-cols-2">
               {([1, 2] as const).map((ph) => (
                 <div key={ph}>
-                  <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Phần 1 · Bài trên lớp' : 'Phần 2 · Ôn tập kiến thức'}</div>
+                  <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Trên lớp' : 'Ôn tập'}</div>
                   {to.nhom.filter((n) => n.phan === ph).length === 0 && <p className="text-[12.5px] text-slate-400">Không có nhóm.</p>}
                   {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} hsId={hs.id} mon={mon} />)}
                   {ph === 1 && to.sap_hoc && <p className="text-[12px] text-slate-500">Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào tuần sau (BTVN chấm trước buổi kế).</p>}
@@ -264,7 +269,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
               </div>
             )}
             <div>
-              <div className="mb-1.5 text-[13px] font-bold text-slate-700">Việc của em tuần này</div>
+              <div className="mb-1.5 text-[13px] font-bold text-slate-700">Hoạt động tuần này</div>
               <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
                 {to.viec.length === 0 && <p className="px-3 py-2 text-[12.5px] text-slate-400">Chưa có việc.</p>}
                 {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}
@@ -272,6 +277,35 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
             </div>
           </div>
         )}
+    </div>
+  )
+}
+
+// 📱 XEM NHƯ PHỤ HUYNH (Thùy 17/11): nhúng trang /xem-mtt của app PH trong khung điện thoại dọc, đưa sẵn tờ của em qua postMessage
+// ⇒ đúng giao diện PH (cùng component), xem được cả bản NHÁP trước khi bấm Công bố. Trang PH không đọc dữ liệu gì, chỉ hiển thị tờ ERP đưa.
+function XemNhuPh({ to, mon, ten, onDong }: { to: MttTo; mon: string; ten: string; onDong: () => void }) {
+  const khung = useRef<HTMLIFrameElement>(null)
+  const nguon = new URL(PH_BASE).origin
+  useEffect(() => {
+    const nghe = (e: MessageEvent) => {
+      if (e.origin !== nguon || (e.data as { loai?: string })?.loai !== 'mtt-san-sang') return
+      khung.current?.contentWindow?.postMessage({ loai: 'mtt-to', to, mon }, nguon)
+    }
+    window.addEventListener('message', nghe)
+    return () => window.removeEventListener('message', nghe)
+  }, [to, mon, nguon])
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4" onClick={onDong}>
+      <div className="flex flex-col items-center gap-2" onClick={(e) => e.stopPropagation()}>
+        <div className="flex w-[406px] items-center gap-2 text-white">
+          <span className="flex-1 truncate text-[13px] font-semibold">📱 Phụ huynh của {ten} sẽ thấy{!to.chot ? ' · NHÁP — chưa công bố, PH chưa thấy' : ''}</span>
+          <button onClick={onDong} className="h-7 w-7 rounded-full bg-white/15 text-[14px] hover:bg-white/25" aria-label="Đóng">✕</button>
+        </div>
+        <div className="rounded-[44px] bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-700">
+          <iframe ref={khung} src={`${PH_BASE}/xem-mtt`} title="Xem như phụ huynh"
+            className="block rounded-[36px] bg-[#f2f2f7]" style={{ width: 390, height: 'min(844px, calc(100vh - 90px))' }} />
+        </div>
+      </div>
     </div>
   )
 }
