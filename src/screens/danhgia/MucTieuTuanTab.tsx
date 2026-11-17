@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
   mttTrungTam, mttCuaHs, mttViecDang, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, nhanHoc,
-  NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC, NHAN_MUC_NHOM,
+  NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT, type MttViecDang,
 } from '../../lib/mucTieuTuan'
 import { PH_BASE } from '../../lib/ph-login'
@@ -329,9 +329,9 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
     <div className="mb-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5">
       <div className="flex items-center gap-1.5">
         <span className="min-w-0 flex-1 truncate text-[12.5px] font-semibold text-slate-800" title={`${n.ten}${n.phan === 1 && nhanHoc(n.ngay_hoc) ? ` · ${nhanHoc(n.ngay_hoc)}` : ''}`}>{n.ten}</span>
-        {n.dat_mt && <span className="shrink-0 rounded-full bg-emerald-600 px-1.5 py-0.5 text-[10.5px] font-bold text-white" title="Đạt mục tiêu tuần — được đếm vào tiến độ">✓ Mục tiêu</span>}
-        {n.p == null || !n.muc ? <span className="shrink-0 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">Chưa đo</span>
-          : <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
+        {/* nhãn = ĐẠT / CHƯA ĐẠT MỤC TIÊU TUẦN (Thùy 17/11 khuya) — cờ dat_mt DB tính sẵn, cùng điều kiện với tiến độ ⇒ đếm "Đạt" là ra % */}
+        {n.p == null ? <span className="shrink-0 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">Chưa đo</span>
+          : n.dat_mt != null && <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.dat_mt ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`} title="So với mục tiêu tuần">{n.dat_mt ? 'Đạt' : 'Chưa đạt'}</span>}
       </div>
       <div className="mt-1 flex items-center gap-2.5">
         <div className="relative h-[16px] w-[38%] shrink-0">

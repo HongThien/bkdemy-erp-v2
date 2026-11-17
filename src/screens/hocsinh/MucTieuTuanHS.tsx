@@ -31,13 +31,12 @@ function NenSang({ mon, children }: { mon: string | null; children: ReactNode })
 }
 import {
   mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh, nhanHoc,
-  NHAN_MUC, NHAN_TT, TEN_VIEC, NHAN_MUC_NHOM, type MucNhom,
+  NHAN_MUC, NHAN_TT, TEN_VIEC,
   type MttKetQua, type MttTo, type MttNhom, type MttViec, type MttTop, type MttTuanCu, type MucDanhGia,
 } from '../../lib/mucTieuTuan'
 
 // nền nhạt NGỮ NGHĨA, trong suốt ⇒ đọc được trên skin sáng lẫn tối (y khuôn ThongTinHocTap)
 const NEN = { dung: 'rgba(34,160,107,0.16)', sai: 'rgba(229,72,77,0.16)', canhBao: 'rgba(224,144,30,0.16)' }
-const mauMucNhom = (m: MucNhom) => (m === 'dat' ? { nen: NEN.dung, chu: MAU.dung } : m === 'can_luyen' ? { nen: NEN.canhBao, chu: MAU.canhBao } : { nen: NEN.sai, chu: MAU.sai })
 const mauPct = (p: number | null) => (p == null ? MAU.muted : p >= 80 ? MAU.dung : p >= 50 ? MAU.canhBao : MAU.sai)
 const mauMuc = (m: MucDanhGia | null) => (m === 'tot' ? MAU.dung : m === 'tam_on' ? MAU.canhBao : m === 'chua_tot' ? MAU.sai : MAU.muted)
 const nenMuc = (m: MucDanhGia | null) => (m === 'tot' ? NEN.dung : m === 'tam_on' ? NEN.canhBao : m === 'chua_tot' ? NEN.sai : MAU.surface2)
@@ -243,9 +242,9 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
           </span>
           {c && <span className="text-[12.5px] font-bold" style={{ color: mauChenh(c.huong) }}>{c.chu}</span>}
           <span className="text-[18px] font-extrabold" style={{ color: mauPct(n.p) }}>{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
-          {n.dat_mt && <span className="px-2 py-0.5 text-[12.5px] font-bold" style={{ background: NEN.dung, color: MAU.dung, border: `1.5px solid ${MAU.dung}`, borderRadius: 'var(--sk-radius-pill)' }} title="Đạt mục tiêu tuần">✓ Mục tiêu</span>}
-          {n.p != null && n.muc && (
-            <span className="px-2 py-0.5 text-[12.5px] font-bold" style={{ background: mauMucNhom(n.muc).nen, color: mauMucNhom(n.muc).chu, borderRadius: 'var(--sk-radius-pill)' }}>{NHAN_MUC_NHOM[n.muc]}</span>
+          {/* nhãn = Đạt / Chưa đạt MỤC TIÊU TUẦN (Thùy 17/11 khuya) — cờ dat_mt do DB tính sẵn, cùng điều kiện với tiến độ */}
+          {n.p != null && n.dat_mt != null && (
+            <span className="px-2 py-0.5 text-[12.5px] font-bold" style={{ background: n.dat_mt ? NEN.dung : NEN.canhBao, color: n.dat_mt ? MAU.dung : MAU.canhBao, borderRadius: 'var(--sk-radius-pill)' }} title="So với mục tiêu tuần">{n.dat_mt ? 'Đạt' : 'Chưa đạt'}</span>
           )}
           <span className="text-[14px]" style={{ color: MAU.muted, transform: mo ? 'rotate(180deg)' : 'none' }}>⌄</span>
         </div>
