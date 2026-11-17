@@ -248,33 +248,29 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
               <span className="rounded-lg bg-slate-50 px-3 py-1.5">Hạng <b>{to.hang ?? '—'}</b>{to.so_hs ? ` / ${to.so_hs}` : ''}</span>
               <span className="rounded-lg bg-slate-50 px-3 py-1.5">Tự luyện <b>{to.tu_luyen.so_cau}</b> câu{to.tu_luyen.pct != null ? ` · đúng ${to.tu_luyen.pct}%` : ''}</span>
             </div>
-            <div className="grid gap-4 xl:grid-cols-2">
+            <div className="grid gap-3 lg:grid-cols-3">
               {([1, 2] as const).map((ph) => (
-                <div key={ph}>
-                  <div className="mb-1.5 text-[13px] font-bold text-slate-700">{ph === 1 ? 'Trên lớp' : 'Ôn tập'}</div>
+                <div key={ph} className="min-w-0">
+                  <div className={`mb-2 rounded-lg px-3 py-1.5 text-[13px] font-bold text-white ${ph === 1 ? 'bg-blue-600' : 'bg-orange-500'}`}>{ph === 1 ? 'Trên lớp' : 'Ôn tập'}</div>
                   {to.nhom.filter((n) => n.phan === ph).length === 0 && <p className="text-[12.5px] text-slate-400">Không có nhóm.</p>}
                   {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} hsId={hs.id} mon={mon} />)}
-                  {ph === 1 && to.sap_hoc && <p className="text-[12px] text-slate-500">Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào tuần sau (BTVN chấm trước buổi kế).</p>}
+                  {ph === 1 && to.sap_hoc && <p className="text-[11.5px] text-slate-500">Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào tuần sau (BTVN chấm trước buổi kế).</p>}
+                  {ph === 2 && to.xep_hang_cho.length > 0 && <p className="mt-1 text-[11.5px] text-slate-500"><b className="text-slate-700">Đang xếp hàng:</b> {to.xep_hang_cho.map((x) => `${x.ten} ${x.p}%`).join(' · ')}</p>}
                 </div>
               ))}
+              <div className="min-w-0">
+                <div className="mb-2 rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-bold text-white">Hoạt động tuần này</div>
+                <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
+                  {to.viec.length === 0 && <p className="px-3 py-2 text-[12.5px] text-slate-400">Chưa có việc.</p>}
+                  {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}
+                </div>
+              </div>
             </div>
             {(to.them_sau_chot?.length ?? 0) > 0 && (
               <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900">
                 <b>Thêm sau khi công bố</b> (không vào mục tiêu tuần này, học sinh không thấy): {to.them_sau_chot!.map((x) => `${x.ten} (phần ${x.phan})`).join(' · ')}
               </div>
             )}
-            {to.xep_hang_cho.length > 0 && (
-              <div className="space-y-1 rounded-lg bg-slate-50 px-3 py-2 text-[12.5px] text-slate-600">
-                {to.xep_hang_cho.length > 0 && <p><b className="text-slate-800">Đang xếp hàng:</b> {to.xep_hang_cho.map((x) => `${x.ten} ${x.p}%`).join(' · ')}</p>}
-              </div>
-            )}
-            <div>
-              <div className="mb-1.5 text-[13px] font-bold text-slate-700">Hoạt động tuần này</div>
-              <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
-                {to.viec.length === 0 && <p className="px-3 py-2 text-[12.5px] text-slate-400">Chưa có việc.</p>}
-                {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}
-              </div>
-            </div>
           </div>
         )}
     </div>
@@ -324,11 +320,11 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
   }, [moDang]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className="mb-1.5 rounded-lg border border-slate-200 px-3 py-2">
-      <div className="flex items-baseline gap-2">
-        <span className="flex-1 text-[13px] font-semibold text-slate-800">{n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[11.5px] font-normal text-slate-500">· {nhanHoc(n.ngay_hoc)}</span>}</span>
-        {c && <span className={`text-[11.5px] font-bold ${mauChenh(c.huong)}`}>{c.chu}</span>}
-        <span className="text-[13px] font-bold text-slate-900">{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
-        {n.p != null && n.muc && <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
+      <div className="flex items-start gap-1.5">
+        <span className="min-w-0 flex-1 text-[12.5px] font-semibold leading-snug text-slate-800">{n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[11.5px] font-normal text-slate-500">· {nhanHoc(n.ngay_hoc)}</span>}</span>
+        {c && <span className={`shrink-0 text-[11px] font-bold ${mauChenh(c.huong)}`}>{c.chu}</span>}
+        <span className="shrink-0 text-[13px] font-bold text-slate-900">{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
+        {n.p != null && n.muc && <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
       </div>
       <div className="relative mt-1 h-[34px]">
         <div className="absolute inset-x-0 top-[12px] h-[7px] overflow-hidden rounded-full bg-slate-100">
@@ -371,14 +367,13 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
 
 function DongViec({ v }: { v: MttViec }) {
   return (
-    <div className="flex items-center gap-3 px-3 py-2">
+    <div className="flex items-center gap-2 px-2.5 py-1.5">
       <span className="min-w-0 flex-1">
-        <span className="block text-[13px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi công bố</span>}</span>
-        <span className="block text-[11.5px] text-slate-500">{[moTaViec(v), v.ghi_chu].filter(Boolean).join(' · ')}</span>
+        <span className="block text-[12.5px] font-semibold text-slate-800">{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}{v.them_sau && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-amber-800">thêm sau khi công bố</span>}</span>
+        <span className="block text-[11px] text-slate-500">{[moTaViec(v), v.ghi_chu, v.thai_do ? (NHAN_THAI_DO[v.thai_do] ?? v.thai_do) : null].filter(Boolean).join(' · ')}</span>
       </span>
-      {v.thai_do && <span className="text-[11px] text-slate-500">{NHAN_THAI_DO[v.thai_do] ?? v.thai_do}</span>}
-      <span className="text-[13px] font-bold text-slate-800">{v.pct == null ? '' : `${v.pct}%`}</span>
-      <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${v.muc ? mauMuc(v.muc) : 'bg-slate-100 text-slate-500'}`}>{v.muc ? NHAN_MUC[v.muc] : NHAN_TT[v.tt]}</span>
+      <span className="shrink-0 text-[12.5px] font-bold text-slate-800">{v.pct == null ? '' : `${v.pct}%`}</span>
+      <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${v.muc ? mauMuc(v.muc) : 'bg-slate-100 text-slate-500'}`}>{v.muc ? NHAN_MUC[v.muc] : NHAN_TT[v.tt]}</span>
     </div>
   )
 }
@@ -455,7 +450,7 @@ function KhongGianLop({ lops, lop, hs, mon, tuan, onChonLop, onChonHs, onVe }: {
         <button onClick={onVe} className="mr-1 h-7 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">← Tổng quan khối</button>
         {lops.map((l) => <button key={l.lop_id} onClick={() => onChonLop({ id: l.lop_id, ten: l.ten_lop })} className={chip(lop?.id === l.lop_id)}>{l.ten_lop}</button>)}
       </div>
-      <div className="grid gap-3 lg:h-[calc(100vh-250px)] lg:min-h-[460px] lg:grid-cols-[minmax(300px,380px)_minmax(0,1fr)]">
+      <div className="grid gap-3 lg:h-[calc(100vh-250px)] lg:min-h-[460px] lg:grid-cols-[minmax(200px,240px)_minmax(0,1fr)]">
         <div className="overflow-y-auto rounded-xl border border-slate-200 bg-white">
           {lop ? <DanhSachEm lop={lop} tuan={tuan} chon={hs?.id ?? null} onChon={onChonHs} />
             : <p className="p-4 text-[13px] text-slate-500">Chọn một lớp ở trên để xem danh sách học sinh.</p>}
@@ -482,23 +477,23 @@ function DanhSachEm({ lop, tuan, chon, onChon }: { lop: { id: string; ten: strin
   }, [khoa]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div>
-      <div className="sticky top-0 z-10 border-b border-slate-100 bg-white px-4 py-2.5">
+      <div className="sticky top-0 z-10 border-b border-slate-100 bg-white px-3 py-2">
         <div className="text-[14px] font-bold text-slate-800">Lớp {lop.ten}{ds ? ` · ${ds.length} em` : ''}</div>
-        <div className="text-[11.5px] text-slate-500">Tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))} · tiến độ = % đi tới mục tiêu tuần của chính em</div>
+        <div className="text-[11px] text-slate-500" title="Tiến độ = % đi tới mục tiêu tuần của chính em">Tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))} · % tiến độ</div>
       </div>
       {loi && <p className="p-4 text-[13px] text-rose-600">{loi}</p>}
       {!ds && !loi && <p className="p-4 text-[13px] text-slate-500">Đang tải…</p>}
       {ds && ds.length === 0 && <p className="p-4 text-[13px] text-slate-500">Lớp chưa có em nào.</p>}
       {ds?.map((e) => (
         <button key={e.id} onClick={() => onChon({ id: e.id, ten: e.ten })}
-          className={`flex w-full items-center gap-2 border-b border-slate-100 px-4 py-2 text-left hover:bg-indigo-50/50 ${chon === e.id ? 'bg-indigo-50 ring-1 ring-inset ring-indigo-200' : ''}`}>
+          className={`flex w-full items-center gap-2 border-b border-slate-100 px-3 py-1.5 text-left hover:bg-indigo-50/50 ${chon === e.id ? 'bg-indigo-50 ring-1 ring-inset ring-indigo-200' : ''}`}>
           <span className="min-w-0 flex-1">
-            <span className={`block truncate text-[13.5px] font-semibold ${chon === e.id ? 'text-indigo-800' : 'text-slate-800'}`}>{e.ten}</span>
-            <span className="block text-[11.5px] text-slate-500">
-              {e.co_to ? `Việc ${e.viec_xong ?? 0}/${e.viec_tong ?? 0} · ${e.so_nhom ?? 0} nhóm · nợ ${e.so_no ?? 0}${e.hang ? ` · #${e.hang}` : ''}` : 'chưa có tờ'}
+            <span className={`block truncate text-[13px] font-semibold ${chon === e.id ? 'text-indigo-800' : 'text-slate-800'}`}>{e.ten}</span>
+            <span className="block truncate text-[11px] text-slate-500" title={e.co_to ? `${e.so_nhom ?? 0} nhóm${e.hang ? ` · hạng #${e.hang}` : ''}` : undefined}>
+              {e.co_to ? `Việc ${e.viec_xong ?? 0}/${e.viec_tong ?? 0} · nợ ${e.so_no ?? 0}` : 'chưa có tờ'}
             </span>
           </span>
-          {e.co_to && <span className="text-right">
+          {e.co_to && <span className="shrink-0 text-right">
             <span className="block text-[14px] font-bold text-slate-900">{so(e.tien_do, '%')}</span>
             <span className={`block text-[11px] font-bold ${e.tien_do_d == null ? 'text-slate-400' : e.tien_do_d > 0 ? 'text-emerald-700' : e.tien_do_d < 0 ? 'text-rose-600' : 'text-slate-500'}`}>
               {e.tien_do_d == null ? '—' : e.tien_do_d > 0 ? `▲ ${e.tien_do_d}` : e.tien_do_d < 0 ? `▼ ${-e.tien_do_d}` : '= 0'}</span>

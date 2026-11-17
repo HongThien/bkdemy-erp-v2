@@ -81743,3 +81743,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 17/11 tối — 📱 Xem như phụ huynh treo "Đang chờ" trên bản thật — sửa bắt tay
 - ERP thôi so `e.origin` với `PH_BASE` (lệch khi chuyển hướng tên miền ⇒ im lặng không gửi); nhận theo `e.source === iframe`, trả về `e.origin`. Bên PH sửa tương ứng (repo bkdemy-ph-app). Cần deploy LẠI cả ERP lẫn app PH.
+
+### 17/11 tối — Tờ Mục tiêu tuần (ERP) 3 cột (Thùy)
+- Thùy: "cột tên học sinh co bé lại" · "Trên lớp – Ôn tập – Hoạt động tuần chia làm 3 cột" · "mỗi phần header chữ trắng nền màu, 3 việc 3 màu" ⇒ `MucTieuTuanTab`: cột DS em 300–380 → 200–240 px (dòng phụ còn Việc · nợ, số nhóm/hạng vào tooltip); tờ của em = lưới 3 cột (lg) Trên lớp (xanh dương) · Ôn tập (cam) · Hoạt động tuần này (xanh lá), header dải màu chữ trắng; dòng nhóm/việc thu gọn cho cột hẹp ("Đang xếp hàng" vào cột Ôn tập, thái độ vào dòng phụ việc). Chụp 1500 px ✔.
