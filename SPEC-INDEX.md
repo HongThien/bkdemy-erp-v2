@@ -11,9 +11,9 @@
 
 | # | Spec đích | Phạm vi (Thùy chốt) | Gộp từ |
 |---|---|---|---|
-| 1 | ✅ **`spec-kien-truc.md` — ĐÃ GỘP 17/11, chờ Thùy duyệt để lưu trữ nguồn** | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · *đã gộp:* `ADR-mon` (→ §2a) · `AUDIT-client-tinh-toan` (→ §14) |
-| 2 | `spec-ban-do-toan.md` | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
-| 3 | `spec-kho-cau-hoi.md` — **NHÁP 17/11, chờ Thùy duyệt** (7 câu hỏi §8; nguồn chưa chuyển) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone** | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
+| 1 | ✅ **`spec-kien-truc.md` — ĐÃ GỘP 17/11** (nguồn đã chuyển `_luu-tru/`) | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · *đã gộp:* `ADR-mon` (→ §2a) · `AUDIT-client-tinh-toan` (→ §14) |
+| 2 | `spec-ban-do-toan.md` — **NHÁP 17/11, chờ Thùy duyệt** (câu hỏi §12; nguồn chưa chuyển) | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
+| 3 | `spec-kho-cau-hoi.md` — **NHÁP lượt 2 17/11, chờ Thùy duyệt** (Q1–Q13 §8; nguồn chưa chuyển) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone**; *mở rộng 17/11 (Thùy):* **nhập kho từ ảnh · từ đề thi · quy chuẩn hiển thị · vẽ lại hình** (luật giải vẫn ở #5) | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
 | 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-de-thi` (phần bóc câu) · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
@@ -64,5 +64,7 @@
 | `de-xuat-huy-hieu.md` · `de-xuat-nhiem-vu.md` · `phan-tich-diem-rank.md` | Đề xuất chi tiết 28/09 | `spec-thanh-tuu-nhiem-vu.md` · `spec-kinh-te-nhiem-vu.md` |
 | `BUILD-BACKLOG-HS-06-10.md` | Backlog 06/10 | `spec-v1-app-hs.md` · HANDOFF |
 | `docs/2026-07-21-thay-cau-chet.md` · `docs/spec-kho-hinh-soan-chuoi.md` · `docs/v1-kho-hientrang.md` | Ghi chú 06–08/2026 | `spec-giai-bai.md` · `spec-hinh-cay-nhanh.md` |
+| `ADR-mon.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §2a (chiều môn) · §2b (gộp theo khuôn) |
+| `AUDIT-client-tinh-toan.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §14 |
 | `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |
 | *(đã xoá 15/11, còn trong git)* `spec-giai-bai-ai.md` · `spec-luong-kho.md` · `spec-luong-kho-p0.md` · `kho-rules/README.md` · `kho-rules/*/k*.md` · `docs/luong-kho-kieu-1-hinh-hoc.md` | Thay bằng luật kho mới | `spec-giai-bai.md` |

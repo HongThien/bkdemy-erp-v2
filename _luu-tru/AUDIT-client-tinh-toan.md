@@ -1,4 +1,4 @@
-> **⚠ ĐÃ GỘP 17/11 vào `spec-kien-truc.md` §14** — đọc ở đó; file này chờ Thùy duyệt rồi chuyển `_luu-tru/`. Không sửa thêm ở đây.
+> ⛔ **LƯU TRỮ 17/11 (Thùy duyệt)** — đã gộp vào `spec-kien-truc.md` §14. Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
 
 # AUDIT — "Client không tính toán, DB tính, client chỉ lấy số" (29-30/08/2026)
 

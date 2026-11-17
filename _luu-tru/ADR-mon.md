@@ -1,4 +1,4 @@
-> **⚠ ĐÃ GỘP 17/11 vào `spec-kien-truc.md` §2a** — đọc ở đó; file này chờ Thùy duyệt rồi chuyển `_luu-tru/`. Không sửa thêm ở đây.
+> ⛔ **LƯU TRỮ 17/11 (Thùy duyệt)** — đã gộp vào `spec-kien-truc.md` §2a. Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
 
 # ADR — Kiến trúc theo MÔN: mỗi môn là một TRUNG TÂM riêng
 

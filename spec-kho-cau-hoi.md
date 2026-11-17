@@ -1,12 +1,23 @@
-# spec-kho-cau-hoi.md — KHO CÂU HỎI: một câu gồm gì · vào kho · trắc nghiệm · điền ô · clone · báo sai (spec #3 của bộ 20 spec)
+# spec-kho-cau-hoi.md — KHO CÂU HỎI: đưa câu vào kho (ảnh · tài liệu · đề thi) · clone · quy chuẩn hiển thị · vẽ lại hình · một câu gồm gì · trắc nghiệm · điền ô · báo sai (spec #3 của bộ 20 spec)
 
 > **Trạng thái: NHÁP 17/11/2026 — chờ Thùy duyệt.** Chưa thay file nguồn nào; chừng nào Thùy chưa duyệt, file nguồn vẫn là nguồn đúng (`SPEC-INDEX.md` bảng A).
-> **Gộp từ:** `spec-mcq-form.md` · `spec-mcq-quy-trinh-sinh.md` · `spec-mcq-tung-phan.md` · `spec-dien-o.md` · `spec-clone-ai.md` · `spec-kho-chuan.md` (phần định nghĩa "câu vào kho").
-> Đọc thêm để trỏ (không chép): CLAUDE.md §1.5 · §1.6 · §2 (mã gốc bất biến, kho rác) · `spec-bo-tro.md` §1, §4–§6 · `spec-giai-bai.md` §A5, §A17, §C6, §C7, Phần D.
+> **Gộp từ:** `spec-mcq-form.md` · `spec-mcq-quy-trinh-sinh.md` · `spec-mcq-tung-phan.md` · `spec-dien-o.md` · `spec-clone-ai.md` · `spec-kho-chuan.md` (phần định nghĩa "câu vào kho") ·
+> **lượt 2 (17/11, Thùy định lại phạm vi: "Cách nhập kho từ ảnh, cách nhập kho từ đề thi, clone kho, quy chuẩn hiển thị trong kho, vẽ lại hình của kho…"):**
+> `spec-de-thi.md` (phần bóc câu + lưu cấu trúc đề) · `spec-format-noidung.md` (phần hiển thị câu / lời giải) · `.claude/commands/nhap-kho.md` · `.claude/commands/nhap-de-thi.md` (thao tác máy — giữ tại chỗ, spec này trỏ) · đầu tệp các script `scripts/anh/*` · `scripts/kho/*` · `scripts/nhap_kho.mjs`.
+> Đọc thêm để trỏ (không chép): CLAUDE.md §1.5 · §1.6 · §2 (mã gốc bất biến, kho rác) · `spec-bo-tro.md` §1, §4–§6 · `spec-giai-bai.md` §A5, §A8, §A11, §A17, Phần B › Hình › "Vẽ hình", Phần C, Phần D.
 > **Đối chiếu DB ngày 17/11/2026** (chỉ đọc: `information_schema`, `pg_get_functiondef`, `pg_trigger`, đếm dòng). Chỗ DB/code lệch spec cũ ⇒ không sửa, ghi ở §8.
 > Nhãn **"CTO phân xử 17/11"** = các file cũ nói ngược nhau, Claude chọn theo quyết định mới nhất; Thùy sửa là thành luật của Thùy.
+>
+> **Ranh giới với `spec-giai-bai.md` (bắt buộc):** file đó là LUẬT DUY NHẤT về đọc đề · phân dạng · giải · kiểm · trình bày lời giải · khi nào vẽ lại và vẽ thế nào (`scripts/kho/cat-luat.mjs` cắt nó theo tiêu đề ⇒ không sửa, không chép).
+> Spec này chỉ mô tả **QUY TRÌNH + CÔNG CỤ + DỮ LIỆU**: bước nào · lệnh nào · ghi bảng nào · ai duyệt · tệp trung gian ở đâu — và trỏ đúng mục luật khi cần.
+>
+> **Mục lục.** Phần I (nháp lượt 1): §0 Đích · §1 Một câu gồm gì · §2 Vào kho · §3 MCQ · §4 Điền ô · §5 Clone (mở rộng lượt 2) · §6 Báo sai · §7 Bảng & hàm · §8 Chờ Thùy · §9 Lịch sử.
+> Phần II (lượt 2): §10 Nhập kho từ ảnh / tài liệu · §11 Nhập kho từ đề thi · §12 Quy chuẩn hiển thị · §13 Vẽ lại hình.
+> (Giữ số mục lượt 1 vì §8 và chỗ khác đã trỏ theo số.)
+>
+> **Lượt 2 đã sửa ở Phần I:** tiêu đề · khối "Không thuộc" (nhập kho chuyển vào spec này, luật vẫn ở `spec-giai-bai`) · §5 thêm §5.0 ba đường clone + hợp nhất `spec-clone-ai` · §7 thêm dòng nhập kho / đề thi / hiển thị / hình, bỏ `clone-batch-lap.mjs` (không tồn tại) · §8 thêm L14–L22, Q8–Q13 · §9 thêm dòng quyết định của phần mới.
 
-**Không thuộc spec này:** giải bài · nhập kho · duyệt lô · dây chuyền 8 trạm ⇒ `spec-giai-bai.md` · bản đồ dạng / dạng bài / cụm ⇒ spec #2 (`spec-ban-do-toan.md`) · builder · ET · MT ⇒ spec #4 · đo mastery ⇒ `spec-mastery.md` · logic bổ trợ ⇒ `spec-bo-tro.md` (ở đây chỉ giữ luật **chọn câu**).
+**Không thuộc spec này:** LUẬT đọc đề · phân dạng · giải · kiểm · trình bày · làn vào kho · vẽ hình ⇒ `spec-giai-bai.md` (ở đây chỉ quy trình + công cụ + dữ liệu) · bản đồ dạng / dạng bài / cụm, thẻ lý thuyết `##ĐL ĐN TC…` ⇒ spec #2 (`spec-ban-do-toan.md`) · builder · ET · MT · màn Kho đề thi / Duyệt đề / Giao đề / thi ⇒ spec #4 · đo mastery ⇒ `spec-mastery.md` · logic bổ trợ ⇒ `spec-bo-tro.md` (ở đây chỉ giữ luật **chọn câu**) · kho Tiếng Anh ⇒ `spec-anh-kho.md` (gác lại 17/11).
 
 ---
 
@@ -193,6 +204,26 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 
 ## 5. Clone câu
 
+### 5.0 Ba đường clone đang có (lượt 2, đối chiếu code + DB 17/11)
+
+| Đường | Ai sinh | Công cụ | Ghi vào | Đếm 17/11 |
+|---|---|---|---|---|
+| **1. Hàng đợi Claude Code** (luồng 2, Thùy 08/09) | Claude trong phiên, theo đặt hàng | `scripts/hangdoi-clone.mjs` | nháp `dai_cau_hoi_clone_cho_duyet`, `clone_method='claude_code_batch'` | 5.192 nháp (mới nhất 09/11) |
+| **2. Máy sinh theo mẫu** (item model / đổi số) | script, đáp số tính lại bằng máy | `scripts/mcq-clone-doi-so.mjs` (đổi số, đáp số bằng bộ tính của `mcq-auto`) · `scripts/kho/clone/k4T-sinh/kiem/ghi.mjs` · `k4T-tbc-*` · `k4T-5dang-*` · `k5T-pt-*` (sinh → kiểm → ghi) | `mcq-clone-doi-so` + `k4T-ghi` ⇒ **nháp** (`mcq_auto_doi_so` 56 · `may_sinh_theo_mau` 417); `k4T-5dang-ghi` · `k4T-tbc-ghi` · `k5T-pt-ghi` ⇒ **thẳng kho** ở dạng chờ, `da_duyet=false`, qua `scripts/kho/cong-ghi.mjs` (biên bản kiểm + giải mù độc lập), dạng bài vào `dai_bdm_de_xuat` | kho: `may_sinh_theo_mau` 395 · `clone_doi_so` 96 · `claude_may_sinh` 64 |
+| **3. Trong ERP** (nút ✨ Clone ở `DangHub.tsx`) | Gemini đọc ảnh gốc; DeepSeek/Claude sinh biến thể (`callAiClone`, prompt `buildCloneFromGocPrompt` + `FMT_RULES`, `src/lib/kho/api.ts`) | `saveCloneVariants` / `saveCloneBatch` | **thẳng kho** `dai_cau_hoi`, `clone_method='manual_gemini'`, cấp mã ở client (`nextCauSeq`); tích "Duyệt luôn" ⇒ `da_duyet=true` | 14.750 câu (14.403 đã duyệt); **vẫn chạy: 187 câu tháng 11** — §8 L17 |
+
+Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClone`) là cửa vào của đường 1; nút clone ngay là đường 3. Chỉ kho Đại có hàng đợi clone (không có `hgt_cau_hoi_yeu_cau_clone`).
+
+**Đường 1 — thao tác** (nguồn: `spec-clone-ai.md` §1, §2, §4, §6; luật sinh ở các gạch dưới):
+1. `node scripts/hangdoi-clone.mjs --list --out scripts/_auto_clone_ds.json` ⇒ mỗi mục: câu gốc đủ (`noi_dung` · `lua_chon` · `dap_an` · `loi_giai`), `so_bien_the`, `ghi_chu`, `ten_dang`, ≤ 2 `mau_tham_khao` cùng dạng đã duyệt, cờ `co_hinh` / `goc_da_xoa`, `so_da_co`.
+2. Sinh đúng `so_bien_the − so_da_co` biến thể, tự kiểm từng cái (gạch "Tự kiểm" dưới).
+3. Viết `scripts/_auto_clone_kq.json` = `[{ yeu_cau_id, variants: [{ noi_dung, lua_chon?, dap_an, loi_giai }] }]` — `lua_chon` chỉ khi gốc trắc nghiệm (đúng 4, không kèm "A."), `dap_an` A–D; TLN / tự luận: `dap_an` = kết quả cuối, không đơn vị. LaTeX trong JSON double backslash.
+4. `node scripts/hangdoi-clone.mjs --ghi scripts/_auto_clone_kq.json` ⇒ nháp, đóng yêu cầu; xoá 2 tệp tạm.
+5. Không làm được ⇒ `--bo <id> "<lý do>"`: gốc có hình · gốc Đ/S / có `menh_de` · đề gốc sai / thiếu dữ kiện / đáp án mâu thuẫn lời giải (nêu chỗ sai) · không tìm được bộ số cho kết quả đẹp. Gốc đã xoá ⇒ `--don`. Không ghi liều (CLAUDE §1.5).
+- Trình bày biến thể: như kho — luật ở `spec-giai-bai` §A5, §A18 (hai phần, `\dfrac`, mỗi công thức một `$…$`, không nhãn "Câu N", TN thì phương án chỉ ở `lua_chon`). `spec-clone-ai` §5 và `FMT_RULES` của ERP là bản chép cũ, có chỗ lệch (§8 L18).
+
+### 5.1 Luật chung mọi đường
+
 - **Đích:** đủ câu cho mỗi dạng (mốc tối thiểu 60 câu/dạng ở pool MCQ đầu) mà **giữ nguyên cấu trúc phép tính** ⇒ rule lỗi vẫn áp y hệt.
 - **Luồng hàng đợi (Thùy 08/09 — "luồng 2" của Claude Code):** nhân sự bấm "✨ Clone → đưa vào hàng đợi" ⇒ `dai_cau_hoi_yeu_cau_clone` (`ma_cau_goc` · `so_bien_the` · `ghi_chu` · `xu_ly_at` null = treo) ⇒ `node scripts/hangdoi-clone.mjs --list` ⇒ Claude sinh biến thể ⇒ `--ghi` vào **bảng NHÁP** `dai_cau_hoi_clone_cho_duyet` (`parent_ma_cau`, `clone_method='claude_code_batch'`) + đóng yêu cầu ⇒ người duyệt ở ERP (Bản đồ kiến thức › Đại › "Câu chờ duyệt") mới đưa vào kho. Lệnh phụ: `--bo <id> "<lý do>"` · `--don` (gốc đã xoá) · `--tu-kiem` (ROLLBACK).
 - **Luật cứng ở code** (không tin prompt): gốc có `anh_de` ⇒ không clone (hình lệch số) · gốc Đ/S / có `menh_de` ⇒ không clone (bảng nháp không có mệnh đề) · biến thể thiếu đề / lời giải ⇒ bỏ · TN phải đúng 4 phương án + `dap_an` A–D · không vượt `so_bien_the` · không trùng gốc, không trùng nhau.
@@ -221,8 +252,12 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 | Snapshot | `_kho_snapshot_cau` · `bai_test_cau` (`form_tn_id` · `form_tn_hgt_id` · `lua_chon_rule` · `dien` · `form_dien_id` · `o_rule`) | `src/lib/testonline.ts` |
 | MCQ | `<kho>_cau_form_tn` (+ trigger `_kiem`) · `<kho>_mcq_rule` · `<kho>_cau_khuon` · `_kho_form_tn_tbl` · `fn_mcq_form_duyet` / `_batch` / `_tu_choi` · `fn_mcq_metric` · `v_mcq_loi_hs` · `fn_mcq_loi_theo_hs` / `_dang` | `scripts/mcq-sinh.mjs` · `mcq-auto.mjs` · `lib/mini-dang.mjs` · `lib/khuon-dap-so.mjs` · `kho-khuon-gan-may.mjs` · `mcq-xem.mjs` · trang duyệt `kho-rules/dai/lo/mcq-bdm/build-duyet.mjs` · tab Trắc nghiệm AI |
 | Điền ô | `hinh_form_dien` · `dai_cau_form_dien` (+ trigger kiểm, thu hồi) · `_kho_form_dien_tbl` · `fn_dien_cham` · `fn_dien_form_duyet` (Hình) · `tu_luyen_dien_sinh` · `hs_dien_tra_loi` · `v_dien_loi_hs` | `scripts/hinh-dien.mjs` · `mcq-dien.mjs` · `lib/dien-buoc.mjs` · `lib/dien-khuon-*.mjs` · `_do_dien_o.mjs` · `src/screens/hocsinh/DienOCau.tsx` · `src/lib/tuluyen.ts` |
-| Clone | `dai_cau_hoi_yeu_cau_clone` · `dai_cau_hoi_clone_cho_duyet` | `scripts/hangdoi-clone.mjs` · `mcq-clone-doi-so.mjs` · `clone-batch-lap.mjs` · `api.ts` (`saveCloneChoDuyet` · `duyetCloneChoDuyet` · `tuChoiCloneChoDuyet`) |
+| Clone | `dai_cau_hoi_yeu_cau_clone` · `dai_cau_hoi_clone_cho_duyet` | `scripts/hangdoi-clone.mjs` · `mcq-clone-doi-so.mjs` · `scripts/kho/clone/*` · `api.ts` (`saveCloneChoDuyet` · `duyetCloneChoDuyet` · `tuChoiCloneChoDuyet` · `saveCloneVariants` · `saveCloneBatch` · `buildCloneFromGocPrompt`) · `src/screens/kho/DangHub.tsx` |
 | Báo sai | `bai_cau_bao_loi` · `fn_hs_bao_loi_cau` · `fn_bao_loi_cau_ds` · `fn_bao_loi_cau_xu_ly` | — |
+| Nhập kho (§10) | `<kho>_cau_hoi` · `hinh_hoc_cau_lop` · `dai_cau_lop` · `*_bdm_de_xuat` · `*_bdm_gan_cau` · `*_bdm_kho_ds` · `nhap_kho_log` · `<kho>_cau_hoi_yeu_cau_giai` · bucket `kho-anh/nhap_kho/` | `scripts/nhap_kho.mjs` · `_kho_insert.mjs` (`insertCauBatch`, `SUBJECTS` = dai · hgt · khtn · hinh_hoc) · `kho_anh.mjs` · `docx-doc.mjs` · `kho/mathtype-thu/doc-docx.mjs` · `kho/sach/*` · `kho/cong-ghi.mjs` · `kho/cat-luat.mjs` · `anh/docx_trich.mjs` · `anh/wmf_sang_png.ps1` · `anh/nhap_hh_tu_draft.mjs` · `anh/hh_lop_chep.mjs` · `kho-rules/hinh/lo/k8T-thales/nhap_lo.mjs` |
+| Đề thi (§11) | `tai_lieu(loai='de_thi')` (`cau_hinh.deThi` · `nhanhByCau` · `duyet_at`) · `tai_lieu_phan` · `tai_lieu_cau` · `fn_de_thi_thieu` · bucket `kho-tailieu` | `scripts/kho/de-thi/boc-word.mjs` · `boc-pdf.mjs` · `dung-de-tu-soan.mjs` · `ghi.mjs` · `nhom-bai.mjs` · `cap-nhat-loi-giai.mjs` · `sua-cau-de.mjs` · `ghi-nhan-cau.mjs` · `duyet-de-ai.mjs` · `do-toanmath.mjs` · `kho-rules/dai/lo/toanmath/{tinh-trang.mjs, anh-batch.mjs}` · `scripts/hinh-luyen/nhap_tu_de_thi.mjs` |
+| Hiển thị (§12) | — | `src/screens/kho/ui.tsx` (`MathText` · `tex` · `LoiGiaiXem` · `tach2Phan` · `GiaThietY` · `DeY` · `TextAnh`) · `src/lib/math/{macros,latex-fix}.ts` · `src/lib/mon.ts` (`MON_CHU_THUONG`) · `src/lib/lythuyetBlocks.ts` (`tachNhanGiai`) |
+| Hình (§13) | `kho_hinh_nguon` · `kho_hinh_lenh_ve` · `fn_kho_hinh_dem` · cột `anh_de` / `anh_dap_an` · `hinh_bai.anh_de` · `hinh_y.anh_de` · `hinh_baitoan.anh_chuan` · `hinh_baitoan_bien_the.anh` / `anh_loi_giai` · `hinh_mo_hinh.anh_cau_hinh` · `hinh_cach_giai.anh_loi_giai` · bucket `kho-anh/hinh_hoc/` | `scripts/anh/ve_hinh_lib.mjs` · `ve_vecto_lib.mjs` · `ve_lai_xuat.mjs` · `ve_lai_xuat_hgt.mjs` · `ve_moi_xuat.mjs` · `ve_lai_bang.mjs` · `bang_hinh.mjs` · `gan_hinh.mjs` · `bien_ban/` · `ve_lai/` · `ve_moi/` · `scripts/hinh-luyen/ve_y_xuat.mjs` · `hinh-luyen/ve/to_soat.mjs` · `scripts/kho/so-hinh.mjs` (→ `kho-rules/SO-HINH.md`) · máy vẽ khác `kho/do-thi.mjs` · `hinh-toado.mjs` · `hinh-luong-giac.mjs` · `hinh-giai-tich.mjs` · `k10-hinh.mjs` |
 
 ## 8. Chờ Thùy quyết / lệch phát hiện (17/11)
 
@@ -241,6 +276,15 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 | L11 | Thiếu ràng buộc | `loai_cau` không có CHECK ở `dai/hgt/khtn/hinh_hoc_cau_hoi` (CLAUDE §2.1); `hinh_hoc_cau_hoi` không có trigger `kho_sua_log` / `kho_cau_log` / `duyet_nguon` (290 câu Hình đã duyệt có `duyet_nguon` null) | Kỹ thuật |
 | L12 | Form TN chờ không có người duyệt | KHTN 757 · TSA 181 · HGT 364 · Đại 6.747 form chờ; KHTN + TSA 0 form đã duyệt | **Q7** |
 | L13 | Tài liệu cũ | spec-mcq-quy-trinh-sinh §6 ghi bảng khuôn "nháp chờ Thùy duyệt" — đã áp (mig `202610261852`, `dai_cau_khuon` 611 dòng); `fn_mcq_form_duyet` nhận người duyệt từ tham số, không kiểm `jwt_uid()` | Kỹ thuật |
+| L14 | Phạm vi mới lệch `SPEC-INDEX.md` | Thùy 17/11 đưa "nhập kho từ ảnh / từ đề thi" vào spec kho; `SPEC-INDEX` bảng A dòng 5 vẫn ghi `spec-de-thi` (phần bóc câu) → `spec-giai-bai`, dòng 3 chưa có `spec-de-thi` · `spec-format-noidung` | **Q8** |
+| L15 | Câu đề thi ghi nhãn "người giải" dù dây chuyền AI giải (`spec-giai-bai` §C7; nợ §C10 mục 1, 8) — **vẫn đang tăng** | `ghi.mjs` ghi cứng `nguon_giai='nguoi'`, `giai_method` null: câu nguồn `de_thi` còn sống Đại 41.355/41.602 · HGT 3.872/3.872 · Hình 7.215/7.220 mang `nguoi`; riêng từ 15/11 (sau khi luật §C7 có hiệu lực): **1.728 câu** (Đại 1.124 · HGT 418 · Hình 186) | **Q9** |
+| L16 | Nhãn nguồn hình (`spec-giai-bai` §C12, có từ mig `202611152245`) không được ghi ở đường tạo câu mới | `kho_hinh_nguon` chỉ có **24 dòng** (Hình, `ve_moi`, 16/11); **118 câu** có hình đề tạo sau 15/11 22:55 (Đại 52 · Hình 66) không có nhãn ⇒ rơi vào "chưa rõ nguồn"; `fn_kho_hinh_dem`: 14.462 hình đề, 14.438 chưa rõ nguồn | **Q10** |
+| L17 | Clone trong ERP ghi thẳng kho, bỏ qua nháp và nhân chứng thứ hai (đường 3, §5.0) | `saveCloneVariants` / `saveCloneBatch`: `manual_gemini` 14.750 câu (14.403 đã duyệt, phần lớn tích "Duyệt luôn"), 187 câu tháng 11; cấp mã ở client (L7); bài học 08/11 "đáp số clone phải có nhân chứng máy / Opus" không áp ở đường này | **Q11** (đi cùng Q5) |
+| L18 | Luật trình bày chép cũ trong prompt ERP | `FMT_RULES` (`api.ts`, dùng cho OCR + clone trong ERP) và `spec-clone-ai` §5 dặn "số thập phân dùng dấu chấm 0.6"; `spec-giai-bai` §A10 (TLN dấu phẩy) và Phần B › Hình (`3{,}5`) dùng dấu phẩy; bộ hiển thị `tex()` đã bọc `{,}` cho phẩy thập phân (§12) | **Q12** |
+| L19 | Hai đường nhập câu từ ảnh / PDF | Đề thi bỏ đường Gemini-trong-ERP từ 01/10 (`spec-de-thi` §10.6); nhưng `DangHub.tsx` (`runAutoIngest`, `runOcrGoc`, Gemini) vẫn nhập chuỗi câu từ ảnh / PDF ghi thẳng kho từ client, không qua dây chuyền §C2 (đọc ảnh ⇒ model khác đối chiếu, nhân chứng đáp số) | **Q13** |
+| L20 | Trỏ tới tệp đã xoá | `docs/mau-brief-ve-lai-hinh.md` + `docs/log-giai-hinh-hoc-bai.md` xoá 15/11 (commit `0ee3866b`, nội dung vào `spec-giai-bai` Phần B › Hình); còn trỏ ở `scripts/anh/gan_hinh.mjs` (dòng 42) · `nhap_hh_tu_draft.mjs` (dòng 11) · `scripts/hinh-luyen/ve_y_xuat.mjs` · `scripts/hinh-luyen/ve/K8-g*.mjs` + `viec.md`. §7 lượt 1 trỏ `clone-batch-lap.mjs` không tồn tại (đã bỏ ở lượt 2) | Kỹ thuật: sửa chú thích khi có lệnh |
+| L21 | Brief vẽ mới chép tóm luật | `kho-rules/hinh/ve-moi/BRIEF.md` (16/11) tóm lại luật vẽ của `spec-giai-bai` — trái §C4 "brief không chép luật"; vẽ lại thì không có brief riêng (giao bằng `cat-luat.mjs`) | Kỹ thuật: brief chỉ giữ phần riêng của gói + đầu ra `cat-luat.mjs <khối>` |
+| L22 | Vẽ lại hình HGT có công cụ nhưng không có luật | `spec-giai-bai` Phần B › Hình › "Vẽ lại": "chưa có luật vẽ lại cho … `hgt_cau_hoi`"; thực tế có `ve_lai_xuat_hgt.mjs` + `gan_hinh.mjs --bang hgt` (Thùy 08/11, vectơ), 70 câu HGT đang mang hình code | Thùy chốt ⇒ ghi vào `spec-giai-bai` (không sửa từ spec này) |
 
 **Câu hỏi cho Thùy:**
 - **Q1.** Điền ô Đại (449 form, 0 duyệt, bỏ từ 13/09): làm tiếp (hàm duyệt + giao bài + `fn_chon_form`) hay đóng băng và ghi rõ "chỉ Hình chứng minh có điền ô"?
@@ -250,6 +294,12 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 - **Q5.** Clone: giữ bảng nháp (5.665 dòng chờ — ai duyệt?) hay làm bước 5 spec-kho-chuan: clone ghi thẳng vào kho `da_duyet=false`, đi chung một hàng duyệt, và đáp số clone phải có nhân chứng máy/Opus trước khi duyệt?
 - **Q6.** Quét kho cũ còn 353 câu Đại + 1 HGT "tạm dùng": bỏ hẳn vế "câu cũ tạm dùng" (kho chuẩn = `da_duyet` thuần) lúc nào?
 - **Q7.** Ai duyệt form TN KHTN / TSA / HGT (đang tồn 1.302 form), có cho máy ký (`duyet_nguon` kiểu `may`) khi verify 0 FAIL + độ lừa đủ không?
+- **Q8.** Ranh giới spec kho ↔ spec giải bài: CTO đề xuất — `spec-giai-bai` giữ LUẬT (đọc đề · giải · kiểm · trình bày · vẽ); spec #3 giữ QUY TRÌNH + CÔNG CỤ + DỮ LIỆU nhập kho, nhập đề thi, clone, hiển thị, vẽ lại (đúng như Phần II). Gật thì sửa `SPEC-INDEX` bảng A: dòng 3 thêm `spec-de-thi` (bóc câu + cấu trúc đề) · `spec-format-noidung` (hiển thị câu); dòng 5 bỏ `spec-de-thi`.
+- **Q9.** Nhãn câu đề thi (L15): CTO đề xuất — sửa `ghi.mjs` ghi `nguon_giai='ai'`, `giai_method='claude_code'`, `ai_model` theo tệp soạn **trước batch kế tiếp**; vá câu cũ CHỈ với đề có tệp `.soan.md` trong repo làm nhân chứng (không đoán theo ngày). Làm không?
+- **Q10.** Nhãn nguồn hình (L16): CTO đề xuất — mọi đường gắn `anh_de` lúc tạo câu (`_kho_insert.mjs`, `ghi-lo.mjs`, `ghi.mjs`, `nhap_hh_tu_draft.mjs`, ERP) gọi `ghiNhanHinh` cùng transaction, mặc định `goc`; 118 câu mới thì gắn nhãn `goc` khi có lệnh. Làm không?
+- **Q11.** Clone trong ERP (L17): giữ nút clone-ngay (ghi thẳng kho, "Duyệt luôn") hay chỉ còn nút đưa vào hàng đợi (đường 1, có nhân chứng)? CTO nghiêng: bỏ "Duyệt luôn", clone ERP ghi `da_duyet=false` và đi chung hàng duyệt của Q5.
+- **Q12.** Số thập phân trong dữ liệu kho (L18): dấu phẩy theo `spec-giai-bai` cho mọi đường? CTO đề xuất: có — sửa `FMT_RULES` cho khớp (bộ hiển thị đã hiện đúng phẩy thập phân).
+- **Q13.** Nhập chuỗi câu từ ảnh / PDF trong ERP (L19): giữ cho nhân sự dùng, hay gỡ như đã gỡ nhập đề thi bằng Gemini 01/10 (mọi tài liệu đi folder + Claude, §10)? Chưa đo được còn ai dùng (đường này không ghi nhãn riêng).
 
 ## 9. Lịch sử quyết định
 
@@ -273,3 +323,231 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 | 12/11 | Thùy | Bổ trợ sau giờ in giấy cấp 1–2: tự luận + TLN ngang hàng, không hiện form TN; cấp 3 TN trước |
 | 13/11 | Thùy | Hình học không làm MCQ; chỉ Hình giải tích có MCQ |
 | 17/11 | CTO phân xử | Luật 10/10 = bài trên app; ngoại lệ 12/11 = bài in giấy sau giờ; hai luật cùng hiệu lực |
+| 04/09 | Thùy | Hàng đợi giải câu chưa có lời giải (`hangdoi-giai.mjs`) — luồng 1 của Claude Code |
+| 13/09 | Thùy | Hình vẽ khi nhập kho: cắt từ trang PDF (`kho_anh.mjs`), không bỏ câu phụ thuộc hình; lọc trùng + dạng chờ ở `_kho_insert.mjs` |
+| 20–22/09 | Thùy | Đề thi = 1 đầu vào → 2 đầu ra (câu vào kho + đề giữ cấu trúc); câu trùng trỏ về câu cũ; nhập qua Claude, không qua ERP |
+| 01/10 | Thùy | Gỡ đường nhập đề thi bằng Gemini trong ERP; đề chỉ có PDF = Gemini gõ, Claude kiểm (`boc-pdf.mjs`); đề luôn vào được, thiếu dạng chỉ cảnh báo |
+| 07/10 | Thùy | Hình đề vẽ bằng code; câu đơn cùng hình ở `anh_de` và `anh_dap_an` |
+| 10/10 | Thùy | Đề cương = đề có `cau_hinh.deThi.kieu='de_cuong'`, tab riêng ở Kho đề thi |
+| 13/10 | Thùy | Luồng vẽ lại hình kho Hình (`ve_lai_xuat` → trạm → `ve_lai_bang` → `gan_hinh --thay`, ảnh cũ không xoá) — phạm vi "mọi ảnh cũ" **đã bị thay 15/11** |
+| 14/10 | Thùy | Gạch bằng nhau tối đa 3, nhóm 4–6 dùng ×; Hình luyện vẽ theo ý (`HLB` / `HLY`) |
+| 23/10 | Thùy | Vuông tại A ⇒ AB đứng, AC ngang |
+| 15/11 | Thùy | Hình đề: gốc ổn giữ · gốc tệ (mã a–f) vẽ lại · có lệnh thì vẽ lại; nhãn nguồn từng hình + bộ đếm theo khối (`spec-giai-bai` §A8, §C12) |
+| 16/11 | Thùy | Vẽ hình MỚI cho đề kho Hình thiếu hình (`ve_moi_xuat.mjs`, nhãn `ve_moi`); bài nhiều ý tô nền giả thiết khi hiển thị |
+| 17/11 | Thùy | Spec kho gồm cả nhập kho từ ảnh, từ đề thi, clone, quy chuẩn hiển thị, vẽ lại hình (lượt 2 của nháp này) |
+
+---
+
+# PHẦN II — ĐƯA CÂU VÀO KHO · HIỂN THỊ · HÌNH (lượt 2, 17/11)
+
+> Mọi luật nội dung ở đây là **trỏ** sang `spec-giai-bai.md`. Lệch giữa phần này và `spec-giai-bai` về luật ⇒ `spec-giai-bai` đúng; lệch về lệnh / bảng / tệp ⇒ code đúng, báo để sửa spec.
+
+## 10. Nhập kho từ ảnh / tài liệu
+
+### 10.1 Các đường vào
+
+| Đường | Khi nào | Lệnh / công cụ | Ghi vào |
+|---|---|---|---|
+| **A. `/nhap-kho`** (`.claude/commands/nhap-kho.md`) | tài liệu thả vào folder Drive-sync, chế độ `co_giai` (có lời giải) / `khong_giai` | `scripts/nhap_kho.mjs list → insert --thu → insert → done` (hỏng: `fail`) | `<kho>_cau_hoi` (`--subject dai · hgt · khtn · hinh_hoc`) · `nhap_kho_log` · file dời sang `<root>/DaXuLy/<ngày>/` |
+| **B. Đường SÁCH** (Word nhiều bài, MathType) | sách tham khảo theo khối (4T, 5T, 8T…) | `kho/mathtype-thu/doc-docx.mjs` → `kho/sach/tach-bai.mjs` (danh tính bài = sách · khu · số · ý) → `trich-media.mjs` (hình) → `dau-vao-soan.mjs` (bỏ bài đã có / trùng) → trạm soạn → `lo-tu-soan.mjs` → `ghi-lo.mjs` (qua `kho/cong-ghi.mjs`, biên bản kiểm khớp dấu băm) → `gan-bdm-nhom.mjs` / `tu-duyet.mjs`; lọc trùng 3 mức `loc-trung.mjs` | `dai_cau_hoi` (dạng chờ) + `dai_bdm_*`; `ten_de_goc = "<sách> · <mã>"` |
+| **C. Bài học Hình từ Word bài giảng** | Word bài giảng Hình THCS | `anh/docx_trich.mjs` (văn bản + `⟦imageN.wmf⟧`, WMF → PNG qua `wmf_sang_png.ps1`) → bản nháp `draft_*.md` → `anh/nhap_hh_tu_draft.mjs` (câu đơn; `--lop giang` = kho trên lớp) hoặc `kho-rules/hinh/lo/k8T-thales/nhap_lo.mjs` (bài–ý + sơ đồ tư duy) → `gan_hinh.mjs` | `hinh_hoc_cau_hoi` · `hinh_hoc_cau_lop` |
+| **D. Bài lẻ theo chỉ định** | Thùy / trưởng khối đưa bài + chỉ định dạng, kho trên lớp / về nhà | như `spec-giai-bai` §C11 (bảng kho đích ở đó) | theo chỉ định |
+| **E. Hàng đợi giải** | câu đã có trong kho mà chưa có lời giải; nhân sự bấm "📥 Đặt Claude giải" | `scripts/hangdoi-giai.mjs --list → --ghi` | `{dai,hgt,khtn}_cau_hoi_yeu_cau_giai` (đếm 17/11: Đại 245 · HGT 10 · Hình 0 dòng) → cập nhật câu |
+| **F. Trong ERP** (`DangHub.tsx`: nhận bài gốc / nhập chuỗi câu từ ảnh, PDF bằng Gemini) | nhân sự tự nhập trên màn | `runOcrGoc` · `runAutoIngest` (render trang, AI tách câu + khung hình) → `CauEditor` → lưu | thẳng `<kho>_cau_hoi` từ client — **§8 L19 / Q13** |
+
+Đề thi / đề cương ⇒ §11 (không qua đường A). Kho Tiếng Anh dùng bộ script riêng trong cùng thư mục `scripts/anh/` (`cong_ghi_anh.mjs` · `giai_chuan_bi.mjs` · `giai_cong.mjs` · `giai_tach_b.mjs` · `duyet_sau_giai.mjs` · `luat_chac_chan.mjs` · `kiem_lai_anh.mjs` · `duyet_de_chac.mjs` · `doc_*.py` · `docx_khoi.py`) — thuộc `spec-anh-kho.md`, gác lại 17/11, không thuộc spec này.
+
+### 10.2 Đọc tài liệu theo loại nguồn
+
+| Nguồn | Máy đọc | Ghi chú |
+|---|---|---|
+| Word công thức OMML | `scripts/docx-doc.mjs file.docx [--out file.md]` (công thức ⇒ `$…$`) | "file Word dễ nhất" (Thùy 08/09) |
+| Word MathType (OLE / WMF) | `scripts/kho/mathtype-thu/doc-docx.mjs` (đọc MTEF ra LaTeX) · `anh/docx_trich.mjs` (đổi WMF ⇒ PNG để đọc bằng mắt) | lớp chữ mất công thức ⇒ đọc theo thứ tự đánh dấu `⟦…⟧` |
+| PDF có lớp chữ / PDF scan / ảnh chụp | `pdftoppm -r 150` ảnh trang; chỗ không rõ phóng 300–400 dpi; Read tool ≤ 20 trang/lượt | **ảnh trang là nguồn chính** — luật đọc: `spec-giai-bai` §A11 (bẫy đọc, chỉ trang đề là đề, gõ lại từ ảnh thì model khác đối chiếu) |
+| Hình trong đề | `node scripts/kho_anh.mjs cat --pdf <f> --page <n> --bbox x0,y0,x1,y1 --out <png>` (khung theo tỉ lệ trang) → Read PNG kiểm → `kho_anh.mjs up --png <png>` ⇒ URL `kho-anh/nhap_kho/<YYYY-MM>/…` ⇒ `anh_de` (hình lời giải ⇒ `anh_dap_an`) | ảnh gốc ổn thì giữ, tệ thì vẽ lại — `spec-giai-bai` §A8; nhãn nguồn hình §C12 |
+
+Khoá upload `SUPABASE_SERVICE_ROLE` có sẵn trong `.env.local`, chỉ dùng trong script, không in ra.
+
+### 10.3 Dây chuyền (tóm — luật ở `spec-giai-bai` Phần C)
+
+Chuẩn bị + bóc (máy) → đo trùng kho → nạp luật một lần cho batch (`node scripts/kho/cat-luat.mjs <khối> --ra <thư mục>` ⇒ `brief-soan.md` + `brief-soat.md`, dòng đầu `luat: <mã>`) → phân dạng (Sonnet) → giải (Sonnet) → kiểm (máy + Opus giải mù) → cổng + xếp làn → ghi DB.
+Vai, lô mẫu, phần Opus kiểm, điều kiện tự vào kho, nhãn dữ liệu: `spec-giai-bai` §C1–§C7. Code còn nợ so với luật (làn tự vào kho, mẫu 15 %…): `spec-giai-bai` §C10.
+
+### 10.4 Ghi DB — quy ước của công cụ
+
+- **Luôn chạy thử trước**: mọi script ghi mặc định ROLLBACK (`--thu` ở `nhap_kho.mjs`; các script khác chạy thử khi không có `--ghi`). Lô 5–10 câu / lần ở đường A (một câu lỗi ⇒ hỏng cả lô). Không chạy hai lượt ghi song song (cấp mã va nhau); không chạy lượt nặng 17–22 h.
+- **Mã câu**: script cấp (`_kho_insert.mjs`, khoá advisory theo dạng); JSON đầu vào không truyền `ma_cau` (§1).
+- **Trùng**: `insertCauBatch` so `noi_dung` sau chuẩn hoá (chữ thường, bỏ mọi khoảng trắng) với kho + trong lô ⇒ trả mã câu cũ ở đúng vị trí, không chèn (`--cho-trung` chỉ khi cố ý). Trùng khác cách gõ ⇒ `kho/sach/loc-trung.mjs` (3 mức). Trùng hai nguồn Word / PDF chưa bắt được (§11.5).
+- **Dạng**: khối chạy bản đồ mới (`select public._bdm_ds_khoi_chay()`) ⇒ `dang_chinh` luôn = dạng chờ của khối (`…000000`); dạng bài qua trường `dang_bai` (NDB…) ⇒ `*_bdm_de_xuat` nguồn `ai`, hoặc `dang_bai_chot: true` ⇒ gán thẳng nguồn `nguoi`; câu Đ/S: `chu_de` (NCD…) ⇒ `*_bdm_kho_ds`, mệnh đề không mang dạng. Không chắc dạng ⇒ bỏ trống (câu ở dạng chờ). Khối cấp 1 / KHTN giữ cách cũ.
+- **Làn**: `da_duyet` ghi theo `spec-giai-bai` §C6; câu có cờ ⇒ `kiem_may='nghi'` + lý do ⇒ hàng duyệt trưởng khối. Trigger tự duyệt sau gán dạng: §2.
+- **Nhãn**: `nguon_giai` · `giai_method` · `ai_model` theo `spec-giai-bai` §C7 (đường đề thi đang ghi sai — §8 L15).
+- **Sổ nhập**: `nhap_kho_log` (sha256 tệp ⇒ chạy lại báo "đã có"; `loi` khác null = lần hỏng, chạy lại được).
+
+### 10.5 Tệp trung gian
+
+| Tệp | Ở đâu |
+|---|---|
+| Thư mục làm việc (bộ đệm, dựng lại được từ tệp gốc) | `KHO_LAM_VIEC` (`scripts/kho/cau-hinh.mjs`), mặc định `C:\Users\<user>\bk-kho-lam-viec\…` |
+| JSON câu + danh sách mã của đường A | scratchpad: `nhap_kho_<sha8>.json` · `nhap_kho_<sha8>_ids.json` |
+| Tệp gốc đã xử lý | `<root Drive-sync>/DaXuLy/<YYYY-MM-DD>/` (EBUSY ⇒ log có `CHUA_MOVE`, người kéo tay) |
+| Lô, biên bản kiểm, bản soạn theo khối / sách | `kho-rules/<kho>/lo/<…>/` (theo git) |
+| Hình chờ gắn | thư mục gói, tên tệp = mã câu (§13.3) |
+
+### 10.6 Số đo 17/11
+
+- `nhap_kho_log`: 2.148 lượt, 51.170 câu mới (`co_giai` 2.135 lượt / 51.041 câu — gồm cả lượt ghi đề thi; `khong_giai` 13 / 129, chỉ 10–21/09), 0 lượt lỗi. Theo tháng: 09 = 7.435 câu · 10 = 10.043 · **11 = 33.692** (tới 14/11).
+- Câu Đại còn sống theo nguồn: `de_thi` 41.602 · `le` (kho cũ) 11.596 · `le` (tài liệu) 9.192 · `clone` 16.323. Ảnh đề do nhập cắt từ tài liệu (`kho-anh/nhap_kho/`): Đại 6.174 câu.
+
+## 11. Nhập kho từ đề thi
+
+### 11.1 Một đầu vào → hai đầu ra (Thùy 20/09, `spec-de-thi` §0–§1)
+
+Một đề (Word / PDF) ⇒ **(1)** từng câu vào kho như mọi câu (`nguon='de_thi'`; câu trùng trỏ về câu cũ, không đẻ bản sao) **và (2)** đề giữ nguyên cấu trúc (phần · thứ tự · điểm · thời gian), dùng được ngay trên app. Câu chỉ sống ở kho; đề chỉ **trỏ** tới câu (mô hình item bank + test form, IMS-QTI `assessmentTest → section → itemRef`).
+
+### 11.2 Quy trình (`.claude/commands/nhap-de-thi.md`, `spec-de-thi` §10.3, §10.8)
+
+| Bước | Lệnh | Ra |
+|---|---|---|
+| 0. Thả đề | `E:\BK ACADEMY\Tài liệu Claude nhập kho\DE_THI\L<khối>\` → chép `goc.docx` / `goc.pdf` vào `<KHO_LAM_VIEC>/de-thi/<TÊN_NGẮN>/` | có Word ⇒ Word là nguồn chữ, PDF đối chiếu |
+| 1. Bóc (máy) | `node scripts/kho/de-thi/boc-word.mjs "<work>/goc.docx" --ra "<work>" --khoi <k>` · chỉ có PDF: `boc-pdf.mjs` (Gemini 4 lượt: bóc · mục lục · khung hình 150 dpi · đánh dấu đáp án 250 dpi; máy kiểm số câu, `$` cân, so lớp chữ PDF) | `de.json` + `img/` (+ `trang/`, `trang-dd/`) + danh sách `⚠` |
+| 1b. Claude kiểm bóc | mở TỪNG ảnh trang so từng câu, xem từng hình cắt (sai khung ⇒ sửa `box` trong `gemini-trang.json` rồi `--dung-lai`, không gọi lại Gemini); mọi sửa ghi `<work>/quyet.mjs` (mỗi sửa một dòng lý do) | chạy lại được: bóc → `quyet` |
+| 2. Phân dạng + giải + kiểm | tệp soạn `<MA>.soan.md` (khuôn `spec-giai-bai` §A10) → `node scripts/kho/de-thi/dung-de-tu-soan.mjs <MA>.soan.md --lam-viec "<work>" --khoi <k> --chi-kiem` tới khi "✔ đạt cổng"; bỏ `--chi-kiem` ⇒ dựng `de.json` (bản Gemini đổi tên `de.boc.json`) | cổng đọc cả dòng `**Hình:** … \| nguon=…` |
+| 3. Ghi | `node --env-file=.env scripts/kho/de-thi/ghi.mjs "<work>"` (ROLLBACK, in một dòng / câu) → `… --ghi` | một transaction: câu → kho · đề + phần + câu · `nhap_kho_log`; ảnh → `kho-anh`, PDF gốc → `kho-tailieu` (ngoài transaction) |
+| 4. Kiểm trên ERP | Học thuật › Kho đề thi: đủ câu, công thức render, hình hiện | báo: tên đề · số câu theo kho · vào kho / hàng duyệt · `tai_lieu.id` |
+
+- **Batch nhiều đề** (bộ toanmath…): sổ `kho-rules/dai/lo/toanmath/TINH-TRANG.md` tự sinh bằng `tinh-trang.mjs`, chạy lại sau mỗi việc; đề treo ghi tay `batch/<B>/treo.json`; hình nháp đẩy bằng `anh-batch.mjs day <BATCH> <MA…>`; đo bộ đề đã tải so với DB: `kho/de-thi/do-toanmath.mjs` (chỉ đọc). Thứ tự làm, quản batch: `spec-giai-bai` §C8.
+- **Bộ đề đặc thù** có script riêng cùng khuôn (vd CLC lớp 6: `tach-clc6` → `dau-vao-clc6` → `gom-soan-clc6` → `gom-kiem-clc6` → `ap-soat-clc6` → `so-ba-nguon` → `ghi-clc6`; `k*-ghi-het.sh` ghi theo khối). Tạo bộ mới thì chép khuôn, không tạo luật mới.
+- **Đề cương ôn tập**: `de.json` có `kieu: 'de_cuong'` (+ `thoi_gian_phut: null`) ⇒ `ghi.mjs` ghi dấu; thường không có đáp án ⇒ chỉ gõ lại, tách ý theo luật chung. Mẫu: `kho-rules/dai/lo/k6/de-cuong/NSHM-GKI-2026.build.mjs`.
+- **Không chạy hai lượt `--ghi` song song.** Chuỗi LaTeX sửa bằng Write / Edit, không heredoc / `node -e` (`spec-giai-bai` §A5).
+
+### 11.3 Dữ liệu cấu trúc đề
+
+| Tầng | Bảng / trường | Luật |
+|---|---|---|
+| Đề | `tai_lieu(loai='de_thi')`: `ten` · `khoi` · `mon` · `nhanh` (nhánh mặc định) · `file_url` · `duyet_at` / `duyet_boi` (lịch sử duyệt do trigger ghi `tai_lieu_duyet_log`) | `cau_hinh.deThi` = `nguon` · `maDe` · `nam` · `thoiGianPhut` · `thangDiem` · `pdfGocUrl` · `sha256` (chống nhập trùng tệp) · `kieu` (`de_cuong`) · `nhanCau[ma_cau]` (nhãn gốc "Bài 2a") · `canhBaoCau` · `cauThieu`; `cau_hinh.nhanhByCau[ma_cau]` = nhánh của câu khác nhánh mặc định (Đại + HGT + Hình trong một đề) |
+| Phần | `tai_lieu_phan(loai_phan='custom')`: tiêu đề "PHẦN I…" · `diem_moi_cau` · `dang_thuc` (`trac_nghiem` · `dung_sai` · `tra_loi_ngan` · `tu_luan`) = dạng thức gốc trên giấy | điểm mặc định khuôn Bộ: TN 0,25 · Đ/S 1,0 · TLN 0,5 (`spec-de-thi` §1b) |
+| Câu trong đề | `tai_lieu_cau(phan_id, ma_cau, thu_tu, diem)` | danh tính = `ma_cau` (text, không FK); `thu_tu` chỉ hiển thị; `diem` null = theo phần · **cấm xoá cứng câu đang nằm trong đề** (chỉ `xoa_at`, màn đề nêu cờ) |
+| Nhóm bài của đề gốc | suy lúc đọc: `kho/de-thi/nhom-bai.mjs` (câu kho đã tách ý ⇒ "Bài 2" có 4 ý) | đề giữ cấu trúc gốc, kho tách câu |
+
+Invariant "đề thiếu gì" (pure-derive, không cột trạng thái): `fn_de_thi_thieu(de_id)` — thiếu đáp án / phương án = chặn; chưa đủ dạng = chỉ cảnh báo (Thùy 01/10).
+
+### 11.4 Sửa · duyệt sau khi đã ghi
+
+| Việc | Lệnh |
+|---|---|
+| Lời giải soạn lại cho đề đã ghi (theo sha256) | `kho/de-thi/cap-nhat-loi-giai.mjs` — chỉ đè câu CHƯA duyệt do chính đề đó đẻ ra |
+| Người duyệt quyết sửa đề một câu (đề in lỗi) | `kho/de-thi/sua-cau-de.mjs` |
+| Bù nhãn gốc câu cho đề ghi trước khi `ghi.mjs` biết nhãn | `kho/de-thi/ghi-nhan-cau.mjs` |
+| Đề đã qua dây chuyền 2 nhân chứng, Thùy bảo "đưa lên app" | `kho/de-thi/duyet-de-ai.mjs <tai_lieu_id>… [--ghi]` — duyệt mọi câu (`duyet_nguon='ai'`) + `tai_lieu.duyet_at`, `duyet_boi` null = máy; chặn như `fn_de_thi_duyet` khi `fn_de_thi_thieu` còn câu chặn |
+| Bài tự luận Hình của đề ⇒ kho Hình–Luyện | `scripts/hinh-luyen/nhap_tu_de_thi.mjs --khoi <k> [--ghi]` (chép, không sửa câu gốc) — luật cây Hình ⇒ spec #2 |
+
+**Ranh giới:** màn Kho đề thi (tab Chờ duyệt / Sẵn sàng / Đã giao / Đề cương), màn sửa + Duyệt đề (`DeThiSoan`), Giao 3 chế độ, đồng hồ, chấm, thi trên lớp / tự luyện ⇒ **spec #4** (`spec-de-thi` §5–§10.9). Luật giải · gán dạng · duyệt câu của đề ⇒ `spec-giai-bai`.
+
+### 11.5 Hiện trạng 17/11
+
+- `tai_lieu(loai='de_thi')`: Toán đề thi **1.920** (393 đã duyệt) · Toán đề cương **182** (13) · Tiếng Anh 74 (0); `tai_lieu_cau` 54.707 dòng trên 2.174 đề. 17 đề ghi từ 15/11.
+- Câu nguồn `de_thi` còn sống: Đại 41.602 (18.657 duyệt) · HGT 3.872 (2.675) · Hình 7.220 (3.172). Nhãn giải sai — §8 L15.
+- Chưa giải quyết (`spec-de-thi` §10.8): **một đề nhập từ hai nguồn Word + PDF ⇒ máy chỉ nhận 1/22 câu trùng** (LaTeX hai nguồn khác nhau) — vì thế luật "một đề không nhập từ cả hai nguồn" (`spec-giai-bai` §A9); chưa đo trên PDF scan; đề Đ/S không có đáp án bị `ghi.mjs` chặn; hình trong lời giải không cắt.
+
+## 12. Quy chuẩn hiển thị trong kho
+
+### 12.1 Một bộ hiển thị cho mọi màn
+
+- **`MathText`** (`src/screens/kho/ui.tsx`) là lá hiển thị DUY NHẤT cho chữ của câu (đề · phương án · đáp án · lời giải) ở kho, duyệt, builder, trang in, test online, app HS. Lời giải hai phần có thêm **`LoiGiaiXem`** (popup kho: công tắc 📝 Lời giải · 💡 Hướng dẫn · 📑 Cả 2, mặc định Lời giải, nhớ theo máy); trang in / danh sách câu / BTVN dùng `MathText` ghép cả hai phần.
+- Công thức render bằng **KaTeX** qua `tex()`; macro dùng chung với ô nhập MathLive (`src/lib/math/macros.ts`) ⇒ soạn thấy sao, in / app ra vậy. Copy từ vùng đã render trả về chuỗi kho `$…$` (`installTexCopy`).
+- Môn không phải công thức (Tiếng Anh) chọn bộ khác qua registry `MON_CHU_THUONG` (`src/lib/mon.ts`) ⇒ `TextAnh`; cấm `if (mon === …)` ở màn (CLAUDE §1.6).
+- **Dữ liệu viết thế nào** là luật của `spec-giai-bai` §A5, §A10, §A18 (hai phần, `\dfrac`, mỗi công thức một `$…$`, dòng, Phần 1 dạng card, sơ đồ tư duy §A6). Mục dưới chỉ ghi **bộ hiển thị làm gì** với dữ liệu đó, để người nhập biết cái gì máy tự lo, cái gì không.
+
+### 12.2 Bộ hiển thị tự xử lý (không cần, không nên viết tay)
+
+| Việc | Cách | Ở đâu |
+|---|---|---|
+| `\frac` ⇒ `\dfrac` | lúc render | `tex()` |
+| `\vec{AB}` (≥ 2 ký tự) ⇒ `\overrightarrow{AB}`; `\vec{u}` giữ | lúc render | `tex()` |
+| Phẩy thập phân `1,46` ⇒ `1{,}46` (KaTeX không chèn khoảng) — chỉ cụm số có đúng 1 phẩy, không đứng sau "tên(" (`BCNN(8,10)`, `A(1,2)` giữ) | lúc render | `tex()` |
+| `\widehat{A_2}` ⇒ mũ trên chữ, chỉ số ngoài; mũ một chữ cỡ lớn | lúc render (và lúc lưu) | `src/lib/math/latex-fix.ts` |
+| Lệnh trần ngoài `$` (`\leq`, `\times`, `\Rightarrow`…) ⇒ ký tự Unicode; lệnh có ngoặc trần (`\dfrac{6}{5}`) ⇒ KaTeX | lưới an toàn | `uni()` · `renderInline` |
+| `$` lẻ (quên đóng ở cuối) ⇒ tự thêm `$` đóng | lưới an toàn | `balanceDollars` |
+| Phương án lưu sai kiểu object `{key,text}` ⇒ lấy `text`, không sập màn | lưới an toàn | `epChuoi` |
+| Khoảng trắng / dòng trống đầu–cuối ⇒ cắt | lưới an toàn | `buildLines` |
+| **In đậm tự động**: `**…**`; mọi từ VIẾT HOA ≥ 2 ký tự; "Dấu hiệu (nhận biết)"; nhãn đầu dòng `Ví dụ · Quy tắc · Lưu ý · Chú ý · Nhận xét · Định nghĩa · Định lí · Tính chất · Hệ quả · Ghi nhớ · Phương pháp · Bài toán · Mẹo · Cách giải · Kết luận · Bước N` + `:`/`.` | lúc render | `boldify` · `autoBold` |
+| Nghiêng `*…*` | **không hỗ trợ** — đừng dùng (`spec-giai-bai` §A5) | — |
+| Ảnh trong chữ `![](url)` ⇒ `<img>` (dùng cho lý thuyết); ảnh của câu đi bằng cột `anh_de` / `anh_dap_an` (URL bucket, không base64) | lúc render | `renderText` |
+| **Dòng**: mỗi `\n` một dòng; dòng trống trong dữ liệu là ranh giới đoạn ⇒ hiện LIỀN, chỉ chừa khoảng trước dòng mở ý `a)`–`h)` | lúc render | `htmlDongLienTiep` (Thùy 07/10, 09/10) |
+| **Lời giải hai phần**: nhận marker `**Phần 1. Hướng dẫn**` / `**Phần 2. Trình bày**` ⇒ hai tiêu đề; Phần 1 thành card (`**Mấu chốt:**`, chuỗi `**Bước k.**` ⇒ card dọc ↓ hoặc ngang → theo bề rộng, `**Chú ý:**`; sơ đồ tư duy: mệnh đề + mũi tên ⇑ + lý do); thiếu marker ⇒ hiện như chữ thường | lúc render | `tach2Phan` · `htmlPhan1` |
+| Nhãn "Giải" / "Lời giải" / "Bài giải" ⇒ "Bài giải:" căn giữa, gạch chân (trang in, lý thuyết) | lúc render | `tachNhanGiai` (`src/lib/lythuyetBlocks.ts`) |
+| Bài Hình nhiều ý: giả thiết (chung · dựng ở ý trước · của ý) **tô nền**, không ghi chữ "Đã biết" (Thùy 16/11) | lúc render | `GiaThietY` · `DeY` (`lib/kho/giaThietY.ts`) |
+
+### 12.3 Quy ước dữ liệu mà hiển thị dựa vào
+
+- **Trắc nghiệm**: đề dẫn ở `noi_dung`, 4 phương án ở `lua_chon` (mảng 4 chuỗi) — app tự vẽ lưới A–D; đề không chứa khối "A. … D." (prompt ERP còn tự cắt khối đó: `stripEmbeddedOpts`). Đ/S: mệnh đề ở `menh_de`.
+- **Không nhãn "Câu N" / "Bài N"** đầu đề — hệ tự đánh số (nhãn ghép vào dòng đầu qua `prefix`); ERP tự cắt (`stripCauLabel`), dây chuyền không được ghi.
+- **Hình**: app HS giới hạn hình cao 288 px ⇒ khung hình nhỏ thì chữ to; cỡ khung và luật vẽ ở `spec-giai-bai` Phần B › Hình › "Kích thước". Câu có chữ "[hình" mà thiếu `anh_de` không vào bài nào (§1).
+- **Cổng trước khi ghi** phải bắt được cái hiển thị hỏng: công thức KaTeX render được, không ký tự điều khiển (`\t` `\f` `\b` lọt từ chuỗi JS) — `spec-giai-bai` §C6 điều 4, §A5 (viết LaTeX bằng Write / Edit).
+- Chưa làm: khoảng cách dòng lời giải Hình +20 % (`spec-giai-bai` §C10 mục 7); hai quy ước dòng (đề thi: đoạn cách dòng trống · bài học Hình: `\n` đơn) chưa thống nhất (§C10 mục 12).
+- **Thẻ lý thuyết dạng** `##ĐL ĐN TC CY PP VD NX BT`, khung màu, parser `lythuyetBlocks.ts`, chống mồ côi đầu khung khi in ⇒ **spec #2** (nguồn hiện tại `spec-format-noidung.md`). Khung "Bài tập tự luyện" bao cả cụm câu trên trang in (`DangBlock` / `CauFlow`) cũng ở đó.
+
+## 13. Vẽ lại hình của kho
+
+### 13.1 Luật ở đâu
+
+- **Khi nào giữ ảnh gốc, khi nào vẽ lại, nhãn nguồn từng hình**: `spec-giai-bai` §A8 (Thùy 15/11 — gốc ổn GIỮ · gốc tệ có mã lỗi `a`–`f` VẼ LẠI · có LỆNH thì vẽ lại). Luật 13/10 "vẽ lại mọi ảnh không nằm ở `kho-anh/hinh_hoc/`" **đã hết hiệu lực** ⇒ "ảnh chưa vẽ bằng code" KHÔNG còn là việc tồn.
+- **Vẽ thế nào** (dựng đúng dữ kiện bằng toạ độ · không vẽ sẵn đáp án · vuông tại A ⇒ AB đứng, AC ngang · ẩn số `bien` / `angleBien` · gạch bằng nhau ≤ 3, nhóm 4–6 dùng × · khung ≈ 520 × 400, cao ≤ 450 · nhiều hình con một ảnh, 2 hàng · hình theo ý Hình–Luyện · vẽ lại giữ đủ thông tin ảnh cũ, vênh đề thì theo đề): `spec-giai-bai` Phần B › "Hình — luật chung mọi khối" › "Vẽ hình" (`cat-luat.mjs <khối>` cắt kèm mục này cho trạm).
+- **Brief cho trạm**: `docs/mau-brief-ve-lai-hinh.md` **đã xoá 15/11** (commit `0ee3866b`, nội dung đã vào mục "Vẽ hình" của `spec-giai-bai`). Giao trạm vẽ lại = đầu ra `cat-luat.mjs <khối>` + `viec.md` của gói (§C4: brief không chép luật; lời giao ghi thẳng luật phân xử). Vẽ mới: `kho-rules/hinh/ve-moi/BRIEF.md` (§8 L21).
+
+### 13.2 Dây chuyền
+
+| Bước | Ai | Lệnh | Ra |
+|---|---|---|---|
+| 0. Ra lệnh (khi có lệnh của Thùy / trưởng khối) | điều phối | `node scripts/kho/so-hinh.mjs lenh --kho <dai\|hgt\|hinh_hoc\|hinh_hoc_lop\|hinh_luyen\|hinh_luyen_y> (--khoi <k> \| --ma <mã,…> \| --de "<tên đề>") --ra-boi "<người>" [--ly-do "…"]` (chạy thử) → `--ghi` | dòng `kho_hinh_lenh_ve` (đang chờ tới khi có nhãn vẽ ghi sau nó) |
+| 1. Xuất gói (chỉ đọc DB) | máy | Hình–Học: `node scripts/anh/ve_lai_xuat.mjs --khoi <k> \| --bai HH…,HH… [--moi-goi 8] [--ra <thư mục>]` · Hình–Luyện: `ve_lai_xuat.mjs --bang baitoan\|bienthe\|mohinh\|cachgiai [--khoi <k>] [--mo-hinh MH.…]` · hình theo ý: `scripts/hinh-luyen/ve_y_xuat.mjs --goi <gói> (--ma … \| --khoi <k> --tu 0 --so 6)` · HGT: `ve_lai_xuat_hgt.mjs --dang NDB…[,…] [--moi-goi 8] [--ten VT]` · đề thiếu hình: `ve_moi_xuat.mjs --khoi <k> [--chi-duyet] [--bai …] [--moi-goi 6]` | `<ra>/<gói>/viec.md` + `viec.json` (đề · đáp án · lời giải · tên tệp ra) + `cu/<tên>.png` (ảnh cũ); mặc định `C:/Users/WBPC/bk-kho-lam-viec/ve-lai-hinh` |
+| 2. Vẽ | trạm **Sonnet** (≤ 6–8 hình / gói; không Haiku) | tệp vẽ `scripts/anh/ve_lai/<gói>.mjs` (vẽ mới: `scripts/anh/ve_moi/`, theo ý: `scripts/hinh-luyen/ve/<gói>.mjs`) dùng `ve_hinh_lib.mjs` (`hinh()` + `xuatTat()`; mẫu `ve_lai/HH00021-1.mjs` — `_mau.mjs` mà đầu `ve_hinh_lib.mjs` nhắc không còn); vectơ: `ve_vecto_lib.mjs`; đồ thị / toạ độ / lượng giác / tích phân: `kho/do-thi.mjs` · `hinh-toado.mjs` · `hinh-luong-giac.mjs` · `hinh-giai-tich.mjs` · `k10-hinh.mjs` | `<gói>/moi/<tên>.png` (SVG → PNG 2x qua Chrome headless) + báo cáo mỗi hình một dòng. Trạm không sửa thư viện, không DB, không git, không sửa đề / lời giải |
+| 3. Soát | điều phối (mở TỪNG bảng) | `node scripts/anh/ve_lai_bang.mjs <gói> […]` (trái cũ \| phải mới, 6 hình / bảng, ô "CHƯA CÓ") · `bang_hinh.mjs <thư mục> <bảng.png>` · `scripts/hinh-luyen/ve/to_soat.mjs <GÓI>` | `<gói>/bang-<n>.png`; lỗi ⇒ trả trạm, không tin báo cáo "đã đạt" |
+| 4. Gắn | điều phối | `node --env-file=.env scripts/anh/gan_hinh.mjs <gói>/moi --thay --nguon <ve_lai:<a–f>\|ve_lenh\|ve_moi> [--bang …]` (chạy thử) → thêm `--ghi` | upload bucket `kho-anh` (một lần / tệp) + UPDATE cột ảnh + nhãn `kho_hinh_nguon` — **một transaction**; URL cũ ghi `scripts/anh/bien_ban/gan-hinh-<lúc>.json` TRƯỚC khi UPDATE; **ảnh cũ không xoá khỏi bucket** |
+| 5. Sổ | máy | `node scripts/kho/so-hinh.mjs` | `kho-rules/SO-HINH.md` (commit cùng việc) |
+
+- `--thay` mà không `--nguon` ⇒ script chặn (kho có đếm). Gói trộn nhiều nguồn ⇒ tách gói. Không `--thay` ⇒ không đè hình đã có.
+- Vẽ xong ⇒ **đẩy lên kho ngay** (Thùy 13/11: hình chỉ nằm máy nhà ⇒ phải làm lại 140 hình).
+- Đừng nối `| head` sau lệnh chạy tệp vẽ (EPIPE làm script chết).
+
+### 13.3 Tên tệp ⇒ đích (`gan_hinh.mjs`; không đoán bảng từ tên — người gọi khai `--bang`)
+
+| Tên tệp | Đích |
+|---|---|
+| `HHC…` / `HH…` (mã cũ) / `HHL…` (kho trên lớp) `.png` — không đuôi | `anh_de` **và** `anh_dap_an` (cùng một hình ở đề và lời giải, Thùy 07/10) |
+| `…_de.png` · `…_lg.png` | chỉ hình đề · chỉ hình lời giải (lời giải kẻ thêm đường phụ) |
+| `HHC001924+HHC001935_11.png` | `+` = nhiều câu dùng chung một hình; `_<ghi chú>` sau mã bị bỏ qua |
+| `--bang baitoan` `BT.07.045.01.png` | `hinh_baitoan.anh_chuan` |
+| `--bang bienthe` `<uuid>.png` / `<uuid>_lg.png` | `hinh_baitoan_bien_the.anh` / `anh_loi_giai` |
+| `--bang mohinh` `MH.045.png` | `hinh_mo_hinh.anh_cau_hinh` |
+| `--bang cachgiai` `<uuid>.png` | `hinh_cach_giai.anh_loi_giai` |
+| `--bang hlbai` `HLB….png` · `--bang hly` `HLY….png` | `hinh_bai.anh_de` (giả thiết chung) · `hinh_y.anh_de` (hình riêng của ý, cộng dồn) |
+| `--bang baiy` `HHB….png` | `hinh_hoc_bai_y` (bài nhiều ý kho Hình–Học; vẽ mới, `ve_moi_xuat.mjs`) |
+| `--bang hgt` `T….png` | `hgt_cau_hoi.anh_de` (chỉ hình đề) |
+
+Bảng Luyện: chỉ ghi đúng cột khai, bump `updated_at` như app; tên không khớp mẫu khoá ⇒ dừng, không làm gì.
+
+### 13.4 Hiện trạng 17/11 (đếm URL; "code" = URL ở `kho-anh/hinh_hoc/` = hình đã vẽ bằng code qua `gan_hinh.mjs`)
+
+| Kho | Có hình đề | Hình code | Ảnh khác (cắt từ tài liệu, phần lớn `kho-anh/nhap_kho/`) |
+|---|---|---|---|
+| `hinh_hoc_cau_hoi` K7 | 977 | 843 | 134 |
+| K8 | 397 | 236 | 161 |
+| K8T | 162 | 162 | 0 |
+| K9 | 1.468 | 550 | 918 |
+| K11 | 934 | 0 | 934 |
+| **Hình–Học cộng** | **3.938** | **1.791** | **2.147** |
+| `hinh_hoc_cau_lop` | 84 | 84 | 0 |
+| `hgt_cau_hoi` | 1.160 | 70 | 1.090 |
+| `dai_cau_hoi` | 8.598 | — (đồ thị / sơ đồ máy vẽ không theo đường này) | — |
+| `hinh_bai` (Luyện) | 525 | 191 | 334 |
+| `hinh_y` | 157 | 157 | 0 |
+| `hinh_baitoan.anh_chuan` | 126 | 125 | 1 |
+| `hinh_baitoan_bien_the.anh` | 78 | 78 | 0 |
+| `hinh_mo_hinh.anh_cau_hinh` | 66 | 58 | 8 |
+| `hinh_cach_giai.anh_loi_giai` | 6 | 6 | 0 |
+
+- Đợt 13/10 đã vẽ xong K7 · 8 · 8T · 9 phần Học (330 câu / 295 tệp hình) + phần Luyện 209/209 (`hinh_baitoan` + biến thể) — DEVLOG 13/10. "Ảnh khác" ở K7 · 8 · 9 hiện nay chủ yếu là câu nhập SAU 13/10 (đề thi, đề cương) — theo luật 15/11 chỉ vẽ lại khi có mã lỗi hoặc có lệnh.
+- **Nhãn nguồn** (`fn_kho_hinh_dem('Toán')`): 14.462 hình đề, **14.438 chưa rõ nguồn**, 24 `ve_moi` (16/11), 0 lệnh đang chờ. Ảnh cũ trước 15/11 để "chưa rõ" theo chủ ý (chỉ xét khi có lệnh theo khối, `spec-giai-bai` §C12); 118 câu mới sau 15/11 không nhãn ⇒ §8 L16.
+- Biên bản gắn: 181 tệp trong `scripts/anh/bien_ban/` (13/10 → 16/11).
+- **Chưa có luật vẽ lại** (theo `spec-giai-bai`): K11 hình không gian (934 hình đều là ảnh gốc), `hgt_cau_hoi` (dù đã có công cụ — §8 L22); đồ thị / bảng của câu Đại, HGT chưa có máy vẽ loại đó ⇒ giữ gốc + `**Chưa chắc:**`.
