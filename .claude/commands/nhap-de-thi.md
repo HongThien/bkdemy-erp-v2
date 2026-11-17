@@ -12,7 +12,7 @@ mọi luật phân dạng / giải / trình bày / kiểm / điều kiện vào 
 Nhiều đề cùng loại (bộ đề toanmath…) ⇒ chạy theo batch, sổ `kho-rules/dai/lo/toanmath/TINH-TRANG.md` (spec §C8).
 
 Kết quả: câu trong kho (`dai_cau_hoi` / `hgt_cau_hoi` / `hinh_hoc_cau_hoi`) **và** đề ở `tai_lieu(loai='de_thi')` + `tai_lieu_phan` + `tai_lieu_cau`
-⇒ hiện ở Học thuật › Kho đề thi. Cấu trúc đề: `spec-de-thi.md`.
+⇒ hiện ở Học thuật › Kho đề thi. Cấu trúc đề: `spec-kho-cau-hoi.md` §11 (màn Kho đề thi: `spec-builder.md` §8).
 
 ## Thư mục
 

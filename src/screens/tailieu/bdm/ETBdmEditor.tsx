@@ -18,7 +18,7 @@
 //   ('khtn', kho khtn_cau_hoi); hàm fn_tl_bdm_* đi theo môn (mig 202611031655). Lá ET cũ KHTN vẫn chạy song song.
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  createET, updateET, getTaiLieuFull, coKhoHinh, setETCaus, getETByBuoi, fetchCausCuaTaiLieu, maET, ET_FORMS, etFormOf, sortETCaus,
+  createET, updateET, getETMoiByBuoi, getTaiLieuFull, coKhoHinh, setETCaus, getETByBuoi, fetchCausCuaTaiLieu, maET, ET_FORMS, etFormOf, sortETCaus,
   type CauHinh, type ETForm as ETFormKind, type TaiLieuFull,
 } from '../../../lib/tailieu'
 import { oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../../lib/made'
@@ -379,7 +379,17 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   }, [rows, cau, ch, lop, ngay, khoi, lopId, et])
 
   // ── lưu (create / update) — giữ nguyên khuôn ET cũ: câu theo thứ tự in, mã đề phủ đúng bộ câu gốc ──
-  async function persistET(): Promise<string | null> {
+  // ⭐ 17/11 (Thùy: "1 buổi chỉ có 1 ET"): 4 buổi tháng 11 có 2 ET giống hệt tạo cách nhau 1–2 giây — hai lượt lưu chạy chồng
+  //   (Lưu + In, hoặc bấm đúp trước khi `busy` kịp vẽ lại) cùng thấy "chưa có id" ⇒ cùng tạo mới. Một lượt lưu tại một thời điểm:
+  //   lượt đến sau nhận đúng kết quả của lượt đang chạy. Lưới cuối = unique index ở DB (mig 202611171950).
+  const dangLuuRef = useRef<Promise<string | null> | null>(null)
+  function persistET(): Promise<string | null> {
+    if (dangLuuRef.current) return dangLuuRef.current
+    const p = persistETThat().finally(() => { dangLuuRef.current = null })
+    dangLuuRef.current = p
+    return p
+  }
+  async function persistETThat(): Promise<string | null> {
     if (!lop) { setErr('Chọn lớp.'); return null }
     if (!ngay) { setErr('Chọn ngày buổi học.'); return null }
     const chon = rows.filter((r) => r.maCau) as { db: string | null; maCau: string }[]
@@ -411,6 +421,8 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
       const maCaus = sortETCaus(chon.map((r) => bank[r.maCau]), chSave).map((c) => c.ma_cau)
       const ten = `ET ${lop.ten_lop} · ${ngay.split('-').reverse().join('/')}`
       const id = savedId ?? et?.id ?? null
+      // tạo mới mà buổi đã có ET bản đồ mới ⇒ DỪNG (không tạo bản thứ hai, cũng không lưu đè im lặng lên ET có thể đã chấm)
+      if (!id && await getETMoiByBuoi(lop.id, ngay)) { setErr(`Buổi ${ngay.split('-').reverse().join('/')} của ${lop.ten_lop} đã có ET — mở ET đó ở Kho tài liệu để sửa. Mỗi buổi chỉ một ET.`); return null }
       if (id && await updateET(id, { ten, lop_id: lop.id, ngay, cau_hinh: chSave })) {
         await setETCaus(id, maCaus)
         useStore.getState().enqueueLinkGen(id, 'et')

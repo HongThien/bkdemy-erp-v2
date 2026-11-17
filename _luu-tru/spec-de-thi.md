@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-kho-cau-hoi.md` §11 (bóc câu, cấu trúc đề) và `spec-builder.md` §8 (Kho đề thi, soạn, duyệt, giao, thi). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-de-thi.md — ĐỀ THI: 1 input → 2 output (kho theo dạng + đề thi được trên app)
 
 > CEO chốt đích 20/09/2026 (phiên hỏi–đáp 9 câu). Bản này là spec build; paste-ready sang Notion » ERP V2.

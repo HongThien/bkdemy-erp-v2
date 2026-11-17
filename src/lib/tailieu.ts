@@ -773,6 +773,12 @@ export async function getETByBuoi(lopId: string, ngay: string): Promise<ETDoc | 
   if (error) throw error
   return ((data as ETDoc[])?.[0]) ?? null
 }
+/** ET BẢN ĐỒ MỚI của buổi (lớp, ngày) — mỗi buổi đúng MỘT (Thùy 17/11); bản cũ nhất thắng để 4 buổi trùng cũ luôn ra cùng một bản. */
+export async function getETMoiByBuoi(lopId: string, ngay: string): Promise<ETDoc | null> {
+  const { data, error } = await supabase.from('tai_lieu').select('*').eq('loai', 'et').eq('ban_do', 'moi').eq('lop_id', lopId).eq('ngay', ngay).order('created_at', { ascending: true }).limit(1)
+  if (error) throw error
+  return ((data as ETDoc[])?.[0]) ?? null
+}
 // Nhân bản 1 tài liệu (copy tai_lieu + phans + câu + cau_hinh). Dùng cho: lưu MẪU (lop_id/ngay=null) hoặc tạo từ mẫu.
 export async function duplicateTaiLieu(srcId: string, over: { ten: string; lop_id?: string | null; ngay?: string | null }): Promise<TaiLieu> {
   const { data: src, error: eS } = await supabase.from('tai_lieu').select('*').eq('id', srcId).single()

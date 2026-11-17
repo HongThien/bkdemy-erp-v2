@@ -1,6 +1,6 @@
 # spec-kho-cau-hoi.md — KHO CÂU HỎI: đưa câu vào kho (ảnh · tài liệu · đề thi) · clone · quy chuẩn hiển thị · vẽ lại hình · một câu gồm gì · trắc nghiệm · điền ô · báo sai (spec #3 của bộ 20 spec)
 
-> **Trạng thái: THÙY CHỐT 17/11/2026** ("Chốt theo đề xuất" Q1–Q13, bảng cuối §8). Spec này là nguồn đúng; nguồn đã gộp trọn chuyển `_luu-tru/` (còn ở gốc: `spec-kho-chuan.md` phần quy trình duyệt → chờ #5 · `spec-de-thi.md` phần màn/duyệt/thi → chờ #4).
+> **Trạng thái: THÙY CHỐT 17/11/2026** ("Chốt theo đề xuất" Q1–Q13, bảng cuối §8). Spec này là nguồn đúng; nguồn đã gộp trọn chuyển `_luu-tru/` (còn ở gốc: `spec-kho-chuan.md` phần quy trình duyệt → chờ #5 · `spec-de-thi.md` đã lưu trữ 17/11 (phần màn → `spec-builder.md` §8)).
 > **Gộp từ:** `spec-mcq-form.md` · `spec-mcq-quy-trinh-sinh.md` · `spec-mcq-tung-phan.md` · `spec-dien-o.md` · `spec-clone-ai.md` · `spec-kho-chuan.md` (phần định nghĩa "câu vào kho") ·
 > **lượt 2 (17/11, Thùy định lại phạm vi: "Cách nhập kho từ ảnh, cách nhập kho từ đề thi, clone kho, quy chuẩn hiển thị trong kho, vẽ lại hình của kho…"):**
 > `spec-de-thi.md` (phần bóc câu + lưu cấu trúc đề) · `spec-format-noidung.md` (phần hiển thị câu / lời giải) · `.claude/commands/nhap-kho.md` · `.claude/commands/nhap-de-thi.md` (thao tác máy — giữ tại chỗ, spec này trỏ) · đầu tệp các script `scripts/anh/*` · `scripts/kho/*` · `scripts/nhap_kho.mjs`.

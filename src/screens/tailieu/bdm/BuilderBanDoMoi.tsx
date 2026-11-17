@@ -576,7 +576,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                           <span className="shrink-0 text-[12px] font-bold text-slate-400">{i + t + 1}.</span>
                           <b className="shrink-0 text-[13px] text-violet-700">{y.nhan_y})</b>
                           <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-slate-700"><DeY daBiet={y.da_biet} cauHoi={y.cau_hoi_y ?? deCuaY(y)} /></div>
-                          <MaCau ma={y.ma_cau} />
+                          <MaCau ma={y.ma_cau} rac={!!y.xoa_at} />
                           {!chiXem && (
                             <span className="flex shrink-0 items-center gap-2">
                               <button onClick={() => onXoa(y.ma_cau)} title="Bỏ ý này" className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
@@ -592,7 +592,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                 <li key={m} className={`rounded-md border px-2.5 py-1.5 ${btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'}`}>
                   <div className="flex items-center gap-2">
                     <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
-                    <MaCau ma={m} />
+                    <MaCau ma={m} rac={!!c?.xoa_at} />
                     {c && <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>}
                     {!chiXem && (
                       <span className="ml-auto flex flex-wrap items-center justify-end gap-2">

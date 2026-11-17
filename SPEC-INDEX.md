@@ -13,8 +13,8 @@
 |---|---|---|---|
 | 1 | ✅ **`spec-kien-truc.md` — ĐÃ GỘP 17/11** (nguồn đã chuyển `_luu-tru/`) | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · *đã gộp:* `ADR-mon` (→ §2a) · `AUDIT-client-tinh-toan` (→ §14) |
 | 2 | ✅ **`spec-ban-do-toan.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-cum-bai` còn cho KHTN + Hình–Học) | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
-| 3 | ✅ **`spec-kho-cau-hoi.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-kho-chuan` → #5 · `spec-de-thi` → #4) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone**; *mở rộng 17/11 (Thùy):* **nhập kho từ ảnh · từ đề thi · quy chuẩn hiển thị · vẽ lại hình** (luật giải vẫn ở #5) | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") · `spec-de-thi` (phần bóc câu + cấu trúc đề) · `spec-format-noidung` (phần hiển thị câu) |
-| 4 | `spec-builder.md` — **NHÁP 17/11, chờ Thùy duyệt** (L1–L15 §12; nguồn chưa chuyển) | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
+| 3 | ✅ **`spec-kho-cau-hoi.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-kho-chuan` → #5) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone**; *mở rộng 17/11 (Thùy):* **nhập kho từ ảnh · từ đề thi · quy chuẩn hiển thị · vẽ lại hình** (luật giải vẫn ở #5) | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") · `spec-de-thi` (phần bóc câu + cấu trúc đề) · `spec-format-noidung` (phần hiển thị câu) |
+| 4 | ✅ **`spec-builder.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`) | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
 | 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · *đã gộp 17/11:* `spec-muc-tieu-tuan` (→ §4.1–§4.7) |
@@ -75,6 +75,8 @@
 | `spec-mcq-tung-phan.md` | Gộp vào spec #3 (17/11) | `spec-kho-cau-hoi.md` |
 | `spec-dien-o.md` | Gộp vào spec #3 (17/11) | `spec-kho-cau-hoi.md` |
 | `spec-clone-ai.md` | Gộp vào spec #3 (17/11) | `spec-kho-cau-hoi.md` |
+| `spec-builder-ban-do-moi.md` | Gộp vào spec #4 (17/11) | `spec-builder.md` |
+| `spec-de-thi.md` | Gộp vào spec #3 + #4 (17/11) | `spec-kho-cau-hoi.md` §11 (bóc câu, cấu trúc đề, `/nhap-de-thi`) · `spec-builder.md` §8 (Kho đề thi, soạn, duyệt, giao, thi) |
 | `ADR-mon.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §2a (chiều môn) · §2b (gộp theo khuôn) |
 | `AUDIT-client-tinh-toan.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §14 |
 | `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |

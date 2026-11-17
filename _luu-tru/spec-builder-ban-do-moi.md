@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-builder.md`. Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Builder giáo trình theo BẢN ĐỒ MỚI 4 tầng
 
 > **Trạng thái 17/10:** CEO đã chốt phần A (logic) + luật mã. CHƯA build. Phần B = kỹ thuật (CTO tự quyết theo R2).

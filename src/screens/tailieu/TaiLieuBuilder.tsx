@@ -357,7 +357,7 @@ function DangCard({ dang, btvn, linesByCau, colByCau, onCol, onLine, onLineAll, 
                   2 = đề đầy đủ (wrap tự nhiên). Hàng 3 = ảnh (nếu có). */}
               <div className="flex items-center gap-2">
                 <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
-                <MaCau ma={c.ma_cau} />
+                <MaCau ma={c.ma_cau} rac={!!c.xoa_at} />
                 <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
                 <span className="ml-auto flex flex-wrap items-center justify-end gap-2">
                   <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
@@ -407,8 +407,14 @@ export function ColSel({ value, onChange }: { value: number; onChange: (n: numbe
 }
 
 // Badge mã câu — chỉ hiện khi SOẠN (đối chiếu với Tìm câu), KHÔNG lên bản in HS.
-export function MaCau({ ma }: { ma: string }) {
-  return <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
+// `rac` (17/11, spec-builder §12 L15): câu đã vào KHO RÁC nhưng tài liệu vẫn trỏ — vẫn in / chấm được (đúng luật kho rác), chỉ CẢNH BÁO để người soạn thay.
+export function MaCau({ ma, rac }: { ma: string; rac?: boolean }) {
+  return (
+    <>
+      <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
+      {rac && <span className="shrink-0 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title="Câu này đã bị đưa vào kho rác. Tài liệu vẫn in và chấm được, nhưng nên thay bằng câu khác.">đã vào kho rác</span>}
+    </>
+  )
 }
 
 function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c: CauHoi; col: number; onCol: (n: number) => void; onRemove: () => void; cheDo?: CheDoHinh; onCheDo?: (v: CheDoHinh) => void }) {
@@ -418,7 +424,7 @@ function CauRow({ no, c, col, onCol, onRemove, cheDo, onCheDo }: { no: number; c
           multi-line (câu có a/b/c), đề chen giữa controls trông loạn. Header + text + ảnh mỗi khối riêng. */}
       <div className="flex items-center gap-2">
         <span className="text-[12px] font-bold text-slate-400">{no}.</span>
-        <MaCau ma={c.ma_cau} />
+        <MaCau ma={c.ma_cau} rac={!!c.xoa_at} />
         <span className="shrink-0 rounded bg-slate-100 px-1.5 text-[10px] font-medium text-slate-500">{loaiLabel(c.loai_cau)}</span>
         <span className="ml-auto flex flex-wrap items-center justify-end gap-2">
           <ColSel value={col} onChange={onCol} />

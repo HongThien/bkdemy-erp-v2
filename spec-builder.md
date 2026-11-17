@@ -1,6 +1,6 @@
 # spec-builder.md — BUILDER · ET · MT · GIÁO TRÌNH · ĐỀ TRÊN APP · IN (spec #4 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026, chờ Thùy duyệt.** Chừng nào Thùy chưa duyệt, file nguồn ở dưới VẪN là nguồn đúng; chỗ nào nháp này lệch nguồn ⇒ xem §12.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời từng câu — bảng "Thùy chốt" đầu §12). Spec này là nguồn đúng; `spec-builder-ban-do-moi.md` + `spec-de-thi.md` đã chuyển `_luu-tru/`.
 > **Gộp từ:** `spec-builder-ban-do-moi.md` (trọn) · `spec-de-thi.md` §5–§10.10 (màn đề trên app: Kho đề thi, soạn, duyệt, giao, thi; phần bóc câu §0–§4 đã ở `spec-kho-cau-hoi.md` §11) ·
 > `_luu-tru/spec-test-online.md` (luật phát hành / snapshot / reveal còn hiệu lực) · HANDOFF (mục builder · giáo trình per-class · Kho đề thi · ET bản đồ mới) · DEVLOG 02/07 → 16/11 (quyết định có ngày, ghi `(Thùy dd/mm)`).
 > `_luu-tru/spec-giao-trinh-tuan.md` chỉ đọc để biết lịch sử — nguồn đúng là `spec-van-hanh-tuan.md` §3.
@@ -323,7 +323,32 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 **`tai_lieu_phan` và `tai_lieu_cau` không có trigger nào** (17/11) ⇒ mọi luật nội dung (không trùng trong buổi, bump `updated_at`) nằm ở RPC ghi; ghi thẳng PostgREST (RLS `la_thanh_vien()` cho phép ALL) là đi vòng luật.
 **Ràng buộc:** `tai_lieu.ban_do` CHECK `cu|moi` · `tai_lieu_phan.lui_bac` CHECK 1|2 · `uq_tai_lieu_van_hanh` · `uq_bai_test_doc` · `bai_test.loai` CHECK 14 giá trị · `bai_test_cau.kieu_nhap` CHECK `phieu_4o` · `gami_session_problems.phase` CHECK `ingame|et|mt|btvn`.
 
-## 12. Lệch phát hiện + câu hỏi chờ Thùy
+## 12. Thùy chốt 17/11 + lệch phát hiện
+
+**THÙY CHỐT (17/11) — quyết định thắng mọi dòng "đề xuất" trong bảng lệch bên dưới:**
+| # | Quyết định | Tình trạng |
+|---|---|---|
+| L3 | **Chống lặp: KHÔNG cấm.** Chọn tay câu đã dùng ⇒ chỉ hiện cờ. **Gợi ý câu thì tránh tài liệu của buổi gần nhất** (và, như cũ, không trùng trong buổi). | luật; gợi ý ở DB (`fn_tl_bdm_goi_y`) chưa sửa — làm khi có lệnh |
+| L4 | **Mã đề: theo luật mới HẾT** (MT cũng dùng luật của ET mới, một nguồn ở DB `fn_tl_bdm_et_ma_de`). **Luật vẫn ưu tiên CLONE đầu tiên** (câu cùng gốc–clone trước, rồi mới tới câu khác cùng dạng bài). | luật; MT chưa chuyển — làm khi có lệnh |
+| L5 | Phát hành bài + chấm trên app chuyển xuống DB (so cũ–mới 30 bài thật, deploy ERP + app HS cùng lúc). | OK — chưa làm |
+| L9 | Builder + ET bản đồ cũ: **khoá, chỉ xem / in**; giáo trình cũ còn dùng (5A, KHTN 7K–9K) chuyển sang bản lưu trữ. | OK — chưa làm |
+| L10 | Giáo trình cũ chưa chuyển: **để nguyên làm lịch sử.** | chốt |
+| L11 | **MỘT BUỔI CHỈ MỘT ET** (Thùy: "sao lại có chuyện 1 buổi 2 ET… do làm lỗi"). Gốc lỗi đã tìm: hai lượt lưu chồng nhau ở màn ET mới cùng tạo mới (4 buổi 03–13/11, hai bản giống hệt cách nhau 1–2 giây; 23 cặp cũ hơn ở ET bản đồ cũ cùng kiểu). | ✅ vá client (`ETBdmEditor`: một lượt lưu tại một thời điểm + tạo mới mà buổi đã có ET ⇒ dừng) + ✅ unique index DB `tai_lieu_et_moi_mot_buoi_uidx` (ET tạo từ 18/11). **Bản trùng cũ CHƯA xoá — chờ Thùy gật danh sách** |
+| L12 | ~27 đề duyệt trước 20/10: chạy lại `fn_de_thi_duyet` một lượt, đếm trước. | OK — chưa làm |
+| L13 | Kiểm tra / thư viện đề luyện (P4): giữ "chưa làm". | chốt |
+
+**Việc kỹ thuật (Thùy 17/11: "7 việc kĩ thuật kia m xử lý đi"):**
+| # | Kết quả |
+|---|---|
+| L1 | ✅ mig `202611172006`: CHECK `tai_lieu.loai` (10 giá trị) + `tai_lieu_phan.loai_phan` (14 đang có + `lt_chuyen_de`). Thêm loại mới ⇒ migration nới CHECK. |
+| L2 | ✅ mig `202611172006`: trigger `trg_chan_xoa_cau_dang_dung` (BEFORE DELETE) trên 8 bảng `*_cau_hoi` — chặn xoá cứng câu còn ở `tai_lieu_cau` / `bai_test_cau` / `gami_session_problems`; xoá mềm không ảnh hưởng. Đã thử: chặn đúng. 2 tham chiếu chết cũ giữ nguyên. |
+| L6 | Không sửa — gỡ cùng builder cũ (L9). |
+| L7 | **Đo lại 17/11: nhận định của nháp SAI một phần** — 129/129 ô MT Hình ĐỀU có khoá thật (`hinh_baitoan_id` / `hinh_y_id`), điểm gắn đúng bài theo khoá. Chỉ còn **số thứ tự ô** (`problem_no`) xếp theo "hàng Hình thứ k ↔ nhãn bắt đầu bằng k" (`thuTuMTTheoDe`) ⇒ đổi thứ tự hàng Hình sau khi gán có thể lệch SỐ hiển thị, không lệch đo. Không sửa đợt này. 12 ô BTVN không mã: chưa soi. |
+| L8 | Giữ (ghi nhận). |
+| L14 | **Đã đúng từ 16/11** — `fn_tl_bdm_copy_buoi` có `anhPhaiByCau` trong danh sách khoá chép; nháp ghi nhầm. Không làm gì. |
+| L15 | ✅ thẻ mã câu dùng chung `MaCau` thêm cờ "đã vào kho rác" (giáo trình cũ + mới; chỉ cảnh báo). Màn ET mới không dùng `MaCau` — chưa có cờ. Chờ deploy ERP. |
+
+### Bảng lệch gốc (đối chiếu 17/11 — cột "đề xuất" là trước khi Thùy chốt)
 
 | # | Lệch (nguồn ↔ hiện trạng 17/11) | Câu hỏi | Đề xuất CTO |
 |---|---|---|---|
