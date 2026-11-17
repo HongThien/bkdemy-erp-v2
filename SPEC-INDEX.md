@@ -30,7 +30,7 @@
 | 17 | `spec-bai-hoc-tuong-tac.md` | Bài học tương tác | `spec-day-hinh-3d` · `spec-toan-du-hanh` · `spec-khtn-du-hanh` |
 | 18 | `spec-bo-tro.md` (giữ tên) | **Chỉ logic bổ trợ**: các level, cách kết luận, theo dõi… (xếp lịch, báo PH ⇒ #8) | `spec-bo-tro` |
 | 19 | `spec-tai-chinh.md` | **Số liệu** tài chính (cách thu ⇒ #8, lương ⇒ #11) | `SPEC-tai-chinh-luong-gv-ta` (phần cơ cấu tài chính) · `PLAN-thu-chi` (phần số liệu) |
-| 20 | `spec-mastery.md` | **Mastery / đo lường — spec riêng** (lần đo, mastery, dạng yếu, cache, Dashboard học tập) | `spec-danh-gia-cuoi-cap` (đo theo lần) · `PLAN-mastery-ban-do-moi` (phần mastery) · `spec-van-hanh-tuan` §5.6 (dạng yếu tại mốc) · *CLAUDE.md §5 · mục HANDOFF "Mastery theo lần", "Dashboard học tập"* |
+| 20 | `spec-mastery.md` — **NHÁP 17/11, chờ Thùy duyệt** (file nguồn chưa chuyển) | **Mastery / đo lường — spec riêng** (lần đo, mastery, dạng yếu, cache, Dashboard học tập) | `spec-danh-gia-cuoi-cap` (đo theo lần) · `PLAN-mastery-ban-do-moi` (phần mastery) · `spec-van-hanh-tuan` §5.6 (dạng yếu tại mốc) · *CLAUDE.md §5 · mục HANDOFF "Mastery theo lần", "Dashboard học tập"* |
 
 **Không vào bộ 20 spec:**
 - **Anh, Văn — gác lại (Thùy 17/11):** `spec-anh-kho` · `spec-anh-ban-do-k9` · `nghien-cuu-mon-anh` giữ nguyên ở gốc, chưa gộp.
