@@ -2,14 +2,14 @@
 
 > Sinh bởi `npm run schema` từ DB live (read-only). Nguồn chuẩn = DB.
 
-> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `17` BẢNG
-> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `mtt_ke_hoach` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs`
+> ## ⚠️ ĐIỂM MÙ ĐỌC DỮ LIỆU — `16` BẢNG
+> Role `claude_build` **không sở hữu** và **không có `bypassrls`** với: `giai_thuong` · `giai_thuong_lop_thang` · `hinh_giao_trinh` · `hinh_gt_bai` · `hinh_gt_buoi` · `sk_checkin` · `sk_dang_ky` · `sk_dang_ky_log` · `sk_luot` · `sk_nguoi_choi` · `sk_phan_cong` · `sk_phan_cong_log` · `sk_phong` · `sk_su_kien` · `sk_xu` · `thong_bao_hs`
 > Các bảng này bật RLS với policy `to authenticated`, nên `SELECT` từ script/CLI trả **0 dòng,
 > im lặng, không lỗi**. ⚠ **"0 dòng" ở đây KHÔNG phải bằng chứng bảng rỗng** — muốn biết số thật
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 457 trigger · 1994 function
+602 bảng · 42 view · 0 enum · 457 trigger · 1995 function
 
 ## _app_secrets
 
@@ -13099,6 +13099,7 @@ WITH luot AS (
 - `fn_mtt_cac_tuan(p_mon text, p_hs uuid DEFAULT NULL::uuid, p_so integer DEFAULT 8)` → jsonb
 - `fn_mtt_chot_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_cua_toi(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_dang_tinh_trang(p_hs uuid, p_mon text, p_ma text[])` → jsonb
 - `fn_mtt_ds_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_hs(p_hs uuid, p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_top(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
