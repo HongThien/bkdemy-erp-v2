@@ -77,6 +77,11 @@ GV chỉ chốt lịch dạy + giáo trình như bình thường; hệ tự cắ
 
 ### 3.2 Luật cắt cửa sổ
 
+> ⭐ **SỬA 17/11 (Thùy chốt, mig 202611171216) — PHẦN 1 = BÀI HỌC TRONG TUẦN.** "Kiến thức mới phải là bài CHƯA học, và tuần tới là tuần học." Phần 1 chỉ gồm nhóm của các buổi diễn ra
+> trong tuần (thứ Hai–CN). Bài của buổi cuối tuần trước đã học xong ⇒ KHÔNG vào Phần 1 (BTVN của buổi đó vẫn là việc của con nếu hạn nộp rơi trong tuần). Dòng "sẽ học thêm (tính vào tuần sau)" bỏ.
+> Số lần đo k giữ công thức (ET buổi trong tuần + BTVN của buổi mà buổi kế còn trong tuần). Bảng "cửa sổ" bên dưới là luật CŨ 13/11 — chỉ còn đúng cho phần **chấm BTVN**, không còn quyết định nhóm Phần 1.
+> Lớp đã Công bố giữ bản khoá cũ (mtt_ke_hoach) — đổi phải mở khoá.
+
 **Một lần đo thuộc tuần mà nó ĐƯỢC CHẤM XONG**, không theo lúc HS nộp (lần đo chỉ tồn tại khi có kết quả chấm — CLAUDE §1.5).
 BTVN buổi N nộp trước buổi N+1 ⇒ với lớp 2 buổi/tuần, mục tiêu tuần = **buổi cuối tuần trước + buổi đầu tuần này**:
 
