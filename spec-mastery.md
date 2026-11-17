@@ -1,6 +1,6 @@
 # spec-mastery.md — MASTERY / ĐO LƯỜNG (spec #20 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — chờ Thùy duyệt.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
+> **Trạng thái: 17/11/2026 — Thùy đã chốt 5 điểm lệch (§10); mig `202611171010` (điểm 1–3) đã thử, CHƯA ÁP; điểm 5 chưa làm.** Viết lại từ: CLAUDE.md §5 · `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` ·
 > `spec-bo-tro.md` §1 · `spec-van-hanh-tuan.md` §4.3, §5.6 · HANDOFF (mục "Mastery theo lần", "Dashboard học tập") · DEVLOG 10 → 16/11.
 > **Mọi luật ở §2–§7 đã đối chiếu với hàm ĐANG CHẠY trong DB ngày 17/11** (`pg_get_functiondef`). Chỗ code lệch luật Thùy đã nói ⇒ không tự sửa, ghi ở §10.
 > Spec này thắng các file nguồn ở phần đo lường. Luật mastery MỚI chỉ ghi vào đây.
@@ -33,7 +33,7 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 | Nguồn (bảng) | Khoá "một lần" | Thời điểm của lần | Kênh |
 |---|---|---|---|
 | Chấm buổi `gami_grades` ⨝ `gami_session_problems` — phase `et` · `mt` · `btvn` (kể cả buổi bù, khảo sát) | phase + buổi | **ngày buổi** (giờ VN); không gắn buổi ⇒ lúc chấm | `et` · `mt` · `btvn` |
-| Bài trên app `bai_lam_cau` ⨝ `bai_lam` ⨝ `bai_test` | một bài làm (`bai_lam.id`) | ngày buổi của bài; không có ⇒ lúc chấm câu | `bai_test.loai` `et` · `de_thi` · `bo_tro_test` ⇒ **et**; `tu_luyen` ⇒ **tu_luyen**; mọi loại khác ⇒ **btvn** (xem §10.1) |
+| Bài trên app `bai_lam_cau` ⨝ `bai_lam` ⨝ `bai_test` | một bài làm (`bai_lam.id`) | ngày buổi của bài; không có ⇒ lúc chấm câu | **TEST** `et` · `de_thi` · `bo_tro_test` · `bu_test` · `htd_test` ⇒ **et** · `btvn` · `giao_trinh` ⇒ **btvn** · `tu_luyen` ⇒ **tu_luyen** · **LUYỆN không tính** (Thùy 17/11 — §10.1, §10.2) |
 | Phiếu bổ trợ giấy `bt_grades` | một phiếu | lúc chấm | `bt` (30 ngày tới 17/11: 0 dòng) |
 
 **Hai bộ nguồn** (tham số `p_include_btvn`), cả hai đều được lưu sẵn:
@@ -42,7 +42,9 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 
 **Không tính:**
 - **Tự luyện** — trừ HS khối **3 · 4 · 5** (Thùy 10/11 + 12/11: 4T · 5T cũng KHÔNG tính tự luyện). Lý do: mỗi phiên tự luyện = 1 lần, đẩy ET/BTVN ra khỏi cửa sổ 5 lần.
-- `bai_test.loai` `on_thi_luyen` · `thi_thu` (thi thử trên app không tính — Thùy 23/10).
+- **Mọi bài LUYỆN** (Thùy 17/11: "chỉ test mới tính, luyện không tính"): `bo_tro` (luyện bổ trợ yếu) · `bu_luyen` · `htd_luyen` · `retest` · `on_thi_luyen` · `thi_thu` (thi thử — Thùy 23/10).
+  Code dùng **danh sách CHO PHÉP** các loại bài được tính ⇒ thêm `bai_test.loai` mới thì phải quyết tường minh nó là test hay luyện.
+- Phiếu bổ trợ giấy `bt_grades` hiện vẫn trong nguồn "mọi nguồn" (bảng 0 dòng từ trước tới 17/11 — không ảnh hưởng số; nếu dùng lại thì xếp test/luyện theo luật trên).
 - ET / đề thi trên app **chưa nộp** (`bai_lam.trang_thai <> 'da_nop'`).
 - Câu làm trên app đã có **bản sao** trong bảng chấm buổi (`gami_grades.bai_lam_cau_id`) ⇒ chỉ lấy bản chấm buổi (TA sửa tay ở đó) — nếu không mỗi câu tính 2 lần (sửa 23/10).
 - Câu **không quy được về nút** (§3) ⇒ bỏ khỏi lần đó; lần không còn câu nào ở nút ⇒ không thành lần ở nút đó.
@@ -78,13 +80,15 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 - Mọi chỗ đếm dạng yếu đi qua **`_btyeu_dang_theo_nhom`** (giữ tên + chữ ký cũ; tham số cửa sổ cũ không còn dùng): Dashboard học tập · QLCL · KPI báo cáo tuần · đổ dạng vào case yếu · "+N dạng yếu mới" · popup chốt.
 - **Tại một mốc:** `_dang_yeu_tai_lo(HS[], môn, mốc)` (chia lô 20 em) = luật trên + bài mô hình Hình–Luyện mức yếu. **Chụp tự động 00:00 thứ Hai** (`_dang_yeu_chup_tuan` → `dang_yeu_dau_tuan`); ảnh là bộ đệm, lệch thì tính lại từ hàm.
 - **Hiện tại:** sổ tính sẵn `dang_yeu` (`_qlcl_lam_moi_nen`, 5 phút) → `dang_yeu_hien_tai`.
-- **HS yếu:** Báo cáo tuần = em có ≥ 1 dạng yếu (`spec-van-hanh-tuan` §5) · box "Học sinh yếu" của trưởng khối = đếm theo số **nhóm** yếu (≥ 3 · 2 · 1). Hai định nghĩa đang cùng tồn tại (§10.5).
+- **HS yếu = em có ≥ 1 NHÓM yếu** ở môn đó (Thùy 17/11 — thống nhất theo nhóm; box trưởng khối chia ≥ 3 · 2 · 1 nhóm).
+  Hiện code: box trưởng khối đã theo nhóm; **Báo cáo tuần còn đếm theo dạng** (`fn_bctk_so`, `_bctk_nhom`, `fn_qlcl_tong_quan`) — chưa sửa (§10.5).
 - Số đã chụp / đóng băng trước 13/11 giữ nguyên (lịch sử, sổ bất biến).
 
 ## 6. Hình–Luyện (bài mô hình) — đường đo riêng
 
-- Câu của bài mô hình (`hinh_baitoan`) không đi qua §3–§4; đo ở `_mastery_cells_hinh_tai` / `fn_mastery_cells_hinh`, nút = bài mô hình.
-- Công thức hiện chạy **vẫn là kiểu CŨ theo câu**: 3 câu gần nhất, trọng số MT 3 · ET 2 · khác 1, **không** giới hạn 30 ngày; nguồn = chấm buổi + bài bổ trợ (`bo_tro_test` luôn tính; `bo_tro` · `retest` khi đọc "mọi nguồn"). Ngưỡng mức giống §1, độ tin 3 / 2. ⇒ Lệch luật theo lần — §10.3.
+- Câu của bài mô hình (`hinh_baitoan`) không đi qua §3 (nút = bài mô hình); đo ở **một** hàm `_mastery_cells_hinh_tai` (`fn_mastery_cells_hinh` chỉ gọi vào đó).
+- **Luật (Thùy 17/11 "chuyển sang luật mới toàn bộ"):** như §2 + §4 — một lần = một bài làm · TB ≤ **3** lần gần nhất (thang Hình 3, CEO 14/10) · 30 ngày tới mốc · không trọng số · chỉ TEST tính, luyện / retest không tính · độ tin 3 / 2.
+- *Trước mig `202611171010`:* theo câu, 3 câu gần nhất, trọng số MT 3 · ET 2 · khác 1, không giới hạn 30 ngày, có tính luyện bổ trợ + retest.
 - Dashboard học tập từ 10/11 **không còn cột Hình–Luyện** (chưa quy câu Hình–Luyện vào nhóm). Bổ trợ Hình chạy riêng (`spec-bo-tro`).
 
 ## 7. Lưu sẵn (cache) — đọc nhanh mà luôn đúng
@@ -124,15 +128,23 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 - **Dashboard học tập** từ 10/11 tối **đọc mastery chính** (không còn kênh "10 câu gần nhất" riêng, không lọc tuần); popup ô = từng lần của nút.
 - Elo / EXP / điểm rank app HS **không phải mastery** (`spec-kinh-te-nhiem-vu`).
 
-## 10. Chờ Thùy quyết (lệch phát hiện khi đối chiếu DB 17/11 — CHƯA sửa gì)
+## 10. Quyết định 17/11 (Thùy) — lệch phát hiện khi đối chiếu DB, và tình trạng sửa
 
-1. **Luyện bổ trợ đang tính vào mastery "mọi nguồn" như BTVN.** Code xếp mọi `bai_test.loai` ngoài `et` · `de_thi` · `bo_tro_test` · `tu_luyen` vào kênh `btvn`. 30 ngày tới 17/11 có: `bo_tro` (luyện bổ trợ yếu) **1.050 câu** · `bu_luyen` 323 · `htd_luyen` 107 — đang được tính. Trong khi `spec-bo-tro` ("luyện không tính") và Đánh giá cuối cấp (L5) nói không tính. `giao_trinh` (2.066 câu) cũng vào kênh btvn — đúng nếu đó là BTVN theo giáo trình trên app.
-   ⇒ **Bỏ luyện bổ trợ / bù / học từ đầu khỏi mastery?** (CTO đề xuất: bỏ — luyện là lúc em đang được hướng dẫn, không phải đo).
-2. **Test bù (`bu_test`, 345 câu) và test học từ đầu (`htd_test`, 161 câu) đang xếp kênh btvn**, còn test cuối ca yếu (`bo_tro_test`) xếp kênh ET ⇒ bộ "ET + MT" có test yếu nhưng không có test bù / học từ đầu. Cuối cấp coi ba loại test ngang nhau. ⇒ **Cả ba loại test cùng kênh ET?** (CTO đề xuất: có).
-3. **Hình–Luyện (§6) còn công thức cũ** (theo câu, trọng số, không 30 ngày, có retest + luyện). ⇒ Chuyển sang theo lần + 30 ngày như phần còn lại? Kèm: đưa Hình–Luyện lại vào Dashboard theo nhóm.
-4. **CLAUDE.md §1 còn ghi "KP = dạng (`ma_dang`)"** trong khi Thùy 10/11 chốt nhóm là cấp chính. ⇒ Sửa CLAUDE.md §1 (và Notion) cho khớp?
-5. **Hai định nghĩa "HS yếu"** (báo cáo tuần: ≥ 1 dạng yếu · box trưởng khối: theo nhóm yếu). ⇒ Giữ cả hai, hay thống nhất theo nhóm?
-6. Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ, Dashboard bỏ qua 345T ("tính sau" — Thùy 23/10). Ghi lại để nhớ, chưa cần quyết.
+| # | Lệch phát hiện | Thùy chốt 17/11 | Tình trạng |
+|---|---|---|---|
+| 1 | Code xếp mọi `bai_test.loai` lạ vào kênh btvn ⇒ luyện bổ trợ `bo_tro` (1.050 câu / 30 ngày) · `bu_luyen` 323 · `htd_luyen` 107 đang tính | **Chỉ test mới tính, luyện không tính** | mig `202611171010` — **CHƯA ÁP** |
+| 2 | `bu_test` · `htd_test` ở kênh btvn, `bo_tro_test` ở kênh ET | **Cả ba loại test tính như ET** | mig `202611171010` — **CHƯA ÁP** |
+| 3 | Hình–Luyện công thức cũ (theo câu, trọng số, không 30 ngày, có luyện + retest) | **Chuyển sang luật mới toàn bộ** (§6) | mig `202611171010` — **CHƯA ÁP**. Đưa Hình–Luyện lại vào Dashboard theo nhóm: việc sau |
+| 4 | CLAUDE.md §1 ghi "KP = dạng" | **Sửa** — nhóm là cấp chính | ✅ đã sửa CLAUDE.md §1 (17/11). Notion chưa |
+| 5 | Hai định nghĩa HS yếu (báo cáo tuần theo dạng · box trưởng khối theo nhóm) | **Thống nhất theo nhóm yếu** (§5) | chưa sửa — cần scope riêng: `fn_bctk_so` · `_bctk_nhom` · `fn_qlcl_tong_quan` · sổ chụp đầu tuần |
+| 6 | Cấp 1 (K3 · 4 · 5) quy theo bản đồ cũ, Dashboard bỏ qua 345T | "tính sau" (Thùy 23/10) | ghi để nhớ |
+
+**Số thử mig `202611171010` (17/11 10:12, giao dịch ROLLBACK, 361 HS đang học, 58 HS KHTN · Lý · Hoá):**
+- **Toán, mọi nguồn:** ô dạng 14.641 → 14.634 (7 ô chỉ có luyện thành "chưa đo") · dạng yếu 1.668 → 1.679 · nhóm yếu 740 → 754 · 53 ô dạng + 52 ô nhóm đổi mức (17 + 18 ô thành yếu, 4 + 4 ô hết yếu) · HS có ≥ 1 nhóm yếu 260 → 259.
+- **Toán, ET + MT:** thêm 45 ô dạng + 15 ô nhóm (test bù / học từ đầu nay vào bộ này) · yếu gần như không đổi.
+- **KHTN · Lý · Hoá:** 0 thay đổi (không có bài luyện).
+- **Hình–Luyện:** ô mọi nguồn 3.586 → 456 · ô yếu 497 → 133. **Toàn bộ** phần giảm là do **giới hạn 30 ngày** (đo lại: công thức cũ cắt 30 ngày cũng ra đúng 456 ô · 133 yếu) ⇒ ô chỉ có lần đo cũ hơn 30 ngày thành "chưa đo"; đổi sang theo lần + bỏ luyện chỉ làm 10 ô đổi mức. Ảnh hưởng: số bài mô hình yếu đổ vào bổ trợ Hình giảm mạnh.
+- `fn_mastery_cells_hinh` sau khi thành lớp mỏng = `_mastery_cells_hinh_tai`: lệch 0 dòng.
 
 **Việc kỹ thuật (CTO tự làm khi có lệnh, không cần quyết):** lõi môn một vùng `_mastery_mon_d` ~0,58 s / em (viết lại theo tập cần bộ đối chiếu trước) · `fn_tong_quan_hs` 1,4 s · bảng `mastery_ban` (4 dòng) không còn hàm nào đọc — cơ chế bẩn đã sang `mastery_ban_log` (xoá phải hỏi, Luật xoá) · `_dy_so_nhom` không còn ai gọi.
 

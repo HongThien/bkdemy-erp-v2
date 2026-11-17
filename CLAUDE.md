@@ -32,8 +32,9 @@
 
 ## 1. Model lõi v2 (khác hẳn v1)
 
-- **Đơn vị chân lý = (Student × Knowledge Point).** **KP = "dạng" (`ma_dang`).**
-- **Mastery KHÔNG lưu — suy động** từ MỌI lần đo của dạng đó (không gắn theo buổi).
+- **Đơn vị chân lý = (Student × Knowledge Point).** KP = một nút của bản đồ: **dạng bài · nhóm bài · chuyên đề · chủ đề**.
+  **NHÓM BÀI là cấp chính** để kết luận + bổ trợ; dạng là đơn vị DẠY và cấp phụ (Thùy 10/11, sửa 17/11). Chi tiết đo: `spec-mastery.md`.
+- **Mastery KHÔNG lưu — suy động** từ các LẦN đo của nút đó (một lần = một bài làm; không gắn theo buổi). Bảng lưu sẵn chỉ là bản chụp để đọc nhanh.
   → Lỗ 1 buổi ≠ lỗ KP. Một dạng lặp lại qua nhiều buổi nên data tự lấp dần.
   Đây là lý do (HS × KP) thắng (HS × buổi) của v1.
 - **3 lớp:**
