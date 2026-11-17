@@ -25,7 +25,7 @@ Mọi bước đọc chung **một bộ dữ liệu** (ca TKB · buổi giáo tr
 | **Sau họp → 12:00 thứ Bảy (H2)** | Trưởng bộ môn | **Duyệt** / **Trả lại** (có lý do) giáo trình tuần từng khối | Phòng trưởng bộ môn › 📅 Giáo trình tuần | `gtt_duyet(duyet)` + **bản chụp khung** |
 | **CN 24:00 (= T2 00:00)** | Máy | Chụp **dạng yếu đầu tuần** mọi HS × môn (`_tu_dong_sang_t2`) · chốt **sổ Mục tiêu tuần** tuần cũ (`mtt_chot`, bất biến) · chụp số **đầu tuần** tuần mới (`mtt_dau`) | Bộ điều phối `_tinh_san_chay` | Sổ bất biến (§2.3) |
 | **T2 sáng** | Máy | Báo cáo tuần trước MỞ (nháp, số tính sẵn) · tờ Mục tiêu tuần NHÁP dựng cho mọi em | — | — |
-| **Chiều T2** | Trưởng khối | (1) Soi Dashboard học tập, **chốt bổ trợ** tuần (Phần 2 Mục tiêu tuần + ca test sau giờ) · (2) bấm **Công bố mục tiêu tuần** theo lớp · (3) **Nộp Báo cáo tuần** tuần trước (snap) | Phòng trưởng khối › Chất lượng · Dashboard học tập › 🎯 · 📝 Báo cáo tuần | `mtt_lop_chot` · `bao_cao_tuan_khoi` |
+| **Chiều T2** | Trưởng khối | (1) Soi Dashboard học tập, **chốt bổ trợ** tuần (Phần 2 Mục tiêu tuần + ca test sau giờ) · (2) bấm **Công bố mục tiêu tuần** theo lớp · (3) **Nộp Báo cáo tuần** tuần trước (snap) | Phòng trưởng khối › Chất lượng (bổ trợ) · **🎯 Mục tiêu tuần** (lịch thứ 2 cột trái phòng) · 📝 Báo cáo tuần | `mtt_lop_chot` · `bao_cao_tuan_khoi` |
 | **T2** | Trang | **Chốt tuần** bổ trợ (đóng băng KPI dạng yếu — `spec-truong-khoi` §4.1) | Như cũ | `chat_luong_tuan_hs` |
 | **T2 – T3** | Trưởng bộ môn | Duyệt / trả lại báo cáo từng khối → **chốt Báo cáo Chuyên môn tuần** → **chiếu TV** cho CEO | Phòng trưởng bộ môn › 📝 | `bao_cao_chuyen_mon_tuan` |
 | **Trong tuần** | GV / TA | Gán buổi ngày dạy (hệ chọn sẵn buổi kế hoạch — §3.4) · ET · BTVN · chấm · bổ trợ | Builder › Gán lớp · màn buổi | Lần đo ⇒ mastery ⇒ tờ tuần cập nhật |
@@ -169,7 +169,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 - Công khai mục tiêu ngầm của GV thành **neo chung** cho HS · PH · GV · TA · hệ: **con cần làm gì · con đã làm gì**. Màn = dashboard của học sinh (xoay dữ liệu từ trục hoạt động sang trục HS).
 - **Tờ mục tiêu** = (HS × môn × tuần). **Đơn vị đánh giá = nhóm bài** (`mastery_luu_san.cap = 'nhom'`); **đơn vị dạy = dạng bài**; quy dạng → nhóm bằng đúng hàm đang chạy.
 - **Phần 1 · Kiến thức mới** = nhóm của bài học DIỄN RA TRONG TUẦN (bài CHƯA học; Thùy 17/11) · **Phần 2 · Ôn tập** = nhóm nợ do lượt chốt bổ trợ tuần đưa vào · **Việc của con** = hoạt động có thật (ET · BTVN · test sau giờ · ca bổ trợ).
-- Ba người xem **cùng dữ liệu, một bộ hàm**: app HS · app PH · tab trung tâm (Dashboard học tập / Phòng trưởng khối; trưởng khối xem được đủ view của em).
+- Ba người xem **cùng dữ liệu, một bộ hàm**: app HS · app PH · **Phòng làm việc › 🎯 Mục tiêu tuần** (Thùy 17/11 tối: đồ vật riêng, KHÔNG còn là tab trong Dashboard học tập; trưởng khối · trưởng bộ môn · giám đốc xem được đủ view của em). Cột trái phòng = 3 tấm lịch theo nhịp tuần: 📅 Giáo trình tuần → 🎯 Mục tiêu tuần → 📝 Báo cáo tuần (bỏ cửa sổ trái).
 
 ### 4.2 Cửa sổ & mốc
 - **⭐⭐ LUẬT CỬA SỔ (Thùy chốt tối 17/11, mig `202611171800` — thay luật sáng 17/11):** đơn vị Phần 1 là **BUỔI HỌC**. Buổi thuộc tuần chứa **buổi kế** của lớp
@@ -202,7 +202,8 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 ### 4.6 Nháp · Công bố · học theo dạng (Thùy 16/11)
 - **Thứ Hai hệ dựng NHÁP cho mọi lớp** (đọc Giáo trình tuần + bổ trợ, tự cập nhật khi sửa). Nháp chỉ nhân sự thấy, không xếp hạng, không vào sổ. **Trưởng khối trở lên xem theo từng lớp** (tên lớp ⇒ cả lớp ⇒ tờ từng em).
-- **Công bố** (nút theo lớp) = khoá mục tiêu + đưa lên app HS / PH. Lớp còn đề xuất bổ trợ chưa duyệt ⇒ hệ hỏi lại trước khi công bố.
+- **Công bố** (nút theo lớp) = khoá **Phần 1 (bài trên lớp)** + đưa lên app HS / PH. Lớp còn đề xuất bổ trợ chưa duyệt ⇒ hệ hỏi lại trước khi công bố.
+- **Phần 2 + ca bổ trợ LUÔN đồng bộ tự động** (Thùy 17/11 tối "cần đồng bộ khi chốt bổ trợ thay đổi — tự động hoặc manual đều được"; mig `202611171937`): không khoá, luôn theo lượt chốt bổ trợ mới nhất của tuần; em có đề xuất bổ trợ vừa duyệt ⇒ tờ tính lại ở lượt điều phối kế (≤ 5 phút). Không có nút — không cần mở khoá hay xoá bản khoá.
 - **Mỗi nhóm kèm DẠNG của tuần** (cùng nguồn câu với nhóm: buổi kế hoạch / bản chép / ET · BTVN trên app / case bổ trợ yếu). App HS bấm nhóm ⇒ danh sách dạng ⇒ bấm dạng ⇒
   **màn dạng có sẵn của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test) — dẫn tới màn sẵn có, không dựng màn mới. App PH hiện tên dạng.
 - **Dạng lớp CHƯA học tới thì chưa luyện được** (luật 14/10 `_dang_da_hoc_ok`, Thùy giữ 16/11: muốn luyện trước thì vào tính năng riêng); lý thuyết vẫn đọc được.

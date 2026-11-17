@@ -7,7 +7,6 @@ import { Fragment, useEffect, useRef, useState, type MouseEvent, type PointerEve
 import { bangDashboardHocTap, lichSuO, oDashboardHocTap, TEN_KENH, type BangDB, type CapDB, type HSDB, type LichSuO, type ODashboard } from '../../lib/dashboardHocTap'
 import { NHAN_TT } from '../../lib/boTroTk'
 import BoTroPopup from '../phongtk/BoTroPopup'
-import MucTieuTuanTab from './MucTieuTuanTab'
 
 // Dùng trong PHÒNG TRƯỞNG KHỐI (Thùy 10/11): chỉ các ô (môn, khối) trong phạm vi · cột Bổ trợ · bấm tên ⇒ Hồ sơ học tập.
 // dau: khối đặt ĐẦU thanh lọc (vd thanh 4 mục của Chất lượng) — Thùy 10/11: dồn hết thanh đầu về 1 dòng
@@ -52,7 +51,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   const [tapTrung, setTapTrung] = useState(NHO.tapTrung)
   useEffect(() => { NHO.tapTrung = tapTrung }, [tapTrung])
   // 13/11 (spec-muc-tieu-tuan §9.3): tab "Mục tiêu tuần" — cùng thanh môn/khối; mở tab nào thì gọi dữ liệu tab đó (§2.0)
-  const [tab, setTab] = useState<'bang' | 'mtt'>(NHO.tab)
+  const [tab] = useState<'bang' | 'mtt'>('bang')   // 17/11 tối: chỉ còn Bảng học tập (Mục tiêu tuần ra Phòng làm việc)
   useEffect(() => { NHO.tab = tab }, [tab])
   const goc = useRef<HTMLDivElement>(null)
   // App có thể bọc trong khung `zoom` (cỡ chữ) ⇒ toạ độ fixed bên trong bị nhân theo; quy toạ độ chuột về đơn vị của khung.
@@ -146,10 +145,6 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
     <div ref={goc} className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         {phong?.dau}
-        <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
-          <button onClick={() => setTab('bang')} className={nut(tab === 'bang')}>Bảng học tập</button>
-          <button onClick={() => setTab('mtt')} className={nut(tab === 'mtt')}>🎯 Mục tiêu tuần</button>
-        </div>
         {mons.length > 1 ? (
           <select value={mon} onChange={(e) => { setMon(e.target.value); setLopId(null) }} className="h-8 rounded border border-slate-300 bg-white px-2 text-[13px] font-semibold text-slate-800">
             {mons.map((m) => <option key={m} value={m}>{m}</option>)}
@@ -179,7 +174,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
       </div>
       {cacO && mons.length === 0 ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">{phong ? 'Ghế của bạn chưa có khối nào trong phạm vi.' : 'Tài khoản của bạn chưa được phân môn nào có lớp đang học — nhờ quản trị phân môn ở màn Nhân sự.'}</div>
       : !monHopLe ? (loi ? <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div> : <p className="text-sm text-slate-500">Đang tải…</p>)
-      : tab === 'mtt' ? <MucTieuTuanTab mon={mon} khoi={khoi} lamMoi={lamMoi} /> : <>
+      : <>   {/* 17/11 tối: Mục tiêu tuần tách khỏi Dashboard — đồ vật 🎯 riêng trong Phòng làm việc (MucTieuTuanPhong) */}
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
       {!bang ? (dangTai ? <p className="text-sm text-slate-500">Đang tính bảng…</p> : null)
         : bang.ngoai_quyen ? <div className="rounded-xl border border-dashed border-slate-200 py-16 text-center text-sm text-slate-500">Môn {mon} không thuộc quyền môn của tài khoản này.</div>

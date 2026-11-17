@@ -9,7 +9,7 @@
 // nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
 export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong' | 'giao_trinh_tuan'
+export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong' | 'giao_trinh_tuan' | 'muc_tieu_tuan'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -132,8 +132,9 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
   coHoiTa?: boolean   // phòng trưởng bộ môn: thêm bảng tin "Hỏi vận hành TA" (Thùy 05/11)
 }) {
   const ngoi = ds.slice(0, SO_GHE)
-  // Tường có 2 lỗ cửa sổ ở 2 đầu (evenodd) ⇒ nền style phía sau hiện qua. Giữa tường: 3 bức tranh (Thùy 03/11).
-  const CUA = [[60, 90, 190, 220], [1350, 90, 190, 220]]
+  // Tường có lỗ cửa sổ (evenodd) ⇒ nền style phía sau hiện qua. Giữa tường: 3 bức tranh (Thùy 03/11).
+  // Thùy 17/11 tối: BỎ cửa sổ trái — chỗ đó thành cột 3 tấm lịch việc theo tuần (Giáo trình tuần → Mục tiêu tuần → Báo cáo tuần).
+  const CUA = [[1350, 90, 190, 220]]
   const tuong = `M0 0 H${W} V${SAN} H0 Z ` + CUA.map(([x, y, w, h]) => `M${x} ${y} h${w} v${h} h${-w} Z`).join(' ')
   return (
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="h-full w-full select-none">
@@ -176,15 +177,6 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         <text x={1190} y={100} textAnchor="middle" fontSize={30}>⭐</text>
       </Tranh>
 
-      {/* LỊCH TREO TƯỜNG = Báo cáo tuần (spec-bao-cao-tuan §2.11) — dưới cửa sổ trái */}
-      <g className="dv" onClick={() => onMoDoVat('bao_cao')} role="button" aria-label="Mở Báo cáo tuần">
-        <rect className="vien" x={72} y={332} width={150} height={78} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
-        <rect x={72} y={332} width={150} height={24} rx={6} fill="#e11d48" />
-        <circle cx={100} cy={330} r={5} fill="#475569" /><circle cx={194} cy={330} r={5} fill="#475569" />
-        <text x={147} y={350} textAnchor="middle" fontSize={14} fontWeight={800} fill="#fff">BÁO CÁO TUẦN</text>
-        <text x={147} y={396} textAnchor="middle" fontSize={30}>📝</text>
-      </g>
-
       {/* BẢNG TIN = Hỏi vận hành trợ giảng (Thùy 05/11) — chỉ phòng trưởng bộ môn, dưới cửa sổ phải (đối xứng lịch Báo cáo tuần) */}
       {coHoiTa && (
         <g className="dv" onClick={() => onMoDoVat('hoi_ta')} role="button" aria-label="Mở Hỏi vận hành trợ giảng">
@@ -204,14 +196,22 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         <text x={1453} y={(coHoiTa ? 424 : 332) + 64} textAnchor="middle" fontSize={30}>🗂</text>
       </g>
 
-      {/* LỊCH KẾ HOẠCH = Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11) — ngay dưới lịch Báo cáo tuần (đối xứng cột phải) */}
-      <g className="dv" onClick={() => onMoDoVat('giao_trinh_tuan')} role="button" aria-label="Mở Giáo trình tuần">
-        {/* lệch trái + hẹp hơn lịch Báo cáo tuần: thẻ tên ghế hàng sau bên trái (x 320) phủ tới ~x 165 */}
-        <rect className="vien" x={24} y={424} width={128} height={78} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
-        <rect x={24} y={424} width={128} height={24} rx={6} fill="#2563eb" />
-        <text x={88} y={441} textAnchor="middle" fontSize={11.5} fontWeight={800} fill="#fff">GIÁO TRÌNH TUẦN</text>
-        <text x={88} y={488} textAnchor="middle" fontSize={30}>📅</text>
-      </g>
+      {/* CỘT LỊCH VIỆC THEO TUẦN (Thùy 17/11 tối — thay cửa sổ trái): 3 tấm thẳng hàng theo nhịp tuần (spec-van-hanh-tuan §1):
+          📅 Giáo trình tuần (T6 điền, trưởng bộ môn duyệt) → 🎯 Mục tiêu tuần (T2 công bố) → 📝 Báo cáo tuần (T2 nộp).
+          x 24…176: hẹp để thẻ tên ghế hàng sau bên trái (x 320) không đè. */}
+      {([
+        { y: 96, mau: '#2563eb', chu: 'GIÁO TRÌNH TUẦN', icon: '📅', dv: 'giao_trinh_tuan' as DoVat, nhan: 'Giáo trình tuần' },
+        { y: 196, mau: '#16a34a', chu: 'MỤC TIÊU TUẦN', icon: '🎯', dv: 'muc_tieu_tuan' as DoVat, nhan: 'Mục tiêu tuần' },
+        { y: 296, mau: '#e11d48', chu: 'BÁO CÁO TUẦN', icon: '📝', dv: 'bao_cao' as DoVat, nhan: 'Báo cáo tuần' },
+      ]).map((l) => (
+        <g key={l.dv} className="dv" onClick={() => onMoDoVat(l.dv)} role="button" aria-label={`Mở ${l.nhan}`}>
+          <rect className="vien" x={24} y={l.y} width={152} height={84} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />
+          <rect x={24} y={l.y} width={152} height={26} rx={6} fill={l.mau} />
+          <circle cx={52} cy={l.y - 2} r={5} fill="#475569" /><circle cx={148} cy={l.y - 2} r={5} fill="#475569" />
+          <text x={100} y={l.y + 18} textAnchor="middle" fontSize={12.5} fontWeight={800} fill="#fff">{l.chu}</text>
+          <text x={100} y={l.y + 68} textAnchor="middle" fontSize={30}>{l.icon}</text>
+        </g>
+      ))}
 
       {/* chậu cây — dời xuống dưới lịch Giáo trình tuần */}
       <g transform="translate(0 70)"><rect x={40} y={500} width={70} height={70} rx={10} fill="#c8915c" />
