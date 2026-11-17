@@ -226,6 +226,7 @@ trưởng bộ môn đọc, duyệt / trả lại → ghép **Báo cáo Chuyên 
 | 9 | **Nộp trễ ⇒ gậy.** |
 | 10 | Phần **trưởng khối tự viết** theo khung Plans · Progress · Problems. |
 | 11 | **Độ phủ đo** + tách **Ra có bằng chứng / Rớt cửa sổ** cạnh "dạng yếu giảm" (chống Goodhart; `spec-truong-khoi` §4.2). |
+| 11b | **"Lần đo mới trong kỳ" (cho Ra có bằng chứng + Độ phủ đo) = MỌI lần đo mà mastery tính** — gồm chấm buổi (ET · MT · BTVN) **và bài TEST app / TA nhập** (test **bổ trợ sau giờ**, test bù, test học từ đầu, ET app), tính theo lúc chấm trong kỳ (Thùy 17/11, mig `202611171244`). Trước đó chỉ đếm chấm buổi ⇒ dạng hết yếu nhờ test sau giờ bị xếp "Rớt cửa sổ". Đo 17/11 tuần 09/11 Toán: Ra có bằng chứng K6 3→23, K7 8→14, K8 8→22, K9 26→31. |
 | 12 | Điểm TB toàn khối = trung bình **trên lượt làm** (tránh nghịch lý Simpson). |
 | 13 | Bổ trợ báo **cả kết quả**: độ phủ (HS yếu đã được bổ trợ / HS yếu) + số em hết yếu sau ca. |
 | 14 | Vòng trạng thái: Nháp → Đã nộp (snap) → Trả lại → Đã nộp → Đã duyệt. Trả lại chỉ sửa **phần chữ**, số giữ bản snap. |
