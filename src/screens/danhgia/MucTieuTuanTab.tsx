@@ -1,9 +1,9 @@
 // Tab "Mục tiêu tuần" — Dashboard học tập (cũng hiện trong Phòng làm việc trưởng khối vì phòng dùng chung màn này).
 // spec-muc-tieu-tuan.md §9.3: lọc môn · khối · tuần · 4 ô tổng · bảng theo lớp (nháp / đã công bố + nút Công bố) ·
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanChenh, nhanHoc,
+  mttTrungTam, mttCuaHs, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, moTaViec, nhanHoc,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC, NHAN_MUC_NHOM,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT,
 } from '../../lib/mucTieuTuan'
@@ -13,10 +13,10 @@ import { PH_BASE } from '../../lib/ph-login'
 const NHO: { tuan: string | null; khoa: string; data: MttTrungTam | null; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null } = { tuan: null, khoa: '', data: null, lop: null, hs: null }
 
 const mauMuc = (m: MucDanhGia | null) => m === 'tot' ? 'bg-emerald-100 text-emerald-800' : m === 'tam_on' ? 'bg-amber-100 text-amber-800' : m === 'chua_tot' ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-500'
-const mauChenh = (h?: string) => h === 'len' ? 'text-emerald-700' : h === 'xuong' ? 'text-rose-600' : 'text-slate-500'
 const so = (v: number | null | undefined, hau = '') => (v == null ? '—' : `${Math.round(v)}${hau}`)
 
-export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; khoi: string | null; lamMoi: number }) {
+// dau = phần đầu dòng do màn chứa đưa vào (tiêu đề · chọn ô · ↻) ⇒ cả header nằm trên MỘT dòng (Thùy 17/11: "header gọn lại 1 dòng")
+export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string; khoi: string | null; lamMoi: number; dau?: ReactNode }) {
   const nay = dauTuanNay()
   const [tuan, setTuan] = useState(NHO.tuan ?? nay)
   const [data, setData] = useState<MttTrungTam | null>(NHO.data)
@@ -72,14 +72,19 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
+        {dau}
         <div className="flex items-center overflow-hidden rounded-md ring-1 ring-slate-200">
           <button onClick={() => setTuan(congNgay(tuan, -7))} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50" aria-label="Tuần trước">‹</button>
           <span className="h-8 bg-white px-3 text-[13px] font-semibold leading-8 text-slate-800">Tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))}{tuan === nay ? ' (đang chạy)' : ''}</span>
           <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau">›</button>
         </div>
-        {data?.tinh_at && <span className="text-[12px] text-slate-500">Số tính lúc {gioPhut(data.tinh_at)}</span>}
-        {tuan === nay && <span className="text-[12px] text-slate-500">Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp).</span>}
-        <button onClick={() => setMoTop(true)} className="ml-auto h-8 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">🏆 Top 20 toàn trung tâm · {mon}</button>
+        {data && (xemLop || xemHs) && <>
+          <button onClick={() => { setXemLop(null); setXemHs(null) }} className="h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50" title="Về tổng quan khối">← Khối</button>
+          {data.lop.map((l) => <button key={l.lop_id} onClick={() => { setXemLop({ id: l.lop_id, ten: l.ten_lop }); setXemHs(null) }}
+            className={`h-7 rounded-full px-2.5 text-[12px] font-semibold ${xemLop?.id === l.lop_id ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l.ten_lop}</button>)}
+        </>}
+        {data?.tinh_at && <span className="text-[11.5px] text-slate-400" title={tuan === nay ? 'Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp). Phần 2 (bổ trợ) tự đồng bộ theo lượt chốt bổ trợ mới nhất, kể cả sau khi đã công bố.' : undefined}>số lúc {gioPhut(data.tinh_at)} ⓘ</span>}
+        <button onClick={() => setMoTop(true)} className="ml-auto h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50" title={`Top 20 toàn trung tâm · ${mon}`}>🏆 Top 20</button>
       </div>
       {tb && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{tb}</div>}
       {loi && <div className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-[13px] text-rose-700">{loi}</div>}
@@ -187,8 +192,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi }: { mon: string; kho
         </div>
       )}
       {data && (xemLop || xemHs) && (
-        <KhongGianLop lops={data.lop} lop={xemLop} hs={xemHs} mon={mon} tuan={tuan}
-          onChonLop={(l) => { setXemLop(l); setXemHs(null) }} onChonHs={setXemHs} onVe={() => { setXemLop(null); setXemHs(null) }} />
+        <KhongGianLop lop={xemLop} hs={xemHs} mon={mon} tuan={tuan} onChonHs={setXemHs} />
       )}
       {moTop && <TopPopup mon={mon} tuan={tuan} onDong={() => setMoTop(false)} />}
     </div>
@@ -219,21 +223,22 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
   }, [hs.id, mon, tuan])
   return (
     <div>
-        <div className="flex items-start gap-3">
-          <div className="flex-1">
-            <div className="text-[17px] font-bold text-slate-900">{hs.ten}{to?.hs.lop ? ` · ${to.hs.lop}` : ''}</div>
-            <div className="text-[12.5px] text-slate-500">
-              Mục tiêu tuần {to ? `${ngayNgan(to.tuan)} – ${ngayNgan(to.den_ngay)}` : ''} · {mon}
-              {to && !to.chot && ' · NHÁP — lớp chưa công bố (học sinh chưa thấy)'}
-              {to?.ke_hoach_at && ` · công bố, mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}`}
-              {to?.da_chot_so && ' · sổ đã chốt'}
-            </div>
-          </div>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="text-[15px] font-bold text-slate-900">{hs.ten}{to?.hs.lop ? ` · ${to.hs.lop}` : ''}</span>
+          {to && <span title={`Mục tiêu tuần ${ngayNgan(to.tuan)} – ${ngayNgan(to.den_ngay)} · ${mon}${to.ke_hoach_at ? ` · mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}` : ''}${to.da_chot_so ? ' · sổ đã chốt' : ''}`}
+            className={`rounded px-1.5 py-0.5 text-[10.5px] font-bold ${to.chot ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>{to.chot ? 'Đã công bố' : 'Nháp'}</span>}
+          {to && xem === 'tuan' && <span className="text-[12px] text-slate-600">
+            Tiến độ <b>{so(to.tien_do, '%')}</b>{to.tien_do_d != null && ` (${to.tien_do_d >= 0 ? '▲' : '▼'}${Math.abs(to.tien_do_d)})`}
+            {' · '}Việc <b>{to.viec_xong}/{to.viec_tong}</b>
+            {' · '}Hạng <b>{to.hang ?? '—'}</b>{to.so_hs ? `/${to.so_hs}` : ''}
+            {' · '}Tự luyện <b>{to.tu_luyen.so_cau}</b> câu{to.tu_luyen.pct != null ? ` (${to.tu_luyen.pct}%)` : ''}
+          </span>}
+          <span className="flex-1" />
           {to && <button onClick={() => setXemPh(true)} title="Xem đúng màn phụ huynh sẽ thấy, khung điện thoại dọc (kể cả bản nháp chưa công bố)"
-            className="h-8 rounded-md bg-white px-3 text-[12.5px] font-semibold text-indigo-700 ring-1 ring-indigo-200 hover:bg-indigo-50">📱 Xem như phụ huynh</button>}
+            className="h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-indigo-700 ring-1 ring-indigo-200 hover:bg-indigo-50">📱 Xem như PH</button>}
           <div className="flex overflow-hidden rounded-md ring-1 ring-slate-200">
-            <button onClick={() => setXem('tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Tuần này</button>
-            <button onClick={() => setXem('cac_tuan')} className={`h-8 px-3 text-[12.5px] font-semibold ${xem === 'cac_tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Các tuần đã chốt</button>
+            <button onClick={() => setXem('tuan')} className={`h-7 px-2.5 text-[12px] font-semibold ${xem === 'tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Tuần này</button>
+            <button onClick={() => setXem('cac_tuan')} className={`h-7 px-2.5 text-[12px] font-semibold ${xem === 'cac_tuan' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500'}`}>Các tuần đã chốt</button>
           </div>
         </div>
         {xemPh && to && <XemNhuPh to={to} mon={mon} ten={hs.ten} onDong={() => setXemPh(false)} />}
@@ -241,25 +246,19 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
         {xem === 'tuan' && loi && <p className="mt-4 text-[13px] text-slate-500">{loi}</p>}
         {xem === 'tuan' && !to && !loi && <p className="mt-4 text-[13px] text-slate-500">Đang tải…</p>}
         {xem === 'tuan' && to && (
-          <div className="mt-4 space-y-4">
-            <div className="flex flex-wrap gap-3 text-[13px]">
-              <span className="rounded-lg bg-slate-50 px-3 py-1.5">Tiến độ <b>{so(to.tien_do, '%')}</b>{to.tien_do_d != null && ` (${to.tien_do_d >= 0 ? '▲' : '▼'} ${Math.abs(to.tien_do_d)})`}</span>
-              <span className="rounded-lg bg-slate-50 px-3 py-1.5">Việc <b>{to.viec_xong}/{to.viec_tong}</b></span>
-              <span className="rounded-lg bg-slate-50 px-3 py-1.5">Hạng <b>{to.hang ?? '—'}</b>{to.so_hs ? ` / ${to.so_hs}` : ''}</span>
-              <span className="rounded-lg bg-slate-50 px-3 py-1.5">Tự luyện <b>{to.tu_luyen.so_cau}</b> câu{to.tu_luyen.pct != null ? ` · đúng ${to.tu_luyen.pct}%` : ''}</span>
-            </div>
+          <div className="mt-2.5 space-y-2.5">
             <div className="grid gap-3 lg:grid-cols-3">
               {([1, 2] as const).map((ph) => (
                 <div key={ph} className="min-w-0">
-                  <div className={`mb-2 rounded-lg px-3 py-1.5 text-[13px] font-bold text-white ${ph === 1 ? 'bg-blue-600' : 'bg-orange-500'}`}>{ph === 1 ? 'Trên lớp' : 'Ôn tập'}</div>
+                  <div className={`mb-1.5 rounded-lg px-3 py-1 text-[13px] font-bold text-white ${ph === 1 ? 'bg-blue-600' : 'bg-orange-500'}`}>{ph === 1 ? 'Bài trên lớp' : 'Ôn tập kiến thức'}</div>
                   {to.nhom.filter((n) => n.phan === ph).length === 0 && <p className="text-[12.5px] text-slate-400">Không có nhóm.</p>}
                   {to.nhom.filter((n) => n.phan === ph).map((n) => <DongNhom key={n.ma} n={n} hsId={hs.id} mon={mon} />)}
-                  {ph === 1 && to.sap_hoc && <p className="text-[11.5px] text-slate-500">Bài {thuNgay(to.sap_hoc.ngay)}{to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: tính vào tuần sau (BTVN chấm trước buổi kế).</p>}
+                  {ph === 1 && to.sap_hoc && <p className="truncate text-[11px] text-slate-400" title={`Bài ${thuNgay(to.sap_hoc.ngay)}${to.sap_hoc.nhom.length ? ` (${to.sap_hoc.nhom.join(' · ')})` : ''}: BTVN chấm trước buổi kế nên tính vào mục tiêu tuần sau.`}>Bài {thuNgay(to.sap_hoc.ngay)} → tuần sau ⓘ</p>}
                   {ph === 2 && to.xep_hang_cho.length > 0 && <p className="mt-1 text-[11.5px] text-slate-500"><b className="text-slate-700">Đang xếp hàng:</b> {to.xep_hang_cho.map((x) => `${x.ten} ${x.p}%`).join(' · ')}</p>}
                 </div>
               ))}
               <div className="min-w-0">
-                <div className="mb-2 rounded-lg bg-emerald-600 px-3 py-1.5 text-[13px] font-bold text-white">Hoạt động tuần này</div>
+                <div className="mb-1.5 rounded-lg bg-emerald-600 px-3 py-1 text-[13px] font-bold text-white">Hoạt động tuần này</div>
                 <div className="divide-y divide-slate-100 rounded-lg border border-slate-200">
                   {to.viec.length === 0 && <p className="px-3 py-2 text-[12.5px] text-slate-400">Chưa có việc.</p>}
                   {to.viec.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}
@@ -308,8 +307,15 @@ function XemNhuPh({ to, mon, ten, onDong }: { to: MttTo; mon: string; ten: strin
   )
 }
 
+// "Tăng 40 → 65%" · "Giảm …" · "giữ 65%" · chỉ có số hiện tại ⇒ "65%" (định dạng hiển thị, số do DB tính)
+function ketQua(n: MttNhom): string {
+  if (n.p == null) return 'chưa đo'
+  if (n.p_dau == null) return `${n.p}%`
+  if (n.p_dau === n.p) return `giữ ${n.p}%`
+  return `${n.p > n.p_dau ? 'Tăng' : 'Giảm'} ${n.p_dau} → ${n.p}%`
+}
+
 function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
-  const c = nhanChenh(n.p, n.d)
   const [moDang, setMoDang] = useState(false)   // dạng bài ẩn mặc định — bấm "Chi tiết" mới hiện (và mới gọi tình trạng từng dạng)
   const [tt, setTt] = useState<Map<string, MttDangTT> | null>(null)
   useEffect(() => {
@@ -319,30 +325,26 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
     return () => { alive = false }
   }, [moDang]) // eslint-disable-line react-hooks/exhaustive-deps
   return (
-    <div className="mb-1.5 rounded-lg border border-slate-200 px-3 py-2">
-      <div className="flex items-start gap-1.5">
-        <span className="min-w-0 flex-1 text-[12.5px] font-semibold leading-snug text-slate-800">{n.ten}{n.phan === 1 && nhanHoc(n.ngay_hoc) && <span className="ml-1.5 text-[11.5px] font-normal text-slate-500">· {nhanHoc(n.ngay_hoc)}</span>}</span>
-        {c && <span className={`shrink-0 text-[11px] font-bold ${mauChenh(c.huong)}`}>{c.chu}</span>}
-        <span className="shrink-0 text-[13px] font-bold text-slate-900">{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
-        {n.p != null && n.muc && <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
+    <div className="mb-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5">
+      <div className="flex items-center gap-1.5">
+        <span className="min-w-0 flex-1 truncate text-[12.5px] font-semibold text-slate-800" title={`${n.ten}${n.phan === 1 && nhanHoc(n.ngay_hoc) ? ` · ${nhanHoc(n.ngay_hoc)}` : ''}`}>{n.ten}</span>
+        {n.p == null || !n.muc ? <span className="shrink-0 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-500">Chưa đo</span>
+          : <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.muc === 'dat' ? 'bg-emerald-100 text-emerald-800' : n.muc === 'can_luyen' ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-700'}`}>{NHAN_MUC_NHOM[n.muc]}</span>}
       </div>
-      <div className="relative mt-1 h-[34px]">
-        <div className="absolute inset-x-0 top-[12px] h-[7px] overflow-hidden rounded-full bg-slate-100">
-          <div className={`h-full rounded-full ${n.p == null ? '' : n.p >= 80 ? 'bg-emerald-500' : n.p >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${n.p ?? 0}%` }} />
+      <div className="mt-1 flex items-center gap-2.5">
+        <div className="relative h-[16px] w-[38%] shrink-0">
+          <div className="absolute inset-x-0 top-[5px] h-[6px] overflow-hidden rounded-full bg-slate-100">
+            <div className={`h-full rounded-full ${n.p == null ? '' : n.p >= 80 ? 'bg-emerald-500' : n.p >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${n.p ?? 0}%` }} />
+          </div>
+          {n.p != null && n.p_dau != null && n.p_dau !== n.p && <div className="absolute top-[2px] h-[12px] border-l-2 border-dashed border-slate-400" style={{ left: `${n.p_dau}%` }} title={`Đầu tuần ${n.p_dau}%`} />}
+          {n.mt != null && <div className="absolute top-0 h-[16px] border-l-2 border-slate-800" style={{ left: `${n.mt}%` }} title={`Mục tiêu tuần ${n.mt}%`} />}
         </div>
-        {n.p != null && n.p_dau != null && <div className="absolute top-[8px] h-[15px] border-l-2 border-dashed border-slate-400" style={{ left: `${n.p_dau}%` }} title={`Đầu tuần ${n.p_dau}%`} />}
-        {n.mt != null && n.mt < n.dich && <div className="absolute top-[7px] h-[17px] border-l-2 border-slate-200" style={{ left: `${n.dich}%` }} title={`Đích ${n.dich}%`} />}
-        {n.mt != null && <>
-          <div className="absolute top-0 h-[22px] border-l-2 border-slate-800" style={{ left: `${n.mt}%` }} />
-          <svg aria-hidden width="11" height="8" viewBox="0 0 12 9" className="absolute top-0 text-indigo-600" style={{ left: `calc(${n.mt}% + 2px)` }}><path d="M0 0h12l-3 4.5 3 4.5H0z" fill="currentColor" /></svg>
-          <span className="absolute top-[22px] -translate-x-1/2 text-[10.5px] font-bold text-slate-700" style={{ left: `${n.mt}%` }}>{n.mt}%</span>
-        </>}
-      </div>
-      <div className="flex items-center gap-2 text-[11.5px] text-slate-500">
-        <span className="flex-1" />
+        <span className="min-w-0 flex-1 truncate text-[11.5px] text-slate-500">
+          Mục tiêu <b className="text-slate-800">{n.mt != null ? `${n.mt}%` : '—'}</b> · <b className={`${n.p == null ? 'text-slate-400' : n.p >= 80 ? 'text-emerald-700' : n.p >= 50 ? 'text-amber-700' : 'text-rose-600'}`}>{ketQua(n)}</b>
+        </span>
         {(n.dang?.length ?? 0) > 0 && (
-          <button onClick={() => setMoDang((v) => !v)} className="font-semibold text-indigo-700 hover:underline">
-            {moDang ? 'Ẩn chi tiết ▴' : `Chi tiết · ${n.dang!.length} dạng ▾`}
+          <button onClick={() => setMoDang((v) => !v)} className="shrink-0 text-[11px] font-semibold text-indigo-700 hover:underline" title="Dạng bài của nhóm trong tuần">
+            {moDang ? '▴' : `${n.dang!.length} dạng ▾`}
           </button>
         )}
       </div>
@@ -439,18 +441,14 @@ function TopPopup({ mon, tuan, onDong }: { mon: string; tuan: string; onDong: ()
 // KHÔNG GIAN LỚP (Thùy 17/11): bấm lớp ⇒ KHÔNG popup, chuyển sang màn làm việc chính của trưởng khối —
 // trái = danh sách học sinh của lớp, phải = tờ mục tiêu tuần của em đang chọn. Đọc danh sách 1 lần khi mở (fn_mtt_ds_lop), đổi em không đọc lại.
 const NHO_LOP: Record<string, MttEmLop[]> = {}
-function KhongGianLop({ lops, lop, hs, mon, tuan, onChonLop, onChonHs, onVe }: {
-  lops: { lop_id: string; ten_lop: string }[]; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null
-  mon: string; tuan: string; onChonLop: (l: { id: string; ten: string }) => void; onChonHs: (h: { id: string; ten: string }) => void; onVe: () => void
+// chọn lớp / về tổng quan khối nằm trên dòng header của MucTieuTuanTab (Thùy 17/11: header một dòng)
+function KhongGianLop({ lop, hs, mon, tuan, onChonHs }: {
+  lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null
+  mon: string; tuan: string; onChonHs: (h: { id: string; ten: string }) => void
 }) {
-  const chip = (on: boolean) => `h-7 rounded-full px-3 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`
   return (
     <div className="space-y-3">
-      <div className="no-nut-ve flex flex-wrap items-center gap-1.5">
-        <button onClick={onVe} className="mr-1 h-7 rounded-md bg-white px-3 text-[12.5px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50">← Tổng quan khối</button>
-        {lops.map((l) => <button key={l.lop_id} onClick={() => onChonLop({ id: l.lop_id, ten: l.ten_lop })} className={chip(lop?.id === l.lop_id)}>{l.ten_lop}</button>)}
-      </div>
-      <div className="grid gap-3 lg:h-[calc(100vh-250px)] lg:min-h-[460px] lg:grid-cols-[minmax(200px,240px)_minmax(0,1fr)]">
+      <div className="grid gap-3 lg:h-[calc(100vh-170px)] lg:min-h-[460px] lg:grid-cols-[minmax(200px,240px)_minmax(0,1fr)]">
         <div className="overflow-y-auto rounded-xl border border-slate-200 bg-white">
           {lop ? <DanhSachEm lop={lop} tuan={tuan} chon={hs?.id ?? null} onChon={onChonHs} />
             : <p className="p-4 text-[13px] text-slate-500">Chọn một lớp ở trên để xem danh sách học sinh.</p>}

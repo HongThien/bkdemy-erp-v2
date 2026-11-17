@@ -81751,3 +81751,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **mig `202611172100` ĐÃ ÁP** (chạy thử transaction + rollback trước): gỡ trigger trần `trg_btyeu_suc_chua`, `fn_btyeu_kiem_suc_chua` trả null · `fn_ca_bo_tro_ung_vien` mức ≥ 2 (L4 vào ca khối) · `_btyeu_het_han_chay()` + `_bt_muc_het_tuan()` đăng ký bộ điều phối 01h mỗi ngày. Chạy thử: hết hạn 0 case, mức về L0 **53 em** (còn L1 101 · L2 55 · L3 1) — lượt thật chạy 01h đêm nay.
 - **Client:** `DuyetBoTroYeuScreen` bỏ x/70 · Cao x/20 · khoá khi đầy; nhãn mức ở `MucUuTienCase` · `boTroTk` · `CaBoTroTA` · `ChatLuongPhong`; `BoTroHubScreen` ẩn tab Hình. tsc sạch (lỗi cũ pdfRender).
 - **Chưa làm:** báo động theo tuần ở màn duyệt · 2 số Dashboard mới · tô đỏ bù quá 14 ngày · ràng buộc người dạy L3/L4 là giáo viên · gỡ hẳn Hình (Luật xoá). Ghi ở `spec-bo-tro.md` §12.0b.
+
+### 17/11 khuya — ERP Mục tiêu tuần: một màn không cuộn (Thùy)
+- Thùy: "chú thích linh tinh chiếm diện tích · header gọn 1 dòng · thông tin 1 HS trọn 1 màn · card cấu trúc như PH nhưng thấp, thanh bar ngắn" ⇒
+  header = MỘT dòng (🎯 · ô môn×khối · ↻ do `MucTieuTuanPhong` đưa qua prop `dau` + tuần + ← Khối + chip lớp + "số lúc HH:MM ⓘ" + 🏆 Top 20); các câu giải thích vào tooltip;
+  đầu tờ em = 1 dòng (tên · lớp · nhãn Nháp/Đã công bố · tiến độ · việc · hạng · tự luyện · 📱 Xem như PH · Tuần này/Các tuần) thay khối tiêu đề + 4 ô;
+  thẻ nhóm 2 dòng: tên (1 dòng, …) + nhãn Đạt/Chưa đạt/Yếu · thanh ngắn 38% (vạch đầu tuần, vạch mục tiêu, không số) + "Mục tiêu x% · Tăng a → b%" + "n dạng ▾"; header 3 cột "Bài trên lớp · Ôn tập kiến thức · Hoạt động tuần này"; "Bài … → tuần sau ⓘ". Khung lớp cao 100vh−170. Chụp 1500×820: trọn một màn ✔.
