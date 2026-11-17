@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-van-hanh-trung-tam.md` (§7). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-su-kien.md — Hệ thống tổ chức SỰ KIỆN (Trung thu 26/09/2026 + các sự kiện sau)
 
 > Trạng thái (26/09 ~03h30): **ĐÃ BUILD + ĐÃ ÁP DB + ĐÃ DEPLOY app riêng `bkdemy-erp-v2-sukien.vercel.app`** · test app thật đủ

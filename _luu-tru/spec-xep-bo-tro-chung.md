@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-van-hanh-trung-tam.md` (§2, §3). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # XẾP BỔ TRỢ CHUNG (Đuổi · Bù · Yếu) theo ĐƠN VỊ — spec
 
 > Kiến trúc CEO (Thùy) chốt **23–24/09/2026**. Trạng thái 24/09: **bước 1–3 (§10) ĐÃ CODE** — folder Bổ trợ 5 lá · DB `ca_bo_tro` + đơn vị · sub-tab Lịch phòng chạy thật (`src/screens/botro/LichPhongScreen.tsx`, `src/lib/ca_bo_tro.ts`, mig 202609240930 · 202609241100 · 202609241230). Bước 4 (gỡ form xếp tay 3 loại + tab Ca bổ trợ của Yếu) và 5 (KPI tải TA) **chờ CEO dùng thử Lịch phòng rồi mới làm**. Luồng từng loại bổ trợ

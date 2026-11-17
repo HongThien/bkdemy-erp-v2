@@ -1,4 +1,4 @@
-> ⛔ **LƯU TRỮ 17/11** — logic bổ trợ đã thay bằng `spec-bo-tro.md` mới (Thùy chốt 17/11). **NGOẠI LỆ: §41–§43 (đơn vị bù theo nhóm ở Lịch phòng · lịch khối ↔ lịch phòng · phòng dùng chung) CÒN HIỆU LỰC** cho xếp lịch tới khi spec #8 `spec-van-hanh-trung-tam.md` viết xong.
+> ⛔ **LƯU TRỮ 17/11** — logic bổ trợ: `spec-bo-tro.md`; xếp lịch (kể cả §41–§43): `spec-van-hanh-trung-tam.md` §2, §3 (Thùy chốt 17/11). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
 
 # BỔ TRỢ — tài liệu tổng (hiện trạng 13/11/2026)
 

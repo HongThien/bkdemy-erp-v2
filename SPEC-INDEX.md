@@ -18,7 +18,7 @@
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
 | 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · *đã gộp 17/11:* `spec-muc-tieu-tuan` (→ §4.1–§4.7) |
-| 8 | `spec-van-hanh-trung-tam.md` — **NHÁP 17/11, chờ Thùy trả lời 12 câu §11.1** (nguồn chưa chuyển) | Ops: **xếp lịch bổ trợ + báo PH**, **cách thu học phí**, quy trình vận hành, phòng, TKB, sự kiện, tủ quà, app OPS | `spec-xep-bo-tro-chung` · `_luu-tru/spec-bo-tro-ban-13-11.md` §41–§43 (xếp lịch, còn hiệu lực) · `spec-dang-ky-test` · `spec-su-kien` (+ game Trung thu `games-site/`) · `PLAN-tuqua` · `PLAN-thu-chi` (phần quy trình) · *TKB · phòng · thu học phí* |
+| 8 | ✅ **`spec-van-hanh-trung-tam.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-dang-ky-test` → #9 · `PLAN-thu-chi` → #19) | Ops: **xếp lịch bổ trợ + báo PH**, **cách thu học phí**, quy trình vận hành, phòng, TKB, sự kiện, tủ quà, app OPS | `spec-xep-bo-tro-chung` · `_luu-tru/spec-bo-tro-ban-13-11.md` §41–§43 (xếp lịch, còn hiệu lực) · `spec-dang-ky-test` · `spec-su-kien` (+ game Trung thu `games-site/`) · `PLAN-tuqua` · `PLAN-thu-chi` (phần quy trình) · *TKB · phòng · thu học phí* |
 | 9 | `spec-web-trung-tam.md` | Web trung tâm | `BKDEMY_WEB_SPEC` · `spec-dang-ky-test` (phần web) |
 | 10 | ✅ **`spec-tro-giang.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-cham-cong-ta` còn phần lương → #11) | Quy trình TA, chấm công, app TA | `spec-cham-cong-ta` · `spec-hieu-suat-ta` · `spec-bot-telegram-ta` · `spec-quy-tac-cham` |
 | 11 | `spec-luong-gay.md` | Tính lương, tính gậy | `SPEC-tai-chinh-luong-gv-ta` (phần lương; file ở nhánh `docs/tai-chinh-luong-gv-ta`, chưa vào `main`) · *luật gậy đang rải ở `spec-truong-khoi` §3 · `spec-bot-telegram-ta` · `spec-van-hanh-tuan`* |
@@ -80,6 +80,9 @@
 | `spec-hieu-suat-ta.md` | Gộp vào spec #10 (17/11) | `spec-tro-giang.md` §8 |
 | `spec-bot-telegram-ta.md` | Gộp vào spec #10 (17/11) | `spec-tro-giang.md` §9 |
 | `spec-quy-tac-cham.md` | Gộp vào spec #10 (17/11) | `spec-tro-giang.md` §3.7 |
+| `spec-xep-bo-tro-chung.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §2, §3 |
+| `spec-su-kien.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §7 |
+| `PLAN-tuqua.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §8 |
 | `ADR-mon.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §2a (chiều môn) · §2b (gộp theo khuôn) |
 | `AUDIT-client-tinh-toan.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §14 |
 | `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |

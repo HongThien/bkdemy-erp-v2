@@ -1,6 +1,7 @@
 # spec-van-hanh-trung-tam.md — VẬN HÀNH TRUNG TÂM: TKB · phòng · xếp lịch bổ trợ + báo phụ huynh · đăng ký test · thu học phí · thu chi · sự kiện · tủ quà · app OPS (spec #8 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — CHỜ THÙY DUYỆT.** Chưa thay file nguồn nào; chừng nào chưa duyệt, các file ở dòng "Gộp từ" vẫn là nguồn đúng.
+> **Trạng thái: THÙY CHỐT 17/11/2026** ("Chốt theo đề xuất" cho 12 câu — bảng §11.0, thắng mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-xep-bo-tro-chung.md` · `spec-su-kien.md` · `PLAN-tuqua.md` đã chuyển `_luu-tru/`. GIỮ ở gốc: `spec-dang-ky-test.md` (phần web → #9) · `PLAN-thu-chi.md` (phần số liệu → #19).
+> **§5 Học phí dựng lại từ hàm đang chạy** (file `spec-hocphi.md` mà code trỏ tới không còn trong repo) — Thùy nên soát riêng một lượt. Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh.
 > Luật có ghi `(Thùy dd/mm)` là quyết định có ngày. Dòng ghi **[hiện trạng]** = đang chạy trong code / DB nhưng **không tìm thấy quyết định có ngày** — chưa coi là luật, xem §11.
 > **Gộp từ:** `spec-xep-bo-tro-chung.md` (gần trọn) · `_luu-tru/spec-bo-tro-ban-13-11.md` §3 (đơn vị) · §4 (gạch xếp lịch, capacity khối) · §5 (giờ / phòng sau giờ, ảnh báo PH) · §41–§43 ·
 > `spec-dang-ky-test.md` (trừ phần web) · `spec-su-kien.md` · `PLAN-tuqua.md` · `PLAN-thu-chi.md` (phần quy trình) · `_luu-tru/BKDEMY_OPS_SPEC_DETAIL.md` · `_luu-tru/PLAN-app-ops.md` ·
@@ -334,7 +335,24 @@ màn `phonghoc/*` · `botro/LichPhongScreen` · `LichTrucScreen` · `LichKhoiMod
 
 ## 11. Lệch · câu hỏi cho Thùy
 
-### 11.1 Câu hỏi cho Thùy (xếp theo mức quan trọng; trả lời một dòng mỗi câu)
+### 11.0 THÙY CHỐT 17/11 — "Chốt theo đề xuất"
+
+| Câu | Luật chốt | Việc code / DB (chờ lệnh) |
+|---|---|---|
+| 1 | Em **L3 / L4 vào ca khối tốn 2 đơn vị như L2** (bỏ "L3, L4 = 4"). | `_ca_bo_tro_don_vi` |
+| 2 | **Lịch khối có ca của GIÁO VIÊN**; em L3 / L4 chỉ xếp vào ca giáo viên; em L4 không vào ca của giáo viên đang dạy lớp em. *Ai chọn giáo viên cho em L4: câu hỏi kèm không có đề xuất — CTO chọn tạm **Lộc chọn lúc xếp** (trưởng bộ môn hậu kiểm); Thùy đổi nếu khác.* | cột "loại người trực" ở lịch khối + lọc ứng viên theo mức |
+| 3 | Suất ca tính theo **bậc của LỚP EM** (S 0,5 · A 0,75 · B / C 1 — luật 09/10); **bỏ ô "bậc" trên dòng Lịch khối**. | bỏ cột bắt buộc ở màn lịch khối |
+| 4 | (i) nhóm bù ≥ 3 em cùng bài luôn tính 6 đơn vị · (ii) ca 30 phút chỉ nhận một em L2 hoặc em thứ 3 của nhóm bù, không nhận đuổi · (iii) bù xếp buổi nghỉ cũ hơn trước · (iv) giữ bảng "sức chứa khối" (0,4 × đơn vị lịch khối, chỉ hiển thị), đếm đủ L2–L4. | `fn_btyeu_capacity_khoi` + luật đơn vị nhóm bù |
+| 5 | Lịch phòng có nút **"Copy tin báo PH"** theo mẫu cố định cho ca khối / bù / đuổi (không tự gửi); **ca sau giờ hiện trong lịch trên app** em / phụ huynh. | nút + lịch app |
+| 6 | **Lộc chốt tuần Lịch khối trước 12:00 thứ Hai**; chưa chốt ⇒ hiện ở Việc của Lộc. **Lưu Lịch khối bắt buộc có phòng** (25 / 57 dòng đang thiếu phòng phải bổ sung). | invariant việc + chặn lưu thiếu phòng |
+| 7 | Điểm danh: buổi thường chỉ tài khoản có quyền điểm danh ghi; ca bổ trợ chỉ người đứng ca; **mọi lần đổi ô điểm danh tự ghi vết** (ai · lúc nào · từ gì sang gì). *Nút "Báo đến PH" (11 / 224 lượt): câu kèm không có đề xuất — giữ nguyên, chưa bắt buộc.* | policy + trigger log `buoi_hoc_hs` |
+| 8 | Học phí có **hạn thu = 7 ngày sau ngày báo lần 1** (số gợi ý, Thùy chưa cho số khác); quá hạn ⇒ trạng thái "quá hạn" + hiện ở Việc của Lộc. *"Miễn" / "xét duyệt" (chưa từng dùng): giữ nguyên, chưa gỡ.* | hạn + trạng thái + invariant việc |
+| 9 | **Hoá đơn đã có lần thu thì KHÔNG huỷ chốt được**; sai ⇒ thêm dòng điều chỉnh ở kỳ sau. | chặn ở hàm huỷ chốt (đưa xuống DB) |
+| 10 | (i) mỗi phòng có cờ "cần prep" (thay danh sách 7 phòng viết cứng) · (ii) **bỏ khâu giáo viên chấm chất lượng phòng**, trưởng Vận hành chốt · (iii) việc OPS chưa duyệt **tự coi là đạt sau 7 ngày**. | cờ phòng · gỡ khâu GV · job tự đạt |
+| 11 | Đăng ký lịch test: **bắt đầu gửi link cho phụ huynh + Lộc bắt buộc nhập hẹn thay cho mọi ca**. Phễu: L5 · L6 · L7 rồi chính thức = đã thành học sinh. | invariant "ca test không có hẹn" |
+| 12 | (i) Đơn đặt quà: **Lộc duyệt trong 3 ngày**, quá hạn hiện ở Việc của Lộc · (ii) **xu sự kiện đổi quà tại sự kiện, ngoài hệ; hết sự kiện xu mất giá trị**. | invariant việc |
+
+### 11.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 11.0 — giữ làm bối cảnh)
 
 1. **Em L3 / L4 vào ca khối thì tốn mấy đơn vị?**
    Thùy 17/11: L3, L4 "xếp giống L2, chỉ khác người dạy". Thang 11/11 đang chạy: L2 tốn 2, L3 và L4 tốn 4 (gấp đôi chỗ trong ca).
@@ -412,11 +430,8 @@ màn `phonghoc/*` · `botro/LichPhongScreen` · `LichTrucScreen` · `LichKhoiMod
 15. `hoa_don.trang_thai` còn `qua_han` · `xet_duyet` · `mien`; `ung_vien.level` CHECK không có L8 nhưng nhãn màn có "L8 Chính thức".
 16. 1 / 74 lượt đuổi có mặt 60 ngày thiếu mức học đuổi (xếp qua ca khối — `fn_ca_bo_tro_xep` không gán mức) ⇒ buổi đó chưa tính tiền.
 
-## 12. Khi Thùy duyệt — việc phải làm
+## 12. Đã làm khi Thùy chốt (17/11)
 
-- **Chuyển vào `_luu-tru/` (`git mv`, không xoá):** `spec-xep-bo-tro-chung.md` · `spec-dang-ky-test.md` (sau khi #9 nhận phần web: §4 "Đường web → ERP", §6 việc bật chạy) · `spec-su-kien.md` · `PLAN-tuqua.md` · `PLAN-thu-chi.md` (sau khi #19 nhận phần số liệu).
-- **Đã ở `_luu-tru/`, chỉ sửa biển:** `spec-bo-tro-ban-13-11.md` (bỏ ngoại lệ "§41–§43 còn hiệu lực") · `BKDEMY_OPS_SPEC_DETAIL.md` · `PLAN-app-ops.md` · `BKDEMY_TESTDAUVAO_SPEC_DETAIL.md` · `luat-choi-game.md` ⇒ nguồn đúng = file này.
-- **`SPEC-INDEX.md`:** dòng #8 ✅ + thêm các file trên vào bảng B. **`spec-bo-tro.md`:** dòng 3, dòng 13, §13, §14 đổi "(chưa viết)" thành trỏ sang file này. **CLAUDE.md §7:** thay đoạn `spec-dang-ky-test.md` bằng đoạn trỏ file này; §1.6 / §2 không đổi.
-- **Chép sang spec khác:** chấm công TA ca sau giờ · việc TA trong ca ⇒ #10 · form web đăng ký test ⇒ #9 · lịch bổ trợ + thông báo trên app phụ huynh ⇒ #13 · bản buổi học của game Trung thu ⇒ #12 · sĩ số / buổi thực dạy cho lương ⇒ #11.
-- **Chưa viết được, cần nguồn:** luật học phí chỉ còn trong code + DEVLOG (file `spec-hocphi.md` 05/07 không còn trong repo) — §5 dựng lại từ hàm đang chạy, cần Thùy soát một lượt riêng.
-- Mọi việc code / DB ở §11 **chỉ làm khi Thùy ra lệnh**; gỡ Hình khỏi Lịch phòng đi cùng danh sách Luật xoá của `spec-bo-tro.md` §7.5.
+- `spec-xep-bo-tro-chung.md` · `spec-su-kien.md` · `PLAN-tuqua.md` → `_luu-tru/`. `spec-dang-ky-test.md` chờ #9 · `PLAN-thu-chi.md` chờ #19.
+- `_luu-tru/spec-bo-tro-ban-13-11.md`: §41–§43 hết ngoại lệ (đã vào §2, §3 spec này). `spec-bo-tro.md` + CLAUDE.md §7 + `SPEC-INDEX.md` trỏ sang.
+- **Còn nợ:** Thùy soát §5 Học phí · mọi việc code / DB ở §11.0 + §11.2 chờ lệnh.

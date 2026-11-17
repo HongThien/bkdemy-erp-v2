@@ -10,8 +10,8 @@
 > luật đo (lần đo · công thức · dạng yếu · nhóm yếu · HS yếu · cache) ⇒ `spec-mastery.md` §2, §4, §5, §7 ·
 > nhịp tuần · Mục tiêu tuần Phần 2 · Báo cáo tuần (Vào / Ra / Độ phủ / Hết yếu sau ca) ⇒ `spec-van-hanh-tuan.md` §1, §4, §5 ·
 > câu nào là MCQ / form trắc nghiệm / kho chuẩn ⇒ `spec-kho-cau-hoi.md` ·
-> **xếp lịch · phòng · đơn vị ca · suất TA · báo phụ huynh · điểm danh ca ⇒ #8 `spec-van-hanh-trung-tam.md` (chưa viết — §13)** ·
-> việc của TA trong ca · app TA · chấm công ⇒ #10 `spec-tro-giang.md` (chưa viết) · giao diện app HS ⇒ #12 `spec-app-hs.md`.
+> **xếp lịch · phòng · đơn vị ca · suất TA · báo phụ huynh · điểm danh ca ⇒ #8 `spec-van-hanh-trung-tam.md` (chốt 17/11 — §13)** ·
+> việc của TA trong ca · app TA · chấm công ⇒ #10 `spec-tro-giang.md` (chốt 17/11) · giao diện app HS ⇒ #12 `spec-app-hs.md`.
 
 ---
 
@@ -350,14 +350,14 @@ màn `phongtk/BoTroPopup` · `phongtk/ChatLuongPhong` · `botro/*` · `danhgia/X
 
 ## 13. Chuyển sang spec khác (không chép vào đây)
 
-**Sang #8 `spec-van-hanh-trung-tam.md` (chưa viết):**
+**Sang #8 `spec-van-hanh-trung-tam.md` (chốt 17/11):**
 - `spec-bo-tro.md` §3 phần đơn vị / ca + trần đơn vị tuần (`_ca_bo_tro_don_vi`, `_btyeu_dv_tuan`) · §4 gạch "Xếp lịch (Lộc)" + "Capacity khối" · §5 phần khởi tạo ca (giờ, phòng) + ảnh thông báo PH · §6 đơn vị bù theo nhóm.
 - `spec-bo-tro.md` **§41** (đơn vị bù theo nhóm vào Lịch phòng) · **§42** (Lịch khối ↔ Lịch phòng đồng bộ) · **§43** (phòng dùng chung với test / phát sinh).
 - `spec-xep-bo-tro-chung.md` **gần trọn**: §1 đơn vị · §2 ca trực TA · §3 phòng + lịch phòng một nguồn + Chốt tuần lịch khối · §4 luồng xếp · §6–§6b màn Lịch phòng · §7 quyền · §8 hướng DB · §9 giả định G1–G4. (Chỉ §5 "ưu tiên trong loại" được tóm ở §3 trên.)
 - Điểm danh ca · huỷ ca · "Xếp = đã chốt PH" · báo phụ huynh (ảnh thông báo sau giờ, nhắn lịch).
 - Việc còn treo của §42: 5 nhóm dòng Lịch khối nhân đôi · bấm Chốt tuần · 2 ca mồ côi đã có em.
 
-**Sang #10 `spec-tro-giang.md` (chưa viết):** màn app TA của từng loại ca · TA chỉnh câu trả lời ngắn · viewer "Câu em đang làm" · công TA ca bổ trợ (đầu việc `bo_tro_sau_gio`, giờ bổ trợ, thiếu công) · hướng dẫn TA (bản cũ đã lỗi thời).
+**Sang #10 `spec-tro-giang.md` (chốt 17/11):** màn app TA của từng loại ca · TA chỉnh câu trả lời ngắn · viewer "Câu em đang làm" · công TA ca bổ trợ (đầu việc `bo_tro_sau_gio`, giờ bổ trợ, thiếu công) · hướng dẫn TA (bản cũ đã lỗi thời).
 
 **Sang #12 `spec-app-hs.md`:** ô Bổ trợ · màn `CaBoTroHS` · `BoTroDuoiHS` · lịch bổ trợ trên app.
 

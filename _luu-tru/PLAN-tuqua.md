@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-van-hanh-trung-tam.md` (§8). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # PLAN — Tủ quà (đổi quà bằng xu) · app OPS
 
 > Thùy chốt 30/08: màn ở **app OPS (tab mới "Quà")** · 2 story: **đổi TẠI TỦ giao ngay** và
