@@ -13,6 +13,7 @@ export type MttNhom = {
   p: number | null; n: number | null; p_dau: number | null; d: number | null; mt: number | null; dich: number
   k: number; tong_dang: number; ngay_hoc: string[]; tien: number | null; tien_dau: number | null
   muc?: MucNhom | null   // mức hiện tại của nhóm (mig 202611171800)
+  dat_mt?: boolean       // ĐẠT MỤC TIÊU TUẦN — DB tính sẵn, cùng điều kiện với tiến độ (mig 202611180010); tờ cũ chưa có cờ
   dang?: { ma: string; ten: string; p?: number | null }[]   // dạng của nhóm trong tuần (mig 202611161844) — bấm ⇒ màn dạng Học từ đầu
 }
 export type MttViec = {

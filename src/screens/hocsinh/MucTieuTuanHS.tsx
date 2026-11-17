@@ -243,6 +243,7 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
           </span>
           {c && <span className="text-[12.5px] font-bold" style={{ color: mauChenh(c.huong) }}>{c.chu}</span>}
           <span className="text-[18px] font-extrabold" style={{ color: mauPct(n.p) }}>{n.p == null ? 'Chưa đo' : `${n.p}%`}</span>
+          {n.dat_mt && <span className="px-2 py-0.5 text-[12.5px] font-bold" style={{ background: NEN.dung, color: MAU.dung, border: `1.5px solid ${MAU.dung}`, borderRadius: 'var(--sk-radius-pill)' }} title="Đạt mục tiêu tuần">✓ Mục tiêu</span>}
           {n.p != null && n.muc && (
             <span className="px-2 py-0.5 text-[12.5px] font-bold" style={{ background: mauMucNhom(n.muc).nen, color: mauMucNhom(n.muc).chu, borderRadius: 'var(--sk-radius-pill)' }}>{NHAN_MUC_NHOM[n.muc]}</span>
           )}

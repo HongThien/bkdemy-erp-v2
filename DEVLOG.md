@@ -81790,3 +81790,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Tôi đo lại (khớp):** lương TA tạm tính tháng 10: 17 TA, gross 33.796.287đ, phạt 0đ · `ta_luong_ky` 0 · `gay_chot_thang` 0 · `hsta_chot` 0 · gậy tháng 10 nếu chốt: 33 gậy / 9 người = 660.000đ · đề xuất gậy: chờ 314 · đã đánh 81 · bỏ qua 364.
 - **⚠ LỖ QUYỀN (tôi tự kiểm, đúng):** `gay_ledger` policy ALL cho mọi `la_thanh_vien()`; `fn_gay_chot_thang(date)` `authenticated` gọi được, không cổng ⇒ nhân sự bất kỳ gỡ được gậy của mình / chốt tháng qua API. Tiền phạt gậy chảy vào lương. Chưa sửa — báo Thùy.
 - Gậy là MỘT hệ, hai hệ quả: 20.000đ/gậy (tiền, viết cứng `fn_gay_bang`) và −50 điểm hiệu suất/gậy. 12 câu hỏi §9.1, 16 lệch §9.2.
+
+### 17/11 khuya — Cờ "đạt mục tiêu tuần" + tính lại toàn bộ (Thùy)
+- Thùy: Thăng 4/6 đạt mà 99% · Trà 5/6 → 83%. Kiểm: tờ Thăng tinh_at 21:52 = số CŨ (công thức mới không ra được 99 với 6 nhóm); Trà 83,3 = 5/6. Thùy giữ "đạt = chạm mục tiêu tuần" ⇒ nhãn Đạt/Chưa đạt/Yếu (mức so 80) khác nghĩa ⇒ thêm dấu ✓ riêng.
+- Mig 202611180010_mtt_co_dat_muc_tieu_tuan.sql (CHƯA ÁP, vân tay 749d6004a2bfa42e; cần 202611172340 trước): payload.nhom[i].dat_mt tính sẵn trong _mtt_tinh, cùng điều kiện với tiến độ. UI: "✓ Mục tiêu" trên thẻ nhóm ở ERP · app HS (MAU/NEN của skin, check:style-hs không thêm lỗi) · app PH.
+- scripts/mtt/tinh-lai-toan-bo.sql: DO block ≤ 45 s/lượt, tính lại tờ tuần đang chạy chưa có dat_mt (cũ nhất trước) bằng _mtt_ghi + xếp hạng lại, báo "còn N", chạy lặp tới XONG. Thử Postgres tạm: 3 tờ cũ (tien_do 99) → tính lại 3 · còn 0 ✔. Không đụng mtt_chot.
