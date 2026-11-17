@@ -39,8 +39,8 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 **MASTERY = BẢN CÓ BTVN (Thùy 17/11 "mastery luật mới tính BTVN" → "chuyển hết").** Kênh tính: `et` · `mt` · `btvn` · `bt`.
 - Mọi hàm DB và màn đọc mastery đều gọi với `p_include_btvn = true` (4 hàm cuối chuyển ở mig `202611171038`: trợ lý · ôn tập BTVN · thành tựu tháng · vinh danh;
   client `src/lib/mastery.ts` luôn `true`, KQHT bỏ nút "Gộp BTVN" — app GV màn HS + tab Lớp đi theo).
-- Tham số `p_include_btvn` vẫn còn trong chữ ký hàm (giữ cho chỗ gọi cũ); bản lưu sẵn vẫn chụp cả bộ "chỉ ET + MT" (`btvn = false`) nhưng **không còn ai đọc** —
-  bỏ khỏi cache được (giảm nửa số dòng), việc kỹ thuật, chưa làm. **Hàm / màn mới: luôn gọi với `true`.**
+- Tham số `p_include_btvn` vẫn còn trong chữ ký hàm (giữ cho chỗ gọi cũ). **Bản lưu sẵn chỉ còn bộ có BTVN** (bộ "chỉ ET + MT" đã xoá — mig `202611171047`);
+  gọi với `false` thì tính trực tiếp (chậm, không ai gọi). **Hàm / màn mới: luôn gọi với `true`.**
 
 **Không tính:**
 - **Tự luyện** — trừ HS khối **3 · 4 · 5** (Thùy 10/11 + 12/11: 4T · 5T cũng KHÔNG tính tự luyện). Lý do: mỗi phiên tự luyện = 1 lần, đẩy ET/BTVN ra khỏi cửa sổ 5 lần.
@@ -99,8 +99,8 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 
 | Bảng | Nội dung (17/11) |
 |---|---|
-| `mastery_luu_san` | Toán: (HS × bộ nguồn × cấp × nút) → score · n · mức · độ tin · lần gần nhất. ~51,7 nghìn dòng |
-| `mastery_luu_san_mon` | KHTN · Vật lý · Hoá học, cùng khuôn. ~10 nghìn dòng |
+| `mastery_luu_san` | Toán: (HS × cấp × nút) → score · n · mức · độ tin · lần gần nhất; chỉ bộ có BTVN (`btvn = true`). ~28 nghìn dòng |
+| `mastery_luu_san_mon` | KHTN · Vật lý · Hoá học, cùng khuôn. ~5,4 nghìn dòng |
 | `mastery_luu_san_tinh` | mỗi em: lúc chụp + **mốc** (lùi 2 phút). 376 em |
 | `mastery_ban_log` | nhật ký "em bẩn" **chỉ-chèn** (không upsert — upsert trên khoá duy nhất chặn HS nộp bài khi có giao dịch dài, đã dính 10/11 + 14/11) |
 
@@ -148,17 +148,21 @@ Toán: `_mastery_lan_cap_t` · KHTN / Lý / Hoá: `_mastery_mon_cap` (cùng côn
 - **Hình–Luyện:** ô mọi nguồn 3.586 → 456 · ô yếu 497 → 133. **Toàn bộ** phần giảm là do **giới hạn 30 ngày** (đo lại: công thức cũ cắt 30 ngày cũng ra đúng 456 ô · 133 yếu) ⇒ ô chỉ có lần đo cũ hơn 30 ngày thành "chưa đo"; đổi sang theo lần + bỏ luyện chỉ làm 10 ô đổi mức. Ảnh hưởng: số bài mô hình yếu đổ vào bổ trợ Hình giảm mạnh.
 - `fn_mastery_cells_hinh` sau khi thành lớp mỏng = `_mastery_cells_hinh_tai`: lệch 0 dòng.
 
-**Việc kỹ thuật (CTO tự làm khi có lệnh, không cần quyết):** lõi môn một vùng `_mastery_mon_d` ~0,58 s / em (viết lại theo tập cần bộ đối chiếu trước) · `fn_tong_quan_hs` 1,4 s · bảng `mastery_ban` (4 dòng) không còn hàm nào đọc — cơ chế bẩn đã sang `mastery_ban_log` (xoá phải hỏi, Luật xoá) · `_dy_so_nhom` không còn ai gọi.
+**Việc kỹ thuật (CTO tự làm khi có lệnh, không cần quyết):** lõi môn một vùng `_mastery_mon_d` ~0,58 s / em (viết lại theo tập cần bộ đối chiếu trước) · `fn_tong_quan_hs` 1,4 s ·
+dọn các nhánh "công tắc theo lần tắt" còn nằm chết trong `_dang_yeu_tai_lo` · `fn_btyeu_dang_yeu_2_cua_so_moi` · `fn_btyeu_de_xuat_dang_moi` · `_tu_luyen_mastery_dang` · `fn_mastery_lam_moi` (không bao giờ chạy, vô hại).
 
-## 11. Công tắc & đường lùi
+**Đã xoá 17/11 (Thùy "Xoá cả A–F"):** A bộ "chỉ ET + MT" của bản lưu sẵn (23.510 + 4.519 dòng, mig `202611171047`) · B bảng `mastery_ban` · C `_dy_so_nhom` · D `fn_mastery_nhom` ·
+E đường lùi theo câu (`_mastery_cells_cau` + công tắc `mastery_theo_lan`; `_mastery_theo_lan_bat()` thành hằng `true`) — mig `202611171048_mastery_xoa_bang_cu…` ·
+F màn so sánh bản đồ cũ ↔ mới (`MasteryBdmCongTac.tsx` + `fn_mastery_bdm_so_sanh`, mig `202611171048_mastery_xoa_ham_so_sanh…`).
+
+## 11. Công tắc
 
 | Công tắc (`he_thong_cong_tac`) | Đang | Tắt thì |
 |---|---|---|
-| `mastery_theo_lan` | BẬT (10/11 15:18) | về mastery theo CÂU (`_mastery_cells_cau`: 5 câu gần nhất, trọng số MT 3 · ET 2) ngay, không mất dữ liệu; cache ngừng làm mới |
 | `mastery_ban_do_moi` | BẬT | Toán quy theo bản đồ cũ |
 
-Bật / tắt qua `fn_he_thong_cong_tac_dat(ma, bat)` (admin), có log; đổi công tắc ⇒ đánh bẩn mọi em.
-`fn_mastery_cells` (bản gốc, không đọc công tắc) không còn hàm nào gọi — giữ.
+Bật / tắt qua `fn_he_thong_cong_tac_dat(ma, bat)` ở SQL (màn admin 🔀 Mastery đã gỡ 17/11), có log; đổi công tắc ⇒ đánh bẩn mọi em.
+**Mastery luôn đo theo LẦN** — không còn đường lùi theo câu (xoá 17/11; muốn quay lại phải dựng từ migration cũ trong git). `fn_mastery_cells` (bản gốc) đã không còn trong DB.
 
 ## 12. Luật khi sửa mastery (bài học đã trả giá)
 
@@ -176,7 +180,7 @@ Bật / tắt qua `fn_he_thong_cong_tac_dat(ma, bat)` (admin), có log; đổi c
 |---|---|---|
 | Nguồn lượt đo | `_mastery_luot_do_quy` · `_mastery_lan_do_quy` · `_mastery_lan_do` | — |
 | Quy câu → nút | `_do_o_quy` · `_do_o_bdm` / `_do_o_bdm_core` · `_do_o` · `_khtn_/_vatly_/_hoahoc_do_o_bdm` | — |
-| Công thức | `_mastery_lan_d` → `_mastery_lan_cap_t` / `_mastery_lan_cap` · `_mastery_mon_d` → `_mastery_mon_cap` · lớp mỏng `_mastery_lan_core` · `_mastery_cells_core` · `fn_mastery_cells_moi` / `_bdm` · `fn_mastery_nhom` | — |
+| Công thức | `_mastery_lan_d` → `_mastery_lan_cap_t` / `_mastery_lan_cap` · `_mastery_mon_d` → `_mastery_mon_cap` · lớp mỏng `_mastery_lan_core` · `_mastery_cells_core` · `fn_mastery_cells_moi` / `_bdm` | — |
 | Lưu sẵn | `mastery_luu_san*` · `mastery_ban_log` · `fn_mastery_lam_moi` · `fn_mastery_danh_dau_tat_ca` · `_mastery_hs_sach` · `_mastery_luu_san_doc` · `_mastery_mon_doc` · `fn_mastery_doi_chieu` | — |
 | Dạng yếu | `_btyeu_dang_theo_nhom` · `_dang_yeu_tai_lo` · `_dang_yeu_chup_tuan` · `dang_yeu_dau_tuan` · `dang_yeu_hien_tai` · `_qlcl_lam_moi_nen` | Phòng TK › Chất lượng · Dashboard học tập |
 | Hình–Luyện | `_mastery_cells_hinh_tai` · `fn_mastery_cells_hinh` | Bổ trợ Hình |

@@ -34,8 +34,6 @@ import { demChuaPhanMoHinh } from '../../lib/kho/hinhCay'
 import { khopDem } from '../../lib/kho/bdmKhop'
 import KhoTrenLopModal from './KhoTrenLopModal'
 import DangPickerOne from '../../components/DangPickerOne'
-import MasteryBdmCongTac from './MasteryBdmCongTac'
-import { useStore } from '../../store/useStore'
 import { useMonScope } from '../../hooks/useMonScope'
 import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
 
@@ -1348,8 +1346,6 @@ export default function BanDoMoiScreen() {
   useEffect(() => { try { localStorage.setItem('bdm.mon', mon) } catch { /* bỏ qua */ } }, [mon])
   // KHÔNG reset môn khi rời màn bằng effect cleanup: StrictMode chạy cleanup ngay lần dựng đầu ⇒ cây tải nhầm bộ Toán (dính 29/10).
   // Chỗ khác dùng lib này chỉ có KhoTrenLopModal — chỉ mở được trong màn Toán (tn.khoLop).
-  const laAdmin = useStore((s) => !!s.quyen?.laAdmin)
-  const [congTac, setCongTac] = useState(false)   // 🔀 công tắc mastery bản đồ mới (admin — PLAN-mastery-ban-do-moi.md)
   useEffect(() => { try { localStorage.setItem('bdm.khoi', khoi) } catch { /* trình duyệt chặn lưu — bỏ qua */ } }, [khoi])
   const chonKhoi = (
     <span className="flex items-center gap-0.5">
@@ -1366,11 +1362,9 @@ export default function BanDoMoiScreen() {
             ? (k.endsWith('T') ? 'bg-violet-600 text-white' : 'bg-indigo-600 text-white')
             : (k.endsWith('T') ? 'text-violet-600 hover:bg-violet-50' : 'text-slate-500 hover:bg-slate-100')}`}>{k}</button>
       ))}
-      {laAdmin && tinhNangBdm().mastery && <button onClick={() => setCongTac(true)} title="Mastery K6–12 đo theo bản đồ mới — bật / tắt + so sánh từng lớp"
-        className="ml-2 h-7 whitespace-nowrap rounded-md border border-emerald-300 px-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-50">🔀 Mastery</button>}
     </span>
   )
-  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={mon + khoi} khoi={khoi} dauMan={chonKhoi} />{congTac && <MasteryBdmCongTac onDong={() => setCongTac(false)} />}</div>
+  return <div className="h-full min-h-0 bg-[#fafafb]"><BanDoMoi key={mon + khoi} khoi={khoi} dauMan={chonKhoi} /></div>
 }
 
 function ThuTuChuDe({ cay, cd, lam }: { cay: BdmCay; cd: BdmChuDe; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {
