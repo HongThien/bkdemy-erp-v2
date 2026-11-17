@@ -1,0 +1,439 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chép lời giải Hình–Luyện</title>
+<style>
+:root{--bg:#f6f7f9;--fg:#1d2330;--card:#fff;--bd:#d9dde5;--mut:#5b6476;--vang:#fff6cc;--vangbd:#e2c044;--xanh:#eef7ee}
+@media (prefers-color-scheme:dark){:root{--bg:#14171d;--fg:#e6e8ee;--card:#1d222b;--bd:#343b48;--mut:#9aa3b5;--vang:#3d3510;--vangbd:#a8892a;--xanh:#1b2a1d}}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,Segoe UI,sans-serif;margin:0;padding:16px}
+main{max-width:1200px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}.tom{color:var(--mut);margin:0 0 20px}
+.khoi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin:0 0 18px}
+.khoi.co{background:var(--vang);border-color:var(--vangbd)}
+h2{font-size:18px;margin:0 0 4px}.mh{font-weight:400;color:var(--mut);font-size:14px}
+.tag{background:var(--vangbd);color:#000;border-radius:4px;padding:1px 8px;font-size:12px;vertical-align:middle}
+h3{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--mut);margin:12px 0 4px}
+.meta{font-size:13px;color:var(--mut);margin:0}
+.luoi{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+pre{white-space:pre-wrap;word-break:break-word;font:13px/1.5 ui-monospace,Consolas,monospace;background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:8px;margin:0}
+.moi pre{background:var(--xanh)}
+table{border-collapse:collapse;font-size:13px}td,th{border:1px solid var(--bd);padding:3px 10px;text-align:left}
+.gc{margin:0;font-size:14px}code{font-size:12px}
+</style></head><body><main>
+<h1>Chép lời giải bài cũ → bài mới (Hình–Luyện K7)</h1>
+<p class="tom">17/11 · ĐỀ XUẤT, chưa ghi DB · 13 bài mới cần lời giải · 12 đã soạn · 2 cờ (tô vàng). Công thức để dạng chữ $…$. Nguồn cặp: reports/hinh-luyen-cu-doi-chieu-17-11.json.</p>
+<section class="khoi">
+<h2>BT.07.126.05 <span class="mh">MH.234</span> ← BT.07.061.13 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>e2b6ff8c-4d01-4d08-a396-38d36fd0b064</code> · ứng viên khác: BT.07.054.24 (ý a), BT.07.061.21</p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác ABC vuông tại A (AB &lt; AC). Kẻ BD là tia phân giác của góc B (D thuộc AC). Lấy E trên BC sao cho BA = BE.
+
+Chứng minh $\triangle BAD = \triangle BED$.</pre></div>
+<div><h3>Đề cũ (BT.07.061.13, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại A. Vẽ BD là tia phân giác ABC. Trên BC lấy điểm E sao cho $BE = BA$.
+
+Chứng minh $\triangle ABD = \triangle EBD$.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Xét $\triangle ABD$ và $\triangle EBD$:
+- $BA = BE$ (giả thiết).
+- $\widehat{ABD} = \widehat{EBD}$ (do $BD$ là tia phân giác của \widehat{ABC})
+- $BD$ là cạnh chung.
+Vậy $\triangle ABD = \triangle EBD$ (c.g.c).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Xét $\triangle BAD$ và $\triangle BED$ có:
+$BA = BE$ (gt)
+$\widehat{ABD} = \widehat{EBD}$ ($BD$ là tia phân giác của $\widehat{ABC}$)
+$BD$ là cạnh chung
+Vậy $\triangle BAD = \triangle BED$ (c.g.c).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>ΔABD</td><td>ΔBAD</td></tr><tr><td>ΔEBD</td><td>ΔBED</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Chọn 061.13: mỗi điều kiện một dòng, gọn nhất (054.24 ý a dồn cả khối "Xét" trên một dòng; 061.21 cùng nội dung nhưng có dòng trống xen và chú thích thừa). Điểm giữ nguyên; chỉ đổi thứ tự đỉnh tam giác cho khớp đề mới (B↔B, A↔E, D↔D). Sửa ngoài đổi tên: bỏ gạch đầu dòng, thêm "có:" theo khuôn "Xét … có:", "(giả thiết)" → "(gt)", bọc $…$ cho \widehat{ABC} (dữ liệu cũ thiếu dấu $).</p>
+</section>
+<section class="khoi">
+<h2>BT.07.126.06 <span class="mh">MH.234</span> ← BT.07.061.12 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>4a62155b-5319-402a-b2fc-7c851c4a491c</code> · ứng viên khác: BT.07.054.24 (ý c)</p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác ABC vuông tại A (AB &lt; AC). Kẻ BD là tia phân giác của góc B (D thuộc AC). Lấy E trên BC sao cho BA = BE.
+
+Chứng minh $BD$ là đường trung trực của đoạn thẳng $AE$.</pre></div>
+<div><h3>Đề cũ (BT.07.061.12, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$.
+
+Chứng minh: $BK$ là đường trung trực của đoạn thẳng $AE$.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Ta có $BA = BE$ (giả thiết) $\Rightarrow B$ thuộc đường trung trực của $AE$ (1).
+$\triangle ABK = \triangle EBK$ (chứng minh trên).
+$\Rightarrow KA = KE$ (hai cạnh tương ứng).
+$\Rightarrow K$ thuộc đường trung trực của $AE$ (2).
+Từ (1) và (2) $\Rightarrow BK$ là đường trung trực của $AE$.</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $BA = BE$ (gt)
+$\Rightarrow B$ thuộc đường trung trực của $AE$ (1).
+$\triangle BAD = \triangle BED$ (cmt)
+$\Rightarrow DA = DE$ (hai cạnh tương ứng)
+$\Rightarrow D$ thuộc đường trung trực của $AE$ (2).
+Từ (1) và (2) $\Rightarrow BD$ là đường trung trực của $AE$.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>K</td><td>D</td></tr><tr><td>ΔABK</td><td>ΔBAD</td></tr><tr><td>ΔEBK</td><td>ΔBED</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Chọn 061.12: tách hai mốc (1), (2) rõ hơn 054.24 ý c. Đề cũ 061.12 gọi chân phân giác là D trong giả thiết nhưng lời giải và phát biểu dùng K (sót từ nguồn) ⇒ K → D; nhân chứng thứ hai: 054.24 ý c giải cùng lập luận với D. "(chứng minh trên)" → "(cmt)" (bài trước cùng mô hình MH.234).</p>
+</section>
+<section class="khoi">
+<h2>BT.07.126.07 <span class="mh">MH.234</span> ← BT.07.061.14 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>33364acc-20fa-4011-b5d9-79b4c94fd99a</code> · ứng viên khác: BT.07.054.24 (ý b), BT.07.061.22</p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác ABC vuông tại A (AB &lt; AC). Kẻ BD là tia phân giác của góc B (D thuộc AC). Lấy E trên BC sao cho BA = BE.
+
+Chứng minh $DE = DA$ và $DE$ vuông góc với $BC$.</pre></div>
+<div><h3>Đề cũ (BT.07.061.14, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$.
+
+Chứng minh $DE = AD$ và $DE \perp BC$.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Từ ý a có $\triangle ABD = \triangle EBD$.
+$\Rightarrow DE = AD$ (hai cạnh tương ứng).
+$\Rightarrow \widehat{BED} = \widehat{BAD}$ (hai góc tương ứng). 
+Mà $\widehat{BAD} = 90^\circ$ (do $\triangle ABC$ vuông tại $A$), nên $\widehat{BED} = 90^\circ$.
+Vậy $DE \perp BC$.</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $\triangle BAD = \triangle BED$ (cmt)
+$\Rightarrow DE = DA$ (hai cạnh tương ứng)
+$\Rightarrow \widehat{BED} = \widehat{BAD}$ (hai góc tương ứng).
+Mà $\widehat{BAD} = 90^\circ$ (do $\triangle ABC$ vuông tại $A$)
+nên $\widehat{BED} = 90^\circ$.
+Vậy $DE \perp BC$.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>ΔABD</td><td>ΔBAD</td></tr><tr><td>ΔEBD</td><td>ΔBED</td></tr><tr><td>DE = AD</td><td>DE = DA</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Chọn 061.14: mỗi bước một dòng (061.22 dùng gạch đầu dòng + dòng trống; 054.24 ý b gộp dòng dài). "Từ ý a có" → "Ta có … (cmt)". Tách "Mà …, nên …" thành hai dòng (dòng ngắn).</p>
+</section>
+<section class="khoi">
+<h2>BT.07.126.12 <span class="mh">MH.239</span> ← BT.07.061.16 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>4c721e4f-7b03-466e-8099-6b2e18a90575</code> · ứng viên khác: BT.07.054.24 (ý d), BT.07.061.24</p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác ABC vuông tại A (AB &lt; AC), BD là phân giác góc B (D thuộc AC), E thuộc BC với BE = BA, DE vuông góc BC. Trên tia đối tia AB lấy điểm F sao cho AF = EC.
+
+Chứng minh ba điểm $F, D, E$ thẳng hàng.</pre></div>
+<div><h3>Đề cũ (BT.07.061.16, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$.
+
+Trên tia đối của tia AB lấy điểm F sao cho $AF = CE$. Chứng minh ba điểm F, D, E thẳng hàng.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Theo câu trên, đã có $AD = DE$ và $DE \perp BC$.
+
+Vì $\widehat{BAC} = 90^\circ$, $D \in AC$ và $F$ thuộc tia đối của tia $AB$ nên $\widehat{DAF} = 180^\circ - \widehat{DAB} = 90^\circ$.
+
+Vì $DE \perp BC$ tại $E$ và $E$ nằm giữa $B$, $C$ (nên tia $EC$ là tia đối của tia $EB$) nên $\widehat{DEC} = 180^\circ - \widehat{DEB} = 90^\circ$.
+
+Xét $\triangle ADF$ và $\triangle EDC$:
+
+- $AD = ED$ (theo câu trên).
+
+- $\widehat{DAF} = \widehat{DEC} = 90^\circ$ (chứng minh trên).
+
+- $AF = EC$ (giả thiết).
+
+Vậy $\triangle ADF = \triangle EDC$ (c.g.c), suy ra $\widehat{ADF} = \widehat{EDC}$.
+
+Vì $A$, $D$, $C$ thẳng hàng ($D \in AC$) nên $\widehat{ADE} + \widehat{EDC} = \widehat{ADC} = 180^\circ$.
+
+Thay $\widehat{EDC} = \widehat{ADF}$ vào, ta được $\widehat{ADE} + \widehat{ADF} = 180^\circ$, tức là $\widehat{FDE} = 180^\circ$.
+
+Vậy ba điểm $F$, $D$, $E$ thẳng hàng.</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $\triangle BAD = \triangle BED$ (cmt)
+$\Rightarrow AD = DE$ (hai cạnh tương ứng).
+Vì $\widehat{BAC} = 90^\circ$, $D \in AC$ và $F$ thuộc tia đối của tia $AB$
+nên $\widehat{DAF} = 180^\circ - \widehat{DAB} = 90^\circ$.
+Vì $DE \perp BC$ tại $E$ (gt) và $E$ nằm giữa $B$, $C$
+nên tia $EC$ là tia đối của tia $EB$,
+do đó $\widehat{DEC} = 180^\circ - \widehat{DEB} = 90^\circ$.
+Xét $\triangle ADF$ và $\triangle EDC$ có:
+$AD = ED$ (cmt)
+$\widehat{DAF} = \widehat{DEC} = 90^\circ$ (cmt)
+$AF = EC$ (gt)
+Do đó $\triangle ADF = \triangle EDC$ (c.g.c)
+$\Rightarrow \widehat{ADF} = \widehat{EDC}$ (hai góc tương ứng).
+Vì $A$, $D$, $C$ thẳng hàng ($D \in AC$)
+nên $\widehat{ADE} + \widehat{EDC} = \widehat{ADC} = 180^\circ$.
+Thay $\widehat{EDC} = \widehat{ADF}$ vào, ta được $\widehat{ADE} + \widehat{ADF} = 180^\circ$,
+tức là $\widehat{FDE} = 180^\circ$.
+Vậy ba điểm $F$, $D$, $E$ thẳng hàng.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>(giữ nguyên mọi điểm)</td><td>—</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Chọn 061.16: đủ cơ sở nhất (nêu vì sao tia EC đối tia EB). Tên điểm trùng hoàn toàn. Sửa cho khớp đề mới: (1) đề mới đã cho sẵn DE ⊥ BC trong giả thiết ⇒ ghi "(gt)" thay vì "theo câu trên"; (2) AD = DE đề cũ lấy "theo câu trên" ⇒ thay bằng ΔBAD = ΔBED (theo bài BT.07.126.20 — bài của MH.126, nằm trên đường gốc→nốt MH.126 → MH.238 → MH.239) rồi suy ra hai cạnh tương ứng (thêm 1 dòng, đúng mẫu lời giải 126.22 đang có). Bỏ gạch đầu dòng/dòng trống, tách dòng dài. Lưu ý: đoạn "Xét ΔADF và ΔEDC" chính là bài BT.07.126.10 (cùng MH.239, CHƯA có lời giải) — nếu muốn rút gọn có thể thay cả đoạn bằng "ΔADF = ΔEDC (cmt)" sau khi 126.10 có lời giải (chép từ 126.22).</p>
+</section>
+<section class="khoi">
+<h2>BT.07.126.14 <span class="mh">MH.235</span> ← BT.07.061.25 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>69b7eca2-ad0c-4e01-9916-d05d6532e8fa</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác ABC vuông tại A (AB &lt; AC). Kẻ BD là tia phân giác của góc B (D thuộc AC). Vẽ DE vuông góc với BC.
+
+Chứng minh $\triangle BAD = \triangle BED$.</pre></div>
+<div><h3>Đề cũ (BT.07.061.25, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại A. Vẽ BD là tia phân giác của $\widehat{ABC}$ ($D \in AC$). Kẻ DE vuông góc với BC ($E \in BC$).
+
+Chứng minh $\triangle ABD = \triangle EBD$.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Xét hai tam giác vuông $ABD$ và $EBD$:
+
+- $\widehat{BAD} = \widehat{BED} = 90^\circ$ (do $\triangle ABC$ vuông tại $A$ và $DE \perp BC$ tại $E$).
+
+- $BD$ là cạnh huyền chung.
+
+- $\widehat{ABD} = \widehat{EBD}$ ($BD$ là tia phân giác của $\widehat{ABC}$).
+
+Suy ra $\triangle ABD = \triangle EBD$ (cạnh huyền – góc nhọn).
+
+Do đó $AB = EB$ và $AD = ED$ (các cặp cạnh tương ứng).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Xét hai tam giác vuông $BAD$ và $BED$ có:
+$\widehat{BAD} = \widehat{BED} = 90^\circ$ ($\triangle ABC$ vuông tại $A$, $DE \perp BC$)
+$BD$ là cạnh huyền chung
+$\widehat{ABD} = \widehat{EBD}$ ($BD$ là tia phân giác của $\widehat{ABC}$)
+Do đó $\triangle BAD = \triangle BED$ (ch - gn).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>ΔABD</td><td>ΔBAD</td></tr><tr><td>ΔEBD</td><td>ΔBED</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Một ứng viên. Đổi thứ tự đỉnh cho khớp đề mới. Sửa ngoài đổi tên: tên trường hợp "(cạnh huyền – góc nhọn)" → "(ch - gn)" theo danh sách tên lí do thống nhất; bỏ dòng cuối "Do đó AB = EB và AD = ED" (không thuộc yêu cầu đề); bỏ gạch đầu dòng/dòng trống.</p>
+</section>
+<section class="khoi co">
+<h2>BT.07.126.13 <span class="mh">MH.242</span> ← BT.07.061.27 <span class="tag">KHÔNG CHẮC</span></h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>3d30822e-cb3c-490b-96a8-4aab0a8f496a</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$ vuông tại $A$, $BD$ là phân giác của góc $B$ ($D\in AC$), $E$ thuộc cạnh $BC$ sao cho $BE=BA$ và $DE\perp BC$.; Dựng điểm F (ba cách tương đương: trên tia đối AB sao cho AF = EC; trên tia đối DE sao cho DF = DC; giao của tia BA và ED).; Gọi M là trung điểm của FC.
+
+Chứng minh ba điểm $B, D, M$ thẳng hàng.</pre></div>
+<div><h3>Đề cũ (BT.07.061.27, MH.061)</h3><pre>Cho $\triangle ABC$ vuông tại $A$, tia phân giác của góc $B$ cắt $AC$ tại $D$. Trên $BC$ lấy $E$ sao cho $BE = BA$.
+
+Lấy điểm M là trung điểm của đoạn thẳng QC. Chứng minh ba điểm B, D, M thẳng hàng.
+</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Theo câu trên, $DQ = DC$ nên $\triangle DQC$ cân tại $D$. Do đó đường trung tuyến $DM$ ($M$ là trung điểm $QC$) đồng thời là tia phân giác của $\widehat{QDC}$, tức $\widehat{QDM} = \widehat{CDM}$.
+
+Ta chứng minh $BD$ cũng là tia phân giác của $\widehat{QDC}$: theo câu a), $\triangle ABD = \triangle EBD$ nên $\widehat{ADB} = \widehat{EDB}$; theo câu b), $\widehat{ADQ} = \widehat{EDC}$ (đối đỉnh). Cộng hai đẳng thức góc này (tia $DA$ nằm giữa hai tia $DB, DQ$ và tia $DE$ nằm giữa hai tia $DB, DC$):
+
+$\widehat{BDQ} = \widehat{ADB} + \widehat{ADQ} = \widehat{EDB} + \widehat{EDC} = \widehat{BDC}$.
+
+Vậy $BD$ là tia phân giác của $\widehat{QDC}$.
+
+Do tia $DB$ và tia $DM$ cùng là tia phân giác của $\widehat{QDC}$, xuất phát từ $D$ và nằm cùng phía, nên hai tia này trùng nhau. Vậy ba điểm $B$, $D$, $M$ thẳng hàng.</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $DF = DC$ (gt) nên $\triangle DFC$ cân tại $D$.
+Do đó đường trung tuyến $DM$ ($M$ là trung điểm $FC$)
+đồng thời là tia phân giác của $\widehat{FDC}$.
+$\triangle BAD = \triangle BED$ (cmt)
+$\Rightarrow \widehat{ADB} = \widehat{EDB}$ (hai góc tương ứng).
+$\widehat{ADF} = \widehat{EDC}$ (hai góc đối đỉnh).
+Cộng hai đẳng thức góc này (tia $DA$ nằm giữa hai tia $DB, DF$
+và tia $DE$ nằm giữa hai tia $DB, DC$):
+$\widehat{BDF} = \widehat{ADB} + \widehat{ADF} = \widehat{EDB} + \widehat{EDC} = \widehat{BDC}$.
+Gọi $Dx$ là tia đối của tia $DB$.
+Ta có $\widehat{xDF} = 180^\circ - \widehat{BDF}$ và $\widehat{xDC} = 180^\circ - \widehat{BDC}$ (hai góc kề bù)
+nên $\widehat{xDF} = \widehat{xDC}$.
+Mà tia $Dx$ nằm giữa hai tia $DF$, $DC$
+nên $Dx$ là tia phân giác của $\widehat{FDC}$.
+Tia $Dx$ và tia $DM$ cùng là tia phân giác của $\widehat{FDC}$ nên hai tia này trùng nhau.
+Vậy ba điểm $B$, $D$, $M$ thẳng hàng.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>Q</td><td>F</td></tr><tr><td>ΔDQC</td><td>ΔDFC</td></tr><tr><td>ΔABD</td><td>ΔBAD</td></tr><tr><td>ΔEBD</td><td>ΔBED</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">LỜI GIẢI CŨ SAI Ở BƯỚC CUỐI: 061.27 kết luận "BD là tia phân giác của góc QDC, tia DB và tia DM cùng phía nên trùng nhau". Kiểm toạ độ A(0;0), B(0;3), C(4;0) ⇒ D(1,5;0), E(2,4;1,2), F(0;−2), M(2;−1): ∠BDF = ∠BDC ≈ 116,6° (đúng), nhưng ∠FDC ≈ 126,8° và tia DB NGƯỢC hướng tia DM (D nằm giữa B và M) — tia DB không phải phân giác góc FDC. Bản đề xuất giữ nguyên lập luận cũ tới ∠BDF = ∠BDC rồi SỬA đoạn kết bằng tia đối Dx (5 dòng mới) — cần trưởng khối/Thùy duyệt. Đổi tên Q → F. Căn cứ: DF = DC ghi "(gt)" vì giả thiết mới nêu F dựng theo ba cách tương đương, trong đó có "trên tia đối DE sao cho DF = DC" (nếu muốn bám bài có sẵn: "(cmt)", nhưng 126.23 thuộc MH.241, không nằm trên đường MH.126 → MH.238 → MH.242). "theo câu a" → "(cmt)" (trên đường); bỏ "theo câu b" ở cặp góc đối đỉnh (chỉ cần F, D, E thẳng hàng). Cách ngắn hơn để Thùy cân nhắc thay hẳn: BF = BA + AF = BE + EC = BC ⇒ B, D (DF = DC), M cùng nằm trên đường trung trực của FC.</p>
+</section>
+<section class="khoi">
+<h2>BT.07.132.02 <span class="mh">MH.132</span> ← BT.07.062.09 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>b1db617f-b82a-43a9-8435-70c57a9876e8</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho $\triangle ABC$ có $AB = AC$. Kẻ $AD$ là tia phân giác của góc $A$, $D$ thuộc $BC$.
+
+Chứng minh $AD \perp BC$.</pre></div>
+<div><h3>Đề cũ (BT.07.062.09, MH.062)</h3><pre>(giả thiết hiệu lực rỗng trong DB)
+
+Chứng minh $AH \perp BC$.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Theo câu trên, $\triangle ABH = \triangle ACH$ (đã chứng minh ở câu trên).
+
+Suy ra $\widehat{AHB} = \widehat{AHC}$ (hai góc tương ứng).
+
+Mà $B, H, C$ thẳng hàng nên $\widehat{AHB}$ và $\widehat{AHC}$ là hai góc kề bù: $\widehat{AHB} + \widehat{AHC} = 180^\circ$.
+
+Suy ra $\widehat{AHB} = \widehat{AHC} = 90^\circ$.
+
+Vậy $AH \perp BC$.</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $\triangle ABD = \triangle ACD$ (cmt)
+Suy ra $\widehat{ADB} = \widehat{ADC}$ (hai góc tương ứng).
+Mà $\widehat{ADB} + \widehat{ADC} = 180^\circ$ (hai góc kề bù)
+nên $\widehat{ADB} = \widehat{ADC} = 90^\circ$.
+Vậy $AD \perp BC$.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>H</td><td>D</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Giả thiết hiệu lực của 062.09 RỖNG trong DB (lỗi dữ liệu cũ) — đọc ngữ cảnh từ 062.08 cùng mô hình MH.062: "tia phân giác góc A cắt BC tại H"; D, E của đề cũ là điểm khác (trên tia đối BC/CB) và không dùng ở ý này. Đổi H → D (chân phân giác của đề mới). "Theo câu trên … (đã chứng minh ở câu trên)" → "(cmt)"; gộp lí do kề bù vào căn cứ "(hai góc kề bù)" thay cho câu "Mà B, H, C thẳng hàng nên … là hai góc kề bù:". Bỏ dòng trống.</p>
+</section>
+<section class="khoi">
+<h2>BT.07.131.01 <span class="mh">MH.131</span> ← BT.07.063.10 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>23306f4c-88f3-43e9-890d-e751f62b647e</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.
+
+Chứng minh $\triangle ABM = \triangle DCM$.</pre></div>
+<div><h3>Đề cũ (BT.07.063.10, MH.063)</h3><pre>Cho $\triangle ABC$ ($AB &lt; AC$) có $M$ là trung điểm của $AC$. Trên tia đối của tia $MB$ lấy điểm D sao cho $MB = MD$.|
+
+Chứng minh $\triangle AMB = \triangle CMD$</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Vì $A, M, C$ thẳng hàng ($M$ là trung điểm $AC$) và $B, M, D$ thẳng hàng ($D$ thuộc tia đối của tia $MB$) nên $\widehat{AMB} = \widehat{CMD}$ (hai góc đối đỉnh).
+
+Xét $\triangle AMB$ và $\triangle CMD$ có:
+$MA = MC$ ($M$ là trung điểm $AC$),
+$\widehat{AMB} = \widehat{CMD}$ (chứng minh trên),
+$MB = MD$ (giả thiết).
+
+Suy ra $\triangle AMB = \triangle CMD$ (c.g.c).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Vì $B, M, C$ thẳng hàng ($M$ là trung điểm $BC$)
+và $A, M, D$ thẳng hàng ($D$ thuộc tia đối của tia $MA$)
+nên $\widehat{AMB} = \widehat{DMC}$ (hai góc đối đỉnh).
+Xét $\triangle ABM$ và $\triangle DCM$ có:
+$MB = MC$ ($M$ là trung điểm $BC$)
+$\widehat{AMB} = \widehat{DMC}$ (cmt)
+$MA = MD$ (gt)
+Do đó $\triangle ABM = \triangle DCM$ (c.g.c).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>A</td><td>B</td></tr><tr><td>B</td><td>A</td></tr><tr><td>C</td><td>C</td></tr><tr><td>D</td><td>D</td></tr><tr><td>M</td><td>M</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Đề cũ: M trung điểm AC, D trên tia đối tia MB; đề mới: M trung điểm BC, D trên tia đối tia MA ⇒ đổi A ↔ B. Kiểm tương ứng: ΔAMB = ΔCMD (cũ) → ΔBMA = ΔCMD → viết lại theo thứ tự đề mới ΔABM = ΔDCM (A↔D, B↔C, M↔M). Bỏ điều kiện "AB &lt; AC" của đề cũ (không dùng). "(giả thiết)" → "(gt)", "(chứng minh trên)" → "(cmt)", bỏ dấu phẩy cuối dòng điều kiện, tách dòng dài.</p>
+</section>
+<section class="khoi">
+<h2>BT.07.131.02 <span class="mh">MH.131</span> ← BT.07.063.15 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>ad211bd5-f789-4465-a251-be92d9b84025</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.
+
+Chứng minh $\triangle ACM = \triangle DBM$.</pre></div>
+<div><h3>Đề cũ (BT.07.063.15, MH.063)</h3><pre>Cho tam giác $ABC$, lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MA = MD$.
+
+Chứng minh $\triangle AMC = \triangle DMB$ .</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Vì $M$ là trung điểm của $BC$ nên $MB = MC$; vì $M$ là trung điểm của $AD$ ($D$ trên tia đối tia $MA$, $AM = MD$) nên $A, M, D$ thẳng hàng.
+
+Vì $A, M, D$ thẳng hàng và $B, M, C$ thẳng hàng nên $\widehat{AMC} = \widehat{DMB}$ (hai góc đối đỉnh).
+
+Xét $\triangle AMC$ và $\triangle DMB$ có: $MA = MD$ (gt); $\widehat{AMC} = \widehat{DMB}$ (chứng minh trên); $MC = MB$ (chứng minh trên).
+
+Vậy $\triangle AMC = \triangle DMB$ (c.g.c).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Vì $M$ là trung điểm của $BC$ nên $MB = MC$.
+Vì $D$ thuộc tia đối của tia $MA$ nên $A, M, D$ thẳng hàng.
+Vì $A, M, D$ thẳng hàng và $B, M, C$ thẳng hàng
+nên $\widehat{AMC} = \widehat{DMB}$ (hai góc đối đỉnh).
+Xét $\triangle ACM$ và $\triangle DBM$ có:
+$MA = MD$ (gt)
+$\widehat{AMC} = \widehat{DMB}$ (cmt)
+$MC = MB$ (cmt)
+Vậy $\triangle ACM = \triangle DBM$ (c.g.c).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>ΔAMC</td><td>ΔACM</td></tr><tr><td>ΔDMB</td><td>ΔDBM</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Điểm trùng hoàn toàn; chỉ đổi thứ tự đỉnh cho khớp đề mới. Sửa ngoài đổi tên: ba điều kiện của khối "Xét … có:" đang nằm chung một dòng cách nhau bằng ";" ⇒ mỗi điều kiện một dòng (luật R1); câu "vì M là trung điểm của AD (…) nên A, M, D thẳng hàng" (lập luận vòng) → "Vì D thuộc tia đối của tia MA nên A, M, D thẳng hàng"; "(chứng minh trên)" → "(cmt)".</p>
+</section>
+<section class="khoi">
+<h2>BT.07.131.13 <span class="mh">MH.131</span> ← BT.07.063.16 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>03f966a4-1838-4cf8-bd2c-f09e646eb27f</code> · ứng viên khác: BT.07.063.02</p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.
+
+Chứng minh $AC \parallel BD$.</pre></div>
+<div><h3>Đề cũ (BT.07.063.16, MH.063)</h3><pre>Cho $\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$.
+
+Chứng minh $AC \parallel BD$ .</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Theo câu trên, $\triangle AMC = \triangle DMB$, suy ra $\widehat{MCA} = \widehat{MBD}$ (hai góc tương ứng).
+
+Vì $M$ nằm giữa $B$ và $C$ nên $\widehat{MCA} = \widehat{BCA}$ và $\widehat{MBD} = \widehat{CBD}$; do đó $\widehat{BCA} = \widehat{CBD}$.
+
+Vì $M$ nằm giữa $A$ và $D$ nên $A, D$ nằm ở hai phía của đường thẳng $BC$; suy ra $\widehat{BCA}$ và $\widehat{CBD}$ là hai góc so le trong tạo bởi đường thẳng $BC$ cắt hai đường thẳng $CA, BD$.
+
+Vậy $AC \parallel BD$ (hai góc so le trong bằng nhau).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $\triangle ACM = \triangle DBM$ (cmt)
+suy ra $\widehat{MCA} = \widehat{MBD}$ (hai góc tương ứng).
+Vì $M$ nằm giữa $B$ và $C$ nên $\widehat{MCA} = \widehat{BCA}$ và $\widehat{MBD} = \widehat{CBD}$;
+do đó $\widehat{BCA} = \widehat{CBD}$.
+Vì $M$ nằm giữa $A$ và $D$ nên $A, D$ nằm ở hai phía của đường thẳng $BC$;
+suy ra $\widehat{BCA}$ và $\widehat{CBD}$ là hai góc so le trong
+tạo bởi đường thẳng $BC$ cắt hai đường thẳng $CA, BD$.
+Vậy $AC \parallel BD$ (hai góc so le trong bằng nhau).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>ΔAMC</td><td>ΔACM</td></tr><tr><td>ΔDMB</td><td>ΔDBM</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Chọn 063.16 thay vì 063.02: 063.16 nêu cơ sở vì sao là cặp so le trong (A, D khác phía BC) và có lí do ở dòng kết; 063.02 chép lại cả phần chứng minh hai tam giác bằng nhau (trùng bài 131.02) và kết bằng "(đpcm)" không lí do. "Theo câu trên" → "(cmt)". Tách dòng dài.</p>
+</section>
+<section class="khoi co">
+<h2>BT.07.131.14 <span class="mh">MH.131</span> ← BT.07.063.11 <span class="tag">KHÔNG CHẮC</span></h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>d935a8a7-2505-40e7-a15d-c951144bdff3</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.
+
+Chứng minh $\triangle ABC = \triangle DCB$.</pre></div>
+<div><h3>Đề cũ (BT.07.063.11, MH.063)</h3><pre>Cho $\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$.
+
+Chứng minh $\triangle ABC = \triangle CDA$</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Vì $M$ là trung điểm của $BC$ nên $MB = MC$.
+
+Vì $D$ thuộc tia đối của tia $MA$ và $AM = MD$ nên $M$ cũng là trung điểm của $AD$, suy ra $\widehat{AMB} = \widehat{DMC}$ (hai góc đối đỉnh).
+
+Xét $\triangle ABM$ và $\triangle DCM$ có:
+$MA = MD$ (giả thiết),
+$\widehat{AMB} = \widehat{DMC}$ (chứng minh trên),
+$MB = MC$ (chứng minh trên).
+
+Suy ra $\triangle ABM = \triangle DCM$ (c.g.c), do đó $S_{ABM} = S_{DCM}$.
+
+Vì $M$ là trung điểm $BC$ nên $AM$ là đường trung tuyến của $\triangle ABC$ ứng với cạnh $BC$, suy ra $S_{ABM} = S_{ACM} = \dfrac{1}{2} S_{ABC}$.
+
+Vì $M$ nằm giữa $A$ và $D$ (do $D$ thuộc tia đối của tia $MA$) nên $M$ nằm trên cạnh $AD$ của $\triangle ACD$, suy ra $CM$ chia $\triangle ACD$ thành hai phần: $S_{ACD} = S_{ACM} + S_{DCM}$.
+
+Từ đó $S_{ACD} = \dfrac{1}{2} S_{ABC} + S_{ABM} = \dfrac{1}{2} S_{ABC} + \dfrac{1}{2} S_{ABC} = S_{ABC}$.
+
+Vậy $S_{ABC} = S_{CDA}$ (đpcm).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre><i>(không soạn)</i></pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<p>—</p>
+<h3>Ghi chú</h3><p class="gc">KHÔNG SOẠN. Lời giải cũ 063.11 không chứng minh hai tam giác bằng nhau: nó chứng minh DIỆN TÍCH S_ABC = S_CDA (dùng diện tích — ngoài phạm vi chứng minh tam giác bằng nhau K7) và kết "Vậy S_ABC = S_CDA (đpcm)". Phát biểu cũ ΔABC = ΔCDA cũng không đúng với giả thiết cũ (M trung điểm BC). Đề mới ΔABC = ΔDCB đúng nhưng lập luận khác hẳn ⇒ không có gì để chép. Gợi ý để Thùy/trưởng khối tự soạn: AB = DC (từ bài 131.01), AC = DB (từ bài 131.02), BC chung ⇒ c.c.c.</p>
+</section>
+<section class="khoi">
+<h2>BT.07.131.20 <span class="mh">MH.231</span> ← BT.07.063.17 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>d840259d-e357-4d2d-8b7f-83e28b7635cf</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.; Kẻ AG vuông góc BC, DJ vuông góc BC (G, J thuộc BC).
+
+Chứng minh $AG = DJ$.</pre></div>
+<div><h3>Đề cũ (BT.07.063.17, MH.063)</h3><pre>Cho $\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$.
+
+Kẻ $AH \perp BC$ , $DK \perp BC$ (H, K thuộc BC). Chứng minh $AH = DK$ .</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Xét $\triangle AHM$ và $\triangle DKM$ vuông tại $H, K$: $\widehat{AHM} = \widehat{DKM} = 90^\circ$; $AM = DM$ (gt); $\widehat{AMH} = \widehat{DMK}$ (hai góc đối đỉnh, vì $A, M, D$ thẳng hàng và $H, M, K$ thuộc đường thẳng $BC$).
+
+Vậy $\triangle AHM = \triangle DKM$ (cạnh huyền - góc nhọn), suy ra $AH = DK$ (hai cạnh tương ứng).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Xét $\triangle AGM$ và $\triangle DJM$ vuông tại $G$, $J$ có:
+$\widehat{AGM} = \widehat{DJM} = 90^\circ$
+$AM = DM$ (gt)
+$\widehat{AMG} = \widehat{DMJ}$ (hai góc đối đỉnh)
+(vì $A, M, D$ thẳng hàng và $G, M, J$ thuộc đường thẳng $BC$)
+Vậy $\triangle AGM = \triangle DJM$ (ch - gn)
+suy ra $AG = DJ$ (hai cạnh tương ứng).</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>H</td><td>G</td></tr><tr><td>K</td><td>J</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Đổi H → G, K → J (chân đường vuông góc từ A, D xuống BC). Sửa ngoài đổi tên: các điều kiện đang chung một dòng cách nhau ";" ⇒ mỗi điều kiện một dòng, lí do dài xuống dòng riêng; "(cạnh huyền - góc nhọn)" → "(ch - gn)". Lưu ý (không sửa): lời giải cũ ngầm coi G khác M (AM không vuông góc BC); khi AB = AC thì G ≡ J ≡ M, cặp góc đối đỉnh không tồn tại — như bản cũ.</p>
+</section>
+<section class="khoi">
+<h2>BT.07.131.21 <span class="mh">MH.232</span> ← BT.07.063.03 </h2>
+<p class="meta">cach_giai_id sẽ UPDATE: <code>d5dc3cce-7649-485f-ad32-ac00d0a8ffd0</code></p>
+<div class="luoi">
+<div><h3>Đề mới</h3><pre>Cho tam giác $ABC$, gọi $M$ là trung điểm của $BC$, trên tia đối của tia $MA$ lấy điểm $D$ sao cho $MD = MA$.; Kẻ MS vuông góc AB, MT vuông góc với CD.
+
+Chứng minh ba điểm $S, M, T$ thẳng hàng.</pre></div>
+<div><h3>Đề cũ (BT.07.063.03, MH.063)</h3><pre>Cho $\triangle ABC$. Lấy $M$ là trung điểm của $BC$. Trên tia đối của tia $MA$ lấy điểm $D$ sao cho $AM = MD$.
+
+Qua M vẽ đường thẳng vuông góc với AC tại I, và đường thẳng vuông góc với BD tại K. Chứng minh rằng ba điểm I, M, K thẳng hàng.</pre></div>
+<div><h3>Lời giải cũ</h3><pre>Theo câu trên, $AC \parallel BD$.
+
+- Đường thẳng qua $M$ vuông góc với $AC$ tại $I$, tức là $MI \perp AC$.
+- Vì $AC \parallel BD$ nên đường thẳng $MI$ (đã vuông góc với $AC$) cũng vuông góc với $BD$.
+- Qua điểm $M$ chỉ có duy nhất một đường thẳng vuông góc với $BD$; theo giả thiết đó là đường thẳng $MK$ ($MK \perp BD$ tại $K$).
+
+Vì $MI$ và $MK$ đều là đường thẳng qua $M$ vuông góc với $BD$, nên $MI$ và $MK$ là cùng một đường thẳng.
+
+$\Rightarrow I$ và $K$ cùng thuộc đường thẳng đó $\Rightarrow$ ba điểm $I, M, K$ thẳng hàng (đpcm).</pre></div>
+<div class="moi"><h3>Lời giải mới đề xuất</h3><pre>Ta có $AB \parallel CD$ (cmt).
+Đường thẳng qua $M$ vuông góc với $AB$ tại $S$, tức là $MS \perp AB$.
+Vì $AB \parallel CD$ nên đường thẳng $MS$ cũng vuông góc với $CD$.
+Qua điểm $M$ chỉ có duy nhất một đường thẳng vuông góc với $CD$;
+theo giả thiết đó là đường thẳng $MT$ ($MT \perp CD$ tại $T$).
+Vì $MS$ và $MT$ đều là đường thẳng qua $M$ vuông góc với $CD$
+nên $MS$ và $MT$ là cùng một đường thẳng.
+$\Rightarrow S$ và $T$ cùng thuộc đường thẳng đó
+$\Rightarrow$ ba điểm $S, M, T$ thẳng hàng.</pre></div>
+</div>
+<h3>Bảng đổi tên (cũ → mới)</h3>
+<table><tr><th>Cũ</th><th>Mới</th></tr><tr><td>A</td><td>A</td></tr><tr><td>C</td><td>B</td></tr><tr><td>B</td><td>C</td></tr><tr><td>D</td><td>D</td></tr><tr><td>M</td><td>M</td></tr><tr><td>I</td><td>S</td></tr><tr><td>K</td><td>T</td></tr></table>
+<h3>Ghi chú</h3><p class="gc">Đề cũ: MI ⊥ AC, MK ⊥ BD, dùng AC ∥ BD; đề mới: MS ⊥ AB, MT ⊥ CD, dùng AB ∥ CD ⇒ đổi vai B ↔ C (giả thiết gốc đối xứng: M trung điểm BC), I → S, K → T. Kiểm: AC ∥ BD (cũ) ↦ AB ∥ CD (mới) ✓. "Theo câu trên" → "(cmt)"; bỏ gạch đầu dòng, bỏ "(đpcm)", tách dòng dài. Lưu ý: bài tiền đề BT.07.131.03 (AB ∥ CD) hiện CHƯA có lời giải và không có bài cũ nào trong loại 1 trỏ vào nó.</p>
+</section>
+</main></body></html>
