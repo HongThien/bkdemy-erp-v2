@@ -1,6 +1,6 @@
 # spec-luong-gay.md — TÍNH LƯƠNG · TÍNH GẬY (spec #11 của bộ 20 spec)
 
-> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời từng câu — bảng §9.0, **thắng mọi dòng thân spec §1–§8 còn trái**, nhất là: GẬY KHÔNG TRỪ TIỀN · giáo viên khung lương cứng · chấm muộn ⇒ gậy, không cắt tiền). `spec-cham-cong-ta.md` đã chuyển `_luu-tru/`.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời từng câu — bảng §9.0, **thắng mọi dòng thân spec §1–§8 còn trái**, nhất là: GẬY KHÔNG TRỪ VÀO LƯƠNG, ghi sổ phạt riêng · giáo viên khung lương cứng · chấm muộn ⇒ gậy, không cắt tiền). `spec-cham-cong-ta.md` đã chuyển `_luu-tru/`.
 > Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh — danh sách §9.0b.
 > Đây là spec về **tiền của nhân sự**: chỗ nào nguồn mâu thuẫn / nguồn ≠ DB / số không có ngày chốt ⇒ **không tự chọn**, ghi §9.1. Việc code / DB chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-cham-cong-ta.md` (§1 dòng 11–19, §7, §8 phần chốt kỳ, §9 — phần còn lại đã ở `spec-tro-giang.md` §7) ·
@@ -268,8 +268,8 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 
 | Câu | Thùy trả lời (nguyên văn) | Ghi vào spec | Còn phải hỏi |
 |---|---|---|---|
-| 1 | **"Không trừ tiền"** (17/11) | **GẬY KHÔNG TRỪ TIỀN LƯƠNG.** Gậy chỉ là điểm (−50 điểm hiệu suất / gậy) + đánh giá; gỡ bằng hoạt động như cũ. Bỏ luật 20.000đ / gậy (29/08) và vế "lương trừ tiền phạt gậy" (12/10). Chấm muộn ⇒ gậy, không cắt tiền (câu 11). **Code đang trái:** `fn_gay_bang` còn tính `tien_phat` 20.000đ, công thức lương còn trừ tiền phạt gậy đã chốt, màn Gậy còn hiện tiền — sửa khi có lệnh (chưa tháng nào chốt nên chưa ai bị trừ). | — |
-| 2 | (hết cần — theo câu 1) | Không ai bị trừ tiền vì gậy, kể cả người không có lương trên ERP. Chốt tháng gậy (nếu giữ) chỉ để chốt điểm / đối chiếu. | — |
+| 1 | **"Không trừ tiền"** → làm rõ: **"gậy ko tính vào lương thôi, gậy tính SỔ PHẠT RIÊNG"** (17/11) | **Gậy KHÔNG trừ vào lương, nhưng VẪN là tiền phạt — ghi ở SỔ PHẠT RIÊNG** (sổ gậy: mỗi gậy 20.000đ theo luật 29/08, chốt tháng gậy ra bảng phạt để thu / đối chiếu riêng). Lương tính độc lập, không có dòng trừ gậy. Song song, mỗi gậy −50 điểm hiệu suất. Chấm muộn ⇒ gậy (câu 11). **Code đang trái ở MỘT chỗ:** công thức lương TA còn trừ tiền phạt gậy đã chốt — gỡ khi có lệnh. `fn_gay_bang` tính 20.000đ / gậy là ĐÚNG, giữ. *(Lần ghi trước của tôi "bỏ 20.000đ / gậy" là hiểu SAI — đã sửa.)* | — |
+| 2 | (theo câu 1) | Sổ phạt là MỘT bảng chung cho mọi người có gậy (TA · giáo viên · OPS…), không phụ thuộc người đó có bảng lương trên ERP hay không. Cách thu tiền phạt (ai thu, lúc nào): Thùy chưa nói — hiện chốt tháng gậy chỉ ra bảng. | cách thu sổ phạt |
 | 3 | "giáo viên full time có vai học thuật – trưởng khối ko có lương bổ trợ, ko có lương gì khác" | **Giáo viên full-time giữ vai học thuật / trưởng khối: KHÔNG có tiền dạy bổ trợ, không có khoản nào khác ngoài lương của họ.** 247 buổi bổ trợ do giáo viên đứng không sinh công / tiền. | Giáo viên KHÔNG full-time (nếu có người như vậy dạy bổ trợ) thì sao? |
 | 4 | "GV có khung lương cứng" | **Giáo viên có khung lương CỨNG** — không tính theo thang buổi × sĩ số. Thang 03/09 (300–750 nghìn / buổi) bỏ. | Khung lương cứng lưu ở đâu — ngoài ERP (kế toán giữ) hay đưa số vào hệ? |
 | 5 | "Giáo viên bình thường – có 3 gv tiểu học như m nói" → xác nhận **"Đúng"** | **Giáo viên hưởng KHUNG LƯƠNG CỨNG. Riêng 3 giáo viên tiểu học tính theo BUỔI theo thang 09/10** (§2.1: 350.000 → 650.000đ / buổi 1,5 giờ). 5 ý nhỏ (buổi bù · MT · sĩ số em vắng · 90/10 · đưa vào ERP) Thùy chưa trả lời riêng — giữ như đang làm cho 3 người này, không tự đổi. | khung lương cứng lưu ở đâu (ngoài ERP hay vào hệ) — hỏi khi cần đưa lương GV vào ERP |
@@ -285,7 +285,7 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 
 | # | Việc | Từ câu |
 |---|---|---|
-| 1 | **Gỡ tiền khỏi gậy:** `fn_gay_bang` / `fn_gay_bang_khoang` bỏ `tien_phat` 20.000đ · công thức lương TA (`_ta_luong_tinh`) bỏ trừ tiền phạt gậy · màn Gậy + `GAY_DON_GIA` ở client bỏ số tiền | 1 |
+| 1 | **Tách gậy khỏi lương:** công thức lương TA (`_ta_luong_tinh`) bỏ dòng trừ tiền phạt gậy; bảng lương realtime hiện gậy là thông tin (số gậy · tiền ở sổ phạt riêng), KHÔNG trừ vào net. `fn_gay_bang` + màn Gậy giữ số tiền (sổ phạt). Đưa đơn giá 20.000đ vào bảng thông số thay vì viết cứng 3 nơi. | 1 |
 | 2 | **Bịt quyền sổ gậy:** policy `gay_*` đang ALL cho mọi thành viên; `fn_gay_chot_thang` / `fn_tich_luy_chot_thang` không cổng — đưa đánh / gỡ / thu hồi / quyết đề xuất về hàm có cổng theo phạm vi | lệch 9.2 |
 | 3 | Ân xá đề xuất gậy có hạn trước 01/11 (đánh dấu bỏ qua, có lý do) · hạn quyết 7 ngày · quá 30 ngày máy tự bỏ qua · gậy tính theo tháng của việc trễ · máy quét gậy chuyển từ client xuống DB | 8 |
 | 4 | Thứ tự chốt tháng (ngày 1–3 · 4 · 5) + chặn chốt lương khi gậy tháng chưa chốt + dòng "điều chỉnh" cho kỳ đã trả; chốt kỳ tháng 10 (đủ điều kiện từ 05/11; 1 TA có dòng lớp thiếu mức) | 9 |
