@@ -33,7 +33,7 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 | Nguồn (bảng) | Khoá "một lần" | Thời điểm của lần | Kênh |
 |---|---|---|---|
 | Chấm buổi `gami_grades` ⨝ `gami_session_problems` — phase `et` · `mt` · `btvn` (kể cả buổi bù, khảo sát) | phase + buổi | **ngày buổi** (giờ VN); không gắn buổi ⇒ lúc chấm | `et` · `mt` · `btvn` |
-| Bài trên app `bai_lam_cau` ⨝ `bai_lam` ⨝ `bai_test` | một bài làm (`bai_lam.id`) | ngày buổi của bài; không có ⇒ lúc chấm câu | **TEST** `et` · `de_thi` · `bo_tro_test` · `bu_test` · `htd_test` ⇒ **et** · `btvn` · `giao_trinh` ⇒ **btvn** · `tu_luyen` ⇒ **tu_luyen** · **LUYỆN không tính** (Thùy 17/11 — §10.1, §10.2) |
+| Bài trên app `bai_lam_cau` ⨝ `bai_lam` ⨝ `bai_test` | một bài làm (`bai_lam.id`) | ngày buổi của bài; không có ⇒ lúc chấm câu | **TEST** `et` · `de_thi` · `bo_tro_test` · `bu_test` · `htd_test` ⇒ **et** · `btvn` · `giao_trinh` ⇒ **btvn** · `tu_luyen` ⇒ **tu_luyen** (lấy ra nhưng KHÔNG tính — §2 "Không tính") · **LUYỆN không tính** (Thùy 17/11 — §10.1, §10.2) |
 | Phiếu bổ trợ giấy `bt_grades` | một phiếu | lúc chấm | `bt` (30 ngày tới 17/11: 0 dòng) |
 
 **MASTERY = BẢN CÓ BTVN (Thùy 17/11 "mastery luật mới tính BTVN" → "chuyển hết").** Kênh tính: `et` · `mt` · `btvn` · `bt`.
@@ -43,7 +43,7 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
   gọi với `false` thì tính trực tiếp (chậm, không ai gọi). **Hàm / màn mới: luôn gọi với `true`.**
 
 **Không tính:**
-- **Tự luyện** — trừ HS khối **3 · 4 · 5** (Thùy 10/11 + 12/11: 4T · 5T cũng KHÔNG tính tự luyện). Lý do: mỗi phiên tự luyện = 1 lần, đẩy ET/BTVN ra khỏi cửa sổ 5 lần.
+- **Tự luyện — MỌI khối, kể cả tiểu học** (Thùy 17/11: "1 bản mastery thôi — ko tính tự luyện, áp cho toàn bộ BK"; GV cần đánh giá chính xác). Bỏ ngoại lệ khối 3 · 4 · 5 (10/11 + 12/11) — mig `202611171918`. Tự luyện chỉ còn được **đếm** làm hoạt động (mục tiêu tuần "Việc của con", thành tựu), không vào mức đạt / yếu. *(Thùy có nêu ý "app HS giữ tự luyện để em thấy tác dụng" — tạm gác, chưa làm bản thứ hai.)*
 - **Mọi bài LUYỆN** (Thùy 17/11: "chỉ test mới tính, luyện không tính"): `bo_tro` (luyện bổ trợ yếu) · `bu_luyen` · `htd_luyen` · `retest` · `on_thi_luyen` · `thi_thu` (thi thử — Thùy 23/10).
   Code dùng **danh sách CHO PHÉP** các loại bài được tính ⇒ thêm `bai_test.loai` mới thì phải quyết tường minh nó là test hay luyện.
 - Phiếu bổ trợ giấy `bt_grades` hiện vẫn trong nguồn "mọi nguồn" (bảng 0 dòng từ trước tới 17/11 — không ảnh hưởng số; nếu dùng lại thì xếp test/luyện theo luật trên).
