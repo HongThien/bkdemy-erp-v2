@@ -328,7 +328,7 @@
 ### Spec build (trong repo — nguồn cho đợt code hiện tại)
 - **`SPEC-INDEX.md` — chỉ mục spec (17/11):** mảng nào đọc file nào · file cũ đã chuyển vào `_luu-tru/` thì nguồn đúng là gì.
   Code/DEVLOG trỏ tên file không còn ở thư mục gốc ⇒ tra ở đây. File trong `_luu-tru/` là lịch sử, KHÔNG làm theo khi trái spec đang dùng.
-- **`spec-mastery.md` — ĐỌC TRƯỚC khi sửa `_mastery_*` / `fn_mastery_*` / `_do_o*` / dạng yếu · nhóm yếu, hoặc thêm màn/hàm đọc mastery** (nháp 17/11, đối chiếu hàm đang chạy):
+- **`spec-mastery.md` — ĐỌC TRƯỚC khi sửa `_mastery_*` / `fn_mastery_*` / `_do_o*` / dạng yếu · nhóm yếu, hoặc thêm màn/hàm đọc mastery** (CHỐT 17/11, đối chiếu hàm đang chạy):
   lần đo · nguồn · quy câu → nút · MỘT công thức (≤5 lần / 30 ngày, ngưỡng 80/50) · dạng yếu · cache + làm mới · ai đọc · việc chờ Thùy (§10).
 - **`spec-kien-truc.md` — ĐỌC BẮT BUỘC trước khi thêm BẢNG / HÀM / MÀN mới hoặc bảng tính sẵn mới** (Thùy chốt 13/11, sau audit scale 1.000 → 10.000 HS trung tâm):
   §0b định hướng BK → hệ quả kiến trúc · sổ gốc ↔ bảng tổng hợp (màn chỉ đọc số tính sẵn) · MỘT khuôn tính sẵn · hàm màn gọi chỉ tốn theo một người / một lớp,

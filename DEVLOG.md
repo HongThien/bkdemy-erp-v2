@@ -81610,3 +81610,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Màn nhân sự:** bấm lớp ⇒ chia đôi (trái danh sách HS, phải tờ mục tiêu) thay popup; TBM/GĐ có đủ 4 mục Chất lượng như trưởng khối (`PhanViecPgd.tsx`). Dạng bài ẩn mặc định, mỗi dạng một dòng + tình trạng; bỏ chữ "Cờ = …". `fn_mtt_dang_tinh_trang` (mig `1118` + `1129` + `1140` bỏ trùng) gọi khi bấm Chi tiết.
 - **Báo cáo tuần TK:** `fn_bctk_so` "Ra có bằng chứng" + "Độ phủ đo" chỉ đếm `gami_grades`, thiếu bài test app/TA nhập (test bổ trợ sau giờ) ⇒ mig `202611171244`; đo K6 3→23, K7 8→14, K8 8→22, K9 26→31.
 - **PH:** app phụ huynh chưa có màn Mục tiêu tuần (repo `bkdemy-ph-app`), chỉ ghi luật vào spec.
+
+## 17/11 12:30 — HANDOFF: mục 17/11 (gộp spec + mastery luật mới + HS yếu theo nhóm + sự cố quyền Mục tiêu tuần) — Thùy chuyển sang máy công ty làm tiếp

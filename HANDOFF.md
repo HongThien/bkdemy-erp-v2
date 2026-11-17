@@ -17,6 +17,29 @@
 
 ## ① TRẠNG THÁI HIỆN TẠI
 
+### ⭐⭐⭐⭐ 17/11 — GỘP SPEC (95 file → 20 spec) + MASTERY LUẬT MỚI + HS YẾU THEO NHÓM (máy nhà; mọi thứ trên `main`, DB đã áp hết)
+**Đọc `SPEC-INDEX.md` trước** — bảng A = bộ **20 spec đích Thùy chốt** (file hiện có rơi vào spec nào); bảng B = tên file cũ → nguồn đúng (file cũ nằm `_luu-tru/`, `git mv`, không xoá).
+- **Đã làm:** Đợt 0 lưu trữ 34 file outdate · **#20 `spec-mastery.md` CHỐT** (nguồn `spec-danh-gia-cuoi-cap` + `PLAN-mastery-ban-do-moi` đã vào `_luu-tru/`; CLAUDE §1 + §5 trỏ sang) ·
+  **#3 `spec-kho-cau-hoi.md` NHÁP** (agent dựng, tôi tự kiểm 5 số chính bằng DB — đúng).
+- **⏸ CHỜ THÙY trả lời Q1–Q7 ở `spec-kho-cau-hoi.md` §8** (đề xuất CTO ghi sẵn): Q1 điền ô Đại 449 form bỏ dở → đóng băng? · Q2 3.692 câu Hình chưa duyệt vẫn `kho_chuan` (công thức riêng) → theo luật chung? ·
+  Q3 sửa đáp số không thu hồi form TN (13 form lệch) → thêm trigger? · Q4 25 form TN Hình (trái "Hình không MCQ") → rác? (Luật xoá) · Q5 5.665 nháp clone không ai duyệt → clone ghi thẳng kho `da_duyet=false`? ·
+  Q6 bỏ vế "câu cũ tạm dùng" (353 Đại + 1 HGT)? · Q7 1.302 form TN KHTN/TSA/HGT ai duyệt, cho máy ký? Trả lời xong ⇒ chốt #3, lưu trữ 6 file nguồn, các việc DB làm từng bước có số trước–sau.
+- **Spec kế tiếp:** chưa chọn (Thùy chỉ định). Anh, Văn gác lại. Mỗi spec: đọc hết nguồn + đối chiếu DB → nháp → Thùy duyệt → mới lưu trữ nguồn.
+- **Mastery — Thùy chốt + ĐÃ ÁP 17/11** (`spec-mastery.md` §2, §5, §6, §10, §11):
+  - Chỉ **TEST** tính, **luyện không tính** (`bo_tro` · `bu_luyen` · `htd_luyen` · `retest` · ôn thi · thi thử); danh sách loại bài được tính là danh sách CHO PHÉP — loại mới phải quyết tường minh (mig `202611171010`).
+  - `bo_tro_test` · `bu_test` · `htd_test` đều tính như ET · **Hình–Luyện đo theo lần** (≤3 lần, 30 ngày, không trọng số) — ô Hình–Luyện 3.586 → 456, yếu 497 → 133 (toàn bộ do cửa sổ 30 ngày).
+  - **MỘT mastery = bản CÓ BTVN** (mig `…1038`; client `mastery.ts` luôn true, KQHT bỏ nút "Gộp BTVN").
+  - **Đã xoá (Thùy gật A–F):** bộ "chỉ ET+MT" trong cache · bảng `mastery_ban` · `_dy_so_nhom` · `fn_mastery_nhom` · đường lùi theo câu + công tắc `mastery_theo_lan` · màn 🔀 Mastery so sánh bản đồ + `fn_mastery_bdm_so_sanh`.
+    *(`_dy_nhom_ds` — hàm "nhóm có chứa dạng yếu" cũ — nay không ai gọi; xoá phải hỏi.)*
+- **HS YẾU = em có ≥ 1 NHÓM yếu** (Thùy 17/11, mig `…1134` · `…1135` chụp bù · `…1137`): ảnh `dang_yeu_hien_tai` / `dang_yeu_dau_tuan` có cột `so_nhom_yeu` + `nhom` (hàm một nguồn `_nhom_yeu_tai_lo`);
+  Báo cáo tuần `phien_ban` 2 (HS yếu theo nhóm + chỉ số **Nhóm yếu**), QLCL, box trưởng khối (trước đếm "nhóm có chứa dạng yếu" — sai) đều theo nhóm. Toán HS yếu 312 → 261. Báo cáo đã nộp giữ số cũ (màn ghi "bản cũ").
+- **🚀 CẦN THÙY DEPLOY:** **ERP** (KQHT bỏ nút Gộp BTVN · gỡ nút 🔀 Mastery · Báo cáo tuần ô/cột Nhóm yếu · QLCL chữ) + **app GV** (mastery có BTVN). Chưa ai mở các màn này bằng tài khoản thật.
+- **Sự cố đã gỡ 17/11:** sổ **Mục tiêu tuần** lỗi quyền 15 giờ (16/11 20:22 → 17/11 11:22) vì mig 1713/1844 áp qua SQL Editor ⇒ 4 hàm `_mtt_*` + bảng `mtt_ke_hoach` thuộc `postgres`;
+  Thùy dán 3 lệnh (grant 4 hàm + `alter table mtt_ke_hoach owner to claude_build`), lượt 11:22 OK 258 tờ. **Bài học:** lỗi quyền lộ từng chỗ một ⇒ dò cả chuỗi (`has_function_privilege` / `has_table_privilege` + policy RLS) rồi đưa MỘT lệnh; áp mig qua SQL Editor ⇒ cuối file phải đổi chủ về `claude_build` hoặc grant.
+- **Còn treo nhỏ:** `SPEC-tai-chinh-luong-gv-ta.md` ở nhánh riêng `docs/tai-chinh-luong-gv-ta`, chưa vào `main` (hỏi Thùy có đưa vào không) · 9 file ❓ (cum-bai, quy-tac-cham, PLAN-giaibai, PLAN-thu-chi, PLAN-tuqua, WEB, 3 nháp game) · `TIN-PH-K6…K9` chưa commit · `spec-lunar-cherry` để đâu ·
+  dọn nhánh chết "công tắc theo lần tắt" trong 5 hàm cũ (vô hại) · Hình–Luyện chưa vào Dashboard theo nhóm.
+- Có phiên khác (máy nhà) đang làm Mục tiêu tuần song song: các mig `…_mtt_dang_tinh_trang*` + sửa `spec-van-hanh-tuan.md` là của phiên đó, không phải đợt này.
+
 ### ⭐⭐⭐⭐ LUẬT GIẢI BÀI / GIẢI ĐỀ / NHẬP KHO = MỘT FILE `spec-giai-bai.md` (Thùy chốt 15/11) — ĐỌC TRƯỚC mọi việc đưa tài liệu vào kho
 - Thay toàn bộ luật cũ: file khối `kho-rules/*/k*.md`, `kho-rules/README.md`, `spec-giai-bai-ai.md`, `spec-luong-kho*.md`, luồng kho kiểu 1, ~180 brief theo lô — **đã XOÁ 15/11** (Thùy gật), còn trong git.
   Mục nào bên dưới còn tả "quy trình 3 bước", "rút luật vào k<khối>.md", "CEO duyệt lô / HTML duyệt", "giải trước — dạng chờ" ⇒ **lịch sử, không làm theo**.
