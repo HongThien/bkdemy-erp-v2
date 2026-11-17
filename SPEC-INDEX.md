@@ -17,7 +17,7 @@
 | 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-de-thi` (phần bóc câu) · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
 | 6 | `spec-quan-ly-chat-luong.md` | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
-| 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · `spec-muc-tieu-tuan` |
+| 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · *đã gộp 17/11:* `spec-muc-tieu-tuan` (→ §4.1–§4.7) |
 | 8 | `spec-van-hanh-trung-tam.md` | Ops: **xếp lịch bổ trợ + báo PH**, **cách thu học phí**, quy trình vận hành, phòng, TKB, sự kiện, tủ quà, app OPS | `spec-xep-bo-tro-chung` · `spec-dang-ky-test` · `spec-su-kien` (+ game Trung thu `games-site/`) · `PLAN-tuqua` · `PLAN-thu-chi` (phần quy trình) · *TKB · phòng · thu học phí* |
 | 9 | `spec-web-trung-tam.md` | Web trung tâm | `BKDEMY_WEB_SPEC` · `spec-dang-ky-test` (phần web) |
 | 10 | `spec-tro-giang.md` | Quy trình TA, chấm công, app TA | `spec-cham-cong-ta` · `spec-hieu-suat-ta` · `spec-bot-telegram-ta` · `spec-quy-tac-cham` |
@@ -54,6 +54,7 @@
 | `spec-kho-v2.md` | Schema kho 06/2026 | `schema.md` (DB thật) · `spec-giai-bai.md` |
 | `spec-giao-trinh-tuan.md` | Đã gộp trọn 16/11 | `spec-van-hanh-tuan.md` §3 |
 | `spec-bao-cao-tuan.md` | Đã gộp trọn 16/11 | `spec-van-hanh-tuan.md` §5 |
+| `spec-muc-tieu-tuan.md` | Đã gộp hẳn 17/11 (Thùy "Làm đi") | `spec-van-hanh-tuan.md` §4.1–§4.6 (luật) · §4.7 (kỹ thuật, nhãn "(cũ §x)") |
 | `spec-qlht-hien-trang.md` | Audit hệ xu của Hải 08/2026; Hải đã dừng | `spec-kinh-te-nhiem-vu.md` |
 | `luat-choi-game.md` | Luật game Trung thu 09/2026 | `spec-su-kien.md` |
 | `spec-game-bat-quai.md` | Tự ghi "đã bị thay" 01/10 | `spec-bat-thu.md` → `spec-lang-bk.md` |

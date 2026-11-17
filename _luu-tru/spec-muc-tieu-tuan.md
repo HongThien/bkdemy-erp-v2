@@ -1,5 +1,7 @@
 # Spec — MỤC TIÊU TUẦN của học sinh
 
+> ⛔ **LƯU TRỮ 17/11 — ĐÃ GỘP HẲN vào `spec-van-hanh-tuan.md`** (luật nghiệp vụ §4.1–§4.6 · phần kỹ thuật chép nguyên văn ở §4.7, nhãn "(cũ §x)"). Đọc để hiểu lịch sử, **không làm theo** khi trái spec đang dùng.
+
 > 🔗 **Nhịp tuần + luật nghiệp vụ Mục tiêu tuần đã gom vào `spec-van-hanh-tuan.md` (§1, §4) — Thùy 16/11.** File này giữ chi tiết kỹ thuật,
 > quyết định build và nhật ký (§10–§14) cho tới khi gộp hẳn. Luật nghiệp vụ MỚI ghi ở `spec-van-hanh-tuan.md`.
 
