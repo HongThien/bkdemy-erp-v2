@@ -263,6 +263,23 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 
 ## 9. Câu hỏi cho Thùy · lệch kỹ thuật
 
+### 9.0 Thùy trả lời 17/11 (lượt 1 — thắng "đề xuất" ở 9.1; chỗ tôi CHƯA CHẮC hiểu đúng ghi rõ, chờ Thùy xác nhận)
+
+| Câu | Thùy trả lời (nguyên văn) | Ghi vào spec | Còn phải hỏi |
+|---|---|---|---|
+| 1 | *chưa trả lời* | — | gậy có trừ tiền không, bao nhiêu |
+| 2 | *chưa trả lời* | — | gậy của người không có lương trên ERP |
+| 3 | "giáo viên full time có vai học thuật – trưởng khối ko có lương bổ trợ, ko có lương gì khác" | **Giáo viên full-time giữ vai học thuật / trưởng khối: KHÔNG có tiền dạy bổ trợ, không có khoản nào khác ngoài lương của họ.** 247 buổi bổ trợ do giáo viên đứng không sinh công / tiền. | Giáo viên KHÔNG full-time (nếu có người như vậy dạy bổ trợ) thì sao? |
+| 4 | "GV có khung lương cứng" | **Giáo viên có khung lương CỨNG** — không tính theo thang buổi × sĩ số. Thang 03/09 (300–750 nghìn / buổi) bỏ. | Khung lương cứng lưu ở đâu — ngoài ERP (kế toán giữ) hay đưa số vào hệ? |
+| 5 | "Giáo viên bình thường – có 3 gv tiểu học như m nói" | Tôi hiểu: **ngoài khung lương cứng, chỉ còn 3 giáo viên tiểu học tính theo thang buổi 09/10** (§2.1) như đang làm. | xác nhận cách hiểu; 5 ý nhỏ (buổi bù · MT · sĩ số em vắng · 90/10 · đưa vào ERP) chỉ còn áp cho 3 người này |
+| 6 | "Bản 12/10 thay hẳn" | Thang TA gói / buổi theo sĩ số (03/09) là LỊCH SỬ; công thức 12/10 (mức lớp × 40 / 20 / 40) là luật. | — |
+| 7 | "Ko hiểu" | — | hỏi lại bằng lời dễ hiểu |
+| 8 | OK | 314 đề xuất gậy tồn: **ân xá phần có hạn trước 01/11**, làm lại từ tháng 11. Về sau: hạn quyết 7 ngày, quá hạn về khay Trang, quá 30 ngày máy tự bỏ qua; **gậy tính theo tháng của việc trễ**. | — |
+| 9 | OK | Thứ tự mỗi tháng: ngày 1–3 trưởng khối xử lý thiếu công + quyết gậy → ngày 4 Trang chốt gậy → ngày 5 Trang chốt lương, Thùy xem tổng (hệ chặn chốt lương khi gậy tháng chưa chốt). Kỳ đã trả tiền không mở lại — chênh ghi dòng "điều chỉnh" kỳ sau. | — |
+| 10 | "cái này setup trên app mà" | **Đơn giá việc ngoài gói do quản lý ĐẶT TRÊN APP** (bảng thông số có ngày hiệu lực) — spec không ghi cứng số. Việc chưa đặt giá (Họp, Đào tạo) = chưa trả cho tới khi có người đặt. | — |
+| 11 | "ý là có deadline của BTVN mà" | Tôi hiểu: **"chấm BTVN trong hạn" = trong HẠN CHẤM BTVN của buổi** (2 giờ trước buổi kế; buổi kế T7 / CN ⇒ 23:59 hôm trước — `spec-tro-giang` §12.0 câu 3), KHÔNG phải "trước ngày 3 tháng sau". Buổi chấm trễ hạn không tính vào phần BTVN. **Khác code đang chạy** (đang tính mọi buổi chấm trước ngày 3). | xác nhận, vì đổi tiền TA nhận |
+| 12 | ok | Gậy đã vào sổ mà tháng chưa chốt hiện "tạm trừ" trong bảng lương realtime; bỏ màn "Tiến trình" + điểm hiệu suất khỏi app TA khi bảng xong (giữ Xếp hạng · Gậy của tôi · Shopping). | — |
+
 ### 9.1 Câu hỏi (xếp theo mức ảnh hưởng tới tiền người nhận)
 
 1. **Gậy có trừ vào lương không, mỗi gậy bao nhiêu?**
