@@ -404,7 +404,7 @@
   đoán Đại/Hình cho ca, trigger theo ngày dạy) · §4 Mục tiêu tuần (luật nghiệp vụ) · §5 **Báo cáo tuần** (gộp trọn) · §8 việc chờ Thùy (hạn H1/H2…).
 - **`spec-muc-tieu-tuan.md` — chi tiết kỹ thuật MỤC TIÊU TUẦN (luật nghiệp vụ + nhịp: `spec-van-hanh-tuan.md` §1, §4)** (Thùy chốt 12–13/11, chưa build): tờ HS × môn × tuần =
   Phần 1 Kiến thức mới (từ giáo trình) + Phần 2 Ôn tập (từ lượt chốt bổ trợ) + Việc của con (ET · BTVN · test sau giờ · bổ trợ, nhãn Tốt/Tạm ổn/Chưa tốt) ·
-  đánh giá theo NHÓM bài, mục tiêu 80% = mastery · cửa sổ lùi một buổi, lần đo thuộc tuần chấm xong · KHÔNG có màn chốt mới · app HS + app phụ huynh realtime ·
+  đánh giá theo NHÓM bài, mục tiêu 80% = mastery · Phần 1 = bài học TRONG tuần (17/11: bỏ "lùi một buổi"), lần đo thuộc tuần chấm xong · KHÔNG có màn chốt mới · app HS + app phụ huynh realtime ·
   tab trung tâm ở Dashboard học tập + Phòng trưởng khối · sổ chốt tuần bất biến 00:00 thứ Hai · đã chốt hết (§12).
 - **`SPEC-troly-nhansu.md` — ĐỌC BẮT BUỘC (§6–§7) trước khi sửa tab 🤖 TRỢ LÝ** (CEO chốt 29/09): **báo cáo là chính, hỏi là phụ** · chỉ 3 tài khoản ·
   Báo cáo Sư phạm = 3 luồng (đếm chậm/miss → Detail → cảnh báo), mỗi người quản một mảng có một bộ báo cáo riêng (Trang = Sư phạm, Lộc = Vận hành) ·

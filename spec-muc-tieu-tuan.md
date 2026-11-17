@@ -71,7 +71,7 @@ Phòng làm việc trưởng khối). Không dựng bản sao.
 | Chu kỳ | Của ai | Phạm vi mỗi thứ Hai |
 |---|---|---|
 | Lịch dạy tuần | GV chốt giáo trình | các buổi của tuần NÀY |
-| Mục tiêu học sinh | HS + phụ huynh | **lùi một buổi** so với lịch dạy |
+| Mục tiêu học sinh | HS + phụ huynh | các buổi của tuần NÀY (17/11: bỏ "lùi một buổi") |
 
 GV chỉ chốt lịch dạy + giáo trình như bình thường; hệ tự lấy các buổi diễn ra trong tuần (từ 17/11 không còn "lùi một buổi", §3.2).
 

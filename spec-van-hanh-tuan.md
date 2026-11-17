@@ -31,7 +31,7 @@ Mọi bước đọc chung **một bộ dữ liệu** (ca TKB · buổi giáo tr
 | **Trong tuần** | GV / TA | Gán buổi ngày dạy (hệ chọn sẵn buổi kế hoạch — §3.4) · ET · BTVN · chấm · bổ trợ | Builder › Gán lớp · màn buổi | Lần đo ⇒ mastery ⇒ tờ tuần cập nhật |
 | **Liên tục** | HS · PH | Xem tờ tuần (Phần 1 kiến thức mới · Phần 2 ôn tập · Việc của con · hạng) | App HS · app PH | — |
 
-Hai chu kỳ **lệch nhau một buổi** trên cùng dữ liệu: **lịch dạy** (Giáo trình tuần — các buổi của tuần đó) và **mục tiêu học sinh** (lùi một buổi — §4.2). GV không phải nghĩ về độ lệch này.
+~~Hai chu kỳ lệch nhau một buổi~~ — **BỎ 17/11 (Thùy):** lịch dạy (Giáo trình tuần) và mục tiêu học sinh CÙNG phạm vi: các buổi diễn ra TRONG tuần (§4.2).
 
 ## 2. Luật chung của mọi việc theo tuần
 
