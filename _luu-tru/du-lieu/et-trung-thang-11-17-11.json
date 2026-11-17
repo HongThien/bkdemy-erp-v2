@@ -1,0 +1,570 @@
+{
+ "xuat_at": "2026-11-17",
+ "ly_do": "Thùy 17/11 \"Xoá 4 bản trùng\": ET bản đồ mới tạo đúp do lưu chồng — xoá bản tạo TRƯỚC (bản sau là bản được sửa tiếp + lưới chấm dùng)",
+ "tai_lieu": [
+  {
+   "id": "04c60bd8-9fe0-4185-8506-9ba79c33051b",
+   "loai": "et",
+   "ten": "ET 8S1 · 13/11/2026",
+   "khoi": "8",
+   "ma_chuyen_de": null,
+   "theme": "bkdemy",
+   "created_at": "2026-11-13T14:22:17.966Z",
+   "updated_at": "2026-11-13T14:22:24.412Z",
+   "cau_hinh": {
+    "etMaDe": {
+     "HHC013872": [
+      "HHC004396",
+      "HHC004399"
+     ]
+    },
+    "nhanhByCau": {
+     "HHC004396": "hinh_hoc",
+     "HHC004399": "hinh_hoc",
+     "HHC013872": "hinh_hoc"
+    },
+    "etFormByCau": {
+     "HHC004396": "tu_luan",
+     "HHC004399": "tu_luan"
+    },
+    "btvnLinesByCau": {
+     "HHC013872": 25
+    }
+   },
+   "created_by": "1a531947-5174-449b-9191-615ef6adb4a1",
+   "lop_id": "bfd15562-9db7-4047-826f-5419aa597d83",
+   "ngay": "2026-11-12T17:00:00.000Z",
+   "nguon_id": null,
+   "nguon_buoi": null,
+   "mon": "Toán",
+   "hoc_sinh_id": null,
+   "file_url": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-tailieu/96933834-1e98-4f9e-a055-16f2a7d951d2.pdf",
+   "stt_lop": null,
+   "nhanh": null,
+   "test_dang_dung_at": null,
+   "duyet_at": null,
+   "duyet_boi": null,
+   "ban_do": "moi",
+   "luu_tru_tu": null,
+   "phase": null
+  },
+  {
+   "id": "2f706d09-eb84-4af1-96c4-c46f7474f6c7",
+   "loai": "et",
+   "ten": "ET 9S1 · 10/11/2026",
+   "khoi": "9",
+   "ma_chuyen_de": null,
+   "theme": "bkdemy",
+   "created_at": "2026-11-10T13:50:50.686Z",
+   "updated_at": "2026-11-10T13:50:54.640Z",
+   "cau_hinh": {
+    "etMaDe": {
+     "T109000000558": [
+      "T109030302016",
+      "T109030302017"
+     ],
+     "T109030302072": [
+      "T109030302001",
+      "T109030302002"
+     ],
+     "T109030303004": [
+      "T109030303001",
+      "T109030303002"
+     ],
+     "T109030304039": [
+      "T109030304036",
+      "T109030304037"
+     ],
+     "T109030304046": [
+      "T109030304047",
+      "T109030304048"
+     ],
+     "T109030305036": [
+      "T109030305013",
+      "T109030305014"
+     ],
+     "T109030305047": [
+      "T109030305007",
+      "T109030305008"
+     ],
+     "T109030306001": [
+      "T109030306002",
+      "T109030306003"
+     ]
+    },
+    "etFormByCau": {
+     "T109030302001": "tra_loi_ngan",
+     "T109030302002": "tra_loi_ngan",
+     "T109030302016": "tu_luan",
+     "T109030302017": "tu_luan",
+     "T109030302072": "tu_luan",
+     "T109030303001": "tra_loi_ngan",
+     "T109030303002": "tra_loi_ngan",
+     "T109030303004": "tu_luan",
+     "T109030304036": "tra_loi_ngan",
+     "T109030304037": "tra_loi_ngan",
+     "T109030304039": "tu_luan",
+     "T109030304046": "tu_luan",
+     "T109030304047": "tra_loi_ngan",
+     "T109030304048": "tra_loi_ngan",
+     "T109030305007": "tra_loi_ngan",
+     "T109030305008": "tra_loi_ngan",
+     "T109030305013": "tra_loi_ngan",
+     "T109030305014": "tra_loi_ngan",
+     "T109030305036": "tu_luan",
+     "T109030305047": "tu_luan",
+     "T109030306001": "tu_luan",
+     "T109030306002": "tra_loi_ngan",
+     "T109030306003": "tra_loi_ngan"
+    },
+    "btvnLinesByCau": {
+     "T109000000558": 10,
+     "T109030302072": 10,
+     "T109030303004": 12,
+     "T109030304039": 10,
+     "T109030304046": 10,
+     "T109030305036": 12,
+     "T109030305047": 12,
+     "T109030306001": 12
+    }
+   },
+   "created_by": "1a531947-5174-449b-9191-615ef6adb4a1",
+   "lop_id": "802c7ebb-3805-4fd7-8fca-59e998d28900",
+   "ngay": "2026-11-09T17:00:00.000Z",
+   "nguon_id": null,
+   "nguon_buoi": null,
+   "mon": "Toán",
+   "hoc_sinh_id": null,
+   "file_url": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-tailieu/7fb68918-a212-47c8-b4bd-2693036ed045.pdf",
+   "stt_lop": null,
+   "nhanh": null,
+   "test_dang_dung_at": null,
+   "duyet_at": null,
+   "duyet_boi": null,
+   "ban_do": "moi",
+   "luu_tru_tu": null,
+   "phase": null
+  },
+  {
+   "id": "55f6b4f7-efcc-4179-a7bd-2656cf54256e",
+   "loai": "et",
+   "ten": "ET 8S1 · 06/11/2026",
+   "khoi": "8",
+   "ma_chuyen_de": null,
+   "theme": "bkdemy",
+   "created_at": "2026-11-06T13:43:05.179Z",
+   "updated_at": "2026-11-06T13:43:09.965Z",
+   "cau_hinh": {
+    "etMaDe": {
+     "T108000000686": [
+      "T108030106003",
+      "T108030106004"
+     ],
+     "T108030104075": [
+      "T108030401037",
+      "T108030104072"
+     ],
+     "T108030104077": [
+      "T108030104078",
+      "T108030104079"
+     ],
+     "T108030104085": [
+      "T108030401031",
+      "T108030104082"
+     ],
+     "T108030104087": [
+      "T108030104088",
+      "T108030104089"
+     ],
+     "T108030105030": [
+      "T108030501005",
+      "T108030105028"
+     ],
+     "T108030105033": [
+      "T108030105034",
+      "T108030105035"
+     ],
+     "T108030105043": [
+      "T108030501008",
+      "T108030105044"
+     ],
+     "T108030106010": [
+      "T108030106001",
+      "T108030106002"
+     ],
+     "T108030501001": [
+      "T108030501002",
+      "T108030501003"
+     ]
+    },
+    "colByCau": {
+     "T108000000686": 1,
+     "T108030104075": 2,
+     "T108030104077": 2,
+     "T108030104085": 2,
+     "T108030104087": 2,
+     "T108030105030": 2,
+     "T108030105033": 2,
+     "T108030105043": 2,
+     "T108030106010": 1,
+     "T108030501001": 2
+    },
+    "etFormByCau": {
+     "T108030104072": "tra_loi_ngan",
+     "T108030104075": "tu_luan",
+     "T108030104077": "tu_luan",
+     "T108030104078": "tra_loi_ngan",
+     "T108030104079": "tra_loi_ngan",
+     "T108030104082": "tra_loi_ngan",
+     "T108030104085": "tu_luan",
+     "T108030104087": "tu_luan",
+     "T108030104088": "tra_loi_ngan",
+     "T108030104089": "tra_loi_ngan",
+     "T108030105028": "tra_loi_ngan",
+     "T108030105030": "tu_luan",
+     "T108030105033": "tu_luan",
+     "T108030105034": "tra_loi_ngan",
+     "T108030105035": "tra_loi_ngan",
+     "T108030105043": "tu_luan",
+     "T108030105044": "tra_loi_ngan",
+     "T108030106001": "tra_loi_ngan",
+     "T108030106002": "tra_loi_ngan",
+     "T108030106003": "tu_luan",
+     "T108030106004": "tu_luan",
+     "T108030106010": "tu_luan",
+     "T108030401031": "tra_loi_ngan",
+     "T108030401037": "tra_loi_ngan",
+     "T108030501001": "tu_luan",
+     "T108030501002": "tra_loi_ngan",
+     "T108030501003": "tra_loi_ngan",
+     "T108030501005": "tra_loi_ngan",
+     "T108030501008": "tra_loi_ngan"
+    },
+    "btvnLinesByCau": {
+     "T108000000686": 8,
+     "T108030104075": 5,
+     "T108030104077": 5,
+     "T108030104085": 5,
+     "T108030104087": 5,
+     "T108030105030": 6,
+     "T108030105033": 6,
+     "T108030105043": 6,
+     "T108030106010": 8,
+     "T108030501001": 6
+    }
+   },
+   "created_by": "1a531947-5174-449b-9191-615ef6adb4a1",
+   "lop_id": "bfd15562-9db7-4047-826f-5419aa597d83",
+   "ngay": "2026-11-05T17:00:00.000Z",
+   "nguon_id": null,
+   "nguon_buoi": null,
+   "mon": "Toán",
+   "hoc_sinh_id": null,
+   "file_url": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-tailieu/fcf91f73-9bba-4bf5-a117-bdd84a797ffe.pdf",
+   "stt_lop": null,
+   "nhanh": null,
+   "test_dang_dung_at": null,
+   "duyet_at": null,
+   "duyet_boi": null,
+   "ban_do": "moi",
+   "luu_tru_tu": null,
+   "phase": null
+  },
+  {
+   "id": "83641f29-1ef7-4d66-8ba7-03b2151b2c91",
+   "loai": "et",
+   "ten": "ET 9A2 · 03/11/2026",
+   "khoi": "9",
+   "ma_chuyen_de": null,
+   "theme": "bkdemy",
+   "created_at": "2026-11-03T14:31:30.128Z",
+   "updated_at": "2026-11-03T14:31:31.083Z",
+   "cau_hinh": {
+    "etMaDe": {
+     "HHC002198": [
+      "HHC002178",
+      "HHC002180"
+     ]
+    },
+    "nhanhByCau": {
+     "HHC002178": "hinh_hoc",
+     "HHC002180": "hinh_hoc",
+     "HHC002198": "hinh_hoc"
+    },
+    "etFormByCau": {
+     "HHC002178": "tu_luan",
+     "HHC002180": "tu_luan"
+    },
+    "btvnLinesByCau": {
+     "HHC002198": 15
+    }
+   },
+   "created_by": "31ffe8dc-9310-4ce9-b27e-c6c1c6263d43",
+   "lop_id": "b5997fec-977e-42c6-a13d-cb965a70adbc",
+   "ngay": "2026-11-02T17:00:00.000Z",
+   "nguon_id": null,
+   "nguon_buoi": null,
+   "mon": "Toán",
+   "hoc_sinh_id": null,
+   "file_url": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-tailieu/21132e53-6725-4be3-ae99-011ea40af924.pdf",
+   "stt_lop": null,
+   "nhanh": null,
+   "test_dang_dung_at": null,
+   "duyet_at": null,
+   "duyet_boi": null,
+   "ban_do": "moi",
+   "luu_tru_tu": null,
+   "phase": null
+  }
+ ],
+ "tai_lieu_phan": [
+  {
+   "id": "d4be0ed3-d959-4cf1-82f3-1010a5f84376",
+   "tai_lieu_id": "04c60bd8-9fe0-4185-8506-9ba79c33051b",
+   "thu_tu": 0,
+   "loai_phan": "custom",
+   "ref_ma": null,
+   "tieu_de": "ET",
+   "noi_dung": null,
+   "kieu": "thuong",
+   "hien_lt": true,
+   "diem_moi_cau": null,
+   "nang_cao": false,
+   "cha_id": null,
+   "hien_vi_du": true,
+   "lui_bac": null,
+   "lui_buoi": null
+  },
+  {
+   "id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "tai_lieu_id": "2f706d09-eb84-4af1-96c4-c46f7474f6c7",
+   "thu_tu": 0,
+   "loai_phan": "custom",
+   "ref_ma": null,
+   "tieu_de": "ET",
+   "noi_dung": null,
+   "kieu": "thuong",
+   "hien_lt": true,
+   "diem_moi_cau": null,
+   "nang_cao": false,
+   "cha_id": null,
+   "hien_vi_du": true,
+   "lui_bac": null,
+   "lui_buoi": null
+  },
+  {
+   "id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "tai_lieu_id": "55f6b4f7-efcc-4179-a7bd-2656cf54256e",
+   "thu_tu": 0,
+   "loai_phan": "custom",
+   "ref_ma": null,
+   "tieu_de": "ET",
+   "noi_dung": null,
+   "kieu": "thuong",
+   "hien_lt": true,
+   "diem_moi_cau": null,
+   "nang_cao": false,
+   "cha_id": null,
+   "hien_vi_du": true,
+   "lui_bac": null,
+   "lui_buoi": null
+  },
+  {
+   "id": "bfc3d40b-ddc6-42a4-8106-56cfeb8bd52b",
+   "tai_lieu_id": "83641f29-1ef7-4d66-8ba7-03b2151b2c91",
+   "thu_tu": 0,
+   "loai_phan": "custom",
+   "ref_ma": null,
+   "tieu_de": "ET",
+   "noi_dung": null,
+   "kieu": "thuong",
+   "hien_lt": true,
+   "diem_moi_cau": null,
+   "nang_cao": false,
+   "cha_id": null,
+   "hien_vi_du": true,
+   "lui_bac": null,
+   "lui_buoi": null
+  }
+ ],
+ "tai_lieu_cau": [
+  {
+   "id": "1901bcf3-b389-47ca-b416-c8f8ba46de75",
+   "phan_id": "d4be0ed3-d959-4cf1-82f3-1010a5f84376",
+   "ma_cau": "HHC013872",
+   "thu_tu": 0,
+   "diem": null
+  },
+  {
+   "id": "0376cbc0-36e2-4125-b2ae-7dab00323e62",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030303004",
+   "thu_tu": 0,
+   "diem": null
+  },
+  {
+   "id": "9b2f428f-10af-4380-bcd8-fc3cac396318",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030306001",
+   "thu_tu": 1,
+   "diem": null
+  },
+  {
+   "id": "be6c16a1-ccca-4008-a8da-b033ca929061",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030305047",
+   "thu_tu": 2,
+   "diem": null
+  },
+  {
+   "id": "9b9b5bb1-bbfc-47cc-83a1-5702121fb81b",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030305036",
+   "thu_tu": 3,
+   "diem": null
+  },
+  {
+   "id": "d44e2654-3678-4eb7-8ef8-540e793fb51d",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030302072",
+   "thu_tu": 4,
+   "diem": null
+  },
+  {
+   "id": "9c585993-9e7b-462f-aa97-29cd3445e73e",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109000000558",
+   "thu_tu": 5,
+   "diem": null
+  },
+  {
+   "id": "7bf73b42-2a4e-48fa-be56-33f55313e20f",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030304039",
+   "thu_tu": 6,
+   "diem": null
+  },
+  {
+   "id": "0d57a815-9294-4ce0-8ff0-ab9be7fab8a2",
+   "phan_id": "586db807-82bc-446d-b4ab-c56d9228cfc4",
+   "ma_cau": "T109030304046",
+   "thu_tu": 7,
+   "diem": null
+  },
+  {
+   "id": "447e86c8-9421-4556-9184-7a239f26e732",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030104085",
+   "thu_tu": 0,
+   "diem": null
+  },
+  {
+   "id": "0db5699d-00e2-4206-ab2e-f11dbc2b339a",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030104077",
+   "thu_tu": 1,
+   "diem": null
+  },
+  {
+   "id": "34ac2a23-1aa9-4ce7-b42e-ef053270a0dd",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030104075",
+   "thu_tu": 2,
+   "diem": null
+  },
+  {
+   "id": "050f9af2-5a3c-402b-bc6c-93b7da73304d",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030104087",
+   "thu_tu": 3,
+   "diem": null
+  },
+  {
+   "id": "1c1ec9ee-8b88-486a-8a17-283dbfd38d6c",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030105030",
+   "thu_tu": 4,
+   "diem": null
+  },
+  {
+   "id": "a3b36ae5-ff73-4b23-99bc-e71ad44d0864",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030105043",
+   "thu_tu": 5,
+   "diem": null
+  },
+  {
+   "id": "9927c748-f701-4f3e-ac1a-9369007035a1",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030105033",
+   "thu_tu": 6,
+   "diem": null
+  },
+  {
+   "id": "501074e5-33bf-43c9-8623-360f263ed2fa",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030501001",
+   "thu_tu": 7,
+   "diem": null
+  },
+  {
+   "id": "0cc9f95a-f39a-456a-99d1-303abd369199",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108030106010",
+   "thu_tu": 8,
+   "diem": null
+  },
+  {
+   "id": "8178dcd1-3e65-4499-a817-d6e103f6f9c7",
+   "phan_id": "3902e091-abb3-4f05-8b95-4a2925932f30",
+   "ma_cau": "T108000000686",
+   "thu_tu": 9,
+   "diem": null
+  },
+  {
+   "id": "6e05a82e-19fa-41fd-a812-7d908658ee0d",
+   "phan_id": "bfc3d40b-ddc6-42a4-8106-56cfeb8bd52b",
+   "ma_cau": "HHC002198",
+   "thu_tu": 0,
+   "diem": null
+  }
+ ],
+ "linkgen_jobs": [
+  {
+   "tai_lieu_id": "83641f29-1ef7-4d66-8ba7-03b2151b2c91",
+   "loai": "et",
+   "status": "done",
+   "attempt": 0,
+   "error": null,
+   "created_at": "2026-11-03T14:31:31.500Z",
+   "updated_at": "2026-11-11T08:35:27.642Z"
+  },
+  {
+   "tai_lieu_id": "55f6b4f7-efcc-4179-a7bd-2656cf54256e",
+   "loai": "et",
+   "status": "done",
+   "attempt": 0,
+   "error": null,
+   "created_at": "2026-11-06T13:43:07.596Z",
+   "updated_at": "2026-11-11T08:50:09.397Z"
+  },
+  {
+   "tai_lieu_id": "2f706d09-eb84-4af1-96c4-c46f7474f6c7",
+   "loai": "et",
+   "status": "done",
+   "attempt": 0,
+   "error": null,
+   "created_at": "2026-11-10T13:50:53.569Z",
+   "updated_at": "2026-11-11T09:12:41.973Z"
+  },
+  {
+   "tai_lieu_id": "04c60bd8-9fe0-4185-8506-9ba79c33051b",
+   "loai": "et",
+   "status": "done",
+   "attempt": 0,
+   "error": null,
+   "created_at": "2026-11-13T14:22:21.165Z",
+   "updated_at": "2026-11-15T09:14:25.078Z"
+  }
+ ]
+}

@@ -333,7 +333,7 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 | L5 | Phát hành bài + chấm trên app chuyển xuống DB (so cũ–mới 30 bài thật, deploy ERP + app HS cùng lúc). | OK — chưa làm |
 | L9 | Builder + ET bản đồ cũ: **khoá, chỉ xem / in**; giáo trình cũ còn dùng (5A, KHTN 7K–9K) chuyển sang bản lưu trữ. | OK — chưa làm |
 | L10 | Giáo trình cũ chưa chuyển: **để nguyên làm lịch sử.** | chốt |
-| L11 | **MỘT BUỔI CHỈ MỘT ET** (Thùy: "sao lại có chuyện 1 buổi 2 ET… do làm lỗi"). Gốc lỗi đã tìm: hai lượt lưu chồng nhau ở màn ET mới cùng tạo mới (4 buổi 03–13/11, hai bản giống hệt cách nhau 1–2 giây; 23 cặp cũ hơn ở ET bản đồ cũ cùng kiểu). | ✅ vá client (`ETBdmEditor`: một lượt lưu tại một thời điểm + tạo mới mà buổi đã có ET ⇒ dừng) + ✅ unique index DB `tai_lieu_et_moi_mot_buoi_uidx` (ET tạo từ 18/11). **Bản trùng cũ CHƯA xoá — chờ Thùy gật danh sách** |
+| L11 | **MỘT BUỔI CHỈ MỘT ET** (Thùy: "sao lại có chuyện 1 buổi 2 ET… do làm lỗi"). Gốc lỗi đã tìm: hai lượt lưu chồng nhau ở màn ET mới cùng tạo mới (4 buổi 03–13/11, hai bản giống hệt cách nhau 1–2 giây; 23 cặp cũ hơn ở ET bản đồ cũ cùng kiểu). | ✅ vá client (`ETBdmEditor`: một lượt lưu tại một thời điểm + tạo mới mà buổi đã có ET ⇒ dừng) + ✅ unique index DB `tai_lieu_et_moi_mot_buoi_uidx` (mọi ET bản đồ mới, không mốc ngày — mig `202611172018`). ✅ 4 bản trùng tháng 11 đã xoá (Thùy gật; xoá bản tạo TRƯỚC — bản sau là bản đang dùng; bản chép `_luu-tru/du-lieu/et-trung-thang-11-17-11.json`). 23 cặp ET bản đồ cũ để nguyên. |
 | L12 | ~27 đề duyệt trước 20/10: chạy lại `fn_de_thi_duyet` một lượt, đếm trước. | OK — chưa làm |
 | L13 | Kiểm tra / thư viện đề luyện (P4): giữ "chưa làm". | chốt |
 
