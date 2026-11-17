@@ -8,8 +8,12 @@ import WidgetDangYeu, { khoaO } from '../qlcl/WidgetDangYeu'
 import { tongQuanDangYeu, type OTongQuan } from '../../lib/qlcl'
 import { monTbm } from '../../lib/phongTk'
 import { DanhSachBoTro } from './ChatLuongPhong'
+import DashboardHocTapScreen from '../danhgia/DashboardHocTapScreen'
+import { HoSoHocSinh } from '../ketqua/KetQuaScreen'
 
-const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null; clMuc: 'chung' | 'bo_tro' } = { cacO: null, qt: null, cl: null, clMuc: 'chung' }
+type MucTbm = 'dashboard' | 'chung' | 'hoso' | 'bo_tro'
+const MUC_TBM: [MucTbm, string][] = [['dashboard', 'Dashboard học tập'], ['chung', 'Tình hình chung'], ['hoso', 'Hồ sơ học tập'], ['bo_tro', 'Danh sách bổ trợ']]
+const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null; clMuc: MucTbm; hoSo: { hs: string; mon: string } | null } = { cacO: null, qt: null, cl: null, clMuc: 'dashboard', hoSo: null }
 const tenO = (o: OChon) => `${o.mon === 'Toán' ? '' : `${o.mon} `}Khối ${o.khoi}`
 
 // Ô của PHÒNG: ô trong phạm vi (fn_qlcl_tong_quan) ∩ môn của phòng (fn_phong_mon_tbm; null = mọi môn) — Thùy 03/11: phòng Trang chỉ Toán.
@@ -52,17 +56,25 @@ export function QuanTriTbm() {
 // Thùy 10/11: thêm mục "Danh sách bổ trợ" — trưởng khối gửi lên, trưởng bộ môn duyệt (= mở case) / trả lại.
 export function ChatLuongTbm({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const cacO = useCacO()
-  const [muc, setMucS] = useState(NHO.clMuc)
-  const setMuc = (m: 'chung' | 'bo_tro') => { NHO.clMuc = m; setMucS(m) }
-  const thanh = (on: boolean) => `rounded-lg px-4 py-1.5 text-[13px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
+  const [muc, setMucS] = useState<MucTbm>(NHO.clMuc)
+  const setMuc = (m: MucTbm) => { NHO.clMuc = m; setMucS(m) }
+  const [hoSo, setHoSo] = useState(NHO.hoSo)
+  const moHoSo = (hs: string, mon: string) => { NHO.hoSo = { hs, mon }; setHoSo(NHO.hoSo); setMuc('hoso') }
+  const thanh = (on: boolean) => `whitespace-nowrap rounded-lg px-3 py-1 text-[12.5px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
+  // Thùy 17/11: trưởng bộ môn / giám đốc có ĐỦ 4 mục như trưởng khối (kể cả Dashboard học tập + tab Mục tiêu tuần), chỉ khác phạm vi: mọi khối của môn (DB cấp ô).
+  const thanhMuc = (
+    <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
+      {MUC_TBM.map(([k, t]) => <button key={k} onClick={() => setMuc(k)} className={thanh(muc === k)}>{t}</button>)}
+    </div>
+  )
+  const cho = <p className="text-[13px] text-slate-400">Đang tải các khối…</p>
   return (
     <div className="space-y-4">
-      <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5 shadow-sm">
-        <button onClick={() => setMuc('chung')} className={thanh(muc === 'chung')}>Tình hình chung</button>
-        <button onClick={() => setMuc('bo_tro')} className={thanh(muc === 'bo_tro')}>Danh sách bổ trợ</button>
-      </div>
-      {muc === 'bo_tro' ? (cacO ? <DanhSachBoTro che="tbm" cacO={cacO} /> : <p className="text-[13px] text-slate-400">Đang tải các khối…</p>)
-        : <ChatLuongTbmChung cacO={cacO} onTaoCaNhe={onTaoCaNhe} />}
+      {muc !== 'dashboard' && thanhMuc}
+      {muc === 'dashboard' && (cacO ? <DashboardHocTapScreen phong={{ o: cacO.map((x) => ({ mon: x.mon, khoi: x.khoi })), onMoHoSo: moHoSo, dau: thanhMuc }} /> : <>{thanhMuc}{cho}</>)}
+      {muc === 'hoso' && (cacO ? <HoSoHocSinh key={hoSo ? `${hoSo.mon}|${hoSo.hs}` : 'trong'} monDau={hoSo?.mon ?? cacO[0]?.mon} hsDau={hoSo?.hs ?? null} /> : cho)}
+      {muc === 'bo_tro' && (cacO ? <DanhSachBoTro che="tbm" cacO={cacO} onMoHoSo={moHoSo} /> : cho)}
+      {muc === 'chung' && <ChatLuongTbmChung cacO={cacO} onTaoCaNhe={onTaoCaNhe} />}
     </div>
   )
 }
