@@ -292,15 +292,14 @@ function ActCard({ label, cls, a, trend, sub }: { label: string; cls: string; a:
 // (mucDoBC). Chỉ tách nhánh Đại/Hình cho môn Toán.
 function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
   const [days, setDays] = useState<number | null>(null) // null = tất cả (khớp Tổng quan all-time)
-  const [btvn, setBtvn] = useState(false)
   const [rows, setRows] = useState<DangMastery[] | null>(null)
   const [loading, setLoading] = useState(false)
   const laToan = mon === 'Toán'
   useEffect(() => {
     setLoading(true)
-    getMasteryHS(hsId, mon, { includeBTVN: btvn, days: days ?? undefined })
+    getMasteryHS(hsId, mon, { days: days ?? undefined }) // 17/11 Thùy: mastery luôn có BTVN — bỏ nút "Gộp BTVN"
       .then(setRows).catch(() => setRows([])).finally(() => setLoading(false))
-  }, [hsId, mon, days, btvn])
+  }, [hsId, mon, days])
   const loc = (nhom: 'dai' | 'hinh', muc: 'co_ban' | 'nang_cao') => (rows ?? []).filter((r) => r.nhomBC === nhom && bucketMucDo(r.mucDoBC) === muc)
   const coBan = loc('dai', 'co_ban'), nangCao = loc('dai', 'nang_cao')
   const hinhCoBan = loc('hinh', 'co_ban'), hinhNangCao = loc('hinh', 'nang_cao')
@@ -312,10 +311,6 @@ function DangBaiTab({ hsId, mon }: { hsId: string; mon: string }) {
         <span className="text-[12px] font-medium text-slate-500">Cửa sổ</span>
         <button onClick={() => setDays(null)} className={dayBtn(days === null)}>Tất cả</button>
         {DAYS.map((dv) => <button key={dv} onClick={() => setDays(dv)} className={dayBtn(days === dv)}>{dv} ngày</button>)}
-        <label className="ml-1 flex cursor-pointer items-center gap-1.5 rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-slate-600 ring-1 ring-slate-200">
-          <input type="checkbox" checked={btvn} onChange={(e) => setBtvn(e.target.checked)} className="accent-indigo-600" />
-          Gộp BTVN
-        </label>
       </div>
       {loading ? (
         <p className="text-sm text-slate-500">Đang tính…</p>

@@ -81566,3 +81566,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - `check:kien-truc` K1 "hàm nội bộ client gọi được" 321 → 322 do grant trên ⇒ nâng trần `tran.json` lên 322 (lý do: giữ MỘT công thức Hình–Luyện; hàm chỉ đọc, invoker, RLS người gọi vẫn áp). Mọi mục khác ✔.
 - `fn_mastery_danh_dau_tat_ca()` ⇒ 376 em bẩn; cache chụp lại qua sổ `mastery` (đọc trong lúc chờ = tính trực tiếp theo luật mới, vẫn đúng). `npm run schema` đã chạy.
 - Sau áp: cache chụp lại hết (còn 1 em bẩn = đang làm bài) · `fn_mastery_doi_chieu(40)` lệch 0.
+
+## 17/11 10:40 — Mastery = MỘT bản CÓ BTVN (Thùy "mastery luật mới tính BTVN nhé" → "Chuyển hết") — mig 202611171038 ĐÃ ÁP · client chưa deploy
+- Dò: mọi luồng chính đã đọc bản có BTVN; còn 4 hàm DB + 5 chỗ client đọc bản chỉ ET+MT.
+- **DB (mig `202611171038_mastery_luon_co_btvn`, sinh bằng `.tmp-claude/gen-mig2.mjs` từ thân đang chạy, chốt md5):** `_troly_cc_hoc_tap_hoc_sinh` · `fn_ontap_diem_dang` · `fn_thanh_tuu_thang` (3 chỗ) · `fn_vinh_danh_hs` — chỉ đổi cờ false → true. Thử rollback (1 lớp Toán): ôn tập 9 dạng → 10 dạng có số (8 đạt · 2 cần luyện), vinh danh + thành tựu chạy, tốc độ như cũ (60–194 ms).
+- **Client:** `src/lib/mastery.ts` — `getMasteryHS` · `getHinhMasteryHS` · `loadMasteryCells` luôn `p_include_btvn: true` (opts.includeBTVN bị bỏ qua) ⇒ KQHT từng HS + tổng hợp, app GV màn HS + tab Lớp, gợi ý dạng BTScreen đi theo. `KetQuaScreen` bỏ ô "Gộp BTVN". tsc: chỉ lỗi cũ `pdfRender.ts` (không đụng). `check:kien-truc` ✔.
+- Còn: bản lưu sẵn bộ "chỉ ET+MT" không còn ai đọc (bỏ được, chưa làm). **Cần deploy ERP + app GV** cho phần client. Chưa mở màn bằng tài khoản thật.

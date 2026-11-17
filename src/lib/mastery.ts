@@ -107,6 +107,7 @@ export const bucketMucDo = (md: number | null | undefined): 'co_ban' | 'nang_cao
 export const SRC_LABEL: Record<EvalSrc, string> = { ingame: 'IG', et: 'ET', mt: 'MT', dg: 'ĐG', btvn: 'BTVN', bt: 'BT', tu_luyen: 'TL' }
 
 // Gom các lần đo của 1 HS (trong 1 MÔN) theo dạng → mastery + timeline.
+// ⚠ 17/11 Thùy: mastery LUÔN có BTVN — opts.includeBTVN bị bỏ qua (luật nguồn ở DB, spec-mastery.md §2). Chú thích dưới là lịch sử.
 // opts.includeBTVN: gộp cả phase='btvn' + 'bt' + 'tu_luyen' (mặc định KHÔNG — tự luyện tham khảo,
 // không vào mastery; toggle để Thùy soi — Thùy 07-15: BT/BTVN cùng gate 1 toggle, KHÔNG còn "bt luôn
 // vào" như trước). NGOẠI LỆ: HS CẤP 1 (khối 3/4/4T/5/5T) → 'tu_luyen' LUÔN vào dù toggle tắt (Thùy
@@ -127,8 +128,9 @@ export async function getMasteryHS(
 async function getMasteryHSTheoCongTac(hocSinhId: string, mon: string, opts: { includeBTVN?: boolean; days?: number }): Promise<DangMastery[]> {
   const sinceIso = opts.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null // boundary INSTANT (được phép, §windowing)
   const [{ data: cellRows, error: eCells }, { data: lanDo, error: eLan }] = await Promise.all([
-    supabase.rpc('fn_mastery_cells_moi', { p_hs: [hocSinhId], p_include_btvn: !!opts.includeBTVN, p_since: sinceIso }),
-    supabase.rpc('fn_mastery_lan_do_moi', { p_hs: hocSinhId, p_include_btvn: !!opts.includeBTVN, p_since: sinceIso }).limit(LIMIT),
+    // 17/11 Thùy: MỘT mastery = bản CÓ BTVN (spec-mastery.md §2) — opts.includeBTVN không còn tác dụng, giữ cho chỗ gọi cũ
+    supabase.rpc('fn_mastery_cells_moi', { p_hs: [hocSinhId], p_include_btvn: true, p_since: sinceIso }),
+    supabase.rpc('fn_mastery_lan_do_moi', { p_hs: hocSinhId, p_include_btvn: true, p_since: sinceIso }).limit(LIMIT),
   ])
   if (eCells) throw eCells
   if (eLan) throw eLan
@@ -171,7 +173,7 @@ export type HinhMastery = {
   evals: DangEval[]
 }
 export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?: boolean; days?: number }): Promise<HinhMastery[]> {
-  const phases: EvalSrc[] = opts?.includeBTVN ? ['et', 'mt', 'btvn'] : ['et', 'mt']
+  const phases: EvalSrc[] = ['et', 'mt', 'btvn'] // 17/11 Thùy: mastery luôn có BTVN
   const sinceIso = opts?.days ? new Date(Date.now() - opts.days * 86400_000).toISOString() : null
   // Embed thêm buoi:buoi_hoc_id(ngay) để timeline neo NGÀY BUỔI, không ngày chấm (cùng lý do getMasteryHS).
   let gq = supabase.from('gami_grades').select('result, graded_at, prob:problem_id(phase, hinh_baitoan_id, buoi:buoi_hoc_id(ngay))').eq('hoc_sinh_id', hocSinhId).limit(LIMIT)
@@ -202,7 +204,7 @@ export async function getHinhMasteryHS(hocSinhId: string, opts?: { includeBTVN?:
   // §2.0 (30/08): SỐ mastery Hình từ fn_mastery_cells_hinh (window 3 · tin 3/2) — evals chỉ
   // còn là timeline hiển thị.
   const { data: cellRows, error: eCells } = await supabase.rpc('fn_mastery_cells_hinh', {
-    p_hs: [hocSinhId], p_include_btvn: !!opts?.includeBTVN, p_since: sinceIso,
+    p_hs: [hocSinhId], p_include_btvn: true, p_since: sinceIso,
   })
   if (eCells) throw eCells
   const cellMap = new Map(((cellRows ?? []) as any[]).map((c) => [c.hinh_baitoan_id, { score: Number(c.score), n: Number(c.n), muc: c.muc, tin: c.tin } as Mastery]))
@@ -325,7 +327,7 @@ export async function loadMasteryCells(opts: RollupScope): Promise<CellBundle> {
   // 2+4) §2.0 (30/08): mastery cell (HS × dạng) tính ở DB — fn_mastery_cells (parity 391/391
   // với engine JS trên lớp 8S1). Gate nguồn (et/mt · toggle btvn/bt/tu_luyen · cấp-1) nằm
   // TRONG fn — cap1Set/phases client chỉ còn ý nghĩa chú thích lịch sử.
-  const { data: cells, error: eCells } = await supabase.rpc('fn_mastery_cells_moi', { p_hs: hsIds, p_include_btvn: !!opts.includeBTVN })
+  const { data: cells, error: eCells } = await supabase.rpc('fn_mastery_cells_moi', { p_hs: hsIds, p_include_btvn: true }) // 17/11: luôn có BTVN
   if (eCells) throw eCells
   const allMa = new Set<string>(((cells ?? []) as any[]).map((c) => c.ma_dang as string))
 

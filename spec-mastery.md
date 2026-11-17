@@ -36,9 +36,11 @@ Một nguồn lượt đo DUY NHẤT: `_mastery_luot_do_quy`. Mỗi dòng = (HS 
 | Bài trên app `bai_lam_cau` ⨝ `bai_lam` ⨝ `bai_test` | một bài làm (`bai_lam.id`) | ngày buổi của bài; không có ⇒ lúc chấm câu | **TEST** `et` · `de_thi` · `bo_tro_test` · `bu_test` · `htd_test` ⇒ **et** · `btvn` · `giao_trinh` ⇒ **btvn** · `tu_luyen` ⇒ **tu_luyen** · **LUYỆN không tính** (Thùy 17/11 — §10.1, §10.2) |
 | Phiếu bổ trợ giấy `bt_grades` | một phiếu | lúc chấm | `bt` (30 ngày tới 17/11: 0 dòng) |
 
-**Hai bộ nguồn** (tham số `p_include_btvn`), cả hai đều được lưu sẵn:
-- **ET + MT** (`false`): kênh `et` · `mt`.
-- **Mọi nguồn** (`true`): thêm `btvn` · `bt`. **Bổ trợ, dạng yếu, Dashboard học tập, Mục tiêu tuần đều đọc bộ này.**
+**MASTERY = BẢN CÓ BTVN (Thùy 17/11 "mastery luật mới tính BTVN" → "chuyển hết").** Kênh tính: `et` · `mt` · `btvn` · `bt`.
+- Mọi hàm DB và màn đọc mastery đều gọi với `p_include_btvn = true` (4 hàm cuối chuyển ở mig `202611171038`: trợ lý · ôn tập BTVN · thành tựu tháng · vinh danh;
+  client `src/lib/mastery.ts` luôn `true`, KQHT bỏ nút "Gộp BTVN" — app GV màn HS + tab Lớp đi theo).
+- Tham số `p_include_btvn` vẫn còn trong chữ ký hàm (giữ cho chỗ gọi cũ); bản lưu sẵn vẫn chụp cả bộ "chỉ ET + MT" (`btvn = false`) nhưng **không còn ai đọc** —
+  bỏ khỏi cache được (giảm nửa số dòng), việc kỹ thuật, chưa làm. **Hàm / màn mới: luôn gọi với `true`.**
 
 **Không tính:**
 - **Tự luyện** — trừ HS khối **3 · 4 · 5** (Thùy 10/11 + 12/11: 4T · 5T cũng KHÔNG tính tự luyện). Lý do: mỗi phiên tự luyện = 1 lần, đẩy ET/BTVN ra khỏi cửa sổ 5 lần.
