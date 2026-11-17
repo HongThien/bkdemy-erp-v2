@@ -136,7 +136,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 ### 3.7 Nối với Mục tiêu tuần
 
-- `_mtt_tinh` thấy **ca chiếu từ TKB** (`_gtt_ca`, từ hôm nay — buổi tương lai chưa có dòng `buoi_hoc`) ⇒ cửa sổ "lùi một buổi" đủ ngay thứ Hai (mig `1754`).
+- `_mtt_tinh` thấy **ca chiếu từ TKB** (`_gtt_ca`, từ hôm nay — buổi tương lai chưa có dòng `buoi_hoc`) ⇒ thấy đủ buổi của tuần ngay thứ Hai (mig `1754`; từ 17/11 chỉ lấy buổi TRONG tuần, bỏ "lùi một buổi").
 - Nhóm của buổi: lớp đã có bản chép ngày đó ⇒ đọc bản chép (như cũ); chưa có ⇒ câu của **buổi kế hoạch** (`gtt_ca` → builder), quy nhóm bằng đúng `_do_o_quy`. Phiên Mục tiêu tuần gom nguồn câu về `_mtt_o_buoi` / `_mtt_o_lui` (mig `1844`).
 - **Không gộp hai lượt chốt**: duyệt giáo trình tuần (thứ Sáu, trưởng bộ môn) ≠ công bố mục tiêu tuần (thứ Hai, trưởng khối sau khi chốt bổ trợ). Cột "Giáo trình x/y" của tab trung tâm Mục tiêu tuần đếm ca TKB + buổi kế hoạch.
 - Sau này: chỉ số **"tỉ lệ dạy đúng giáo trình đã chốt"** = so `gtt_duyet.khung` với bản chép ngày dạy (dữ liệu đã có).
@@ -168,11 +168,11 @@ Builder giáo trình CỦA LỚP ───────────────�
 ### 4.1 Đích & khái niệm
 - Công khai mục tiêu ngầm của GV thành **neo chung** cho HS · PH · GV · TA · hệ: **con cần làm gì · con đã làm gì**. Màn = dashboard của học sinh (xoay dữ liệu từ trục hoạt động sang trục HS).
 - **Tờ mục tiêu** = (HS × môn × tuần). **Đơn vị đánh giá = nhóm bài** (`mastery_luu_san.cap = 'nhom'`); **đơn vị dạy = dạng bài**; quy dạng → nhóm bằng đúng hàm đang chạy.
-- **Phần 1 · Kiến thức mới** = nhóm có dạng dạy trong cửa sổ tuần · **Phần 2 · Ôn tập** = nhóm nợ do lượt chốt bổ trợ tuần đưa vào · **Việc của con** = hoạt động có thật (ET · BTVN · test sau giờ · ca bổ trợ).
+- **Phần 1 · Kiến thức mới** = nhóm của bài học DIỄN RA TRONG TUẦN (bài CHƯA học; Thùy 17/11) · **Phần 2 · Ôn tập** = nhóm nợ do lượt chốt bổ trợ tuần đưa vào · **Việc của con** = hoạt động có thật (ET · BTVN · test sau giờ · ca bổ trợ).
 - Ba người xem **cùng dữ liệu, một bộ hàm**: app HS · app PH · tab trung tâm (Dashboard học tập / Phòng trưởng khối; trưởng khối xem được đủ view của em).
 
 ### 4.2 Cửa sổ & mốc
-- **Lùi một buổi** so với lịch dạy: lớp 2 buổi/tuần ⇒ mục tiêu tuần = buổi cuối tuần trước + buổi đầu tuần này (mọi nhóm đủ vòng ET + BTVN trước thứ Hai kế).
+- **⭐ SỬA 17/11 (Thùy): KIẾN THỨC MỚI = BÀI CHƯA HỌC, TUẦN TỚI LÀ TUẦN HỌC.** Phần 1 chỉ gồm nhóm của buổi học trong tuần (thứ Hai–CN). Bài của buổi cuối tuần trước đã học xong ⇒ không vào Phần 1, và BTVN của buổi đó không hiện ở Việc của con tuần mới. Luật "lùi một buổi" (13/11) BỎ. Dòng "cuối tuần này con sẽ học thêm… (tính vào tuần sau)" BỎ. Số lần đo: ET buổi trong tuần + BTVN của buổi trong tuần mà buổi kế còn trong tuần (BTVN buổi cuối tuần tính tuần sau). Chi tiết: `spec-muc-tieu-tuan.md` §3.2.
 - **Lần đo thuộc tuần mà nó được CHẤM XONG** (không theo giờ nộp). "Đã nộp / đúng hạn" theo giờ nộp; "kết quả" theo giờ chấm; đã nộp chưa chấm = "chờ chấm" (việc tồn TA, không tính cho con).
 - Hạn chấm BTVN = hạn đang chạy (lớp từ 18:00 ⇒ xong 2 tiếng trước buổi kế; lớp T7/CN ⇒ trước buổi kế một ngày). Buổi huỷ ⇒ hạn trôi.
 - **00:00 thứ Hai máy chụp** (sổ tuần cũ bất biến · số đầu tuần · nợ). **Chiều thứ Hai người chốt** ở buổi họp sẵn có (bổ trợ) rồi **Công bố** theo lớp. **Không có màn chốt từng em.**

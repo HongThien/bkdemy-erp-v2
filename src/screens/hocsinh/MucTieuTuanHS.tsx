@@ -148,12 +148,6 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
               <p className="mt-0.5 text-[13px]" style={{ color: MAU.muted }}>{to.xep_hang_cho.map((x) => x.ten).join(' · ')} — vào kế hoạch các tuần sau.</p>
             </TheHS>
           )}
-          {to.sap_hoc && (
-            <TheHS className="px-4 py-3" style={{ borderStyle: 'dashed' }}>
-              <p className="text-[14px] font-bold" style={{ color: MAU.ink }}>{thuNgay(to.sap_hoc.ngay)} con sẽ học thêm</p>
-              <p className="mt-0.5 text-[13px]" style={{ color: MAU.muted }}>{to.sap_hoc.nhom.join(' · ') || 'Bài mới'} · tính vào mục tiêu tuần sau.</p>
-            </TheHS>
-          )}
         </div>
 
         <TheHS className="p-4">

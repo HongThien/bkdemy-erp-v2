@@ -257,10 +257,9 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
                 <b>Thêm sau khi công bố</b> (không vào mục tiêu tuần này, học sinh không thấy): {to.them_sau_chot!.map((x) => `${x.ten} (phần ${x.phan})`).join(' · ')}
               </div>
             )}
-            {(to.xep_hang_cho.length > 0 || to.sap_hoc) && (
+            {to.xep_hang_cho.length > 0 && (
               <div className="space-y-1 rounded-lg bg-slate-50 px-3 py-2 text-[12.5px] text-slate-600">
                 {to.xep_hang_cho.length > 0 && <p><b className="text-slate-800">Đang xếp hàng:</b> {to.xep_hang_cho.map((x) => `${x.ten} ${x.p}%`).join(' · ')}</p>}
-                {to.sap_hoc && <p><b className="text-slate-800">{thuNgay(to.sap_hoc.ngay)} sẽ học thêm:</b> {to.sap_hoc.nhom.join(' · ') || 'bài mới'} (tính vào tuần sau)</p>}
               </div>
             )}
             <div>

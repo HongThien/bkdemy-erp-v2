@@ -54,7 +54,7 @@ nhịp check-in tuần kiểu OKR · luyện tập giãn cách + xen kẽ (space
 | **Tờ mục tiêu** | một (học sinh × môn × tuần). Mỗi môn một tờ, mang nhãn `mon` (CLAUDE §1.6). Tuần = thứ Hai → Chủ nhật, giờ VN. |
 | **Đơn vị ĐÁNH GIÁ** | **nhóm bài** (`mastery_luu_san.cap = 'nhom'`). Mọi %, tăng/giảm, nợ, test sau giờ tính theo nhóm. |
 | **Đơn vị DẠY** | **dạng bài**. Giáo trình, BTVN xếp chồng nói theo dạng. Quy dạng → nhóm bằng đúng hàm đang chạy (`_do_o` / `_do_nhom_cua_o`), không viết bản thứ hai. |
-| **Phần 1 · Kiến thức mới** | các nhóm bài có dạng được dạy trong cửa sổ mục tiêu tuần (§3). |
+| **Phần 1 · Kiến thức mới** | các nhóm bài của bài học DIỄN RA TRONG TUẦN — bài CHƯA học (Thùy 17/11, §3.2). |
 | **Phần 2 · Ôn tập kiến thức** | các nhóm bài nợ do lượt chốt bổ trợ tuần này đưa vào (§4). |
 | **Việc của con** | danh sách HOẠT ĐỘNG có thật trong tuần (ET · BTVN · test sau giờ · ca bổ trợ), mỗi việc có kết quả + nhãn đánh giá (§6). |
 | **Sổ chốt tuần** | bản chụp bất biến lúc chốt tuần; nguồn của trend, nợ tuần sau, số "đầu tuần". |
@@ -73,7 +73,7 @@ Phòng làm việc trưởng khối). Không dựng bản sao.
 | Lịch dạy tuần | GV chốt giáo trình | các buổi của tuần NÀY |
 | Mục tiêu học sinh | HS + phụ huynh | **lùi một buổi** so với lịch dạy |
 
-GV chỉ chốt lịch dạy + giáo trình như bình thường; hệ tự cắt cửa sổ mục tiêu lùi một buổi. GV không phải nghĩ về độ lệch này.
+GV chỉ chốt lịch dạy + giáo trình như bình thường; hệ tự lấy các buổi diễn ra trong tuần (từ 17/11 không còn "lùi một buổi", §3.2).
 
 ### 3.2 Luật cắt cửa sổ
 
@@ -98,7 +98,7 @@ Hệ quả: mọi nhóm của tuần đều đủ vòng đo (ET + BTVN) trước
 - **Hạn chấm BTVN = hạn đang chạy thực tế** (không đặt hạn mới): lớp học từ 18:00 ⇒ chấm xong **2 tiếng trước buổi học kế**;
   lớp học thứ Bảy / Chủ nhật (cả ngày) ⇒ chấm xong **trước buổi kế một ngày**.
 - Buổi huỷ / tuần nghỉ ⇒ hạn trôi, lần đo đi theo hạn.
-- Buổi thứ hai của tuần (chưa thuộc cửa sổ) hiện một dòng thông tin "cuối tuần này con sẽ học thêm: … (tính vào tuần sau)", không tính điểm.
+- ~~Buổi thứ hai của tuần hiện dòng "cuối tuần này con sẽ học thêm… (tính vào tuần sau)"~~ — **BỎ 17/11**: buổi cuối tuần giờ thuộc Phần 1 của chính tuần này; ở app HS · PH · ERP không còn dòng đó.
 
 ### 3.3 Thứ Hai — hai mốc
 
@@ -286,7 +286,12 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - Cột trái: **Phần 1 · Kiến thức mới** + **Phần 2 · Ôn tập kiến thức**. Mỗi dòng nhóm bài GỌN: tên · ▲/▼ · % · thanh có **lá cờ ở mốc mục tiêu TUẦN,
   số ghi dưới cờ** (§5.2b) + vạch mờ "đích 80%" khi mục tiêu tuần < 80% (không ghi chữ "Mục tiêu"). **Bấm vào** mới mở: một dòng mô tả (đã học x/y dạng · tuần này N lần đo, làm Tốt cả N lần thì lên X%) +
   nút **Xem lại bài trên lớp (khu giáo trình) · Luyện tập** (Thùy 13/11: bỏ "Xem lại lý thuyết").
-- Cột phải: **Việc của con tuần này** (§6).
+- Cột phải: **Việc của con tuần này** (§6). Việc BTVN chỉ của buổi trong tuần (17/11: BTVN buổi cuối tuần trước KHÔNG hiện ở tuần mới).
+- **Quy tắc chữ + dạng bài (Thùy 17/11, áp HS · PH · nhân sự):** không ghi những câu kỹ thuật vô nghĩa với HS/PH (cấm "Cờ = mục tiêu tuần…"); dòng nhóm chỉ ghi số + một câu giải thích đời thường ("làm Tốt cả N lần thì nhóm lên X%").
+  **Dạng bài ẨN mặc định**, bấm "Chi tiết" của nhóm mới hiện; **mỗi dạng MỘT dòng** (tên + tình trạng, không xuống dòng dài). Tình trạng dạng: app HS = lộ trình Học từ đầu của chính em (Đã xong · Đang luyện · Chưa mở · Chưa học);
+  màn nhân sự = % mastery của dạng (mig `202611171118` + `1129` + `1140`: `fn_mtt_dang_tinh_trang`, gọi khi bấm Chi tiết; Hình–Học: bài = nhóm); nhãn 80/50 theo màu.
+- **Màn nhân sự (tab Mục tiêu tuần · Phòng trưởng khối/bộ môn/giám đốc)**: bấm lớp ⇒ KHÔNG popup, chuyển màn chia đôi — **trái: danh sách HS của lớp, phải: tờ mục tiêu của em đang chọn** (Thùy 17/11); đây là màn quan sát CHÍNH của trưởng khối. Trưởng bộ môn / giám đốc có đủ 4 mục như trưởng khối (Dashboard học tập · Tình hình chung · Hồ sơ học tập · Danh sách bổ trợ), phạm vi mọi khối của môn.
+- **App phụ huynh:** màn Mục tiêu tuần ở app PH (repo `bkdemy-ph-app`) CHƯA xây (kiểm 17/11 — chưa có `fn_mtt_*` trong repo). Khi xây phải theo ĐÚNG các luật trên (Phần 1 = bài học trong tuần, không có dòng "sẽ học thêm", quy tắc chữ + dạng bài); dữ liệu đọc cùng hàm DB nên đã đúng luật mới.
 - **App phụ huynh: cùng nội dung, cập nhật liên tục** (Cổng Phụ huynh — project riêng `bkdemy-ph`, đọc ERP qua FDW `erp_live`), chữ formal.
   Thay hẳn phương án chụp ảnh gửi.
 - App HS dựng bằng khung style (`design/STYLE-HS.md`, `skin/KhungHS.tsx`), màn ngang trước (`spec-v1-app-hs.md`). Chữ theo `useLoi()`.
