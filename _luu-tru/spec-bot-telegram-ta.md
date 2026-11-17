@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-tro-giang.md` (§9). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Bot Telegram cho Trợ giảng — spec
 
 > Thùy chốt 14/10/2026. Đọc file này trước khi sửa bất cứ phần nào của bot (webhook, bản tin 8h, tổng kết 24h, màn duyệt).

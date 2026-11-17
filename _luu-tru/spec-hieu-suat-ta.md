@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-tro-giang.md` (§8). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Hiệu suất Trợ giảng — màn "Chất lượng vận hành" (CEO chốt 08/10/2026)
 
 > Thay màn Chất lượng vận hành cũ (CL − (100 − TĐ), leader chấm chất lượng tay, toán ở JS — đã outdate).

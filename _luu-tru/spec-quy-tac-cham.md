@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-tro-giang.md` (§3.7, giữ số mục A1–A9). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Quy tắc chấm bài Toán — bản đề xuất v0.1 (05/11/2026)
 
 > **Trạng thái: NHÁP, chờ CEO chốt.** Gom từ `cham_bai/QUY-TAC-CHAM.md` (chấm BTVN 18/10–03/11),

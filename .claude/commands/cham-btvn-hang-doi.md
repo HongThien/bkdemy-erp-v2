@@ -25,7 +25,7 @@ số câu `so`, đề/đáp án/lời giải kho nếu có, danh sách ảnh `{i
 Nhiều bài ⇒ giao mỗi bài 1 subagent (song song, tối đa 10), mỗi subagent đọc đúng thư mục của bài đó.
 Đề không có trong kho (Hình…) ⇒ 1 subagent giải đề trước, ghi đáp án chung, rồi các subagent chấm theo đáp án đó.
 Mỗi bài:
-1. Đọc `spec-quy-tac-cham.md` (quy tắc chấm v0.1) — đặc biệt §A1–A9 và mục khối của bài.
+1. Đọc `spec-tro-giang.md` §3.7 (quy tắc chấm v0.1; D1–D9 đã chốt 17/11) — đặc biệt A1–A9 và mục khối của bài.
 2. Đọc `de.json`, xem TỪNG ảnh (Read file ảnh). Ảnh có thể xoay ngang/lộn ngược, lộn thứ tự: tự xoay để đọc,
    xác định thứ tự trang theo số câu / số trang in trên phiếu.
 3. Tự giải từng câu trước, đối chiếu đáp án kho nếu có (đáp án kho có thể sai ⇒ `chac: false`). Phóng to

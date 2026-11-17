@@ -1,6 +1,7 @@
 # spec-tro-giang.md — TRỢ GIẢNG: quy trình TA · chấm · chấm công · hiệu suất · bot Telegram · app TA (spec #10 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — CHỜ THÙY DUYỆT.** Chưa thay file nào. Tới khi Thùy duyệt, các file ở dòng "Gộp từ" vẫn là nguồn đúng.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời 12 câu — bảng §12.0, thắng mọi "đề xuất" ở §12.1 và mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-hieu-suat-ta.md` · `spec-bot-telegram-ta.md` · `spec-quy-tac-cham.md` đã chuyển `_luu-tru/`. **`spec-cham-cong-ta.md` GIỮ ở gốc** tới khi spec #11 nhận phần công thức lương.
+> Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-cham-cong-ta.md` (trọn, trừ công thức lương ⇒ #11) · `spec-hieu-suat-ta.md` (trọn, sửa theo quyết định 05/11) · `spec-bot-telegram-ta.md` (trọn, sửa theo chốt 15/10) ·
 > `spec-quy-tac-cham.md` (trọn — giữ số mục A1–A9 vì lệnh `/cham-btvn-hang-doi` trỏ theo số) · `_luu-tru/PLAN-app-ta.md` · `_luu-tru/spec-test-online.md` (phần chấm, báo sai) ·
 > `.claude/commands/cham-btvn-hang-doi.md` · `spec-bo-tro.md` §5–§7, §13 (phần việc của TA trong ca) · `spec-builder.md` §10.2 · HANDOFF (mục chấm công · bot Telegram · sơ đồ tổ chức · app TA) ·
@@ -113,7 +114,7 @@
 - Đề đổi sau khi đã đóng ⇒ lưới **giữ theo lúc chấm** + cảnh báo; muốn bám đề mới thì Mở lại.
 - Sửa **đáp án sai của đề** (cả lớp) ⇒ "Chấm lại" có log (`fn_sua_key_va_cham_lai`) — `spec-builder.md` §10.1. Em báo máy chấm sai câu trả lời ngắn ⇒ **Duyệt báo sai** (`duyetcham/DuyetChamScreen.tsx`: chấp nhận đáp án ⇒ lần sau máy chấm đúng + sửa ngược mọi bài cùng đáp án).
 
-### 3.7 QUY TẮC CHẤM (bản v0.1 05/11 — áp cho cả TA lẫn máy; **D1–D9 chưa chốt, §12 câu 2**)
+### 3.7 QUY TẮC CHẤM (bản v0.1 05/11 — áp cho cả TA lẫn máy; **D1–D9 ĐÃ CHỐT theo cột đề xuất — Thùy 17/11**)
 > Giữ nguyên số mục A1–A9 của `spec-quy-tac-cham.md`. Mỗi lần máy chấm ghi phiên bản rule đã dùng (`btvn_ai_lan.rule_version`).
 
 **A1. Ba kết quả.** **Đ** = kết quả đúng, hướng đúng, lập luận đủ (lỗi nhãn / ký hiệu nhỏ không làm sai lập luận vẫn Đ + nhận xét). **C** = hướng đúng nhưng có lỗi thật (sai một bước, thiếu lý do then chốt, thiếu kết luận, làm dở). **S** = sai phương pháp, sai từ đầu, bỏ trống câu có trên bài. Trắc nghiệm · trả lời ngắn · điền đáp số: **chỉ Đ / S**. **"Không có bài" ≠ S**: câu không có trên ảnh (thiếu trang, ảnh cắt) ⇒ **để trống**; chỉ ghi S khi thấy rõ chỗ làm bài mà em bỏ trống.
@@ -435,7 +436,24 @@ hiệu suất `fn_hsta_thang` · `_hsta_thang_core` · `fn_hsta_task` · `fn_hst
 
 ## 12. Câu hỏi cho Thùy · lệch kỹ thuật
 
-### 12.1 Câu hỏi (xếp theo mức quan trọng)
+### 12.0 THÙY CHỐT 17/11
+
+| Câu | Thùy trả lời | Luật | Việc code / DB (chờ lệnh) |
+|---|---|---|---|
+| 1 | OK | Em có mặt mà không có bài ET: hai nút theo em — **"Mất bài"** (lỗi trung tâm, KHÔNG tính mastery, không phải điểm 0) · **"Không làm / không nộp"** (tính Sai). | thêm trạng thái + nút ở lưới chấm; `fn_dong_phase` chấp nhận ô "mất bài" |
+| 2 | OK | **D1–D9 chốt theo cột đề xuất** (§3.7). | cập nhật quy tắc trong Edge Function `btvn-cham-ai` nếu lệch |
+| 3 | OK | Hạn chấm BTVN: buổi kế vào **thứ Bảy / Chủ nhật ⇒ 23:59 hôm trước**; còn lại 2 giờ trước buổi kế (lớp hai ngày liền vẫn 2 giờ). Trễ tính theo lần đóng đầu. | sửa `fn_han_viec` nhánh btvn |
+| 4 | **Bỏ 6 nút** | Gỡ 6 nút mã lỗi E01–E06 khỏi lưới chấm ET. *(Phần "máy gợi ý loại lỗi → TA xác nhận, có lưu" Thùy CHƯA nói — giữ hiện trạng: máy có ghi loại lỗi ở bản chấm của nó, không lưu vào ô chấm.)* | gỡ nút + `ET_LOI` ở client |
+| 5 | **"TA về nguyên tắc sẽ thấy BẢNG LƯƠNG REALTIME của mình: đã làm gì – được duyệt – gậy…"** | Màn của TA = **một bảng lương realtime**: việc đã làm · phần đã được duyệt · gậy · ra tiền. Không còn ba bộ số (hiệu suất theo gậy · "Tiến trình" · %TG/%BTVN). Hiệu suất theo gậy là số của quản lý. *(Cách tính phần Bổ trợ 35 % — tự động hay chốt tay — Thùy chưa nói riêng; quyết khi viết #11 Lương + gậy, theo nguyên tắc "cùng một số với lương".)* | dựng bảng lương realtime cho TA (đi cùng #11) |
+| 6 | OK | Trưởng khối duyệt công trong **48 giờ** (quá hạn ⇒ về khay Trang + đề xuất gậy trễ) · thiếu công quá **24 giờ** ⇒ trưởng khối nhập hộ hoặc ghi "không có công" · sau **ngày 3 tháng sau**, phần còn thiếu coi như không có công để chốt kỳ. | hạn + khay + chốt kỳ tháng 10 |
+| 7 | OK | Bot Telegram: giữ bản tin 08:00 + ghi tin; làm trước **bot tự đăng báo cáo BTVN khi TA đóng BTVN** + nút kết nối Telegram trên ERP cho quản lý. Tổng kết 24:00 → duyệt → gậy: để sau. | — |
+| 8 | OK | Người dạy ca bổ trợ: **L1 / L2 = TA hoặc giáo viên kiêm TA; L3 / L4 bắt buộc giáo viên.** Công của giáo viên dạy bổ trợ ghi ở #11. | — |
+| 9 | OK | Duyệt báo sai: **bỏ khỏi việc của TA, chuyển trưởng khối** (#6). | sửa `getMyTasks` / `_tg_viec_ton` |
+| 10 | OK | Hạn việc ở buổi bù / đuổi / ca yếu: **36 giờ từ giờ bắt đầu ca**, một hàm hạn cho mọi loại. | sửa hàm hạn |
+| 11 | **"Tạm thời chưa chạy tự động full. Để người tự trigger. Đang giai đoạn test."** | Chấm BTVN bằng máy: **người bấm chạy** (TA "Gửi chấm" → chạy tay hàng đợi), KHÔNG bật tự động. Đang thử nghiệm. | — |
+| 12 | OK | (i) Em chuyển lớp: BTVN bù tính cho **TA lớp hiện tại**. (ii) Nhận xét sau buổi **bắt buộc khi mức ≤ 2**. | sửa hàm việc bù · chặn ở màn đánh giá |
+
+### 12.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 12.0 — giữ làm bối cảnh; "đề xuất" là trước khi Thùy chốt)
 
 1. **Em có mặt nhưng không có bài ET (mất bài / không nộp) — ghi gì?**
    Luật gốc: "mất bài ≠ điểm 0". Hiện trạng: hệ **không có** trạng thái "mất bài"; muốn đóng ET thì mọi em có mặt × mọi câu phải có Đ/C/S ⇒ TA buộc bấm S (thành điểm 0 vào mastery của em) hoặc để việc treo.
@@ -508,9 +526,8 @@ hiệu suất `fn_hsta_thang` · `_hsta_thang_core` · `fn_hsta_task` · `fn_hst
 17. Chưa có bằng chứng nhắc việc 23:30 (`ta-nhac-viec`) chạy đều sau khi thêm `CRON_SECRET` (bản tin 08:00 thì có: 32 ngày liên tục).
 18. Lớp có hai TA: việc ET / BTVN sinh cho **cả hai** ở "Việc của tôi"; hiệu suất / gậy chỉ tính TA chính — hai chỗ khác nhau có chủ ý, nhưng chưa ghi ở đâu.
 
-## 13. Khi Thùy duyệt
+## 13. Đã làm khi Thùy chốt (17/11)
 
-- **Chuyển `_luu-tru/`:** `spec-cham-cong-ta.md` · `spec-hieu-suat-ta.md` · `spec-bot-telegram-ta.md` · `spec-quy-tac-cham.md`. (`_luu-tru/PLAN-app-ta.md`, `_luu-tru/BKDEMY_GIAOVIEC_HIEUSUAT_SPEC.md`, `_luu-tru/spec-test-online.md` đã ở đó.)
-- **Sửa chỗ trỏ:** `.claude/commands/cham-btvn-hang-doi.md` Bước 2 mục 1 (`spec-quy-tac-cham.md` §A1–A9 ⇒ `spec-tro-giang.md` §3.7, số mục giữ nguyên) · CLAUDE.md §7 (dòng `spec-bot-telegram-ta.md`; thêm dòng trỏ spec này) · `SPEC-INDEX.md` dòng #10 ✅ + bảng B · chú thích đầu `ta/HuongDanCong.tsx`, `ta/CongTA.tsx` giữ nguyên (tra qua SPEC-INDEX).
-- **Phần đưa sang spec khác (không chép vào đây):** công thức lương, bậc sĩ số, đơn giá, chốt kỳ, mockup `design/mockup-cham-cong-ta.html`, bộ test `scripts/luong-ta-t9/*`, câu "hai việc bổ trợ trùng giờ tính 1 hay 2 giờ", "chấm ET chưa đo riêng trong 40 %" ⇒ **#11** · hệ Gậy (máy quét, chốt, miễn gậy, 314 đề xuất chờ) ⇒ **#11** · sơ đồ tổ chức Trưởng / Phó khối, khay duyệt ở Phòng, hỏi vận hành trợ giảng ⇒ **#6** · ca trực, xếp TA vào ca, suất TA, điểm danh buổi thường ⇒ **#8** · app PH nộp ảnh / xem bài chấm (role `ph_nop`, view `v_btvn_*`) ⇒ **#13**.
-- **Còn nợ sau khi duyệt:** 12 câu §12.1 · lệch §12.2 chờ lệnh · gỡ `CaHinhTA` + bảng `ta_vang` theo Luật xoá.
+- `spec-hieu-suat-ta.md` · `spec-bot-telegram-ta.md` · `spec-quy-tac-cham.md` → `_luu-tru/`. `spec-cham-cong-ta.md` giữ ở gốc tới khi #11 nhận phần lương.
+- `.claude/commands/cham-btvn-hang-doi.md` đọc quy tắc chấm ở **spec này §3.7** (số mục A1–A9 giữ nguyên). CLAUDE.md §7 + `SPEC-INDEX.md` dòng #10.
+- **Còn nợ:** mọi việc code / DB ở §12.0 + §12.2 chờ lệnh · CLAUDE §1.5 còn ghi `da_cham` / `mat_bai` (DB chưa có — có sau khi làm câu 1).
