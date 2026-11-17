@@ -3,7 +3,7 @@
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / trend đến từ fn_bctk_so · fn_bctk_trend. Màn chỉ hiển thị + nhận phần chữ / phần cá nhân.
 // Laptop thấp ⇒ dàn NGANG: hàng 5 ô chỉ số · (bảng từng lớp | HS còn yếu) · (cá nhân | tự viết).
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
-import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type SoBaoCao, type TuViet } from '../../lib/baoCaoTuan'
+import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type HaiChieu, type SoBaoCao, type TuViet } from '../../lib/baoCaoTuan'
 import { congNgay, ddmmVN } from '../../lib/tuan'
 
 const NHO: { tuan: string | null } = { tuan: null }   // tuần đang xem — sống tới F5
@@ -113,12 +113,19 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
           trend={duLieu.trend.map((w) => w.tong.et.ti_le_dung_han)} mau="text-sky-600" />
         <O ten="BTVN" chinh={so(t.btvn.ti_le_nop, '%')} nhanChinh="nộp" phu={`Điểm TB ${so(t.btvn.diem_tb)} · đúng hạn ${so(t.btvn.ti_le_dung_han, '%')}`}
           trend={duLieu.trend.map((w) => w.tong.btvn.ti_le_nop)} mau="text-teal-600" />
+        {/* 17/11 Thùy: HAI CHIỀU tách riêng — (1) đầu tuần → còn yếu (hiệu quả bổ trợ, cùng nhóm em × nút) · (2) phát sinh mới (kiến thức mới học bị yếu) */}
+        {t.hai_chieu ? <>
+          <OHaiChieu ten="Nhóm yếu" h={t.hai_chieu.nhom} mau="text-orange-600" trend={duLieu.trend.map((w) => w.tong.hai_chieu?.nhom ?? null)} />
+          <OHaiChieu ten="Dạng yếu" h={t.hai_chieu.dang} mau="text-rose-600" trend={duLieu.trend.map((w) => w.tong.hai_chieu?.dang ?? null)}
+            them={`Độ phủ đo ${so(t.do_phu.ti_le, '%')}`} />
+        </> : <>
         <O ten="Dạng yếu" chinh={`${so(t.dang_yeu.dau)} → ${so(t.dang_yeu.cuoi)}`} nhanChinh="đầu → cuối"
           phu={`Giảm ${so(t.dang_yeu.giam)} (${so(t.dang_yeu.ti_le_giam, '%')})${t.dong_chay ? ` · Vào ${t.dong_chay.vao} · Ra ${t.dong_chay.ra_bang_chung} có bằng chứng · ${t.dong_chay.ra_cua_so} rớt cửa sổ` : ''} · Độ phủ đo ${so(t.do_phu.ti_le, '%')}`}
           trend={duLieu.trend.map((w) => w.tong.dang_yeu.cuoi)} mau="text-rose-600" />
         {t.nhom_yeu && <O ten="Nhóm yếu" chinh={`${so(t.nhom_yeu.dau)} → ${so(t.nhom_yeu.cuoi)}`} nhanChinh="đầu → cuối"
           phu={`Giảm ${so(t.nhom_yeu.giam)} (${so(t.nhom_yeu.ti_le_giam, '%')})`}
           trend={duLieu.trend.map((w) => w.tong.nhom_yeu?.cuoi ?? null)} mau="text-orange-600" />}
+        </>}
         <O ten="Học sinh yếu" chinh={`${so(t.hs_yeu.dau)} → ${so(t.hs_yeu.cuoi)}`} nhanChinh={`/ ${t.hs_yeu.si_so} em`}
           phu={`Giảm ${so(t.hs_yeu.giam)} (${so(t.hs_yeu.ti_le_giam, '%')}) · ${duLieu.hs_yeu_theo === 'nhom' ? 'em có ≥ 1 nhóm yếu' : 'bản cũ: em có ≥ 1 dạng yếu'}`}
           trend={duLieu.trend.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
@@ -211,12 +218,44 @@ function BangLop({ lop }: { lop: SoBaoCao['lop'] }) {
           <td>{so(l.et.diem_tb)}</td>
           <td>{so(l.btvn.ti_le_nop, '%')}</td>
           <td>{so(l.btvn.diem_tb)}</td>
-          <td>{so(l.dang_yeu.dau)} → <b className="text-rose-600">{so(l.dang_yeu.cuoi)}</b></td>
-          <td>{l.nhom_yeu ? <>{so(l.nhom_yeu.dau)} → <b className="text-orange-600">{so(l.nhom_yeu.cuoi)}</b></> : <span className="text-slate-300">—</span>}</td>
+          <td>{l.hai_chieu ? <HaiChieuO h={l.hai_chieu.dang} mau="text-rose-600" /> : <>{so(l.dang_yeu.dau)} → <b className="text-rose-600">{so(l.dang_yeu.cuoi)}</b></>}</td>
+          <td>{l.hai_chieu ? <HaiChieuO h={l.hai_chieu.nhom} mau="text-orange-600" /> : l.nhom_yeu ? <>{so(l.nhom_yeu.dau)} → <b className="text-orange-600">{so(l.nhom_yeu.cuoi)}</b></> : <span className="text-slate-300">—</span>}</td>
           <td>{so(l.hs_yeu.dau)} → <b className="text-violet-600">{so(l.hs_yeu.cuoi)}</b><span className="text-slate-400">/{l.hs_yeu.si_so}</span></td>
         </tr>
       ))}</tbody>
     </table>
+  )
+}
+
+// Một ô bảng lớp: đầu → còn yếu · −hết yếu · +phát sinh (chỉ hiển thị số DB trả về).
+function HaiChieuO({ h, mau }: { h: HaiChieu; mau: string }) {
+  return <span title={`Đầu tuần ${h.dau} · còn yếu ${h.con_yeu} · hết yếu ${h.het_yeu}${h.roi ? ` · em thôi học ${h.roi}` : ''} · phát sinh mới ${h.phat_sinh} · cuối tuần ${h.cuoi}`}>
+    {h.dau} → <b className={mau}>{h.con_yeu}</b> <span className="text-emerald-600">−{h.het_yeu}</span> <span className="text-amber-600">+{h.phat_sinh}</span>
+  </span>
+}
+
+// Ô HAI CHIỀU (Thùy 17/11): dòng 1 = chiều đầu tuần → còn yếu (hiệu quả bổ trợ); dòng 2 = phát sinh mới; trend 2 dãy (hết yếu xanh · phát sinh vàng).
+function OHaiChieu({ ten, h, mau, trend, them }: { ten: string; h: HaiChieu; mau: string; trend: (HaiChieu | null)[]; them?: string }) {
+  const lon = Math.max(1, ...trend.flatMap((v) => [v?.het_yeu ?? 0, v?.phat_sinh ?? 0]))
+  return (
+    <div className="flex flex-col rounded-xl border border-slate-200 bg-white px-3 py-2">
+      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{ten}</div>
+      <div className="flex items-baseline gap-1.5">
+        <span className={`text-[24px] font-extrabold leading-tight ${mau}`}>{h.dau} → {h.con_yeu}</span>
+        <span className="text-[11.5px] text-slate-400">đầu tuần → còn yếu</span>
+      </div>
+      <div className="text-[11.5px] leading-snug text-slate-600">① Hết yếu <b className="text-emerald-600">{h.het_yeu}</b> ({so(h.ti_le_het_yeu, '%')}){h.roi ? ` · ${h.roi} của em thôi học` : ''}</div>
+      <div className="text-[11.5px] leading-snug text-slate-600">② Phát sinh mới <b className="text-amber-600">+{h.phat_sinh}</b> · cuối tuần {h.cuoi}</div>
+      {them && <div className="text-[11.5px] leading-snug text-slate-500">{them}</div>}
+      <div className="mt-1.5 flex h-7 items-end gap-1" title="4 tuần gần nhất (cũ → mới): xanh = hết yếu · vàng = phát sinh mới">
+        {trend.map((v, i) => (
+          <div key={i} className="flex h-full flex-1 items-end justify-center gap-px" title={v == null ? 'chưa có số' : `hết yếu ${v.het_yeu} · phát sinh ${v.phat_sinh}`}>
+            <div className="w-1/2 rounded-t bg-emerald-300" style={{ height: v == null ? 2 : `${Math.max(8, (v.het_yeu / lon) * 100)}%` }} />
+            <div className="w-1/2 rounded-t bg-amber-300" style={{ height: v == null ? 2 : `${Math.max(8, (v.phat_sinh / lon) * 100)}%` }} />
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 

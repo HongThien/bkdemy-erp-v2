@@ -9,7 +9,11 @@ export type NhomSo = {
   hs_yeu: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null; si_so: number }
   // 17/11 (phien_ban 2): HS yếu = ≥ 1 NHÓM yếu + chỉ số Nhóm yếu. Bản snap cũ (phien_ban 1) không có khối này, HS yếu tính theo dạng.
   nhom_yeu?: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null }
+  // 17/11 (phien_ban 3): HAI CHIỀU tách riêng — A = yếu đầu tuần, B = yếu cuối tuần. Chiều 1: dau=|A| · con_yeu=|A∩B| · het_yeu=|A∖B| · roi (em thôi học).
+  // Chiều 2: phat_sinh=|B∖A|. cuoi=|B|. null = thiếu ảnh đầu/cuối. Bản snap cũ không có khối này.
+  hai_chieu?: { dang: HaiChieu; nhom: HaiChieu } | null
 }
+export type HaiChieu = { dau: number; con_yeu: number; het_yeu: number; roi: number; phat_sinh: number; cuoi: number; ti_le_het_yeu: number | null }
 export type TongSo = NhomSo & {
   dong_chay: { vao: number; ra_bang_chung: number; ra_cua_so: number } | null
   do_phu: { so_hs: number; so_hs_co_do: number; ti_le: number | null }
