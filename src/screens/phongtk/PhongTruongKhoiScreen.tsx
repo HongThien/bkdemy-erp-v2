@@ -36,14 +36,14 @@ import { cheDoPhong, laGiamDoc, listCapDuoi, listCapDuoiCuaGhe, listGheGd, listG
 import { useSkinErp } from '../../lib/erpSkin'
 import { HoatCanhNen } from '../hocsinh/skin/HoatCanhNen'
 import { HEAD } from '../home/khung'
+import { nhoBen } from '../../lib/nho'
 
 type Mo = DoVat | null
 type CheDo = 'tk' | 'tbm'
 const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công', giao_trinh_tuan: '📅 Giáo trình tuần', muc_tieu_tuan: '🎯 Mục tiêu tuần' }
 const nhanKhoi = (o: string[]) => `Khối ${o.join(' · ')}`
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách không trắng (CLAUDE.md §2 React).
-const NHO: { mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null } =
-  { mo: null, cheDo: null, laGd: false, mon: null, xemMon: null, xemTk: null, ta: null, tk: null, gd: null }
+const NHO = nhoBen<{ mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null }>('phong', { mo: null, cheDo: null, laGd: false, mon: null, xemMon: null, xemTk: null, ta: null, tk: null, gd: null }, { luu: ['mo', 'xemMon', 'xemTk'] })
 
 export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
   const [mo, setMoS] = useState<Mo>(NHO.mo)

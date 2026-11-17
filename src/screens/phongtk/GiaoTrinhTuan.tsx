@@ -17,12 +17,12 @@ import { laNhanhMoHinh, thuTuMon, theNhanh } from '../../lib/mon'
 import BoChonNhom from '../tailieu/bdm/BoChonNhom'
 import BuilderBanDoMoi from '../tailieu/bdm/BuilderBanDoMoi'
 import ChuyenDeHinhBuilder, { ChonBaiHoc, ChonMoHinh } from '../tailieu/bdm/ChuyenDeHinhBuilder'
+import { nhoBen } from '../../lib/nho'
 
 type Mo = { lop: string; ngay: string } | null
 const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
 // Sống tới F5: rời phòng quay lại = đúng ô, đúng tuần, đúng ca đang mở, không tải lại (CLAUDE.md §2 React).
-const NHO: { o: string | null; tuan: string | null; ds: GttO[] | null; man: Record<string, GttMan>; mo: Mo; cuon: number } =
-  { o: null, tuan: null, ds: null, man: {}, mo: null, cuon: 0 }
+const NHO = nhoBen<{ o: string | null; tuan: string | null; ds: GttO[] | null; man: Record<string, GttMan>; mo: Mo; cuon: number }>('giao_trinh_tuan', { o: null, tuan: null, ds: null, man: {}, mo: null, cuon: 0 }, { luu: ['o'], trongNgay: ['tuan', 'mo', 'cuon'] })
 
 const TT: Record<GttHanhDong, { chu: string; cls: string }> = {
   gui: { chu: 'Đã gửi · chờ trưởng bộ môn duyệt', cls: 'bg-amber-100 text-amber-800' },

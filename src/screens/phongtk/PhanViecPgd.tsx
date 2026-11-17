@@ -10,10 +10,11 @@ import { monTbm } from '../../lib/phongTk'
 import { DanhSachBoTro } from './ChatLuongPhong'
 import DashboardHocTapScreen from '../danhgia/DashboardHocTapScreen'
 import { HoSoHocSinh } from '../ketqua/KetQuaScreen'
+import { nhoBen } from '../../lib/nho'
 
 type MucTbm = 'dashboard' | 'chung' | 'hoso' | 'bo_tro'
 const MUC_TBM: [MucTbm, string][] = [['dashboard', 'Dashboard học tập'], ['chung', 'Tình hình chung'], ['hoso', 'Hồ sơ học tập'], ['bo_tro', 'Danh sách bổ trợ']]
-const NHO: { cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null; clMuc: MucTbm; hoSo: { hs: string; mon: string } | null } = { cacO: null, qt: null, cl: null, clMuc: 'dashboard', hoSo: null }
+const NHO = nhoBen<{ cacO: OTongQuan[] | null; qt: OChon | null; cl: OChon | null; clMuc: MucTbm; hoSo: { hs: string; mon: string } | null }>('phan_viec_pgd', { cacO: null, qt: null, cl: null, clMuc: 'dashboard', hoSo: null }, { luu: ['qt', 'cl', 'clMuc', 'hoSo'] })
 const tenO = (o: OChon) => `${o.mon === 'Toán' ? '' : `${o.mon} `}Khối ${o.khoi}`
 
 // Ô của PHÒNG: ô trong phạm vi (fn_qlcl_tong_quan) ∩ môn của phòng (fn_phong_mon_tbm; null = mọi môn) — Thùy 03/11: phòng Trang chỉ Toán.

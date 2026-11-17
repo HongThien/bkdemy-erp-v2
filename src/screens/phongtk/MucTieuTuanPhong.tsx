@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react'
 import { oCuaToi, type GttO } from '../../lib/giaoTrinhTuan'
 import { thuTuMon } from '../../lib/mon'
 import MucTieuTuanTab from '../danhgia/MucTieuTuanTab'
+import { nhoBen } from '../../lib/nho'
 
 const khoaO = (o: { mon: string; khoi: string }) => `${o.mon}|${o.khoi}`
-const NHO: { ds: GttO[] | null; o: string | null } = { ds: null, o: null }
+const NHO = nhoBen<{ ds: GttO[] | null; o: string | null }>('muc_tieu_tuan_phong', { ds: null, o: null }, { luu: ['o'] })
 
 export default function MucTieuTuanPhong() {
   const [ds, setDs] = useState<GttO[] | null>(NHO.ds)

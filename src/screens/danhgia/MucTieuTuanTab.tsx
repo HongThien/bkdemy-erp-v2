@@ -8,9 +8,10 @@ import {
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT, type MttViecDang,
 } from '../../lib/mucTieuTuan'
 import { PH_BASE } from '../../lib/ph-login'
+import { nhoBen } from '../../lib/nho'
 
 // rời tab quay lại = đúng chỗ cũ (CLAUDE §React)
-const NHO: { tuan: string | null; khoa: string; data: MttTrungTam | null; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null } = { tuan: null, khoa: '', data: null, lop: null, hs: null }
+const NHO = nhoBen<{ tuan: string | null; khoa: string; data: MttTrungTam | null; lop: { id: string; ten: string } | null; hs: { id: string; ten: string } | null }>('muc_tieu_tuan', { tuan: null, khoa: '', data: null, lop: null, hs: null }, { luu: ['lop', 'hs'], trongNgay: ['tuan'] })
 
 const mauMuc = (m: MucDanhGia | null) => m === 'tot' ? 'bg-emerald-100 text-emerald-800' : m === 'tam_on' ? 'bg-amber-100 text-amber-800' : m === 'chua_tot' ? 'bg-rose-100 text-rose-700' : 'bg-slate-100 text-slate-500'
 const so = (v: number | null | undefined, hau = '') => (v == null ? '—' : `${Math.round(v)}${hau}`)

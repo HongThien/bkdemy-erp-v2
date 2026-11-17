@@ -36,6 +36,7 @@ import KhoTrenLopModal from './KhoTrenLopModal'
 import DangPickerOne from '../../components/DangPickerOne'
 import { useMonScope } from '../../hooks/useMonScope'
 import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
+import { nhoBen } from '../../lib/nho'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
 // (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
@@ -51,7 +52,7 @@ let moLop: (m: { id: string; ten: string }) => void = () => {}
 const DemLopCtx = createContext<Record<string, { giang: number; luyen: number }>>({})
 
 // Nhớ chủ đề / chuyên đề đang xem + ngăn bản đồ cũ — sống tới F5 (CLAUDE §2: rời màn quay lại đúng chỗ cũ)
-const NHO: { chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean; duyet: boolean } = { chuDe: {}, chuyenDe: {}, nganCu: false, duyet: false }
+const NHO = nhoBen<{ chuDe: Record<string, string>; chuyenDe: Record<string, string>; nganCu: boolean; duyet: boolean }>('ban_do_moi', { chuDe: {}, chuyenDe: {}, nganCu: false, duyet: false }, { luu: ['chuDe', 'chuyenDe', 'nganCu', 'duyet'] })
 
 // Đích của bảng gán câu: câu chưa gán của 1 nhóm (②) hoặc 1 chuyên đề trong chủ đề (③)
 type GanMo = { nhan: string; dich: { nhom: string } | { chuDe: string; chuyenDe: string }; lua: { id: string; nhan: string }[] }

@@ -8,9 +8,10 @@ import { chotBaoCaoMon, hangBaoCao, layBaoCaoMon, luuBaoCaoMon, xemBaoCao, xuLyB
 import { congNgay, ddmmVN } from '../../lib/tuan'
 import BaoCaoTuanTK, { NoiDungBaoCao, Khung } from './BaoCaoTuanTK'
 import NutChieuBaoCaoMon from './ChieuBaoCaoMon'
+import { nhoBen } from '../../lib/nho'
 
 type Tab = 'khoi' | 'mon' | 'cua_toi'
-const NHO: { tab: Tab; tuan: string | null; mon: string | null } = { tab: 'khoi', tuan: null, mon: null }
+const NHO = nhoBen<{ tab: Tab; tuan: string | null; mon: string | null }>('bao_cao_tuan_tbm', { tab: 'khoi', tuan: null, mon: null }, { luu: ['tab', 'mon'], trongNgay: ['tuan'] })
 const TT: Record<string, [string, string]> = {
   chua_nop: ['Chưa nộp', 'bg-slate-100 text-slate-600'], da_nop: ['Chờ duyệt', 'bg-sky-100 text-sky-700'],
   tra_lai: ['Đã trả lại', 'bg-amber-100 text-amber-800'], da_duyet: ['Đã duyệt', 'bg-emerald-100 text-emerald-700'],

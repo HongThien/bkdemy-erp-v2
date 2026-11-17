@@ -10,11 +10,12 @@ import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
 import BoTroPopup from './BoTroPopup'
 import { tongQuanDangYeu, type OTongQuan } from '../../lib/qlcl'
 import { dsBoTro, boBoTro, guiBoTro, duyetBoTro, traLaiBoTro, NHAN_TT, TEN_MUC, TEN_UU_TIEN, type DongBtk } from '../../lib/boTroTk'
+import { nhoBen } from '../../lib/nho'
 
 type Muc = 'dashboard' | 'chung' | 'hoso' | 'bo_tro'
 const MUC: [Muc, string][] = [['dashboard', 'Dashboard học tập'], ['chung', 'Tình hình chung'], ['hoso', 'Hồ sơ học tập'], ['bo_tro', 'Danh sách bổ trợ']]
 // sống tới F5: rời phòng quay lại đúng mục, đúng em đang xem (CLAUDE §React)
-const NHO: { muc: Muc; hoSo: { hs: string; mon: string } | null; o: OTongQuan[] | null; ds: Record<string, DongBtk[]> } = { muc: 'dashboard', hoSo: null, o: null, ds: {} }
+const NHO = nhoBen<{ muc: Muc; hoSo: { hs: string; mon: string } | null; o: OTongQuan[] | null; ds: Record<string, DongBtk[]> }>('chat_luong_tk', { muc: 'dashboard', hoSo: null, o: null, ds: {} }, { luu: ['muc', 'hoSo'] })
 
 const ngay = (t: string | null) => (t ? new Date(t).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit' }) : '')
 const thanh = (on: boolean) => `whitespace-nowrap rounded-lg px-3 py-1 text-[12.5px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`

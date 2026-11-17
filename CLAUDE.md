@@ -101,6 +101,9 @@
   ⇒ màn "làm việc theo hàng đợi" nhớ **filter + list đã vá + scrollTop + khối đang mở** ở module-level
   (`const NHO = {...}` sống tới F5), mount lại thì dùng cache, bỏ qua fetch đầu; có nút ↻ ép quét lại.
   Mẫu: `DuyetBoTroYeuScreen.tsx` / `DashboardHocTapScreen.tsx`.
+  **Nhớ qua F5 / lần mở sau (Thùy 17/11, trên từng máy):** khai báo `const NHO = nhoBen('<tên màn>', {...}, { luu: [...], trongNgay: [...] })` (`src/lib/nho.ts`) thay `const NHO = {...}` —
+  `luu` = lựa chọn giữ lâu (tab, ô, lớp, em, khối mở, bản nháp chữ), `trongNgay` = tuần/ngày đang xem, vị trí cuộn (sáng hôm sau về mặc định). CHỈ lựa chọn, KHÔNG dữ liệu nghiệp vụ.
+  Đã áp: mọi màn trong Phòng làm việc (17/11); màn mới dùng luôn khuôn này, màn cũ chuyển dần.
 - **⭐⭐ MÃ GỐC BẤT BIẾN — mọi đối tượng sinh ra có ĐÚNG MỘT mã gốc, không bao giờ đổi (CEO chốt 14/10).**
   Mã gốc là *tham chiếu gốc* của đối tượng: cấp **một lần lúc sinh**, bất biến dưới **mọi** hoạt động
   (chuyển nhóm/nhánh/lớp/khối, đổi tên, đổi thứ tự, đổi cha, sửa nội dung, gộp/tách hiển thị, đổi bản đồ…). Hệ quả bắt buộc:

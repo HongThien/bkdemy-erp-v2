@@ -12,9 +12,9 @@ import {
   type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
 } from '../../lib/phien'
 import ChuPhien from './ChuPhien'
+import { nhoBen } from '../../lib/nho'
 
-const NHO: { chon: string | null; ds: PhienItem[] | null; nhap: Record<string, string>; tin: Record<string, PhienTin[]> } =
-  { chon: null, ds: null, nhap: {}, tin: {} }
+const NHO = nhoBen<{ chon: string | null; ds: PhienItem[] | null; nhap: Record<string, string>; tin: Record<string, PhienTin[]> }>('phien_claude', { chon: null, ds: null, nhap: {}, tin: {} }, { luu: ['chon', 'nhap'] })
 
 // Câu gợi ý lúc phiên còn trống — theo loại việc.
 const GOI_Y: Partial<Record<PhienLoai, string[]>> = {

@@ -5,8 +5,9 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
 import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type HaiChieu, type SoBaoCao, type TuViet } from '../../lib/baoCaoTuan'
 import { congNgay, ddmmVN } from '../../lib/tuan'
+import { nhoBen } from '../../lib/nho'
 
-const NHO: { tuan: string | null } = { tuan: null }   // tuần đang xem — sống tới F5
+const NHO = nhoBen<{ tuan: string | null }>('bao_cao_tuan_tk', { tuan: null }, { trongNgay: ['tuan'] })   // tuần đang xem — nhớ qua F5 trong ngày (lib/nho)
 const TT: Record<string, [string, string]> = {
   nhap: ['Nháp — chưa nộp', 'bg-slate-100 text-slate-600'], da_nop: ['Đã nộp — chờ duyệt', 'bg-sky-100 text-sky-700'],
   tra_lai: ['Bị trả lại — sửa phần chữ rồi nộp lại', 'bg-amber-100 text-amber-800'], da_duyet: ['Đã duyệt', 'bg-emerald-100 text-emerald-700'],

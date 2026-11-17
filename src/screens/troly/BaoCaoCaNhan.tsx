@@ -14,15 +14,16 @@ import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import { moBoTroTab } from '../botro/BoTroHubScreen'
 import { useStore } from '../../store/useStore'
 import { ddmmVN } from '../../lib/tuan'
+import { nhoBen } from '../../lib/nho'
 
 type Muc = 'baocao' | 'dangyeu' | 'tuan'
 const MUC: [Muc, string][] = [['baocao', 'Báo cáo Sư phạm'], ['dangyeu', 'Dạng yếu'], ['tuan', 'Học tập tuần']]
 // Rời tab rồi quay lại = đúng mục + khoảng đang xem, không gọi lại (CLAUDE.md §2 React).
-const NHO_MUC: { muc: Muc } = { muc: 'baocao' }
+const NHO_MUC = nhoBen<{ muc: Muc }>('bao_cao_ca_nhan_muc', { muc: 'baocao' }, { luu: ['muc'] })
 
 const KHOANG = [7, 14, 30]
 // khoa = ô đang xem ('' = mọi ô trong phạm vi của tôi, 'môn|khối' = một ô) — đổi ô là đổi ngữ cảnh ⇒ tải lại.
-const NHO: { soNgay: number; khoa: string; bc: BaoCaoTroLy | null } = { soNgay: 14, khoa: '', bc: null }
+const NHO = nhoBen<{ soNgay: number; khoa: string; bc: BaoCaoTroLy | null }>('bao_cao_ca_nhan', { soNgay: 14, khoa: '', bc: null }, { luu: ['soNgay'] })
 export type OChon = { mon: string; khoi: string }
 
 // Thùy 03/11: mọi bộ lọc trên MỘT hàng (mục · nhìn lại · khối quản lý) — trước chiếm 3 dòng.
