@@ -25,10 +25,14 @@ declare
     from jsonb_array_elements(v_nhom) e;$m$;
   v_n int;
 begin
-  select pg_get_functiondef('public._mtt_tinh(uuid, text, date, timestamptz)'::regprocedure) into v_src;
+  -- bỏ \r (thân hàm áp từ máy Windows mang CRLF; file này dán từ Windows cũng vậy) ⇒ so trên chuỗi chỉ có \n
+  select replace(pg_get_functiondef('public._mtt_tinh(uuid, text, date, timestamptz)'::regprocedure), E'\r', '') into v_src;
+  v_cu  := replace(v_cu, E'\r', '');
+  v_moi := replace(v_moi, E'\r', '');
   v_n := (length(v_src) - length(replace(v_src, v_cu, ''))) / length(v_cu);
   if v_n <> 1 then
-    raise exception 'Đoạn tính tiến độ trong _mtt_tinh khớp % chỗ (cần đúng 1) — thân hàm đã khác, dừng.', v_n;
+    raise exception 'Đoạn tính tiến độ trong _mtt_tinh khớp % chỗ (cần đúng 1) — dừng. Đoạn thật quanh "into v_td": %', v_n,
+      coalesce(substr(v_src, greatest(1, strpos(v_src, 'into v_td, v_td_dau') - 300), 420), '(không thấy "into v_td, v_td_dau")');
   end if;
   execute replace(v_src, v_cu, v_moi);
 end $vua$;
