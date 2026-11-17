@@ -208,6 +208,29 @@ Builder giáo trình CỦA LỚP ───────────────�
   **màn dạng có sẵn của Học từ đầu** (Đọc lý thuyết · Luyện tập · Làm bài Test) — dẫn tới màn sẵn có, không dựng màn mới. App PH hiện tên dạng.
 - **Dạng lớp CHƯA học tới thì chưa luyện được** (luật 14/10 `_dang_da_hoc_ok`, Thùy giữ 16/11: muốn luyện trước thì vào tính năng riêng); lý thuyết vẫn đọc được.
 
+### 4.6b Tiến độ · nhãn · xếp hạng · màn hình — BẢN HIỆN HÀNH (Thùy chốt 17/11 khuya)
+
+> Mục này thắng mọi chữ khác về tiến độ / nhãn / xếp hạng / màn trong §4.7 (phụ lục cũ: "nhãn 3 mức 80/50", "TB min(% / mục tiêu)", "Phần 1 · Kiến thức mới", "app PH chưa xây"… đều đã cũ).
+
+**Một chu kỳ = một tuần ⇒ mọi đánh giá trên tờ là so với MỤC TIÊU TUẦN, không so với đích 80.**
+
+| Mục | Luật | Nguồn (tính sẵn ở bộ điều phối, màn chỉ đọc) |
+|---|---|---|
+| Đạt một nhóm | **Đạt** = % hiện tại ≥ mục tiêu tuần của nhóm · nhóm tuần này không có lần đo (không có mục tiêu tuần) ⇒ so với 80 · chưa có số ⇒ **Chưa đo** (= chưa đạt). | `payload.nhom[i].dat_mt` — mig `202611180010` |
+| Tiến độ tuần | **số nhóm Đạt ÷ MỌI nhóm trên tờ** (Bài trên lớp + Ôn tập kiến thức, kể cả chưa đo). Đầu tuần đếm trên % lúc 00:00 thứ Hai. Đếm nhãn "Đạt" trên màn là ra đúng %. | `_mtt_tinh` — mig `202611172340` |
+| Nhãn trên thẻ nhóm | **Đạt / Chưa đạt / Chưa đo** theo dòng trên (bỏ nhãn mức 80/50 Đạt · Chưa đạt · Yếu của 17/11 tối). Màu thanh giữ như cũ (Thùy: không cần đổi). | đọc `dat_mt` |
+| Xếp hạng | Mỗi môn một bảng, chung mọi khối, chỉ tờ đã công bố. Thứ tự: % tiến độ ↓ → số việc đã làm ↓ → tổng điểm tăng các nhóm trong tuần (Σ % hiện tại − % đầu tuần) ↓ → vẫn bằng ⇒ cùng hạng. **Tính MỖI NGÀY MỘT LẦN** (lượt điều phối đầu tiên từ 05:00), lên/xuống so với hôm trước; lớp công bố trong ngày có hạng từ sáng hôm sau. | `_mtt_xep_hang` + `_mtt_lam_moi` — mig `202611180040` |
+| Tính lại ngay | Đổi luật ⇒ chạy `scripts/mtt/tinh-lai-toan-bo.sql` lặp tới "XONG" (≤ 45 s/lượt, không đụng sổ đã chốt). | — |
+
+**Màn (cùng cấu trúc ở ERP · app HS · app PH):**
+- **3 phần, header dải màu chữ trắng:** **Bài trên lớp** (xanh dương) · **Ôn tập kiến thức** (cam) · **Hoạt động tuần này** (xanh lá). Bỏ thẻ "Bài … tính vào tuần sau" ở app PH (ERP giữ một dòng nhỏ "Bài … → tuần sau ⓘ").
+- **Thẻ nhóm 2 dòng:** dòng 1 tên nhóm (một dòng, dài thì "…") + nhãn Đạt / Chưa đạt / Chưa đo · dòng 2 thanh ngắn (không số trên thanh; vạch đầu tuần + cờ mục tiêu) + "Mục tiêu x% · Tăng a → b% / Giảm … / giữ b%".
+- **Hoạt động tuần này:** chỉ BTVN · ET · MT (buổi có MT ⇒ MT thay ET) · Bổ trợ sau giờ · Bổ trợ yếu. Dòng phụ KHÔNG liệt kê nhóm/dạng (chỉ nộp / hạn / giờ phòng / ghi chú). Nút **"Chi tiết ▾" cùng dòng**:
+  ERP ⇒ kết quả TỪNG DẠNG của việc đó (tên dạng · số câu · %; `fn_mtt_viec_dang`, mig `202611172310` — một em × một buổi, gọi khi bấm); app PH ⇒ tên nhóm của việc (PH chưa có % từng dạng — muốn có thì đưa vào payload lúc tính tờ, chờ Thùy).
+- **ERP (Phòng làm việc › 🎯 Mục tiêu tuần — đồ vật riêng, lịch thứ 2 cột trái phòng):** header MỘT dòng (ô môn × khối · ↻ · tuần · ← Khối · chip lớp · "số lúc HH:MM ⓘ" · 🏆 Top 20) · cột tên em hẹp (200–240 px) · tờ một em trọn MỘT màn: đầu tờ một dòng (tên · lớp · Nháp/Đã công bố · tiến độ · việc · hạng · tự luyện) + 3 cột Bài trên lớp · Ôn tập kiến thức · Hoạt động tuần này; chú thích dài vào tooltip.
+- **📱 Xem như phụ huynh** (ERP, nút trên tờ em): khung điện thoại dọc 390×844 nhúng trang `/xem-mtt` của app PH; ERP đưa sẵn tờ qua postMessage (xem được cả NHÁP); trang PH không đọc dữ liệu, nhận tin theo khung nhúng (không theo tên miền), có dải "Bản xem trước".
+- **Nhớ màn:** rời phòng / F5 / mở lại hôm sau ⇒ đúng đồ vật, ô, lớp, em đang xem (tuần chỉ nhớ trong ngày) — `lib/nho.ts`, CLAUDE §2 React.
+
 ---
 
 ### 4.7 Phụ lục kỹ thuật Mục tiêu tuần (gộp từ `spec-muc-tieu-tuan.md` 17/11 — Thùy "Làm đi")
@@ -579,7 +602,7 @@ Quá hạn chưa nộp ⇒ **đề xuất gậy** "Nộp báo cáo tuần trễ"
 | Phần | DB | Màn |
 |---|---|---|
 | Giáo trình tuần | `gtt_*` · `fn_gtt_*` · trigger trên `tai_lieu` | `phongtk/GiaoTrinhTuan.tsx` · `lib/giaoTrinhTuan.ts` · builder (nhãn ngày) · `GanLopBdm` |
-| Mục tiêu tuần | `mtt_*` · `_mtt_*` · `fn_mtt_*` | `danhgia/MucTieuTuanTab.tsx` · `hocsinh/MucTieuTuanHS.tsx` · repo `bkdemy-ph-app` |
+| Mục tiêu tuần | `mtt_*` · `_mtt_*` · `fn_mtt_*` · `fn_mtt_viec_dang` | `phongtk/MucTieuTuanPhong.tsx` · `danhgia/MucTieuTuanTab.tsx` · `hocsinh/MucTieuTuanHS.tsx` · repo `bkdemy-ph-app` (`components/ph/MucTieuTuanScreen.tsx` · `app/xem-mtt`) · `scripts/mtt/tinh-lai-toan-bo.sql` |
 | Báo cáo tuần | `bao_cao_*` · `fn_bctk_*` · `fn_bcmt_*` | `phongtk/BaoCaoTuanTK.tsx` · `BaoCaoTuanTBM.tsx` · `ChieuBaoCaoMon.tsx` |
 | Chụp đầu tuần | `_tu_dong_sang_t2` · `_dang_yeu_chup_tuan` · sổ `mtt_chot` / `mtt_dau` | — (bộ điều phối) |
 
