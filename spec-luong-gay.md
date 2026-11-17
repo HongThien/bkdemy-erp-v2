@@ -277,7 +277,7 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 | 8 | OK | 314 đề xuất gậy tồn: **ân xá phần có hạn trước 01/11**, làm lại từ tháng 11. Về sau: hạn quyết 7 ngày, quá hạn về khay Trang, quá 30 ngày máy tự bỏ qua; **gậy tính theo tháng của việc trễ**. | — |
 | 9 | OK | Thứ tự mỗi tháng: ngày 1–3 trưởng khối xử lý thiếu công + quyết gậy → ngày 4 Trang chốt gậy → ngày 5 Trang chốt lương, Thùy xem tổng (hệ chặn chốt lương khi gậy tháng chưa chốt). Kỳ đã trả tiền không mở lại — chênh ghi dòng "điều chỉnh" kỳ sau. | — |
 | 10 | "cái này setup trên app mà" | **Đơn giá việc ngoài gói do quản lý ĐẶT TRÊN APP** (bảng thông số có ngày hiệu lực) — spec không ghi cứng số. Việc chưa đặt giá (Họp, Đào tạo) = chưa trả cho tới khi có người đặt. | — |
-| 11 | "ý là có deadline của BTVN mà" | Tôi hiểu: **"chấm BTVN trong hạn" = trong HẠN CHẤM BTVN của buổi** (2 giờ trước buổi kế; buổi kế T7 / CN ⇒ 23:59 hôm trước — `spec-tro-giang` §12.0 câu 3), KHÔNG phải "trước ngày 3 tháng sau". Buổi chấm trễ hạn không tính vào phần BTVN. **Khác code đang chạy** (đang tính mọi buổi chấm trước ngày 3). | xác nhận, vì đổi tiền TA nhận |
+| 11 | "ý là có deadline của BTVN mà" → làm rõ: **"Nếu TA chấm muộn thì bị phạt ở gậy, không trừ vào lương."** | **Chấm BTVN trễ hạn VẪN được tính tiền phần BTVN** (như code đang chạy: buổi có chấm trước ngày 3 tháng sau là tính). Trễ hạn chấm ⇒ **gậy**, không cắt phần tiền BTVN — không phạt hai lần. Chấm ET cũng vậy (trễ ⇒ gậy). | — |
 | 12 | ok | Gậy đã vào sổ mà tháng chưa chốt hiện "tạm trừ" trong bảng lương realtime; bỏ màn "Tiến trình" + điểm hiệu suất khỏi app TA khi bảng xong (giữ Xếp hạng · Gậy của tôi · Shopping). | — |
 
 ### 9.1 Câu hỏi (xếp theo mức ảnh hưởng tới tiền người nhận)
