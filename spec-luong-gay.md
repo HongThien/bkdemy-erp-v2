@@ -267,8 +267,8 @@ Hiệu suất (tham số): `_hsta_tru_moi_gay()` = 50 · `_hsta_ti_trong()` = 50
 
 | Câu | Thùy trả lời (nguyên văn) | Ghi vào spec | Còn phải hỏi |
 |---|---|---|---|
-| 1 | *chưa trả lời* | — | gậy có trừ tiền không, bao nhiêu |
-| 2 | *chưa trả lời* | — | gậy của người không có lương trên ERP |
+| 1 | **"Không trừ tiền"** (17/11) | **GẬY KHÔNG TRỪ TIỀN LƯƠNG.** Gậy chỉ là điểm (−50 điểm hiệu suất / gậy) + đánh giá; gỡ bằng hoạt động như cũ. Bỏ luật 20.000đ / gậy (29/08) và vế "lương trừ tiền phạt gậy" (12/10). Chấm muộn ⇒ gậy, không cắt tiền (câu 11). **Code đang trái:** `fn_gay_bang` còn tính `tien_phat` 20.000đ, công thức lương còn trừ tiền phạt gậy đã chốt, màn Gậy còn hiện tiền — sửa khi có lệnh (chưa tháng nào chốt nên chưa ai bị trừ). | — |
+| 2 | (hết cần — theo câu 1) | Không ai bị trừ tiền vì gậy, kể cả người không có lương trên ERP. Chốt tháng gậy (nếu giữ) chỉ để chốt điểm / đối chiếu. | — |
 | 3 | "giáo viên full time có vai học thuật – trưởng khối ko có lương bổ trợ, ko có lương gì khác" | **Giáo viên full-time giữ vai học thuật / trưởng khối: KHÔNG có tiền dạy bổ trợ, không có khoản nào khác ngoài lương của họ.** 247 buổi bổ trợ do giáo viên đứng không sinh công / tiền. | Giáo viên KHÔNG full-time (nếu có người như vậy dạy bổ trợ) thì sao? |
 | 4 | "GV có khung lương cứng" | **Giáo viên có khung lương CỨNG** — không tính theo thang buổi × sĩ số. Thang 03/09 (300–750 nghìn / buổi) bỏ. | Khung lương cứng lưu ở đâu — ngoài ERP (kế toán giữ) hay đưa số vào hệ? |
 | 5 | "Giáo viên bình thường – có 3 gv tiểu học như m nói" | Tôi hiểu: **ngoài khung lương cứng, chỉ còn 3 giáo viên tiểu học tính theo thang buổi 09/10** (§2.1) như đang làm. | xác nhận cách hiểu; 5 ý nhỏ (buổi bù · MT · sĩ số em vắng · 90/10 · đưa vào ERP) chỉ còn áp cho 3 người này |
