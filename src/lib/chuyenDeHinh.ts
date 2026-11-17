@@ -37,21 +37,17 @@ export async function cdhDatBai(phanMoHinhId: string, maBai: string[]): Promise<
   if (error) throw error
 }
 
-// ── Bộ chọn: chủ đề Hình–Luyện của khối → nhóm mô hình → mô hình ──
-export type CdhChonMoHinh = { id: string; ma: string; ten: string; chu_de_id: string | null; nhom_mh_id: string | null; thu_tu: number | null }
-export type CdhChonNhom = { id: string; chu_de_id: string; ten: string; thu_tu: number }
+// ── Bộ chọn: chủ đề Hình–Luyện của khối → mô hình (tầng nhóm mô hình đã bỏ hẳn 17/11 — spec-ban-do-toan §10.7) ──
+export type CdhChonMoHinh = { id: string; ma: string; ten: string; chu_de_id: string | null; thu_tu: number | null }
 export type CdhChonChuDe = { id: string; ten: string }
-export async function cdhCayChon(khoi: string): Promise<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] }> {
+export async function cdhCayChon(khoi: string): Promise<{ chuDe: CdhChonChuDe[]; moHinh: CdhChonMoHinh[] }> {
   const [cd, mh] = await Promise.all([
     supabase.from('dai_bdm_chu_de').select('id, ten').eq('khoi', khoi).eq('nhanh', 'hinh')   /* 27/10: Hình học + luyện gộp 1 chủ đề vùng 'hinh' */.order('thu_tu').limit(100),
-    supabase.from('hinh_mo_hinh').select('id, ma, ten, chu_de_id, nhom_mh_id, thu_tu').eq('phan', 'luyen').eq('khoi', khoi).is('neo_baitoan_id', null).eq('la_mo_hinh', true).order('ma')   /* nhánh giả thiết (22/10) cũng neo NULL ⇒ lọc la_mo_hinh */.limit(1000),
+    supabase.from('hinh_mo_hinh').select('id, ma, ten, chu_de_id, thu_tu').eq('phan', 'luyen').eq('khoi', khoi).is('neo_baitoan_id', null).eq('la_mo_hinh', true).order('ma')   /* nhánh giả thiết (22/10) cũng neo NULL ⇒ lọc la_mo_hinh */.limit(1000),
   ])
   if (cd.error) throw cd.error
   if (mh.error) throw mh.error
-  const ids = (cd.data ?? []).map((x) => x.id)
-  const nh = ids.length ? await supabase.from('hinh_nhom_mo_hinh').select('id, chu_de_id, ten, thu_tu').in('chu_de_id', ids).order('thu_tu').limit(1000) : { data: [], error: null }
-  if (nh.error) throw nh.error
-  return { chuDe: (cd.data ?? []) as CdhChonChuDe[], nhom: (nh.data ?? []) as CdhChonNhom[], moHinh: (mh.data ?? []) as CdhChonMoHinh[] }
+  return { chuDe: (cd.data ?? []) as CdhChonChuDe[], moHinh: (mh.data ?? []) as CdhChonMoHinh[] }
 }
 
 // ══ GIÁO TRÌNH HÌNH (Thùy 27/10 — mig 202610271757): mỗi buổi thêm phần HỌC = bài học (hinh_hoc_bai) → câu luyện + BTVN ══

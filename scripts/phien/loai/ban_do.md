@@ -42,7 +42,7 @@ Ghi lý thuyết (`ghi_noi_dung`) và lệnh kho cũng dùng được ngay trong
   Ghi: `fn_hl_tao_mo_hinh{p_khoi,p_ten,p_gia_thiet,p_anh}` · `fn_hl_tao_mo_hinh_trong_nhom` · `fn_hl_them_gia_thiet{p_cha,p_ten,p_gia_thiet_them,p_chinh}` ·
   `fn_hl_them_bai{p_nhanh,p_phat_bieu,p_gia_thiet_rieng,p_loi_giai,p_anh,p_tien_de}` · `fn_hl_them_bai_sau` · `fn_hl_sua_bai` · `fn_hl_re_nhanh` · `fn_hl_re_nhanh_tu_bai` ·
   `fn_hl_doi_cha_gia_thiet` · `fn_hl_doi_neo` · `fn_hl_doi_thu_tu` · `fn_hl_chuyen_bai` · `fn_hl_gan_bai_mo_hinh` · `fn_hl_gan_y` · `fn_hl_duyet_bai{p_bai,p_duyet}` ·
-  `fn_hl_bo_qua_bai` · `fn_hl_khoi_phuc_bai` · `fn_hl_xoa_mo_hinh{p_id}` (xem `fn_hl_mo_hinh_se_mat` trước) · `fn_hl_nhom_mh_sap` · `fn_hl_nhom_mh_xoa` ·
+  `fn_hl_bo_qua_bai` · `fn_hl_khoi_phuc_bai` · `fn_hl_xoa_mo_hinh{p_id}` (xem `fn_hl_mo_hinh_se_mat` trước) ·
   `fn_hh_cau_chuyen_dang{p_ma_cau,p_ma_bai,p_ca_ban_sao}` · `fn_hh_lop_them` · `fn_hh_lop_chep_tu_kho` · `fn_hh_lop_xep`.
   **Nhóm bài / bài nhiều ý trong mô hình** (09/11 — vd MH.126): xem `fn_hl_nhom_bai_cua_cay{p_goc}` · thêm thành viên `fn_hl_thanh_vien_them{p_nhom,p_ten,p_gia_thiet,p_cho,p_hoi}` ·
   `fn_hl_thanh_vien_chuyen` · `fn_hl_thanh_vien_cho_hoi` · sự kiện `fn_hl_su_kien_them{p_nhom,p_noi_dung}` / `fn_hl_su_kien_sua` · bật nhóm `fn_hl_nhom_bai_bat{p_nut,p_su_kien}`.

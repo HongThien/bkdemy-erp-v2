@@ -1,0 +1,316 @@
+{
+  "xuat_at": "2026-11-17",
+  "ly_do": "Thùy 17/11: bỏ hẳn tầng nhóm mô hình, xoá hẳn — bản chép trước khi drop",
+  "nhom": [
+    {
+      "id": "NMH00009",
+      "chu_de_id": "NCD00177",
+      "ten": "Quan hệ các loại góc",
+      "mo_ta": "Đề bài cho hình vẽ , xác định quan hệ các loại góc và tính",
+      "thu_tu": 1,
+      "created_at": "2026-10-19T09:50:52.692Z",
+      "updated_at": "2026-10-20T07:56:57.040Z",
+      "mo_hinh": [
+        {
+          "id": "e079a2cb-f13d-45b1-8851-afdfba12a08b",
+          "ma": "MH.090",
+          "ten": "Quan hệ các loại góc"
+        }
+      ]
+    },
+    {
+      "id": "NMH00007",
+      "chu_de_id": "NCD00177",
+      "ten": "Các đường thẳng song song có sẵn",
+      "mo_ta": "Đề bài thường cho hình vẽ hai đường thẳng song song hoặc ở vị trí song song - yêu cầu thường là tính góc hoặc chứng minh song song",
+      "thu_tu": 2,
+      "created_at": "2026-10-19T09:16:30.656Z",
+      "updated_at": "2026-10-20T07:56:57.040Z",
+      "mo_hinh": [
+        {
+          "id": "9e06b4e0-4056-4e63-b185-87e540c8892b",
+          "ma": "MH.085",
+          "ten": "Ba đường thẳng song song"
+        },
+        {
+          "id": "910c6d5f-ff47-466e-9117-57d796c13d57",
+          "ma": "MH.076",
+          "ten": "Hai đường thẳng song song"
+        },
+        {
+          "id": "05427f76-3a52-4135-82a0-f80c65b080e5",
+          "ma": "MH.091",
+          "ten": "Đường thẳng qua đỉnh song song với cạnh"
+        }
+      ]
+    },
+    {
+      "id": "NMH00008",
+      "chu_de_id": "NCD00177",
+      "ten": "Ba đường thẳng song song cần vẽ thêm hình",
+      "mo_ta": "",
+      "thu_tu": 3,
+      "created_at": "2026-10-19T09:23:56.418Z",
+      "updated_at": "2026-10-19T09:50:56.733Z",
+      "mo_hinh": [
+        {
+          "id": "69ef3aa1-c307-426d-a483-8800738c676e",
+          "ma": "MH.088",
+          "ten": "Mô hình Vây cá"
+        },
+        {
+          "id": "fb7502d6-1d60-4fea-aa0e-b7816b8d4ea8",
+          "ma": "MH.089",
+          "ten": "Mô hình Ziczac"
+        },
+        {
+          "id": "97017abf-637b-4a2a-a886-ff610212946b",
+          "ma": "MH.086",
+          "ten": "Mô hình Đầu cá"
+        },
+        {
+          "id": "0c800694-e962-4f88-8760-d7fc8500b616",
+          "ma": "MH.087",
+          "ten": "Mô hình Đuôi cá"
+        }
+      ]
+    },
+    {
+      "id": "NMH00001",
+      "chu_de_id": "NCD00178",
+      "ten": "Hình chữ nhật trong tam giác vuông",
+      "mo_ta": "Đề bài cho tam giác vuông và từ 1 điểm trên cạnh huyền kẻ vuông góc xuống các cạnh góc vuông để tạo ra hình chữ nhật",
+      "thu_tu": 1,
+      "created_at": "2026-10-19T07:40:41.592Z",
+      "updated_at": "2026-10-19T07:44:57.454Z",
+      "mo_hinh": [
+        {
+          "id": "b0ec3ebf-6ddc-41e0-b9d6-5883a3f2eb6c",
+          "ma": "MH.072",
+          "ten": "Hình chữ nhật trong tam giác vuông - Trung điểm M"
+        },
+        {
+          "id": "6a9bc4c0-847d-418d-bb9a-683f3ddbd102",
+          "ma": "MH.079",
+          "ten": "Hình chữ nhật trong tam giác vuông - Điểm bất kì"
+        },
+        {
+          "id": "ba947b46-6a30-48f0-bd69-1d271d6fac74",
+          "ma": "MH.073",
+          "ten": "Hình chữ nhật trong tam giác vuông - Chân đường cao H"
+        }
+      ]
+    },
+    {
+      "id": "NMH00002",
+      "chu_de_id": "NCD00178",
+      "ten": "Đi từ Hình chữ nhật",
+      "mo_ta": "Đề bài sẽ cho Hình chữ nhật và dựng các hình từ Hình chữ nhật này",
+      "thu_tu": 2,
+      "created_at": "2026-10-19T07:44:13.518Z",
+      "updated_at": "2026-10-19T07:44:13.518Z",
+      "mo_hinh": [
+        {
+          "id": "221dc114-28f7-43c1-9e88-bd469c290bc3",
+          "ma": "MH.081",
+          "ten": "Hình chữ nhật - Bài toán đối xứng trên cạnh CD"
+        },
+        {
+          "id": "a7e2e395-8120-4768-bc6f-b81f1381ec1a",
+          "ma": "MH.077",
+          "ten": "Hình chữ nhật - Kẻ vuông góc với đường chéo"
+        }
+      ]
+    },
+    {
+      "id": "NMH00003",
+      "chu_de_id": "NCD00178",
+      "ten": "Đi từ Hình thoi và Hình vuông",
+      "mo_ta": "Bài toán cho hình thoi - Hình vuông và các giả thiết phát triển từ hình thoi",
+      "thu_tu": 3,
+      "created_at": "2026-10-19T08:15:04.500Z",
+      "updated_at": "2026-10-19T08:15:50.167Z",
+      "mo_hinh": [
+        {
+          "id": "d13179ae-484f-4c85-8bde-b9ac865ec996",
+          "ma": "MH.084",
+          "ten": "Hình thoi có góc 60 độ"
+        },
+        {
+          "id": "8d3bd650-4d59-4fcb-81b6-d053c37b0d24",
+          "ma": "MH.078",
+          "ten": "Hình vuông - Trung điểm các cạnh"
+        }
+      ]
+    },
+    {
+      "id": "NMH00004",
+      "chu_de_id": "NCD00178",
+      "ten": "Hình chữ nhật được tạo ra",
+      "mo_ta": "Từ các tam giác, đề bài sẽ cho các giả thiết để tạo ra các hình chữ nhật",
+      "thu_tu": 4,
+      "created_at": "2026-10-19T08:16:51.176Z",
+      "updated_at": "2026-10-19T08:16:51.176Z",
+      "mo_hinh": [
+        {
+          "id": "1ba105e2-17cf-4f8b-8639-aee6f4789987",
+          "ma": "MH.083",
+          "ten": "Hình chữ nhật - Tạo từ điểm bất kì thuộc tam giác cân"
+        },
+        {
+          "id": "64f20cc3-0ace-4c6d-9959-8878fcbcb4e0",
+          "ma": "MH.074",
+          "ten": "Hình chữ nhật tạo từ đường cao tam giác"
+        }
+      ]
+    },
+    {
+      "id": "NMH00006",
+      "chu_de_id": "NCD00178",
+      "ten": "Hình bình hành được tạo ra",
+      "mo_ta": "Đề bài sẽ cho các giải thiết để có thể chứng minh 1 tứ giác là hình bình hành",
+      "thu_tu": 5,
+      "created_at": "2026-10-19T08:43:41.966Z",
+      "updated_at": "2026-10-19T08:43:41.966Z",
+      "mo_hinh": []
+    },
+    {
+      "id": "NMH00005",
+      "chu_de_id": "NCD00178",
+      "ten": "Đi từ Hình bình hành",
+      "mo_ta": "Đề bài cho Hình bình hành và các giải thiết liên quan",
+      "thu_tu": 6,
+      "created_at": "2026-10-19T08:17:37.571Z",
+      "updated_at": "2026-10-19T08:43:47.386Z",
+      "mo_hinh": [
+        {
+          "id": "b9028479-f20e-4d2d-8d40-5451abb9976f",
+          "ma": "MH.075",
+          "ten": "Trung điểm cạnh của hình bình hành"
+        }
+      ]
+    },
+    {
+      "id": "NMH00010",
+      "chu_de_id": "NCD00180",
+      "ten": "Tam giác vuông có đường cao",
+      "mo_ta": "Đề bài cho tam giác vuông và đường cao từ đỉnh vuông",
+      "thu_tu": 1,
+      "created_at": "2026-10-29T07:42:41.043Z",
+      "updated_at": "2026-10-29T07:42:41.043Z",
+      "mo_hinh": [
+        {
+          "id": "c20a3626-2078-47c6-9b46-fca6d5529e7f",
+          "ma": "MH.124",
+          "ten": "Tam giác vuông có đường cao - Trung tuyến"
+        },
+        {
+          "id": "2e8d2285-74a0-4498-81ca-6c135bccf1f2",
+          "ma": "MH.125",
+          "ten": "Hai tam giác vuông chung đỉnh có đường cao"
+        }
+      ]
+    },
+    {
+      "id": "NMH00012",
+      "chu_de_id": "NCD00182",
+      "ten": "Mô hình hai tiếp tuyến",
+      "mo_ta": "Đề bài sẽ cho 2 tiếp tuyến kẻ từ 1 điểm",
+      "thu_tu": 1,
+      "created_at": "2026-11-03T10:16:39.007Z",
+      "updated_at": "2026-11-03T10:16:39.007Z",
+      "mo_hinh": [
+        {
+          "id": "c0fae5a5-a3ea-492e-9c2f-620c2378cf2f",
+          "ma": "MH.128",
+          "ten": "Mô hình hai tiếp tuyến"
+        }
+      ]
+    },
+    {
+      "id": "NMH00013",
+      "chu_de_id": "NCD00182",
+      "ten": "Mô hình ba tiếp tuyến",
+      "mo_ta": "Đề bài sẽ cho 2 tiếp tuyến từ 2 đầu của 1 đường kính và 1 tiếp tuyến thứ 3 cắt 2 tiếp tuyến này",
+      "thu_tu": 2,
+      "created_at": "2026-11-03T10:19:23.958Z",
+      "updated_at": "2026-11-03T10:19:23.958Z",
+      "mo_hinh": [
+        {
+          "id": "195ba557-5707-4d87-a36f-d01559deefb7",
+          "ma": "MH.129",
+          "ten": "Mô hình ba tiếp tuyến có đường kính"
+        }
+      ]
+    },
+    {
+      "id": "NMH00011",
+      "chu_de_id": "NCD00210",
+      "ten": "Phân giác trong Tam giác vuông",
+      "mo_ta": "Cho tam giác ABC . Có BD là phân giác. ABC thường là tam giác vuông nhưng cũng có trường hợp là Tam giác nhọn",
+      "thu_tu": 1,
+      "created_at": "2026-10-30T07:44:03.493Z",
+      "updated_at": "2026-11-07T08:29:11.718Z",
+      "mo_hinh": [
+        {
+          "id": "5244c16e-f678-4147-9938-44d8e1f298a2",
+          "ma": "MH.130",
+          "ten": "Phân giác trong Tam giác nhọn"
+        },
+        {
+          "id": "360272b8-c6ca-46a6-800d-5c79b1fc2586",
+          "ma": "MH.126",
+          "ten": "Phân giác trong Tam giác vuông"
+        }
+      ]
+    },
+    {
+      "id": "NMH00014",
+      "chu_de_id": "NCD00210",
+      "ten": "Cụng đầu",
+      "mo_ta": "Cho tam giác ABC có M là trung điểm của BC. Trên tia đối MA lấy D sao cho MA = MD",
+      "thu_tu": 2,
+      "created_at": "2026-11-07T08:13:21.631Z",
+      "updated_at": "2026-11-07T08:22:18.468Z",
+      "mo_hinh": [
+        {
+          "id": "0e465377-2eb4-4f3a-90c5-ccfc6b55665d",
+          "ma": "MH.131",
+          "ten": "Tam giác cụng đầu"
+        }
+      ]
+    },
+    {
+      "id": "NMH00015",
+      "chu_de_id": "NCD00210",
+      "ten": "Tam giác cân",
+      "mo_ta": "Cho tam giác ABC cân tại A. Cho tam giác ABC có AB = AC",
+      "thu_tu": 3,
+      "created_at": "2026-11-07T08:22:56.198Z",
+      "updated_at": "2026-11-07T08:22:56.198Z",
+      "mo_hinh": [
+        {
+          "id": "657a0084-5578-478c-a602-601dd91d32d1",
+          "ma": "MH.132",
+          "ten": "Tam giác cân"
+        }
+      ]
+    },
+    {
+      "id": "NMH00016",
+      "chu_de_id": "NCD00210",
+      "ten": "Hai trung điểm - Tiên đề Ơclit",
+      "mo_ta": "Cho tam giác ABC có D, E là trung điểm của AB, AC. Lấy M đối xứng với B qua E, N đối xứng với C qua D.",
+      "thu_tu": 4,
+      "created_at": "2026-11-07T08:26:11.987Z",
+      "updated_at": "2026-11-07T08:26:11.987Z",
+      "mo_hinh": [
+        {
+          "id": "3c558b5d-5d30-498a-b662-510df6d138c4",
+          "ma": "MH.133",
+          "ten": "Hai trung điểm"
+        }
+      ]
+    }
+  ]
+}

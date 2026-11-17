@@ -6,7 +6,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
 import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
-import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonNhom, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
+import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
 import { MathText, DeY, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
@@ -329,9 +329,9 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
 }
 
 // ── Bộ chọn mô hình: chủ đề Hình–Luyện → mô hình (kèm số bài trong kho). Thứ tự chọn = thứ tự trong phần. ──
-// 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): bỏ tầng nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
+// Tầng nhóm mô hình đã bỏ hẳn (09/11 gỡ khỏi màn, 17/11 xoá khỏi DB) — mô hình xếp thẳng dưới chủ đề.
 export function ChonMoHinh({ khoi, daChon, onClose, onConfirm }: { khoi: string; daChon: string[]; onClose: () => void; onConfirm: (ids: string[]) => void }) {
-  const [cay, setCay] = useState<{ chuDe: CdhChonChuDe[]; nhom: CdhChonNhom[]; moHinh: CdhChonMoHinh[] } | null>(null)
+  const [cay, setCay] = useState<{ chuDe: CdhChonChuDe[]; moHinh: CdhChonMoHinh[] } | null>(null)
   const [dem, setDem] = useState<Map<string, DemKho>>(new Map())
   const [chon, setChon] = useState<string[]>(daChon)
   const [err, setErr] = useState<string | null>(null)

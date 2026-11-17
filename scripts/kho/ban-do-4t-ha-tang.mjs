@@ -70,7 +70,6 @@ try {
       (select count(*)::int from dai_bdm_cau_thieu_dang where chu_de_id = any($3)) thieu_dang,
       (select count(*)::int from hinh_mo_hinh where chu_de_id = any($3)) mo_hinh,
       (select count(*)::int from hinh_hoc_bai where chu_de_id = any($3)) hoc_bai,
-      (select count(*)::int from hinh_nhom_mo_hinh where chu_de_id = any($3)) nhom_mo_hinh,
       (select count(*)::int from dai_bdm_doi_ung where dich_chu_de = any($3)) doi_ung_o,
       (select count(*)::int from dai_bdm_doi_ung where dich_dang_bai = any($2)) doi_ung_dang`, [idsNhom, idsDang, idsCd])
   // doi_ung_cum (cụm cũ → dạng bài) KHÔNG chặn: 11 dạng bài cũ được GIỮ NGUYÊN mã, chỉ đổi nhóm cha ⇒ hàng đối ứng đi theo; kiểm lại ở bước 3.

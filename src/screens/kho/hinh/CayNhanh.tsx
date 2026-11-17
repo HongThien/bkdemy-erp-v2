@@ -82,8 +82,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const [thongBao, setThongBao] = useState<string | null>(null)
   // thêm / sửa GIẢ THIẾT: id = null ⇒ thêm con của `cha`; id ≠ null ⇒ sửa (tên, giả thiết thêm, dời cha, chính/phụ)
   const [hopGT, setHopGT] = useState<{ id: string | null; cha: string; ten: string; gt: string; chinh: boolean } | null>(null)
-  // ⭐ 09/11 (spec-hinh-cay-nhanh §13.6 bước 1): BỎ tầng Nhóm mô hình khỏi màn — mô hình xếp thẳng dưới chủ đề.
-  //   Bảng/cột nhóm (hinh_nhom_mo_hinh, nhom_mh_id) CÒN NGUYÊN trong DB, chỉ xoá khi Thùy gật riêng (bước 2).
+  // Tầng Nhóm mô hình đã BỎ HẲN (09/11 gỡ khỏi màn · 17/11 Thùy "xoá hẳn" — bảng/cột/hàm đã xoá). Mô hình xếp thẳng dưới chủ đề.
   const [hopMH, setHopMH] = useState<{ id: string | null; ten: string; gt: string; anh: string | null } | null>(null)   // tạo / sửa mô hình gốc
   const [moDanhMuc, setMoDanhMuc] = useState<'dang' | 'bode' | null>(null)   // Thùy 19/10: danh mục Dạng bài / Bổ đề dời sang kho mới
   // thêm / sửa bài · `sau` = bài tiếp theo của bài đó (tiền đề mặc định = bài đó)
