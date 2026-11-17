@@ -20,8 +20,8 @@
 | 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · *đã gộp 17/11:* `spec-muc-tieu-tuan` (→ §4.1–§4.7) |
 | 8 | ✅ **`spec-van-hanh-trung-tam.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-dang-ky-test` → #9 · `PLAN-thu-chi` → #19) | Ops: **xếp lịch bổ trợ + báo PH**, **cách thu học phí**, quy trình vận hành, phòng, TKB, sự kiện, tủ quà, app OPS | `spec-xep-bo-tro-chung` · `_luu-tru/spec-bo-tro-ban-13-11.md` §41–§43 (xếp lịch, còn hiệu lực) · `spec-dang-ky-test` · `spec-su-kien` (+ game Trung thu `games-site/`) · `PLAN-tuqua` · `PLAN-thu-chi` (phần quy trình) · *TKB · phòng · thu học phí* |
 | 9 | `spec-web-trung-tam.md` | Web trung tâm | `BKDEMY_WEB_SPEC` · `spec-dang-ky-test` (phần web) |
-| 10 | ✅ **`spec-tro-giang.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-cham-cong-ta` còn phần lương → #11) | Quy trình TA, chấm công, app TA | `spec-cham-cong-ta` · `spec-hieu-suat-ta` · `spec-bot-telegram-ta` · `spec-quy-tac-cham` |
-| 11 | `spec-luong-gay.md` — **NHÁP 17/11, chờ Thùy trả lời 12 câu §9.1** (nguồn chưa chuyển) | Tính lương, tính gậy | `SPEC-tai-chinh-luong-gv-ta` (phần lương; file ở nhánh `docs/tai-chinh-luong-gv-ta`, chưa vào `main`) · *luật gậy đang rải ở `spec-truong-khoi` §3 · `spec-bot-telegram-ta` · `spec-van-hanh-tuan`* |
+| 10 | ✅ **`spec-tro-giang.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, `spec-cham-cong-ta` vào `_luu-tru/` cùng #11) | Quy trình TA, chấm công, app TA | `spec-cham-cong-ta` · `spec-hieu-suat-ta` · `spec-bot-telegram-ta` · `spec-quy-tac-cham` |
+| 11 | ✅ **`spec-luong-gay.md` — CHỐT 17/11** (gậy KHÔNG trừ tiền; `spec-cham-cong-ta` đã vào `_luu-tru/`; nhánh docs không merge) | Tính lương, tính gậy | `SPEC-tai-chinh-luong-gv-ta` (phần lương; file ở nhánh `docs/tai-chinh-luong-gv-ta`, chưa vào `main`) · *luật gậy đang rải ở `spec-truong-khoi` §3 · `spec-bot-telegram-ta` · `spec-van-hanh-tuan`* |
 | 12 | `spec-app-hs.md` | Mọi tính năng app HS, **kể cả game** (một file, có mục lục, sửa phần nào đọc phần đó) | `spec-v1-app-hs` · `spec-giao-dien-hs` · `spec-so-tay-cong-thuc` · `spec-the-gioi-bk` · `spec-on-thi-gk1` · `spec-kinh-te-nhiem-vu` · `spec-thanh-tuu-nhiem-vu` · `spec-bang-xep-hang` · `spec-huy-hieu-build` · `spec-che-do-game` · `spec-thu-thach-dau-truong` · `spec-dau-tu-vung` · `spec-lang-bk` · `spec-bk-world` · `spec-bat-thu` · `spec-nong-trai-nhip-ngay` · nháp `spec-game-ban-qua` · `spec-game-buoi-hoc` · `spec-game-catan` · `HUONG-DAN-CHOI-DUYET`. **`design/STYLE-HS.md` giữ riêng** (cổng `check:style-hs`) |
 | 13 | `spec-app-ph.md` (để ở repo này; `bkdemy-ph-app` trỏ sang) | App phụ huynh | *repo `bkdemy-ph-app` (HANDOFF + DEVLOG riêng)* · phần PH của `spec-bao-cao-ky` · `spec-muc-tieu-tuan` |
 | 14 | `spec-ban-do-khtn.md` | Bản đồ KHTN | *`kho-rules/khtn/bdm-0311/` · mục HANDOFF* |
@@ -83,6 +83,7 @@
 | `spec-xep-bo-tro-chung.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §2, §3 |
 | `spec-su-kien.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §7 |
 | `PLAN-tuqua.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §8 |
+| `spec-cham-cong-ta.md` | Gộp vào spec #10 + #11 (17/11) | `spec-tro-giang.md` §7 (chấm công) · `spec-luong-gay.md` §1, §7 (lương, chốt kỳ) |
 | `ADR-mon.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §2a (chiều môn) · §2b (gộp theo khuôn) |
 | `AUDIT-client-tinh-toan.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §14 |
 | `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |

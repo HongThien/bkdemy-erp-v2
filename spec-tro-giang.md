@@ -1,6 +1,6 @@
 # spec-tro-giang.md — TRỢ GIẢNG: quy trình TA · chấm · chấm công · hiệu suất · bot Telegram · app TA (spec #10 của bộ 20 spec)
 
-> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời 12 câu — bảng §12.0, thắng mọi "đề xuất" ở §12.1 và mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-hieu-suat-ta.md` · `spec-bot-telegram-ta.md` · `spec-quy-tac-cham.md` đã chuyển `_luu-tru/`. **`spec-cham-cong-ta.md` GIỮ ở gốc** tới khi spec #11 nhận phần công thức lương.
+> **Trạng thái: THÙY CHỐT 17/11/2026** (trả lời 12 câu — bảng §12.0, thắng mọi "đề xuất" ở §12.1 và mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-hieu-suat-ta.md` · `spec-bot-telegram-ta.md` · `spec-quy-tac-cham.md` đã chuyển `_luu-tru/`. `spec-cham-cong-ta.md` cũng đã vào `_luu-tru/` (lương: `spec-luong-gay.md`, chốt 17/11).
 > Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-cham-cong-ta.md` (trọn, trừ công thức lương ⇒ #11) · `spec-hieu-suat-ta.md` (trọn, sửa theo quyết định 05/11) · `spec-bot-telegram-ta.md` (trọn, sửa theo chốt 15/10) ·
 > `spec-quy-tac-cham.md` (trọn — giữ số mục A1–A9 vì lệnh `/cham-btvn-hang-doi` trỏ theo số) · `_luu-tru/PLAN-app-ta.md` · `_luu-tru/spec-test-online.md` (phần chấm, báo sai) ·
