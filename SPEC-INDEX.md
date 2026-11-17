@@ -11,7 +11,7 @@
 
 | # | Spec đích | Phạm vi (Thùy chốt) | Gộp từ |
 |---|---|---|---|
-| 1 | `spec-kien-truc.md` (giữ tên) | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · `ADR-mon` · `AUDIT-client-tinh-toan` |
+| 1 | ✅ **`spec-kien-truc.md` — ĐÃ GỘP 17/11, chờ Thùy duyệt để lưu trữ nguồn** | Kiến trúc, luật K, rà tháng | `spec-kien-truc` · *đã gộp:* `ADR-mon` (→ §2a) · `AUDIT-client-tinh-toan` (→ §14) |
 | 2 | `spec-ban-do-toan.md` | Bản đồ Toán — **cả Đại và Hình** | `spec-ban-do-4-tang` · `spec-ban-do-k12` · `spec-cum-bai` · `spec-format-noidung` (hiện lý thuyết dạng) · `spec-hinh-cay-nhanh` · `spec-hinh-luyen` · `spec-kho-hinh-v3` |
 | 3 | `spec-kho-cau-hoi.md` — **NHÁP 17/11, chờ Thùy duyệt** (7 câu hỏi §8; nguồn chưa chuyển) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone** | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") |
 | 4 | `spec-builder.md` | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |

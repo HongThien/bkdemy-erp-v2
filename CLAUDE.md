@@ -61,7 +61,7 @@
 ## 1.6 LUẬT DỮ LIỆU — chiều MÔN (mọi dữ liệu HỌC TẬP có nhãn môn)
 
 - **⭐ Mỗi MÔN = 1 TRUNG TÂM riêng (bounded context).** 4 môn (Toán/Văn/Anh/KHTN) **đối xứng — bản chất như nhau**;
-  chỉ **chung HS + một phần quy trình vận hành**, **KHÔNG chung content**. (ADR: `ADR-mon.md` / Notion.)
+  chỉ **chung HS + một phần quy trình vận hành**, **KHÔNG chung content**. (ADR: `spec-kien-truc.md` §2a / Notion.)
 - **⭐ MỌI dữ liệu HỌC TẬP PHẢI mang nhãn `mon`.** Việc học gắn với từng môn — **không có "điểm/đo/Elo chung chung", chỉ có "của môn X"**.
   Áp cho: kho (dạng/câu/lý thuyết) · đo lường/mastery · Elo/EXP · buổi/điểm danh/chấm/đánh giá/ET/BTVN · tài liệu · sát hạch/Level…
   → Thêm cột/bảng dính việc học mà **quên `mon` = SAI**. Query/tính toán học tập luôn scope theo `mon`.
@@ -139,7 +139,7 @@
     fetch về (tiền, điểm, mastery, hiệu suất, SLA, sĩ số…).
   - fetch ≥2 bảng rồi join bằng JS để ra con số/trạng thái nghiệp vụ.
   - **tính ở client rồi ghi kết quả vào DB** (nặng nhất — hư dữ liệu vĩnh viễn, đã có
-    tiền lệ: bug tiền thật do limit cắt cụt, xem `AUDIT-client-tinh-toan.md`).
+    tiền lệ: bug tiền thật do limit cắt cụt, xem `spec-kien-truc.md` §14).
   - công thức nghiệp vụ tồn tại 2 nơi (JS + SQL, hoặc 2 bản JS) — nguồn công thức DUY
     NHẤT là function Postgres, tên `fn_*`.
 - Client CÒN ĐƯỢC làm gì: CRUD dòng đơn qua PostgREST · list thô để render · format hiển
@@ -176,7 +176,7 @@
   - Kết luận về hiệu suất ⇒ phải có số đo trước–sau (hiệu số hai lần chụp, ấm lẫn nguội, `explain (analyze, buffers)`); không kết luận bằng đọc code hay bằng số cộng dồn (K19).
   **Rà kiến trúc MỖI THÁNG một lần** theo `spec-kien-truc.md` §13: `npm run ra:kien-truc` → `reports/ra-kien-truc-YYYY-MM.md`; lần đầu tuần đầu tháng 12/2026. Sự cố mới trong tháng ⇒ thêm một dòng vào §12 và (nếu được) một mục cổng `check:kien-truc`.
 - Mẫu tham chiếu đúng: `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang`.
-  Chiến dịch trả nợ 177 chỗ cũ: `AUDIT-client-tinh-toan.md` (lộ trình 4 phase).
+  Chiến dịch trả nợ 177 chỗ cũ (audit 30/08 — đã xong gì, còn gì): `spec-kien-truc.md` §14.
 
 ---
 

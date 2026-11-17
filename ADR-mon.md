@@ -1,3 +1,5 @@
+> **⚠ ĐÃ GỘP 17/11 vào `spec-kien-truc.md` §2a** — đọc ở đó; file này chờ Thùy duyệt rồi chuyển `_luu-tru/`. Không sửa thêm ở đây.
+
 # ADR — Kiến trúc theo MÔN: mỗi môn là một TRUNG TÂM riêng
 
 > Trạng thái: **ĐỀ XUẤT** (Thùy định hướng 06-29). Paste lên Notion (con của *ADR Chiều Môn*).

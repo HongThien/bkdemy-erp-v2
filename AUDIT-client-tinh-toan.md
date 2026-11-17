@@ -1,3 +1,5 @@
+> **⚠ ĐÃ GỘP 17/11 vào `spec-kien-truc.md` §14** — đọc ở đó; file này chờ Thùy duyệt rồi chuyển `_luu-tru/`. Không sửa thêm ở đây.
+
 # AUDIT — "Client không tính toán, DB tính, client chỉ lấy số" (29-30/08/2026)
 
 > Quét toàn bộ `src/lib` + `src/screens` trên `main` (`ceb2d09`) bằng 3 lượt đọc song song.

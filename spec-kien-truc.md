@@ -2,6 +2,7 @@
 
 > **Trạng thái: THÙY CHỐT 13/11/2026** (đã đối chiếu định hướng BK lần 1; chưa đọc được Notion North Star/Pillars/Principles). **Đợt 0a ĐÃ ÁP 13/11** (mig 202611131750); các đợt sau: nêu phạm vi → Thùy gật → làm.
 > Bằng chứng hiện trạng: `reports/audit-scale-13-11.md`.
+> **Cập nhật 17/11 (gộp spec #1):** nhận trọn `ADR-mon.md` → **§2a chiều môn** và `AUDIT-client-tinh-toan.md` → **§14 nợ client tính toán** (đối chiếu DB + code 17/11). Sửa đoạn §2b bị dán đè (13/11).
 > **Cập nhật 15/11 tối (Thùy chốt):** thêm **§12 — những thiết kế sai đã trả giá (ĐỌC TRƯỚC KHI THIẾT KẾ)** · **§13 — rà kiến trúc mỗi tháng** · **K27–K29**. Gói máy Supabase đã nâng Micro → Small (trần kết nối 90).
 > **Cập nhật 15/11 (Thùy gật):** thêm **K24–K26** vào §9, rút từ bài học 14→15/11 (`HANDOFF-BAI-HOC.md`): bảng dòng rộng phải có đường đọc hẹp · bảng tạm trong hàm · chạy thử trên DB sống.
 > Đích (Thùy 13/11, đính chính tối 13/11): 1.000 → 2.000 → 10.000 đều là **HS CỦA TRUNG TÂM**. Không có khối HS ngoài trung tâm. Mốc 1.000 trong 6–12 tháng.
@@ -36,7 +37,7 @@ BK không phải công ty nền tảng học trực tuyến. Chuẩn ngành ch�
 | **Triangulation: lỗi lộ qua mâu thuẫn dữ liệu, không qua người-kiểm-người** (§5) | — | Áp cho chính kiến trúc: bảng tính sẵn luôn có đường tính trực tiếp để **đối chiếu định kỳ**; lệch là cờ tự bật |
 | **Pure-derive: task = chênh lệch must-exist vs does-exist; không bảng `tasks`, không dòng chờ; mastery KHÔNG lưu — suy động** | CQRS thuần sẽ coi mô hình đọc là dữ liệu hạng nhất | Mọi bảng tính sẵn là **bản CHIẾU xoá đi dựng lại được**, không bao giờ là nguồn chân lý. Hạn việc, dạng yếu, mastery lưu sẵn = cache, không phải sổ |
 | **Chống NULL: chỉ tạo dòng khi có kết quả thật; lịch sử HS = UNION các bảng sự kiện, KHÔNG đẻ bảng "lịch sử" riêng** (quyết định 06) | xAPI/LRS gom mọi sự kiện vào MỘT kho riêng | **Không** dựng bảng sự kiện đo thứ tư. "Một sổ đo" = một CỬA ĐỌC gộp các bảng sự kiện sẵn có (§3) |
-| **Mỗi môn = một trung tâm; tầng dưới mỗi nhánh bảng riêng, KHÔNG gộp; dispatch qua 1 registry** (`ADR-mon.md`) | Ngành thường chuẩn hoá một schema nội dung | Không gộp bảng kho. Chỉ gom **hàm vận hành dùng chung** về registry; hàm nội dung của nhánh có cấu trúc riêng (Hình) được phép riêng |
+| **Mỗi môn = một trung tâm; dispatch qua 1 registry** (§2a) — *bảng: riêng theo KHUÔN, chung trong cùng khuôn* (§2b, sửa 13/11) | Ngành thường chuẩn hoá một schema nội dung | Không gộp content giữa các khuôn. Trong cùng khuôn: một bảng có cột `kho`, hàm nhận `kho`/`mon`; khuôn có cấu trúc riêng (Hình mô hình–bài–ý, Anh/Văn) được phép riêng |
 | **AI in the loop: Claude/bot là người LÀM chính ở dây chuyền kho** (giải bài, phân dạng, nhập đề) | Ngành: tải đến từ người dùng cuối | Ở BK "người dùng" nặng nhất của DB là **dây chuyền AI + cron**, không phải HS. Phải **cách ly tải**: việc hàng loạt của máy không được làm chậm giờ HS học |
 | **Seam sẵn có: màn không gọi Supabase trực tiếp, chỉ qua `src/lib/*`; màn hàng đợi nhớ trạng thái ở `NHO`** (CLAUDE.md §2) | Ngành: thư viện cache client | Giữ seam và giữ luật `NHO`. Cache/gộp lượt gọi đặt **bên trong seam `src/lib`**, không bắt viết lại 700 file theo thư viện mới |
 | **Notion giữ intent/ADR, repo hiện thực hoá** | — | Sau khi chốt: bản này dán lên Notion thành ADR; repo giữ bản làm việc |
@@ -75,6 +76,31 @@ Mỗi bảng thuộc đúng MỘT miền. Miền khác **không đọc/ghi thẳ
 
 Bảng mới ⇒ tên có tiền tố miền, và spec tính năng ghi rõ bảng thuộc miền nào. Hàm nội bộ của miền (tiền tố `_`) **không cấp quyền gọi cho client**.
 
+## 2a. Chiều MÔN — mỗi môn một trung tâm (gộp từ `ADR-mon.md`, Thùy định hướng 29/06; phần "bảng" sửa ở §2b)
+
+**Nguyên tắc gốc — 1 môn = 1 TRUNG TÂM riêng (bounded context, R7: DDD — Evans).**
+- Các môn (Toán · KHTN · Vật lý · Hóa học · Tiếng Anh · Văn · TSA — danh mục MỘT nguồn `src/lib/mon.ts` `MON_LIST`) **đối xứng, bản chất như nhau**.
+  Chỉ **chung HỌC SINH + một phần QUY TRÌNH VẬN HÀNH**, **KHÔNG chung content** (kho tri thức).
+- Môn **được phép khác cấu trúc** nội dung; ép giống = rủi ro > lợi. Thêm môn = **mở chiều RỘNG** (thêm một trung tâm), không nhồi sâu vào một schema chung.
+- Cách chia bảng bên dưới tầng môn **không theo môn mà theo KHUÔN** — xem §2b (thay §4 + §6 của ADR cũ, "mỗi nhánh bảng riêng, không gộp").
+
+**⭐ Luật nhãn môn (Thùy chốt): MỌI dữ liệu HỌC TẬP mang nhãn `mon`.** Không có "điểm / đo / Elo chung chung", chỉ có "của môn X".
+
+| Tầng | Phạm vi | `mon` |
+|---|---|---|
+| **CONTENT (kho)** — cây dạng · câu · lý thuyết | Riêng từng môn/nhánh (bảng theo khuôn §2b, cột `kho`) | Khoá định danh trung tâm |
+| **HỌC TẬP dùng chung thực thể** — buổi · điểm danh · chấm · ET · BTVN · đo/mastery · Elo · EXP · sát hạch/Level · tài liệu | Thực thể chung, **mỗi DÒNG có nhãn `mon`** | Bắt buộc |
+| **PHI HỌC TẬP** — HS (cá nhân) · PH · ví xu (wallet tổng) · tài khoản | Chung | Không nhãn môn |
+
+- **Nhãn 2 tầng (môn, nhánh):** Toán {Đại, Hình} · KHTN {Lý, Hóa, Sinh}… `nhanh` = tầng cao nhất trong cây của môn: nhánh → chủ đề → chuyên đề → dạng (chi tiết cây: spec bản đồ từng môn — `SPEC-INDEX.md` #2, #14–#16).
+  *Lưu ý:* `Vật lý` / `Hóa học` (khối 10–12, Thùy 12/11) là **môn**, khác phân môn `Lý`/`Hóa` của KHTN — đối xứng xét ở cấp môn, không phải cấp nhánh.
+- **Cầu nối:** dữ liệu học tập tham chiếu content bằng **(mã gốc `ma_dang`/`ma_cau` + `mon`)** — mã là con trỏ, `mon` nói tra ở trung tâm nào.
+- **Symmetry test (tiêu chí đúng):** thao tác trên Toán phải chạy **y hệt** mọi môn. `if (mon === 'Toán')` trong code dùng chung = sai (cổng §8 đếm "so sánh môn/nhánh cứng").
+- **Dispatch môn/nhánh → bảng = MỘT registry**, không rải rác: client `src/lib/mon.ts` (danh mục + nhóm môn theo tính năng), DB `_kho_co_mon` / `_mon_khoi_hop_le` / hàm nhận tham số `kho`.
+
+**Nợ còn mở (đối chiếu DB 17/11):** các bảng vận hành lưu **mã trần không kèm môn** — `gami_session_problems` (`ma_dang`, `ma_cau`) · `canh_bao_yeu` (`ma_dang`) · `tai_lieu_cau` (`ma_cau`) — vẫn chưa có cột `mon`/`kho`.
+Hiện tra được nhờ mã giữa các nhánh không trùng (§2b), nhưng phải đoán/union khi resolve. Bổ sung khi chạm tới bảng đó (không mở đợt riêng).
+
 ## 2b. Gộp theo KHUÔN (Thùy chốt 13/11 — sửa ADR môn)
 
 **Quyết định:** tách theo KHUÔN cấu trúc, không theo môn. Cùng khuôn ⇒ một bảng chung + một bộ hàm, phân biệt bằng cột `kho`. Khác khuôn ⇒ bộ riêng.
@@ -84,15 +110,15 @@ Khuôn: **dạng–câu** (Đại · Hình giải tích · KHTN · Lý · Hoá �
 
 **⛔ CÁCH GỘP BẰNG PARTITION ĐÃ THẤT BẠI VÀ ĐÃ GỠ (13/11 tối).** Tôi gắn 115 bảng nhánh làm phần (partition) của 25 bảng chung `kho_<họ>` (mig 202611131904 … 202611132033). Trong DB mọi thứ khớp, nhưng **PostgREST không lộ bảng là partition ra API** ⇒ mọi chỗ app `.from('hgt_cau_hoi')`… báo "Could not find the table in the schema cache" (ET, kho, tài liệu). Lỗi kéo dài từ ~19:04 (họ đầu) tới 20:53; cứu bằng mig 202611132053 (tách hết phần). Tôi chỉ thử bằng SQL trong DB, không thử qua API — đó là lỗi kiểm.
 
-**Còn lại sau khi gỡ (dùng được):** mọi bảng nhánh có cột `kho` (hằng + check) · các cột lệch giữa nhánh đã được làm khớp (thêm cột thiếu) · cột tự tăng IDENTITY đã đổi sang sequence · bảng tra `kho_cau_dang` + view `bdm_cau_dang` đọc bảng tra (đọc 3 họ qua view gộp `v_kho_cau_hoi` / `v_kho_bdm_gan_cau` / `v_kho_bdm_de_xuat`, trigger đặt trên từng bảng nhánh). 25 bảng `kho_<họ>` rỗng và 4 index k**HƯỚNG ĐÃ CHỌN (Thùy giao CTO chọn 13/11: "tối ưu sau này và ít rủi ro") — GỘP THẬT, CUỐN CHIẾU THEO HỌ, CLIENT ĐI TRƯỚC.**
+**Còn lại sau khi gỡ (dùng được):** mọi bảng nhánh có cột `kho` (hằng + check) · các cột lệch giữa nhánh đã được làm khớp (thêm cột thiếu) · cột tự tăng IDENTITY đã đổi sang sequence · bảng tra `kho_cau_dang` + view `bdm_cau_dang` đọc bảng tra (đọc 3 họ qua view gộp `v_kho_cau_hoi` / `v_kho_bdm_gan_cau` / `v_kho_bdm_de_xuat`, trigger đặt trên từng bảng nhánh). 25 bảng `kho_<họ>` rỗng và 4 index kiểm trùng dựng sai đã dọn (mig 202611132100).
+
+**HƯỚNG ĐÃ CHỌN (Thùy giao CTO chọn 13/11: "tối ưu sau này và ít rủi ro") — GỘP THẬT, CUỐN CHIẾU THEO HỌ, CLIENT ĐI TRƯỚC.**
 Đích cuối vẫn là mỗi họ MỘT bảng thật có cột `kho` (không partition, không kế thừa — hai cách đó hoặc mất API, hoặc chỉ gộp nửa vời rồi phải làm lại). Rủi ro được giữ thấp bằng thứ tự làm, không bằng mẹo cấu trúc:
 1. **Ngay bây giờ (đã có hiệu lực):** không sinh thêm bản chép — bảng mới của khuôn dạng–câu là một bảng có cột `kho`; hàm mới nhận `kho`/`mon`. Bảng nhánh cũ đã có sẵn cột `kho` và cột đã khớp nên sẵn sàng để gộp.
 2. **Gom CODE trước, bảng sau:** các họ hàm chép theo nhánh (45 họ) gom về một hàm nhận `kho`, đọc qua registry — việc này không đổi cấu trúc bảng, so khớp được từng hàm, làm dần khi chạm tới.
 3. **Gộp BẢNG từng họ, họ ít chỗ đọc trước** (đa số họ có ≤ 15 chỗ trong code; `cau_hoi` 141 chỗ và `ban_do` 123 chỗ làm sau cùng). Mỗi họ theo đúng trình tự: (a) tạo bảng thật `kho_<họ>` + chép dữ liệu + trigger đồng bộ HAI CHIỀU với bảng nhánh; (b) chuyển client và hàm của họ đó sang đọc/ghi bảng chung, deploy; (c) **thử qua API + Thùy mở đúng màn xác nhận**; (d) chạy song song vài ngày, đối chiếu = 0; (e) mới bỏ bảng nhánh (cần Thùy gật). Một họ xong hẳn mới sang họ kế.
 4. Không có mốc thời gian cứng: đây là việc nền, xen với tính năng mới; tính năng mới nào chạm họ nào thì gộp họ đó trước.
 *Vì sao không chọn kế thừa (inherit):* API vẫn thấy bảng nhánh, nhưng trigger/khoá không lan, nhánh vẫn lệch được, và cuối cùng vẫn phải gộp thật ⇒ thêm một lần chuyển đổi. *Vì sao không gộp một lần:* ~220 chỗ trong `src` + ~200 chỗ trong `scripts` của nhiều phiên đang chạy; sự cố tối 13/11 cho thấy đổi đồng loạt mà chưa qua API là hỏng diện rộng.
-
- CLAUDE.md §1.6) và gom hàm về tham số `kho`.
 
 **Bẫy đã gặp (kiểm cho mọi lần đổi cấu trúc bảng):** (0) **bảng app đọc qua API: thử bằng REST, không chỉ bằng SQL**; (1) hàm đọc `alias.*` / `select *` vào khuôn trả cố định; (2) biến/tham số/cột trả trùng tên cột mới — plpgsql báo mơ hồ, sql đổi nghĩa im lặng; (3) cột IDENTITY; (4) áp dồn nhiều migration đúng khe cron; (5) công cụ dò bằng regex báo nhầm cả hai chiều — đọc thân hàm trước khi kết luận.
 
@@ -338,3 +364,29 @@ Dọn nhân bản hàm theo nhánh môn (35 họ × 3) và 137 hàm không ai g�
 5. **Thứ MỚI trong tháng:** `git log --since` trên `supabase/migrations/` và `src/screens/` — mỗi bảng / hàm / màn mới: có phiếu 10 câu không, có rơi vào mẫu nào của §12 không. Đây là bước bắt "hàm quét cả DB" mới sinh.
 6. **Sự cố trong tháng:** đọc DEVLOG tìm timeout, nghẽn, lỗi kết nối, số sai. Mỗi sự cố ⇒ một dòng mới ở §12 + (nếu được) một mục cổng để máy bắt lần sau (K23).
 7. **Viết báo cáo + cập nhật HANDOFF**, nêu rõ việc nào làm ngay, việc nào chờ Thùy quyết, và ngày rà kế tiếp.
+
+## 14. Nợ "client tính toán" — chiến dịch 177 chỗ (gộp từ `AUDIT-client-tinh-toan.md`, audit 29–30/08/2026)
+
+Luật gốc: CLAUDE.md §2.0 (mọi query tổng hợp + phép tính nghiệp vụ ở Postgres, client chỉ gọi hàm sẵn). Audit quét `src/lib` + `src/screens` ngày 29–30/08:
+**177 vị trí** (82 nặng · 68 vừa · 27 nhẹ); số *gốc bệnh* ít hơn nhiều vì màn gọi hàm lib vi phạm thì bị đếm cả hai. Danh sách từng file:line nằm ở DEVLOG phiên 29–30/08.
+
+**4 nhóm bệnh, theo độ nguy hiểm** (dùng làm thước khi gặp code mới — trùng nhóm nào thì sửa theo cách của nhóm đó):
+1. **Tính ở client rồi GHI NGƯỢC DB** — hư dữ liệu vĩnh viễn (tiền, điểm, Elo/EXP, hiệu suất). Sửa = RPC transactional / trigger / generated column, tính + ghi trong CÙNG transaction.
+2. **Công thức tiền nhiều bản song song** (`hocphi.ts` từng có 3 bản; bug tiền thật vì `limit` cắt cụt). Sửa = một `fn_hocphi_*` nguồn duy nhất.
+3. **Engine đo (mastery / đánh giá / xếp hạng) chạy trong browser.** Sửa = hàm DB; nay theo `spec-mastery.md` + cache (§4, K3).
+4. **Quét bảng lớn về client thay một câu aggregate** (100k–500k dòng cho một phép đếm). Sửa = RPC đếm/aggregate.
+
+**Đã xong (mỗi bước có so khớp cũ–mới trên dữ liệu thật, chi tiết ở DEVLOG 30/08):**
+- *Nhóm 1:* chấm câu test (`fn_ca_test_kq_diem`) · trạng thái hoá đơn (`fn_hoa_don_cap_nhat_trang_thai`) · điểm MT (`fn_diem_thi_tinh`) · hiệu suất nghiệm thu (`fn_vh_hieu_suat` + trigger) ·
+  bảng gậy + chốt tháng (`fn_gay_bang`, `fn_gay_chot_thang`) · Elo/EXP (`fn_dong_phase`, `fn_mo_lai_phase`, `fn_recompute_exp_thang`, `fn_dong_btvn`) · chấp nhận đáp án + sửa key chấm lại (`fn_chap_nhan_dap_an`, `fn_sua_key_va_cham_lai`).
+- *Nhóm 2:* học phí — `hoc_phi_theo_mon_ky` · công nợ/tín dụng `fn_hocphi_no_theo_ph` / `_so_du_no` / `_tin_dung_con_lai` · `fn_hocphi_phieu_ao` · `fn_hocphi_chot_ky` · hệ số `fn_hocphi_he_so_*` · `fn_hocphi_chi_tiet_ky` / `_tong_hop_ky`. `hocphi.ts` còn là seam mỏng gọi rpc.
+- *Nhóm 3:* mastery xuống DB (đã thay tiếp bằng engine theo lần + `mastery_luu_san`, `spec-mastery.md`) · `fn_matrix_lop` · `fn_completion_theo_lop` · `fn_rank_diem_mt`. `nguongTuCohort` (percentile JS) đã hết khỏi `src`.
+
+**Còn lại (đối chiếu code 17/11):**
+- `getTongQuanHS` (`src/lib/mastery.ts`) — tổng quan HS đa chỉ số, `report.ts` ăn theo.
+- `getStatSheetLop` + `listCandidatesLop` (`src/lib/danhgia.ts`) — rule engine đánh giá lớp, ổ NẶNG cuối của nhóm 3; `botro_tuan.ts` ăn theo.
+- `quetGayTuDong` (đồng hồ client quyết phút trễ) — đi cùng engine việc.
+- Nhóm 4 + mục vừa/nhẹ: không theo danh sách 30/08 nữa — **đo bằng cổng §8** (số trần `.from(` thẳng bảng · `limit` lớn · `select('*')` · so môn cứng; chỉ được giảm). Sửa theo cơ hội khi đụng file, không mở đợt riêng.
+
+**Mẫu tham chiếu đúng:** `xep_hang_tu_luyen` (rank ở RPC) · `count_cau_by_dang` · các `fn_hocphi_*` ở trên.
+**Bài học từ so khớp:** parity harness bắt cả bug của bản JS cũ (`\b` ASCII cắt chữ có dấu; `Math.round` JS ≠ `round` SQL với số âm; xếp hạng hoà phụ thuộc thứ tự fetch) — so khớp không chỉ để chứng minh bản mới đúng, mà để tìm lỗi bản cũ.
