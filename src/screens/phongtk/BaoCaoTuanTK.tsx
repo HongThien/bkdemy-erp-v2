@@ -1,7 +1,7 @@
 // BÁO CÁO TUẦN TRƯỞNG KHỐI (spec-bao-cao-tuan.md · Thùy 03/11) — mở từ đồ vật "📝 Báo cáo tuần" trong Phòng làm việc.
 // Kỳ = T2 → CN tuần trước. Nháp: số tính trực tiếp ở DB. Bấm NỘP: DB tính + ghi SNAP cùng transaction — từ đó chỉ đọc bản đã snap.
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / trend đến từ fn_bctk_so · fn_bctk_trend. Màn chỉ hiển thị + nhận phần chữ / phần cá nhân.
-// Thùy 18/11: full màn · 3 tab con Vận hành · Học tập · Phát triển cá nhân (NoiDungBaoCao.tsx) · Tự viết ở cột phải.
+// Thùy 18/11: full màn · 3 tab con Vận hành · Học tập · Phát triển cá nhân (NoiDungBaoCao.tsx) · Tự viết là tab con thứ tư (Thùy 18/11 tối).
 import { useEffect, useState } from 'react'
 import { layBaoCaoTuan, luuNhapBaoCao, nopBaoCao, type BaoCaoTuan, type DongCaNhan, type TuViet } from '../../lib/baoCaoTuan'
 import { NoiDungBaoCao } from './NoiDungBaoCao'

@@ -1,6 +1,6 @@
 // NỘI DUNG một báo cáo tuần của khối — dùng chung cho trưởng khối soạn (sua), trưởng bộ môn xem / duyệt (chỉ đọc), báo cáo môn (anChu) và chiếu TV (phan).
 // Thùy 18/11: tách 3 PHẦN thành 3 tab con — ⚙ Vận hành (việc sau buổi của TA / GV + ET · BTVN) · 📚 Học tập (dạng yếu · nhóm yếu · HS yếu · bổ trợ) · 🌱 Phát triển cá nhân (task).
-//   Mỗi tab: hàng Ô CHỈ SỐ tổng quát ở trên, bên dưới là các MỤC bấm mới mở chi tiết. Phần Tự viết luôn nằm cột phải (đọc số tab nào cũng viết được).
+//   Mỗi tab: hàng Ô CHỈ SỐ tổng quát ở trên, bên dưới là các MỤC bấm mới mở chi tiết. Tự viết (Plans · Progress · Problems) là tab con thứ tư, riêng một màn (Thùy 18/11 tối).
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / danh sách đến từ DB (fn_bctk_so · _bctk_van_hanh · fn_bctk_trend); màn chỉ hiển thị.
 // Ô chỉ số: mỗi dòng nằm trọn MỘT hàng ngang (không xuống dòng giữa "160 → 124").
 import { useState, type Dispatch, type ReactNode, type SetStateAction } from 'react'
@@ -8,7 +8,7 @@ import type { DemViec, DongCaNhan, HaiChieu, SoBaoCao, TongSo, TuViet } from '..
 import { ddmmVN } from '../../lib/tuan'
 import { nhoBen } from '../../lib/nho'
 
-type TabND = 'van_hanh' | 'hoc_tap' | 'ca_nhan'
+type TabND = 'van_hanh' | 'hoc_tap' | 'ca_nhan' | 'tu_viet'
 const NHO = nhoBen<{ tab: TabND }>('bao_cao_tuan_phan', { tab: 'van_hanh' }, { luu: ['tab'] })   // tab con đang xem — nhớ theo máy (lib/nho)
 const XU_LY: Record<string, [string, string]> = {
   chua: ['Chưa xử lý', 'bg-rose-50 text-rose-700'], bo_tro_yeu: ['Đang bổ trợ Yếu', 'bg-violet-50 text-violet-700'],
@@ -28,7 +28,7 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
   phan?: 'tat_ca' | 'o' | 'lop'   // chiếu TV: 'o' = chỉ hàng ô chỉ số · 'lop' = chỉ bảng từng lớp (mỗi phần một trang, chữ to)
 }) {
   const [tabS, setTabS] = useState<TabND>(NHO.tab)
-  const tab: TabND = anChu && tabS === 'ca_nhan' ? 'van_hanh' : tabS
+  const tab: TabND = anChu && (tabS === 'ca_nhan' || tabS === 'tu_viet') ? 'van_hanh' : tabS
   const setTab = (x: TabND) => { NHO.tab = x; setTabS(x) }
   const t = duLieu.tong, vh = duLieu.van_hanh, tr = duLieu.trend
   const uuTien = [0, 1, 2].map((i) => tuViet.uu_tien?.[i] ?? '')
@@ -72,12 +72,14 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
 
   const nut = (dang: boolean) => `rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition ${dang ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-50'}`
   return (
-    <div className={anChu ? '' : 'grid items-start gap-3 xl:grid-cols-[minmax(0,1fr)_360px]'}>
+    <div className="space-y-3">
       <div className="min-w-0 space-y-3">
         <div className="inline-flex rounded-xl border border-slate-200 bg-white p-0.5">
           <button onClick={() => setTab('van_hanh')} className={nut(tab === 'van_hanh')}>⚙ Vận hành</button>
           <button onClick={() => setTab('hoc_tap')} className={nut(tab === 'hoc_tap')}>📚 Học tập</button>
           {!anChu && <button onClick={() => setTab('ca_nhan')} className={nut(tab === 'ca_nhan')}>🌱 Phát triển cá nhân{caNhan.length ? ` (${caNhan.length})` : ''}</button>}
+          {/* Thùy 18/11 tối: Tự viết là tab con RIÊNG, không nằm chung màn với 3 tab kia */}
+          {!anChu && <button onClick={() => setTab('tu_viet')} className={nut(tab === 'tu_viet')}>✍ Tự viết{sua && !(tuViet.nhan_dinh ?? '').trim() ? ' · chưa viết' : ''}</button>}
         </div>
 
         {/* ⚙ VẬN HÀNH — việc sau buổi của TA / GV trong khối */}
@@ -167,22 +169,22 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
         )}
       </div>
 
-      {/* CỘT PHẢI — tự viết (luôn hiện: đọc số tab nào cũng viết được) */}
-      {!anChu && (
-        <Khung ten="Tự viết — Plans · Progress · Problems">
+      {/* ✍ TỰ VIẾT — Plans · Progress · Problems (tab con riêng) */}
+      {tab === 'tu_viet' && !anChu && (
+        <div className="max-w-[980px]"><Khung ten="Tự viết — Plans · Progress · Problems">
           <label className="block text-[11.5px] font-semibold text-slate-500">Nhận định tình hình khối <span className="text-rose-500">*</span></label>
           <textarea disabled={!sua} value={tuViet.nhan_dinh ?? ''} onChange={(e) => setTuViet((v) => ({ ...v, nhan_dinh: e.target.value }))} rows={6}
-            className="mb-2 w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] disabled:bg-slate-50" placeholder="Đọc số thấy gì, vì sao…" />
+            className="mb-2 w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] text-slate-800 disabled:bg-slate-50" placeholder="Đọc số thấy gì, vì sao…" />
           <label className="block text-[11.5px] font-semibold text-slate-500">3 việc ưu tiên tuần tới <span className="text-rose-500">*</span></label>
           {uuTien.map((u, i) => (
             <input key={i} disabled={!sua} value={u} placeholder={`Việc ${i + 1}`}
               onChange={(e) => setTuViet((v) => { const a = [0, 1, 2].map((k) => v.uu_tien?.[k] ?? ''); a[i] = e.target.value; return { ...v, uu_tien: a } })}
-              className="mb-1 w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] disabled:bg-slate-50" />
+              className="mb-1 w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] text-slate-800 disabled:bg-slate-50" />
           ))}
           <label className="mt-1 block text-[11.5px] font-semibold text-slate-500">Cần hỗ trợ gì</label>
           <textarea disabled={!sua} value={tuViet.can_ho_tro ?? ''} onChange={(e) => setTuViet((v) => ({ ...v, can_ho_tro: e.target.value }))} rows={4}
-            className="w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] disabled:bg-slate-50" placeholder="Từ trưởng bộ môn / CEO…" />
-        </Khung>
+            className="w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] text-slate-800 disabled:bg-slate-50" placeholder="Từ trưởng bộ môn / CEO…" />
+        </Khung></div>
       )}
     </div>
   )
