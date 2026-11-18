@@ -106,7 +106,7 @@ export default function GiaoTrinhTuan() {
   }
 
   return (
-    <div className="flex min-h-[520px] flex-col gap-3 text-slate-800">
+    <div className="flex h-[calc(100vh-170px)] min-h-[480px] flex-col gap-3 text-slate-800">
       {/* Thanh trên: ô · tuần · trạng thái duyệt · hành động */}
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-[17px] font-bold">📅 Giáo trình tuần</span>
@@ -148,25 +148,27 @@ export default function GiaoTrinhTuan() {
         {!man ? <div className="p-6 text-center text-[13px] text-slate-400">{dangTai ? 'Đang tải…' : ds && ds.length === 0 ? 'Bạn chưa có phạm vi môn × khối nào.' : ''}</div>
           : man.lop.length === 0 ? <div className="p-6 text-center text-[13px] text-slate-400">Khối này chưa có lớp đang học.</div>
           : (
-          <table className="w-full min-w-[980px] border-collapse text-[12.5px]">
+          // Thùy 18/11: bảng VỪA MÀN (không cuộn ngang), cột và ô CỐ ĐỊNH — chữ dài cắt "…", bấm ô ⇒ khung bên phải đủ thông tin.
+          <table className="w-full table-fixed border-collapse text-[12px]">
+            <colgroup><col style={{ width: 84 }} />{ngays.map((d) => <col key={d} />)}</colgroup>
             <thead className="sticky top-0 z-[1] bg-slate-50">
               <tr>
-                <th className="w-[110px] border-b border-slate-200 px-2 py-2 text-left font-semibold text-slate-600">Lớp</th>
-                {ngays.map((d, i) => <th key={d} className="border-b border-l border-slate-200 px-2 py-2 text-left font-semibold text-slate-600">{THU[i]} <span className="font-normal text-slate-400">{ddmm(d)}</span></th>)}
+                <th className="border-b border-slate-200 px-2 py-2 text-left font-semibold text-slate-600">Lớp</th>
+                {ngays.map((d, i) => <th key={d} className="truncate border-b border-l border-slate-200 px-2 py-2 text-left font-semibold text-slate-600">{THU[i]} <span className="font-normal text-slate-400">{ddmm(d)}</span></th>)}
               </tr>
             </thead>
             <tbody>
               {man.lop.map((l) => (
                 <tr key={l.id} className="align-top">
-                  <td className="border-b border-slate-100 px-2 py-2 font-semibold">
-                    {l.ten_lop}
-                    {l.giao_trinh.length === 0 && <div className="mt-0.5 text-[11px] font-normal text-rose-500">chưa có giáo trình</div>}
+                  <td className="h-[104px] border-b border-slate-100 px-2 py-2 font-semibold">
+                    <div className="truncate" title={l.ten_lop}>{l.ten_lop}</div>
+                    {l.giao_trinh.length === 0 && <div className="mt-0.5 truncate text-[10.5px] font-normal text-rose-500" title="chưa có giáo trình">chưa có giáo trình</div>}
                   </td>
                   {ngays.map((d) => {
                     const c = l.ca.find((x) => x.ngay === d)
                     const dangMo = mo?.lop === l.id && mo.ngay === d
                     return (
-                      <td key={d} className="border-b border-l border-slate-100 p-1">
+                      <td key={d} className="h-[104px] border-b border-l border-slate-100 p-1">
                         {c && <OCa ca={c} dangMo={dangMo} onMo={() => setMo({ lop: l.id, ngay: d })} />}
                       </td>
                     )
@@ -198,34 +200,35 @@ export default function GiaoTrinhTuan() {
 
 // Một ô ca trên lưới.
 function OCa({ ca, dangMo, onMo }: { ca: GttCa; dangMo: boolean; onMo: () => void }) {
-  if (ca.huy) return <div className="rounded-lg bg-slate-100 px-2 py-1.5 text-[11.5px] text-slate-400 line-through">{gio(ca.gio_bat_dau)} · ca huỷ</div>
+  if (ca.huy) return <div className="h-[96px] truncate rounded-lg bg-slate-100 px-2 py-1.5 text-[11.5px] text-slate-400 line-through">{gio(ca.gio_bat_dau)} · ca huỷ</div>
   const b = ca.buoi
   const trong = !b || b.khung.length === 0
   return (
     <button onClick={onMo}
-      className={`w-full rounded-lg border px-2 py-1.5 text-left transition hover:shadow-sm ${dangMo ? 'border-indigo-500 ring-2 ring-indigo-200' : trong ? 'border-dashed border-slate-300 bg-white' : 'border-slate-200 bg-indigo-50/40'}`}>
-      <div className="flex items-center gap-1 text-[11px] text-slate-500">
-        <span>{gio(ca.gio_bat_dau)}–{gio(ca.gio_ket_thuc)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
-        {ca.sua_sau_duyet && <span title="Đã sửa sau khi trưởng bộ môn duyệt" className="ml-auto rounded bg-amber-100 px-1 font-semibold text-amber-700">sửa sau duyệt</span>}
+      title="Bấm để xem đủ khung của ca"
+      className={`block h-[96px] w-full overflow-hidden rounded-lg border px-2 py-1 text-left transition hover:shadow-sm ${dangMo ? 'border-indigo-500 ring-2 ring-indigo-200' : trong ? 'border-dashed border-slate-300 bg-white' : 'border-slate-200 bg-indigo-50/40'}`}>
+      <div className="flex items-center gap-1 text-[10.5px] text-slate-500">
+        <span className="min-w-0 flex-1 truncate">{gio(ca.gio_bat_dau)}–{gio(ca.gio_ket_thuc)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
+        {ca.da_gan && <span title={ca.da_gan.khop === false ? 'Ngày dạy đã gán buổi khác' : 'Đã gán ngày dạy'} className={`shrink-0 font-semibold ${ca.da_gan.khop === false ? 'text-rose-600' : 'text-emerald-600'}`}>{ca.da_gan.khop === false ? '⚠' : '✓'}</span>}
+        {ca.sua_sau_duyet && <span title="Đã sửa sau khi trưởng bộ môn duyệt" className="shrink-0 rounded bg-amber-100 px-1 font-semibold text-amber-700">✎</span>}
       </div>
-      {!b ? <div className="mt-0.5 text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
+      {!b ? <div className="mt-0.5 truncate text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
         <>
           <div className="mt-0.5 truncate text-[11.5px] font-semibold text-slate-600">{tenBuoi(b.stt, b.tieu_de)}</div>
-          {trong ? <div className="text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
-            <ul className="mt-0.5 space-y-0.5">
-              {b.khung.slice(0, 4).map((k) => (   // ô lưới gọn: tối đa 4 dòng, đủ ở khung bên phải
+          {trong ? <div className="truncate text-[12px] font-semibold text-indigo-600">+ Chọn khung</div> : (
+            <ul className="mt-0.5 space-y-0">
+              {b.khung.slice(0, b.khung.length > 3 ? 2 : 3).map((k) => (   // ô cố định: tối đa 3 dòng (2 dòng + "+n khác"), mỗi dòng cắt "…" — đủ ở khung bên phải
                 <li key={k.loai + k.ma} className="truncate leading-snug">
                   {k.loai === 'mo_hinh' && <span className="text-teal-700">Luyện · </span>}
                   <span className="font-medium text-slate-800">{k.ten ?? k.ma}</span>
                   {k.con.length > 0 && <span className="text-slate-500"> · {k.con.length} dạng</span>}
                 </li>
               ))}
-              {b.khung.length > 4 && <li className="text-[11px] text-slate-400">+{b.khung.length - 4} khác</li>}
+              {b.khung.length > 3 && <li className="truncate text-[10.5px] text-slate-400">+{b.khung.length - 2} khác…</li>}
             </ul>
           )}
         </>
       )}
-      {ca.da_gan && <div className={`mt-0.5 text-[10.5px] ${ca.da_gan.khop === false ? 'text-rose-600' : 'text-emerald-600'}`}>{ca.da_gan.khop === false ? '⚠ ngày dạy gán buổi khác' : '✓ đã gán ngày dạy'}</div>}
     </button>
   )
 }

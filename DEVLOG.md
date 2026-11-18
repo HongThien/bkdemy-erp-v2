@@ -81831,6 +81831,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai + sửa ngay:** mig đầu cấp hàm nội bộ `_bc_ky_duoc_cong_bo` cho `authenticated` ⇒ `check:kien-truc` báo K1 tăng 322 → 323. Mig `…1241`: trigger chạy security definer, thu quyền hàm nội bộ ⇒ cổng ✔. Lần thử đầu tôi tưởng "trưởng khối khác khối vẫn được" — người lấy mẫu là thành viên QLCL; thử lại từng trưởng khối thì đúng.
 - Giới hạn: chưa mở màn bằng tài khoản thật; nút Công bố trên màn chưa ẩn theo quyền.
 
+### 18/11 — Giáo trình tuần: bảng vừa màn, ô cố định (Thùy)
+- Thùy: "kích thước của bảng phải vừa màn hình, chiều dài và rộng các ô cố định, chữ không vừa hiện …, click mới popup đầy đủ" (+ "phụ huynh thì không cần" — bỏ ý đưa % từng dạng sang app PH).
+- `GiaoTrinhTuan.tsx`: bỏ min-w 980 ⇒ `table-fixed` w-full (cột Lớp 84 px, 7 cột ngày chia đều, không cuộn ngang) · màn cao 100vh−170, lưới cuộn dọc trong khung · ô ca cao cố định 96 px (hàng 104), mọi dòng `truncate` "…": giờ·phòng (+ ✓/⚠ đã gán ngày dạy, ✎ sửa sau duyệt gom vào dòng này) · tên buổi · tối đa 3 khung (quá 3 ⇒ 2 + "+n khác…") · bấm ô ⇒ khung bên phải đủ thông tin (như cũ). Chụp 1280 / 1440: không tràn ngang ✔.
 ### 18/11 13:15 — Spec #12 `spec-app-hs.md` NHÁP (ghép Phần A app học + Phần B game, 847 dòng)
 - Hai agent viết song song (A 406 dòng, B 396 dòng), tôi ghép + mục lục. **Chưa đọc hết:** `spec-thanh-tuu-nhiem-vu.md` dòng 305–681, `spec-huy-hieu-build.md` (chỉ mục lục) ⇒ KHÔNG lưu trữ 2 file này khi chưa rà nốt. Chưa mở app bằng tài khoản HS.
 - **Tôi đo lại (khớp):** mở app 7 / 30 ngày: 201 / 303 em (364 em đang học) · tự luyện 30 ngày 4.962 lượt / 189 em · thành tựu 9/16 loại bật, 143 em đạt · huy hiệu 0 dòng · bảng ngày nghỉ của chuỗi 0 dòng · góp ý HS 105 cái đều "mới" · công tắc đóng: thong_tin · rank · thu_vien · de_thi_thu · chinh_phuc · giai_vo_dich.
