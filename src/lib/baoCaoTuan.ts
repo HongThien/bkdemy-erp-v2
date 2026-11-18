@@ -33,6 +33,8 @@ export type VanHanh = {
 export type SoBaoCao = {
   tu: string; den: string; co_anh_dau: boolean; co_anh_cuoi: boolean
   hs_yeu_theo?: 'nhom'   // không có = bản snap cũ: HS yếu đếm theo DẠNG
+  // 18/11 (mig 202611181321): tuần ĐANG CHẠY ⇒ mọi số "cuối" là số HIỆN TẠI (dang_yeu_hien_tai), tính lúc cuoi_luc. Bản đã nộp không bao giờ có cờ này.
+  cuoi_hien_tai?: boolean; cuoi_luc?: string | null
   tong: TongSo; lop: LopSo[]; hs_con_yeu: HsConYeu[]; trend: { tuan: string; tong: TongSo }[]
   van_hanh?: VanHanh
 }

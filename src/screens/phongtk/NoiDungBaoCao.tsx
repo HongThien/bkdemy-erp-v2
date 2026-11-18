@@ -32,6 +32,9 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
   const setTab = (x: TabND) => { NHO.tab = x; setTabS(x) }
   const t = duLieu.tong, vh = duLieu.van_hanh, tr = duLieu.trend
   const uuTien = [0, 1, 2].map((i) => tuViet.uu_tien?.[i] ?? '')
+  // 18/11: tuần đang chạy ⇒ "cuối" là số HIỆN TẠI (DB trả cờ) — chỉ đổi nhãn, không tính gì
+  const ht = !!duLieu.cuoi_hien_tai
+  const dauCuoi = ht ? 'đầu tuần → hiện tại' : 'đầu → cuối'
 
   // ── Ô chỉ số ──
   const oChamEt = <O ten="Chấm ET" chinh={so(t.et.ti_le_dung_han, '%')} nhanChinh="đúng hạn" phu={[`${t.et.dung_han}/${t.et.so_viec} buổi`, `Điểm TB ${so(t.et.diem_tb)}`]}
@@ -40,17 +43,17 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
     trend={tr.map((w) => w.tong.btvn.ti_le_nop)} mau="text-teal-600" />
   // 17/11 Thùy: HAI CHIỀU tách riêng — (1) đầu tuần → còn yếu (hiệu quả bổ trợ, cùng nhóm em × nút) · (2) phát sinh mới (kiến thức mới học bị yếu)
   const oYeu = t.hai_chieu ? <>
-    <OHaiChieu ten="Nhóm yếu" h={t.hai_chieu.nhom} mau="text-orange-600" trend={tr.map((w) => w.tong.hai_chieu?.nhom ?? null)} />
-    <OHaiChieu ten="Dạng yếu" h={t.hai_chieu.dang} mau="text-rose-600" trend={tr.map((w) => w.tong.hai_chieu?.dang ?? null)} them={`Độ phủ đo ${so(t.do_phu.ti_le, '%')}`} />
+    <OHaiChieu ten="Nhóm yếu" h={t.hai_chieu.nhom} ht={ht} mau="text-orange-600" trend={tr.map((w) => w.tong.hai_chieu?.nhom ?? null)} />
+    <OHaiChieu ten="Dạng yếu" h={t.hai_chieu.dang} ht={ht} mau="text-rose-600" trend={tr.map((w) => w.tong.hai_chieu?.dang ?? null)} them={`Độ phủ đo ${so(t.do_phu.ti_le, '%')}`} />
   </> : <>
-    <O ten="Dạng yếu" chinh={`${so(t.dang_yeu.dau)} → ${so(t.dang_yeu.cuoi)}`} nhanChinh="đầu → cuối"
+    <O ten="Dạng yếu" chinh={`${so(t.dang_yeu.dau)} → ${so(t.dang_yeu.cuoi)}`} nhanChinh={dauCuoi}
       phu={[`Giảm ${so(t.dang_yeu.giam)} (${so(t.dang_yeu.ti_le_giam, '%')})`,
         ...(t.dong_chay ? [`Vào ${t.dong_chay.vao} · Ra ${t.dong_chay.ra_bang_chung} có bằng chứng`, `${t.dong_chay.ra_cua_so} rớt cửa sổ`] : []), `Độ phủ đo ${so(t.do_phu.ti_le, '%')}`]}
       trend={tr.map((w) => w.tong.dang_yeu.cuoi)} mau="text-rose-600" />
-    {t.nhom_yeu && <O ten="Nhóm yếu" chinh={`${so(t.nhom_yeu.dau)} → ${so(t.nhom_yeu.cuoi)}`} nhanChinh="đầu → cuối"
+    {t.nhom_yeu && <O ten="Nhóm yếu" chinh={`${so(t.nhom_yeu.dau)} → ${so(t.nhom_yeu.cuoi)}`} nhanChinh={dauCuoi}
       phu={[`Giảm ${so(t.nhom_yeu.giam)} (${so(t.nhom_yeu.ti_le_giam, '%')})`]} trend={tr.map((w) => w.tong.nhom_yeu?.cuoi ?? null)} mau="text-orange-600" />}
   </>
-  const oHsYeu = <O ten="Học sinh yếu" chinh={`${so(t.hs_yeu.dau)} → ${so(t.hs_yeu.cuoi)}`} nhanChinh={`/ ${t.hs_yeu.si_so} em`}
+  const oHsYeu = <O ten="Học sinh yếu" chinh={`${so(t.hs_yeu.dau)} → ${so(t.hs_yeu.cuoi)}`} nhanChinh={`${ht ? '→ hiện tại · ' : ''}/ ${t.hs_yeu.si_so} em`}
     phu={[`Giảm ${so(t.hs_yeu.giam)} (${so(t.hs_yeu.ti_le_giam, '%')})`, duLieu.hs_yeu_theo === 'nhom' ? 'Em có ≥ 1 nhóm yếu' : 'Bản cũ: em có ≥ 1 dạng yếu']}
     trend={tr.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
   const oCaBoTro = <O ten="Ca bổ trợ" chinh={`${t.bo_tro.ca_yeu} + ${t.bo_tro.ca_nhe}`} nhanChinh="ca Yếu + Nhẹ" phu={[`${t.bo_tro.luot_hs} lượt em có mặt`]}
@@ -127,7 +130,7 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
             <MoChiTiet ten="Từng lớp" phu={`${duLieu.lop.length} lớp`} rong={duLieu.lop.length === 0}>
               <BangLop lop={duLieu.lop} hocTap />
             </MoChiTiet>
-            <MoChiTiet ten="HS còn yếu cuối tuần" phu={duLieu.co_anh_cuoi ? `${duLieu.hs_con_yeu.length} em` : 'chưa có ảnh cuối tuần'} rong={!duLieu.co_anh_cuoi || duLieu.hs_con_yeu.length === 0}>
+            <MoChiTiet ten={ht ? 'HS đang yếu (hiện tại)' : 'HS còn yếu cuối tuần'} phu={duLieu.co_anh_cuoi ? `${duLieu.hs_con_yeu.length} em` : 'chưa có ảnh cuối tuần'} rong={!duLieu.co_anh_cuoi || duLieu.hs_con_yeu.length === 0}>
               <ul className="max-h-[420px] space-y-1 overflow-auto pr-1">{duLieu.hs_con_yeu.map((h) => (
                 <li key={`${h.hoc_sinh_id}|${h.mon}`} className="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-1 text-[12.5px]">
                   <span className="min-w-0 flex-1 truncate" title={(h.nhom ?? h.dang).join(' · ')}><b className="text-slate-800">{h.ho_ten}</b> <span className="text-slate-500">· {h.ten_lop} · {h.so_nhom_yeu != null ? `${h.so_nhom_yeu} nhóm · ` : ''}{h.so_dang_yeu} dạng</span></span>
@@ -266,12 +269,12 @@ function KhungO({ ten, nhan, chinh, mau, dong, children }: { ten: string; nhan: 
 }
 
 // Ô HAI CHIỀU (Thùy 17/11): chiều 1 = đầu tuần → còn yếu (hiệu quả bổ trợ); chiều 2 = phát sinh mới; trend 2 dãy (hết yếu xanh · phát sinh vàng).
-function OHaiChieu({ ten, h, mau, trend, them }: { ten: string; h: HaiChieu; mau: string; trend: (HaiChieu | null)[]; them?: string }) {
+function OHaiChieu({ ten, h, mau, trend, them, ht }: { ten: string; h: HaiChieu; mau: string; trend: (HaiChieu | null)[]; them?: string; ht?: boolean }) {
   const lon = Math.max(1, ...trend.flatMap((v) => [v?.het_yeu ?? 0, v?.phat_sinh ?? 0]))
   return (
     <KhungO ten={ten} nhan="đầu tuần → còn yếu" chinh={`${h.dau} → ${h.con_yeu}`} mau={mau} dong={[
       <>① Hết yếu <b className="text-emerald-600">{h.het_yeu}</b> ({so(h.ti_le_het_yeu, '%')}){h.roi ? ` · ${h.roi} của em thôi học` : ''}</>,
-      <>② Phát sinh mới <b className="text-amber-600">+{h.phat_sinh}</b> · cuối tuần {h.cuoi}</>,
+      <>② Phát sinh mới <b className="text-amber-600">+{h.phat_sinh}</b> · {ht ? 'hiện tại' : 'cuối tuần'} {h.cuoi}</>,
       ...(them ? [them] : []),
     ]}>
       <div className="mt-auto flex h-7 items-end gap-1 pt-1.5" title="4 tuần gần nhất (cũ → mới): xanh = hết yếu · vàng = phát sinh mới">

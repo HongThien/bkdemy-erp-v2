@@ -84,7 +84,9 @@ export default function BaoCaoTuanTK() {
       </div>
       {bc.trang_thai === 'tra_lai' && bc.tra_lai_ly_do && <p className="rounded-lg bg-amber-50 px-3 py-1.5 text-[12.5px] text-amber-800">Lý do trả lại: {bc.tra_lai_ly_do}</p>}
       <p className="text-[11.5px] text-slate-400">
-        {bc.trang_thai === 'nhap' ? 'Số đang tính trực tiếp — bấm Nộp thì số được chốt (snap), không tính lại.' : `Số đã chốt lúc nộp ${gio(bc.nop_at)}.`}
+        {bc.trang_thai !== 'nhap' ? `Số đã chốt lúc nộp ${gio(bc.nop_at)}.`
+          : bc.so.cuoi_hien_tai ? `Tuần đang chạy — số yếu so ảnh đầu tuần với số HIỆN TẠI${bc.so.cuoi_luc ? ` (tính lúc ${gio(bc.so.cuoi_luc)}, tự làm mới khi có điểm mới)` : ''}; ET · BTVN · việc sau buổi tính tới lúc mở. Hết Chủ nhật mới nộp được.`
+          : 'Số đang tính trực tiếp — bấm Nộp thì số được chốt (snap), không tính lại.'}
         {!bc.so.co_anh_dau && ' · Chưa có ảnh dạng yếu đầu tuần (hệ chụp tự động 00:00 thứ 2 — bắt đầu từ tuần này) nên chưa so được dạng yếu / HS yếu.'}
       </p>
 
