@@ -5,6 +5,7 @@
 > **Mọi cập nhật về sau — luật mới, sai lầm mới, chú ý mới — ghi vào ĐÂY** (đúng phần, kèm ngày + ai chốt), không mở file luật thứ hai.
 > Nhãn **"CTO phân xử 15/11"** = chỗ các file cũ nói ngược nhau, Claude chọn theo bản mới nhất / quyết định 15/11 của Thùy; Thùy sửa là thành luật của Thùy.
 > Cụm **"chờ Thùy xác nhận"** = đang chạy theo cách ghi tại chỗ, cần Thùy gật hoặc sửa.
+> **Cập nhật 18/11 (Thùy):** điều kiện tự vào kho đổi (§C6) · báo sai Claude tự xử (§C7) · thêm Khối 3 · thêm **Phần E** (luật duyệt trên ERP, quét kho, rà đáp án kho). Đã gộp `spec-kho-chuan.md` → Phần E; `PLAN-giaibai.md` lỗi thời (app "Giải bài kho chung" đã xoá 27/10).
 >
 > | Phần | Nội dung | Ai đọc, lúc nào |
 > |---|---|---|
@@ -12,6 +13,7 @@
 > | **B** | Luật theo KHỐI, trong khối chia theo phần kiến thức **Đại · Hình · Hình giải tích** | Trạm làm khối nào đọc mục khối đó |
 > | **C** | DÂY CHUYỀN: thứ tự trạm, ai làm, điều kiện tự vào kho, quản lý batch | Người điều phối (Claude chính) |
 > | **D** | SỔ SAI LẦM: lỗi hậu kiểm bắt được → luật | Ghi mỗi khi có câu bị báo sai |
+> | **E** | DUYỆT TRÊN ERP · quét lại kho cũ · rà đáp án kho (không phát cho trạm giải) | Người duyệt, điều phối |
 >
 > Ba phần kiến thức = ba kho: **Đại** (`dai_*`) · **Hình** (`hinh_hoc_*` — hình phẳng THCS, hình không gian) · **Hình giải tích** (`hgt_*` — lượng giác, vectơ, toạ độ).
 
@@ -78,7 +80,7 @@
 - Phần 2 của bài tính mở bằng dòng chép lại đề.
 - **LaTeX**: `\dfrac` (không `\frac`) · nhân `\times` (THPT theo mục khối) · chia `:` · số không chèn dấu cách hàng nghìn · mỗi công thức một cặp `$…$` riêng · góc `\widehat{ABC}` · `\perp` · `\parallel` · `\overline{abc}` không `\text`.
   Đáp án trả lời ngắn là biểu thức ⇒ bọc `$…$`. Không dùng `\(…\)`. Không in nghiêng bằng `*…*` (app không hiện).
-- **Lý thuyết / ví dụ ghi vào bản đồ** đúng thẻ `##ĐL / ĐN / TC / CY / PP / VD` của `spec-format-noidung.md`.
+- **Lý thuyết / ví dụ ghi vào bản đồ** đúng thẻ `##ĐL / ĐN / TC / CY / PP / VD` của `spec-ban-do-toan.md`. Lý thuyết nhóm và dạng KHÔNG chứa ví dụ — ví dụ (`##VD`) chỉ ghi ở ô ví dụ của dạng.
 - **Viết tệp có LaTeX bằng công cụ ghi file (Write/Edit)** — không heredoc, không `node -e`, không chuỗi JS (`\t` `\f` `\n` `\b` thành ký tự điều khiển, `\perp` thành `perp`).
   Script ghép / thay nội dung có LaTeX: **cấm `String.replace(x, chuỗi)`** — trong chuỗi thay, `` $` `` `$'` `$&` là lệnh chép đoạn (15/11: spec bị nhân thành 27.578 dòng). Dùng cắt + nối (`slice`) hoặc `replace(x, () => chuỗi)`.
 
@@ -139,7 +141,7 @@
 
 ## A9. Theo loại nguồn
 
-- **Đề thi / đề cương**: một đầu vào → hai đầu ra: câu vào kho + đề lưu cấu trúc (`tai_lieu` đề thi) dùng được ngay trên app. Cấu trúc đề: `spec-de-thi.md`.
+- **Đề thi / đề cương**: một đầu vào → hai đầu ra: câu vào kho + đề lưu cấu trúc (`tai_lieu` đề thi) dùng được ngay trên app. Cấu trúc đề: `spec-kho-cau-hoi.md` §11.
 - **Sách tham khảo** (Thùy 27/10): **ví dụ hướng dẫn → KHO TRÊN LỚP** (vai giảng), **bài tập → KHO VỀ NHÀ** (kho câu luyện). Một câu không vào cả hai. Khối / nhánh chưa có kho trên lớp ⇒ để riêng ví dụ, báo.
 - **Bài học Hình từ Word bài giảng**: ra đủ bài + lý thuyết + câu + hình; lý thuyết của bài chính là phạm vi kiến thức của bài.
 - **Trùng kho**: đo trùng TRƯỚC khi giải; câu trùng trỏ về câu cũ, không đẻ bản sao. Một đề không nhập từ cả hai nguồn Word và PDF (LaTeX hai nguồn khác nhau nên máy không nhận ra trùng).
@@ -173,7 +175,7 @@
 - **Khuôn từng loại câu**:
   - **Trắc nghiệm**: đủ 4 dòng `A. ` `B. ` `C. ` `D. ` (phương án là hình ⇒ vẫn 4 dòng, mỗi dòng mô tả hình); `dap_an` = một chữ cái. Giải RA kết quả rồi đối chiếu, loại phương án bằng LÍ DO, không thử từng phương án (trừ bài bản chất là thử chọn). Câu "tìm khẳng định SAI" ⇒ nêu vì sao từng phương án đúng / sai. Dòng cuối Phần 2 đúng là `Chọn X.` (X trùng `dap_an`). Đề chỉ có 2–3 phương án ⇒ giữ như in + `**Ghi chú:**`, không bịa phương án.
   - **Đúng/Sai (khuôn THPT)**: 4 ý a–d; `dap_an` = chuỗi 4 chữ `D`/`S` theo thứ tự (vd `DSSD`); Phần 2 xét từng ý, mỗi ý kết "Đúng." / "Sai." kèm lí do. Thiếu ý trên ảnh ⇒ giữ câu, `**Chưa chắc:**`. Khối THCS nhập Đúng/Sai dạng `tu_luan`: theo mục khối.
-  - **Trả lời ngắn**: theo §A10 (dấu phẩy thập phân, đếm cả dấu `-` `,`, ≤ 4 ô); `dap_an` là số thuần, không bọc `$`; đúng đơn vị đề hỏi. Vượt ⇒ `tu_luan` + `**Ghi chú:**`.
+  - **Trả lời ngắn**: một số, thập phân dùng DẤU PHẨY (mọi đường vào kho — Thùy 17/11), đếm cả dấu `-` `,`, tối đa 4 ô (§A7); `dap_an` là số thuần, không bọc `$`; đúng đơn vị đề hỏi. Vượt ⇒ `tu_luan` + `**Ghi chú:**`.
   - **Tự luận**: có MỘT kết quả gọn (số, biểu thức, $x=…$, tập nghiệm) ⇒ ghi vào `dap_an`; chứng minh / giải thích / quan hệ hình ⇒ `dap_an=—`.
 - **Đề cương dài** (> ~120 câu): điều phối chia **khúc theo trang** (Thùy 14/11): khúc N = trang a–b ⇒ làm mọi câu / bài **BẮT ĐẦU** trong trang a–b (bài tràn sang trang sau làm trọn); bài bắt đầu trước trang a thuộc khúc trước.
   Tệp khúc `<MA>.k<N>.soan.md` (kiểm: `.k<N>.kiem.md`, `.k<N>.soat.md`, `.k<N>.soan.goc.md`), đủ dòng đầu tệp như thường; khúc bắt đầu giữa một mục ⇒ PHẦN đầu ghi `<tên mục> (tiếp)`;
@@ -289,7 +291,7 @@
 | Ví dụ giảng / "Bài trên lớp" của bản soạn | kho trên lớp `hinh_hoc_cau_lop` (`HHL…`, vai giảng mặc định) | [05/11 · Thùy] bài Hình–Học đủ 5 phần: lý thuyết · ví dụ (`##VD`) · mô tả · kho trên lớp · kho luyện |
 | "Bài về nhà" của bản soạn | kho luyện `hinh_hoc_cau_hoi` | [05/11 · Thùy] |
 | Đề thi thực tế nhiều ý — Hình LUYỆN | `hinh_bai` (`HLB…`, `gia_thiet_chung`) + `hinh_y` (`HLY…`, `gia_thiet_them`, `anh_de` riêng) | [13/10] Không phải `hinh_baitoan` (bài mô hình), không phải `hinh_hoc_bai` |
-| Mô hình / bài mô hình / biến thể / cách giải (cành) | `hinh_mo_hinh` · `hinh_baitoan` · `hinh_baitoan_bien_the` · `hinh_cach_giai` | Tầng tham chiếu; cây ở `spec-hinh-cay-nhanh.md` |
+| Mô hình / bài mô hình / biến thể / cách giải (cành) | `hinh_mo_hinh` · `hinh_baitoan` · `hinh_baitoan_bien_the` · `hinh_cach_giai` | Tầng tham chiếu; cây ở `spec-ban-do-toan.md` |
 | Lượng giác, vectơ, toạ độ | `hgt_cau_hoi` | [09/10 · Thùy] Không đưa hình phẳng THCS vào `hgt`. Ranh giới từng khối: mục Phân kho của khối |
 | Câu Hình của đề thi / đề cương chưa có bài đích | dạng chờ của khối trong `hinh_hoc_cau_hoi` (`HH07000000`, `HH08000000`…) | [10–12/10 · Thùy] |
 
@@ -360,7 +362,7 @@
 **Nguồn hình** (Hình chung)
 - **Dùng lại ảnh gốc hay vẽ lại: theo §A8 "Nguồn hình đề"** (Thùy 15/11 — thay luật 07/10, 13/10 "câu Hình học luôn vẽ lại"): gốc ổn giữ · gốc quá tệ (mã a–f) vẽ lại · có lệnh thì vẽ lại.
   Vẽ thì bằng code (SVG → PNG 2x qua `ve_hinh_lib.mjs`) — không ảnh AI. Đồ thị / bảng của câu Đại, Hình giải tích gốc tệ mà chưa có máy vẽ loại đó ⇒ giữ gốc + `**Chưa chắc:**`.
-- MỌI câu vẽ được thì phải có hình, kể cả câu đề dựng bằng lời [07/10 · Thùy]. Chỉ bỏ khi thật sự không có gì để vẽ.
+- MỌI câu vẽ được thì phải có hình, kể cả câu đề dựng bằng lời [07/10 · Thùy]. Chỉ bỏ khi thật sự không có gì để vẽ. Áp cho câu MỚI nhập; câu cũ thiếu hình chỉ vẽ khi có lệnh (§C12).
 
 **Dựng**
 - **Dựng ĐÚNG dữ kiện bằng toạ độ, không ước mắt**: trung điểm `mid`, chân vuông góc `foot`, giao `inter`, phân giác `bisector`, quay `rot`/`ray` đúng số đo, đối xứng `doiXung`; song song = cùng véc-tơ chỉ phương; hình bình hành `D→C = A→B`; phân giác ⇒ chia cạnh đối đúng tỉ lệ; "AO = ON, AB ∥ MN" ⇒ đối xứng qua O. `console.assert` cho số đo quan trọng. Đề cho ẩn (`x`, `2x`) / "không đúng tỉ lệ" ⇒ giải ra giá trị thật rồi dựng.
@@ -400,7 +402,7 @@
 - Biến thể vẽ theo đề CỦA BIẾN THỂ; tên tệp uuid chép nguyên từ `viec.md`.
 - Tranh minh hoạ thực tế ⇒ sơ đồ tối giản (điểm + chữ ghi tên vật), giữ đủ số đo; câu cần chính bức ảnh hoặc ảnh chụp bài giải tay ⇒ không vẽ, giữ ảnh, báo.
 - Trạm vẽ chỉ tạo tệp gói của mình; không sửa `ve_hinh_lib.mjs`, không DB, không git, không sửa đề / lời giải. Báo cáo mỗi hình một dòng (đạt / khác ảnh cũ có chủ ý / không vẽ) + chỗ nghi đề / lời giải sai.
-- Chưa có luật vẽ lại cho: khối 11 (hình không gian), `hgt_cau_hoi`.
+- Hình lượng giác / vectơ (`hgt_cau_hoi`) và hình không gian lớp 11: CÓ vẽ lại theo luật chung 15/11 (§A8), theo kế hoạch từng đợt Thùy duyệt (§C12) — chưa có đợt được duyệt thì chưa vẽ (Thùy 18/11).
 
 ### Sai lầm cần tránh (Hình)
 
@@ -443,6 +445,25 @@
 | `pdftoppm -r 150 -png …` | Ảnh trang / phóng to chỗ không rõ |
 
 Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi thẳng luật phân xử (không chỉ trỏ tệp khác) [13/10].
+
+---
+
+## Khối 3
+
+> (Thùy 18/11) Chưa có luật riêng. **Dùng luật Khối 4** cho toàn bộ (sách đề, đề cương, khuôn tệp, tách ý, loại câu, hình) + bảng CẤM tiểu học (bảng ở mục Khối 4T); dưới đây chỉ ghi điểm khác.
+
+### Phạm vi kiến thức
+
+- Chương trình Toán 3 + kiến thức lớp dưới. **CẤM**: kiến thức lớp 4 trở lên + mọi điều cấm tiểu học (bảng CẤM).
+- Phạm vi chi tiết theo kì: chưa có luật — lô mẫu đầu tiên sẽ rút.
+
+### Phân kho
+
+- Mọi câu `kho=dai`.
+
+### Theo loại nguồn
+
+- **Tài liệu khối 3 đầu tiên là lô mẫu** (§C3): toàn bộ câu đi làn duyệt; mỗi chỗ người duyệt sửa ⇒ một dòng luật vào mục này.
 
 ---
 
@@ -595,7 +616,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - Tổng–hiệu ẩn (tuổi lùi / tiến năm, "giữa chúng có $k$ số", ba cạnh HCN, ba số) thuộc dạng tổng–hiệu cơ bản [08/10].
 - Tính ngược có phân số thuộc dạng "tính ngược chuỗi phép tính" [08/10].
 - CĐ23 không có chủ đề riêng ⇒ rơi về dạng của CĐ20/21/22 theo phương pháp.
-- Bảng dấu hiệu theo mã bản đồ cũ `T14T…` (`k4T.md` §5) phải soát lại theo bản đồ mới trước khi dùng.
+- Phân dạng theo bản đồ mới của khối; bảng dấu hiệu theo mã bản đồ cũ `T14T…` không dùng.
 
 ### Theo loại nguồn
 
@@ -755,7 +776,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 
 ### Phân dạng riêng
 
-- Luật phân dạng 4T áp luôn (phương pháp thắng chủ đề · không khớp thì không ép). Bảng dấu hiệu chi tiết: `k5T.md` §8.1–8.3.
+- Luật phân dạng 4T áp luôn (phương pháp thắng chủ đề · không khớp thì không ép).
 - **Ngoại lệ có chủ ý — "Thay đổi số người"** [11/10 · Thùy]: bài có SỰ KIỆN thêm/bớt người vào dạng này dù lời giải chỉ là một phép tỉ lệ, dù nền là thuận hay nghịch (dấu hiệu đề thắng phương pháp). Gồm ① đổi từ đầu ② đổi giữa chừng (xét phần việc / số gạo CÒN LẠI).
 - Tỉ lệ thuận–nghịch: cơ bản thuận = hai đại lượng cùng tăng cùng giảm, rút về 1 đơn vị · cơ bản nghịch = một đại lượng không đổi là tích hai đại lượng kia · tỉ lệ kép = BA đại lượng cùng đổi. Tỉ lệ chỉ là một bước của bài khác (hình, %, chuyển động) ⇒ không thuộc chuyên đề này.
 - Công việc chung: cơ bản = người / vòi tham gia suốt từ đầu (kể cả vòi vào trừ vòi ra cùng lúc; bể có sẵn nước) · có thay đổi giữa chừng = giai đoạn đầu và sau khác nhau.
@@ -1042,7 +1063,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
   - **Ngoại lệ chiều đảo trung trực CHỈ có hiệu lực trong ba bài này** (và câu xếp vào chúng). Các bài khác (HH00104…) vẫn cấm như bảng trên.
   - Cả ba bài tự có lý thuyết riêng làm whitelist (đúng luật "lý thuyết của chính bài + mọi bài đứng trước"). Nội dung gốc: `scripts/hinh-k7-thang-hang-noidung.mjs`.
   - **Phân dạng câu "chứng minh ba điểm thẳng hàng"** (chờ Thùy xác nhận): xếp vào MỘT trong ba bài theo PHƯƠNG PHÁP của lời giải (cùng đường / cộng góc / tiên đề Ơ-clit); câu nhiều ý mà ý trọng tâm là thẳng hàng thì cả câu theo bài đó; hai phương pháp cùng hợp ⇒ dạng sau thắng (HH00172 > HH00171 > HH00170).
-  - Ví dụ trong lý thuyết bài thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
+  - Ví dụ của bài (ô ví dụ, không nằm trong lý thuyết) thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
 - "Tam giác cân: phân giác ở đỉnh cũng là đường cao / trung tuyến" ⇒ tự chứng minh bằng tam giác bằng nhau.
 - CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
 - Hình khối ($V=S_{\text{đáy}}.h$, $S_{xq}=C_{\text{đáy}}.h$…) thuộc Ch X tập 2 — không thuộc HK1. Khi tới mốc kì II: `Thể tích hình hộp chữ nhật là: $V=a.b.c=\dots$ ($cm^3$)`; lăng trụ `$S_{\text{đáy}}=\dfrac12.a.h$` rồi `$V=S_{\text{đáy}}.h$`; đổi đơn vị trước khi tính.
@@ -1096,7 +1117,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **KHÔNG BỊA. Không chắc / không có nguồn ⇒ để chuỗi rỗng.** Mọi câu lý thuyết, ví dụ truy được về nguồn thật (ghi `nguon_*`); công thức đúng nhưng không có trong nguồn ⇒ vẫn để trống.
 - Thứ tự nguồn: (1) nội dung bản đồ cũ của chính nhóm (cắt đúng phần ứng với DẠNG, chép nguyên văn, sửa tối thiểu) → (2) `E:\BK ACADEMY\Tài liệu tham khảo\K7\` (ưu tiên sách phân dạng KNTT tập 1; rồi Ngô Đức Tài; Lê Minh Khá cho nâng cao; docx công thức WMF chỉ khi PDF không có) → (3) không có ⇒ `""`.
 - pdftotext chỉ để TÌM trang; công thức chép từ ảnh. Ví dụ đúng DẠNG; ví dụ dùng kiến thức lớp 8+ ⇒ không đưa. Mỗi ví dụ kèm Hướng dẫn giải đầy đủ, đáp số kiểm bằng máy.
-- Định dạng: `##TC` / `##PP` / `##CY`; ví dụ `##VD` + `**Hướng dẫn giải:**`; 1–3 ví dụ khó tăng dần. Dấu nhân trong bản đồ: `\cdot` hoặc `.` đúng như nguồn (không ép chuẩn).
+- Định dạng: `##TC` / `##PP` / `##CY`; ví dụ `##VD` + `**Hướng dẫn giải:**`; 1–3 ví dụ khó tăng dần. Dấu nhân trong bản đồ: `\cdot` hoặc `.` đúng như nguồn (không ép chuẩn). Ví dụ ghi ở ô ví dụ của dạng, không ghi trong lý thuyết.
 
 ### Công cụ riêng
 
@@ -1444,7 +1465,8 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 
   Đề khác form, khác số, thêm ý / khác giả thiết = biến thể, giữ. Trùng toán chỉ lập được cho câu có `kiem`; bài chứng minh / lời văn chỉ bắt trùng chữ và nghi trùng ⇒ người là lưới cuối (dò theo công thức dài chung).
 - Đề thi / đề cương 8T: chưa có luật riêng — lô mẫu đầu tiên sẽ rút; đề rèn luyện trong sách theo luật sách scan.
-- Vào kho theo §C6 (§C6) — không còn luật tự duyệt riêng của 8T.
+- Vào kho theo §C6 (§C6), với ngoại lệ tạm thời ở dòng dưới.
+- (Thùy 18/11) 8T do Thùy trực tiếp làm ⇒ giữ cơ chế tự duyệt của 8T theo lệnh 10/10; không áp điều kiện "dạng phải có lý thuyết" (56 dạng 8T chưa có lý thuyết). Tạm thời, chưa phải luật cuối.
 
 ### Công cụ riêng
 
@@ -2185,8 +2207,8 @@ Xong mỗi trạm của mỗi đề ⇒ chạy lại sổ tình trạng (§C8).
 
 ## C4. Rào "đã đọc luật"
 
-- Dòng đầu tệp soạn: `luat: <mã phiên bản>` — mã lấy từ lệnh cắt luật của batch (băm nội dung Phần A + mục khối đang dùng).
-- Cổng từ chối tệp soạn có mã khác mã hiện hành ⇒ luật vừa sửa thì tệp soạn theo luật cũ không lọt.
+- Dòng đầu tệp soạn: `luat: <mã phiên bản>` — mã lấy từ lệnh cắt luật của batch (băm nội dung Phần A + mục khối đang dùng + Hình chung + Phần C).
+- Tệp soạn có mã khác mã hiện hành = soạn theo luật cũ, không được lọt. Trạm kiểm đối chiếu mã bằng tay cho tới khi cổng kiểm được (§C10 mục 4).
 - Brief giao trạm **không chép lại luật** — chỉ gồm: phần cắt từ file này + danh sách đề + đường dẫn. Không còn brief viết tay theo batch.
 
 ## C5. Opus kiểm phần nào
@@ -2202,20 +2224,20 @@ Khi soát, Opus sao bản gốc (`.soan.goc.md`) trước khi sửa — số câ
 
 ## C6. Điều kiện TỰ VÀO KHO (làn 🟢)
 
-Câu được ghi thẳng `da_duyet = true` khi đủ **cả bốn**:
-1. Dạng gán mức **cao**, và dạng đó có lý thuyết (câu Đúng/Sai: đã gán chủ đề) — **hoặc dạng do người chỉ định** (luồng bổ sung bài lẻ §C11).
-2. Đáp số có **nhân chứng thứ hai trùng khớp**: đáp án in kèm, hoặc code tính lại, hoặc Opus giải mù.
-3. Không có cờ `**Chưa chắc:**`, không ghi đề sai, trạm kiểm không phải sửa ĐÁP SỐ.
-4. Qua cổng khuôn (đủ phần, đúng khuôn sơ đồ, công thức render được, không ký tự điều khiển).
+**(Thùy 18/11 — thay luật 15/11 "đủ cả bốn điều kiện, trong đó đáp số phải có nhân chứng thứ hai trùng khớp + qua cổng khuôn".)** Lời giải của dây chuyền sai rất ít, tỉ lệ chấp nhận được; chỗ phải giữ là PHÂN DẠNG. Câu thành `da_duyet = true` khi đủ **cả ba**:
+1. Máy (Claude) gán dạng ở mức tự tin **cao** (câu Đúng/Sai: đã gán chủ đề) — **hoặc dạng do người chỉ định** (luồng bổ sung bài lẻ §C11).
+2. Câu **có đáp án đầy đủ** theo loại câu (trắc nghiệm · Đúng/Sai · trả lời ngắn: có đáp án; tự luận: có lời giải).
+3. **Không bị máy nghi** (không mang cờ nghi). Câu có `**Chưa chắc:**`, ghi đề sai, hoặc bị trạm kiểm sửa ĐÁP SỐ ⇒ đánh dấu nghi kèm lý do lúc ghi.
 
-Thiếu một điều kiện ⇒ **làn 🟡**: ghi `da_duyet = false`, đánh dấu nghi kèm lý do ⇒ hiện ở màn duyệt của **trưởng khối**.
+KHÔNG đòi "bên thứ hai xác nhận đáp số" làm điều kiện vào kho. Trạm kiểm (§C5) và cổng khuôn (trạm 7 §C2) vẫn là trạm của dây chuyền — tệp soạn không qua cổng thì không ghi — nhưng không phải điều kiện xếp làn. Đáp án của câu đã vào kho được rà lại theo Phần E4.
+**Câu CLONE:** Claude kiểm xong thì tự duyệt, không qua hàng duyệt của người (Thùy 18/11).
+Thiếu một điều kiện ⇒ **làn 🟡**: ghi `da_duyet = false`, đánh dấu nghi kèm lý do ⇒ hiện ở màn duyệt của **trưởng khối** (chỉ trưởng khối đúng khối trở lên bấm duyệt — Phần E1).
 Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ). Lô mẫu (§C3) luôn là làn 🟡.
-"Tự tin" do model tự khai **không** phải điều kiện — chỉ tính thứ máy kiểm được.
 
 ## C7. Nhãn dữ liệu và hậu kiểm
 
 - Câu do dây chuyền giải: `nguon_giai = 'ai'`, `giai_method = 'claude_code'`, ghi model soạn; câu tự vào kho ghi `duyet_nguon = 'ai'`. Lời giải chép nguyên văn của người (tài liệu có lời giải, không sửa) mới là `nguon_giai = 'nguoi'`.
-- **Hậu kiểm**: ai thấy câu lỗi ⇒ báo sai / xoá (xoá = vào kho rác, mã không cấp lại). Mỗi câu bị báo ⇒ điều phối ghi một dòng Phần D: sai gì · lọt ở trạm nào · luật rút ra · có phải quét các câu cùng dạng / cùng batch không.
+- **Hậu kiểm**: ai thấy câu lỗi ⇒ báo sai / xoá (xoá = vào kho rác, mã không cấp lại). **Câu bị báo sai (đề / đáp án sai): Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt; người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm, sai thì người sửa lại sau** (Thùy 18/11; Phần E1; quy trình chạy chưa build — §C10 mục 15). Mỗi câu bị báo ⇒ điều phối ghi một dòng Phần D: sai gì · lọt ở trạm nào · luật rút ra · có phải quét các câu cùng dạng / cùng batch không.
 - Lỗi lặp lại cùng kiểu ≥ 3 câu ⇒ không vá từng câu: sửa luật ở Phần A/B, quét lại các câu cùng dạng.
 - Không chạy truy vấn nặng 17–22h (giờ học sinh dùng app). Không chạy hai lượt ghi song song (cấp mã câu va nhau).
 
@@ -2243,22 +2265,26 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 
 ## C10. Code còn nợ so với luật này (làm xong thì xoá dòng)
 
-| # | Việc | Hiện trạng 15/11 |
+| # | Việc | Hiện trạng (rà 18/11) |
 |---|---|---|
-| 1 | Lệnh ghi đề (`scripts/kho/de-thi/ghi.mjs`) ghi đúng nhãn AI + model | Đang ghi cứng `nguon_giai='nguoi'` |
-| 2 | Xếp làn theo §C6 lúc ghi (4 điều kiện) | Trigger 05/11 chỉ xét "dạng mức cao + có đáp án" |
-| 3 | Đề thi và bài học Hình đi qua cổng ghi có biên bản + băm nội dung | Mới có ở đường sách |
-| 4 | Lệnh cắt luật theo khối + mã phiên bản ở đầu tệp soạn, cổng kiểm mã (§C4) | Chưa có — brief còn là tệp viết tay |
+| 1 | Lệnh ghi đề (`scripts/kho/de-thi/ghi.mjs`) ghi đúng nhãn AI + model: `nguon_giai='ai'`, `giai_method`, model soạn (§C7) | Đang ghi cứng `nguon_giai='nguoi'`, chưa ghi `giai_method` / model — sửa TRƯỚC batch đề thi kế tiếp |
+| 2 | Xếp làn theo §C6 (luật 18/11): lô mẫu (§C3) phải ở làn 🟡 · câu clone Claude kiểm xong thì tự duyệt | Trigger `_bdm_tu_duyet_sau_gan` (05/11) đã xét đúng ba điều kiện §C6, nhưng chưa biết lô mẫu và áp cho mọi câu chưa duyệt; clone chưa có đường tự duyệt |
+| 3 | Đề thi và bài học Hình đi qua cổng ghi có biên bản + băm nội dung | Đề thi: `ghi-batch.sh` đã chặn đề chưa "KẾT LUẬN: ĐẠT", chưa băm nội dung, `ghi.mjs` chưa qua `cong-ghi.mjs` · bài học Hình: chưa có |
+| 4 | Cổng kiểm dòng `luat:` của tệp soạn (§C4) | Lệnh cắt luật + mã đã có 15/11 (`cat-luat.mjs`, `ghep-brief.mjs`); cổng `dung-de-tu-soan.mjs` chưa đọc `luat:` |
 | 5 | Máy rút mẫu 15% + tính tỉ lệ lọt (§C5) | Chưa có — Opus đang kiểm 100% |
-| 6 | Trạm soạn phân dạng trong cùng lượt (dòng đầu câu thêm dạng) | Tệp soạn chưa có trường dạng; phân dạng đang là lượt riêng |
 | 7 | Giao diện: lời giải Hình khoảng cách dòng +20% | Chưa làm |
-| 8 | Vá nhãn các câu đề thi đã ghi sai `nguoi` | Chưa đếm |
+| 8 | Vá nhãn các câu đề thi đã ghi sai `nguoi` | Đã đếm 18/11: 52.442 câu (Đại 41.355 · HGT 3.872 · Hình 7.215); nhân chứng = 889 tệp `.soan.md` trong repo; chưa vá |
 | 9 | Cổng `--khoi 6` và `--khoi 12` nhận `kho=hinh_hoc` | Chưa nhận ⇒ K12 tạm ghi `hgt` + Ghi chú; K6 báo điều phối |
 | 10 | `nhap_hh_tu_draft.mjs` (bài học Hình) hiểu mô hình bài–ý + khối Sơ đồ tư duy | Chưa |
-| 11 | Đọc trường `dang=` / `chac=` của dòng câu (§A10) khi ghi ⇒ đề xuất / gán dạng | Chưa |
+| 11 | Đọc trường `dang=` / `chac=` của dòng câu (§A10) khi ghi ⇒ đề xuất / gán dạng (gộp mục 6 cũ "trạm soạn phân dạng trong cùng lượt") | Tệp soạn đã có hai trường, `ghi.mjs` đã nhận `dang_bai` / `dang_bai_chac`; cổng chưa đọc |
 | 12 | Hai quy ước dữ liệu dòng (đề thi: đoạn cách dòng trống, màn hình gộp · bài học Hình: `\n` đơn) — thống nhất về một | Chưa |
+| 13 | Mọi đường tạo câu có hình đề ghi nhãn nguồn hình, mặc định `goc` (§C12) + lập KẾ HOẠCH vẽ lại hình theo khối × loại hình, có ngân sách token mỗi đợt, Thùy duyệt từng đợt (Thùy 17–18/11) | Chỉ `gan_hinh.mjs` và `ghi.mjs` ghi nhãn; 14.438 / 14.462 hình đề "chưa rõ nguồn" ⇒ checklist chưa dùng được; chưa có kế hoạch vẽ |
+| 14 | Khoá ở DB: chỉ trưởng khối đúng khối trở lên duyệt câu vào kho, kể cả lô mẫu (Thùy 18/11 — Phần E1) | `fn_kho_duyet_cau` (+ `_ds`, `_menh_de`) chỉ kiểm "là nhân sự", nhận người duyệt từ tham số |
+| 15 | Quy trình Claude tự xử câu báo sai: tự đọc – tự sửa – báo cáo cho người – ghi vết từng lần sửa (Thùy 18/11 — §C7) | Chưa build: ai bấm chạy / lịch, báo cáo gửi ai, ghi vết. Hàm xử lý hiện đòi quyền `bdkt`; 88 câu đang chờ (cũ nhất 14/10) |
+| 16 | Quy trình rà lại đáp án các câu trong kho (Thùy 18/11 — Phần E4) | Chưa thiết kế |
+| 17 | Dọn DB của tool "Giải bài kho chung" đã xoá 27/10 (22 hàm `fn_giaibai_*`, 3 view `v_giaibai_*`, 11 dòng treo) | Chỉ làm khi Thùy gật (Luật xoá) |
 
-Cho tới khi mục 2–6 xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false` như cũ (chưa có làn tự vào kho).
+Cho tới khi các mục trên xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false`, rồi DB tự duyệt khi máy gán dạng mức cao cho câu đủ điều kiện §C6 (trigger 05/11) — làn tự vào kho đang chạy bằng đường này.
 
 ## C11. Luồng BỔ SUNG BÀI LẺ theo chỉ định (Thùy 15/11)
 
@@ -2276,7 +2302,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 
    Không nói rõ trên lớp hay về nhà ⇒ hỏi, không đoán.
 4. **Giải và kiểm như thường:** Sonnet soạn (ít bài thì một trạm), thử đáp số bằng script (§A12); Opus giải mù khi không có nhân chứng máy (§C5 — với bài lẻ: mọi bài chứng minh / Hình / không đáp án); đo trùng kho trước khi ghi (trùng ⇒ báo mã câu cũ, kho trên lớp thì chép từ câu cũ).
-5. **Vào kho:** điều kiện 1 của §C6 coi là đạt (người chốt dạng); còn điều kiện 2–4 như thường ⇒ đủ thì vào kho luôn, thiếu thì vào hàng duyệt trưởng khối. Báo lại: mã câu · dạng · kho · vào thẳng hay chờ duyệt.
+5. **Vào kho:** điều kiện 1 của §C6 coi là đạt (người chốt dạng); còn điều kiện 2–3 như thường ⇒ đủ thì vào kho luôn, thiếu thì vào hàng duyệt trưởng khối. Báo lại: mã câu · dạng · kho · vào thẳng hay chờ duyệt.
 6. Không cần lô mẫu (§C3) — người chỉ định đã nhìn bài. Không ghi vào sổ toanmath.
 
 ---
@@ -2290,6 +2316,8 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
   Đếm ở `fn_kho_hinh_dem(mon)`. "Chưa rõ nguồn" = câu có hình đề mà không có nhãn khớp URL hiện tại (ảnh đổi mà không ghi nhãn ⇒ tự rơi về đây). "Đang chờ" = lệnh chưa có nhãn vẽ ghi sau nó.
   Kho đếm: `dai` · `hgt` · `hinh_hoc` · `hinh_hoc_lop` (Hình trên lớp) · `hinh_luyen` (bài Hình luyện) · `hinh_luyen_y` (hình theo ý — khối lấy từ bài cha).
 - **Ảnh cũ (trước 15/11, 13.306 hình đề):** để "chưa rõ nguồn" — CHỈ xét khi có lệnh theo khối (Thùy 15/11). Không chạy lượt AI xét hàng loạt khi chưa có lệnh.
+- **Mặc định nhãn `goc`** (Thùy 17/11): mọi đường tạo câu có hình đề (đề thi · sách · bài học Hình · nhập trên ERP) ghi nhãn cùng lượt ghi; không khai thì là `goc`. Code chưa đủ — §C10 mục 13.
+- **Bộ đếm này là CHECKLIST cho kế hoạch vẽ lại hình** (Thùy 18/11): vẽ lại theo KẾ HOẠCH từng đợt (khối × loại hình, có ngân sách token mỗi đợt), Thùy duyệt từng đợt rồi mới ra lệnh vẽ. Hình lượng giác / vectơ / hình không gian lớp 11 CÓ vẽ lại theo luật chung 15/11 (§A8), cũng theo kế hoạch đó.
 - **Ghi nhãn — ở đâu:**
   - Đề thi / đề cương: dòng `**Hình:** <tệp> | nguon=…` trong tệp soạn ⇒ cổng `dung-de-tu-soan.mjs` đọc (sai khuôn ⇒ lỗi; thiếu ⇒ nhắc) ⇒ `ghi.mjs` ghi nhãn cùng transaction (tóm tắt in "nhãn nguồn hình x/y").
   - Gắn / thay hình kho Hình, HGT, Hình luyện (bài + ý), kể cả gói do `nhap_hh_tu_draft.mjs --ra` chép ra (lệnh in sẵn câu gắn kèm `--nguon`): `gan_hinh.mjs <gói> --nguon <goc|ve_lai:<a–f>|ve_lenh|ve_moi> [--thay] --ghi` — **`--thay` không kèm `--nguon` bị chặn**. Gói trộn nhiều nguồn ⇒ tách gói.
@@ -2307,3 +2335,59 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 | Ngày | Khối · phần | Câu / batch | Sai gì | Lọt ở trạm nào | Luật rút ra (trỏ mục) | Đã quét câu cùng loại? |
 |---|---|---|---|---|---|---|
 | 08/11 | 8 · Đại | 49/488 câu clone phân tích đa thức thành nhân tử | Câu sinh ra có đáp số sai | Không có nhân chứng thứ hai (một phiên tự làm tự kiểm) | Mọi đáp số phải có nhân chứng máy hoặc Opus (§C6.2) | Đã kiểm lại 488 câu bằng máy tính đại số |
+
+---
+
+# PHẦN E — DUYỆT TRÊN ERP · QUÉT LẠI KHO (không phát cho trạm giải)
+
+> Cho người duyệt và điều phối. Lệnh cắt luật không đưa phần này vào brief; sửa ở đây không đổi mã luật.
+> "Câu vào kho" định nghĩa thế nào, cột dữ liệu, form trắc nghiệm, clone, báo sai: `spec-kho-cau-hoi.md` §1, §2, §5, §6. Ở đây chỉ có LUẬT DUYỆT.
+> Gộp từ `spec-kho-chuan.md` (09/09), sửa theo trả lời của Thùy 18/11.
+
+## E1. Duyệt câu — một cửa, một hàng (Thùy 09/09; người duyệt theo 13–15/11 + 18/11)
+
+- **Câu máy gán dạng ở mức tự tin cao + có đáp án đầy đủ + không bị máy nghi thì TỰ VÀO KHO** (§C6, Thùy 18/11) — không qua màn duyệt. Màn duyệt là cho phần còn lại.
+- **Một trạng thái chờ duy nhất:** câu chờ duyệt là dòng thật trong bảng câu với `da_duyet = false`, dù vào bằng đường nào (dây chuyền giải bài · nhập trên ERP · clone · nhập từ tệp). Không có bảng nháp riêng cho từng đường.
+- **Một màn:** "Duyệt lời giải AI". Các bộ lọc (không phải các hàng riêng): Câu mới · Lời giải mới từ Claude · Nghi sai · Không kiểm được · Tồn đọng · Chưa có dạng · Đúng/Sai.
+- **Ai duyệt (Thùy 18/11): CHỈ trưởng khối của đúng (môn × khối) trở lên** được bấm duyệt câu vào kho, kể cả lô mẫu (§C3) — trên màn hoặc qua phiên Claude của chính trưởng khối. Khoá ở hệ thống, không dựa vào phân công miệng (DB chưa khoá — §C10 mục 14). Người soạn không duyệt câu của mình.
+- **Duyệt = chuẩn hoá:** sửa được ngay tại chỗ đề · dạng (ô tìm, không dropdown) · cụm · đáp số · lời giải; lưu là câu vào kho. Hệ tự ghi người duyệt, giờ duyệt, nguồn duyệt.
+- **Không có "duyệt tất cả" cho hàng Nghi sai và Không kiểm được** — hai hàng này mở từng câu. Duyệt theo lô chỉ cho câu không mang cờ nghi.
+- **Sửa đáp số hoặc lời giải của câu đã có form trắc nghiệm / điền ô ⇒ form bị thu hồi để sinh lại** (`spec-kho-cau-hoi` §6).
+- **Từ chối = vào kho rác**, không xoá cứng, mã không cấp lại (§C7).
+- **Câu ở dạng chờ không duyệt được** cho tới khi có dạng (§C6).
+- **Câu CLONE (Thùy 18/11):** Claude kiểm xong thì TỰ DUYỆT, không qua hàng duyệt của người. Code chưa có đường này (§C10 mục 2; bảng nháp clone: `spec-kho-cau-hoi` §8 Q5).
+- **Hình — cách giải / biến thể do Claude ghi mà chưa duyệt:** kho hiện nhãn đỏ; KHÔNG in, KHÔNG làm đáp án tham chiếu, KHÔNG làm mẫu cho lượt giải khác (Thùy 09/09).
+- **Câu bị BÁO SAI (Thùy 18/11):** Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt. Người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm; sai thì người sửa lại sau. Thay quyết định 17–18/11 giao trưởng khối duyệt báo sai. Câu sai thật ⇒ một dòng Phần D (§C7). Chưa build: ai bấm chạy / lịch chạy, báo cáo gửi ai, ghi vết từng lần sửa (§C10 mục 15).
+- **Khi QUÉT / RÀ kho (E2, E4):** máy và AI không sửa đáp số của kho — chỉ đánh dấu nghi kèm lý do; câu lệch rút về hàng chờ. (Khác với câu bị báo sai ở dòng trên.)
+
+## E2. Quét lại kho cũ — ba mức (Thùy 09/09)
+
+- **Mức A — máy tính lại**, chỉ các dạng "đáp số = giá trị một biểu thức": khớp ⇒ ký duyệt nguồn `may`; lệch ⇒ nghi.
+- **Mức B — Claude giải lại** theo lô 200–300 câu: khớp ⇒ ký duyệt nguồn `ai`; không khớp ⇒ nghi; không giải được / đề lỗi ⇒ không kiểm được. Ưu tiên câu học sinh đã làm.
+- **Mức C — người:** hàng Nghi sai + Không kiểm được, cộng **mẫu 2 %** phần máy / AI đã ký để đo độ tin (máy và AI tách riêng). Độ tin thấp ⇒ mức B chỉ báo, không ký.
+- **Hiện trạng 18/11:** mức A 1 lô 1.696 câu (08/09) · mức B 84 lô 16.131 câu (08–14/09: khớp 13.476 · nghi 803 · không kiểm được 1.852) rồi DỪNG · mẫu 2 % chưa làm · còn 353 câu Đại + 1 câu HGT cũ đang "tạm dùng" (`spec-kho-cau-hoi` §8 Q6).
+- **(Thùy 18/11) CHƯA quét lại kho cũ hàng loạt lúc này.** Chỉ kiểm khi có báo sai / khi câu sắp vào đề; xong toanmath mới quét. Đường quét về sau = quy trình rà đáp án (E4).
+
+## E3. Lịch sử
+
+| Ngày | Việc | Nay |
+|---|---|---|
+| 06/09 | Tool "Giải bài kho chung" cho trợ giảng nhận bài giải (`PLAN-giaibai`) | App đã xoá 27/10. Hàm và cột nhận bài còn trong DB, không ai gọi (§C10 mục 17) |
+| 09/09 | Kho chuẩn: 2 cửa duyệt, quét 3 mức (`spec-kho-chuan`) | E1, E2 |
+| 28/09 | Dừng luồng một phiên tự giải – tự kiểm – tự ghi | §C1 |
+| 04/11 | Hai lượt duyệt hàng loạt câu gán dạng mức cao theo lệnh Thùy (K12 NH-TP 1.179 câu · mọi khối K6–K12: Đại 9.844 + HGT 2.405) | — |
+| 05/11 | Gán dạng mức cao ⇒ DB tự duyệt nếu đủ đáp án (trigger `_bdm_tu_duyet_sau_gan`, mig 202611051930) | §C6 |
+| 13–15/11 | Câu chưa chắc về trưởng khối · một file luật · tự vào kho đòi 4 điều kiện (có nhân chứng đáp số) | §A1; 4 điều kiện đã thay 18/11 |
+| 17/11 | Ranh giới với `spec-kho-cau-hoi` (luật ở đây · quy trình, công cụ, dữ liệu ở đó) | đầu file |
+| 18/11 | Thùy: tự vào kho theo mức tự tin phân dạng · clone tự duyệt · chỉ trưởng khối đúng khối duyệt · báo sai Claude tự xử · chưa quét kho hàng loạt · cần quy trình rà đáp án kho | §C6, §C7, E1, E2, E4 |
+
+## E4. Rà lại đáp án kho — CHƯA THIẾT KẾ (Thùy 18/11)
+
+- **Yêu cầu của Thùy (18/11):** "Cần có quy trình rà soát lại đáp án các câu trong kho." Câu đã tự vào kho giữ nguyên trong kho trong lúc chờ rà.
+- **Khung đã chốt:** máy tính lại đáp số dần, chạy ngoài 17–22 giờ (§C7); câu lệch ⇒ rút về hàng chờ + báo cáo; không sửa đáp số tại chỗ (E1).
+- **Chưa có quy trình chi tiết — còn phải quyết trước khi build** (§C10 mục 16):
+  - thứ tự khối / nhóm câu rà trước;
+  - ngân sách token mỗi ngày;
+  - cách ghi vết từng lượt rà (câu nào, lúc nào, kết quả);
+  - câu lệch: rút về hàng chờ thế nào, báo cáo gửi ai.
+- Chưa có lệnh, chưa có thiết kế được duyệt ⇒ không chạy lượt rà nào.

@@ -1,3 +1,5 @@
+> ⛔ **ĐÃ ÁP 18/11** vào `spec-giai-bai.md` (Thùy "Áp đi"). File này giữ làm biên bản: kết quả rà nợ §C10, số đo, 8 câu Thùy trả lời (§5.0), SQL kiểm. Luật đúng nằm ở `spec-giai-bai.md`.
+
 # spec-giai-bai.DE-XUAT.md — bản đề xuất sửa cho spec #5 (`spec-giai-bai.md`)
 
 > Lập 18/11/2026 13:40 (giờ VN). **Chỉ là đề xuất — chưa sửa chữ nào trong `spec-giai-bai.md`.** Đối chiếu: file 2.309 dòng (bản commit `2953a3b8` 17/11) · `scripts/kho/cat-luat.mjs` · code `scripts/kho/*`, `kho-rules/dai/lo/toanmath/*` · DB (chỉ đọc, role `claude_build`, 18/11 13:26).

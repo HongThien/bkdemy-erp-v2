@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 18/11** — lỗi thời toàn bộ (app giải bài đã xoá 27/10). Luật giải bài: `spec-giai-bai.md`. Chỉ đọc để hiểu lịch sử.
+
 # PLAN — Tool GIẢI BÀI kho chung (`giaibai.bkacademy.edu.vn`)
 
 Thùy chốt 06/09/2026. Story gốc: "giống hệ giải bài kho chung của Qanda" — 6 bước: (1) hệ luôn liệt kê bài chưa có lời

@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 18/11 (Thùy chốt spec đích)** — định nghĩa "câu vào kho": `spec-kho-cau-hoi.md` §2 · luật duyệt một cửa + quét kho: `spec-giai-bai.md` Phần E · điều kiện tự vào kho: `spec-giai-bai.md` §C6 (Thùy 18/11). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # Spec — KHO CHUẨN: một cửa duyệt câu + quét lại toàn kho
 
 > CEO chốt 09/09/2026 (sáng sớm): *"Duyệt lại cả kho. Quét một lượt: câu đúng coi như đã duyệt, vào kho chuẩn; câu có vấn đề
