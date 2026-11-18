@@ -1,6 +1,6 @@
 # Bot phiên Claude — trưởng khối chat thẳng với Claude Code trên ERP
 
-Spec: `spec-phong-truong-khoi.md`. Loại việc đang mở: **Bản đồ** (Phase 1, mig `202611011822`) · **Lý thuyết dạng** (Phase 2, mig `202611011910`) · **Nhập kho & phân dạng** (Phase 3, mig `202611012151`).
+Spec: `spec-quan-ly-chat-luong.md` §6 (bản cũ `spec-phong-truong-khoi.md` đã vào `_luu-tru/` 17/11). Loại việc đang mở: **Bản đồ** (Phase 1, mig `202611011822`) · **Lý thuyết dạng** (Phase 2, mig `202611011910`) · **Nhập kho & phân dạng** (Phase 3, mig `202611012151`).
 Hướng dẫn Claude theo loại việc: `scripts/phien/loai/<loại>.md` + luật chung `scripts/phien/CHUNG.md`.
 
 Trưởng khối mở **Phòng làm việc trưởng khối › 🤖 Phiên Claude** trên ERP → chọn

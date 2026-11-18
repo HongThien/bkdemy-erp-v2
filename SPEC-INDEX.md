@@ -16,7 +16,7 @@
 | 3 | ✅ **`spec-kho-cau-hoi.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-kho-chuan` → #5) | Câu trong kho có tính năng gì; **sinh MCQ / điền ô / clone**; *mở rộng 17/11 (Thùy):* **nhập kho từ ảnh · từ đề thi · quy chuẩn hiển thị · vẽ lại hình** (luật giải vẫn ở #5) | `spec-mcq-form` · `spec-mcq-quy-trinh-sinh` · `spec-mcq-tung-phan` · `spec-dien-o` · `spec-clone-ai` · `spec-kho-chuan` (phần định nghĩa "câu vào kho") · `spec-de-thi` (phần bóc câu + cấu trúc đề) · `spec-format-noidung` (phần hiển thị câu) |
 | 4 | ✅ **`spec-builder.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`) | Builder · ET · MT · Giáo trình | `spec-builder-ban-do-moi` · `spec-de-thi` (phần đề trên app: duyệt đề, thi trên lớp) |
 | 5 | `spec-giai-bai.md` (giữ tên — `scripts/kho/cat-luat.mjs` đọc theo tiêu đề) | Giải đề thi, giải bài, duyệt bài vào kho | `spec-giai-bai` · `spec-kho-chuan` (phần quy trình duyệt) · `PLAN-giaibai` |
-| 6 | `spec-quan-ly-chat-luong.md` — **NHÁP 17/11, chờ Thùy trả lời 10 câu §11.1** (nguồn chưa chuyển) | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
+| 6 | ✅ **`spec-quan-ly-chat-luong.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-bao-cao-ky` → #13) | **Cách hoạt động của trưởng khối** | `spec-truong-khoi` · `spec-phong-truong-khoi` (gồm phiên Claude) · `SPEC-troly-nhansu` · `spec-bao-cao-ky` |
 | 7 | `spec-van-hanh-tuan.md` (giữ tên) | Việc theo nhịp tuần | `spec-van-hanh-tuan` · *đã gộp 17/11:* `spec-muc-tieu-tuan` (→ §4.1–§4.7) |
 | 8 | ✅ **`spec-van-hanh-trung-tam.md` — CHỐT 17/11** (nguồn đã chuyển `_luu-tru/`, trừ `spec-dang-ky-test` → #9 · `PLAN-thu-chi` → #19) | Ops: **xếp lịch bổ trợ + báo PH**, **cách thu học phí**, quy trình vận hành, phòng, TKB, sự kiện, tủ quà, app OPS | `spec-xep-bo-tro-chung` · `_luu-tru/spec-bo-tro-ban-13-11.md` §41–§43 (xếp lịch, còn hiệu lực) · `spec-dang-ky-test` · `spec-su-kien` (+ game Trung thu `games-site/`) · `PLAN-tuqua` · `PLAN-thu-chi` (phần quy trình) · *TKB · phòng · thu học phí* |
 | 9 | `spec-web-trung-tam.md` | Web trung tâm | `BKDEMY_WEB_SPEC` · `spec-dang-ky-test` (phần web) |
@@ -84,6 +84,9 @@
 | `spec-su-kien.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §7 |
 | `PLAN-tuqua.md` | Gộp vào spec #8 (17/11) | `spec-van-hanh-trung-tam.md` §8 |
 | `spec-cham-cong-ta.md` | Gộp vào spec #10 + #11 (17/11) | `spec-tro-giang.md` §7 (chấm công) · `spec-luong-gay.md` §1, §7 (lương, chốt kỳ) |
+| `spec-truong-khoi.md` | Gộp vào spec #6 (17/11) | `spec-quan-ly-chat-luong.md` §1–§3, §9 |
+| `spec-phong-truong-khoi.md` | Gộp vào spec #6 (17/11) | `spec-quan-ly-chat-luong.md` §5 (phòng), §6 (phiên Claude) |
+| `SPEC-troly-nhansu.md` | Gộp vào spec #6 (17/11) | `spec-quan-ly-chat-luong.md` §7 |
 | `ADR-mon.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §2a (chiều môn) · §2b (gộp theo khuôn) |
 | `AUDIT-client-tinh-toan.md` | Gộp vào spec #1 (17/11) | `spec-kien-truc.md` §14 |
 | `spec-danh-gia-cuoi-cap.md` · `PLAN-mastery-ban-do-moi.md` | Gộp vào spec #20 (17/11) | `spec-mastery.md` (§9.1 Cuối cấp · §3, §11 bản đồ mới / công tắc) |

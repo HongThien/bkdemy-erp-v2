@@ -5,8 +5,8 @@
 > **Thùy chốt 16/11/2026: "ghi chung vào 1 spec — Vận hành hàng tuần".** Luật vận hành tuần MỚI chỉ ghi vào file này.
 > Gộp từ: `spec-giao-trinh-tuan.md` (chuyển trọn — §3) · `spec-bao-cao-tuan.md` (chuyển trọn — §5) · `spec-muc-tieu-tuan.md` (luật nghiệp vụ — §4;
 > chi tiết kỹ thuật + nhật ký build Mục tiêu tuần ĐÃ GỘP HẲN 17/11 vào §4.7; file cũ ở `_luu-tru/`).
-> Liên quan (không gộp — không phải việc theo tuần): `spec-truong-khoi.md` (phạm vi · hai tầng · KPI §4) · `spec-bo-tro.md` (luồng bổ trợ) ·
-> `SPEC-troly-nhansu.md` (Tổng kết tuần, trình chiếu) · `spec-phong-truong-khoi.md` (phòng làm việc) · `spec-kien-truc.md` (luật kiến trúc).
+> Liên quan (không gộp — không phải việc theo tuần): `spec-quan-ly-chat-luong.md` (phạm vi · ai quyết / duyệt / hậu kiểm · KPI §9 · trợ lý §7 · phòng làm việc §5) · `spec-bo-tro.md` (luồng bổ trợ) ·
+> `spec-kien-truc.md` (luật kiến trúc).
 
 ---
 
@@ -391,7 +391,7 @@ TỰ LUYỆN TRÊN APP · KHÔNG BẮT BUỘC
 - Bảng theo lớp: sĩ số · tiến độ TB · việc xong · BTVN theo 3 mức · số em chưa làm gì.
 - **Em cần để ý** (kèm lý do: chưa làm việc nào · tụt nhiều tuần · BTVN chưa nghiêm túc / chống đối · vắng test sau giờ · nộp muộn liền) —
   bấm tên ⇒ mở màn 9.1 của em đó. Ở đây thấy đủ 4 mức thái độ BTVN.
-- Theo phạm vi phân công (`fn_pham_vi_cua_toi`, `spec-truong-khoi.md`).
+- Theo phạm vi phân công (`fn_pham_vi_cua_toi`, `spec-quan-ly-chat-luong.md` §2).
 - **Xem tờ của TỪNG em (Thùy 16/11):** bấm tên lớp trong bảng "Theo lớp" ⇒ danh sách cả lớp (tiến độ · ▲/▼ đầu tuần · việc · nhóm/nợ · hạng; `fn_mtt_ds_lop`, mig 202611161713 — chỉ đọc bảng đệm/sổ của 1 lớp) ⇒ bấm em ⇒ tờ của em. Dưới bảng có chú thích nghĩa của "Chốt mục tiêu tuần" và "Tiến độ".
 - **Trưởng khối xem được ĐỦ các view của HS/PH** (Thùy 13/11): bấm tên em ⇒ tờ tuần của em (thanh + cờ mục tiêu tuần + vạch đầu tuần, Phần 1/2, xếp hàng, sắp học, việc của em kèm thái độ 4 mức) · tab "Các tuần đã chốt" của em (tiến độ · việc · hạng · nhóm × tuần) · nút "🏆 Top 20 toàn trung tâm" (đúng bảng HS/PH thấy). Xem được cả khi lớp CHƯA chốt (HS/PH chưa thấy).
 

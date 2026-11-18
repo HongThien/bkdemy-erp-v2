@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-quan-ly-chat-luong.md` (§1–§3, §9). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # TRƯỞNG KHỐI & TEAM QUẢN LÝ CHẤT LƯỢNG — spec
 
 > **Đọc file này TRƯỚC khi sửa phân quyền (ghế, phạm vi, ai duyệt gì) hoặc trợ lý/dashboard của Trưởng khối và Trang.**

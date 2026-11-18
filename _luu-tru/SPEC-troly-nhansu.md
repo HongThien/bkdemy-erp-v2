@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-quan-ly-chat-luong.md` (§7). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # SPEC — Trợ lý AI cho NHÂN SỰ (worktree `feat/troly-ai`)
 
 > Chốt 14/08 với CEO. Đây là **mục đích của worktree này**, đọc trước khi viết dòng nào.

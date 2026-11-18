@@ -1,6 +1,7 @@
 # spec-quan-ly-chat-luong.md — QUẢN LÝ CHẤT LƯỢNG: cách hoạt động của TRƯỞNG KHỐI (spec #6 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 17/11/2026 — chờ Thùy duyệt.** Chưa thay file nào. Tới khi Thùy chốt, 4 file nguồn ở dòng "Gộp từ" vẫn là nguồn đang dùng.
+> **Trạng thái: THÙY CHỐT 17/11/2026** ("Chốt theo đề xuất" cho 10 câu — bảng §11.0, thắng mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-truong-khoi.md` · `spec-phong-truong-khoi.md` · `SPEC-troly-nhansu.md` đã chuyển `_luu-tru/`. GIỮ ở gốc: `spec-bao-cao-ky.md` (nội dung + công thức báo cáo gửi phụ huynh → #13).
+> Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh.
 > Chỗ nguồn mâu thuẫn nhau / nguồn ≠ DB / luật không có ngày chốt ⇒ **không tự chọn**, ghi §11.1 (10 câu hỏi). Việc code / DB chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-truong-khoi.md` (trọn) · `spec-phong-truong-khoi.md` (trọn, gồm phiên Claude) · `SPEC-troly-nhansu.md` (§6–§7 còn hiệu lực; §0–§5 là lịch sử 08/2026) ·
 > `spec-bao-cao-ky.md` (**chỉ phần "ai nhập · ai công bố · ai bật app phụ huynh"**; nội dung báo cáo + công thức ⇒ #13) ·
@@ -322,7 +323,22 @@ Hiệu suất TA của khối (cảnh phòng) · tỉ lệ việc sau buổi đ�
 
 ## 11. Câu hỏi cho Thùy · lệch
 
-### 11.1 Câu hỏi (10 câu, xếp theo mức quan trọng)
+### 11.0 THÙY CHỐT 17/11 — "Chốt theo đề xuất"
+
+| Câu | Luật chốt | Việc code / DB (chờ lệnh) |
+|---|---|---|
+| 1 | **Bỏ hẳn nút "Chốt tuần".** Số đầu tuần luôn do máy chụp 00:00 thứ Hai. | gỡ đường chốt tay cũ (Luật xoá — liệt kê trước) |
+| 2 | **Trang hậu kiểm MẪU ~1 / 5** quyết định của trưởng khối, cho ba loại: **gậy · duyệt công TA · duyệt báo sai**. Bổ trợ · giáo trình tuần · báo cáo tuần đã có trưởng bộ môn duyệt ⇒ không xem lại. | hàng hậu kiểm thêm loại công TA + báo sai, lấy mẫu 1 / 5 |
+| 3 | **Phó khối chỉ soạn giúp** (điền giáo trình tuần, soạn đề xuất bổ trợ ở dạng NHÁP). Bấm gửi · duyệt công · gậy · phiên Claude · báo cáo tuần là của Trưởng. Một ô một người chịu trách nhiệm. | thu quyền gửi đề xuất / duyệt công của Phó ở DB |
+| 4 | **Duyệt báo sai là việc trưởng khối, hạn 48 giờ cho báo mới.** Phần tồn (814 "máy chấm sai" · 88 "đề / đáp án sai"): Claude lọc trước (gom cái giống nhau, đề xuất đúng / sai) → trưởng khối duyệt theo lô; báo trước 01/11 của em đã nghỉ thì đóng. Mở loại phiên Claude "câu báo sai". | chuyển việc khỏi TA · báo sai theo khối ở DB · loại phiên `bao_sai` |
+| 5 | **Mỗi môn có MỘT trưởng bộ môn chịu trách nhiệm duyệt** (trễ hạn ⇒ người đó nhận đề xuất gậy); quản lý môn vẫn bấm được nhưng chỉ khi làm thay. **Toán: Trang.** | ghi trưởng bộ môn theo môn; gậy trễ duyệt về đúng người |
+| 6 | **Ô chưa có trưởng khối ⇒ việc về trưởng bộ môn của môn đó; môn chưa có trưởng bộ môn ⇒ về Trang.** Áp cho mọi việc (bổ trợ · công · gậy · giáo trình tuần · báo cáo tuần). | giáo trình tuần ô trống hiện chưa ai bị nhắc — sửa |
+| 7 | **KPI chính của trưởng khối = số em yếu (theo nhóm) + số nhóm yếu**, luôn kèm "hết yếu có bằng chứng" và "độ phủ đo". **Chỉ hiển thị tới hết tháng 12/2026; đầu tháng 1/2027 đặt ngưỡng = "thường đạt 8 tuần".** *Vượt ngưỡng thì hệ quả gì (gậy hay Trang làm việc với trưởng khối): câu kèm KHÔNG có đề xuất — CHƯA CHỐT, hỏi lại khi đặt ngưỡng.* | — |
+| 8 | **Báo cáo học kì gửi phụ huynh: giáo viên công bố lớp MÌNH dạy; quản trị soát rồi bật app phụ huynh cho cả kì** (đúng quy trình 07/11). Người không dạy lớp đó không công bố / mở lại được. Trưởng khối xem tiến độ khối. | cổng cho `fn_bc_ky_cong_bo` / `_mo_lai` / `_cong_bo_lop` + policy `bao_cao_ph_ky` |
+| 9 | **Trưởng khối KHÔNG có ô hỏi trợ lý** (đã có báo cáo lọc sẵn + phiên Claude). Ô hỏi vẫn chỉ 3 tài khoản ban lãnh đạo. | — |
+| 10 | **Phiên Claude: giữ tự do như 05/11** — một khối mở được nhiều phiên cùng lúc, có lệnh xoá (Claude phải hỏi trước khi xoá); thêm dòng cảnh báo "khối này đang có phiên khác mở" (không chặn). Luật 01/11 "mỗi bản đồ một phiên sửa · không lệnh xoá" HẾT hiệu lực. | dòng cảnh báo trên màn phiên |
+
+### 11.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 11.0 — giữ làm bối cảnh)
 
 **1. Thứ Hai, chị Trang có còn phải bấm nút "Chốt tuần" nữa không?**
 Ví dụ: sáng thứ Hai 16/11, máy đã tự chụp lúc 00:00 — Toán có 256 em yếu. Con số "đầu tuần" trên mọi màn của trưởng khối đang lấy từ bản máy chụp này; nút Chốt tuần cũ chị Trang bấm lần cuối ngày 10/11, màn chứa nút đó đã ẩn từ 10/11.
@@ -402,11 +418,8 @@ Ví dụ: Toán 9 đang có 3 phiên mở cùng lúc. Chốt 01/11: "mỗi bản
 5. Chốt 29/10 "Bổ trợ Nhẹ L1.1 — trưởng khối tự tạo, Trang hậu kiểm, tối đa 2 ca / em / tuần" đã được thay bằng "L1 sau giờ" của 11–17/11 (`spec-bo-tro.md` §7.2); spec này không giữ luật Nhẹ cũ.
 6. `SPEC-troly-nhansu.md` §0–§5 (trục "mảng phụ trách", ai chấm test đầu vào) là lịch sử 08/2026; phần còn sống chỉ là §2 luật đo, §3 luật nói, §6, §7 — đã lấy vào §7.
 
-## 12. Khi Thùy duyệt
+## 12. Đã làm khi Thùy chốt (17/11)
 
-- **Chuyển vào `_luu-tru/`** (bằng `git mv`, cần Thùy gật — Luật xoá): `spec-truong-khoi.md` · `spec-phong-truong-khoi.md` · `SPEC-troly-nhansu.md`. `spec-bao-cao-ky.md` **ở lại** tới khi #13 viết xong (phần nội dung báo cáo chưa có chỗ nhận).
-- **`SPEC-INDEX.md`:** dòng #6 ✅; thêm 3 dòng vào bảng B.
-- **`CLAUDE.md` §7:** thay ba đoạn trỏ `spec-phong-truong-khoi.md` · `spec-truong-khoi.md` · `SPEC-troly-nhansu.md` bằng một đoạn trỏ file này; sửa câu "mỗi bản đồ một phiên sửa · không lệnh xoá" theo câu 10.
-- **Sửa chỗ trỏ ở spec khác:** `spec-van-hanh-tuan.md` (đầu file, §1 dòng "Trang Chốt tuần", §2.2, §2.7, §6) · `spec-bo-tro.md` §4 mục 6 · `spec-luong-gay.md` dòng ranh giới · `scripts/phien/README.md` dòng "Spec:".
-- **Phần để spec khác nhận:** nội dung Báo cáo học kì (A–F của `spec-bao-cao-ky.md`) ⇒ #13 · luật "Bổ trợ Nhẹ" 29/10 đã thay ⇒ `spec-bo-tro.md` §7.2 · hiệu suất TA, bot Telegram ⇒ `spec-tro-giang.md` §8, §9 · gậy ⇒ `spec-luong-gay.md` §4.
-- **Việc code / DB** ở §11.1 (sau khi trả lời) và §11.2: chỉ làm khi Thùy ra lệnh, mỗi việc nêu phạm vi trước.
+- `spec-truong-khoi.md` · `spec-phong-truong-khoi.md` · `SPEC-troly-nhansu.md` → `_luu-tru/`. `spec-bao-cao-ky.md` giữ ở gốc tới khi #13 viết xong.
+- CLAUDE.md §7 (gộp 3 mục thành 1, bỏ luật phiên cũ "một phiên sửa · không lệnh xoá") · `SPEC-INDEX.md` dòng #6 · `scripts/phien/README.md` · các chỗ trỏ ở `spec-van-hanh-tuan.md`, `spec-luong-gay.md`.
+- **Còn nợ:** hệ quả khi vượt ngưỡng KPI (câu 7) · **hai lỗ quyền §11.2** (nhãn team tự sửa được · báo cáo phụ huynh ai cũng công bố được) · mọi việc code / DB ở §11.0 + §11.2 chờ lệnh.

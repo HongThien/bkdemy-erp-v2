@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 17/11 (Thùy chốt spec đích)** — đã gộp vào `spec-quan-ly-chat-luong.md` (§5, §6). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # PHÒNG LÀM VIỆC TRƯỞNG KHỐI + PHIÊN CLAUDE — spec
 
 > **Đọc file này TRƯỚC khi sửa phiên Claude (bảng `claude_phien*`, `scripts/phien/`) hoặc Phòng làm việc trưởng khối.**
