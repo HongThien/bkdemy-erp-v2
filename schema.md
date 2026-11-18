@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 465 trigger · 2004 function
+602 bảng · 42 view · 0 enum · 465 trigger · 2008 function
 
 ## _app_secrets
 
@@ -11671,6 +11671,7 @@ WITH luot AS (
 - `_bctk_o_cua_toi()` → jsonb
 - `_bctk_pct(a numeric, b numeric)` → numeric
 - `_bctk_tuan_truoc()` → date
+- `_bctk_van_hanh(p_o jsonb, p_tu date)` → jsonb
 - `_bdm_bump_nhom()` → trigger
 - `_bdm_cam_dung_sai()` → trigger
 - `_bdm_cau_co_dang_bai(p_kho text, p_ma_cau text, p_parent text, p_dang_chinh text)` → boolean
@@ -11712,12 +11713,15 @@ WITH luot AS (
 - `_btc_trang_thai(p_cau uuid, p_bt uuid, p_ma_dang text)` → text
 - `_bthinh_ket_thuc(p_case uuid, p_ns uuid, p_ket_qua text, p_ghi_chu text, p_at timestamp with time zone)` → void
 - `_bthinh_tai_lieu_json(p_buoi uuid)` → jsonb
+- `_btk_bao_dong_tuan(p_hs uuid, p_mon text, p_moc timestamp with time zone)` → jsonb
 - `_btk_duyet_chay(p_id uuid)` → jsonb
 - `_btk_ghi_log()` → trigger
 - `_btk_la_tbm(p_mon text, p_khoi text)` → boolean
 - `_btk_la_tk(p_mon text, p_khoi text)` → boolean
+- `_btk_lich_su_hs(p_hs uuid, p_mon text)` → jsonb
 - `_btk_lop_hs(p_hs uuid, p_mon text)` → TABLE(lop_id uuid, khoi text)
 - `_btk_nhom_hs(p_hs uuid[], p_mon text)` → TABLE(hoc_sinh_id uuid, ma text, ten text, cha text, score numeric, n bigint, muc text, tin text)
+- `_btk_trang_thai_hs(p_hs uuid, p_mon text)` → jsonb
 - `_btnhe_chon_cau(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer, p_tu_luan boolean, p_giu_lai integer DEFAULT 0)` → text[]
 - `_btnhe_chon_loai(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer, p_loai text)` → text[]
 - `_btnhe_chon_tu_luan(p_cautbl text, p_ma_dang text, p_tru text[], p_n integer)` → text[]

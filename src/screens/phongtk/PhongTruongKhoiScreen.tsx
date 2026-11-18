@@ -174,24 +174,25 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         {/* PHẦN VIỆC — mở từ đồ vật trong cảnh. Nền trắng riêng cho dễ đọc. */}
         {mo && mo !== 'phien' && (
           <div className="min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8">
-            <div className={`mx-auto w-full ${mo === 'duyet_cong' || mo === 'chat_luong' || mo === 'giao_trinh_tuan' || mo === 'muc_tieu_tuan' ? 'max-w-none' : mo === 'ban_do' ? 'max-w-[1600px]' : 'max-w-[1180px]'}`}>
+            {/* Thùy 18/11: mọi phần việc mở FULL bề ngang màn — không bó vào một khung nhỏ ở giữa */}
+            <div className="w-full">
               {mo === 'ban_do' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><BanDoMoiScreen /></div>}
               {/* Quản trị = báo cáo sư phạm (việc TA) · Chất lượng = dạng yếu + học tập tuần (chất lượng học của HS). */}
               {mo === 'quan_tri' && (
-                <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <QuanTriTbm /> : <BaoCaoCaNhan chiMuc={['baocao']} />}</div>
+                <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <QuanTriTbm /> : <BaoCaoCaNhan chiMuc={['baocao']} />}</div>
               )}
               {/* Báo cáo tuần (spec-bao-cao-tuan, P2): trưởng khối soạn/nộp báo cáo của mình; trưởng bộ môn báo cáo thay ô chưa có trưởng khối. Phòng trưởng bộ môn: duyệt / trả lại · ghép Báo cáo Chuyên môn tuần (P3). */}
               {/* Hỏi vận hành trợ giảng (Thùy 05/11): chỉ phòng trưởng bộ môn — DB khoá phạm vi môn của NGƯỜI HỎI (không theo môn đang xem). */}
-              {mo === 'hoi_ta' && cheDo === 'tbm' && <div className="rounded-2xl bg-white p-4 shadow-sm"><HoiVanHanhTa mon={mon} /></div>}
+              {mo === 'hoi_ta' && cheDo === 'tbm' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><HoiVanHanhTa mon={mon} /></div>}
               {/* Duyệt công trợ giảng (Thùy 09/11): cùng màn ở sảnh; DB chỉ trả công thuộc khối của người mở (fn_ta_cong_duoc_duyet). */}
               {mo === 'duyet_cong' && <div className="h-[calc(100vh-150px)] min-h-[460px] overflow-hidden rounded-2xl bg-white shadow-sm"><DuyetCongScreen /></div>}
               {/* Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): thứ Sáu trưởng khối điền khung từng ca tuần sau, trưởng bộ môn duyệt — cùng màn cho cả hai, DB lọc phạm vi. */}
-              {mo === 'giao_trinh_tuan' && <div className="rounded-2xl bg-white p-4 shadow-sm"><GiaoTrinhTuan /></div>}
+              {mo === 'giao_trinh_tuan' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><GiaoTrinhTuan /></div>}
               {/* Mục tiêu tuần (Thùy 17/11 tối): đồ vật riêng cạnh Giáo trình tuần — không còn là tab trong Dashboard học tập. */}
-              {mo === 'muc_tieu_tuan' && <div className="rounded-2xl bg-white p-4 shadow-sm"><MucTieuTuanPhong /></div>}
-              {mo === 'bao_cao' && <div className="rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
+              {mo === 'muc_tieu_tuan' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><MucTieuTuanPhong /></div>}
+              {mo === 'bao_cao' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (
-                <div className="space-y-4 rounded-2xl bg-white p-4 shadow-sm">
+                <div className="space-y-4 min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm">
                   {/* Thùy 10/11: trưởng khối — Dashboard học tập · Tình hình chung · Hồ sơ học tập · Danh sách bổ trợ (thay màn Duyệt bổ trợ cũ) */}
                   {cheDo === 'tbm' ? <ChatLuongTbm onTaoCaNhe={onTaoCaNhe} /> : <ChatLuongTK onTaoCaNhe={onTaoCaNhe} />}
                 </div>
@@ -203,7 +204,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         {daMoPhien && (
           <div className={mo === 'phien' ? 'min-h-0 flex-1 overflow-auto px-4 pb-4 pt-3 md:px-8' : 'hidden'}>
             {/* Thùy 03/11: nền TRẮNG riêng — chat đặt thẳng trên tranh nền phòng khó đọc */}
-            <div className="mx-auto w-full max-w-[1180px] rounded-2xl bg-white p-4 shadow-sm"><PhienClaudeTab /></div>
+            <div className="min-h-[calc(100vh-150px)] w-full rounded-2xl bg-white p-4 shadow-sm"><PhienClaudeTab /></div>
           </div>
         )}
       </div>

@@ -9,7 +9,8 @@ import WidgetDangYeu from '../qlcl/WidgetDangYeu'
 import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
 import BoTroPopup from './BoTroPopup'
 import { tongQuanDangYeu, type OTongQuan } from '../../lib/qlcl'
-import { dsBoTro, boBoTro, guiBoTro, duyetBoTro, traLaiBoTro, NHAN_TT, TEN_MUC, TEN_UU_TIEN, type DongBtk } from '../../lib/boTroTk'
+import { dsBoTro, boBoTro, guiBoTro, duyetBoTro, traLaiBoTro, NHAN_TT, TEN_MUC, TEN_UU_TIEN, type BaoDongBtk, type CaLichSu, type DongBtk } from '../../lib/boTroTk'
+import { congNgay, ddmmVN } from '../../lib/tuan'
 import { nhoBen } from '../../lib/nho'
 
 type Muc = 'dashboard' | 'chung' | 'hoso' | 'bo_tro'
@@ -115,6 +116,8 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
                 {khoi === null && <th className="border-b border-slate-200 px-2 py-2">Khối</th>}
                 <th className="border-b border-slate-200 px-2 py-2">Nhóm bổ trợ</th>
                 <th className="border-b border-slate-200 px-2 py-2">Mức · ưu tiên</th>
+                <th className="border-b border-slate-200 px-2 py-2" title="Chuông báo động của giáo viên / trợ giảng trong tuần của đề xuất">Báo động tuần</th>
+                <th className="border-b border-slate-200 px-2 py-2" title="Các ca bổ trợ em có tên trong 2 tuần gần đây (tuần trước + tuần này) và kết quả">Lịch sử bổ trợ 2 tuần</th>
                 <th className="border-b border-slate-200 px-2 py-2">Trạng thái</th>
                 <th className="border-b border-slate-200 px-2 py-2 text-right" />
               </tr>
@@ -134,6 +137,8 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
                     {d.ghi_chu && <div className="mt-0.5 text-[11.5px] italic text-slate-500">“{d.ghi_chu}”</div>}
                   </td>
                   <td className="border-b border-slate-100 px-2 py-2 text-[12px] text-slate-600">{TEN_MUC[d.muc]}<div>Ưu tiên {TEN_UU_TIEN[d.uu_tien]}</div></td>
+                  <td className="border-b border-slate-100 px-2 py-2"><OBaoDong ds={d.bao_dong ?? []} /></td>
+                  <td className="border-b border-slate-100 px-2 py-2"><OLichSu ds={d.lich_su ?? []} /></td>
                   <td className="border-b border-slate-100 px-2 py-2">
                     <span className={`whitespace-nowrap rounded-md px-2 py-0.5 text-[11.5px] font-semibold ${NHAN_TT[d.trang_thai].cls}`}>{NHAN_TT[d.trang_thai].t}</span>
                     <div className="mt-0.5 text-[11px] text-slate-400">
@@ -183,11 +188,56 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
       )}
       <p className="text-[11.5px] text-slate-400">
         {che === 'tk'
-          ? 'Nháp sửa / bỏ được. "Chốt & gửi" gửi mọi em nháp của khối cho trưởng bộ môn; bị trả lại thì sửa rồi gửi lại. Đã duyệt = đã mở case bổ trợ như cũ (Lộc xếp lịch · TA dạy · test cuối ca).'
+          ? 'Lịch sử bổ trợ: "hết yếu x/y dạng" = trong y dạng đã dạy ở ca đó, x dạng hiện không còn ở mức yếu (mastery lưu sẵn). Nháp sửa / bỏ được. "Chốt & gửi" gửi mọi em nháp của khối cho trưởng bộ môn; bị trả lại thì sửa rồi gửi lại. Đã duyệt = đã mở case bổ trợ như cũ (Lộc xếp lịch · TA dạy · test cuối ca).'
           : 'Duyệt = mở case bổ trợ như cũ (Lộc xếp lịch theo lịch khối; L2 TA dạy · L3, L4 giáo viên dạy; test cuối ca). Dạng vào case = các dạng chưa đạt của nhóm đã chọn. Trả lại phải ghi lý do.'}
       </p>
       {sua && <BoTroPopup hs={{ id: sua.hoc_sinh_id, ten: sua.ho_ten, lop: sua.lop }} mon={mon} onDong={() => setSua(null)}
         onXong={() => { setSua(null); setLamMoi((x) => x + 1); bao('Đã lưu') }} />}
+    </div>
+  )
+}
+
+// Báo động trong tuần của đề xuất (chỉ hiển thị dòng DB trả về).
+const NGUON_BD: Record<string, string> = { et: 'ET', btvn: 'BTVN', danhgia: 'Đánh giá', ingame: 'Trên lớp', mt: 'MT' }
+function OBaoDong({ ds }: { ds: BaoDongBtk[] }) {
+  if (ds.length === 0) return <span className="text-[12px] text-slate-300">Không có</span>
+  return (
+    <div className="min-w-[150px] max-w-[260px] space-y-0.5 text-[12px]">
+      {ds.map((b, i) => (
+        <div key={i} className="leading-snug" title={[b.nguoi, b.ghi_chu].filter(Boolean).join(' — ')}>
+          <span className="whitespace-nowrap font-semibold text-rose-600">🚨 {ngay(b.at)} · {NGUON_BD[b.nguon] ?? b.nguon}{b.lop ? ` · ${b.lop}` : ''}</span>
+          {b.ghi_chu && <span className="text-slate-600"> — {b.ghi_chu}</span>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// Lịch sử bổ trợ 2 tuần: gom theo TUẦN để đọc (số từng ca do DB trả — màn không tính).
+const TEN_LOAI_CA: Record<string, string> = { bo_tro_nhe: 'sau giờ', bo_tro_yeu: 'ca khối' }
+function OLichSu({ ds }: { ds: CaLichSu[] }) {
+  if (ds.length === 0) return <span className="text-[12px] text-slate-300">Chưa có ca nào</span>
+  const tuan = [...new Set(ds.map((c) => c.tuan))]
+  return (
+    <div className="min-w-[250px] space-y-1 text-[12px]">
+      {tuan.map((t) => (
+        <div key={t}>
+          <div className="whitespace-nowrap text-[11px] font-semibold text-slate-500">Tuần {ddmmVN(t)}–{ddmmVN(congNgay(t, 6))}</div>
+          {ds.filter((c) => c.tuan === t).map((c) => (
+            <div key={c.buoi_id} className="whitespace-nowrap leading-snug">
+              <b className="text-slate-800">{c.muc ? `L${c.muc} ` : ''}{TEN_LOAI_CA[c.loai] ?? c.loai}</b> <span className="text-slate-500">{ddmmVN(c.ngay)}</span>{' · '}
+              {c.diem_danh === 'co_mat' ? (
+                c.so_dang === 0 && c.test_tong === 0 ? <span className="text-slate-500">có mặt, chưa ghi dạng đã dạy</span> : <>
+                  {c.so_dang > 0 && <span className={c.con_yeu > 0 ? 'font-semibold text-amber-700' : 'font-semibold text-emerald-700'}>hết yếu {c.het_yeu}/{c.so_dang} dạng</span>}
+                  {c.so_dang > 0 && c.test_tong > 0 && ' · '}
+                  {c.test_tong > 0 && <span className="text-slate-600">test {c.test_dung}/{c.test_tong} câu</span>}
+                </>
+              ) : c.diem_danh == null ? <span className="text-indigo-600">đã xếp ca, chưa học</span>
+                : <span className="font-semibold text-rose-600">{c.diem_danh === 'vang' ? 'vắng' : c.diem_danh}</span>}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   )
 }

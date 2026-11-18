@@ -12,7 +12,7 @@ const mauP = (p: number | null) => p == null ? 'text-slate-400' : p >= 80 ? 'tex
 
 export default function BoTroPopup({ hs, mon, onDong, onXong }: {
   hs: { id: string; ten: string; lop?: string | null }; mon: string
-  onDong: () => void; onXong: (kq: { id: string; tt: 'nhap' }) => void
+  onDong: () => void; onXong: (kq: { id: string; tt: 'nhap'; muc: number }) => void
 }) {
   const [gy, setGy] = useState<GoiY | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -56,7 +56,7 @@ export default function BoTroPopup({ hs, mon, onDong, onXong }: {
     setDangLuu(true); setLoi(null)
     try {
       const id = await luuBoTro({ id: gy?.de_xuat?.id ?? null, hs: hs.id, mon, nhom: [...chon], muc, uuTien, ghiChu })
-      onXong({ id, tt: 'nhap' })
+      onXong({ id, tt: 'nhap', muc })
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setDangLuu(false) }
   }
 

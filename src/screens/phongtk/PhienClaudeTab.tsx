@@ -302,7 +302,7 @@ export default function PhienClaudeTab() {
   const doiTt = (id: string, tt: PhienTrangThai) => setDs((prev) => prev?.map((p) => p.id === id ? { ...p, trang_thai: tt } : p) ?? prev)
 
   return (
-    <div className="mx-auto max-w-[1200px]">
+    <div className="w-full">
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <BotTrangThai bot={bot} now={now} />
         <span className="text-[12px] text-slate-400">Claude chạy trên máy Thùy · mỗi việc một phiên · đóng phiên thì Claude viết tổng kết</span>

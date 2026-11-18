@@ -10,20 +10,28 @@ export type DeXuat = {
   trang_thai: TrangThaiBtk; ly_do_tra: string | null
 }
 export type GoiY = { khoi: string; so_nhom_do: number; so_nhom_yeu: number; dang_yeu: number | null; dang_yeu_trong_nhom_yeu?: number; nhom: NhomGoiY[]; de_xuat: DeXuat | null; dang_bo_tro: boolean }
+// 18/11 (mig 202611181302): chuông GV / TA trong tuần của đề xuất · các ca bổ trợ em có tên trong 2 tuần gần đây + kết quả (số do DB trả)
+export type BaoDongBtk = { at: string; nguon: string; ghi_chu: string | null; nguoi: string | null; lop: string | null }
+export type CaLichSu = {
+  buoi_id: string; ngay: string; tuan: string; loai: 'bo_tro_yeu' | 'bo_tro_nhe'; muc: number | null; diem_danh: string | null
+  so_dang: number; het_yeu: number; con_yeu: number; test_dung: number; test_tong: number
+}
 export type DongBtk = {
+  bao_dong?: BaoDongBtk[]; lich_su?: CaLichSu[]
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop: string | null; khoi: string
   nhom: NhomChon[]; muc: 1 | 2 | 3; uu_tien: 1 | 2 | 3; ghi_chu: string; trang_thai: TrangThaiBtk; ly_do_tra: string | null
   so_dang: number | null; case_id: string | null; case_tt: string | null; case_ket_qua: string | null
   tao_at: string; tao_ten: string | null; gui_at: string | null; gui_ten: string | null; duyet_at: string | null; duyet_ten: string | null; dang_yeu: number | null
 }
 
-export const NHAN_TT: Record<TrangThaiBtk | 'dang_bo_tro', { t: string; cls: string }> = {
+export const NHAN_TT: Record<TrangThaiBtk | 'dang_bo_tro' | 'xong', { t: string; cls: string }> = {
   nhap: { t: 'Nháp', cls: 'bg-slate-100 text-slate-700' },
   cho_duyet: { t: 'Chờ trưởng bộ môn', cls: 'bg-amber-100 text-amber-800' },
   tra_lai: { t: 'Bị trả lại', cls: 'bg-rose-100 text-rose-700' },
   da_duyet: { t: 'Đã duyệt', cls: 'bg-emerald-100 text-emerald-800' },
   huy: { t: 'Đã bỏ', cls: 'bg-slate-100 text-slate-400' },
-  dang_bo_tro: { t: 'Đang bổ trợ', cls: 'bg-indigo-100 text-indigo-700' },
+  dang_bo_tro: { t: 'Chờ bổ trợ', cls: 'bg-indigo-100 text-indigo-700' },
+  xong: { t: 'Đã xong', cls: 'bg-emerald-100 text-emerald-800' },
 }
 // Thang L1–L4 (Thùy 11/11): L1 & L4 ngoài ca bổ trợ khối
 export const TEN_MUC: Record<number, string> = { 1: 'L1 · sau giờ (TA kèm sau buổi học)', 2: 'L2 · ca bổ trợ khối (TA dạy)', 3: 'L3 · ca bổ trợ khối (giáo viên dạy)', 4: 'L4 · ca bổ trợ khối (nghiêm trọng: chuẩn bị kỹ + đổi giáo viên)' }

@@ -21,10 +21,20 @@ export type TongSo = NhomSo & {
 }
 export type LopSo = NhomSo & { lop_id: string; ten_lop: string; mon: string; khoi: string }
 export type HsConYeu = { hoc_sinh_id: string; ho_ten: string; ten_lop: string; mon: string; so_dang_yeu: number; dang: string[]; so_nhom_yeu?: number; nhom?: string[]; xu_ly: 'bo_tro_yeu' | 'ca_nhe' | 'theo_doi' | 'chua' }
+// 18/11: khối VẬN HÀNH (_bctk_van_hanh, mig 202611181253) — việc sau buổi của khối trong kỳ: đúng hạn / đóng muộn / chưa đóng. Bản snap cũ không có.
+export type DemViec = { so_viec: number; dung_han: number; muon: number; chua: number; ti_le_dung_han: number | null }
+export type VanHanh = {
+  tong: DemViec | null
+  khau: (DemViec & { tab: string })[]
+  lop: (DemViec & { lop_id: string; ten_lop: string })[]
+  nguoi: (DemViec & { nhan_su_id: string; ho_ten: string; vai: string })[]
+  tre: { buoi_id: string; tab: string; ten_lop: string; ngay: string; han: string | null; dong: string | null; kq: 'muon' | 'chua'; nguoi: string | null }[]
+}
 export type SoBaoCao = {
   tu: string; den: string; co_anh_dau: boolean; co_anh_cuoi: boolean
   hs_yeu_theo?: 'nhom'   // không có = bản snap cũ: HS yếu đếm theo DẠNG
   tong: TongSo; lop: LopSo[]; hs_con_yeu: HsConYeu[]; trend: { tuan: string; tong: TongSo }[]
+  van_hanh?: VanHanh
 }
 export type DongCaNhan = {
   task_id: string; tieu_de: string; han: string; so_lan_gia_han: number; trang_thai_task: string

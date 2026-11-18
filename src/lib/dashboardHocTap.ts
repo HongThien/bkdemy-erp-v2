@@ -12,7 +12,8 @@ export type HSDB = {
   id: string; ten: string; lop_id: string; lop: string; o: Record<string, ODB>
   nhom_yeu?: number | null; dang_yeu?: number | null
   bao_dong?: { so: number; at: string; ghi_chu: string } | null
-  bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' } | null
+  // 18/11: thêm mức L1–L4 · 'xong' = case đóng trong tuần này · ca_ngay = ngày ca gần nhất đã xếp (case đang mở)
+  bt?: { id: string; tt: 'nhap' | 'cho_duyet' | 'tra_lai' | 'dang_bo_tro' | 'xong'; muc?: number | null; ca_ngay?: string | null; at?: string | null } | null
 }
 // co_do = môn đã đo theo bản đồ mới (DB quyết, mig 202611131522) · ngoai_quyen = môn không thuộc quyền môn của người gọi (DB chặn, mig 202611161701)
 export type BangDB = { tu: string | null; tinh_at?: string | null; co_do?: boolean; ngoai_quyen?: boolean; cot: CotDB[]; hs: HSDB[] }

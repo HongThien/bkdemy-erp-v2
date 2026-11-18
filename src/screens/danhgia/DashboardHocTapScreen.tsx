@@ -228,7 +228,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
                       {phong && (
                         <td className="sticky right-0 z-[5] border-b border-slate-100 bg-white px-1.5 py-0.5 text-center">
                           {!h.bt ? <button onClick={() => setBoTro(h)} className="whitespace-nowrap rounded-md bg-indigo-600 px-2.5 py-1 text-[11.5px] font-bold text-white shadow-sm hover:bg-indigo-700">Bổ trợ</button>
-                            : <button onClick={() => h.bt!.tt !== 'dang_bo_tro' && setBoTro(h)} className={`whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-semibold ${NHAN_TT[h.bt.tt].cls}`}>{NHAN_TT[h.bt.tt].t}</button>}
+                            : <OBoTro bt={h.bt} onMo={() => setBoTro(h)} />}
                         </td>
                       )}
                     </tr>
@@ -244,9 +244,23 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
         )}
       </>}
       {boTro && <BoTroPopup hs={{ id: boTro.id, ten: boTro.ten, lop: boTro.lop }} mon={mon} onDong={() => setBoTro(null)}
-        onXong={(kq) => { vaBt(boTro.id, { id: kq.id, tt: kq.tt }); setBoTro(null) }} />}
+        onXong={(kq) => { vaBt(boTro.id, { id: kq.id, tt: kq.tt, muc: kq.muc }); setBoTro(null) }} />}
       {cua.map((c) => <CuaSoO key={c.id} c={c} onDong={() => dong(c.id)} onLen={() => lenTren(c.id)} onDoi={(x, y) => doi(c.id, { x, y })} tiLe={tiLe} onXemThem={() => xemThem(c)} />)}
     </div>
+  )
+}
+
+// Ô Bổ trợ của một em (Thùy 18/11): MỨC L1–L4 + trạng thái hiện tại — nháp / chờ trưởng bộ môn / bị trả lại / chờ bổ trợ (đã có ca ngày nào) / đã xong tuần này.
+// Case ca khối (L2–L4) đang mở thì không đề xuất chồng; L1 đang mở hoặc đã xong vẫn bấm được để đề xuất tiếp (đổi mức đi lại đường đề xuất + duyệt).
+function OBoTro({ bt, onMo }: { bt: NonNullable<HSDB['bt']>; onMo: () => void }) {
+  const khoa = bt.tt === 'dang_bo_tro' && bt.muc !== 1
+  const nhan = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? `Có ca ${ngayVN(bt.ca_ngay)}` : 'Chờ xếp ca') : bt.tt === 'xong' ? 'Đã xong ✓' : NHAN_TT[bt.tt].t
+  const giai = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? 'Đã duyệt, đã xếp ca — chờ tới ca' : 'Đã duyệt, chưa có ca nào được xếp') : bt.tt === 'xong' ? 'Đã bổ trợ xong trong tuần này' : NHAN_TT[bt.tt].t
+  return (
+    <button onClick={() => !khoa && onMo()} title={`${bt.muc ? `Mức L${bt.muc} · ` : ''}${giai}${khoa ? '' : ' · bấm để xem / đề xuất'}`}
+      className={`whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-semibold ${NHAN_TT[bt.tt].cls} ${khoa ? 'cursor-default' : ''}`}>
+      {bt.muc ? <b className="mr-1">L{bt.muc}</b> : null}{nhan}
+    </button>
   )
 }
 

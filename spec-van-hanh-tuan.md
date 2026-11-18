@@ -560,6 +560,14 @@ Mọi chỉ số tính ở **một hàm DB** theo `(ô, khoảng ngày)` — dù
 | 5 | **Bổ trợ** | Số ca (Yếu · Nhẹ) · lượt HS · **Độ phủ** · **Hết yếu sau ca** | Ca không huỷ, ≥ 1 em có mặt. Độ phủ = HS yếu đầu tuần đã được ≥ 1 ca / HS yếu đầu tuần. |
 | 6 | **Trend** | Mỗi chỉ số, theo khối, **4 tuần gần nhất** | Tuần đã nộp ⇒ số snap; chưa ⇒ tính ngược bằng chính hàm trên. Mũi tên so TB 3 tuần trước. |
 
+### 5.5b Ba phần của một báo cáo khối (Thùy 18/11; mig `202611181253`; màn `NoiDungBaoCao.tsx`)
+- Báo cáo khối tách **3 tab con**: **⚙ Vận hành** (việc sau buổi của TA / giáo viên trong khối) · **📚 Học tập** (thông số học của học sinh: điểm ET · BTVN · nhóm yếu · dạng yếu · HS yếu · kết quả bổ trợ) · **🌱 Phát triển cá nhân** (task, §5.4). Phần Tự viết (§5.7) nằm cột phải, tab nào cũng thấy.
+- Mỗi tab: hàng **ô chỉ số tổng quát** ở trên; chi tiết nằm trong các **mục gập**, bấm mới mở (dữ liệu đã nằm sẵn trong báo cáo — mở không gọi thêm). Ô chỉ số: mỗi dòng trọn một hàng ngang.
+- **Khối Vận hành** = khoá `van_hanh` trong `so` (hàm `_bctk_van_hanh`): việc sau buổi **đã tới hạn hoặc đã đóng** của các lớp trong ô, trong kỳ — đánh giá sau buổi · chấm ET (trừ ET online) · chấm BTVN · MT · chấm trên lớp. Mỗi việc một trong ba: **đúng hạn** (lần đóng ĐẦU ≤ hạn) · **đóng muộn** · **chưa đóng**. Trả về: tổng · theo khâu · theo người phụ trách · theo lớp · danh sách việc muộn / chưa đóng.
+  Nguồn việc + người + hạn DUY NHẤT = engine việc `fn_viec_buoi_thuong_lh` (cùng cách Gậy / hiệu suất TA; số "Chấm ET" khớp chỉ số cũ). Một lượt gọi cho đúng 7 ngày của kỳ (đo 18/11: ~0,2 s). Snap cùng lúc Nộp; **bản đã chốt trước 18/11 không có khối này** (màn ghi rõ, chỉ hiện số chấm ET). Vận hành chưa có trend 4 tuần.
+- Chiếu TV (§5.9) giữ nguyên hai trang cũ.
+- Đo 18/11: báo cáo MÔN Toán (13 ô) nháp mất ~6–10 s vì `fn_bctk_so` cả môn 1,9 s × 4 tuần trend (có từ trước, khối Vận hành chỉ thêm 0,17 s) — cần chuyển trend sang đọc số đã lưu, chưa làm.
+
 ### 5.6 Dạng yếu tại một mốc — nguồn DUY NHẤT
 - **"Dạng yếu của HS × môn tại mốc D"** = đúng định nghĩa hiện hành nhưng **chỉ dùng lần đo ≤ D** (`_dang_yeu_tai_lo`; đối chiếu 03/11 khớp 100 % hàm đang chạy).
 - **Chụp tự động T2 00:00** (`_dang_yeu_chup_tuan` → `dang_yeu_dau_tuan`) — ảnh là bộ đệm, lệch thì tính lại từ hàm. **Không** chụp từ `dang_yeu_hien_tai` (làm mới lười).
