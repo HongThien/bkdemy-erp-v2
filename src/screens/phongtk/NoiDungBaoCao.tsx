@@ -4,7 +4,7 @@
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / danh sách đến từ DB (fn_bctk_so · _bctk_van_hanh · fn_bctk_trend); màn chỉ hiển thị.
 // Ô chỉ số: mỗi dòng nằm trọn MỘT hàng ngang (không xuống dòng giữa "160 → 124").
 import { useState, type Dispatch, type ReactNode, type SetStateAction } from 'react'
-import type { DemViec, DongCaNhan, HaiChieu, SoBaoCao, TuViet } from '../../lib/baoCaoTuan'
+import type { DemViec, DongCaNhan, HaiChieu, SoBaoCao, TongSo, TuViet } from '../../lib/baoCaoTuan'
 import { ddmmVN } from '../../lib/tuan'
 import { nhoBen } from '../../lib/nho'
 
@@ -59,9 +59,6 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
     trend={tr.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
   const oCaBoTro = <O ten="Ca bổ trợ" chinh={`${t.bo_tro.ca_yeu} + ${t.bo_tro.ca_nhe}`} nhanChinh="ca Yếu + Nhẹ" phu={[`${t.bo_tro.luot_hs} lượt em có mặt`]}
     trend={tr.map((w) => w.tong.bo_tro.ca_yeu + w.tong.bo_tro.ca_nhe)} mau="text-indigo-600" />
-  const oKetQuaBoTro = <O ten="Kết quả bổ trợ" chinh={so(t.bo_tro.do_phu, '%')} nhanChinh="độ phủ"
-    phu={[`${so(t.bo_tro.hs_yeu_duoc_bt)}/${so(t.bo_tro.hs_yeu_dau)} em yếu đã được bổ trợ`, `Hết yếu sau ca ${so(t.bo_tro.het_yeu_sau_ca)} em`]}
-    trend={tr.map((w) => w.tong.bo_tro.do_phu)} mau="text-indigo-600" />
 
   // ── Chiếu TV: giữ đúng hai trang cũ ──
   if (phan === 'o') return <div className={LUOI}>{oChamEt}{oBtvn}{oYeu}{oHsYeu}{oCaBoTro}</div>
@@ -126,9 +123,7 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
 
         {/* 📚 HỌC TẬP — thông số học của học sinh */}
         {tab === 'hoc_tap' && <>
-          <div className={LUOI}>
-            {oYeu}{oHsYeu}{oKetQuaBoTro}
-          </div>
+          <BangHocTap duLieu={duLieu} />
           <div className="grid items-start gap-3 lg:grid-cols-[3fr_2fr]">
             <MoChiTiet ten="Từng lớp" phu={`${duLieu.lop.length} lớp`} rong={duLieu.lop.length === 0}>
               <BangLop lop={duLieu.lop} che="hoc_tap" />
@@ -189,6 +184,70 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
             className="w-full rounded-lg border border-slate-200 px-2 py-1 text-[13px] disabled:bg-slate-50" placeholder="Từ trưởng bộ môn / CEO…" />
         </Khung>
       )}
+    </div>
+  )
+}
+
+// BẢNG HỌC TẬP (Thùy 18/11 chiều): mỗi chỉ số MỘT dòng — đầu tuần có gì → cuối tuần (tuần đang chạy: hiện tại) ra sao → làm được bao nhiêu (số tuyệt đối + %).
+// Chưa nhập mục tiêu (Thùy: "theo dõi qua mỗi tuần đã"); cột Thường đạt để sẵn, có số khi đủ tuần. Mọi số do DB trả (fn_bctk_so, khối 'ht' + 'hai_chieu').
+function BangHocTap({ duLieu }: { duLieu: SoBaoCao }) {
+  const t = duLieu.tong, h = t.ht, hc = t.hai_chieu, tr = duLieu.trend, ht = !!duLieu.cuoi_hien_tai
+  const tot = (v: number | null | undefined) => v == null ? 'text-slate-400' : v > 0 ? 'text-emerald-600' : v < 0 ? 'text-rose-600' : 'text-slate-600'
+  const giam = (n: number | null | undefined, p: number | null | undefined) => n == null ? <span className="text-slate-300">—</span>
+    : <span className={`font-extrabold ${tot(n)}`}>{n > 0 ? `Giảm ${n}` : n < 0 ? `Tăng ${-n}` : 'Không đổi'}<span className="ml-1.5 text-[13px] font-semibold">({so(p != null && n < 0 ? -p : p, '%')})</span></span>
+  const tiLe = (a: number | null | undefined, b: number | null | undefined, p: number | null | undefined, mau = 'text-indigo-600') => b == null || a == null ? <span className="text-slate-300">—</span>
+    : <span className={`font-extrabold ${mau}`}>{so(p, '%')}<span className="ml-1.5 text-[13px] font-semibold text-slate-500">({a}/{b})</span></span>
+  const thieu = <span className="text-slate-300" title="Báo cáo chốt trước 18/11 chưa có chỉ số này">—</span>
+  const haiChieu = (ten: string, x: HaiChieu | undefined, lay: (w: TongSo) => number | null | undefined): Dong => x
+    ? { ten, dau: x.dau, cuoi: x.con_yeu, kq: <span className="font-extrabold text-emerald-600">Giảm {x.het_yeu}<span className="ml-1.5 text-[13px] font-semibold">({so(x.ti_le_het_yeu, '%')})</span></span>,
+        phu: `Phát sinh mới +${x.phat_sinh} · tổng ${ht ? 'hiện tại' : 'cuối tuần'} ${x.cuoi}${x.roi ? ` · ${x.roi} của em thôi học` : ''}`, trend: tr.map((w) => lay(w.tong)) }
+    : { ten, dau: null, cuoi: null, kq: thieu, phu: 'Chưa đủ ảnh đầu / cuối tuần', trend: [] }
+  type Dong = { ten: string; chu?: string; dau: number | string | null; cuoi: number | string | null; kq: ReactNode; phu?: string; trend: (number | null | undefined)[] }
+  const ds: Dong[] = [
+    haiChieu('Nhóm yếu', hc?.nhom, (w) => w.hai_chieu?.nhom.het_yeu),
+    haiChieu('Dạng yếu', hc?.dang, (w) => w.hai_chieu?.dang.het_yeu),
+    { ten: 'Học sinh yếu', chu: 'có ≥ 1 nhóm yếu', dau: t.hs_yeu.dau, cuoi: t.hs_yeu.cuoi, kq: giam(t.hs_yeu.giam, t.hs_yeu.ti_le_giam), phu: `Sĩ số ${t.hs_yeu.si_so} em`, trend: tr.map((w) => w.tong.hs_yeu.cuoi) },
+    { ten: 'Học sinh yếu', chu: 'có ≥ 2 nhóm yếu', dau: h?.hs_yeu_2.dau ?? null, cuoi: h?.hs_yeu_2.cuoi ?? null, kq: h ? giam(h.hs_yeu_2.giam, h.hs_yeu_2.ti_le_giam) : thieu, trend: tr.map((w) => w.tong.ht?.hs_yeu_2.cuoi) },
+    { ten: 'HS yếu được xếp bổ trợ', chu: 'HS yếu = ≥ 2 nhóm yếu đầu tuần', dau: h?.xep?.yeu_2 ?? null, cuoi: h?.xep ? `${h.xep.xep_2} em được xếp` : null,
+      kq: h?.xep ? tiLe(h.xep.xep_2, h.xep.yeu_2, h.xep.ti_le_2) : thieu, phu: h?.xep ? `Tính cả em ≥ 1 nhóm yếu: ${h.xep.xep_1}/${h.xep.yeu_1} (${so(h.xep.ti_le_1, '%')})` : undefined, trend: tr.map((w) => w.tong.ht?.xep?.ti_le_2) },
+    { ten: 'Hiệu suất bổ trợ', chu: 'đơn vị hết yếu / đơn vị được test · 1 em × 1 dạng = 1 đơn vị', dau: h ? `${h.hieu_suat.don_vi} đơn vị test` : null, cuoi: h ? `${h.hieu_suat.het_yeu} hết yếu` : null,
+      kq: h ? tiLe(h.hieu_suat.het_yeu, h.hieu_suat.don_vi, h.hieu_suat.ti_le, 'text-emerald-600') : thieu, trend: tr.map((w) => w.tong.ht?.hieu_suat.ti_le) },
+    { ten: 'Vắng ca bổ trợ', chu: 'lượt vắng / lượt đã điểm danh', dau: h ? `${h.vang.luot_xep} lượt xếp` : null, cuoi: h ? `${h.vang.vang} lượt vắng` : null,
+      kq: h ? tiLe(h.vang.vang, h.vang.da_diem_danh, h.vang.ti_le, h.vang.vang > 0 ? 'text-rose-600' : 'text-emerald-600') : thieu, trend: tr.map((w) => w.tong.ht?.vang.ti_le) },
+    { ten: 'HS yếu chưa ai xử lý', chu: 'chưa có đề xuất · ca · theo dõi', dau: null, cuoi: h?.chua_xu_ly ? h.chua_xu_ly.n1 : null,
+      kq: h?.chua_xu_ly ? <span className={`font-extrabold ${h.chua_xu_ly.n1 > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>{h.chua_xu_ly.n1} em<span className="ml-1.5 text-[13px] font-semibold text-slate-500">(≥ 2 nhóm: {h.chua_xu_ly.n2})</span></span> : thieu,
+      phu: 'Việc của tuần tới — xem tên ở "HS còn yếu" bên dưới', trend: tr.map((w) => w.tong.ht?.chua_xu_ly?.n1) },
+  ]
+  const td = 'border-t border-slate-100 px-3 py-2 whitespace-nowrap'
+  return (
+    <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <table className="w-full text-[13px]">
+        <thead><tr className={`${TH} bg-slate-50`}>
+          <th className="px-3 py-2">Chỉ số</th><th className="px-3 py-2 text-right">Đầu tuần</th><th className="px-3 py-2 text-right">{ht ? 'Hiện tại' : 'Cuối tuần'}</th>
+          <th className="px-3 py-2">Kết quả</th><th className="px-3 py-2">Thường đạt</th><th className="px-3 py-2">4 tuần</th><th className="px-3 py-2">Ghi chú</th>
+        </tr></thead>
+        <tbody>{ds.map((d, i) => (
+          <tr key={i}>
+            <td className={td}><b className="text-[14px] text-slate-800">{d.ten}</b>{d.chu && <span className="ml-1.5 text-[11.5px] text-slate-400">{d.chu}</span>}</td>
+            <td className={`${td} text-right text-[17px] font-bold tabular-nums text-slate-700`}>{d.dau ?? <span className="text-slate-300">—</span>}</td>
+            <td className={`${td} text-right text-[17px] font-bold tabular-nums text-slate-900`}>{d.cuoi ?? <span className="text-slate-300">—</span>}</td>
+            <td className={`${td} text-[17px] tabular-nums`}>{d.kq}</td>
+            <td className={`${td} text-[12px] text-slate-400`} title="Thường đạt = trung bình các tuần trước của chính khối này. Cần ít nhất 4 tuần có số; ảnh đầu tuần mới có từ 09/11.">chưa đủ 4 tuần</td>
+            <td className={td}><Cot4 v={d.trend} /></td>
+            <td className={`${td} text-[12px] text-slate-500`}>{d.phu ?? ''}</td>
+          </tr>
+        ))}</tbody>
+      </table>
+    </div>
+  )
+}
+
+// 4 cột nhỏ: dãy số DB trả về của 4 tuần gần nhất (cũ → mới); tuần chưa có số = vạch mờ.
+function Cot4({ v }: { v: (number | null | undefined)[] }) {
+  const lon = Math.max(1, ...v.map((x) => Math.abs(x ?? 0)))
+  return (
+    <div className="flex h-6 w-[72px] items-end gap-1" title={v.map((x) => x ?? '—').join(' → ')}>
+      {v.map((x, i) => <div key={i} className={`flex-1 rounded-t ${i === v.length - 1 ? 'bg-indigo-400' : 'bg-slate-300'}`} style={{ height: x == null ? 2 : `${Math.max(10, (Math.abs(x) / lon) * 100)}%` }} />)}
     </div>
   )
 }

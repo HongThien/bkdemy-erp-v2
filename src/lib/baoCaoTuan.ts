@@ -14,7 +14,17 @@ export type NhomSo = {
   hai_chieu?: { dang: HaiChieu; nhom: HaiChieu } | null
 }
 export type HaiChieu = { dau: number; con_yeu: number; het_yeu: number; roi: number; phat_sinh: number; cuoi: number; ti_le_het_yeu: number | null }
+// 18/11 chiều (mig 202611181720): khối HỌC TẬP — HS yếu ≥ 2 nhóm · tỉ lệ HS yếu đầu tuần được XẾP bổ trợ (mẫu ≥ 1 và ≥ 2 nhóm) ·
+// hiệu suất bổ trợ = đơn vị (em × dạng) hết yếu / đơn vị được test · vắng ca bổ trợ · HS yếu chưa ai xử lý. Bản snap cũ không có.
+export type KhoiHocTap = {
+  hs_yeu_2: { dau: number | null; cuoi: number | null; giam: number | null; ti_le_giam: number | null }
+  chua_xu_ly: { n1: number; n2: number } | null
+  xep: { yeu_1: number; xep_1: number; ti_le_1: number | null; yeu_2: number; xep_2: number; ti_le_2: number | null } | null
+  hieu_suat: { don_vi: number; het_yeu: number; ti_le: number | null }
+  vang: { luot_xep: number; da_diem_danh: number; vang: number; ti_le: number | null }
+}
 export type TongSo = NhomSo & {
+  ht?: KhoiHocTap
   dong_chay: { vao: number; ra_bang_chung: number; ra_cua_so: number } | null
   do_phu: { so_hs: number; so_hs_co_do: number; ti_le: number | null }
   bo_tro: { ca_yeu: number; ca_nhe: number; luot_hs: number; hs_yeu_dau: number | null; hs_yeu_duoc_bt: number | null; do_phu: number | null; het_yeu_sau_ca: number | null }
