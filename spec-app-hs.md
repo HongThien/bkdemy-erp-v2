@@ -770,7 +770,7 @@ Luật 01/10: ngày lớp nghỉ và tuần thi thì chuỗi tự đóng băng. 
 | 2 | **Nông trại là gốc, thêm dần.** Bản 3 màn (01/10) và Làng BK (12/10) là nháp, không làm khi chưa có lệnh. | — |
 | 3 | **Khoá ngay chỗ lộ đáp án Đấu trường** (đấu online · giải Toán / KHTN · khách tạm ngừng tới khi chấm ở máy chủ). | áp bản vá `202610071540_dtv_khoa_kho_bo_cau.sql` — CHƯA áp, chờ lệnh riêng (làm ngừng 3 chế độ) |
 | 4 | **"Chúng nó chơi vào giờ ra chơi mà"** — KHÔNG chặn, KHÔNG báo giáo viên. Giới hạn 30 phút / ngày của Nông trại giữ như cũ. | — |
-| 5 | **"Không có luật đủ 5 phút nhận xu. Mục tiêu là chơi 5 phút, không liên quan cái này."** — nhận xu KHÔNG phụ thuộc số phút chơi. **Code đang trái:** cấu hình "phút tối thiểu để tính ngày chơi" = 5 ⇒ 116 / 191 em (30 ngày) không ngày nào đủ ⇒ không nhận xu. | đặt cấu hình về 0 — CHƯA áp (hệ chặn lệnh đổi cấu hình xu đang chạy khi chưa có lệnh rõ); chờ Thùy nói "sửa" |
+| 5 | **"Không có luật đủ 5 phút nhận xu. Mục tiêu là chơi 5 phút, không liên quan cái này."** — nhận xu KHÔNG phụ thuộc số phút chơi. **Code đang trái:** cấu hình "phút tối thiểu để tính ngày chơi" = 5 ⇒ 116 / 191 em (30 ngày) không ngày nào đủ ⇒ không nhận xu. | ✅ ĐÃ SỬA 18/11 13:20 (Thùy "Sửa đi", mig `202611181319`): phút tối thiểu 5 → 0. Trần 20 xu / tháng + 4 xu / ngày chơi giữ. Tháng 11: em có ngày chơi 55 → 151; trần lý thuyết cả hệ 580 → 1.860 xu (đã trả 241; số thật tuỳ sản lượng trại). Không trả bù tay — tự tính lại khi em mở Nông trại. |
 | 6 | Giữ **trần 4 xu / ngày chơi** làm lưới an toàn (cùng trần 20 xu / tháng). | — |
 | 7 | Câu cá **3 lượt / ngày**, đo một tháng. | — |
 | 8 | Bắt thú **không trả xu trực tiếp** (theo 01/10); chưa gấp. | — |
