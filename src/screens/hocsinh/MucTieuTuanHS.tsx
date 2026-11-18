@@ -249,17 +249,17 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
           <span className="text-[14px]" style={{ color: MAU.muted, transform: mo ? 'rotate(180deg)' : 'none' }}>⌄</span>
         </div>
         <div className="relative mt-1 h-[38px]">
-          <div className="absolute left-0 right-0 top-[14px] h-[8px] overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }}>
+          {/* Thùy 18/11: thanh dày hơn ~20% (8 → 10 px), vạch mục tiêu nằm TRONG thanh (màu nhấn của style, viền màu mặt thẻ) */}
+          <div className="absolute left-0 right-0 top-[14px] h-[10px] overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }}>
             <div className="h-full" style={{ width: `${n.p ?? 0}%`, background: mauPct(n.p), borderRadius: 'var(--sk-radius-pill)' }} />
           </div>
-          {n.p != null && n.p_dau != null && <div className="absolute top-[10px] h-[16px]" style={{ left: `${n.p_dau}%`, borderLeft: `2px dashed ${MAU.muted}` }} title={`Đầu tuần ${n.p_dau}%`} />}
+          {n.p != null && n.p_dau != null && <div className="absolute top-[14px] h-[10px]" style={{ left: `${n.p_dau}%`, borderLeft: `1.5px dashed ${MAU.muted}` }} title={`Đầu tuần ${n.p_dau}%`} />}
           {mt != null && mt < n.dich && <>
             <div className="absolute top-[8px] h-[20px]" style={{ left: `${n.dich}%`, borderLeft: `2px solid ${MAU.line}` }} />
             <span className="absolute top-0 text-[10px] font-semibold" style={{ left: `calc(${n.dich}% + 5px)`, color: MAU.muted }}>đích {n.dich}%</span>
           </>}
           {mt != null && <>
-            <div className="absolute top-0 h-[24px]" style={{ left: `${mt}%`, borderLeft: `2px solid ${MAU.ink}` }} />
-            <Co className="absolute top-0" style={{ left: `calc(${mt}% + 2px)` }} />
+            <div className="absolute top-[14px] h-[10px] w-[4px] -translate-x-1/2" style={{ left: `${mt}%`, background: MAU.acc, boxShadow: `0 0 0 1.5px ${MAU.surface}`, borderRadius: 2 }} title={`Mục tiêu tuần ${mt}%`} />
             <span className="absolute top-[25px] -translate-x-1/2 text-[11px] font-bold" style={{ left: `${mt}%`, color: MAU.ink }}>{mt}%</span>
           </>}
         </div>
