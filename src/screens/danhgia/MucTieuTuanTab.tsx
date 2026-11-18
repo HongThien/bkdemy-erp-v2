@@ -80,10 +80,23 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
           <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau">›</button>
         </div>
         {data && (xemLop || xemHs) && <>
-          <button onClick={() => { setXemLop(null); setXemHs(null) }} className="h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50" title="Về tổng quan khối">← Khối</button>
+          <button onClick={() => { setXemLop(null); setXemHs(null) }} className="h-7 rounded-md bg-indigo-600 px-2.5 text-[12px] font-semibold text-white hover:bg-indigo-700" title="Về bảng tổng quan khối (công bố từng lớp, số cả khối)">← Tổng quan khối</button>
           {data.lop.map((l) => <button key={l.lop_id} onClick={() => { setXemLop({ id: l.lop_id, ten: l.ten_lop }); setXemHs(null) }}
             className={`h-7 rounded-full px-2.5 text-[12px] font-semibold ${xemLop?.id === l.lop_id ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l.ten_lop}</button>)}
         </>}
+        {/* Thùy 18/11: nút Công bố có cả ở màn trong (đang xem lớp / em) — không phải quay ra tổng quan khối */}
+        {data && xemLop && (() => {
+          const l = data.lop.find((x) => x.lop_id === xemLop.id)
+          if (!l) return null
+          return l.chot_at
+            ? <span className="rounded-md bg-emerald-50 px-2 py-1 text-[12px] font-semibold text-emerald-700 ring-1 ring-emerald-200">✓ {l.ten_lop} đã công bố {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}</span>
+            : data.dang_chay
+              ? <button onClick={() => chot(l.lop_id, l.bo_tro_cho)} disabled={dangChot !== null} title="Khoá mục tiêu tuần của cả lớp + đưa lên app HS / PH"
+                  className="h-7 rounded-md bg-slate-800 px-2.5 text-[12px] font-semibold text-white hover:bg-slate-700 disabled:opacity-50">
+                  {dangChot === l.lop_id ? 'Đang công bố…' : `📣 Công bố ${l.ten_lop}${l.bo_tro_cho > 0 ? ` · ${l.bo_tro_cho} bổ trợ chờ` : ''}`}
+                </button>
+              : <span className="text-[12px] text-slate-400">Tuần đã qua — không công bố</span>
+        })()}
         {data?.tinh_at && <span className="text-[11.5px] text-slate-400" title={tuan === nay ? 'Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp). Phần 2 (bổ trợ) tự đồng bộ theo lượt chốt bổ trợ mới nhất, kể cả sau khi đã công bố.' : undefined}>số lúc {gioPhut(data.tinh_at)} ⓘ</span>}
         <button onClick={() => setMoTop(true)} className="ml-auto h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50" title={`Top 20 toàn trung tâm · ${mon}`}>🏆 Top 20</button>
       </div>
