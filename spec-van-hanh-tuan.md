@@ -94,6 +94,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 
 1. **Thứ Sáu — trưởng khối** mở *Phòng › 📅 Giáo trình tuần*, mặc định **tuần sau**, ô (môn × khối) trong phạm vi (xếp theo `thuTuMon`, khối theo số).
    Lưới: hàng = lớp · cột = T2…CN · ô = ca (giờ · phòng · Buổi N · ≤ 4 dòng khung + "+N khác" · cờ "sửa sau duyệt" / "✓ đã gán ngày dạy" / "⚠ ngày dạy gán buổi khác").
+   **Bảng vừa màn (Thùy 18/11):** không cuộn ngang (`table-fixed`, cột Lớp 84 px, 7 cột ngày chia đều), màn cao bằng cửa sổ, lưới cuộn dọc trong khung · **ô ca kích thước CỐ ĐỊNH** (96 px), mọi dòng cắt "…": giờ · phòng (+ ✓/⚠ đã gán ngày dạy, ✎ sửa sau duyệt cùng dòng) · tên buổi · tối đa 3 khung (quá 3 ⇒ 2 + "+n khác…") · **bấm ô ⇒ khung bên phải đủ thông tin**.
 2. **Bấm một ca ⇒ khung bên phải.** Mỗi giáo trình của lớp một khối, có thẻ **Đại / Hình / HGT** (Đại trước):
    - **"✓ Dùng buổi kế tiếp — Buổi N · …"** (Thùy 16/11: *"khi giáo viên chọn thì hệ thống tự đề xuất — mỗi lớp 2 giáo trình nên hệ thống chọn được đâu"*):
      hệ **không đoán giáo trình cho ca**; người chọn giáo trình, hệ đề xuất **buổi kế tiếp chưa gán** của giáo trình đó (§3.5). Hết buổi soạn sẵn ⇒ nhắc "+ Buổi mới".
@@ -226,10 +227,13 @@ Builder giáo trình CỦA LỚP ───────────────�
 - **3 phần, header dải màu chữ trắng:** **Bài trên lớp** (xanh dương) · **Ôn tập kiến thức** (cam) · **Hoạt động tuần này** (xanh lá). Bỏ thẻ "Bài … tính vào tuần sau" ở app PH (ERP giữ một dòng nhỏ "Bài … → tuần sau ⓘ").
 - **Thẻ nhóm 2 dòng:** dòng 1 tên nhóm (một dòng, dài thì "…") + nhãn Đạt / Chưa đạt / Chưa đo · dòng 2 thanh ngắn (không số trên thanh; vạch đầu tuần + cờ mục tiêu) + "Mục tiêu x% · Tăng a → b% / Giảm … / giữ b%".
 - **Hoạt động tuần này:** chỉ BTVN · ET · MT (buổi có MT ⇒ MT thay ET) · Bổ trợ sau giờ · Bổ trợ yếu. Dòng phụ KHÔNG liệt kê nhóm/dạng (chỉ nộp / hạn / giờ phòng / ghi chú). Nút **"Chi tiết ▾" cùng dòng**:
-  ERP ⇒ kết quả TỪNG DẠNG của việc đó (tên dạng · số câu · %; `fn_mtt_viec_dang`, mig `202611172310` — một em × một buổi, gọi khi bấm); app PH ⇒ tên nhóm của việc (PH chưa có % từng dạng — muốn có thì đưa vào payload lúc tính tờ, chờ Thùy).
+  ERP ⇒ kết quả TỪNG DẠNG của việc đó (tên dạng · số câu · %; `fn_mtt_viec_dang`, mig `202611172310` — một em × một buổi, gọi khi bấm); app PH ⇒ tên nhóm của việc (Thùy 18/11: PH không cần % từng dạng).
 - **ERP (Phòng làm việc › 🎯 Mục tiêu tuần — đồ vật riêng, lịch thứ 2 cột trái phòng):** header MỘT dòng (ô môn × khối · ↻ · tuần · ← Khối · chip lớp · "số lúc HH:MM ⓘ" · 🏆 Top 20) · cột tên em hẹp (200–240 px) · tờ một em trọn MỘT màn: đầu tờ một dòng (tên · lớp · Nháp/Đã công bố · tiến độ · việc · hạng · tự luyện) + 3 cột Bài trên lớp · Ôn tập kiến thức · Hoạt động tuần này; chú thích dài vào tooltip.
 - **📱 Xem như phụ huynh** (ERP, nút trên tờ em): khung điện thoại dọc 390×844 nhúng trang `/xem-mtt` của app PH; ERP đưa sẵn tờ qua postMessage (xem được cả NHÁP); trang PH không đọc dữ liệu, nhận tin theo khung nhúng (không theo tên miền), có dải "Bản xem trước".
 - **Nhớ màn:** rời phòng / F5 / mở lại hôm sau ⇒ đúng đồ vật, ô, lớp, em đang xem (tuần chỉ nhớ trong ngày) — `lib/nho.ts`, CLAUDE §2 React.
+- **Công bố ở màn trong (Thùy 18/11):** đang xem một lớp / một em ⇒ dòng đầu có **"← Tổng quan khối"** (nút nổi) + **"📣 Công bố <lớp> · n bổ trợ chờ"** (cùng hàm, hỏi lại nếu còn bổ trợ chờ) hoặc "✓ <lớp> đã công bố HH:MM" — vì nhớ màn đưa thẳng vào lớp / em, không bắt quay ra bảng tổng quan.
+- **Thanh tiến độ (Thùy 18/11, cả ERP · app HS · app PH):** thanh dày hơn ~20%, **mọi vạch NẰM TRONG thanh** — vạch mục tiêu tuần = vạch màu nhấn viền sáng, vạch đầu tuần = nét đứt, vạch "đích 80%" (app HS) = vạch mảnh; bỏ que đen + cờ nhô ra. Màu thanh giữ như cũ.
+- **App PH:** KHÔNG làm % từng dạng (Thùy 18/11 "phụ huynh thì không cần") — Chi tiết ở PH chỉ hiện tên nhóm.
 
 ---
 
