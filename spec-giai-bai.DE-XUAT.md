@@ -206,7 +206,22 @@ Không dòng nào xoá hẳn được. **Nợ mới đề xuất thêm:**
 
 ---
 
-## 5. Câu hỏi cho Thùy (8 câu, xếp theo mức quan trọng)
+## 5.0 THÙY TRẢ LỜI 18/11 (thắng "đề xuất" ở mục 5 và mọi đoạn đề xuất chèn còn trái — nhất là Phần E, §C6)
+
+| Câu | Thùy trả lời (nguyên ý) | Luật ghi vào `spec-giai-bai.md` khi áp |
+|---|---|---|
+| 1 | "Câu giải hiện tại rất ít khi Claude giải sai, tỉ lệ chấp nhận được. Nên chủ yếu là chỗ PHÂN DẠNG. Claude tự tin ở mức cao thì mặc định duyệt vào kho. Câu clone Claude kiểm tra auto duyệt." | **Tự vào kho = máy gán dạng ở mức tự tin CAO + câu có đáp án đầy đủ + không bị máy nghi** (đúng cơ chế đang chạy). KHÔNG thêm điều kiện "bên thứ hai xác nhận đáp số". §C6 sửa theo đây (bỏ điều kiện nhân chứng đáp số khỏi "điều kiện đích"; nợ §C10 tương ứng xoá). **Câu CLONE: Claude kiểm xong thì TỰ DUYỆT** (không qua hàng duyệt của người). |
+| 2 | OK + "Cần có quy trình rà soát lại đáp án các câu trong kho" | Câu đã tự vào kho giữ nguyên; **thêm QUY TRÌNH RÀ ĐÁP ÁN KHO** (máy tính lại đáp số dần, ngoài 17–22 giờ; lệch ⇒ rút về hàng chờ + báo cáo). Quy trình này phải viết thành một mục riêng (Phần E) — CHƯA viết chi tiết, cần thiết kế: thứ tự khối, ngân sách token / ngày, cách ghi vết. |
+| 3 | OK | **Khoá ở hệ thống: chỉ trưởng khối đúng khối trở lên bấm duyệt câu vào kho** (kể cả lô mẫu). |
+| 4 | "Cần có quy trình để Claude TỰ ĐỘNG đọc và SỬA — không liên quan đến người. Chỉ báo cáo lại cho người nhìn — không cần duyệt. Nếu sai người hậu kiểm và sửa sau." | **Báo sai (đề / đáp án sai): Claude tự đọc, tự quyết, tự sửa câu trong kho; KHÔNG có bước người duyệt.** Người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm; sai thì người sửa lại sau. **Thay** quyết định 17–18/11 "trưởng khối duyệt báo sai trong 48 giờ" (đã sửa ở `spec-quan-ly-chat-luong.md` §11.0 câu 4). Chưa build: quy trình chạy (ai bấm chạy / lịch), báo cáo gửi ai, ghi vết từng lần sửa. |
+| 5 | "8T do t trực tiếp làm. Tạm thế." | Khối 8T: Thùy trực tiếp làm — giữ cơ chế hiện có của 8T (tự duyệt theo lệnh 10/10), không áp điều kiện "dạng phải có lý thuyết". Tạm thời, chưa phải luật cuối. |
+| 6 | "Có. Nhưng cần KẾ HOẠCH để vẽ vì cần quản lý token. Cần 1 cái CHECKLIST hình vẽ — t đã cho m làm từ trước rồi." | Hình lượng giác / vectơ / hình không gian lớp 11 **CÓ vẽ lại**, theo luật chung 15/11. **Checklist = bộ đếm hình đề theo khối đã build 15/11** (§C12: `fn_kho_hinh_dem` + nhãn nguồn hình `kho_hinh_nguon`). Việc phải làm trước khi vẽ: (i) cho mọi đường tạo câu ghi nhãn nguồn hình (hiện 14.438 / 14.462 hình "chưa rõ nguồn" ⇒ checklist chưa dùng được); (ii) lập KẾ HOẠCH VẼ theo khối × loại hình, có ngân sách token mỗi đợt, Thùy duyệt từng đợt. |
+| 7 | OK | Thêm mục `## Khối 3` ngắn (dùng luật Khối 4 + bảng cấm tiểu học); tài liệu khối 3 đầu tiên là lô mẫu. |
+| 8 | OK | Không quét lại kho cũ hàng loạt lúc này; kiểm khi có báo sai / khi câu sắp vào đề; xong toanmath mới quét. (Quy trình rà đáp án ở câu 2 là đường quét về sau.) |
+
+**Đã dò "đường duyệt hàng loạt" (Thùy: "m dò đường duyệt đi") — KHÔNG có đường lạ:** DEVLOG 04/11 đêm ghi hai lượt theo lệnh Thùy: 19:31 duyệt 1.179 câu K12 NH-TP ("đẩy vào bản đồ thì auto duyệt đi chứ", script `nhtp-sach/duyet-cao-hom-nay.mjs`) · 19:39 duyệt câu gán mức cao mọi khối K6–K12, Đại 9.844 + HGT 2.405 ("các lớp khác làm thế luôn", `duyet-cao-moi-khoi.mjs`; DB hôm nay đếm 9.744 câu Đại còn sống). 05/11: mig `202611051930` bật trigger tự duyệt khi gán mức cao + mig `202611051651` duyệt câu tiểu học từ bản đồ cũ. 14/11: 1.917 câu, 1.914 khớp trigger. Tức 1.122 câu "chưa dò ra đường" ở mục 3 thuộc hai lượt 04/11.
+
+## 5. Câu hỏi gốc (ĐÃ TRẢ LỜI ở 5.0 — giữ làm bối cảnh)
 
 **1. Câu "tự vào kho" — từ nay cần thêm điều kiện gì?**
 Ví dụ: ngày 14/11 có 1.917 câu tự thành "đã duyệt" trong một ngày, chỉ vì máy vừa gán dạng cho chúng và câu có đáp án. Không ai so lại đáp số.

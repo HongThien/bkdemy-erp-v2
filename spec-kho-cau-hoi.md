@@ -308,13 +308,13 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 | Q2 | **Hình theo luật chung**: `kho_chuan` của Hình đổi về `_kho_cau_chuan` (câu mới phải `da_duyet`). Khi làm: đo trước số câu rời kho (17/11: 3.692) + báo trưởng khối Hình. |
 | Q3 | **Bật trigger thu hồi form TN khi sửa đáp số** (như điền ô). 13 form đang lệch ⇒ trưởng khối môn soát. |
 | Q4 | **25 form TN Hình chờ ⇒ kho rác** (`xoa_at`, không xoá cứng). |
-| Q5 | **Bỏ bảng nháp clone**: clone ghi thẳng kho `da_duyet=false`, đi chung một hàng duyệt; đáp số clone có nhân chứng máy/Opus trước khi duyệt. 5.665 nháp cũ: đưa qua cùng hàng hoặc rác — hỏi khi làm. |
+| Q5 | **Bỏ bảng nháp clone**: clone ghi thẳng kho. **Sửa 18/11 (Thùy): "Câu clone Claude kiểm tra auto duyệt"** ⇒ clone do Claude sinh, Claude kiểm xong thì TỰ DUYỆT vào kho (`da_duyet=true`, nguồn duyệt máy) — KHÔNG qua hàng duyệt của người. Clone không qua được bước kiểm ⇒ không vào kho. 5.665 nháp cũ: hỏi khi làm. |
 | Q6 | **Bỏ vế "câu cũ tạm dùng"** (kho chuẩn = `da_duyet` thuần) ngay khi quét xong 353 Đại + 1 HGT còn lại. |
 | Q7 | **Cho máy ký** form TN (`duyet_nguon` kiểu `may`) khi verify 0 FAIL + độ lừa đủ; form không qua ⇒ trưởng khối môn duyệt. |
 | Q8 | **Ranh giới:** `spec-giai-bai` giữ LUẬT; spec này giữ QUY TRÌNH + CÔNG CỤ + DỮ LIỆU. `SPEC-INDEX` đã sửa (dòng 3 thêm `spec-de-thi` phần bóc câu + `spec-format-noidung` phần hiển thị câu; dòng 5 bỏ `spec-de-thi`). |
 | Q9 | Sửa `ghi.mjs` ghi `nguon_giai='ai'`, `giai_method='claude_code'`, `ai_model` **trước batch kế tiếp**; vá câu cũ CHỈ với đề có `.soan.md` làm nhân chứng. |
 | Q10 | Mọi đường gắn `anh_de` lúc tạo câu gọi `ghiNhanHinh` cùng transaction, mặc định `goc`; 118 câu mới gắn `goc` khi có lệnh. |
-| Q11 | **Bỏ "Duyệt luôn"** ở clone ERP: ghi `da_duyet=false`, đi chung hàng duyệt Q5. |
+| Q11 | Clone bấm trong ERP: đi cùng luật Q5 (sửa 18/11) — Claude kiểm rồi tự duyệt; nút "Duyệt luôn" không còn là đường bỏ qua bước kiểm. |
 | Q12 | **Dấu phẩy thập phân** cho mọi đường; sửa `FMT_RULES` cho khớp `spec-giai-bai`. |
 | Q13 | (không có đề xuất ghi sẵn — CTO chọn) **Giữ tạm** đường nhập ảnh/PDF trong ERP, thêm nhãn nguồn để đo lượt dùng; 2 tuần không ai dùng ⇒ gỡ như nhập đề thi 01/10. |
 
