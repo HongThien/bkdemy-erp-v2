@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-603 bảng · 42 view · 0 enum · 465 trigger · 2009 function
+604 bảng · 42 view · 0 enum · 466 trigger · 2013 function
 
 ## _app_secrets
 
@@ -4972,7 +4972,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -5874,6 +5874,17 @@ END |  |  |
 | payload | jsonb |  |  |  |  |
 | chot_at | timestamp with time zone |  | now() |  |  |
 
+## mtt_cong_bo_lai
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| so | bigint |  |  | PK |  |
+| tuan | date |  |  |  |  |
+| lop_id | uuid |  |  | FK→lop.id |  |
+| at | timestamp with time zone |  | now() |  |  |
+| boi | uuid | Y |  | FK→nhan_su.id |  |
+| ly_do | text |  |  |  |  |
+
 ## mtt_dau
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -5892,7 +5903,7 @@ END |  |  |
 | hoc_sinh_id | uuid |  |  | PK FK→hoc_sinh.id |  |
 | nhom | jsonb |  |  |  |  |
 | viec | jsonb |  |  |  |  |
-| chot_at | timestamp with time zone |  | now() |  |  |
+| chot_at | timestamp with time zone |  | now() | PK |  |
 
 ## mtt_lop_chot
 
@@ -6817,8 +6828,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11527,6 +11538,7 @@ WITH luot AS (
 | lich_test_khung | trg_log_lich_test_khung | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | lich_test_khung | trg_updated_lich_test_khung | BEFORE | UPDATE | _lich_test_cham_updated |
 | mtt_chot | mtt_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
+| mtt_cong_bo_lai | mtt_cong_bo_lai_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | mtt_ke_hoach | mtt_ke_hoach_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | mtt_lop_chot | mtt_lop_chot_bat_bien_trg | BEFORE | DELETE/UPDATE | _mtt_chot_bat_bien |
 | nhan_su | trg_nhan_su_chan_ghi | BEFORE | INSERT/UPDATE | _trg_nhan_su_chan_ghi |
@@ -12042,6 +12054,7 @@ WITH luot AS (
 - `_mt_loai_ky_cua_buoi(p_buoi uuid)` → text
 - `_mt_o_bai_cu(p_buoi uuid)` → TABLE(id uuid, k integer, tong numeric)
 - `_mt_phan_nang_cao(p_phan uuid)` → boolean
+- `_mtt_buoi_co_gt(p_lop uuid, p_tuan date)` → integer
 - `_mtt_buoi_tuan(p_lop uuid, p_tuan date)` → TABLE(ngay date)
 - `_mtt_chot_bat_bien()` → trigger
 - `_mtt_dang_nhom(p_hs uuid, p_mon text, p_buoi jsonb, p_den timestamp with time zone, p_bdm boolean)` → jsonb
@@ -12053,8 +12066,10 @@ WITH luot AS (
 - `_mtt_ha_muc(p_muc text)` → text
 - `_mtt_hom_nay()` → date
 - `_mtt_kem_hang(p_payload jsonb, p_hang integer, p_hang_truoc integer, p_so integer, p_tinh_at timestamp with time zone)` → jsonb
+- `_mtt_kiem_cong_bo(p_lop uuid, p_tuan date)` → void
 - `_mtt_lam_moi(p_giay integer DEFAULT 40)` → jsonb
 - `_mtt_moc(p_ngay date)` → timestamp with time zone
+- `_mtt_moc_cong_bo_lai(p_tuan date, p_lop uuid[])` → timestamp with time zone
 - `_mtt_muc(p numeric)` → text
 - `_mtt_nhom_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → text[]
 - `_mtt_nhom_cua_o(p_o text)` → text
@@ -13134,6 +13149,7 @@ WITH luot AS (
 - `fn_mt_nhan_ban(p_de uuid, p_ten text DEFAULT NULL::text)` → uuid
 - `fn_mtt_cac_tuan(p_mon text, p_hs uuid DEFAULT NULL::uuid, p_so integer DEFAULT 8)` → jsonb
 - `fn_mtt_chot_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_mtt_cong_bo_lai(p_lop uuid, p_tuan date, p_ly_do text)` → jsonb
 - `fn_mtt_cua_toi(p_mon text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_mtt_dang_tinh_trang(p_hs uuid, p_mon text, p_ma text[])` → jsonb
 - `fn_mtt_ds_lop(p_lop uuid, p_tuan date DEFAULT NULL::date)` → jsonb
@@ -14012,6 +14028,7 @@ WITH luot AS (
 | luyen_gioi_han | luyen_gioi_han_tran_cau_ngay_check | `CHECK (((tran_cau_ngay >= 1) AND (tran_cau_ngay <= 1000)))` |
 | may_man_hs_luot | may_man_hs_luot_exp_check | `CHECK ((exp >= 0))` |
 | may_man_luot | may_man_luot_tien_check | `CHECK ((tien >= 0))` |
+| mtt_cong_bo_lai | mtt_cong_bo_lai_ly_do_check | `CHECK ((btrim(ly_do) <> ''::text))` |
 | muc_nang_luc | muc_nang_luc_muc_check | `CHECK (((muc >= 1) AND (muc <= 3)))` |
 | nhan_su_nhac_viec | nhan_su_nhac_viec_noi_dung_check | `CHECK (((length(btrim(noi_dung)) >= 1) AND (length(btrim(noi_dung)) <= 200)))` |
 | nhan_su_order | nhan_su_order_check | `CHECK ((nguoi_dat_id <> nguoi_nhan_id))` |

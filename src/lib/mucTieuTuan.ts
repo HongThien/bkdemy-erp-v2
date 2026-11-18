@@ -43,7 +43,7 @@ export type MttTuanCu = { tuan: string; tien_do: number | null; viec_xong: numbe
 export type MttTop = { tuan: string; tinh_at: string | null; ds: { hang: number; ten: string; lop: string | null; tien_do: number }[] }
 
 export type MttLopTT = {
-  lop_id: string; ten_lop: string; si_so: number; chot_at: string | null
+  lop_id: string; ten_lop: string; si_so: number; chot_at: string | null; cong_bo_lai_at?: string | null
   so_buoi: number; so_buoi_co_tl: number; bo_tro_cho: number
   tien_do_tb: number | null; tien_do_dau_tb: number | null; viec_xong: number; viec_den_han: number
   btvn_tot: number; btvn_tam_on: number; btvn_chua_tot: number; chua_lam: number
@@ -112,6 +112,13 @@ export async function mttViecDang(hsId: string, mon: string, buoiId: string, loa
   return (data ?? []) as MttViecDang[]
 }
 // CÔNG BỐ lớp (mig 202611161844; DB giữ tên fn_mtt_chot_lop): CHỈ ghi dòng công bố; tờ + bản khoá do bộ điều phối tính ở lượt kế (≤ 5 phút) ⇒ da_tinh luôn 0
+// Công bố lại (Thùy 18/11): lớp đã công bố mà giáo trình sửa sau đó ⇒ khoá lại Phần 1 theo giáo trình hiện tại; bắt buộc lý do, bản khoá cũ giữ làm vết.
+export async function mttCongBoLai(lopId: string, tuan: string, lyDo: string): Promise<{ tuan: string; lop_id: string; at: string; tong: number }> {
+  const { data, error } = await supabase.rpc('fn_mtt_cong_bo_lai', { p_lop: lopId, p_tuan: tuan, p_ly_do: lyDo })
+  if (error) throw error
+  return data
+}
+
 export async function mttChotLop(lopId: string, tuan?: string | null): Promise<{ tuan: string; lop_id: string; chot_at: string; da_tinh: number; tong: number }> {
   const { data, error } = await supabase.rpc('fn_mtt_chot_lop', { p_lop: lopId, p_tuan: tuan ?? null })
   if (error) throw error

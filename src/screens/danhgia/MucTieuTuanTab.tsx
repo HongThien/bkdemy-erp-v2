@@ -3,7 +3,7 @@
 // em cần để ý (bấm ⇒ tờ của em). Mọi con số từ DB (fn_mtt_trung_tam, fn_mtt_hs — mig 202611131000); client chỉ định dạng.
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
-  mttTrungTam, mttCuaHs, mttViecDang, mttDangTinhTrang, mttChotLop, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, nhanHoc,
+  mttTrungTam, mttCuaHs, mttViecDang, mttDangTinhTrang, mttChotLop, mttCongBoLai, mttCacTuan, mttTop, mttDsLop, laChuaChot, dauTuanNay, congNgay, ngayNgan, thuNgay, gioPhut, nhanHoc,
   NHAN_MUC, NHAN_TT, NHAN_THAI_DO, TEN_VIEC,
   type MttTrungTam, type MttTo, type MttNhom, type MttViec, type MucDanhGia, type MttTuanCu, type MttTop, type MttEmLop, type MttDangTT, type MttViecDang,
 } from '../../lib/mucTieuTuan'
@@ -34,6 +34,12 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
   // đổi môn / khối ⇒ lớp và em đang xem không còn thuộc ngữ cảnh mới ⇒ về tổng quan (lần mount đầu giữ chỗ cũ)
   const ngCanh = useRef(mon + '|' + khoi)
   useEffect(() => { const k = mon + '|' + khoi; if (ngCanh.current !== k) { ngCanh.current = k; setXemLop(null); setXemHs(null) } }, [mon, khoi])
+
+  // lớp đang nhớ không thuộc khối vừa tải (đổi ô môn × khối làm màn mount lại, NHO còn giữ lớp của khối cũ) ⇒ về tổng quan khối
+  useEffect(() => {
+    if (!data || NHO.khoa !== [mon, khoi, tuan].join('|')) return
+    if (xemLop && !data.lop.some((l) => l.lop_id === xemLop.id)) { setXemLop(null); setXemHs(null) }
+  }, [data, xemLop, mon, khoi, tuan])
 
   // đổi ngữ cảnh (môn/khối/tuần) hoặc bấm ↻ ⇒ tải lại; quay lại tab cùng ngữ cảnh ⇒ dùng bản đã nhớ
   useEffect(() => {
@@ -67,6 +73,25 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
     } finally { setDangChot(null) }
   }
 
+  // Công bố lại (Thùy 18/11): giáo trình sửa sau khi đã công bố ⇒ khoá lại Phần 1; bắt buộc lý do. Vá đúng dòng lớp, không tải lại bảng.
+  const congBoLai = async (lopId: string, tenLop: string) => {
+    const lyDo = window.prompt(`Công bố lại ${tenLop}: mục tiêu "Bài trên lớp" của cả lớp sẽ khoá lại theo giáo trình hiện tại (bản cũ giữ làm vết).
+Lý do công bố lại:`)
+    if (lyDo == null) return
+    if (!lyDo.trim()) { setLoi('Công bố lại phải ghi lý do.'); return }
+    setDangChot(lopId); setLoi(null); setTb(null)
+    try {
+      const r = await mttCongBoLai(lopId, tuan, lyDo.trim())
+      setData((d) => { const moi = d && ({ ...d, lop: d.lop.map((l) => l.lop_id === lopId ? { ...l, cong_bo_lai_at: r.at } : l) }); if (moi) NHO.data = moi; return moi })
+      setTb(`Đã công bố lại ${tenLop} — hệ đang khoá lại mục tiêu cho ${r.tong} em theo giáo trình hiện tại, vài phút nữa xong.`)
+    } catch (e) {
+      setLoi('Chưa công bố lại được: ' + ((e as { message?: string })?.message ?? e))
+    } finally { setDangChot(null) }
+  }
+  // thiếu giáo trình ⇒ không công bố được (DB cũng chặn — cùng phép đếm với cột "Giáo trình x/y")
+  const thieuGt = (l: { so_buoi: number; so_buoi_co_tl: number }) => l.so_buoi > 0 && l.so_buoi_co_tl < l.so_buoi
+  const chuThieu = (l: { so_buoi: number; so_buoi_co_tl: number }) => `Thiếu giáo trình ${l.so_buoi_co_tl}/${l.so_buoi} buổi — điền đủ ở 📅 Giáo trình tuần rồi mới công bố`
+
   const tong = data?.tong
   const tile = 'rounded-xl border border-slate-200 bg-white px-4 py-3'
   const nhanTile = 'text-[11px] font-bold uppercase tracking-wide text-slate-500'
@@ -89,9 +114,15 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
           const l = data.lop.find((x) => x.lop_id === xemLop.id)
           if (!l) return null
           return l.chot_at
-            ? <span className="rounded-md bg-emerald-50 px-2 py-1 text-[12px] font-semibold text-emerald-700 ring-1 ring-emerald-200">✓ {l.ten_lop} đã công bố {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}</span>
+            ? <>
+                <span className="rounded-md bg-emerald-50 px-2 py-1 text-[12px] font-semibold text-emerald-700 ring-1 ring-emerald-200">✓ {l.ten_lop} đã công bố {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}{l.cong_bo_lai_at ? ` · công bố lại ${gioPhut(l.cong_bo_lai_at)}` : ''}</span>
+                {data.dang_chay && <button onClick={() => congBoLai(l.lop_id, l.ten_lop)} disabled={dangChot !== null || thieuGt(l)} title={thieuGt(l) ? chuThieu(l) : 'Giáo trình sửa sau khi công bố ⇒ khoá lại mục tiêu Bài trên lớp theo giáo trình hiện tại'}
+                  className="h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50 disabled:opacity-50">{dangChot === l.lop_id ? 'Đang công bố lại…' : '🔁 Công bố lại'}</button>}
+              </>
             : data.dang_chay
-              ? <button onClick={() => chot(l.lop_id, l.bo_tro_cho)} disabled={dangChot !== null} title="Khoá mục tiêu tuần của cả lớp + đưa lên app HS / PH"
+              ? thieuGt(l)
+                ? <span className="rounded-md bg-orange-50 px-2 py-1 text-[12px] font-semibold text-orange-700 ring-1 ring-orange-200">{chuThieu(l)}</span>
+                : <button onClick={() => chot(l.lop_id, l.bo_tro_cho)} disabled={dangChot !== null} title="Khoá mục tiêu tuần của cả lớp + đưa lên app HS / PH"
                   className="h-7 rounded-md bg-slate-800 px-2.5 text-[12px] font-semibold text-white hover:bg-slate-700 disabled:opacity-50">
                   {dangChot === l.lop_id ? 'Đang công bố…' : `📣 Công bố ${l.ten_lop}${l.bo_tro_cho > 0 ? ` · ${l.bo_tro_cho} bổ trợ chờ` : ''}`}
                 </button>
@@ -159,7 +190,11 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
                       <td className={`px-2 py-2 text-center ${l.so_buoi > 0 && l.so_buoi_co_tl < l.so_buoi ? 'font-semibold text-orange-700' : ''}`}>{l.so_buoi_co_tl}/{l.so_buoi}</td>
                       <td className={`px-2 py-2 text-center ${l.bo_tro_cho > 0 ? 'font-semibold text-orange-700' : ''}`}>{l.bo_tro_cho}</td>
                       <td className="px-2 py-2 text-center">
-                        {l.chot_at ? <span className="text-emerald-700">Đã công bố {gioPhut(l.chot_at)} {ngayNgan(l.chot_at.slice(0, 10))}</span>
+                        {l.chot_at ? <span className="text-emerald-700">Đã công bố {gioPhut(l.cong_bo_lai_at ?? l.chot_at)} {ngayNgan((l.cong_bo_lai_at ?? l.chot_at).slice(0, 10))}{l.cong_bo_lai_at ? ' (lại)' : ''}
+                            {data.dang_chay && <button onClick={() => congBoLai(l.lop_id, l.ten_lop)} disabled={dangChot !== null || thieuGt(l)} title={thieuGt(l) ? chuThieu(l) : 'Công bố lại: khoá lại mục tiêu Bài trên lớp theo giáo trình hiện tại (phải ghi lý do)'}
+                              className="ml-1.5 h-6 rounded bg-white px-1.5 text-[11.5px] font-semibold text-slate-600 ring-1 ring-slate-300 hover:bg-slate-50 disabled:opacity-40">{dangChot === l.lop_id ? '…' : '🔁 Lại'}</button>}
+                          </span>
+                          : data.dang_chay && thieuGt(l) ? <span className="text-[12px] font-semibold text-orange-700" title={chuThieu(l)}>Thiếu giáo trình</span>
                           : data.dang_chay ? (
                             <button onClick={() => chot(l.lop_id, l.bo_tro_cho)} disabled={dangChot !== null}
                               className="h-7 rounded-md bg-slate-800 px-2.5 text-[12px] font-semibold text-white hover:bg-slate-700 disabled:opacity-50">
