@@ -1,6 +1,6 @@
 # spec-quan-ly-chat-luong.md — QUẢN LÝ CHẤT LƯỢNG: cách hoạt động của TRƯỞNG KHỐI (spec #6 của bộ 20 spec)
 
-> **Trạng thái: THÙY CHỐT 17–18/11/2026** (10 câu: 5 · 6 · 7 · 8 Thùy trả lời riêng 18/11, còn lại theo đề xuất — bảng §11.0, thắng mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-truong-khoi.md` · `spec-phong-truong-khoi.md` · `SPEC-troly-nhansu.md` đã chuyển `_luu-tru/`. GIỮ ở gốc: `spec-bao-cao-ky.md` (nội dung + công thức báo cáo gửi phụ huynh → #13).
+> **Trạng thái: THÙY CHỐT 17–18/11/2026** (10 câu: 5 · 6 · 7 · 8 Thùy trả lời riêng 18/11, còn lại theo đề xuất — bảng §11.0, thắng mọi dòng thân spec còn trái). Spec này là nguồn đúng; `spec-truong-khoi.md` · `spec-phong-truong-khoi.md` · `SPEC-troly-nhansu.md` đã chuyển `_luu-tru/`. `spec-bao-cao-ky.md` cũng đã vào `_luu-tru/` 18/11 (nội dung + công thức: `spec-app-ph.md` §6).
 > Việc code / DB từ các quyết định chỉ làm khi Thùy ra lệnh.
 > Chỗ nguồn mâu thuẫn nhau / nguồn ≠ DB / luật không có ngày chốt ⇒ **không tự chọn**, ghi §11.1 (10 câu hỏi). Việc code / DB chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** `spec-truong-khoi.md` (trọn) · `spec-phong-truong-khoi.md` (trọn, gồm phiên Claude) · `SPEC-troly-nhansu.md` (§6–§7 còn hiệu lực; §0–§5 là lịch sử 08/2026) ·

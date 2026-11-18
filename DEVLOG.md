@@ -81938,3 +81938,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm (bản production build chạy trên máy, link xem-thử của đúng phụ huynh đó, khổ điện thoại):** con 4T1 hiện câu "đang soạn"; con 7S1 hiện 50% · 2/4 · hạng "—" · 1/2 nhóm đạt · cập nhật 19:17; hướng dẫn đủ 4 bước, đóng xong dải "Mới" mất. `tsc` sạch, `next build` qua.
 - **Bẫy:** ở `next dev` mọi bảng dùng `useBackClose(true, …)` (menu Đổi con, hướng dẫn mới) mở rồi tự đóng ngay — StrictMode chạy effect hai lần, `history.back()` của lượt dọn bắn `popstate`. Không xảy ra ở bản build ⇒ thử bảng trượt của app PH phải dùng `next build` + `next start`.
 - **Chưa làm / lưu ý:** hạng của lớp vừa công bố có từ sáng hôm sau (ô ghi "—") · chưa xem trên điện thoại thật sau khi Vercel deploy · em học nhiều môn: khối theo môn đang chọn ở màn chính.
+
+### 18/11 20:00 — CHỐT spec #13 App phụ huynh (Thùy trả lời 10 câu)
+- 1 "Hiện luôn" (điểm buổi hiện ngay khi TA nhập — đề xuất chờ buổi xong của tôi bị bác) · 2 "Hiện hết ko cần giấu" (tab Cả lớp giữ nguyên — đề xuất ẩn tên bị bác) · 3 OK · 4 "KO cần, mục tiêu tuần là đủ" · 5 OK · 6 "Có. Có báo cáo là đẩy lên thôi" (báo cáo tháng VẪN làm, đã công bố thì lên app — đề xuất dừng bị bác) · 7 OK · 8 OK · 9 "Bỏ" (tắt tin 20:00) · 10 OK (mã riêng, bỏ 123456). Thêm: **"Chỉ tính test nhé"** — phần Đánh giá của báo cáo học kì chỉ tính bài test.
+- Lưu trữ `spec-bao-cao-ky.md`. CLAUDE §7 thêm mục `spec-app-ph`; SPEC-INDEX #13 ✅. Chưa đụng code (cả hai repo). Repo ph-app chưa có dòng trỏ sang spec.

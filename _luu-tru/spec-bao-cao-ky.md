@@ -1,3 +1,5 @@
+> ⛔ **LƯU TRỮ 18/11 (Thùy chốt spec đích)** — nội dung · công thức · bố cục · PDF báo cáo học kì: `spec-app-ph.md` §6 (phần Đánh giá: CHỈ bài test, Thùy 18/11) · ai nhập / ai công bố: `spec-quan-ly-chat-luong.md` §8, §11.0 câu 8 (trưởng khối công bố). Chỉ đọc để hiểu lịch sử, KHÔNG làm theo.
+
 # spec-bao-cao-ky — Báo cáo HỌC KÌ gửi phụ huynh
 
 > Thùy chốt 04/11. **Khác hẳn report tháng** (`ReportPHScreen`): không bảng từng buổi, không ET/BTVN, không 7 chỉ số, không thang 5 kiến thức/thái độ.

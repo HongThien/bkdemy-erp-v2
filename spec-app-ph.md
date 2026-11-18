@@ -1,6 +1,6 @@
 # spec-app-ph.md — APP PHỤ HUYNH: phụ huynh thấy gì, làm gì, số lấy từ đâu (spec #13 của bộ 20 spec)
 
-> **Trạng thái: BẢN NHÁP 18/11/2026 ~19:30 — CHỜ THÙY DUYỆT.** Chưa phải nguồn đúng. Tới khi duyệt: `spec-bao-cao-ky.md` + `HANDOFF.md` / `DEVLOG.md` của repo `bkdemy-ph-app` vẫn là nguồn.
+> **Trạng thái: THÙY CHỐT 18/11/2026** (bảng §12.0). Spec này là nguồn đúng cho app phụ huynh; `spec-bao-cao-ky.md` đã chuyển `_luu-tru/` (nội dung + công thức ở §6; ai nhập / ai công bố ở `spec-quan-ly-chat-luong.md`). Việc code chỉ làm khi Thùy ra lệnh. Repo `bkdemy-ph-app` CHƯA có dòng trỏ sang spec này (việc phải làm).
 > Chỗ nguồn mâu thuẫn nhau / nguồn ≠ DB-code / luật không có ngày chốt ⇒ **không tự chọn**, ghi §12.1 (10 câu hỏi). Việc code / DB chỉ làm khi Thùy ra lệnh.
 > **Gộp từ:** repo `bkdemy-ph-app` (`HANDOFF.md` 346 dòng · `DEVLOG.md` · `docs/SYNC_CONTRACT.md` · `migrations/0001–0038` · `app/` · `lib/` · `components/ph/`) ·
 > `spec-bao-cao-ky.md` (**trọn phần A–F: nội dung · công thức · bố cục · PDF**; phần "ai nhập / ai công bố" đã ở `spec-quan-ly-chat-luong.md` §8) ·
@@ -239,7 +239,23 @@ Màn **Kết quả học tập** = 5 ô: BTVN · Test cuối giờ · Test thán
 
 ## 12. Lệch + câu hỏi
 
-### 12.1 Câu hỏi cho Thùy (10 câu, xếp theo mức quan trọng)
+### 12.0 THÙY CHỐT 18/11 (thắng mọi "đề xuất" ở 12.1 và mọi dòng thân spec còn trái)
+
+| Câu | Thùy trả lời | Luật | Việc code (chờ lệnh) |
+|---|---|---|---|
+| 1 | **"Hiện luôn"** | Điểm Test cuối giờ / BTVN từng buổi **hiện cho phụ huynh ngay khi TA nhập** (như đang chạy) — không chờ buổi đánh giá xong. | — |
+| 2 | **"Hiện hết, không cần giấu"** | Tab "Cả lớp" giữ nguyên: hiện tên + kết quả + nhận xét của cả lớp. | — |
+| 3 | OK | Điểm BTVN do máy chấm: **chờ hết giai đoạn thử máy chấm rồi quyết**; khi chạy ổn thì hiện điểm cạnh bản chấm đỏ sau khi TA xác nhận + trả. | — |
+| 4 | **"Không cần, mục tiêu tuần là đủ"** | KHÔNG làm màn "nhóm kiến thức con đang yếu". | — |
+| 5 | OK | Màn "Test tháng" **có hiện bài Khảo sát**, nhãn "KS1". | thêm khảo sát vào màn |
+| 6 | **"Có. Có báo cáo là đẩy lên thôi"** | **Báo cáo THÁNG vẫn làm; báo cáo nào đã công bố thì hiện trên app phụ huynh.** (App bỏ màn này từ 18/09 ⇒ phải đưa lại.) Đề xuất "dừng báo cáo tháng" của CTO bị bác. | đưa lại màn báo cáo tháng lên app; ERP chỉ cấp dòng ĐÃ công bố cho FDW (hiện cấp cả nháp) |
+| 7 | OK | Trang chủ có ô **"Lịch của con"**: 14 ngày tới — buổi học theo TKB + mọi ca bổ trợ (sau giờ · yếu · bù · đuổi), kèm giờ, phòng. | màn lịch |
+| 8 | OK | Học phí hiện **hạn thanh toán** (7 ngày sau báo lần 1), quá hạn tô đỏ; hoá đơn thu một phần hiện **số còn lại** và QR đúng số còn lại. | sửa lỗi QR (6 hoá đơn đang sai số tiền) + hạn |
+| 9 | **"Bỏ"** | **Tắt tin đẩy 20:00 "Con còn N việc cần làm".** | tắt job |
+| 10 | OK | **Mật khẩu lần đầu = mã riêng từng phụ huynh** (in trên phiếu học phí / Lộc gửi Zalo), bỏ `123456` chung. | sinh mã + đổi luồng tạo tài khoản và reset |
+| Báo cáo học kì — phần Đánh giá | **"Chỉ tính test nhé"** | Phần Đánh giá của báo cáo học kì theo đúng luật mastery 17/11: **CHỈ bài TEST** (không BTVN luyện, không bài trên app loại luyện, không tự luyện). Code đang gồm cả BTVN + bài app. | sửa hàm tính báo cáo kì; kì đã công bố giữ bản đã chụp, không tính lại |
+
+### 12.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 12.0 — giữ làm bối cảnh)
 
 **1. Điểm Test cuối giờ / BTVN từng buổi: phụ huynh thấy ngay khi TA nhập, hay chờ buổi "xong"?**
 Ví dụ: 20:30 TA nhập Test cuối giờ cho em Thao 7B2, lỡ tay 2/5 câu đúng. 5 phút sau mẹ Thao mở app thấy 40 %, chữ đỏ (thấp hơn TB lớp), hạng khối tụt. Sáng hôm sau TA sửa thành 4/5 — app đổi thành 80 %.
