@@ -45,6 +45,13 @@ export type SoBaoCao = {
   hs_yeu_theo?: 'nhom'   // không có = bản snap cũ: HS yếu đếm theo DẠNG
   // 18/11 (mig 202611181321): tuần ĐANG CHẠY ⇒ mọi số "cuối" là số HIỆN TẠI (dang_yeu_hien_tai), tính lúc cuoi_luc. Bản đã nộp không bao giờ có cờ này.
   cuoi_hien_tai?: boolean; cuoi_luc?: string | null
+  // 18/11 (mig 202611181732): THƯỜNG ĐẠT = trung bình các tuần đã đóng liền trước (≤ 8 tuần, cần ≥ 4) của chính các ô này; so_tuan < can ⇒ chưa có số
+  thuong_dat?: {
+    so_tuan: number; can: number; toi_da: number
+    nhom?: { so: number | null; ti_le: number | null }; dang?: { so: number | null; ti_le: number | null }
+    hs_yeu_1?: { so: number | null; ti_le: number | null }; hs_yeu_2?: { so: number | null; ti_le: number | null }
+    xep?: { ti_le: number | null }; hieu_suat?: { ti_le: number | null }; vang?: { ti_le: number | null }; chua_xu_ly?: { so: number | null }
+  }
   tong: TongSo; lop: LopSo[]; hs_con_yeu: HsConYeu[]; trend: { tuan: string; tong: TongSo }[]
   van_hanh?: VanHanh
 }

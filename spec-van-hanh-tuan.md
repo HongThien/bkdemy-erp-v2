@@ -573,7 +573,10 @@ Mọi chỉ số tính ở **một hàm DB** theo `(ô, khoảng ngày)` — dù
   6 **Hiệu suất bổ trợ** = đơn vị hết yếu / đơn vị được test; **1 đơn vị = 1 em × 1 dạng** có câu đã chấm trong bài test cuối ca bổ trợ của tuần; hết yếu = cuối tuần dạng đó không còn trong danh sách dạng yếu của em ·
   7 **Vắng ca bổ trợ** = lượt vắng / lượt đã điểm danh (dòng vắng nằm trên buổi đã huỷ — dữ liệu thật 18/11) · 8 **HS yếu chưa ai xử lý** = HS yếu cuối tuần chưa có đề xuất / ca / theo dõi (ghi cả số ≥ 2 nhóm).
   Số nằm ở `tong.ht` của `fn_bctk_so` ⇒ có luôn ở trend 4 tuần và báo cáo môn; bản chốt trước 18/11 không có (hiện "—").
-  **Thường đạt: CHƯA có số** — Thùy chọn "để tích dần" (không chụp bù tuần cũ); ảnh đầu tuần mới có từ 09/11 ⇒ sớm nhất đầu tháng 12 đủ 4 tuần. Cơ chế tính + lưu thường đạt theo từng ô CHƯA dựng (cột đang ghi "chưa đủ 4 tuần").
+  **Thường đạt (Thùy 18/11 "Dựng luôn", mig `202611181732`):** = trung bình các TUẦN ĐÃ ĐÓNG liền trước của chính các ô trong báo cáo — tối đa 8 tuần, cần ít nhất **4 tuần**; chưa đủ thì ô ghi "mới có n/4 tuần". Thùy chọn "để tích dần" (không chụp bù tuần cũ) ⇒ tuần đầu tiên có số là 09–15/11, đủ 4 tuần vào **thứ Hai 07/12**.
+  Sổ `bctk_so_tuan_o` (tuần × môn × khối, khối `tong` của `fn_bctk_so` cho một ô) — máy chốt MỘT lần khi tuần đã đóng và đã có ảnh thứ Hai tuần sau (`_bctk_so_tuan_chot`, bộ điều phối mã `bctk_so_tuan`, chạy 1–5 h sáng); không ai ghi tay; dựng lại được từ ảnh đầu tuần. Báo cáo nhiều ô / báo cáo môn: mỗi tuần GOM tử số và mẫu số của các ô rồi mới ra tỉ lệ, sau đó trung bình các tuần (`_bctk_thuong_dat` → khoá `thuong_dat` trong `so`).
+  Chưa lọc nhiễu (hàng rào Tukey như Tổng kết tuần §7.4 của spec QLCL) — thêm khi đủ tuần. Chưa tô màu "dưới / trên thường đạt".
+  **Trình bày bảng (Thùy 18/11):** mọi cột căn TRÁI; ô có cả số lẫn chữ thì **số to ở trên, chữ chú thích nhỏ ở dưới**.
 - Chiếu TV (§5.9) giữ nguyên hai trang cũ.
 - Đo 18/11: báo cáo MÔN Toán (13 ô) nháp mất ~6–10 s vì `fn_bctk_so` cả môn 1,9 s × 4 tuần trend (có từ trước, khối Vận hành chỉ thêm 0,17 s) — cần chuyển trend sang đọc số đã lưu, chưa làm.
 

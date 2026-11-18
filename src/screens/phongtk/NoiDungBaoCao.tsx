@@ -191,50 +191,65 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
 // BẢNG HỌC TẬP (Thùy 18/11 chiều): mỗi chỉ số MỘT dòng — đầu tuần có gì → cuối tuần (tuần đang chạy: hiện tại) ra sao → làm được bao nhiêu (số tuyệt đối + %).
 // Chưa nhập mục tiêu (Thùy: "theo dõi qua mỗi tuần đã"); cột Thường đạt để sẵn, có số khi đủ tuần. Mọi số do DB trả (fn_bctk_so, khối 'ht' + 'hai_chieu').
 function BangHocTap({ duLieu }: { duLieu: SoBaoCao }) {
-  const t = duLieu.tong, h = t.ht, hc = t.hai_chieu, tr = duLieu.trend, ht = !!duLieu.cuoi_hien_tai
-  const tot = (v: number | null | undefined) => v == null ? 'text-slate-400' : v > 0 ? 'text-emerald-600' : v < 0 ? 'text-rose-600' : 'text-slate-600'
-  const giam = (n: number | null | undefined, p: number | null | undefined) => n == null ? <span className="text-slate-300">—</span>
-    : <span className={`font-extrabold ${tot(n)}`}>{n > 0 ? `Giảm ${n}` : n < 0 ? `Tăng ${-n}` : 'Không đổi'}<span className="ml-1.5 text-[13px] font-semibold">({so(p != null && n < 0 ? -p : p, '%')})</span></span>
-  const tiLe = (a: number | null | undefined, b: number | null | undefined, p: number | null | undefined, mau = 'text-indigo-600') => b == null || a == null ? <span className="text-slate-300">—</span>
-    : <span className={`font-extrabold ${mau}`}>{so(p, '%')}<span className="ml-1.5 text-[13px] font-semibold text-slate-500">({a}/{b})</span></span>
-  const thieu = <span className="text-slate-300" title="Báo cáo chốt trước 18/11 chưa có chỉ số này">—</span>
-  const haiChieu = (ten: string, x: HaiChieu | undefined, lay: (w: TongSo) => number | null | undefined): Dong => x
-    ? { ten, dau: x.dau, cuoi: x.con_yeu, kq: <span className="font-extrabold text-emerald-600">Giảm {x.het_yeu}<span className="ml-1.5 text-[13px] font-semibold">({so(x.ti_le_het_yeu, '%')})</span></span>,
-        phu: `Phát sinh mới +${x.phat_sinh} · tổng ${ht ? 'hiện tại' : 'cuối tuần'} ${x.cuoi}${x.roi ? ` · ${x.roi} của em thôi học` : ''}`, trend: tr.map((w) => lay(w.tong)) }
-    : { ten, dau: null, cuoi: null, kq: thieu, phu: 'Chưa đủ ảnh đầu / cuối tuần', trend: [] }
-  type Dong = { ten: string; chu?: string; dau: number | string | null; cuoi: number | string | null; kq: ReactNode; phu?: string; trend: (number | null | undefined)[] }
+  const t = duLieu.tong, h = t.ht, hc = t.hai_chieu, tr = duLieu.trend, ht = !!duLieu.cuoi_hien_tai, td = duLieu.thuong_dat
+  // Một ô = SỐ to ở trên + chữ chú thích nhỏ ở dưới (Thùy 18/11); mọi cột căn trái.
+  type OSo = { so: ReactNode; chu?: string; mau?: string } | null
+  type Dong = { ten: string; chu?: string; dau: OSo; cuoi: OSo; kq: OSo; td: OSo; trend: (number | null | undefined)[] }
+  const pt = (p: number | null | undefined) => so(p, '%')
+  const xanhDo = (n: number) => n > 0 ? 'text-emerald-600' : n < 0 ? 'text-rose-600' : 'text-slate-600'
+  const giam = (n: number | null | undefined, p: number | null | undefined, duoi = 'so với đầu tuần'): OSo => n == null ? null
+    : { so: n > 0 ? `Giảm ${n}` : n < 0 ? `Tăng ${-n}` : 'Không đổi', chu: `${pt(p != null && n < 0 ? -p : p)} ${duoi}`, mau: xanhDo(n) }
+  // Thường đạt: chưa đủ tuần ⇒ ghi rõ đang có mấy tuần; bản chốt cũ không có khoá này ⇒ trống
+  const tdO = (f: (x: NonNullable<SoBaoCao['thuong_dat']>) => OSo): OSo => !td ? null
+    : td.so_tuan < td.can ? { so: '—', chu: `mới có ${td.so_tuan}/${td.can} tuần`, mau: 'text-slate-300' } : f(td)
+  const tdGiam = (x: { so: number | null; ti_le: number | null } | undefined): OSo => !x || x.so == null ? null : { ...giam(x.so, x.ti_le, 'mỗi tuần')!, mau: 'text-slate-600' }
+  const tdTiLe = (x: { ti_le: number | null } | undefined): OSo => !x ? null : { so: pt(x.ti_le), chu: 'trung bình các tuần trước', mau: 'text-slate-600' }
+  const haiChieu = (ten: string, x: HaiChieu | undefined, lay: (w: TongSo) => number | null | undefined, tdx: OSo): Dong => x
+    ? { ten, dau: { so: x.dau }, cuoi: { so: x.con_yeu, chu: `còn yếu · phát sinh mới +${x.phat_sinh} · tổng ${x.cuoi}${x.roi ? ` · ${x.roi} của em thôi học` : ''}` },
+        kq: { so: `Giảm ${x.het_yeu}`, chu: `${pt(x.ti_le_het_yeu)} số đầu tuần đã hết yếu`, mau: 'text-emerald-600' }, td: tdx, trend: tr.map((w) => lay(w.tong)) }
+    : { ten, chu: 'chưa đủ ảnh đầu / cuối tuần', dau: null, cuoi: null, kq: null, td: tdx, trend: [] }
   const ds: Dong[] = [
-    haiChieu('Nhóm yếu', hc?.nhom, (w) => w.hai_chieu?.nhom.het_yeu),
-    haiChieu('Dạng yếu', hc?.dang, (w) => w.hai_chieu?.dang.het_yeu),
-    { ten: 'Học sinh yếu', chu: 'có ≥ 1 nhóm yếu', dau: t.hs_yeu.dau, cuoi: t.hs_yeu.cuoi, kq: giam(t.hs_yeu.giam, t.hs_yeu.ti_le_giam), phu: `Sĩ số ${t.hs_yeu.si_so} em`, trend: tr.map((w) => w.tong.hs_yeu.cuoi) },
-    { ten: 'Học sinh yếu', chu: 'có ≥ 2 nhóm yếu', dau: h?.hs_yeu_2.dau ?? null, cuoi: h?.hs_yeu_2.cuoi ?? null, kq: h ? giam(h.hs_yeu_2.giam, h.hs_yeu_2.ti_le_giam) : thieu, trend: tr.map((w) => w.tong.ht?.hs_yeu_2.cuoi) },
-    { ten: 'HS yếu được xếp bổ trợ', chu: 'HS yếu = ≥ 2 nhóm yếu đầu tuần', dau: h?.xep?.yeu_2 ?? null, cuoi: h?.xep ? `${h.xep.xep_2} em được xếp` : null,
-      kq: h?.xep ? tiLe(h.xep.xep_2, h.xep.yeu_2, h.xep.ti_le_2) : thieu, phu: h?.xep ? `Tính cả em ≥ 1 nhóm yếu: ${h.xep.xep_1}/${h.xep.yeu_1} (${so(h.xep.ti_le_1, '%')})` : undefined, trend: tr.map((w) => w.tong.ht?.xep?.ti_le_2) },
-    { ten: 'Hiệu suất bổ trợ', chu: 'đơn vị hết yếu / đơn vị được test · 1 em × 1 dạng = 1 đơn vị', dau: h ? `${h.hieu_suat.don_vi} đơn vị test` : null, cuoi: h ? `${h.hieu_suat.het_yeu} hết yếu` : null,
-      kq: h ? tiLe(h.hieu_suat.het_yeu, h.hieu_suat.don_vi, h.hieu_suat.ti_le, 'text-emerald-600') : thieu, trend: tr.map((w) => w.tong.ht?.hieu_suat.ti_le) },
-    { ten: 'Vắng ca bổ trợ', chu: 'lượt vắng / lượt đã điểm danh', dau: h ? `${h.vang.luot_xep} lượt xếp` : null, cuoi: h ? `${h.vang.vang} lượt vắng` : null,
-      kq: h ? tiLe(h.vang.vang, h.vang.da_diem_danh, h.vang.ti_le, h.vang.vang > 0 ? 'text-rose-600' : 'text-emerald-600') : thieu, trend: tr.map((w) => w.tong.ht?.vang.ti_le) },
-    { ten: 'HS yếu chưa ai xử lý', chu: 'chưa có đề xuất · ca · theo dõi', dau: null, cuoi: h?.chua_xu_ly ? h.chua_xu_ly.n1 : null,
-      kq: h?.chua_xu_ly ? <span className={`font-extrabold ${h.chua_xu_ly.n1 > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>{h.chua_xu_ly.n1} em<span className="ml-1.5 text-[13px] font-semibold text-slate-500">(≥ 2 nhóm: {h.chua_xu_ly.n2})</span></span> : thieu,
-      phu: 'Việc của tuần tới — xem tên ở "HS còn yếu" bên dưới', trend: tr.map((w) => w.tong.ht?.chua_xu_ly?.n1) },
+    haiChieu('Nhóm yếu', hc?.nhom, (w) => w.hai_chieu?.nhom.het_yeu, tdO((x) => tdGiam(x.nhom))),
+    haiChieu('Dạng yếu', hc?.dang, (w) => w.hai_chieu?.dang.het_yeu, tdO((x) => tdGiam(x.dang))),
+    { ten: 'Học sinh yếu', chu: 'có ≥ 1 nhóm yếu', dau: t.hs_yeu.dau == null ? null : { so: t.hs_yeu.dau, chu: `trên ${t.hs_yeu.si_so} em` }, cuoi: t.hs_yeu.cuoi == null ? null : { so: t.hs_yeu.cuoi },
+      kq: giam(t.hs_yeu.giam, t.hs_yeu.ti_le_giam), td: tdO((x) => tdGiam(x.hs_yeu_1)), trend: tr.map((w) => w.tong.hs_yeu.cuoi) },
+    { ten: 'Học sinh yếu', chu: 'có ≥ 2 nhóm yếu', dau: h?.hs_yeu_2.dau == null ? null : { so: h.hs_yeu_2.dau }, cuoi: h?.hs_yeu_2.cuoi == null ? null : { so: h.hs_yeu_2.cuoi },
+      kq: h ? giam(h.hs_yeu_2.giam, h.hs_yeu_2.ti_le_giam) : null, td: tdO((x) => tdGiam(x.hs_yeu_2)), trend: tr.map((w) => w.tong.ht?.hs_yeu_2.cuoi) },
+    { ten: 'HS yếu được xếp bổ trợ', chu: 'HS yếu = có ≥ 2 nhóm yếu đầu tuần', dau: h?.xep ? { so: h.xep.yeu_2, chu: 'HS yếu đầu tuần' } : null, cuoi: h?.xep ? { so: h.xep.xep_2, chu: 'em được xếp ca' } : null,
+      kq: h?.xep ? { so: pt(h.xep.ti_le_2), chu: `${h.xep.xep_2}/${h.xep.yeu_2} em · tính cả em ≥ 1 nhóm: ${h.xep.xep_1}/${h.xep.yeu_1} (${pt(h.xep.ti_le_1)})`, mau: 'text-indigo-600' } : null,
+      td: tdO((x) => tdTiLe(x.xep)), trend: tr.map((w) => w.tong.ht?.xep?.ti_le_2) },
+    { ten: 'Hiệu suất bổ trợ', chu: '1 em × 1 dạng = 1 đơn vị', dau: h ? { so: h.hieu_suat.don_vi, chu: 'đơn vị được test' } : null, cuoi: h ? { so: h.hieu_suat.het_yeu, chu: 'đơn vị hết yếu' } : null,
+      kq: h ? { so: pt(h.hieu_suat.ti_le), chu: `${h.hieu_suat.het_yeu}/${h.hieu_suat.don_vi} đơn vị`, mau: 'text-emerald-600' } : null, td: tdO((x) => tdTiLe(x.hieu_suat)), trend: tr.map((w) => w.tong.ht?.hieu_suat.ti_le) },
+    { ten: 'Vắng ca bổ trợ', chu: 'lượt vắng / lượt đã điểm danh', dau: h ? { so: h.vang.luot_xep, chu: 'lượt xếp' } : null, cuoi: h ? { so: h.vang.vang, chu: 'lượt vắng' } : null,
+      kq: h ? { so: pt(h.vang.ti_le), chu: `${h.vang.vang}/${h.vang.da_diem_danh} lượt đã điểm danh`, mau: h.vang.vang > 0 ? 'text-rose-600' : 'text-emerald-600' } : null,
+      td: tdO((x) => tdTiLe(x.vang)), trend: tr.map((w) => w.tong.ht?.vang.ti_le) },
+    { ten: 'HS yếu chưa ai xử lý', chu: 'chưa có đề xuất · ca · theo dõi', dau: null, cuoi: h?.chua_xu_ly ? { so: h.chua_xu_ly.n1, chu: 'em — việc của tuần tới' } : null,
+      kq: h?.chua_xu_ly ? { so: `${h.chua_xu_ly.n1} em`, chu: `trong đó ≥ 2 nhóm yếu: ${h.chua_xu_ly.n2} em`, mau: h.chua_xu_ly.n1 > 0 ? 'text-rose-600' : 'text-emerald-600' } : null,
+      td: tdO((x) => x.chua_xu_ly?.so == null ? null : { so: `${x.chua_xu_ly.so} em`, chu: 'trung bình các tuần trước', mau: 'text-slate-600' }), trend: tr.map((w) => w.tong.ht?.chua_xu_ly?.n1) },
   ]
-  const td = 'border-t border-slate-100 px-3 py-2 whitespace-nowrap'
+  const td0 = 'border-t border-slate-100 px-3 py-2 text-left align-top'
+  const o = (x: OSo, macDinh = 'text-slate-800') => x == null ? <span className="text-[18px] font-bold text-slate-300">—</span> : (
+    <>
+      <div className={`whitespace-nowrap text-[19px] font-extrabold leading-tight tabular-nums ${x.mau ?? macDinh}`}>{x.so}</div>
+      {x.chu && <div className="text-[11.5px] leading-snug text-slate-500">{x.chu}</div>}
+    </>
+  )
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
-      <table className="w-full text-[13px]">
+      <table className="w-full table-fixed text-[13px]">
+        <colgroup><col className="w-[19%]" /><col className="w-[12%]" /><col className="w-[21%]" /><col className="w-[22%]" /><col className="w-[16%]" /><col className="w-[10%]" /></colgroup>
         <thead><tr className={`${TH} bg-slate-50`}>
-          <th className="px-3 py-2">Chỉ số</th><th className="px-3 py-2 text-right">Đầu tuần</th><th className="px-3 py-2 text-right">{ht ? 'Hiện tại' : 'Cuối tuần'}</th>
-          <th className="px-3 py-2">Kết quả</th><th className="px-3 py-2">Thường đạt</th><th className="px-3 py-2">4 tuần</th><th className="px-3 py-2">Ghi chú</th>
+          <th className="px-3 py-2">Chỉ số</th><th className="px-3 py-2">Đầu tuần</th><th className="px-3 py-2">{ht ? 'Hiện tại' : 'Cuối tuần'}</th>
+          <th className="px-3 py-2">Kết quả</th><th className="px-3 py-2" title="Trung bình các tuần đã đóng liền trước (tối đa 8 tuần, cần ít nhất 4 tuần) của chính các khối này">Thường đạt</th><th className="px-3 py-2">4 tuần</th>
         </tr></thead>
         <tbody>{ds.map((d, i) => (
           <tr key={i}>
-            <td className={td}><b className="text-[14px] text-slate-800">{d.ten}</b>{d.chu && <span className="ml-1.5 text-[11.5px] text-slate-400">{d.chu}</span>}</td>
-            <td className={`${td} text-right text-[17px] font-bold tabular-nums text-slate-700`}>{d.dau ?? <span className="text-slate-300">—</span>}</td>
-            <td className={`${td} text-right text-[17px] font-bold tabular-nums text-slate-900`}>{d.cuoi ?? <span className="text-slate-300">—</span>}</td>
-            <td className={`${td} text-[17px] tabular-nums`}>{d.kq}</td>
-            <td className={`${td} text-[12px] text-slate-400`} title="Thường đạt = trung bình các tuần trước của chính khối này. Cần ít nhất 4 tuần có số; ảnh đầu tuần mới có từ 09/11.">chưa đủ 4 tuần</td>
-            <td className={td}><Cot4 v={d.trend} /></td>
-            <td className={`${td} text-[12px] text-slate-500`}>{d.phu ?? ''}</td>
+            <td className={td0}><div className="text-[14.5px] font-bold leading-tight text-slate-800">{d.ten}</div>{d.chu && <div className="text-[11.5px] leading-snug text-slate-400">{d.chu}</div>}</td>
+            <td className={td0}>{o(d.dau, 'text-slate-600')}</td>
+            <td className={td0}>{o(d.cuoi)}</td>
+            <td className={td0}>{o(d.kq)}</td>
+            <td className={td0}>{o(d.td)}</td>
+            <td className={td0}><Cot4 v={d.trend} /></td>
           </tr>
         ))}</tbody>
       </table>

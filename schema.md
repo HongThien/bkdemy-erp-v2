@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 465 trigger · 2007 function
+603 bảng · 42 view · 0 enum · 465 trigger · 2009 function
 
 ## _app_secrets
 
@@ -614,6 +614,17 @@
 | chot_boi_cu | uuid | Y |  |  |  |
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
+
+## bctk_so_tuan_o
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| khoi | text |  |  | PK |  |
+| tong | jsonb |  |  |  |  |
+| phien_ban | integer |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
 
 ## bdm_ma_cum_luu_20261029
 
@@ -11670,6 +11681,8 @@ WITH luot AS (
 - `_bctk_o_cua_mon(p_mon text)` → jsonb
 - `_bctk_o_cua_toi()` → jsonb
 - `_bctk_pct(a numeric, b numeric)` → numeric
+- `_bctk_so_tuan_chot(p_ngan_sach_giay integer DEFAULT 40)` → integer
+- `_bctk_thuong_dat(p_o jsonb, p_tu date)` → jsonb
 - `_bctk_tuan_truoc()` → date
 - `_bctk_van_hanh(p_o jsonb, p_tu date)` → jsonb
 - `_bdm_bump_nhom()` → trigger
