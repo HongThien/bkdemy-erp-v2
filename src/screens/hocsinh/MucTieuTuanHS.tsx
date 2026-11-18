@@ -191,25 +191,17 @@ function Phan({ ten, phu, rong, children }: { ten: string; phu: string; rong: st
   )
 }
 
-// thanh tiến độ tổng: vạch đứt = đầu tuần · cờ ở cuối (đầy thanh = đạt hết mục tiêu tuần)
+// thanh tiến độ tổng (đầy thanh = đạt hết mục tiêu tuần) — Thùy 18/11: mọi vạch nằm TRONG thanh, bỏ que + cờ nhô ra; vạch đứt = đầu tuần
 function ThanhTong({ p, dau }: { p: number | null; dau: number | null }) {
   return (
-    <div className="relative h-[30px] flex-1" aria-label={p == null ? 'Chưa có số' : `Tiến độ ${Math.round(p)}%`} role="img">
-      <div className="absolute left-0 right-[14px] top-[10px] h-[16px] overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }}>
-        <div className="h-full" style={{ width: `${Math.max(0, Math.min(100, p ?? 0))}%`, background: MAU.acc, borderRadius: 'var(--sk-radius-pill)' }} />
-      </div>
-      {dau != null && p != null && <div className="absolute top-[6px] h-[24px]" style={{ left: `calc(${Math.min(100, dau)}% * 0.97)`, borderLeft: `2px dashed ${MAU.muted}` }} title={`Đầu tuần ${Math.round(dau)}%`} />}
-      <div className="absolute right-[12px] top-0 h-[30px]" style={{ borderLeft: `2px solid ${MAU.ink}` }} />
-      <Co className="absolute right-0 top-0" />
+    <div className="relative h-[19px] flex-1 overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }} aria-label={p == null ? 'Chưa có số' : `Tiến độ ${Math.round(p)}%`} role="img">
+      <div className="h-full" style={{ width: `${Math.max(0, Math.min(100, p ?? 0))}%`, background: MAU.acc, borderRadius: 'var(--sk-radius-pill)' }} />
+      {dau != null && p != null && <div className="absolute inset-y-0" style={{ left: `${Math.min(100, dau)}%`, borderLeft: `1.5px dashed ${MAU.muted}` }} title={`Đầu tuần ${Math.round(dau)}%`} />}
     </div>
   )
 }
 
-function Co({ className = '', style }: { className?: string; style?: CSSProperties }) {
-  return <svg aria-hidden width="12" height="9" viewBox="0 0 12 9" className={className} style={style}><path d="M0 0h12l-3 4.5 3 4.5H0z" fill={MAU.acc} /></svg>
-}
-
-// dòng nhóm GỌN — cờ ở mục tiêu TUẦN (số dưới cờ) + vạch mờ "đích 80%" khi mục tiêu tuần còn thấp hơn
+// dòng nhóm GỌN — vạch mục tiêu TUẦN trong thanh (số dưới vạch) + vạch mảnh "đích 80%" trong thanh khi mục tiêu tuần còn thấp hơn
 // tình trạng từng dạng = lộ trình Học từ đầu của chính em (htd_lo_trinh) — chỉ đọc khi mở chi tiết 1 nhóm có dạng, nhớ theo môn
 const NHO_LO_TRINH: Record<string, Map<string, DangHTD>> = {}
 function useTinhTrangDang(mon: string, can: boolean) {
@@ -249,17 +241,17 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
           <span className="text-[14px]" style={{ color: MAU.muted, transform: mo ? 'rotate(180deg)' : 'none' }}>⌄</span>
         </div>
         <div className="relative mt-1 h-[38px]">
-          <div className="absolute left-0 right-0 top-[14px] h-[8px] overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }}>
+          {/* Thùy 18/11: thanh dày hơn ~20% (8 → 10 px), vạch mục tiêu nằm TRONG thanh (màu nhấn của style, viền màu mặt thẻ) */}
+          <div className="absolute left-0 right-0 top-[14px] h-[10px] overflow-hidden" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius-pill)' }}>
             <div className="h-full" style={{ width: `${n.p ?? 0}%`, background: mauPct(n.p), borderRadius: 'var(--sk-radius-pill)' }} />
           </div>
-          {n.p != null && n.p_dau != null && <div className="absolute top-[10px] h-[16px]" style={{ left: `${n.p_dau}%`, borderLeft: `2px dashed ${MAU.muted}` }} title={`Đầu tuần ${n.p_dau}%`} />}
+          {n.p != null && n.p_dau != null && <div className="absolute top-[14px] h-[10px]" style={{ left: `${n.p_dau}%`, borderLeft: `1.5px dashed ${MAU.muted}` }} title={`Đầu tuần ${n.p_dau}%`} />}
           {mt != null && mt < n.dich && <>
-            <div className="absolute top-[8px] h-[20px]" style={{ left: `${n.dich}%`, borderLeft: `2px solid ${MAU.line}` }} />
+            <div className="absolute top-[14px] h-[10px]" style={{ left: `${n.dich}%`, borderLeft: `1.5px solid ${MAU.muted}` }} />
             <span className="absolute top-0 text-[10px] font-semibold" style={{ left: `calc(${n.dich}% + 5px)`, color: MAU.muted }}>đích {n.dich}%</span>
           </>}
           {mt != null && <>
-            <div className="absolute top-0 h-[24px]" style={{ left: `${mt}%`, borderLeft: `2px solid ${MAU.ink}` }} />
-            <Co className="absolute top-0" style={{ left: `calc(${mt}% + 2px)` }} />
+            <div className="absolute top-[14px] h-[10px] w-[4px] -translate-x-1/2" style={{ left: `${mt}%`, background: MAU.acc, boxShadow: `0 0 0 1.5px ${MAU.surface}`, borderRadius: 2 }} title={`Mục tiêu tuần ${mt}%`} />
             <span className="absolute top-[25px] -translate-x-1/2 text-[11px] font-bold" style={{ left: `${mt}%`, color: MAU.ink }}>{mt}%</span>
           </>}
         </div>

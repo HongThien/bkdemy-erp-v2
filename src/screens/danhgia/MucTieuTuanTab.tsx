@@ -334,12 +334,11 @@ function DongNhom({ n, hsId, mon }: { n: MttNhom; hsId: string; mon: string }) {
           : n.dat_mt != null && <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${n.dat_mt ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`} title="So với mục tiêu tuần">{n.dat_mt ? 'Đạt' : 'Chưa đạt'}</span>}
       </div>
       <div className="mt-1 flex items-center gap-2.5">
-        <div className="relative h-[16px] w-[38%] shrink-0">
-          <div className="absolute inset-x-0 top-[5px] h-[6px] overflow-hidden rounded-full bg-slate-100">
-            <div className={`h-full rounded-full ${n.p == null ? '' : n.p >= 80 ? 'bg-emerald-500' : n.p >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${n.p ?? 0}%` }} />
-          </div>
-          {n.p != null && n.p_dau != null && n.p_dau !== n.p && <div className="absolute top-[2px] h-[12px] border-l-2 border-dashed border-slate-400" style={{ left: `${n.p_dau}%` }} title={`Đầu tuần ${n.p_dau}%`} />}
-          {n.mt != null && <div className="absolute top-0 h-[16px] border-l-2 border-slate-800" style={{ left: `${n.mt}%` }} title={`Mục tiêu tuần ${n.mt}%`} />}
+        {/* Thùy 18/11: thanh dày hơn ~20% (6 → 7 px), vạch mục tiêu NẰM TRONG thanh — vạch màu nhấn viền trắng, không còn que đen nhô ra */}
+        <div className="relative h-[7px] w-[38%] shrink-0 rounded-full bg-slate-100">
+          <div className={`h-full rounded-full ${n.p == null ? '' : n.p >= 80 ? 'bg-emerald-500' : n.p >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`} style={{ width: `${n.p ?? 0}%` }} />
+          {n.p != null && n.p_dau != null && n.p_dau !== n.p && <div className="absolute inset-y-0 border-l border-dashed border-slate-500" style={{ left: `${n.p_dau}%` }} title={`Đầu tuần ${n.p_dau}%`} />}
+          {n.mt != null && <div className="absolute inset-y-0 w-[3px] -translate-x-1/2 rounded-sm bg-indigo-600" style={{ left: `${n.mt}%`, boxShadow: '0 0 0 1.5px #fff' }} title={`Mục tiêu tuần ${n.mt}%`} />}
         </div>
         <span className="min-w-0 flex-1 truncate text-[11.5px] text-slate-500">
           Mục tiêu <b className="text-slate-800">{n.mt != null ? `${n.mt}%` : '—'}</b> · <b className={`${n.p == null ? 'text-slate-400' : n.p >= 80 ? 'text-emerald-700' : n.p >= 50 ? 'text-amber-700' : 'text-rose-600'}`}>{ketQua(n)}</b>

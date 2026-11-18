@@ -81874,6 +81874,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Tôi đo lại (khớp):** kho Đại 78.948 câu, đã duyệt 52.387 · câu tự duyệt khớp thời điểm gán dạng 6.216 (Đại) · báo "đề sai" chờ 88, quá 48 giờ 84, cũ nhất 14/10 · khối 3 có 2.866 câu mà `cat-luat.mjs 3` báo "không có mục ## Khối 3" · dạng bài chưa lý thuyết 188 / 1.533.
 - **Tôi thấy thêm, CHƯA giải thích được:** câu Đại `duyet_nguon='ai'` theo ngày (14 ngày): 04/11 10.923 · 05/11 2.769 · 14/11 1.917 — nhiều hơn hẳn 6.216 câu khớp trigger ⇒ còn đường tự duyệt hàng loạt khác (agent cũng báo 1.122 câu đề thi duyệt nguồn AI chưa dò ra đường). Cần dò trước khi siết luật tự vào kho.
 
+### 18/11 — Vạch mục tiêu trong thanh (Thùy)
+- Thùy: "thanh chặn mục tiêu màu đen, hơi to so với bar — làm bar to lên 20%, thanh chặn nằm bên trong bar, một vạch nổi bật" ⇒ ERP (`DongNhom`): thanh 6 → 7 px, vạch mục tiêu 3 px xanh indigo viền trắng nằm trong thanh, vạch đầu tuần nét đứt trong thanh · app HS: thanh 8 → 10 px, vạch MAU.acc viền MAU.surface trong thanh (bỏ que MAU.ink + cờ; số % dưới vạch giữ) · app PH: CSS `.mttNhomR2` tương tự. Màu thanh giữ nguyên. check:style-hs không thêm lỗi.
 ## 18/11 17:35 — Báo cáo tuần: tab Học tập thành bảng "Đầu tuần → Kết quả" + khối số `tong.ht` (mig 202611181720 ĐÃ ÁP — Thùy 18/11 chiều)
 - **Thùy trả lời 4 câu:** mục tiêu — "chưa cần nhập, theo dõi qua mỗi tuần đã" · HS yếu ≥ 2 nhóm — "làm riêng báo cáo 1 nhóm và 2 nhóm trở lên, tạm thời chưa đổi vội" · thường đạt — "để tích dần" · bổ sung: phát sinh mới + vắng ca bổ trợ + em yếu chưa ai xử lý (không chọn "độ phủ đo" ⇒ không đưa vào bảng mới).
 - **Làm:** `fn_bctk_so` thêm `tong.ht` (hs_yeu_2 · xep · hieu_suat · vang · chua_xu_ly) + rút biểu thức "trạng thái xử lý" về một CTE `cy`; `NoiDungBaoCao.tsx` thêm `BangHocTap` 8 dòng (thay hàng ô chỉ số ở tab Học tập). Định nghĩa từng dòng ⇒ `spec-van-hanh-tuan.md` §5.5b.
@@ -81881,9 +81883,13 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai rồi sửa trước khi áp:** bản đầu đếm vắng = 0 mọi tuần — vì chỉ lấy buổi chưa huỷ, mà dữ liệu thật dòng `vang` chỉ nằm trên buổi bổ trợ ĐÃ HUỶ (tuần 09/11: 9 + 3 dòng). Sửa: buổi huỷ chỉ lấy dòng vắng. *Chưa hiểu hết:* có 6 dòng `co_mat` trên buổi sau giờ đã huỷ — không tính, cần hỏi vận hành.
 - **Kiểm trên app (dev admin, báo cáo môn Toán tuần 16–22/11):** bảng hiện đủ 8 dòng — nhóm 738 → 689 giảm 49 (6,6 %) · HS yếu ≥ 2 nhóm 170 → 190 tăng 20 · xếp 85/170 (50 %) · hiệu suất 48/66 (72,7 %) · vắng 4/28 (14,3 %) · chưa xử lý 216. Bảng hơi tràn ngang ở 1600 px (cột Ghi chú phải cuộn). **Chưa kiểm:** tài khoản trưởng khối thật, bản snap cũ, chiếu TV.
 - **Còn nợ:** cơ chế THƯỜNG ĐẠT theo ô (bảng lưu số từng tuần + trung bình các tuần trước) chưa dựng · mục tiêu đầu tuần chưa có (Thùy chưa cần).
+<<<<<<< HEAD
 
 ## 18/11 17:50 — Báo cáo tuần: THƯỜNG ĐẠT theo ô + bảng Học tập căn trái, số trên chữ dưới (mig 202611181732 ĐÃ ÁP — Thùy "Dựng luôn")
 - **Làm:** bảng mới `bctk_so_tuan_o` (tuần × môn × khối; RLS: nhân sự đọc, không policy ghi) · `_bctk_so_tuan_chot(giây)` chốt số từng ô của tuần đã đóng, đăng ký bộ điều phối `bctk_so_tuan` (1–5 h sáng, 40 s) · `_bctk_thuong_dat(ô, tuần)` trung bình ≤ 8 tuần trước, cần ≥ 4 · gắn khoá `thuong_dat` vào `so` ở `fn_bctk_lay · _nop · fn_bcmt_lay · _chot`. Màn: `BangHocTap` viết lại — căn trái, số to trên / chú thích dưới, bỏ cột Ghi chú (hết tràn ngang), cột Thường đạt đọc `thuong_dat`.
 - **Thử (transaction, ROLLBACK, ngân sách 3 s vì đang 17–22 h):** chốt thử 12 ô tuần 09/11 trong 3,3 s; thường đạt với 1 tuần ⇒ `{so_tuan: 1, can: 4}`; giả lập 4 tuần ⇒ ra đủ 8 chỉ số, 45 ms. **Sổ thật hiện 0 dòng** — không chạy chốt trong giờ cao điểm; bộ điều phối sẽ chốt tuần 09–15/11 lúc 1 h sáng 19/11 (chưa xác nhận lượt chạy đó).
 - **Kiểm trên app (dev admin, báo cáo môn KHTN tuần 16–22/11):** bảng 6 cột căn trái, cột Thường đạt ghi "mới có 0/4 tuần". Console có vài dòng 500 cũ không truy được nguồn (trang hiện tại không có request lỗi).
 - **Còn nợ:** lọc nhiễu + tô màu so với thường đạt · xác nhận lượt chốt đêm nay · tài khoản trưởng khối thật / chiếu TV chưa mở.
+=======
+- 18/11 (tiếp): Thùy "sửa lại tất cả" ⇒ mọi thanh tiến độ của Mục tiêu tuần cùng kiểu, vạch nằm TRONG thanh: app HS ô "Tiến độ mục tiêu tuần" (bỏ que MAU.ink + cờ ở cuối, thanh 16 → 19 px, vạch đầu tuần trong thanh; xoá hàm `Co` không còn dùng) + vạch "đích 80%" trong thanh nhóm Ôn tập · app PH `.mttBar` (17 px, vạch đầu tuần trong thanh). ERP không còn thanh nào có que nhô ra.
+>>>>>>> f1dcb93a8f2aaf67e7a7c8c84ee3690b05dbeabb
