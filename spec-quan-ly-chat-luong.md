@@ -338,6 +338,11 @@ Hiệu suất TA của khối (cảnh phòng) · tỉ lệ việc sau buổi đ�
 | 9 | **Trưởng khối KHÔNG có ô hỏi trợ lý** (đã có báo cáo lọc sẵn + phiên Claude). Ô hỏi vẫn chỉ 3 tài khoản ban lãnh đạo. | — |
 | 10 | **Phiên Claude: giữ tự do như 05/11** — một khối mở được nhiều phiên cùng lúc, có lệnh xoá (Claude phải hỏi trước khi xoá); thêm dòng cảnh báo "khối này đang có phiên khác mở" (không chặn). Luật 01/11 "mỗi bản đồ một phiên sửa · không lệnh xoá" HẾT hiệu lực. | dòng cảnh báo trên màn phiên |
 
+### 11.0b Đã sửa code / DB (18/11, Thùy "Bịt ngay") — mig `202611181239` + `202611181241` ĐÃ ÁP
+- ✅ **Nhãn team:** `nhan_su_team` + `team` ai cũng đọc; GHI chỉ người có quyền nhân sự / sơ đồ tổ chức / phân quyền (4 / 44 nhân sự), cùng khuôn với `vi_tri`. Hết đường tự thêm nhãn Vận hành / Media / Marketing để thấy mọi môn.
+- ✅ **Công bố báo cáo học kì (câu 8):** trigger `trg_bao_cao_ph_ky_quyen_cong_bo` chặn mọi đường đổi trạng thái công bố (qua hàm lẫn ghi thẳng bảng) nếu người gọi không phải **trưởng khối của (môn, khối lớp em)**, quản lý môn, hoặc QLCL / quản trị. Phó khối, giáo viên, TA bị chặn. Nhập / sửa nội dung báo cáo chưa công bố vẫn như cũ. Thử bằng jwt giả lập: nhân sự thường ⇒ chặn (cả hai đường) · trưởng khối khác khối ⇒ chặn · trưởng khối đúng khối ⇒ được.
+- *Chưa làm:* màn vẫn hiện nút Công bố cho mọi người (bấm sẽ nhận câu báo lỗi rõ) — ẩn nút theo quyền khi có lệnh. Ai được bật app phụ huynh cho cả kì: chưa rà.
+
 ### 11.1 Câu hỏi gốc (ĐÃ TRẢ LỜI ở 11.0 — giữ làm bối cảnh)
 
 **1. Thứ Hai, chị Trang có còn phải bấm nút "Chốt tuần" nữa không?**

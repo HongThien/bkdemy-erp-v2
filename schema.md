@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-602 bảng · 42 view · 0 enum · 464 trigger · 2002 function
+602 bảng · 42 view · 0 enum · 465 trigger · 2004 function
 
 ## _app_secrets
 
@@ -11197,6 +11197,7 @@ WITH luot AS (
 | ban_be_loi_moi | ban_be_loi_moi_log | AFTER | INSERT/DELETE/UPDATE | _the_gioi_ghi_log |
 | bao_cao_chuyen_mon_tuan | bao_cao_chuyen_mon_tuan_log_trg | AFTER | INSERT/UPDATE | _bcmt_ghi_log |
 | bao_cao_ph_ky | trg_bao_cao_ph_ky_log | AFTER | INSERT/DELETE/UPDATE | _bao_cao_ph_ky_ghi_log |
+| bao_cao_ph_ky | trg_bao_cao_ph_ky_quyen_cong_bo | BEFORE | INSERT/UPDATE | _bao_cao_ph_ky_quyen_cong_bo |
 | bao_cao_ph_ky | trg_bao_cao_ph_ky_truoc | BEFORE | INSERT/UPDATE | _bao_cao_ph_ky_truoc |
 | bao_cao_ph_preset | trg_bao_cao_ph_preset_touch | BEFORE | UPDATE | bao_cao_ph_preset_touch |
 | bao_cao_tuan_khoi | bao_cao_tuan_khoi_log_trg | AFTER | INSERT/UPDATE | _bctk_ghi_log |
@@ -11641,10 +11642,12 @@ WITH luot AS (
 - `_bai_test_mat_phieu_dong()` → trigger
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
 - `_bao_cao_ph_ky_ghi_log()` → trigger
+- `_bao_cao_ph_ky_quyen_cong_bo()` → trigger
 - `_bao_cao_ph_ky_truoc()` → trigger
 - `_bao_loi_hs_gui_hom_thu()` → trigger
 - `_bc_ky_dm_ghi_log()` → trigger
 - `_bc_ky_dm_kiem()` → trigger
+- `_bc_ky_duoc_cong_bo(p_hs uuid, p_mon text)` → boolean
 - `_bc_ky_la_admin()` → boolean
 - `_bc_ky_mo_ph(p_ky uuid)` → boolean
 - `_bc_ky_phan_gv(p_hs uuid, p_mon text, p_ky uuid, p_goi_y jsonb)` → jsonb
