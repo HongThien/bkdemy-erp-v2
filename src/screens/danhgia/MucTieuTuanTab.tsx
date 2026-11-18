@@ -80,7 +80,7 @@ export default function MucTieuTuanTab({ mon, khoi, lamMoi, dau }: { mon: string
           <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau">›</button>
         </div>
         {data && (xemLop || xemHs) && <>
-          <button onClick={() => { setXemLop(null); setXemHs(null) }} className="h-7 rounded-md bg-indigo-600 px-2.5 text-[12px] font-semibold text-white hover:bg-indigo-700" title="Về bảng tổng quan khối (công bố từng lớp, số cả khối)">← Tổng quan khối</button>
+          <button onClick={() => { setXemLop(null); setXemHs(null) }} className="no-nut-ve h-7 rounded-md bg-indigo-600 px-2.5 text-[12px] font-semibold text-white hover:bg-indigo-700" title="Về bảng tổng quan khối (công bố từng lớp, số cả khối)">← Tổng quan khối</button>
           {data.lop.map((l) => <button key={l.lop_id} onClick={() => { setXemLop({ id: l.lop_id, ten: l.ten_lop }); setXemHs(null) }}
             className={`h-7 rounded-full px-2.5 text-[12px] font-semibold ${xemLop?.id === l.lop_id ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l.ten_lop}</button>)}
         </>}
