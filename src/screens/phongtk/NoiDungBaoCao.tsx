@@ -1,5 +1,5 @@
 // NỘI DUNG một báo cáo tuần của khối — dùng chung cho trưởng khối soạn (sua), trưởng bộ môn xem / duyệt (chỉ đọc), báo cáo môn (anChu) và chiếu TV (phan).
-// Thùy 18/11: tách 3 PHẦN thành 3 tab con — ⚙ Vận hành (việc sau buổi của TA / GV) · 📚 Học tập (thông số học của học sinh) · 🌱 Phát triển cá nhân (task).
+// Thùy 18/11: tách 3 PHẦN thành 3 tab con — ⚙ Vận hành (việc sau buổi của TA / GV + ET · BTVN) · 📚 Học tập (dạng yếu · nhóm yếu · HS yếu · bổ trợ) · 🌱 Phát triển cá nhân (task).
 //   Mỗi tab: hàng Ô CHỈ SỐ tổng quát ở trên, bên dưới là các MỤC bấm mới mở chi tiết. Phần Tự viết luôn nằm cột phải (đọc số tab nào cũng viết được).
 // Client KHÔNG tính số nào: mọi tỉ lệ / tổng / danh sách đến từ DB (fn_bctk_so · _bctk_van_hanh · fn_bctk_trend); màn chỉ hiển thị.
 // Ô chỉ số: mỗi dòng nằm trọn MỘT hàng ngang (không xuống dòng giữa "160 → 124").
@@ -53,6 +53,7 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
     {t.nhom_yeu && <O ten="Nhóm yếu" chinh={`${so(t.nhom_yeu.dau)} → ${so(t.nhom_yeu.cuoi)}`} nhanChinh={dauCuoi}
       phu={[`Giảm ${so(t.nhom_yeu.giam)} (${so(t.nhom_yeu.ti_le_giam, '%')})`]} trend={tr.map((w) => w.tong.nhom_yeu?.cuoi ?? null)} mau="text-orange-600" />}
   </>
+  const oDiemEt = <O ten="Điểm ET" chinh={so(t.et.diem_tb)} nhanChinh="trung bình" phu={[`${t.et.so_luot} lượt làm`]} trend={tr.map((w) => w.tong.et.diem_tb)} mau="text-sky-600" />
   const oHsYeu = <O ten="Học sinh yếu" chinh={`${so(t.hs_yeu.dau)} → ${so(t.hs_yeu.cuoi)}`} nhanChinh={`${ht ? '→ hiện tại · ' : ''}/ ${t.hs_yeu.si_so} em`}
     phu={[`Giảm ${so(t.hs_yeu.giam)} (${so(t.hs_yeu.ti_le_giam, '%')})`, duLieu.hs_yeu_theo === 'nhom' ? 'Em có ≥ 1 nhóm yếu' : 'Bản cũ: em có ≥ 1 dạng yếu']}
     trend={tr.map((w) => w.tong.hs_yeu.cuoi)} mau="text-violet-600" />
@@ -88,11 +89,14 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
             <O ten="Việc sau buổi" chinh={so(vh.tong.ti_le_dung_han, '%')} nhanChinh="đúng hạn" phu={dongDem(vh.tong)} mau="text-slate-800" />
             {vh.khau.map((k) => <O key={k.tab} ten={KHAU[k.tab] ?? k.tab} chinh={so(k.ti_le_dung_han, '%')} nhanChinh="đúng hạn" phu={dongDem(k)}
               mau={k.chua > 0 ? 'text-rose-600' : k.muon > 0 ? 'text-amber-600' : 'text-emerald-600'} />)}
-            {oCaBoTro}
+            {oDiemEt}{oBtvn}{oCaBoTro}
           </div> : <>
-            <div className={LUOI}>{oChamEt}{oCaBoTro}</div>
+            <div className={LUOI}>{oChamEt}{oBtvn}{oCaBoTro}</div>
             <p className="text-[12px] text-slate-400">Báo cáo này chốt trước 18/11 nên phần Vận hành chỉ có số chấm ET. Báo cáo nộp từ nay có đủ đánh giá sau buổi · chấm ET · chấm BTVN · MT theo người và theo lớp.</p>
           </>}
+          <MoChiTiet ten="Điểm ET · BTVN theo lớp" phu={`${duLieu.lop.length} lớp`} rong={duLieu.lop.length === 0}>
+            <BangLop lop={duLieu.lop} che="van_hanh" />
+          </MoChiTiet>
           {vh?.tong && <>
             <MoChiTiet ten="Việc đóng muộn / chưa đóng" phu={`${vh.tre.length} việc`} rong={vh.tre.length === 0}>
               <table className="w-full text-[12.5px]">
@@ -123,12 +127,11 @@ export function NoiDungBaoCao({ duLieu, caNhan, setCaNhan, tuViet, setTuViet, su
         {/* 📚 HỌC TẬP — thông số học của học sinh */}
         {tab === 'hoc_tap' && <>
           <div className={LUOI}>
-            <O ten="Điểm ET" chinh={so(t.et.diem_tb)} nhanChinh="trung bình" phu={[`${t.et.so_luot} lượt làm`]} trend={tr.map((w) => w.tong.et.diem_tb)} mau="text-sky-600" />
-            {oBtvn}{oYeu}{oHsYeu}{oKetQuaBoTro}
+            {oYeu}{oHsYeu}{oKetQuaBoTro}
           </div>
           <div className="grid items-start gap-3 lg:grid-cols-[3fr_2fr]">
             <MoChiTiet ten="Từng lớp" phu={`${duLieu.lop.length} lớp`} rong={duLieu.lop.length === 0}>
-              <BangLop lop={duLieu.lop} hocTap />
+              <BangLop lop={duLieu.lop} che="hoc_tap" />
             </MoChiTiet>
             <MoChiTiet ten={ht ? 'HS đang yếu (hiện tại)' : 'HS còn yếu cuối tuần'} phu={duLieu.co_anh_cuoi ? `${duLieu.hs_con_yeu.length} em` : 'chưa có ảnh cuối tuần'} rong={!duLieu.co_anh_cuoi || duLieu.hs_con_yeu.length === 0}>
               <ul className="max-h-[420px] space-y-1 overflow-auto pr-1">{duLieu.hs_con_yeu.map((h) => (
@@ -223,23 +226,28 @@ function BangDem({ cot, dong }: { cot: string; dong: { khoa: string; ten: string
   )
 }
 
-// Bảng từng lớp (chỉ hiển thị số DB trả về). hocTap: tab Học tập — bỏ cột chấm ET đúng hạn (đã ở tab Vận hành).
-function BangLop({ lop, hocTap }: { lop: SoBaoCao['lop']; hocTap?: boolean }) {
+// Bảng từng lớp (chỉ hiển thị số DB trả về). che: 'van_hanh' = chỉ ET · BTVN · 'hoc_tap' = chỉ dạng / nhóm / HS yếu · không truyền = đủ cột (chiếu TV).
+function BangLop({ lop, che }: { lop: SoBaoCao['lop']; che?: 'van_hanh' | 'hoc_tap' }) {
+  const vh = che !== 'hoc_tap', ht = che !== 'van_hanh'
   return (
     <table className="w-full text-[12.5px]">
       <thead><tr className={TH}>
-        <th className="py-1">Lớp</th>{!hocTap && <th>ET đúng hạn</th>}<th>ET TB</th><th>BTVN nộp</th><th>BTVN TB</th><th>Dạng yếu</th><th>Nhóm yếu</th><th>HS yếu</th>
+        <th className="py-1">Lớp</th>{vh && <><th>ET đúng hạn</th><th>ET TB</th><th>BTVN nộp</th><th>BTVN TB</th></>}{ht && <><th>Dạng yếu</th><th>Nhóm yếu</th><th>HS yếu</th></>}
       </tr></thead>
       <tbody>{lop.map((l) => (
         <tr key={l.lop_id} className="border-t border-slate-100 whitespace-nowrap">
           <td className="py-1.5 font-semibold text-slate-800">{l.ten_lop}</td>
-          {!hocTap && <td>{so(l.et.ti_le_dung_han, '%')} <span className="text-slate-400">({l.et.dung_han}/{l.et.so_viec})</span></td>}
-          <td>{so(l.et.diem_tb)}</td>
-          <td>{so(l.btvn.ti_le_nop, '%')}</td>
-          <td>{so(l.btvn.diem_tb)}</td>
+          {vh && <>
+            <td>{so(l.et.ti_le_dung_han, '%')} <span className="text-slate-400">({l.et.dung_han}/{l.et.so_viec})</span></td>
+            <td>{so(l.et.diem_tb)}</td>
+            <td>{so(l.btvn.ti_le_nop, '%')}</td>
+            <td>{so(l.btvn.diem_tb)}</td>
+          </>}
+          {ht && <>
           <td>{l.hai_chieu ? <HaiChieuO h={l.hai_chieu.dang} mau="text-rose-600" /> : <>{so(l.dang_yeu.dau)} → <b className="text-rose-600">{so(l.dang_yeu.cuoi)}</b></>}</td>
           <td>{l.hai_chieu ? <HaiChieuO h={l.hai_chieu.nhom} mau="text-orange-600" /> : l.nhom_yeu ? <>{so(l.nhom_yeu.dau)} → <b className="text-orange-600">{so(l.nhom_yeu.cuoi)}</b></> : <span className="text-slate-300">—</span>}</td>
           <td>{so(l.hs_yeu.dau)} → <b className="text-violet-600">{so(l.hs_yeu.cuoi)}</b><span className="text-slate-400">/{l.hs_yeu.si_so}</span></td>
+          </>}
         </tr>
       ))}</tbody>
     </table>

@@ -81863,3 +81863,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đo / kiểm:** tuần 09/11 (đã xong) 3 bộ ô **khớp từng byte** trước–sau; tuần 16/11: Toán 9 dạng 287 → 285, nhóm 166 → còn 156 + phát sinh 25, HS yếu 63 → 63; 0,1–0,3 s. Mở app (báo cáo môn Toán tuần 16–22/11): nhóm 738 → 689 · hiện tại 781, HS yếu 256 → 269.
 - **Không phải lỗi:** ô BTVN tuần đang chạy vẫn "—" tới trưa thứ Tư — các buổi 16–17/11 chưa có dòng `btvn_ket_qua` nào (BTVN chấm ở buổi kế).
 - Bản đã nộp không bao giờ chứa số "hiện tại" (chỉ nộp được sau Chủ nhật, lúc đó đã có ảnh thứ Hai).
+
+## 18/11 14:00 — Báo cáo tuần: ET · BTVN chuyển sang tab Vận hành (Thùy 18/11 chiều)
+- `NoiDungBaoCao.tsx`: ô Điểm ET + BTVN và bảng "Điểm ET · BTVN theo lớp" nằm ở tab Vận hành; tab Học tập chỉ còn nhóm yếu · dạng yếu · HS yếu · kết quả bổ trợ (bảng từng lớp bỏ cột ET / BTVN). Chỉ đổi chỗ hiển thị, không đổi số. Chưa mở app kiểm lại sau lần đổi này (đã `tsc`).
+- Thùy muốn tab Học tập theo khuôn "đầu tuần có MỤC TIÊU — cuối tuần có KẾT QUẢ" + chỉ số THƯỜNG ĐẠT; HS yếu ở tỉ lệ xếp bổ trợ = ≥ 2 nhóm yếu; hiệu suất bổ trợ = đơn vị (HS × dạng) hết yếu / đơn vị được test. CHƯA dựng — chờ Thùy trả lời 3 câu (ai đặt mục tiêu · "≥ 2 nhóm" áp ở đâu · có chụp bù ảnh các tuần cũ để có thường đạt không; hiện mới có ảnh 2 tuần 09/11 và 16/11).
