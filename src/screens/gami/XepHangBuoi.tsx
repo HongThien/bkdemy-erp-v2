@@ -95,7 +95,7 @@ export default function XepHangBuoi({ buoiId, soCoMat }: { buoiId: string; soCoM
     try {
       const k = await choiLuot(buoiId, hid, game)
       guiTV(k, hid)
-      if (coTv && !k.da_choi) { dangMoRef.current.set(hid, k.qua ? `🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".` : null); window.setTimeout(() => xongMo(hid), 25000) }
+      if (coTv && !k.da_choi) { dangMoRef.current.set(hid, k.qua ? `🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".` : null); window.setTimeout(() => xongMo(hid), k.game === 'chiem_dat' ? 180000 : 25000) }   // dự phòng khi TV không báo 'xong'. Chiếm Đất: em còn phải CHỌN Ô rồi thầy cô bấm ô ⇒ 25 giây là lộ EXP trước khi hoạt cảnh xong (Thùy 18/11) — chờ 3 phút
       setTt((p) => p && ({ ...p, so_da_choi: p.so_da_choi + (k.da_choi ? 0 : 1), so_qua_chua_trao: p.so_qua_chua_trao + (k.qua && !k.da_choi ? 1 : 0), hs: p.hs.map((x) => (x.hoc_sinh_id === hid ? { ...x, exp: k.exp, game: k.game, qua: k.qua, qua_trao_at: x.qua_trao_at ?? null } : x)) }))
       if (k.qua && !k.da_choi && !dangMo(hid)) bao(`🧋 ${k.ho_ten} TRÚNG ${TEN_QUA[k.qua] ?? k.qua}! Trao xong bấm "Đã trao".`)
     } catch (e) { bao('❌ ' + (e as Error).message) } finally { setBan(null) }

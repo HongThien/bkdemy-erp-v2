@@ -1,6 +1,6 @@
 # spec-app-hs.md — APP HỌC SINH: mọi tính năng, kể cả game (spec #12 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 18/11/2026 — chờ Thùy trả lời câu hỏi ở A12.1 (10 câu) và B9.2 (9 câu).** Tới khi Thùy chốt, các file nguồn vẫn là nguồn đúng (`SPEC-INDEX.md` bảng A).
+> **Trạng thái: THÙY CHỐT 18/11/2026** (bảng A12.0 + B9.0, thắng mọi dòng thân spec còn trái). **Nguồn CHƯA lưu trữ** — còn 2 file chưa đọc hết (dòng dưới); tới khi rà xong, chỗ nào spec này không nói thì file nguồn vẫn đúng.
 > **MỘT file, hai phần — sửa phần nào đọc phần đó:** **PHẦN A = app học** (mục A0–A13) · **PHẦN B = game** (mục B0–B10). Luật kinh tế chung (xu · EXP · Rank · bảng xếp hạng) ở Phần A; luật chơi từng game ở Phần B.
 > **`design/STYLE-HS.md` GIỮ RIÊNG** (cổng `npm run check:style-hs`) — không gộp vào đây.
 > **Chưa đọc hết khi dựng nháp (KHÔNG lưu trữ các file này trước khi rà nốt):** `spec-thanh-tuu-nhiem-vu.md` dòng 305–681 (phần A / B / C) · `spec-huy-hieu-build.md` (mới đọc mục lục) · các file lịch sử Elo / EXP trong `_luu-tru/`. Chưa mở app bằng tài khoản HS thật — "em thấy gì" suy từ code.
@@ -351,7 +351,22 @@ A6 Sổ tay · Ôn thi · Mục tiêu tuần · A7 Kinh tế · A8 Thành tựu 
 
 ## A12. Lệch + câu hỏi cho Thùy
 
-### A12.1 Mười câu hỏi (xếp theo mức quan trọng)
+### A12.0 THÙY CHỐT 18/11 (Phần A) — câu 8 · 9 · 10 Thùy trả lời riêng, còn lại "theo ý m" = theo đề xuất
+
+| Câu | Luật chốt | Việc code / DB (chờ lệnh) |
+|---|---|---|
+| 1 | Giữ MỘT mức đạt / yếu. App HS thêm **dấu "đã luyện" riêng trên từng dạng** (vd "đã luyện đạt 3 lượt — chờ bài kiểm tra để cắm cờ"; quái sang trạng thái "đã yếu đi"). Chỉ app HS dùng; giáo viên KHÔNG dùng để đánh giá. | dấu đã luyện ở bản đồ phiêu lưu / màn dạng |
+| 2 | Hạng mục "≥ 2 style" của V1.0 **coi là xong**; style Thị trấn gác lại, không thuộc V1. | — |
+| 3 | **Rank tiếp tục ẩn**, vẫn tính ngầm; rút Rank khỏi danh sách V1.0. Mở lại là quyết định riêng. | — |
+| 4 | **Ẩn Album huy hiệu**, bỏ chặng tutorial Huy hiệu, ẩn bảng xếp hạng "Bộ sưu tập huy hiệu" tới khi bật lại. | ẩn 3 chỗ |
+| 5 | Góp ý / báo lỗi của HS: **một người phụ trách, hạn 7 ngày**; Claude gom ý trùng + soạn sẵn lời trả lời, người đó duyệt theo lô; 105 cái tồn xử lý một lượt. *Ai phụ trách: Thùy chưa chỉ tên.* | việc tồn (invariant) + lô trả lời |
+| 6 | **Mọi báo sai đều có thư trả lời** trong Hòm thư (đúng / chưa đúng kèm một dòng lý do / đề đã sửa). | thư cho ca "em sai" và "đề đã sửa" |
+| 7 | Em **xem tủ quà + giá trên app**; đổi vẫn tại tủ. Đặt quà trên app: để sau. | màn tủ quà chỉ đọc |
+| 8 | **"Chưa vội"** — KHÔNG bật thêm thành tựu; giữ 9 loại đang chạy. | — |
+| 9 | **"Làm tròn xuống"** — quy EXP ra xu làm tròn XUỐNG (250 EXP ⇒ 2 xu; 99 EXP ⇒ 0 xu). *Phần lẻ có cộng dồn sang tháng sau không: Thùy chưa nói — hỏi lại khi sửa.* **Code đang làm tròn LÊN.** | sửa hàm quy EXP → xu |
+| 10 | **"Không có buổi học diễn ra thì hệ thống tự nhận diện nghỉ chứ"** — chuỗi tự đóng băng vào ngày KHÔNG có buổi học diễn ra; **không ai phải nhập lịch nghỉ**. *Tôi hiểu: ngày cả trung tâm không có buổi học nào (lễ, Tết) = ngày nghỉ. Nếu ý là "ngày LỚP EM không có buổi" thì khác hẳn (em học 2 buổi / tuần) — xác nhận khi sửa.* | chuỗi đọc lịch buổi học thay bảng nhập tay |
+
+### A12.1 Mười câu hỏi gốc (ĐÃ TRẢ LỜI ở A12.0 — giữ làm bối cảnh)
 
 **1. Tự luyện không còn tính vào mức đạt / yếu — vậy trên app em thấy "mình luyện có tác dụng" bằng gì?**
 Ví dụ: một em lớp 7 yếu dạng "Cộng trừ số hữu tỉ", tối nay Luyện dạng yếu 3 lượt đều 9 / 10. Sáng mai mở bản đồ: quái của dạng đó **vẫn còn nguyên máu**, dạng vẫn nằm trong danh sách yếu, cho tới khi em làm ET hoặc BTVN có dạng đó. 30 ngày qua có 4.962 lượt tự luyện của khoảng 190 em.
@@ -747,7 +762,21 @@ Luật 01/10: ngày lớp nghỉ và tuần thi thì chuỗi tự đóng băng. 
 | Bắt thú và Nông trại (30/09) | hai game độc lập | gộp một game (01/10); gộp tất cả vào Làng BK (12/10) |
 | "Chung trần 30 / 45 xu" trong BK World, Làng BK | 30 / 45 | nếu làm thì theo trần đang chạy (20) |
 
-### B9.2 Câu hỏi cho Thùy (9 câu, xếp theo mức quan trọng)
+### B9.0 THÙY CHỐT 18/11 (Phần B) — câu 1 · 4 · 5 Thùy trả lời riêng, còn lại "theo ý m" = theo đề xuất
+
+| Câu | Luật chốt | Việc code / DB |
+|---|---|---|
+| 1 | Giữ / dừng theo bảng đề xuất: **giữ** Nông trại · đấu với máy · Mở Rương / Chiếm Đất; đấu online + giải 8 người giữ nguyên không làm thêm; tháp mở thử một khối; Thử thách 3 trận chỉ làm khi mở Giải Vô địch; Bắn Quà thử 1 lớp; Đoán Số bản lớp bỏ; mini game web + Catan ra khỏi spec app HS. **Thùy báo lỗi: "Chiếm Đất hiện EXP trước khi hoạt cảnh xong".** | ✅ lỗi Chiếm Đất ĐÃ SỬA 18/11 (màn giáo viên `XepHangBuoi.tsx`: đồng hồ dự phòng 25 giây tự hiện EXP — Chiếm Đất em còn phải chọn ô nên bị lộ; nay dự phòng 3 phút, bình thường chờ TV báo xong). Chờ deploy ERP; chưa thử trên TV thật. |
+| 2 | **Nông trại là gốc, thêm dần.** Bản 3 màn (01/10) và Làng BK (12/10) là nháp, không làm khi chưa có lệnh. | — |
+| 3 | **Khoá ngay chỗ lộ đáp án Đấu trường** (đấu online · giải Toán / KHTN · khách tạm ngừng tới khi chấm ở máy chủ). | áp bản vá `202610071540_dtv_khoa_kho_bo_cau.sql` — CHƯA áp, chờ lệnh riêng (làm ngừng 3 chế độ) |
+| 4 | **"Chúng nó chơi vào giờ ra chơi mà"** — KHÔNG chặn, KHÔNG báo giáo viên. Giới hạn 30 phút / ngày của Nông trại giữ như cũ. | — |
+| 5 | **"Không có luật đủ 5 phút nhận xu. Mục tiêu là chơi 5 phút, không liên quan cái này."** — nhận xu KHÔNG phụ thuộc số phút chơi. **Code đang trái:** cấu hình "phút tối thiểu để tính ngày chơi" = 5 ⇒ 116 / 191 em (30 ngày) không ngày nào đủ ⇒ không nhận xu. | đặt cấu hình về 0 — CHƯA áp (hệ chặn lệnh đổi cấu hình xu đang chạy khi chưa có lệnh rõ); chờ Thùy nói "sửa" |
+| 6 | Giữ **trần 4 xu / ngày chơi** làm lưới an toàn (cùng trần 20 xu / tháng). | — |
+| 7 | Câu cá **3 lượt / ngày**, đo một tháng. | — |
+| 8 | Bắt thú **không trả xu trực tiếp** (theo 01/10); chưa gấp. | — |
+| 9 | Đấu trường giữ bảng xếp hạng, **chưa có mùa giải kèm quà**. | — |
+
+### B9.2 Câu hỏi gốc (ĐÃ TRẢ LỜI ở B9.0 — giữ làm bối cảnh)
 
 **Câu 1 — Game nào giữ, game nào dừng?**
 Có nhiều game đã làm nhưng gần như không ai chơi, hoặc chưa mở. Ví dụ: Thử thách tuần trước chỉ có 2 lượt; đấu online 7 ngày qua chỉ 2 trận; tháp chưa mở cho em nào.
