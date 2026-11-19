@@ -81958,3 +81958,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Bảng chi phí GV + TA theo sĩ số + bảng lãi lớp của bản 03/09:** giữ làm lịch sử, đánh dấu PHẢI TÍNH LẠI (dựng trên cơ chế lương đã bỏ 17–18/11); không tự đặt số mới.
 - **Chưa kiểm:** quỹ lương TA hôm nay (hàm có cổng, dùng số 17/11) · quyền qua REST bằng tài khoản nhân sự thường · ước giảm theo hệ số 16,4 tr là suy từ hệ số bình quân.
 - **Chờ Thùy:** 10 câu ở §10. Chốt xong mới `git mv PLAN-thu-chi.md` vào `_luu-tru/`.
+
+### 19/11 18:25 — App HS: "Hoạt động tuần này" theo kiểu ERP (Thùy: "chỗ hoạt động chưa cập nhật theo kiểu của ERP")
+- **Làm:** `src/screens/hocsinh/MucTieuTuanHS.tsx` — dòng việc GỌN như ERP / app PH: bỏ liệt kê tên nhóm/dạng dưới mỗi việc, dòng phụ chỉ còn nộp / hạn / giờ phòng; thêm nút "Chi tiết ▾" (ET · MT · BTVN đã có điểm) ⇒ bấm mới gọi `fn_mtt_viec_dang` ra kết quả từng dạng (số câu · %). Không đổi DB.
+- **Kiểm:** tsc sạch ở file này; `fn_mtt_viec_dang` gọi bằng vai học sinh (trong transaction, rollback) ~55 ms, ra đúng dạng. CHƯA mở trên app HS bằng tài khoản thật.
+- **Ghi chú:** `check:style-hs` đang RỚT ở `CaBoTroHS.tsx` (3 màu gõ tay > mốc 2) — có sẵn từ commit của phiên khác, không thuộc lượt này. `moTaViec` trong `src/lib/mucTieuTuan.ts` không còn ai gọi (chưa xoá).
+- **Chờ:** Thùy deploy app HS.

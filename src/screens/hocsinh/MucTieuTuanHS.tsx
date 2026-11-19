@@ -30,9 +30,9 @@ function NenSang({ mon, children }: { mon: string | null; children: ReactNode })
   return <div style={bien}>{children}</div>
 }
 import {
-  mttCuaToi, mttTop, mttCacTuan, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, moTaViec, nhanChenh, nhanHoc,
+  mttCuaToi, mttTop, mttCacTuan, mttViecDang, laChuaChot, tenTuan, thuNgay, ngayNgan, gioPhut, nhanChenh, nhanHoc,
   NHAN_MUC, NHAN_TT, TEN_VIEC,
-  type MttKetQua, type MttTo, type MttNhom, type MttViec, type MttTop, type MttTuanCu, type MucDanhGia,
+  type MttKetQua, type MttTo, type MttNhom, type MttViec, type MttViecDang, type MttTop, type MttTuanCu, type MucDanhGia,
 } from '../../lib/mucTieuTuan'
 
 // nền nhạt NGỮ NGHĨA, trong suốt ⇒ đọc được trên skin sáng lẫn tối (y khuôn ThongTinHocTap)
@@ -161,8 +161,8 @@ function ToTuan({ to, onTop, onMo }: { to: MttTo; onTop: () => void; onMo?: (d: 
             <span className="text-[13px]" style={{ color: MAU.muted }}>{to.viec_xong}/{to.viec_tong} đã làm</span>
           </div>
           {to.viec.length === 0 && <p className="mt-2 text-[14px]" style={{ color: MAU.muted }}>Tuần này chưa có việc nào.</p>}
-          {daLam.length > 0 && <><NhomHS>Đã làm</NhomHS><div className="mt-1 flex flex-col gap-1.5">{daLam.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}</div></>}
-          {sapToi.length > 0 && <><NhomHS>Sắp tới</NhomHS><div className="mt-1 flex flex-col gap-1.5">{sapToi.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} />)}</div></>}
+          {daLam.length > 0 && <><NhomHS>Đã làm</NhomHS><div className="mt-1 flex flex-col gap-1.5">{daLam.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} hsId={to.hs.id} mon={to.mon} />)}</div></>}
+          {sapToi.length > 0 && <><NhomHS>Sắp tới</NhomHS><div className="mt-1 flex flex-col gap-1.5">{sapToi.map((v) => <DongViec key={v.loai + v.buoi_id} v={v} hsId={to.hs.id} mon={to.mon} />)}</div></>}
           <NhomHS>Tự luyện trên app · không bắt buộc</NhomHS>
           <div className="mt-1 flex items-center gap-3 px-3 py-2" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius)' }}>
             <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[14px] font-bold" style={{ borderRadius: 'var(--sk-radius-pill)', background: MAU.surface, color: MAU.muted }}>•</span>
@@ -295,23 +295,63 @@ function DongNhom({ n, mo, onBam, onMo, mon, kiemTra }: { n: MttNhom; mo: boolea
   )
 }
 
-function DongViec({ v }: { v: MttViec }) {
+// dòng phụ GỌN như ERP (Thùy 17/11, áp app HS 19/11): KHÔNG liệt kê nhóm/dạng — chỉ nộp / hạn / giờ phòng
+function moTaGon(v: MttViec): string {
+  const x: (string | null | undefined)[] = []
+  if (v.loai === 'btvn') x.push(v.tt === 'sap_toi' ? (v.han ? `hạn trước buổi ${thuNgay(v.han)}` : null) : v.tt === 'chua_nop' ? 'chưa nộp' : v.tt === 'cho_cham' ? 'đã nộp, đang chấm'
+    : v.nop === 'nop_muon' ? 'nộp muộn' : v.nop === 'nop_dung_han' ? 'nộp đúng hạn' : null)
+  if (v.loai === 'sau_gio' || v.loai === 'bo_tro') x.push(v.gio, v.phong ? `phòng ${v.phong}` : null)
+  return x.filter(Boolean).join(' · ')
+}
+
+// 1 việc: dòng gọn + "Chi tiết" ⇒ bấm mới gọi kết quả TỪNG DẠNG của việc đó (fn_mtt_viec_dang — cùng hàm với ERP)
+function DongViec({ v, hsId, mon }: { v: MttViec; hsId: string; mon: string }) {
+  const [mo, setMo] = useState(false)
+  const [ds, setDs] = useState<MttViecDang[] | null>(null)
+  const [loi, setLoi] = useState(false)
+  const coChiTiet = (v.loai === 'et' || v.loai === 'mt' || v.loai === 'btvn') && v.pct != null
+  useEffect(() => {
+    if (!mo || ds) return
+    let alive = true
+    setLoi(false)
+    mttViecDang(hsId, mon, v.buoi_id, v.loai).then((r) => alive && setDs(r)).catch(() => alive && setLoi(true))
+    return () => { alive = false }
+  }, [mo]) // eslint-disable-line react-hooks/exhaustive-deps
   const xong = v.tt === 'xong' || v.tt === 'cho_cham'
-  const phu = [moTaViec(v)].filter(Boolean).join(' · ')
+  const phu = moTaGon(v)
   return (
-    <div className="flex items-center gap-3 px-3 py-2" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius)' }}>
-      <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[14px] font-bold"
-        style={{ borderRadius: 'var(--sk-radius-pill)', background: xong ? NEN.dung : v.tt === 'sap_toi' ? MAU.surface : NEN.sai, color: xong ? MAU.dung : v.tt === 'sap_toi' ? MAU.muted : MAU.sai }} aria-hidden>
-        {xong ? '✓' : v.tt === 'sap_toi' ? '○' : '!'}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-[14.5px] font-bold" style={{ color: MAU.ink }}>{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}</span>
-        {phu && <span className="block text-[12.5px]" style={{ color: MAU.muted }}>{phu}</span>}
-        {v.ghi_chu && <span className="block text-[12.5px] font-semibold" style={{ color: v.tt === 'vang' ? MAU.sai : MAU.canhBao }}>{v.ghi_chu}</span>}
-      </span>
-      {v.pct != null && <span className="text-[15px] font-extrabold" style={{ color: MAU.ink }}>{v.pct}%</span>}
-      {v.muc ? <span className="whitespace-nowrap px-2 py-0.5 text-[12px] font-bold" style={{ background: nenMuc(v.muc), color: mauMuc(v.muc), borderRadius: 'var(--sk-radius-pill)' }}>{NHAN_MUC[v.muc]}</span>
-        : v.tt !== 'sap_toi' && v.tt !== 'xong' ? <NhanHS mau={v.tt === 'cho_cham' ? MAU.muted : MAU.sai}>{NHAN_TT[v.tt]}</NhanHS> : null}
+    <div className="px-3 py-2" style={{ background: MAU.surface2, borderRadius: 'var(--sk-radius)' }}>
+      <div className="flex items-center gap-3">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center text-[14px] font-bold"
+          style={{ borderRadius: 'var(--sk-radius-pill)', background: xong ? NEN.dung : v.tt === 'sap_toi' ? MAU.surface : NEN.sai, color: xong ? MAU.dung : v.tt === 'sap_toi' ? MAU.muted : MAU.sai }} aria-hidden>
+          {xong ? '✓' : v.tt === 'sap_toi' ? '○' : '!'}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[14.5px] font-bold" style={{ color: MAU.ink }}>{TEN_VIEC[v.loai]} · {thuNgay(v.ngay)}</span>
+          {phu && <span className="block text-[12.5px]" style={{ color: MAU.muted }}>{phu}</span>}
+          {v.ghi_chu && <span className="block text-[12.5px] font-semibold" style={{ color: v.tt === 'vang' ? MAU.sai : MAU.canhBao }}>{v.ghi_chu}</span>}
+        </span>
+        {coChiTiet && (
+          <button onClick={() => setMo((x) => !x)} aria-expanded={mo} className="shrink-0 whitespace-nowrap px-1 py-1 text-[12.5px] font-bold" style={{ color: MAU.acc }}>{mo ? 'Ẩn ▴' : 'Chi tiết ▾'}</button>
+        )}
+        {v.pct != null && <span className="text-[15px] font-extrabold" style={{ color: MAU.ink }}>{v.pct}%</span>}
+        {v.muc ? <span className="whitespace-nowrap px-2 py-0.5 text-[12px] font-bold" style={{ background: nenMuc(v.muc), color: mauMuc(v.muc), borderRadius: 'var(--sk-radius-pill)' }}>{NHAN_MUC[v.muc]}</span>
+          : v.tt !== 'sap_toi' && v.tt !== 'xong' ? <NhanHS mau={v.tt === 'cho_cham' ? MAU.muted : MAU.sai}>{NHAN_TT[v.tt]}</NhanHS> : null}
+      </div>
+      {mo && (
+        <div className="mt-2 overflow-hidden" style={{ background: MAU.surface, border: `1px solid ${MAU.line}`, borderRadius: 'var(--sk-radius)' }}>
+          {loi && <p className="px-3 py-2 text-[12.5px]" style={{ color: MAU.sai }}>Không tải được chi tiết.</p>}
+          {!ds && !loi && <p className="px-3 py-2 text-[12.5px]" style={{ color: MAU.muted }}>Đang tải…</p>}
+          {ds && ds.length === 0 && <p className="px-3 py-2 text-[12.5px]" style={{ color: MAU.muted }}>Chưa có câu nào được chấm.</p>}
+          {ds?.map((d, i) => (
+            <div key={d.ma ?? '_'} className="flex items-center gap-2 px-3 py-1.5 text-[13px]" style={i > 0 ? { borderTop: `1px solid ${MAU.line}` } : undefined}>
+              <span className="min-w-0 flex-1" style={{ color: d.ma ? MAU.ink : MAU.muted }}>{d.ten}</span>
+              <span className="shrink-0 text-[12px]" style={{ color: MAU.muted }}>{d.so_cau} câu</span>
+              <span className="w-11 shrink-0 text-right font-extrabold" style={{ color: mauPct(d.pct) }}>{d.pct}%</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
