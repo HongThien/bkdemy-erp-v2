@@ -130,3 +130,19 @@ export async function nopBaoCao(tuan: string, caNhan: DongCaNhan[], tuViet: TuVi
   if (error) throw error
   return data as BaoCaoTuan
 }
+
+// ── Tuần ĐANG CHẠY cho trưởng bộ môn / giám đốc (mig 202611191751) — fn_bctk_hien_tai chỉ đọc sổ tính sẵn; fn_bctk_hien_tai_o tính trực tiếp một khối ──
+export type HienTai = {
+  tuan: string; den: string
+  mon: { mon: string; tinh_at: string | null; tong: Partial<TongSo> | null; khoi: { khoi: string; tinh_at: string; tong: Partial<TongSo>; truong: string | null }[] }[]
+}
+export async function hienTaiCacKhoi(): Promise<HienTai> {
+  const { data, error } = await supabase.rpc('fn_bctk_hien_tai')
+  if (error) throw error
+  return data as HienTai
+}
+export async function hienTaiMotKhoi(mon: string, khoi: string): Promise<SoBaoCao> {
+  const { data, error } = await supabase.rpc('fn_bctk_hien_tai_o', { p_mon: mon, p_khoi: khoi })
+  if (error) throw error
+  return data as SoBaoCao
+}

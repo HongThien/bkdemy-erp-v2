@@ -598,6 +598,12 @@ Nhận định tình hình khối · 3 việc ưu tiên tuần tới · cần h�
 - Hàng báo cáo các khối (chưa nộp / đã nộp / trễ / trả lại / đã duyệt) · **Duyệt** / **Trả lại** (bắt buộc lý do); không tự duyệt mình.
 - **Báo cáo Chuyên môn tuần** (1 / môn / tuần) = **tổng môn** (cùng hàm, gộp mọi ô) + báo cáo khối **đã duyệt** + **nhận xét trưởng bộ môn**. Chốt ⇒ snap tổng môn; khối thiếu ghi rõ.
 
+### 5.8b Màn "📡 Tuần này" — trưởng bộ môn / giám đốc xem tuần ĐANG CHẠY (Thùy 19/11; mig `202611191751`; `TuanNayTBM.tsx`)
+- Tab đầu tiên (và mặc định) của Báo cáo tuần ở phòng Trưởng bộ môn / Giám đốc. Không chờ trưởng khối nộp: mỗi khối một dòng + dòng **Cả môn**, 8 cột của bảng Học tập (§5.5b) — nhóm yếu · dạng yếu · HS yếu ≥ 1 nhóm · HS yếu ≥ 2 nhóm · xếp bổ trợ · hiệu suất bổ trợ · vắng ca · chưa ai xử lý; mọi số là **đầu tuần → hiện tại**.
+- **Không realtime từng phút:** màn chỉ ĐỌC sổ `bctk_so_hien_tai_o` (mỗi ô một dòng, ghi đè) — bộ điều phối mã `bctk_hien_tai` làm mới 30 phút/lần, 6–23 h, ô cũ nhất trước, 20 giây (đo 19/11: 20 ô hết 3,5 s); màn ghi "tính lúc HH:MM", có nút ↻ đọc lại. Dòng Cả môn = GOM tử / mẫu của các khối (`_bctk_gom_tong`; đối chiếu 19/11 khớp tính trực tiếp).
+- **Bấm một khối** ⇒ một lượt `fn_bctk_hien_tai_o` tính trực tiếp đúng khối đó ⇒ hiện báo cáo đủ (tab Vận hành · Học tập, từng lớp, HS đang yếu) ngay dưới bảng.
+- Quyền: cổng `_bctk_gac_tbm` + môn trong `_bctk_cac_mon_toi()` (giám đốc / toàn hệ: mọi môn, lọc bằng chip môn). Trưởng khối không có tab này — họ xem tuần đang chạy ở chính màn soạn báo cáo của mình (§5.5b).
+
 ### 5.9 Chiếu TV
 **Tổng môn** → **Từng lớp** → **mỗi khối** (số + tự viết) → **HS yếu chưa xử lý** → **nhận xét trưởng bộ môn**. ← → / bút trình chiếu · Home/End · Esc · mục lục; mỗi trang vừa khít màn (`VuaMan`). Kiểm 1920×1080.
 

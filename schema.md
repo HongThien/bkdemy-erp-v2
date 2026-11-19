@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-604 bảng · 42 view · 0 enum · 466 trigger · 2013 function
+605 bảng · 42 view · 0 enum · 466 trigger · 2017 function
 
 ## _app_secrets
 
@@ -614,6 +614,16 @@
 | chot_boi_cu | uuid | Y |  |  |  |
 | actor | uuid | Y | jwt_uid() |  |  |
 | at | timestamp with time zone |  | now() |  |  |
+
+## bctk_so_hien_tai_o
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| mon | text |  |  | PK |  |
+| khoi | text |  |  | PK |  |
+| tuan | date |  |  |  |  |
+| tong | jsonb |  |  |  |  |
+| tinh_at | timestamp with time zone |  | now() |  |  |
 
 ## bctk_so_tuan_o
 
@@ -11686,7 +11696,9 @@ WITH luot AS (
 - `_bctk_de_xuat_tre(p_tuan date)` → integer
 - `_bctk_gac_tbm()` → void
 - `_bctk_ghi_log()` → trigger
+- `_bctk_gom_tong(p jsonb[])` → jsonb
 - `_bctk_han(p_tuan date)` → timestamp with time zone
+- `_bctk_hien_tai_lam_moi(p_ngan_sach_giay integer DEFAULT 20)` → integer
 - `_bctk_loc_nhap(p jsonb)` → jsonb
 - `_bctk_nhom(et_viec bigint, et_dung bigint, et_luot bigint, et_tb numeric, bt_can bigint, bt_dung bigint, bt_muon bigint, bt_luot bigint, bt_tb numeric, dy_dau bigint, dy_cuoi bigint, hy_dau bigint, hy_cuoi bigint, si_so bigint)` → jsonb
 - `_bctk_ny(ny_dau bigint, ny_cuoi bigint)` → jsonb
@@ -12481,6 +12493,8 @@ WITH luot AS (
 - `fn_bcmt_lay(p_tuan date, p_mon text)` → jsonb
 - `fn_bcmt_luu(p_tuan date, p_mon text, p_nhan_xet text)` → jsonb
 - `fn_bctk_hang(p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_bctk_hien_tai()` → jsonb
+- `fn_bctk_hien_tai_o(p_mon text, p_khoi text)` → jsonb
 - `fn_bctk_lay(p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_bctk_luu_nhap(p_tuan date, p_ca_nhan jsonb, p_tu_viet jsonb)` → jsonb
 - `fn_bctk_nop(p_tuan date, p_ca_nhan jsonb, p_tu_viet jsonb)` → jsonb

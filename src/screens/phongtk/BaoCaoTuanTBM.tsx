@@ -8,10 +8,11 @@ import { chotBaoCaoMon, hangBaoCao, layBaoCaoMon, luuBaoCaoMon, xemBaoCao, xuLyB
 import { congNgay, ddmmVN } from '../../lib/tuan'
 import BaoCaoTuanTK, { NoiDungBaoCao, Khung } from './BaoCaoTuanTK'
 import NutChieuBaoCaoMon from './ChieuBaoCaoMon'
+import TuanNayTBM from './TuanNayTBM'
 import { nhoBen } from '../../lib/nho'
 
-type Tab = 'khoi' | 'mon' | 'cua_toi'
-const NHO = nhoBen<{ tab: Tab; tuan: string | null; mon: string | null }>('bao_cao_tuan_tbm', { tab: 'khoi', tuan: null, mon: null }, { luu: ['tab', 'mon'], trongNgay: ['tuan'] })
+type Tab = 'tuan_nay' | 'khoi' | 'mon' | 'cua_toi'
+const NHO = nhoBen<{ tab: Tab; tuan: string | null; mon: string | null }>('bao_cao_tuan_tbm', { tab: 'tuan_nay', tuan: null, mon: null }, { luu: ['tab', 'mon'], trongNgay: ['tuan'] })
 const TT: Record<string, [string, string]> = {
   chua_nop: ['Chưa nộp', 'bg-slate-100 text-slate-600'], da_nop: ['Chờ duyệt', 'bg-sky-100 text-sky-700'],
   tra_lai: ['Đã trả lại', 'bg-amber-100 text-amber-800'], da_duyet: ['Đã duyệt', 'bg-emerald-100 text-emerald-700'],
@@ -47,19 +48,25 @@ export default function BaoCaoTuanTBM() {
     <div className="space-y-3">
       {/* 1 hàng: tuần · môn · tab */}
       <div className="flex flex-wrap items-center gap-2">
+        {/* tab Tuần này luôn là tuần đang chạy ⇒ ẩn bộ chọn tuần + hạn nộp của các tab báo cáo đã chốt */}
+        {tab !== 'tuan_nay' && <>
         <button onClick={() => setTuan(congNgay(hang.tuan, -7))} className="rounded-lg border border-slate-200 px-2 py-1 text-[13px] hover:bg-slate-50">‹</button>
         <span className="text-[15px] font-bold text-slate-800">Tuần {ddmmVN(hang.tuan)} – {ddmmVN(hang.den)}</span>
         <button onClick={() => setTuan(congNgay(hang.tuan, 7))} className="rounded-lg border border-slate-200 px-2 py-1 text-[13px] hover:bg-slate-50">›</button>
         <span className="text-[12px] text-slate-500">Hạn khối nộp {gio(hang.han)}</span>
+        </>}
         {hang.mon.length > 1 && hang.mon.map((m) => (
           <button key={m} onClick={() => chonMon(m)} className={`rounded-full px-2.5 py-0.5 text-[12px] font-medium ${m === monChon ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600'}`}>{m}</button>
         ))}
         <div className="ml-auto inline-flex rounded-xl border border-slate-200 bg-white p-0.5">
+          {/* Thùy 19/11: xem kết quả học tập các khối của tuần ĐANG CHẠY (trước chỉ xem được báo cáo đã chốt) */}
+          <button onClick={() => setTab('tuan_nay')} className={nut(tab === 'tuan_nay')}>📡 Tuần này</button>
           <button onClick={() => setTab('khoi')} className={nut(tab === 'khoi')}>Các khối</button>
           <button onClick={() => setTab('mon')} className={nut(tab === 'mon')}>Báo cáo môn{monChon ? ` ${monChon}` : ''}</button>
           <button onClick={() => setTab('cua_toi')} className={nut(tab === 'cua_toi')}>Báo cáo của tôi</button>
         </div>
       </div>
+      {tab === 'tuan_nay' && <TuanNayTBM mon={hang.mon.length > 1 ? monChon : null} />}
       {tab === 'khoi' && <CacKhoi hang={hang} setHang={setHang} mon={monChon} />}
       {tab === 'mon' && monChon && <BaoCaoMonView key={`${hang.tuan}|${monChon}`} tuan={hang.tuan} mon={monChon} />}
       {tab === 'cua_toi' && <BaoCaoTuanTK />}
