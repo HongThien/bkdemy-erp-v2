@@ -29,7 +29,7 @@
 | 16 | `spec-ban-do-hoa.md` | Bản đồ Hoá | *chưa có gì* |
 | 17 | `spec-bai-hoc-tuong-tac.md` | Bài học tương tác | `spec-day-hinh-3d` · `spec-toan-du-hanh` · `spec-khtn-du-hanh` |
 | 18 | ✅ **`spec-bo-tro.md` — CHỐT 17/11** (viết lại; riêng §7.4 Đuổi chờ review; bản 13/11 → `_luu-tru/spec-bo-tro-ban-13-11.md`) | **Chỉ logic bổ trợ**: các level, cách kết luận, theo dõi… (xếp lịch, báo PH ⇒ #8) | `spec-bo-tro` |
-| 19 | `spec-tai-chinh.md` | **Số liệu** tài chính (cách thu ⇒ #8, lương ⇒ #11) | `SPEC-tai-chinh-luong-gv-ta` (phần cơ cấu tài chính) · `PLAN-thu-chi` (phần số liệu) |
+| 19 | 📝 **`spec-tai-chinh.md` — NHÁP 19/11** (đối chiếu DB 19/11; chờ Thùy trả lời §10 — 10 câu; nguồn CHƯA chuyển) | **Số liệu** tài chính (cách thu ⇒ #8, lương ⇒ #11) | `SPEC-tai-chinh-luong-gv-ta` (phần cơ cấu tài chính) · `PLAN-thu-chi` (phần số liệu) |
 | 20 | ✅ **`spec-mastery.md` — ĐÃ VIẾT 17/11** (Thùy chốt 5 điểm lệch + xoá A–F; nguồn đã chuyển `_luu-tru/`) | **Mastery / đo lường — spec riêng** (lần đo, mastery, dạng yếu · nhóm yếu · HS yếu, cache, Cuối cấp, Dashboard học tập) | *đã gộp:* `spec-danh-gia-cuoi-cap` · `PLAN-mastery-ban-do-moi` · CLAUDE.md §5 (giữ ý, trỏ sang) · mục HANDOFF mastery. `spec-van-hanh-tuan` §5.6 giữ tại chỗ (trỏ §5) |
 
 **Không vào bộ 20 spec:**
