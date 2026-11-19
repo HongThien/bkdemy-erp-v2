@@ -287,7 +287,7 @@ export const kieuCols = (k?: string): number => BLOCK_KIEU.find((x) => x.v === k
 // hien_lt = BẬT/TẮT lý thuyết RIÊNG cho phan này (chỉ có ý nghĩa với loai_phan='dang') — khác
 // cau_hinh.inLyThuyet (toàn doc): 1 buổi vừa học dạng mới (hien_lt=true) vừa ôn dạng cũ (hien_lt=false).
 // Default true = giữ nguyên hành vi cũ (mọi phan trước đây coi như luôn hiện LT nếu kho có nội dung).
-export type TaiLieuPhan = { id: string; tai_lieu_id: string; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean; nang_cao?: boolean; diem_moi_cau?: number | null }
+export type TaiLieuPhan = { id: string; tai_lieu_id: string; cha_id?: string | null; thu_tu: number; loai_phan: PhanLoai; ref_ma: string | null; tieu_de: string | null; noi_dung: string | null; kieu?: string; hien_lt?: boolean; nang_cao?: boolean; diem_moi_cau?: number | null }
 // MT (08/10): phần có chữ "nâng cao" trong tên ⇒ mặc định là phần Nâng cao (người soạn bật/tắt được — tai_lieu_phan.nang_cao).
 export const laTenPhanNangCao = (t: string | null | undefined): boolean => /n[âa]ng\s*cao/i.test(t ?? '')
 type LtRow = { noi_dung: string; file_url: string | null; ten_file: string | null }
@@ -570,6 +570,10 @@ function sliceBuoi(phans: TaiLieuPhan[], buoiId: string): TaiLieuPhan[] {
   if (i < 0) return []
   const out = [phans[i]]
   for (let j = i + 1; j < phans.length && phans[j].loai_phan !== 'buoi'; j++) out.push(phans[j])
+  // Phần LUYỆN LẠI buổi trước (BTVN xếp chồng — 'ontap_nhom', mig 202611131755) nằm ở thu_tu 900000+ (cuối tài liệu), KHÔNG liền sau
+  // mốc buổi, nhưng thuộc buổi qua cha_id ⇒ phải gom theo cha_id, không thì "👁 Xem buổi" rụng im lặng câu luyện lại (câu không được nạp).
+  const co = new Set(out.map((p) => p.id))
+  for (const p of phans) if (p.cha_id === buoiId && !co.has(p.id)) out.push(p)
   return out
 }
 // Gom 1 buổi (mốc 'buoi' + các phan đến mốc kế / hết): trả thứ tự dạng + map dang/btvn theo ma_dang.
