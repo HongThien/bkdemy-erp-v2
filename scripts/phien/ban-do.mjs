@@ -30,6 +30,9 @@
 //                       "ve":[["da_giac",["A","B","C"]],["doan","A","H",{"dut":true}],["goc_vuong","H","A","C"],["nhan","tat_ca"]]}  HET
 //           DỰNG hình lớp 6–12 KHÔNG tính toạ độ nhẩm: khai điểm bằng toạ độ toán (y hướng LÊN, [x,y,z] = không gian, chiếu xiên)
 //           hoặc phép dựng; máy tính toạ độ + tự co khung + tự đặt nhãn. Danh sách phép/nét: loai/nhap_kho.md §Dựng hình.
+// GIẢI BÀI TỪ ẢNH (20/11, spec-quan-ly-chat-luong §6.5):
+//   thu <<'HET'  (đoạn JavaScript tính độc lập với lời giải, in kết quả bằng console.log)  HET     THỬ đáp số — hộp cát, 10 giây, không file/mạng
+//   anh_cat '{"file":"<ảnh đính kèm>","vung":[x0,y0,x1,y1],"phong":2,"ten":"cau3"}'              cắt + phóng vùng ảnh (tỉ lệ 0–1) ⇒ in đường dẫn PNG, Read để xem
 // XOÁ (05/11, Thùy: trưởng khối đủ quyền): xoa_chu_de '{"id":..}' · xoa_chuyen_de '{"chu_de_id":..,"chuyen_de_id":..}' ·
 // xoa_nhom '{"id":..}' · xoa_dang_bai '{"id":..}' — chỉ chạy sau khi người mở phiên gật trong chat.
 //
@@ -245,6 +248,24 @@ if (lenh === 'kho-tong') {
   process.exit(0)
 }
 
+// THỬ ĐÁP SỐ (spec-giai-bai §A12, spec-quan-ly-chat-luong §6.5.5): chạy đoạn JavaScript tính độc lập với lời giải.
+// Hộp cát: tiến trình riêng với `node --permission` (cấm đọc/ghi file, mạng, tiến trình con, worker), env gần như rỗng, hết giờ 10 giây.
+if (lenh === 'thu') {
+  const { spawnSync } = await import('node:child_process')
+  const ma = (await docStdin()).replace(/^\n+|\s+$/g, '')
+  if (!ma) loi('Không có đoạn mã. Dùng: node scripts/phien/ban-do.mjs thu <<\'HET\'  (mã JS, in kết quả bằng console.log)  HET')
+  if (ma.length > 20000) loi('Đoạn mã quá dài (tối đa 20.000 ký tự).')
+  const kq = spawnSync(process.execPath, ['--permission', '-e', ma], {
+    timeout: 10_000, encoding: 'utf8', maxBuffer: 1 << 20, windowsHide: true,
+    env: process.platform === 'win32' ? { SystemRoot: process.env.SystemRoot ?? 'C:\\Windows' } : {},
+  })
+  if (kq.error?.code === 'ETIMEDOUT') loi('Quá 10 giây — thu gọn phép thử (bớt vòng lặp vét cạn).')
+  if (kq.error) loi(`Không chạy được: ${kq.error.message}`)
+  console.log((kq.stdout ?? '').slice(0, 6000) || '(không in gì — dùng console.log để in kết quả)')
+  if (kq.stderr?.trim()) console.log(`⚠ lỗi khi chạy (exit ${kq.status}):\n${kq.stderr.trim().slice(0, 1500)}`)
+  process.exit(0)
+}
+
 let ts
 const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac', 'dung_hinh'].includes(lenh) ? await docStdin() : '{}')
 try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
@@ -392,6 +413,32 @@ if (lenh === 've_hinh') {
   const ra = join(tam, `${ten}.png`)
   await chupPng(svg, w, h, ra)
   console.log(`Đã vẽ: ${ra}  (${w}×${h}, ảnh 2x) — ĐỌC ảnh này để soát (nhãn đủ, khớp đề, không chồng chữ) rồi mới gan_anh '{"ma_cau":"…","file":"${ra.replace(/\\/g, '/')}","o":"de"}'`)
+  process.exit(0)
+}
+
+// CẮT-PHÓNG VÙNG ẢNH ĐÍNH KÈM (spec-giai-bai §A11 "không đọc chắc thì phóng to"; §6.5.5). Chỉ file trong thư mục tạm của phiên. Cần Windows (System.Drawing).
+if (lenh === 'anh_cat') {
+  const { execFileSync } = await import('node:child_process')
+  const { mkdirSync, existsSync } = await import('node:fs')
+  const { resolve } = await import('node:path')
+  const tam = join(root, 'scripts', 'phien', '.tam', PHIEN)
+  const f = ts.file ? resolve(ts.file) : ''
+  if (!f || !existsSync(f)) loi(`Không thấy file: ${ts.file ?? '(thiếu "file")'}`)
+  if (!f.toLowerCase().startsWith(resolve(tam).toLowerCase())) loi('File phải nằm trong thư mục ảnh tạm của phiên (đường dẫn bot đã ghi ở tin).')
+  const v = ts.vung ?? [0, 0, 1, 1], phong = Math.min(4, Math.max(1, Number(ts.phong ?? 2)))
+  if (v.length !== 4 || v.some((x) => !(x >= 0 && x <= 1)) || v[2] <= v[0] || v[3] <= v[1]) loi('"vung":[x0,y0,x1,y1] là tỉ lệ 0–1 của ảnh (x1>x0, y1>y0).')
+  if (process.platform !== 'win32') loi('anh_cat hiện chỉ chạy trên máy bot Windows.')
+  const ra = join(tam, 'cat'); mkdirSync(ra, { recursive: true })
+  const dich = join(ra, `${String(ts.ten ?? 'vung').replace(/[^\w.-]/g, '_')}.png`)
+  const ps = `Add-Type -AssemblyName System.Drawing; $s=[System.Drawing.Image]::FromFile($env:ANH_VAO); try{` +
+    `$x=[int]($env:V0*$s.Width);$y=[int]($env:V1*$s.Height);$w=[Math]::Max(1,[int](($env:V2-$env:V0)*$s.Width));$h=[Math]::Max(1,[int](($env:V3-$env:V1)*$s.Height));` +
+    `$k=[double]$env:PHONG;$b=New-Object System.Drawing.Bitmap([int]($w*$k),[int]($h*$k));$g=[System.Drawing.Graphics]::FromImage($b);` +
+    `$g.InterpolationMode='HighQualityBicubic';$g.DrawImage($s,(New-Object System.Drawing.Rectangle(0,0,$b.Width,$b.Height)),$x,$y,$w,$h,'Pixel');$b.Save($env:ANH_RA,[System.Drawing.Imaging.ImageFormat]::Png);$g.Dispose();$b.Dispose()}finally{$s.Dispose()}`
+  try {
+    execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps], { stdio: 'pipe', windowsHide: true,
+      env: { ...process.env, ANH_VAO: f, ANH_RA: dich, V0: String(v[0]), V1: String(v[1]), V2: String(v[2]), V3: String(v[3]), PHONG: String(phong) } })
+  } catch (e) { loi(`Cắt ảnh lỗi: ${String(e.stderr ?? e.message).slice(0, 300)}`) }
+  console.log(`Đã cắt${phong > 1 ? ` và phóng ${phong}×` : ''}: ${dich} — dùng Read để xem.`)
   process.exit(0)
 }
 

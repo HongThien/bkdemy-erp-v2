@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-605 bảng · 42 view · 0 enum · 466 trigger · 2018 function
+606 bảng · 42 view · 0 enum · 466 trigger · 2021 function
 
 ## _app_secrets
 
@@ -1529,6 +1529,20 @@
 | updated_at | timestamp with time zone |  | now() |  |  |
 | sua_cau_truc | boolean |  | true |  |  |
 
+## claude_phien_anh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| phien_id | uuid |  |  | FK→claude_phien.id |  |
+| tin_id | bigint |  |  | FK→claude_phien_tin.id |  |
+| thu_tu | smallint |  |  |  |  |
+| mime | text |  |  |  | `image/jpeg` · `image/png` · `image/webp` |
+| thu | text |  |  |  |  |
+| du_lieu | text |  |  |  |  |
+| kich_thuoc | integer |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+
 ## claude_phien_bot
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -1578,6 +1592,7 @@
 | usage | jsonb | Y |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
 | updated_at | timestamp with time zone |  | now() |  |  |
+| so_anh | smallint |  | 0 |  |  |
 
 ## dai_ban_do
 
@@ -6839,7 +6854,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -12133,6 +12148,7 @@ WITH luot AS (
 - `_phien_bd_vao(p_phien uuid)` → claude_phien
 - `_phien_bdm_bang(p_mon text)` → TABLE(bang text, ham text, co_vung boolean)
 - `_phien_ghi_lich_su()` → trigger
+- `_phien_gioi_han_anh_ngay()` → integer
 - `_phien_hinh_khoi(p_v text)` → text
 - `_phien_kho_cau(p_p claude_phien, p_ma_cau text)` → TABLE(tbl text, nhanh text)
 - `_phien_kho_mon()` → text[]
@@ -13216,6 +13232,7 @@ WITH luot AS (
 - `fn_order_phan_hoi(p_order uuid, p_trang_thai text, p_ghi_chu text DEFAULT NULL::text)` → void
 - `fn_order_tao(p_nguoi_nhan uuid, p_noi_dung text, p_han date DEFAULT NULL::date)` → uuid
 - `fn_pham_vi_cua_toi()` → TABLE(mon text, khoi text, vai text)
+- `fn_phien_anh_don()` → integer
 - `fn_phien_anh_gan(p_phien uuid, p_ts jsonb)` → jsonb
 - `fn_phien_bd_doc(p_phien uuid, p_loai text, p_id text)` → jsonb
 - `fn_phien_bd_ghi(p_phien uuid, p_viec text, p_ts jsonb)` → jsonb
@@ -13224,9 +13241,10 @@ WITH luot AS (
 - `fn_phien_bot_nhan(p_phien uuid)` → jsonb
 - `fn_phien_bot_nhat_mo_coi(p_phut integer)` → integer
 - `fn_phien_bot_tra(p_ids bigint[], p_loi text, p_tinh_lan boolean, p_toi_da integer DEFAULT 2)` → void
+- `fn_phien_chat_vao_kho(p_phien uuid, p_ds jsonb, p_duyet boolean DEFAULT false)` → jsonb
 - `fn_phien_dong(p_phien uuid)` → text
 - `fn_phien_ds(p_gioi_han integer DEFAULT 100)` → jsonb
-- `fn_phien_gui(p_phien uuid, p_noi_dung text)` → bigint
+- `fn_phien_gui(p_phien uuid, p_noi_dung text, p_anh jsonb DEFAULT '[]'::jsonb)` → bigint
 - `fn_phien_hh_bai(p_phien uuid, p_viec text, p_ts jsonb)` → jsonb
 - `fn_phien_hh_xem(p_phien uuid)` → jsonb
 - `fn_phien_hinh_goi(p_phien uuid, p_ham text, p_args jsonb DEFAULT '{}'::jsonb)` → jsonb

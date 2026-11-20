@@ -8,10 +8,11 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import {
   PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
-  listGhi, getBot, getPhien,
-  type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
+  listGhi, getBot, getPhien, listAnhThu, getAnhDu,
+  type AnhGui, type AnhThu, type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
 } from '../../lib/phien'
-import ChuPhien from './ChuPhien'
+import { NoiDungClaude, tachKhoi, type TheCauData } from './TheCauPhien'
+import { nenAnh, urlAnh, TOI_DA_ANH } from '../../lib/phienAnh'
 import { nhoBen } from '../../lib/nho'
 
 const NHO = nhoBen<{ chon: string | null; ds: PhienItem[] | null; nhap: Record<string, string>; tin: Record<string, PhienTin[]> }>('phien_claude', { chon: null, ds: null, nhap: {}, tin: {} }, { luu: ['chon', 'nhap'] })
@@ -20,6 +21,7 @@ const NHO = nhoBen<{ chon: string | null; ds: PhienItem[] | null; nhap: Record<s
 const GOI_Y: Partial<Record<PhienLoai, string[]>> = {
   ban_do: ['Dựng nháp bản đồ chương Số hữu tỉ theo sách, cho mình xem khung trước', 'Nhóm 2.3 tách thành hai: cộng trừ và nhân chia', 'Mình vừa sửa tay chuyên đề 3, làm tiếp đi'],
   nhap_kho: ['Phân dạng các câu chưa có dạng của khối, cho mình xem kết quả lượt đầu', 'Chạy hết kho đi, xong báo mình các cụm cần thêm dạng', 'Ok thêm dạng "Tìm x trong tỉ lệ thức" như em đề xuất rồi phân lại cụm đó'],
+  giai_bai: ['Dán ảnh đề vào đây (Ctrl+V) rồi nhắn: "giải câu 3, 4"', 'Đưa câu 2 vào kho, dạng như em đề xuất', 'Clone câu 1 thành 3 biến thể rồi để mình duyệt'],
   ly_thuyet: ['Soạn lý thuyết + 2 ví dụ cho các dạng của chuyên đề Cộng trừ số hữu tỉ', 'Ví dụ 2 dạng 1.2.1 dễ quá, đổi bài khó hơn', 'Mình vừa sửa tay phương pháp dạng 1.3.2, áp cách viết đó cho các dạng còn lại'],
 }
 // 11/11: 15 s → 60 s. claude_phien* CHƯA nằm trong publication supabase_realtime (đo 11/11) ⇒ hỏi lại là đường duy nhất;
@@ -146,6 +148,10 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   const [loi, setLoi] = useState<string | null>(null)
   const [myId, setMyId] = useState<string | null>(null)
   const cuon = useRef<HTMLDivElement>(null)
+  const oNhap = useRef<HTMLTextAreaElement>(null)
+  const [anh, setAnh] = useState<{ g: AnhGui; url: string }[]>([])
+  const [anhThu, setAnhThu] = useState<Record<number, AnhThu[]>>({})
+  const [phong, setPhong] = useState<string | null>(null)   // ảnh đang xem lớn (data URL)
   const dinhDay = useRef(true)   // người đang ở cuối khung ⇒ chữ mới tự cuộn theo; đã cuộn lên đọc thì không giật xuống
 
   useEffect(() => { NHO.tin[phien.id] = tin }, [phien.id, tin])
@@ -182,11 +188,32 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
 
   async function gui() {
     const nd = nhap.trim()
-    if (!nd || busy || tt !== 'mo') return
+    if ((!nd && !anh.length) || busy || tt !== 'mo') return
     setBusy(true); setLoi(null)
-    try { const t = await guiTin(phien.id, nd); setTin((prev) => vaTin(prev, t)); setNhap(''); dinhDay.current = true }
+    try { const t = await guiTin(phien.id, nd, anh.map((a) => a.g)); setTin((prev) => vaTin(prev, t)); setNhap(''); setAnh([]); dinhDay.current = true }
     catch (e: any) { setLoi(e.message ?? String(e)) } finally { setBusy(false) }
   }
+  // Ảnh: dán (Ctrl+V) / kéo thả / chọn tệp. Nén ở máy; tối đa TOI_DA_ANH ảnh mỗi tin.
+  async function themAnh(files: File[]) {
+    const ds = files.filter((f) => f.type.startsWith('image/'))
+    if (!ds.length) return
+    setLoi(null)
+    try {
+      const them: { g: AnhGui; url: string }[] = []
+      for (const f of ds.slice(0, Math.max(0, TOI_DA_ANH - anh.length))) { const g = await nenAnh(f); them.push({ g, url: urlAnh(g.mime, g.thu) }) }
+      if (ds.length > TOI_DA_ANH - anh.length) setLoi(`Mỗi tin tối đa ${TOI_DA_ANH} ảnh.`)
+      setAnh((p) => [...p, ...them])
+    } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
+  async function xemLon(id: number) {
+    try { const a = await getAnhDu(id); setPhong(a ? urlAnh(a.mime, a.du_lieu) : null); if (!a) setLoi('Ảnh đã hết hạn lưu (quá 30 ngày sau khi đóng phiên).') } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
+  // Nút trên thẻ câu: gửi thẳng một tin (vd "Clone câu c1 thành 3 biến thể.") — vá tại chỗ như gui().
+  async function guiNhanh(nd: string) {
+    const t = await guiTin(phien.id, nd); setTin((prev) => vaTin(prev, t)); dinhDay.current = true
+  }
+  function datNhap(nd: string) { setNhap(nd); setTimeout(() => { oNhap.current?.focus(); oNhap.current?.setSelectionRange(nd.length, nd.length) }, 0) }
+
   async function dong() {
     if (!window.confirm('Đóng phiên? Claude sẽ viết tổng kết rồi phiên chuyển sang "đã đóng". Mở lại được khi cần.')) return
     try { const t = await dongPhien(phien.id); setTt(t); onDoiTrangThai(phien.id, t); taiLai() } catch (e: any) { setLoi(e.message ?? String(e)) }
@@ -196,6 +223,18 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   }
 
   // Tin người nào đang được Claude xử lý mà chưa có tin Claude trả lời ⇒ hiện "Claude đang làm…" ngay dưới nó.
+  // Thẻ câu Claude đã trả (id → thẻ mới nhất) — thẻ Clone tìm câu gốc ở đây.
+  const cacThe = useMemo(() => {
+    const m = new Map<string, TheCauData>()
+    for (const t of tin) if (t.vai === 'claude' && t.noi_dung.includes('```bkcau')) for (const b of tachKhoi(t.noi_dung)) if (b.k === 'cau') m.set(b.d.id, b.d)
+    return m
+  }, [tin])
+  // Thu nhỏ của ảnh đã gửi: tải 1 lần cho tin mới có ảnh.
+  useEffect(() => {
+    const can = tin.filter((t) => t.so_anh > 0 && !anhThu[t.id]).map((t) => t.id)
+    if (!can.length) return
+    listAnhThu(phien.id, can).then((ds) => setAnhThu((p) => { const n = { ...p }; for (const id of can) n[id] = ds.filter((a) => a.tin_id === id); return n })).catch(() => {})
+  }, [tin]) // eslint-disable-line
   const daTraLoi = useMemo(() => new Set(tin.filter((t) => t.vai === 'claude').map((t) => t.tra_loi_cho)), [tin])
 
   return (
@@ -222,7 +261,7 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
           <div key={t.id} className="flex gap-2">
             <span className="shrink-0 pt-0.5 text-[16px]">🤖</span>
             <div className="min-w-0 flex-1 rounded-2xl rounded-tl-sm bg-slate-50 px-3.5 py-2.5">
-              <ChuPhien text={t.noi_dung} />
+              <NoiDungClaude phienId={phien.id} text={t.noi_dung} cacThe={cacThe} mo={tt === 'mo'} onGui={guiNhanh} onNhap={datNhap} />
               {t.trang_thai === 'dang_viet' && <div className="mt-1 animate-pulse text-[12px] text-indigo-500">Claude đang viết…</div>}
               {t.trang_thai === 'dung' && <div className="mt-1 text-[12px] text-amber-700">Lượt này bị ngắt giữa chừng.</div>}
             </div>
@@ -236,7 +275,20 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
           </div>
         ) : (
           <div key={t.id} className="flex flex-col items-end">
-            <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tr-sm bg-indigo-600 px-3.5 py-2 text-[14px] text-white">{t.noi_dung}</div>
+            <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-tr-sm bg-indigo-600 px-3.5 py-2 text-[14px] text-white">
+              {t.so_anh > 0 && (
+                <div className="mb-1.5 flex flex-wrap gap-1.5">
+                  {(anhThu[t.id] ?? []).map((a) => (
+                    <button key={a.id} type="button" onClick={() => xemLon(a.id)} title="Bấm xem lớn">
+                      <img src={urlAnh(a.mime, a.thu)} alt="" className="h-20 w-20 rounded-lg border border-white/40 object-cover" />
+                    </button>
+                  ))}
+                  {!anhThu[t.id] && <span className="text-[12px] opacity-80">🖼 {t.so_anh} ảnh…</span>}
+                  {anhThu[t.id] && anhThu[t.id].length === 0 && <span className="text-[12px] opacity-80">🖼 {t.so_anh} ảnh (đã hết hạn lưu)</span>}
+                </div>
+              )}
+              {t.noi_dung !== '(chỉ gửi ảnh)' && t.noi_dung}
+            </div>
             <div className="mt-0.5 text-[11px] text-slate-400">
               {t.nguoi_gui === myId ? 'Bạn' : 'Đồng nghiệp'} · {gio(t.created_at)}
               {t.trang_thai === 'cho' && ' · ⏳ chờ Claude nhận'}
@@ -249,17 +301,41 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
       </div>
 
       <VetGhi phienId={phien.id} soTin={tin.length} />
+      {phong && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={() => setPhong(null)}>
+          <img src={phong} alt="" className="max-h-full max-w-full rounded-lg bg-white" />
+        </div>
+      )}
 
       <div className="border-t border-slate-100 p-3">
         {tt === 'mo' ? (
           <>
-            <textarea value={nhap} onChange={(e) => setNhap(e.target.value)} rows={2}
+            {anh.length > 0 && (
+              <div className="mb-1.5 flex flex-wrap gap-1.5">
+                {anh.map((a, i) => (
+                  <span key={i} className="relative">
+                    <img src={a.url} alt="" className="h-16 w-16 rounded-lg border border-slate-200 object-cover" />
+                    <button type="button" onClick={() => setAnh((p) => p.filter((_, j) => j !== i))} title="Bỏ ảnh này"
+                      className="absolute -right-1.5 -top-1.5 h-5 w-5 rounded-full bg-slate-700 text-[11px] leading-5 text-white">×</button>
+                  </span>
+                ))}
+              </div>
+            )}
+            <textarea ref={oNhap} value={nhap} onChange={(e) => setNhap(e.target.value)} rows={2}
+              onPaste={(e) => { const fs = Array.from(e.clipboardData.files); if (fs.some((f) => f.type.startsWith('image/'))) { e.preventDefault(); themAnh(fs) } }}
+              onDrop={(e) => { const fs = Array.from(e.dataTransfer.files); if (fs.length) { e.preventDefault(); themAnh(fs) } }}
+              onDragOver={(e) => e.preventDefault()}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); gui() } }}
-              placeholder="Nhắn Claude… (Enter gửi · Shift+Enter xuống dòng). Đang bận vẫn nhắn được — Claude đọc hết khi xong lượt."
+              placeholder="Nhắn Claude… (Enter gửi · Shift+Enter xuống dòng · dán / kéo thả ảnh đề vào đây). Đang bận vẫn nhắn được — Claude đọc hết khi xong lượt."
               className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-[14px] outline-none placeholder:text-slate-400 focus:border-indigo-300" />
             <div className="mt-1.5 flex items-center justify-between">
-              <span className="text-[11.5px] text-red-600">{loi}</span>
-              <button onClick={gui} disabled={!nhap.trim() || busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-40">
+              <span className="flex items-center gap-2">
+                <label className="cursor-pointer rounded-lg border border-slate-200 px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50" title={`Gửi ảnh đề (tối đa ${TOI_DA_ANH}/tin)`}>
+                  🖼 Ảnh<input type="file" accept="image/jpeg,image/png,image/webp" multiple className="hidden" onChange={(e) => { themAnh(Array.from(e.target.files ?? [])); e.target.value = '' }} />
+                </label>
+                <span className="text-[11.5px] text-red-600">{loi}</span>
+              </span>
+              <button onClick={gui} disabled={(!nhap.trim() && !anh.length) || busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-40">
                 {busy ? 'Đang gửi…' : 'Gửi'}
               </button>
             </div>

@@ -13,10 +13,10 @@ export const PHIEN_LOAI: { id: PhienLoai; ten: string; mo_ta: string; mo: boolea
   { id: 'ly_thuyet', ten: '📘 Lý thuyết dạng', mo_ta: 'Phase 2 — lý thuyết · ví dụ · mô tả nhận biết từng dạng', mo: true },
   { id: 'nhap_kho', ten: '📥 Nhập kho & phân dạng', mo_ta: 'Đưa bài tập mới vào kho và xếp vào dạng: chắc thì tự gán, chưa chắc thì vào hàng duyệt. Không xoá được gì', mo: true },
   { id: 'bao_sai', ten: '⚑ Câu bị báo sai', mo_ta: 'Xử lý câu trợ giảng báo sai', mo: false },
-  { id: 'giai_bai', ten: '✍️ Giải bài', mo_ta: 'Thùy phát động', mo: false },
+  { id: 'giai_bai', ten: '✍️ Giải bài từ ảnh', mo_ta: 'Gửi ảnh đề → Claude giải theo luật spec giải bài → Copy / đưa vào kho / Clone rồi duyệt ngay trong chat', mo: true },
 ]
 // Loại việc GHI VÀO BẢN ĐỒ — khớp _phien_loai_sua_ban_do() ở DB: cần môn có bản đồ mới, mỗi khối một phiên mở.
-export const LOAI_SUA_BAN_DO: PhienLoai[] = ['ban_do', 'ly_thuyet', 'nhap_kho']
+export const LOAI_SUA_BAN_DO: PhienLoai[] = ['ban_do', 'ly_thuyet', 'nhap_kho', 'giai_bai']
 export const tenLoai = (l: PhienLoai) => PHIEN_LOAI.find((x) => x.id === l)?.ten ?? l
 
 // tk: luôn true — mọi loại phiên chỉ trưởng khối trở lên (Thùy 04/11, mig 202611041648)
@@ -31,6 +31,34 @@ export type TinTrangThai = 'cho' | 'dang_xu' | 'xong' | 'loi' | 'dang_viet' | 'd
 export type PhienTin = {
   id: number; phien_id: string; vai: TinVai; nguoi_gui: string | null; noi_dung: string
   trang_thai: TinTrangThai; loi: string | null; tra_loi_cho: number | null; created_at: string; updated_at: string
+  so_anh: number   // số ảnh gửi kèm (0 = tin không ảnh) — ảnh ở claude_phien_anh, tải riêng
+}
+// Ảnh gửi kèm tin (spec-quan-ly-chat-luong §6.5): base64 không tiền tố data:. ≤ 5 ảnh/tin, ≤ 20 tin có ảnh/người/ngày (DB chặn).
+export type AnhGui = { mime: 'image/jpeg' | 'image/png' | 'image/webp'; thu: string; du_lieu: string }
+export type AnhThu = { id: number; tin_id: number; thu_tu: number; mime: string; thu: string }
+
+export async function listAnhThu(phienId: string, tinIds: number[]): Promise<AnhThu[]> {
+  if (!tinIds.length) return []
+  const { data, error } = await supabase.from('claude_phien_anh').select('id, tin_id, thu_tu, mime, thu').eq('phien_id', phienId).in('tin_id', tinIds).order('tin_id').order('thu_tu').limit(300)
+  if (error) throw error
+  return (data ?? []) as AnhThu[]
+}
+export async function getAnhDu(anhId: number): Promise<{ mime: string; du_lieu: string } | null> {
+  const { data, error } = await supabase.from('claude_phien_anh').select('mime, du_lieu').eq('id', anhId).maybeSingle()
+  if (error) throw error
+  return (data ?? null) as { mime: string; du_lieu: string } | null
+}
+
+// "Vào kho" / "Duyệt & vào kho" ngay trong chat — người mở phiên bấm = người duyệt (DB: fn_phien_chat_vao_kho).
+export type VaoKhoCau = {
+  loai_cau: string; noi_dung: string; lua_chon?: string[] | null; dap_an?: string | null; loi_giai?: string | null; ten_de_goc?: string
+  phan?: { ket_qua: 'cao' | 'vua'; dang_bai_id: string; ly_do?: string }; parent_ma_cau?: string
+}
+export type VaoKhoKq = { ket_qua: { i: number; ok: boolean; ma_cau?: string; trung?: boolean; loi?: string; clone_cua?: string | null }[]; duyet: { ok: number; loi: number } | null }
+export async function vaoKho(phienId: string, ds: VaoKhoCau[], duyet: boolean): Promise<VaoKhoKq> {
+  const { data, error } = await supabase.rpc('fn_phien_chat_vao_kho', { p_phien: phienId, p_ds: ds, p_duyet: duyet })
+  if (error) throw error
+  return data as VaoKhoKq
 }
 export type PhienGhi = { id: number; viec: string; tham_so: Record<string, unknown>; ket_qua: Record<string, unknown>; at: string }
 export type PhienBot = { may: string; alive_at: string; trang_thai: 'chay' | 'nghi_han_muc' | 'dung'; ghi_chu: string; nghi_toi: string | null }
@@ -55,7 +83,7 @@ export async function moPhien(loai: PhienLoai, mon: string, khoi: string, tieuDe
   return data as string
 }
 
-const COT_TIN = 'id, phien_id, vai, nguoi_gui, noi_dung, trang_thai, loi, tra_loi_cho, created_at, updated_at'
+const COT_TIN = 'id, phien_id, vai, nguoi_gui, noi_dung, trang_thai, loi, tra_loi_cho, created_at, updated_at, so_anh'
 export async function listTin(phienId: string): Promise<PhienTin[]> {
   const { data, error } = await supabase.from('claude_phien_tin').select(COT_TIN).eq('phien_id', phienId).order('id').limit(1000)
   if (error) throw error
@@ -63,8 +91,8 @@ export async function listTin(phienId: string): Promise<PhienTin[]> {
 }
 
 // Trả về tin vừa ghi để màn VÁ TẠI CHỖ (không reload cả danh sách — CLAUDE.md §2 React).
-export async function guiTin(phienId: string, noiDung: string): Promise<PhienTin> {
-  const { data: id, error } = await supabase.rpc('fn_phien_gui', { p_phien: phienId, p_noi_dung: noiDung })
+export async function guiTin(phienId: string, noiDung: string, anh: AnhGui[] = []): Promise<PhienTin> {
+  const { data: id, error } = await supabase.rpc('fn_phien_gui', { p_phien: phienId, p_noi_dung: noiDung, ...(anh.length ? { p_anh: anh } : {}) })
   if (error) throw error
   const { data, error: e2 } = await supabase.from('claude_phien_tin').select(COT_TIN).eq('id', id).single()
   if (e2) throw e2

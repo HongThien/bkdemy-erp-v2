@@ -81998,3 +81998,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 20/11 — Web `/dang-ky-test`: gộp Lớp đang mở + Phân lớp vào một tab "Lớp học" (bkdemy-web `34b7cf8`, ĐÃ push)
 - Thùy: "thông tin lớp học và phân lớp phải gộp vào cùng 1 tab". Tab 2 đổi tên "Lớp học" = `LopCapHocCarousel` mọi khối 3–12 (bộ chọn khối, đọc `v_lop_tuyen_sinh`) + `PhanLopNoiDung`. Trang thành `force-dynamic` vì đọc lớp đang mở.
 - Hash `#lop-hoc`; `#phan-lop` cũ vẫn mở tab này. Không có hash ⇒ tab Đăng ký test (đã kiểm).
+
+### 20/11 — BUILD: phiên Claude "Giải bài từ ảnh" (Copy · Vào kho · Clone · Duyệt ngay trong chat) — `spec-quan-ly-chat-luong.md` §6.5
+- **Thùy chốt:** 5 câu theo đề xuất; đổi câu 2: CÓ nút Vào kho, Claude tự gợi ý tên dạng; hai yêu cầu Giải + Clone, clone duyệt NGAY trong chat (không tự duyệt).
+- **DB (4 mig, áp bằng --only):** `claude_phien_anh` + `claude_phien_tin.so_anh` · `fn_phien_gui(…, p_anh)` (≤5 ảnh, 20 tin có ảnh/người/ngày) · mở loại `giai_bai` (cả `_phien_loai_sua_ban_do`) · `fn_phien_chat_vao_kho` (tái dùng `fn_phien_kho_them` + `_duyet`; clone ghi `parent_ma_cau`/`nguon='clone'`/`clone_method='claude_phien'`) · `fn_phien_anh_don` (+ file cron SQL Editor, CHƯA chạy) · khoá `_phien_gioi_han_anh_ngay` (cổng K1 +1 → 0).
+- **Đã thử:** vào kho gốc 'cao' → clone → duyệt trong transaction rồi ROLLBACK (đúng); `thu` chặn đọc file (ERR_ACCESS_DENIED); `anh_cat` cắt-phóng PNG chạy. `tsc` chỉ còn lỗi cũ `pdfRender.ts`. CHƯA thử: bot thật đọc ảnh, giao diện trên trình duyệt (cần đăng nhập), khởi động lại `bot.mjs` để nhận bản mới.
+- **Bài học:** spec ghi nhầm "chat không render công thức" — `ChuPhien` đã có KaTeX; kiểm code trước khi ghi lệch spec.
