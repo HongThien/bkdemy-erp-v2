@@ -1,0 +1,189 @@
+[
+ {
+  "ma": "VD 3.1",
+  "cd": 3,
+  "trang_de": 19,
+  "trang_giai": 19,
+  "noi_dung": "Không cần làm tính, hãy kiểm tra kết quả của các phép tính sau đúng hay sai? Giải thích.\na) $972 \\times 51 \\times 67 = 3\\,321\\,327$\nb) $2\\,014 + 6\\,126 + 632 + 678 = 9\\,445$",
+  "co_hinh": false,
+  "dap_an": "a) sai; b) sai",
+  "loi_giai_sach": "a) Vì tích $972 \\times 51 \\times 67$ có một thừa số chẵn là 972 nên tích phải là số chẵn.\nMà 3 321 327 là số lẻ nên $972 \\times 51 \\times 67 = 3\\,321\\,327$ là sai.\nb) Vì tất cả các số hạng của tổng đã cho là số chẵn nên tổng phải là số chẵn.\nMà 9 445 là số lẻ nên $2\\,014 + 6\\,126 + 632 + 678 = 9\\,445$ là sai.",
+  "chua_chac": null
+ },
+ {
+  "ma": "VD 3.2",
+  "cd": 3,
+  "trang_de": 19,
+  "trang_giai": 19,
+  "noi_dung": "Tìm chữ số tận cùng của tích sau:\n$1 \\times 3 \\times 5 \\times 7 \\times \\ldots \\times 97 \\times 99$",
+  "co_hinh": false,
+  "dap_an": "$5$",
+  "loi_giai_sach": "Nhận xét: Trong phép nhân có chứa thừa số 5 nên tích là một số chia hết cho 5, do đó chữ số tận cùng của tích đó là 0 hoặc 5.\nVì các thừa số của tích trên là số lẻ nên tích là số lẻ.\nVậy tích trên có chữ số tận cùng là 5.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.1",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 127,
+  "noi_dung": "Không thực hiện phép tính, hãy cho biết chữ số hàng đơn vị của kết quả dãy tính sau:\na) $(1001 + 1002 + 1003 + \\ldots + 1009) - (31 + 32 + 33 + \\ldots + 39)$\nb) $21 \\times 23 \\times 25 \\times \\ldots \\times 101 \\times 103$\nc) $(11 + 14 + 17 + \\ldots + 47) \\times 47 \\times 46 \\times 45$\nd) $4 \\times 4 \\times 4 \\times \\ldots \\times 4 \\times 4$ (có 2024 thừa số)\ne) $3 \\times 33 \\times 333 \\times 3333 \\times \\ldots \\times 333\\ldots3333$ (Số cuối cùng có 2025 chữ số 3)",
+  "co_hinh": false,
+  "dap_an": "a) $0$; b) $5$; c) $0$; d) $6$; e) $3$",
+  "loi_giai_sach": "a) $(1001 + 1002 + 1003 + \\ldots + 1009) - (31 + 32 + 33 + \\ldots + 39)$\nNhận xét:\n▸ Tổng $1001 + 1002 + 1003 + \\ldots + 1009$ có chữ số tận cùng là chữ số tận cùng của tổng $1 + 2 + 3 + \\ldots + 9$.\n▸ Tổng $31 + 32 + 33 + \\ldots + 39$ có chữ số tận cùng là chữ số tận cùng của tổng $1 + 2 + 3 + \\ldots + 9$.\nDo đó, hai tổng $1001 + 1002 + 1003 + \\ldots + 1009$ và $31 + 32 + 33 + \\ldots + 39$ có chữ số tận cùng bằng nhau.\n» Vậy $(1001 + 1002 + 1003 + \\ldots + 1009) - (31 + 32 + 33 + \\ldots + 39)$ có chữ số hàng đơn vị hay chữ số tận cùng bằng 0.\nb) $21 \\times 23 \\times 25 \\times \\ldots \\times 101 \\times 103$\nNhận xét: Trong phép nhân có chứa thừa số 25 chia hết cho 5 nên tích là một số chia hết cho 5, do đó chữ số tận cùng của tích là 0 hoặc 5.\nVì các thừa số của tích trên đều là số lẻ nên tích là số lẻ và có tận cùng là 5.\n» Vậy chữ số hàng đơn vị của tích $21 \\times 23 \\times 25 \\times \\ldots \\times 101 \\times 103$ là 5.\nc) $(11 + 14 + 17 + \\ldots + 47) \\times 47 \\times 46 \\times 45$\nNhận xét: Trong các thừa số đã cho, có thừa số 45 chia hết cho 5, khi nhân với thừa số chẵn là 46 sẽ cho kết quả có chữ số tận cùng là 0.\n» Vậy kết quả của $(11 + 14 + 17 + \\ldots + 47) \\times 47 \\times 46 \\times 45$ có chữ số hàng đơn vị là 0.\nd) $4 \\times 4 \\times 4 \\times \\ldots \\times 4 \\times 4$ (có 2024 thừa số)\nNhận xét: Tích của hai số có tận cùng bằng 4 sẽ có tận cùng bằng 6.\n▸ Tích của các số có tận cùng bằng 6 sẽ có tận cùng bằng 6.\nTa có: $4 \\times 4 \\times 4 \\times \\ldots \\times 4 \\times 4$ (có 2024 thừa số)\n$= (4 \\times 4) \\times (4 \\times 4) \\times \\ldots \\times (4 \\times 4)$ (có 1012 nhóm $4 \\times 4$)\n$= \\overline{\\ldots6} \\times \\overline{\\ldots6} \\times \\ldots \\times \\overline{\\ldots6}$ (có 1012 thừa số $\\overline{\\ldots6}$)\n$= \\overline{\\ldots6}$\n▶ Vậy chữ số hàng đơn vị của tích đã cho là 6.\ne) $3 \\times 33 \\times 333 \\times 3333 \\times \\ldots \\times 333\\ldots3333$ (số cuối cùng có 2025 chữ số 3)\nVì thừa số cuối cùng có 2025 chữ số 3 nên tích đã cho có tất cả 2025 thừa số.\nCứ 1 nhóm gồm 4 thừa số có tận cùng là 3 nhân với nhau sẽ có tận cùng là 1.\nVì $2025 : 4 = 506$ (dư 1) nên ta có:\n$3 \\times 33 \\times 333 \\times 3333 \\times \\ldots \\times 333\\ldots333 = (\\overline{\\ldots1} \\times \\overline{\\ldots1} \\times \\overline{\\ldots1} \\times \\ldots \\times \\overline{\\ldots1}) \\times \\overline{\\ldots3} = \\overline{\\ldots3}$ (506 thừa số $\\overline{\\ldots1}$)\n▶ Vậy chữ số hàng đơn vị của tích đã cho là 3.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.2",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 128,
+  "noi_dung": "Tìm chữ số tận cùng của:\n$S = 1 \\times 2 + 3 \\times 4 + 5 \\times 6 + 7 \\times 8 + 9 \\times 10 + 11 \\times 12 + \\ldots + 2031 \\times 2032$",
+  "co_hinh": false,
+  "dap_an": "$2$",
+  "loi_giai_sach": "Nhận xét: Chữ số tận cùng của các tích lặp lại theo quy luật: 2; 2; 0; 6; 0. Nếu ghép 5 tích vào một nhóm thì tổng các tích trong mỗi nhóm có chữ số tận cùng là 0.\nTa có: $(2031 - 1) : 2 + 1 = 1016$ (tích)\nVì $1016 : 5 = 203$ (dư 1)\nNên ta ghép được tất cả 203 nhóm và dư ra tích $2031 \\times 2032$.\n$S = 1 \\times 2 + 3 \\times 4 + 5 \\times 6 + 7 \\times 8 + 9 \\times 10 + 11 \\times 12 + \\ldots + 2031 \\times 2032$\n$S = (1 \\times 2 + \\ldots + 9 \\times 10) + (11 \\times 12 + \\ldots + 19 \\times 20) + \\ldots + 2031 \\times 2032$\n$S = (\\overline{\\ldots0} + \\overline{\\ldots0} + \\ldots + \\overline{\\ldots0}) + 2031 \\times 2032$ (203 số $\\overline{\\ldots0}$)\n$S = \\overline{\\ldots0} + \\overline{\\ldots2}$\n$S = \\overline{\\ldots2}$\n▶ Vậy S có chữ số tận cùng là 2.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.3",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 128,
+  "noi_dung": "Tìm bốn số tự nhiên liên tiếp có tích bằng 24 024.",
+  "co_hinh": false,
+  "dap_an": "$11; 12; 13; 14$",
+  "loi_giai_sach": "Vì tích của bốn số tự nhiên cần tìm có tận cùng là 4 nên trong bốn thừa số không có thừa số nào có tận cùng là 0 hoặc 5.\nMà các số cần tìm là bốn số tự nhiên liên tiếp nên bốn số đó chỉ có thể có chữ số tận cùng liên tiếp là 1; 2; 3; 4 hoặc 6; 7; 8; 9.\n▸ Ta có:\n$10\\,000 < 24\\,024 < 160\\,000$ hay $10 \\times 10 \\times 10 \\times 10 < 24\\,024 < 20 \\times 20 \\times 20 \\times 20$\n▸ Suy ra, tích của bốn số tự nhiên liên tiếp có thể là:\n$11 \\times 12 \\times 13 \\times 14$ hoặc $16 \\times 17 \\times 18 \\times 19$\n▸ Thử lại, ta có:\n$11 \\times 12 \\times 13 \\times 14 = 24\\,024$ (Thỏa mãn)\n$16 \\times 17 \\times 18 \\times 19 = 93\\,024$ (Không thỏa mãn)\n▶ Vậy bốn số tự nhiên liên tiếp đó là: 11; 12; 13; 14.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.4",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 129,
+  "noi_dung": "Tích sau có tận cùng là bao nhiêu chữ số 0?\na) $13 \\times 14 \\times 15 \\times \\ldots \\times 21 \\times 22$\nb) $20 \\times 21 \\times 22 \\times 23 \\times \\ldots \\times 28 \\times 29$\nc) $1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times 99 \\times 100$\nd) $100 \\times 101 \\times 102 \\times \\ldots \\times 199 \\times 200$\ne) $5 \\times 10 \\times 15 \\times 20 \\times \\ldots \\times 495 \\times 500$",
+  "co_hinh": false,
+  "dap_an": "a) $2$; b) $3$; c) $24$; d) $27$; e) $97$ (chữ số 0)",
+  "loi_giai_sach": "a) $13 \\times 14 \\times 15 \\times \\ldots \\times 21 \\times 22$\n▸ Trong tích trên có:\n» Hai thừa số chia hết cho 5 là: 15 và 20.\n» Số thừa số chia hết cho 2 nhiều hơn số thừa số chia hết cho 5.\nMà cứ một thừa số chia hết cho 5 (không chia hết cho 25) nhân với một thừa số chia hết cho 2 sẽ được số có 1 chữ số 0 ở tận cùng.\n▶ Vậy tích đã cho có tận cùng là 2 chữ số 0.\nb) $20 \\times 21 \\times 22 \\times 23 \\times \\ldots \\times 28 \\times 29$\n▸ Trong tích trên có:\n» Một thừa số chia hết cho 25 là: 25.\nMột số chia hết cho 25 nhân với một số chia hết cho 4 sẽ tạo thành số có 2 chữ số 0 ở tận cùng.\n» Một thừa số chia hết cho 5 (nhưng không chia hết cho 25) là: 20.\nMột số chia hết cho 5 (nhưng không chia hết cho 25) nhân với một số chia hết cho 2 sẽ tạo thành số có 1 chữ số 0 ở tận cùng.\nTích đã cho có tận cùng là: $2 + 1 = 3$ (chữ số 0)\n▶ Vậy tích đã cho có tận cùng là 3 chữ số 0.\nc) $1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times 99 \\times 100$\n▸ Trong tích trên có:\n» Số thừa số chia hết cho 25 là: $(100 - 25) : 25 + 1 = 4$ (thừa số).\nMột số chia hết cho 25 nhân với một số chia hết cho 4 sẽ tạo thành số có 2 chữ số 0 ở tận cùng.\n▸ 4 số chia hết cho 25 nhân với 4 số chia hết cho 4 sẽ tạo thành một số có:\n$2 \\times 4 = 8$ (chữ số 0 ở tận cùng).\n▸ Số thừa số chia hết cho 5 là:\n$(100 - 5) : 5 + 1 = 20$ (thừa số).\n▸ Số thừa số chia hết cho 5 (nhưng không chia hết cho 25) là:\n$20 - 4 = 16$ (thừa số).\nMột số chia hết cho 5 (nhưng không chia hết cho 25) nhân với một số chia hết cho 2 sẽ tạo thành số có 1 chữ số 0 ở tận cùng.\n▸ 16 số chia hết cho 5 (nhưng không chia hết cho 25) nhân với 16 số chia hết cho 2 sẽ tạo thành một số có:\n$1 \\times 16 = 16$ (chữ số 0 ở tận cùng).\n▸ Tích đã cho có số chữ số 0 tận cùng là: $8 + 16 = 24$ (chữ số 0).\n▶ Vậy tích đã cho có tận cùng là 24 chữ số 0.\nd) $100 \\times 101 \\times 102 \\times \\ldots \\times 199 \\times 200$\n▸ Trong tích trên có:\n▸ Một thừa số chia hết cho 125 là: 125.\nMột số chia hết cho 125 nhân với một số chia hết cho 8 sẽ tạo thành số có 3 chữ số 0 ở tận cùng.\n▸ Số thừa số chia hết cho 25 là: $(200 - 100) : 25 + 1 = 5$ (thừa số).\n▸ Số thừa số chia hết cho 25 (nhưng không chia hết cho 125) là:\n$5 - 1 = 4$ (thừa số).\nMột số chia hết cho 25 (nhưng không chia hết cho 125) nhân với một số chia hết cho 4 sẽ tạo thành số có 2 chữ số 0 ở tận cùng.\n▸ 4 số chia hết cho 25 (nhưng không chia hết cho 125) nhân với 4 số chia hết cho 4 sẽ tạo thành một số có:\n$2 \\times 4 = 8$ (chữ số 0 ở tận cùng).\n▸ Số thừa số chia hết cho 5 là: $(200 - 100) : 5 + 1 = 21$ (thừa số).\n▸ Số thừa số chia hết cho 5 (nhưng không chia hết cho 25) là:\n$21 - 5 = 16$ (thừa số).\nMột số chia hết cho 5 (nhưng không chia hết cho 25) nhân với một số chia hết cho 2 sẽ tạo thành một số có 1 chữ số 0 ở tận cùng.\n▸ 16 số chia hết cho 5 (nhưng không chia hết cho 25) nhân với 16 số chia hết cho 2 sẽ tạo thành số có:\n$1 \\times 16 = 16$ (chữ số 0 ở tận cùng).\n▸ Tích đó có số chữ số 0 tận cùng là: $3 + 8 + 16 = 27$ (chữ số 0)\n▶ Vậy tích đã cho có tận cùng là 27 chữ số 0.\ne) $5 \\times 10 \\times 15 \\times 20 \\times \\ldots \\times 495 \\times 500$\n$= (1 \\times 5) \\times (2 \\times 5) \\times (3 \\times 5) \\times \\ldots \\times (99 \\times 5) \\times (100 \\times 5)$\n$= (1 \\times 2 \\times 3 \\times \\ldots \\times 100) \\times (5 \\times 5 \\times 5 \\times \\ldots \\times 5)$ (100 thừa số 5)\nNhận xét: Tích trên có thể phân tích ra số thừa số 5 nhiều hơn số thừa số 2 nên ta đếm số thừa số 2.\n» Số thừa số chia hết cho 2 là: $(100 - 2) : 2 + 1 = 50$ (thừa số)\n» Số thừa số chia hết cho 4 là: $(100 - 4) : 4 + 1 = 25$ (thừa số)\n» Số thừa số chia hết cho 8 là: $(96 - 8) : 8 + 1 = 12$ (thừa số)\n» Số thừa số chia hết cho 16 là: $(96 - 16) : 16 + 1 = 6$ (thừa số)\n» Số thừa số chia hết cho 32 là: $(96 - 32) : 32 + 1 = 3$ (thừa số)\n» Số thừa số chia hết cho 64 là: 1 (đó là số 64)\n▸ Tích trên có thể phân tích ra số thừa số 2 là:\n$50 + 25 + 12 + 6 + 3 + 1 = 97$ (thừa số)\n▸ Ghép 97 thừa số 2 nhân với 97 thừa số 5 ta được 97 chữ số 0 tận cùng.\n▶ Vậy tích đã cho có tận cùng là 97 chữ số 0.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.5",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 131,
+  "noi_dung": "Cho $S = 1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times 300$. Hỏi phải gạch đi ít nhất bao nhiêu thừa số của S để tích các thừa số còn lại có tận cùng là 3?",
+  "co_hinh": false,
+  "dap_an": "$181$ (thừa số)",
+  "loi_giai_sach": "$S = 1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times 300$\nNhận xét: Trước hết ta cần gạch đi các thừa số chẵn và các thừa số có tận cùng là 5.\n» Số thừa số chẵn là: $(300 - 2) : 2 + 1 = 150$ (thừa số).\n» Số thừa số có tận cùng là 5 là: $(295 - 5) : 10 + 1 = 30$ (thừa số).\n» Sau khi gạch đi các thừa số chẵn và các thừa số có tận cùng là 5 thì S còn lại số thừa số là:\n$300 - 150 - 30 = 120$ (thừa số).\n▸ Tích các thừa số còn lại của S là:\n$1 \\times 3 \\times 7 \\times 9 \\times 11 \\times 13 \\times 17 \\times 19 \\times \\ldots \\times 291 \\times 293 \\times 297 \\times 299$ (120 thừa số)\n$= (1 \\times 3 \\times 7 \\times 9) \\times (11 \\times 13 \\times 17 \\times 19) \\times \\ldots \\times (291 \\times 293 \\times 297 \\times 299)$\n$= (\\overline{\\ldots9} \\times \\overline{\\ldots9} \\times \\ldots \\times \\overline{\\ldots9})$ (30 thừa số)\n$= (\\overline{\\ldots9} \\times \\overline{\\ldots9}) \\times (\\overline{\\ldots9} \\times \\overline{\\ldots9}) \\times \\ldots \\times (\\overline{\\ldots9} \\times \\overline{\\ldots9})$ (15 nhóm $\\overline{\\ldots9} \\times \\overline{\\ldots9}$)\n$= (\\overline{\\ldots1} \\times \\overline{\\ldots1} \\times \\ldots \\times \\overline{\\ldots1})$ (15 thừa số $\\overline{\\ldots1}$)\n$= \\overline{\\ldots1}$\nKhi gạch đi các thừa số chẵn và các thừa số có tận cùng là 5 thì tích các thừa số của S có tận cùng là 1.\nDo đó, để tích các thừa số còn lại của S có tận cùng là 3 thì ta cần xóa tiếp 1 thừa số có tận cùng là 7. Ta có thể xoá 1 trong các số: 7; 17; 27; 37; ...; 287; 297.\n▸ Giả sử ta xoá số 7 thì tích các thừa số còn lại của S là:\n$1 \\times 3 \\times 9 \\times 11 \\times 13 \\times 17 \\times 19 \\times \\ldots \\times 291 \\times 293 \\times 297 \\times 299$ (119 thừa số)\n$= (1 \\times 3 \\times 9) \\times (11 \\times 13 \\times 17 \\times 19) \\times \\ldots \\times (291 \\times 293 \\times 297 \\times 299)$\n$= \\overline{\\ldots7} \\times \\overline{\\ldots9} \\times \\ldots \\times \\overline{\\ldots9}$ (29 thừa số $\\overline{\\ldots9}$)\n$= (\\overline{\\ldots7} \\times \\overline{\\ldots9}) \\times (\\overline{\\ldots9} \\times \\overline{\\ldots9}) \\times \\ldots \\times (\\overline{\\ldots9} \\times \\overline{\\ldots9})$ (14 nhóm $\\overline{\\ldots9} \\times \\overline{\\ldots9}$)\n$= \\overline{\\ldots3} \\times \\overline{\\ldots1} \\times \\ldots \\times \\overline{\\ldots1}$ (14 thừa số $\\overline{\\ldots1}$)\n$= \\overline{\\ldots3}$ (thỏa mãn)\n▶ Vậy cần gạch đi ít nhất số thừa số là: $150 + 30 + 1 = 181$ (thừa số).",
+  "chua_chac": "Một số phép nhóm tích chữ số tận cùng trong ảnh in nhỏ; đã chép theo ảnh (số thừa số mỗi nhóm: 30, 15, 15, 119, 29, 14, 14)."
+ },
+ {
+  "ma": "BT 3.6",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 132,
+  "noi_dung": "Tìm số n lớn nhất sao cho tích sau có đúng 31 chữ số 0 ở tận cùng:\n$S = 1 \\times 2 \\times 3 \\times \\ldots \\times n$.",
+  "co_hinh": false,
+  "dap_an": "$n = 129$",
+  "loi_giai_sach": "Tích các số tự nhiên liên tiếp có thể phân tích ra được số thừa số 2 nhiều hơn số thừa số 5.\nDo đó, để tích S có đúng 31 chữ số 0 ở tận cùng thì tích S cần phân tích ra được đúng 31 thừa số 5.\nXét tích $1 \\times 2 \\times 3 \\times \\ldots \\times 100$ có:\n▸ Số thừa số chia hết cho 5 là: $(100 - 5) : 5 + 1 = 20$ (thừa số)\n▸ Số thừa số chia hết cho 25 là: $(100 - 25) : 25 + 1 = 4$ (thừa số)\n▸ Tích $1 \\times 2 \\times 3 \\times \\ldots \\times 100$ có thể phân tích ra số thừa số 5 là:\n$20 + 4 = 24$ (thừa số)\n▸ Vì tích $1 \\times 2 \\times 3 \\times \\ldots \\times 100$ có thể phân tích được thành 24 thừa số 5 nên khi đó ta cần thêm:\n$31 - 24 = 7$ (thừa số 5).\n7 thừa số 5 còn lại được tách ra từ các số: 105; 110; 115; 120; 125.\nDo đó, tích $1 \\times 2 \\times 3 \\times \\ldots \\times 125$ có đúng 31 chữ số 0 ở tận cùng.\n▶ Vậy số n lớn nhất sao cho tích S có đúng 31 chữ số 0 ở tận cùng là n = 129:\n$S = 1 \\times 2 \\times 3 \\times \\ldots \\times 129$.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.7",
+  "cd": 3,
+  "trang_de": 20,
+  "trang_giai": 133,
+  "noi_dung": "Tích các số chẵn liên tiếp bắt đầu từ 12 đến 224 có tận cùng bởi bao nhiêu chữ số 0?",
+  "co_hinh": false,
+  "dap_an": "$25$ (chữ số 0)",
+  "loi_giai_sach": "Tích các số chẵn liên tiếp từ 12 đến 224 là: $12 \\times 14 \\times 16 \\times \\ldots \\times 224$.\nKhi nhân một thừa số 2 với một thừa số 5, ta được số có một chữ số 0 ở tận cùng.\nVì tích trên là tích các số chẵn liên tiếp nên tích trên có thể phân tích được số thừa số 2 nhiều hơn số thừa số 5.\nĐếm số thừa số 5 có thể phân tích được trong tích trên, ta có:\nSố thừa số chia hết cho 5 là: $(220 - 20) : 10 + 1 = 21$ (thừa số)\nSố thừa số chia hết cho 25 là: $(200 - 50) : 50 + 1 = 4$ (thừa số)\nDo đó, tích trên có thể phân tích được số thừa số 5 là: $21 + 4 = 25$ (thừa số).\nGhép 25 thừa số 5 với 25 thừa số 2 sẽ được 25 chữ số 0 ở tận cùng.\n▶ Vậy tích đã cho có 25 chữ số 0 tận cùng.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.8",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 133,
+  "noi_dung": "Biết rằng: $21 \\times 22 \\times 23 \\times 24 \\times 25 \\times 26 = \\overline{165765***}$.\nKhông thực hiện phép tính, hãy tìm ra kết quả đúng.",
+  "co_hinh": false,
+  "dap_an": "$165\\,765\\,600$",
+  "loi_giai_sach": "Trong phép tính đã cho có thừa số 25, khi nhân với thừa số chia hết cho 4 sẽ được số có tận cùng là 2 chữ số 0.\nLúc này, kết quả phép tính có dạng $\\overline{165765*00}$.\nMà trong phép tính đã cho có thừa số 21 và 24 chia hết cho 3. Do đó $\\overline{165765*00}$ chia hết cho 9. Do đó $(1 + 6 + 5 + 7 + 6 + 5 + * + 0 + 0)$ chia hết cho 9.\nHay $(30 + *)$ chia hết cho 9.\nSuy ra chữ số còn lại cần tìm là: 6.\n▶ Vậy kết quả đúng là 165 765 600.",
+  "chua_chac": "Đề in \"165765***\" (3 dấu sao) nhưng lời giải sách dùng dạng 165765*00 (đã suy ra hai chữ số 0 cuối) - chép nguyên văn."
+ },
+ {
+  "ma": "BT 3.9",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 134,
+  "noi_dung": "Cho tích $M = 1 \\times 2 \\times 3 \\times \\ldots \\times 125$. Cần gạch đi ít nhất bao nhiêu số trong tích đó để tích các số còn lại có tận cùng khác 0. Tìm chữ số tận cùng đó.",
+  "co_hinh": false,
+  "dap_an": "Gạch đi ít nhất $25$ thừa số; chữ số tận cùng là $4$",
+  "loi_giai_sach": "Vì cứ một thừa số chia hết cho 5 nhân với một thừa số chia hết cho 2 thì được ít nhất 1 chữ số 0 ở tận cùng.\nMà tích các số tự nhiên liên tiếp có số thừa số chia hết cho 2 nhiều hơn số thừa số chia hết cho 5 nên để tích các số còn lại có tận cùng khác 0 và các số gạch đi là ít nhất thì ta cần gạch đi các số chia hết cho 5.\n▸ Số thừa số cần gạch đi là:\n$(125 - 5) : 5 + 1 = 25$ (thừa số).\n▸ Sau khi gạch đi 25 thừa số thì dãy số còn lại là:\n$(1 \\times 2 \\times 3 \\times 4 \\times 6 \\times 7 \\times 8 \\times 9) \\times \\ldots \\times (121 \\times 122 \\times 123 \\times 124)$\n$= \\overline{\\ldots6} \\times \\overline{\\ldots6} \\times \\overline{\\ldots6} \\times \\ldots \\times \\overline{\\ldots6} \\times \\overline{\\ldots4}$ (12 thừa số $\\overline{\\ldots6}$)\n$= \\overline{\\ldots6} \\times \\overline{\\ldots4}$\n$= \\overline{\\ldots4}$\n▶ Vậy cần gạch đi ít nhất 25 thừa số để tích các chữ số còn lại có tận cùng khác 0, chữ số tận cùng đó là 4.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.10",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 134,
+  "noi_dung": "Tìm giá trị nhỏ nhất của K sao cho 5 chữ số tận cùng của $925 \\times 715 \\times 756 \\times K$ đều bằng 0.",
+  "co_hinh": false,
+  "dap_an": "$200$",
+  "loi_giai_sach": "▸ Nhận xét:\n» Tích $925 \\times 715 \\times 756$ có thể phân tích được 3 thừa số 5 và 2 thừa số 2.\nDo đó, để tích $925 \\times 715 \\times 756 \\times K$ có 5 chữ số tận cùng đều bằng 0 thì K phải phân tích được ít nhất 2 thừa số 5 và 3 thừa số 2.\n▶ Giá trị nhỏ nhất của K là: $5 \\times 5 \\times 2 \\times 2 \\times 2 = 200$.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.11",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 134,
+  "noi_dung": "Có hay không các số tự nhiên a, b, c sao cho:\n$(a + b) \\times (b + c) \\times (c + a) = 2021 \\times 2023 \\times 2025$.",
+  "co_hinh": false,
+  "dap_an": "Không có",
+  "loi_giai_sach": "Vì $2021 \\times 2023 \\times 2025$ là tích của ba số lẻ nên kết quả của phép tính phải là một số lẻ.\n» Nếu a, b, c đều là số lẻ hoặc đều là số chẵn thì $(a + b)$; $(b + c)$; $(c + a)$ là các số chẵn.\n→ Khi đó tích $(a + b) \\times (b + c) \\times (c + a)$ phải là số chẵn → Loại.\n» Nếu trong các số a, b, c có một số lẻ và hai số chẵn thì trong các tổng $(a + b)$; $(b + c)$; $(c + a)$ có một số chẵn.\n→ Khi đó tích $(a + b) \\times (b + c) \\times (c + a)$ phải là số chẵn → Loại.\n» Nếu trong các số a, b, c có hai số lẻ và một số chẵn thì trong các tổng $(a + b)$; $(b + c)$; $(c + a)$ có một số chẵn.\n→ Khi đó tích $(a + b) \\times (b + c) \\times (c + a)$ phải là số chẵn → Loại.\n▶ Vậy không có các số tự nhiên a, b, c thỏa mãn yêu cầu đề bài.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.12",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 135,
+  "noi_dung": "Có hay không các số tự nhiên a, b sao cho:\n$(a + b) \\times (a - b) = 2024 \\times 2025$.",
+  "co_hinh": false,
+  "dap_an": "Có (ví dụ $a = 2531; b = 1519$)",
+  "loi_giai_sach": "Ta có: $(a + b) \\times (a - b) = 2024 \\times 2025 = 4050 \\times 1012$\nNếu $a + b = 4050$ thì $a - b = 1012$.\n▸ Khi đó: $a = (4050 + 1012) : 2 = 2531$\n$b = 4050 - 2531 = 1519$\nVậy có các số tự nhiên a, b thoả mãn $(a + b) \\times (a - b) = 2024 \\times 2025$.\nVí dụ với $a = 2531; b = 1519$.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.13",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 135,
+  "noi_dung": "Có thể tìm số tự nhiên n thỏa mãn phép tính sau hay không? Vì sao?\n$1 + 2 + 3 + 4 + \\ldots + n = 2024$",
+  "co_hinh": false,
+  "dap_an": "Không",
+  "loi_giai_sach": "Giả sử có số n thỏa mãn, ta có:\n» $1 + 2 + 3 + 4 + \\ldots + n = 2024$\n» $(1 + n) \\times n : 2 = 2024$\n» $(1 + n) \\times n = 2024 \\times 2$\n» $n \\times (n + 1) = 4048$\nNhận xét: n và n + 1 là hai số tự nhiên liên tiếp. Tích hai số tự nhiên liên tiếp có chữ số tận cùng là 0; 2 hoặc 6.\n▸ Vì 4048 có chữ số tận cùng là 8 nên không có số tự nhiên n thỏa mãn:\n$n \\times (n + 1) = 4048$.\n▶ Vậy không có số tự nhiên n thỏa mãn phép tính đã cho.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.14",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 135,
+  "noi_dung": "Ký hiệu $n! = 1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times n$, (n! đọc là n giai thừa) trong đó n là số tự nhiên lớn hơn 0. Có hay không số tự nhiên n sao cho:\n$n \\times n = 1! + 2! + 3! + \\ldots + 2025!$",
+  "co_hinh": false,
+  "dap_an": "Không",
+  "loi_giai_sach": "Ta có:\n→ $1! = 1 = 1$\n→ $2! = 1 \\times 2 = 2$\n→ $3! = 1 \\times 2 \\times 3 = 6$\n→ $4! = 1 \\times 2 \\times 3 \\times 4 = 24$\n→ $5! = 1 \\times 2 \\times 3 \\times 4 \\times 5 = 120$\n→ .....\n→ $n! = 1 \\times 2 \\times 3 \\times 4 \\times \\ldots \\times n$\nVới n > 4 thì n! bằng tích của các thừa số mà trong đó có một thừa số là 5 và có ít nhất một thừa số chẵn nên n! (n > 4) có chữ số tận cùng là 0.\n▸ Khi đó, ta có:\n→ $n \\times n = 1! + 2! + 3! + 4! + 5! + \\ldots + 2025!$\n→ $n \\times n = 1 + 2 + 6 + 24 + \\overline{\\ldots0} + \\ldots + \\overline{\\ldots0}$ (2021 số $\\overline{\\ldots0}$)\n→ $n \\times n = \\overline{\\ldots3}$\nVì tích $n \\times n$ có chữ số tận cùng là 0; 1; 4; 5; 6; 9 nên không tồn tại số tự nhiên n thỏa mãn đề bài.",
+  "chua_chac": null
+ },
+ {
+  "ma": "BT 3.15",
+  "cd": 3,
+  "trang_de": 21,
+  "trang_giai": 136,
+  "noi_dung": "Cho 2 số tự nhiên a và b (a < b).\na) Ta có phép tính: $a \\times b \\times (a + b) = 30$. Tìm các số a và b.\nb) Có các số tự nhiên a, b để $a \\times b \\times (a + b) = 20242025$ được không? Giải thích.",
+  "co_hinh": false,
+  "dap_an": "a) $a = 1; b = 5$ hoặc $a = 2; b = 3$; b) Không",
+  "loi_giai_sach": "a) Ta có: $a \\times b \\times (a + b) = 30$\nVì $a < b < a + b$ nên ta có thể phân tích 30 thành tích của các số sau:\n$30 = 1 \\times 2 \\times 15 = 1 \\times 3 \\times 10 = 1 \\times 5 \\times 6 = 2 \\times 3 \\times 5$\nTrường hợp 1: $a = 1; b = 2$. Khi đó: $a + b = 3 < 15$ (Loại)\nTrường hợp 2: $a = 1; b = 3$. Khi đó: $a + b = 4 < 10$ (Loại)\nTrường hợp 3: $a = 1; b = 5$. Khi đó: $a + b = 6$ (Thỏa mãn)\nTrường hợp 4: $a = 2; b = 3$. Khi đó: $a + b = 5$ (Thỏa mãn)\n▶ Vậy $a = 1; b = 5$ hoặc $a = 2; b = 3$\nb) $a \\times b \\times (a + b) = 20242025$\n▸ Nếu ít nhất một trong hai số a và b là số chẵn thì tích $a \\times b \\times (a + b)$ là một số chẵn, do đó nó không thể bằng 20242025.\n▸ Nếu cả a và b đều là số lẻ suy ra $a + b$ chẵn, do đó tích $a \\times b \\times (a + b)$ là một số chẵn, do đó nó không thể bằng 20242025.\n▶ Vậy không tìm được các số tự nhiên a và b thỏa mãn yêu cầu bài toán.",
+  "chua_chac": null
+ }
+]
