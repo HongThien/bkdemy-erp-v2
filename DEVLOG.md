@@ -82008,3 +82008,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 20/11 — Web: mở trang chủ trên domain thật (bkdemy-web `db6ce92`, ĐÃ push + đã lên)
 - Thùy chọn "Mở trang chủ thật": `proxy.ts` cho `/` đi qua. Đã kiểm trên `www.bkacademy.edu.vn`: `/` trả 200; `/gioi-thieu` vẫn 307 → `/thcs`.
 - CÒN HỞ: 5 ô trang chủ + menu trỏ `/gioi-thieu` · `/cach-bk-hoat-dong` · `/cam-xuc` · `/dang-ky` · `/tai-lieu` — cả 5 vẫn bị rào ⇒ bấm ô nào cũng nhảy sang `/thcs`. Chờ Thùy quyết mở trang nào.
+
+### 20/11 — Spec: khung đáp án Khối 3 (`spec-giai-bai.md` › Khối 3) — nhân sự phản hồi "K3 chưa có khung như K4, K5"
+- **Đo kho:** K3 2.866 câu, chỉ 75 (2,6 %) có lời giải hai phần Phần 1/Phần 2 (K4 963/4.514, K5 1.369/5.421); 2.790 câu là lời giải một khối từ `kho_cu` (AI giải), dấu `×` Unicode. Mục Khối 3 cũ chỉ ghi "dùng luật Khối 4", không có khuôn.
+- **Đã viết (nháp CTO, chờ trưởng khối 3 duyệt ở lô mẫu §C3):** khung hai phần cho K3 + khuôn Phần 2 / điều Phần 1 phải nói cho 6 chuyên đề đang có trên bản đồ K3 + kiểm riêng + sai lầm. HK2 chưa có trong bản đồ nên chưa có khuôn. Mã luật `cat-luat.mjs 3` đã đổi.
+- **KHÔNG làm:** viết lại 2.790 câu cũ — §E2 (18/11) đang cấm quét kho cũ hàng loạt; ghi nợ §C10 mục 18, chờ lệnh.

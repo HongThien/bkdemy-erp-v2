@@ -450,20 +450,65 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 
 ## Khối 3
 
-> (Thùy 18/11) Chưa có luật riêng. **Dùng luật Khối 4** cho toàn bộ (sách đề, đề cương, khuôn tệp, tách ý, loại câu, hình) + bảng CẤM tiểu học (bảng ở mục Khối 4T); dưới đây chỉ ghi điểm khác.
+> **Khung riêng của Khối 3 (CTO soạn 20/11 theo phản hồi của nhân sự: "đáp án khối 3 chưa có khung như khối 4, 5" — CHỜ trưởng khối 3 / Thùy duyệt; lô mẫu K3 đầu tiên (§C3) sẽ chỉnh).**
+> Luật sách đề / đề cương (khuôn tệp, tách ý, loại câu, hình, bẫy đọc ảnh) vẫn **dùng Khối 4 → Khối 5**; bảng CẤM tiểu học ở Khối 4T. Mục này thêm cái Khối 3 còn THIẾU: **khuôn đáp án hai phần + khuôn theo chuyên đề** (như Khối 4T làm cho 24 chuyên đề).
+> **Hiện trạng kho (đo 20/11):** K3 có 2.866 câu; chỉ **75 câu (2,6 %)** có lời giải hai phần `Phần 1. Hướng dẫn` / `Phần 2. Trình bày` (K4: 963/4.514 · K5: 1.369/5.421). 2.790 câu còn lại là lời giải một khối từ kho cũ (`kho_cu`, AI giải), dấu nhân gõ `×`, không Mấu chốt / Bước. Đây là chỗ nhân sự phản hồi.
 
 ### Phạm vi kiến thức
 
-- Chương trình Toán 3 + kiến thức lớp dưới. **CẤM**: kiến thức lớp 4 trở lên + mọi điều cấm tiểu học (bảng CẤM).
-- Phạm vi chi tiết theo kì: chưa có luật — lô mẫu đầu tiên sẽ rút.
+- Bộ sách: Toán 3 Kết nối tri thức. Bản đồ K3 hiện có **6 chuyên đề** (đều thuộc học kì I): 1 Ôn tập và bổ sung · 2 Bảng nhân, bảng chia · 3 Làm quen với hình phẳng, hình khối · 4 Phép nhân, phép chia trong phạm vi 100 · 5 Đơn vị đo độ dài, khối lượng, dung tích, nhiệt độ · 6 Phép nhân, phép chia trong phạm vi 1000.
+- Chương trình lớp 3 + kiến thức lớp 1–2. **CẤM**: kiến thức lớp 4 trở lên (số có hơn 5 chữ số, phân số ngoài "một phần mấy", số thập phân, chu vi–diện tích công thức nếu bản đồ chưa có chuyên đề đó) + mọi điều cấm tiểu học (bảng CẤM ở Khối 4T).
+- Học kì II (số đến 10 000 và 100 000, chu vi – diện tích, phân số, thống kê, xác suất…) **chưa có trong bản đồ** ⇒ chưa có khuôn; thêm khi bản đồ có, lô mẫu đầu tiên của chuyên đề đó rút luật.
 
 ### Phân kho
 
 - Mọi câu `kho=dai`.
 
+### Đại
+
+**(a) Công cụ được phép:** bảng nhân – chia 2…9 · đặt tính (viết phép tính hàng ngang, nêu "đặt tính thẳng hàng" ở Phần 1) · gấp lên / giảm đi / so sánh "gấp mấy lần" bằng phép nhân – chia · quy tắc tìm thành phần chưa biết (đề có sẵn chữ $x$ thì dùng chữ đó) · đường gấp khúc = tổng các đoạn · một phần mấy = chia đều. **Sơ đồ đoạn thẳng KHÔNG bắt buộc** ở K3 (khác 4T), chỉ vẽ khi đề in sơ đồ hoặc bài "gấp / giảm / so sánh" mà hình giúp hiểu rõ — dùng máy vẽ `so-do-doan-thang.mjs`, đúng tỉ lệ.
+
+**(b) Trình bày riêng — KHUNG HAI PHẦN như K4/K5 (§A5)**
+- **Phần 1. Hướng dẫn** dạng card: `**Mấu chốt:**` một câu (quy tắc / bảng / ý nghĩa phép tính) → `**Bước 1.**`… **3–5 bước**, câu ngắn, từ ngữ của trẻ 8–9 tuổi, mỗi bước một ý trọn; không ghi đáp số cuối; `**Chú ý:**` nếu có bẫy (dư, đơn vị, thứ tự thực hiện).
+- **Phần 2. Trình bày** (đúng cái học sinh viết vào vở):
+  - Lời văn: `Bài giải` → mỗi bước **một câu lời giải + một phép tính + đơn vị trong ngoặc** (`$24 : 6 = 4$ (kg)`) → `Đáp số: 4 kg`. Bài hai bước: hai cặp "câu lời giải – phép tính". Câu lời giải theo mẫu sách: "Số bạn nữ là:", "Số quả cam còn lại là:", "Cả hai thùng có số lít là:".
+  - Tính / tính giá trị biểu thức: mở bằng dòng chép nguyên biểu thức, mỗi dòng một bước theo thứ tự (trong ngoặc trước · nhân chia trước, cộng trừ sau · cùng cấp từ trái sang phải).
+  - Điền số / điền dấu / so sánh: ghi giá trị từng vế rồi `Vậy …` (vd `$7 \times 6 = 42$ và $6 \times 7 = 42$ nên $7 \times 6 = 6 \times 7$`).
+  - Tìm $x$: `$x \times 3 = 24$` / `$x = 24 : 3$` / `$x = 8$` (mỗi dòng một bước; quy tắc nói ở Phần 1; **không** viết "chuyển vế").
+  - Trắc nghiệm: mọi câu đủ hai phần; dòng cuối Phần 2 là `Chọn X.`; trả lời ngắn có đơn vị: `dap_an` = số kèm đơn vị đúng câu hỏi.
+- **LaTeX / ký hiệu:** nhân `\times` (không gõ `×`), chia `:`, mỗi công thức một cặp `$…$`; số không có dấu cách hàng nghìn **trong** công thức (`$1000$`), đề in `1 000` thì giữ như in **ngoài** công thức. Đơn vị: `cm`, `dm`, `m`, `mm`, `km`, `g`, `kg`, `ml`, `l`, `°C` viết chữ thường đứng; đơn vị mũ `$cm^2$`.
+- **Khuôn theo chuyên đề** (Phần 2 · điều Phần 1 phải nói):
+
+| CĐ | Khuôn Phần 2 | Phần 1 phải nói |
+|---|---|---|
+| 1 Ôn tập và bổ sung | đọc – viết – phân tích số `$567 = 500 + 60 + 7$`; so sánh số: so hàng trăm → chục → đơn vị rồi kết `Vậy …`; cộng trừ: chép phép tính, ghi kết quả; tìm thành phần: theo cột như trên | muốn so sánh hai số: so chữ số cùng hàng từ trái sang; cộng trừ có nhớ: đặt thẳng hàng, nhớ sang hàng liền trước; số hạng chưa biết = tổng − số hạng đã biết; số bị trừ = hiệu + số trừ |
+| 2 Bảng nhân, bảng chia | đọc bảng: `$6 \times 7 = 42$`; chia: `$42 : 6 = 7$`; thừa số chưa biết: `$x = 42 : 6$`; một phần mấy: `Một phần ba của 12 là: $12 : 3 = 4$` | nhân = cộng nhiều số bằng nhau; chia = chia đều / chia nhóm; thừa số chưa biết = tích : thừa số đã biết; số bị chia chưa biết = thương × số chia; "một phần $n$" = chia cho $n$ |
+| 3 Hình phẳng, hình khối | lập luận ngắn + kết luận ("Điểm S nằm trên đoạn thẳng UV, ở giữa hai đầu nên S nằm giữa U và V"); hình tròn: `Đường kính gấp đôi bán kính: $9 \times 2 = 18$ (cm)`; đường gấp khúc: cộng các đoạn `$9 + 36 + 9 = 54$ (cm)`; bài vẽ: **mô tả từng bước vẽ** ("Vẽ đường tròn tâm K, bán kính 2 cm. Lấy điểm P trên đường tròn, nối K với P được bán kính KP…") | góc vuông dùng ê ke; trung điểm chia đoạn thành hai phần bằng nhau; tâm – bán kính – đường kính (đường kính = 2 bán kính, đi qua tâm); khối lập phương (6 mặt, 12 cạnh, 8 đỉnh) và hộp chữ nhật |
+| 4 Nhân, chia trong phạm vi 100 | gấp lên: `Số … là: $6 \times 4 = 24$`; giảm đi: `$24 : 4 = 6$`; so sánh gấp mấy lần: `$20 : 5 = 4$` → `Vậy … gấp … 4 lần`; bài 2 bước: bước 1 tìm cái chưa biết, bước 2 trả lời câu hỏi chính | "gấp lên $n$ lần" = nhân $n$; "giảm đi $n$ lần" = chia $n$; "gấp mấy lần" = lấy số lớn chia số bé; bài hai bước: bước đầu tìm gì để bước sau làm được |
+| 5 Đơn vị đo | đổi từng dòng `$1\ m = 100\ cm$`, `$2\ kg = 2000\ g$`; nhiều đơn vị: đổi về cùng đơn vị ở dòng đầu rồi tính; nhiệt độ: đọc vạch nhiệt kế, ghi `$37\ °C$` | $1\ m = 10\ dm = 100\ cm$; $1\ km = 1000\ m$; $1\ kg = 1000\ g$; $1\ l = 1000\ ml$; chỉ cộng trừ khi cùng đơn vị |
+| 6 Nhân, chia trong phạm vi 1000 | nhân số 2–3 chữ số với số 1 chữ số: ghi phép tính và kết quả, bài lời văn có câu lời giải; chia: `$37 : 5 = 7$ (dư $2$)`; kiểm tra: `$7 \times 5 + 2 = 37$` | nhân từ hàng đơn vị, nhớ sang hàng liền trước; chia từ hàng cao; **số dư luôn bé hơn số chia**; muốn kiểm tra phép chia có dư: thương × số chia + dư |
+
+- **Kiểm riêng** (ngoài §A4): bài nhân – chia ⇒ nhân lại / chia lại ra đề · chia có dư ⇒ dư < số chia và thương × số chia + dư = số bị chia · đổi đơn vị ⇒ đổi ngược lại · bài lời văn hai bước ⇒ thay đáp số vào đề xem có đúng điều kiện.
+
+**(c) Sai lầm cần tránh**
+- [20/11 — đo trên kho] lời giải kho cũ một khối, dấu `×` Unicode, không Mấu chốt / Bước, không `Đáp số:` ⇒ mọi câu K3 mới và câu K3 viết lại phải theo khuôn hai phần ở trên.
+- Dùng từ "ước", "bội", "chuyển vế", ký hiệu `⇒ ⇔` trong lập luận (bảng CẤM) ⇒ viết bằng chữ: "nên", "vậy".
+- Thiếu đơn vị trong ngoặc sau phép tính lời văn; `Đáp số` thiếu đơn vị.
+- Bài chia có dư viết thương sai chỗ (`$37 : 5 = 7,2$`) ⇒ lớp 3 chỉ có thương nguyên và dư.
+
+### Hình
+
+- Dùng luật Khối 5 / Khối 4 (dòng `**Hình:**`, hình trang trí không đưa vào, bài yêu cầu vẽ ⇒ mô tả các bước vẽ ở Phần 2). Hình lớp 3: điểm, đoạn thẳng, góc vuông, hình tròn, khối lập phương – hộp chữ nhật, đường gấp khúc. Hình không gian chỉ nhận biết, chưa tính thể tích.
+
 ### Theo loại nguồn
 
-- **Tài liệu khối 3 đầu tiên là lô mẫu** (§C3): toàn bộ câu đi làn duyệt; mỗi chỗ người duyệt sửa ⇒ một dòng luật vào mục này.
+- **Tài liệu khối 3 đầu tiên là lô mẫu** (§C3): toàn bộ câu đi làn duyệt; mỗi chỗ người duyệt sửa ⇒ một dòng luật vào mục này. Trưởng khối 3 duyệt **khuôn ở trên** ở lô mẫu này.
+- Tên đề / khuôn tệp: như Khối 4 (đổi "Toán 4" ⇒ "Toán 3").
+
+### Công cụ riêng
+
+- Cổng kiểm `dung-de-tu-soan.mjs … --khoi 3 --chi-kiem` (cổng nhận mã khối bất kỳ; luật khối 3 cắt bằng `cat-luat.mjs 3`).
+- **Viết lại 2.790 câu K3 kho cũ sang khuôn hai phần:** CHƯA làm — Thùy 18/11 đã chốt "chưa quét lại kho cũ hàng loạt" (§E2); xin lệnh riêng (§C10 mục 18).
 
 ---
 
@@ -2283,6 +2328,7 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 15 | Quy trình Claude tự xử câu báo sai: tự đọc – tự sửa – báo cáo cho người – ghi vết từng lần sửa (Thùy 18/11 — §C7) | Chưa build: ai bấm chạy / lịch, báo cáo gửi ai, ghi vết. Hàm xử lý hiện đòi quyền `bdkt`; 88 câu đang chờ (cũ nhất 14/10) |
 | 16 | Quy trình rà lại đáp án các câu trong kho (Thùy 18/11 — Phần E4) | Chưa thiết kế |
 | 17 | Dọn DB của tool "Giải bài kho chung" đã xoá 27/10 (22 hàm `fn_giaibai_*`, 3 view `v_giaibai_*`, 11 dòng treo) | Chỉ làm khi Thùy gật (Luật xoá) |
+| 18 | Viết lại lời giải K3 kho cũ sang khuôn hai phần (Khối 3, 20/11) | 2.790 / 2.866 câu K3 chưa có khuôn (đo 20/11); chờ Thùy gật khuôn K3 ở lô mẫu + lệnh quét (§E2 đang cấm quét hàng loạt) |
 
 Cho tới khi các mục trên xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false`, rồi DB tự duyệt khi máy gán dạng mức cao cho câu đủ điều kiện §C6 (trigger 05/11) — làn tự vào kho đang chạy bằng đường này.
 
