@@ -1,0 +1,352 @@
+[
+ {
+  "ma_cau": "T103000000271",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bảng nhân, chia 6",
+  "truoc": "Dãy đếm bớt $6$: $60, 54, 48, 42, 36, 30, 24, 18, 12, 6$; các số còn thiếu là $42, 36, 30, 24, 18, 12$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm bớt $6$ nghĩa là mỗi số bằng số đứng trước nó trừ đi $6$.\n\n**Bước 1.** Nhìn hai số liền nhau đã cho là $60$ và $54$, hiệu của chúng đúng bằng $6$.\n\n**Bước 2.** Lấy số đứng trước trừ $6$ để tìm số kế tiếp, cứ thế đi tiếp từng bước.\n\n**Bước 3.** Dừng lại khi tới số $6$ ở cuối dãy và đối chiếu để chắc chắn không sót số nào.\n\n**Phần 2. Trình bày**\n\n$54 - 6 = 48$\n\n$48 - 6 = 42$\n\n$42 - 6 = 36$\n\n$36 - 6 = 30$\n\n$30 - 6 = 24$\n\n$24 - 6 = 18$\n\n$18 - 6 = 12$\n\n$12 - 6 = 6$ (khớp với số cuối dãy)\n\nCác số còn thiếu là: $42, 36, 30, 24, 18, 12$."
+ },
+ {
+  "ma_cau": "T103020306071",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bảng nhân, chia 7",
+  "truoc": "$7 \\times 2 + 56 : 7 - 6$\n$= 14 + 8 - 6$\n$= 16$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có nhân, chia và cộng, trừ thì làm phép nhân, phép chia trước, rồi cộng, trừ từ trái sang phải.\n\n**Bước 1.** Tìm các phép nhân, chia trong biểu thức: $7 \\times 2$ và $56 : 7$.\n\n**Bước 2.** Tính hai phép này bằng bảng nhân $7$ và bảng chia $7$.\n\n**Bước 3.** Thay kết quả vào biểu thức rồi cộng, trừ lần lượt từ trái sang phải.\n\n**Chú ý:** Không được cộng $14 + 56$ trước, vì phép chia phải làm trước phép cộng.\n\n**Phần 2. Trình bày**\n\n$7 \\times 2 + 56 : 7 - 6$\n\n$= 14 + 8 - 6$\n\n$= 22 - 6$\n\n$= 16$"
+ },
+ {
+  "ma_cau": "T103000000479",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Tìm thừa số trong 1 tích",
+  "truoc": "a) $56 : 8 = 7$. b) $6 × 7 = 42$. c) $45 : 5 = 9$. d) $45 : 9 = 5$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn tìm số còn thiếu trong phép nhân, phép chia, ta dùng phép tính ngược với phép tính đã cho.\n\n**Bước 1.** Xem chỗ chấm đang là thừa số, số bị chia hay số chia.\n\n**Bước 2.** Thừa số chưa biết bằng tích chia cho thừa số đã biết; số bị chia chưa biết bằng thương nhân với số chia.\n\n**Bước 3.** Số chia chưa biết bằng số bị chia chia cho thương; tính từng câu rồi thử lại bằng phép tính xuôi.\n\n**Chú ý:** Ở câu b), số bị chia chưa biết nên phải nhân, không được chia.\n\n**Phần 2. Trình bày**\n\na) $56 : 8 = 7$ nên số cần điền là $7$\n\nb) $6 \\times 7 = 42$ nên số cần điền là $42$\n\nc) $45 : 5 = 9$ nên số cần điền là $9$\n\nd) $45 : 9 = 5$ nên số cần điền là $5$"
+ },
+ {
+  "ma_cau": "T103000000282",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bảng nhân, chia 7",
+  "truoc": "Dãy đếm bớt $7$: $70, 63, 56, 49, 42, 35, 28, 21, 14, 7$; các số còn thiếu là $56, 42, 35, 28, 21, 14$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đếm bớt $7$ nghĩa là mỗi số bằng số đứng trước nó trừ đi $7$.\n\n**Bước 1.** Nhìn hai số liền nhau đã cho là $70$ và $63$, hiệu của chúng đúng bằng $7$.\n\n**Bước 2.** Lấy số đứng trước trừ $7$ để tìm số kế tiếp, cứ thế đi tiếp từng bước.\n\n**Bước 3.** Dừng lại khi tới số $7$ ở cuối dãy và đối chiếu để chắc chắn không sót số nào.\n\n**Phần 2. Trình bày**\n\n$63 - 7 = 56$\n\n$56 - 7 = 49$ (khớp với số đã cho)\n\n$49 - 7 = 42$\n\n$42 - 7 = 35$\n\n$35 - 7 = 28$\n\n$28 - 7 = 21$\n\n$21 - 7 = 14$\n\n$14 - 7 = 7$ (khớp với số cuối dãy)\n\nCác số còn thiếu là: $56, 42, 35, 28, 21, 14$."
+ },
+ {
+  "ma_cau": "T103000000308",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bảng nhân, chia 9",
+  "truoc": "$9 × 5 = 45$; $6 × 4 = 24$; $72 : 9 = 8$; $42 : 6 = 7$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dùng bảng nhân và bảng chia đã học để tính nhanh kết quả từng phép tính.\n\n**Bước 1.** Nhận ra mỗi phép tính thuộc bảng nhân hay bảng chia nào.\n\n**Bước 2.** Với phép nhân, nhớ lại bảng nhân tương ứng để đọc ngay kết quả.\n\n**Bước 3.** Với phép chia, tìm số nhân với số chia ra số bị chia; số đó chính là thương.\n\n**Phần 2. Trình bày**\n\n$9 \\times 5 = 45$\n\n$6 \\times 4 = 24$\n\n$72 : 9 = 8$ vì $9 \\times 8 = 72$\n\n$42 : 6 = 7$ vì $6 \\times 7 = 42$"
+ },
+ {
+  "ma_cau": "T103030101046",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nhận biết và cách viết 1 phần mấy",
+  "truoc": "$\\dfrac{1}{6}$ của 36 l là:\n$36 : 6 = 6$ (l).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm một phần sáu của một số là chia số đó cho $6$.\n\n**Bước 1.** Nhận ra \"một phần sáu\" nghĩa là chia đều thành $6$ phần rồi lấy một phần.\n\n**Bước 2.** Chia $36$ l thành $6$ phần bằng nhau, mỗi phần là một phần sáu của $36$ l.\n\n**Bước 3.** Thực hiện phép chia rồi nhớ ghi đơn vị lít.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{1}{6}$ của $36$ l là: $36 : 6 = 6$ (l)\n\nSố cần điền vào chỗ chấm là: $6$."
+ },
+ {
+  "ma_cau": "T103000000266",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bảng nhân, chia 6",
+  "truoc": "$24 : 6 = 4$; $18 : 6 = 3$; $36 : 6 = 6$; $42 : 6 = 7$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia cho $6$ thì dùng bảng chia $6$, hoặc tìm số nhân với $6$ ra số bị chia.\n\n**Bước 1.** Nhớ lại bảng nhân $6$ để biết $6$ nhân mấy thì ra số bị chia.\n\n**Bước 2.** Với mỗi phép chia, tìm số nhân với $6$ bằng số bị chia; số đó là thương.\n\n**Bước 3.** Viết kết quả bốn phép chia theo đúng thứ tự đề bài.\n\n**Phần 2. Trình bày**\n\n$24 : 6 = 4$ vì $6 \\times 4 = 24$\n\n$18 : 6 = 3$ vì $6 \\times 3 = 18$\n\n$36 : 6 = 6$ vì $6 \\times 6 = 36$\n\n$42 : 6 = 7$ vì $6 \\times 7 = 42$"
+ },
+ {
+  "ma_cau": "T103000000309",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Ôn tập các bảng nhân, bảng chia",
+  "truoc": "$9 × 3 = 27$; $7 × 4 = 28$; $8 × 10 = 80$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích là kết quả của phép nhân hai thừa số.\n\n**Bước 1.** Đọc từng cặp thừa số và viết thành phép nhân.\n\n**Bước 2.** Tính bằng bảng nhân $9$, bảng nhân $7$ và cách nhân với $10$.\n\n**Bước 3.** Nhân một số với $10$ thì viết thêm chữ số $0$ vào bên phải số đó.\n\n**Phần 2. Trình bày**\n\n$9 \\times 3 = 27$\n\n$7 \\times 4 = 28$\n\n$8 \\times 10 = 80$\n\nCác tích lần lượt là: $27, 28, 80$."
+ },
+ {
+  "ma_cau": "T103000000825",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Gam",
+  "truoc": "Túi đậu nặng bằng tổng các quả cân: $50 + 200 + 500 = 750$ (g).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cân thăng bằng nghĩa là hai đĩa cân nặng bằng nhau.\n\n**Bước 1.** Nhận ra túi đậu nặng bằng tất cả các quả cân ở đĩa bên kia.\n\n**Bước 2.** Cộng khối lượng của ba quả cân: $50$ g, $200$ g và $500$ g.\n\n**Bước 3.** Viết kết quả kèm đơn vị gam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTúi đậu cân nặng là: $50 + 200 + 500 = 750$ (g)\n\nĐáp số: $750$ g"
+ },
+ {
+  "ma_cau": "T103000000491",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Mi-li-mét",
+  "truoc": "a) $24 × 4 = 96$ (mm); $96 : 3 = 32$ (mm). b) $60 : 4 = 15$ (ml); $15 × 2 = 30$ (ml).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Làm lần lượt từng phép tính từ trái sang phải và giữ nguyên đơn vị.\n\n**Bước 1.** Làm theo đúng thứ tự đề nói: phép đầu tiên xong mới làm phép thứ hai.\n\n**Bước 2.** Kết quả của phép đầu tiên chính là số bắt đầu của phép sau.\n\n**Bước 3.** Đơn vị mm hoặc ml luôn được giữ nguyên ở mỗi kết quả.\n\n**Phần 2. Trình bày**\n\na) $24 \\times 4 = 96$ (mm)\n\n$96 : 3 = 32$ (mm)\n\nb) $60 : 4 = 15$ (ml)\n\n$15 \\times 2 = 30$ (ml)\n\nCác số còn thiếu: a) $96$ mm rồi $32$ mm; b) $15$ ml rồi $30$ ml."
+ },
+ {
+  "ma_cau": "T103000000798",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Gam",
+  "truoc": "$320+150=470$; $470-320=150$; $470-150=320$; $7×8=56$; $56:8=7$; $56:7=8$ (đơn vị gam).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chỉ cộng, trừ, nhân, chia các số cùng đơn vị gam, và kết quả giữ đơn vị gam.\n\n**Bước 1.** Nhìn đơn vị của các số: tất cả đều là gam nên tính bình thường.\n\n**Bước 2.** Làm các phép cộng, trừ trong phạm vi $1000$, rồi các phép nhân, chia bằng bảng nhân, bảng chia.\n\n**Bước 3.** Viết kết quả từng phép tính kèm đơn vị g.\n\n**Phần 2. Trình bày**\n\n$320 + 150 = 470$ (g)\n\n$470 - 320 = 150$ (g)\n\n$470 - 150 = 320$ (g)\n\n$7 \\times 8 = 56$ (g)\n\n$56 : 8 = 7$ (g)\n\n$56 : 7 = 8$ (g)"
+ },
+ {
+  "ma_cau": "T1030000001198",
+  "loai_cau": "tu_luan",
+  "dang": "Mi-li-mét",
+  "truoc": "Búp măng cao thêm $350 - 204 = 146$ (mm). Đáp số: $146$ mm.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn biết búp măng cao thêm bao nhiêu, lấy chiều cao hôm nay trừ chiều cao hôm qua.\n\n**Bước 1.** Xác định hai số cần dùng: hôm qua cao $204$ mm, hôm nay cao $350$ mm.\n\n**Bước 2.** Cao thêm là phần chênh lệch nên dùng phép trừ.\n\n**Bước 3.** Trừ hai số cùng đơn vị mi-li-mét rồi ghi đáp số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau một ngày búp măng cao thêm số mi-li-mét là: $350 - 204 = 146$ (mm)\n\nĐáp số: $146$ mm"
+ },
+ {
+  "ma_cau": "T103000000793",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Gam",
+  "truoc": "$360 : 6 = 60$, nên kết quả là $60$ g.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia nhẩm số tròn chục: chia số chục rồi viết thêm một chữ số $0$.\n\n**Bước 1.** Nhận ra $360$ g là $36$ chục gam.\n\n**Bước 2.** Chia $36$ chục cho $6$ bằng bảng chia $6$.\n\n**Bước 3.** Viết thêm chữ số $0$ vào kết quả và ghi đơn vị gam.\n\n**Phần 2. Trình bày**\n\n$360 : 6 = 60$ (g)"
+ },
+ {
+  "ma_cau": "T103000000710",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Mi-li-lít",
+  "truoc": "$236+500=736$; $1000-150=850$; $110×7=770$; $900:9=100$ (đơn vị ml).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số cùng đơn vị ml thì cộng, trừ, nhân, chia như số bình thường.\n\n**Bước 1.** Nhìn đơn vị của các số: tất cả đều là ml nên giữ nguyên đơn vị ở kết quả.\n\n**Bước 2.** Làm phép cộng, phép trừ trong phạm vi $1000$.\n\n**Bước 3.** Làm phép nhân, phép chia bằng cách tính nhẩm rồi ghi kết quả kèm ml.\n\n**Phần 2. Trình bày**\n\n$236 + 500 = 736$ (ml)\n\n$1000 - 150 = 850$ (ml)\n\n$110 \\times 7 = 770$ (ml)\n\n$900 : 9 = 100$ (ml)"
+ },
+ {
+  "ma_cau": "T103000000703",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Mi-li-lít",
+  "truoc": "$1$ l $= 1000$ ml nên $2$ l $= 2000$ ml.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $1$ l bằng $1000$ ml, nên đổi lít sang mi-li-lít thì nhân số lít với $1000$.\n\n**Bước 1.** Nhớ lại: $1$ l $= 1000$ ml.\n\n**Bước 2.** $2$ l là $2$ lần của $1$ l, nên nhân $2$ với $1000$.\n\n**Bước 3.** Viết kết quả kèm đơn vị ml.\n\n**Phần 2. Trình bày**\n\n$1$ l $= 1000$ ml\n\n$2 \\times 1000 = 2000$\n\nVậy $2$ l $= 2000$ ml.\n\nSố cần điền là: $2000$."
+ },
+ {
+  "ma_cau": "T103000000814",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Gam",
+  "truoc": "Hai đĩa cân bằng nên $3$ quả ổi $+ 200$ g $= 500$ g $+ 300$ g $= 800$ g. Vậy $3$ quả ổi nặng $800 - 200 = 600$ (g).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cân thăng bằng nên tổng khối lượng ở hai đĩa cân bằng nhau.\n\n**Bước 1.** Tính khối lượng đĩa cân bên có hai quả cân.\n\n**Bước 2.** Đĩa bên kia gồm $3$ quả ổi và một quả cân $200$ g, nặng bằng đĩa bên này.\n\n**Bước 3.** Lấy tổng đó trừ đi $200$ g để tìm khối lượng $3$ quả ổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐĩa cân bên trái nặng là: $500 + 300 = 800$ (g)\n\nVì cân thăng bằng nên đĩa bên phải cũng nặng $800$ g.\n\nBa quả ổi cân nặng là: $800 - 200 = 600$ (g)\n\nĐáp số: $600$ g"
+ },
+ {
+  "ma_cau": "T1030000001099",
+  "loai_cau": "tu_luan",
+  "dang": "Thực hành vẽ hình vuông, hình chữ nhật",
+  "truoc": "Hình vuông: kẻ bốn cạnh đều dài $2$ ô. Hình chữ nhật: kẻ hai cạnh dài $4$ ô và hai cạnh rộng $3$ ô theo đường kẻ lưới. Các góc đều là góc vuông.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông có bốn cạnh bằng nhau; hình chữ nhật có hai cạnh dài bằng nhau và hai cạnh rộng bằng nhau.\n\n**Bước 1.** Chọn một điểm làm đỉnh rồi vẽ theo đường kẻ ô vuông của lưới.\n\n**Bước 2.** Vẽ hình vuông có mỗi cạnh dài $2$ ô.\n\n**Bước 3.** Vẽ hình chữ nhật có chiều dài $4$ ô, chiều rộng $3$ ô rồi tô màu cả hai hình.\n\n**Chú ý:** Đếm số ô trên mỗi cạnh để chắc chắn hình đúng kích thước.\n\n**Phần 2. Trình bày**\n\nVẽ hình vuông: từ một đỉnh, kẻ sang phải $2$ ô, kẻ lên $2$ ô, kẻ sang trái $2$ ô rồi kẻ xuống nối về đỉnh ban đầu. Bốn cạnh đều dài $2$ ô.\n\nVẽ hình chữ nhật: từ một đỉnh, kẻ sang phải $4$ ô, kẻ lên $3$ ô, kẻ sang trái $4$ ô rồi kẻ xuống nối về đỉnh ban đầu.\n\nCác góc của hai hình đều là góc vuông; tô màu hai hình."
+ },
+ {
+  "ma_cau": "T1030000001508",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Điểm ở giữa, trung điểm của đoạn thẳng",
+  "truoc": "Tảng đá chính giữa của $7$ tảng (số $0$ đến $6$) là tảng số $3$. Từ tảng số $0$ đến tảng số $3$ cần nhảy thêm $3 - 0 = 3$ lần.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tảng đá chính giữa là tảng có số tảng đá ở hai bên bằng nhau.\n\n**Bước 1.** Liệt kê các tảng đá từ số $0$ đến số $6$, tất cả có $7$ tảng.\n\n**Bước 2.** Tìm tảng ở giữa: mỗi bên có $3$ tảng nên đó là tảng ghi số $3$.\n\n**Bước 3.** Số lần nhảy thêm bằng hiệu giữa số tảng cần đến và số tảng đang đứng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác tảng đá ghi số $0, 1, 2, 3, 4, 5, 6$; tảng chính giữa là tảng ghi số $3$.\n\nSố lần chuột túi cần nhảy thêm là: $3 - 0 = 3$ (lần)\n\nĐáp số: $3$ lần"
+ },
+ {
+  "ma_cau": "T1030000001078",
+  "loai_cau": "trac_nghiem",
+  "dang": "Đo độ dài các cạnh hình vuông, hình chữ nhật",
+  "truoc": "$CDNM$ là hình chữ nhật nên $DN = CM = 2$ km, $CD = MN = 3$ km. Đường tránh $CMND$ dài $2 + 3 + 2 = 7$ (km), đoạn thẳng $CD$ dài $3$ km. Đường tránh dài hơn $7 - 3 = 4$ (km).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình chữ nhật có các cạnh đối bằng nhau; so sánh độ dài hai đường đi bằng phép trừ.\n\n**Bước 1.** Từ hình chữ nhật $CDNM$, tìm các cạnh bằng nhau: $DN = CM$ và $CD = MN$.\n\n**Bước 2.** Tính độ dài đường tránh $CMND$ bằng cách cộng ba đoạn $CM$, $MN$, $ND$.\n\n**Bước 3.** Lấy độ dài đường tránh trừ đi độ dài đoạn $CD$ để biết đường tránh dài hơn bao nhiêu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $CDNM$ là hình chữ nhật nên $DN = CM = 2$ km và $CD = MN = 3$ km.\n\nĐường tránh $CMND$ dài là: $2 + 3 + 2 = 7$ (km)\n\nĐường tránh dài hơn đường thẳng là: $7 - 3 = 4$ (km)\n\nChọn B."
+ },
+ {
+  "ma_cau": "T1030000001113",
+  "loai_cau": "tu_luan",
+  "dang": "Thực hành vẽ góc vuông",
+  "truoc": "Đặt đỉnh góc vuông của ê ke trùng $E$, một cạnh ê ke trùng $EK$. Kẻ theo cạnh còn lại của ê ke (theo đường kẻ dọc) được cạnh thứ hai.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Góc vuông được vẽ bằng ê ke: đỉnh ê ke trùng đỉnh góc, một cạnh ê ke trùng cạnh cho trước.\n\n**Bước 1.** Xác định đỉnh $E$ và cạnh $EK$ nằm ngang hướng sang trái.\n\n**Bước 2.** Đặt đỉnh góc vuông của ê ke trùng điểm $E$, một cạnh của ê ke trùng tia $EK$.\n\n**Bước 3.** Kẻ theo cạnh còn lại của ê ke để được cạnh thứ hai của góc vuông.\n\n**Phần 2. Trình bày**\n\nĐặt đỉnh góc vuông của ê ke trùng điểm $E$, một cạnh ê ke nằm trên tia $EK$.\n\nKẻ theo cạnh còn lại của ê ke (theo đường kẻ dọc của lưới) được tia thứ hai, ví dụ tia $EH$.\n\nGóc đỉnh $E$ có hai cạnh là $EK$ và $EH$ là góc vuông."
+ },
+ {
+  "ma_cau": "T1030000001149",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nhận biết khối hộp chữ nhật",
+  "truoc": "Khối hộp chữ nhật có $12$ cạnh, mỗi cạnh một thanh sắt nên cần $12$ thanh sắt.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối hộp chữ nhật có $12$ cạnh, mỗi cạnh dùng một thanh sắt.\n\n**Bước 1.** Nhớ lại các đặc điểm của khối hộp chữ nhật: $6$ mặt, $8$ đỉnh, $12$ cạnh.\n\n**Bước 2.** Đề bài cho mỗi cạnh dùng một thanh sắt nên số thanh sắt bằng số cạnh.\n\n**Bước 3.** Đếm lại theo nhóm: $4$ cạnh ở mặt trên, $4$ cạnh ở mặt dưới, $4$ cạnh đứng.\n\n**Phần 2. Trình bày**\n\nKhối hộp chữ nhật có $12$ cạnh.\n\nMỗi cạnh dùng một thanh sắt nên cần $12$ thanh sắt."
+ },
+ {
+  "ma_cau": "T1030000001075",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Đo độ dài các cạnh hình vuông, hình chữ nhật",
+  "truoc": "$CDNM$ là hình chữ nhật nên hai cạnh đối diện bằng nhau: $CD = MN = 5$ km.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình chữ nhật có hai cạnh đối diện bằng nhau.\n\n**Bước 1.** Tìm cạnh đối diện với $CD$ trong hình chữ nhật $CDNM$: đó là cạnh $MN$.\n\n**Bước 2.** Hai cạnh đối diện của hình chữ nhật bằng nhau nên $CD = MN$.\n\n**Bước 3.** Ghi độ dài kèm đơn vị ki-lô-mét.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì $CDNM$ là hình chữ nhật nên hai cạnh đối diện bằng nhau.\n\nĐộ dài đoạn đường $CD$ là: $CD = MN = 5$ (km)\n\nĐáp số: $5$ km"
+ },
+ {
+  "ma_cau": "T1030000001274",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nêu tên hình, đỉnh, cạnh trong hình tam giác, tứ giác",
+  "truoc": "Hình tam giác $BCD$ có $3$ đỉnh là $B, C, D$ và $3$ cạnh là $BC, CD, DB$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình tam giác có $3$ đỉnh và $3$ cạnh; mỗi cạnh nối hai đỉnh.\n\n**Bước 1.** Đọc tên hình tam giác $BCD$: ba chữ cái $B$, $C$, $D$ chính là ba đỉnh.\n\n**Bước 2.** Mỗi cạnh nối hai đỉnh với nhau, vậy có ba cạnh $BC$, $CD$ và $DB$.\n\n**Bước 3.** Viết đủ các đỉnh và các cạnh.\n\n**Phần 2. Trình bày**\n\nCác đỉnh của hình tam giác $BCD$ là: $B, C, D$.\n\nCác cạnh của hình tam giác $BCD$ là: $BC, CD, DB$."
+ },
+ {
+  "ma_cau": "T1030000001137",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nhận biết khối hộp chữ nhật",
+  "truoc": "Mỗi mặt của khối hộp chữ nhật là một hình chữ nhật, có $4$ đỉnh. Vậy mặt sơn đỏ có $4$ đỉnh.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mặt của khối hộp chữ nhật là một hình chữ nhật, mà hình chữ nhật có $4$ đỉnh.\n\n**Bước 1.** Nhớ lại mặt của khối hộp chữ nhật có hình gì.\n\n**Bước 2.** Hình chữ nhật có $4$ đỉnh nên mặt sơn đỏ chứa $4$ đỉnh của viên gạch.\n\n**Bước 3.** Đếm lại các góc của mặt sơn đỏ, mỗi góc là một đỉnh.\n\n**Phần 2. Trình bày**\n\nMỗi mặt của khối hộp chữ nhật là một hình chữ nhật.\n\nHình chữ nhật có $4$ đỉnh nên mặt sơn đỏ có $4$ đỉnh của viên gạch."
+ },
+ {
+  "ma_cau": "T1030000001469",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Xác định tâm, bán kính, đường kính hình tròn",
+  "truoc": "$AB = 9$ cm, $CD = 9$ cm (bán kính). $BO$ và $OC$ mỗi đoạn bằng hai bán kính: $9 × 2 = 18$ (cm), nên $BC = 18 + 18 = 36$ (cm). Đường gấp khúc $ABCD$ dài $9 + 36 + 9 = 54$ (cm).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đường kính gấp đôi bán kính; độ dài đường gấp khúc bằng tổng độ dài các đoạn thẳng của nó.\n\n**Bước 1.** Hai hình tròn chạm nhau nên khoảng cách giữa hai tâm bằng hai bán kính.\n\n**Bước 2.** Tính độ dài $BO$ và $OC$, từ đó tìm $BC$.\n\n**Bước 3.** Cộng ba đoạn $AB$, $BC$, $CD$ để được độ dài đường gấp khúc $ABCD$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐoạn $AB$ và $CD$ là bán kính nên $AB = CD = 9$ cm.\n\nĐộ dài đoạn $BO$ là: $9 \\times 2 = 18$ (cm)\n\nĐộ dài đoạn $BC$ là: $18 + 18 = 36$ (cm)\n\nBọ ngựa phải bò số xăng-ti-mét là: $9 + 36 + 9 = 54$ (cm)\n\nĐáp số: $54$ cm"
+ },
+ {
+  "ma_cau": "T103000000248",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Phép cộng-trừ 2 số",
+  "truoc": "Hiệu bằng $72 - 38 = 34$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu bằng số bị trừ trừ đi số trừ.\n\n**Bước 1.** Nhận ra số bị trừ là $72$ và số trừ là $38$, muốn tìm hiệu thì làm phép trừ.\n\n**Bước 2.** Đặt tính thẳng hàng rồi trừ từ hàng đơn vị; hàng đơn vị không trừ được thì lấy thêm $10$ và nhớ $1$.\n\n**Bước 3.** Sang hàng chục, cộng số nhớ vào số trừ rồi mới trừ.\n\n**Phần 2. Trình bày**\n\n$72 - 38 = 34$\n\nVậy hiệu là $34$."
+ },
+ {
+  "ma_cau": "T103000000583",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Phép cộng-trừ 2 số",
+  "truoc": "Trừ từ hàng đơn vị: 0 không trừ được 6, lấy 10 - 6 = 4 nhớ 1; 5 bớt 1 bằng 4, 4 không trừ được 7, lấy 14 - 7 = 7 nhớ 1; 8 bớt 1 bằng 7, 7 - 2 = 5. Vậy 850 - 276 = 574.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt tính thẳng hàng, trừ từ hàng đơn vị; hàng nào không trừ được thì lấy thêm $10$ và nhớ $1$ sang hàng liền trước.\n\n**Bước 1.** Viết số bị trừ ở trên, số trừ ở dưới sao cho các chữ số thẳng hàng.\n\n**Bước 2.** Hàng đơn vị: nếu không trừ được thì lấy thêm $10$ cho số bị trừ, rồi nhớ $1$.\n\n**Bước 3.** Hàng chục: cộng số nhớ vào chữ số của số trừ rồi mới trừ, nếu không trừ được thì làm như hàng đơn vị.\n\n**Bước 4.** Hàng trăm: cũng cộng số nhớ vào số trừ rồi trừ.\n\n**Phần 2. Trình bày**\n\n$850 - 276 = 574$"
+ },
+ {
+  "ma_cau": "T1030000001499",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Biểu thức chưa cộng trừ hỗn hợp",
+  "truoc": "Độ dài đường gấp khúc $ABCDE$ là $8 × 4 = 32$ (cm). Đáp số: $32$ cm.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Độ dài đường gấp khúc bằng tổng độ dài các đoạn thẳng; các đoạn bằng nhau thì dùng phép nhân.\n\n**Bước 1.** Đếm số đoạn thẳng của đường gấp khúc $ABCDE$: có $4$ đoạn.\n\n**Bước 2.** Cả bốn đoạn đều dài $8$ cm nên thay phép cộng nhiều số bằng nhau bằng phép nhân.\n\n**Bước 3.** Lấy độ dài một đoạn nhân với số đoạn, nhớ ghi đơn vị xăng-ti-mét.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐộ dài đường gấp khúc $ABCDE$ là: $8 \\times 4 = 32$ (cm)\n\nĐáp số: $32$ cm"
+ },
+ {
+  "ma_cau": "T103010102036",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Tách số thành tổng các số",
+  "truoc": "Số $847$ gồm $8$ trăm, $4$ chục, $7$ đơn vị.\n$847 = 800 + 40 + 7$.\nSố $256$ gồm $2$ trăm, $5$ chục, $6$ đơn vị.\n$256 = 200 + 50 + 6$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Một số có ba chữ số bằng tổng của số trăm, số chục và số đơn vị của nó.\n\n**Bước 1.** Đọc số $847$: gồm $8$ trăm, $4$ chục và $7$ đơn vị.\n\n**Bước 2.** Viết thành tổng $800 + 40 + 7$ rồi tìm số bị thiếu ở câu a).\n\n**Bước 3.** Làm tương tự với $256$ ở câu b): $2$ trăm, $5$ chục, $6$ đơn vị.\n\n**Phần 2. Trình bày**\n\na) $847 = 800 + 40 + 7$ nên số cần điền là $40$\n\nb) $256 = 200 + 50 + 6$ nên các số cần điền là $200$ và $6$"
+ },
+ {
+  "ma_cau": "T1030000001493",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Biểu thức chưa cộng trừ hỗn hợp",
+  "truoc": "Độ dài đường gấp khúc $ABCD$ là $256 + 142 + 202 = 600$ (cm). Đáp số: $600$ cm.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Độ dài đường gấp khúc bằng tổng độ dài các đoạn thẳng của nó.\n\n**Bước 1.** Xác định ba đoạn của đường gấp khúc $ABCD$: $AB$, $BC$ và $CD$.\n\n**Bước 2.** Cộng độ dài ba đoạn thẳng cùng đơn vị xăng-ti-mét.\n\n**Bước 3.** Ghi quãng đường con kiến phải bò.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nQuãng đường con kiến phải bò là: $256 + 142 + 202 = 600$ (cm)\n\nĐáp số: $600$ cm"
+ },
+ {
+  "ma_cau": "T103000000280",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "So sánh số tự nhiên",
+  "truoc": "$7×5 = 5×7 = 35$; $42:7 = 30:5 = 6$; $14:2 = 49:7 = 7$; $21:7 = 18:6 = 3$; $28:7 = 24:6 = 4$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính từng phép tính trước, rồi ghép những phép tính có cùng kết quả.\n\n**Bước 1.** Tính kết quả của cả mười phép tính bằng bảng nhân, bảng chia $5$, $6$, $7$.\n\n**Bước 2.** Viết kết quả ngay bên cạnh mỗi phép tính để dễ so sánh.\n\n**Bước 3.** Ghép các phép tính có kết quả bằng nhau thành từng cặp.\n\n**Phần 2. Trình bày**\n\n$7 \\times 5 = 35$; $5 \\times 7 = 35$\n\n$42 : 7 = 6$; $30 : 5 = 6$\n\n$14 : 2 = 7$; $49 : 7 = 7$\n\n$21 : 7 = 3$; $18 : 6 = 3$\n\n$28 : 7 = 4$; $24 : 6 = 4$\n\nCác cặp có kết quả bằng nhau: $7 \\times 5 = 5 \\times 7$; $42 : 7 = 30 : 5$; $14 : 2 = 49 : 7$; $21 : 7 = 18 : 6$; $28 : 7 = 24 : 6$."
+ },
+ {
+  "ma_cau": "T103000000033",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Tách số thành tổng các số",
+  "truoc": "$777$ gồm $7$ trăm, $7$ chục và $7$ đơn vị nên $777 = 700 + 70 + 7$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết một số thành tổng các trăm, chục và đơn vị dựa vào giá trị của từng chữ số.\n\n**Bước 1.** Xem từng chữ số của $777$ đứng ở hàng nào.\n\n**Bước 2.** Chữ số hàng trăm là $7$ nên có $700$; hàng chục là $7$ nên có $70$.\n\n**Bước 3.** Chữ số hàng đơn vị là $7$; cộng ba số lại thành tổng.\n\n**Phần 2. Trình bày**\n\n$777$ gồm $7$ trăm, $7$ chục và $7$ đơn vị.\n\nVậy $777 = 700 + 70 + 7$."
+ },
+ {
+  "ma_cau": "T103000000551",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Phép cộng-trừ 2 số",
+  "truoc": "Đặt tính cột dọc, trừ từ hàng đơn vị: 3 không trừ được 8, lấy 13 - 8 = 5 nhớ 1; 0 thêm 1 bằng 1, 1 không trừ được 6, lấy 11 - 6 = 5 nhớ 1; 9 bớt 1 bằng 8, 8 - 4 = 4. Vậy 903 - 468 = 435.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đặt tính thẳng hàng, trừ từ hàng đơn vị; hàng nào không trừ được thì lấy thêm $10$ và nhớ $1$ sang hàng liền trước.\n\n**Bước 1.** Viết số bị trừ ở trên, số trừ ở dưới sao cho các chữ số thẳng hàng.\n\n**Bước 2.** Hàng đơn vị: nếu không trừ được thì lấy thêm $10$ cho số bị trừ, rồi nhớ $1$.\n\n**Bước 3.** Hàng chục: cộng số nhớ vào chữ số của số trừ rồi mới trừ, nếu không trừ được thì làm như hàng đơn vị.\n\n**Bước 4.** Hàng trăm: cũng cộng số nhớ vào số trừ rồi trừ.\n\n**Phần 2. Trình bày**\n\n$903 - 468 = 435$"
+ },
+ {
+  "ma_cau": "T103000000278",
+  "loai_cau": "trac_nghiem",
+  "dang": "So sánh số tự nhiên",
+  "truoc": "$7×4=28$; $7×5=35$; $70:7=10$; $7×7=49$; $7×6=42$; $7×2=14$; $63:7=9$; $7×3=21$. Các kết quả bé hơn $35$ là $28, 10, 14, 9, 21$ — có $5$ phép tính.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tính kết quả từng phép tính rồi so sánh với $35$ để đếm.\n\n**Bước 1.** Tính kết quả của cả tám phép tính bằng bảng nhân $7$ và bảng chia $7$.\n\n**Bước 2.** So sánh từng kết quả với $35$, chỉ lấy những kết quả bé hơn $35$.\n\n**Bước 3.** Đếm số phép tính thoả mãn rồi chọn phương án tương ứng.\n\n**Phần 2. Trình bày**\n\n$7 \\times 4 = 28$; $7 \\times 5 = 35$; $70 : 7 = 10$; $7 \\times 7 = 49$; $7 \\times 6 = 42$; $7 \\times 2 = 14$; $63 : 7 = 9$; $7 \\times 3 = 21$.\n\nCác kết quả bé hơn $35$ là: $28, 10, 14, 9, 21$.\n\nCó $5$ phép tính có kết quả bé hơn $35$.\n\nChọn B."
+ },
+ {
+  "ma_cau": "T1030000001433",
+  "loai_cau": "tu_luan",
+  "dang": "Bài toán giải bằng một phép nhân hoặc phép chia",
+  "truoc": "Mỗi hộp có $45 : 5 = 9$ (viên bi). Đáp số: $9$ viên bi.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia đều một số vật vào nhiều nhóm thì dùng phép chia.\n\n**Bước 1.** Nhận ra $45$ viên bi được chia thành $5$ phần bằng nhau, mỗi hộp là một phần.\n\n**Bước 2.** Muốn biết một phần có bao nhiêu thì lấy tổng số bi chia cho số hộp.\n\n**Bước 3.** Câu lời giải bắt đầu bằng điều đề hỏi: \"Mỗi hộp có số viên bi là:\", đơn vị là viên bi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi hộp có số viên bi là: $45 : 5 = 9$ (viên bi)\n\nĐáp số: $9$ viên bi"
+ },
+ {
+  "ma_cau": "T1030000001417",
+  "loai_cau": "tu_luan",
+  "dang": "Bài toán giải bằng một phép nhân hoặc phép chia",
+  "truoc": "Số bút chì màu là $7 × 6 = 42$ (chiếc). Đáp số: $42$ chiếc.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biết số vật trong mỗi nhóm và số nhóm, muốn tìm tổng số vật thì dùng phép nhân.\n\n**Bước 1.** Nhận ra có $6$ hộp, mỗi hộp có số bút chì như nhau, nên tổng số bút là nhiều nhóm bằng nhau cộng lại.\n\n**Bước 2.** Nhiều nhóm bằng nhau cộng lại thì làm phép nhân: số bút mỗi hộp nhân với số hộp.\n\n**Bước 3.** Câu lời giải bắt đầu bằng điều đề hỏi: \"$6$ hộp có số chiếc bút chì màu là:\", đơn vị là chiếc.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$6$ hộp có số chiếc bút chì màu là: $7 \\times 6 = 42$ (chiếc)\n\nĐáp số: $42$ chiếc"
+ },
+ {
+  "ma_cau": "T103000000286",
+  "loai_cau": "tu_luan",
+  "dang": "Giải bài toán bằng 2 bước tính",
+  "truoc": "Mỗi đoạn tre dài $49 : 7 = 7$ (cm). Hình vuông có $4$ cạnh bằng nhau nên tổng độ dài các cạnh là $7 × 4 = 28$ (cm). Đáp số: $28$ cm.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Bài toán hai bước: bước đầu tìm cái chưa biết để bước sau dùng được.\n\n**Bước 1.** Nhận ra bài có hai bước: phải biết một đoạn tre dài bao nhiêu thì mới tính được hình vuông.\n\n**Bước 2.** Trước hết tìm độ dài mỗi đoạn tre bằng phép chia.\n\n**Bước 3.** Hình vuông có $4$ cạnh bằng nhau, mỗi cạnh là một đoạn tre, nên lấy độ dài một đoạn nhân với $4$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi đoạn tre dài là: $49 : 7 = 7$ (cm)\n\nTổng độ dài các cạnh của hình vuông là: $7 \\times 4 = 28$ (cm)\n\nĐáp số: $28$ cm"
+ },
+ {
+  "ma_cau": "T103000000335",
+  "loai_cau": "tu_luan",
+  "dang": "Nhân số có 2 chữ số với số có 1 chữ số",
+  "truoc": "$12 × 6 = 72$; $28 × 3 = 84$; $45 × 2 = 90$; $24 × 4 = 96$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân từ hàng đơn vị, nhớ sang hàng chục khi tích có hai chữ số.\n\n**Bước 1.** Đặt tính thẳng hàng: số có hai chữ số ở trên, thừa số một chữ số ở dưới.\n\n**Bước 2.** Nhân lần lượt từ hàng đơn vị đến hàng chục.\n\n**Bước 3.** Nhớ thêm số nhớ vào tích ở hàng chục.\n\n**Phần 2. Trình bày**\n\n$12 \\times 6$: $6 \\times 2 = 12$, viết $2$ nhớ $1$; $6 \\times 1 = 6$, thêm $1$ bằng $7$. Vậy $12 \\times 6 = 72$.\n\n$28 \\times 3$: $3 \\times 8 = 24$, viết $4$ nhớ $2$; $3 \\times 2 = 6$, thêm $2$ bằng $8$. Vậy $28 \\times 3 = 84$.\n\n$45 \\times 2$: $2 \\times 5 = 10$, viết $0$ nhớ $1$; $2 \\times 4 = 8$, thêm $1$ bằng $9$. Vậy $45 \\times 2 = 90$.\n\n$24 \\times 4$: $4 \\times 4 = 16$, viết $6$ nhớ $1$; $4 \\times 2 = 8$, thêm $1$ bằng $9$. Vậy $24 \\times 4 = 96$."
+ },
+ {
+  "ma_cau": "T1030000001406",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Bài toán giải bằng một phép nhân hoặc phép chia",
+  "truoc": "Số bánh là $4 × 7 = 28$ (cái).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biết số bánh xe của một ô tô và số ô tô, muốn tìm tổng số bánh xe thì dùng phép nhân.\n\n**Bước 1.** Nhận ra có $7$ ô tô, mỗi ô tô có số bánh như nhau, nên tổng số bánh là nhiều nhóm bằng nhau.\n\n**Bước 2.** Nhiều nhóm bằng nhau thì làm phép nhân: số bánh của một ô tô nhân với số ô tô.\n\n**Bước 3.** Câu lời giải bắt đầu bằng điều đề hỏi: \"$7$ chiếc xe có tất cả số cái bánh là:\", đơn vị là cái.\n\n**Phần 2. Trình bày**\n\nBài giải\n\n$7$ chiếc xe có tất cả số cái bánh là: $4 \\times 7 = 28$ (cái)\n\nĐáp số: $28$ cái bánh"
+ },
+ {
+  "ma_cau": "T1030000001249",
+  "loai_cau": "tu_luan",
+  "dang": "Giải bài toán bằng 2 bước tính",
+  "truoc": "Buổi chiều bán được $80 - 20 = 60$ (l). Cả hai buổi bán được $80 + 60 = 140$ (l). Đáp số: $140$ l.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"Ít hơn\" thì dùng phép trừ; muốn biết cả hai buổi thì dùng phép cộng.\n\n**Bước 1.** Muốn biết cả hai buổi thì phải biết buổi chiều bán bao nhiêu lít, mà đề chưa cho.\n\n**Bước 2.** Buổi chiều bán ít hơn buổi sáng nên tìm số lít buổi chiều bằng phép trừ.\n\n**Bước 3.** Cộng số lít của buổi sáng và buổi chiều để ra số lít cả hai buổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nBuổi chiều cửa hàng bán được số lít nước mắm là: $80 - 20 = 60$ (l)\n\nCả hai buổi cửa hàng bán được số lít nước mắm là: $80 + 60 = 140$ (l)\n\nĐáp số: $140$ l"
+ },
+ {
+  "ma_cau": "T103000000785",
+  "loai_cau": "tu_luan",
+  "dang": "Chia số có hai chữ số cho số có một chữ số",
+  "truoc": "$93 : 3 = 31$; $80 : 5 = 16$; $59 : 7 = 8$ dư $3$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia từ hàng cao đến hàng thấp; số dư luôn bé hơn số chia.\n\n**Bước 1.** Đặt tính chia, lấy chữ số hàng cao của số bị chia chia cho số chia.\n\n**Bước 2.** Hạ chữ số tiếp theo xuống rồi chia tiếp.\n\n**Bước 3.** Kiểm tra số dư phải bé hơn số chia, nếu có dư thì ghi \"dư\".\n\n**Chú ý:** Số dư luôn bé hơn số chia; nếu số dư bằng hoặc lớn hơn số chia thì thương chưa đủ.\n\n**Phần 2. Trình bày**\n\n$93 : 3$: $9 : 3 = 3$, hạ $3$, $3 : 3 = 1$. Vậy $93 : 3 = 31$.\n\n$80 : 5$: $8 : 5 = 1$ (dư $3$), hạ $0$ được $30$, $30 : 5 = 6$. Vậy $80 : 5 = 16$.\n\n$59 : 7 = 8$ (dư $3$) vì $7 \\times 8 = 56$ và $59 - 56 = 3$."
+ },
+ {
+  "ma_cau": "T103000000285",
+  "loai_cau": "tu_luan",
+  "dang": "Bài toán giải bằng một phép nhân hoặc phép chia",
+  "truoc": "Mỗi đoạn tre dài $49 : 7 = 7$ (cm). Đáp số: $7$ cm.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cắt thanh tre thành các đoạn bằng nhau thì dùng phép chia.\n\n**Bước 1.** Nhận ra thanh tre dài $49$ cm được chia thành $7$ phần bằng nhau, mỗi đoạn là một phần.\n\n**Bước 2.** Muốn biết một đoạn dài bao nhiêu thì lấy chiều dài cả thanh chia cho số đoạn.\n\n**Bước 3.** Câu lời giải bắt đầu bằng điều đề hỏi: \"Mỗi đoạn tre dài là:\", đơn vị là xăng-ti-mét.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi đoạn tre dài là: $49 : 7 = 7$ (cm)\n\nĐáp số: $7$ cm"
+ },
+ {
+  "ma_cau": "T1030000001028",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Chia số có ba chữ số cho số có một chữ số",
+  "truoc": "a) $132 × 4 = 528$. b) $684 : 2 = 342$. c) $374 : 5 = 74$ dư $4$ nên số dư là $4$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân, chia số có ba chữ số cho số có một chữ số; phép chia có dư thì số dư bé hơn số chia.\n\n**Bước 1.** Câu a): nhân lần lượt từng hàng, từ hàng đơn vị đến hàng trăm.\n\n**Bước 2.** Câu b): chia lần lượt từ hàng trăm xuống hàng đơn vị.\n\n**Bước 3.** Câu c): chia $374$ cho $5$ rồi lấy số dư; thử lại bằng thương nhân số chia cộng số dư.\n\n**Phần 2. Trình bày**\n\na) $132 \\times 4 = 528$\n\nb) $684 : 2 = 342$\n\nc) $374 : 5 = 74$ (dư $4$) vì $74 \\times 5 = 370$ và $374 - 370 = 4$\n\nKết quả: a) $528$; b) $342$; c) số dư là $4$."
+ },
+ {
+  "ma_cau": "T103000000942",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nhân số có ba chữ số với số có một chữ số",
+  "truoc": "$125 × 4 = 500$; $140 × 5 = 700$; $213 × 3 = 639$; $108 × 8 = 864$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân số có ba chữ số với số có một chữ số: nhân từng hàng, từ hàng đơn vị lên hàng trăm.\n\n**Bước 1.** Viết mỗi cặp thừa số thành một phép nhân.\n\n**Bước 2.** Nhân lần lượt từ hàng đơn vị, hàng chục đến hàng trăm.\n\n**Bước 3.** Nhớ thêm số nhớ vào hàng kế tiếp nếu có.\n\n**Phần 2. Trình bày**\n\n$125 \\times 4 = 500$\n\n$140 \\times 5 = 700$\n\n$213 \\times 3 = 639$\n\n$108 \\times 8 = 864$"
+ },
+ {
+  "ma_cau": "T103000000949",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Nhân số có ba chữ số với số có một chữ số",
+  "truoc": "Nhẩm theo hàng: $140 × 2 = 280$; $220 × 4 = 880$; $130 × 3 = 390$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhẩm số tròn chục: nhân số chục với số đã cho rồi viết thêm chữ số $0$.\n\n**Bước 1.** Nhận ra mỗi số đều là số tròn chục, ví dụ $140$ là $14$ chục.\n\n**Bước 2.** Nhân số chục với số thứ hai bằng bảng nhân.\n\n**Bước 3.** Viết thêm chữ số $0$ vào bên phải kết quả.\n\n**Phần 2. Trình bày**\n\n$140 \\times 2$: $14 \\times 2 = 28$ nên $140 \\times 2 = 280$\n\n$220 \\times 4$: $22 \\times 4 = 88$ nên $220 \\times 4 = 880$\n\n$130 \\times 3$: $13 \\times 3 = 39$ nên $130 \\times 3 = 390$"
+ },
+ {
+  "ma_cau": "T103000000848",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "So sánh số lớn gấp mấy lần số bé",
+  "truoc": "Hơn bao nhiêu đơn vị lấy số lớn trừ số bé; gấp mấy lần lấy số lớn chia số bé. a) $12-2=10$; $12:2=6$. b) $20-5=15$; $20:5=4$. c) $42-7=35$; $42:7=6$. d) $54-6=48$; $54:6=9$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hơn bao nhiêu đơn vị thì lấy số lớn trừ số bé; gấp mấy lần thì lấy số lớn chia số bé.\n\n**Bước 1.** Với mỗi cặp số, xác định số lớn và số bé.\n\n**Bước 2.** Tìm số lớn hơn số bé bao nhiêu đơn vị bằng phép trừ.\n\n**Bước 3.** Tìm số lớn gấp mấy lần số bé bằng phép chia.\n\n**Phần 2. Trình bày**\n\na) $12 - 2 = 10$; $12 : 2 = 6$. Số lớn hơn số bé $10$ đơn vị và gấp $6$ lần.\n\nb) $20 - 5 = 15$; $20 : 5 = 4$. Số lớn hơn số bé $15$ đơn vị và gấp $4$ lần.\n\nc) $42 - 7 = 35$; $42 : 7 = 6$. Số lớn hơn số bé $35$ đơn vị và gấp $6$ lần.\n\nd) $54 - 6 = 48$; $54 : 6 = 9$. Số lớn hơn số bé $48$ đơn vị và gấp $9$ lần."
+ },
+ {
+  "ma_cau": "T103000000404",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "Chia số có ba chữ số cho số có một chữ số",
+  "truoc": "Nhẩm theo chục: $270 : 3 = 90$; $450 : 9 = 50$; $360 : 6 = 60$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhẩm số tròn chục: chia số chục rồi viết thêm chữ số $0$.\n\n**Bước 1.** Nhận ra mỗi số đều là số tròn chục, ví dụ $270$ là $27$ chục.\n\n**Bước 2.** Chia số chục cho số chia bằng bảng chia.\n\n**Bước 3.** Viết thêm chữ số $0$ vào bên phải kết quả.\n\n**Phần 2. Trình bày**\n\n$270 : 3$: $27 : 3 = 9$ nên $270 : 3 = 90$\n\n$450 : 9$: $45 : 9 = 5$ nên $450 : 9 = 50$\n\n$360 : 6$: $36 : 6 = 6$ nên $360 : 6 = 60$"
+ },
+ {
+  "ma_cau": "T1030000001001",
+  "loai_cau": "tu_luan",
+  "dang": "Chia số có ba chữ số cho số có một chữ số",
+  "truoc": "$819 : 8 = 102$ dư $3$; $945 : 9 = 105$; $257 : 5 = 51$ dư $2$.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia số có ba chữ số cho số có một chữ số: chia từ hàng trăm xuống hàng đơn vị; số dư bé hơn số chia.\n\n**Bước 1.** Đặt tính chia rồi chia lần lượt từng hàng, từ hàng cao xuống hàng thấp.\n\n**Bước 2.** Mỗi lần chia xong thì hạ chữ số tiếp theo xuống và chia tiếp.\n\n**Bước 3.** Kiểm tra bằng cách lấy thương nhân số chia rồi cộng số dư.\n\n**Chú ý:** Hạ chữ số xuống mà được số bé hơn số chia thì viết $0$ vào thương rồi mới hạ tiếp.\n\n**Phần 2. Trình bày**\n\n$819 : 8 = 102$ (dư $3$) vì $102 \\times 8 = 816$ và $819 - 816 = 3$\n\n$945 : 9 = 105$ vì $105 \\times 9 = 945$\n\n$257 : 5 = 51$ (dư $2$) vì $51 \\times 5 = 255$ và $257 - 255 = 2$"
+ },
+ {
+  "ma_cau": "T103000000873",
+  "loai_cau": "tra_loi_ngan",
+  "dang": "So sánh số lớn gấp mấy lần số bé",
+  "truoc": "$36$ giảm $6$ lần được $36 : 6 = 6$. Số $36$ gấp số $6$ số lần là $36 : 6 = 6$ (lần).",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giảm đi một số lần thì chia cho số lần đó; \"gấp mấy lần\" thì lấy số lớn chia số bé.\n\n**Bước 1.** Tìm số mới khi $36$ giảm đi $6$ lần bằng cách lấy $36$ chia cho $6$.\n\n**Bước 2.** Hỏi $36$ gấp số đó mấy lần thì lấy $36$ chia cho số vừa tìm.\n\n**Bước 3.** Chú ý số vừa tìm là số bé, $36$ là số lớn, nên lấy số lớn chia số bé.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố $36$ giảm đi $6$ lần được số: $36 : 6 = 6$\n\nSố $36$ gấp số đó số lần là: $36 : 6 = 6$ (lần)\n\nĐáp số: $6$ lần"
+ },
+ {
+  "ma_cau": "T103000000997",
+  "loai_cau": "tu_luan",
+  "dang": "Chia số có ba chữ số cho số có một chữ số",
+  "truoc": "Số bánh bán được hôm nay là $280 : 7 = 40$ (cái). Đáp số: $40$ cái.",
+  "sau": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giảm đi một số lần thì chia cho số lần đó.\n\n**Bước 1.** Nhận ra \"giảm đi $7$ lần\" nghĩa là số bánh hôm nay chỉ bằng một phần bảy số bánh hôm qua.\n\n**Bước 2.** Muốn tìm số bánh hôm nay thì lấy số bánh hôm qua chia cho $7$.\n\n**Bước 3.** Câu lời giải bắt đầu bằng điều đề hỏi: \"Hôm nay cửa hàng bán được số cái bánh là:\", đơn vị là cái.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHôm nay cửa hàng bán được số cái bánh là: $280 : 7 = 40$ (cái)\n\nĐáp số: $40$ cái"
+ }
+]

@@ -488,6 +488,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 | 5 Đơn vị đo | đổi từng dòng `$1\ m = 100\ cm$`, `$2\ kg = 2000\ g$`; nhiều đơn vị: đổi về cùng đơn vị ở dòng đầu rồi tính; nhiệt độ: đọc vạch nhiệt kế, ghi `$37\ °C$` | $1\ m = 10\ dm = 100\ cm$; $1\ km = 1000\ m$; $1\ kg = 1000\ g$; $1\ l = 1000\ ml$; chỉ cộng trừ khi cùng đơn vị |
 | 6 Nhân, chia trong phạm vi 1000 | nhân số 2–3 chữ số với số 1 chữ số: ghi phép tính và kết quả, bài lời văn có câu lời giải; chia: `$37 : 5 = 7$ (dư $2$)`; kiểm tra: `$7 \times 5 + 2 = 37$` | nhân từ hàng đơn vị, nhớ sang hàng liền trước; chia từ hàng cao; **số dư luôn bé hơn số chia**; muốn kiểm tra phép chia có dư: thương × số chia + dư |
 
+- **Luật rút từ lô thử 20/11 (Opus soát):** (1) **Không có bước rỗng**: cấm "Đọc đề: …" (chép số liệu), "Viết câu lời giải, phép tính và đáp số", "Ghi số …" — thà ít bước thật còn hơn thêm bước cho đủ 3. Bước 1 nói Ý NGHĨA (nhóm bằng nhau / chia đều / giảm đi), bước cuối nói câu lời giải + đơn vị. (2) **Không đánh số chồng** ("**Bước 2.** Bước 1: …"). (3) **Bài đặt tính: cách tính theo từng hàng (mượn / nhớ) nằm ở Phần 1, KHÔNG ghi kết quả cuối; Phần 2 chỉ phép tính hàng ngang + kết quả.** (4) Bước và dòng Chú ý không chép phép tính / kết quả của Phần 2. (5) Một chuỗi dấu bằng không trộn đơn vị với số trần (`$2 \times 1000 = 2000$` rồi `Vậy $2$ l $= 2000$ ml`). (6) Câu cùng mẫu (đếm bớt …) trình bày giống nhau, có dòng thử lại số đã cho.
 - **Kiểm riêng** (ngoài §A4): bài nhân – chia ⇒ nhân lại / chia lại ra đề · chia có dư ⇒ dư < số chia và thương × số chia + dư = số bị chia · đổi đơn vị ⇒ đổi ngược lại · bài lời văn hai bước ⇒ thay đáp số vào đề xem có đúng điều kiện.
 
 **(c) Sai lầm cần tránh**
@@ -508,7 +509,8 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 ### Công cụ riêng
 
 - Cổng kiểm `dung-de-tu-soan.mjs … --khoi 3 --chi-kiem` (cổng nhận mã khối bất kỳ; luật khối 3 cắt bằng `cat-luat.mjs 3`).
-- **Viết lại 2.790 câu K3 kho cũ sang khuôn hai phần:** CHƯA làm — Thùy 18/11 đã chốt "chưa quét lại kho cũ hàng loạt" (§E2); xin lệnh riêng (§C10 mục 18).
+- **Viết lại câu K3 kho cũ sang khuôn hai phần:** **lô thử 50 câu ĐÃ GHI 20/11 (Thùy cho làm thử)** — 8–9 câu mỗi chuyên đề; máy thử 164 phép tính + đối chiếu đáp án kho; Opus giải mù 48/48 khớp (2 bài vẽ không so được), 0 lỗi lập luận, 19 lỗi khuôn đã sửa (luật rút ở trên). Trước/sau + biên bản: `kho-rules/dai/lo/k3-khuon-thu/`. Phần còn lại (~2.740 câu) CHƯA làm — Thùy 18/11 chốt "chưa quét lại kho cũ hàng loạt" (§E2); xin lệnh riêng (§C10 mục 18).
+- **Câu cần trưởng khối 3 xem (Opus báo, chưa sửa):** gán dạng có vẻ lệch — `T1030000001499`, `T1030000001493` (đường gấp khúc đang ở "Biểu thức chưa cộng trừ hỗn hợp") · `T103000000280`, `T103000000278` (bảng nhân, chia 7 đang ở "So sánh số tự nhiên"); đáp án `T103000000280` gõ dấu `×` Unicode.
 
 ---
 
@@ -2328,7 +2330,7 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 15 | Quy trình Claude tự xử câu báo sai: tự đọc – tự sửa – báo cáo cho người – ghi vết từng lần sửa (Thùy 18/11 — §C7) | Chưa build: ai bấm chạy / lịch, báo cáo gửi ai, ghi vết. Hàm xử lý hiện đòi quyền `bdkt`; 88 câu đang chờ (cũ nhất 14/10) |
 | 16 | Quy trình rà lại đáp án các câu trong kho (Thùy 18/11 — Phần E4) | Chưa thiết kế |
 | 17 | Dọn DB của tool "Giải bài kho chung" đã xoá 27/10 (22 hàm `fn_giaibai_*`, 3 view `v_giaibai_*`, 11 dòng treo) | Chỉ làm khi Thùy gật (Luật xoá) |
-| 18 | Viết lại lời giải K3 kho cũ sang khuôn hai phần (Khối 3, 20/11) | 2.790 / 2.866 câu K3 chưa có khuôn (đo 20/11); chờ Thùy gật khuôn K3 ở lô mẫu + lệnh quét (§E2 đang cấm quét hàng loạt) |
+| 18 | Viết lại lời giải K3 kho cũ sang khuôn hai phần (Khối 3, 20/11) | Đã làm thử 50/2.866 câu (20/11, kết quả tốt: 0 sai đáp số); còn ~2.740 câu chưa có khuôn — chờ Thùy gật khuôn K3 + lệnh quét (§E2 đang cấm quét hàng loạt) |
 
 Cho tới khi các mục trên xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false`, rồi DB tự duyệt khi máy gán dạng mức cao cho câu đủ điều kiện §C6 (trigger 05/11) — làn tự vào kho đang chạy bằng đường này.
 

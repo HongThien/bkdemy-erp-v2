@@ -82013,3 +82013,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đo kho:** K3 2.866 câu, chỉ 75 (2,6 %) có lời giải hai phần Phần 1/Phần 2 (K4 963/4.514, K5 1.369/5.421); 2.790 câu là lời giải một khối từ `kho_cu` (AI giải), dấu `×` Unicode. Mục Khối 3 cũ chỉ ghi "dùng luật Khối 4", không có khuôn.
 - **Đã viết (nháp CTO, chờ trưởng khối 3 duyệt ở lô mẫu §C3):** khung hai phần cho K3 + khuôn Phần 2 / điều Phần 1 phải nói cho 6 chuyên đề đang có trên bản đồ K3 + kiểm riêng + sai lầm. HK2 chưa có trong bản đồ nên chưa có khuôn. Mã luật `cat-luat.mjs 3` đã đổi.
 - **KHÔNG làm:** viết lại 2.790 câu cũ — §E2 (18/11) đang cấm quét kho cũ hàng loạt; ghi nợ §C10 mục 18, chờ lệnh.
+
+### 20/11 — Lô thử 50 câu K3 viết lại theo khuôn hai phần (Thùy: "Cho làm thử 50 câu")
+- **Chọn:** 54 ứng viên (9/chuyên đề, câu đã duyệt, không hình, lời giải một khối) → bỏ 4 câu gần trùng kiểu → 50. **Viết:** Claude (Sonnet) theo khuôn Khối 3 trong spec; cổng máy tự viết (`×` Unicode, `$` lẻ, 3–5 bước, "Chọn X." cho trắc nghiệm, "Đáp số" cho lời văn, 164 phép tính thử bằng JS, mọi số của đáp án kho phải xuất hiện ở Phần 2).
+- **Opus giải mù** (không thấy đáp án/lời giải): 48/48 khớp kho, 2 bài vẽ không so được; **KẾT LUẬN: ĐẠT**, 0 sai lập luận; 19 lỗi khuôn (bước rỗng "Đọc đề", đánh số chồng, cách tính theo hàng nằm ở Phần 2, Chú ý ghi sẵn kết quả) → đã sửa hết rồi mới ghi. Bản đã sửa CHƯA qua Opus lần hai.
+- **Ghi DB:** `update dai_cau_hoi set loi_giai, nguon_giai='ai', giai_method='claude_code'` chỉ khi lời giải còn NGUYÊN như lúc đọc (dry-run rollback trước); 50/50 khớp, 50 câu vẫn `da_duyet`. Cũ/mới còn trong `kho_sua_log` (trigger) và `kho-rules/dai/lo/k3-khuon-thu/truoc-sau.json`.
+- **Chưa làm:** ~2.740 câu K3 còn lại; sửa `dap_an` T103000000280 (dấu ×); xem lại gán dạng 4 câu (xem spec › Khối 3). Luật rút ra đã vào spec › Khối 3 (b).
