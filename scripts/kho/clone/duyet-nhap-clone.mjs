@@ -78,6 +78,28 @@ const KIEM = {
     const cuoi = cuoiLoiGiai(lg, /Vậy\s*x=(\d+)/)
     return [nghiem.length !== 1 && `không đúng 1 nghiệm tự nhiên (${nghiem})`, da.trim() !== String(nghiem[0]) && `đáp án ${da} ≠ ${nghiem[0]}`, cuoi !== String(nghiem[0]) && `lời giải kết luận ${cuoi} ≠ ${nghiem[0]}`].filter(Boolean)
   },
+  NDB00358: (nd, da, lg) => { // k.x^n = m, x tự nhiên
+    const m = bo$(nd).match(/biết:(\d+)\.x\^(\d)=(\d+)$/); if (!m) return ['không đọc được đề']
+    const ns = []; for (let x = 0; x <= 2000; x++) if (+m[1] * x ** +m[2] === +m[3]) ns.push(x)
+    const cuoi = cuoiLoiGiai(lg, /x=(\d+)\s*$/m)
+    return [ns.length !== 1 && `không đúng 1 nghiệm (${ns})`, da.trim() !== String(ns[0]) && `đáp án ${da} ≠ ${ns[0]}`, cuoi !== String(ns[0]) && `lời giải kết luận ${cuoi} ≠ ${ns[0]}`].filter(Boolean)
+  },
+  NDB00363: (nd, da, lg) => { // a.(b^x - c^2.d) = e
+    const m = bo$(nd).match(/biết:(\d+)\.\((\d+)\^x-(\d+)\^2\.(\d+)\)=(\d+)\.?$/); if (!m) return ['không đọc được đề']
+    const [a, b, c, d, e] = m.slice(1).map(Number), ns = []; for (let x = 0; x <= 30; x++) if (a * (b ** x - c * c * d) === e) ns.push(x)
+    const cuoi = cuoiLoiGiai(lg, /Vậy\s*x=(\d+)/)
+    return [ns.length !== 1 && `không đúng 1 nghiệm (${ns})`, da.trim() !== String(ns[0]) && `đáp án ${da} ≠ ${ns[0]}`, cuoi !== String(ns[0]) && `lời giải kết luận ${cuoi} ≠ ${ns[0]}`].filter(Boolean)
+  },
+  NDB02809: (nd, da, lg) => { // x ∈ Z: a + b^{x+k} = v  |  b^{x-k} - a = v
+    const t = bo$(nd); let f
+    let m = t.match(/^Tìmx\\in\\mathbb\{Z\},biết:(\d+)\+(\d+)\^\{x\+(\d+)\}=(\d+)$/)
+    if (m) f = (X) => Number(m[1]) + Number(m[2]) ** (X + Number(m[3])) === Number(m[4]) && X + Number(m[3]) >= 0
+    else if ((m = t.match(/^Tìmx\\in\\mathbb\{Z\},biết:(\d+)\^\{x-(\d+)\}-(\d+)=(\d+)$/))) f = (X) => Number(m[1]) ** (X - Number(m[2])) - Number(m[3]) === Number(m[4]) && X - Number(m[2]) >= 0
+    else return ['không đọc được đề']
+    const ns = []; for (let X = -30; X <= 60; X++) if (f(X)) ns.push(X)
+    const cuoi = cuoiLoiGiai(lg, /x=(-?\d+)\s*$/m)
+    return [ns.length !== 1 && `không đúng 1 nghiệm (${ns})`, da.trim() !== String(ns[0]) && `đáp án ${da} ≠ ${ns[0]}`, cuoi !== String(ns[0]) && `lời giải kết luận ${cuoi} ≠ ${ns[0]}`].filter(Boolean)
+  },
   NDB01303: (nd, da, lg) => { // Tính: (-a).b — nhân hai số nguyên
     const m = bo$(nd).match(/^Tính:(\(?-?\d+\)?)\.(\(?-?\d+\)?)\.$/); if (!m) return ['không đọc được đề']
     const x = so(m[1].replace(/[()]/g, '')), y = so(m[2].replace(/[()]/g, '')), p = x * y

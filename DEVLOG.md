@@ -82054,3 +82054,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Kết quả: 6 dạng đều `dung_duoc = 30`. Chưa làm: 74 dạng clone còn lại cần bộ sinh + bộ kiểm riêng (hoặc Opus giải mù) cho dạng lập luận.
 
 ### 21/11 (lô 3) — K6 đích 30: thêm 4 dạng tính được bằng code (NDB01622 số ước · 01291 so sánh số nguyên · 01302 bỏ ngoặc · 01362 tích bằng 0), 81 câu clone vào kho qua `duyet-nhap-clone.mjs` (KIEM thêm 4 mục). Đủ 30/dạng.
+
+### 21/11 (lô 4) — K6 đích 30: dạng "tìm x" NDB00358 · 00363 · 02809, 56 câu clone vào kho qua `duyet-nhap-clone.mjs` (KIEM thêm 3 mục; sửa lỗi cú pháp `+a ** n` ở bộ kiểm 02809). Mở phiên riêng `kho-ve-hinh` xử lý vẽ lại hình của kho (Thùy yêu cầu).
