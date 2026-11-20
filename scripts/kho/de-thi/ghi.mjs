@@ -23,11 +23,14 @@ import { createClient } from '@supabase/supabase-js'
 import { insertCauBatch, laDangCho } from '../../_kho_insert.mjs'
 import { bien, docEnv, GOC_REPO } from '../cau-hinh.mjs'
 import { tinhNhomBai } from './nhom-bai.mjs'
-import { ghiNhanHinh } from '../so-hinh.mjs'
 
 const args = process.argv.slice(2)
-const dir = args.find((a) => !a.startsWith('--'))
+const dir = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--model-lam')
 const GHI = args.includes('--ghi')
+// Q9 (Thùy chốt 17/11): đề thi do dây chuyền Claude giải ⇒ nhãn 'ai' + 'claude_code', không còn ghi cứng 'nguoi'. Model làm bài khai bằng
+// --model-lam <id>; không khai thì để trống (§1.5: không đoán nhãn). Câu cũ vá riêng, chỉ với đề có tệp .soan.md làm nhân chứng.
+const iModel = args.indexOf('--model-lam')
+const MODEL_LAM = iModel >= 0 ? args[iModel + 1] : null
 if (!dir || !existsSync(join(dir, 'de.json'))) { console.error('Dùng: node scripts/kho/de-thi/ghi.mjs <thư mục có de.json> [--ghi]'); process.exit(2) }
 const de = JSON.parse(readFileSync(join(dir, 'de.json'), 'utf8'))
 const url = process.env.DATABASE_URL_RW ?? bien('DATABASE_URL')?.gia_tri
@@ -124,7 +127,8 @@ try {
     const cauList = grp.map((q) => {
       const [anhDe, anhGiai] = anhCua.get(q)
       const base = { dang_chinh: q.dang || 'CHUA', khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
-        nguon: 'de_thi', nguon_giai: 'nguoi', ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
+        nguon: 'de_thi', nguon_giai: 'ai', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
+        anh_nguon: q.anh_nguon ?? null, // nhãn nguồn hình do _kho_insert.mjs ghi cùng transaction (mặc định 'goc' — Q10)
         dang_bai: q.dang_bai ?? null, dang_bai_chac: q.dang_bai_chac, dang_bai_ly_do: q.dang_bai_ly_do, dang_bai_chot: q.dang_bai_chot,
         chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot,
         // luật duyệt 13/11: câu có `**Chưa chắc:**` ⇒ kiem_may='nghi' (không tự duyệt, vào danh sách người kiểm)
@@ -152,13 +156,8 @@ try {
         [r.maCauList[i], q.so_do.mau_chot, JSON.stringify(q.so_do.nut)])
       tk.so_do = (tk.so_do ?? 0) + 1
     }
-    // nhãn NGUỒN hình đề (spec-giai-bai §A8.4, Thùy 15/11): cùng transaction. Câu trùng câu cũ ⇒ không đổi ảnh câu cũ ⇒ không ghi nhãn.
-    for (const [i, q] of grp.entries()) {
-      const [anhDe] = anhCua.get(q)
-      if (!q.anh_nguon || !anhDe || trung.has(i)) continue
-      await ghiNhanHinh(c, { kho, ma_cau: r.maCauList[i], url: anhDe, nguon: q.anh_nguon.nguon, ma_loi: q.anh_nguon.ma_loi })
-      tk.nhan_hinh = (tk.nhan_hinh ?? 0) + 1
-    }
+    // nhãn NGUỒN hình đề (spec-giai-bai §A8.4, Q10): insertCauBatch đã ghi cùng transaction (câu trùng câu cũ ⇒ không ghi). Đếm lại để in tóm tắt.
+    tk.nhan_hinh = (tk.nhan_hinh ?? 0) + (r.nhan_hinh ?? 0)
   }
 
   // đề

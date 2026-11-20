@@ -19,6 +19,17 @@
 //   · bảng không có các cột ten_de_goc / ai_model / loi_giai_ai / dap_an_ai / ai_de_xuat_at · không có bảng mệnh đề riêng.
 export const SUBJECTS = ['hgt', 'dai', 'khtn', 'hinh_hoc']
 
+// spec-kho-cau-hoi §8 Q10 (Thùy chốt 17/11): MỌI đường gắn `anh_de` lúc tạo câu ghi nhãn NGUỒN hình (kho_hinh_nguon) trong CÙNG transaction,
+// mặc định 'goc' (ảnh cắt từ tài liệu). Cổng chung này lo, đường gọi chỉ cần truyền `anh_nguon: { nguon, ma_loi }` khi hình KHÔNG phải gốc
+// (vd 've_moi'). Chỉ kho Toán có bảng nhãn (dai · hgt · hinh_hoc); KHTN chưa có.
+import { ghiNhanHinh } from './kho/so-hinh.mjs'
+const KHO_CO_NHAN_HINH = new Set(['dai', 'hgt', 'hinh_hoc'])
+async function nhanHinhDeMacDinh(client, subject, maCau, q) {
+  if (!q.anh_de || !KHO_CO_NHAN_HINH.has(subject)) return 0
+  await ghiNhanHinh(client, { kho: subject, ma_cau: maCau, url: q.anh_de, nguon: q.anh_nguon?.nguon ?? 'goc', ma_loi: q.anh_nguon?.ma_loi ?? null })
+  return 1
+}
+
 // ⭐ 26/10 (Thùy "chuyển hẳn sang bản đồ + kho mới"; "chủ yếu là m làm" = Claude chạy các lệnh nhập kho):
 // Kho Đại/HGT ở KHỐI CHẠY BẢN ĐỒ MỚI (DB quyết: public._bdm_ds_khoi_chay(), hiện K6–12) — cấp 1 và KHTN/Hình giữ y cũ:
 //   · dang_chinh LUÔN = dạng chờ của khối (mã dạng cũ là lưu trữ). Lô truyền mã dạng cũ thật ⇒ đổi sang dạng chờ, mã cũ giữ ở
@@ -204,6 +215,7 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
   }
 
   const maCauByIdx = new Array(cauList.length).fill(null)
+  let nhanHinh = 0 // số nhãn nguồn hình đã ghi (Q10) — đường gọi in ra tóm tắt
 
   // Kho Hình học: mã câu do DB cấp (default HHC + hinh_hoc_cau_seq) ⇒ chèn rồi lấy mã về, không tự tính STT theo dạng.
   if (subject === 'hinh_hoc') {
@@ -213,18 +225,20 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
       const q = cauList[i]
       const { rows: [r] } = await client.query(
         `insert into hinh_hoc_cau_hoi (dang_chinh, loai_cau, noi_dung, lua_chon, menh_de, dap_an, loi_giai, anh_de, anh_dap_an,
-                                       nguon, nguon_giai, ma_cum, da_duyet, dang_ai_de_xuat)
-         values ($1, $2, $3, $4::jsonb, $5::jsonb, $6, $7, $8, $9, $10, $11, $12, false, $1) returning ma_cau`,
+                                       nguon, nguon_giai, ma_cum, da_duyet, dang_ai_de_xuat, giai_method)
+         values ($1, $2, $3, $4::jsonb, $5::jsonb, $6, $7, $8, $9, $10, $11, $12, false, $1, $13) returning ma_cau`,
         [q.dang_chinh, q.loai_cau, q.noi_dung, jn(q.lua_chon), jn(q.menh_de), q.dap_an ?? null, q.loi_giai ?? null,
-         q.anh_de ?? null, q.anh_dap_an ?? null, q.nguon || 'de_thi', q.nguon_giai || 'nguoi', q.ma_cum ?? null])
+         q.anh_de ?? null, q.anh_dap_an ?? null, q.nguon || 'de_thi', q.nguon_giai || 'nguoi', q.ma_cum ?? null,
+         q.giai_method ?? null]) // Q9: bảng Hình có giai_method (không có ai_model)
       maCauByIdx[i] = r.ma_cau
       await danhDauNghi(client, 'hinh_hoc_cau_hoi', r.ma_cau, q.kiem_may_nghi)
+      nhanHinh += await nhanHinhDeMacDinh(client, subject, r.ma_cau, q)
     }
     for (const t of trung) {
       if (t.ma_cau_cu) maCauByIdx[t.idx] = t.ma_cau_cu
       else if (t.trong_lo) { maCauByIdx[t.idx] = maCauByIdx[t.idx_goc]; t.ma_cau_cu = maCauByIdx[t.idx_goc] }
     }
-    return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm }
+    return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm, nhan_hinh: nhanHinh }
   }
 
   for (const [dang, idxs] of groups) {
@@ -295,6 +309,7 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
     )
     // Cờ "Chưa chắc" PHẢI đặt TRƯỚC mọi lệnh ghi bản đồ bên dưới: insert kho Đ/S nguon 'ai' bắn trigger tự duyệt ngay (luật duyệt 13/11)
     await danhDauNghi(client, table, maCau, q.kiem_may_nghi)
+    nhanHinh += await nhanHinhDeMacDinh(client, subject, maCau, q)
     // Bản đồ mới: dạng bài (đề xuất AI / gán người đã chốt) · chủ đề kho Đ/S — chỉ câu MỚI chèn
     if (q._bdm && q.dang_bai) {
       if (q.dang_bai_chot) { await client.query(`select public._bdm_nguoi_gan_cau($1, $2, $3)`, [subject, maCau, q.dang_bai]); bdm.gan++ }
@@ -317,5 +332,5 @@ export async function insertCauBatch({ client, subject, cauList, choTrung = fals
     else if (t.trong_lo) { maCauByIdx[t.idx] = maCauByIdx[t.idx_goc]; t.ma_cau_cu = maCauByIdx[t.idx_goc] }
   }
 
-  return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm: { ...bdm, khoi: [...bdm.khoi] } }
+  return { maCauList: maCauByIdx, trung, chua_dang: chuaDang, bdm: { ...bdm, khoi: [...bdm.khoi] }, nhan_hinh: nhanHinh }
 }

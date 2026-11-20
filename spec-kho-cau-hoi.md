@@ -237,7 +237,7 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 
 - **HS báo sai câu** (nút "🚩 Em nghĩ đề hoặc đáp án sai", dùng chung cho TN / điền ô): `fn_hs_bao_loi_cau(bai_test_cau_id, lý do, ghi chú)` ⇒ `bai_cau_bao_loi` (HS · môn · `ma_cau` · lý do ∈ `thieu_du_kien` · `hinh_loi` · `cong_thuc_loi` · `dap_an_sai` · `loi_giai_sai` · `khac` (bắt buộc ghi chú ≥ 5 chữ) · trạng thái `moi` → `da_xu_ly` / `khong_loi`). Tối đa **10 báo cáo / HS / ngày** (Thùy 10/10); một HS báo trùng câu + lý do khi còn `moi` ⇒ gộp. Staff xem `fn_bao_loi_cau_ds`, xử lý `fn_bao_loi_cau_xu_ly` (quyền `bdkt`). Đếm 17/11: 118 báo cáo, toàn môn Toán (84 `moi`). Góp ý / báo lỗi app chung là bảng khác (`bao_loi`) — không thuộc spec này.
 - **Hậu kiểm:** câu bị báo đúng là lỗi ⇒ sửa hoặc xoá + **một dòng Phần D `spec-giai-bai`** (sai gì · lọt trạm nào · luật rút ra · có quét câu cùng loại không). Lỗi cùng kiểu ≥ 3 câu ⇒ sửa luật, quét lại, không vá từng câu.
-- **Sửa câu:** mọi thay đổi đề / đáp án / lời giải / hình tự vào `kho_sua_log` (trigger). **Sửa đáp số hoặc lời giải ⇒ form của câu phải thu hồi để sinh lại** (spec-kho-chuan §3, spec-dien-o §3): điền ô Đại tự thu hồi bằng trigger; **form TN chưa có trigger** (§8 L3). AI/máy không sửa đáp số kho, chỉ báo `nghi`.
+- **Sửa câu:** mọi thay đổi đề / đáp án / lời giải / hình tự vào `kho_sua_log` (trigger). **Sửa đáp số hoặc lời giải ⇒ form của câu phải thu hồi để sinh lại** (spec-kho-chuan §3, spec-dien-o §3): điền ô Đại tự thu hồi bằng trigger; **form TN: từ 20/11 có trigger `<kho>_thu_hoi_form_tn`** (đổi đáp số, hoặc câu vào rác ⇒ form hiệu lực về rác; §8 L3–L4). AI/máy không sửa đáp số kho, chỉ báo `nghi`.
 - **Xoá = kho rác** (`xoa_at`), **cấm xoá cứng** — câu được tham chiếu bằng text `ma_cau` ở `bai_test_cau`, đề, builder, lịch sử đo ⇒ xoá cứng làm các chỗ resolve rụng im lặng (CLAUDE §2). Khôi phục = đặt `xoa_at` về null (log `khoi_phuc`). Mã đã vào rác không cấp lại. Hình còn thêm `rut_khoi_kho` (giữ câu, rút khỏi kho).
 - Đổi dạng sau khi câu đã dùng không phá gì: lịch sử đo chụp `ma_dang` vào `bai_test_cau`, form khoá `ma_cau`, đo đi theo dạng hiện tại của câu (`spec-mastery` §3).
 
@@ -318,6 +318,22 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 | Q12 | **Dấu phẩy thập phân** cho mọi đường; sửa `FMT_RULES` cho khớp `spec-giai-bai`. |
 | Q13 | (không có đề xuất ghi sẵn — CTO chọn) **Giữ tạm** đường nhập ảnh/PDF trong ERP, thêm nhãn nguồn để đo lượt dùng; 2 tuần không ai dùng ⇒ gỡ như nhập đề thi 01/10. |
 
+### Tiến độ thi công các quyết định trên (cập nhật 20/11/2026)
+
+| Q / L | Trạng thái | Ghi |
+|---|---|---|
+| Q3 + L3 + L4 | ✅ ĐÃ ÁP 20/11 (mig `202611201758`) | hàm chung `_trg_thu_hoi_form_tn` + 6 trigger (Đại · HGT · KHTN · Lý · Hoá · TSA). So đáp số bỏ khoảng trắng và `$` nên bọc lại `$…$` không thu hồi oan. Dọn một lần: 154 form còn hiệu lực trên câu rác (Đại 139 · KHTN 15) về rác. **3 form lệch THẬT** (khoá `key_gia_tri` ≠ đáp số hiện tại, đang phát cho HS) chờ trưởng khối soát: `T105040203061` (36,2 ↔ 36,3) · `T105040206002` (14 ↔ 13,8; đã duyệt) · `T105100405030` (358,875 ↔ 363). 9 form còn lại trong 12 câu từng bị sửa đáp số đã khớp đáp số mới (sửa cách viết). |
+| Q4 + L5 | ✅ ĐÃ ÁP 20/11 (cùng mig) | 25 form TN Hình chờ ⇒ `xoa_at` (lý do ghi ở `tu_choi_ly_do`); `hinh_hoc_cau_form_tn` không còn dòng hiệu lực. |
+| Q9 + L15 | ✅ code 20/11 | `ghi.mjs` ghi `nguon_giai='ai'` · `giai_method='claude_code'` · `ai_model` theo `--model-lam <id>` (không khai ⇒ trống, không đoán). `_kho_insert.mjs` nhánh Hình ghi thêm `giai_method`. **Vá câu cũ chưa làm** — chỉ với đề có `.soan.md` làm nhân chứng. |
+| Q10 + L16 | ✅ code 20/11 | cổng chung `insertCauBatch` ghi nhãn nguồn hình cùng transaction (mặc định `goc`, hoặc `anh_nguon` đường gọi truyền) — phủ mọi đường dùng cổng này (đề thi · sách · `nhap_kho.mjs`). Đã thử trong ROLLBACK trên Đại + Hình. **Chưa phủ:** đường ERP ghi thẳng từ client (`saveCauBatch`…) và 118 câu cũ chưa nhãn (chờ lệnh gắn `goc`). |
+| Q11 (một nửa) + Q5 | ◐ 20/11 | ERP bỏ ô "✓ Duyệt luôn": clone luôn lưu chưa duyệt. **Chưa có** bước "Claude kiểm rồi tự duyệt" cho clone (đường tự duyệt máy) và chưa quyết số phận 5.665 nháp cũ. |
+| Q12 + L18 | ✅ code 20/11 | `FMT_RULES` (`api.ts`) dặn dấu PHẨY thập phân. `spec-clone-ai` đã lưu trữ nên không sửa. |
+| Q2 + L2 | ⏳ CHỜ gật | đo lại 20/11: Hình `kho_chuan` 8.159 ⇒ **4.467** (rời kho 3.692 câu = 45 %). Cột generated, đổi = bỏ cột + thêm lại (bảng 9 k dòng). Cần Thùy gật + báo trưởng khối Hình. |
+| Q6 | ⏳ chờ quét xong | |
+| Q7 | ⏳ chưa làm | máy ký form TN khi verify 0 FAIL + độ lừa đủ |
+| Q13 + L19 | ⏳ chưa làm | cần nhãn nguồn riêng cho đường ERP nhập ảnh/PDF; chưa có cột ⇒ chưa làm (không thêm cột chỉ để đo — chờ Thùy chọn chỗ ghi nhãn) |
+| L7, L8, L11, L20–L22 | ⏳ chưa làm | kỹ thuật, làm khi có lệnh |
+
 ## 9. Lịch sử quyết định
 
 | Ngày | Ai chốt | Nội dung |
@@ -352,6 +368,7 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 | 15/11 | Thùy | Hình đề: gốc ổn giữ · gốc tệ (mã a–f) vẽ lại · có lệnh thì vẽ lại; nhãn nguồn từng hình + bộ đếm theo khối (`spec-giai-bai` §A8, §C12) |
 | 16/11 | Thùy | Vẽ hình MỚI cho đề kho Hình thiếu hình (`ve_moi_xuat.mjs`, nhãn `ve_moi`); bài nhiều ý tô nền giả thiết khi hiển thị |
 | 17/11 | Thùy | Spec kho gồm cả nhập kho từ ảnh, từ đề thi, clone, quy chuẩn hiển thị, vẽ lại hình (lượt 2 của nháp này) |
+| 20/11 | Thùy | "Tiếp tục hoàn thiện các vấn đề còn dở" ⇒ làm Q3/Q4/Q9/Q10/Q12 và nửa Q11 (bảng tiến độ cuối §8); Q2 chờ gật |
 
 ---
 

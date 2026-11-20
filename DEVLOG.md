@@ -82023,3 +82023,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 20/11 — Web: mở `/dang-ky` trên domain thật (bkdemy-web `049fc11`, ĐÃ push + đã lên)
 - Thùy: "chỉ mở cái đăng kí để tuyển sinh đã". `proxy.ts` thêm `/dang-ky` (kèm `/dang-ky/hoc-phi`). Đã kiểm bản thật: `/dang-ky` trả 200.
 - Vẫn rào: `/gioi-thieu` · `/cach-bk-hoat-dong` · `/cam-xuc` · `/tai-lieu` (bấm từ trang chủ/menu ⇒ nhảy `/thcs`).
+
+### 20/11 (tối) — Kho câu hỏi: làm các quyết định Q3/Q4/Q9/Q10/Q12 + nửa Q11 của spec-kho-cau-hoi (Thùy "tiếp tục hoàn thiện các vấn đề còn dở")
+- **Làm:** mig `202611201758` ĐÃ ÁP bằng `migrate.mjs --only` (CÒN 28 file treo cũ của phiên khác, không đụng): hàm chung `_trg_thu_hoi_form_tn` + 6 trigger thu hồi form TN khi đổi đáp số / câu vào rác; dọn 154 form hiệu lực trên câu rác (Đại 139 · KHTN 15); 25 form TN Hình ⇒ rác (xoa_at). Thử trong ROLLBACK trước: đổi định dạng `$…$` không thu hồi, đổi số thật thì thu hồi.
+- **Code:** `_kho_insert.mjs` ghi nhãn nguồn hình mặc định `goc` cùng transaction + nhánh Hình ghi `giai_method`; `ghi.mjs` ghi `nguon_giai='ai'/'claude_code'` + `--model-lam` (bỏ vòng ghi nhãn hình riêng); `api.ts` FMT_RULES dấu phẩy thập phân; `DangHub.tsx` bỏ ô "Duyệt luôn". `check:kien-truc` không mục nào tăng.
+- **Phát hiện:** 3 form TN Đại lệch THẬT (key ≠ đáp số hiện tại, đang phát HS): T105040203061 · T105040206002 (đã duyệt) · T105100405030 — chờ trưởng khối soát (Q3), chưa tự thu hồi.
+- **Chờ Thùy:** Q2 (đổi kho chuẩn Hình về `_kho_cau_chuan`: đo lại 8.159 ⇒ 4.467, rời 3.692 câu) · Q13 (nhãn nguồn cho đường ERP nhập ảnh/PDF) · bước "Claude kiểm rồi tự duyệt" cho clone · vá nhãn câu đề thi cũ.
+- **Bài học:** `npm run migrate` KHÔNG dùng khi sổ còn file treo của phiên khác — dùng `--only <file>`. Bảng tiến độ ở `spec-kho-cau-hoi.md` cuối §8.
