@@ -1,6 +1,6 @@
 # spec-tai-chinh.md — SỐ LIỆU TÀI CHÍNH: cơ cấu doanh thu – chi phí, thông số, số hệ đang ra (spec #19 của bộ 20 spec)
 
-> **Trạng thái: NHÁP 19/11/2026 — chờ Thùy trả lời §10 (10 câu).** Chưa có gì trong file này là quyết định mới; mọi số "ĐÍCH" lấy nguyên từ nguồn, mọi số "HIỆN TẠI" là số đo.
+> **Trạng thái: ĐI LẠI TỪ ĐẦU (Thùy 20/11) — thứ tự mới: PHẦN I cơ cấu chi phí (mỗi khoản chiếm bao nhiêu phần doanh thu, đích lợi nhuận 25) TRƯỚC; chốt xong Phần I mới sắp lại thu chi theo đúng các dòng đó. Phần II bên dưới là bản nháp 19/11, giữ làm số đo, CHƯA sắp lại.** *(Dòng cũ:)* **NHÁP 19/11/2026 — chờ Thùy trả lời §10 (10 câu).** Chưa có gì trong file này là quyết định mới; mọi số "ĐÍCH" lấy nguyên từ nguồn, mọi số "HIỆN TẠI" là số đo.
 > Đây là spec về **tiền của trung tâm**: chỗ nào nguồn mâu thuẫn / nguồn ≠ DB / số không có ngày chốt ⇒ **không tự chọn**, ghi §9 và §10. Việc code / DB chỉ làm khi Thùy ra lệnh (§9.3).
 > **Gộp từ:** `SPEC-tai-chinh-luong-gv-ta.md` — đọc từ nhánh CHƯA MERGE `origin/docs/tai-chinh-luong-gv-ta` (bản 03/09, 253 dòng; không checkout, không merge): lấy **§1, §2, §3.4, §5, §6, §7 mục 1 và 9–12**, ghi nhãn **[nhánh 03/09]** ·
 > `PLAN-thu-chi.md` (phần **số liệu / báo cáo**: kỳ chốt, bản chụp theo danh mục, quỹ, công nợ với Ngân — phần quy trình đã ở `spec-van-hanh-trung-tam.md` §6) ·
@@ -14,6 +14,60 @@
 > ⇒ Mọi bảng chi phí GV / TA trong bản 03/09 dựng trên **cơ chế lương đã bỏ** — spec này giữ làm lịch sử và đánh dấu "PHẢI TÍNH LẠI", **không tự đặt số mới**.
 
 ---
+
+# PHẦN I — CƠ CẤU CHI PHÍ (tầng 1 — ĐỀ XUẤT 20/11, chờ Thùy sửa từng dòng)
+
+> Thùy 20/11: *"Cơ cấu chi phí — bản chất là mỗi khoản chi chiếm bao nhiêu phần doanh thu. BK cần xây mô hình sao cho đạt 25 lợi nhuận. Phải có đủ hết các loại chi phí. Xong tầng này mới break xuống tầng dưới."*
+> Cách đọc: doanh thu = học phí phát sinh của tháng (sau giảm phí) = 100. Mọi số trong bảng là **phần trăm của doanh thu**. Cột ĐÍCH là đề xuất của Claude — **chưa có dòng nào là quyết định**.
+> Cột "BK tháng 10" = số đo 19/11 trên doanh thu phát sinh 514,4 triệu (chi tiết ở Phần II §3, §4). Cột "Ngành" lấy từ bảng tham chiếu Phần II §2 (Mathnasium, Kumon, trung tâm Anh ngữ VN, luyện thi Hà Nội).
+
+## I.1 Bảng cơ cấu — 7 nhóm, 17 dòng, cộng 75 ⇒ lợi nhuận 25
+
+| Nhóm | Khoản chi | ĐÍCH đề xuất | BK tháng 10 (đo) | Ngành | Ghi chú |
+|---|---|---|---|---|---|
+| **A. Người dạy — 33** | Giáo viên | 24 | **không có số** (lương ngoài hệ) | 20–22 mô hình giáo trình có sẵn · 40–60 mô hình "thầy là sản phẩm" | Dòng lớn nhất, quyết định cả mô hình |
+| | Trợ giảng (lớp + BTVN + bổ trợ + việc ngoài gói) | 9 | 6,6 tạm tính · 11,7 nếu mọi lớp đủ công | 5–10 | BK dùng TA nhiều hơn ngành (bổ trợ là gói dịch vụ lõi) |
+| **B. Học sinh — 5,5** | Quà, xu, giải thưởng, sự kiện cho học sinh | 4 | 3,2 | — | Bản tháng 9 đặt 5,5 |
+| | Giáo trình, đề, in ấn | 1,5 | 1,2 | — | Phụ huynh đang đóng học liệu riêng 2,3 doanh thu |
+| **C. Cơ sở — 14,5** | Vận hành: OPS, chăm sóc phụ huynh, hành chính, thu ngân | 5 | **không có số** | gộp 14 (TA + vận hành) | |
+| | Nhà + điện nước | 6,5 | ~7,8 (theo mức 40 triệu, chưa đo) | 8–15 | Khoản cố định: doanh thu 615 triệu ⇒ 6,5 · 960 triệu ⇒ 4,2 |
+| | Cơ sở vật chất: mua sắm, sửa chữa, cải tạo | 2 | 3,3 (tháng 9: 1,7) | — | |
+| | Vệ sinh, tiêu hao, nước uống | 1 | ~0,7 (ước, chưa tách tháng) | — | |
+| **D. Quản lý + sản phẩm — 10,5** | Core team: giám đốc, học thuật, trưởng khối, người làm sản phẩm | 9 | **không có số** | 7–12 (phí nhượng quyền / HQ) | Khi có cơ sở 2, đây là "phí HQ" |
+| | Phần mềm, tài khoản AI, ERP | 1,5 | 1,4 | — | |
+| **E. Phúc lợi nhân sự — 4** | Công đoàn, gắn kết (liên hoan, du lịch, hiếu hỉ) | 1,5 | 0,7 (tháng 9: 5,7) | — | Dòng mới — bản tháng 9 không có |
+| | Thưởng, lương tháng 13 | 1,5 | không có số | 0,6 | |
+| | Tuyển dụng, đào tạo (gồm Hackathon) | 1 | chưa tách tháng | 0,5 | |
+| **F. Tăng trưởng — 3** | Marketing, tri ân phụ huynh, quà giới thiệu | 3 | 0 (tháng 9: 1,1) | 5–10 | BK thấp vì tăng nhờ giới thiệu |
+| **G. Tài chính — 4,5** | Nợ không thu được + hoàn phí | 1 | chưa đo được (dư nợ 89,6 triệu phần lớn còn trong hạn) | — | |
+| | Kế toán, pháp lý, bảo hiểm cháy nổ | 0,5 | không có số | 0,8 | |
+| | Dự phòng + tái đầu tư | 3 | không có số | — | |
+| **Tổng chi** | | **75** | | | |
+| **Lợi nhuận trước thuế** | | **25** | **không tính được** | 15–30 | Thuế chưa trừ — cần hỏi kế toán |
+
+Giảm học phí (giới thiệu 0,6 + hệ số anh chị em / học 2 môn ước 3,2) **đã trừ trước khi ra doanh thu**, nên không là một dòng chi.
+
+## I.2 Điều rút ra từ số của BK
+
+1. **Ba dòng lớn nhất đều chưa có số trong hệ:** giáo viên (24) + vận hành (5) + core team (9) = 38 trên 75 phần chi. Chừng nào chưa có ba con số TỔNG này mỗi tháng thì chưa ai nói được BK đang lãi bao nhiêu. Phần đã đo được (TA, quà, in, nhà, cơ sở vật chất, tài khoản, công đoàn) cộng lại chỉ khoảng 24 doanh thu tháng 10.
+2. **Chỗ BK đang rộng hơn đích:** nhà + điện nước (~7,8 so với 6,5) và cơ sở vật chất (3,3 so với 2). Cả hai tự hẹp lại khi doanh thu tăng mà không thuê thêm chỗ.
+3. **Chỗ BK đang hẹp hơn đích:** quà học sinh (3,2 so với 4), marketing (0 so với 3). Đây là "lợi nhuận tạm" — nếu muốn tăng trưởng thì hai dòng này sẽ phải tiêu.
+4. **Trợ giảng là dòng dễ vượt nhất:** tạm tính 6,6 nhưng đủ công đã là 11,7, cao hơn đích 9. Mỗi lớp thêm một em thì dòng này hẹp lại (lương TA theo lớp, không theo em).
+5. **Sĩ số là đòn bẩy của cả bảng:** giáo viên, TA, nhà đều là chi theo LỚP; doanh thu theo EM. Lớp trung bình 8,35 em; lên 10 em thì cùng số lớp doanh thu tăng khoảng một phần năm, ba dòng đó (cộng khoảng 40) tự rút còn khoảng 33.
+6. **Khoản thất thường phải tính theo năm, không theo tháng:** công đoàn tháng 9 là 5,7 nhưng tháng 10 là 0,7; cơ sở vật chất 1,7 rồi 3,3. So với đích phải lấy trung bình 12 tháng.
+
+## I.3 Thùy cần quyết để chốt tầng này
+
+1. **Sửa cột ĐÍCH.** Mười bảy con số trên là đề xuất. Dòng nào Thùy thấy sai thì sửa; tổng phải giữ 75.
+2. **Ba con số tổng của tháng 10** (không cần từng người): tổng lương giáo viên · tổng lương vận hành (OPS, chăm sóc phụ huynh, hành chính) · tổng lương core team. Có ba số này là điền kín cột "BK tháng 10" và biết lợi nhuận thật.
+3. **Lương của Thùy và người sáng lập tính vào đâu?** Đề xuất: tính vào dòng core team theo mức thuê người ngoài làm việc đó, để 25 là lợi nhuận thật của mô hình chứ không phải tiền công của chủ.
+4. **25 là đích cho quy mô nào?** Đề xuất: cho quy mô 500–600 em ở cơ sở hiện tại (doanh thu khoảng 700–850 triệu một tháng); quy mô 800 em thì các khoản cố định hẹp lại và lên được khoảng 30.
+
+**Sau khi chốt Phần I** mới làm tầng dưới: tách từng dòng thành các khoản con, gán mỗi danh mục BK Chi / mỗi loại lương / mỗi loại dòng hoá đơn vào đúng MỘT dòng, và dựng màn so đích – thực tế hằng tháng.
+
+---
+
+# PHẦN II — BẢN NHÁP 19/11 (số đo, benchmark, quyền — CHƯA sắp lại theo Phần I)
 
 ## 0. Đích · nguyên tắc
 

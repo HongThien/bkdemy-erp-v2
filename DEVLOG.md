@@ -82030,3 +82030,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Phát hiện:** 3 form TN Đại lệch THẬT (key ≠ đáp số hiện tại, đang phát HS): T105040203061 · T105040206002 (đã duyệt) · T105100405030 — chờ trưởng khối soát (Q3), chưa tự thu hồi.
 - **Chờ Thùy:** Q2 (đổi kho chuẩn Hình về `_kho_cau_chuan`: đo lại 8.159 ⇒ 4.467, rời 3.692 câu) · Q13 (nhãn nguồn cho đường ERP nhập ảnh/PDF) · bước "Claude kiểm rồi tự duyệt" cho clone · vá nhãn câu đề thi cũ.
 - **Bài học:** `npm run migrate` KHÔNG dùng khi sổ còn file treo của phiên khác — dùng `--only <file>`. Bảng tiến độ ở `spec-kho-cau-hoi.md` cuối §8.
+
+### 20/11 — [Gộp spec #19] Thùy: "đi lại từ đầu — cần cơ cấu tài chính trước, rồi mới thu chi"
+- **Sai:** nháp 19/11 đi ngược (đo thu chi trước, ghép vào cơ cấu sau) và lần đầu tôi hiểu "cấu trúc tài chính" thành báo cáo lãi lỗ 5 tầng. Thùy sửa: **cơ cấu chi phí = mỗi khoản chi chiếm bao nhiêu phần doanh thu, mô hình đạt lợi nhuận 25, đủ mọi loại chi (cơ sở vật chất, giáo viên, trợ giảng, ops, công đoàn…); xong tầng này mới break xuống.**
+- **Làm:** thêm PHẦN I vào `spec-tai-chinh.md` — bảng 7 nhóm 17 dòng cộng 75 (ĐỀ XUẤT, chưa dòng nào là quyết định) cạnh số BK tháng 10 và số ngành; 6 điều rút ra; 4 việc Thùy cần quyết. Nháp 19/11 thành Phần II, chưa sắp lại.
+- **Chưa có:** tổng lương giáo viên / vận hành / core team tháng 10 (38 trên 75 phần chi không có số trong hệ) ⇒ chưa tính được lợi nhuận thật.
