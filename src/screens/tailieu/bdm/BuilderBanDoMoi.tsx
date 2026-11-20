@@ -163,6 +163,8 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
 
   // ── Thao tác ──
   const datChon = (b: NdBuoi, chon: ChonBuoi) => lam(async () => { vaBuoi(await datBuoi(id, b.id, chon)); if (cheXem === 'btvn' && !laChuyenDe) await napKhung() })
+  // Đổi chỗ: cập nhật màn NGAY, ghi DB nền; lỗi thì trả lại thứ tự cũ (không chờ RPC mới thấy đổi — Thùy 20/11 "hơi lag")
+  const doiNhanh = (phanId: string, caus: string[], cu: string[]) => { vaCau(phanId, caus); datCau(phanId, caus).catch((e) => { vaCau(phanId, cu); setBao(loiDoc(e)) }) }
   const ghiCau = (phanId: string, caus: string[]) => lam(async () => { await datCau(phanId, caus); vaCau(phanId, caus) })
   const batCo = (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => lam(async () => {
     vaCo(phanId, patch); markSaved()
@@ -298,7 +300,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onDoiDangBai={(ds) => datChon(b, chonCuaBuoi(b).map((x) => x.nhom === n.id ? { ...x, dang_bai: ds } : x))}
                         onCo={batCo}
                         onXoaCau={(phanId, caus, m) => ghiCau(phanId, caus.filter((x) => x !== m))}
-                        onDoiCau={(phanId, caus) => ghiCau(phanId, caus)}
+                        onDoiCau={(phanId, caus, cu) => doiNhanh(phanId, caus, cu)}
                         onGoiY={(phanId, dangBai, so, hienCo) => goiYLai(b, n, phanId, dangBai, so, hienCo)}
                         onChonCau={(phanId, caus, uuTien) => setChonCau({ buoi: b, nhom: n, phanId, caus, uuTien })} />
                     ))}
@@ -372,7 +374,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
   onMove: (dir: -1 | 1) => void; onBoNhom: () => void; onDoiDangBai: (ds: string[]) => void
   onCo: (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => void
   onXoaCau: (phanId: string, caus: string[], m: string) => void
-  onDoiCau: (phanId: string, caus: string[]) => void
+  onDoiCau: (phanId: string, caus: string[], cu: string[]) => void
   onGoiY: (phanId: string, dangBai: string[] | null, so: Record<string, number>, hienCo: string[]) => void
   onChonCau: (phanId: string, caus: string[], uuTien: string | null) => void
 }) {
@@ -424,7 +426,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
                 </span>
               </div>
               <KhoiCau tieuDe={BAI} mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
-                onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)} onDoi={(ds) => onDoiCau(d.phan_id, ds)}
+                onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)} onDoi={(ds) => onDoiCau(d.phan_id, ds, d.caus)}
                 onGoiY={(so) => onGoiY(d.phan_id, [d.id], so, d.caus)}
                 onChonCau={() => onChonCau(d.phan_id, d.caus, d.id)} />
             </div>
@@ -434,7 +436,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
           <div className="rounded-lg border border-slate-200">
             <KhoiCau tieuDe={n.dang_bai.length ? `${BAI} · câu chưa phân dạng bài` : `${BAI} (nhóm chưa chia dạng bài)`} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
               soMacDinh={n.dang_bai.length ? undefined : { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }}
-              onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)} onDoi={(ds) => onDoiCau(n.chua_phan!.phan_id, ds)}
+              onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)} onDoi={(ds) => onDoiCau(n.chua_phan!.phan_id, ds, n.chua_phan!.caus)}
               onGoiY={n.dang_bai.length ? undefined : (so) => onGoiY(n.chua_phan!.phan_id, null, so, n.chua_phan!.caus)}
               onChonCau={() => onChonCau(n.chua_phan!.phan_id, n.chua_phan!.caus, null)} />
           </div>
@@ -443,7 +445,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
         {xemBtvn && n.btvn && (
           <div className="rounded-lg border border-orange-200 bg-orange-50/30">
             <KhoiCau tieuDe="📝 BTVN của nhóm" mau="orange" btvn caus={n.btvn.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_BTVN_MAC_DINH}
-              onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)} onDoi={(ds) => onDoiCau(n.btvn!.phan_id, ds)}
+              onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)} onDoi={(ds) => onDoiCau(n.btvn!.phan_id, ds, n.btvn!.caus)}
               onGoiY={(so) => onGoiY(n.btvn!.phan_id, n.dang_bai.length ? ids : null, so, n.btvn!.caus)}
               onChonCau={() => onChonCau(n.btvn!.phan_id, n.btvn!.caus, null)} />
           </div>
@@ -531,18 +533,37 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
     return { dau, boQua }
   })()
   // Đơn vị di chuyển = 1 câu lẻ hoặc cả khúc ý; ▲▼ đổi chỗ với đơn vị kề (giữ nguyên mã gốc, chỉ đổi thứ tự).
-  const doiCho = (i: number, dir: -1 | 1) => {
-    if (!onDoi) return
+  const [keo, setKeo] = useState<number | null>(null)   // đơn vị đang kéo (chỉ số câu đầu), kéo thả dùng HTML5 thuần
+  const [dich, setDich] = useState<number | null>(null)
+  const chuyen = (tu: number, den: number) => {   // đưa đơn vị bắt đầu ở `tu` tới vị trí của đơn vị bắt đầu ở `den`
+    if (!onDoi || tu === den) return
     const dv: [number, number][] = []
     for (let t = 0; t < caus.length; t++) { const k = khuc.dau.get(t); dv.push([t, k ? k.cuoi : t]); if (k) t = k.cuoi }
-    const a = dv.findIndex(([d]) => d === i), b = a + dir
-    if (a < 0 || b < 0 || b >= dv.length) return
+    const a = dv.findIndex(([d]) => d === tu), b = dv.findIndex(([d]) => d === den)
+    if (a < 0 || b < 0) return
     const ds = dv.map(([d, c]) => caus.slice(d, c + 1))
-    ;[ds[a], ds[b]] = [ds[b], ds[a]]
+    const [x] = ds.splice(a, 1); ds.splice(b, 0, x)
     onDoi(ds.flat())
   }
+  const doiCho = (i: number, dir: -1 | 1) => {
+    const dv: number[] = []
+    for (let t = 0; t < caus.length; t++) { dv.push(t); const k = khuc.dau.get(t); if (k) t = k.cuoi }
+    const a = dv.indexOf(i), b = a + dir
+    if (a < 0 || b < 0 || b >= dv.length) return
+    chuyen(i, dv[b])
+  }
+  // props kéo thả cho 1 hàng (đơn vị bắt đầu ở i)
+  const keoProps = (i: number) => !chiXem && onDoi && caus.length > 1 ? {
+    onDragOver: (e: React.DragEvent) => { if (keo !== null) { e.preventDefault(); setDich(i) } },
+    onDrop: (e: React.DragEvent) => { e.preventDefault(); if (keo !== null) chuyen(keo, i); setKeo(null); setDich(null) },
+  } : {}
+  const taySetKeo = (i: number) => !chiXem && onDoi && caus.length > 1 ? {
+    draggable: true, onDragStart: (e: React.DragEvent) => { setKeo(i); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(i)) },
+    onDragEnd: () => { setKeo(null); setDich(null) },
+  } : {}
   const nutDoi = (i: number, cuoi: number) => !chiXem && onDoi && caus.length > 1 && (
     <span className="flex shrink-0 items-center gap-0.5">
+      <span {...taySetKeo(i)} title="Kéo để đổi chỗ" className="cursor-grab select-none px-0.5 text-[13px] leading-none text-slate-300 hover:text-indigo-500 active:cursor-grabbing">⠿</span>
       <button onClick={() => doiCho(i, -1)} disabled={i === 0} title="Đưa lên" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
       <button onClick={() => doiCho(i, 1)} disabled={cuoi >= caus.length - 1} title="Đưa xuống" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
     </span>
@@ -573,7 +594,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
               if (c && k) {
                 const ys = caus.slice(i, k.cuoi + 1).map((x) => cauMap.get(x)!)
                 return (
-                  <li key={m} className={`rounded-md border px-2.5 py-1.5 ${btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'}`}>
+                  <li key={m} {...keoProps(i)} className={`rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
                     <div className="flex items-center gap-2">
                       <span className="text-[12px] font-bold text-slate-400">{i + 1}–{k.cuoi + 1}.</span>
                       <span className="font-mono text-[11px] font-semibold text-teal-700">{c.bai_y}</span>
@@ -613,7 +634,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                 )
               }
               return (
-                <li key={m} className={`rounded-md border px-2.5 py-1.5 ${btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'}`}>
+                <li key={m} {...keoProps(i)} className={`rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
                   <div className="flex items-center gap-2">
                     <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
                     <MaCau ma={m} rac={!!c?.xoa_at} />
