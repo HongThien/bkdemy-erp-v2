@@ -82,6 +82,14 @@ Số hiển thị (Nhóm 2 · Dạng bài 2.3 · Câu 5) **suy lúc in**, không
 - Mọi ghi có tính toán = **RPC một giao dịch** `fn_tl_*` (CLAUDE §2.0). Đổi nội dung con ⇒ bump `tai_lieu.updated_at` (đo 17/11: 9/13 hàm ghi `tai_lieu_cau` bump; 4 hàm còn lại tạo tài liệu mới hoặc là hàm con của hàm đã bump — đạt).
 - Client giữ: CRUD dòng đơn, render, sort/filter theo UI. Phần còn tính ở client là nợ (§12 L5, L6).
 
+### 2.1b Đổi chỗ câu — MỘT khuôn cho MỌI builder (Thùy 20/11: *"sau này mọi builder đều làm thế"*)
+- Mọi danh sách câu trong builder (giáo trình trên lớp · về nhà · luyện lại buổi trước · ET · MT · BTVN · chuyên đề · Hình…) **phải đổi chỗ được**, và đổi chỗ chỉ là đổi **thứ tự** — mã gốc câu không đổi (CLAUDE §2).
+- **Kéo thả bằng CẢ THẺ câu** (HTML5 drag & drop, không thư viện): chạm chỗ nào của thẻ cũng kéo được, KHÔNG có tay nắm riêng (tay nắm ⠿ đã thử 20/11, khó nhìn, khó bấm). Con trỏ bàn tay (`cursor-grab`), thẻ đang kéo mờ 40%, thẻ đích viền indigo. **Không kéo khi bấm vào ô nhập / nút / ô chọn / liên kết / nhãn** (`input,select,textarea,button,a,label`) — để ô số dòng, ✕, chế độ hình… vẫn dùng bình thường. Chỉ thả trong **cùng một khối câu**.
+- **Giữ nút ▲▼** song song với kéo thả (iPad / chạm không kéo được thì bấm).
+- **Đơn vị đổi chỗ = một khối**: câu lẻ là một khối; **khúc nhiều ý (Hình-Học bài nhiều ý) là MỘT khối, không tách ý**.
+- **Mượt (CLAUDE §2 React):** cập nhật màn NGAY (lạc quan, vá đúng nhóm tại chỗ), ghi DB nền; lỗi ⇒ trả lại thứ tự cũ + báo. Không `setLoading` / tải lại cả buổi sau mỗi lần đổi.
+- Ghi bằng RPC một giao dịch (`fn_tl_bdm_dat_cau` / `datCauLui`) nhận **cả danh sách câu theo thứ tự mới**. Dùng chung component `KhoiCau` (`bdm/BuilderBanDoMoi.tsx`, prop `onDoi`) — builder mới **dùng lại**, không tự viết kéo thả riêng (§2.8). Nợ: `BtvnLui` (luyện lại buổi trước) và `HocCard` Hình đang đổi chỗ chưa lạc quan (đợi RPC); `OnTapEditor` · `SoanBaiSauGio` · `BtvnOnTapBdm` chưa có đổi chỗ.
+
 ### 2.2 Chọn câu
 - Nguồn câu = kho chuẩn theo dạng bài (`_tl_bdm_cau_vi_tri(khối, môn)`; Hình: `_tl_hh_cau_chuan`) — điều kiện "câu vào kho" ⇒ `spec-kho-cau-hoi` §2. Câu chưa phân dạng bài **không tự vào** bài luyện, chọn tay được (nhãn "chưa phân") (Thùy 17/10).
 - Chọn theo **nhóm là chính**, vẫn chọn **dạng bài lẻ** (kể cả từ nhiều nhóm trong một buổi); chọn nhóm ⇒ mặc định mọi dạng bài theo thứ tự bản đồ, bỏ tick dạng không dạy (A1, Thùy 17/10). Nhóm chưa có dạng bài chọn được, câu lấy cả nhóm.
