@@ -82058,3 +82058,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 21/11 (lô 4) — K6 đích 30: dạng "tìm x" NDB00358 · 00363 · 02809, 56 câu clone vào kho qua `duyet-nhap-clone.mjs` (KIEM thêm 3 mục; sửa lỗi cú pháp `+a ** n` ở bộ kiểm 02809). Mở phiên riêng `kho-ve-hinh` xử lý vẽ lại hình của kho (Thùy yêu cầu).
 
 ### 21/11 (lô 5) — K6 đích 30: số dư tổng lũy thừa NDB00386 (ghép 3) · NDB00387 (ghép 2), 45 câu vào kho (bộ kiểm `kiemSoDuTong` tính lại modulo từ chữ của đề). Lần đầu thử bộ kiểm với đáp án/kết luận cố tình sai: bắt được cả hai.
+
+### 21/11 (lô 6) — Fill kho Đại lớp 6-7-8 đích 30 câu/dạng: 143 dạng, Sonnet sinh (23 nhóm) + Opus giải mù ngẫu nhiên 20% (+100% cho dạng có câu lệch) → ~2.400 câu clone vào kho qua `duyet-nhap-clone.mjs --duyet-lo`
+- `duyet-nhap-clone.mjs` thêm `--duyet-lo <tệp>`: dạng lập luận không có bộ kiểm code duyệt theo biên bản Opus (`ids` + `ghi_chu`; cờ `mot_phan` cho dạng mà mẫu gốc vốn viết lời giải một mạch).
+- Loại bỏ: ~46 câu Opus báo lệch (chép nhầm "diện tích sân", `\begin{cases}` cho "hoặc", `\{` ngoài `$`, đề trần thiếu lời dẫn, "số hạng tự do" sai dấu, đề "chia tổ" mơ hồ). NDB01206 không duyệt (lời giải = đáp án). Nháp bị loại đánh `tu_choi_at`.
+- Bài học: lỗi mẫu lặp theo dạng (cùng một khuôn sinh) nên mẫu 20% bắt được cả dạng; thư mục tạm chung của subagent bị ghi đè (g2.js) — lần sau mỗi agent một thư mục riêng.
+- Còn thiếu: dạng 0 câu (6 ở K6, 7 ở K7, 1 ở K8 — phải nhập gốc), vài dạng bị loại nhiều câu cần sinh bù.

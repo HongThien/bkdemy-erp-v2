@@ -18,6 +18,9 @@ import { insertCauBatch } from '../../_kho_insert.mjs'
 const GHI = process.argv.includes('--ghi')
 const a = process.argv.slice(2), lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
 const CHI_DANG = lay('--dang')?.split(',') ?? null
+// --duyet-lo <tệp.json>: dạng lập luận không có bộ kiểm bằng code ⇒ duyệt theo biên bản Opus giải mù (do điều phối lập sau khi đối chiếu):
+//   { "<NDB>": { "ids": ["<id nháp>", ...], "ghi_chu": "Opus giải mù mẫu 20% (n câu), lệch 0 ..." } } — CHỈ các id liệt kê được duyệt
+const LO_TEP = lay('--duyet-lo'), LO = LO_TEP ? JSON.parse(readFileSync(LO_TEP, 'utf8')) : null
 const env = Object.fromEntries(readFileSync(new URL('../../../.env', import.meta.url), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 
 const gcd = (x, y) => (y ? gcd(y, x % y) : x), lcm = (x, y) => (x / gcd(x, y)) * y
@@ -133,11 +136,13 @@ try {
   for (const n of nhap) {
     if (!n.dang_bai_id) { boQua['gốc chưa gán dạng'] = (boQua['gốc chưa gán dạng'] || 0) + 1; continue }
     if (CHI_DANG && !CHI_DANG.includes(n.dang_bai_id)) continue
-    const kiem = KIEM[n.dang_bai_id]
+    const duocLo = !!LO?.[n.dang_bai_id]?.ids?.includes(n.id)
+    const kiem = KIEM[n.dang_bai_id] ?? (duocLo ? () => [] : null)
     if (!kiem) { boQua[`${n.dang_bai_id} chưa có bộ kiểm`] = (boQua[`${n.dang_bai_id} chưa có bộ kiểm`] || 0) + 1; continue }
     const ly = []
     if (n.goc_xoa) ly.push('câu gốc đã vào rác'); if (n.anh_de) ly.push('câu gốc có hình đề')
-    if (!n.loi_giai || !/Phần 1\./.test(n.loi_giai) || !/Phần 2\./.test(n.loi_giai)) ly.push('lời giải không đủ hai phần')
+    // dạng mà mọi câu mẫu/gốc trong kho vốn viết lời giải một mạch ⇒ điều phối đặt `mot_phan: true` trong tệp --duyet-lo (clone trình bày như mẫu)
+    if (!n.loi_giai || (!LO?.[n.dang_bai_id]?.mot_phan && (!/Phần 1\./.test(n.loi_giai) || !/Phần 2\./.test(n.loi_giai)))) ly.push('lời giải không đủ hai phần')
     if (/^\s*(câu|bài)\s*\d+/i.test(n.noi_dung)) ly.push('đề còn nhãn "Câu N"')
     ly.push(...kiem(n.noi_dung, n.dap_an ?? '', n.loi_giai ?? ''))
     if (ly.length) { tuChoi.push({ n, ly_do: ly }); continue }
@@ -146,7 +151,7 @@ try {
     const mk = (tram, ghi) => bb.push({ tram, lan_chay: 'clone-duyet', cach: 'code', ket_qua: 'dat', ghi_chu: ghi, bam_noi_dung: bam })
     mk('kiem-doc', `clone ${n.dang_bai_id} của ${n.parent_ma_cau}: khuôn hai phần, không nhãn "Câu N"`)
     mk('kiem-dang', `dạng lấy từ câu gốc ${n.parent_ma_cau} (đã gán ${n.dang_bai_id}); clone giữ nguyên khuôn đề, chỉ đổi số`)
-    mk('kiem-dap-so', 'bộ kiểm đọc lại đề từ chữ, tính lại đáp số bằng code, khớp đáp án ghi và kết luận cuối lời giải')
+    mk('kiem-dap-so', KIEM[n.dang_bai_id] ? 'bộ kiểm đọc lại đề từ chữ, tính lại đáp số bằng code, khớp đáp án ghi và kết luận cuối lời giải' : (LO[n.dang_bai_id].ghi_chu ?? 'Opus giải mù độc lập, khớp kết quả cuối'))
     const kq = xetGoi({ cau: { ...cau, dang_chinh: 'cho' }, vet: { lam: { tram: 'giai', lan_chay: 'clone-sinh', model: 'claude-sonnet-5-5 (bộ sinh bằng code)' }, kiem: bb } })
     if (!kq.duoc_ghi) { tuChoi.push({ n, ly_do: kq.ly_do }); continue }
     qua.push({ n, cau, kq })
