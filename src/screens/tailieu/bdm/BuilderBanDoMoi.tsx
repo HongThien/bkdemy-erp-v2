@@ -557,13 +557,16 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
     onDragOver: (e: React.DragEvent) => { if (keo !== null) { e.preventDefault(); setDich(i) } },
     onDrop: (e: React.DragEvent) => { e.preventDefault(); if (keo !== null) chuyen(keo, i); setKeo(null); setDich(null) },
   } : {}
+  // Cả thẻ câu là chỗ nắm (Thùy 20/11): chỉ không kéo khi bấm vào ô nhập / nút / chọn (để gõ số dòng, bấm ✕ như cũ)
+  const [san, setSan] = useState<number | null>(null)
   const taySetKeo = (i: number) => !chiXem && onDoi && caus.length > 1 ? {
-    draggable: true, onDragStart: (e: React.DragEvent) => { setKeo(i); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(i)) },
-    onDragEnd: () => { setKeo(null); setDich(null) },
+    draggable: san === i,
+    onMouseDown: (e: React.MouseEvent) => setSan((e.target as HTMLElement).closest('input,select,textarea,button,a,label') ? null : i),
+    onDragStart: (e: React.DragEvent) => { setKeo(i); e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', String(i)) },
+    onDragEnd: () => { setKeo(null); setDich(null); setSan(null) },
   } : {}
   const nutDoi = (i: number, cuoi: number) => !chiXem && onDoi && caus.length > 1 && (
     <span className="flex shrink-0 items-center gap-0.5">
-      <span {...taySetKeo(i)} title="Kéo để đổi chỗ" className="cursor-grab select-none px-0.5 text-[13px] leading-none text-slate-300 hover:text-indigo-500 active:cursor-grabbing">⠿</span>
       <button onClick={() => doiCho(i, -1)} disabled={i === 0} title="Đưa lên" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
       <button onClick={() => doiCho(i, 1)} disabled={cuoi >= caus.length - 1} title="Đưa xuống" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
     </span>
@@ -594,7 +597,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
               if (c && k) {
                 const ys = caus.slice(i, k.cuoi + 1).map((x) => cauMap.get(x)!)
                 return (
-                  <li key={m} {...keoProps(i)} className={`rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
+                  <li key={m} {...keoProps(i)} {...taySetKeo(i)} className={`${caus.length > 1 && !chiXem && onDoi ? 'cursor-grab ' : ''}rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
                     <div className="flex items-center gap-2">
                       <span className="text-[12px] font-bold text-slate-400">{i + 1}–{k.cuoi + 1}.</span>
                       <span className="font-mono text-[11px] font-semibold text-teal-700">{c.bai_y}</span>
@@ -634,7 +637,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                 )
               }
               return (
-                <li key={m} {...keoProps(i)} className={`rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
+                <li key={m} {...keoProps(i)} {...taySetKeo(i)} className={`${caus.length > 1 && !chiXem && onDoi ? 'cursor-grab ' : ''}rounded-md border px-2.5 py-1.5 ${dich === i && keo !== null && keo !== i ? 'border-indigo-400 ring-1 ring-indigo-300' : btvn ? 'border-slate-100 bg-white/70' : 'border-slate-100 bg-slate-50/50'} ${keo === i ? 'opacity-40' : ''}`}>
                   <div className="flex items-center gap-2">
                     <span className="text-[12px] font-bold text-slate-400">{i + 1}.</span>
                     <MaCau ma={m} rac={!!c?.xoa_at} />
