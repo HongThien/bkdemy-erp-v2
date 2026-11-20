@@ -25,6 +25,16 @@ const bo$ = (s) => String(s).replace(/\$/g, '').replace(/\s+/g, '')
 const cuoiLoiGiai = (lg, re) => { const m = [...String(lg).replace(/\$/g, '').matchAll(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'))]; return m.length ? m[m.length - 1][1] : null }
 const so = (s) => Number(String(s).replace('−', '-'))
 
+const pmod = (b, k, m) => { let r = 1n, x = BigInt(b) % BigInt(m), e = BigInt(k); const M = BigInt(m); while (e > 0n) { if (e & 1n) r = (r * x) % M; x = (x * x) % M; e >>= 1n } return Number(r) }
+// Số dư của A = b^s + b^(s+1) + … + b^e khi chia cho m (đọc lại đề từ chữ, cộng từng số hạng theo modulo)
+const kiemSoDuTong = (nd, da, lg) => {
+  const m = bo$(nd).match(/^ChoA=(\d+)\^\{(\d+)\}\+\d+\^\{(\d+)\}\+\d+\^\{(\d+)\}\+\\ldots\+\d+\^\{(\d+)\}\.Tìmsốdưkhichi?aAcho(\d+)\.$/); if (!m) return ['không đọc được đề']
+  const [b, s, s1, s2, e, mod] = m.slice(1).map(Number)
+  if (s1 !== s + 1 || s2 !== s + 2 || e < s + 3) return ['các số hạng liệt kê không liên tiếp']
+  let t = 0; for (let k = s; k <= e; k++) t = (t + pmod(b, k, mod)) % mod
+  const cuoi = cuoiLoiGiai(lg, /dư\s*(\d+)\.?\s*$/m)
+  return [da.trim() !== String(t) && `đáp án ${da} ≠ ${t}`, cuoi !== String(t) && `lời giải kết luận ${cuoi} ≠ ${t}`].filter(Boolean)
+}
 // Mỗi bộ kiểm: (noi_dung, dap_an, loi_giai) → [] nếu đạt, hoặc danh sách lỗi. Đọc đề từ CHỮ, tính lại bằng code.
 const KIEM = {
   NDB00401: (nd, da, lg) => { // UCLN bằng định nghĩa của a và b
@@ -78,6 +88,8 @@ const KIEM = {
     const cuoi = cuoiLoiGiai(lg, /Vậy\s*x=(\d+)/)
     return [nghiem.length !== 1 && `không đúng 1 nghiệm tự nhiên (${nghiem})`, da.trim() !== String(nghiem[0]) && `đáp án ${da} ≠ ${nghiem[0]}`, cuoi !== String(nghiem[0]) && `lời giải kết luận ${cuoi} ≠ ${nghiem[0]}`].filter(Boolean)
   },
+  NDB00386: kiemSoDuTong,
+  NDB00387: kiemSoDuTong,
   NDB00358: (nd, da, lg) => { // k.x^n = m, x tự nhiên
     const m = bo$(nd).match(/biết:(\d+)\.x\^(\d)=(\d+)$/); if (!m) return ['không đọc được đề']
     const ns = []; for (let x = 0; x <= 2000; x++) if (+m[1] * x ** +m[2] === +m[3]) ns.push(x)
