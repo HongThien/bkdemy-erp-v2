@@ -90,3 +90,11 @@ Mỗi đợt từ 3 trở đi **không chạy hết một lượt**: cắt lô �
 
 - §C10 mục 13: các đường tạo câu có hình đề chỉ `gan_hinh.mjs` và `ghi.mjs` ghi nhãn; đường khác (nhập trên ERP, `nhap_hh_tu_draft`, các script chép) chưa mặc định `goc` ⇒ 118 câu mới sau 15/11 không nhãn (spec-kho-cau-hoi §13.4, §8 L16). Cần đợt sửa code riêng, kể cả backfill `goc` cho câu mới sau 15/11.
 - `kho-rules/SO-HINH.md` do máy sinh; nhớ dựng lại sau mỗi lượt ghi hình.
+
+## 7. KẾT QUẢ đợt Đại K6–K8 (21/11, Thùy ra lệnh "làm hết 678", không duyệt riêng từng đợt)
+
+- Phạm vi: `dai_cau_hoi` K6 26 + K7 128 + K8 105 = 259 câu có hình đề. Công cụ ghi: `scripts/anh/gan_hinh_dai.mjs` (mới; chạy thử ROLLBACK rồi `--ghi`; URL cũ ở `scripts/anh/bien_ban/gan-hinh-dai-2026-11-21-01-40-15.json`; ảnh cũ không xoá).
+- Rà: Sonnet rà 259 → Opus kiểm mù 20% (52 câu) lệch 8/52, toàn là Sonnet cho "giữ gốc" mà Opus thấy cần vẽ lại (chữ quá nhỏ ở 360px, mất cột, scan bẩn) ⇒ Opus rà lại TOÀN BỘ phần "giữ gốc" còn lại (175 câu). Bài học: trạm Sonnet rà quá dễ tính (~19% sót); lô sau nên để Opus rà hình, Sonnet chỉ vẽ.
+- Kết quả ghi DB: **vẽ lại 85 hình** (nhãn `ve_lai`, mã lỗi a–f) · **giữ gốc 159** (nhãn `goc`). Opus kiểm mù 20% hình mới (18): 16 đạt, 2 lỗi nhẹ (T108000000321 thiếu nét đứt; T1070000001619 hoa văn trùng) ⇒ 2 câu đó giữ lại chưa áp.
+- **15 câu GIỮ LẠI, chưa đổi hình, chưa ghi nhãn** (cần người xác nhận / đọc lại nguồn; danh sách + lý do ở `giu-lai.json` trong thư mục ghi chú phiên): T1080000001478 · T1080000001659 (số/phép gán suy ra) · T1070000001042 (12 giá trị đọc bằng mắt) · T1080000001383 · T107000000257 · T108000000865 · T1080000002311 · T1070000001644 · T107010102007 (đáp án nghi sai: C=0,5 nhưng hình ~0,25) · T106000000365 (infographic) · T1070000001045 · T107000000072 · T107000000398 (đề/ảnh thiếu dữ kiện) · T108000000321 · T1070000001619.
+- Chưa làm: K9 Đại (44) và các kho khác; `SO-HINH.md` đã dựng lại sau lượt ghi.
