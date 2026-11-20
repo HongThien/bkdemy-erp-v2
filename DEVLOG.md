@@ -82004,3 +82004,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **DB (4 mig, áp bằng --only):** `claude_phien_anh` + `claude_phien_tin.so_anh` · `fn_phien_gui(…, p_anh)` (≤5 ảnh, 20 tin có ảnh/người/ngày) · mở loại `giai_bai` (cả `_phien_loai_sua_ban_do`) · `fn_phien_chat_vao_kho` (tái dùng `fn_phien_kho_them` + `_duyet`; clone ghi `parent_ma_cau`/`nguon='clone'`/`clone_method='claude_phien'`) · `fn_phien_anh_don` (+ file cron SQL Editor, CHƯA chạy) · khoá `_phien_gioi_han_anh_ngay` (cổng K1 +1 → 0).
 - **Đã thử:** vào kho gốc 'cao' → clone → duyệt trong transaction rồi ROLLBACK (đúng); `thu` chặn đọc file (ERR_ACCESS_DENIED); `anh_cat` cắt-phóng PNG chạy. `tsc` chỉ còn lỗi cũ `pdfRender.ts`. CHƯA thử: bot thật đọc ảnh, giao diện trên trình duyệt (cần đăng nhập), khởi động lại `bot.mjs` để nhận bản mới.
 - **Bài học:** spec ghi nhầm "chat không render công thức" — `ChuPhien` đã có KaTeX; kiểm code trước khi ghi lệch spec.
+
+### 20/11 — Web: mở trang chủ trên domain thật (bkdemy-web `db6ce92`, ĐÃ push + đã lên)
+- Thùy chọn "Mở trang chủ thật": `proxy.ts` cho `/` đi qua. Đã kiểm trên `www.bkacademy.edu.vn`: `/` trả 200; `/gioi-thieu` vẫn 307 → `/thcs`.
+- CÒN HỞ: 5 ô trang chủ + menu trỏ `/gioi-thieu` · `/cach-bk-hoat-dong` · `/cam-xuc` · `/dang-ky` · `/tai-lieu` — cả 5 vẫn bị rào ⇒ bấm ô nào cũng nhảy sang `/thcs`. Chờ Thùy quyết mở trang nào.
