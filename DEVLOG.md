@@ -82019,3 +82019,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Opus giải mù** (không thấy đáp án/lời giải): 48/48 khớp kho, 2 bài vẽ không so được; **KẾT LUẬN: ĐẠT**, 0 sai lập luận; 19 lỗi khuôn (bước rỗng "Đọc đề", đánh số chồng, cách tính theo hàng nằm ở Phần 2, Chú ý ghi sẵn kết quả) → đã sửa hết rồi mới ghi. Bản đã sửa CHƯA qua Opus lần hai.
 - **Ghi DB:** `update dai_cau_hoi set loi_giai, nguon_giai='ai', giai_method='claude_code'` chỉ khi lời giải còn NGUYÊN như lúc đọc (dry-run rollback trước); 50/50 khớp, 50 câu vẫn `da_duyet`. Cũ/mới còn trong `kho_sua_log` (trigger) và `kho-rules/dai/lo/k3-khuon-thu/truoc-sau.json`.
 - **Chưa làm:** ~2.740 câu K3 còn lại; sửa `dap_an` T103000000280 (dấu ×); xem lại gán dạng 4 câu (xem spec › Khối 3). Luật rút ra đã vào spec › Khối 3 (b).
+
+### 20/11 — Web: mở `/dang-ky` trên domain thật (bkdemy-web `049fc11`, ĐÃ push + đã lên)
+- Thùy: "chỉ mở cái đăng kí để tuyển sinh đã". `proxy.ts` thêm `/dang-ky` (kèm `/dang-ky/hoc-phi`). Đã kiểm bản thật: `/dang-ky` trả 200.
+- Vẫn rào: `/gioi-thieu` · `/cach-bk-hoat-dong` · `/cam-xuc` · `/tai-lieu` (bấm từ trang chủ/menu ⇒ nhảy `/thcs`).
