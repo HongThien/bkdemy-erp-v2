@@ -82035,3 +82035,14 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai:** nháp 19/11 đi ngược (đo thu chi trước, ghép vào cơ cấu sau) và lần đầu tôi hiểu "cấu trúc tài chính" thành báo cáo lãi lỗ 5 tầng. Thùy sửa: **cơ cấu chi phí = mỗi khoản chi chiếm bao nhiêu phần doanh thu, mô hình đạt lợi nhuận 25, đủ mọi loại chi (cơ sở vật chất, giáo viên, trợ giảng, ops, công đoàn…); xong tầng này mới break xuống.**
 - **Làm:** thêm PHẦN I vào `spec-tai-chinh.md` — bảng 7 nhóm 17 dòng cộng 75 (ĐỀ XUẤT, chưa dòng nào là quyết định) cạnh số BK tháng 10 và số ngành; 6 điều rút ra; 4 việc Thùy cần quyết. Nháp 19/11 thành Phần II, chưa sắp lại.
 - **Chưa có:** tổng lương giáo viên / vận hành / core team tháng 10 (38 trên 75 phần chi không có số trong hệ) ⇒ chưa tính được lợi nhuận thật.
+
+### 20/11 — [Gộp spec #19] Phần I viết lại theo SỐ THẬT từ bảng TOT (Thùy gửi 3 bảng "Duyệt chi tháng" T09–T11)
+- **Sai:** tôi nói "lương giáo viên, vận hành, core team, tiền nhà không có số" — có, nằm ở bảng TOT (Google Sheet ngoài ERP); BK Chi trên ERP chỉ là phần hoàn ứng. Bảng đích buổi sáng (giáo viên 24, core team 9…) đặt mò ⇒ bỏ.
+- **Làm:** ghép TOT theo tháng hoạt động (lương tháng M trả ở M+1, học phí tháng M thu ở M+1). Tháng 9 là tháng duy nhất đủ số: doanh thu 456,7 tr · tổng chi 379,5 tr (83,1) · lợi nhuận 77,2 tr (16,9). Người dạy 43 (giáo viên 35,9 + TA 7,2) · nhân sự không đứng lớp 18,9 · nhà + điện nước 9,0. Đích đề xuất mới cộng 75; khoảng cách 8 điểm nằm ở ba dòng đó. Không ghi số của từng người, không lưu file TOT vào repo.
+- **Lệch chưa giải thích:** TOT thu tháng 10 = 456,7 tr ↔ ERP `thanh_toan` tháng 10 = 474,2 tr (17,5 tr) · ERP học phí phát sinh kỳ 9 = 428,7 tr (chia theo số này thì lợi nhuận 11,5) · BK Chi ghi "Công đoàn" tháng 9 là 24,5 tr, TOT không có dòng tương ứng.
+- **Chờ Thùy:** 5 câu ở §I.3 (gom dòng, cột đích, doanh thu tính theo số nào, phần dạy của người sáng lập, quỹ dự phòng).
+- **Thùy sửa (20/11):** "quỹ dự phòng ko tính vào chi phí, tiền vẫn còn đấy" ⇒ bỏ dòng trích quỹ dự phòng khỏi chi: tháng 9 tổng chi 369,5 tr (80,9), lợi nhuận 87,2 tr (19,1). Rút quỹ ra tiêu thật mới là chi (tháng 9 rút 28,3 tr cho cơ sở vật chất — cần trải theo năm). Câu mới chờ Thùy: bốn quỹ còn lại tính theo trích hay tiêu thật.
+
+### 20/11 21:48 — HANDOFF: distill đợt gộp spec 17–20/11 + #19 Tài chính; Thùy lệnh "ghi handoff rồi push đi"
+- HANDOFF mục gộp spec viết lại: 13/20 đã chốt, #12 chờ lưu trữ nguồn, #9/#14–#17 chưa làm, #19 đang chờ 5 câu §I.3.
+- Đẩy cùng lượt: Phần I spec-tai-chinh theo số TOT + sửa quỹ dự phòng không tính chi (lượt trước giữ trên máy, nay Thùy cho push).

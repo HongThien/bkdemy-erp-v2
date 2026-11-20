@@ -25,14 +25,32 @@
 - **Hai số Thùy hỏi (đo 20/11, bản đồ mới 1.546 dạng, mới chỉ Đại + HGT):** **1.125 dạng chưa đủ 50 câu dùng được** (chỉ 421 đủ) — duyệt nốt câu chờ cứu 43, còn 1.082 dạng thiếu ~35.300 câu; 91 dạng không có câu nào (không clone được, phải nhập gốc), 308 dạng chỉ 1–9 câu · **415 dạng chưa có MCQ** — 37 có form chờ, 182 có trả lời ngắn, ~113 không có đường nào, 112 dạng rỗng. Tệp: `reports/dang-du-cau-2026-11-20.csv`; chạy lại: `node scripts/do-dang-du-cau.mjs <ra.csv>` (chỉ đọc). Chưa đo KHTN/Lý/Hoá, kho bản đồ cũ, Hình–Học; 4T/5T/8T trống có thể là sách chưa nhập, không hẳn thiếu thật.
 - **Bẫy:** heredoc bash không viết được chuỗi JS nhiều dòng (dùng `String.fromCharCode(10)` hoặc Write); `ghi.mjs` CRLF — chuẩn hoá trước khi thay; `kho_sua_log` cột thời gian là `sua_at`; `hinh_hoc_cau_hoi` không có cột `khoi`; `tsc` lỗi sẵn ở `src/lib/pdfRender.ts(20,23)` không phải của đợt này. Luôn `migrate --only <file>` (30 mig cũ treo của phiên khác).
 
-### ⭐⭐⭐⭐ 17/11 — GỘP SPEC (95 file → 20 spec) + MASTERY LUẬT MỚI + HS YẾU THEO NHÓM (máy nhà; mọi thứ trên `main`, DB đã áp hết)
+### ⭐⭐⭐⭐ 17–20/11 — GỘP SPEC (95 file → 20 spec; 13 đã chốt, đang làm #19 Tài chính) + MASTERY LUẬT MỚI + HS YẾU THEO NHÓM (máy nhà; mọi thứ trên `main`, DB đã áp hết)
 **Đọc `SPEC-INDEX.md` trước** — bảng A = bộ **20 spec đích Thùy chốt** (file hiện có rơi vào spec nào); bảng B = tên file cũ → nguồn đúng (file cũ nằm `_luu-tru/`, `git mv`, không xoá).
-- **Đã làm:** Đợt 0 lưu trữ 34 file outdate · **#20 `spec-mastery.md` CHỐT** (nguồn `spec-danh-gia-cuoi-cap` + `PLAN-mastery-ban-do-moi` đã vào `_luu-tru/`; CLAUDE §1 + §5 trỏ sang) ·
-  **#3 `spec-kho-cau-hoi.md` NHÁP** (agent dựng, tôi tự kiểm 5 số chính bằng DB — đúng).
-- **~~⏸ CHỜ THÙY Q1–Q7~~ — ĐÃ CHỐT 17/11, tiến độ xem mục 20/11 ở trên (cái còn chờ: Q2, 3 form sai, nháp clone). Bản câu hỏi gốc:** `spec-kho-cau-hoi.md` §8 (đề xuất CTO ghi sẵn): Q1 điền ô Đại 449 form bỏ dở → đóng băng? · Q2 3.692 câu Hình chưa duyệt vẫn `kho_chuan` (công thức riêng) → theo luật chung? ·
-  Q3 sửa đáp số không thu hồi form TN (13 form lệch) → thêm trigger? · Q4 25 form TN Hình (trái "Hình không MCQ") → rác? (Luật xoá) · Q5 5.665 nháp clone không ai duyệt → clone ghi thẳng kho `da_duyet=false`? ·
-  Q6 bỏ vế "câu cũ tạm dùng" (353 Đại + 1 HGT)? · Q7 1.302 form TN KHTN/TSA/HGT ai duyệt, cho máy ký? Trả lời xong ⇒ chốt #3, lưu trữ 6 file nguồn, các việc DB làm từng bước có số trước–sau.
-- **Spec kế tiếp:** chưa chọn (Thùy chỉ định). Anh, Văn gác lại. Mỗi spec: đọc hết nguồn + đối chiếu DB → nháp → Thùy duyệt → mới lưu trữ nguồn.
+- **TIẾN ĐỘ GỘP SPEC (cập nhật 20/11) — trạng thái từng dòng xem `SPEC-INDEX.md` bảng A:**
+  - **ĐÃ CHỐT (13/20, nguồn đã vào `_luu-tru/`):** #1 kiến trúc · #2 bản đồ Toán · #3 kho câu hỏi · #4 builder · #5 giải bài · #6 quản lý chất lượng · #7 vận hành tuần · #8 vận hành trung tâm ·
+    #10 trợ giảng · #11 lương + gậy · #13 app PH · #18 bổ trợ · #20 mastery. CLAUDE.md §7 đã trỏ đủ.
+  - **#12 `spec-app-hs.md`:** Thùy chốt 19 câu 18/11; **nguồn CHƯA lưu trữ** — còn rà nốt `spec-thanh-tuu-nhiem-vu` nửa sau + `spec-huy-hieu-build`.
+  - **CHƯA LÀM:** #9 web trung tâm · #14 bản đồ KHTN · #15 bản đồ Lý · #16 bản đồ Hoá · #17 bài học tương tác. Anh, Văn gác lại.
+  - **Cách làm mỗi spec:** đọc hết nguồn + đối chiếu DB/code → nháp → Thùy trả lời câu hỏi (lời thường, có số, có đề xuất, ≤ ~10 câu) → chốt → `git mv` nguồn vào `_luu-tru/` → sửa SPEC-INDEX + CLAUDE §7 + DEVLOG.
+    Đang làm spec thì **không lạc sang việc cụ thể**; việc code/DB sinh ra từ quyết định trong spec ghi vào mục "chờ lệnh" của spec đó, chỉ làm khi Thùy ra lệnh.
+- **▶ ĐANG LÀM — #19 `spec-tai-chinh.md` (Thùy đổi hướng 20/11: "đi lại từ đầu — cơ cấu tài chính trước, rồi mới thu chi"):**
+  - **Phần I = CƠ CẤU CHI PHÍ** = mỗi khoản chi chiếm bao nhiêu % doanh thu, **đích lợi nhuận 25%**. Bảng §I.1 dựng từ SỐ THẬT tháng 9 trong 3 bảng TOT "Duyệt chi tháng" Thùy gửi
+    (file ở Downloads máy công ty, **KHÔNG chép vào repo**; spec chỉ ghi số tổng theo dòng, không ghi tên người kèm tiền, không ghi phần chia lãi).
+    Tháng 9: doanh thu 456,7 tr · tổng chi 80,9% · **lợi nhuận 19,1%** — cách đích ~6 điểm, lệch ở 3 dòng: giáo viên 35,9 (đích đề xuất 30) · nhân sự không đứng lớp 18,9 (16) · mặt bằng 9,0 (7).
+  - **Luật Thùy chốt 20/11:** **trích quỹ dự phòng KHÔNG phải chi phí** ("tiền vẫn còn đấy"); chỉ khi rút quỹ ra tiêu thật thì khoản tiêu mới là chi, ghi vào đúng dòng của nó.
+    Cách đọc TOT: lương tháng M trả ở M+1, học phí tháng M thu ở M+1 ⇒ ghép theo "tháng hoạt động".
+  - **⏸ CHỜ THÙY trả lời 5 câu §I.3:** cách gom dòng (tách "nhân viên full-time"?) · cột đích (giáo viên 30?) · doanh thu tính theo tiền thu hay học phí phát sinh · phần dạy của người sáng lập nằm dòng giáo viên ·
+    bốn quỹ còn lại (học liệu, hackathon, CSVC, tài khoản) tính theo số trích hay tiêu thật (đề xuất: tiêu thật, khoản lớn trải 12 tháng).
+    **Chốt xong Phần I mới "break xuống tầng dưới"** (gán danh mục BK Chi / loại lương / dòng TOT vào từng dòng; sắp lại Phần II = bản nháp 19/11 về thu chi; bảng so đích–thực tế).
+  - **Lệch chưa giải thích:** thu tháng 10 theo TOT 456,7 tr ↔ `thanh_toan` ERP 474,2 tr · BK Chi "Công đoàn" tháng 9 24,5 tr không có dòng TOT tương ứng · khoản 22.222.222đ ngày 02/09 trong chi kỳ.
+  - **Phát hiện ghi trong Phần II, CHƯA sửa (chờ lệnh):** policy ALL cho mọi thành viên trên `thanh_toan` · bảng giá · hệ số học phí · tính tiền ở client (`src/lib/hocphi.ts`, `HocPhiScreen.tsx`) ·
+    lá `db_taichinh` không có màn · công cụ bot `hoc_phi_no` đọc nợ theo trạng thái hoá đơn (173,7 tr) ≠ nợ thật (89,6 tr / 53 PH).
+  - Khi #19 chốt: `PLAN-thu-chi.md` → `_luu-tru/` + thêm dòng trỏ ở CLAUDE §7. Nhánh `origin/docs/tai-chinh-luong-gv-ta` (benchmark ngành ở §2) **không gộp, không xoá** khi Thùy chưa gật.
+- **Việc CHỜ LỆNH sinh ra từ các spec đã chốt (không tự làm):** kho câu hỏi (xem mục 20/11 ngay trên) · giải bài §C10 + Phần E4 (rà đáp án kho — chưa thiết kế) + E3 chỗ báo câu sai cho nhân sự ·
+  quy trình Claude tự xử báo sai · lương §9.0b (công thức TA còn trừ phạt gậy, sổ gậy còn mở quyền ghi) · bổ trợ §7.4 Đuổi chờ review · `supabase/cho-ap/*` chưa áp · deploy ERP / app TA.
+- **Bài học đợt gộp spec:** nháp do agent dựng hay sai số ⇒ **tự kiểm số chính bằng DB** trước khi đưa Thùy · phân biệt ĐÍCH / HIỆN TẠI (R1) — đặt đích "mò" khi BK đã có bảng số thật là sai (20/11: phải hỏi "BK có bảng chi chưa" trước) ·
+  đọc DB để kiểm số chỉ trong `begin read only … rollback` (`.env` chỉ có role ghi).
 - **Mastery — Thùy chốt + ĐÃ ÁP 17/11** (`spec-mastery.md` §2, §5, §6, §10, §11):
   - Chỉ **TEST** tính, **luyện không tính** (`bo_tro` · `bu_luyen` · `htd_luyen` · `retest` · ôn thi · thi thử); danh sách loại bài được tính là danh sách CHO PHÉP — loại mới phải quyết tường minh (mig `202611171010`).
   - `bo_tro_test` · `bu_test` · `htd_test` đều tính như ET · **Hình–Luyện đo theo lần** (≤3 lần, 30 ngày, không trọng số) — ô Hình–Luyện 3.586 → 456, yếu 497 → 133 (toàn bộ do cửa sổ 30 ngày).
@@ -44,7 +62,7 @@
 - **🚀 CẦN THÙY DEPLOY:** **ERP** (KQHT bỏ nút Gộp BTVN · gỡ nút 🔀 Mastery · Báo cáo tuần ô/cột Nhóm yếu · QLCL chữ) + **app GV** (mastery có BTVN). Chưa ai mở các màn này bằng tài khoản thật.
 - **Sự cố đã gỡ 17/11:** sổ **Mục tiêu tuần** lỗi quyền 15 giờ (16/11 20:22 → 17/11 11:22) vì mig 1713/1844 áp qua SQL Editor ⇒ 4 hàm `_mtt_*` + bảng `mtt_ke_hoach` thuộc `postgres`;
   Thùy dán 3 lệnh (grant 4 hàm + `alter table mtt_ke_hoach owner to claude_build`), lượt 11:22 OK 258 tờ. **Bài học:** lỗi quyền lộ từng chỗ một ⇒ dò cả chuỗi (`has_function_privilege` / `has_table_privilege` + policy RLS) rồi đưa MỘT lệnh; áp mig qua SQL Editor ⇒ cuối file phải đổi chủ về `claude_build` hoặc grant.
-- **Còn treo nhỏ:** `SPEC-tai-chinh-luong-gv-ta.md` ở nhánh riêng `docs/tai-chinh-luong-gv-ta`, chưa vào `main` (hỏi Thùy có đưa vào không) · 9 file ❓ (cum-bai, quy-tac-cham, PLAN-giaibai, PLAN-thu-chi, PLAN-tuqua, WEB, 3 nháp game) · `TIN-PH-K6…K9` chưa commit · `spec-lunar-cherry` để đâu ·
+- **Còn treo nhỏ:** file ❓ chưa xếp chỗ (xem SPEC-INDEX) · `TIN-PH-K6…K9` chưa commit · `spec-lunar-cherry` để đâu ·
   dọn nhánh chết "công tắc theo lần tắt" trong 5 hàm cũ (vô hại) · Hình–Luyện chưa vào Dashboard theo nhóm.
 - Có phiên khác (máy nhà) đang làm Mục tiêu tuần song song: các mig `…_mtt_dang_tinh_trang*` + sửa `spec-van-hanh-tuan.md` là của phiên đó, không phải đợt này.
 
