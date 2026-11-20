@@ -2428,6 +2428,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 | 13–15/11 | Câu chưa chắc về trưởng khối · một file luật · tự vào kho đòi 4 điều kiện (có nhân chứng đáp số) | §A1; 4 điều kiện đã thay 18/11 |
 | 17/11 | Ranh giới với `spec-kho-cau-hoi` (luật ở đây · quy trình, công cụ, dữ liệu ở đó) | đầu file |
 | 18/11 | Thùy: tự vào kho theo mức tự tin phân dạng · clone tự duyệt · chỉ trưởng khối đúng khối duyệt · báo sai Claude tự xử · chưa quét kho hàng loạt · cần quy trình rà đáp án kho | §C6, §C7, E1, E2, E4 |
+| 20/11 | Thùy xác nhận 3 điểm rà luật 18/11: **(1) chấp nhận hậu kiểm** thay nhân chứng đáp số — vì người dùng luôn nhìn thấy câu, chỉ cần có **chỗ báo câu sai ở mọi nơi người dùng thấy câu** (hiện chỉ HS báo được, trong bài test — `src/lib/baoloi_cau.ts`; kho / builder / bản in chưa có nút báo cho nhân sự) · (2) Phần D phải có dòng cho mỗi câu bị báo sai · (3) hai đường xử câu sai (báo sai: Claude sửa tại chỗ · quét/rà: chỉ đánh dấu) giữ nguyên | E1, §C10 mục 15 |
 
 ## E4. Rà lại đáp án kho — CHƯA THIẾT KẾ (Thùy 18/11)
 
