@@ -131,6 +131,7 @@ export default function SoanBaiSauGio({ buoiId, loai, onDong, onIn }: {
                 <KhoiCau tieuDe={`${d.caus.length} câu`} mau={loai === 'test' ? 'amber' : 'sky'} btvn caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={false}
                   soMacDinh={{ trac_nghiem: loai === 'test' ? 1 : so }}
                   onXoa={(m) => vaDang(d.ma_dang, d.caus.filter((x) => x !== m))}
+                  onDoi={(ds) => vaDang(d.ma_dang, ds)}
                   onGoiY={(s) => goiY(d, Object.values(s).reduce((a, b) => a + b, 0))}
                   onChonCau={d.nhanh === 'bdm' && d.nhom_id ? () => setChonCau(d) : undefined} />
               </div>

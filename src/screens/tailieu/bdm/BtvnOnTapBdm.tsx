@@ -134,7 +134,8 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
               : lui.map((k) => (
                 <div key={k.phanId} className="rounded-lg border border-slate-200 bg-white">
                   <KhoiCau tieuDe={`${k.bac === 1 ? 'Buổi trước' : 'Buổi trước nữa'} · ${k.ten ?? k.nhom} · ${k.caus.length} câu`} mau="amber" gon caus={k.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false}
-                    onXoa={(m) => setLui((s) => s.map((x) => x.phanId === k.phanId ? { ...x, caus: x.caus.filter((y) => y !== m) } : x))} />
+                    onXoa={(m) => setLui((s) => s.map((x) => x.phanId === k.phanId ? { ...x, caus: x.caus.filter((y) => y !== m) } : x))}
+                    onDoi={(ds) => setLui((s) => s.map((x) => x.phanId === k.phanId ? { ...x, caus: ds } : x))} />
                 </div>
               ))}
           </div>
@@ -162,6 +163,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
                       <div className="mt-1.5 rounded-md border border-violet-100 bg-violet-50/30">
                         <KhoiCau tieuDe={`Ôn tập · ${c.caus.length} câu`} mau="sky" gon caus={c.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false} soMacDinh={SO_ON_TAP_MAC_DINH}
                           onXoa={(m) => xoaCau(u.nhom, m)}
+                          onDoi={(ds) => setChon((s) => s.map((x) => x.nhom === u.nhom ? { ...x, caus: ds } : x))}
                           onGoiY={(so) => goiYLai(u.nhom, so)}
                           onChonCau={() => setChonCau(u.nhom)} />
                       </div>

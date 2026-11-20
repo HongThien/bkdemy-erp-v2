@@ -78,6 +78,12 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const datBaiHoc = (p: CdhPhan, mas: string[]) => lam(async () => vaPhan(await hhDatBai(id, p.id, mas)))
   const doiChoHoc = (p: CdhPhan, i: number, j: number) => { const ms = (p.hoc ?? []).map((h) => h.ma_bai); if (j < 0 || j >= ms.length) return; [ms[i], ms[j]] = [ms[j], ms[i]]; datBaiHoc(p, ms) }
   const datCauHoc = (p: CdhPhan, phanId: string, mas: string[]) => lam(async () => { await hhDatCau(phanId, mas); await docLaiBuoi(p) })
+  // Đổi chỗ câu: vá thứ tự NGAY (bài + BTVN của bài), ghi nền; lỗi ⇒ đọc lại buổi (spec-builder §2.1b)
+  const doiNhanhHoc = (p: CdhPhan, phanId: string, mas: string[]) => {
+    const xep = <T extends { ma_cau: string }>(a: T[]) => mas.map((m) => a.find((x) => x.ma_cau === m)).filter(Boolean) as T[]
+    vaPhan({ ...p, hoc: (p.hoc ?? []).map((h) => h.phan_id === phanId ? { ...h, caus: xep(h.caus) } : h.btvn?.phan_id === phanId ? { ...h, btvn: { ...h.btvn, caus: xep(h.btvn.caus) } } : h) })
+    hhDatCau(phanId, mas).catch((e) => { setBao(loiDoc(e)); docLaiBuoi(p).catch(() => {}) })
+  }
   const goiYHoc = (p: CdhPhan, phanId: string, n: number) => lam(async () => {
     const ds = await hhGoiY(phanId, n || SO_CAU_MAC_DINH)
     if (!ds.length) { setBao('Bài học này hết câu khác để gợi ý.'); return }
@@ -181,7 +187,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                   {laGiaoTrinh && (p.hoc ?? []).map((h, i) => (
                     <HocCard key={h.phan_id} h={h} cfg={cfgCau} xemLop={xemLop} xemBtvn={xemBtvn} canUp={i > 0} canDown={i < (p.hoc ?? []).length - 1}
                       onMove={(d) => doiChoHoc(p, i, i + d)} onBo={() => datBaiHoc(p, (p.hoc ?? []).filter((x) => x.phan_id !== h.phan_id).map((x) => x.ma_bai))}
-                      onLt={() => batLtHoc(p, h)} onXoaCau={(phanId, mas) => datCauHoc(p, phanId, mas)} onGoiY={(phanId, n) => goiYHoc(p, phanId, n)}
+                      onLt={() => batLtHoc(p, h)} onXoaCau={(phanId, mas) => datCauHoc(p, phanId, mas)} onDoiCau={(phanId, mas) => doiNhanhHoc(p, phanId, mas)} onGoiY={(phanId, n) => goiYHoc(p, phanId, n)}
                       onChonCau={(btvn) => setChonCauHoc({ p, h, btvn })} />
                   ))}
                   {laGiaoTrinh && !(p.hoc ?? []).length && !p.mo_hinh.length && !p.khac?.bai.length && <div className="text-[12px] italic text-slate-400">Buổi trống — bấm “+ Bài học” (📖 Học: lý thuyết + bài luyện + BTVN) hoặc “+ Mô hình” (🌿 Luyện).</div>}
@@ -501,9 +507,9 @@ function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | nul
 }
 
 // ── HỌC (giáo trình Hình): 1 bài học trong buổi — lý thuyết (bật/tắt in) · bài luyện · BTVN ──
-function HocCard({ h, cfg, xemLop, xemBtvn, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onChonCau }: {
+function HocCard({ h, cfg, xemLop, xemBtvn, canUp, canDown, onMove, onBo, onLt, onXoaCau, onDoiCau, onGoiY, onChonCau }: {
   h: HhBai; cfg: CfgCau; xemLop: boolean; xemBtvn: boolean; canUp: boolean; canDown: boolean; onMove: (d: number) => void; onBo: () => void; onLt: () => void
-  onXoaCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
+  onXoaCau: (phanId: string, mas: string[]) => void; onDoiCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
 }) {
   // câu Học (hinh_hoc_cau_hoi) ⇒ khối câu chung của builder giáo trình (KhoiCau) — cùng control: dòng, 2 cột, chế độ hình, cỡ ảnh
   // + bai_y / cau_hoi_y / da_biet (Thùy 09/11): thiếu 3 cột này thì KhoiCau không nhận ra các ý CÙNG BÀI ⇒ hiện từng ý với ô "dòng" riêng,
@@ -533,7 +539,7 @@ function HocCard({ h, cfg, xemLop, xemBtvn, canUp, canDown, onMove, onBo, onLt, 
         {xemLop && <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={h.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false}
           soMacDinh={{ tu_luan: Math.max(h.caus.length, SO_CAU_MAC_DINH) }}
           onXoa={(m) => onXoaCau(h.phan_id, h.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
-          onDoi={(ds) => onXoaCau(h.phan_id, ds)}
+          onDoi={(ds) => onDoiCau(h.phan_id, ds)}
           onGoiY={(so) => onGoiY(h.phan_id, tong(so))} onChonCau={() => onChonCau(false)} />}
         {xemBtvn && !h.btvn && <div className="p-3 text-[12px] italic text-slate-400">Bài học này chưa có khối BTVN.</div>}
         {xemBtvn && h.btvn && (
@@ -541,7 +547,7 @@ function HocCard({ h, cfg, xemLop, xemBtvn, canUp, canDown, onMove, onBo, onLt, 
             <KhoiCau tieuDe="🏠 BTVN" mau="orange" caus={h.btvn.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false} btvn
               soMacDinh={{ tu_luan: Math.max(h.btvn.caus.length, SO_CAU_MAC_DINH) }}
               onXoa={(m) => onXoaCau(h.btvn!.phan_id, h.btvn!.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
-              onDoi={(ds) => onXoaCau(h.btvn!.phan_id, ds)}
+              onDoi={(ds) => onDoiCau(h.btvn!.phan_id, ds)}
               onGoiY={(so) => onGoiY(h.btvn!.phan_id, tong(so))} onChonCau={() => onChonCau(true)} />
           </div>
         )}

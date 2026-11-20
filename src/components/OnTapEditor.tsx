@@ -135,6 +135,13 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
     }),
   })
   const xoaDang = (maDang: string) => onChange({ ...config, dangs: config.dangs.filter((x) => x.ma_dang !== maDang) })
+  // Đổi chỗ câu (spec-builder §2.1b): chuyển câu `tu` tới vị trí của câu `den`
+  const chuyenCau = (maDang: string, tu: string, den: string) => {
+    const d = config.dangs.find((x) => x.ma_dang === maDang); if (!d) return
+    const ds = d.ma_caus.filter((m) => m !== tu), j = d.ma_caus.indexOf(den), i = d.ma_caus.indexOf(tu)
+    if (i < 0 || j < 0 || tu === den) return
+    ds.splice(j, 0, tu); doiCau(ds, maDang)
+  }
   const doiCau = (maCaus: string[], maDang: string) => onChange({ ...config, dangs: config.dangs.map((x) => (x.ma_dang === maDang ? { ...x, ma_caus: maCaus } : x)) })
   const themDangTuChon = (maDang: string) => onChange({ ...config, dangs: [...config.dangs, { ma_dang: maDang, ma_caus: [], nguon: 'tu_chon' as const }] })
 
@@ -177,8 +184,8 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
                     </div>
                     {caus.length > 0 ? (
                       <ol className="space-y-1">
-                        {caus.map((c) => (
-                          <OnTapCauRow key={c.ma_cau} c={c} line={d.linesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} col={d.colByCau?.[c.ma_cau] ?? 1}
+                        {caus.map((c, i) => (
+                          <OnTapCauRow key={c.ma_cau} c={c} list={d.ma_dang} truoc={caus[i - 1]?.ma_cau} sau={caus[i + 1]?.ma_cau} onChuyen={(tu, den) => chuyenCau(d.ma_dang, tu, den)} line={d.linesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} col={d.colByCau?.[c.ma_cau] ?? 1}
                             onLine={(n) => setLine(d.ma_dang, c.ma_cau, n)} onCol={(n) => setCol(d.ma_dang, c.ma_cau, n)} />
                         ))}
                       </ol>
@@ -208,6 +215,7 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
                 <TuChonDangBlock key={d.ma_dang} d={d} ten={tenDangCache.get(d.ma_dang) ?? d.ma_dang} cauCache={cauCache} cauTbl={cauTblCua(d.ma_dang)}
                   usedExcept={new Set([...usedInBuoi, ...otherDangCaus(d.ma_dang)])}
                   onApply={(maCaus) => doiCau(maCaus, d.ma_dang)}
+                  onChuyen={(tu, den) => chuyenCau(d.ma_dang, tu, den)}
                   onLine={(maCau, n) => setLine(d.ma_dang, maCau, n)}
                   onCol={(maCau, n) => setCol(d.ma_dang, maCau, n)}
                   onOpenPicker={() => setCauPicker({ maDang: d.ma_dang, selected: d.ma_caus, capped: false })}
@@ -241,9 +249,23 @@ export default function OnTapEditor({ nguonId, buoiId, lopId, khoi, mon, nhanh, 
 }
 
 // 1 dòng câu trong khối Đề xuất — dòng kẻ + cột (khối Tự chọn dùng chung layout qua TuChonDangBlock bên dưới).
-function OnTapCauRow({ c, line, col, onLine, onCol }: { c: CauHoi; line: number; col: number; onLine: (n: number) => void; onCol: (n: number) => void }) {
+let KEO_ON_TAP: { list: string; ma: string } | null = null   // câu đang kéo (chỉ thả trong cùng danh sách)
+function OnTapCauRow({ c, list, truoc, sau, onChuyen, line, col, onLine, onCol }: { c: CauHoi; list: string; truoc?: string; sau?: string; onChuyen: (tu: string, den: string) => void; line: number; col: number; onLine: (n: number) => void; onCol: (n: number) => void }) {
+  const [san, setSan] = useState(false)
+  const [dich, setDich] = useState(false)
   return (
-    <li className="flex items-center gap-2 rounded border border-slate-100 bg-slate-50/60 px-2 py-1">
+    <li draggable={san} title="Kéo thả để đổi chỗ câu"
+      onMouseDown={(e) => setSan(!(e.target as HTMLElement).closest('input,select,textarea,button,a,label'))}
+      onDragStart={(e) => { KEO_ON_TAP = { list, ma: c.ma_cau }; e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', c.ma_cau) }}
+      onDragEnd={() => { KEO_ON_TAP = null; setSan(false); setDich(false) }}
+      onDragOver={(e) => { if (KEO_ON_TAP?.list === list && KEO_ON_TAP.ma !== c.ma_cau) { e.preventDefault(); setDich(true) } }}
+      onDragLeave={() => setDich(false)}
+      onDrop={(e) => { e.preventDefault(); setDich(false); const k = KEO_ON_TAP; KEO_ON_TAP = null; if (k && k.list === list) onChuyen(k.ma, c.ma_cau) }}
+      className={`flex cursor-grab items-center gap-2 rounded border bg-slate-50/60 px-2 py-1 ${dich ? 'border-indigo-400 ring-2 ring-indigo-300' : 'border-slate-100'}`}>
+      <span className="flex shrink-0 flex-col">
+        <button disabled={!truoc} onClick={() => truoc && onChuyen(c.ma_cau, truoc)} className="text-[9px] leading-none text-slate-400 hover:text-indigo-600 disabled:opacity-20" title="Lên">▲</button>
+        <button disabled={!sau} onClick={() => sau && onChuyen(c.ma_cau, sau)} className="text-[9px] leading-none text-slate-400 hover:text-indigo-600 disabled:opacity-20" title="Xuống">▼</button>
+      </span>
       <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500">{c.ma_cau}</span>
       <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700"><MathText>{c.noi_dung}</MathText></span>
       <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
@@ -256,9 +278,9 @@ function OnTapCauRow({ c, line, col, onLine, onCol }: { c: CauHoi; line: number;
 
 // 1 khối DẠNG trong "Tự chọn thêm" — mirror DangCard (TaiLieuBuilder): số lượng theo loại câu + Gợi ý/
 // Chọn câu tay, KHÔNG cap số câu. Mỗi câu có dòng + cột như khối Đề xuất.
-function TuChonDangBlock({ d, ten, cauCache, cauTbl, usedExcept, onApply, onLine, onCol, onOpenPicker, onXoa }: {
+function TuChonDangBlock({ d, ten, cauCache, cauTbl, usedExcept, onApply, onChuyen, onLine, onCol, onOpenPicker, onXoa }: {
   d: OnTapDangConfig; ten: string; cauCache: Map<string, CauHoi>; cauTbl: string; usedExcept: Set<string>
-  onApply: (maCaus: string[]) => void; onLine: (maCau: string, n: number) => void; onCol: (maCau: string, n: number) => void
+  onApply: (maCaus: string[]) => void; onChuyen: (tu: string, den: string) => void; onLine: (maCau: string, n: number) => void; onCol: (maCau: string, n: number) => void
   onOpenPicker: () => void; onXoa: () => void
 }) {
   const [cnt, setCnt] = useState<Record<string, number>>({ ...DEFAULT_BTVN_COUNTS })
@@ -281,8 +303,8 @@ function TuChonDangBlock({ d, ten, cauCache, cauTbl, usedExcept, onApply, onLine
       </div>
       {caus.length > 0 ? (
         <ol className="mt-2 space-y-1">
-          {caus.map((c) => (
-            <OnTapCauRow key={c.ma_cau} c={c} line={d.linesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} col={d.colByCau?.[c.ma_cau] ?? 1}
+          {caus.map((c, i) => (
+            <OnTapCauRow key={c.ma_cau} c={c} list={d.ma_dang} truoc={caus[i - 1]?.ma_cau} sau={caus[i + 1]?.ma_cau} onChuyen={onChuyen} line={d.linesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} col={d.colByCau?.[c.ma_cau] ?? 1}
               onLine={(n) => onLine(c.ma_cau, n)} onCol={(n) => onCol(c.ma_cau, n)} />
           ))}
         </ol>

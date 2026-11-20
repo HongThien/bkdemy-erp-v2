@@ -160,6 +160,9 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
   const coNd = !!nd
   useEffect(() => { if (cheXem === 'btvn' && !laChuyenDe && coNd) lam(napKhung) }, [cheXem, coNd, filterBuoi]) // eslint-disable-line
   const luiOp = (f: () => Promise<unknown>) => lam(async () => { await f(); await napKhung(); markSaved() })
+  // Đổi chỗ câu luyện lại: vá khung NGAY, ghi nền; lỗi thì trả thứ tự cũ (spec-builder §2.1b)
+  const vaLui = (bId: string, luiBuoi: string, nhom: string, caus: string[]) => setKhung((k) => k ? { ...k, buoi: { ...k.buoi, [bId]: { ...k.buoi[bId], lui: k.buoi[bId].lui.map((l) => l.buoi === luiBuoi ? { ...l, nhom: l.nhom.map((o) => o.nhom === nhom ? { ...o, caus } : o) } : l) } } } : k)
+  const luiDoiNhanh = (bId: string, luiBuoi: string, nhom: string, caus: string[], cu: string[]) => { vaLui(bId, luiBuoi, nhom, caus); markSaved(); datCauLui(id, bId, luiBuoi, nhom, caus).catch((e) => { vaLui(bId, luiBuoi, nhom, cu); setBao(loiDoc(e)) }) }
 
   // ── Thao tác ──
   const datChon = (b: NdBuoi, chon: ChonBuoi) => lam(async () => { vaBuoi(await datBuoi(id, b.id, chon)); if (cheXem === 'btvn' && !laChuyenDe) await napKhung() })
@@ -309,7 +312,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onGoiYBuoi={() => luiOp(async () => { const n = await luiGoiYBuoi(id, b.id); if (!n) throw new Error('Không gợi ý được ô nào — các nhóm buổi trước đã hết câu chưa dùng trong giáo trình.') })}
                         onGoiY={(l, o, so) => luiOp(async () => { const ds = await luiGoiY(id, b.id, l.buoi, o.nhom, so); if (!ds.length) throw new Error('Nhóm này hết câu khác chưa dùng trong giáo trình.') })}
                         onXoa={(l, o, m) => luiOp(() => datCauLui(id, b.id, l.buoi, o.nhom, o.caus.filter((x) => x !== m)))}
-                        onDoi={(l, o, ds) => luiOp(() => datCauLui(id, b.id, l.buoi, o.nhom, ds))}
+                        onDoi={(l, o, ds) => luiDoiNhanh(b.id, l.buoi, o.nhom, ds, o.caus)}
                         onChon={(l, o) => setChonLui({ buoi: b, lui: l, o })}
                         onBoLe={(phanId) => luiOp(() => boPhanLui(phanId))} />
                     )}
