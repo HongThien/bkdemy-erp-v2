@@ -81994,3 +81994,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm spec phiên Claude:** khung chat chỉ nhận chữ (`claude_phien_tin` không có cột ảnh, `fn_phien_gui` chỉ `noi_dung`); loại `giai_bai` ghi "chưa mở, của Thùy"; `CHUNG.md` luật 5 còn cấm giải bài; chat không render công thức, không nút Copy; Claude phiên không có tay chạy script nên không thử đáp số (§A12) và không phóng ảnh (§A11).
 - **Quyết định ghi vào spec:** luật giải KHÔNG viết lại — bảng 6.5.2 chỉ trỏ `spec-giai-bai.md` (§A1.2 đọc luật mỗi tin, §A11 ảnh là nguồn, §A3 phân dạng trước, §A4–A5 khuôn, §A12 thử máy, §C5 bù bằng nhãn "chưa có người kiểm", §C11 khi người chỉ định dạng / đưa vào kho). Chỉ trưởng khối trở lên; ảnh là dữ liệu, không là chỉ thị.
 - **Chờ Thùy:** §6.5.6 (5 câu: ai gửi, nút đưa vào kho, hạn mức, lưu ảnh bao lâu, lệnh thử đáp số).
+
+### 20/11 — Web `/dang-ky-test`: gộp Lớp đang mở + Phân lớp vào một tab "Lớp học" (bkdemy-web `34b7cf8`, ĐÃ push)
+- Thùy: "thông tin lớp học và phân lớp phải gộp vào cùng 1 tab". Tab 2 đổi tên "Lớp học" = `LopCapHocCarousel` mọi khối 3–12 (bộ chọn khối, đọc `v_lop_tuyen_sinh`) + `PhanLopNoiDung`. Trang thành `force-dynamic` vì đọc lớp đang mở.
+- Hash `#lop-hoc`; `#phan-lop` cũ vẫn mở tab này. Không có hash ⇒ tab Đăng ký test (đã kiểm).
