@@ -27,6 +27,8 @@ import { tinhNhomBai } from './nhom-bai.mjs'
 const args = process.argv.slice(2)
 const dir = args.find((a, i) => !a.startsWith('--') && args[i - 1] !== '--model-lam')
 const GHI = args.includes('--ghi')
+// --chi-cau (21/11, CLC6): CHỈ ghi câu vào kho, KHÔNG dựng đề (đề còn thiếu hình ⇒ chưa dựng được). Câu trùng (theo nội dung) ⇒ lần dựng đề sau trỏ về câu cũ.
+const CHI_CAU = args.includes('--chi-cau')
 // Q9 (Thùy chốt 17/11): đề thi do dây chuyền Claude giải ⇒ nhãn 'ai' + 'claude_code', không còn ghi cứng 'nguoi'. Model làm bài khai bằng
 // --model-lam <id>; không khai thì để trống (§1.5: không đoán nhãn). Câu cũ vá riêng, chỉ với đề có tệp .soan.md làm nhân chứng.
 const iModel = args.indexOf('--model-lam')
@@ -88,9 +90,9 @@ async function upAnh(f, nhan) {
   const p = join(dir, 'img', f)
   if (!existsSync(p)) throw new Error(`thiếu file ảnh ${p}`)
   const ext = f.split('.').pop().toLowerCase()
-  return up('kho-anh', `nhap_kho/${thang}/${randomUUID()}_${sha8}_${nhan}.${ext}`, readFileSync(p), ext === 'png' ? 'image/png' : 'image/jpeg')
+  return up('kho-anh', `nhap_kho/${thang}/${randomUUID()}_${sha8}_${nhan}.${ext}`, readFileSync(p), ext === 'png' ? 'image/png' : ext === 'svg' ? 'image/svg+xml' : 'image/jpeg')
 }
-const laAnhDuoc = (f) => /\.(png|jpe?g)$/i.test(f)
+const laAnhDuoc = (f) => /\.(png|jpe?g|svg)$/i.test(f)  // svg = sơ đồ máy vẽ (CLC6, 21/11)
 
 // ── chạy ─────────────────────────────────────────────────────────────────────
 const c = new pg.Client({ connectionString: url })
@@ -127,7 +129,7 @@ try {
     const cauList = grp.map((q) => {
       const [anhDe, anhGiai] = anhCua.get(q)
       const base = { dang_chinh: q.dang || 'CHUA', khoi: String(de.khoi), loai_cau: q.loai_cau, noi_dung: q.noi_dung,
-        nguon: 'de_thi', nguon_giai: 'ai', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
+        nguon: 'de_thi', nguon_giai: 'ai', giai_method: 'claude_code', ai_model: MODEL_LAM, ten_de_goc: q.ten_de_goc ?? de.ten, anh_de: anhDe, anh_dap_an: anhGiai,
         anh_nguon: q.anh_nguon ?? null, // nhãn nguồn hình do _kho_insert.mjs ghi cùng transaction (mặc định 'goc' — Q10)
         dang_bai: q.dang_bai ?? null, dang_bai_chac: q.dang_bai_chac, dang_bai_ly_do: q.dang_bai_ly_do, dang_bai_chot: q.dang_bai_chot,
         chu_de: q.chu_de ?? null, chu_de_chot: q.chu_de_chot,
@@ -160,6 +162,13 @@ try {
     tk.nhan_hinh = (tk.nhan_hinh ?? 0) + (r.nhan_hinh ?? 0)
   }
 
+  if (CHI_CAU) {
+    console.log(`\n${GHI ? 'GHI THẬT (chỉ câu)' : 'CHẠY THỬ (chỉ câu, sẽ ROLLBACK)'} — "${de.ten}" · ${de.cau.length} câu`)
+    console.log(`  câu mới ${tk.moi} · trùng câu đã có ${tk.trung} · ở dạng chờ ${tk.dang_cho} · ảnh ${[...anhCua.values()].flat().filter(Boolean).length}`)
+    console.log(JSON.stringify({ ma_cau: de.cau.map((q) => ({ n: q.ma_nguon ?? `P${q.phan}.${q.so}`, ma: maCua.get(q).ma_cau })) }))
+    if (GHI) { await c.query('commit'); console.log('✔ Đã ghi câu.') } else { await c.query('rollback'); console.log('Đã ROLLBACK — DB không đổi.') }
+    await c.end(); process.exit(0)
+  }
   // đề
   const nhanhByCau = {}, canhBaoCau = {}, nhanCau = {} // nhanCau: nhãn GỐC của câu trên đề (vd "Bài 2a") — để đối chiếu đề gốc khi câu đã tách ý
   for (const q of de.cau) {
