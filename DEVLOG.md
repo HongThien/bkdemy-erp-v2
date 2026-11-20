@@ -81983,3 +81983,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Vì sao kết luận sai:** "DB 0 dòng đăng ký" + "repo máy không có file" bị coi là bằng chứng trang chưa có; cả hai đều không phải (repo máy cũ; 0 dòng chỉ là chưa ai đăng ký).
 - **Bài học:** trước khi dựng gì ở repo khác ⇒ `git fetch` + so `origin` trước. HANDOFF KHÔNG cần sửa ở điểm này.
 - **Còn lại:** phần mới thật sự của `bb9f0fe` = thanh 3 tab + tab Cẩm nang (17 ảnh) + tab Phân lớp; cần ghép lên trang đã có, chờ Thùy quyết.
+
+### 20/11 — Web `/dang-ky-test`: ghép 3 tab lên trang đang có (bkdemy-web `0f2f2d3`, ĐÃ push)
+- Đưa bản máy về `origin/master`, giữ nguyên `DangKyTestForm` (form 15/10) làm tab 1; thêm khung `components/dang-ky-test/TrangDangKyTest.tsx` (3 tab + tab feedback ẩn), tab Cẩm nang (17 ảnh `public/cam-nang/`).
+- Tab Phân lớp: tách thân trang `/cach-bk-hoat-dong/phan-lop` ra `components/PhanLopNoiDung.tsx`, hai nơi dùng chung (đọc `phan-lop.json`). Lý do không link sang trang kia: `proxy.ts` chặn nó trên domain thật.
+- Bỏ so với nháp `bb9f0fe`: form riêng, `?lop=`, `noindex`, ẩn nút nổi Zalo. Nháp còn ở nhánh máy `nhap-tab-2011` (chưa xoá).
+- Đã thử localhost 375px: đổi 3 tab, 17 ảnh, bảng 4 mức + 11 hỏi đáp, trang phân lớp gốc vẫn đủ; `tsc`/`eslint`/`next build` qua. CHƯA thử: form trên máy (thiếu `NEXT_PUBLIC_DANG_KY_TEST_URL` trong `.env.local` ⇒ hiện "tạm đóng"), và bản deploy thật.
