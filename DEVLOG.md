@@ -82046,3 +82046,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 20/11 21:48 — HANDOFF: distill đợt gộp spec 17–20/11 + #19 Tài chính; Thùy lệnh "ghi handoff rồi push đi"
 - HANDOFF mục gộp spec viết lại: 13/20 đã chốt, #12 chờ lưu trữ nguồn, #9/#14–#17 chưa làm, #19 đang chờ 5 câu §I.3.
 - Đẩy cùng lượt: Phần I spec-tai-chinh theo số TOT + sửa quỹ dự phòng không tính chi (lượt trước giữ trên máy, nay Thùy cho push).
+
+### 21/11 — Fill kho K6 đích 30 câu/dạng: 6 dạng đủ; mở đường "Claude kiểm rồi tự duyệt" cho clone (Q11)
+- Đo K6 (đích 30): 171 dạng, 68 đủ, 103 thiếu 1.880 câu (80 dạng có ≥5 gốc = clone được 1.228 câu; 23 dạng 0–4 câu phải nhập gốc 652 câu).
+- Lô thử: bộ sinh bằng code (đáp số tính bằng code) cho UCLN/BCNN định nghĩa (NDB00401/08), UC (00400), BC (00407), BCNN 3 số (00414), nhân hai số nguyên (01303) → `hangdoi-clone.mjs --ghi` vào bảng nháp (55 câu). Sai 1 lần: chọn gốc là trắc nghiệm cho NDB00408 → yêu cầu đóng `--bo`, đặt lại gốc TLN.
+- MỚI `scripts/kho/clone/duyet-nhap-clone.mjs`: nháp `claude_code_batch` có bộ kiểm độc lập theo dạng (KIEM: đọc lại đề từ chữ, tính lại, so đáp án + kết luận lời giải) → qua `cong-ghi.xetGoi` → chèn dạng chờ, `parent_ma_cau`, `da_duyet=true`, `duyet_nguon='ai'`, xoá dòng nháp. Dạng chưa có bộ kiểm để nguyên nháp (≈5.190 nháp cũ + 2.217 nháp gốc chưa gán dạng không đụng). Thêm dạng = thêm 1 mục KIEM.
+- Kết quả: 6 dạng đều `dung_duoc = 30`. Chưa làm: 74 dạng clone còn lại cần bộ sinh + bộ kiểm riêng (hoặc Opus giải mù) cho dạng lập luận.
