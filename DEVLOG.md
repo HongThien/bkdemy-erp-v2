@@ -81977,3 +81977,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm:** localhost 375px — tải lịch thật, tìm trường không dấu, khoá giờ chồng 2 môn, báo giờ đón, màn cảm ơn, đổi tab giữ form, cẩm nang nhảy mục + phóng to; `tsc`, `eslint`, `next build` qua. **CHƯA ghi thật** (màn cảm ơn thử qua ô bẫy bot để không sinh ứng viên giả).
 - **Kèm:** `.claude/launch.json` thêm cấu hình `bkdemy-web-nha` (cổng 3012) — chưa commit vì file đang có sửa dở của phiên khác.
 - **Chờ Thùy:** push + deploy web · 1 lượt đăng ký thật rồi xem ở Tuyển sinh → Lịch test · link Zalo thật của trung tâm (`site.json` đang là `https://zalo.me` trần) · 2 lỗi trong PDF cẩm nang (QG-A ghi học bù "trang 12" nhưng là trang 11; bìa sau QR đè số điện thoại).
+
+### 20/11 — ĐÍNH CHÍNH mục "Trang `/dang-ky-test` trên web" ở trên
+- **Sai:** mục trên ghi HANDOFF nói sai "web đã push". Thực tế HANDOFF ĐÚNG — trang `/dang-ky-test` đã có trên `origin/master` của `bkdemy-web` từ 15/10 (commit `5ef2a74`, `components/DangKyTestForm.tsx`). Bản checkout trên máy này chậm 22 commit, phiên không `git fetch` trước khi dựng ⇒ dựng trùng một trang đã có (commit máy `bb9f0fe`, CHƯA push — push bị từ chối).
+- **Vì sao kết luận sai:** "DB 0 dòng đăng ký" + "repo máy không có file" bị coi là bằng chứng trang chưa có; cả hai đều không phải (repo máy cũ; 0 dòng chỉ là chưa ai đăng ký).
+- **Bài học:** trước khi dựng gì ở repo khác ⇒ `git fetch` + so `origin` trước. HANDOFF KHÔNG cần sửa ở điểm này.
+- **Còn lại:** phần mới thật sự của `bb9f0fe` = thanh 3 tab + tab Cẩm nang (17 ảnh) + tab Phân lớp; cần ghép lên trang đã có, chờ Thùy quyết.
