@@ -54,6 +54,30 @@ const KIEM = {
     const L = lcm(lcm(+m[1], +m[2]), +m[3]), cuoi = cuoiLoiGiai(lg, /Vậy\s*x=(\d+)/)
     return [da.trim() !== String(L) && `đáp án ${da} ≠ ${L}`, cuoi !== String(L) && `lời giải kết luận ${cuoi} ≠ ${L}`].filter(Boolean)
   },
+  NDB01622: (nd, da, lg) => { // số ước của N (N viết thẳng hoặc dạng p^a.q^b)
+    const m = bo$(nd).match(/ướcsố\?([\d^.]+)$/); if (!m) return ['không đọc được đề']
+    const n = Function(`"use strict";return (${m[1].replace(/\^/g, '**').replace(/\./g, '*')})`)(); let t = 0; for (let i = 1; i <= n; i++) if (n % i === 0) t++
+    const cuoi = cuoiLoiGiai(lg, /có\s*(\d+)\s*ước/)
+    return [da.trim() !== String(t) && `đáp án ${da} ≠ ${t}`, cuoi !== String(t) && `lời giải kết luận ${cuoi} ≠ ${t}`].filter(Boolean)
+  },
+  NDB01291: (nd, da, lg) => { // so sánh hai số nguyên
+    const m = bo$(nd).match(/:(-?\d+)và(-?\d+)\.$/); if (!m) return ['không đọc được đề']
+    const x = +m[1], y = +m[2], s = x < y ? '<' : x > y ? '>' : '='
+    const cuoi = cuoiLoiGiai(lg, /-?\d+([<>=])-?\d+\s*$/m)
+    return [da.trim() !== s && `đáp án ${da} ≠ ${s}`, cuoi !== s && `lời giải kết luận ${cuoi} ≠ ${s}`].filter(Boolean)
+  },
+  NDB01302: (nd, da, lg) => { // bỏ dấu ngoặc rồi tính
+    const m = bo$(nd).match(/tính:(.+)\.$/); if (!m || !/^[\d+\-()[\]]+$/.test(m[1])) return ['không đọc được đề']
+    const v = Function(`"use strict";return (${m[1].replace(/\[/g, '(').replace(/\]/g, ')')})`)()
+    const cuoi = cuoiLoiGiai(lg, /=(-?\d+)\s*$/m)
+    return [da.trim() !== String(v) && `đáp án ${da} ≠ ${v}`, cuoi !== String(v) && `lời giải kết luận ${cuoi} ≠ ${v}`].filter(Boolean)
+  },
+  NDB01362: (nd, da, lg) => { // (x-a)(bx+c)=0, nghiệm tự nhiên
+    const fs = [...bo$(nd).matchAll(/\((\d*)x([+-])(\d+)\)/g)]; if (fs.length !== 2 || !/=0$/.test(bo$(nd))) return ['không đọc được đề']
+    const nghiem = fs.map((f) => (f[2] === '+' ? -1 : 1) * +f[3] / (+f[1] || 1)).filter((r) => Number.isInteger(r) && r >= 0)
+    const cuoi = cuoiLoiGiai(lg, /Vậy\s*x=(\d+)/)
+    return [nghiem.length !== 1 && `không đúng 1 nghiệm tự nhiên (${nghiem})`, da.trim() !== String(nghiem[0]) && `đáp án ${da} ≠ ${nghiem[0]}`, cuoi !== String(nghiem[0]) && `lời giải kết luận ${cuoi} ≠ ${nghiem[0]}`].filter(Boolean)
+  },
   NDB01303: (nd, da, lg) => { // Tính: (-a).b — nhân hai số nguyên
     const m = bo$(nd).match(/^Tính:(\(?-?\d+\)?)\.(\(?-?\d+\)?)\.$/); if (!m) return ['không đọc được đề']
     const x = so(m[1].replace(/[()]/g, '')), y = so(m[2].replace(/[()]/g, '')), p = x * y

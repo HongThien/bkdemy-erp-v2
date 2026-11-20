@@ -82052,3 +82052,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Lô thử: bộ sinh bằng code (đáp số tính bằng code) cho UCLN/BCNN định nghĩa (NDB00401/08), UC (00400), BC (00407), BCNN 3 số (00414), nhân hai số nguyên (01303) → `hangdoi-clone.mjs --ghi` vào bảng nháp (55 câu). Sai 1 lần: chọn gốc là trắc nghiệm cho NDB00408 → yêu cầu đóng `--bo`, đặt lại gốc TLN.
 - MỚI `scripts/kho/clone/duyet-nhap-clone.mjs`: nháp `claude_code_batch` có bộ kiểm độc lập theo dạng (KIEM: đọc lại đề từ chữ, tính lại, so đáp án + kết luận lời giải) → qua `cong-ghi.xetGoi` → chèn dạng chờ, `parent_ma_cau`, `da_duyet=true`, `duyet_nguon='ai'`, xoá dòng nháp. Dạng chưa có bộ kiểm để nguyên nháp (≈5.190 nháp cũ + 2.217 nháp gốc chưa gán dạng không đụng). Thêm dạng = thêm 1 mục KIEM.
 - Kết quả: 6 dạng đều `dung_duoc = 30`. Chưa làm: 74 dạng clone còn lại cần bộ sinh + bộ kiểm riêng (hoặc Opus giải mù) cho dạng lập luận.
+
+### 21/11 (lô 3) — K6 đích 30: thêm 4 dạng tính được bằng code (NDB01622 số ước · 01291 so sánh số nguyên · 01302 bỏ ngoặc · 01362 tích bằng 0), 81 câu clone vào kho qua `duyet-nhap-clone.mjs` (KIEM thêm 4 mục). Đủ 30/dạng.
