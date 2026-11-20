@@ -81964,3 +81964,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm:** tsc sạch ở file này; `fn_mtt_viec_dang` gọi bằng vai học sinh (trong transaction, rollback) ~55 ms, ra đúng dạng. CHƯA mở trên app HS bằng tài khoản thật.
 - **Ghi chú:** `check:style-hs` đang RỚT ở `CaBoTroHS.tsx` (3 màu gõ tay > mốc 2) — có sẵn từ commit của phiên khác, không thuộc lượt này. `moTaViec` trong `src/lib/mucTieuTuan.ts` không còn ai gọi (chưa xoá).
 - **Chờ:** Thùy deploy app HS.
+
+### 20/11 — Builder: đổi chỗ câu · Hình tách Trên lớp/BTVN · ET làm trước khi HS đến (Thùy yêu cầu 3 việc)
+- **Làm:** (1) `KhoiCau` (BuilderBanDoMoi.tsx) thêm prop `onDoi` + ▲▼ đổi chỗ câu (bài nhiều ý đi cả khối); nối ở dạng bài · câu chưa phân · BTVN nhóm · luyện lại buổi trước, và ở HocCard Hình. (2) Builder Hình giáo trình có công tắc 📘 Trên lớp / 📝 BTVN như Đại (Trên lớp: bài học luyện + mô hình/bài; BTVN: khối BTVN bài học + BTVN mô hình). (3) ET bản đồ mới: mig `202611200927` `fn_et_ds_hs_cua_buoi(lop, ngày)` trả CẢ LỚP + điểm danh (NULL = chưa điểm danh); `ETBdmEditor` hiện ✅/⏳/⛔, rải mã đề được ngay cả khi chưa ai đến (em vắng bỏ qua), nút In = chỉ em CÓ MẶT (chưa ai có mặt thì hỏi in tạm cho em chưa điểm danh).
+- **Kiểm:** tsc chỉ còn lỗi cũ `pdfRender.ts`; `check:kien-truc` không tăng mục nào; hàm DB gọi được. CHƯA mở trên app bằng tài khoản thật.
+- **Sai/ghi chú:** `npm run migrate` không `--only` định áp 29 file treo của người khác và dừng ở file đầu (thiếu quyền) — chưa áp gì; lần sau luôn `--only`. Đổi chỗ câu chưa gắn vào `OnTapEditor`/`SoanBaiSauGio` (chỉ builder giáo trình).

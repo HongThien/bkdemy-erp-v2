@@ -298,6 +298,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onDoiDangBai={(ds) => datChon(b, chonCuaBuoi(b).map((x) => x.nhom === n.id ? { ...x, dang_bai: ds } : x))}
                         onCo={batCo}
                         onXoaCau={(phanId, caus, m) => ghiCau(phanId, caus.filter((x) => x !== m))}
+                        onDoiCau={(phanId, caus) => ghiCau(phanId, caus)}
                         onGoiY={(phanId, dangBai, so, hienCo) => goiYLai(b, n, phanId, dangBai, so, hienCo)}
                         onChonCau={(phanId, caus, uuTien) => setChonCau({ buoi: b, nhom: n, phanId, caus, uuTien })} />
                     ))}
@@ -306,6 +307,7 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
                         onGoiYBuoi={() => luiOp(async () => { const n = await luiGoiYBuoi(id, b.id); if (!n) throw new Error('Không gợi ý được ô nào — các nhóm buổi trước đã hết câu chưa dùng trong giáo trình.') })}
                         onGoiY={(l, o, so) => luiOp(async () => { const ds = await luiGoiY(id, b.id, l.buoi, o.nhom, so); if (!ds.length) throw new Error('Nhóm này hết câu khác chưa dùng trong giáo trình.') })}
                         onXoa={(l, o, m) => luiOp(() => datCauLui(id, b.id, l.buoi, o.nhom, o.caus.filter((x) => x !== m)))}
+                        onDoi={(l, o, ds) => luiOp(() => datCauLui(id, b.id, l.buoi, o.nhom, ds))}
                         onChon={(l, o) => setChonLui({ buoi: b, lui: l, o })}
                         onBoLe={(phanId) => luiOp(() => boPhanLui(phanId))} />
                     )}
@@ -365,11 +367,12 @@ export type CfgCau = {
 
 // ── 1 NHÓM trong buổi: LT nhóm → dạng bài (LT · ví dụ · bài luyện) → chưa phân → BTVN nhóm ──
 // Chuyên đề (Thùy 21/10): không phải giáo trình — KHÔNG có trên lớp / về nhà ⇒ ẩn khối BTVN, câu gọi chung "Bài tập".
-function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onGoiY, onChonCau }: {
+function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, canDown, onMove, onBoNhom, onDoiDangBai, onCo, onXoaCau, onDoiCau, onGoiY, onChonCau }: {
   n: NdNhom; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau; laChuyenDe?: boolean; cheXem: CheXem; canUp: boolean; canDown: boolean
   onMove: (dir: -1 | 1) => void; onBoNhom: () => void; onDoiDangBai: (ds: string[]) => void
   onCo: (phanId: string, patch: { hien_lt?: boolean; hien_vi_du?: boolean }) => void
   onXoaCau: (phanId: string, caus: string[], m: string) => void
+  onDoiCau: (phanId: string, caus: string[]) => void
   onGoiY: (phanId: string, dangBai: string[] | null, so: Record<string, number>, hienCo: string[]) => void
   onChonCau: (phanId: string, caus: string[], uuTien: string | null) => void
 }) {
@@ -421,7 +424,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
                 </span>
               </div>
               <KhoiCau tieuDe={BAI} mau="sky" caus={d.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUYEN_MAC_DINH}
-                onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)}
+                onXoa={(m) => onXoaCau(d.phan_id, d.caus, m)} onDoi={(ds) => onDoiCau(d.phan_id, ds)}
                 onGoiY={(so) => onGoiY(d.phan_id, [d.id], so, d.caus)}
                 onChonCau={() => onChonCau(d.phan_id, d.caus, d.id)} />
             </div>
@@ -431,7 +434,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
           <div className="rounded-lg border border-slate-200">
             <KhoiCau tieuDe={n.dang_bai.length ? `${BAI} · câu chưa phân dạng bài` : `${BAI} (nhóm chưa chia dạng bài)`} mau="sky" caus={n.chua_phan.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem}
               soMacDinh={n.dang_bai.length ? undefined : { trac_nghiem: 3, tra_loi_ngan: 2, tu_luan: 1 }}
-              onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)}
+              onXoa={(m) => onXoaCau(n.chua_phan!.phan_id, n.chua_phan!.caus, m)} onDoi={(ds) => onDoiCau(n.chua_phan!.phan_id, ds)}
               onGoiY={n.dang_bai.length ? undefined : (so) => onGoiY(n.chua_phan!.phan_id, null, so, n.chua_phan!.caus)}
               onChonCau={() => onChonCau(n.chua_phan!.phan_id, n.chua_phan!.caus, null)} />
           </div>
@@ -440,7 +443,7 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
         {xemBtvn && n.btvn && (
           <div className="rounded-lg border border-orange-200 bg-orange-50/30">
             <KhoiCau tieuDe="📝 BTVN của nhóm" mau="orange" btvn caus={n.btvn.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_BTVN_MAC_DINH}
-              onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)}
+              onXoa={(m) => onXoaCau(n.btvn!.phan_id, n.btvn!.caus, m)} onDoi={(ds) => onDoiCau(n.btvn!.phan_id, ds)}
               onGoiY={(so) => onGoiY(n.btvn!.phan_id, n.dang_bai.length ? ids : null, so, n.btvn!.caus)}
               onChonCau={() => onChonCau(n.btvn!.phan_id, n.btvn!.caus, null)} />
           </div>
@@ -452,11 +455,12 @@ function NhomCard({ n, chiXem, cauMap, cfg, laChuyenDe = false, cheXem, canUp, c
 
 // ── BTVN 3 phần (Thùy 13/11): ② luyện lại BUỔI TRƯỚC · ③ luyện lại BUỔI TRƯỚC NỮA — bày sẵn nhóm của buổi đó, GV Gợi ý / Chọn câu ──
 // Số câu mặc định 3 · 2 (cùng 5 câu của buổi này = 5–3–2) chỉ là gợi ý: GV đổi số từng loại rồi ↻ Gợi ý, hoặc ✎ Chọn câu.
-function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onChon, onBoLe }: {
+function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onDoi, onChon, onBoLe }: {
   kb: KhungBtvn['buoi'][string] | undefined; chiXem: boolean; cauMap: Map<string, CauHoi>; cfg: CfgCau
   onGoiYBuoi: () => void
   onGoiY: (l: KhungLui, o: KhungO, so: Record<string, number>) => void
   onXoa: (l: KhungLui, o: KhungO, m: string) => void
+  onDoi: (l: KhungLui, o: KhungO, caus: string[]) => void
   onChon: (l: KhungLui, o: KhungO) => void
   onBoLe: (phanId: string) => void
 }) {
@@ -478,7 +482,7 @@ function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onChon, o
             {l.nhom.map((o) => (
               <div key={o.nhom} className="rounded-lg border border-amber-200 bg-amber-50/30">
                 <KhoiCau tieuDe={`${o.ten ?? o.nhom}${o.dang_bai.length ? ` · ${o.dang_bai.length} dạng bài` : ''}`} mau="amber" btvn caus={o.caus} cauMap={cauMap} cfg={cfg} chiXem={chiXem} soMacDinh={SO_LUI_MAC_DINH[l.bac]}
-                  onXoa={(m) => onXoa(l, o, m)} onGoiY={(so) => onGoiY(l, o, so)} onChonCau={() => onChon(l, o)} />
+                  onXoa={(m) => onXoa(l, o, m)} onDoi={(ds) => onDoi(l, o, ds)} onGoiY={(so) => onGoiY(l, o, so)} onChonCau={() => onChon(l, o)} />
               </div>
             ))}
           </div>
@@ -505,12 +509,14 @@ function BtvnLui({ kb, chiXem, cauMap, cfg, onGoiYBuoi, onGoiY, onXoa, onChon, o
 }
 
 // ── 1 khối câu (bài luyện / BTVN / chưa khớp): số lượng theo loại + Gợi ý + Chọn câu + danh sách câu ──
-export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soMacDinh, onXoa, onGoiY, onChonCau }: {
+export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soMacDinh, onXoa, onDoi, onGoiY, onChonCau }: {
   tieuDe: string; mau: 'sky' | 'orange' | 'amber'; caus: string[]; cauMap: Map<string, CauHoi>; cfg: CfgCau; chiXem: boolean; btvn?: boolean
   /** true = chỉ số lượng + Gợi ý + Chọn câu + ✕ (không cột/chế độ hình/mm ảnh — nơi dùng không lưu cấu hình in theo câu). */
   gon?: boolean
   soMacDinh?: Record<string, number>
   onXoa: (m: string) => void; onGoiY?: (so: Record<string, number>) => void; onChonCau?: () => void
+  /** Đổi chỗ câu (Thùy 20/11): trả về danh sách mã câu theo thứ tự mới. Bài nhiều ý (khúc) di chuyển cả khối. */
+  onDoi?: (caus: string[]) => void
 }) {
   const [so, setSo] = useState<Record<string, number>>({ ...(soMacDinh ?? {}) })
   const mauChu = mau === 'sky' ? 'text-sky-700' : mau === 'orange' ? 'text-orange-600' : 'text-amber-700'
@@ -524,6 +530,23 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
     }
     return { dau, boQua }
   })()
+  // Đơn vị di chuyển = 1 câu lẻ hoặc cả khúc ý; ▲▼ đổi chỗ với đơn vị kề (giữ nguyên mã gốc, chỉ đổi thứ tự).
+  const doiCho = (i: number, dir: -1 | 1) => {
+    if (!onDoi) return
+    const dv: [number, number][] = []
+    for (let t = 0; t < caus.length; t++) { const k = khuc.dau.get(t); dv.push([t, k ? k.cuoi : t]); if (k) t = k.cuoi }
+    const a = dv.findIndex(([d]) => d === i), b = a + dir
+    if (a < 0 || b < 0 || b >= dv.length) return
+    const ds = dv.map(([d, c]) => caus.slice(d, c + 1))
+    ;[ds[a], ds[b]] = [ds[b], ds[a]]
+    onDoi(ds.flat())
+  }
+  const nutDoi = (i: number, cuoi: number) => !chiXem && onDoi && caus.length > 1 && (
+    <span className="flex shrink-0 items-center gap-0.5">
+      <button onClick={() => doiCho(i, -1)} disabled={i === 0} title="Đưa lên" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▲</button>
+      <button onClick={() => doiCho(i, 1)} disabled={cuoi >= caus.length - 1} title="Đưa xuống" className="text-[11px] text-slate-400 hover:text-indigo-600 disabled:opacity-25">▼</button>
+    </span>
+  )
   return (
     <div className="p-3">
       <div className="flex flex-wrap items-center gap-2 text-[12px]">
@@ -555,6 +578,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                       <span className="text-[12px] font-bold text-slate-400">{i + 1}–{k.cuoi + 1}.</span>
                       <span className="font-mono text-[11px] font-semibold text-teal-700">{c.bai_y}</span>
                       <span className="text-[11px] text-slate-400">bài {ys.length} ý</span>
+                      {nutDoi(i, k.cuoi)}
                       {/* Thùy 09/11: ô trống là của CẢ BÀI (1 khối dòng kẻ sau ý cuối) ⇒ 1 ô "dòng" cho bài, lưu ở ý đầu (`m`) */}
                       {!chiXem && btvn && (
                         <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết cả bài (in 1 khối sau ý cuối)">dòng cả bài
@@ -604,6 +628,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                         {!gon && <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />}
                         {!gon && c?.anh_de && <CheDoHinhBtn cur={cfg.cheDo[m] ?? 'hien'} onChange={(v) => cfg.onCheDo(m, v)} />}
                         {!gon && c?.anh_de && <AnhMmCtl ma={m} url={c.anh_de} />}
+                        {nutDoi(i, i)}
                         <button onClick={() => onXoa(m)} className="shrink-0 text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                       </span>
                     )}

@@ -23,7 +23,7 @@ import {
 } from '../../../lib/tailieu'
 import { oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh } from '../../../lib/made'
 import { listLop, type Lop } from '../../../lib/nhansu'
-import { hsCoMatCuaBuoi } from '../../../lib/gami'
+import { hsCuaBuoiEt, type HsBuoiEt } from '../../../lib/gami'
 import { LOAI_CAU, type CauHoi } from '../../../lib/kho/api'
 import { cayChon, etDeXuat, etViTri, etMaDe, goiYDangBai, loiDoc, type ChonBuoi } from '../../../lib/tailieuBdm'
 import { MathText } from '../../kho/ui'
@@ -82,7 +82,8 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const nhRef = useRef<Record<string, string>>({ ...(nhap0?.nh ?? {}) })  // mã câu → nhánh kho (chỉ câu khác Đại) — lưu vào nhanhByCau
   const [chonCau, setChonCau] = useState<number | null>(null)             // ✎ chọn tay câu của 1 hàng
   const [chonVar, setChonVar] = useState<{ base: string; v: number; db: string; form: ETFormKind } | null>(null)
-  const [roster, setRoster] = useState<{ id: string; ho_ten: string; ma_hs: string | null }[]>([])
+  // Cả lớp + trạng thái điểm danh (Thùy 20/11: ET làm trước khi HS đến; rải mã đề cả lớp, IN chỉ em có mặt)
+  const [roster, setRoster] = useState<HsBuoiEt[]>([])
   const [classPrint, setClassPrint] = useState<{ id: string; ho_ten: string; maDe: number }[] | null>(null)
   const [printing, setPrinting] = useState(false)
   const [savedId, setSavedId] = useState<string | null>(et?.id ?? nhap0?.savedId ?? null)
@@ -240,7 +241,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   useEffect(() => {
     if (!lopId || !ngay) { setRoster([]); return }
     let alive = true
-    hsCoMatCuaBuoi(lopId, ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
+    hsCuaBuoiEt(lopId, ngay).then((r) => { if (alive) setRoster(r) }).catch(() => { if (alive) setRoster([]) })
     return () => { alive = false }
   }, [lopId, ngay])
 
@@ -363,8 +364,12 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
   const hinhDu = hinh.picks.every((p) => { const m = hinh.maDe[sigPickHinh(p)]; return !!(m?.[0] && m[1]) })
   const deReady = (baseRows().length > 0 || hinh.picks.length > 0) && (baseRows().length === 0 || (!!ch.etMaDe && oTrong().length === 0)) && hinhDu
   const setHsMa = (hsId: string, maDe: number) => setCh((c) => ({ ...c, hsMaDe: { ...(c.hsMaDe ?? {}), [hsId]: maDe } }))
-  const raiTuDong = () => setCh((c) => { const m = { ...(c.hsMaDe ?? {}) }; roster.forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); return { ...c, hsMaDe: m } })
-  async function inTheoHS(list: typeof roster) {
+  const vang = (hs: HsBuoiEt) => hs.diem_danh === 'vang' || hs.diem_danh === 'vang_phep'
+  const coMat = roster.filter((hs) => hs.diem_danh === 'co_mat')
+  const chuaDanh = roster.filter((hs) => hs.diem_danh === null)
+  // Rải xoay vòng 1·2·3 cho em CHƯA vắng (em vắng để trống — gán tay khi học bù)
+  const raiTuDong = () => setCh((c) => { const m = { ...(c.hsMaDe ?? {}) }; roster.filter((hs) => !vang(hs)).forEach((hs, i) => { m[hs.id] = (i % 3) + 1 }); return { ...c, hsMaDe: m } })
+  async function inTheoHS(list: HsBuoiEt[]) {
     const id = await persistET(); if (!id) return
     setClassPrint(list.map((hs) => ({ id: hs.id, ho_ten: hs.ho_ten, maDe: ch.hsMaDe?.[hs.id] ?? 1 })))
   }
@@ -752,17 +757,21 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
             {!deReady ? (
               <p className="text-[12px] italic text-slate-400">Bấm <b>🎲 Sinh đề 2 &amp; 3</b> (đủ 3 mã đề, không còn ô trống) rồi gán mã đề cho từng HS ở đây.</p>
             ) : roster.length === 0 ? (
-              <p className="text-[12px] italic text-slate-400">Chưa có HS <b>điểm danh có mặt</b> cho buổi này. Điểm danh xong (có mặt) sẽ hiện danh sách.</p>
+              <p className="text-[12px] italic text-slate-400">Chưa chọn lớp / ngày, hoặc lớp chưa có học sinh đang học.</p>
             ) : (<>
               <div className="mb-2 flex items-center gap-2">
                 <button onClick={raiTuDong} className="rounded-md border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-medium text-violet-700 hover:bg-violet-100">🎲 Rải tự động</button>
-                <button onClick={() => inTheoHS(roster)} className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 Xem &amp; In cả lớp</button>
+                {coMat.length > 0
+                  ? <button onClick={() => inTheoHS(coMat)} title="In phiếu cho các em ĐÃ ĐIỂM DANH CÓ MẶT" className="ml-auto rounded-md bg-indigo-600 px-2.5 py-1 text-[11px] font-medium text-white hover:bg-indigo-500">🖨 In {coMat.length} em có mặt</button>
+                  : <button onClick={() => { if (window.confirm(`Chưa em nào được điểm danh có mặt. In phiếu cho ${chuaDanh.length} em chưa điểm danh?`)) inTheoHS(chuaDanh) }} disabled={!chuaDanh.length} title="Chưa có em nào có mặt — chờ điểm danh, hoặc in tạm cho các em chưa điểm danh" className="ml-auto rounded-md border border-indigo-300 bg-white px-2.5 py-1 text-[11px] font-medium text-indigo-700 hover:bg-indigo-50 disabled:opacity-40">🖨 In (chưa điểm danh)</button>}
               </div>
+              <p className="mb-2 text-[11px] text-slate-500">✅ {coMat.length} có mặt · ⏳ {chuaDanh.length} chưa điểm danh · ⛔ {roster.length - coMat.length - chuaDanh.length} vắng</p>
               <ol className="space-y-1">
                 {roster.map((hs) => { const cur = ch.hsMaDe?.[hs.id]
                   return (
-                    <li key={hs.id} className="flex items-center gap-2 rounded-md border border-slate-100 px-2 py-1.5">
-                      <span className="min-w-0 flex-1 truncate text-[12px] text-slate-700" title={hs.ma_hs ?? ''}>{hs.ho_ten}</span>
+                    <li key={hs.id} className={`flex items-center gap-2 rounded-md border px-2 py-1.5 ${vang(hs) ? 'border-rose-100 bg-rose-50/40' : 'border-slate-100'}`}>
+                      <span className="shrink-0 text-[12px]" title={hs.diem_danh === 'co_mat' ? 'Có mặt' : vang(hs) ? 'Vắng' : 'Chưa điểm danh'}>{hs.diem_danh === 'co_mat' ? '✅' : vang(hs) ? '⛔' : '⏳'}</span>
+                      <span className={`min-w-0 flex-1 truncate text-[12px] ${vang(hs) ? 'text-slate-400' : 'text-slate-700'}`} title={hs.ma_hs ?? ''}>{hs.ho_ten}</span>
                       <div className="flex gap-0.5">
                         {[1, 2, 3].map((n) => (
                           <button key={n} onClick={() => setHsMa(hs.id, n)} title={`Mã đề ${n}`}
@@ -774,7 +783,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                   )
                 })}
               </ol>
-              <p className="mt-2 text-[11px] text-slate-400">Rải tự động = xoay vòng 1·2·3 (HS cạnh nhau khác mã). Gán xong bấm <b>Lưu ET</b> để dùng lại khi học bù.</p>
+              <p className="mt-2 text-[11px] text-slate-400">Rải tự động = xoay vòng 1·2·3 cho các em chưa vắng. Làm ET trước khi HS đến được; <b>nút In chỉ in các em có mặt</b>. Gán xong bấm <b>Lưu ET</b> để dùng lại khi học bù.</p>
             </>)}
           </div>
         )}

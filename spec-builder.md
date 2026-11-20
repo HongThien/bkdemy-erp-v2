@@ -187,6 +187,7 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 - Trigger `_et_khong_tron_ban_do`: một buổi (lớp + ngày + nhánh) không có cả ET cũ lẫn ET mới.
 - **Phiếu ET:** ý của bài nhiều ý in **"a)"**, không in "Câu n." trước từng ý; dòng lời dẫn mang dải "Câu 1 – 3." để đối bảng điểm (Thùy 16/11). Đầu phiếu BK `ETHeaderBK` (`bkPrint.tsx`).
 - **Chưa làm:** Hình–Luyện (bài mô hình nhiều ý) trong ET.
+- **ET làm TRƯỚC khi HS đến (Thùy 20/11):** bảng gán mã đề hiện cả lớp kèm điểm danh (✅ có mặt · ⏳ chưa · ⛔ vắng — `fn_et_ds_hs_cua_buoi`); rải mã đề được ngay; **lệnh In chỉ in em có mặt** (chưa ai có mặt ⇒ hỏi in tạm cho em chưa điểm danh).
 - ET online, đổ vào lưới chấm ⇒ §10; chấm ⇒ #10.
 
 ## 5. MT

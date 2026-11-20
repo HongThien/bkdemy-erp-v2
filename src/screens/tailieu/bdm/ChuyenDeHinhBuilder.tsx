@@ -37,6 +37,9 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const [chonHoc, setChonHoc] = useState<CdhPhan | null>(null)                                    // + Bài học (giáo trình)
   const [chonCauHoc, setChonCauHoc] = useState<{ p: CdhPhan; h: HhBai; btvn: boolean } | null>(null)
   const [ganLop, setGanLop] = useState(false)
+  // Thùy 20/11: giống builder Đại — Trên lớp / BTVN là HAI CHẾ ĐỘ XEM (chỉ giáo trình; chuyên đề Hình không có BTVN)
+  const [cheXem, setCheXem] = useState<'lop' | 'btvn'>('lop')
+  const xemLop = !laGiaoTrinh || cheXem === 'lop', xemBtvn = laGiaoTrinh && cheXem === 'btvn'
   const [copyBuoi, setCopyBuoi] = useState(false)   // 📥 Lấy buổi từ giáo trình Hình của lớp khác (16/11 — trước chỉ builder Đại/HGT có)
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
@@ -116,6 +119,12 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
         <input value={ten} onChange={(e) => setTen(e.target.value)} onBlur={saveTen} className={`${inp} h-9 max-w-[420px] flex-1 font-semibold`} placeholder={laGiaoTrinh ? 'Tên giáo trình' : 'Tên chuyên đề'} />
         <span className="rounded bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">{laGiaoTrinh ? '🆕 Giáo trình · Hình (Học + Luyện)' : '🆕 Chuyên đề · Hình (Luyện)'}</span>
         <span className="text-[12px] text-slate-400">Khối {khoi}</span>
+        {laGiaoTrinh && (
+          <span className="flex shrink-0 gap-0.5 rounded-lg bg-slate-100 p-0.5" title="Chuyển giữa phần dạy TRÊN LỚP (bài học · luyện) và phần BÀI TẬP VỀ NHÀ">
+            <button onClick={() => setCheXem('lop')} className={`whitespace-nowrap rounded-md px-3 py-1 text-[12.5px] font-semibold ${cheXem === 'lop' ? 'bg-white text-sky-700 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>📘 Trên lớp</button>
+            <button onClick={() => setCheXem('btvn')} className={`whitespace-nowrap rounded-md px-3 py-1 text-[12.5px] font-semibold ${cheXem === 'btvn' ? 'bg-white text-orange-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}>📝 BTVN</button>
+          </span>
+        )}
         <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium transition ${saved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>{saved ? '✓ Đã lưu' : '↻ Tự động lưu'}</span>
         {/* Thùy 16/11: nút tạo buổi lên THANH TRÊN (trước nằm cuối danh sách buổi), tên "Tạo buổi mới" */}
         <button onClick={themPhan} className="shrink-0 whitespace-nowrap rounded-md border border-indigo-300 bg-indigo-50 px-3 py-1.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100">＋ Tạo {nhan} mới</button>
@@ -170,7 +179,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                 </div>
                 <div className="space-y-4 p-4">
                   {laGiaoTrinh && (p.hoc ?? []).map((h, i) => (
-                    <HocCard key={h.phan_id} h={h} cfg={cfgCau} canUp={i > 0} canDown={i < (p.hoc ?? []).length - 1}
+                    <HocCard key={h.phan_id} h={h} cfg={cfgCau} xemLop={xemLop} xemBtvn={xemBtvn} canUp={i > 0} canDown={i < (p.hoc ?? []).length - 1}
                       onMove={(d) => doiChoHoc(p, i, i + d)} onBo={() => datBaiHoc(p, (p.hoc ?? []).filter((x) => x.phan_id !== h.phan_id).map((x) => x.ma_bai))}
                       onLt={() => batLtHoc(p, h)} onXoaCau={(phanId, mas) => datCauHoc(p, phanId, mas)} onGoiY={(phanId, n) => goiYHoc(p, phanId, n)}
                       onChonCau={(btvn) => setChonCauHoc({ p, h, btvn })} />
@@ -186,16 +195,16 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                         </span>
                         <span className="text-[14px] font-semibold">{m.ma ? `${m.ma} · ` : ''}{m.ten ?? <i className="font-normal opacity-80">(mô hình đã xoá khỏi bản đồ)</i>}</span>
                         <span className="text-[11px] text-white/80">{m.bai.length} bài</span>
-                        <button onClick={() => setChonBai({ phan: p, mh: m })} disabled={!m.id} className="ml-auto shrink-0 rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-teal-700 hover:bg-teal-50 disabled:opacity-40">✎ Chọn bài</button>
+                        {xemLop && <button onClick={() => setChonBai({ phan: p, mh: m })} disabled={!m.id} className="ml-auto shrink-0 rounded-md bg-white px-2.5 py-1 text-[12px] font-medium text-teal-700 hover:bg-teal-50 disabled:opacity-40">✎ Chọn bài</button>}
                         {/* Thùy 08/11: giáo trình từng bị đổ sẵn cả kho bài khi thêm mô hình (mig 202611081556 đã thôi) — bỏ hết 1 lần rồi chọn lại.
                             Chỉ gỡ bài khỏi tài liệu này, bài trong kho giữ nguyên. */}
-                        {m.bai.length > 0 && (
+                        {xemLop && m.bai.length > 0 && (
                           <button onClick={() => { if (window.confirm(`Bỏ cả ${m.bai.length} bài khỏi mô hình ${m.ma ?? ''} trong tài liệu này? (Bài trong kho giữ nguyên.)`)) datBai(p, m, []) }}
                             title="Bỏ hết bài khỏi mô hình này (chỉ trong tài liệu này — kho không đổi)" className="shrink-0 rounded-md border border-white/40 px-2 py-1 text-[11px] font-medium text-white/90 hover:bg-white/10">Bỏ hết bài</button>
                         )}
                         <button onClick={() => datMoHinh(p, p.mo_hinh.filter((x) => x.phan_id !== m.phan_id).map((x) => x.id!).filter(Boolean))} title="Bỏ mô hình khỏi phần" className="shrink-0 text-[12px] text-white/70 hover:text-white">✕</button>
                       </div>
-                      <ol className="space-y-1.5 bg-white p-3">
+                      {xemLop && <ol className="space-y-1.5 bg-white p-3">
                         {m.bai.length === 0 && <li className="text-[12px] italic text-slate-400">Chưa có bài — bấm “✎ Chọn bài”.</li>}
                         {m.bai.map((b, j) => (
                           <li key={b.ma_bai} className="rounded-md border border-slate-100 bg-slate-50/50 px-2.5 py-1.5">
@@ -213,8 +222,8 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                             <BaiLuyenXem b={b} cfg={laGiaoTrinh ? cfgCau : null} />
                           </li>
                         ))}
-                      </ol>
-                      {laGiaoTrinh && m.id && (() => {
+                      </ol>}
+                      {xemBtvn && m.id && (() => {
                         // 📝 BTVN của mô hình (Thùy 08/11 — buổi chỉ có Luyện từng in phiếu BTVN trắng): bài kho về nhà, khung như khối BTVN của Học
                         const bv = (p.btvn_luyen ?? []).find((x) => x.mo_hinh_id === m.id)
                         const ds = bv?.bai ?? []
@@ -254,7 +263,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                     </div>
                   ))}
                   {/* khối rỗng (bài đã được gán mô hình ở kho, tự chuyển đi — mig 202610221334) thì ẩn */}
-                  {!!p.khac?.bai.length && (
+                  {xemLop && !!p.khac?.bai.length && (
                     <div className="overflow-hidden rounded-xl border border-amber-200">
                       <div className="flex items-center gap-2 bg-amber-50 px-3 py-2 text-amber-800">
                         <span className="text-[13.5px] font-semibold">⚠ Bài chưa có mô hình</span>
@@ -492,8 +501,8 @@ function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | nul
 }
 
 // ── HỌC (giáo trình Hình): 1 bài học trong buổi — lý thuyết (bật/tắt in) · bài luyện · BTVN ──
-function HocCard({ h, cfg, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onChonCau }: {
-  h: HhBai; cfg: CfgCau; canUp: boolean; canDown: boolean; onMove: (d: number) => void; onBo: () => void; onLt: () => void
+function HocCard({ h, cfg, xemLop, xemBtvn, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY, onChonCau }: {
+  h: HhBai; cfg: CfgCau; xemLop: boolean; xemBtvn: boolean; canUp: boolean; canDown: boolean; onMove: (d: number) => void; onBo: () => void; onLt: () => void
   onXoaCau: (phanId: string, mas: string[]) => void; onGoiY: (phanId: string, n: number) => void; onChonCau: (btvn: boolean) => void
 }) {
   // câu Học (hinh_hoc_cau_hoi) ⇒ khối câu chung của builder giáo trình (KhoiCau) — cùng control: dòng, 2 cột, chế độ hình, cỡ ảnh
@@ -521,15 +530,18 @@ function HocCard({ h, cfg, canUp, canDown, onMove, onBo, onLt, onXoaCau, onGoiY,
         <button onClick={onBo} title="Bỏ bài học khỏi buổi (mất cả bài luyện + BTVN đã chọn)" className="shrink-0 text-[12px] text-white/70 hover:text-white">✕</button>
       </div>
       <div className="bg-white">
-        <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={h.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false}
+        {xemLop && <KhoiCau tieuDe="📘 Bài luyện" mau="sky" caus={h.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false}
           soMacDinh={{ tu_luan: Math.max(h.caus.length, SO_CAU_MAC_DINH) }}
           onXoa={(m) => onXoaCau(h.phan_id, h.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
-          onGoiY={(so) => onGoiY(h.phan_id, tong(so))} onChonCau={() => onChonCau(false)} />
-        {h.btvn && (
+          onDoi={(ds) => onXoaCau(h.phan_id, ds)}
+          onGoiY={(so) => onGoiY(h.phan_id, tong(so))} onChonCau={() => onChonCau(false)} />}
+        {xemBtvn && !h.btvn && <div className="p-3 text-[12px] italic text-slate-400">Bài học này chưa có khối BTVN.</div>}
+        {xemBtvn && h.btvn && (
           <div className="border-t border-orange-100 bg-orange-50/30">
             <KhoiCau tieuDe="🏠 BTVN" mau="orange" caus={h.btvn.caus.map((x) => x.ma_cau)} cauMap={cauMap} cfg={cfg} chiXem={false} btvn
               soMacDinh={{ tu_luan: Math.max(h.btvn.caus.length, SO_CAU_MAC_DINH) }}
               onXoa={(m) => onXoaCau(h.btvn!.phan_id, h.btvn!.caus.filter((x) => x.ma_cau !== m).map((x) => x.ma_cau))}
+              onDoi={(ds) => onXoaCau(h.btvn!.phan_id, ds)}
               onGoiY={(so) => onGoiY(h.btvn!.phan_id, tong(so))} onChonCau={() => onChonCau(true)} />
           </div>
         )}

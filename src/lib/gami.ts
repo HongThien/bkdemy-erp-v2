@@ -230,6 +230,14 @@ export async function hsCoMatCuaBuoi(lopId: string, ngay: string): Promise<{ id:
     .map((h: any) => ({ id: h.id as string, ho_ten: h.ho_ten as string, ma_hs: (h.ma_hs ?? null) as string | null }))
     .sort((a, b) => a.ho_ten.localeCompare(b.ho_ten, 'vi'))
 }
+// CẢ LỚP + trạng thái điểm danh của buổi (lớp+ngày) — ET làm TRƯỚC khi HS đến (Thùy 20/11): rải mã đề cho cả lớp, IN chỉ em có mặt.
+// diem_danh: 'co_mat' | 'vang' | 'vang_phep' | null (= chưa điểm danh). Tính ở DB (fn_et_ds_hs_cua_buoi, mig 202611200927).
+export type HsBuoiEt = { id: string; ho_ten: string; ma_hs: string | null; diem_danh: 'co_mat' | 'vang' | 'vang_phep' | null }
+export async function hsCuaBuoiEt(lopId: string, ngay: string): Promise<HsBuoiEt[]> {
+  const { data, error } = await supabase.rpc('fn_et_ds_hs_cua_buoi', { p_lop: lopId, p_ngay: ngay })
+  if (error) throw error
+  return (data ?? []) as HsBuoiEt[]
+}
 // HS ĐANG HỌC của lớp (danh sách thô để in tên lên phiếu) — dùng khi tài liệu chưa gắn ngày nên chưa có "có mặt"
 // (in BTVN cả lớp ngay từ giáo trình gốc của lớp, Thùy 14/11).
 export async function hsDangHocCuaLop(lopId: string): Promise<{ id: string; ho_ten: string; ma_hs: string | null }[]> {
