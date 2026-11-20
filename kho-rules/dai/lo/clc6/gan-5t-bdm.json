@@ -1,0 +1,3605 @@
+{
+ "ghi_chu": "Claude xếp 720 câu CLC vào bản đồ mới 5T ngày 21/11 (đọc đề + đáp số; cao ⇒ gán + tự duyệt nếu không nghi; vua ⇒ đề xuất; dang null ⇒ thiếu dạng). Đã ghi bằng scripts/kho/sach/gan-bdm-nhom.mjs.",
+ "cau": {
+  "T15T0000001050": {
+   "nguon": "LTV 2018 · 1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001052": {
+   "nguon": "LTV 2018 · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001056": {
+   "nguon": "LTV 2018 · 7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001057": {
+   "nguon": "LTV 2018 · 8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001059": {
+   "nguon": "LTV 2018 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001065": {
+   "nguon": "LTV 2020 · 2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001090": {
+   "nguon": "LTV 2019 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001096": {
+   "nguon": "LTV 2019 · 17",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001104": {
+   "nguon": "LTV 2021 · 6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001107": {
+   "nguon": "LTV 2021 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001116": {
+   "nguon": "LTV 2022 · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001118": {
+   "nguon": "LTV 2022 · 11",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001120": {
+   "nguon": "LTV 2022 · 13",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001125": {
+   "nguon": "LTV 2022 · 18",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001142": {
+   "nguon": "LTV 2023 · 19",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001152": {
+   "nguon": "LTV 2024 · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001172": {
+   "nguon": "LTV 2025 · 15",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001188": {
+   "nguon": "LL 2023 · 13",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001190": {
+   "nguon": "LL 2023 · 15",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001198": {
+   "nguon": "LL 2024 · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001199": {
+   "nguon": "LL 2024 · 4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001202": {
+   "nguon": "LL 2024 · 7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001208": {
+   "nguon": "LL 2024 · 16",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001220": {
+   "nguon": "TX 2019 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001228": {
+   "nguon": "TX 2021 · 6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001251": {
+   "nguon": "TX 2023 · 14",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001259": {
+   "nguon": "TX 2024 · 6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001263": {
+   "nguon": "TX 2024 · 11",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001266": {
+   "nguon": "TX 2024 · 14",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001273": {
+   "nguon": "TX 2025 · 5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001277": {
+   "nguon": "TX 2025 · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001279": {
+   "nguon": "TX 2025 · 15",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001289": {
+   "nguon": "NTL 2020 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001291": {
+   "nguon": "NTL 2020 · 12",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001319": {
+   "nguon": "NTL 2024 · P1.9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001320": {
+   "nguon": "NTL 2024 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001321": {
+   "nguon": "NTL 2024 · P2.3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001325": {
+   "nguon": "NTL 2025 · P1.4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001329": {
+   "nguon": "NTL 2025 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001335": {
+   "nguon": "NS 2020 · 5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001337": {
+   "nguon": "NS 2020 · 8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001340": {
+   "nguon": "NS 2020 · 11",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001341": {
+   "nguon": "NS 2020 · 12",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001348": {
+   "nguon": "NS 2021 · P1.4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001350": {
+   "nguon": "NS 2021 · P1.7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001352": {
+   "nguon": "NS 2021 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001361": {
+   "nguon": "NS 2023 · P1.8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001362": {
+   "nguon": "NS 2023 · P1.10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001367": {
+   "nguon": "NS 2023 · P2.5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001373": {
+   "nguon": "NS 2025 · P2.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001375": {
+   "nguon": "NS-HB1 · P1.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001376": {
+   "nguon": "NS-HB1 · P1.3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001399": {
+   "nguon": "ARC 2020-CB · 15",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001425": {
+   "nguon": "ARC 2021-NC · 4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001430": {
+   "nguon": "ARC 2021-NC · 11",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001431": {
+   "nguon": "ARC 2021-NC · 13",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001432": {
+   "nguon": "ARC 2021-NC · 14",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001441": {
+   "nguon": "ARC 2022-CB · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001444": {
+   "nguon": "ARC 2022-CB · 12",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001445": {
+   "nguon": "ARC 2022-CB · 13",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001448": {
+   "nguon": "ARC 2022-CB · 16",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001450": {
+   "nguon": "ARC 2022-CB · 18",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001455": {
+   "nguon": "ARC 2022-CB · 23",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001468": {
+   "nguon": "ARC 2022-CB · 37",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001473": {
+   "nguon": "ARC 2022-CB · 44",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001475": {
+   "nguon": "ARC 2022-CB · 46",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001477": {
+   "nguon": "ARC 2022-CB · 48",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001478": {
+   "nguon": "ARC 2022-CB · 49",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001480": {
+   "nguon": "ARC 2024-MAU · 1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001482": {
+   "nguon": "ARC 2024-MAU · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001519": {
+   "nguon": "ARC 2024-MAU · 45",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001523": {
+   "nguon": "ARC 2024-MAU · 49",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001524": {
+   "nguon": "ARC 2024-MAU · 50",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001543": {
+   "nguon": "CG 2020 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001546": {
+   "nguon": "CG 2021 · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001550": {
+   "nguon": "CG 2021 · 7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001553": {
+   "nguon": "CG 2021 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001559": {
+   "nguon": "CG 2022 · P2.6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001563": {
+   "nguon": "CG 2022 · P3.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001571": {
+   "nguon": "CG 2023 · P3.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001580": {
+   "nguon": "CG 2024 · 10",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001583": {
+   "nguon": "CG 2025 · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001585": {
+   "nguon": "CG 2025 · 5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001591": {
+   "nguon": "NTT 2018 · 1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001592": {
+   "nguon": "NTT 2018 · 2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001593": {
+   "nguon": "NTT 2018 · 3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001596": {
+   "nguon": "NTT 2018 · 6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001597": {
+   "nguon": "NTT 2018 · 8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001602": {
+   "nguon": "NTT 2019 · 2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001618": {
+   "nguon": "NTT 2020 · P1.6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001623": {
+   "nguon": "NTT 2020 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001624": {
+   "nguon": "NTT 2020 · P2.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001632": {
+   "nguon": "NTT 2021 · P1.8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001639": {
+   "nguon": "NTT 2022 · 5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001642": {
+   "nguon": "NTT 2022 · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001668": {
+   "nguon": "NTT 2025 · 2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001690": {
+   "nguon": "NN 2021 · 4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001704": {
+   "nguon": "NN 2024-TT1 · P1.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001711": {
+   "nguon": "NN 2024-TT2 · P1.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001712": {
+   "nguon": "NN 2024-TT2 · P1.3",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001722": {
+   "nguon": "NN 2024-TT3 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001724": {
+   "nguon": "NN 2024-TT4 · P1.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001725": {
+   "nguon": "NN 2024-TT4 · P1.4",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001726": {
+   "nguon": "NN 2024-TT4 · P1.5",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001727": {
+   "nguon": "NN 2024-TT4 · P2.1",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001730": {
+   "nguon": "AMS 2020 · 2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001736": {
+   "nguon": "AMS 2020 · 8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001737": {
+   "nguon": "AMS 2020 · 9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001740": {
+   "nguon": "AMS 2020 · 12",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001741": {
+   "nguon": "AMS 2020 · 13",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001749": {
+   "nguon": "AMS 2022 · P1.7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001750": {
+   "nguon": "AMS 2022 · P1.8",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001751": {
+   "nguon": "AMS 2022 · P1.9",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001753": {
+   "nguon": "AMS 2022 · P1.12",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001761": {
+   "nguon": "AMS 2023 · P1.6",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001762": {
+   "nguon": "AMS 2023 · P1.7",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001768": {
+   "nguon": "AMS 2023 · P2.2",
+   "dang": null,
+   "chac": null
+  },
+  "T15T0000001077": {
+   "nguon": "LTV 2020 · 16",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001085": {
+   "nguon": "LTV 2019 · 5",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001149": {
+   "nguon": "LTV 2024 · 6",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001163": {
+   "nguon": "LTV 2025 · 5",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001318": {
+   "nguon": "NTL 2024 · P1.8",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001451": {
+   "nguon": "ARC 2022-CB · 19",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001569": {
+   "nguon": "CG 2023 · P2.6",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001619": {
+   "nguon": "NTT 2020 · P1.7",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001629": {
+   "nguon": "NTT 2021 · P1.5",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001640": {
+   "nguon": "NTT 2022 · 6",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001653": {
+   "nguon": "NTT 2024 · 3",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001675": {
+   "nguon": "NTT 2025 · 11",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001677": {
+   "nguon": "NTT 2025 · 13",
+   "dang": "NDB01797",
+   "chac": "vua"
+  },
+  "T15T0000001713": {
+   "nguon": "NN 2024-TT2 · P1.4",
+   "dang": "NDB01797",
+   "chac": "cao"
+  },
+  "T15T0000001105": {
+   "nguon": "LTV 2021 · 7",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001267": {
+   "nguon": "TX 2024 · 15",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001290": {
+   "nguon": "NTL 2020 · 11",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001388": {
+   "nguon": "ARC 2020-CB · 4",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001459": {
+   "nguon": "ARC 2022-CB · 28",
+   "dang": "NDB01800",
+   "chac": "cao"
+  },
+  "T15T0000001666": {
+   "nguon": "NTT-MH1 · P2.1",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001680": {
+   "nguon": "NN 2019 · 1",
+   "dang": "NDB01800",
+   "chac": "cao"
+  },
+  "T15T0000001707": {
+   "nguon": "NN 2024-TT1 · P1.4",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001715": {
+   "nguon": "NN 2024-TT2 · P2.1",
+   "dang": "NDB01800",
+   "chac": "vua"
+  },
+  "T15T0000001746": {
+   "nguon": "AMS 2022 · P1.4",
+   "dang": "NDB01800",
+   "chac": "cao"
+  },
+  "T15T0000001122": {
+   "nguon": "LTV 2022 · 15",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001191": {
+   "nguon": "LL 2023 · 16",
+   "dang": "NDB01804",
+   "chac": "vua"
+  },
+  "T15T0000001206": {
+   "nguon": "LL 2024 · 12",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001260": {
+   "nguon": "TX 2024 · 8",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001308": {
+   "nguon": "NTL 2023 · P1.6",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001338": {
+   "nguon": "NS 2020 · 9",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001359": {
+   "nguon": "NS 2023 · P1.5",
+   "dang": "NDB01804",
+   "chac": "vua"
+  },
+  "T15T0000001405": {
+   "nguon": "ARC 2020-NC · 4",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001474": {
+   "nguon": "ARC 2022-CB · 45",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001532": {
+   "nguon": "CG 2019 · P1.8",
+   "dang": "NDB01803",
+   "chac": "cao"
+  },
+  "T15T0000001587": {
+   "nguon": "CG 2025 · 7",
+   "dang": "NDB01803",
+   "chac": "vua"
+  },
+  "T15T0000001604": {
+   "nguon": "NTT 2019 · 4",
+   "dang": "NDB01804",
+   "chac": "vua"
+  },
+  "T15T0000001608": {
+   "nguon": "NTT 2019 · 8",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001664": {
+   "nguon": "NTT-MH1 · P1.6",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001687": {
+   "nguon": "NN 2021 · 1",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001696": {
+   "nguon": "NN 2023 · 4",
+   "dang": "NDB01803",
+   "chac": "cao"
+  },
+  "T15T0000001754": {
+   "nguon": "AMS 2022 · P2.1",
+   "dang": "NDB01804",
+   "chac": "cao"
+  },
+  "T15T0000001070": {
+   "nguon": "LTV 2020 · 7",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001111": {
+   "nguon": "LTV 2022 · 4",
+   "dang": "NDB01809",
+   "chac": "cao"
+  },
+  "T15T0000001141": {
+   "nguon": "LTV 2023 · 18",
+   "dang": "NDB01809",
+   "chac": "vua"
+  },
+  "T15T0000001156": {
+   "nguon": "LTV 2024 · 16",
+   "dang": "NDB01806",
+   "chac": "cao"
+  },
+  "T15T0000001165": {
+   "nguon": "LTV 2025 · 7",
+   "dang": "NDB01806",
+   "chac": "cao"
+  },
+  "T15T0000001236": {
+   "nguon": "TX 2022 · P1.5",
+   "dang": "NDB01809",
+   "chac": "cao"
+  },
+  "T15T0000001286": {
+   "nguon": "NTL 2020 · 7",
+   "dang": "NDB01809",
+   "chac": "cao"
+  },
+  "T15T0000001380": {
+   "nguon": "NS-HB1 · P1.7",
+   "dang": "NDB01806",
+   "chac": "vua"
+  },
+  "T15T0000001443": {
+   "nguon": "ARC 2022-CB · 11",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001449": {
+   "nguon": "ARC 2022-CB · 17",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001496": {
+   "nguon": "ARC 2024-MAU · 18",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001499": {
+   "nguon": "ARC 2024-MAU · 21",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001562": {
+   "nguon": "CG 2022 · P3.1",
+   "dang": "NDB01806",
+   "chac": "vua"
+  },
+  "T15T0000001600": {
+   "nguon": "NTT 2018 · 11",
+   "dang": "NDB01806",
+   "chac": "vua"
+  },
+  "T15T0000001605": {
+   "nguon": "NTT 2019 · 5",
+   "dang": "NDB01806",
+   "chac": "vua"
+  },
+  "T15T0000001611": {
+   "nguon": "NTT 2019 · 11",
+   "dang": "NDB01809",
+   "chac": "vua"
+  },
+  "T15T0000001616": {
+   "nguon": "NTT 2020 · P1.4",
+   "dang": "NDB01809",
+   "chac": "cao"
+  },
+  "T15T0000001636": {
+   "nguon": "NTT 2022 · 2",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001645": {
+   "nguon": "NTT 2023 · 2",
+   "dang": "NDB01806",
+   "chac": "vua"
+  },
+  "T15T0000001660": {
+   "nguon": "NTT-MH1 · P1.2",
+   "dang": "NDB01809",
+   "chac": "cao"
+  },
+  "T15T0000001671": {
+   "nguon": "NTT 2025 · 5",
+   "dang": "NDB01807",
+   "chac": "cao"
+  },
+  "T15T0000001060": {
+   "nguon": "LTV 2018 · 11",
+   "dang": "NDB01811",
+   "chac": "cao"
+  },
+  "T15T0000001147": {
+   "nguon": "LTV 2024 · 4",
+   "dang": "NDB01810",
+   "chac": "cao"
+  },
+  "T15T0000001159": {
+   "nguon": "LTV 2025 · 1",
+   "dang": "NDB01810",
+   "chac": "cao"
+  },
+  "T15T0000001322": {
+   "nguon": "NTL 2025 · P1.1",
+   "dang": "NDB01810",
+   "chac": "cao"
+  },
+  "T15T0000001333": {
+   "nguon": "NS 2020 · 3",
+   "dang": "NDB01811",
+   "chac": "cao"
+  },
+  "T15T0000001481": {
+   "nguon": "ARC 2024-MAU · 2",
+   "dang": "NDB01811",
+   "chac": "cao"
+  },
+  "T15T0000001485": {
+   "nguon": "ARC 2024-MAU · 6",
+   "dang": "NDB01811",
+   "chac": "vua"
+  },
+  "T15T0000001544": {
+   "nguon": "CG 2021 · 1",
+   "dang": "NDB01811",
+   "chac": "cao"
+  },
+  "T15T0000001554": {
+   "nguon": "CG 2022 · P1.1",
+   "dang": "NDB01811",
+   "chac": "cao"
+  },
+  "T15T0000001054": {
+   "nguon": "LTV 2018 · 5",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001067": {
+   "nguon": "LTV 2020 · 4",
+   "dang": "NDB01814",
+   "chac": "cao"
+  },
+  "T15T0000001069": {
+   "nguon": "LTV 2020 · 6",
+   "dang": "NDB01816",
+   "chac": "cao"
+  },
+  "T15T0000001081": {
+   "nguon": "LTV 2019 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001101": {
+   "nguon": "LTV 2021 · 3",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001146": {
+   "nguon": "LTV 2024 · 3",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001162": {
+   "nguon": "LTV 2025 · 4",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001176": {
+   "nguon": "LL 2023 · 1",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001177": {
+   "nguon": "LL 2023 · 2",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001178": {
+   "nguon": "LL 2023 · 3",
+   "dang": "NDB01814",
+   "chac": "cao"
+  },
+  "T15T0000001196": {
+   "nguon": "LL 2024 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001212": {
+   "nguon": "TX 2019 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001223": {
+   "nguon": "TX 2021 · 1",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001224": {
+   "nguon": "TX 2021 · 2",
+   "dang": "NDB01813",
+   "chac": "vua"
+  },
+  "T15T0000001225": {
+   "nguon": "TX 2021 · 3",
+   "dang": "NDB01812",
+   "chac": "vua"
+  },
+  "T15T0000001243": {
+   "nguon": "TX 2023 · 5",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001256": {
+   "nguon": "TX 2024 · 3",
+   "dang": "NDB01812",
+   "chac": "vua"
+  },
+  "T15T0000001257": {
+   "nguon": "TX 2024 · 4",
+   "dang": "NDB01814",
+   "chac": "vua"
+  },
+  "T15T0000001269": {
+   "nguon": "TX 2025 · 1",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001280": {
+   "nguon": "NTL 2020 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001292": {
+   "nguon": "NTL 2022 · P1.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001311": {
+   "nguon": "NTL 2023 · P2.1",
+   "dang": "NDB01813",
+   "chac": "vua"
+  },
+  "T15T0000001312": {
+   "nguon": "NTL 2024 · P1.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001323": {
+   "nguon": "NTL 2025 · P1.2",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001324": {
+   "nguon": "NTL 2025 · P1.3",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001342": {
+   "nguon": "NS 2020 · 13",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001343": {
+   "nguon": "NS 2020 · 14",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001346": {
+   "nguon": "NS 2021 · P1.2",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001355": {
+   "nguon": "NS 2023 · P1.1",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001363": {
+   "nguon": "NS 2023 · P2.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001364": {
+   "nguon": "NS 2023 · P2.2",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001365": {
+   "nguon": "NS 2023 · P2.3",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001368": {
+   "nguon": "NS 2025 · P1.1",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001372": {
+   "nguon": "NS 2025 · P2.1",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001374": {
+   "nguon": "NS-HB1 · P1.1",
+   "dang": "NDB01817",
+   "chac": "cao"
+  },
+  "T15T0000001378": {
+   "nguon": "NS-HB1 · P1.5",
+   "dang": "NDB01815",
+   "chac": "vua"
+  },
+  "T15T0000001381": {
+   "nguon": "NS-HB1 · P1.8",
+   "dang": "NDB01813",
+   "chac": "vua"
+  },
+  "T15T0000001386": {
+   "nguon": "ARC 2020-CB · 2",
+   "dang": "NDB01813",
+   "chac": "vua"
+  },
+  "T15T0000001402": {
+   "nguon": "ARC 2020-NC · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001403": {
+   "nguon": "ARC 2020-NC · 2",
+   "dang": "NDB01815",
+   "chac": "vua"
+  },
+  "T15T0000001410": {
+   "nguon": "ARC 2020-NC · 9",
+   "dang": "NDB01817",
+   "chac": "cao"
+  },
+  "T15T0000001422": {
+   "nguon": "ARC 2021-NC · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001436": {
+   "nguon": "ARC 2022-CB · 4",
+   "dang": "NDB01814",
+   "chac": "cao"
+  },
+  "T15T0000001454": {
+   "nguon": "ARC 2022-CB · 22",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001492": {
+   "nguon": "ARC 2024-MAU · 14",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001494": {
+   "nguon": "ARC 2024-MAU · 16",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001502": {
+   "nguon": "ARC 2024-MAU · 24",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001525": {
+   "nguon": "CG 2019 · P1.1",
+   "dang": "NDB01812",
+   "chac": "vua"
+  },
+  "T15T0000001527": {
+   "nguon": "CG 2019 · P1.3",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001535": {
+   "nguon": "CG 2020 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001558": {
+   "nguon": "CG 2022 · P2.5",
+   "dang": "NDB01815",
+   "chac": "cao"
+  },
+  "T15T0000001581": {
+   "nguon": "CG 2025 · 1",
+   "dang": "NDB01812",
+   "chac": "vua"
+  },
+  "T15T0000001599": {
+   "nguon": "NTT 2018 · 10",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001621": {
+   "nguon": "NTT 2020 · P1.9",
+   "dang": "NDB01816",
+   "chac": "vua"
+  },
+  "T15T0000001622": {
+   "nguon": "NTT 2020 · P1.10",
+   "dang": "NDB01812",
+   "chac": "cao"
+  },
+  "T15T0000001625": {
+   "nguon": "NTT 2021 · P1.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001644": {
+   "nguon": "NTT 2023 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001651": {
+   "nguon": "NTT 2024 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001659": {
+   "nguon": "NTT-MH1 · P1.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001670": {
+   "nguon": "NTT 2025 · 4",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001729": {
+   "nguon": "AMS 2020 · 1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001743": {
+   "nguon": "AMS 2022 · P1.1",
+   "dang": "NDB01813",
+   "chac": "cao"
+  },
+  "T15T0000001757": {
+   "nguon": "AMS 2023 · P1.1",
+   "dang": "NDB01814",
+   "chac": "cao"
+  },
+  "T15T0000001058": {
+   "nguon": "LTV 2018 · 9",
+   "dang": "NDB01818",
+   "chac": "cao"
+  },
+  "T15T0000001071": {
+   "nguon": "LTV 2020 · 8",
+   "dang": "NDB01818",
+   "chac": "cao"
+  },
+  "T15T0000001073": {
+   "nguon": "LTV 2020 · 10",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001106": {
+   "nguon": "LTV 2021 · 9",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001157": {
+   "nguon": "LTV 2024 · 17",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001167": {
+   "nguon": "LTV 2025 · 9",
+   "dang": "NDB01818",
+   "chac": "cao"
+  },
+  "T15T0000001170": {
+   "nguon": "LTV 2025 · 12",
+   "dang": "NDB01819",
+   "chac": "cao"
+  },
+  "T15T0000001194": {
+   "nguon": "LL 2023 · 19",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001215": {
+   "nguon": "TX 2019 · 4",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001226": {
+   "nguon": "TX 2021 · 4",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001258": {
+   "nguon": "TX 2024 · 5",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001276": {
+   "nguon": "TX 2025 · 8",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001339": {
+   "nguon": "NS 2020 · 10",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001357": {
+   "nguon": "NS 2023 · P1.3",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001379": {
+   "nguon": "NS-HB1 · P1.6",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001396": {
+   "nguon": "ARC 2020-CB · 12",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001409": {
+   "nguon": "ARC 2020-NC · 8",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001462": {
+   "nguon": "ARC 2022-CB · 31",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001501": {
+   "nguon": "ARC 2024-MAU · 23",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001566": {
+   "nguon": "CG 2023 · P1.3",
+   "dang": "NDB01819",
+   "chac": "cao"
+  },
+  "T15T0000001610": {
+   "nguon": "NTT 2019 · 10",
+   "dang": "NDB01820",
+   "chac": "cao"
+  },
+  "T15T0000001656": {
+   "nguon": "NTT 2024 · 8",
+   "dang": "NDB01819",
+   "chac": "cao"
+  },
+  "T15T0000001700": {
+   "nguon": "NN 2024 · P1.3",
+   "dang": "NDB01818",
+   "chac": "cao"
+  },
+  "T15T0000001760": {
+   "nguon": "AMS 2023 · P1.4",
+   "dang": "NDB01821",
+   "chac": "cao"
+  },
+  "T15T0000001139": {
+   "nguon": "LTV 2023 · 15",
+   "dang": "NDB01822",
+   "chac": "vua"
+  },
+  "T15T0000001252": {
+   "nguon": "TX 2023 · 15",
+   "dang": "NDB01823",
+   "chac": "cao"
+  },
+  "T15T0000001336": {
+   "nguon": "NS 2020 · 6",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001349": {
+   "nguon": "NS 2021 · P1.6",
+   "dang": "NDB01823",
+   "chac": "cao"
+  },
+  "T15T0000001370": {
+   "nguon": "NS 2025 · P1.4",
+   "dang": "NDB01823",
+   "chac": "cao"
+  },
+  "T15T0000001384": {
+   "nguon": "NS-HB1 · P2.2",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001465": {
+   "nguon": "ARC 2022-CB · 34",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001609": {
+   "nguon": "NTT 2019 · 9",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001630": {
+   "nguon": "NTT 2021 · P1.6",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001683": {
+   "nguon": "NN 2019 · 5",
+   "dang": "NDB01822",
+   "chac": "cao"
+  },
+  "T15T0000001692": {
+   "nguon": "NN 2021 · 6",
+   "dang": "NDB01822",
+   "chac": "vua"
+  },
+  "T15T0000001699": {
+   "nguon": "NN 2024 · P1.2",
+   "dang": "NDB01823",
+   "chac": "cao"
+  },
+  "T15T0000001731": {
+   "nguon": "AMS 2020 · 3",
+   "dang": "NDB01823",
+   "chac": "cao"
+  },
+  "T15T0000001086": {
+   "nguon": "LTV 2019 · 6",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001100": {
+   "nguon": "LTV 2021 · 2",
+   "dang": "NDB03001",
+   "chac": "vua"
+  },
+  "T15T0000001129": {
+   "nguon": "LTV 2023 · 4",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001134": {
+   "nguon": "LTV 2023 · 10",
+   "dang": "NDB02770",
+   "chac": "cao"
+  },
+  "T15T0000001189": {
+   "nguon": "LL 2023 · 14",
+   "dang": "NDB03001",
+   "chac": "cao"
+  },
+  "T15T0000001200": {
+   "nguon": "LL 2024 · 5",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001214": {
+   "nguon": "TX 2019 · 3",
+   "dang": "NDB03001",
+   "chac": "cao"
+  },
+  "T15T0000001241": {
+   "nguon": "TX 2023 · 3",
+   "dang": "NDB02767",
+   "chac": "vua"
+  },
+  "T15T0000001297": {
+   "nguon": "NTL 2022 · P1.6",
+   "dang": "NDB02769",
+   "chac": "vua"
+  },
+  "T15T0000001331": {
+   "nguon": "NS 2020 · 1",
+   "dang": "NDB03001",
+   "chac": "cao"
+  },
+  "T15T0000001353": {
+   "nguon": "NS 2021 · P2.2",
+   "dang": "NDB03001",
+   "chac": "vua"
+  },
+  "T15T0000001358": {
+   "nguon": "NS 2023 · P1.4",
+   "dang": "NDB02769",
+   "chac": "vua"
+  },
+  "T15T0000001387": {
+   "nguon": "ARC 2020-CB · 3",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001447": {
+   "nguon": "ARC 2022-CB · 15",
+   "dang": "NDB03000",
+   "chac": "cao"
+  },
+  "T15T0000001453": {
+   "nguon": "ARC 2022-CB · 21",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001460": {
+   "nguon": "ARC 2022-CB · 29",
+   "dang": "NDB02769",
+   "chac": "vua"
+  },
+  "T15T0000001490": {
+   "nguon": "ARC 2024-MAU · 11",
+   "dang": "NDB03000",
+   "chac": "cao"
+  },
+  "T15T0000001510": {
+   "nguon": "ARC 2024-MAU · 36",
+   "dang": "NDB02770",
+   "chac": "cao"
+  },
+  "T15T0000001511": {
+   "nguon": "ARC 2024-MAU · 37",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001512": {
+   "nguon": "ARC 2024-MAU · 38",
+   "dang": "NDB02770",
+   "chac": "cao"
+  },
+  "T15T0000001537": {
+   "nguon": "CG 2020 · 3",
+   "dang": "NDB02770",
+   "chac": "cao"
+  },
+  "T15T0000001539": {
+   "nguon": "CG 2020 · 5",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001542": {
+   "nguon": "CG 2020 · 9",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001548": {
+   "nguon": "CG 2021 · 5",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001572": {
+   "nguon": "CG 2024 · 1",
+   "dang": "NDB03000",
+   "chac": "vua"
+  },
+  "T15T0000001576": {
+   "nguon": "CG 2024 · 5",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001589": {
+   "nguon": "CG 2025 · 9",
+   "dang": "NDB02769",
+   "chac": "vua"
+  },
+  "T15T0000001627": {
+   "nguon": "NTT 2021 · P1.3",
+   "dang": "NDB02769",
+   "chac": "cao"
+  },
+  "T15T0000001635": {
+   "nguon": "NTT 2022 · 1",
+   "dang": "NDB02767",
+   "chac": "cao"
+  },
+  "T15T0000001652": {
+   "nguon": "NTT 2024 · 2",
+   "dang": "NDB03001",
+   "chac": "cao"
+  },
+  "T15T0000001658": {
+   "nguon": "NTT 2024 · 11",
+   "dang": "NDB02770",
+   "chac": "cao"
+  },
+  "T15T0000001091": {
+   "nguon": "LTV 2019 · 11",
+   "dang": "NDB02774",
+   "chac": "cao"
+  },
+  "T15T0000001119": {
+   "nguon": "LTV 2022 · 12",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001175": {
+   "nguon": "LTV 2025 · 19",
+   "dang": "NDB02774",
+   "chac": "cao"
+  },
+  "T15T0000001182": {
+   "nguon": "LL 2023 · 7",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001238": {
+   "nguon": "TX 2022 · P2.1",
+   "dang": "NDB02771",
+   "chac": "vua"
+  },
+  "T15T0000001261": {
+   "nguon": "TX 2024 · 9",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001305": {
+   "nguon": "NTL 2023 · P1.3",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001360": {
+   "nguon": "NS 2023 · P1.6",
+   "dang": "NDB02771",
+   "chac": "vua"
+  },
+  "T15T0000001395": {
+   "nguon": "ARC 2020-CB · 11",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001427": {
+   "nguon": "ARC 2021-NC · 6",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001476": {
+   "nguon": "ARC 2022-CB · 47",
+   "dang": "NDB02771",
+   "chac": "vua"
+  },
+  "T15T0000001513": {
+   "nguon": "ARC 2024-MAU · 39",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001598": {
+   "nguon": "NTT 2018 · 9",
+   "dang": "NDB02771",
+   "chac": "vua"
+  },
+  "T15T0000001613": {
+   "nguon": "NTT 2020 · P1.1",
+   "dang": "NDB02771",
+   "chac": "vua"
+  },
+  "T15T0000001633": {
+   "nguon": "NTT 2021 · P2.1",
+   "dang": "NDB02771",
+   "chac": "cao"
+  },
+  "T15T0000001641": {
+   "nguon": "NTT 2022 · 7",
+   "dang": "NDB02771",
+   "chac": "cao"
+  },
+  "T15T0000001648": {
+   "nguon": "NTT 2023 · 6",
+   "dang": "NDB02773",
+   "chac": "cao"
+  },
+  "T15T0000001673": {
+   "nguon": "NTT 2025 · 9",
+   "dang": "NDB02774",
+   "chac": "cao"
+  },
+  "T15T0000001053": {
+   "nguon": "LTV 2018 · 4",
+   "dang": "NDB02775",
+   "chac": "cao"
+  },
+  "T15T0000001103": {
+   "nguon": "LTV 2021 · 5",
+   "dang": "NDB02776",
+   "chac": "cao"
+  },
+  "T15T0000001153": {
+   "nguon": "LTV 2024 · 10",
+   "dang": "NDB02775",
+   "chac": "vua"
+  },
+  "T15T0000001397": {
+   "nguon": "ARC 2020-CB · 13",
+   "dang": "NDB02776",
+   "chac": "vua"
+  },
+  "T15T0000001531": {
+   "nguon": "CG 2019 · P1.7",
+   "dang": "NDB02776",
+   "chac": "cao"
+  },
+  "T15T0000001719": {
+   "nguon": "NN 2024-TT3 · P1.3",
+   "dang": "NDB02776",
+   "chac": "cao"
+  },
+  "T15T0000001734": {
+   "nguon": "AMS 2020 · 6",
+   "dang": "NDB03003",
+   "chac": "cao"
+  },
+  "T15T0000001688": {
+   "nguon": "NN 2021 · 2",
+   "dang": "NDB03005",
+   "chac": "cao"
+  },
+  "T15T0000001695": {
+   "nguon": "NN 2023 · 3",
+   "dang": "NDB03004",
+   "chac": "cao"
+  },
+  "T15T0000001123": {
+   "nguon": "LTV 2022 · 16",
+   "dang": "NDB02927",
+   "chac": "cao"
+  },
+  "T15T0000001135": {
+   "nguon": "LTV 2023 · 11",
+   "dang": "NDB02928",
+   "chac": "cao"
+  },
+  "T15T0000001151": {
+   "nguon": "LTV 2024 · 8",
+   "dang": "NDB02927",
+   "chac": "cao"
+  },
+  "T15T0000001294": {
+   "nguon": "NTL 2022 · P1.3",
+   "dang": "NDB02927",
+   "chac": "cao"
+  },
+  "T15T0000001310": {
+   "nguon": "NTL 2023 · P1.9",
+   "dang": "NDB02928",
+   "chac": "cao"
+  },
+  "T15T0000001389": {
+   "nguon": "ARC 2020-CB · 5",
+   "dang": "NDB02930",
+   "chac": "cao"
+  },
+  "T15T0000001401": {
+   "nguon": "ARC 2020-CB · 17",
+   "dang": "NDB02927",
+   "chac": "cao"
+  },
+  "T15T0000001413": {
+   "nguon": "ARC 2020-NC · 12",
+   "dang": "NDB02927",
+   "chac": "cao"
+  },
+  "T15T0000001503": {
+   "nguon": "ARC 2024-MAU · 25",
+   "dang": "NDB02928",
+   "chac": "cao"
+  },
+  "T15T0000001681": {
+   "nguon": "NN 2019 · 2",
+   "dang": "NDB02933",
+   "chac": "cao"
+  },
+  "T15T0000001763": {
+   "nguon": "AMS 2023 · P1.8",
+   "dang": "NDB02933",
+   "chac": "cao"
+  },
+  "T15T0000001420": {
+   "nguon": "ARC 2020-NC · 19",
+   "dang": "NDB02936",
+   "chac": "vua"
+  },
+  "T15T0000001309": {
+   "nguon": "NTL 2023 · P1.8",
+   "dang": "NDB02940",
+   "chac": "vua"
+  },
+  "T15T0000001418": {
+   "nguon": "ARC 2020-NC · 17",
+   "dang": "NDB02940",
+   "chac": "cao"
+  },
+  "T15T0000001424": {
+   "nguon": "ARC 2021-NC · 3",
+   "dang": "NDB02940",
+   "chac": "vua"
+  },
+  "T15T0000001442": {
+   "nguon": "ARC 2022-CB · 10",
+   "dang": "NDB02939",
+   "chac": "cao"
+  },
+  "T15T0000001493": {
+   "nguon": "ARC 2024-MAU · 15",
+   "dang": "NDB02939",
+   "chac": "cao"
+  },
+  "T15T0000001521": {
+   "nguon": "ARC 2024-MAU · 47",
+   "dang": "NDB02940",
+   "chac": "cao"
+  },
+  "T15T0000001672": {
+   "nguon": "NTT 2025 · 8",
+   "dang": "NDB02940",
+   "chac": "vua"
+  },
+  "T15T0000001718": {
+   "nguon": "NN 2024-TT3 · P1.2",
+   "dang": "NDB02939",
+   "chac": "cao"
+  },
+  "T15T0000001205": {
+   "nguon": "LL 2024 · 11",
+   "dang": "NDB02943",
+   "chac": "cao"
+  },
+  "T15T0000001429": {
+   "nguon": "ARC 2021-NC · 10",
+   "dang": "NDB02944",
+   "chac": "vua"
+  },
+  "T15T0000001735": {
+   "nguon": "AMS 2020 · 7",
+   "dang": "NDB02943",
+   "chac": "vua"
+  },
+  "T15T0000001232": {
+   "nguon": "TX 2022 · P1.1",
+   "dang": "NDB02947",
+   "chac": "vua"
+  },
+  "T15T0000001411": {
+   "nguon": "ARC 2020-NC · 10",
+   "dang": "NDB02947",
+   "chac": "vua"
+  },
+  "T15T0000001428": {
+   "nguon": "ARC 2021-NC · 7",
+   "dang": "NDB02947",
+   "chac": "cao"
+  },
+  "T15T0000001528": {
+   "nguon": "CG 2019 · P1.4",
+   "dang": "NDB02947",
+   "chac": "cao"
+  },
+  "T15T0000001766": {
+   "nguon": "AMS 2023 · P1.11",
+   "dang": "NDB02948",
+   "chac": "cao"
+  },
+  "T15T0000001098": {
+   "nguon": "LTV 2019 · 19",
+   "dang": "NDB02950",
+   "chac": "cao"
+  },
+  "T15T0000001076": {
+   "nguon": "LTV 2020 · 14",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001084": {
+   "nguon": "LTV 2019 · 4",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001095": {
+   "nguon": "LTV 2019 · 16",
+   "dang": "NDB02955",
+   "chac": "vua"
+  },
+  "T15T0000001114": {
+   "nguon": "LTV 2022 · 7",
+   "dang": "NDB02953",
+   "chac": "cao"
+  },
+  "T15T0000001131": {
+   "nguon": "LTV 2023 · 6",
+   "dang": "NDB02953",
+   "chac": "cao"
+  },
+  "T15T0000001145": {
+   "nguon": "LTV 2024 · 2",
+   "dang": "NDB02953",
+   "chac": "vua"
+  },
+  "T15T0000001207": {
+   "nguon": "LL 2024 · 13",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001219": {
+   "nguon": "TX 2019 · 8",
+   "dang": "NDB02955",
+   "chac": "cao"
+  },
+  "T15T0000001285": {
+   "nguon": "NTL 2020 · 6",
+   "dang": "NDB02955",
+   "chac": "cao"
+  },
+  "T15T0000001304": {
+   "nguon": "NTL 2023 · P1.2",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001313": {
+   "nguon": "NTL 2024 · P1.2",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001412": {
+   "nguon": "ARC 2020-NC · 11",
+   "dang": "NDB02955",
+   "chac": "vua"
+  },
+  "T15T0000001457": {
+   "nguon": "ARC 2022-CB · 26",
+   "dang": "NDB02953",
+   "chac": "cao"
+  },
+  "T15T0000001483": {
+   "nguon": "ARC 2024-MAU · 4",
+   "dang": "NDB02955",
+   "chac": "cao"
+  },
+  "T15T0000001529": {
+   "nguon": "CG 2019 · P1.5",
+   "dang": "NDB02955",
+   "chac": "cao"
+  },
+  "T15T0000001540": {
+   "nguon": "CG 2020 · 6",
+   "dang": "NDB02954",
+   "chac": "vua"
+  },
+  "T15T0000001568": {
+   "nguon": "CG 2023 · P2.5",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001649": {
+   "nguon": "NTT 2023 · 7",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001693": {
+   "nguon": "NN 2023 · 1",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001701": {
+   "nguon": "NN 2024 · P1.4",
+   "dang": "NDB02954",
+   "chac": "vua"
+  },
+  "T15T0000001732": {
+   "nguon": "AMS 2020 · 4",
+   "dang": "NDB02954",
+   "chac": "vua"
+  },
+  "T15T0000001744": {
+   "nguon": "AMS 2022 · P1.2",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001758": {
+   "nguon": "AMS 2023 · P1.2",
+   "dang": "NDB02954",
+   "chac": "cao"
+  },
+  "T15T0000001075": {
+   "nguon": "LTV 2020 · 13",
+   "dang": "NDB02957",
+   "chac": "vua"
+  },
+  "T15T0000001092": {
+   "nguon": "LTV 2019 · 13",
+   "dang": "NDB02957",
+   "chac": "cao"
+  },
+  "T15T0000001138": {
+   "nguon": "LTV 2023 · 14",
+   "dang": "NDB02957",
+   "chac": "cao"
+  },
+  "T15T0000001154": {
+   "nguon": "LTV 2024 · 14",
+   "dang": "NDB02957",
+   "chac": "vua"
+  },
+  "T15T0000001168": {
+   "nguon": "LTV 2025 · 10",
+   "dang": "NDB02956",
+   "chac": "cao"
+  },
+  "T15T0000001184": {
+   "nguon": "LL 2023 · 9",
+   "dang": "NDB02957",
+   "chac": "vua"
+  },
+  "T15T0000001193": {
+   "nguon": "LL 2023 · 18",
+   "dang": "NDB02957",
+   "chac": "cao"
+  },
+  "T15T0000001398": {
+   "nguon": "ARC 2020-CB · 14",
+   "dang": "NDB02957",
+   "chac": "cao"
+  },
+  "T15T0000001472": {
+   "nguon": "ARC 2022-CB · 43",
+   "dang": "NDB02957",
+   "chac": "cao"
+  },
+  "T15T0000001590": {
+   "nguon": "CG 2025 · 10",
+   "dang": "NDB02957",
+   "chac": "vua"
+  },
+  "T15T0000001759": {
+   "nguon": "AMS 2023 · P1.3",
+   "dang": "NDB02957",
+   "chac": "vua"
+  },
+  "T15T0000001079": {
+   "nguon": "LTV 2020 · 18",
+   "dang": "NDB02962",
+   "chac": "vua"
+  },
+  "T15T0000001094": {
+   "nguon": "LTV 2019 · 15",
+   "dang": "NDB02961",
+   "chac": "cao"
+  },
+  "T15T0000001301": {
+   "nguon": "NTL 2022 · P1.10",
+   "dang": "NDB02962",
+   "chac": "vua"
+  },
+  "T15T0000001385": {
+   "nguon": "ARC 2020-CB · 1",
+   "dang": "NDB02962",
+   "chac": "cao"
+  },
+  "T15T0000001461": {
+   "nguon": "ARC 2022-CB · 30",
+   "dang": "NDB02960",
+   "chac": "cao"
+  },
+  "T15T0000001484": {
+   "nguon": "ARC 2024-MAU · 5",
+   "dang": "NDB02960",
+   "chac": "cao"
+  },
+  "T15T0000001284": {
+   "nguon": "NTL 2020 · 5",
+   "dang": "NDB02963",
+   "chac": "vua"
+  },
+  "T15T0000001391": {
+   "nguon": "ARC 2020-CB · 7",
+   "dang": "NDB02963",
+   "chac": "cao"
+  },
+  "T15T0000001063": {
+   "nguon": "LTV 2018 · 14",
+   "dang": "NDB02965",
+   "chac": "cao"
+  },
+  "T15T0000001204": {
+   "nguon": "LL 2024 · 10",
+   "dang": "NDB02966",
+   "chac": "cao"
+  },
+  "T15T0000001408": {
+   "nguon": "ARC 2020-NC · 7",
+   "dang": "NDB02967",
+   "chac": "vua"
+  },
+  "T15T0000001456": {
+   "nguon": "ARC 2022-CB · 24",
+   "dang": "NDB02966",
+   "chac": "cao"
+  },
+  "T15T0000001489": {
+   "nguon": "ARC 2024-MAU · 10",
+   "dang": "NDB02967",
+   "chac": "vua"
+  },
+  "T15T0000001526": {
+   "nguon": "CG 2019 · P1.2",
+   "dang": "NDB02965",
+   "chac": "cao"
+  },
+  "T15T0000001549": {
+   "nguon": "CG 2021 · 6",
+   "dang": "NDB02966",
+   "chac": "cao"
+  },
+  "T15T0000001174": {
+   "nguon": "LTV 2025 · 18",
+   "dang": "NDB02968",
+   "chac": "cao"
+  },
+  "T15T0000001275": {
+   "nguon": "TX 2025 · 7",
+   "dang": "NDB02968",
+   "chac": "cao"
+  },
+  "T15T0000001594": {
+   "nguon": "NTT 2018 · 4",
+   "dang": "NDB02968",
+   "chac": "cao"
+  },
+  "T15T0000001064": {
+   "nguon": "LTV 2020 · 1",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001072": {
+   "nguon": "LTV 2020 · 9",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001082": {
+   "nguon": "LTV 2019 · 2",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001099": {
+   "nguon": "LTV 2021 · 1",
+   "dang": "NDB02971",
+   "chac": "vua"
+  },
+  "T15T0000001108": {
+   "nguon": "LTV 2022 · 1",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001110": {
+   "nguon": "LTV 2022 · 3",
+   "dang": "NDB02971",
+   "chac": "vua"
+  },
+  "T15T0000001126": {
+   "nguon": "LTV 2023 · 1",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001130": {
+   "nguon": "LTV 2023 · 5",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001144": {
+   "nguon": "LTV 2024 · 1",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001160": {
+   "nguon": "LTV 2025 · 2",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001181": {
+   "nguon": "LL 2023 · 6",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001295": {
+   "nguon": "NTL 2022 · P1.4",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001296": {
+   "nguon": "NTL 2022 · P1.5",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001344": {
+   "nguon": "NS 2020 · 15",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001345": {
+   "nguon": "NS 2021 · P1.1",
+   "dang": "NDB02971",
+   "chac": "cao"
+  },
+  "T15T0000001356": {
+   "nguon": "NS 2023 · P1.2",
+   "dang": "NDB02971",
+   "chac": "cao"
+  },
+  "T15T0000001437": {
+   "nguon": "ARC 2022-CB · 5",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001486": {
+   "nguon": "ARC 2024-MAU · 7",
+   "dang": "NDB02973",
+   "chac": "cao"
+  },
+  "T15T0000001487": {
+   "nguon": "ARC 2024-MAU · 8",
+   "dang": "NDB02972",
+   "chac": "vua"
+  },
+  "T15T0000001488": {
+   "nguon": "ARC 2024-MAU · 9",
+   "dang": "NDB02972",
+   "chac": "cao"
+  },
+  "T15T0000001520": {
+   "nguon": "ARC 2024-MAU · 46",
+   "dang": "NDB02971",
+   "chac": "vua"
+  },
+  "T15T0000001669": {
+   "nguon": "NTT 2025 · 3",
+   "dang": "NDB02972",
+   "chac": "vua"
+  },
+  "T15T0000001078": {
+   "nguon": "LTV 2020 · 17",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001192": {
+   "nguon": "LL 2023 · 17",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001201": {
+   "nguon": "LL 2024 · 6",
+   "dang": "NDB02977",
+   "chac": "cao"
+  },
+  "T15T0000001217": {
+   "nguon": "TX 2019 · 6",
+   "dang": "NDB02975",
+   "chac": "cao"
+  },
+  "T15T0000001229": {
+   "nguon": "TX 2021 · 7",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001239": {
+   "nguon": "TX 2022 · P2.2",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001281": {
+   "nguon": "NTL 2020 · 2",
+   "dang": "NDB02976",
+   "chac": "vua"
+  },
+  "T15T0000001371": {
+   "nguon": "NS 2025 · P1.5",
+   "dang": "NDB02975",
+   "chac": "vua"
+  },
+  "T15T0000001404": {
+   "nguon": "ARC 2020-NC · 3",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001423": {
+   "nguon": "ARC 2021-NC · 2",
+   "dang": "NDB02977",
+   "chac": "cao"
+  },
+  "T15T0000001463": {
+   "nguon": "ARC 2022-CB · 32",
+   "dang": "NDB02976",
+   "chac": "cao"
+  },
+  "T15T0000001745": {
+   "nguon": "AMS 2022 · P1.3",
+   "dang": "NDB02977",
+   "chac": "cao"
+  },
+  "T15T0000001767": {
+   "nguon": "AMS 2023 · P1.12",
+   "dang": "NDB02976",
+   "chac": "vua"
+  },
+  "T15T0000001185": {
+   "nguon": "LL 2023 · 10",
+   "dang": "NDB02978",
+   "chac": "cao"
+  },
+  "T15T0000001332": {
+   "nguon": "NS 2020 · 2",
+   "dang": "NDB02979",
+   "chac": "cao"
+  },
+  "T15T0000001458": {
+   "nguon": "ARC 2022-CB · 27",
+   "dang": "NDB02979",
+   "chac": "vua"
+  },
+  "T15T0000001470": {
+   "nguon": "ARC 2022-CB · 41",
+   "dang": "NDB02979",
+   "chac": "cao"
+  },
+  "T15T0000001088": {
+   "nguon": "LTV 2019 · 8",
+   "dang": "NDB02980",
+   "chac": "cao"
+  },
+  "T15T0000001197": {
+   "nguon": "LL 2024 · 2",
+   "dang": "NDB02980",
+   "chac": "cao"
+  },
+  "T15T0000001254": {
+   "nguon": "TX 2024 · 1",
+   "dang": "NDB02980",
+   "chac": "vua"
+  },
+  "T15T0000001440": {
+   "nguon": "ARC 2022-CB · 8",
+   "dang": "NDB02980",
+   "chac": "vua"
+  },
+  "T15T0000001564": {
+   "nguon": "CG 2023 · P1.1",
+   "dang": "NDB02980",
+   "chac": "vua"
+  },
+  "T15T0000001250": {
+   "nguon": "TX 2023 · 12",
+   "dang": "NDB02983",
+   "chac": "vua"
+  },
+  "T15T0000001115": {
+   "nguon": "LTV 2022 · 8",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001148": {
+   "nguon": "LTV 2024 · 5",
+   "dang": "NDB02984",
+   "chac": "cao"
+  },
+  "T15T0000001179": {
+   "nguon": "LL 2023 · 4",
+   "dang": "NDB02984",
+   "chac": "cao"
+  },
+  "T15T0000001183": {
+   "nguon": "LL 2023 · 8",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001213": {
+   "nguon": "TX 2019 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001240": {
+   "nguon": "TX 2023 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001255": {
+   "nguon": "TX 2024 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001435": {
+   "nguon": "ARC 2022-CB · 3",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001452": {
+   "nguon": "ARC 2022-CB · 20",
+   "dang": "NDB02986",
+   "chac": "cao"
+  },
+  "T15T0000001491": {
+   "nguon": "ARC 2024-MAU · 12",
+   "dang": "NDB02984",
+   "chac": "cao"
+  },
+  "T15T0000001545": {
+   "nguon": "CG 2021 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001555": {
+   "nguon": "CG 2022 · P1.2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001573": {
+   "nguon": "CG 2024 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001582": {
+   "nguon": "CG 2025 · 2",
+   "dang": "NDB02985",
+   "chac": "cao"
+  },
+  "T15T0000001469": {
+   "nguon": "ARC 2022-CB · 38",
+   "dang": "NDB02987",
+   "chac": "cao"
+  },
+  "T15T0000001522": {
+   "nguon": "ARC 2024-MAU · 48",
+   "dang": "NDB02987",
+   "chac": "cao"
+  },
+  "T15T0000001140": {
+   "nguon": "LTV 2023 · 16",
+   "dang": "NDB02991",
+   "chac": "vua"
+  },
+  "T15T0000001264": {
+   "nguon": "TX 2024 · 12",
+   "dang": "NDB02989",
+   "chac": "cao"
+  },
+  "T15T0000001282": {
+   "nguon": "NTL 2020 · 3",
+   "dang": "NDB02989",
+   "chac": "cao"
+  },
+  "T15T0000001330": {
+   "nguon": "NTL 2025 · P2.3",
+   "dang": "NDB02991",
+   "chac": "vua"
+  },
+  "T15T0000001390": {
+   "nguon": "ARC 2020-CB · 6",
+   "dang": "NDB02989",
+   "chac": "cao"
+  },
+  "T15T0000001416": {
+   "nguon": "ARC 2020-NC · 15",
+   "dang": "NDB02989",
+   "chac": "cao"
+  },
+  "T15T0000001498": {
+   "nguon": "ARC 2024-MAU · 20",
+   "dang": "NDB02991",
+   "chac": "vua"
+  },
+  "T15T0000001738": {
+   "nguon": "AMS 2020 · 10",
+   "dang": "NDB02989",
+   "chac": "cao"
+  },
+  "T15T0000001061": {
+   "nguon": "LTV 2018 · 12",
+   "dang": "NDB02993",
+   "chac": "vua"
+  },
+  "T15T0000001066": {
+   "nguon": "LTV 2020 · 3",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001093": {
+   "nguon": "LTV 2019 · 14",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001124": {
+   "nguon": "LTV 2022 · 17",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001136": {
+   "nguon": "LTV 2023 · 12",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001150": {
+   "nguon": "LTV 2024 · 7",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001171": {
+   "nguon": "LTV 2025 · 13",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001209": {
+   "nguon": "LL 2024 · 17",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001218": {
+   "nguon": "TX 2019 · 7",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001274": {
+   "nguon": "TX 2025 · 6",
+   "dang": "NDB02993",
+   "chac": "vua"
+  },
+  "T15T0000001283": {
+   "nguon": "NTL 2020 · 4",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001300": {
+   "nguon": "NTL 2022 · P1.9",
+   "dang": "NDB02992",
+   "chac": "vua"
+  },
+  "T15T0000001306": {
+   "nguon": "NTL 2023 · P1.4",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001315": {
+   "nguon": "NTL 2024 · P1.4",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001369": {
+   "nguon": "NS 2025 · P1.3",
+   "dang": "NDB02993",
+   "chac": "vua"
+  },
+  "T15T0000001393": {
+   "nguon": "ARC 2020-CB · 9",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001415": {
+   "nguon": "ARC 2020-NC · 14",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001426": {
+   "nguon": "ARC 2021-NC · 5",
+   "dang": "NDB02993",
+   "chac": "vua"
+  },
+  "T15T0000001446": {
+   "nguon": "ARC 2022-CB · 14",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001500": {
+   "nguon": "ARC 2024-MAU · 22",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001530": {
+   "nguon": "CG 2019 · P1.6",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001560": {
+   "nguon": "CG 2022 · P2.7",
+   "dang": "NDB02994",
+   "chac": "cao"
+  },
+  "T15T0000001578": {
+   "nguon": "CG 2024 · 7",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001655": {
+   "nguon": "NTT 2024 · 7",
+   "dang": "NDB02992",
+   "chac": "cao"
+  },
+  "T15T0000001682": {
+   "nguon": "NN 2019 · 3",
+   "dang": "NDB02993",
+   "chac": "vua"
+  },
+  "T15T0000001698": {
+   "nguon": "NN 2024 · P1.1",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001710": {
+   "nguon": "NN 2024-TT2 · P1.1",
+   "dang": "NDB02992",
+   "chac": "vua"
+  },
+  "T15T0000001720": {
+   "nguon": "NN 2024-TT3 · P1.4",
+   "dang": "NDB02993",
+   "chac": "cao"
+  },
+  "T15T0000001068": {
+   "nguon": "LTV 2020 · 5",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001083": {
+   "nguon": "LTV 2019 · 3",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001109": {
+   "nguon": "LTV 2022 · 2",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001132": {
+   "nguon": "LTV 2023 · 7",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001155": {
+   "nguon": "LTV 2024 · 15",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001164": {
+   "nguon": "LTV 2025 · 6",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001173": {
+   "nguon": "LTV 2025 · 16",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001186": {
+   "nguon": "LL 2023 · 11",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001247": {
+   "nguon": "TX 2023 · 9",
+   "dang": "NDB02997",
+   "chac": "cao"
+  },
+  "T15T0000001299": {
+   "nguon": "NTL 2022 · P1.8",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001303": {
+   "nguon": "NTL 2023 · P1.1",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001314": {
+   "nguon": "NTL 2024 · P1.3",
+   "dang": "NDB02996",
+   "chac": "cao"
+  },
+  "T15T0000001347": {
+   "nguon": "NS 2021 · P1.3",
+   "dang": "NDB02995",
+   "chac": "vua"
+  },
+  "T15T0000001400": {
+   "nguon": "ARC 2020-CB · 16",
+   "dang": "NDB02996",
+   "chac": "cao"
+  },
+  "T15T0000001414": {
+   "nguon": "ARC 2020-NC · 13",
+   "dang": "NDB02997",
+   "chac": "cao"
+  },
+  "T15T0000001438": {
+   "nguon": "ARC 2022-CB · 6",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001495": {
+   "nguon": "ARC 2024-MAU · 17",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001647": {
+   "nguon": "NTT 2023 · 5",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001663": {
+   "nguon": "NTT-MH1 · P1.5",
+   "dang": "NDB02995",
+   "chac": "cao"
+  },
+  "T15T0000001074": {
+   "nguon": "LTV 2020 · 12",
+   "dang": "NDB02999",
+   "chac": "cao"
+  },
+  "T15T0000001230": {
+   "nguon": "TX 2021 · 9",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001249": {
+   "nguon": "TX 2023 · 11",
+   "dang": "NDB02998",
+   "chac": "cao"
+  },
+  "T15T0000001417": {
+   "nguon": "ARC 2020-NC · 16",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001464": {
+   "nguon": "ARC 2022-CB · 33",
+   "dang": "NDB02998",
+   "chac": "vua"
+  },
+  "T15T0000001497": {
+   "nguon": "ARC 2024-MAU · 19",
+   "dang": "NDB02999",
+   "chac": "cao"
+  },
+  "T15T0000001579": {
+   "nguon": "CG 2024 · 9",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001685": {
+   "nguon": "NN 2019 · 7",
+   "dang": "NDB02998",
+   "chac": "vua"
+  },
+  "T15T0000001689": {
+   "nguon": "NN 2021 · 3",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001709": {
+   "nguon": "NN 2024-TT1 · P2.2",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001739": {
+   "nguon": "AMS 2020 · 11",
+   "dang": "NDB02999",
+   "chac": "vua"
+  },
+  "T15T0000001764": {
+   "nguon": "AMS 2023 · P1.9",
+   "dang": "NDB02998",
+   "chac": "vua"
+  },
+  "T15T0000001242": {
+   "nguon": "TX 2023 · 4",
+   "dang": "NDB03006",
+   "chac": "cao"
+  },
+  "T15T0000001317": {
+   "nguon": "NTL 2024 · P1.6",
+   "dang": "NDB03007",
+   "chac": "cao"
+  },
+  "T15T0000001326": {
+   "nguon": "NTL 2025 · P1.5",
+   "dang": "NDB03007",
+   "chac": "cao"
+  },
+  "T15T0000001407": {
+   "nguon": "ARC 2020-NC · 6",
+   "dang": "NDB03006",
+   "chac": "cao"
+  },
+  "T15T0000001514": {
+   "nguon": "ARC 2024-MAU · 40",
+   "dang": "NDB03007",
+   "chac": "cao"
+  },
+  "T15T0000001765": {
+   "nguon": "AMS 2023 · P1.10",
+   "dang": "NDB03006",
+   "chac": "cao"
+  },
+  "T15T0000001055": {
+   "nguon": "LTV 2018 · 6",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001231": {
+   "nguon": "TX 2021 · 10",
+   "dang": "NDB03010",
+   "chac": "cao"
+  },
+  "T15T0000001237": {
+   "nguon": "TX 2022 · P1.6",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001253": {
+   "nguon": "TX 2023 · 16",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001328": {
+   "nguon": "NTL 2025 · P1.7",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001351": {
+   "nguon": "NS 2021 · P1.8",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001516": {
+   "nguon": "ARC 2024-MAU · 42",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001517": {
+   "nguon": "ARC 2024-MAU · 43",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001518": {
+   "nguon": "ARC 2024-MAU · 44",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001533": {
+   "nguon": "CG 2019 · P2.1",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001541": {
+   "nguon": "CG 2020 · 7",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001552": {
+   "nguon": "CG 2021 · 9",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001556": {
+   "nguon": "CG 2022 · P1.3",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001574": {
+   "nguon": "CG 2024 · 3",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001577": {
+   "nguon": "CG 2024 · 6",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001586": {
+   "nguon": "CG 2025 · 6",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001595": {
+   "nguon": "NTT 2018 · 5",
+   "dang": "NDB03009",
+   "chac": "vua"
+  },
+  "T15T0000001607": {
+   "nguon": "NTT 2019 · 7",
+   "dang": "NDB03010",
+   "chac": "cao"
+  },
+  "T15T0000001634": {
+   "nguon": "NTT 2021 · P2.2",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001637": {
+   "nguon": "NTT 2022 · 3",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001650": {
+   "nguon": "NTT 2023 · 9",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001657": {
+   "nguon": "NTT 2024 · 9",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001661": {
+   "nguon": "NTT-MH1 · P1.3",
+   "dang": "NDB03008",
+   "chac": "cao"
+  },
+  "T15T0000001667": {
+   "nguon": "NTT-MH1 · P2.2",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001703": {
+   "nguon": "NN 2024 · P2.2",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001714": {
+   "nguon": "NN 2024-TT2 · P1.5",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001721": {
+   "nguon": "NN 2024-TT3 · P1.5",
+   "dang": "NDB03010",
+   "chac": "vua"
+  },
+  "T15T0000001742": {
+   "nguon": "AMS 2020 · 15",
+   "dang": "NDB03008",
+   "chac": "vua"
+  },
+  "T15T0000001089": {
+   "nguon": "LTV 2019 · 9",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001221": {
+   "nguon": "TX 2019 · 11",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001268": {
+   "nguon": "TX 2024 · 16",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001287": {
+   "nguon": "NTL 2020 · 8",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001382": {
+   "nguon": "NS-HB1 · P1.9",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001392": {
+   "nguon": "ARC 2020-CB · 8",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001421": {
+   "nguon": "ARC 2020-NC · 20",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001612": {
+   "nguon": "NTT 2019 · 12",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001626": {
+   "nguon": "NTT 2021 · P1.2",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001674": {
+   "nguon": "NTT 2025 · 10",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001678": {
+   "nguon": "NTT 2025 · 14",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001686": {
+   "nguon": "NN 2019 · 8",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001697": {
+   "nguon": "NN 2023 · 6",
+   "dang": "NDB03011",
+   "chac": "cao"
+  },
+  "T15T0000001747": {
+   "nguon": "AMS 2022 · P1.5",
+   "dang": "NDB03011",
+   "chac": "vua"
+  },
+  "T15T0000001755": {
+   "nguon": "AMS 2022 · P2.2",
+   "dang": "NDB03012",
+   "chac": "cao"
+  },
+  "T15T0000001302": {
+   "nguon": "NTL 2022 · P2.1",
+   "dang": "NDB03013",
+   "chac": "cao"
+  },
+  "T15T0000001601": {
+   "nguon": "NTT 2018 · 12",
+   "dang": "NDB03013",
+   "chac": "cao"
+  },
+  "T15T0000001728": {
+   "nguon": "NN 2024-TT4 · P2.2",
+   "dang": "NDB03015",
+   "chac": "vua"
+  },
+  "T15T0000001769": {
+   "nguon": "AMS 2023 · P2.3",
+   "dang": "NDB03015",
+   "chac": "cao"
+  },
+  "T15T0000001643": {
+   "nguon": "NTT 2022 · 10",
+   "dang": "NDB03017",
+   "chac": "cao"
+  },
+  "T15T0000001708": {
+   "nguon": "NN 2024-TT1 · P2.1",
+   "dang": "NDB03017",
+   "chac": "cao"
+  },
+  "T15T0000001723": {
+   "nguon": "NN 2024-TT3 · P2.2",
+   "dang": "NDB03018",
+   "chac": "cao"
+  },
+  "T15T0000001617": {
+   "nguon": "NTT 2020 · P1.5",
+   "dang": "NDB03019",
+   "chac": "cao"
+  },
+  "T15T0000001113": {
+   "nguon": "LTV 2022 · 6",
+   "dang": "NDB03024",
+   "chac": "cao"
+  },
+  "T15T0000001121": {
+   "nguon": "LTV 2022 · 14",
+   "dang": "NDB03023",
+   "chac": "vua"
+  },
+  "T15T0000001133": {
+   "nguon": "LTV 2023 · 8",
+   "dang": "NDB03024",
+   "chac": "cao"
+  },
+  "T15T0000001161": {
+   "nguon": "LTV 2025 · 3",
+   "dang": "NDB03022",
+   "chac": "vua"
+  },
+  "T15T0000001166": {
+   "nguon": "LTV 2025 · 8",
+   "dang": "NDB03024",
+   "chac": "vua"
+  },
+  "T15T0000001203": {
+   "nguon": "LL 2024 · 8",
+   "dang": "NDB03022",
+   "chac": "cao"
+  },
+  "T15T0000001248": {
+   "nguon": "TX 2023 · 10",
+   "dang": "NDB03022",
+   "chac": "vua"
+  },
+  "T15T0000001288": {
+   "nguon": "NTL 2020 · 9",
+   "dang": "NDB03024",
+   "chac": "cao"
+  },
+  "T15T0000001354": {
+   "nguon": "NS 2021 · P2.3",
+   "dang": "NDB03022",
+   "chac": "cao"
+  },
+  "T15T0000001466": {
+   "nguon": "ARC 2022-CB · 35",
+   "dang": "NDB03022",
+   "chac": "cao"
+  },
+  "T15T0000001504": {
+   "nguon": "ARC 2024-MAU · 26",
+   "dang": "NDB03024",
+   "chac": "vua"
+  },
+  "T15T0000001143": {
+   "nguon": "LTV 2023 · 20",
+   "dang": "NDB03027",
+   "chac": "vua"
+  },
+  "T15T0000001195": {
+   "nguon": "LL 2023 · 20",
+   "dang": "NDB03027",
+   "chac": "cao"
+  },
+  "T15T0000001211": {
+   "nguon": "LL 2024 · 20",
+   "dang": "NDB03027",
+   "chac": "vua"
+  },
+  "T15T0000001222": {
+   "nguon": "TX 2019 · 12",
+   "dang": "NDB03027",
+   "chac": "cao"
+  },
+  "T15T0000001334": {
+   "nguon": "NS 2020 · 4",
+   "dang": "NDB03027",
+   "chac": "cao"
+  },
+  "T15T0000001366": {
+   "nguon": "NS 2023 · P2.4",
+   "dang": "NDB03027",
+   "chac": "vua"
+  },
+  "T15T0000001534": {
+   "nguon": "CG 2019 · P2.2",
+   "dang": "NDB03027",
+   "chac": "cao"
+  },
+  "T15T0000001620": {
+   "nguon": "NTT 2020 · P1.8",
+   "dang": "NDB03027",
+   "chac": "vua"
+  },
+  "T15T0000001631": {
+   "nguon": "NTT 2021 · P1.7",
+   "dang": "NDB03025",
+   "chac": "vua"
+  },
+  "T15T0000001679": {
+   "nguon": "NTT 2025 · 15",
+   "dang": "NDB03027",
+   "chac": "cao"
+  },
+  "T15T0000001716": {
+   "nguon": "NN 2024-TT2 · P2.2",
+   "dang": "NDB03026",
+   "chac": "vua"
+  },
+  "T15T0000001235": {
+   "nguon": "TX 2022 · P1.4",
+   "dang": "NDB03031",
+   "chac": "vua"
+  },
+  "T15T0000001262": {
+   "nguon": "TX 2024 · 10",
+   "dang": "NDB03029",
+   "chac": "vua"
+  },
+  "T15T0000001551": {
+   "nguon": "CG 2021 · 8",
+   "dang": "NDB03029",
+   "chac": "vua"
+  },
+  "T15T0000001561": {
+   "nguon": "CG 2022 · P2.8",
+   "dang": "NDB03030",
+   "chac": "cao"
+  },
+  "T15T0000001588": {
+   "nguon": "CG 2025 · 8",
+   "dang": "NDB03031",
+   "chac": "cao"
+  },
+  "T15T0000001691": {
+   "nguon": "NN 2021 · 5",
+   "dang": "NDB03030",
+   "chac": "cao"
+  },
+  "T15T0000001702": {
+   "nguon": "NN 2024 · P2.1",
+   "dang": "NDB03030",
+   "chac": "vua"
+  },
+  "T15T0000001752": {
+   "nguon": "AMS 2022 · P1.11",
+   "dang": "NDB03029",
+   "chac": "vua"
+  },
+  "T15T0000001756": {
+   "nguon": "AMS 2022 · P2.3",
+   "dang": "NDB03029",
+   "chac": "vua"
+  },
+  "T15T0000001102": {
+   "nguon": "LTV 2021 · 4",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001137": {
+   "nguon": "LTV 2023 · 13",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001187": {
+   "nguon": "LL 2023 · 12",
+   "dang": "NDB03032",
+   "chac": "vua"
+  },
+  "T15T0000001216": {
+   "nguon": "TX 2019 · 5",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001270": {
+   "nguon": "TX 2025 · 2",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001433": {
+   "nguon": "ARC 2022-CB · 1",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001471": {
+   "nguon": "ARC 2022-CB · 42",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001505": {
+   "nguon": "ARC 2024-MAU · 28",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001606": {
+   "nguon": "NTT 2019 · 6",
+   "dang": "NDB03032",
+   "chac": "vua"
+  },
+  "T15T0000001614": {
+   "nguon": "NTT 2020 · P1.2",
+   "dang": "NDB03032",
+   "chac": "vua"
+  },
+  "T15T0000001665": {
+   "nguon": "NTT-MH1 · P1.7",
+   "dang": "NDB03032",
+   "chac": "cao"
+  },
+  "T15T0000001062": {
+   "nguon": "LTV 2018 · 13",
+   "dang": "NDB03036",
+   "chac": "vua"
+  },
+  "T15T0000001234": {
+   "nguon": "TX 2022 · P1.3",
+   "dang": "NDB03036",
+   "chac": "vua"
+  },
+  "T15T0000001570": {
+   "nguon": "CG 2023 · P2.8",
+   "dang": "NDB03036",
+   "chac": "cao"
+  },
+  "T15T0000001051": {
+   "nguon": "LTV 2018 · 2",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001080": {
+   "nguon": "LTV 2020 · 19",
+   "dang": "NDB03039",
+   "chac": "cao"
+  },
+  "T15T0000001087": {
+   "nguon": "LTV 2019 · 7",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001112": {
+   "nguon": "LTV 2022 · 5",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001117": {
+   "nguon": "LTV 2022 · 10",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001127": {
+   "nguon": "LTV 2023 · 2",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001128": {
+   "nguon": "LTV 2023 · 3",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001158": {
+   "nguon": "LTV 2024 · 18",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001169": {
+   "nguon": "LTV 2025 · 11",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001180": {
+   "nguon": "LL 2023 · 5",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001210": {
+   "nguon": "LL 2024 · 19",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001245": {
+   "nguon": "TX 2023 · 7",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001246": {
+   "nguon": "TX 2023 · 8",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001265": {
+   "nguon": "TX 2024 · 13",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001271": {
+   "nguon": "TX 2025 · 3",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001272": {
+   "nguon": "TX 2025 · 4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001278": {
+   "nguon": "TX 2025 · 10",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001293": {
+   "nguon": "NTL 2022 · P1.2",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001307": {
+   "nguon": "NTL 2023 · P1.5",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001316": {
+   "nguon": "NTL 2024 · P1.5",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001327": {
+   "nguon": "NTL 2025 · P1.6",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001383": {
+   "nguon": "NS-HB1 · P2.1",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001406": {
+   "nguon": "ARC 2020-NC · 5",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001439": {
+   "nguon": "ARC 2022-CB · 7",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001467": {
+   "nguon": "ARC 2022-CB · 36",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001506": {
+   "nguon": "ARC 2024-MAU · 31",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001507": {
+   "nguon": "ARC 2024-MAU · 33",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001508": {
+   "nguon": "ARC 2024-MAU · 34",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001509": {
+   "nguon": "ARC 2024-MAU · 35",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001538": {
+   "nguon": "CG 2020 · 4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001547": {
+   "nguon": "CG 2021 · 4",
+   "dang": "NDB03040",
+   "chac": "vua"
+  },
+  "T15T0000001557": {
+   "nguon": "CG 2022 · P1.4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001567": {
+   "nguon": "CG 2023 · P1.4",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001575": {
+   "nguon": "CG 2024 · 4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001584": {
+   "nguon": "CG 2025 · 4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001603": {
+   "nguon": "NTT 2019 · 3",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001615": {
+   "nguon": "NTT 2020 · P1.3",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001628": {
+   "nguon": "NTT 2021 · P1.4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001638": {
+   "nguon": "NTT 2022 · 4",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001646": {
+   "nguon": "NTT 2023 · 3",
+   "dang": "NDB03040",
+   "chac": "vua"
+  },
+  "T15T0000001654": {
+   "nguon": "NTT 2024 · 5",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001662": {
+   "nguon": "NTT-MH1 · P1.4",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001684": {
+   "nguon": "NN 2019 · 6",
+   "dang": "NDB03038",
+   "chac": "vua"
+  },
+  "T15T0000001705": {
+   "nguon": "NN 2024-TT1 · P1.2",
+   "dang": "NDB03040",
+   "chac": "cao"
+  },
+  "T15T0000001717": {
+   "nguon": "NN 2024-TT3 · P1.1",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001733": {
+   "nguon": "AMS 2020 · 5",
+   "dang": "NDB03038",
+   "chac": "cao"
+  },
+  "T15T0000001748": {
+   "nguon": "AMS 2022 · P1.6",
+   "dang": "NDB03040",
+   "chac": "vua"
+  },
+  "T15T0000001097": {
+   "nguon": "LTV 2019 · 18",
+   "dang": "NDB03041",
+   "chac": "vua"
+  },
+  "T15T0000001233": {
+   "nguon": "TX 2022 · P1.2",
+   "dang": "NDB03041",
+   "chac": "vua"
+  },
+  "T15T0000001394": {
+   "nguon": "ARC 2020-CB · 10",
+   "dang": "NDB03041",
+   "chac": "cao"
+  },
+  "T15T0000001419": {
+   "nguon": "ARC 2020-NC · 18",
+   "dang": "NDB03041",
+   "chac": "cao"
+  },
+  "T15T0000001479": {
+   "nguon": "ARC 2022-CB · 50",
+   "dang": "NDB03041",
+   "chac": "cao"
+  },
+  "T15T0000001676": {
+   "nguon": "NTT 2025 · 12",
+   "dang": "NDB03041",
+   "chac": "vua"
+  },
+  "T15T0000001694": {
+   "nguon": "NN 2023 · 2",
+   "dang": "NDB03043",
+   "chac": "vua"
+  },
+  "T15T0000001227": {
+   "nguon": "TX 2021 · 5",
+   "dang": "NDB03048",
+   "chac": "vua"
+  },
+  "T15T0000001244": {
+   "nguon": "TX 2023 · 6",
+   "dang": "NDB03048",
+   "chac": "vua"
+  },
+  "T15T0000001298": {
+   "nguon": "NTL 2022 · P1.7",
+   "dang": "NDB03048",
+   "chac": "vua"
+  },
+  "T15T0000001377": {
+   "nguon": "NS-HB1 · P1.4",
+   "dang": "NDB03049",
+   "chac": "cao"
+  },
+  "T15T0000001434": {
+   "nguon": "ARC 2022-CB · 2",
+   "dang": "NDB03049",
+   "chac": "cao"
+  },
+  "T15T0000001515": {
+   "nguon": "ARC 2024-MAU · 41",
+   "dang": "NDB03048",
+   "chac": "cao"
+  },
+  "T15T0000001536": {
+   "nguon": "CG 2020 · 2",
+   "dang": "NDB03048",
+   "chac": "vua"
+  },
+  "T15T0000001565": {
+   "nguon": "CG 2023 · P1.2",
+   "dang": "NDB03048",
+   "chac": "cao"
+  },
+  "T15T0000001706": {
+   "nguon": "NN 2024-TT1 · P1.3",
+   "dang": "NDB03048",
+   "chac": "vua"
+  }
+ }
+}
