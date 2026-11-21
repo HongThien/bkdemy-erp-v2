@@ -82175,3 +82175,4 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm (gọi hàm trong giao dịch rollback, chỉ đọc):** GV Đạt = được nhập ca 11B1; Trang = được; 1 TA lớp khác = không.
 - **Chưa làm (chờ Thùy gật):** mở lại 6 buổi 11B1 ngày 15/11 đã bị huỷ 16/11 (buổi + case + dạng) để GV nhập Đ/C/S. "Sửa" sau khi đã NỘP chưa mở (nộp = xong ca + vào mastery).
 - **Bài học:** quyền nhập kết quả không được buộc vào MỘT người (TA); luật tự huỷ phải xét "đã diễn ra" bằng điểm danh, không chỉ bằng "có bài làm chưa".
+- **(cùng tối) Đã mở lại 6 buổi 11B1 ngày 15/11** (mig 202611211646, Thùy gật): 6 buổi + ca → `mo`, 6 case `nhe_xong/bo` → `nhe_mo`; 6 em vẫn `co_mat`, dạng không đụng. Kiểm: cả 6 `buoi=mo · co_mat · case=nhe_mo · ca=mo`. GV lớp nhập Đ/C/S ở Bổ trợ › Sau giờ (cần deploy ERP bản mới để có nút Đổi TA; quyền nhập đã ở DB).
