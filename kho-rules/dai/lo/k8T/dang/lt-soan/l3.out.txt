@@ -1,0 +1,416 @@
+#NHOM NNB01452
+@LT
+##ĐN Phân tích đa thức thành nhân tử
+Phân tích một đa thức thành nhân tử là biến đổi nó thành tích của các đa thức có bậc thấp hơn (hệ số nguyên hoặc hữu tỉ). Phải làm đến khi không còn nhân tử nào phân tích tiếp được nữa.
+
+##TC Các hằng đẳng thức hay dùng khi tách, thêm bớt
+- $A^2-B^2=(A-B)(A+B)$.
+- $A^3\pm B^3=(A\pm B)(A^2\mp AB+B^2)$.
+- $(A\pm B)^2=A^2\pm2AB+B^2$ và $(A\pm B)^3=A^3\pm3A^2B+3AB^2\pm B^3$.
+- $A^n-B^n$ chia hết cho $A-B$ với mọi số nguyên dương $n$.
+
+##PP Thứ tự thử các phương pháp
+Đặt nhân tử chung (nếu có)
+Dùng hằng đẳng thức nếu nhận ra dạng
+Nhóm hạng tử để xuất hiện nhân tử chung
+Nếu vẫn bế tắc thì tách một hạng tử thành tổng, hoặc thêm bớt cùng một hạng tử, sao cho nhóm được hoặc xuất hiện hằng đẳng thức
+
+##CY
+- Tách hay thêm bớt đều phải giữ nguyên giá trị đa thức: sau khi tách, tổng các phần tách phải bằng hạng tử ban đầu; thêm vào bao nhiêu thì phải bớt đi bấy nhiêu.
+- Tổng hai bình phương $A^2+B^2$ nói chung không phân tích được; chỉ làm được khi thêm bớt tạo ra một hiệu hai bình phương.
+- Luôn kiểm tra lại bằng cách nhân các nhân tử ra rồi so với đa thức ban đầu.
+
+#DANG NDB02728
+@LT
+##TC Tách hạng tử bậc nhất của tam thức bậc hai
+Với tam thức $ax^2+bx+c$ ($a,b,c$ nguyên), nếu tìm được hai số nguyên $b_1,b_2$ thỏa $b_1+b_2=b$ và $b_1b_2=ac$ thì tách $bx=b_1x+b_2x$ rồi nhóm: hai nhóm $ax^2+b_1x$ và $b_2x+c$ cùng có nhân tử chung là một nhị thức bậc nhất.
+
+##PP Tách hạng tử bậc nhất
+Tính tích $ac$ của hệ số bậc hai và hệ số tự do
+Liệt kê các cặp ước nguyên của $ac$, chọn cặp $b_1,b_2$ có tổng bằng $b$
+Tách $bx=b_1x+b_2x$ để đa thức có bốn hạng tử
+Nhóm hai cặp, đặt nhân tử chung trong từng cặp để lộ cùng một nhị thức, rồi đặt nhị thức đó ra ngoài
+
+##CY
+- Nếu $ac<0$ thì $b_1,b_2$ trái dấu; nếu $ac>0$ thì $b_1,b_2$ cùng dấu với $b$.
+- Nếu không có cặp ước nguyên nào của $ac$ có tổng bằng $b$ thì tam thức không phân tích được thành tích hai nhị thức hệ số nguyên.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $a^2-5a-14$.
+
+Bài giải:
+Tam thức có hệ số bậc hai là $1$, hệ số tự do là $-14$ nên cần tìm hai số có tích $1\cdot(-14)=-14$ và tổng bằng $-5$.
+Các cặp có tích $-14$ là $(1;-14)$, $(-1;14)$, $(2;-7)$, $(-2;7)$; cặp có tổng $-5$ là $2$ và $-7$.
+$a^2-5a-14=a^2+2a-7a-14$
+$=a(a+2)-7(a+2)$
+$=(a+2)(a-7)$
+Vậy $a^2-5a-14=(a+2)(a-7)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $6x^2-7xy-3y^2$.
+
+Bài giải:
+Coi $y$ như hằng số: hệ số bậc hai là $6$, hệ số của $y^2$ là $-3$ nên cần hai số có tích $6\cdot(-3)=-18$ và tổng bằng $-7$.
+Hai số trái dấu có tích $-18$ và tổng $-7$ là $2$ và $-9$.
+$6x^2-7xy-3y^2=6x^2-9xy+2xy-3y^2$
+$=3x(2x-3y)+y(2x-3y)$
+$=(2x-3y)(3x+y)$
+Vậy $6x^2-7xy-3y^2=(2x-3y)(3x+y)$.
+
+#DANG NDB03240
+@LT
+##TC Hai hướng tách hạng tử ở đa thức bậc từ ba
+- Tạo lập phương: nếu các hạng tử đầu có dạng $x^3+3mx^2+3m^2x$ thì chúng thiếu $m^3$ để thành $(x+m)^3$; tách các hạng tử còn lại để ghép đủ lập phương rồi đặt $x+m$ ra ngoài.
+- Tạo nhân tử chung: nếu một hệ số lặp lại ở nhiều hạng tử thì tách các hạng tử sao cho mỗi nhóm có chung một nhân tử, có thể là nhân tử bậc hai.
+
+##PP Tách hạng tử để nhóm
+Quan sát hệ số: hệ số của $x^2$ bằng $3m$ gợi $(x+m)^3$; một hệ số xuất hiện lặp lại gợi nhóm theo hệ số đó
+Tách (cộng và bớt cùng số) các hạng tử để một nhóm thành lập phương hoặc thành bội của một đa thức chung
+Đặt nhân tử chung hoặc dùng hằng đẳng thức
+Phân tích tiếp các nhân tử đến cùng
+
+##CY
+Khi tách phải giữ nguyên tổng: ví dụ tách $26x=27x-x$ và $24=27-3$ thì phần bớt đi $x+3$ phải được viết ra đủ, không được bỏ sót.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^3+9x^2+26x+24$.
+
+Bài giải:
+Ba hạng tử đầu $x^3+9x^2+27x$ gần giống khai triển $(x+3)^3=x^3+9x^2+27x+27$, nên tách $26x=27x-x$ và $24=27-3$.
+$x^3+9x^2+26x+24=(x^3+9x^2+27x+27)-(x+3)$
+$=(x+3)^3-(x+3)$
+$=(x+3)\left[(x+3)^2-1\right]$
+$=(x+3)(x+3-1)(x+3+1)$
+$=(x+2)(x+3)(x+4)$
+Vậy $x^3+9x^2+26x+24=(x+2)(x+3)(x+4)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $x^4-30x^2+31x-30$.
+
+Bài giải:
+Hệ số $31$ lặp lại ở hạng tử $-30x^2$ và $31x$, còn $-30=1-31$ nên tách $-30x^2=x^2-31x^2$ và $-30=1-31$ để mỗi nhóm có nhân tử $x^2-x+1$.
+$x^4-30x^2+31x-30=(x^4+x^2+1)-31(x^2-x+1)$
+Thêm bớt $x^2$: $x^4+x^2+1=(x^2+1)^2-x^2=(x^2+x+1)(x^2-x+1)$.
+$x^4-30x^2+31x-30=(x^2+x+1)(x^2-x+1)-31(x^2-x+1)$
+$=(x^2-x+1)(x^2+x+1-31)$
+$=(x^2-x+1)(x^2+x-30)$
+Tách $x^2+x-30=x^2+6x-5x-30=x(x+6)-5(x+6)=(x+6)(x-5)$.
+Vậy $x^4-30x^2+31x-30=(x^2-x+1)(x+6)(x-5)$.
+
+#DANG NDB03241
+@LT
+##TC Thêm bớt để có hiệu hai bình phương
+- $A^2+B^2=(A+B)^2-2AB$: nếu $2AB$ là bình phương của một đơn thức thì thêm bớt $2AB$ sẽ cho hiệu hai bình phương.
+- $a^4+4b^4=(a^2+2b^2)^2-(2ab)^2=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$.
+
+##PP Thêm bớt tạo hiệu hai bình phương
+Viết đa thức dưới dạng $P^2+Q^2$ (ví dụ $x^4+324=(x^2)^2+18^2$)
+Tính $2PQ$ và kiểm tra nó có là bình phương của một đơn thức không
+Thêm bớt $2PQ$ để ba hạng tử đầu thành $(P+Q)^2$, phần bớt đi là $-(\ldots)^2$
+Dùng hiệu hai bình phương để được tích hai nhân tử, rồi xét xem nhân tử nào còn tách được
+
+##CY
+- Với đa thức dạng $A^4+A^2B^2+B^4$ chỉ cần thêm bớt $A^2B^2$ để được $(A^2+B^2)^2-(AB)^2$.
+- Hai nhân tử tìm được thường là tam thức không phân tích tiếp được; đừng kết luận sai rằng $a^4+4b^4=(a^2+2b^2)^2$ vì còn thiếu số hạng giữa.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^4+324$.
+
+Bài giải:
+Ta có $x^4+324=(x^2)^2+18^2$ là tổng hai bình phương; $2\cdot x^2\cdot18=36x^2=(6x)^2$ là một bình phương nên thêm bớt $36x^2$.
+$x^4+324=x^4+36x^2+324-36x^2$
+$=(x^2+18)^2-(6x)^2$
+$=(x^2+18+6x)(x^2+18-6x)$
+$=(x^2+6x+18)(x^2-6x+18)$
+Vậy $x^4+324=(x^2+6x+18)(x^2-6x+18)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $4x^4+81$.
+
+Bài giải:
+Ta có $4x^4+81=(2x^2)^2+9^2$; gấp đôi tích hai cơ số là $2\cdot2x^2\cdot9=36x^2=(6x)^2$ nên thêm bớt $36x^2$.
+$4x^4+81=4x^4+36x^2+81-36x^2$
+$=(2x^2+9)^2-(6x)^2$
+$=(2x^2+9+6x)(2x^2+9-6x)$
+$=(2x^2+6x+9)(2x^2-6x+9)$
+Vậy $4x^4+81=(2x^2+6x+9)(2x^2-6x+9)$.
+
+#DANG NDB03242
+@LT
+##TC Nhân tử $x^2+x+1$ của các đa thức có số mũ theo từng chu kì 3
+Vì $x^3-1=(x-1)(x^2+x+1)$ nên $x^{3k}-1$ chia hết cho $x^2+x+1$ với mọi số nguyên dương $k$. Do đó $x^{3k+1}-x=x(x^{3k}-1)$ và $x^{3k+2}-x^2=x^2(x^{3k}-1)$ cũng chia hết cho $x^2+x+1$.
+
+##PP Thêm bớt $x^2$ và $x$
+Nhận ra các số mũ khác nhau theo mod $3$: một hạng tử mũ $3k+2$, một hạng tử mũ $3k+1$ và hạng tử tự do $1$
+Thêm bớt $x^2$ và $x$ để tách thành các hiệu $x^{3k+2}-x^2$, $x^{3k+1}-x$ cùng với $x^2+x+1$
+Đặt $x^2$, $x$ làm nhân tử chung rồi phân tích $x^{3k}-1$ để lộ nhân tử $x^2+x+1$
+Đặt $x^2+x+1$ làm nhân tử chung của mọi nhóm và thu gọn nhân tử còn lại
+
+##CY
+Chỉ dùng được khi ba số mũ (kể cả mũ $0$ của hạng tử $1$) có số dư theo mod $3$ là $2,1,0$ mỗi loại đúng một lần; nếu hai hạng tử có cùng số dư thì không áp dụng được cách này.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^5+x+1$.
+
+Bài giải:
+Các số mũ $5=3\cdot1+2$, $1=3\cdot0+1$ và $0$ có số dư $2,1,0$ theo mod $3$ nên thêm bớt $x^2$ để tạo nhóm $x^2+x+1$.
+$x^5+x+1=(x^5-x^2)+(x^2+x+1)$
+$=x^2(x^3-1)+(x^2+x+1)$
+$=x^2(x-1)(x^2+x+1)+(x^2+x+1)$
+$=(x^2+x+1)\left[x^2(x-1)+1\right]$
+$=(x^2+x+1)(x^3-x^2+1)$
+Vậy $x^5+x+1=(x^2+x+1)(x^3-x^2+1)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $x^8+x^7+1$.
+
+Bài giải:
+Các số mũ $8=3\cdot2+2$, $7=3\cdot2+1$ và $0$ có số dư $2,1,0$ theo mod $3$ nên thêm bớt $x^2$ và $x$.
+$x^8+x^7+1=(x^8-x^2)+(x^7-x)+(x^2+x+1)$
+$=x^2(x^6-1)+x(x^6-1)+(x^2+x+1)$
+$=x(x+1)(x^6-1)+(x^2+x+1)$
+Ta có $x^6-1=(x^3-1)(x^3+1)=(x-1)(x^2+x+1)(x^3+1)$ nên
+$x^8+x^7+1=x(x+1)(x-1)(x^3+1)(x^2+x+1)+(x^2+x+1)$
+$=(x^2+x+1)\left[x(x^2-1)(x^3+1)+1\right]$
+$=(x^2+x+1)(x^6-x^4+x^3-x+1)$
+Vậy $x^8+x^7+1=(x^2+x+1)(x^6-x^4+x^3-x+1)$.
+
+#NHOM NNB01453
+@LT
+##ĐL Định lí Bê-du và hệ quả
+Số dư của phép chia đa thức $f(x)$ cho $x-a$ bằng $f(a)$. Hệ quả: $f(a)=0$ khi và chỉ khi $f(x)$ chia hết cho $x-a$, tức là $f(x)=(x-a)g(x)$.
+
+##ĐL Nghiệm hữu tỉ của đa thức hệ số nguyên
+Nếu đa thức $f(x)=a_0x^n+a_1x^{n-1}+\dots+a_n$ có các hệ số nguyên và có nghiệm hữu tỉ $\dfrac pq$ (phân số tối giản) thì $p$ là ước của hệ số tự do $a_n$ và $q$ là ước của hệ số cao nhất $a_0$. Đặc biệt, đa thức có hệ số cao nhất bằng $1$ chỉ có nghiệm hữu tỉ là nghiệm nguyên, và nghiệm đó là ước của hệ số tự do.
+
+##TC Nhẩm nghiệm nhanh
+- Tổng các hệ số bằng $0$ thì $x=1$ là nghiệm, nên có nhân tử $x-1$.
+- Tổng các hệ số của lũy thừa bậc chẵn bằng tổng các hệ số của lũy thừa bậc lẻ thì $x=-1$ là nghiệm, nên có nhân tử $x+1$.
+
+##TC Sơ đồ Hoóc-ne
+Chia $f(x)=a_0x^n+a_1x^{n-1}+\dots+a_n$ cho $x-a$: đặt $b_0=a_0$ và $b_k=a_k+a\,b_{k-1}$ với $k=1,2,\dots,n$. Khi đó $b_n$ là số dư $f(a)$, còn $b_0,b_1,\dots,b_{n-1}$ là các hệ số của thương theo thứ tự lũy thừa giảm dần.
+
+##ĐL Đồng nhất hệ số
+Hai đa thức bằng nhau với mọi giá trị của $x$ khi và chỉ khi các hệ số của các lũy thừa cùng bậc bằng nhau.
+
+#DANG NDB02735
+@LT
+##TC Hai kiểu đặt biến phụ
+- Một nhóm lặp lại nguyên khối (kể cả sau khi gộp, ví dụ $4x^2+4x=4(x^2+x)$): đặt $y$ bằng nhóm đó, được tam thức bậc hai theo $y$.
+- Hai thừa số có cùng hạng tử đầu và cuối, chỉ khác hạng tử giữa: đặt $t$ bằng phần chung, được biểu thức đẳng cấp bậc hai theo $t$ và $x$, phân tích như tam thức.
+
+##PP Đặt biến phụ
+Tìm nhóm biểu thức lặp lại hoặc phần chung của các thừa số (gộp hạng tử nếu cần)
+Đặt biến phụ bằng nhóm đó và viết biểu thức theo biến mới
+Phân tích theo biến phụ (tách hạng tử bậc nhất, nhóm)
+Thay biến phụ trở lại và phân tích tiếp từng nhân tử theo $x$
+
+##CY
+Sau khi thay lại phải kiểm tra từng nhân tử xem còn tách được không. Tam thức viết được dưới dạng $(x+m)^2+k$ với $k>0$ thì không phân tích tiếp được trên số thực, ta dừng ở đó.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $(x^2+x)^2+4x^2+4x-12$.
+
+Bài giải:
+Gộp $4x^2+4x=4(x^2+x)$ nên biểu thức chỉ chứa nhóm $x^2+x$.
+$(x^2+x)^2+4x^2+4x-12=(x^2+x)^2+4(x^2+x)-12$
+Đặt $y=x^2+x$, biểu thức trở thành $y^2+4y-12$.
+$y^2+4y-12=y^2-2y+6y-12$
+$=y(y-2)+6(y-2)$
+$=(y-2)(y+6)$
+Thay $y=x^2+x$:
+$=(x^2+x-2)(x^2+x+6)$
+Tách $x^2+x-2=x^2+2x-x-2=(x-1)(x+2)$; còn $x^2+x+6=\left(x+\dfrac12\right)^2+\dfrac{23}4>0$ không phân tích tiếp được.
+Vậy $(x^2+x)^2+4x^2+4x-12=(x-1)(x+2)(x^2+x+6)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $(x^2-2x+4)(x^2+3x+4)-14x^2$.
+
+Bài giải:
+Hai thừa số có cùng hạng tử đầu và cuối là $x^2+4$ nên đặt $t=x^2+4$.
+$(x^2-2x+4)(x^2+3x+4)-14x^2=(t-2x)(t+3x)-14x^2$
+$=t^2+tx-6x^2-14x^2$
+$=t^2+tx-20x^2$
+$=t^2+5tx-4tx-20x^2$
+$=t(t+5x)-4x(t+5x)$
+$=(t+5x)(t-4x)$
+Thay $t=x^2+4$:
+$=(x^2+5x+4)(x^2-4x+4)$
+$=(x+1)(x+4)(x-2)^2$
+Vậy $(x^2-2x+4)(x^2+3x+4)-14x^2=(x+1)(x+4)(x-2)^2$.
+
+#DANG NDB03243
+@LT
+##TC Ghép cặp thừa số có cùng tổng
+Với $(x+a)(x+b)(x+c)(x+d)$ mà $a+d=b+c=s$ thì $(x+a)(x+d)=x^2+sx+ad$ và $(x+b)(x+c)=x^2+sx+bc$: hai tích cùng chứa phần $x^2+sx$.
+
+##PP Nhóm cặp rồi đặt biến phụ
+Tìm cách ghép bốn hằng số thành hai cặp có cùng tổng
+Nhân từng cặp để có hai tam thức cùng chứa $x^2+sx$
+Đặt $y=x^2+sx$ (hoặc đặt $y$ là số đứng giữa hai tam thức để có hiệu hai bình phương) rồi phân tích theo $y$
+Thay $y$ trở lại, phân tích tiếp các tam thức theo $x$
+
+##CY
+Phải ghép các cặp có cùng tổng hằng số, ghép sai thì hai tích không còn phần chung $x^2+sx$ và không đặt được biến phụ.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $(x+2)(x+3)(x+4)(x+5)-24$.
+
+Bài giải:
+Các hằng số có $2+5=3+4=7$ nên ghép $(x+2)(x+5)$ và $(x+3)(x+4)$.
+$(x+2)(x+3)(x+4)(x+5)-24=(x^2+7x+10)(x^2+7x+12)-24$
+Đặt $y=x^2+7x$, biểu thức trở thành $(y+10)(y+12)-24$.
+$(y+10)(y+12)-24=y^2+22y+96$
+$=y^2+6y+16y+96$
+$=y(y+6)+16(y+6)$
+$=(y+6)(y+16)$
+Thay $y=x^2+7x$:
+$=(x^2+7x+6)(x^2+7x+16)$
+$=(x+1)(x+6)(x^2+7x+16)$
+Vậy $(x+2)(x+3)(x+4)(x+5)-24=(x+1)(x+6)(x^2+7x+16)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $x(x+4)(x+6)(x+10)+128$.
+
+Bài giải:
+Các hằng số có $0+10=4+6=10$ nên ghép $x(x+10)$ và $(x+4)(x+6)$.
+$x(x+4)(x+6)(x+10)+128=(x^2+10x)(x^2+10x+24)+128$
+Đặt $y=x^2+10x+12$ là số đứng giữa hai tam thức; khi đó $x^2+10x=y-12$ và $x^2+10x+24=y+12$.
+$=(y-12)(y+12)+128$
+$=y^2-144+128$
+$=y^2-16$
+$=(y-4)(y+4)$
+Thay $y=x^2+10x+12$:
+$=(x^2+10x+8)(x^2+10x+16)$
+$=(x^2+10x+8)(x+2)(x+8)$
+Vậy $x(x+4)(x+6)(x+10)+128=(x+2)(x+8)(x^2+10x+8)$.
+
+#DANG NDB03244
+@LT
+##TC Đa thức hồi quy bậc bốn
+- Với $x\ne0$ và $y=x+\dfrac1x$ ta có $x^2+\dfrac1{x^2}=y^2-2$.
+- Với $x\ne0$ và $y=x-\dfrac1x$ ta có $x^2+\dfrac1{x^2}=y^2+2$.
+- Đa thức $ax^4+bx^3+cx^2+bx+a$ (hệ số đối xứng) chia cho $x^2$ được $a\left(x^2+\dfrac1{x^2}\right)+b\left(x+\dfrac1x\right)+c$; đa thức $ax^4+bx^3+cx^2-bx+a$ cho $a\left(x^2+\dfrac1{x^2}\right)+b\left(x-\dfrac1x\right)+c$.
+
+##PP Chia cho $x^2$, đặt $y$
+Nhận ra hệ số hai đầu bằng nhau, hệ số của $x^3$ và $x$ bằng nhau (đặt $y=x+\dfrac1x$) hoặc đối nhau (đặt $y=x-\dfrac1x$)
+Với $x\ne0$ đưa $x^2$ ra ngoài để ngoặc chứa $x^2+\dfrac1{x^2}$ và $x\pm\dfrac1x$
+Đặt $y$ rồi thay $x^2+\dfrac1{x^2}$ theo $y$ để được tam thức bậc hai theo $y$, phân tích nó
+Thay $y$ trở lại, nhân $x^2$ vào để khử mẫu, rồi xét riêng trường hợp $x=0$
+
+##CY
+Vì đã chia cho $x$ nên phải kiểm tra $x=0$ riêng. Hai đa thức bằng nhau tại vô số giá trị $x\ne0$ thì bằng nhau với mọi $x$.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $A=x^4+6x^3+7x^2-6x+1$.
+
+Bài giải:
+Hệ số hai đầu cùng bằng $1$, hệ số của $x^3$ và $x$ là $6$ và $-6$ đối nhau nên đặt $y=x-\dfrac1x$. Với $x\ne0$:
+$A=x^2\left(x^2+6x+7-\dfrac6x+\dfrac1{x^2}\right)$
+$=x^2\left[\left(x^2+\dfrac1{x^2}\right)+6\left(x-\dfrac1x\right)+7\right]$
+Đặt $y=x-\dfrac1x$ thì $x^2+\dfrac1{x^2}=y^2+2$, nên
+$A=x^2(y^2+2+6y+7)$
+$=x^2(y^2+6y+9)$
+$=x^2(y+3)^2$
+$=\left[x(y+3)\right]^2$
+Vì $x\cdot y=x^2-1$ nên $x(y+3)=x^2-1+3x$, suy ra $A=(x^2+3x-1)^2$.
+Với $x=0$: $A=1$ và $(0+0-1)^2=1$, đẳng thức vẫn đúng.
+Vậy $x^4+6x^3+7x^2-6x+1=(x^2+3x-1)^2$.
+
+##VD
+Phân tích đa thức thành nhân tử: $B=x^4-7x^3+14x^2-7x+1$.
+
+Bài giải:
+Các hệ số $1,-7,14,-7,1$ đối xứng nên đặt $y=x+\dfrac1x$. Với $x\ne0$:
+$B=x^2\left(x^2-7x+14-\dfrac7x+\dfrac1{x^2}\right)$
+$=x^2\left[\left(x^2+\dfrac1{x^2}\right)-7\left(x+\dfrac1x\right)+14\right]$
+Đặt $y=x+\dfrac1x$ thì $x^2+\dfrac1{x^2}=y^2-2$, nên
+$B=x^2(y^2-2-7y+14)$
+$=x^2(y^2-7y+12)$
+$=x^2(y-3)(y-4)$
+$=\left[x(y-3)\right]\left[x(y-4)\right]$
+Vì $x\cdot y=x^2+1$ nên $x(y-3)=x^2-3x+1$ và $x(y-4)=x^2-4x+1$, suy ra $B=(x^2-3x+1)(x^2-4x+1)$.
+Với $x=0$: $B=1$ và $1\cdot1=1$, đẳng thức vẫn đúng.
+Vậy $x^4-7x^3+14x^2-7x+1=(x^2-3x+1)(x^2-4x+1)$.
+
+#DANG NDB03245
+@LT
+##PP Nhẩm nghiệm rồi chia
+Kiểm tra nhanh tổng các hệ số và hiệu tổng hệ số bậc chẵn với bậc lẻ; nếu chưa thấy thì thử các ước của hệ số tự do (và các phân số $\dfrac pq$ khi hệ số cao nhất khác $1$)
+Tìm được $f(a)=0$ thì theo hệ quả của định lí Bê-du, $f(x)$ chia hết cho $x-a$
+Chia $f(x)$ cho $x-a$ bằng sơ đồ Hoóc-ne hoặc bằng cách tách hạng tử, được $f(x)=(x-a)g(x)$
+Phân tích tiếp $g(x)$ (nhẩm nghiệm tiếp hoặc tách hạng tử) đến khi không còn tách được
+
+##CY
+- Nghiệm hữu tỉ $\dfrac pq$ (tối giản) cho nhân tử $qx-p$ chứ không phải $x-\dfrac pq$.
+- Nếu thử hết các ước mà không có nghiệm hữu tỉ thì đa thức không có nhân tử bậc nhất hệ số nguyên; khi đó chuyển sang tách hạng tử hoặc hệ số bất định.
+- Tìm được một nghiệm chưa phải là xong: phải phân tích hết nhân tử còn lại.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^3-19x-30$.
+
+Bài giải:
+Đặt $f(x)=x^3-19x-30$. Hệ số cao nhất bằng $1$ nên nghiệm hữu tỉ nếu có phải là ước của $-30$.
+Thử $x=-2$: $f(-2)=-8+38-30=0$ nên theo hệ quả của định lí Bê-du, $f(x)$ chia hết cho $x+2$.
+Chia theo sơ đồ Hoóc-ne với $a=-2$: các hệ số $1;0;-19;-30$ cho $1$; $(-2)\cdot1+0=-2$; $(-2)\cdot(-2)-19=-15$; $(-2)\cdot(-15)-30=0$.
+Vậy thương là $x^2-2x-15$ và $x^3-19x-30=(x+2)(x^2-2x-15)$.
+$=(x+2)(x^2+3x-5x-15)$
+$=(x+2)\left[x(x+3)-5(x+3)\right]$
+$=(x+2)(x+3)(x-5)$
+Vậy $x^3-19x-30=(x+2)(x+3)(x-5)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $2x^3-3x^2-11x+6$.
+
+Bài giải:
+Đặt $f(x)=2x^3-3x^2-11x+6$. Hệ số cao nhất là $2$ nên các nghiệm hữu tỉ có thể là $\dfrac pq$ với $p$ là ước của $6$ và $q\in\{1;2\}$.
+Thử $x=3$: $f(3)=54-27-33+6=0$ nên $f(x)$ chia hết cho $x-3$ (hệ quả của định lí Bê-du).
+Sơ đồ Hoóc-ne với $a=3$: các hệ số $2;-3;-11;6$ cho $2$; $3\cdot2-3=3$; $3\cdot3-11=-2$; $3\cdot(-2)+6=0$.
+Vậy thương là $2x^2+3x-2$ và $f(x)=(x-3)(2x^2+3x-2)$.
+Tách $2x^2+3x-2=2x^2+4x-x-2=2x(x+2)-(x+2)=(x+2)(2x-1)$.
+Vậy $2x^3-3x^2-11x+6=(x-3)(x+2)(2x-1)$.
+
+#DANG NDB03246
+@LT
+##TC Khai triển tích hai tam thức bậc hai
+$(x^2+ax+b)(x^2+cx+d)=x^4+(a+c)x^3+(b+d+ac)x^2+(ad+bc)x+bd$.
+
+##PP Hệ số bất định cho đa thức bậc bốn
+Thử các ước của hệ số tự do để chắc chắn đa thức không có nghiệm hữu tỉ, tức không có nhân tử bậc nhất
+Giả sử đa thức bằng $(x^2+ax+b)(x^2+cx+d)$ với $a,b,c,d$ nguyên, khai triển và đồng nhất hệ số để lập hệ bốn phương trình
+Từ $bd$ bằng hệ số tự do, xét từng cặp ước nguyên $(b;d)$; dùng hai phương trình đầu để tìm $a,c$ rồi thử vào phương trình còn lại
+Viết kết quả và nhân lại để kiểm tra
+
+##CY
+Nếu mọi cặp $(b;d)$ đều không cho nghiệm nguyên của hệ thì đa thức không phân tích được thành tích hai tam thức hệ số nguyên; khi đó thử cách khác (đổi biến, thêm bớt) chứ chưa nên kết luận vội.
+
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^4-6x^3+12x^2-14x+3$.
+
+Bài giải:
+Các ước của hệ số tự do là $\pm1;\pm3$. Thử: $f(1)=-4$, $f(-1)=36$, $f(3)=-12$, $f(-3)=396$ đều khác $0$ nên không có nhân tử bậc nhất.
+Giả sử $x^4-6x^3+12x^2-14x+3=(x^2+ax+b)(x^2+cx+d)$ với $a,b,c,d$ nguyên. Đồng nhất hệ số:
+$\begin{cases}a+c=-6\\b+d+ac=12\\ad+bc=-14\\bd=3\end{cases}$
+Thử $b=3$, $d=1$: $ac=12-4=8$ và $a+c=-6$ nên $a(-6-a)=8$, tức $a^2+6a+8=0$, hay $(a+2)(a+4)=0$.
+Với $a=-2$, $c=-4$: $ad+bc=-2+3\cdot(-4)=-14$ thỏa mãn phương trình thứ ba.
+Vậy $x^4-6x^3+12x^2-14x+3=(x^2-2x+3)(x^2-4x+1)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $x^4+x^3-5x-3$.
+
+Bài giải:
+Các ước của hệ số tự do là $\pm1;\pm3$. Thử: $f(1)=-6$, $f(-1)=2$, $f(3)=90$, $f(-3)=66$ đều khác $0$ nên không có nhân tử bậc nhất.
+Giả sử $x^4+x^3-5x-3=(x^2+ax+b)(x^2+cx+d)$ với $a,b,c,d$ nguyên. Đồng nhất hệ số:
+$\begin{cases}a+c=1\\b+d+ac=0\\ad+bc=-5\\bd=-3\end{cases}$
+Thử $b=3$, $d=-1$: $ac=-2$ và $a+c=1$ nên $a(1-a)=-2$, tức $a^2-a-2=0$, hay $(a-2)(a+1)=0$.
+Với $a=2$, $c=-1$: $ad+bc=2\cdot(-1)+3\cdot(-1)=-5$ thỏa mãn phương trình thứ ba (còn $a=-1$, $c=2$ cho $ad+bc=1+6=7$ không thỏa).
+Vậy $x^4+x^3-5x-3=(x^2+2x+3)(x^2-x-1)$.

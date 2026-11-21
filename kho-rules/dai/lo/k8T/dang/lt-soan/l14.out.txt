@@ -1,0 +1,563 @@
+#NHOM NNB01479
+@LT
+##ĐN Số chính phương
+Số chính phương là bình phương của một số nguyên, tức số có dạng $k^2$ với $k\in\mathbb{Z}$ (kể cả $0$). Với số nguyên không âm $N$: $N$ là số chính phương khi và chỉ khi tồn tại số tự nhiên $k$ để $N=k^2$.
+
+##TC Số dư và chữ số tận cùng của số chính phương
+- Chữ số tận cùng của số chính phương chỉ có thể là $0;1;4;5;6;9$.
+- Số chính phương chia cho $3$ dư $0$ hoặc $1$; chia cho $4$ dư $0$ hoặc $1$; chia cho $5$ dư $0;1$ hoặc $4$; chia cho $8$ dư $0;1$ hoặc $4$.
+- Số chính phương lẻ chia cho $8$ dư $1$.
+
+##ĐL Kẹp giữa hai số chính phương liên tiếp
+Cho $a$ là số nguyên và $N$ là số nguyên.
+- Nếu $a^2<N<(a+1)^2$ thì $N$ không là số chính phương.
+- Nếu $N$ là số chính phương và $a^2<N<(a+2)^2$ thì $N=(a+1)^2$.
+
+##TC Hiệu hai bình phương
+$A^2-B^2=(A-B)(A+B)$. Hai thừa số $A-B$ và $A+B$ luôn cùng tính chẵn lẻ, và tổng của chúng bằng $2A$.
+
+##CY
+- Các phép chặn và phép đặt $P=k^2$ chỉ cho điều kiện cần, nên cuối bài phải thử lại các giá trị tìm được.
+- Khi đề cho $x$ nguyên (không chỉ nguyên dương), $x$ có thể âm; đừng quên các cặp ước âm và giá trị âm của $x$.
+
+#DANG NDB02762
+@LT
+##PP Kẹp biểu thức giữa hai bình phương liên tiếp
+So sánh $P$ với bình phương của một đa thức cùng bậc cao nhất, thường là $(x^2+ax)^2$ hay $(x+a)^2$, bằng cách xét hiệu
+Chỉ ra với mọi $x$ ngoài một khoảng hữu hạn thì $A^2<P<(A+1)^2$ (hai hiệu cùng dương), nên $P$ không là số chính phương
+Nếu chỉ chặn được $A^2<P<(A+2)^2$ thì $P=(A+1)^2$, giải phương trình này theo $x$
+Thử trực tiếp các giá trị $x$ còn lại (hữu hạn) và thử lại các nghiệm tìm được
+
+##CY
+Hiệu $P-A^2$ và $(A+1)^2-P$ phải được chứng minh dương trong cùng một khoảng của $x$; khoảng nào bị bỏ ngoài (như $x=0$, $x=1$) thì phải thử riêng.
+
+@VD
+##VD
+Tìm số tự nhiên $n$ để $A=n^4+2n^3+2n^2+n+3$ là số chính phương.
+
+Bài giải:
+Với $n=0$: $A=3$, không là số chính phương.
+Với $n=1$: $A=1+2+2+1+3=9=3^2$, thỏa mãn.
+Với $n\ge2$: $A-(n^2+n)^2=(n^4+2n^3+2n^2+n+3)-(n^4+2n^3+n^2)=n^2+n+3>0$.
+$(n^2+n+1)^2-A=(n^4+2n^3+3n^2+2n+1)-(n^4+2n^3+2n^2+n+3)=n^2+n-2=(n-1)(n+2)>0$.
+Do đó $(n^2+n)^2<A<(n^2+n+1)^2$, mà $n^2+n$ và $n^2+n+1$ là hai số tự nhiên liên tiếp nên $A$ không là số chính phương.
+Vậy $n=1$.
+
+##VD
+Tìm tất cả các số nguyên dương $n$ sao cho $n^4+n^3+1$ là số chính phương.
+
+Bài giải:
+Giả sử $n^4+n^3+1$ là số chính phương.
+Vì $n^3+1>0$ nên $n^4+n^3+1>n^4=(n^2)^2$, do đó $n^4+n^3+1=(n^2+k)^2$ với $k$ là số nguyên dương.
+$n^4+n^3+1=n^4+2kn^2+k^2\Leftrightarrow n^2(n-2k)=k^2-1\ge0$
+Với $k=1$: $n^2(n-2)=0$, suy ra $n=2$.
+Thử lại: $2^4+2^3+1=25=5^2$, thỏa mãn.
+Với $k\ge2$: $k^2-1>0$ nên $n-2k\ge1$, suy ra $n\ge2k+1>k$.
+Mặt khác $n^2\le n^2(n-2k)=k^2-1<k^2$ nên $n<k$, mâu thuẫn.
+Vậy $n=2$.
+
+#DANG NDB03323
+@LT
+##TC Đặt biểu thức bằng $k^2$
+Nếu $P=k^2$ thì có thể chọn $k\ge0$. Khi $P$ là tam thức bậc hai $x^2+bx+c$, nhân $4$ (nếu $b$ lẻ) để có $4P=(2x+b)^2+(4c-b^2)$, tức một hiệu hai bình phương bằng một hằng số.
+
+##PP Đưa về phương trình ước số
+Đặt $P(x)=k^2$ với $k$ là số tự nhiên rồi biến đổi (nhân $4$ nếu cần) để có $(2k)^2-(2x+b)^2=$ hằng số
+Phân tích vế trái thành tích hai thừa số nguyên, vế phải là một số nguyên cố định
+Lập bảng các cặp ước của hằng số, chú ý dấu: vì $k\ge0$ nên tổng hai thừa số không âm, loại các cặp có tổng âm
+Từ mỗi cặp ước giải hệ (cộng, trừ) để tìm $k$ rồi $x$, rồi thử lại
+
+##CY
+Hai thừa số $A-B$ và $A+B$ cùng tính chẵn lẻ; nếu hằng số lẻ thì cả hai đều lẻ, nếu hằng số chẵn thì cả hai đều chẵn (chia hết cho $4$). Dùng nhận xét này để loại cặp ước ngay trước khi giải.
+
+@VD
+##VD
+Tìm tất cả các số nguyên $x$ sao cho $x^2+2x+20$ là số chính phương.
+
+Bài giải:
+Đặt $x^2+2x+20=k^2$ với $k$ là số tự nhiên.
+$x^2+2x+20=k^2\Leftrightarrow(x+1)^2+19=k^2\Leftrightarrow k^2-(x+1)^2=19\Leftrightarrow(k-x-1)(k+x+1)=19$
+Tổng hai thừa số bằng $2k\ge0$ và tích bằng $19>0$ nên hai thừa số đều dương; vì $19$ là số nguyên tố nên chúng là $1$ và $19$.
+Nếu $k-x-1=1$ và $k+x+1=19$ thì $k=10$, $x+1=9$, tức $x=8$.
+Nếu $k-x-1=19$ và $k+x+1=1$ thì $k=10$, $x+1=-9$, tức $x=-10$.
+Thử lại: $8^2+2\cdot8+20=100=10^2$ và $(-10)^2+2\cdot(-10)+20=100=10^2$.
+Vậy $S=\{-10;8\}$.
+
+##VD
+Tìm tất cả các số nguyên $x$ sao cho $x^2+x+13$ là số chính phương.
+
+Bài giải:
+Đặt $x^2+x+13=k^2$ với $k$ là số tự nhiên.
+Nhân hai vế với $4$: $4x^2+4x+52=4k^2\Leftrightarrow(2x+1)^2+51=(2k)^2\Leftrightarrow(2k)^2-(2x+1)^2=51$
+$\Leftrightarrow(2k-2x-1)(2k+2x+1)=51$
+Tổng hai thừa số bằng $4k\ge0$ và tích bằng $51>0$ nên hai thừa số đều dương; $51=1\cdot51=3\cdot17$.
+Nếu $2k-2x-1=1$ và $2k+2x+1=51$ thì $4k=52$, $4x+2=50$, tức $k=13$, $x=12$.
+Nếu $2k-2x-1=51$ và $2k+2x+1=1$ thì $4k=52$, $4x+2=-50$, tức $k=13$, $x=-13$.
+Nếu $2k-2x-1=3$ và $2k+2x+1=17$ thì $4k=20$, $4x+2=14$, tức $k=5$, $x=3$.
+Nếu $2k-2x-1=17$ và $2k+2x+1=3$ thì $4k=20$, $4x+2=-14$, tức $k=5$, $x=-4$.
+Thử lại: $x=12$ cho $169=13^2$; $x=-13$ cho $169=13^2$; $x=3$ cho $25=5^2$; $x=-4$ cho $25=5^2$.
+Vậy $S=\{-13;-4;3;12\}$.
+
+#DANG NDB03324
+@LT
+##TC Số dư theo các môđun hay dùng
+- Với $x$ tự nhiên: $2^x\equiv0\pmod{4}$ khi $x\ge2$; $2^x\equiv0\pmod{8}$ khi $x\ge3$.
+- $5^y\equiv1\pmod{4}$ với mọi $y$ tự nhiên; $5^y\equiv5\pmod{8}$ khi $y$ lẻ, $5^y\equiv1\pmod{8}$ khi $y$ chẵn.
+- Nếu hai số nguyên dương có tích là lũy thừa của số nguyên tố $p$ thì mỗi số cũng là lũy thừa của $p$.
+
+##PP Biểu thức có số mũ chứa ẩn
+Đặt biểu thức bằng $z^2$ rồi chia theo tính chẵn lẻ của số mũ
+Trường hợp một số mũ chẵn: viết lũy thừa đó thành bình phương, chuyển về hiệu hai bình phương $(z-A)(z+A)=$ lũy thừa
+Hai thừa số là lũy thừa của cùng một số nguyên tố, nên đặt $z-A=p^a$, $z+A=p^b$ rồi so sánh để tìm $a,b$
+Trường hợp các số mũ lẻ: xét số dư của hai vế theo $3$, $4$ hoặc $8$ để loại hoặc thu hẹp mũ về vài giá trị nhỏ, rồi thử
+
+##CY
+Số mũ là số tự nhiên nên phải xét cả trường hợp mũ bằng $0$ (như $5^0=1$); bỏ trường hợp này là sót nghiệm.
+
+@VD
+##VD
+Tìm số tự nhiên $n$ sao cho $2^8+2^{11}+2^n$ là số chính phương.
+
+Bài giải:
+Có $2^8+2^{11}=256+2048=2304=48^2$.
+Với $n\le6$: $2^n\le64$ nên $48^2<2304+2^n\le2368<2401=49^2$, nên $2^8+2^{11}+2^n$ không là số chính phương.
+Với $n=7$: $2304+128=2432$ và $49^2=2401<2432<2500=50^2$, loại.
+Với $n\ge8$: $2^8+2^{11}+2^n=2^8(9+2^{n-8})$ là số chính phương khi và chỉ khi $9+2^{n-8}$ là số chính phương, vì $2^8=16^2$.
+Đặt $9+2^m=k^2$ với $m=n-8\ge0$ và $k$ tự nhiên. Khi đó $2^m=(k-3)(k+3)$.
+Hai thừa số $k-3$ và $k+3$ là lũy thừa của $2$ nên đặt $k-3=2^a$, $k+3=2^b$ với $b>a$.
+$2^b-2^a=6\Leftrightarrow2^a(2^{b-a}-1)=6$
+Vì $2^{b-a}-1$ là số lẻ nên $2^a=2$, tức $a=1$ và $2^{b-1}-1=3$, suy ra $b=3$.
+Do đó $k=5$ và $2^m=2\cdot8=16$, tức $m=4$, $n=12$.
+Thử lại: $2^8+2^{11}+2^{12}=256+2048+4096=6400=80^2$.
+Vậy $n=12$.
+
+##VD
+Tìm các số tự nhiên $x,y$ sao cho $2^x+5^y$ là số chính phương.
+
+Bài giải:
+Đặt $2^x+5^y=z^2$ với $z$ là số tự nhiên.
+Trường hợp $y$ chẵn, $y=2m$: $2^x=z^2-5^{2m}=(z-5^m)(z+5^m)$.
+Hai thừa số là lũy thừa của $2$: $z-5^m=2^a$, $z+5^m=2^b$ với $b>a$, và $2^b-2^a=2\cdot5^m$.
+Suy ra $2^a(2^{b-a}-1)=2\cdot5^m$. Vì $2^{b-a}-1$ lẻ và $2\cdot5^m$ chỉ chứa đúng một thừa số $2$ nên $a=1$ và $2^{b-1}=5^m+1$.
+Nếu $m\ge1$ thì $5^m+1\equiv2\pmod{4}$ nên $2^{b-1}=2$, suy ra $5^m=1$, vô lí.
+Vậy $m=0$, tức $y=0$, khi đó $b=2$ và $2^x=2^{a+b}=2^3$, tức $x=3$. Thử lại: $2^3+5^0=9=3^2$.
+Trường hợp $y$ lẻ: $5^y\equiv5\pmod{8}$.
+Nếu $x\ge3$ thì $2^x\equiv0\pmod{8}$, nên $z^2\equiv5\pmod{8}$, mà số chính phương chia $8$ chỉ dư $0;1;4$, vô lí.
+Nếu $x=0$ thì $z^2=1+5^y\equiv2\pmod{4}$; nếu $x=1$ thì $z^2=2+5^y\equiv3\pmod{4}$; cả hai đều vô lí vì số chính phương chia $4$ dư $0$ hoặc $1$.
+Nếu $x=2$: $z^2-4=5^y\Leftrightarrow(z-2)(z+2)=5^y$. Hai thừa số là lũy thừa của $5$ và hơn kém nhau $4$ nên chỉ có thể là $1$ và $5$, suy ra $z=3$, $5^y=5$, $y=1$. Thử lại: $2^2+5^1=9=3^2$.
+Vậy $(x;y)\in\{(3;0);(2;1)\}$.
+
+#DANG NDB03325
+@LT
+##TC Cấu tạo thập phân
+- $\overline{abcd}=1000a+100b+10c+d=100\cdot\overline{ab}+\overline{cd}$, với $1\le a\le9$ và $0\le b,c,d\le9$.
+- Số chính phương có $4$ chữ số là $n^2$ với $32\le n\le99$ ($31^2=961$, $32^2=1024$, $99^2=9801$, $100^2=10000$).
+
+##PP Tìm số chính phương theo chữ số
+Viết số cần tìm bằng cấu tạo thập phân và dùng hệ thức giữa các chữ số để rút gọn về một hay hai ẩn
+Đặt số đó bằng $n^2$ và xác định khoảng của $n$ theo số chữ số
+Biến đổi thành tích có thừa số là số nguyên tố (như $11$ hay $101$) hoặc dùng chữ số tận cùng để chặn $n$
+Thử các giá trị còn lại của $n$ và kiểm tra lại hệ thức giữa các chữ số
+
+##CY
+Chữ số đầu $a\ne0$; phải kiểm tra lại đề cho đúng số chữ số (và $\overline{cd}$ có thể bắt đầu bằng $0$ nếu đề cho phép).
+
+@VD
+##VD
+Tìm số chính phương có bốn chữ số dạng $\overline{aabb}$.
+
+Bài giải:
+$\overline{aabb}=1100a+11b=11(100a+b)$.
+Số này là số chính phương chia hết cho số nguyên tố $11$ nên chia hết cho $11^2$, do đó $100a+b$ chia hết cho $11$.
+$100a+b=99a+(a+b)$ nên $a+b$ chia hết cho $11$. Vì $1\le a+b\le18$ nên $a+b=11$.
+Khi đó $\overline{aabb}=11(99a+11)=121(9a+1)$, nên $9a+1$ là số chính phương.
+Vì $b=11-a\le9$ nên $2\le a\le9$, và $9a+1\in\{19;28;37;46;55;64;73;82\}$; chỉ có $64$ là số chính phương, ứng với $a=7$, $b=4$.
+Thử lại: $7744=88^2$.
+Vậy số cần tìm là $7744$.
+
+##VD
+Tìm số chính phương có bốn chữ số $\overline{abcd}$ sao cho $\overline{ab}-\overline{cd}=1$.
+
+Bài giải:
+Đặt $x=\overline{cd}$ thì $\overline{ab}=x+1$ và $\overline{abcd}=100(x+1)+x=101x+100$.
+Gọi số đó là $n^2$ với $32\le n\le99$.
+$n^2=101x+100\Leftrightarrow n^2-100=101x\Leftrightarrow(n-10)(n+10)=101x$
+Vì $101$ là số nguyên tố nên $n-10$ hoặc $n+10$ chia hết cho $101$.
+Từ $22\le n-10\le89$ suy ra $n-10$ không chia hết cho $101$.
+Từ $42\le n+10\le109$ suy ra $n+10=101$, tức $n=91$.
+Khi đó $x=\dfrac{91^2-100}{101}=\dfrac{8181}{101}=81$, và $\overline{ab}=82$.
+Thử lại: $8281=91^2$ và $82-81=1$.
+Vậy số cần tìm là $8281$.
+
+#NHOM NNB01480
+@LT
+##ĐN Phương trình nghiệm nguyên
+Phương trình nghiệm nguyên là phương trình có nhiều ẩn mà ta chỉ tìm nghiệm trong tập số nguyên (hoặc số tự nhiên, số nguyên dương).
+
+##ĐL Tính chia hết dùng nhiều
+- Nếu $bc$ chia hết cho $a$ và $\gcd(a,b)=1$ thì $c$ chia hết cho $a$.
+- Nếu $a,b$ nguyên và $ab=m$ ($m\ne0$) thì $a$ là một ước nguyên của $m$ và $b=\dfrac ma$.
+- Nếu $\dfrac ab$ là số nguyên ($a,b$ nguyên, $b\ne0$) thì $b$ là ước của $a$.
+
+##TC Ước nguyên của một số
+Mỗi số nguyên dương $m$ có số ước nguyên gấp đôi số ước dương (mỗi ước dương kèm ước âm đối). Hai số nguyên có tích bằng $m>0$ thì cùng dấu; có tích bằng $m<0$ thì trái dấu.
+
+##CY
+- Khi lập bảng ước phải lấy cả ước âm.
+- Các bước biến đổi tương đương mới cho đủ nghiệm; nếu có phép chia hai vế cho biểu thức chứa ẩn thì phải xét riêng giá trị làm biểu thức đó bằng $0$.
+- Cuối bài đối chiếu với điều kiện của đề (nguyên, nguyên dương, tự nhiên).
+
+#DANG NDB02758
+@LT
+##ĐL Nghiệm của phương trình bậc nhất hai ẩn
+Phương trình $ax+by=c$ ($a,b,c$ nguyên, $a,b\ne0$) có nghiệm nguyên khi và chỉ khi $\gcd(a,b)$ là ước của $c$.
+Nếu $\gcd(a,b)=1$ và $(x_0;y_0)$ là một nghiệm nguyên thì mọi nghiệm nguyên là $x=x_0+bt$, $y=y_0-at$ với $t\in\mathbb{Z}$.
+
+##PP Giải phương trình bậc nhất hai ẩn nghiệm nguyên
+Kiểm tra $\gcd(a,b)$ có là ước của $c$ không; nếu không thì phương trình vô nghiệm, nếu có thì chia cả phương trình cho $\gcd(a,b)$
+Tìm một nghiệm riêng $(x_0;y_0)$ bằng cách thử hoặc tách $c$ thành tổng của một bội của $a$ và một bội của $b$
+Trừ vế theo vế phương trình với đẳng thức nghiệm riêng để có $a(x-x_0)=b(y_0-y)$
+Dùng $\gcd(a,b)=1$ suy ra $x-x_0$ chia hết cho $b$, đặt $x-x_0=bt$, rồi viết nghiệm tổng quát theo $t\in\mathbb{Z}$
+Giải điều kiện (dương, không âm) của đề để chặn $t$ và liệt kê nghiệm
+
+##CY
+Nghiệm tổng quát chứa cả nghiệm âm; điều kiện của đề (nguyên dương, tự nhiên) phải được dùng ở bước cuối để chặn tham số $t$.
+
+@VD
+##VD
+Tìm các số nguyên dương $x,y$ thỏa mãn $11x+18y=120$.
+
+Bài giải:
+Thử $y=1;2;3$ thì $120-18y=102;84;66$, và $66=11\cdot6$, nên $(x_0;y_0)=(6;3)$ là một nghiệm: $11\cdot6+18\cdot3=120$.
+Trừ vế theo vế $11x+18y=120$ cho $11\cdot6+18\cdot3=120$ được $11(x-6)=18(3-y)$.
+Vì $11$ và $18$ nguyên tố cùng nhau nên $x-6$ chia hết cho $18$; đặt $x-6=18t$ ($t\in\mathbb{Z}$), khi đó $3-y=11t$.
+Vậy $x=6+18t$, $y=3-11t$ với $t\in\mathbb{Z}$.
+$x>0\Leftrightarrow t>-\dfrac13$ nên $t\ge0$; $y>0\Leftrightarrow t<\dfrac3{11}$ nên $t\le0$.
+Suy ra $t=0$, tức $(x;y)=(6;3)$.
+Vậy $(x;y)=(6;3)$.
+
+##VD
+Tìm các số tự nhiên $m,n$ thỏa mãn $19m+84n=1984$.
+
+Bài giải:
+Ta thấy $1984=1900+84=19\cdot100+84\cdot1$, nên $(m;n)=(100;1)$ là một nghiệm.
+Trừ vế theo vế $19m+84n=1984$ cho $19\cdot100+84\cdot1=1984$ được $19(100-m)=84(n-1)$.
+Vì $19$ và $84$ nguyên tố cùng nhau nên $100-m$ chia hết cho $84$; đặt $100-m=84k$ ($k\in\mathbb{Z}$), khi đó $n-1=19k$.
+Vậy $m=100-84k$, $n=1+19k$ với $k\in\mathbb{Z}$.
+$m\ge0\Leftrightarrow k\le\dfrac{100}{84}$ nên $k\le1$; $n\ge0\Leftrightarrow k\ge-\dfrac1{19}$ nên $k\ge0$.
+Suy ra $k\in\{0;1\}$.
+Với $k=0$: $(m;n)=(100;1)$.
+Với $k=1$: $(m;n)=(16;20)$.
+Vậy $(m;n)\in\{(100;1);(16;20)\}$.
+
+#DANG NDB03326
+@LT
+##TC Phân tích thành tích có hạng tử $xy$
+- $xy+ax+by=(x+b)(y+a)-ab$.
+- $axy+bx+cy=d$ (hệ số $a$ của $xy$ khác $1$): nhân hai vế với $a$ thì $(ax+c)(ay+b)=ad+bc$.
+- Dạng $y^2=$ đa thức bậc hai theo $z$: nhân $4$ hai vế để có $(2z+m)^2-(2y)^2=$ hằng số, rồi phân tích thành tích.
+
+##PP Đưa về phương trình ước số
+Chuyển các hạng tử về một vế và nhóm để vế trái có dạng $xy+ax+by$; cộng thêm $ab$ vào hai vế
+Phân tích vế trái thành tích hai nhị thức $(x+b)(y+a)$, vế phải là một số nguyên cố định
+Vì $x,y$ nguyên nên hai nhị thức là hai số nguyên có tích bằng số đó; lập bảng mọi cặp ước, kể cả ước âm
+Từ mỗi cặp ước tính $x$ và $y$, loại các cặp không thỏa điều kiện của đề rồi kết luận
+
+##CY
+Vế phải là số dương thì có cả cặp ước âm; phương trình đối xứng theo $x,y$ thì nghiệm đi theo từng cặp hoán đổi. Số $49$ có sáu cặp ước có thứ tự (kể cả âm), không phải ba.
+
+@VD
+##VD
+Tìm nghiệm nguyên của phương trình $x+xy+y=9$.
+
+Bài giải:
+$x+xy+y=9\Leftrightarrow(x+xy)+(y+1)=10\Leftrightarrow(x+1)(y+1)=10$
+Vì $x,y$ nguyên nên $x+1$ là ước nguyên của $10$: $x+1\in\{\pm1;\pm2;\pm5;\pm10\}$ và $y+1=\dfrac{10}{x+1}$.
+$x+1=1$ thì $y+1=10$, được $(x;y)=(0;9)$.
+$x+1=-1$ thì $y+1=-10$, được $(x;y)=(-2;-11)$.
+$x+1=2$ thì $y+1=5$, được $(x;y)=(1;4)$.
+$x+1=-2$ thì $y+1=-5$, được $(x;y)=(-3;-6)$.
+$x+1=5$ thì $y+1=2$, được $(x;y)=(4;1)$.
+$x+1=-5$ thì $y+1=-2$, được $(x;y)=(-6;-3)$.
+$x+1=10$ thì $y+1=1$, được $(x;y)=(9;0)$.
+$x+1=-10$ thì $y+1=-1$, được $(x;y)=(-11;-2)$.
+Vậy $(x;y)\in\{(0;9);(9;0);(1;4);(4;1);(-2;-11);(-11;-2);(-3;-6);(-6;-3)\}$.
+
+##VD
+Tìm nghiệm nguyên của phương trình $y^2=x(x+1)(x+7)(x+8)$.
+
+Bài giải:
+$y^2=x(x+1)(x+7)(x+8)=[x(x+8)][(x+1)(x+7)]=(x^2+8x)(x^2+8x+7)$.
+Đặt $z=x^2+8x$ ($z$ nguyên) thì $y^2=z^2+7z$, nên $4y^2=4z^2+28z=(2z+7)^2-49$, tức
+$(2z+7)^2-(2y)^2=49\Leftrightarrow(2z-2y+7)(2z+2y+7)=49$.
+Đặt $A=2z-2y+7$, $B=2z+2y+7$ thì $AB=49$, $y=\dfrac{B-A}{4}$, $z=\dfrac{A+B-14}{4}$.
+$(A;B)=(1;49)$: $y=12$, $z=9$.
+$(A;B)=(49;1)$: $y=-12$, $z=9$.
+$(A;B)=(-1;-49)$: $y=-12$, $z=-16$.
+$(A;B)=(-49;-1)$: $y=12$, $z=-16$.
+$(A;B)=(7;7)$: $y=0$, $z=0$.
+$(A;B)=(-7;-7)$: $y=0$, $z=-7$.
+Với $z=9$: $x^2+8x-9=0\Leftrightarrow(x-1)(x+9)=0\Leftrightarrow x=1$ hoặc $x=-9$; ghép $y=\pm12$ được $(1;12)$, $(1;-12)$, $(-9;12)$, $(-9;-12)$.
+Với $z=-16$: $x^2+8x+16=0\Leftrightarrow(x+4)^2=0\Leftrightarrow x=-4$; ghép $y=\pm12$ được $(-4;12)$, $(-4;-12)$.
+Với $z=0$: $x(x+8)=0\Leftrightarrow x=0$ hoặc $x=-8$, ghép $y=0$ được $(0;0)$, $(-8;0)$.
+Với $z=-7$: $x^2+8x+7=0\Leftrightarrow(x+1)(x+7)=0\Leftrightarrow x=-1$ hoặc $x=-7$, ghép $y=0$ được $(-1;0)$, $(-7;0)$.
+Vậy $(x;y)\in\{(1;\pm12);(-9;\pm12);(-4;\pm12);(0;0);(-8;0);(-1;0);(-7;0)\}$.
+
+#DANG NDB03327
+@LT
+##TC Tách phần nguyên của phân thức
+Chia đa thức tử cho đa thức mẫu: $\dfrac{f(x)}{g(x)}=q(x)+\dfrac{r}{g(x)}$ với $q(x)$ là đa thức nguyên và $r$ là hằng số. Khi $x$ nguyên thì $q(x)$ nguyên, nên $\dfrac{f(x)}{g(x)}$ nguyên khi và chỉ khi $\dfrac{r}{g(x)}$ nguyên, tức $g(x)$ là ước của $r$.
+
+##PP Rút một ẩn theo ẩn còn lại
+Gom các hạng tử chứa ẩn cần rút (giả sử $y$) về một vế, đặt nhân tử chung để được $y\cdot g(x)=f(x)$
+Xét riêng giá trị $x$ làm $g(x)=0$ (xem có là nghiệm không), rồi rút $y=\dfrac{f(x)}{g(x)}$
+Chia đa thức, tách $y=q(x)+\dfrac{r}{g(x)}$ với $r$ là hằng số
+Vì $y$ nguyên nên $g(x)$ là ước của $r$; lập bảng mọi ước (dương và âm), tính $x$ rồi $y$
+Đối chiếu điều kiện của đề và kết luận
+
+##CY
+Chỉ lấy các ước làm cho $x$ nguyên; khi mẫu có dạng $2x-1$ (luôn lẻ) thì mọi ước của $r$ đều cho $x$ nguyên, còn mẫu $y+3$ với $y$ dương thì chỉ lấy các ước lớn hơn hoặc bằng $4$.
+
+@VD
+##VD
+Giải phương trình nghiệm nguyên dương $\dfrac1x-\dfrac1y=\dfrac13$.
+
+Bài giải:
+$\dfrac1x-\dfrac1y=\dfrac13\Leftrightarrow\dfrac1x=\dfrac1y+\dfrac13=\dfrac{y+3}{3y}\Leftrightarrow x=\dfrac{3y}{y+3}=3-\dfrac9{y+3}$
+Vì $x$ nguyên nên $\dfrac9{y+3}$ nguyên, tức $y+3$ là ước dương của $9$.
+Mà $y\ge1$ nên $y+3\ge4$, do đó $y+3=9$, suy ra $y=6$.
+Khi đó $x=3-1=2$.
+Thử lại: $\dfrac12-\dfrac16=\dfrac13$, đúng.
+Vậy $(x;y)=(2;6)$.
+
+##VD
+Tìm $x,y\in\mathbb{Z}$ thỏa mãn $2x^2-2xy=5x-y-19$.
+
+Bài giải:
+$2x^2-2xy=5x-y-19\Leftrightarrow2x^2-5x+19=2xy-y\Leftrightarrow2x^2-5x+19=y(2x-1)$
+Vì $x$ nguyên nên $2x-1\ne0$, do đó:
+$y=\dfrac{2x^2-5x+19}{2x-1}=\dfrac{(2x-1)(x-2)+17}{2x-1}=x-2+\dfrac{17}{2x-1}$
+Vì $x,y\in\mathbb{Z}$ nên $\dfrac{17}{2x-1}\in\mathbb{Z}$, tức $2x-1\in\{1;-1;17;-17\}$.
+$2x-1=1\Rightarrow x=1$, $y=1-2+17=16$.
+$2x-1=-1\Rightarrow x=0$, $y=0-2-17=-19$.
+$2x-1=17\Rightarrow x=9$, $y=9-2+1=8$.
+$2x-1=-17\Rightarrow x=-8$, $y=-8-2-1=-11$.
+Vậy $(x;y)\in\{(0;-19);(1;16);(9;8);(-8;-11)\}$.
+
+#NHOM NNB01481
+@LT
+##TC Số dư của lũy thừa
+- Bình phương: dư $0$ hoặc $1$ khi chia cho $3$ và cho $4$; dư $0;1$ hoặc $4$ khi chia cho $8$; chữ số tận cùng là $0;1;4;5;6;9$.
+- Lập phương: dư $0;1$ hoặc $8$ khi chia cho $9$.
+- Với số nguyên $t$ và $k\ge1$: $t$, $t^k$, $\lvert t\rvert$ có cùng tính chẵn lẻ.
+
+##ĐL Nguyên lí kẹp trong số nguyên
+- Nếu $x,y$ nguyên và $x<y<x+1$ thì không tồn tại $y$; nếu $x<y<x+2$ thì $y=x+1$.
+- Với $k$ lẻ: $a^k<b^k\Leftrightarrow a<b$ (mọi số thực $a,b$); với $k$ chẵn: $a^k<b^k\Leftrightarrow\lvert a\rvert<\lvert b\rvert$.
+- $(x+1)^3=x^3+3x^2+3x+1$ và $(x+2)^3=x^3+6x^2+12x+8$.
+
+##PP Phương trình nghiệm nguyên không đưa về tích được
+Nhận dạng: các ẩn có vai trò như nhau thì sắp thứ tự; một vế sát một lũy thừa thì kẹp; có hằng số lớn cùng lũy thừa thì xét số dư; có số mũ chứa ẩn thì thử nghiệm nhỏ rồi chứng minh duy nhất
+Chặn miền của ẩn bằng bất đẳng thức hoặc chứng minh vô nghiệm bằng số dư
+Giải các trường hợp hữu hạn còn lại
+Thử lại các nghiệm vào phương trình gốc rồi kết luận
+
+##CY
+Các phép chặn bằng bất đẳng thức chỉ cho điều kiện cần nên cuối bài phải thử lại. Xét số dư thì chỉ dùng để chứng minh vô nghiệm: hai vế cùng số dư chưa chứng tỏ phương trình có nghiệm.
+
+#DANG NDB02761
+@LT
+##TC Chặn bằng thứ tự các ẩn
+Khi phương trình không đổi qua hoán vị các ẩn thì được giả sử $x\ge y\ge z\ge1$ (không mất tính tổng quát). Khi đó $x+y+z\le3x$, $xy+yz+zx\le3xy$, $xyz\ge z^3$, $yz\le xy$; sau khi tìm được nghiệm đã sắp thứ tự thì lấy mọi hoán vị.
+
+##PP Sắp thứ tự các ẩn để chặn miền
+Nhận xét phương trình đối xứng, giả sử $x\ge y\ge z\ge1$
+Đánh giá hai vế (thay tổng bằng bội của ẩn lớn nhất, hoặc dùng phản chứng "nếu $z\ge3$ thì vế này lớn hơn vế kia") để chặn ẩn nhỏ nhất $z$
+Với mỗi giá trị của $z$, thay vào để có phương trình hai ẩn, đưa về tích hai thừa số (thêm hạng tử vào hai vế) và xét các cặp ước, dùng $x\ge y$ để loại bớt
+Viết lại đủ các hoán vị của mỗi bộ nghiệm đã sắp thứ tự
+
+##CY
+Đề không cho thứ tự nên cuối bài phải nêu mọi hoán vị; khi xét ước nhớ dùng $x\ge y\ge z$ để bỏ cặp không phù hợp.
+
+@VD
+##VD
+Giải phương trình nghiệm nguyên dương $xy+yz+zx=xyz+2$.
+
+Bài giải:
+Vì vai trò của $x,y,z$ như nhau nên giả sử $x\ge y\ge z\ge1$.
+Khi đó $yz\le xy$ và $zx\le xy$ nên $xy+yz+zx\le3xy$.
+Từ phương trình: $xyz+2=xy+yz+zx\le3xy$, suy ra $xyz<3xy$, tức $z<3$, nên $z\in\{1;2\}$.
+Với $z=1$: $xy+y+x=xy+2\Leftrightarrow x+y=2$. Vì $x,y\ge1$ nên $x=y=1$.
+Với $z=2$: $xy+2y+2x=2xy+2\Leftrightarrow xy-2x-2y+2=0\Leftrightarrow(x-2)(y-2)=2$.
+Vì $x\ge y\ge2$ nên $x-2\ge y-2\ge0$, mà tích bằng $2$ nên $x-2=2$, $y-2=1$, tức $x=4$, $y=3$.
+Vậy nghiệm nguyên dương của phương trình là $(x;y;z)=(1;1;1)$ và các hoán vị của $(4;3;2)$.
+
+##VD
+Tìm $x,y,z$ nguyên dương thỏa mãn $xyz=x+y+z+9$.
+
+Bài giải:
+Vì vai trò $x,y,z$ như nhau nên giả sử $x\ge y\ge z\ge1$.
+Nếu $z\ge3$ thì $y\ge3$, $x\ge3$ và $xyz\ge9x=6x+3x\ge18+(x+y+z)>9+x+y+z$, mâu thuẫn.
+Vậy $z\in\{1;2\}$.
+Với $z=1$: $xy=x+y+10\Leftrightarrow xy-x-y+1=11\Leftrightarrow(x-1)(y-1)=11$.
+Vì $x-1\ge y-1\ge0$ và $11$ là số nguyên tố nên $x-1=11$, $y-1=1$, tức $x=12$, $y=2$.
+Với $z=2$: $2xy=x+y+11\Leftrightarrow4xy-2x-2y+1=23\Leftrightarrow(2x-1)(2y-1)=23$.
+Vì $y\ge z=2$ nên $2x-1\ge2y-1\ge3$, mà $23$ là số nguyên tố chỉ phân tích được thành $1\cdot23$, nên trường hợp này vô nghiệm.
+Vậy các bộ $(x;y;z)$ là các hoán vị của $(12;2;1)$:
+$(x;y;z)\in\{(12;2;1);(12;1;2);(2;12;1);(2;1;12);(1;12;2);(1;2;12)\}$.
+
+#DANG NDB03328
+@LT
+##TC Bất đẳng thức dùng để chặn miền
+- $a^2\ge0$ với mọi số thực $a$; $a^2+b^2\ge2ab$; $(a+b)^2\ge4ab$.
+- Bất đẳng thức Cô-si cho ba số không âm: $a+b+c\ge3\sqrt[3]{abc}$, dấu "=" xảy ra khi $a=b=c$.
+- Nếu $m(m-1)\le0$ hay $m(1-m)\ge0$ thì $0\le m\le1$ (xét dấu hai thừa số).
+
+##PP Đánh giá miền giá trị rồi thử trực tiếp
+Đưa phương trình về dạng một vế là bình phương (hoặc tổng bình phương, hoặc tổng các số không âm), vế kia là biểu thức của một đại lượng đơn giản như $xy$ hay $x+y$
+Dùng bất đẳng thức (bình phương không âm, Cô-si) để chặn đại lượng đó trong một khoảng hẹp
+Vì ẩn nguyên nên đại lượng chỉ nhận hữu hạn giá trị, xét từng giá trị để tìm các ẩn
+Thử lại vào phương trình gốc và kết luận
+
+##CY
+Chặn bằng bất đẳng thức chỉ cho điều kiện cần, nên cuối bài phải thử lại các bộ tìm được. Cần chú ý dấu của ẩn: các ẩn có thể âm miễn là tích hay tổng thỏa điều kiện đã chặn.
+
+@VD
+##VD
+Tìm $x,y$ nguyên thỏa mãn $8x^2y^2+x^2+y^2=10xy$.
+
+Bài giải:
+$8x^2y^2+x^2+y^2=10xy\Leftrightarrow x^2+y^2-2xy=8xy-8x^2y^2\Leftrightarrow(x-y)^2=8xy(1-xy)$
+Vì $(x-y)^2\ge0$ nên $xy(1-xy)\ge0$, tức $xy$ và $1-xy$ cùng dấu hoặc một số bằng $0$, suy ra $0\le xy\le1$.
+Vì $xy$ nguyên nên $xy=0$ hoặc $xy=1$. Khi đó vế phải bằng $0$, nên $(x-y)^2=0$, tức $x=y$.
+Nếu $xy=0$ thì $x^2=0$, suy ra $x=y=0$.
+Nếu $xy=1$ thì $x^2=1$, suy ra $x=y=1$ hoặc $x=y=-1$.
+Thử lại: $(0;0)$ thỏa mãn; với $(1;1)$ và $(-1;-1)$ có $8+1+1=10$, thỏa mãn.
+Vậy $(x;y)\in\{(0;0);(1;1);(-1;-1)\}$.
+
+##VD
+Tìm nghiệm nguyên của phương trình $\dfrac{yz}{x}+\dfrac{xz}{y}+\dfrac{xy}{z}=3$.
+
+Bài giải:
+Điều kiện: $x,y,z\ne0$.
+Nhân hai vế với $xyz$: $y^2z^2+z^2x^2+x^2y^2=3xyz$.
+Vế trái dương nên $xyz>0$, tức $xyz$ là số nguyên dương.
+Áp dụng bất đẳng thức Cô-si cho ba số dương $y^2z^2$, $z^2x^2$, $x^2y^2$:
+$y^2z^2+z^2x^2+x^2y^2\ge3\sqrt[3]{x^4y^4z^4}=3xyz\sqrt[3]{xyz}$.
+Do đó $3xyz\ge3xyz\sqrt[3]{xyz}$. Chia hai vế cho $3xyz>0$ được $\sqrt[3]{xyz}\le1$, tức $xyz\le1$.
+Mà $xyz$ là số nguyên dương nên $xyz=1$, suy ra $\lvert x\rvert=\lvert y\rvert=\lvert z\rvert=1$ và số ẩn bằng $-1$ là số chẵn.
+Ta được $(1;1;1)$, $(1;-1;-1)$, $(-1;1;-1)$, $(-1;-1;1)$.
+Thử lại: với $x,y,z\in\{\pm1\}$ và $xyz=1$ thì $\dfrac{yz}{x}=\dfrac{xyz}{x^2}=1$, tương tự hai phân thức còn lại cũng bằng $1$, tổng bằng $3$.
+Vậy $(x;y;z)\in\{(1;1;1);(1;-1;-1);(-1;1;-1);(-1;-1;1)\}$.
+
+#DANG NDB03329
+@LT
+##TC Hiệu của lũy thừa liền kề
+Với $x$ nguyên: $(x+1)^3-x^3=3x^2+3x+1>0$; $(x+2)^3-x^3=6x^2+12x+8>0$. Để chứng minh một tam thức bậc hai luôn dương, đưa về dạng $a(x+m)^2+c$ với $a>0$, $c>0$.
+
+##PP Kẹp giữa hai lũy thừa
+Nhìn hạng tử bậc cao nhất của vế đa thức để chọn lũy thừa $A^k$ sát nó (vd $x^3$ cho biểu thức bắt đầu bằng $x^3$)
+Xét hiệu để chứng minh $A^k<$ vế đa thức $<(A+1)^k$, hoặc $<(A+2)^k$, bằng cách đưa các tam thức về dạng bình phương cộng hằng số dương
+Nếu kẹp giữa hai lũy thừa của hai số nguyên liên tiếp thì vô nghiệm; nếu kẹp giữa $A^k$ và $(A+2)^k$ thì cơ số bằng $A+1$ (do tính nguyên)
+Thay cơ số vừa tìm vào phương trình, giải theo $x$ rồi tính ẩn còn lại
+
+##CY
+Với số mũ lẻ thì so sánh hai lũy thừa tương đương so sánh hai cơ số, kể cả khi cơ số âm; khi tìm được $y=x+1$ vẫn phải thay từng giá trị $x$ để tính $y$.
+
+@VD
+##VD
+Tìm $x,y\in\mathbb{Z}$ biết $x^3+x^2+x+1=y^3$.
+
+Bài giải:
+$y^3-x^3=x^2+x+1=\left(x+\dfrac12\right)^2+\dfrac34>0$.
+$(x+2)^3-y^3=(x^3+6x^2+12x+8)-(x^3+x^2+x+1)=5x^2+11x+7=5\left(x+\dfrac{11}{10}\right)^2+\dfrac{19}{20}>0$.
+Vậy $x^3<y^3<(x+2)^3$, suy ra $x<y<x+2$.
+Vì $x,y$ nguyên nên $y=x+1$.
+Thay vào phương trình: $x^3+x^2+x+1=(x+1)^3=x^3+3x^2+3x+1$.
+$\Leftrightarrow2x^2+2x=0\Leftrightarrow x(x+1)=0\Leftrightarrow x=0$ hoặc $x=-1$.
+Với $x=0$ thì $y=1$; với $x=-1$ thì $y=0$.
+Vậy $(x;y)\in\{(0;1);(-1;0)\}$.
+
+##VD
+Chứng minh rằng $1991^{3333}+1990^{2222}+1989^{1111}$ không thể là lập phương của một số tự nhiên.
+
+Bài giải:
+Đặt $N=1991^{1111}$ ($N\in\mathbb{N}$) và $S=1991^{3333}+1990^{2222}+1989^{1111}$.
+Khi đó $1991^{3333}=N^3$, $1990^{2222}<1991^{2222}=N^2$, $1989^{1111}<1991^{1111}=N$.
+Vì $1990^{2222}+1989^{1111}>0$ nên $S>N^3$.
+Mặt khác $S<N^3+N^2+N<N^3+3N^2+3N+1=(N+1)^3$.
+Vậy $N^3<S<(N+1)^3$ với $N$ là số tự nhiên, tức $S$ nằm giữa lập phương của hai số tự nhiên liên tiếp nên $S$ không là lập phương của số tự nhiên nào.
+
+#DANG NDB03330
+@LT
+##PP Xét số dư hai vế
+Chọn môđun phù hợp: bình phương thì $3$, $4$ hoặc $8$ (hoặc chữ số tận cùng); lập phương thì $9$; nhiều số hạng mà chỉ quan tâm chẵn lẻ thì $2$
+Lập bảng số dư có thể của từng số hạng (viết số nguyên dạng $m\cdot k+r$ rồi khai triển)
+Cộng các khả năng để có tập số dư có thể của vế trái, rồi so sánh với số dư của vế phải
+Nếu không có số dư chung thì phương trình vô nghiệm; nếu có điều kiện chia hết thì dùng để thu nhỏ ẩn rồi thử các giá trị còn lại
+
+##CY
+Nhớ bảng: lập phương chia $9$ dư $0;1;8$ (tức $0$ hoặc $\pm1$); bình phương có chữ số tận cùng $0;1;4;5;6;9$. Hai vế cùng số dư chưa đủ để kết luận có nghiệm.
+
+@VD
+##VD
+Chứng tỏ rằng không tồn tại các số nguyên $a,b,c$ để $a^3+b^3+c^3=2012$.
+
+Bài giải:
+Đặt $a=3k+r$ ($k\in\mathbb{Z}$, $r\in\{0;1;2\}$).
+Khi đó $a^3=27k^3+27k^2r+9kr^2+r^3\equiv r^3\pmod{9}$.
+Vì $r^3\in\{0;1;8\}$ nên $a^3\equiv0$, $1$ hoặc $-1\pmod{9}$. Tương tự với $b^3$ và $c^3$.
+Do đó $a^3+b^3+c^3\equiv s\pmod{9}$, với $s$ là tổng của ba số thuộc $\{-1;0;1\}$, nên $-3\le s\le3$.
+Suy ra $a^3+b^3+c^3$ chia cho $9$ chỉ có thể dư $0;1;2;3;6;7;8$.
+Mặt khác $2012=9\cdot223+5$ nên $2012$ chia cho $9$ dư $5$.
+Vậy không tồn tại các số nguyên $a,b,c$ để $a^3+b^3+c^3=2012$.
+
+##VD
+Tìm $x,y$ nguyên dương thỏa mãn $1!+2!+3!+\dots+x!=y^2$.
+
+Bài giải:
+Với $x\ge5$: $5!,6!,\dots,x!$ đều chia hết cho $10$ (chứa thừa số $2$ và $5$), còn $1!+2!+3!+4!=33$.
+Nên $1!+2!+\dots+x!$ chia cho $10$ dư $3$, tức $y^2$ có chữ số tận cùng là $3$.
+Nhưng chữ số tận cùng của số chính phương chỉ là $0;1;4;5;6;9$, vô lí. Vậy $x\le4$.
+$x=1$: $y^2=1\Rightarrow y=1$ (thỏa mãn).
+$x=2$: $y^2=1+2=3$, không là số chính phương, loại.
+$x=3$: $y^2=1+2+6=9\Rightarrow y=3$ (thỏa mãn).
+$x=4$: $y^2=1+2+6+24=33$, không là số chính phương, loại.
+Vậy $(x;y)\in\{(1;1);(3;3)\}$.
+
+#DANG NDB03331
+@LT
+##TC Lũy thừa tăng, lũy thừa giảm
+- Với $a>1$ và $x,y$ tự nhiên: $x<y\Rightarrow a^x<a^y$.
+- Với $0<q<1$ và $x,y$ tự nhiên: $x<y\Rightarrow q^x>q^y$; do đó nếu $x\ge x_0$ thì $q^x\le q^{x_0}$.
+- Chia hai vế của $a^x+b^x=c^x$ cho $c^x$ được $\left(\dfrac ac\right)^x+\left(\dfrac bc\right)^x=1$ với hai cơ số thuộc khoảng $(0;1)$.
+
+##PP Chỉ ra nghiệm rồi chứng minh duy nhất
+Thử các giá trị nhỏ của ẩn ($0;1;2;3;\dots$) để tìm nghiệm
+Nếu vế trái tăng theo ẩn (các cơ số lớn hơn $1$) thì so sánh với giá trị tại nghiệm vừa tìm; nếu có dạng $a^x+b^x=c^x$ thì chia cho $c^x$ để dùng các lũy thừa giảm
+Với ẩn lớn hơn nghiệm, dùng tính tăng hoặc giảm để chứng minh vế này lớn hơn (hay nhỏ hơn) vế kia; xét riêng các giá trị nhỏ còn lại
+Kết luận nghiệm duy nhất
+
+##CY
+Phải xét riêng các giá trị nhỏ của ẩn (như $0$, $1$) mà phép chặn chung không bao phủ; số mũ là số tự nhiên nên $x=0$ cũng là một giá trị cần thử.
+
+@VD
+##VD
+Tìm số tự nhiên $x$ thỏa mãn $2^x+3^x=13$.
+
+Bài giải:
+Thử $x=2$: $2^2+3^2=4+9=13$, đúng.
+Với $x\le1$: $2^x+3^x\le2+3=5<13$.
+Với $x\ge3$: $2^x+3^x\ge8+27=35>13$.
+Vậy $x=2$ là giá trị duy nhất.
+
+##VD
+Tìm số tự nhiên $x$ thỏa mãn $3^x+4^x=5^x$.
+
+Bài giải:
+Chia hai vế cho $5^x>0$: $\left(\dfrac35\right)^x+\left(\dfrac45\right)^x=1$.
+Với $x=0$: vế trái bằng $2\ne1$. Với $x=1$: vế trái bằng $\dfrac75\ne1$.
+Với $x=2$: $\dfrac9{25}+\dfrac{16}{25}=1$, đúng.
+Với $x\ge3$: vì $0<\dfrac35<1$ và $0<\dfrac45<1$ nên $\left(\dfrac35\right)^x\le\left(\dfrac35\right)^3=\dfrac{27}{125}$ và $\left(\dfrac45\right)^x\le\left(\dfrac45\right)^3=\dfrac{64}{125}$.
+Suy ra vế trái $\le\dfrac{91}{125}<1$, không thỏa mãn.
+Vậy $x=2$.

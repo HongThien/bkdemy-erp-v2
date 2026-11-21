@@ -1,0 +1,548 @@
+#NHOM NNB01475
+@LT
+##ĐN Đồng dư
+Cho $m$ là số nguyên dương. Hai số nguyên $a$, $b$ gọi là đồng dư với nhau theo môđun $m$, viết $a\equiv b\pmod{m}$, khi $a$ và $b$ có cùng số dư khi chia cho $m$, tức là $(a-b)\vdots m$.
+
+##TC Phép toán trên đồng dư
+Nếu $a\equiv b\pmod{m}$ và $c\equiv d\pmod{m}$ thì:
+- $a\pm c\equiv b\pm d\pmod{m}$ và $ac\equiv bd\pmod{m}$.
+- $a^n\equiv b^n\pmod{m}$ với mọi $n\in\mathbb{N}^*$.
+- Có thể thay mỗi số bằng một số đồng dư với nó (thường chọn số dư nhỏ hoặc $\pm1$) để tính cho gọn.
+
+##ĐL Hiệu hai luỹ thừa cùng số mũ
+$a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1})$ với $n\in\mathbb{N}^*$, nên $(a^n-b^n)\vdots(a-b)$. Với $n$ lẻ còn có $(a^n+b^n)\vdots(a+b)$.
+
+##CY
+- Số dư luôn nằm trong khoảng từ $0$ đến $m-1$: kết quả $\equiv-1$ phải đổi thành $m-1$.
+- Chỉ được rút gọn hai vế của đồng dư cho một số nguyên tố cùng nhau với môđun.
+
+#DANG NDB02759
+@LT
+##TC Chu kỳ của số dư
+Nếu $a^k\equiv1\pmod{m}$ thì $a^{kq+r}\equiv a^r\pmod{m}$ với mọi $q\in\mathbb{N}$. Nếu $a^k\equiv-1\pmod{m}$ thì $a^{2k}\equiv1\pmod{m}$ nên chu kỳ là $2k$.
+
+##ĐL Luỹ thừa theo môđun nguyên tố
+Với $p$ nguyên tố và $a$ nguyên thì $(a^p-a)\vdots p$. Nếu $a$ không chia hết cho $p$ thì $a^{p-1}\equiv1\pmod{p}$.
+
+##PP Tìm số dư của luỹ thừa
+Tính lần lượt $a^1,a^2,\dots$ theo môđun $m$ đến khi gặp dư $1$ (hoặc $-1$) để có chu kỳ $k$
+Chia số mũ cho chu kỳ, viết $n=kq+r$, hạ bậc $a^n\equiv a^r\pmod{m}$
+Với tổng hoặc tích nhiều luỹ thừa, tìm dư từng thừa số rồi cộng hoặc nhân các dư
+Rút gọn kết quả về khoảng từ $0$ đến $m-1$ rồi kết luận
+
+##CY
+Muốn chứng minh một tổng luỹ thừa không chia hết cho $m$, có thể nhân thêm một thừa số nguyên tố cùng nhau với $m$ để các cơ số trở thành $\equiv\pm1$; phải nói rõ thừa số nhân thêm nguyên tố cùng nhau với $m$ thì mới suy ngược lại được.
+@VD
+##VD
+Tìm số dư của phép chia:
+a) $2^{100}$ cho $9$.
+b) $2^{2024}+3^{2024}$ cho $7$.
+
+Bài giải:
+a) Ta có $2^6=64=63+1\equiv1\pmod{9}$.
+Viết $100=6\cdot16+4$ nên $2^{100}=(2^6)^{16}\cdot2^4\equiv1^{16}\cdot16\pmod{9}$.
+Mà $16=9+7\equiv7\pmod{9}$.
+Vậy $2^{100}$ chia cho $9$ dư $7$.
+
+b) Ta có $2^3=8\equiv1\pmod{7}$ và $3^6=729=7\cdot104+1\equiv1\pmod{7}$.
+Viết $2024=3\cdot674+2$ nên $2^{2024}=(2^3)^{674}\cdot2^2\equiv4\pmod{7}$.
+Viết $2024=6\cdot337+2$ nên $3^{2024}=(3^6)^{337}\cdot3^2\equiv9\equiv2\pmod{7}$.
+Do đó $2^{2024}+3^{2024}\equiv4+2=6\pmod{7}$.
+Vậy $2^{2024}+3^{2024}$ chia cho $7$ dư $6$.
+
+##VD
+Cho $n\in\mathbb{N}$.
+a) Tìm số dư khi chia $2^{11n}$ cho $23$.
+b) Chứng minh rằng $2^a+29^b$ không chia hết cho $23$ với mọi $a,b\in\mathbb{N}$.
+
+Bài giải:
+a) Ta có $2^{11}=2048=23\cdot89+1\equiv1\pmod{23}$.
+Do đó $2^{11n}=(2^{11})^n\equiv1^n=1\pmod{23}$.
+Vậy $2^{11n}$ chia cho $23$ dư $1$.
+
+b) Đặt $M=2^a+29^b$.
+Vì $4\cdot29=116=5\cdot23+1$ nên $4\cdot29\equiv1\pmod{23}$, suy ra $4^b\cdot29^b\equiv1\pmod{23}$.
+Do đó $4^bM=2^{a+2b}+(4\cdot29)^b\equiv2^{a+2b}+1\pmod{23}$.
+Viết $a+2b=11q+r$ với $q\in\mathbb{N}$, $r\in\{0;1;\dots;10\}$. Theo ý a), $2^{a+2b}=(2^{11})^q\cdot2^r\equiv2^r\pmod{23}$.
+Vậy $4^bM\equiv2^r+1\pmod{23}$.
+Với $r=0;1;\dots;10$ thì $2^r+1$ lần lượt bằng $2;3;5;9;17;33;65;129;257;513;1025$, chia cho $23$ lần lượt dư $2;3;5;9;17;10;19;14;4;7;13$, không số nào bằng $0$.
+Suy ra $4^bM$ không chia hết cho $23$.
+Nếu $M\vdots23$ thì $4^bM\vdots23$, vô lí; vậy $M\not\vdots23$.
+Vậy $2^a+29^b$ không chia hết cho $23$ với mọi $a,b\in\mathbb{N}$.
+
+#DANG NDB03315
+@LT
+##TC Các chữ số tận cùng và số dư
+Hai (ba, bốn) chữ số tận cùng của $N$ chính là số dư khi chia $N$ cho $100$ ($1000$, $10000$); nếu số dư còn thiếu chữ số thì viết thêm chữ số $0$ ở đầu.
+
+##TC Ghép các môđun nguyên tố cùng nhau
+Nếu $N\vdots m$ và $N\vdots n$ với $m$, $n$ nguyên tố cùng nhau thì $N\vdots mn$. Chẳng hạn $100=4\cdot25$ và $1000=8\cdot125$.
+
+##TC Khai triển nhị thức Niu-tơn theo môđun
+Nếu $a\vdots m$ thì $(a+b)^n\equiv b^n\pmod{m}$ và $(a+b)^n\equiv b^n+n\,a\,b^{n-1}\pmod{m^2}$, vì mọi số hạng còn lại chứa $a^2$. Đặc biệt $(10k+1)^n\equiv1+10kn\pmod{100}$.
+
+##PP Tìm hai hoặc ba chữ số tận cùng của $a^n$
+Tách $10^k$ thành các thừa số nguyên tố cùng nhau (như $4\cdot25$ hoặc $8\cdot125$) khi cần
+Tìm một luỹ thừa của cơ số đồng dư $1$ hoặc $-1$ theo môđun cần xét (dùng khai triển $(a\pm1)^n$ hoặc hiệu $a^n-b^n$)
+Hạ số mũ về số nhỏ rồi tính dư theo từng môđun
+Ghép các dư (hoặc đọc trực tiếp dư theo $10^k$), viết đủ số chữ số và kết luận
+
+##CY
+Khi ghép hai môđun, nghiệm phải nằm trong khoảng từ $0$ đến $10^k-1$ và thoả đồng thời cả hai điều kiện; nhớ kiểm tra hai môđun nguyên tố cùng nhau.
+@VD
+##VD
+Tìm hai chữ số tận cùng của $3^{999}$.
+
+Bài giải:
+Hai chữ số tận cùng của $3^{999}$ là số dư khi chia $3^{999}$ cho $100$.
+Ta có $3^{10}=59049\equiv49\pmod{100}$.
+Suy ra $3^{20}=(3^{10})^2\equiv49^2=2401\equiv1\pmod{100}$.
+Viết $999=20\cdot49+19$ nên $3^{999}=(3^{20})^{49}\cdot3^{19}\equiv3^{19}\pmod{100}$.
+Mà $3^{19}=3^{10}\cdot3^9\equiv49\cdot19683\equiv49\cdot83=4067\equiv67\pmod{100}$.
+Vậy hai chữ số tận cùng của $3^{999}$ là $67$.
+
+##VD
+Tìm ba chữ số tận cùng của số $2^{2013}$.
+
+Bài giải:
+Ba chữ số tận cùng là số dư $x$ khi chia $2^{2013}$ cho $1000=8\cdot125$, với $8$ và $125$ nguyên tố cùng nhau.
+Ta có $2^{10}=1024=a-1$ với $a=25\cdot41\vdots25$.
+Theo nhị thức Niu-tơn: $2^{50}=(a-1)^5=a^5-5a^4+10a^3-10a^2+5a-1$.
+Vì $a\vdots25$ nên $a^2\vdots625$ và $5a\vdots125$, do đó $a^5;5a^4;10a^3;10a^2;5a$ đều chia hết cho $125$.
+Suy ra $2^{50}\equiv-1\pmod{125}$, nên $2^{100}\equiv1\pmod{125}$.
+Viết $2013=100\cdot20+13$ nên $2^{2013}=(2^{100})^{20}\cdot2^{13}\equiv2^{13}=8192\equiv67\pmod{125}$.
+Mặt khác $2^{2013}\vdots8$.
+Vì $x\equiv67\pmod{125}$ và $0\le x\le999$ nên $x\in\{67;192;317;442;567;692;817;942\}$.
+Trong các số này chỉ có $192$ chia hết cho $8$.
+Vậy ba chữ số tận cùng của $2^{2013}$ là $192$.
+
+#NHOM NNB01476
+@LT
+##ĐN Chia hết, ước, bội
+Với $a,b\in\mathbb{Z}$, $b\ne0$: $a\vdots b$ khi tồn tại $q\in\mathbb{Z}$ sao cho $a=bq$; khi đó $b$ là ước của $a$. Ước của một số nguyên gồm cả ước dương lẫn ước âm.
+
+##TC Tính chất chia hết
+- Nếu $a\vdots c$ và $b\vdots c$ thì $(a\pm b)\vdots c$; nếu $a\vdots b$ và $b\vdots c$ thì $a\vdots c$.
+- Nếu $a\vdots m$, $a\vdots n$ và $m$, $n$ nguyên tố cùng nhau thì $a\vdots mn$.
+- Nếu $ab\vdots c$ và $a$ nguyên tố cùng nhau với $c$ thì $b\vdots c$.
+- Nếu $a\vdots b$ và $a\ne0$ thì $\lvert b\rvert\le\lvert a\rvert$.
+
+##ĐL Chia đa thức và tách phần dư
+Với đa thức $A(n)$ và đa thức $B(n)$ có hệ số bậc cao nhất bằng $1$ hoặc $-1$, ta có $A(n)=B(n)\cdot Q(n)+R(n)$ với $Q(n)$ có hệ số nguyên. Khi đó với $n$ nguyên: $A(n)\vdots B(n)\Leftrightarrow R(n)\vdots B(n)$.
+
+##CY
+Luôn đọc kỹ miền của biến (số tự nhiên, số nguyên, số nguyên dương) để loại nghiệm; các bước suy ra thường chỉ là điều kiện cần nên phải thử lại.
+
+#DANG NDB02763
+@LT
+##ĐL Bê-du
+Số dư của phép chia đa thức $A(n)$ cho $n-a$ bằng $A(a)$. Do đó $A(n)\vdots(n-a)$ khi và chỉ khi $A(a)=0$.
+
+##PP Tìm $n$ để $A(n)\vdots B(n)$
+Chia $A(n)$ cho $B(n)$ (đặt tính, tách hạng tử, hoặc dùng định lí Bê-du khi $B=n-a$) để viết $A=B\cdot Q+R$
+Suy ra $A\vdots B\Leftrightarrow R\vdots B$; nếu $R$ là hằng số thì $B$ là ước của $R$ (kể cả ước âm)
+Lập bảng $B=d$ với từng ước $d$ để tính $n$, loại các giá trị không thuộc miền của đề
+Nếu $R$ còn chứa $n$, nhân hai vế với một đa thức thích hợp để đưa về một hằng số chia hết cho $B$ hoặc đánh giá $\lvert R\rvert\ge\lvert B\rvert$, rồi thử lại từng giá trị
+
+##CY
+Với các bước nhân thêm hoặc đánh giá, kết quả chỉ là điều kiện cần; phải thay lại vào điều kiện ban đầu và loại giá trị không thoả mãn.
+@VD
+##VD
+Tìm các số nguyên $x$ để giá trị của biểu thức $2x^2+x-7$ chia hết cho giá trị của biểu thức $x-2$.
+
+Bài giải:
+Chia đa thức: $2x^2+x-7=(x-2)(2x+5)+3$.
+Theo định lí Bê-du, số dư là $2\cdot2^2+2-7=3$, khớp với phép chia trên.
+Vì $x$ nguyên nên $(x-2)(2x+5)\vdots(x-2)$, do đó $(2x^2+x-7)\vdots(x-2)\Leftrightarrow3\vdots(x-2)$.
+Suy ra $x-2\in\{-3;-1;1;3\}$, tức là $x\in\{-1;1;3;5\}$.
+Vậy $S=\{-1;1;3;5\}$.
+
+##VD
+Tìm các số nguyên $m$ để giá trị của biểu thức $m^3+4m+2$ chia hết cho giá trị của biểu thức $m^2+3$.
+
+Bài giải:
+Ta có $m^3+4m+2=m(m^2+3)+(m+2)$.
+Vì $m(m^2+3)\vdots(m^2+3)$ nên $(m^3+4m+2)\vdots(m^2+3)\Leftrightarrow(m+2)\vdots(m^2+3)$. (1)
+Từ (1) suy ra $(m+2)(m-2)=m^2-4\vdots(m^2+3)$.
+Mà $m^2-4=(m^2+3)-7$ nên $7\vdots(m^2+3)$.
+Vì $m^2+3\ge3$ và là ước dương của $7$ nên $m^2+3=7$, suy ra $m=\pm2$.
+Các bước trên chỉ là điều kiện cần, thử lại với (1):
+Với $m=2$: $m+2=4$ không chia hết cho $m^2+3=7$, loại.
+Với $m=-2$: $m+2=0\vdots7$, thoả mãn.
+Vậy $m=-2$.
+
+#DANG NDB03316
+@LT
+##TC Cấu tạo số và dấu hiệu chia hết
+- Cấu tạo thập phân: $\overline{abc}=100a+10b+c$, chữ số hàng cao nhất khác $0$.
+- Chia hết cho $2$ (hoặc $5$): chữ số tận cùng chia hết cho $2$ (hoặc $5$). Chia hết cho $4$ (hoặc $25$): hai chữ số cuối tạo thành số chia hết cho $4$ (hoặc $25$). Chia hết cho $8$: ba chữ số cuối tạo thành số chia hết cho $8$.
+- Chia hết cho $3$ (hoặc $9$): tổng các chữ số chia hết cho $3$ (hoặc $9$).
+- Chia hết cho $11$: hiệu giữa tổng các chữ số hàng lẻ và tổng các chữ số hàng chẵn chia hết cho $11$.
+
+##PP Tìm chữ số chưa biết
+Viết số theo cấu tạo thập phân; ghi rõ miền của từng chữ số (chữ số đầu từ $1$ đến $9$, các chữ số còn lại từ $0$ đến $9$)
+Tách điều kiện chia hết thành các điều kiện cho những môđun nguyên tố cùng nhau (như $36=4\cdot9$)
+Dùng dấu hiệu của từng môđun để thu hẹp các chữ số ẩn
+Liệt kê các cặp giá trị còn lại, thử lại và kết luận
+
+##CY
+Khi đề cho điều kiện không có dấu hiệu sẵn (như chia hết cho tích các chữ số), phải viết số theo cấu tạo thập phân rồi dùng tính chất chia hết; chú ý tích các chữ số phải khác $0$ thì mới là số chia.
+@VD
+##VD
+Tìm các chữ số $x$, $y$ để số $\overline{34x5y}$ chia hết cho $36$.
+
+Bài giải:
+Vì $36=4\cdot9$ và $4$, $9$ nguyên tố cùng nhau nên số đã cho chia hết cho $36$ khi và chỉ khi chia hết cho cả $4$ và $9$.
+Chia hết cho $4$: số $\overline{5y}$ chia hết cho $4$, mà $\overline{5y}\in\{50;51;\dots;59\}$ nên $\overline{5y}\in\{52;56\}$, tức là $y\in\{2;6\}$.
+Chia hết cho $9$: tổng các chữ số $3+4+x+5+y=12+x+y$ chia hết cho $9$.
+Với $y=2$: $14+x\vdots9$ và $0\le x\le9$ nên $14+x=18$, suy ra $x=4$.
+Với $y=6$: $18+x\vdots9$ và $0\le x\le9$ nên $x=0$ hoặc $x=9$.
+Thử lại: $34452=36\cdot957$; $34056=36\cdot946$; $34956=36\cdot971$.
+Vậy $(x;y)\in\{(4;2);(0;6);(9;6)\}$.
+
+##VD
+Tìm tất cả các số có hai chữ số mà nó chia hết cho tích các chữ số của nó.
+
+Bài giải:
+Gọi số cần tìm là $\overline{xy}=10x+y$ với $1\le x\le9$, $0\le y\le9$.
+Nếu $y=0$ thì tích các chữ số bằng $0$, không thể làm số chia; vậy $1\le y\le9$.
+Vì $(10x+y)\vdots xy$ nên $(10x+y)\vdots x$; mà $10x\vdots x$ nên $y\vdots x$.
+Đặt $y=kx$ với $k\in\mathbb{N}^*$.
+Khi đó $10x+y=x(10+k)$ và $xy=kx^2$.
+Điều kiện $x(10+k)\vdots kx^2$ tương đương $(10+k)\vdots kx$. (2)
+Từ (2) suy ra $(10+k)\vdots k$, tức là $10\vdots k$, nên $k\in\{1;2;5;10\}$.
+Với $k=10$: $y=10x\ge10$, loại.
+Với $k=1$: (2) thành $11\vdots x$, suy ra $x=1$, $y=1$, được số $11$.
+Với $k=2$: (2) thành $12\vdots2x$, tức $6\vdots x$; vì $y=2x\le9$ nên $x\in\{1;2;3\}$, được các số $12;24;36$.
+Với $k=5$: (2) thành $15\vdots5x$, tức $3\vdots x$; vì $y=5x\le9$ nên $x=1$, được số $15$.
+Vậy các số cần tìm là $11;12;15;24;36$.
+
+#DANG NDB03317
+@LT
+##TC Chặn miền bằng đánh giá
+Nếu $A$, $B$ là các số nguyên dương và $A\vdots B$ thì $A=kB$ với $k\in\mathbb{N}^*$ và $A\ge B$. Hai điều kiện chia hết hai chiều ($y\vdots x$ và $x\vdots y$ theo kiểu chéo) có thể nhân lại thành một điều kiện chia hết cho tích.
+
+##PP Tìm cặp $(a;b)$ nguyên dương
+Đặt biểu thức bị chia bằng $k$ lần biểu thức chia ($k\in\mathbb{N}^*$), hoặc nhân các điều kiện chia hết để gộp thành một điều kiện chia hết cho tích
+Nếu đề đối xứng thì giả sử $a\le b$; đánh giá hai vế (chẳng hạn thay $a$ bằng $b$) để chặn $k$ hoặc chặn $a$
+Với mỗi giá trị của $k$ (hoặc của $a$), giải phương trình theo ẩn còn lại, đưa về dạng tích bằng một số nguyên nếu cần
+Hoán đổi hai ẩn để lấy đủ nghiệm rồi thử lại điều kiện của đề
+
+##CY
+Đừng bỏ sót trường hợp có thừa số bằng $1$ và đừng quên hoán vị sau khi đã giả sử $a\le b$.
+@VD
+##VD
+Tìm các cặp số nguyên dương $(a;b)$ sao cho $a+b$ chia hết cho $ab$.
+
+Bài giải:
+Đề đối xứng nên giả sử $a\le b$.
+Đặt $a+b=k\cdot ab$ với $k\in\mathbb{N}^*$.
+Vì $a\le b$ nên $a+b\le2b$, do đó $kab\le2b$, suy ra $ka\le2$.
+Các khả năng của $(k;a)$ là $(1;1)$, $(2;1)$, $(1;2)$.
+Với $k=1$, $a=1$: $1+b=b$, vô lí.
+Với $k=2$, $a=1$: $1+b=2b$, suy ra $b=1$, được cặp $(1;1)$.
+Với $k=1$, $a=2$: $2+b=2b$, suy ra $b=2$, được cặp $(2;2)$.
+Thử lại: $(1;1)$ có $2\vdots1$; $(2;2)$ có $4\vdots4$.
+Vậy $(a;b)\in\{(1;1);(2;2)\}$.
+
+##VD
+Tìm cặp số tự nhiên $x$, $y$ sao cho tổng của một trong hai số đó với $1$ thì chia hết cho số kia.
+
+Bài giải:
+Vì phải chia cho số kia nên $x,y\ge1$. Điều kiện là $(x+1)\vdots y$ và $(y+1)\vdots x$.
+Nhân hai điều kiện: $(x+1)(y+1)\vdots xy$, tức $(xy+x+y+1)\vdots xy$, suy ra $(x+y+1)\vdots xy$.
+Bài toán đối xứng nên giả sử $x\le y$.
+Đặt $x+y+1=p\cdot xy$ với $p\in\mathbb{N}^*$, chia hai vế cho $xy$ được
+$\dfrac1y+\dfrac1x+\dfrac1{xy}=p$.
+Vì $x,y\ge1$ nên vế trái không vượt quá $3$, do đó $p\in\{1;2;3\}$.
+Với $p=3$: ba số hạng đều không vượt quá $1$ mà tổng bằng $3$ nên $x=y=1$.
+Với $p=2$: $x+y+1=2xy$. Nếu $x\ge2$ thì $y\ge2$ và $2xy\ge4y>2y+1\ge x+y+1$, vô lí. Vậy $x=1$, khi đó $y+2=2y$, suy ra $y=2$.
+Với $p=1$: $xy=x+y+1\Leftrightarrow(x-1)(y-1)=2$. Vì $0\le x-1\le y-1$ nên $x-1=1$, $y-1=2$, tức $(x;y)=(2;3)$.
+Hoán đổi hai số, ta được các cặp $(1;1)$, $(1;2)$, $(2;1)$, $(2;3)$, $(3;2)$.
+Thử lại: $(1;2)$ có $2\vdots2$ và $3\vdots1$; $(2;3)$ có $3\vdots3$ và $4\vdots2$; $(1;1)$ hiển nhiên thoả mãn.
+Vậy $(x;y)\in\{(1;1);(1;2);(2;1);(2;3);(3;2)\}$.
+
+#NHOM NNB01477
+@LT
+##ĐN Số nguyên tố, hợp số
+Số nguyên tố là số tự nhiên lớn hơn $1$ chỉ có hai ước dương là $1$ và chính nó. Hợp số là số tự nhiên lớn hơn $1$ có nhiều hơn hai ước dương, tức là viết được thành tích của hai số nguyên đều lớn hơn $1$. Các số $0$ và $1$ không là số nguyên tố cũng không là hợp số.
+
+##TC Tính chất cơ bản
+- $2$ là số nguyên tố chẵn duy nhất.
+- Mọi số nguyên tố $p>3$ không chia hết cho $2$ và $3$, nên có dạng $6k\pm1$, tức $3k+1$ hoặc $3k+2$.
+- Nếu tích hai số nguyên dương là số nguyên tố thì một trong hai thừa số bằng $1$.
+- Nếu số nguyên tố $p$ chia hết tích $ab$ thì $a\vdots p$ hoặc $b\vdots p$.
+
+##CY
+Kết luận "hợp số" từ việc chia hết cho $d$ chỉ đúng khi số đó lớn hơn $d$; luôn nêu rõ điều kiện "lớn hơn $d$".
+
+#DANG NDB02757
+@LT
+##TC Số dư của số nguyên tố
+Số nguyên tố $p>3$ không chia hết cho $3$ nên $p^2\equiv1\pmod{3}$. Số nguyên tố $p\ne5$ không chia hết cho $5$ nên $p^2$ chia $5$ dư $1$ hoặc $4$.
+
+##PP Tìm số nguyên tố $p$ để nhiều biểu thức cùng nguyên tố
+Thay trực tiếp các số nguyên tố nhỏ ($p=2$, $p=3$, có khi $p=5$) để xem số nào thoả mãn
+Chọn môđun $m$ nhỏ ($3$, $4$ hoặc $5$) sao cho khi $p$ khác $m$ thì một trong các biểu thức luôn chia hết cho $m$
+Xét từng số dư của $p$ (khác $0$) khi chia cho $m$, chỉ ra một biểu thức chia hết cho $m$ và lớn hơn $m$ nên là hợp số, trái đề
+Kết luận giá trị còn lại của $p$ và thử lại bằng cách tính các biểu thức
+
+##CY
+Thử $p=2$ và $p=3$ trước: chúng giúp đoán nên chọn môđun nào, và có thể là đáp số duy nhất. Bước thử lại là bắt buộc vì phần xét số dư chỉ cho điều kiện cần.
+@VD
+##VD
+Tìm số nguyên tố $p$ sao cho $p+10$ và $p+14$ cũng là số nguyên tố.
+
+Bài giải:
+Với $p=2$: $p+10=12$ là hợp số, loại.
+Với $p=3$: $p+10=13$ và $p+14=17$ đều là số nguyên tố, thoả mãn.
+Với $p>3$: $p$ không chia hết cho $3$ nên $p=3k+1$ hoặc $p=3k+2$ ($k\in\mathbb{N}^*$).
+Nếu $p=3k+1$ thì $p+14=3k+15=3(k+5)\vdots3$ và $p+14>3$ nên là hợp số, loại.
+Nếu $p=3k+2$ thì $p+10=3k+12=3(k+4)\vdots3$ và $p+10>3$ nên là hợp số, loại.
+Vậy $p=3$.
+
+##VD
+Tìm số nguyên tố $p$ sao cho $4p^2+1$ và $6p^2+1$ cùng là số nguyên tố.
+
+Bài giải:
+Với $p=5$: $4p^2+1=101$ và $6p^2+1=151$ đều là số nguyên tố, thoả mãn.
+Với $p\ne5$: $p$ không chia hết cho $5$ nên $p^2$ chia $5$ dư $1$ hoặc $4$.
+Nếu $p^2\equiv1\pmod{5}$ thì $4p^2+1\equiv5\equiv0\pmod{5}$; vì $4p^2+1>5$ nên $4p^2+1$ là hợp số, loại.
+Nếu $p^2\equiv4\pmod{5}$ thì $6p^2+1\equiv25\equiv0\pmod{5}$; vì $6p^2+1>5$ nên $6p^2+1$ là hợp số, loại.
+Các trường hợp $p=2$ ($6p^2+1=25$) và $p=3$ ($6p^2+1=55$) đã nằm trong lập luận trên.
+Vậy $p=5$.
+
+#DANG NDB03318
+@LT
+##TC Các cách phân tích thành tích
+- $a^2-b^2=(a-b)(a+b)$; $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+b^{n-1})$.
+- $a^4+4b^4=(a^2+2b^2)^2-(2ab)^2=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$.
+- Thêm bớt hạng tử để tạo thành hiệu hai bình phương.
+
+##PP Chứng minh một số là hợp số
+Với số hoặc biểu thức một biến: đặt ẩn phụ, thêm bớt hạng tử hoặc dùng hiệu $a^n-b^n$ để viết số thành tích hai thừa số nguyên
+Chứng tỏ cả hai thừa số đều lớn hơn $1$
+Với biến nguyên tố có điều kiện: xét số dư theo môđun $d$ để chỉ ra biểu thức chia hết cho $d$, rồi so sánh biểu thức với $d$
+Kết luận biểu thức là hợp số
+
+##CY
+Phải chỉ ra cả hai thừa số lớn hơn $1$; thừa số có dấu trừ trong biểu thức rất dễ nhỏ hơn hoặc bằng $1$.
+@VD
+##VD
+Cho $p$ là số nguyên tố, $p\ge5$ và $2p+1$ cũng là số nguyên tố. Chứng minh rằng $p(p+5)+31$ là hợp số.
+
+Bài giải:
+Vì $p$ nguyên tố, $p\ge5$ nên $p$ không chia hết cho $3$, do đó $p=3k+1$ hoặc $p=3k+2$ ($k\in\mathbb{N}^*$).
+Nếu $p=3k+1$ thì $2p+1=6k+3=3(2k+1)\vdots3$ và $2p+1>3$ nên $2p+1$ là hợp số, trái với giả thiết.
+Vậy $p=3k+2$.
+Khi đó $p(p+5)+31=(3k+2)(3k+7)+31$
+$=9k^2+27k+14+31$
+$=9k^2+27k+45=9(k^2+3k+5)\vdots3$.
+Mặt khác $p(p+5)+31\ge5\cdot10+31>3$.
+Vậy $p(p+5)+31$ là hợp số.
+
+##VD
+Cho $A=\dfrac{5^{125}-1}{5^{25}-1}$. Chứng minh rằng $A$ là hợp số.
+
+Bài giải:
+Đặt $x=5^{25}$. Khi đó $A=\dfrac{x^5-1}{x-1}=x^4+x^3+x^2+x+1$.
+Thêm bớt hạng tử: $A=(x^4+6x^3+11x^2+6x+1)-(5x^3+10x^2+5x)$.
+Mà $x^4+6x^3+11x^2+6x+1=(x^2+3x+1)^2$ và $5x^3+10x^2+5x=5x(x+1)^2$, nên $A=(x^2+3x+1)^2-5x(x+1)^2$.
+Vì $5x=5^{26}=(5^{13})^2$ nên $A=(x^2+3x+1)^2-\left[5^{13}(x+1)\right]^2$.
+Áp dụng hiệu hai bình phương: $A=\left[x^2+3x+1-5^{13}(x+1)\right]\left[x^2+3x+1+5^{13}(x+1)\right]$.
+Thừa số thứ hai là số nguyên lớn hơn $1$ vì $x>0$.
+Thừa số thứ nhất bằng $x(x-5^{13})+(3x+1-5^{13})$; vì $x=5^{25}>5^{13}$ nên $x-5^{13}\ge1$ và $3x+1-5^{13}>0$, suy ra thừa số này lớn hơn $x>1$.
+Vậy $A$ là tích của hai số nguyên lớn hơn $1$, tức $A$ là hợp số.
+
+#DANG NDB03319
+@LT
+##PP Tìm $n$ để $f(n)$ là số nguyên tố
+Phân tích $f(n)$ thành tích các nhân tử (nhóm hạng tử, hoặc thêm bớt để tạo hiệu hai bình phương)
+Xét dấu các nhân tử: giá trị của $n$ làm tích nhỏ hơn hoặc bằng $0$ thì loại
+Với các $n$ còn lại hai nhân tử là số nguyên dương; số nguyên tố chỉ viết được thành tích khi một nhân tử bằng $1$, nên cho nhân tử có khả năng bằng $1$ bằng $1$ và giải ra $n$
+Thử lại giá trị tìm được để chắc chắn biểu thức là số nguyên tố
+
+##CY
+Nhân tử bằng $1$ mới là điều kiện cần: phải tính giá trị của biểu thức rồi kiểm tra nó thực sự là số nguyên tố.
+@VD
+##VD
+Tìm các số tự nhiên $n$ để giá trị của biểu thức $5n^3-9n^2+15n-27$ là số nguyên tố.
+
+Bài giải:
+$5n^3-9n^2+15n-27=(5n^3-9n^2)+(15n-27)$
+$=n^2(5n-9)+3(5n-9)$
+$=(5n-9)(n^2+3)$.
+Với $n=0$ hoặc $n=1$ thì $5n-9<0$ và $n^2+3>0$ nên tích âm, không là số nguyên tố.
+Với $n\ge2$ thì $5n-9$ và $n^2+3$ đều là số nguyên dương; vì $n^2+3>1$ nên tích là số nguyên tố khi và chỉ khi $5n-9=1$.
+$5n-9=1\Leftrightarrow5n=10\Leftrightarrow n=2$.
+Thử lại: với $n=2$ biểu thức bằng $1\cdot7=7$, là số nguyên tố.
+Vậy $n=2$.
+
+##VD
+Tìm $n\in\mathbb{N}$ để $(n^2-8)^2+36$ là số nguyên tố.
+
+Bài giải:
+$(n^2-8)^2+36=n^4-16n^2+64+36=n^4-16n^2+100$
+$=n^4+20n^2+100-36n^2=(n^2+10)^2-(6n)^2$
+$=(n^2+6n+10)(n^2-6n+10)$.
+Với $n\in\mathbb{N}$: $n^2+6n+10\ge10>1$ và $n^2-6n+10=(n-3)^2+1\ge1$, cả hai đều là số nguyên dương.
+Biểu thức là số nguyên tố nên thừa số nhỏ phải bằng $1$: $(n-3)^2+1=1$, suy ra $n=3$.
+Thử lại: với $n=3$, $(9-8)^2+36=37$ là số nguyên tố.
+Vậy $n=3$.
+
+#NHOM NNB01478
+@LT
+##ĐN Số chính phương
+Số chính phương là bình phương của một số tự nhiên. Các số $0$ và $1$ cũng là số chính phương.
+
+##TC Chữ số tận cùng và số dư của số chính phương
+- Chữ số tận cùng chỉ có thể là $0;1;4;5;6;9$; không bao giờ là $2;3;7;8$.
+- Chia cho $3$ dư $0$ hoặc $1$; chia cho $4$ dư $0$ hoặc $1$.
+- Chia cho $5$ dư $0$, $1$ hoặc $4$; chia cho $8$ dư $0$, $1$ hoặc $4$.
+- Bình phương của một số lẻ chia $8$ dư $1$.
+
+##TC Thừa số nguyên tố
+Số chính phương có mọi thừa số nguyên tố với số mũ chẵn. Do đó nếu số chính phương chia hết cho số nguyên tố $p$ thì chia hết cho $p^2$.
+
+##CY
+Các điều kiện về chữ số tận cùng và số dư chỉ là điều kiện cần: một số thoả mãn chúng chưa chắc là số chính phương.
+
+#DANG NDB02760
+@LT
+##PP Chứng minh không là số chính phương bằng chữ số tận cùng hoặc số dư
+Tính chữ số tận cùng của số đề cho, hoặc số dư của nó khi chia cho $3$, $4$, $5$, $8$ (tách các số hạng chia hết cho môđun trước để rút gọn)
+Đối chiếu với tập chữ số tận cùng hoặc tập số dư của số chính phương
+Nếu kết quả không thuộc tập đó thì kết luận số đã cho không là số chính phương
+Với dạng chứng minh phương trình không có nghiệm nguyên, dùng số dư của bình phương để so sánh hai vế
+
+##CY
+Chỉ khi số dư (hay chữ số tận cùng) nằm ngoài tập của số chính phương mới kết luận được. Nếu nó nằm trong tập thì cách này không cho kết quả gì, phải đổi sang môđun khác hoặc đổi phương pháp.
+@VD
+##VD
+Chứng minh rằng $A=1!+2!+3!+\dots+100!$ không là số chính phương.
+
+Bài giải:
+Với $k\ge5$ thì $k!$ chứa các thừa số $2$ và $5$ nên $k!\vdots10$, tức $k!$ có chữ số tận cùng là $0$.
+Do đó chữ số tận cùng của $A$ bằng chữ số tận cùng của $1!+2!+3!+4!=1+2+6+24=33$, tức là chữ số $3$.
+Số chính phương không có chữ số tận cùng là $3$.
+Vậy $A$ không là số chính phương.
+
+##VD
+a) Chứng minh rằng số gồm $2024$ chữ số $1$ viết liền nhau không là số chính phương.
+b) Chứng minh rằng không tồn tại các số nguyên $x$, $y$ thoả mãn $x^2+y^2=2019$.
+
+Bài giải:
+a) Số đã cho có tổng các chữ số bằng $2024$, mà $2024=3\cdot674+2$ nên số đó chia cho $3$ dư $2$.
+Số chính phương chia cho $3$ dư $0$ hoặc $1$, vì $(3k)^2=9k^2$ và $(3k\pm1)^2=9k^2\pm6k+1$.
+Vậy số đã cho không là số chính phương.
+
+b) Số chính phương chia cho $4$ dư $0$ hoặc $1$, vì $(2k)^2=4k^2$ và $(2k+1)^2=4k^2+4k+1$.
+Do đó $x^2+y^2$ chia cho $4$ chỉ dư $0$, $1$ hoặc $2$.
+Mà $2019=4\cdot504+3$ chia cho $4$ dư $3$.
+Vậy không tồn tại các số nguyên $x$, $y$ để $x^2+y^2=2019$.
+
+#DANG NDB03320
+@LT
+##ĐL Kẹp giữa hai số chính phương liên tiếp
+Nếu $n$ là số tự nhiên và $n^2<k<(n+1)^2$ thì $k$ không là số chính phương, vì không có số nguyên nào nằm giữa $n$ và $n+1$ để bình phương lên bằng $k$.
+
+##PP Kẹp giữa hai số chính phương
+Khai triển biểu thức $A$ và chọn đa thức $P$ (hệ số nguyên) sao cho $P^2$ có cùng hai hạng tử bậc cao nhất với $A$ (hoặc ghép nhân tử, đặt ẩn phụ để $A$ bằng $t^2+2t$)
+Chứng minh $P^2<A<(P+1)^2$ bằng cách xét các hiệu $A-P^2>0$ và $(P+1)^2-A>0$
+Kết luận $A$ không là số chính phương
+
+##CY
+Kiểm tra giá trị nhỏ nhất của biến trong miền đề cho: bất đẳng thức kẹp có thể mất tính chặt ở biên (chẳng hạn khi biến bằng $0$ có thể thu được số chính phương).
+@VD
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, số $n^2+n+1$ không là số chính phương.
+
+Bài giải:
+Với $n\ge1$ ta có $n^2<n^2+n+1$ vì $n+1>0$.
+Lại có $n^2+n+1<n^2+2n+1=(n+1)^2$ vì $n>0$.
+Vậy $n^2<n^2+n+1<(n+1)^2$, tức là $n^2+n+1$ nằm giữa hai số chính phương liên tiếp nên không là số chính phương.
+
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, tích $A=n(n+1)(n+2)(n+3)$ không là số chính phương.
+
+Bài giải:
+Ghép thừa số: $A=\left[n(n+3)\right]\cdot\left[(n+1)(n+2)\right]=(n^2+3n)(n^2+3n+2)$.
+Đặt $t=n^2+3n$, với $n\ge1$ thì $t$ là số nguyên dương và $A=t(t+2)=t^2+2t$.
+Ta có $t^2<t^2+2t$ vì $t>0$.
+Lại có $t^2+2t<t^2+2t+1=(t+1)^2$.
+Vậy $t^2<A<(t+1)^2$ nên $A$ không là số chính phương.
+Chú ý điều kiện $n$ nguyên dương: với $n=0$ thì $A=0$ lại là số chính phương.
+
+#DANG NDB03321
+@LT
+##TC Số có dạng lặp chữ số
+Với $x=10^n$: số gồm $n$ chữ số $1$ bằng $\dfrac{x-1}9$; số gồm $n$ chữ số $c$ bằng $c\cdot\dfrac{x-1}9$; số gồm $2n$ chữ số $1$ bằng $\dfrac{x^2-1}9$.
+
+##PP Biến đổi về bình phương đúng
+Với biểu thức đa thức: ghép các thừa số để các tích có chung phần biến, đặt ẩn phụ $t$ rồi dùng hằng đẳng thức bình phương một tổng hoặc một hiệu
+Với số có dạng lặp chữ số: đặt $x=10^n$, viết mỗi nhóm chữ số theo $x$ rồi quy đồng
+Biến đổi đến dạng $B^2$ (hoặc $\left(\dfrac{B}{c}\right)^2$ với $c$ là ước của $B$)
+Chứng tỏ $B$ (hoặc $\dfrac{B}{c}$) là số nguyên rồi kết luận
+
+##CY
+Phải chỉ rõ đại lượng đem bình phương là số nguyên (thường là số tự nhiên); với phân số $\dfrac{B}{c}$ cần chứng tỏ $B$ chia hết cho $c$.
+@VD
+##VD
+Chứng minh rằng với mọi số tự nhiên $n$, số $n(n+1)(n+2)(n+3)+1$ là số chính phương.
+
+Bài giải:
+Ghép thừa số: $n(n+3)=n^2+3n$ và $(n+1)(n+2)=n^2+3n+2$.
+Đặt $t=n^2+3n$. Khi đó $n(n+1)(n+2)(n+3)+1=t(t+2)+1$
+$=t^2+2t+1=(t+1)^2$
+$=(n^2+3n+1)^2$.
+Vì $n^2+3n+1$ là số tự nhiên nên biểu thức đã cho là số chính phương.
+
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, hiệu của số gồm $2n$ chữ số $1$ và số gồm $n$ chữ số $2$ là một số chính phương.
+
+Bài giải:
+Đặt $x=10^n$. Số gồm $2n$ chữ số $1$ bằng $\dfrac{x^2-1}9$, số gồm $n$ chữ số $2$ bằng $\dfrac{2(x-1)}9$.
+Hiệu của hai số là $\dfrac{x^2-1}9-\dfrac{2(x-1)}9=\dfrac{x^2-2x+1}9$
+$=\dfrac{(x-1)^2}9=\left(\dfrac{x-1}3\right)^2$.
+Mà $x-1=10^n-1$ là số gồm $n$ chữ số $9$, nên $\dfrac{x-1}3=\overline{33\dots3}$ ($n$ chữ số $3$) là số tự nhiên.
+Vậy hiệu đã cho bằng $\left(\overline{33\dots3}\right)^2$, là số chính phương.
+
+#DANG NDB03322
+@LT
+##ĐL Tích hai số nguyên tố cùng nhau là số chính phương
+Nếu $a$, $b$ là các số nguyên dương nguyên tố cùng nhau và $ab$ là số chính phương thì $a$ và $b$ đều là số chính phương. Lí do: mỗi thừa số nguyên tố của $ab$ chỉ nằm trong một trong hai số $a$, $b$ và có số mũ chẵn.
+
+##PP Dùng thừa số nguyên tố và tính nguyên tố cùng nhau
+Biến đổi giả thiết về dạng tích hai biểu thức bằng một số chính phương: $A\cdot B=C^2$
+Chứng minh $A$ và $B$ nguyên tố cùng nhau: giả sử có ước nguyên tố chung $d$, chứng tỏ $d$ chia hết một hằng số khác $0$ (thường là $1$) rồi suy ra mâu thuẫn
+Kiểm tra $A$, $B$ đều dương rồi áp dụng định lí để kết luận mỗi thừa số là số chính phương
+Dùng thêm kết quả đó để giải tiếp yêu cầu của đề (so sánh, giải phương trình, chặn)
+
+##CY
+Bắt buộc phải chứng minh hai số nguyên tố cùng nhau: nếu hai số có ước chung lớn hơn $1$ thì tích là số chính phương không kéo theo từng số là số chính phương.
+@VD
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, số $n(n+1)$ không là số chính phương.
+
+Bài giải:
+Gọi $d$ là ước chung của $n$ và $n+1$. Khi đó $d$ là ước của hiệu $(n+1)-n=1$ nên $d=1$.
+Vậy $n$ và $n+1$ nguyên tố cùng nhau.
+Giả sử $n(n+1)$ là số chính phương.
+Tích hai số nguyên dương nguyên tố cùng nhau là số chính phương thì mỗi số là số chính phương, nên $n=a^2$ và $n+1=b^2$ với $a,b\in\mathbb{N}^*$.
+Khi đó $b^2-a^2=1$, tức $(b-a)(b+a)=1$.
+Vì $b+a\ge2$ mà $b+a$ là ước dương của $1$, điều này vô lí.
+Vậy $n(n+1)$ không là số chính phương.
+
+##VD
+Cho các số nguyên dương $x$, $y$ thoả mãn $2x^2+x=3y^2+y$. Chứng minh rằng $x-y$ và $2x+2y+1$ đều là số chính phương.
+
+Bài giải:
+Ta có $2x^2+x=3y^2+y\Leftrightarrow2(x^2-y^2)+(x-y)=y^2\Leftrightarrow(x-y)(2x+2y+1)=y^2$. (1)
+Vì $y^2>0$ và $2x+2y+1>0$ nên $x-y>0$.
+Gọi $d$ là một ước nguyên tố chung bất kỳ của $x-y$ và $2x+2y+1$.
+Từ (1), $y^2\vdots d$, mà $d$ nguyên tố nên $y\vdots d$.
+Vì $(x-y)\vdots d$ nên $x\vdots d$, do đó $(2x+2y)\vdots d$.
+Mà $(2x+2y+1)\vdots d$ nên $1\vdots d$, vô lí.
+Vậy $x-y$ và $2x+2y+1$ không có ước nguyên tố chung, tức là nguyên tố cùng nhau.
+Từ (1), tích của hai số nguyên dương nguyên tố cùng nhau là số chính phương $y^2$ nên mỗi số là số chính phương.
+Vậy $x-y$ và $2x+2y+1$ đều là số chính phương.

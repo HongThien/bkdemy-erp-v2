@@ -1,0 +1,206 @@
+#NHOM NNB01495
+@LT
+##ĐN Phân thức đại số
+Phân thức đại số là biểu thức có dạng $\dfrac{A}{B}$, trong đó $A$, $B$ là các đa thức và $B$ khác đa thức $0$. Mỗi đa thức cũng là một phân thức có mẫu bằng $1$.
+
+##TC Điều kiện xác định và hai phân thức bằng nhau
+- Phân thức $\dfrac{A}{B}$ chỉ có nghĩa khi $B\ne0$; điều kiện đó gọi là điều kiện xác định.
+- $\dfrac{A}{B}=\dfrac{C}{D}$ khi và chỉ khi $A\cdot D=B\cdot C$.
+- Nhân hoặc chia cả tử và mẫu cho cùng một đa thức khác $0$ thì được phân thức bằng phân thức đã cho.
+
+##TC Phép tính trên phân thức
+- Cộng, trừ cùng mẫu: $\dfrac{A}{M}\pm\dfrac{B}{M}=\dfrac{A\pm B}{M}$.
+- Khác mẫu: quy đồng về mẫu thức chung rồi cộng, trừ như trên.
+- Nhân: $\dfrac{A}{B}\cdot\dfrac{C}{D}=\dfrac{A\cdot C}{B\cdot D}$; chia: $\dfrac{A}{B}:\dfrac{C}{D}=\dfrac{A}{B}\cdot\dfrac{D}{C}$ với $C\ne0$.
+
+##TC Các hằng đẳng thức hay dùng để phân tích tử và mẫu
+- $a^2-b^2=(a-b)(a+b)$.
+- $(a+b)^2=a^2+2ab+b^2$; $(a-b)^2=a^2-2ab+b^2$.
+- $a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)$.
+
+#DANG NDB02737
+@LT
+##PP Rút gọn phân thức
+Phân tích tử và mẫu thành nhân tử (đặt nhân tử chung hoặc dùng hằng đẳng thức)
+Tìm nhân tử chung của tử và mẫu
+Chia cả tử và mẫu cho nhân tử chung, ghi điều kiện để nhân tử đó khác $0$
+Viết phân thức đã rút gọn
+
+##PP Cộng, trừ phân thức khác mẫu
+Phân tích các mẫu thành nhân tử để tìm mẫu thức chung (đa thức coi như có mẫu bằng $1$)
+Quy đồng: nhân cả tử và mẫu của từng phân thức với nhân tử phụ tương ứng
+Cộng hoặc trừ các tử trên cùng mẫu thức chung rồi thu gọn tử
+Phân tích tử thành nhân tử, nếu có nhân tử chung với mẫu thì rút gọn tiếp
+
+##CY
+- Chỉ được rút gọn nhân tử chung, không được "gạch" các hạng tử của một tổng; ví dụ không được rút gọn $\dfrac{x+3}{x}$ thành $3$.
+- Khi chia cả tử và mẫu cho một nhân tử thì phải ghi điều kiện nhân tử đó khác $0$; phân thức rút gọn chỉ bằng phân thức ban đầu với những giá trị này.
+@VD
+##VD
+Rút gọn phân thức: $\dfrac{x^2-9}{x^2+6x+9}$.
+
+Bài giải:
+Tử là hiệu hai bình phương: $x^2-9=(x+3)(x-3)$.
+Mẫu là bình phương của một tổng: $x^2+6x+9=(x+3)^2$.
+Điều kiện: $x\ne-3$ để mẫu khác $0$.
+$\dfrac{x^2-9}{x^2+6x+9}=\dfrac{(x+3)(x-3)}{(x+3)^2}$
+$=\dfrac{x-3}{x+3}$ (chia cả tử và mẫu cho $x+3\ne0$).
+Vậy $\dfrac{x^2-9}{x^2+6x+9}=\dfrac{x-3}{x+3}$ với $x\ne-3$.
+
+##VD
+Thực hiện phép tính: $x+2+\dfrac{3}{x-2}$.
+
+Bài giải:
+Điều kiện: $x\ne2$. Coi $x+2$ là phân thức có mẫu bằng $1$, nên mẫu thức chung là $x-2$.
+$x+2+\dfrac{3}{x-2}=\dfrac{(x+2)(x-2)}{x-2}+\dfrac{3}{x-2}$
+$=\dfrac{x^2-4+3}{x-2}$
+$=\dfrac{x^2-1}{x-2}$
+Tử $x^2-1=(x-1)(x+1)$ không có nhân tử chung với mẫu $x-2$ nên không rút gọn thêm được.
+Vậy $x+2+\dfrac{3}{x-2}=\dfrac{x^2-1}{x-2}$.
+
+#NHOM NNB01496
+@LT
+##ĐN Phương trình bậc nhất một ẩn
+Phương trình có dạng $ax+b=0$ với $a,b$ là hai số đã cho và $a\ne0$ gọi là phương trình bậc nhất một ẩn. Tập hợp tất cả các nghiệm của phương trình gọi là tập nghiệm, kí hiệu $S$.
+
+##TC Hai quy tắc biến đổi phương trình
+- Quy tắc chuyển vế: chuyển một hạng tử từ vế này sang vế kia thì phải đổi dấu hạng tử đó.
+- Quy tắc nhân (chia): nhân hoặc chia cả hai vế với cùng một số khác $0$.
+- Hai phương trình có cùng tập nghiệm gọi là tương đương, kí hiệu $\Leftrightarrow$.
+
+##TC Số nghiệm của phương trình $ax+b=0$
+- Nếu $a\ne0$: phương trình có đúng một nghiệm $x=-\dfrac{b}{a}$.
+- Nếu $a=0$ và $b\ne0$: phương trình vô nghiệm, $S=\varnothing$.
+- Nếu $a=0$ và $b=0$: phương trình nghiệm đúng với mọi $x$.
+
+#DANG NDB02738
+@LT
+##PP Giải phương trình bậc nhất một ẩn
+Chuyển các hạng tử chứa ẩn về một vế, các số hạng tự do về vế còn lại (nhớ đổi dấu)
+Thu gọn hai vế để đưa phương trình về dạng $ax=b$
+Chia cả hai vế cho hệ số $a\ne0$ để tìm $x$
+Kết luận tập nghiệm $S$
+
+##CY
+- Khi chuyển vế mà quên đổi dấu là lỗi sai thường gặp nhất; nên thử lại nghiệm vào phương trình ban đầu.
+- Nếu sau khi thu gọn được $0x=b$ thì xét $b$ để kết luận vô nghiệm hay nghiệm đúng với mọi $x$.
+@VD
+##VD
+Giải phương trình: $7x-35=0$.
+
+Bài giải:
+$7x-35=0$
+$\Leftrightarrow 7x=35$ (chuyển vế $-35$ sang vế phải, đổi dấu).
+$\Leftrightarrow x=35:7$ (chia cả hai vế cho $7\ne0$).
+$\Leftrightarrow x=5$
+Vậy $S=\{5\}$.
+
+##VD
+Giải phương trình: $x-6=8-x$.
+
+Bài giải:
+$x-6=8-x$
+$\Leftrightarrow x+x=8+6$ (chuyển $-x$ sang vế trái và $-6$ sang vế phải, đổi dấu).
+$\Leftrightarrow 2x=14$
+$\Leftrightarrow x=14:2$
+$\Leftrightarrow x=7$
+Thử lại: $7-6=1$ và $8-7=1$, hai vế bằng nhau.
+Vậy $S=\{7\}$.
+
+#NHOM NNB01497
+@LT
+##PP Các bước giải bài toán bằng cách lập phương trình
+Chọn ẩn, đặt đơn vị và điều kiện thích hợp cho ẩn
+Biểu diễn các đại lượng chưa biết qua ẩn và các đại lượng đã biết
+Lập phương trình biểu thị mối quan hệ giữa các đại lượng
+Giải phương trình
+Đối chiếu nghiệm với điều kiện của ẩn rồi kết luận
+
+##TC Các quan hệ thường dùng
+- Chuyển động: quãng đường $=$ vận tốc $\times$ thời gian.
+- Xuôi dòng: vận tốc xuôi $=$ vận tốc riêng $+$ vận tốc dòng nước; ngược dòng: vận tốc ngược $=$ vận tốc riêng $-$ vận tốc dòng nước.
+- Số có hai chữ số: $\overline{ab}=10a+b$ với $a$ là chữ số hàng chục ($1\le a\le9$), $b$ là chữ số hàng đơn vị ($0\le b\le9$).
+
+##CY
+Nghiệm của phương trình chưa chắc là đáp số của bài toán: phải kiểm tra điều kiện của ẩn (là chữ số, là số tự nhiên, lớn hơn vận tốc dòng nước, ...) trước khi kết luận.
+
+#DANG NDB02745
+@LT
+##PP Lập phương trình từ hai cách biểu diễn cùng một đại lượng
+Gọi ẩn là đại lượng làm cho các đại lượng còn lại biểu diễn được đơn giản nhất, ghi điều kiện của ẩn
+Tìm một đại lượng mà đề cho hai cách (hai chiều chuyển động, hai điều kiện về số) và biểu diễn nó theo ẩn bằng hai cách
+Cho hai biểu thức bằng nhau (hoặc hiệu bằng số đã cho) để lập phương trình
+Giải phương trình, đối chiếu điều kiện rồi tính đại lượng đề hỏi
+@VD
+##VD
+Tìm số tự nhiên có hai chữ số. Biết rằng tổng của hai chữ số ấy là $12$ và nếu đổi chỗ hai chữ số ấy thì được số mới lớn hơn số cũ là $36$.
+
+Bài giải:
+Gọi chữ số hàng chục của số cần tìm là $x$ thì chữ số hàng đơn vị là $12-x$.
+Vì cả hai là chữ số nên $x\in\mathbb{N}$, $3\le x\le9$.
+Số cần tìm là $10x+(12-x)=9x+12$; số mới là $10(12-x)+x=120-9x$.
+Số mới lớn hơn số cũ là $36$ nên $120-9x-(9x+12)=36$
+$\Leftrightarrow 108-18x=36$
+$\Leftrightarrow 18x=72$
+$\Leftrightarrow x=4$
+Giá trị $x=4$ thoả mãn điều kiện, khi đó chữ số hàng đơn vị là $12-4=8$.
+Vậy số cần tìm là $48$.
+
+##VD
+Một xuồng máy xuôi dòng từ A đến B mất $4$ giờ và ngược dòng từ B về A mất $5$ giờ. Tính quãng đường AB, biết vận tốc của dòng nước là $2$ km/giờ.
+
+Bài giải:
+Gọi vận tốc riêng của xuồng máy là $x$ (km/giờ), điều kiện $x>2$.
+Vận tốc xuôi dòng là $x+2$ (km/giờ), vận tốc ngược dòng là $x-2$ (km/giờ).
+Quãng đường AB tính theo chiều xuôi dòng là $4(x+2)$ (km), theo chiều ngược dòng là $5(x-2)$ (km).
+Hai quãng đường bằng nhau nên $4(x+2)=5(x-2)$
+$\Leftrightarrow 4x+8=5x-10$
+$\Leftrightarrow x=18$
+Giá trị $x=18$ thoả mãn điều kiện $x>2$.
+Quãng đường AB dài $4(18+2)=80$ (km).
+Vậy quãng đường AB dài $80$ km.
+
+#NHOM NNB01498
+@LT
+##TC Liên hệ giữa thứ tự và phép cộng, phép nhân
+Với ba số $a,b,c$:
+- Nếu $a<b$ thì $a+c<b+c$ (cộng cùng một số vào hai vế, chiều không đổi).
+- Nếu $a<b$ và $c>0$ thì $ac<bc$ (nhân với số dương, chiều không đổi).
+- Nếu $a<b$ và $c<0$ thì $ac>bc$ (nhân với số âm, chiều đổi).
+Các dấu $>$, $\le$, $\ge$ cũng có tính chất tương tự.
+
+##ĐN Bất phương trình bậc nhất một ẩn
+Bất phương trình có dạng $ax+b<0$ (hoặc $>$, $\le$, $\ge$) với $a\ne0$ gọi là bất phương trình bậc nhất một ẩn. Tập hợp các giá trị của ẩn làm bất phương trình đúng gọi là tập nghiệm.
+
+##TC Hai quy tắc biến đổi bất phương trình
+- Quy tắc chuyển vế: chuyển một hạng tử từ vế này sang vế kia thì phải đổi dấu hạng tử đó.
+- Quy tắc nhân: nhân cả hai vế với cùng một số khác $0$; nếu số đó dương thì giữ nguyên chiều, nếu số đó âm thì đổi chiều.
+
+#DANG NDB02747
+@LT
+##PP So sánh hai số từ một bất đẳng thức đã cho
+Nhận xét hai vế có hạng tử nào giống nhau (số hạng tự do, hệ số của biến)
+Cộng số đối của số hạng tự do vào cả hai vế để bỏ số hạng tự do
+Nhân cả hai vế với số nghịch đảo của hệ số trước biến, xét dấu số nhân để quyết định chiều bất đẳng thức
+Đọc quan hệ giữa hai số cần so sánh rồi kết luận
+
+##CY
+Nhân hoặc chia cả hai vế với số âm thì phải đổi chiều bất đẳng thức; cộng hoặc trừ cùng một số thì chiều không đổi.
+@VD
+##VD
+So sánh $m$ và $n$ nếu: $5m-8>5n-8$.
+
+Bài giải:
+Vì $5m-8>5n-8$ nên $5m-8+8>5n-8+8$ (cộng cả hai vế với $8$, chiều không đổi).
+Hay $5m>5n$.
+Vì $\dfrac{1}{5}>0$ nên $5m\cdot\dfrac{1}{5}>5n\cdot\dfrac{1}{5}$ (nhân cả hai vế với số dương $\dfrac{1}{5}$, chiều giữ nguyên).
+Hay $m>n$.
+Vậy $m>n$.
+
+##VD
+So sánh $m$ và $n$ nếu: $-6m\le-6n$.
+
+Bài giải:
+Vì $-6m\le-6n$ và $-\dfrac{1}{6}<0$ nên $-6m\cdot\left(-\dfrac{1}{6}\right)\ge-6n\cdot\left(-\dfrac{1}{6}\right)$ (nhân cả hai vế với số âm $-\dfrac{1}{6}$, bất đẳng thức đổi chiều).
+Hay $m\ge n$.
+Vậy $m\ge n$.

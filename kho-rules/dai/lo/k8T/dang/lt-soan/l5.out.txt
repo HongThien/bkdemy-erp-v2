@@ -1,0 +1,463 @@
+#NHOM NNB01456
+@LT
+##ĐL Định lí Bê-du
+Số dư trong phép chia đa thức $f(x)$ cho nhị thức $x-a$ bằng giá trị của đa thức tại $x=a$, tức là bằng $f(a)$.
+
+##TC Phép chia có dư và hệ quả
+- $f(x)=g(x)\cdot q(x)+r(x)$ đúng với mọi giá trị của $x$, trong đó $r(x)=0$ hoặc bậc của $r(x)$ nhỏ hơn bậc của $g(x)$; thương $q(x)$ và dư $r(x)$ là duy nhất.
+- Chia cho đa thức bậc $k$ thì dư có bậc nhiều nhất là $k-1$: chia cho nhị thức bậc nhất thì dư là một hằng số, chia cho đa thức bậc hai thì dư có dạng $ax+b$.
+- Dư của phép chia $f(x)$ cho $x-1$ là $f(1)$, chính là tổng các hệ số của $f(x)$; dư của phép chia cho $x+1$ là $f(-1)$.
+- Với $a$ là hằng số, $x^n-a^n$ chia hết cho $x-a$.
+
+##CY
+Đẳng thức $f=g\cdot q+r$ đúng với mọi $x$ nên có thể thay riêng nghiệm của $g$ vào để mất phần $g\cdot q$ mà không cần biết thương $q$. Số chia $ax+b$ có nghiệm $x=-\dfrac ba$; số chia $x+3$ có nghiệm $x=-3$, đừng thay nhầm $x=3$.
+
+#DANG NDB02727
+@LT
+##PP Tìm dư khi chia cho nhị thức bậc nhất
+Đưa số chia về dạng $x-a$ (hoặc $kx+m$) và tìm nghiệm của nó
+Áp dụng định lí Bê-du: số dư bằng giá trị của đa thức tại nghiệm đó
+Thay nghiệm vào đa thức, tính (luỹ thừa của $1$ đều bằng $1$, luỹ thừa của $-1$ đổi dấu theo tính chẵn lẻ của số mũ)
+Nếu đa thức chứa tham số và đề cho trước số dư: cho giá trị tại nghiệm bằng số dư đó rồi giải phương trình
+
+##CY
+Không đặt tính chia khi đa thức có bậc lớn; chỉ cần tính một giá trị. Dư luôn là một hằng số vì số chia có bậc nhất.
+
+@VD
+##VD
+Xác định hằng số $a$ sao cho $2x^2+ax+1$ chia cho $x-3$ dư $4$.
+
+Bài giải:
+Đặt $P(x)=2x^2+ax+1$.
+Theo định lí Bê-du, số dư của phép chia $P(x)$ cho $x-3$ là $P(3)$, nên $P(3)=4$.
+$P(3)=2\cdot9+3a+1=3a+19$.
+$3a+19=4\Leftrightarrow3a=-15\Leftrightarrow a=-5$.
+Vậy $a=-5$.
+
+##VD
+Xác định dư của phép chia đa thức $f(x)=x+x^3+x^9+x^{27}+x^{81}$ cho:
+a) $x-1$;
+b) $x+1$.
+
+Bài giải:
+a) Số chia $x-1$ có bậc nhất nên dư là hằng số $r$.
+Gọi $Q(x)$ là thương, ta có với mọi $x$: $f(x)=(x-1)Q(x)+r$.
+Cho $x=1$: $r=f(1)=1+1+1+1+1=5$.
+Vậy dư của phép chia cho $x-1$ là $5$.
+
+b) Số chia $x+1=x-(-1)$ có nghiệm $x=-1$; theo định lí Bê-du, dư là $f(-1)$.
+Các số mũ $1,3,9,27,81$ đều lẻ nên $f(-1)=-1-1-1-1-1=-5$.
+Vậy dư của phép chia cho $x+1$ là $-5$.
+
+#DANG NDB03211
+@LT
+##TC Dư của phép chia cho đa thức bậc hai trở lên
+- Chia cho đa thức bậc $k$ thì dư có dạng đa thức bậc nhiều nhất $k-1$ với các hệ số chưa biết: bậc hai thì dư $ax+b$, bậc ba thì dư $ax^2+bx+c$.
+- Nếu số chia là tích $(x-a_1)(x-a_2)\dots$ thì mỗi $a_i$ làm số chia bằng $0$, nên $f(a_i)$ bằng giá trị của đa thức dư tại $a_i$.
+
+##PP Tìm dư khi chia cho đa thức bậc từ hai trở lên
+Phân tích số chia thành các nhị thức bậc nhất (nếu được) và gọi dư với hệ số chưa biết, bậc thấp hơn số chia một bậc
+Viết $f(x)=g(x)\cdot Q(x)+r(x)$ ($g$ là số chia, $r$ là dư) đúng với mọi $x$, rồi thay lần lượt từng nghiệm của số chia để mất phần chứa $Q(x)$
+Dùng Bê-du hoặc dữ kiện đề cho để có giá trị $f$ tại các nghiệm, lập hệ phương trình bậc nhất theo hệ số của dư
+Giải hệ và viết đa thức dư
+
+##CY
+Đừng viết dư là hằng số khi số chia bậc hai. Số nghiệm phân biệt dùng được phải bằng số hệ số chưa biết của dư; nếu số chia có nghiệm kép thì cần thêm cách khác (chia hai lần).
+
+@VD
+##VD
+Đa thức $P(x)$ chia cho $x-1$ được số dư bằng $4$, chia cho $x-3$ được số dư bằng $14$. Tìm số dư của phép chia $P(x)$ cho $(x-1)(x-3)$.
+
+Bài giải:
+Theo định lí Bê-du: $P(1)=4$ và $P(3)=14$.
+Số chia $(x-1)(x-3)$ có bậc hai nên dư có dạng $ax+b$. Gọi $C(x)$ là thương:
+$P(x)=(x-1)(x-3)C(x)+ax+b$ với mọi $x$.
+Thay $x=1$: $P(1)=a+b$, nên $a+b=4$.
+Thay $x=3$: $P(3)=3a+b$, nên $3a+b=14$.
+Trừ hai phương trình theo vế: $2a=10$, suy ra $a=5$ và $b=-1$.
+Vậy dư của phép chia $P(x)$ cho $(x-1)(x-3)$ là $5x-1$.
+
+##VD
+Đa thức $f(x)$ chia cho $x-1$, $x-2$, $x-3$ lần lượt dư $2$, $3$, $6$. Tìm dư của phép chia $f(x)$ cho $(x-1)(x-2)(x-3)$.
+
+Bài giải:
+Theo định lí Bê-du: $f(1)=2$, $f(2)=3$, $f(3)=6$.
+Số chia bậc ba nên dư có dạng $ax^2+bx+c$. Gọi $Q(x)$ là thương:
+$f(x)=(x-1)(x-2)(x-3)Q(x)+ax^2+bx+c$ với mọi $x$.
+Thay $x=1$: $a+b+c=2$.
+Thay $x=2$: $4a+2b+c=3$.
+Thay $x=3$: $9a+3b+c=6$.
+Trừ phương trình thứ hai cho thứ nhất: $3a+b=1$. Trừ phương trình thứ ba cho thứ hai: $5a+b=3$.
+Trừ hai kết quả: $2a=2$, suy ra $a=1$, $b=-2$, $c=2-a-b=3$.
+Vậy dư của phép chia là $x^2-2x+3$.
+
+#DANG NDB03212
+@LT
+##TC Hạ bậc khi chia cho đa thức đặc biệt
+- $x^n-1$ chia hết cho $x-1$ với mọi số tự nhiên $n\ge1$ (từ $a^n-b^n$ chia hết cho $a-b$).
+- Khi chia cho $x^2-1=(x-1)(x+1)$: thay $x=1$ và $x=-1$; luỹ thừa của $-1$ bằng $1$ nếu số mũ chẵn, bằng $-1$ nếu số mũ lẻ.
+- Khi chia cho $x^2+x+1$: vì $x^3-1=(x-1)(x^2+x+1)$ nên $x^3-1$ chia hết cho $x^2+x+1$. Ta viết $A\equiv B\pmod{x^2+x+1}$ khi $A-B$ chia hết cho $x^2+x+1$; khi đó $x^3\equiv1$ và $x^2+x+1\equiv0$.
+
+##PP Dư của đa thức bậc rất cao
+Xác định dạng của dư theo bậc của số chia
+Nếu số chia có nghiệm đơn giản ($\pm1$): viết $f=g\cdot Q+r$ ($g$ là số chia, $r$ là dư) rồi thay các nghiệm, tính luỹ thừa theo tính chẵn lẻ
+Nếu số chia không có nghiệm thực (như $x^2+x+1$): chia số mũ cho $3$, viết $x^{3k+r}=x^r\cdot(x^3)^k\equiv x^r$
+Rút gọn rồi thay $x^2+x+1\equiv0$ để được dư có bậc nhỏ hơn bậc số chia
+
+##CY
+Dấu của luỹ thừa của $-1$ là chỗ dễ sai: mũ lẻ cho $-1$, mũ chẵn cho $1$. Dư cuối cùng phải có bậc nhỏ hơn bậc số chia, nếu chưa thì còn phải rút gọn tiếp.
+
+@VD
+##VD
+Xác định đa thức dư của phép chia đa thức $x^{49}+x^{13}-x^8$ cho đa thức $x^2-1$.
+
+Bài giải:
+Đa thức chia $x^2-1$ có bậc $2$ nên dư có dạng $ax+b$.
+Gọi $Q(x)$ là thương, ta có với mọi $x$:
+$x^{49}+x^{13}-x^8=(x^2-1)Q(x)+ax+b$ $(*)$
+Thay $x=1$ vào $(*)$: $1+1-1=a+b$, suy ra $a+b=1$.
+Thay $x=-1$ vào $(*)$: $-1-1-1=-a+b$ (vì $49$, $13$ lẻ và $8$ chẵn), suy ra $-a+b=-3$.
+Cộng hai vế của hai đẳng thức: $2b=-2\Leftrightarrow b=-1$.
+Thay vào $a+b=1$: $a=2$.
+Vậy đa thức dư là $2x-1$.
+
+##VD
+Tìm dư của phép chia $x^{100}+2x^{50}+3$ cho $x^2+x+1$.
+
+Bài giải:
+Ta có $x^3-1=(x-1)(x^2+x+1)$ chia hết cho $x^2+x+1$, nên $x^3\equiv1\pmod{x^2+x+1}$, và do đó $(x^3)^k\equiv1$ với mọi số tự nhiên $k$.
+$100=3\cdot33+1$ nên $x^{100}=x\cdot(x^3)^{33}\equiv x$.
+$50=3\cdot16+2$ nên $x^{50}=x^2\cdot(x^3)^{16}\equiv x^2$.
+Suy ra $x^{100}+2x^{50}+3\equiv x+2x^2+3$.
+$2x^2+x+3=2(x^2+x+1)-x+1$ và $x^2+x+1\equiv0$, nên $x^{100}+2x^{50}+3\equiv1-x$.
+Đa thức $1-x$ có bậc nhỏ hơn bậc $2$ của số chia, nên đó là dư.
+Vậy dư của phép chia là $1-x$.
+
+#DANG NDB03213
+@LT
+##TC Sơ đồ Hoóc-ne
+Chia $f(x)=a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0$ cho $x-a$ được thương $q(x)=b_{n-1}x^{n-1}+\dots+b_1x+b_0$ và dư $r$, trong đó $b_{n-1}=a_n$, $b_{k-1}=a\cdot b_k+a_k$ với $k=n-1,\dots,1$ và $r=a\cdot b_0+a_0$. Số dư $r$ cũng chính là $f(a)$.
+
+##PP Chia bằng sơ đồ Hoóc-ne
+Viết các hệ số của $f$ theo luỹ thừa giảm dần, hạng tử thiếu ghi hệ số $0$
+Hạ hệ số đầu tiên xuống làm hệ số đầu của thương
+Mỗi số tiếp theo bằng số vừa tìm được nhân với $a$ rồi cộng hệ số của $f$ ở cùng cột
+Số cuối cùng là số dư, các số đứng trước nó là hệ số của thương theo luỹ thừa giảm dần
+Muốn khai triển $f$ theo luỹ thừa của $x-a$: áp dụng sơ đồ lặp lại cho từng thương, các số dư thu được lần lượt là hệ số của $(x-a)^0,(x-a)^1,\dots$
+
+##CY
+Sơ đồ chỉ dùng được khi chia cho $x-a$; chia cho $x+2$ thì lấy $a=-2$. Đừng quên điền $0$ cho hạng tử thiếu, nếu không các cột sẽ bị lệch.
+
+@VD
+##VD
+Dùng sơ đồ Hoóc-ne, chia $f(x)=2x^3-5x^2+3$ cho $x-3$.
+
+Bài giải:
+Đa thức thiếu hạng tử $x$ nên hệ số là $2;\ -5;\ 0;\ 3$, và $a=3$.
+Hạ hệ số đầu: $2$.
+$2\cdot3+(-5)=1$.
+$1\cdot3+0=3$.
+$3\cdot3+3=12$.
+Các số thu được là $2;\ 1;\ 3$ (hệ số thương) và $12$ (dư).
+Vậy $f(x)=(x-3)(2x^2+x+3)+12$, thương là $2x^2+x+3$, dư là $12$.
+Kiểm tra: $f(3)=2\cdot27-5\cdot9+3=12$, đúng với số dư.
+
+##VD
+Dùng sơ đồ Hoóc-ne lặp lại, viết $f(x)=x^3+3x^2-2x+5$ dưới dạng đa thức theo luỹ thừa của $x-1$.
+
+Bài giải:
+Chia $f(x)$ cho $x-1$ ($a=1$), hệ số $1;\ 3;\ -2;\ 5$: hạ $1$; $1\cdot1+3=4$; $4\cdot1+(-2)=2$; $2\cdot1+5=7$. Thương $x^2+4x+2$, dư $7$.
+Chia $x^2+4x+2$ cho $x-1$, hệ số $1;\ 4;\ 2$: hạ $1$; $1\cdot1+4=5$; $5\cdot1+2=7$. Thương $x+5$, dư $7$.
+Chia $x+5$ cho $x-1$, hệ số $1;\ 5$: hạ $1$; $1\cdot1+5=6$. Thương $1$, dư $6$.
+Do đó $f(x)=(x-1)(x^2+4x+2)+7$, $x^2+4x+2=(x-1)(x+5)+7$, $x+5=(x-1)+6$.
+Thay ngược lại: $f(x)=(x-1)^3+6(x-1)^2+7(x-1)+7$.
+Kiểm tra tại $x=2$: $f(2)=8+12-4+5=21$ và $1+6+7+7=21$.
+Vậy $f(x)=(x-1)^3+6(x-1)^2+7(x-1)+7$.
+
+#DANG NDB03214
+@LT
+##TC Đa thức nhận cùng một giá trị tại nhiều điểm
+Nếu $f(a_1)=f(a_2)=\dots=f(a_k)=c$ với các số $a_1,\dots,a_k$ đôi một khác nhau thì $f(x)-c$ chia hết cho $(x-a_1)(x-a_2)\dots(x-a_k)$. Khi biết bậc của $f$ bằng $k$ thì $f(x)-c=m(x-a_1)\dots(x-a_k)$ với $m$ là một hằng số.
+
+##PP Xác định đa thức biết các số dư
+Đổi từng điều kiện về số dư thành giá trị của đa thức (định lí Bê-du): chia cho $x-a$ dư $r$ nghĩa là $f(a)=r$
+Dựng hình dạng của $f$: nếu đề cho thương và số chia thì viết $f=g\cdot q+r$ ($g$ là số chia, $q$ là thương, $r$ là dư) với dư có hệ số chưa biết; nếu cho bậc và các giá trị bằng nhau thì dùng $f(x)-c=m(x-a_1)\dots$
+Thay các giá trị của $x$ tương ứng để lập hệ phương trình (hoặc phương trình) theo các hệ số chưa biết, giải ra
+Khai triển và viết đa thức $f(x)$ hoàn chỉnh
+
+##CY
+Dư của phép chia cho tích hai nhị thức có bậc nhỏ hơn $2$, nên phải đặt dư là $ax+b$ chứ không phải hằng số. Khi đã tìm được đa thức, nên thử lại bằng cách tính giá trị tại các điểm đã cho.
+
+@VD
+##VD
+Tìm đa thức $P(x)$ biết rằng $P(x)$ chia cho $x+3$ thì dư $1$, chia cho $x-4$ thì dư $8$, chia cho $(x+3)(x-4)$ được thương là $3x$ và còn dư.
+
+Bài giải:
+Vì dư của phép chia cho $(x+3)(x-4)$ có bậc nhỏ hơn $2$ nên $P(x)=3x(x+3)(x-4)+ax+b$.
+Số dư khi chia $P(x)$ cho $x+3$ là $1$: theo định lí Bê-du, $P(-3)=-3a+b=1$.
+Số dư khi chia $P(x)$ cho $x-4$ là $8$: theo định lí Bê-du, $P(4)=4a+b=8$.
+Trừ vế hai phương trình: $7a=7$, suy ra $a=1$, $b=4$.
+$P(x)=3x(x+3)(x-4)+x+4=3x(x^2-x-12)+x+4=3x^3-3x^2-35x+4$.
+Vậy $P(x)=3x^3-3x^2-35x+4$.
+
+##VD
+Xác định đa thức bậc ba $P(x)$ sao cho khi chia $P(x)$ lần lượt cho các nhị thức $x-1$, $x-2$, $x-3$ đều có số dư là $6$ và $P(-1)=-18$.
+
+Bài giải:
+Theo định lí Bê-du: $P(1)=P(2)=P(3)=6$.
+Đặt $R(x)=P(x)-6$ thì $R(x)$ có bậc ba và $R(1)=R(2)=R(3)=0$.
+$R(1)=0$ nên $R(x)=(x-1)A(x)$ với $A(x)$ bậc hai; $R(2)=0$ và $2-1\ne0$ nên $A(2)=0$, suy ra $A(x)=(x-2)B(x)$ với $B(x)$ bậc nhất; tương tự $B(3)=0$ nên $B(x)=m(x-3)$ với $m$ là hằng số.
+Do đó $P(x)-6=m(x-1)(x-2)(x-3)$.
+Thay $x=-1$: $-18-6=m\cdot(-2)(-3)(-4)$, tức $-24=-24m$, suy ra $m=1$.
+Khi đó $P(x)-6=(x-1)(x-2)(x-3)=x^3-6x^2+11x-6$.
+Suy ra $P(x)=x^3-6x^2+11x$.
+Vậy $P(x)=x^3-6x^2+11x$.
+
+#NHOM NNB01457
+@LT
+##ĐN Phép chia hết
+Đa thức $f(x)$ chia hết cho đa thức $g(x)$ (khác $0$) nếu có đa thức $q(x)$ sao cho $f(x)=g(x)\cdot q(x)$ với mọi $x$; tương đương với dư của phép chia $f$ cho $g$ là đa thức $0$.
+
+##ĐL Định lí Bê-du về chia hết
+Đa thức $f(x)$ chia hết cho $x-a$ khi và chỉ khi $f(a)=0$ (tức $a$ là nghiệm của $f$). Đa thức $f(x)$ chia hết cho $kx+m$ ($k\ne0$) khi và chỉ khi $f\left(-\dfrac mk\right)=0$.
+
+##TC Đồng nhất hệ số
+Hai đa thức bằng nhau với mọi giá trị của $x$ khi và chỉ khi các hệ số của các hạng tử cùng bậc bằng nhau. Đặc biệt, một đa thức bằng $0$ với mọi $x$ khi và chỉ khi mọi hệ số của nó bằng $0$.
+
+##TC Chia hết cho tích các nhị thức khác nhau
+Nếu $f(x)$ chia hết cho $x-a$ và cho $x-b$ với $a\ne b$ thì $f(x)$ chia hết cho $(x-a)(x-b)$. Lí do: viết $f(x)=(x-a)Q(x)$; thay $x=b$ được $(b-a)Q(b)=0$ nên $Q(b)=0$ và $Q(x)=(x-b)R(x)$. Tổng quát cho nhiều nhân tử đôi một khác nhau.
+
+#DANG NDB02732
+@LT
+##PP Tìm hệ số bằng đặt tính chia
+Sắp xếp cả hai đa thức theo luỹ thừa giảm dần của biến, hạng tử thiếu ghi hệ số $0$
+Thực hiện phép chia từng bước (lấy hạng tử bậc cao nhất của phần còn lại chia cho hạng tử bậc cao nhất của số chia) đến khi dư có bậc nhỏ hơn bậc số chia, dư có dạng $mx+n$ với $m,n$ chứa tham số
+Cho dư bằng $0$ với mọi $x$, tức mọi hệ số của dư bằng $0$ (hoặc bằng dư đề cho)
+Giải hệ phương trình thu được để tìm các hệ số, nếu hệ có phương trình bậc hai thì rút một ẩn từ phương trình bậc nhất rồi thế vào, phân tích thành tích
+
+##CY
+Dư phải đồng nhất bằng $0$ nên cần cho cả hai hệ số $m$ và $n$ bằng $0$, không chỉ một hệ số. Nên thử lại bằng cách nhân thương với số chia.
+
+@VD
+##VD
+Tìm hệ số $a$ và $b$ để đa thức $x^4+ax^2+b$ chia hết cho $x^2+x+1$.
+
+Bài giải:
+$x^4+ax^2+b-x^2(x^2+x+1)=-x^3+(a-1)x^2+b$
+$-x^3+(a-1)x^2+b+x(x^2+x+1)=ax^2+x+b$
+$ax^2+x+b-a(x^2+x+1)=(1-a)x+(b-a)$
+Vậy $x^4+ax^2+b=(x^2+x+1)(x^2-x+a)+(1-a)x+(b-a)$.
+Phép chia hết khi dư bằng $0$ với mọi $x$, tức $1-a=0$ và $b-a=0$, suy ra $a=1$, $b=1$.
+Vậy $a=1$, $b=1$.
+
+##VD
+Xác định các giá trị $a,b$ sao cho đa thức $Q(x)=6x^4-7x^3+ax^2+3x+2$ chia hết cho đa thức $M(x)=x^2-x+b$.
+
+Bài giải:
+Chia $Q(x)$ cho $M(x)$ từng bước:
+$Q(x)-6x^2M(x)=-x^3+(a-6b)x^2+3x+2$
+$-x^3+(a-6b)x^2+3x+2+xM(x)=(a-6b-1)x^2+(b+3)x+2$
+$(a-6b-1)x^2+(b+3)x+2-(a-6b-1)M(x)=(a-5b+2)x+(-ab+6b^2+b+2)$
+Vậy thương là $6x^2-x+(a-6b-1)$ và dư là $(a-5b+2)x+(-ab+6b^2+b+2)$.
+$Q(x)$ chia hết cho $M(x)$ khi và chỉ khi dư bằng $0$ với mọi $x$, tức là:
+$a-5b+2=0$ (1) và $-ab+6b^2+b+2=0$ (2).
+Từ (1): $a=5b-2$.
+Thay vào (2): $-(5b-2)b+6b^2+b+2=0$, tức là $b^2+3b+2=0\Leftrightarrow(b+1)(b+2)=0$.
+Với $b=-1$ thì $a=5\cdot(-1)-2=-7$; với $b=-2$ thì $a=5\cdot(-2)-2=-12$.
+Vậy $(a;b)=(-7;-1)$ hoặc $(a;b)=(-12;-2)$.
+
+#DANG NDB03215
+@LT
+##TC Dùng nghiệm của đa thức chia
+- $f(x)$ chia hết cho $kx+m$ khi và chỉ khi $f\left(-\dfrac mk\right)=0$.
+- Nếu đa thức chia phân tích được thành tích các nhị thức bậc nhất có nghiệm đôi một khác nhau thì $f(x)$ chia hết cho nó khi và chỉ khi $f$ triệt tiêu tại từng nghiệm.
+- Nghiệm bội: $f(x)$ chia hết cho $(x-a)^2$ khi và chỉ khi $f(a)=0$ và thương $q(x)=f(x):(x-a)$ cũng thoả $q(a)=0$ (chia hai lần).
+
+##PP Tìm hệ số nhờ nghiệm
+Phân tích đa thức chia thành nhân tử bậc nhất và tìm các nghiệm
+Với mỗi nghiệm phân biệt $a$: thay vào $f$ và cho $f(a)=0$ để lập một phương trình theo hệ số
+Với nghiệm bội: sau khi có $f(a)=0$, viết (hoặc chia) $f(x)=(x-a)q(x)$ rồi cho $q(a)=0$
+Giải hệ và kết luận
+
+##CY
+Chia hết cho $(x-a)^2$ chưa đủ chỉ với $f(a)=0$, vì đó mới là chia hết cho $x-a$; phải có thêm điều kiện thứ hai từ thương. Nghiệm của $3x+2$ là $-\dfrac23$, không phải $-2$.
+
+@VD
+##VD
+Xác định số $a$ sao cho $27x^2+a$ chia hết cho $3x+2$.
+
+Bài giải:
+Đặt $P(x)=27x^2+a$. Nghiệm của $3x+2$ là $x=-\dfrac23$.
+Theo định lí Bê-du, $P(x)$ chia hết cho $3x+2$ khi và chỉ khi $P\left(-\dfrac23\right)=0$.
+$P\left(-\dfrac23\right)=27\cdot\dfrac49+a=12+a=0\Leftrightarrow a=-12$.
+Vậy $a=-12$.
+
+##VD
+Tìm các hằng số $a$ và $b$ để đa thức $x^3+ax+b$ chia hết cho $(x-1)^2$.
+
+Bài giải:
+Đặt $P(x)=x^3+ax+b$. Vì $P(x)$ chia hết cho $(x-1)^2$ nên trước hết chia hết cho $x-1$, theo định lí Bê-du $P(1)=0$, tức $1+a+b=0$, suy ra $b=-a-1$.
+Khi đó $P(x)=x^3-1+a(x-1)=(x-1)(x^2+x+1+a)$.
+Đặt $Q(x)=x^2+x+a+1$, ta có $P(x)=(x-1)Q(x)$.
+$P(x)$ chia hết cho $(x-1)^2$ khi và chỉ khi $Q(x)$ chia hết cho $x-1$, tức $Q(1)=0$ (định lí Bê-du).
+$Q(1)=3+a=0\Leftrightarrow a=-3$, khi đó $b=2$.
+Thử lại: $x^3-3x+2=(x-1)^2(x+2)$.
+Vậy $a=-3$, $b=2$.
+
+#DANG NDB03216
+@LT
+##TC Hằng đẳng thức hay dùng khi thử lại
+$a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.
+
+##PP Hệ số bất định
+Xác định bậc của thương (bằng bậc bị chia trừ bậc đa thức chia), hệ số cao nhất và hệ số tự do của thương từ hai đa thức đã cho; đặt thương với các hệ số còn lại chưa biết
+Viết $f=g\cdot q$ với mọi $x$, nhân ra và đồng nhất hệ số từng luỹ thừa của $x$ để lập hệ phương trình
+Giải hệ, nếu có phương trình dạng tích thì xét từng trường hợp và loại những trường hợp vô lí
+Kết luận và thử lại bằng cách nhân ra
+
+##PP Chọn giá trị riêng của biến (đa thức nhiều biến)
+Từ $f=g\cdot q$ suy ra $f=0$ tại mọi bộ giá trị làm $g=0$
+Chọn một bộ giá trị đơn giản làm $g=0$ (với $g=x+y+z$ chọn $x=y=1$, $z=-2$), thay vào $f$ để có phương trình theo hệ số cần tìm
+Giải phương trình để có giá trị cần tìm, rồi thử lại bằng phân tích nhân tử hoặc hằng đẳng thức
+
+##CY
+Chọn giá trị riêng chỉ cho điều kiện cần của hệ số; phải thử lại để chứng tỏ với hệ số tìm được thì phép chia hết thật sự xảy ra.
+
+@VD
+##VD
+Xác định các hằng số $a$ và $b$ sao cho $x^4+4$ chia hết cho $x^2+ax+b$.
+
+Bài giải:
+Vì $x^2+ax+b$ là ước bậc hai có hệ số cao nhất bằng $1$ của $x^4+4$ nên $x^4+4=(x^2+ax+b)(x^2+cx+d)$ với mọi $x$.
+Khai triển: $x^4+4=x^4+(a+c)x^3+(b+d+ac)x^2+(ad+bc)x+bd$.
+Đồng nhất hệ số: $a+c=0$, $b+d+ac=0$, $ad+bc=0$, $bd=4$.
+Từ $c=-a$ ta được $b+d=a^2$ và $a(d-b)=0$.
+Nếu $a=0$: $b+d=0$ và $bd=4$, suy ra $-b^2=4$, vô lí.
+Nếu $d=b$: $b^2=4$ và $2b=a^2\ge0$, nên $b=2$ và $a^2=4$, tức $a=\pm2$.
+Thử lại: $x^4+4=(x^2+2x+2)(x^2-2x+2)$.
+Vậy $a=2$, $b=2$ hoặc $a=-2$, $b=2$.
+
+##VD
+Tìm hằng số $m$ để đa thức $x^3+y^3+z^3+mxyz$ chia hết cho $x+y+z$.
+
+Bài giải:
+Giả sử chia hết: $x^3+y^3+z^3+mxyz=(x+y+z)\cdot Q(x,y,z)$ với mọi $x,y,z$.
+Chọn $x=y=1$, $z=-2$ thì $x+y+z=0$, nên vế phải bằng $0$.
+Vế trái bằng $1+1-8+m\cdot1\cdot1\cdot(-2)=-6-2m$.
+Do đó $-6-2m=0\Leftrightarrow m=-3$.
+Thử lại: với $m=-3$, theo hằng đẳng thức $x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$, đa thức chia hết cho $x+y+z$.
+Vậy $m=-3$.
+
+#DANG NDB03217
+@LT
+##TC Các công cụ phân tích hay dùng
+- $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1})$.
+- Thêm bớt để dùng hiệu hai bình phương: $x^4+x^2+1=(x^2+1)^2-x^2=(x^2+x+1)(x^2-x+1)$.
+
+##PP Chứng minh chia hết bằng phân tích
+Nhận ra đa thức chia và dự đoán nhân tử cần xuất hiện trong đa thức bị chia
+Nếu bị chia là tổng nhiều hạng tử cùng quy luật: nhóm các hạng tử thành từng khối có số hạng và quy luật giống đa thức chia, rồi đặt nhân tử chung
+Nếu bị chia có dạng không phân tích ngay được: thêm bớt hạng tử hoặc dùng hằng đẳng thức để đưa về tích
+Viết bị chia bằng tích có nhân tử là đa thức chia và kết luận
+
+##CY
+Mỗi khối phải khớp hoàn toàn với đa thức chia (cùng số hạng tử) thì mới đặt được nhân tử chung; đếm kĩ số hạng tử trước khi nhóm.
+
+@VD
+##VD
+Chứng minh rằng $x^{99}+x^{98}+\dots+x+1$ chia hết cho $x^9+x^8+\dots+x+1$.
+
+Bài giải:
+Đặt $A=x^{99}+x^{98}+\dots+x+1$ ($100$ hạng tử) và $B=x^9+x^8+\dots+x+1$ ($10$ hạng tử).
+Chia $100$ hạng tử của $A$ thành $10$ nhóm, mỗi nhóm gồm $10$ hạng tử liên tiếp.
+$A=(x^{99}+\dots+x^{90})+(x^{89}+\dots+x^{80})+\dots+(x^{9}+\dots+x+1)$.
+Nhóm chứa các luỹ thừa từ $x^{10k}$ đến $x^{10k+9}$ bằng $x^{10k}(x^9+x^8+\dots+x+1)=x^{10k}\cdot B$ với $k=9,8,\dots,0$.
+Do đó $A=B\cdot(x^{90}+x^{80}+\dots+x^{10}+1)$.
+Vậy $A$ chia hết cho $B$.
+
+##VD
+Chứng minh rằng $x^8+x^4+1$ chia hết cho $x^2+x+1$.
+
+Bài giải:
+Thêm bớt $x^4$: $x^8+x^4+1=(x^8+2x^4+1)-x^4=(x^4+1)^2-(x^2)^2$.
+Hiệu hai bình phương: $x^8+x^4+1=(x^4+1-x^2)(x^4+1+x^2)=(x^4-x^2+1)(x^4+x^2+1)$.
+Tiếp tục thêm bớt $x^2$: $x^4+x^2+1=(x^4+2x^2+1)-x^2=(x^2+1)^2-x^2=(x^2+x+1)(x^2-x+1)$.
+Do đó $x^8+x^4+1=(x^2+x+1)(x^2-x+1)(x^4-x^2+1)$.
+Vậy $x^8+x^4+1$ chia hết cho $x^2+x+1$.
+
+#DANG NDB03218
+@LT
+##TC Chia hết nhờ nghiệm
+- Nếu $x=a$ là nghiệm của $f(x)$ thì $f(x)$ chia hết cho $x-a$ (định lí Bê-du).
+- Nếu $f$ triệt tiêu tại các số $a_1,a_2,\dots,a_k$ đôi một khác nhau thì $f$ chia hết cho tích $(x-a_1)(x-a_2)\dots(x-a_k)$.
+
+##PP Chứng minh chia hết nhờ nghiệm
+Phân tích đa thức chia thành các nhị thức bậc nhất có nghiệm đôi một khác nhau (nhân hệ số nếu cần)
+Với mỗi nghiệm $a$, thay $x=a$ vào đa thức bị chia và biến đổi (không khai triển luỹ thừa) để chứng tỏ giá trị bằng $0$
+Nếu có tham số $n$ thì giá trị phải bằng $0$ với mọi $n$ thuộc miền cho trước
+Kết luận chia hết từng nhân tử rồi chia hết tích
+
+##CY
+Đa thức chia có nhân tử lặp như $(x-a)^2$ hoặc vô nghiệm thực như $x^2+x+1$ thì cách này không dùng thẳng được; khi đó phải chia hai lần hoặc phân tích như $x^3-1=(x-1)(x^2+x+1)$. Khi thay nghiệm, chú ý số mũ chẵn hay lẻ và điều kiện của $n$ (ví dụ $0^{2n}=0$ chỉ khi $n\ge1$).
+
+@VD
+##VD
+Chứng minh rằng $(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$ chia hết cho $x-1$.
+
+Bài giải:
+Đặt $P(x)=(x^2+x-1)^{10}+(x^2-x+1)^{10}-2$.
+Theo định lí Bê-du, dư của phép chia $P(x)$ cho $x-1$ là $P(1)$.
+$P(1)=(1+1-1)^{10}+(1-1+1)^{10}-2=1+1-2=0$.
+Vậy $P(x)$ chia hết cho $x-1$.
+
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, đa thức $P(x)=(x+1)^{2n}-x^{2n}-2x-1$ chia hết cho $x(x+1)(2x+1)$.
+
+Bài giải:
+Ba nhị thức $x$, $x+1$, $2x+1$ có nghiệm lần lượt là $0$, $-1$, $-\dfrac12$, đôi một khác nhau.
+$P(0)=1^{2n}-0^{2n}-0-1=1-0-1=0$ (vì $n\ge1$ nên $0^{2n}=0$).
+$P(-1)=0^{2n}-(-1)^{2n}+2-1=0-1+2-1=0$ (vì $2n$ chẵn).
+$P\left(-\dfrac12\right)=\left(\dfrac12\right)^{2n}-\left(-\dfrac12\right)^{2n}+1-1=0$ (vì $2n$ chẵn nên hai luỹ thừa bằng nhau).
+Theo định lí Bê-du, $P(x)$ chia hết cho $x$, cho $x+1$ và cho $x+\dfrac12$; ba nhị thức này có nghiệm khác nhau nên $P(x)$ chia hết cho $x(x+1)\left(x+\dfrac12\right)$.
+Vì $x(x+1)(2x+1)=2\cdot x(x+1)\left(x+\dfrac12\right)$ nên $P(x)$ chia hết cho $x(x+1)(2x+1)$.
+Vậy $P(x)$ chia hết cho $x(x+1)(2x+1)$ với mọi số nguyên dương $n$.
+
+#DANG NDB03219
+@LT
+##TC Tách phần nguyên
+Với $A(n)$, $B(n)$ là đa thức, chia $A(n)$ cho $B(n)$ được $A(n)=B(n)\cdot Q(n)+R(n)$. Khi $n$ nguyên và $Q(n)$ nguyên, $A(n)$ chia hết cho $B(n)$ khi và chỉ khi $B(n)$ là ước của $R(n)$.
+
+##PP Tìm $n$ nguyên để chia hết
+Chia $A(n)$ cho $B(n)$ để tách ra phần nguyên $Q(n)$ và dư $R(n)$ (có thể dùng sơ đồ Hoóc-ne hoặc thêm bớt)
+Viết $\dfrac{A(n)}{B(n)}=Q(n)+\dfrac{R(n)}{B(n)}$, nên điều kiện là $B(n)$ là ước của $R(n)$
+Lập bảng các ước của $R(n)$ (nếu $R$ là hằng số) tương ứng với giá trị của $B(n)$ rồi giải ra $n$
+Kiểm tra $n$ nguyên, thử lại và kết luận
+
+##CY
+Nhớ xét cả ước âm; nếu dư $R(n)$ còn chứa $n$ thì phải hạ bậc tiếp hoặc nhân với số thích hợp để dư là hằng số.
+
+@VD
+##VD
+Tìm số nguyên $n$ để $n^3-3n^2+2n+5$ chia hết cho $n-2$.
+
+Bài giải:
+Chia $n^3-3n^2+2n+5$ cho $n-2$: hệ số $1;\ -3;\ 2;\ 5$ và $a=2$: hạ $1$; $1\cdot2-3=-1$; $-1\cdot2+2=0$; $0\cdot2+5=5$.
+Thương là $n^2-n$, dư là $5$, tức $n^3-3n^2+2n+5=(n-2)(n^2-n)+5$.
+Vì $n^2-n$ nguyên nên $n^3-3n^2+2n+5$ chia hết cho $n-2$ khi và chỉ khi $n-2$ là ước của $5$.
+$n-2\in\{-5;-1;1;5\}$, suy ra $n\in\{-3;1;3;7\}$.
+Vậy $n\in\{-3;1;3;7\}$.
+
+##VD
+Tìm số nguyên $n$ để $n^3-2$ chia hết cho $n^2+1$.
+
+Bài giải:
+Chia $n^3-2$ cho $n^2+1$: $n^3-2=n(n^2+1)-(n+2)$.
+Vì $n(n^2+1)$ chia hết cho $n^2+1$ nên $n^3-2$ chia hết cho $n^2+1$ khi và chỉ khi $n+2$ chia hết cho $n^2+1$.
+Trường hợp $n+2=0$, tức $n=-2$: $0$ chia hết cho $n^2+1=5$, thoả mãn.
+Trường hợp $n+2\ne0$: số nguyên khác $0$ chia hết cho $n^2+1$ thì $\lvert n+2\rvert\ge n^2+1$.
+Nếu $\lvert n\rvert\ge2$ thì $n^2+1-(\lvert n\rvert+2)=\lvert n\rvert(\lvert n\rvert-1)-1\ge2-1>0$, nên $n^2+1>\lvert n\rvert+2\ge\lvert n+2\rvert$, mâu thuẫn.
+Vậy $\lvert n\rvert\le1$, tức $n\in\{-1;0;1\}$. Thử từng giá trị:
+$n=-1$: $n+2=1$ không chia hết cho $n^2+1=2$.
+$n=0$: $n+2=2$ chia hết cho $n^2+1=1$, thoả mãn.
+$n=1$: $n+2=3$ không chia hết cho $n^2+1=2$.
+Vậy $n\in\{-2;0\}$.

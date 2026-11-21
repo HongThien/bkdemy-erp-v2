@@ -1,0 +1,473 @@
+#NHOM NNB01454
+@LT
+##ĐN Đa thức hoán vị vòng quanh
+Đa thức $P(a,b,c)$ gọi là hoán vị vòng quanh nếu khi thay lần lượt $a\to b$, $b\to c$, $c\to a$ thì $P$ không đổi. Ví dụ $a^2(b-c)+b^2(c-a)+c^2(a-b)$ và $ab(a-b)+bc(b-c)+ca(c-a)$. Đa thức đối xứng thì không đổi khi đổi chỗ bất kì hai biến, ví dụ $a+b+c$ và $ab+bc+ca$.
+
+##ĐL Bê-du áp dụng cho đa thức nhiều biến
+Coi $P(a,b,c)$ là đa thức của biến $a$, còn $b,c$ là tham số. Nếu thay $a=b$ mà $P$ bằng $0$ thì $P$ chia hết cho $a-b$. Hai nhân tử khác nhau như $a-b$ và $b-c$ nguyên tố cùng nhau, nên nếu $P$ chia hết cho từng nhân tử thì $P$ chia hết cho tích của chúng.
+
+##TC Các hằng đẳng thức mở rộng cần nhớ
+- $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$.
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.
+- $(a+b+c)^3-a^3-b^3-c^3=3(a+b)(b+c)(c+a)$.
+- $(x+y)^n$ khai triển theo nhị thức Niu-tơn, hệ số lấy từ tam giác Pa-xcan.
+
+##CY
+- Đổi chỗ hai biến thì tích $(a-b)(b-c)(c-a)$ đổi dấu; chẳng hạn $(a-b)(b-c)(a-c)=-(a-b)(b-c)(c-a)$. Viết kết quả phải nhất quán về dấu.
+- Đa thức hoán vị vòng quanh bậc $n$ chứa $(a-b)(b-c)(c-a)$ thì thương có bậc $n-3$ và cũng hoán vị vòng quanh.
+
+#DANG NDB02736
+@LT
+##TC Phân tích đa thức hoán vị vòng quanh
+- Đa thức bậc ba $a^2(b-c)+b^2(c-a)+c^2(a-b)$ triệt tiêu khi hai biến bằng nhau nên có nhân tử $(a-b)(b-c)(c-a)$, hệ số tích là $\pm1$.
+- Tách $c-a=(c-b)+(b-a)$ để mọi hạng tử cùng chứa $b-c$ hoặc $a-b$.
+
+##PP Tách thừa số rồi nhóm
+Khai triển hoặc tách một hiệu thành tổng hai hiệu có sẵn trong biểu thức, chẳng hạn $c-a=(c-b)+(b-a)$
+Nhóm các hạng tử cùng chứa $a-b$ và cùng chứa $b-c$, đặt nhân tử chung ở từng nhóm
+Dùng hằng đẳng thức $x^2-y^2=(x-y)(x+y)$ để lộ nhân tử còn thiếu
+Đặt $(a-b)(b-c)$ ra ngoài, rút gọn thừa số còn lại rồi kiểm tra bằng một bộ giá trị cụ thể
+
+##CY
+Sau khi đặt nhân tử chung phải chú ý dấu: $c-b=-(b-c)$. Thử $a=0,b=1,c=2$ vào hai vế để bắt lỗi dấu.
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $a^2(b-c)+b^2(c-a)+c^2(a-b)$.
+
+Bài giải:
+Tách $c-a=(c-b)+(b-a)$ để mỗi hạng tử cùng chứa $b-c$ hoặc $a-b$.
+$a^2(b-c)+b^2(c-a)+c^2(a-b)=a^2(b-c)+b^2(c-b)+b^2(b-a)+c^2(a-b)$
+$=(b-c)(a^2-b^2)+(a-b)(c^2-b^2)$
+Dùng hiệu hai bình phương: $a^2-b^2=(a-b)(a+b)$ và $c^2-b^2=(c-b)(c+b)=-(b-c)(c+b)$.
+$=(b-c)(a-b)(a+b)-(a-b)(b-c)(c+b)$
+$=(a-b)(b-c)[(a+b)-(c+b)]$
+$=(a-b)(b-c)(a-c)$
+Vậy $a^2(b-c)+b^2(c-a)+c^2(a-b)=(a-b)(b-c)(a-c)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $ab(a-b)+bc(b-c)+ca(c-a)$.
+
+Bài giải:
+Khai triển hai hạng tử cuối: $bc(b-c)+ca(c-a)=b^2c-bc^2+c^2a-ca^2$.
+$ab(a-b)+bc(b-c)+ca(c-a)=ab(a-b)+(c^2a-bc^2)+(b^2c-ca^2)$
+Nhóm: $c^2a-bc^2=c^2(a-b)$ và $b^2c-ca^2=-c(a^2-b^2)=-c(a+b)(a-b)$.
+$=ab(a-b)+c^2(a-b)-c(a+b)(a-b)$
+$=(a-b)(ab+c^2-ac-bc)$
+Nhóm trong ngoặc: $ab+c^2-ac-bc=a(b-c)-c(b-c)=(b-c)(a-c)$.
+$=(a-b)(b-c)(a-c)$
+Vậy $ab(a-b)+bc(b-c)+ca(c-a)=(a-b)(b-c)(a-c)$.
+
+#DANG NDB03247
+@LT
+##TC Xét giá trị riêng
+- Nếu thay $a=b$ vào $P$ mà được $0$ thì theo định lí Bê-du $P$ chia hết cho $a-b$. Làm tương tự với $b=c$ và $c=a$.
+- Ba nhân tử $a-b$, $b-c$, $c-a$ đôi một nguyên tố cùng nhau nên $P$ chia hết cho tích $(a-b)(b-c)(c-a)$. Thương là đa thức hoán vị vòng quanh có bậc bằng bậc của $P$ trừ $3$.
+- Thương bậc nhất hoán vị vòng quanh chỉ có dạng $k(a+b+c)$; thương bậc hai hoán vị vòng quanh có dạng $m(a^2+b^2+c^2)+n(ab+bc+ca)$.
+
+##PP Tìm thương bằng giá trị riêng
+Thay $a=b$, $b=c$, $c=a$ lần lượt vào $P$, thấy $P=0$ nên $P$ chia hết cho $(a-b)(b-c)(c-a)$
+So sánh bậc để biết thương có bậc mấy, rồi viết thương dạng hoán vị vòng quanh với hệ số chưa biết
+Chọn các bộ giá trị $(a;b;c)$ làm tích $(a-b)(b-c)(c-a)$ khác $0$, tính hai vế để lập phương trình cho hệ số
+Giải ra hệ số, viết kết quả và kiểm tra lại bằng một bộ giá trị khác
+
+##CY
+Số bộ giá trị cần thử bằng số hệ số chưa biết, và mỗi bộ phải làm $(a-b)(b-c)(c-a)\neq0$ (ba giá trị đôi một khác nhau).
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $P=a^3(b-c)+b^3(c-a)+c^3(a-b)$.
+
+Bài giải:
+Khi $a=b$: $P=b^3(b-c)+b^3(c-b)+0=0$, nên theo định lí Bê-du $P$ chia hết cho $a-b$.
+Khi $b=c$: $P=0+b^3(b-a)+b^3(a-b)=0$, nên $P$ chia hết cho $b-c$.
+Khi $c=a$: $P=a^3(b-a)+0+a^3(a-b)=0$, nên $P$ chia hết cho $c-a$.
+Ba nhân tử đôi một nguyên tố cùng nhau nên $P$ chia hết cho $(a-b)(b-c)(c-a)$.
+$P$ có bậc $4$ nên thương có bậc $1$; $P$ hoán vị vòng quanh nên thương có dạng $k(a+b+c)$.
+Vậy $P=k(a+b+c)(a-b)(b-c)(c-a)$ với $k$ là hằng số.
+Thay $a=0$, $b=1$, $c=2$: $P=0+1\cdot(2-0)+8\cdot(0-1)=-6$ và $(a-b)(b-c)(c-a)=(-1)(-1)(2)=2$, $a+b+c=3$.
+Suy ra $-6=k\cdot3\cdot2$, tức $k=-1$.
+Kiểm tra với $a=1$, $b=2$, $c=4$: $P=1\cdot(-2)+8\cdot3+64\cdot(-1)=-42$ và $-(a+b+c)(a-b)(b-c)(c-a)=-7\cdot(-1)\cdot(-2)\cdot3=-42$.
+Vậy $a^3(b-c)+b^3(c-a)+c^3(a-b)=-(a+b+c)(a-b)(b-c)(c-a)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $Q=a^2b^2(a-b)+b^2c^2(b-c)+c^2a^2(c-a)$.
+
+Bài giải:
+Khi $a=b$: $Q=0+a^2c^2(a-c)+c^2a^2(c-a)=0$. Tương tự $Q=0$ khi $b=c$ hoặc $c=a$.
+Theo định lí Bê-du và vì ba nhân tử đôi một nguyên tố cùng nhau, $Q$ chia hết cho $(a-b)(b-c)(c-a)$.
+$Q$ có bậc $5$ nên thương có bậc $2$ và hoán vị vòng quanh, tức có dạng $m(a^2+b^2+c^2)+n(ab+bc+ca)$.
+Vậy $Q=[m(a^2+b^2+c^2)+n(ab+bc+ca)](a-b)(b-c)(c-a)$.
+Với $a=0$, $b=1$, $c=2$: $Q=0+1\cdot4\cdot(1-2)+0=-4$, $(a-b)(b-c)(c-a)=2$, $a^2+b^2+c^2=5$, $ab+bc+ca=2$.
+Suy ra $-4=2(5m+2n)$, tức $5m+2n=-2$. (1)
+Với $a=0$, $b=1$, $c=-1$: $Q=0+1\cdot1\cdot2+0=2$, $(a-b)(b-c)(c-a)=(-1)\cdot2\cdot(-1)=2$, $a^2+b^2+c^2=2$, $ab+bc+ca=-1$.
+Suy ra $2=2(2m-n)$, tức $2m-n=1$. (2)
+Từ (2) có $n=2m-1$; thay vào (1): $5m+4m-2=-2$, nên $m=0$, $n=-1$.
+Vậy $a^2b^2(a-b)+b^2c^2(b-c)+c^2a^2(c-a)=-(ab+bc+ca)(a-b)(b-c)(c-a)$.
+
+#DANG NDB03248
+@LT
+##ĐL Đa thức đặc biệt bậc ba
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.
+- $(a+b+c)^3-a^3-b^3-c^3=3(a+b)(b+c)(c+a)$.
+- Hệ quả: nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$.
+
+##PP Nhận dạng và áp dụng
+Đưa ba lập phương về dạng $A^3+B^3+C^3$ và hạng tử còn lại về $3ABC$ (chú ý hệ số, ví dụ $6xyz=3\cdot x\cdot2y\cdot z$)
+Kiểm tra tổng $A+B+C$: nếu bằng $0$ thì cả biểu thức bằng $3ABC$
+Nếu không, áp dụng hằng đẳng thức $a^3+b^3+c^3-3abc$ với $a=A$, $b=B$, $c=C$
+Với dạng $(a+b+c)^3-a^3-b^3-c^3$, khai triển $(a+b)^3+c^3+3c(a+b)(a+b+c)$ để các lập phương triệt tiêu rồi đặt $3(a+b)$
+
+##CY
+Thừa số thứ hai $a^2+b^2+c^2-ab-bc-ca=\dfrac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2]$ không phân tích tiếp được thành tích hai đa thức hệ số thực nên dừng ở đó.
+@VD
+##VD
+a) Phân tích đa thức thành nhân tử: $x^3+8y^3+z^3-6xyz$.
+b) Phân tích đa thức thành nhân tử: $(a+b+c)^3-a^3-b^3-c^3$.
+
+Bài giải:
+a) Viết $x^3+8y^3+z^3-6xyz=x^3+(2y)^3+z^3-3\cdot x\cdot(2y)\cdot z$.
+Áp dụng đẳng thức $A^3+B^3+C^3-3ABC=(A+B+C)(A^2+B^2+C^2-AB-BC-CA)$ với $A=x$, $B=2y$, $C=z$:
+$x^3+8y^3+z^3-6xyz=(x+2y+z)(x^2+4y^2+z^2-2xy-2yz-zx)$.
+
+b) Khai triển $(a+b+c)^3$ bằng hằng đẳng thức lập phương của tổng hai số $a+b$ và $c$:
+$(a+b+c)^3-a^3-b^3-c^3=(a+b)^3+c^3+3c(a+b)(a+b+c)-a^3-b^3-c^3$
+Khai triển $(a+b)^3=a^3+b^3+3ab(a+b)$ nên các lập phương triệt tiêu:
+$=3ab(a+b)+3c(a+b)(a+b+c)$
+$=3(a+b)(ab+ac+bc+c^2)$
+$=3(a+b)[a(b+c)+c(b+c)]$
+$=3(a+b)(b+c)(c+a)$
+Vậy $(a+b+c)^3-a^3-b^3-c^3=3(a+b)(b+c)(c+a)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $(x-y)^3+(y-z)^3+(z-x)^3$.
+
+Bài giải:
+Đặt $A=x-y$, $B=y-z$, $C=z-x$. Khi đó $A+B+C=0$.
+Theo đẳng thức $A^3+B^3+C^3-3ABC=(A+B+C)(A^2+B^2+C^2-AB-BC-CA)$ và $A+B+C=0$ ta có $A^3+B^3+C^3-3ABC=0$.
+Suy ra $A^3+B^3+C^3=3ABC$.
+Vậy $(x-y)^3+(y-z)^3+(z-x)^3=3(x-y)(y-z)(z-x)$.
+
+#DANG NDB03249
+@LT
+##TC Đa thức đối xứng hai biến $(x+y)^n-x^n-y^n$
+- Khai triển $(x+y)^n$ theo nhị thức Niu-tơn (hệ số lấy từ tam giác Pa-xcan); $x^n$ và $y^n$ triệt tiêu, các hạng tử còn lại đều chứa $xy$.
+- $n=3$: $(x+y)^3-x^3-y^3=3xy(x+y)$.
+- $n=5$: hàng Pa-xcan $1;5;10;10;5;1$.
+- $n=7$: hàng Pa-xcan $1;7;21;35;35;21;7;1$.
+- Với $n$ lẻ, thay $y=-x$ thì biểu thức bằng $0$ nên luôn có nhân tử $x+y$.
+
+##PP Khai triển Niu-tơn rồi nhóm
+Khai triển $(x+y)^n$ rồi trừ $x^n+y^n$, giữ lại các hạng tử chứa cả $x$ lẫn $y$
+Đặt nhân tử chung của các hệ số (ví dụ $5xy$ hoặc $7xy$) ra ngoài
+Nhóm các hạng tử theo $x^k+y^k$ (với $k$ lẻ) và theo tích $xy$ để cùng chứa $x+y$, rồi đặt $x+y$
+Rút gọn thừa số còn lại, nhận ra hằng đẳng thức nếu có (như $(x^2+xy+y^2)^2$)
+
+##CY
+Thừa số cuối là $x^2+xy+y^2$ (dấu cộng ở giữa), không phải $x^2-xy+y^2$ của tổng hai lập phương, vì sau khi cộng các hạng tử $xy$ thì dấu đổi.
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $(x+y)^5-x^5-y^5$.
+
+Bài giải:
+Khai triển nhị thức Niu-tơn (hệ số $1;5;10;10;5;1$):
+$(x+y)^5-x^5-y^5=5x^4y+10x^3y^2+10x^2y^3+5xy^4$
+$=5xy(x^3+2x^2y+2xy^2+y^3)$
+Nhóm $x^3+y^3$ và $2x^2y+2xy^2$, cả hai nhóm cùng chứa $x+y$:
+$=5xy[(x+y)(x^2-xy+y^2)+2xy(x+y)]$
+$=5xy(x+y)(x^2-xy+y^2+2xy)$
+$=5xy(x+y)(x^2+xy+y^2)$
+Vậy $(x+y)^5-x^5-y^5=5xy(x+y)(x^2+xy+y^2)$.
+
+##VD
+a) Phân tích đa thức thành nhân tử: $(x+y)^7-x^7-y^7$.
+b) Suy ra $(n+1)^7-n^7-1$ chia hết cho $7$ với mọi số nguyên $n$.
+
+Bài giải:
+a) Khai triển nhị thức Niu-tơn (hệ số $1;7;21;35;35;21;7;1$):
+$(x+y)^7-x^7-y^7=7x^6y+21x^5y^2+35x^4y^3+35x^3y^4+21x^2y^5+7xy^6$
+$=7xy(x^5+3x^4y+5x^3y^2+5x^2y^3+3xy^4+y^5)$
+Nhóm theo $x^5+y^5$, $3xy(x^3+y^3)$ và $5x^2y^2(x+y)$:
+$x^5+3x^4y+5x^3y^2+5x^2y^3+3xy^4+y^5=(x^5+y^5)+3xy(x^3+y^3)+5x^2y^2(x+y)$
+$=(x+y)[(x^4-x^3y+x^2y^2-xy^3+y^4)+3xy(x^2-xy+y^2)+5x^2y^2]$
+$=(x+y)(x^4+2x^3y+3x^2y^2+2xy^3+y^4)$
+$=(x+y)(x^2+xy+y^2)^2$
+Vậy $(x+y)^7-x^7-y^7=7xy(x+y)(x^2+xy+y^2)^2$.
+
+b) Thay $x=n$, $y=1$ vào kết quả câu a):
+$(n+1)^7-n^7-1=7n(n+1)(n^2+n+1)^2$
+Với $n$ nguyên thì $n(n+1)(n^2+n+1)^2$ là số nguyên nên tích trên chia hết cho $7$.
+Vậy $(n+1)^7-n^7-1$ chia hết cho $7$ với mọi số nguyên $n$.
+
+#DANG NDB03250
+@LT
+##TC Đa thức hai biến bậc hai
+- Nhận ra bình phương hoặc hiệu hai bình phương: $x^2-2xy+y^2=(x-y)^2$, $x^2-(y+3)^2=(x-y-3)(x+y+3)$.
+- Nếu các hạng tử bậc nhất cùng đi với một tổ hợp ($3x-3y=3(x-y)$) thì đặt ẩn phụ $u$ cho tổ hợp đó rồi phân tích tam thức một biến.
+- Nếu không nhóm được, coi đa thức là tam thức bậc hai của $x$ với $y$ là tham số, tách hạng tử bậc nhất theo hệ số rồi nhóm.
+
+##PP Phân tích bằng nhóm bình phương hoặc tách hạng tử
+Nhóm các hạng tử bậc hai và bậc nhất để lộ bình phương hoặc hiệu hai bình phương
+Nếu cả biểu thức phụ thuộc một tổ hợp (như $x-y$) thì đặt ẩn phụ $u$ rồi tách hạng tử bậc nhất của $u$
+Nếu không, xếp theo luỹ thừa giảm của $x$, tách hệ số của $x$ thành hai số có tích bằng tích của hệ số $x^2$ và hạng tử tự do (hạng tử tự do cũng phân tích được)
+Nhóm rồi đặt nhân tử chung, kiểm tra lại bằng khai triển
+
+##CY
+Tách $3u=-2u+5u$ vì $(-2)\cdot5=-10$ là hạng tử tự do và $-2+5=3$ là hệ số của $u$. Phải kiểm tra cả tích và tổng.
+@VD
+##VD
+a) Phân tích đa thức thành nhân tử: $x^2-y^2-6y-9$.
+b) Phân tích đa thức thành nhân tử: $x^2-2xy+y^2+3x-3y-10$.
+
+Bài giải:
+a) Nhóm ba hạng tử cuối thành bình phương: $-y^2-6y-9=-(y+3)^2$.
+$x^2-y^2-6y-9=x^2-(y+3)^2$
+Áp dụng hiệu hai bình phương:
+$=(x-y-3)(x+y+3)$
+
+b) Nhóm $x^2-2xy+y^2=(x-y)^2$ và $3x-3y=3(x-y)$:
+$x^2-2xy+y^2+3x-3y-10=(x-y)^2+3(x-y)-10$
+Đặt $u=x-y$, tách $3u=-2u+5u$:
+$u^2+3u-10=u^2-2u+5u-10$
+$=u(u-2)+5(u-2)$
+$=(u-2)(u+5)$
+Thay $u=x-y$:
+$=(x-y-2)(x-y+5)$
+
+##VD
+Phân tích đa thức thành nhân tử: $2x^2+3xy+y^2+5x+3y+2$.
+
+Bài giải:
+Xếp theo luỹ thừa giảm của $x$, coi $y$ là tham số: $2x^2+(3y+5)x+(y^2+3y+2)$.
+Hạng tử tự do phân tích được: $y^2+3y+2=(y+1)(y+2)$.
+Tích của hệ số $x^2$ và hạng tử tự do là $2(y+1)(y+2)$; hai số $(y+1)$ và $2(y+2)=2y+4$ có tích đúng bằng số đó và có tổng $3y+5$ bằng hệ số của $x$.
+Tách $(3y+5)x=(y+1)x+(2y+4)x$:
+$2x^2+(3y+5)x+(y+1)(y+2)=2x^2+(y+1)x+(2y+4)x+(y+1)(y+2)$
+$=x(2x+y+1)+(y+2)(2x+y+1)$
+$=(2x+y+1)(x+y+2)$
+Vậy $2x^2+3xy+y^2+5x+3y+2=(2x+y+1)(x+y+2)$.
+
+#NHOM NNB01455
+@LT
+##TC Công cụ biến đổi điều kiện
+- Điều kiện $a+b+c=0$ cho $c=-(a+b)$, $a^2+b^2+c^2=-2(ab+bc+ca)$ và $a^3+b^3+c^3=3abc$.
+- Điều kiện chứa nghịch đảo: bình phương hai vế hoặc quy đồng để xuất hiện $ab+bc+ca$ và $a+b+c$, chú ý $\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}=\dfrac{ab+bc+ca}{abc}$.
+- Tổng các bình phương (hoặc các số không âm) bằng $0$ thì từng số hạng bằng $0$.
+- Điều kiện là tỉ lệ thức thì đặt giá trị chung bằng $k$.
+
+##PP Chứng minh đẳng thức có điều kiện
+Nêu điều kiện để các biểu thức có nghĩa (mẫu khác $0$, các số khác nhau nếu đề cho)
+Biến đổi điều kiện (chuyển vế, bình phương, quy đồng, phân tích nhân tử) để rút ra một hệ thức đơn giản
+Biến đổi biểu thức cần chứng minh về dạng chứa hệ thức đó, hoặc thế một biến theo các biến còn lại
+Thay hệ thức vào và kết luận
+
+##CY
+- Chỉ được chia hai vế cho một nhân tử khi biết nhân tử đó khác $0$ (ví dụ $a\neq b$ do đề cho).
+- Chiều đảo của một khẳng định thường không đúng: từ $a^3+b^3+c^3=3abc$ chỉ suy ra $a+b+c=0$ hoặc $a=b=c$.
+
+#DANG NDB02733
+@LT
+##TC Điều kiện nghịch đảo
+- $\left(\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}\right)^2=\dfrac{1}{a^2}+\dfrac{1}{b^2}+\dfrac{1}{c^2}+2\cdot\dfrac{a+b+c}{abc}$.
+- $(ab+bc+ca)(a+b+c)-abc=(a+b)(b+c)(c+a)$.
+
+##PP Đưa điều kiện nghịch đảo về $ab+bc+ca$ và $a+b+c$
+Ghi điều kiện $a,b,c\neq0$ (và các mẫu khác nếu có)
+Bình phương điều kiện hoặc quy đồng để có hệ thức giữa $ab+bc+ca$, $abc$, $a+b+c$
+Dùng điều kiện thứ hai (nếu có) để khử các bình phương nghịch đảo
+Rút ra hệ thức cần chứng minh, hoặc phân tích thành tích để suy ra hai số đối nhau
+
+##CY
+Khi điều kiện có mẫu $a+b+c$ phải ghi $a+b+c\neq0$ trước khi nhân chéo.
+@VD
+##VD
+Cho $\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}=2$ (1) và $\dfrac{1}{a^2}+\dfrac{1}{b^2}+\dfrac{1}{c^2}=2$ (2). Chứng minh rằng $a+b+c=abc$.
+
+Bài giải:
+Vì các phân thức có nghĩa nên $a,b,c\neq0$.
+Bình phương hai vế của (1):
+$\left(\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}\right)^2=4$
+$\Rightarrow\dfrac{1}{a^2}+\dfrac{1}{b^2}+\dfrac{1}{c^2}+2\left(\dfrac{1}{ab}+\dfrac{1}{bc}+\dfrac{1}{ca}\right)=4$
+Thay (2): $2+2\left(\dfrac{1}{ab}+\dfrac{1}{bc}+\dfrac{1}{ca}\right)=4$, suy ra $\dfrac{1}{ab}+\dfrac{1}{bc}+\dfrac{1}{ca}=1$.
+Quy đồng vế trái: $\dfrac{c+a+b}{abc}=1$.
+Vì $abc\neq0$ nên $a+b+c=abc$.
+Vậy $a+b+c=abc$.
+
+##VD
+Cho $a,b,c$ khác $0$ và $a+b+c\neq0$ thỏa mãn $\dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}=\dfrac{1}{a+b+c}$. Chứng minh rằng trong ba số $a,b,c$ có hai số đối nhau.
+
+Bài giải:
+Quy đồng vế trái: $\dfrac{ab+bc+ca}{abc}=\dfrac{1}{a+b+c}$.
+Nhân chéo (các mẫu khác $0$): $(ab+bc+ca)(a+b+c)=abc$.
+Khai triển: $a^2b+ab^2+b^2c+bc^2+c^2a+ca^2+3abc=abc$
+$\Rightarrow a^2b+ab^2+b^2c+bc^2+c^2a+ca^2+2abc=0$
+Vế trái chính là khai triển của $(a+b)(b+c)(c+a)$, nên $(a+b)(b+c)(c+a)=0$.
+Suy ra $a+b=0$ hoặc $b+c=0$ hoặc $c+a=0$.
+Vậy trong ba số $a,b,c$ có hai số đối nhau.
+
+#DANG NDB03207
+@LT
+##TC Đẳng thức hoán vị vòng quanh
+- Chuyển mọi hạng tử về một vế rồi phân tích: các biểu thức như $a^2(b+c)-b^2(c+a)$ chứa nhân tử $a-b$ vì triệt tiêu khi $a=b$.
+- Nhân tử còn lại là một đa thức hoán vị vòng quanh, thường là $ab+bc+ca$.
+
+##PP Rút nhân tử khác $0$ từ điều kiện rồi dùng cho điều cần chứng minh
+Chuyển vế, khử mẫu (nếu có) bằng cách nhân với tích các mẫu khác $0$
+Nhóm hạng tử, phân tích điều kiện thành tích có nhân tử $a-b$ (hoặc $(a-b)(b-c)(c-a)$)
+Dùng giả thiết các số khác nhau để chia cho nhân tử khác $0$, rút ra hệ thức còn lại
+Biến đổi vế cần chứng minh thành tích có cùng nhân tử đó rồi thay hệ thức vào
+
+##CY
+Điều kiện "ba số khác nhau" chính là thứ cho phép bỏ nhân tử $a-b$; thiếu điều kiện đó thì không rút được hệ thức. Với bài đòi chứng minh "có hai số bằng nhau" thì ngược lại: kết luận là một nhân tử bằng $0$.
+@VD
+##VD
+Cho $a,b,c$ khác nhau thỏa mãn $a^2(b+c)=b^2(c+a)$. Chứng minh rằng $b^2(c+a)=c^2(a+b)$.
+
+Bài giải:
+$a^2(b+c)=b^2(c+a)$
+$\Leftrightarrow a^2b+a^2c-b^2c-ab^2=0$
+$\Leftrightarrow ab(a-b)+c(a-b)(a+b)=0$
+$\Leftrightarrow(a-b)(ab+bc+ca)=0$
+Vì $a\neq b$ nên $ab+bc+ca=0$. (*)
+Mặt khác $b^2(c+a)-c^2(a+b)=bc(b-c)+a(b-c)(b+c)$
+$=(b-c)(ab+bc+ca)$
+$=0$ (theo (*)).
+Vậy $b^2(c+a)=c^2(a+b)$.
+
+##VD
+Cho $a,b,c\neq0$ thỏa mãn $\dfrac{a}{b}+\dfrac{b}{c}+\dfrac{c}{a}=\dfrac{b}{a}+\dfrac{a}{c}+\dfrac{c}{b}$. Chứng minh rằng trong ba số $a,b,c$ có hai số bằng nhau.
+
+Bài giải:
+Nhân hai vế với $abc\neq0$:
+$a^2c+ab^2+bc^2=b^2c+a^2b+ac^2$
+Chuyển vế và nhóm theo $c-b$:
+$a^2(c-b)-a(c^2-b^2)+bc(c-b)=0$
+$\Leftrightarrow(c-b)(a^2-a(c+b)+bc)=0$
+$\Leftrightarrow(c-b)(a^2-ac-ab+bc)=0$
+$\Leftrightarrow(c-b)(a-b)(a-c)=0$
+Suy ra $c=b$ hoặc $a=b$ hoặc $a=c$.
+Vậy trong ba số $a,b,c$ có hai số bằng nhau.
+
+#DANG NDB03208
+@LT
+##ĐL Hệ quả của điều kiện $a+b+c=0$
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$, nên $a+b+c=0$ thì $a^3+b^3+c^3=3abc$.
+- $a^2+b^2+c^2=-2(ab+bc+ca)$.
+- Rút $c=-(a+b)$ rồi thế vào hai vế của đẳng thức cần chứng minh.
+
+##PP Chứng minh đẳng thức khi $a+b+c=0$
+Rút một biến theo hai biến còn lại, hoặc bình phương, lập phương điều kiện để xuất hiện các lũy thừa cần dùng
+Thế vào hai vế (cách thế biến) hoặc dùng hằng đẳng thức mở rộng (cách biến đổi hằng đẳng thức)
+Biến đổi tới khi hai vế cùng bằng một biểu thức
+Với bài đa dạng (bậc năm, bậc sáu) thử nhận ra công thức $(x+y)^n-x^n-y^n$ khi thế $c=-(a+b)$
+
+##CY
+Chiều đảo không đúng: $a^3+b^3+c^3=3abc$ chỉ cho $a+b+c=0$ hoặc $a=b=c$ (ví dụ $a=b=c=1$).
+@VD
+##VD
+Cho $a+b+c=0$. Chứng minh rằng $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$.
+
+Bài giải:
+Từ $a+b+c=0$ ta có $a=-(b+c)$, suy ra $a^2=b^2+2bc+c^2$, tức $a^2-b^2-c^2=2bc$.
+Bình phương hai vế:
+$a^4+b^4+c^4-2a^2b^2-2a^2c^2+2b^2c^2=4b^2c^2$
+$\Rightarrow a^4+b^4+c^4=2(a^2b^2+a^2c^2+b^2c^2)$.
+Cộng $a^4+b^4+c^4$ vào hai vế:
+$2(a^4+b^4+c^4)=a^4+b^4+c^4+2(a^2b^2+a^2c^2+b^2c^2)=(a^2+b^2+c^2)^2$.
+Vậy $(a^2+b^2+c^2)^2=2(a^4+b^4+c^4)$.
+
+##VD
+Cho $a+b+c=0$. Chứng minh rằng $a^5+b^5+c^5=-5abc(ab+bc+ca)$.
+
+Bài giải:
+Thế $c=-(a+b)$. Vì $5$ là số lẻ nên $c^5=-(a+b)^5$, do đó:
+$a^5+b^5+c^5=a^5+b^5-(a+b)^5=-[(a+b)^5-a^5-b^5]$
+Khai triển nhị thức Niu-tơn: $(a+b)^5-a^5-b^5=5ab(a+b)(a^2+ab+b^2)$.
+Suy ra $a^5+b^5+c^5=-5ab(a+b)(a^2+ab+b^2)$. (1)
+Mặt khác $abc=-ab(a+b)$ và $ab+bc+ca=ab+c(a+b)=ab-(a+b)^2=-(a^2+ab+b^2)$.
+Nên $abc(ab+bc+ca)=ab(a+b)(a^2+ab+b^2)$. (2)
+Từ (1) và (2): $a^5+b^5+c^5=-5abc(ab+bc+ca)$.
+Vậy đẳng thức được chứng minh.
+
+#DANG NDB03209
+@LT
+##TC Tổng các bình phương bằng $0$
+- $a^2+b^2+c^2-ab-bc-ca=\dfrac{1}{2}[(a-b)^2+(b-c)^2+(c-a)^2]$.
+- Tổng các số không âm bằng $0$ thì từng số bằng $0$.
+- $(a+b+c)^2=3(ab+bc+ca)\Leftrightarrow a^2+b^2+c^2=ab+bc+ca$.
+
+##PP Từ đẳng thức bậc hai suy ra các biến bằng nhau
+Chuyển mọi hạng tử sang một vế, nhân hai vế với $2$ nếu cần để có hệ số nguyên
+Viết vế trái thành tổng các bình phương $(a-b)^2+(b-c)^2+(c-a)^2$
+Chỉ ra mỗi bình phương không âm (với phân thức: mẫu dương) nên tổng bằng $0$ thì từng số bằng $0$
+Suy ra các biến bằng nhau rồi kết luận theo yêu cầu đề
+
+##CY
+Không được kết luận "tổng bằng $0$ nên từng số hạng bằng $0$" khi chưa chỉ ra các số hạng đều không âm. Nếu các số hạng là phân thức $\dfrac{(a-b)^2}{ab}$ thì phải có $ab>0$.
+@VD
+##VD
+Cho $a,b,c$ thỏa mãn $(a+b+c)^2=3(ab+bc+ca)$. Chứng minh rằng $a=b=c$.
+
+Bài giải:
+$(a+b+c)^2=3(ab+bc+ca)$
+$\Leftrightarrow a^2+b^2+c^2+2(ab+bc+ca)=3(ab+bc+ca)$
+$\Leftrightarrow a^2+b^2+c^2-ab-bc-ca=0$
+Nhân hai vế với $2$:
+$\Leftrightarrow(a-b)^2+(b-c)^2+(c-a)^2=0$
+Vì mỗi bình phương không âm và tổng bằng $0$ nên $(a-b)^2=(b-c)^2=(c-a)^2=0$.
+Suy ra $a=b=c$.
+
+##VD
+Gọi $a,b,c$ là độ dài ba cạnh của tam giác $ABC$ và $\left(1+\dfrac{b}{a}\right)\left(1+\dfrac{c}{b}\right)\left(1+\dfrac{a}{c}\right)=8$. Chứng minh rằng tam giác $ABC$ đều.
+
+Bài giải:
+Vì $a,b,c$ là độ dài các cạnh nên $a,b,c>0$.
+Khai triển vế trái:
+$\left(1+\dfrac{b}{a}\right)\left(1+\dfrac{c}{b}\right)\left(1+\dfrac{a}{c}\right)=\left(1+\dfrac{c}{b}+\dfrac{b}{a}+\dfrac{c}{a}\right)\left(1+\dfrac{a}{c}\right)$
+$=2+\dfrac{c}{b}+\dfrac{b}{c}+\dfrac{b}{a}+\dfrac{a}{b}+\dfrac{c}{a}+\dfrac{a}{c}$
+Do đó điều kiện trở thành:
+$\left(\dfrac{a}{b}+\dfrac{b}{a}-2\right)+\left(\dfrac{b}{c}+\dfrac{c}{b}-2\right)+\left(\dfrac{c}{a}+\dfrac{a}{c}-2\right)=0$
+$\Leftrightarrow\dfrac{(a-b)^2}{ab}+\dfrac{(b-c)^2}{bc}+\dfrac{(c-a)^2}{ca}=0$
+Vì $a,b,c>0$ nên cả ba phân thức không âm; tổng bằng $0$ nên cả ba bằng $0$.
+Suy ra $(a-b)^2=(b-c)^2=(c-a)^2=0$, tức $a=b=c$.
+Vậy tam giác $ABC$ đều.
+
+#DANG NDB03210
+@LT
+##TC Tỉ lệ thức và dãy tỉ số bằng nhau
+- Nếu $\dfrac{a}{b}=\dfrac{c}{d}=k$ thì $a=bk$ và $c=dk$.
+- Tính chất dãy tỉ số bằng nhau: $\dfrac{a}{b}=\dfrac{c}{d}=\dfrac{a+c}{b+d}=\dfrac{a-c}{b-d}$ (các mẫu khác $0$).
+
+##PP Chứng minh hệ thức từ tỉ lệ thức
+Ghi điều kiện các mẫu khác $0$, đặt giá trị chung của các tỉ số bằng $k$
+Viết từng biến theo $k$ và biến mẫu (hoặc viết tử số theo $k$ nhân mẫu)
+Thay vào hai vế của hệ thức cần chứng minh, rút gọn thì cả hai vế cùng bằng một biểu thức của $k$
+Với dãy tỉ số có nhiều biến, nhân hoặc cộng các đẳng thức với hệ số thích hợp để khử bớt biến rồi so sánh
+
+##CY
+Chỉ chia hai vế cho một biểu thức khi biết biểu thức đó khác $0$ (đề thường cho sẵn hoặc suy từ mẫu của các phân thức).
+@VD
+##VD
+Cho $\dfrac{a}{b}=\dfrac{c}{d}$ với $b,d\neq0$. Chứng minh rằng:
+a) $\dfrac{2a+3b}{2a-3b}=\dfrac{2c+3d}{2c-3d}$ (với $2a\neq3b$ và $2c\neq3d$);
+b) $\dfrac{ac}{bd}=\dfrac{a^2+c^2}{b^2+d^2}$.
+
+Bài giải:
+Đặt $\dfrac{a}{b}=\dfrac{c}{d}=k$. Khi đó $a=bk$ và $c=dk$.
+a) $\dfrac{2a+3b}{2a-3b}=\dfrac{2bk+3b}{2bk-3b}=\dfrac{b(2k+3)}{b(2k-3)}=\dfrac{2k+3}{2k-3}$ (do $b\neq0$).
+Tương tự $\dfrac{2c+3d}{2c-3d}=\dfrac{d(2k+3)}{d(2k-3)}=\dfrac{2k+3}{2k-3}$ (do $d\neq0$).
+Vậy $\dfrac{2a+3b}{2a-3b}=\dfrac{2c+3d}{2c-3d}$.
+
+b) $\dfrac{ac}{bd}=\dfrac{bk\cdot dk}{bd}=k^2$.
+$\dfrac{a^2+c^2}{b^2+d^2}=\dfrac{b^2k^2+d^2k^2}{b^2+d^2}=\dfrac{k^2(b^2+d^2)}{b^2+d^2}=k^2$ (do $b^2+d^2>0$ vì $b\neq0$).
+Vậy $\dfrac{ac}{bd}=\dfrac{a^2+c^2}{b^2+d^2}$.
+
+##VD
+Cho $\dfrac{2y+2z-x}{a}=\dfrac{2z+2x-y}{b}=\dfrac{2x+2y-z}{c}$, trong đó $a,b,c,2b+2c-a,2c+2a-b,2a+2b-c\neq0$. Chứng minh rằng $\dfrac{x}{2b+2c-a}=\dfrac{y}{2c+2a-b}=\dfrac{z}{2a+2b-c}$.
+
+Bài giải:
+Đặt $\dfrac{2y+2z-x}{a}=\dfrac{2z+2x-y}{b}=\dfrac{2x+2y-z}{c}=k$. Vì $a,b,c\neq0$ nên:
+$2y+2z-x=ka$ (1); $2z+2x-y=kb$ (2); $2x+2y-z=kc$ (3).
+Lấy $2\cdot(2)+2\cdot(3)-(1)$: vế trái $=4z+4x-2y+4x+4y-2z-2y-2z+x=9x$, vế phải $=k(2b+2c-a)$.
+Suy ra $9x=k(2b+2c-a)$, nên $\dfrac{x}{2b+2c-a}=\dfrac{k}{9}$ (do $2b+2c-a\neq0$).
+Lấy $2\cdot(3)+2\cdot(1)-(2)$: vế trái $=9y$, vế phải $=k(2c+2a-b)$, nên $\dfrac{y}{2c+2a-b}=\dfrac{k}{9}$ (do $2c+2a-b\neq0$).
+Lấy $2\cdot(1)+2\cdot(2)-(3)$: vế trái $=9z$, vế phải $=k(2a+2b-c)$, nên $\dfrac{z}{2a+2b-c}=\dfrac{k}{9}$ (do $2a+2b-c\neq0$).
+Vậy $\dfrac{x}{2b+2c-a}=\dfrac{y}{2c+2a-b}=\dfrac{z}{2a+2b-c}$.

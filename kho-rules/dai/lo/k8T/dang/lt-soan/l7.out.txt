@@ -1,0 +1,597 @@
+#NHOM NNB01460
+@LT
+##ĐN Phương trình tương đương
+Hai phương trình gọi là tương đương khi chúng có cùng tập nghiệm. Các phép biến đổi giữ nguyên tập nghiệm: chuyển một hạng tử sang vế kia và đổi dấu; nhân (hoặc chia) hai vế với cùng một số khác $0$.
+
+##TC Phương trình bậc nhất $ax+b=0$
+- Nếu $a\ne0$: phương trình có đúng một nghiệm $x=-\dfrac ba$.
+- Nếu $a=0$ và $b\ne0$: phương trình vô nghiệm, $S=\varnothing$.
+- Nếu $a=0$ và $b=0$: phương trình nghiệm đúng với mọi $x$ (vô số nghiệm).
+
+##ĐL Phương trình tích
+$A\cdot B=0\Leftrightarrow A=0$ hoặc $B=0$. Với nhiều thừa số: tích bằng $0$ khi và chỉ khi có ít nhất một thừa số bằng $0$. Tập nghiệm của phương trình tích là hợp các tập nghiệm của từng phương trình $A=0$, $B=0$.
+
+##ĐN Điều kiện xác định (ĐKXĐ)
+Điều kiện xác định của phương trình chứa ẩn ở mẫu là điều kiện để mọi mẫu thức đều khác $0$. Phân thức $\dfrac AB=0\Leftrightarrow A=0$ và $B\ne0$.
+
+##CY Nghiệm ngoại lai và mất nghiệm
+Khi nhân hai vế với biểu thức chứa ẩn để khử mẫu, phương trình mới chỉ là hệ quả (dùng $\Rightarrow$) nên có thể xuất hiện nghiệm làm mẫu bằng $0$; bắt buộc đối chiếu ĐKXĐ ở cuối.
+Ngược lại, không chia hai vế cho biểu thức chứa ẩn (sẽ mất nghiệm làm biểu thức đó bằng $0$): hãy chuyển vế rồi đặt nhân tử chung.
+
+#DANG NDB02740
+@LT
+##PP Giải phương trình đưa được về bậc nhất
+Khử mẫu: nhân hai vế với bội chung nhỏ nhất của các mẫu, nhân cả các hạng tử không có mẫu
+Bỏ ngoặc, chú ý dấu trừ đứng trước ngoặc hoặc trước phân số
+Chuyển các hạng tử chứa $x$ về một vế, các số về vế kia, thu gọn về dạng $ax=b$
+Xét hệ số $a$: nếu $a\ne0$ thì $x=\dfrac ba$; nếu $a=0$ thì xét $b$ để kết luận vô nghiệm hoặc vô số nghiệm
+
+##CY
+Với phương trình chứa tham số, không chia hai vế cho biểu thức chứa tham số khi chưa biết nó khác $0$; phải xét riêng từng trường hợp làm hệ số của $x$ bằng $0$.
+
+@VD
+##VD
+Giải phương trình: $\dfrac{2x-5}{3}-\dfrac{3}{4}=\dfrac{x+3}{6}-\dfrac{x-2}{2}$.
+
+Bài giải:
+Bội chung nhỏ nhất của các mẫu $3,4,6,2$ là $12$, nên nhân hai vế với $12$ để khử mẫu.
+$\dfrac{2x-5}{3}-\dfrac{3}{4}=\dfrac{x+3}{6}-\dfrac{x-2}{2}$
+$\Leftrightarrow 4(2x-5)-9=2(x+3)-6(x-2)$
+$\Leftrightarrow 8x-20-9=2x+6-6x+12$ (bỏ ngoặc, chú ý dấu trừ trước $6(x-2)$)
+$\Leftrightarrow 8x-2x+6x=6+12+20+9$ (chuyển vế)
+$\Leftrightarrow 12x=47$
+$\Leftrightarrow x=\dfrac{47}{12}$
+Vậy $S=\left\{\dfrac{47}{12}\right\}$.
+
+##VD
+Giải và biện luận theo tham số $m$ phương trình: $m^2x+2=4x+m$.
+
+Bài giải:
+$m^2x+2=4x+m$
+$\Leftrightarrow m^2x-4x=m-2$ (chuyển vế)
+$\Leftrightarrow(m-2)(m+2)x=m-2$ (đặt $x$ làm nhân tử chung, $m^2-4=(m-2)(m+2)$)
+Đây là phương trình dạng $ax=b$ với $a=(m-2)(m+2)$ và $b=m-2$.
+Nếu $m\ne2$ và $m\ne-2$ thì $a\ne0$, phương trình có nghiệm duy nhất $x=\dfrac{m-2}{(m-2)(m+2)}=\dfrac1{m+2}$.
+Nếu $m=2$ thì $a=0$ và $b=0$, phương trình trở thành $0x=0$, nghiệm đúng với mọi $x$.
+Nếu $m=-2$ thì $a=0$ và $b=-4\ne0$, phương trình trở thành $0x=-4$, vô nghiệm.
+Vậy: với $m\ne\pm2$ thì $S=\left\{\dfrac1{m+2}\right\}$; với $m=2$ thì phương trình có vô số nghiệm; với $m=-2$ thì $S=\varnothing$.
+
+#DANG NDB03251
+@LT
+##TC Các cách phân tích vế trái thành tích
+- Đặt nhân tử chung: $AB+AC=A(B+C)$.
+- Hằng đẳng thức: $A^2-B^2=(A-B)(A+B)$, $A^3-B^3=(A-B)(A^2+AB+B^2)$, $A^2\pm2AB+B^2=(A\pm B)^2$.
+- Nhóm hạng tử: $ac+ad+bc+bd=(a+b)(c+d)$.
+
+##PP Giải phương trình tích
+Chuyển mọi hạng tử về vế trái để vế phải bằng $0$
+Phân tích vế trái thành tích các nhân tử (đặt nhân tử chung, hằng đẳng thức, nhóm hạng tử)
+Cho từng nhân tử bằng $0$ và giải các phương trình bậc nhất thu được
+Gộp các nghiệm, viết tập nghiệm
+
+##CY
+Hai vế cùng chứa một nhân tử chứa ẩn thì không chia cả hai vế cho nhân tử đó (mất nghiệm); hãy chuyển vế rồi đặt nhân tử chung.
+
+@VD
+##VD
+Giải phương trình: $4x^2-49+5(2x-7)=0$.
+
+Bài giải:
+Ta có $4x^2-49=(2x)^2-7^2=(2x-7)(2x+7)$ (hiệu hai bình phương), nên hai hạng tử ở vế trái cùng chứa nhân tử $2x-7$.
+$4x^2-49+5(2x-7)=0$
+$\Leftrightarrow(2x-7)(2x+7)+5(2x-7)=0$
+$\Leftrightarrow(2x-7)(2x+7+5)=0$ (đặt nhân tử chung $2x-7$)
+$\Leftrightarrow(2x-7)(2x+12)=0$
+$\Leftrightarrow2x-7=0$ hoặc $2x+12=0$
+$\Leftrightarrow x=\dfrac72$ hoặc $x=-6$
+Vậy $S=\left\{\dfrac72;-6\right\}$.
+
+##VD
+Giải phương trình: $x^3-3x^2-4x+12=0$.
+
+Bài giải:
+Nhóm hạng tử: $x^3-3x^2=x^2(x-3)$ và $-4x+12=-4(x-3)$ có nhân tử chung $x-3$.
+$x^3-3x^2-4x+12=0$
+$\Leftrightarrow x^2(x-3)-4(x-3)=0$
+$\Leftrightarrow(x-3)(x^2-4)=0$ (đặt nhân tử chung $x-3$)
+$\Leftrightarrow(x-3)(x-2)(x+2)=0$ (hiệu hai bình phương)
+$\Leftrightarrow x-3=0$ hoặc $x-2=0$ hoặc $x+2=0$
+$\Leftrightarrow x=3$ hoặc $x=2$ hoặc $x=-2$
+Vậy $S=\{3;2;-2\}$.
+
+#DANG NDB03252
+@LT
+##TC So sánh hai phân số cùng tử
+Với $0<p<q$ thì $\dfrac1p>\dfrac1q$. Do đó tổng hoặc hiệu các phân số có tử bằng $1$ có thể xét dấu bằng cách so sánh từng cặp mẫu.
+
+##PP Cộng (trừ) cùng một số vào mỗi phân thức
+Nhận ra các tử có dạng $x+a_i$ (cùng hệ số của $x$) và các mẫu $m_i$ sao cho $a_i+m_i$ đều bằng một số $c$
+Cộng thêm $1$ vào mỗi phân thức (tách hằng số thành tổng các số $1$, hoặc cộng cùng số vào hai vế) để mọi tử đều thành $x+c$
+Đặt $x+c$ làm nhân tử chung, thừa số còn lại là tổng hoặc hiệu các phân số có tử bằng $1$
+Chứng tỏ thừa số còn lại khác $0$ bằng cách so sánh các cặp phân số cùng tử, rồi suy ra $x+c=0$
+
+##CY
+Không quy đồng khử mẫu ngay: các mẫu quá lớn và cấu trúc bị phá vỡ. Nếu thừa số còn lại bằng $0$ thì phương trình có vô số nghiệm, nên bắt buộc phải xét dấu của nó.
+
+@VD
+##VD
+Giải phương trình: $\dfrac{x+1}{2009}+\dfrac{x+2}{2008}+\dfrac{x+17}{1993}+3=0$.
+
+Bài giải:
+Ta có $1+2009=2+2008=17+1993=2010$, nên nếu cộng $1$ vào mỗi phân thức thì cả ba tử đều thành $x+2010$.
+$\dfrac{x+1}{2009}+\dfrac{x+2}{2008}+\dfrac{x+17}{1993}+3=0$
+$\Leftrightarrow\left(\dfrac{x+1}{2009}+1\right)+\left(\dfrac{x+2}{2008}+1\right)+\left(\dfrac{x+17}{1993}+1\right)=0$ (tách $3=1+1+1$)
+$\Leftrightarrow\dfrac{x+2010}{2009}+\dfrac{x+2010}{2008}+\dfrac{x+2010}{1993}=0$
+$\Leftrightarrow(x+2010)\left(\dfrac1{2009}+\dfrac1{2008}+\dfrac1{1993}\right)=0$
+Vì $\dfrac1{2009}+\dfrac1{2008}+\dfrac1{1993}>0$ nên $x+2010=0$, tức $x=-2010$.
+Vậy $S=\{-2010\}$.
+
+##VD
+Giải phương trình: $\dfrac{2-x}{2013}-1=\dfrac{1-x}{2014}-\dfrac{x}{2015}$.
+
+Bài giải:
+Cộng $2$ vào hai vế và viết $2=1+1$ ở vế phải để mỗi phân thức được cộng đúng $1$; khi đó cả ba tử đều thành $2015-x$.
+$\dfrac{2-x}{2013}-1=\dfrac{1-x}{2014}-\dfrac{x}{2015}$
+$\Leftrightarrow\dfrac{2-x}{2013}+1=\left(\dfrac{1-x}{2014}+1\right)+\left(\dfrac{-x}{2015}+1\right)$
+$\Leftrightarrow\dfrac{2015-x}{2013}=\dfrac{2015-x}{2014}+\dfrac{2015-x}{2015}$
+$\Leftrightarrow(2015-x)\left(\dfrac1{2013}-\dfrac1{2014}-\dfrac1{2015}\right)=0$
+Ta có $\dfrac1{2013}-\dfrac1{2014}=\dfrac1{2013\cdot2014}<\dfrac1{2015}$ (vì $2013\cdot2014>2015$), nên $\dfrac1{2013}-\dfrac1{2014}-\dfrac1{2015}\ne0$.
+Do đó $2015-x=0$, tức $x=2015$.
+Vậy $S=\{2015\}$.
+
+#DANG NDB03253
+@LT
+##PP Giải phương trình chứa ẩn ở mẫu
+Phân tích các mẫu thành nhân tử rồi tìm ĐKXĐ: mọi nhân tử ở mẫu đều khác $0$
+Quy đồng mẫu hai vế (mẫu chung là tích các nhân tử với số mũ lớn nhất) rồi khử mẫu
+Giải phương trình thu được (đưa về bậc nhất hoặc phương trình tích)
+Đối chiếu từng nghiệm với ĐKXĐ, loại nghiệm làm mẫu bằng $0$
+Kết luận tập nghiệm (có thể là tập rỗng)
+
+##CY
+Hai mẫu đối nhau như $x-2$ và $2-x$: đổi dấu để có mẫu chung, $\dfrac a{2-x}=-\dfrac a{x-2}$.
+Chỉ rút gọn phân thức khi nhân tử bị rút gọn đã nằm trong ĐKXĐ (vd $\dfrac{x^2}{x(x^2-4)}=\dfrac x{x^2-4}$ với $x\ne0$).
+
+@VD
+##VD
+Giải phương trình: $\dfrac{x}{x-1}-\dfrac{2(x+3)}{x+1}=\dfrac{2}{x^2-1}$.
+
+Bài giải:
+Vì $x^2-1=(x-1)(x+1)$ nên ĐKXĐ là $x\ne1$ và $x\ne-1$, mẫu chung là $(x-1)(x+1)$.
+$\dfrac{x}{x-1}-\dfrac{2(x+3)}{x+1}=\dfrac{2}{(x-1)(x+1)}$
+$\Rightarrow x(x+1)-2(x+3)(x-1)=2$ (quy đồng rồi khử mẫu)
+$\Leftrightarrow x^2+x-2x^2-4x+6=2$
+$\Leftrightarrow-x^2-3x+4=0$
+$\Leftrightarrow x^2+3x-4=0$
+$\Leftrightarrow(x+4)(x-1)=0$
+$\Leftrightarrow x=-4$ hoặc $x=1$
+Đối chiếu ĐKXĐ: $x=1$ làm mẫu bằng $0$ nên bị loại; $x=-4$ thỏa mãn.
+Vậy $S=\{-4\}$.
+
+##VD
+Giải phương trình: $\dfrac{x^2}{x^3-4x}+\dfrac{6}{6-3x}+\dfrac{1}{x+2}=1$.
+
+Bài giải:
+Ta có $x^3-4x=x(x-2)(x+2)$ và $6-3x=3(2-x)$. ĐKXĐ: $x\ne0$, $x\ne2$ và $x\ne-2$.
+$\dfrac{x^2}{x(x-2)(x+2)}+\dfrac{6}{3(2-x)}+\dfrac{1}{x+2}=1$
+$\Leftrightarrow\dfrac{x}{(x-2)(x+2)}-\dfrac{2}{x-2}+\dfrac{1}{x+2}=1$ (rút gọn cho $x\ne0$, đổi dấu mẫu $2-x=-(x-2)$)
+$\Leftrightarrow\dfrac{x-2(x+2)+(x-2)}{(x-2)(x+2)}=1$ (quy đồng, mẫu chung $x^2-4$)
+$\Leftrightarrow\dfrac{-6}{x^2-4}=1$
+$\Leftrightarrow x^2-4=-6$
+$\Leftrightarrow x^2=-2$
+Điều này vô lý vì $x^2\ge0$ với mọi $x$.
+Vậy $S=\varnothing$.
+
+#DANG NDB03254
+@LT
+##TC Hằng đẳng thức hay dùng để lộ ẩn phụ
+- $a^2+b^2=(a-b)^2+2ab=(a+b)^2-2ab$.
+- $x^2+\dfrac1{x^2}=\left(x+\dfrac1x\right)^2-2$.
+
+##PP Đặt ẩn phụ cho phương trình chứa ẩn ở mẫu
+Tìm ĐKXĐ của phương trình
+Nhận ra biểu thức lặp lại hoặc biến đổi (như $a^2+b^2=(a-b)^2+2ab$) để lộ ra biểu thức chung; đặt nó là $t$ và ghi điều kiện của $t$ nếu có
+Giải phương trình theo $t$ bằng cách phân tích thành nhân tử
+Với mỗi giá trị của $t$, trở về ẩn $x$ và giải; chỉ ra các trường hợp vô nghiệm bằng bình phương cộng một số dương
+Đối chiếu ĐKXĐ và kết luận tập nghiệm
+
+##CY
+Phải xét đủ mọi giá trị của $t$: có giá trị của $t$ cho phương trình theo $x$ vô nghiệm, bỏ qua bước này dễ ghi thừa hoặc thiếu nghiệm.
+
+@VD
+##VD
+Giải phương trình: $x^2-x-18+\dfrac{72}{x^2-x}=0$.
+
+Bài giải:
+Vì $x^2-x=x(x-1)$ nên ĐKXĐ là $x\ne0$ và $x\ne1$.
+Đặt $t=x^2-x$ ($t\ne0$), phương trình trở thành $t-18+\dfrac{72}{t}=0$
+$\Leftrightarrow t^2-18t+72=0$ (nhân hai vế với $t\ne0$)
+$\Leftrightarrow(t-6)(t-12)=0$
+$\Leftrightarrow t=6$ hoặc $t=12$
+Với $t=6$: $x^2-x-6=0\Leftrightarrow(x-3)(x+2)=0\Leftrightarrow x=3$ hoặc $x=-2$.
+Với $t=12$: $x^2-x-12=0\Leftrightarrow(x-4)(x+3)=0\Leftrightarrow x=4$ hoặc $x=-3$.
+Cả bốn giá trị đều khác $0$ và khác $1$ nên thỏa mãn ĐKXĐ.
+Vậy $S=\{3;-2;-3;4\}$.
+
+##VD
+Giải phương trình: $x^2+\left(\dfrac{x}{x+1}\right)^2=\dfrac54$.
+
+Bài giải:
+ĐKXĐ: $x\ne-1$.
+Vế trái có dạng $a^2+b^2$ với $a=x$, $b=\dfrac{x}{x+1}$, nên viết $a^2+b^2=(a-b)^2+2ab$ với $a-b=\dfrac{x^2}{x+1}$ và $ab=\dfrac{x^2}{x+1}$.
+$x^2+\left(\dfrac{x}{x+1}\right)^2=\dfrac54\Leftrightarrow\left(x-\dfrac{x}{x+1}\right)^2+2\cdot x\cdot\dfrac{x}{x+1}=\dfrac54$
+$\Leftrightarrow\left(\dfrac{x^2}{x+1}\right)^2+2\cdot\dfrac{x^2}{x+1}-\dfrac54=0$
+Đặt $y=\dfrac{x^2}{x+1}$, phương trình trở thành $y^2+2y-\dfrac54=0$
+$\Leftrightarrow4y^2+8y-5=0$
+$\Leftrightarrow(2y-1)(2y+5)=0$
+$\Leftrightarrow y=\dfrac12$ hoặc $y=-\dfrac52$
+Với $y=\dfrac12$: $\dfrac{x^2}{x+1}=\dfrac12\Leftrightarrow2x^2-x-1=0\Leftrightarrow(x-1)(2x+1)=0\Leftrightarrow x=1$ hoặc $x=-\dfrac12$.
+Với $y=-\dfrac52$: $\dfrac{x^2}{x+1}=-\dfrac52\Leftrightarrow2x^2+5x+5=0$, vô nghiệm vì $2x^2+5x+5=2\left(x+\dfrac54\right)^2+\dfrac{15}8>0$.
+Hai nghiệm $1$ và $-\dfrac12$ đều khác $-1$ nên thỏa mãn ĐKXĐ.
+Vậy $S=\left\{1;-\dfrac12\right\}$.
+
+#DANG NDB03255
+@LT
+##TC Tách phân thức thành hiệu
+Với $a\ne0$, $a+k\ne0$: $\dfrac{k}{a(a+k)}=\dfrac1a-\dfrac1{a+k}$. Khi $k=1$ thì $\dfrac1{a(a+1)}=\dfrac1a-\dfrac1{a+1}$.
+
+##PP Tách phân thức, rút gọn liên tiếp
+Phân tích các mẫu thành tích hai nhị thức (tam thức $x^2+px+q=(x+u)(x+v)$ với $u+v=p$, $uv=q$), nêu ĐKXĐ
+Kiểm tra tử số đúng bằng hiệu của hai số hạng tự do ở mẫu, rồi tách mỗi phân thức thành hiệu hai phân thức
+Cộng các hiệu lại: các số hạng ở giữa triệt tiêu liên tiếp, vế trái chỉ còn hiệu của hai phân thức
+Quy đồng, khử mẫu để được phương trình bậc hai, phân tích thành tích và giải
+Đối chiếu nghiệm với ĐKXĐ
+
+##CY
+Các mẫu phải nối tiếp nhau (nhân tử thứ hai của mẫu này là nhân tử thứ nhất của mẫu sau) và tử phải đúng bằng hiệu hai số hạng tự do ở mẫu thì mới triệt tiêu được. Không quy đồng cả ba phân thức một lượt vì bậc quá cao.
+
+@VD
+##VD
+Giải phương trình: $\dfrac{1}{x(x+1)}+\dfrac{1}{(x+1)(x+2)}+\dfrac{1}{(x+2)(x+3)}=\dfrac{3}{10}$.
+
+Bài giải:
+ĐKXĐ: $x\ne0$, $x\ne-1$, $x\ne-2$ và $x\ne-3$.
+Áp dụng $\dfrac{1}{a(a+1)}=\dfrac1a-\dfrac1{a+1}$ cho từng phân thức:
+$\dfrac1x-\dfrac1{x+1}+\dfrac1{x+1}-\dfrac1{x+2}+\dfrac1{x+2}-\dfrac1{x+3}=\dfrac3{10}$
+$\Leftrightarrow\dfrac1x-\dfrac1{x+3}=\dfrac3{10}$ (các số hạng ở giữa triệt tiêu)
+$\Leftrightarrow10(x+3)-10x=3x(x+3)$
+$\Leftrightarrow3x^2+9x-30=0$
+$\Leftrightarrow x^2+3x-10=0$
+$\Leftrightarrow(x-2)(x+5)=0$
+$\Leftrightarrow x=2$ hoặc $x=-5$ (cả hai đều thỏa ĐKXĐ)
+Vậy $S=\{2;-5\}$.
+
+##VD
+Giải phương trình: $\dfrac{2}{x^2+4x+3}+\dfrac{5}{x^2+11x+24}+\dfrac{2}{x^2+18x+80}=\dfrac{9}{52}$.
+
+Bài giải:
+Phân tích các mẫu: $x^2+4x+3=(x+1)(x+3)$, $x^2+11x+24=(x+3)(x+8)$, $x^2+18x+80=(x+8)(x+10)$.
+ĐKXĐ: $x\ne-1$, $x\ne-3$, $x\ne-8$ và $x\ne-10$.
+Các tử $2$, $5$, $2$ lần lượt bằng hiệu $3-1$, $8-3$, $10-8$ của các số hạng tự do ở mẫu, nên theo công thức $\dfrac{k}{a(a+k)}=\dfrac1a-\dfrac1{a+k}$:
+$\dfrac1{x+1}-\dfrac1{x+3}+\dfrac1{x+3}-\dfrac1{x+8}+\dfrac1{x+8}-\dfrac1{x+10}=\dfrac9{52}$
+$\Leftrightarrow\dfrac1{x+1}-\dfrac1{x+10}=\dfrac9{52}$
+$\Leftrightarrow52(x+10)-52(x+1)=9(x+1)(x+10)$
+$\Leftrightarrow9x^2+99x-378=0$
+$\Leftrightarrow x^2+11x-42=0$
+$\Leftrightarrow(x-3)(x+14)=0$
+$\Leftrightarrow x=3$ hoặc $x=-14$ (cả hai đều thỏa ĐKXĐ)
+Vậy $S=\{3;-14\}$.
+
+#NHOM NNB01461
+@LT
+##ĐL Bê-du và nghiệm hữu tỉ
+- Số dư của phép chia đa thức $f(x)$ cho $x-a$ là $f(a)$; do đó $f(a)=0\Leftrightarrow f(x)$ chia hết cho $x-a$.
+- Nếu đa thức hệ số nguyên $a_nx^n+\dots+a_1x+a_0$ có nghiệm hữu tỉ $\dfrac pq$ (phân số tối giản) thì $p$ là ước của $a_0$ và $q$ là ước của $a_n$.
+
+##TC Sơ đồ Hoóc-ne (chia $f(x)$ cho $x-a$)
+Viết dãy hệ số $a_n,a_{n-1},\dots,a_0$ của $f(x)$. Hạ $a_n$ xuống hàng dưới; mỗi số tiếp theo ở hàng dưới bằng hệ số ở trên cộng với $a$ nhân số vừa viết ở hàng dưới. Các số ở hàng dưới (trừ số cuối) là hệ số của thương, số cuối cùng là số dư. Nếu số dư bằng $0$ thì $f(x)=(x-a)\cdot q(x)$.
+
+##TC Nhân tử bậc hai vô nghiệm
+$x^2+px+q=\left(x+\dfrac p2\right)^2+\left(q-\dfrac{p^2}4\right)$. Nếu $q-\dfrac{p^2}4>0$ thì tam thức luôn dương, nhân tử đó không cho nghiệm. Nếu $q-\dfrac{p^2}4\le0$ thì phân tích tiếp bằng hiệu hai bình phương.
+
+##CY
+Phương trình bậc cao luôn quy về dạng tích rồi xét từng nhân tử. Nghiệm lặp lại nhiều lần (nhân tử có số mũ lớn hơn $1$) chỉ ghi một lần trong tập nghiệm; đừng bỏ sót việc xét nhân tử bậc hai còn lại.
+
+#DANG NDB02743
+@LT
+##PP Đưa phương trình bậc ba, bậc bốn về tích
+Chuyển mọi hạng tử về vế trái, vế phải bằng $0$, sắp theo bậc giảm dần
+Thử nhóm hạng tử hoặc dùng hằng đẳng thức để thấy ngay nhân tử chung
+Nếu không được, nhẩm nghiệm hữu tỉ $\dfrac pq$ ($p$ là ước của hệ số tự do, $q$ là ước của hệ số cao nhất) bằng cách thử lần lượt
+Có nghiệm thì chia đa thức cho nhân tử tương ứng bằng sơ đồ Hoóc-ne (hoặc tách hạng tử) để hạ bậc, viết vế trái thành tích
+Phân tích tiếp các nhân tử, nhân tử bậc hai thì phân tích hoặc chỉ ra luôn dương
+Cho từng nhân tử bằng $0$, gộp nghiệm
+
+@VD
+##VD
+Tìm $x$, biết: $x^4+5x^3-8x-40=0$.
+
+Bài giải:
+Nhóm hạng tử: $x^4+5x^3=x^3(x+5)$ và $-8x-40=-8(x+5)$ có nhân tử chung $x+5$.
+$x^4+5x^3-8x-40=0$
+$\Leftrightarrow x^3(x+5)-8(x+5)=0$
+$\Leftrightarrow(x+5)(x^3-8)=0$
+$\Leftrightarrow(x+5)(x-2)(x^2+2x+4)=0$ (hiệu hai lập phương)
+Vì $x^2+2x+4=(x+1)^2+3>0$ với mọi $x$ nên $x+5=0$ hoặc $x-2=0$
+$\Leftrightarrow x=-5$ hoặc $x=2$
+Vậy $S=\{-5;2\}$.
+
+##VD
+Giải phương trình: $2x^3+x^2-x+3=0$.
+
+Bài giải:
+Nghiệm hữu tỉ nếu có có dạng $\dfrac pq$ với $p\in\{\pm1;\pm3\}$ và $q\in\{1;2\}$. Thử $x=-\dfrac32$: $2\cdot\left(-\dfrac{27}8\right)+\dfrac94+\dfrac32+3=-\dfrac{27}4+\dfrac94+\dfrac32+3=0$.
+Vậy $x=-\dfrac32$ là nghiệm, theo định lý Bê-du đa thức chia hết cho $x+\dfrac32$.
+Chia theo sơ đồ Hoóc-ne với $a=-\dfrac32$ và các hệ số $2;1;-1;3$. Hàng dưới gồm: $2$; rồi $1+\left(-\dfrac32\right)\cdot2=-2$; rồi $-1+\left(-\dfrac32\right)\cdot(-2)=2$; rồi $3+\left(-\dfrac32\right)\cdot2=0$.
+Số dư bằng $0$ và thương là $2x^2-2x+2$, nên $2x^3+x^2-x+3=\left(x+\dfrac32\right)(2x^2-2x+2)=(2x+3)(x^2-x+1)$.
+$2x^3+x^2-x+3=0\Leftrightarrow(2x+3)(x^2-x+1)=0$
+Vì $x^2-x+1=\left(x-\dfrac12\right)^2+\dfrac34>0$ với mọi $x$ nên $2x+3=0$
+$\Leftrightarrow x=-\dfrac32$
+Vậy $S=\left\{-\dfrac32\right\}$.
+
+#DANG NDB03256
+@LT
+##TC Hai kiểu ghép cặp bốn nhị thức
+- Nếu $a+d=b+c$: ghép $(x+a)(x+d)=x^2+(a+d)x+ad$ và $(x+b)(x+c)=x^2+(a+d)x+bc$; hai tích chung phần $x^2+(a+d)x$.
+- Nếu $ad=bc$ (thường vế phải là $mx^2$): ghép như trên thì $(x+a)(x+d)=x^2+(a+d)x+ad$ và $(x+b)(x+c)=x^2+(b+c)x+ad$; chia hai vế cho $x^2$ (sau khi xét $x=0$) rồi đặt $t=x+\dfrac{ad}x$.
+
+##PP Giải $(x+a)(x+b)(x+c)(x+d)=m$ hoặc $=mx^2$
+Xét các số hạng tự do $a,b,c,d$: tìm hai cặp có tổng bằng nhau ($a+d=b+c$) hoặc tích bằng nhau ($ad=bc$)
+Nhân từng cặp để được hai tam thức bậc hai chung một phần
+Kiểu tổng: đặt $t$ là phần chung (hoặc số nằm giữa hai hằng số) để được $(t-k)(t+k)$; kiểu tích: thử $x=0$ rồi chia hai vế cho $x^2$ và đặt $t=x+\dfrac{ad}x$
+Giải phương trình theo $t$ bằng phân tích thành nhân tử
+Với mỗi $t$ trở về $x$; phương trình bậc hai vô nghiệm thì chỉ ra bằng bình phương cộng một số dương
+
+##CY
+Không nhân cả bốn nhị thức ra bậc bốn; luôn tìm cách ghép cặp trước. Mỗi giá trị của $t$ phải được giải ngược về $x$ và có thể cho vô nghiệm.
+
+@VD
+##VD
+Tìm $x$ biết: $(x+1)(x+2)(x+3)(x+4)=24$.
+
+Bài giải:
+Các số hạng tự do thỏa $1+4=2+3$, nên ghép $(x+1)(x+4)$ và $(x+2)(x+3)$.
+$(x+1)(x+2)(x+3)(x+4)=24$
+$\Leftrightarrow(x+1)(x+4)(x+2)(x+3)=24$
+$\Leftrightarrow(x^2+5x+4)(x^2+5x+6)=24$
+Đặt $t=x^2+5x+5$, phương trình trở thành $(t-1)(t+1)=24$
+$\Leftrightarrow t^2=25$
+$\Leftrightarrow t=5$ hoặc $t=-5$
+Với $t=5$: $x^2+5x=0\Leftrightarrow x(x+5)=0\Leftrightarrow x=0$ hoặc $x=-5$.
+Với $t=-5$: $x^2+5x+10=0$, vô nghiệm vì $x^2+5x+10=\left(x+\dfrac52\right)^2+\dfrac{15}4>0$.
+Vậy $S=\{0;-5\}$.
+
+##VD
+Giải phương trình: $(x-3)(x-5)(x-6)(x-10)=24x^2$.
+
+Bài giải:
+Các số hạng tự do thỏa $3\cdot10=5\cdot6=30$, nên ghép $(x-3)(x-10)$ và $(x-5)(x-6)$.
+Thay $x=0$ vào vế trái được $900\ne0$, nên $x=0$ không là nghiệm; chia hai vế cho $x^2$.
+$(x-3)(x-10)(x-5)(x-6)=24x^2$
+$\Leftrightarrow(x^2-13x+30)(x^2-11x+30)=24x^2$
+$\Leftrightarrow\left(x-13+\dfrac{30}x\right)\left(x-11+\dfrac{30}x\right)=24$ (chia hai vế cho $x^2$)
+Đặt $t=x+\dfrac{30}x$, phương trình trở thành $(t-13)(t-11)=24$
+$\Leftrightarrow t^2-24t+119=0$
+$\Leftrightarrow(t-7)(t-17)=0$
+$\Leftrightarrow t=7$ hoặc $t=17$
+Với $t=7$: $x^2-7x+30=0$, vô nghiệm vì $x^2-7x+30=\left(x-\dfrac72\right)^2+\dfrac{71}4>0$.
+Với $t=17$: $x^2-17x+30=0\Leftrightarrow(x-2)(x-15)=0\Leftrightarrow x=2$ hoặc $x=15$.
+Vậy $S=\{2;15\}$.
+
+#DANG NDB03257
+@LT
+##TC Khai triển đối xứng
+$(y+k)^4+(y-k)^4=2y^4+12k^2y^2+2k^4$: các số hạng bậc lẻ của $y$ triệt tiêu nhau.
+
+##PP Giải $(x+a)^4+(x+b)^4=c$
+Đặt $y=x+\dfrac{a+b}2$ là trung bình cộng của hai nhị thức; khi đó $x+a=y+k$ và $x+b=y-k$ với $k=\dfrac{a-b}2$
+Khai triển theo công thức trên để được phương trình trùng phương theo $y$
+Phân tích vế trái thành tích (tách hạng tử), loại thừa số luôn dương
+Giải $y^2=k$ với $k\ge0$ rồi trở về $x=y-\dfrac{a+b}2$
+
+##CY
+Khi $a-b$ là số lẻ thì $k$ là phân số, vẫn dùng công thức bình thường. Giá trị $y^2<0$ bị loại.
+
+@VD
+##VD
+Giải phương trình: $(x-6)^4+(x-8)^4=272$.
+
+Bài giải:
+Hai nhị thức $x-6$ và $x-8$ có trung bình cộng là $x-7$. Đặt $y=x-7$ thì $x-6=y+1$ và $x-8=y-1$.
+Phương trình trở thành $(y+1)^4+(y-1)^4=272$
+$\Leftrightarrow2y^4+12y^2+2=272$ (khai triển, số hạng bậc lẻ triệt tiêu)
+$\Leftrightarrow y^4+6y^2-135=0$
+$\Leftrightarrow y^4-9y^2+15y^2-135=0$
+$\Leftrightarrow y^2(y^2-9)+15(y^2-9)=0$
+$\Leftrightarrow(y^2-9)(y^2+15)=0$
+Vì $y^2+15>0$ nên $y^2-9=0$, tức $(y-3)(y+3)=0$, suy ra $y=3$ hoặc $y=-3$.
+Với $y=3$: $x=10$. Với $y=-3$: $x=4$.
+Vậy $S=\{4;10\}$.
+
+##VD
+Giải phương trình: $(x+2)^4+(x+3)^4=1$.
+
+Bài giải:
+Trung bình cộng của $x+2$ và $x+3$ là $x+\dfrac52$. Đặt $y=x+\dfrac52$ thì $x+2=y-\dfrac12$ và $x+3=y+\dfrac12$.
+$\left(y-\dfrac12\right)^4+\left(y+\dfrac12\right)^4=1$
+$\Leftrightarrow2y^4+12\cdot\dfrac14y^2+2\cdot\dfrac1{16}=1$ (công thức với $k=\dfrac12$)
+$\Leftrightarrow2y^4+3y^2+\dfrac18=1$
+$\Leftrightarrow16y^4+24y^2-7=0$ (nhân hai vế với $8$)
+$\Leftrightarrow16y^4-4y^2+28y^2-7=0$
+$\Leftrightarrow4y^2(4y^2-1)+7(4y^2-1)=0$
+$\Leftrightarrow(4y^2-1)(4y^2+7)=0$
+Vì $4y^2+7>0$ nên $4y^2-1=0$, tức $(2y-1)(2y+1)=0$, suy ra $y=\dfrac12$ hoặc $y=-\dfrac12$.
+Với $y=\dfrac12$: $x=\dfrac12-\dfrac52=-2$. Với $y=-\dfrac12$: $x=-\dfrac12-\dfrac52=-3$.
+Vậy $S=\{-2;-3\}$.
+
+#DANG NDB03258
+@LT
+##ĐN Phương trình đối xứng (hồi quy) bậc bốn
+Phương trình $ax^4+bx^3+cx^2+bx+a=0$ ($a\ne0$) có hệ số cách đều hai đầu bằng nhau gọi là phương trình đối xứng; phương trình $ax^4+bx^3+cx^2-bx+a=0$ có các hệ số cách đều hai đầu đối nhau ở các bậc lẻ.
+
+##TC Biến đổi theo $t$
+- $x^2+\dfrac1{x^2}=\left(x+\dfrac1x\right)^2-2$ và $\left(x+\dfrac1x\right)^2-4=\left(x-\dfrac1x\right)^2\ge0$, nên đặt $t=x+\dfrac1x$ thì $\lvert t\rvert\ge2$.
+- $x^2+\dfrac1{x^2}=\left(x-\dfrac1x\right)^2+2$; đặt $u=x-\dfrac1x$ thì $u$ nhận mọi giá trị thực.
+- Đa thức bậc lẻ có hệ số cách đều hai đầu bằng nhau nhận $x=-1$ làm nghiệm (chia cho $x+1$ để hạ bậc).
+
+##PP Giải phương trình đối xứng bậc bốn
+Nhận ra hệ số cách đều hai đầu bằng nhau (hoặc đối nhau ở bậc lẻ); thử $x=0$ có là nghiệm không
+Chia hai vế cho $x^2$ ($x\ne0$) và nhóm $\left(x^2+\dfrac1{x^2}\right)$ với $\left(x\pm\dfrac1x\right)$
+Đặt $t=x+\dfrac1x$ (ghi $\lvert t\rvert\ge2$) hoặc $u=x-\dfrac1x$, đổi $x^2+\dfrac1{x^2}$ theo ẩn mới
+Giải phương trình theo ẩn mới bằng cách phân tích thành nhân tử, loại giá trị không thỏa điều kiện
+Với mỗi giá trị, giải $x^2-tx+1=0$ (hoặc $x^2-ux-1=0$) bằng hoàn thành bình phương hay phân tích
+
+##CY
+Phải chỉ ra $x=0$ không là nghiệm trước khi chia hai vế cho $x^2$. Với $t=x+\dfrac1x$ mà $\lvert t\rvert<2$ thì phương trình theo $x$ vô nghiệm.
+
+@VD
+##VD
+Giải phương trình: $2x^4+3x^3-16x^2+3x+2=0$.
+
+Bài giải:
+Hệ số cách đều hai đầu bằng nhau. Thay $x=0$ vào vế trái được $2\ne0$ nên $x=0$ không là nghiệm; chia hai vế cho $x^2$.
+$2x^2+3x-16+\dfrac3x+\dfrac2{x^2}=0$
+$\Leftrightarrow2\left(x^2+\dfrac1{x^2}\right)+3\left(x+\dfrac1x\right)-16=0$
+Đặt $t=x+\dfrac1x$ thì $x^2+\dfrac1{x^2}=t^2-2$, phương trình trở thành $2(t^2-2)+3t-16=0$
+$\Leftrightarrow2t^2+3t-20=0$
+$\Leftrightarrow(2t-5)(t+4)=0$
+$\Leftrightarrow t=\dfrac52$ hoặc $t=-4$ (cả hai thỏa $\lvert t\rvert\ge2$)
+Với $t=\dfrac52$: $x+\dfrac1x=\dfrac52\Leftrightarrow2x^2-5x+2=0\Leftrightarrow(2x-1)(x-2)=0\Leftrightarrow x=\dfrac12$ hoặc $x=2$.
+Với $t=-4$: $x+\dfrac1x=-4\Leftrightarrow x^2+4x+1=0\Leftrightarrow(x+2)^2=3\Leftrightarrow x=-2+\sqrt3$ hoặc $x=-2-\sqrt3$.
+Vậy $S=\left\{2;\dfrac12;-2+\sqrt3;-2-\sqrt3\right\}$.
+
+##VD
+Giải phương trình: $x^4+2x^3-5x^2-2x+1=0$.
+
+Bài giải:
+Các hệ số của $x^3$ và $x$ đối nhau. Thay $x=0$ vào vế trái được $1\ne0$ nên $x=0$ không là nghiệm; chia hai vế cho $x^2$.
+$x^2+2x-5-\dfrac2x+\dfrac1{x^2}=0$
+$\Leftrightarrow\left(x^2+\dfrac1{x^2}\right)+2\left(x-\dfrac1x\right)-5=0$
+Đặt $u=x-\dfrac1x$ thì $x^2+\dfrac1{x^2}=u^2+2$, phương trình trở thành $u^2+2+2u-5=0$
+$\Leftrightarrow u^2+2u-3=0$
+$\Leftrightarrow(u-1)(u+3)=0$
+$\Leftrightarrow u=1$ hoặc $u=-3$ (với $u=x-\dfrac1x$ không có điều kiện loại)
+Với $u=1$: $x-\dfrac1x=1\Leftrightarrow x^2-x-1=0\Leftrightarrow\left(x-\dfrac12\right)^2=\dfrac54\Leftrightarrow x=\dfrac{1+\sqrt5}2$ hoặc $x=\dfrac{1-\sqrt5}2$.
+Với $u=-3$: $x-\dfrac1x=-3\Leftrightarrow x^2+3x-1=0\Leftrightarrow\left(x+\dfrac32\right)^2=\dfrac{13}4\Leftrightarrow x=\dfrac{-3+\sqrt{13}}2$ hoặc $x=\dfrac{-3-\sqrt{13}}2$.
+Vậy $S=\left\{\dfrac{1+\sqrt5}2;\dfrac{1-\sqrt5}2;\dfrac{-3+\sqrt{13}}2;\dfrac{-3-\sqrt{13}}2\right\}$.
+
+#DANG NDB03259
+@LT
+##TC Phương trình $ax^{2n}+bx^n+c=0$
+Đặt $t=x^n$ được phương trình bậc hai $at^2+bt+c=0$ theo $t$. Giải phương trình $x^n=k$: nếu $n$ chẵn thì $k>0$ cho hai nghiệm đối nhau, $k=0$ cho nghiệm $x=0$, $k<0$ vô nghiệm; nếu $n$ lẻ thì có đúng một nghiệm.
+
+##PP Giải phương trình trùng phương và dạng $ax^{2n}+bx^n+c=0$
+Nhận ra phương trình chỉ chứa $x^{2n}$, $x^n$ và hằng số; đặt $t=x^n$ (khi $n$ chẵn ghi $t\ge0$)
+Giải phương trình theo $t$ bằng cách tách hạng tử, phân tích thành nhân tử
+Loại các giá trị $t$ không thỏa điều kiện
+Với mỗi $t$ còn lại giải $x^n=t$ rồi viết tập nghiệm
+
+##CY
+Chỉ khi $n$ chẵn mới có điều kiện $t\ge0$; với $n$ lẻ (như $t=x^3$) giá trị $t$ âm vẫn hợp lệ.
+
+@VD
+##VD
+Giải phương trình: $x^4+x^2-6=0$.
+
+Bài giải:
+Đặt $t=x^2$ ($t\ge0$), phương trình trở thành $t^2+t-6=0$
+$\Leftrightarrow(t+3)(t-2)=0$
+$\Leftrightarrow t=-3$ hoặc $t=2$
+Giá trị $t=-3$ không thỏa $t\ge0$ nên bị loại.
+Với $t=2$: $x^2=2\Leftrightarrow x=\sqrt2$ hoặc $x=-\sqrt2$.
+Vậy $S=\{-\sqrt2;\sqrt2\}$.
+
+##VD
+Giải phương trình: $x^6-7x^3-8=0$.
+
+Bài giải:
+Đặt $t=x^3$ (vì $3$ là số lẻ nên $t$ nhận mọi giá trị thực), phương trình trở thành $t^2-7t-8=0$
+$\Leftrightarrow(t-8)(t+1)=0$
+$\Leftrightarrow t=8$ hoặc $t=-1$
+Với $t=8$: $x^3=8\Leftrightarrow x=2$.
+Với $t=-1$: $x^3=-1\Leftrightarrow x=-1$.
+Vậy $S=\{2;-1\}$.
+
+#DANG NDB03260
+@LT
+##ĐL Hai đa thức bằng nhau
+Hai đa thức bằng nhau với mọi $x$ khi và chỉ khi các hệ số của các lũy thừa cùng bậc bằng nhau.
+
+##PP Phân tích bằng hệ số bất định
+Thử nhẩm nghiệm hữu tỉ trước; chỉ khi các ước của hệ số tự do đều không là nghiệm mới dùng hệ số bất định
+Giả sử $x^4+px^3+qx^2+rx+s=(x^2+ax+b)(x^2+cx+d)$ với $a,b,c,d$ nguyên; khai triển và đồng nhất hệ số được $\begin{cases}a+c=p\\b+d+ac=q\\ad+bc=r\\bd=s\end{cases}$
+Thử các cặp $(b;d)$ nguyên có tích $s$; với mỗi cặp, dùng $a+c=p$ và $ac=q-b-d$ để tìm $a,c$ (thay $c=p-a$, phân tích thành nhân tử), rồi kiểm tra điều kiện $ad+bc=r$
+Có bộ hệ số thì viết vế trái thành tích hai tam thức, xét từng tam thức bằng hoàn thành bình phương
+
+##CY
+Hệ số bằng $0$ vẫn phải đưa vào hệ (như $q=0$). Luôn khai triển lại tích tìm được để kiểm tra.
+
+@VD
+##VD
+Giải phương trình: $x^4-6x^3+12x^2-14x+3=0$.
+
+Bài giải:
+Nghiệm hữu tỉ nếu có phải là ước của $3$, nhưng giá trị của vế trái tại $x=1,-1,3,-3$ lần lượt là $-4,36,-12,396$, đều khác $0$. Do đó dùng hệ số bất định.
+Giả sử $x^4-6x^3+12x^2-14x+3=(x^2+ax+b)(x^2+cx+d)=x^4+(a+c)x^3+(b+d+ac)x^2+(ad+bc)x+bd$.
+Đồng nhất hệ số: $\begin{cases}a+c=-6\\b+d+ac=12\\ad+bc=-14\\bd=3\end{cases}$
+Thử $b=3$, $d=1$: $ac=12-3-1=8$ và $c=-6-a$ nên $a(-6-a)=8$, tức $a^2+6a+8=0$, hay $(a+2)(a+4)=0$.
+Với $a=-2$, $c=-4$: $ad+bc=-2\cdot1+3\cdot(-4)=-14$ thỏa mãn.
+Vậy $x^4-6x^3+12x^2-14x+3=(x^2-2x+3)(x^2-4x+1)$.
+$x^4-6x^3+12x^2-14x+3=0\Leftrightarrow(x^2-2x+3)(x^2-4x+1)=0$
+Vì $x^2-2x+3=(x-1)^2+2>0$ nên $x^2-4x+1=0$
+$\Leftrightarrow(x-2)^2=3$
+$\Leftrightarrow x=2+\sqrt3$ hoặc $x=2-\sqrt3$
+Vậy $S=\{2+\sqrt3;2-\sqrt3\}$.
+
+##VD
+Giải phương trình: $x^4+x^3+7x-3=0$.
+
+Bài giải:
+Nghiệm hữu tỉ nếu có phải là ước của $-3$, nhưng giá trị của vế trái tại $x=1,-1,3,-3$ lần lượt là $6,-10,126,30$, đều khác $0$. Do đó dùng hệ số bất định.
+Giả sử $x^4+x^3+7x-3=(x^2+ax+b)(x^2+cx+d)$ (hệ số của $x^2$ bằng $0$).
+Đồng nhất hệ số: $\begin{cases}a+c=1\\b+d+ac=0\\ad+bc=7\\bd=-3\end{cases}$
+Thử $b=-1$, $d=3$: $ac=0-(-1)-3=-2$ và $c=1-a$ nên $a(1-a)=-2$, tức $a^2-a-2=0$, hay $(a-2)(a+1)=0$.
+Với $a=2$, $c=-1$: $ad+bc=2\cdot3+(-1)\cdot(-1)=7$ thỏa mãn.
+Vậy $x^4+x^3+7x-3=(x^2+2x-1)(x^2-x+3)$.
+$x^4+x^3+7x-3=0\Leftrightarrow(x^2+2x-1)(x^2-x+3)=0$
+Vì $x^2-x+3=\left(x-\dfrac12\right)^2+\dfrac{11}4>0$ nên $x^2+2x-1=0$
+$\Leftrightarrow(x+1)^2=2$
+$\Leftrightarrow x=-1+\sqrt2$ hoặc $x=-1-\sqrt2$
+Vậy $S=\{-1+\sqrt2;-1-\sqrt2\}$.
+
+#DANG NDB03261
+@LT
+##TC Các cách chỉ ra vế trái luôn dương
+- Viết $P(x)=Q(x)^2+k$ với $k>0$, khi đó $P(x)\ge k>0$.
+- Hoàn thành bình phương cho tam thức bậc hai: $x^2+px+q=\left(x+\dfrac p2\right)^2+\left(q-\dfrac{p^2}4\right)$.
+- Xét các khoảng của $x$ (như $x<0$, $0\le x\le1$, $x>1$) và chỉ ra trong mỗi khoảng $P(x)$ là tổng các số hạng không âm, trong đó có số hạng dương.
+- Nhân hai vế với $x-1$ để dùng $(x-1)(x^{n-1}+\dots+x+1)=x^n-1$, rồi thử lại nghiệm vào phương trình ban đầu.
+
+##PP Chứng minh phương trình bậc cao vô nghiệm
+Đưa phương trình về dạng $P(x)=0$
+Tìm đa thức $Q(x)$ sao cho $Q(x)^2$ trùng với các hạng tử bậc cao của $P(x)$, rồi viết $P(x)=Q(x)^2+R(x)$ với $R(x)$ luôn dương
+Nếu không được, chia các khoảng của $x$ và đánh giá từng khoảng
+Chỉ ra $P(x)>0$ với mọi $x$ rồi kết luận phương trình vô nghiệm
+
+##CY
+Nhân hai vế với $x-1$ có thể thêm nghiệm $x=1$, nên phải thử lại $x=1$ vào phương trình ban đầu. Chứng minh $P(x)>0$ với mọi $x$ là đủ, không cần giải phương trình.
+
+@VD
+##VD
+Chứng minh phương trình $x^4-2x^3+3x^2-2x+2=0$ vô nghiệm.
+
+Bài giải:
+Ta có $(x^2-x+1)^2=x^4+x^2+1-2x^3+2x^2-2x=x^4-2x^3+3x^2-2x+1$.
+Do đó $x^4-2x^3+3x^2-2x+2=(x^2-x+1)^2+1$.
+Vì $(x^2-x+1)^2\ge0$ với mọi $x$ nên $(x^2-x+1)^2+1\ge1>0$ với mọi $x$.
+Vậy phương trình vô nghiệm, $S=\varnothing$.
+
+##VD
+Chứng minh phương trình $x^8-x^5+x^2-x+1=0$ vô nghiệm.
+
+Bài giải:
+Đặt $P(x)=x^8-x^5+x^2-x+1$. Xét ba khoảng của $x$.
+Nếu $x<0$ thì $x^8>0$, $-x^5>0$, $x^2>0$, $-x>0$ và $1>0$, nên $P(x)>0$.
+Nếu $0\le x\le1$ thì $P(x)=x^8+x^2(1-x^3)+(1-x)$ với $x^8\ge0$, $x^2(1-x^3)\ge0$ (vì $x^3\le1$) và $1-x\ge0$. Ba số hạng không đồng thời bằng $0$ (nếu $x^8=0$ thì $x=0$ và $1-x=1>0$), nên $P(x)>0$.
+Nếu $x>1$ thì $P(x)=x^5(x^3-1)+x(x-1)+1$ với $x^5(x^3-1)>0$, $x(x-1)>0$ và $1>0$, nên $P(x)>0$.
+Vậy $P(x)>0$ với mọi $x$, phương trình vô nghiệm, $S=\varnothing$.

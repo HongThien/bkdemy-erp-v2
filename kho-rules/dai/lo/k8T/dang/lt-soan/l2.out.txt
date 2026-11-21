@@ -1,0 +1,444 @@
+#NHOM NNB01384
+@LT
+##TC Hằng đẳng thức thường dùng khi có điều kiện
+- $(a+b)^2=a^2+b^2+2ab$; $(a-b)^2=a^2+b^2-2ab$.
+- $(a+b)^3=a^3+b^3+3ab(a+b)$, suy ra $a^3+b^3=(a+b)^3-3ab(a+b)$.
+- $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$.
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.
+
+##TC Ba cách dùng điều kiện
+- Điều kiện đủ mạnh (tổng các số không âm bằng $0$, hệ nhiều phương trình): giải ra giá trị từng biến rồi thay vào biểu thức.
+- Điều kiện chỉ cho tổng, tích hoặc một quan hệ giữa các biến: không giải từng biến mà biểu diễn biểu thức qua các đại lượng đó (hằng đẳng thức, thế một biến theo các biến còn lại).
+- Điều kiện là đẳng thức của các phân thức hay tỉ số: đặt giá trị chung bằng $k$, hoặc quy đồng rồi phân tích thành nhân tử.
+
+##PP Tính giá trị biểu thức có điều kiện
+Tìm điều kiện để biểu thức và điều kiện có nghĩa
+Biến đổi điều kiện (chuyển vế, phân tích nhân tử, bình phương, đặt $k$) để có quan hệ đơn giản nhất giữa các biến
+Biến đổi biểu thức cần tính về dạng chỉ chứa những đại lượng có trong quan hệ vừa thu được
+Thay vào, rút gọn và kết luận
+
+##CY
+- Chỉ chia hai vế hay giản ước cho một biểu thức khi biết nó khác $0$; chưa chắc thì phải xét riêng trường hợp bằng $0$.
+- Nếu điều kiện cho nhiều trường hợp thì phải tính biểu thức ở từng trường hợp rồi kết luận; dùng các điều kiện phụ của đề (dấu, thứ tự, khác nhau) để loại trường hợp không thỏa.
+
+#DANG NDB02726
+@LT
+##TC Tổng các số không âm
+- $A^2\ge0$ và $\lvert A\rvert\ge0$ với mọi $A$; dấu "=" xảy ra khi $A=0$.
+- $A^2+B^2=0\Leftrightarrow A=B=0$; tương tự cho $A^2+\lvert B\rvert=0$ hoặc tổng ba bình phương bằng $0$.
+
+##TC Hằng đẳng thức cho hệ có tổng lũy thừa
+- $(x+y+z)^3=x^3+y^3+z^3+3(x+y)(y+z)(z+x)$.
+
+##PP Điều kiện cho ra giá trị từng biến
+Chuyển mọi hạng tử về một vế, vế còn lại bằng $0$
+Ghép vế trái thành tổng các bình phương (hoặc bình phương cộng giá trị tuyệt đối); với hệ phương trình thì dùng hằng đẳng thức để tạo ra một tích bằng $0$
+Cho từng số hạng không âm bằng $0$ (hoặc xét từng trường hợp của tích bằng $0$) rồi giải ra giá trị từng biến
+Thay vào biểu thức, nhớ kiểm tra mẫu khác $0$
+
+##CY
+Khi một tích bằng $0$ phải xét đủ mọi trường hợp, tính biểu thức ở từng trường hợp rồi mới kết luận.
+
+@VD
+##VD
+Tính giá trị của biểu thức $M=\dfrac{(x+5)(y+1)}{x(x-5)}$, biết $x^2+9y^2=6xy-\lvert x-3\rvert$.
+
+Bài giải:
+$x^2+9y^2=6xy-\lvert x-3\rvert\Leftrightarrow x^2-6xy+9y^2+\lvert x-3\rvert=0$
+$\Leftrightarrow(x-3y)^2+\lvert x-3\rvert=0$
+Vì $(x-3y)^2\ge0$ và $\lvert x-3\rvert\ge0$ nên tổng bằng $0$ khi và chỉ khi $x-3y=0$ và $x-3=0$.
+Suy ra $x=3$ và $y=1$.
+Khi đó $x(x-5)=3\cdot(-2)=-6\ne0$ nên $M$ xác định, và $M=\dfrac{(3+5)(1+1)}{3\cdot(3-5)}=\dfrac{16}{-6}=-\dfrac83$.
+Vậy $M=-\dfrac83$.
+
+##VD
+Cho các số $x,y,z$ thỏa mãn $\begin{cases}x+y+z=1\\x^2+y^2+z^2=1\\x^3+y^3+z^3=1\end{cases}$. Tính giá trị của $Q=x^4+y^5+z^6$.
+
+Bài giải:
+Áp dụng hằng đẳng thức $(x+y+z)^3=x^3+y^3+z^3+3(x+y)(y+z)(z+x)$ với các giá trị đã cho: $1=1+3(x+y)(y+z)(z+x)$.
+Suy ra $(x+y)(y+z)(z+x)=0$, nên $x+y=0$ hoặc $y+z=0$ hoặc $z+x=0$.
+Trường hợp $x+y=0$: từ $x+y+z=1$ có $z=1$; từ $x^2+y^2+z^2=1$ có $x^2+y^2=0$ nên $x=y=0$. Khi đó $Q=0^4+0^5+1^6=1$.
+Trường hợp $y+z=0$: tương tự $x=1$, $y=z=0$, nên $Q=1^4+0^5+0^6=1$.
+Trường hợp $z+x=0$: tương tự $y=1$, $x=z=0$, nên $Q=0^4+1^5+0^6=1$.
+Vậy trong mọi trường hợp $Q=1$.
+
+#DANG NDB03202
+@LT
+##TC Biểu diễn qua tổng và tích
+Đặt $S=x+y$ và $P=xy$. Khi đó:
+- $x^2+y^2=S^2-2P$; $x^3+y^3=S^3-3PS$; $x^4+y^4=(x^2+y^2)^2-2P^2$.
+- Truy hồi: $x^{n+1}+y^{n+1}=S\,(x^n+y^n)-P\,(x^{n-1}+y^{n-1})$.
+- Với $x\ne0$ và $k=x+\dfrac1x$: $x^2+\dfrac1{x^2}=k^2-2$; $x^3+\dfrac1{x^3}=k^3-3k$.
+
+##PP Tính biểu thức đối xứng khi biết tổng và tích
+Ghi các đại lượng đã biết (tổng, tích hoặc $x+\dfrac1x$) và không cố giải ra từng biến
+Tính lần lượt các lũy thừa bậc $2,3,4,\dots$ bằng bình phương, lập phương hoặc truy hồi; muốn có bậc $5$ thì nhân hai tổng đã biết rồi trừ phần dư
+Với biểu thức nhiều phân thức: quy đồng, nhân tử hóa tử và mẫu, dùng tích đã cho để thay các lũy thừa của mẫu rồi rút gọn
+Thay số và kết luận
+
+##CY
+Phải kiểm tra điều kiện có nghĩa (các mẫu như $x$, $y$, $a+b$ khác $0$) trước khi giản ước.
+
+@VD
+##VD
+Cho $x+\dfrac1x=3$. Tính giá trị của các biểu thức:
+a) $A=x^2+\dfrac1{x^2}$;
+b) $B=x^3+\dfrac1{x^3}$;
+c) $C=x^4+\dfrac1{x^4}$;
+d) $D=x^5+\dfrac1{x^5}$.
+
+Bài giải:
+a) $A=\left(x+\dfrac1x\right)^2-2=3^2-2=7$.
+
+b) $B=\left(x+\dfrac1x\right)^3-3\left(x+\dfrac1x\right)=27-9=18$.
+
+c) $C=\left(x^2+\dfrac1{x^2}\right)^2-2=7^2-2=47$.
+
+d) $A\cdot B=\left(x^2+\dfrac1{x^2}\right)\left(x^3+\dfrac1{x^3}\right)=x^5+\dfrac1x+x+\dfrac1{x^5}=D+\left(x+\dfrac1x\right)=D+3$.
+Suy ra $D=7\cdot18-3=123$.
+Vậy $A=7$, $B=18$, $C=47$, $D=123$.
+
+##VD
+Cho hai số thực $a,b$ thỏa mãn $ab=1$ và $a+b\ne0$. Tính giá trị của biểu thức
+$P=\dfrac1{(a+b)^3}\left(\dfrac1{a^3}+\dfrac1{b^3}\right)+\dfrac3{(a+b)^4}\left(\dfrac1{a^2}+\dfrac1{b^2}\right)+\dfrac6{(a+b)^5}\left(\dfrac1a+\dfrac1b\right)$.
+
+Bài giải:
+Vì $ab=1$ nên $a,b\ne0$ và $\dfrac1{a^3}+\dfrac1{b^3}=\dfrac{a^3+b^3}{(ab)^3}=a^3+b^3$, $\dfrac1{a^2}+\dfrac1{b^2}=a^2+b^2$, $\dfrac1a+\dfrac1b=\dfrac{a+b}{ab}=a+b$.
+Đặt $s=a+b\ne0$ và $q=a^2+b^2$. Khi đó $s^2=q+2ab=q+2$ và $a^3+b^3=(a+b)(a^2-ab+b^2)=s(q-1)$.
+$P=\dfrac{s(q-1)}{s^3}+\dfrac{3q}{s^4}+\dfrac{6s}{s^5}=\dfrac{q-1}{s^2}+\dfrac{3q+6}{s^4}$
+$=\dfrac{q-1}{s^2}+\dfrac{3(q+2)}{s^4}=\dfrac{q-1}{s^2}+\dfrac3{s^2}$ (vì $q+2=s^2$)
+$=\dfrac{q+2}{s^2}=1$.
+Vậy $P=1$.
+
+#DANG NDB03203
+@LT
+##TC Phân tích tam thức đồng bậc
+- $a^2-(p+q)ab+pq\,b^2=(a-pb)(a-qb)$.
+- Điều kiện dạng $ma^2+nb^2=kab$ chuyển vế thành $ma^2-kab+nb^2=0$, tách hạng tử $-kab$ thành hai hạng tử để nhóm thành tích hai nhị thức.
+
+##PP Điều kiện đồng bậc giữa hai biến
+Chuyển vế rồi tách hạng tử ở giữa để phân tích vế trái thành tích hai nhị thức bằng $0$
+Cho từng nhân tử bằng $0$, mỗi nhân tử cho một quan hệ tỉ lệ giữa $a$ và $b$
+Dùng điều kiện dấu hoặc thứ tự của đề để chứng tỏ một nhân tử khác $0$ và loại quan hệ không thỏa
+Thay quan hệ còn lại vào biểu thức; biểu thức cùng bậc nên thừa số $a$ (hoặc $b$) giản ước được
+
+##CY
+- Biểu thức cần tính cùng bậc nên giá trị chỉ phụ thuộc vào tỉ số $a:b$.
+- Nếu đề không có điều kiện để loại thì phải kết luận đủ mọi giá trị ứng với các nhân tử; nhớ kiểm tra mẫu khác $0$.
+
+@VD
+##VD
+Tính giá trị của $\dfrac{a+b}{a-b}$ nếu $2a^2+2b^2=5ab$ và $b>a>0$.
+
+Bài giải:
+$2a^2+2b^2=5ab\Leftrightarrow2a^2-5ab+2b^2=0$
+$\Leftrightarrow2a^2-4ab-ab+2b^2=0$
+$\Leftrightarrow2a(a-2b)-b(a-2b)=0$
+$\Leftrightarrow(a-2b)(2a-b)=0$.
+Vì $b>a>0$ nên $2b>a$, do đó $a-2b\ne0$.
+Suy ra $2a-b=0$, tức $b=2a$ (thỏa $b>a>0$).
+Khi đó $a-b=-a\ne0$ và $\dfrac{a+b}{a-b}=\dfrac{a+2a}{a-2a}=\dfrac{3a}{-a}=-3$.
+Vậy $\dfrac{a+b}{a-b}=-3$.
+
+##VD
+Cho $4a^2+b^2=5ab$ với $2a>b>0$. Tính giá trị của phân thức $P=\dfrac{ab}{4a^2-b^2}$.
+
+Bài giải:
+$4a^2+b^2=5ab\Leftrightarrow4a^2-4ab-ab+b^2=0$
+$\Leftrightarrow4a(a-b)-b(a-b)=0$
+$\Leftrightarrow(a-b)(4a-b)=0$.
+Vì $2a>b>0$ nên $4a>2b>b$, do đó $4a-b>0$.
+Suy ra $a-b=0$, tức $a=b>0$.
+Khi đó $4a^2-b^2=3a^2\ne0$ nên $P$ xác định và $P=\dfrac{a^2}{4a^2-a^2}=\dfrac{a^2}{3a^2}=\dfrac13$.
+Vậy $P=\dfrac13$.
+
+#DANG NDB03204
+@LT
+##ĐL Hằng đẳng thức khi tổng ba số bằng 0
+Nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$ (suy từ $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$).
+
+##TC Hệ quả của a+b+c=0
+- $a+b=-c$, $b+c=-a$, $c+a=-b$: dùng để thế vào biểu thức.
+- Bình phương điều kiện: $ab+bc+ca=-\dfrac{a^2+b^2+c^2}2$.
+- $(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2+2abc(a+b+c)=a^2b^2+b^2c^2+c^2a^2$.
+- $a^4+b^4+c^4=\dfrac{(a^2+b^2+c^2)^2}2$.
+- Với $a,b,c\ne0$: $\dfrac1a+\dfrac1b+\dfrac1c=0\Leftrightarrow ab+bc+ca=0$.
+
+##PP Biểu thức có điều kiện tổng bằng 0
+Xác định điều kiện cho trước thuộc loại nào ($a+b+c=0$, $ab+bc+ca=0$ hay tổng nghịch đảo bằng $0$) và đưa về dạng tổng hoặc tích cần dùng
+Cách 1: nhóm các hạng tử của biểu thức để lộ $a+c$, $b+c$, $a+b$ rồi thay bằng $-b$, $-a$, $-c$
+Cách 2: bình phương (hoặc lập phương) điều kiện để biểu diễn các đại lượng như $ab+bc+ca$, $a^3+b^3+c^3$ qua đại lượng đã biết
+Thay vào, rút gọn và kết luận
+
+##CY
+Phân thức chỉ có nghĩa khi mẫu khác $0$; khi giản ước cho $x^2+y^2+z^2$ phải nêu rõ nó khác $0$.
+
+@VD
+##VD
+Rút gọn $\dfrac{x^2+y^2+z^2}{(y-z)^2+(z-x)^2+(x-y)^2}$, biết rằng $x+y+z=0$ và $x,y,z$ không đồng thời bằng $0$.
+
+Bài giải:
+Từ $x+y+z=0$ suy ra $(x+y+z)^2=0$, tức $x^2+y^2+z^2+2(xy+yz+zx)=0$.
+Do đó $xy+yz+zx=-\dfrac{x^2+y^2+z^2}2$.
+Mẫu số: $(y-z)^2+(z-x)^2+(x-y)^2=2(x^2+y^2+z^2)-2(xy+yz+zx)$
+$=2(x^2+y^2+z^2)+(x^2+y^2+z^2)$
+$=3(x^2+y^2+z^2)$.
+Vì $x,y,z$ không đồng thời bằng $0$ nên $x^2+y^2+z^2>0$, và biểu thức bằng $\dfrac{x^2+y^2+z^2}{3(x^2+y^2+z^2)}=\dfrac13$.
+Vậy giá trị của biểu thức là $\dfrac13$.
+
+##VD
+Cho ba số $a,b,c$ thỏa mãn $a+b+c=0$ và $a^2+b^2+c^2=2016$. Tính $A=a^4+b^4+c^4$.
+
+Bài giải:
+Từ $a+b+c=0$ suy ra $(a+b+c)^2=0$, tức $a^2+b^2+c^2+2(ab+bc+ca)=0$.
+Thay $a^2+b^2+c^2=2016$ được $ab+bc+ca=-1008$.
+Ta có $(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2+2abc(a+b+c)$.
+Vì $a+b+c=0$ nên $a^2b^2+b^2c^2+c^2a^2=(-1008)^2=1008^2$.
+Mặt khác $(a^2+b^2+c^2)^2=a^4+b^4+c^4+2(a^2b^2+b^2c^2+c^2a^2)$.
+Suy ra $a^4+b^4+c^4=2016^2-2\cdot1008^2=4\cdot1008^2-2\cdot1008^2=2\cdot1008^2=2032128$.
+Vậy $A=2032128$.
+
+#DANG NDB03205
+@LT
+##ĐL Tính chất dãy tỉ số bằng nhau
+Nếu $\dfrac ab=\dfrac cd=\dfrac ef$ và $b+d+f\ne0$ thì mỗi tỉ số đó bằng $\dfrac{a+c+e}{b+d+f}$. Nếu $b+d+f=0$ thì $a+c+e=0$ (vì mỗi tử bằng tỉ số chung nhân với mẫu của nó).
+
+##PP Điều kiện là dãy tỉ số bằng nhau
+Với dãy $\dfrac xa=\dfrac yb=\dfrac zc$: đặt giá trị chung bằng $k$, viết $x=ka$, $y=kb$, $z=kc$ rồi thay vào biểu thức
+Với dãy có tử là tổng (như $\dfrac{a+b}c=\dfrac{b+c}a=\dfrac{c+a}b$): xét riêng trường hợp $a+b+c\ne0$ (dùng tính chất dãy tỉ số bằng nhau) và trường hợp $a+b+c=0$
+Dùng điều kiện phụ của đề (khác nhau, khác $0$) để loại trường hợp mâu thuẫn
+Rút gọn thừa số chung của tử và mẫu rồi kết luận
+
+##CY
+Tính chất dãy tỉ số bằng nhau chỉ dùng được khi tổng các mẫu khác $0$; bỏ sót trường hợp tổng bằng $0$ là sai lầm thường gặp.
+
+@VD
+##VD
+Cho $\dfrac xa=\dfrac yb=\dfrac zc\ne0$ (với $a,b,c\ne0$). Rút gọn biểu thức $\dfrac{(x^2+y^2+z^2)(a^2+b^2+c^2)}{(ax+by+cz)^2}$.
+
+Bài giải:
+Vì $a,b,c\ne0$ nên $a^2+b^2+c^2>0$.
+Đặt $\dfrac xa=\dfrac yb=\dfrac zc=k\ne0$, thì $x=ak$, $y=bk$, $z=ck$.
+Tử số: $(x^2+y^2+z^2)(a^2+b^2+c^2)=k^2(a^2+b^2+c^2)(a^2+b^2+c^2)=k^2(a^2+b^2+c^2)^2$.
+Mẫu số: $(ax+by+cz)^2=\left[k(a^2+b^2+c^2)\right]^2=k^2(a^2+b^2+c^2)^2\ne0$.
+Do đó biểu thức xác định và bằng $\dfrac{k^2(a^2+b^2+c^2)^2}{k^2(a^2+b^2+c^2)^2}=1$.
+Vậy biểu thức bằng $1$.
+
+##VD
+Cho các số $a,b,c$ khác $0$, khác nhau đôi một và $\dfrac{a+b}c=\dfrac{b+c}a=\dfrac{c+a}b$. Tính giá trị của biểu thức $M=\left(1+\dfrac ab\right)\left(1+\dfrac bc\right)\left(1+\dfrac ca\right)$.
+
+Bài giải:
+Giả sử $a+b+c\ne0$. Theo tính chất dãy tỉ số bằng nhau:
+$\dfrac{a+b}c=\dfrac{b+c}a=\dfrac{c+a}b=\dfrac{2(a+b+c)}{a+b+c}=2$.
+Suy ra $a+b=2c$ và $b+c=2a$; trừ vế theo vế: $a-c=2c-2a$, nên $3(a-c)=0$, tức $a=c$. Điều này trái với đề bài ($a,b,c$ khác nhau đôi một).
+Vậy $a+b+c=0$, suy ra $a+b=-c$, $b+c=-a$, $c+a=-b$.
+$M=\dfrac{a+b}b\cdot\dfrac{b+c}c\cdot\dfrac{c+a}a=\dfrac{-c}b\cdot\dfrac{-a}c\cdot\dfrac{-b}a=-\dfrac{abc}{abc}=-1$.
+Vậy $M=-1$.
+
+#DANG NDB03206
+@LT
+##TC Hoán vị vòng quanh
+- Ba hạng tử của biểu thức nhận được từ nhau khi thay $a\to b\to c\to a$; chỉ cần tính kỹ một hạng tử rồi viết hai hạng tử còn lại bằng hoán vị.
+- Mẫu chung $(a-b)(b-c)(c-a)$ giữ nguyên khi hoán vị vòng nên các tử cộng thẳng với nhau được.
+- Tách phân thức: $\dfrac{u+v}{uv}=\dfrac1u+\dfrac1v$; đổi dấu mẫu: $\dfrac1{-u}=-\dfrac1u$.
+
+##PP Biểu thức hoán vị vòng với điều kiện
+Gọi tên tổng đã cho và tổng cần tính; so sánh mẫu và tử của hai tổng để biết chúng khác nhau ở chỗ nào
+Chọn một trong các cách: lấy hiệu hai tổng nếu cùng mẫu; chia hai vế của điều kiện cho mẫu rồi quy đồng; tách tử theo hai nhân tử của mẫu
+Làm kỹ một hạng tử, hoán vị vòng ra hai hạng tử còn lại
+Cộng ba kết quả, thấy các hạng tử triệt tiêu hoặc gộp lại, rồi dùng điều kiện để tính
+
+##CY
+Các biến phải đôi một khác nhau và các mẫu phải khác $0$ để biểu thức có nghĩa; nhớ nêu điều này trước khi biến đổi.
+
+@VD
+##VD
+Cho biết $\dfrac{x^2}{x+y}+\dfrac{y^2}{y+z}+\dfrac{z^2}{z+x}=2009$ (các mẫu khác $0$). Tính $\dfrac{y^2}{x+y}+\dfrac{z^2}{y+z}+\dfrac{x^2}{z+x}$.
+
+Bài giải:
+Đặt $A=\dfrac{x^2}{x+y}+\dfrac{y^2}{y+z}+\dfrac{z^2}{z+x}=2009$ và $B=\dfrac{y^2}{x+y}+\dfrac{z^2}{y+z}+\dfrac{x^2}{z+x}$.
+$A-B=\dfrac{x^2-y^2}{x+y}+\dfrac{y^2-z^2}{y+z}+\dfrac{z^2-x^2}{z+x}$
+$=\dfrac{(x-y)(x+y)}{x+y}+\dfrac{(y-z)(y+z)}{y+z}+\dfrac{(z-x)(z+x)}{z+x}$
+$=(x-y)+(y-z)+(z-x)=0$.
+Suy ra $B=A=2009$.
+Vậy $\dfrac{y^2}{x+y}+\dfrac{z^2}{y+z}+\dfrac{x^2}{z+x}=2009$.
+
+##VD
+Cho $a,b,c$ đôi một khác nhau thỏa mãn $\dfrac a{b-c}+\dfrac b{c-a}+\dfrac c{a-b}=0$. Tính giá trị của $M=\dfrac a{(b-c)^2}+\dfrac b{(c-a)^2}+\dfrac c{(a-b)^2}$.
+
+Bài giải:
+Từ điều kiện suy ra $\dfrac a{b-c}=-\dfrac b{c-a}-\dfrac c{a-b}$.
+Chia hai vế cho $b-c\ne0$: $\dfrac a{(b-c)^2}=-\dfrac b{(c-a)(b-c)}-\dfrac c{(a-b)(b-c)}$
+$=\dfrac{-b(a-b)-c(c-a)}{(a-b)(b-c)(c-a)}$
+$=\dfrac{-ab+b^2-c^2+ca}{(a-b)(b-c)(c-a)}$.
+Hoán vị vòng $a\to b\to c\to a$ (mẫu chung không đổi): $\dfrac b{(c-a)^2}=\dfrac{-bc+c^2-a^2+ab}{(a-b)(b-c)(c-a)}$ và $\dfrac c{(a-b)^2}=\dfrac{-ca+a^2-b^2+bc}{(a-b)(b-c)(c-a)}$.
+Cộng ba đẳng thức: $M=\dfrac{(-ab+b^2-c^2+ca)+(-bc+c^2-a^2+ab)+(-ca+a^2-b^2+bc)}{(a-b)(b-c)(c-a)}$
+$=\dfrac0{(a-b)(b-c)(c-a)}=0$.
+Vậy $M=0$.
+
+#NHOM NNB01451
+@LT
+##TC Bình phương và hoàn thiện bình phương
+- $A^2\ge0$ với mọi $A$; dấu "=" xảy ra khi $A=0$.
+- $x^2+px+q=\left(x+\dfrac p2\right)^2+q-\dfrac{p^2}4$ (lấy một nửa hệ số của $x$).
+- Hệ số đầu khác $1$: đặt hệ số ra ngoài trước, $ax^2+bx+c=a\left(x+\dfrac b{2a}\right)^2+c-\dfrac{b^2}{4a}$.
+
+##TC Đa thức nhiều biến
+- $(x\pm y)^2=x^2\pm2xy+y^2$; có thể tách $2x^2=x^2+x^2$ để ghép các bình phương khác nhau.
+- Tổng các bình phương: $A^2+B^2\ge0$; $A^2+B^2=0\Leftrightarrow A=B=0$.
+
+##CY
+Sau khi ghép xong nên khai triển lại các bình phương để chắc chắn không sót hay sai hạng tử nào.
+
+#DANG NDB02729
+@LT
+##TC Tổng các bình phương bằng 0
+$A^2+B^2+C^2=0\Leftrightarrow A=B=C=0$; tương tự cho hai bình phương hoặc cho một tổng các số hạng dạng $m\cdot A^2$ với $m>0$.
+
+##PP Tìm ẩn từ đẳng thức tổng bình phương
+Chuyển mọi hạng tử về một vế, vế còn lại bằng $0$
+Nhận dạng các tích $2xy$, các số hạng bậc nhất và hằng số để chọn các bình phương cần ghép; tách hạng tử như $2x^2=x^2+x^2$ hoặc $4=2+2$ khi cần
+Viết vế trái thành tổng các bình phương và kiểm tra lại bằng khai triển
+Cho từng bình phương bằng $0$, giải hệ các phương trình bậc nhất thu được để tìm các ẩn
+
+##CY
+Chỉ kết luận "mỗi bình phương bằng $0$" khi vế còn lại đúng bằng $0$ và các số hạng đều không âm; với phương trình có ẩn ở mẫu nhớ nêu điều kiện xác định.
+
+@VD
+##VD
+Tìm $x,y,z$ biết $2(x^2+y^2)+z^2=-2xy+2yz-4x-4$.
+
+Bài giải:
+$2(x^2+y^2)+z^2=-2xy+2yz-4x-4$
+$\Leftrightarrow2x^2+2y^2+z^2+2xy-2yz+4x+4=0$
+$\Leftrightarrow(x^2+2xy+y^2)+(x^2+4x+4)+(y^2-2yz+z^2)=0$
+$\Leftrightarrow(x+y)^2+(x+2)^2+(y-z)^2=0$.
+Vì ba bình phương đều không âm nên $x+y=0$, $x+2=0$ và $y-z=0$.
+Suy ra $x=-2$, $y=2$, $z=2$.
+Vậy $(x;y;z)=(-2;2;2)$.
+
+##VD
+Tìm $x,y$ biết $x^2+y^2+\dfrac1{x^2}+\dfrac1{y^2}=4$.
+
+Bài giải:
+Điều kiện $x\ne0$, $y\ne0$.
+Viết $4=2+2$ rồi chuyển vế:
+$x^2+y^2+\dfrac1{x^2}+\dfrac1{y^2}=4\Leftrightarrow\left(x^2-2+\dfrac1{x^2}\right)+\left(y^2-2+\dfrac1{y^2}\right)=0$
+$\Leftrightarrow\left(x-\dfrac1x\right)^2+\left(y-\dfrac1y\right)^2=0$.
+Tổng hai bình phương bằng $0$ nên $x-\dfrac1x=0$ và $y-\dfrac1y=0$, tức $x^2=1$ và $y^2=1$.
+Suy ra $x\in\{1;-1\}$ và $y\in\{1;-1\}$ (thỏa điều kiện).
+Vậy $(x;y)\in\{(1;1);(1;-1);(-1;1);(-1;-1)\}$.
+
+#DANG NDB03224
+@LT
+##TC Hoàn thiện bình phương để xét dấu
+- Biểu thức dạng $(\dots)^2+k$ với $k>0$ thì luôn dương; dạng $-(\dots)^2-k$ với $k>0$ thì luôn âm.
+- Nếu hệ số của $x^2$ âm thì đặt dấu trừ làm nhân tử chung để tam thức trong ngoặc có hệ số đầu dương.
+
+##PP Chứng minh biểu thức luôn dương (luôn âm)
+Đưa biểu thức về dạng có hệ số đầu dương (đặt dấu trừ ra ngoài nếu cần)
+Lấy một nửa hệ số của biến để tách hằng số, viết thành bình phương cộng số dương (với nhiều biến thì ghép thành tổng các bình phương cộng số dương)
+Dùng bình phương không âm để chặn biểu thức bởi một số dương (hoặc âm) cụ thể
+Kết luận với mọi giá trị của biến
+
+##CY
+Phần dư phải là số dương thật sự; nếu phần dư bằng $0$ thì biểu thức chỉ không âm (có thể bằng $0$), chưa đủ để kết luận luôn dương.
+
+@VD
+##VD
+Chứng minh rằng các biểu thức sau âm với mọi $x$: $C=-x^2+2x-5$ và $D=-x^2+x-1$.
+
+Bài giải:
+$C=-x^2+2x-5=-(x^2-2x+5)=-\left[(x-1)^2+4\right]$.
+Vì $(x-1)^2+4\ge4>0$ nên $C\le-4<0$ với mọi $x$.
+$D=-x^2+x-1=-(x^2-x+1)=-\left[\left(x-\dfrac12\right)^2+\dfrac34\right]$.
+Vì $\left(x-\dfrac12\right)^2+\dfrac34\ge\dfrac34>0$ nên $D\le-\dfrac34<0$ với mọi $x$.
+Vậy $C$ và $D$ đều âm với mọi $x$.
+
+##VD
+Chứng minh rằng biểu thức $P=x^2-2xy+2y^2+2y+3$ dương với mọi số thực $x,y$.
+
+Bài giải:
+Ghép các hạng tử: $x^2-2xy$ cần $y^2$ để thành $(x-y)^2$, còn $y^2+2y$ cần $1$ để thành $(y+1)^2$.
+$P=(x^2-2xy+y^2)+(y^2+2y+1)+2$
+$=(x-y)^2+(y+1)^2+2$.
+Vì $(x-y)^2\ge0$ và $(y+1)^2\ge0$ nên $P\ge2>0$ với mọi $x,y$.
+Vậy $P$ dương với mọi số thực $x,y$.
+
+#DANG NDB03225
+@LT
+##ĐL Cách tìm GTNN, GTLN bằng hoàn thiện bình phương
+Nếu biểu thức viết được $f=(\dots)^2+k$ thì $f\ge k$ với mọi giá trị của biến, và $\min f=k$ khi bình phương bằng $0$. Nếu $f=k-(\dots)^2$ thì $f\le k$, và $\max f=k$ khi bình phương bằng $0$.
+
+##PP Tìm GTNN, GTLN của tam thức hoặc đa thức
+Nếu hệ số đầu khác $1$ thì đặt hệ số ra ngoài (hệ số âm cho GTLN)
+Viết biểu thức thành bình phương cộng hằng số; với nhiều biến thì ghép thành tổng các bình phương cộng hằng số, có thể nhân hai vế với hệ số thích hợp để tránh phân số
+Suy ra bất đẳng thức đúng với mọi giá trị của biến
+Giải điều kiện bình phương bằng $0$ để chỉ ra giá trị của biến làm dấu "=" xảy ra rồi kết luận
+
+##CY
+Phải đủ hai điều kiện: bất đẳng thức đúng với mọi giá trị của biến và tồn tại giá trị của biến để dấu "=" xảy ra; thiếu điều kiện sau thì chỉ có một cận chứ chưa phải GTNN hay GTLN.
+
+@VD
+##VD
+Tìm giá trị nhỏ nhất của $A=2x^2-8x+15$ và giá trị lớn nhất của $B=5-4x-x^2$.
+
+Bài giải:
+$A=2(x^2-4x+4)+7=2(x-2)^2+7$.
+Với mọi $x$ có $(x-2)^2\ge0$ nên $A\ge7$. Dấu "=" xảy ra khi $x=2$.
+Vậy $\min A=7$, đạt khi $x=2$.
+
+$B=-(x^2+4x+4)+9=9-(x+2)^2$.
+Với mọi $x$ có $(x+2)^2\ge0$ nên $B\le9$. Dấu "=" xảy ra khi $x=-2$.
+Vậy $\max B=9$, đạt khi $x=-2$.
+
+##VD
+Tìm giá trị nhỏ nhất của $P=x^2+xy+y^2-3x-3y$.
+
+Bài giải:
+Nhân hai vế với $4$ để tránh phân số: $4P=4x^2+4xy+4y^2-12x-12y$.
+Ghép $4x^2+4xy+y^2-12x-6y+9=(2x+y-3)^2$, phần còn lại của $4P$ là $3y^2-6y-9$:
+$4P=(2x+y-3)^2+3y^2-6y-9=(2x+y-3)^2+3(y-1)^2-12$.
+Với mọi $x,y$ có $(2x+y-3)^2\ge0$ và $(y-1)^2\ge0$ nên $4P\ge-12$, tức $P\ge-3$.
+Dấu "=" xảy ra khi $2x+y-3=0$ và $y-1=0$, tức $y=1$, $x=1$.
+Vậy $\min P=-3$, đạt khi $x=y=1$.
+
+#DANG NDB03226
+@LT
+##ĐL Các đồng nhất thức về tổng hai bình phương
+- $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$.
+- $2(a^2+b^2)=(a+b)^2+(a-b)^2$.
+- $a^2+b^2+(a+b)^2=2(a^2+ab+b^2)$.
+
+##PP Biểu diễn thành tổng các bình phương
+Khai triển vế cần biểu diễn (dùng bình phương một tổng, nhị thức Niu-tơn nếu có lũy thừa cao) để có một đa thức đã thu gọn
+Dự đoán biểu thức được bình phương rồi ghép các hạng tử, hoặc dùng đồng nhất thức ở trên; nếu có điều kiện giữa các biến (như $a+b=c+d$) thì thế để đưa về cùng dạng
+Khai triển lại các bình phương vừa ghép và so sánh hệ số với đa thức ban đầu
+Kết luận mọi giá trị của biến đều biểu diễn được; với giá trị số cụ thể thì thay vào để ra tổng các số chính phương
+
+##CY
+Một số có thể là tổng hai bình phương theo nhiều cách khác nhau, nên khi áp dụng đồng nhất thức vào số cụ thể cần thử lại bằng cách tính từng bình phương.
+
+@VD
+##VD
+Chứng minh rằng với mọi số thực $a,b,c,d$ thì $(a^2+b^2)(c^2+d^2)$ là tổng của hai bình phương. Áp dụng: viết $13\cdot25$ thành tổng hai số chính phương.
+
+Bài giải:
+Khai triển: $(a^2+b^2)(c^2+d^2)=a^2c^2+a^2d^2+b^2c^2+b^2d^2$.
+Ghép: $(ac+bd)^2=a^2c^2+2abcd+b^2d^2$ và $(ad-bc)^2=a^2d^2-2abcd+b^2c^2$.
+Cộng hai bình phương: $(ac+bd)^2+(ad-bc)^2=a^2c^2+a^2d^2+b^2c^2+b^2d^2$.
+Vậy $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$ với mọi $a,b,c,d$.
+Áp dụng: $13=2^2+3^2$ và $25=3^2+4^2$, nên lấy $a=2$, $b=3$, $c=3$, $d=4$:
+$13\cdot25=(2\cdot3+3\cdot4)^2+(2\cdot4-3\cdot3)^2=18^2+(-1)^2=324+1=325$.
+Vậy $13\cdot25=325=18^2+1^2$.
+
+##VD
+Chứng minh rằng với mọi số thực $a,b$, biểu thức $a^4+b^4+(a+b)^4$ là tổng của hai bình phương. Áp dụng với $a=1$, $b=2$.
+
+Bài giải:
+Dùng nhị thức Niu-tơn: $(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4$.
+Do đó $a^4+b^4+(a+b)^4=2a^4+4a^3b+6a^2b^2+4ab^3+2b^4=2\left(a^4+2a^3b+3a^2b^2+2ab^3+b^4\right)$.
+Mặt khác $(a^2+ab+b^2)^2=a^4+a^2b^2+b^4+2a^3b+2a^2b^2+2ab^3=a^4+2a^3b+3a^2b^2+2ab^3+b^4$.
+Suy ra $a^4+b^4+(a+b)^4=2(a^2+ab+b^2)^2=(a^2+ab+b^2)^2+(a^2+ab+b^2)^2$.
+Vậy biểu thức là tổng của hai bình phương, hai bình phương bằng nhau.
+Áp dụng $a=1$, $b=2$: $a^2+ab+b^2=1+2+4=7$ và $1^4+2^4+3^4=1+16+81=98=7^2+7^2$.

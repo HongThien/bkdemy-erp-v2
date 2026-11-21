@@ -1,0 +1,565 @@
+#NHOM NNB01472
+@LT
+##TC Điều kiện để kết luận giá trị lớn nhất, nhỏ nhất
+- Biểu thức $A$ có giá trị lớn nhất bằng $M$ khi và chỉ khi có đủ hai điều kiện: $A\le M$ với mọi giá trị của biến thuộc miền xác định, và tồn tại giá trị của biến để $A=M$.
+- Biểu thức $A$ có giá trị nhỏ nhất bằng $m$ khi và chỉ khi $A\ge m$ với mọi giá trị của biến thuộc miền xác định, và tồn tại giá trị của biến để $A=m$.
+
+##TC Các đánh giá cơ bản
+- $A^2\ge0$; $\lvert A\rvert\ge0$; $\lvert A\rvert=\lvert -A\rvert$.
+- $\lvert A\rvert\ge A$ (dấu "=" khi $A\ge0$) và $\lvert A\rvert\ge-A$ (dấu "=" khi $A\le0$).
+- $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$, dấu "=" xảy ra khi $AB\ge0$.
+
+##TC Chặn một phân thức
+- Với hai số dương: $a\ge m>0\Rightarrow\dfrac1a\le\dfrac1m$ (lấy nghịch đảo hai vế dương thì đổi chiều).
+- Nhân hai vế của một bất đẳng thức với số âm thì đổi chiều.
+- Tử là hằng số dương, mẫu luôn dương: mẫu nhỏ nhất thì phân thức lớn nhất, mẫu lớn nhất thì phân thức nhỏ nhất.
+
+##CY
+- Phân thức chỉ xét với các giá trị làm mẫu khác $0$; giá trị làm dấu "=" xảy ra phải thuộc tập xác định.
+- Kết luận "mẫu nhỏ nhất thì phân thức lớn nhất" chỉ đúng khi mẫu luôn dương và tử là hằng số dương; mẫu đổi dấu được thì phải xét riêng từng khoảng.
+
+#DANG NDB02751
+@LT
+##PP Phân thức tử hằng, mẫu là tam thức bậc hai
+Hoàn thành bình phương ở mẫu để viết mẫu dưới dạng $(\ldots)^2+h$ với $h>0$; nếu hệ số của $x^2$ âm thì đặt dấu trừ ra ngoài: mẫu $=-\left[(\ldots)^2+h\right]$
+Từ $(\ldots)^2\ge0$ chặn mẫu dương bởi $h$ (suy ra mẫu khác $0$ với mọi $x$), rồi lấy nghịch đảo hai số dương (đổi chiều) để chặn phân thức
+Nhân với tử $k$ và với dấu trừ ở mẫu (nếu có): nhân với số âm thì đổi chiều lần nữa
+Chỉ ra $x$ làm bình phương bằng $0$ và tính lại biểu thức để khẳng định cực trị đạt được
+
+##CY
+Tử $k>0$ và mẫu luôn dương: phân thức lớn nhất khi mẫu nhỏ nhất. Tử $k<0$ và mẫu luôn dương thì ngược lại: phân thức nhỏ nhất khi mẫu nhỏ nhất. Mẫu luôn âm thì đổi dấu cả tử lẫn mẫu trước khi chặn.
+
+@VD
+##VD
+Tìm giá trị lớn nhất của biểu thức $A=\dfrac{3}{4x^2-4x+5}$.
+
+Bài giải:
+Ta có $4x^2-4x+5=(2x-1)^2+4$.
+Vì $(2x-1)^2\ge0$ nên $4x^2-4x+5\ge4>0$ với mọi $x$, do đó $A$ xác định với mọi $x$.
+Lấy nghịch đảo hai số dương (đổi chiều): $\dfrac{1}{4x^2-4x+5}\le\dfrac14$.
+Nhân hai vế với $3>0$: $A\le\dfrac34$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $(2x-1)^2=0$, tức $x=\dfrac12$; khi đó mẫu bằng $4$ và $A=\dfrac34$. (2)
+Từ (1) và (2): $\max A=\dfrac34$, đạt khi $x=\dfrac12$.
+Vậy giá trị lớn nhất của $A$ bằng $\dfrac34$.
+
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $B=\dfrac{2}{6x-5-9x^2}$.
+
+Bài giải:
+Ta có $6x-5-9x^2=-\left(9x^2-6x+5\right)=-\left[(3x-1)^2+4\right]$.
+Vì $(3x-1)^2+4\ge4>0$ nên mẫu luôn khác $0$, $B$ xác định với mọi $x$ và $B=-\dfrac{2}{(3x-1)^2+4}$.
+Lấy nghịch đảo hai số dương (đổi chiều): $\dfrac{1}{(3x-1)^2+4}\le\dfrac14$.
+Nhân hai vế với $-2<0$ (đổi chiều): $B\ge-\dfrac24=-\dfrac12$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $(3x-1)^2=0$, tức $x=\dfrac13$; khi đó $B=\dfrac{2}{2-5-1}=-\dfrac12$. (2)
+Từ (1) và (2): $\min B=-\dfrac12$, đạt khi $x=\dfrac13$.
+Vậy giá trị nhỏ nhất của $B$ bằng $-\dfrac12$.
+
+#DANG NDB03301
+@LT
+##TC Đổi biến nghịch đảo
+Với $a$ cố định và $x\ne a$, số $y=\dfrac{1}{x-a}$ luôn khác $0$ và nhận mọi giá trị khác $0$; mỗi $y\ne0$ ứng với đúng một giá trị $x=a+\dfrac1y$.
+
+##PP Phân thức có mẫu là bình phương của một nhị thức
+Nêu điều kiện xác định: mẫu $(x-a)^2\ne0$, tức $x\ne a$
+Viết tử theo $t=x-a$ (thay $x=t+a$) rồi chia cả tử và mẫu cho $t^2$; biểu thức trở thành tam thức bậc hai theo $y=\dfrac1t$. Có thể tách tử thành (bội của mẫu) cộng (một bình phương) thì khỏi đặt ẩn
+Hoàn thành bình phương theo $y$: $A=(y-m)^2+C$, suy ra $A\ge C$ (hoặc chặn trên nếu hệ số của $y^2$ âm)
+Giải $y=m$ rồi tìm $x$, kiểm tra $y\ne0$ (tức $x\ne a$) và tính lại $A$ để khẳng định cực trị đạt được
+
+##CY
+Sau khi đặt $y=\dfrac{1}{x-a}$ thì $y\ne0$. Nếu giá trị của $y$ làm dấu "=" xảy ra lại bằng $0$ thì cực trị không đạt được. Không dùng $y+\dfrac1y\ge2$ cho $y$ âm: bất đẳng thức Cô-si chỉ áp dụng cho số dương.
+
+@VD
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $A=\dfrac{3x^2-8x+6}{x^2-2x+1}$.
+
+Bài giải:
+Điều kiện: $x^2-2x+1=(x-1)^2\ne0$, tức $x\ne1$.
+Tách tử thành bội của mẫu cộng một bình phương: $3x^2-8x+6=2(x^2-2x+1)+(x^2-4x+4)=2(x-1)^2+(x-2)^2$.
+Với mọi $x\ne1$: $A=\dfrac{2(x-1)^2+(x-2)^2}{(x-1)^2}=2+\dfrac{(x-2)^2}{(x-1)^2}$.
+Vì $\dfrac{(x-2)^2}{(x-1)^2}\ge0$ nên $A\ge2$ với mọi $x\ne1$. (1)
+Dấu "=" xảy ra khi $(x-2)^2=0$, tức $x=2$ (thỏa $x\ne1$); thật vậy $A=\dfrac{12-16+6}{1}=2$. (2)
+Từ (1) và (2): $\min A=2$, đạt khi $x=2$.
+Vậy giá trị nhỏ nhất của $A$ bằng $2$.
+
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $P=\dfrac{x^2+x+1}{x^2+2x+1}$ với $x\ne-1$.
+
+Bài giải:
+Mẫu là $(x+1)^2$. Đặt $t=x+1$ ($t\ne0$) thì $x=t-1$ và $x^2+x+1=(t-1)^2+(t-1)+1=t^2-t+1$.
+$P=\dfrac{t^2-t+1}{t^2}=1-\dfrac1t+\dfrac{1}{t^2}$.
+Đặt $y=\dfrac1t=\dfrac{1}{x+1}$ ($y\ne0$) thì $P=y^2-y+1=\left(y-\dfrac12\right)^2+\dfrac34$.
+Vì $\left(y-\dfrac12\right)^2\ge0$ nên $P\ge\dfrac34$ với mọi $x\ne-1$. (1)
+Dấu "=" xảy ra khi $y=\dfrac12$ (khác $0$), tức $x+1=2$, $x=1$ (thỏa $x\ne-1$); thật vậy $P=\dfrac{3}{4}$. (2)
+Từ (1) và (2): $\min P=\dfrac34$, đạt khi $x=1$.
+Vậy giá trị nhỏ nhất của $P$ bằng $\dfrac34$.
+
+#DANG NDB03302
+@LT
+##TC Chuyển bài toán về dạng quen thuộc
+- $A$ có giá trị lớn nhất khi và chỉ khi $-A$ có giá trị nhỏ nhất (và ngược lại).
+- Nếu $A$ luôn dương thì $A$ lớn nhất khi và chỉ khi $\dfrac1A$ nhỏ nhất; nếu $A$ luôn âm thì chiều ngược lại.
+
+##PP Xét hiệu A − m
+Chứng tỏ mẫu luôn dương (hoàn thành bình phương), nên phân thức xác định với mọi $x$
+Dự đoán giá trị cực trị $m$: thử vài giá trị của $x$, hoặc chọn $m$ sao cho tử của $A-m$ (sau khi quy đồng) có dạng $\pm k(\ldots)^2$ bằng cách cân bằng hệ số
+Xét $A-m=\dfrac{\pm(\ldots)^2}{M}$ với $M>0$ (mẫu dương) rồi so sánh với $0$ để chặn $A$ với mọi $x$
+Chỉ ra $x$ làm bình phương bằng $0$ và tính lại $A$ để khẳng định cực trị đạt được
+
+##CY
+Chỉ đổi sang $\dfrac1A$ khi $A$ không đổi dấu và khác $0$. Muốn tìm cả giá trị lớn nhất lẫn nhỏ nhất thì phải xét hai giá trị $m$ riêng, mỗi giá trị cho một bình phương riêng.
+
+@VD
+##VD
+Tìm giá trị lớn nhất của biểu thức $Q=\dfrac{2x+1}{x^2+2}$.
+
+Bài giải:
+Vì $x^2+2\ge2>0$ nên $Q$ xác định với mọi $x$.
+Thử $x=0$ được $Q=\dfrac12$, $x=1$ được $Q=1$, $x=2$ được $Q=\dfrac56$; dự đoán giá trị lớn nhất là $1$ tại $x=1$.
+Xét hiệu: $Q-1=\dfrac{2x+1-(x^2+2)}{x^2+2}=\dfrac{-x^2+2x-1}{x^2+2}=-\dfrac{(x-1)^2}{x^2+2}$.
+Vì $(x-1)^2\ge0$ và $x^2+2>0$ nên $Q-1\le0$, tức $Q\le1$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $(x-1)^2=0$, tức $x=1$; khi đó $Q=\dfrac33=1$. (2)
+Từ (1) và (2): $\max Q=1$, đạt khi $x=1$.
+Vậy giá trị lớn nhất của $Q$ bằng $1$.
+
+##VD
+Tìm giá trị nhỏ nhất và giá trị lớn nhất của biểu thức $B=\dfrac{4x+3}{x^2+1}$.
+
+Bài giải:
+Vì $x^2+1\ge1>0$ nên $B$ xác định với mọi $x$.
+Giá trị nhỏ nhất: xét $B-(-1)=B+1=\dfrac{4x+3+x^2+1}{x^2+1}=\dfrac{(x+2)^2}{x^2+1}\ge0$, suy ra $B\ge-1$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $x+2=0$, tức $x=-2$; khi đó $B=\dfrac{-8+3}{4+1}=-1$. (2)
+Từ (1) và (2): $\min B=-1$, đạt khi $x=-2$.
+
+Giá trị lớn nhất: xét $4-B=\dfrac{4(x^2+1)-(4x+3)}{x^2+1}=\dfrac{4x^2-4x+1}{x^2+1}=\dfrac{(2x-1)^2}{x^2+1}\ge0$, suy ra $B\le4$ với mọi $x$. (3)
+Dấu "=" xảy ra khi $2x-1=0$, tức $x=\dfrac12$; khi đó $B=\dfrac{2+3}{\dfrac14+1}=\dfrac{5}{\dfrac54}=4$. (4)
+Từ (3) và (4): $\max B=4$, đạt khi $x=\dfrac12$.
+Vậy giá trị nhỏ nhất của $B$ bằng $-1$ và giá trị lớn nhất của $B$ bằng $4$.
+
+#DANG NDB03303
+@LT
+##TC Tổng hai giá trị tuyệt đối
+$\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$, dấu "=" xảy ra khi $AB\ge0$. Đặc biệt $\lvert x-a\rvert+\lvert b-x\rvert\ge\lvert b-a\rvert$, dấu "=" khi $x$ nằm giữa $a$ và $b$ (kể cả hai đầu mút).
+
+##PP Tổng các giá trị tuyệt đối có hệ số $1$
+Sắp các số $a_1<a_2<\dots<a_n$ trong biểu thức $\lvert x-a_1\rvert+\dots+\lvert x-a_n\rvert$
+Ghép cặp từ hai đầu: $\lvert x-a_1\rvert+\lvert a_n-x\rvert\ge a_n-a_1$, rồi $\lvert x-a_2\rvert+\lvert a_{n-1}-x\rvert\ge a_{n-1}-a_2$, ... để vế phải là hằng số (không còn $x$)
+Nếu $n$ lẻ, số hạng ở giữa $\lvert x-a_m\rvert\ge0$; cộng tất cả các đánh giá để chặn dưới biểu thức
+Lấy giao các điều kiện dấu "=" của mọi cặp, kiểm tra giao khác rỗng rồi tính lại biểu thức tại một giá trị thuộc giao
+
+##CY
+Phải ghép cặp từ hai đầu vào trong, vì khi đó các đoạn điều kiện dấu "=" lồng nhau nên giao không rỗng. Ghép sai cặp thì có thể được một hằng số nhưng dấu "=" không đạt được.
+
+@VD
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $A=\lvert x-1\rvert+\lvert x-7\rvert+\lvert x-9\rvert$.
+
+Bài giải:
+Ghép hai số hạng ở hai đầu và dùng $\lvert a\rvert\ge a$:
+$\lvert x-1\rvert+\lvert x-9\rvert=\lvert x-1\rvert+\lvert9-x\rvert\ge(x-1)+(9-x)=8$. (1)
+Dấu "=" của (1) xảy ra khi $x-1\ge0$ và $9-x\ge0$, tức $1\le x\le9$.
+Số hạng ở giữa: $\lvert x-7\rvert\ge0$. (2)
+Dấu "=" của (2) xảy ra khi $x=7$.
+Cộng (1) và (2): $A\ge8$ với mọi $x$.
+Dấu "=" xảy ra khi đồng thời $1\le x\le9$ và $x=7$, tức $x=7$; thật vậy $A=6+0+2=8$.
+Vậy giá trị nhỏ nhất của $A$ bằng $8$, đạt khi $x=7$.
+
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $C=\lvert x-1\rvert+\lvert x-2\rvert+\lvert x-3\rvert+\lvert x-4\rvert$.
+
+Bài giải:
+Ghép cặp từ hai đầu: $\lvert x-1\rvert+\lvert x-4\rvert=\lvert x-1\rvert+\lvert4-x\rvert\ge\lvert(x-1)+(4-x)\rvert=3$, dấu "=" khi $(x-1)(4-x)\ge0$, tức $1\le x\le4$. (1)
+Ghép cặp ở giữa: $\lvert x-2\rvert+\lvert x-3\rvert=\lvert x-2\rvert+\lvert3-x\rvert\ge\lvert(x-2)+(3-x)\rvert=1$, dấu "=" khi $(x-2)(3-x)\ge0$, tức $2\le x\le3$. (2)
+Cộng (1) và (2): $C\ge3+1=4$ với mọi $x$.
+Dấu "=" xảy ra khi đồng thời $1\le x\le4$ và $2\le x\le3$, tức $2\le x\le3$; chẳng hạn $x=2$ cho $C=1+0+1+2=4$.
+Vậy giá trị nhỏ nhất của $C$ bằng $4$, đạt khi $2\le x\le3$.
+
+#DANG NDB03304
+@LT
+##PP Biểu thức có hệ số khác nhau hoặc có hạng tử ngoài dấu giá trị tuyệt đối
+Tìm các điểm đổi dấu: giải từng biểu thức trong dấu giá trị tuyệt đối bằng $0$, sắp theo thứ tự tăng dần để chia trục số thành các khoảng phủ kín (mỗi giá trị của $x$ thuộc đúng một khoảng)
+Lập bảng xét dấu của từng biểu thức trên mỗi khoảng rồi phá dấu: $\lvert A\rvert=A$ khi $A\ge0$, $\lvert A\rvert=-A$ khi $A<0$
+Trên mỗi khoảng, biểu thức trở thành biểu thức bậc nhất (hoặc hằng số); dùng điều kiện của khoảng đó để đánh giá
+So sánh kết quả của các khoảng (kể cả giá trị tại các điểm đổi dấu) rồi chỉ ra giá trị $x$ đạt cực trị
+
+##CY
+Mỗi đánh giá chỉ dùng được cho $x$ thuộc khoảng đang xét; giá trị tìm được ngoài khoảng bị loại. Cực trị của biểu thức dạng này thường đạt tại một điểm đổi dấu hoặc trên một đoạn giữa hai điểm đổi dấu, nên phải tính lại tại các điểm đó.
+
+@VD
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $A=\lvert x-1\rvert+2\lvert x-2\rvert+x$.
+
+Bài giải:
+Các điểm đổi dấu là $x=1$ và $x=2$, chia trục số thành ba khoảng.
+Khoảng $x<1$: $x-1<0$, $x-2<0$ nên $A=(1-x)+2(2-x)+x=5-2x$. Vì $x<1$ nên $-2x>-2$, suy ra $A>3$.
+Khoảng $1\le x<2$: $A=(x-1)+2(2-x)+x=3$.
+Khoảng $x\ge2$: $A=(x-1)+2(x-2)+x=4x-5$. Vì $x\ge2$ nên $A\ge3$.
+Vậy $A\ge3$ với mọi $x$, và $A=3$ khi $1\le x\le2$ (chẳng hạn $x=1$ cho $A=0+2+1=3$).
+Kết luận: giá trị nhỏ nhất của $A$ bằng $3$, đạt khi $1\le x\le2$.
+
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $B=3\lvert x-1\rvert+2\lvert x-3\rvert+\lvert x+1\rvert$.
+
+Bài giải:
+Các điểm đổi dấu là $x=-1$, $x=1$, $x=3$, chia trục số thành bốn khoảng.
+Khoảng $x<-1$: $B=-3(x-1)-2(x-3)-(x+1)=-6x+8$. Vì $x<-1$ nên $-6x>6$, suy ra $B>14$.
+Khoảng $-1\le x<1$: $B=-3(x-1)-2(x-3)+(x+1)=-4x+10$. Vì $x<1$ nên $-4x>-4$, suy ra $B>6$.
+Khoảng $1\le x<3$: $B=3(x-1)-2(x-3)+(x+1)=2x+4$. Vì $x\ge1$ nên $B\ge6$, dấu "=" khi $x=1$.
+Khoảng $x\ge3$: $B=3(x-1)+2(x-3)+(x+1)=6x-8$. Vì $x\ge3$ nên $B\ge10$.
+Vậy $B\ge6$ với mọi $x$, và tại $x=1$ có $B=0+4+2=6$.
+Kết luận: giá trị nhỏ nhất của $B$ bằng $6$, đạt khi $x=1$.
+
+#NHOM NNB01473
+@LT
+##TC Các bất đẳng thức hay dùng
+- $x^2+y^2\ge2xy$; $(x+y)^2\ge4xy$; $2(x^2+y^2)\ge(x+y)^2$, dấu "=" khi $x=y$.
+- $x^2+y^2+z^2\ge xy+yz+zx$ vì $x^2+y^2+z^2-(xy+yz+zx)=\dfrac12\left[(x-y)^2+(y-z)^2+(z-x)^2\right]$.
+- $(x+y+z)^2=x^2+y^2+z^2+2(xy+yz+zx)$.
+
+##TC Hai cách dùng điều kiện ràng buộc
+- Khử biến: dùng điều kiện để biểu thị một biến qua biến còn lại, đưa biểu thức về một biến.
+- Biến đổi biểu thức (hoặc bình phương, nhân, đặt ẩn) để xuất hiện vế trái của điều kiện, rồi thay bằng hằng số.
+
+##CY
+- Bộ giá trị làm dấu "=" xảy ra phải thỏa mãn mọi điều kiện của đề (cả đẳng thức lẫn miền của biến như $x\ge0$); thiếu bước thử lại này thì mới chỉ chứng minh được cận, chưa phải cực trị.
+- Khi biến bị chặn (đoạn, nửa khoảng), giá trị lớn nhất hoặc nhỏ nhất có thể đạt ở đầu mút của miền chứ không ở chỗ bình phương bằng $0$.
+
+#DANG NDB02754
+@LT
+##PP Rút một biến từ điều kiện
+Từ điều kiện bậc nhất biểu thị một biến qua biến kia (ví dụ $y=1-x$) và tìm miền của biến còn lại nếu các biến bị chặn (như $x,y\ge0$)
+Nếu biểu thức có hằng đẳng thức (như $x^3+y^3$) thì dùng điều kiện để rút gọn trước, sau đó mới thay
+Hoàn thành bình phương để đưa về dạng $a(x-m)^2+C$
+Chặn bằng bình phương không âm (cực tiểu) hoặc bằng miền của $x$ (cực đại trên đoạn), rồi tìm $x$, $y$ và thử lại điều kiện
+
+##CY
+Hoàn thành bình phương chỉ cho giá trị nhỏ nhất khi hệ số của bình phương dương (hoặc giá trị lớn nhất khi hệ số âm). Muốn tìm cực trị còn lại trên một đoạn thì phải dùng miền của biến, rồi kiểm tra giá trị biên có thuộc miền.
+
+@VD
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $A=x^3+y^3+xy$ biết rằng $x+y=1$.
+
+Bài giải:
+Vì $x+y=1$ nên $x^3+y^3=(x+y)(x^2-xy+y^2)=x^2-xy+y^2$.
+Do đó $A=x^2-xy+y^2+xy=x^2+y^2$.
+Thay $y=1-x$: $A=x^2+(1-x)^2=2x^2-2x+1=2\left(x-\dfrac12\right)^2+\dfrac12$.
+Vì $\left(x-\dfrac12\right)^2\ge0$ nên $A\ge\dfrac12$ với mọi $x$ (và $y=1-x$). (1)
+Dấu "=" xảy ra khi $x=\dfrac12$, khi đó $y=\dfrac12$ thỏa $x+y=1$ và $A=\dfrac18+\dfrac18+\dfrac14=\dfrac12$. (2)
+Từ (1) và (2): $\min A=\dfrac12$, đạt khi $x=y=\dfrac12$.
+Vậy giá trị nhỏ nhất của $A$ bằng $\dfrac12$.
+
+##VD
+Cho các số $x,y$ không âm thỏa mãn $x+y=2$. Tìm giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $A=x^2+y^2$.
+
+Bài giải:
+Từ $x+y=2$ ta có $y=2-x$. Vì $x\ge0$ và $y\ge0$ nên $0\le x\le2$.
+$A=x^2+(2-x)^2=2x^2-4x+4$.
+Giá trị nhỏ nhất: $A=2(x-1)^2+2\ge2$ với mọi $x$ thuộc $[0;2]$. Dấu "=" khi $x=1$ (thuộc $[0;2]$), khi đó $y=1$ và $A=2$.
+Giá trị lớn nhất: $A=2x(x-2)+4$. Vì $0\le x\le2$ nên $x\ge0$ và $x-2\le0$, suy ra $x(x-2)\le0$, do đó $A\le4$. Dấu "=" khi $x=0$ hoặc $x=2$ (thuộc $[0;2]$), chẳng hạn $x=0$, $y=2$ thì $A=0+4=4$.
+Vậy giá trị nhỏ nhất của $A$ bằng $2$, đạt khi $x=y=1$; giá trị lớn nhất của $A$ bằng $4$, đạt khi $(x;y)=(0;2)$ hoặc $(x;y)=(2;0)$.
+
+#DANG NDB03305
+@LT
+##TC Hai hệ thức hay dùng
+- $A^2\ge0$ với mọi $A$; $A^2+B^2=0\Leftrightarrow A=0$ và $B=0$.
+- Với $c>0$: $(s+m)^2\le c^2\Leftrightarrow\lvert s+m\rvert\le c\Leftrightarrow-c\le s+m\le c$.
+
+##PP Đặt ẩn phụ từ điều kiện
+Nhận ra nhóm biểu thức lặp lại trong điều kiện (như $x+y$) và đặt thành một ẩn mới $s$
+Chuyển phần luôn không âm (như $y^2$) sang một vế để có bất đẳng thức chỉ chứa $s$
+Hoàn thành bình phương (hoặc phân tích thành nhân tử) để tìm khoảng giá trị của $s$, rồi suy ra khoảng giá trị của biểu thức cần tìm
+Với mỗi đầu mút của khoảng, tìm cặp giá trị thỏa điều kiện của đề và thử lại
+
+##CY
+Có khoảng giá trị rồi vẫn chưa kết luận được giá trị lớn nhất, nhỏ nhất: với mỗi đầu mút phải chỉ ra cặp giá trị thỏa điều kiện cho đúng giá trị đó.
+
+@VD
+##VD
+Cho $x,y$ là hai số thực thỏa mãn $(x+y)^2+7(x+y)+y^2+10=0$. Tìm giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $P=x+y+1$.
+
+Bài giải:
+Đặt $t=x+y$. Điều kiện trở thành $t^2+7t+10=-y^2\le0$.
+$t^2+7t+10\le0\Leftrightarrow\left(t+\dfrac72\right)^2-\dfrac94\le0\Leftrightarrow\left(t+\dfrac72\right)^2\le\dfrac94\Leftrightarrow\left\lvert t+\dfrac72\right\rvert\le\dfrac32$.
+$\Leftrightarrow-\dfrac32\le t+\dfrac72\le\dfrac32\Leftrightarrow-5\le t\le-2\Leftrightarrow-4\le t+1\le-1$.
+Do đó $-4\le P\le-1$ với mọi $x,y$ thỏa mãn điều kiện. (1)
+$P=-4$ khi $t=-5$ và $y=0$, tức $x=-5$, $y=0$; thử vào điều kiện: $25-35+0+10=0$ (đúng).
+$P=-1$ khi $t=-2$ và $y=0$, tức $x=-2$, $y=0$; thử vào điều kiện: $4-14+0+10=0$ (đúng). (2)
+Từ (1) và (2): giá trị nhỏ nhất của $P$ bằng $-4$, đạt khi $x=-5$, $y=0$; giá trị lớn nhất của $P$ bằng $-1$, đạt khi $x=-2$, $y=0$.
+
+##VD
+Cho $x+y+z=3$. Tìm giá trị nhỏ nhất của biểu thức $A=x^2+y^2+z^2$.
+
+Bài giải:
+Đặt $B=xy+yz+zx$. Bình phương hai vế của $x+y+z=3$ được $A+2B=9$. (1)
+Mặt khác $A-B=\dfrac12\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0$ nên $A\ge B$. (2)
+Từ (1) và (2): $3A=A+2A\ge A+2B=9$, suy ra $A\ge3$ với mọi $x,y,z$ thỏa $x+y+z=3$. (3)
+Dấu "=" ở (2) xảy ra khi $x=y=z$; kết hợp $x+y+z=3$ được $x=y=z=1$, khi đó $A=3$. (4)
+Từ (3) và (4): $\min A=3$, đạt khi $x=y=z=1$.
+Vậy giá trị nhỏ nhất của $A$ bằng $3$.
+
+#DANG NDB03306
+@LT
+##ĐL Bất đẳng thức Bu-nhi-a-cốp-xki
+Với mọi số thực $a,b,x,y$ ta có $(ax+by)^2\le(a^2+b^2)(x^2+y^2)$. Dấu "=" xảy ra khi và chỉ khi $ay=bx$.
+Chứng minh: hiệu hai vế bằng $(a^2+b^2)(x^2+y^2)-(ax+by)^2=(ay-bx)^2\ge0$.
+
+##TC Hệ quả
+- $\lvert ax+by\rvert\le\sqrt{(a^2+b^2)(x^2+y^2)}$.
+- Nếu $x^2+y^2=S$ không đổi thì $\lvert ax+by\rvert\le\sqrt{(a^2+b^2)S}$; nếu $ax+by=T$ không đổi thì $x^2+y^2\ge\dfrac{T^2}{a^2+b^2}$.
+
+##PP Dùng Bu-nhi-a-cốp-xki tìm cực trị
+Nhận dạng: một đại lượng là tổng bình phương, đại lượng kia là tổng tuyến tính $ax+by$; chọn $(a;b)$ là hệ số của tổng tuyến tính
+Viết bất đẳng thức cho $(a;b;x;y)$, thay giá trị đã biết của đại lượng cho trước để chặn bình phương (hoặc chặn $\lvert ax+by\rvert$)
+Viết điều kiện dấu "=" là $ay=bx$, kèm điều kiện về dấu (nếu cần), rồi giải hệ cùng điều kiện của đề
+Thử lại và tính giá trị của biểu thức tại nghiệm tìm được
+
+##CY
+Từ $(ax+by)^2\le c^2$ chỉ suy ra $-c\le ax+by\le c$: dấu "=" ở cận trên và ở cận dưới ứng với hai nghiệm khác nhau. Khi tìm giá trị lớn nhất phải chọn nghiệm làm $ax+by$ dương, loại nghiệm làm nó âm.
+
+@VD
+##VD
+Cho $x^2+y^2=52$. Tìm giá trị lớn nhất của biểu thức $A=2x+3y$.
+
+Bài giải:
+Theo bất đẳng thức Bu-nhi-a-cốp-xki với $a=2$, $b=3$: $(2x+3y)^2\le(2^2+3^2)(x^2+y^2)=13\cdot52=676=26^2$.
+Suy ra $\lvert2x+3y\rvert\le26$, nên $A\le26$ với mọi $x,y$ thỏa $x^2+y^2=52$. (1)
+Dấu "=" của Bu-nhi-a-cốp-xki xảy ra khi $2y=3x$; để $A=26$ (không phải $-26$) còn cần $2x+3y\ge0$.
+Thế $y=\dfrac{3x}{2}$ vào $x^2+y^2=52$: $x^2+\dfrac{9x^2}{4}=52\Leftrightarrow\dfrac{13x^2}{4}=52\Leftrightarrow x^2=16\Leftrightarrow x=\pm4$.
+Với $x=4$ thì $y=6$: $x^2+y^2=16+36=52$ và $A=8+18=26$ (thỏa mãn).
+Với $x=-4$ thì $y=-6$: $A=-26$ (loại). (2)
+Từ (1) và (2): $\max A=26$, đạt khi $x=4$, $y=6$.
+Vậy giá trị lớn nhất của $A$ bằng $26$.
+
+##VD
+Cho $x+4y=5$. Tìm giá trị nhỏ nhất của biểu thức $M=4x^2+4y^2$.
+
+Bài giải:
+Theo bất đẳng thức Bu-nhi-a-cốp-xki với $a=1$, $b=4$: $(x\cdot1+y\cdot4)^2\le(1^2+4^2)(x^2+y^2)$, tức $(x+4y)^2\le17(x^2+y^2)$.
+Với $x+4y=5$ ta có $25\le17(x^2+y^2)$, nên $x^2+y^2\ge\dfrac{25}{17}$.
+Suy ra $M=4(x^2+y^2)\ge\dfrac{100}{17}$ với mọi $x,y$ thỏa $x+4y=5$. (1)
+Dấu "=" xảy ra khi $ay=bx$, tức $y=4x$. Thế vào $x+4y=5$: $17x=5$, nên $x=\dfrac{5}{17}$, $y=\dfrac{20}{17}$.
+Kiểm tra: $x+4y=\dfrac{5+80}{17}=5$ và $M=4\cdot\dfrac{25+400}{289}=\dfrac{100}{17}$. (2)
+Từ (1) và (2): $\min M=\dfrac{100}{17}$, đạt khi $x=\dfrac{5}{17}$, $y=\dfrac{20}{17}$.
+Vậy giá trị nhỏ nhất của $M$ bằng $\dfrac{100}{17}$.
+
+#NHOM NNB01474
+@LT
+##ĐN Chia hết
+Với $a,b\in\mathbb Z$, $b\ne0$: $a$ chia hết cho $b$ (viết $a\vdots b$) khi tồn tại $q\in\mathbb Z$ sao cho $a=bq$.
+
+##TC Các tính chất thường dùng
+- Nếu $a\vdots m$ và $b\vdots m$ thì $(a\pm b)\vdots m$; nếu $a\vdots m$ thì $ab\vdots m$ với mọi số nguyên $b$.
+- Nếu $a\vdots m$, $a\vdots n$ và $m,n$ nguyên tố cùng nhau thì $a\vdots mn$.
+- Nếu $p$ nguyên tố và $ab\vdots p$ thì $a\vdots p$ hoặc $b\vdots p$.
+- Tích của $k$ số nguyên liên tiếp chia hết cho $k!$: tích hai số liên tiếp chia hết cho $2$, tích ba số chia hết cho $6$, tích bốn số chia hết cho $24$, tích năm số chia hết cho $120$.
+
+##CY
+Muốn chứng minh chia hết cho một số hợp thì tách số đó thành tích các thừa số đôi một nguyên tố cùng nhau (như $30=2\cdot3\cdot5$, $24=3\cdot8$, $12=3\cdot4$) rồi chứng minh riêng từng phần. Không tách $24=4\cdot6$ hay $12=2\cdot6$ vì các thừa số không nguyên tố cùng nhau.
+
+#DANG NDB02756
+@LT
+##TC Các phân tích hay gặp
+- $n^3-n=(n-1)n(n+1)$ là tích ba số nguyên liên tiếp.
+- $n^5-n=n(n-1)(n+1)(n^2+1)=(n-2)(n-1)n(n+1)(n+2)+5(n-1)n(n+1)$ (tách $n^2+1=(n^2-4)+5$).
+
+##PP Phân tích thành tích các số nguyên liên tiếp
+Phân tích biểu thức thành nhân tử (đặt nhân tử chung, hằng đẳng thức, hoặc tách hạng tử để xuất hiện các thừa số liên tiếp)
+Phân tích số cần chia thành tích các thừa số đôi một nguyên tố cùng nhau
+Với mỗi thừa số đó, chỉ ra trong tích có một thừa số chia hết (dựa vào tích $2,3,4,5$ số nguyên liên tiếp)
+Kết luận bằng tính chất: $a\vdots m$, $a\vdots n$, $m,n$ nguyên tố cùng nhau thì $a\vdots mn$
+
+##CY
+Phải nói rõ vì sao tích chia hết cho từng thừa số nguyên tố cùng nhau (nêu tích của bao nhiêu số nguyên liên tiếp), không được chỉ ghi "hiển nhiên". Khi tách thành tổng, phải chứng minh từng số hạng đều chia hết.
+
+@VD
+##VD
+Chứng minh rằng $n^5-n$ chia hết cho $30$ với mọi số nguyên $n$.
+
+Bài giải:
+$n^5-n=n(n^4-1)=n(n^2-1)(n^2+1)=n(n-1)(n+1)\left[(n^2-4)+5\right]$
+$=(n-2)(n-1)n(n+1)(n+2)+5(n-1)n(n+1)$.
+Số hạng thứ nhất là tích của $5$ số nguyên liên tiếp nên chia hết cho $2$, cho $3$ và cho $5$; mà $2,3,5$ đôi một nguyên tố cùng nhau nên số hạng này chia hết cho $30$.
+Trong số hạng thứ hai, $(n-1)n(n+1)$ là tích của $3$ số nguyên liên tiếp nên chia hết cho $2$ và cho $3$, tức chia hết cho $6$; do đó $5(n-1)n(n+1)$ chia hết cho $30$.
+Vậy $n^5-n$ chia hết cho $30$ với mọi số nguyên $n$.
+
+##VD
+Cho các số nguyên $a,b,c,d$ thỏa mãn $a^3=b^3-c^3+d^3$. Chứng minh rằng $a-b+c-d$ chia hết cho $6$.
+
+Bài giải:
+Từ $a^3=b^3-c^3+d^3$ ta có $a^3-b^3+c^3-d^3=0$.
+Do đó $a-b+c-d=(a-b+c-d)-(a^3-b^3+c^3-d^3)$
+$=-(a^3-a)+(b^3-b)-(c^3-c)+(d^3-d)$.
+Với mọi số nguyên $t$: $t^3-t=(t-1)t(t+1)$ là tích của $3$ số nguyên liên tiếp nên chia hết cho $2$ và cho $3$; mà $2$ và $3$ nguyên tố cùng nhau nên $t^3-t\vdots6$.
+Vậy bốn hiệu $a^3-a$, $b^3-b$, $c^3-c$, $d^3-d$ đều chia hết cho $6$, suy ra $a-b+c-d$ chia hết cho $6$.
+
+#DANG NDB03311
+@LT
+##TC Số dư và dạng của số nguyên
+- Mọi số nguyên viết được dưới dạng $mk+r$ với $r\in\{0;1;\dots;m-1\}$ (số dư khi chia cho $m$).
+- Số nguyên tố $p>3$ không chia hết cho $2$ và $3$ nên có dạng $p=6k\pm1$.
+- Số chính phương chia cho $3$ dư $0$ hoặc $1$; chia cho $4$ dư $0$ hoặc $1$; chia cho $5$ dư $0$, $1$ hoặc $4$; chia cho $8$ dư $0$, $1$ hoặc $4$.
+
+##PP Xét số dư theo từng trường hợp
+Chọn mô-đun $m$ là số cần chia, hoặc một ước của nó (muốn chứng minh không chia hết cho $N$ thì chỉ cần một ước $m$ của $N$ mà biểu thức không chia hết cho $m$)
+Chia các số nguyên thành $m$ loại theo số dư $r=0,1,\dots,m-1$, hoặc đặt $p=6k\pm1$ với số nguyên tố $p>3$
+Với mỗi trường hợp, thay vào biểu thức và rút nhân tử $m$ (hoặc tính số dư của biểu thức)
+Kết luận khi đã xét đủ mọi trường hợp: tất cả đều chia hết, hoặc tất cả đều có số dư khác $0$
+
+##CY
+Phải xét đủ và không trùng các trường hợp. Với tích nhiều thừa số, có thể chỉ cần một thừa số chia hết cho mỗi ước nguyên tố cùng nhau của số cần chia; khi xét tích, ghi rõ thừa số nào chia hết trong mỗi trường hợp.
+
+@VD
+##VD
+Cho $n\in\mathbb Z$. Chứng minh rằng $n^3+2$ không chia hết cho $2016$.
+
+Bài giải:
+Vì $2016=4\cdot504$ nên nếu $n^3+2\vdots2016$ thì $n^3+2\vdots4$. Do đó chỉ cần chứng minh $n^3+2\not\vdots4$ với mọi số nguyên $n$.
+Nếu $n$ chẵn, $n=2k$ thì $n^3=8k^3\vdots4$, nên $n^3+2$ chia cho $4$ dư $2$.
+Nếu $n$ lẻ thì $n^3$ lẻ, nên $n^3+2$ lẻ, không chia hết cho $2$, do đó không chia hết cho $4$.
+Vậy $n^3+2\not\vdots4$ với mọi số nguyên $n$, suy ra $n^3+2\not\vdots2016$.
+
+##VD
+Cho $p$ là số nguyên tố lớn hơn $3$. Chứng minh rằng $p^2-1$ chia hết cho $24$.
+
+Bài giải:
+Vì $p>3$ nguyên tố nên $p$ không chia hết cho $2$ và $3$, do đó $p=6k+1$ hoặc $p=6k-1$ với $k$ nguyên dương.
+Trường hợp $p=6k+1$: $p^2-1=36k^2+12k=12k(3k+1)$.
+Trường hợp $p=6k-1$: $p^2-1=36k^2-12k=12k(3k-1)$.
+Trong cả hai trường hợp $p^2-1=12k(3k\pm1)$. Ta chứng minh $k(3k\pm1)$ chia hết cho $2$:
+Nếu $k$ chẵn thì $k(3k\pm1)\vdots2$.
+Nếu $k$ lẻ thì $3k$ lẻ, nên $3k\pm1$ chẵn, suy ra $k(3k\pm1)\vdots2$.
+Do đó $p^2-1=12\cdot k(3k\pm1)\vdots12\cdot2=24$.
+Vậy $p^2-1$ chia hết cho $24$ với mọi số nguyên tố $p>3$.
+
+#DANG NDB03312
+@LT
+##TC Hằng đẳng thức $a^n-b^n$
+- $a^n-b^n=(a-b)\left(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1}\right)$ nên $(a^n-b^n)\vdots(a-b)$ với mọi số tự nhiên $n\ge1$.
+- Với $n$ lẻ: $(a^n+b^n)\vdots(a+b)$; với $n$ chẵn: $(a^n-b^n)\vdots(a+b)$.
+
+##TC Nhị thức Niu-tơn
+$(a+b)^n=a^n+na^{n-1}b+\dots+nab^{n-1}+b^n$ (hệ số lấy ở hàng thứ $n$ của tam giác Pa-xcan). Mọi số hạng trừ $b^n$ đều chứa thừa số $a$, nên $(a+b)^n$ bằng một bội của $a$ cộng $b^n$.
+
+##PP Chứng minh chia hết với biểu thức luỹ thừa
+Các luỹ thừa cùng cơ số liên tiếp thì đặt luỹ thừa nhỏ nhất làm thừa số chung và tính tổng ở trong ngoặc
+Chọn số cần chia, tách biểu thức thành các hiệu $a^n-b^n$ (hoặc tổng) mà $a-b$ (hoặc $a+b$) là bội của số đó
+Nếu có thêm hạng tử bậc nhất theo $n$ (như $15n$) thì viết $a^n-1=(a-1)\left(a^{n-1}+\dots+a+1\right)$, đặt $a-1$ ra ngoài rồi trừ $1$ vào từng luỹ thừa để được các hiệu $a^k-1$
+Xét riêng $n=0$ (hoặc giá trị nhỏ nhất của $n$) nếu phép khai triển cần $n\ge1$, rồi kết luận
+
+##CY
+$a^n+b^n$ chỉ chia hết cho $a+b$ khi $n$ lẻ; còn $a^n-b^n$ thì luôn chia hết cho $a-b$ với mọi $n$. Gặp $n$ chẵn mà viết $a^n+b^n\vdots a+b$ là sai.
+
+@VD
+##VD
+a) Chứng minh rằng $7^{19}+7^{20}+7^{21}$ chia hết cho $57$.
+b) Chứng minh rằng $2^{4n}-1$ chia hết cho $15$ với mọi số tự nhiên $n$.
+
+Bài giải:
+a) $7^{19}+7^{20}+7^{21}=7^{19}\left(1+7+7^2\right)=7^{19}\cdot57$ nên chia hết cho $57$.
+
+b) $2^{4n}-1=16^n-1^n$.
+Vì $a^n-b^n$ chia hết cho $a-b$ nên $16^n-1^n$ chia hết cho $16-1=15$.
+Vậy $2^{4n}-1\vdots15$ với mọi số tự nhiên $n$.
+
+##VD
+Cho $n\in\mathbb N$. Chứng minh rằng $B=4^n+15n-1$ chia hết cho $9$.
+
+Bài giải:
+Với $n=0$: $B=1+0-1=0$ chia hết cho $9$.
+Xét $n\ge1$. Tách $B=(4^n-1-3n)+18n$.
+Ta có $4^n-1-3n=(4-1)\left(4^{n-1}+4^{n-2}+\dots+4+1\right)-3n$
+$=3\left(4^{n-1}+4^{n-2}+\dots+4+1-n\right)$
+$=3\left[(4^{n-1}-1)+(4^{n-2}-1)+\dots+(4-1)+(1-1)\right]$ (ngoặc có $n$ số hạng, mỗi số hạng trừ đi $1$).
+Mỗi hiệu $4^k-1$ chia hết cho $4-1=3$ nên biểu thức trong ngoặc vuông chia hết cho $3$, do đó $4^n-1-3n\vdots9$.
+Mà $18n\vdots9$.
+Vậy $B=4^n+15n-1$ chia hết cho $9$ với mọi số tự nhiên $n$.
+
+#DANG NDB03313
+@LT
+##ĐN Đồng dư
+Cho số nguyên dương $m$. Hai số nguyên $a,b$ gọi là đồng dư theo mô-đun $m$, viết $a\equiv b\pmod{m}$, khi $a-b$ chia hết cho $m$ (tức $a$ và $b$ cùng số dư khi chia cho $m$).
+
+##TC Tính chất của đồng dư
+Nếu $a\equiv b\pmod{m}$ và $c\equiv d\pmod{m}$ thì:
+- $a\pm c\equiv b\pm d\pmod{m}$; $ac\equiv bd\pmod{m}$; $a^n\equiv b^n\pmod{m}$ với mọi số tự nhiên $n$.
+- Nếu $a\equiv0\pmod{m}$ thì $a$ chia hết cho $m$.
+
+##ĐL Phéc-ma nhỏ
+Với $p$ nguyên tố và $a$ là số nguyên bất kì: $a^p\equiv a\pmod{p}$. Nếu $a$ không chia hết cho $p$ thì $a^{p-1}\equiv1\pmod{p}$.
+
+##PP Chứng minh chia hết bằng đồng dư
+Phân tích mô-đun thành tích các thừa số đôi một nguyên tố cùng nhau (như $45=5\cdot9$)
+Với mỗi thừa số $q$, thay mỗi cơ số bằng một số đồng dư với nó (số nhỏ hoặc số âm đều được, như $39\equiv-1\pmod5$)
+Hạ số mũ: tìm số $t$ để $a^t\equiv1$ (hoặc $\equiv0$, $\equiv-1$) theo mô-đun đó, viết số mũ $=tk+r$ rồi thay $a^{tk}\equiv1$
+Tính đồng dư của cả biểu thức theo từng thừa số, rồi kết luận chia hết cho tích
+
+##CY
+$a^{p-1}\equiv1\pmod p$ chỉ khi $a$ không chia hết cho $p$. Muốn chứng minh không chia hết thì tìm chu kì của luỹ thừa theo mô-đun rồi xét hết các số dư của số mũ.
+
+@VD
+##VD
+a) Chứng minh rằng $2^{70}+3^{70}$ chia hết cho $13$.
+b) Chứng minh rằng $21^{39}+39^{21}$ chia hết cho $45$.
+
+Bài giải:
+a) Vì $13$ là số nguyên tố và $13$ không chia hết cho $2$ nên theo định lí Phéc-ma nhỏ, $2^{12}\equiv1\pmod{13}$.
+Do $70=12\cdot5+10$ nên $2^{70}=(2^{12})^5\cdot2^{10}\equiv2^{10}=1024\equiv10\pmod{13}$ (vì $1024=13\cdot78+10$).
+Mặt khác $3^3=27\equiv1\pmod{13}$ và $70=3\cdot23+1$ nên $3^{70}=(3^3)^{23}\cdot3\equiv3\pmod{13}$.
+Do đó $2^{70}+3^{70}\equiv10+3=13\equiv0\pmod{13}$.
+Vậy $2^{70}+3^{70}$ chia hết cho $13$.
+
+b) Ta có $45=5\cdot9$ với $5$ và $9$ nguyên tố cùng nhau.
+Theo mô-đun $5$: $21\equiv1$ nên $21^{39}\equiv1$; $39\equiv-1$ nên $39^{21}\equiv(-1)^{21}=-1$. Suy ra $21^{39}+39^{21}\equiv1-1=0\pmod5$.
+Theo mô-đun $9$: $21=18+3\equiv3$ nên $21^{39}\equiv3^{39}$, mà $3^{39}$ chia hết cho $3^2=9$ nên $21^{39}\equiv0\pmod9$. Tương tự $39=36+3\equiv3$ nên $39^{21}\equiv3^{21}\equiv0\pmod9$. Suy ra $21^{39}+39^{21}\equiv0\pmod9$.
+Vì $21^{39}+39^{21}$ chia hết cho $5$ và cho $9$, mà $5$ và $9$ nguyên tố cùng nhau nên chia hết cho $45$.
+
+##VD
+Chứng minh rằng $2^a+29^b$ không chia hết cho $23$ với mọi $a,b$ là các số tự nhiên.
+
+Bài giải:
+Giả sử tồn tại $a,b\in\mathbb N$ để $2^a+29^b\vdots23$.
+Khi đó $4^b(2^a+29^b)=2^{a+2b}+116^b\vdots23$.
+Vì $116^b-1^b\vdots116-1=115$ và $115\vdots23$ nên $116^b-1\vdots23$.
+Suy ra $2^{a+2b}+1=(2^{a+2b}+116^b)-(116^b-1)\vdots23$. (1)
+Đặt $a+2b=11n+r$ với $n\in\mathbb N$, $r\in\{0;1;\dots;10\}$. Khi đó $2^{a+2b}+1=2^r(2^{11n}-1)+(2^r+1)$.
+Vì $2^{11n}-1\vdots2^{11}-1=2047=23\cdot89$ nên $2^r(2^{11n}-1)\vdots23$.
+Với $r=0;1;\dots;10$ thì $2^r+1$ lần lượt bằng $2;3;5;9;17;33;65;129;257;513;1025$, chia cho $23$ lần lượt dư $2;3;5;9;17;10;19;14;4;7;13$, không số nào bằng $0$.
+Do đó $2^{a+2b}+1\not\vdots23$. (2)
+(1) và (2) mâu thuẫn, nên điều giả sử sai.
+Vậy $2^a+29^b$ không chia hết cho $23$ với mọi $a,b\in\mathbb N$.
+
+#DANG NDB03314
+@LT
+##PP Chứng minh chia hết bằng quy nạp toán học
+Kiểm tra mệnh đề đúng với giá trị nhỏ nhất $n_0$ của $n$ (thường $n=0$ hoặc $n=1$)
+Giả sử mệnh đề đúng với $n=k$ ($k\ge n_0$): $S_k$ chia hết cho $m$, tức $S_k=m\cdot q$
+Với $n=k+1$: tách $S_{k+1}=c\cdot S_k+m\cdot T$, trong đó $c$ là một số (hoặc biểu thức nguyên) và $T$ là biểu thức nguyên
+Dùng giả thiết $S_k\vdots m$ để suy ra $S_{k+1}\vdots m$, rồi kết luận mệnh đề đúng với mọi $n\ge n_0$
+
+##CY
+Hệ số $c$ trong phép tách được tìm bằng cách so sánh phần chứa luỹ thừa cao nhất của $S_{k+1}$ với $S_k$. Phải nêu rõ cả hai bước (bước cơ sở và bước quy nạp) và giá trị $n_0$ của đề; thiếu bước cơ sở thì lập luận không có giá trị.
+
+@VD
+##VD
+Chứng minh rằng $7^{n+2}+8^{2n+1}$ chia hết cho $57$ với mọi số tự nhiên $n$.
+
+Bài giải:
+Đặt $S_n=7^{n+2}+8^{2n+1}$.
+Với $n=0$: $S_0=49+8=57\vdots57$, mệnh đề đúng.
+Giả sử mệnh đề đúng với $n=k$ ($k\in\mathbb N$), tức $S_k=7^{k+2}+8^{2k+1}\vdots57$.
+Với $n=k+1$: $S_{k+1}=7^{k+3}+8^{2k+3}=7\cdot7^{k+2}+64\cdot8^{2k+1}$
+$=7\left(7^{k+2}+8^{2k+1}\right)+57\cdot8^{2k+1}$
+$=7S_k+57\cdot8^{2k+1}$.
+Vì $S_k\vdots57$ (giả thiết quy nạp) và $57\cdot8^{2k+1}\vdots57$ nên $S_{k+1}\vdots57$, tức mệnh đề đúng với $n=k+1$.
+Vậy $7^{n+2}+8^{2n+1}$ chia hết cho $57$ với mọi số tự nhiên $n$.
+
+##VD
+Chứng minh rằng với mọi số nguyên dương $n$, tích $A_n=(n+1)(n+2)\cdots(2n)$ chia hết cho $2^n$.
+
+Bài giải:
+Với $n=1$: $A_1=2\vdots2$, mệnh đề đúng.
+Giả sử mệnh đề đúng với $n=k$ ($k\ge1$), tức $A_k=(k+1)(k+2)\cdots(2k)=2^k\cdot q$ với $q$ nguyên.
+Với $n=k+1$: $A_{k+1}=(k+2)(k+3)\cdots(2k)(2k+1)(2k+2)$.
+Do đó $(k+1)\cdot A_{k+1}=(k+1)(k+2)\cdots(2k)\cdot(2k+1)(2k+2)=A_k\cdot(2k+1)\cdot2(k+1)$.
+Chia hai vế cho $k+1>0$: $A_{k+1}=2(2k+1)A_k=2(2k+1)\cdot2^k q=2^{k+1}(2k+1)q$.
+Vậy $A_{k+1}\vdots2^{k+1}$, tức mệnh đề đúng với $n=k+1$.
+Do đó $(n+1)(n+2)\cdots(2n)$ chia hết cho $2^n$ với mọi số nguyên dương $n$.

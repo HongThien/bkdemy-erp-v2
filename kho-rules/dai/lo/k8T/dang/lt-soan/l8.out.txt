@@ -1,0 +1,543 @@
+#NHOM NNB01462
+@LT
+##ĐN Phương trình có tham số
+Phương trình có tham số là phương trình mà ngoài ẩn $x$ còn có những chữ khác như $m$, $a$, $b$ nằm trong hệ số hoặc vế phải. Tham số là hằng số chưa cho cụ thể: mỗi giá trị của tham số cho ta một phương trình riêng. "Giải và biện luận" là chỉ ra tập nghiệm của phương trình theo từng giá trị (hoặc từng khoảng giá trị) của tham số.
+
+##TC Biện luận phương trình bậc nhất $ax=b$
+- Nếu $a\ne0$: phương trình có nghiệm duy nhất $x=\dfrac ba$.
+- Nếu $a=0$ và $b=0$: phương trình trở thành $0x=0$, nghiệm đúng với mọi $x$, $S=\mathbb{R}$.
+- Nếu $a=0$ và $b\ne0$: phương trình trở thành $0x=b$, vô nghiệm, $S=\varnothing$.
+Phương trình chứa ẩn ở mẫu hay bậc cao sau khi biến đổi tương đương đưa được về dạng này cũng biện luận theo ba trường hợp trên.
+
+##CY Bẫy khi có tham số
+- Không được chia hai vế cho một biểu thức chứa tham số khi chưa biết nó khác $0$; trước hết phải tìm các giá trị của tham số làm biểu thức ấy bằng $0$ và xét riêng.
+- Kết luận phải phủ kín mọi giá trị của tham số, viết theo kiểu "nếu … thì …"; không để sót giá trị nào.
+- "Vô số nghiệm" và "vô nghiệm" là hai trường hợp khác nhau: cùng có hệ số của $x$ bằng $0$ nhưng vế phải bằng $0$ hay khác $0$.
+
+#DANG NDB02746
+@LT
+##TC Nghiệm của phương trình chứa tham số
+Số $x_0$ là nghiệm của phương trình khi và chỉ khi thay $x=x_0$ vào hai vế được một đẳng thức đúng. Khi $x_0$ đã cho trước, đẳng thức đó là một phương trình mà ẩn là tham số $m$.
+
+##PP Tìm tham số để phương trình có nghiệm cho trước
+Thay giá trị $x_0$ của nghiệm vào phương trình để được phương trình chỉ chứa ẩn $m$
+Khai triển, chuyển vế, rút gọn đưa về dạng quen thuộc (bậc nhất, $m^2=k$ hoặc vế phải bằng $0$)
+Giải phương trình ẩn $m$: bậc hai thì phân tích thành nhân tử rồi cho từng nhân tử bằng $0$, gặp $m^2=k$ thì lấy đủ hai dấu của căn
+Nếu phương trình ban đầu có ẩn ở mẫu thì kiểm tra giá trị $m$ tìm được không làm mẫu bằng $0$ tại $x_0$, rồi kết luận
+
+##CY
+$m^2=k$ với $k>0$ cho hai giá trị $m=\pm\sqrt k$; chỉ ghi một giá trị là thiếu đáp số.
+
+@VD
+##VD
+Xác định giá trị của $m$ để phương trình $4x+m^2=22$ nhận $x=5$ làm nghiệm.
+
+Bài giải:
+Vì $x=5$ là nghiệm của phương trình nên khi thay vào, hai vế bằng nhau.
+$4\cdot5+m^2=22$
+$\Leftrightarrow m^2=2$
+$\Leftrightarrow m=\sqrt2$ hoặc $m=-\sqrt2$
+Vậy $m=\sqrt2$ hoặc $m=-\sqrt2$.
+
+##VD
+Cho phương trình $(m-5)x+4m^2=10$. Tìm các giá trị của $m$ để phương trình nhận $x=-2$ làm nghiệm.
+
+Bài giải:
+Phương trình nhận $x=-2$ làm nghiệm khi và chỉ khi thay $x=-2$ vào được đẳng thức đúng.
+$(m-5)\cdot(-2)+4m^2=10$
+$\Leftrightarrow-2m+10+4m^2=10$
+$\Leftrightarrow4m^2-2m=0$
+$\Leftrightarrow2m(2m-1)=0$ (phân tích thành nhân tử)
+$\Leftrightarrow m=0$ hoặc $m=\dfrac12$
+Vậy $m=0$ hoặc $m=\dfrac12$.
+
+#DANG NDB03262
+@LT
+##TC Vô nghiệm, vô số nghiệm của phương trình $ax=b$
+- Phương trình có nghiệm duy nhất khi và chỉ khi $a\ne0$.
+- Phương trình vô nghiệm khi và chỉ khi $a=0$ và $b\ne0$.
+- Phương trình có vô số nghiệm khi và chỉ khi $a=0$ và $b=0$.
+Vì vậy mọi câu hỏi "vô nghiệm", "vô số nghiệm" đều quy về việc tìm giá trị của tham số làm $a=0$, rồi xét $b$.
+
+##PP Giải và biện luận phương trình dạng $ax=b$
+Đưa phương trình về dạng $ax=b$ với $a$, $b$ là các biểu thức chứa tham số
+Tìm các giá trị của tham số làm $a=0$ (phân tích $a$ thành nhân tử nếu cần)
+Với mỗi giá trị đó, thay vào $b$ để xem $b=0$ (vô số nghiệm) hay $b\ne0$ (vô nghiệm)
+Với $a\ne0$, chia hai vế cho $a$ và rút gọn nghiệm $x=\dfrac ba$
+Tổng hợp thành kết luận theo từng giá trị của tham số
+
+##CY
+Khi cả hai vế cùng chứa một thừa số của tham số (chẳng hạn $m-2$) cũng không được rút gọn ngay; chỉ rút gọn sau khi đã loại trường hợp thừa số đó bằng $0$.
+
+@VD
+##VD
+Giải phương trình (với $m$ là tham số): $(m-2)x=m-2$.
+
+Bài giải:
+Phương trình $(m-2)x=m-2$ $(*)$.
+Trường hợp $m=2$: $(*)$ trở thành $0x=0$, đúng với mọi $x$ nên $S=\mathbb{R}$.
+Trường hợp $m\ne2$: chia hai vế của $(*)$ cho $m-2\ne0$ được $x=1$, nên $S=\{1\}$.
+Vậy nếu $m=2$ thì phương trình nghiệm đúng với mọi $x$; nếu $m\ne2$ thì phương trình có một nghiệm $x=1$.
+
+##VD
+Cho phương trình $(m^2-1)x=m+1$. Tìm giá trị của $m$ để phương trình:
+a) vô nghiệm;
+b) có vô số nghiệm;
+c) có nghiệm duy nhất.
+
+Bài giải:
+Ta có $(m^2-1)x=m+1\Leftrightarrow(m-1)(m+1)x=m+1$ $(*)$. Hệ số của $x$ bằng $0$ khi $m=1$ hoặc $m=-1$.
+a) Với $m=1$: $(*)$ trở thành $0x=2$, mà $2\ne0$ nên phương trình vô nghiệm.
+Với $m=-1$: $(*)$ trở thành $0x=0$, không vô nghiệm. Với $m\ne\pm1$ phương trình có nghiệm. Vậy phương trình vô nghiệm khi $m=1$.
+
+b) Với $m=-1$: $(*)$ trở thành $0x=0$, nghiệm đúng với mọi $x$. Vậy phương trình có vô số nghiệm khi $m=-1$.
+
+c) Với $m\ne1$ và $m\ne-1$: hệ số của $x$ khác $0$, chia hai vế cho $(m-1)(m+1)$ được $x=\dfrac{m+1}{(m-1)(m+1)}=\dfrac1{m-1}$. Vậy phương trình có nghiệm duy nhất $x=\dfrac1{m-1}$ khi $m\ne\pm1$.
+
+#DANG NDB03263
+@LT
+##TC Nghiệm biểu diễn theo tham số
+- Khi $a\ne0$, phương trình $ax=b$ có nghiệm $x=\dfrac ba$, một biểu thức của tham số.
+- Phân thức $\dfrac AB>0$ khi $A$, $B$ cùng dấu; $\dfrac AB<0$ khi $A$, $B$ trái dấu.
+- Nếu $x=p+\dfrac k{g(m)}$ với $p$, $k$ là số nguyên và $m$ nguyên thì $x$ nguyên khi và chỉ khi $g(m)$ là ước của $k$.
+
+##PP Tìm tham số để nghiệm thỏa điều kiện
+Tìm giá trị của tham số làm hệ số của $x$ bằng $0$ và xét riêng (thường vô nghiệm hoặc vô số nghiệm, không thỏa yêu cầu về nghiệm cụ thể)
+Với hệ số khác $0$, viết nghiệm $x=f(m)$ (tách phần nguyên $f(m)=p+\dfrac k{g(m)}$ nếu cần)
+Lập điều kiện: nghiệm dương hoặc âm thì xét dấu tử và mẫu; nghiệm nguyên thì $g(m)$ là ước của $k$
+Giải điều kiện, đối chiếu với điều kiện hệ số của $x$ khác $0$ rồi kết luận
+
+##CY
+Các giá trị của $m$ làm hệ số của $x$ bằng $0$ phải bị loại khỏi đáp số vì khi đó không có nghiệm duy nhất. Ước của một số nguyên gồm cả ước dương lẫn ước âm.
+
+@VD
+##VD
+Cho phương trình $(m+1)x=m+3$. Tìm $m$ để phương trình có nghiệm dương.
+
+Bài giải:
+Nếu $m=-1$: phương trình trở thành $0x=2$, vô nghiệm, không thỏa yêu cầu.
+Nếu $m\ne-1$: phương trình có nghiệm duy nhất $x=\dfrac{m+3}{m+1}$.
+$x>0\Leftrightarrow\dfrac{m+3}{m+1}>0$ (tử và mẫu cùng dấu)
+$\Leftrightarrow m+3>0$ và $m+1>0$, hoặc $m+3<0$ và $m+1<0$
+$\Leftrightarrow m>-1$ hoặc $m<-3$
+Cả hai khoảng đều không chứa $m=-1$ nên thỏa điều kiện $m\ne-1$.
+Vậy phương trình có nghiệm dương khi $m>-1$ hoặc $m<-3$.
+
+##VD
+Cho phương trình $(m-1)x=m+5$ với $m$ là số nguyên. Tìm $m$ để phương trình có nghiệm là số nguyên.
+
+Bài giải:
+Nếu $m=1$: phương trình trở thành $0x=6$, vô nghiệm, loại.
+Nếu $m\ne1$: nghiệm duy nhất là $x=\dfrac{m+5}{m-1}=\dfrac{(m-1)+6}{m-1}=1+\dfrac6{m-1}$.
+Vì $m$ nguyên nên $x$ nguyên khi và chỉ khi $\dfrac6{m-1}$ nguyên, tức $m-1$ là ước của $6$.
+Ước của $6$ là $\pm1;\pm2;\pm3;\pm6$ nên $m-1\in\{-6;-3;-2;-1;1;2;3;6\}$.
+Suy ra $m\in\{-5;-2;-1;0;2;3;4;7\}$, đều khác $1$.
+Vậy $m\in\{-5;-2;-1;0;2;3;4;7\}$.
+
+#DANG NDB03264
+@LT
+##TC Điều kiện xác định chứa tham số
+Với phương trình có ẩn ở mẫu, điều kiện xác định có thể chứa tham số (chẳng hạn $x\ne m$). Sau khi quy đồng khử mẫu, ta thường được phương trình bậc nhất $ax=b$; nghiệm $x=\dfrac ba$ của nó chỉ là nghiệm của phương trình ban đầu khi thỏa điều kiện xác định.
+
+##PP Biện luận phương trình chứa ẩn ở mẫu có tham số
+Đặt điều kiện xác định (có thể chứa tham số)
+Quy đồng, khử mẫu rồi rút gọn về dạng $ax=b$ (các số hạng $x^2$ triệt tiêu)
+Biện luận theo hệ số $a$: $a=0$ thì xét $b$ (vô nghiệm hoặc vô số nghiệm); $a\ne0$ thì $x=\dfrac ba$
+Cho nghiệm $x=\dfrac ba$ bằng từng giá trị bị cấm của điều kiện xác định, giải ra các giá trị tham số làm nghiệm bị loại
+Tổng hợp mọi trường hợp để kết luận
+
+##CY
+Khử mẫu không phải phép biến đổi tương đương: nghiệm của phương trình sau khi khử mẫu phải thỏa điều kiện xác định mới nhận. Khi tham số làm nghiệm trùng giá trị bị cấm, phương trình ban đầu vô nghiệm dù phương trình bậc nhất vẫn có nghiệm.
+
+@VD
+##VD
+Giải phương trình sau (với $m$ là tham số): $\dfrac{x-2}{x-m}=\dfrac{x-1}{x+2}$.
+
+Bài giải:
+ĐKXĐ: $x\ne m$ và $x\ne-2$.
+$\dfrac{x-2}{x-m}=\dfrac{x-1}{x+2}\Leftrightarrow(x-2)(x+2)=(x-1)(x-m)$
+$\Leftrightarrow x^2-4=x^2-(m+1)x+m$
+$\Leftrightarrow(m+1)x=m+4$ $(*)$
+Nếu $m=-1$: $(*)$ trở thành $0x=3$, vô nghiệm, nên $S=\varnothing$.
+Nếu $m\ne-1$: $(*)\Leftrightarrow x=\dfrac{m+4}{m+1}$. Giá trị này là nghiệm khi và chỉ khi thỏa ĐKXĐ.
+$\dfrac{m+4}{m+1}\ne m\Leftrightarrow m+4\ne m^2+m\Leftrightarrow m^2\ne4\Leftrightarrow m\ne\pm2$
+$\dfrac{m+4}{m+1}\ne-2\Leftrightarrow m+4\ne-2m-2\Leftrightarrow m\ne-2$
+Vậy nếu $m\ne-1$, $m\ne2$ và $m\ne-2$ thì $S=\left\{\dfrac{m+4}{m+1}\right\}$; nếu $m=-1$, $m=2$ hoặc $m=-2$ thì $S=\varnothing$.
+
+##VD
+Giải và biện luận phương trình (với $m$ là tham số): $\dfrac{mx-1}{x+1}=2$.
+
+Bài giải:
+ĐKXĐ: $x\ne-1$.
+$\dfrac{mx-1}{x+1}=2\Leftrightarrow mx-1=2(x+1)$
+$\Leftrightarrow(m-2)x=3$ $(*)$
+Nếu $m=2$: $(*)$ trở thành $0x=3$, vô nghiệm, nên $S=\varnothing$.
+Nếu $m\ne2$: $(*)\Leftrightarrow x=\dfrac3{m-2}$. Nghiệm này bị loại khi $\dfrac3{m-2}=-1$, tức $3=-(m-2)$, tức $m=-1$.
+Khi $m=-1$ thì nghiệm của $(*)$ là $x=-1$ vi phạm ĐKXĐ, nên phương trình ban đầu vô nghiệm.
+Vậy nếu $m\ne2$ và $m\ne-1$ thì $S=\left\{\dfrac3{m-2}\right\}$; nếu $m=2$ hoặc $m=-1$ thì $S=\varnothing$.
+
+#DANG NDB03265
+@LT
+##TC Phân tích thành nhân tử khi có tham số
+Coi tham số như một hằng số, phân tích vế trái thành nhân tử theo $x$ bằng các cách quen thuộc:
+- $x^2-(p+q)x+pq=(x-p)(x-q)$ với $p$, $q$ là các biểu thức của tham số.
+- Hằng đẳng thức $A^2-B^2=(A-B)(A+B)$.
+- Nhóm các hạng tử (theo lũy thừa của $x$ hoặc theo lũy thừa của tham số) để xuất hiện nhân tử chung.
+Khi đó $A\cdot B=0\Leftrightarrow A=0$ hoặc $B=0$.
+
+##PP Giải và biện luận phương trình bậc cao có tham số
+Chuyển mọi hạng tử về một vế, sắp xếp theo lũy thừa của $x$
+Phân tích vế trái thành nhân tử theo $x$ (tách hạng tử hoặc nhóm hạng tử), nhân tử chứa tham số được coi như hằng số
+Cho từng nhân tử bằng $0$ để được các nghiệm theo tham số
+Tìm giá trị của tham số làm hai nghiệm trùng nhau rồi đếm số nghiệm phân biệt
+Kết luận theo từng giá trị của tham số
+
+##CY
+Số nghiệm phải đếm theo nghiệm phân biệt: hai nhân tử cho cùng một giá trị của $x$ thì chỉ tính một nghiệm.
+
+@VD
+##VD
+Cho phương trình $x^2+(a-2)x-2a=0$ (với $a$ là tham số).
+a) Giải phương trình.
+b) Tìm $a$ để phương trình có đúng một nghiệm.
+
+Bài giải:
+a) Tách $(a-2)x=ax-2x$ để nhóm hạng tử:
+$x^2+(a-2)x-2a=0$
+$\Leftrightarrow(x^2-2x)+(ax-2a)=0$
+$\Leftrightarrow x(x-2)+a(x-2)=0$
+$\Leftrightarrow(x-2)(x+a)=0$
+$\Leftrightarrow x=2$ hoặc $x=-a$
+Hai nghiệm trùng nhau khi $-a=2$, tức $a=-2$. Vậy nếu $a\ne-2$ thì $S=\{2;-a\}$; nếu $a=-2$ thì $S=\{2\}$.
+
+b) Phương trình có đúng một nghiệm khi hai nghiệm $2$ và $-a$ trùng nhau, tức $a=-2$.
+
+##VD
+Cho phương trình $x^3-ax^2-x+a=0$ (với $a$ là tham số).
+a) Giải phương trình.
+b) Tìm $a$ để phương trình có đúng hai nghiệm phân biệt.
+
+Bài giải:
+a) Nhóm hạng tử để xuất hiện nhân tử chung $x-a$:
+$x^3-ax^2-x+a=0$
+$\Leftrightarrow x^2(x-a)-(x-a)=0$
+$\Leftrightarrow(x-a)(x^2-1)=0$
+$\Leftrightarrow(x-a)(x-1)(x+1)=0$
+$\Leftrightarrow x=a$ hoặc $x=1$ hoặc $x=-1$
+Nghiệm $x=a$ trùng một trong hai nghiệm còn lại khi $a=1$ hoặc $a=-1$. Vậy nếu $a\ne\pm1$ thì $S=\{-1;1;a\}$; nếu $a=1$ hoặc $a=-1$ thì $S=\{-1;1\}$.
+
+b) Phương trình có đúng hai nghiệm phân biệt khi $x=a$ trùng với $1$ hoặc $-1$, tức $a=1$ hoặc $a=-1$.
+
+#DANG NDB03266
+@LT
+##TC Cộng (trừ) một số vào mỗi phân thức
+Với các mẫu khác $0$:
+- $\dfrac{x+a}{b+c}+1=\dfrac{x+a+b+c}{b+c}$.
+- $\dfrac{x-a}{b+c}-1=\dfrac{x-a-b-c}{b+c}$.
+Cộng (trừ) $1$ vào mỗi phân thức làm các tử số trở thành cùng một biểu thức $x\pm(a+b+c)$.
+
+##PP Phương trình chữ $a,b,c$ đối xứng
+Đặt điều kiện để các mẫu đều khác $0$
+Chuyển vế để vế phải bằng $0$, tách hằng số ở vế trái thành tổng các số $1$ (mỗi phân thức một số $1$), rồi cộng hoặc trừ $1$ vào từng phân thức để ba tử số giống nhau
+Đặt nhân tử chung của tử số, đưa vế trái về tích của $x-(a+b+c)$ và tổng các phân thức nghịch đảo
+Biện luận: tổng nghịch đảo khác $0$ thì $x=a+b+c$; tổng nghịch đảo bằng $0$ thì mọi $x$ đều là nghiệm
+
+##CY
+Không được chia hai vế cho tổng các phân thức nghịch đảo khi chưa biết nó khác $0$: với một số bộ giá trị của $a,b,c$ tổng đó bằng $0$ và phương trình nghiệm đúng với mọi $x$.
+
+@VD
+##VD
+Giải phương trình (với $a,b,c$ là tham số): $\dfrac{x-a}{b+c}+\dfrac{x-b}{c+a}+\dfrac{x-c}{a+b}=3$.
+
+Bài giải:
+Với $b+c\ne0$, $c+a\ne0$, $a+b\ne0$ (để các phân thức có nghĩa), tách $3=1+1+1$ và trừ $1$ vào mỗi phân thức:
+$\left(\dfrac{x-a}{b+c}-1\right)+\left(\dfrac{x-b}{c+a}-1\right)+\left(\dfrac{x-c}{a+b}-1\right)=0$
+$\Leftrightarrow\dfrac{x-a-b-c}{b+c}+\dfrac{x-a-b-c}{c+a}+\dfrac{x-a-b-c}{a+b}=0$
+$\Leftrightarrow(x-a-b-c)\left(\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\right)=0$ $(*)$
+Nếu $\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\ne0$ thì $(*)\Leftrightarrow x=a+b+c$.
+Nếu $\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}=0$ thì $(*)$ trở thành $0\cdot(x-a-b-c)=0$, nghiệm đúng với mọi $x$.
+Vậy nếu $\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}\ne0$ thì $S=\{a+b+c\}$; nếu $\dfrac1{b+c}+\dfrac1{c+a}+\dfrac1{a+b}=0$ thì $S=\mathbb{R}$.
+
+##VD
+Giải phương trình (với $a,b,c$ là các tham số): $\dfrac{a+b-x}c+\dfrac{b+c-x}a+\dfrac{c+a-x}b+\dfrac{4x}{a+b+c}=1$.
+
+Bài giải:
+Với $a,b,c\ne0$ và $a+b+c\ne0$ (để các phân thức có nghĩa), chuyển $1$ sang vế trái, cộng $1$ vào mỗi phân thức trong ba phân thức đầu (cộng $3$) và trừ $4$ ở phân thức cuối (tổng $3-4=-1$ bù lại số $1$ đã chuyển):
+$\left(\dfrac{a+b-x}c+1\right)+\left(\dfrac{b+c-x}a+1\right)+\left(\dfrac{c+a-x}b+1\right)+\left(\dfrac{4x}{a+b+c}-4\right)=0$
+$\Leftrightarrow\dfrac{a+b+c-x}c+\dfrac{a+b+c-x}a+\dfrac{a+b+c-x}b-\dfrac{4(a+b+c-x)}{a+b+c}=0$
+$\Leftrightarrow(a+b+c-x)\left(\dfrac1c+\dfrac1a+\dfrac1b-\dfrac4{a+b+c}\right)=0$ $(*)$
+Nếu $\dfrac1a+\dfrac1b+\dfrac1c\ne\dfrac4{a+b+c}$ thì $(*)\Leftrightarrow x=a+b+c$.
+Nếu $\dfrac1a+\dfrac1b+\dfrac1c=\dfrac4{a+b+c}$ thì $(*)$ trở thành $0\cdot(a+b+c-x)=0$, nghiệm đúng với mọi $x$.
+Vậy nếu $\dfrac1a+\dfrac1b+\dfrac1c\ne\dfrac4{a+b+c}$ thì $S=\{a+b+c\}$; nếu $\dfrac1a+\dfrac1b+\dfrac1c=\dfrac4{a+b+c}$ thì $S=\mathbb{R}$.
+
+#NHOM NNB01463
+@LT
+##ĐN Giá trị tuyệt đối
+Giá trị tuyệt đối của số $A$ là $\lvert A\rvert=A$ nếu $A\ge0$ và $\lvert A\rvert=-A$ nếu $A<0$. Về hình học, $\lvert A\rvert$ là khoảng cách từ điểm $A$ đến điểm $0$ trên trục số.
+
+##TC Tính chất của giá trị tuyệt đối
+- $\lvert A\rvert\ge0$, và $\lvert A\rvert=0\Leftrightarrow A=0$.
+- $\lvert A\rvert=\lvert-A\rvert$ và $\lvert A\rvert^2=A^2$.
+- $\lvert A\rvert\ge A$, dấu "=" xảy ra khi và chỉ khi $A\ge0$; $\lvert A\rvert\ge-A$, dấu "=" xảy ra khi và chỉ khi $A\le0$.
+- $\lvert A\rvert=\lvert B\rvert\Leftrightarrow A=B$ hoặc $A=-B$.
+- $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$, dấu "=" xảy ra khi và chỉ khi $AB\ge0$.
+- $\lvert A\rvert+\lvert B\rvert\ge\lvert A-B\rvert$, dấu "=" xảy ra khi và chỉ khi $AB\le0$.
+
+##CY
+Khi bỏ dấu giá trị tuyệt đối theo từng trường hợp, các trường hợp phải phủ kín mọi giá trị của $x$ và nghiệm tìm được trong một trường hợp chỉ được nhận khi thỏa điều kiện của chính trường hợp đó.
+
+#DANG NDB02748
+@LT
+##TC Hai dạng cơ bản
+- $\lvert A\rvert=k$: nếu $k>0$ thì $A=k$ hoặc $A=-k$; nếu $k=0$ thì $A=0$; nếu $k<0$ thì vô nghiệm.
+- $\lvert A\rvert=B\Leftrightarrow B\ge0$ và ($A=B$ hoặc $A=-B$).
+
+##PP Giải phương trình $\lvert A\rvert=B$
+Xác định biểu thức $A$ trong dấu giá trị tuyệt đối và chia hai trường hợp $A\ge0$ và $A<0$ (hoặc đặt điều kiện $B\ge0$ rồi giải $A=B$, $A=-B$)
+Ở mỗi trường hợp, bỏ dấu giá trị tuyệt đối đúng theo dấu của $A$ và giải phương trình nhận được
+Đối chiếu nghiệm với điều kiện của trường hợp đó (hoặc với $B\ge0$), nhận hay loại
+Hợp các nghiệm được nhận để kết luận tập nghiệm
+
+##CY
+Với phương trình có dạng $\lvert A\rvert=A$ thì không cần giải: nghiệm là mọi $x$ thỏa $A\ge0$ (cả một khoảng), còn $\lvert A\rvert=-A$ thì nghiệm là mọi $x$ thỏa $A\le0$.
+
+@VD
+##VD
+Giải các phương trình sau:
+a) $\lvert x-7\rvert=x-7$;
+b) $2\lvert x+1\rvert-3x=5$.
+
+Bài giải:
+a) Trường hợp $x-7\ge0$, tức $x\ge7$: khi đó $\lvert x-7\rvert=x-7$ nên phương trình trở thành $x-7=x-7$, luôn đúng. Vậy mọi $x\ge7$ đều là nghiệm.
+Trường hợp $x<7$: khi đó $\lvert x-7\rvert=7-x$ nên phương trình trở thành $7-x=x-7$, tức $x=7$, không thỏa $x<7$, loại.
+Vậy $S=\{x\mid x\ge7\}$.
+
+b) Trường hợp $x\ge-1$: $\lvert x+1\rvert=x+1$ nên phương trình trở thành
+$2(x+1)-3x=5$
+$\Leftrightarrow-x+2=5$
+$\Leftrightarrow x=-3$, không thỏa $x\ge-1$, loại.
+Trường hợp $x<-1$: $\lvert x+1\rvert=-(x+1)$ nên phương trình trở thành
+$-2(x+1)-3x=5$
+$\Leftrightarrow-5x-2=5$
+$\Leftrightarrow x=-\dfrac75$, thỏa $x<-1$, nhận.
+Vậy $S=\left\{-\dfrac75\right\}$.
+
+##VD
+Giải phương trình: $\lvert x^3-x-8\rvert=x^3+x+8$.
+
+Bài giải:
+Trường hợp $x^3-x-8\ge0$: phương trình trở thành
+$x^3-x-8=x^3+x+8$
+$\Leftrightarrow-2x=16$
+$\Leftrightarrow x=-8$
+Với $x=-8$ thì $x^3-x-8=-512+8-8=-512<0$, không thỏa điều kiện, loại.
+Trường hợp $x^3-x-8<0$: phương trình trở thành
+$-(x^3-x-8)=x^3+x+8$
+$\Leftrightarrow-x^3+x+8=x^3+x+8$
+$\Leftrightarrow2x^3=0$
+$\Leftrightarrow x=0$
+Với $x=0$ thì $x^3-x-8=-8<0$, thỏa điều kiện, nhận.
+Vậy $S=\{0\}$.
+
+#DANG NDB03267
+@LT
+##TC Phương trình hai vế đều có giá trị tuyệt đối
+$\lvert A\rvert=\lvert B\rvert\Leftrightarrow A=B$ hoặc $A=-B$. Lí do: $\lvert A\rvert=\lvert B\rvert\Leftrightarrow A^2=B^2\Leftrightarrow(A-B)(A+B)=0$. Phép biến đổi này tương đương nên không cần xét dấu từng biểu thức và không cần thử lại.
+
+##PP Giải phương trình $\lvert A\rvert=\lvert B\rvert$
+Tách thành hai phương trình $A=B$ và $A=-B$
+Giải riêng từng phương trình, đặt biểu thức $B$ trong ngoặc khi viết $-B$ để đổi dấu cả biểu thức
+Hợp nghiệm của hai phương trình (một trong hai có thể vô nghiệm hoặc hai phương trình có nghiệm trùng)
+
+##CY
+Nếu một vế chỉ là biểu thức $B$ không có dấu giá trị tuyệt đối thì đó là dạng $\lvert A\rvert=B$ và phải thêm điều kiện $B\ge0$; chỉ khi hai vế đều có giá trị tuyệt đối mới được bỏ qua điều kiện.
+
+@VD
+##VD
+Giải phương trình: $\lvert2x-5\rvert=\lvert x+3\rvert$.
+
+Bài giải:
+$\lvert2x-5\rvert=\lvert x+3\rvert$
+$\Leftrightarrow2x-5=x+3$ hoặc $2x-5=-(x+3)$
+$\Leftrightarrow x=8$ hoặc $3x=2$
+$\Leftrightarrow x=8$ hoặc $x=\dfrac23$
+Vậy $S=\left\{8;\dfrac23\right\}$.
+
+##VD
+Giải phương trình: $\lvert x^2-3x+2\rvert=\lvert x^2-1\rvert$.
+
+Bài giải:
+$\lvert x^2-3x+2\rvert=\lvert x^2-1\rvert$
+$\Leftrightarrow x^2-3x+2=x^2-1$ hoặc $x^2-3x+2=-(x^2-1)$
+Giải $x^2-3x+2=x^2-1$: $-3x=-3$, nên $x=1$.
+Giải $x^2-3x+2=-x^2+1$: $2x^2-3x+1=0\Leftrightarrow(2x-1)(x-1)=0\Leftrightarrow x=\dfrac12$ hoặc $x=1$.
+Vậy $S=\left\{\dfrac12;1\right\}$.
+
+#DANG NDB03268
+@LT
+##TC Dấu của nhị thức bậc nhất
+Nhị thức $ax+b$ ($a\ne0$) bằng $0$ tại $x=-\dfrac ba$; cùng dấu với $a$ khi $x>-\dfrac ba$ và trái dấu với $a$ khi $x<-\dfrac ba$.
+
+##PP Lập bảng xét dấu, chia khoảng
+Tìm nghiệm của từng nhị thức nằm trong dấu giá trị tuyệt đối, sắp các mốc theo thứ tự tăng dần để chia trục số thành các khoảng
+Lập bảng xét dấu các nhị thức trên từng khoảng
+Ở mỗi khoảng, bỏ dấu giá trị tuyệt đối (giữ nguyên biểu thức khi nó không âm, đổi dấu khi nó âm) rồi giải phương trình bậc nhất
+Đối chiếu nghiệm với khoảng đang xét, nhận hay loại; hợp các nghiệm được nhận
+
+##CY
+Các khoảng phải phủ kín trục số, mỗi mốc thuộc đúng một khoảng. Với $n$ mốc có $n+1$ khoảng. Nếu sau khi bỏ dấu, phương trình trở thành $0x=0$ thì mọi $x$ thuộc khoảng đó đều là nghiệm.
+
+@VD
+##VD
+Giải phương trình: $\lvert x-1\rvert-2\lvert x\rvert=-2$.
+
+Bài giải:
+Hai biểu thức $x-1$ và $x$ đổi dấu tại $x=1$ và $x=0$; chia trục số thành ba khoảng.
+Trường hợp $x<0$: $\lvert x-1\rvert=1-x$ và $\lvert x\rvert=-x$ nên phương trình trở thành
+$1-x+2x=-2$
+$\Leftrightarrow x=-3$, thỏa $x<0$, nhận.
+Trường hợp $0\le x\le1$: $\lvert x-1\rvert=1-x$ và $\lvert x\rvert=x$ nên phương trình trở thành
+$1-x-2x=-2$
+$\Leftrightarrow-3x=-3$
+$\Leftrightarrow x=1$, thỏa $0\le x\le1$, nhận.
+Trường hợp $x>1$: $\lvert x-1\rvert=x-1$ và $\lvert x\rvert=x$ nên phương trình trở thành
+$x-1-2x=-2$
+$\Leftrightarrow-x=-1$
+$\Leftrightarrow x=1$, không thỏa $x>1$, loại.
+Vậy $S=\{-3;1\}$.
+
+##VD
+Giải phương trình: $\lvert x\rvert+\lvert x-1\rvert+\lvert x-2\rvert=3$.
+
+Bài giải:
+Ba biểu thức $x$, $x-1$, $x-2$ đổi dấu tại $0$, $1$, $2$; chia trục số thành bốn khoảng.
+Trường hợp $x<0$: phương trình trở thành $-x+(1-x)+(2-x)=3\Leftrightarrow3-3x=3\Leftrightarrow x=0$, không thỏa $x<0$, loại.
+Trường hợp $0\le x<1$: phương trình trở thành $x+(1-x)+(2-x)=3\Leftrightarrow3-x=3\Leftrightarrow x=0$, thỏa $0\le x<1$, nhận.
+Trường hợp $1\le x<2$: phương trình trở thành $x+(x-1)+(2-x)=3\Leftrightarrow x+1=3\Leftrightarrow x=2$, không thỏa $1\le x<2$, loại.
+Trường hợp $x\ge2$: phương trình trở thành $x+(x-1)+(x-2)=3\Leftrightarrow3x-3=3\Leftrightarrow x=2$, thỏa $x\ge2$, nhận.
+Vậy $S=\{0;2\}$.
+
+#DANG NDB03269
+@LT
+##ĐL Bất đẳng thức giá trị tuyệt đối
+Với mọi số thực $A$, $B$: $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$, dấu "=" xảy ra khi và chỉ khi $AB\ge0$.
+
+##TC Các đánh giá hay dùng
+- Tổng các số không âm bằng $0$ khi và chỉ khi từng số bằng $0$.
+- Nếu $t>1$ thì $t^n>1$ với mọi số nguyên dương $n$; nếu $0<t<1$ thì $t^n<t$ với $n\ge2$.
+- Nếu tổng các biểu thức trong hai dấu giá trị tuyệt đối là một hằng số thì chặn dưới được vế trái bằng $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$.
+
+##PP Đánh giá thay cho xét khoảng
+Nhận dạng vế trái là tổng các giá trị tuyệt đối (hoặc lũy thừa) của biểu thức bậc nhất còn vế phải là hằng số
+Viết các biểu thức trong dấu giá trị tuyệt đối sao cho tổng của chúng không còn $x$ (đổi $\lvert x-5\rvert$ thành $\lvert5-x\rvert$ nếu cần), rồi áp dụng $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$ để chặn dưới vế trái
+So chặn dưới với vế phải: nhỏ hơn thì vô nghiệm, bằng nhau thì phương trình tương đương điều kiện xảy ra dấu "="
+Giải điều kiện dấu "=" (như $AB\ge0$) để được khoảng nghiệm
+Với lũy thừa bậc cao: thử các giá trị làm một số hạng bằng $0$, rồi chia khoảng đánh giá vế trái lớn hơn $1$ hoặc nhỏ hơn $1$
+
+##CY
+Khi dấu "=" xảy ra ở một khoảng thì nghiệm là cả đoạn đó, không chỉ vài giá trị rời rạc; phải giải đúng điều kiện $AB\ge0$ chứ không chỉ thử các mốc.
+
+@VD
+##VD
+Giải phương trình: $\lvert x-5\rvert+\lvert x-2\rvert=3$.
+
+Bài giải:
+Vì $\lvert x-5\rvert=\lvert5-x\rvert$ nên theo bất đẳng thức $\lvert A\rvert+\lvert B\rvert\ge\lvert A+B\rvert$:
+$\lvert x-5\rvert+\lvert x-2\rvert=\lvert5-x\rvert+\lvert x-2\rvert\ge\lvert(5-x)+(x-2)\rvert=3$.
+Phương trình đã cho xảy ra khi và chỉ khi dấu "=" xảy ra, tức $(5-x)(x-2)\ge0$.
+$(5-x)(x-2)\ge0\Leftrightarrow5-x\ge0$ và $x-2\ge0$ (trường hợp hai thừa số cùng $\le0$ không xảy ra vì $x\ge5$ và $x\le2$ mâu thuẫn)
+$\Leftrightarrow2\le x\le5$
+Vậy $S=\{x\mid2\le x\le5\}$.
+
+##VD
+Giải phương trình: $\lvert x-4\rvert^{20}+\lvert x-3\rvert^{21}=1$.
+
+Bài giải:
+Với $x=4$: vế trái bằng $0^{20}+1^{21}=1$. Với $x=3$: vế trái bằng $1^{20}+0^{21}=1$. Vậy $x=4$ và $x=3$ là nghiệm.
+Xét $x>4$: $x-3>1$ nên $\lvert x-3\rvert^{21}>1$, còn $\lvert x-4\rvert^{20}\ge0$. Suy ra vế trái $>1$, phương trình vô nghiệm.
+Xét $x<3$: $4-x>1$ nên $\lvert x-4\rvert^{20}>1$, còn $\lvert x-3\rvert^{21}\ge0$. Suy ra vế trái $>1$, phương trình vô nghiệm.
+Xét $3<x<4$: $0<x-3<1$ và $0<4-x<1$ nên $\lvert x-3\rvert^{21}=(x-3)^{21}<x-3$ và $\lvert x-4\rvert^{20}=(4-x)^{20}<4-x$.
+Cộng lại: vế trái $<(4-x)+(x-3)=1$, phương trình vô nghiệm.
+Vậy $S=\{3;4\}$.
+
+#DANG NDB03270
+@LT
+##TC Đặt ẩn phụ $t=\lvert x\rvert$
+- $\lvert x\rvert^2=x^2$ nên $x^2$ viết được qua $t=\lvert x\rvert$ với $t\ge0$.
+- $\lvert x\rvert=t$: nếu $t>0$ thì $x=\pm t$; nếu $t=0$ thì $x=0$; nếu $t<0$ thì vô nghiệm.
+
+##PP Phương trình có giá trị tuyệt đối lồng nhau hoặc chỉ chứa $\lvert x\rvert$
+Nếu $x$ chỉ xuất hiện qua $\lvert x\rvert$ (và $x^2$): đặt $t=\lvert x\rvert$ với điều kiện $t\ge0$ rồi giải phương trình ẩn $t$ bằng phân tích nhân tử
+Loại các giá trị $t<0$; với mỗi $t$ còn lại giải $\lvert x\rvert=t$ để được $x=\pm t$
+Nếu giá trị tuyệt đối lồng nhau: bỏ lớp ngoài trước bằng $\lvert A\rvert=B\Leftrightarrow B\ge0$ và ($A=B$ hoặc $A=-B$), rồi bỏ tiếp lớp trong theo từng trường hợp
+Đối chiếu mọi nghiệm với các điều kiện đã đặt và kết luận
+
+##CY
+Hai sai lầm hay gặp: quên điều kiện $t\ge0$ nên nhận nhầm nghiệm $t<0$; quên rằng $\lvert x\rvert=t>0$ cho hai nghiệm đối nhau $x=t$ và $x=-t$.
+
+@VD
+##VD
+Giải phương trình: $\lvert\lvert x\rvert-3\rvert=x+1$.
+
+Bài giải:
+Vế trái không âm nên điều kiện: $x+1\ge0$, tức $x\ge-1$.
+Khi đó $\lvert\lvert x\rvert-3\rvert=x+1\Leftrightarrow\lvert x\rvert-3=x+1$ hoặc $\lvert x\rvert-3=-(x+1)$
+$\Leftrightarrow\lvert x\rvert=x+4$ $(1)$ hoặc $\lvert x\rvert=2-x$ $(2)$
+Giải $(1)$: nếu $x\ge0$ thì $x=x+4$, vô nghiệm; nếu $x<0$ thì $-x=x+4$, tức $x=-2$, không thỏa $x\ge-1$, loại.
+Giải $(2)$: nếu $x\ge0$ thì $x=2-x$, tức $x=1$, thỏa $x\ge0$ và $x\ge-1$, nhận; nếu $x<0$ thì $-x=2-x$, vô nghiệm.
+Vậy $S=\{1\}$.
+
+##VD
+Giải phương trình: $x^2-\lvert x\rvert-6=0$.
+
+Bài giải:
+Đặt $t=\lvert x\rvert$ với $t\ge0$. Vì $x^2=\lvert x\rvert^2=t^2$ nên phương trình trở thành
+$t^2-t-6=0$
+$\Leftrightarrow(t-3)(t+2)=0$
+$\Leftrightarrow t=3$ hoặc $t=-2$
+Giá trị $t=-2$ không thỏa $t\ge0$, loại. Với $t=3$: $\lvert x\rvert=3\Leftrightarrow x=3$ hoặc $x=-3$.
+Vậy $S=\{-3;3\}$.
+
+#DANG NDB03271
+@LT
+##TC Tổng các số không âm
+Nếu $\lvert A\rvert+\lvert B\rvert=0$ thì $\lvert A\rvert=0$ và $\lvert B\rvert=0$ đồng thời, tức $A=0$ và $B=0$. Vế trái là giá trị tuyệt đối thì không âm, nên vế phải cũng phải không âm; điều này thường cho ngay điều kiện về dấu của $x$.
+
+##PP Phương trình giá trị tuyệt đối có tham số
+Xét riêng các giá trị của tham số làm vế phải hoặc hệ số bằng $0$ (khi đó phương trình thường đơn giản hơn)
+Với các giá trị còn lại, dùng giá trị tuyệt đối không âm để suy ra điều kiện về dấu của $x$, từ đó xác định dấu các biểu thức trong dấu giá trị tuyệt đối và bỏ lần lượt từng lớp
+Đưa về phương trình bậc nhất ẩn $x$ có tham số và biện luận theo hệ số của $x$
+Đối chiếu nghiệm $x=f(m)$ với điều kiện về dấu của $x$ để tìm các giá trị tham số mà nghiệm thỏa, rồi kết luận theo tham số
+
+##CY
+Sau khi tìm được $x$ theo tham số, bắt buộc đối chiếu với điều kiện về dấu đã dùng để bỏ giá trị tuyệt đối; bỏ bước này sẽ nhận nhầm các giá trị tham số mà nghiệm không thuộc khoảng đang xét.
+
+@VD
+##VD
+Tìm $x$ biết: $\lvert x^2-1\rvert+\lvert a(x-1)\rvert=0$ (với $a$ là tham số).
+
+Bài giải:
+Vì $\lvert x^2-1\rvert\ge0$ và $\lvert a(x-1)\rvert\ge0$ nên phương trình đã cho tương đương với $x^2-1=0$ và $a(x-1)=0$ đồng thời.
+Từ $x^2-1=0$ suy ra $x=1$ hoặc $x=-1$.
+Nếu $a=0$: $a(x-1)=0$ đúng với mọi $x$, nên nghiệm là $x=1$ và $x=-1$.
+Nếu $a\ne0$: $a(x-1)=0\Leftrightarrow x=1$. Với $x=-1$ thì $a(x-1)=-2a\ne0$ nên bị loại; chỉ còn $x=1$.
+Vậy nếu $a=0$ thì $S=\{-1;1\}$; nếu $a\ne0$ thì $S=\{1\}$.
+
+##VD
+Giải phương trình: $\lvert2x-\lvert2x-1\rvert\rvert=-m^2x$ (với $m$ là tham số).
+
+Bài giải:
+Phương trình $\lvert2x-\lvert2x-1\rvert\rvert=-m^2x$ $(*)$.
+Trường hợp $m=0$: $(*)$ trở thành
+$\lvert2x-\lvert2x-1\rvert\rvert=0$
+$\Leftrightarrow2x-\lvert2x-1\rvert=0$
+$\Leftrightarrow\lvert2x-1\rvert=2x$
+$\Leftrightarrow x\ge0$ và ($2x-1=2x$ hoặc $2x-1=-2x$)
+Phương trình $2x-1=2x$ có dạng $0x=1$, vô nghiệm; phương trình $2x-1=-2x$ cho $x=\dfrac14$, thỏa $x\ge0$. Vậy với $m=0$ thì $S=\left\{\dfrac14\right\}$.
+Trường hợp $m\ne0$: vế trái của $(*)$ không âm nên $-m^2x\ge0$; mà $m^2>0$ nên $x\le0$.
+Khi đó $2x-1<0$ nên $\lvert2x-1\rvert=1-2x$, và $2x-\lvert2x-1\rvert=2x-(1-2x)=4x-1<0$ nên $\lvert2x-\lvert2x-1\rvert\rvert=1-4x$.
+Vậy $(*)\Leftrightarrow x\le0$ và $1-4x=-m^2x$, tức $x\le0$ và $(4-m^2)x=1$.
+Nếu $m=\pm2$: $(4-m^2)x=1$ có dạng $0x=1$, vô nghiệm.
+Nếu $m\ne\pm2$: $x=\dfrac1{4-m^2}$, khác $0$; nghiệm này thỏa $x\le0$ khi và chỉ khi $4-m^2<0$, tức $m^2>4$, tức $\lvert m\rvert>2$.
+Nếu $0<\lvert m\rvert<2$ thì $4-m^2>0$ nên $x>0$, trái điều kiện $x\le0$, phương trình vô nghiệm.
+Vậy với $m=0$: $S=\left\{\dfrac14\right\}$; với $\lvert m\rvert>2$: $S=\left\{\dfrac1{4-m^2}\right\}$; với $0<\lvert m\rvert\le2$: $S=\varnothing$.

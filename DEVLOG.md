@@ -82093,3 +82093,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đo (chỉ đọc, TKB + hoc_sinh_lop):** 95 ca · 53 lớp · 61/29/6 ca theo độ dài · 759 lượt em-ca · 8,0 em/ca · 429 lượt em-lớp · giá niêm yết 126,5 tr/tuần = 548 tr/tháng ↔ thật 496,5 ⇒ hệ số 0,9.
 - **Tính:** 163 phòng-ca, dùng 90 = 147. Đích 1 = 1.764 lượt em-ca ≈ 1.100 tr/tháng niêm yết. Đích 2 ở 18 em/ca vượt sức chứa (trung bình 16,25 chỗ, trần 16,9) ⇒ đề xuất 15 ≈ 1.375 tr. "800 lượt" của Thùy hợp lý, hơi thấp (tính ra ~1.000 lượt em-lớp).
 - **Giả định chưa xác nhận:** tối tính 7 ngày; Chủ nhật 6 ca. Cột phong.suc_chua trong DB hầu hết trống — chưa điền (chờ lệnh).
+
+### 21/11 — [Kho 8T] Chốt tầng dạng 170 dạng + gán lại câu + lý thuyết/ví dụ (phiên fill 8T)
+- **Việc:** Thùy nói 8T không cần clone cho đủ 30/dạng ("bài tập nhiều"), chốt dùng đề xuất tầng dạng 14/11, rồi fill lý thuyết + ví dụ cho cả bản đồ (không chỉ AM-GM).
+- **Làm:** (1) AM-GM: ghi lý thuyết/ví dụ vào 7 dạng + 3 nhóm theo bản đồ Thùy vừa sửa (gộp nội dung cũ theo cặp tổng/tích). (2) `k8T/dang/ghi-dang.mjs`: 37 nhóm → 170 dạng (dạng cũ giữ mã làm dạng 1; 133 mã mới); tổng 185 dạng khối 8T. (3) Gán lại 813 câu bằng 2 trạm Sonnet (lượt 2 mù, `gan-lai.mjs`): 629 cùng dạng (419 cao / 210 vừa) → ghi; 184 lệch → để nguyên chỗ cũ (159 câu sai chỗ ở dạng 1 nhóm cũ, chờ trưởng khối). (4) 16 trạm Sonnet soạn lý thuyết nhóm + dạng + ví dụ (đáp số thử máy), `ghi-ly-thuyet.mjs` chỉ điền ô trống: 184/185 dạng đủ.
+- **Sai / bài học:** script ghi lý thuyết lần đầu lỗi `ly_thuyet` mơ hồ cột (join hai bảng) — rollback, sửa; `\text{mẫu dương}` lọt vào 1 lô, cổng chặn đúng; trạm báo số câu lệch (39 thay vì 37) nhưng cổng đối chiếu không lỗi.
+- **Còn lại:** xem "Tình trạng khối 8T" trong `spec-giai-bai.md` (159 câu sai chỗ, AM-GM 0 gốc, 51 dạng rỗng, nhập TVA §4–7 / TCDS / VHB, Opus chưa kiểm ví dụ).

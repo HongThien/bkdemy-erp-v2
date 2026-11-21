@@ -1,0 +1,570 @@
+#NHOM NNB01466
+@LT
+##ĐN Bất phương trình bậc nhất một ẩn
+Bất phương trình có dạng $ax+b>0$ (hoặc $ax+b<0$, $ax+b\ge0$, $ax+b\le0$) với $a\ne0$ gọi là bất phương trình bậc nhất một ẩn. Nghiệm của nó là mọi giá trị của $x$ làm bất đẳng thức đúng; tập hợp các nghiệm gọi là tập nghiệm.
+
+##TC Quy tắc biến đổi tương đương
+- Chuyển một hạng tử từ vế này sang vế kia thì phải đổi dấu hạng tử đó.
+- Nhân (hoặc chia) hai vế với cùng một số dương thì giữ nguyên chiều bất đẳng thức; nhân (hoặc chia) hai vế với cùng một số âm thì đổi chiều.
+- Với $a>0$: $ax>c\Leftrightarrow x>\dfrac ca$. Với $a<0$: $ax>c\Leftrightarrow x<\dfrac ca$.
+- Khi hệ số $a=0$: $0\cdot x>c$ nghiệm đúng với mọi $x$ nếu $c<0$ và vô nghiệm nếu $c\ge0$; $0\cdot x\ge c$ nghiệm đúng với mọi $x$ nếu $c\le0$ và vô nghiệm nếu $c>0$.
+
+##TC Biểu diễn tập nghiệm trên trục số
+- Tập nghiệm $x>a$ ứng với phần trục số bên phải điểm $a$; tập nghiệm $x<a$ ứng với phần bên trái điểm $a$.
+- Đầu mút không thuộc tập nghiệm (dấu $>$, $<$) thì vẽ vòng tròn rỗng (ngoặc đơn); đầu mút thuộc tập nghiệm (dấu $\ge$, $\le$) thì chấm đặc (ngoặc vuông).
+
+##CY
+Không nhân hay chia hai vế cho một biểu thức chứa ẩn hoặc chứa tham số khi chưa biết dấu của nó, vì dấu quyết định chiều của bất đẳng thức (và biểu thức có thể bằng $0$).
+
+#DANG NDB02739
+@LT
+##PP Giải bất phương trình bậc nhất một ẩn
+Bỏ ngoặc (nhân phân phối) và quy đồng khử mẫu bằng cách nhân hai vế với mẫu chung dương
+Chuyển các hạng tử chứa $x$ về một vế, hằng số về vế kia rồi thu gọn thành $ax>b$ (hoặc dấu khác)
+Chia hai vế cho hệ số $a$, đổi chiều nếu $a<0$
+Viết tập nghiệm và biểu diễn trên trục số
+
+##CY
+Khi khử mẫu phải nhân mẫu chung với cả các số hạng không có mẫu. Dấu trừ đứng trước ngoặc thì khi bỏ ngoặc phải đổi dấu mọi hạng tử trong ngoặc.
+@VD
+##VD
+Giải bất phương trình: $x-7(x-5)\ge2x+51$.
+
+Bài giải:
+$x-7(x-5)\ge2x+51$
+$\Leftrightarrow x-7x+35\ge2x+51$
+$\Leftrightarrow-6x+35\ge2x+51$
+$\Leftrightarrow-8x\ge16$
+$\Leftrightarrow x\le-2$ (chia hai vế cho $-8<0$ nên đổi chiều).
+Vậy $S=\{x\mid x\le-2\}$.
+Biểu diễn trên trục số: tô phần bên trái điểm $-2$ và chấm đặc tại $-2$.
+
+##VD
+Giải bất phương trình và biểu diễn tập nghiệm trên trục số: $\dfrac{2x-1}{3}-\dfrac{x+2}{4}<\dfrac{5x-3}{6}+1$.
+
+Bài giải:
+Quy đồng: nhân hai vế với $12>0$ (giữ nguyên chiều) ta được:
+$\dfrac{2x-1}{3}-\dfrac{x+2}{4}<\dfrac{5x-3}{6}+1$
+$\Leftrightarrow4(2x-1)-3(x+2)<2(5x-3)+12$
+$\Leftrightarrow8x-4-3x-6<10x-6+12$
+$\Leftrightarrow5x-10<10x+6$
+$\Leftrightarrow-5x<16$
+$\Leftrightarrow x>-\dfrac{16}5$ (chia hai vế cho $-5<0$ nên đổi chiều).
+Vậy $S=\left\{x\mid x>-\dfrac{16}5\right\}$.
+Biểu diễn trên trục số: tô phần bên phải điểm $-\dfrac{16}5$ và vẽ vòng tròn rỗng tại $-\dfrac{16}5$.
+
+#DANG NDB03281
+@LT
+##TC Cộng một hằng số vào phân thức
+$\dfrac{x+a}{b}+1=\dfrac{x+a+b}{b}$. Nếu các phân thức $\dfrac{x+a_i}{b_i}$ có cùng tổng $a_i+b_i=k$ thì sau khi cộng $1$ vào mỗi phân thức, mọi tử đều thành $x+k$.
+
+##PP Cộng hằng số rồi đặt nhân tử chung
+Kiểm tra mỗi phân thức có dạng $\dfrac{x+a_i}{b_i}$ và các tổng $a_i+b_i$ bằng nhau
+Cộng $1$ vào mỗi phân thức (cộng bù cùng số lần ở hai vế, hoặc tách hằng số ở vế phải thành các số $1$) để mọi tử đều bằng $x+k$
+Đặt $x+k$ làm nhân tử chung, được $(x+k)\cdot M$ so với $0$
+Xét dấu thừa số $M$ (tổng các phân số cùng dấu, hoặc so sánh các phân số cùng tử), rồi suy ra dấu của $x+k$
+
+##CY
+Phân số dương có cùng tử dương thì mẫu càng lớn phân số càng nhỏ. Chia hai vế cho số âm thì phải đổi chiều bất phương trình.
+@VD
+##VD
+Giải bất phương trình: $\dfrac{x+1}{99}+\dfrac{x+4}{96}+\dfrac{x+5}{95}\ge-3$.
+
+Bài giải:
+Các tổng tử $+$ mẫu: $1+99=4+96=5+95=100$. Chuyển $-3$ sang vế trái, tách thành ba số $1$ cộng vào ba phân số:
+$\dfrac{x+1}{99}+\dfrac{x+4}{96}+\dfrac{x+5}{95}\ge-3$
+$\Leftrightarrow\dfrac{x+1}{99}+1+\dfrac{x+4}{96}+1+\dfrac{x+5}{95}+1\ge0$
+$\Leftrightarrow\dfrac{x+100}{99}+\dfrac{x+100}{96}+\dfrac{x+100}{95}\ge0$
+$\Leftrightarrow(x+100)\left(\dfrac1{99}+\dfrac1{96}+\dfrac1{95}\right)\ge0$
+Vì $\dfrac1{99}+\dfrac1{96}+\dfrac1{95}>0$ nên bất phương trình tương đương $x+100\ge0$, tức $x\ge-100$.
+Vậy $S=\{x\mid x\ge-100\}$.
+
+##VD
+Giải bất phương trình: $\dfrac{x+4}{195}+\dfrac{x+5}{194}+\dfrac{x+6}{193}>\dfrac{x+7}{192}+\dfrac{x+8}{191}+\dfrac{x+9}{190}$.
+
+Bài giải:
+Mỗi phân thức có tử $+$ mẫu $=199$ ($4+195=5+194=\dots=9+190=199$). Cộng $1$ vào từng phân thức ở cả hai vế:
+$\dfrac{x+4}{195}+1+\dfrac{x+5}{194}+1+\dfrac{x+6}{193}+1>\dfrac{x+7}{192}+1+\dfrac{x+8}{191}+1+\dfrac{x+9}{190}+1$
+$\Leftrightarrow\dfrac{x+199}{195}+\dfrac{x+199}{194}+\dfrac{x+199}{193}>\dfrac{x+199}{192}+\dfrac{x+199}{191}+\dfrac{x+199}{190}$
+$\Leftrightarrow(x+199)\left(\dfrac1{195}+\dfrac1{194}+\dfrac1{193}-\dfrac1{192}-\dfrac1{191}-\dfrac1{190}\right)>0$
+Vì $\dfrac1{195}<\dfrac1{192}$, $\dfrac1{194}<\dfrac1{191}$, $\dfrac1{193}<\dfrac1{190}$ nên thừa số trong ngoặc là số âm.
+Do đó bất phương trình tương đương $x+199<0$ (chia hai vế cho số âm nên đổi chiều), tức $x<-199$.
+Vậy $S=\{x\mid x<-199\}$.
+
+#DANG NDB03282
+@LT
+##TC Giao hai tập nghiệm
+Nghiệm của hệ hai bất phương trình là các giá trị của $x$ thỏa mãn đồng thời cả hai, tức là giao của hai tập nghiệm.
+- $x>a$ và $x>b$ thì $x>\max\{a;b\}$; $x<a$ và $x<b$ thì $x<\min\{a;b\}$.
+- $x>a$ và $x<b$: nếu $a<b$ thì $a<x<b$; nếu $a\ge b$ thì hệ vô nghiệm.
+- $x\ge a$ và $x\le a$ thì $x=a$ là nghiệm duy nhất.
+
+##PP Giải hệ rồi chọn nghiệm nguyên
+Giải riêng từng bất phương trình của hệ
+Biểu diễn hai tập nghiệm trên cùng một trục số
+Lấy phần chung của hai tập nghiệm làm tập nghiệm của hệ
+Nếu đề hỏi số nguyên, liệt kê các số nguyên thuộc tập nghiệm (chú ý đầu mút lấy hay không) và đếm
+
+##CY
+Số các số nguyên từ $m$ đến $n$ ($m\le n$) là $n-m+1$. Khi tập nghiệm là $4<x\le13$ thì số $4$ bị loại còn số $13$ được lấy.
+@VD
+##VD
+Tìm các số nguyên $x$ thỏa mãn đồng thời $5x-2>3x+6$ và $\dfrac{3x-1}4\le\dfrac{x+6}2$. Có bao nhiêu số như vậy?
+
+Bài giải:
+Xét hệ $\begin{cases}5x-2>3x+6\\ \dfrac{3x-1}4\le\dfrac{x+6}2\end{cases}$
+Bất phương trình thứ nhất: $5x-2>3x+6\Leftrightarrow2x>8\Leftrightarrow x>4$.
+Bất phương trình thứ hai: nhân hai vế với $4>0$, $3x-1\le2(x+6)\Leftrightarrow3x-1\le2x+12\Leftrightarrow x\le13$.
+Lấy giao hai tập nghiệm: $4<x\le13$.
+Các số nguyên thỏa mãn là $5;6;7;8;9;10;11;12;13$, có $13-5+1=9$ số.
+Vậy có $9$ số nguyên thỏa mãn đề bài.
+
+##VD
+Tìm số nguyên nhỏ nhất, số nguyên lớn nhất và tổng các số nguyên $x$ thỏa mãn $-3<\dfrac{2x-1}3\le5$.
+
+Bài giải:
+Bất đẳng thức kép tương đương hệ $\begin{cases}\dfrac{2x-1}3>-3\\ \dfrac{2x-1}3\le5\end{cases}$
+Nhân hai vế mỗi bất phương trình với $3>0$: $2x-1>-9\Leftrightarrow x>-4$ và $2x-1\le15\Leftrightarrow x\le8$.
+Giao hai tập nghiệm: $-4<x\le8$.
+Các số nguyên thỏa mãn là $-3;-2;\dots;8$, nhỏ nhất là $-3$, lớn nhất là $8$.
+Tổng: các số $-3;-2;-1;0;1;2;3$ có tổng bằng $0$ (đối nhau từng cặp), còn lại $4+5+6+7+8=30$.
+Vậy số nguyên nhỏ nhất là $-3$, lớn nhất là $8$ và tổng các số nguyên đó bằng $30$.
+
+#DANG NDB03283
+@LT
+##TC Xét dấu hệ số của $x$
+Đưa bất phương trình về dạng $a(m)\cdot x>b(m)$ với hệ số $a(m)$ chứa tham số.
+- $a(m)>0$: nghiệm $x>\dfrac{b(m)}{a(m)}$ (giữ chiều).
+- $a(m)<0$: nghiệm $x<\dfrac{b(m)}{a(m)}$ (đổi chiều).
+- $a(m)=0$: thay giá trị $m$ đó vào, được $0\cdot x>b(m)$; khi đó chỉ còn xét $b(m)$: bất phương trình nghiệm đúng với mọi $x$ hoặc vô nghiệm.
+
+##PP Giải, biện luận và tìm tham số
+Chuyển vế, đưa về dạng $a(m)\cdot x>b(m)$ (phân tích $a(m)$, $b(m)$ thành nhân tử nếu được)
+Tìm giá trị của $m$ làm $a(m)=0$ rồi chia các trường hợp $a(m)=0$, $a(m)>0$, $a(m)<0$
+Giải từng trường hợp và kết luận theo $m$
+Với câu hỏi tìm tham số: so sánh tập nghiệm của từng trường hợp với điều kiện đề cho (chứa trong, bằng, chứa), chọn các trường hợp thỏa rồi hợp các giá trị của $m$
+
+##CY
+Không được chia hai vế cho $a(m)$ khi chưa biết dấu của nó. Đừng bỏ sót trường hợp $a(m)=0$, và khi so sánh tập nghiệm với điều kiện phải xét cả đầu mút.
+@VD
+##VD
+Giải và biện luận bất phương trình sau: $(m+2)x>(m+2)(m-5)$.
+
+Bài giải:
+Hệ số của $x$ là $m+2$ nên xét ba trường hợp.
+Trường hợp $m=-2$: bất phương trình trở thành $0\cdot x>0$, không có $x$ nào thỏa mãn, nên $S=\varnothing$.
+Trường hợp $m>-2$: $m+2>0$, chia hai vế cho $m+2$ và giữ nguyên chiều, ta được $x>m-5$, nên $S=\{x\mid x>m-5\}$.
+Trường hợp $m<-2$: $m+2<0$, chia hai vế cho $m+2$ và đổi chiều, ta được $x<m-5$, nên $S=\{x\mid x<m-5\}$.
+Vậy: nếu $m=-2$ thì bất phương trình vô nghiệm; nếu $m>-2$ thì nghiệm là $x>m-5$; nếu $m<-2$ thì nghiệm là $x<m-5$.
+
+##VD
+Cho bất phương trình $mx+1\ge m^2+x$ (ẩn $x$, tham số $m$).
+a) Giải và biện luận bất phương trình.
+b) Tìm $m$ để mọi nghiệm của bất phương trình đều là số dương.
+
+Bài giải:
+a) $mx+1\ge m^2+x\Leftrightarrow(m-1)x\ge m^2-1\Leftrightarrow(m-1)x\ge(m-1)(m+1)$.
+Trường hợp $m=1$: bất phương trình trở thành $0\cdot x\ge0$, nghiệm đúng với mọi $x$, tức mọi số thực đều là nghiệm.
+Trường hợp $m>1$: $m-1>0$, chia hai vế cho $m-1$ và giữ nguyên chiều, ta được $x\ge m+1$.
+Trường hợp $m<1$: $m-1<0$, chia hai vế cho $m-1$ và đổi chiều, ta được $x\le m+1$.
+
+b) Xét lần lượt ba trường hợp ở câu a).
+Nếu $m=1$: mọi số thực đều là nghiệm, trong đó có $x=0$ không dương, nên loại.
+Nếu $m<1$: nghiệm là $x\le m+1$; số $x=m-1<m+1$ là một nghiệm và $m-1<0$ không dương, nên loại.
+Nếu $m>1$: nghiệm là $x\ge m+1$, mà $m+1>2>0$ nên mọi nghiệm đều dương, thỏa mãn.
+Vậy các giá trị cần tìm là $m>1$.
+
+#DANG NDB03284
+@LT
+##TC Dấu của thương
+$\dfrac AB>0$ khi $A$ và $B$ cùng dấu; $\dfrac AB<0$ khi $A$ và $B$ trái dấu. Nếu tử là hằng số dương thì dấu của thương là dấu của mẫu.
+
+##PP Rút gọn rồi giải bất phương trình theo yêu cầu
+Tìm điều kiện xác định: mọi mẫu của biểu thức ban đầu phải khác $0$
+Phân tích tử, mẫu thành nhân tử, quy đồng, thực hiện các phép tính rồi rút gọn
+Lập bất phương trình theo yêu cầu ($A>0$, $A<0$, $A>k$): với $A>k$ thì chuyển $k$ sang vế trái, quy đồng để đưa về thương so với $0$
+Giải bất phương trình (bậc nhất, tích hoặc thương, có bảng xét dấu) rồi đối chiếu điều kiện xác định, loại giá trị không thỏa
+
+##CY
+Phải đối chiếu với điều kiện xác định của biểu thức ban đầu, gồm cả giá trị làm triệt tiêu nhân tử khi rút gọn. Giá trị đó có thể nằm trong tập nghiệm của bất phương trình đã rút gọn nhưng vẫn phải loại.
+@VD
+##VD
+Cho biểu thức $A=\dfrac x{x-2}+\dfrac{x-3}{x+2}-\dfrac{2x^2-4x+4}{x^2-4}$.
+a) Tìm điều kiện xác định và rút gọn $A$.
+b) Tìm $x$ để $A<0$.
+c) Tìm $x$ để $A>\dfrac13$.
+
+Bài giải:
+a) Điều kiện xác định: $x-2\ne0$, $x+2\ne0$, $x^2-4\ne0$, tức $x\ne2$ và $x\ne-2$.
+$A=\dfrac{x(x+2)+(x-3)(x-2)-(2x^2-4x+4)}{x^2-4}$
+$=\dfrac{x^2+2x+x^2-5x+6-2x^2+4x-4}{x^2-4}$
+$=\dfrac{x+2}{(x-2)(x+2)}=\dfrac1{x-2}$.
+
+b) $A<0\Leftrightarrow\dfrac1{x-2}<0$. Tử bằng $1>0$ nên mẫu phải âm: $x-2<0$, tức $x<2$.
+Kết hợp điều kiện xác định $x\ne-2$: $x<2$ và $x\ne-2$.
+
+c) $A>\dfrac13\Leftrightarrow\dfrac1{x-2}-\dfrac13>0\Leftrightarrow\dfrac{3-(x-2)}{3(x-2)}>0\Leftrightarrow\dfrac{5-x}{3(x-2)}>0\Leftrightarrow\dfrac{5-x}{x-2}>0$ (nhân hai vế với $3>0$).
+Tử và mẫu cùng dấu:
+Trường hợp $5-x>0$ và $x-2>0$: $x<5$ và $x>2$, suy ra $2<x<5$.
+Trường hợp $5-x<0$ và $x-2<0$: $x>5$ và $x<2$, không có $x$ nào thỏa mãn.
+Các giá trị $2<x<5$ đều thỏa điều kiện xác định. Vậy $A>\dfrac13$ khi $2<x<5$.
+
+##VD
+Cho biểu thức $B=\dfrac{x^3+2x^2-3x}{x^3-x^2-2x}$.
+a) Tìm điều kiện xác định và rút gọn $B$.
+b) Tìm $x$ để $B\ge0$.
+
+Bài giải:
+a) Phân tích: $x^3+2x^2-3x=x(x^2+2x-3)=x(x-1)(x+3)$ và $x^3-x^2-2x=x(x^2-x-2)=x(x-2)(x+1)$.
+Điều kiện xác định: $x(x-2)(x+1)\ne0$, tức $x\ne0$, $x\ne2$, $x\ne-1$.
+$B=\dfrac{x(x-1)(x+3)}{x(x-2)(x+1)}=\dfrac{(x-1)(x+3)}{(x-2)(x+1)}$.
+
+b) Các giá trị làm tử hoặc mẫu bằng $0$ là $-3;-1;1;2$. Xét dấu $B$ trên từng khoảng:
+Với $x<-3$: tử $(x-1)(x+3)$ dương (hai thừa số cùng âm), mẫu $(x-2)(x+1)$ dương, nên $B>0$.
+Với $-3<x<-1$: tử âm, mẫu dương, nên $B<0$.
+Với $-1<x<1$: tử âm, mẫu âm, nên $B>0$.
+Với $1<x<2$: tử dương, mẫu âm, nên $B<0$.
+Với $x>2$: tử dương, mẫu dương, nên $B>0$.
+Tại $x=-3$ và $x=1$ thì $B=0$ (thỏa $B\ge0$); tại $x=-1$ và $x=2$ mẫu bằng $0$ nên loại.
+Vậy $B\ge0$ khi $x\le-3$ hoặc $-1<x\le1$ hoặc $x>2$; đối chiếu điều kiện xác định phải loại thêm $x=0$ (thuộc khoảng $-1<x\le1$).
+Kết luận: $S=\{x\mid x\le-3\}\cup\{x\mid-1<x<0\}\cup\{x\mid0<x\le1\}\cup\{x\mid x>2\}$.
+
+#NHOM NNB01467
+@LT
+##TC Dấu của nhị thức bậc nhất
+Nhị thức $ax+b$ ($a\ne0$) có nghiệm $x_0=-\dfrac ba$. Với $x>x_0$ nó cùng dấu với $a$, với $x<x_0$ nó trái dấu với $a$ (phải cùng, trái khác).
+
+##TC Dấu của tích và thương
+- $AB>0\Leftrightarrow A,B$ cùng dấu; $AB<0\Leftrightarrow A,B$ trái dấu.
+- $\dfrac AB>0\Leftrightarrow A,B$ cùng dấu; $\dfrac AB<0\Leftrightarrow A,B$ trái dấu; $\dfrac AB\ge0\Leftrightarrow A=0$ hoặc ($A,B$ cùng dấu), luôn kèm điều kiện $B\ne0$.
+- Tích (thương) của nhiều thừa số: đếm số thừa số âm; số chẵn thì dương, số lẻ thì âm.
+
+##TC Giá trị tuyệt đối
+$\lvert A\rvert=A$ nếu $A\ge0$ và $\lvert A\rvert=-A$ nếu $A<0$; $\lvert A\rvert\ge0$ và $\lvert A\rvert^2=A^2$.
+- $\lvert A\rvert<B\Leftrightarrow-B<A<B$.
+- $\lvert A\rvert>B\Leftrightarrow A<-B$ hoặc $A>B$.
+- $\lvert A\rvert>\lvert B\rvert\Leftrightarrow A^2>B^2\Leftrightarrow(A-B)(A+B)>0$; tương tự với dấu $<$.
+
+##CY
+Không nhân chéo hay khử mẫu khi chưa biết dấu của mẫu. Khi lập bảng xét dấu phải tách đúng các khoảng giữa các nghiệm; nghiệm của mẫu không bao giờ thuộc tập nghiệm, còn nghiệm của tử chỉ lấy khi dấu là $\ge$ hoặc $\le$.
+
+#DANG NDB02744
+@LT
+##PP Giải bất phương trình tích bằng xét dấu
+Chuyển mọi hạng tử về vế trái (vế phải bằng $0$) và phân tích vế trái thành tích các nhị thức
+Tìm nghiệm của từng nhị thức, sắp xếp tăng dần để chia trục số thành các khoảng
+Xét dấu từng nhị thức trên mỗi khoảng, suy ra dấu của tích (bảng xét dấu); với hai thừa số có thể xét hai trường hợp cùng dấu hoặc trái dấu
+Chọn các khoảng có dấu cần tìm, thêm các nghiệm của nhị thức nếu dấu là $\ge$ hoặc $\le$
+
+##CY
+Phải xét dấu từng thừa số trên từng khoảng, không suy đoán dấu của cả tích theo thứ tự các nghiệm khi các thừa số có hệ số của $x$ khác dấu. Thừa số bình phương $(x-a)^2$ không đổi dấu khi đi qua $a$ nhưng làm tích bằng $0$ tại $x=a$.
+@VD
+##VD
+Phân tích đa thức $P(x)=3x^2-27x+54$ thành nhân tử. Với giá trị nào của $x$ thì $P(x)$ nhận giá trị không âm?
+
+Bài giải:
+$P(x)=3x^2-27x+54=3(x^2-9x+18)=3(x^2-3x-6x+18)$
+$=3\left[x(x-3)-6(x-3)\right]=3(x-3)(x-6)$.
+Vì $3>0$ nên $P(x)\ge0\Leftrightarrow(x-3)(x-6)\ge0$.
+Tích hai số không âm khi hai số cùng không âm hoặc cùng không dương:
+Trường hợp $x-3\ge0$ và $x-6\ge0$: khi đó $x\ge6$.
+Trường hợp $x-3\le0$ và $x-6\le0$: khi đó $x\le3$.
+Vậy $P(x)=3(x-3)(x-6)$ và $P(x)\ge0$ khi $x\le3$ hoặc $x\ge6$.
+
+##VD
+Giải bất phương trình: $x^3-3x^2-4x+12<0$.
+
+Bài giải:
+$x^3-3x^2-4x+12=x^2(x-3)-4(x-3)=(x-3)(x^2-4)=(x-3)(x-2)(x+2)$.
+Bất phương trình trở thành $(x-3)(x-2)(x+2)<0$. Các nghiệm của ba nhị thức là $-2;2;3$, chia trục số thành bốn khoảng:
+Với $x<-2$: cả ba thừa số $x-3$, $x-2$, $x+2$ đều âm, tích âm.
+Với $-2<x<2$: $x+2>0$, $x-2<0$, $x-3<0$, tích dương.
+Với $2<x<3$: $x+2>0$, $x-2>0$, $x-3<0$, tích âm.
+Với $x>3$: cả ba thừa số đều dương, tích dương.
+Tích âm khi $x<-2$ hoặc $2<x<3$ (các nghiệm $-2;2;3$ làm tích bằng $0$ nên không lấy).
+Vậy $S=\{x\mid x<-2\}\cup\{x\mid2<x<3\}$.
+
+#DANG NDB03285
+@LT
+##TC Quan hệ giữa thương và tích
+$\dfrac AB\ge0\Leftrightarrow AB\ge0$ và $B\ne0$; $\dfrac AB>0\Leftrightarrow AB>0$. Dấu của thương xác định bằng dấu của tử và mẫu, không bằng cách nhân chéo.
+
+##PP Giải bất phương trình thương
+Tìm điều kiện xác định (các mẫu khác $0$)
+Chuyển mọi hạng tử về vế trái, quy đồng và rút gọn thành $\dfrac{T(x)}{M(x)}$ so với $0$; phân tích $T$, $M$ thành nhân tử
+Tìm nghiệm của tử và của mẫu, lập bảng xét dấu thương trên từng khoảng
+Chọn các khoảng có dấu cần tìm; nghiệm của tử chỉ lấy khi dấu là $\ge$ hoặc $\le$, nghiệm của mẫu luôn loại
+
+##CY
+Không nhân chéo $\dfrac AB>k$ thành $A>kB$ vì chưa biết dấu của $B$; nhân chéo chỉ đúng khi mẫu dương. Khi nhân hai vế với số âm (để đổi hệ số cao nhất thành dương) phải đổi chiều bất phương trình.
+@VD
+##VD
+Giải bất phương trình: $\dfrac{x-3}{x+2}>2$.
+
+Bài giải:
+Điều kiện: $x+2\ne0$, tức $x\ne-2$.
+$\dfrac{x-3}{x+2}>2\Leftrightarrow\dfrac{x-3}{x+2}-2>0\Leftrightarrow\dfrac{x-3-2(x+2)}{x+2}>0\Leftrightarrow\dfrac{-x-7}{x+2}>0\Leftrightarrow\dfrac{x+7}{x+2}<0$ (nhân hai vế với $-1$ và đổi chiều).
+Thương $\dfrac{x+7}{x+2}$ âm nên $x+7$ và $x+2$ trái dấu.
+Trường hợp $x+7>0$ và $x+2<0$: $x>-7$ và $x<-2$, suy ra $-7<x<-2$.
+Trường hợp $x+7<0$ và $x+2>0$: $x<-7$ và $x>-2$, không có $x$ nào thỏa mãn.
+Vậy $S=\{x\mid-7<x<-2\}$.
+
+##VD
+Giải bất phương trình: $\dfrac{x-1}{x+2}\le\dfrac{x+3}{x-2}$.
+
+Bài giải:
+Điều kiện: $x\ne-2$ và $x\ne2$.
+Chuyển vế, quy đồng:
+$\dfrac{x-1}{x+2}-\dfrac{x+3}{x-2}\le0$
+$\Leftrightarrow\dfrac{(x-1)(x-2)-(x+3)(x+2)}{(x+2)(x-2)}\le0$
+$\Leftrightarrow\dfrac{x^2-3x+2-x^2-5x-6}{(x+2)(x-2)}\le0$
+$\Leftrightarrow\dfrac{-4(2x+1)}{(x+2)(x-2)}\le0$
+$\Leftrightarrow\dfrac{2x+1}{(x+2)(x-2)}\ge0$ (chia hai vế cho $-4<0$ nên đổi chiều).
+Các nghiệm của tử và mẫu: $-2;-\dfrac12;2$. Xét dấu thương:
+Với $x<-2$: tử âm, mẫu $(x+2)(x-2)$ dương, thương âm.
+Với $-2<x<-\dfrac12$: tử âm, mẫu âm, thương dương.
+Với $-\dfrac12<x<2$: tử dương, mẫu âm, thương âm.
+Với $x>2$: tử dương, mẫu dương, thương dương.
+Thương $\ge0$ khi $-2<x\le-\dfrac12$ (lấy $x=-\dfrac12$ vì tử bằng $0$) hoặc $x>2$; các giá trị $x=\pm2$ làm mẫu bằng $0$ nên loại.
+Vậy $S=\left\{x\mid-2<x\le-\dfrac12\right\}\cup\{x\mid x>2\}$.
+
+#DANG NDB03286
+@LT
+##TC Biến đổi bất phương trình chứa một dấu giá trị tuyệt đối
+- $\lvert f\rvert<g\Leftrightarrow-g<f<g$ (hệ hai bất phương trình, lấy giao); nếu $g\le0$ thì vô nghiệm.
+- $\lvert f\rvert>g\Leftrightarrow f<-g$ hoặc $f>g$ (hợp hai tập nghiệm).
+- $\lvert f\rvert>\lvert g\rvert\Leftrightarrow f^2>g^2\Leftrightarrow(f-g)(f+g)>0$; $\lvert f\rvert<\lvert g\rvert\Leftrightarrow(f-g)(f+g)<0$.
+
+##PP Giải bất phương trình có một dấu giá trị tuyệt đối
+Nhận dạng: $\lvert f\rvert$ so với một số, với một biểu thức $g$, hay với $\lvert g\rvert$
+Viết bất phương trình tương đương theo quy tắc ở trên (hệ, "hoặc", hoặc tích)
+Giải các bất phương trình bậc nhất hay tích thu được
+Lấy giao (với "$-g<f<g$") hoặc hợp (với "$f<-g$ hoặc $f>g$") các tập nghiệm rồi kết luận
+
+##CY
+Chỉ được bình phương hai vế để bỏ dấu giá trị tuyệt đối khi cả hai vế không âm (như $\lvert f\rvert$ so với $\lvert g\rvert$). Với $\lvert f\rvert<g$ chưa biết dấu của $g$ thì dùng quy tắc kẹp $-g<f<g$, không bình phương.
+@VD
+##VD
+Giải bất phương trình: $\lvert2x-3\rvert<x+1$.
+
+Bài giải:
+$\lvert2x-3\rvert<x+1\Leftrightarrow-(x+1)<2x-3<x+1$
+$\Leftrightarrow\begin{cases}2x-3>-x-1\\ 2x-3<x+1\end{cases}$
+$\Leftrightarrow\begin{cases}3x>2\\ x<4\end{cases}$
+$\Leftrightarrow\begin{cases}x>\dfrac23\\ x<4\end{cases}$
+Lấy giao hai tập nghiệm: $\dfrac23<x<4$.
+Vậy $S=\left\{x\mid\dfrac23<x<4\right\}$.
+
+##VD
+Giải bất phương trình: $\lvert x-2\rvert>\lvert3x+1\rvert$.
+
+Bài giải:
+Hai vế đều không âm nên bình phương hai vế (phép biến đổi tương đương):
+$\lvert x-2\rvert>\lvert3x+1\rvert\Leftrightarrow(x-2)^2>(3x+1)^2$
+$\Leftrightarrow(x-2)^2-(3x+1)^2>0$
+$\Leftrightarrow(x-2-3x-1)(x-2+3x+1)>0$
+$\Leftrightarrow(-2x-3)(4x-1)>0$
+$\Leftrightarrow(2x+3)(4x-1)<0$ (nhân hai vế với $-1$ và đổi chiều).
+Tích âm nên hai thừa số trái dấu:
+Trường hợp $2x+3>0$ và $4x-1<0$: $x>-\dfrac32$ và $x<\dfrac14$, suy ra $-\dfrac32<x<\dfrac14$.
+Trường hợp $2x+3<0$ và $4x-1>0$: $x<-\dfrac32$ và $x>\dfrac14$, không có $x$ nào thỏa mãn.
+Vậy $S=\left\{x\mid-\dfrac32<x<\dfrac14\right\}$.
+
+#DANG NDB03287
+@LT
+##PP Giải bất phương trình có nhiều dấu giá trị tuyệt đối
+Tìm nghiệm của biểu thức trong từng dấu giá trị tuyệt đối, sắp xếp tăng dần rồi chia trục số thành các khoảng
+Lập bảng xét dấu: trên mỗi khoảng xác định dấu từng biểu thức trong dấu giá trị tuyệt đối rồi bỏ dấu giá trị tuyệt đối đúng theo định nghĩa
+Giải bất phương trình thu được trên từng khoảng và giao nghiệm với chính khoảng đang xét
+Hợp các tập nghiệm của các khoảng để có tập nghiệm của bất phương trình
+
+##CY
+Nghiệm tìm được trong mỗi khoảng phải giao với khoảng đó rồi mới hợp lại. Mỗi đầu mút (nghiệm của biểu thức trong dấu giá trị tuyệt đối) phải được xếp vào đúng một khoảng, tránh bỏ sót hoặc tính hai lần.
+@VD
+##VD
+Giải bất phương trình: $\lvert x-1\rvert+\lvert x-5\rvert>8$.
+
+Bài giải:
+Các nghiệm của $x-1$ và $x-5$ là $1$ và $5$, chia trục số thành ba khoảng.
+Với $x<1$: $x-1<0$, $x-5<0$ nên $\lvert x-1\rvert=1-x$, $\lvert x-5\rvert=5-x$. Bất phương trình trở thành $6-2x>8\Leftrightarrow x<-1$. Kết hợp $x<1$: $x<-1$.
+Với $1\le x\le5$: $\lvert x-1\rvert=x-1$, $\lvert x-5\rvert=5-x$. Bất phương trình trở thành $4>8$, vô lí, không có nghiệm.
+Với $x>5$: $\lvert x-1\rvert=x-1$, $\lvert x-5\rvert=x-5$. Bất phương trình trở thành $2x-6>8\Leftrightarrow x>7$. Kết hợp $x>5$: $x>7$.
+Vậy $S=\{x\mid x<-1\}\cup\{x\mid x>7\}$.
+
+##VD
+Giải bất phương trình: $\lvert x\rvert-x+2\le2\lvert x-4\rvert$.
+
+Bài giải:
+Các nghiệm của $x$ và $x-4$ là $0$ và $4$, chia trục số thành ba khoảng.
+Với $x<0$: $\lvert x\rvert=-x$, $\lvert x-4\rvert=4-x$. Bất phương trình trở thành $-x-x+2\le2(4-x)\Leftrightarrow-2x+2\le8-2x\Leftrightarrow2\le8$, luôn đúng. Mọi $x<0$ là nghiệm.
+Với $0\le x<4$: $\lvert x\rvert=x$, $\lvert x-4\rvert=4-x$. Bất phương trình trở thành $x-x+2\le8-2x\Leftrightarrow2x\le6\Leftrightarrow x\le3$. Kết hợp $0\le x<4$: $0\le x\le3$.
+Với $x\ge4$: $\lvert x\rvert=x$, $\lvert x-4\rvert=x-4$. Bất phương trình trở thành $2\le2x-8\Leftrightarrow x\ge5$. Kết hợp $x\ge4$: $x\ge5$.
+Hợp các tập nghiệm: $x\le3$ hoặc $x\ge5$.
+Vậy $S=\{x\mid x\le3\}\cup\{x\mid x\ge5\}$.
+
+#NHOM NNB01468
+@LT
+##ĐN Bất đẳng thức
+$A\ge B$ nghĩa là $A-B\ge0$; $A>B$ nghĩa là $A-B>0$. Chứng minh một bất đẳng thức là chứng tỏ nó đúng với mọi giá trị của biến thỏa điều kiện đề bài.
+
+##TC Tính chất thường dùng
+- $A^2\ge0$ với mọi $A$, dấu "=" xảy ra khi $A=0$; tổng các bình phương bằng $0$ khi và chỉ khi từng số bằng $0$.
+- Cộng cùng một số vào hai vế thì giữ nguyên chiều; nhân hai vế với số dương giữ nguyên chiều, với số âm thì đổi chiều.
+- Cộng hai bất đẳng thức cùng chiều theo vế; nhân hai bất đẳng thức cùng chiều theo vế khi các vế đều dương.
+- Hằng đẳng thức hay dùng: $(a\pm b)^2=a^2\pm2ab+b^2$, $a^2-b^2=(a-b)(a+b)$, $a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)$.
+
+##CY
+Trình bày chứng minh bất đẳng thức phải nêu rõ điều kiện của biến, kết luận "luôn đúng" và điều kiện để dấu "=" xảy ra. Mỗi dấu $\Leftrightarrow$ phải đúng theo cả hai chiều; chỉ bình phương hai vế khi cả hai vế không âm, chỉ nhân hoặc chia hai vế với số có dấu xác định.
+
+#DANG NDB02750
+@LT
+##TC Các tổng bình phương hay dùng
+- $a^2+b^2-2ab=(a-b)^2\ge0$.
+- $2(a^2+b^2+c^2-ab-bc-ca)=(a-b)^2+(b-c)^2+(c-a)^2\ge0$.
+
+##PP Xét hiệu đưa về tổng các bình phương
+Lập hiệu $A-B$ (vế lớn trừ vế nhỏ theo đề bài)
+Khai triển, thu gọn; nếu hệ số lẻ thì nhân hai vế với $2$ hoặc $4$ để dễ nhóm
+Nhóm thành tổng các bình phương dạng $(a-b)^2$, $m(\dots)^2+n(\dots)^2$
+Kết luận $A-B\ge0$ vì tổng các bình phương không âm; dấu "=" xảy ra khi từng bình phương bằng $0$
+
+##CY
+Phải kiểm tra dấu "=" xảy ra đồng thời ở tất cả các bình phương, tức giải hệ các điều kiện $a-b=0$, ... chứ không chỉ một bình phương.
+@VD
+##VD
+Chứng minh rằng: $2(a^2+b^2)\ge(a+b)^2$.
+
+Bài giải:
+$2(a^2+b^2)\ge(a+b)^2$
+$\Leftrightarrow2a^2+2b^2-a^2-2ab-b^2\ge0$
+$\Leftrightarrow a^2-2ab+b^2\ge0$
+$\Leftrightarrow(a-b)^2\ge0$ (luôn đúng).
+Vậy $2(a^2+b^2)\ge(a+b)^2$.
+Dấu "=" xảy ra khi $a=b$.
+
+##VD
+Chứng minh rằng với mọi số thực $x,y$ ta có $x^2+y^2+1\ge xy+x+y$.
+
+Bài giải:
+Xét hiệu và nhân với $2$:
+$2(x^2+y^2+1-xy-x-y)=2x^2+2y^2+2-2xy-2x-2y$
+$=(x^2-2xy+y^2)+(x^2-2x+1)+(y^2-2y+1)$
+$=(x-y)^2+(x-1)^2+(y-1)^2\ge0$.
+Do đó $x^2+y^2+1-xy-x-y\ge0$, tức $x^2+y^2+1\ge xy+x+y$.
+Dấu "=" xảy ra khi $x-y=0$, $x-1=0$ và $y-1=0$, tức $x=y=1$.
+
+#DANG NDB03288
+@LT
+##TC Dấu của các nhân tử
+- Bình phương: $(a-b)^2\ge0$; $a,b>0$ thì $a+b>0$.
+- $x\in[0;1]$ thì $x\ge0$ và $1-x\ge0$.
+- $a,b,c$ là độ dài ba cạnh tam giác thì $a+b>c$, $b+c>a$, $c+a>b$, tức $a+b-c>0$, $b+c-a>0$, $c+a-b>0$.
+
+##PP Xét hiệu rồi phân tích thành tích
+Xét hiệu $A-B$ rồi chuyển hết về một vế
+Nhóm hạng tử hoặc dùng hằng đẳng thức để phân tích thành tích các nhân tử
+Dựa vào điều kiện của biến để xác định dấu từng nhân tử
+Kết luận dấu của tích; nêu điều kiện dấu "=" (một nhân tử bằng $0$)
+
+##CY
+Điều kiện của biến là chìa khóa: bỏ điều kiện thì bất đẳng thức có thể sai. Chẳng hạn $a^3+b^3\ge a^2b+ab^2$ sai với $a=-2$, $b=1$ (vế trái $-7$, vế phải $2$).
+@VD
+##VD
+Cho $a,b>0$. Chứng minh rằng: $a^3+b^3\ge a^2b+ab^2$.
+
+Bài giải:
+$a^3+b^3\ge a^2b+ab^2$
+$\Leftrightarrow a^3+b^3-a^2b-ab^2\ge0$
+$\Leftrightarrow a^2(a-b)-b^2(a-b)\ge0$
+$\Leftrightarrow(a-b)(a^2-b^2)\ge0$
+$\Leftrightarrow(a-b)^2(a+b)\ge0$ (luôn đúng vì $(a-b)^2\ge0$ và $a+b>0$).
+Vậy $a^3+b^3\ge a^2b+ab^2$.
+Dấu "=" xảy ra khi $a=b$.
+
+##VD
+Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng: $4a^2b^2-(a^2+b^2-c^2)^2>0$.
+
+Bài giải:
+Áp dụng hằng đẳng thức hiệu hai bình phương liên tiếp:
+$4a^2b^2-(a^2+b^2-c^2)^2=(2ab)^2-(a^2+b^2-c^2)^2$
+$=(2ab+a^2+b^2-c^2)(2ab-a^2-b^2+c^2)$
+$=[(a+b)^2-c^2][c^2-(a-b)^2]$
+$=(a+b+c)(a+b-c)(c-a+b)(c+a-b)$.
+Vì $a,b,c$ là độ dài ba cạnh của tam giác nên $a+b+c>0$ và theo bất đẳng thức tam giác $a+b>c$, $c+b>a$, $c+a>b$, tức $a+b-c>0$, $c-a+b>0$, $c+a-b>0$.
+Cả bốn nhân tử đều dương nên tích dương.
+Vậy $4a^2b^2-(a^2+b^2-c^2)^2>0$.
+
+#DANG NDB03289
+@LT
+##PP Biến đổi tương đương liên tiếp
+Ghi điều kiện của biến; nếu có căn thức hay phân thức thì nêu điều kiện hai vế (không âm, mẫu dương)
+Biến đổi từng bước bằng phép tương đương: chuyển vế, khai triển, nhân hai vế với số dương, bình phương hai vế không âm
+Đưa về một bất đẳng thức hiển nhiên đúng (như $A^2\ge0$)
+Kết luận bất đẳng thức ban đầu đúng và chỉ ra dấu "="
+
+##CY
+Không viết "từ điều cần chứng minh suy ra điều hiển nhiên" bằng dấu $\Rightarrow$: phải dùng $\Leftrightarrow$ ở mọi bước, vì từ một mệnh đề đúng không suy ngược về mệnh đề cần chứng minh. Bình phương hai vế khi chưa biết chúng không âm làm mất tương đương.
+@VD
+##VD
+Cho $a,b\ge0$. Chứng minh rằng: $\dfrac{a+b}2\le\sqrt{\dfrac{a^2+b^2}2}$.
+
+Bài giải:
+Với $a,b\ge0$ cả hai vế đều không âm nên bình phương hai vế là phép biến đổi tương đương:
+$\dfrac{a+b}2\le\sqrt{\dfrac{a^2+b^2}2}$
+$\Leftrightarrow\dfrac{(a+b)^2}4\le\dfrac{a^2+b^2}2$
+$\Leftrightarrow(a+b)^2\le2(a^2+b^2)$ (nhân hai vế với $4>0$)
+$\Leftrightarrow a^2+2ab+b^2\le2a^2+2b^2$
+$\Leftrightarrow a^2-2ab+b^2\ge0$
+$\Leftrightarrow(a-b)^2\ge0$ (luôn đúng).
+Vậy $\dfrac{a+b}2\le\sqrt{\dfrac{a^2+b^2}2}$.
+Dấu "=" xảy ra khi $a=b$.
+
+##VD
+Chứng minh bất đẳng thức Bu-nhi-a-cốp-xki cho hai cặp số: với mọi số thực $a,b,c,d$ ta có $(a^2+b^2)(c^2+d^2)\ge(ac+bd)^2$.
+
+Bài giải:
+$(a^2+b^2)(c^2+d^2)\ge(ac+bd)^2$
+$\Leftrightarrow a^2c^2+a^2d^2+b^2c^2+b^2d^2\ge a^2c^2+2abcd+b^2d^2$
+$\Leftrightarrow a^2d^2-2abcd+b^2c^2\ge0$
+$\Leftrightarrow(ad-bc)^2\ge0$ (luôn đúng).
+Vậy $(a^2+b^2)(c^2+d^2)\ge(ac+bd)^2$.
+Dấu "=" xảy ra khi $ad=bc$.
+
+#DANG NDB03290
+@LT
+##TC Khử mẫu có điều kiện
+Nếu $B>0$ và $D>0$ thì $\dfrac AB\ge\dfrac CD\Leftrightarrow AD\ge BC$ (nhân hai vế với $BD>0$ nên giữ nguyên chiều). Hai phân thức cùng tử dương: mẫu dương nào lớn hơn thì phân thức nhỏ hơn.
+
+##PP Chứng minh bất đẳng thức chứa phân thức
+Nêu điều kiện làm mọi mẫu dương (nhờ giả thiết về biến)
+Quy đồng hoặc nhân chéo (nhân hai vế với tích các mẫu dương) để được bất đẳng thức đa thức
+Xét hiệu hoặc biến đổi tương đương, có thể phân tích thành tích, tới bất đẳng thức hiển nhiên đúng
+Kết luận và nêu điều kiện dấu "="
+
+##CY
+Nhân chéo chỉ đúng khi mọi mẫu dương; nếu chưa biết dấu của mẫu thì phải quy đồng, xét hiệu và xét dấu cả tử lẫn mẫu.
+@VD
+##VD
+Chứng minh rằng với mọi $a,b>0$: $\dfrac1a+\dfrac1b\ge\dfrac4{a+b}$.
+
+Bài giải:
+Vì $a,b>0$ nên $ab>0$ và $a+b>0$.
+$\dfrac1a+\dfrac1b\ge\dfrac4{a+b}$
+$\Leftrightarrow\dfrac{a+b}{ab}\ge\dfrac4{a+b}$
+$\Leftrightarrow(a+b)^2\ge4ab$ (nhân hai vế với $ab(a+b)>0$)
+$\Leftrightarrow a^2-2ab+b^2\ge0$
+$\Leftrightarrow(a-b)^2\ge0$ (luôn đúng).
+Vậy $\dfrac1a+\dfrac1b\ge\dfrac4{a+b}$ với mọi $a,b>0$.
+Dấu "=" xảy ra khi $a=b$.
+
+##VD
+Cho $x>y>0$. Chứng minh rằng: $\dfrac{x-y}{x+y}<\dfrac{x^2-y^2}{x^2+y^2}$.
+
+Bài giải:
+Vì $x>y>0$ nên $x-y>0$, $x+y>0$ và $x^2+y^2>0$, hai mẫu đều dương. Nhân hai vế với $(x+y)(x^2+y^2)>0$ (giữ nguyên chiều):
+$\dfrac{x-y}{x+y}<\dfrac{x^2-y^2}{x^2+y^2}$
+$\Leftrightarrow(x-y)(x^2+y^2)<(x^2-y^2)(x+y)$
+$\Leftrightarrow(x-y)(x^2+y^2)<(x-y)(x+y)^2$
+$\Leftrightarrow(x-y)\left[(x+y)^2-(x^2+y^2)\right]>0$
+$\Leftrightarrow2xy(x-y)>0$ (luôn đúng vì $x>0$, $y>0$, $x-y>0$).
+Vậy $\dfrac{x-y}{x+y}<\dfrac{x^2-y^2}{x^2+y^2}$.

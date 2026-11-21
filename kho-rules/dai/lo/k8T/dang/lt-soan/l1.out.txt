@@ -1,0 +1,488 @@
+#NHOM NNB01382
+@LT
+##TC Các hằng đẳng thức cần thuộc
+- $(a+b)^2=a^2+2ab+b^2$; $(a-b)^2=a^2-2ab+b^2$; $a^2-b^2=(a-b)(a+b)$.
+- $(a+b)^3=a^3+3a^2b+3ab^2+b^3$; $(a-b)^3=a^3-3a^2b+3ab^2-b^3$.
+- $a^3+b^3=(a+b)(a^2-ab+b^2)$; $a^3-b^3=(a-b)(a^2+ab+b^2)$.
+
+##TC Hằng đẳng thức mở rộng
+- $(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$.
+- $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1})$ với mọi số tự nhiên $n\ge2$.
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$. Suy ra nếu $a+b+c=0$ thì $a^3+b^3+c^3=3abc$.
+
+##TC Các hệ quả biến đổi hay dùng
+- $a^2+b^2=(a+b)^2-2ab=(a-b)^2+2ab$.
+- $(a+b)^2-(a-b)^2=4ab$.
+- $a^3+b^3=(a+b)^3-3ab(a+b)$.
+
+##CY
+- Hằng đẳng thức dùng được theo cả hai chiều: khai triển (từ tích sang tổng) và thu gọn (từ tổng sang tích hoặc luỹ thừa); chiều thu gọn rất hay bị bỏ sót.
+- Khi $A$ hoặc $B$ là biểu thức nhiều hạng tử hoặc mang dấu trừ thì phải đặt trong ngoặc: $(-x)^2=x^2$ nhưng $(-x)^3=-x^3$.
+- $(a-b)^2=(b-a)^2$ nhưng $(a-b)^3=-(b-a)^3$.
+
+#DANG NDB02725
+@LT
+##TC Dấu hiệu nhận ra hằng đẳng thức khi thu gọn
+- Ba hạng tử: hai hạng tử là bình phương của $A$ và $B$, hạng tử còn lại bằng $\pm2AB$ thì tổng là $(A\pm B)^2$.
+- Bốn hạng tử: hai hạng tử ở hai đầu là lập phương của $A$ và $B$, hai hạng tử giữa là $3A^2B$ và $3AB^2$ thì tổng là $(A\pm B)^3$.
+- Sáu hạng tử: ba bình phương $A^2,B^2,C^2$ cùng ba tích đôi $2AB,2BC,2CA$ thì tổng là $(A+B+C)^2$ với dấu thích hợp.
+
+##PP Viết một tổng thành bình phương hoặc lập phương
+Tìm các hạng tử là bình phương (hoặc lập phương) của một biểu thức rồi gọi biểu thức đó là $A$, $B$ (và $C$ nếu có)
+Kiểm tra từng hạng tử còn lại có đúng bằng $2AB$, $2BC$, $2CA$ (hoặc $3A^2B$, $3AB^2$) kể cả dấu hay không
+Chọn dấu của $A$, $B$, $C$ sao cho dấu của mọi tích đôi đều khớp
+Viết gọn thành $(A\pm B)^2$, $(A\pm B)^3$ hoặc $(A+B+C)^2$ rồi khai triển ngược lại để kiểm tra
+
+##CY
+Dấu của mỗi tích đôi bằng tích hai dấu của hai số hạng tương ứng, vì vậy tích ba dấu của $2AB$, $2BC$, $2CA$ luôn dương. Nếu ba dấu tìm được không thoả điều này thì đa thức không phải là bình phương của một tổng ba số hạng.
+@VD
+##VD
+a) Khai triển $(2x-y+3)^2$.
+b) Rút gọn $(x+y)(x^2-xy+y^2)-(x-y)(x^2+xy+y^2)$.
+
+Bài giải:
+a) Áp dụng hằng đẳng thức $(A+B+C)^2=A^2+B^2+C^2+2AB+2BC+2CA$ với $A=2x$, $B=-y$, $C=3$:
+$(2x-y+3)^2=(2x)^2+(-y)^2+3^2+2\cdot2x\cdot(-y)+2\cdot(-y)\cdot3+2\cdot3\cdot2x$
+$=4x^2+y^2+9-4xy-6y+12x$.
+
+b) Áp dụng hằng đẳng thức tổng hai lập phương cho tích thứ nhất và hiệu hai lập phương cho tích thứ hai:
+$(x+y)(x^2-xy+y^2)=x^3+y^3$
+$(x-y)(x^2+xy+y^2)=x^3-y^3$
+Do đó biểu thức $=(x^3+y^3)-(x^3-y^3)=2y^3$.
+Vậy giá trị của biểu thức là $2y^3$.
+
+##VD
+a) Viết đa thức $4x^2+9y^2+z^2+12xy-4xz-6yz$ thành bình phương của một tổng.
+b) Viết đa thức $8x^3-12x^2y+6xy^2-y^3$ thành lập phương của một hiệu.
+
+Bài giải:
+a) Ba hạng tử $4x^2$, $9y^2$, $z^2$ lần lượt là bình phương của $2x$, $3y$, $z$ (hoặc $-z$).
+Ta có $12xy=2\cdot2x\cdot3y$, $-4xz=2\cdot2x\cdot(-z)$ và $-6yz=2\cdot3y\cdot(-z)$.
+Chọn $A=2x$, $B=3y$, $C=-z$ thì cả ba tích đôi đều khớp dấu.
+Áp dụng $(A+B+C)^2=A^2+B^2+C^2+2AB+2BC+2CA$:
+$4x^2+9y^2+z^2+12xy-4xz-6yz=(2x+3y-z)^2$.
+
+b) Hạng tử đầu $8x^3=(2x)^3$ và hạng tử cuối $-y^3=(-y)^3$ nên chọn $A=2x$, $B=-y$.
+Kiểm tra: $3A^2B=3\cdot(2x)^2\cdot(-y)=-12x^2y$ và $3AB^2=3\cdot2x\cdot y^2=6xy^2$, đúng với hai hạng tử giữa.
+Áp dụng $(A+B)^3=A^3+3A^2B+3AB^2+B^3$:
+$8x^3-12x^2y+6xy^2-y^3=(2x-y)^3$.
+
+#DANG NDB03220
+@LT
+##PP Rút gọn bằng cách đặt ẩn phụ
+Quan sát các nhóm hạng tử hoặc các biểu thức trong ngoặc lặp đi lặp lại, hoặc chỉ khác nhau về dấu
+Đặt mỗi nhóm lặp đó bằng một chữ mới ($A$, $B$, …) và viết lại cả biểu thức theo các chữ mới
+Dùng hằng đẳng thức hoặc nhân đa thức để rút gọn theo các chữ mới
+Thay các chữ mới bằng biểu thức ban đầu rồi thu gọn nốt
+Nếu kết quả không còn chứa biến thì kết luận giá trị biểu thức không phụ thuộc vào biến
+
+##CY
+Khi thay chữ mới trở lại phải đặt biểu thức trong ngoặc, nhất là khi trước nó có dấu trừ hoặc số mũ.
+@VD
+##VD
+Tính tổng $(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)$, trong đó $S=a+b+c$.
+
+Bài giải:
+Thay $S=a+b+c$ ta có $S-2b=a-b+c$ và $S-2c=a+b-c$.
+$(S-2b)(S-2c)=(a-b+c)(a+b-c)=[a+(c-b)]\cdot[a-(c-b)]$
+$=a^2-(c-b)^2$ (hiệu hai bình phương)
+$=a^2-b^2-c^2+2bc$.
+Hoán vị vòng $a\to b\to c\to a$, ta được ngay hai tích còn lại:
+$(S-2c)(S-2a)=b^2-c^2-a^2+2ca$
+$(S-2a)(S-2b)=c^2-a^2-b^2+2ab$
+Cộng ba đẳng thức theo vế:
+$(S-2b)(S-2c)+(S-2c)(S-2a)+(S-2a)(S-2b)=-a^2-b^2-c^2+2ab+2bc+2ca$.
+Vậy tổng đã cho bằng $-a^2-b^2-c^2+2ab+2bc+2ca$.
+
+##VD
+Chứng minh rằng giá trị của biểu thức sau không phụ thuộc vào $x$ và $y$:
+$B=(x+y+2)^2-2(x+y+2)(x+y-1)+(x+y-1)^2$.
+
+Bài giải:
+Đặt $u=x+y+2$ và $v=x+y-1$. Khi đó $B=u^2-2uv+v^2$.
+Áp dụng hằng đẳng thức bình phương của một hiệu: $B=(u-v)^2$.
+Thay lại: $u-v=(x+y+2)-(x+y-1)=3$.
+Suy ra $B=3^2=9$.
+Vậy $B=9$ với mọi $x$, $y$, tức là giá trị của $B$ không phụ thuộc vào $x$ và $y$.
+
+#DANG NDB03221
+@LT
+##TC Công cụ tính nhanh
+- $a^2-b^2=(a-b)(a+b)$; nếu $a-b=1$ thì $a^2-b^2=a+b$.
+- $1+2+3+\dots+n=\dfrac{n(n+1)}2$.
+- $(a-1)(a+1)(a^2+1)(a^4+1)\cdots(a^{2^k}+1)=a^{2^{k+1}}-1$.
+
+##PP Tính nhanh một số lớn hoặc một dãy
+Nhận dạng biểu thức: các bình phương cộng trừ xen kẽ thì nhóm cặp; tích các thừa số dạng $a^{2^k}+1$ thì nhân liên hợp; một số lớn xuất hiện nhiều lần thì thay số bằng chữ
+Nhóm cặp: ghép hai số hạng liền kề thành hiệu hai bình phương rồi phân tích thành tích, thừa số hiệu thường bằng $1$
+Nhân liên hợp: nhân thêm thừa số $(a-1)$ vào biểu thức rồi dùng hiệu hai bình phương liên tiếp để thu gọn
+Thay số bằng chữ: đặt số lớn bằng $x$, viết các số lớn khác theo $x$, rút gọn rồi mới thay giá trị
+Tính nốt bằng công thức tổng dãy số hoặc luỹ thừa
+
+##CY
+Đếm số số hạng để biết khi ghép cặp thì số nào bị lẻ ra, ở đầu hay ở cuối dãy; số lẻ ra giữ nguyên, không ghép bừa.
+@VD
+##VD
+Tính $S=1^2-2^2+3^2-4^2+\dots+99^2-100^2+101^2$.
+
+Bài giải:
+Giữ riêng $1^2$ rồi ghép các số hạng còn lại thành từng cặp liền kề:
+$S=1^2+(3^2-2^2)+(5^2-4^2)+\dots+(101^2-100^2)$
+Áp dụng hằng đẳng thức hiệu hai bình phương cho từng cặp:
+$=1+(3+2)(3-2)+(5+4)(5-4)+\dots+(101+100)(101-100)$
+Mỗi thừa số hiệu đều bằng $1$ nên
+$=1+(3+2)+(5+4)+\dots+(101+100)$
+$=1+2+3+4+5+\dots+100+101$
+$=\dfrac{101\cdot102}2=5151$.
+Vậy $S=5151$.
+
+##VD
+a) Tính $C=(2+1)(2^2+1)(2^4+1)(2^8+1)(2^{16}+1)$.
+b) Tính $E=2022^2-2021\cdot2023$.
+
+Bài giải:
+a) Vì $2-1=1$ nên $C=(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1)(2^{16}+1)$.
+Áp dụng hiệu hai bình phương liên tiếp:
+$(2-1)(2+1)=2^2-1$
+$(2^2-1)(2^2+1)=2^4-1$
+$(2^4-1)(2^4+1)=2^8-1$
+$(2^8-1)(2^8+1)=2^{16}-1$
+$(2^{16}-1)(2^{16}+1)=2^{32}-1$
+Vậy $C=2^{32}-1=4294967295$.
+
+b) Đặt $x=2022$, khi đó $2021=x-1$ và $2023=x+1$.
+$E=x^2-(x-1)(x+1)$
+$=x^2-(x^2-1)$ (hiệu hai bình phương)
+$=1$.
+Vậy $E=1$.
+
+#DANG NDB03222
+@LT
+##TC Hai công cụ
+- Hiệu hai bình phương: $N=m^2-k^2=(m-k)(m+k)$.
+- Đồng nhất thức tích hai tổng bình phương: $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2=(ac-bd)^2+(ad+bc)^2$.
+
+##PP Viết một số thành tích hai số tự nhiên khác 1
+Tìm số chính phương $m^2$ lớn hơn $N$ và gần $N$ nhất (thường là số tròn chục, tròn trăm hoặc tròn nghìn)
+Tính $m^2-N$ và kiểm tra xem hiệu này có là số chính phương $k^2$ hay không
+Viết $N=m^2-k^2=(m-k)(m+k)$
+Kiểm tra cả hai thừa số đều lớn hơn $1$; nếu $m^2-N$ chưa chính phương thì thử số chính phương kế tiếp
+
+##PP Viết một số thành tổng hai bình phương
+Phân tích số thành tích các thừa số mà mỗi thừa số đã biết là tổng hai bình phương
+Áp dụng đồng nhất thức $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$
+Đổi dấu để được cách viết thứ hai $(ac-bd)^2+(ad+bc)^2$
+Cộng lại các bình phương để kiểm tra kết quả
+
+##CY
+Đề yêu cầu "khác $1$" thì phải kiểm tra thừa số nhỏ $m-k$ khác $1$; nếu $m-k=1$ thì cách viết chỉ là $1\cdot N$, không đạt yêu cầu.
+@VD
+##VD
+Viết số $9991$ thành tích của hai số tự nhiên đều khác $1$.
+
+Bài giải:
+Số chính phương gần $9991$ và lớn hơn nó là $100^2=10000$.
+Ta có $10000-9991=9=3^2$ nên $9991=100^2-3^2$.
+Áp dụng hằng đẳng thức hiệu hai bình phương:
+$9991=(100-3)(100+3)=97\cdot103$.
+Cả hai thừa số $97$ và $103$ đều khác $1$.
+Vậy $9991=97\cdot103$.
+
+##VD
+Viết số $130$ thành tổng của hai bình phương bằng hai cách khác nhau.
+
+Bài giải:
+Ta có $130=10\cdot13$, trong đó $10=3^2+1^2$ và $13=3^2+2^2$.
+Áp dụng đồng nhất thức $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$ với $a=3$, $b=1$, $c=3$, $d=2$:
+$130=(3\cdot3+1\cdot2)^2+(3\cdot2-1\cdot3)^2=11^2+3^2$.
+Áp dụng dạng thứ hai $(a^2+b^2)(c^2+d^2)=(ac-bd)^2+(ad+bc)^2$ với cùng các số:
+$130=(3\cdot3-1\cdot2)^2+(3\cdot2+1\cdot3)^2=7^2+9^2$.
+Kiểm tra: $11^2+3^2=121+9=130$ và $7^2+9^2=49+81=130$.
+Vậy $130=11^2+3^2=7^2+9^2$.
+
+#DANG NDB03223
+@LT
+##PP Chứng minh đẳng thức bằng hằng đẳng thức
+Xét hai vế, chọn vế phức tạp hơn làm điểm xuất phát (hoặc đưa cả hai vế về cùng một biểu thức)
+Khai triển hoặc thu gọn bằng hằng đẳng thức, ghi tên hằng đẳng thức đã dùng ở mỗi bước, rồi rút gọn các hạng tử đồng dạng
+Nếu đề cho điều kiện ràng buộc (ví dụ $a+b+c=0$) thì dùng điều kiện đó để thay một biến hoặc để rút ra quan hệ dùng ở bước sau
+Biến đổi liên tiếp cho đến khi được vế còn lại, rồi kết luận
+
+##TC Hệ quả hay dùng khi có điều kiện
+- Nếu $a+b+c=0$ thì $a^2+b^2+c^2=-2(ab+bc+ca)$ và $a^3+b^3+c^3=3abc$.
+- $(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2+2abc(a+b+c)$.
+
+##CY
+Không viết ngay đẳng thức cần chứng minh rồi biến đổi cả hai vế như thể nó đã đúng. Chỉ được làm vậy khi mọi bước đều là biến đổi tương đương và có ghi $\Leftrightarrow$.
+@VD
+##VD
+Chứng minh đồng nhất thức $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$.
+
+Bài giải:
+Biến đổi vế phải bằng hằng đẳng thức bình phương của một tổng và của một hiệu:
+$(ac+bd)^2+(ad-bc)^2=a^2c^2+2abcd+b^2d^2+a^2d^2-2abcd+b^2c^2$
+Hai hạng tử $2abcd$ và $-2abcd$ đối nhau nên triệt tiêu:
+$=a^2c^2+b^2d^2+a^2d^2+b^2c^2$
+Nhóm hạng tử và đặt nhân tử chung:
+$=(a^2c^2+a^2d^2)+(b^2c^2+b^2d^2)$
+$=a^2(c^2+d^2)+b^2(c^2+d^2)$
+$=(a^2+b^2)(c^2+d^2)$, đúng bằng vế trái.
+Vậy $(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$.
+
+##VD
+Cho $a+b+c=0$. Chứng minh rằng:
+a) $a^3+b^3+c^3=3abc$.
+b) $a^4+b^4+c^4=\dfrac{(a^2+b^2+c^2)^2}2$.
+
+Bài giải:
+a) Từ $a+b+c=0$ suy ra $a+b=-c$. Lập phương hai vế: $(a+b)^3=-c^3$.
+Khai triển lập phương của một tổng: $a^3+b^3+3ab(a+b)=-c^3$.
+Thay $a+b=-c$: $a^3+b^3+3ab\cdot(-c)=-c^3$, hay $a^3+b^3-3abc=-c^3$.
+Chuyển vế: $a^3+b^3+c^3=3abc$.
+
+b) Đặt $p=a^2+b^2+c^2$ và $q=ab+bc+ca$. Vì $a+b+c=0$ nên $(a+b+c)^2=p+2q=0$, suy ra $q=-\dfrac p2$ và $q^2=\dfrac{p^2}4$.
+Áp dụng bình phương của tổng ba số cho $p$ và cho $q$:
+$p^2=(a^2+b^2+c^2)^2=a^4+b^4+c^4+2(a^2b^2+b^2c^2+c^2a^2)$
+$q^2=(ab+bc+ca)^2=a^2b^2+b^2c^2+c^2a^2+2abc(a+b+c)=a^2b^2+b^2c^2+c^2a^2$ (vì $a+b+c=0$).
+Thay $a^2b^2+b^2c^2+c^2a^2=q^2=\dfrac{p^2}4$ vào đẳng thức đầu:
+$p^2=a^4+b^4+c^4+2\cdot\dfrac{p^2}4=a^4+b^4+c^4+\dfrac{p^2}2$.
+Suy ra $a^4+b^4+c^4=\dfrac{p^2}2=\dfrac{(a^2+b^2+c^2)^2}2$.
+
+#NHOM NNB01383
+@LT
+##ĐN Phân tích đa thức thành nhân tử
+Phân tích một đa thức thành nhân tử (thừa số) là biến đổi đa thức đó thành một tích của những đa thức khác hằng số. Phân tích triệt để nghĩa là mỗi nhân tử không còn phân tích tiếp được nữa.
+
+##TC Bốn phương pháp cơ bản
+- Đặt nhân tử chung: $AB+AC=A(B+C)$.
+- Dùng hằng đẳng thức: nhận ra $A^2-B^2$, $(A\pm B)^2$, $(A\pm B)^3$, $A^3\pm B^3$.
+- Nhóm hạng tử: ghép các hạng tử thành nhóm để mỗi nhóm đặt được nhân tử chung hoặc là hằng đẳng thức.
+- Phối hợp: dùng liên tiếp các phương pháp trên, thường theo thứ tự đặt nhân tử chung, rồi hằng đẳng thức, rồi nhóm.
+
+##TC Quy tắc đổi dấu
+- $A-B=-(B-A)$.
+- $(A-B)^2=(B-A)^2$; $(A-B)^3=-(B-A)^3$.
+
+##CY
+- Sau khi phân tích luôn khai triển lại để kiểm tra, và xét từng nhân tử xem còn phân tích tiếp được không.
+- Tổng hai bình phương $A^2+B^2$ không phân tích được thành tích các đa thức có hệ số thực.
+
+#DANG NDB02724
+@LT
+##TC Cách tìm nhân tử chung
+- Hệ số của nhân tử chung là ƯCLN của các hệ số nguyên.
+- Phần biến của nhân tử chung gồm mỗi biến có mặt trong mọi hạng tử, lấy luỹ thừa có số mũ nhỏ nhất.
+- Nhân tử chung có thể là một đa thức (ví dụ $x-3y$); khi gặp $A-B$ và $B-A$ thì đổi dấu $B-A=-(A-B)$ để hai nhóm giống nhau.
+
+##PP Đặt nhân tử chung
+Tìm ƯCLN của các hệ số và luỹ thừa chung nhỏ nhất của từng biến
+Nếu có hai nhóm đối nhau $A-B$ và $B-A$ thì đổi dấu một nhóm để hai nhóm cùng là $A-B$
+Đặt tích các thừa số chung ra ngoài, chia từng hạng tử cho nhân tử chung để viết phần trong ngoặc
+Kiểm tra lại bằng phép nhân phân phối và xem phần trong ngoặc còn phân tích tiếp được không
+
+##CY
+- Hạng tử trùng đúng với nhân tử chung thì phần còn lại là $1$ chứ không phải $0$: $x^2+x=x(x+1)$.
+- Khi đặt dấu trừ ra ngoài ngoặc thì phải đổi dấu mọi hạng tử trong ngoặc.
+- Khi số mũ chứa chữ mà chưa biết số nào lớn hơn thì chia trường hợp để chọn luỹ thừa nhỏ hơn làm nhân tử chung.
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $15x(x-3y)+20y(3y-x)$.
+
+Bài giải:
+Đổi dấu $3y-x=-(x-3y)$ để hai hạng tử cùng chứa nhóm $x-3y$:
+$15x(x-3y)+20y(3y-x)=15x(x-3y)-20y(x-3y)$
+ƯCLN của $15$ và $20$ là $5$, nên đặt $5(x-3y)$ làm nhân tử chung:
+$=5(x-3y)(3x-4y)$.
+Vậy $15x(x-3y)+20y(3y-x)=5(x-3y)(3x-4y)$.
+
+##VD
+Đưa nhân tử chung ra ngoài dấu ngoặc: $-5x^my+15x^ny$ với $m$, $n$ là các số tự nhiên.
+
+Bài giải:
+Hệ số: $-5$ và $15$ cùng chia hết cho $5$, ta đặt $-5$ ra ngoài; cả hai hạng tử đều chứa $y$.
+Đề chưa cho biết $m$ và $n$ số nào lớn hơn nên chia hai trường hợp.
+Trường hợp $m\ge n$: nhân tử chung của phần biến là $x^n$ và $x^m=x^n\cdot x^{m-n}$, do đó
+$-5x^my+15x^ny=-5x^n\cdot x^{m-n}y+15x^ny$
+$=-5x^ny(x^{m-n}-3)$.
+Trường hợp $m<n$: nhân tử chung của phần biến là $x^m$ và $x^n=x^m\cdot x^{n-m}$, do đó
+$-5x^my+15x^ny=-5x^my+15x^m\cdot x^{n-m}y$
+$=-5x^my(1-3x^{n-m})$.
+Vậy kết quả là $-5x^ny(x^{m-n}-3)$ nếu $m\ge n$ và $-5x^my(1-3x^{n-m})$ nếu $m<n$.
+
+#DANG NDB03236
+@LT
+##TC Hằng đẳng thức dùng để phân tích
+- $A^2-B^2=(A-B)(A+B)$; $A^2\pm2AB+B^2=(A\pm B)^2$.
+- $A^3\pm3A^2B+3AB^2\pm B^3=(A\pm B)^3$.
+- $A^3+B^3=(A+B)(A^2-AB+B^2)$; $A^3-B^3=(A-B)(A^2+AB+B^2)$.
+- $A^4-B^4=(A^2-B^2)(A^2+B^2)$ và $A^6-B^6=(A^3-B^3)(A^3+B^3)$.
+
+##PP Nhận ra hằng đẳng thức
+Đếm số hạng tử: hai hạng tử thì xét hiệu hai bình phương hoặc tổng, hiệu hai lập phương; ba hạng tử thì xét bình phương; bốn hạng tử thì xét lập phương
+Viết từng hạng tử thành bình phương hoặc lập phương của một biểu thức (chú ý $x^4=(x^2)^2$, $25=5^2$, $64=4^3$)
+Kiểm tra các hạng tử giữa có đúng bằng $2AB$, $3A^2B$, $3AB^2$ kể cả dấu hay không
+Áp dụng hằng đẳng thức rồi kiểm tra từng nhân tử còn phân tích tiếp được không
+
+##CY
+- Với $a^6-b^6$ nên viết là $(a^3)^2-(b^3)^2$ trước, rồi dùng tổng và hiệu hai lập phương; phân tích triệt để được $a^6-b^6=(a-b)(a+b)(a^2+ab+b^2)(a^2-ab+b^2)$.
+- Số hạng giữa mang dấu trừ thì kết quả là $(A-B)^2$, không phải $(A+B)^2$.
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $25x^4-10x^2y+y^2$.
+
+Bài giải:
+Ta có $25x^4=(5x^2)^2$ và $y^2=y^2$, nên chọn $A=5x^2$, $B=y$.
+Kiểm tra số hạng giữa: $2AB=2\cdot5x^2\cdot y=10x^2y$, khớp với $-10x^2y$ (mang dấu trừ).
+Áp dụng hằng đẳng thức bình phương của một hiệu:
+$25x^4-10x^2y+y^2=(5x^2)^2-2\cdot5x^2\cdot y+y^2$
+$=(5x^2-y)^2$.
+Vậy $25x^4-10x^2y+y^2=(5x^2-y)^2$.
+
+##VD
+a) Phân tích $-x^3+6x^2y-12xy^2+8y^3$ thành nhân tử.
+b) Phân tích $x^6-64$ thành nhân tử (triệt để).
+
+Bài giải:
+a) Hạng tử đầu $-x^3=(-x)^3$ và hạng tử cuối $8y^3=(2y)^3$, nên chọn $A=-x$, $B=2y$.
+Kiểm tra: $3A^2B=3\cdot x^2\cdot2y=6x^2y$ và $3AB^2=3\cdot(-x)\cdot4y^2=-12xy^2$, đúng với hai hạng tử giữa.
+Áp dụng hằng đẳng thức lập phương của một tổng:
+$-x^3+6x^2y-12xy^2+8y^3=(-x)^3+3(-x)^2(2y)+3(-x)(2y)^2+(2y)^3$
+$=(-x+2y)^3$.
+
+b) Viết $x^6-64=(x^3)^2-8^2$ rồi áp dụng hiệu hai bình phương:
+$x^6-64=(x^3-8)(x^3+8)$
+Áp dụng hiệu hai lập phương và tổng hai lập phương:
+$x^3-8=(x-2)(x^2+2x+4)$ và $x^3+8=(x+2)(x^2-2x+4)$.
+Các tam thức $x^2+2x+4$ và $x^2-2x+4$ không phân tích tiếp được nữa.
+Vậy $x^6-64=(x-2)(x+2)(x^2+2x+4)(x^2-2x+4)$.
+
+#DANG NDB03237
+@LT
+##PP Nhóm hạng tử
+Nếu cần, tách một hạng tử thành hai hạng tử (ví dụ $(a+b)xy=axy+bxy$) hoặc khai triển các ngoặc để có các hạng tử rời nhau
+Chọn cách ghép (hai-hai hoặc ba-một) sao cho trong mỗi nhóm có nhân tử chung hoặc nhóm là hằng đẳng thức
+Đặt nhân tử chung (hoặc dùng hằng đẳng thức) trong từng nhóm, chú ý đổi dấu khi đặt dấu trừ ra ngoài
+Kiểm tra các nhóm có để lại cùng một nhân tử (nhị thức) chung hay không; nếu không thì đổi cách ghép
+Đặt nhân tử chung mới ra ngoài
+
+##CY
+- Nhiều cách ghép cho cùng kết quả, nhưng có cách ghép không đi được tiếp (mỗi nhóm để lại nhân tử khác nhau); gặp trường hợp đó phải đổi cách ghép, không cố ép.
+- Khi đặt dấu trừ ra ngoài ngoặc phải đổi dấu cả nhóm.
+@VD
+##VD
+Phân tích đa thức thành nhân tử: $x^2-(a+b)xy+aby^2$.
+
+Bài giải:
+Khai triển $(a+b)xy=axy+bxy$ để đa thức có bốn hạng tử rời nhau:
+$x^2-(a+b)xy+aby^2=x^2-axy-bxy+aby^2$
+Ghép $x^2$ với $-axy$ và ghép $-bxy$ với $aby^2$, vì mỗi cặp đều đặt được nhân tử chung và để lại nhị thức $x-ay$:
+$=(x^2-axy)-(bxy-aby^2)$
+$=x(x-ay)-by(x-ay)$
+Đặt nhị thức $x-ay$ làm nhân tử chung:
+$=(x-ay)(x-by)$.
+Vậy $x^2-(a+b)xy+aby^2=(x-ay)(x-by)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $(xy+ab)^2+(ay-bx)^2$.
+
+Bài giải:
+Đây là tổng của hai bình phương nên không dùng được hiệu hai bình phương; ta khai triển rồi nhóm.
+$(xy+ab)^2+(ay-bx)^2=x^2y^2+2abxy+a^2b^2+a^2y^2-2abxy+b^2x^2$
+Hai hạng tử $2abxy$ và $-2abxy$ đối nhau nên triệt tiêu:
+$=x^2y^2+a^2b^2+a^2y^2+b^2x^2$
+Ghép các hạng tử chứa $y^2$ thành một nhóm, các hạng tử chứa $b^2$ thành nhóm còn lại:
+$=(x^2y^2+a^2y^2)+(a^2b^2+b^2x^2)$
+$=y^2(x^2+a^2)+b^2(x^2+a^2)$
+Đặt nhị thức $x^2+a^2$ làm nhân tử chung:
+$=(x^2+a^2)(y^2+b^2)$.
+Vậy $(xy+ab)^2+(ay-bx)^2=(x^2+a^2)(y^2+b^2)$.
+
+#DANG NDB03238
+@LT
+##PP Phối hợp nhiều phương pháp
+Đặt nhân tử chung (cả hệ số lẫn phần biến) trước, nếu có
+Đếm số hạng tử còn lại trong ngoặc: hai hoặc ba hạng tử thì thử hằng đẳng thức; bốn hạng tử trở lên thì thử nhóm hạng tử (có thể ghép ba-một để tạo hằng đẳng thức)
+Sau mỗi lần phân tích, xét từng nhân tử xem còn phân tích tiếp được không (ví dụ hiệu hai bình phương hoặc tổng hai lập phương)
+Dừng khi không nhân tử nào phân tích thêm được, nhớ giữ lại nhân tử chung đã đặt ra ngoài ở kết quả cuối
+
+##CY
+Bỏ sót việc đặt nhân tử chung ở đầu thường làm các bước sau không nhận ra hằng đẳng thức; ngược lại sau khi đặt ra ngoài thì số mũ và hệ số trong ngoặc nhỏ đi nên dễ thấy hằng đẳng thức hơn.
+@VD
+##VD
+a) Phân tích $3x^4-75x^2y^2$ thành nhân tử.
+b) Phân tích $x^4y+xy^4$ thành nhân tử.
+
+Bài giải:
+a) Nhân tử chung của hai hạng tử là $3x^2$:
+$3x^4-75x^2y^2=3x^2(x^2-25y^2)$
+Biểu thức trong ngoặc là hiệu hai bình phương vì $25y^2=(5y)^2$:
+$=3x^2(x+5y)(x-5y)$.
+
+b) Nhân tử chung của hai hạng tử là $xy$:
+$x^4y+xy^4=xy(x^3+y^3)$
+Biểu thức trong ngoặc là tổng hai lập phương:
+$=xy(x+y)(x^2-xy+y^2)$.
+Vậy $3x^4-75x^2y^2=3x^2(x+5y)(x-5y)$ và $x^4y+xy^4=xy(x+y)(x^2-xy+y^2)$.
+
+##VD
+Phân tích đa thức thành nhân tử: $2x^3y-2xy^3-4xy^2-2xy$.
+
+Bài giải:
+Nhân tử chung của bốn hạng tử là $2xy$:
+$2x^3y-2xy^3-4xy^2-2xy=2xy(x^2-y^2-2y-1)$
+Trong ngoặc, nhóm ba hạng tử cuối và đặt dấu trừ ra ngoài (đổi dấu từng hạng tử):
+$=2xy[x^2-(y^2+2y+1)]$
+Nhận ra $y^2+2y+1=(y+1)^2$ (bình phương của một tổng):
+$=2xy[x^2-(y+1)^2]$
+Áp dụng hằng đẳng thức hiệu hai bình phương:
+$=2xy(x-y-1)(x+y+1)$.
+Vậy $2x^3y-2xy^3-4xy^2-2xy=2xy(x-y-1)(x+y+1)$.
+
+#DANG NDB03239
+@LT
+##TC Ba kết quả dùng khi đã phân tích
+- Tích bằng $0$: $A\cdot B=0\Leftrightarrow A=0$ hoặc $B=0$.
+- Trong hai số nguyên liên tiếp có một số chia hết cho $2$; trong ba số nguyên liên tiếp có một số chia hết cho $3$, nên tích ba số nguyên liên tiếp chia hết cho $6$.
+- Số nguyên tố chỉ có hai ước dương là $1$ và chính nó: nếu $p$ nguyên tố và $p=ab$ với $a,b$ nguyên dương thì $a=1$ hoặc $b=1$.
+
+##PP Ứng dụng phân tích nhân tử
+Phân tích biểu thức hoặc đa thức đề cho thành tích các nhân tử bằng các phương pháp cơ bản
+Tính giá trị: dùng dạng tích để rút gọn trước, rồi mới thay số cho số nhỏ đi
+Giải phương trình: chuyển mọi hạng tử về một vế, phân tích thành tích bằng $0$ rồi cho từng nhân tử bằng $0$
+Chứng minh chia hết: chỉ ra các nhân tử là các số nguyên liên tiếp, hoặc một nhân tử là bội của số cần chia
+Tìm số nguyên tố: phân tích thành tích hai nhân tử, cho nhân tử nhỏ hơn bằng $1$ rồi thử lại các giá trị tìm được
+
+##CY
+- Khi giải phương trình không chia hai vế cho biểu thức chứa ẩn vì có thể mất nghiệm; hãy đưa về dạng tích bằng $0$.
+- Với bài số nguyên tố phải xét hết các trường hợp, kể cả giá trị nhỏ nhất của biến, và thử lại giá trị tìm được.
+@VD
+##VD
+a) Giải phương trình $x^3-4x^2-9x+36=0$.
+b) Tính $\dfrac{2023^3+1}{2023^2-2023+1}$.
+
+Bài giải:
+a) Nhóm hai hạng tử đầu và hai hạng tử cuối:
+$x^3-4x^2-9x+36=x^2(x-4)-9(x-4)$
+Đặt nhân tử chung $x-4$, rồi dùng hiệu hai bình phương:
+$=(x-4)(x^2-9)=(x-4)(x-3)(x+3)$
+Phương trình trở thành $(x-4)(x-3)(x+3)=0$, tức là $x-4=0$ hoặc $x-3=0$ hoặc $x+3=0$.
+Suy ra $x=4$, $x=3$ hoặc $x=-3$.
+Vậy tập nghiệm là $S=\{4;3;-3\}$.
+
+b) Đặt $x=2023$, biểu thức trở thành $\dfrac{x^3+1}{x^2-x+1}$.
+Áp dụng hằng đẳng thức tổng hai lập phương: $x^3+1=(x+1)(x^2-x+1)$.
+Vì $x^2-x+1\ne0$ nên $\dfrac{x^3+1}{x^2-x+1}=x+1=2024$.
+Vậy giá trị của biểu thức là $2024$.
+
+##VD
+Tìm số tự nhiên $n$ để $n^4+4$ là số nguyên tố.
+
+Bài giải:
+Thêm bớt $4n^2$ để tạo hiệu hai bình phương:
+$n^4+4=n^4+4n^2+4-4n^2=(n^2+2)^2-(2n)^2$
+$=(n^2-2n+2)(n^2+2n+2)$.
+Với $n$ là số tự nhiên ta có $n^2+2n+2\ge2$ và $n^2-2n+2=(n-1)^2+1\ge1$.
+Nếu $n^2-2n+2\ge2$ thì $n^4+4$ là tích của hai số tự nhiên đều lớn hơn $1$ nên là hợp số, không thoả mãn.
+Do đó $n^2-2n+2=1$, tức $(n-1)^2=0$, suy ra $n=1$.
+Thử lại: $n=1$ thì $n^4+4=5$ là số nguyên tố.
+Vậy $n=1$.

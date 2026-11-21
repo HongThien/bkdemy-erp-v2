@@ -14,14 +14,19 @@ try {
     const r = await c.query(`update dai_bdm_nhom set mo_ta = case when coalesce(mo_ta,'')='' then $2 else mo_ta end, ly_thuyet = case when coalesce(ly_thuyet,'')='' then $3 else ly_thuyet end
       where id = $1 and (coalesce(mo_ta,'')='' or coalesce(ly_thuyet,'')='') returning id`, [id, v.mo_ta, v.ly_thuyet]); n += r.rowCount
   }
+  // 21/11: Thùy sửa bản đồ — gộp dạng "tổng"+"tích", bỏ NDB01600/01602/01605/01606. Dạng mới ← dạng cũ trong noi-dung-gop.json (nối lý thuyết + ví dụ theo thứ tự).
+  // NDB01606 (điểm rơi theo t=ab) gộp vào NDB01604 (nhiều biến) — Thùy chưa chỉ rõ chỗ; NDB02755 (ngược dấu) không có nội dung soạn.
+  const GOP = { NDB01599: ['NDB01599', 'NDB01600'], NDB01601: ['NDB01601', 'NDB01602'], NDB01603: ['NDB01603'], NDB01604: ['NDB01604', 'NDB01605', 'NDB01606'], NDB01608: ['NDB01608'], NDB01609: ['NDB01609'], NDB01610: ['NDB01610'] }
+  const noi = (ids, k) => ids.map((i) => nd.dang[i][k]).join('\n\n')
   let d = 0
-  for (const [id, v] of Object.entries(nd.dang)) {
-    const r = await c.query(`update dai_bdm_dang_bai set mo_ta = case when coalesce(mo_ta,'')='' then $2 else mo_ta end, ly_thuyet = case when coalesce(ly_thuyet,'')='' then $3 else ly_thuyet end,
-      vi_du = case when coalesce(vi_du,'')='' then $4 else vi_du end where id = $1 returning id`, [id, v.mo_ta, v.ly_thuyet, v.vi_du]); d += r.rowCount
+  for (const [id, cu] of Object.entries(GOP)) {
+    // mô tả: Thùy đã viết tay → coalesce giữ nguyên; chỉ điền lý thuyết + ví dụ vào ô trống
+    const r = await c.query(`update dai_bdm_dang_bai set ly_thuyet = case when coalesce(ly_thuyet,'')='' then $2 else ly_thuyet end,
+      vi_du = case when coalesce(vi_du,'')='' then $3 else vi_du end where id = $1 returning id`, [id, noi(cu, 'ly_thuyet'), noi(cu, 'vi_du')]); d += r.rowCount
   }
   const kiem = (await c.query(`select count(*) filter (where coalesce(mo_ta,'')<>'')::int mo_ta, count(*) filter (where coalesce(ly_thuyet,'')<>'')::int lt, count(*) filter (where coalesce(vi_du,'')<>'')::int vd, count(*)::int tong
-    from dai_bdm_dang_bai where id = any($1)`, [Object.keys(nd.dang)])).rows[0]
-  console.log(`nhóm cập nhật ${n}/${Object.keys(nd.nhom).length} · dạng cập nhật ${d}/${Object.keys(nd.dang).length} · sau: `, kiem)
+    from dai_bdm_dang_bai where id = any($1)`, [Object.keys(GOP)])).rows[0]
+  console.log(`nhóm cập nhật ${n}/${Object.keys(nd.nhom).length} · dạng cập nhật ${d}/${Object.keys(GOP).length} · sau: `, kiem)
   if (kiem.mo_ta !== kiem.tong || kiem.lt !== kiem.tong || kiem.vd !== kiem.tong) throw new Error('còn dạng thiếu mô tả/lý thuyết/ví dụ — ROLLBACK')
   await c.query(GHI ? 'commit' : 'rollback'); console.log(GHI ? '✔ ĐÃ GHI' : '↩ ROLLBACK (chạy thử)')
 } catch (e) { await c.query('rollback'); console.error('LỖI → rollback:', e.message); process.exitCode = 1 }

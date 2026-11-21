@@ -1,0 +1,672 @@
+#NHOM NNB01482
+@LT
+##ĐN Số chính phương
+Số chính phương là bình phương của một số nguyên. Mọi bình phương đều không âm: $A^2\ge0$, và $A^2=0$ khi và chỉ khi $A=0$.
+
+##TC Tính chất dùng để giới hạn miền nghiệm
+- Số chính phương chia cho $3$ dư $0$ hoặc $1$; chia cho $4$ dư $0$ hoặc $1$; chia cho $5$ dư $0$, $1$ hoặc $4$; chia cho $8$ dư $0$, $1$ hoặc $4$.
+- Bình phương của số chẵn chia hết cho $4$; bình phương của số lẻ chia $4$ dư $1$.
+- Với số nguyên $n\ge0$, không có số nguyên $m$ nào thỏa $n^2<m^2<(n+1)^2$; do đó nếu $n^2<A<(n+1)^2$ thì $A$ không là số chính phương.
+
+##ĐL Tích hai số nguyên tố cùng nhau
+Nếu hai số nguyên dương nguyên tố cùng nhau có tích là số chính phương thì mỗi số là số chính phương.
+
+##CY Bình phương không phân biệt dấu
+Từ $A^2=m^2$ suy ra $A=m$ hoặc $A=-m$. Khi liệt kê nghiệm nguyên phải lấy đủ cả hai dấu của từng ẩn, nếu không sẽ thiếu nghiệm.
+
+#DANG NDB02764
+@LT
+##TC Hằng đẳng thức và chặn miền
+- $(A+B)^2=A^2+2AB+B^2$ và $(A-B)^2=A^2-2AB+B^2$.
+- Nếu $A^2+B^2=k$ với $A,B$ nguyên thì $k\ge0$, $A^2\le k$ và $B^2\le k$; do đó $A$, $B$ chỉ nhận hữu hạn giá trị.
+
+##PP Tạo bình phương đúng rồi chặn miền
+Nhóm các hạng tử cùng chứa một ẩn rồi thêm bớt để được bình phương của một nhị thức; phần còn lại là bình phương hoặc biểu thức của ẩn kia cộng một hằng số
+Đưa phương trình về dạng (biểu thức)$^2$ = (biểu thức theo ẩn còn lại), dùng bình phương không âm để chặn miền giá trị của ẩn đó
+Dùng tính chẵn lẻ hoặc tính chia hết để thu gọn (vế phải chia hết cho $4$ thì đặt ẩn bằng $2k$), hoặc dùng tính chất tích hai số nguyên tố cùng nhau
+Liệt kê các giá trị của ẩn, tính ẩn còn lại (lấy đủ hai dấu) rồi thử lại
+
+##CY
+Từ "tích hai thừa số là số chính phương" chỉ suy ra từng thừa số là số chính phương khi hai thừa số dương và nguyên tố cùng nhau; phải chứng minh điều đó (chứng minh ước chung bằng $1$) trước khi kết luận.
+
+@VD
+##VD
+Giải phương trình nghiệm nguyên $x^2-6xy+13y^2=100$.
+
+Bài giải:
+$x^2-6xy+13y^2=100$
+$\Leftrightarrow(x^2-6xy+9y^2)+4y^2=100$
+$\Leftrightarrow(x-3y)^2=4(25-y^2)$
+Vế trái là bình phương nên không âm, suy ra $25-y^2\ge0$, tức $y^2\le25$.
+Vì $(x-3y)^2$ chia hết cho $4$ nên $x-3y$ là số chẵn; đặt $x-3y=2k$ với $k\in\mathbb{Z}$.
+Phương trình trở thành $4k^2=4(25-y^2)$, tức $y^2+k^2=25$.
+Các số chính phương không vượt quá $25$ là $0;1;4;9;16;25$; hai số có tổng $25$ chỉ có thể là $0$ và $25$, hoặc $9$ và $16$.
+Do đó $(y^2;k^2)\in\{(0;25);(9;16);(16;9);(25;0)\}$.
+Ta có $x=3y+2k$.
+Với $y=0$, $k=\pm5$: $x=\pm10$, được $(10;0)$ và $(-10;0)$.
+Với $y=3$, $k=\pm4$: $x=9\pm8$, tức $x=17$ hoặc $x=1$, được $(17;3)$ và $(1;3)$.
+Với $y=-3$, $k=\pm4$: $x=-9\pm8$, tức $x=-1$ hoặc $x=-17$, được $(-1;-3)$ và $(-17;-3)$.
+Với $y=4$, $k=\pm3$: $x=12\pm6$, tức $x=18$ hoặc $x=6$, được $(18;4)$ và $(6;4)$.
+Với $y=-4$, $k=\pm3$: $x=-12\pm6$, tức $x=-6$ hoặc $x=-18$, được $(-6;-4)$ và $(-18;-4)$.
+Với $y=5$, $k=0$: $x=15$, được $(15;5)$; với $y=-5$, $k=0$: $x=-15$, được $(-15;-5)$.
+Vậy $(x;y)\in\{(10;0);(-10;0);(17;3);(1;3);(-17;-3);(-1;-3);(6;4);(18;4);(-18;-4);(-6;-4);(15;5);(-15;-5)\}$.
+
+##VD
+Giải phương trình nghiệm nguyên $x(1+x+x^2)=4y(y+1)$.
+
+Bài giải:
+Cộng $1$ vào hai vế:
+$x(1+x+x^2)=4y(y+1)$
+$\Leftrightarrow1+x+x^2+x^3=4y^2+4y+1$
+$\Leftrightarrow(1+x)(1+x^2)=(2y+1)^2$
+Vế phải là bình phương của số lẻ nên là số lẻ dương; do đó $1+x$ và $1+x^2$ đều lẻ.
+Vì $1+x^2>0$ và tích dương nên $1+x>0$.
+Gọi $d$ là một ước chung dương của $1+x$ và $1+x^2$; khi đó $d$ lẻ.
+Vì $(1+x)\vdots d$ nên $(1+x)(1-x)=1-x^2$ cũng chia hết cho $d$.
+Kết hợp với $(1+x^2)\vdots d$ ta có $(1+x^2)+(1-x^2)=2$ chia hết cho $d$.
+Mà $d$ lẻ nên $d=1$.
+Vậy $1+x$ và $1+x^2$ là hai số nguyên dương nguyên tố cùng nhau có tích là số chính phương, nên mỗi số là số chính phương.
+Do đó $1+x^2$ là số chính phương; đặt $1+x^2=n^2$ với $n\in\mathbb{N}$.
+Khi đó $n^2-x^2=1$, tức $(n-\lvert x\rvert)(n+\lvert x\rvert)=1$ với hai thừa số nguyên không âm.
+Suy ra $n+\lvert x\rvert=1$ và $n-\lvert x\rvert=1$, nên $\lvert x\rvert=0$, tức $x=0$.
+Với $x=0$: $(2y+1)^2=1$, suy ra $2y+1=1$ hoặc $2y+1=-1$, tức $y=0$ hoặc $y=-1$.
+Vậy $(x;y)\in\{(0;0);(0;-1)\}$.
+
+#DANG NDB03332
+@LT
+##TC Tổng hai bình phương
+- Nếu $A^2+B^2=k$ với $A,B$ nguyên thì $A^2\le k$ và $B^2\le k$; chỉ cần liệt kê các số chính phương không vượt quá $k$.
+- Tổng hai bình phương cùng lẻ chia $4$ dư $2$; tổng một chẵn một lẻ là số lẻ. Vì vậy nếu $A^2+B^2$ chia hết cho $4$ thì $A$, $B$ cùng chẵn.
+
+##PP Tạo ra tổng hai bình phương bằng một số cho trước
+Nhân hai vế với hệ số thích hợp ($2$ hoặc $4$) để các hệ số bậc nhất thành số chẵn, rồi nhóm riêng từng ẩn và thêm bớt hằng số để được $A^2+B^2=k$
+Nếu $k$ chia hết cho $4$ thì chứng tỏ $A$, $B$ cùng chẵn, đặt $A=2A_1$, $B=2B_1$ và chia hai vế cho $4$; lặp lại tới khi hằng số không còn chia hết cho $4$
+Liệt kê các cặp số chính phương có tổng đúng bằng hằng số, lấy đủ hai dấu của $A$ và $B$
+Quay ngược các phép đặt ẩn để tính các ẩn ban đầu, loại những giá trị không nguyên hoặc không thỏa điều kiện
+
+##CY
+Sau khi nhân để có dạng $(2x-1)^2+(2y-1)^2=k$ thì cả hai bình phương đều là bình phương của số lẻ; mỗi số chính phương tìm được cho hai giá trị của ẩn ($2x-1=\pm m$), đừng bỏ sót.
+
+@VD
+##VD
+Tìm nghiệm nguyên của phương trình $x^2+y^2-x-y=8$.
+
+Bài giải:
+Nhân hai vế với $4$ rồi nhóm thành các bình phương:
+$x^2+y^2-x-y=8$
+$\Leftrightarrow4x^2-4x+4y^2-4y=32$
+$\Leftrightarrow(4x^2-4x+1)+(4y^2-4y+1)=34$
+$\Leftrightarrow(2x-1)^2+(2y-1)^2=34$
+Các số chính phương không vượt quá $34$ là $0;1;4;9;16;25$.
+Trong đó chỉ có $9+25=34$ (các cặp còn lại như $0+34$, $1+33$, $4+30$, $16+18$ đều có số hạng không chính phương).
+Vậy $\lvert2x-1\rvert$ và $\lvert2y-1\rvert$ là $3$ và $5$ theo một thứ tự nào đó.
+Nếu $\lvert2x-1\rvert=3$ thì $2x-1=3$ hoặc $2x-1=-3$, tức $x=2$ hoặc $x=-1$; khi đó $\lvert2y-1\rvert=5$, tức $y=3$ hoặc $y=-2$.
+Nếu $\lvert2x-1\rvert=5$ thì $x=3$ hoặc $x=-2$; khi đó $\lvert2y-1\rvert=3$, tức $y=2$ hoặc $y=-1$.
+Vậy $(x;y)\in\{(2;3);(2;-2);(-1;3);(-1;-2);(3;2);(3;-1);(-2;2);(-2;-1)\}$.
+
+##VD
+Tìm nghiệm nguyên của phương trình $2x^6+y^2-2x^3y=320$.
+
+Bài giải:
+$2x^6+y^2-2x^3y=320$
+$\Leftrightarrow(x^3)^2+(x^3-y)^2=320$
+Đặt $u=x^3$ và $v=x^3-y$ với $u,v\in\mathbb{Z}$, ta có $u^2+v^2=320$.
+Vì $320$ chẵn nên $u$, $v$ cùng tính chẵn lẻ.
+Nếu $u$, $v$ cùng lẻ thì $u^2+v^2$ chia $4$ dư $2$, mà $320$ chia hết cho $4$, mâu thuẫn.
+Vậy $u$, $v$ cùng chẵn; đặt $u=2u_1$, $v=2v_1$ thì $u_1^2+v_1^2=80$.
+Vì $80$ chia hết cho $4$ nên lập luận tương tự $u_1$, $v_1$ cùng chẵn; đặt $u_1=2u_2$, $v_1=2v_2$ thì $u_2^2+v_2^2=20$.
+Vì $20$ chia hết cho $4$ nên $u_2$, $v_2$ cùng chẵn; đặt $u_2=2u_3$, $v_2=2v_3$ thì $u_3^2+v_3^2=5$.
+Các số chính phương không vượt quá $5$ là $0;1;4$, nên $\{u_3^2;v_3^2\}=\{1;4\}$, tức $(u_3;v_3)$ là $(\pm1;\pm2)$ hoặc $(\pm2;\pm1)$.
+Ta có $u=8u_3$, tức $x^3=8u_3$; vì $x^3$ chia hết cho $8$ nên $x$ chẵn, đặt $x=2k$ thì $u_3=k^3$ là lập phương của một số nguyên.
+Trong các giá trị $\pm1;\pm2$ chỉ có $\pm1$ là lập phương, nên $u_3=\pm1$ và $v_3=\pm2$, suy ra $x=\pm2$.
+Ta có $y=x^3-v=8u_3-8v_3=8(u_3-v_3)$.
+Với $(u_3;v_3)=(1;2)$: $x=2$, $y=-8$.
+Với $(u_3;v_3)=(1;-2)$: $x=2$, $y=24$.
+Với $(u_3;v_3)=(-1;2)$: $x=-2$, $y=-24$.
+Với $(u_3;v_3)=(-1;-2)$: $x=-2$, $y=8$.
+Vậy $(x;y)\in\{(2;-8);(2;24);(-2;-24);(-2;8)\}$.
+
+#DANG NDB03333
+@LT
+##TC Đưa phương trình bậc hai theo $x$ về bình phương
+Với $a\ne0$: $4a(ax^2+bx+c)=(2ax+b)^2-(b^2-4ac)$. Vậy $ax^2+bx+c=0$ tương đương $(2ax+b)^2=b^2-4ac$, trong đó $b$, $c$ có thể chứa ẩn $y$. Biểu thức $b^2-4ac$ (thường gọi là biệt thức) là một biểu thức theo $y$; vế trái là bình phương của số nguyên nên biểu thức này phải là số chính phương.
+
+##PP Biệt thức phải là số chính phương
+Chọn ẩn làm "ẩn chính" sao cho hệ số bậc hai đơn giản nhất (hệ số $1$ càng tốt), sắp xếp phương trình theo lũy thừa giảm của ẩn đó
+Nhân hai vế với $4a$ và tách thành $(2ax+b)^2=F(y)$, với $F(y)$ là biểu thức theo ẩn còn lại
+Chặn $F(y)\ge0$ để giới hạn $y$; hoặc đặt $F(y)=k^2$ rồi đưa về hiệu hai bình phương bằng một số, tức tích hai thừa số nguyên
+Liệt kê các cặp thừa số (cùng tính chẵn lẻ) để tìm $k$ và $y$, sau đó giải $2ax+b=\pm k$ để tìm $x$ và thử lại
+
+##CY
+Điều kiện biệt thức là số chính phương chỉ là điều kiện cần; còn phải kiểm tra $x$ tìm được từ $2ax+b=\pm k$ có nguyên hay không.
+
+@VD
+##VD
+Tìm nghiệm nguyên của phương trình $x^2+x(3y-1)+2y^2-5=0$.
+
+Bài giải:
+Coi là phương trình theo $x$, nhân hai vế với $4$:
+$4x^2+4x(3y-1)+8y^2-20=0$
+$\Leftrightarrow(2x+3y-1)^2-(3y-1)^2+8y^2-20=0$
+$\Leftrightarrow(2x+3y-1)^2=(3y-1)^2-8y^2+20$
+$\Leftrightarrow(2x+3y-1)^2=y^2-6y+21$
+Vế trái là số chính phương nên đặt $y^2-6y+21=k^2$ với $k\in\mathbb{N}$.
+$\Leftrightarrow(y-3)^2+12=k^2$
+$\Leftrightarrow(k-\lvert y-3\rvert)(k+\lvert y-3\rvert)=12$
+Hai thừa số $k-\lvert y-3\rvert$ và $k+\lvert y-3\rvert$ là các số nguyên dương, có hiệu $2\lvert y-3\rvert$ chẵn nên cùng tính chẵn lẻ; tích $12$ chẵn nên cả hai cùng chẵn.
+Phân tích $12=2\cdot6$ là cách duy nhất thành hai thừa số chẵn (thừa số nhỏ hơn đứng trước).
+Suy ra $k-\lvert y-3\rvert=2$ và $k+\lvert y-3\rvert=6$, tức $k=4$ và $\lvert y-3\rvert=2$, nên $y=5$ hoặc $y=1$.
+Khi đó $2x+3y-1=\pm4$.
+Với $y=5$: $2x+14=\pm4$, suy ra $x=-5$ hoặc $x=-9$.
+Với $y=1$: $2x+2=\pm4$, suy ra $x=1$ hoặc $x=-3$.
+Vậy $(x;y)\in\{(-5;5);(-9;5);(1;1);(-3;1)\}$.
+
+##VD
+Tìm nghiệm nguyên của phương trình $x^2-xy+y^2=x+y$.
+
+Bài giải:
+Coi là phương trình theo $x$: $x^2-(y+1)x+y^2-y=0$.
+Nhân hai vế với $4$:
+$4x^2-4(y+1)x+4y^2-4y=0$
+$\Leftrightarrow(2x-y-1)^2-(y+1)^2+4y^2-4y=0$
+$\Leftrightarrow(2x-y-1)^2=(y+1)^2-4y^2+4y$
+$\Leftrightarrow(2x-y-1)^2=-3y^2+6y+1$
+$\Leftrightarrow(2x-y-1)^2=4-3(y-1)^2$
+Vế trái không âm nên $3(y-1)^2\le4$, suy ra $(y-1)^2\le1$.
+Vì $y-1$ nguyên nên $y-1\in\{-1;0;1\}$, tức $y\in\{0;1;2\}$.
+Với $y=1$: $(2x-2)^2=4$, suy ra $2x-2=\pm2$, tức $x=2$ hoặc $x=0$.
+Với $y=0$: $(2x-1)^2=1$, suy ra $2x-1=\pm1$, tức $x=1$ hoặc $x=0$.
+Với $y=2$: $(2x-3)^2=1$, suy ra $2x-3=\pm1$, tức $x=2$ hoặc $x=1$.
+Cả ba trường hợp đều cho $x$ nguyên.
+Vậy $(x;y)\in\{(2;1);(0;1);(1;0);(0;0);(2;2);(1;2)\}$.
+
+#DANG NDB03334
+@LT
+##TC Kẹp giữa hai bình phương liên tiếp
+Với số nguyên $A\ge0$, không có số nguyên $y$ nào thỏa $A<\lvert y\rvert<A+1$. Do đó nếu $A^2<y^2<(A+2)^2$ thì $\lvert y\rvert=A+1$; còn nếu $A^2<y^2<(A+1)^2$ thì không tồn tại $y$.
+
+##PP Kẹp giữa hai bình phương liên tiếp
+Đoán đa thức $P(x)$ sao cho vế chứa $x$ nằm sát $P(x)^2$ (so sánh các hệ số bậc cao; có thể nhân hai vế với $4$ để tránh phân số)
+Xét các hiệu với $P(x)^2$ và $(P(x)+1)^2$ (hoặc $(P(x)+2)^2$ sau khi nhân $4$), đưa về bình phương cộng hằng số hoặc nhóm hạng tử để xác định dấu
+Kiểm tra $P(x)\ge0$ rồi kết luận $\lvert y\rvert$ chỉ nhận một giá trị, hoặc không có giá trị nào
+Thay giá trị tìm được vào phương trình để tìm $x$; xét riêng các giá trị $x$ làm bất đẳng thức kẹp không còn chặt và thử trực tiếp
+
+##CY
+Bất đẳng thức kẹp thường chỉ chặt với một phần số nguyên $x$ (chẳng hạn $x$ lớn hơn một mốc nào đó, hoặc $x\ne0$), nên phải chia trường hợp theo $x$; muốn chuyển từ $P^2<y^2$ sang $P<\lvert y\rvert$ phải biết $P\ge0$.
+
+@VD
+##VD
+Tìm nghiệm nguyên của phương trình $y^2=x^4+2x^3+3x^2+4x+5$.
+
+Bài giải:
+Đặt $E=x^4+2x^3+3x^2+4x+5$.
+Với mọi số nguyên $x$ ta có $x^2+x=x(x+1)\ge0$ (tích hai số nguyên liên tiếp không âm).
+Ta có các hiệu sau:
+$E-(x^2+x+1)^2=2x+4$
+$(x^2+x+2)^2-E=2x^2-1$
+$E-(x^2+x)^2=2x^2+4x+5=2(x+1)^2+3>0$
+Trường hợp $x=0$: $y^2=5$, không có $y$ nguyên.
+Trường hợp $x\ge-1$ và $x\ne0$: khi đó $2x+4>0$ và $2x^2-1>0$ (vì $x^2\ge1$).
+Suy ra $(x^2+x+1)^2<y^2<(x^2+x+2)^2$, tức $x^2+x+1<\lvert y\rvert<x^2+x+2$, không có số nguyên $\lvert y\rvert$ nào như vậy.
+Trường hợp $x\le-3$: khi đó $2x+4<0$ nên $E<(x^2+x+1)^2$.
+Kết hợp với $E>(x^2+x)^2$ ta có $x^2+x<\lvert y\rvert<x^2+x+1$, không có số nguyên $\lvert y\rvert$ nào như vậy.
+Trường hợp $x=-2$: $y^2=16-16+12-8+5=9$, suy ra $y=\pm3$.
+Vậy $(x;y)\in\{(-2;3);(-2;-3)\}$.
+
+##VD
+Tìm nghiệm nguyên của phương trình $y^2=1+x+x^2+x^3+x^4$.
+
+Bài giải:
+Nếu $x=0$ thì $y^2=1$, suy ra $y=\pm1$.
+Nếu $x\ne0$, nhân hai vế với $4$: $4y^2=4x^4+4x^3+4x^2+4x+4$.
+$4y^2-(2x^2+x)^2=3x^2+4x+4=3\left(x+\dfrac23\right)^2+\dfrac83>0$
+$(2x^2+x+2)^2-4y^2=(4x^4+4x^3+9x^2+4x+4)-(4x^4+4x^3+4x^2+4x+4)=5x^2>0$
+Suy ra $(2x^2+x)^2<(2y)^2<(2x^2+x+2)^2$.
+Với $x$ nguyên khác $0$ thì $2x^2+x=x(2x+1)>0$ (hai thừa số cùng dấu), nên $2x^2+x<\lvert2y\rvert<2x^2+x+2$.
+Giữa hai số nguyên cách nhau $2$ chỉ có một số nguyên, nên $\lvert2y\rvert=2x^2+x+1$.
+Vậy $4y^2=(2x^2+x+1)^2=4x^4+4x^3+5x^2+2x+1$.
+Kết hợp với $4y^2=4x^4+4x^3+4x^2+4x+4$ ta có:
+$4x^2+4x+4=5x^2+2x+1$
+$\Leftrightarrow x^2-2x-3=0$
+$\Leftrightarrow(x+1)(x-3)=0$
+$\Leftrightarrow x=-1$ hoặc $x=3$
+Với $x=-1$: $y^2=1-1+1-1+1=1$, suy ra $y=\pm1$.
+Với $x=3$: $y^2=1+3+9+27+81=121$, suy ra $y=\pm11$.
+Vậy $(x;y)\in\{(0;1);(0;-1);(-1;1);(-1;-1);(3;11);(3;-11)\}$.
+
+#NHOM NNB01483
+@LT
+##ĐL Nguyên lí Đi-rích-lê
+Nếu nhốt ít nhất $n+1$ con thỏ vào $n$ cái lồng thì có ít nhất một lồng chứa từ hai con thỏ trở lên.
+
+##ĐL Nguyên lí Đi-rích-lê tổng quát
+Nếu nhốt $N$ con thỏ vào $k$ cái lồng mà $N>m\cdot k$ thì có ít nhất một lồng chứa từ $m+1$ con thỏ trở lên. Chứng minh bằng phản chứng: nếu mọi lồng đều chứa không quá $m$ con thì tổng số thỏ không quá $m\cdot k<N$, vô lí.
+
+##TC Thỏ và lồng thường gặp
+- Lồng: các số dư khi chia cho $n$ ($n$ lồng); các giá trị có thể của một đại lượng (số người quen, số trận đã đấu, số điểm); các màu hoặc các quan hệ (quen hay lạ, thắng hay thua).
+- Thỏ: các số, các người, các đội, các tổng, các cặp.
+
+##CY
+Nguyên lí chỉ khẳng định có tồn tại một lồng đủ đông, không chỉ ra lồng nào. Phải đếm đúng số lồng và nói rõ thỏ là gì; nếu số thỏ không lớn hơn $m\cdot k$ thì chưa kết luận được.
+
+#DANG NDB02765
+@LT
+##PP Áp dụng trực tiếp nguyên lí Đi-rích-lê
+Đọc kĩ yêu cầu "ít nhất": xác định đối tượng cần chứng minh tồn tại (thỏ) và tiêu chí để phân loại (lồng)
+Đếm số thỏ $N$ và số lồng $k$; nếu cần có lồng chứa ít nhất $m+1$ thỏ thì kiểm tra $N>m\cdot k$
+Phát biểu: nhốt $N$ thỏ vào $k$ lồng thì có lồng chứa ít nhất $m+1$ thỏ, rồi đối chiếu với điều cần chứng minh
+Nếu bài không có cấu trúc thỏ–lồng rõ ràng thì dùng phản chứng, hoặc sắp thứ tự các số trước rồi so sánh
+
+##CY
+Đếm đủ số lồng (tháng sinh có $12$ lồng, số dư khi chia cho $7$ có $7$ lồng). Khi $N=m\cdot k$ thì chưa có lồng nào chắc chắn chứa $m+1$ thỏ.
+
+@VD
+##VD
+Trong một nhóm có $100$ người, chứng minh rằng có ít nhất $9$ người sinh cùng một tháng (trong năm).
+
+Bài giải:
+Một năm có $12$ tháng; coi $12$ tháng là $12$ cái lồng và $100$ người là $100$ con thỏ, người sinh tháng nào thì nhốt vào lồng tháng đó.
+Giả sử mỗi tháng có không quá $8$ người sinh.
+Khi đó tổng số người không quá $8\cdot12=96$, trái với giả thiết có $100$ người.
+Vậy có ít nhất một tháng có ít nhất $9$ người sinh.
+
+##VD
+Cho $5$ số thỏa mãn điều kiện tổng của $2$ số bất kì trong chúng nhỏ hơn tổng $3$ số còn lại. Chứng minh rằng tích của $5$ số đã cho là một số dương.
+
+Bài giải:
+Gọi năm số là $a,b,c,d,e$.
+Giả thiết không đổi khi hoán vị các số nên có thể giả sử $a\ge b\ge c\ge d\ge e$.
+Theo giả thiết, tổng hai số $a,b$ nhỏ hơn tổng ba số còn lại: $a+b<c+d+e$.
+Chuyển vế, ta được $e>(a-c)+(b-d)$.
+Vì $a\ge c$ và $b\ge d$ nên $(a-c)+(b-d)\ge0$, do đó $e>0$.
+Mà $e$ là số nhỏ nhất nên cả năm số $a,b,c,d,e$ đều dương, suy ra $abcde>0$.
+Vậy tích của năm số đã cho là một số dương.
+
+#DANG NDB03307
+@LT
+##TC Số dư và hiệu chia hết
+- Khi chia cho $n$, số dư của một số nguyên thuộc $\{0;1;\dots;n-1\}$: có đúng $n$ lồng số dư.
+- Hai số nguyên cùng số dư khi chia cho $n$ thì hiệu của chúng chia hết cho $n$.
+- Với dãy $a_1,a_2,\dots$ đặt $S_k=a_1+a_2+\dots+a_k$; khi đó $S_j-S_i=a_{i+1}+\dots+a_j$ với $i<j$ là tổng một đoạn liên tiếp.
+
+##PP Chuồng là các số dư
+Xác định số $n$ cần chia hết rồi coi các số dư $0;1;\dots;n-1$ (hoặc các nhóm số dư ghép như $\{r;n-r\}$ khi đề hỏi cả tổng lẫn hiệu) là các lồng
+Nếu đề hỏi hiệu chia hết cho $n$: thỏ là các số đã cho. Nếu đề hỏi tổng một đoạn liên tiếp chia hết cho $n$: lập $S_1,S_2,\dots,S_n$ làm thỏ
+Xét riêng trường hợp có số (hoặc tổng) chia hết cho $n$, khi đó xong; trường hợp còn lại số thỏ lớn hơn số lồng còn lại
+Hai thỏ cùng lồng thì hiệu hai số (hoặc tổng hai số ở hai lồng ghép) chia hết cho $n$; đoạn liên tiếp tương ứng với $S_j-S_i$
+
+##CY
+Với tổng liên tiếp phải lập đủ $n$ tổng $S_1,\dots,S_n$ để số thỏ lớn hơn $n-1$ số dư khác $0$; thiếu một tổng là không đủ thỏ.
+
+@VD
+##VD
+Cho $52$ số nguyên bất kì. Chứng minh rằng tồn tại hai số trong chúng có tổng hoặc hiệu chia hết cho $100$.
+
+Bài giải:
+Số dư của một số nguyên khi chia cho $100$ thuộc $\{0;1;\dots;99\}$.
+Ghép các số dư thành $51$ nhóm (lồng): nhóm $\{0\}$, nhóm $\{50\}$ và $49$ nhóm $\{r;100-r\}$ với $r=1;2;\dots;49$.
+Coi $52$ số đã cho là $52$ con thỏ, mỗi số nhốt vào nhóm chứa số dư của nó.
+Vì $52>51$ nên có hai số $a$, $b$ cùng nằm trong một nhóm.
+Nếu $a$ và $b$ cùng số dư thì $(a-b)\vdots100$.
+Nếu $a$ và $b$ có số dư lần lượt là $r$ và $100-r$ thì $a+b$ có số dư $r+(100-r)=100$, nên $(a+b)\vdots100$.
+Vậy tồn tại hai số có tổng hoặc hiệu chia hết cho $100$.
+
+##VD
+Cho $10$ số nguyên $a_1,a_2,\dots,a_{10}$ theo thứ tự đó. Chứng minh rằng tồn tại một số số hạng liên tiếp trong dãy có tổng chia hết cho $10$.
+
+Bài giải:
+Đặt $S_1=a_1$, $S_2=a_1+a_2$, $\dots$, $S_{10}=a_1+a_2+\dots+a_{10}$.
+Nếu có một tổng $S_k$ chia hết cho $10$ thì các số hạng $a_1,\dots,a_k$ liên tiếp có tổng chia hết cho $10$, xong.
+Nếu không, mười tổng $S_1,\dots,S_{10}$ đều có số dư thuộc $\{1;2;\dots;9\}$.
+Coi $9$ số dư đó là $9$ lồng và $10$ tổng là $10$ thỏ; vì $10>9$ nên có hai tổng $S_i$, $S_j$ với $i<j$ cùng số dư.
+Khi đó $S_j-S_i=a_{i+1}+a_{i+2}+\dots+a_j$ chia hết cho $10$.
+Vậy các số hạng liên tiếp $a_{i+1},\dots,a_j$ có tổng chia hết cho $10$.
+
+#DANG NDB03308
+@LT
+##TC Quen biết và loại người
+- Quen biết là quan hệ hai chiều: $A$ quen $B$ thì $B$ quen $A$; trong nhóm $n$ người, mỗi người quen từ $0$ đến $n-1$ người.
+- Nếu một người quen ít nhất $s$ người trong nhóm $n$ người thì người đó không quen nhiều nhất $n-1-s$ người khác (không tính chính người ấy).
+- Chọn một người $B$ trong nhóm, "mời ra ngoài" những người không quen $B$: số người bị loại không vượt quá $n-1-s$.
+
+##PP Chọn dần từng người rồi loại
+Chọn một người $A$ bất kì, giữ lại $A$ và những người quen $A$; đếm số người còn lại nhờ giả thiết quen ít nhất $s$ người
+Chọn $B$ khác $A$ trong nhóm vừa còn, loại những người không quen $B$ (không quá $n-1-s$ người), đếm số người còn lại
+Lặp lại với $C$, $D$, $\dots$ cho tới khi cần thiết; nhóm cuối phải còn ít nhất một người khác những người đã chọn
+Kiểm tra người chọn sau quen tất cả người chọn trước, từ đó các người đã chọn đôi một quen nhau
+
+##CY
+Khi đếm phải trừ chính người được chọn (mỗi người trong nhóm $100$ người có tối đa $100-1-67$ người lạ nếu quen ít nhất $67$ người); mỗi lần loại người, nhớ rằng những người đã chọn từ trước vẫn còn lại trong nhóm.
+
+@VD
+##VD
+Có $10$ bạn đi dạo phố bằng $5$ xe máy. Biết rằng trong $10$ bạn này cứ nhóm $3$ người nào cũng có $1$ người quen với $2$ người kia. Chứng tỏ rằng có thể xếp $10$ bạn đó đi dạo phố bằng $5$ xe máy, mỗi xe $2$ người quen nhau (biết rằng cả $10$ bạn đều biết lái xe máy).
+
+Bài giải:
+Trong ba người bất kì có một người quen hai người còn lại, nên trong ba người bất kì có ít nhất một cặp quen nhau.
+Lấy ba bạn bất kì trong $10$ bạn, chọn hai bạn quen nhau cho đi xe thứ nhất.
+Lấy ba bạn bất kì trong $8$ bạn còn lại, chọn hai bạn quen nhau cho đi xe thứ hai.
+Lấy ba bạn bất kì trong $6$ bạn còn lại, chọn hai bạn quen nhau cho đi xe thứ ba.
+Còn lại bốn bạn $A,B,C,D$.
+Nếu bốn bạn đôi một quen nhau thì ghép tùy ý thành hai cặp cho hai xe còn lại.
+Nếu có hai bạn không quen nhau, giả sử là $A$ và $B$: xét nhóm $A,B,C$ có một bạn quen hai bạn kia; bạn đó không thể là $A$ hay $B$ (vì $A,B$ không quen nhau) nên là $C$.
+Vậy $C$ quen cả $A$ và $B$.
+Tương tự, xét nhóm $A,B,D$ được $D$ quen cả $A$ và $B$.
+Xếp $A$ đi với $C$ và $B$ đi với $D$ trên hai xe còn lại.
+Vậy có thể xếp $10$ bạn đi bằng $5$ xe máy, mỗi xe hai người quen nhau.
+
+##VD
+Trong phòng có $100$ người mỗi người quen với ít nhất $67$ người khác. Chứng tỏ rằng trong phòng phải có $4$ người từng đôi một quen nhau.
+
+Bài giải:
+Mỗi người trong phòng không quen với nhiều nhất $100-1-67=32$ người khác.
+Chọn một người $A$ bất kì.
+Gọi $N_1$ là nhóm gồm $A$ và những người quen $A$; nhóm này có ít nhất $1+67=68$ người.
+Chọn $B\in N_1$ với $B\ne A$ (khi đó $B$ quen $A$).
+Loại khỏi $N_1$ những người không quen $B$ (không quá $32$ người), ta được nhóm $N_2$ có ít nhất $68-32=36$ người, chứa $A$ và $B$; mọi người trong $N_2$ khác $A$ đều quen $A$, mọi người khác $B$ đều quen $B$.
+Chọn $C\in N_2$ với $C\ne A$, $C\ne B$.
+Loại khỏi $N_2$ những người không quen $C$ (không quá $32$ người), ta được nhóm $N_3$ có ít nhất $36-32=4$ người, chứa $A$, $B$, $C$; mọi người khác $C$ trong $N_3$ đều quen $C$.
+Vì $N_3$ có ít nhất $4$ người nên tồn tại $D\in N_3$ với $D\ne A,B,C$.
+Người $D$ quen $A$, quen $B$ và quen $C$.
+Ngoài ra $B$ quen $A$, còn $C$ quen cả $A$ và $B$.
+Vậy bốn người $A,B,C,D$ đôi một quen nhau.
+
+#DANG NDB03309
+@LT
+##TC Đếm trong giải đấu vòng tròn
+- Giải vòng tròn $n$ đội có $\dfrac{n(n-1)}2$ trận và mỗi đội đấu $n-1$ trận.
+- Theo cách tính thắng $3$ điểm, hòa $1$ điểm, thua $0$ điểm: một trận phân thắng thua cộng thêm $3$ điểm vào tổng, một trận hòa cộng thêm $2$ điểm. Nếu có $T$ trận trong đó $d$ trận hòa thì tổng điểm là $3(T-d)+2d=3T-d$.
+
+##PP Suy luận tồn tại trong giải đấu
+Từ tổng điểm hoặc tổng số trận, lập phương trình để tìm số trận hòa và số trận thắng của từng đội
+Với bài hỏi tồn tại: chọn hai đội chưa gặp nhau, đếm số đội đã gặp ít nhất một trong hai đội đó, so với số đội còn lại để tìm đội chưa gặp cả hai
+Với bài bảng điểm: chia trường hợp theo kết quả các trận chưa xác định, tính điểm từng đội và loại trường hợp vi phạm giả thiết (đội nhất không còn duy nhất, tổng điểm sai)
+Với câu hỏi "khẳng định còn đúng không": dựng một cách tổ chức cụ thể làm khẳng định sai (phản ví dụ)
+
+##CY
+Chứng minh một khẳng định không đúng chỉ cần một phản ví dụ cụ thể; khi hai đội cùng điểm cùng tranh một thứ hạng, nếu mọi cách xếp đều cho cùng kết luận thì quy tắc phụ không ảnh hưởng đến đáp án.
+
+@VD
+##VD
+Trong một bảng có $4$ đội bóng đá thi đấu với nhau theo thể thức vòng tròn, đội thắng được $3$ điểm, đội hòa được $1$ điểm, đội thua được $0$ điểm. Kết thúc, kết quả của bảng như sau: tổng số điểm của cả $4$ đội trong bảng là $16$; đội nhất bảng là đội duy nhất được $6$ điểm. Hỏi kết quả trận đấu giữa đội nhì bảng và đội cuối bảng?
+
+Bài giải:
+Bảng có $\dfrac{4\cdot3}2=6$ trận.
+Gọi $d$ là số trận hòa thì tổng điểm là $3(6-d)+2d=18-d=16$, nên $d=2$.
+Gọi $A$ là đội nhất bảng, có đúng $6$ điểm.
+Gọi $w$, $h$ là số trận thắng, hòa của $A$ thì $3w+h=6$ và $w+h\le3$, nên $w=2$, $h=0$: đội $A$ thắng $2$ trận, thua $1$ trận, không hòa trận nào.
+Gọi $B$ là đội thắng $A$, còn $C$, $D$ là hai đội thua $A$.
+Sau các trận với $A$: $A$ có $6$ điểm, $B$ có $3$ điểm, $C$ và $D$ có $0$ điểm.
+Hai trận hòa nằm trong ba trận $BC$, $BD$, $CD$, tức trong ba trận này có đúng một trận phân thắng thua.
+Trường hợp 1: $CD$ phân thắng thua, $BC$ và $BD$ hòa; giả sử $C$ thắng $D$.
+Khi đó $B$ có $3+1+1=5$ điểm, $C$ có $0+1+3=4$ điểm, $D$ có $0+1+0=1$ điểm.
+Đội nhì là $B$, đội cuối là $D$, trận $BD$ hòa. Nếu $D$ thắng $C$ thì đội cuối là $C$ và trận $BC$ hòa.
+Trường hợp 2: $BC$ phân thắng thua, $BD$ và $CD$ hòa.
+Nếu $B$ thắng $C$ thì $B$ có $3+3+1=7>6$ điểm, loại.
+Vậy $C$ thắng $B$: $B$ có $3+0+1=4$ điểm, $C$ có $0+3+1=4$ điểm, $D$ có $0+1+1=2$ điểm.
+Đội cuối là $D$; đội nhì là $B$ hoặc $C$ (cùng $4$ điểm), và trận của đội nhì với $D$ ($BD$ hoặc $CD$) đều hòa.
+Trường hợp 3: $BD$ phân thắng thua, $BC$ và $CD$ hòa; làm tương tự trường hợp 2 với vai trò $C$ và $D$ đổi chỗ.
+Vậy trong mọi trường hợp, trận giữa đội nhì bảng và đội cuối bảng hòa nhau.
+
+##VD
+Trong một giải bóng đá có $12$ đội tham dự, thi đấu vòng tròn một lượt (hai đội bất kì thi đấu với nhau đúng một trận).
+i) Chứng minh rằng sau $4$ vòng đấu (mỗi đội đấu đúng $4$ trận) luôn tìm được ba đội bóng đôi một chưa thi đấu với nhau.
+ii) Khẳng định trên còn đúng không, nếu mỗi đội đã thi đấu đúng $5$ trận?
+
+Bài giải:
+i) Mỗi đội mới thi đấu $4$ trận trong khi có $11$ đội khác, nên tồn tại hai đội chưa thi đấu với nhau; gọi hai đội đó là $A$ và $B$.
+Mỗi đội $A$, $B$ đã đấu đúng $4$ trận và hai đội này chưa gặp nhau, nên trong $10$ đội còn lại có nhiều nhất $4+4=8$ đội đã gặp $A$ hoặc $B$.
+Do đó có ít nhất $2$ đội chưa thi đấu với cả $A$ lẫn $B$; gọi một trong hai đội đó là $C$.
+Vậy $A$, $B$, $C$ là ba đội đôi một chưa thi đấu với nhau.
+
+ii) Khẳng định không còn đúng.
+Thật vậy, chia $12$ đội thành hai nhóm, mỗi nhóm $6$ đội, và cho mỗi đội đấu với $5$ đội cùng nhóm; khi đó mỗi đội đã đấu đúng $5$ trận.
+Với ba đội bất kì, theo nguyên lí Đi-rích-lê có hai đội thuộc cùng một nhóm, và hai đội đó đã đấu với nhau.
+Vậy không tồn tại ba đội đôi một chưa thi đấu với nhau.
+
+#NHOM NNB01484
+@LT
+##ĐN Đường kính của hình
+Đường kính của một hình là khoảng cách lớn nhất giữa hai điểm của hình đó. Hai điểm bất kì cùng nằm trong một hình có đường kính $d$ thì cách nhau không quá $d$.
+
+##TC Chia hình và đường kính
+- Đường kính của hình vuông cạnh $a$ là đường chéo $a\sqrt2$; của tam giác đều cạnh $a$ là $a$; của hình tròn bán kính $r$ là $2r$.
+- Hình vuông cạnh $a$ chia được thành $k^2$ hình vuông cạnh $\dfrac ak$ bằng các đường thẳng song song với các cạnh; tam giác đều cạnh $a$ chia được thành $k^2$ tam giác đều cạnh $\dfrac ak$ bằng các đường thẳng song song với các cạnh.
+- Hình tròn ngoại tiếp hình vuông cạnh $b$ có bán kính $\dfrac{b\sqrt2}2$; hình tròn ngoại tiếp tam giác đều cạnh $b$ có bán kính $\dfrac{b\sqrt3}3$.
+
+##ĐL Nguyên lí Đi-rích-lê cho các điểm
+Nếu một hình được chia thành $k$ phần (mỗi điểm thuộc ít nhất một phần) và có $N$ điểm với $N>m\cdot k$ thì có một phần chứa ít nhất $m+1$ điểm.
+
+##CY
+Điểm nằm trên đường chia thuộc hai phần cùng lúc; khi đếm chỉ gán nó cho một phần chứa nó (hoặc coi các phần là hình đóng, gồm cả biên) để không đếm hai lần.
+
+#DANG NDB02766
+@LT
+##PP Chia hình thành các phần nhỏ rồi đếm điểm
+Xác định khoảng cách $d$ cần chứng minh và số điểm $N$ cho trước
+Chọn cách chia hình thành $k$ phần với $k<N$ sao cho đường kính của mỗi phần không vượt quá $d$ (chia lưới hình vuông, hoặc tam giác đều)
+Áp dụng nguyên lí Đi-rích-lê: $N$ điểm vào $k$ phần thì có phần chứa ít nhất hai điểm
+Hai điểm cùng phần cách nhau không quá đường kính của phần, tức không quá $d$
+
+##PP Tô màu đỉnh đa giác đều và tìm tam giác cân
+Quy đổi điều cần chứng minh (tổng chia hết cho một số, cùng số dư, $\dots$) về việc tìm ba đỉnh cùng màu
+Chỉ ra hai đỉnh kề nhau cùng màu bằng phản chứng nhờ số đỉnh lẻ
+Dùng trục đối xứng của đa giác đều (đường trung trực của một cạnh đi qua một đỉnh khi số đỉnh lẻ) để dựng tam giác cân, xét các trường hợp màu của đỉnh còn lại
+
+##CY
+Chia hình quá thô thì đường kính mỗi phần lớn hơn $d$; chia quá mịn thì số phần không nhỏ hơn số điểm nên không áp dụng được nguyên lí. Phải kiểm tra cả hai điều kiện.
+
+@VD
+##VD
+Cho $5$ điểm bất kì nằm trong (hoặc trên cạnh của) một hình vuông có cạnh bằng $2$. Chứng minh rằng tồn tại hai điểm trong số đó có khoảng cách không vượt quá $\sqrt2$.
+
+Bài giải:
+Kẻ hai đường trung bình của hình vuông, chia hình vuông thành $4$ hình vuông nhỏ có cạnh bằng $1$.
+Coi $4$ hình vuông nhỏ là $4$ cái lồng và $5$ điểm là $5$ con thỏ; mỗi điểm thuộc ít nhất một hình vuông nhỏ, điểm nằm trên đường chia được gán cho một hình vuông chứa nó.
+Vì $5>4$ nên theo nguyên lí Đi-rích-lê có một hình vuông nhỏ chứa ít nhất hai điểm.
+Hai điểm cùng nằm trong hình vuông cạnh $1$ cách nhau không quá đường chéo của hình vuông đó, bằng $\sqrt{1^2+1^2}=\sqrt2$.
+Vậy tồn tại hai điểm có khoảng cách không vượt quá $\sqrt2$.
+
+##VD
+Tại mỗi đỉnh của đa giác đều $11$ cạnh ta ghi một số bất kì trong các số $31;32;61;62;91;92;331;361;332;362;961$ (mỗi số dùng đúng $1$ lần). Chứng minh rằng tồn tại ba đỉnh của đa giác là ba đỉnh của một tam giác cân và tổng các số ghi trên các đỉnh là số chia hết cho $3$.
+
+Bài giải:
+Số dư khi chia cho $3$ của các số đã cho lần lượt là: $31\to1$; $32\to2$; $61\to1$; $62\to2$; $91\to1$; $92\to2$; $331\to1$; $361\to1$; $332\to2$; $362\to2$; $961\to1$.
+Vậy mỗi số chia cho $3$ dư $1$ hoặc dư $2$.
+Tô đỏ các đỉnh ghi số chia $3$ dư $1$ và tô xanh các đỉnh ghi số chia $3$ dư $2$.
+Tổng của ba số cùng số dư $r$ chia $3$ dư $3r$ nên chia hết cho $3$.
+Vậy chỉ cần chứng minh tồn tại ba đỉnh cùng màu là ba đỉnh của một tam giác cân.
+Nếu không có hai đỉnh kề nhau nào cùng màu thì các đỉnh phải tô xen kẽ đỏ, xanh dọc theo vòng; vòng có $11$ đỉnh (số lẻ) nên đỉnh đầu và đỉnh cuối, vốn kề nhau, sẽ cùng màu, mâu thuẫn.
+Vậy tồn tại hai đỉnh kề nhau cùng màu; gọi chúng là $A$ và $B$, cùng màu $X$.
+Vì $11$ lẻ nên đường trung trực của cạnh $AB$ đi qua một đỉnh $C$ của đa giác, và $CA=CB$.
+Trường hợp 1: $C$ cùng màu $X$. Khi đó tam giác $ABC$ cân tại $C$ và ba đỉnh cùng màu.
+Trường hợp 2: $C$ khác màu $X$, gọi màu của $C$ là $Y$.
+Gọi $D$ là đỉnh kề $A$ ($D\ne B$) và $E$ là đỉnh kề $B$ ($E\ne A$).
+Nếu $D$ có màu $X$ thì tam giác $DAB$ có $AD=AB$ (hai cạnh của đa giác đều) nên cân tại $A$ và ba đỉnh cùng màu $X$.
+Nếu $E$ có màu $X$ thì tam giác $EAB$ có $BE=BA$ nên cân tại $B$ và ba đỉnh cùng màu $X$.
+Nếu $D$ và $E$ đều có màu $Y$: đường trung trực của $AB$ là trục đối xứng của đa giác, hoán đổi $A$ với $B$ nên hoán đổi $D$ với $E$, và $C$ nằm trên trục; do đó $CD=CE$.
+Khi đó tam giác $CDE$ cân tại $C$ và ba đỉnh $C,D,E$ cùng màu $Y$.
+Vậy trong mọi trường hợp có ba đỉnh cùng màu tạo thành tam giác cân, và tổng các số ghi trên ba đỉnh đó chia hết cho $3$.
+
+#DANG NDB03310
+@LT
+##PP Phủ hình bằng hình nhỏ
+Xác định hình nhỏ cho trước (hình tròn bán kính $r$, tam giác đều cạnh $b$, $\dots$) và số điểm tối thiểu $k$ cần phủ
+Chia hình lớn thành $m$ phần, mỗi phần nằm trọn trong một hình nhỏ cho trước (tính bán kính hình tròn ngoại tiếp phần đó rồi so với $r$)
+Kiểm tra $N>(k-1)\cdot m$; khi đó có một phần chứa ít nhất $k$ điểm
+Hình nhỏ phủ phần ấy cũng phủ ít nhất $k$ điểm; kết luận
+
+##CY
+Hình tròn có cùng tâm với phần chia chỉ phủ trọn phần đó khi bán kính của nó không nhỏ hơn bán kính ngoại tiếp của phần; phải so sánh chính xác (có thể so sánh bình phương hai bán kính để tránh căn).
+
+@VD
+##VD
+Trong hình vuông cạnh bằng $1$ cho $101$ điểm. Chứng minh rằng có một hình tròn bán kính $\dfrac17$ phủ (chứa) ít nhất $5$ điểm trong số đó.
+
+Bài giải:
+Chia hình vuông thành $25$ hình vuông nhỏ có cạnh $\dfrac15$ bằng các đường thẳng song song với các cạnh.
+Coi $25$ hình vuông nhỏ là $25$ cái lồng và $101$ điểm là thỏ; mỗi điểm thuộc ít nhất một hình vuông nhỏ.
+Vì $101>4\cdot25=100$ nên có một hình vuông nhỏ chứa ít nhất $5$ điểm.
+Hình tròn ngoại tiếp hình vuông cạnh $\dfrac15$ có bán kính $\dfrac{\sqrt2}{10}$.
+Ta có $\left(\dfrac{\sqrt2}{10}\right)^2=\dfrac1{50}<\dfrac1{49}=\left(\dfrac17\right)^2$, nên $\dfrac{\sqrt2}{10}<\dfrac17$.
+Hình tròn bán kính $\dfrac17$ có cùng tâm với hình vuông nhỏ đó chứa trọn hình vuông nhỏ.
+Vậy hình tròn này phủ ít nhất $5$ điểm.
+
+##VD
+Trong tam giác đều $ABC$ cạnh bằng $3$ cho $19$ điểm. Chứng minh rằng có một tam giác đều cạnh bằng $1$ nằm trong tam giác $ABC$ và chứa ít nhất $3$ điểm trong số đó.
+
+Bài giải:
+Chia mỗi cạnh của tam giác $ABC$ thành $3$ phần bằng nhau rồi kẻ các đường thẳng qua các điểm chia song song với các cạnh; tam giác $ABC$ được chia thành $9$ tam giác đều cạnh bằng $1$.
+Coi $9$ tam giác đều nhỏ là $9$ cái lồng và $19$ điểm là thỏ; mỗi điểm thuộc ít nhất một tam giác nhỏ.
+Vì $19>2\cdot9=18$ nên có một tam giác nhỏ chứa ít nhất $3$ điểm.
+Tam giác nhỏ đó là tam giác đều cạnh bằng $1$, nằm trong tam giác $ABC$.
+Vậy tồn tại tam giác đều cạnh $1$ chứa ít nhất $3$ điểm trong số $19$ điểm.
+
+#NHOM NNB01492
+@LT
+##ĐN Phép chia hết
+Đa thức $A$ chia hết cho đa thức $B\ne0$ nếu có đa thức $Q$ sao cho $A=B\cdot Q$; $Q$ gọi là thương, viết $A:B=Q$.
+
+##TC Quy tắc nhân và chia
+- $x^m\cdot x^n=x^{m+n}$; $x^m:x^n=x^{m-n}$ với $m\ge n$ và $x\ne0$.
+- Nhân đa thức với đa thức: nhân mỗi hạng tử của đa thức này với từng hạng tử của đa thức kia rồi cộng các tích.
+- Chia đa thức cho đơn thức: chia từng hạng tử cho đơn thức rồi cộng các thương.
+
+##TC Phép chia có dư
+Với hai đa thức một biến $A$ và $B\ne0$, tồn tại duy nhất cặp $Q$, $R$ sao cho $A=B\cdot Q+R$, trong đó $R=0$ hoặc bậc của $R$ nhỏ hơn bậc của $B$.
+
+#DANG NDB02723
+@LT
+##PP Tính nhanh khi đa thức bị chia là hằng đẳng thức
+Sắp xếp đa thức bị chia theo lũy thừa giảm rồi nhận ra hằng đẳng thức ($A^2\pm2AB+B^2$ hoặc $A^2-B^2$)
+Viết đa thức bị chia thành bình phương hoặc tích mà một nhân tử trùng (hoặc đối) với đa thức chia, có thể đổi dấu bằng $(A-B)^2=(B-A)^2$
+Rút gọn nhân tử chung với đa thức chia (đa thức chia khác $0$)
+
+##PP Chia đa thức một biến
+Sắp xếp đa thức bị chia và đa thức chia theo lũy thừa giảm của biến; hạng tử thiếu viết thêm với hệ số $0$
+Chia hạng tử bậc cao nhất của đa thức bị chia cho hạng tử bậc cao nhất của đa thức chia, được một hạng tử của thương
+Nhân hạng tử đó với đa thức chia rồi lấy đa thức bị chia trừ đi tích (đổi dấu mọi hạng tử của tích khi trừ)
+Lặp lại với đa thức dư cho tới khi dư bằng $0$ hoặc bậc của dư nhỏ hơn bậc của đa thức chia
+Kiểm tra lại bằng $A=B\cdot Q+R$
+
+##CY
+Hai biểu thức $x-4$ và $4-x$ là hai số đối nhau, nhưng $(x-4)^2=(4-x)^2$; khi đa thức chia viết theo thứ tự ngược, phải chọn dạng bình phương trùng đúng nhân tử, tránh mất dấu của thương.
+
+@VD
+##VD
+Tính nhanh: $(x^2+16-8x):(4-x)$.
+
+Bài giải:
+$(x^2+16-8x):(4-x)=(x^2-8x+16):(4-x)$
+Đa thức bị chia là bình phương của một hiệu: $x^2-8x+16=(x-4)^2=(4-x)^2$.
+$=(4-x)^2:(4-x)$
+$=4-x$
+
+##VD
+Thực hiện phép chia: $(6x^3-7x^2-x+2):(2x+1)$.
+
+Bài giải:
+Cả hai đa thức đã sắp xếp theo lũy thừa giảm của $x$.
+Chia hạng tử đầu: $6x^3:2x=3x^2$.
+Nhân $3x^2(2x+1)=6x^3+3x^2$ rồi trừ: $(6x^3-7x^2-x+2)-(6x^3+3x^2)=-10x^2-x+2$.
+Chia hạng tử đầu của dư: $-10x^2:2x=-5x$.
+Nhân $-5x(2x+1)=-10x^2-5x$ rồi trừ: $(-10x^2-x+2)-(-10x^2-5x)=4x+2$.
+Chia hạng tử đầu của dư: $4x:2x=2$.
+Nhân $2(2x+1)=4x+2$ rồi trừ: $(4x+2)-(4x+2)=0$.
+Dư bằng $0$ nên phép chia hết, thương là $3x^2-5x+2$.
+Kiểm tra: $(2x+1)(3x^2-5x+2)=6x^3-10x^2+4x+3x^2-5x+2=6x^3-7x^2-x+2$.
+Vậy $(6x^3-7x^2-x+2):(2x+1)=3x^2-5x+2$.
+
+#NHOM NNB01493
+@LT
+##TC Bảy hằng đẳng thức đáng nhớ
+- $(A+B)^2=A^2+2AB+B^2$.
+- $(A-B)^2=A^2-2AB+B^2$.
+- $A^2-B^2=(A-B)(A+B)$.
+- $(A+B)^3=A^3+3A^2B+3AB^2+B^3$.
+- $(A-B)^3=A^3-3A^2B+3AB^2-B^3$.
+- $A^3+B^3=(A+B)(A^2-AB+B^2)$.
+- $A^3-B^3=(A-B)(A^2+AB+B^2)$.
+
+##TC Các hằng đẳng thức mở rộng
+- $(a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca$.
+- $a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$.
+- $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\dots+ab^{n-2}+b^{n-1})$.
+- Các hệ số của khai triển $(a+b)^n$ là các số ở dòng thứ $n$ của tam giác Pa-xcan; chẳng hạn dòng thứ ba là $1;3;3;1$.
+
+#DANG NDB02730
+@LT
+##PP Khai triển bằng hằng đẳng thức
+Nhận dạng: bình phương hay lập phương, tổng hay hiệu; xác định $A$ và $B$ (kể cả hệ số)
+Viết dạng khai triển chưa rút gọn, thay nguyên cả cụm $A$ và $B$ (đặt trong ngoặc)
+Tính từng hạng tử và giữ đúng dấu (dấu trừ ở hạng tử giữa của bình phương hiệu; dấu xen kẽ ở lập phương hiệu)
+Sắp xếp kết quả theo lũy thừa giảm của biến
+
+##CY
+Phải bình phương (hoặc lập phương) cả hệ số lẫn biến của $A$: $(2x)^2=4x^2$ chứ không phải $2x^2$; hạng tử $B^2$ luôn dương dù $B$ mang dấu âm.
+
+@VD
+##VD
+Tính: $(5x-4)^2$.
+
+Bài giải:
+Đây là bình phương của một hiệu, với $A=5x$ và $B=4$.
+$(5x-4)^2=(5x)^2-2\cdot5x\cdot4+4^2$
+$=25x^2-40x+16$
+
+##VD
+Tính: $(2x+1)^3$.
+
+Bài giải:
+Đây là lập phương của một tổng, với $A=2x$ và $B=1$.
+$(2x+1)^3=(2x)^3+3(2x)^2\cdot1+3\cdot2x\cdot1^2+1^3$
+$=8x^3+12x^2+6x+1$
+
+#NHOM NNB01494
+@LT
+##ĐN Phân tích đa thức thành nhân tử
+Phân tích đa thức thành nhân tử là biến đổi đa thức đó thành tích của các đa thức (bậc từ $1$ trở lên).
+
+##TC Ba phương pháp cơ bản
+- Đặt nhân tử chung: $AB+AC=A(B+C)$.
+- Dùng hằng đẳng thức: $A^2-B^2=(A-B)(A+B)$, $A^2\pm2AB+B^2=(A\pm B)^2$, $A^3\pm B^3$.
+- Nhóm hạng tử: nhóm sao cho mỗi nhóm có nhân tử chung và các nhóm cho cùng một thừa số.
+
+##ĐL Tích bằng $0$
+$A\cdot B=0$ khi và chỉ khi $A=0$ hoặc $B=0$. Tổng quát, tích nhiều thừa số bằng $0$ khi và chỉ khi có ít nhất một thừa số bằng $0$.
+
+#DANG NDB02734
+@LT
+##PP Giải phương trình bằng cách phân tích thành nhân tử
+Chuyển mọi hạng tử về vế trái để vế phải bằng $0$
+Quan sát để đặt nhân tử chung, đổi dấu nếu cần ($-7x+21=-7(x-3)$), hoặc nhóm các hạng tử để lộ thừa số giống nhau
+Đặt thừa số chung của các nhóm, rồi phân tích tiếp bằng hằng đẳng thức cho tới khi vế trái là tích các nhân tử không phân tích được nữa
+Cho từng nhân tử bằng $0$ và giải các phương trình bậc nhất
+Kết luận tập nghiệm $S$
+
+##CY
+Không chia hai vế cho một biểu thức chứa ẩn (làm mất nghiệm); thay vào đó đưa về tích rồi cho từng nhân tử bằng $0$. Chú ý đổi dấu $x-3=-(3-x)$ khi ghép nhân tử.
+
+@VD
+##VD
+Tìm $x$, biết: $x(x-3)-7x+21=0$.
+
+Bài giải:
+$x(x-3)-7x+21=0$
+$\Leftrightarrow x(x-3)-7(x-3)=0$
+$\Leftrightarrow(x-3)(x-7)=0$
+$\Leftrightarrow x-3=0$ hoặc $x-7=0$
+$\Leftrightarrow x=3$ hoặc $x=7$
+Vậy $S=\{3;7\}$.
+
+##VD
+Tìm $x$, biết: $x^3-x^2-25x+25=0$.
+
+Bài giải:
+$x^3-x^2-25x+25=0$
+$\Leftrightarrow x^2(x-1)-25(x-1)=0$
+$\Leftrightarrow(x-1)(x^2-25)=0$
+$\Leftrightarrow(x-1)(x-5)(x+5)=0$
+$\Leftrightarrow x-1=0$ hoặc $x-5=0$ hoặc $x+5=0$
+$\Leftrightarrow x=1$ hoặc $x=5$ hoặc $x=-5$
+Vậy $S=\{1;5;-5\}$.

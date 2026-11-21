@@ -1,0 +1,546 @@
+#NHOM NNB01469
+@LT
+##ĐL Bất đẳng thức Bu-nhi-a-cốp-xki
+Với mọi số thực $a,b,c,x,y,z$ ta có $(a^2+b^2)(x^2+y^2)\ge(ax+by)^2$ và $(a^2+b^2+c^2)(x^2+y^2+z^2)\ge(ax+by+cz)^2$. Dấu "=" xảy ra khi hai bộ số tỉ lệ với nhau: $\dfrac ax=\dfrac by$ (và $=\dfrac cz$). Chứng minh bất đẳng thức hai biến: hiệu hai vế bằng $(ay-bx)^2\ge0$.
+
+##TC Các hệ quả hay dùng
+- Cô-si: $a+b\ge2\sqrt{ab}$ với $a,b\ge0$; $a+b+c\ge3\sqrt[3]{abc}$ với $a,b,c\ge0$; $(a+b)^2\ge4ab$ với mọi số thực $a,b$.
+- $\dfrac{a^2}X+\dfrac{b^2}Y\ge\dfrac{(a+b)^2}{X+Y}$ với $X,Y>0$, dấu "=" khi $\dfrac aX=\dfrac bY$ (hiệu hai vế bằng $\dfrac{(aY-bX)^2}{XY(X+Y)}$).
+- $\dfrac1x+\dfrac1y\ge\dfrac4{x+y}$ với $x,y>0$; $(a+b+c)^2\le3(a^2+b^2+c^2)$ (Bu-nhi-a-cốp-xki với bộ $(1;1;1)$).
+
+##CY
+- Bất đẳng thức Bu-nhi-a-cốp-xki đúng với số thực bất kì; còn Cô-si chỉ dùng cho số không âm, nên phải nêu điều kiện trước khi áp dụng.
+- Khi dùng nhiều bất đẳng thức liên tiếp, các dấu "=" phải xảy ra đồng thời tại cùng một bộ giá trị của biến.
+
+#DANG NDB02752
+@LT
+##TC Cách chọn hai bộ số
+- Biểu thức có dạng tổng bình phương nhân tổng bình phương: đọc ngay hai bộ số từ hai tổng đó.
+- Cần chặn một tổng $ax+by+cz$ mà giả thiết cho biết giá trị: chọn $(a;b;c)$ là các hệ số, $(x;y;z)$ là các biến.
+- Thiếu số hạng: tách hằng số thành bình phương, ví dụ $1=1^2$, $2=1^2+1^2$, hoặc thêm số $1$ vào bộ số.
+
+##PP Chứng minh bằng bất đẳng thức Bu-nhi-a-cốp-xki
+Tìm tổng dạng $ax+by+cz$ mà giả thiết tính được, hoặc tích hai tổng bình phương xuất hiện trong đề
+Chọn hai bộ số sao cho tích từng cặp là các hạng tử của tổng đó, tách hằng số nếu cần
+Viết bất đẳng thức Bu-nhi-a-cốp-xki, thay giả thiết rồi biến đổi về điều cần chứng minh (đề hoán vị vòng quanh thì viết thêm hai bất đẳng thức tương tự rồi cộng)
+Giải điều kiện các tỉ số bằng nhau để tìm dấu "=" và kiểm tra thỏa giả thiết
+
+##CY
+Khi chia hai vế cho một biểu thức hoặc lấy nghịch đảo phải kiểm tra biểu thức đó dương; chỉ dùng được dấu "=" khi các tỉ số bằng nhau thỏa mãn giả thiết của đề.
+@VD
+##VD
+Cho các số thực $a,b,c$ thỏa mãn $a+2b+3c=14$. Chứng minh rằng $a^2+b^2+c^2\ge14$ và tìm $a,b,c$ để dấu "=" xảy ra.
+
+Bài giải:
+Áp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ số $(1;2;3)$ và $(a;b;c)$:
+$(1\cdot a+2\cdot b+3\cdot c)^2\le(1^2+2^2+3^2)(a^2+b^2+c^2)$.
+Thay $a+2b+3c=14$: $14^2\le14(a^2+b^2+c^2)$, tức $196\le14(a^2+b^2+c^2)$.
+Chia hai vế cho $14>0$ ta được $a^2+b^2+c^2\ge14$.
+Dấu "=" xảy ra khi $\dfrac a1=\dfrac b2=\dfrac c3=k$; khi đó $a+2b+3c=k(1+4+9)=14k=14$ nên $k=1$, tức $a=1$, $b=2$, $c=3$ (thỏa giả thiết).
+Vậy $a^2+b^2+c^2\ge14$, dấu "=" xảy ra khi $(a;b;c)=(1;2;3)$.
+
+##VD
+Cho $a,b,c>0$ thỏa mãn $ab+bc+ca=3$. Chứng minh rằng $\dfrac1{a^2+b^2+1}+\dfrac1{b^2+c^2+1}+\dfrac1{c^2+a^2+1}\le1$.
+
+Bài giải:
+Áp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ số $(a;b;1)$ và $(1;1;c)$:
+$(a\cdot1+b\cdot1+1\cdot c)^2\le(a^2+b^2+1^2)(1^2+1^2+c^2)$
+$\Rightarrow(a+b+c)^2\le(a^2+b^2+1)(c^2+2)$.
+Vì $ab+bc+ca=3$ nên $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)=a^2+b^2+c^2+6$.
+Suy ra $a^2+b^2+c^2+6\le(a^2+b^2+1)(c^2+2)$.
+Chia hai vế cho số dương $(a^2+b^2+1)(a^2+b^2+c^2+6)$: $\dfrac1{a^2+b^2+1}\le\dfrac{c^2+2}{a^2+b^2+c^2+6}$ (1)
+Hoán vị vòng quanh $a\to b\to c\to a$ ta được $\dfrac1{b^2+c^2+1}\le\dfrac{a^2+2}{a^2+b^2+c^2+6}$ (2)
+và $\dfrac1{c^2+a^2+1}\le\dfrac{b^2+2}{a^2+b^2+c^2+6}$ (3)
+Cộng (1), (2), (3) theo vế: vế trái $\le\dfrac{a^2+b^2+c^2+6}{a^2+b^2+c^2+6}=1$.
+Vậy bất đẳng thức được chứng minh. Dấu "=" xảy ra khi $a=b=c=1$ (thỏa $ab+bc+ca=3$).
+
+#DANG NDB03291
+@LT
+##TC Các bổ đề thường dùng
+- $a^2+b^2\ge2ab$ và $(a+b)^2\ge4ab$ với mọi số thực $a,b$ (hiệu hai vế là $(a-b)^2$).
+- $a^3+b^3\ge ab(a+b)$ với $a,b\ge0$ (hiệu hai vế bằng $(a+b)(a-b)^2$).
+- $\dfrac{a^2}b+b\ge2a$ với $b>0$ (hiệu hai vế bằng $\dfrac{(a-b)^2}b$).
+
+##PP Chứng minh bổ đề rồi cộng hoặc nhân theo vế
+Nhận ra các cụm hoán vị vòng quanh mà từng cụm đánh giá được bằng một bất đẳng thức đơn giản
+Chứng minh bổ đề bằng cách xét hiệu hai vế, nêu rõ điều kiện của biến
+Áp dụng bổ đề cho từng cụm, rồi cộng theo vế (hoặc nhân theo vế khi mọi vế không âm)
+Rút gọn vế còn lại, kết luận và tìm dấu "=" (tất cả bổ đề cùng đạt dấu "=")
+
+##CY
+Cộng theo vế hai bất đẳng thức cùng chiều thì luôn được; nhân theo vế chỉ khi mọi vế không âm. Lấy nghịch đảo hai vế dương thì đổi chiều bất đẳng thức.
+@VD
+##VD
+Cho $x,y,z\ge0$. Chứng minh rằng $(x+y)(y+z)(z+x)\ge8xyz$.
+
+Bài giải:
+Với mọi số thực $x,y$ ta có $(x+y)^2-4xy=(x-y)^2\ge0$ nên $(x+y)^2\ge4xy$.
+Tương tự $(y+z)^2\ge4yz$ và $(z+x)^2\ge4zx$; vì $x,y,z\ge0$ nên các vế của ba bất đẳng thức đều không âm.
+Nhân từng vế ba bất đẳng thức: $\left[(x+y)(y+z)(z+x)\right]^2\ge64x^2y^2z^2=(8xyz)^2$.
+Hai số $(x+y)(y+z)(z+x)$ và $8xyz$ đều không âm mà bình phương số thứ nhất không nhỏ hơn bình phương số thứ hai, nên $(x+y)(y+z)(z+x)\ge8xyz$.
+Dấu "=" xảy ra khi $x=y=z$ (cả ba bổ đề đều thành đẳng thức) hoặc khi có hai trong ba số bằng $0$ (khi đó hai vế cùng bằng $0$).
+
+##VD
+Cho $a,b,c>0$. Chứng minh rằng $\dfrac1{a^3+b^3+abc}+\dfrac1{b^3+c^3+abc}+\dfrac1{c^3+a^3+abc}\le\dfrac1{abc}$.
+
+Bài giải:
+Với $a,b>0$ ta có $a^3+b^3-ab(a+b)=(a+b)(a-b)^2\ge0$ nên $a^3+b^3\ge ab(a+b)$.
+Cộng $abc$ vào hai vế: $a^3+b^3+abc\ge ab(a+b)+abc=ab(a+b+c)>0$.
+Lấy nghịch đảo hai vế dương (đổi chiều): $\dfrac1{a^3+b^3+abc}\le\dfrac1{ab(a+b+c)}=\dfrac c{abc(a+b+c)}$ (1)
+Tương tự $\dfrac1{b^3+c^3+abc}\le\dfrac1{bc(a+b+c)}=\dfrac a{abc(a+b+c)}$ (2)
+và $\dfrac1{c^3+a^3+abc}\le\dfrac1{ca(a+b+c)}=\dfrac b{abc(a+b+c)}$ (3)
+Cộng (1), (2), (3) theo vế: vế trái $\le\dfrac{a+b+c}{abc(a+b+c)}=\dfrac1{abc}$.
+Vậy bất đẳng thức được chứng minh. Dấu "=" xảy ra khi $a=b=c$.
+
+#DANG NDB03292
+@LT
+##ĐL Bất đẳng thức về giá trị tuyệt đối
+Với mọi số thực $a,b$:
+- $-\lvert a\rvert\le a\le\lvert a\rvert$ (cộng hai bất đẳng thức này cho $a$ và $b$ thì được bất đẳng thức tiếp theo).
+- $\lvert a+b\rvert\le\lvert a\rvert+\lvert b\rvert$, dấu "=" xảy ra khi $ab\ge0$.
+- $\lvert a\rvert-\lvert b\rvert\le\lvert a-b\rvert\le\lvert a\rvert+\lvert b\rvert$; dấu "=" ở vế trái xảy ra khi $b(a-b)\ge0$, ở vế phải khi $ab\le0$.
+
+##PP Chứng minh bất đẳng thức có dấu giá trị tuyệt đối
+Nhận ra các biểu thức nằm trong dấu giá trị tuyệt đối và ghép chúng sao cho tổng (hoặc hiệu) không còn biến
+Áp dụng $\lvert a\rvert+\lvert b\rvert\ge\lvert a+b\rvert$ hoặc $\lvert a-b\rvert\ge\lvert a\rvert-\lvert b\rvert$ cho từng cặp, nhớ $\lvert A\rvert\ge0$ cho phần còn lại
+Giải điều kiện dấu "=" của từng bất đẳng thức (tích hai biểu thức không âm hoặc không dương)
+Kiểm tra các điều kiện "=" có chung một giá trị của biến hay không để kết luận
+
+##CY
+Điều kiện dấu "=" là tích $ab\ge0$ (hai số cùng dấu, kể cả có một số bằng $0$), không phải "$a,b$ dương". Với bài tìm giá trị nhỏ nhất, các dấu "=" phải xảy ra cùng một giá trị của biến.
+@VD
+##VD
+Tìm giá trị nhỏ nhất của $A=\lvert x-1\rvert+\lvert x-2\rvert+\lvert x-3\rvert$.
+
+Bài giải:
+Ghép $\lvert x-1\rvert+\lvert x-3\rvert=\lvert x-1\rvert+\lvert3-x\rvert\ge\lvert(x-1)+(3-x)\rvert=2$.
+Dấu "=" xảy ra khi $(x-1)(3-x)\ge0$, tức $1\le x\le3$.
+Mặt khác $\lvert x-2\rvert\ge0$, dấu "=" xảy ra khi $x=2$.
+Cộng hai bất đẳng thức: $A\ge2$ với mọi $x$. (1)
+Cả hai dấu "=" cùng xảy ra khi $1\le x\le3$ và $x=2$, tức $x=2$; khi đó $A=1+0+1=2$. (2)
+Từ (1) và (2): giá trị nhỏ nhất của $A$ bằng $2$, đạt khi $x=2$.
+
+##VD
+Chứng minh rằng với mọi số thực $a,b$ ta có $\dfrac{\lvert a+b\rvert}{1+\lvert a+b\rvert}\le\dfrac{\lvert a\rvert}{1+\lvert a\rvert}+\dfrac{\lvert b\rvert}{1+\lvert b\rvert}$.
+
+Bài giải:
+Đặt $u=\lvert a+b\rvert$ và $s=\lvert a\rvert+\lvert b\rvert$. Theo $\lvert a+b\rvert\le\lvert a\rvert+\lvert b\rvert$ ta có $0\le u\le s$.
+Vì $\dfrac s{1+s}-\dfrac u{1+u}=\dfrac{s-u}{(1+s)(1+u)}\ge0$ nên $\dfrac u{1+u}\le\dfrac s{1+s}$.
+$\dfrac s{1+s}=\dfrac{\lvert a\rvert+\lvert b\rvert}{1+\lvert a\rvert+\lvert b\rvert}=\dfrac{\lvert a\rvert}{1+\lvert a\rvert+\lvert b\rvert}+\dfrac{\lvert b\rvert}{1+\lvert a\rvert+\lvert b\rvert}$.
+Vì $1+\lvert a\rvert+\lvert b\rvert\ge1+\lvert a\rvert>0$ nên $\dfrac{\lvert a\rvert}{1+\lvert a\rvert+\lvert b\rvert}\le\dfrac{\lvert a\rvert}{1+\lvert a\rvert}$; tương tự $\dfrac{\lvert b\rvert}{1+\lvert a\rvert+\lvert b\rvert}\le\dfrac{\lvert b\rvert}{1+\lvert b\rvert}$.
+Ghép các bất đẳng thức: $\dfrac{\lvert a+b\rvert}{1+\lvert a+b\rvert}\le\dfrac{\lvert a\rvert}{1+\lvert a\rvert}+\dfrac{\lvert b\rvert}{1+\lvert b\rvert}$.
+Dấu "=" xảy ra khi ít nhất một trong hai số $a,b$ bằng $0$.
+
+#NHOM NNB01470
+@LT
+##ĐN Làm trội và làm giảm
+Làm trội là thay một số hạng (hay một biểu thức) bằng một số lớn hơn nó để được cách tính đơn giản hơn, từ đó chặn trên. Làm giảm là thay bằng một số nhỏ hơn, từ đó chặn dưới.
+
+##TC Tính chất dùng để làm trội, làm giảm
+- Với $0<m<n$ thì $\dfrac1m>\dfrac1n$: giảm mẫu dương thì phân số tăng, thêm số dương vào mẫu thì phân số giảm.
+- Với $a,b,c>0$: nếu $\dfrac ab<1$ thì $\dfrac ab<\dfrac{a+c}{b+c}$; nếu $\dfrac ab>1$ thì $\dfrac ab>\dfrac{a+c}{b+c}$.
+- Tách phân số: $\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$ và $\dfrac1{k(k+d)}=\dfrac1d\left(\dfrac1k-\dfrac1{k+d}\right)$.
+
+##TC Các cách chứng minh bất đẳng thức khác
+- Xét hiệu hai vế hoặc biến đổi tương đương về một bất đẳng thức hiển nhiên đúng.
+- Phản chứng: giả sử điều ngược lại rồi suy ra mâu thuẫn.
+- Đổi biến, rút biến theo điều kiện; sắp thứ tự các biến (khi biểu thức đối xứng); chia khoảng giá trị của biến.
+- Với ba cạnh tam giác dùng $a<b+c$ hoặc đặt $x=b+c-a$, $y=c+a-b$, $z=a+b-c$.
+
+##CY
+- Khi cộng nhiều bất đẳng thức chặt (dấu "<") cùng chiều thì kết quả vẫn chặt, không xảy ra dấu "=".
+- Làm trội phải đúng chiều và không quá thô: nếu kết quả vượt hằng số cần chứng minh thì phải chọn đánh giá sát hơn.
+
+#DANG NDB02753
+@LT
+##TC Các hiệu hai phân số liền nhau
+- Với số nguyên $k\ge2$: $\dfrac1{k^2}<\dfrac1{k(k-1)}=\dfrac1{k-1}-\dfrac1k$ (làm trội), và $\dfrac1{k^2}>\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$ (làm giảm).
+- Với $n\ge2$: $n^3>(n-1)n(n+1)$ nên $\dfrac1{n^3}<\dfrac1{(n-1)n(n+1)}=\dfrac12\left[\dfrac1{(n-1)n}-\dfrac1{n(n+1)}\right]$.
+
+##PP Làm trội để tổng triệt tiêu
+Tìm số hạng tổng quát và các giá trị mà biến chạy qua
+Làm trội (hoặc làm giảm) số hạng tổng quát thành hiệu của hai phân số liền nhau, kiểm tra chiều bất đẳng thức bằng cách so sánh hai mẫu dương
+Viết bất đẳng thức đó lần lượt cho từng giá trị của biến, cộng theo vế để các số hạng ở giữa triệt tiêu
+So sánh phần còn lại với hằng số cần chứng minh, bỏ phần trừ dương ở cuối khi cần
+
+##CY
+Làm trội thô quá thì tổng vượt hằng số: muốn chặn $\dfrac1{2^3}+\dfrac1{3^3}+\dots$ bởi $\dfrac14$ mà thay $\dfrac1{n^3}$ bằng $\dfrac1{n(n-1)}$ thì tổng ra gần $1$, không chứng minh được.
+@VD
+##VD
+Chứng minh rằng $\dfrac1{2^2}+\dfrac1{3^2}+\dots+\dfrac1{n^2}<1$ với mọi số nguyên $n>1$.
+
+Bài giải:
+Với mỗi số nguyên $k\ge2$ ta có $k^2>k(k-1)>0$ nên $\dfrac1{k^2}<\dfrac1{k(k-1)}=\dfrac1{k-1}-\dfrac1k$.
+Lần lượt cho $k=2;3;\dots;n$:
+$\dfrac1{2^2}<\dfrac11-\dfrac12$
+$\dfrac1{3^2}<\dfrac12-\dfrac13$
+$\dots$
+$\dfrac1{n^2}<\dfrac1{n-1}-\dfrac1n$
+Cộng từng vế $n-1$ bất đẳng thức trên, các số hạng ở giữa triệt tiêu:
+$\dfrac1{2^2}+\dfrac1{3^2}+\dots+\dfrac1{n^2}<1-\dfrac1n<1$.
+Vậy $\dfrac1{2^2}+\dfrac1{3^2}+\dots+\dfrac1{n^2}<1$.
+
+##VD
+Chứng minh rằng $\dfrac1{2^3}+\dfrac1{3^3}+\dots+\dfrac1{2009^3}<\dfrac14$.
+
+Bài giải:
+Với số nguyên $n\ge2$: $(n-1)n(n+1)=n(n^2-1)<n\cdot n^2=n^3$, nên
+$\dfrac1{n^3}<\dfrac1{(n-1)n(n+1)}=\dfrac12\left[\dfrac1{(n-1)n}-\dfrac1{n(n+1)}\right]$.
+Cho $n=2;3;\dots;2009$ rồi cộng từng vế:
+$\dfrac1{2^3}+\dfrac1{3^3}+\dots+\dfrac1{2009^3}<\dfrac12\left[\left(\dfrac1{1\cdot2}-\dfrac1{2\cdot3}\right)+\left(\dfrac1{2\cdot3}-\dfrac1{3\cdot4}\right)+\dots+\left(\dfrac1{2008\cdot2009}-\dfrac1{2009\cdot2010}\right)\right]$
+$=\dfrac12\left[\dfrac12-\dfrac1{2009\cdot2010}\right]<\dfrac12\cdot\dfrac12=\dfrac14$.
+Vậy $\dfrac1{2^3}+\dfrac1{3^3}+\dots+\dfrac1{2009^3}<\dfrac14$.
+
+#DANG NDB03293
+@LT
+##TC Hai cách kẹp một phân số
+- Cận dưới: với $a,b,c>0$ thì $\dfrac a{a+b+c}<\dfrac a{a+b}$ (mẫu lớn hơn thì phân số nhỏ hơn).
+- Cận trên: nếu $\dfrac ab<1$ thì $\dfrac ab<\dfrac{a+c}{b+c}$. Thật vậy, $a<b$ nên $a(b+c)=ab+ac<ab+bc=b(a+c)$.
+
+##PP Kẹp tổng phân số giữa hai hằng số
+Xác định mẫu chung $S$ cần đạt (thường là tổng tất cả các biến)
+Với mỗi phân số, thêm các biến còn thiếu vào mẫu để được cận dưới có mẫu $S$
+Kiểm tra phân số nhỏ hơn $1$, rồi thêm cùng một đại lượng vào tử và mẫu để được cận trên có mẫu $S$
+Viết bất đẳng thức kép cho các phân số còn lại, cộng theo vế và rút gọn tử số ở hai đầu
+
+##CY
+Cận trên $\dfrac ab<\dfrac{a+c}{b+c}$ chỉ đúng khi $\dfrac ab<1$; phải kiểm tra điều này trước khi dùng. Mỗi bước đều là bất đẳng thức chặt nên cả hai bất đẳng thức của đề đều chặt.
+@VD
+##VD
+Cho $a,b,c>0$. Chứng minh rằng $1<\dfrac a{a+b}+\dfrac b{b+c}+\dfrac c{c+a}<2$.
+
+Bài giải:
+Vì $a+b+c>a+b>0$ nên $\dfrac a{a+b+c}<\dfrac a{a+b}$.
+Mặt khác $\dfrac a{a+b}<\dfrac{a+c}{a+b+c}\Leftrightarrow a(a+b+c)<(a+c)(a+b)\Leftrightarrow a^2+ab+ac<a^2+ab+ac+bc\Leftrightarrow bc>0$ (đúng).
+Do đó $\dfrac a{a+b+c}<\dfrac a{a+b}<\dfrac{a+c}{a+b+c}$ (1)
+Hoán vị vòng quanh $a\to b\to c\to a$: $\dfrac b{a+b+c}<\dfrac b{b+c}<\dfrac{b+a}{a+b+c}$ (2) và $\dfrac c{a+b+c}<\dfrac c{c+a}<\dfrac{c+b}{a+b+c}$ (3)
+Cộng từng vế (1), (2), (3): $\dfrac{a+b+c}{a+b+c}<\dfrac a{a+b}+\dfrac b{b+c}+\dfrac c{c+a}<\dfrac{(a+c)+(b+a)+(c+b)}{a+b+c}$,
+tức $1<\dfrac a{a+b}+\dfrac b{b+c}+\dfrac c{c+a}<2$.
+Các bất đẳng thức đều chặt nên không xảy ra dấu "=".
+
+##VD
+Cho $a,b,c,d>0$. Chứng minh rằng $1<\dfrac a{a+b+c}+\dfrac b{b+c+d}+\dfrac c{c+d+a}+\dfrac d{d+a+b}<2$.
+
+Bài giải:
+Đặt $S=a+b+c+d>0$ và gọi $T$ là tổng cần kẹp.
+Cận dưới: vì $a+b+c<S$ nên $\dfrac a{a+b+c}>\dfrac aS$; tương tự $\dfrac b{b+c+d}>\dfrac bS$, $\dfrac c{c+d+a}>\dfrac cS$, $\dfrac d{d+a+b}>\dfrac dS$.
+Cộng theo vế: $T>\dfrac{a+b+c+d}S=1$.
+Cận trên: $\dfrac a{a+b+c}<1$ và $a\cdot S-(a+d)(a+b+c)=-d(b+c)<0$ nên $\dfrac a{a+b+c}<\dfrac{a+d}S$.
+Tương tự (vì mỗi phân số nhỏ hơn $1$): $\dfrac b{b+c+d}<\dfrac{b+a}S$, $\dfrac c{c+d+a}<\dfrac{c+b}S$, $\dfrac d{d+a+b}<\dfrac{d+c}S$.
+Cộng theo vế: $T<\dfrac{(a+d)+(b+a)+(c+b)+(d+c)}S=\dfrac{2S}S=2$.
+Vậy $1<T<2$ (các bất đẳng thức đều chặt).
+
+#DANG NDB03294
+@LT
+##PP Chứng minh bằng phản chứng
+Viết đúng mệnh đề phủ định của kết luận rồi giả sử nó xảy ra
+Kết hợp với giả thiết, biến đổi hợp lệ (bình phương hai vế không âm, nhân các vế dương, dùng bất đẳng thức đã biết) để rút ra một điều mâu thuẫn
+Nêu rõ mâu thuẫn với điều gì (giả thiết, bất đẳng thức hiển nhiên, hay chính giả sử), suy ra giả sử sai và kết luận đúng
+
+##TC Cách lập mệnh đề phủ định
+- Phủ định của "$A\le B$" là "$A>B$"; của "$A\ge B$" là "$A<B$".
+- Phủ định của "có ít nhất một số thỏa tính chất P" là "mọi số đều không thỏa P"; phủ định của "không tồn tại số thỏa P" là "có tồn tại số thỏa P".
+
+##CY
+Chỉ được bình phương hai vế khi hai vế cùng không âm: từ $a+b>2$ suy ra $(a+b)^2>4$ vì $a+b>2>0$. Nhân từng vế các bất đẳng thức cùng chiều chỉ khi mọi vế dương.
+@VD
+##VD
+Cho hai số thực $a,b$ thỏa mãn $a^2+b^2\le2$. Chứng minh rằng $a+b\le2$.
+
+Bài giải:
+Giả sử $a+b>2$. Vì $a+b>2>0$ nên bình phương hai vế: $(a+b)^2>4$. (1)
+Mặt khác $2(a^2+b^2)-(a+b)^2=(a-b)^2\ge0$ nên $(a+b)^2\le2(a^2+b^2)\le2\cdot2=4$. (2)
+(1) và (2) mâu thuẫn nhau, nên giả sử sai.
+Vậy $a+b\le2$.
+Dấu "=" xảy ra khi $a=b=1$.
+
+##VD
+Cho $a,b,c$ thuộc khoảng $(0;1)$. Chứng minh rằng ba bất đẳng thức $a(1-b)>\dfrac14$, $b(1-c)>\dfrac14$, $c(1-a)>\dfrac14$ không thể cùng xảy ra.
+
+Bài giải:
+Giả sử cả ba bất đẳng thức cùng xảy ra. Vì $a,b,c\in(0;1)$ nên các thừa số $a,b,c,1-a,1-b,1-c$ đều dương, do đó các vế trái dương.
+Nhân từng vế ba bất đẳng thức (các vế đều dương): $abc(1-a)(1-b)(1-c)>\dfrac1{64}$. (1)
+Với mọi số thực $x$ ta có $x(1-x)=\dfrac14-\left(x-\dfrac12\right)^2\le\dfrac14$; với $x\in(0;1)$ thì $x(1-x)>0$.
+Nhân từng vế ba bất đẳng thức $0<a(1-a)\le\dfrac14$, $0<b(1-b)\le\dfrac14$, $0<c(1-c)\le\dfrac14$:
+$abc(1-a)(1-b)(1-c)=a(1-a)\cdot b(1-b)\cdot c(1-c)\le\dfrac1{64}$. (2)
+(1) và (2) mâu thuẫn nhau, nên giả sử sai.
+Vậy ba bất đẳng thức đã cho không thể cùng xảy ra.
+
+#DANG NDB03295
+@LT
+##TC Các phép đặt ẩn phụ hay dùng
+- Điều kiện tổng $a+b+c=s$: rút một biến ($c=s-a-b$), hoặc đặt $a=\dfrac s3+x$, $b=\dfrac s3+y$, $c=\dfrac s3+z$ với $x+y+z=0$.
+- Điều kiện $abc=1$ với $a,b,c>0$: đặt $a=\dfrac xy$, $b=\dfrac yz$, $c=\dfrac zx$ với $x,y,z>0$; hoặc đặt các phân thức chung mẫu để tổng bằng $1$.
+- Biểu thức lặp một cụm: đặt cụm đó bằng $t$ và tìm miền giá trị của $t$.
+
+##PP Đổi biến hoặc thế điều kiện
+Nhận ra ràng buộc (tổng, tích, cụm lặp) và chọn phép đặt hoặc phép thế làm giả thiết đơn giản hơn
+Tìm miền giá trị của biến mới và các quan hệ giữa chúng (tổng bằng một hằng số, đều dương)
+Viết lại bất đẳng thức theo biến mới, đưa về bất đẳng thức quen thuộc như $(x-y)^2\ge0$ hay $\dfrac{x^2}y+y\ge2x$
+Quay về biến cũ, tìm dấu "=" và kiểm tra thỏa điều kiện ban đầu
+
+##CY
+Biến mới phải có đúng miền (dương, tổng cho trước) thì mới được dùng các bất đẳng thức cần điều kiện dương; đặt xong phải nêu rõ và kiểm tra điều đó.
+@VD
+##VD
+Cho các số thực $a,b,c$ thỏa mãn $a+b+c=1$. Chứng minh rằng $a^2+b^2+c^2\ge\dfrac13$.
+
+Bài giải:
+Đặt $a=\dfrac13+x$, $b=\dfrac13+y$, $c=\dfrac13+z$. Từ $a+b+c=1$ suy ra $x+y+z=0$.
+$a^2+b^2+c^2=\left(\dfrac19+\dfrac23x+x^2\right)+\left(\dfrac19+\dfrac23y+y^2\right)+\left(\dfrac19+\dfrac23z+z^2\right)$
+$=\dfrac13+\dfrac23(x+y+z)+x^2+y^2+z^2$
+$=\dfrac13+x^2+y^2+z^2$.
+Vì $x^2+y^2+z^2\ge0$ nên $a^2+b^2+c^2\ge\dfrac13$.
+Dấu "=" xảy ra khi $x=y=z=0$, tức $a=b=c=\dfrac13$ (thỏa $a+b+c=1$).
+
+##VD
+Cho $a,b,c>0$ thỏa mãn $abc=1$. Chứng minh rằng $\dfrac{a^2(bc+b+1)}{b(ab+a+1)^2}+\dfrac{b^2(ca+c+1)}{c(bc+b+1)^2}+\dfrac{c^2(ab+a+1)}{a(ca+c+1)^2}\ge1$.
+
+Bài giải:
+Đặt $x=\dfrac a{ab+a+1}$, $y=\dfrac b{bc+b+1}$, $z=\dfrac c{ca+c+1}$; vì $a,b,c>0$ nên $x,y,z>0$.
+Ta có $\dfrac{x^2}y=\dfrac{a^2}{(ab+a+1)^2}\cdot\dfrac{bc+b+1}b=\dfrac{a^2(bc+b+1)}{b(ab+a+1)^2}$; tương tự $\dfrac{y^2}z$ và $\dfrac{z^2}x$ là hai phân thức còn lại.
+Vậy bất đẳng thức cần chứng minh là $\dfrac{x^2}y+\dfrac{y^2}z+\dfrac{z^2}x\ge1$.
+Vì $abc=1$ nên $y=\dfrac{ab}{abc+ab+a}=\dfrac{ab}{ab+a+1}$ và $z=\dfrac{abc}{a^2bc+abc+ab}=\dfrac1{ab+a+1}$.
+Do đó $x+y+z=\dfrac{a+ab+1}{ab+a+1}=1$.
+Với $x,y>0$: $(x-y)^2\ge0\Rightarrow x^2+y^2\ge2xy\Rightarrow\dfrac{x^2}y+y\ge2x$.
+Tương tự $\dfrac{y^2}z+z\ge2y$ và $\dfrac{z^2}x+x\ge2z$.
+Cộng ba bất đẳng thức theo vế: $\dfrac{x^2}y+\dfrac{y^2}z+\dfrac{z^2}x+(x+y+z)\ge2(x+y+z)$
+$\Rightarrow\dfrac{x^2}y+\dfrac{y^2}z+\dfrac{z^2}x\ge x+y+z=1$.
+Vậy bất đẳng thức được chứng minh. Dấu "=" xảy ra khi $x=y=z$, tức $a=b=c=1$.
+
+#DANG NDB03296
+@LT
+##TC Sắp thứ tự các biến
+- Bất đẳng thức đối xứng (đổi chỗ hai biến bất kì thì hai vế không đổi) cho phép giả sử $a\ge b\ge c$ mà không mất tính tổng quát.
+- Khi $a\ge b\ge c$: các hiệu $a-b$, $b-c$, $a-c$ đều không âm; ví dụ $a+b-c\ge a$ và $a+c-b\ge c$.
+- Với $a\le b\le c$ dương: $\dfrac ab\le1$, $\dfrac bc\le1$, $\dfrac ba\ge1$, $\dfrac cb\ge1$, nên các tích như $\left(1-\dfrac ab\right)\left(1-\dfrac bc\right)$ không âm.
+
+##PP Sắp thứ tự rồi đánh giá
+Kiểm tra bất đẳng thức đối xứng thật sự rồi giả sử $a\ge b\ge c$ (hoặc $a\le b\le c$), ghi rõ "không mất tính tổng quát"
+Xét dấu các hiệu hoặc so từng tỉ số với $1$ để biết thừa số nào dương, thừa số nào có thể âm
+Dùng tích của hai thừa số cùng dấu, hoặc xét từng trường hợp theo dấu thừa số, để đánh giá
+Kết luận, tìm dấu "=" (thường các biến bằng nhau hoặc nằm ở biên của miền)
+
+##CY
+Chỉ được giả sử $a\ge b\ge c$ khi biểu thức đối xứng hoàn toàn. Biểu thức chỉ hoán vị vòng quanh (như $\dfrac ab+\dfrac bc+\dfrac ca$) chỉ cho phép giả sử một biến lớn nhất, không giả sử được cả thứ tự ba biến.
+@VD
+##VD
+Cho $a,b,c>0$. Chứng minh rằng $abc\ge(b+c-a)(c+a-b)(a+b-c)$.
+
+Bài giải:
+Hai vế đều đối xứng theo $a,b,c$ nên không mất tính tổng quát, giả sử $a\ge b\ge c>0$.
+Khi đó $c+a-b\ge c>0$ (vì $a-b\ge0$) và $a+b-c\ge a>0$ (vì $b-c\ge0$); chỉ có $b+c-a$ có thể không dương.
+Trường hợp 1: $b+c-a\le0$. Khi đó vế phải bằng tích của số không dương với hai số dương nên $\le0<abc$, bất đẳng thức đúng (chặt).
+Trường hợp 2: $b+c-a>0$. Cả ba thừa số ở vế phải dương. Ta có
+$(a+b-c)(a-b+c)=a^2-(b-c)^2\le a^2$
+$(b+c-a)(b+a-c)=b^2-(c-a)^2\le b^2$
+$(c+a-b)(c+b-a)=c^2-(a-b)^2\le c^2$
+Nhân từng vế ba bất đẳng thức (các vế dương): $\left[(a+b-c)(b+c-a)(c+a-b)\right]^2\le a^2b^2c^2$.
+Hai số $(a+b-c)(b+c-a)(c+a-b)$ và $abc$ đều dương nên $(a+b-c)(b+c-a)(c+a-b)\le abc$.
+Vậy $abc\ge(b+c-a)(c+a-b)(a+b-c)$. Dấu "=" xảy ra khi cả ba bất đẳng thức ở trường hợp 2 đều thành đẳng thức, tức $a=b=c$.
+
+##VD
+Cho $a,b,c$ thỏa mãn $1\le a\le2$, $1\le b\le2$, $1\le c\le2$. Chứng minh rằng $(a+b+c)\left(\dfrac1a+\dfrac1b+\dfrac1c\right)\le10$.
+
+Bài giải:
+Biểu thức đối xứng theo $a,b,c$ nên không mất tính tổng quát, giả sử $1\le a\le b\le c\le2$.
+Khi đó $\dfrac ab\le1$, $\dfrac bc\le1$, $\dfrac ba\ge1$, $\dfrac cb\ge1$, nên
+$\left(1-\dfrac ab\right)\left(1-\dfrac bc\right)\ge0$ và $\left(1-\dfrac ba\right)\left(1-\dfrac cb\right)\ge0$ (tích hai số cùng dấu).
+Khai triển rồi cộng hai bất đẳng thức: $2-\dfrac ab-\dfrac bc+\dfrac ac-\dfrac ba-\dfrac cb+\dfrac ca\ge0$,
+tức $\dfrac ab+\dfrac ba+\dfrac bc+\dfrac cb\le2+\dfrac ac+\dfrac ca$. (1)
+Từ $1\le a\le c\le2$ suy ra $\dfrac12\le\dfrac ac\le1$, nên $\left(2-\dfrac ac\right)\left(\dfrac12-\dfrac ac\right)\le0$, tức $1-\dfrac52\cdot\dfrac ac+\dfrac{a^2}{c^2}\le0$.
+Chia hai vế cho $\dfrac ac>0$: $\dfrac ca-\dfrac52+\dfrac ac\le0$, tức $\dfrac ac+\dfrac ca\le\dfrac52$. (2)
+Khai triển và dùng (1), (2):
+$(a+b+c)\left(\dfrac1a+\dfrac1b+\dfrac1c\right)=3+\left(\dfrac ab+\dfrac ba\right)+\left(\dfrac bc+\dfrac cb\right)+\left(\dfrac ac+\dfrac ca\right)$
+$\le3+2+2\left(\dfrac ac+\dfrac ca\right)\le3+2+2\cdot\dfrac52=10$.
+Vậy $(a+b+c)\left(\dfrac1a+\dfrac1b+\dfrac1c\right)\le10$. Dấu "=" xảy ra, chẳng hạn, khi $a=b=1$, $c=2$.
+
+#DANG NDB03297
+@LT
+##TC Dấu của các lũy thừa theo khoảng của biến
+- Khi $x\le0$: $x^{2k}\ge0$ còn $x^{2k+1}\le0$ (nên $-x^{2k+1}\ge0$).
+- Khi $0<x<1$ và $m<n$: $x^m>x^n>0$, nên $x^m-x^n>0$.
+- Khi $x\ge1$ và $m<n$: $x^m\le x^n$; ví dụ $x^8-x^7=x^7(x-1)\ge0$.
+
+##PP Xét từng khoảng giá trị của biến
+Nhận ra biểu thức đổi dạng hoặc đổi dấu theo vị trí của biến nên không có một đánh giá chung cho mọi giá trị
+Chọn các mốc chia (thường $0$, $1$, hoặc nghiệm của biểu thức trong dấu giá trị tuyệt đối) sao cho các khoảng phủ kín mọi giá trị của biến
+Trong mỗi khoảng, nhóm các hạng tử thành những nhóm cùng dấu (thường đặt nhân tử chung như $x^7(x-1)$ hoặc $x^2(1-x^5)$) rồi đánh giá
+Gộp các khoảng để kết luận và tìm dấu "=" (nếu có)
+
+##CY
+Các khoảng phải phủ kín mọi giá trị và mỗi giá trị biên ($x=0$, $x=1$, …) phải thuộc một khoảng, chẳng hạn $x\le0$; $0<x<1$; $x\ge1$.
+@VD
+##VD
+Chứng minh rằng với mọi số thực $x$ ta có $x^2+2\lvert x-1\rvert\ge1$.
+
+Bài giải:
+Xét hiệu $H=x^2+2\lvert x-1\rvert-1$ theo dấu của $x-1$.
+Trường hợp $x\ge1$: $\lvert x-1\rvert=x-1$ nên $H=x^2+2x-3=(x-1)(x+3)\ge0$ vì $x-1\ge0$ và $x+3>0$; dấu "=" khi $x=1$.
+Trường hợp $x<1$: $\lvert x-1\rvert=1-x$ nên $H=x^2-2x+1=(x-1)^2>0$.
+Vậy $H\ge0$ với mọi $x$, tức $x^2+2\lvert x-1\rvert\ge1$. Dấu "=" xảy ra khi $x=1$.
+
+##VD
+Chứng minh rằng với mọi số thực $x$ ta có $x^8-x^7+x^2-x+1>0$.
+
+Bài giải:
+Gọi $P=x^8-x^7+x^2-x+1$. Xét ba khoảng $x\le0$; $0<x<1$; $x\ge1$.
+Trường hợp $x\le0$: $x^8\ge0$, $-x^7\ge0$, $x^2\ge0$, $-x\ge0$ nên $P\ge1>0$.
+Trường hợp $0<x<1$: $P=x^8+x^2(1-x^5)+(1-x)$. Vì $0<x<1$ nên $x^8>0$, $x^2(1-x^5)>0$ và $1-x>0$, suy ra $P>0$.
+Trường hợp $x\ge1$: $P=x^7(x-1)+x(x-1)+1$. Vì $x\ge1$ nên $x^7(x-1)\ge0$ và $x(x-1)\ge0$, suy ra $P\ge1>0$.
+Ba khoảng phủ kín mọi giá trị thực của $x$, nên $x^8-x^7+x^2-x+1>0$ với mọi số thực $x$.
+
+#DANG NDB03298
+@LT
+##ĐL Bất đẳng thức tam giác
+Ba số dương $a,b,c$ là độ dài ba cạnh của một tam giác khi và chỉ khi $a<b+c$, $b<c+a$, $c<a+b$. Khi đó các hiệu $b+c-a$, $c+a-b$, $a+b-c$ đều dương.
+
+##TC Đặt ẩn phụ theo ba hiệu
+Đặt $x=b+c-a$, $y=c+a-b$, $z=a+b-c$ thì $x,y,z>0$, $x+y+z=a+b+c$ và $a=\dfrac{y+z}2$, $b=\dfrac{z+x}2$, $c=\dfrac{x+y}2$.
+
+##PP Bất đẳng thức với độ dài ba cạnh
+Ghi rõ điều kiện ba cạnh và chứng tỏ các hiệu $b+c-a$, $c+a-b$, $a+b-c$ dương khi cần chia hoặc nhân
+Chọn cách: dùng trực tiếp $a<b+c$ (nhân với $a$ rồi cộng), hoặc đặt $x,y,z$ như trên, hoặc dùng chu vi cho trước để biến mẫu số thành $x$, $y$, $z$
+Chuyển bất đẳng thức sang các biến dương mới rồi dùng $(x-y)^2\ge0$, Cô-si hay $\dfrac1x+\dfrac1y+\dfrac1z\ge\dfrac9{x+y+z}$
+Quay về $a,b,c$ và nêu dấu "=" (thường là tam giác đều)
+
+##CY
+Bất đẳng thức tam giác là bất đẳng thức chặt nên các bước dùng nó cho bất đẳng thức chặt; phải chỉ ra $b+c-a>0$ trước khi chia hay dùng bất đẳng thức giữa các số dương.
+@VD
+##VD
+Cho $a,b,c$ là độ dài ba cạnh của một tam giác. Chứng minh rằng $a^2+b^2+c^2<2(ab+bc+ca)$.
+
+Bài giải:
+Vì $a,b,c$ là ba cạnh của một tam giác nên $a<b+c$. Nhân hai vế với $a>0$: $a^2<ab+ac$.
+Tương tự $b^2<bc+ba$ và $c^2<ca+cb$.
+Cộng từng vế ba bất đẳng thức: $a^2+b^2+c^2<2(ab+bc+ca)$.
+Vậy bất đẳng thức được chứng minh (bất đẳng thức chặt nên không xảy ra dấu "=").
+
+##VD
+Cho $a,b,c$ là độ dài các cạnh của một tam giác có chu vi bằng $1$. Chứng minh rằng $\dfrac{1-2a^2}{(1-2a)^2}+\dfrac{1-2b^2}{(1-2b)^2}+\dfrac{1-2c^2}{(1-2c)^2}\ge21$.
+
+Bài giải:
+Vì $a+b+c=1$ nên $1-2a=b+c-a>0$ theo bất đẳng thức tam giác; tương tự $1-2b>0$ và $1-2c>0$.
+Đặt $u=1-2a$, $v=1-2b$, $w=1-2c$ thì $u,v,w>0$ và $u+v+w=3-2(a+b+c)=1$.
+Xét hiệu $\dfrac{1-2a^2}{(1-2a)^2}-\left(\dfrac4{1-2a}-5\right)=\dfrac{1-2a^2-4(1-2a)+5(1-2a)^2}{(1-2a)^2}=\dfrac{2(3a-1)^2}{(1-2a)^2}\ge0$
+nên $\dfrac{1-2a^2}{(1-2a)^2}\ge\dfrac4u-5$.
+Tương tự $\dfrac{1-2b^2}{(1-2b)^2}\ge\dfrac4v-5$ và $\dfrac{1-2c^2}{(1-2c)^2}\ge\dfrac4w-5$.
+Cộng ba bất đẳng thức: vế trái $\ge4\left(\dfrac1u+\dfrac1v+\dfrac1w\right)-15$.
+Mặt khác $(u+v+w)\left(\dfrac1u+\dfrac1v+\dfrac1w\right)=3+\left(\dfrac uv+\dfrac vu\right)+\left(\dfrac uw+\dfrac wu\right)+\left(\dfrac vw+\dfrac wv\right)\ge3+2+2+2=9$ (vì $\dfrac pq+\dfrac qp\ge2$ với $p,q>0$).
+Mà $u+v+w=1$ nên $\dfrac1u+\dfrac1v+\dfrac1w\ge9$.
+Suy ra vế trái $\ge4\cdot9-15=21$.
+Vậy bất đẳng thức được chứng minh. Dấu "=" xảy ra khi $a=b=c=\dfrac13$.
+
+#NHOM NNB01471
+@LT
+##ĐL Điều kiện có giá trị nhỏ nhất, giá trị lớn nhất
+Biểu thức $A$ có giá trị nhỏ nhất bằng $k$ khi và chỉ khi có đủ hai điều kiện: $A\ge k$ với mọi giá trị của biến, và tồn tại giá trị của biến để $A=k$. Giá trị lớn nhất bằng $k$ khi $A\le k$ với mọi giá trị của biến và tồn tại giá trị của biến để $A=k$.
+
+##TC Bình phương không âm
+- $f^2\ge0$ với mọi $f$, dấu "=" xảy ra khi $f=0$.
+- Tổng các bình phương: $f^2+g^2\ge0$, dấu "=" xảy ra khi $f=0$ và $g=0$.
+- Hoàn thành bình phương: $ax^2+bx+c=a\left(x+\dfrac b{2a}\right)^2+c-\dfrac{b^2}{4a}$ với $a\ne0$.
+
+##CY
+Chỉ chứng minh được $A\ge k$ thì chưa kết luận giá trị nhỏ nhất bằng $k$; phải chỉ ra giá trị cụ thể của biến để dấu "=" xảy ra. Tương tự với giá trị lớn nhất.
+
+#DANG NDB02749
+@LT
+##PP Đưa tam thức bậc hai về bình phương đủ
+Đặt hệ số $a$ của $x^2$ ra ngoài hai hạng tử chứa $x$ để trong ngoặc hệ số của $x^2$ bằng $1$
+Tách hệ số của $x$ trong ngoặc thành $2\cdot m$, thêm bớt $m^2$ để có $(x+m)^2$
+Gộp các hằng số để được $A=a(x+m)^2+k$
+Nếu $a>0$ thì $A\ge k$, nếu $a<0$ thì $A\le k$; chỉ ra $x=-m$ để dấu "=" xảy ra rồi kết luận
+
+##CY
+Khi hệ số $a$ âm thì đặt $-\lvert a\rvert$ ra ngoài và mọi dấu trong ngoặc phải đổi theo; kiểm tra lại bằng cách khai triển ngược. Hệ số $a>0$ chỉ có giá trị nhỏ nhất, $a<0$ chỉ có giá trị lớn nhất.
+@VD
+##VD
+Tìm giá trị nhỏ nhất của $A=2x^2-8x+1$.
+
+Bài giải:
+$A=2x^2-8x+1=2(x^2-4x+4)-8+1=2(x-2)^2-7$.
+Vì $(x-2)^2\ge0$ với mọi $x$ nên $A\ge-7$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $x-2=0$, tức $x=2$; khi đó $A=2\cdot0-7=-7$. (2)
+Từ (1) và (2): giá trị nhỏ nhất của $A$ bằng $-7$, đạt khi $x=2$.
+
+##VD
+Tìm giá trị lớn nhất của $B=-5x^2-4x+1$.
+
+Bài giải:
+$B=-5x^2-4x+1=-5\left(x^2+\dfrac45x+\dfrac4{25}\right)+\dfrac45+1=-5\left(x+\dfrac25\right)^2+\dfrac95$.
+Vì $\left(x+\dfrac25\right)^2\ge0$ với mọi $x$ nên $-5\left(x+\dfrac25\right)^2\le0$, suy ra $B\le\dfrac95$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $x+\dfrac25=0$, tức $x=-\dfrac25$; khi đó $B=\dfrac95$. (2)
+Từ (1) và (2): giá trị lớn nhất của $B$ bằng $\dfrac95$, đạt khi $x=-\dfrac25$.
+
+#DANG NDB03299
+@LT
+##TC Hai tình huống thường gặp
+- Hai biến tách rời, có dạng $x^2+px+y^2+qy+r$: hoàn thành bình phương riêng cho $x$ và riêng cho $y$.
+- Có tích chéo $mp$ hay $xy$: gom $m^2-4mp+4p^2$ thành $(m-2p)^2$ (tách một phần của $p^2$ nếu cần), phần còn lại đưa tiếp về bình phương theo biểu thức đó và biến kia.
+
+##PP Ghép đa thức hai biến thành tổng các bình phương
+Nhóm các hạng tử và gom thành bình phương của một nhị thức, tách hằng số hoặc hạng tử bình phương nếu cần
+Hoàn thành bình phương lần lượt cho từng biểu thức, gộp các hằng số, kiểm tra lại bằng cách khai triển
+Viết thành $m(\dots)^2+n(\dots)^2+r$ với $m,n>0$ để có cận dưới $r$ (hoặc $m,n<0$ để có cận trên)
+Cho từng bình phương bằng $0$, giải hệ để tìm cặp biến làm dấu "=" xảy ra và thử lại
+
+##CY
+Phải chỉ ra hệ các bình phương bằng $0$ có nghiệm thật sự thì cận $r$ mới đạt được; nếu hệ vô nghiệm thì không kết luận được giá trị nhỏ nhất bằng $r$.
+@VD
+##VD
+Tìm giá trị nhỏ nhất của biểu thức $A=x^2-4x+y^2-8y+6$.
+
+Bài giải:
+Nhóm theo từng biến: $A=(x^2-4x+4)+(y^2-8y+16)-14=(x-2)^2+(y-4)^2-14$.
+Vì $(x-2)^2\ge0$ và $(y-4)^2\ge0$ với mọi $x,y$ nên $A\ge-14$. (1)
+Dấu "=" xảy ra khi $x-2=0$ và $y-4=0$, tức $x=2$, $y=4$; khi đó $A=-14$. (2)
+Từ (1) và (2): giá trị nhỏ nhất của $A$ bằng $-14$, đạt khi $x=2$ và $y=4$.
+
+##VD
+Tìm $m$ và $p$ sao cho biểu thức $A=m^2-4mp+5p^2+10m-22p+28$ đạt giá trị nhỏ nhất. Tính giá trị ấy.
+
+Bài giải:
+Tách $5p^2=4p^2+p^2$ và $-22p=-20p-2p$ rồi gom nhóm:
+$A=(m^2-4mp+4p^2)+(10m-20p)+(p^2-2p+1)+27$
+$=(m-2p)^2+10(m-2p)+25+(p-1)^2+2$
+$=(m-2p+5)^2+(p-1)^2+2$.
+Vì $(m-2p+5)^2\ge0$ và $(p-1)^2\ge0$ với mọi $m,p$ nên $A\ge2$. (1)
+Dấu "=" xảy ra khi $p-1=0$ và $m-2p+5=0$, tức $p=1$ và $m=-3$; khi đó $A=9+12+5-30-22+28=2$. (2)
+Từ (1) và (2): giá trị nhỏ nhất của $A$ bằng $2$, đạt khi $m=-3$ và $p=1$.
+
+#DANG NDB03300
+@LT
+##TC Ghép nhân tử và hai thừa số có tổng không đổi
+- Bốn nhân tử $(x+a)(x+b)(x+c)(x+d)$ với $a+d=b+c$: ghép $(x+a)(x+d)$ và $(x+b)(x+c)$, cả hai cùng chứa cụm $x^2+(a+d)x$.
+- Với mọi số thực $A,B$: $AB\le\dfrac{(A+B)^2}4$ (vì $(A-B)^2\ge0$); nếu $A+B$ không chứa biến thì tích $AB$ có cận trên là hằng số.
+
+##PP Đặt ẩn phụ cho cụm chung
+Ghép các nhân tử (hoặc nhóm các hạng tử) để xuất hiện cùng một cụm; đặt $t$ bằng cụm hoặc bằng số nằm giữa hai tam thức
+Đưa biểu thức về tam thức bậc hai theo $t$, thường dạng $t^2-k$ hoặc $(t-p)(t+p)$, rồi hoàn thành bình phương
+Tìm miền giá trị của $t$ và kiểm tra giá trị $t$ làm dấu "=" xảy ra có thuộc miền đó không
+Giải $t=t_0$ để tìm $x$, thay lại biểu thức ban đầu để thử
+
+##CY
+Biến mới $t$ là biểu thức của $x$ nên không tùy ý: chỉ khi giá trị $t_0$ làm dấu "=" xảy ra thuộc miền giá trị của $t$ mới có $x$ để cực trị được đạt.
+@VD
+##VD
+Tìm giá trị nhỏ nhất của $A=x(x-3)(x-4)(x-7)$.
+
+Bài giải:
+Vì $0+7=3+4$ nên ghép $x(x-7)$ với $(x-3)(x-4)$: $A=(x^2-7x)(x^2-7x+12)$.
+Đặt $t=x^2-7x+6$ thì $A=(t-6)(t+6)=t^2-36$.
+Vì $t^2\ge0$ nên $A\ge-36$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $t=0$, tức $x^2-7x+6=0\Leftrightarrow(x-1)(x-6)=0\Leftrightarrow x=1$ hoặc $x=6$ (có nghiệm thật nên $t=0$ thuộc miền của $t$).
+Thử lại: $x=1$ thì $A=1\cdot(-2)\cdot(-3)\cdot(-6)=-36$; $x=6$ thì $A=6\cdot3\cdot2\cdot(-1)=-36$. (2)
+Từ (1) và (2): giá trị nhỏ nhất của $A$ bằng $-36$, đạt khi $x=1$ hoặc $x=6$.
+
+##VD
+Tìm giá trị lớn nhất của $A=(x^2-3x+1)(21+3x-x^2)$.
+
+Bài giải:
+Đặt $a=x^2-3x+1$ và $b=21+3x-x^2$. Khi đó $a+b=22$ không phụ thuộc $x$ và $A=ab$.
+Vì $(a+b)^2-4ab=(a-b)^2\ge0$ (đúng với mọi số thực $a,b$) nên $A=ab\le\dfrac{(a+b)^2}4=\dfrac{22^2}4=121$ với mọi $x$. (1)
+Dấu "=" xảy ra khi $a=b$: $x^2-3x+1=21+3x-x^2\Leftrightarrow2x^2-6x-20=0\Leftrightarrow x^2-3x-10=0\Leftrightarrow(x-5)(x+2)=0$, nên $x=5$ hoặc $x=-2$.
+Thử lại: với cả hai giá trị này $a=b=11$ nên $A=11\cdot11=121$. (2)
+Từ (1) và (2): giá trị lớn nhất của $A$ bằng $121$, đạt khi $x=5$ hoặc $x=-2$.

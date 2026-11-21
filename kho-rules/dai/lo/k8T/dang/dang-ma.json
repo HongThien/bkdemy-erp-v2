@@ -1,0 +1,926 @@
+{
+ "NNB01384": [
+  {
+   "ma": "NDB02726",
+   "ten": "Điều kiện cho ra giá trị từng biến",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03202",
+   "ten": "Biết tổng và tích (x+y, xy) hoặc x+1/x: tính biểu thức đối xứng, lũy thừa",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03203",
+   "ten": "Điều kiện đồng bậc giữa hai biến (4a²+b²=5ab, x²+3y²=4xy)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03204",
+   "ten": "Điều kiện a+b+c=0 (hoặc 1/a+1/b+1/c=0, ab+bc+ca=0)",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03205",
+   "ten": "Điều kiện là tỉ lệ thức hoặc dãy tỉ số bằng nhau",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03206",
+   "ten": "Biểu thức hoán vị vòng với điều kiện",
+   "tt": 6
+  }
+ ],
+ "NNB01455": [
+  {
+   "ma": "NDB02733",
+   "ten": "Điều kiện nghịch đảo hoặc nhiều điều kiện cần nhân/bình phương",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03207",
+   "ten": "Hoán vị vòng quanh: tách thừa số chung (a-b)(b-c)(c-a)",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03208",
+   "ten": "Điều kiện a+b+c=0: chứng minh đẳng thức",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03209",
+   "ten": "Đẳng thức đối xứng bậc hai suy ra các biến bằng nhau",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03210",
+   "ten": "Đẳng thức từ tỉ lệ thức",
+   "tt": 5
+  }
+ ],
+ "NNB01456": [
+  {
+   "ma": "NDB02727",
+   "ten": "Tìm dư khi chia cho nhị thức bậc nhất x-a (định lí Bê-du)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03211",
+   "ten": "Tìm dư khi chia cho đa thức bậc từ 2 trở lên",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03212",
+   "ten": "Dư của đa thức bậc rất cao (lũy thừa, tổng lũy thừa)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03213",
+   "ten": "Sơ đồ Hoóc-ne",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03214",
+   "ten": "Xác định đa thức biết các số dư",
+   "tt": 5
+  }
+ ],
+ "NNB01457": [
+  {
+   "ma": "NDB02732",
+   "ten": "Tìm hệ số bằng đặt tính chia (dư cuối bằng 0 hoặc cho trước)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03215",
+   "ten": "Tìm hệ số nhờ nghiệm của đa thức chia (kể cả nghiệm bội)",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03216",
+   "ten": "Hệ số bất định và trị số riêng (đa thức nhiều biến)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03217",
+   "ten": "Chứng minh chia hết bằng phân tích hoặc biến đổi tương đương",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03218",
+   "ten": "Chứng minh chia hết nhờ nghiệm của đa thức chia",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03219",
+   "ten": "Tìm n nguyên để giá trị đa thức chia hết cho giá trị đa thức khác",
+   "tt": 6
+  }
+ ],
+ "NNB01382": [
+  {
+   "ma": "NDB02725",
+   "ten": "Nhận dạng và khai triển hằng đẳng thức, viết thành bình phương/lập phương",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03220",
+   "ten": "Rút gọn biểu thức bằng hằng đẳng thức, đặt ẩn phụ",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03221",
+   "ten": "Tính nhanh số lớn: nhóm cặp, nhân liên hợp, thay số bằng chữ",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03222",
+   "ten": "Viết một số thành tích/tổng hai bình phương, phân tích số bằng hằng đẳng thức",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03223",
+   "ten": "Chứng minh đẳng thức bằng hằng đẳng thức",
+   "tt": 5
+  }
+ ],
+ "NNB01451": [
+  {
+   "ma": "NDB02729",
+   "ten": "Tìm ẩn từ đẳng thức: tổng các bình phương bằng 0",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03224",
+   "ten": "Chứng minh biểu thức luôn dương (luôn âm)",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03225",
+   "ten": "Tìm giá trị nhỏ nhất, lớn nhất của tam thức/đa thức bằng hoàn thiện bình phương",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03226",
+   "ten": "Biểu diễn thành tổng các bình phương / chứng minh một số là tổng của các số chính phương",
+   "tt": 4
+  }
+ ],
+ "NNB01458": [
+  {
+   "ma": "NDB02722",
+   "ten": "Tìm điều kiện xác định và rút gọn biểu thức hữu tỉ",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03227",
+   "ten": "Rút gọn khi tử hoặc mẫu có dạng đặc biệt",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03228",
+   "ten": "Rút gọn rồi tính giá trị / tìm x để A bằng, lớn hơn, nhỏ hơn một số",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03229",
+   "ten": "Tìm x (hoặc tham số) nguyên để phân thức nhận giá trị nguyên",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03230",
+   "ten": "Rút gọn rồi tìm giá trị nhỏ nhất, lớn nhất của biểu thức",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03231",
+   "ten": "Chứng minh phân số tối giản / rút gọn phân số chứa n",
+   "tt": 6
+  }
+ ],
+ "NNB01459": [
+  {
+   "ma": "NDB02731",
+   "ten": "Tổng 1/(n(n+k)): tách hiệu và khử liên tiếp",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03232",
+   "ten": "Tổng mẫu ba thừa số hoặc mẫu bậc cao tách được",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03233",
+   "ten": "Tích có quy luật: rút gọn tử và mẫu theo dãy",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03234",
+   "ten": "Cộng dãy với lũy thừa của 2 (không quy đồng hết)",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03235",
+   "ten": "Tổng lũy thừa các số tự nhiên bằng đồng nhất thức",
+   "tt": 5
+  }
+ ],
+ "NNB01383": [
+  {
+   "ma": "NDB02724",
+   "ten": "Đặt nhân tử chung",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03236",
+   "ten": "Dùng hằng đẳng thức",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03237",
+   "ten": "Nhóm hạng tử",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03238",
+   "ten": "Phối hợp nhiều phương pháp",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03239",
+   "ten": "Ứng dụng phân tích: tính giá trị, giải phương trình tích, chứng minh chia hết",
+   "tt": 5
+  }
+ ],
+ "NNB01452": [
+  {
+   "ma": "NDB02728",
+   "ten": "Tách hạng tử bậc nhất của tam thức bậc hai",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03240",
+   "ten": "Tách hạng tử của đa thức bậc ba, bậc bốn để nhóm",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03241",
+   "ten": "Thêm bớt cùng một hạng tử để có hiệu hai bình phương",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03242",
+   "ten": "Thêm bớt để xuất hiện nhân tử chung (x⁵+x+1, x⁸+x⁷+1)",
+   "tt": 4
+  }
+ ],
+ "NNB01453": [
+  {
+   "ma": "NDB02735",
+   "ten": "Đặt biến phụ khi biểu thức lặp lại",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03243",
+   "ten": "Nhóm cặp thừa số tạo biểu thức chung rồi đặt biến phụ",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03244",
+   "ten": "Đa thức đối xứng bậc chẵn: chia cho x², đặt y=x+1/x",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03245",
+   "ten": "Nhẩm nghiệm nguyên/hữu tỉ rồi chia (sơ đồ Hoóc-ne)",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03246",
+   "ten": "Hệ số bất định (không có nghiệm hữu tỉ)",
+   "tt": 5
+  }
+ ],
+ "NNB01454": [
+  {
+   "ma": "NDB02736",
+   "ten": "Hoán vị vòng quanh: tách thừa số",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03247",
+   "ten": "Hoán vị vòng quanh: xét giá trị riêng",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03248",
+   "ten": "Đa thức đặc biệt a³+b³+c³-3abc và (a+b+c)³-a³-b³-c³",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03249",
+   "ten": "Đa thức đối xứng hai biến: (x+y)^n - x^n - y^n",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03250",
+   "ten": "Đa thức hai biến bậc hai tổng quát",
+   "tt": 5
+  }
+ ],
+ "NNB01460": [
+  {
+   "ma": "NDB02740",
+   "ten": "Phương trình bậc nhất và phương trình đưa được về bậc nhất",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03251",
+   "ten": "Phương trình tích: phân tích thành nhân tử rồi giải từng nhân tử",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03252",
+   "ten": "Phương trình cộng (trừ) cùng một hằng số vào mỗi phân thức",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03253",
+   "ten": "Phương trình chứa ẩn ở mẫu: ĐKXĐ, quy đồng khử mẫu, đối chiếu điều kiện",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03254",
+   "ten": "Phương trình chứa ẩn ở mẫu: đặt ẩn phụ",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03255",
+   "ten": "Phương trình chứa ẩn ở mẫu: tách phân thức, rút gọn liên tiếp",
+   "tt": 6
+  }
+ ],
+ "NNB01461": [
+  {
+   "ma": "NDB02743",
+   "ten": "Đưa về phương trình tích: nhóm hạng tử, tách hạng tử, nhẩm nghiệm hữu tỉ",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03256",
+   "ten": "Ghép cặp bốn nhân tử, đặt ẩn phụ: (x+a)(x+b)(x+c)(x+d)=m",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03257",
+   "ten": "Phương trình (x+a)^4 + (x+b)^4 = c: đặt y = x + (a+b)/2",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03258",
+   "ten": "Phương trình đối xứng (hồi quy): chia cho x² đặt t = x + 1/x",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03259",
+   "ten": "Phương trình trùng phương và dạng ax^(2n) + bx^n + c = 0",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03260",
+   "ten": "Phương trình bậc cao dùng hệ số bất định",
+   "tt": 6
+  },
+  {
+   "ma": "NDB03261",
+   "ten": "Chứng minh phương trình bậc cao vô nghiệm",
+   "tt": 7
+  }
+ ],
+ "NNB01462": [
+  {
+   "ma": "NDB02746",
+   "ten": "Tìm tham số để phương trình có nghiệm cho trước",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03262",
+   "ten": "Giải và biện luận phương trình bậc nhất ax+b=0; tìm tham số để vô nghiệm, vô số nghiệm",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03263",
+   "ten": "Tìm tham số để nghiệm thỏa điều kiện (dương, âm, nguyên)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03264",
+   "ten": "Phương trình chứa ẩn ở mẫu có tham số: biện luận, loại nghiệm trùng ĐKXĐ",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03265",
+   "ten": "Phương trình bậc cao có tham số",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03266",
+   "ten": "Phương trình chữ a, b, c đối xứng: cộng hằng số vào mỗi phân thức",
+   "tt": 6
+  }
+ ],
+ "NNB01463": [
+  {
+   "ma": "NDB02748",
+   "ten": "Phương trình |A|=k và |A|=B: bỏ dấu GTTĐ theo hai trường hợp",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03267",
+   "ten": "Phương trình |A|=|B|",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03268",
+   "ten": "Phương trình có nhiều dấu GTTĐ: lập bảng xét dấu, chia khoảng",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03269",
+   "ten": "Dùng tính chất không âm và |A|+|B|≥|A+B| để đánh giá",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03270",
+   "ten": "GTTĐ lồng nhau, đặt ẩn phụ |x|=t",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03271",
+   "ten": "Phương trình chứa GTTĐ có tham số: biện luận, số nghiệm",
+   "tt": 6
+  }
+ ],
+ "NNB01464": [
+  {
+   "ma": "NDB02741",
+   "ten": "Chuyển động cơ bản: gặp nhau, đuổi kịp, hơn kém thời gian (s=v.t)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03272",
+   "ten": "Chuyển động xuôi dòng, ngược dòng",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03273",
+   "ten": "Vận tốc trung bình",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03274",
+   "ten": "Chuyển động nâng cao: nhiều phương tiện, nghỉ giữa đường, xe buýt theo chu kì",
+   "tt": 4
+  }
+ ],
+ "NNB01465": [
+  {
+   "ma": "NDB02742",
+   "ten": "Năng suất, làm chung - làm riêng, vòi nước",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03275",
+   "ten": "Bài toán về số: phân số, số có hai (ba) chữ số, cấu tạo thập phân",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03276",
+   "ten": "Tỉ số phần trăm, dung dịch, dân số",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03277",
+   "ten": "Bài toán hình học: chu vi, diện tích khi tăng giảm các cạnh",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03278",
+   "ten": "Toán tuổi và toán cổ",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03279",
+   "ten": "Chia, bán theo quy luật: k phần và 1/n số còn lại (làm ngược từ cuối)",
+   "tt": 6
+  },
+  {
+   "ma": "NDB03280",
+   "ten": "Bài toán cánh đồng cỏ mọc - bò ăn (Niu-tơn)",
+   "tt": 7
+  }
+ ],
+ "NNB01466": [
+  {
+   "ma": "NDB02739",
+   "ten": "Giải bất phương trình bậc nhất một ẩn, biểu diễn tập nghiệm trên trục số",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03281",
+   "ten": "Bất phương trình cộng (trừ) cùng một hằng số vào mỗi phân thức",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03282",
+   "ten": "Hệ hai bất phương trình bậc nhất; tìm nghiệm nguyên",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03283",
+   "ten": "Bất phương trình có tham số: giải và biện luận; tìm tham số để nghiệm thỏa điều kiện",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03284",
+   "ten": "Rút gọn biểu thức rồi tìm x để biểu thức dương, âm, lớn hơn một số",
+   "tt": 5
+  }
+ ],
+ "NNB01467": [
+  {
+   "ma": "NDB02744",
+   "ten": "Bất phương trình tích (và đa thức phân tích được): bảng xét dấu",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03285",
+   "ten": "Bất phương trình thương (ẩn ở mẫu): chuyển vế, quy đồng, bảng xét dấu",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03286",
+   "ten": "Bất phương trình chứa một dấu GTTĐ: biến đổi tương đương |f|<a, |f|>a, |f|<g, |f|>g, |f|>|g|",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03287",
+   "ten": "Bất phương trình nhiều dấu GTTĐ: lập bảng xét dấu, chia khoảng",
+   "tt": 4
+  }
+ ],
+ "NNB01468": [
+  {
+   "ma": "NDB02750",
+   "ten": "Xét hiệu đưa về tổng các bình phương",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03288",
+   "ten": "Xét hiệu rồi phân tích thành tích các nhân tử có dấu xác định",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03289",
+   "ten": "Biến đổi tương đương liên tiếp tới bất đẳng thức hiển nhiên đúng",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03290",
+   "ten": "Bất đẳng thức chứa phân thức: khử mẫu (mẫu dương) rồi biến đổi tương đương",
+   "tt": 4
+  }
+ ],
+ "NNB01469": [
+  {
+   "ma": "NDB02752",
+   "ten": "Dùng bất đẳng thức Bu-nhi-a-cốp-xki để chứng minh",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03291",
+   "ten": "Chứng minh bất đẳng thức phụ (bổ đề) rồi cộng/nhân theo vế",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03292",
+   "ten": "Bất đẳng thức chứa giá trị tuyệt đối",
+   "tt": 3
+  }
+ ],
+ "NNB01470": [
+  {
+   "ma": "NDB02753",
+   "ten": "Làm trội để rút gọn tổng (tách hiệu, triệt tiêu liên tiếp)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03293",
+   "ten": "Làm trội/làm giảm từng phân số để chặn tổng giữa hai giá trị",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03294",
+   "ten": "Phương pháp phản chứng",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03295",
+   "ten": "Đổi biến phụ hoặc thế điều kiện ràng buộc rồi chứng minh",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03296",
+   "ten": "Sắp thứ tự các biến (giả sử a ≥ b ≥ c)",
+   "tt": 5
+  },
+  {
+   "ma": "NDB03297",
+   "ten": "Xét từng khoảng giá trị của biến",
+   "tt": 6
+  },
+  {
+   "ma": "NDB03298",
+   "ten": "Bất đẳng thức với độ dài ba cạnh của tam giác",
+   "tt": 7
+  }
+ ],
+ "NNB01471": [
+  {
+   "ma": "NDB02749",
+   "ten": "Đưa tam thức bậc hai một biến về bình phương đủ",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03299",
+   "ten": "Đa thức hai biến: ghép thành tổng các bình phương",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03300",
+   "ten": "Đa thức bậc cao hơn hai: ghép nhân tử, đặt ẩn phụ",
+   "tt": 3
+  }
+ ],
+ "NNB01472": [
+  {
+   "ma": "NDB02751",
+   "ten": "Phân thức tử hằng, mẫu là tam thức bậc hai",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03301",
+   "ten": "Phân thức có mẫu là bình phương của một nhị thức (đặt y = 1/(x − a))",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03302",
+   "ten": "Phân thức dạng khác: xét A − m (m là cực trị dự đoán) đưa tử về bình phương",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03303",
+   "ten": "Tổng các dấu giá trị tuyệt đối: dùng |A| + |B| ≥ |A + B|",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03304",
+   "ten": "Biểu thức chứa giá trị tuyệt đối: lập bảng xét dấu, xét từng khoảng",
+   "tt": 5
+  }
+ ],
+ "NNB01473": [
+  {
+   "ma": "NDB02754",
+   "ten": "Rút một biến từ điều kiện rồi đưa về một biến",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03305",
+   "ten": "Biến đổi điều kiện để làm xuất hiện biểu thức mới (đặt s = x + y, đổi biến)",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03306",
+   "ten": "Dùng bất đẳng thức Bu-nhi-a-cốp-xki tìm cực trị",
+   "tt": 3
+  }
+ ],
+ "NNB01483": [
+  {
+   "ma": "NDB02765",
+   "ten": "Áp dụng trực tiếp nguyên lí Đi-rích-lê (đếm thỏ và lồng)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03307",
+   "ten": "Chuồng là các số dư: chứng minh chia hết, hiệu hoặc tổng chia hết",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03308",
+   "ten": "Quen biết, bắt tay, tô màu đỉnh/cạnh (đồ thị)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03309",
+   "ten": "Giải đấu, bảng điểm, lịch, xếp hạng: suy luận tồn tại",
+   "tt": 4
+  }
+ ],
+ "NNB01484": [
+  {
+   "ma": "NDB02766",
+   "ten": "Chia hình thành các phần nhỏ (chuồng) rồi đếm điểm: hai điểm cách nhau không quá d",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03310",
+   "ten": "Phủ hình: có hình tròn/tam giác/hình vuông phủ ít nhất k điểm",
+   "tt": 2
+  }
+ ],
+ "NNB01474": [
+  {
+   "ma": "NDB02756",
+   "ten": "Chứng minh chia hết bằng tích các số nguyên liên tiếp và phân tích thành nhân tử",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03311",
+   "ten": "Chứng minh chia hết bằng xét số dư theo từng trường hợp",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03312",
+   "ten": "Chứng minh chia hết với biểu thức luỹ thừa: dùng hằng đẳng thức aⁿ − bⁿ và nhị thức Niu-tơn",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03313",
+   "ten": "Chứng minh chia hết bằng đồng dư và định lí Phéc-ma nhỏ",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03314",
+   "ten": "Chứng minh chia hết bằng quy nạp toán học",
+   "tt": 5
+  }
+ ],
+ "NNB01475": [
+  {
+   "ma": "NDB02759",
+   "ten": "Tìm số dư của luỹ thừa, tổng, tích bằng đồng dư",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03315",
+   "ten": "Tìm hai, ba chữ số tận cùng của một luỹ thừa",
+   "tt": 2
+  }
+ ],
+ "NNB01476": [
+  {
+   "ma": "NDB02763",
+   "ten": "Tìm n nguyên để A(n) chia hết cho B(n)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03316",
+   "ten": "Tìm các chữ số chưa biết của một số (cấu tạo số, dấu hiệu chia hết)",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03317",
+   "ten": "Tìm cặp số nguyên dương (a; b) để biểu thức hai ẩn chia hết cho biểu thức kia",
+   "tt": 3
+  }
+ ],
+ "NNB01477": [
+  {
+   "ma": "NDB02757",
+   "ten": "Tìm số nguyên tố p để các biểu thức của p cùng là số nguyên tố",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03318",
+   "ten": "Chứng minh một số (một biểu thức) là hợp số hoặc là số nguyên tố",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03319",
+   "ten": "Tìm n để một biểu thức của n là số nguyên tố",
+   "tt": 3
+  }
+ ],
+ "NNB01478": [
+  {
+   "ma": "NDB02760",
+   "ten": "Chứng minh không là số chính phương bằng chữ số tận cùng và xét số dư",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03320",
+   "ten": "Chứng minh không là số chính phương bằng kẹp giữa hai số chính phương liên tiếp",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03321",
+   "ten": "Chứng minh một biểu thức là số chính phương bằng biến đổi về bình phương đúng",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03322",
+   "ten": "Chứng minh bằng tính chất thừa số nguyên tố với số mũ chẵn, hai số nguyên tố cùng nhau",
+   "tt": 4
+  }
+ ],
+ "NNB01479": [
+  {
+   "ma": "NDB02762",
+   "ten": "Kẹp biểu thức giữa hai số chính phương liên tiếp",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03323",
+   "ten": "Đặt biểu thức bằng k² rồi đưa về phương trình ước số",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03324",
+   "ten": "Biểu thức có số mũ chứa ẩn (vd 2ˣ + 5ʸ) là số chính phương: xét số dư và tính chẵn lẻ của mũ",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03325",
+   "ten": "Tìm số chính phương thoả điều kiện về chữ số (cấu tạo số)",
+   "tt": 4
+  }
+ ],
+ "NNB01480": [
+  {
+   "ma": "NDB02758",
+   "ten": "Phương trình bậc nhất hai ẩn ax + by = c: phát hiện tính chia hết của một ẩn",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03326",
+   "ten": "Đưa về phương trình ước số: tích các thừa số bằng một hằng số",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03327",
+   "ten": "Biểu thị một ẩn theo ẩn còn lại rồi dùng phép chia hết (tách phần nguyên)",
+   "tt": 3
+  }
+ ],
+ "NNB01481": [
+  {
+   "ma": "NDB02761",
+   "ten": "Sắp thứ tự các ẩn để chặn miền (ẩn có vai trò bình đẳng)",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03328",
+   "ten": "Đánh giá miền giá trị của biến bằng bất đẳng thức rồi thử trực tiếp",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03329",
+   "ten": "Nguyên lí kẹp giữa hai luỹ thừa liên tiếp (bậc ≥ 3)",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03330",
+   "ten": "Xét số dư hai vế để chứng minh vô nghiệm hoặc thu hẹp nghiệm",
+   "tt": 4
+  },
+  {
+   "ma": "NDB03331",
+   "ten": "Chỉ ra nghiệm của phương trình mũ rồi chứng minh duy nhất",
+   "tt": 5
+  }
+ ],
+ "NNB01482": [
+  {
+   "ma": "NDB02764",
+   "ten": "Tạo ra bình phương đúng: đưa phương trình về dạng (biểu thức)² = số",
+   "tt": 1
+  },
+  {
+   "ma": "NDB03332",
+   "ten": "Tạo ra tổng các bình phương bằng một số cho trước",
+   "tt": 2
+  },
+  {
+   "ma": "NDB03333",
+   "ten": "Coi là phương trình bậc hai theo một ẩn, điều kiện biệt thức là số chính phương",
+   "tt": 3
+  },
+  {
+   "ma": "NDB03334",
+   "ten": "Kẹp giữa hai bình phương liên tiếp của biểu thức theo ẩn",
+   "tt": 4
+  }
+ ]
+}

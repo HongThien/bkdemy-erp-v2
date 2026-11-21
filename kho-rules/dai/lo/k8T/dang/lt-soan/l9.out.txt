@@ -1,0 +1,575 @@
+#NHOM NNB01464
+@LT
+##TC Công thức chuyển động đều
+- $s=v\cdot t$, suy ra $v=\dfrac st$ và $t=\dfrac sv$ (quãng đường $s$, vận tốc $v$, thời gian $t$).
+- Phải thống nhất đơn vị: quãng đường km, vận tốc km/giờ, thời gian giờ. Đổi $a$ phút $=\dfrac a{60}$ giờ.
+
+##TC Hai chuyển động cùng lúc
+- Đi ngược chiều rồi gặp nhau: tổng hai quãng đường đã đi bằng khoảng cách ban đầu giữa hai nơi xuất phát.
+- Đi cùng chiều rồi đuổi kịp: hiệu hai quãng đường đã đi bằng khoảng cách ban đầu; lúc đuổi kịp, hai vật cách nơi xuất phát của vật đi sau cùng một quãng đường.
+- Hai vật xuất phát cùng lúc và gặp nhau thì thời gian đi của hai vật bằng nhau; nếu một vật xuất phát muộn hơn $a$ giờ thì thời gian đi của nó ít hơn $a$ giờ.
+
+##PP Giải bài toán chuyển động bằng cách lập phương trình
+Chọn ẩn (vận tốc, thời gian hoặc quãng đường), ghi đơn vị và đặt điều kiện cho ẩn
+Lập bảng $v$, $t$, $s$ cho từng chuyển động, biểu diễn các ô còn lại theo ẩn bằng $s=v\cdot t$
+Tìm quan hệ đề cho (tổng hoặc hiệu quãng đường, hiệu thời gian, thời gian bằng nhau) và lập phương trình
+Giải phương trình, đối chiếu điều kiện của ẩn, kết luận kèm đơn vị
+
+##CY
+- Thời gian dừng nghỉ không tính vào thời gian chuyển động: thời gian chạy thật bằng thời gian cả hành trình trừ thời gian nghỉ.
+- Ẩn là vận tốc hay thời gian đều phải dương; sau khi giải phải thử lại với đề, nhất là khi nghiệm lấy từ phương trình bậc hai.
+
+#DANG NDB02741
+@LT
+##TC Lập bất phương trình theo mốc thời gian
+- Đến nơi trước một mốc giờ cho trước: tổng thời gian thực đi nhỏ hơn thời gian được phép đi (từ lúc xuất phát đến mốc đó).
+- Hơn kém thời gian: nếu hai vật đi cùng quãng đường $s$ với vận tốc $v_1$, $v_2$ thì chênh lệch thời gian là $\dfrac s{v_1}-\dfrac s{v_2}$.
+- Nhân hai vế của bất phương trình với số dương thì giữ nguyên chiều bất đẳng thức.
+
+##PP Chuyển động cơ bản
+Chọn ẩn và đặt điều kiện (vận tốc hoặc thời gian đi mang giá trị dương)
+Tính quãng đường, thời gian của từng đoạn theo $s=v\cdot t$ và ẩn
+Dịch quan hệ của đề (tổng, hiệu quãng đường; hiệu hoặc giới hạn thời gian) thành phương trình hoặc bất phương trình
+Giải, đối chiếu điều kiện, kết luận
+
+##CY
+Đề hỏi "để đến nơi trước giờ ...": phải dùng dấu $<$ (nhỏ hơn thời gian được phép), không dùng dấu $=$; khi giải thì đáp số là một khoảng giá trị của vận tốc.
+
+@VD
+##VD
+Quãng đường $AB$ dài $141$ km. Lúc $6$ giờ một mô tô khởi hành từ $A$ đến $B$, trong giờ thứ nhất mô tô đi với vận tốc $29$ km/giờ. Hỏi trong quãng đường còn lại mô tô phải đi với vận tốc bao nhiêu để đến $B$ trước $10$ giờ $30$ phút? (Lập bất phương trình rồi giải.)
+
+Bài giải:
+Thời gian được phép đi từ $6$ giờ đến $10$ giờ $30$ phút là $10{,}5-6=4{,}5$ (giờ).
+Gọi $x$ (km/giờ) là vận tốc của mô tô trên quãng đường còn lại, điều kiện $x>0$.
+Quãng đường đi trong giờ thứ nhất là $29\cdot1=29$ (km), nên quãng đường còn lại dài $141-29=112$ (km).
+Thời gian đi hết quãng đường còn lại là $\dfrac{112}{x}$ (giờ), nên tổng thời gian đi từ $A$ đến $B$ là $1+\dfrac{112}{x}$ (giờ).
+Để đến $B$ trước $10$ giờ $30$ phút thì tổng thời gian đi phải nhỏ hơn $4{,}5$ giờ, ta có bất phương trình
+$1+\dfrac{112}{x}<4{,}5$
+$\Leftrightarrow \dfrac{112}{x}<3{,}5$
+$\Leftrightarrow 112<3{,}5x$ (nhân hai vế với $x>0$, chiều bất đẳng thức giữ nguyên)
+$\Leftrightarrow x>32$ (chia hai vế cho $3{,}5>0$).
+Giá trị $x>32$ thỏa mãn điều kiện $x>0$.
+Vậy trên quãng đường còn lại mô tô phải đi với vận tốc lớn hơn $32$ km/giờ.
+
+##VD
+Lúc $7$ giờ một xe máy đi từ $A$ với vận tốc $36$ km/giờ. Lúc $8$ giờ $30$ phút một ô tô cũng đi từ $A$, cùng chiều với xe máy, với vận tốc $60$ km/giờ. Hỏi ô tô đuổi kịp xe máy lúc mấy giờ?
+
+Bài giải:
+Xe máy đi trước ô tô $8{,}5-7=1{,}5$ (giờ).
+Gọi $t$ (giờ) là thời gian ô tô đi cho đến khi đuổi kịp xe máy, điều kiện $t>0$; khi đó thời gian xe máy đi là $t+1{,}5$ (giờ).
+Quãng đường ô tô đi được là $60t$ (km), quãng đường xe máy đi được là $36(t+1{,}5)$ (km).
+Lúc đuổi kịp, hai xe cùng cách $A$ một quãng đường như nhau, nên
+$60t=36(t+1{,}5)$
+$\Leftrightarrow 60t=36t+54$
+$\Leftrightarrow 24t=54$
+$\Leftrightarrow t=2{,}25$ (thỏa mãn điều kiện).
+Vậy ô tô đi $2{,}25$ giờ, tức $2$ giờ $15$ phút, thì đuổi kịp xe máy; thời điểm đó là $8$ giờ $30$ phút $+$ $2$ giờ $15$ phút $=10$ giờ $45$ phút.
+Thử lại: ô tô đi $60\cdot2{,}25=135$ (km), xe máy đi $36\cdot3{,}75=135$ (km).
+
+#DANG NDB03272
+@LT
+##TC Vận tốc khi có dòng nước
+- Vận tốc xuôi dòng $=$ vận tốc thực $+$ vận tốc dòng nước.
+- Vận tốc ngược dòng $=$ vận tốc thực $-$ vận tốc dòng nước (vận tốc thực lớn hơn vận tốc dòng nước).
+- Quãng đường đi xuôi và đi ngược giữa hai bến là như nhau; bè trôi tự do đi với vận tốc bằng vận tốc dòng nước.
+
+##PP Toán xuôi dòng, ngược dòng
+Gọi vận tốc thực là $x$ và đặt điều kiện $x$ lớn hơn vận tốc dòng nước
+Viết vận tốc xuôi dòng và ngược dòng theo $x$
+Biểu diễn thời gian hoặc quãng đường lúc xuôi và lúc ngược, rồi lập phương trình theo quan hệ đề cho (quãng đường bằng nhau hoặc tổng thời gian)
+Giải, loại nghiệm không thỏa điều kiện $x$ lớn hơn vận tốc dòng nước, kết luận
+
+##CY
+Điều kiện $x>$ vận tốc dòng nước là bắt buộc: nghiệm nhỏ hơn hoặc bằng vận tốc dòng nước cho vận tốc ngược dòng không dương nên phải loại.
+
+@VD
+##VD
+Một ca nô xuôi dòng từ $A$ đến $B$ mất $4$ giờ và ngược dòng từ $B$ về $A$ mất $5$ giờ. Biết vận tốc dòng nước là $2$ km/giờ. Tính khoảng cách $AB$.
+
+Bài giải:
+Gọi vận tốc thực của ca nô là $x$ (km/giờ), điều kiện $x>2$.
+Vận tốc xuôi dòng là $x+2$ (km/giờ), vận tốc ngược dòng là $x-2$ (km/giờ).
+Khoảng cách $AB$ tính theo lúc xuôi dòng là $4(x+2)$ (km), tính theo lúc ngược dòng là $5(x-2)$ (km); hai giá trị này bằng nhau nên
+$4(x+2)=5(x-2)$
+$\Leftrightarrow 4x+8=5x-10$
+$\Leftrightarrow x=18$ (thỏa mãn điều kiện $x>2$).
+Khoảng cách $AB$ là $4\cdot(18+2)=80$ (km).
+Vậy khoảng cách $AB$ là $80$ km.
+Thử lại: $5\cdot(18-2)=80$ (km).
+
+##VD
+Một ca nô đi xuôi dòng $36$ km rồi ngược dòng $24$ km (trên cùng một đoạn sông) hết tất cả $6$ giờ. Biết vận tốc dòng nước là $2$ km/giờ. Tính vận tốc thực của ca nô.
+
+Bài giải:
+Gọi vận tốc thực của ca nô là $x$ (km/giờ), điều kiện $x>2$.
+Thời gian xuôi dòng $36$ km là $\dfrac{36}{x+2}$ (giờ), thời gian ngược dòng $24$ km là $\dfrac{24}{x-2}$ (giờ).
+Ta có phương trình
+$\dfrac{36}{x+2}+\dfrac{24}{x-2}=6$
+$\Leftrightarrow 36(x-2)+24(x+2)=6(x^2-4)$ (quy đồng, nhân hai vế với $(x+2)(x-2)\ne0$)
+$\Leftrightarrow 60x-24=6x^2-24$
+$\Leftrightarrow 6x^2-60x=0$
+$\Leftrightarrow 6x(x-10)=0$
+$\Leftrightarrow x=0$ (loại vì $x>2$) hoặc $x=10$ (thỏa mãn).
+Vậy vận tốc thực của ca nô là $10$ km/giờ.
+Thử lại: $\dfrac{36}{12}+\dfrac{24}{8}=3+3=6$ (giờ).
+
+#DANG NDB03273
+@LT
+##TC Vận tốc trung bình
+- Vận tốc trung bình $=$ tổng quãng đường chia cho tổng thời gian (kể cả thời gian nghỉ nếu có).
+- Đi hai nửa quãng đường với vận tốc $v_1$ và $v_2$ thì vận tốc trung bình $v$ thỏa mãn $\dfrac2v=\dfrac1{v_1}+\dfrac1{v_2}$ (trung bình điều hòa).
+
+##PP Tìm vận tốc trung bình
+Đặt quãng đường chưa biết là ẩn phụ $a$ và gọi vận tốc trung bình (hoặc vận tốc cần tìm) là $x$
+Tính thời gian từng đoạn theo $a$ và vận tốc của đoạn đó
+Lập phương trình: tổng thời gian các đoạn bằng thời gian đi cả quãng đường với vận tốc trung bình
+Chia hai vế cho $a>0$ để ẩn phụ biến mất, giải rồi kết luận
+
+##CY
+Vận tốc trung bình không phải là trung bình cộng của các vận tốc, vì các đoạn có thời gian đi khác nhau: nửa quãng đầu $40$ km/h, nửa quãng sau $60$ km/h cho vận tốc trung bình $48$ km/h chứ không phải $50$ km/h.
+
+@VD
+##VD
+Một ô tô đi nửa quãng đường $AB$ với vận tốc $60$ km/h và đi nửa quãng đường còn lại với vận tốc $90$ km/h. Tính vận tốc trung bình của ô tô trên cả quãng đường $AB$.
+
+Bài giải:
+Gọi vận tốc trung bình là $x$ (km/h), điều kiện $x>0$; gọi nửa quãng đường $AB$ dài $a$ (km), $a>0$.
+Thời gian đi nửa quãng đường đầu là $\dfrac a{60}$ (giờ), thời gian đi nửa còn lại là $\dfrac a{90}$ (giờ).
+Cả quãng đường dài $2a$ (km), đi với vận tốc trung bình $x$ nên mất $\dfrac{2a}x$ (giờ).
+Ta có phương trình
+$\dfrac a{60}+\dfrac a{90}=\dfrac{2a}x$
+$\Leftrightarrow \dfrac1{60}+\dfrac1{90}=\dfrac2x$ (chia hai vế cho $a>0$)
+$\Leftrightarrow 3x+2x=360$ (nhân hai vế với $180x$)
+$\Leftrightarrow 5x=360$
+$\Leftrightarrow x=72$ (thỏa mãn điều kiện).
+Vậy vận tốc trung bình của ô tô trên cả quãng đường $AB$ là $72$ km/h (khác với trung bình cộng $75$ km/h).
+
+##VD
+Một ô tô đi nửa quãng đường đầu với vận tốc $40$ km/h và đi nửa quãng đường còn lại với vận tốc $v$ km/h. Biết vận tốc trung bình trên cả quãng đường là $48$ km/h. Tính $v$.
+
+Bài giải:
+Gọi nửa quãng đường dài $a$ (km), $a>0$; điều kiện $v>0$.
+Thời gian đi nửa đầu là $\dfrac a{40}$ (giờ), nửa sau là $\dfrac av$ (giờ).
+Cả quãng đường dài $2a$ (km), vận tốc trung bình $48$ km/h nên thời gian đi cả quãng là $\dfrac{2a}{48}=\dfrac a{24}$ (giờ).
+Ta có phương trình
+$\dfrac a{40}+\dfrac av=\dfrac a{24}$
+$\Leftrightarrow \dfrac1{40}+\dfrac1v=\dfrac1{24}$ (chia hai vế cho $a>0$)
+$\Leftrightarrow \dfrac1v=\dfrac1{24}-\dfrac1{40}$
+$\Leftrightarrow \dfrac1v=\dfrac{5-3}{120}=\dfrac1{60}$
+$\Leftrightarrow v=60$ (thỏa mãn điều kiện).
+Vậy $v=60$ km/h.
+Thử lại: $\dfrac1{40}+\dfrac1{60}=\dfrac1{24}=\dfrac2{48}$, đúng với vận tốc trung bình $48$ km/h.
+
+#DANG NDB03274
+@LT
+##TC Tổng dãy cách đều
+$1+2+3+\dots+n=\dfrac{n(n+1)}2$ và $2+4+6+\dots+2n=n(n+1)$.
+
+##PP Nhiều phương tiện, nghỉ giữa đường, hành trình có quy luật
+Xác định thời gian chạy thật của mỗi phương tiện bằng thời gian cả hành trình trừ thời gian nghỉ
+Chọn ẩn là vận tốc (hoặc số lần đi, số chặng nếu hành trình có quy luật) và đặt điều kiện
+Biểu diễn quãng đường mỗi phương tiện đi được bằng vận tốc nhân thời gian chạy thật
+Lập phương trình theo điều kiện gặp nhau (tổng quãng đường bằng khoảng cách) hoặc theo tổng thời gian đề cho
+Giải, đối chiếu điều kiện rồi trả lời
+
+##CY
+- Khoảng cách chỉ tính theo thời gian đi, không nhân vận tốc với thời gian dừng.
+- Nếu hành trình kết thúc bằng một lần đi thì số lần dừng ít hơn số lần đi một lần.
+- Nếu đề cho nhiều lần gặp, chỉ dùng được dữ kiện lần gặp mà hai phương tiện đều chạy liên tục để tìm tổng vận tốc.
+
+@VD
+##VD
+Một vật thể chuyển động từ $A$ đến $B$ theo cách sau: đi được $5$ m dừng lại $1$ giây, rồi đi tiếp $10$ m dừng lại $2$ giây, rồi đi tiếp $15$ m dừng $3$ giây, $\dots$ Cứ như vậy đi từ $A$ đến $B$ kể cả dừng hết tất cả $551$ giây. Tính khoảng cách từ $A$ đến $B$. Biết rằng khi đi vật thể luôn có vận tốc là $2{,}5$ m/giây.
+
+Bài giải:
+Gọi số lần đi là $x$ (lần), điều kiện $x\in\mathbb{N}^*$; vật dừng sau mỗi lần đi trừ lần cuối đến $B$ nên số lần dừng là $x-1$ (lần).
+Lần đi thứ $k$ dài $5k$ (m) nên mất $\dfrac{5k}{2{,}5}=2k$ (giây).
+Tổng thời gian đi là $2+4+6+\dots+2x=x(x+1)$ (giây).
+Tổng thời gian dừng là $1+2+3+\dots+(x-1)=\dfrac{x(x-1)}2$ (giây).
+Theo đề ta có phương trình
+$x(x+1)+\dfrac{x(x-1)}2=551$
+$\Leftrightarrow 2x^2+2x+x^2-x=1102$
+$\Leftrightarrow 3x^2+x-1102=0$
+$\Leftrightarrow 3x^2-57x+58x-1102=0$
+$\Leftrightarrow 3x(x-19)+58(x-19)=0$
+$\Leftrightarrow (x-19)(3x+58)=0$
+$\Leftrightarrow x=19$ (thỏa mãn điều kiện) hoặc $x=-\dfrac{58}3$ (loại).
+Thời gian đi là $19\cdot20=380$ (giây).
+Vậy khoảng cách từ $A$ đến $B$ là $2{,}5\cdot380=950$ (m).
+
+##VD
+Một người đi xe gắn máy từ thành phố $A$ đến thành phố $B$ cách nhau $200$ km. Cùng lúc đó có một người đi xe gắn máy khác từ $B$ đến $A$. Sau $5$ giờ hai xe gặp nhau. Nếu người đi từ $A$ dừng lại $40$ phút giữa đường rồi mới đi tiếp thì phải sau $5$ giờ $22$ phút kể từ lúc khởi hành, hai người mới gặp nhau. Tính vận tốc của mỗi người.
+
+Bài giải:
+Đổi $5$ giờ $22$ phút $=\dfrac{161}{30}$ giờ và $40$ phút $=\dfrac23$ giờ.
+Ở lần gặp thứ nhất, hai xe khởi hành cùng lúc, đi liên tục và gặp nhau sau $5$ giờ nên tổng vận tốc hai xe là $200:5=40$ (km/giờ).
+Gọi vận tốc xe đi từ $A$ là $x$ (km/giờ), điều kiện $0<x<40$; vận tốc xe đi từ $B$ là $40-x$ (km/giờ).
+Ở lần gặp thứ hai, xe đi từ $A$ chạy thật trong $\dfrac{161}{30}-\dfrac23=\dfrac{47}{10}$ (giờ), xe đi từ $B$ chạy trong $\dfrac{161}{30}$ (giờ).
+Hai xe đi ngược chiều rồi gặp nhau nên tổng quãng đường đi được là $200$ km:
+$\dfrac{47}{10}x+\dfrac{161}{30}(40-x)=200$
+$\Leftrightarrow 141x+161(40-x)=6000$ (nhân hai vế với $30$)
+$\Leftrightarrow 141x+6440-161x=6000$
+$\Leftrightarrow 20x=440$
+$\Leftrightarrow x=22$ (thỏa mãn điều kiện).
+Khi đó vận tốc xe đi từ $B$ là $40-22=18$ (km/giờ).
+Vậy vận tốc xe đi từ $A$ là $22$ km/giờ, xe đi từ $B$ là $18$ km/giờ.
+
+#NHOM NNB01465
+@LT
+##TC Cách dịch lời đề thành biểu thức
+- "$A$ hơn $B$ là $d$" nghĩa là $A=B+d$; "$A$ gấp $k$ lần $B$" nghĩa là $A=kB$; tổng $S$ chia hai phần thì phần kia là $S-x$.
+- Đại lượng là số đếm (người, quả, sản phẩm, lần) thì ẩn phải là số nguyên dương; đại lượng đo (độ dài, khối lượng, thời gian) thì ẩn dương.
+
+##PP Giải bài toán bằng cách lập phương trình
+Chọn ẩn, ghi đơn vị và đặt điều kiện cho ẩn
+Biểu diễn các đại lượng còn lại theo ẩn
+Tìm quan hệ đề cho (bằng nhau, hơn kém, tổng, gấp) và lập phương trình
+Giải phương trình, đối chiếu điều kiện để loại nghiệm không phù hợp
+Thử lại với đề và kết luận kèm đơn vị
+
+##CY
+- Nghiệm của phương trình chưa chắc là đáp số của bài toán: phải kiểm tra điều kiện của ẩn (nguyên dương, lớn hơn một giá trị nào đó).
+- Hai đại lượng cùng loại mới được cộng trừ với nhau: kiểm tra đơn vị trước khi lập phương trình.
+
+#DANG NDB02742
+@LT
+##TC Năng suất và công việc
+- Khối lượng công việc $=$ năng suất $\times$ thời gian.
+- Coi cả công việc (cả bể) là $1$. Làm một mình xong trong $x$ giờ thì mỗi giờ làm được $\dfrac1x$ công việc.
+- Làm chung: năng suất chung bằng tổng các năng suất riêng; nếu làm chung xong trong $T$ giờ thì $\dfrac1{x}+\dfrac1{y}=\dfrac1T$.
+- Năng suất kế hoạch và thực tế: số ngày $=$ khối lượng $:$ năng suất mỗi ngày.
+
+##PP Toán năng suất và làm chung
+Chọn ẩn là thời gian làm riêng (hoặc năng suất mỗi ngày) và đặt điều kiện dương
+Biểu diễn phần việc làm được trong một đơn vị thời gian của từng người (từng vòi)
+Lập phương trình: tổng các phần việc bằng phần việc chung, hoặc hiệu thời gian bằng số đề cho
+Quy đồng khử mẫu, giải, đối chiếu điều kiện và kết luận
+
+##CY
+Cộng năng suất (số phần việc trong một giờ), không cộng thời gian. Thời gian làm chung luôn nhỏ hơn thời gian làm riêng của mỗi người.
+
+@VD
+##VD
+Hai vòi nước cùng chảy vào một bể cạn thì sau $4$ giờ đầy bể. Nếu chảy riêng thì vòi I làm đầy bể nhanh hơn vòi II là $6$ giờ. Hỏi chảy riêng thì mỗi vòi làm đầy bể trong bao lâu?
+
+Bài giải:
+Gọi thời gian vòi I chảy riêng đầy bể là $x$ (giờ), điều kiện $x>0$; khi đó vòi II chảy riêng đầy bể trong $x+6$ (giờ).
+Mỗi giờ vòi I chảy được $\dfrac1x$ bể, vòi II chảy được $\dfrac1{x+6}$ bể; cả hai vòi cùng chảy thì mỗi giờ được $\dfrac14$ bể.
+Ta có phương trình
+$\dfrac1x+\dfrac1{x+6}=\dfrac14$
+$\Leftrightarrow 4(x+6)+4x=x(x+6)$ (quy đồng, nhân hai vế với $4x(x+6)\ne0$)
+$\Leftrightarrow 8x+24=x^2+6x$
+$\Leftrightarrow x^2-2x-24=0$
+$\Leftrightarrow x^2-6x+4x-24=0$
+$\Leftrightarrow (x-6)(x+4)=0$
+$\Leftrightarrow x=6$ (thỏa mãn điều kiện) hoặc $x=-4$ (loại).
+Khi đó vòi II chảy riêng đầy bể trong $6+6=12$ (giờ).
+Vậy chảy riêng, vòi I đầy bể trong $6$ giờ, vòi II đầy bể trong $12$ giờ.
+Thử lại: $\dfrac16+\dfrac1{12}=\dfrac14$.
+
+##VD
+Một đội sản xuất dự định làm xong $120$ sản phẩm trong một số ngày với năng suất đều mỗi ngày. Thực tế mỗi ngày đội làm nhiều hơn dự định $4$ sản phẩm nên hoàn thành sớm hơn dự định $5$ ngày. Tính số sản phẩm đội dự định làm mỗi ngày.
+
+Bài giải:
+Gọi số sản phẩm đội dự định làm mỗi ngày là $x$ (sản phẩm), điều kiện $x\in\mathbb{N}^*$.
+Thời gian làm theo dự định là $\dfrac{120}x$ (ngày); thực tế mỗi ngày làm $x+4$ sản phẩm nên thời gian là $\dfrac{120}{x+4}$ (ngày).
+Thực tế xong sớm hơn dự định $5$ ngày nên
+$\dfrac{120}x-\dfrac{120}{x+4}=5$
+$\Leftrightarrow 120(x+4)-120x=5x(x+4)$ (nhân hai vế với $x(x+4)>0$)
+$\Leftrightarrow 480=5x^2+20x$
+$\Leftrightarrow x^2+4x-96=0$
+$\Leftrightarrow x^2-8x+12x-96=0$
+$\Leftrightarrow (x-8)(x+12)=0$
+$\Leftrightarrow x=8$ (thỏa mãn điều kiện) hoặc $x=-12$ (loại).
+Vậy đội dự định làm mỗi ngày $8$ sản phẩm.
+Thử lại: dự định $120:8=15$ (ngày), thực tế $120:12=10$ (ngày), sớm hơn $5$ ngày.
+
+#DANG NDB03275
+@LT
+##TC Viết số theo cấu tạo thập phân
+- $\overline{ab}=10a+b$ và $\overline{abc}=100a+10b+c$ với $a$ là chữ số khác $0$, các chữ số còn lại từ $0$ đến $9$.
+- Số $x$ thêm chữ số $c$ vào bên phải: $10x+c$. Số $x$ có $n$ chữ số thêm chữ số $c$ vào bên trái: $c\cdot10^n+x$.
+- Đổi chỗ hai chữ số của $\overline{ab}$ được $\overline{ba}=10b+a$.
+
+##PP Bài toán về số
+Gọi ẩn là chữ số (hoặc cả số) và ghi điều kiện: chữ số nguyên từ $0$ đến $9$, chữ số đầu khác $0$
+Viết số cũ và số mới theo cấu tạo thập phân
+Lập phương trình theo quan hệ đề cho (tổng, hiệu, gấp bao nhiêu lần)
+Giải, đối chiếu điều kiện chữ số rồi kết luận
+
+##CY
+Với phân số, ghi thêm điều kiện mẫu số khác $0$; kết quả phải là chữ số hoặc số tự nhiên đúng yêu cầu, nghiệm không nguyên hay ngoài khoảng $0$ đến $9$ thì loại.
+
+@VD
+##VD
+Tìm một số tự nhiên có $5$ chữ số, biết rằng nếu thêm chữ số $1$ vào bên phải số ấy thì được một số gấp $3$ lần số được tạo nên khi ta thêm chữ số $1$ vào bên trái số đã cho.
+
+Bài giải:
+Gọi số cần tìm là $x$, điều kiện $x\in\mathbb{N}$ và $10000\le x\le99999$.
+Thêm chữ số $1$ vào bên phải được số $10x+1$; thêm chữ số $1$ vào bên trái được số $x+100000$.
+Theo đề ta có
+$10x+1=3(x+100000)$
+$\Leftrightarrow 10x+1=3x+300000$
+$\Leftrightarrow 7x=299999$
+$\Leftrightarrow x=42857$ (thỏa mãn điều kiện).
+Vậy số tự nhiên cần tìm là $42857$.
+Thử lại: $428571=3\cdot142857$.
+
+##VD
+Tìm số tự nhiên có hai chữ số, biết tổng hai chữ số bằng $9$ và nếu đổi chỗ hai chữ số cho nhau thì được số mới lớn hơn số ban đầu $27$ đơn vị.
+
+Bài giải:
+Gọi chữ số hàng chục của số cần tìm là $x$, điều kiện $x\in\mathbb{N}$, $1\le x\le9$; chữ số hàng đơn vị là $9-x$ (cũng là chữ số từ $0$ đến $9$).
+Số ban đầu là $10x+(9-x)=9x+9$; số mới sau khi đổi chỗ là $10(9-x)+x=90-9x$.
+Số mới lớn hơn số ban đầu $27$ đơn vị nên
+$(90-9x)-(9x+9)=27$
+$\Leftrightarrow 81-18x=27$
+$\Leftrightarrow 18x=54$
+$\Leftrightarrow x=3$ (thỏa mãn điều kiện).
+Chữ số hàng đơn vị là $9-3=6$.
+Vậy số cần tìm là $36$.
+Thử lại: $63-36=27$.
+
+#DANG NDB03276
+@LT
+##TC Phần trăm và dung dịch
+- $m\%$ của $A$ là $\dfrac m{100}A$. Tăng $m\%$ thì thành $A\left(1+\dfrac m{100}\right)$; giảm $m\%$ thì thành $A\left(1-\dfrac m{100}\right)$.
+- Nồng độ phần trăm $=$ khối lượng chất tan chia khối lượng dung dịch rồi nhân $100\%$.
+- Pha thêm nước (hoặc cô đặc) thì khối lượng chất tan không đổi.
+
+##PP Tỉ số phần trăm, dung dịch, dân số
+Chọn ẩn là đại lượng ban đầu (khối lượng dung dịch, số dân năm trước) và đặt điều kiện
+Tính phần trăm thêm vào hoặc bớt đi (nhớ nhân với đại lượng gốc của chính phần đó)
+Lập phương trình theo cái không đổi (chất tan) hoặc theo tổng đề cho
+Giải, đối chiếu điều kiện rồi trả lời
+
+##CY
+Tăng $m\%$ không phải là cộng thêm $m$ đơn vị mà là nhân thêm $\dfrac m{100}$ của đại lượng gốc; hai tỉnh tăng hai tỉ lệ khác nhau thì phải tính riêng từng tỉnh rồi mới cộng.
+
+@VD
+##VD
+Cho một lượng dung dịch chứa $10\%$ muối. Nếu pha thêm $200$ gam nước thì được một dung dịch $6\%$. Hỏi có bao nhiêu gam dung dịch đã cho?
+
+Bài giải:
+Gọi khối lượng dung dịch ban đầu là $x$ (gam), điều kiện $x>0$.
+Khối lượng muối trong dung dịch ban đầu là $\dfrac{10}{100}x=\dfrac x{10}$ (gam).
+Sau khi pha thêm $200$ gam nước, dung dịch mới nặng $x+200$ (gam) và khối lượng muối vẫn là $\dfrac x{10}$ (gam).
+Nồng độ dung dịch mới là $6\%$ nên
+$\dfrac{x}{10(x+200)}=\dfrac6{100}$
+$\Leftrightarrow \dfrac x{x+200}=\dfrac35$ (nhân hai vế với $10$)
+$\Leftrightarrow 5x=3(x+200)$
+$\Leftrightarrow 2x=600$
+$\Leftrightarrow x=300$ (thỏa mãn điều kiện).
+Vậy lượng dung dịch đã cho là $300$ gam.
+Thử lại: $30$ gam muối trong $500$ gam dung dịch, đúng $6\%$.
+
+##VD
+Năm ngoái, tổng số dân của hai tỉnh $A$ và $B$ là $4$ triệu người. Dân số tỉnh $A$ năm nay tăng $1{,}2\%$; còn tỉnh $B$ tăng $1{,}1\%$. Tổng số dân hai tỉnh năm nay là $4045000$ người. Tính số dân của mỗi tỉnh năm ngoái.
+
+Bài giải:
+Gọi số dân tỉnh $A$ năm ngoái là $x$ (người), điều kiện $x\in\mathbb{N}^*$, $x<4000000$; số dân tỉnh $B$ năm ngoái là $4000000-x$ (người).
+Số dân tỉnh $A$ tăng thêm là $1{,}2\%\cdot x=\dfrac{12}{1000}x$ (người); số dân tỉnh $B$ tăng thêm là $1{,}1\%\cdot(4000000-x)=\dfrac{11}{1000}(4000000-x)$ (người).
+Tổng số dân hai tỉnh tăng thêm là $4045000-4000000=45000$ (người) nên
+$\dfrac{12}{1000}x+\dfrac{11}{1000}(4000000-x)=45000$
+$\Leftrightarrow 12x+44000000-11x=45000000$
+$\Leftrightarrow x=1000000$ (thỏa mãn điều kiện).
+Số dân tỉnh $B$ năm ngoái là $4000000-1000000=3000000$ (người).
+Vậy năm ngoái tỉnh $A$ có $1000000$ người, tỉnh $B$ có $3000000$ người.
+
+#DANG NDB03277
+@LT
+##TC Chu vi và diện tích hình chữ nhật
+Hình chữ nhật có hai kích thước $a$, $b$ thì chu vi $=2(a+b)$ và diện tích $=ab$; nửa chu vi $=a+b$.
+
+##PP Bài toán hình học tăng giảm các cạnh
+Gọi ẩn là một cạnh và đặt điều kiện cạnh dương (cạnh bị giảm phải còn dương)
+Biểu diễn cạnh kia qua ẩn nhờ chu vi hoặc quan hệ đề cho
+Viết kích thước mới và diện tích mới (cũ) theo ẩn
+Lập phương trình theo quan hệ diện tích, giải rồi loại nghiệm không thỏa điều kiện
+
+##CY
+Khi đề nói tăng hoặc giảm các cạnh, diện tích mới là tích hai kích thước mới (không phải diện tích cũ cộng thêm); nhiều bài khai triển ra có hạng tử $x^2$ hai vế triệt tiêu nên phương trình trở về bậc nhất.
+
+@VD
+##VD
+Một mảnh vườn hình chữ nhật có chiều dài gấp $3$ lần chiều rộng. Nếu tăng chiều rộng $5$ m và giảm chiều dài $10$ m thì diện tích mảnh vườn không đổi. Tính các kích thước của mảnh vườn.
+
+Bài giải:
+Gọi chiều rộng mảnh vườn là $x$ (m), chiều dài là $3x$ (m); điều kiện $3x>10$ để chiều dài giảm $10$ m vẫn dương.
+Diện tích lúc đầu là $x\cdot3x=3x^2$ (m$^2$).
+Kích thước mới là $x+5$ (m) và $3x-10$ (m), diện tích mới là $(x+5)(3x-10)$ (m$^2$).
+Diện tích không đổi nên
+$(x+5)(3x-10)=3x^2$
+$\Leftrightarrow 3x^2-10x+15x-50=3x^2$
+$\Leftrightarrow 5x=50$
+$\Leftrightarrow x=10$ (thỏa mãn điều kiện).
+Chiều dài là $3\cdot10=30$ (m).
+Vậy mảnh vườn rộng $10$ m, dài $30$ m.
+Thử lại: $15\cdot20=300=10\cdot30$ (m$^2$).
+
+##VD
+Một mảnh vườn hình chữ nhật dài $20$ m, rộng $12$ m. Người ta làm một lối đi xung quanh vườn (nằm trong vườn) có chiều rộng đều là $x$ mét, phần đất còn lại để trồng rau có diện tích $128$ m$^2$. Tính chiều rộng $x$ của lối đi.
+
+Bài giải:
+Vì lối đi nằm trong vườn và chạy quanh vườn nên $x>0$ và $12-2x>0$, tức điều kiện $0<x<6$.
+Phần đất trồng rau là hình chữ nhật có chiều dài $20-2x$ (m) và chiều rộng $12-2x$ (m).
+Diện tích phần trồng rau là $128$ m$^2$ nên
+$(20-2x)(12-2x)=128$
+$\Leftrightarrow 240-64x+4x^2=128$
+$\Leftrightarrow 4x^2-64x+112=0$
+$\Leftrightarrow x^2-16x+28=0$
+$\Leftrightarrow x^2-2x-14x+28=0$
+$\Leftrightarrow (x-2)(x-14)=0$
+$\Leftrightarrow x=2$ (thỏa mãn điều kiện) hoặc $x=14$ (loại vì $x<6$).
+Vậy lối đi rộng $2$ m.
+Thử lại: $(20-4)(12-4)=16\cdot8=128$ (m$^2$).
+
+#DANG NDB03278
+@LT
+##TC Toán tuổi
+- Sau $n$ năm, tuổi mỗi người đều tăng $n$; trước $n$ năm đều giảm $n$.
+- Hiệu số tuổi của hai người không đổi theo thời gian.
+
+##PP Toán tuổi và toán cổ
+Chọn ẩn là tuổi (hoặc đại lượng cần tìm) của một người ở thời điểm hiện nay; đặt điều kiện nguyên dương (tuổi chưa sinh thì phải lớn hơn số năm trước đó)
+Biểu diễn đại lượng còn lại và các mốc thời gian theo ẩn
+Dịch từng câu của đề (hay từng dòng của bài thơ) thành quan hệ giữa các đại lượng rồi đặt vào phương trình
+Giải, đối chiếu điều kiện và kết luận
+
+##CY
+Đại lượng này phụ thuộc đại lượng kia và ngược lại (như đuôi theo mình, mình theo đuôi) thì chọn một đại lượng làm ẩn, biểu diễn các đại lượng khác theo ẩn rồi viết lại chính ẩn ấy theo hai cách để có phương trình.
+
+@VD
+##VD
+Một con cá voi có: đầu dài $3$ m; mình dài bằng ba lần đầu và nửa đuôi; đuôi dài bằng một đầu và nửa mình. Tìm chiều dài con cá voi.
+
+Bài giải:
+Gọi độ dài đuôi cá là $x$ (m), điều kiện $x>0$.
+Mình cá dài $3\cdot3+\dfrac12x=9+\dfrac12x$ (m).
+Đuôi dài bằng một đầu và nửa mình nên đuôi dài $3+\dfrac12\left(9+\dfrac12x\right)=\dfrac{15}2+\dfrac14x$ (m).
+Hai cách tính này cùng là độ dài đuôi, ta có phương trình
+$\dfrac{15}2+\dfrac14x=x$
+$\Leftrightarrow 30+x=4x$ (nhân hai vế với $4$)
+$\Leftrightarrow 3x=30$
+$\Leftrightarrow x=10$ (thỏa mãn điều kiện).
+Mình cá dài $9+\dfrac12\cdot10=14$ (m).
+Vậy chiều dài con cá voi là $3+14+10=27$ (m).
+
+##VD
+Hiện nay tuổi mẹ gấp $4$ lần tuổi con. Cách đây $5$ năm tuổi mẹ gấp $7$ lần tuổi con.
+a) Tính tuổi của mẹ và của con hiện nay.
+b) Sau bao nhiêu năm nữa thì tuổi mẹ gấp $3$ lần tuổi con?
+
+Bài giải:
+a) Gọi tuổi con hiện nay là $x$ (tuổi), điều kiện $x\in\mathbb{N}$, $x>5$; khi đó tuổi mẹ hiện nay là $4x$ (tuổi).
+Cách đây $5$ năm, tuổi con là $x-5$, tuổi mẹ là $4x-5$; tuổi mẹ gấp $7$ lần tuổi con nên
+$4x-5=7(x-5)$
+$\Leftrightarrow 4x-5=7x-35$
+$\Leftrightarrow 3x=30$
+$\Leftrightarrow x=10$ (thỏa mãn điều kiện).
+Vậy con $10$ tuổi, mẹ $40$ tuổi.
+
+b) Gọi $y$ là số năm cần tìm, điều kiện $y>0$. Sau $y$ năm tuổi con là $10+y$, tuổi mẹ là $40+y$.
+$40+y=3(10+y)$
+$\Leftrightarrow 40+y=30+3y$
+$\Leftrightarrow 2y=10$
+$\Leftrightarrow y=5$ (thỏa mãn điều kiện).
+Vậy sau $5$ năm nữa tuổi mẹ gấp $3$ lần tuổi con (mẹ $45$ tuổi, con $15$ tuổi).
+
+#DANG NDB03279
+@LT
+##TC Chia theo quy luật
+- "Người thứ $k$ nhận $k$ vật và $\dfrac1n$ số còn lại": nếu trước khi người thứ $k$ nhận còn $y$ vật thì phần của người đó là $k+\dfrac{y-k}n$.
+- Số còn lại sau khi người thứ $k$ nhận là $y$ trừ đi phần của người đó.
+
+##PP Chia, bán theo quy luật
+Gọi tổng số vật là $x$ và đặt điều kiện nguyên dương
+Tính phần của người thứ nhất và số vật còn lại, rồi phần của người thứ hai theo $x$
+Cho hai phần liên tiếp bằng nhau (khi đề nói chia đều) hoặc tính ngược từ số còn lại cuối cùng
+Giải phương trình, tính phần mỗi người, số người rồi thử lại toàn bộ quy trình
+
+##CY
+Phần "$\dfrac1n$ số còn lại" tính sau khi đã bớt $k$ vật mà người đó nhận trước, không tính trên toàn bộ số vật còn lại; nhầm chỗ này sẽ cho phương trình sai.
+
+@VD
+##VD
+Trong một cái giỏ đựng một số táo. Đầu tiên người ta lấy ra một nửa số táo và bỏ lại $5$ quả, sau đó lấy thêm ra $\dfrac13$ số táo còn lại và lấy thêm $4$ quả. Cuối cùng trong giỏ còn lại $12$ quả. Hỏi trong giỏ lúc đầu có bao nhiêu quả?
+
+Bài giải:
+Gọi số táo trong giỏ lúc đầu là $x$ (quả), điều kiện $x\in\mathbb{N}^*$, $x>12$.
+Sau lần thứ nhất, người ta lấy ra $\dfrac x2$ quả rồi bỏ lại $5$ quả nên trong giỏ còn $x-\dfrac x2+5=\dfrac x2+5$ (quả).
+Lần thứ hai lấy ra $\dfrac13\left(\dfrac x2+5\right)+4$ (quả), nên số táo còn lại là
+$\dfrac x2+5-\left[\dfrac13\left(\dfrac x2+5\right)+4\right]=\dfrac23\left(\dfrac x2+5\right)-4$
+Cuối cùng trong giỏ còn $12$ quả nên
+$\dfrac23\left(\dfrac x2+5\right)-4=12$
+$\Leftrightarrow \dfrac23\left(\dfrac x2+5\right)=16$
+$\Leftrightarrow \dfrac x2+5=24$
+$\Leftrightarrow x=38$ (thỏa mãn điều kiện).
+Vậy lúc đầu trong giỏ có $38$ quả táo.
+Thử lại: sau lần một còn $19+5=24$ quả; lần hai lấy $8+4=12$ quả, còn $12$ quả.
+
+##VD
+Một tổ học sinh được tặng một số kẹo. Số kẹo này được chia hết và chia đều cho mọi người trong tổ theo cách sau: bạn thứ nhất nhận $1$ cái kẹo và được lấy thêm $\dfrac1{11}$ số kẹo còn lại. Sau khi bạn thứ nhất đã lấy phần mình, bạn thứ hai nhận $2$ cái kẹo và được lấy thêm $\dfrac1{11}$ số kẹo còn lại. Cứ tiếp tục như thế đến bạn cuối cùng thứ $n$ nhận $n$ cái kẹo và lấy thêm $\dfrac1{11}$ số kẹo còn lại. Hỏi tổ có bao nhiêu bạn và mỗi bạn nhận được bao nhiêu cái kẹo?
+
+Bài giải:
+Gọi tổng số kẹo được tặng là $x$ (cái), điều kiện $x\in\mathbb{N}^*$.
+Số kẹo bạn thứ nhất nhận là $1+\dfrac1{11}(x-1)=\dfrac{x+10}{11}$ (cái).
+Số kẹo còn lại sau bạn thứ nhất là $x-\dfrac{x+10}{11}=\dfrac{10x-10}{11}$ (cái).
+Số kẹo bạn thứ hai nhận là $2+\dfrac1{11}\left(\dfrac{10x-10}{11}-2\right)=2+\dfrac{10x-32}{121}=\dfrac{10x+210}{121}$ (cái).
+Kẹo được chia đều nên số kẹo của hai bạn bằng nhau:
+$\dfrac{x+10}{11}=\dfrac{10x+210}{121}$
+$\Leftrightarrow 11(x+10)=10x+210$ (nhân hai vế với $121$)
+$\Leftrightarrow 11x+110=10x+210$
+$\Leftrightarrow x=100$ (thỏa mãn điều kiện).
+Mỗi bạn nhận $\dfrac{100+10}{11}=10$ (cái) kẹo, nên số bạn trong tổ là $100:10=10$ (bạn).
+Thử lại: chín bạn đầu nhận $90$ cái, còn $10$ cái, bạn thứ mười nhận đúng $10$ cái và không còn dư.
+Vậy tổ có $10$ bạn và mỗi bạn nhận $10$ cái kẹo.
+
+#DANG NDB03280
+@LT
+##TC Cánh đồng cỏ mọc đều
+- Lượng cỏ phải ăn hết sau $t$ ngày $=$ lượng cỏ ban đầu $+$ lượng cỏ mọc thêm trong $t$ ngày.
+- Chọn đơn vị: một con bò ăn $1$ phần cỏ mỗi ngày; $n$ con bò ăn trong $t$ ngày hết $nt$ phần.
+
+##PP Bài toán cỏ mọc, bò ăn
+Gọi $g$ là lượng cỏ ban đầu và $r$ là lượng cỏ mọc thêm mỗi ngày (cùng đơn vị với phần cỏ một bò ăn trong một ngày)
+Với mỗi tình huống, viết $g+t\cdot r=$ số bò $\times$ số ngày
+Lập hệ hai phương trình từ hai tình huống đã cho và giải để tìm $g$ và $r$
+Thay $g$, $r$ vào tình huống còn lại để tìm số ngày hoặc số bò
+
+##CY
+Cỏ vẫn mọc trong lúc bò ăn nên lượng cỏ cần ăn tăng theo số ngày; nếu số bò không vượt quá $r$ thì mỗi ngày bò ăn không quá lượng cỏ mọc thêm và cỏ không bao giờ hết.
+
+@VD
+##VD
+Một cánh đồng cỏ mọc đều mỗi ngày. Nếu cho $10$ con bò ăn thì hết cỏ sau $12$ ngày; nếu cho $15$ con bò ăn thì hết cỏ sau $6$ ngày. Hỏi nếu cho $20$ con bò ăn thì hết cỏ sau bao nhiêu ngày? (Mỗi con bò ăn lượng cỏ như nhau mỗi ngày.)
+
+Bài giải:
+Lấy lượng cỏ một con bò ăn trong một ngày làm đơn vị. Gọi $g$ là lượng cỏ ban đầu và $r$ là lượng cỏ mọc thêm mỗi ngày (cùng đơn vị), $g>0$, $r>0$.
+Với $10$ con bò trong $12$ ngày: $g+12r=10\cdot12=120$.
+Với $15$ con bò trong $6$ ngày: $g+6r=15\cdot6=90$.
+Trừ hai phương trình theo vế: $6r=30$, suy ra $r=5$; thay vào $g+6r=90$ được $g=90-30=60$.
+Gọi $t$ (ngày) là thời gian $20$ con bò ăn hết cỏ, điều kiện $t>0$. Ta có
+$60+5t=20t$
+$\Leftrightarrow 15t=60$
+$\Leftrightarrow t=4$ (thỏa mãn điều kiện).
+Vậy $20$ con bò ăn hết cỏ sau $4$ ngày.
+Thử lại: lượng cỏ phải ăn là $60+5\cdot4=80=20\cdot4$.
+
+##VD
+Một bãi cỏ mọc đều mỗi ngày. Nếu cho $21$ con bò ăn thì hết cỏ sau $8$ ngày; nếu cho $16$ con bò ăn thì hết cỏ sau $12$ ngày. Mỗi con bò ăn lượng cỏ như nhau mỗi ngày.
+a) Tính lượng cỏ ban đầu và lượng cỏ mọc thêm mỗi ngày (lấy lượng cỏ một con bò ăn trong một ngày làm đơn vị).
+b) Cần bao nhiêu con bò để ăn hết cỏ sau $4$ ngày?
+
+Bài giải:
+a) Gọi $g$ là lượng cỏ ban đầu và $r$ là lượng cỏ mọc thêm mỗi ngày, $g>0$, $r>0$.
+Với $21$ con bò trong $8$ ngày: $g+8r=21\cdot8=168$.
+Với $16$ con bò trong $12$ ngày: $g+12r=16\cdot12=192$.
+Trừ hai phương trình theo vế: $4r=24$, suy ra $r=6$; thay vào $g+8r=168$ được $g=168-48=120$.
+Vậy lượng cỏ ban đầu là $120$ đơn vị và mỗi ngày cỏ mọc thêm $6$ đơn vị.
+
+b) Gọi $n$ là số con bò cần tìm, điều kiện $n\in\mathbb{N}^*$. Trong $4$ ngày lượng cỏ phải ăn là $120+4\cdot6=144$ đơn vị, còn $n$ con bò ăn được $4n$ đơn vị, nên
+$4n=144$
+$\Leftrightarrow n=36$ (thỏa mãn điều kiện).
+Vậy cần $36$ con bò để ăn hết cỏ sau $4$ ngày.
