@@ -11,6 +11,7 @@ import SauGioCa from './SauGioCa'
 import { MathText } from '../kho/ui'
 import { CauCuaEmTA } from './CauCuaEmTA'
 import { diemDanh, huyBuoi, MUC_CATALOG } from '../../lib/gami'
+import { coQuyenDiemDanhSauGio, diemDanhSauGio, ghiChuTaSauGio } from '../../lib/botro_nhe'
 import { timNhanXetMau, type NhanXetMau } from '../../lib/detest'
 import { homNayVN, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 import { BKTabHeader, BKRowCard, MaHS } from '../../components/bk/BKUI'
@@ -217,8 +218,8 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] text-rose-700">{loi}</p>}
         {ok && <p className="mb-3 rounded-xl bg-emerald-50 px-3 py-2 text-[12.5px] font-medium text-emerald-700">✓ {ok}</p>}
 
-        {/* 1. Điểm danh */}
-        <Khoi so={1} ten="Điểm danh" trang={coMat ? 'xong' : vang ? 'xong' : 'dang'}>
+        {/* 1. Điểm danh — ca SAU GIỜ: chỉ Trang tích (Thùy 21/11); TA chỉ ghi chú ở app TA */}
+        {nhe ? <KhoiDiemDanhSauGio ca={ca} chay={chay} busy={busy} /> : <Khoi so={1} ten="Điểm danh" trang={coMat ? 'xong' : vang ? 'xong' : 'dang'}>
           {/* Thùy 28/09: chạm 1 lần = điểm danh, chạm LẠI nút đang chọn = bỏ điểm danh (DB chặn nếu em đã làm bài / đã đóng ca). */}
           {coMat || vang ? (
             <div className="flex flex-col gap-1.5">
@@ -245,7 +246,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
                 <button disabled={!!busy || ca.trang_thai !== 'mo'} onClick={() => setHoiVang(true)} className="rounded-xl border border-rose-200 px-4 py-2.5 text-[14px] font-semibold text-rose-600 disabled:opacity-50">Vắng</button>
               </div>
             )}
-        </Khoi>
+        </Khoi>}
 
         {nhe ? <SauGioCa ca={ca} onDoi={tai} /> : <>
         {/* 1b. CHỌN CHẾ ĐỘ — hiện khi em có mặt; khoá khi ca đã đóng */}
@@ -483,6 +484,36 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
         </>}
       </div>
     </div>
+  )
+}
+
+// Điểm danh ca Bổ trợ sau giờ (Thùy 21/11): CHỈ người có quyền `diem_danh_sau_gio` (Trang, admin) tích có mặt / vắng — DB chặn người khác (fn_btnhe_diem_danh).
+// Không có bài làm ⇒ hệ thống tự ghi vắng lúc 0h hôm sau; Trang sửa dựa trên ghi chú TA.
+function KhoiDiemDanhSauGio({ ca, chay, busy }: { ca: CaTA; chay: (k: string, f: () => Promise<void>, xong?: string) => Promise<void>; busy: string | null }) {
+  const [duoc, setDuoc] = useState(false)
+  const [ghiChu, setGhiChu] = useState<{ noi_dung: string; ten_ta: string | null } | null>(null)
+  useEffect(() => { coQuyenDiemDanhSauGio().then(setDuoc) }, [])
+  useEffect(() => { ghiChuTaSauGio([ca.buoi_id]).then((r) => setGhiChu(r[ca.buoi_id] ?? null)).catch(() => {}) }, [ca.buoi_id])
+  const coMat = ca.diem_danh === 'co_mat'
+  const vang = ca.diem_danh === 'vang' || ca.diem_danh === 'vang_phep'
+  const xong = !!ca.danh_gia_xong_at
+  return (
+    <Khoi so={1} ten="Điểm danh (Trang)" trang={coMat || vang ? 'xong' : 'dang'}>
+      <div className="flex flex-col gap-2">
+        {duoc ? (
+          <div className="flex gap-2">
+            <button disabled={!!busy || xong} onClick={() => !coMat && chay('dd', () => diemDanhSauGio(ca.buoi_hoc_hs_id, 'co_mat'), 'Đã điểm danh có mặt.')}
+              className={`flex-1 rounded-xl py-2.5 text-[14px] font-bold disabled:opacity-60 ${coMat ? 'bg-emerald-600 text-white' : 'border border-emerald-300 text-emerald-700'}`}>✓ Em có mặt</button>
+            <button disabled={!!busy || xong} onClick={() => !vang && chay('dd', () => diemDanhSauGio(ca.buoi_hoc_hs_id, 'vang'), 'Đã điểm danh vắng — buổi huỷ.')}
+              className={`rounded-xl px-4 py-2.5 text-[14px] font-semibold disabled:opacity-60 ${vang ? 'bg-rose-600 text-white' : 'border border-rose-200 text-rose-600'}`}>Vắng</button>
+          </div>
+        ) : (
+          <p className="rounded-xl bg-slate-50 px-3 py-2 text-[13px] font-semibold text-slate-700">{coMat ? '✓ Em có mặt' : vang ? 'Em vắng' : 'Chưa điểm danh'}</p>
+        )}
+        <p className="text-[11.5px] text-slate-500">{duoc ? 'Chỉ Trang điểm danh ca sau giờ.' : 'Điểm danh ca sau giờ do Trang tích.'} Em có bài nộp = có mặt; không có bài, hệ thống tự ghi vắng lúc 0h hôm sau — Trang sửa nếu cần.{xong ? ' Ca đã xong — không đổi được.' : ''}</p>
+        {ghiChu && <p className="rounded-xl bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900">📝 TA ghi chú{ghiChu.ten_ta ? ` (${ghiChu.ten_ta})` : ''}: {ghiChu.noi_dung}</p>}
+      </div>
+    </Khoi>
   )
 }
 

@@ -146,6 +146,31 @@ export async function nhapDcs(cauId: string, kq: 'D' | 'C' | 'S' | null): Promis
   if (error) throw error
 }
 
+// ĐIỂM DANH SAU GIỜ (Thùy 21/11, mig 202611211613): CHỈ Trang (quyền `diem_danh_sau_gio`, admin) tích có mặt / vắng. TA chỉ GHI CHÚ.
+// Không có bài làm ⇒ hệ thống tự điểm danh vắng lúc 0h hôm sau; Trang sửa dựa trên ghi chú của TA.
+export async function coQuyenDiemDanhSauGio(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('co_quyen_ghi', { p_chuc_nang: 'diem_danh_sau_gio' })
+  if (error) return false
+  return !!data
+}
+export async function diemDanhSauGio(buoiHocHsId: string, tt: 'co_mat' | 'vang'): Promise<void> {
+  const { error } = await supabase.rpc('fn_btnhe_diem_danh', { p_bhh: buoiHocHsId, p_tt: tt })
+  if (error) throw error
+}
+export type GhiChuTaSauGio = { buoi_hoc_id: string; noi_dung: string; ten_ta: string | null; updated_at: string }
+export async function ghiChuTaSauGio(buoiIds: string[]): Promise<Record<string, GhiChuTaSauGio>> {
+  if (!buoiIds.length) return {}
+  const { data, error } = await supabase.rpc('fn_btnhe_ta_note_doc', { p_buoi: buoiIds })
+  if (error) throw error
+  const out: Record<string, GhiChuTaSauGio> = {}
+  for (const r of (data ?? []) as GhiChuTaSauGio[]) out[r.buoi_hoc_id] = r
+  return out
+}
+export async function taGhiChuSauGio(buoiId: string, noiDung: string): Promise<void> {
+  const { error } = await supabase.rpc('fn_btnhe_ta_note', { p_buoi: buoiId, p_noi_dung: noiDung })
+  if (error) throw error
+}
+
 // Thông báo dán nhóm Zalo lớp (Thùy 29/10). Chỉ ghép chữ hiển thị — tên em lấy từ ca đã lưu, bỏ em đã huỷ (vắng/huỷ ca).
 export function thongBaoPhuHuynh(ca: CaNhe): string {
   const ten = ca.hs.filter((h) => h.buoi_trang_thai !== 'huy').map((h) => h.ho_ten)

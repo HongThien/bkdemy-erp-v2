@@ -5,7 +5,7 @@
 // Chạy ca = CaDetail của ca Yếu (điểm danh · in phiếu luyện + test · nhập giấy · đóng ca · hoàn tất) — không dựng máy thứ hai.
 // Mọi kiểm tra ở DB (fn_btnhe_*). Sau mutation: vá/refetch nền, không xoá list (CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
-import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
+import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, ghiChuTaSauGio, type GhiChuTaSauGio, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
 import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
 import NutInSauGio from './NutInSauGio'
 import { inTestSauGio, doiMucSauGio, type KqDoiMuc } from '../../lib/botro_nhe'
@@ -159,6 +159,10 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc,
   onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; onInLop?: (c: CaNhe) => Promise<void>; onDoiMuc?: (c: CaNhe, h: HsCaNhe, r: KqDoiMuc) => void; rong?: string
 }) {
   const [dangIn, setDangIn] = useState<string | null>(null)
+  // Ghi chú TA (Thùy 21/11): Trang soát điểm danh dựa trên đây — 1 lượt gọi cho các buổi đang hiện
+  const [notes, setNotes] = useState<Record<string, GhiChuTaSauGio>>({})
+  const idsKey = cas.flatMap((c) => c.hs.map((h) => h.buoi_id)).slice(0, 300).join(',')
+  useEffect(() => { if (idsKey) ghiChuTaSauGio(idsKey.split(',')).then(setNotes).catch(() => {}) }, [idsKey])
   return (
     <section className="mb-6">
       <p className="mb-2 text-[11.5px] font-bold uppercase tracking-wider text-slate-500">{tieuDe}</p>
@@ -188,6 +192,7 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc,
                           <button onClick={() => onMo(h.buoi_id)} className="flex min-w-0 flex-1 items-center gap-2 rounded-lg px-2 py-1.5 text-left hover:bg-slate-50">
                             <span className="truncate text-[13px] font-medium text-slate-800">{h.ho_ten}</span>
                             <span className="shrink-0 text-[11.5px] text-slate-400">{h.so_dang} dạng</span>
+                            {notes[h.buoi_id] && <span title={`TA${notes[h.buoi_id].ten_ta ? ` ${notes[h.buoi_id].ten_ta}` : ''} ghi chú: ${notes[h.buoi_id].noi_dung}`} className="min-w-0 max-w-[45%] truncate rounded-full bg-amber-50 px-2 py-0.5 text-[11px] text-amber-800">📝 {notes[h.buoi_id].noi_dung}</span>}
                             <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold ${tt.cls}`}>{tt.ten}</span>
                             <span className="text-slate-300">›</span>
                           </button>

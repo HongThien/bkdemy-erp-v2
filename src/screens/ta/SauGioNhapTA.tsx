@@ -3,7 +3,7 @@
 // Lưu TỪNG Ô ngay (fn_btnhe_nhap_dcs), vá tại chỗ. "Xong" = nộp (fn_btyeu_giay_nop: ô trống tính sai, nộp ⇒ xong ca, vào mastery).
 // Mọi số ở DB. Class màu literal (luật app TA).
 import { useEffect, useState } from 'react'
-import { taNhapDs, nhapDcs, type EmNhapSauGio } from '../../lib/botro_nhe'
+import { taNhapDs, nhapDcs, ghiChuTaSauGio, taGhiChuSauGio, type EmNhapSauGio } from '../../lib/botro_nhe'
 import { nopTestGiay } from '../../lib/botro_yeu_ca'
 import { BKTabHeader, MaHS } from '../../components/bk/BKUI'
 import { ddmmVN, thuCuaNgay, homNayVN } from '../../lib/tuan'
@@ -23,6 +23,23 @@ export default function SauGioNhapTA({ onBack, onDoi, chiBuoi }: { onBack: () =>
   // nền: giữ list cũ tới khi có list mới
   const tai = () => taNhapDs().then((r) => { NHO.ds = r; setDs(r); setLoi(null) }).catch((e) => setLoi(e?.message ?? String(e)))
   useEffect(() => { tai() }, [])
+  // Ghi chú cho Trang (Thùy 21/11): TA KHÔNG điểm danh — chỉ ghi em có đến không; Trang tích / sửa dựa trên ghi chú. Lưu khi rời ô.
+  const [note, setNote] = useState<Record<string, string>>({})
+  const [noteLuu, setNoteLuu] = useState<Record<string, string>>({})   // bản đã lưu (để biết có đổi không)
+  const idsKey = (ds ?? []).map((x) => x.buoi_id).join(',')
+  useEffect(() => {
+    if (!idsKey) return
+    ghiChuTaSauGio(idsKey.split(',')).then((r) => {
+      const m: Record<string, string> = {}; for (const k of Object.keys(r)) m[k] = r[k].noi_dung
+      setNoteLuu(m); setNote((cu) => ({ ...m, ...cu }))
+    }).catch(() => {})
+  }, [idsKey])
+  async function luuNote(buoiId: string) {
+    const v = (note[buoiId] ?? '').trim()
+    if (v === (noteLuu[buoiId] ?? '')) return
+    try { await taGhiChuSauGio(buoiId, v); setNoteLuu((m) => ({ ...m, [buoiId]: v })); setLoi(null) }
+    catch (err: any) { setLoi(err?.message ?? String(err)) }
+  }
 
   async function chon(e: EmNhapSauGio, cauId: string, kq: 'D' | 'C' | 'S') {
     const cu = e.caus.find((k) => k.id === cauId)?.kq ?? null
@@ -44,7 +61,7 @@ export default function SauGioNhapTA({ onBack, onDoi, chiBuoi }: { onBack: () =>
         sub={ds === null ? 'Đang tải…' : choNhap.length ? `${choNhap.length} em chờ nhập kết quả` : 'Không còn em nào chờ nhập ✓'} />}
       <div className="mx-auto flex max-w-[1000px] flex-col gap-2 px-2 pb-6">
         {loi && <p className="rounded-xl bg-[#FFE3EA] px-3 py-2 text-[12.5px] font-semibold text-[#C0355A]">{loi}</p>}
-        <p className="px-1 text-[11.5px] text-[#63709A]">Bấm <b className="text-[#1E8A52]">Đ</b> đúng · <b className="text-[#C27A00]">C</b> chưa trọn · <b className="text-[#C0355A]">S</b> sai cho từng câu (bấm lại để xoá). Đủ thì bấm <b>Xong</b>.</p>
+        <p className="px-1 text-[11.5px] text-[#63709A]">Bấm <b className="text-[#1E8A52]">Đ</b> đúng · <b className="text-[#C27A00]">C</b> chưa trọn · <b className="text-[#C0355A]">S</b> sai cho từng câu (bấm lại để xoá). Đủ thì bấm <b>Xong</b>. TA không điểm danh: em nào không có bài nộp thì hệ thống tự ghi vắng, Trang sửa dựa trên <b>ghi chú</b> của TA.</p>
         {ds !== null && ds.length === 0 && <p className="rounded-[20px] bg-white/80 px-3 py-3 text-[13px] text-[#63709A]">Chưa có bài test sau giờ nào — giáo viên in bài test xong thì em hiện ở đây.</p>}
         {(ds ?? []).map((e) => {
           const daNhap = e.caus.filter((k) => k.kq).length
@@ -66,6 +83,11 @@ export default function SauGioNhapTA({ onBack, onDoi, chiBuoi }: { onBack: () =>
                   </div>
                 ))}
               </div>
+              {!e.da_nop && (
+                <input value={note[e.buoi_id] ?? ''} maxLength={500} onChange={(ev) => setNote((m) => ({ ...m, [e.buoi_id]: ev.target.value }))} onBlur={() => luuNote(e.buoi_id)}
+                  placeholder="Ghi chú cho Trang (vd: em không đến · đến muộn · bố mẹ báo nghỉ)"
+                  className="mt-2 w-full rounded-xl bg-[#F4F6FB] px-3 py-2 text-[12.5px] text-[#16224D] outline-none ring-1 ring-[#D8DEEC] placeholder:text-[#9AA4C4] focus:ring-[#2F73F6]" />
+              )}
               {!e.da_nop && (hoiNop === e.buoi_id ? (
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-[12.5px]">
                   <span className="text-[#C27A00]">{daNhap < e.caus.length ? `Còn ${e.caus.length - daNhap} câu chưa nhập — tính SAI. ` : ''}Nộp rồi không sửa được nữa.</span>

@@ -97,6 +97,8 @@ export const adminLeaves: AdminLeaf[] = [
   // DB layer = mig 202608300908 (viết lại hệ qlht_* của Hải theo style ERP).
   // anMenu (Thùy 27/10): ERP không có màn Tủ quà ⇒ ẩn khỏi menu ERP, vẫn là 1 quyền ở Phân quyền để mở tab Quà trên app OPS.
   { id: 'tu_qua',      nhom: 'Vận hành',  ten: 'Tủ quà (đổi xu)',              founderOnly: false, anMenu: true },
+  // Thùy 21/11: Bổ trợ sau giờ — CHỈ người có quyền này tích có mặt / vắng (TA chỉ ghi chú). Không có màn riêng ⇒ ẩn menu; nút nằm trong ca ở Bổ trợ › Sau giờ.
+  { id: 'diem_danh_sau_gio', nhom: 'Vận hành', ten: 'Điểm danh Bổ trợ sau giờ', founderOnly: false, anMenu: true },
   // Sự kiện (spec-su-kien.md, Trung thu 26/09): check-in · vòng quay · hàng chờ phòng iPad · quầy quà. Cấp cho nhân sự trực.
   { id: 'su_kien',     nhom: 'Vận hành',  ten: 'Sự kiện',                      founderOnly: false },
   // Quy trình HS mới (Thùy 27/10): Ops tick checklist từng PH–HS mới; tab Checklist sửa các bước (mig 202610271810).

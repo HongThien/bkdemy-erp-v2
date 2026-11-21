@@ -82145,3 +82145,12 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sửa:** mig `202611211604` (trigger `_ta_ca_tu_duyet`: ca da_duyet khi ≥1 việc hiệu lực + mọi việc đã duyệt + có giờ ra; việc mới/mở lại ⇒ ca về chờ; nới `_ta_cong_duoc_ca`) · `DuyetCongScreen.tsx` bỏ ô chọn/Từ chối/Mở lại ở dòng ca, nhãn "Tự duyệt / Theo việc / Chưa có giờ ra" · `spec-tro-giang.md` §7.2, §7.6.
 - **Chưa áp DB:** `migrate` còn 29 file treo (không phải của việc này) ⇒ không chạy `npm run migrate`; áp tay file này ở SQL Editor TRƯỚC khi deploy màn (màn mới không còn gửi ca ⇒ chưa có trigger thì ca không bao giờ duyệt).
 - **Bài học:** hai luật "ai duyệt được" (khối) × "ca phụ thuộc mọi việc" nhân nhau ra ca không ai duyệt được; trạng thái dẫn xuất (ca) phải suy bằng trigger từ nguồn (việc), không để người duyệt tay.
+
+## 21/11 (chiều) — Bổ trợ sau giờ: chỉ Trang điểm danh, TA chỉ ghi chú, không có bài ⇒ hệ thống tự vắng (mig 202611211613 · 1614 · 1619 ĐÃ ÁP, `--only`)
+- **Thùy:** "TA không điểm danh vắng/có mặt được trên app TA, chỉ Trang mới tích được. Không có bài thì mặc định hệ thống điểm danh vắng — Trang sửa nếu cần dựa trên dữ liệu TA note." Trang = Phạm Thị Thùy Trang.
+- **Hiện trạng tìm thấy:** TA app không có nút điểm danh sau giờ nhưng nộp Đ/C/S tự đặt có mặt (`fn_btyeu_giay_nop`); màn ERP ca sau giờ (`CaDetail nhe`) vẫn có nút Có mặt/Vắng cho người đứng ca; DB không chặn gì (policy `buoi_hoc_hs` mở cho mọi nhân sự).
+- **Làm:** quyền mới `diem_danh_sau_gio` (vai "Điểm danh Sau giờ", 1 ghế cho Trang trong Core team; lá `anMenu`) · `fn_btnhe_diem_danh` (một đường ghi, mở lại buổi + case khi vắng→có mặt) · trigger `trg_btnhe_diem_danh_khoa` chặn client ghi thẳng · `fn_btyeu_bo_diem_danh` từ chối buổi sau giờ · bảng `sau_gio_ta_note` + `fn_btnhe_ta_note` / `fn_btnhe_ta_note_doc` · `_btnhe_tu_vang` + job `sau_gio_tu_vang` (0h, uu_tien 14 < reset thứ Hai 15). UI: ô ghi chú ở `SauGioNhapTA`, khối "Điểm danh (Trang)" ở `CaDetail`, chip ghi chú ở `BoTroNheScreen`. Spec: `spec-bo-tro.md` §7.2.
+- **Chưa chạy `_btnhe_tu_vang`:** job tự chạy 0h đêm nay (lúc kiểm có 7 buổi ngày đã qua, chưa điểm danh, không bài ⇒ sẽ tự vắng).
+- **Giới hạn đã biết:** buổi Chủ nhật tự vắng lúc 0h thứ Hai rồi reset thứ Hai huỷ luôn ca ⇒ Trang không còn mở lại được buổi đó (hàm báo "ca đã bị huỷ"); các ngày khác Trang có tới hết tuần.
+- **`check:kien-truc` K1 đang 327 > trần 322:** không phải của việc này (hàm `_` của việc khác: `_ta_ca_tu_duyet`…), hàm `_` mới của việc này đã thu EXECUTE.
+- **Chưa kiểm trên trình duyệt** (cần đăng nhập Trang / TA thật).
