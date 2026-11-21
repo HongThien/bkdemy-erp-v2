@@ -28,4 +28,12 @@ const csv = String.fromCharCode(0xFEFF) + cot.join(',') + ',thieu_so_50,can_clon
     .map((r) => [...cot.map((c) => esc(r[c])), Math.max(0, 50 - r.dung_duoc), Math.max(0, 50 - r.dung_duoc - r.cho_duyet)].join(',')).join(NL)
 writeFileSync(process.argv[2], csv)
 console.log('dạng:', rows.length, '→', process.argv[2])
+
+// Tóm tắt in ra màn: mốc 30 (đích fill clone, spec-giai-bai §C13) và mốc 50 (Thùy 20/11)
+const dem = (f) => rows.filter(f).length
+const thieu = (m) => rows.reduce((a, r) => a + Math.max(0, m - r.dung_duoc), 0)
+console.log('dưới 30 câu dùng được:', dem((r) => r.dung_duoc < 30), '· thiếu', thieu(30), 'câu để đủ 30')
+console.log('dưới 50 câu dùng được:', dem((r) => r.dung_duoc < 50), '· thiếu', thieu(50), 'câu để đủ 50')
+console.log('dạng rỗng (0 câu):', dem((r) => r.dung_duoc === 0))
+console.log('chưa có MCQ:', dem((r) => r.mcq === 0), '= rỗng', dem((r) => r.mcq === 0 && r.dung_duoc === 0), '+ có trả lời ngắn', dem((r) => r.mcq === 0 && r.tln > 0), '+ chỉ có form chờ', dem((r) => r.mcq === 0 && r.tln === 0 && r.form_cho > 0), '+ không có đường nào', dem((r) => r.mcq === 0 && r.tln === 0 && r.form_cho === 0 && r.dung_duoc > 0))
 await db.end()
