@@ -1,0 +1,1490 @@
+[
+ {
+  "ma_nguon": "C4V2.1@p144",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng: $a^2+b^2+c^2\\ge ab+bc+ac$.",
+  "noi_dung_sach": "Chứng minh rằng: $a^2+b^2+c^2\\ge ab+bc+ac$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế phải $ab+bc+ca$ chính là phần tích đôi sinh ra khi khai triển $(a+b+c)^2$, mà $(a+b+c)^2=(1\\cdot a+1\\cdot b+1\\cdot c)^2$ là vế phải của Bu-nhi-a-cốp-xki cho hai bộ số $(1;1;1)$ và $(a;b;c)$.\n\n**Bước 1.** Viết bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ ba số $(1;1;1)$ và $(a;b;c)$; bộ toàn số 1 được chọn vì nó làm vế phải thành bình phương của tổng $a+b+c$ và vế trái có thừa số $3$.\n\n**Bước 2.** Khai triển $(a+b+c)^2$ để xuất hiện cả $a^2+b^2+c^2$ lẫn các tích đôi, rồi chuyển các hạng tử giống nhau về một vế.\n\n**Bước 3.** Chia hai vế cho 2 để về đúng bất đẳng thức cần chứng minh, rồi đọc điều kiện dấu \"=\" từ điều kiện hai bộ số tỉ lệ.\n\n**Chú ý:** Bất đẳng thức đúng với mọi số thực $a,b,c$, không cần dương; cách xét hiệu $\\dfrac12\\left[(a-b)^2+(b-c)^2+(c-a)^2\\right]\\ge0$ cũng cho kết quả ngay.\n\n**Phần 2. Trình bày**\n\nÁp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ số $(1;1;1)$ và $(a;b;c)$:\n\n$(1^2+1^2+1^2)(a^2+b^2+c^2)\\ge(1\\cdot a+1\\cdot b+1\\cdot c)^2$\n\n$\\Rightarrow3(a^2+b^2+c^2)\\ge a^2+b^2+c^2+2(ab+bc+ca)$\n\n$\\Rightarrow2(a^2+b^2+c^2)\\ge2(ab+bc+ca)$\n\n$\\Rightarrow a^2+b^2+c^2\\ge ab+bc+ca$.\n\nDấu \"=\" xảy ra khi hai bộ số tỉ lệ: $\\dfrac a1=\\dfrac b1=\\dfrac c1$, tức $a=b=c$.\n\nVậy $a^2+b^2+c^2\\ge ab+bc+ca$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki cho hai bộ ba số (1;1;1) và (a;b;c)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 144): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02752",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh bằng Bu-nhi-a-cốp-xki cho (1;1;1) và (a;b;c); xét hiệu cũng được nhưng lời giải dùng Bu-nhi-a-cốp-xki."
+ },
+ {
+  "ma_nguon": "C4V2.2@p144",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ là các số thực và $a+b+c=1$. Chứng minh rằng $a^2+b^2+c^2\\ge\\dfrac13$.",
+  "noi_dung_sach": "Cho $a,b,c$ là các số thực và $a+b+c=1$. Chứng minh rằng $a^2+b^2+c^2\\ge\\dfrac13$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng $a+b+c$ cố định còn cần chặn dưới tổng bình phương, mà $(a+b+c)^2=(1\\cdot a+1\\cdot b+1\\cdot c)^2$ nằm đúng ở vế nhỏ của Bu-nhi-a-cốp-xki cho $(1;1;1)$ và $(a;b;c)$.\n\n**Bước 1.** Viết bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ ba số $(1;1;1)$ và $(a;b;c)$ để nối tổng bình phương với bình phương của tổng.\n\n**Bước 2.** Thay điều kiện $a+b+c=1$ vào vế chứa bình phương của tổng để được một cận dưới là hằng số.\n\n**Bước 3.** Chia hai vế cho $3>0$ rồi tìm dấu \"=\" từ điều kiện hai bộ số tỉ lệ, kiểm tra nó thỏa $a+b+c=1$.\n\n**Chú ý:** Không cần $a,b,c$ dương; điều kiện dấu \"=\" $a=b=c$ phải được đối chiếu với giả thiết $a+b+c=1$ để biết dấu \"=\" có đạt thật hay không.\n\n**Phần 2. Trình bày**\n\nÁp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ số $(1;1;1)$ và $(a;b;c)$:\n\n$(1^2+1^2+1^2)(a^2+b^2+c^2)\\ge(1\\cdot a+1\\cdot b+1\\cdot c)^2=(a+b+c)^2$\n\nMà $a+b+c=1$ nên $3(a^2+b^2+c^2)\\ge1$\n\n$\\Rightarrow a^2+b^2+c^2\\ge\\dfrac13$.\n\nDấu \"=\" xảy ra khi $\\dfrac a1=\\dfrac b1=\\dfrac c1$, tức $a=b=c$; kết hợp $a+b+c=1$ được $a=b=c=\\dfrac13$.\n\nVậy $a^2+b^2+c^2\\ge\\dfrac13$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki cho hai bộ ba số (1;1;1) và (a;b;c)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 144): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02752",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh a²+b²+c²≥1/3 bằng Bu-nhi-a-cốp-xki cho (1;1;1) và (a;b;c) với a+b+c=1."
+ },
+ {
+  "ma_nguon": "C4V2.3@p144",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x$ và $y$ là các số thực thỏa mãn: $\\begin{cases}x^2+y^2+2xy+x+y\\le2\\\\x^2+2y^2+2xy+x-2y\\le10\\end{cases}$. Chứng minh rằng $\\dfrac{-1-\\sqrt{41}}{2}\\le x+2y$.",
+  "noi_dung_sach": "Cho $x$ và $y$ là các số thực thỏa mãn: $\\begin{cases}x^2+y^2+2xy+x+y\\le2\\\\x^2+2y^2+2xy+x-2y\\le10\\end{cases}$. Chứng minh rằng $\\dfrac{-1-\\sqrt{41}}{2}\\le x+2y$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vế trái hai điều kiện đều chứa $(x+y)^2+(x+y)$ nên hoàn thành bình phương được thành \"$a^2\\le\\dfrac94$ và $a^2+b^2\\le\\dfrac{25}{2}$\" với ẩn phụ $a,b$, còn $x+2y=a+b+1$; muốn chặn dưới $a+b$ ta dùng $2ab\\le ka^2+\\dfrac{b^2}{k}$ với $k$ chọn sao cho dấu \"=\" rơi đúng góc vùng, nơi cả hai điều kiện cùng chạm biên.\n\n**Bước 1.** Hoàn thành bình phương từng vế trái: $x^2+y^2+2xy+x+y=\\left(x+y+\\dfrac12\\right)^2-\\dfrac14$ và $x^2+2y^2+2xy+x-2y=\\left(x+y+\\dfrac12\\right)^2+\\left(y-\\dfrac32\\right)^2-\\dfrac52$, rồi đặt $a=x+y+\\dfrac12$, $b=y-\\dfrac32$ để hai điều kiện thành $a^2\\le\\dfrac94$ và $a^2+b^2\\le\\dfrac{25}{2}$.\n\n**Bước 2.** Biểu thị $x+2y=(x+y)+y$ theo $a,b$ để thấy bài toán là chặn dưới $a+b$, tức chặn dưới tổng bên trong một hình tròn bị cắt bởi dải $|a|\\le\\dfrac32$.\n\n**Bước 3.** Dự đoán điểm đạt cực biên ở góc vùng, nơi $a^2=\\dfrac94$ và $a^2+b^2=\\dfrac{25}{2}$ cùng xảy ra (với $a<0,b<0$), từ đó $b=ka$ với $k=\\dfrac{\\sqrt{41}}{3}$, đây là hệ số cần cho bất đẳng thức $2ab\\le ka^2+\\dfrac{b^2}{k}$ có dấu \"=\" đúng tại điểm đó.\n\n**Bước 4.** Chặn $(a+b)^2$ bằng $\\left(1+\\dfrac1k\\right)(a^2+b^2)+\\left(k-\\dfrac1k\\right)a^2$, rồi dùng hai điều kiện (cả hai hệ số đều dương) để đưa về một số cụ thể và nhận ra đó là một bình phương.\n\n**Bước 5.** Từ $(a+b)^2$ bị chặn trên suy ra cận dưới của $a+b$, đổi lại $x+2y=a+b+1$ và chỉ ra điểm $(x;y)$ làm dấu \"=\" xảy ra.\n\n**Chú ý:** Nếu chọn $k$ tùy ý (chẳng hạn $k=1$) thì cận thu được vẫn đúng nhưng yếu hơn, không ra đúng giá trị đề yêu cầu; hệ số $k$ phải khớp với điểm dấu \"=\".\n\n**Phần 2. Trình bày**\n\nĐặt $a=x+y+\\dfrac12$ và $b=y-\\dfrac32$.\n\nĐiều kiện thứ nhất: $(x+y)^2+(x+y)\\le2\\Leftrightarrow\\left(x+y+\\dfrac12\\right)^2\\le\\dfrac94$, tức $a^2\\le\\dfrac94$ (1)\n\nĐiều kiện thứ hai: $x^2+2y^2+2xy+x-2y=(x+y)^2+(x+y)+y^2-3y=\\left(a^2-\\dfrac14\\right)+\\left(b^2-\\dfrac94\\right)=a^2+b^2-\\dfrac52$\n\nnên $a^2+b^2-\\dfrac52\\le10$, tức $a^2+b^2\\le\\dfrac{25}{2}$ (2)\n\nLại có $x+2y=(x+y)+y=\\left(a-\\dfrac12\\right)+\\left(b+\\dfrac32\\right)=a+b+1$.\n\nĐặt $k=\\dfrac{\\sqrt{41}}{3}>0$.\n\nVì $(ka-b)^2\\ge0$ nên $2kab\\le k^2a^2+b^2$, chia cho $k>0$: $2ab\\le ka^2+\\dfrac{b^2}{k}$ (dấu \"=\" khi $b=ka$).\n\nDo đó $(a+b)^2=a^2+b^2+2ab\\le a^2+b^2+ka^2+\\dfrac{b^2}{k}=\\left(1+\\dfrac1k\\right)(a^2+b^2)+\\left(k-\\dfrac1k\\right)a^2$\n\nỞ đây $1+\\dfrac1k=1+\\dfrac{3}{\\sqrt{41}}>0$ và $k-\\dfrac1k=\\dfrac{32}{3\\sqrt{41}}>0$, nên theo (1) và (2):\n\n$(a+b)^2\\le\\left(1+\\dfrac{3}{\\sqrt{41}}\\right)\\cdot\\dfrac{25}{2}+\\dfrac{32}{3\\sqrt{41}}\\cdot\\dfrac94=\\dfrac{25}{2}+\\dfrac{123}{2\\sqrt{41}}$\n\nVì $123=3\\cdot41$ nên $\\dfrac{123}{2\\sqrt{41}}=\\dfrac{3\\sqrt{41}}{2}$, suy ra $(a+b)^2\\le\\dfrac{25+3\\sqrt{41}}{2}=\\left(\\dfrac{3+\\sqrt{41}}{2}\\right)^2$.\n\nDo đó $a+b\\ge-\\dfrac{3+\\sqrt{41}}{2}$, suy ra $x+2y=a+b+1\\ge\\dfrac{-1-\\sqrt{41}}{2}$.\n\nDấu \"=\" xảy ra khi $b=ka$ cùng với $a=-\\dfrac32$ và $a^2+b^2=\\dfrac{25}{2}$, tức $a=-\\dfrac32$, $b=-\\dfrac{\\sqrt{41}}{2}$, ứng với $x=\\dfrac{\\sqrt{41}-7}{2}$, $y=\\dfrac{3-\\sqrt{41}}{2}$ (thỏa cả hai điều kiện ở biên).\n\nVậy $\\dfrac{-1-\\sqrt{41}}{2}\\le x+2y$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ hoàn thành bình phương",
+   "bất đẳng thức 2ab ≤ ka²+b²/k (k>0, từ (ka−b)²≥0, Cô-si hai số)",
+   "làm trội hệ số theo điểm biên"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 144): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03295",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chứng minh từ hệ điều kiện, đặt ẩn phụ hoàn thành bình phương rồi chặn; có thể không khớp hẳn."
+ },
+ {
+  "ma_nguon": "C4V2.4@p145",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí Toán học & Tuổi trẻ số 434) Cho các số thực $a,b,x,y$ thỏa mãn $\\begin{cases}0<b\\le a\\le4\\\\a+b\\le7\\\\2\\le x\\le3\\le y\\end{cases}$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{2x+y+\\dfrac1x+\\dfrac2y}{a^2+b^2}$.",
+  "noi_dung_sach": "(Tạp chí Toán học & Tuổi trẻ số 434) Cho các số thực $a,b,x,y$ thỏa mãn $\\begin{cases}0<b\\le a\\le4\\\\a+b\\le7\\\\2\\le x\\le3\\le y\\end{cases}$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{2x+y+\\dfrac1x+\\dfrac2y}{a^2+b^2}$.",
+  "dap_an": "$GTNN=\\dfrac{49}{150}$ khi $a=4$, $b=3$, $x=2$, $y=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử của $P$ chỉ chứa $x,y$ còn mẫu chỉ chứa $a,b$ nên phải chặn riêng: tử từ dưới, mẫu từ trên; hai miền đều bị chặn ở biên ($x\\ge2$, $y\\ge3$, $a\\le4$, $a+b\\le7$) nên dấu \"=\" dự đoán rơi ngay tại góc biên $a=4,b=3,x=2,y=3$, không phải tại điểm \"cân bằng\" của Cô-si.\n\n**Bước 1.** Chặn trên mẫu bằng cách dùng hai tích cùng dấu mà mỗi thừa số là khoảng cách tới một cạnh của miền: $(b-a)(4-a)\\le0$ và $(7-a-b)b\\ge0$, khai triển và cộng lại để hai hạng tử $ab$ triệt tiêu, được $a^2+b^2\\le4a+3b$.\n\n**Bước 2.** Đưa vế phải $4a+3b$ về $a^2+b^2$ bằng Bu-nhi-a-cốp-xki cho hai bộ $(4;3)$ và $(a;b)$ (hệ số 4 và 3 lấy từ góc $a=4,b=3$), rồi chia hai vế cho $a^2+b^2>0$ để có cận trên của mẫu.\n\n**Bước 3.** Chặn dưới $2x+\\dfrac1x$ bằng một tích có thừa số $x-2\\ge0$ (vì $x\\ge2$ thì $2x$ thắng $\\dfrac1x$, hàm nhỏ nhất ở biên $x=2$), làm tương tự cho $y+\\dfrac2y$ với thừa số $y-3\\ge0$ rồi cộng hai kết quả.\n\n**Bước 4.** Chia cận dưới của tử cho cận trên của mẫu (cả hai dương) để có cận dưới của $P$, rồi kiểm tra tồn tại bộ giá trị thỏa mọi điều kiện của đề mà làm mọi dấu \"=\" xảy ra cùng lúc.\n\n**Chú ý:** Không dùng Cô-si cho $2x+\\dfrac1x$ hay $y+\\dfrac2y$ vì dấu \"=\" của Cô-si ở $x=\\dfrac{1}{\\sqrt2}<2$ và $y=\\sqrt2<3$, nằm ngoài miền của đề; muốn khẳng định là giá trị nhỏ nhất phải chỉ ra đủ hai điều: bất đẳng thức đúng với mọi giá trị và có giá trị cụ thể đạt dấu \"=\".\n\n**Phần 2. Trình bày**\n\nVì $0<b\\le a\\le4$ nên $b-a\\le0$, $4-a\\ge0$ và $(b-a)(4-a)\\le0$, khai triển: $a^2\\le4a+ab-4b$ (1)\n\nVì $a+b\\le7$, $b>0$ nên $(7-a-b)b\\ge0$, khai triển: $b^2\\le7b-ab$ (2)\n\nCộng (1) và (2): $a^2+b^2\\le4a+3b$\n\nHai vế đều dương nên $(a^2+b^2)^2\\le(4a+3b)^2$\n\nTheo bất đẳng thức Bu-nhi-a-cốp-xki cho $(4;3)$ và $(a;b)$: $(4a+3b)^2\\le(4^2+3^2)(a^2+b^2)=25(a^2+b^2)$\n\nSuy ra $(a^2+b^2)^2\\le25(a^2+b^2)$, mà $a^2+b^2>0$ nên $a^2+b^2\\le25$ (3)\n\nVì $x\\ge2$ nên $x-2\\ge0$; lại có $2-\\dfrac{1}{2x}\\ge2-\\dfrac14>0$.\n\nDo đó $(x-2)\\left(2-\\dfrac{1}{2x}\\right)=2x+\\dfrac1x-\\dfrac92\\ge0$, tức $2x+\\dfrac1x\\ge\\dfrac92$ (4)\n\nVì $y\\ge3$ nên $y-3\\ge0$; lại có $1-\\dfrac{2}{3y}\\ge1-\\dfrac29>0$.\n\nDo đó $(y-3)\\left(1-\\dfrac{2}{3y}\\right)=y+\\dfrac2y-\\dfrac{11}{3}\\ge0$, tức $y+\\dfrac2y\\ge\\dfrac{11}{3}$ (5)\n\nCộng (4) và (5): $2x+y+\\dfrac1x+\\dfrac2y\\ge\\dfrac92+\\dfrac{11}{3}=\\dfrac{49}{6}>0$ (6)\n\nTừ (3) và (6), vì $0<a^2+b^2\\le25$: $P\\ge\\dfrac{\\dfrac{49}{6}}{25}=\\dfrac{49}{150}$\n\nDấu \"=\" xảy ra khi $a=4$, $b=3$, $x=2$, $y=3$ (thỏa $0<b\\le a\\le4$, $a+b=7\\le7$, $2\\le x\\le3\\le y$; khi đó $a^2+b^2=25$ và tử bằng $4+3+\\dfrac12+\\dfrac23=\\dfrac{49}{6}$).\n\nVậy $GTNN=\\dfrac{49}{150}$, đạt khi $a=4$, $b=3$, $x=2$, $y=3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tích hai thừa số cùng dấu (b−a)(4−a)≤0",
+   "Bu-nhi-a-cốp-xki cho (4;3) và (a;b)",
+   "chặn từng biến tại biên miền",
+   "đánh giá hàm t+m/t trên đoạn (không dùng Cô-si vì dấu \"=\" ngoài miền)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 145): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4V2.5@p146",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí Toán học & Tuổi trẻ số 476) Chứng minh rằng: $\\dfrac{3-\\sqrt{10}}{2}\\le F=x+2y\\le\\dfrac{3+\\sqrt{10}}{2}$ trong đó $x,y$ là hai số thực thỏa mãn: $x^2+y^2=x+y$.",
+  "noi_dung_sach": "(Tạp chí Toán học & Tuổi trẻ số 476) Chứng minh rằng: $\\dfrac{3-\\sqrt{10}}{2}\\le F=x+2y\\le\\dfrac{3+\\sqrt{10}}{2}$ trong đó $x,y$ là hai số thực thỏa mãn: $x^2+y^2=x+y$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $x^2+y^2=x+y$ là một đường tròn (hoàn thành bình phương) và $x+2y$ là tổng $1\\cdot a+2\\cdot b$ cộng một hằng số, nên một bất đẳng thức Bu-nhi-a-cốp-xki cho $(1;2)$ và $(a;b)$ chặn được $F$ cả hai phía.\n\n**Bước 1.** Chuyển điều kiện về $\\left(x-\\dfrac12\\right)^2+\\left(y-\\dfrac12\\right)^2=\\dfrac12$ bằng cách đưa $x,y$ sang vế trái rồi cộng $\\dfrac14+\\dfrac14$, và đặt $a=x-\\dfrac12$, $b=y-\\dfrac12$.\n\n**Bước 2.** Biểu thị $F=x+2y$ theo $a,b$ để thấy phần biến đổi chỉ là $a+2b$, còn lại là hằng số $\\dfrac32$.\n\n**Bước 3.** Áp dụng Bu-nhi-a-cốp-xki cho hai bộ $(1;2)$ và $(a;b)$ để chặn bình phương $(a+2b)^2$ bởi $5(a^2+b^2)$, thay $a^2+b^2=\\dfrac12$.\n\n**Bước 4.** Bỏ bình phương thành hai bất đẳng thức một chiều cho $a+2b$, cộng $\\dfrac32$ rồi đối chiếu với hai cận của đề.\n\n**Chú ý:** Đề cho bất đẳng thức hai phía; nên hai phía đều xuất phát từ cùng một bất đẳng thức $|a+2b|\\le\\sqrt{\\dfrac52}$, và mỗi phía có dấu \"=\" riêng (khi $b=2a$).\n\n**Phần 2. Trình bày**\n\n$x^2+y^2=x+y\\Leftrightarrow\\left(x-\\dfrac12\\right)^2+\\left(y-\\dfrac12\\right)^2=\\dfrac12$.\n\nĐặt $a=x-\\dfrac12$, $b=y-\\dfrac12$, thì $a^2+b^2=\\dfrac12$ và $F=x+2y=a+2b+\\dfrac32$.\n\nÁp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho $(1;2)$ và $(a;b)$:\n\n$(a+2b)^2=(1\\cdot a+2\\cdot b)^2\\le(1^2+2^2)(a^2+b^2)=5\\cdot\\dfrac12=\\dfrac52$\n\n$\\Rightarrow\\lvert a+2b\\rvert\\le\\sqrt{\\dfrac52}=\\dfrac{\\sqrt{10}}{2}$\n\n$\\Rightarrow-\\dfrac{\\sqrt{10}}{2}\\le a+2b\\le\\dfrac{\\sqrt{10}}{2}$\n\n$\\Rightarrow\\dfrac{3-\\sqrt{10}}{2}\\le a+2b+\\dfrac32\\le\\dfrac{3+\\sqrt{10}}{2}$.\n\nDấu \"=\" xảy ra khi $\\dfrac a1=\\dfrac b2$, tức $b=2a$; kết hợp $a^2+b^2=\\dfrac12$ được $a^2=\\dfrac1{10}$, hai giá trị $a=\\pm\\dfrac{1}{\\sqrt{10}}$ ứng với hai đầu của bất đẳng thức.\n\nVậy $\\dfrac{3-\\sqrt{10}}{2}\\le F\\le\\dfrac{3+\\sqrt{10}}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ hoàn thành bình phương",
+   "Bu-nhi-a-cốp-xki cho (1;2) và (a;b)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 146): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4B2.1@p146",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Toán học tuổi thơ số 137 + 138) Cho $a,b,c$ là các số thực dương thỏa mãn $\\dfrac{1}{2a+1}+\\dfrac{1}{2b+1}+\\dfrac{1}{2c+1}\\ge1$. Chứng minh rằng: $\\dfrac{1}{6a+1}+\\dfrac{1}{6b+1}+\\dfrac{1}{6c+1}\\ge\\dfrac37$.",
+  "noi_dung_sach": "(Toán học tuổi thơ số 137 + 138) Cho $a,b,c$ là các số thực dương thỏa mãn $\\dfrac{1}{2a+1}+\\dfrac{1}{2b+1}+\\dfrac{1}{2c+1}\\ge1$. Chứng minh rằng: $\\dfrac{1}{6a+1}+\\dfrac{1}{6b+1}+\\dfrac{1}{6c+1}\\ge\\dfrac37$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giả thiết và kết luận đều gồm các phân số dạng $\\dfrac{1}{2t+1}$ và $\\dfrac{1}{6t+1}$ nên đặt $x=\\dfrac1{2a+1}$ để $\\dfrac1{6a+1}$ thành $\\dfrac{x}{3-2x}=\\dfrac{x^2}{3x-2x^2}$, có tử là bình phương, đúng dạng gộp ba phân số của Bu-nhi-a-cốp-xki; dấu \"=\" xảy ra khi $x=y=z$ và $x+y+z=1$.\n\n**Bước 1.** Đặt $x,y,z$ theo từng biến, rút $a=\\dfrac{1-x}{2x}$ để tính $6a+1=\\dfrac{3-2x}{x}$, và ghi nhận $0<x,y,z<1$, $x+y+z\\ge1$ để đổi cả đề sang bài toán ba biến $x,y,z$.\n\n**Bước 2.** Viết $\\dfrac{x}{3-2x}=\\dfrac{x^2}{3x-2x^2}$ rồi gộp ba phân số bằng Bu-nhi-a-cốp-xki dạng phân thức (các mẫu $3x-2x^2$ đều dương vì $0<x<1$).\n\n**Bước 3.** Chặn mẫu chung từ trên bằng $x^2+y^2+z^2\\ge\\dfrac{(x+y+z)^2}{3}$ để bất đẳng thức chỉ còn phụ thuộc $s=x+y+z$.\n\n**Bước 4.** Dùng $1\\le s<3$ để chặn $\\dfrac9s-2$ từ trên bằng $7$ và suy ra cận dưới $\\dfrac37$, rồi đối chiếu dấu \"=\" với giả thiết.\n\n**Chú ý:** Phải chỉ ra mẫu $3x-2x^2$ và $\\dfrac{9}{s}-2$ đều dương thì mới được thay mẫu bằng số lớn hơn (làm phân số nhỏ đi); điều kiện $s<3$ lấy từ $x,y,z<1$.\n\n**Phần 2. Trình bày**\n\nĐặt $x=\\dfrac{1}{2a+1}$, $y=\\dfrac{1}{2b+1}$, $z=\\dfrac{1}{2c+1}$.\n\nVì $a,b,c>0$ nên $0<x,y,z<1$; theo giả thiết $s=x+y+z\\ge1$; và $s<3$.\n\nTừ $x=\\dfrac{1}{2a+1}$ suy ra $a=\\dfrac{1-x}{2x}$, do đó $6a+1=\\dfrac{3(1-x)}{x}+1=\\dfrac{3-2x}{x}$, tức $\\dfrac1{6a+1}=\\dfrac{x}{3-2x}$.\n\nTương tự cho $b,c$.\n\nCần chứng minh $A=\\dfrac{x}{3-2x}+\\dfrac{y}{3-2y}+\\dfrac{z}{3-2z}\\ge\\dfrac37$.\n\nVì $0<x<1$ nên $3x-2x^2=x(3-2x)>0$ (tương tự cho $y,z$).\n\nTheo bất đẳng thức Bu-nhi-a-cốp-xki: $\\left(\\dfrac{x^2}{p}+\\dfrac{y^2}{q}+\\dfrac{z^2}{r}\\right)(p+q+r)\\ge(x+y+z)^2$ với $p=3x-2x^2$, $q=3y-2y^2$, $r=3z-2z^2$ (dấu \"=\" khi $\\dfrac{x}{p}=\\dfrac{y}{q}=\\dfrac{z}{r}$, tức $x=y=z$).\n\nTa có\n\n$A=\\dfrac{x^2}{3x-2x^2}+\\dfrac{y^2}{3y-2y^2}+\\dfrac{z^2}{3z-2z^2}\\ge\\dfrac{(x+y+z)^2}{3(x+y+z)-2(x^2+y^2+z^2)}$\n\nTheo Bu-nhi-a-cốp-xki cho $(1;1;1)$ và $(x;y;z)$: $x^2+y^2+z^2\\ge\\dfrac{s^2}{3}$, nên $0<3s-2(x^2+y^2+z^2)\\le3s-\\dfrac23s^2$.\n\nDo đó\n\n$A\\ge\\dfrac{s^2}{3s-\\dfrac23s^2}=\\dfrac{3s}{9-2s}=\\dfrac{3}{\\dfrac9s-2}$\n\nVì $1\\le s<3$ nên $\\dfrac9s>3$ và $\\dfrac9s\\le9$, suy ra $0<\\dfrac9s-2\\le7$, do đó $A\\ge\\dfrac{3}{7}$.\n\nDấu \"=\" xảy ra khi $x=y=z$ và $s=1$, tức $x=y=z=\\dfrac13$, ứng với $a=b=c=1$ (thỏa giả thiết).\n\nVậy $\\dfrac{1}{6a+1}+\\dfrac{1}{6b+1}+\\dfrac{1}{6c+1}\\ge\\dfrac37$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ x=1/(2a+1)",
+   "Bu-nhi-a-cốp-xki dạng phân thức (x²/p+y²/q+z²/r)(p+q+r)≥(x+y+z)²",
+   "x²+y²+z²≥(x+y+z)²/3"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 146): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4B2.2@p147",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên Vĩnh Phúc 2011 – 2012) Cho $a,b,c,d$ là các số thực thỏa mãn điều kiện: $abc+bcd+cda+dab=a+b+c+d+\\sqrt{2017}$. Chứng minh rằng: $(a^2+1)(b^2+1)(c^2+1)(d^2+1)\\ge2017$.",
+  "noi_dung_sach": "(Chuyên Vĩnh Phúc 2011 – 2012) Cho $a,b,c,d$ là các số thực thỏa mãn điều kiện: $abc+bcd+cda+dab=a+b+c+d+\\sqrt{2017}$. Chứng minh rằng: $(a^2+1)(b^2+1)(c^2+1)(d^2+1)\\ge2017$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Giả thiết cho $E=abc+bcd+cda+dab-a-b-c-d=\\sqrt{2017}$, nên $E^2=2017$, còn vế cần chặn là tích bốn thừa số $a^2+1$ mà $(a^2+1)(b^2+1)=(ab-1)^2+(a+b)^2$ là một tổng hai bình phương; vậy nhóm $E$ thành dạng \"tích vô hướng\" của hai bộ hai số rồi dùng Bu-nhi-a-cốp-xki.\n\n**Bước 1.** Chuyển vế để có $E=abc+bcd+cda+dab-a-b-c-d$ rồi bình phương, từ giả thiết được $E=\\sqrt{2017}$ và $E^2=2017$.\n\n**Bước 2.** Nhóm $E$ theo cặp $(a,b)$ và $(c,d)$: $E=ab(c+d)+cd(a+b)-(a+b)-(c+d)=(ab-1)(c+d)+(cd-1)(a+b)$, để $E$ thành tổng hai tích.\n\n**Bước 3.** Ghép hai bộ số $(ab-1;a+b)$ và $(c+d;cd-1)$ sao cho tích vô hướng của chúng đúng bằng $E$, rồi áp dụng Bu-nhi-a-cốp-xki.\n\n**Bước 4.** Khai triển $(ab-1)^2+(a+b)^2$ và $(cd-1)^2+(c+d)^2$ để nhận ra mỗi tổng là một tích hai thừa số dạng bình phương cộng một.\n\n**Chú ý:** Cách ghép cặp quyết định thành bại: nếu ghép $(ab-1;c+d)$ với $(cd-1;a+b)$ thì tổng bình phương không phân tích được thành tích. Bất đẳng thức đúng với mọi số thực, không cần dương.\n\n**Phần 2. Trình bày**\n\nTừ giả thiết: $abc+bcd+cda+dab-a-b-c-d=\\sqrt{2017}$, nên $2017=(abc+bcd+cda+dab-a-b-c-d)^2$.\n\nMà $abc+bcd+cda+dab-a-b-c-d=ab(c+d)+cd(a+b)-(a+b)-(c+d)=(ab-1)(c+d)+(a+b)(cd-1)$\n\nDo đó $2017=\\left[(ab-1)(c+d)+(a+b)(cd-1)\\right]^2$\n\nÁp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ số $(ab-1;a+b)$ và $(c+d;cd-1)$:\n\n$2017\\le\\left[(ab-1)^2+(a+b)^2\\right]\\left[(c+d)^2+(cd-1)^2\\right]$ (dấu \"=\" khi hai bộ số tỉ lệ)\n\nTa có $(ab-1)^2+(a+b)^2=a^2b^2-2ab+1+a^2+2ab+b^2=a^2b^2+a^2+b^2+1=(a^2+1)(b^2+1)$\n\nvà tương tự $(cd-1)^2+(c+d)^2=(c^2+1)(d^2+1)$\n\nSuy ra $2017\\le(a^2+1)(b^2+1)(c^2+1)(d^2+1)$.\n\nVậy $(a^2+1)(b^2+1)(c^2+1)(d^2+1)\\ge2017$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm hạng tử thành tổng hai tích",
+   "Bu-nhi-a-cốp-xki cho hai bộ hai số (ab−1;a+b) và (c+d;cd−1)",
+   "(ab−1)²+(a+b)²=(a²+1)(b²+1)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 147): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02752",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh bằng Bu-nhi-a-cốp-xki cho hai bộ hai số (ab−1;a+b) và (c+d;cd−1)."
+ },
+ {
+  "ma_nguon": "C4B2.3@p147",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số dương $a,b,c$ thỏa mãn $a^3+b^3+c^3=2$. Chứng minh rằng: $\\dfrac{a^4}{b+c}+\\dfrac{b^4}{c+a}+\\dfrac{c^4}{a+b}\\ge1$.",
+  "noi_dung_sach": "Cho các số dương $a,b,c$ thỏa mãn $a^3+b^3+c^3=2$. Chứng minh rằng: $\\dfrac{a^4}{b+c}+\\dfrac{b^4}{c+a}+\\dfrac{c^4}{a+b}\\ge1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân số có tử $a^4=(a^2)^2$ là bình phương, nên ghép nó với $a^2(b+c)$ để tích từng cặp căn là $a^3$; Bu-nhi-a-cốp-xki khi đó cho ra đúng $(a^3+b^3+c^3)^2$, tức xuất hiện giả thiết $a^3+b^3+c^3=2$.\n\n**Bước 1.** Chọn hai bộ ba số $\\left(\\dfrac{a^2}{\\sqrt{b+c}};\\dfrac{b^2}{\\sqrt{c+a}};\\dfrac{c^2}{\\sqrt{a+b}}\\right)$ và $\\left(a\\sqrt{b+c};b\\sqrt{c+a};c\\sqrt{a+b}\\right)$, sao cho tích hai số tương ứng bằng $a^3,b^3,c^3$ và mẫu $b+c$ bị triệt tiêu.\n\n**Bước 2.** Áp dụng Bu-nhi-a-cốp-xki để chặn dưới $P$ bởi $\\dfrac{(a^3+b^3+c^3)^2}{a^2(b+c)+b^2(c+a)+c^2(a+b)}$ rồi thay giả thiết $a^3+b^3+c^3=2$ vào một nhân tử của tử số.\n\n**Bước 3.** Quy việc chứng minh $P\\ge1$ về bất đẳng thức $2(a^3+b^3+c^3)\\ge a^2(b+c)+b^2(c+a)+c^2(a+b)$ (cùng bậc 3, không còn mẫu).\n\n**Bước 4.** Chứng minh bất đẳng thức đó bằng cách ghép từng cặp $a^3+b^3-a^2b-ab^2=(a+b)(a-b)^2\\ge0$ rồi cộng vòng quanh, và tìm dấu \"=\" khi ba số bằng nhau.\n\n**Chú ý:** Đừng ghép $a^4$ với $b+c$ trực tiếp bằng $(1+1+1)$; phải chọn bộ thứ hai là $a\\sqrt{b+c}$ để tích ra $a^3$ khớp với giả thiết bậc ba.\n\n**Phần 2. Trình bày**\n\nĐặt $P=\\dfrac{a^4}{b+c}+\\dfrac{b^4}{c+a}+\\dfrac{c^4}{a+b}$ và $Q=a^2(b+c)+b^2(c+a)+c^2(a+b)>0$.\n\nÁp dụng bất đẳng thức Bu-nhi-a-cốp-xki cho hai bộ ba số $\\left(\\dfrac{a^2}{\\sqrt{b+c}};\\dfrac{b^2}{\\sqrt{c+a}};\\dfrac{c^2}{\\sqrt{a+b}}\\right)$ và $\\left(a\\sqrt{b+c};b\\sqrt{c+a};c\\sqrt{a+b}\\right)$:\n\n$P\\cdot Q\\ge(a^3+b^3+c^3)^2=2(a^3+b^3+c^3)$ (dấu \"=\" khi $\\dfrac{a}{b+c}=\\dfrac{b}{c+a}=\\dfrac{c}{a+b}$)\n\nSuy ra $P\\ge\\dfrac{2(a^3+b^3+c^3)}{Q}$.\n\nMà $2(a^3+b^3+c^3)-Q=(a^3+b^3-a^2b-ab^2)+(b^3+c^3-b^2c-bc^2)+(c^3+a^3-c^2a-ca^2)$\n\n$=(a+b)(a-b)^2+(b+c)(b-c)^2+(c+a)(c-a)^2\\ge0$\n\nnên $2(a^3+b^3+c^3)\\ge Q$, do đó $P\\ge1$.\n\nDấu \"=\" xảy ra khi $a=b=c$ (khi đó $\\dfrac{a}{b+c}$ bằng nhau và cả ba hiệu trên bằng $0$), với $3a^3=2$.\n\nVậy $\\dfrac{a^4}{b+c}+\\dfrac{b^4}{c+a}+\\dfrac{c^4}{a+b}\\ge1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki cho (a²/√(b+c);…) và (a√(b+c);…)",
+   "xét hiệu a³+b³−a²b−ab²=(a+b)(a−b)²"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 147): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02752",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Chứng minh tổng phân thức bằng Bu-nhi-a-cốp-xki dạng bình phương tử, thay giả thiết a³+b³+c³=2."
+ },
+ {
+  "ma_nguon": "C4B2.4@p148",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Toán học & Tuổi trẻ số 396) Cho $a,b,c$ là các số thực khác $0$. Chứng minh rằng $T=\\dfrac{a^2}{a^2+(b+c)^2}+\\dfrac{b^2}{b^2+(a+c)^2}+\\dfrac{c^2}{c^2+(b+a)^2}\\ge\\dfrac35$.",
+  "noi_dung_sach": "(Toán học & Tuổi trẻ số 396) Cho $a,b,c$ là các số thực khác $0$. Chứng minh rằng $T=\\dfrac{a^2}{a^2+(b+c)^2}+\\dfrac{b^2}{b^2+(a+c)^2}+\\dfrac{c^2}{c^2+(b+a)^2}\\ge\\dfrac35$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $a^2+(b+c)^2$ chứa bình phương của một tổng, làm trội bằng Bu-nhi-a-cốp-xki $(b+c)^2\\le2(b^2+c^2)$ để mẫu chỉ còn bình phương từng biến; rồi cộng thêm $3=1+1+1$ để mỗi phân số có tử chung $2(a^2+b^2+c^2)$, khi đó tổng nghịch đảo ba mẫu bị chặn bởi hệ quả Cô-si ba số.\n\n**Bước 1.** Chặn $(b+c)^2\\le2(b^2+c^2)$ (và hai bất đẳng thức hoán vị) bằng Bu-nhi-a-cốp-xki cho $(1;1)$ và $(b;c)$, thay vào mẫu để làm giảm từng phân số, được $T$ lớn hơn hoặc bằng tổng ba phân số có mẫu chỉ chứa $a^2,b^2,c^2$.\n\n**Bước 2.** Cộng $3=1+1+1$ vào hai vế, mỗi số 1 gộp với một phân số, và nhận ra rằng tử mỗi phân số mới đều là $2(a^2+b^2+c^2)$ vì mẫu bằng $a^2+2(b^2+c^2)$ cộng với $a^2$.\n\n**Bước 3.** Đặt ba mẫu là $m,n,p$ (dương), tính $m+n+p=5(a^2+b^2+c^2)$ rồi dùng hệ quả Cô-si ba số $(m+n+p)\\left(\\dfrac1m+\\dfrac1n+\\dfrac1p\\right)\\ge9$ để chặn dưới tổng nghịch đảo.\n\n**Bước 4.** Thay vào đánh giá ở bước 2 để $T+3$ được chặn dưới bởi một hằng số, trừ $3$ ra $T$, rồi kiểm tra dấu \"=\" khi $a=b=c$.\n\n**Chú ý:** Điều kiện $a,b,c\\ne0$ đảm bảo mọi mẫu dương; mỗi lần làm trội mẫu, phân số tăng lên nên chiều bất đẳng thức giữ nguyên là $T\\ge\\cdots$.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c\\ne0$ nên các mẫu dưới đây đều dương.\n\nTheo bất đẳng thức Bu-nhi-a-cốp-xki cho $(1;1)$ và $(b;c)$: $(b+c)^2\\le2(b^2+c^2)$ (dấu \"=\" khi $b=c$); tương tự $(c+a)^2\\le2(c^2+a^2)$, $(a+b)^2\\le2(a^2+b^2)$.\n\nMẫu lớn lên làm phân số nhỏ đi, nên\n\n$T\\ge\\dfrac{a^2}{a^2+2(b^2+c^2)}+\\dfrac{b^2}{b^2+2(c^2+a^2)}+\\dfrac{c^2}{c^2+2(a^2+b^2)}$\n\nĐặt $S=a^2+b^2+c^2$, $m=a^2+2(b^2+c^2)$, $n=b^2+2(c^2+a^2)$, $p=c^2+2(a^2+b^2)$.\n\nKhi đó $m,n,p>0$, $m+n+p=5S$ và $a^2+m=b^2+n=c^2+p=2S$.\n\nCộng $3$ vào hai vế:\n\n$T+3\\ge\\dfrac{a^2+m}{m}+\\dfrac{b^2+n}{n}+\\dfrac{c^2+p}{p}=2S\\left(\\dfrac1m+\\dfrac1n+\\dfrac1p\\right)$\n\nTheo hệ quả của bất đẳng thức Cô-si cho ba số dương $m,n,p$: $(m+n+p)\\left(\\dfrac1m+\\dfrac1n+\\dfrac1p\\right)\\ge9$ (dấu \"=\" khi $m=n=p$), nên $\\dfrac1m+\\dfrac1n+\\dfrac1p\\ge\\dfrac{9}{5S}$.\n\nSuy ra $T+3\\ge2S\\cdot\\dfrac{9}{5S}=\\dfrac{18}{5}$, do đó $T\\ge\\dfrac{18}{5}-3=\\dfrac35$.\n\nDấu \"=\" xảy ra khi $b=c$, $c=a$, $a=b$ và $m=n=p$, tức $a=b=c$.\n\nVậy $\\dfrac{a^2}{a^2+(b+c)^2}+\\dfrac{b^2}{b^2+(a+c)^2}+\\dfrac{c^2}{c^2+(b+a)^2}\\ge\\dfrac35$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki cho (1;1) và (b;c)",
+   "làm trội mẫu",
+   "cộng thêm 3 để đồng nhất tử",
+   "hệ quả Cô-si ba số (m+n+p)(1/m+1/n+1/p)≥9"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 148): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02752",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Chứng minh dùng Bu-nhi-a-cốp-xki làm trội mẫu kèm nhiều bước (cộng 3, Cô-si ba số)."
+ },
+ {
+  "ma_nguon": "C4V4.1@p149",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số dương $a,b,c,d$. Chứng minh rằng: $\\dfrac{a}{b+c+d}+\\dfrac{b}{c+d+a}+\\dfrac{c}{d+a+b}+\\dfrac{d}{a+b+c}>1$.",
+  "noi_dung_sach": "Cho các số dương $a,b,c,d$. Chứng minh rằng: $\\dfrac{a}{b+c+d}+\\dfrac{b}{c+d+a}+\\dfrac{c}{d+a+b}+\\dfrac{d}{a+b+c}>1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mẫu là tổng của ba trong bốn số nên nhỏ hơn $S=a+b+c+d$; thay mẫu bằng $S$ (lớn hơn) làm mỗi phân số nhỏ đi, và bốn tử $a,b,c,d$ cộng lại đúng bằng $S$, nên tổng mới bằng $1$ đúng bằng cận cần chứng minh.\n\n**Bước 1.** Đặt $S=a+b+c+d$ và nhận xét mỗi mẫu như $b+c+d$ kém $S$ đúng một số dương (ở đây là $a$), nên mẫu nào cũng nhỏ hơn $S$.\n\n**Bước 2.** Với tử dương, mẫu lớn hơn thì phân số nhỏ hơn: so sánh từng phân số của đề với phân số cùng tử mà mẫu là $S$ để được bốn bất đẳng thức cùng chiều.\n\n**Bước 3.** Cộng bốn bất đẳng thức; vế phải gồm các phân số cùng mẫu $S$ nên cộng tử thành $a+b+c+d$ và tổng bằng $1$.\n\n**Chú ý:** Bất đẳng thức ngặt vì $a,b,c,d>0$ làm mọi mẫu nhỏ hơn $S$ thật sự; nếu làm ngược lại (thay mẫu bằng số nhỏ hơn) thì chiều bất đẳng thức đổi.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c,d>0$ nên $b+c+d<S$, $c+d+a<S$, $d+a+b<S$, $a+b+c<S$ với $S=a+b+c+d$.\n\nDo đó $\\dfrac{a}{b+c+d}>\\dfrac{a}{S}$, $\\dfrac{b}{c+d+a}>\\dfrac{b}{S}$, $\\dfrac{c}{d+a+b}>\\dfrac{c}{S}$, $\\dfrac{d}{a+b+c}>\\dfrac{d}{S}$.\n\nCộng bốn bất đẳng thức: $\\dfrac{a}{b+c+d}+\\dfrac{b}{c+d+a}+\\dfrac{c}{d+a+b}+\\dfrac{d}{a+b+c}>\\dfrac{a+b+c+d}{S}=1$.\n\nVậy $\\dfrac{a}{b+c+d}+\\dfrac{b}{c+d+a}+\\dfrac{c}{d+a+b}+\\dfrac{d}{a+b+c}>1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm giảm: thay mỗi mẫu bằng mẫu chung lớn hơn a+b+c+d"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 149): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03293",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Làm giảm từng phân số bằng mẫu chung a+b+c+d, chặn tổng lớn hơn 1."
+ },
+ {
+  "ma_nguon": "C4V4.2@p149",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số dương $a,b$. Chứng minh: $\\dfrac{a}{2a+b}+\\dfrac{b}{2b+a}<1$.",
+  "noi_dung_sach": "Cho các số dương $a,b$. Chứng minh: $\\dfrac{a}{2a+b}+\\dfrac{b}{2b+a}<1$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu $2a+b$ và $2b+a$ cùng lớn hơn $a+b$; thay cả hai bằng mẫu chung $a+b$ (nhỏ hơn) làm mỗi phân số lớn lên, và hai tử $a,b$ cộng thành đúng $a+b$ nên tổng mới bằng $1$.\n\n**Bước 1.** So sánh từng mẫu với $a+b$: $2a+b$ hơn $a+b$ đúng $a>0$, còn $2b+a$ hơn $a+b$ đúng $b>0$.\n\n**Bước 2.** Với tử dương, mẫu nhỏ đi thì phân số lớn lên, nên mỗi phân số của đề nhỏ hơn phân số cùng tử mà mẫu là $a+b$.\n\n**Bước 3.** Cộng hai bất đẳng thức, gộp hai phân số cùng mẫu $a+b$ để được tổng bằng $1$.\n\n**Chú ý:** Chiều đánh giá cần là \"nhỏ hơn\", nên phải làm TRỘI từng phân số (thay mẫu bằng số nhỏ hơn), không phải làm giảm như ở bài tổng lớn hơn $1$.\n\n**Phần 2. Trình bày**\n\nVì $a,b>0$ nên $2a+b>a+b>0$ và $2b+a>a+b>0$.\n\nDo đó $\\dfrac{a}{2a+b}<\\dfrac{a}{a+b}$ và $\\dfrac{b}{2b+a}<\\dfrac{b}{a+b}$.\n\nCộng hai bất đẳng thức: $\\dfrac{a}{2a+b}+\\dfrac{b}{2b+a}<\\dfrac{a+b}{a+b}=1$.\n\nVậy $\\dfrac{a}{2a+b}+\\dfrac{b}{2b+a}<1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm trội: thay mỗi mẫu bằng mẫu chung nhỏ hơn a+b"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 149): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03293",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Làm trội từng phân số bằng mẫu chung a+b để chặn tổng nhỏ hơn 1."
+ },
+ {
+  "ma_nguon": "C4V4.3@p150",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c,d>0$. Chứng minh rằng: $1<\\dfrac{a}{a+b+c}+\\dfrac{b}{b+c+d}+\\dfrac{c}{c+d+a}+\\dfrac{d}{d+a+b}<2$.",
+  "noi_dung_sach": "Cho $a,b,c,d>0$. Chứng minh rằng: $1<\\dfrac{a}{a+b+c}+\\dfrac{b}{b+c+d}+\\dfrac{c}{c+d+a}+\\dfrac{d}{d+a+b}<2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân số có mẫu thiếu đúng một biến so với $S=a+b+c+d$ nên bị kẹp giữa phân số cùng tử mà mẫu là $S$ (làm giảm, cho cận $1$) và phân số có tử tăng thêm biến còn thiếu cùng mẫu $S$ (làm trội, cho cận $2$ vì mỗi biến xuất hiện hai lần ở các tử).\n\n**Bước 1.** Làm giảm: mẫu $a+b+c$ nhỏ hơn $S$ nên $\\dfrac{a}{a+b+c}>\\dfrac{a}{S}$; viết tương tự cho ba phân số còn lại rồi cộng để được vế trái $>1$.\n\n**Bước 2.** Làm trội: phân số $\\dfrac{a}{a+b+c}<1$, nên cộng thêm biến còn thiếu $d>0$ vào cả tử và mẫu thì phân số tăng: $\\dfrac{a}{a+b+c}<\\dfrac{a+d}{S}$.\n\n**Bước 3.** Viết bất đẳng thức làm trội cho cả bốn phân số, mỗi phân số thêm đúng biến thiếu trong mẫu của nó, để các mẫu mới đều là $S$.\n\n**Bước 4.** Cộng bốn bất đẳng thức làm trội: tử ở vế phải là $(a+d)+(b+a)+(c+b)+(d+c)=2S$, nên tổng nhỏ hơn $2$.\n\n**Chú ý:** Chỉ được cộng thêm $t>0$ vào cả tử và mẫu để làm tăng phân số khi phân số đó nhỏ hơn $1$; nếu phân số lớn hơn $1$ thì phân số giảm đi.\n\n**Phần 2. Trình bày**\n\nĐặt $S=a+b+c+d$.\n\nVế trái: vì $a,b,c,d>0$ nên $a+b+c<S$, $b+c+d<S$, $c+d+a<S$, $d+a+b<S$.\n\nDo đó $\\dfrac{a}{a+b+c}>\\dfrac{a}{S}$, $\\dfrac{b}{b+c+d}>\\dfrac{b}{S}$, $\\dfrac{c}{c+d+a}>\\dfrac{c}{S}$, $\\dfrac{d}{d+a+b}>\\dfrac{d}{S}$ (2)\n\nCộng bốn bất đẳng thức ở (2): tổng đã cho $>\\dfrac{a+b+c+d}{S}=1$.\n\nVế phải: vì $\\dfrac{a}{a+b+c}<1$ và $d>0$ nên $\\dfrac{a}{a+b+c}<\\dfrac{a+d}{a+b+c+d}$ (thật vậy, hiệu $\\dfrac{a}{a+b+c}-\\dfrac{a+d}{S}=\\dfrac{-d(b+c)}{(a+b+c)S}<0$).\n\nTương tự: $\\dfrac{b}{b+c+d}<\\dfrac{b+a}{S}$, $\\dfrac{c}{c+d+a}<\\dfrac{c+b}{S}$, $\\dfrac{d}{d+a+b}<\\dfrac{d+c}{S}$ (vì mỗi phân số đều nhỏ hơn $1$).\n\nCộng bốn bất đẳng thức: tổng đã cho $<\\dfrac{(a+d)+(b+a)+(c+b)+(d+c)}{S}=\\dfrac{2S}{S}=2$.\n\nVậy $1<\\dfrac{a}{a+b+c}+\\dfrac{b}{b+c+d}+\\dfrac{c}{c+d+a}+\\dfrac{d}{d+a+b}<2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm trội, làm giảm kẹp giữa hai phân số cùng mẫu a+b+c+d",
+   "tính chất: nếu m/n<1 thì m/n<(m+t)/(n+t) (n,t>0)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 150): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03293",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Đúng dạng chặn 1<S<2 bằng thêm/bớt vào mẫu a/(a+b+c) để quy về mẫu a+b+c+d."
+ },
+ {
+  "ma_nguon": "C4V4.4@p150",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho: $\\dfrac ab<\\dfrac cd$ và $b,d>0$. Chứng minh rằng: $\\dfrac ab<\\dfrac{ab+cd}{b^2+d^2}<\\dfrac cd$.",
+  "noi_dung_sach": "Cho: $\\dfrac ab<\\dfrac cd$ và $b,d>0$. Chứng minh rằng: $\\dfrac ab<\\dfrac{ab+cd}{b^2+d^2}<\\dfrac cd$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $\\dfrac{ab+cd}{b^2+d^2}$ có tử và mẫu bằng tổng tử và tổng mẫu của hai phân số $\\dfrac{ab}{b^2}=\\dfrac ab$ và $\\dfrac{cd}{d^2}=\\dfrac cd$, nên là \"phân số trung gian\" của chúng: nó nằm giữa hai phân số ấy theo tính chất $\\dfrac mn<\\dfrac pq\\Rightarrow\\dfrac mn<\\dfrac{m+p}{n+q}<\\dfrac pq$.\n\n**Bước 1.** Nhận ra $\\dfrac ab=\\dfrac{ab}{b^2}$ và $\\dfrac cd=\\dfrac{cd}{d^2}$ (nhân cả tử và mẫu với $b$, $d$ khác $0$), để biểu thức giữa là phân số có tử và mẫu là tổng của tử và mẫu hai phân số này.\n\n**Bước 2.** Phát biểu và chứng minh tính chất phân số trung gian bằng nhân chéo khi $n,q>0$: từ $mq<np$ suy ra hai bất đẳng thức cần có.\n\n**Bước 3.** Áp dụng tính chất với $m=ab$, $n=b^2$, $p=cd$, $q=d^2$; các mẫu $b^2,d^2$ dương nên đúng điều kiện.\n\n**Chú ý:** Tính chất không cần $m,p$ dương, chỉ cần các mẫu dương; đề không cho $a,c>0$ nên không được tự giả định điều đó.\n\n**Phần 2. Trình bày**\n\nTrước hết, với $n,q>0$ và $\\dfrac mn<\\dfrac pq$ thì $mq<np$ và\n\n$m(n+q)=mn+mq<mn+np=n(m+p)$, suy ra $\\dfrac mn<\\dfrac{m+p}{n+q}$;\n\n$p(n+q)=pn+pq>mq+pq=q(m+p)$, suy ra $\\dfrac{m+p}{n+q}<\\dfrac pq$.\n\nVậy $\\dfrac mn<\\dfrac{m+p}{n+q}<\\dfrac pq$ (*).\n\nVì $b,d>0$ nên $\\dfrac ab=\\dfrac{ab}{b^2}$ và $\\dfrac cd=\\dfrac{cd}{d^2}$, và từ $\\dfrac ab<\\dfrac cd$ ta có $\\dfrac{ab}{b^2}<\\dfrac{cd}{d^2}$.\n\nÁp dụng (*) với $m=ab$, $n=b^2>0$, $p=cd$, $q=d^2>0$:\n\n$\\dfrac{ab}{b^2}<\\dfrac{ab+cd}{b^2+d^2}<\\dfrac{cd}{d^2}$\n\ntức là $\\dfrac ab<\\dfrac{ab+cd}{b^2+d^2}<\\dfrac cd$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất phân số trung gian: m/n<p/q (n,q>0) thì m/n<(m+p)/(n+q)<p/q",
+   "quy đồng, nhân chéo"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 150): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03290",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tính chất phân số trung gian chứng minh bằng nhân chéo với mẫu dương; không có dạng riêng."
+ },
+ {
+  "ma_nguon": "C4V4.5@p151",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng: $\\dfrac15+\\dfrac1{13}+\\dots+\\dfrac{1}{2016^2+2017^2}<\\dfrac12$.",
+  "noi_dung_sach": "Chứng minh rằng: $\\dfrac15+\\dfrac1{13}+\\dots+\\dfrac{1}{2016^2+2017^2}<\\dfrac12$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các mẫu $5=1^2+2^2$, $13=2^2+3^2$, ..., $2016^2+2017^2$ cho thấy số hạng tổng quát là $\\dfrac{1}{k^2+(k+1)^2}$; mẫu này lớn hơn $2k(k+1)$ nên số hạng được làm trội thành $\\dfrac12\\left(\\dfrac1k-\\dfrac1{k+1}\\right)$ và tổng khử liên tiếp.\n\n**Bước 1.** Viết các mẫu đầu thành tổng hai bình phương liên tiếp để đoán số hạng tổng quát $\\dfrac{1}{k^2+(k+1)^2}$ và xác định $k$ chạy từ $1$ đến $2016$ (số hạng cuối là $k=2016$).\n\n**Bước 2.** Làm trội mẫu: $k^2+(k+1)^2\\ge2k(k+1)$ theo Cô-si cho hai số $k^2$ và $(k+1)^2$ (không bằng nhau nên bất đẳng thức ngặt), suy ra số hạng nhỏ hơn $\\dfrac{1}{2k(k+1)}$.\n\n**Bước 3.** Tách $\\dfrac{1}{2k(k+1)}=\\dfrac12\\left(\\dfrac1k-\\dfrac1{k+1}\\right)$ để khi cộng theo $k$ thì các hạng tử liên tiếp triệt tiêu, chỉ còn đầu và cuối.\n\n**Bước 4.** Cộng các bất đẳng thức, rút gọn tổng khử liên tiếp và so sánh kết quả với $\\dfrac12$.\n\n**Chú ý:** Phải đúng $k$ chạy tới $2016$ (vì số hạng cuối là $2016^2+2017^2$), nếu nhầm thành $2017$ thì cận cuối khác.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac15=\\dfrac1{1^2+2^2}$, $\\dfrac1{13}=\\dfrac{1}{2^2+3^2}$, ..., nên tổng cần xét là $A=\\sum_{k=1}^{2016}\\dfrac{1}{k^2+(k+1)^2}$.\n\nTheo bất đẳng thức Cô-si cho hai số dương $k^2$ và $(k+1)^2$: $k^2+(k+1)^2\\ge2k(k+1)$, dấu \"=\" khi $k=k+1$, vô lý nên $k^2+(k+1)^2>2k(k+1)$.\n\nSuy ra $\\dfrac{1}{k^2+(k+1)^2}<\\dfrac{1}{2k(k+1)}=\\dfrac12\\left(\\dfrac1k-\\dfrac1{k+1}\\right)$.\n\nCho $k=1{,}2,\\dots,2016$ rồi cộng lại:\n\n$A<\\dfrac12\\left(1-\\dfrac12+\\dfrac12-\\dfrac13+\\dots+\\dfrac1{2016}-\\dfrac1{2017}\\right)=\\dfrac12\\left(1-\\dfrac1{2017}\\right)<\\dfrac12$.\n\nVậy $\\dfrac15+\\dfrac1{13}+\\dots+\\dfrac{1}{2016^2+2017^2}<\\dfrac12$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Cô-si hai số u²+v²≥2uv (dấu \"=\" khi u=v)",
+   "làm trội",
+   "tách hiệu 1/(k(k+1))=1/k−1/(k+1)",
+   "khử liên tiếp"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 151): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02753",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Làm trội 1/(k²+(k+1)²) thành hiệu liên tiếp rồi triệt tiêu tổng."
+ },
+ {
+  "ma_nguon": "C4B4.1@p151",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a;b;c;d$ là các số nguyên dương thỏa mãn: $a+b=c+d=1000$. Tìm giá trị lớn nhất của $\\dfrac ac+\\dfrac bd$.",
+  "noi_dung_sach": "Cho $a;b;c;d$ là các số nguyên dương thỏa mãn: $a+b=c+d=1000$. Tìm giá trị lớn nhất của $\\dfrac ac+\\dfrac bd$.",
+  "dap_an": "$GTLN=999+\\dfrac{1}{999}$ khi $a=d=1$, $b=c=999$ hoặc $a=d=999$, $b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số có tổng tử bằng tổng mẫu ($a+b=c+d=1000$) nên phân số nhỏ hơn bị chặn bởi phân số trung gian $\\dfrac{a+b}{c+d}=1$; vì thế tổng lớn nhất khi phân số còn lại lớn nhất, tức tử $b$ lớn và mẫu $d$ nhỏ.\n\n**Bước 1.** Nhận ra biểu thức và hai điều kiện đều không đổi khi hoán đổi cặp $(a,c)$ với $(b,d)$, nên được phép giả sử $\\dfrac ac\\le\\dfrac bd$.\n\n**Bước 2.** Dùng tính chất phân số trung gian để chặn $\\dfrac ac\\le\\dfrac{a+b}{c+d}=1$, rồi chặn phân số kia bằng $\\dfrac bd\\le b$ vì $d\\ge1$ và $b\\le999$ vì $a\\ge1$.\n\n**Bước 3.** Chia hai trường hợp theo $b$: trường hợp $b\\le998$ cho một cận chung, còn $b=999$ (kéo theo $a=1$) phải tính riêng vì cận của trường hợp đầu không còn đúng.\n\n**Bước 4.** Trong trường hợp $b=999$, so sánh hai khả năng $d=1$ và $d\\ge2$ để tìm giá trị lớn nhất, rồi chỉ ra bộ $(a,b,c,d)$ làm tổng đạt giá trị đó.\n\n**Chú ý:** Cận $999$ ở trường hợp $b\\le998$ nhỏ hơn giá trị thật của trường hợp $b=999$ chỉ một chút, nên không được bỏ sót trường hợp $b=999$; và phải kiểm tra bộ số đạt giá trị lớn nhất thỏa mọi điều kiện nguyên dương.\n\n**Phần 2. Trình bày**\n\nĐổi chỗ cặp $(a,c)$ cho cặp $(b,d)$ thì biểu thức và điều kiện $a+b=c+d=1000$ không đổi, nên có thể giả sử $\\dfrac ac\\le\\dfrac bd$.\n\nVì $c,d>0$: từ $ad\\le bc$ suy ra $a(c+d)=ac+ad\\le ac+bc=c(a+b)$, tức $\\dfrac ac\\le\\dfrac{a+b}{c+d}=\\dfrac{1000}{1000}=1$ (1)\n\nVì $a\\ge1$ nên $b=1000-a\\le999$; vì $d\\ge1$ nên $\\dfrac bd\\le b$.\n\nTrường hợp 1: $b\\le998$.\n\nKhi đó $\\dfrac bd\\le998$, kết hợp (1): $\\dfrac ac+\\dfrac bd\\le1+998=999$.\n\nTrường hợp 2: $b=999$, khi đó $a=1$ và $\\dfrac ac+\\dfrac bd=\\dfrac1c+\\dfrac{999}{d}$ với $c+d=1000$, $c,d\\ge1$.\n\nNếu $d\\ge2$ thì $\\dfrac1c\\le1$ và $\\dfrac{999}{d}\\le\\dfrac{999}{2}$, nên tổng $\\le1+\\dfrac{999}{2}<999$.\n\nNếu $d=1$ thì $c=999$ và tổng bằng $\\dfrac1{999}+999$.\n\nTổng hợp hai trường hợp: $\\dfrac ac+\\dfrac bd\\le999+\\dfrac1{999}$ với mọi bộ số thỏa đề (có giả sử ở đầu), và dấu \"=\" đạt khi $a=d=1$, $b=c=999$ (thỏa $a+b=c+d=1000$, các số nguyên dương, $\\dfrac ac=\\dfrac1{999}\\le\\dfrac bd=999$).\n\nNếu không giả sử, bộ đối xứng $a=d=999$, $b=c=1$ cho cùng giá trị.\n\nVậy $GTLN=999+\\dfrac{1}{999}$, đạt khi $a=d=1$, $b=c=999$ (hoặc $a=d=999$, $b=c=1$).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính chất phân số trung gian m/n≤p/q thì m/n≤(m+p)/(n+q)≤p/q",
+   "làm trội b/d≤b (d≥1)",
+   "xét hai trường hợp theo b",
+   "giả sử không mất tổng quát (đối xứng hoán đổi (a,c) với (b,d))"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 151): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4B4.2@p151",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Với mọi số tự nhiên $n>1$ chứng minh rằng: $\\dfrac12<\\dfrac{1}{n+1}+\\dfrac{1}{n+2}+\\dots+\\dfrac{1}{n+n}<\\dfrac34$.",
+  "noi_dung_sach": "Với mọi số tự nhiên $n>1$ chứng minh rằng: $\\dfrac12<\\dfrac{1}{n+1}+\\dfrac{1}{n+2}+\\dots+\\dfrac{1}{n+n}<\\dfrac34$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tổng $S$ có $n$ số hạng giảm dần từ $\\dfrac1{n+1}$ đến $\\dfrac1{2n}$, nên vế trái được làm giảm bằng số hạng nhỏ nhất $\\dfrac1{2n}$ cho cả $n$ số hạng; vế phải cần ghép số hạng đầu với số hạng cuối (tổng hai mẫu luôn bằng $3n+1$) rồi làm trội tích hai mẫu.\n\n**Bước 1.** Vế trái: nhận xét mỗi mẫu $n+k\\le2n$ nên mỗi số hạng $\\ge\\dfrac1{2n}$, và vì $n>1$ nên số hạng đầu $\\dfrac1{n+1}>\\dfrac1{2n}$ thật sự, do đó tổng $>n\\cdot\\dfrac1{2n}$.\n\n**Bước 2.** Vế phải: gộp số hạng $\\dfrac1j$ với số hạng $\\dfrac1{3n+1-j}$ (khi $j$ chạy từ $n+1$ đến $2n$ thì $3n+1-j$ cũng chạy đúng các giá trị đó), để $2S$ thành tổng của $n$ cặp có tổng mẫu không đổi $3n+1$.\n\n**Bước 3.** Chứng minh tích $j(3n+1-j)\\ge2n(n+1)$ bằng cách đưa hiệu về dạng $-(j-n-1)(j-2n)$, không âm vì $j$ nằm giữa $n+1$ và $2n$, để làm trội mỗi cặp bằng một hằng số.\n\n**Bước 4.** Cộng $n$ cặp, rút ra $S\\le\\dfrac{3n+1}{4(n+1)}$ rồi so sánh với $\\dfrac34$.\n\n**Chú ý:** Cách ghép trên không phụ thuộc $n$ chẵn hay lẻ; nếu chỉ làm trội mọi số hạng bằng $\\dfrac1{n+1}$ thì được $S\\le\\dfrac{n}{n+1}<1$, cận này quá lớn nên chưa đủ.\n\n**Phần 2. Trình bày**\n\nĐặt $S=\\dfrac{1}{n+1}+\\dfrac{1}{n+2}+\\dots+\\dfrac{1}{2n}$.\n\nVế trái: với $k=1{,}2,\\dots,n$ ta có $n+k\\le2n$ nên $\\dfrac{1}{n+k}\\ge\\dfrac{1}{2n}$; riêng $k=1$ có $n+1<2n$ (vì $n>1$) nên $\\dfrac{1}{n+1}>\\dfrac{1}{2n}$.\n\nCộng $n$ bất đẳng thức: $S>n\\cdot\\dfrac{1}{2n}=\\dfrac12$.\n\nVế phải: với mỗi $j\\in\\{n+1,\\dots,2n\\}$ ta có $j(3n+1-j)-2n(n+1)=-(j-n-1)(j-2n)\\ge0$ vì $j-n-1\\ge0$ và $j-2n\\le0$.\n\nDo đó\n\n$\\dfrac1j+\\dfrac1{3n+1-j}=\\dfrac{3n+1}{j(3n+1-j)}\\le\\dfrac{3n+1}{2n(n+1)}$\n\nKhi $j$ chạy từ $n+1$ đến $2n$ thì $3n+1-j$ cũng chạy qua đúng các số từ $2n$ về $n+1$, nên\n\n$2S=\\sum_{j=n+1}^{2n}\\left(\\dfrac1j+\\dfrac1{3n+1-j}\\right)\\le n\\cdot\\dfrac{3n+1}{2n(n+1)}=\\dfrac{3n+1}{2(n+1)}$\n\nSuy ra $S\\le\\dfrac{3n+1}{4(n+1)}<\\dfrac{3n+3}{4(n+1)}=\\dfrac34$.\n\nVậy $\\dfrac12<\\dfrac{1}{n+1}+\\dfrac{1}{n+2}+\\dots+\\dfrac{1}{n+n}<\\dfrac34$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm giảm từng số hạng 1/(n+k)≥1/(2n)",
+   "ghép số hạng đối xứng 1/j+1/(3n+1−j)",
+   "làm trội tích mẫu j(3n+1−j)≥2n(n+1)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 151): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C4B4.3@p152",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<2$.",
+  "noi_dung_sach": "Cho $a,b,c>0$. Chứng minh rằng: $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<2$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba mẫu $a+b$, $b+c$, $c+a$ khác nhau nên không cộng được ngay; mỗi phân số nhỏ hơn $1$ nên khi cộng thêm biến thứ ba vào cả tử và mẫu thì phân số tăng và mẫu thành $a+b+c$ chung, còn ba tử mới cộng lại bằng $2(a+b+c)$.\n\n**Bước 1.** Chứng minh bổ đề: nếu $0<x<y$ và $z>0$ thì $\\dfrac xy<\\dfrac{x+z}{y+z}$, bằng cách xét hiệu hai phân số và quy đồng.\n\n**Bước 2.** Áp dụng bổ đề cho từng phân số với $z$ là biến còn thiếu trong mẫu ($c$ cho $\\dfrac{a}{a+b}$, $a$ cho $\\dfrac{b}{b+c}$, $b$ cho $\\dfrac{c}{c+a}$), để cả ba mẫu mới đều bằng $a+b+c$.\n\n**Bước 3.** Cộng ba bất đẳng thức, gộp tử ở vế phải thành $2(a+b+c)$ và rút gọn về $2$.\n\n**Chú ý:** Bổ đề chỉ đúng khi phân số nhỏ hơn $1$ (tức $x<y$); nếu $x>y$ thì chiều bất đẳng thức đảo lại.\n\n**Phần 2. Trình bày**\n\nBổ đề: nếu $x,y,z>0$ và $x<y$ thì $\\dfrac xy<\\dfrac{x+z}{y+z}$.\n\nThật vậy: $\\dfrac xy-\\dfrac{x+z}{y+z}=\\dfrac{x(y+z)-y(x+z)}{y(y+z)}=\\dfrac{z(x-y)}{y(y+z)}<0$ vì $z>0$, $x-y<0$, $y(y+z)>0$.\n\nVì $a<a+b$, $b<b+c$, $c<c+a$ nên áp dụng bổ đề:\n\n$\\dfrac{a}{a+b}<\\dfrac{a+c}{a+b+c}$, $\\dfrac{b}{b+c}<\\dfrac{b+a}{a+b+c}$, $\\dfrac{c}{c+a}<\\dfrac{c+b}{a+b+c}$\n\nCộng ba bất đẳng thức: $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<\\dfrac{(a+c)+(b+a)+(c+b)}{a+b+c}=\\dfrac{2(a+b+c)}{a+b+c}=2$.\n\nVậy $\\dfrac{a}{a+b}+\\dfrac{b}{b+c}+\\dfrac{c}{c+a}<2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "xét hiệu",
+   "làm trội: x/y<(x+z)/(y+z) khi 0<x<y, z>0"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 152): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03293",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Cộng biến thứ ba vào tử và mẫu mỗi phân số nhỏ hơn 1 để quy về mẫu a+b+c, chặn S<2."
+ },
+ {
+  "ma_nguon": "C4B4.4@p152",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số dương $a,b,c$. Chứng minh rằng: $\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{1}{abc}$.",
+  "noi_dung_sach": "Cho ba số dương $a,b,c$. Chứng minh rằng: $\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{1}{abc}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $a^3+b^3+abc$ có tổng lập phương $a^3+b^3\\ge ab(a+b)$; làm giảm mẫu thành $ab(a+b+c)$ rút được $ab$ và xuất hiện nhân tử chung $a+b+c$, đúng với vế phải $\\dfrac1{abc}$ khi viết $\\dfrac{1}{ab(a+b+c)}=\\dfrac{c}{abc(a+b+c)}$.\n\n**Bước 1.** Chứng minh $a^3+b^3\\ge ab(a+b)$ bằng cách chuyển vế và phân tích hiệu thành $(a+b)(a-b)^2\\ge0$, rồi cộng $abc$ vào hai vế để được $a^3+b^3+abc\\ge ab(a+b+c)$.\n\n**Bước 2.** Nghịch đảo hai vế dương: mẫu nhỏ đi thì phân số lớn lên, nên $\\dfrac{1}{a^3+b^3+abc}\\le\\dfrac{1}{ab(a+b+c)}$; rồi viết lại với mẫu chung $abc(a+b+c)$.\n\n**Bước 3.** Làm tương tự cho hai phân số còn lại bằng cách hoán vị vòng quanh $a\\to b\\to c\\to a$ rồi cộng ba bất đẳng thức.\n\n**Bước 4.** Gộp tử $c+a+b$ ở vế phải, rút gọn thừa số $a+b+c$ để được $\\dfrac1{abc}$, và tìm dấu \"=\" khi cả ba bất đẳng thức cùng đạt dấu.\n\n**Chú ý:** Vì $a,b,c>0$ nên mẫu hai bên đều dương và nghịch đảo đổi chiều bất đẳng thức; dấu \"=\" của bước 1 xảy ra khi $a=b$, nên toàn bài cần $a=b=c$.\n\n**Phần 2. Trình bày**\n\nVì $a,b>0$ nên $a^3+b^3-ab(a+b)=(a+b)(a-b)^2\\ge0$, suy ra $a^3+b^3\\ge ab(a+b)$ (dấu \"=\" khi $a=b$).\n\nDo đó $a^3+b^3+abc\\ge ab(a+b+c)>0$, suy ra $\\dfrac{1}{a^3+b^3+abc}\\le\\dfrac{1}{ab(a+b+c)}=\\dfrac{c}{abc(a+b+c)}$\n\nTương tự: $\\dfrac{1}{b^3+c^3+abc}\\le\\dfrac{1}{bc(a+b+c)}=\\dfrac{a}{abc(a+b+c)}$ và $\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{1}{ca(a+b+c)}=\\dfrac{b}{abc(a+b+c)}$\n\nCộng ba bất đẳng thức:\n\n$\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{a+b+c}{abc(a+b+c)}=\\dfrac{1}{abc}$\n\nDấu \"=\" xảy ra khi $a=b=c$.\n\nVậy $\\dfrac{1}{a^3+b^3+abc}+\\dfrac{1}{b^3+c^3+abc}+\\dfrac{1}{c^3+a^3+abc}\\le\\dfrac{1}{abc}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm giảm mẫu: a³+b³≥ab(a+b) (xét hiệu (a+b)(a−b)²≥0)",
+   "đưa về mẫu chung abc(a+b+c)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 152): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03291",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Bổ đề a³+b³≥ab(a+b) làm giảm mẫu từng cụm hoán vị rồi cộng theo vế."
+ },
+ {
+  "ma_nguon": "C4B4.5@p153",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Chứng minh rằng: $\\dfrac{167}{335}<\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dfrac{1}{4^2}+\\dots+\\dfrac{1}{2016^2}+\\dfrac{1}{2017^2}<\\dfrac{2016}{2017}$.",
+  "noi_dung_sach": "Chứng minh rằng: $\\dfrac{167}{335}<\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dfrac{1}{4^2}+\\dots+\\dfrac{1}{2016^2}+\\dfrac{1}{2017^2}<\\dfrac{2016}{2017}$.",
+  "dap_an": "Chứng minh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số hạng $\\dfrac1{k^2}$ không tách thành hiệu được, nhưng kẹp được giữa hai phân số dạng hiệu liên tiếp: $\\dfrac1{k(k+1)}<\\dfrac1{k^2}<\\dfrac1{(k-1)k}$, tức $\\dfrac1k-\\dfrac1{k+1}<\\dfrac1{k^2}<\\dfrac1{k-1}-\\dfrac1k$; cộng theo $k$ thì tổng khử liên tiếp ở cả hai phía.\n\n**Bước 1.** Xác định số hạng tổng quát $\\dfrac1{k^2}$ với $k=2{,}3,\\dots,2017$ để biết các hạng tử đầu và cuối còn lại sau khi khử.\n\n**Bước 2.** Cận trên: làm trội bằng $k^2>(k-1)k$ để $\\dfrac1{k^2}<\\dfrac1{k-1}-\\dfrac1k$, cộng $k=2,\\dots,2017$ thì chỉ còn $1$ và $-\\dfrac1{2017}$.\n\n**Bước 3.** Cận dưới: làm giảm bằng $k^2<k(k+1)$ để $\\dfrac1{k^2}>\\dfrac1k-\\dfrac1{k+1}$, cộng $k=2,\\dots,2017$ thì chỉ còn $\\dfrac12$ và $-\\dfrac1{2018}$.\n\n**Bước 4.** So sánh cận dưới $\\dfrac12-\\dfrac1{2018}$ với $\\dfrac{167}{335}$ bằng cách rút gọn phân số rồi nhân chéo hai tích số tự nhiên.\n\n**Chú ý:** Cận dưới cần dùng $k(k+1)$ chứ không dùng $(k-1)k$; hai cận trên và dưới cho hai tổng khử khác nhau, đừng lẫn đầu và cuối của hai dãy.\n\n**Phần 2. Trình bày**\n\nVới $k\\ge2$: $(k-1)k<k^2<k(k+1)$ nên\n\n$\\dfrac1{k(k+1)}<\\dfrac1{k^2}<\\dfrac1{(k-1)k}$, tức $\\dfrac1k-\\dfrac1{k+1}<\\dfrac1{k^2}<\\dfrac1{k-1}-\\dfrac1k$.\n\nCận trên: cho $k=2{,}3,\\dots,2017$ rồi cộng vế với vế:\n\n$\\dfrac1{2^2}+\\dfrac1{3^2}+\\dots+\\dfrac1{2017^2}<\\left(1-\\dfrac12\\right)+\\left(\\dfrac12-\\dfrac13\\right)+\\dots+\\left(\\dfrac1{2016}-\\dfrac1{2017}\\right)=1-\\dfrac1{2017}=\\dfrac{2016}{2017}$\n\nCận dưới: cho $k=2{,}3,\\dots,2017$ rồi cộng vế với vế:\n\n$\\dfrac1{2^2}+\\dfrac1{3^2}+\\dots+\\dfrac1{2017^2}>\\left(\\dfrac12-\\dfrac13\\right)+\\left(\\dfrac13-\\dfrac14\\right)+\\dots+\\left(\\dfrac1{2017}-\\dfrac1{2018}\\right)=\\dfrac12-\\dfrac1{2018}=\\dfrac{1008}{2018}=\\dfrac{504}{1009}$\n\nLại có $\\dfrac{504}{1009}>\\dfrac{167}{335}$ vì $504\\cdot335=168840>167\\cdot1009=168503$.\n\nVậy $\\dfrac{167}{335}<\\dfrac{1}{2^2}+\\dfrac{1}{3^2}+\\dfrac{1}{4^2}+\\dots+\\dfrac{1}{2016^2}+\\dfrac{1}{2017^2}<\\dfrac{2016}{2017}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "làm trội, làm giảm 1/k² kẹp giữa 1/(k(k+1)) và 1/((k−1)k)",
+   "tách hiệu và khử liên tiếp",
+   "so sánh phân số bằng nhân chéo"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 153): máy không đối chiếu được đề với kết quả sách (sách không ghi kết quả) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02753",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Kẹp 1/k² giữa hai hiệu liên tiếp, cộng khử liên tiếp hai phía."
+ },
+ {
+  "ma_nguon": "C5V.1@p171",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí toán tuổi thơ số 87+88) Cho ba số thực dương $x,y,z$ thỏa mãn $xyz=1$. Tìm giá trị lớn nhất của $B=\\dfrac{1}{2x^2+y^2+3}+\\dfrac{1}{2y^2+z^2+3}+\\dfrac{1}{2z^2+x^2+3}$.",
+  "noi_dung_sach": "(Tạp chí toán tuổi thơ số 87+88) Cho ba số thực dương $x,y,z$ thỏa mãn $xyz=1$. Tìm giá trị lớn nhất của $B=\\dfrac{1}{2x^2+y^2+3}+\\dfrac{1}{2y^2+z^2+3}+\\dfrac{1}{2z^2+x^2+3}$.",
+  "dap_an": "$GTLN=\\dfrac{1}{2}$ khi $x=y=z=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi mẫu có dạng \"bình phương cộng hằng số\" nên chặn được từ dưới bằng một biểu thức bậc hai theo $xy+x+1$; điều kiện $xyz=1$ gợi ý nhân tử và mẫu để ba mẫu mới cộng lại thành một số cố định, còn đề đối xứng vòng nên dấu \"=\" dự đoán tại $x=y=z$.\n\n**Bước 1.** Tách mẫu thứ nhất thành tổng hai bình phương cộng với $2(xy+x+1)$ để thấy mẫu luôn không nhỏ hơn $2(xy+x+1)$, từ đó chặn từ trên phân số thứ nhất.\n\n**Bước 2.** Hoán vị vòng $x\\to y\\to z\\to x$ để có đánh giá tương tự cho hai phân số còn lại rồi cộng ba bất đẳng thức.\n\n**Bước 3.** Dùng $xyz=1$ nhân cả tử và mẫu của hai phân số sau với $x$ và với $xy$ cho ba mẫu cùng trở thành $xy+x+1$, khi đó tổng ba phân số là một hằng số.\n\n**Bước 4.** Kiểm tra mọi bình phương dùng ở bước 1 đồng thời bằng $0$ có xảy ra được không để khẳng định dấu \"=\" đạt được.\n\n**Chú ý:** Đánh giá từng phân số chỉ có giá trị khi mẫu dương; phải nêu đẳng thức phụ khi $xyz=1$ chứ không viết \"dễ thấy\".\n\n**Phần 2. Trình bày**\n\nTa có $2x^2+y^2+3=(x-y)^2+(x-1)^2+2(xy+x+1)\\ge2(xy+x+1)>0$, nên $\\dfrac{1}{2x^2+y^2+3}\\le\\dfrac{1}{2(xy+x+1)}$.\n\nTương tự $\\dfrac{1}{2y^2+z^2+3}\\le\\dfrac{1}{2(yz+y+1)}$ và $\\dfrac{1}{2z^2+x^2+3}\\le\\dfrac{1}{2(zx+z+1)}$.\n\nCộng ba bất đẳng thức: $B\\le\\dfrac{1}{2}\\left(\\dfrac{1}{xy+x+1}+\\dfrac{1}{yz+y+1}+\\dfrac{1}{zx+z+1}\\right)$ (1)\n\nVì $xyz=1$ nên $\\dfrac{1}{yz+y+1}=\\dfrac{x}{xyz+xy+x}=\\dfrac{x}{xy+x+1}$ và $\\dfrac{1}{zx+z+1}=\\dfrac{xy}{x^2yz+xyz+xy}=\\dfrac{xy}{x+1+xy}$.\n\nDo đó $\\dfrac{1}{xy+x+1}+\\dfrac{1}{yz+y+1}+\\dfrac{1}{zx+z+1}=\\dfrac{1+x+xy}{xy+x+1}=1$.\n\nThay vào (1): $B\\le\\dfrac{1}{2}$.\n\nDấu \"=\" xảy ra khi $x=y$, $y=z$, $z=x$ và $x=1$, $y=1$, $z=1$, tức $x=y=z=1$ (thỏa $xyz=1$; khi đó $B=3\\cdot\\dfrac{1}{6}=\\dfrac{1}{2}$).\n\nVậy giá trị lớn nhất của $B$ là $\\dfrac{1}{2}$, đạt khi $x=y=z=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng bình phương ≥0 (xét hiệu)",
+   "đánh giá từng phân số rồi cộng",
+   "nhân cả tử và mẫu để dùng điều kiện xyz=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 171): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5V.2@p171",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí toán tuổi thơ số 87) Cho ba số thực dương thỏa mãn $xyz=1$. Tìm giá trị lớn nhất của $B=\\dfrac{1}{(x+1)^2+y^2+1}+\\dfrac{1}{(y+1)^2+z^2+1}+\\dfrac{1}{(z+1)^2+x^2+1}$.",
+  "noi_dung_sach": "(Tạp chí toán tuổi thơ số 87) Cho ba số thực dương thỏa mãn $xyz=1$. Tìm giá trị lớn nhất của $B=\\dfrac{1}{(x+1)^2+y^2+1}+\\dfrac{1}{(y+1)^2+z^2+1}+\\dfrac{1}{(z+1)^2+x^2+1}$.",
+  "dap_an": "$GTLN=\\dfrac{1}{2}$ khi $x=y=z=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $(x+1)^2+y^2+1$ khai triển ra $x^2+y^2+2x+2$, đúng bằng một bình phương $(x-y)^2$ cộng $2(xy+x+1)$ — nhân tử $xy+x+1$ là dấu hiệu quen của điều kiện $xyz=1$, nên chặn mẫu từ dưới rồi dùng tổng ba phân số có mẫu $xy+x+1$, $yz+y+1$, $zx+z+1$.\n\n**Bước 1.** Khai triển mẫu thứ nhất và ghép thành $(x-y)^2$ cộng $2(xy+x+1)$ để đánh giá phân số thứ nhất từ trên.\n\n**Bước 2.** Hoán vị vòng các biến để được hai đánh giá còn lại rồi cộng ba vế lại.\n\n**Bước 3.** Dùng $xyz=1$ để đưa ba mẫu $xy+x+1$, $yz+y+1$, $zx+z+1$ về cùng một mẫu và tính được tổng của chúng.\n\n**Bước 4.** Chỉ ra bộ giá trị làm mọi bình phương bằng $0$ đồng thời để kết luận dấu \"=\" xảy ra.\n\n**Phần 2. Trình bày**\n\nTa có $(x+1)^2+y^2+1=x^2+y^2+2x+2=(x-y)^2+2(xy+x+1)\\ge2(xy+x+1)>0$, nên $\\dfrac{1}{(x+1)^2+y^2+1}\\le\\dfrac{1}{2(xy+x+1)}$.\n\nTương tự $\\dfrac{1}{(y+1)^2+z^2+1}\\le\\dfrac{1}{2(yz+y+1)}$ và $\\dfrac{1}{(z+1)^2+x^2+1}\\le\\dfrac{1}{2(zx+z+1)}$.\n\nCộng ba bất đẳng thức: $B\\le\\dfrac{1}{2}\\left(\\dfrac{1}{xy+x+1}+\\dfrac{1}{yz+y+1}+\\dfrac{1}{zx+z+1}\\right)$ (1)\n\nVì $xyz=1$ nên $\\dfrac{1}{yz+y+1}=\\dfrac{x}{xyz+xy+x}=\\dfrac{x}{xy+x+1}$ và $\\dfrac{1}{zx+z+1}=\\dfrac{xy}{x^2yz+xyz+xy}=\\dfrac{xy}{x+1+xy}$.\n\nSuy ra tổng trong ngoặc ở (1) bằng $\\dfrac{1+x+xy}{xy+x+1}=1$, do đó $B\\le\\dfrac{1}{2}$.\n\nDấu \"=\" xảy ra khi $x=y$, $y=z$, $z=x$ (từ ba bình phương $(x-y)^2$, $(y-z)^2$, $(z-x)^2$ bằng $0$), cùng $xyz=1$, tức $x=y=z=1$; khi đó $B=3\\cdot\\dfrac{1}{6}=\\dfrac{1}{2}$.\n\nVậy giá trị lớn nhất của $B$ là $\\dfrac{1}{2}$, đạt khi $x=y=z=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng bình phương ≥0 (xét hiệu)",
+   "đánh giá từng phân số rồi cộng",
+   "nhân cả tử và mẫu để dùng điều kiện xyz=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 171): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5V.3@p172",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí toán tuổi thơ số 88) Cho ba số thực dương thỏa mãn $xyz=2$. Tìm giá trị lớn nhất của $B=\\dfrac{x}{2x^2+y^2+5}+\\dfrac{2y}{6y^2+z^2+6}+\\dfrac{4z}{3z^2+4x^2+16}$.",
+  "noi_dung_sach": "(Tạp chí toán tuổi thơ số 88) Cho ba số thực dương thỏa mãn $xyz=2$. Tìm giá trị lớn nhất của $B=\\dfrac{x}{2x^2+y^2+5}+\\dfrac{2y}{6y^2+z^2+6}+\\dfrac{4z}{3z^2+4x^2+16}$.",
+  "dap_an": "$GTLN=\\dfrac{1}{2}$ khi $x=y=1$, $z=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $xyz=2$ cùng các hệ số lạ ($6y^2$, $3z^2$, $4x^2$, các hằng $5,6,16$) cho thấy đề được \"gài\" cho một điểm rơi đẹp (thử $x=y=1$, $z=2$ thấy $xyz=2$); vì thế mỗi mẫu phải được chặn bằng một tổng bình phương triệt tiêu đúng tại điểm đó, sao cho ba phân số mới có mẫu dạng $xy+x+2$ và cộng lại được nhờ $xyz=2$.\n\n**Bước 1.** Chặn mẫu thứ nhất bởi $2(xy+x+2)$ nhờ $(x-y)^2+(x-1)^2\\ge0$, vì $2x^2+y^2+5-2(xy+x+2)$ chính là tổng hai bình phương đó.\n\n**Bước 2.** Chặn mẫu thứ hai bởi $4(yz+y+1)$ và mẫu thứ ba bởi $4(xz+2z+2)$ bằng cách viết hiệu thành tổng các bình phương triệt tiêu tại $y=1,z=2$ và $x=1,z=2$.\n\n**Bước 3.** Dùng $xyz=2$ nhân cả tử và mẫu để ba phân số mới cùng mẫu $xy+x+2$ và tính tổng chúng.\n\n**Bước 4.** Đối chiếu điểm rơi: các bình phương ở bước 1 và 2 cùng bằng $0$ khi $x=y=1$, $z=2$, thỏa $xyz=2$.\n\n**Chú ý:** Nếu dùng đánh giá lỏng hơn (không khớp điểm rơi) thì tổng vượt quá $\\dfrac{1}{2}$ và không kết luận được.\n\n**Phần 2. Trình bày**\n\nTa có $2x^2+y^2+5-2(xy+x+2)=(x-y)^2+(x-1)^2\\ge0$, nên $\\dfrac{x}{2x^2+y^2+5}\\le\\dfrac{x}{2(xy+x+2)}$.\n\nTa có $6y^2+z^2+6-4(yz+y+1)=(2y-z)^2+2(y-1)^2\\ge0$, nên $\\dfrac{2y}{6y^2+z^2+6}\\le\\dfrac{2y}{4(yz+y+1)}=\\dfrac{y}{2(yz+y+1)}$.\n\nTa có $3z^2+4x^2+16-4(xz+2z+2)=(2x-z)^2+2(z-2)^2\\ge0$, nên $\\dfrac{4z}{3z^2+4x^2+16}\\le\\dfrac{4z}{4(xz+2z+2)}=\\dfrac{z}{xz+2z+2}$.\n\nCộng ba bất đẳng thức: $B\\le\\dfrac{1}{2}\\left(\\dfrac{x}{xy+x+2}+\\dfrac{y}{yz+y+1}+\\dfrac{2z}{xz+2z+2}\\right)$ (1)\n\nVì $xyz=2$ nên $\\dfrac{y}{yz+y+1}=\\dfrac{xy}{xyz+xy+x}=\\dfrac{xy}{xy+x+2}$ và $\\dfrac{2z}{xz+2z+2}=\\dfrac{2xyz}{x^2yz+2xyz+2xy}=\\dfrac{4}{2x+4+2xy}=\\dfrac{2}{xy+x+2}$.\n\nSuy ra tổng trong ngoặc ở (1) bằng $\\dfrac{x+xy+2}{xy+x+2}=1$, do đó $B\\le\\dfrac{1}{2}$.\n\nDấu \"=\" xảy ra khi $x=y$, $x=1$, $2y=z$, $y=1$, $z=2$, tức $x=y=1$, $z=2$ (thỏa $xyz=2$; khi đó $B=\\dfrac{1}{8}+\\dfrac{1}{8}+\\dfrac{1}{4}=\\dfrac{1}{2}$).\n\nVậy giá trị lớn nhất của $B$ là $\\dfrac{1}{2}$, đạt khi $x=y=1$, $z=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tổng bình phương ≥0 (xét hiệu)",
+   "đánh giá từng phân số rồi cộng",
+   "nhân cả tử và mẫu để dùng điều kiện xyz=2",
+   "chọn hệ số theo điểm rơi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 172): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5V.4@p173",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tạp chí toán học & tuổi trẻ số 418) Tìm giá trị nhỏ nhất của $B=\\dfrac{1}{x^3+xy+y^3}+\\dfrac{4x^2y^2+2}{xy}+2006$, trong đó $x,y$ là các số thực dương và $x+y=1$.",
+  "noi_dung_sach": "(Tạp chí toán học & tuổi trẻ số 418) Tìm giá trị nhỏ nhất của $B=\\dfrac{1}{x^3+xy+y^3}+\\dfrac{4x^2y^2+2}{xy}+2006$, trong đó $x,y$ là các số thực dương và $x+y=1$.",
+  "dap_an": "$GTNN=2017$ khi $x=y=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu $x^3+xy+y^3$ kết hợp với $x+y=1$ gợi ngay hằng đẳng thức $x^3+y^3=(x+y)(x^2-xy+y^2)$ làm mẫu gọn lại thành $x^2+y^2$; sau đó cả biểu thức chỉ còn $x^2+y^2$ và $xy$, đề đối xứng nên dự đoán dấu \"=\" tại $x=y=\\dfrac{1}{2}$, và hệ số các hạng tử tách sao cho từng cặp đều cân bằng ở điểm đó.\n\n**Bước 1.** Dùng $x+y=1$ để rút gọn $x^3+xy+y^3$ về $x^2+y^2$ và chia tử cho mẫu để $\\dfrac{4x^2y^2+2}{xy}=4xy+\\dfrac{2}{xy}$.\n\n**Bước 2.** Tách $\\dfrac{2}{xy}=\\dfrac{1}{2xy}+\\dfrac{1}{4xy}+\\dfrac{5}{4xy}$ để lập ba nhóm, mỗi nhóm có một công cụ chặn dưới riêng và đều đạt dấu \"=\" khi $x=y=\\dfrac{1}{2}$.\n\n**Bước 3.** Với nhóm $\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}$ dùng bất đẳng thức phụ $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$ (tổng hai mẫu là $(x+y)^2=1$); nhóm $4xy+\\dfrac{1}{4xy}$ dùng Cô-si hai số.\n\n**Bước 4.** Với số hạng $\\dfrac{5}{4xy}$ dùng $xy\\le\\left(\\dfrac{x+y}{2}\\right)^2=\\dfrac{1}{4}$ rồi cộng ba đánh giá và kiểm tra dấu \"=\".\n\n**Chú ý:** Bất đẳng thức phụ $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$ phải được chứng minh (hoặc nêu rõ là hệ quả Cô-si) và chỉ đúng với $a,b>0$.\n\n**Phần 2. Trình bày**\n\nVới $x,y>0$ và $x+y=1$: $x^3+y^3=(x+y)(x^2-xy+y^2)=x^2-xy+y^2$, nên $x^3+xy+y^3=x^2+y^2$.\n\n$B=\\dfrac{1}{x^2+y^2}+4xy+\\dfrac{2}{xy}+2006$\n\n$=\\left(\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}\\right)+\\left(\\dfrac{1}{4xy}+4xy\\right)+\\dfrac{5}{4xy}+2006$\n\nVới $a,b>0$: $\\dfrac{1}{a}+\\dfrac{1}{b}-\\dfrac{4}{a+b}=\\dfrac{(a-b)^2}{ab(a+b)}\\ge0$, nên $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$.\n\nÁp dụng với $a=x^2+y^2$, $b=2xy$ (cả hai dương): $\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}\\ge\\dfrac{4}{(x+y)^2}=4$.\n\nTheo Cô-si hai số dương: $\\dfrac{1}{4xy}+4xy\\ge2$.\n\nVì $xy\\le\\dfrac{(x+y)^2}{4}=\\dfrac{1}{4}$ nên $\\dfrac{5}{4xy}\\ge5$.\n\nCộng lại: $B\\ge4+2+5+2006=2017$.\n\nDấu \"=\" xảy ra khi $x^2+y^2=2xy$, $4xy=1$ và $xy=\\dfrac{1}{4}$, tức $x=y=\\dfrac{1}{2}$ (thỏa $x+y=1$).\n\nVậy giá trị nhỏ nhất của $B$ là $2017$, đạt khi $x=y=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ quả Cô-si 1/a+1/b ≥ 4/(a+b)",
+   "Cô-si hai số u+1/u ≥ 2",
+   "xy ≤ ((x+y)/2)²",
+   "thế điều kiện x+y=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 173): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01609",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "GTNN với x+y=1, tách 2/(xy) thành nhiều phần để dùng Cô-si; cũng gần dạng điểm rơi."
+ },
+ {
+  "ma_nguon": "C5V.5@p173",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên Hà Tĩnh 2012 – 2013) Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của $\\dfrac{1}{2017ac}+\\dfrac{1}{2017bc}$.",
+  "noi_dung_sach": "(Chuyên Hà Tĩnh 2012 – 2013) Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của $\\dfrac{1}{2017ac}+\\dfrac{1}{2017bc}$.",
+  "dap_an": "$GTNN=\\dfrac{16}{2017}$ khi $a=b=\\dfrac{1}{4}$, $c=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phân số có chung nhân tử $\\dfrac{1}{2017c}$ nên đưa về $\\dfrac{1}{2017c}\\left(\\dfrac{1}{a}+\\dfrac{1}{b}\\right)$; tổng nghịch đảo hai số gợi bất đẳng thức $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$, và tích $c(a+b)$ của hai đại lượng có tổng $a+b+c=1$ không đổi gợi bất đẳng thức $(p+q)^2\\ge4pq$.\n\n**Bước 1.** Đặt $\\dfrac{1}{2017c}$ làm nhân tử chung để chỉ còn tổng $\\dfrac{1}{a}+\\dfrac{1}{b}$, rồi chặn tổng này từ dưới bằng $\\dfrac{4}{a+b}$.\n\n**Bước 2.** Gộp thành $\\dfrac{4}{2017\\,c(a+b)}$ và nhận ra $c$ cùng $a+b$ là hai số dương có tổng $c+(a+b)=1$ không đổi.\n\n**Bước 3.** Chặn $c(a+b)$ từ trên bằng $\\dfrac{(c+(a+b))^2}{4}=\\dfrac{1}{4}$ để chặn phân số từ dưới, rồi tìm điều kiện để hai bất đẳng thức cùng xảy ra dấu \"=\": $a=b$ và $c=a+b$.\n\n**Phần 2. Trình bày**\n\nVới $a,b>0$: $\\dfrac{1}{a}+\\dfrac{1}{b}-\\dfrac{4}{a+b}=\\dfrac{(a-b)^2}{ab(a+b)}\\ge0$, nên $\\dfrac{1}{a}+\\dfrac{1}{b}\\ge\\dfrac{4}{a+b}$ (1)\n\n$\\dfrac{1}{2017ac}+\\dfrac{1}{2017bc}=\\dfrac{1}{2017c}\\left(\\dfrac{1}{a}+\\dfrac{1}{b}\\right)\\ge\\dfrac{4}{2017c(a+b)}$ (theo (1))\n\nVì $c,\\ a+b>0$ nên $c(a+b)\\le\\dfrac{(c+a+b)^2}{4}=\\dfrac{1}{4}$, suy ra $\\dfrac{4}{2017c(a+b)}\\ge\\dfrac{4\\cdot4}{2017}=\\dfrac{16}{2017}$.\n\nVậy $\\dfrac{1}{2017ac}+\\dfrac{1}{2017bc}\\ge\\dfrac{16}{2017}$.\n\nDấu \"=\" xảy ra khi $a=b$ và $c=a+b$; kết hợp $a+b+c=1$ ta được $c=\\dfrac{1}{2}$, $a=b=\\dfrac{1}{4}$.\n\nVậy giá trị nhỏ nhất là $\\dfrac{16}{2017}$, đạt khi $a=b=\\dfrac{1}{4}$, $c=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ quả Cô-si 1/a+1/b ≥ 4/(a+b)",
+   "c(a+b) ≤ ((a+b+c)/2)²",
+   "thế điều kiện a+b+c=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 173): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.1@p174",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(HSG tỉnh Bắc Ninh 2014 – 2015) Cho số thực $m,n,p$ sao cho $n^2+np+p^2=1-\\dfrac{3m^2}{2}$. Tìm giá trị nhỏ nhất, lớn nhất của $S=m+n+p$.",
+  "noi_dung_sach": "(HSG tỉnh Bắc Ninh 2014 – 2015) Cho số thực $m,n,p$ sao cho $n^2+np+p^2=1-\\dfrac{3m^2}{2}$. Tìm giá trị nhỏ nhất, lớn nhất của $S=m+n+p$.",
+  "dap_an": "$GTLN=\\sqrt{2}$ khi $m=n=p=\\dfrac{\\sqrt{2}}{3}$; $GTNN=-\\sqrt{2}$ khi $m=n=p=-\\dfrac{\\sqrt{2}}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chứa $m^2$ và dạng $n^2+np+p^2$ (đối xứng theo $n,p$) còn $S$ là tổng bậc nhất của $m$ và $n+p$; hai dạng bậc hai và bậc nhất đi cùng nhau gợi bất đẳng thức Bu-nhi-a-cốp-xki để chặn $S^2$ bằng một biểu thức theo điều kiện đã cho.\n\n**Bước 1.** Nhân hai vế điều kiện với $2$ để mất phân số, rồi tách $2n^2+2np+2p^2=(n+p)^2+n^2+p^2$ để làm xuất hiện $n+p$.\n\n**Bước 2.** Dùng $n^2+p^2\\ge\\dfrac{(n+p)^2}{2}$ để chặn điều kiện thành một bất đẳng thức chỉ chứa $m$ và $u=n+p$.\n\n**Bước 3.** Viết $S=m+u$ và áp dụng Bu-nhi-a-cốp-xki với các hệ số chọn sao cho tích hai tổng bình phương vừa khớp với bất đẳng thức ở bước 2.\n\n**Bước 4.** Tìm điều kiện dấu \"=\" ($n=p$ và tỉ lệ giữa $m$ với $u$) rồi giải ra giá trị cụ thể của $m,n,p$ cho cả hai cực trị.\n\n**Chú ý:** Bài hỏi cả nhỏ nhất lẫn lớn nhất nên phải chỉ ra hai bộ giá trị khác nhau; bất đẳng thức $S^2\\le\\dots$ cho cả hai phía của $S$.\n\n**Phần 2. Trình bày**\n\nTừ giả thiết: $2n^2+2np+2p^2+3m^2=2$ (1)\n\nVì $n^2+p^2\\ge\\dfrac{(n+p)^2}{2}$ nên $2n^2+2np+2p^2=(n+p)^2+n^2+p^2\\ge\\dfrac{3}{2}(n+p)^2$.\n\nThay vào (1): $3m^2+\\dfrac{3}{2}(n+p)^2\\le2$ (2)\n\nTheo Bu-nhi-a-cốp-xki: $S^2=\\left(m+(n+p)\\right)^2=\\left(\\sqrt{3}\\,m\\cdot\\dfrac{1}{\\sqrt{3}}+\\sqrt{\\dfrac{3}{2}}(n+p)\\cdot\\sqrt{\\dfrac{2}{3}}\\right)^2\\le\\left(3m^2+\\dfrac{3}{2}(n+p)^2\\right)\\left(\\dfrac{1}{3}+\\dfrac{2}{3}\\right)\\le2$ (theo (2)).\n\nSuy ra $-\\sqrt{2}\\le S\\le\\sqrt{2}$.\n\nDấu \"=\" xảy ra khi $n=p$, $n+p=2m$ (tỉ lệ trong Bu-nhi-a-cốp-xki) và (2) thành đẳng thức, tức $m=n=p$ với $9m^2=2$, $m=\\pm\\dfrac{\\sqrt{2}}{3}$.\n\nThử lại: $m=n=p=\\dfrac{\\sqrt{2}}{3}$ thì $n^2+np+p^2=\\dfrac{2}{3}=1-\\dfrac{3m^2}{2}$ thỏa điều kiện và $S=\\sqrt{2}$; $m=n=p=-\\dfrac{\\sqrt{2}}{3}$ cũng thỏa và $S=-\\sqrt{2}$.\n\nVậy giá trị lớn nhất của $S$ là $\\sqrt{2}$ khi $m=n=p=\\dfrac{\\sqrt{2}}{3}$; giá trị nhỏ nhất của $S$ là $-\\sqrt{2}$ khi $m=n=p=-\\dfrac{\\sqrt{2}}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki",
+   "n²+p² ≥ (n+p)²/2",
+   "đưa điều kiện về dạng tổng bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 174): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điều kiện đưa về tổng bình phương, S=m+n+p tuyến tính, dùng Bu-nhi-a-cốp-xki tìm GTLN, GTNN."
+ },
+ {
+  "ma_nguon": "C5B.2@p174",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(HSG Huyện Tư Nghĩa Quảng Ngãi 2014 – 2015) Cho hai số dương $x,y$ có tổng bằng $1$, tìm giá trị nhỏ nhất của: $\\left(1-\\dfrac{1}{x^2}\\right)\\left(1-\\dfrac{1}{y^2}\\right)$.",
+  "noi_dung_sach": "(HSG Huyện Tư Nghĩa Quảng Ngãi 2014 – 2015) Cho hai số dương $x,y$ có tổng bằng $1$, tìm giá trị nhỏ nhất của: $\\left(1-\\dfrac{1}{x^2}\\right)\\left(1-\\dfrac{1}{y^2}\\right)$.",
+  "dap_an": "$GTNN=9$ khi $x=y=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi ngoặc là hiệu của hai bình phương nên phân tích được thành $\\dfrac{(x-1)(x+1)}{x^2}$, và điều kiện $x+y=1$ cho $x-1=-y$, $y-1=-x$ — các nhân tử triệt tiêu chéo, tích rút gọn còn một biểu thức theo $xy$ mà ta chặn được bằng $xy\\le\\dfrac{1}{4}$.\n\n**Bước 1.** Quy đồng từng ngoặc và phân tích tử thành $(x-1)(x+1)$, $(y-1)(y+1)$ để dùng được điều kiện $x+y=1$.\n\n**Bước 2.** Thay $x-1=-y$ và $y-1=-x$ vào tích, rút gọn $x^2y^2$ ở mẫu với $xy$ ở tử, đưa tích về dạng $\\dfrac{(x+1)(y+1)}{xy}$ rồi khai triển bằng $x+y=1$.\n\n**Bước 3.** Biểu thức còn lại có dạng hằng số cộng một phân số có mẫu $xy$, nên dùng $xy\\le\\left(\\dfrac{x+y}{2}\\right)^2$ để chặn từ dưới và tìm dấu \"=\" khi $x=y$.\n\n**Phần 2. Trình bày**\n\nVới $x,y>0$, $x+y=1$ (nên $x-1=-y$, $y-1=-x$):\n\n$\\left(1-\\dfrac{1}{x^2}\\right)\\left(1-\\dfrac{1}{y^2}\\right)=\\dfrac{(x-1)(x+1)}{x^2}\\cdot\\dfrac{(y-1)(y+1)}{y^2}$\n\n$=\\dfrac{(-y)(x+1)(-x)(y+1)}{x^2y^2}=\\dfrac{(x+1)(y+1)}{xy}$\n\n$=\\dfrac{xy+(x+y)+1}{xy}=\\dfrac{xy+2}{xy}=1+\\dfrac{2}{xy}$\n\nVì $xy\\le\\dfrac{(x+y)^2}{4}=\\dfrac{1}{4}$ nên $\\dfrac{2}{xy}\\ge8$, do đó biểu thức $\\ge9$.\n\nDấu \"=\" xảy ra khi $x=y$, kết hợp $x+y=1$ được $x=y=\\dfrac{1}{2}$.\n\nVậy giá trị nhỏ nhất là $9$, đạt khi $x=y=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế điều kiện x+y=1 (x-1=-y)",
+   "xy ≤ ((x+y)/2)² (hệ quả Cô-si)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 174): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.3@p174",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị nhỏ nhất của biểu thức $A=\\dfrac{1}{1+x^2}+\\dfrac{4}{4+y^2}+xy$ với $xy\\ge2$.",
+  "noi_dung_sach": "Tìm giá trị nhỏ nhất của biểu thức $A=\\dfrac{1}{1+x^2}+\\dfrac{4}{4+y^2}+xy$ với $xy\\ge2$.",
+  "dap_an": "$GTNN=3$ khi $xy=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $\\dfrac{4}{4+y^2}=\\dfrac{1}{1+\\left(\\dfrac{y}{2}\\right)^2}$ thì hai phân số đầu cùng dạng $\\dfrac{1}{1+t^2}$, và điều kiện $xy\\ge2$ chính là $x\\cdot\\dfrac{y}{2}\\ge1$ — đúng điều kiện của bất đẳng thức phụ $\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}\\ge\\dfrac{2}{1+ab}$ khi $ab\\ge1$; phần còn lại là một biến duy nhất $t=\\dfrac{xy}{2}$.\n\n**Bước 1.** Đặt $a=x$, $b=\\dfrac{y}{2}$ và $t=ab=\\dfrac{xy}{2}$, khi đó $A=\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}+2t$ và điều kiện là $t\\ge1$.\n\n**Bước 2.** Chứng minh bổ đề $\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}\\ge\\dfrac{2}{1+ab}$ với $ab\\ge1$ bằng cách xét hiệu hai vế và quy đồng, phân tích tử thành tích có nhân tử $(ab-1)(a-b)^2$.\n\n**Bước 3.** Dùng bổ đề để quy $A$ về hàm một biến $\\dfrac{2}{1+t}+2t$, rồi so sánh với một hằng số bằng cách xét hiệu và phân tích thành nhân tử.\n\n**Bước 4.** Tìm điều kiện để hai bất đẳng thức cùng xảy ra dấu \"=\": $t=1$ làm triệt tiêu thừa số $ab-1$ nên không cần thêm điều kiện nào khác.\n\n**Chú ý:** Bổ đề chỉ đúng khi $ab\\ge1$; với $ab<1$ chiều bất đẳng thức đảo ngược.\n\n**Phần 2. Trình bày**\n\nĐặt $a=x$, $b=\\dfrac{y}{2}$, $t=ab=\\dfrac{xy}{2}\\ge1$.\n\nKhi đó $\\dfrac{4}{4+y^2}=\\dfrac{1}{1+b^2}$ và $xy=2t$.\n\nBổ đề: với $ab\\ge1$ thì $\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}\\ge\\dfrac{2}{1+ab}$.\n\nThật vậy $\\dfrac{1}{1+a^2}+\\dfrac{1}{1+b^2}-\\dfrac{2}{1+ab}=\\dfrac{(ab-1)(a-b)^2}{(1+a^2)(1+b^2)(1+ab)}\\ge0$ vì $ab-1\\ge0$ và $1+ab>0$.\n\nÁp dụng: $A\\ge\\dfrac{2}{1+t}+2t$.\n\nXét hiệu: $\\dfrac{2}{1+t}+2t-3=\\dfrac{2+(2t-3)(1+t)}{1+t}=\\dfrac{2t^2-t-1}{1+t}=\\dfrac{(2t+1)(t-1)}{1+t}\\ge0$ vì $t\\ge1$.\n\nDo đó $A\\ge3$.\n\nDấu \"=\" xảy ra khi $t=1$ (khi đó $ab-1=0$ nên bổ đề thành đẳng thức), tức $xy=2$.\n\nThử lại: với $x=2,\\ y=1$ thì $A=\\dfrac{1}{5}+\\dfrac{4}{5}+2=3$.\n\nVậy giá trị nhỏ nhất của $A$ là $3$, đạt khi $xy=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "bất đẳng thức phụ 1/(1+a²)+1/(1+b²) ≥ 2/(1+ab) khi ab≥1 (chứng minh bằng xét hiệu)",
+   "đặt ẩn phụ b=y/2"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 174): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.4@p174",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(HSG tỉnh Hải Dương 2014 – 2015) Cho các số dương $x,y,z$ thay đổi thỏa mãn: $xy+yz+zx=xyz$. Tìm giá trị lớn nhất của biểu thức: $M=\\dfrac{1}{4x+3y+z}+\\dfrac{1}{x+4y+3z}+\\dfrac{1}{3x+y+4z}$.",
+  "noi_dung_sach": "(HSG tỉnh Hải Dương 2014 – 2015) Cho các số dương $x,y,z$ thay đổi thỏa mãn: $xy+yz+zx=xyz$. Tìm giá trị lớn nhất của biểu thức: $M=\\dfrac{1}{4x+3y+z}+\\dfrac{1}{x+4y+3z}+\\dfrac{1}{3x+y+4z}$.",
+  "dap_an": "$GTLN=\\dfrac{1}{8}$ khi $x=y=z=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng các nghịch đảo $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=1$ còn $M$ gồm các nghịch đảo của tổng nhiều biến, nên phải chặn từ trên mỗi $\\dfrac{1}{4x+3y+z}$ bằng tổ hợp của $\\dfrac{1}{x},\\dfrac{1}{y},\\dfrac{1}{z}$ nhờ hệ quả Cô-si $\\dfrac{1}{p+q}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{p}+\\dfrac{1}{q}\\right)$ dùng liên tiếp.\n\n**Bước 1.** Chia hai vế điều kiện cho $xyz>0$ để được $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=1$, dạng trùng với thứ mà các đánh giá sau sẽ sinh ra.\n\n**Bước 2.** Tách mẫu $4x+3y+z$ thành các cặp có thể dùng hệ quả trên: $4x+(3y+z)$, rồi $3y+z=2y+(y+z)$, và chọn các số hạng sao cho khi dấu \"=\" ta có $4x=3y+z$, $2y=y+z$, $y=z$.\n\n**Bước 3.** Thay ngược từ trong ra ngoài để chặn $\\dfrac{1}{4x+3y+z}$ bằng một tổ hợp tuyến tính của $\\dfrac{1}{x},\\dfrac{1}{y},\\dfrac{1}{z}$, rồi hoán vị vòng $x\\to y\\to z\\to x$ để có hai đánh giá còn lại.\n\n**Bước 4.** Cộng ba đánh giá để các hệ số của $\\dfrac{1}{x},\\dfrac{1}{y},\\dfrac{1}{z}$ cùng bằng nhau, dùng điều kiện ở bước 1 và kiểm tra dấu \"=\".\n\n**Chú ý:** Chọn sai cách tách (không để hai số trong mỗi cặp bằng nhau ở điểm rơi) thì dấu \"=\" không đạt được và đánh giá chỉ là chặn lỏng.\n\n**Phần 2. Trình bày**\n\nVì $x,y,z>0$, chia hai vế điều kiện cho $xyz$: $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=1$ (1)\n\nBổ đề: với $p,q>0$ thì $\\dfrac{1}{p+q}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{p}+\\dfrac{1}{q}\\right)$, vì $\\dfrac{1}{p}+\\dfrac{1}{q}-\\dfrac{4}{p+q}=\\dfrac{(p-q)^2}{pq(p+q)}\\ge0$.\n\nÁp dụng liên tiếp: $\\dfrac{1}{y+z}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{y}+\\dfrac{1}{z}\\right)$.\n\n$\\dfrac{1}{3y+z}=\\dfrac{1}{2y+(y+z)}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{2y}+\\dfrac{1}{y+z}\\right)\\le\\dfrac{1}{8y}+\\dfrac{1}{16}\\left(\\dfrac{1}{y}+\\dfrac{1}{z}\\right)=\\dfrac{3}{16y}+\\dfrac{1}{16z}$.\n\n$\\dfrac{1}{4x+3y+z}=\\dfrac{1}{4x+(3y+z)}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{4x}+\\dfrac{1}{3y+z}\\right)\\le\\dfrac{1}{16x}+\\dfrac{3}{64y}+\\dfrac{1}{64z}=\\dfrac{1}{64}\\left(\\dfrac{4}{x}+\\dfrac{3}{y}+\\dfrac{1}{z}\\right)$.\n\nHoán vị vòng: $\\dfrac{1}{x+4y+3z}\\le\\dfrac{1}{64}\\left(\\dfrac{1}{x}+\\dfrac{4}{y}+\\dfrac{3}{z}\\right)$ và $\\dfrac{1}{3x+y+4z}\\le\\dfrac{1}{64}\\left(\\dfrac{3}{x}+\\dfrac{1}{y}+\\dfrac{4}{z}\\right)$.\n\nCộng ba bất đẳng thức: $M\\le\\dfrac{1}{64}\\cdot8\\left(\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}\\right)=\\dfrac{1}{8}$ (theo (1)).\n\nDấu \"=\" xảy ra khi $4x=3y+z$, $2y=y+z$, $y=z$ (và các điều kiện tương tự khi hoán vị), tức $x=y=z$; kết hợp (1) được $x=y=z=3$.\n\nVậy giá trị lớn nhất của $M$ là $\\dfrac{1}{8}$, đạt khi $x=y=z=3$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ quả Cô-si 1/(p+q) ≤ (1/4)(1/p+1/q) dùng liên tiếp",
+   "điều kiện chuyển về tổng các nghịch đảo"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 174): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01609",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tách mẫu 4x+3y+z thành cặp, dùng hệ quả Cô-si 1/(p+q)≤(1/p+1/q)/4 liên tiếp với điều kiện nghịch đảo."
+ },
+ {
+  "ma_nguon": "C5B.5@p174",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG Nam Định 2014 – 2015) Xét các số thực $x,y,z$ thỏa mãn điều kiện $x+y+z=0$; $x+1>0$; $y+1>0$; $z+4>0$. Tìm giá trị lớn nhất của biểu thức $Q=\\dfrac{xy-1}{(x+1)(y+1)}+\\dfrac{z}{z+4}$.",
+  "noi_dung_sach": "(Đề thi chọn HSG Nam Định 2014 – 2015) Xét các số thực $x,y,z$ thỏa mãn điều kiện $x+y+z=0$; $x+1>0$; $y+1>0$; $z+4>0$. Tìm giá trị lớn nhất của biểu thức $Q=\\dfrac{xy-1}{(x+1)(y+1)}+\\dfrac{z}{z+4}$.",
+  "dap_an": "$GTLN=-\\dfrac{2}{3}$ khi $x=y=\\dfrac{1}{2}$, $z=-1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $x+y+z=0$ cho phép thay $z=-(x+y)$ nên $Q$ chỉ còn phụ thuộc $s=x+y$ sau khi bỏ được tích $xy$; và vì $xy-1=(x+1)(y+1)-(x+y+2)$ nên phân số đầu tách được thành $1$ trừ một phân số có tử là $x+y+2$, mà $(x+1)(y+1)$ là tích của hai số dương nên chặn được bằng Cô-si.\n\n**Bước 1.** Tách $xy-1=(x+1)(y+1)-(x+y+2)$ để phân số đầu thành $1-\\dfrac{x+y+2}{(x+1)(y+1)}$, chỉ còn tích $(x+1)(y+1)$ ở mẫu.\n\n**Bước 2.** Chặn tích $(x+1)(y+1)$ từ trên bằng $\\left(\\dfrac{x+y+2}{2}\\right)^2$ (hai thừa số dương) để biến phân số đầu thành hàm của $s=x+y$.\n\n**Bước 3.** Thay $z=-s$ vào phân số thứ hai rồi tách hằng số ra để có hai phân số mẫu $s+2$ và $4-s$, có tổng hai mẫu bằng $6$ không đổi.\n\n**Bước 4.** Chặn tích $(s+2)(4-s)$ từ trên bằng $9$ rồi lần lượt xét dấu \"=\" ở hai bất đẳng thức đã dùng.\n\n**Chú ý:** Phải kiểm tra $s+2=(x+1)+(y+1)>0$ và $4-s=z+4>0$ — chính là các điều kiện của đề — trước khi dùng Cô-si và chặn nghịch đảo.\n\n**Phần 2. Trình bày**\n\nĐặt $s=x+y$, khi đó $z=-s$; từ điều kiện của đề: $s+2=(x+1)+(y+1)>0$ và $4-s=z+4>0$.\n\nVì $xy-1=(x+1)(y+1)-(x+y+2)$ nên $\\dfrac{xy-1}{(x+1)(y+1)}=1-\\dfrac{s+2}{(x+1)(y+1)}$.\n\nDo $x+1>0$, $y+1>0$ nên $(x+1)(y+1)\\le\\dfrac{(s+2)^2}{4}$, suy ra $\\dfrac{s+2}{(x+1)(y+1)}\\ge\\dfrac{4}{s+2}$.\n\nVậy $\\dfrac{xy-1}{(x+1)(y+1)}\\le1-\\dfrac{4}{s+2}$.\n\nMặt khác $\\dfrac{z}{z+4}=1-\\dfrac{4}{z+4}=1-\\dfrac{4}{4-s}$.\n\nCộng lại: $Q\\le2-\\dfrac{4}{s+2}-\\dfrac{4}{4-s}=2-\\dfrac{4\\left[(s+2)+(4-s)\\right]}{(s+2)(4-s)}=2-\\dfrac{24}{(s+2)(4-s)}$.\n\nVì $s+2>0$, $4-s>0$ nên $(s+2)(4-s)\\le\\dfrac{\\left[(s+2)+(4-s)\\right]^2}{4}=9$, suy ra $\\dfrac{24}{(s+2)(4-s)}\\ge\\dfrac{24}{9}=\\dfrac{8}{3}$.\n\nDo đó $Q\\le2-\\dfrac{8}{3}=-\\dfrac{2}{3}$.\n\nDấu \"=\" xảy ra khi $x+1=y+1$ và $s+2=4-s$, tức $x=y$ và $s=1$, suy ra $x=y=\\dfrac{1}{2}$, $z=-1$ (thỏa mọi điều kiện của đề; khi đó $Q=-\\dfrac{1}{3}-\\dfrac{1}{3}=-\\dfrac{2}{3}$).\n\nVậy giá trị lớn nhất của $Q$ là $-\\dfrac{2}{3}$, đạt khi $x=y=\\dfrac{1}{2}$, $z=-1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế điều kiện x+y+z=0",
+   "(x+1)(y+1) ≤ ((x+y+2)/2)²",
+   "uv ≤ ((u+v)/2)² với u+v không đổi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 174): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.6@p175",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG Quảng Bình 2015 – 2016) Cho $a,b>0$ thỏa mãn $a+b\\ge2$. Tìm giá trị lớn nhất của biểu thức: $M=\\dfrac{1}{a+b^2}+\\dfrac{1}{b+a^2}$.",
+  "noi_dung_sach": "(Đề thi chọn HSG Quảng Bình 2015 – 2016) Cho $a,b>0$ thỏa mãn $a+b\\ge2$. Tìm giá trị lớn nhất của biểu thức: $M=\\dfrac{1}{a+b^2}+\\dfrac{1}{b+a^2}$.",
+  "dap_an": "$GTLN=1$ khi $a=b=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cần chặn từ trên một tổng nghịch đảo, nên không dùng được $\\dfrac{1}{u}+\\dfrac{1}{v}\\ge\\dfrac{4}{u+v}$ (chiều ngược); thay vào đó dùng Bu-nhi-a-cốp-xki cho mẫu $(a+b^2)(a+1)\\ge(a+b)^2$, nhờ đó mỗi phân số bị chặn bằng một phân số cùng mẫu $(a+b)^2$ và điều kiện $a+b\\ge2$ xử lý được bằng một biến $t=a+b$.\n\n**Bước 1.** Nhân mẫu $a+b^2$ với $a+1$ để dùng Bu-nhi-a-cốp-xki, được $(a+b^2)(a+1)\\ge(a+b)^2$ và suy ra $\\dfrac{1}{a+b^2}\\le\\dfrac{a+1}{(a+b)^2}$.\n\n**Bước 2.** Làm tương tự cho phân số thứ hai rồi cộng để $M$ bị chặn bởi một biểu thức chỉ phụ thuộc $t=a+b$.\n\n**Bước 3.** Dùng điều kiện $t\\ge2$ để chứng minh biểu thức đó không vượt quá hằng số bằng cách quy về một tích $(t-2)(t+1)\\ge0$.\n\n**Bước 4.** Tìm dấu \"=\": Bu-nhi-a-cốp-xki xảy ra đẳng thức ở hai nơi và $t=2$ phải đồng thời đúng.\n\n**Chú ý:** Bước cuối dùng $t\\ge2$ (chứ không phải $t\\le2$): biểu thức $\\dfrac{t+2}{t^2}$ giảm khi $t$ tăng.\n\n**Phần 2. Trình bày**\n\nTa có $(a+b^2)(a+1)-(a+b)^2=a+ab^2-2ab=a(b-1)^2\\ge0$ (đây là Bu-nhi-a-cốp-xki), nên $\\dfrac{1}{a+b^2}\\le\\dfrac{a+1}{(a+b)^2}$.\n\nTương tự $(b+a^2)(b+1)-(a+b)^2=b(a-1)^2\\ge0$ nên $\\dfrac{1}{b+a^2}\\le\\dfrac{b+1}{(a+b)^2}$.\n\nCộng hai bất đẳng thức, đặt $t=a+b\\ge2$: $M\\le\\dfrac{a+b+2}{(a+b)^2}=\\dfrac{t+2}{t^2}$.\n\nMà $1-\\dfrac{t+2}{t^2}=\\dfrac{t^2-t-2}{t^2}=\\dfrac{(t-2)(t+1)}{t^2}\\ge0$ vì $t\\ge2$, nên $\\dfrac{t+2}{t^2}\\le1$.\n\nVậy $M\\le1$.\n\nDấu \"=\" xảy ra khi $b=1$, $a=1$ (từ hai bất đẳng thức đầu) và $t=2$; bộ $a=b=1$ thỏa $a+b=2\\ge2$ và khi đó $M=\\dfrac{1}{2}+\\dfrac{1}{2}=1$.\n\nVậy giá trị lớn nhất của $M$ là $1$, đạt khi $a=b=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki (hoặc xét hiệu) (a+b²)(a+1) ≥ (a+b)²",
+   "đánh giá theo t=a+b≥2"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 175): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Bu-nhi-a-cốp-xki cho (a+b²)(a+1)≥(a+b)² chặn tổng phân thức với a+b≥2; không khớp mô tả tổng bình phương."
+ },
+ {
+  "ma_nguon": "C5B.7@p175",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $a,b,c$ là các số thực dương thỏa mãn $2ab+6bc+2ac=7abc$. Tìm giá trị nhỏ nhất của biểu thức $C=\\dfrac{4ab}{a+2b}+\\dfrac{9ac}{a+4c}+\\dfrac{4bc}{b+c}$.",
+  "noi_dung_sach": "Cho $a,b,c$ là các số thực dương thỏa mãn $2ab+6bc+2ac=7abc$. Tìm giá trị nhỏ nhất của biểu thức $C=\\dfrac{4ab}{a+2b}+\\dfrac{9ac}{a+4c}+\\dfrac{4bc}{b+c}$.",
+  "dap_an": "$GTNN=7$ khi $a=2$, $b=1$, $c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chia cho $abc$ thành tổng các nghịch đảo, còn mỗi số hạng của $C$ dạng $\\dfrac{4ab}{a+2b}$ đảo lại là $\\dfrac{4}{\\dfrac{1}{b}+\\dfrac{2}{a}}$ — nên đặt $p=\\dfrac{1}{a}$, $q=\\dfrac{1}{b}$, $r=\\dfrac{1}{c}$ thì $C$ là tổng ba phân số tử cố định, và tổng ba mẫu mới trùng đúng vế trái của điều kiện.\n\n**Bước 1.** Chia hai vế điều kiện cho $abc>0$ và đặt $p=\\dfrac{1}{a}$, $q=\\dfrac{1}{b}$, $r=\\dfrac{1}{c}$ để có một đẳng thức tuyến tính của $p,q,r$.\n\n**Bước 2.** Viết lại từng số hạng của $C$ bằng cách chia tử và mẫu cho tích hai biến, được $C=\\dfrac{4}{2p+q}+\\dfrac{9}{4p+r}+\\dfrac{4}{q+r}$.\n\n**Bước 3.** Nhận ra tổng ba mẫu $(2p+q)+(4p+r)+(q+r)$ đúng bằng vế trái của điều kiện, tức một hằng số, rồi dùng Bu-nhi-a-cốp-xki cho tổng nghịch đảo có tử là bình phương.\n\n**Bước 4.** Giải hệ để tìm $p,q,r$ từ điều kiện dấu \"=\" (ba mẫu tỉ lệ với $2,3,2$) rồi suy ra $a,b,c$.\n\n**Chú ý:** Hệ phương trình ở bước 4 phải có nghiệm dương, nếu không thì chưa chứng tỏ giá trị nhỏ nhất đạt được.\n\n**Phần 2. Trình bày**\n\nChia hai vế điều kiện cho $abc>0$: $\\dfrac{6}{a}+\\dfrac{2}{b}+\\dfrac{2}{c}=7$.\n\nĐặt $p=\\dfrac{1}{a}$, $q=\\dfrac{1}{b}$, $r=\\dfrac{1}{c}$ (dương) thì $6p+2q+2r=7$.\n\nTa có $\\dfrac{4ab}{a+2b}=\\dfrac{4}{\\dfrac{1}{b}+\\dfrac{2}{a}}=\\dfrac{4}{2p+q}$, tương tự $\\dfrac{9ac}{a+4c}=\\dfrac{9}{4p+r}$ và $\\dfrac{4bc}{b+c}=\\dfrac{4}{q+r}$.\n\nĐặt $u=2p+q$, $v=4p+r$, $w=q+r$ (đều dương) thì $u+v+w=6p+2q+2r=7$ và $C=\\dfrac{4}{u}+\\dfrac{9}{v}+\\dfrac{4}{w}$.\n\nTheo Bu-nhi-a-cốp-xki: $\\left(\\dfrac{4}{u}+\\dfrac{9}{v}+\\dfrac{4}{w}\\right)(u+v+w)\\ge(2+3+2)^2=49$.\n\nSuy ra $C\\ge\\dfrac{49}{7}=7$.\n\nDấu \"=\" xảy ra khi $\\dfrac{u}{2}=\\dfrac{v}{3}=\\dfrac{w}{2}$, cùng $u+v+w=7$ nên $u=2$, $v=3$, $w=2$.\n\nGiải $2p+q=2$, $4p+r=3$, $q+r=2$ được $p=\\dfrac{1}{2}$, $q=1$, $r=1$, tức $a=2$, $b=1$, $c=1$ (thỏa điều kiện: $2\\cdot2+6+2\\cdot2=14=7\\cdot2$).\n\nVậy giá trị nhỏ nhất của $C$ là $7$, đạt khi $a=2$, $b=1$, $c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki dạng 4/u+9/v+4/w ≥ (2+3+2)²/(u+v+w)",
+   "đặt ẩn phụ nghịch đảo p=1/a, q=1/b, r=1/c"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 175): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Đặt nghịch đảo rồi Bu-nhi-a-cốp-xki dạng phân thức với điều kiện tuyến tính; mô tả dạng chỉ gần khớp."
+ },
+ {
+  "ma_nguon": "C5B.8@p175",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z$ là các số thực thỏa mãn $xyz=8$. Tìm giá trị nhỏ nhất của: $P=\\dfrac{x^2}{x^2+2x+4}+\\dfrac{y^2}{y^2+2y+4}+\\dfrac{z^2}{z^2+2z+4}$.",
+  "noi_dung_sach": "Cho $x,y,z$ là các số thực thỏa mãn $xyz=8$. Tìm giá trị nhỏ nhất của: $P=\\dfrac{x^2}{x^2+2x+4}+\\dfrac{y^2}{y^2+2y+4}+\\dfrac{z^2}{z^2+2z+4}$.",
+  "dap_an": "$GTNN=1$ khi $x=y=z=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân số có tử $x^2$ trùng hạng tử bậc hai ở mẫu, nên chia cả tử và mẫu cho $x^2$ (được vì $xyz=8$ nên $x\\ne0$) thì mẫu thành $1+\\dfrac{2}{x}+\\dfrac{4}{x^2}$; đặt $u=\\dfrac{2}{x}$ thì phân số là $\\dfrac{1}{u^2+u+1}$ và điều kiện $xyz=8$ thành $uvw=1$.\n\n**Bước 1.** Chia tử và mẫu mỗi phân số cho $x^2$ (tương ứng $y^2$, $z^2$) rồi đặt $u=\\dfrac{2}{x}$, $v=\\dfrac{2}{y}$, $w=\\dfrac{2}{z}$ để chuyển bài sang dạng $\\sum\\dfrac{1}{u^2+u+1}$ với $uvw=1$.\n\n**Bước 2.** Quy đồng và so sánh tử với mẫu chung bằng cách xét hiệu, vì ba mẫu $u^2+u+1=\\left(u+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}$ luôn dương nên quy đồng không đổi chiều.\n\n**Bước 3.** Khai triển tử và mẫu theo $p=u+v+w$, $q=uv+vw+wu$ và dùng $uvw=1$ để hiệu chỉ còn một biểu thức đối xứng đơn giản.\n\n**Bước 4.** Nhận ra hiệu bằng một tổng bình phương, từ đó chặn được tổng ba phân số và tìm điều kiện dấu \"=\" là $u=v=w$.\n\n**Chú ý:** Không được giả sử $x,y,z>0$ nếu đề không cho; ở đây bất đẳng thức đúng với mọi số thực vì các mẫu luôn dương.\n\n**Phần 2. Trình bày**\n\nVì $xyz=8$ nên $x,y,z\\ne0$.\n\nĐặt $u=\\dfrac{2}{x}$, $v=\\dfrac{2}{y}$, $w=\\dfrac{2}{z}$ thì $uvw=\\dfrac{8}{xyz}=1$ và $\\dfrac{x^2}{x^2+2x+4}=\\dfrac{1}{1+\\dfrac{2}{x}+\\dfrac{4}{x^2}}=\\dfrac{1}{u^2+u+1}$; tương tự cho $y,z$.\n\nVậy $P=\\dfrac{1}{u^2+u+1}+\\dfrac{1}{v^2+v+1}+\\dfrac{1}{w^2+w+1}$ với $uvw=1$.\n\nDo $t^2+t+1=\\left(t+\\dfrac{1}{2}\\right)^2+\\dfrac{3}{4}>0$ nên $P=\\dfrac{S}{\\Pi}$ với $\\Pi=(u^2+u+1)(v^2+v+1)(w^2+w+1)>0$ và $S=\\sum(v^2+v+1)(w^2+w+1)$.\n\nĐặt $p=u+v+w$, $q=uv+vw+wu$; dùng $uvw=1$, khai triển được $\\Pi=p^2+pq+q^2$ và $S=2p^2+pq+q^2-3q$.\n\nSuy ra $S-\\Pi=p^2-3q=u^2+v^2+w^2-uv-vw-wu=\\dfrac{1}{2}\\left[(u-v)^2+(v-w)^2+(w-u)^2\\right]\\ge0$.\n\nDo đó $P=\\dfrac{S}{\\Pi}\\ge1$.\n\nDấu \"=\" xảy ra khi $u=v=w$, kết hợp $uvw=1$ được $u=v=w=1$ tức $x=y=z=2$.\n\nVậy giá trị nhỏ nhất của $P$ là $1$, đạt khi $x=y=z=2$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ u=2/x (uvw=1)",
+   "quy đồng, biến đổi tương đương, tổng và tích đối xứng p=u+v+w, q=uv+vw+wu"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 175): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.9@p175",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số dương $a,b,c$ thỏa mãn điều kiện $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{9}{1-2(ab+bc+ca)}+\\dfrac{2}{abc}+27abc-27(ab+bc+ca)$.",
+  "noi_dung_sach": "Cho ba số dương $a,b,c$ thỏa mãn điều kiện $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{9}{1-2(ab+bc+ca)}+\\dfrac{2}{abc}+27abc-27(ab+bc+ca)$.",
+  "dap_an": "$GTNN=73$ khi $a=b=c=\\dfrac{1}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $a+b+c=1$ thì $1-2(ab+bc+ca)=a^2+b^2+c^2$, còn $27abc-27(ab+bc+ca)=-27(a+b)(b+c)(c+a)$ (vì $(a+b+c)(ab+bc+ca)-abc=(a+b)(b+c)(c+a)$); đề vì thế tách thành hai khối độc lập, mỗi khối có một công cụ Cô-si/Bu-nhi-a-cốp-xki riêng và cùng đạt dấu \"=\" khi $a=b=c$.\n\n**Bước 1.** Dùng $(a+b+c)^2=1$ để viết mẫu của phân số đầu là $a^2+b^2+c^2$ và nhóm $27abc-27(ab+bc+ca)$ thành $-27(a+b)(b+c)(c+a)$.\n\n**Bước 2.** Chặn $-27(a+b)(b+c)(c+a)$ từ dưới bằng Cô-si ba số cho ba thừa số có tổng $2(a+b+c)=2$ không đổi.\n\n**Bước 3.** Chặn $\\dfrac{2}{abc}$ nhờ $\\dfrac{1}{abc}=\\dfrac{a+b+c}{abc}=\\dfrac{1}{ab}+\\dfrac{1}{bc}+\\dfrac{1}{ca}\\ge\\dfrac{9}{ab+bc+ca}$ rồi gộp với $\\dfrac{9}{a^2+b^2+c^2}$.\n\n**Bước 4.** Gộp thành tổng $\\dfrac{1}{u}+\\dfrac{1}{v}+\\dfrac{1}{w}$ với $u=a^2+b^2+c^2$, $v=w=ab+bc+ca$ có $u+v+w=(a+b+c)^2=1$, rồi dùng $\\dfrac{1}{u}+\\dfrac{1}{v}+\\dfrac{1}{w}\\ge\\dfrac{9}{u+v+w}$.\n\n**Chú ý:** Hai đánh giá phải cùng đạt dấu \"=\" tại $a=b=c=\\dfrac{1}{3}$ thì mới chốt được giá trị nhỏ nhất; nếu một đánh giá lỏng ở điểm đó thì kết quả sẽ lớn hơn thật.\n\n**Phần 2. Trình bày**\n\nĐặt $q=ab+bc+ca$.\n\nVì $(a+b+c)^2=1$ nên $1-2q=a^2+b^2+c^2$.\n\nTa có $(a+b)(b+c)(c+a)=(a+b+c)(ab+bc+ca)-abc=q-abc$, nên $27abc-27q=-27(a+b)(b+c)(c+a)$.\n\nTheo Cô-si ba số dương: $(a+b)(b+c)(c+a)\\le\\left(\\dfrac{(a+b)+(b+c)+(c+a)}{3}\\right)^3=\\dfrac{8}{27}$, suy ra $27abc-27q\\ge-8$ (1).\n\nTheo Cô-si ba số dương $ab,bc,ca$: $q\\left(\\dfrac{1}{ab}+\\dfrac{1}{bc}+\\dfrac{1}{ca}\\right)\\ge9$.\n\nMà $\\dfrac{1}{ab}+\\dfrac{1}{bc}+\\dfrac{1}{ca}=\\dfrac{a+b+c}{abc}=\\dfrac{1}{abc}$ nên $\\dfrac{2}{abc}\\ge\\dfrac{18}{q}$ (2).\n\nTừ (2): $\\dfrac{9}{a^2+b^2+c^2}+\\dfrac{2}{abc}\\ge9\\left(\\dfrac{1}{a^2+b^2+c^2}+\\dfrac{1}{q}+\\dfrac{1}{q}\\right)\\ge\\dfrac{81}{(a^2+b^2+c^2)+q+q}=\\dfrac{81}{(a+b+c)^2}=81$ (3), dùng $\\dfrac{1}{u}+\\dfrac{1}{v}+\\dfrac{1}{w}\\ge\\dfrac{9}{u+v+w}$ với ba số dương.\n\nCộng (3) và (1): $P\\ge81-8=73$.\n\nDấu \"=\" xảy ra khi $a+b=b+c=c+a$ và $ab=bc=ca$ và $a^2+b^2+c^2=ab+bc+ca$, tức $a=b=c=\\dfrac{1}{3}$ (khi đó $P=27+54+1-9=73$).\n\nVậy giá trị nhỏ nhất của $P$ là $73$, đạt khi $a=b=c=\\dfrac{1}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Cô-si ba số (a+b+c)(1/a+1/b+1/c) ≥ 9",
+   "bất đẳng thức 1/u+1/v+1/w ≥ 9/(u+v+w)",
+   "Cô-si ba số cho (a+b)(b+c)(c+a)",
+   "thế điều kiện a+b+c=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 175): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01601",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Nhiều Cô-si ba số đối xứng với a+b+c=1, tách thành hai khối cùng điểm rơi a=b=c."
+ },
+ {
+  "ma_nguon": "C5B.10@p175",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG Phú Yên 2014 – 2015) Cho $3$ số dương $x,y,z$ thỏa mãn $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=2010$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{1}{2x+y+z}+\\dfrac{1}{x+2y+z}+\\dfrac{1}{x+y+2z}$.",
+  "noi_dung_sach": "(Đề thi chọn HSG Phú Yên 2014 – 2015) Cho $3$ số dương $x,y,z$ thỏa mãn $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=2010$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{1}{2x+y+z}+\\dfrac{1}{x+2y+z}+\\dfrac{1}{x+y+2z}$.",
+  "dap_an": "$GTLN=\\dfrac{1005}{2}$ khi $x=y=z=\\dfrac{1}{670}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho tổng các nghịch đảo còn $P$ là tổng các nghịch đảo của tổng, nên cần chặn từ trên $\\dfrac{1}{2x+y+z}$ bằng một tổ hợp của $\\dfrac{1}{x},\\dfrac{1}{y},\\dfrac{1}{z}$ nhờ hệ quả Cô-si $\\dfrac{1}{p+q}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{p}+\\dfrac{1}{q}\\right)$; đề đối xứng nên dự đoán dấu \"=\" tại $x=y=z$.\n\n**Bước 1.** Tách mẫu $2x+y+z=(x+y)+(x+z)$ thành hai nhóm để dùng hệ quả Cô-si một lần, rồi tiếp tục tách từng nhóm $x+y$ và $x+z$ để dùng thêm lần nữa.\n\n**Bước 2.** Sau hai lần dùng được $\\dfrac{1}{2x+y+z}\\le\\dfrac{1}{16}\\left(\\dfrac{2}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}\\right)$, rồi hoán vị vòng để có hai đánh giá còn lại.\n\n**Bước 3.** Cộng ba đánh giá, gom các hệ số của $\\dfrac{1}{x},\\dfrac{1}{y},\\dfrac{1}{z}$ và thay điều kiện $\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}=2010$ để ra một hằng số.\n\n**Bước 4.** Tìm điều kiện dấu \"=\": hai số trong mỗi cặp phải bằng nhau nên $x=y=z$, rồi dùng điều kiện đề để tính giá trị cụ thể.\n\n**Chú ý:** Dấu \"=\" phải xảy ra ở cả hai lần dùng Cô-si trong mỗi đánh giá, nên không thể tách mẫu theo cách khác làm hai số trong cặp không bằng nhau ở điểm rơi.\n\n**Phần 2. Trình bày**\n\nVới $p,q>0$ có $\\dfrac{1}{p}+\\dfrac{1}{q}-\\dfrac{4}{p+q}=\\dfrac{(p-q)^2}{pq(p+q)}\\ge0$, nên $\\dfrac{1}{p+q}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{p}+\\dfrac{1}{q}\\right)$ (*).\n\nÁp dụng (*) cho $p=x+y$, $q=x+z$: $\\dfrac{1}{2x+y+z}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{x+y}+\\dfrac{1}{x+z}\\right)$.\n\nÁp dụng (*) lần nữa: $\\dfrac{1}{x+y}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{x}+\\dfrac{1}{y}\\right)$ và $\\dfrac{1}{x+z}\\le\\dfrac{1}{4}\\left(\\dfrac{1}{x}+\\dfrac{1}{z}\\right)$.\n\nSuy ra $\\dfrac{1}{2x+y+z}\\le\\dfrac{1}{16}\\left(\\dfrac{2}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}\\right)$.\n\nTương tự $\\dfrac{1}{x+2y+z}\\le\\dfrac{1}{16}\\left(\\dfrac{1}{x}+\\dfrac{2}{y}+\\dfrac{1}{z}\\right)$ và $\\dfrac{1}{x+y+2z}\\le\\dfrac{1}{16}\\left(\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{2}{z}\\right)$.\n\nCộng ba bất đẳng thức: $P\\le\\dfrac{1}{16}\\cdot4\\left(\\dfrac{1}{x}+\\dfrac{1}{y}+\\dfrac{1}{z}\\right)=\\dfrac{1}{4}\\cdot2010=\\dfrac{1005}{2}$.\n\nDấu \"=\" xảy ra khi $x=y=z$; kết hợp $\\dfrac{3}{x}=2010$ được $x=y=z=\\dfrac{1}{670}$.\n\nVậy giá trị lớn nhất của $P$ là $\\dfrac{1005}{2}$, đạt khi $x=y=z=\\dfrac{1}{670}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hệ quả Cô-si 1/(p+q) ≤ (1/4)(1/p+1/q) dùng hai lần (Cô-si bốn số)",
+   "thế điều kiện tổng nghịch đảo"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 175): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.11@p176",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG tỉnh Phú Yên 2015 – 2016) Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c=1$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{a}{9a^3+3b^2+c}+\\dfrac{b}{9b^3+3c^2+a}+\\dfrac{c}{9c^3+3a^2+b}$.",
+  "noi_dung_sach": "(Đề thi chọn HSG tỉnh Phú Yên 2015 – 2016) Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c=1$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{a}{9a^3+3b^2+c}+\\dfrac{b}{9b^3+3c^2+a}+\\dfrac{c}{9c^3+3a^2+b}$.",
+  "dap_an": "$GTLN=1$ khi $a=b=c=\\dfrac{1}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Cần chặn mỗi phân thức từ trên, tức chặn mẫu $9a^3+3b^2+c$ từ dưới; mẫu là tổng ba số hạng nên dùng bất đẳng thức Bu-nhi-a-cốp-xki dạng Engel, chọn các mẫu số sao cho dấu \"=\" xảy ra khi $a=b=c=\\dfrac{1}{3}$ (điểm rơi theo đối xứng).\n\n**Bước 1.** Viết mẫu thành tổng ba phân thức dạng $\\dfrac{p^2}{m}$: $9a^3=\\dfrac{(3a)^2}{1/a}$, $3b^2=\\dfrac{(3b)^2}{3}$, $c=\\dfrac{(3c)^2}{9c}$, chọn sao cho tử cộng lại thành $3(a+b+c)=3$ — một số không đổi nhờ điều kiện đề bài.\n\n**Bước 2.** Áp dụng Bu-nhi-a-cốp-xki dạng Engel để được $9a^3+3b^2+c\\ge\\dfrac{9}{\\dfrac{1}{a}+3+9c}$, rồi nhân hai vế với $a>0$ để chặn $\\dfrac{a}{9a^3+3b^2+c}$ bằng một đa thức đơn giản.\n\n**Bước 3.** Viết hai đánh giá còn lại bằng cách hoán vị vòng $a\\to b\\to c\\to a$, rồi cộng ba đánh giá lại để chỉ còn $ab+bc+ca$.\n\n**Bước 4.** Dùng $(a+b+c)^2\\ge3(ab+bc+ca)$ để chặn $ab+bc+ca$ và kiểm tra dấu \"=\" tại $a=b=c=\\dfrac{1}{3}$ cho cả hai bất đẳng thức đã dùng.\n\n**Chú ý:** Bất đẳng thức Engel $\\dfrac{p_1^2}{m_1}+\\dfrac{p_2^2}{m_2}+\\dfrac{p_3^2}{m_3}\\ge\\dfrac{(p_1+p_2+p_3)^2}{m_1+m_2+m_3}$ chỉ dùng được khi mọi $m_i>0$; chọn $m_i$ sai thì không có dấu \"=\" tại điểm rơi.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c>0$, áp dụng bất đẳng thức Bu-nhi-a-cốp-xki dạng Engel (các mẫu $\\dfrac{1}{a},\\,3,\\,9c$ đều dương):\n\n$9a^3+3b^2+c=\\dfrac{(3a)^2}{\\dfrac{1}{a}}+\\dfrac{(3b)^2}{3}+\\dfrac{(3c)^2}{9c}\\ge\\dfrac{(3a+3b+3c)^2}{\\dfrac{1}{a}+3+9c}=\\dfrac{9}{\\dfrac{1}{a}+3+9c}$\n\nSuy ra $\\dfrac{a}{9a^3+3b^2+c}\\le\\dfrac{a\\left(\\dfrac{1}{a}+3+9c\\right)}{9}=\\dfrac{1+3a+9ac}{9}$\n\nTương tự: $\\dfrac{b}{9b^3+3c^2+a}\\le\\dfrac{1+3b+9ab}{9}$ và $\\dfrac{c}{9c^3+3a^2+b}\\le\\dfrac{1+3c+9bc}{9}$\n\nCộng ba bất đẳng thức: $P\\le\\dfrac{3+3(a+b+c)+9(ab+bc+ca)}{9}=\\dfrac{6+9(ab+bc+ca)}{9}$\n\nVì $(a+b+c)^2\\ge3(ab+bc+ca)$ nên $ab+bc+ca\\le\\dfrac{1}{3}$.\n\nDo đó $P\\le\\dfrac{6+3}{9}=1$.\n\nDấu \"=\" xảy ra khi $a=b=c=\\dfrac{1}{3}$ (khi đó $3a^2=b=\\dfrac{1}{3}$, các bất đẳng thức Engel đều thành đẳng thức, và $P=3\\cdot\\dfrac{1/3}{1}=1$).\n\nVậy $GTLN$ của $P$ bằng $1$, đạt khi $a=b=c=\\dfrac{1}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki dạng Engel",
+   "(a+b+c)² ≥ 3(ab+bc+ca)",
+   "dự đoán điểm rơi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 176): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Bu-nhi-a-cốp-xki dạng Engel chặn mẫu, điều kiện a+b+c=1; mô tả dạng chỉ gần khớp."
+ },
+ {
+  "ma_nguon": "C5B.12@p176",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG Gia Lai 2015 – 2016) Cho các số thực $a,b,c,d$ thỏa mãn $4a^2+b^2=2$ và $c+d=4$. Tìm giá trị lớn nhất của biểu thức $P=2ac+bd+cd$.",
+  "noi_dung_sach": "(Đề thi chọn HSG Gia Lai 2015 – 2016) Cho các số thực $a,b,c,d$ thỏa mãn $4a^2+b^2=2$ và $c+d=4$. Tìm giá trị lớn nhất của biểu thức $P=2ac+bd+cd$.",
+  "dap_an": "$GTLN=8$ khi $a=\\dfrac{1}{2},\\ b=1,\\ c=d=2$ (hoặc $a=-\\dfrac{1}{2},\\ b=-1,\\ c=d=2$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho hai ràng buộc rời nhau ($4a^2+b^2=2$ và $c+d=4$) còn $P$ có các tích chéo $ac,\\ bd$; muốn dùng ràng buộc thứ nhất phải tách $ac,\\ bd$ thành bình phương của $a,b$ cộng bình phương của $c,d$ bằng Cô-si có hệ số, rồi để ràng buộc $c+d=4$ lo phần còn lại.\n\n**Bước 1.** Dự đoán điểm rơi: $P$ đối xứng giữa cặp $(2a,b)$ và cặp $(c,d)$ nên thử $c=d=2$ và $2a=b$, từ đó $2a=b=1$ và $\\dfrac{c}{2}=2a$, $\\dfrac{d}{2}=b$ — đây là dữ kiện để chọn hệ số của Cô-si.\n\n**Bước 2.** Chặn $2ac$ bằng $4a^2+\\dfrac{c^2}{4}$ và $bd$ bằng $b^2+\\dfrac{d^2}{4}$ nhờ bình phương $\\left(2a-\\dfrac{c}{2}\\right)^2\\ge0$ và $\\left(b-\\dfrac{d}{2}\\right)^2\\ge0$, rồi cộng lại để dùng $4a^2+b^2=2$.\n\n**Bước 3.** Gộp $\\dfrac{c^2+d^2}{4}+cd$ thành $\\dfrac{(c+d)^2}{4}+\\dfrac{cd}{2}$ để dùng được $c+d=4$.\n\n**Bước 4.** Chặn $cd$ bằng $\\dfrac{(c+d)^2}{4}$ rồi kết luận và đối chiếu các điều kiện dấu \"=\".\n\n**Phần 2. Trình bày**\n\nTa có $\\left(2a-\\dfrac{c}{2}\\right)^2\\ge0\\Rightarrow 2ac\\le4a^2+\\dfrac{c^2}{4}$ và $\\left(b-\\dfrac{d}{2}\\right)^2\\ge0\\Rightarrow bd\\le b^2+\\dfrac{d^2}{4}$.\n\nCộng hai bất đẳng thức và dùng $4a^2+b^2=2$: $2ac+bd\\le2+\\dfrac{c^2+d^2}{4}$\n\nDo đó $P\\le2+\\dfrac{c^2+d^2}{4}+cd=2+\\dfrac{(c+d)^2}{4}+\\dfrac{cd}{2}=2+4+\\dfrac{cd}{2}$ (vì $c+d=4$)\n\nMà $cd\\le\\dfrac{(c+d)^2}{4}=4$ nên $P\\le6+2=8$.\n\nDấu \"=\" xảy ra khi $2a=\\dfrac{c}{2},\\ b=\\dfrac{d}{2},\\ c=d$ cùng với $c+d=4$, tức $c=d=2$, $a=\\dfrac{1}{2}$, $b=1$ (thỏa $4a^2+b^2=1+1=2$).\n\nKhi đó $P=2\\cdot\\dfrac{1}{2}\\cdot2+1\\cdot2+2\\cdot2=8$.\n\nVậy $GTLN$ của $P$ bằng $8$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Cô-si hai số (dạng 2xy ≤ kx²+y²/k)",
+   "(c+d)² ≥ 4cd",
+   "dự đoán điểm rơi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 176): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01604",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Cô-si hai số có hệ số theo điểm rơi nhiều biến, hai ràng buộc rời nhau."
+ },
+ {
+  "ma_nguon": "C5B.13@p176",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chọn HSG tỉnh Hoà Bình 2015 – 2016) Cho $x>0$, $y>0$, $z>0$ và $xyz=1$. Tìm giá trị lớn nhất: $P=\\dfrac{2017}{x+y+1}+\\dfrac{2017}{y+z+1}+\\dfrac{2017}{z+x+1}$.",
+  "noi_dung_sach": "(Đề thi chọn HSG tỉnh Hoà Bình 2015 – 2016) Cho $x>0$, $y>0$, $z>0$ và $xyz=1$. Tìm giá trị lớn nhất: $P=\\dfrac{2017}{x+y+1}+\\dfrac{2017}{y+z+1}+\\dfrac{2017}{z+x+1}$.",
+  "dap_an": "$GTLN=2017$ khi $x=y=z=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện $xyz=1$ cho phép đưa $x,y,z$ về lập phương của ba số dương có tích bằng $1$; khi đó $x+y=p^3+q^3$ chặn được bằng $pq(p+q)$, và số $1$ ở mẫu đổi thành $pqr$ để mẫu có nhân tử chung $p+q+r$.\n\n**Bước 1.** Đặt $x=p^3,\\ y=q^3,\\ z=r^3$ với $p,q,r>0$, khi đó $xyz=1$ cho $pqr=1$ (điểm rơi đối xứng là $p=q=r=1$).\n\n**Bước 2.** Chứng minh $p^3+q^3\\ge pq(p+q)$ bằng cách biến đổi tương đương về $(p+q)(p-q)^2\\ge0$.\n\n**Bước 3.** Thay vào mẫu: $x+y+1\\ge pq(p+q)+pqr=pq(p+q+r)$, rồi dùng $\\dfrac{1}{pq}=r$ để mỗi phân thức có tử bằng một chữ và mẫu chung $p+q+r$.\n\n**Bước 4.** Cộng ba phân thức để tử cộng thành đúng mẫu, từ đó $P$ bị chặn trên bởi một hằng số.\n\n**Phần 2. Trình bày**\n\nĐặt $x=p^3,\\ y=q^3,\\ z=r^3$ với $p,q,r>0$.\n\nTừ $xyz=1$ suy ra $pqr=1$.\n\nTa có $p^3+q^3-pq(p+q)=(p+q)(p-q)^2\\ge0$ nên $p^3+q^3\\ge pq(p+q)$.\n\nDo đó $x+y+1\\ge pq(p+q)+pqr=pq(p+q+r)$\n\n$\\Rightarrow\\dfrac{1}{x+y+1}\\le\\dfrac{1}{pq(p+q+r)}=\\dfrac{r}{p+q+r}$ (vì $pqr=1$)\n\nTương tự: $\\dfrac{1}{y+z+1}\\le\\dfrac{p}{p+q+r}$ và $\\dfrac{1}{z+x+1}\\le\\dfrac{q}{p+q+r}$\n\nCộng ba bất đẳng thức: $\\dfrac{1}{x+y+1}+\\dfrac{1}{y+z+1}+\\dfrac{1}{z+x+1}\\le\\dfrac{p+q+r}{p+q+r}=1$\n\nSuy ra $P\\le2017$.\n\nDấu \"=\" xảy ra khi $p=q=r$, mà $pqr=1$ nên $p=q=r=1$, tức $x=y=z=1$ (khi đó $P=3\\cdot\\dfrac{2017}{3}=2017$).\n\nVậy $GTLN$ của $P$ bằng $2017$ khi $x=y=z=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt x=p³ (căn bậc ba)",
+   "p³+q³ ≥ pq(p+q)",
+   "xyz=1 ⇒ pqr=1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 176): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.14@p176",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chuyên Lào Cai 2016 – 2017) Cho $a,b,c$ là các số dương thỏa mãn: $\\dfrac{1}{a+1}+\\dfrac{1}{b+1}+\\dfrac{1}{c+1}=2$. Tìm giá trị nhỏ nhất của $P=\\dfrac{1}{8a^2+1}+\\dfrac{1}{8b^2+1}+\\dfrac{1}{8c^2+1}$.",
+  "noi_dung_sach": "(Đề thi chuyên Lào Cai 2016 – 2017) Cho $a,b,c$ là các số dương thỏa mãn: $\\dfrac{1}{a+1}+\\dfrac{1}{b+1}+\\dfrac{1}{c+1}=2$. Tìm giá trị nhỏ nhất của $P=\\dfrac{1}{8a^2+1}+\\dfrac{1}{8b^2+1}+\\dfrac{1}{8c^2+1}$.",
+  "dap_an": "$GTNN=1$ khi $a=b=c=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chỉ chứa $\\dfrac{1}{a+1}$ còn $P$ chứa $\\dfrac{1}{8a^2+1}$ nên cần một đánh giá \"từng biến\" dạng $\\dfrac{1}{8a^2+1}\\ge\\dfrac{k}{a+1}+m$ để cộng lại được; hệ số $k,m$ tìm từ điểm rơi $a=b=c=\\dfrac{1}{2}$ (đối xứng, và thỏa điều kiện vì $3\\cdot\\dfrac{2}{3}=2$).\n\n**Bước 1.** Tại $a=\\dfrac{1}{2}$ ta có $\\dfrac{1}{8a^2+1}=\\dfrac{1}{3}$ và $\\dfrac{1}{a+1}=\\dfrac{2}{3}$; so độ dốc hai hàm tại điểm này để tìm hệ số, ra dự đoán $\\dfrac{1}{8a^2+1}\\ge\\dfrac{2}{a+1}-1$.\n\n**Bước 2.** Chứng minh dự đoán bằng cách quy đồng và đưa hiệu hai vế về một biểu thức không âm với mọi $a>0$.\n\n**Bước 3.** Viết đánh giá cho cả ba biến, cộng lại rồi thay điều kiện $\\sum\\dfrac{1}{a+1}=2$ để ra hằng số.\n\n**Chú ý:** Đánh giá này đúng cho mọi $a>0$ (kể cả $a>1$ khi vế phải âm), nên không phải chia trường hợp.\n\n**Phần 2. Trình bày**\n\nVới $a>0$:\n\n$\\dfrac{1}{8a^2+1}-\\dfrac{1-a}{1+a}=\\dfrac{(1+a)-(1-a)(8a^2+1)}{(8a^2+1)(1+a)}=\\dfrac{8a^3-8a^2+2a}{(8a^2+1)(1+a)}=\\dfrac{2a(2a-1)^2}{(8a^2+1)(1+a)}\\ge0$\n\nDo đó $\\dfrac{1}{8a^2+1}\\ge\\dfrac{1-a}{1+a}=\\dfrac{2}{a+1}-1$.\n\nTương tự $\\dfrac{1}{8b^2+1}\\ge\\dfrac{2}{b+1}-1$ và $\\dfrac{1}{8c^2+1}\\ge\\dfrac{2}{c+1}-1$.\n\nCộng ba bất đẳng thức: $P\\ge2\\left(\\dfrac{1}{a+1}+\\dfrac{1}{b+1}+\\dfrac{1}{c+1}\\right)-3=2\\cdot2-3=1$.\n\nDấu \"=\" xảy ra khi $2a(2a-1)^2=0$ và hai điều kiện tương tự, tức $a=b=c=\\dfrac{1}{2}$ (các số dương); khi đó $\\sum\\dfrac{1}{a+1}=3\\cdot\\dfrac{2}{3}=2$ thỏa điều kiện và $P=3\\cdot\\dfrac{1}{3}=1$.\n\nVậy $GTNN$ của $P$ bằng $1$ khi $a=b=c=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đánh giá tiếp tuyến theo 1/(a+1)",
+   "biến đổi tương đương 8a³-8a²+2a=2a(2a-1)²"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 176): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.15@p176",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chuyên Ninh Thuận 2016 – 2017) Cho ba số thực $a,b,c$ thỏa mãn điều kiện $ab+bc+ca=3$. Tìm giá trị nhỏ nhất của biểu thức: $P=a^2+b^2+c^2-6(a+b+c)+2017$.",
+  "noi_dung_sach": "(Đề thi chuyên Ninh Thuận 2016 – 2017) Cho ba số thực $a,b,c$ thỏa mãn điều kiện $ab+bc+ca=3$. Tìm giá trị nhỏ nhất của biểu thức: $P=a^2+b^2+c^2-6(a+b+c)+2017$.",
+  "dap_an": "$GTNN=2002$ khi $a=b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đề cho $ab+bc+ca$ còn $P$ chứa $a^2+b^2+c^2$ và $a+b+c$, đúng ba đại lượng mà bình phương $(a+b+c)^2$ nối lại với nhau, nên đặt $s=a+b+c$ để $P$ thành tam thức bậc hai theo một biến $s$.\n\n**Bước 1.** Dùng $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$ và $ab+bc+ca=3$ để biểu diễn $a^2+b^2+c^2$ qua $s$.\n\n**Bước 2.** Thay vào $P$ để $P$ chỉ còn biến $s$, rồi đưa về dạng bình phương một nhị thức cộng một hằng số.\n\n**Bước 3.** Kết luận cực trị từ bình phương không âm, rồi chỉ ra bộ số thỏa $ab+bc+ca=3$ mà $s$ nhận đúng giá trị làm bình phương bằng $0$.\n\n**Chú ý:** Không cần điều kiện $s^2\\ge9$; chỉ cần chỉ ra một bộ $(a,b,c)$ thật sự đạt giá trị $s$ cần thiết.\n\n**Phần 2. Trình bày**\n\nĐặt $s=a+b+c$.\n\nVì $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$ nên $a^2+b^2+c^2=s^2-6$.\n\n$P=s^2-6-6s+2017=s^2-6s+2011=(s-3)^2+2002\\ge2002$\n\nDấu \"=\" xảy ra khi $s=3$.\n\nBộ $a=b=c=1$ thỏa $ab+bc+ca=3$ và có $s=3$ nên giá trị $2002$ đạt được.\n\nVậy $GTNN$ của $P$ bằng $2002$ khi $a=b=c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "(a+b+c)²=a²+b²+c²+2(ab+bc+ca)",
+   "đưa về bình phương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 176): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03305",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điều kiện đối xứng ab+bc+ca=3, đặt s=a+b+c đưa P về tam thức theo s."
+ },
+ {
+  "ma_nguon": "C5B.16@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Đề thi chuyên Bình Phước 2013 – 2014) Cho $a,b$ là hai số dương thỏa mãn $a+b\\ge1$. Tìm giá trị nhỏ nhất của biểu thức: $F=(a^3+b^3)^2+(a^2+b^2)+\\dfrac{3}{2}ab$.",
+  "noi_dung_sach": "(Đề thi chuyên Bình Phước 2013 – 2014) Cho $a,b$ là hai số dương thỏa mãn $a+b\\ge1$. Tìm giá trị nhỏ nhất của biểu thức: $F=(a^3+b^3)^2+(a^2+b^2)+\\dfrac{3}{2}ab$.",
+  "dap_an": "$GTNN=\\dfrac{15}{16}$ khi $a=b=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi hạng tử của $F$ đều tăng theo $a,b$ còn điều kiện là $a+b\\ge1$, nên cần chặn từng nhóm hạng tử từ dưới bằng một biểu thức của riêng $a+b$ (hoặc của $a+b$ và $ab$) rồi dùng $a+b\\ge1$; điểm rơi nghiêng về $a=b$ và $a+b=1$.\n\n**Bước 1.** Chặn $a^3+b^3$ từ dưới bằng $\\dfrac{(a+b)^3}{4}$ nhờ biến đổi tương đương, rồi dùng $a+b\\ge1$ để thành hằng số.\n\n**Bước 2.** Viết $a^2+b^2+\\dfrac{3}{2}ab=(a+b)^2-\\dfrac{ab}{2}$, để các hạng tử chỉ còn $(a+b)^2$ và $ab$.\n\n**Bước 3.** Chặn $ab$ từ trên bằng $\\dfrac{(a+b)^2}{4}$ để cả nhóm này bị chặn dưới bởi một bội của $(a+b)^2$, rồi dùng $a+b\\ge1$.\n\n**Bước 4.** Cộng hai cận dưới và kiểm tra các bất đẳng thức đều có dấu \"=\" tại $a=b=\\dfrac{1}{2}$.\n\n**Phần 2. Trình bày**\n\nTa có $4(a^3+b^3)-(a+b)^3=3(a+b)(a-b)^2\\ge0$ nên $a^3+b^3\\ge\\dfrac{(a+b)^3}{4}\\ge\\dfrac{1}{4}$ (vì $a+b\\ge1$).\n\nSuy ra $(a^3+b^3)^2\\ge\\dfrac{1}{16}$.\n\nMặt khác $a^2+b^2+\\dfrac{3}{2}ab=(a+b)^2-\\dfrac{ab}{2}\\ge(a+b)^2-\\dfrac{(a+b)^2}{8}=\\dfrac{7}{8}(a+b)^2\\ge\\dfrac{7}{8}$ (dùng $ab\\le\\dfrac{(a+b)^2}{4}$ và $a+b\\ge1$).\n\nCộng lại: $F\\ge\\dfrac{1}{16}+\\dfrac{7}{8}=\\dfrac{15}{16}$.\n\nDấu \"=\" xảy ra khi $a=b$ và $a+b=1$, tức $a=b=\\dfrac{1}{2}$.\n\nKhi đó $F=\\dfrac{1}{16}+\\dfrac{1}{2}+\\dfrac{3}{8}=\\dfrac{15}{16}$.\n\nVậy $GTNN$ của $F$ bằng $\\dfrac{15}{16}$ khi $a=b=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "4(a³+b³) ≥ (a+b)³",
+   "(a+b)² ≥ 4ab",
+   "điều kiện a+b ≥ 1"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.17@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Giả sử $x,y,z$ là các số thực không âm thỏa mãn $x+y+z+xyz=4$. Tìm giá trị lớn nhất của biểu thức $P=xy+yz+zx$.",
+  "noi_dung_sach": "Giả sử $x,y,z$ là các số thực không âm thỏa mãn $x+y+z+xyz=4$. Tìm giá trị lớn nhất của biểu thức $P=xy+yz+zx$.",
+  "dap_an": "$GTLN=4$ khi $(x;y;z)\\in\\{(2;2;0),(2;0;2),(0;2;2)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ràng buộc $x+y+z+xyz=4$ và biểu thức $xy+yz+zx$ chính là các hệ số của khai triển $(x-1)(y-1)(z-1)=xyz-(xy+yz+zx)+(x+y+z)-1$; thế ràng buộc vào thì $P$ chỉ còn phụ thuộc tích $(x-1)(y-1)(z-1)$, và bài toán đổi thành chặn dưới tích này.\n\n**Bước 1.** Khai triển $(x-1)(y-1)(z-1)$ rồi dùng $x+y+z+xyz=4$ để rút ra $P=3-(x-1)(y-1)(z-1)$, như vậy cần chứng minh tích ba hiệu này không nhỏ hơn một hằng số.\n\n**Bước 2.** Xét dấu tích: nếu không âm thì $P\\le3$; nếu âm thì số nhân tử âm là $1$ hoặc $3$, trong đó trường hợp cả ba nhân tử âm (cả ba số nhỏ hơn $1$) bị loại vì khi đó $x+y+z+xyz<4$.\n\n**Bước 3.** Còn lại trường hợp đúng một nhân tử âm, chẳng hạn $z<1$ còn $x>1,\\ y>1$; đặt $u=x-1,\\ v=y-1,\\ w=1-z$ rồi chặn $uv$ bằng $\\dfrac{(u+v)^2}{4}$ nhờ điều kiện $x+y\\le4$ suy ra từ $z\\ge0$.\n\n**Bước 4.** Chỉ ra bộ số thỏa ràng buộc làm mọi dấu \"=\" xảy ra, từ đó biết giá trị lớn nhất đạt thật.\n\n**Chú ý:** Không được quên trường hợp tích bằng $0$ hay trường hợp cả ba số nhỏ hơn $1$; điều kiện $z\\ge0$ chính là thứ cho $w\\le1$ và $x+y\\le4$.\n\n**Phần 2. Trình bày**\n\nTa có $(x-1)(y-1)(z-1)=xyz-(xy+yz+zx)+(x+y+z)-1=(xyz+x+y+z)-P-1=3-P$ (vì $x+y+z+xyz=4$).\n\nVậy $P=3-T$ với $T=(x-1)(y-1)(z-1)$.\n\nTa cần chứng minh $T\\ge-1$.\n\nNếu $T\\ge0$ thì $P\\le3<4$.\n\nNếu $T<0$: số nhân tử âm là lẻ.\n\nNếu cả ba nhân tử âm thì $x,y,z<1$ nên $x+y+z<3$, $xyz<1$, mâu thuẫn với $x+y+z+xyz=4$.\n\nVậy đúng một nhân tử âm; không mất tổng quát giả sử $z<1,\\ x>1,\\ y>1$ (ba nhân tử đều khác $0$ vì $T<0$).\n\nĐặt $u=x-1>0,\\ v=y-1>0,\\ w=1-z\\in(0;1]$ (vì $z\\ge0$).\n\nTừ $x+y+z(1+xy)=4$ và $z\\ge0$ suy ra $x+y\\le4$, tức $u+v\\le2$.\n\nDo đó $uv\\le\\dfrac{(u+v)^2}{4}\\le1$.\n\nSuy ra $T=-uvw\\ge-1$ (vì $0<uv\\le1$ và $0<w\\le1$).\n\nVậy trong mọi trường hợp $T\\ge-1$, tức $P=3-T\\le4$.\n\nDấu \"=\" xảy ra khi $uv=1$ và $w=1$, tức $z=0$, $u=v=1$, $x=y=2$.\n\nKiểm tra: $2+2+0+0=4$ và $P=2\\cdot2+0+0=4$.\n\nTheo vai trò bình đẳng của $x,y,z$, giá trị $4$ cũng đạt tại $(2;0;2)$ và $(0;2;2)$.\n\nVậy $GTLN$ của $P$ bằng $4$, đạt khi $(x;y;z)=(2;2;0),(2;0;2),(0;2;2)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ u=x-1, v=y-1, w=1-z",
+   "(u+v)² ≥ 4uv",
+   "phân tích (x-1)(y-1)(z-1)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.18@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho bốn số $a,b,c,d$ là các số thực bất kỳ. Tìm giá trị nhỏ nhất: $P=2017\\left|\\dfrac{a-b}{a+b}+\\dfrac{c-d}{c+d}+\\dfrac{ad+bc}{ac-bd}\\right|$.",
+  "noi_dung_sach": "Cho bốn số $a,b,c,d$ là các số thực bất kỳ. Tìm giá trị nhỏ nhất: $P=2017\\left|\\dfrac{a-b}{a+b}+\\dfrac{c-d}{c+d}+\\dfrac{ad+bc}{ac-bd}\\right|$.",
+  "dap_an": "$GTNN=2017\\sqrt{3}$ khi $\\dfrac{a-b}{a+b}=\\dfrac{c-d}{c+d}=\\dfrac{ad+bc}{ac-bd}=\\pm\\dfrac{1}{\\sqrt{3}}$ (chẳng hạn $a=c=1$, $b=d=2-\\sqrt{3}$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba phân thức trong dấu giá trị tuyệt đối có dạng của công thức cộng tang: nếu $u=\\dfrac{a-b}{a+b}$, $v=\\dfrac{c-d}{c+d}$ thì $\\dfrac{u+v}{1-uv}$ rút gọn ra đúng nghịch đảo của phân thức thứ ba; từ đó ba số $u,v,w$ thỏa một hệ thức đối xứng $uv+vw+wu=$ hằng số, và bất đẳng thức $(u+v+w)^2\\ge3(uv+vw+wu)$ cho ngay cận dưới.\n\n**Bước 1.** Đặt $u=\\dfrac{a-b}{a+b}$, $v=\\dfrac{c-d}{c+d}$, $w=\\dfrac{ad+bc}{ac-bd}$ và tính riêng $u+v$ và $1-uv$ bằng cách quy đồng mẫu $(a+b)(c+d)$.\n\n**Bước 2.** Nhân $w$ với $u+v$ để thấy tích này bằng $1-uv$, từ đó suy ra hệ thức cho $uv+vw+wu$.\n\n**Bước 3.** Dùng $(u+v+w)^2\\ge3(uv+vw+wu)$ để chặn $|u+v+w|$ từ dưới.\n\n**Bước 4.** Tìm một bộ $(a,b,c,d)$ cụ thể (chọn $a=c$, $b=d$ để $u=v$) sao cho $u=v=w$, chứng tỏ cận dưới đạt được.\n\n**Chú ý:** Phải chỉ ra bộ số thật làm $u=v=w$; nếu chỉ dừng ở bất đẳng thức thì chưa kết luận được là giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nVới $a+b,\\ c+d,\\ ac-bd$ khác $0$, đặt $u=\\dfrac{a-b}{a+b},\\ v=\\dfrac{c-d}{c+d},\\ w=\\dfrac{ad+bc}{ac-bd}$.\n\nTa có $u+v=\\dfrac{(a-b)(c+d)+(c-d)(a+b)}{(a+b)(c+d)}=\\dfrac{2(ac-bd)}{(a+b)(c+d)}$\n\nvà $1-uv=\\dfrac{(a+b)(c+d)-(a-b)(c-d)}{(a+b)(c+d)}=\\dfrac{2(ad+bc)}{(a+b)(c+d)}$\n\nDo đó $w(u+v)=\\dfrac{ad+bc}{ac-bd}\\cdot\\dfrac{2(ac-bd)}{(a+b)(c+d)}=\\dfrac{2(ad+bc)}{(a+b)(c+d)}=1-uv$, tức $uv+vw+wu=1$.\n\nMà $(u+v+w)^2-3(uv+vw+wu)=\\dfrac{1}{2}\\left[(u-v)^2+(v-w)^2+(w-u)^2\\right]\\ge0$ nên $(u+v+w)^2\\ge3$, suy ra $|u+v+w|\\ge\\sqrt{3}$ và $P\\ge2017\\sqrt{3}$.\n\nDấu \"=\" xảy ra khi $u=v=w=\\pm\\dfrac{1}{\\sqrt{3}}$.\n\nChọn $a=c=1$, $b=d=2-\\sqrt{3}$: $u=v=\\dfrac{\\sqrt{3}-1}{3-\\sqrt{3}}=\\dfrac{1}{\\sqrt{3}}$ và $w=\\dfrac{2(2-\\sqrt{3})}{1-(2-\\sqrt{3})^2}=\\dfrac{2(2-\\sqrt{3})}{2\\sqrt{3}(2-\\sqrt{3})}=\\dfrac{1}{\\sqrt{3}}$ (các mẫu đều khác $0$).\n\nKhi đó $P=2017\\sqrt{3}$.\n\nVậy $GTNN$ của $P$ bằng $2017\\sqrt{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "hằng đẳng thức tổng–tích hai phân thức",
+   "uv+vw+wu=1",
+   "(u+v+w)² ≥ 3(uv+vw+wu)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.19@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số thực dương $x,y,z$ thỏa mãn $x+y\\le z$. Tìm giá trị nhỏ nhất: $P=\\dfrac{1}{2017}(x^2+y^2+z^2)\\left(\\dfrac{1}{x^2}+\\dfrac{1}{y^2}+\\dfrac{1}{z^2}\\right)$.",
+  "noi_dung_sach": "Cho ba số thực dương $x,y,z$ thỏa mãn $x+y\\le z$. Tìm giá trị nhỏ nhất: $P=\\dfrac{1}{2017}(x^2+y^2+z^2)\\left(\\dfrac{1}{x^2}+\\dfrac{1}{y^2}+\\dfrac{1}{z^2}\\right)$.",
+  "dap_an": "$GTNN=\\dfrac{27}{4034}$ khi $x=y=\\dfrac{z}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức thuần nhất bậc $0$ nên chia mọi thứ cho $z$ để có hai tỉ số $a=\\dfrac{x}{z},\\ b=\\dfrac{y}{z}$ thỏa $a+b\\le1$; điều kiện biên $a+b=1$ cùng đối xứng $a=b$ gợi điểm rơi $a=b=\\dfrac{1}{2}$.\n\n**Bước 1.** Đặt $a=\\dfrac{x}{z},\\ b=\\dfrac{y}{z}$ để đưa tích hai ngoặc về $(a^2+b^2+1)\\left(\\dfrac{1}{a^2}+\\dfrac{1}{b^2}+1\\right)$ với $a,b>0,\\ a+b\\le1$.\n\n**Bước 2.** Khai triển tích thành $3$ cộng nhóm $\\dfrac{a^2}{b^2}+\\dfrac{b^2}{a^2}$ cộng nhóm $a^2+b^2+\\dfrac{1}{a^2}+\\dfrac{1}{b^2}$, rồi chặn nhóm thứ nhất bằng Cô-si hai số.\n\n**Bước 3.** Chặn nhóm thứ hai nhờ $a^2+b^2\\ge\\dfrac{s^2}{2}$ và $\\dfrac{1}{a^2}+\\dfrac{1}{b^2}\\ge\\dfrac{8}{s^2}$ với $s=a+b$, rồi khảo sát hàm một biến $\\dfrac{s^2}{2}+\\dfrac{8}{s^2}$ trên $(0;1]$ bằng biến đổi tương đương.\n\n**Bước 4.** Cộng các cận dưới, chia cho $2017$ và đối chiếu dấu \"=\" tại $a=b=\\dfrac{1}{2}$.\n\n**Phần 2. Trình bày**\n\nĐặt $a=\\dfrac{x}{z},\\ b=\\dfrac{y}{z}$ ($a,b>0$, $s=a+b\\le1$).\n\nKhi đó\n\n$P=\\dfrac{1}{2017}(a^2+b^2+1)\\left(\\dfrac{1}{a^2}+\\dfrac{1}{b^2}+1\\right)=\\dfrac{1}{2017}\\left[3+\\left(\\dfrac{a^2}{b^2}+\\dfrac{b^2}{a^2}\\right)+\\left(a^2+b^2+\\dfrac{1}{a^2}+\\dfrac{1}{b^2}\\right)\\right]$\n\nTheo Cô-si hai số, $\\dfrac{a^2}{b^2}+\\dfrac{b^2}{a^2}\\ge2$.\n\nLại có $a^2+b^2\\ge\\dfrac{s^2}{2}$ và $\\dfrac{1}{a^2}+\\dfrac{1}{b^2}\\ge\\dfrac{2}{ab}\\ge\\dfrac{8}{s^2}$ (vì $ab\\le\\dfrac{s^2}{4}$).\n\nDo đó $a^2+b^2+\\dfrac{1}{a^2}+\\dfrac{1}{b^2}\\ge\\dfrac{s^2}{2}+\\dfrac{8}{s^2}$.\n\nMà $\\dfrac{s^2}{2}+\\dfrac{8}{s^2}-\\dfrac{17}{2}=\\dfrac{s^4-17s^2+16}{2s^2}=\\dfrac{(s^2-1)(s^2-16)}{2s^2}\\ge0$ vì $0<s^2\\le1$.\n\nVậy nhóm này $\\ge\\dfrac{17}{2}$.\n\nCộng lại: $P\\ge\\dfrac{1}{2017}\\left(3+2+\\dfrac{17}{2}\\right)=\\dfrac{1}{2017}\\cdot\\dfrac{27}{2}=\\dfrac{27}{4034}$.\n\nDấu \"=\" xảy ra khi $a=b$ và $s=1$, tức $a=b=\\dfrac{1}{2}$, hay $x=y=\\dfrac{z}{2}$.\n\nKhi đó $(a^2+b^2+1)\\left(\\dfrac{1}{a^2}+\\dfrac{1}{b^2}+1\\right)=\\dfrac{3}{2}\\cdot9=\\dfrac{27}{2}$.\n\nVậy $GTNN$ của $P$ bằng $\\dfrac{27}{4034}$ khi $x=y=\\dfrac{z}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đưa về tỉ số a=x/z, b=y/z",
+   "Cô-si hai số (u+1/u)",
+   "(a+b)² ≥ 4ab",
+   "điều kiện x+y ≤ z"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.20@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y,z\\ge0$; $x+y+z=1$. Tìm GTNN của $P=xy+yz+zx-\\dfrac{9xyz}{7}$.",
+  "noi_dung_sach": "Cho $x,y,z\\ge0$; $x+y+z=1$. Tìm GTNN của $P=xy+yz+zx-\\dfrac{9xyz}{7}$.",
+  "dap_an": "$GTNN=0$ khi $(x;y;z)\\in\\{(1;0;0),(0;1;0),(0;0;1)\\}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Từ $x+y+z=1$ và $x,y,z\\ge0$ suy ra mỗi số thuộc $[0;1]$, nên $xyz$ bị chặn bởi từng tích hai số $xy,\\ yz,\\ zx$; hạng tử trừ $\\dfrac{9xyz}{7}$ do đó chỉ \"ăn\" được một phần của $xy+yz+zx$, đủ để chặn $P$ từ dưới.\n\n**Bước 1.** Nhận ra mỗi biến không vượt quá $1$, từ đó viết $xyz\\le xy$, $xyz\\le yz$, $xyz\\le zx$ rồi cộng lại để bị chặn $xyz$ bằng một phần ba tổng ba tích hai số.\n\n**Bước 2.** Thay vào $P$ để chặn $P$ từ dưới bằng một bội dương của $xy+yz+zx$, và nhận xét tổng này luôn không âm.\n\n**Bước 3.** Tìm bộ số thỏa ràng buộc làm cả hai bất đẳng thức thành đẳng thức: cần mọi tích hai số bằng $0$.\n\n**Chú ý:** Thử nhanh một giá trị biên như $(1;0;0)$ hoặc $\\left(\\dfrac{1}{2};\\dfrac{1}{2};0\\right)$ cho thấy $P$ có thể nhỏ hơn giá trị tại tâm $x=y=z=\\dfrac{1}{3}$; do đó $\\dfrac{2}{7}$ không là GTNN mà là GTLN.\n\n**Phần 2. Trình bày**\n\nVì $x,y,z\\ge0$ và $x+y+z=1$ nên $0\\le x,y,z\\le1$.\n\nDo đó $xyz\\le xy$, $xyz\\le yz$, $xyz\\le zx$; cộng lại: $3xyz\\le xy+yz+zx$.\n\nSuy ra $P=xy+yz+zx-\\dfrac{9xyz}{7}\\ge xy+yz+zx-\\dfrac{3}{7}(xy+yz+zx)=\\dfrac{4}{7}(xy+yz+zx)\\ge0$.\n\nDấu \"=\" xảy ra khi $xy+yz+zx=0$, tức có ít nhất hai trong ba số bằng $0$; kết hợp $x+y+z=1$ ta được một số bằng $1$, hai số còn lại bằng $0$.\n\nKhi đó $P=0$.\n\nVậy $GTNN$ của $P$ bằng $0$, đạt khi $(x;y;z)=(1;0;0),(0;1;0),(0;0;1)$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "x,y,z ∈ [0;1] ⇒ xyz ≤ xy, yz, zx",
+   "đánh giá hạng tử cùng chiều"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.21@p177",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số thực dương $a,b,c$ thỏa mãn $abc=1$. Tìm giá trị nhỏ nhất của: $P=\\dfrac{a^2b^2}{(ab^2c+2)(2ab^2c+1)}+\\dfrac{b^2c^2}{(abc^2+2)(2abc^2+1)}+\\dfrac{c^2a^2}{(a^2bc+2)(2a^2bc+1)}$",
+  "noi_dung_sach": "Cho ba số thực dương $a,b,c$ thỏa mãn $abc=1$. Tìm giá trị nhỏ nhất của: $P=\\dfrac{a^2b^2}{(ab^2c+2)(2ab^2c+1)}+\\dfrac{b^2c^2}{(abc^2+2)(2abc^2+1)}+\\dfrac{c^2a^2}{(a^2bc+2)(2a^2bc+1)}$",
+  "dap_an": "$GTNN=\\dfrac{1}{3}$ khi $a=b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $abc=1$ thì $ab^2c=b$, $abc^2=c$, $a^2bc=a$, nên mỗi mẫu chỉ còn một chữ; mẫu dạng $(b+2)(2b+1)$ có tổng hai nhân tử $3(b+1)$ không đổi theo cách viết nên dùng Cô-si hai số, điểm rơi $b+2=2b+1\\Leftrightarrow b=1$ trùng với điểm rơi đối xứng $a=b=c=1$.\n\n**Bước 1.** Dùng $abc=1$ để thay $ab^2c=b$ (và hai biểu thức tương tự) và thay $a^2b^2=\\dfrac{1}{c^2}$, nhờ đó mỗi số hạng của $P$ có dạng $\\dfrac{1}{c^2(b+2)(2b+1)}$.\n\n**Bước 2.** Chặn tích $(b+2)(2b+1)$ từ trên bằng Cô-si hai số để mỗi số hạng được chặn dưới bằng bình phương của một phân thức $\\dfrac{2}{3}\\cdot\\dfrac{1}{c(b+1)}$.\n\n**Bước 3.** Dùng $\\sum u^2\\ge\\dfrac{(\\sum u)^2}{3}$ cho ba phân thức $u=\\dfrac{1}{c(b+1)}$ và các hoán vị vòng, rồi đặt $a=\\dfrac{x}{y},\\ b=\\dfrac{y}{z},\\ c=\\dfrac{z}{x}$ để tổng $\\sum u$ thành $\\sum\\dfrac{x}{y+z}$.\n\n**Bước 4.** Dùng bất đẳng thức Nesbit $\\sum\\dfrac{x}{y+z}\\ge\\dfrac{3}{2}$ để có cận dưới hằng số và đối chiếu dấu \"=\".\n\n**Chú ý:** Phép đặt $a=\\dfrac{x}{y},\\ b=\\dfrac{y}{z},\\ c=\\dfrac{z}{x}$ hợp lệ vì $abc=1$ (lấy $x=a,\\ y=1,\\ z=\\dfrac{1}{b}$).\n\n**Phần 2. Trình bày**\n\nVì $abc=1$ nên $ab^2c=b$, $abc^2=c$, $a^2bc=a$ và $ab=\\dfrac{1}{c},\\ bc=\\dfrac{1}{a},\\ ca=\\dfrac{1}{b}$.\n\nDo đó\n\n$P=\\dfrac{1}{c^2(b+2)(2b+1)}+\\dfrac{1}{a^2(c+2)(2c+1)}+\\dfrac{1}{b^2(a+2)(2a+1)}$\n\nTheo Cô-si hai số, $(b+2)(2b+1)\\le\\left(\\dfrac{3b+3}{2}\\right)^2=\\dfrac{9(b+1)^2}{4}$ nên $\\dfrac{1}{c^2(b+2)(2b+1)}\\ge\\dfrac{4}{9}\\cdot\\dfrac{1}{c^2(b+1)^2}=\\dfrac{4}{9}u_1^2$ với $u_1=\\dfrac{1}{c(b+1)}=\\dfrac{1}{bc+c}$.\n\nTương tự $\\dfrac{1}{a^2(c+2)(2c+1)}\\ge\\dfrac{4}{9}u_2^2$ với $u_2=\\dfrac{1}{ca+a}$ và $\\dfrac{1}{b^2(a+2)(2a+1)}\\ge\\dfrac{4}{9}u_3^2$ với $u_3=\\dfrac{1}{ab+b}$.\n\nSuy ra $P\\ge\\dfrac{4}{9}(u_1^2+u_2^2+u_3^2)\\ge\\dfrac{4}{9}\\cdot\\dfrac{(u_1+u_2+u_3)^2}{3}$.\n\nĐặt $a=\\dfrac{x}{y},\\ b=\\dfrac{y}{z},\\ c=\\dfrac{z}{x}$ ($x,y,z>0$).\n\nKhi đó $bc+c=\\dfrac{y+z}{x}$, $ca+a=\\dfrac{z+x}{y}$, $ab+b=\\dfrac{x+y}{z}$ nên\n\n$u_1+u_2+u_3=\\dfrac{x}{y+z}+\\dfrac{y}{z+x}+\\dfrac{z}{x+y}\\ge\\dfrac{3}{2}$ (bất đẳng thức Nesbit: theo dạng Engel, tổng $\\ge\\dfrac{(x+y+z)^2}{2(xy+yz+zx)}\\ge\\dfrac{3}{2}$ vì $(x+y+z)^2\\ge3(xy+yz+zx)$).\n\nDo đó $P\\ge\\dfrac{4}{9}\\cdot\\dfrac{(3/2)^2}{3}=\\dfrac{1}{3}$.\n\nDấu \"=\" xảy ra khi $b=1,\\ c=1,\\ a=1$ (dấu \"=\" của Cô-si) — khi đó cả hai bất đẳng thức sau cũng thành đẳng thức, và $P=3\\cdot\\dfrac{1}{3\\cdot3}=\\dfrac{1}{3}$.\n\nVậy $GTNN$ của $P$ bằng $\\dfrac{1}{3}$ khi $a=b=c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "abc=1 ⇒ ab²c=b",
+   "Cô-si hai số (b+2)(2b+1) ≤ 9(b+1)²/4",
+   "Bu-nhi-a-cốp-xki (Σu² ≥ (Σu)²/3)",
+   "đặt a=x/y, b=y/z, c=z/x",
+   "bất đẳng thức Nesbit"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 177): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.22@p178",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho các số thực không âm $x,y,z$ thỏa mãn $x^2+y^2+z^2\\le3y$. Tìm giá trị nhỏ nhất của $P=\\dfrac{1}{(x+1)^2}+\\dfrac{4}{(y+2)^2}+\\dfrac{8}{(z+3)^2}$.",
+  "noi_dung_sach": "Cho các số thực không âm $x,y,z$ thỏa mãn $x^2+y^2+z^2\\le3y$. Tìm giá trị nhỏ nhất của $P=\\dfrac{1}{(x+1)^2}+\\dfrac{4}{(y+2)^2}+\\dfrac{8}{(z+3)^2}$.",
+  "dap_an": "$GTNN=1$ khi $x=1,\\ y=2,\\ z=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $P$ có dạng tổng bình phương các nghịch đảo $\\dfrac{1}{x+1},\\ \\dfrac{2}{y+2},\\ \\dfrac{2}{z+3}$ còn ràng buộc là một bất đẳng thức bậc hai $x^2+y^2+z^2\\le3y$; nên ta dùng Bu-nhi-a-cốp-xki để đưa $P$ về bình phương của một tổng $\\sum\\dfrac{k}{\\cdot}$, rồi lại dùng Bu-nhi-a-cốp-xki dạng Engel để biến tổng nghịch đảo thành nghịch đảo của một tổng tuyến tính, tổng này được chặn nhờ ràng buộc.\n\n**Bước 1.** Dự đoán điểm rơi $x=1,\\ y=2,\\ z=1$: đây là điểm làm cả hai vế của ràng buộc cùng bằng $6$, và ở đó ba nghịch đảo $\\dfrac{1}{x+1},\\ \\dfrac{2}{y+2},\\ \\dfrac{2}{z+3}$ cùng bằng $\\dfrac{1}{2}$; đó là cơ sở để chọn các hệ số của hai lần Bu-nhi-a-cốp-xki.\n\n**Bước 2.** Đặt ba nghịch đảo $\\alpha=\\dfrac{1}{x+1},\\ \\beta=\\dfrac{2}{y+2},\\ \\gamma=\\dfrac{2}{z+3}$ để $P=\\alpha^2+\\beta^2+2\\gamma^2$, rồi dùng Bu-nhi-a-cốp-xki $(\\alpha^2+\\beta^2+2\\gamma^2)(1+1+2)\\ge(\\alpha+\\beta+2\\gamma)^2$ để đưa $P$ về bình phương của một tổng.\n\n**Bước 3.** Chặn tổng $S=\\dfrac{1}{x+1}+\\dfrac{2}{y+2}+\\dfrac{4}{z+3}$ từ dưới bằng dạng Engel, được $\\dfrac{16}{x+\\dfrac{y}{2}+z+5}$.\n\n**Bước 4.** Chặn $x+\\dfrac{y}{2}+z$ từ trên nhờ $x\\le\\dfrac{x^2+1}{2},\\ z\\le\\dfrac{z^2+1}{2}$ và ràng buộc $x^2+z^2\\le3y-y^2$, rồi kết luận và kiểm tra các dấu \"=\".\n\n**Chú ý:** Ở bước dùng Engel phải chia mẫu cho hệ số để các tử là $1,1,2$; chọn tử khác đi thì không có dấu \"=\" tại $(1;2;1)$.\n\n**Phần 2. Trình bày**\n\nĐặt $\\alpha=\\dfrac{1}{x+1},\\ \\beta=\\dfrac{2}{y+2},\\ \\gamma=\\dfrac{2}{z+3}$ (đều dương).\n\nKhi đó $P=\\alpha^2+\\beta^2+2\\gamma^2$.\n\nTheo Bu-nhi-a-cốp-xki: $(\\alpha^2+\\beta^2+2\\gamma^2)(1+1+2)\\ge(\\alpha+\\beta+2\\gamma)^2$, suy ra $P\\ge\\dfrac{S^2}{4}$ với $S=\\dfrac{1}{x+1}+\\dfrac{2}{y+2}+\\dfrac{4}{z+3}$.\n\nViết $S=\\dfrac{1^2}{x+1}+\\dfrac{1^2}{\\dfrac{y+2}{2}}+\\dfrac{2^2}{z+3}$.\n\nTheo Bu-nhi-a-cốp-xki dạng Engel: $S\\ge\\dfrac{(1+1+2)^2}{(x+1)+\\dfrac{y+2}{2}+(z+3)}=\\dfrac{16}{x+\\dfrac{y}{2}+z+5}$.\n\nMặt khác $x\\le\\dfrac{x^2+1}{2}$ và $z\\le\\dfrac{z^2+1}{2}$ nên $x+z\\le\\dfrac{x^2+z^2+2}{2}\\le\\dfrac{3y-y^2+2}{2}$ (vì $x^2+z^2\\le3y-y^2$).\n\nDo đó\n\n$x+\\dfrac{y}{2}+z\\le\\dfrac{3y-y^2+2}{2}+\\dfrac{y}{2}=\\dfrac{6-(y-2)^2}{2}\\le3$\n\nSuy ra $S\\ge\\dfrac{16}{3+5}=2$ và $P\\ge\\dfrac{2^2}{4}=1$.\n\nDấu \"=\" xảy ra khi $x=z=1,\\ y=2$: thỏa ràng buộc ($1+4+1=6=3\\cdot2$), các bất đẳng thức Cô-si có $x=z=1$, $y=2$, và hai lần Bu-nhi-a-cốp-xki đều có $\\alpha=\\beta=\\gamma=\\dfrac{1}{2}$.\n\nKhi đó $P=\\dfrac{1}{4}+\\dfrac{1}{4}+\\dfrac{1}{2}=1$.\n\nVậy $GTNN$ của $P$ bằng $1$ khi $x=1,\\ y=2,\\ z=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki (hai dạng)",
+   "Cô-si hai số x ≤ (x²+1)/2",
+   "dự đoán điểm rơi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 178): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Bu-nhi-a-cốp-xki hai lần với điều kiện bậc hai x²+y²+z²≤3y; dạng chỉ gần khớp."
+ },
+ {
+  "ma_nguon": "C5B.23@p178",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho biểu thức: $M=2017(x^2+y^2+2z^2+t^2)$, với $x;y;z;t$ là các số nguyên không âm. Tìm giá trị nhỏ nhất của $M$ và các giá trị tương ứng của $x;y;z$ và $t$, biết rằng: $\\begin{cases}x^2-y^2+t^2=21\\\\x^2+3y^2+4z^2=101\\end{cases}$",
+  "noi_dung_sach": "Cho biểu thức: $M=2017(x^2+y^2+2z^2+t^2)$, với $x;y;z;t$ là các số nguyên không âm. Tìm giá trị nhỏ nhất của $M$ và các giá trị tương ứng của $x;y;z$ và $t$, biết rằng: $\\begin{cases}x^2-y^2+t^2=21\\\\x^2+3y^2+4z^2=101\\end{cases}$",
+  "dap_an": "$GTNN=123037$ khi $(x;y;z;t)=(5;2;4;0)$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai phương trình của hệ cộng lại cho đúng $2(x^2+y^2+2z^2)+t^2$, tức gần như biểu thức trong ngoặc của $M$; nhờ đó $M$ biểu diễn được qua một mình $t$ và bài toán thành tìm $t$ nhỏ nhất làm hệ có nghiệm nguyên không âm.\n\n**Bước 1.** Cộng hai phương trình của hệ để được $2x^2+2y^2+4z^2+t^2=122$, rồi rút $x^2+y^2+2z^2$ theo $t$ và thay vào $M$.\n\n**Bước 2.** Từ biểu thức của $M$ theo $t$ suy ra $M$ nhỏ nhất khi $t$ nhỏ nhất, nên thử $t=0$ (số nguyên không âm nhỏ nhất).\n\n**Bước 3.** Với $t=0$ giải hệ còn lại: thế $x^2=21+y^2$ vào phương trình thứ hai để thu $y^2+z^2=20$ và tìm nghiệm nguyên không âm.\n\n**Bước 4.** Kiểm tra từng nghiệm nguyên của $y^2+z^2=20$ xem có cho $x^2=21+y^2$ là số chính phương không, rồi kết luận.\n\n**Phần 2. Trình bày**\n\nCộng hai phương trình của hệ: $2x^2+2y^2+4z^2+t^2=122$, suy ra $x^2+y^2+2z^2=61-\\dfrac{t^2}{2}$.\n\nDo đó $M=2017\\left(61-\\dfrac{t^2}{2}+t^2\\right)=2017\\left(61+\\dfrac{t^2}{2}\\right)\\ge2017\\cdot61=123037$, dấu \"=\" khi $t=0$.\n\nVới $t=0$, hệ trở thành $\\begin{cases}x^2=21+y^2\\\\x^2+3y^2+4z^2=101\\end{cases}$.\n\nThế vào phương trình thứ hai: $4y^2+4z^2=80$, tức $y^2+z^2=20$.\n\nCác số nguyên không âm có tổng bình phương bằng $20$ là $(y;z)=(2;4)$ và $(4;2)$.\n\nVới $y=2$: $x^2=25$, $x=5$ (nhận).\n\nVới $y=4$: $x^2=37$ không là số chính phương (loại).\n\nVậy $(x;y;z;t)=(5;2;4;0)$ thỏa hệ và cho $M=2017(25+4+32+0)=123037$.\n\nVậy $GTNN$ của $M$ bằng $123037$, đạt khi $x=5;\\ y=2;\\ z=4;\\ t=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "cộng hai phương trình để khử",
+   "số nguyên không âm (xét t chẵn)",
+   "y²+z²=20"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 178): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.24@p178",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Tìm giá trị lớn nhất của biểu thức $B=2017(3xy-x^2-y^2)$. Biết $x,y$ là nghiệm của phương trình $5x+2y=10$.",
+  "noi_dung_sach": "Tìm giá trị lớn nhất của biểu thức $B=2017(3xy-x^2-y^2)$. Biết $x,y$ là nghiệm của phương trình $5x+2y=10$.",
+  "dap_an": "$GTLN=\\dfrac{252125}{59}$ khi $x=\\dfrac{80}{59},\\ y=\\dfrac{95}{59}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ràng buộc $5x+2y=10$ là bậc nhất nên rút được $y$ theo $x$; thế vào thì $B$ thành tam thức bậc hai theo $x$ với hệ số cao nhất âm, nên tách thành \"hằng số trừ bình phương\" là ra giá trị lớn nhất.\n\n**Bước 1.** Rút $y=\\dfrac{10-5x}{2}$ từ phương trình và thay vào $3xy-x^2-y^2$.\n\n**Bước 2.** Quy đồng và rút gọn để được một tam thức bậc hai theo $x$ dạng $\\dfrac{-59x^2+160x-100}{4}$.\n\n**Bước 3.** Tách tam thức thành hằng số trừ một bình phương có hệ số dương rồi đọc giá trị lớn nhất và giá trị $x$ làm bình phương bằng $0$.\n\n**Bước 4.** Tính $y$ từ $x$ tìm được để nêu điểm đạt.\n\n**Phần 2. Trình bày**\n\nTừ $5x+2y=10$ suy ra $y=\\dfrac{10-5x}{2}$.\n\nKhi đó\n\n$3xy-x^2-y^2=\\dfrac{3x(10-5x)}{2}-x^2-\\dfrac{(10-5x)^2}{4}=\\dfrac{60x-30x^2-4x^2-100+100x-25x^2}{4}=\\dfrac{-59x^2+160x-100}{4}$\n\n$=\\dfrac{125}{59}-\\dfrac{59}{4}\\left(x-\\dfrac{80}{59}\\right)^2\\le\\dfrac{125}{59}$\n\nDo đó $B\\le2017\\cdot\\dfrac{125}{59}=\\dfrac{252125}{59}$.\n\nDấu \"=\" xảy ra khi $x=\\dfrac{80}{59}$, khi đó $y=\\dfrac{10-5\\cdot\\dfrac{80}{59}}{2}=\\dfrac{95}{59}$.\n\nVậy $GTLN$ của $B$ bằng $\\dfrac{252125}{59}$ khi $x=\\dfrac{80}{59},\\ y=\\dfrac{95}{59}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "thế y theo x",
+   "tách bình phương (hoàn thiện bình phương)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 178): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02754",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điều kiện bậc nhất 5x+2y=10, thế y theo x rồi hoàn thành bình phương tìm GTLN."
+ },
+ {
+  "ma_nguon": "C5B.25@p178",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho $x,y$ liên hệ với biểu thức $P=x^2+2y^2+2xy+2x+2y-3=0$. Tìm giá trị lớn nhất, nhỏ nhất của biểu thức: $Q=2017(x+y)$.",
+  "noi_dung_sach": "Cho $x,y$ liên hệ với biểu thức $P=x^2+2y^2+2xy+2x+2y-3=0$. Tìm giá trị lớn nhất, nhỏ nhất của biểu thức: $Q=2017(x+y)$.",
+  "dap_an": "$GTNN=-6051$ khi $x=-3,\\ y=0$; $GTLN=2017$ khi $x=1,\\ y=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $Q$ chỉ phụ thuộc $s=x+y$, và trong điều kiện $x^2+2y^2+2xy+2x+2y-3=0$ các hạng tử $x^2+2xy+y^2$ gộp được thành $(x+y)^2$, nên điều kiện viết lại thành một hệ thức giữa $s$ và $y^2$, từ đó suy ra khoảng giá trị của $s$.\n\n**Bước 1.** Tách $2y^2=y^2+y^2$ để nhóm $x^2+2xy+y^2=(x+y)^2$ và viết điều kiện theo $s=x+y$ và $y$.\n\n**Bước 2.** Đưa vế trái về dạng $(s+3)(s-1)+y^2=0$ rồi dùng $y^2\\ge0$ để giới hạn $s$ trong một đoạn.\n\n**Bước 3.** Suy ra giá trị nhỏ nhất, lớn nhất của $Q$ từ hai đầu mút của đoạn và kiểm tra các đầu mút có đạt được (tức có $y$ thực tương ứng).\n\n**Phần 2. Trình bày**\n\nĐặt $s=x+y$.\n\nĐiều kiện $x^2+2y^2+2xy+2x+2y-3=0$ viết lại thành $(x+y)^2+y^2+2(x+y)-3=0$, tức\n\n$s^2+2s-3=-y^2$, hay $(s+3)(s-1)=-y^2\\le0$.\n\nSuy ra $-3\\le s\\le1$, do đó $-6051\\le Q=2017s\\le2017$.\n\n$Q=-6051$ khi $s=-3$: khi đó $y^2=0$, $y=0$, $x=-3$ (thỏa điều kiện). $Q=2017$ khi $s=1$: khi đó $y=0$, $x=1$ (thỏa điều kiện).\n\nVậy $GTNN(Q)=-6051$ khi $x=-3,\\ y=0$ và $GTLN(Q)=2017$ khi $x=1,\\ y=0$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "nhóm thành (x+y)²+y²",
+   "đặt s=x+y",
+   "tích (s+3)(s-1)=-y² ≤ 0"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 178): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03305",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Điều kiện bậc hai, đặt s=x+y, (s+3)(s−1)=−y²≤0 chặn miền của s."
+ },
+ {
+  "ma_nguon": "C5B.26@p178",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên vòng 1 Vũng Tàu 2017 – 2018) Cho $a,b,c$ là các số thực dương. Tìm giá trị lớn nhất $P=\\dfrac{a^2b+b^2c+c^2a}{a^2+b^2+c^2}-\\dfrac{1}{3(a^2+b^2+c^2)}$.",
+  "noi_dung_sach": "(Chuyên vòng 1 Vũng Tàu 2017 – 2018) Cho $a,b,c$ là các số thực dương. Tìm giá trị lớn nhất $P=\\dfrac{a^2b+b^2c+c^2a}{a^2+b^2+c^2}-\\dfrac{1}{3(a^2+b^2+c^2)}$.",
+  "dap_an": "Đề in không có giá trị lớn nhất ($P$ không bị chặn trên)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều đáng nghi là $P$ không thuần nhất (hạng tử thứ nhất bậc $1$, hạng tử thứ hai bậc $-2$) mà $a,b,c$ lại không bị ràng buộc gì thêm; nên trước khi tìm điểm rơi phải thử xem $P$ có bị chặn trên không bằng cách cho cả ba biến cùng tăng.\n\n**Bước 1.** Tính $P$ tại $a=b=c=t$ để rút gọn thành biểu thức một biến $t$.\n\n**Bước 2.** Đánh giá biểu thức đó với $t\\ge1$ để thấy nó lớn tùy ý khi $t$ tăng.\n\n**Bước 3.** Kết luận $P$ không bị chặn trên, nên đề in không có giá trị lớn nhất.\n\n**Phần 2. Trình bày**\n\n**Chưa chắc:** Đề in có vẻ bị lỗi (đáp số sách $\\dfrac{1}{4}$ không khớp với đề in); lời giải dưới đây trả lời đúng cho đề in như đã chép.\n\nLấy $a=b=c=t>0$: $a^2b+b^2c+c^2a=3t^3$ và $a^2+b^2+c^2=3t^2$ nên\n\n$P=\\dfrac{3t^3}{3t^2}-\\dfrac{1}{9t^2}=t-\\dfrac{1}{9t^2}$\n\nVới $t\\ge1$ ta có $\\dfrac{1}{9t^2}\\le\\dfrac{1}{9}$ nên $P\\ge t-\\dfrac{1}{9}$.\n\nVới mọi số $M$, chọn $t=\\max\\{1;\\,M+1\\}$ thì $P\\ge M+\\dfrac{8}{9}>M$.\n\nVậy $P$ nhận giá trị lớn tùy ý, đề in không có giá trị lớn nhất.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tính trực tiếp tại a=b=c=t (phản ví dụ về cận trên)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 178): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.27@p179",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên vòng 1 Kiên Giang 2016 – 2017) Tìm GTNN của: $D=\\dfrac{x}{y+t}+\\dfrac{y+t}{x}+\\dfrac{y}{t+x}+\\dfrac{t+x}{y}+\\dfrac{t}{x+y}+\\dfrac{x+y}{t}$",
+  "noi_dung_sach": "(Chuyên vòng 1 Kiên Giang 2016 – 2017) Tìm GTNN của: $D=\\dfrac{x}{y+t}+\\dfrac{y+t}{x}+\\dfrac{y}{t+x}+\\dfrac{t+x}{y}+\\dfrac{t}{x+y}+\\dfrac{x+y}{t}$",
+  "dap_an": "$GTNN=\\dfrac{15}{2}$ khi $x=y=t$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi cặp $\\dfrac{x}{y+t}+\\dfrac{y+t}{x}$ có dạng $u+\\dfrac{1}{u}$ nhưng $u=\\dfrac{x}{y+t}$ chỉ bằng $1$ khi $x=y+t$, không phải khi $x=y=t$ (lúc đó $u=\\dfrac{1}{2}$); nên phải tách hệ số $\\dfrac{1}{4}$ sao cho Cô-si có dấu \"=\" ngay tại $x=y=t$, phần còn lại để cho một tổng tỉ số cổ điển.\n\n**Bước 1.** Điểm rơi đối xứng $x=y=t$ cho $\\dfrac{x}{y+t}=\\dfrac{1}{2}$, nên tách $\\dfrac{y+t}{x}=\\dfrac{y+t}{4x}+\\dfrac{3(y+t)}{4x}$ để Cô-si $\\dfrac{x}{y+t}+\\dfrac{y+t}{4x}\\ge1$ có dấu \"=\" khi $2x=y+t$.\n\n**Bước 2.** Làm tương tự với hai cặp còn lại rồi cộng để được $D\\ge3+\\dfrac{3}{4}\\left(\\dfrac{y+t}{x}+\\dfrac{t+x}{y}+\\dfrac{x+y}{t}\\right)$.\n\n**Bước 3.** Tách tổng trong ngoặc thành ba cặp nghịch đảo $\\dfrac{p}{q}+\\dfrac{q}{p}$ và chặn mỗi cặp bằng $2$.\n\n**Bước 4.** Cộng các cận dưới rồi đối chiếu các điều kiện dấu \"=\" để thấy chúng đều đạt tại $x=y=t$.\n\n**Phần 2. Trình bày**\n\nGiả sử $x,y,t>0$.\n\nTheo Cô-si hai số: $\\dfrac{x}{y+t}+\\dfrac{y+t}{4x}\\ge2\\sqrt{\\dfrac{1}{4}}=1$.\n\nTương tự $\\dfrac{y}{t+x}+\\dfrac{t+x}{4y}\\ge1$ và $\\dfrac{t}{x+y}+\\dfrac{x+y}{4t}\\ge1$.\n\nDo đó $D\\ge3+\\dfrac{3}{4}\\left(\\dfrac{y+t}{x}+\\dfrac{t+x}{y}+\\dfrac{x+y}{t}\\right)$.\n\nMà $\\dfrac{y+t}{x}+\\dfrac{t+x}{y}+\\dfrac{x+y}{t}=\\left(\\dfrac{x}{y}+\\dfrac{y}{x}\\right)+\\left(\\dfrac{x}{t}+\\dfrac{t}{x}\\right)+\\left(\\dfrac{y}{t}+\\dfrac{t}{y}\\right)\\ge6$ (Cô-si hai số cho từng cặp).\n\nSuy ra $D\\ge3+\\dfrac{3}{4}\\cdot6=\\dfrac{15}{2}$.\n\nDấu \"=\" xảy ra khi $2x=y+t,\\ 2y=t+x,\\ 2t=x+y$ và $x=y=t$, tức $x=y=t$.\n\nKhi đó mỗi cặp bằng $\\dfrac{1}{2}+2=\\dfrac{5}{2}$ nên $D=3\\cdot\\dfrac{5}{2}=\\dfrac{15}{2}$.\n\nVậy $GTNN$ của $D$ bằng $\\dfrac{15}{2}$ khi $x=y=t$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Cô-si hai số (x/(y+t) + (y+t)/(4x) ≥ 1)",
+   "u+1/u ≥ 2",
+   "tách hệ số theo điểm rơi"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 179): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.28@p179",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên vòng 1 Hậu Giang 2016 – 2017) Cho $x,y>0$. Tìm giá trị nhỏ nhất của: $G=\\dfrac{x^4}{y^4}+\\dfrac{y^4}{x^4}-\\dfrac{x^2}{y^2}-\\dfrac{y^2}{x^2}+\\dfrac{x}{y}+\\dfrac{y}{x}$.",
+  "noi_dung_sach": "(Chuyên vòng 1 Hậu Giang 2016 – 2017) Cho $x,y>0$. Tìm giá trị nhỏ nhất của: $G=\\dfrac{x^4}{y^4}+\\dfrac{y^4}{x^4}-\\dfrac{x^2}{y^2}-\\dfrac{y^2}{x^2}+\\dfrac{x}{y}+\\dfrac{y}{x}$.",
+  "dap_an": "$GTNN=2$ khi $x=y$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mọi hạng tử của $G$ là lũy thừa của $\\dfrac{x}{y}$ và $\\dfrac{y}{x}$ theo dạng \"số hạng và nghịch đảo của nó\", nên đặt $u=\\dfrac{x}{y}+\\dfrac{y}{x}$ thì $\\dfrac{x^2}{y^2}+\\dfrac{y^2}{x^2}=u^2-2$ và $\\dfrac{x^4}{y^4}+\\dfrac{y^4}{x^4}=(u^2-2)^2-2$, và $G$ thành đa thức một biến $u$.\n\n**Bước 1.** Đặt $u=\\dfrac{x}{y}+\\dfrac{y}{x}$ và dùng Cô-si hai số để biết $u\\ge2$; đây là miền giá trị cần xét.\n\n**Bước 2.** Biểu diễn $G$ theo $u$ bằng hai lần bình phương rồi rút gọn thành đa thức bậc bốn.\n\n**Bước 3.** Tính $G$ tại $u=2$ rồi phân tích hiệu $G-G(2)$ thành tích có nhân tử $(u-2)$, sau đó xét dấu nhân tử còn lại với $u\\ge2$.\n\n**Phần 2. Trình bày**\n\nĐặt $u=\\dfrac{x}{y}+\\dfrac{y}{x}$.\n\nVì $x,y>0$ nên theo Cô-si hai số $u\\ge2$.\n\nTa có $\\dfrac{x^2}{y^2}+\\dfrac{y^2}{x^2}=u^2-2$ và $\\dfrac{x^4}{y^4}+\\dfrac{y^4}{x^4}=(u^2-2)^2-2$.\n\nDo đó\n\n$G=(u^2-2)^2-2-(u^2-2)+u=u^4-5u^2+u+4$\n\n$G-2=u^4-5u^2+u+2=(u-2)(u^3+2u^2-u-1)$\n\nVới $u\\ge2$: $u-2\\ge0$ và $u^3+2u^2-u-1=u(u^2-1)+(2u^2-1)>0$.\n\nVậy $G-2\\ge0$.\n\nDấu \"=\" xảy ra khi $u=2$, tức $\\dfrac{x}{y}=\\dfrac{y}{x}$, $x=y$.\n\nKhi đó $G=1+1-1-1+1+1=2$.\n\nVậy $GTNN$ của $G$ bằng $2$ khi $x=y$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "đặt ẩn phụ u=x/y+y/x",
+   "Cô-si hai số u ≥ 2",
+   "biến đổi tương đương"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 179): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03300",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Đặt u=x/y+y/x đưa về đa thức bậc bốn theo u≥2; dạng đa thức chỉ gần khớp."
+ },
+ {
+  "ma_nguon": "C5B.29@p179",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c\\le3$. Tìm giá trị nhỏ nhất của: $\\dfrac{1}{a^2+b^2+c^2}+\\dfrac{2018}{ab+bc+ac}$",
+  "noi_dung_sach": "Cho ba số thực dương $a,b,c$ thỏa mãn $a+b+c\\le3$. Tìm giá trị nhỏ nhất của: $\\dfrac{1}{a^2+b^2+c^2}+\\dfrac{2018}{ab+bc+ac}$",
+  "dap_an": "$GTNN=673$ khi $a=b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu $p=a^2+b^2+c^2$ và $q=ab+bc+ca$ nối với $a+b+c$ qua $p+2q=(a+b+c)^2\\le9$; nên tách $2018$ thành $2+2016$ để một phần là $\\dfrac{1}{p}+\\dfrac{1}{q}+\\dfrac{1}{q}$ (dùng được Engel với tổng mẫu $p+2q$), phần còn lại $\\dfrac{2016}{q}$ chặn nhờ $q\\le3$.\n\n**Bước 1.** Viết $\\dfrac{1}{p}+\\dfrac{2018}{q}=\\left(\\dfrac{1}{p}+\\dfrac{1}{q}+\\dfrac{1}{q}\\right)+\\dfrac{2016}{q}$ vì điểm rơi $a=b=c=1$ cho $p=q=3$ nên ba mẫu $p,q,q$ cùng giá trị và Engel có dấu \"=\" tại điểm đó.\n\n**Bước 2.** Áp dụng Bu-nhi-a-cốp-xki dạng Engel cho nhóm đầu để được $\\dfrac{9}{p+2q}=\\dfrac{9}{(a+b+c)^2}$ rồi dùng $a+b+c\\le3$.\n\n**Bước 3.** Chặn $q$ từ trên bằng $\\dfrac{(a+b+c)^2}{3}\\le3$ để chặn $\\dfrac{2016}{q}$ từ dưới.\n\n**Bước 4.** Cộng hai cận dưới và kiểm tra dấu \"=\" tại $a=b=c=1$.\n\n**Phần 2. Trình bày**\n\nĐặt $p=a^2+b^2+c^2$, $q=ab+bc+ca$.\n\nKhi đó $p+2q=(a+b+c)^2\\le9$ và $q\\le\\dfrac{(a+b+c)^2}{3}\\le3$.\n\nTheo Bu-nhi-a-cốp-xki dạng Engel: $\\dfrac{1}{p}+\\dfrac{1}{q}+\\dfrac{1}{q}\\ge\\dfrac{(1+1+1)^2}{p+2q}=\\dfrac{9}{p+2q}\\ge\\dfrac{9}{9}=1$.\n\nVì $q\\le3$ nên $\\dfrac{2016}{q}\\ge672$.\n\nDo đó $\\dfrac{1}{p}+\\dfrac{2018}{q}=\\left(\\dfrac{1}{p}+\\dfrac{1}{q}+\\dfrac{1}{q}\\right)+\\dfrac{2016}{q}\\ge1+672=673$.\n\nDấu \"=\" xảy ra khi $a=b=c$ và $a+b+c=3$, tức $a=b=c=1$ (khi đó $p=q=3$ và giá trị là $\\dfrac{1}{3}+\\dfrac{2018}{3}=673$).\n\nVậy $GTNN$ bằng $673$ khi $a=b=c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki dạng Engel 1/p+1/q+1/q ≥ 9/(p+2q)",
+   "(a+b+c)² = a²+b²+c²+2(ab+bc+ca)",
+   "(a+b+c)² ≥ 3(ab+bc+ca)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 179): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.30@p179",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Chuyên Toán Nam Định 2017 – 2018) Xét các số thực $a,b,c$ không âm, khác $1$ và thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{1}{a+bc}+\\dfrac{1}{b+ac}+(a+b)(4+2017c)$.",
+  "noi_dung_sach": "(Chuyên Toán Nam Định 2017 – 2018) Xét các số thực $a,b,c$ không âm, khác $1$ và thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{1}{a+bc}+\\dfrac{1}{b+ac}+(a+b)(4+2017c)$.",
+  "dap_an": "$GTNN=8$ khi $c=0,\\ a=b=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Với $a+b+c=1$ ta có $a+bc=a(a+b+c)+bc=(a+b)(a+c)$ và tương tự $b+ac=(a+b)(b+c)$, nên hai phân thức đầu có chung nhân tử $a+b$ và mẫu quy về các tích của $a+b$, $b+c$, $c+a$; sau đó mọi thứ chỉ còn hai đại lượng $a+b=1-c$ và $ab$.\n\n**Bước 1.** Biến đổi $a+bc=(a+b)(a+c)$ và $b+ac=(a+b)(b+c)$, rồi cộng hai phân thức để tử là $a+b+2c=1+c$ và mẫu chứa $(a+c)(b+c)=ab+c$.\n\n**Bước 2.** Chặn $ab$ từ trên bằng $\\dfrac{(a+b)^2}{4}$ để chặn mẫu, và thay $a+b=1-c$ để mọi thứ chỉ còn biến $c$.\n\n**Bước 3.** Chặn $\\dfrac{4}{1-c^2}$ từ dưới bằng $4(1+c^2)$ rồi gộp với $(1-c)(4+2017c)$ để ra một biểu thức không âm của $c$.\n\n**Bước 4.** Kết luận và kiểm tra dấu \"=\" tại $c=0,\\ a=b=\\dfrac{1}{2}$.\n\n**Chú ý:** Điều kiện \"khác $1$\" bảo đảm $a+b>0$ (nếu $a+b=0$ thì $c=1$), nhờ đó các mẫu đều khác $0$.\n\n**Phần 2. Trình bày**\n\nVì $a,b,c\\ge0$, khác $1$ và $a+b+c=1$ nên $a+b=1-c>0$, $a+c>0$, $b+c>0$.\n\nDo $a+b+c=1$: $a+bc=a(a+b+c)+bc=(a+b)(a+c)$ và $b+ac=(a+b)(b+c)$.\n\nDo đó\n\n$\\dfrac{1}{a+bc}+\\dfrac{1}{b+ac}=\\dfrac{(b+c)+(a+c)}{(a+b)(a+c)(b+c)}=\\dfrac{1+c}{(a+b)(ab+c)}$ (vì $(a+c)(b+c)=ab+c(a+b+c)=ab+c$)\n\nMà $ab\\le\\dfrac{(a+b)^2}{4}=\\dfrac{(1-c)^2}{4}$ nên $ab+c\\le\\dfrac{(1-c)^2}{4}+c=\\dfrac{(1+c)^2}{4}$.\n\nSuy ra $\\dfrac{1}{a+bc}+\\dfrac{1}{b+ac}\\ge\\dfrac{4(1+c)}{(1-c)(1+c)^2}=\\dfrac{4}{1-c^2}$.\n\nVì $0\\le c<1$ nên $\\dfrac{1}{1-c^2}\\ge1+c^2$ (do $1\\ge1-c^4$).\n\nVậy\n\n$P\\ge4(1+c^2)+(1-c)(4+2017c)=4+4c^2+4+2013c-2017c^2=8+2013c(1-c)\\ge8$.\n\nDấu \"=\" xảy ra khi $a=b$ và $c=0$, tức $c=0,\\ a=b=\\dfrac{1}{2}$ (các số này không bằng $1$).\n\nKhi đó $P=2+2+4=8$.\n\nVậy $GTNN$ của $P$ bằng $8$ khi $c=0,\\ a=b=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "a+bc=(a+b)(a+c) khi a+b+c=1",
+   "(a+b)² ≥ 4ab",
+   "1/(1-t) ≥ 1+t"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 179): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.31@p180",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Toán học & tuổi trẻ số 385b) Xét các số thực $a,b,c$ dương thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{9}{1-2(ab+bc+ca)}+\\dfrac{2}{ab+bc+ca}$",
+  "noi_dung_sach": "(Toán học & tuổi trẻ số 385b) Xét các số thực $a,b,c$ dương thỏa mãn $a+b+c=1$. Tìm giá trị nhỏ nhất của biểu thức $P=\\dfrac{9}{1-2(ab+bc+ca)}+\\dfrac{2}{ab+bc+ca}$",
+  "dap_an": "$GTNN=25$ khi $ab+bc+ca=\\dfrac{1}{5}$ (chẳng hạn $a=b=\\dfrac{5-\\sqrt{10}}{15},\\ c=\\dfrac{5+2\\sqrt{10}}{15}$)",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $a+b+c=1$ nên $a^2+b^2+c^2=1-2(ab+bc+ca)$, tức mẫu thứ nhất chính là $p=a^2+b^2+c^2$; đặt $q=ab+bc+ca$ thì $p+2q=1$ và $P=\\dfrac{9}{p}+\\dfrac{2}{q}$ chỉ còn hai biến cùng một hệ thức tuyến tính, đúng dạng dùng Bu-nhi-a-cốp-xki dạng Engel.\n\n**Bước 1.** Viết $1-2(ab+bc+ca)=a^2+b^2+c^2=p$ nhờ $(a+b+c)^2=1$ và đặt $q=ab+bc+ca$, khi đó $p+2q=1$.\n\n**Bước 2.** Viết $P=\\dfrac{3^2}{p}+\\dfrac{2^2}{2q}$ để chọn tử $3$ và $2$ sao cho tỉ lệ tử trên mẫu bằng nhau tại điểm cực trị (dự đoán $\\dfrac{3}{p}=\\dfrac{2}{2q}$ tức $p=3q$, không phải $p=q$ như ở điểm đối xứng).\n\n**Bước 3.** Áp dụng Engel để chặn $P$ từ dưới bằng $\\dfrac{(3+2)^2}{p+2q}$ rồi dùng $p+2q=1$.\n\n**Bước 4.** Giải $p=3q,\\ p+2q=1$ để có $q$ rồi chỉ ra bộ $(a,b,c)$ dương, tổng bằng $1$, có $ab+bc+ca=q$ để chứng tỏ giá trị đạt được.\n\n**Chú ý:** Giá trị của $P$ tại điểm đối xứng $a=b=c=\\dfrac{1}{3}$ chưa chắc là cực trị; ở đây điểm đối xứng cho $33$, còn cực trị thật là một giá trị nhỏ hơn đạt ở điểm bất đối xứng.\n\n**Phần 2. Trình bày**\n\nVì $a+b+c=1$ nên $a^2+b^2+c^2=1-2(ab+bc+ca)$.\n\nĐặt $p=a^2+b^2+c^2>0$, $q=ab+bc+ca>0$; khi đó $p+2q=1$ và\n\n$P=\\dfrac{9}{p}+\\dfrac{2}{q}=\\dfrac{3^2}{p}+\\dfrac{2^2}{2q}\\ge\\dfrac{(3+2)^2}{p+2q}=25$ (Bu-nhi-a-cốp-xki dạng Engel với các mẫu $p,2q>0$)\n\nDấu \"=\" xảy ra khi $\\dfrac{3}{p}=\\dfrac{2}{2q}$, tức $p=3q$; kết hợp $p+2q=1$ ta được $q=\\dfrac{1}{5},\\ p=\\dfrac{3}{5}$.\n\nGiá trị này đạt được: với $a=b=\\dfrac{5-\\sqrt{10}}{15}$, $c=\\dfrac{5+2\\sqrt{10}}{15}$ (đều dương) ta có $a+b+c=1$ và $ab+bc+ca=a(a+2c)=\\dfrac{(5-\\sqrt{10})(15+3\\sqrt{10})}{225}=\\dfrac{3(25-10)}{225}=\\dfrac{1}{5}$.\n\nKhi đó $P=\\dfrac{9}{3/5}+\\dfrac{2}{1/5}=15+10=25$.\n\nVậy $GTNN$ của $P$ bằng $25$, đạt khi $ab+bc+ca=\\dfrac{1}{5}$ (chẳng hạn $a=b=\\dfrac{5-\\sqrt{10}}{15},\\ c=\\dfrac{5+2\\sqrt{10}}{15}$).",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "(a+b+c)²=a²+b²+c²+2(ab+bc+ca)",
+   "Bu-nhi-a-cốp-xki dạng Engel 3²/p+2²/(2q) ≥ 25/(p+2q)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 180): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB03306",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Bu-nhi-a-cốp-xki dạng Engel 3²/p+2²/(2q) với p+2q=1; mô tả dạng chỉ gần khớp."
+ },
+ {
+  "ma_nguon": "C5B.32@p180",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tuyển sinh 10 Hải Dương 2016 – 2017) Cho $a,b,c$ là ba số thực dương thoả mãn: $abc=1$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{ab}{a^5+b^5+ab}+\\dfrac{bc}{b^5+c^5+bc}+\\dfrac{ca}{c^5+a^5+ca}$.",
+  "noi_dung_sach": "(Tuyển sinh 10 Hải Dương 2016 – 2017) Cho $a,b,c$ là ba số thực dương thoả mãn: $abc=1$. Tìm giá trị lớn nhất của biểu thức: $P=\\dfrac{ab}{a^5+b^5+ab}+\\dfrac{bc}{b^5+c^5+bc}+\\dfrac{ca}{c^5+a^5+ca}$.",
+  "dap_an": "$GTLN=1$ khi $a=b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu có $a^5+b^5$ bậc cao còn tử là $ab$ nên cần chặn $a^5+b^5$ từ dưới bằng một biểu thức dễ xử lý; dạng quen thuộc $a^5+b^5\\ge a^2b^2(a+b)$ làm mẫu có nhân tử $ab$ chung với tử, và điều kiện $abc=1$ biến $\\dfrac{1}{ab}$ thành $c$.\n\n**Bước 1.** Chứng minh $a^5+b^5\\ge a^2b^2(a+b)$ bằng cách biến đổi tương đương về tích $(a^3-b^3)(a^2-b^2)\\ge0$.\n\n**Bước 2.** Thay vào mẫu và đặt nhân tử $ab$ làm nhân tử chung để chặn $\\dfrac{ab}{a^5+b^5+ab}$ bằng $\\dfrac{1}{ab(a+b)+1}$.\n\n**Bước 3.** Dùng $abc=1$ để biến $ab(a+b)+1$ thành $\\dfrac{a+b+c}{c}$, khi đó mỗi phân thức bị chặn trên bởi một phân thức có cùng mẫu $a+b+c$.\n\n**Bước 4.** Cộng ba bất đẳng thức để được cận trên hằng số, rồi kiểm tra dấu \"=\".\n\n**Phần 2. Trình bày**\n\nTa có $a^5+b^5-a^2b^2(a+b)=a^5+b^5-a^3b^2-a^2b^3=(a^3-b^3)(a^2-b^2)\\ge0$ (hai nhân tử cùng dấu vì $a,b>0$).\n\nDo đó $a^5+b^5\\ge a^2b^2(a+b)$.\n\nSuy ra $a^5+b^5+ab\\ge ab\\left[ab(a+b)+1\\right]$, nên $\\dfrac{ab}{a^5+b^5+ab}\\le\\dfrac{1}{ab(a+b)+1}$.\n\nVì $abc=1$ nên $ab=\\dfrac{1}{c}$ và $ab(a+b)+1=\\dfrac{a+b}{c}+1=\\dfrac{a+b+c}{c}$.\n\nVậy $\\dfrac{ab}{a^5+b^5+ab}\\le\\dfrac{c}{a+b+c}$.\n\nTương tự $\\dfrac{bc}{b^5+c^5+bc}\\le\\dfrac{a}{a+b+c}$ và $\\dfrac{ca}{c^5+a^5+ca}\\le\\dfrac{b}{a+b+c}$.\n\nCộng ba bất đẳng thức: $P\\le\\dfrac{a+b+c}{a+b+c}=1$.\n\nDấu \"=\" xảy ra khi $a=b=c$ và $abc=1$, tức $a=b=c=1$.\n\nKhi đó $P=3\\cdot\\dfrac{1}{3}=1$.\n\nVậy $GTLN$ của $P$ bằng $1$ khi $a=b=c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "a⁵+b⁵ ≥ a²b²(a+b) (biến đổi tương đương)",
+   "abc=1 ⇒ 1/(ab)=c"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 180): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc"
+ },
+ {
+  "ma_nguon": "C5B.33@p180",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tuyển sinh 10 Bình Dương 2016 – 2017) Giả sử $x,y,z$ là những số dương thay đổi thỏa mãn điều kiện $x+y+z=1$. Hãy tìm giá trị lớn nhất của biểu thức $P=\\dfrac{x}{x+1}+\\dfrac{y}{y+1}+\\dfrac{z}{z+1}$.",
+  "noi_dung_sach": "(Tuyển sinh 10 Bình Dương 2016 – 2017) Giả sử $x,y,z$ là những số dương thay đổi thỏa mãn điều kiện $x+y+z=1$. Hãy tìm giá trị lớn nhất của biểu thức $P=\\dfrac{x}{x+1}+\\dfrac{y}{y+1}+\\dfrac{z}{z+1}$.",
+  "dap_an": "$GTLN=\\dfrac{3}{4}$ khi $x=y=z=\\dfrac{1}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi phân thức $\\dfrac{x}{x+1}$ có tử kém mẫu đúng $1$ nên $\\dfrac{x}{x+1}=1-\\dfrac{1}{x+1}$; tìm giá trị lớn nhất của $P$ thành tìm giá trị nhỏ nhất của tổng các nghịch đảo $\\sum\\dfrac{1}{x+1}$ có tổng các mẫu $\\sum(x+1)=4$ không đổi, đúng dạng của bất đẳng thức giữa tổng nghịch đảo và nghịch đảo tổng.\n\n**Bước 1.** Viết $P=3-\\left(\\dfrac{1}{x+1}+\\dfrac{1}{y+1}+\\dfrac{1}{z+1}\\right)$ để chuyển bài toán về chặn dưới tổng nghịch đảo.\n\n**Bước 2.** Áp dụng $\\dfrac{1}{u}+\\dfrac{1}{v}+\\dfrac{1}{w}\\ge\\dfrac{9}{u+v+w}$ với $u=x+1,\\ v=y+1,\\ w=z+1$ dương và $u+v+w=4$.\n\n**Bước 3.** Thay vào để chặn $P$ từ trên và đối chiếu dấu \"=\" tại $x=y=z=\\dfrac{1}{3}$.\n\n**Phần 2. Trình bày**\n\n$P=\\left(1-\\dfrac{1}{x+1}\\right)+\\left(1-\\dfrac{1}{y+1}\\right)+\\left(1-\\dfrac{1}{z+1}\\right)=3-\\left(\\dfrac{1}{x+1}+\\dfrac{1}{y+1}+\\dfrac{1}{z+1}\\right)$\n\nTheo bất đẳng thức $\\dfrac{1}{u}+\\dfrac{1}{v}+\\dfrac{1}{w}\\ge\\dfrac{9}{u+v+w}$ với $u,v,w>0$ (Bu-nhi-a-cốp-xki dạng Engel): $\\dfrac{1}{x+1}+\\dfrac{1}{y+1}+\\dfrac{1}{z+1}\\ge\\dfrac{9}{x+y+z+3}=\\dfrac{9}{4}$.\n\nDo đó $P\\le3-\\dfrac{9}{4}=\\dfrac{3}{4}$.\n\nDấu \"=\" xảy ra khi $x+1=y+1=z+1$, tức $x=y=z=\\dfrac{1}{3}$ (thỏa $x+y+z=1$).\n\nVậy $GTLN$ của $P$ bằng $\\dfrac{3}{4}$ khi $x=y=z=\\dfrac{1}{3}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "x/(x+1)=1-1/(x+1)",
+   "Bu-nhi-a-cốp-xki dạng Engel (hoặc Cô-si ba số) Σ1/(x+1) ≥ 9/(Σ(x+1))"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 180): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01601",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Biến x/(x+1)=1−1/(x+1) rồi 1/u+1/v+1/w≥9/(u+v+w); Cô-si nhiều biến đối xứng."
+ },
+ {
+  "ma_nguon": "C5B.34@p180",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "(Tuyển sinh 10 Chuyên Quảng Ngãi 2015 – 2016) Cho $a,b,c$ là các số thực dương thỏa mãn điều kiện: $a+b+c=3$. Tìm giá trị nhỏ nhất của biểu thức: $P=\\dfrac{a^3}{a^2+b^2}+\\dfrac{b^3}{b^2+c^2}+\\dfrac{c^3}{c^2+a^2}$.",
+  "noi_dung_sach": "(Tuyển sinh 10 Chuyên Quảng Ngãi 2015 – 2016) Cho $a,b,c$ là các số thực dương thỏa mãn điều kiện: $a+b+c=3$. Tìm giá trị nhỏ nhất của biểu thức: $P=\\dfrac{a^3}{a^2+b^2}+\\dfrac{b^3}{b^2+c^2}+\\dfrac{c^3}{c^2+a^2}$.",
+  "dap_an": "$GTNN=\\dfrac{3}{2}$ khi $a=b=c=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tử $a^3$ chia mẫu $a^2+b^2$ được \"phần nguyên\" là $a$, nên tách $\\dfrac{a^3}{a^2+b^2}=a-\\dfrac{ab^2}{a^2+b^2}$; phần trừ có mẫu $a^2+b^2\\ge2ab$ làm triệt tiêu $a$ ở tử, cho một cận gọn là một bội của $b$.\n\n**Bước 1.** Thực hiện phép tách $\\dfrac{a^3}{a^2+b^2}=a-\\dfrac{ab^2}{a^2+b^2}$ cho cả ba số hạng.\n\n**Bước 2.** Dùng Cô-si hai số $a^2+b^2\\ge2ab$ để chặn $\\dfrac{ab^2}{a^2+b^2}$ từ trên bằng $\\dfrac{b}{2}$, suy ra $\\dfrac{a^3}{a^2+b^2}\\ge a-\\dfrac{b}{2}$.\n\n**Bước 3.** Cộng ba bất đẳng thức để $P$ bị chặn dưới bởi một bội của $a+b+c$, rồi thay $a+b+c=3$.\n\n**Phần 2. Trình bày**\n\nTa có $\\dfrac{a^3}{a^2+b^2}=a-\\dfrac{ab^2}{a^2+b^2}$.\n\nTheo Cô-si hai số, $a^2+b^2\\ge2ab$ nên $\\dfrac{ab^2}{a^2+b^2}\\le\\dfrac{ab^2}{2ab}=\\dfrac{b}{2}$.\n\nSuy ra $\\dfrac{a^3}{a^2+b^2}\\ge a-\\dfrac{b}{2}$.\n\nTương tự $\\dfrac{b^3}{b^2+c^2}\\ge b-\\dfrac{c}{2}$ và $\\dfrac{c^3}{c^2+a^2}\\ge c-\\dfrac{a}{2}$.\n\nCộng ba bất đẳng thức: $P\\ge(a+b+c)-\\dfrac{a+b+c}{2}=\\dfrac{a+b+c}{2}=\\dfrac{3}{2}$.\n\nDấu \"=\" xảy ra khi $a=b=c$ và $a+b+c=3$, tức $a=b=c=1$.\n\nKhi đó $P=3\\cdot\\dfrac{1}{2}=\\dfrac{3}{2}$.\n\nVậy $GTNN$ của $P$ bằng $\\dfrac{3}{2}$ khi $a=b=c=1$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "tách a³/(a²+b²) = a - ab²/(a²+b²)",
+   "Cô-si hai số a²+b² ≥ 2ab"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 180): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB02755",
+  "dang_bai_chac": "cao",
+  "dang_bai_ly_do": "Tách a³/(a²+b²)=a−ab²/(a²+b²), chặn số hạng bị trừ bằng Cô-si: đúng kĩ thuật ngược dấu."
+ },
+ {
+  "ma_nguon": "C5B.35@p180",
+  "lo": 21,
+  "khoi": "8T",
+  "dang_chinh": "T18T000000",
+  "nhom_soan": "T18T000000",
+  "loai_cau": "tu_luan",
+  "noi_dung": "Cho hai số dương $x,y$ thoả mãn $x+y\\le1$. Tìm giá trị nhỏ nhất của biểu thức: $M=\\dfrac{1}{x^2+y^2}+\\dfrac{2}{xy}$.",
+  "noi_dung_sach": "Cho hai số dương $x,y$ thoả mãn $x+y\\le1$. Tìm giá trị nhỏ nhất của biểu thức: $M=\\dfrac{1}{x^2+y^2}+\\dfrac{2}{xy}$.",
+  "dap_an": "$GTNN=10$ khi $x=y=\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai mẫu $x^2+y^2$ và $2xy$ cộng lại thành $(x+y)^2$, bị chặn trên bởi điều kiện $x+y\\le1$; nên tách $\\dfrac{2}{xy}=\\dfrac{1}{2xy}+\\dfrac{3}{2xy}$ để nhóm $\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}$ dùng được bất đẳng thức $\\dfrac{1}{p}+\\dfrac{1}{q}\\ge\\dfrac{4}{p+q}$, phần $\\dfrac{3}{2xy}$ còn lại chặn nhờ $xy\\le\\dfrac{1}{4}$.\n\n**Bước 1.** Viết $M=\\left(\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}\\right)+\\dfrac{3}{2xy}$ với điểm rơi $x=y=\\dfrac{1}{2}$ cho $x^2+y^2=2xy$ nên hai mẫu cùng giá trị.\n\n**Bước 2.** Dùng $\\dfrac{1}{p}+\\dfrac{1}{q}\\ge\\dfrac{4}{p+q}$ cho nhóm đầu để được $\\dfrac{4}{(x+y)^2}$ rồi dùng $x+y\\le1$.\n\n**Bước 3.** Chặn tích $xy\\le\\dfrac{(x+y)^2}{4}\\le\\dfrac{1}{4}$ từ trên để suy ra cận dưới của phần còn lại $\\dfrac{3}{2xy}$.\n\n**Bước 4.** Cộng hai cận dưới và kiểm tra dấu \"=\" tại $x=y=\\dfrac{1}{2}$.\n\n**Phần 2. Trình bày**\n\nTheo bất đẳng thức $\\dfrac{1}{p}+\\dfrac{1}{q}\\ge\\dfrac{4}{p+q}$ ($p,q>0$): $\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}\\ge\\dfrac{4}{x^2+y^2+2xy}=\\dfrac{4}{(x+y)^2}\\ge4$ (vì $0<x+y\\le1$).\n\nMặt khác $xy\\le\\dfrac{(x+y)^2}{4}\\le\\dfrac{1}{4}$ nên $\\dfrac{3}{2xy}\\ge6$.\n\nDo đó $M=\\left(\\dfrac{1}{x^2+y^2}+\\dfrac{1}{2xy}\\right)+\\dfrac{3}{2xy}\\ge4+6=10$.\n\nDấu \"=\" xảy ra khi $x^2+y^2=2xy$ và $x+y=1$, tức $x=y=\\dfrac{1}{2}$.\n\nKhi đó $M=\\dfrac{1}{1/2}+\\dfrac{2}{1/4}=2+8=10$.\n\nVậy $GTNN$ của $M$ bằng $10$ khi $x=y=\\dfrac{1}{2}$.",
+  "so_do": null,
+  "anh_sach": [],
+  "cong_cu": [
+   "Bu-nhi-a-cốp-xki dạng Engel 1/p+1/q ≥ 4/(p+q)",
+   "(x+y)² ≥ 4xy",
+   "tách 2/(xy) = 1/(2xy)+3/(2xy)"
+  ],
+  "kiem_doc": {
+   "ket_qua": "khong_kiem_duoc",
+   "ghi_chu": "nguồn là ẢNH scan (trang PDF 180): máy không đối chiếu được đề với kết quả sách (bài chứng minh / chưa có cách kiểm bằng máy) — người soát đối chiếu ảnh"
+  },
+  "_kiem_dap_so": "khong_kiem_duoc",
+  "dang_bai": "NDB01609",
+  "dang_bai_chac": "vua",
+  "dang_bai_ly_do": "Tách 2/(xy)=1/(2xy)+3/(2xy) để ghép với 1/(x²+y²); cũng dùng Bu-nhi-a-cốp-xki Engel."
+ }
+]
