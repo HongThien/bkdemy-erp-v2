@@ -557,6 +557,8 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 
 > Khối nâng cao tiểu học. Nguồn: sách "Toán arc 4 quyển 1 2023" (Archimedes). Chuẩn trình bày = các "Bài làm" trong VÍ DỤ của sách. Luật đạt v1 ngày 08/10.
 
+> **Sách thứ hai "250+ Bài toán chọn lọc lớp 4" (ME) — ĐANG ĐỀ XUẤT, CHƯA CHỐT** [21/11]: phiên 4T đọc mục lục + lý thuyết + ví dụ 15 chuyên đề (bài tập chỉ đọc đủ CĐ1, 2, 5, 8, 12, 15) và soạn `docs/de-xuat-4T-me-ban-do-va-spec.html` (27 dòng đề xuất: ~55–60 dạng mới cho bản đồ 4T hiện 104 dạng — thiếu hẳn CĐ12 hai hiệu số, CĐ15 công việc chung; thiếu nhiều CĐ5, 8, 2, 1, 13, 14). Chuẩn ME đề xuất thêm vào luật 4T: khung "Phân tích" hỏi–đáp ở Phần 1 · dòng "Nhận xét" đầu lời giải · khuôn đếm "Trường hợp 1/2" · sơ đồ hai đoạn nét đứt cho hai hiệu số. Nhập sách = ghép bài với hướng dẫn cùng số (không giải lại), vẫn chạy máy kiểm đáp số; trang quét rách / đáp án không đọc được ⇒ để trống chuyển trưởng khối. Bẫy: PDF là ảnh quét; đáp án CĐ1 có "01111111 hay 1111111"; lời giải xoá chữ số dùng gạch chéo. **Chờ Thùy duyệt** (mục 3 trang HTML: ghi Cách 2 hay không · công việc chung quy về số phần bằng nhau · cấm "→" · đáp số xoá chữ số bỏ số 0 đầu · hai CĐ mới là nhóm hay chủ đề riêng · gộp dạng NDB01527 — theo Luật xoá phải chờ gật). Chưa ghi DB, chưa đổi bản đồ.
+
 ### Phạm vi kiến thức
 
 - Không chia theo mốc kì: phạm vi = chuyên đề đang xét + các chuyên đề đứng trước trong sách + kiến thức lớp 4 thường.
