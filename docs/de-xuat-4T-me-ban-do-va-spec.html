@@ -24,6 +24,7 @@ select,textarea,input[type=text]{font:inherit;color:var(--ink);background:var(--
 textarea{width:100%;min-height:60px}
 button{font:inherit;background:var(--acc);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 #bar{position:sticky;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:8px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;z-index:5}
+.dq select,.dq input{margin-left:4px}.dq input{width:55%}
 .pill{display:inline-block;padding:1px 8px;border:1px solid var(--line);border-radius:99px;font-size:12px;margin-right:4px}
 ul{margin:4px 0 4px 20px;padding:0}
 @media (max-width:720px){table{font-size:13px}}
@@ -32,12 +33,13 @@ ul{margin:4px 0 4px 20px;padding:0}
 <body>
 <main>
 <h1>4T – chuẩn giải bài + bản đồ, dựa trên sách «250 bài toán chọn lọc lớp 4» (ME)</h1>
-<p class="sub">Soạn 21/11/2026 · đề xuất để Thùy duyệt — <b>chưa sửa spec, chưa ghi DB</b>. Đọc: mục lục, lời nói đầu, lý thuyết + ví dụ của cả 15 chuyên đề, bài tập + hướng dẫn giải của CĐ1, CĐ2, CĐ5, CĐ8, CĐ12, CĐ13 (phần mẫu), CĐ15; các CĐ còn lại đọc phần lý thuyết/ví dụ (bài tập đầy đủ sẽ đọc khi nhập). Mục nào ghi “cần xác nhận” là chỗ tôi mới thấy một phần.</p>
+<p class="sub">Soạn 21/11/2026, <b>bản bổ sung (v2)</b> · đề xuất để Thùy duyệt — <b>chưa sửa spec, chưa ghi DB</b>. Đã đọc <b>đủ 15 chuyên đề</b>: lý thuyết + ví dụ + <b>toàn bộ bài tập</b> (v1 mới đọc 7/15 CĐ). Các chỗ “cần xác nhận” ở v1 đã <b>đối chiếu với DB</b> và chốt lại (Tìm x · chia hết 4/8/25 · dãy số · dạng trồng cây rỗng · tên “Cụm …”). Có thêm <b>mục 3 viết lại thành 6 điểm chờ gật</b>, mỗi điểm có ví dụ cụ thể + đề xuất của tôi.</p>
 
 <h2>0. Sách ME là gì</h2>
 <div class="card">
 <ul>
-<li><b>15 chuyên đề, 250 bài</b> (TKBooks, chủ biên Trần Nhật Minh, 2024). Mỗi CĐ: <b>A. Lý thuyết</b> (Kiến thức cần nhớ → Các ví dụ có “Phân tích” + “Hướng dẫn”) → <b>B. Bài tập vận dụng</b> (đánh số Bài 1, 2, …; nhiều bài có ý a, b, c). <b>Hướng dẫn giải chi tiết ở cuối sách, từ trang 93</b>, cùng số bài.</li>
+<li><b>15 chuyên đề, 250 bài</b> (TKBooks, chủ biên Trần Nhật Minh, 2024). Mỗi CĐ: <b>A. Lý thuyết</b> (Kiến thức cần nhớ → Các ví dụ có “Phân tích” + “Hướng dẫn”) → <b>B. Bài tập vận dụng</b> (đánh số Bài 1, 2, …; nhiều bài có ý a, b, c). <b>Hướng dẫn giải chi tiết ở cuối sách, từ trang 93</b>, cùng số bài. Số bài: CĐ1 10 · CĐ2 20 · CĐ3 13 · CĐ4 12 · CĐ5 20 · CĐ6 16 · CĐ7 15 · CĐ8 15 · CĐ9 20 · CĐ10 25 · CĐ11 20 · CĐ12 18 · CĐ13 15 · CĐ14 10 · CĐ15 13 = <b>242 bài tập</b> (+ ví dụ trong lý thuyết, không tính vào kho).</li>
+<li>File nguồn: <code>E:\BK ACADEMY\Tài liệu tham khảo\4T\Sách lớp 4 ME.pdf</code> (220 trang, 64 MB). Số trang PDF = số trang in − 2 (đề CĐ1 in tr.7 = PDF tr.5). Ổ E đã gắn lại, không cần dùng bản trong Downloads.</li>
 <li>CĐ: 01 Viết số theo điều kiện · 02 Lập số và quy tắc đếm · 03 Trung bình cộng · 04 Kỹ thuật thực hiện phép tính · 05 Mối quan hệ giữa các thành phần phép tính · 06 Tìm hai số biết tổng và hiệu · 07 Dấu hiệu và tính chất chia hết · 08 Cấu tạo số · 09 Dãy số · 10 Phân số · 11 Tỉ số, tổng tỉ, hiệu tỉ · 12 Hai hiệu số · 13 Tuổi · 14 Hai tỉ số · 15 Công việc chung.</li>
 <li><b>Có sẵn lời giải cho từng bài</b> ⇒ theo lệnh của Thùy: “sách chỉ ghép câu + đáp án, không giải lại” (vẫn chạy máy kiểm đáp số; Opus kiểm mẫu).</li>
 <li>PDF là <b>ảnh quét</b> (có trang nghiêng, nhàu, rách — vd trang 97–98 chữ bị che; hình gạch chéo số trong bài xoá chữ số). Không có lớp chữ ⇒ phải đọc ảnh, đáp án đọc xong phải qua máy kiểm.</li>
@@ -97,7 +99,7 @@ ul{margin:4px 0 4px 20px;padding:0}
 </ul></div>
 
 <h2>2. Bản đồ 4T — đề xuất thêm / sửa</h2>
-<p class="sub">Hiện có: <b>6 chủ đề · 36 nhóm · 104 dạng</b> (số liệu DB 21/11). Dưới đây là <b>đối chiếu 15 CĐ của ME với bản đồ</b> và các đề xuất. Mã dạng/nhóm hiện có <b>không đổi</b> (mã gốc bất biến); chỉ <b>thêm mới</b> hoặc <b>đổi tên/mô tả</b>. Số dạng mới là <b>ước tính tổng</b> (≈ 55–60 trước khi trừ trùng với dạng hiện có) — sẽ chốt sau khi đọc đủ bài tập từng CĐ.</p>
+<p class="sub">Hiện có: <b>6 chủ đề · 36 nhóm · 104 dạng</b> (số liệu DB 21/11). Dưới đây là <b>đối chiếu 15 CĐ của ME với bản đồ</b> và các đề xuất. Mã dạng/nhóm hiện có <b>không đổi</b> (mã gốc bất biến); chỉ <b>thêm mới</b> hoặc <b>đổi tên/mô tả</b>. <b>Duyệt hết 31 dòng thì ≈ 75 dạng mới</b> (v1 ước 55–60; tăng vì đọc đủ CĐ4, 7, 9, 10 thấy thêm). Khoảng 15 dạng chỉ có 1–3 bài trong ME (cột “Ghi chú” đánh dấu <b>ưu tiên thấp</b>) — nếu Thùy muốn bản đồ gọn thì Bỏ các dòng đó, câu vẫn nhập được vào dạng gần nhất.</p>
 
 <h3>2.1 Bảng đối chiếu 15 CĐ ↔ bản đồ hiện tại</h3>
 <table>
@@ -105,17 +107,17 @@ ul{margin:4px 0 4px 20px;padding:0}
 <tr><td>01 Viết số theo điều kiện</td><td>Số tự nhiên → nhóm “Viết số khi biết số chữ số” (7 dạng: NDB01506–01512)</td><td>Xoá bớt chữ số (B7–10) · viết số có quy luật giữa các chữ số · viết số theo tích (nhỏ nhất)</td></tr>
 <tr><td>02 Lập số, quy tắc đếm</td><td>3 dạng đếm (NDB01513–15), 1 nhóm</td><td>Đếm theo chia hết / tổng / hiệu · phần bù “ít nhất một chữ số” · <b>tổng các số lập được</b> · bắt tay, đếm đường đi</td></tr>
 <tr><td>03 Trung bình cộng</td><td>Đủ — 15 dạng (NDB01583–94 + 01542), 3 nhóm</td><td>Chỉ thiếu “tìm nhiều số khi biết TBC các nhóm con” (B10–12)</td></tr>
-<tr><td>04 Kỹ thuật tính</td><td>Nhân (2), chia (1), tính thuận tiện (1)</td><td><b>Tìm x</b> (không thấy dạng nào trong bản đồ dù luật 4T liệt kê) · thứ tự phép tính — <i>cần xác nhận</i></td></tr>
+<tr><td>04 Kỹ thuật tính</td><td>Nhân (2), chia (1), tính thuận tiện (1)</td><td><b>Tìm x</b>: <b>đã xác nhận KHÔNG có dạng nào</b> (DB: chỉ 11 câu “tìm x” và đều nằm trong dãy số NDB00647) — CĐ4 B5 có 8 phương trình · số viết bằng chữ (B6–B12: xx̄ + x + 5 = 101, abcd − dcba, ABC + BAC = 1660) — gộp với CĐ8 B11–15</td></tr>
 <tr><td>05 Quan hệ thành phần</td><td>“Quan hệ các đại lượng trong phép cộng” (1 dạng, 5 câu)</td><td>Gần như thiếu cả CĐ: thay đổi thành phần cộng-trừ/nhân-chia · <b>làm sai khi tính</b> · phép chia có dư đặc biệt</td></tr>
-<tr><td>06 Tổng – hiệu</td><td>Có (NDB01541, 01623–27; 2 nhóm)</td><td>Số chẵn/lẻ liên tiếp biết tổng (nhỏ)</td></tr>
-<tr><td>07 Chia hết</td><td>NDB01532–34, 01537–39 + “Cụm …”</td><td>Dấu hiệu 4, 25, 8, 125 · dấu hiệu kép (6, 12, 15, 36, 45) · chia có dư theo chữ số tận cùng — <i>cần xác nhận</i></td></tr>
+<tr><td>06 Tổng – hiệu</td><td>Có (NDB01541, 01623–27; 2 nhóm)</td><td>Số chẵn/lẻ liên tiếp biết tổng: <b>đã có</b> (NDB01624, 13 câu mẫu “chẵn/lẻ liên tiếp”). Thiếu thật: tổng–hiệu với <b>số hai chữ số đổi chỗ</b> (B15–16) · cho/nhận qua lại <b>hai lần</b> (B11, đã nằm trong NDB01626)</td></tr>
+<tr><td>07 Chia hết</td><td>NDB01532–34, 01537–39 + “Cụm …”</td><td>Dấu hiệu 4, 25, 8, 125 và dấu hiệu kép (6, 12, 15, 18, 36, 45, 225) — <b>đã xác nhận thiếu</b> (NDB01533 chỉ 2, 3, 5, 9; DB chỉ 8 câu có “chia hết cho 4/8/25…” rải rác) · viết thêm chữ số hai bên để chia hết (B2) · <b>giải thích “có/không” bằng chia hết</b> (B12–15: 11…1 gồm 2010 chữ số, xé giấy 49 mảnh, CHAMHOC − HOCCHAM = 102386, 200 quyển vở thưởng). Phần “chia dư” (B7–B10) đã có NDB01536/01539</td></tr>
 <tr><td>08 Cấu tạo số</td><td>1 nhóm “Viết thêm chữ số” (1 dạng) + 5 dạng tên “Cụm 1/2/3”</td><td>Chuyển/đổi chỗ chữ số · xoá/gạch/thêm giữa · số và tổng/tích/thương chữ số · phép tính với số viết bằng chữ</td></tr>
-<tr><td>09 Dãy số</td><td>Khá đủ (NDB01523–26, 00646–50)</td><td>Đếm chữ số / chữ số thứ n khi viết liền · dãy quy luật khác cách đều — <i>cần xác nhận</i></td></tr>
-<tr><td>10 Phân số</td><td>Rất đủ: 11 nhóm / 31 dạng</td><td>Chỉ thêm “thêm cùng một số vào tử và mẫu”</td></tr>
-<tr><td>11 Tỉ số, tổng tỉ, hiệu tỉ</td><td>Có (NDB01543–49, 01578–82)</td><td>Tìm tỉ số từ quan hệ phân số 2–3 đại lượng (B1–3)</td></tr>
+<tr><td>09 Dãy số</td><td>Khá đủ ở phần cách đều (NDB01523–26, 00646–50) + chu kỳ chữ cái (NDB01538, 24 câu) + đếm số chia hết (NDB01537)</td><td><b>Thiếu thật</b> (đã đọc đủ B1–B20): tìm quy luật dãy không cách đều (tổng hai số liền trước, nhân 3…) · <b>đếm chữ số khi viết liền</b> / đánh số trang (B7–9, Ví dụ 2) · đếm riêng chữ số 0/1/5 và chữ số thứ n (B10–12, 15, 17) · điền ô có tổng ba ô liền bằng nhau (B3) · bảng ngoằn ngoèo (B20)</td></tr>
+<tr><td>10 Phân số</td><td>11 nhóm / ~50 dạng (quy đồng, rút gọn, so sánh, 4 phép tính, dãy hiệu–tích…)</td><td>v1 ghi “chỉ thiếu 1” là <b>sai</b> — đọc đủ B1–25 thấy thiếu: <b>phân số bằng nhau tìm x, y</b> (B2–4) · phân số bằng phân số cho trước theo điều kiện tử/mẫu (B5, 7) · <b>tìm số tự nhiên x thoả bất đẳng thức phân số</b> (B8, 10, 13) · phân số nằm giữa (B9) · thêm/bớt cùng một số ở tử, mẫu (B6, 11) · dãy mẫu nhân đôi/nhân ba (B20–22) · chứng tỏ tổng &lt; 1 (B22). Tính biểu thức (B17–19) và tìm y dãy (B21, 24, 25) <b>đã có</b></td></tr>
+<tr><td>11 Tỉ số, tổng tỉ, hiệu tỉ</td><td>Có (NDB01543–49, 01578–82)</td><td>Tìm tỉ số từ quan hệ phân số 2–3 đại lượng (B1–3) · <b>một phần bằng phân số của TỔNG các phần còn lại</b> (B6–7: bi xanh = 3/7 tổng bi cả hộp…) · thêm B15–B19 (“sau khi bán đi … thì …”) rơi vào 2 dạng đang rất ít câu (NDB01550/51) → ưu tiên nhập</td></tr>
 <tr><td>12 Hai hiệu số</td><td><b>Không có</b></td><td>Cả chuyên đề (thừa–thừa, thừa–thiếu, thiếu–thiếu, …)</td></tr>
-<tr><td>13 Tuổi</td><td>1 dạng (NDB01625, 45 câu) gộp trong tổng–hiệu</td><td>Tách theo kỹ thuật: hiệu không đổi · tỉ số một/ hai thời điểm · “sau bao nhiêu năm gấp k lần”</td></tr>
-<tr><td>14 Hai tỉ số</td><td>2 dạng yếu (NDB01550: 8 câu, 4 dùng được, 0 MCQ; NDB01551: 5 câu)</td><td>3 dạng theo đại lượng không đổi (tổng / hiệu / một đại lượng)</td></tr>
+<tr><td>13 Tuổi</td><td>1 dạng (NDB01625, 45 câu) gộp trong tổng–hiệu</td><td>Tách theo kỹ thuật: hiệu không đổi · tỉ số một/ hai thời điểm · “sau bao nhiêu năm gấp k lần” · <b>tổng tuổi nhiều người</b> (B6, B14: mẹ gấp rưỡi tổng tuổi hai con; 4/3 tổng tuổi ba con)</td></tr>
+<tr><td>14 Hai tỉ số</td><td>2 dạng yếu (NDB01550: 8 câu, 4 dùng được, 0 MCQ; NDB01551: 5 câu)</td><td>Sách tự chia sẵn 3 dạng (đã đọc B1–10): <b>tổng không đổi</b> (B1–4) · <b>hiệu không đổi</b> (B5–8) · <b>tổng, hiệu đổi nhưng một đại lượng không đổi</b> (B9–10)</td></tr>
 <tr><td>15 Công việc chung</td><td><b>Không có</b></td><td>Cả chuyên đề</td></tr>
 </table>
 
@@ -131,15 +133,57 @@ ul{margin:4px 0 4px 20px;padding:0}
 <li><b>Hình học</b> vẫn chỉ 1 dạng (chu vi): ME không có hình học; phần hình của Archimedes (CĐ5, hình đọc) vẫn thiếu dạng — việc riêng.</li>
 </ul></div>
 
-<h2>3. Câu hỏi cần Thùy trả lời</h2>
-<div class="card"><ol>
-<li><b>Q1.</b> Phần 2 chỉ MỘT cách (đề xuất) hay cho ghi cả “Cách 2” như ME?</li>
-<li><b>Q2.</b> Công việc chung: chọn cách “quy về số phần bằng nhau (BCNN)” làm chuẩn, cho phép phân số “phần việc/giờ” khi cần?</li>
-<li><b>Q3.</b> Cấm dấu “→” trong lập luận (dù ME dùng) — đồng ý?</li>
-<li><b>Q4.</b> Số 0 đứng đầu trong đáp số xoá chữ số: kho ghi số bỏ 0 đầu + ghi chú — đồng ý?</li>
-<li><b>Q5.</b> Sau khi duyệt mục 2.2, tôi viết lại mục “Khối 4T” trong <code>spec-giai-bai.md</code> (đổi mã <code>luat:</code>) — làm ngay hay gom cùng đợt sửa spec khác?</li>
-<li><b>Q6.</b> Máy ổ <code>E:\BK ACADEMY</code> hiện không gắn — nếu sách ME cũng nằm trên đó, tôi dùng file PDF trong Downloads làm nguồn nhập (chỉ cần chỉ đường dẫn cố định).</li>
-</ol></div>
+<h2>3. Sáu điểm chờ Thùy gật</h2>
+<p class="sub">Mỗi điểm có <b>ví dụ cụ thể</b> và <b>đề xuất của tôi</b> (ô chọn mặc định trống — Thùy bấm “Đồng ý” hoặc “Khác” rồi ghi chú). Số Q ở mục 1.3 là bảng so sánh luật; sáu điểm này là phần cần gật để tôi sửa spec và nhập kho.</p>
+
+<div class="card dq" data-d="D1">
+<b>Đ1 · Phần 2 ghi MỘT cách hay cả “Cách 2”?</b> <span class="mut">(Q1 ở 1.3)</span>
+<p><b>Ví dụ (ME CĐ15 Ví dụ 1):</b> hai thợ, thợ A làm một mình 4 giờ, thợ B 6 giờ, hỏi làm chung mất bao lâu. ME giải hai cách: <i>Cách 1</i> “1 giờ A làm 1/4, B làm 1/6, cộng được 5/12, thời gian = 1 : 5/12 = 12/5 giờ”; <i>Cách 2</i> “chia cả công việc thành 12 phần bằng nhau (12 là bội chung của 4 và 6): mỗi giờ A làm 12 : 4 = 3 (phần), B làm 12 : 6 = 2 (phần), cả hai làm 3 + 2 = 5 (phần), nên thời gian là 12 : 5 = 12/5 giờ”.</p>
+<p><b>Đề xuất: ghi MỘT cách</b> (cách ít bước hơn, dùng công cụ lớp 4), như luật 4T hiện hành. Khi ghép lời giải sách vào kho, nếu sách có hai cách thì lấy cách hợp luật, <b>không</b> ghi cách còn lại. Lý do: mỗi câu kho có đáp án/khuôn kiểm tra một đường; hai cách làm câu dài gấp đôi, HS và TA đọc không kịp.</p>
+<label>Quyết định: <select data-dq="D1"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D1" placeholder="ghi chú">
+</div>
+
+<div class="card dq" data-d="D2">
+<b>Đ2 · Công việc chung: quy về “số phần bằng nhau” làm chuẩn?</b> <span class="mut">(Q2 ở 1.3)</span>
+<p><b>Ví dụ:</b> cùng bài trên, kho 4T chỉ ghi như Cách 2: “Chia cả công việc thành 12 phần bằng nhau. Mỗi giờ thợ A làm được 12 : 4 = 3 (phần), thợ B làm được 12 : 6 = 2 (phần). Mỗi giờ cả hai làm được 3 + 2 = 5 (phần). Thời gian làm chung là 12 : 5 = 12/5 (giờ).” — <b>không</b> có bước “1 : 5/12” (chia cho phân số).</p>
+<p><b>Đề xuất:</b> chuẩn = quy về số phần bằng nhau (mốc là bội chung nhỏ nhất của các thời gian). Cho phép nhắc “trong 1 giờ thợ A làm được 1/4 công việc” ở <b>Phần 1</b> để giải thích ý nghĩa, nhưng Phần 2 không chia cho phân số. Lý do: lớp 4 chưa học chia cho phân số trong chương trình thường; giữ đúng luật “công cụ lớp 4” của 4T.</p>
+<label>Quyết định: <select data-dq="D2"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D2" placeholder="ghi chú">
+</div>
+
+<div class="card dq" data-d="D3">
+<b>Đ3 · Cấm dấu “→” trong lập luận (dù ME dùng)?</b> <span class="mut">(Q3 ở 1.3)</span>
+<p><b>Ví dụ:</b> ME ghi “Xoá: 2; 4; 6; 1; 8; 2 → giữ lại 6 8 2 0 2 2” và “1 + 4 + 5 = 10 → chia hết cho 5”. Kho ghi: “Xoá các chữ số 2; 4; 6; 1; 8; 2. Số còn lại là 682022.” và “Tổng các chữ số là 1 + 4 + 5 = 10, nên … chia hết cho 5.”</p>
+<p><b>Đề xuất: cấm</b> “→” (cùng nhóm <code>⇒ ⇔ ∈ ≤ ≥</code> đang cấm); dùng chữ “nên / suy ra / số còn lại là”. Lý do: bảng CẤM tiểu học của 4T đã ghi vậy, và “→” hay bị HS đọc thành “bằng”.</p>
+<label>Quyết định: <select data-dq="D3"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D3" placeholder="ghi chú">
+</div>
+
+<div class="card dq" data-d="D4">
+<b>Đ4 · Đáp số xoá chữ số: bỏ số 0 đứng đầu?</b> <span class="mut">(Q4 ở 1.3)</span>
+<p><b>Ví dụ (ME CĐ1 B9, B10):</b> đáp án sách “01111111 hay 1111111”. Kho ghi <b>đáp số 1111111</b> (số tự nhiên đúng nghĩa) và một dòng Ghi chú: “Nếu giữ chữ số 0 ở đầu thì viết 01111111, nhưng đó không phải cách viết số tự nhiên.” Máy kiểm đáp số so với 1111111.</p>
+<p><b>Đề xuất: đồng ý.</b> Lý do: một đáp số một cách viết thì máy chấm và MCQ không bị lệch; HS vẫn được giải thích vì sao.</p>
+<label>Quyết định: <select data-dq="D4"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D4" placeholder="ghi chú">
+</div>
+
+<div class="card dq" data-d="D5">
+<b>Đ5 · “Hai hiệu số” và “Công việc chung”: nhóm hay chủ đề riêng?</b> <span class="mut">(dòng P27)</span>
+<p><b>Ví dụ:</b> bản đồ 4T hiện có chủ đề “Các bài toán lời văn” chứa các nhóm “Bài toán tổng hiệu”, “Trung bình cộng”, “Bài toán tổng tỉ – hiệu tỉ”. Hai cái mới (P22: 5 dạng, ~18 bài ME; P25: 5 dạng, 13 bài ME) sẽ đứng <b>cùng hàng</b> với ba nhóm đó, HS thấy “Các bài toán lời văn › Bài toán hai hiệu số”. Phương án khác: mở thêm chủ đề thứ 7 chỉ vì ~30 bài.</p>
+<p><b>Đề xuất: 2 NHÓM trong chủ đề “Các bài toán lời văn”</b>, giữ 6 chủ đề. Lý do: chủ đề là cấp lớn (lục địa trên bản đồ phiêu lưu của app HS), không nên đẻ thêm cho vài chục bài.</p>
+<label>Quyết định: <select data-dq="D5"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D5" placeholder="ghi chú">
+</div>
+
+<div class="card dq" data-d="D6">
+<b>Đ6 · Gộp dạng rỗng NDB01527 (trồng cây trên đường thẳng)?</b> <span class="mut">(dòng P26)</span>
+<p><b>Chính xác cái sẽ đổi:</b> dạng NDB01527 có <b>đúng 1 câu</b>, mã <code>T14T000000035</code> (150 đèn cao áp mắc hai bên đường, cách nhau 45 m, một đầu có đèn → đáp số 3375 m; lời giải đã hoàn chỉnh). Việc làm: chuyển câu này sang dạng <b>NDB00649 “1 đầu”</b> (đúng vì chỉ một đầu có đèn), rồi ngưng dùng NDB01527 trên bản đồ. Mã câu không đổi; không câu nào bị xoá; 4 dạng con còn lại (00648–00651) không động.</p>
+<p><b>Đề xuất: đồng ý</b> — nhưng vì Luật xoá, tôi <b>chưa làm</b> cho tới khi Thùy gật rõ, và “ngưng dùng dạng” chỉ làm sau khi chuyển xong câu và đo lại cho thấy 0 câu còn gán vào đó.</p>
+<label>Quyết định: <select data-dq="D6"><option value="">—</option><option>Đồng ý</option><option>Khác</option></select></label> <input type="text" data-dn="D6" placeholder="ghi chú">
+</div>
+
+<h3>Việc còn lại sau khi Thùy gật</h3>
+<div class="card"><ul>
+<li><b>Q5 cũ (viết lại mục “Khối 4T” trong spec):</b> tôi làm <b>ngay sau khi Thùy gật 6 điểm + các dòng mục 2.2</b>, một lượt duy nhất (đổi mã <code>luat:</code> một lần), không gom thêm.</li>
+<li><b>Q6 cũ (nguồn PDF):</b> đã giải quyết — ổ E gắn lại, dùng <code>E:\BK ACADEMY\Tài liệu tham khảo\4T\Sách lớp 4 ME.pdf</code>.</li>
+<li>Thứ tự làm tiếp (Phần 2 của việc): ① migration thêm nhóm/dạng mới vào bản đồ (chỉ các dòng Thùy Duyệt) ② kiểm các lô 4T <code>k4T-lo*.json</code> đã ghi DB chưa ③ ghép đề + hướng dẫn cùng số cho 15 CĐ, chạy <code>k4T-kiem.mjs</code>, thử ROLLBACK ở cổng <code>_kho_insert.mjs</code> trước ④ đo lại số dạng 4T dưới 30.</li>
+</ul></div>
 </main>
 
 <div id="bar">
@@ -154,31 +198,35 @@ const R=[
 // id, cd, loai, chu de -> nhom, de xuat, vi du, ghi chu
 ['P01','01','add','Số tự nhiên → <i>Xoá bớt chữ số</i> (nhóm mới)','3 dạng: (a) xoá bớt chữ số của MỘT số / dãy số chẵn liên tiếp để được số lớn nhất, nhỏ nhất · (b) xoá bớt chữ số của dãy số tự nhiên viết liền (1234…1415; 20 19 18…11) · (c) xoá để được số chẵn lớn nhất / lẻ nhỏ nhất','B7, B8, B9, B10 (kèm đếm số chữ số của dãy 2000…2015)','Có hình gạch chéo trong đáp án → ghi bằng chữ (mục 1.4)'],
 ['P02','01','add','Số tự nhiên → Viết số khi biết số chữ số','1 dạng: viết số lớn nhất theo QUY LUẬT giữa các chữ số liền nhau (hơn kém 2 đơn vị; từ chữ số thứ ba bằng tổng hai chữ số đứng liền trước)','B3a, B3b','Dạng đề khó, ít câu — ưu tiên thấp'],
-['P03','01','chg','Số tự nhiên → Viết số khi biết số chữ số','Kiểm lại NDB01507/01509: ME có cả “nhỏ nhất khi biết tích” (B5a, B6c) và “chẵn lớn nhất / bé nhất khi biết tích” (B6b). Nếu chưa có thì tách dạng “nhỏ nhất theo tích”','B5, B6','Cần xác nhận trùng khi nhập'],
+['P03','01','chg','Số tự nhiên → Viết số khi biết số chữ số (NDB01507)','<b>Không thêm dạng mới.</b> NDB01507 tên “lớn nhất khi biết tích” nhưng câu mẫu có cả “viết các số hai chữ số tích 40”; ME còn “nhỏ nhất khi biết tích” (B5a, B6c) và “chẵn lớn nhất / bé nhất” (B6b). Đề xuất chỉ <b>đổi tên</b> thành “Viết số tự nhiên lớn nhất / nhỏ nhất khi biết tích các chữ số”','B5, B6','Rẻ: đổi tên, không động câu'],
 ['P04','02','add','Số tự nhiên → <i>Đếm số theo điều kiện</i> (nhóm mới)','4 dạng: (a) chia hết cho 5 / 3 / 15 / tận cùng 5 · (b) tổng các chữ số cho trước · hiệu hai chữ số cho trước · (c) “có ít nhất một chữ số 6” (đếm phần bù) · (d) “có đúng một chữ số 5” (chia trường hợp vị trí)','B8–B15','Hiện chỉ có 3 dạng đếm cơ bản (NDB01513–15)'],
 ['P05','02','add','Số tự nhiên → <i>Tổng các số lập được</i> (nhóm mới)','3 dạng: (a) tổng tất cả số 4 chữ số lập từ 4 chữ số khác nhau (mỗi chữ số xuất hiện đều nhau ở mỗi hàng) · (b) biết tổng các số lập được, tìm chữ số x (66660) · (c) biết a+b+c+d=15, tính tổng các số lập được','B3, B6, B7, B16','Dạng thường gặp ở đề thi chọn'],
 ['P06','02','add','Các bài toán Logic → <i>Đếm cách, bắt tay, đường đi</i> (nhóm mới)','3 dạng: (a) bắt tay giữa n người (cộng 29+28+…+1) · (b) bắt tay có điều kiện (trừ vợ/chồng) · (c) đếm đường đi / cách xếp chữ trên sơ đồ (cộng dần, MATH, kiến A→B)','B17–B20','Cần hình đề (B19, B20)'],
 ['P07','03','add','Các bài toán lời văn → Cơ bản về trung bình cộng','1 dạng: tìm nhiều số khi biết TBC của các nhóm con / các số liên tiếp (5 số chẵn liên tiếp TBC 126; TBC 4 số, 3 số đầu, 3 số cuối)','B4, B10, B11, B12','Các dạng TBC còn lại đã đủ'],
-['P08','04','ask','Số tự nhiên → <i>Tìm x</i> (nhóm mới?)','Bản đồ chưa thấy dạng “Tìm x” dù luật 4T liệt kê CĐ4/16/18/19. Đề xuất 3 dạng: một phép tính · hai phép tính (36 : x + 121 = 130) · dùng tính chất phân phối (1358×x − 358×x = 25000). <b>Hỏi:</b> có thể đang nằm trong “Tính thuận tiện” — tôi kiểm trước khi thêm','Ví dụ 2 CĐ4','Cần xác nhận bằng cách mở các câu “Tìm x” đang có trong kho'],
+['P08','04','add','Số tự nhiên → <i>Tìm x</i> (nhóm mới)','<b>Đã xác nhận bản đồ không có dạng Tìm x</b> (0 câu ngoài dãy số). 3 dạng: (a) một–hai phép tính, có ngoặc (x − 140 : 35 = 270; 357 : (87 : x) = 119) · (b) nhiều phép / nhiều chữ x cùng lúc ((x+1)+(x+3)+(x+5) = 30; x : 8 × 32 + x : 3 × 18 − x : 5 × 10 = 120) · (c) dùng tính chất phân phối (1358 × x − 358 × x = 25000). Luật 4T: ẩn x chỉ dùng khi đề có chữ x','Ví dụ 2 CĐ4; B5 (8 ý a–h)','Tìm x là chữ số (xx̄ + x + 5 = 101) đưa sang dòng P18'],
 ['P09','05','add','Số tự nhiên → Quan hệ các đại lượng trong phép cộng → mở rộng thành nhóm <i>Thay đổi các thành phần phép tính</i>','3 dạng: (a) thay đổi số hạng / số bị trừ / số trừ → tổng, hiệu đổi thế nào · (b) thay đổi thừa số, số bị chia, số chia · (c) “tổng của số bị trừ, số trừ và hiệu bằng …”','B1–B3, B5; Ví dụ 1','NDB01521 (5 câu) giữ làm dạng (a)'],
 ['P10','05','add','Số tự nhiên → <i>Làm sai khi tính</i> (nhóm mới)','3 dạng: (a) trừ / cộng viết sai chữ số (49→94; 107→1007) · (b) nhân đặt tích riêng thẳng cột như phép cộng (nhân 46, 901) · (c) nhân viết nhầm / thêm / đổi chữ số của thừa số (thêm 3 vào 25; đổi hàng nghìn–hàng trăm)','Ví dụ 2; B4, B6–B9, B16–B20','Rất hay ra trong đề chọn'],
 ['P11','05','add','Số tự nhiên → <i>Phép chia có dư đặc biệt</i> (nhóm mới)','3 dạng: (a) số dư lớn nhất / số chia nhỏ nhất · (b) tìm số bị chia / số chia bé nhất biết thương và dư · (c) thêm / bớt bao nhiêu để chia hết · biết tổng thành phần (969)','B11–B14','Tách khỏi “chia có dư” ở Cấu tạo số (đó là dạng dấu hiệu chia hết)'],
-['P12','06','add','Các bài toán lời văn → Tổng hiệu','1 dạng: số chẵn / số lẻ liên tiếp biết tổng (hiệu = 2×(k+1))','Lý thuyết CĐ6','Nhỏ'],
-['P13','07','add','Cấu tạo số → Ứng dụng tính chất chia hết','3 dạng: dấu hiệu chia hết 4, 25 · 8, 125 · dấu hiệu kép (6, 12, 15, 36, 45); thêm 1 dạng “chia 2 / chia 5 dư … ⇒ chữ số tận cùng”','Lý thuyết CĐ7 (1.1 b–d, 1.2)','Cần xác nhận với NDB01532–34 đang có'],
-['P14','08','chg','Cấu tạo số (5 dạng NDB00652–56)','Đổi tên 5 dạng đang tên “Cụm 1 / Cụm 2: 2 chữ số / CỤm 3 …” thành tên theo phương pháp (đọc câu trong từng dạng rồi đề xuất tên cụ thể). Mã giữ nguyên','—','Tên “Cụm …” không giúp HS / TA hiểu dạng'],
+['P12','06','add','Các bài toán lời văn → Tổng hiệu','1 dạng: tổng–hiệu với <b>số hai chữ số đổi chỗ</b> (hiệu hai chữ số 5, tổng số đã cho và số đảo = 143; tổng hai chữ số 11, đổi chỗ thì tăng 27). “Số chẵn/lẻ liên tiếp biết tổng” <b>đã có</b> ở NDB01624 → bỏ khỏi đề xuất','B14–B16','Ưu tiên thấp (3 bài)'],
+['P13','07','add','Cấu tạo số → Ứng dụng tính chất chia hết','<b>Đã xác nhận thiếu</b>. 4 dạng: (a) tìm chữ số để chia hết cho 4, 8, 25, 125 · (b) tìm chữ số / viết thêm chữ số để chia hết cho số kép 6, 12, 15, 18, 36, 45, 225 (gồm “viết thêm chữ số bên phải và bên trái 1996”) · (c) không làm phép chia, nhận biết 11…1 (2010 chữ số), 33…3, bb…b chia hết cho 2, 3, 5, 9 · (d) <b>giải thích “có thể hay không”</b> bằng chia hết (xé giấy 3 mảnh thành 5 mảnh; CHAMHOC − HOCCHAM = 102386; 200 quyển vở thưởng đều cho 21 bạn Giỏi, 18 bạn Khá)','B1–B4, B12–B15; lý thuyết CĐ7 (1.1 b–d)','(c) và (d) mỗi dạng chỉ 2–3 bài: ưu tiên thấp'],
+['P14','08','chg','Cấu tạo số › Dấu hiệu chia hết (5 dạng NDB00652–56)','Đã đọc câu mẫu từng dạng, đề xuất đổi tên (mã giữ nguyên): <b>00652</b> “Chọn các số chia hết cho 2, 3, 5, 9 trong một danh sách (kể cả ‘chia hết cho A nhưng không chia hết cho B’)” · <b>00653</b> “Tìm một chữ số a để số chia hết cho 3, 4, 9…” · <b>00654</b> “Tìm hai chữ số để số chia hết đồng thời cho nhiều số” · <b>00655</b> “Tìm chữ số * (kèm giải thích): hai dấu *, tích không nhân trực tiếp” · <b>00656</b> “Viết các số từ các chữ số cho trước chia hết cho 3, 5, 9”','—','Tên “Cụm 1/2/3” không giúp HS / TA hiểu dạng'],
 ['P15','08','add','Cấu tạo số → <i>Chuyển / đổi chỗ chữ số</i> (nhóm mới)','1–2 dạng: chuyển chữ số cuối lên đầu số mới hơn 765 · đổi chỗ hai chữ số','Ví dụ 1 CĐ8','Lời giải dùng “bớt cả hai vế”'],
 ['P16','08','chg','Cấu tạo số → Viết thêm chữ số (NNB01722, 1 dạng 11 câu)','Tách thành 4 dạng: thêm bên trái / phải · thêm vào giữa · xoá chữ số (hàng đơn vị / hàng trăm → giảm k đơn vị / k lần) · gạch chữ số (còn lại hai chữ số)','Ví dụ 2; B1–B4, B8, B9','Mã NDB01540 giữ cho dạng “thêm bên trái”'],
 ['P17','08','add','Cấu tạo số → <i>Số và tổng / tích / thương các chữ số</i> (nhóm mới)','3 dạng: số bằng k lần chữ số hàng đơn vị · số chia cho tổng các chữ số được thương và dư cho trước · số gấp k lần tích các chữ số','B5, B6, B7, B10','—'],
-['P18','08','add','Cấu tạo số → <i>Phép tính với số viết bằng chữ</i> (nhóm mới)','3 dạng: cộng theo hàng (abcd+abc+ab+a = 11106) · tích hai số bằng chữ (aa×bc = 1001) · ab×cd = bbb','B11–B15','—'],
-['P19','09','ask','Các bài toán Logic → Dãy số cách đều','Thêm 2 dạng: đếm chữ số / tìm chữ số thứ n khi viết các số của dãy liền nhau · dãy theo quy luật khác cách đều (nếu CĐ9 có). <b>Hỏi:</b> tôi mới đọc lý thuyết + Ví dụ 1; cần đọc bài tập CĐ9 để chốt','Ví dụ 1a CĐ9','Cần xác nhận'],
-['P20','10/11','add','Phân số → Giá trị phân số của một số / Tỉ số','1 dạng: thêm (bớt) cùng một số tự nhiên vào cả tử và mẫu để được phân số mới cho trước (31/61 → 4/7)','CĐ11 B8','Bài thuộc CĐ11 nhưng bản chất phân số'],
-['P21','11','add','Các bài toán lời văn → Tổng tỉ – hiệu tỉ','1 dạng: tìm tỉ số hai/ba đại lượng khi biết QUAN HỆ PHÂN SỐ (3/4 số cam = 2/5 số quýt; 1/2 nam = 1/3 nữ)','CĐ11 Ví dụ 1c, 2; B1–B3','Dùng “số phần bằng nhau” để đọc tỉ số'],
+['P18','08','add','Cấu tạo số → <i>Phép tính với số viết bằng chữ</i> (nhóm mới; gộp CĐ4 B6–B12 và CĐ8 B11–15)','6 dạng: (a) cộng theo hàng (abcd + abc + ab + a = 11106) · (b) tích hai số viết bằng chữ (aa × bc = 1001; ab × cd = bbb) · (c) cộng viết chồng ABC + BAC = 1660 · (d) <b>tìm x là chữ số</b> (xx̄ + x + 5 = 101; xxx̄ − xx̄ − x − 25 = 272) · (e) so sánh hai số viết bằng chữ (aa × b với bb × a) · (f) số đảo ngược: abcd − dcba, số 3–4 chữ số liên tiếp tăng dần viết ngược','CĐ4 B6–B10, B12; CĐ8 B11–B15','(c), (e), (f) mỗi dạng 1–2 bài: ưu tiên thấp'],
+['P19','09','add','Các bài toán Logic → Dãy số cách đều (+ nhóm mới <i>Viết liền các số</i>)','<b>Đã đọc đủ B1–B20, chốt 5 dạng:</b> (a) tìm quy luật dãy không cách đều, viết thêm số hạng (tổng hai số liền trước, nhân 3, cộng 1 rồi 2 rồi 3…; dãy 100; 93; 85; 76) · (b) đếm chữ số khi viết liền, đánh số trang (1 → 1000; 150 trang cần 342 chữ số; biết 234 chữ số tìm số trang) · (c) đếm riêng chữ số 0 / 1 / 5 và tìm chữ số thứ n của dãy viết liền (B10–12, 15, 17) · (d) điền ô, ba ô liên tiếp tổng bằng nhau (B3) · (e) bảng ngoằn ngoèo, số 2023 ở cột nào (B20). <b>Không thêm</b> dạng chữ cái lặp (đã có NDB01538) và đếm số chia hết (NDB01537)','B1, B3, B4, B6–B12, B15, B17, B20; Ví dụ 2','(d), (e) mỗi dạng 1 bài: ưu tiên thấp'],
+['P20','10','add','Phân số → Giá trị phân số của một số / Tỉ số','1 dạng: thêm (bớt) cùng một số tự nhiên vào <b>tử và mẫu</b> hoặc chỉ vào mẫu để được phân số mới cho trước (39/64 thêm x thành 3/4; 31/61 thêm a thành 4/7; 8/12 trừ ở mẫu thành 4/3). DB: 0 câu loại này','CĐ10 B6, B11; CĐ11 B8','Gộp 3 bài của hai CĐ'],
+['P21','11','add','Các bài toán lời văn → Tổng tỉ – hiệu tỉ','2 dạng: (a) tìm tỉ số hai/ba đại lượng khi biết QUAN HỆ PHÂN SỐ (3/4 số cam = 2/5 số quýt; 1/2 nam = 1/3 nữ) · (b) <b>một phần bằng phân số của TỔNG các phần còn lại</b> (bi xanh = 3/7 tổng bi cả hộp; số điểm tổ 1 = 1/2 tổng điểm ba tổ còn lại…)','CĐ11 Ví dụ 1c, 2; B1–B3, B6–B7','Dùng “số phần bằng nhau” để đọc tỉ số'],
 ['P22','12','add','Các bài toán lời văn → <i>Bài toán hai hiệu số</i> (nhóm mới, CHUYÊN ĐỀ MỚI trong bản đồ)','5 dạng: (a) thừa – thừa (chia 2 quả thừa 12, chia 3 quả thừa 2) · (b) thừa – thiếu · (c) thiếu – thiếu · (d) hai người làm cùng số sản phẩm, mỗi ngày khác nhau (dệt chiếu, khăn mặt) · (e) hai bể nước chảy / rút cùng lúc (hiệu thay đổi đều theo thời gian). Mọi dạng có sơ đồ hai đoạn nét đứt','CĐ12 Ví dụ 1, 2; B1–B18','Hiện KHÔNG có dạng nào; ~18 bài + 2 ví dụ'],
-['P23','13','chg','Các bài toán lời văn → Tổng hiệu liên quan đến tuổi (NDB01625, 45 câu)','Tách thành 4 dạng theo kỹ thuật: (a) hiệu tuổi không đổi (hơn kém 25 tuổi, 5 năm nữa) · (b) tuổi và tỉ số tại MỘT thời điểm · (c) “sau / cách đây bao nhiêu năm thì gấp k lần” · (d) hai thời điểm có hai tỉ số khác nhau. Mã NDB01625 giữ cho dạng (a)','CĐ13 Ví dụ 1, 2; B1–B7; CĐ14 Ví dụ 3','45 câu hiện có phải chia lại theo 4 dạng — chạy lại phân dạng cho nhóm này'],
-['P24','14','chg','Các bài toán lời văn → NNB01727 “Bài toán tỉ số có sự thay đổi đại lượng”','Đổi tên nhóm thành “Bài toán hai tỉ số”; 3 dạng theo đại lượng KHÔNG ĐỔI: tổng không đổi · hiệu không đổi · một đại lượng không đổi (thêm 10 học sinh nam). NDB01550 / 01551 đang có giữ nguyên mã, đổi tên','CĐ14 Ví dụ 1–3','Hiện 2 dạng 8 + 5 câu, 0 / 2 MCQ'],
+['P23','13','chg','Các bài toán lời văn → Tổng hiệu liên quan đến tuổi (NDB01625, 45 câu)','Tách thành 5 dạng theo kỹ thuật: (a) hiệu tuổi không đổi (hơn kém 25 tuổi, 5 năm nữa) · (b) tuổi và tỉ số tại MỘT thời điểm · (c) “sau / cách đây bao nhiêu năm thì gấp k lần” · (d) hai thời điểm có hai tỉ số khác nhau · (e) <b>tổng tuổi nhiều người</b> (mẹ gấp rưỡi tổng tuổi hai con; tuổi mẹ bằng 4/3 tổng tuổi ba con). Mã NDB01625 giữ cho dạng (a)','CĐ13 Ví dụ 1, 2; B1–B15; CĐ14 Ví dụ 3','45 câu hiện có phải chia lại theo 5 dạng — chạy lại phân dạng nhóm này (không đổi mã câu)'],
+['P24','14','chg','Các bài toán lời văn → NNB01727 “Bài toán tỉ số có sự thay đổi đại lượng”','Đổi tên nhóm thành “Bài toán hai tỉ số”; <b>sách tự chia sẵn 3 dạng</b>: (a) tổng không đổi (B1–4: đội tuyển, tủ sách, hình chữ nhật thêm 4 m bớt 4 m) · (b) hiệu không đổi (B5–8: hoa, ngăn sách) · (c) tổng, hiệu đổi nhưng một đại lượng không đổi (B9–10: thêm 3 bạn nam chuyển vào). NDB01550 (chuyển giữa các đại lượng) ≈ dạng (a); NDB01551 (tăng giảm) ≈ dạng (c); chỉ <b>thêm mới dạng (b)</b>','CĐ14 Ví dụ 1–3; B1–B10; CĐ11 B15–B19','Hiện 2 dạng 8 + 5 câu, 0 / 2 MCQ ⇒ ME là nguồn chính'],
 ['P25','15','add','Các bài toán lời văn → <i>Bài toán công việc chung</i> (nhóm mới)','5 dạng: (a) hai người làm chung → thời gian · (b) vòi chảy vào + vòi tháo ra · (c) biết làm chung và làm riêng một người → người kia · (d) làm theo giai đoạn (cùng làm rồi một người nghỉ / làm tiếp) · (e) nhiều người / khoán theo tuần (ba người, người thứ tư)','CĐ15 Ví dụ 1, 2; B1–B13','Hiện KHÔNG có dạng nào; cần chốt Q2 trước khi nhập'],
 ['P26','—','del','Các bài toán Logic → Bài toán trồng cây trên đường thẳng (NDB01527)','Dạng “Bài toán trồng cây trên đường thẳng” chỉ 1 câu, 0 dùng được, trong khi các dạng con (2 đầu NDB00648, 1 đầu 00649, 0 đầu 00650, 2 cây 00651) đã có 62 câu. Đề xuất GỘP vào các dạng con (chuyển câu duy nhất sang dạng con đúng) rồi bỏ dạng rỗng','—','Chỉ đề xuất; theo Luật xoá phải liệt kê chính xác + chờ gật. Không làm ở bước này'],
-['P27','—','ask','(bản đồ chung)','Nếu duyệt P22 + P25, bản đồ 4T có 2 chuyên đề mới (Hai hiệu số, Công việc chung) hay chỉ là 2 NHÓM trong “Các bài toán lời văn”? Đề xuất: <b>2 nhóm</b> (giữ 6 chủ đề, tránh đẻ chủ đề mới cho ~20 bài)','—','Hỏi hướng']
+['P27','—','ask','(bản đồ chung)','Nếu duyệt P22 + P25, bản đồ 4T có 2 chuyên đề mới (Hai hiệu số, Công việc chung) hay chỉ là 2 NHÓM trong “Các bài toán lời văn”? Đề xuất: <b>2 nhóm</b> (giữ 6 chủ đề, tránh đẻ chủ đề mới cho ~20 bài)','—','Hỏi hướng'],
+['P28','—','ask','Cấu tạo số › Dấu hiệu chia hết (NDB00652/00653/00656 ↔ NDB01532/01533/01534) · Phân số › So sánh (NDB01561 ↔ NDB01562)','Có <b>4 cặp dạng cùng ý / cùng tên</b>: 00652 ↔ 01532 (nhận biết số chia hết) · 00653 ↔ 01533 (tìm chữ số) · 00656 ↔ 01534 (lập số) · <b>01561 và 01562 trùng nguyên tên</b> “So sánh phân số bằng phương pháp phần bù”. Đề xuất: <b>KHÔNG gộp, KHÔNG xoá</b> (gộp phải chuyển câu và đổi dạng của câu đang có); chỉ <b>đổi tên</b> cho khác nhau (P14, và đổi tên 01562 sau khi xem câu của nó). Thùy gật “đổi tên” hoặc “gộp” — nếu “gộp” tôi liệt kê chính xác từng dạng + số câu trước khi làm','—','Luật xoá: chưa làm gì'],
+['P29','10','add','Phân số → <i>Phân số bằng nhau</i> (nhóm mới)','2 dạng: (a) tìm x, y, a, b trong các phân số bằng nhau (3/7 = x/21; 2/x = y/6 = 12/18; 4/6 = 6/a = b/15 = 18/c = d/30) · (b) tìm các phân số bằng phân số cho trước theo điều kiện về tử / mẫu (tử là 3; 12; 24 · mẫu lớn hơn 15 nhưng nhỏ hơn 50 · tử là số có 2 chữ số chia hết cho 3 và 4) · lập phân số bằng 1/2 từ các chữ số 2; 0; 3; 4; 6','CĐ10 B2–B5, B7','DB: 0 câu'],
+['P30','10','add','Phân số → So sánh phân số (bổ sung)','2 dạng: (a) tìm số tự nhiên x thoả bất đẳng thức giữa các phân số (2/x &gt; 1/2; 1 &lt; 11/x &lt; 2; 8/202 &lt; x×6/303 &lt; 9/101; 24507x/1945 &lt; 735213/5835) và tìm x để 156/(327 − x) lớn nhất / bé nhất · (b) tìm k phân số nằm giữa hai phân số (7 phân số giữa 7/9 và 8/9; 8 phân số giữa 1 và 5/4)','CĐ10 B8–B10, B13','Đang không có dạng nào; (b) 1 bài: ưu tiên thấp'],
+['P31','10','add','Phân số → Bài toán về dãy phân số (bổ sung)','2 dạng: (a) tổng dãy phân số có <b>mẫu nhân đôi / nhân ba</b> (1/2 + 1/4 + … + 1/2048; 1/3 + 1/9 + …; 1 + 1/5 + 1/25 + …; 1 − 1/3 + 1/9 − …) · (b) chứng tỏ tổng dãy phân số &lt; 1 hoặc &lt; 1/2 (B22). Dãy hiệu–tích (B23–25) <b>đã có</b> NDB01574–77','CĐ10 Ví dụ 1 (A = 1/2 + 1/4 + …), B20–B22','Hiện chỉ có dãy dạng tích và dạng hiệu–tích; (b) 2 bài: ưu tiên thấp']
 ];
 const tb=document.querySelector('#tb tbody');
 const KEY='4t-me-duyet-v1';
@@ -192,10 +240,13 @@ R.forEach(r=>{const tr=document.createElement('tr');tr.className=r[2];
  const sel=tr.querySelector('select'),inp=tr.querySelector('input');sel.value=s.d;inp.value=s.n;
  const sv=()=>{st[r[0]]={d:sel.value,n:inp.value};try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}cnt()};
  sel.onchange=sv;inp.oninput=sv});
-function cnt(){const t=R.length;const d=R.filter(r=>(st[r[0]]||{}).d).length;document.getElementById('cnt').textContent=`Đã chọn ${d}/${t} dòng`}
+const KD='4t-me-duyet-v2-d';let sd={};try{sd=JSON.parse(localStorage.getItem(KD)||'{}')}catch(e){}
+document.querySelectorAll('[data-dq]').forEach(el=>{const k=el.dataset.dq;const n=document.querySelector('[data-dn="'+k+'"]');const v=sd[k]||{d:'',n:''};el.value=v.d;n.value=v.n;
+ const sv2=()=>{sd[k]={d:el.value,n:n.value};try{localStorage.setItem(KD,JSON.stringify(sd))}catch(e){}cnt()};el.onchange=sv2;n.oninput=sv2});
+function cnt(){const t=R.length;const d=R.filter(r=>(st[r[0]]||{}).d).length;const dd=['D1','D2','D3','D4','D5','D6'].filter(k=>(sd[k]||{}).d).length;document.getElementById('cnt').textContent=`Mục 2.2: ${d}/${t} dòng · Mục 3: ${dd}/6 điểm`}
 cnt();
 document.getElementById('cp').onclick=()=>{
- const out=['KẾT QUẢ DUYỆT 4T-ME']; R.forEach(r=>{const s=st[r[0]]||{};out.push(`${r[0]} [CĐ${r[1]}] ${s.d||'(chưa chọn)'}${s.n?' — '+s.n:''}`)});
+ const out=['KẾT QUẢ DUYỆT 4T-ME','--- 6 điểm mục 3']; ['D1','D2','D3','D4','D5','D6'].forEach(k=>{const v=sd[k]||{};out.push(`${k} ${v.d||'(chưa chọn)'}${v.n?' — '+v.n:''}`)}); out.push('--- mục 2.2'); R.forEach(r=>{const s=st[r[0]]||{};out.push(`${r[0]} [CĐ${r[1]}] ${s.d||'(chưa chọn)'}${s.n?' — '+s.n:''}`)});
  const txt=out.join('\n');
  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>msg('Đã sao chép')).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');msg('Đã sao chép')}catch(e){msg('Không sao chép được — chọn tay')}ta.remove()})};
 document.getElementById('all').onclick=()=>{document.querySelectorAll('#tb select').forEach(s=>{if(!s.value){s.value='Duyệt';s.onchange()}})};
