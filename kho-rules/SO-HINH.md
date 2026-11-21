@@ -1,6 +1,6 @@
 # SỔ HÌNH ĐỀ — theo khối
 
-> Tự sinh bởi `scripts/kho/so-hinh.mjs` lúc 2026-11-21 01:40 (giờ VN) từ `fn_kho_hinh_dem` (204 ms) — KHÔNG sửa tay. Luật: `spec-giai-bai.md` §A8 (gốc ổn giữ · gốc quá tệ vẽ lại · có lệnh vẽ lại), §C12.
+> Tự sinh bởi `scripts/kho/so-hinh.mjs` lúc 2026-11-21 08:14 (giờ VN) từ `fn_kho_hinh_dem` (176 ms) — KHÔNG sửa tay. Luật: `spec-giai-bai.md` §A8 (gốc ổn giữ · gốc quá tệ vẽ lại · có lệnh vẽ lại), §C12.
 > **Chưa rõ nguồn** = câu có hình đề mà chưa có nhãn khớp hình hiện tại (mọi ảnh ghi trước 15/11 nằm ở đây cho tới khi được xét / có lệnh).
 > Mã lỗi: a không đọc chắc · b cụt / dính chữ · c lộ đáp án · d vênh đề · e scan bẩn / méo · f hình dính nhau.
 
@@ -13,7 +13,7 @@
 | 4T | 37 | 0 | 0 |  | 0 | 0 | 37 |  |
 | 5 | 581 | 0 | 0 |  | 0 | 0 | 581 |  |
 | 5T | 78 | 6 | 0 |  | 0 | 0 | 72 |  |
-| 6 | 391 | 12 | 13 | a:7 b:3 c:1 d:1 e:3 f:1 | 0 | 0 | 366 |  |
+| 6 | 391 | 12 | 14 | a:8 b:3 c:1 d:1 e:3 f:1 | 0 | 0 | 365 |  |
 | 7 | 1219 | 72 | 48 | a:29 b:10 e:30 | 0 | 24 | 1075 |  |
 | 8 | 877 | 75 | 24 | a:9 b:3 c:1 d:2 e:18 f:1 | 0 | 0 | 778 |  |
 | 8T | 162 | 0 | 0 |  | 0 | 0 | 162 |  |
@@ -21,7 +21,7 @@
 | 10 | 2090 | 0 | 0 |  | 0 | 0 | 2090 |  |
 | 11 | 1875 | 0 | 0 |  | 0 | 0 | 1875 |  |
 | 12 | 4340 | 0 | 0 |  | 0 | 0 | 4340 |  |
-| **Tổng** | 14698 | 165 | 85 | a:45 b:16 c:2 d:3 e:51 f:2 | 0 | 24 | 14424 |  |
+| **Tổng** | 14698 | 165 | 86 | a:46 b:16 c:2 d:3 e:51 f:2 | 0 | 24 | 14423 |  |
 
 ## 2. Theo kho × khối
 
@@ -34,7 +34,7 @@
 | 4T | 37 | 0 | 0 |  | 0 | 0 | 37 |  |
 | 5 | 581 | 0 | 0 |  | 0 | 0 | 581 |  |
 | 5T | 78 | 6 | 0 |  | 0 | 0 | 72 |  |
-| 6 | 26 | 12 | 13 | a:7 b:3 c:1 d:1 e:3 f:1 | 0 | 0 | 1 |  |
+| 6 | 26 | 12 | 14 | a:8 b:3 c:1 d:1 e:3 f:1 | 0 | 0 | 0 |  |
 | 7 | 128 | 72 | 48 | a:29 b:10 e:30 | 0 | 0 | 8 |  |
 | 8 | 105 | 75 | 24 | a:9 b:3 c:1 d:2 e:18 f:1 | 0 | 0 | 6 |  |
 | 9 | 44 | 0 | 0 |  | 0 | 0 | 44 |  |

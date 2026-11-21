@@ -98,3 +98,10 @@ Mỗi đợt từ 3 trở đi **không chạy hết một lượt**: cắt lô �
 - Kết quả ghi DB: **vẽ lại 85 hình** (nhãn `ve_lai`, mã lỗi a–f) · **giữ gốc 159** (nhãn `goc`). Opus kiểm mù 20% hình mới (18): 16 đạt, 2 lỗi nhẹ (T108000000321 thiếu nét đứt; T1070000001619 hoa văn trùng) ⇒ 2 câu đó giữ lại chưa áp.
 - **15 câu GIỮ LẠI, chưa đổi hình, chưa ghi nhãn** (cần người xác nhận / đọc lại nguồn; danh sách + lý do ở `giu-lai.json` trong thư mục ghi chú phiên): T1080000001478 · T1080000001659 (số/phép gán suy ra) · T1070000001042 (12 giá trị đọc bằng mắt) · T1080000001383 · T107000000257 · T108000000865 · T1080000002311 · T1070000001644 · T107010102007 (đáp án nghi sai: C=0,5 nhưng hình ~0,25) · T106000000365 (infographic) · T1070000001045 · T107000000072 · T107000000398 (đề/ảnh thiếu dữ kiện) · T108000000321 · T1070000001619.
 - Chưa làm: K9 Đại (44) và các kho khác; `SO-HINH.md` đã dựng lại sau lượt ghi.
+
+## 8. KẾT QUẢ rà lại Đại K6 (21/11, phiên vẽ hình tách riêng — lớp 6 trước)
+
+- Đo lại bằng truy vấn chỉ đọc: Đại K6 có **26 hình đề** = 12 giữ gốc (`goc`) + 13 vẽ lại (`ve_lai`) + **1 chưa nhãn** (T106000000365, infographic 3 thùng rác — đúng 1 trong 15 câu giữ lại, và là câu K6 DUY NHẤT trong 15 câu đó). Nhóm (a) = 1, nhóm (c) = cùng 1 câu (trùng), nhóm (b) = **0**: không câu K6 nào có "[hình …]" mà `anh_de` rỗng.
+- 24 câu K6 nhắc "trục số / bảng sau / sơ đồ cột" mà không có ảnh đều là **đề chữ** (bảng viết bằng LaTeX/lời, "vẽ trục số" là yêu cầu HS tự vẽ) — không thiếu hình, không cần `ve_moi`.
+- Làm: vẽ lại T106000000365 (3 hàng thùng rác, chữ 18–22 px, nội dung khớp từng loại rác trong ảnh gốc) → `ve_lai:a`. Gói vẽ `scripts/anh/ve_lai/dai6-k6-lo1.mjs`; ghi qua `gan_hinh_dai.mjs` (chạy thử ROLLBACK đạt rồi `--ghi`); URL cũ ở `scripts/anh/bien_ban/gan-hinh-dai-2026-11-21-08-13-55.json`; ảnh cũ không xoá.
+- Sau lượt này: Đại K6 **26/26 có nhãn** (12 goc · 14 ve_lai · 0 chưa rõ). `SO-HINH.md` dựng lại. Số dạng K6 dưới 30 câu dùng được (`do-dang-du-cau`) = 11 và KHÔNG đổi — nguyên nhân là thiếu câu, không phải thiếu hình đề.
