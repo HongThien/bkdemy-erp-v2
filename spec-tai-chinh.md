@@ -68,40 +68,61 @@
 - Hệ số 0,9 (giảm phí + buổi nghỉ): đích giữ 0,9 hay siết.
 - Mốc thời gian của Đích 1 và Đích 2.
 
-## 0.7 Chiếu chi phí lên đích — ƯỚC LƯỢNG THÔ của Claude (chưa phải cơ cấu đích)
+## 0.7 (ĐÃ BỎ 21/11) Bảng "chiếu chi phí lên đích"
 
-Lấy chi tháng 9 (Phần I) rồi nhân theo thứ kéo nó: khoản theo **số ca** × 1,34 (110 → 147 phòng-ca) · khoản theo **số em** × 2,0 ở Đích 1 và × 2,5 ở Đích 2 · khoản **cố định** giữ nguyên. Doanh thu lấy sau hệ số 0,9.
-
-| Khoản (triệu một tháng) | Kéo theo | Tháng 9 | Đích 1 | Đích 2 |
-|---|---|---|---|---|
-| Giáo viên — nếu trả theo ca như nay | số ca | 164 | 219 | 219 |
-| Giáo viên — nếu trả 30 học phí lớp dạy | doanh thu | — | 297 | 372 |
-| Trợ giảng | số ca | 33 | 44 | 44 |
-| Nhân sự không đứng lớp | cố định | 86 | 86 | 86 |
-| Thuê nhà, điện nước | cố định | 41 | 41 | 41 |
-| Cơ sở vật chất tiêu hao | số ca | 8 | 11 | 11 |
-| Quà, in ấn, nước uống | số em | 17 | 35 | 44 |
-| Tài khoản, hackathon, tuyển sinh, đầu tư | cố định | 21 | 27 | 27 |
-| **Tổng chi** (giáo viên theo ca → theo 30 học phí) | | **370** | **463 → 541** | **472 → 624** |
-| **Doanh thu** | | 457 | 990 | 1.240 |
-| **Chi trên doanh thu** | | 81 | **47 → 55** | **38 → 50** |
-| **Lợi nhuận** | | 19 | **53 → 45** | **62 → 50** |
-
-**Điều rút ra:**
-1. **Ở đích, lợi nhuận 25 không phải là mục tiêu phải gồng mà là mức SÀN rất dễ đạt** — nếu chỉ nhân mô hình hiện tại lên thì lợi nhuận 45–60. Lý do: thêm em vào phòng đã thuê, lớp đã có giáo viên thì gần như không thêm chi (đòn bẩy vận hành).
-2. ⇒ Câu hỏi thật của cơ cấu đích là **phần dư dùng vào đâu.** Giữ lợi nhuận 25 ở Đích 1 thì ngân sách chi là ~740 triệu, trong khi nhân mô hình lên chỉ cần 463–541 ⇒ **dư khoảng 200–280 triệu một tháng** để: trả giáo viên cao hơn · nuôi đội học thuật + quản lý chất lượng riêng (đúng mô hình nhiều cơ sở, §I.4) · sản phẩm (ERP, app) · mở cơ sở mới · hoặc để lợi nhuận cao hơn 25.
-3. **Đường đi mới là chỗ khó, không phải đích:** hiện 8 em một ca, lợi nhuận 19. Mỗi em thêm vào lớp đang có gần như là lợi nhuận ròng ⇒ chỉ số cần theo dõi hằng tháng là **em một ca** và **phòng-ca đã dùng**, trước cả tỉ lệ chi.
-4. *Giới hạn của ước lượng:* chưa tính nhân sự vận hành phải thêm khi số em gấp đôi (chăm sóc phụ huynh, OPS), trợ giảng tăng theo số em chứ không chỉ theo ca, lương tăng theo năm, và bổ trợ (10 phòng) chưa tính thu lẫn chi.
+Bảng này lấy chi tháng 9 nhân lên theo số ca / số em và ra lợi nhuận 45–60 ở đích. **Thùy 21/11: sai cách** — các khoản khác cũng phải tăng khi học sinh tăng, và **đích không được suy từ hiện tại**. Cách đúng ở §I.0: đi từ lãi 25 xuống từng hạng mục. Lịch sử bảng cũ: git commit `134e067f`.
 
 ---
 
-# PHẦN I — CƠ CẤU CHI PHÍ (tầng 1 — ĐỀ XUẤT 20/11, chờ Thùy sửa từng dòng)
+# PHẦN I — CƠ CẤU CHI PHÍ ĐÍCH (đi từ lãi 25 xuống từng hạng mục — ĐỀ XUẤT 21/11, chờ Thùy sửa từng dòng)
 
-> Thùy 20/11: *"Cơ cấu chi phí — bản chất là mỗi khoản chi chiếm bao nhiêu phần doanh thu. BK cần xây mô hình sao cho đạt 25 lợi nhuận. Phải có đủ hết các loại chi phí. Xong tầng này mới break xuống tầng dưới."*
-> Cách đọc: doanh thu = học phí phát sinh của tháng (sau giảm phí) = 100. Mọi số trong bảng là **phần trăm của doanh thu**. Cột ĐÍCH là đề xuất của Claude — **chưa có dòng nào là quyết định**.
-> Cột "BK tháng 10" = số đo 19/11 trên doanh thu phát sinh 514,4 triệu (chi tiết ở Phần II §3, §4). Cột "Ngành" lấy từ bảng tham chiếu Phần II §2 (Mathnasium, Kumon, trung tâm Anh ngữ VN, luyện thi Hà Nội).
+> **Logic gốc (Thùy 21/11):** *"Để lãi 25 thì phải chi N hạng mục, và mình phải tính xem những hạng mục đó là bao nhiêu phần. Từ đó quay về hiện tại check xem cái nào đang ít hơn, cái nào nhiều hơn, từ đó có phương hướng điều chỉnh."*
+> Thứ tự: **(1) cơ cấu đích §I.0 → (2) hiện tại §I.1 → (3) lệch và hướng điều chỉnh §I.0b.** Hiện tại KHÔNG được dùng để suy ra đích.
 
-## I.1 Cơ cấu THẬT của BK — hoạt động tháng 9/2026 (từ bảng TOT "Duyệt chi tháng" Thùy gửi 20/11)
+## I.0 Cơ cấu đích: doanh thu 100 = lãi 25 + chi 75
+
+Cột "Ở Đích 1" đổi phần trăm ra tiền với doanh thu 990 triệu một tháng (147 phòng-ca một tuần, 12 em một ca) để kiểm xem con số có sống được không. Mọi dòng là **đề xuất của Claude** — lý do ghi bên cạnh để Thùy sửa.
+
+| Nhóm | Hạng mục | ĐÍCH | Ở Đích 1 (triệu) | Vì sao mức này |
+|---|---|---|---|---|
+| **Người dạy** | Giáo viên — phần DẠY | **28** | 277 | ≈ 435 nghìn một ca 1,5 giờ. Ngành: mô hình giáo trình sẵn ~21, luyện thi Hà Nội 40–60; BK đang tính lớp người sáng lập ở 30. |
+| | Trợ giảng (trong lớp + chấm + bổ trợ) | **7** | 69 | ≈ 110 nghìn một ca; mỗi ca có trợ giảng, kèm phần bổ trợ. |
+| **Chất lượng** | Học thuật + quản lý chất lượng (giáo trình, kho câu, trưởng khối) | **6** | 59 | Phần dùng chung, tăng nhẹ khi thêm cơ sở (§I.4). Tách khỏi lương dạy. |
+| **Vận hành** | OPS, chăm sóc phụ huynh, lễ tân | **7** | 69 | Tăng theo số em. |
+| | Quản lý, điều hành | **3** | 30 | |
+| **Mặt bằng** | Thuê nhà, điện nước | **6** | 59 | Cố định theo cơ sở; phòng càng đầy thì tỉ lệ càng thấp. |
+| | Cơ sở vật chất + đầu tư (mua sắm lớn trải 12 tháng) | **3** | 30 | |
+| **Học sinh** | Quà, in tài liệu, nước uống | **3,5** | 35 | Tăng theo số em. |
+| **Sản phẩm** | ERP, app, tài khoản AI, hackathon | **4** | 40 | Lợi thế của BK — không cắt. |
+| **Tăng trưởng** | Tuyển sinh, marketing | **4** | 40 | Ngành thường 5–10; BK dựa truyền miệng nên đặt thấp hơn. |
+| **Phúc lợi** | Công đoàn, hiếu hỉ, liên hoan, thưởng | **1,5** | 15 | Có dòng riêng, không rút từ quỹ dự phòng. |
+| **Khác** | Pháp lý, kế toán, phí ngân hàng, phát sinh | **2** | 20 | |
+| **Tổng chi** | | **75** | **743** | |
+| **Lãi trước thuế** | | **25** | **247** | Trích quỹ dự phòng lấy từ đây. |
+
+## I.0b Soi về hiện tại (tháng 9) — cái nào nhiều hơn, cái nào ít hơn
+
+| Hạng mục đích | ĐÍCH | Hiện tại | Lệch | Đọc thế nào → hướng điều chỉnh |
+|---|---|---|---|---|
+| Giáo viên dạy + học thuật + quản lý chất lượng | 28 + 6 = 34 | 35,9 | +1,9 | Gần đích khi tính GỘP. Sổ hiện nay không tách dạy với học thuật → **việc phải làm: tách hai phần khi trả lương** thì mới soi được từng dòng. |
+| Trợ giảng | 7 | 7,2 | +0,2 | Đúng đích. |
+| Vận hành + quản lý | 7 + 3 = 10 | 18,9 | **+8,9** | **Nhiều nhất.** Dòng "nhân viên full-time" của sổ đang gộp cả người làm sản phẩm / học thuật — tách ra thì phần lệch thật nhỏ hơn. Phần còn lại là chi cố định: không cắt người, **lấp thêm em** thì tỉ lệ tự về. |
+| Thuê nhà, điện nước | 6 | 9,0 | **+3,0** | Cố định. Phòng mới dùng 67, 8 em một ca → **lấp phòng**. |
+| Cơ sở vật chất + đầu tư | 3 | 3,1 | +0,1 | Đúng đích. |
+| Quà, in, nước | 3,5 | 3,8 | +0,3 | Đúng đích. |
+| Sản phẩm | 4 | 2,2 | −1,8 | Thấp trên sổ vì lương người làm sản phẩm đang nằm ở dòng full-time. |
+| Tuyển sinh | 4 | 1,0 | **−3,0** | **Ít nhất.** Hai dòng lệch lớn nhất đều chữa bằng thêm em, mà dòng thêm em lại đang chi ít nhất. |
+| Phúc lợi | 1,5 | 0 | −1,5 | Đang rút từ quỹ dự phòng → cho thành dòng riêng. |
+| Khác | 2 | 0 | −2,0 | |
+| **Tổng chi** | **75** | **81,1** | **+6,1** | |
+| **Lãi** | **25** | **18,9** | **−6,1** | |
+
+**Phương hướng rút ra:**
+1. **BK đang chi nhiều ở phần CỐ ĐỊNH (vận hành, mặt bằng: +11,9) và chi ít ở phần KÉO EM VÀO (tuyển sinh: −3).** Người dạy đã gần đích. Vậy hướng là **tăng em một ca** (8 → 12), không phải cắt chi.
+2. **Sổ chi hiện nay chưa soi được theo cơ cấu đích** ở ba chỗ: lương giáo viên chưa tách dạy / học thuật · "nhân viên full-time" chưa tách vận hành / sản phẩm / học thuật · phúc lợi chưa có dòng. Đây là việc đầu tiên của tầng dưới: mỗi khoản chi gắn đúng MỘT hạng mục đích.
+3. Hằng tháng dựng lại đúng bảng I.0b (đích · thực tế · lệch) kèm hai số nền: **em một ca** và **phòng-ca đã dùng**.
+
+## I.1 Hiện tại — cơ cấu THẬT của BK, hoạt động tháng 9/2026 (từ bảng TOT "Duyệt chi tháng" Thùy gửi 20/11)
 
 > Nguồn: ba bảng TOT T09 · T10 · T11.2026 (Google Sheet của BK, **không lưu trong repo**). Đây mới là sổ chi đầy đủ của BK — BK Chi trên ERP chỉ là phần hoàn ứng.
 > Cách bảng TOT ghi: lương của tháng M trả ở tháng M+1; học phí tháng M thu ở tháng M+1. Tôi ghép lại theo **tháng hoạt động**: tháng 9 = học phí tháng 9 (thu trong tháng 10) ↔ lương tháng 9 (trả tháng 10) + chi hoạt động tháng 9.
@@ -132,7 +153,7 @@ Lấy chi tháng 9 (Phần I) rồi nhân theo thứ kéo nó: khoản theo **s�
 > **Thùy 20/11: quỹ dự phòng KHÔNG phải chi phí — "tiền vẫn còn đấy".** Trích 10 triệu vào quỹ là để dành từ lợi nhuận, không phải tiêu. Chỉ khi RÚT quỹ ra tiêu thật (sửa nhà, mua máy, hiếu hỉ) thì khoản tiêu đó mới là chi phí, ghi vào đúng dòng của nó.
 > **Thùy 21/11: bốn quỹ còn lại (học liệu · hackathon · CSVC · tài khoản) cũng tính theo TIÊU THẬT**, không theo số trích. Tháng 9: quỹ học liệu tiêu 0 (trích 2) · hackathon tiêu 0 (trích 3) · CSVC tiêu 5,0 (trích 5) · tài khoản tiêu 10,0 (trích 10) ⇒ tổng chi giảm 5 triệu so với cách tính theo số trích. Hệ quả: tháng nào quỹ tiêu dồn (hackathon tháng 10 tiêu 14,2 triệu) thì dòng đó nhảy — đọc cơ cấu theo trung bình nhiều tháng, không theo một tháng.
 
-Cột ĐÍCH vẫn là đề xuất của Claude — chưa dòng nào là quyết định. Đề xuất 20/11 buổi sáng (giáo viên 24, core team 9, marketing 3…) **bỏ**: đặt khi chưa có số thật, xa thực tế của BK.
+**Cột "ĐÍCH đề xuất" trong bảng I.1 này là bản cũ (20/11, đặt theo tên dòng của TOT) — đích đang dùng là bảng §I.0.** Đề xuất 20/11 buổi sáng (giáo viên 24, core team 9, marketing 3…) **bỏ**: đặt khi chưa có số thật, xa thực tế của BK.
 
 ## I.2 Điều rút ra
 

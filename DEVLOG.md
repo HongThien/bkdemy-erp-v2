@@ -82128,3 +82128,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 21/11 11:48 — [Gộp spec #19] Thùy chốt "7 tối" + §0.7 chiếu chi phí lên đích
 - 163 phòng-ca giữ nguyên (đã tính 7 tối). Thêm §0.7: nhân chi tháng 9 theo thứ kéo nó (số ca ×1,34 · số em ×2,0 / ×2,5 · cố định giữ nguyên) ⇒ Đích 1 chi 463–541 tr trên doanh thu 990 (lợi nhuận 45–53), Đích 2 chi 472–624 trên 1.240 (50–62). Kết luận: 25 là mức sàn; cơ cấu đích = quyết định phần dư dùng vào đâu. Ước lượng thô, chưa tính nhân sự vận hành thêm, bổ trợ.
+
+### 21/11 11:52 — [Gộp spec #19] SAI: suy đích từ hiện tại — Thùy bác; viết lại Phần I theo logic gốc
+- **Sai:** §0.7 lấy chi tháng 9 nhân theo số ca / số em ⇒ lãi 45–60 ở đích. Thùy: "lợi nhuận 45 kiểu gì, những cái khác phải tính lại khi học sinh tăng" + "tính đích phải đi từ logic gốc: để lãi 25 thì phải chi N hạng mục, tính xem mỗi hạng mục bao nhiêu phần; rồi quay về hiện tại check cái nào ít hơn, nhiều hơn, từ đó có phương hướng điều chỉnh".
+- **Sửa:** §0.7 thay bằng ghi chú "đã bỏ" (bảng cũ ở commit 134e067f). Phần I thêm §I.0 cơ cấu đích 12 hạng mục cộng 75 (GV dạy 28 · TA 7 · học thuật + QLCL 6 · vận hành 7 · quản lý 3 · thuê nhà điện nước 6 · CSVC + đầu tư 3 · học sinh 3,5 · sản phẩm 4 · tuyển sinh 4 · phúc lợi 1,5 · khác 2) + §I.0b soi về tháng 9. Tất cả là đề xuất, chờ Thùy sửa.
+- **Bài học:** đích dựng từ trên xuống (lãi → ngân sách chi → hạng mục), hiện tại chỉ là cột so; không ngoại suy hiện tại thành đích (R1).
