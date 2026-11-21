@@ -165,8 +165,9 @@ const ME_CD = [
   [11, 'Diện tích tam giác – hình thang', 'Hình học', 'Khớp: Hai tam giác chung đáy · Diện tích gián tiếp. Thiếu: hình thang hai đường chéo (Đ6).'],
   [12, 'Hình tròn và hình khối hộp', 'Hình học', 'Khớp toàn bộ: Chu vi–diện tích hình tròn · Phần tô đậm · S, V · Xếp khối sơn mặt.'],
   [13, 'Toán chuyển động', 'Chuyển động', 'Khớp phần lớn. Thiếu: dự định–thực tế (Đ4), thi chạy (Đ5).'],
-  [14, 'Chọn lọc tổng hợp', 'rải nhiều chủ đề', 'Trộn: TBC, hình khối, tuổi, bắt tay… và 9 bài suy luận / trò chơi / bất biến / ma phương → chủ đề mới (Đ9, Đ11) hoặc để lẻ.'],
+  [14, 'Chọn lọc tổng hợp', 'rải nhiều chủ đề', 'Trộn: TBC, hình khối, tuổi, bắt tay… và 9 bài suy luận / trò chơi / bất biến / ma phương → chuyên đề mới (Đ9, Đ11) hoặc để lẻ.'],
 ]
+const CHUYEN = { 1: 'Cấu tạo số', 2: 'Dãy số', 3: 'Chia hết - Chẵn lẻ - Chữ số tận cùng', 4: 'Các bài toán logic thường gặp (nhóm Tỉ lệ thuận - nghịch)', 5: 'Phân số', 6: 'Lập số và quy tắc đếm', 7: 'Các bài toán về tỉ số', 8: 'Các bài toán về tỉ số', 9: 'Số thập phân', 10: 'Tỉ số phầm trăm', 11: 'Tam giác và hình thang', 12: 'Hình tròn + Hình hộp chữ nhật và hình lập phương', 13: 'Chuyển động đều + Hai chuyển động (+ Chuyển động đặc biệt)', 14: 'rải nhiều chuyên đề' }
 const meSoCD = (n) => meDS.filter((m) => m.cd === n)
 
 let h = ''
@@ -181,7 +182,7 @@ let idx = 0
 const theoCD = {}
 for (const v of nhomMoi) (theoCD[v.cd] ??= []).push(v)
 for (const [cd, ds] of Object.entries(theoCD)) {
-  tDx += `<tr><th colspan="7">${E(cd)}${cd === CD_MOI ? ' <span class="tag t-ask">CHỦ ĐỀ MỚI — đề xuất</span>' : ' <span class="mut">(chủ đề đã có)</span>'}</th></tr>`
+  tDx += `<tr><th colspan="7">${E(cd)}${cd === CD_MOI ? ' <span class="tag t-ask">CHUYÊN ĐỀ MỚI trong chủ đề "Cấu tạo số - Số tự nhiên" — đề xuất; chủ đề giữ nguyên</span>' : ' <span class="mut">(chủ đề đã có)</span>'}</th></tr>`
   for (const v of ds) {
     idx++
     const tong = v.me + v.clc
@@ -210,7 +211,7 @@ for (const c of chuDe) {
 let tME = ''
 for (const [n, ten, cd, note] of ME_CD) {
   const xs = meSoCD(n)
-  tME += row('', [`CĐ${n}`, E(ten), xs.length, `${xs.filter((m) => m.chua_chac).length} / ${xs.filter((m) => m.co_hinh).length}`, E(cd), E(note)])
+  tME += row('', [`CĐ${n}`, E(ten), xs.length, `${xs.filter((m) => m.chua_chac).length} / ${xs.filter((m) => m.co_hinh).length}`, E(CHUYEN[n]), E(note)])
 }
 
 // --- 117 câu CLC chưa dạng, theo dạng đề xuất
@@ -263,7 +264,7 @@ ul{margin:4px 0 4px 20px;padding:0}.big{font-size:17px}
 <div class="card big">
 <ol>
 <li><b>Bản đồ 5T hiện có đủ dùng cho phần lớn tài liệu:</b> ${meTrong}/328 mục sách ME và ${clcCu}/117 câu CLC chưa dạng xếp được vào dạng ĐÃ CÓ (xếp sơ bộ theo đầu đề, dạng nào cũng ghi rõ ở bảng 5).</li>
-<li><b>Thiếu ${nhomMoi.length} dạng mới</b> (gom ${meMoi} mục ME + ${clcMoi} câu CLC): ${nhomMoi.filter((v) => v.cd !== CD_MOI).length} dạng thêm vào nhóm/chủ đề đã có và <b>1 chủ đề mới "${CD_MOI}"</b> (${nhomMoi.filter((v) => v.cd === CD_MOI).length} dạng) — bảng 4, chọn từng dòng.</li>
+<li><b>Thiếu ${nhomMoi.length} dạng mới</b> (gom ${meMoi} mục ME + ${clcMoi} câu CLC): ${nhomMoi.filter((v) => v.cd !== CD_MOI).length} dạng thêm vào chuyên đề/nhóm đã có và <b>1 chuyên đề mới "${CD_MOI}"</b> trong chủ đề "Cấu tạo số - Số tự nhiên" (${nhomMoi.filter((v) => v.cd === CD_MOI).length} dạng, 6 nhóm). <b>Không thêm / đổi chủ đề nào</b> — bảng 4, chọn từng dòng.</li>
 <li>Còn <b>${meLe.length} mục ME + ${clcLe.length} câu CLC</b> chưa có chỗ và chưa đủ số để lập dạng: để "dạng chờ", xem bảng 3.</li>
 <li>Sau khi Thùy gật → phiên này mới ghi bản đồ (nhóm/dạng mới) rồi nhập sách ME + gán dạng CLC (bước 2). Dừng ở đây chờ Thùy.</li>
 </ol></div>
@@ -274,8 +275,8 @@ ul{margin:4px 0 4px 20px;padding:0}.big{font-size:17px}
 
 <h2>2. Sách ME "250+ Bài toán chọn lọc lớp 5" (14 chuyên đề, 328 mục) ↔ bản đồ</h2>
 <p>Đã bóc đủ 328 mục (29 ví dụ + 299 bài tập) ở <code>kho-rules/dai/lo/me5-250/ME-CDxx.json</code>. Cột "chưa chắc / hình" = số mục người phải xem ảnh trang trước khi nhập (tổng 48 chưa chắc, 35 có hình). Bản gán sơ bộ từng mục: <code>kho-rules/dai/lo/me5-250/ME-gan-dang-so-bo.json</code>.</p>
-<table><tr><th>CĐ</th><th>Tên chuyên đề</th><th>Mục</th><th>Chưa chắc / hình</th><th>Chủ đề bản đồ khớp</th><th>Đối chiếu</th></tr>${tME}</table>
-<div class="card">Nhận xét: sách ME đi <b>rất sát</b> bản đồ 5T hiện có (14 CĐ ↔ 5 chủ đề). Phần lệch chỉ là: (a) vài kiểu bài chưa có dạng riêng (hình thang 2 đường chéo, bản đồ, dự định–thực tế, thi chạy, phân số xếp tầng, tìm số khi biết tích); (b) <b>CĐ14</b> trộn nhiều bài suy luận / trò chơi / bất biến / ma phương không thuộc chủ đề nào.</div>
+<table><tr><th>CĐ</th><th>Tên chuyên đề</th><th>Mục</th><th>Chưa chắc / hình</th><th>Chuyên đề bản đồ khớp</th><th>Đối chiếu</th></tr>${tME}</table>
+<div class="card">Nhận xét: sách ME đi <b>rất sát</b> bản đồ 5T hiện có (14 chuyên đề của sách ↔ 17 chuyên đề của bản đồ: sách nằm ở TẦNG CHUYÊN ĐỀ, không phải tầng chủ đề; CĐ7 + CĐ8 cùng về chuyên đề "Các bài toán về tỉ số", CĐ12 chia hai chuyên đề Hình tròn / Hình hộp). Phần lệch chỉ là: (a) vài kiểu bài chưa có dạng riêng (hình thang 2 đường chéo, bản đồ, dự định–thực tế, thi chạy, phân số xếp tầng, tìm số khi biết tích); (b) <b>CĐ14</b> trộn nhiều bài suy luận / trò chơi / bất biến / ma phương không thuộc chủ đề nào.</div>
 
 <h2>3. Đề CLC: 720 câu đã ghi — 117 câu chưa có dạng</h2>
 <p>720 câu = ${nChac} gán chắc (+71 gán chắc nhưng chưa duyệt) · ${nDeXuat} đề xuất chờ duyệt · ${chuaDang.length} chưa có dạng. Cột phải là cách <b>xếp sơ bộ ${chuaDang.length} câu chưa dạng</b> vào bản đồ (mã = 6 số cuối <code>ma_cau T15T…</code>). Chỉ ${clcMoi} câu cần dạng MỚI; ${clcCu} câu vốn khớp dạng đã có nhưng bộ gán tự động không đủ chắc; ${clcLe.length} câu lẻ.</p>
@@ -291,7 +292,7 @@ ul{margin:4px 0 4px 20px;padding:0}.big{font-size:17px}
 ${row('chg', ['Phép toán với tỉ số phầm trăm', 'nhóm', 'Sửa chính tả "phầm" → "phần trăm" (đổi tên, giữ nguyên id/câu).', sel('S1')])}
 ${row('chg', ['Bài toán tính biểu thức hỗn hợp chưa số thập phân', 'dạng', 'Sửa chính tả "chưa" → "chứa".', sel('S2')])}
 ${row('chg', ['Bài toán tìm một số khi biết phân số của nó - Dạng biết tổng hiệu các phần', 'dạng', 'Tên dài, giữ nguyên (chỉ ghi nhận: có 3 dạng cùng tiền tố "Bài toán tìm một số khi biết phân số của nó"; không gộp).', sel('S3')])}
-${row('', ['Chủ đề mới "' + CD_MOI + '" hay nhét thành nhóm của chủ đề "Cấu tạo số - Số tự nhiên"?', 'chọn 1', '<b>Đề xuất: chủ đề riêng</b> (≈ 8 dạng, ~50 bài giờ + sẽ lớn thêm khi nhập kho đề cũ). Phương án B: 6 nhóm nằm trong "Cấu tạo số - Số tự nhiên" (đổi tên chủ đề thành "Số tự nhiên – suy luận").', sel('S4')])}
+${row('', ['6 nhóm suy luận (Đ9–Đ14) đặt ở đâu?', 'chọn 1', '<b>Chủ đề giữ nguyên.</b> Đề xuất: 1 CHUYÊN ĐỀ mới "' + CD_MOI + '" trong chủ đề "Cấu tạo số - Số tự nhiên" (6 nhóm, 6 dạng). Phương án B: không tạo chuyên đề, nhét 6 nhóm vào chuyên đề "Lập số và quy tắc đếm".', sel('S4')])}
 </table>
 <p class="small mut">Không đề xuất xoá / gộp dạng nào. ${dsKhongDoi.length} dạng đang rỗng (0 câu) giữ nguyên — ME không bổ sung được cho: ${dsKhongDoi.map((d) => E(d.ten)).join('; ')}.</p>
 
@@ -301,7 +302,7 @@ ${tBD}
 
 <h2>6. Câu hỏi cho Thùy</h2>
 <div class="card"><ol>
-<li>Đồng ý <b>${nhomMoi.filter((v) => v.cd !== CD_MOI).length} dạng mới trong chủ đề cũ</b> + <b>chủ đề mới "${CD_MOI}"</b> như bảng 4? (chọn Gật / Sửa / Không từng dòng).</li>
+<li>Đồng ý <b>${nhomMoi.filter((v) => v.cd !== CD_MOI).length} dạng mới trong chuyên đề/nhóm cũ</b> + <b>chuyên đề mới "${CD_MOI}"</b> (chủ đề không đổi) như bảng 4? (chọn Gật / Sửa / Không từng dòng).</li>
 <li>Các mục dưới 5 bài (đánh dấu vàng): thêm dạng luôn hay để lẻ cho đến khi đủ 5?</li>
 <li>Sách ME CĐ1 giải bằng đặt số bằng chữ (abc) và lập đẳng thức — luật 5T cấm. Khi nhập, <b>bài kiểu đó "ghép câu + đáp số sách" nhưng soạn lời giải theo luật 5T</b> (đã ghi ở spec-giai-bai); Thùy xác nhận cách này?</li>
 <li>Câu CLC thiếu hình (81 câu / 42 đề trong file Word): hiện trên máy chưa có file <code>TUYỂN TẬP ĐỀ THI CLC 2025-2026.docx</code> → nếu Thùy có file thì đưa vào, nếu không sẽ ghi vào báo cáo và báo phiên vẽ hình.</li>
