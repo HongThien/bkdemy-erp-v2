@@ -16,9 +16,11 @@ import PhanTrang from '../../components/PhanTrang'
 import { ChonNguon, nhanNguon, xepNguon, type NguonOpt } from './LocNguon'
 import type { TrangThaiNX } from '../../lib/kho/nhanXet'
 import { BDM_MON, layMonBdm } from '../../lib/kho/banDoMoi'
+import { fetchCausByMa } from '../../lib/ontap'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
+const BANG_CAU: Record<string, string> = { dai: 'dai_cau_hoi', hgt: 'hgt_cau_hoi', khtn: 'khtn_cau_hoi', vatly: 'vatly_cau_hoi', hoahoc: 'hoahoc_cau_hoi' }
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
 const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : c.nhanh === 'vatly' ? 'vatly' : c.nhanh === 'hoahoc' ? 'hoahoc' : 'toan') as 'hgt' | 'toan' | 'khtn' | 'vatly' | 'hoahoc'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
 // Nhớ cả TRANG đang mở (Thùy 23/10); trang chỉ dùng lại khi cùng khối + chủ đề.
@@ -56,6 +58,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
   const [tong, setTong] = useState(0)
+  const [lg, setLg] = useState<Record<string, string | null>>({})   // lời giải của câu đang hiện (nạp theo trang, không phải của cả hàng)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
   const [dich, setDich] = useState<KhopDich[]>([])
@@ -101,6 +104,19 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
     try { const r = await khopPhamVi(); setLaAdmin(r.la_admin); setPhamVi(r.rows) } catch { /* không có quyền xem ⇒ bỏ qua */ }
   }, [])
   useEffect(() => { void napPhamVi() }, [napPhamVi])
+
+  // Lời giải cho cột giữa (Thùy 21/11): RPC hàng duyệt không trả lời giải ⇒ đọc thô đúng các câu ĐANG HIỆN (≤ TRANG), gom theo kho.
+  useEffect(() => {
+    const can = rows.filter((c) => lg[c.ma_cau] === undefined)
+    if (!can.length) return
+    let song = true
+    const theoKho = new Map<string, string[]>()
+    for (const c of can) { const b = BANG_CAU[c.nhanh ?? 'dai']; theoKho.set(b, [...(theoKho.get(b) ?? []), c.ma_cau]) }
+    void Promise.all([...theoKho].map(([b, ma]) => fetchCausByMa(ma, b).then((r) => r.map((x) => [x.ma_cau, x.loi_giai ?? null] as const)).catch(() => ma.map((m) => [m, null] as const)))).then((m) => {
+      if (song) setLg((p) => ({ ...p, ...Object.fromEntries(m.flat()) }))
+    })
+    return () => { song = false }
+  }, [rows]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Bù thêm câu NỀN khi trang vơi (không xoá list đang hiện): đọc lại đúng trang này, câu trang sau đã dồn lên.
   const buThem = useCallback(async () => {
@@ -180,7 +196,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
       <p className="border-b border-slate-100 bg-slate-50 px-6 py-1.5 text-[12px] text-slate-500">{KHOP_HANG_MOTA[hang]}</p>
       {soTrang > 1 && <div className="border-b border-slate-100 bg-white px-6 py-1.5"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} tong={tong} coTrang={TRANG} /></div>}
 
-      <div ref={cuon} className="flex-1 overflow-auto px-6 py-4">
+      <div ref={cuon} className="flex-1 overflow-auto px-3 py-3">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? (
@@ -190,11 +206,11 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
                 : `Hết câu ở hàng "${KHOP_HANG_LABEL[hang]}" trong phạm vi của bạn.`}
             </p>
           ) : (
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {rows.some((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)).length} /></li>}
               {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => [monDS, c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
                 nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
-                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} />)}
+                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} loiGiai={lg[c.ma_cau]} />)}
               {soTrang > 1 && <li className="flex list-none justify-center pt-3"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} /></li>}
             </ul>
           )}
@@ -232,7 +248,8 @@ function ChonPhamVi({ cap, loc, ds, onCap, onLoc }: {
   )
 }
 
-function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau }: {
+function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau, loiGiai }: {
+  loiGiai?: string | null   // undefined = đang tải
   c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
   deSauAt: string | null; onDeSau: () => Promise<void>
   onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi' | 'tu_choi' | 'kho_rac', dangBai?: string | null, lyDo?: string | null) => Promise<void>
@@ -252,30 +269,41 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
   const lc = Array.isArray(c.lua_chon) ? (c.lua_chon as string[]) : null
   const md = Array.isArray(c.menh_de) ? (c.menh_de as { noi_dung: string; dap_an: string }[]) : null
 
+  // ⭐ Thùy 21/11: mỗi câu = 1 thẻ to, 3 cột — ĐỀ (trái) · LỜI GIẢI (giữa) · CHỖ DUYỆT (phải, dính khi cuộn). Chức năng giữ nguyên.
   return (
-    <li className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
-        <span className="font-mono text-slate-400">{c.ma_cau}</span>
-        {c.nhanh === 'hgt' && <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-700" title="Câu của kho Hình giải tích">Giải tích</span>}
-        {c.nguon_tl?.length ? <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-800" title="Nguồn tài liệu của câu">{c.nguon_tl.map(nhanNguon).join(' · ')}</span> : null}
-        {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
-        <NhanDeSau at={deSauAt} />
-        <span className="ml-auto flex items-center gap-1.5">
-          <NutDeSau nho disabled={ban} onDeSau={onDeSau} />
-          <NutCanSua nho doiTuong="cau" mon={monCau(c)} ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} />
-        </span>
-      </div>
-      {nx && <div className="mb-2"><NhanXetCu t={nx} /></div>}
-      <div className="grid gap-3">
-        <div className="min-w-0 text-[14px] text-slate-800">
-          <MathText>{c.noi_dung}</MathText>
-          {c.anh_de && <img src={c.anh_de} alt="" loading="lazy" className="mt-2 max-h-48 rounded border border-slate-200" />}
-          {lc && lc.length > 0 && <ol className="mt-2 space-y-0.5 text-[13px] text-slate-600">{lc.map((o, i) => <li key={i}>{String.fromCharCode(65 + i)}. <MathText>{o}</MathText></li>)}</ol>}
-          {md && <ul className="mt-2 space-y-0.5 text-[13px] text-slate-600">{md.map((m, i) => <li key={i}>{String.fromCharCode(97 + i)}) <MathText>{m.noi_dung}</MathText> <span className="text-slate-400">[{m.dap_an}]</span></li>)}</ul>}
-          {c.dap_an && <p className="mt-1.5 text-[12px] text-slate-400">Đáp án: {c.dap_an}</p>}
+    <li className="grid grid-cols-1 rounded-xl border border-slate-200 bg-white shadow-sm lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(320px,380px)]">
+      <section className="min-w-0 p-5">
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
+          <span className="font-mono text-slate-400">{c.ma_cau}</span>
+          {c.nhanh === 'hgt' && <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-700" title="Câu của kho Hình giải tích">Giải tích</span>}
+          {c.nguon_tl?.length ? <span className="rounded bg-sky-50 px-2 py-0.5 text-sky-800" title="Nguồn tài liệu của câu">{c.nguon_tl.map(nhanNguon).join(' · ')}</span> : null}
+          {c.dang_cu && <span className="rounded bg-slate-100 px-2 py-0.5" title="Nhãn ở bản đồ cũ">Cũ: {c.dang_cu}{c.chuyen_de_cu ? ` · ${c.chuyen_de_cu}` : ''}</span>}
+          <NhanDeSau at={deSauAt} />
         </div>
+        <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
+        <div className="text-[16px] leading-relaxed text-slate-800">
+          <MathText>{c.noi_dung}</MathText>
+          {c.anh_de && <img src={c.anh_de} alt="" loading="lazy" className="mt-2 max-h-72 max-w-full rounded border border-slate-200" />}
+          {lc && lc.length > 0 && <ol className="mt-3 space-y-1 text-[15px] text-slate-600">{lc.map((o, i) => <li key={i}>{String.fromCharCode(65 + i)}. <MathText>{o}</MathText></li>)}</ol>}
+          {md && <ul className="mt-3 space-y-1 text-[15px] text-slate-600">{md.map((m, i) => <li key={i}>{String.fromCharCode(97 + i)}) <MathText>{m.noi_dung}</MathText> <span className="text-slate-400">[{m.dap_an}]</span></li>)}</ul>}
+        </div>
+      </section>
 
-        <div className="space-y-2 rounded-lg bg-slate-50 p-3 text-[13px]">
+      <section className="min-w-0 border-t border-slate-100 p-5 lg:border-l lg:border-t-0">
+        {c.dap_an && <p className="mb-3 text-[13px] text-slate-500">Đáp án: <b className="text-slate-800"><MathText>{c.dap_an}</MathText></b></p>}
+        <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải</div>
+        <div className="text-[16px] leading-relaxed text-slate-800">
+          {loiGiai === undefined ? <span className="text-sm text-slate-400">Đang tải…</span> : loiGiai ? <MathText>{loiGiai}</MathText> : <span className="text-sm text-slate-400">— chưa có lời giải —</span>}
+        </div>
+      </section>
+
+      <aside className="min-w-0 rounded-b-xl border-t border-slate-100 bg-slate-50/70 p-4 lg:rounded-b-none lg:rounded-r-xl lg:border-l lg:border-t-0">
+        <div className="space-y-2 text-[13px] lg:sticky lg:top-3">
+          <div className="flex items-center justify-end gap-1.5">
+            <NutDeSau nho disabled={ban} onDeSau={onDeSau} />
+            <NutCanSua nho doiTuong="cau" mon={monCau(c)} ma={c.ma_cau} man="Bản đồ mới › Duyệt kho" khau="de" onXong={onCanSua} />
+          </div>
+          {nx && <NhanXetCu t={nx} />}
           {c.dang_bai_id && (
             <div>
               <div className="text-[11px] font-medium uppercase tracking-wide text-slate-400">{hang === 'mau' ? 'AI đã gán' : 'AI đề xuất'}</div>
@@ -288,7 +316,7 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
 
           {choGiu && c.dang_bai_id && (
             <button disabled={ban} onClick={() => chay(() => onQuyet(c, hang === 'mau' ? 'mau_giu' : 'gan', hang === 'mau' ? null : c.dang_bai_id))}
-              className="w-full rounded-md bg-emerald-600 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-emerald-500 disabled:opacity-40">✓ Đúng dạng này</button>
+              className="w-full rounded-lg bg-emerald-600 px-3 py-2.5 text-[14px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Đúng dạng này</button>
           )}
           <div>
             <div className="mb-1 text-[11px] text-slate-400">{choGiu && c.dang_bai_id ? 'Hoặc chọn dạng khác' : 'Chọn dạng bài'}</div>
@@ -330,7 +358,7 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
           )}
           {loi && <p className="text-[12px] text-rose-600">{loi}</p>}
         </div>
-      </div>
+      </aside>
     </li>
   )
 }

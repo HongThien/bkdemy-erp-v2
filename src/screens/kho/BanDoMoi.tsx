@@ -469,7 +469,7 @@ function BanDoMoi({ khoi, dauMan }: { khoi: string; dauMan?: ReactNode }) {
               : canDuyet ? <span className="rounded-full bg-white/20 px-2 py-0.5 text-[12px] font-medium">{canDuyet} câu cần xử lý</span> : null}
             <button onClick={() => setDuyet(false)} className="ml-auto rounded-md bg-white/15 px-3 py-1.5 text-[13px] font-semibold hover:bg-white/25 max-md:px-2.5 max-md:py-1">✕ Về bản đồ</button>
           </div>
-          <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 flex-col bg-white shadow-sm">
+          <div className="flex min-h-0 w-full flex-1 flex-col bg-white">
             {khuon === 'hinh_luyen'
               ? <HinhLuyenChuaPhanTab key={khoi} khoi={khoi} onChanged={napCanDuyetHinh} />
               : <KhopBanDoMoiTab key={khoi} khoi={khoi} chuDeId={chuDe.id} onChanged={napCanDuyet}
