@@ -24,5 +24,7 @@ export function loiHinhThuc(de, lc) {
   // đề "chọn trong các số sau: a; b; c; d" mà phương án không thuộc danh sách đề cho
   { const m = d.match(/(?:trong các số|trong các giá trị|trong các số sau)[^:]*:\s*([^?]*)/i)
     if (m) { const tap = new Set((m[1].match(/-?\d+(?:[.,]\d+)?/g) || [])); if (tap.size >= 3 && lc.some((x) => { const n = String(x).replace(/[$\\\s]/g, '').match(/^-?\d+(?:[.,]\d+)?$/); return n && !tap.has(n[0]) })) ly.push('phương án không thuộc danh sách đề cho') } }
+  // (mẫu mù K6 vòng 5, 21/11) đề "số tự nhiên" mà có phương án âm ⇒ học sinh loại ngay bằng mắt (nhiễu trái miền giá trị của đề)
+  if (/số tự nhiên/i.test(d) && !/số nguyên/i.test(d) && lc.some((x) => /^\s*\$?\s*(-|−)\s*\d/.test(String(x)))) ly.push('đề số tự nhiên mà phương án âm')
   return ly
 }
