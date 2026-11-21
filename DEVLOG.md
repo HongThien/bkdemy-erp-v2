@@ -82073,3 +82073,17 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - UI: `BaoSaiCau.tsx` (nút 🚩 + hộp báo, gắn ở TopBar) vào MaCau (builder, KhoPicker), Tìm câu, Bản đồ mới, thẻ câu phiên Claude; Xoá câu ở DangHub/DungSaiBank giờ đi qua hộp báo; `CauBaoLoiScreen` viết lại (gom HS + nhân sự, theo phạm vi, Đã sửa/Xoá/Không phải lỗi bắt buộc ghi đã làm gì). Script: `scripts/kho/bao-sai.mjs`, `scripts/kho/do-lot.mjs`; `ghi.mjs --lo-mau`.
 - **Quyết định (Thùy 21/11):** lô CLC lớp 6→5T coi như đã duyệt mẫu (344 câu đã tự duyệt giữ nguyên). **Phát hiện:** luồng "✎ Cần sửa" (`kho_nhan_xet` 17/10) đã là kênh Claude nhận–sửa–ghi nên báo sai nối vào đó thay vì dựng kênh thứ hai.
 - **Sai/gập ghềnh:** `fn_kho_bao_sai_ds` ban đầu cho thấy báo của khối khác vì trưởng khối cũng có `bdkt` ⇒ chỉ Ban lãnh đạo thấy toàn bộ. **Chưa làm/chưa kiểm:** chưa mở UI trên trình duyệt (cần đăng nhập nhân sự) — mới kiểm DB + `tsc`; chưa chạy lượt đo tỉ lệ lọt thật; báo của học sinh (92 mở) chưa nối sang Claude; 34 báo cáo HS đã đóng chờ ghi Phần D.
+
+### 21/11 (lô 7) — Fill K6 đích 30: bù 9 dạng còn thiếu, K6 169/171 dạng đủ
+- 3 dạng hao (NDB00367/00403/01229): 22 câu clone qua yêu cầu → nháp → `duyet-nhap-clone.mjs` (KIEM mới trong `k6-fill-kiem.mjs`).
+- 6 dạng 0 gốc (NDB01224/01231/01410/01619/01621/03068): không có nguồn → soạn bài lẻ theo chỉ định dạng, 207 câu, bộ sinh+bộ kiểm độc lập bằng code (`k6-fill.mjs moi`). Cách hiểu dạng NDB01621 / 03068 do tự suy, cần Thùy liếc lại.
+- Còn thiếu: NDB03051/03052 (hình đề, phiên vẽ hình).
+
+### 21/11 (lô 8) — Số chính phương K6 (NDB02800/02801): luật ưu tiên cách 1 (p | A, p² ∤ A) > tận cùng > số dư; bù 60 câu cách 1 qua clone (`k6-scp.mjs`, bộ kiểm BigInt, duyệt --duyet-lo). Câu cũ chưa đổi.
+
+### 21/11 (lô 9) — Dọn câu cũ NDB02800/02801 theo luật cách 1: viết lại 26 câu, xoá mềm 35 câu (`k6-scp-sua.mjs`); còn 51 + 35 câu.
+
+### 21/11 08:49 — [Gộp spec #19] Thùy: trải 12 tháng + pha phát triển + mô hình nhiều cơ sở (spec-tai-chinh §I.4)
+- **Quyết định:** khoản mua sắm lớn một lần trải đều 12 tháng. Dòng Đầu tư tháng 9 = (44,8 + 28,3) ÷ 12 = 6,1 tr ⇒ tổng chi 370,6 tr (81,1%), lợi nhuận 86,1 tr (18,9%).
+- **Định hướng Thùy:** đang pha phát triển — giáo viên kiêm học thuật + quản lý chất lượng nên lương giáo viên chưa theo quy tắc; nhiều cơ sở thì giáo viên tăng theo, học thuật + QLCL chỉ tăng nhẹ.
+- **Đề xuất ghi §I.4 (chưa chốt):** tách dòng Giáo viên thành Dạy / Học thuật + QLCL; cơ cấu hai tầng (cơ sở → biên đóng góp; phần chung); đích 25 cho pha ổn định. Thiếu tỉ lệ tách lương giáo viên. Cần Lộc xác nhận 17,6 tr tạm ứng iPad có nằm trong 28,3 tr rút quỹ tháng 9 không.

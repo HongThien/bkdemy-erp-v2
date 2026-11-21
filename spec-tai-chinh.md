@@ -28,7 +28,7 @@
 > **Tháng 9 là tháng duy nhất đủ số** trong ba bảng (tháng 8 thiếu chi hoạt động — nằm ở bảng T08; tháng 10 chưa có lương). Một tháng chưa phải xu hướng.
 > Chỉ ghi số tổng theo dòng. Lương của người sáng lập gộp vào đúng dòng công việc (phần dạy ⇒ Giáo viên, phần quản lý ⇒ Nhân sự full-time + quản lý). Phần chia lãi không ghi ở đây.
 
-**Doanh thu tháng 9 = 456,7 triệu** (học phí tháng 9 thu được trong tháng 10, theo TOT). *Lệch cần biết:* ERP ghi học phí PHÁT SINH kỳ 9 là 428,7 triệu (tiền thu trong tháng 10 gồm cả nợ cũ) và ghi thực thu tháng 10 là 474,2 triệu (lệch 17,5 triệu so với TOT — chưa rõ vì sao). Bảng dưới chia cho 456,7; nếu chia cho 428,7 thì mọi dòng cao hơn khoảng 6,5 phần trăm của chính nó và lợi nhuận còn 15,0.
+**Doanh thu tháng 9 = 456,7 triệu** (học phí tháng 9 thu được trong tháng 10, theo TOT). *Lệch cần biết:* ERP ghi học phí PHÁT SINH kỳ 9 là 428,7 triệu (tiền thu trong tháng 10 gồm cả nợ cũ) và ghi thực thu tháng 10 là 474,2 triệu (lệch 17,5 triệu so với TOT — chưa rõ vì sao). Bảng dưới chia cho 456,7; nếu chia cho 428,7 thì mọi dòng cao hơn khoảng 6,5 phần trăm của chính nó và lợi nhuận còn 13,6.
 
 | Nhóm | Khoản chi (đúng tên dòng trong TOT) | Tháng 9 (triệu) | Phần doanh thu | ĐÍCH đề xuất (lợi nhuận 25) | Lệch |
 |---|---|---|---|---|---|
@@ -44,10 +44,10 @@
 | | Hackathon — tiêu từ quỹ hackathon (tháng 9 chưa tiêu; tháng 10 tiêu 14,2) | 0 | 0 | 0,5 | −0,5 |
 | **Tăng trưởng** | Tuyển sinh | 4,8 | 1,0 | 1,5 | −0,5 |
 | **Phúc lợi** | Công đoàn, hiếu hỉ, liên hoan — *hiện rút từ quỹ dự phòng, chưa có dòng riêng* | (trong dự phòng) | — | 1 | — |
-| **Đầu tư** | Mua sắm lớn, sửa nhà (tiêu THẬT, trải theo năm) — *tháng 9 rút quỹ dự phòng 28,3 triệu cho cơ sở vật chất; chưa trải nên chưa cộng vào tổng* | (chưa trải) | — | 2 | — |
+| **Đầu tư** | Mua sắm lớn, sửa nhà — **trải đều 12 tháng** (Thùy 21/11): sửa nhà + CSVC tháng 8 44,8 và CSVC tháng 9 28,3 ⇒ (44,8 + 28,3) ÷ 12 | 6,1 | 1,3 | 2 | −0,7 |
 | **Khác** | Thủ tục, pháp lý, kế toán | 0 | 0 | 0,5 | −0,5 |
-| **Tổng chi** | | **364,5** | **79,8** | **75** | **+4,8** |
-| **Lợi nhuận trước thuế** | (gồm cả phần trích vào các quỹ mà chưa tiêu) | **92,2** | **20,2** | **25** | **−4,8** |
+| **Tổng chi** | | **370,6** | **81,1** | **75** | **+6,1** |
+| **Lợi nhuận trước thuế** | (gồm cả phần trích vào các quỹ mà chưa tiêu) | **86,1** | **18,9** | **25** | **−6,1** |
 
 > **Thùy 20/11: quỹ dự phòng KHÔNG phải chi phí — "tiền vẫn còn đấy".** Trích 10 triệu vào quỹ là để dành từ lợi nhuận, không phải tiêu. Chỉ khi RÚT quỹ ra tiêu thật (sửa nhà, mua máy, hiếu hỉ) thì khoản tiêu đó mới là chi phí, ghi vào đúng dòng của nó.
 > **Thùy 21/11: bốn quỹ còn lại (học liệu · hackathon · CSVC · tài khoản) cũng tính theo TIÊU THẬT**, không theo số trích. Tháng 9: quỹ học liệu tiêu 0 (trích 2) · hackathon tiêu 0 (trích 3) · CSVC tiêu 5,0 (trích 5) · tài khoản tiêu 10,0 (trích 10) ⇒ tổng chi giảm 5 triệu so với cách tính theo số trích. Hệ quả: tháng nào quỹ tiêu dồn (hackathon tháng 10 tiêu 14,2 triệu) thì dòng đó nhảy — đọc cơ cấu theo trung bình nhiều tháng, không theo một tháng.
@@ -56,10 +56,10 @@ Cột ĐÍCH vẫn là đề xuất của Claude — chưa dòng nào là quyế
 
 ## I.2 Điều rút ra
 
-1. **BK đang ở khoảng 20 lợi nhuận, cách đích 25 khoảng 5 điểm** (tính theo tiền thu; theo học phí phát sinh là 15,0). Nếu cộng cả 28,3 triệu rút quỹ dự phòng để tiêu cho cơ sở vật chất trong tháng 9 thì tháng đó còn 14,0 — nên khoản mua sắm lớn phải trải theo năm mới so được. Khoảng cách nằm ở ba dòng: giáo viên (+5,9), nhân sự không đứng lớp (+2,9), mặt bằng (+2,0). Các dòng còn lại cộng lại đã ở dưới đích.
+1. **BK đang ở khoảng 19 lợi nhuận, cách đích 25 khoảng 6 điểm** (tính theo tiền thu, đã gồm phần mua sắm lớn trải 12 tháng; theo học phí phát sinh là 13,6). Khoảng cách nằm ở ba dòng: giáo viên (+5,9), nhân sự không đứng lớp (+2,9), mặt bằng (+2,0). Các dòng còn lại cộng lại đã ở dưới đích.
 2. **Người dạy chiếm 43 doanh thu** — cao hơn nhóm "giáo trình có sẵn" của ngành (Mathnasium ~21 + trợ giảng), ngang nhóm trung tâm Anh ngữ VN (nhân sự 30–40). Đây là dòng quyết định có đạt 25 hay không.
 3. **Giáo viên ngoài người sáng lập đang tốn khoảng 39 doanh thu của chính các lớp họ dạy** (118 triệu lương trên khoảng 304 triệu học phí), trong khi lớp của người sáng lập tính đúng 30. Lý do nhiều khả năng là sĩ số: lương giáo viên theo lớp, học phí theo em.
-4. **Ba dòng lệch đều là chi gần như cố định theo lớp / theo tháng** ⇒ đường ngắn nhất tới 25 là thêm em vào lớp đang có, không phải cắt chi. Nếu tổng chi giữ nguyên 364,5 triệu thì doanh thu cần khoảng **486 triệu** là đủ 25 — tức thêm khoảng 6,4 phần trăm, chưa tới **mỗi lớp thêm một em** (8,35 lên 8,9). *(Ước lượng: thực tế lương trợ giảng và một phần lương giáo viên sẽ tăng theo, nên cần hơn một chút.)*
+4. **Ba dòng lệch đều là chi gần như cố định theo lớp / theo tháng** ⇒ đường ngắn nhất tới 25 là thêm em vào lớp đang có, không phải cắt chi. Nếu tổng chi giữ nguyên 370,6 triệu thì doanh thu cần khoảng **494 triệu** là đủ 25 — tức thêm khoảng 8 phần trăm, chưa tới **mỗi lớp thêm một em** (8,35 lên 9,0). *(Ước lượng: thực tế lương trợ giảng và một phần lương giáo viên sẽ tăng theo, nên cần hơn một chút.)*
 5. **Lương giáo viên Toán tháng 9 gấp đôi tháng 8** (69,8 so với 33,0 triệu) trong khi học phí chỉ tăng khoảng một phần năm. Cần biết là do thêm lớp / thêm người hay do đổi cách trả — nếu là mức mới thì tháng 10 dòng giáo viên còn cao hơn.
 6. **Mua sắm lớn đang đi ngoài cơ cấu:** tháng 9 rút quỹ dự phòng 28,3 triệu cho cơ sở vật chất, tháng 10 mua 12 iPad 34,1 triệu. Nếu tính đủ thì cơ sở vật chất không phải 1,8 mà khoảng 6–8 trong các tháng đó. Cần một dòng "đầu tư" tính trải ra theo năm.
 7. **Công đoàn chưa có dòng** — đang lấy từ quỹ dự phòng (liên hoan, hiếu hỉ). Sổ BK Chi trên ERP lại ghi "Công đoàn" tháng 9 là 24,5 triệu — không thấy tương ứng trong TOT, cần Lộc đối chiếu.
@@ -71,7 +71,19 @@ Cột ĐÍCH vẫn là đề xuất của Claude — chưa dòng nào là quyế
 2. **Sửa cột ĐÍCH** — tổng giữ 75. Câu chính: giáo viên đích 30 có chấp nhận không (hiện 36), hay Thùy muốn giữ giáo viên cao và lấy bù ở dòng khác?
 3. **Doanh thu của tháng là số nào:** tiền thu được (TOT đang dùng, 456,7) hay học phí phát sinh (ERP, 428,7)? Đề xuất: cơ cấu tính trên **học phí phát sinh** (không bị nợ cũ làm đẹp số), TOT giữ cách ghi tiền thật để chia lãi.
 4. **Phần dạy của người sáng lập** tính 30 học phí lớp mình dạy — khi so với đích có giữ nguyên trong dòng Giáo viên không? Đề xuất: giữ, vì đó đúng là chi phí để lớp đó chạy.
-5. ~~25 trước hay sau trích quỹ dự phòng~~ — **ĐÃ CHỐT (Thùy 20/11): quỹ dự phòng không tính vào chi phí.** Câu thay thế: **bốn quỹ còn lại (học liệu 2 · hackathon 3 · CSVC 5 · tài khoản 10 triệu mỗi tháng) tính theo số TRÍCH hay số TIÊU THẬT?** Cùng lý lẽ "tiền vẫn còn đấy": tháng 9 quỹ học liệu và hackathon trích 5 triệu nhưng chưa tiêu đồng nào. Đề xuất: mọi quỹ đều tính theo tiêu thật; khoản tiêu lớn một lần (iPad, sửa nhà) trải đều 12 tháng. **⇒ ĐÃ CHỐT (Thùy 21/11): "Theo tiêu thật".** Bảng I.1 đã tính lại. *Còn mở:* khoản lớn một lần trải 12 tháng — mới là đề xuất, Thùy chưa nói.
+5. ~~25 trước hay sau trích quỹ dự phòng~~ — **ĐÃ CHỐT (Thùy 20/11): quỹ dự phòng không tính vào chi phí.** Câu thay thế: **bốn quỹ còn lại (học liệu 2 · hackathon 3 · CSVC 5 · tài khoản 10 triệu mỗi tháng) tính theo số TRÍCH hay số TIÊU THẬT?** Cùng lý lẽ "tiền vẫn còn đấy": tháng 9 quỹ học liệu và hackathon trích 5 triệu nhưng chưa tiêu đồng nào. Đề xuất: mọi quỹ đều tính theo tiêu thật; khoản tiêu lớn một lần (iPad, sửa nhà) trải đều 12 tháng. **⇒ ĐÃ CHỐT (Thùy 21/11): "Theo tiêu thật".** Bảng I.1 đã tính lại. **Khoản lớn một lần trải đều 12 tháng — ĐÃ CHỐT (Thùy 21/11, xem I.4).**
+
+## I.4 Nguyên tắc Thùy chốt 21/11
+
+1. **Khoản mua sắm lớn một lần trải đều 12 tháng** (nguyên tắc khấu hao — chi phí ghi vào những tháng dùng nó, không dồn vào tháng trả tiền). Từ tháng 10 cộng thêm 12 iPad 34,1 triệu ⇒ dòng Đầu tư khoảng 7,5–9 triệu mỗi tháng, tức gần 2 doanh thu — khớp đích đề xuất. *Cần Lộc xác nhận:* 17,6 triệu "hoàn trả tạm ứng mua iPad" có nằm trong 28,3 triệu rút quỹ tháng 9 không (nếu có thì đang đếm trùng 17,6). *Còn thiếu:* ngưỡng "lớn" là bao nhiêu (đề xuất: từ 10 triệu một lần mua) và các khoản mua trước tháng 8 (bảng TOT cũ).
+2. **BK đang ở PHA PHÁT TRIỂN, chưa phải pha ổn định** ⇒ lương giáo viên hiện tại KHÔNG so thẳng với đích. Lý do: giáo viên đang **kiêm cả học thuật và quản lý chất lượng** (làm giáo trình, kho câu, trưởng khối, duyệt…), nên dòng "Giáo viên 35,9" thật ra là ba việc gộp một.
+3. **Mô hình nhiều cơ sở:** giáo viên (phần DẠY) tăng theo số cơ sở / số lớp; **học thuật và quản lý chất lượng chỉ tăng nhẹ**. Đây là đòn bẩy vận hành: phần gần cố định chia cho doanh thu lớn hơn thì tỉ lệ tự giảm.
+
+**Hệ quả cho cơ cấu (đề xuất của Claude, chờ Thùy gật):**
+- Tách dòng Giáo viên thành hai: **Dạy** (tăng theo lớp) và **Học thuật + quản lý chất lượng** (dùng chung, tăng nhẹ). Đích 25 đặt cho **pha ổn định**; pha phát triển có cột đích riêng, chấp nhận lợi nhuận thấp hơn vì đang trả trước cho phần dùng chung.
+- Cơ cấu thành **hai tầng**: (a) **từng cơ sở** — dạy, trợ giảng, mặt bằng, vận hành tại chỗ, quà, in ấn ⇒ ra *biên đóng góp của cơ sở*; (b) **phần chung của BK** — học thuật, quản lý chất lượng, sản phẩm (ERP, app, tài khoản), quản lý, tuyển sinh chung ⇒ chia cho tổng doanh thu mọi cơ sở. Lợi nhuận = tổng biên đóng góp các cơ sở − phần chung.
+- *Ví dụ minh hoạ (số giả định, chưa đo):* nếu một phần tư lương giáo viên hiện nay là cho học thuật + quản lý chất lượng (~41 triệu ≈ 9 doanh thu) thì phần dạy thuần chỉ ~27. Lên ba cơ sở cùng quy mô, phần 41 triệu tăng nhẹ lên ~55 triệu ⇒ còn ~4 doanh thu — riêng dòng này trả lại ~5 điểm lợi nhuận, gần bằng đúng khoảng cách hiện tại.
+- **Số còn thiếu để làm được:** trong lương giáo viên hiện nay, bao nhiêu phần là trả cho việc dạy, bao nhiêu cho học thuật + quản lý chất lượng. Bảng TOT không tách; cách trả lương (`spec-luong-gay.md`) cũng trả gộp.
 
 **Sau khi chốt Phần I** mới làm tầng dưới: tách từng dòng thành khoản con, gán mỗi danh mục BK Chi / mỗi loại lương / mỗi dòng TOT vào đúng MỘT dòng, và dựng bảng so đích – thực tế hằng tháng.
 
