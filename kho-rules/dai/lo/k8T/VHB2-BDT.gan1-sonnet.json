@@ -1,0 +1,1064 @@
+[
+ {
+  "ma_cau": "V2V.88@p37",
+  "dang": "NDB02750",
+  "chac": "vua",
+  "ly_do": "Xét hiệu với -1, ghép nhân tử đặt ẩn phụ ra bình phương; có thể coi là đổi biến phụ."
+ },
+ {
+  "ma_cau": "V2V.89@p37",
+  "dang": "NDB03290",
+  "chac": "vua",
+  "ly_do": "Quy đồng, khử mẫu dương ab rồi dùng a+b=1 về (a-b)^2; còn hợp dạng thế điều kiện."
+ },
+ {
+  "ma_cau": "V2V.90@p38",
+  "dang": "NDB03289",
+  "chac": "vua",
+  "ly_do": "Từ a+b>1 bình phương hai lần, cộng với bình phương không âm; chuỗi biến đổi suy diễn, không tương đương thuần."
+ },
+ {
+  "ma_cau": "V2V.91@p39",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Dùng x^2+y^2>=2xy cho từng cặp rồi cộng vế ba bất đẳng thức hoán vị vòng; có đặt x=a/b."
+ },
+ {
+  "ma_cau": "V2V.92@p39",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Ý a khai triển Cô-si cặp nghịch đảo, ý b đổi biến x=b+c,... rồi dùng ý a; hai ý khác kiểu."
+ },
+ {
+  "ma_cau": "V2V.93@p40",
+  "dang": "NDB03298",
+  "chac": "cao",
+  "ly_do": "Đề nêu ba cạnh tam giác, ba mẫu dương nhờ BĐT tam giác; cũng cộng bổ đề 1/x+1/y>=4/(x+y); chọn dạng sau."
+ },
+ {
+  "ma_cau": "V2V.94@p41",
+  "dang": "NDB03291",
+  "chac": "cao",
+  "ly_do": "Chặn từng thừa số (x+y)^2>=4xy rồi nhân ba bất đẳng thức hai vế không âm."
+ },
+ {
+  "ma_cau": "V2V.95@p42",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Kết luận dạng <=, giả sử a+b>2 rồi mâu thuẫn với a^2+b^2<=2; trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "V2V.96@p42",
+  "dang": "NDB02753",
+  "chac": "cao",
+  "ly_do": "Tổng 1/k^3 làm trội thành hiệu hai phân số liên tiếp, triệt tiêu, chặn trên 1/4."
+ },
+ {
+  "ma_cau": "V2V.97@p43",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Làm trội theo nhóm số hạng (chia nhóm 2^k số hạng, mỗi nhóm chặn bởi 1), không phải triệt tiêu liên tiếp"
+ },
+ {
+  "ma_cau": "V2V.98@p44",
+  "dang": "NDB03295",
+  "chac": "cao",
+  "ly_do": "Điều kiện a+b+c=1, đặt a=1/3+x để đưa về bình phương; đúng dạng đổi biến theo điều kiện tổng."
+ },
+ {
+  "ma_cau": "V2V.99@p44",
+  "dang": "NDB03298",
+  "chac": "cao",
+  "ly_do": "Ba cạnh tam giác, ba thừa số dương nhờ BĐT tam giác, ghép cặp và nhân vế; chọn dạng tam giác (đứng sau)."
+ },
+ {
+  "ma_cau": "V2V.100@p45",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Xét dấu ba thừa số rồi ghép cặp chặn bằng bình phương và nhân vế; trộn xét trường hợp và bổ đề nhân vế."
+ },
+ {
+  "ma_cau": "V2V.101@p45",
+  "dang": "NDB03297",
+  "chac": "cao",
+  "ly_do": "Chia x>=1 và x<1 chứng minh đa thức bậc 8 dương, trùng ví dụ của dạng."
+ },
+ {
+  "ma_cau": "V2V.102@p46",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: giải phương trình ba ẩn đưa về tổng bình phương bằng 0, không phải chứng minh BĐT hay nghiệm nguyên mẫu này"
+ },
+ {
+  "ma_cau": "V2B.358@p46",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Dùng x^2+y^2>=2xy cho từng cặp rồi cộng vế; cũng hợp dạng tổng bình phương không điều kiện."
+ },
+ {
+  "ma_cau": "V2B.359@p47",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Chứng minh bổ đề x^2+y^2+z^2>=xy+yz+zx rồi áp dụng hai lần với biến mới."
+ },
+ {
+  "ma_cau": "V2B.360@p47",
+  "dang": "NDB02750",
+  "chac": "cao",
+  "ly_do": "Không điều kiện, tách thành bình phương đủ cộng 3b^2/4 để chỉ ra không âm."
+ },
+ {
+  "ma_cau": "V2B.361@p47",
+  "dang": "NDB02750",
+  "chac": "vua",
+  "ly_do": "Xét hiệu ra tích các bình phương, không điều kiện; có thể coi là phân tích nhân tử."
+ },
+ {
+  "ma_cau": "V2B.362@p47",
+  "dang": "NDB03288",
+  "chac": "cao",
+  "ly_do": "Xét hiệu, phân tích có nhân tử a+b>0 nhờ điều kiện a,b>0 rồi xét dấu."
+ },
+ {
+  "ma_cau": "V2B.363@p47",
+  "dang": "NDB03288",
+  "chac": "cao",
+  "ly_do": "Hiệu thành (a+b)(a-b)^2, dấu xác định nhờ a,b>0."
+ },
+ {
+  "ma_cau": "V2B.364@p47",
+  "dang": "NDB02750",
+  "chac": "vua",
+  "ly_do": "Hạ bậc x^2+y^2>=(x+y)^2/2 hai lần và xét hiệu ra (a-b)^2 nhân nhân tử; hai ý khác kĩ thuật."
+ },
+ {
+  "ma_cau": "V2B.365@p47",
+  "dang": "NDB02750",
+  "chac": "cao",
+  "ly_do": "Nhân hai vế rồi tách thành tổng các bình phương, không điều kiện."
+ },
+ {
+  "ma_cau": "V2B.366@p47",
+  "dang": "NDB02750",
+  "chac": "cao",
+  "ly_do": "Tách đa thức thành tổng hai bình phương, chỉ ra không đồng thời bằng 0."
+ },
+ {
+  "ma_cau": "V2B.367@p47",
+  "dang": "NDB02750",
+  "chac": "cao",
+  "ly_do": "Xét hiệu, tách thành tổng các bình phương (x-1/2)^2 và (a^2-b^2)^2 + 2(ab-1)^2."
+ },
+ {
+  "ma_cau": "V2B.368@p47",
+  "dang": "NDB03288",
+  "chac": "vua",
+  "ly_do": "Hiệu thành x(x-2)^2+x^2+1, dấu xác định nhờ x>=0; không thuần tích nhân tử."
+ },
+ {
+  "ma_cau": "V2B.369@p47",
+  "dang": "NDB02750",
+  "chac": "vua",
+  "ly_do": "Ý a ghép nhân tử đặt ẩn phụ ra bình phương, ý b bình phương tổng ba số; hai ý hơi khác kĩ thuật."
+ },
+ {
+  "ma_cau": "V2B.370@p47",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Đặt x=a+c, y=b+d rồi dùng (x+y)^2>=4xy; có thể xét hiệu tổng bình phương."
+ },
+ {
+  "ma_cau": "V2B.371@p47",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Ý a bổ đề 4x^3+4y^3>=(x+y)^3 cho từng cặp rồi cộng; ý b dùng đẳng thức và (a+b)(b+c)(c+a)>=8abc."
+ },
+ {
+  "ma_cau": "V2B.372@p47",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Dùng điều kiện a+b+c=0 bình phương để rút ab+bc+ca theo tổng bình phương."
+ },
+ {
+  "ma_cau": "V2B.373@p48",
+  "dang": "NDB03298",
+  "chac": "cao",
+  "ly_do": "Ba cạnh tam giác, dùng a<b+c và đặt x=b+c-a,... chuyển về BĐT của x,y,z."
+ },
+ {
+  "ma_cau": "V2B.374@p48",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Dùng (x+1)^2>=4x cho từng thừa số rồi nhân vế hai vế không âm, khai căn; ý a có abc=1."
+ },
+ {
+  "ma_cau": "V2B.375@p48",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Dùng điều kiện abcd=1 để cd=1/(ab), đặt t=ab rồi t+1/t>=2; chỉ dùng Cô-si quen thuộc."
+ },
+ {
+  "ma_cau": "V2B.376@p48",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Thế điều kiện a^3+b^3=a-b để so sánh a-b với a^3-b^3 rồi chia; ít khớp mô tả đổi biến."
+ },
+ {
+  "ma_cau": "V2B.377@p48",
+  "dang": "NDB03297",
+  "chac": "cao",
+  "ly_do": "Đề yêu cầu xét từng khoảng giá trị của biến x để chứng minh đa thức dương."
+ },
+ {
+  "ma_cau": "V2B.378@p48",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Giả sử có một số không dương rồi suy ra mâu thuẫn với giả thiết."
+ },
+ {
+  "ma_cau": "V2B.379@p48",
+  "dang": "NDB03294",
+  "chac": "vua",
+  "ly_do": "Phản chứng giả sử x+y<1, kèm đặt a=3+x, b=3+y; còn hợp dạng đổi biến phụ."
+ },
+ {
+  "ma_cau": "V2B.380@p48",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Kết luận tồn tại, giả sử cả ba số đều không nhỏ hơn rồi cộng vế tới mâu thuẫn."
+ },
+ {
+  "ma_cau": "V2B.381@p48",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Chứng minh không tồn tại bộ số, giả sử có rồi cộng vế mâu thuẫn với x+1/x>=2."
+ },
+ {
+  "ma_cau": "V2B.382@p49",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Giả sử tồn tại a,b,c thoả ba BĐT, bình phương nhân vế tới mâu thuẫn; chọn dạng sau giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "V2B.383@p49",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Giả sử cả ba BĐT xảy ra, nhân vế được >1 mâu thuẫn với 4t(1-t)<=1."
+ },
+ {
+  "ma_cau": "V2B.384@p49",
+  "dang": "NDB03294",
+  "chac": "cao",
+  "ly_do": "Kết luận dạng <=, giả sử a+b>2 rồi lập phương hai vế tới (a-b)^2<0 vô lí."
+ },
+ {
+  "ma_cau": "V2B.385@p49",
+  "dang": "NDB03298",
+  "chac": "vua",
+  "ly_do": "Ba cạnh tam giác kèm sắp thứ tự a>=b>=c; hợp cả dạng tam giác và sắp thứ tự, chọn dạng sau."
+ },
+ {
+  "ma_cau": "V2B.386@p49",
+  "dang": "NDB03296",
+  "chac": "cao",
+  "ly_do": "Biểu thức đối xứng, sắp a>=b để hai hiệu cùng dấu; câu b cộng ba cặp."
+ },
+ {
+  "ma_cau": "V2B.387@p49",
+  "dang": "NDB03296",
+  "chac": "vua",
+  "ly_do": "Thay 2=a+b đồng bậc rồi (a-b)(a^7-b^7)>=0 dựa thứ tự; còn hợp dạng thế điều kiện."
+ },
+ {
+  "ma_cau": "V2B.388@p49",
+  "dang": "NDB03296",
+  "chac": "cao",
+  "ly_do": "Dạng Schur, sắp a>=b>=c để các hiệu có dấu xác định rồi tách tích không âm."
+ },
+ {
+  "ma_cau": "V2B.389@p49",
+  "dang": "NDB03296",
+  "chac": "vua",
+  "ly_do": "Sắp a>=b>=c, đặt m là khoảng cách nhỏ nhất rồi chặn tổng bình phương; kết luận dạng tồn tại."
+ },
+ {
+  "ma_cau": "V2B.390@p49",
+  "dang": "NDB03298",
+  "chac": "cao",
+  "ly_do": "Ba cạnh tam giác chu vi 2: a<b+c thành a<1, dùng tích (1-a)(1-b)(1-c)>0."
+ },
+ {
+  "ma_cau": "V2B.391@p49",
+  "dang": "NDB03292",
+  "chac": "vua",
+  "ly_do": "Điều kiện |x|>=2,|y|>=2, tách 1/x+1/y và dùng |u+v|<=|u|+|v|."
+ },
+ {
+  "ma_cau": "V2B.392@p50",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly_do": "Dùng hai điều kiện biểu diễn b+c, bc theo a rồi (b+c)^2>=4bc đưa về một biến."
+ },
+ {
+  "ma_cau": "V2B.393@p50",
+  "dang": "NDB03298",
+  "chac": "cao",
+  "ly_do": "Ba cạnh tam giác, dùng |a-c|<b... làm mỗi tỉ số <1 rồi nhân; có giá trị tuyệt đối nhưng chọn dạng sau."
+ },
+ {
+  "ma_cau": "V2B.394@p50",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Ghép cặp Cô-si b/a+a/b>=2 và ab/(a+b)<=(a+b)/4 rồi cộng vế ba cụm hoán vị."
+ },
+ {
+  "ma_cau": "V2B.395@p50",
+  "dang": "NDB03293",
+  "chac": "cao",
+  "ly_do": "Thêm c vào mẫu hoặc cả tử mẫu để quy về cùng mẫu a+b+c, chặn tổng giữa 1 và 2."
+ },
+ {
+  "ma_cau": "V2B.396@p50",
+  "dang": "NDB01610",
+  "chac": "vua",
+  "ly_do": "Cộng thêm b vào a^2/b để dùng Cô-si triệt tiêu mẫu; ý a dùng t+1/t>=2."
+ },
+ {
+  "ma_cau": "V2B.397@p50",
+  "dang": "NDB03296",
+  "chac": "vua",
+  "ly_do": "Xét hiệu phân thức rồi sắp thứ tự a>=b>=c để xét dấu các hiệu; còn hợp dạng khử mẫu."
+ },
+ {
+  "ma_cau": "V2B.398@p50",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: ước lượng số thập phân của luỹ thừa bằng làm trội một phân số (đề có thể sai số mũ)"
+ },
+ {
+  "ma_cau": "V2B.399@p50",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: đánh giá chặn số hạng dãy truy hồi a_{n+1}=a_n+1/a_n"
+ },
+ {
+  "ma_cau": "V2B.400@p51",
+  "dang": "NDB03294",
+  "chac": "vua",
+  "ly_do": "Chứng minh tồn tại ba đoạn lập tam giác bằng phản chứng và sắp thứ tự dãy kiểu Phi-bô-na-xi."
+ },
+ {
+  "ma_cau": "V2B.401@p51",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: bài đố vui toán chuyển động xuôi ngược dòng so sánh thời gian"
+ },
+ {
+  "ma_cau": "V2B.402@p51",
+  "dang": "NDB03293",
+  "chac": "vua",
+  "ly_do": "Chặn tích giữa hai giá trị bằng làm trội/làm giảm từng thừa số; là tích chứ không phải tổng phân số dạng a/(a+b+c)."
+ },
+ {
+  "ma_cau": "V2B.403@p51",
+  "dang": "NDB03293",
+  "chac": "vua",
+  "ly_do": "Làm trội từng thừa số rồi nhân với tích gốc để triệt tiêu; dạng gần nhất, nhưng là tích."
+ },
+ {
+  "ma_cau": "V2B.404a@p51",
+  "dang": "NDB02753",
+  "chac": "cao",
+  "ly_do": "Tách số hạng thành hiệu 1/k² − 1/(k+1)², triệt tiêu liên tiếp rồi chặn tổng."
+ },
+ {
+  "ma_cau": "V2B.404b@p51",
+  "dang": "NDB02753",
+  "chac": "cao",
+  "ly_do": "Tách (k−1)/k! thành hiệu hai nghịch đảo giai thừa liên tiếp, triệt tiêu rồi chặn tổng."
+ },
+ {
+  "ma_cau": "V2B.405@p51",
+  "dang": "NDB02753",
+  "chac": "cao",
+  "ly_do": "Tách số hạng thành hiệu hai nghịch đảo giai thừa, triệt tiêu từng đoạn rồi chặn tổng."
+ },
+ {
+  "ma_cau": "V2B.406@p51",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Tổng k/aᵏ chặn bằng nhân a rồi trừ vế, đưa về tổng cấp số nhân"
+ },
+ {
+  "ma_cau": "V2B.407@p51",
+  "dang": "NDB02753",
+  "chac": "cao",
+  "ly_do": "Làm trội 1/k³ < 1/((k−1)k(k+1)), tách thành hiệu rồi triệt tiêu để chặn tổng bởi hằng số."
+ },
+ {
+  "ma_cau": "V2B.408@p51",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Tổng k/aᵏ chặn bằng nhân a rồi trừ vế, đưa về tổng cấp số nhân"
+ },
+ {
+  "ma_cau": "V2B.409@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Chặn tổng nghịch đảo liên tiếp bằng ghép cặp đối xứng hai đầu, làm trội/làm giảm"
+ },
+ {
+  "ma_cau": "V2B.410@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Chặn tổng nghịch đảo liên tiếp bằng ghép cặp đối xứng hai đầu, làm trội/làm giảm"
+ },
+ {
+  "ma_cau": "V2B.411@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Chặn tổng nghịch đảo liên tiếp bằng nhóm số hạng theo đoạn luỹ thừa của 2"
+ },
+ {
+  "ma_cau": "V2B.412@p52",
+  "dang": "NDB03296",
+  "chac": "vua",
+  "ly_do": "Phản chứng và sắp thứ tự a>b>c>d đều hợp; số nguyên với thương nguyên, chọn dạng sau."
+ },
+ {
+  "ma_cau": "V2B.413@p52",
+  "dang": "NDB02761",
+  "chac": "vua",
+  "ly_do": "Hệ đối xứng x,y: giả sử x≥y rồi đánh giá chữ số để chặn x; không hẳn phương trình đối xứng nhiều ẩn."
+ },
+ {
+  "ma_cau": "V2B.414@p52",
+  "dang": "NDB03291",
+  "chac": "vua",
+  "ly_do": "Ghép cặp k(n−k+1) ≥ n rồi nhân theo vế; gần dạng bổ đề rồi nhân, nhưng không hoán vị vòng quanh."
+ },
+ {
+  "ma_cau": "V2B.415@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: Phần nguyên, chứng minh bằng định nghĩa [a]"
+ },
+ {
+  "ma_cau": "V2B.416a@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Giải phương trình (nghiệm thực) bằng bất đẳng thức, đưa về tổng bình phương bằng 0"
+ },
+ {
+  "ma_cau": "V2B.416b@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Giải phương trình (nghiệm thực) bằng bất đẳng thức, đưa về tổng bình phương bằng 0"
+ },
+ {
+  "ma_cau": "V2B.416c@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Giải phương trình bằng bất đẳng thức Cô-si, nhân các bất đẳng thức, dấu bằng đồng thời"
+ },
+ {
+  "ma_cau": "V2B.416d@p52",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Giải phương trình bằng bất đẳng thức Cô-si, nhân các bất đẳng thức, dấu bằng đồng thời"
+ },
+ {
+  "ma_cau": "V2B.417a@p52",
+  "dang": "NDB03328",
+  "chac": "vua",
+  "ly_do": "Phương trình nguyên với tổng chữ số S(n); chặn S(n)≤28 để kẹp n rồi thử. Gần dạng đánh giá miền, chưa khớp hẳn."
+ },
+ {
+  "ma_cau": "V2B.417b@p52",
+  "dang": "NDB03328",
+  "chac": "vua",
+  "ly_do": "Chặn bằng S(n)≤n, xét khoảng của n rồi thử trực tiếp; gần dạng đánh giá miền, chưa khớp hẳn."
+ },
+ {
+  "ma_cau": "V2V.103@p53",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tổng hai bình phương một biến khai triển thành tam thức bậc hai, đưa về bình phương đủ, GTNN."
+ },
+ {
+  "ma_cau": "V2V.104a@p54",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai một biến, a>0: đưa về bình phương đủ tìm GTNN."
+ },
+ {
+  "ma_cau": "V2V.104b@p54",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai một biến, a<0: đưa về bình phương đủ tìm GTLN."
+ },
+ {
+  "ma_cau": "V2V.104c@p54",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai tổng quát ax²+bx+c, bình phương đủ, GTNN hoặc GTLN theo dấu a."
+ },
+ {
+  "ma_cau": "V2V.105@p55",
+  "dang": "NDB03300",
+  "chac": "cao",
+  "ly_do": "Tích bốn nhân tử bậc nhất, ghép cặp, đặt ẩn phụ y đưa về tam thức bậc hai."
+ },
+ {
+  "ma_cau": "V2V.106@p55",
+  "dang": "NDB02751",
+  "chac": "cao",
+  "ly_do": "Phân thức tử hằng 2, mẫu tam thức bậc hai; đưa mẫu về bình phương đủ rồi nghịch đảo."
+ },
+ {
+  "ma_cau": "V2V.107@p56",
+  "dang": "NDB03301",
+  "chac": "cao",
+  "ly_do": "Mẫu là (x−1)², tử tam thức bậc hai; tách hoặc đặt y=1/(x−1) đưa về tam thức theo y."
+ },
+ {
+  "ma_cau": "V2V.108@p56",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Phân thức mẫu x²+1, tử nhị thức; xét A+k, k−A có tử là bình phương để tìm cực trị."
+ },
+ {
+  "ma_cau": "V2V.109@p57",
+  "dang": "NDB02754",
+  "chac": "cao",
+  "ly_do": "Điều kiện bậc nhất x+y=1, biểu thức bậc ba; thế y=1−x đưa về tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "V2V.110@p58",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly_do": "Bình phương điều kiện x+y+z=3 để nối A với B (A+2B=9); gần dạng biến đổi điều kiện, không phải rút biến."
+ },
+ {
+  "ma_cau": "V2V.111a@p58",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly_do": "Điều kiện chỉ chứa A; biến đổi điều kiện về tích rồi xét dấu để chặn miền của A. Dạng gần nhất."
+ },
+ {
+  "ma_cau": "V2V.111b@p59",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly_do": "Đặt s=x+y+z, q=x²+y²+z² biến đổi điều kiện rồi chặn miền của A bằng BĐT; dạng gần nhất."
+ },
+ {
+  "ma_cau": "V2V.112@p60",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Phân thức mẫu (x²+1)², tử x⁴+1; tách A−m thành bình phương chia mẫu dương, dạng khác hai dạng đầu."
+ },
+ {
+  "ma_cau": "V2V.113@p61",
+  "dang": "NDB02749",
+  "chac": "vua",
+  "ly_do": "Đặt y=|3x−1|≥0 đưa về tam thức bậc hai theo y rồi bình phương đủ; có thể xếp nhóm giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "V2V.114@p61",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Tổng |x−2|+|x−3| hệ số 1, dùng |A|+|B| ≥ |A+B|, cực trị đạt trên đoạn."
+ },
+ {
+  "ma_cau": "V2V.115@p62",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Nhiều số hạng |x−a| hệ số 1, ghép cặp ngoài cùng, cặp còn lại dùng |t|≥0."
+ },
+ {
+  "ma_cau": "V2V.116@p62",
+  "dang": "NDB03306",
+  "chac": "cao",
+  "ly_do": "Điều kiện x²+y²=52, cực trị tổng tuyến tính 2x+3y bằng Bu-nhi-a-cốp-xki."
+ },
+ {
+  "ma_cau": "V2V.117@p63",
+  "dang": "NDB03300",
+  "chac": "vua",
+  "ly_do": "Hai nhân tử đa thức bậc hai có tổng hằng số, đặt a rồi ab=a(22−a); gần dạng ghép nhân tử đặt ẩn phụ."
+ },
+ {
+  "ma_cau": "V2V.118@p64",
+  "dang": "NDB01599",
+  "chac": "cao",
+  "ly_do": "Tách thành 8x+2+1/(2x) với x>0, Cô-si dạng Ax+B/x một biến."
+ },
+ {
+  "ma_cau": "V2V.119@p64",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Cực trị đa thức nhiều biến không âm có tổng cố định (thêm số hạng, ghép nhân tử, tích–tổng)"
+ },
+ {
+  "ma_cau": "V2V.120@p65",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Cực trị biểu thức trên số tự nhiên/nguyên (xét dấu mẫu, số nguyên dương ≥1)"
+ },
+ {
+  "ma_cau": "V2V.121@p66",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Cực trị trên số nguyên dương có tổng cố định, dùng 4xy=(x+y)²−(x−y)² và khoảng của x−y"
+ },
+ {
+  "ma_cau": "V2V.122@p66",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: Cực trị hiệu hai luỹ thừa nguyên dương bằng chữ số tận cùng"
+ },
+ {
+  "ma_cau": "V2B.418a@p66",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai một biến, a>0, bình phương đủ tìm GTNN."
+ },
+ {
+  "ma_cau": "V2B.418b@p66",
+  "dang": "NDB02749",
+  "chac": "cao",
+  "ly_do": "Tam thức bậc hai một biến, a<0, bình phương đủ tìm GTLN."
+ },
+ {
+  "ma_cau": "V2B.419a@p66",
+  "dang": "NDB03300",
+  "chac": "cao",
+  "ly_do": "Đa thức bậc 4 có cụm lặp, đặt y=x+7 đối xứng để đưa về luỹ thừa chẵn không âm."
+ },
+ {
+  "ma_cau": "V2B.419b@p66",
+  "dang": "NDB03300",
+  "chac": "vua",
+  "ly_do": "Biểu thức bậc 4 chứa cụm lặp, đặt y=|…|≥0 đưa về tam thức; có thể xếp nhóm giá trị tuyệt đối."
+ },
+ {
+  "ma_cau": "V2B.419c@p66",
+  "dang": "NDB03300",
+  "chac": "cao",
+  "ly_do": "Tích (x−1)(x−3)(x²−4x+5), ghép nhân tử đặt y=x²−4x+3 đưa về tam thức bậc hai."
+ },
+ {
+  "ma_cau": "V2B.419d@p66",
+  "dang": "NDB03300",
+  "chac": "vua",
+  "ly_do": "Đa thức bậc 4 là bình phương (x²−x+1)², chứa cụm lặp; dạng bậc cao hơn hai gần nhất."
+ },
+ {
+  "ma_cau": "V2B.419e@p66",
+  "dang": "NDB03300",
+  "chac": "vua",
+  "ly_do": "Đa thức bậc 4 ghép thành tổng hai bình phương một biến; dạng bậc cao hơn hai gần nhất."
+ },
+ {
+  "ma_cau": "V2B.419g@p66",
+  "dang": "NDB03300",
+  "chac": "cao",
+  "ly_do": "Hai nhân tử chứa cụm lặp x²+x, đặt y=x²+x đưa về tam thức bậc hai theo y."
+ },
+ {
+  "ma_cau": "V2B.420a@p66",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "|x−3|+|x−7| hệ số 1, dùng |A|+|B| ≥ |A+B|, cực trị trên đoạn."
+ },
+ {
+  "ma_cau": "V2B.420b@p66",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "|2x−3|+|2x−1| hệ số 1, dùng |A|+|B| ≥ |A+B|, cực trị trên đoạn."
+ },
+ {
+  "ma_cau": "V2B.420c@p66",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Tổng hai giá trị tuyệt đối, dùng |A|+|B| ≥ |A+B| sau khi bỏ dấu hạng tử luôn dương."
+ },
+ {
+  "ma_cau": "V2B.420d@p66",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Tổng hai giá trị tuyệt đối, lật dấu để tổng không chứa x, dùng |t|≥t."
+ },
+ {
+  "ma_cau": "V2B.421@p67",
+  "dang": "NDB02754",
+  "chac": "cao",
+  "ly_do": "Điều kiện bậc nhất x+2y=1, thế x=1−2y đưa về tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "V2B.422@p67",
+  "dang": "NDB02754",
+  "chac": "cao",
+  "ly_do": "Điều kiện bậc nhất 4x−3y=7, thế y theo x đưa về tam thức bậc hai một biến."
+ },
+ {
+  "ma_cau": "V2B.423@p67",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly_do": "Điều kiện a+b=1, đặt a=1/2+t, b=1/2−t đưa về luỹ thừa chẵn; có thể xếp dạng rút một biến."
+ },
+ {
+  "ma_cau": "V2B.424@p67",
+  "dang": "NDB02754",
+  "chac": "vua",
+  "ly_do": "Điều kiện a+b=1, biểu thức bậc ba; giải bằng khai triển rồi chặn ab, không thế trực tiếp."
+ },
+ {
+  "ma_cau": "V2B.425@p67",
+  "dang": "NDB01599",
+  "chac": "vua",
+  "ly_do": "xy=1 đưa về x+1/x dạng Cô-si một biến có dấu tuyệt đối; có thể coi là rút biến."
+ },
+ {
+  "ma_cau": "V2B.426a@p67",
+  "dang": "NDB03299",
+  "chac": "cao",
+  "ly_do": "Đa thức hai biến không điều kiện, ghép tổng hai bình phương cộng hằng số."
+ },
+ {
+  "ma_cau": "V2B.426b@p67",
+  "dang": "NDB03299",
+  "chac": "cao",
+  "ly_do": "Đa thức hai biến, ghép thành tổng hai bình phương."
+ },
+ {
+  "ma_cau": "V2B.426c@p67",
+  "dang": "NDB03299",
+  "chac": "cao",
+  "ly_do": "Đa thức hai biến, nhân đôi rồi tách tổng các bình phương."
+ },
+ {
+  "ma_cau": "V2B.426d@p67",
+  "dang": "NDB03299",
+  "chac": "cao",
+  "ly_do": "Đa thức hai biến, hoàn thành bình phương lần lượt theo hai biến."
+ },
+ {
+  "ma_cau": "V2B.426e@p67",
+  "dang": "NDB03299",
+  "chac": "cao",
+  "ly_do": "Đa thức hai biến, hoàn thành bình phương lần lượt theo hai biến."
+ },
+ {
+  "ma_cau": "V2B.427a@p67",
+  "dang": "NDB02751",
+  "chac": "vua",
+  "ly_do": "Tách phần nguyên thành 3 + 2/tam thức; đề hỏi GTNN nhưng thực chất không có GTNN."
+ },
+ {
+  "ma_cau": "V2B.427b@p67",
+  "dang": "NDB02751",
+  "chac": "vua",
+  "ly_do": "Tách phần nguyên thành 2 − 3/tam thức rồi chặn mẫu; tử ban đầu không hằng."
+ },
+ {
+  "ma_cau": "V2B.427c@p67",
+  "dang": "NDB02749",
+  "chac": "vua",
+  "ly_do": "Phân tích, rút gọn phân thức thành tam thức bậc hai một biến rồi bình phương đủ."
+ },
+ {
+  "ma_cau": "V2B.427d@p67",
+  "dang": "NDB03300",
+  "chac": "vua",
+  "ly_do": "Rút gọn thành x⁴−8x²+64, đặt x² làm ẩn phụ đưa về tam thức theo t."
+ },
+ {
+  "ma_cau": "V2B.428a@p67",
+  "dang": "NDB03301",
+  "chac": "cao",
+  "ly_do": "Mẫu x², tử tam thức, đặt y=1/x đưa về tam thức bậc hai theo y."
+ },
+ {
+  "ma_cau": "V2B.428b@p67",
+  "dang": "NDB03301",
+  "chac": "cao",
+  "ly_do": "Mẫu (2x−1)², tử tam thức, đặt t=1/(2x−1) rồi cực trị theo t."
+ },
+ {
+  "ma_cau": "V2B.429a@p67",
+  "dang": "NDB03301",
+  "chac": "cao",
+  "ly_do": "Mẫu (x+10)², đặt y=x+10, z=1/y thành tam thức theo z."
+ },
+ {
+  "ma_cau": "V2B.429b@p67",
+  "dang": "NDB03301",
+  "chac": "cao",
+  "ly_do": "Mẫu (x+100)², đặt y rồi z=1/y thành tam thức theo z."
+ },
+ {
+  "ma_cau": "V2B.430a@p67",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Mẫu x²+9, dự đoán m, xét A−m có tử là bình phương."
+ },
+ {
+  "ma_cau": "V2B.430b@p67",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Mẫu 4x²+1, xét B−m và m−B có tử là bình phương."
+ },
+ {
+  "ma_cau": "V2B.430c@p68",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Mẫu x²+2, xét C−m với tử là bình phương."
+ },
+ {
+  "ma_cau": "V2B.430d@p68",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Mẫu x²+1, xét D−2 và 4−D có tử là bình phương."
+ },
+ {
+  "ma_cau": "V2B.431a@p68",
+  "dang": "NDB03302",
+  "chac": "vua",
+  "ly_do": "Hai biến, xét hiệu A−1/2 tử thành bình phương; mô tả dạng chỉ nói phân thức một biến."
+ },
+ {
+  "ma_cau": "V2B.431b@p68",
+  "dang": "NDB03302",
+  "chac": "cao",
+  "ly_do": "Mẫu x⁴+1, xét hiệu 1/2−B với tử là bình phương."
+ },
+ {
+  "ma_cau": "V2B.431c@p68",
+  "dang": "NDB01599",
+  "chac": "cao",
+  "ly_do": "Khai triển được 2+t+1/t với t=x²y²>0, Cô-si cơ bản."
+ },
+ {
+  "ma_cau": "V2B.432a@p68",
+  "dang": "NDB01599",
+  "chac": "cao",
+  "ly_do": "Khai triển thành x+36/x+13, Cô-si dạng Ax+B/x."
+ },
+ {
+  "ma_cau": "V2B.432b@p68",
+  "dang": "NDB01599",
+  "chac": "cao",
+  "ly_do": "Khai triển thành x+10000/x+200, Cô-si dạng Ax+B/x."
+ },
+ {
+  "ma_cau": "V2B.432c@p68",
+  "dang": "NDB01599",
+  "chac": "vua",
+  "ly_do": "Tách x/3 rồi đặt u=x−2 đưa về u/3+3/u; có thể xếp kĩ thuật tách."
+ },
+ {
+  "ma_cau": "V2B.432d@p68",
+  "dang": "NDB01599",
+  "chac": "vua",
+  "ly_do": "Rút gọn nhiều bước về 3(x+1/x) rồi Cô-si một biến."
+ },
+ {
+  "ma_cau": "V2B.433a@p68",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly_do": "Tổng phân thức hai biến dương có điều kiện x+y=1; cũng là Cô-si/(x+y)²≥4xy."
+ },
+ {
+  "ma_cau": "V2B.433b@p68",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly_do": "Tổng phân thức hai biến dương có x+y=1, nhân (x+y) rồi Cô-si; cũng dạng Bu-nhi-a Engel."
+ },
+ {
+  "ma_cau": "V2B.433c@p68",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Điểm rơi bị ràng buộc bởi x+y=1, bẫy cộng 2+2; cũng gần tổng phân thức có điều kiện."
+ },
+ {
+  "ma_cau": "V2B.434@p68",
+  "dang": "NDB01599",
+  "chac": "vua",
+  "ly_do": "x²+y²≥2xy rồi t+1/t với t=xy>0; hai điều kiện dấu bằng, có thể xếp nhiều biến."
+ },
+ {
+  "ma_cau": "V2B.435a@p68",
+  "dang": "NDB01601",
+  "chac": "vua",
+  "ly_do": "Ràng buộc tổng nghịch đảo bình phương, dùng a²+b²≥2ab; không dạng nào khớp rõ."
+ },
+ {
+  "ma_cau": "V2B.435b@p68",
+  "dang": "NDB01601",
+  "chac": "vua",
+  "ly_do": "Chặn xy rồi (x+y)²≥4xy; Cô-si hai biến đối xứng có điều kiện, không dạng khớp rõ."
+ },
+ {
+  "ma_cau": "V2B.436a@p69",
+  "dang": "NDB01601",
+  "chac": "vua",
+  "ly_do": "Khai triển rồi a/b+b/a≥2, hai biến đối xứng; mô tả dạng nói ba biến."
+ },
+ {
+  "ma_cau": "V2B.436b@p69",
+  "dang": "NDB01601",
+  "chac": "cao",
+  "ly_do": "Ba biến đối xứng, ghép ba cặp nghịch đảo a/b+b/a≥2."
+ },
+ {
+  "ma_cau": "V2B.436c@p69",
+  "dang": "NDB01601",
+  "chac": "cao",
+  "ly_do": "Bốn biến đối xứng, ghép sáu cặp nghịch đảo, mỗi cặp ≥2."
+ },
+ {
+  "ma_cau": "V2B.437a@p69",
+  "dang": "NDB01601",
+  "chac": "vua",
+  "ly_do": "Nesbit không điều kiện, đặt p,q,r rồi Cô-si các cặp nghịch đảo; không có ràng buộc để vào dạng tổng phân thức."
+ },
+ {
+  "ma_cau": "V2B.437b@p69",
+  "dang": "NDB01601",
+  "chac": "vua",
+  "ly_do": "Tách Nesbit và các cặp nghịch đảo, Cô-si đối xứng ba biến; có thể xếp ghép biểu thức."
+ },
+ {
+  "ma_cau": "V2B.438a@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Dùng hai lần (u+v)²≥4uv, điểm rơi z=x+y, x=y khác nhau giữa các biến."
+ },
+ {
+  "ma_cau": "V2B.438b@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Dùng liên tiếp (u+v)²≥4uv, điểm rơi không đều giữa bốn biến."
+ },
+ {
+  "ma_cau": "V2B.439@p69",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly_do": "Tổng phân thức ba biến dương có ràng buộc x²+y²+z²≤3, dùng Cô-si tổng nghịch đảo."
+ },
+ {
+  "ma_cau": "V2B.440a@p69",
+  "dang": "NDB02754",
+  "chac": "vua",
+  "ly_do": "Điều kiện x+y=100 và y≥60, đặt y=60+t thế về một biến; cực trị ở biên."
+ },
+ {
+  "ma_cau": "V2B.440b@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Cực trị ở biên z=60 nên điểm rơi lệch, dùng (60−y)(60−z)≤0 rồi Cô-si."
+ },
+ {
+  "ma_cau": "V2B.441@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Làm giảm theo thứ tự rồi Cô-si 1/z+z/25, điểm rơi nhiều biến; không dạng khớp rõ."
+ },
+ {
+  "ma_cau": "V2B.442a@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Khai triển bốn tích, chặn bằng 2uv≤u²+v² rồi cộng; điều kiện tổng bình phương."
+ },
+ {
+  "ma_cau": "V2B.442b@p69",
+  "dang": "NDB01604",
+  "chac": "vua",
+  "ly_do": "Cô-si có hệ số theo điểm rơi x=y=2z=2t, cộng bốn bất đẳng thức."
+ },
+ {
+  "ma_cau": "V2B.443a@p70",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Tổng ba giá trị tuyệt đối hệ số 1, ghép đầu cuối bằng |A|+|B|≥|A+B|."
+ },
+ {
+  "ma_cau": "V2B.443b@p70",
+  "dang": "NDB03303",
+  "chac": "cao",
+  "ly_do": "Tổng bốn giá trị tuyệt đối hệ số 1, ghép cặp bằng |A|+|B|≥|A+B|."
+ },
+ {
+  "ma_cau": "V2B.444@p70",
+  "dang": "NDB03304",
+  "chac": "vua",
+  "ly_do": "Cực trị tổng ba giá trị tuyệt đối nhiều biến, sắp thứ tự rồi phá dấu | |."
+ },
+ {
+  "ma_cau": "V2B.445@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: GTLN biểu thức phân thức với biến tự nhiên, chia trường hợp theo dấu mẫu."
+ },
+ {
+  "ma_cau": "V2B.446@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: GTNN hiệu hai luỹ thừa nguyên dương bằng chữ số tận cùng và chia hết."
+ },
+ {
+  "ma_cau": "V2B.447@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: GTNN biểu thức nguyên có điều kiện không chính phương, xét số dư mod 4."
+ },
+ {
+  "ma_cau": "V2B.448@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: GTLN của số nguyên theo dây chuyền bất đẳng thức nguyên."
+ },
+ {
+  "ma_cau": "V2B.449@p70",
+  "dang": "NDB03311",
+  "chac": "vua",
+  "ly_do": "Hai ý đầu chứng minh chia hết bằng xét số dư mod 3, 5; ý c tìm GTNN, câu trộn."
+ },
+ {
+  "ma_cau": "V2B.450@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: GTNN biểu thức nguyên bằng ƯCLN, nguyên tố cùng nhau và tính chẵn lẻ."
+ },
+ {
+  "ma_cau": "V2B.451@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: tìm ƯCLN lớn nhất của hai số hạng liền kề của dãy."
+ },
+ {
+  "ma_cau": "V2B.452a@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm n lớn nhất để một số là tổng n hợp số."
+ },
+ {
+  "ma_cau": "V2B.452b@p70",
+  "dang": null,
+  "chac": null,
+  "ly_do": "THIẾU DẠNG: tìm n lớn nhất để một số là tổng n hợp số."
+ },
+ {
+  "ma_cau": "V2B.453@p71",
+  "dang": null,
+  "chac": null,
+  "ly_do": "KHÔNG THUỘC NHÓM: cực trị tổ hợp, chứng minh tích hai số ba chữ số nhỏ nhất."
+ },
+ {
+  "ma_cau": "V2B.454@p71",
+  "dang": "NDB03325",
+  "chac": "vua",
+  "ly_do": "Tìm số chính phương lớn nhất với điều kiện về chữ số cuối, đánh giá n≥10a+1."
+ }
+]
