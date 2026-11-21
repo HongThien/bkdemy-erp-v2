@@ -121,12 +121,13 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 
 - **Hai máy, hai vai** (Thùy 03/09): em làm bài bằng **tài khoản của em**; TA điều hành bằng tài khoản TA (điểm danh, đóng ca, nhận xét). TA không nhập điểm test của ca app.
 - **Hai chế độ ca** (Thùy 21/09), TA chọn cho từng em, lưu `buoi_hoc_hs.btyeu_che_do`: **📱 app** (luyện + test trên iPad, tự chấm) · **📄 giấy** (in phiếu luyện + phiếu test, TA nhập kết quả, đi trọn luồng kể cả test). 30 ngày: app 35 · giấy 6 · chưa chọn 20 lượt.
-- **Giấy và app giống hệt nhau, không xáo câu** (Thùy 29/09).
+- **Giấy và app không xáo câu** (Thùy 29/09) — thứ tự câu trên giấy = thứ tự câu đã chọn. Riêng **chọn câu** giấy khác app: **IN GIẤY = in được MỌI LOẠI CÂU (Thùy 21/11)** — trắc nghiệm · trả lời ngắn · tự luận · đúng/sai (trừ kéo-thả); luật "MCQ trước" chỉ áp cho bài làm TRÊN APP. Giấy lấy bộ câu của app trước (giống app), thiếu thì bù mọi loại câu còn lại (có đáp án hoặc lời giải để TA chấm); vẫn khác mã + khác đề, vẫn chừa 2 câu / dạng cho test. Câu không phải trắc nghiệm: TA đối chiếu đáp án / lời giải rồi chấm Đúng / Sai. Áp cho MỌI bài in giấy, **kể cả Hình** (`fn_btyeu_in_sinh_hinh` đi qua cùng hàm). Hàm: `_btyeu_chon_cau_giay`; test cuối ca của ca 📄 giấy cũng dùng hàm này (`fn_btyeu_dong_ca`); nhập tay `fn_btyeu_giay_nhap`.
 - **Luyện:** theo dạng của case (bản đồ mới không có cụm ⇒ luyện "cả dạng"); câu ra liên tục theo lô nhỏ, không có lượt cố định, không đếm ngược — TA quyết lúc chuyển dạng / đóng ca. Mỗi câu chấm ngay, hiện đáp án + lời giải.
 - **Test cuối ca** (`bo_tro_test`): sinh lúc TA bấm **Đóng ca & sinh test**. Số câu: sàn 2 · trần 6 (1–2 dạng đã luyện ⇒ 2 câu / dạng; ≥ 3 ⇒ 1 câu / dạng; > 6 ⇒ 6 dạng em làm kém nhất trong ca) (Thùy 03/09).
 - **Luyện ≠ test** (Thùy 17/10): câu test khác mã **và** khác đề với mọi câu đã gặp trong ca; luyện chừa 2 câu / dạng cho test. Dạng chỉ có ≤ 2 câu đủ điều kiện ⇒ "học trên giấy". Test rỗng ⇒ lấy lại 1 dạng kém nhất, gắn cờ `test_lap_cau`.
 - **Chọn câu — MỘT nguồn** (Thùy 10/10, thay "MCQ tuyệt đối" 20/09): **trắc nghiệm trước**; cả dạng không có câu trắc nghiệm ⇒ **câu trả lời ngắn có đáp án** (kho chuẩn, mọi mức độ). Hàm: `_kho_dk_mcq_sql` · `_btyeu_dk_dang_sql` · `_btyeu_chon_cau` · `_btyeu_chon_cau_khac`; Bù dùng `tu_luyen_chu_de_sinh` loại `bu_luyen` / `bu_test`. **Luồng bổ trợ mới trên app phải đi qua các hàm này**, không viết điều kiện chọn câu riêng. Câu ghi "[hình…]" mà chưa đính hình bị loại khỏi mọi bài (`_kho_dk_du_hinh_sql`).
-  - Ngoại lệ có chủ ý: **Sau giờ** (bài giấy) — §7.2.
+  - Luật "trắc nghiệm trước" ở trên là cho bài trên **app**. Bài **in giấy**: **IN GIẤY = in được MỌI LOẠI CÂU (Thùy 21/11)** — trắc nghiệm · trả lời ngắn · tự luận · đúng/sai (trừ kéo-thả); luật "MCQ trước" chỉ áp cho bài làm TRÊN APP. Giấy lấy bộ câu của app trước (giống app), thiếu thì bù mọi loại câu còn lại (có đáp án hoặc lời giải để TA chấm); vẫn khác mã + khác đề, vẫn chừa 2 câu / dạng cho test. Câu không phải trắc nghiệm: TA đối chiếu đáp án / lời giải rồi chấm Đúng / Sai. Áp cho MỌI bài in giấy, **kể cả Hình** (`fn_btyeu_in_sinh_hinh` đi qua cùng hàm). Hàm: `_btyeu_chon_cau_giay`; test cuối ca của ca 📄 giấy cũng dùng hàm này (`fn_btyeu_dong_ca`); nhập tay `fn_btyeu_giay_nhap`.
+  - Ngoại lệ có chủ ý: **Sau giờ** (bài giấy) — §7.2 (đã là in giấy mọi loại câu).
 - Câu trả lời ngắn: TA sửa được kết quả khi máy chấm sai (`fn_btyeu_ta_sua_ket_qua`, Thùy 19/09); trên phiếu giấy TA chấm Đúng / Sai.
 - **Bài nào tính mastery:** chỉ **TEST** — `bo_tro_test` · `bu_test` · `htd_test`, tính như ET. **Mọi bài luyện không tính** (`bo_tro` · `bu_luyen` · `htd_luyen` · `on_thi_luyen`) (Thùy 17/11 — `spec-mastery.md` §2). 30 ngày: test cuối ca / sau giờ 180 bài, 132 đã nộp, TB 75 % (≥ 80 %: 63 bài · 50–79 %: 53 · < 50 %: 16).
 
@@ -152,7 +153,7 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 - **Invariant R-BU** (CLAUDE §4): ∀ lượt em **vắng** buổi thường (không huỷ) ⇒ ∃ **buổi bù còn hiệu lực** (không huỷ, em không vắng) **hoặc** một dòng `bang_khong_bu`. Thiếu ⇒ việc "cần xếp bù" (`fn_bu_lan_nghi_can_xep`, thuần tính — không có dòng chờ).
 - `bang_khong_bu.loai`: `khong_can_bu` · `khong_xep_duoc` ("gặp vấn đề lịch và không xếp luôn" — trạng thái đóng, CEO). Có lý do + người ghi.
 - Em vắng buổi bù / buổi bù huỷ ⇒ lượt nghỉ **quay lại** "cần xếp", kèm số lần đã xếp + lý do quay lại.
-- Nội dung: luyện + test bù trên app, **100 % trắc nghiệm trước** rồi trả lời ngắn (Thùy 03/10, 10/10). BTVN của buổi nghỉ gắn về buổi mẹ (Thùy 03/11). Đóng ET buổi bù không đổi `trang_thai` buổi.
+- Nội dung: luyện + test bù trên app, **100 % trắc nghiệm trước** rồi trả lời ngắn (Thùy 03/10, 10/10); nếu in giấy thì in mọi loại câu (§6, Thùy 21/11). BTVN của buổi nghỉ gắn về buổi mẹ (Thùy 03/11). Đóng ET buổi bù không đổi `trang_thai` buổi.
 - Ô trống mastery do vắng-không-bù **để trống**, chờ dạng lặp lại lấp (CLAUDE §5).
 - Số: 30 ngày 221 lượt vắng — 88 đã bù có mặt · 66 ghi không bù; **đang tồn 44 lượt cần xếp** (cũ nhất 03/10).
 
@@ -161,7 +162,7 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 - **Đợt đuổi** = em × lớp (`bo_tro_duoi`: `can_duoi` → `hoan_thanh`; nguồn `thu_cong` · `tuyen_sinh`). **Mục tiêu = đúng các dạng GV chọn** (`bo_tro_duoi_dang`); dạng ngoài mục tiêu ẩn.
 - Em **tự học ở nhà**: đọc lý thuyết → luyện → test từng dạng; đến ca TA làm cùng phần dở. **Xong một dạng = test dạng đó đúng ≥ 50 %** (Thùy 21/09; chỉ đếm câu đúng hoàn toàn).
 - Khoá tuần tự theo bản đồ; TA **mở tay** được (`fn_duoi_mo_dang`). Một nguồn tiến trình `fn_duoi_tien_trinh` (nhà / ca suy từ ngày nộp test).
-- Ca có thể in giấy cho dạng có trắc nghiệm (Thùy 14/11). Màn TA nói rõ khi đợt chưa có dạng mục tiêu / đợt đã hoàn thành (`fn_duoi_buoi_tinh_trang`).
+- Ca có thể in giấy cho MỌI dạng, mọi loại câu (Thùy 14/11; 21/11: không còn giới hạn "dạng có trắc nghiệm" — `fn_duoi_giay_sinh` chọn câu bất kỳ loại). Màn TA nói rõ khi đợt chưa có dạng mục tiêu / đợt đã hoàn thành (`fn_duoi_buoi_tinh_trang`).
 - Kết thúc: người phụ trách bấm **Hoàn thành** (tay). `htd_test` tính mastery như ET (17/11).
 - Hiện: 6 đợt đang đuổi (2 chưa chốt dạng) · 89 đã hoàn thành.
 

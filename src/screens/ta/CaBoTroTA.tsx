@@ -153,7 +153,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
     setBusy('in'); setLoi(null); setOk(null)
     try {
       const r = await inSinhBaiGiay(buoiId, soCauIn)
-      if (r.dang_khong_co_cau.length) setOk(`Đã tạo phiếu ${r.so_cau} câu. ${r.dang_khong_co_cau.length} dạng chưa có câu trắc nghiệm nên không in được.`)
+      if (r.dang_khong_co_cau.length) setOk(`Đã tạo phiếu ${r.so_cau} câu. ${r.dang_khong_co_cau.length} dạng chưa có câu nào đủ chuẩn trong kho (trắc nghiệm · trả lời ngắn · tự luận có lời giải) nên không in được.`)
       setPhieuIn(await inLayBaiGiay(r.bai_test_id)); taiPhieu()
     } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setBusy(null) }
   }

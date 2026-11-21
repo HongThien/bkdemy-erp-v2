@@ -82154,3 +82154,14 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Giới hạn đã biết:** buổi Chủ nhật tự vắng lúc 0h thứ Hai rồi reset thứ Hai huỷ luôn ca ⇒ Trang không còn mở lại được buổi đó (hàm báo "ca đã bị huỷ"); các ngày khác Trang có tới hết tuần.
 - **`check:kien-truc` K1 đang 327 > trần 322:** không phải của việc này (hàm `_` của việc khác: `_ta_ca_tu_duyet`…), hàm `_` mới của việc này đã thu EXECUTE.
 - **Chưa kiểm trên trình duyệt** (cần đăng nhập Trang / TA thật).
+
+### 21/11 (lô 10) — Fill K7: luật độ khó >=4 chỉ cần 10-30 câu; bù 8 dạng (NDB00797/01343/01345/01346/01350/01037/01206/01355), 119 câu bài lẻ, bộ kiểm phân số BigInt (`k7-fill.mjs`). Còn: NDB01340 (nháp), NDB01349 (hình).
+
+## 21/11 (tối) — In giấy = in được MỌI loại câu (mig 202611211624 ĐÃ ÁP, `--only`) — ca Đặng Thảo Vy 6S1
+- **Báo lỗi:** bổ trợ yếu của Đặng Thảo Vy (HS0270, Toán, buổi 21/11, giấy) có 5 dạng nhưng in giấy lẫn iPad chỉ hiện 1 dạng.
+- **Đo (chỉ đọc):** dạng NDB00409 có 31 câu đủ điều kiện; NDB01369 / NDB02801 / NDB03050 chỉ có câu TỰ LUẬN (có lời giải, không đáp án) nên không qua điều kiện MCQ-hoặc-TLN; NDB01412 có 30 câu TLN nhưng 1 MCQ ⇒ luật "MCQ trước" khoá cả dạng vào 1 câu. Luyện chừa 2 câu cho test ⇒ 4 dạng 0 câu.
+- **Hiểu sai lần đầu của CTO:** báo "đúng luật, không phải lỗi" rồi đề nghị đổi luật chung — Thùy: "có MCQ thì hiện trên APP, còn IN GIẤY thì phải in được mọi loại câu". Lỗi nằm ở chỗ giấy dùng chung điều kiện chọn câu với app.
+- **Sửa:** `_btyeu_chon_cau_giay` (bộ câu app đi trước, thiếu bù mọi loại, trừ kéo-thả; chuẩn kho, đủ hình, có đáp án/lời giải; chừa câu cho test) · `fn_btyeu_in_sinh` (phiếu luyện giấy, cả Hình mô hình) · `fn_btyeu_dong_ca` (ca 📄 giấy ⇒ test cuối ca cũng mọi loại câu) · `fn_btyeu_giay_nhap` (bỏ chặn "chỉ trắc nghiệm/trả lời ngắn"; câu khác TA chấm Đúng/Sai) · UI `PhieuGiayYeuTA` hiện lời giải mẫu cho câu tự luận. Luồng APP không đổi. Đuổi giấy vốn đã chọn câu bất kỳ loại.
+- **Kiểm (chỉ đọc, gọi hàm chọn câu):** cả 5 dạng của ca ra 5 câu luyện + 2 câu test (loại: TLN · tự luận · MCQ). Chưa in thật / chưa nhập kết quả trên trình duyệt (không ghi DB để thử).
+- **Spec:** `spec-bo-tro.md` §6 (+ Bù, Đuổi), `spec-kho-cau-hoi.md` (luật + nhật ký quyết định), `CLAUDE.md`, `spec-tro-giang.md`.
+- **Bài học:** luật chọn câu của MỘT kênh (app) không được dùng chung cho kênh khác (giấy) khi hai kênh có người chấm khác nhau; báo "đúng luật" khi người dùng thấy hỏng là chưa hiểu yêu cầu — hỏi lại kênh nào trước khi đề xuất đổi luật chung.

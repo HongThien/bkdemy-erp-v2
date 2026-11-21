@@ -171,7 +171,8 @@ Hai luồng song song dùng chung `<kho>_mcq_rule`, `mcq-auto.mjs`, `mcq-sinh.mj
 - **Luật (Thùy 10/10 — thay "MCQ tuyệt đối" 20/09 và "TLN chỉ mức 4–5" 28/09): MCQ TRƯỚC; cả dạng 0 MCQ ⇒ câu TRẢ LỜI NGẮN có đáp án, mọi mức độ.** Áp cho bổ trợ yếu (luyện · test · phiếu giấy — TA chấm Đ/S câu TLN trên giấy) và bù (`tu_luyen_chu_de_sinh` loại `bu_luyen` / `bu_test`). Dạng không có cả MCQ lẫn TLN ⇒ app báo rõ, em học trên giấy.
 - **Luồng bổ trợ mới PHẢI đi qua `_btyeu_chon_cau` / `_kho_dk_mcq_sql`**, không viết điều kiện chọn câu riêng.
 - **Ngoại lệ có chủ ý — bổ trợ sau giờ (Thùy 12/11, `spec-bo-tro` §5, mig `202611121657`):** bài in giấy cấp 1–2 (khối 3–9) chọn **tự luận + TLN ngang hàng, hết mới TN, không hiện form TN** (`_btnhe_chon_cau` / `_btnhe_chon_loai` + `bk.snap_khong_form`); cấp 3 (10–12) TN trước. **CTO phân xử 17/11:** luật 10/10 là luật chung cho bài làm TRÊN APP; ngoại lệ 12/11 chỉ cho bài IN GIẤY sau giờ — hai luật không đè nhau.
-- **Hình:** không MCQ (§3.1 mục 6) ⇒ bổ trợ Hình hiện đề, làm giấy, TA chấm Đ/C/S.
+- **IN GIẤY = in được MỌI LOẠI CÂU (Thùy 21/11, mọi bài bổ trợ in giấy — yếu · sau giờ · đuổi · bù · KỂ CẢ HÌNH):** luật "MCQ trước, cả dạng 0 MCQ mới trả lời ngắn" của 10/10 chỉ áp cho bài làm TRÊN APP; bài in giấy lấy bộ câu của app trước, thiếu thì bù mọi loại câu còn lại (`_btyeu_chon_cau_giay`, mig 202611211624). Chi tiết `spec-bo-tro.md` §6.
+- **Hình:** không MCQ (§3.1 mục 6) ⇒ bổ trợ Hình hiện đề, làm giấy, TA chấm Đ/C/S (nay cũng theo luật in giấy mọi loại câu ở trên).
 
 ## 4. Form ĐIỀN Ô (trắc nghiệm từng phần)
 
@@ -357,6 +358,7 @@ Nút "✨ Clone → đưa vào hàng đợi" (`queueClone` → `createYeuCauClon
 | 12/11 | Thùy | Bổ trợ sau giờ in giấy cấp 1–2: tự luận + TLN ngang hàng, không hiện form TN; cấp 3 TN trước |
 | 13/11 | Thùy | Hình học không làm MCQ; chỉ Hình giải tích có MCQ |
 | 17/11 | CTO phân xử | Luật 10/10 = bài trên app; ngoại lệ 12/11 = bài in giấy sau giờ; hai luật cùng hiệu lực |
+| 21/11 | Thùy | **In giấy = in được mọi loại câu** (mọi bài bổ trợ, cả Hình); "MCQ trước" chỉ cho bài trên app. Ca Đặng Thảo Vy 6S1: 5 dạng chỉ in được 1 vì 3 dạng chỉ có tự luận, 1 dạng bị khoá vào 1 MCQ |
 | 04/09 | Thùy | Hàng đợi giải câu chưa có lời giải (`hangdoi-giai.mjs`) — luồng 1 của Claude Code |
 | 13/09 | Thùy | Hình vẽ khi nhập kho: cắt từ trang PDF (`kho_anh.mjs`), không bỏ câu phụ thuộc hình; lọc trùng + dạng chờ ở `_kho_insert.mjs` |
 | 20–22/09 | Thùy | Đề thi = 1 đầu vào → 2 đầu ra (câu vào kho + đề giữ cấu trúc); câu trùng trỏ về câu cũ; nhập qua Claude, không qua ERP |

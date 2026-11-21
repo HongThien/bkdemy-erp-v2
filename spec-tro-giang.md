@@ -210,7 +210,7 @@
 - Công: đầu việc mặc định `bo_tro_sau_gio` (Thùy 12/11) — một ca cả lớp = một việc của TA ca đó.
 
 ### 6.3 Bù (`fn_bu_ca_cua_toi`; chấm BTVN bù `ta/ChamBtvnBu.tsx`)
-- Người đứng ca: điểm danh trong màn ca → em luyện + test bù trên app (trắc nghiệm trước, hết mới trả lời ngắn) → **Xác nhận ET (bù)** + **đánh giá buổi bù**. Đóng ET của ca bù **không** làm ca thành "hoàn tất" (sửa 05/11 sau ca bù biến mất khỏi ô TA).
+- Người đứng ca: điểm danh trong màn ca → em luyện + test bù trên app (trắc nghiệm trước, hết mới trả lời ngắn; bản in giấy: mọi loại câu — Thùy 21/11) → **Xác nhận ET (bù)** + **đánh giá buổi bù**. Đóng ET của ca bù **không** làm ca thành "hoàn tất" (sửa 05/11 sau ca bù biến mất khỏi ô TA).
 - **BTVN bù do TA LỚP của em chấm** (§3.5).
 
 ### 6.4 Đuổi (`ta/DuoiCaTA.tsx`, `ta/DuoiGiayTA.tsx`) — luật đuổi **chưa chốt** (`spec-bo-tro.md` §7.4)

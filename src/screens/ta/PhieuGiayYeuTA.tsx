@@ -67,9 +67,9 @@ function PhieuInBody({ bai }: { bai: BaiInGiay }) {
         ))}
         <div className="bk-page-break pt-4">
           <h2 className="mb-2 border-b border-slate-400 pb-1 text-[15px] font-bold">ĐÁP ÁN (dành cho thầy cô) — {bai.hs.ho_ten} · {ddmmVN(bai.ngay)}</h2>
-          <div className="mb-3 flex flex-wrap gap-x-5 gap-y-1 text-[14px]">{bai.caus.map((k) => <span key={k.id}>{k.thu_tu}. <b>{String(k.dap_an_key ?? '?')}</b></span>)}</div>
+          <div className="mb-3 flex flex-wrap gap-x-5 gap-y-1 text-[14px]">{bai.caus.map((k) => <span key={k.id}>{k.thu_tu}. <b>{String(k.dap_an_key ?? '—')}</b></span>)}</div>
           {bai.caus.filter((k) => k.loi_giai).map((k) => (
-            <div key={k.id} className="bk-cau mb-2 text-[12.5px]"><b>Câu {k.thu_tu} ({String(k.dap_an_key ?? '?')}):</b> <MathText>{k.loi_giai}</MathText></div>
+            <div key={k.id} className="bk-cau mb-2 text-[12.5px]"><b>Câu {k.thu_tu}{k.dap_an_key == null ? '' : ` (${String(k.dap_an_key)})`}:</b> <MathText>{k.loi_giai}</MathText></div>
           ))}
           <p className="mt-3 text-[11.5px] italic text-slate-600">Chấm xong: ERP → Xếp bổ trợ yếu → Đang diễn ra → "Nhập KQ" của phiếu này, bấm lại đáp án em đã khoanh — máy tự chấm và tính vào tiến độ ca.</p>
         </div>
@@ -134,7 +134,9 @@ export function NhapKetQua({ bai, onDong }: { bai: BaiInGiay; onDong: () => void
                 })}
                 {!(k.lua_chon ?? []).length && (k.la_hinh_mh
                   ? <LoiGiaiMau text={String(k.dap_an_key ?? '—')} />
-                  : <span className="text-[12px] text-slate-600">Đáp án: <b><MathText>{String(k.dap_an_key ?? '—')}</MathText></b></span>)}
+                  : (k.dap_an_key == null && k.loi_giai)   // 21/11: câu TỰ LUẬN in giấy (không có đáp số) — TA đối chiếu lời giải rồi bấm Đúng / Sai
+                    ? <LoiGiaiMau text={k.loi_giai} />
+                    : <span className="text-[12px] text-slate-600">Đáp án: <b><MathText>{String(k.dap_an_key ?? '—')}</MathText></b></span>)}
                 {(k.lua_chon ?? []).map((_, i) => {
                   const dangChon = k.chon === i
                   return <button key={i} disabled={busy === k.id || daNop} onClick={() => chon(k.id, dangChon ? null : i)}

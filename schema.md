@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-609 bảng · 42 view · 0 enum · 477 trigger · 2049 function
+609 bảng · 42 view · 0 enum · 477 trigger · 2050 function
 
 ## _app_secrets
 
@@ -11855,6 +11855,7 @@ WITH luot AS (
 - `_btyeu_buoi(p_buoi uuid)` → TABLE(buoi_id uuid, hoc_sinh_id uuid, bo_tro_yeu_id uuid, mon text, ngay date, trang_thai text, diem_danh text, nguoi_day_tg uuid, danh_gia_xong_at timestamp with time zone, buoi_hoc_hs_id uuid)
 - `_btyeu_ca_cua_hs(p_hs uuid, p_buoi uuid DEFAULT NULL::uuid)` → jsonb
 - `_btyeu_chon_cau(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer)` → text[]
+- `_btyeu_chon_cau_giay(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer, p_giu_lai integer DEFAULT 0)` → text[]
 - `_btyeu_chon_cau_khac(p_cautbl text, p_ma_dang text, p_ma_cum text, p_tru text[], p_n integer, p_giu_lai integer DEFAULT 0)` → text[]
 - `_btyeu_dang_con_yeu(p_case uuid)` → TABLE(ma_dang text, ten_dang text, score numeric, n integer)
 - `_btyeu_dang_theo_nhom(p_hs uuid[], p_mon text, p_den timestamp with time zone, p_tu_ngay date, p_den_ngay date)` → TABLE(hoc_sinh_id uuid, ma_dang text, ten_dang text, score numeric, n integer, nhom_id text, nhom_score numeric)

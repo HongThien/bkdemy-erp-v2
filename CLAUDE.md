@@ -346,7 +346,7 @@
 - **`spec-bo-tro.md` — ĐỌC BẮT BUỘC trước khi sửa luồng BỔ TRỢ (yếu · sau giờ · bù · đuổi · ôn thi).** Thùy chốt 17/11 (viết lại, chỉ LOGIC):
   phát hiện theo nhóm yếu (luật đo ở `spec-mastery.md`) · mức **L1 sau giờ (TA) · L2 ca khối (TA) · L3 ca khối (giáo viên) · L4 ca khối (chuẩn bị kỹ + đổi giáo viên)** — L2–L4 xếp cùng một đường ·
   **KHÔNG còn trần** 70/20 · **đã BỎ Bổ trợ Hình và Khẩn cấp** · mức thuộc lượt chốt tuần (hết tuần về L0) · case không ghi "đạt/chưa đạt" (đọc từ mastery) · 1 tuần 1 lần, retest HOLD ·
-  ca = luyện → test, MCQ trước rồi trả lời ngắn, 📱 app / 📄 giấy · hệ gợi ý dạng, người dạy chủ động sửa · báo động GV/TA hiện theo tuần ở màn duyệt của trưởng khối. **§7.4 Đuổi CHƯA chốt** (chờ review).
+  ca = luyện → test, trên app MCQ trước rồi trả lời ngắn, **in giấy = in được MỌI loại câu (Thùy 21/11, cả Hình)**, 📱 app / 📄 giấy · hệ gợi ý dạng, người dạy chủ động sửa · báo động GV/TA hiện theo tuần ở màn duyệt của trưởng khối. **§7.4 Đuổi CHƯA chốt** (chờ review).
   Xếp lịch / phòng / báo PH: `spec-van-hanh-trung-tam.md` §2, §3. Việc code/DB từ các quyết định trên chỉ làm khi có lệnh (§12.0).
 - **`spec-lunar-cherry.md` — ĐỌC BẮT BUỘC trước khi sửa game gia đình Lunar Cherry** (BKGame/LunarCherry, repo riêng): Toán + Tiếng Anh (12 đảo, 6 chế độ theo kỹ năng, nói = máy nghe chấm rộng, kéo thả = nhìn rồi kéo, sticker, truyện, Thỏ Talking Tom), deploy Vercel, luật commit email.
 - **⭐⭐ `spec-giai-bai.md` — LUẬT DUY NHẤT cho MỌI việc đưa tài liệu vào kho: phân dạng · giải · kiểm · ghi (Thùy chốt 15/11, thay toàn bộ luật cũ).**
