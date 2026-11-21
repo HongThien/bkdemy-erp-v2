@@ -1,0 +1,329 @@
+{
+ "ghi_chu": "Nguồn: docs/de-xuat-5T-ban-do-chi-tiet.html (mục 5.1/5.2/6, bản chuẩn Thùy chốt 21/11). Lý thuyết + ví dụ đã soát đáp số từng ví dụ; thêm dòng \"Sơ đồ\" theo luật 5T; tách dòng P01 (1 dòng = 1 phép tính).",
+ "p": {
+  "P01": {
+   "ten": "Đếm số lập được có điều kiện chia hết (3, 15)",
+   "lt": "##TC\nMột số chia hết cho $3$ khi tổng các chữ số của nó chia hết cho $3$. Số chia hết cho $15$ khi chia hết cho cả $3$ và $5$ (tận cùng $0$ hoặc $5$).\n\n##PP\nTìm các bộ chữ số (lấy trong tập đã cho) có tổng chia hết cho $3$.\nVới mỗi bộ, đếm số cách xếp các chữ số đó thành số theo đề (chữ số $0$ không được đứng đầu).\nCộng số cách của tất cả các bộ.\n\n##CY\nPhải chọn bộ chữ số trước rồi mới xếp; đếm gộp hai bước dễ sót hoặc trùng.\nBộ có chữ số $0$ ít cách xếp hơn bộ không có $0$.",
+   "vd": "##VD\nTừ các chữ số $0, 1, 2, 3, 4, 5$ lập được bao nhiêu số có ba chữ số khác nhau và chia hết cho $3$?\n**Hướng dẫn giải:**\nSố chia hết cho $3$ thì tổng ba chữ số chia hết cho $3$.\nCác bộ ba chữ số khác nhau có tổng chia hết cho $3$ và có chữ số $0$: $\\{0,1,2\\}$, $\\{0,1,5\\}$, $\\{0,2,4\\}$, $\\{0,4,5\\}$ (4 bộ).\nCác bộ không có chữ số $0$: $\\{1,2,3\\}$, $\\{1,3,5\\}$, $\\{2,3,4\\}$, $\\{3,4,5\\}$ (4 bộ).\nMỗi bộ có chữ số $0$: hàng trăm có $2$ cách chọn (không chọn $0$), hàng chục có $2$ cách, hàng đơn vị có $1$ cách.\nMỗi bộ có chữ số $0$ lập được: $2\\times 2\\times 1=4$ (số)\nBốn bộ có chữ số $0$ lập được: $4\\times 4=16$ (số)\nMỗi bộ không có chữ số $0$ lập được: $3\\times 2\\times 1=6$ (số)\nBốn bộ không có chữ số $0$ lập được: $4\\times 6=24$ (số)\nTất cả có: $16+24=40$ (số).\nĐáp số: $40$ số",
+   "mo_ta": "Đề cho một tập chữ số, yêu cầu đếm số lập được mà chia hết cho 3 (hoặc 15). Phải chọn trước các BỘ chữ số có tổng chia hết cho 3, rồi mới đếm cách xếp từng bộ (chữ số 0 không đứng đầu; chia hết cho 15 thì hàng đơn vị là 0 hoặc 5). Khác «Đếm theo điều kiện» (NDB02940) ở chỗ điều kiện nằm trên TỔNG chữ số của cả số, cần hai bước chọn bộ → xếp."
+  },
+  "P02": {
+   "ten": "Lịch: thứ – ngày – năm nhuận",
+   "lt": "##TC\nMột tuần có $7$ ngày, nên sau $7$ ngày (hoặc bội của $7$ ngày) thì lại cùng một thứ. Hai ngày cách nhau $n$ ngày thì thứ lệch nhau bằng số dư của phép chia $n$ cho $7$.\nNăm thường có $365$ ngày $=52$ tuần dư $1$ ngày; năm nhuận có $366$ ngày $=52$ tuần dư $2$ ngày (tháng $2$ có $29$ ngày).\n\n##PP\nTính số ngày giữa hai mốc (cộng số ngày từng năm; năm nào đi qua ngày $29$ tháng $2$ thì tính $366$ ngày).\nChia số ngày cho $7$, lấy số dư.\nTừ thứ đã biết đếm tiếp đúng số dư đó.\n\n##CY\nChỉ tính năm nhuận khi khoảng thời gian thật sự chứa ngày $29$ tháng $2$.\nSố dư $0$ thì hai ngày cùng thứ.",
+   "vd": "##VD\nNgày $15$ tháng $3$ năm $2023$ là thứ Tư. Hỏi ngày $15$ tháng $3$ năm $2026$ là thứ mấy? (Năm $2024$ là năm nhuận.)\n**Hướng dẫn giải:**\nTừ $15/3/2023$ đến $15/3/2024$ có đi qua ngày $29/2/2024$ nên là $366$ ngày.\nTừ $15/3/2024$ đến $15/3/2025$ là $365$ ngày; đến $15/3/2026$ là $365$ ngày nữa.\nSố ngày từ $15/3/2023$ đến $15/3/2026$ là: $366+365+365=1096$ (ngày).\n$1096:7=156$ (dư $4$), nên ngày $15/3/2026$ muộn hơn thứ Tư $4$ ngày.\nThứ Tư cộng $4$ ngày là: thứ Năm, thứ Sáu, thứ Bảy, Chủ nhật.\nĐáp số: Chủ nhật",
+   "mo_ta": "Đề cho một ngày và thứ của nó, hỏi thứ của ngày khác (sau n ngày, sau n năm, ngày sinh nhật các năm). Đếm số ngày giữa hai mốc (năm thường 365, năm nhuận 366 nếu khoảng đó chứa ngày 29/2), chia cho 7 lấy dư rồi đếm tiếp thứ. Khác «Chu kỳ lặp» (NDB02968) ở chỗ chu kỳ là 7 ngày và có bẫy năm nhuận."
+  },
+  "P03": {
+   "ten": "Rút gọn / so sánh hai tổng có quy luật",
+   "lt": "##TC\nTổng của một bảng số có thể cộng theo hàng hoặc theo giá trị của số; hai cách nhóm khác nhau cho cùng một tổng.\nTrong tổng $1+(1+2)+(1+2+3)+\\ldots$, số nhỏ xuất hiện nhiều lần nhất, số lớn nhất chỉ xuất hiện một lần.\n\n##PP\nViết vài tổng đầu thành bảng, mỗi tổng là một hàng.\nĐếm xem mỗi số xuất hiện bao nhiêu lần rồi viết lại tổng theo cách nhóm các số giống nhau.\nSo sánh với phần còn lại của phân số (tử với mẫu) để rút gọn.\n\n##CY\nThử với $3$ hoặc $4$ hàng đầu trước khi kết luận cho cả dãy.\nSố lần xuất hiện của mỗi số phải cộng lại đúng bằng số số hạng của bảng.",
+   "vd": "##VD\nTính giá trị của biểu thức $\\dfrac{1\\times 9+2\\times 8+3\\times 7+4\\times 6+5\\times 5+6\\times 4+7\\times 3+8\\times 2+9\\times 1}{1+(1+2)+(1+2+3)+\\ldots+(1+2+3+\\ldots+9)}$.\n**Hướng dẫn giải:**\nỞ mẫu có $9$ tổng. Số $1$ có mặt trong cả $9$ tổng nên được cộng $9$ lần, tức $1\\times 9$.\nSố $2$ có mặt từ tổng thứ hai đến tổng thứ chín nên được cộng $8$ lần, tức $2\\times 8$.\nTiếp tục như vậy, số $9$ chỉ có mặt ở tổng cuối nên được cộng $1$ lần, tức $9\\times 1$.\nVậy mẫu bằng $1\\times 9+2\\times 8+\\ldots+9\\times 1$, chính là tử số.\nGiá trị biểu thức là $1$.\nThử lại: tử $=9+16+21+24+25+24+21+16+9=165$; mẫu $=1+3+6+10+15+21+28+36+45=165$.\nĐáp số: $1$",
+   "mo_ta": "Tử (và/hoặc mẫu) là tổng các tổng liên tiếp (1+(1+2)+(1+2+3)+…), hoặc tổng kiểu 1×99+2×98+…; hoặc hai tổng cộng theo quy luật cần so sánh. Cách giải: viết thành bảng, đổi cách nhóm (theo giá trị thay vì theo hàng) để thấy tử = mẫu hoặc gấp k lần, rồi rút gọn. Khác «Triệt tiêu» (NDB02976) ở chỗ không tách hiệu."
+  },
+  "P04": {
+   "ten": "Tìm x, y khi một thành phần là dãy phân số đặc biệt",
+   "lt": "##TC\nVới dãy mẫu là tích hai số liên tiếp: $\\dfrac{1}{a\\times(a+1)}=\\dfrac{1}{a}-\\dfrac{1}{a+1}$, nên $\\dfrac{1}{1\\times 2}+\\dfrac{1}{2\\times 3}+\\ldots+\\dfrac{1}{n\\times(n+1)}=1-\\dfrac{1}{n+1}$.\nMuốn tìm thừa số chưa biết, lấy tích chia cho thừa số đã biết; tìm số hạng chưa biết, lấy tổng trừ số hạng đã biết.\n\n##PP\nTính giá trị của dãy phân số đặc biệt (triệt tiêu hoặc mẫu gấp đôi) trước.\nThay giá trị đó vào phép tính, còn lại bài tìm thành phần chưa biết.\nGom các số hạng chứa $y$ lại nếu $y$ xuất hiện nhiều lần.\n\n##CY\nKhông tìm thành phần chưa biết khi chưa tính xong dãy.\nChia cho một phân số là nhân với phân số đảo ngược.",
+   "vd": "##VD\nTìm $x$, biết: $x\\times\\left(\\dfrac{1}{1\\times 2}+\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\ldots+\\dfrac{1}{9\\times 10}\\right)=\\dfrac{9}{5}$.\n**Hướng dẫn giải:**\nTa có $\\dfrac{1}{1\\times 2}=1-\\dfrac{1}{2}$, $\\dfrac{1}{2\\times 3}=\\dfrac{1}{2}-\\dfrac{1}{3}$, $\\ldots$, $\\dfrac{1}{9\\times 10}=\\dfrac{1}{9}-\\dfrac{1}{10}$.\nCộng lại, các phân số ở giữa triệt tiêu nhau, còn $1-\\dfrac{1}{10}=\\dfrac{9}{10}$.\nVậy $x\\times\\dfrac{9}{10}=\\dfrac{9}{5}$.\n$x=\\dfrac{9}{5}:\\dfrac{9}{10}=\\dfrac{9}{5}\\times\\dfrac{10}{9}=2$.\nĐáp số: $x=2$",
+   "mo_ta": "Đề cho phép tính có thành phần chưa biết (x, y — có khi y lặp nhiều lần) và một thành phần khác là tổng dãy phân số mẫu gấp đôi hoặc dãy triệt tiêu. Bước 1 tính dãy, bước 2 tìm thành phần chưa biết. Khác «Tìm x trong biểu thức hỗn hợp» (NDB02983) ở bước tính dãy đặc biệt."
+  },
+  "P05": {
+   "ten": "Viết thêm chữ số vào số thập phân rồi so với số cũ",
+   "lt": "##TC\nViết thêm chữ số $c$ vào bên phải phần thập phân của số $A$ (có $k$ chữ số ở phần thập phân) thì chữ số $c$ đứng ở hàng thứ $k+1$ sau dấu phẩy; số mới hơn $A$ đúng $c$ đơn vị của hàng đó. Chẳng hạn $k=1$ và $c=5$ thì số mới hơn số cũ $0{,}05$.\n\n##PP\nXác định hàng của chữ số mới dựa vào số chữ số thập phân của số cũ.\nTìm hiệu của số mới và số cũ.\nDùng bài toán tổng–hiệu (hoặc \"gấp $k$ lần\") để tìm số cũ.\n\n##CY\nViết thêm chữ số $0$ vào cuối phần thập phân thì giá trị không đổi, nên bài chỉ có ý nghĩa với chữ số khác $0$.\nĐếm đúng số chữ số thập phân của số cũ trước khi xác định hàng.",
+   "vd": "##VD\nSố thập phân $A$ có một chữ số ở phần thập phân. Viết thêm chữ số $5$ vào bên phải $A$ được số $B$. Biết $A+B=7{,}25$. Tìm $A$.\n**Hướng dẫn giải:**\n$A$ có một chữ số thập phân nên chữ số $5$ mới viết thêm đứng ở hàng phần trăm.\nVậy $B$ hơn $A$ là $0{,}05$.\nSố bé là $A=(7{,}25-0{,}05):2=3{,}6$.\nThử lại: $B=3{,}65$ và $3{,}6+3{,}65=7{,}25$.\nĐáp số: $3{,}6$",
+   "mo_ta": "Viết thêm chữ số (hoặc số) vào bên phải phần thập phân của số thập phân; số mới hơn số cũ đúng bằng giá trị hàng của chữ số mới, rồi giải bằng tổng–hiệu hoặc «gấp k lần». Khác «Thêm/bớt chữ số bên phải» (NDB02927) ở chỗ số thập phân: hàng của chữ số mới phụ thuộc số chữ số thập phân của số cũ."
+  },
+  "P06": {
+   "ten": "Tổng – hiệu cơ bản (hai hoặc ba số; hai cạnh; số thập phân)",
+   "lt": "##TC\nBiết tổng và hiệu của hai số thì:\nSố lớn $=(\\text{tổng}+\\text{hiệu}):2$.\nSố bé $=(\\text{tổng}-\\text{hiệu}):2$ (hoặc số lớn $-$ hiệu).\n\n##PP\nVẽ sơ đồ hai đoạn thẳng: đoạn của số lớn dài hơn đoạn của số bé đúng bằng hiệu.\nBớt phần hơn đi thì hai đoạn bằng nhau và tổng còn lại là $\\text{tổng}-\\text{hiệu}$.\nChia đôi để được số bé, rồi cộng hiệu để được số lớn.\n\n##CY\nSố thập phân làm hoàn toàn như số tự nhiên.\nLuôn thử lại: tổng đúng và hiệu đúng.",
+   "vd": "##VD\nHai thùng dầu chứa tất cả $85{,}6$ lít. Thùng thứ nhất chứa nhiều hơn thùng thứ hai $12{,}4$ lít. Hỏi mỗi thùng chứa bao nhiêu lít dầu?\n**Hướng dẫn giải:**\nSơ đồ: thùng thứ hai $1$ đoạn, thùng thứ nhất dài hơn thùng thứ hai $12{,}4$ lít, tổng hai thùng $85{,}6$ lít.\nNếu bớt ở thùng thứ nhất $12{,}4$ lít thì hai thùng bằng nhau và có tất cả: $85{,}6-12{,}4=73{,}2$ (lít).\nThùng thứ hai chứa: $73{,}2:2=36{,}6$ (lít).\nThùng thứ nhất chứa: $36{,}6+12{,}4=49$ (lít).\nThử lại: $36{,}6+49=85{,}6$.\nĐáp số: Thùng thứ nhất $49$ lít; thùng thứ hai $36{,}6$ lít",
+   "mo_ta": "Biết tổng và hiệu của hai số (hoặc hai cạnh hình chữ nhật, hai thùng…); tìm từng số bằng (tổng + hiệu) : 2 và (tổng − hiệu) : 2. Có thể là ba số biết tổng và hai hiệu (quy cả ba về số nhỏ nhất). Không có tỉ số."
+  },
+  "P07": {
+   "ten": "Tổng – hiệu có thêm / bớt / chuyển ở một hoặc hai số",
+   "lt": "##TC\nThêm $a$ vào một số thì tổng tăng $a$; bớt $a$ ở một số thì tổng giảm $a$.\nChuyển $a$ từ số này sang số kia thì tổng không đổi, còn hiệu thay đổi $a\\times 2$.\n\n##PP\nTìm tổng mới và hiệu mới (nếu đề chưa cho thì suy ra).\nGiải bài tổng–hiệu để được hai số mới.\nHoàn lại đúng chiều phần đã thêm, bớt hoặc chuyển để được hai số lúc đầu.\n\n##CY\nHoàn lại ngược chiều: đã thêm thì trừ đi, đã bớt thì cộng lại.\nThử lại bằng cách làm lại đúng các bước của đề.",
+   "vd": "##VD\nTìm hai số, biết rằng nếu thêm $6$ vào số bé và bớt $4$ ở số lớn thì được hai số có tổng là $100$ và hiệu là $30$.\n**Hướng dẫn giải:**\nSơ đồ (hai số mới): số bé mới $1$ đoạn, số lớn mới hơn số bé mới $30$, tổng hai số mới $100$.\nSố lớn mới là: $(100+30):2=65$.\nSố bé mới là: $(100-30):2=35$.\nSố lớn lúc đầu là: $65+4=69$ (vì đã bớt $4$).\nSố bé lúc đầu là: $35-6=29$ (vì đã thêm $6$).\nThử lại: $69-4=65$; $29+6=35$; $65+35=100$; $65-35=30$.\nĐáp số: $69$ và $29$",
+   "mo_ta": "Đề cho tổng và hiệu SAU khi thêm, bớt hoặc chuyển một lượng giữa hai bên (anh cho em, thêm 8 kẹo…); tìm hai số lúc đầu: giải ở trạng thái mới rồi hoàn lại đúng chiều. Chuyển a từ bên này sang bên kia: tổng không đổi, hiệu đổi 2×a."
+  },
+  "P08": {
+   "ten": "Hai số chẵn / lẻ / liên tiếp có k số xen giữa",
+   "lt": "##TC\nHai số lẻ (hoặc chẵn) liên tiếp hơn kém nhau $2$.\nNếu giữa hai số lẻ (chẵn) có $k$ số lẻ (chẵn) khác thì hiệu của chúng là $(k+1)\\times 2$.\n\n##PP\nĐếm số khoảng giữa hai số: $k$ số xen giữa thì có $k+1$ khoảng, mỗi khoảng $2$ đơn vị, từ đó tìm hiệu.\nDùng bài toán tổng–hiệu để tìm hai số.\nKiểm tra kết quả có đúng là số lẻ (chẵn) như đề.\n\n##CY\nSố khoảng nhiều hơn số số xen giữa $1$.\nTổng hai số lẻ (hoặc chẵn) là số chẵn.",
+   "vd": "##VD\nTổng của hai số lẻ là $242$. Giữa hai số đó có $9$ số lẻ khác. Tìm hai số đó.\n**Hướng dẫn giải:**\nGiữa hai số có $9$ số lẻ nên từ số bé đến số lớn có $9+1=10$ khoảng, mỗi khoảng $2$ đơn vị.\nHiệu của hai số là: $10\\times 2=20$.\nSơ đồ: số bé $1$ đoạn, số lớn hơn số bé $20$, tổng hai số $242$.\nSố bé là: $(242-20):2=111$.\nSố lớn là: $111+20=131$.\nThử lại: các số lẻ ở giữa là $113, 115,\\ldots,129$ (có $9$ số).\nĐáp số: $111$ và $131$",
+   "mo_ta": "Đề cho tổng của hai số chẵn (hoặc lẻ) và nói giữa hai số có k số cùng loại; hiệu = (k + 1) × 2. Sau đó tổng–hiệu."
+  },
+  "P09": {
+   "ten": "Tỉ lệ bản đồ: đổi độ dài giữa bản đồ và thực tế",
+   "lt": "##TC\nTỉ lệ bản đồ $1:n$ nghĩa là $1$ đơn vị độ dài trên bản đồ ứng với $n$ đơn vị độ dài cùng loại ở thực tế.\nĐộ dài thực tế $=$ độ dài trên bản đồ $\\times\\ n$ (cùng đơn vị), độ dài trên bản đồ $=$ độ dài thực tế $:\\ n$.\n\n##PP\nĐổi độ dài đã biết về cùng đơn vị với tỉ lệ (thường là $\\text{cm}$).\nNhân (hoặc chia) với $n$.\nĐổi kết quả sang đơn vị đề hỏi ($\\text{m}$, $\\text{km}$).\n\n##CY\nĐổi đơn vị TRƯỚC khi nhân hoặc chia; đổi sau cùng dễ nhầm số $0$.\n$1\\ \\text{km}=100\\,000\\ \\text{cm}$; $1\\ \\text{m}=100\\ \\text{cm}$.",
+   "vd": "##VD\nKhoảng cách thực tế giữa hai thành phố là $1{,}8$ km. Trên bản đồ tỉ lệ $1:50\\,000$, khoảng cách đó dài bao nhiêu xăng-ti-mét?\n**Hướng dẫn giải:**\nĐổi $1{,}8$ km $=180\\,000$ cm.\nĐộ dài trên bản đồ là: $180\\,000:50\\,000=3{,}6$ (cm).\nĐáp số: $3{,}6$ cm",
+   "mo_ta": "Cho tỉ lệ 1 : n và độ dài (trên bản đồ hoặc thực tế), tìm độ dài còn lại; đổi cm → m → km đúng lúc. Có thể kèm bước tổng–tỉ trước (chu vi / nửa chu vi)."
+  },
+  "P10": {
+   "ten": "Tỉ lệ bản đồ: diện tích",
+   "lt": "##TC\nDiện tích không nhân thẳng với tỉ lệ bản đồ. Phải đổi từng kích thước (chiều dài, chiều rộng) ra thực tế rồi mới tính diện tích.\nTỉ lệ $1:n$ thì diện tích thực tế gấp diện tích trên bản đồ $n\\times n$ lần.\n\n##PP\nĐổi hai kích thước trên bản đồ ra thực tế (nhân với $n$).\nTính diện tích thực tế.\nĐổi sang đơn vị đề hỏi ($\\text{m}^2$, ha).\n\n##CY\nNhầm lẫn thường gặp: lấy diện tích trên bản đồ nhân với $n$ (sai, phải nhân $n\\times n$).\nĐổi cm sang m trước khi nhân hai kích thước.",
+   "vd": "##VD\nMột mảnh đất hình chữ nhật trên bản đồ tỉ lệ $1:1000$ có chiều dài $6$ cm, chiều rộng $4$ cm. Tính diện tích thực tế của mảnh đất theo mét vuông.\n**Hướng dẫn giải:**\nChiều dài thực tế là: $6\\times 1000=6000$ (cm) $=60$ m.\nChiều rộng thực tế là: $4\\times 1000=4000$ (cm) $=40$ m.\nDiện tích thực tế là: $60\\times 40=2400$ ($\\text{m}^2$).\nĐáp số: $2400\\ \\text{m}^2$",
+   "mo_ta": "Cho kích thước (hoặc diện tích) trên bản đồ tỉ lệ 1 : n, tìm diện tích thực tế (hoặc ngược lại). Phải đổi từng kích thước ra thực tế rồi mới nhân; diện tích thực gấp diện tích bản đồ n × n lần."
+  },
+  "P11": {
+   "ten": "Quan hệ «bằng phân số của số kia cộng / trừ k đơn vị»",
+   "lt": "##TC\nKhi số $A$ bằng phân số của số $B$ cộng thêm (hoặc bớt) $k$ đơn vị, ta bớt $k$ (hoặc thêm $k$) ở $A$ để $A$ bằng đúng phân số của $B$. Lúc đó tổng (hoặc hiệu) của hai số cũng đổi theo: bớt $k$ ở $A$ thì tổng giảm $k$.\n\n##PP\nViết quan hệ giữa hai số; bớt (thêm) $k$ để có quan hệ phân số thuần.\nTính tổng (hoặc hiệu) mới.\nGiải bài tổng–tỉ (hiệu–tỉ) để được hai số mới; hoàn lại $k$ để được số ban đầu.\n\n##CY\nChỉ điều chỉnh số \"có cộng thêm\"; số kia giữ nguyên.\nThử lại bằng đúng câu chữ của đề.",
+   "vd": "##VD\nHai lớp có tất cả $78$ học sinh. Số học sinh lớp 5A bằng $\\dfrac{2}{3}$ số học sinh lớp 5B thêm $3$ em. Tính số học sinh mỗi lớp.\n**Hướng dẫn giải:**\nBớt $3$ học sinh ở lớp 5A thì số học sinh lớp 5A bằng đúng $\\dfrac{2}{3}$ số học sinh lớp 5B; khi đó hai lớp có $78-3=75$ học sinh.\nCoi số học sinh lớp 5B là $3$ phần thì số học sinh lớp 5A (sau khi bớt) là $2$ phần.\nSơ đồ: lớp 5B $3$ phần, lớp 5A (sau khi bớt) $2$ phần, tổng $75$ học sinh.\nTổng số phần bằng nhau là: $3+2=5$ (phần).\nSố học sinh lớp 5B là: $75:5\\times 3=45$ (học sinh).\nSố học sinh lớp 5A là: $78-45=33$ (học sinh).\nThử lại: $\\dfrac{2}{3}$ của $45$ là $30$, thêm $3$ là $33$.\nĐáp số: Lớp 5A $33$ học sinh; lớp 5B $45$ học sinh",
+   "mo_ta": "Một số bằng phân số của số kia rồi cộng (hoặc trừ) k đơn vị (A = 2/3 B + 5; «Tốt hơn 3/4 số còn lại 4 em»…), biết tổng hoặc hiệu. Bớt (thêm) k ở số đó cho đúng quan hệ phân số, điều chỉnh tổng, giải tổng–tỉ / hiệu–tỉ, hoàn lại k."
+  },
+  "P12": {
+   "ten": "Tỉ số ẩn: «a/m số này = b/n số kia», «a lần … = b lần …», «a% … = b% …»",
+   "lt": "##TC\nNếu $\\dfrac{1}{m}$ của số thứ nhất bằng $\\dfrac{1}{n}$ của số thứ hai thì số thứ nhất gồm $m$ phần, số thứ hai gồm $n$ phần của giá trị chung đó.\nNếu $a$ lần số thứ nhất bằng $b$ lần số thứ hai thì tỉ số của số thứ nhất và số thứ hai là $b:a$. Phần trăm xử lý như vậy: $a\\%$ số thứ nhất bằng $b\\%$ số thứ hai thì tỉ số là $b:a$.\n\n##PP\nCoi giá trị chung là một phần (hoặc một đoạn).\nBiểu thị mỗi số theo số phần của giá trị chung, từ đó có tỉ số hai số.\nGiải bài tổng–tỉ hoặc hiệu–tỉ.\n\n##CY\nSố có hệ số lớn hơn thì số đó nhỏ hơn.\nĐổi phần trăm thành phân số hoặc số phần trước khi lập tỉ số.",
+   "vd": "##VD\nCó hai loại bi: bi đỏ và bi xanh, tất cả $150$ viên. Biết $\\dfrac{1}{2}$ số bi đỏ bằng $\\dfrac{1}{3}$ số bi xanh. Hỏi có bao nhiêu viên bi mỗi loại?\n**Hướng dẫn giải:**\nCoi $\\dfrac{1}{2}$ số bi đỏ bằng $\\dfrac{1}{3}$ số bi xanh là $1$ phần.\nSố bi đỏ là $2$ phần; số bi xanh là $3$ phần.\nSơ đồ: số bi đỏ $2$ phần, số bi xanh $3$ phần, tổng $150$ viên.\nTổng số phần bằng nhau là: $2+3=5$ (phần).\nMột phần có: $150:5=30$ (viên).\nSố bi đỏ là: $30\\times 2=60$ (viên).\nSố bi xanh là: $30\\times 3=90$ (viên).\nĐáp số: Bi đỏ $60$ viên; bi xanh $90$ viên",
+   "mo_ta": "Đề không cho tỉ số trực tiếp mà cho hai đại lượng bằng nhau sau khi lấy phân số / bội / phần trăm khác nhau; coi giá trị chung là 1 phần để suy ra tỉ số rồi giải tổng–tỉ hoặc hiệu–tỉ."
+  },
+  "P13": {
+   "ten": "Tổng / hiệu ẩn: chuyển để hai số bằng nhau, chuyển qua lại",
+   "lt": "##TC\nNếu chuyển $a$ từ số lớn sang số bé mà hai số bằng nhau thì hiệu của hai số là $a\\times 2$.\nChuyển qua lại giữa hai số thì tổng của hai số không đổi.\n\n##PP\nTìm hiệu (hoặc tổng) của hai số nhờ điều kiện \"bằng nhau\" hoặc \"tổng không đổi\".\nKết hợp với tỉ số cho sẵn, giải bài hiệu–tỉ (hoặc tổng–tỉ).\n\n##CY\nNhớ nhân đôi khi chuyển để hai số bằng nhau.\nTổng không đổi khi chuyển; hiệu thì đổi.",
+   "vd": "##VD\nAn có số viên bi gấp $3$ lần số viên bi của Bình. Nếu An cho Bình $8$ viên thì hai bạn có số bi bằng nhau. Hỏi mỗi bạn có bao nhiêu viên bi?\n**Hướng dẫn giải:**\nAn cho Bình $8$ viên thì hai bạn bằng nhau nên An hơn Bình: $8\\times 2=16$ (viên).\nCoi số bi của Bình là $1$ phần thì số bi của An là $3$ phần.\nSơ đồ: số bi của Bình $1$ phần, số bi của An $3$ phần, An hơn Bình $16$ viên.\nHiệu số phần bằng nhau là: $3-1=2$ (phần).\nSố bi của Bình là: $16:2\\times 1=8$ (viên).\nSố bi của An là: $8+16=24$ (viên).\nThử lại: $24-8=16$; sau khi cho, $16$ và $16$ bằng nhau.\nĐáp số: An $24$ viên; Bình $8$ viên",
+   "mo_ta": "Tổng hoặc hiệu không cho trực tiếp mà suy ra từ «chuyển a thì hai bên bằng nhau» (hiệu = 2a) hoặc «chuyển qua lại thì tổng không đổi», cùng một tỉ số cho sẵn; giải hiệu–tỉ / tổng–tỉ."
+  },
+  "P14": {
+   "ten": "Phần trăm: hiệu (hoặc tổng) hai bộ phận ứng với x% cả lớp, có thêm bớt",
+   "lt": "##TC\nHai bộ phận chiếm $a\\%$ và $b\\%$ của cùng một tổng thì hiệu của chúng chiếm $(a-b)\\%$ của tổng đó.\nBiết giá trị ứng với một số phần trăm thì tìm $1\\%$ rồi tìm $100\\%$.\n\n##PP\nĐổi các phần về phần trăm của cùng một tổng.\nTìm phần trăm ứng với số đã biết (hiệu hoặc tổng).\nTìm $1\\%$, rồi $100\\%$ (nếu tổng thay đổi do thêm bớt thì xét tổng mới trước).\n\n##CY\nHai phần trăm phải tính trên cùng một tổng.\nThêm hoặc bớt thì tổng đổi, phải đổi lại phần trăm trên tổng mới.",
+   "vd": "##VD\nLớp 5A có số bạn nam chiếm $45\\%$ sĩ số, số bạn nữ nhiều hơn số bạn nam $5$ bạn. Tính sĩ số lớp 5A.\n**Hướng dẫn giải:**\nSố bạn nữ chiếm: $100\\%-45\\%=55\\%$ sĩ số.\nSố bạn nữ nhiều hơn số bạn nam: $55\\%-45\\%=10\\%$ sĩ số.\n$10\\%$ sĩ số là $5$ bạn nên $1\\%$ sĩ số là: $5:10=0{,}5$ (bạn).\nSĩ số lớp là: $0{,}5\\times 100=50$ (bạn).\nĐáp số: $50$ bạn",
+   "mo_ta": "Số đã biết là hiệu của hai bộ phận chiếm a% và b% của cùng một tổng («nam hơn nữ 96 em ứng với 4% tổng»); có khi tổng thay đổi sau khi thêm bớt. Tìm 1% rồi 100%."
+  },
+  "P15": {
+   "ten": "Tỉ số số lần xuất hiện (tung đồng xu, xúc xắc, đọc bảng %)",
+   "lt": "##TC\nTỉ số số lần xuất hiện của một kết quả $=$ số lần kết quả đó xuất hiện $:$ tổng số lần thực hiện, viết dưới dạng phân số hoặc phần trăm.\nTổng số lần xuất hiện của mọi kết quả bằng số lần thực hiện.\n\n##PP\nTìm số lần chưa biết (lấy tổng số lần trừ số lần đã biết).\nLập tỉ số, rút gọn hoặc đổi sang phần trăm.\n\n##CY\nNếu chỉ có hai kết quả thì số lần kết quả còn lại bằng tổng trừ số lần đã biết.\nĐọc kỹ đề: tỉ số trên TỔNG số lần hay tỉ số giữa hai kết quả.",
+   "vd": "##VD\nTung một đồng xu $40$ lần, có $18$ lần xuất hiện mặt sấp. Tìm tỉ số phần trăm giữa số lần xuất hiện mặt ngửa và tổng số lần tung.\n**Hướng dẫn giải:**\nSố lần xuất hiện mặt ngửa là: $40-18=22$ (lần).\nTỉ số của số lần mặt ngửa và tổng số lần tung là: $22:40=\\dfrac{11}{20}=0{,}55=55\\%$.\nĐáp số: $55\\%$",
+   "mo_ta": "Cho số lần một kết quả xuất hiện và tổng số lần (hoặc bảng %), tìm tỉ số / phần trăm / số lần chưa biết."
+  },
+  "P16": {
+   "ten": "Đổi vận tốc giữa đường: tỉ lệ nghịch trên đoạn còn lại",
+   "lt": "##TC\nTrên cùng một quãng đường, vận tốc và thời gian tỉ lệ nghịch: vận tốc tăng bao nhiêu lần thì thời gian giảm bấy nhiêu lần.\nKhi xe đổi vận tốc giữa đường, đoạn đường còn lại được đi với hai vận tốc (dự định và thực tế); quãng đường ấy như nhau, nên tỉ số thời gian bằng tỉ số vận tốc đảo ngược.\n\n##PP\nXác định đoạn đường đi với hai vận tốc có cùng độ dài.\nLập tỉ số vận tốc, suy ra tỉ số thời gian (đảo ngược).\nDùng hiệu thời gian cho sẵn để tìm thời gian dự định, rồi tìm quãng đường.\n\n##CY\nNhớ đổi phút ra giờ.\nQuãng đường cả chuyến gấp đôi (hoặc bội) đoạn đã xét; đọc kỹ đoạn nào đổi vận tốc.",
+   "vd": "##VD\nMột ô tô đi từ A đến B với vận tốc dự định $60$ km/giờ. Đi được nửa quãng đường, ô tô giảm vận tốc còn $40$ km/giờ nên đến B chậm hơn dự định $30$ phút. Tính quãng đường AB.\n**Hướng dẫn giải:**\nTa có sơ đồ:\nA ——— M ——— B (M là điểm chính giữa AB); ô tô đi quãng AM với vận tốc $60$ km/giờ, đến M giảm xuống $40$ km/giờ để đi quãng MB, đến B chậm hơn dự định $30$ phút.\nTrên nửa quãng đường sau, vận tốc dự định và vận tốc thực tế có tỉ số $60:40=3:2$.\nCùng một quãng đường thì thời gian dự định và thời gian thực tế có tỉ số $2:3$.\nHiệu số phần bằng nhau là: $3-2=1$ (phần), ứng với $30$ phút.\nThời gian dự định đi nửa quãng đường sau là: $30\\times 2=60$ (phút) $=1$ giờ.\nNửa quãng đường AB dài là: $60\\times 1=60$ (km).\nQuãng đường AB dài là: $60\\times 2=120$ (km).\nĐáp số: $120$ km",
+   "mo_ta": "Xe đổi vận tốc giữa đường nên đến chậm / sớm / gặp trước điểm đến; trên cùng đoạn đường còn lại, vận tốc và thời gian tỉ lệ nghịch ⇒ tìm thời gian dự định, quãng đường, vận tốc. Gồm cả «đuổi kịp sau khi một xe đổi vận tốc» (khoảng cách tự hình thành)."
+  },
+  "P17": {
+   "ten": "Đi – về qua đoạn lên dốc, xuống dốc",
+   "lt": "##TC\nMột đoạn dốc: lúc đi lên có vận tốc nhỏ, lúc đi xuống có vận tốc lớn; chiều về thì dốc lên thành dốc xuống.\nĐi và về qua mỗi ki-lô-mét của đoạn dốc mất: $\\dfrac{1}{v_{\\text{lên}}}+\\dfrac{1}{v_{\\text{xuống}}}$ giờ.\n\n##PP\nTính thời gian đi–về qua $1$ km đoạn dốc.\nLấy tổng thời gian chia cho thời gian của $1$ km để tìm chiều dài đoạn dốc.\nNếu có đoạn bằng thì tính riêng đoạn bằng, phần còn lại là dốc.\n\n##CY\nQuãng đường đi và quãng đường về bằng nhau nhưng đoạn lên và xuống đổi chỗ cho nhau.\nCộng hai phân số khác mẫu: quy đồng trước.",
+   "vd": "##VD\nMột người đi từ A đến B toàn đoạn dốc lên với vận tốc $4$ km/giờ, rồi quay về A (toàn dốc xuống) với vận tốc $6$ km/giờ. Tổng thời gian đi và về là $5$ giờ. Tính quãng đường AB.\n**Hướng dẫn giải:**\nTa có sơ đồ:\nA ——→ B: toàn dốc lên, vận tốc $4$ km/giờ; B ——→ A: toàn dốc xuống, vận tốc $6$ km/giờ; tổng thời gian đi và về $5$ giờ.\nĐi $1$ km dốc lên mất $\\dfrac{1}{4}$ giờ; về $1$ km dốc xuống mất $\\dfrac{1}{6}$ giờ.\nĐi và về qua $1$ km mất: $\\dfrac{1}{4}+\\dfrac{1}{6}=\\dfrac{5}{12}$ (giờ).\nQuãng đường AB dài là: $5:\\dfrac{5}{12}=12$ (km).\nThử lại: $12:4=3$ giờ; $12:6=2$ giờ; $3+2=5$ giờ.\nĐáp số: $12$ km",
+   "mo_ta": "Đoạn đường có dốc: lúc đi lên dốc, lúc về xuống dốc (vận tốc khác nhau); mỗi km đi–về tốn (1 : v lên) + (1 : v xuống) giờ; tìm quãng đường hoặc vận tốc."
+  },
+  "P18": {
+   "ten": "Quay về điểm xuất phát giữa chừng (trễ giờ = nghỉ + 2 × đoạn đã đi)",
+   "lt": "##TC\nQuay về điểm xuất phát giữa chừng rồi đi lại thì phải đi thêm hai lần đoạn đã đi (đi ra rồi trở về).\nThời gian trễ $=$ thời gian nghỉ (nếu có) $+$ thời gian đi hết hai lần đoạn đã đi.\n\n##PP\nĐổi các thời gian về cùng đơn vị.\nLấy thời gian trễ trừ thời gian nghỉ, được thời gian đi hai lần đoạn đã đi.\nTìm vận tốc (hoặc quãng đường) từ thời gian đó.\n\n##CY\nKhông tính cả quãng đường đến đích vào phần trễ; chỉ phần đi thừa.\nĐổi phút ra giờ trước khi chia.",
+   "vd": "##VD\nLan đi xe đạp đến trường. Đi được $3$ km thì Lan nhớ quên sách nên quay về nhà, nghỉ $5$ phút lấy sách rồi đi lại đến trường (vận tốc không đổi). Vì vậy Lan đến trường muộn $25$ phút so với dự định. Tính vận tốc của Lan.\n**Hướng dẫn giải:**\nTa có sơ đồ:\nNhà ——$3$ km—— chỗ quay lại ——→ trường; Lan đi $3$ km, quay về nhà, nghỉ $5$ phút rồi đi lại đến trường.\nThời gian đi thừa (đi $3$ km ra và $3$ km về) là: $25-5=20$ (phút) $=\\dfrac{1}{3}$ giờ.\nQuãng đường đi thừa là: $3\\times 2=6$ (km).\nVận tốc của Lan là: $6:\\dfrac{1}{3}=18$ (km/giờ).\nThử lại: $6:18=\\dfrac{1}{3}$ giờ $=20$ phút; $20+5=25$ phút.\nĐáp số: $18$ km/giờ",
+   "mo_ta": "Đi được một đoạn thì quay về điểm xuất phát (lấy đồ, nghỉ) rồi đi lại; thời gian trễ = thời gian nghỉ + thời gian đi thêm 2 lần đoạn đã đi."
+  },
+  "P19": {
+   "ten": "Chu vi, diện tích hình chữ nhật / hình vuông lời văn (hàng rào, lát nền)",
+   "lt": "##TC\nChu vi hình chữ nhật $=(\\text{dài}+\\text{rộng})\\times 2$; diện tích $=\\text{dài}\\times\\text{rộng}$.\nChu vi hình vuông $=\\text{cạnh}\\times 4$; diện tích $=\\text{cạnh}\\times\\text{cạnh}$.\nĐộ dài hàng rào là chu vi (trừ phần cổng, lối đi nếu có); số viên gạch lát nền bằng diện tích nền chia diện tích một viên (cùng đơn vị).\n\n##PP\nTìm kích thước còn thiếu (chiều rộng theo phân số của chiều dài...).\nTính chu vi hoặc diện tích.\nThực hiện bước phụ (trừ cổng, chia cho diện tích viên gạch, đổi đơn vị) rồi nhân đơn giá.\n\n##CY\nCổng, lối đi trừ vào CHU VI (hàng rào), không trừ vào diện tích.\nĐổi đơn vị diện tích đúng: $1\\ \\text{ha}=10\\,000\\ \\text{m}^2$; $1\\ \\text{km}^2=100\\ \\text{ha}$.",
+   "vd": "##VD\nMột mảnh vườn hình chữ nhật có chiều dài $24$ m, chiều rộng bằng $\\dfrac{5}{8}$ chiều dài. Người ta làm hàng rào xung quanh vườn, chừa một cổng rộng $3$ m. Mỗi mét hàng rào giá $45\\,000$ đồng. Hỏi làm hàng rào hết bao nhiêu tiền?\n**Hướng dẫn giải:**\nChiều rộng mảnh vườn là: $24\\times\\dfrac{5}{8}=15$ (m).\nChu vi mảnh vườn là: $(24+15)\\times 2=78$ (m).\nĐộ dài hàng rào là: $78-3=75$ (m).\nSố tiền làm hàng rào là: $75\\times 45\\,000=3\\,375\\,000$ (đồng).\nĐáp số: $3\\,375\\,000$ đồng",
+   "mo_ta": "Bài thực tế: tính chu vi hoặc diện tích hình chữ nhật / hình vuông từ số liệu phân số, thập phân; hàng rào trừ cổng; lát nền = diện tích nền : diện tích viên gạch; đổi km² ↔ ha; tính tiền."
+  },
+  "P20": {
+   "ten": "Nửa chu vi và thay đổi cạnh hình chữ nhật",
+   "lt": "##TC\nNửa chu vi hình chữ nhật $=$ chiều dài $+$ chiều rộng (đây là \"tổng\" của bài tổng–hiệu hoặc tổng–tỉ).\nKhi thêm bớt hai cạnh để được hình vuông thì hai cạnh mới bằng nhau; hiệu hai cạnh ban đầu bằng tổng lượng thêm và bớt.\n\n##PP\nTìm nửa chu vi (tổng hai cạnh).\nTìm hiệu hai cạnh (hoặc tỉ số) từ điều kiện đề.\nGiải tổng–hiệu (tổng–tỉ) để tìm hai cạnh, rồi tính diện tích hoặc chu vi cần tìm.\n\n##CY\nPhân biệt chu vi và nửa chu vi.\nGiảm một cạnh và tăng một cạnh đến khi bằng nhau: hiệu là tổng hai lượng đó.",
+   "vd": "##VD\nMột hình chữ nhật có nửa chu vi là $28$ cm. Nếu giảm chiều dài $4$ cm và tăng chiều rộng $4$ cm thì được một hình vuông. Tính diện tích hình chữ nhật ban đầu.\n**Hướng dẫn giải:**\nSau khi giảm chiều dài $4$ cm và tăng chiều rộng $4$ cm thì hai cạnh bằng nhau, nên chiều dài hơn chiều rộng: $4+4=8$ (cm).\nSơ đồ: chiều rộng $1$ đoạn, chiều dài hơn chiều rộng $8$ cm, nửa chu vi $28$ cm.\nChiều dài là: $(28+8):2=18$ (cm).\nChiều rộng là: $28-18=10$ (cm).\nDiện tích hình chữ nhật ban đầu là: $18\\times 10=180$ ($\\text{cm}^2$).\nĐáp số: $180\\ \\text{cm}^2$",
+   "mo_ta": "Cho nửa chu vi (hoặc chu vi) và quan hệ giữa hai cạnh (hơn kém, tỉ số, thêm bớt để thành hình vuông, giảm cùng một độ dài), tìm cạnh rồi diện tích / chu vi mới."
+  },
+  "P21": {
+   "ten": "Diện tích hình trong tam giác / hình thang = hình lớn trừ các miếng góc",
+   "lt": "##TC\nHai tam giác có chung một đỉnh và hai đáy cùng nằm trên một đường thẳng thì tỉ số diện tích bằng tỉ số hai đáy.\nDiện tích hình nằm trong một tam giác lớn bằng diện tích tam giác lớn trừ diện tích các tam giác ở góc.\n\n##PP\nVới mỗi tam giác ở góc, tính diện tích qua hai bước: lấy tỉ số đáy ở hai cạnh kề của góc đó.\nCộng diện tích các tam giác ở góc.\nLấy diện tích tam giác lớn trừ đi tổng đó.\n\n##CY\nMỗi tam giác ở góc cần hai tỉ số, một cho mỗi cạnh kề.\nKiểm tra bằng cách cộng lại tất cả các phần: phải được diện tích tam giác lớn.",
+   "vd": "##VD\nTam giác ABC có diện tích $108\\ \\text{cm}^2$. Trên các cạnh AB, BC, CA lấy lần lượt các điểm M, N, P sao cho $AM=\\dfrac{1}{3}AB$, $BN=\\dfrac{1}{3}BC$, $CP=\\dfrac{1}{3}CA$. Tính diện tích tam giác MNP.\n**Hướng dẫn giải:**\nTa có $AP=\\dfrac{2}{3}AC$. Tam giác ABP và tam giác ABC có chung chiều cao hạ từ B nên $S_{ABP}=\\dfrac{2}{3}\\times S_{ABC}=\\dfrac{2}{3}\\times 108=72\\ (\\text{cm}^2)$.\nTam giác AMP và tam giác ABP có chung chiều cao hạ từ P, mà $AM=\\dfrac{1}{3}AB$ nên $S_{AMP}=\\dfrac{1}{3}\\times 72=24\\ (\\text{cm}^2)$.\nHoàn toàn tương tự, mỗi tam giác ở hai góc B và C cũng gồm một cạnh bằng $\\dfrac{1}{3}$ và một cạnh bằng $\\dfrac{2}{3}$ nên $S_{BMN}=S_{CNP}=24\\ \\text{cm}^2$.\nDiện tích tam giác MNP là: $108-24\\times 3=36$ ($\\text{cm}^2$).\nĐáp số: $36\\ \\text{cm}^2$",
+   "mo_ta": "Tìm diện tích tứ giác (hoặc tam giác) nằm trong tam giác/hình thang lớn: lấy diện tích hình lớn trừ các tam giác ở góc, mỗi tam giác góc tính bằng hai lần tỉ số đáy chung đường cao; thường không cho số đo."
+  },
+  "P22": {
+   "ten": "Hình thang có hai đường chéo cắt nhau (cánh bướm)",
+   "lt": "##TC\nHình thang ABCD ($AB$ song song $CD$), hai đường chéo cắt nhau tại O: hai tam giác AOD và BOC (hai bên) có diện tích bằng nhau.\nHai tam giác chung một đỉnh có đáy cùng nằm trên một đường thẳng thì tỉ số diện tích bằng tỉ số hai đáy; từ tỉ số hai đáy hình thang suy ra tỉ số $AO:OC$ và diện tích cả bốn tam giác.\n\n##PP\nChỉ ra hai tam giác ABD và ABC có cùng đáy AB, cùng chiều cao nên bằng nhau, suy ra $S_{AOD}=S_{BOC}$.\nDùng tỉ số hai đáy để tìm tỉ số $AO:OC$ hoặc $BO:OD$.\nTừ tỉ số đó tính diện tích từng tam giác, cộng lại được diện tích hình thang.\n\n##CY\nHai tam giác ở hai bên (AOD, BOC) bằng nhau; hai tam giác ở hai đáy (AOB, COD) thì không.\nKiểm lại bằng cách cộng bốn diện tích.",
+   "vd": "##VD\nHình thang ABCD có đáy lớn CD gấp đôi đáy bé AB. Hai đường chéo AC và BD cắt nhau tại O. Biết diện tích tam giác AOB là $12\\ \\text{cm}^2$. Tính diện tích hình thang ABCD.\n**Hướng dẫn giải:**\nHai tam giác ABD và BAC có chung đáy AB và cùng chiều cao nên $S_{ABD}=S_{ABC}$, suy ra $S_{AOD}=S_{BOC}$.\nHai tam giác ABC và ACD có cùng chiều cao của hình thang nên $S_{ABC}:S_{ACD}=AB:CD=1:2$.\nHai tam giác này chung đáy AC nên chiều cao hạ từ B xuống AC bằng một nửa chiều cao hạ từ D xuống AC.\nTam giác AOB và tam giác AOD chung đáy AO, chiều cao hạ từ B bằng một nửa chiều cao hạ từ D, nên $S_{AOD}=12\\times 2=24\\ (\\text{cm}^2)$. Do đó $S_{BOC}=S_{AOD}=24\\ \\text{cm}^2$.\nTam giác BOC và tam giác COD chung đáy OC, chiều cao hạ từ D gấp đôi chiều cao hạ từ B, nên $S_{COD}=24\\times 2=48\\ (\\text{cm}^2)$.\nDiện tích hình thang ABCD là: $12+24+24+48=108$ ($\\text{cm}^2$).\nĐáp số: $108\\ \\text{cm}^2$",
+   "mo_ta": "Hình thang có hai đường chéo cắt nhau: hai tam giác ở hai bên (chung một đáy hình thang) bằng nhau; từ tỉ số hai đáy suy ra tỉ số diện tích bốn tam giác."
+  },
+  "P23": {
+   "ten": "Lấy ít nhất để chắc chắn có k vật cùng loại (trường hợp xấu nhất, chuồng thỏ)",
+   "lt": "##TC\nMuốn chắc chắn có $k$ vật cùng loại, ta xét trường hợp xấu nhất: mỗi loại lấy được nhiều nhất $k-1$ vật mà vẫn chưa đủ $k$ vật cùng loại. Vật lấy thêm ngay sau đó chắc chắn tạo đủ $k$ vật cùng loại.\nLoại nào có ít hơn $k-1$ vật thì lấy hết loại đó.\n\n##PP\nĐếm số loại (số \"ngăn\").\nTrường hợp xấu nhất: mỗi loại lấy $k-1$ vật (loại ít vật hơn thì lấy hết).\nCộng lại rồi thêm $1$.\n\n##CY\n\"Chắc chắn\" nghĩa là kể cả trong trường hợp may rủi xấu nhất.\nĐừng quên thêm $1$ ở bước cuối.",
+   "vd": "##VD\nTrong hộp có $6$ viên bi đỏ, $5$ viên bi xanh và $4$ viên bi vàng. Phải lấy ra ít nhất bao nhiêu viên bi (không nhìn) để chắc chắn có $3$ viên bi cùng màu?\n**Hướng dẫn giải:**\nTrường hợp xấu nhất: lấy được $2$ viên mỗi màu mà vẫn chưa có $3$ viên cùng màu.\nSố viên đã lấy là: $2\\times 3=6$ (viên).\nLấy thêm $1$ viên nữa thì viên đó thuộc một trong ba màu nên chắc chắn có $3$ viên cùng màu.\nSố viên bi cần lấy ít nhất là: $6+1=7$ (viên).\nĐáp số: $7$ viên",
+   "mo_ta": "Lấy không nhìn từ các nhóm màu/loại; tìm số vật ít nhất để chắc chắn có k vật cùng loại: mỗi loại lấy tối đa k−1 vật (loại ít hơn thì lấy hết) rồi +1; gồm cả «chuồng thỏ» đếm cặp/bộ khác nhau."
+  },
+  "P24": {
+   "ten": "Chắc chắn có đủ số lượng của một loại cụ thể / đủ bộ",
+   "lt": "##TC\nMuốn chắc chắn có $k$ vật của MỘT loại cho trước, trường hợp xấu nhất là lấy hết tất cả các vật thuộc loại khác trước, rồi mới lấy đến loại cần.\nSố vật cần lấy ít nhất $=$ số vật của các loại khác $+\\ k$.\n\n##PP\nXác định loại cần có và số lượng $k$.\nĐếm số vật của tất cả các loại còn lại.\nCộng với $k$.\n\n##CY\nKhác với \"$k$ vật cùng loại bất kì\": ở đây loại đã chỉ định.\nNếu cần nhiều loại cùng lúc, xét từng loại hoặc trường hợp xấu nhất chung.",
+   "vd": "##VD\nTrong hộp có $7$ viên bi đỏ, $6$ viên bi xanh và $9$ viên bi trắng. Phải lấy ra ít nhất bao nhiêu viên bi (không nhìn) để chắc chắn có $3$ viên bi xanh?\n**Hướng dẫn giải:**\nTrường hợp xấu nhất: lấy hết bi đỏ và bi trắng mà chưa có viên bi xanh nào.\nSố viên bi đỏ và trắng là: $7+9=16$ (viên).\nLấy thêm $3$ viên nữa thì chắc chắn là $3$ viên bi xanh.\nSố viên bi cần lấy ít nhất là: $16+3=19$ (viên).\nĐáp số: $19$ viên",
+   "mo_ta": "Muốn chắc chắn có k vật của MỘT loại cho trước (hoặc đủ bộ 2 vàng + 3 đỏ, đủ một đôi), trường hợp xấu nhất là lấy hết các loại còn lại trước rồi cộng k."
+  },
+  "P25": {
+   "ten": "Bảng loại trừ ghép đối tượng (tên – nghề – quê)",
+   "lt": "##TC\nMỗi đối tượng ghép với đúng một thuộc tính và mỗi thuộc tính chỉ thuộc về một đối tượng.\nĐiều kiện phủ định (\"không\") cũng cho thông tin: gạch ô đó trong bảng.\nKhi một hàng (hoặc cột) chỉ còn một ô trống thì ô đó chắc chắn là đáp án.\n\n##PP\nLập bảng đối tượng và thuộc tính.\nGạch các ô theo điều kiện phủ định.\nĐiền ô chỉ còn một khả năng, rồi loại tiếp theo hàng và cột.\n\n##CY\nĐiền một ô thì phải gạch các ô còn lại cùng hàng và cùng cột.\nĐọc lại đề sau khi điền hết để kiểm tra mọi điều kiện.",
+   "vd": "##VD\nBa bạn An, Bình, Chi mỗi bạn học một môn khác nhau trong ba môn: Tiếng Anh, Toán, Văn. Biết An không học Tiếng Anh và cũng không học Toán; Bình không học Tiếng Anh. Hỏi mỗi bạn học môn nào?\n**Hướng dẫn giải:**\nAn không học Tiếng Anh, không học Toán nên An học Văn.\nCòn lại hai môn Tiếng Anh và Toán cho Bình và Chi. Bình không học Tiếng Anh nên Bình học Toán.\nVậy Chi học Tiếng Anh.\nĐáp số: An học Văn; Bình học Toán; Chi học Tiếng Anh",
+   "mo_ta": "Ghép mỗi đối tượng với một thuộc tính bằng các điều kiện phủ định; lập bảng, gạch ô, điền ô chỉ còn một khả năng."
+  },
+  "P26": {
+   "ten": "Nói thật – nói dối: giả sử rồi kiểm tra mâu thuẫn",
+   "lt": "##TC\nTrong bài \"ai nói thật, ai nói dối\", chỉ có một trường hợp về sự thật làm cho số lời đúng khớp với đề; các trường hợp khác dẫn tới mâu thuẫn.\nMột lời nói sai nghĩa là điều ngược lại với lời đó mới đúng.\n\n##PP\nLần lượt giả sử từng người là thủ phạm (hoặc từng lời là đúng).\nVới mỗi giả sử, kiểm tra từng lời nói và đếm số lời đúng.\nGiữ trường hợp khớp với đề, loại các trường hợp còn lại.\n\n##CY\nPhải kiểm đủ mọi lời nói cho mỗi giả sử.\nPhải loại hết các trường hợp còn lại để khẳng định đáp án duy nhất.",
+   "vd": "##VD\nBa bạn An, Bình, Chi có một bạn làm vỡ lọ hoa. An nói: \"Bình làm vỡ\". Bình nói: \"Chi làm vỡ\". Chi nói: \"Bình làm vỡ\". Biết chỉ có một bạn nói đúng. Hỏi ai làm vỡ lọ hoa?\n**Hướng dẫn giải:**\nGiả sử An làm vỡ: cả ba lời đều sai, không có lời nào đúng. Trái với đề nên loại.\nGiả sử Bình làm vỡ: lời của An đúng, lời của Chi đúng, có $2$ lời đúng. Trái với đề nên loại.\nGiả sử Chi làm vỡ: chỉ lời của Bình đúng, có $1$ lời đúng. Khớp với đề.\nĐáp số: Chi làm vỡ lọ hoa",
+   "mo_ta": "Nhiều người nói về ai làm / ai đúng; biết có đúng k lời đúng (hoặc một người nói dối). Giả sử lần lượt từng người là thủ phạm (hoặc từng lời là đúng), đếm số lời đúng, giữ trường hợp khớp đề. Gồm «loại trừ qua lời nói liên tiếp» (đoán mật mã)."
+  },
+  "P27": {
+   "ten": "Bất biến: tính chẵn lẻ, số dư, tổng không đổi qua thao tác lặp",
+   "lt": "##TC\nBất biến là đại lượng (tính chẵn lẻ, số dư khi chia cho một số, tổng...) không thay đổi sau mỗi lần thao tác.\nNếu kết quả mong muốn có đại lượng đó khác với lúc đầu thì không bao giờ đạt được.\nThay hai số $a,b$ bằng hiệu của chúng thì tổng thay đổi một số chẵn, nên tính chẵn lẻ của tổng không đổi.\n\n##PP\nLàm thử vài bước để tìm đại lượng không đổi.\nTính đại lượng đó lúc đầu và ở kết quả mong muốn.\nNếu khác nhau thì kết luận không thể; nếu giống nhau thì còn phải tìm cách làm cụ thể.\n\n##CY\nBất biến chỉ chứng minh được \"không thể\". Muốn nói \"có thể\" phải chỉ ra cách làm.\nKiểm tra đại lượng đó thật sự giữ nguyên ở MỌI kiểu thao tác của đề.",
+   "vd": "##VD\nTrên bảng viết các số $1, 2, 3, \\ldots, 10$. Mỗi lần được xoá hai số bất kì và viết lên bảng hiệu của chúng (lấy số lớn trừ số bé). Làm như vậy nhiều lần cho đến khi chỉ còn một số trên bảng. Số cuối cùng có thể bằng $0$ không?\n**Hướng dẫn giải:**\nTổng các số lúc đầu là: $1+2+\\ldots+10=55$, là số lẻ.\nMỗi lần xoá hai số $a$ và $b$ ($a\\geq b$) rồi viết $a-b$, tổng các số trên bảng giảm đi $(a+b)-(a-b)=2\\times b$, là một số chẵn.\nTổng giảm đi một số chẵn nên tính chẵn lẻ của tổng không đổi: tổng luôn là số lẻ.\nKhi chỉ còn một số thì số đó chính là tổng nên là số lẻ, không thể bằng $0$.\nĐáp số: Không thể",
+   "mo_ta": "Bảng/hộp số được biến đổi nhiều lần (gộp, thay hai số bằng hiệu/trung bình, bốc bi…); tìm đại lượng không đổi (chẵn lẻ, dư khi chia 3, tổng) để chứng minh không thể đạt kết quả mong muốn."
+  },
+  "P28": {
+   "ten": "Chia hết thực tế: bỏ một giỏ / thùng để số còn lại chia hết",
+   "lt": "##TC\nSố còn lại chia hết cho $k$ khi hiệu của tổng ban đầu và số đã bán chia hết cho $k$. Do đó số đã bán và tổng ban đầu cùng số dư khi chia cho $k$.\n\n##PP\nTính tổng số vật của các giỏ.\nChia tổng cho $k$, lấy số dư.\nTìm giỏ có số vật cùng số dư khi chia cho $k$; kiểm tra phần còn lại.\n\n##CY\nCó thể có nhiều giỏ cùng số dư; dùng thêm điều kiện đề để chọn.\nKiểm tra lại: tổng còn lại thật sự chia hết cho $k$.",
+   "vd": "##VD\nCó $5$ giỏ xoài chứa lần lượt $12, 15, 16, 22$ và $25$ quả. Người bán đã bán hết đúng một giỏ, số xoài còn lại chia đều cho $4$ người. Hỏi người bán đã bán giỏ nào?\n**Hướng dẫn giải:**\nTổng số xoài ban đầu là: $12+15+16+22+25=90$ (quả).\n$90:4=22$ (dư $2$), nên số xoài đã bán phải chia cho $4$ dư $2$.\nTrong các giỏ: $12:4$ dư $0$; $15:4$ dư $3$; $16:4$ dư $0$; $22:4$ dư $2$; $25:4$ dư $1$. Chỉ giỏ $22$ quả thỏa mãn.\nThử lại: $90-22=68$ và $68:4=17$.\nĐáp số: Giỏ $22$ quả",
+   "mo_ta": "Có nhiều giỏ (thùng, bao) số lượng cho trước, bán hết một giỏ thì số còn lại chia đều được cho k; tổng cũ và số đã bán cùng số dư khi chia cho k ⇒ tìm giỏ đã bán."
+  }
+ },
+ "w": [
+  {
+   "w": "W01",
+   "ids": [
+    "NDB01797"
+   ],
+   "them": "thương có số dư (trừ phần dư trước); tổng gấp k lần hiệu ⇒ suy ra tỉ số; hiệu xác định nhờ điều kiện chia dư",
+   "raw": "Nới mô tả nhận biết: thêm «thương có số dư (trừ phần dư trước); tổng gấp k lần hiệu ⇒ suy ra tỉ số; hiệu xác định nhờ điều kiện chia dư»"
+  },
+  {
+   "w": "W02",
+   "ids": [
+    "NDB02976"
+   ],
+   "them": "tử số khác 1 (tử tăng dần, dấu cộng trừ xen kẽ), khoảng cách hai thừa số mẫu khác 1, mẫu chưa là tích hai thừa số (phải nhân tử mẫu cho số để nhận ra)",
+   "raw": "Nới mô tả nhận biết: thêm «tử số khác 1 (tử tăng dần, dấu cộng trừ xen kẽ), khoảng cách hai thừa số mẫu khác 1, mẫu chưa là tích hai thừa số (phải nhân tử mẫu cho số để nhận ra)»"
+  },
+  {
+   "w": "W03",
+   "ids": [
+    "NDB02946"
+   ],
+   "them": "chứng minh không tồn tại bằng chữ số tận cùng (giai thừa, số chính phương, n(n+1)); cực trị tổng với ràng buộc số lượng số lẻ",
+   "raw": "Nới mô tả nhận biết: thêm «chứng minh không tồn tại bằng chữ số tận cùng (giai thừa, số chính phương, n(n+1)); cực trị tổng với ràng buộc số lượng số lẻ»"
+  },
+  {
+   "w": "W04",
+   "ids": [
+    "NDB02940"
+   ],
+   "them": "số lần xuất hiện một chữ số (đúng một chữ số 5), so sánh/tổng hai số tạo bởi hai chữ số đầu–cuối, số đảo ngược; đếm bằng phần bù («ít nhất một chữ số 9»)",
+   "raw": "Nới mô tả nhận biết: thêm «số lần xuất hiện một chữ số (đúng một chữ số 5), so sánh/tổng hai số tạo bởi hai chữ số đầu–cuối, số đảo ngược; đếm bằng phần bù («ít nhất một chữ số 9»)»"
+  },
+  {
+   "w": "W05",
+   "ids": [
+    "NDB02942"
+   ],
+   "them": "chữ số lặp lại hoặc chỉ dùng một phần chữ số; biết tổng, tìm chữ số chưa biết (chia trường hợp x trùng hoặc bằng 0)",
+   "raw": "Nới mô tả nhận biết: thêm «chữ số lặp lại hoặc chỉ dùng một phần chữ số; biết tổng, tìm chữ số chưa biết (chia trường hợp x trùng hoặc bằng 0)»"
+  },
+  {
+   "w": "W06",
+   "ids": [
+    "NDB03036"
+   ],
+   "them": "kết hợp tam giác, hình thang với 1/4, 1/2 hình tròn; hình tròn lớn chứa nhiều hình tròn nhỏ (tô đậm bằng hiệu diện tích)",
+   "raw": "Nới mô tả nhận biết: thêm «kết hợp tam giác, hình thang với 1/4, 1/2 hình tròn; hình tròn lớn chứa nhiều hình tròn nhỏ (tô đậm bằng hiệu diện tích)»"
+  },
+  {
+   "w": "W07",
+   "ids": [
+    "NDB03041"
+   ],
+   "them": "chỉ sơn một số mặt chưa rõ mặt nào (xét trường hợp); lấy bớt khối ở đỉnh/cạnh rồi tính diện tích toàn phần còn lại",
+   "raw": "Nới mô tả nhận biết: thêm «chỉ sơn một số mặt chưa rõ mặt nào (xét trường hợp); lấy bớt khối ở đỉnh/cạnh rồi tính diện tích toàn phần còn lại»"
+  },
+  {
+   "w": "W08",
+   "ids": [
+    "NDB02927",
+    "NDB02928",
+    "NDB02930"
+   ],
+   "them": "thêm/bớt nhiều chữ số hoặc chữ số chưa biết, thử theo bội; hệ số k thập phân; hai số cùng đuôi khác chữ số đầu",
+   "raw": "Nới mô tả nhận biết: thêm «thêm/bớt nhiều chữ số hoặc chữ số chưa biết, thử theo bội; hệ số k thập phân; hai số cùng đuôi khác chữ số đầu»"
+  },
+  {
+   "w": "W09",
+   "ids": [
+    "NDB02967"
+   ],
+   "them": "dãy tích hai số cách nhau bước nhảy 3 (kể cả dạng phân số, hỗn số)",
+   "raw": "Nới mô tả nhận biết: thêm «dãy tích hai số cách nhau bước nhảy 3 (kể cả dạng phân số, hỗn số)»"
+  },
+  {
+   "w": "W10",
+   "ids": [
+    "NDB02968",
+    "NDB02969"
+   ],
+   "them": "dãy sinh bởi quy tắc rồi tuần hoàn; bảng hàng–cột có chu kỳ, hỏi cả hàng lẫn cột; dãy lẻ có hàng đầu lệch",
+   "raw": "Nới mô tả nhận biết: thêm «dãy sinh bởi quy tắc rồi tuần hoàn; bảng hàng–cột có chu kỳ, hỏi cả hàng lẫn cột; dãy lẻ có hàng đầu lệch»"
+  },
+  {
+   "w": "W11",
+   "ids": [
+    "NDB01817"
+   ],
+   "them": "ẩn chữ trong phép nhân/chia số thập phân (phân tích thừa số); đặt tích riêng sai hàng",
+   "raw": "Nới mô tả nhận biết: thêm «ẩn chữ trong phép nhân/chia số thập phân (phân tích thừa số); đặt tích riêng sai hàng»"
+  },
+  {
+   "w": "W12",
+   "ids": [
+    "NDB02983"
+   ],
+   "them": "tỉ số phần trăm làm thừa số hoặc số chia của x; x lặp nhiều lần với hằng số",
+   "raw": "Nới mô tả nhận biết: thêm «tỉ số phần trăm làm thừa số hoặc số chia của x; x lặp nhiều lần với hằng số»"
+  },
+  {
+   "w": "W13",
+   "ids": [
+    "NDB02989",
+    "NDB02991"
+   ],
+   "them": "hệ số là phân số của hai số; khử với hiệu hai số, không chỉ bài mua hàng",
+   "raw": "Nới mô tả nhận biết: thêm «hệ số là phân số của hai số; khử với hiệu hai số, không chỉ bài mua hàng»"
+  },
+  {
+   "w": "W14",
+   "ids": [
+    "NDB01819",
+    "NDB01821"
+   ],
+   "them": "lượng còn lại sau vài ngày rồi thêm/bớt người; người nghỉ vài ngày đầu tính theo công; tỉ lệ nghịch rồi hiệu–tỉ",
+   "raw": "Nới mô tả nhận biết: thêm «lượng còn lại sau vài ngày rồi thêm/bớt người; người nghỉ vài ngày đầu tính theo công; tỉ lệ nghịch rồi hiệu–tỉ»"
+  },
+  {
+   "w": "W15",
+   "ids": [
+    "NDB03003"
+   ],
+   "them": "kích thước đổi theo số lần (thể tích giữ nguyên hoặc đổi), diện tích xung quanh đổi theo % chiều cao",
+   "raw": "Nới mô tả nhận biết: thêm «kích thước đổi theo số lần (thể tích giữ nguyên hoặc đổi), diện tích xung quanh đổi theo % chiều cao»"
+  },
+  {
+   "w": "W16",
+   "ids": [
+    "NDB01798"
+   ],
+   "them": "tỉ số ẩn từ cách bốc theo nhóm; hiệu suy từ điều kiện bằng nhau; lượng bán đi hai loại kết hợp hiệu còn lại",
+   "raw": "Nới mô tả nhận biết: thêm «tỉ số ẩn từ cách bốc theo nhóm; hiệu suy từ điều kiện bằng nhau; lượng bán đi hai loại kết hợp hiệu còn lại»"
+  },
+  {
+   "w": "W17",
+   "ids": [
+    "NDB03010",
+    "NDB03012",
+    "NDB03014",
+    "NDB03016"
+   ],
+   "them": "cùng thời gian, quãng đường tỉ lệ thuận vận tốc»; ba xe cùng chiều lệch giờ (xe giữa); quy hai chuyến ở hai ngày về một cuộc gặp; xe quay đầu sau khi nghỉ",
+   "raw": "Nới mô tả nhận biết: thêm ««cùng thời gian, quãng đường tỉ lệ thuận vận tốc»; ba xe cùng chiều lệch giờ (xe giữa); quy hai chuyến ở hai ngày về một cuộc gặp; xe quay đầu sau khi nghỉ»"
+  },
+  {
+   "w": "W18",
+   "ids": [
+    "NDB02953",
+    "NDB02954",
+    "NDB02955"
+   ],
+   "them": "chia hết cho 8, 11, 63; chữ số bị che trong kết quả tích; số dư đồng thời (chia nhiều số cùng dư hoặc cùng thiếu một đơn vị)",
+   "raw": "Nới mô tả nhận biết: thêm «chia hết cho 8, 11, 63; chữ số bị che trong kết quả tích; số dư đồng thời (chia nhiều số cùng dư hoặc cùng thiếu một đơn vị)»"
+  }
+ ]
+}

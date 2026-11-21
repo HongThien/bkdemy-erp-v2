@@ -26,3 +26,8 @@ Hai trang đề xuất chạy song song cho cùng một việc:
 2. Thùy **dán kết quả "Sao chép kết quả" của bản chi tiết** (Duyệt / Sửa / Bỏ từng dòng) — em chưa thấy quyết định nào trong repo.
 3. Với 14 dạng đã ghi (0 câu, chưa ai tham chiếu), **không xoá**: sau khi có quyết định, **chuyển + đổi tên** về đúng chỗ bản chi tiết (đổi `nhom_id` / `chuyen_de_id` / tên, mã giữ nguyên), dòng nào bản chi tiết không có (Đ7, Đ14…) hỏi Thùy giữ hay bỏ — bỏ = xoá thật ⇒ Luật xoá, chờ gật riêng.
 4. Ghi phần còn lại của bản chi tiết theo quyết định (thử ROLLBACK, `--only`), rồi mới nhập ME / gán CLC theo MỘT bảng gán.
+
+## Đã chốt và ghi (21/11, sau khi Thùy chọn bản chi tiết là chuẩn)
+
+`scripts/kho/5t-ghi-ban-do-chi-tiet.mjs --ghi`: chủ đề 6 «Suy luận và toán điển hình» · chuyển chuyên đề «Các bài toán logic thường gặp» về đó và đổi tên «Tỉ lệ và công việc» (H7, H9) · 3 nhóm → «Phương pháp giải toán điển hình» (H8) · +5 chuyên đề, +1 nhóm · **27 dạng** (13 mới + 14 dòng của bản gọn dùng lại, không xoá gì) có mô tả + lý thuyết + ví dụ · 18 dòng nới mô tả (W01–W18, chỉ nối cuối) · chính tả chuyên đề «phần». Số câu gán không đổi (2337). 5T: 6 chủ đề · 23 chuyên đề · 63 nhóm · 187 dạng.
+Chưa làm (chờ Thùy): P25, S01, S02, S04 (xoá chuyên đề rỗng NCH00546), S05, S06, S07, S08, H10. Dữ liệu nguồn: `kho-rules/dai/lo/me5-250/5T-dang-moi-chi-tiet.json`.
