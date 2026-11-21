@@ -1,4 +1,4 @@
-# BẢN ĐỒ 4T (dai_bdm_*) — xuất 21/11 sau khi ghi 74 dạng ME. Dòng: <mã dạng> | <tên dạng> | <mô tả>
+# BẢN ĐỒ 4T (dai_bdm_*) — xuất 21/11 sau khi bổ sung 9 dạng. Dòng: <mã dạng> | <tên dạng> | <mô tả>
 
 ## Số tự nhiên › Viết số theo điều kiện cho trước › Viết số khi biết số chữ số (NNB01708)
 NDB01506 | Viết số tự nhiên lớn nhất khi biết tổng chữ số và số chữ số | Đề cho số chữ số của số cần viết và tổng các chữ số, hỏi số tự nhiên lớn nhất thỏa mãn (có thể kèm điều kiện các chữ số khác nhau). Dấu hiệu: đề nói rõ "có N chữ số" cùng với "tổng các chữ số bằng S". Khác dạng "lớn nhất khi biết tổng chữ số": dạng đó không cho số chữ số, phải tự tách tổng thành nhiều chữ số nhất; khác dạng "nhỏ nhất khi biết tổng chữ số và số chữ số": đề hỏi số nhỏ nhất.
@@ -25,6 +25,7 @@ NDB03449 | Đếm số chia hết cho 5, 3, 15 hoặc tận cùng bằng 5 | Ch�
 NDB03450 | Đếm số có tổng các chữ số (hoặc hiệu hai chữ số) cho trước | Liệt kê các cách chọn chữ số rồi đếm
 NDB03451 | Đếm số có ít nhất một chữ số cho trước (đếm phần bù) | Ví dụ: có ít nhất một chữ số 6 = tất cả − không có chữ số 6
 NDB03452 | Đếm số có đúng một chữ số cho trước (chia trường hợp vị trí) | Ví dụ: có đúng một chữ số 5
+NDB03571 | Đếm số theo điều kiện so sánh hai nửa của số (hoặc tổng hai cặp chữ số đầu, cuối) | Ví dụ: số có 4 chữ số mà số tạo bởi hai chữ số đầu nhỏ hơn số tạo bởi hai chữ số cuối; tổng hai chữ số đầu bằng tổng hai chữ số cuối
 
 ## Số tự nhiên › Đếm số và chữ số › Tổng các số lập được (NNB02272)
 NDB03453 | Tổng tất cả các số lập từ các chữ số khác nhau cho trước | Mỗi chữ số xuất hiện đều nhau ở mỗi hàng
@@ -47,10 +48,16 @@ NDB03460 | Tìm x: một đến hai phép tính, có ngoặc | Ví dụ: x − 1
 NDB03461 | Tìm x: nhiều phép tính, nhiều chữ x cùng lúc | Ví dụ: (x+1)+(x+3)+(x+5)=30; x : 8 × 32 + x : 3 × 18 − x : 5 × 10 = 120
 NDB03462 | Tìm x dùng tính chất phân phối | Ví dụ: 1358 × x − 358 × x = 25000
 
+## Số tự nhiên › Tính toán › Tính thuận tiện (NNB02297)
+NDB03567 | Tính thuận tiện bằng tính chất giao hoán, kết hợp của phép cộng và phép trừ | Ví dụ: 687 + 969 + 313; 186 − 65 − 35; 1024 − (1024 − 15); 3145 − 246 + 2347 − 145 + 4246 − 347
+NDB03568 | Tính thuận tiện bằng cách nhóm thừa số cho tích tròn chục, tròn trăm | Ví dụ: 4 × 125 × 25 × 8; 25 × 20 × 125 × 8 − 8 × 20 × 5 × 125
+
 ## Số tự nhiên › Quan hệ đại lượng trong phép toán › Thay đổi các thành phần của phép tính (NNB01713)
 NDB01521 | Thay đổi đại lượng trong phép cộng | Đề nói hai số (hoặc các số hạng) của một phép cộng bị thay đổi (thêm vào, bớt đi, gấp lên) rồi hỏi tổng ban đầu, tổng mới hoặc các số hạng. Chỉ xét thành phần của phép cộng; thay đổi thành phần của phép trừ, nhân, chia không thuộc dạng này.
 NDB03463 | Thay đổi thừa số, số bị chia, số chia | Tích, thương đổi thế nào khi một thành phần gấp lên / giảm đi
 NDB03464 | Tổng của số bị trừ, số trừ và hiệu | Ví dụ: tổng của số bị trừ, số trừ và hiệu bằng 2000
+NDB03569 | Thay đổi số bị trừ, số trừ: hiệu thay đổi thế nào | Ví dụ: thêm vào số bị trừ, bớt ở số trừ; biết hiệu mới tìm số ban đầu
+NDB03570 | Tìm hai số biết quan hệ giữa thương với số bị chia, số chia | Ví dụ: thương bằng 1/5 số lớn; thương bằng 1/9 số bé
 
 ## Số tự nhiên › Quan hệ đại lượng trong phép toán › Làm sai khi tính (NNB02275)
 NDB03465 | Trừ hoặc cộng viết sai chữ số | Ví dụ: viết 49 thành 94; 107 thành 1007
@@ -72,6 +79,7 @@ NDB01525 | Tổng của dãy số cách đều | Đề cho một dãy số cách
 NDB00646 | Tính tổng dãy số | Đề viết sẵn một tổng nhiều số hạng theo quy luật, dạng $A=a+b+c+\ldots+y+z$ (kể cả dãy giảm dần), và hỏi giá trị của tổng. Phải nhận ra các số cách đều, tự tìm số số hạng rồi tính tổng. Khác dạng "Tổng của dãy số cách đều": ở đó đề nói "tổng $n$ số hạng đầu tiên của dãy".
 NDB00647 | Tìm x dùng tổng dãy số | Đề là một đẳng thức có chữ (tìm $x$) mà vế trái là tổng nhiều ngoặc dạng $\left(x+a\right)+\left(x+b\right)+\ldots+\left(x+z\right)$, với các số cộng thêm $a,b,\ldots,z$ cách đều nhau. Phải tách phần chứa $x$ và phần các số cộng thêm, dùng công thức tổng dãy số rồi mới tìm $x$.
 NDB01526 | Tìm vị trí của một số trong dãy số ? | Đề cho một dãy số cách đều và một số cho trước, hỏi số đó có thuộc dãy không và nếu có thì là số hạng thứ mấy. Khác dạng "Tìm số hạng thứ n": đó là cho vị trí và tìm số, còn ở đây cho số và tìm vị trí; khác dạng "Tính số số hạng": ở đây số cho trước nằm trong dãy, chưa chắc là số cuối.
+NDB03575 | Tìm quy luật của dãy cách đều và viết thêm số hạng | Ví dụ: 1; 3; 5; 7; … viết thêm 3 số hạng; dãy 12; 16; 20; 24; …
 
 ## Các bài toán Logic › Dãy số cách đều › Quy luật dãy số và điền ô (NNB02280)
 NDB03490 | Tìm quy luật dãy số không cách đều, viết thêm số hạng | Ví dụ: mỗi số bằng tổng hai số liền trước; nhân 3; cộng 1 rồi 2 rồi 3
@@ -202,6 +210,7 @@ NDB01549 | Bài toán tỉ số nhiều đại lượng - Cho phân số của c
 NDB01550 | Hai tỉ số: tổng không đổi (chuyển giữa các đại lượng) | đề bài cho tổng của hai số lượng (hai bao, hai thùng, hai bạn), nói chuyển một số từ bên này sang bên kia thì hai bên có tỉ số mới, rồi hỏi số lúc đầu. Tổng không đổi nên dùng tổng tỉ lúc sau. Khác dạng tăng giảm các đại lượng: ở đây chuyển qua lại giữa hai bên, không thêm hay bớt từ ngoài.
 NDB01551 | Hai tỉ số: một đại lượng không đổi (tăng giảm các đại lượng) | đề bài cho hiệu hai số (ví dụ tuổi mẹ hơn tuổi con) và tỉ số của chúng sau khi cùng thêm hoặc cùng bớt một lượng (sau vài năm nữa, cách đây vài năm), rồi hỏi số lúc đầu. Hiệu không đổi nên dùng hiệu tỉ lúc sau. Khác dạng chuyển giữa các đại lượng: ở đây cả hai cùng tăng hoặc cùng giảm như nhau, hiệu không đổi.
 NDB03507 | Hai tỉ số: hiệu không đổi | Ví dụ: hiệu số hoa của hai bạn không đổi khi cùng hái thêm
+NDB03572 | Hai tỉ số: cả hai đại lượng cùng thay đổi, không đại lượng nào giữ nguyên | Đề không cho tổng, không cho hiệu; thêm hoặc bớt số khác nhau ở từng đại lượng
 
 ## Các bài toán lời văn › Bài toán hai hiệu số › Chia đều: thừa – thừa, thừa – thiếu, thiếu – thiếu (NNB02283)
 NDB03498 | Hai hiệu số: thừa – thừa | Ví dụ: chia mỗi người 2 quả thừa 12 quả, chia mỗi người 3 quả thừa 2 quả; sơ đồ hai đoạn, phần chênh nét đứt
@@ -247,6 +256,7 @@ NDB01560 | So sánh phân số bằng phân số trung gian | Đề cho hai phâ
 NDB01561 | So sánh phân số bằng phần bù (mẫu số và tử số hơn kém nhau 1 đơn vị) | Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số đúng $1$ đơn vị (dạng $\dfrac{n}{n+1}$, như $\dfrac{2023}{2024}$ và $\dfrac{2024}{2025}$), hỏi phân số nào lớn hơn. Cách làm: tìm phần bù của mỗi phân số (đều có tử số $1$) rồi so sánh. Khác dạng "phần bù" thứ hai trong nhóm: ở đây phần bù là $\dfrac{1}{\text{mẫu}}$. Khác dạng so sánh phân số trung gian: hai phân số có cùng khoảng cách tử-mẫu.
 NDB01562 | So sánh phân số bằng phần bù (hai phân số có cùng hiệu mẫu số và tử số) | Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số cùng một số $k$ lớn hơn $1$ (như $\dfrac{7}{9}$ và $\dfrac{9}{11}$, đều có mẫu số hơn tử số $2$), hỏi phân số nào lớn hơn. Cách làm: phần bù có tử số $k$, so sánh hai phần bù cùng tử số. Khác dạng phần bù thứ nhất trong nhóm: ở đây tử số của phần bù là $k$ chứ không phải $1$.
 NDB01563 | Sắp xếp dãy phân số | Đề cho từ ba phân số trở lên và yêu cầu sắp xếp theo thứ tự từ bé đến lớn hoặc từ lớn đến bé. Dấu hiệu: có chữ "sắp xếp" và một dãy phân số, có thể kết hợp nhiều cách so sánh (so với $1$, phần bù, phần hơn, quy đồng). Khác các dạng so sánh: so sánh chỉ có HAI phân số.
+NDB03574 | So sánh phân số lớn hơn 1 bằng phương pháp phần hơn | Ví dụ: 100/99 và 101/100; 27/13 và 41/27
 
 ## Phân số › So sánh phân số › Tìm x và phân số xen giữa (NNB02289)
 NDB03515 | Tìm số tự nhiên x thoả bất đẳng thức giữa các phân số | Ví dụ: 2/x > 1/2; 1 < 11/x < 2; tìm x để 156/(327 − x) lớn nhất
@@ -265,6 +275,9 @@ NDB01569 | Tính giá trị biểu thức chứa phép nhân | Đề bài cho bi
 ## Phân số › Các phép tính cơ bản với phân số › Phép chia phân số (NNB01734)
 NDB01570 | Tính biểu thức phân số chứa phép chia | Đề bài cho biểu thức có phép chia phân số (có thể xen nhân, cộng, trừ, ngoặc) và hỏi giá trị: đổi phép chia thành nhân với phân số đảo ngược. Khác dạng "Tính thuận tiện phân số kết hợp phép chia": ở đó các phép chia có chung số chia để nhóm lại, ở đây tính theo thứ tự phép tính.
 NDB01571 | Tính thuận tiện phân số kết hợp phép chia | Đề bài cho các phép chia cùng một số chia (cùng một phân số đứng sau dấu chia) nối nhau bằng dấu cộng, trừ và yêu cầu tính thuận tiện: gom các số bị chia lại rồi chia một lần. Khác dạng "Tính biểu thức phân số chứa phép chia": ở đó các số chia khác nhau, đổi từng phép chia thành phép nhân và tính tuần tự.
+
+## Phân số › Các phép tính cơ bản với phân số › Tìm x với phân số (NNB02298)
+NDB03573 | Tìm x trong biểu thức có phân số | Ví dụ: (1/2 + 1/3 + 1/4) × x = 1 + 2/3 + 1/2; 6/5 − x : 1/2 = 1/2
 
 ## Phân số › Bài toán về dãy phân số › Dãy phân số dạng tích (NNB01735)
 NDB01572 | Dãy phân số dạng tích - Dãy đơn | Đề bài cho tích của nhiều phân số liên tiếp, có quy luật: tử số của phân số sau bằng mẫu số của phân số trước (hoặc viết gọn bằng dấu "…"), và hỏi giá trị. Mỗi thừa số đã là một phân số. Khác dạng "Dãy phân số dạng tích - Dãy kép": ở đó mỗi thừa số là một biểu thức dạng "1 trừ phân số" phải đổi thành phân số trước. Khác "Chuỗi tích các phân số": ở đó số thừa số ít, rút gọn từng cặp.
