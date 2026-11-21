@@ -4547,10 +4547,13 @@
     "so": 1,
     "diem": null,
     "kieu": "tu_luan",
-    "noi_dung": "Một bể nước hình hộp chữ nhật có chiều cao 1,2m, chiều dài hơn chiều rộng 0,6m và diện tích xung quanh là $6,72m^{2}$.\na. Tính thể tích bể nước.\nb. Khi bể không có nước, người ta mở vòi cho nước chảy vào bể mỗi giờ được 560 l nước. Hỏi sau mấy giờ thì lượng nước trong bể bằng $75\\%$ thể tích bể?",
+    "noi_dung": "Một bể nước hình hộp chữ nhật có chiều cao 1,2m, chiều dài hơn chiều rộng 0,6m và diện tích xung quanh là $6,72m^{2}$.\na. Tính thể tích bể nước.\nb. Khi bể không có nước, người ta mở vòi cho nước chảy vào bể mỗi giờ được 561 l nước. Hỏi sau mấy giờ thì lượng nước trong bể bằng $75\\%$ thể tích bể?",
     "lua_chon": null,
     "hinh": [],
-    "ma_nguon": "NS-HB1 · P2.1"
+    "ma_nguon": "NS-HB1 · P2.1",
+    "noi_dung_goc": "Một bể nước hình hộp chữ nhật có chiều cao 1,2m, chiều dài hơn chiều rộng 0,6m và diện tích xung quanh là $6,72m^{2}$.\na. Tính thể tích bể nước.\nb. Khi bể không có nước, người ta mở vòi cho nước chảy vào bể mỗi giờ được 560 l nước. Hỏi sau mấy giờ thì lượng nước trong bể bằng $75\\%$ thể tích bể?",
+    "ghi_chu_duyet": "Số liệu 560 l/giờ làm ý b không tròn (1683 : 560 = 3 3/560 giờ); sách ghi 3 giờ — Thùy chốt 21/11: sửa thành 561 l/giờ (1683 : 561 = 3 giờ).",
+    "bang_chung": "suy_ra"
    },
    {
     "phan": 2,
@@ -7882,12 +7885,12 @@
     "so": 9,
     "diem": null,
     "kieu": "dien",
-    "noi_dung": "Trong ngày sinh nhật, Vui đã mời 9 bạn đến nhà uống nước. Mỗi người bạn được mời 2 cốc nước ép cam, dứa và cà rốt, mỗi cốc $300ml$. Được biết, Vui đã đi mua nguyên liệu ở siêu thị, bao gồm:\nHộp 1 lít nước cam: $85\\;000$ đồng\nHộp 2 lít nước dứa: $95\\;000$ đồng\nHộp 1 lít nước cà rốt: $120\\;000$ đồng\nCông thức pha chế bao gồm: 150 ml nước ép cam, 500 ml nước ép dứa và 350 ml nước ép cà rốt. Hỏi Vui đã tốn bao nhiêu tiền để mua nguyên liệu?",
+    "noi_dung": "Trong ngày sinh nhật, Vui đã mời 9 bạn đến nhà uống nước. Mỗi người bạn được mời 2 cốc nước ép cam, dứa và cà rốt, mỗi cốc $300ml$. Được biết, Vui đã đi mua nguyên liệu ở siêu thị, bao gồm:\nHộp 1 lít nước cam: $85\\;000$ đồng\nHộp 2 lít nước dứa: $95\\;000$ đồng\nHộp 1 lít nước cà rốt: $120\\;000$ đồng\nCông thức pha chế bao gồm: 150 ml nước ép cam, 500 ml nước ép dứa và 350 ml nước ép cà rốt. Biết các nguyên liệu chỉ bán theo hộp nguyên, không bán lẻ. Hỏi Vui đã tốn bao nhiêu tiền để mua nguyên liệu?",
     "lua_chon": null,
     "hinh": [],
     "ma_nguon": "NTT 2020 · P1.9",
-    "luu_y_soan": "Nguyên liệu bán theo HỘP nguyên, không mua lẻ.",
-    "ghi_chu_duyet": "PDF đề lẻ ghi đáp số 423 000 đồng; \"Tổng hợp … Nguyễn Tất Thành.pdf\" ghi 515 000 đồng (mua nguyên hộp) — trùng kết quả người kiểm tính.",
+    "noi_dung_goc": "Trong ngày sinh nhật, Vui đã mời 9 bạn đến nhà uống nước. Mỗi người bạn được mời 2 cốc nước ép cam, dứa và cà rốt, mỗi cốc $300ml$. Được biết, Vui đã đi mua nguyên liệu ở siêu thị, bao gồm:\nHộp 1 lít nước cam: $85\\;000$ đồng\nHộp 2 lít nước dứa: $95\\;000$ đồng\nHộp 1 lít nước cà rốt: $120\\;000$ đồng\nCông thức pha chế bao gồm: 150 ml nước ép cam, 500 ml nước ép dứa và 350 ml nước ép cà rốt. Hỏi Vui đã tốn bao nhiêu tiền để mua nguyên liệu?",
+    "ghi_chu_duyet": "PDF đề lẻ ghi đáp số 423 000 đồng; \"Tổng hợp … Nguyễn Tất Thành.pdf\" ghi 515 000 đồng (mua nguyên hộp) — Thùy chốt 21/11: mua nguyên hộp, thêm vào đề câu \"chỉ bán theo hộp nguyên\".",
     "bang_chung": "nguon3"
    },
    {

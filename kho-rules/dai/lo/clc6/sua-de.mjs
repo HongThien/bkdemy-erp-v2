@@ -70,7 +70,8 @@ export const SUA = {
     bang_chung: 'nguon3', ghi_chu_duyet: 'Word và PDF đề lẻ đều cụt sau "Ngày thứ 2 thu 3/5 số còn lại." Bản đầy đủ lấy từ "Tổng hợp đề thi chính thức … Nguyễn Tất Thành.pdf" (năm học 2020–2021, câu 4).',
   },
   'NTT 2020 · P2.2': { thay: [['chia hết cho 3. Hỏi Lào', 'chia hết cho 3 và 4. Hỏi Lào']], bang_chung: 'nguon3', ghi_chu_duyet: 'Word và PDF đề lẻ mất "và 4" (thiếu thì có 5 đáp án). Theo "Tổng hợp đề thi chính thức … Nguyễn Tất Thành.pdf".' },
-  'NTT 2020 · P1.9': { bang_chung: 'nguon3', ghi_chu_duyet: 'PDF đề lẻ ghi đáp số 423 000 đồng; "Tổng hợp … Nguyễn Tất Thành.pdf" ghi 515 000 đồng (mua nguyên hộp) — trùng kết quả người kiểm tính.', luu_y_soan: 'Nguyên liệu bán theo HỘP nguyên, không mua lẻ.' },
+  'NTT 2020 · P1.9': { thay: [['Hỏi Vui đã tốn bao nhiêu tiền để mua nguyên liệu?', 'Biết các nguyên liệu chỉ bán theo hộp nguyên, không bán lẻ. Hỏi Vui đã tốn bao nhiêu tiền để mua nguyên liệu?']], bang_chung: 'nguon3', ghi_chu_duyet: 'PDF đề lẻ ghi đáp số 423 000 đồng; "Tổng hợp … Nguyễn Tất Thành.pdf" ghi 515 000 đồng (mua nguyên hộp) — Thùy chốt 21/11: mua nguyên hộp, thêm vào đề câu "chỉ bán theo hộp nguyên".' },
+  'NS-HB1 · P2.1': { thay: [['mỗi giờ được 560 l nước', 'mỗi giờ được 561 l nước']], bang_chung: 'suy_ra', ghi_chu_duyet: 'Số liệu 560 l/giờ làm ý b không tròn (1683 : 560 = 3 3/560 giờ); sách ghi 3 giờ — Thùy chốt 21/11: sửa thành 561 l/giờ (1683 : 561 = 3 giờ).' },
 
   // ── E. Cả hai nguồn in sai, KHÔNG có nguồn thứ ba — suy từ lời giải sách. CẦN CEO XEM ────────────────
   'ARC 2020-NC · 4': { thay: [[R`$\frac{49}{37}$`, R`$\frac{49}{73}$`]], bang_chung: 'suy_ra', ghi_chu_duyet: 'Word và PDF đều in 49/37; lời giải sách dùng "73 − 49 = 24" và sơ đồ 24. Với 49/37 không có đáp số hợp lệ (tử, mẫu thành số âm) ⇒ sửa thành 49/73.' },
