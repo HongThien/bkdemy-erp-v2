@@ -157,6 +157,12 @@ export async function diemDanhSauGio(buoiHocHsId: string, tt: 'co_mat' | 'vang')
   const { error } = await supabase.rpc('fn_btnhe_diem_danh', { p_bhh: buoiHocHsId, p_tt: tt })
   if (error) throw error
 }
+// TA nghỉ ⇒ ĐỔI TA của ca (Thùy 21/11, mig 202611211643). taId null = bỏ TA. Quyền: trưởng khối · người mở ca · GV/TA phân công lớp · Trang · admin (DB kiểm).
+export async function doiTaSauGio(caId: string, taId: string | null): Promise<{ ta_id: string | null; ta_ten: string | null }> {
+  const { data, error } = await supabase.rpc('fn_btnhe_doi_ta', { p_ca: caId, p_ta: taId })
+  if (error) throw error
+  return data as { ta_id: string | null; ta_ten: string | null }
+}
 export type GhiChuTaSauGio = { buoi_hoc_id: string; noi_dung: string; ten_ta: string | null; updated_at: string }
 export async function ghiChuTaSauGio(buoiIds: string[]): Promise<Record<string, GhiChuTaSauGio>> {
   if (!buoiIds.length) return {}

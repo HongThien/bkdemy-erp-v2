@@ -5,7 +5,7 @@
 // Chạy ca = CaDetail của ca Yếu (điểm danh · in phiếu luyện + test · nhập giấy · đóng ca · hoàn tất) — không dựng máy thứ hai.
 // Mọi kiểm tra ở DB (fn_btnhe_*). Sau mutation: vá/refetch nền, không xoá list (CLAUDE.md §2 React).
 import { useEffect, useMemo, useState } from 'react'
-import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, ghiChuTaSauGio, type GhiChuTaSauGio, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
+import { taoCaNhe, dsCaNhe, huyCaNhe, choSauGio, lopCoEmDuyet, hsDaDuyet, buoiCuaLop, doiTaSauGio, ghiChuTaSauGio, type GhiChuTaSauGio, type CaNhe, type HsCaNhe, type ChoSauGio, type LopCho, type HsDuyet, type BuoiLop } from '../../lib/botro_nhe'
 import ThongBaoSauGioAnh from './ThongBaoSauGioAnh'
 import NutInSauGio from './NutInSauGio'
 import { inTestSauGio, doiMucSauGio, type KqDoiMuc } from '../../lib/botro_nhe'
@@ -13,6 +13,7 @@ import { TEN_MUC } from '../../lib/boTroTk'
 import { inLayBaiGiay, type BaiInGiay } from '../../lib/botro_yeu_ca'
 import InSauGioET from './InSauGioET'
 import { CaDetail } from '../ta/CaBoTroTA'
+import { listNhanSu, type NhanSu } from '../../lib/nhansu'
 import { homNayVN, congNgay, ddmmVN, thuCuaNgay } from '../../lib/tuan'
 
 const hhmm = (t: string | null | undefined) => (t ? String(t).slice(0, 5) : '')
@@ -159,6 +160,17 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc,
   onThongBao: (c: CaNhe) => void; onHuy?: (c: CaNhe) => void; onInLop?: (c: CaNhe) => Promise<void>; onDoiMuc?: (c: CaNhe, h: HsCaNhe, r: KqDoiMuc) => void; rong?: string
 }) {
   const [dangIn, setDangIn] = useState<string | null>(null)
+  // Đổi TA (Thùy 21/11 — TA nghỉ ⇒ chuyển cho người khác): vá tên TA tại chỗ, không tải lại danh sách
+  const [taMoi, setTaMoi] = useState<Record<string, string | null>>({})
+  const [doiTa, setDoiTa] = useState<string | null>(null)
+  const [dsNs, setDsNs] = useState<NhanSu[] | null>(null)
+  const [taChon, setTaChon] = useState('')
+  const [loiTa, setLoiTa] = useState<string | null>(null)
+  const moDoiTa = (c: CaNhe) => { setDoiTa(c.ca_id); setTaChon(c.ta_id ?? ''); setLoiTa(null); if (!dsNs) listNhanSu().then((r) => setDsNs(r.filter((x) => x.trang_thai === 'dang_lam'))).catch((e) => setLoiTa(e?.message ?? String(e))) }
+  const luuDoiTa = async (c: CaNhe) => {
+    try { const r = await doiTaSauGio(c.ca_id, taChon || null); setTaMoi((m) => ({ ...m, [c.ca_id]: r.ta_ten })); c.ta_id = r.ta_id; c.ta_ten = r.ta_ten; setDoiTa(null) }
+    catch (e: any) { setLoiTa(e?.message ?? String(e)) }
+  }
   // Ghi chú TA (Thùy 21/11): Trang soát điểm danh dựa trên đây — 1 lượt gọi cho các buổi đang hiện
   const [notes, setNotes] = useState<Record<string, GhiChuTaSauGio>>({})
   const idsKey = cas.flatMap((c) => c.hs.map((h) => h.buoi_id)).slice(0, 300).join(',')
@@ -183,7 +195,7 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc,
                   <div className="text-[12px] opacity-90">{hhmm(c.gio_bat_dau)}–{hhmm(c.gio_ket_thuc)} · {c.kieu === 'sau_buoi' ? 'sau buổi học' : 'giờ khác'}{c.phong ? ` · ${c.phong}` : ''}</div>
                 </div>
                 <div className="px-4 py-3">
-                  <p className="mb-2 text-[12px] text-slate-500">Mở/đóng: <b className="text-slate-700">{c.truong_khoi_ten ?? '?'}</b>{c.ta_ten ? <> · TA cùng làm: <b className="text-slate-700">{c.ta_ten}</b></> : ' · không có TA'}</p>
+                  <p className="mb-2 text-[12px] text-slate-500">Mở/đóng: <b className="text-slate-700">{c.truong_khoi_ten ?? '?'}</b>{c.ta_ten ? <> · TA cùng làm: <b className="text-slate-700">{(c.ca_id in taMoi ? taMoi[c.ca_id] : c.ta_ten) ?? '?'}</b></> : ' · không có TA'}</p>
                   <ul className="flex flex-col gap-1">
                     {c.hs.map((h) => {
                       const tt = trangThaiHs(h)
@@ -203,10 +215,23 @@ function Nhom({ tieuDe, cas, homNay, onMo, onThongBao, onHuy, onInLop, onDoiMuc,
                       )
                     })}
                   </ul>
+                  {doiTa === c.ca_id && (
+                    <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl bg-indigo-50 px-3 py-2 text-[12.5px]">
+                      <span className="text-slate-600">TA mới:</span>
+                      <select value={taChon} onChange={(e) => setTaChon(e.target.value)} className="min-w-[180px] rounded-lg border border-slate-200 bg-white px-2 py-1">
+                        <option value="">— Không có TA —</option>
+                        {(dsNs ?? []).map((n) => <option key={n.id} value={n.id}>{n.ho_ten}</option>)}
+                      </select>
+                      <button onClick={() => luuDoiTa(c)} className="rounded-lg bg-indigo-600 px-3 py-1 font-semibold text-white">Lưu</button>
+                      <button onClick={() => setDoiTa(null)} className="px-2 text-slate-500">Thôi</button>
+                      {loiTa && <span className="basis-full text-rose-600">{loiTa}</span>}
+                    </div>
+                  )}
                   <div className="mt-3 flex gap-2">
                     <button onClick={() => onThongBao(c)} className="rounded-lg border border-slate-200 px-3 py-1 text-[12px] text-slate-600 hover:bg-slate-50">🖼 Ảnh thông báo PH</button>
                     {onInLop && !huy && <button disabled={dangIn === c.ca_id} onClick={async () => { setDangIn(c.ca_id); try { await onInLop(c) } finally { setDangIn(null) } }}
                       className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-semibold text-amber-800 hover:bg-amber-100 disabled:opacity-50">{dangIn === c.ca_id ? 'Đang chuẩn bị…' : '🖨 In cả lớp · bài test'}</button>}
+                    {!huy && <button onClick={() => moDoiTa(c)} title="TA nghỉ — chuyển cho người khác (GV lớp vẫn nhập Đ/C/S được)" className="rounded-lg px-3 py-1 text-[12px] text-indigo-700 hover:bg-indigo-50">Đổi TA</button>}
                     {onHuy && !huy && <button onClick={() => onHuy(c)} className="rounded-lg px-3 py-1 text-[12px] text-rose-600 hover:bg-rose-50">Huỷ ca</button>}
                   </div>
                 </div>

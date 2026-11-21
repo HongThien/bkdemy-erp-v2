@@ -82165,3 +82165,13 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Kiểm (chỉ đọc, gọi hàm chọn câu):** cả 5 dạng của ca ra 5 câu luyện + 2 câu test (loại: TLN · tự luận · MCQ). Chưa in thật / chưa nhập kết quả trên trình duyệt (không ghi DB để thử).
 - **Spec:** `spec-bo-tro.md` §6 (+ Bù, Đuổi), `spec-kho-cau-hoi.md` (luật + nhật ký quyết định), `CLAUDE.md`, `spec-tro-giang.md`.
 - **Bài học:** luật chọn câu của MỘT kênh (app) không được dùng chung cho kênh khác (giấy) khi hai kênh có người chấm khác nhau; báo "đúng luật" khi người dùng thấy hỏng là chưa hiểu yêu cầu — hỏi lại kênh nào trước khi đề xuất đổi luật chung.
+
+### 21/11 (lô 11) — Fill K8 Đại: NDB00982 +12 câu, NDB01427 +12 câu (bài lẻ, bộ kiểm vét cạn); sửa 5 câu clone NDB00982 sai đáp án (Phần D). K8 64/67; còn NDB00983 (13, độ khó 5), NDB01356 (hình).
+
+## 21/11 (tối muộn) — Sau giờ: GV nhập DCS mặc định, TA nghỉ ⇒ đổi TA, reset không huỷ buổi đã có mặt (mig 202611211643 ĐÃ ÁP, `--only`) — lớp 11B1
+- **Báo lỗi (Thùy):** 11B1 bổ trợ sau giờ TA nghỉ, GV không có quyền nhập DCS, rồi hệ thống tự huỷ. "TA nghỉ thì phải chuyển quyền. GV mặc định có quyền điền DCS và sửa."
+- **Đo:** ca 15/11 (TA Nguyễn Ngọc Duy, Trang mở): 6 em `co_mat`, test đã in, 0 `bai_lam`. GV lớp (Trần Hoàng Đạt, `phan_cong_lop` gv chính) không nằm trong điều kiện của `fn_btnhe_ta_nhap_ds` (chỉ TA ca / người mở ca / admin) và `fn_btnhe_ds` ⇒ không thấy em; không có hàm đổi TA; `_btnhe_reset_tuan` thứ Hai 16/11 huỷ 6 buổi vì chỉ kiểm "chưa có bai_lam".
+- **Sửa:** `_btnhe_duoc_nhap` (TA ca · người mở · GV/TA phân công lớp · trưởng khối · Trang · admin) cho đọc + ghi Đ/C/S · `fn_btnhe_ds` thêm GV/TA phân công lớp · `fn_btnhe_doi_ta` + nút "Đổi TA" ở `BoTroNheScreen` · reset thứ Hai bỏ qua buổi có em `co_mat`. Spec `spec-bo-tro.md` §7.2.
+- **Kiểm (gọi hàm trong giao dịch rollback, chỉ đọc):** GV Đạt = được nhập ca 11B1; Trang = được; 1 TA lớp khác = không.
+- **Chưa làm (chờ Thùy gật):** mở lại 6 buổi 11B1 ngày 15/11 đã bị huỷ 16/11 (buổi + case + dạng) để GV nhập Đ/C/S. "Sửa" sau khi đã NỘP chưa mở (nộp = xong ca + vào mastery).
+- **Bài học:** quyền nhập kết quả không được buộc vào MỘT người (TA); luật tự huỷ phải xét "đã diễn ra" bằng điểm danh, không chỉ bằng "có bài làm chưa".
