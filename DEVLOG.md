@@ -82133,3 +82133,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Sai:** §0.7 lấy chi tháng 9 nhân theo số ca / số em ⇒ lãi 45–60 ở đích. Thùy: "lợi nhuận 45 kiểu gì, những cái khác phải tính lại khi học sinh tăng" + "tính đích phải đi từ logic gốc: để lãi 25 thì phải chi N hạng mục, tính xem mỗi hạng mục bao nhiêu phần; rồi quay về hiện tại check cái nào ít hơn, nhiều hơn, từ đó có phương hướng điều chỉnh".
 - **Sửa:** §0.7 thay bằng ghi chú "đã bỏ" (bảng cũ ở commit 134e067f). Phần I thêm §I.0 cơ cấu đích 12 hạng mục cộng 75 (GV dạy 28 · TA 7 · học thuật + QLCL 6 · vận hành 7 · quản lý 3 · thuê nhà điện nước 6 · CSVC + đầu tư 3 · học sinh 3,5 · sản phẩm 4 · tuyển sinh 4 · phúc lợi 1,5 · khác 2) + §I.0b soi về tháng 9. Tất cả là đề xuất, chờ Thùy sửa.
 - **Bài học:** đích dựng từ trên xuống (lãi → ngân sách chi → hạng mục), hiện tại chỉ là cột so; không ngoại suy hiện tại thành đích (R1).
+
+### 21/11 12:06 — [Gộp spec #19] Thùy: "Về đích: m viết trên logic gì?" ⇒ §I.0a cách dựng đích theo định mức
+- **Thừa nhận:** 12 dòng đích §I.0 không có logic chắc — chép hiện tại (TA 7, quản lý 3, CSVC 3, quà in 3,5) + kẹp số ngành (GV 28, tuyển sinh 4) + ước chừng rồi nâng cho đủ 75 (lượt đầu cộng 68).
+- **Sửa spec (Thùy: "cập nhật spec và push đi"):** thêm §I.0a — đích tính từ định mức ở đích theo 5 loại hạng mục; bảng 7 định mức chờ Thùy, để trống; §I.0 hạ xuống "danh sách hạng mục + số ước chừng, chưa phải đích".
+- **Bài học:** con số đích phải truy được về một định mức hoặc một quyết định; không điền số cho tròn tổng.

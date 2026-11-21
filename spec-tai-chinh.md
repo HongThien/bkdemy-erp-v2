@@ -74,12 +74,43 @@ Bảng này lấy chi tháng 9 nhân lên theo số ca / số em và ra lợi nh
 
 ---
 
-# PHẦN I — CƠ CẤU CHI PHÍ ĐÍCH (đi từ lãi 25 xuống từng hạng mục — ĐỀ XUẤT 21/11, chờ Thùy sửa từng dòng)
+# PHẦN I — CƠ CẤU CHI PHÍ ĐÍCH (đi từ lãi 25 xuống từng hạng mục — cách dựng ở §I.0a, chờ định mức của Thùy)
 
 > **Logic gốc (Thùy 21/11):** *"Để lãi 25 thì phải chi N hạng mục, và mình phải tính xem những hạng mục đó là bao nhiêu phần. Từ đó quay về hiện tại check xem cái nào đang ít hơn, cái nào nhiều hơn, từ đó có phương hướng điều chỉnh."*
 > Thứ tự: **(1) cơ cấu đích §I.0 → (2) hiện tại §I.1 → (3) lệch và hướng điều chỉnh §I.0b.** Hiện tại KHÔNG được dùng để suy ra đích.
 
-## I.0 Cơ cấu đích: doanh thu 100 = lãi 25 + chi 75
+## I.0a CÁCH DỰNG ĐÍCH — theo ĐỊNH MỨC (21/11; bảng số ở §I.0 bên dưới CHƯA theo cách này)
+
+> **Thùy hỏi 21/11: "Về đích: đây là m viết trên logic gì?"** Trả lời thật: bảng §I.0 **chưa đứng trên logic chắc**. Chỉ 25 / 75 là của Thùy. 12 dòng còn lại đặt bằng ba cách trộn nhau:
+> (a) **chép từ hiện tại** rồi làm tròn — trợ giảng 7 · quản lý 3 · cơ sở vật chất 3 · quà, in 3,5 (đúng lỗi "suy đích từ hiện tại");
+> (b) **kẹp giữa số ngành** — giáo viên dạy 28 (giữa ~21 của mô hình giáo trình sẵn và 30 đang tính cho lớp người sáng lập) · tuyển sinh 4 (dưới mức 5–10 của ngành); không có phép tính nào ra đúng các số này;
+> (c) **ước chừng rồi chỉnh cho đủ 75** — học thuật 6 · vận hành 7 · sản phẩm 4 · phúc lợi 1,5 · khác 2 (lượt đầu cộng ra 68, nâng bốn dòng cho tròn 75).
+> ⇒ Bảng §I.0 chỉ dùng làm **danh sách hạng mục**, chưa phải đích. Bảng soi §I.0b vì thế cũng chỉ là tham khảo.
+
+**Cách dựng đúng:** mỗi hạng mục tính từ **định mức ở đích** (số lượng × đơn giá, trên quy mô Đích 1 / Đích 2 của Phần 0), cộng lại rồi mới ra phần trăm; so với ngân sách 75. Thừa ⇒ biết còn bao nhiêu để nâng lương / đầu tư; thiếu ⇒ biết định mức nào phải siết. Hiện tại chỉ dùng để so, không dùng để đặt đích.
+
+| Loại hạng mục | Cách tính ở đích | Hạng mục |
+|---|---|---|
+| Theo số ca | số ca × đơn giá một ca | Giáo viên (phần dạy) · trợ giảng · cơ sở vật chất tiêu hao |
+| Theo số em | số em ÷ số em một người lo được × lương; hoặc tiền một em một tháng | Vận hành (OPS, chăm sóc phụ huynh) · quà, in, nước uống |
+| Cố định theo cơ sở | số thật | Thuê nhà, điện nước · đầu tư trải 12 tháng |
+| Dùng chung | số người × lương | Học thuật + quản lý chất lượng · sản phẩm · quản lý |
+| Chính sách | Thùy chọn phần trăm | Tuyển sinh · phúc lợi · khác |
+
+**Định mức cần Thùy cho** (quyết định về mô hình, không đo được từ sổ). **Dòng nào chưa có định mức thì ĐỂ TRỐNG, không điền số ước chừng:**
+
+| # | Định mức | Giá trị đích | Hiện tại (để tham khảo) |
+|---|---|---|---|
+| 1 | Lương giáo viên cho một ca dạy — lớp 12 em và lớp 15 em | *(chờ Thùy)* | ~345 nghìn một phòng-ca 1,5 giờ (gộp cả học thuật + quản lý chất lượng) |
+| 2 | Một ca có mấy trợ giảng, trả bao nhiêu một ca | *(chờ Thùy)* | ~69 nghìn một phòng-ca |
+| 3 | Một người vận hành lo được bao nhiêu em; lương | *(chờ Thùy)* | sổ gộp trong "nhân viên full-time", chưa tách |
+| 4 | Đội học thuật + quản lý chất lượng ở đích: mấy người, lương | *(chờ Thùy)* | giáo viên đang kiêm |
+| 5 | Đội sản phẩm ở đích: mấy người, lương; tài khoản, công cụ một tháng | *(chờ Thùy)* | tài khoản 10 triệu một tháng; người nằm trong full-time |
+| 6 | Quà, in, nước uống: bao nhiêu tiền một em một tháng | *(chờ Thùy)* | ~48 nghìn một em (17,4 triệu ÷ 364 em) |
+| 7 | Tuyển sinh, phúc lợi, khác: phần trăm Thùy chọn | *(chờ Thùy)* | 1,0 · 0 · 0 |
+| — | Thuê nhà, điện nước 8 phòng | số thật: 41 triệu một tháng | 41 triệu |
+
+## I.0 Danh sách hạng mục + số ước chừng (CHƯA phải đích — xem §I.0a): doanh thu 100 = lãi 25 + chi 75
 
 Cột "Ở Đích 1" đổi phần trăm ra tiền với doanh thu 990 triệu một tháng (147 phòng-ca một tuần, 12 em một ca) để kiểm xem con số có sống được không. Mọi dòng là **đề xuất của Claude** — lý do ghi bên cạnh để Thùy sửa.
 
