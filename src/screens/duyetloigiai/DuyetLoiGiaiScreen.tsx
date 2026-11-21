@@ -211,39 +211,42 @@ export default function DuyetLoiGiaiScreen() {
       : tab === 'dien' ? <DienOAiTab mon={mon} khoi={khoi} />
       : tab === 'dung_sai' ? <DuyetDungSaiTab mon={mon} khoi={khoi} onChanged={reloadDem} />
       : !hienHinh ? <DuyetCauTab mon={mon} khoi={khoi} loc={tab as HangDuyetLoc} onChanged={reloadDem} /> : (
-      <div className="flex-1 overflow-auto px-6 py-4">
+      <div className="flex-1 overflow-auto px-3 py-3">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rows.length === 0 ? <p className="text-sm text-slate-400">Không có bài Hình nào chờ duyệt ở khối {khoi}.</p>
           : (
             <>
             <div className="mb-3"><DongChoSua n={rows.length - rowsHinhCon.length} /></div>
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {batchHinh.map((r) => (
-                <li key={r.key} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <div className="mb-2 flex items-center gap-2 text-[12px] text-slate-400">
-                    <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700">{r.nhanh}</span>
-                    <span>Khối {r.khoi}</span>
-                    <NhanDeSau at={dsCua(r).luc('toan', r.id)} />
-                    <span className="ml-auto" />
-                    <NutDeSau nho disabled={busyKey === r.key || busyAll} onDeSau={() => dsCua(r).ghi('toan', r.id, `Duyệt kho › Hình · ${r.nhanh}`)} />
-                    <NutCanSua nho doiTuong={r.dt} mon="toan" ma={r.id} man={`Duyệt kho › Hình · ${r.nhanh}`} onXong={(t) => nxCua(r).vaNX(t)} />
-                    <button onClick={() => onDuyet(r)} disabled={busyKey === r.key || busyAll}
-                      className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-                      {busyKey === r.key ? '⏳…' : '✓ Duyệt'}
-                    </button>
-                  </div>
-                  {nxCua(r).cua('toan', r.id) && <div className="mb-3"><NhanXetCu t={nxCua(r).cua('toan', r.id)} /></div>}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
-                      <MathText>{r.deBai}</MathText>
+                <li key={r.key} className="grid grid-cols-1 rounded-xl border border-slate-200 bg-white shadow-sm lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(260px,320px)]">
+                  <section className="min-w-0 p-5">
+                    <div className="mb-3 flex items-center gap-2 text-[12px] text-slate-400">
+                      <span className="rounded bg-sky-50 px-2 py-0.5 font-medium text-sky-700">{r.nhanh}</span>
+                      <span>Khối {r.khoi}</span>
+                      <NhanDeSau at={dsCua(r).luc('toan', r.id)} />
                     </div>
-                    <div>
-                      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải (AI)</div>
-                      <MathText>{r.loiGiai}</MathText>
+                    <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Đề bài</div>
+                    <div className="text-[16px]"><MathText>{r.deBai}</MathText></div>
+                  </section>
+                  <section className="min-w-0 border-t border-slate-100 p-5 lg:border-l lg:border-t-0">
+                    <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải (AI)</div>
+                    <div className="text-[16px]"><MathText>{r.loiGiai}</MathText></div>
+                  </section>
+                  <aside className="min-w-0 rounded-b-xl border-t border-slate-100 bg-slate-50/70 p-4 lg:rounded-b-none lg:rounded-r-xl lg:border-l lg:border-t-0">
+                    <div className="flex flex-col gap-3 lg:sticky lg:top-3">
+                      {nxCua(r).cua('toan', r.id) && <NhanXetCu t={nxCua(r).cua('toan', r.id)} />}
+                      <button onClick={() => onDuyet(r)} disabled={busyKey === r.key || busyAll}
+                        className="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-[14px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+                        {busyKey === r.key ? '⏳…' : '✓ Duyệt'}
+                      </button>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <NutDeSau nho disabled={busyKey === r.key || busyAll} onDeSau={() => dsCua(r).ghi('toan', r.id, `Duyệt kho › Hình · ${r.nhanh}`)} />
+                        <NutCanSua nho doiTuong={r.dt} mon="toan" ma={r.id} man={`Duyệt kho › Hình · ${r.nhanh}`} onXong={(t) => nxCua(r).vaNX(t)} />
+                      </div>
                     </div>
-                  </div>
+                  </aside>
                 </li>
               ))}
             </ul>

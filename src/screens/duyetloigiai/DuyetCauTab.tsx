@@ -180,14 +180,14 @@ export default function DuyetCauTab({ mon, khoi, loc, onChanged }: { mon: string
       {!loading && soTrang > 1 && (
         <div className="border-b border-slate-100 bg-slate-50 px-6 py-1.5"><PhanTrang trang={tC} soTrang={soTrang} onChon={setTrang} tong={rowsShown.length} coTrang={BATCH_SIZE} /></div>
       )}
-      <div ref={cuon} className="flex-1 overflow-auto px-6 py-4">
+      <div ref={cuon} className="flex-1 overflow-auto px-3 py-3">
         {loading ? <p className="text-sm text-slate-400">Đang tải…</p>
           : err ? <p className="text-sm text-rose-600">Lỗi: {err}</p>
           : rowsShown.length === 0 ? <p className="text-sm text-slate-400">Không có câu nào ở {mon}{nhanh !== 'all' ? ` · ${NHANH_LABEL[nhanh]}` : ''} · khối {khoi} · {HANG_DUYET_LABEL[loc]}. 🎉</p>
           : (
             <>
               <div className="mb-3"><DongChoSua n={soChoSua} /></div>
-              <ul className="space-y-4">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} bdm={laBdm(r)}
+              <ul className="space-y-5">{batch.map((r) => <The key={`${r.mon}:${r.ma_cau}`} r={r} mon={mon} busyAll={busyAll} bdm={laBdm(r)}
                 deSauAt={deSau.luc(r.mon, r.ma_cau)} onDeSau={() => deSau.ghi(r.mon as MonNX, r.ma_cau, 'Duyệt kho › câu').then(() => bao(`⏭ ${r.ma_cau} xuống cuối hàng — duyệt sau`))}
                 nx={nhanXet.cua(r.mon, r.ma_cau)} onCanSua={(t) => { nhanXet.vaNX(t); bao(`✎ Đã gửi nhận xét ${r.ma_cau} — chờ Claude sửa`); onChanged?.() }}
                 anh={r.mon === 'anh' ? { cau: anhThem.cau[r.ma_cau], nl: anhThem.cau[r.ma_cau]?.ngu_lieu ? anhThem.nguLieu[anhThem.cau[r.ma_cau].ngu_lieu!] : undefined } : undefined} onXong={(msg) => xong(r, msg)}
@@ -285,140 +285,154 @@ function The({ r, mon, busyAll, bdm, onXong, onSua, anh, nx, onCanSua, deSauAt, 
     : r.kiem_may === 'khong_kiem_duoc' ? <span className="rounded bg-slate-100 px-2 py-0.5 text-slate-600" title={r.kiem_may_ghi ?? undefined}>? không kiểm được</span>
     : null
 
+  // ⭐ Thùy 21/11: MỖI CÂU = 1 THẺ TO, 1 HÀNG, 3 CỘT — ĐỀ (trái) · LỜI GIẢI + ĐÁP SỐ (giữa) · CHỖ DUYỆT (phải: kiểm máy, dạng, cụm, nút).
+  // Chức năng giữ nguyên; chỉ đổi bố cục. Cột phải dính (sticky) khi thẻ cao hơn màn. Màn hẹp (<lg): xếp dọc đề → giải → duyệt.
   return (
-    <li className={`rounded-xl border bg-white p-4 shadow-sm ${r.kiem_may === 'nghi' ? 'border-amber-300' : 'border-slate-200'}`}>
-      <div className="mb-2 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
-        <span className="rounded bg-violet-50 px-2 py-0.5 font-medium text-violet-700">{NHANH_LABEL[r.mon]}</span>
-        <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{r.ma_cau}</code>
-        <span>Khối {r.khoi} · {LOAI_LABEL[r.loai_cau] ?? r.loai_cau}</span>
-        {laAnh && anh?.cau && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">{DANG_DE_ANH[anh.cau.dang_de] ?? anh.cau.dang_de}{anh.cau.unit_sgk ? ` · ${anh.cau.unit_sgk}` : ''}</span>}
-        {r.nguon === 'clone' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700">clone</span>}
-        {r.nguon_giai === 'ai' && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">lời giải AI{r.giai_method ? ` · ${r.giai_method}` : ''}</span>}
-        {kiemBadge}
-        {!r.kho_chuan && <span className="rounded bg-rose-50 px-1.5 py-0.5 text-rose-700" title="Chỗ chọn câu cho HS/ET không lấy câu này tới khi duyệt">ngoài kho chuẩn</span>}
-        <span className="text-slate-400">· vào kho {fmtTs(r.created_at)}</span>
-        <NhanDeSau at={deSauAt} />
-        <div className="ml-auto flex items-center gap-1.5">
-          <NutDeSau nho onDeSau={onDeSau} disabled={busy || busyAll} />
-          <NutCanSua nho doiTuong="cau" mon={r.mon as MonNX} ma={r.ma_cau} man="Duyệt kho › câu" onXong={onCanSua} />
-          <button onClick={() => setTuChoi(tuChoi === null ? '' : null)} disabled={busy || busyAll}
-            className="rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
-          {/* Dạng chờ "Chưa phân dạng": thiếu data (dạng thật) ⇒ disable là đúng luật §6; DB cũng chặn (trg_chan_duyet_dang_cho). */}
-          <button onClick={onDuyet} disabled={busy || busyAll || !de.trim() || thieuDang}
-            title={thieuDang ? (bdm ? 'Câu chưa có dạng bài — bấm 📁 chọn dạng bài rồi mới duyệt được' : 'Câu chưa phân dạng — bấm 📁 chọn dạng thật rồi mới duyệt được') : undefined}
-            className="rounded-md bg-emerald-600 px-3 py-1 text-[12px] font-medium text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
-            {busy ? '⏳…' : thieuDang ? (bdm ? '⚠ Chọn dạng bài trước' : '⚠ Chọn dạng trước') : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
-          </button>
+    <li className={`grid grid-cols-1 rounded-xl border bg-white shadow-sm lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_minmax(300px,360px)] ${r.kiem_may === 'nghi' ? 'border-amber-300' : 'border-slate-200'}`}>
+      {/* ── TRÁI: ĐỀ ── */}
+      <section className="min-w-0 p-5">
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px] text-slate-500">
+          <span className="rounded bg-violet-50 px-2 py-0.5 font-medium text-violet-700">{NHANH_LABEL[r.mon]}</span>
+          <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{r.ma_cau}</code>
+          <span>Khối {r.khoi} · {LOAI_LABEL[r.loai_cau] ?? r.loai_cau}</span>
+          {laAnh && anh?.cau && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">{DANG_DE_ANH[anh.cau.dang_de] ?? anh.cau.dang_de}{anh.cau.unit_sgk ? ` · ${anh.cau.unit_sgk}` : ''}</span>}
+          {r.nguon === 'clone' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700">clone</span>}
+          {r.nguon_giai === 'ai' && <span className="rounded bg-sky-50 px-1.5 py-0.5 text-sky-700">lời giải AI{r.giai_method ? ` · ${r.giai_method}` : ''}</span>}
+          <span className="text-slate-400">· vào kho {fmtTs(r.created_at)}</span>
         </div>
-      </div>
+        <div className="flex items-center justify-between"><span className={lbl}>Đề bài{doiDe ? ' · đã sửa' : ''}</span>
+          <button onClick={() => setSuaDe((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaDe ? '✓ Xong' : '✎ Sửa'}</button></div>
+        {suaDe ? <textarea value={de} onChange={(e) => setDe(e.target.value)} className={`${inp} min-h-[160px] font-mono text-[13px]`} />
+          : <div className={`${box} text-[16px]`}>{anh?.nl && <NguLieuBlock nl={anh.nl} thuTu={anh.cau?.thu_tu_trong_ngu_lieu} gon />}<Chu>{de}</Chu></div>}
+        {r.anh_de && <img src={r.anh_de} alt="ảnh đề" className="mt-2 max-h-72 w-auto max-w-full rounded-lg border border-slate-200" />}
+        {hasOpts && (
+          <div className="mt-3">
+            <div className="flex items-center justify-between">
+              <span className={lbl}>Phương án{doiOpts ? ' · đã sửa' : ''}</span>
+              <button onClick={() => setSuaOpts((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaOpts ? '✓ Xong' : '✎ Sửa'}</button>
+            </div>
+            {suaOpts ? (
+              <ul className="space-y-1">
+                {opts.map((o, i) => (
+                  <li key={i} className="flex items-center gap-1.5">
+                    <span className="w-4 shrink-0 text-[13px] font-medium text-slate-500">{String.fromCharCode(65 + i)}.</span>
+                    <input value={o} onChange={(e) => setOpts((a) => a.map((x, j) => (j === i ? e.target.value : x)))}
+                      className={`${inp} font-mono text-[13px] ${o.trim() !== (r.lua_chon![i] ?? '').trim() ? 'border-indigo-400 bg-indigo-50/40' : ''}`} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="space-y-1 text-[15px] text-slate-600">
+                {opts.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <Chu>{o}</Chu></li>)}
+              </ul>
+            )}
+          </div>
+        )}
+        {r.menh_de && (
+          <ul className="mt-3 space-y-1 text-[15px] text-slate-600">
+            {r.menh_de.map((m, i) => <li key={i}>{String.fromCharCode(97 + i)}) <MathText>{m.noi_dung}</MathText> <span className="text-slate-400">[{m.dap_an}]</span></li>)}
+          </ul>
+        )}
+      </section>
 
-      {nx && <div className="mb-3"><NhanXetCu t={nx} /></div>}
-
-      {/* Bản đồ mới: DẠNG BÀI (gán) — không cụm, dạng cũ chỉ hiện để đối chiếu */}
-      {bdm ? (
-        <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
-          <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Chọn dạng bài (bản đồ mới) — ghi khi bấm Duyệt"
-            className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${!dangBai ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDangBai ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
-            📁 {dangBai ? <>{dangBai.cd ? <span className="text-slate-400">{dangBai.cd} › </span> : null}{dangBai.ten} <code className="ml-1 text-[11px] text-slate-400">{dangBai.id}</code></> : 'Chưa có dạng bài — bấm để chọn'}
-          </button>
-          {r.bdm_trang_thai === 'de_xuat' && r.bdm_dang_bai_id && dangBai?.id !== r.bdm_dang_bai_id && (
-            <button onClick={() => chonDangBai(r.bdm_dang_bai_id!, r.bdm_dang_bai ?? undefined, `${r.bdm_chu_de ?? ''} › ${r.bdm_nhom ?? ''}`)} disabled={busy || busyAll}
-              title={r.bdm_ly_do ? `Lý do đề xuất: ${r.bdm_ly_do}` : 'Đề xuất dạng bài chờ duyệt — bấm để nhận (ghi khi Duyệt)'}
-              className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">💡 Đề xuất: {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai} — nhận</button>
-          )}
-          {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
-          {doiDangBai && dbGoc && <span className="text-slate-400">trước: {dbGoc.ten}</span>}
-          {!laDangCho(r.dang_chinh) && <span className="text-slate-400" title="Mã dạng bản đồ cũ — chỉ lưu trữ, không sửa ở đây">dạng cũ: {r.ten_dang} <code>{r.dang_chinh}</code></span>}
+      {/* ── GIỮA: LỜI GIẢI + ĐÁP SỐ ── */}
+      <section className="min-w-0 border-t border-slate-100 p-5 lg:border-l lg:border-t-0">
+        <div className="mb-3 flex items-center gap-2">
+          <span className={`${lbl} mb-0`}>Đáp số{doiDap ? ' · đã sửa' : ''}</span>
+          <input value={dapAn} onChange={(e) => setDapAn(e.target.value)} placeholder={hasOpts ? 'Chữ cái đúng (A/B/C/D)' : 'LaTeX, vd \\dfrac{3}{4}'}
+            className={`${inp} ${doiDap ? 'border-indigo-400 bg-indigo-50/40' : ''} ${r.kiem_may === 'nghi' && !doiDap ? 'border-amber-400' : ''}`} />
+          {dapAn.trim() && <span className="shrink-0 rounded-md bg-slate-50 px-2 py-1 text-[15px]"><MathText>{dapAn}</MathText></span>}
         </div>
-      ) : (
-      <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
-        <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Đổi dạng (mở bảng tìm dạng)"
-          className={`rounded-md border px-2.5 py-1 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${laDangCho(dang.ma) ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDang ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 text-slate-700'}`}>
-          📁 {dang.cd ? <span className="text-slate-400">{dang.cd} › </span> : null}{dang.ten} <code className="ml-1 text-[11px] text-slate-400">{dang.ma}</code>
-        </button>
-        {r.dang_ai_de_xuat && r.dang_ai_de_xuat !== r.dang_chinh && <span className="text-slate-400" title="Dạng AI gán lúc vào kho">AI đề xuất: <code>{r.dang_ai_de_xuat}</code></span>}
-        {r.bdm_trang_thai === 'gan' && <span className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700" title="AI gán vào dạng bài của bản đồ mới (dai_bdm_gan_cau) — chờ Thùy xác nhận">🆕 {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai}</span>}
-        {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
-        {!laAnh && <span className="ml-2 text-slate-400">Cụm:</span>}
-        {laAnh ? null : cums === null ? <span className="text-slate-400">…</span>
-          : (
-            <>
-              <button onClick={() => setCum(null)} disabled={busy || busyAll}
-                className={`rounded-full px-2.5 py-0.5 ${cum === null ? 'bg-slate-700 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`}>chưa phân</button>
-              {cums.map((c) => (
-                <button key={c.ma_cum} onClick={() => setCum(c.ma_cum)} disabled={busy || busyAll} title={c.ghi_chu ?? c.ma_cum}
-                  className={`rounded-full px-2.5 py-0.5 ${cum === c.ma_cum ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`}>{tenCum(c)}</button>
-              ))}
-              {cums.length === 0 && <span className="text-slate-400">(dạng chưa có cụm)</span>}
-            </>
-          )}
-      </div>
-      )}
+        <div className="flex items-center justify-between"><span className={lbl}>Lời giải{doiLg ? ' · đã sửa' : ''}{r.nguon_giai === 'ai' ? ' (AI)' : ''}</span>
+          <button onClick={() => setSuaLg((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaLg ? '✓ Xong' : '✎ Sửa'}</button></div>
+        {suaLg ? <SolutionField value={loiGiai} onChange={setLoiGiai} taClassName={`${inp} min-h-[260px] font-mono text-[13px]`} />
+          : <div className={`${box} text-[16px]`}><MathText>{loiGiai || '—'}</MathText></div>}
+        {r.anh_dap_an && <img src={r.anh_dap_an} alt="ảnh giải" className="mt-2 max-h-72 w-auto max-w-full rounded-lg border border-slate-200" />}
+      </section>
 
-      <div className={`grid gap-4 ${r.anh_de || r.anh_dap_an ? 'grid-cols-[1fr_1fr_auto]' : 'grid-cols-2'}`}>
-        <div className="min-w-0">
-          <div className="flex items-center justify-between"><span className={lbl}>Đề bài{doiDe ? ' · đã sửa' : ''}</span>
-            <button onClick={() => setSuaDe((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaDe ? '✓ Xong' : '✎ Sửa'}</button></div>
-          {suaDe ? <textarea value={de} onChange={(e) => setDe(e.target.value)} className={`${inp} min-h-[90px] font-mono text-[13px]`} />
-            : <div className={box}>{anh?.nl && <NguLieuBlock nl={anh.nl} thuTu={anh.cau?.thu_tu_trong_ngu_lieu} gon />}<Chu>{de}</Chu></div>}
-          {hasOpts && (
-            <div className="mt-1.5">
-              <div className="flex items-center justify-between">
-                <span className={lbl}>Phương án{doiOpts ? ' · đã sửa' : ''}</span>
-                <button onClick={() => setSuaOpts((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaOpts ? '✓ Xong' : '✎ Sửa'}</button>
-              </div>
-              {suaOpts ? (
-                <ul className="space-y-1">
-                  {opts.map((o, i) => (
-                    <li key={i} className="flex items-center gap-1.5">
-                      <span className="w-4 shrink-0 text-[13px] font-medium text-slate-500">{String.fromCharCode(65 + i)}.</span>
-                      <input value={o} onChange={(e) => setOpts((a) => a.map((x, j) => (j === i ? e.target.value : x)))}
-                        className={`${inp} font-mono text-[13px] ${o.trim() !== (r.lua_chon![i] ?? '').trim() ? 'border-indigo-400 bg-indigo-50/40' : ''}`} />
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <ul className="space-y-0.5 text-[13px] text-slate-600">
-                  {opts.map((o, i) => <li key={i} className={String.fromCharCode(65 + i) === (r.dap_an ?? '').trim().toUpperCase() ? 'font-medium text-emerald-700' : ''}>{String.fromCharCode(65 + i)}. <Chu>{o}</Chu></li>)}
-                </ul>
+      {/* ── PHẢI: CHỖ DUYỆT ── */}
+      <aside className="min-w-0 rounded-b-xl border-t border-slate-100 bg-slate-50/70 p-4 lg:rounded-b-none lg:rounded-r-xl lg:border-l lg:border-t-0">
+        <div className="flex flex-col gap-3 lg:sticky lg:top-3">
+          <div className="flex flex-wrap items-center gap-1.5 text-[12px]">
+            {kiemBadge}
+            {!r.kho_chuan && <span className="rounded bg-rose-50 px-1.5 py-0.5 text-rose-700" title="Chỗ chọn câu cho HS/ET không lấy câu này tới khi duyệt">ngoài kho chuẩn</span>}
+            <NhanDeSau at={deSauAt} />
+          </div>
+
+          {nx && <NhanXetCu t={nx} />}
+
+          {/* Bản đồ mới: DẠNG BÀI (gán) — không cụm, dạng cũ chỉ hiện để đối chiếu */}
+          {bdm ? (
+            <div className="flex flex-col items-start gap-2 text-[12px]">
+              <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Chọn dạng bài (bản đồ mới) — ghi khi bấm Duyệt"
+                className={`w-full rounded-md border px-2.5 py-1.5 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${!dangBai ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDangBai ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 bg-white text-slate-700'}`}>
+                📁 {dangBai ? <>{dangBai.cd ? <span className="text-slate-400">{dangBai.cd} › </span> : null}{dangBai.ten} <code className="ml-1 text-[11px] text-slate-400">{dangBai.id}</code></> : 'Chưa có dạng bài — bấm để chọn'}
+              </button>
+              {r.bdm_trang_thai === 'de_xuat' && r.bdm_dang_bai_id && dangBai?.id !== r.bdm_dang_bai_id && (
+                <button onClick={() => chonDangBai(r.bdm_dang_bai_id!, r.bdm_dang_bai ?? undefined, `${r.bdm_chu_de ?? ''} › ${r.bdm_nhom ?? ''}`)} disabled={busy || busyAll}
+                  title={r.bdm_ly_do ? `Lý do đề xuất: ${r.bdm_ly_do}` : 'Đề xuất dạng bài chờ duyệt — bấm để nhận (ghi khi Duyệt)'}
+                  className="rounded bg-violet-50 px-1.5 py-0.5 text-left text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100">💡 Đề xuất: {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai} — nhận</button>
+              )}
+              {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
+              {doiDangBai && dbGoc && <span className="text-slate-400">trước: {dbGoc.ten}</span>}
+              {!laDangCho(r.dang_chinh) && <span className="text-slate-400" title="Mã dạng bản đồ cũ — chỉ lưu trữ, không sửa ở đây">dạng cũ: {r.ten_dang} <code>{r.dang_chinh}</code></span>}
+            </div>
+          ) : (
+            <div className="flex flex-col items-start gap-2 text-[12px]">
+              <button onClick={() => setPickDang(true)} disabled={busy || busyAll} title="Đổi dạng (mở bảng tìm dạng)"
+                className={`w-full rounded-md border px-2.5 py-1.5 text-left font-medium hover:border-indigo-400 hover:bg-indigo-50 ${laDangCho(dang.ma) ? 'border-amber-400 bg-amber-50 text-amber-800' : doiDang ? 'border-indigo-400 bg-indigo-50 text-indigo-800' : 'border-slate-200 bg-white text-slate-700'}`}>
+                📁 {dang.cd ? <span className="text-slate-400">{dang.cd} › </span> : null}{dang.ten} <code className="ml-1 text-[11px] text-slate-400">{dang.ma}</code>
+              </button>
+              {r.dang_ai_de_xuat && r.dang_ai_de_xuat !== r.dang_chinh && <span className="text-slate-400" title="Dạng AI gán lúc vào kho">AI đề xuất: <code>{r.dang_ai_de_xuat}</code></span>}
+              {r.bdm_trang_thai === 'gan' && <span className="rounded bg-violet-50 px-1.5 py-0.5 text-violet-700" title="AI gán vào dạng bài của bản đồ mới (dai_bdm_gan_cau) — chờ Thùy xác nhận">🆕 {r.bdm_chu_de} › {r.bdm_nhom} › {r.bdm_dang_bai}</span>}
+              {r.bdm_trang_thai === 'chua_khop' && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700" title={r.bdm_ly_do ?? ''}>⚠ Chưa khớp dạng bài ({r.bdm_chu_de}){r.bdm_ly_do ? ` — ${r.bdm_ly_do}` : ''}</span>}
+              {!laAnh && (
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-slate-400">Cụm:</span>
+                  {cums === null ? <span className="text-slate-400">…</span>
+                    : (
+                      <>
+                        <button onClick={() => setCum(null)} disabled={busy || busyAll}
+                          className={`rounded-full px-2.5 py-0.5 ${cum === null ? 'bg-slate-700 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`}>chưa phân</button>
+                        {cums.map((c) => (
+                          <button key={c.ma_cum} onClick={() => setCum(c.ma_cum)} disabled={busy || busyAll} title={c.ghi_chu ?? c.ma_cum}
+                            className={`rounded-full px-2.5 py-0.5 ${cum === c.ma_cum ? 'bg-indigo-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200 hover:text-slate-800'}`}>{tenCum(c)}</button>
+                        ))}
+                        {cums.length === 0 && <span className="text-slate-400">(dạng chưa có cụm)</span>}
+                      </>
+                    )}
+                </div>
               )}
             </div>
           )}
-          {r.menh_de && (
-            <ul className="mt-1.5 space-y-0.5 text-[13px] text-slate-600">
-              {r.menh_de.map((m, i) => <li key={i}>{String.fromCharCode(97 + i)}) <MathText>{m.noi_dung}</MathText> <span className="text-slate-400">[{m.dap_an}]</span></li>)}
-            </ul>
-          )}
-          <div className="mt-2 flex items-center gap-2">
-            <span className={`${lbl} mb-0`}>Đáp số{doiDap ? ' · đã sửa' : ''}</span>
-            <input value={dapAn} onChange={(e) => setDapAn(e.target.value)} placeholder={hasOpts ? 'Chữ cái đúng (A/B/C/D)' : 'LaTeX, vd \\dfrac{3}{4}'}
-              className={`${inp} ${doiDap ? 'border-indigo-400 bg-indigo-50/40' : ''} ${r.kiem_may === 'nghi' && !doiDap ? 'border-amber-400' : ''}`} />
-            {dapAn.trim() && <span className="shrink-0 rounded-md bg-slate-50 px-2 py-1 text-[15px]"><MathText>{dapAn}</MathText></span>}
-          </div>
-        </div>
-        <div className="min-w-0">
-          <div className="flex items-center justify-between"><span className={lbl}>Lời giải{doiLg ? ' · đã sửa' : ''}{r.nguon_giai === 'ai' ? ' (AI)' : ''}</span>
-            <button onClick={() => setSuaLg((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaLg ? '✓ Xong' : '✎ Sửa'}</button></div>
-          {suaLg ? <SolutionField value={loiGiai} onChange={setLoiGiai} taClassName={`${inp} min-h-[160px] font-mono text-[13px]`} />
-            : <div className={`${box} max-h-[360px] overflow-auto`}><MathText>{loiGiai || '—'}</MathText></div>}
-        </div>
-        {(r.anh_de || r.anh_dap_an) && (
-          <div className="flex w-[220px] flex-col gap-2">
-            {r.anh_de && <img src={r.anh_de} alt="ảnh đề" className="max-h-52 w-auto rounded-lg border border-slate-200" />}
-            {r.anh_dap_an && <img src={r.anh_dap_an} alt="ảnh giải" className="max-h-52 w-auto rounded-lg border border-slate-200" />}
-          </div>
-        )}
-      </div>
 
-      {tuChoi !== null && (
-        <div className="mt-3 flex items-center gap-2 rounded-lg border border-rose-200 bg-rose-50/40 p-2.5">
-          <input autoFocus value={tuChoi} onChange={(e) => setTuChoi(e.target.value)} placeholder="Lý do từ chối (bắt buộc) — câu vào kho rác, khôi phục được ở Kho"
-            className={`${inp} border-rose-200`} onKeyDown={(e) => { if (e.key === 'Enter') onTuChoi() }} />
-          <button onClick={onTuChoi} disabled={busy || !tuChoi.trim()} className="shrink-0 rounded-md bg-rose-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">Xác nhận từ chối</button>
-          <button onClick={() => setTuChoi(null)} className="shrink-0 rounded-md px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <div className="flex flex-col gap-2 border-t border-slate-200 pt-3">
+            {/* Dạng chờ "Chưa phân dạng": thiếu data (dạng thật) ⇒ disable là đúng luật §6; DB cũng chặn (trg_chan_duyet_dang_cho). */}
+            <button onClick={onDuyet} disabled={busy || busyAll || !de.trim() || thieuDang}
+              title={thieuDang ? (bdm ? 'Câu chưa có dạng bài — bấm 📁 chọn dạng bài rồi mới duyệt được' : 'Câu chưa phân dạng — bấm 📁 chọn dạng thật rồi mới duyệt được') : undefined}
+              className="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-[14px] font-semibold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-40">
+              {busy ? '⏳…' : thieuDang ? (bdm ? '⚠ Chọn dạng bài trước' : '⚠ Chọn dạng trước') : coSua ? '✓ Lưu sửa + Duyệt' : '✓ Duyệt'}
+            </button>
+            <div className="flex flex-wrap items-center gap-1.5">
+              <NutDeSau nho onDeSau={onDeSau} disabled={busy || busyAll} />
+              <NutCanSua nho doiTuong="cau" mon={r.mon as MonNX} ma={r.ma_cau} man="Duyệt kho › câu" onXong={onCanSua} />
+              <button onClick={() => setTuChoi(tuChoi === null ? '' : null)} disabled={busy || busyAll}
+                className="ml-auto rounded-md px-2.5 py-1 text-[12px] font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-40">✕ Từ chối</button>
+            </div>
+            {tuChoi !== null && (
+              <div className="flex flex-col gap-2 rounded-lg border border-rose-200 bg-rose-50/40 p-2.5">
+                <input autoFocus value={tuChoi} onChange={(e) => setTuChoi(e.target.value)} placeholder="Lý do từ chối (bắt buộc) — câu vào kho rác, khôi phục được ở Kho"
+                  className={`${inp} border-rose-200`} onKeyDown={(e) => { if (e.key === 'Enter') onTuChoi() }} />
+                <div className="flex gap-2">
+                  <button onClick={onTuChoi} disabled={busy || !tuChoi.trim()} className="rounded-md bg-rose-600 px-3 py-1.5 text-[12px] font-medium text-white hover:bg-rose-500 disabled:opacity-40">Xác nhận từ chối</button>
+                  <button onClick={() => setTuChoi(null)} className="rounded-md px-2 py-1.5 text-[12px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+                </div>
+              </div>
+            )}
+            {err && <p className="text-xs text-rose-600">{err}</p>}
+          </div>
         </div>
-      )}
-      {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
+      </aside>
       {pickDang && (
         <DangPickerOne khoi={r.khoi} mon={mon} nhanh={r.mon === 'hgt' ? NHANH_HGT : r.mon === 'hinh_hoc' ? NHANH_HINH_HOC : null} banDoMoi={bdm}
           onClose={() => setPickDang(false)} onPick={(maDang, nh) => (nh === 'bdm' ? chonDangBai(maDang) : chonDang(maDang))} />
