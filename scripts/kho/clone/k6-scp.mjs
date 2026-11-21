@@ -11,7 +11,7 @@
 // ============================================================================
 import { readFileSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { dirname, join } from 'node:path'
 import pg from 'pg'
 
@@ -19,6 +19,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..')
 const env = Object.fromEntries(readFileSync(join(root, '.env'), 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 const GHI = process.argv.includes('--ghi')
 
+export { dayMot, dayHaiPhan, kiem, giaTri }
 const pw = (b, e) => (e === 1 ? `${b}` : e < 10 ? `${b}^${e}` : `${b}^{${e}}`)
 const LG = (chot, buoc, trinhBay, chuY) => `**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ${chot}\n\n${buoc.map((b, i) => `**Bước ${i + 1}.** ${b}`).join('\n\n')}${chuY ? `\n\n**Chú ý:** ${chuY}` : ''}\n\n**Phần 2. Trình bày**\n\n${trinhBay.join('\n\n')}`
 const CHOT = 'chứng minh biểu thức chia hết cho số nguyên tố $p$ nhưng **không chia hết cho $p^2$**, rồi dùng tính chất: số chính phương mà chia hết cho $p$ thì phải chia hết cho $p^2$ (mọi thừa số nguyên tố của số chính phương có số mũ chẵn).'
@@ -129,6 +130,7 @@ function kiem(c) {
 
 const DANH_SACH = { NDB02800: { goc: 'T1060000001623', cau: [...D1, ...D2, ...D3] }, NDB02801: { goc: 'T1060000001621', cau: [...E1, ...E2, ...E3, ...E4, ...E5] } }
 
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
 const db = new pg.Client({ connectionString: process.env.DATABASE_URL_RW ?? env.DATABASE_URL, ssl: { rejectUnauthorized: false } }); await db.connect()
 try {
   const out = [], lo = {}, yc = {}
@@ -151,3 +153,4 @@ try {
     console.log(execFileSync('node', [join(root, 'scripts/kho/clone/duyet-nhap-clone.mjs'), '--dang', Object.keys(lo).join(','), '--duyet-lo', tepLo, '--ghi'], { encoding: 'utf8' }))
   }
 } finally { await db.end() }
+}
