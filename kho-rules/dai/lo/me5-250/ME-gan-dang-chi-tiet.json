@@ -1,0 +1,1317 @@
+{
+ "ghi_chu": "Gán ĐỀ XUẤT từng mục ME → dạng (id NDB). Nguồn: gán sơ bộ theo đầu đề (ME-gan-dang-so-bo.json, đã sửa id lệch sau khi ghi bản chi tiết) + đè bằng danh sách câu làm chứng của P01–P28 trong bản chi tiết. Chưa phải quyết định: vào kho dưới dạng đề xuất chờ duyệt.",
+ "me": {
+  "VD 1.1": {
+   "dang_id": "NDB02932",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 1.2": {
+   "dang_id": "NDB02928",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.1": {
+   "dang_id": "NDB02927",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.2": {
+   "dang_id": "NDB02928",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.3": {
+   "dang_id": "NDB02929",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.4": {
+   "dang_id": "NDB02933",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.5": {
+   "dang_id": "NDB02927",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.6": {
+   "dang_id": "NDB02927",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.7": {
+   "dang_id": "NDB02928",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.8": {
+   "dang_id": "NDB02928",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.9": {
+   "dang_id": "NDB02929",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.10": {
+   "dang_id": "NDB02929",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.11": {
+   "dang_id": "NDB02930",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.12": {
+   "dang_id": "NDB02934",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.13": {
+   "dang_id": "NDB02933",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.14": {
+   "dang_id": "NDB02933",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.15": {
+   "dang_id": "NDB02933",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.16": {
+   "dang_id": "NDB02927",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.17": {
+   "dang_id": "NDB02934",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.18": {
+   "dang_id": "NDB02930",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.19": {
+   "dang_id": "NDB02931",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.20": {
+   "dang_id": "NDB02936",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.21": {
+   "dang_id": "NDB02936",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.22": {
+   "dang_id": "NDB02934",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.23": {
+   "dang_id": "NDB02934",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.24": {
+   "dang_id": "NDB02937",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.25": {
+   "dang_id": "NDB02935",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 1.26": {
+   "dang_id": "NDB02935",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 2.1": {
+   "dang_id": "NDB02963",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 2.2": {
+   "dang_id": "NDB02960",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.1": {
+   "dang_id": "NDB02965",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.2": {
+   "dang_id": "NDB02958",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.3": {
+   "dang_id": "NDB02958",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.4": {
+   "dang_id": "NDB02967",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.5": {
+   "dang_id": "NDB02958",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.6": {
+   "dang_id": "NDB02960",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.7": {
+   "dang_id": "NDB02960",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.8": {
+   "dang_id": "NDB02961",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.9": {
+   "dang_id": "NDB02963",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.10": {
+   "dang_id": "NDB02963",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.11": {
+   "dang_id": "NDB02962",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.12": {
+   "dang_id": "NDB02970",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.13": {
+   "dang_id": "NDB02970",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.14": {
+   "dang_id": "NDB02958",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.15": {
+   "dang_id": "NDB02963",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.16": {
+   "dang_id": "NDB02959",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.17": {
+   "dang_id": "NDB02962",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.18": {
+   "dang_id": "NDB02964",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.19": {
+   "dang_id": "NDB02968",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.20": {
+   "dang_id": "NDB02968",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.21": {
+   "dang_id": "NDB02969",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 2.22": {
+   "dang_id": "NDB02969",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 3.1": {
+   "dang_id": "NDB02945",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 3.2": {
+   "dang_id": "NDB02947",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.1": {
+   "dang_id": "NDB02947",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.2": {
+   "dang_id": "NDB02949",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.3": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "BT 3.4": {
+   "dang_id": "NDB02950",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.5": {
+   "dang_id": "NDB02952",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.6": {
+   "dang_id": "NDB02951",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.7": {
+   "dang_id": "NDB02950",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.8": {
+   "dang_id": "NDB02954",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.9": {
+   "dang_id": "NDB02952",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.10": {
+   "dang_id": "NDB02950",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.11": {
+   "dang_id": "NDB02946",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.12": {
+   "dang_id": "NDB02946",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.13": {
+   "dang_id": "NDB02946",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.14": {
+   "dang_id": "NDB02949",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 3.15": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "VD 4.1": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 4.2": {
+   "dang_id": "NDB01819",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.1": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.2": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.3": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.4": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.5": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.6": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.7": {
+   "dang_id": "NDB01807",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.8": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.9": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.10": {
+   "dang_id": "NDB01818",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.11": {
+   "dang_id": "NDB03359",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.12": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.13": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.14": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.15": {
+   "dang_id": "NDB01820",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.16": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.17": {
+   "dang_id": "NDB01819",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.18": {
+   "dang_id": "NDB01819",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.19": {
+   "dang_id": "NDB03010",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.20": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.21": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.22": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.23": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.24": {
+   "dang_id": "NDB01822",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 4.25": {
+   "dang_id": "NDB01821",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 5.1": {
+   "dang_id": "NDB02975",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 5.2": {
+   "dang_id": "NDB02976",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.1": {
+   "dang_id": "NDB01810",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.2": {
+   "dang_id": "NDB01811",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.3": {
+   "dang_id": "NDB02974",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.4": {
+   "dang_id": "NDB02973",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.5": {
+   "dang_id": "NDB02975",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.6": {
+   "dang_id": "NDB03546",
+   "nguon": "bản chi tiết P04"
+  },
+  "BT 5.7": {
+   "dang_id": "NDB03546",
+   "nguon": "bản chi tiết P04"
+  },
+  "BT 5.8": {
+   "dang_id": "NDB02981",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.9": {
+   "dang_id": "NDB02976",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.10": {
+   "dang_id": "NDB03546",
+   "nguon": "bản chi tiết P04"
+  },
+  "BT 5.11": {
+   "dang_id": "NDB03546",
+   "nguon": "bản chi tiết P04"
+  },
+  "BT 5.12": {
+   "dang_id": "NDB03364",
+   "nguon": "bản chi tiết P03"
+  },
+  "BT 5.13": {
+   "dang_id": "NDB02976",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 5.14": {
+   "dang_id": "NDB03364",
+   "nguon": "bản chi tiết P03"
+  },
+  "BT 5.15": {
+   "dang_id": "NDB03364",
+   "nguon": "bản chi tiết P03"
+  },
+  "VD 6.1": {
+   "dang_id": "NDB02938",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 6.2": {
+   "dang_id": "NDB02939",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.1": {
+   "dang_id": "NDB02939",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.2": {
+   "dang_id": "NDB02938",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.3": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.4": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.5": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.6": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.7": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.8": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.9": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.10": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.11": {
+   "dang_id": "NDB03363",
+   "nguon": "bản chi tiết P01"
+  },
+  "BT 6.12": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.13": {
+   "dang_id": "NDB03363",
+   "nguon": "bản chi tiết P01"
+  },
+  "BT 6.14": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.15": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.16": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.17": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.18": {
+   "dang_id": "NDB03363",
+   "nguon": "bản chi tiết P01"
+  },
+  "BT 6.19": {
+   "dang_id": "NDB02940",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.20": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.21": {
+   "dang_id": "NDB02943",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.22": {
+   "dang_id": "NDB02943",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.23": {
+   "dang_id": "NDB02943",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.24": {
+   "dang_id": "NDB02944",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.25": {
+   "dang_id": "NDB02944",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 6.26": {
+   "dang_id": "NDB02944",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 7.1": {
+   "dang_id": "NDB01809",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 7.2": {
+   "dang_id": "NDB01808",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 7.3": {
+   "dang_id": "NDB02993",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.1": {
+   "dang_id": "NDB01808",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.2": {
+   "dang_id": "NDB01807",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.3": {
+   "dang_id": "NDB01809",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.4": {
+   "dang_id": "NDB03550",
+   "nguon": "bản chi tiết P11"
+  },
+  "BT 7.5": {
+   "dang_id": "NDB01809",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.6": {
+   "dang_id": "NDB03550",
+   "nguon": "bản chi tiết P11"
+  },
+  "BT 7.7": {
+   "dang_id": "NDB01800",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.8": {
+   "dang_id": "NDB01800",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.9": {
+   "dang_id": "NDB01800",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.10": {
+   "dang_id": "NDB03550",
+   "nguon": "bản chi tiết P11"
+  },
+  "BT 7.11": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.12": {
+   "dang_id": "NDB01804",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.13": {
+   "dang_id": "NDB01804",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.14": {
+   "dang_id": "NDB01804",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.15": {
+   "dang_id": "NDB01805",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.16": {
+   "dang_id": "NDB02993",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.17": {
+   "dang_id": "NDB01805",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.18": {
+   "dang_id": "NDB02993",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.19": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.20": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.21": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.22": {
+   "dang_id": "NDB01809",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.23": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 7.24": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 8.1": {
+   "dang_id": "NDB03551",
+   "nguon": "bản chi tiết P12"
+  },
+  "VD 8.2": {
+   "dang_id": "NDB01797",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.1": {
+   "dang_id": "NDB01798",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.2": {
+   "dang_id": "NDB03552",
+   "nguon": "bản chi tiết P13"
+  },
+  "BT 8.3": {
+   "dang_id": "NDB03552",
+   "nguon": "bản chi tiết P13"
+  },
+  "BT 8.4": {
+   "dang_id": "NDB03552",
+   "nguon": "bản chi tiết P13"
+  },
+  "BT 8.5": {
+   "dang_id": "NDB03551",
+   "nguon": "bản chi tiết P12"
+  },
+  "BT 8.6": {
+   "dang_id": "NDB01797",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.7": {
+   "dang_id": "NDB03552",
+   "nguon": "bản chi tiết P13"
+  },
+  "BT 8.8": {
+   "dang_id": "NDB01797",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.9": {
+   "dang_id": "NDB01800",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.10": {
+   "dang_id": "NDB01801",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.11": {
+   "dang_id": "NDB01798",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.12": {
+   "dang_id": "NDB01819",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.13": {
+   "dang_id": "NDB01800",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.14": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "BT 8.15": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.16": {
+   "dang_id": "NDB01802",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.17": {
+   "dang_id": "NDB01803",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 8.18": {
+   "dang_id": "NDB03550",
+   "nguon": "bản chi tiết P11"
+  },
+  "BT 8.19": {
+   "dang_id": "NDB03552",
+   "nguon": "bản chi tiết P13"
+  },
+  "BT 8.20": {
+   "dang_id": "NDB01804",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 9.1": {
+   "dang_id": "NDB01813",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 9.2": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.1": {
+   "dang_id": "NDB01813",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.2": {
+   "dang_id": "NDB01815",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.3": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.4": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.5": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.6": {
+   "dang_id": "NDB03547",
+   "nguon": "bản chi tiết P05"
+  },
+  "BT 9.7": {
+   "dang_id": "NDB03547",
+   "nguon": "bản chi tiết P05"
+  },
+  "BT 9.8": {
+   "dang_id": "NDB03547",
+   "nguon": "bản chi tiết P05"
+  },
+  "BT 9.9": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.10": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.11": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.12": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.13": {
+   "dang_id": "NDB01816",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.14": {
+   "dang_id": "NDB01814",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.15": {
+   "dang_id": "NDB01814",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.16": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.17": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.18": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.19": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.20": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.21": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 9.22": {
+   "dang_id": "NDB01817",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 10.1": {
+   "dang_id": "NDB03004",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 10.2": {
+   "dang_id": "NDB02771",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.1": {
+   "dang_id": "NDB02773",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.2": {
+   "dang_id": "NDB02770",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.3": {
+   "dang_id": "NDB02771",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.4": {
+   "dang_id": "NDB03553",
+   "nguon": "bản chi tiết P14"
+  },
+  "BT 10.5": {
+   "dang_id": "NDB02770",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.6": {
+   "dang_id": "NDB03553",
+   "nguon": "bản chi tiết P14"
+  },
+  "BT 10.7": {
+   "dang_id": "NDB03004",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.8": {
+   "dang_id": "NDB03004",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.9": {
+   "dang_id": "NDB03005",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.10": {
+   "dang_id": "NDB03005",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.11": {
+   "dang_id": "NDB03004",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.12": {
+   "dang_id": "NDB02771",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.13": {
+   "dang_id": "NDB02773",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.14": {
+   "dang_id": "NDB02771",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.15": {
+   "dang_id": "NDB03006",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.16": {
+   "dang_id": "NDB02776",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.17": {
+   "dang_id": "NDB03006",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.18": {
+   "dang_id": "NDB02772",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 10.19": {
+   "dang_id": "NDB03553",
+   "nguon": "bản chi tiết P14"
+  },
+  "BT 10.20": {
+   "dang_id": "NDB03553",
+   "nguon": "bản chi tiết P14"
+  },
+  "VD 11.1": {
+   "dang_id": "NDB03027",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 11.2": {
+   "dang_id": "NDB03027",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 11.3": {
+   "dang_id": "NDB03027",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.1": {
+   "dang_id": "NDB03023",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.2": {
+   "dang_id": "NDB03023",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.3": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 11.4": {
+   "dang_id": "NDB03030",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.5": {
+   "dang_id": "NDB03025",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.6": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 11.7": {
+   "dang_id": "NDB03362",
+   "nguon": "bản chi tiết P22"
+  },
+  "BT 11.8": {
+   "dang_id": "NDB03362",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.9": {
+   "dang_id": "NDB03362",
+   "nguon": "bản chi tiết P22"
+  },
+  "BT 11.10": {
+   "dang_id": "NDB03029",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.11": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 11.12": {
+   "dang_id": "NDB03362",
+   "nguon": "bản chi tiết P22"
+  },
+  "BT 11.13": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 11.14": {
+   "dang_id": "NDB03029",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.15": {
+   "dang_id": "NDB03030",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.16": {
+   "dang_id": "NDB03030",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.17": {
+   "dang_id": "NDB03030",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.18": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 11.19": {
+   "dang_id": "NDB03028",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.20": {
+   "dang_id": "NDB03362",
+   "nguon": "bản chi tiết P22"
+  },
+  "BT 11.21": {
+   "dang_id": "NDB03362",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.22": {
+   "dang_id": "NDB03027",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 11.23": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "VD 12.1": {
+   "dang_id": "NDB03033",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 12.2": {
+   "dang_id": "NDB03038",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 12.3": {
+   "dang_id": "NDB03041",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.1": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.2": {
+   "dang_id": "NDB03035",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.3": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.4": {
+   "dang_id": "NDB03035",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.5": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.6": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.7": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.8": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.9": {
+   "dang_id": "NDB03036",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.10": {
+   "dang_id": "NDB03034",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.11": {
+   "dang_id": "NDB03039",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.12": {
+   "dang_id": "NDB03040",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.13": {
+   "dang_id": "NDB03042",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.14": {
+   "dang_id": "NDB03038",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.15": {
+   "dang_id": "NDB03042",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.16": {
+   "dang_id": "NDB03038",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.17": {
+   "dang_id": "NDB03043",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.18": {
+   "dang_id": "NDB03041",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.19": {
+   "dang_id": "NDB03041",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 12.20": {
+   "dang_id": "NDB03043",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 13.1": {
+   "dang_id": "NDB03011",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "VD 13.2": {
+   "dang_id": "NDB03010",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.1": {
+   "dang_id": "NDB03360",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.2": {
+   "dang_id": "NDB03008",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.3": {
+   "dang_id": "NDB03010",
+   "nguon": "bản chi tiết W17"
+  },
+  "BT 13.4": {
+   "dang_id": "NDB03361",
+   "nguon": "bản chi tiết P17"
+  },
+  "BT 13.5": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 13.6": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 13.7": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "BT 13.8": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 13.9": {
+   "dang_id": "NDB03014",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.10": {
+   "dang_id": "NDB03015",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.11": {
+   "dang_id": "NDB03015",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.12": {
+   "dang_id": "NDB03015",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.13": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 13.14": {
+   "dang_id": "NDB03011",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.15": {
+   "dang_id": "NDB03360",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.16": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 13.17": {
+   "dang_id": "NDB03017",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.18": {
+   "dang_id": "NDB03011",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.19": {
+   "dang_id": "NDB03011",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 13.20": {
+   "dang_id": "NDB03360",
+   "nguon": "bản chi tiết P16"
+  },
+  "BT 14.1": {
+   "dang_id": "NDB02997",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.2": {
+   "dang_id": "NDB03041",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.3": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "BT 14.4": {
+   "dang_id": "NDB03557",
+   "nguon": "bản chi tiết P21"
+  },
+  "BT 14.5": {
+   "dang_id": "NDB03035",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.6": {
+   "dang_id": "NDB02992",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.7": {
+   "dang_id": "NDB02943",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.8": {
+   "dang_id": "NDB02997",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.9": {
+   "dang_id": "NDB02777",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.10": {
+   "dang_id": "NDB03367",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.11": {
+   "dang_id": null,
+   "nguon": null
+  },
+  "BT 14.12": {
+   "dang_id": "NDB02969",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.13": {
+   "dang_id": "NDB03367",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.14": {
+   "dang_id": "NDB03367",
+   "nguon": "bản chi tiết P27"
+  },
+  "BT 14.15": {
+   "dang_id": "NDB02946",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.16": {
+   "dang_id": "NDB03365",
+   "nguon": "bản chi tiết P26"
+  },
+  "BT 14.17": {
+   "dang_id": "NDB03027",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.18": {
+   "dang_id": "NDB03365",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.19": {
+   "dang_id": "NDB02942",
+   "nguon": "sơ bộ theo đầu đề"
+  },
+  "BT 14.20": {
+   "dang_id": "NDB03362",
+   "nguon": "bản chi tiết P22"
+  },
+  "BT 14.21": {
+   "dang_id": "NDB03014",
+   "nguon": "sơ bộ theo đầu đề"
+  }
+ }
+}
