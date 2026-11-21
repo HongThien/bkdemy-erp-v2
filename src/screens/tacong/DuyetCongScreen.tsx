@@ -2,7 +2,8 @@
 // DuyetCongScreen — "Duyệt công trợ giảng" (lá `ta_cong_duyet`, spec-cham-cong-ta.md §5–§6, mockup Thùy duyệt 14/10).
 //   Người duyệt (Thùy 09/11, mig 202611091507): TRƯỞNG KHỐI duyệt công gắn lớp/ca trực khối mình (mở từ phòng làm việc, chỉ thấy
 //   phần mình duyệt được — DB lọc, fn_ta_cong_duoc_duyet); Trang (lá ta_cong_duyet) thấy hết = hậu kiểm + phần chung. Duyệt theo NGOẠI LỆ: mọi dòng chờ duyệt CHỌN SẴN, đọc một lượt, bỏ chọn /
-//   từ chối (bắt buộc lý do) dòng không ổn, rồi duyệt cả lô. Chốt giờ ca quên checkout (giờ gốc giữ nguyên).
+//   từ chối (bắt buộc lý do) dòng không ổn, rồi duyệt cả lô. CHỈ DUYỆT VIỆC (Thùy 21/11): dòng ca (checkin–checkout) KHÔNG duyệt tay — DB tự duyệt
+//   khi mọi việc trong ca đã duyệt + ca có giờ ra (mig 202611211604; sau này scale: hệ thống tự duyệt theo giờ + địa điểm). Chốt giờ ca quên checkout (giờ gốc giữ nguyên).
 //   Tab "Thiếu công": buổi lớp / ca trực đã diễn ra mà không ai ghi công (bất biến, tính từ 01/10) → nhập hộ.
 // Mọi khớp/cờ/làm hộ/người phụ trách suy ở Postgres (_ta_doi_chieu, fn_ta_buoi_thieu_cong — theo phân công TẠI
 // NGÀY). Client chỉ hiển thị + lọc theo lựa chọn UI. Sau duyệt: vá trạng thái tại chỗ + quét nền (không trắng màn).
@@ -111,17 +112,17 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
 
   // duyệt hàng loạt chỉ trong phạm vi đang lọc (người đang chọn)
   const duoc = (id: string) => coGhi || !!duocDs?.has(id)
-  const choDuyet = (rows ?? []).filter((r) => r.duyet === 'cho_duyet' && duoc(r.id) && (!nguoi || r.nhan_su_id === nguoi) && (r.loai_dong === 'viec' || nhom.cas.some((x) => x.c.id === r.id))
-    && !(r.loai_dong === 'viec' && r.co?.includes('ca_bi_tu_choi')))   // việc trong ca đã từ chối: DB chặn duyệt (mig 202611041729) ⇒ không gom vào lô, xử từng dòng
+  const choDuyet = (rows ?? []).filter((r) => r.loai_dong === 'viec' && r.duyet === 'cho_duyet' && duoc(r.id) && (!nguoi || r.nhan_su_id === nguoi)   // chỉ VIỆC — ca tự duyệt theo việc
+    && !r.co?.includes('ca_bi_tu_choi'))   // việc trong ca đã từ chối: DB chặn duyệt (mig 202611041729) ⇒ không gom vào lô, xử từng dòng
   const dangChon = choDuyet.filter((r) => !boChon.has(r.id))
   const doiChon = (id: string) => setBoChon((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n })
   const vaTrangThai = (ids: string[], duyet: DongCong['duyet'], lyDo: string | null) =>
     setRows((prev) => prev && prev.map((r) => (ids.includes(r.id) ? { ...r, duyet, ly_do_duyet: lyDo } : r)))
 
   async function duyetLo() {
-    const ca = dangChon.filter((r) => r.loai_dong === 'ca').map((r) => r.id), viec = dangChon.filter((r) => r.loai_dong === 'viec').map((r) => r.id)
+    const viec = dangChon.map((r) => r.id)
     setBan(true)
-    try { const n = await duyetCong(ca, viec, 'da_duyet'); vaTrangThai([...ca, ...viec], 'da_duyet', null); bao(`Đã duyệt ${n} dòng`); tai(false) }
+    try { const n = await duyetCong([], viec, 'da_duyet'); vaTrangThai(viec, 'da_duyet', null); bao(`Đã duyệt ${n} việc`); tai(false) }
     catch (e) { bao(loiCua(e), false) } finally { setBan(false) }
   }
   async function tuChoi(r: DongCong, lyDo: string) {
@@ -163,7 +164,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
         <div className="w-56"><SearchSelect value={nguoi} onChange={(v) => setNguoi(v ?? '')} options={dsNguoi} placeholder="Lọc theo TA…" /></div>
         {loc === 'xl' && <div className="w-52"><SearchSelect value={locNd} onChange={(v) => setLocNd(v ?? '')} options={dsNguoiDuyet} placeholder="Lọc theo người duyệt…" /></div>}
         <button onClick={() => tai(false)} className={btnGhost} title="Quét lại">↻</button>
-        {(coGhi || !!duocDs?.size) && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} dòng đang chọn</button>}
+        {(coGhi || !!duocDs?.size) && <button disabled={ban || dangChon.length === 0} onClick={duyetLo} className={`${btnOk} ml-auto`}>Duyệt {dangChon.length} việc đang chọn</button>}
       </div>
       <div className={`${card} overflow-x-auto`}>
         <table className="w-full min-w-[1100px] table-fixed border-collapse whitespace-nowrap text-sm [&_td]:overflow-hidden [&_td]:text-ellipsis">
@@ -182,7 +183,7 @@ function TabDuyet({ coGhi, bao }: { coGhi: boolean; bao: (t: string, ok?: boolea
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-slate-500">Duyệt nhầm ⇒ bấm <b>Mở lại</b> (ghi lý do) — dòng về chờ duyệt, TA sửa được rồi duyệt lại; 🕘 xem ai khai / duyệt / mở lại lúc nào. Tháng đã chốt lương thì không mở lại được. Mặc định mọi dòng chờ duyệt đều được chọn. Đọc một lượt, bỏ chọn hoặc từ chối dòng không ổn, rồi duyệt cả lô. Ca chưa có giờ checkout phải chốt giờ trước. Lương chỉ tính việc đã duyệt thuộc ca đã duyệt.</p>
+      <p className="text-xs text-slate-500">Duyệt nhầm ⇒ bấm <b>Mở lại</b> (ghi lý do) — dòng về chờ duyệt, TA sửa được rồi duyệt lại; 🕘 xem ai khai / duyệt / mở lại lúc nào. Tháng đã chốt lương thì không mở lại được. Mặc định mọi việc chờ duyệt đều được chọn. Đọc một lượt, bỏ chọn hoặc từ chối việc không ổn, rồi duyệt cả lô. <b>Chỉ duyệt việc</b> — dòng ca (checkin–checkout) tự duyệt khi mọi việc trong ca đã duyệt và ca có giờ ra; ca chưa có giờ ra thì bấm <b>Chốt giờ</b>. Lương chỉ tính việc đã duyệt thuộc ca đã duyệt.</p>
     </div>
   )
 }
@@ -199,7 +200,7 @@ const SiSo = ({ s }: { s?: SiSoCa }) => !s ? null : (
     👥 {s.hen === 0 ? '0 em hẹn' : `${s.co_mat}/${s.hen} em`}{s.vang > 0 && ` · vắng ${s.vang}`}{s.chua_dd > 0 && ` · ${s.chua_dd} chưa ĐD`}
   </span>)
 const Pill = ({ c, children }: { c: string; children: React.ReactNode }) => <span className={`mr-1 inline-block whitespace-nowrap rounded-full px-2 py-0.5 text-[11px] font-semibold ${c}`}>{children}</span>
-const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.duyet === 'cho_duyet' && p.duoc(r.id)
+const Chk = ({ r, p }: { r: DongCong; p: DongProps }) => (r.loai_dong === 'viec' && r.duyet === 'cho_duyet' && p.duoc(r.id)
   ? <input type="checkbox" aria-label="chọn dòng" checked={!p.boChon.has(r.id)} onChange={() => p.doiChon(r.id)} className="h-4 w-4 accent-indigo-600" /> : null)
 const CoPills = ({ co }: { co: string[] }) => <>{co.map((x) => <Pill key={x} c={nhanCo(x).nhe ? 'bg-indigo-50 text-indigo-700' : x === 'quen_ra' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800'}>{nhanCo(x).t}</Pill>)}</>
 const thuNgan = (d: string) => thuCuaNgay(d).replace('Chủ nhật', 'CN').replace('Thứ ', 'T')
@@ -225,17 +226,17 @@ function NhomCa({ c, viec, ...p }: { c: DongCong; viec: DongCong[] } & DongProps
           : <>{gioVN(c.vao_at)} – {c.ra_at ? gioVN(c.ra_at) : '—'}</>}</td>
         <td className="px-2 py-1.5 text-xs font-normal text-slate-400">—</td>
         <td className="px-2 py-1.5" title={c.co.map((x) => nhanCo(x).t).join(' · ')}><CoPills co={c.co} /></td>
-        <td className="px-2 py-1.5"><TrangThai r={c} nd={p.nd.get(c.id)} /></td>
+        <td className="px-2 py-1.5">{/* Ca KHÔNG duyệt tay: DB tự duyệt khi mọi việc trong ca đã duyệt + ca có giờ ra */}
+          {c.duyet === 'da_duyet' ? <span title={`Tự động — mọi việc trong ca đã duyệt${p.nd.get(c.id) ? ' · ' + p.nd.get(c.id)!.nguoi + ' ' + ngayGio(p.nd.get(c.id)!.luc) : ''}`}><Pill c="bg-emerald-100 text-emerald-700">Tự duyệt</Pill></span>
+            : c.duyet === 'tu_choi' ? <TrangThai r={c} nd={p.nd.get(c.id)} />
+            : <span title={c.ra_at || c.ra_chot ? 'Ca tự duyệt khi mọi việc trong ca được duyệt' : 'Chưa có giờ ra — bấm Chốt giờ; có giờ ra + mọi việc đã duyệt thì ca tự duyệt'}>
+                <Pill c="bg-slate-100 text-slate-600">{c.ra_at || c.ra_chot ? 'Theo việc' : 'Chưa có giờ ra'}</Pill></span>}</td>
         <td className="px-2 py-1.5"><div className="flex justify-end gap-1 [&_button]:px-2">{p.duoc(c.id) && <>
           {!c.ra_at && !c.ra_chot && viec.some((v) => v.duyet !== 'tu_choi' && v.gio_ket_thuc) && <button className={btnGhost} disabled={p.ban} title="Giờ ra = giờ kết thúc việc cuối trong ca" onClick={() => p.chotTheoViec(c)}>Theo việc</button>}
-          <button className={btnGhost} title="Sửa giờ checkin / checkout" onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>
-          {c.duyet === 'cho_duyet' ? <button className={btnDanger} onClick={() => p.setMo(p.mo === 'tc:' + c.id ? null : 'tc:' + c.id)}>Từ chối</button>
-            : <button className={btnWarn} title="Đưa về chờ duyệt (duyệt / từ chối nhầm)" onClick={() => p.setMo(p.mo === 'ml:' + c.id ? null : 'ml:' + c.id)}>Mở lại</button>}</>}
+          {c.duyet === 'cho_duyet' && <button className={btnGhost} title="Sửa giờ checkin / checkout" onClick={() => p.setMo(p.mo === 'chot:' + c.id ? null : 'chot:' + c.id)}>Chốt giờ</button>}</>}
           <NutLs id={c.id} p={p} /></div></td>
       </tr>
       {p.mo === 'chot:' + c.id && <ChotGioRow c={c} ban={p.ban} onLuu={(v, r) => p.chot(c, v, r)} />}
-      {p.mo === 'tc:' + c.id && <TuChoiRow ban={p.ban} onLuu={(ld) => p.tuChoi(c, ld)} />}
-      {p.mo === 'ml:' + c.id && <MoLaiRow ban={p.ban} onLuu={(ld) => p.moLai(c, ld)} />}
       {p.mo === 'ls:' + c.id && <LichSuRow id={c.id} />}
       {viec.map((v) => <DongViecQL key={v.id} v={v} {...p} />)}
     </>

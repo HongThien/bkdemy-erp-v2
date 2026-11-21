@@ -237,11 +237,11 @@
 
 | Lớp | Là gì | Nguồn | Ai xác nhận |
 |---|---|---|---|
-| **Có mặt** (ca) | Giờ vào – giờ ra thật | TA bấm **Checkin / Checkout** | Người duyệt; chốt lại giờ được (`vao_chot`, `ra_chot` — **giờ gốc không sửa**) |
+| **Có mặt** (ca) | Giờ vào – giờ ra thật | TA bấm **Checkin / Checkout** | **Không ai duyệt tay — tự duyệt theo việc** (§7.6); người duyệt chỉ chốt lại giờ khi quên checkout (`vao_chot`, `ra_chot` — **giờ gốc không sửa**) |
 | **Việc** (phiếu công) | Loại việc · lớp / ca / HS · khung giờ | Hệ gợi ý từ lịch (± 30 phút), TA bấm **"Ghi công"** hoặc thêm việc ngoài lịch | Người duyệt |
 | **Bằng chứng** | Dấu vết việc đó trên ERP | ERP tự có | Máy đối chiếu: **"đã khớp"** / *(trống)* + cờ |
 
-- Một ngày: Checkin → ghi công việc theo lịch / thêm việc → Checkout → máy đối chiếu → duyệt cả lô → vào lương (chỉ dòng đã duyệt thuộc ca đã duyệt).
+- Một ngày: Checkin → ghi công việc theo lịch / thêm việc → Checkout → máy đối chiếu → duyệt **việc** cả lô → ca tự duyệt → vào lương (chỉ việc đã duyệt thuộc ca đã duyệt).
 - Chữ trên app (Thùy 14/10): **Checkin / Checkout** · **"Ghi công" / "Đã ghi công"**. Không checkin từ màn chính — bấm vào ô Chấm công mới checkin.
 - "Quên checkout" là trạng thái **suy** (chưa có giờ ra mà đã sang ngày khác), không lưu cờ.
 
@@ -274,9 +274,10 @@
 - Cờ trên dòng: buổi / ca đã huỷ mà có khai · khung giờ ngoài ca có mặt · hai việc trùng giờ · kết thúc ≤ bắt đầu · giờ ngoài 7h–22h30 · hai TA cùng khai một buổi · bổ trợ không có em có mặt · giờ bổ trợ tháng vượt xa chỉ tiêu · lớp được phân công mà cả tháng không hoạt động · việc chưa có đơn giá.
 
 ### 7.6 Duyệt
-- **Trưởng khối duyệt công TA trong phạm vi môn × khối của mình** (Thùy 09/11 "đưa duyệt công TA về trưởng khối cho đúng flow vận hành"; `fn_ta_cong_duoc_duyet`): mỗi dòng việc suy (môn | khối) từ lớp / ca / buổi; **không duyệt công của chính mình** (trưởng khối cũng là TA ⇒ lên trưởng bộ môn). Ca có mặt duyệt được khi mọi việc trong ca thuộc phạm vi. Khay "DUYỆT CÔNG" ở Phòng làm việc.
+- **Trưởng khối duyệt công TA trong phạm vi môn × khối của mình** (Thùy 09/11 "đưa duyệt công TA về trưởng khối cho đúng flow vận hành"; `fn_ta_cong_duoc_duyet`): mỗi dòng việc suy (môn | khối) từ lớp / ca / buổi; **không duyệt công của chính mình** (trưởng khối cũng là TA ⇒ lên trưởng bộ môn). Dòng ca không duyệt tay (xem dưới). Khay "DUYỆT CÔNG" ở Phòng làm việc.
 - **Người giữ quyền `ta_cong_duyet`** (vai Core team) thấy + duyệt hết = hậu kiểm + phần chung (chấm thi, họp, ôn thi chung, dòng không có khối) + Thiếu công + Nhập hộ.
-- Màn `tacong/DuyetCongScreen.tsx`: mỗi dòng **chọn sẵn**, cột Đối chiếu ("đã khớp" / trống), cờ, làm hộ ai ⇒ đọc một lượt, bỏ chọn dòng không duyệt (**bắt buộc lý do**), sửa giờ chốt ngay trên dòng, **duyệt cả lô**. Ca chưa có giờ ra phải chốt giờ trước.
+- **⭐ Chỉ duyệt VIỆC; ca (checkin–checkout) KHÔNG duyệt tay (Thùy 21/11, mig `202611211604`).** Checkin / checkout hiện chỉ để **luyện nhân sự thao tác**; khi scale sẽ quản chặt (thời gian + địa điểm) và **hệ thống tự duyệt**, không người duyệt. Luật DB (trigger `_ta_ca_tu_duyet`): ca = `da_duyet` khi có ≥1 việc hiệu lực (≠ từ chối) **và mọi việc hiệu lực đã duyệt và ca có giờ ra**; việc mới thêm / việc được mở lại ⇒ ca về `cho_duyet`. Ca không có việc nào hoặc mọi việc bị từ chối: hệ không đụng. Ca quên checkout: việc duyệt xong ca vẫn chờ tới khi có giờ ra — người duyệt **Chốt giờ** (giờ gốc giữ nguyên) là ca tự duyệt. Trưởng khối chốt giờ được ca có ≥1 việc thuộc khối mình (không còn điều kiện "việc khối khác duyệt trước" — bản 11/11 gây kẹt: ca trộn khối / có việc không thuộc khối nào không bao giờ duyệt được ⇒ việc đã duyệt không vào lương).
+- Màn `tacong/DuyetCongScreen.tsx`: mỗi **việc** **chọn sẵn**, cột Đối chiếu ("đã khớp" / trống), cờ, làm hộ ai ⇒ đọc một lượt, bỏ chọn việc không duyệt (**bắt buộc lý do**), **duyệt cả lô**. Dòng ca chỉ hiện giờ + nhãn "Tự duyệt" / "Theo việc" / "Chưa có giờ ra" + nút Chốt giờ (khi chưa có giờ ra).
 - Mọi thay đổi ca / việc / đơn giá / loại việc tự ghi `ta_cong_log` (trigger `_ta_cong_ghi_log`).
 - Hạn chót duyệt / sửa của kỳ: **ngày 3 tháng sau**. *Hạn duyệt hằng ngày của trưởng khối + gậy trễ: chưa chốt — §12 câu 6.*
 - **Số 30 ngày:** 310 ca (232 đã duyệt · 47 chờ · 31 từ chối; 68 ca khai bù) · 538 phiếu việc (430 đã duyệt · 61 chờ · 47 từ chối).

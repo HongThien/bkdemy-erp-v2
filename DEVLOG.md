@@ -82138,3 +82138,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Thừa nhận:** 12 dòng đích §I.0 không có logic chắc — chép hiện tại (TA 7, quản lý 3, CSVC 3, quà in 3,5) + kẹp số ngành (GV 28, tuyển sinh 4) + ước chừng rồi nâng cho đủ 75 (lượt đầu cộng 68).
 - **Sửa spec (Thùy: "cập nhật spec và push đi"):** thêm §I.0a — đích tính từ định mức ở đích theo 5 loại hạng mục; bảng 7 định mức chờ Thùy, để trống; §I.0 hạ xuống "danh sách hạng mục + số ước chừng, chưa phải đích".
 - **Bài học:** con số đích phải truy được về một định mức hoặc một quyết định; không điền số cho tròn tổng.
+
+### 21/11 16:10 — [Công TA] Thùy: "ko duyệt được giờ checkin mà chỉ việc được" ⇒ chỉ duyệt VIỆC, ca tự duyệt theo việc
+- **Làm:** kiểm thật (DB, chỉ đọc): 61 ca chờ từ 01/10 — 24 ca không có việc hiệu lực, 6 ca có việc không thuộc khối nào, 6 ca trộn khối; `_ta_cong_duoc_ca` (mig 202611111600) đòi việc khối khác/không khối phải duyệt trước ⇒ trưởng khối không duyệt được ca ⇒ 8 việc đã duyệt kẹt (lương chỉ tính việc đã duyệt thuộc ca đã duyệt).
+- **Quyết định (Thùy):** KHÔNG duyệt checkin–checkout; duyệt việc, toàn bộ việc duyệt ⇒ ca tự duyệt. Checkin/out hiện để luyện thao tác; sau scale quản chặt giờ + địa điểm, hệ thống tự duyệt, không người duyệt.
+- **Sửa:** mig `202611211604` (trigger `_ta_ca_tu_duyet`: ca da_duyet khi ≥1 việc hiệu lực + mọi việc đã duyệt + có giờ ra; việc mới/mở lại ⇒ ca về chờ; nới `_ta_cong_duoc_ca`) · `DuyetCongScreen.tsx` bỏ ô chọn/Từ chối/Mở lại ở dòng ca, nhãn "Tự duyệt / Theo việc / Chưa có giờ ra" · `spec-tro-giang.md` §7.2, §7.6.
+- **Chưa áp DB:** `migrate` còn 29 file treo (không phải của việc này) ⇒ không chạy `npm run migrate`; áp tay file này ở SQL Editor TRƯỚC khi deploy màn (màn mới không còn gửi ca ⇒ chưa có trigger thì ca không bao giờ duyệt).
+- **Bài học:** hai luật "ai duyệt được" (khối) × "ca phụ thuộc mọi việc" nhân nhau ra ca không ai duyệt được; trạng thái dẫn xuất (ca) phải suy bằng trigger từ nguồn (việc), không để người duyệt tay.
