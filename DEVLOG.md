@@ -82200,3 +82200,4 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Số sau cập nhật:** MH.126 8 nút · 11 bài · 4 tiền đề · MH.130 3 · 7 · 6 · MH.131 9 · 14 · 12 · MH.132 7 · 27 · 27.
 - **KHÔNG ghi (hệ chặn bằng cờ ⚠ sai nhánh):** MH.126 "(B6.1, B6.2) → B7": B7 nằm ở nhánh sau nhóm 2, B6.x nằm trong thành viên ⇒ vi phạm spec §10.3 (bài ngoài nhóm dựa vào bài thành viên bị bắt cờ, builder từ chối). Chờ Thùy chọn: bỏ tiền đề (nhóm 2 đã là đầu ra) · hay thêm "BFC cân" vào đầu ra nhóm · hay cách khác.
 - File vẫn ghi B4 cụng đầu "AD // BC và AD = BC" (sai hình học) — cây giữ "AC // BD và AC = BD", chờ Thùy xác nhận.
+- **Thùy chốt (21/11):** MH.126 "(B6.1, B6.2) → B7" **BỎ tiền đề** — nhóm 2 là đầu ra, B7 nối thẳng sau nhóm; không đổi DB, không thêm sự kiện. B4 cụng đầu vẫn chờ xác nhận ("AC // BD" hay nguyên văn file).
