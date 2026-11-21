@@ -42,7 +42,7 @@ const loi = [], nhac = []
 // · tiểu học (khối 3–5, 4T, 5T) dấu nhân \times như vở (k5T.md §3) — không dấu chấm, không \cdot
 const TIEU_HOC = ['3', '4', '5', '4T', '5T'].includes(String(KHOI))
 const NHAN_CHAM = !TIEU_HOC && !['8', '9', '10', '11', '12'].includes(String(KHOI)) // 14/11: K12 dấu nhân \cdot (k12-de/de-hoc-ki/brief-giai-chi-tiet.md)
-const KHO_DUOC = ['7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650)
+const KHO_DUOC = ['6', '7', '8', '11'].includes(String(KHOI)) ? ['dai', 'hinh_hoc'] : String(KHOI) === '9' ? ['dai', 'hgt', 'hinh_hoc'] : ['dai', 'hgt'] // khối 7: hình phẳng THCS ⇒ kho Hình học, dạng chờ HH07000000 (mig 202610121650) · khối 6 (21/11, spec §C10 mục 9 + CTO 15/11): nhận kho=hinh_hoc, dạng chờ HH06000000 (CẦN dòng hinh_hoc_bai — chưa có)
 // khối 9 BỘ ĐỀ GKI (Thùy 18/10: "đẩy tất cả bài Hình vào bài Ôn thi giữa kì I của phần Hình – học lớp 9"): mọi câu kho=hinh_hoc ghi thẳng vào dạng HH00140 "Ôn thi giữa kì I"
 const DANG_HINH_K9 = process.env.DANG_HINH_K9 || 'HH00140' // bộ đề cuối kì 1 K9 (18/10) đặt DANG_HINH_K9=<mã bài> khi chạy k9-cki-ghi-*.sh
 const mTen = md.match(/^# ĐỀ \| (.+)$/m)

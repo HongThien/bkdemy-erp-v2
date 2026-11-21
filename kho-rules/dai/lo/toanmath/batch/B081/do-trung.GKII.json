@@ -1,0 +1,114 @@
+[
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-ban-mai-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1865,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2024-2025 — THCS Thành Công, quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 30
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.3,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-chuong-duong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1446,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2024-2025 — THCS Thành Công, quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 30
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-dong-ngac-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2024-2025 — THCS Thành Công, quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 30
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-gia-quat-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1781,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2024-2025 — THCS Thành Công, quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 30
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-mai-dich-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1021,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2024-2025 — THCS Thành Công, quận Ba Đình, Hà Nội",
+   "ti_le": 0,
+   "cau": 30
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2024-2025-truong-thcs-phuc-loi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1420,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 6 năm 2025-2026 — THCS Giang Biên, phường Việt Hưng, Hà Nội (Đề 01)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B081",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-ban-mai-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1669,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 6 năm 2025-2026 — THCS Nguyễn Trãi, Hà Đông, Hà Nội",
+   "ti_le": 0.01,
+   "cau": 93
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.44,
+  "trung_kho": false
+ }
+]

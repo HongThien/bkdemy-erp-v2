@@ -1,0 +1,123 @@
+[
+ {
+  "ma": "B082-01",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-m-v-lomonoxop-ha-noi",
+  "don_vi": "THCS và THPT M.V. Lô-mô-nô-xốp, Hà Nội (scan)",
+  "nam": 2025,
+  "de": "1-2",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-02",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-thcs-chuong-duong-ha-noi",
+  "don_vi": "THCS Chương Dương, phường Hồng Hà, Hà Nội",
+  "nam": 2025,
+  "de": "2-3",
+  "hd": "4-6",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-03",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-thcs-mai-dich-ha-noi",
+  "don_vi": "THCS Mai Dịch, phường Từ Liêm, Hà Nội",
+  "nam": 2025,
+  "de": "1-2",
+  "hd": "5-7",
+  "loai": "de_thi",
+  "tach": "Đề 1 (bỏ Đề 2)"
+ },
+ {
+  "ma": "B082-04",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-thcs-nghia-tan-ha-noi",
+  "don_vi": "THCS Nghĩa Tân, Hà Nội (scan)",
+  "nam": 2025,
+  "de": "1-6",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-05",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-truong-thcs-ngoc-lam-ha-noi",
+  "don_vi": "THCS Ngọc Lâm, Hà Nội (scan)",
+  "nam": 2025,
+  "de": "1-12",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-06",
+  "ten_bai": "de-giua-hoc-ki-2-toan-6-nam-2025-2026-xa-dong-anh-ha-noi",
+  "don_vi": "Xã Đông Anh, Hà Nội",
+  "nam": 2025,
+  "de": "1",
+  "hd": "2-4",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-07",
+  "ten_bai": "de-giua-hoc-ky-2-toan-6-nam-2024-2025-truong-thcs-cau-giay-ha-noi",
+  "don_vi": "THCS Cầu Giấy, Hà Nội (scan)",
+  "nam": 2024,
+  "de": "1-2",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-08",
+  "ten_bai": "de-giua-hoc-ky-2-toan-6-nam-2024-2025-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "don_vi": "THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội (scan)",
+  "nam": 2024,
+  "de": "1-3",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-09",
+  "ten_bai": "de-giua-hoc-ky-2-toan-6-nam-2024-2025-truong-thcs-thanh-my-ha-noi",
+  "don_vi": "THCS Thanh Mỹ, thị xã Sơn Tây, Hà Nội",
+  "nam": 2024,
+  "de": "6-8",
+  "hd": "9-10",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-10",
+  "ten_bai": "de-giua-ki-2-toan-6-nam-2024-2025-truong-thcs-ngoc-lam-ha-noi",
+  "don_vi": "THCS Ngọc Lâm, Hà Nội (scan)",
+  "nam": 2024,
+  "de": "1-6",
+  "hd": "",
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B082-11",
+  "ten_bai": "de-giua-ki-2-toan-6-nam-2024-2025-truong-thcs-phuc-dong-ha-noi",
+  "don_vi": "THCS Phúc Đồng, quận Long Biên, Hà Nội",
+  "nam": 2024,
+  "de": "1-3",
+  "hd": "",
+  "loai": "de_thi",
+  "tach": "Mã đề 601 (bỏ mã 602)"
+ },
+ {
+  "ma": "B082-12",
+  "ten_bai": "de-giua-ki-2-toan-6-nam-2024-2025-truong-thcs-viet-hung-ha-noi",
+  "don_vi": "THCS Việt Hưng, quận Long Biên, Hà Nội",
+  "nam": 2024,
+  "de": "5-7",
+  "hd": "8-9",
+  "loai": "de_thi",
+  "tach": "Đề chính thức (bỏ Đề 02 + Đề dự bị)"
+ },
+ {
+  "ma": "B082-13",
+  "ten_bai": "de-giua-ki-2-toan-6-nam-2025-2026-truong-thcs-viet-hung-ha-noi",
+  "don_vi": "THCS Việt Hưng, phường Việt Hưng, Hà Nội",
+  "nam": 2025,
+  "de": "4-5",
+  "hd": "6-7",
+  "loai": "de_thi",
+  "tach": "Đề 01 (bỏ Đề 02, 03)"
+ }
+]
