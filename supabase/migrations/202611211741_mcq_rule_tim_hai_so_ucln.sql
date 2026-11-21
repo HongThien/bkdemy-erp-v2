@@ -1,0 +1,10 @@
+-- Lớp 6 (MCQ, Thùy 21/11 "viết rule nhiễu mới"): NDB00415 (tìm hai số a,b biết ƯCLN và BCNN) · NDB00416 (biết ƯCLN và tổng).
+-- Thay bộ rule «bài toán thực tế» R343–R346 (±1, gấp đôi — đúng tên SAI ngữ cảnh, mù 35/35 lỗi vì 4 phương án gần như giống hệt)
+-- bằng lỗi thật của học sinh với dạng a = d·a', b = d·b', (a',b') = 1. Đáp số là DANH SÁCH các cặp (a;b). Mã R519–R523. Chỉ INSERT.
+insert into dai_mcq_rule (ma, ten, mo_ta, vi_du, nhom, ap_dung, du_phong, active) values
+ ('R519', 'Tìm hai số theo ƯCLN: quên nhân lại ƯCLN', 'Giải đúng a'' và b'' (nguyên tố cùng nhau) nhưng liệt kê luôn cặp (a''; b'') làm đáp số, quên a = d·a'', b = d·b''.', 'ƯCLN = 6, BCNN = 90: a''·b'' = 15 → (1;15), (3;5) thay vì (6;90), (18;30)', 'khai_niem', array['NDB00415', 'NDB00416'], false, true),
+ ('R520', 'Tìm hai số theo ƯCLN: quên điều kiện a'', b'' nguyên tố cùng nhau', 'Lấy mọi cặp (a''; b'') thoả tích (hoặc tổng) mà không kiểm (a'', b'') = 1, nên thừa các cặp có ước chung.', 'ƯCLN = 4, a + b = 48: a'' + b'' = 12 → thừa (2;10), (3;9), (4;8)… (ƯCLN của chúng khác 1)', 'khai_niem', array['NDB00415', 'NDB00416'], false, true),
+ ('R521', 'Tìm hai số theo ƯCLN: chỉ liệt kê một thứ tự', 'Tìm đúng các cặp nhưng chỉ ghi mỗi cặp một thứ tự (a ≤ b), bỏ các cặp đảo (b; a) mà đề không ràng buộc a < b.', '(6; 90), (18; 30) thiếu (90; 6), (30; 18)', 'tinh', array['NDB00415', 'NDB00416'], false, true),
+ ('R522', 'Tìm hai số theo ƯCLN: dùng tích/tổng không chia cho ƯCLN', 'Quên chia cho d: dùng a''·b'' = BCNN (thay vì BCNN : d) hoặc a'' + b'' = a + b (thay vì (a + b) : d) rồi mới nhân lại d.', 'ƯCLN = 6, BCNN = 90: dùng a''·b'' = 90 thay vì 15', 'khai_niem', array['NDB00415', 'NDB00416'], false, true),
+ ('R523', 'Tìm hai số theo ƯCLN: bỏ sót trường hợp một số nguyên tố cùng nhau bằng 1', 'Bỏ sót cặp a'' = 1 (số bé nhất bằng chính ƯCLN) khi liệt kê các cặp nguyên tố cùng nhau. Rule dự phòng.', 'ƯCLN = 6, BCNN = 90: thiếu (6; 90), (90; 6)', 'tinh', array['NDB00415', 'NDB00416'], true, true)
+on conflict (ma) do nothing;
