@@ -15,6 +15,62 @@
 
 ---
 
+# PHẦN 0 — ĐÍCH: CÔNG SUẤT → DOANH THU (Thùy mở 21/11 — nền của cả spec)
+
+> **Thùy 21/11:** *"Số tài chính BK đưa vào chỉ để có insight. Spec tài chính KHÔNG tuân theo hiện tại mà theo chuẩn ĐÍCH — và mình luôn so xem có đang đi đúng hướng tới đích không để điều chỉnh. Nên phải làm đích thật chắc."*
+> ⇒ Thứ tự của spec: **đích công suất → đích doanh thu → đích cơ cấu chi phí (lợi nhuận 25) → bảng so đích – thực tế hằng tháng.** Số hiện tại (Phần I, Phần II) chỉ là cột "đang ở đâu".
+
+## 0.1 Đầu vào Thùy cho
+
+- **8 phòng:** 4 phòng to (tối đa 20) · 2 phòng vừa (15) · 2 phòng bé (10) ⇒ **130 chỗ**, trung bình 16,25 chỗ một phòng.
+- **Khung giờ đầy:** tối 18:00–19:30 và 19:30–21:00 · Chủ nhật 8:00–18:00 · thứ Bảy ban ngày khoảng 3 lớp.
+- **Công suất phòng tối đa 90** (10 để cho bổ trợ).
+- **Đích 1:** trung bình một ca **12 em**. **Đích 2:** tăng chất lượng ⇒ trung bình một ca **18 em**.
+- **Học phí một ca:** 150 nghìn (1,5 giờ) · 180 nghìn (2 giờ) · 250 nghìn (2,5 giờ).
+
+## 0.2 Công suất phòng (đơn vị: phòng-ca 1,5 giờ)
+
+| Khung | Cách tính | Phòng-ca một tuần |
+|---|---|---|
+| Tối, 7 ngày | 7 tối × 2 ca × 8 phòng | 112 |
+| Chủ nhật ban ngày 8:00–18:00 | 6 ca (9 giờ học + 1 giờ nghỉ trưa) × 8 phòng | 48 |
+| Thứ Bảy ban ngày | 3 lớp | 3 |
+| **Tổng** | | **163** |
+| **Dùng 90** | (112 + 48) × 0,9 + 3 | **147** |
+
+*Giả định của Claude cần Thùy xác nhận:* tối tính cả 7 ngày (TKB hiện nay tối thứ Bảy và Chủ nhật đều có lớp); nếu chỉ tính 6 tối thì còn 133 phòng-ca.
+
+## 0.3 Đo hiện tại để hiệu chỉnh (TKB + sĩ số lớp, đo 21/11)
+
+- 95 ca một tuần của 53 lớp: 61 ca 1,5 giờ · 29 ca 2 giờ · 6 ca 2,5 giờ ⇒ quy ra khoảng **110 phòng-ca 1,5 giờ = 67 công suất phòng**.
+- **759 lượt em-ca một tuần, trung bình 8,0 em một ca** (ca đông nhất 17 em; chỉ 6 ca từ 15 em). 429 lượt em-lớp của 364 em; một lớp trung bình 1,77 ca một tuần.
+- Theo giá niêm yết: 126,5 triệu một tuần ⇒ **96 nghìn một em-giờ** (= 144 nghìn một em trong một phòng-ca 1,5 giờ) ⇒ 548 triệu một tháng (× 52 ÷ 12). Học phí học chính thật kỳ 10 là 496,5 triệu ⇒ **thực tế ≈ 0,9 giá niêm yết** (giảm phí, buổi nghỉ). Mô hình khớp số thật — dùng được để tính đích.
+
+## 0.4 Doanh thu theo đích (một tháng, cơ cấu độ dài ca như hiện nay)
+
+| | Phòng-ca | Em một ca | Lượt em-ca một tuần | Doanh thu niêm yết | Sau hệ số 0,9 |
+|---|---|---|---|---|---|
+| **Hiện tại** | 110 (67) | 8,0 | 759 | 548 triệu | ~497 triệu |
+| **Đích 1** | 147 (90) | 12 | 1.764 | **~1.100 triệu** | ~990 triệu |
+| Đích 2 như Thùy nêu | 147 | 18 | 2.646 | ~1.650 triệu | ~1.490 triệu |
+| **Đích 2 khả thi** | 147 | 15 | 2.205 | **~1.375 triệu** | ~1.240 triệu |
+
+## 0.5 Kiểm tra hợp lý
+
+1. **"800 lượt học sinh" không vô lý, còn hơi thấp.** Đích 1 = 1.764 lượt em-ca một tuần; một lớp trung bình 1,77 ca một tuần ⇒ khoảng **1.000 lượt em-lớp** (hiện 429). Con số 800 lượt em-lớp tương ứng dùng khoảng 73 công suất phòng, doanh thu niêm yết ~880 triệu. Nếu 800 là số EM (hiện mỗi em học 1,18 lớp) thì thành ~940 lượt em-lớp — cũng trong tầm.
+2. **Đích 2 = trung bình 18 em một ca là KHÔNG làm được với 8 phòng này.** Trung bình một phòng chỉ có 16,25 chỗ; kể cả dành hết phần 10 bổ trợ cho phòng bé và mọi ca còn lại kín 100 thì trần là 16,9. 18 em chỉ đạt được ở 4 phòng to. Đích 2 khả thi: lấp ~90 số chỗ ⇒ **trung bình 15** (phòng to 18 · phòng vừa 13–14 · phòng bé 9).
+3. **Khoảng cách tới Đích 1 nằm ở sĩ số nhiều hơn ở số ca:** số phòng-ca cần tăng 34 (110 → 147), sĩ số cần tăng 50 (8 → 12). Lớp đông thêm em gần như không thêm chi phí — khớp nhận định ở Phần I.
+4. **Ca 2 giờ thu ít hơn theo giờ** (90 nghìn một giờ so với 100 nghìn của ca 1,5 và 2,5 giờ) và không khớp lưới 18:00–19:30–21:00. Càng nhiều ca 2 giờ thì doanh thu một phòng càng thấp.
+
+## 0.6 Còn thiếu để đích chắc
+
+- Tối tính 6 hay 7 ngày; Chủ nhật có nghỉ trưa không (6 ca hay 6,5 ca).
+- Hệ số 0,9 (giảm phí + buổi nghỉ): đích giữ 0,9 hay siết.
+- Đích 2 lấy 15 hay vẫn muốn 18 (khi đó phải đổi phòng: gộp phòng bé, hoặc cơ sở mới phòng to).
+- Mốc thời gian của Đích 1 và Đích 2.
+
+---
+
 # PHẦN I — CƠ CẤU CHI PHÍ (tầng 1 — ĐỀ XUẤT 20/11, chờ Thùy sửa từng dòng)
 
 > Thùy 20/11: *"Cơ cấu chi phí — bản chất là mỗi khoản chi chiếm bao nhiêu phần doanh thu. BK cần xây mô hình sao cho đạt 25 lợi nhuận. Phải có đủ hết các loại chi phí. Xong tầng này mới break xuống tầng dưới."*

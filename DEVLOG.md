@@ -82087,3 +82087,9 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Quyết định:** khoản mua sắm lớn một lần trải đều 12 tháng. Dòng Đầu tư tháng 9 = (44,8 + 28,3) ÷ 12 = 6,1 tr ⇒ tổng chi 370,6 tr (81,1%), lợi nhuận 86,1 tr (18,9%).
 - **Định hướng Thùy:** đang pha phát triển — giáo viên kiêm học thuật + quản lý chất lượng nên lương giáo viên chưa theo quy tắc; nhiều cơ sở thì giáo viên tăng theo, học thuật + QLCL chỉ tăng nhẹ.
 - **Đề xuất ghi §I.4 (chưa chốt):** tách dòng Giáo viên thành Dạy / Học thuật + QLCL; cơ cấu hai tầng (cơ sở → biên đóng góp; phần chung); đích 25 cho pha ổn định. Thiếu tỉ lệ tách lương giáo viên. Cần Lộc xác nhận 17,6 tr tạm ứng iPad có nằm trong 28,3 tr rút quỹ tháng 9 không.
+
+### 21/11 08:59 — [Gộp spec #19] Thùy: spec tài chính theo ĐÍCH; Phần 0 công suất → doanh thu
+- **Định hướng Thùy:** số tài chính BK chỉ để có insight; spec thiết kế theo chuẩn đích, luôn so thực tế với đích để điều chỉnh. Đầu vào: 8 phòng (4×20, 2×15, 2×10), dùng 90, tối 2 ca + Chủ nhật 8–18h đầy + thứ Bảy 3 lớp; Đích 1 12 em/ca, Đích 2 18 em/ca; học phí 150/180/250 nghìn cho ca 1,5/2/2,5 giờ.
+- **Đo (chỉ đọc, TKB + hoc_sinh_lop):** 95 ca · 53 lớp · 61/29/6 ca theo độ dài · 759 lượt em-ca · 8,0 em/ca · 429 lượt em-lớp · giá niêm yết 126,5 tr/tuần = 548 tr/tháng ↔ thật 496,5 ⇒ hệ số 0,9.
+- **Tính:** 163 phòng-ca, dùng 90 = 147. Đích 1 = 1.764 lượt em-ca ≈ 1.100 tr/tháng niêm yết. Đích 2 ở 18 em/ca vượt sức chứa (trung bình 16,25 chỗ, trần 16,9) ⇒ đề xuất 15 ≈ 1.375 tr. "800 lượt" của Thùy hợp lý, hơi thấp (tính ra ~1.000 lượt em-lớp).
+- **Giả định chưa xác nhận:** tối tính 7 ngày; Chủ nhật 6 ca. Cột phong.suc_chua trong DB hầu hết trống — chưa điền (chờ lệnh).
