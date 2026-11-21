@@ -38,7 +38,7 @@
 | **Tổng** | | **163** |
 | **Dùng 90** | (112 + 48) × 0,9 + 3 | **147** |
 
-*Giả định của Claude cần Thùy xác nhận:* tối tính cả 7 ngày (TKB hiện nay tối thứ Bảy và Chủ nhật đều có lớp); nếu chỉ tính 6 tối thì còn 133 phòng-ca.
+**Thùy chốt 21/11: tối tính đầy cả 7 ngày.** *(Còn giả định của Claude: Chủ nhật ban ngày 6 ca, có 1 giờ nghỉ trưa.)*
 
 ## 0.3 Đo hiện tại để hiệu chỉnh (TKB + sĩ số lớp, đo 21/11)
 
@@ -64,9 +64,34 @@
 
 ## 0.6 Còn thiếu để đích chắc
 
-- Tối tính 6 hay 7 ngày; Chủ nhật có nghỉ trưa không (6 ca hay 6,5 ca).
+- ~~Tối 6 hay 7 ngày~~ — chốt 7 tối (21/11). Chủ nhật có nghỉ trưa không (6 ca hay 6,5 ca).
 - Hệ số 0,9 (giảm phí + buổi nghỉ): đích giữ 0,9 hay siết.
 - Mốc thời gian của Đích 1 và Đích 2.
+
+## 0.7 Chiếu chi phí lên đích — ƯỚC LƯỢNG THÔ của Claude (chưa phải cơ cấu đích)
+
+Lấy chi tháng 9 (Phần I) rồi nhân theo thứ kéo nó: khoản theo **số ca** × 1,34 (110 → 147 phòng-ca) · khoản theo **số em** × 2,0 ở Đích 1 và × 2,5 ở Đích 2 · khoản **cố định** giữ nguyên. Doanh thu lấy sau hệ số 0,9.
+
+| Khoản (triệu một tháng) | Kéo theo | Tháng 9 | Đích 1 | Đích 2 |
+|---|---|---|---|---|
+| Giáo viên — nếu trả theo ca như nay | số ca | 164 | 219 | 219 |
+| Giáo viên — nếu trả 30 học phí lớp dạy | doanh thu | — | 297 | 372 |
+| Trợ giảng | số ca | 33 | 44 | 44 |
+| Nhân sự không đứng lớp | cố định | 86 | 86 | 86 |
+| Thuê nhà, điện nước | cố định | 41 | 41 | 41 |
+| Cơ sở vật chất tiêu hao | số ca | 8 | 11 | 11 |
+| Quà, in ấn, nước uống | số em | 17 | 35 | 44 |
+| Tài khoản, hackathon, tuyển sinh, đầu tư | cố định | 21 | 27 | 27 |
+| **Tổng chi** (giáo viên theo ca → theo 30 học phí) | | **370** | **463 → 541** | **472 → 624** |
+| **Doanh thu** | | 457 | 990 | 1.240 |
+| **Chi trên doanh thu** | | 81 | **47 → 55** | **38 → 50** |
+| **Lợi nhuận** | | 19 | **53 → 45** | **62 → 50** |
+
+**Điều rút ra:**
+1. **Ở đích, lợi nhuận 25 không phải là mục tiêu phải gồng mà là mức SÀN rất dễ đạt** — nếu chỉ nhân mô hình hiện tại lên thì lợi nhuận 45–60. Lý do: thêm em vào phòng đã thuê, lớp đã có giáo viên thì gần như không thêm chi (đòn bẩy vận hành).
+2. ⇒ Câu hỏi thật của cơ cấu đích là **phần dư dùng vào đâu.** Giữ lợi nhuận 25 ở Đích 1 thì ngân sách chi là ~740 triệu, trong khi nhân mô hình lên chỉ cần 463–541 ⇒ **dư khoảng 200–280 triệu một tháng** để: trả giáo viên cao hơn · nuôi đội học thuật + quản lý chất lượng riêng (đúng mô hình nhiều cơ sở, §I.4) · sản phẩm (ERP, app) · mở cơ sở mới · hoặc để lợi nhuận cao hơn 25.
+3. **Đường đi mới là chỗ khó, không phải đích:** hiện 8 em một ca, lợi nhuận 19. Mỗi em thêm vào lớp đang có gần như là lợi nhuận ròng ⇒ chỉ số cần theo dõi hằng tháng là **em một ca** và **phòng-ca đã dùng**, trước cả tỉ lệ chi.
+4. *Giới hạn của ước lượng:* chưa tính nhân sự vận hành phải thêm khi số em gấp đôi (chăm sóc phụ huynh, OPS), trợ giảng tăng theo số em chứ không chỉ theo ca, lương tăng theo năm, và bổ trợ (10 phòng) chưa tính thu lẫn chi.
 
 ---
 

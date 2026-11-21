@@ -82125,3 +82125,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 21/11 11:26 — [Gộp spec #19] Thùy chốt Đích 2 = 15 em một ca ("Lấy 15")
 - spec-tai-chinh §0.1, §0.4, §0.5: Đích 2 = 147 phòng-ca × 15 em = 2.205 lượt em-ca ≈ 1.375 tr/tháng niêm yết (~1.240 sau hệ số 0,9). Dòng 18 em giữ lại làm tham chiếu, ghi "đã bỏ". Còn chờ §0.6: tối 6 hay 7 ngày, Chủ nhật 6 ca, hệ số 0,9, mốc thời gian.
+
+### 21/11 11:48 — [Gộp spec #19] Thùy chốt "7 tối" + §0.7 chiếu chi phí lên đích
+- 163 phòng-ca giữ nguyên (đã tính 7 tối). Thêm §0.7: nhân chi tháng 9 theo thứ kéo nó (số ca ×1,34 · số em ×2,0 / ×2,5 · cố định giữ nguyên) ⇒ Đích 1 chi 463–541 tr trên doanh thu 990 (lợi nhuận 45–53), Đích 2 chi 472–624 trên 1.240 (50–62). Kết luận: 25 là mức sàn; cơ cấu đích = quyết định phần dư dùng vào đâu. Ước lượng thô, chưa tính nhân sự vận hành thêm, bổ trợ.
