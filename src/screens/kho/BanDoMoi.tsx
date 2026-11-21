@@ -37,6 +37,7 @@ import DangPickerOne from '../../components/DangPickerOne'
 import { useMonScope } from '../../hooks/useMonScope'
 import { demLopTheoDang } from '../../lib/kho/khoTrenLop'
 import { nhoBen } from '../../lib/nho'
+import { NutBaoSai } from '../../components/BaoSaiCau'
 
 // ⭐ CEO 08/10: dựng bản đồ mới TỪ ĐẦU, không bám bản đồ cũ ⇒ TẮT mọi phần tham chiếu bản đồ cũ trên màn soạn
 // (ngăn 📦, nhãn dạng cũ, ⚠ câu chưa gán, dòng "Khớp bản đồ cũ", bảng gán câu). Bảng/hàm DB vẫn giữ: tới bước XẾP BÀI
@@ -1280,7 +1281,7 @@ function BangGanCau({ g, onDong, onDaGan }: { g: GanMo; onDong: () => void; onDa
                     onChange={(e) => { const s = new Set(chon); if (e.target.checked) s.add(c.ma_cau); else s.delete(c.ma_cau); setChon(s) }} />
                   <div className="min-w-0 flex-1">
                     <div className="mb-0.5 flex flex-wrap gap-x-2 text-[10.5px] text-slate-400">
-                      <span>{c.ma_cau}</span><span>{c.loai_cau}</span><span>dạng cũ {c.ma_dang_cu}</span>
+                      <span>{c.ma_cau}</span><NutBaoSai maCau={c.ma_cau} /><span>{c.loai_cau}</span><span>dạng cũ {c.ma_dang_cu}</span>
                       {c.ma_cum && <span>cụm {c.ma_cum}</span>}
                       {c.so_ban_sao > 0 && <span className="text-indigo-500">+{c.so_ban_sao} bản sao đi theo</span>}
                     </div>

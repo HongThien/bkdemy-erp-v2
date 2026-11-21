@@ -19,6 +19,7 @@ import PrintView from './PrintView'
 import { AnhMmEditCtx } from './anhMmCtx'
 import { coGocMm } from '../../lib/kho/anhCoThat'
 import { useStore } from '../../store/useStore'
+import { NutBaoSai } from '../../components/BaoSaiCau'
 
 export { KhoPicker } // re-export — ETScreen/MTScreen/BTScreen import KhoPicker từ đây (giữ nguyên, khỏi sửa 3 nơi)
 
@@ -412,6 +413,7 @@ export function MaCau({ ma, rac }: { ma: string; rac?: boolean }) {
   return (
     <>
       <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{ma}</span>
+      <NutBaoSai maCau={ma} />
       {rac && <span className="shrink-0 rounded bg-rose-100 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title="Câu này đã bị đưa vào kho rác. Tài liệu vẫn in và chấm được, nhưng nên thay bằng câu khác.">đã vào kho rác</span>}
     </>
   )

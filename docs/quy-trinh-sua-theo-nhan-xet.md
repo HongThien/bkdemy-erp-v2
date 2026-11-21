@@ -19,6 +19,8 @@
 4. **Không đồng ý / thiếu dữ kiện / nhận xét mơ hồ** ⇒ KHÔNG đoán (§1.5 "thà bỏ trống còn hơn đánh sai"): `--khong <id,id> "lý do cụ thể, cần người nói rõ gì"` — người duyệt thấy lý do ngay trên thẻ, ghi nhận xét mới nếu cần.
 5. **Ghi:** viết `goi.json` (`nhan_xet` · `ghi_chu` = đã sửa GÌ, đủ để người duyệt kiểm nhanh · `thay` = cột đổi) → `node scripts/kho/nhan-xet.mjs --sua goi.json` (chạy thử, ROLLBACK) → đọc số → thêm `--ghi`. Sửa + ghi xử lý cùng 1 transaction. Script chỉ cho sửa cột trong registry `DT`/`CON`, **không đụng `da_duyet`**.
 6. **Khâu "dạng" ở Bản đồ mới:** dạng bài do người chọn ngay tại màn Duyệt kho — Claude chỉ đổi `dang_chinh` (bản đồ cũ) khi nhận xét ghi rõ mã; còn lại `--khong` kèm gợi ý dạng bài.
+6b. **Nhận xét "[Báo sai · …]" (Thùy 21/11):** là báo sai từ nút 🚩 của nhân sự (`fn_kho_bao_sai` tự ghi thêm 1 nhận xét `cau`, khâu suy từ loại lỗi: tính sai→`dap_an`, sai đề→`de`, sai dạng→`dang`, trình bày→`trinh_bay`). Xử như mọi nhận xét; khi `--sua`/`--khong` ghi xong, trigger tự ĐÓNG báo cáo tương ứng. Trưởng khối đã tự sửa/xoá trước thì nhận xét đã có xử lý `boi='nguoi'` — không sửa đè.
+6c. **Sổ sai lầm:** sau mỗi lượt chạy `node scripts/kho/bao-sai.mjs --ds` (báo cáo đã đóng, chưa ghi Phần D) → mỗi báo cáo một dòng bảng Phần D của `spec-giai-bai.md` → `--da-ghi <id,id> --ghi`.
 7. **Học lại:** `node scripts/kho/nhan-xet.mjs --thong-ke`. Lỗi cùng kiểu lặp ≥3 lần ở một khối/loại ⇒ rút thành luật trong `spec-giai-bai.md` (ghi nguồn: "từ nhận xét duyệt #id…") để lô soạn sau không mắc lại.
 8. **Báo + log:** DEVLOG (append) — số đã sửa / không sửa, luật mới rút. Commit theo pathspec.
 

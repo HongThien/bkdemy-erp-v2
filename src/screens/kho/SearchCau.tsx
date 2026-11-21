@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { searchCau, listDangOptions, LOAI_CAU, type CauTimThay } from '../../lib/kho/api'
 import { Code, MathText, inp } from './ui'
+import { NutBaoSai } from '../../components/BaoSaiCau'
 import { CauModal } from './DangHub'
 import { DungSaiModal } from './DungSaiBank'
 
@@ -81,7 +82,7 @@ export default function SearchCau({ cauTbl, onClose }: { cauTbl: string; onClose
                   {rows.map((c) => (
                     <div key={c.ma_cau} className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm">
                       <div className="mb-1.5 flex flex-wrap items-center gap-2">
-                        <Code>{c.ma_cau}</Code>
+                        <Code>{c.ma_cau}</Code><NutBaoSai maCau={c.ma_cau} />
                         <span className="rounded bg-slate-100 px-2 py-0.5 text-[12px] font-medium text-slate-600">{loaiLabel(c.loai_cau)}</span>
                         <span className="rounded bg-violet-50 px-2 py-0.5 text-[12px] font-medium text-violet-600" title={c.dang_chinh}>{c.dangTen}</span>
                         {c.nguon_giai === 'ai' && <span className="rounded bg-amber-50 px-2 py-0.5 text-[12px] font-medium text-amber-700" title="Lời giải do AI — cần duyệt">🤖 AI</span>}

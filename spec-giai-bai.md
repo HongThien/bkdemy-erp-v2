@@ -2302,12 +2302,25 @@ Khi soát, Opus sao bản gốc (`.soan.goc.md`) trước khi sửa — số câ
 KHÔNG đòi "bên thứ hai xác nhận đáp số" làm điều kiện vào kho. Trạm kiểm (§C5) và cổng khuôn (trạm 7 §C2) vẫn là trạm của dây chuyền — tệp soạn không qua cổng thì không ghi — nhưng không phải điều kiện xếp làn. Đáp án của câu đã vào kho được rà lại theo Phần E4.
 **Câu CLONE:** Claude kiểm xong thì tự duyệt, không qua hàng duyệt của người (Thùy 18/11).
 Thiếu một điều kiện ⇒ **làn 🟡**: ghi `da_duyet = false`, đánh dấu nghi kèm lý do ⇒ hiện ở màn duyệt của **trưởng khối** (chỉ trưởng khối đúng khối trở lên bấm duyệt — Phần E1).
-Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ). Lô mẫu (§C3) luôn là làn 🟡.
+Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ). **Lô mẫu (§C3) luôn là làn 🟡 — DB thực thi từ 21/11:** lô mẫu khai báo vào sổ `kho_lo_mau` (hàm `fn_kho_lo_mau_dang_ky`, quản lý môn trở lên) với mẫu `ten_de_goc`; còn `duyet_mau_at` rỗng thì trigger `_bdm_tu_duyet_sau_gan` KHÔNG tự duyệt câu thuộc lô đó; quản lý môn duyệt mẫu (`fn_kho_lo_mau_duyet`) xong mới mở làn 🟢 cho lô và các lô sau cùng (khối × loại kì).
+
+**Bảng ĐƯỜNG VÀO KHO (Thùy 21/11 — một chỗ duy nhất; chỗ khác trỏ về đây, đừng chép lại).** Mỗi đường có điều kiện tự duyệt riêng; đường nào ghi `duyet_nguon` gì thì hậu kiểm đo tỉ lệ lọt riêng cho đường đó (`scripts/kho/do-lot.mjs`):
+
+| Đường | Ai/cái gì ghi | Điều kiện câu thành `da_duyet=true` | `duyet_nguon` | Lô mẫu |
+|---|---|---|---|---|
+| **Batch giải bài / đề thi** (Phần C, `ghi.mjs`) | điều phối ghi, DB tự duyệt | §C6: máy gán dạng mức cao + đủ đáp án + không bị nghi (không đòi nhân chứng đáp số) | `ai` | Có — luôn 🟡 tới khi duyệt mẫu |
+| **Clone batch** (§C13, `duyet-nhap-clone.mjs`) | Sonnet sinh, script duyệt | Máy kiểm đáp số theo dạng (bảng `KIEM`) HOẶC Opus giải mù 20%/dạng (≥3 câu; có lệch ⇒ kiểm 100% dạng) — **chặt hơn §C6 vì clone sinh hàng loạt (bài học 08/11, 49/488 sai)** | `ai` | Không áp |
+| **Chat trưởng khối** (`spec-quan-ly-chat-luong` §6.5) | trưởng khối bấm "Vào kho" | Dạng mức cao ⇒ vào kho + duyệt luôn (người bấm là người duyệt); dạng vừa/không khớp ⇒ hàng duyệt. **Clone trong chat KHÔNG tự duyệt** — người duyệt trong chat | `nguoi` | Không (người đã nhìn bài) |
+| **Bổ sung bài lẻ** (§C11) | Thùy/trưởng khối chỉ định dạng | Dạng người chốt (điều kiện 1 coi là đạt) + đủ điều kiện 2–3 | `ai`/`nguoi` | Không |
+| **Nhập sách** (ghép bài + lời giải sách, vd ME 5T) | script nhập | Lời giải sách là nhân chứng đáp số; mục `chua_chac` và bài có hình phải người xem ảnh trước | theo lô | Có (nguồn mới) |
+| **Màn Duyệt lời giải AI** | trưởng khối đúng khối bấm | Người duyệt chuẩn hoá rồi ký — **DB khoá từ 21/11**: chỉ trưởng khối đúng (môn × khối) trở lên, `p_nguoi` phải là chính người đăng nhập | `nguoi` | — |
+
+Đổi điều kiện của một đường ⇒ sửa bảng này TRƯỚC, rồi mới sửa code.
 
 ## C7. Nhãn dữ liệu và hậu kiểm
 
 - Câu do dây chuyền giải: `nguon_giai = 'ai'`, `giai_method = 'claude_code'`, ghi model soạn; câu tự vào kho ghi `duyet_nguon = 'ai'`. Lời giải chép nguyên văn của người (tài liệu có lời giải, không sửa) mới là `nguon_giai = 'nguoi'`.
-- **Hậu kiểm**: ai thấy câu lỗi ⇒ báo sai / xoá (xoá = vào kho rác, mã không cấp lại). **Câu bị báo sai (đề / đáp án sai): Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt; người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm, sai thì người sửa lại sau** (Thùy 18/11; Phần E1; quy trình chạy chưa build — §C10 mục 15). Mỗi câu bị báo ⇒ điều phối ghi một dòng Phần D: sai gì · lọt ở trạm nào · luật rút ra · có phải quét các câu cùng dạng / cùng batch không.
+- **Hậu kiểm**: ai thấy câu lỗi ⇒ báo sai / xoá (xoá = vào kho rác, mã không cấp lại). **Câu bị báo sai (đề / đáp án sai): Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt; người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm, sai thì người sửa lại sau** (Thùy 18/11; Phần E1). **Chỗ báo sai (Thùy 21/11): MỌI câu trong kho có nút 🚩 ở mọi nơi nhân sự nhìn thấy câu** (kho, builder, tìm câu, bản đồ, phiên Claude) — 5 loại: trình bày · tính sai · sai đề · sai dạng · khác; học sinh báo qua ⚑ khi luyện. Luồng: báo (`fn_kho_bao_sai`) → tự thành nhận xét cho Claude (`kho_nhan_xet`, cùng luồng "✎ Cần sửa" — `docs/quy-trinh-sua-theo-nhan-xet.md`) → Claude sửa/ghi → báo cáo tự đóng; **trưởng khối đúng khối cũng được sửa hoặc xoá luôn nhưng PHẢI báo trước** (`fn_kho_bao_sai_xu_ly` bắt buộc có loại + ghi chú + một dòng "đã làm gì", cùng giao dịch). Mỗi báo cáo đã đóng ⇒ điều phối ghi một dòng Phần D qua `scripts/kho/bao-sai.mjs --ds` rồi `--da-ghi` (cột `ghi_spec_at`): sai gì · lọt ở trạm nào · luật rút ra · có phải quét các câu cùng dạng / cùng batch không. Giới hạn đã biết: ai sửa/xoá câu bằng đường khác (sửa thẳng bảng, script) không bị buộc báo — dấu vết còn ở `kho_cau_log`.
 - Lỗi lặp lại cùng kiểu ≥ 3 câu ⇒ không vá từng câu: sửa luật ở Phần A/B, quét lại các câu cùng dạng.
 - Không chạy truy vấn nặng 17–22h (giờ học sinh dùng app). Không chạy hai lượt ghi song song (cấp mã câu va nhau).
 
@@ -2333,15 +2346,15 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 
 "✔" = đã có ít nhất một batch Thùy xem và cho ghi theo quy trình cũ; "—" = batch đầu tiên của ô đó là lô mẫu.
 
+**Ngoài bảng (Thùy 21/11):** lô **CLC lớp 6 → khối 5T** (58 đề thi; 720 câu đã ghi vào kho 5T, 344 câu tự duyệt vì khi đó trigger chưa biết lô mẫu) **coi như ĐÃ duyệt mẫu** — không rút duyệt lại 344 câu; 188 câu máy nghi vẫn chờ trưởng khối. Từ 21/11 lô mẫu khai báo vào `kho_lo_mau` (§C6) nên lỗ hổng này đóng.
+
 ## C10. Code còn nợ so với luật này (làm xong thì xoá dòng)
 
 | # | Việc | Hiện trạng (rà 18/11) |
 |---|---|---|
-| 1 | Lệnh ghi đề (`scripts/kho/de-thi/ghi.mjs`) ghi đúng nhãn AI + model: `nguon_giai='ai'`, `giai_method`, model soạn (§C7) | Đang ghi cứng `nguon_giai='nguoi'`, chưa ghi `giai_method` / model — sửa TRƯỚC batch đề thi kế tiếp |
-| 2 | Xếp làn theo §C6 (luật 18/11): lô mẫu (§C3) phải ở làn 🟡 · câu clone Claude kiểm xong thì tự duyệt | Trigger `_bdm_tu_duyet_sau_gan` (05/11) đã xét đúng ba điều kiện §C6, nhưng chưa biết lô mẫu và áp cho mọi câu chưa duyệt; **clone: đã có đường tự duyệt từ 21/11** (`scripts/kho/clone/duyet-nhap-clone.mjs` — xem §C13) |
 | 3 | Đề thi và bài học Hình đi qua cổng ghi có biên bản + băm nội dung | Đề thi: `ghi-batch.sh` đã chặn đề chưa "KẾT LUẬN: ĐẠT", chưa băm nội dung, `ghi.mjs` chưa qua `cong-ghi.mjs` · bài học Hình: chưa có |
 | 4 | Cổng kiểm dòng `luat:` của tệp soạn (§C4) | Lệnh cắt luật + mã đã có 15/11 (`cat-luat.mjs`, `ghep-brief.mjs`); cổng `dung-de-tu-soan.mjs` chưa đọc `luat:` |
-| 5 | Máy rút mẫu 15% + tính tỉ lệ lọt (§C5) | Chưa có — Opus đang kiểm 100% |
+| 5 | Chạy ĐO tỉ lệ lọt định kỳ (§C5): rút mẫu → Opus giải mù → so → ghi sổ | **Công cụ có từ 21/11** (`scripts/kho/do-lot.mjs`, sổ `kho_do_lot`, mig 202611210824). Chưa có lượt đo thật nào; chưa có lịch (ai giao Opus giải mù, bao lâu một lần, đường vào kho nào đo trước) — chờ Thùy chốt cùng E4 |
 | 7 | Giao diện: lời giải Hình khoảng cách dòng +20% | Chưa làm |
 | 8 | Vá nhãn các câu đề thi đã ghi sai `nguoi` | Đã đếm 18/11: 52.442 câu (Đại 41.355 · HGT 3.872 · Hình 7.215); nhân chứng = 889 tệp `.soan.md` trong repo; chưa vá |
 | 9 | Cổng `--khoi 6` và `--khoi 12` nhận `kho=hinh_hoc` | Chưa nhận ⇒ K12 tạm ghi `hgt` + Ghi chú; K6 báo điều phối |
@@ -2349,13 +2362,12 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 11 | Đọc trường `dang=` / `chac=` của dòng câu (§A10) khi ghi ⇒ đề xuất / gán dạng (gộp mục 6 cũ "trạm soạn phân dạng trong cùng lượt") | Tệp soạn đã có hai trường, `ghi.mjs` đã nhận `dang_bai` / `dang_bai_chac`; cổng chưa đọc |
 | 12 | Hai quy ước dữ liệu dòng (đề thi: đoạn cách dòng trống, màn hình gộp · bài học Hình: `\n` đơn) — thống nhất về một | Chưa |
 | 13 | Mọi đường tạo câu có hình đề ghi nhãn nguồn hình, mặc định `goc` (§C12) + lập KẾ HOẠCH vẽ lại hình theo khối × loại hình, có ngân sách token mỗi đợt, Thùy duyệt từng đợt (Thùy 17–18/11) | Chỉ `gan_hinh.mjs` và `ghi.mjs` ghi nhãn; 14.438 / 14.462 hình đề "chưa rõ nguồn" ⇒ checklist chưa dùng được; chưa có kế hoạch vẽ |
-| 14 | Khoá ở DB: chỉ trưởng khối đúng khối trở lên duyệt câu vào kho, kể cả lô mẫu (Thùy 18/11 — Phần E1) | `fn_kho_duyet_cau` (+ `_ds`, `_menh_de`) chỉ kiểm "là nhân sự", nhận người duyệt từ tham số |
-| 15 | Quy trình Claude tự xử câu báo sai: tự đọc – tự sửa – báo cáo cho người – ghi vết từng lần sửa (Thùy 18/11 — §C7) | Chưa build: ai bấm chạy / lịch, báo cáo gửi ai, ghi vết. Hàm xử lý hiện đòi quyền `bdkt`; 88 câu đang chờ (cũ nhất 14/10) |
+| 15 | Quy trình Claude tự xử câu báo sai: tự đọc – tự sửa – báo cáo cho người – ghi vết từng lần sửa (Thùy 18/11 — §C7) | **Làm một nửa 21/11:** báo sai của nhân sự đã nối vào luồng `kho_nhan_xet` (Claude nhặt bằng `nhan-xet.mjs --ds`, sửa, ghi; báo cáo tự đóng) + `bao-sai.mjs` đưa báo cáo đã đóng sang Phần D. **Còn:** lịch chạy (hiện chỉ khi Thùy gọi / tối), báo cáo gửi ai, và báo của HỌC SINH (92 đang mở, 34 đã đóng chưa ghi Phần D) chưa nối sang Claude — hiện chỉ trưởng khối xử |
 | 16 | Quy trình rà lại đáp án các câu trong kho (Thùy 18/11 — Phần E4) | Chưa thiết kế |
 | 17 | Dọn DB của tool "Giải bài kho chung" đã xoá 27/10 (22 hàm `fn_giaibai_*`, 3 view `v_giaibai_*`, 11 dòng treo) | Chỉ làm khi Thùy gật (Luật xoá) |
 | 18 | Clone: nháp không có cột `menh_de` ⇒ gốc Đúng/Sai không clone được; gốc có hình đề cũng không (§C13) | Chưa làm; cổng hiện bỏ qua các gốc này |
 | 19 | Clone: lời giải 19 dạng còn MỘT mạch (bám mẫu gốc), chưa tách hai phần theo §A5 | Duyệt bằng `mot_phan`; viết lại khi Thùy yêu cầu |
-| 18 | Viết lại lời giải K3 kho cũ sang khuôn hai phần (Khối 3, 20/11) | Đã làm thử 50/2.866 câu (20/11, kết quả tốt: 0 sai đáp số); còn ~2.740 câu chưa có khuôn — chờ Thùy gật khuôn K3 + lệnh quét (§E2 đang cấm quét hàng loạt) |
+| 20 | Viết lại lời giải K3 kho cũ sang khuôn hai phần (Khối 3, 20/11) | Đã làm thử 50/2.866 câu (20/11, kết quả tốt: 0 sai đáp số); còn ~2.740 câu chưa có khuôn — chờ Thùy gật khuôn K3 + lệnh quét (§E2 đang cấm quét hàng loạt) |
 
 Cho tới khi các mục trên xong: batch chạy bằng script hiện có, áp luật Phần A/B; câu ghi `da_duyet=false`, rồi DB tự duyệt khi máy gán dạng mức cao cho câu đủ điều kiện §C6 (trigger 05/11) — làn tự vào kho đang chạy bằng đường này.
 
@@ -2417,6 +2429,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 
 > Mỗi câu bị báo sai / bị xoá sau khi đã vào kho ⇒ một dòng. Lỗi thành luật thì ghi luật vào Phần A hoặc mục khối ở Phần B và trỏ lại đây.
 > Không sửa câu mà không ghi dòng.
+> Nguồn dòng mới (21/11): `node scripts/kho/bao-sai.mjs --ds` liệt kê báo cáo đã đóng mà chưa ghi sổ; ghi xong chạy `--da-ghi <id,id> --ghi`. Lỗi cùng kiểu ≥ 3 câu ⇒ `--thong-ke` rồi sửa LUẬT, không vá từng câu (§C7).
 
 | Ngày | Khối · phần | Câu / batch | Sai gì | Lọt ở trạm nào | Luật rút ra (trỏ mục) | Đã quét câu cùng loại? |
 |---|---|---|---|---|---|---|
@@ -2435,7 +2448,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 - **Câu máy gán dạng ở mức tự tin cao + có đáp án đầy đủ + không bị máy nghi thì TỰ VÀO KHO** (§C6, Thùy 18/11) — không qua màn duyệt. Màn duyệt là cho phần còn lại.
 - **Một trạng thái chờ duy nhất:** câu chờ duyệt là dòng thật trong bảng câu với `da_duyet = false`, dù vào bằng đường nào (dây chuyền giải bài · nhập trên ERP · clone · nhập từ tệp). Không có bảng nháp riêng cho từng đường.
 - **Một màn:** "Duyệt lời giải AI". Các bộ lọc (không phải các hàng riêng): Câu mới · Lời giải mới từ Claude · Nghi sai · Không kiểm được · Tồn đọng · Chưa có dạng · Đúng/Sai.
-- **Ai duyệt (Thùy 18/11): CHỈ trưởng khối của đúng (môn × khối) trở lên** được bấm duyệt câu vào kho, kể cả lô mẫu (§C3) — trên màn hoặc qua phiên Claude của chính trưởng khối. Khoá ở hệ thống, không dựa vào phân công miệng (DB chưa khoá — §C10 mục 14). Người soạn không duyệt câu của mình.
+- **Ai duyệt (Thùy 18/11): CHỈ trưởng khối của đúng (môn × khối) trở lên** được bấm duyệt câu vào kho, kể cả lô mẫu (§C3) — trên màn hoặc qua phiên Claude của chính trưởng khối. Khoá ở hệ thống, không dựa vào phân công miệng — **DB đã khoá từ 21/11** (mig 202611210813: `fn_kho_duyet_cau` / `_ds` / `_menh_de` kiểm `_truong_khoi_tro_len` theo khối của câu; Phó khối, TA, giáo viên không duyệt được; `p_nguoi` phải là chính người đăng nhập; kết nối script không JWT không bị khoá). Người soạn không duyệt câu của mình.
 - **Duyệt = chuẩn hoá:** sửa được ngay tại chỗ đề · dạng (ô tìm, không dropdown) · cụm · đáp số · lời giải; lưu là câu vào kho. Hệ tự ghi người duyệt, giờ duyệt, nguồn duyệt.
 - **Không có "duyệt tất cả" cho hàng Nghi sai và Không kiểm được** — hai hàng này mở từng câu. Duyệt theo lô chỉ cho câu không mang cờ nghi.
 - **Sửa đáp số hoặc lời giải của câu đã có form trắc nghiệm / điền ô ⇒ form bị thu hồi để sinh lại** (`spec-kho-cau-hoi` §6).
@@ -2443,7 +2456,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 - **Câu ở dạng chờ không duyệt được** cho tới khi có dạng (§C6).
 - **Câu CLONE (Thùy 18/11):** Claude kiểm xong thì TỰ DUYỆT, không qua hàng duyệt của người. **Đường này có từ 21/11** (`scripts/kho/clone/duyet-nhap-clone.mjs`, §C13); bảng nháp clone: `spec-kho-cau-hoi` §8 Q5.
 - **Hình — cách giải / biến thể do Claude ghi mà chưa duyệt:** kho hiện nhãn đỏ; KHÔNG in, KHÔNG làm đáp án tham chiếu, KHÔNG làm mẫu cho lượt giải khác (Thùy 09/09).
-- **Câu bị BÁO SAI (Thùy 18/11):** Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt. Người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm; sai thì người sửa lại sau. Thay quyết định 17–18/11 giao trưởng khối duyệt báo sai. Câu sai thật ⇒ một dòng Phần D (§C7). Chưa build: ai bấm chạy / lịch chạy, báo cáo gửi ai, ghi vết từng lần sửa (§C10 mục 15).
+- **Câu bị BÁO SAI (Thùy 18/11):** Claude tự đọc, tự quyết, tự sửa câu trong kho — KHÔNG có bước người duyệt. Người nhận BÁO CÁO (đã sửa gì, vì sao) và hậu kiểm; sai thì người sửa lại sau. Thay quyết định 17–18/11 giao trưởng khối duyệt báo sai. Câu sai thật ⇒ một dòng Phần D (§C7). **Nút 🚩 báo sai ở mọi nơi thấy câu + luồng báo → Claude sửa → Phần D: xem §C7 (Thùy 21/11).** Còn thiếu: lịch chạy, báo cáo gửi ai (§C10 mục 15).
 - **Khi QUÉT / RÀ kho (E2, E4):** máy và AI không sửa đáp số của kho — chỉ đánh dấu nghi kèm lý do; câu lệch rút về hàng chờ. (Khác với câu bị báo sai ở dòng trên.)
 
 ## E2. Quét lại kho cũ — ba mức (Thùy 09/09)
@@ -2467,6 +2480,7 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
 | 17/11 | Ranh giới với `spec-kho-cau-hoi` (luật ở đây · quy trình, công cụ, dữ liệu ở đó) | đầu file |
 | 18/11 | Thùy: tự vào kho theo mức tự tin phân dạng · clone tự duyệt · chỉ trưởng khối đúng khối duyệt · báo sai Claude tự xử · chưa quét kho hàng loạt · cần quy trình rà đáp án kho | §C6, §C7, E1, E2, E4 |
 | 20/11 | Thùy xác nhận 3 điểm rà luật 18/11: **(1) chấp nhận hậu kiểm** thay nhân chứng đáp số — vì người dùng luôn nhìn thấy câu, chỉ cần có **chỗ báo câu sai ở mọi nơi người dùng thấy câu** (hiện chỉ HS báo được, trong bài test — `src/lib/baoloi_cau.ts`; kho / builder / bản in chưa có nút báo cho nhân sự) · (2) Phần D phải có dòng cho mỗi câu bị báo sai · (3) hai đường xử câu sai (báo sai: Claude sửa tại chỗ · quét/rà: chỉ đánh dấu) giữ nguyên | E1, §C10 mục 15 |
+| 21/11 | Thùy duyệt phương án hoàn thiện: **(1)** lô CLC coi như đã duyệt mẫu (§C9) · **(2)** DB: lô mẫu `kho_lo_mau` + khoá người duyệt = trưởng khối đúng khối (mig 202611210813) · **(3)** báo sai MỌI câu trong kho, 5 loại, trưởng khối sửa/xoá phải báo trước, nối luồng `kho_nhan_xet` của Claude + sổ Phần D (mig 202611210816/0818/0821; `bao-sai.mjs`) · **(4)** công cụ đo tỉ lệ lọt `do-lot.mjs` (mig 202611210824) · **(5)** dọn spec: bảng ĐƯỜNG VÀO KHO (§C6), §C10 | §C6, §C7, §C9, §C10, E1 |
 
 ## E4. Rà lại đáp án kho — CHƯA THIẾT KẾ (Thùy 18/11)
 

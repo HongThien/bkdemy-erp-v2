@@ -5,6 +5,7 @@ import { useSkinErp } from '../lib/erpSkin'
 import { useIsMobile } from '../hooks/useIsMobile'
 import HoSoModal from '../screens/nhansu/HoSoModal'
 import ReportButton from './ReportButton'
+import BaoSaiHost from './BaoSaiCau'
 import DuongDan from './DuongDan'
 import HomThu from './HomThu'
 import NutGhimYT from './NutGhimYT'
@@ -61,6 +62,7 @@ export default function TopBar({ email }: { email: string }) {
       {/* Nút Báo lỗi tự mang màu nền sáng (dùng chung nhiều nơi) — trên thanh tối thì nhuộm lại cho đọc được. */}
       <div className={`ml-auto flex shrink-0 items-center gap-2 text-xs ${sk.cd === 'toi' ? '[&>button:first-child]:border-rose-300/50 [&>button:first-child]:text-rose-300 [&>button:first-child:hover]:bg-rose-400/15' : ''}`}>
         <ReportButton />
+        <BaoSaiHost />
         <HomThu di={dh.di} duocDi={(id) => id === 'home' || dh.mucs.some((m) => m.id === id)} />
         <button onClick={() => setHoSo(true)} title={`Hồ sơ của tôi (đổi ảnh đại diện) — ${email}`} className="flex max-w-[210px] items-center gap-1.5 text-[var(--sk-muted)] hover:text-[var(--sk-acc)]">
           {dh.me?.nhanSu.anh_url

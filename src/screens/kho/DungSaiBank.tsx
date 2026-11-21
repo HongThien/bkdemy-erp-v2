@@ -1,9 +1,10 @@
 // Panel ĐÚNG/SAI — CON của 1 CHUYÊN ĐỀ (mở từ header chuyên đề trong BanDo, cạnh "Lý thuyết chung").
 // Câu = 1 đề chung + 4 mệnh đề, MỖI mệnh đề 1 dạng riêng (chọn dạng bất kỳ trong khối). Lưu ở dai_cau_hoi (menh_de jsonb).
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { listDungSaiByDang, createCauDungSai, updateCau, deleteCau, duyetCau, boDuyetCau, uploadKhoImage, callGeminiJson, buildDungSaiIngestPrompt, parseDungSaiJson, DUNGSAI_SCHEMA, type CauHoi, type MenhDe, type MapRow } from '../../lib/kho/api'
+import { listDungSaiByDang, createCauDungSai, updateCau, duyetCau, boDuyetCau, uploadKhoImage, callGeminiJson, buildDungSaiIngestPrompt, parseDungSaiJson, DUNGSAI_SCHEMA, type CauHoi, type MenhDe, type MapRow } from '../../lib/kho/api'
 import { inp, MathText } from './ui'
 import SearchSelect from '../../components/SearchSelect'
+import { moBaoSai } from '../../components/BaoSaiCau'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 
 const ABCD = ['a', 'b', 'c', 'd']
@@ -31,8 +32,8 @@ export default function DungSaiPanel({ t2Ma, t2Ten, tbl, allDang, onClose }: {
   useEffect(() => { reload() }, [t2Ma]) // eslint-disable-line
 
   async function onDelete(c: CauHoi) {
-    if (!confirm('Xoá câu đúng/sai này?')) return
-    try { await deleteCau(c.ma_cau, tbl); await reload() } catch (e: any) { alert(e.message ?? String(e)) }
+    // Xoá câu kho = BÁO SAI trước rồi mới xoá (Thùy 21/11, mig 202611210816).
+    moBaoSai(c.ma_cau, { mode: 'xoa', onXong: () => { void reload() } })
   }
   // ⭐ 20/08 (Thùy: nhãn đã/chưa kiểm duyệt) — cùng cột da_duyet với câu thường (chung bảng dai_cau_hoi/
   // khtn_cau_hoi), nên áp y hệt ở đây cho đối xứng, không để câu Đúng/Sai thành lỗ hổng không duyệt được.

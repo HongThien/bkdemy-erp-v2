@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { vaoKho, type VaoKhoCau } from '../../lib/phien'
 import { LoiGiaiXem, MathText } from '../kho/ui'
 import ChuPhien from './ChuPhien'
+import { NutBaoSai } from '../../components/BaoSaiCau'
 
 export type TheCauData = {
   id: string; loai_cau: string; noi_dung: string; lua_chon?: string[] | null; dap_an?: string | null; loi_giai?: string | null
@@ -95,6 +96,7 @@ export function TheCau({ phienId, d, mo, onGui, onNhap }: {
         <span className="text-slate-500">{LOAI[d.loai_cau] ?? d.loai_cau}</span>
         <DongThu daThu={d.da_thu} />
         {tt.maCau && <span className="rounded bg-emerald-50 px-1.5 py-0.5 font-medium text-emerald-700">📥 {tt.maCau}{tt.duyet ? ' · đã duyệt' : ' · chờ duyệt'}</span>}
+        {tt.maCau && <NutBaoSai maCau={tt.maCau} />}
       </div>
       <div className="mb-1.5 text-[12.5px] text-slate-600">
         {d.dang?.dang_bai_id

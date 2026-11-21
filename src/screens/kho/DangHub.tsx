@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import {
-  listCauByDang, updateCau, deleteCau, duyetCau, boDuyetCau,
+  listCauByDang, updateCau, duyetCau, boDuyetCau,
   buildClonePrompt, parseCloneJson, saveCloneBatch,
   buildOcrGocPrompt, parseGocJson, buildCloneFromGocPrompt, parseVariantsJson, GOC_SCHEMA,
   buildBatchPrompt, parseBatchJson, parseStructuredText, saveCauBatch, callGeminiJson,
@@ -14,6 +14,7 @@ import CumBaiTab from './CumBaiTab'
 import TienDeBox from './TienDeBox'
 import { fileToCanvases, canvasToJpegBase64, cropCanvasBox } from '../../lib/pdfRender'
 import PdfCropper from '../../components/PdfCropper'
+import { moBaoSai } from '../../components/BaoSaiCau'
 import { ImgInsertBar, insertImageAtCursor } from '../../components/ImgInsertBar'
 import { myNhanSuId } from '../../lib/nhansu'
 
@@ -89,8 +90,8 @@ export default function DangHub({ d, config, chuan, allDang, onClose, onEditDang
   useEffect(() => { reload() }, [d.leafMa]) // eslint-disable-line
 
   async function onDelCau(c: CauHoi) {
-    if (!confirm('Xoá câu này?')) return
-    try { await deleteCau(c.ma_cau, cauTbl); await reload() } catch (e: any) { alert(e.message ?? e) }
+    // Xoá câu kho = BÁO SAI trước rồi mới xoá (Thùy 21/11, mig 202611210816) — chỉ trưởng khối đúng khối xoá được; người khác chỉ báo.
+    moBaoSai(c.ma_cau, { mode: 'xoa', onXong: () => { void reload() } })
   }
   async function onToggleDuyet(c: CauHoi) {
     try { await (c.da_duyet ? boDuyetCau(c.ma_cau, cauTbl) : duyetCau(c.ma_cau, cauTbl)); await reload() }

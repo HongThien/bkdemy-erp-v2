@@ -33,6 +33,11 @@ const CHI_CAU = args.includes('--chi-cau')
 // --model-lam <id>; không khai thì để trống (§1.5: không đoán nhãn). Câu cũ vá riêng, chỉ với đề có tệp .soan.md làm nhân chứng.
 const iModel = args.indexOf('--model-lam')
 const MODEL_LAM = iModel >= 0 ? args[iModel + 1] : null
+// --lo-mau (21/11, spec-giai-bai §C3/§C6): đề này là LÔ MẪU của (khối × loại kì) ⇒ khai báo vào kho_lo_mau TRƯỚC khi chèn câu, để trigger tự duyệt
+// bỏ qua câu của đề (mẫu = tên đề). Quản lý môn duyệt mẫu sau bằng fn_kho_lo_mau_duyet. --loai-ki "Cuối kì I" chỉ để ghi chú.
+const LO_MAU = args.includes('--lo-mau')
+const iLoaiKi = args.indexOf('--loai-ki')
+const LOAI_KI = iLoaiKi >= 0 ? args[iLoaiKi + 1] : null
 if (!dir || !existsSync(join(dir, 'de.json'))) { console.error('Dùng: node scripts/kho/de-thi/ghi.mjs <thư mục có de.json> [--ghi]'); process.exit(2) }
 const de = JSON.parse(readFileSync(join(dir, 'de.json'), 'utf8'))
 const url = process.env.DATABASE_URL_RW ?? bien('DATABASE_URL')?.gia_tri
@@ -121,6 +126,14 @@ try {
   if (existsSync(pdf)) pdfGocUrl = await up('kho-tailieu', `de_thi/${thang}/${randomUUID()}_${sha8}.pdf`, readFileSync(pdf), 'application/pdf')
 
   await c.query('begin')
+  if (LO_MAU) {
+    for (const kho of new Set(de.cau.map((q) => q.kho))) {
+      if (kho !== 'dai' && kho !== 'hgt') continue   // trigger tự duyệt chỉ có ở kho có bảng gán dạng (dai / hgt / khtn…)
+      await c.query(`insert into kho_lo_mau (bang_cau, mau, khoi, loai_ki, ghi_chu) values ($1, $2, $3, $4, 'khai báo bởi ghi.mjs --lo-mau') on conflict (bang_cau, mau) do nothing`,
+        [`${kho}_cau_hoi`, de.ten, de.khoi, LOAI_KI])
+    }
+    console.log('  ⚑ LÔ MẪU: câu của đề này KHÔNG tự vào kho tới khi quản lý môn duyệt mẫu (kho_lo_mau).')
+  }
   const maCua = new Map() // q → { ma_cau, kho, trung }
   const tk = { moi: 0, trung: 0, dang_cho: 0, menh_de_cho: 0, de_xuat: 0, gan: 0, kho_ds: 0, doi_dang_cu: 0 }
   for (const kho of ['dai', 'hgt', 'hinh_hoc']) { // hinh_hoc = hình phẳng THCS (K8 10/10), mã câu do DB cấp
