@@ -1178,6 +1178,13 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
   - Đề KHÔNG ghi các đẳng thức bằng chữ (ngoại lệ có chủ đích của luật "đề tự đủ dữ kiện"). Khuôn đề: "Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau). a) Viết các yếu tố bằng nhau mà đề bài cho trên hình. b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau. c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau)."
   - Hình phải đúng và ĐỦ mọi ký hiệu như ảnh gốc (số gạch, số cung, ô vuông), không thêm ký hiệu nào. Cạnh chung không ký hiệu — lời giải ghi `(cạnh chung)`.
   - Phần 2: a) "Đề bài cho:" từng đẳng thức `(gt)` · b) "Xét … có:" → "Do đó $\triangle …=\triangle …$ (c.c.c)." · c) "Tính chất suy ra:" ĐỦ mọi cặp tương ứng còn lại, mỗi cặp một dòng; 1–2 dòng hệ quả (phân giác, song song, vuông góc) chỉ khi chắc chắn.
+- **Hình–Luyện CÂY (`hinh_baitoan` · `hinh_cach_giai`) — chuỗi K7 Tam giác bằng nhau** [21/11 · Thùy chọn làm hình rồi lời giải; script mẫu `scripts/kho/hl-loi-giai-k7-tam-giac-v1.mjs`]:
+  - Lời giải của cách mặc định = **Phần 2 thuần** (dòng ngắn + căn cứ, khuôn "Xét … có:"); cây chưa có chỗ lưu sơ đồ tư duy (§A6 chỉ có ở `hinh_hoc_cau_so_do`) và 402 lời giải cây hiện có đều ở dạng này.
+  - Whitelist của chuỗi = whitelist K7 (a): c.c.c · c.g.c · g.c.g · (ch - gn) · (ch - cgv) · tam giác cân · trung trực CHỈ định nghĩa · các bài "ba điểm thẳng hàng" dùng ba phương pháp HH00170–172 (hai tia cùng là phân giác thì trùng · cộng góc kề bù + hai điểm khác phía · tiên đề Ơ-clit). Không dùng hình bình hành, đường trung bình, "phân giác = đường cao = trung tuyến" của tam giác cân.
+  - **Bài nối bài ⇒ viện số hiển thị**: "(Bài 4)" = số **B…** của `fn_hl_so_hien_thi` (đọc từ DB lúc ghi, KHÔNG gõ tay). Số B đổi khi thêm / xoá bài ⇒ chạy lại script sau khi sửa dữ liệu. Nhóm bài viện đầu ra: "(Bài 1–3)", "(Bài 8 hoặc Bài 10)" cho hai kiểu.
+  - Vị trí điểm đề không ghi (A nằm giữa B, F…) ⇒ ghi "(theo hình)" ngay trong dòng. Tia nằm giữa ⇒ nêu điểm khác phía; thẳng hàng bằng cộng góc ⇒ phải nêu hai điểm đầu mút khác phía đối với đường thẳng chung.
+  - **Hình cho nút:** `scripts/anh/ve_hinh_k7_tam_giac_v2.mjs` (tra mã nút theo đường tên từ mô hình gốc, gắn `gan_hinh.mjs --bang mohinh`); hình cộng dồn giả thiết, không vẽ điều phải chứng minh (§A8).
+  - **Kiểm bắt buộc:** script toạ độ riêng cho chuỗi (đủ 3 cạnh + 3 góc theo thứ tự đỉnh, song song, thẳng hàng, nằm giữa, cùng/khác phía, tia trùng) chạy ≥ 300 bộ số ngẫu nhiên mỗi mô hình, và **thử đảo một khẳng định cho nó bắt** để biết kiểm có cắn.
 - Lời giải Hình 7 nhập 07–10/10 (HH00099–HH00104 lô đầu, HH00112) chưa có 2 phần — "khi nào hoàn thiện thì sửa một thể", không sửa lẻ [09/10 · Thùy].
 - Mẫu lập luận: `HH00112` (23 câu Ôn tập Chương III), `HH00099–104`; mẫu CKI: `kho-rules/dai/lo/k7/CKI-02`, `CKI-11`, `CKI-19`.
 
@@ -1185,6 +1192,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - [10/10] cộng góc không nêu tia nằm giữa; khẳng định không kèm lí do trong ngoặc ⇒ chưa đạt.
 - [10/10] số đo trên hình vẽ nhỏ ⇒ phóng to trước khi chép; số liệu chỉ có trên hình mà không chép vào đề ⇒ sai luật "đề tự đủ dữ kiện".
 - [27/10] dòng dài dày đặc ký hiệu ⇒ dòng ngắn (Hình chung).
+- [21/11] giả thiết nút Hình–Luyện viết "Tia $DE$ cắt đường thẳng $AB$ tại $F$" nhưng hình có $D$ nằm giữa $E$ và $F$ ⇒ tia sai hướng (phải là tia $ED$ hoặc "giao điểm của đường thẳng $DE$ và $AB$"); lộ ra khi viết lời giải bằng toạ độ ⇒ **viết giả thiết bằng toạ độ hình trước, không theo trí nhớ của file nguồn**; đã sửa MH.285.
 - [14/10 · Thùy] đề hình thiếu giả thiết cần cho hình (vd thiếu "BD là tia phân giác của góc ABC") ⇒ bổ sung vào đề + `**Ghi chú:**`, không ngầm dùng.
 
 ### Theo loại nguồn

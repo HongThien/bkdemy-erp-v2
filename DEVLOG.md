@@ -82222,3 +82222,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ### 21/11 (đêm) — [Hình–Luyện K7] MH.131: ĐỔI tiền đề hai nhánh N,P và L,Q (Thùy chốt "Đổi tiền đề")
 - `BT.07.131.08` (N trung điểm AB, P đối xứng C qua N): tiền đề **B1 → B2** · `BT.07.131.10` (L trung điểm AC, Q đối xứng B qua L): **B2 → B1**. Lý do: D,B,P thẳng hàng cần AC∥BD (từ B2); D,C,Q thẳng hàng cần AB∥CD (từ B1). Script `scripts/kho/hl-k7-131-doi-tien-de.mjs` (chạy thử ROLLBACK rồi `--ghi`, đi qua `fn_hl_sua_bai` giữ nguyên đề · hình · lời giải). Đọc lại: MH.131 vẫn 12 tiền đề, sai nhánh 0, hai lời giải còn nguyên (đã viện đúng "Bài 4" / "Bài 3").
 - Dòng "Lệch tiền đề cần Thùy xem" ở mục lời giải phía trên: đã xử lý xong bằng mục này.
+
+### 21/11 (đêm) — [Spec] Ghi quyết định K7 vào spec (Thùy: "ghi spec rồi push")
+- `spec-ban-do-toan.md`: header + §10.2 **bỏ nhánh chính / phụ** (cột `chinh` giữ nhưng chuỗi mới luôn false) · §10.4 luật "rẽ phụ ≤ 1" bỏ (hệ quả, chờ Thùy xác nhận khi sửa code) · §10.5 ghi cách xếp cũ cần mockup mới · §10.8 đo 21/11 · **§10.9 mới** (K7 Tam giác bằng nhau: phạm vi, cấu trúc, hình, lời giải, việc còn mở) · §12b #8 (bỏ chính–phụ ở code — chưa làm, chờ lệnh).
+- `spec-giai-bai.md`: Khối 7 Hình (b) thêm mục "Hình–Luyện CÂY" (Phần 2 thuần · whitelist · viện "Bài N" theo số hiển thị · "(theo hình)" · kiểm toạ độ ≥ 300 bộ + thử đảo) · Sai lầm Hình [21/11] "Tia DE" sai hướng.
+- Chưa sửa code/DB cho chính–phụ (CLAUDE.md: việc phát sinh chỉ làm khi Thùy ra lệnh riêng).

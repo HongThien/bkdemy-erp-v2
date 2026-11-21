@@ -4,6 +4,7 @@
 > Việc DB / app phát sinh từ các quyết định ở §12 **chỉ làm khi Thùy ra lệnh riêng** (danh sách §12b).
 > **Gộp từ:** `spec-ban-do-4-tang.md` · `spec-ban-do-k12.md` · `spec-cum-bai.md` · `spec-format-noidung.md` (CHỈ phần lý thuyết / thẻ `##`) · `spec-hinh-cay-nhanh.md` ·
 > `spec-hinh-luyen.md` · `spec-kho-hinh-v3.md` (phần cấu trúc lưới / kho bài–ý) · mục bản đồ trong `HANDOFF.md` (8T, 4T/5T) · memory bản đồ (20/10, 21/10, 22/10, 05/11).
+> **Cập nhật 21/11 (Thùy):** Hình–Luyện **bỏ phân biệt nhánh chính / phụ — chỉ còn "nhánh"** (§10.2) · K7 Tam giác bằng nhau dựng lại cây + hình + lời giải (§10.9). Code màn Cây nhánh chưa theo (§12b #8).
 > **Đối chiếu DB 17/11** (role `claude_build`, chỉ SELECT, `pg_get_functiondef` / `pg_trigger` / đếm dòng). Chỗ nguồn nói một đằng, DB một nẻo ⇒ ghi ở §12, **không tự sửa**.
 > **Không thuộc spec này:** công thức đo / mastery / dạng yếu (→ `spec-mastery.md`; ở đây chỉ trỏ) · hiển thị CÂU HỎI, lời giải, "Bài tập tự luyện", MCQ / điền ô (→ `spec-kho-cau-hoi.md`) ·
 > giải bài, soạn nội dung lý thuyết / ví dụ theo từng khối, bóc đề (→ `spec-giai-bai.md`) · builder / giáo trình / in đề ET–MT (→ `spec-builder.md`) · bản đồ KHTN / Lý / Hoá (→ #14–#16) · bản đồ phiêu lưu app HS (→ `spec-app-hs.md`).
@@ -230,7 +231,7 @@ Người soạn gõ text liền mạch trong textarea; thêm một dòng thẻ *
 ### 10.2 Luật cây (Thùy 22/10 — THAY "rẽ nhánh từ bài mẹ" 14/10)
 
 - **Giả thiết nối giả thiết, bài nối bài.** Giả thiết mô hình (gốc chuỗi) và mỗi giả thiết thêm là CÙNG một kiểu nút. Nhánh rẽ ra từ **giả thiết**, không từ bài. **Không bao giờ bài nối vào giả thiết**; bài chỉ nối bài theo trước → sau (tiền đề, AND, nhiều cái được).
-- Cạnh cha: `hinh_mo_hinh_cha(mo_hinh_id → cha_id, chinh)`; **một cha** (unique); `chinh=true` = **nhánh chính** (≤ 1/cha), còn lại **nhánh phụ**.
+- Cạnh cha: `hinh_mo_hinh_cha(mo_hinh_id → cha_id, chinh)`; **một cha** (unique). ⭐ **Bỏ nhánh chính / phụ** [21/11 · Thùy: "chỉ là nhánh thôi, vì có nhiều bài không sâu nhưng rất rộng — nhiều nhánh"]: các nhánh con của một giả thiết là **song song, ngang hàng**; không còn "nhánh chính". Cột `chinh` **giữ nguyên trong DB** (không xoá) nhưng chuỗi dựng từ 21/11 luôn `chinh=false`; luật cũ "`chinh=true` ≤ 1/cha" hết hiệu lực. Các cạnh `chinh=true` cũ (K8 · K9) để nguyên tới khi sửa code (§12b #8).
 - RPC: `fn_hl_them_gia_thiet(cha, ten, gt_them, chinh)` · `fn_hl_doi_cha_gia_thiet` · `fn_hl_them_bai` / `fn_hl_them_bai_sau` · `fn_hl_sua_bai` (bài + cách giải mặc định + tiền đề trong 1 transaction; tiền đề phải cùng cây) · `fn_hl_chuyen_bai` (cùng cây; cấm vòng) · `fn_hl_doi_thu_tu` · `fn_hl_tao_mo_hinh` (sinh `phan='luyen'`). `fn_hl_re_nhanh*` / `fn_hl_doi_neo` **đã khoá** (raise). Chuyển bài sang cây khác: cấm.
 - **Giả thiết hiệu lực** của bài = `gia_thiet` gốc + `gia_thiet_them` của từng nút trên đường gốc → nút của bài + `gia_thiet_rieng` của bài (`_hl_duong_mo_hinh`, `fn_hl_gia_thiet_hieu_luc`, `fn_hl_gia_thiet_phan`). `gt_thay_the=true` ⇒ thay thế thay vì cộng. Con thấy cha, **anh em không thấy nhau**. Luật 17/08 "bài kế thừa giả thiết bài cha" **bỏ**. Tính ở DB; TS chỉ gọi RPC / render.
 - **Bất biến "nhánh chứa tiền đề":** mọi tiền đề *t* của bài *b* nằm trên đường gốc → nút(*b*). Vi phạm ⇒ cờ vàng **⚠ sai nhánh** (`fn_hl_sai_nhanh`), **không chặn lưu**, nhưng builder / in đề **từ chối** bài sai nhánh; cờ nổi ở mọi mức gập. Tiền đề lấy từ cách giải mặc định (`hinh_cach_tien_de`) — **tiền đề gắn ở CÁCH GIẢI**, không ở bài (v3).
@@ -246,13 +247,13 @@ Người soạn gõ text liền mạch trong textarea; thêm một dòng thẻ *
 
 ### 10.4 Chọn ý (MT · ET · giáo trình) và in
 
-- Tick **từng ý** trên bản đồ (`ChonYTuCay.tsx`). **Đường hợp lệ:** từ ý đầu tới ý cuối đi một đường theo chiều mũi tên, không quay lại, rẽ nhánh phụ **tối đa 1 lần** (đi thẳng nhánh chính / qua nhóm bài không tính là rẽ); bỏ qua ý giữa được. Sai: 2 thành viên cùng nhóm · ý ở 2 nhánh anh em · rẽ phụ 2 lần ⇒ **chỉ CẢNH BÁO, không chặn** (Thùy 09/11).
+- Tick **từng ý** trên bản đồ (`ChonYTuCay.tsx`). **Đường hợp lệ:** từ ý đầu tới ý cuối đi một đường theo chiều mũi tên, không quay lại, bỏ qua ý giữa được. Sai: 2 thành viên cùng nhóm · ý ở 2 nhánh anh em ⇒ **chỉ CẢNH BÁO, không chặn** (Thùy 09/11). *Luật cũ "rẽ nhánh phụ tối đa 1 lần" gắn với nhánh chính / phụ ⇒ **bỏ theo 21/11** (hệ quả; chờ Thùy xác nhận khi sửa `ChonYTuCay.tsx`).*
 - **In** (`fn_hl_ghep_y`, `mucGhep`): có ý thành viên ⇒ in giả thiết thành viên, ý thành viên đứng đầu, rồi giả thiết thêm của các nhánh sau nút nhóm (không in lại đầu ra); không tick thành viên ⇒ in thẳng đầu ra. Giả thiết thêm của mỗi nhánh in ngay trước ý đầu tiên của nhánh. **Thứ tự ý cố định LÚC CHỌN** — lúc in không xếp lại (ô chấm ET đi theo đúng thứ tự đó).
 - **In chuỗi** (🖨, `ChuoiHinhPrintView.tsx`, 23/10): mỗi giả thiết có bài = 1 khối (nhãn nhánh + giả thiết + hình), xếp theo số B nhỏ nhất; "Bài N." = số B; sao độ khó; bản GV thêm lời giải.
 
 ### 10.5 Hiển thị — màn Cây nhánh (`CayNhanh.tsx`)
 
-- **Tab ① Chuỗi:** chỉ hai hướng — **XUỐNG** và **SANG PHẢI** (không vòng trái, không rẽ lên). **Nhánh chính đi thẳng xuống · nhánh phụ rẽ sang phải**; trong mỗi giả thiết **chuỗi bài nằm ngang**: cột = cấp theo tiền đề cùng giả thiết, bài con ĐẦU TIÊN (theo số) đi tiếp cùng hàng, mỗi bài con sau xuống một hàng mới; tiền đề còn lại ghi ở góc thẻ; **mũi tên đi trong khe, không đè thẻ**. Nhánh phía sau ưu tiên gần trên, nhánh phía trước vướng thì lùi xuống — không bao giờ đè. Xếp chỗ thuần hiển thị (client).
+- **Tab ① Chuỗi:** chỉ hai hướng — **XUỐNG** và **SANG PHẢI** (không vòng trái, không rẽ lên). **Nhánh chính đi thẳng xuống · nhánh phụ rẽ sang phải** *(luật cũ — từ 21/11 không còn nhánh chính / phụ, cách xếp các nhánh ngang hàng CHƯA thiết kế: mockup HTML cho Thùy duyệt TRƯỚC khi sửa `CayNhanh.tsx`)*; trong mỗi giả thiết **chuỗi bài nằm ngang**: cột = cấp theo tiền đề cùng giả thiết, bài con ĐẦU TIÊN (theo số) đi tiếp cùng hàng, mỗi bài con sau xuống một hàng mới; tiền đề còn lại ghi ở góc thẻ; **mũi tên đi trong khe, không đè thẻ**. Nhánh phía sau ưu tiên gần trên, nhánh phía trước vướng thì lùi xuống — không bao giờ đè. Xếp chỗ thuần hiển thị (client).
 - **Thẻ:** bài = trắng bo góc, viền màu nhánh, số + tên 1 dòng, cờ ⚠ · giả thiết thêm = **lục giác màu đặc** (khác hẳn thẻ bài), bấm = gập / mở · mô hình con = viền đứt xanh lá · ô gập = viền chấm "▸ N bài" + ⚠. Mỗi nhánh một dải nền nhạt; dây tiền đề xuyên nhánh **mặc định không vẽ** (chỉ bài đang chọn: xanh; sai nhánh: đỏ đứt).
 - **Popup bài:** đề · đáp án · lời giải · **hình** (theo giả thiết hiệu lực; bản thật = `anh_de` của bài / ý, resolve như `fn_hl_bai_full`; chưa có hình thì khung "chưa có hình", không chặn) · giả thiết hiệu lực (gốc → nhánh → riêng) · tiền đề (bấm nhảy) · cờ sai nhánh + nút chuyển · **Nhãn**: Độ khó 1–5 · Dạng bài · Bổ đề (danh mục `hinh_dang` / `hinh_bo_de`, khối nhãn ≤ khối mô hình; `fn_hl_bai_nhan_dat`, `fn_hl_bai_do_kho_dat`, đọc `fn_hl_bai_nhan_cay`).
 - **Gập:** không có ngưỡng tự gập (CEO 14/10); người dùng tự gập, mặc định mở hết, nhớ theo người dùng. **Tập trung:** chọn bài ⇒ phần ngoài đường gốc → bài và cây con mờ đi. **Tab ② Nhóm:** card lồng theo cây, select "Chuyển nhánh" vá tại chỗ. **Tab ③ Kho bài:** kho của mô hình, mỗi chuỗi ý một dòng. Nhóm bài: khung nền + sự kiện + thành viên cho/hỏi, một mũi tên "đầu ra".
@@ -283,6 +284,16 @@ Người soạn gõ text liền mạch trong textarea; thêm một dòng thẻ *
 - Mô hình gốc `phan='luyen'`: **27** (K7 13 · K8 10 · K9 4), đủ chủ đề · nút giả thiết `luyen` khác: 27 thường · 4 nhóm bài (1 là gốc) · 10 thành viên · cạnh cha 60 (16 chính) · sự kiện 10 · cho/hỏi 26.
 - Nốt `hinh_baitoan` của cây luyện: **93**; trọng điểm bật: **0** · nhãn độ khó / dạng / bổ đề: **0 dòng**; danh mục `hinh_dang` / `hinh_bo_de`: **0**.
 - Kho Luyện: **792 bài** (K7 60 · K8 224 · K9 508) · **1.878 ý** (duyệt 187) · 223 bài đã gán mô hình · **1 ý** đã gán nốt.
+
+- **Đo 21/11:** mô hình gốc luyện K7 **12** (MH.133 xoá) · tổng gốc luyện 27 · cạnh cha 59 (6 còn `chinh=true`, thuộc K8 · K9) · nốt cây luyện 107.
+
+### 10.9 K7 "Tam giác bằng nhau" — dựng lại theo `Documents\Mô hình 7.docx` (Thùy 21/11)
+
+- **Phạm vi:** 4 mô hình gốc **MH.126** Phân giác trong tam giác vuông · **MH.130** … tam giác nhọn · **MH.131** Tam giác cụng đầu · **MH.132** Tam giác cân. **MH.133** "Hai trung điểm" BỎ. 8 mô hình "Đường thẳng song song" (MH.076, 085–091) chưa có file chuỗi — giữ nguyên.
+- **Cấu trúc (đọc lại DB 21/11):** MH.126 8 nút (2 nhóm bài · 5 thành viên) · 11 bài · 4 tiền đề · MH.130 3 · 7 · 6 · MH.131 9 · 14 · 12 · MH.132 7 · 27 · 27; sai nhánh 0. "Nhóm" của file chỉ là **nhóm bài ở MH.126** (nhóm 1 ba thành viên: ba cách phát biểu; nhóm 2 hai kiểu điểm F); mọi chỗ khác "nhóm" trong file = các nhánh giả thiết song song. **Tam giác cân = 3 nhánh riêng** (hai đường cao · hai phân giác · hai trung tuyến), không gộp nhóm. Bài ngoài nhóm không được dựa vào bài thành viên (§10.3) ⇒ tiền đề "(B6.1, B6.2) → B7" của MH.126 **bỏ** [Thùy 21/11].
+- **Hình** (nút nào có bài thì có `anh_cau_hinh`; 27/27 nút): `scripts/anh/ve_hinh_k7_tam_giac_v2.mjs` → `gan_hinh.mjs --bang mohinh`. Hình một nút **cộng dồn** giả thiết trên đường gốc → nút; chỉ vẽ dữ kiện + đoạn đề nhắc tên, **không vẽ điều phải chứng minh**; thành viên nhóm bài chỉ vẽ đúng điều đề thành viên đó cho. Hình bài riêng (`anh_chuan`) chưa làm — bài lấy hình của nút chứa nó.
+- **Lời giải** (59/59 bài, `da_duyet=false`): `scripts/kho/hl-loi-giai-k7-tam-giac-v1.mjs`; luật `spec-giai-bai.md` Khối 7 Hình (b) mục "Hình–Luyện cây". Mỗi khẳng định đã kiểm toạ độ (`…-kiem.mjs`, 69.008 phép, 0 FAIL). Tiền đề MH.131: nhánh N,P ← B2 · nhánh L,Q ← B1 [Thùy 21/11 "Đổi tiền đề"].
+- **Còn mở:** B4 cụng đầu — file ghi "AD ∥ BC và AD = BC" (sai hình học), cây giữ "AC ∥ BD và AC = BD", **chờ Thùy xác nhận** · sơ đồ tư duy cho bài chứng minh (cây Luyện chưa có chỗ lưu — spec-giai-bai §A6 chỉ có ở `hinh_hoc_cau_so_do`) · duyệt lời giải · xem trên app thật.
 
 ## 11. Bản đồ code
 
@@ -335,6 +346,7 @@ Người soạn gõ text liền mạch trong textarea; thêm một dòng thẻ *
 | 5 | Chuyển nhóm `NNB02044` (K11) thành bài học Hình–Học | L12 |
 | 6 | Bỏ nhóm mô hình bước 2b: áp `supabase/cho-ap/bo_nhom_mo_hinh_buoc2.sql` SAU khi deploy ERP | L13 |
 | 7 | Bài Hình–Luyện cũ: `supabase/cho-ap/hinh_luyen_chep_loi_giai_xoa_36_bai_cu.sql` (chưa có lệnh áp); phần còn lại Thùy "bỏ" 17/11 | L13 |
+| 8 | Bỏ nhánh chính / phụ ở code (Thùy 21/11): `CayNhanh.tsx` (hộp thêm nhánh, màu "Nhánh chính / phụ", cách xếp xuống / sang phải) · `ChonYTuCay.tsx` (luật rẽ phụ ≤ 1) · `fn_hl_them_gia_thiet` / `fn_hl_doi_cha_gia_thiet` (tham số `chinh`) · 6 cạnh `chinh=true` còn lại ở K8 · K9; **mockup cách xếp nhánh ngang hàng cho Thùy duyệt trước** | §10.2 |
 
 ## 13. Khi Thùy duyệt
 
