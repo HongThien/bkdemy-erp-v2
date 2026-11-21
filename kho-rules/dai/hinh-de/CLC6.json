@@ -1,5 +1,5 @@
 {
- "ghi_chu": "Hình đề CLC lấy nguyên từ word/media của TUYỂN TẬP ĐỀ THI CLC 2025-2026.docx (nguon = tên ảnh trong Word). 21/11.",
+ "ghi_chu": "Hình đề CLC: lấy nguyên từ word/media của TUYỂN TẬP ĐỀ THI CLC 2025-2026.docx (cach png); cach ve_lai = vẽ lại bằng code vì ảnh gốc nhỏ/mờ hoặc đề sửa (ma_loi a–f); ve_moi = dựng mới. 21/11.",
  "LTV 2018 · 10": {
   "tep": "CLC6-LTV-2018-10.png",
   "nguon": [
@@ -12,7 +12,9 @@
   "nguon": [
    "image15.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "LTV 2019 · 12": {
   "tep": "CLC6-LTV-2019-12.png",
@@ -26,14 +28,18 @@
   "nguon": [
    "image31.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "LTV 2020 · 11": {
   "tep": "CLC6-LTV-2020-11.png",
   "nguon": [
    "image37.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "LTV 2020 · 15": {
   "tep": "CLC6-LTV-2020-15.png",
@@ -215,21 +221,27 @@
   "nguon": [
    "image249.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NTL 2024 · P2.2": {
   "tep": "CLC6-NTL-2024-P2-2.png",
   "nguon": [
    "image257.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "d",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NTL 2025 · P1.8": {
   "tep": "CLC6-NTL-2025-P1-8.png",
   "nguon": [
    "image260.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NTL 2025 · P1.9": {
   "tep": "CLC6-NTL-2025-P1-9.png",
@@ -502,7 +514,9 @@
   "nguon": [
    "image726.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NTT 2025 · 7": {
   "tep": "CLC6-NTT-2025-7.png",
@@ -530,14 +544,18 @@
   "nguon": [
    "image795.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NN 2024-TT1 · P1.5": {
   "tep": "CLC6-NN-2024-TT1-P1-5.png",
   "nguon": [
    "image806.png"
   ],
-  "cach": "png"
+  "cach": "ve_lai",
+  "ma_loi": "a",
+  "ve_lai": "kho-rules/dai/lo/clc6/ve-lai-hinh.mjs (Thùy 21/11)"
  },
  "NN 2024-TT4 · P1.2": {
   "tep": "CLC6-NN-2024-TT4-P1-2.png",
@@ -580,5 +598,12 @@
    "image889.png"
   ],
   "cach": "png"
+ },
+ "NTT 2019 · 1": {
+  "tep": "CLC6-NTT-2019-1.png",
+  "nguon": [
+   "dựng lại — kho-rules/dai/lo/clc6/ve-lai-hinh.mjs"
+  ],
+  "cach": "ve_moi"
  }
 }

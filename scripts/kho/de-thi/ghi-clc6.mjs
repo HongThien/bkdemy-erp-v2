@@ -48,6 +48,7 @@ const SUA_SO_DO = {
   'AMS 2020 · 15': { loai: 'chuyen_dong', tieu_de: 'Quãng đường từ A đến B', diem: [{ ten: 'A', x: 0 }, { ten: 'B', x: 10 }], di: [], khoang: [{ tu: 0, den: 10, nhan: '10 km' }] },
 }
 
+const MAN_HINH = fs.existsSync(path.join(HD, 'CLC6.json')) ? JSON.parse(fs.readFileSync(path.join(HD, 'CLC6.json'), 'utf8')) : {}
 const KIEU = { dien: 'tra_loi_ngan', tu_luan: 'tu_luan', trac_nghiem: 'trac_nghiem', dung_sai: 'dung_sai' }
 const slug = (s) => s.replace(/ · /g, '-').replace(/[ .]/g, '-')
 const bao = { de: [], cau_ghi: 0, bo_soan: [], bo_cuoi: [], thieu_hinh: [], loi_dang: [], so_do: 0, nghi: 0 }
@@ -90,6 +91,10 @@ for (const ma of chon) {
     const base = { phan: 0, so: q.so, ma_nguon: q.ma_nguon, nhan: `Câu ${q.so}`, kho: 'dai', loai_cau: loai, noi_dung: q.noi_dung,
       dap_an: s.dap_an, loi_giai: s.loi_giai, anh, anh_giai: anhGiai, diem: q.diem ?? null, canh_bao: [],
       ten_de_goc: `Đề thi vào lớp 6 CLC · ${q.ma_nguon}` }
+    // nhãn nguồn hình (spec-kho-cau-hoi Q10): manifest hinh-de/CLC6.json — cach 've_lai' (kèm ma_loi a–f) | 've_moi' | còn lại = ảnh gốc
+    const mh = MAN_HINH[q.ma_nguon]
+    if (anh.length && mh?.cach === 've_lai') base.anh_nguon = { nguon: 've_lai', ma_loi: mh.ma_loi ?? 'a' }
+    else if (anh.length && mh?.cach === 've_moi') base.anh_nguon = { nguon: 've_moi', ma_loi: null }
     if (loai === 'trac_nghiem') {
       // de.json lưu phương án dạng {A,B,C,D}; ghi.mjs cần mảng 4 phần tử theo thứ tự A–D
       const lc = Array.isArray(q.lua_chon) ? q.lua_chon : ['A', 'B', 'C', 'D'].map((k) => q.lua_chon?.[k])

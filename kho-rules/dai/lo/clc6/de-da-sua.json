@@ -1178,12 +1178,12 @@
     "so": 2,
     "diem": null,
     "kieu": "dien",
-    "noi_dung": "Tìm số tự nhiên nhỏ nhất chia hết cho 5 và 7. (Đề khác: Tìm số tự nhiên nhỏ nhất có hai chữ số chia hết cho 5 và 7).",
+    "noi_dung": "Tìm số tự nhiên khác 0 nhỏ nhất chia hết cho 5 và 7.",
     "lua_chon": null,
     "hinh": [],
     "ma_nguon": "LTV 2024 · 2",
-    "luu_y_soan": "Hiểu là số tự nhiên KHÁC 0 nhỏ nhất — ghi rõ điều này ở Chú ý.",
-    "ghi_chu_duyet": "Đề hỏi \"số tự nhiên nhỏ nhất chia hết cho 5 và 7\"; chặt chẽ là 0, sách đáp 35 (đề kèm ngoặc \"Đề khác: … có hai chữ số\").",
+    "noi_dung_goc": "Tìm số tự nhiên nhỏ nhất chia hết cho 5 và 7. (Đề khác: Tìm số tự nhiên nhỏ nhất có hai chữ số chia hết cho 5 và 7).",
+    "ghi_chu_duyet": "Đề in hai phiên bản (không giới hạn / \"có hai chữ số\"); nguyên văn đáp số là 0, sách đáp 35 — Thùy chốt 21/11: sửa thành \"số tự nhiên KHÁC 0 nhỏ nhất\", bỏ dòng ngoặc (đáp 35).",
     "bang_chung": "pdf"
    },
    {
@@ -2446,10 +2446,18 @@
     "lua_chon": {
      "A": "321,89",
      "B": "931,28",
-     "C": "321,98"
+     "C": "321,98",
+     "D": "193,28"
     },
     "hinh": [],
-    "ma_nguon": "TX 2023 · 1"
+    "ma_nguon": "TX 2023 · 1",
+    "lua_chon_goc": {
+     "A": "321,89",
+     "B": "931,28",
+     "C": "321,98"
+    },
+    "ghi_chu_duyet": "Đề gốc chỉ có 3 phương án; thêm D = 193,28 (số 9 ở hàng chục, phương án sai) để đủ 4 — Thùy duyệt 21/11. Đáp án vẫn A.",
+    "bang_chung": "pdf"
    },
    {
     "phan": 1,
@@ -3572,13 +3580,18 @@
     "so": 2,
     "diem": null,
     "kieu": "tu_luan",
-    "noi_dung": "Cho hình vuông ABCD có cạnh 10 cm. Điểm M trên cạnh AD sao cho $AM=\\frac{2}{3}AD$. O là giao điểm của BM và AC. Nối M với C.\n1. Tính diện tích tam giác ABM.\n2. Tính $\\frac{S_{BMC}}{S_{ABM}}$ ?\n3. Tính $\\frac{BO}{OM}$",
+    "noi_dung": "Cho hình vuông ABCD có cạnh 10 cm. Điểm M trên cạnh AD sao cho $AM=\\frac{2}{5}AD$. O là giao điểm của BM và AC. Nối M với C.\n1. Tính diện tích tam giác ABM.\n2. Tính $\\frac{S_{BMC}}{S_{ABM}}$ ?\n3. Tính $\\frac{BO}{OM}$",
     "lua_chon": null,
-    "hinh": [
+    "hinh": [],
+    "ma_nguon": "NTL 2024 · P2.2",
+    "noi_dung_goc": "Cho hình vuông ABCD có cạnh 10 cm. Điểm M trên cạnh AD sao cho $AM=\\frac{2}{3}AD$. O là giao điểm của BM và AC. Nối M với C.\n1. Tính diện tích tam giác ABM.\n2. Tính $\\frac{S_{BMC}}{S_{ABM}}$ ?\n3. Tính $\\frac{BO}{OM}$",
+    "hinh_goc": [
      "image257.png"
     ],
-    "ma_nguon": "NTL 2024 · P2.2",
-    "ghi_chu_duyet": "Mọi nguồn đều in AM = 2/3 AD, nhưng lời giải sách tính với AM = 2/5 AD (ra 20 cm², 5/2, 5/2). Giữ đề 2/3 ⇒ đáp số khác sách (100/3 cm², 3/2, 3/2). CEO chốt giữ 2/3 hay đổi 2/5.",
+    "hinh_bu": [
+     "CLC6-NTL-2024-P2-2.png"
+    ],
+    "ghi_chu_duyet": "Mọi nguồn in AM = 2/3 AD nhưng lời giải sách tính AM = 2/5 AD (20 cm², 5/2, 5/2) — Thùy chốt 21/11: sửa đề thành AM = 2/5 AD và VẼ LẠI hình (M ở 2/5 cạnh AD).",
     "bang_chung": "pdf"
    },
    {
@@ -5511,7 +5524,8 @@
     "lua_chon": {
      "A": "15",
      "B": "35",
-     "C": "25"
+     "C": "25",
+     "D": "23"
     },
     "hinh": [],
     "ma_nguon": "ARC 2022-CB · 25",
@@ -5521,7 +5535,7 @@
      "C": "25",
      "D": "23"
     },
-    "ghi_chu_duyet": "PDF chỉ có 3 phương án; Word thêm D = 23.",
+    "ghi_chu_duyet": "PDF chỉ có 3 phương án; thêm D = 23 theo bản Word (Thùy duyệt 21/11).",
     "bang_chung": "pdf"
    },
    {
@@ -7091,10 +7105,15 @@
     "noi_dung": "Tính tỉ số phần trăm số học sinh thích ăn cam và chuối so với số học sinh thích ăn táo và xoài?",
     "lua_chon": null,
     "hinh": [
+     "image533.png"
+    ],
+    "ma_nguon": "CG 2023 · P2.7",
+    "hinh_goc": [
      "image533.png",
      "image534.png"
     ],
-    "ma_nguon": "CG 2023 · P2.7"
+    "ghi_chu_duyet": "Word gắn 2 ảnh cho câu này: image533 (biểu đồ, đúng) và image534 (hình vuông ABCD của câu P2.8) — gỡ image534 (người soạn phát hiện 10/10).",
+    "bang_chung": "pdf"
    },
    {
     "phan": 2,
@@ -7626,11 +7645,17 @@
     "so": 1,
     "diem": null,
     "kieu": "dien",
-    "noi_dung": "Là 1 bài về giao thông có hình vẽ. Câu hỏi là Nam gặp biểu tượng nào?",
+    "noi_dung": "Nam đi từ nhà theo sơ đồ đường bên dưới: Nam đi thẳng qua ngã tư thứ nhất, đến ngã tư thứ hai thì rẽ phải rồi đi thẳng. Hỏi Nam gặp biểu tượng nào?",
     "lua_chon": null,
     "hinh": [],
     "ma_nguon": "NTT 2019 · 1",
-    "bo": "Đề nguồn chỉ ghi \"Là 1 bài về giao thông có hình vẽ…\" — không có hình, không có dữ kiện (đề do HS nhớ lại)."
+    "noi_dung_goc": "Là 1 bài về giao thông có hình vẽ. Câu hỏi là Nam gặp biểu tượng nào?",
+    "kieu_goc": "dien",
+    "hinh_bu": [
+     "CLC6-NTT-2019-1.png"
+    ],
+    "ghi_chu_duyet": "ĐỀ DỰNG LẠI, KHÔNG PHẢI ĐỀ GỐC: đề gốc (HS nhớ lại) chỉ ghi \"Là 1 bài về giao thông có hình vẽ. Câu hỏi là Nam gặp biểu tượng nào?\", PDF không có hình; đáp án sách \"siêu thị\". Câu và hình được dựng lại cho tự chứa dữ kiện (Thùy duyệt hướng 21/11, cần xem bản dựng).",
+    "bang_chung": "suy_ra"
    },
    {
     "phan": 1,
@@ -9922,12 +9947,12 @@
     "so": 8,
     "diem": null,
     "kieu": "dien",
-    "noi_dung": "Năm sinh của một cầu thủ bóng đá là $\\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi năm nay cầu thủ đó bao nhiêu tuổi?",
+    "noi_dung": "Năm sinh của một cầu thủ bóng đá là $\\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi vào năm 2020, cầu thủ đó bao nhiêu tuổi?",
     "lua_chon": null,
     "hinh": [],
     "ma_nguon": "AMS 2020 · 8",
-    "luu_y_soan": "Đề thi năm 2020: \"năm nay\" là năm 2020 — ghi rõ giả thiết này trong lời giải.",
-    "ghi_chu_duyet": "Đề nêu mốc \"tính đến năm 2021\" rồi hỏi \"năm nay\"; sách lấy năm nay = 2020 (năm thi).",
+    "noi_dung_goc": "Năm sinh của một cầu thủ bóng đá là $\\overline{19ab}$. Tính đến năm 2021, tuổi của cầu thủ này đúng bằng tổng các chữ số của năm sinh. Hỏi năm nay cầu thủ đó bao nhiêu tuổi?",
+    "ghi_chu_duyet": "Đề nêu mốc \"tính đến năm 2021\" rồi hỏi \"năm nay\"; sách lấy năm nay = 2020 — Thùy chốt 21/11: sửa câu hỏi thành \"vào năm 2020\" (đáp 24 tuổi).",
     "bang_chung": "pdf"
    },
    {

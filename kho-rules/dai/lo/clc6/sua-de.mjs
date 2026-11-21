@@ -30,7 +30,8 @@ export const SUA = {
     noi_dung: R`Diện tích trên bản đồ tỉ lệ 1 : 2000 của một khu đất là $3cm^{2}$. Diện tích thực của khu đất đó là:`,
     lua_chon: { A: R`$60m^{2}$`, B: R`$120m^{2}$`, C: R`$600m^{2}$`, D: R`$1200m^{2}$` }, kieu: 'trac_nghiem', bang_chung: 'pdf', ghi_chu_duyet: 'Phương án gõ dính liền câu hỏi.',
   },
-  'ARC 2022-CB · 25': { lua_chon: { A: '15', B: '35', C: '25' }, bang_chung: 'pdf', ghi_chu_duyet: 'PDF chỉ có 3 phương án; Word thêm D = 23.' },
+  'ARC 2022-CB · 25': { lua_chon: { A: '15', B: '35', C: '25', D: '23' }, bang_chung: 'pdf', ghi_chu_duyet: 'PDF chỉ có 3 phương án; thêm D = 23 theo bản Word (Thùy duyệt 21/11).' },
+  'TX 2023 · 1': { lua_chon: { A: '321,89', B: '931,28', C: '321,98', D: '193,28' }, bang_chung: 'pdf', ghi_chu_duyet: 'Đề gốc chỉ có 3 phương án; thêm D = 193,28 (số 9 ở hàng chục, phương án sai) để đủ 4 — Thùy duyệt 21/11. Đáp án vẫn A.' },
   'CG 2019 · P1.1': { thay: [[R`134,2\times x<`, R`\overline{134,2x7}<`]], bang_chung: 'pdf', ghi_chu_duyet: 'x là CHỮ SỐ trong số thập phân 134,2x7; Word đổi thành dấu nhân.', luu_y_soan: 'x là chữ số hàng phần trăm của số thập phân 134,2x7.' },
   'CG 2024 · 4': { thay: [['Chiều cao bằng chiều rộng.', R`Chiều cao bằng $\frac{3}{4}$ chiều rộng.`]], bang_chung: 'pdf', ghi_chu_duyet: 'Word mất phân số 3/4.' },
   'CG 2024 · 9': { thay: [[R`đọc được $\frac{1}{5}$ số trang bằng với tổng số trang`, R`đọc được số trang bằng với $\frac{1}{5}$ tổng số trang`]], bang_chung: 'pdf', ghi_chu_duyet: 'Word đặt phân số sai chỗ.' },
@@ -56,6 +57,7 @@ export const SUA = {
   // ── C. Hình lấy bù từ PDF ───────────────────────────────────────────────────────────────────────────
   'CG 2022 · P2.8': { hinh_bu: ['CLC6-CG-2022-P2-8.png'], bang_chung: 'pdf', ghi_chu_duyet: 'Hình thang ABCD, PDF trang 2.' },
   'TX 2022 · P1.3': { hinh_bu: ['CLC6-TX-2022-P1-3.png'], bang_chung: 'pdf', ghi_chu_duyet: 'Bốn đường tròn tâm ở bốn đỉnh hình vuông, PDF trang 1.' },
+  'CG 2023 · P2.7': { hinh: ['image533.png'], bang_chung: 'pdf', ghi_chu_duyet: 'Word gắn 2 ảnh cho câu này: image533 (biểu đồ, đúng) và image534 (hình vuông ABCD của câu P2.8) — gỡ image534 (người soạn phát hiện 10/10).' },
   'CG 2023 · P2.8': { hinh_bu: ['CLC6-CG-2023-P2-8.png'], bang_chung: 'pdf', ghi_chu_duyet: 'Hình vuông ABCD, nửa đường tròn + 1/4 đường tròn, PDF trang 2.' },
   'CG 2021 · 10': {
     thay: [['\nSố bi hộp A\nSố bi hộp B\nSố bi hộp C\nLúc đầu\n8\n15\n10\nSau lượt 1\n7\n14\n12\nSau lượt 2\nSau lượt 3\nSau lượt 4\n10\n11\n12\n', '\n']],
@@ -77,16 +79,21 @@ export const SUA = {
   'NTT 2025 · 15': { thay: [['Đoạn thẳng AD, CE cắt nhau tại F', 'Đoạn thẳng AE, CD cắt nhau tại F']], bang_chung: 'suy_ra', ghi_chu_duyet: 'Đề ghi "AD, CE cắt nhau tại F" là vô lí (D thuộc AB, E thuộc BC ⇒ AD và CE là hai cạnh, chỉ gặp nhau tại B). Hiểu là AE và CD. Đề 2025 không có PDF để đối chiếu.' },
 
   // ── F. Giữ nguyên đề, ghi chú cách hiểu ─────────────────────────────────────────────────────────────
-  'NTL 2024 · P2.2': { bang_chung: 'pdf', ghi_chu_duyet: 'Mọi nguồn đều in AM = 2/3 AD, nhưng lời giải sách tính với AM = 2/5 AD (ra 20 cm², 5/2, 5/2). Giữ đề 2/3 ⇒ đáp số khác sách (100/3 cm², 3/2, 3/2). CEO chốt giữ 2/3 hay đổi 2/5.' },
+  'NTL 2024 · P2.2': { thay: [[R`$AM=\frac{2}{3}AD$`, R`$AM=\frac{2}{5}AD$`]], hinh: [], hinh_bu: ['CLC6-NTL-2024-P2-2.png'], bang_chung: 'pdf', ghi_chu_duyet: 'Mọi nguồn in AM = 2/3 AD nhưng lời giải sách tính AM = 2/5 AD (20 cm², 5/2, 5/2) — Thùy chốt 21/11: sửa đề thành AM = 2/5 AD và VẼ LẠI hình (M ở 2/5 cạnh AD).' },
   'NTL 2025 · P1.9': { kieu: 'dung_sai', bang_chung: 'suy_ra', ghi_chu_duyet: 'Câu bốn mệnh đề Đúng – Sai (khuôn đề 2025).' },
   'NTL 2025 · P1.10': { kieu: 'dung_sai', bang_chung: 'suy_ra', ghi_chu_duyet: 'Câu bốn mệnh đề Đúng – Sai. Đề chữ ghi "hình vuông ABCD" nhưng hình vẽ là hình chữ nhật 4 cm × 3 cm.', luu_y_soan: 'Chữ đề ghi "hình vuông ABCD" nhưng theo hình vẽ ABCD là hình chữ nhật gồm các ô vuông cạnh 1 cm — giải theo HÌNH và ghi rõ số ô đếm được.' },
   'NTT 2025 · 12': { bang_chung: 'suy_ra', ghi_chu_duyet: '15 khối lập phương nhỏ không xếp được thành hình lập phương lớn; hiểu là hình hộp chữ nhật.', luu_y_soan: '15 khối lập phương nhỏ không xếp được thành một hình lập phương; hiểu "hình lớn" là hình hộp chữ nhật và xét các cách xếp.' },
-  'AMS 2020 · 8': { bang_chung: 'pdf', ghi_chu_duyet: 'Đề nêu mốc "tính đến năm 2021" rồi hỏi "năm nay"; sách lấy năm nay = 2020 (năm thi).', luu_y_soan: 'Đề thi năm 2020: "năm nay" là năm 2020 — ghi rõ giả thiết này trong lời giải.' },
-  'LTV 2024 · 2': { bang_chung: 'pdf', ghi_chu_duyet: 'Đề hỏi "số tự nhiên nhỏ nhất chia hết cho 5 và 7"; chặt chẽ là 0, sách đáp 35 (đề kèm ngoặc "Đề khác: … có hai chữ số").', luu_y_soan: 'Hiểu là số tự nhiên KHÁC 0 nhỏ nhất — ghi rõ điều này ở Chú ý.' },
+  'AMS 2020 · 8': { thay: [['Hỏi năm nay cầu thủ đó bao nhiêu tuổi?', 'Hỏi vào năm 2020, cầu thủ đó bao nhiêu tuổi?']], bang_chung: 'pdf', ghi_chu_duyet: 'Đề nêu mốc "tính đến năm 2021" rồi hỏi "năm nay"; sách lấy năm nay = 2020 — Thùy chốt 21/11: sửa câu hỏi thành "vào năm 2020" (đáp 24 tuổi).' },
+  'LTV 2024 · 2': { noi_dung: 'Tìm số tự nhiên khác 0 nhỏ nhất chia hết cho 5 và 7.', bang_chung: 'pdf', ghi_chu_duyet: 'Đề in hai phiên bản (không giới hạn / "có hai chữ số"); nguyên văn đáp số là 0, sách đáp 35 — Thùy chốt 21/11: sửa thành "số tự nhiên KHÁC 0 nhỏ nhất", bỏ dòng ngoặc (đáp 35).' },
   'ARC 2020-CB · 8': { bang_chung: 'pdf', ghi_chu_duyet: 'Đề hỏi "ô tô đi từ B về A lúc mấy giờ" trong khi đã cho giờ khởi hành; ý là giờ ô tô ĐẾN A.', luu_y_soan: 'Câu hỏi được hiểu là: ô tô ĐẾN A lúc mấy giờ.' },
 
   // ── G. Bỏ: đề nguồn không có nội dung ───────────────────────────────────────────────────────────────
-  'NTT 2019 · 1': { bo: 'Đề nguồn chỉ ghi "Là 1 bài về giao thông có hình vẽ…" — không có hình, không có dữ kiện (đề do HS nhớ lại).' },
+  // NTT 2019 · 1 — KHÔNG bỏ (Thùy 21/11 "đề thi không được bỏ, chỉ được sửa"): dựng lại câu tự chứa dữ kiện + hình vẽ mới; đáp án sách "siêu thị".
+  'NTT 2019 · 1': {
+    noi_dung: 'Nam đi từ nhà theo sơ đồ đường bên dưới: Nam đi thẳng qua ngã tư thứ nhất, đến ngã tư thứ hai thì rẽ phải rồi đi thẳng. Hỏi Nam gặp biểu tượng nào?',
+    kieu: 'dien', hinh_bu: ['CLC6-NTT-2019-1.png'], bang_chung: 'suy_ra',
+    ghi_chu_duyet: 'ĐỀ DỰNG LẠI, KHÔNG PHẢI ĐỀ GỐC: đề gốc (HS nhớ lại) chỉ ghi "Là 1 bài về giao thông có hình vẽ. Câu hỏi là Nam gặp biểu tượng nào?", PDF không có hình; đáp án sách "siêu thị". Câu và hình được dựng lại cho tự chứa dữ kiện (Thùy duyệt hướng 21/11, cần xem bản dựng).',
+  },
   'LTV 2024 · 19': { bo: 'Đề nguồn ghi "Đang cập nhật đề" — không có nội dung.' },
   'LTV 2024 · 20': { bo: 'Đề nguồn ghi "Đang cập nhật đề" — không có nội dung.' },
 }
