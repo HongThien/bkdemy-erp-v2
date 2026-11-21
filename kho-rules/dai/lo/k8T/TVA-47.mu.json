@@ -1,0 +1,1210 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "gan-dang-mu-opus:TVA-47:2026-11-21",
+ "cau": {
+  "T4V1.1a@p77": {
+   "dang_bai": "NDB02740",
+   "ly_do": "Phân số lồng, quy đồng khử mẫu, phương trình bậc nhất"
+  },
+  "T4V1.1b@p77": {
+   "dang_bai": "NDB02740",
+   "ly_do": "Phân số lồng, thu gọn, đưa về phương trình bậc nhất"
+  },
+  "T4V1.1c@p77": {
+   "dang_bai": "NDB02740",
+   "ly_do": "Hệ số phân số, quy đồng khử mẫu, được 0x=0"
+  },
+  "T4V1.2@p77": {
+   "dang_bai": "NDB03252",
+   "ly_do": "Cộng 1 vào mỗi phân thức được tử chung x+66"
+  },
+  "T4V1.3a@p78": {
+   "dang_bai": "NDB03252",
+   "ly_do": "Trừ 1 vào mỗi phân thức được tử chung x-105"
+  },
+  "T4V1.3b@p78": {
+   "dang_bai": "NDB03252",
+   "ly_do": "Cộng 1 vào mỗi phân thức được tử chung 50-x"
+  },
+  "T4V2.1@p78": {
+   "dang_bai": "",
+   "ly_do": "trạm kiểm không trả kết quả câu này"
+  },
+  "T4V2.2@p78": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Tìm x làm biểu thức vô nghĩa (ĐKXĐ phân thức lồng); không phải giải phương trình hẳn"
+  },
+  "T4V2.3@p79": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, chuyển vế đặt nhân tử chung x+4 rồi đối chiếu ĐKXĐ"
+  },
+  "T4V2.4@p79": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, đổi dấu 4-x, khử mẫu, loại nghiệm"
+  },
+  "T4V2.5@p79": {
+   "dang_bai": "NDB03255",
+   "ly_do": "Mẫu tích hai nhân tử hơn kém 3, tách hiệu triệt tiêu"
+  },
+  "T4V2.6@p80": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, chuyển vế ghép cặp được tử chung; không khớp hẳn dạng riêng"
+  },
+  "T4V2.7@p80": {
+   "dang_bai": "NDB03254",
+   "ly_do": "Chia tử mẫu cho x, đặt t=3x+2/x"
+  },
+  "T4V2.8@p80": {
+   "dang_bai": "NDB03254",
+   "ly_do": "Chia tử mẫu cho x, đặt ẩn phụ t=3x+1/x-4"
+  },
+  "T4V2.9@p81": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, đổi dấu mẫu, quy đồng khử mẫu, đối chiếu ĐKXĐ"
+  },
+  "T4V2.10@p81": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, đổi dấu, khử mẫu, nghiệm bị loại theo ĐKXĐ"
+  },
+  "T4V3.1@p82": {
+   "dang_bai": "NDB02748",
+   "ly_do": "Câu trộn: a) phương trình bậc nhất đồng nhất, b) |x|=x xét dấu"
+  },
+  "T4V3.2@p82": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ, chia ba khoảng bỏ dấu"
+  },
+  "T4V3.3@p83": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Năm dấu GTTĐ, chia năm khoảng bỏ dấu"
+  },
+  "T4V3.4@p83": {
+   "dang_bai": "NDB03271",
+   "ly_do": "GTTĐ có tham số a, chia khoảng theo -a và biện luận dấu a"
+  },
+  "T4V3.5@p84": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ, chia ba khoảng bỏ dấu"
+  },
+  "T4V3.6@p84": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Lời giải chia khoảng; cách khác dùng |A|+|B|≥|A+B| (NDB03269)"
+  },
+  "T4V4.1@p84": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Đưa về Ax=B, hệ số chứa a, biện luận ba trường hợp"
+  },
+  "T4V4.2@p85": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Khử mẫu 3a, đưa về Ax=B, biện luận hệ số theo a"
+  },
+  "T4V4.3@p85": {
+   "dang_bai": "NDB03266",
+   "ly_do": "Phân thức tham số a,b,c đối xứng, trừ hằng mỗi phân thức lấy tử chung"
+  },
+  "T4V4.4@p85": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Tham số ở mẫu, khử mẫu về 2ax=(a-b)², biện luận theo a"
+  },
+  "T4V4.5@p86": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Dạng (m²-9)x=m²+3m, biện luận ba trường hợp"
+  },
+  "T4V4.6@p86": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Phân thức bằng 0 có tham số, loại m làm nghiệm trùng mẫu bằng 0"
+  },
+  "T4V4.7@p86": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Tham số ở mẫu, x ở tử; đưa về Ax=B rồi biện luận hệ số"
+  },
+  "T4V4.8@p87": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu có tham số, biện luận hệ số, loại nghiệm trùng ±1"
+  },
+  "T4V4.9@p87": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu x²-b², biện luận theo a và so nghiệm với ±b"
+  },
+  "T4V4.10@p87": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Mẫu chứa x và m, biện luận, loại m làm nghiệm trùng giá trị cấm"
+  },
+  "T4V4.11a@p88": {
+   "dang_bai": "NDB03266",
+   "ly_do": "Tử x-a, mẫu b+c..., trừ 1 mỗi phân thức được tử chung x-a-b-c"
+  },
+  "T4V4.11b@p88": {
+   "dang_bai": "NDB03266",
+   "ly_do": "Tham số a,b,c đối xứng, trừ 1 mỗi phân thức xuất hiện tử chung"
+  },
+  "T4V4.12@p88": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu tham số a,b, biện luận a+b, kiểm tra nghiệm với ĐKXĐ"
+  },
+  "T4V4.13@p89": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu có tham số a, biện luận và so nghiệm với giá trị cấm"
+  },
+  "T4V5a.1@p90": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc 3 nhóm hạng tử đặt nhân tử chung x-1, đưa về tích"
+  },
+  "T4V5a.2a@p90": {
+   "dang_bai": "NDB03251",
+   "ly_do": "Đặt nhân tử chung 2x-7, phương trình tích"
+  },
+  "T4V5a.2b@p90": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc 3 nhóm hạng tử được (2x+3)(x²+1)=0"
+  },
+  "T4V5a.3@p90": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc 4 nhóm hạng tử thành hiệu hai bình phương, đưa về tích"
+  },
+  "T4V5a.4@p90": {
+   "dang_bai": "NDB03251",
+   "ly_do": "Tích ba nhị thức bằng 0, giải từng nhân tử"
+  },
+  "T4V5a.5@p91": {
+   "dang_bai": "NDB03251",
+   "ly_do": "Tam thức bậc hai tách hạng tử thành tích, giải từng nhân tử"
+  },
+  "T4V5a.6@p91": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc 4 nhẩm nghiệm 1, -2, nhóm hạng tử đưa về tích"
+  },
+  "T4V5b.1@p91": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc 4 thêm bớt 4x² rồi đặt t=x²-2x; không khớp hẳn dạng đặc biệt nào"
+  },
+  "T4V5b.2@p91": {
+   "dang_bai": "NDB03258",
+   "ly_do": "Hệ số đối xứng 2,-5,6,-5,2; chia x², đặt X=x+1/x"
+  },
+  "T4V5b.3@p92": {
+   "dang_bai": "NDB03257",
+   "ly_do": "(x+3)^4+(x+5)^4=2, đặt y=x+4 trung bình cộng"
+  },
+  "T4V5b.4@p92": {
+   "dang_bai": "NDB03258",
+   "ly_do": "Phương trình hồi quy bậc 4, chia x², đặt y=x+1/x"
+  },
+  "T4V6.1@p93": {
+   "dang_bai": "NDB03263",
+   "ly_do": "Tìm t để nghiệm dương; có ẩn ở mẫu cần loại x=-1 (gần NDB03264)"
+  },
+  "T4V6.2@p93": {
+   "dang_bai": "NDB03252",
+   "ly_do": "Trừ 1 vào mỗi phân thức để tử chung x-1999, đặt nhân tử chung"
+  },
+  "T4V6.3@p93": {
+   "dang_bai": "NDB03263",
+   "ly_do": "Tìm k để nghiệm âm; cũng có ẩn ở mẫu loại nghiệm trùng ĐKXĐ (NDB03264)"
+  },
+  "T4B.1a@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, phân tích mẫu, quy đồng khử mẫu, đối chiếu ĐKXĐ"
+  },
+  "T4B.1b@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, phân tích mẫu chung, khử mẫu, đối chiếu ĐKXĐ"
+  },
+  "T4B.1c@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, đổi dấu mẫu, khử mẫu, loại nghiệm vi phạm ĐKXĐ"
+  },
+  "T4B.1d@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, quy đồng khử mẫu ra 0x=k vô nghiệm"
+  },
+  "T4B.1e@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, khử mẫu được x=-1 bị loại theo ĐKXĐ"
+  },
+  "T4B.1g@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu, quy đồng khử mẫu, nghiệm là mọi x thỏa ĐKXĐ"
+  },
+  "T4B.2@p94": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Ẩn ở mẫu: ĐKXĐ, quy đồng khử mẫu, loại nghiệm x=0"
+  },
+  "T4B.3@p94": {
+   "dang_bai": "NDB03252",
+   "ly_do": "Cộng 1 vào mỗi phân thức để tử chung 416-x, đặt nhân tử chung"
+  },
+  "T4B.4@p94": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Đưa về (2-a)(2+a)x=2-a, biện luận ba trường hợp"
+  },
+  "T4B.5@p94": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Đưa về a(a-1)x=b(a-1), biện luận hệ số bằng 0/khác 0"
+  },
+  "T4B.6@p94": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Tham số ở mẫu, x chỉ ở tử; khử mẫu ra bậc nhất theo x, điều kiện tham số; không cần biện luận hệ số"
+  },
+  "T4B.7@p94": {
+   "dang_bai": "NDB03266",
+   "ly_do": "Tử x-b-c, mẫu a; trừ 1 mỗi phân thức, biện luận"
+  },
+  "T4B.8@p94": {
+   "dang_bai": "NDB03262",
+   "ly_do": "Phương trình bậc nhất tham số a, b, khử mẫu về (a²+b²)x=0"
+  },
+  "T4B.9@p94": {
+   "dang_bai": "NDB02748",
+   "ly_do": "|x-3|=x+7, bỏ GTTĐ theo hai trường hợp"
+  },
+  "T4B.10@p94": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ mốc 0 và -3/2, chia ba khoảng"
+  },
+  "T4B.11@p94": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ mốc -1 và 1, chia ba khoảng"
+  },
+  "T4B.12@p94": {
+   "dang_bai": "NDB02748",
+   "ly_do": "Một dấu GTTĐ, xét hai trường hợp x≥1, x<1"
+  },
+  "T4B.13@p94": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Nhiều dấu GTTĐ nhưng khoảng đã cho, chỉ xét dấu bỏ GTTĐ"
+  },
+  "T4B.14@p95": {
+   "dang_bai": "NDB03253",
+   "ly_do": "ĐKXĐ x≠±2, quy đồng khử mẫu, giải bậc nhất"
+  },
+  "T4B.15@p95": {
+   "dang_bai": "NDB03253",
+   "ly_do": "Quy đồng mẫu x(x⁴+x²+1), khử mẫu, đối chiếu x≠0"
+  },
+  "T4B.16@p95": {
+   "dang_bai": "NDB03253",
+   "ly_do": "ĐKXĐ, quy đồng khử mẫu, nghiệm đúng mọi x thỏa ĐKXĐ"
+  },
+  "T4B.17@p95": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu chứa tham số a, b, điều kiện và khử mẫu"
+  },
+  "T4B.18@p95": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu có tham số, loại nghiệm trùng -a, -10"
+  },
+  "T4B.19@p95": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu có tham số a, biện luận và đối chiếu ĐKXĐ"
+  },
+  "T4B.20@p95": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Ẩn ở mẫu có tham số, tìm a để nghiệm duy nhất, loại nghiệm ±1"
+  },
+  "T4B.21@p95": {
+   "dang_bai": "NDB03251",
+   "ly_do": "Tam thức bậc hai tách hạng tử thành phương trình tích"
+  },
+  "T4B.22@p95": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc ba nhẩm nghiệm x=1, tách hạng tử đưa về tích"
+  },
+  "T4B.23@p95": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Khai triển lập phương, bậc ba tách hạng tử đưa về tích"
+  },
+  "T4B.24@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Ghép (x+2)(x-2)=x²-4 đặt ẩn phụ y=x²-4"
+  },
+  "T4B.25@p95": {
+   "dang_bai": "NDB03261",
+   "ly_do": "Chứng minh bậc sáu vô nghiệm, nhân x-1 rồi thử lại"
+  },
+  "T4B.26a@p95": {
+   "dang_bai": "NDB03265",
+   "ly_do": "Bậc ba có tham số a, nhóm nhân tử rồi biện luận"
+  },
+  "T4B.26b@p95": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Bậc ba nhẩm nghiệm -2, tách hạng tử đưa về tích"
+  },
+  "T4B.27a@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Đặt ẩn phụ y=x²+x đưa về bậc hai; dạng cụm lặp, không phải tích bốn nhân tử"
+  },
+  "T4B.27b@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "x(x-1)(x+1)(x+2)=24, ghép cặp đặt ẩn phụ"
+  },
+  "T4B.27c@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Bốn nhị thức ghép cặp tổng 9, đặt ẩn phụ"
+  },
+  "T4B.27d@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Bốn nhị thức tổng hằng bằng nhau, ghép cặp đặt ẩn phụ"
+  },
+  "T4B.27e@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Nhân 12 để ghép thừa số, đặt y=6x+7"
+  },
+  "T4B.28a@p95": {
+   "dang_bai": "NDB02743",
+   "ly_do": "Thêm 16x² hai vế tạo hiệu hai bình phương, đưa về tích"
+  },
+  "T4B.28b@p95": {
+   "dang_bai": "NDB03256",
+   "ly_do": "Bậc bốn đặt ẩn phụ cụm lặp (x-2)²; không khớp hẳn dạng nào"
+  },
+  "T4B.28c@p95": {
+   "dang_bai": "NDB03257",
+   "ly_do": "(x-2)^4+(x-6)^4=82, đặt y=x-4"
+  },
+  "T4B.28e@p95": {
+   "dang_bai": "NDB03258",
+   "ly_do": "Hệ số đối xứng 2,1,-6,1,2, chia x² đặt t=x+1/x"
+  },
+  "T4B.29@p95": {
+   "dang_bai": "NDB02746",
+   "ly_do": "Tìm m để x=1 là nghiệm rồi giải phương trình bậc ba"
+  },
+  "T4B.30@p96": {
+   "dang_bai": "NDB03254",
+   "ly_do": "Đặt ẩn phụ x+1/x và x²+1/x², điều kiện x≠0"
+  },
+  "T5V1.1@p104": {
+   "dang_bai": "NDB02741",
+   "ly_do": "Ca nô và ô tô, hiệu quãng đường, s=v.t, không có dòng nước"
+  },
+  "T5V1.2@p104": {
+   "dang_bai": "NDB02741",
+   "ly_do": "Đi hai vận tốc đến chậm/sớm, thời gian dự định"
+  },
+  "T5V1.3@p105": {
+   "dang_bai": "NDB03273",
+   "ly_do": "Tính vận tốc trung bình trên hai nửa quãng đường"
+  },
+  "T5V1.4@p105": {
+   "dang_bai": "NDB03274",
+   "ly_do": "Ba ô tô trên AB, các mốc thời gian qua trung điểm"
+  },
+  "T5V2.1@p106": {
+   "dang_bai": "NDB02742",
+   "ly_do": "Năng suất kế hoạch thực tế, xong sớm và vượt chỉ tiêu"
+  },
+  "T5V2.2@p107": {
+   "dang_bai": "NDB03279",
+   "ly_do": "Người thứ k nhận k kẹo và 1/11 số còn lại, chia đều"
+  },
+  "T5V4.1@p108": {
+   "dang_bai": "NDB02742",
+   "ly_do": "Kế hoạch và thực tế chở hàng, số xe nhân năng suất"
+  },
+  "T5V5.1@p108": {
+   "dang_bai": "NDB03275",
+   "ly_do": "Viết thêm chữ số 1 hai đầu, cấu tạo thập phân lập phương trình"
+  },
+  "T5V5.2@p108": {
+   "dang_bai": "NDB03275",
+   "ly_do": "Chuyển chữ số 4 lên đầu, đặt ẩn khối năm chữ số"
+  },
+  "T5V5.3@p108": {
+   "dang_bai": "NDB03275",
+   "ly_do": "Số ba chữ số bằng 11 lần tổng chữ số, cấu tạo thập phân"
+  },
+  "T5V5.4@p109": {
+   "dang_bai": "NDB03316",
+   "ly_do": "Tìm số xxyy theo cấu tạo số và chia hết cho 11, 121; cũng gần bài toán về số"
+  },
+  "T5V6.1@p109": {
+   "dang_bai": "NDB03276",
+   "ly_do": "Nồng độ dung dịch muối, bảo toàn khối lượng chất tan"
+  },
+  "T5V6.2@p110": {
+   "dang_bai": "NDB03276",
+   "ly_do": "Tỉ lệ phần trăm sắt nguyên chất trong hai loại quặng"
+  },
+  "T5V7.1@p110": {
+   "dang_bai": "NDB03277",
+   "ly_do": "Khu vườn chữ nhật biết hiệu hai cạnh và diện tích"
+  },
+  "T5V7.2@p110": {
+   "dang_bai": "NDB03277",
+   "ly_do": "Hình chữ nhật cho chu vi, tăng cạnh thì diện tích tăng"
+  },
+  "T5V8.1@p111": {
+   "dang_bai": "NDB03276",
+   "ly_do": "Hợp kim vàng bạc giảm theo tỉ lệ, tương tự bài pha trộn tỉ lệ"
+  },
+  "T5V8.2@p111": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Quy về chứng minh ab chia hết 12 bằng xét số dư bình phương, có bước hình học"
+  },
+  "T5V8.3@p112": {
+   "dang_bai": "NDB03325",
+   "ly_do": "Tìm số chính phương abbb theo điều kiện chữ số, xét tận cùng và dư"
+  },
+  "T5V8.4@p112": {
+   "dang_bai": "",
+   "ly_do": "KHÔNG THUỘC NHÓM: suy luận logic quan hệ gia đình, giới tính"
+  },
+  "T5B.1@p113": {
+   "dang_bai": "NDB03278",
+   "ly_do": "Bài thơ toán cổ Đi-ô-phăng tính tuổi thọ"
+  },
+  "T5B.2@p113": {
+   "dang_bai": "NDB03278",
+   "ly_do": "Tuổi mẹ con ở hai mốc thời gian"
+  },
+  "T5B.3@p113": {
+   "dang_bai": "NDB03272",
+   "ly_do": "Ca nô xuôi ngược dòng, vận tốc dòng nước cho trước"
+  },
+  "T5B.4@p113": {
+   "dang_bai": "NDB03273",
+   "ly_do": "Cho vận tốc trung bình, tổng quãng đường chia tổng thời gian"
+  },
+  "T5B.5@p113": {
+   "dang_bai": "NDB02741",
+   "ly_do": "Lên dốc xuống dốc, cộng thời gian các đoạn theo s=v.t; dạng cơ bản gần nhất"
+  },
+  "T5B.6@p113": {
+   "dang_bai": "NDB02741",
+   "ly_do": "Hai người đi gặp nhau, chênh giờ xuất phát, s=v.t"
+  },
+  "T5B.7@p114": {
+   "dang_bai": "NDB03274",
+   "ly_do": "Ba phương tiện khởi hành lệch giờ, điều kiện cách đều"
+  },
+  "T5B.8@p114": {
+   "dang_bai": "NDB03276",
+   "ly_do": "Pha trộn nước nóng lạnh, cân bằng nhiệt lập phương trình"
+  },
+  "T5B.9@p114": {
+   "dang_bai": "NDB03274",
+   "ly_do": "Xe buýt theo chu kì 6 phút, người đi bộ gặp/bị vượt"
+  },
+  "T5B.10@p114": {
+   "dang_bai": "NDB02742",
+   "ly_do": "Làm chung làm riêng, năng suất 1/x, phương trình chứa ẩn ở mẫu"
+  },
+  "T5B.11@p114": {
+   "dang_bai": "NDB02745",
+   "ly_do": "Lập phương trình từ quy luật số người quen; không thuộc dạng con cụ thể nào."
+  },
+  "T5B.12@p114": {
+   "dang_bai": "NDB03279",
+   "ly_do": "Bán 1/2 số cam và thêm 1/2 quả cho từng khách, làm theo quy luật."
+  },
+  "T5B.13@p114": {
+   "dang_bai": "NDB03280",
+   "ly_do": "Cánh đồng cỏ mọc đều, số bò ăn hết trong số tuần."
+  },
+  "T5B.14@p115": {
+   "dang_bai": "NDB03280",
+   "ly_do": "Bài toán Niu-tơn cỏ mọc bò ăn."
+  },
+  "T5B.15@p115": {
+   "dang_bai": "NDB03274",
+   "ly_do": "Xe buýt chạy theo chu kì, người gặp cùng và ngược chiều."
+  },
+  "T5B.16@p115": {
+   "dang_bai": "NDB03274",
+   "ly_do": "Hai xe gặp hai lần, ô tô nghỉ giữa đường."
+  },
+  "T5B.17@p115": {
+   "dang_bai": "NDB02742",
+   "ly_do": "Vòi chảy vào, chảy ra, năng suất phần bể mỗi giờ."
+  },
+  "T5B.18@p115": {
+   "dang_bai": "NDB03279",
+   "ly_do": "Đội k nhận 10k m và 1/10 phần còn lại, mọi đội bằng nhau."
+  },
+  "T5B.19@p115": {
+   "dang_bai": "NDB03275",
+   "ly_do": "Bài toán tìm bốn số theo quan hệ, không phải cấu tạo chữ số."
+  },
+  "T5B.20@p115": {
+   "dang_bai": "NDB03275",
+   "ly_do": "Viết thêm chữ số 1 trước/sau, cấu tạo thập phân."
+  },
+  "T5B.21@p116": {
+   "dang_bai": "NDB02741",
+   "ly_do": "Ẩn vận tốc dự định, so thời gian thực tế và dự định qua s=v.t."
+  },
+  "T5B.22@p116": {
+   "dang_bai": "NDB02742",
+   "ly_do": "Hai vòi nước làm chung, năng suất theo phần bể mỗi giờ."
+  },
+  "T5B.23@p116": {
+   "dang_bai": "NDB03279",
+   "ly_do": "Bán k quả và 1/9 số còn lại, mỗi ngày bằng nhau."
+  },
+  "T6V1.1@p124": {
+   "dang_bai": "NDB03282",
+   "ly_do": "Hệ hai bất phương trình bậc nhất, chọn nghiệm nguyên."
+  },
+  "T6V1.2@p124": {
+   "dang_bai": "NDB03282",
+   "ly_do": "Hệ hai bất phương trình bậc nhất, tìm nghiệm nguyên."
+  },
+  "T6V1.3@p124": {
+   "dang_bai": "NDB03281",
+   "ly_do": "Cộng 1 vào mỗi phân thức để tử chung x+91."
+  },
+  "T6V2.1@p125": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Đưa về (a-2)x>a²-4, biện luận ba trường hợp."
+  },
+  "T6V2.2@p125": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Bất phương trình chứa tham số với a>1 cho sẵn, chia cho 1-a âm."
+  },
+  "T6V2.3@p125": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Bất phương trình chứa tham số với điều kiện a>-2 cho sẵn, chỉ một trường hợp."
+  },
+  "T6V2.4@p125": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Đưa về (m-1)x≥m²-1, biện luận ba trường hợp."
+  },
+  "T6V2.5@p126": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Đưa về (a+2)x>1/a, biện luận theo dấu a+2."
+  },
+  "T6V2.6@p126": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Giải và biện luận theo dấu m+1."
+  },
+  "T6V2.7@p126": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Giải và biện luận theo dấu m-1."
+  },
+  "T6V2.8@p127": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Đưa về (a-1)x<2/a, biện luận theo dấu a-1."
+  },
+  "T6V3.1@p127": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ, chia ba khoảng theo mốc -3 và 5."
+  },
+  "T6V3.2@p128": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Hai dấu GTTĐ chia ba khoảng; có cách nhanh bằng |A|+|B|≥|A+B|."
+  },
+  "T6V3.3@p128": {
+   "dang_bai": "NDB03270",
+   "ly_do": "GTTĐ lồng nhau, phá từ trong ra ngoài."
+  },
+  "T6V3.4@p129": {
+   "dang_bai": "NDB03287",
+   "ly_do": "Bất phương trình hai dấu GTTĐ, chia ba khoảng."
+  },
+  "T6V3.5@p129": {
+   "dang_bai": "NDB03286",
+   "ly_do": "Dạng |A|<B, dùng -B<A<B."
+  },
+  "T6V3.6@p130": {
+   "dang_bai": "NDB03286",
+   "ly_do": "Dạng |A|<B, dùng -B<A<B."
+  },
+  "T6V4.1@p130": {
+   "dang_bai": "NDB03285",
+   "ly_do": "Ẩn ở mẫu, chuyển 1 sang trái, quy đồng, xét dấu tử mẫu."
+  },
+  "T6V4.2@p130": {
+   "dang_bai": "NDB03285",
+   "ly_do": "Thương các nhị thức so với 0, bảng xét dấu."
+  },
+  "T6V4.3@p131": {
+   "dang_bai": "NDB03285",
+   "ly_do": "Ẩn ở mẫu, chuyển vế quy đồng, xét dấu thương."
+  },
+  "T6V5.1@p131": {
+   "dang_bai": "NDB02744",
+   "ly_do": "Đưa về (x+2)(x-4)<0 hoặc |x-1|<3; giải được bằng tích hoặc GTTĐ."
+  },
+  "T6V5.2@p132": {
+   "dang_bai": "NDB02744",
+   "ly_do": "Tích ba nhị thức so với 0, bảng xét dấu."
+  },
+  "T6V5.3@p132": {
+   "dang_bai": "NDB02744",
+   "ly_do": "Phân tích tam thức thành tích hai nhị thức, lập bảng xét dấu."
+  },
+  "T6V6.1@p133": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Phương trình nhiều ẩn đưa về tổng các bình phương bằng 0"
+  },
+  "T6V6.2@p133": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Phương trình chứa phần nguyên (đưa về bất phương trình kép)"
+  },
+  "T6V6.3@p133": {
+   "dang_bai": "NDB03284",
+   "ly_do": "Rút gọn biểu thức A rồi tìm x để A>0."
+  },
+  "T6V6.4@p133": {
+   "dang_bai": "NDB03284",
+   "ly_do": "Rút gọn biểu thức B rồi giải B<-1."
+  },
+  "T6V6.5@p134": {
+   "dang_bai": "NDB03264",
+   "ly_do": "Phương trình ẩn ở mẫu có tham số, loại nghiệm trùng ĐKXĐ và đặt điều kiện nghiệm dương (cũng hợp dạng 3)."
+  },
+  "T6B.1@p134": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Bất phương trình chứa tham số a với a>1 cho sẵn, không cần biện luận nhiều trường hợp."
+  },
+  "T6B.2a@p134": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Ba dấu GTTĐ, chia khoảng theo mốc 0,2,3."
+  },
+  "T6B.2b@p134": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Ba dấu GTTĐ, chia khoảng theo mốc -2,-1,0."
+  },
+  "T6B.2c@p134": {
+   "dang_bai": "NDB03268",
+   "ly_do": "Ba dấu GTTĐ, chia bốn khoảng theo mốc 0,1,2."
+  },
+  "T6B.2d@p134": {
+   "dang_bai": "NDB03269",
+   "ly_do": "Vế trái không âm suy ra x≥0 rồi bỏ dấu GTTĐ, không cần chia khoảng."
+  },
+  "T6B.3a@p134": {
+   "dang_bai": "NDB02748",
+   "ly_do": "Bỏ |x²+x+1| vì luôn dương, còn một GTTĐ xét hai trường hợp."
+  },
+  "T6B.3b@p134": {
+   "dang_bai": "NDB03270",
+   "ly_do": "Phương trình chỉ chứa x qua |x|, đặt y=|x|≥0."
+  },
+  "T6B.4a@p134": {
+   "dang_bai": "NDB03284",
+   "ly_do": "Rút gọn phân thức rồi tìm x để A>0."
+  },
+  "T6B.4b@p134": {
+   "dang_bai": "NDB03284",
+   "ly_do": "Rút gọn biểu thức hữu tỉ rồi tìm x để B<0."
+  },
+  "T6B.5@p134": {
+   "dang_bai": "NDB03283",
+   "ly_do": "Đưa về (a-b)x>a+b, biện luận theo dấu hệ số chứa tham số."
+  },
+  "T6B.6a@p134": {
+   "dang_bai": "NDB03282",
+   "ly_do": "Hệ hai bất phương trình bậc nhất lấy giao; đề in lỗi, đáp số lệch sách."
+  },
+  "T6B.6b@p134": {
+   "dang_bai": "NDB03282",
+   "ly_do": "Giải hai bất phương trình bậc nhất rồi lấy giao tập nghiệm."
+  },
+  "T6B.7a@p135": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Phương trình chứa phần nguyên (đưa về bất phương trình kép)"
+  },
+  "T6B.7b@p135": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Phương trình chứa phần nguyên (đưa về bất phương trình kép)"
+  },
+  "T6B.7c@p135": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Phương trình chứa phần nguyên (đưa về bất phương trình kép)"
+  },
+  "T7V1.1@p137": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Lời giải xét số dư n chia 5 từng trường hợp; cũng có thể phân tích tích liên tiếp (dạng 1)."
+  },
+  "T7V1.2@p138": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Chứng minh tồn tại duy nhất bội của k trong k số liên tiếp bằng xét số dư n=kq+r và phản chứng."
+  },
+  "T7V1.3@p138": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Tích k số nguyên liên tiếp chia hết 6, 24; ghép thừa số nguyên tố cùng nhau."
+  },
+  "T7V1.4@p139": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Tích 4n(n+1), dùng tích hai số nguyên liên tiếp chia hết 2."
+  },
+  "T7V1.5@p139": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Tách n^3-13n=(n-1)n(n+1)-12n, dùng tích ba số nguyên liên tiếp chia hết 6."
+  },
+  "T7V1.6@p140": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Tách ra 3n(n−1)(n+1), tích ba số liên tiếp chia hết 3."
+  },
+  "T7V1.7@p140": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Đặt n=2k+1, tách thành bội 8 cộng hằng; chứng minh không chia hết."
+  },
+  "T7V1.8@p140": {
+   "dang_bai": "NDB03311",
+   "ly_do": "p nguyên tố >3, xét p=2k+1 và p=3h±1."
+  },
+  "T7V1.9@p141": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Dùng a^m−1 chia hết a−1 hai lần để có (n−1)²."
+  },
+  "T7V1.10@p141": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích thành tích bốn số chẵn liên tiếp, dùng tích số liên tiếp."
+  },
+  "T7V1.11@p141": {
+   "dang_bai": "NDB03312",
+   "ly_do": "16^n−1 chia hết 16−1=15 theo a^n−b^n."
+  },
+  "T7V1.12@p142": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Nhóm bốn luỹ thừa liên tiếp, đặt thừa số chung chứa 400."
+  },
+  "T7V1.13@p142": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Dùng (a−1)(a^m+...+1)=a^(m+1)−1 với a=4."
+  },
+  "T7V1.14@p142": {
+   "dang_bai": "NDB02763",
+   "ly_do": "A=B(n+3)+2, B là ước của 2."
+  },
+  "T7V1.15@p143": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Chia đa thức, đưa về n−1 chia hết n²−n+1, so sánh độ lớn."
+  },
+  "T7V1.16@p143": {
+   "dang_bai": "NDB02759",
+   "ly_do": "Chu kỳ dư của 2^n mod 7 để tìm n; là tìm điều kiện chia hết."
+  },
+  "T7V2.1@p143": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Tổng cộng dồn S(n) xét số dư mod 20; bài kẹo cũng gần áp dụng trực tiếp."
+  },
+  "T7V2.2@p144": {
+   "dang_bai": "NDB02766",
+   "ly_do": "Chia tam giác đều thành 16 tam giác nhỏ cạnh 1/4, có hai điểm gần."
+  },
+  "T7V2.3@p144": {
+   "dang_bai": "NDB03308",
+   "ly_do": "Bắt tay, chuồng là số lần bắt tay có thể."
+  },
+  "T7V2.4@p144": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Dãy 6, 66, ..., hai số cùng dư mod 2003."
+  },
+  "T7V2.5@p145": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Chuồng là cặp số dư r và 100−r, tổng hoặc hiệu chia hết 100."
+  },
+  "T7V2.6@p145": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Chuồng là chữ số tận cùng/số dư mod m, hiệu chia hết m."
+  },
+  "T7V2.7@p145": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Tổng cộng dồn xét số dư, hai tổng cùng dư."
+  },
+  "T7V2.8@p146": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Dãy luỹ thừa 1983^k, hai số cùng dư mod 10^5."
+  },
+  "T7V3.1@p146": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Dãy số lặp, hai số cùng dư khi chia 2003, hiệu chia hết."
+  },
+  "T7V3.2a@p147": {
+   "dang_bai": "NDB02759",
+   "ly_do": "Số dư 2^100 chia 9 bằng 2³=9−1."
+  },
+  "T7V3.2b@p147": {
+   "dang_bai": "NDB02759",
+   "ly_do": "Số dư 2^100 chia 25 bằng BS25−1."
+  },
+  "T7V3.2c@p147": {
+   "dang_bai": "NDB02759",
+   "ly_do": "Số dư 2^100 chia 125 bằng nhị thức Niu-tơn."
+  },
+  "T7V3.3@p148": {
+   "dang_bai": "NDB03315",
+   "ly_do": "Ba chữ số tận cùng của 2^100, ghép mod 8 và 125."
+  },
+  "T7V3.4@p148": {
+   "dang_bai": "NDB03315",
+   "ly_do": "Bốn chữ số tận cùng của 5^1994, dư khi chia 10000."
+  },
+  "T7V3.5@p148": {
+   "dang_bai": "NDB03315",
+   "ly_do": "Ba chữ số tận cùng của 3^100 bằng Niu-tơn."
+  },
+  "T7V3.6@p149": {
+   "dang_bai": "NDB02759",
+   "ly_do": "Tìm số dư của a+b khi chia 4 bằng đồng dư; không hẳn là luỹ thừa đơn."
+  },
+  "T7V3.7a@p149": {
+   "dang_bai": "NDB03315",
+   "ly_do": "Hai chữ số tận cùng của 3^999 qua nhị thức Niu-tơn."
+  },
+  "T7V3.7b@p149": {
+   "dang_bai": "NDB03315",
+   "ly_do": "Tìm hai chữ số tận cùng của luỹ thừa tầng."
+  },
+  "T7V4.1@p149": {
+   "dang_bai": "NDB03318",
+   "ly_do": "Chứng minh hợp số bằng chỉ ra ước 3, 13, 5 theo dạng của n."
+  },
+  "T7V4.2@p150": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Tìm tham số để đa thức chia hết đa thức (dư bằng 0)"
+  },
+  "T7V4.3@p150": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Chia f(k) cho k+3 được dư hằng, k+3 là ước của dư."
+  },
+  "T7V4.4@p150": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Chia hết với tổng phân số, ghép cặp đối xứng 1/i+1/(p−i)"
+  },
+  "T7V4.5@p151": {
+   "dang_bai": "",
+   "ly_do": "KHÔNG THUỘC NHÓM: tổ hợp đếm (quy tắc nhân)"
+  },
+  "T7V4.6@p151": {
+   "dang_bai": "NDB03313",
+   "ly_do": "Chu kỳ chữ số tận cùng của 2^n và đồng dư mod 3 để chứng minh ab chia hết 6."
+  },
+  "T7V4.7@p152": {
+   "dang_bai": "",
+   "ly_do": "KHÔNG THUỘC NHÓM: phép chia đa thức, tìm thương bằng hệ số bất định"
+  },
+  "T7V4.8@p153": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Tìm hệ số để đa thức chia hết đa thức (dư bằng 0)"
+  },
+  "T7V4.9@p153": {
+   "dang_bai": "NDB03330",
+   "ly_do": "Chứng minh không có nghiệm nguyên bằng xét chia hết cho 3, 9 theo trường hợp."
+  },
+  "T7V4.10@p154": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Xét n chia 3 dư 0,1,2 từng trường hợp."
+  },
+  "T7V4.11@p154": {
+   "dang_bai": "NDB03314",
+   "ly_do": "Chứng minh 16^n−15n−1 chia hết 225 bằng quy nạp."
+  },
+  "T7V4.12a@p155": {
+   "dang_bai": "NDB02762",
+   "ly_do": "Kẹp n²−n+2 giữa (n−1)² và n², thử n nhỏ."
+  },
+  "T7V4.12b@p155": {
+   "dang_bai": "NDB02762",
+   "ly_do": "Kẹp n⁴−n+2 giữa (n²−1)² và (n²)², thử n nhỏ."
+  },
+  "T7V4.13@p155": {
+   "dang_bai": "NDB03323",
+   "ly_do": "Đặt 4p+1=(2k+1)² được p=k(k+1), dùng nguyên tố suy một thừa số bằng 1."
+  },
+  "T7B.1@p155": {
+   "dang_bai": "NDB03326",
+   "ly_do": "Đưa về (x−y)(x+y)=989, liệt kê cặp ước."
+  },
+  "T7B.2@p155": {
+   "dang_bai": "NDB03316",
+   "ly_do": "Tìm chữ số chưa biết bằng cấu tạo số, chặn ac² rồi thử."
+  },
+  "T7B.3@p155": {
+   "dang_bai": "NDB03334",
+   "ly_do": "Kẹp y⁴=(y²)² giữa hai bình phương liên tiếp của x²+z²+1, x²+z²+2."
+  },
+  "T7B.4@p155": {
+   "dang_bai": "NDB02753",
+   "ly_do": "Làm trội 1/k² bằng hiệu triệt tiêu để kẹp S giữa hai số nguyên liên tiếp."
+  },
+  "T7B.5@p155": {
+   "dang_bai": "NDB03326",
+   "ly_do": "Khử z rồi đưa về (x−4)(y−4)=8, xét cặp ước."
+  },
+  "T7B.6@p156": {
+   "dang_bai": "NDB03316",
+   "ly_do": "Cấu tạo số qua 10^n, điều kiện 3·10^n−1 chia hết 7; cũng gần lập phương trình về số."
+  },
+  "T7B.7@p156": {
+   "dang_bai": "NDB03325",
+   "ly_do": "Tìm chữ số để các số cấu tạo là số chính phương, liệt kê thử."
+  },
+  "T7B.8@p156": {
+   "dang_bai": "NDB03308",
+   "ly_do": "Quen biết sáu người, chọn một người mốc rồi Đi-rích-lê, kiểu đồ thị tô màu."
+  },
+  "T7B.9@p156": {
+   "dang_bai": "NDB03316",
+   "ly_do": "Khai triển cấu tạo số theo cơ số 7 và 11, dùng chia hết cho 3 chặn chữ số."
+  },
+  "T7B.10@p156": {
+   "dang_bai": "NDB03326",
+   "ly_do": "Thay x=4 được (4+b)(4+c)=−7, xét ước; bài đồng nhất đa thức."
+  },
+  "T7B.11@p156": {
+   "dang_bai": "NDB03326",
+   "ly_do": "Phân tích vế trái thành (x+2y)(3x+4y)=96, xét cặp ước."
+  },
+  "T7B.12@p156": {
+   "dang_bai": "NDB03320",
+   "ly_do": "Tích bằng m²−1 kẹp giữa (m−1)² và m² nên không chính phương."
+  },
+  "T7B.13@p156": {
+   "dang_bai": "NDB03323",
+   "ly_do": "Suy ra x²−7 là số chính phương a², đưa về (x−a)(x+a)=7; là bài nghiệm nguyên."
+  },
+  "T7B.14@p156": {
+   "dang_bai": "NDB02738",
+   "ly_do": "Lập và giải phương trình bậc hai theo tỉ số x/y; không có dạng chuyên biệt."
+  },
+  "T7B.15@p156": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Ghép cặp, dùng a^(2n+1)+b^(2n+1) chia hết a+b với số mũ lẻ 2005."
+  },
+  "T7B.16@p156": {
+   "dang_bai": "NDB03316",
+   "ly_do": "Tìm chữ số qua cấu tạo thập phân 1000x+y=x³, chặn x; không dùng dấu hiệu chia hết."
+  },
+  "T7B.17@p156": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Cực trị liên quan cấu tạo số (tỉ số số và tổng chữ số)"
+  },
+  "T7B.18@p156": {
+   "dang_bai": "NDB03323",
+   "ly_do": "Đặt biểu thức bằng k², nhân 4 thành hiệu hai bình phương bằng 27, xét ước."
+  },
+  "T7B.19@p156": {
+   "dang_bai": "NDB02764",
+   "ly_do": "Nhân 4, ghép tổng bình phương bằng 0; ẩn thực, không phải nghiệm nguyên."
+  },
+  "T7B.20@p156": {
+   "dang_bai": "NDB03326",
+   "ly_do": "Khử mẫu, đưa về (x-2)(y-2)=4; cách khác sắp thứ tự ẩn cũng hợp lệ."
+  },
+  "T7B.21@p156": {
+   "dang_bai": "NDB02758",
+   "ly_do": "Hệ phương trình bậc nhất nghiệm nguyên, dùng chia hết, nghiệm tổng quát theo k."
+  },
+  "T7B.22@p156": {
+   "dang_bai": "NDB02756",
+   "ly_do": "n=2k, tách k^3-k là tích ba số liên tiếp cộng 6k."
+  },
+  "T7B.23@p156": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Ghép nhóm a^n-b^n chia hết a-b, a+b (n chẵn) cho 17 và 19."
+  },
+  "T7B.24a@p157": {
+   "dang_bai": "",
+   "ly_do": "KHÔNG THUỘC NHÓM: Phân tích đa thức thành nhân tử"
+  },
+  "T7B.24b@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích thành tích bảy số nguyên liên tiếp."
+  },
+  "T7B.25@p157": {
+   "dang_bai": "NDB03312",
+   "ly_do": "Tách 5(49^(n+1)-8^(n+1)) cộng bội 41, dùng a^k-b^k chia hết a-b."
+  },
+  "T7B.26@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Đổi biến a+b+c=0, phân tích A=B(a^2+ab+b^2); chia hết đa thức nhiều biến."
+  },
+  "T7B.27@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Nhẩm nghiệm, phân tích bốn nhân tử bậc nhất đều chẵn khi k lẻ."
+  },
+  "T7B.28a@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích 4m(m+1), tích hai số liên tiếp."
+  },
+  "T7B.28b@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Hiệu hai bình phương phân tích được 4(2n+1)."
+  },
+  "T7B.28c@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Hiệu hai bình phương phân tích thành tích bằng 8n."
+  },
+  "T7B.29@p157": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Biểu diễn qua tổng-tích s, p để chứng minh biểu thức là số nguyên"
+  },
+  "T7B.30@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Bài hình đưa về ab chia hết 12, dùng số dư bình phương mod 3, 4 với Pi-ta-go."
+  },
+  "T7B.31a@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "n(n+1)(n+2) là tích ba số liên tiếp chia hết 6."
+  },
+  "T7B.31b@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Hiệu hai bình phương thành tích bốn số nguyên liên tiếp."
+  },
+  "T7B.32a@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "n(n+2)(n+4), n=2k rút 8, tích ba số liên tiếp."
+  },
+  "T7B.32b@p157": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích bốn nhân tử, n lẻ rút 16, tích bốn số liên tiếp."
+  },
+  "T7B.33a@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "a nguyên tố lớn hơn 3: a=2m+1, a=3k±1 chứng minh chia hết 24."
+  },
+  "T7B.33b@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Số nguyên tố lớn hơn 3, xét lẻ và 3k±1 để p^2-1 chia hết 24."
+  },
+  "T7B.33c@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Tìm điều kiện a bằng xét số dư theo 16, 3, 5; dạng tìm điều kiện chia hết."
+  },
+  "T7B.34@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Chứng minh chia hết 24 bằng số dư của số chính phương mod 3, mod 8."
+  },
+  "T7B.35@p157": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Chứng minh chia hết 40 bằng số dư của số chính phương mod 8, mod 5."
+  },
+  "T7B.36a@p158": {
+   "dang_bai": "NDB03319",
+   "ly_do": "Phân tích tam thức thành tích, nhân tử nhỏ bằng 1."
+  },
+  "T7B.36b@p158": {
+   "dang_bai": "NDB03319",
+   "ly_do": "Phân tích (2n+1)(4n+3), thừa số nhỏ bằng 1."
+  },
+  "T7B.36c@p158": {
+   "dang_bai": "NDB03319",
+   "ly_do": "Tìm n để n(n+3)/4 nguyên tố, viết thành tích, một thừa số bằng 1."
+  },
+  "T7B.37a@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Tìm n để chia hết cho hằng số 11; tách tích cộng bội 11, dùng số nguyên tố."
+  },
+  "T7B.37b@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Chia đa thức dư 5, 2n-1 là ước của 5."
+  },
+  "T7B.37c@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Tách n^3-8, n-2 là ước của 6."
+  },
+  "T7B.37d@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Chia đa thức được dư 3, n^2+n+1 là ước của 3."
+  },
+  "T7B.37e@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Phân tích, giản ước, đưa về n+1 là ước hằng số."
+  },
+  "T7B.37f@p158": {
+   "dang_bai": "NDB02763",
+   "ly_do": "Chia đa thức, dư bậc nhất, nhân thêm để n^2+1 là ước hằng số."
+  },
+  "T7B.38a@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "n^3-n là tích ba số nguyên liên tiếp."
+  },
+  "T7B.38b@p158": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Phân tích n(n^2-1)(n^2+1) rồi xét n theo số dư chia 5."
+  },
+  "T7B.38c@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Trừ tích bảy số nguyên liên tiếp để hạ bậc, phần còn lại có thừa số 7."
+  },
+  "T7B.39@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Tách 2(n^3-n)+3n(n+1), dùng tích số nguyên liên tiếp."
+  },
+  "T7B.40@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Thêm bớt ab, tách b(a^3-a)-a(b^3-b), tích ba số liên tiếp."
+  },
+  "T7B.41@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Hiệu (a^3-a)+(b^3-b) là tích ba số liên tiếp chia hết 6."
+  },
+  "T7B.42@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Khai triển, tách 3(n^3-n) là tích ba số liên tiếp."
+  },
+  "T7B.43@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích thành tích năm số nguyên liên tiếp, chia hết 120."
+  },
+  "T7B.44@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích nhân tử, n lẻ rút 8, tích ba số liên tiếp chia hết 6."
+  },
+  "T7B.45@p158": {
+   "dang_bai": "NDB02756",
+   "ly_do": "Phân tích thành tích, n chẵn rút 16, còn tích bốn số liên tiếp."
+  },
+  "T7B.46@p158": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Viết (n+a)(n+b)+c rồi xét hai trường hợp chia hết cho 7; cũng gần dạng phân tích nhân tử."
+  },
+  "T7B.47@p158": {
+   "dang_bai": "NDB03311",
+   "ly_do": "Xét n=3k, 3k+1, 3k+2 để chứng minh không chia hết cho 9."
+  },
+  "T7B.48@p158": {
+   "dang_bai": "NDB03321",
+   "ly_do": "n(n+1)(n+2)(n+3)+1 biến đổi về bình phương đúng."
+  },
+  "T7B.49a@p158": {
+   "dang_bai": "NDB03318",
+   "ly_do": "n^4+4 tách thành tích hai thừa số lớn hơn 1 nên hợp số."
+  },
+  "T7B.49b@p158": {
+   "dang_bai": "NDB03318",
+   "ly_do": "Thêm bớt tạo hiệu hai bình phương, tách thành tích hai thừa số lớn hơn 1."
+  },
+  "T7B.50@p158": {
+   "dang_bai": "NDB03318",
+   "ly_do": "Chứng minh 2^32+1 là hợp số bằng chỉ ra ước 641 qua phân tích biểu thức."
+  },
+  "T7B.51@p158": {
+   "dang_bai": "",
+   "ly_do": "THIẾU DẠNG: Số có chữ số lặp viết qua 10^n, chứng minh là tích hai số nguyên liên tiếp"
+  },
+  "T7B.52@p159": {
+   "dang_bai": "NDB03321",
+   "ly_do": "Số chữ số lặp viết qua 10^n, biến đổi thành bình phương (3k)^2."
+  },
+  "T7B.53@p159": {
+   "dang_bai": "NDB03307",
+   "ly_do": "2004 số ghép khối 2002, hai số cùng dư mod 2003, hiệu chia hết."
+  },
+  "T7B.54@p159": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Hai lũy thừa cùng số dư mod 10^4 theo Đi-rích-lê."
+  },
+  "T7B.55@p159": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Lũy thừa của 3 làm thỏ, số dư mod 10^4 làm lồng, hiệu chia hết."
+  },
+  "T7B.56@p159": {
+   "dang_bai": "NDB03307",
+   "ly_do": "Tổng dồn S1..S2001 xét số dư mod 2001, hiệu hai tổng chia hết."
+  },
+  "T7B.57@p159": {
+   "dang_bai": "NDB03307",
+   "ly_do": "8 số, 7 số dư khi chia 7; hai số cùng dư nên số ghép chia hết cho 7."
+  },
+  "T7B.58@p159": {
+   "dang_bai": "NDB02765",
+   "ly_do": "Đi-rích-lê trực tiếp: lồng là 25 số nguyên tố (ước nguyên tố nhỏ nhất), không phải lồng số dư."
+  }
+ }
+}
