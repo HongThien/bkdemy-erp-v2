@@ -36,7 +36,7 @@
     Đang làm spec thì **không lạc sang việc cụ thể**; việc code/DB sinh ra từ quyết định trong spec ghi vào mục "chờ lệnh" của spec đó, chỉ làm khi Thùy ra lệnh.
 - **▶ ĐANG LÀM — #19 `spec-tai-chinh.md` (Thùy đổi hướng 20/11: "đi lại từ đầu — cơ cấu tài chính trước, rồi mới thu chi"):**
   - **⭐ Thùy 21/11: spec tài chính theo ĐÍCH, không theo hiện tại** — số BK chỉ để có insight; luôn so "có đang đi đúng hướng tới đích không". Thứ tự: đích công suất → đích doanh thu → đích cơ cấu chi phí → bảng so đích–thực tế.
-    **Phần 0 (mới)** = công suất → doanh thu: 8 phòng 130 chỗ, 163 phòng-ca 1,5 giờ một tuần, dùng 90 = 147. Hiện tại 110 phòng-ca · 8,0 em/ca · 759 lượt em-ca · ~500 tr/tháng. Đích 1 (12 em/ca) ≈ 1.100 tr niêm yết; Đích 2 Thùy nêu 18 em/ca vượt sức chứa (trung bình phòng 16,25 chỗ) ⇒ đề xuất 15 ≈ 1.375 tr. Chờ Thùy: §0.6.
+    **Phần 0 (mới)** = công suất → doanh thu: 8 phòng 130 chỗ, 163 phòng-ca 1,5 giờ một tuần, dùng 90 = 147. Hiện tại 110 phòng-ca · 8,0 em/ca · 759 lượt em-ca · ~500 tr/tháng. Đích 1 (12 em/ca) ≈ 1.100 tr niêm yết; **Đích 2 = 15 em/ca ≈ 1.375 tr (Thùy chốt 21/11;** 18 em/ca vượt sức chứa, trung bình phòng 16,25 chỗ). Chờ Thùy: §0.6.
   - **Phần I = CƠ CẤU CHI PHÍ** = mỗi khoản chi chiếm bao nhiêu % doanh thu, **đích lợi nhuận 25%**. Bảng §I.1 dựng từ SỐ THẬT tháng 9 trong 3 bảng TOT "Duyệt chi tháng" Thùy gửi
     (file ở Downloads máy công ty, **KHÔNG chép vào repo**; spec chỉ ghi số tổng theo dòng, không ghi tên người kèm tiền, không ghi phần chia lãi).
     Tháng 9: doanh thu 456,7 tr · tổng chi 81,1% · **lợi nhuận 18,9%** — cách đích ~6 điểm, lệch ở 3 dòng: giáo viên 35,9 (đích đề xuất 30) · nhân sự không đứng lớp 18,9 (16) · mặt bằng 9,0 (7).

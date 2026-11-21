@@ -25,7 +25,7 @@
 - **8 phòng:** 4 phòng to (tối đa 20) · 2 phòng vừa (15) · 2 phòng bé (10) ⇒ **130 chỗ**, trung bình 16,25 chỗ một phòng.
 - **Khung giờ đầy:** tối 18:00–19:30 và 19:30–21:00 · Chủ nhật 8:00–18:00 · thứ Bảy ban ngày khoảng 3 lớp.
 - **Công suất phòng tối đa 90** (10 để cho bổ trợ).
-- **Đích 1:** trung bình một ca **12 em**. **Đích 2:** tăng chất lượng ⇒ trung bình một ca **18 em**.
+- **Đích 1:** trung bình một ca **12 em**. **Đích 2:** tăng chất lượng ⇒ trung bình một ca **15 em** *(Thùy nêu 18, 21/11 chốt lại 15 vì 18 vượt sức chứa — §0.5 điểm 2)*.
 - **Học phí một ca:** 150 nghìn (1,5 giờ) · 180 nghìn (2 giờ) · 250 nghìn (2,5 giờ).
 
 ## 0.2 Công suất phòng (đơn vị: phòng-ca 1,5 giờ)
@@ -52,13 +52,13 @@
 |---|---|---|---|---|---|
 | **Hiện tại** | 110 (67) | 8,0 | 759 | 548 triệu | ~497 triệu |
 | **Đích 1** | 147 (90) | 12 | 1.764 | **~1.100 triệu** | ~990 triệu |
-| Đích 2 như Thùy nêu | 147 | 18 | 2.646 | ~1.650 triệu | ~1.490 triệu |
-| **Đích 2 khả thi** | 147 | 15 | 2.205 | **~1.375 triệu** | ~1.240 triệu |
+| **Đích 2** (chốt 21/11) | 147 (90) | 15 | 2.205 | **~1.375 triệu** | ~1.240 triệu |
+| *(18 em một ca — đã bỏ)* | 147 | 18 | 2.646 | ~1.650 triệu | ~1.490 triệu |
 
 ## 0.5 Kiểm tra hợp lý
 
 1. **"800 lượt học sinh" không vô lý, còn hơi thấp.** Đích 1 = 1.764 lượt em-ca một tuần; một lớp trung bình 1,77 ca một tuần ⇒ khoảng **1.000 lượt em-lớp** (hiện 429). Con số 800 lượt em-lớp tương ứng dùng khoảng 73 công suất phòng, doanh thu niêm yết ~880 triệu. Nếu 800 là số EM (hiện mỗi em học 1,18 lớp) thì thành ~940 lượt em-lớp — cũng trong tầm.
-2. **Đích 2 = trung bình 18 em một ca là KHÔNG làm được với 8 phòng này.** Trung bình một phòng chỉ có 16,25 chỗ; kể cả dành hết phần 10 bổ trợ cho phòng bé và mọi ca còn lại kín 100 thì trần là 16,9. 18 em chỉ đạt được ở 4 phòng to. Đích 2 khả thi: lấp ~90 số chỗ ⇒ **trung bình 15** (phòng to 18 · phòng vừa 13–14 · phòng bé 9).
+2. **Đích 2 = trung bình 18 em một ca là KHÔNG làm được với 8 phòng này.** Trung bình một phòng chỉ có 16,25 chỗ; kể cả dành hết phần 10 bổ trợ cho phòng bé và mọi ca còn lại kín 100 thì trần là 16,9. 18 em chỉ đạt được ở 4 phòng to. **⇒ Thùy chốt 21/11: Đích 2 = trung bình 15** — lấp ~90 số chỗ (phòng to 18 · phòng vừa 13–14 · phòng bé 9).
 3. **Khoảng cách tới Đích 1 nằm ở sĩ số nhiều hơn ở số ca:** số phòng-ca cần tăng 34 (110 → 147), sĩ số cần tăng 50 (8 → 12). Lớp đông thêm em gần như không thêm chi phí — khớp nhận định ở Phần I.
 4. **Ca 2 giờ thu ít hơn theo giờ** (90 nghìn một giờ so với 100 nghìn của ca 1,5 và 2,5 giờ) và không khớp lưới 18:00–19:30–21:00. Càng nhiều ca 2 giờ thì doanh thu một phòng càng thấp.
 
@@ -66,7 +66,6 @@
 
 - Tối tính 6 hay 7 ngày; Chủ nhật có nghỉ trưa không (6 ca hay 6,5 ca).
 - Hệ số 0,9 (giảm phí + buổi nghỉ): đích giữ 0,9 hay siết.
-- Đích 2 lấy 15 hay vẫn muốn 18 (khi đó phải đổi phòng: gộp phòng bé, hoặc cơ sở mới phòng to).
 - Mốc thời gian của Đích 1 và Đích 2.
 
 ---
