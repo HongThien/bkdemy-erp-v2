@@ -37,11 +37,11 @@
 - **▶ ĐANG LÀM — #19 `spec-tai-chinh.md` (Thùy đổi hướng 20/11: "đi lại từ đầu — cơ cấu tài chính trước, rồi mới thu chi"):**
   - **Phần I = CƠ CẤU CHI PHÍ** = mỗi khoản chi chiếm bao nhiêu % doanh thu, **đích lợi nhuận 25%**. Bảng §I.1 dựng từ SỐ THẬT tháng 9 trong 3 bảng TOT "Duyệt chi tháng" Thùy gửi
     (file ở Downloads máy công ty, **KHÔNG chép vào repo**; spec chỉ ghi số tổng theo dòng, không ghi tên người kèm tiền, không ghi phần chia lãi).
-    Tháng 9: doanh thu 456,7 tr · tổng chi 80,9% · **lợi nhuận 19,1%** — cách đích ~6 điểm, lệch ở 3 dòng: giáo viên 35,9 (đích đề xuất 30) · nhân sự không đứng lớp 18,9 (16) · mặt bằng 9,0 (7).
-  - **Luật Thùy chốt 20/11:** **trích quỹ dự phòng KHÔNG phải chi phí** ("tiền vẫn còn đấy"); chỉ khi rút quỹ ra tiêu thật thì khoản tiêu mới là chi, ghi vào đúng dòng của nó.
+    Tháng 9: doanh thu 456,7 tr · tổng chi 79,8% · **lợi nhuận 20,2%** — cách đích ~5 điểm, lệch ở 3 dòng: giáo viên 35,9 (đích đề xuất 30) · nhân sự không đứng lớp 18,9 (16) · mặt bằng 9,0 (7).
+  - **Luật Thùy chốt 20/11:** **trích quỹ dự phòng KHÔNG phải chi phí** ("tiền vẫn còn đấy"); chỉ khi rút quỹ ra tiêu thật thì khoản tiêu mới là chi, ghi vào đúng dòng của nó. **21/11: bốn quỹ còn lại (học liệu, hackathon, CSVC, tài khoản) cũng tính theo TIÊU THẬT** — đọc theo trung bình nhiều tháng vì quỹ tiêu dồn.
     Cách đọc TOT: lương tháng M trả ở M+1, học phí tháng M thu ở M+1 ⇒ ghép theo "tháng hoạt động".
-  - **⏸ CHỜ THÙY trả lời 5 câu §I.3:** cách gom dòng (tách "nhân viên full-time"?) · cột đích (giáo viên 30?) · doanh thu tính theo tiền thu hay học phí phát sinh · phần dạy của người sáng lập nằm dòng giáo viên ·
-    bốn quỹ còn lại (học liệu, hackathon, CSVC, tài khoản) tính theo số trích hay tiêu thật (đề xuất: tiêu thật, khoản lớn trải 12 tháng).
+  - **⏸ CHỜ THÙY trả lời 4 câu còn lại §I.3 (câu 5 đã chốt 21/11):** cách gom dòng (tách "nhân viên full-time"?) · cột đích (giáo viên 30?) · doanh thu tính theo tiền thu hay học phí phát sinh · phần dạy của người sáng lập nằm dòng giáo viên ·
+    còn mở thêm: khoản mua sắm lớn một lần có trải 12 tháng không (đề xuất: có).
     **Chốt xong Phần I mới "break xuống tầng dưới"** (gán danh mục BK Chi / loại lương / dòng TOT vào từng dòng; sắp lại Phần II = bản nháp 19/11 về thu chi; bảng so đích–thực tế).
   - **Lệch chưa giải thích:** thu tháng 10 theo TOT 456,7 tr ↔ `thanh_toan` ERP 474,2 tr · BK Chi "Công đoàn" tháng 9 24,5 tr không có dòng TOT tương ứng · khoản 22.222.222đ ngày 02/09 trong chi kỳ.
   - **Phát hiện ghi trong Phần II, CHƯA sửa (chờ lệnh):** policy ALL cho mọi thành viên trên `thanh_toan` · bảng giá · hệ số học phí · tính tiền ở client (`src/lib/hocphi.ts`, `HocPhiScreen.tsx`) ·

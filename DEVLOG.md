@@ -82064,3 +82064,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Loại bỏ: ~46 câu Opus báo lệch (chép nhầm "diện tích sân", `\begin{cases}` cho "hoặc", `\{` ngoài `$`, đề trần thiếu lời dẫn, "số hạng tự do" sai dấu, đề "chia tổ" mơ hồ). NDB01206 không duyệt (lời giải = đáp án). Nháp bị loại đánh `tu_choi_at`.
 - Bài học: lỗi mẫu lặp theo dạng (cùng một khuôn sinh) nên mẫu 20% bắt được cả dạng; thư mục tạm chung của subagent bị ghi đè (g2.js) — lần sau mỗi agent một thư mục riêng.
 - Còn thiếu: dạng 0 câu (6 ở K6, 7 ở K7, 1 ở K8 — phải nhập gốc), vài dạng bị loại nhiều câu cần sinh bù.
+
+### 21/11 08:05 — [Gộp spec #19] Thùy chốt câu 5 §I.3: bốn quỹ còn lại tính "Theo tiêu thật"
+- Bảng I.1 tính lại tháng 9: học liệu tiêu 0 (trích 2) · hackathon 0 (trích 3) · CSVC 5,0 · tài khoản 10,0 ⇒ tổng chi 369,5 → 364,5 tr (79,8%), lợi nhuận 87,2 → 92,2 tr (20,2%), cách đích 4,8 điểm; doanh thu cần để đạt 25 khi chi giữ nguyên: 486 tr.
+- Hệ quả ghi trong spec: quỹ tiêu dồn (hackathon tháng 10 tiêu 14,2 tr) ⇒ đọc cơ cấu theo trung bình nhiều tháng. Còn mở: khoản lớn một lần trải 12 tháng (đề xuất, chưa chốt) + 4 câu §I.3 còn lại.
