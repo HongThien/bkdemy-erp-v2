@@ -14,6 +14,7 @@ import { readFileSync } from 'node:fs'
 import pg from 'pg'
 import { xetGoi, bamNoiDung } from '../cong-ghi.mjs'
 import { insertCauBatch } from '../../_kho_insert.mjs'
+import { KIEM_K6 } from './k6-fill-kiem.mjs' // 21/11: bộ kiểm 3 dạng K6 hao do loại (NDB00367 · 00403 · 01229)
 
 const GHI = process.argv.includes('--ghi')
 const a = process.argv.slice(2), lay = (k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : null }
@@ -40,6 +41,7 @@ const kiemSoDuTong = (nd, da, lg) => {
 }
 // Mỗi bộ kiểm: (noi_dung, dap_an, loi_giai) → [] nếu đạt, hoặc danh sách lỗi. Đọc đề từ CHỮ, tính lại bằng code.
 const KIEM = {
+  ...KIEM_K6,
   NDB00401: (nd, da, lg) => { // UCLN bằng định nghĩa của a và b
     const m = bo$(nd).match(/^TìmUCLNbằngđịnhnghĩacủa(\d+)và(\d+)\.$/); if (!m) return ['không đọc được đề']
     const g = gcd(+m[1], +m[2]), cuoi = cuoiLoiGiai(lg, /UCLN\(\d+,\d+\)=(\d+)/)
