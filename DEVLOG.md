@@ -82176,3 +82176,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Chưa làm (chờ Thùy gật):** mở lại 6 buổi 11B1 ngày 15/11 đã bị huỷ 16/11 (buổi + case + dạng) để GV nhập Đ/C/S. "Sửa" sau khi đã NỘP chưa mở (nộp = xong ca + vào mastery).
 - **Bài học:** quyền nhập kết quả không được buộc vào MỘT người (TA); luật tự huỷ phải xét "đã diễn ra" bằng điểm danh, không chỉ bằng "có bài làm chưa".
 - **(cùng tối) Đã mở lại 6 buổi 11B1 ngày 15/11** (mig 202611211646, Thùy gật): 6 buổi + ca → `mo`, 6 case `nhe_xong/bo` → `nhe_mo`; 6 em vẫn `co_mat`, dạng không đụng. Kiểm: cả 6 `buoi=mo · co_mat · case=nhe_mo · ca=mo`. GV lớp nhập Đ/C/S ở Bổ trợ › Sau giờ (cần deploy ERP bản mới để có nút Đổi TA; quyền nhập đã ở DB).
+
+## 21/11 — [Hình–Luyện K7] Xoá chuỗi cũ 5 mô hình Tam giác bằng nhau để dựng lại theo file "Mô hình 7.docx" của Thùy
+- **Thùy:** chuỗi K7 dựng 07/11 từ mô hình cũ "bị sai"; gửi `Documents\Mô hình 7.docx` (4 mô hình: phân giác tam giác vuông · phân giác tam giác nhọn · tam giác cụng đầu · tam giác cân) và bảo xoá rồi làm lại.
+- **Đọc file:** công thức là MathType (OLE + WMF) nên trích chữ thường mất — render WMF qua System.Drawing (PowerShell) rồi đọc ảnh; PIL của Python 3.15 trên máy này hỏng.
+- **Đã xoá (Thùy gật 21/11, danh sách liệt kê trước, chạy thử ROLLBACK khớp rồi COMMIT một transaction):** 25 nút giả thiết con (3 nhóm bài · 10 thành viên · 7 sự kiện) + 50 bài nốt (13 ở nút gốc, gồm BT.07.126.01/.02 Thùy gõ) + 50 cách giải (13 có lời giải) + 32 dòng tiền đề của MH.126/130/131/132/133. DB đã kiểm trước: 0 tham chiếu từ lượt HS, hinh_y, giáo trình, nhãn, tài liệu.
+- **Giữ:** 5 nút gốc (tên · giả thiết gốc · hình gốc — MH.126 gốc vẫn mang vai nhóm_bài), kho bài 20 bài, 8 mô hình Đường thẳng song song, mô hình cũ ẩn. Mã đã xoá không cấp lại.
+- **Chờ Thùy trả lời 5 câu trước khi dựng lại:** xoá cả gốc? · MH.133 + 8 mô hình song song có file không? · "nhóm" trong file là nhóm bài hai-trong-ba hay nhánh song song? · tam giác cân: 3 nhánh, "N"→"K"? · lần này chỉ dựng cây, hình + lời giải sau.
