@@ -1,0 +1,162 @@
+[
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ki-1-toan-7-nam-2025-2026-truong-thcs-to-hoang-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2045,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Phương Đông, xã Trà Liên (không ghi mã đề)",
+   "ti_le": 0.13,
+   "cau": 8
+  },
+  "nhi": 0.08,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "de-cuong-giua-ky-1-toan-7-nam-2025-2026-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 1904,
+  "best": {
+   "ten": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ti_le": 0.21,
+   "cau": 28
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 1,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-thanh-cong-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 2055,
+  "best": {
+   "ten": "Đề cương ôn tập giữa học kì 1 Toán 7 — THCS Thành Công",
+   "ti_le": 0.21,
+   "cau": 28
+  },
+  "nhi": 0.09,
+  "so_de_khop": 0,
+  "giong_ten": 0.8,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-hoc-ky-1-toan-7-nam-2025-2026-truong-thcs-chu-van-an-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1189,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 7 năm 2024–2025 — THCS Thành Công",
+   "ti_le": 0,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.4,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-ki-1-toan-7-nam-2024-2025-truong-thcs-ngoc-thuy-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 2248,
+  "best": {
+   "ten": "Đề kiểm tra giữa học kì 1 Toán 7 năm 2025-2026 — THCS Lê Thị Hồng Gấm, phường Thanh Khê (mã đề B)",
+   "ti_le": 0.33,
+   "cau": 12
+  },
+  "nhi": 0.13,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKI",
+  "ten_bai": "on-tap-giua-ky-1-toan-7-nam-2024-2025-truong-thcs-do-thi-viet-hung-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1215,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 7 năm 2025-2026 — THCS Phương Đông, xã Trà Liên (không ghi mã đề)",
+   "ti_le": 0.1,
+   "cau": 10
+  },
+  "nhi": 0.07,
+  "so_de_khop": 0,
+  "giong_ten": 0.25,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-da-ton-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3286,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 7 năm 2024–2025 — THCS Thành Công",
+   "ti_le": 0,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-nghia-tan-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2919,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 7 năm 2024–2025 — THCS Thành Công",
+   "ti_le": 0,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-7-nam-2025-2026-truong-thcs-khuong-thuong-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 7 năm 2024–2025 — THCS Thành Công",
+   "ti_le": 0,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ },
+ {
+  "batch": "B079",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-7-nam-2025-2026-truong-thcs-le-quy-don-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2601,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì 1 Toán 7 năm 2024–2025 — THCS Thành Công",
+   "ti_le": 0,
+   "cau": 25
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.6,
+  "trung_kho": false
+ }
+]
