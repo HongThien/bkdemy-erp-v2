@@ -1,0 +1,127 @@
+{
+ "CĐ5 · B1": {
+  "dang": "NDB01521",
+  "chac": "cao",
+  "ly_do": "Hai số hạng bị bớt, thêm một số đơn vị, hỏi tổng mới."
+ },
+ "CĐ5 · B2": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: thay đổi số bị trừ, số trừ khi tính hiệu (bản đồ chỉ có thay đổi trong phép cộng, nhân, chia)."
+ },
+ "CĐ5 · B3": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: thay đổi số bị trừ, số trừ khi tính hiệu."
+ },
+ "CĐ5 · B4": {
+  "dang": "NDB03465",
+  "chac": "cao",
+  "ly_do": "Số trừ có hai chữ số cuối 49 viết nhầm thành 94, tìm hiệu đúng."
+ },
+ "CĐ5 · B5": {
+  "dang": "NDB03464",
+  "chac": "cao",
+  "ly_do": "Biết tổng của số bị trừ, số trừ và hiệu, tìm số bị trừ và số trừ."
+ },
+ "CĐ5 · B6": {
+  "dang": "NDB03465",
+  "chac": "cao",
+  "ly_do": "Chép nhầm số hạng 107 thành 1007, tìm tổng đúng."
+ },
+ "CĐ5 · B7": {
+  "dang": "NDB01540",
+  "chac": "vua",
+  "ly_do": "Viết thêm chữ số 0 vào bên phải số trừ rồi so hiệu mới; gần dạng viết thêm chữ số nhưng ở phép trừ."
+ },
+ "CĐ5 · B8": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: đặt tính trừ sai cột hàng (số trừ đặt thẳng hàng trăm nên gấp 100 lần)."
+ },
+ "CĐ5 · B9": {
+  "dang": "NDB01540",
+  "chac": "vua",
+  "ly_do": "Viết thêm chữ số 5 vào bên phải số trừ rồi so hiệu mới; gần dạng viết thêm chữ số nhưng ở phép trừ."
+ },
+ "CĐ5 · B10a": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: quan hệ giữa thương với số lớn, số bé của phép chia khi thương cho bằng phân số của số lớn."
+ },
+ "CĐ5 · B10b": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: quan hệ giữa thương với số lớn, số bé của phép chia khi thương cho bằng phân số của số lớn."
+ },
+ "CĐ5 · B11a": {
+  "dang": "NDB03469",
+  "chac": "cao",
+  "ly_do": "Tìm số bị chia và số chia bé nhất khi biết thương và số dư."
+ },
+ "CĐ5 · B11b": {
+  "dang": "NDB03468",
+  "chac": "cao",
+  "ly_do": "Số dư lớn nhất cho trước nên số chia hơn số dư 1 đơn vị; thương gấp 24 lần số chia."
+ },
+ "CĐ5 · B11c": {
+  "dang": "NDB03468",
+  "chac": "vua",
+  "ly_do": "Số dư lẻ lớn nhất khi chia cho 97, thương kém số dư 2 đơn vị."
+ },
+ "CĐ5 · B12a": {
+  "dang": "NDB03470",
+  "chac": "cao",
+  "ly_do": "Bớt ở số bị chia ít nhất bao nhiêu để chia hết và thương giảm 5 đơn vị."
+ },
+ "CĐ5 · B12b": {
+  "dang": "NDB03470",
+  "chac": "cao",
+  "ly_do": "Thêm vào số bị chia ít nhất bao nhiêu để chia hết và thương tăng 3 đơn vị, số dư lớn nhất."
+ },
+ "CĐ5 · B13": {
+  "dang": "NDB03468",
+  "chac": "cao",
+  "ly_do": "Số dư lớn nhất có thể, biết số bị chia và thương, tìm số chia."
+ },
+ "CĐ5 · B14": {
+  "dang": "NDB03470",
+  "chac": "cao",
+  "ly_do": "Biết tổng số bị chia, số chia, thương và số dư (969), thương 6, dư 51."
+ },
+ "CĐ5 · B15a": {
+  "dang": "NDB03463",
+  "chac": "vua",
+  "ly_do": "Thêm vào một thừa số thì tích tăng thêm; gần dạng thay đổi thừa số."
+ },
+ "CĐ5 · B15b": {
+  "dang": "NDB03463",
+  "chac": "vua",
+  "ly_do": "Bớt ở một thừa số thì tích giảm đi; gần dạng thay đổi thừa số."
+ },
+ "CĐ5 · B16": {
+  "dang": "NDB03467",
+  "chac": "cao",
+  "ly_do": "Viết nhầm thêm chữ số 3 vào bên phải thừa số 25, tích tăng 32376, tìm tích đúng."
+ },
+ "CĐ5 · B17": {
+  "dang": "NDB03467",
+  "chac": "cao",
+  "ly_do": "Đổi chỗ chữ số hàng nghìn với hàng chục, đơn vị với hàng trăm của thừa số, tìm tích đúng."
+ },
+ "CĐ5 · B18": {
+  "dang": "NDB03467",
+  "chac": "cao",
+  "ly_do": "Viết nhầm chữ số hàng đơn vị của thừa số thứ hai từ 2 thành 8, tìm các thừa số."
+ },
+ "CĐ5 · B19": {
+  "dang": "NDB03466",
+  "chac": "cao",
+  "ly_do": "Nhân với 901 nhưng đặt các tích riêng thẳng cột như phép cộng."
+ },
+ "CĐ5 · B20": {
+  "dang": "NDB03466",
+  "chac": "cao",
+  "ly_do": "Nhân 345 với số có dạng a0a nhưng đặt các tích riêng thẳng cột như phép cộng."
+ }
+}

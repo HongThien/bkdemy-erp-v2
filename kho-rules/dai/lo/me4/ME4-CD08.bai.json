@@ -1,0 +1,137 @@
+[
+ {
+  "ma": "CĐ8 · B1",
+  "khu": "CĐ8",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên biết nếu xoá đi chữ số 3 ở hàng đơn vị của số đó thì được số mới giảm 1794 đơn vị so với số ban đầu.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B2",
+  "khu": "CĐ8",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên có ba chữ số biết nếu viết thêm vào đằng trước số đó một chữ số 2 ta được số mới bằng 9 lần số phải tìm.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B3",
+  "khu": "CĐ8",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên có ba chữ số biết nếu viết thêm chữ số 5 vào đằng trước, đằng sau số đó ta đều được hai số có bốn chữ số nhưng số viết đằng trước hơn số viết đằng sau 1107 đơn vị.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B4",
+  "khu": "CĐ8",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên có hai chữ số biết nếu viết thêm chữ số 0 vào giữa hai chữ số của số đó ta được số mới bằng 7 lần số phải tìm.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B5",
+  "khu": "CĐ8",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên bằng 9 lần chữ số hàng đơn vị của nó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B6",
+  "khu": "CĐ8",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên có hai chữ số biết số đó chia cho tổng các chữ số của nó được thương là 9 và dư 1.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B7",
+  "khu": "CĐ8",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm một số tự nhiên có ba chữ số biết số đó chia cho tổng các chữ số của nó thì bằng 11.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B8",
+  "khu": "CĐ8",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho một số có hai chữ số. Nếu viết thêm hai chữ số nữa vào bên phải số đó thì được số mới lớn hơn số đã cho 1986 đơn vị. Hãy tìm số đã cho và hai chữ số mới viết thêm.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B9",
+  "khu": "CĐ8",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số có ba chữ số, biết nếu gạch chữ số hàng trăm ta được số có hai chữ số mà nhân số này với 7 được số ban đầu.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B10",
+  "khu": "CĐ8",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số tự nhiên có ba chữ số, biết rằng số đó gấp 5 lần tích các chữ số của nó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B11",
+  "khu": "CĐ8",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Thay chữ bằng chữ số thích hợp: $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=11106$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B12",
+  "khu": "CĐ8",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các chữ số $a$, $b$, $c$, $d$ biết: $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=1111$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B13",
+  "khu": "CĐ8",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các chữ số $a$, $b$, $c$ khác nhau biết: $\\overline{aa}\\times\\overline{bc}=1001$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B14",
+  "khu": "CĐ8",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các chữ số $a$, $b$ khác 0 thoả mãn: $a\\times b\\times\\overline{ab}=\\overline{bbb}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ8 · B15",
+  "khu": "CĐ8",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các số tự nhiên $\\overline{ab}$, $\\overline{cd}$ sao cho: $\\overline{ab}\\times\\overline{cd}=\\overline{bbb}$.",
+  "anh": []
+ }
+]

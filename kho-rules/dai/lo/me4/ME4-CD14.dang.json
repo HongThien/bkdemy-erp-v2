@@ -1,0 +1,17 @@
+{
+ "CĐ14 · B1": { "dang": "NDB01550", "chac": "cao", "ly_do": "Thay 1 bạn nữ bằng 1 bạn nam, tổng không đổi, hai tỉ số 1/4 và 1/5." },
+ "CĐ14 · B2": { "dang": "NDB01550", "chac": "cao", "ly_do": "Chuyển 10 quyển từ ngăn trên xuống ngăn dưới, tổng không đổi, hai tỉ số gấp 3 và gấp 7." },
+ "CĐ14 · B3": { "dang": "NDB01550", "chac": "vua", "ly_do": "Thêm vào rộng 4 m, bớt dài 4 m nên nửa chu vi (tổng) không đổi; có thể xếp cùng dạng tổng ẩn hình chữ nhật." },
+ "CĐ14 · B4": { "dang": "NDB01550", "chac": "cao", "ly_do": "3 con vịt chuyển từ bờ xuống ao, tổng cả đàn không đổi, hai tỉ số gấp 5 và gấp 8." },
+ "CĐ14 · B5": { "dang": "NDB03507", "chac": "cao", "ly_do": "Hai bạn cùng hái thêm 15 bông, hiệu số hoa không đổi, hai tỉ số 3/5 và 9/13; gần NDB01551 nhưng dạng sau thắng." },
+ "CĐ14 · B6": { "dang": "NDB03507", "chac": "vua", "ly_do": "Tuổi bố, con qua các năm: hiệu không đổi, hai tỉ số gấp 3 và gấp 7; gần dạng tuổi NDB03505 và NDB01551." },
+ "CĐ14 · B7": { "dang": "NDB03507", "chac": "cao", "ly_do": "Thêm 40 quyển vào mỗi ngăn, hiệu số sách không đổi, hai tỉ số 7/3 và 17/29." },
+ "CĐ14 · B8": { "dang": "NDB03507", "chac": "cao", "ly_do": "Mua thêm mỗi loại 10 con, hiệu số gà, vịt không đổi, hai tỉ số 3/5 và 3/2." },
+ "CĐ14 · B9": { "dang": "NDB01551", "chac": "cao", "ly_do": "Thêm học sinh nam, số học sinh nữ không đổi, hai tỉ số 3/4 và 9/10." },
+ "CĐ14 · B10": { "dang": "NDB01551", "chac": "cao", "ly_do": "Thêm sách vào ngăn trên, số sách ngăn dưới không đổi, hai tỉ số 6/5 và 12/11." },
+ "CĐ14 · B11": { "dang": "NDB01551", "chac": "cao", "ly_do": "Mua thêm gà trống, số gà mái không đổi, hai tỉ số gấp 6 và 1/4." },
+ "CĐ14 · B12": { "dang": "NDB01551", "chac": "cao", "ly_do": "Bán xe ở quầy, số xe trong kho không đổi, hai tỉ số 1/8 (đổi sang kho) và gấp 10." },
+ "CĐ14 · B13": { "dang": "—", "chac": "vua", "ly_do": "Cả gà lẫn vịt cùng thay đổi, không có đại lượng nào không đổi; sách tạo thành phần không đổi (số vịt lúc sau). Bản đồ chưa có dạng này." },
+ "CĐ14 · B14": { "dang": "—", "chac": "vua", "ly_do": "Hai loại sách cùng thay đổi (nhập và bán), phải tạo thành phần không đổi; bản đồ chưa có dạng này." },
+ "CĐ14 · B15": { "dang": "—", "chac": "vua", "ly_do": "Hai ngăn cùng được thêm số khác nhau, phải tạo thành phần không đổi; bản đồ chưa có dạng này." }
+}

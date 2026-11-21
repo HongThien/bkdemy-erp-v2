@@ -1,0 +1,152 @@
+{
+ "CĐ7 · B1a": {
+  "dang": "NDB03473",
+  "chac": "vua",
+  "ly_do": "chia hết cho 9 và 5 (tức 45) bằng cách xét 2 chữ số tận cùng; cũng gần NDB01533 / NDB00653"
+ },
+ "CĐ7 · B1b": {
+  "dang": "NDB03473",
+  "chac": "vua",
+  "ly_do": "chia hết cho 9 và 5 (tức 45) bằng cách xét 2 chữ số tận cùng; cũng gần NDB01533 / NDB00653"
+ },
+ "CĐ7 · B2": {
+  "dang": "NDB03473",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số hai bên số 1996 để chia hết cho 2, 5 và 9 (ví dụ trong mô tả dạng)"
+ },
+ "CĐ7 · B3": {
+  "dang": "NDB03473",
+  "chac": "vua",
+  "ly_do": "chia hết cho 9 và 4 (tức 36) với hai chữ số x, y; cũng gần NDB03472 / NDB00654"
+ },
+ "CĐ7 · B4a": {
+  "dang": "NDB03473",
+  "chac": "cao",
+  "ly_do": "tìm chữ số x, y để số chia hết cho 12"
+ },
+ "CĐ7 · B4b": {
+  "dang": "NDB03473",
+  "chac": "cao",
+  "ly_do": "tìm chữ số x, y để số chia hết cho 225"
+ },
+ "CĐ7 · B5a": {
+  "dang": "NDB01534",
+  "chac": "vua",
+  "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 6; cũng gần NDB00656"
+ },
+ "CĐ7 · B5b": {
+  "dang": "NDB01534",
+  "chac": "vua",
+  "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 15; cũng gần NDB00656"
+ },
+ "CĐ7 · B5c": {
+  "dang": "NDB01534",
+  "chac": "vua",
+  "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 18; cũng gần NDB00656"
+ },
+ "CĐ7 · B5d": {
+  "dang": "NDB01534",
+  "chac": "vua",
+  "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 45; cũng gần NDB00656"
+ },
+ "CĐ7 · B6a": {
+  "dang": "NDB00655",
+  "chac": "cao",
+  "ly_do": "tìm chữ số * trong tích cho dạng số có dấu *, giải thích không nhân trực tiếp"
+ },
+ "CĐ7 · B6b": {
+  "dang": "NDB00655",
+  "chac": "cao",
+  "ly_do": "tìm các chữ số * trong tích cho dạng số có hai dấu *, giải thích không nhân trực tiếp"
+ },
+ "CĐ7 · B7a": {
+  "dang": "NDB01536",
+  "chac": "cao",
+  "ly_do": "số có chữ số bị che, điều kiện chia dư 2, dư 5 và chia hết cho 9"
+ },
+ "CĐ7 · B7b": {
+  "dang": "NDB01536",
+  "chac": "cao",
+  "ly_do": "số có chữ số bị che, điều kiện chia hết cho 6 và chia 5 dư 4"
+ },
+ "CĐ7 · B8": {
+  "dang": "NDB01506",
+  "chac": "vua",
+  "ly_do": "số lớn nhất 4 chữ số biết tổng chữ số, kèm điều kiện chia dư; cũng gần NDB01536"
+ },
+ "CĐ7 · B9": {
+  "dang": "NDB01539",
+  "chac": "cao",
+  "ly_do": "số tự nhiên chia cho 4; 5; 7 đều dư 3, hỏi số bé nhất"
+ },
+ "CĐ7 · B10": {
+  "dang": "NDB01539",
+  "chac": "cao",
+  "ly_do": "số tự nhiên chia cho 3; 4; 5; 7 có số dư kém số chia cùng 2 đơn vị, hỏi số bé nhất"
+ },
+ "CĐ7 · B11": {
+  "dang": "NDB01539",
+  "chac": "vua",
+  "ly_do": "số hai chữ số khi chia cho nhiều số có điều kiện chia hết và chia dư; cũng gần NDB01536"
+ },
+ "CĐ7 · B12a": {
+  "dang": "NDB03474",
+  "chac": "cao",
+  "ly_do": "không làm phép chia, nhận biết số 11…1 chia hết cho 2, 3, 5, 9 (ví dụ trong mô tả dạng)"
+ },
+ "CĐ7 · B12b": {
+  "dang": "NDB03474",
+  "chac": "cao",
+  "ly_do": "không làm phép chia, nhận biết số 33…3 chia hết cho 2, 3, 5, 9"
+ },
+ "CĐ7 · B12c": {
+  "dang": "NDB03474",
+  "chac": "cao",
+  "ly_do": "không làm phép chia, nhận biết số 44…4 chia hết cho 2, 3, 5, 9"
+ },
+ "CĐ7 · B12d": {
+  "dang": "NDB03474",
+  "chac": "cao",
+  "ly_do": "không làm phép chia, nhận biết số bbb…bbb (b chẵn) chia hết cho 2, 3, 5, 9"
+ },
+ "CĐ7 · B13": {
+  "dang": "NDB03475",
+  "chac": "cao",
+  "ly_do": "giải thích \"có thể hay không\" bằng tính chất chia (xé giấy, ví dụ trong mô tả dạng)"
+ },
+ "CĐ7 · B14": {
+  "dang": "NDB03475",
+  "chac": "cao",
+  "ly_do": "giải thích \"có thể hay không\" bằng dấu hiệu chia hết cho 9 (CHAMHOC − HOCCHAM, ví dụ trong mô tả dạng)"
+ },
+ "CĐ7 · B15": {
+  "dang": "NDB03475",
+  "chac": "cao",
+  "ly_do": "giải thích \"có thể hay không\" bằng tính chất chia hết cho 3 (200 quyển vở thưởng đều, ví dụ trong mô tả dạng)"
+ },
+ "CĐ7 · B16a": {
+  "dang": "NDB03475",
+  "chac": "vua",
+  "ly_do": "giải thích \"có thể hay không\" bằng tính chẵn lẻ của tổng độ dài (chu vi hình chữ nhật là số chẵn)"
+ },
+ "CĐ7 · B16b": {
+  "dang": "NDB03475",
+  "chac": "vua",
+  "ly_do": "giải thích \"có thể hay không\" bằng tính chia hết cho 4 của số que mỗi loại"
+ },
+ "CĐ7 · B17": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: bài lời văn dùng tính chất chia hết cho 4 của số trứng đã bán (tỉ số 3 : 1) để chọn rổ còn lại; gần nhất NDB01535 và nhóm tổng tỉ"
+ },
+ "CĐ7 · B18a": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: thêm / bớt ít nhất bao nhiêu đơn vị để số 55…5 chia hết cho 15, 45; gần nhất NDB01535"
+ },
+ "CĐ7 · B18b": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: thêm / bớt ít nhất bao nhiêu đơn vị để số 55…5 chia hết cho 15, 45; gần nhất NDB01535"
+ }
+}

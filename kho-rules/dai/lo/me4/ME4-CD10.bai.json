@@ -1,0 +1,758 @@
+[
+ {
+  "ma": "CĐ10 · B1",
+  "khu": "CĐ10",
+  "so": 1,
+  "y": null,
+  "de_chung": "Viết các phân số sau đây dưới dạng phân số tối giản:",
+  "noi_dung": "Viết các phân số sau đây dưới dạng phân số tối giản:\na) $\\dfrac{49}{28}$; $\\dfrac{22}{55}$; $\\dfrac{18}{24}$; $\\dfrac{26}{39}$; $\\dfrac{80}{64}$\nb) $\\dfrac{549}{1281}$; $\\dfrac{3672}{4284}$; $\\dfrac{252525}{808080}$; $\\dfrac{165165165}{462462462}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B1a",
+  "khu": "CĐ10",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Viết các phân số sau đây dưới dạng phân số tối giản:",
+  "noi_dung": "Viết các phân số sau đây dưới dạng phân số tối giản:\n$\\dfrac{49}{28}$; $\\dfrac{22}{55}$; $\\dfrac{18}{24}$; $\\dfrac{26}{39}$; $\\dfrac{80}{64}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B1b",
+  "khu": "CĐ10",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Viết các phân số sau đây dưới dạng phân số tối giản:",
+  "noi_dung": "Viết các phân số sau đây dưới dạng phân số tối giản:\n$\\dfrac{549}{1281}$; $\\dfrac{3672}{4284}$; $\\dfrac{252525}{808080}$; $\\dfrac{165165165}{462462462}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B2",
+  "khu": "CĐ10",
+  "so": 2,
+  "y": null,
+  "de_chung": "Tìm $x$, biết:",
+  "noi_dung": "Tìm $x$, biết:\na) $\\dfrac{3}{7}=\\dfrac{x}{21}$\nb) $\\dfrac{x}{8}=\\dfrac{18}{72}$\nc) $\\dfrac{x+5}{8}=\\dfrac{9}{12}$\nd) $\\dfrac{60}{x:3}=12$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B2a",
+  "khu": "CĐ10",
+  "so": 2,
+  "y": "a",
+  "de_chung": "Tìm $x$, biết:",
+  "noi_dung": "Tìm $x$, biết:\n$\\dfrac{3}{7}=\\dfrac{x}{21}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B2b",
+  "khu": "CĐ10",
+  "so": 2,
+  "y": "b",
+  "de_chung": "Tìm $x$, biết:",
+  "noi_dung": "Tìm $x$, biết:\n$\\dfrac{x}{8}=\\dfrac{18}{72}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B2c",
+  "khu": "CĐ10",
+  "so": 2,
+  "y": "c",
+  "de_chung": "Tìm $x$, biết:",
+  "noi_dung": "Tìm $x$, biết:\n$\\dfrac{x+5}{8}=\\dfrac{9}{12}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B2d",
+  "khu": "CĐ10",
+  "so": 2,
+  "y": "d",
+  "de_chung": "Tìm $x$, biết:",
+  "noi_dung": "Tìm $x$, biết:\n$\\dfrac{60}{x:3}=12$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B3",
+  "khu": "CĐ10",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các số tự nhiên $x$ và $y$, biết: $\\dfrac{2}{x}=\\dfrac{y}{6}=\\dfrac{12}{18}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B4",
+  "khu": "CĐ10",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các số $a$, $b$, $c$, $d$ biết rằng: $\\dfrac{4}{6}=\\dfrac{6}{a}=\\dfrac{b}{15}=\\dfrac{18}{c}=\\dfrac{d}{30}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B5",
+  "khu": "CĐ10",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tìm $3$ phân số bằng phân số $\\dfrac{6}{12}$ và có tử số lần lượt là $3$; $12$; $24$.\nb) Tìm các phân số bằng phân số $\\dfrac{5}{8}$ và có mẫu số lớn hơn $15$ nhưng nhỏ hơn $50$.\nc) Tìm tất cả các phân số bằng $\\dfrac{68}{119}$ sao cho tử số là số có $2$ chữ số chia hết cho $3$ và $4$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B5a",
+  "khu": "CĐ10",
+  "so": 5,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tìm $3$ phân số bằng phân số $\\dfrac{6}{12}$ và có tử số lần lượt là $3$; $12$; $24$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B5b",
+  "khu": "CĐ10",
+  "so": 5,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tìm các phân số bằng phân số $\\dfrac{5}{8}$ và có mẫu số lớn hơn $15$ nhưng nhỏ hơn $50$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B5c",
+  "khu": "CĐ10",
+  "so": 5,
+  "y": "c",
+  "de_chung": "",
+  "noi_dung": "Tìm tất cả các phân số bằng $\\dfrac{68}{119}$ sao cho tử số là số có $2$ chữ số chia hết cho $3$ và $4$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B6",
+  "khu": "CĐ10",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho phân số $\\dfrac{8}{12}$. Tìm một số sao cho khi lấy mẫu số của phân số đã cho trừ đi số đó và giữ nguyên tử số thì ta được phân số mới có giá trị bằng $\\dfrac{4}{3}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B7",
+  "khu": "CĐ10",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Từ các chữ số $2$; $0$; $3$; $4$; $6$ ta viết được các số có ba chữ số khác nhau. Cứ hai số trong các số vừa viết được ta lập một phân số có tử số và mẫu số là hai số đó. Hãy viết tất cả các phân số như vậy mà có giá trị là $\\dfrac{1}{2}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B8",
+  "khu": "CĐ10",
+  "so": 8,
+  "y": null,
+  "de_chung": "Tìm số tự nhiên $x$, biết:",
+  "noi_dung": "Tìm số tự nhiên $x$, biết:\na) $\\dfrac{2}{x}>\\dfrac{1}{2}$\nb) $1<\\dfrac{11}{x}<2$\nc) $\\dfrac{8}{202}<\\dfrac{x\\times 6}{303}<\\dfrac{9}{101}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B8a",
+  "khu": "CĐ10",
+  "so": 8,
+  "y": "a",
+  "de_chung": "Tìm số tự nhiên $x$, biết:",
+  "noi_dung": "Tìm số tự nhiên $x$, biết:\n$\\dfrac{2}{x}>\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B8b",
+  "khu": "CĐ10",
+  "so": 8,
+  "y": "b",
+  "de_chung": "Tìm số tự nhiên $x$, biết:",
+  "noi_dung": "Tìm số tự nhiên $x$, biết:\n$1<\\dfrac{11}{x}<2$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B8c",
+  "khu": "CĐ10",
+  "so": 8,
+  "y": "c",
+  "de_chung": "Tìm số tự nhiên $x$, biết:",
+  "noi_dung": "Tìm số tự nhiên $x$, biết:\n$\\dfrac{8}{202}<\\dfrac{x\\times 6}{303}<\\dfrac{9}{101}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B9",
+  "khu": "CĐ10",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tìm $7$ phân số nằm giữa $2$ phân số $\\dfrac{7}{9}$ và $\\dfrac{8}{9}$.\nb) Tìm $8$ phân số nằm giữa $1$ và $\\dfrac{5}{4}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B9a",
+  "khu": "CĐ10",
+  "so": 9,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tìm $7$ phân số nằm giữa $2$ phân số $\\dfrac{7}{9}$ và $\\dfrac{8}{9}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B9b",
+  "khu": "CĐ10",
+  "so": 9,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tìm $8$ phân số nằm giữa $1$ và $\\dfrac{5}{4}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B10",
+  "khu": "CĐ10",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm chữ số $x$, biết: $\\dfrac{\\overline{24507x}}{1945}<\\dfrac{735213}{5835}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B11",
+  "khu": "CĐ10",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số tự nhiên $x$, biết rằng nếu thêm $x$ vào cả tử và mẫu của phân số $\\dfrac{39}{64}$ ta được phân số mới có giá trị là $\\dfrac{3}{4}$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B12",
+  "khu": "CĐ10",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "So sánh $\\dfrac{1991\\times 1999}{1995\\times 1995}$ với $1$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B13",
+  "khu": "CĐ10",
+  "so": 13,
+  "y": null,
+  "de_chung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$:",
+  "noi_dung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$:\na) Có giá trị lớn nhất. Giá trị lớn nhất đó là bao nhiêu?\nb) Có giá trị bé nhất. Là phân số nào?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B13a",
+  "khu": "CĐ10",
+  "so": 13,
+  "y": "a",
+  "de_chung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$:",
+  "noi_dung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$ có giá trị lớn nhất. Giá trị lớn nhất đó là bao nhiêu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B13b",
+  "khu": "CĐ10",
+  "so": 13,
+  "y": "b",
+  "de_chung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$:",
+  "noi_dung": "Tìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$ có giá trị bé nhất. Là phân số nào?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": null,
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý:\na) $\\dfrac{997}{999}$ và $\\dfrac{1993}{1995}$\nb) $\\dfrac{13}{27}$ và $\\dfrac{27}{41}$\nc) $\\dfrac{27}{13}$ và $\\dfrac{41}{27}$\nd) $\\dfrac{15}{11}$ và $\\dfrac{25}{21}$\ne) $\\dfrac{27}{13}$ và $\\dfrac{35}{17}$\nf) $\\dfrac{42}{211}$ và $\\dfrac{63}{314}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14a",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "a",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{997}{999}$ và $\\dfrac{1993}{1995}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14b",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "b",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{13}{27}$ và $\\dfrac{27}{41}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14c",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "c",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{27}{13}$ và $\\dfrac{41}{27}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14d",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "d",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{15}{11}$ và $\\dfrac{25}{21}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14e",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "e",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{27}{13}$ và $\\dfrac{35}{17}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B14f",
+  "khu": "CĐ10",
+  "so": 14,
+  "y": "f",
+  "de_chung": "So sánh các phân số sau bằng cách hợp lý:",
+  "noi_dung": "So sánh các phân số sau bằng cách hợp lý: $\\dfrac{42}{211}$ và $\\dfrac{63}{314}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": null,
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\na) $\\left(\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}\\right)\\times x=1+\\dfrac{2}{3}+\\dfrac{1}{2}$\nb) $\\left(\\dfrac{1}{2}+\\dfrac{1}{3}-\\dfrac{1}{4}\\right):x=\\dfrac{1}{6}+\\dfrac{1}{9}-\\dfrac{1}{12}$\nc) $\\left(\\dfrac{4}{7}+\\dfrac{2}{3}\\right):\\left(x+\\dfrac{1}{2}\\right)=\\dfrac{8}{7}+\\dfrac{4}{3}$\nd) $\\dfrac{3}{5}+\\dfrac{2}{7}:x=1$\ne) $\\dfrac{6}{5}-x:\\dfrac{1}{2}=\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15a",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": "a",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\left(\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}\\right)\\times x=1+\\dfrac{2}{3}+\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15b",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": "b",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\left(\\dfrac{1}{2}+\\dfrac{1}{3}-\\dfrac{1}{4}\\right):x=\\dfrac{1}{6}+\\dfrac{1}{9}-\\dfrac{1}{12}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15c",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": "c",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\left(\\dfrac{4}{7}+\\dfrac{2}{3}\\right):\\left(x+\\dfrac{1}{2}\\right)=\\dfrac{8}{7}+\\dfrac{4}{3}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15d",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": "d",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\dfrac{3}{5}+\\dfrac{2}{7}:x=1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B15e",
+  "khu": "CĐ10",
+  "so": 15,
+  "y": "e",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\dfrac{6}{5}-x:\\dfrac{1}{2}=\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B16",
+  "khu": "CĐ10",
+  "so": 16,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi trừ phân số $\\dfrac{\\overline{2ab}}{19}$ cho phân số $\\dfrac{m}{n}$ một bạn đã quên viết chữ số $2$ ở tử số của phân số bị trừ rồi trừ $2$ phân số theo đúng quy tắc và có kết quả là $\\dfrac{29}{38}$. Hãy tìm hiệu đúng của $2$ phân số ban đầu.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B17",
+  "khu": "CĐ10",
+  "so": 17,
+  "y": null,
+  "de_chung": "Thực hiện phép tính (Tính hợp lý nếu có thể):",
+  "noi_dung": "Thực hiện phép tính (Tính hợp lý nếu có thể):\na) $\\dfrac{3}{5}+\\dfrac{4}{7}+\\dfrac{2}{5}+\\dfrac{1}{7}+\\dfrac{2}{7}$\nb) $\\dfrac{17}{12}+\\dfrac{9}{7}-\\left(\\dfrac{8}{7}-\\dfrac{7}{12}\\right)$\nc) $\\dfrac{7}{8}:\\left(\\dfrac{14}{3}+\\dfrac{7}{2}\\right)+\\dfrac{4}{28}$\nd) $\\dfrac{175}{100}+\\dfrac{18}{21}+\\dfrac{45}{32}+\\dfrac{5}{4}+\\dfrac{1}{7}-\\dfrac{13}{32}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B17a",
+  "khu": "CĐ10",
+  "so": 17,
+  "y": "a",
+  "de_chung": "Thực hiện phép tính (Tính hợp lý nếu có thể):",
+  "noi_dung": "Thực hiện phép tính (Tính hợp lý nếu có thể):\n$\\dfrac{3}{5}+\\dfrac{4}{7}+\\dfrac{2}{5}+\\dfrac{1}{7}+\\dfrac{2}{7}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B17b",
+  "khu": "CĐ10",
+  "so": 17,
+  "y": "b",
+  "de_chung": "Thực hiện phép tính (Tính hợp lý nếu có thể):",
+  "noi_dung": "Thực hiện phép tính (Tính hợp lý nếu có thể):\n$\\dfrac{17}{12}+\\dfrac{9}{7}-\\left(\\dfrac{8}{7}-\\dfrac{7}{12}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B17c",
+  "khu": "CĐ10",
+  "so": 17,
+  "y": "c",
+  "de_chung": "Thực hiện phép tính (Tính hợp lý nếu có thể):",
+  "noi_dung": "Thực hiện phép tính (Tính hợp lý nếu có thể):\n$\\dfrac{7}{8}:\\left(\\dfrac{14}{3}+\\dfrac{7}{2}\\right)+\\dfrac{4}{28}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B17d",
+  "khu": "CĐ10",
+  "so": 17,
+  "y": "d",
+  "de_chung": "Thực hiện phép tính (Tính hợp lý nếu có thể):",
+  "noi_dung": "Thực hiện phép tính (Tính hợp lý nếu có thể):\n$\\dfrac{175}{100}+\\dfrac{18}{21}+\\dfrac{45}{32}+\\dfrac{5}{4}+\\dfrac{1}{7}-\\dfrac{13}{32}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": null,
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\na) $2\\times\\dfrac{3}{16}\\times\\dfrac{4}{15}\\times 5$\nb) $\\dfrac{6}{7}\\times\\dfrac{14}{9}\\times\\dfrac{3}{18}$\nc) $\\dfrac{13}{14}\\times\\dfrac{17}{4}\\times\\dfrac{56}{15}\\times\\dfrac{70}{39}\\times\\dfrac{21}{34}\\times\\dfrac{25}{49}$\nd) $\\dfrac{1\\times 3\\times 5+2\\times 6\\times 10+3\\times 9\\times 15}{3\\times 5\\times 12+6\\times 10\\times 24+9\\times 15\\times 36}$\ne) $\\dfrac{1248\\times 625:5\\times 4\\times 2}{2\\times 312\\times 125:25\\times 10}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18a",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": "a",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$2\\times\\dfrac{3}{16}\\times\\dfrac{4}{15}\\times 5$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18b",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": "b",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\dfrac{6}{7}\\times\\dfrac{14}{9}\\times\\dfrac{3}{18}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18c",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": "c",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\dfrac{13}{14}\\times\\dfrac{17}{4}\\times\\dfrac{56}{15}\\times\\dfrac{70}{39}\\times\\dfrac{21}{34}\\times\\dfrac{25}{49}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18d",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": "d",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\dfrac{1\\times 3\\times 5+2\\times 6\\times 10+3\\times 9\\times 15}{3\\times 5\\times 12+6\\times 10\\times 24+9\\times 15\\times 36}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B18e",
+  "khu": "CĐ10",
+  "so": 18,
+  "y": "e",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\dfrac{1248\\times 625:5\\times 4\\times 2}{2\\times 312\\times 125:25\\times 10}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B19",
+  "khu": "CĐ10",
+  "so": 19,
+  "y": null,
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\na) $\\left(1+\\dfrac{1}{91}\\right)\\times\\left(1+\\dfrac{1}{92}\\right)\\times\\left(1+\\dfrac{1}{93}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{647}\\right)$\nb) $\\left(1-\\dfrac{1}{97}\\right)\\times\\left(1-\\dfrac{1}{98}\\right)\\times\\left(1-\\dfrac{1}{99}\\right)\\times\\ldots\\times\\left(1-\\dfrac{1}{1000}\\right)$\nc) $\\left(1+\\dfrac{1}{3}\\right)\\times\\left(1+\\dfrac{1}{8}\\right)\\times\\left(1+\\dfrac{1}{15}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{9999}\\right)$\nd) $\\left(1+\\dfrac{7}{9}\\right)\\times\\left(1+\\dfrac{7}{20}\\right)\\times\\left(1+\\dfrac{7}{33}\\right)\\times\\ldots\\times\\left(1+\\dfrac{7}{10800}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B19a",
+  "khu": "CĐ10",
+  "so": 19,
+  "y": "a",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\left(1+\\dfrac{1}{91}\\right)\\times\\left(1+\\dfrac{1}{92}\\right)\\times\\left(1+\\dfrac{1}{93}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{647}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B19b",
+  "khu": "CĐ10",
+  "so": 19,
+  "y": "b",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\left(1-\\dfrac{1}{97}\\right)\\times\\left(1-\\dfrac{1}{98}\\right)\\times\\left(1-\\dfrac{1}{99}\\right)\\times\\ldots\\times\\left(1-\\dfrac{1}{1000}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B19c",
+  "khu": "CĐ10",
+  "so": 19,
+  "y": "c",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\left(1+\\dfrac{1}{3}\\right)\\times\\left(1+\\dfrac{1}{8}\\right)\\times\\left(1+\\dfrac{1}{15}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{9999}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B19d",
+  "khu": "CĐ10",
+  "so": 19,
+  "y": "d",
+  "de_chung": "Tính giá trị biểu thức:",
+  "noi_dung": "Tính giá trị biểu thức:\n$\\left(1+\\dfrac{7}{9}\\right)\\times\\left(1+\\dfrac{7}{20}\\right)\\times\\left(1+\\dfrac{7}{33}\\right)\\times\\ldots\\times\\left(1+\\dfrac{7}{10800}\\right)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": null,
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị các biểu thức sau:\na) $A=1+\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\dfrac{1}{625}+\\ldots+\\dfrac{1}{15625}+\\dfrac{1}{78125}$\nb) $B=\\dfrac{5}{3}+\\dfrac{5}{6}+\\dfrac{5}{12}+\\dfrac{5}{24}+\\ldots+\\dfrac{5}{192}+\\dfrac{5}{384}$\nc) $C=\\dfrac{4}{1\\times 3}+\\dfrac{4}{3\\times 5}+\\dfrac{4}{5\\times 7}+\\ldots+\\dfrac{4}{49\\times 51}$\nd) $D=\\dfrac{1}{2\\times 5}+\\dfrac{1}{5\\times 8}+\\dfrac{1}{8\\times 11}+\\dfrac{1}{11\\times 14}+\\ldots+\\dfrac{1}{98\\times 101}$\ne) $E=\\dfrac{3}{4\\times 9}+\\dfrac{3}{9\\times 14}+\\dfrac{3}{14\\times 19}+\\ldots+\\dfrac{3}{34\\times 39}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20a",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": "a",
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị biểu thức sau:\n$A=1+\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\dfrac{1}{625}+\\ldots+\\dfrac{1}{15625}+\\dfrac{1}{78125}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20b",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": "b",
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị biểu thức sau:\n$B=\\dfrac{5}{3}+\\dfrac{5}{6}+\\dfrac{5}{12}+\\dfrac{5}{24}+\\ldots+\\dfrac{5}{192}+\\dfrac{5}{384}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20c",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": "c",
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị biểu thức sau:\n$C=\\dfrac{4}{1\\times 3}+\\dfrac{4}{3\\times 5}+\\dfrac{4}{5\\times 7}+\\ldots+\\dfrac{4}{49\\times 51}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20d",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": "d",
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị biểu thức sau:\n$D=\\dfrac{1}{2\\times 5}+\\dfrac{1}{5\\times 8}+\\dfrac{1}{8\\times 11}+\\dfrac{1}{11\\times 14}+\\ldots+\\dfrac{1}{98\\times 101}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B20e",
+  "khu": "CĐ10",
+  "so": 20,
+  "y": "e",
+  "de_chung": "Tính giá trị các biểu thức sau:",
+  "noi_dung": "Tính giá trị biểu thức sau:\n$E=\\dfrac{3}{4\\times 9}+\\dfrac{3}{9\\times 14}+\\dfrac{3}{14\\times 19}+\\ldots+\\dfrac{3}{34\\times 39}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B21",
+  "khu": "CĐ10",
+  "so": 21,
+  "y": null,
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\na) $\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\left(y+\\dfrac{1}{16}\\right)=1$\nb) $\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\ldots+\\left(y+\\dfrac{1}{1024}\\right)=1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B21a",
+  "khu": "CĐ10",
+  "so": 21,
+  "y": "a",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\left(y+\\dfrac{1}{16}\\right)=1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B21b",
+  "khu": "CĐ10",
+  "so": 21,
+  "y": "b",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\ldots+\\left(y+\\dfrac{1}{1024}\\right)=1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B22",
+  "khu": "CĐ10",
+  "so": 22,
+  "y": null,
+  "de_chung": "Chứng tỏ rằng:",
+  "noi_dung": "Chứng tỏ rằng:\na) $A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{1024}+\\dfrac{1}{2048}<1$\nb) $B=\\dfrac{1}{3}+\\dfrac{1}{9}+\\dfrac{1}{27}+\\ldots+\\dfrac{1}{2187}+\\dfrac{1}{6561}<\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B22a",
+  "khu": "CĐ10",
+  "so": 22,
+  "y": "a",
+  "de_chung": "Chứng tỏ rằng:",
+  "noi_dung": "Chứng tỏ rằng:\n$A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{1024}+\\dfrac{1}{2048}<1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B22b",
+  "khu": "CĐ10",
+  "so": 22,
+  "y": "b",
+  "de_chung": "Chứng tỏ rằng:",
+  "noi_dung": "Chứng tỏ rằng:\n$B=\\dfrac{1}{3}+\\dfrac{1}{9}+\\dfrac{1}{27}+\\ldots+\\dfrac{1}{2187}+\\dfrac{1}{6561}<\\dfrac{1}{2}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": null,
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của các biểu thức sau:\na) $A=\\dfrac{1}{4}+\\dfrac{1}{12}+\\dfrac{1}{24}+\\dfrac{1}{40}+\\ldots+\\dfrac{1}{4900}$\nb) $B=\\dfrac{1}{2}+\\dfrac{1}{14}+\\dfrac{1}{35}+\\dfrac{1}{65}+\\ldots+\\dfrac{1}{4850}$\nc) $C=\\dfrac{3}{10}+\\dfrac{3}{90}+\\dfrac{3}{234}+\\ldots+\\dfrac{3}{1050}$\nd) $D=\\dfrac{1}{6}+\\dfrac{1}{66}+\\dfrac{1}{176}+\\dfrac{1}{336}+\\ldots+\\dfrac{1}{1886}$\ne) $E=\\dfrac{3}{2}+\\dfrac{5}{4}+\\dfrac{9}{8}+\\dfrac{17}{16}+\\ldots+\\dfrac{1025}{1024}$\nf) $F=1-\\dfrac{1}{3}+\\dfrac{1}{9}-\\dfrac{1}{27}+\\dfrac{1}{81}-\\dfrac{1}{243}+\\ldots+\\dfrac{1}{6561}-\\dfrac{1}{19683}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23a",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "a",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$A=\\dfrac{1}{4}+\\dfrac{1}{12}+\\dfrac{1}{24}+\\dfrac{1}{40}+\\ldots+\\dfrac{1}{4900}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23b",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "b",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$B=\\dfrac{1}{2}+\\dfrac{1}{14}+\\dfrac{1}{35}+\\dfrac{1}{65}+\\ldots+\\dfrac{1}{4850}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23c",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "c",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$C=\\dfrac{3}{10}+\\dfrac{3}{90}+\\dfrac{3}{234}+\\ldots+\\dfrac{3}{1050}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23d",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "d",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$D=\\dfrac{1}{6}+\\dfrac{1}{66}+\\dfrac{1}{176}+\\dfrac{1}{336}+\\ldots+\\dfrac{1}{1886}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23e",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "e",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$E=\\dfrac{3}{2}+\\dfrac{5}{4}+\\dfrac{9}{8}+\\dfrac{17}{16}+\\ldots+\\dfrac{1025}{1024}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B23f",
+  "khu": "CĐ10",
+  "so": 23,
+  "y": "f",
+  "de_chung": "Tính giá trị của các biểu thức sau:",
+  "noi_dung": "Tính giá trị của biểu thức sau:\n$F=1-\\dfrac{1}{3}+\\dfrac{1}{9}-\\dfrac{1}{27}+\\dfrac{1}{81}-\\dfrac{1}{243}+\\ldots+\\dfrac{1}{6561}-\\dfrac{1}{19683}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B24",
+  "khu": "CĐ10",
+  "so": 24,
+  "y": null,
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\na) $y\\times\\left(\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\ldots+\\dfrac{1}{550}\\right)=1$\nb) $\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}\\right)\\times y=\\dfrac{1}{2}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{20}+\\ldots+\\dfrac{1}{132}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B24a",
+  "khu": "CĐ10",
+  "so": 24,
+  "y": "a",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$y\\times\\left(\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\ldots+\\dfrac{1}{550}\\right)=1$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B24b",
+  "khu": "CĐ10",
+  "so": 24,
+  "y": "b",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}\\right)\\times y=\\dfrac{1}{2}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{20}+\\ldots+\\dfrac{1}{132}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B25",
+  "khu": "CĐ10",
+  "so": 25,
+  "y": null,
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\na) $\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\dfrac{1}{130}+\\ldots+\\dfrac{1}{y\\times(y+3)}=\\dfrac{34}{103}$\nb) $\\dfrac{1}{3}+\\dfrac{1}{6}+\\dfrac{1}{10}+\\dfrac{1}{15}+\\ldots+\\dfrac{1}{y\\times(y+1):2}=\\dfrac{2009}{2011}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B25a",
+  "khu": "CĐ10",
+  "so": 25,
+  "y": "a",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\dfrac{1}{130}+\\ldots+\\dfrac{1}{y\\times(y+3)}=\\dfrac{34}{103}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ10 · B25b",
+  "khu": "CĐ10",
+  "so": 25,
+  "y": "b",
+  "de_chung": "Tìm $y$ biết:",
+  "noi_dung": "Tìm $y$ biết:\n$\\dfrac{1}{3}+\\dfrac{1}{6}+\\dfrac{1}{10}+\\dfrac{1}{15}+\\ldots+\\dfrac{1}{y\\times(y+1):2}=\\dfrac{2009}{2011}$",
+  "anh": []
+ }
+]

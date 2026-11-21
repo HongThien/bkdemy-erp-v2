@@ -1,0 +1,217 @@
+{
+ "CĐ4 · B1a": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tính thuận tiện phép cộng, trừ (bản đồ chỉ có tính thuận tiện phép nhân)."
+ },
+ "CĐ4 · B1b": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tính thuận tiện phép cộng, trừ."
+ },
+ "CĐ4 · B1c": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tính thuận tiện phép cộng, trừ."
+ },
+ "CĐ4 · B1d": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tính thuận tiện phép cộng, trừ."
+ },
+ "CĐ4 · B1e": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tính thuận tiện phép cộng, trừ."
+ },
+ "CĐ4 · B2a": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Hai tích cùng thừa số 92 sau khi tính ngoặc; thuận tiện chỉ ở bước cuối."
+ },
+ "CĐ4 · B2b": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Tổng hai tích sau khi tính ngoặc có chung thừa số 142."
+ },
+ "CĐ4 · B2c": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Có số hạng riêng 132 và phải đổi 100×50 thành 10×500 để lại có thừa số chung."
+ },
+ "CĐ4 · B2d": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Tổng hai tích chung thừa số 56 trong ngoặc, rồi chia cho 62."
+ },
+ "CĐ4 · B2e": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Hiệu hai tích chung thừa số 158 trong ngoặc, rồi chia cho 180."
+ },
+ "CĐ4 · B3a": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Phải đổi 8×3 và 6×4 thành 24 để có thừa số chung 24 rồi mới gộp được."
+ },
+ "CĐ4 · B3b": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Phải tách 86 = 43×2 mới đưa được về hai tích bằng nhau; hiệu bằng 0."
+ },
+ "CĐ4 · B3c": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Mỗi ngoặc là tổng hoặc hiệu các tích chung thừa số 145 hoặc 143."
+ },
+ "CĐ4 · B3d": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Hai tích trừ đi cùng chung thừa số 47, cộng hai thừa số còn lại thành 100."
+ },
+ "CĐ4 · B3e": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Cần ghép 3457 + 6543 thành 10000 rồi mới gộp hai tích chung thừa số 48."
+ },
+ "CĐ4 · B3f": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Phải tách 327 = 326 + 1 mới có thừa số chung 272 hoặc 326; còn dư số hạng 272."
+ },
+ "CĐ4 · B3g": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Phải tách 2009 = 2008 + 1 mới có thừa số chung 2008; còn dư số hạng 133."
+ },
+ "CĐ4 · B4a": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Tổng các tích có chung thừa số 1234 (số hạng cuối là 1234×1)."
+ },
+ "CĐ4 · B4b": {
+  "dang": "NDB01519",
+  "chac": "cao",
+  "ly_do": "Hiệu các tích chung thừa số 345 (số hạng giữa là 345×1)."
+ },
+ "CĐ4 · B4c": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Chỉ có phép nhân; dùng giao hoán, kết hợp để ghép 4×25 và 125×8 (gần nhất dạng tính thuận tiện)."
+ },
+ "CĐ4 · B4d": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Chỉ có phép nhân; ghép 2×50 và 8×125 (gần nhất dạng tính thuận tiện)."
+ },
+ "CĐ4 · B4e": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Chỉ có phép nhân; ghép 2×50, 4×25, 3×5 (gần nhất dạng tính thuận tiện)."
+ },
+ "CĐ4 · B4f": {
+  "dang": "NDB01519",
+  "chac": "vua",
+  "ly_do": "Hiệu hai tích nhiều thừa số; ghép cặp tròn rồi đặt thừa số chung 1000 (gần nhất dạng tính thuận tiện)."
+ },
+ "CĐ4 · B5a": {
+  "dang": "NDB03460",
+  "chac": "cao",
+  "ly_do": "Tìm x, hai phép tính, phép chia 140:35 trước rồi tìm số bị trừ."
+ },
+ "CĐ4 · B5b": {
+  "dang": "NDB03460",
+  "chac": "cao",
+  "ly_do": "Tìm x, hai phép chia có ngoặc."
+ },
+ "CĐ4 · B5c": {
+  "dang": "NDB03461",
+  "chac": "cao",
+  "ly_do": "Tìm x, nhiều chữ x cùng lúc (tổng các ngoặc chứa x)."
+ },
+ "CĐ4 · B5d": {
+  "dang": "NDB03461",
+  "chac": "cao",
+  "ly_do": "Tìm x, hai chữ x trong biểu thức có ngoặc và nhân."
+ },
+ "CĐ4 · B5e": {
+  "dang": "NDB03462",
+  "chac": "cao",
+  "ly_do": "Tìm x dùng tính chất phân phối: x×101−x và 72×99+72."
+ },
+ "CĐ4 · B5f": {
+  "dang": "NDB03462",
+  "chac": "vua",
+  "ly_do": "Hai phép chia cùng số chia x, gộp theo tính chất phân phối của phép chia; gần dạng nhiều chữ x."
+ },
+ "CĐ4 · B5g": {
+  "dang": "NDB03461",
+  "chac": "cao",
+  "ly_do": "Tìm x, nhiều phép tính, chữ x xuất hiện nhiều lần."
+ },
+ "CĐ4 · B5h": {
+  "dang": "NDB03461",
+  "chac": "cao",
+  "ly_do": "Tìm x, ba chữ x cùng lúc trong biểu thức nhân chia."
+ },
+ "CĐ4 · B6": {
+  "dang": "NDB03489",
+  "chac": "cao",
+  "ly_do": "Số đảo ngược: ba chữ số liên tiếp tăng dần, viết ngược lại, hỏi số thay đổi thế nào."
+ },
+ "CĐ4 · B7a": {
+  "dang": "NDB03487",
+  "chac": "cao",
+  "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xx."
+ },
+ "CĐ4 · B7b": {
+  "dang": "NDB03487",
+  "chac": "cao",
+  "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx."
+ },
+ "CĐ4 · B7c": {
+  "dang": "NDB03487",
+  "chac": "cao",
+  "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx."
+ },
+ "CĐ4 · B7d": {
+  "dang": "NDB03487",
+  "chac": "cao",
+  "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx, số bị trừ 35655."
+ },
+ "CĐ4 · B8a": {
+  "dang": "NDB03488",
+  "chac": "cao",
+  "ly_do": "So sánh hai biểu thức có số viết bằng chữ aa×b và bb×a."
+ },
+ "CĐ4 · B8b": {
+  "dang": "NDB03488",
+  "chac": "cao",
+  "ly_do": "So sánh hai biểu thức có số viết bằng chữ aaa×b và bbb×a."
+ },
+ "CĐ4 · B9": {
+  "dang": "NDB03489",
+  "chac": "cao",
+  "ly_do": "Số đảo ngược: bốn chữ số liên tiếp tăng dần, viết ngược lại, hỏi số thay đổi thế nào."
+ },
+ "CĐ4 · B10a": {
+  "dang": "NDB03489",
+  "chac": "cao",
+  "ly_do": "Số đảo ngược abcd − dcba với hai hiệu chữ số cho trước."
+ },
+ "CĐ4 · B10b": {
+  "dang": "NDB03489",
+  "chac": "cao",
+  "ly_do": "Số đảo ngược abcd − dcba với hai hiệu chữ số cho trước (c lớn hơn b)."
+ },
+ "CĐ4 · B11": {
+  "dang": "—",
+  "chac": "—",
+  "ly_do": "THIẾU DẠNG: tìm số tự nhiên để biểu thức chứa phép chia đạt giá trị nhỏ nhất."
+ },
+ "CĐ4 · B12": {
+  "dang": "NDB03486",
+  "chac": "cao",
+  "ly_do": "Phép cộng viết chồng bằng chữ ABC + BAC = 1660, tìm A + B + C."
+ }
+}

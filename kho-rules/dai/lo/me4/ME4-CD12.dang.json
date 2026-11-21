@@ -1,0 +1,20 @@
+{
+ "CĐ12 · B1": { "dang": "NDB03499", "chac": "cao", "ly_do": "Chia mỗi em 3 chiếc thì thừa 2, mỗi em 4 chiếc thì thiếu 2: thừa – thiếu." },
+ "CĐ12 · B2": { "dang": "NDB03498", "chac": "cao", "ly_do": "Chia 8 quyển thừa 6, chia 10 quyển thừa 2: thừa – thừa." },
+ "CĐ12 · B3": { "dang": "NDB03499", "chac": "cao", "ly_do": "Chia 6 cháu thừa 4 cháu, chia 8 cháu thừa một cô (thiếu 8 cháu): thừa – thiếu." },
+ "CĐ12 · B4": { "dang": "NDB03499", "chac": "cao", "ly_do": "Mỗi bàn 4 bạn thừa 1 bạn, mỗi bàn 5 bạn thừa 2 bàn (thiếu 10 bạn): thừa – thiếu." },
+ "CĐ12 · B5": { "dang": "NDB03499", "chac": "cao", "ly_do": "Cùng một số sách: chia mỗi tổ 7 quyển thừa 3, mỗi tổ 8 quyển thiếu 3: thừa – thiếu." },
+ "CĐ12 · B6": { "dang": "NDB03499", "chac": "vua", "ly_do": "Hai lần đều thừa 5 nhưng số hàng ít đi 4, phải đổi thành thiếu 55 rồi làm thừa – thiếu; gần thừa – thừa." },
+ "CĐ12 · B7": { "dang": "NDB03498", "chac": "vua", "ly_do": "Một cách vừa đủ (kế hoạch), một cách thừa 15: thừa – vừa đủ, bản đồ chưa có dạng riêng; gần thừa – thừa." },
+ "CĐ12 · B8": { "dang": "NDB03501", "chac": "cao", "ly_do": "Hai người dệt cùng số chiếu, mỗi ngày làm khác nhau, hiệu số còn phải dệt." },
+ "CĐ12 · B9": { "dang": "NDB03499", "chac": "cao", "ly_do": "Mỗi người 5 quả thừa 5, mỗi người 6 quả thì một người không có quả nào (thiếu 6): thừa – thiếu." },
+ "CĐ12 · B10": { "dang": "NDB03499", "chac": "cao", "ly_do": "Mỗi thuyền 20 người thừa 8, mỗi thuyền 24 người thừa một thuyền (thiếu 24): thừa – thiếu." },
+ "CĐ12 · B11": { "dang": "NDB03500", "chac": "vua", "ly_do": "Một cách vừa hết, một cách thiếu 48 (thừa 2 nhưng giảm 5 can): thiếu – vừa đủ; gần thừa – thiếu." },
+ "CĐ12 · B12": { "dang": "NDB03499", "chac": "vua", "ly_do": "Chia 8 quyển thừa 6 nhưng 2 em không nhận (thiếu 10): đổi về thừa – thiếu; đề nói thừa nên có thể xếp thừa – thừa." },
+ "CĐ12 · B13": { "dang": "—", "chac": "vua", "ly_do": "Hai hiệu số (số em, số kẹo) của hai tổ, không phải chia đều thừa – thiếu; bản đồ chưa có dạng này." },
+ "CĐ12 · B14": { "dang": "NDB03501", "chac": "cao", "ly_do": "Hai chị dệt cùng số khăn, mỗi ngày làm khác nhau, hiệu số còn phải dệt." },
+ "CĐ12 · B15": { "dang": "NDB03499", "chac": "cao", "ly_do": "Kẹo bằng bánh: chia mỗi cháu 3 bánh thừa 2, chia mỗi cháu 4 kẹo thiếu 3: thừa – thiếu." },
+ "CĐ12 · B16": { "dang": "NDB03502", "chac": "cao", "ly_do": "Hai vòi chảy cùng lúc vào hai bể bằng nhau, hiệu lượng nước tăng đều theo phút." },
+ "CĐ12 · B17": { "dang": "NDB03502", "chac": "cao", "ly_do": "Hai bể tháo nước cùng lúc, hiệu lượng nước thay đổi đều mỗi phút." },
+ "CĐ12 · B18": { "dang": "NDB03498", "chac": "vua", "ly_do": "Một cách thừa 15, một cách vừa đủ: thừa – vừa đủ, bản đồ chưa có dạng riêng; gần thừa – thừa." }
+}

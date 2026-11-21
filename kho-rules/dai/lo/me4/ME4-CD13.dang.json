@@ -1,0 +1,17 @@
+{
+ "CĐ13 · B1": { "dang": "NDB03504", "chac": "cao", "ly_do": "Hỏi sau bao nhiêu năm nữa thì tuổi mẹ gấp 5 lần tuổi con: đúng tên dạng." },
+ "CĐ13 · B2": { "dang": "NDB03504", "chac": "cao", "ly_do": "Hỏi cách đây mấy năm thì 2 lần tuổi cha bằng 7 lần tuổi con: đúng dạng sau (cách đây) bao nhiêu năm thì gấp k lần." },
+ "CĐ13 · B3": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho hiệu và một tỉ số tại thời điểm 3 năm sau, hỏi tuổi hiện nay; có thể xếp vào dạng hai thời điểm nhưng hiệu đã cho sẵn nên chọn dạng một thời điểm." },
+ "CĐ13 · B4": { "dang": "NDB03505", "chac": "cao", "ly_do": "Một tỉ số hiện nay và một thời điểm khác có tổng cho sẵn: hai thời điểm với hai tỉ số khác nhau (1:4 và 4:7)." },
+ "CĐ13 · B5": { "dang": "NDB03505", "chac": "cao", "ly_do": "Hiện nay gấp 7 lần và sau 10 năm gấp 3 lần: hai thời điểm có hai tỉ số khác nhau." },
+ "CĐ13 · B6": { "dang": "NDB03506", "chac": "cao", "ly_do": "Tuổi mẹ gấp rưỡi tổng tuổi hai con: dạng tổng tuổi nhiều người." },
+ "CĐ13 · B7": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho tổng tuổi hai người và quan hệ phân số ở một thời điểm (hiện nay), không có thời điểm thứ hai." },
+ "CĐ13 · B8": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho hiệu tuổi (gián tiếp qua mốc 3 năm nữa) và tỉ số 6 lần tại một thời điểm; hỏi tuổi ở thời điểm đó." },
+ "CĐ13 · B9": { "dang": "NDB01625", "chac": "cao", "ly_do": "Ba cha con, biết tổng và các hiệu tuổi không đổi, hỏi tuổi từng người: đúng mô tả dạng hiệu tuổi không đổi." },
+ "CĐ13 · B10": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho hiệu tuổi và tỉ số phân số của tuổi cách đây 2 năm; hỏi tuổi hiện nay." },
+ "CĐ13 · B11": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho hiệu tuổi và quan hệ phân số (1/2 Hồng kém 1/5 chú Hùng) tại thời điểm hiện nay." },
+ "CĐ13 · B12": { "dang": "NDB03505", "chac": "cao", "ly_do": "Tỉ số 3 lần hiện nay và tổng 32 tuổi ở thời điểm khi tuổi em bằng tuổi chị hiện nay: hai thời điểm." },
+ "CĐ13 · B13": { "dang": "NDB03505", "chac": "vua", "ly_do": "Tổng tuổi hiện nay và quan hệ gấp đôi giữa tuổi em hiện nay với tuổi em lúc anh bằng tuổi em hiện nay; cũng gần dạng khi tuổi này bằng tuổi kia hiện nay." },
+ "CĐ13 · B14": { "dang": "NDB03506", "chac": "cao", "ly_do": "Tuổi mẹ bằng 4/3 tổng tuổi ba con: đúng ví dụ của dạng tổng tuổi nhiều người." },
+ "CĐ13 · B15": { "dang": "NDB03503", "chac": "vua", "ly_do": "Cho hiệu và tổng tuổi hai chị em dưới dạng quan hệ gián tiếp tại hiện nay; chỉ cần tìm hiệu số tuổi rồi tuổi từng người." }
+}

@@ -1,0 +1,555 @@
+[
+ {
+  "ma_nguon": "CĐ10 · B1a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{4}$ ; $\\dfrac{2}{5}$ ; $\\dfrac{3}{4}$ ; $\\dfrac{2}{3}$ ; $\\dfrac{5}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn phân số là chia cả tử số và mẫu số cho cùng một số tự nhiên lớn hơn $1$ mà cả hai cùng chia hết, làm đến khi không chia được nữa.\n\n**Bước 1.** Tìm một số lớn hơn $1$ mà cả tử số và mẫu số của phân số cùng chia hết cho nó.\n\n**Bước 2.** Chia cả tử số và mẫu số cho số vừa tìm, ghi rõ phép chia ở cả hai vị trí.\n\n**Bước 3.** Kiểm tra phân số mới còn rút gọn được nữa hay không rồi dừng khi chỉ còn chung ước là $1$.\n\n**Chú ý:** chỉ được chia khi cả tử số lẫn mẫu số cùng chia hết, nếu chỉ chia một trong hai thì giá trị phân số bị thay đổi.\n\n**Phần 2. Trình bày**\n\nViết các phân số sau đây dưới dạng phân số tối giản: $\\dfrac{49}{28}$; $\\dfrac{22}{55}$; $\\dfrac{18}{24}$; $\\dfrac{26}{39}$; $\\dfrac{80}{64}$\n\n$\\dfrac{49}{28}=\\dfrac{49:7}{28:7}=\\dfrac{7}{4}$\n\n$\\dfrac{22}{55}=\\dfrac{22:11}{55:11}=\\dfrac{2}{5}$\n\n$\\dfrac{18}{24}=\\dfrac{18:6}{24:6}=\\dfrac{3}{4}$\n\n$\\dfrac{26}{39}=\\dfrac{26:13}{39:13}=\\dfrac{2}{3}$\n\n$\\dfrac{80}{64}=\\dfrac{80:16}{64:16}=\\dfrac{5}{4}$\n\nVậy các phân số tối giản cần tìm là: $\\dfrac{7}{4}$; $\\dfrac{2}{5}$; $\\dfrac{3}{4}$; $\\dfrac{2}{3}$; $\\dfrac{5}{4}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B1b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{7}$ ; $\\dfrac{6}{7}$ ; $\\dfrac{5}{16}$ ; $\\dfrac{5}{14}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số có tử số và mẫu số lặp lại cả một cụm chữ số thì rút gọn được ngay bằng cách chia cho số tạo nên sự lặp lại đó.\n\n**Bước 1.** Quan sát tử số và mẫu số xem có lặp lại cả một cụm chữ số như $2525$ hay $165165$ hay không.\n\n**Bước 2.** Với phân số lặp lại cụm chữ số, chia cả tử số và mẫu số cho số $10101$ hoặc $1001001$ tương ứng để được phân số đơn giản hơn.\n\n**Bước 3.** Với các phân số còn lại, thử chia cho số lớn nhất mà cả hai cùng chia hết, chia nhiều lần nếu cần.\n\n**Bước 4.** Kiểm tra từng phân số mới đã tối giản chưa rồi mới kết luận.\n\n**Chú ý:** nếu chưa nhìn ra số chia lớn nhất thì cứ chia dần từng bước, mỗi lần một số nhỏ cũng được, miễn là cả tử số và mẫu số cùng chia hết.\n\n**Phần 2. Trình bày**\n\nViết các phân số sau đây dưới dạng phân số tối giản: $\\dfrac{549}{1281}$; $\\dfrac{3672}{4284}$; $\\dfrac{252525}{808080}$; $\\dfrac{165165165}{462462462}$\n\n$\\dfrac{549}{1281}=\\dfrac{549:3}{1281:3}=\\dfrac{183}{427}=\\dfrac{183:61}{427:61}=\\dfrac{3}{7}$\n\n$\\dfrac{3672}{4284}=\\dfrac{3672:12}{4284:12}=\\dfrac{306}{357}=\\dfrac{306:51}{357:51}=\\dfrac{6}{7}$\n\n$\\dfrac{252525}{808080}=\\dfrac{252525:10101}{808080:10101}=\\dfrac{25}{80}=\\dfrac{25:5}{80:5}=\\dfrac{5}{16}$\n\n$\\dfrac{165165165}{462462462}=\\dfrac{165165165:1001001}{462462462:1001001}=\\dfrac{165}{462}=\\dfrac{165:33}{462:33}=\\dfrac{5}{14}$\n\nVậy các phân số tối giản cần tìm là: $\\dfrac{3}{7}$; $\\dfrac{6}{7}$; $\\dfrac{5}{16}$; $\\dfrac{5}{14}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B2a",
+  "gop_y": false,
+  "dap_an": "$x=9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số bằng nhau mà đã có sẵn một cặp mẫu số giống nhau thì đưa phân số còn lại về cùng mẫu số để so tử số.\n\n**Bước 1.** Xem hai phân số hai bên dấu bằng, tìm phân số đã biết cả tử số và mẫu số.\n\n**Bước 2.** Nhân cả tử số và mẫu số của phân số đã biết với cùng một số để mẫu số bằng mẫu số của phân số có chữ $x$.\n\n**Bước 3.** Khi hai phân số bằng nhau và cùng mẫu số thì tử số của chúng bằng nhau, từ đó tìm $x$.\n\n**Phần 2. Trình bày**\n\nTìm $x$, biết: $\\dfrac{3}{7}=\\dfrac{x}{21}$\n\nTa có: $\\dfrac{3}{7}=\\dfrac{3\\times 3}{7\\times 3}=\\dfrac{9}{21}$\n\nDo đó: $\\dfrac{9}{21}=\\dfrac{x}{21}$\n\nVậy $x=9$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B2b",
+  "gop_y": false,
+  "dap_an": "$x=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số có tử số và mẫu số lớn thì rút gọn trước để dễ so sánh với phân số có chữ $x$.\n\n**Bước 1.** Nhận ra phân số $\\dfrac{18}{72}$ có tử số và mẫu số cùng chia hết cho một số lớn hơn $1$.\n\n**Bước 2.** Rút gọn phân số này sao cho mẫu số bằng mẫu số của phân số có chữ $x$.\n\n**Bước 3.** Hai phân số bằng nhau và cùng mẫu số thì hai tử số bằng nhau, từ đó suy ra $x$.\n\n**Phần 2. Trình bày**\n\nTìm $x$, biết: $\\dfrac{x}{8}=\\dfrac{18}{72}$\n\nTa có: $\\dfrac{18}{72}=\\dfrac{18:9}{72:9}=\\dfrac{2}{8}$\n\nDo đó: $\\dfrac{x}{8}=\\dfrac{2}{8}$\n\nVậy $x=2$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B2c",
+  "gop_y": false,
+  "dap_an": "$x=1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đưa phân số đã biết về cùng mẫu số với phân số có chữ $x$, khi đó hai tử số phải bằng nhau.\n\n**Bước 1.** Rút gọn phân số $\\dfrac{9}{12}$ để thấy dạng đơn giản nhất của nó.\n\n**Bước 2.** Nhân cả tử số và mẫu số của phân số rút gọn với một số để được mẫu số $8$.\n\n**Bước 3.** Cho tử số của hai phân số cùng mẫu số bằng nhau rồi tìm số hạng chưa biết trong tử số.\n\n**Phần 2. Trình bày**\n\nTìm $x$, biết: $\\dfrac{x+5}{8}=\\dfrac{9}{12}$\n\nTa có: $\\dfrac{9}{12}=\\dfrac{9:3}{12:3}=\\dfrac{3}{4}=\\dfrac{3\\times 2}{4\\times 2}=\\dfrac{6}{8}$\n\nDo đó: $\\dfrac{x+5}{8}=\\dfrac{6}{8}$\n\nSuy ra: $x+5=6$ nên $x=6-5=1$.\n\nVậy $x=1$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B2d",
+  "gop_y": false,
+  "dap_an": "$x=15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số tự nhiên $12$ thành phân số có tử số $60$ để so sánh với phân số đã cho, hai phân số bằng nhau và cùng tử số thì mẫu số bằng nhau.\n\n**Bước 1.** Viết số $12$ dưới dạng một phân số có tử số là $60$ bằng cách tìm mẫu số thích hợp.\n\n**Bước 2.** Cho hai phân số cùng tử số bằng nhau thì suy ra hai mẫu số của chúng bằng nhau.\n\n**Bước 3.** Mẫu số có chứa $x$ là một phép chia nên dùng quy tắc tìm số bị chia để tìm $x$.\n\n**Phần 2. Trình bày**\n\nTìm $x$, biết: $\\dfrac{60}{x:3}=12$\n\nTa có: $12=\\dfrac{60}{5}$\n\nDo đó: $\\dfrac{60}{x:3}=\\dfrac{60}{5}$\n\nSuy ra: $x:3=5$ nên $x=5\\times 3=15$.\n\nVậy $x=15$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B3",
+  "gop_y": false,
+  "dap_an": "$x=3$ ; $y=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số $\\dfrac{12}{18}$ đã biết đủ tử số và mẫu số, nên rút gọn nó rồi đưa về cùng mẫu số hoặc tử số với từng phân số có chữ.\n\n**Bước 1.** Rút gọn phân số $\\dfrac{12}{18}$ về dạng tối giản.\n\n**Bước 2.** Tạo từ phân số tối giản đó một phân số bằng nó có tử số là $2$ để so với $\\dfrac{2}{x}$.\n\n**Bước 3.** Tạo một phân số bằng nó có mẫu số là $6$ để so với $\\dfrac{y}{6}$ rồi đọc ra $x$ và $y$.\n\n**Phần 2. Trình bày**\n\nTìm các số tự nhiên $x$ và $y$, biết: $\\dfrac{2}{x}=\\dfrac{y}{6}=\\dfrac{12}{18}$\n\nTa có: $\\dfrac{12}{18}=\\dfrac{12:6}{18:6}=\\dfrac{2}{3}=\\dfrac{2\\times 2}{3\\times 2}=\\dfrac{4}{6}$\n\nMà $\\dfrac{12}{18}=\\dfrac{2}{x}=\\dfrac{y}{6}$\n\nNên $\\dfrac{2}{3}=\\dfrac{2}{x}$ và $\\dfrac{4}{6}=\\dfrac{y}{6}$\n\nDo đó $x=3$ ; $y=4$.\n\nVậy $x=3$ ; $y=4$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B4",
+  "gop_y": false,
+  "dap_an": "$a=9$ ; $b=10$ ; $c=27$ ; $d=20$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn phân số $\\dfrac{4}{6}$ rồi viết một dãy các phân số bằng nó để đọc ra từng chữ cần tìm.\n\n**Bước 1.** Rút gọn phân số $\\dfrac{4}{6}$ về dạng tối giản.\n\n**Bước 2.** Nhân cả tử số và mẫu số của phân số tối giản với $2$; $3$; $4$; … để lập dãy phân số bằng nó.\n\n**Bước 3.** Với từng phân số có chữ, tìm trong dãy phân số có cùng tử số hoặc cùng mẫu số rồi đọc ra giá trị cần tìm.\n\n**Phần 2. Trình bày**\n\nTìm các số $a$, $b$, $c$, $d$ biết rằng: $\\dfrac{4}{6}=\\dfrac{6}{a}=\\dfrac{b}{15}=\\dfrac{18}{c}=\\dfrac{d}{30}$\n\nTa có: $\\dfrac{4}{6}=\\dfrac{2}{3}=\\dfrac{6}{9}=\\dfrac{10}{15}=\\dfrac{18}{27}=\\dfrac{20}{30}$\n\nMà $\\dfrac{4}{6}=\\dfrac{6}{a}=\\dfrac{b}{15}=\\dfrac{18}{c}=\\dfrac{d}{30}$\n\nNên $a=9$ ; $b=10$ ; $c=27$ ; $d=20$.\n\nVậy $a=9$ ; $b=10$ ; $c=27$ ; $d=20$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B5a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{3}{6}$ ; $\\dfrac{12}{24}$ ; $\\dfrac{24}{48}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn có phân số bằng phân số đã cho thì nhân (hoặc chia) cả tử số và mẫu số với cùng một số khác $0$, chọn số sao cho tử số mới đúng bằng số đề cho.\n\n**Bước 1.** So sánh tử số cần có với tử số $6$ của phân số đã cho để biết phải chia hay phải nhân.\n\n**Bước 2.** Tìm số cần nhân hoặc cần chia bằng cách so tử số mới với tử số cũ.\n\n**Bước 3.** Làm cùng phép tính đó với mẫu số để được phân số mới, rồi viết ba phân số theo đúng thứ tự tử số đề cho.\n\n**Phần 2. Trình bày**\n\nTìm $3$ phân số bằng phân số $\\dfrac{6}{12}$ và có tử số lần lượt là $3$; $12$; $24$.\n\nTa có: $\\dfrac{6}{12}=\\dfrac{6:2}{12:2}=\\dfrac{3}{6}$\n\n$\\dfrac{6}{12}=\\dfrac{6\\times 2}{12\\times 2}=\\dfrac{12}{24}$\n\n$\\dfrac{6}{12}=\\dfrac{6\\times 4}{12\\times 4}=\\dfrac{24}{48}$\n\nVậy $3$ phân số bằng phân số $\\dfrac{6}{12}$ và có tử số lần lượt là $3$; $12$; $24$ là: $\\dfrac{3}{6}$; $\\dfrac{12}{24}$; $\\dfrac{24}{48}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B5b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{10}{16}$ ; $\\dfrac{15}{24}$ ; $\\dfrac{20}{32}$ ; $\\dfrac{25}{40}$ ; $\\dfrac{30}{48}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số bằng $\\dfrac{5}{8}$ có mẫu số gấp mẫu số $8$ một số lần, nên mẫu số của chúng phải chia hết cho $8$.\n\n**Bước 1.** Nhận xét mẫu số của các phân số cần tìm phải chia hết cho $8$.\n\n**Bước 2.** Liệt kê các số chia hết cho $8$ nằm giữa hai mốc mẫu số mà đề cho.\n\n**Bước 3.** Với mỗi mẫu số tìm được, nhân tử số $5$ với đúng số lần mà mẫu số $8$ được nhân lên.\n\n**Phần 2. Trình bày**\n\nTìm các phân số bằng phân số $\\dfrac{5}{8}$ và có mẫu số lớn hơn $15$ nhưng nhỏ hơn $50$.\n\nVì các phân số cần tìm bằng phân số $\\dfrac{5}{8}$ nên mẫu số của chúng chia hết cho $8$.\n\nMẫu số lớn hơn $15$, nhỏ hơn $50$ và chia hết cho $8$ nên có thể là: $16$; $24$; $32$; $40$; $48$.\n\nTa có: $\\dfrac{5}{8}=\\dfrac{10}{16}=\\dfrac{15}{24}=\\dfrac{20}{32}=\\dfrac{25}{40}=\\dfrac{30}{48}$\n\nVậy các phân số cần tìm là: $\\dfrac{10}{16}$; $\\dfrac{15}{24}$; $\\dfrac{20}{32}$; $\\dfrac{25}{40}$; $\\dfrac{30}{48}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B5c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{12}{21}$ ; $\\dfrac{24}{42}$ ; $\\dfrac{36}{63}$ ; $\\dfrac{48}{84}$ ; $\\dfrac{60}{105}$ ; $\\dfrac{72}{126}$ ; $\\dfrac{84}{147}$ ; $\\dfrac{96}{168}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn $\\dfrac{68}{119}$ để biết tử số của các phân số bằng nó là bội số nào, rồi chọn các tử số hai chữ số thoả điều kiện chia hết.\n\n**Bước 1.** Rút gọn phân số $\\dfrac{68}{119}$ về dạng tối giản để lập các phân số bằng nó.\n\n**Bước 2.** Tìm điều kiện của tử số: số chia hết cho cả $3$ và $4$ thì chia hết cho một số nào đó.\n\n**Bước 3.** Liệt kê các số có hai chữ số thoả điều kiện đó làm tử số.\n\n**Bước 4.** Với mỗi tử số, nhân phân số tối giản với số lần thích hợp để tìm mẫu số tương ứng.\n\n**Phần 2. Trình bày**\n\nTìm tất cả các phân số bằng $\\dfrac{68}{119}$ sao cho tử số là số có $2$ chữ số chia hết cho $3$ và $4$.\n\nTa có: $\\dfrac{68}{119}=\\dfrac{68:17}{119:17}=\\dfrac{4}{7}$\n\nSố chia hết cho cả $3$ và $4$ là số chia hết cho $12$.\n\nTử số của các phân số cần tìm là số có hai chữ số và chia hết cho $12$ nên có thể là: $12$; $24$; $36$; $48$; $60$; $72$; $84$; $96$.\n\nTa có: $\\dfrac{68}{119}=\\dfrac{4}{7}=\\dfrac{12}{21}=\\dfrac{24}{42}=\\dfrac{36}{63}=\\dfrac{48}{84}=\\dfrac{60}{105}=\\dfrac{72}{126}=\\dfrac{84}{147}=\\dfrac{96}{168}$\n\nVậy các phân số bằng $\\dfrac{68}{119}$ có tử số là số có $2$ chữ số chia hết cho $3$ và $4$ là: $\\dfrac{12}{21}$; $\\dfrac{24}{42}$; $\\dfrac{36}{63}$; $\\dfrac{48}{84}$; $\\dfrac{60}{105}$; $\\dfrac{72}{126}$; $\\dfrac{84}{147}$; $\\dfrac{96}{168}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B6",
+  "gop_y": false,
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tử số được giữ nguyên nên phải đưa phân số mới về cùng tử số với phân số cũ để biết mẫu số mới là bao nhiêu.\n\n**Bước 1.** Nhận xét tử số của phân số mới vẫn bằng tử số $8$ của phân số đã cho.\n\n**Bước 2.** Viết phân số $\\dfrac{4}{3}$ thành một phân số bằng nó có tử số $8$ bằng cách nhân cả tử số và mẫu số với cùng một số.\n\n**Bước 3.** So mẫu số mới tìm được với mẫu số cũ để biết số đã bị trừ đi là bao nhiêu.\n\n**Phần 2. Trình bày**\n\nCho phân số $\\dfrac{8}{12}$.\n\nTìm một số sao cho khi lấy mẫu số của phân số đã cho trừ đi số đó và giữ nguyên tử số thì được phân số mới có giá trị bằng $\\dfrac{4}{3}$.\n\nTa có: $\\dfrac{4}{3}=\\dfrac{4\\times 2}{3\\times 2}=\\dfrac{8}{6}$\n\nMẫu số của phân số mới là $6$.\n\nSố cần tìm là: $12-6=6$\n\nĐáp số: $6$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B7",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{203}{406}$ ; $\\dfrac{230}{460}$ ; $\\dfrac{320}{640}$ ; $\\dfrac{302}{604}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số có giá trị bằng $\\dfrac{1}{2}$ thì mẫu số gấp $2$ lần tử số, nên chỉ cần tìm các số trong danh sách có số gấp đôi cũng nằm trong danh sách.\n\n**Bước 1.** Nêu điều kiện để một phân số có giá trị bằng một nửa: mẫu số gấp đôi tử số.\n\n**Bước 2.** Liệt kê các tử số có ba chữ số khác nhau được viết từ các chữ số đã cho, chú ý chữ số hàng trăm khác $0$.\n\n**Bước 3.** Gấp đôi từng tử số rồi kiểm tra kết quả có viết được từ đúng các chữ số đã cho với ba chữ số khác nhau hay không.\n\n**Bước 4.** Ghi lại tất cả các cặp tử số và mẫu số thoả mãn thành các phân số.\n\n**Phần 2. Trình bày**\n\nHãy viết tất cả các phân số có tử số và mẫu số là hai số có ba chữ số khác nhau viết từ các chữ số $2$; $0$; $3$; $4$; $6$ mà có giá trị là $\\dfrac{1}{2}$.\n\nĐể các phân số có giá trị là $\\dfrac{1}{2}$ thì mẫu số gấp $2$ lần tử số.\n\nCác phân số có tử số và mẫu số được lập từ các chữ số đã cho và có giá trị bằng $\\dfrac{1}{2}$ là: $\\dfrac{203}{406}$; $\\dfrac{230}{460}$; $\\dfrac{320}{640}$; $\\dfrac{302}{604}$.\n\nVậy có $4$ phân số thoả mãn: $\\dfrac{203}{406}$; $\\dfrac{230}{460}$; $\\dfrac{320}{640}$; $\\dfrac{302}{604}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B8a",
+  "gop_y": false,
+  "dap_an": "$x=1$ ; $x=2$ ; $x=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết hai phân số về cùng tử số, khi đó phân số nào có mẫu số bé hơn thì lớn hơn.\n\n**Bước 1.** Viết phân số $\\dfrac{1}{2}$ thành phân số bằng nó có tử số là $2$ để cùng tử số với $\\dfrac{2}{x}$.\n\n**Bước 2.** Áp dụng nhận xét: hai phân số cùng tử số, phân số nào lớn hơn thì mẫu số của nó bé hơn.\n\n**Bước 3.** Liệt kê các số tự nhiên $x$ thoả điều kiện bé hơn mẫu số vừa tìm, nhớ mẫu số khác $0$.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên $x$, biết: $\\dfrac{2}{x}>\\dfrac{1}{2}$\n\nTa có: $\\dfrac{1}{2}=\\dfrac{2}{4}$ nên $\\dfrac{2}{x}>\\dfrac{2}{4}$\n\nHai phân số cùng tử số, phân số nào lớn hơn thì mẫu số bé hơn nên $x<4$ ($x$ khác $0$).\n\nVậy $x=1$; $2$; $3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B8b",
+  "gop_y": false,
+  "dap_an": "$x=6$ ; $x=7$ ; $x=8$ ; $x=9$ ; $x=10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đưa cả ba số $1$; $\\dfrac{11}{x}$; $2$ về phân số cùng tử số rồi so sánh các mẫu số.\n\n**Bước 1.** Chọn một tử số chung dễ dùng cho cả ba số, chẳng hạn một số chia hết cho cả $11$ và $2$.\n\n**Bước 2.** Viết số $1$ và số $2$ thành các phân số có tử số đó, đồng thời đưa $\\dfrac{11}{x}$ về cùng tử số.\n\n**Bước 3.** Từ thứ tự các phân số cùng tử số, suy ra thứ tự các mẫu số ngược lại.\n\n**Bước 4.** Tìm các số tự nhiên $x$ làm cho mẫu số mới nằm giữa hai số vừa tìm được.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên $x$, biết: $1<\\dfrac{11}{x}<2$\n\nTa có: $\\dfrac{1}{1}<\\dfrac{11}{x}<\\dfrac{2}{1}$ nên $\\dfrac{22}{22}<\\dfrac{22}{x\\times 2}<\\dfrac{22}{11}$\n\nSuy ra: $11<x\\times 2<22$.\n\nMà $x$ là số tự nhiên nên $x=6$; $7$; $8$; $9$; $10$.\n\nVậy $x=6$; $7$; $8$; $9$; $10$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B8c",
+  "gop_y": false,
+  "dap_an": "$x=3$ ; $x=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn các phân số để cả ba phân số có cùng mẫu số, rồi so sánh tử số.\n\n**Bước 1.** Rút gọn từng phân số để tìm mẫu số chung đơn giản nhất cho cả ba phân số.\n\n**Bước 2.** Viết lại bất đẳng thức với ba phân số cùng mẫu số.\n\n**Bước 3.** So sánh các tử số để tìm điều kiện của biểu thức chứa $x$ ở giữa.\n\n**Bước 4.** Chọn các số tự nhiên $x$ thoả mãn điều kiện đó.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên $x$, biết: $\\dfrac{8}{202}<\\dfrac{x\\times 6}{303}<\\dfrac{9}{101}$\n\nTa có: $\\dfrac{8}{202}=\\dfrac{8:2}{202:2}=\\dfrac{4}{101}$\n\n$\\dfrac{x\\times 6}{303}=\\dfrac{x\\times 6:3}{303:3}=\\dfrac{x\\times 2}{101}$\n\nNên: $\\dfrac{4}{101}<\\dfrac{x\\times 2}{101}<\\dfrac{9}{101}$\n\nSuy ra: $4<x\\times 2<9$.\n\nMà $x$ là số tự nhiên nên $x=3$; $4$.\n\nVậy $x=3$; $4$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B9a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{57}{72}$ ; $\\dfrac{58}{72}$ ; $\\dfrac{59}{72}$ ; $\\dfrac{60}{72}$ ; $\\dfrac{61}{72}$ ; $\\dfrac{62}{72}$ ; $\\dfrac{63}{72}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số cùng mẫu số có tử số liền nhau nên chưa có phân số cùng mẫu nằm giữa, cần nhân cả tử số và mẫu số lên để có đủ chỗ cho các phân số mới.\n\n**Bước 1.** Nhận xét hai phân số đã cho có tử số hơn kém nhau $1$ đơn vị nên chưa có tử số nào nằm giữa.\n\n**Bước 2.** Nhân cả tử số và mẫu số của hai phân số với cùng một số tự nhiên đủ lớn để giữa hai tử số mới có ít nhất bảy số.\n\n**Bước 3.** Liệt kê các phân số cùng mẫu số mới có tử số nằm giữa hai tử số vừa tìm.\n\n**Chú ý:** bài có nhiều đáp án đúng vì có thể chọn số nhân khác nhau, chỉ cần các phân số tìm được thật sự nằm giữa hai phân số đã cho.\n\n**Phần 2. Trình bày**\n\nTìm $7$ phân số nằm giữa $2$ phân số $\\dfrac{7}{9}$ và $\\dfrac{8}{9}$.\n\nTa có: $\\dfrac{7}{9}=\\dfrac{7\\times 8}{9\\times 8}=\\dfrac{56}{72}$\n\n$\\dfrac{8}{9}=\\dfrac{8\\times 8}{9\\times 8}=\\dfrac{64}{72}$\n\nTa có: $\\dfrac{56}{72}<\\dfrac{57}{72}<\\dfrac{58}{72}<\\dfrac{59}{72}<\\dfrac{60}{72}<\\dfrac{61}{72}<\\dfrac{62}{72}<\\dfrac{63}{72}<\\dfrac{64}{72}$\n\nVậy $7$ phân số nằm giữa $2$ phân số $\\dfrac{7}{9}$ và $\\dfrac{8}{9}$ là: $\\dfrac{57}{72}$; $\\dfrac{58}{72}$; $\\dfrac{59}{72}$; $\\dfrac{60}{72}$; $\\dfrac{61}{72}$; $\\dfrac{62}{72}$; $\\dfrac{63}{72}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B9b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{37}{36}$ ; $\\dfrac{38}{36}$ ; $\\dfrac{39}{36}$ ; $\\dfrac{40}{36}$ ; $\\dfrac{41}{36}$ ; $\\dfrac{42}{36}$ ; $\\dfrac{43}{36}$ ; $\\dfrac{44}{36}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số $1$ và phân số $\\dfrac{5}{4}$ thành hai phân số cùng mẫu số lớn, sao cho giữa hai tử số có đủ tám số tự nhiên.\n\n**Bước 1.** Viết số tự nhiên $1$ thành một phân số có tử số bằng mẫu số.\n\n**Bước 2.** Nhân cả tử số và mẫu số của $\\dfrac{5}{4}$ với cùng một số để hai phân số có chung mẫu số, rồi xem giữa hai tử số có đủ tám số hay chưa.\n\n**Bước 3.** Liệt kê tám phân số có cùng mẫu số đó mà tử số nằm giữa hai tử số vừa tìm.\n\n**Chú ý:** bài có nhiều đáp án đúng, mẫu số chung có thể chọn lớn hơn nữa miễn là đủ tám phân số.\n\n**Phần 2. Trình bày**\n\nTìm $8$ phân số nằm giữa $1$ và $\\dfrac{5}{4}$.\n\nTa có: $\\dfrac{5}{4}=\\dfrac{5\\times 9}{4\\times 9}=\\dfrac{45}{36}$\n\n$1=\\dfrac{36}{36}$\n\nTa có: $\\dfrac{36}{36}<\\dfrac{37}{36}<\\dfrac{38}{36}<\\dfrac{39}{36}<\\dfrac{40}{36}<\\dfrac{41}{36}<\\dfrac{42}{36}<\\dfrac{43}{36}<\\dfrac{44}{36}<\\dfrac{45}{36}$\n\nVậy $8$ phân số nằm giữa $1$ và $\\dfrac{5}{4}$ là: $\\dfrac{37}{36}$; $\\dfrac{38}{36}$; $\\dfrac{39}{36}$; $\\dfrac{40}{36}$; $\\dfrac{41}{36}$; $\\dfrac{42}{36}$; $\\dfrac{43}{36}$; $\\dfrac{44}{36}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B10",
+  "gop_y": false,
+  "dap_an": "$x=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn phân số bên phải để hai phân số có cùng mẫu số, khi đó so sánh hai tử số.\n\n**Bước 1.** Thử rút gọn phân số $\\dfrac{735213}{5835}$ sao cho mẫu số trở thành mẫu số của phân số bên trái.\n\n**Bước 2.** Viết lại bất đẳng thức với hai phân số cùng mẫu số rồi so sánh tử số của chúng.\n\n**Bước 3.** Hai số có sáu chữ số, so sánh lần lượt từ hàng cao nhất để xác định điều kiện của chữ số $x$ ở hàng đơn vị.\n\n**Chú ý:** $x$ là một chữ số nên chỉ nhận các giá trị từ $0$ đến $9$.\n\n**Phần 2. Trình bày**\n\nTìm chữ số $x$, biết: $\\dfrac{\\overline{24507x}}{1945}<\\dfrac{735213}{5835}$\n\nTa có: $\\dfrac{735213}{5835}=\\dfrac{735213:3}{5835:3}=\\dfrac{245071}{1945}$\n\nTừ $\\dfrac{\\overline{24507x}}{1945}<\\dfrac{735213}{5835}$ suy ra $\\dfrac{\\overline{24507x}}{1945}<\\dfrac{245071}{1945}$.\n\nDo đó: $\\overline{24507x}<245071$.\n\nSuy ra: $x<1$.\n\nVậy $x=0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B11",
+  "gop_y": false,
+  "dap_an": "$x=36$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi thêm cùng một số vào cả tử số và mẫu số thì hiệu giữa mẫu số và tử số không thay đổi, đó là dữ kiện để giải theo hiệu và tỉ.\n\n**Bước 1.** Tính hiệu giữa mẫu số và tử số của phân số ban đầu rồi nhận xét hiệu này không đổi.\n\n**Bước 2.** Từ giá trị của phân số mới, đổi ra số phần bằng nhau của tử số mới và mẫu số mới.\n\n**Bước 3.** Vẽ sơ đồ hai đoạn thẳng để thấy hiệu số phần bằng nhau ứng với hiệu đã tính.\n\n**Bước 4.** Tìm tử số mới rồi lấy tử số mới trừ tử số cũ để biết số đã thêm vào.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên $x$, biết rằng nếu thêm $x$ vào cả tử và mẫu của phân số $\\dfrac{39}{64}$ ta được phân số mới có giá trị là $\\dfrac{3}{4}$.\n\nKhi thêm $x$ vào cả tử số và mẫu số thì hiệu giữa mẫu số và tử số không thay đổi và bằng: $64-39=25$.\n\nPhân số mới có giá trị bằng $\\dfrac{3}{4}$ nên nếu coi tử số mới là $3$ phần thì mẫu số mới là $4$ phần như thế.\n\nTa có sơ đồ:\n\nHiệu số phần bằng nhau là: $4-3=1$ (phần)\n\nTử số của phân số mới là: $25:1\\times 3=75$\n\nVậy $x=75-39=36$.",
+  "so_do_mo_ta": {
+   "tieu_de": "Tử số mới và mẫu số mới",
+   "gia_tri_phan": 25,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 3
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 4
+    }
+   ],
+   "hieu": "25",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B12",
+  "gop_y": false,
+  "dap_an": "Bé hơn $1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số $1999$ thành $1995+4$ và số $1995$ ở mẫu thành $1991+4$ để tử số và mẫu số có phần giống nhau, rồi chỉ cần so sánh phần còn lại.\n\n**Bước 1.** Nhận xét mỗi số ở tử số hơn mỗi số tương ứng ở mẫu số một số đơn vị nhất định.\n\n**Bước 2.** Tách một thừa số ở tử số và một thừa số ở mẫu số thành tổng bằng cách cộng thêm số đơn vị vừa tìm.\n\n**Bước 3.** Nhân một số với một tổng để tách tử số và mẫu số thành hai phần, một phần giống nhau.\n\n**Bước 4.** So sánh phần còn lại của tử số với phần còn lại của mẫu số rồi so với $1$.\n\n**Phần 2. Trình bày**\n\nSo sánh $\\dfrac{1991\\times 1999}{1995\\times 1995}$ với $1$.\n\nTa có: $\\dfrac{1991\\times 1999}{1995\\times 1995}=\\dfrac{1991\\times (1995+4)}{1995\\times (1991+4)}=\\dfrac{1991\\times 1995+1991\\times 4}{1995\\times 1991+1995\\times 4}$\n\nVì $1991\\times 1995+1991\\times 4<1995\\times 1991+1995\\times 4$ nên $\\dfrac{1991\\times 1995+1991\\times 4}{1995\\times 1991+1995\\times 4}<1$.\n\nVậy $\\dfrac{1991\\times 1999}{1995\\times 1995}<1$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B13a",
+  "gop_y": false,
+  "dap_an": "$x=326$ ; giá trị lớn nhất $156$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số có tử số cố định thì lớn nhất khi mẫu số bé nhất, nên cần tìm giá trị bé nhất của mẫu số.\n\n**Bước 1.** Nhận xét tử số $156$ không đổi nên giá trị phân số phụ thuộc vào mẫu số.\n\n**Bước 2.** Xác định mẫu số $327-x$ phải là số tự nhiên khác $0$ rồi tìm giá trị bé nhất có thể của nó.\n\n**Bước 3.** Từ giá trị bé nhất của mẫu số, tìm $x$ rồi tính giá trị lớn nhất của phân số.\n\n**Phần 2. Trình bày**\n\nTìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$ có giá trị lớn nhất.\n\nGiá trị lớn nhất đó là bao nhiêu?\n\nĐể $\\dfrac{156}{327-x}$ lớn nhất thì mẫu số $327-x$ phải bé nhất.\n\nVì $327-x$ khác $0$ nên $327-x=1$ hay $x=326$.\n\nKhi đó giá trị lớn nhất của $\\dfrac{156}{327-x}$ là: $\\dfrac{156}{327-326}=\\dfrac{156}{1}=156$.\n\nVậy $\\dfrac{156}{327-x}$ có giá trị lớn nhất là $156$ khi $x=326$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B13b",
+  "gop_y": false,
+  "dap_an": "$x=0$ ; phân số $\\dfrac{52}{109}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** phân số có tử số cố định thì bé nhất khi mẫu số lớn nhất, nên cần tìm giá trị lớn nhất của mẫu số.\n\n**Bước 1.** Nhận xét tử số $156$ không đổi nên phân số bé nhất khi mẫu số lớn nhất.\n\n**Bước 2.** Tìm giá trị lớn nhất của $327-x$ khi $x$ là số tự nhiên, rồi suy ra giá trị của $x$.\n\n**Bước 3.** Thay giá trị $x$ vào phân số rồi rút gọn để được phân số cần tìm.\n\n**Phần 2. Trình bày**\n\nTìm $x$ là số tự nhiên để $\\dfrac{156}{327-x}$ có giá trị bé nhất.\n\nLà phân số nào?\n\nĐể $\\dfrac{156}{327-x}$ bé nhất thì $327-x$ phải lớn nhất có thể.\n\nDo đó $327-x=327$.\n\nSuy ra $x=0$.\n\nKhi đó giá trị bé nhất của $\\dfrac{156}{327-x}$ là: $\\dfrac{156}{327-0}=\\dfrac{156}{327}=\\dfrac{52}{109}$.\n\nVậy $\\dfrac{156}{327-x}$ có giá trị bé nhất là $\\dfrac{52}{109}$ khi $x=0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{997}{999}<\\dfrac{1993}{1995}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số đều bé hơn $1$ và có mẫu số hơn tử số cùng một số đơn vị, nên so sánh bằng phần bù: phần bù lớn hơn thì phân số bé hơn.\n\n**Bước 1.** Tìm hiệu của mẫu số và tử số ở từng phân số để thấy hai hiệu bằng nhau.\n\n**Bước 2.** Viết mỗi phân số bằng $1$ trừ đi phần bù của nó.\n\n**Bước 3.** So sánh hai phần bù có cùng tử số: phần bù nào có mẫu số bé hơn thì lớn hơn.\n\n**Bước 4.** Kết luận phân số nào lớn hơn dựa vào quan hệ: số bị trừ như nhau, số trừ lớn hơn thì hiệu bé hơn.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{997}{999}$ và $\\dfrac{1993}{1995}$\n\nTa có: $\\dfrac{997}{999}=1-\\dfrac{2}{999}$ ; $\\dfrac{1993}{1995}=1-\\dfrac{2}{1995}$\n\nVì $\\dfrac{2}{999}>\\dfrac{2}{1995}$ nên $1-\\dfrac{2}{999}<1-\\dfrac{2}{1995}$ hay $\\dfrac{997}{999}<\\dfrac{1993}{1995}$.\n\nVậy $\\dfrac{997}{999}<\\dfrac{1993}{1995}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{13}{27}<\\dfrac{27}{41}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số đều bé hơn $1$ và mẫu số hơn tử số cùng một số đơn vị, nên so sánh bằng phần bù.\n\n**Bước 1.** Tính hiệu của mẫu số và tử số ở từng phân số để thấy hai hiệu bằng nhau.\n\n**Bước 2.** Viết mỗi phân số bằng $1$ trừ đi phần bù tương ứng.\n\n**Bước 3.** So sánh hai phần bù có cùng tử số, phần bù nào có mẫu số lớn hơn thì bé hơn.\n\n**Bước 4.** Suy ra thứ tự của hai phân số ban đầu theo quy tắc số bị trừ như nhau.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{13}{27}$ và $\\dfrac{27}{41}$\n\nTa có: $\\dfrac{13}{27}=1-\\dfrac{14}{27}$ ; $\\dfrac{27}{41}=1-\\dfrac{14}{41}$\n\nVì $\\dfrac{14}{27}>\\dfrac{14}{41}$ nên $1-\\dfrac{14}{27}<1-\\dfrac{14}{41}$ hay $\\dfrac{13}{27}<\\dfrac{27}{41}$.\n\nVậy $\\dfrac{13}{27}<\\dfrac{27}{41}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{27}{13}>\\dfrac{41}{27}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số đều lớn hơn $1$ và tử số hơn mẫu số cùng một số đơn vị, nên tách mỗi phân số thành $1$ cộng với một phần hơn rồi so sánh các phần hơn.\n\n**Bước 1.** Tìm hiệu của tử số và mẫu số ở từng phân số để thấy hai hiệu bằng nhau.\n\n**Bước 2.** Viết mỗi phân số bằng $1$ cộng phần hơn tương ứng.\n\n**Bước 3.** So sánh hai phần hơn có cùng tử số, phần hơn nào có mẫu số bé hơn thì lớn hơn.\n\n**Bước 4.** Suy ra thứ tự của hai phân số ban đầu theo quy tắc số hạng thứ nhất như nhau.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{27}{13}$ và $\\dfrac{41}{27}$\n\nTa có: $\\dfrac{27}{13}=1+\\dfrac{14}{13}$ ; $\\dfrac{41}{27}=1+\\dfrac{14}{27}$\n\nVì $\\dfrac{14}{13}>\\dfrac{14}{27}$ nên $1+\\dfrac{14}{13}>1+\\dfrac{14}{27}$ hay $\\dfrac{27}{13}>\\dfrac{41}{27}$.\n\nVậy $\\dfrac{27}{13}>\\dfrac{41}{27}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{15}{11}>\\dfrac{25}{21}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số đều lớn hơn $1$ và tử số hơn mẫu số cùng một số đơn vị, nên tách thành $1$ cộng phần hơn rồi so sánh các phần hơn.\n\n**Bước 1.** Tính hiệu của tử số và mẫu số ở từng phân số để thấy hai hiệu bằng nhau.\n\n**Bước 2.** Viết mỗi phân số bằng $1$ cộng phần hơn tương ứng.\n\n**Bước 3.** So sánh hai phần hơn có cùng tử số: mẫu số bé hơn thì phần hơn lớn hơn.\n\n**Bước 4.** Suy ra thứ tự của hai phân số ban đầu theo quy tắc số hạng thứ nhất như nhau.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{15}{11}$ và $\\dfrac{25}{21}$\n\nTa có: $\\dfrac{15}{11}=1+\\dfrac{4}{11}$ ; $\\dfrac{25}{21}=1+\\dfrac{4}{21}$\n\nVì $\\dfrac{4}{11}>\\dfrac{4}{21}$ nên $1+\\dfrac{4}{11}>1+\\dfrac{4}{21}$ hay $\\dfrac{15}{11}>\\dfrac{25}{21}$.\n\nVậy $\\dfrac{15}{11}>\\dfrac{25}{21}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14e",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{27}{13}>\\dfrac{35}{17}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số đều lớn hơn $2$ và có cùng phần nguyên, nên tách mỗi phân số thành phần nguyên cộng với một phân số có tử số $1$ rồi so sánh các phân số đó.\n\n**Bước 1.** Chia tử số cho mẫu số của từng phân số để tìm phần nguyên và phần dư.\n\n**Bước 2.** Viết mỗi phân số thành phần nguyên cộng với phân số có tử số là số dư.\n\n**Bước 3.** So sánh hai phân số phần dư có cùng tử số, mẫu số bé hơn thì phân số lớn hơn.\n\n**Bước 4.** Suy ra thứ tự của hai phân số ban đầu vì phần nguyên giống nhau.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{27}{13}$ và $\\dfrac{35}{17}$\n\nTa có: $\\dfrac{27}{13}=2+\\dfrac{1}{13}$ ; $\\dfrac{35}{17}=2+\\dfrac{1}{17}$\n\nVì $\\dfrac{1}{13}>\\dfrac{1}{17}$ nên $2+\\dfrac{1}{13}>2+\\dfrac{1}{17}$ hay $\\dfrac{27}{13}>\\dfrac{35}{17}$.\n\nVậy $\\dfrac{27}{13}>\\dfrac{35}{17}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B14f",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{42}{211}<\\dfrac{63}{314}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm một phân số trung gian làm cầu nối: một phân số bé hơn nó, phân số kia lớn hơn nó, từ đó suy ra thứ tự của hai phân số.\n\n**Bước 1.** Quan sát hai phân số để tìm một phân số đơn giản nằm gần cả hai.\n\n**Bước 2.** So sánh phân số thứ nhất với phân số trung gian bằng cách viết chúng cùng tử số.\n\n**Bước 3.** So sánh phân số thứ hai với phân số trung gian cũng bằng cách viết cùng tử số.\n\n**Bước 4.** Nối hai kết quả để suy ra thứ tự của hai phân số đã cho.\n\n**Phần 2. Trình bày**\n\nSo sánh các phân số sau bằng cách hợp lý: $\\dfrac{42}{211}$ và $\\dfrac{63}{314}$\n\nTa có: $\\dfrac{42}{211}<\\dfrac{42}{210}=\\dfrac{1}{5}$\n\n$\\dfrac{63}{314}>\\dfrac{63}{315}=\\dfrac{1}{5}$\n\nTừ đó suy ra: $\\dfrac{42}{211}<\\dfrac{1}{5}<\\dfrac{63}{314}$.\n\nVậy $\\dfrac{42}{211}<\\dfrac{63}{314}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B15a",
+  "gop_y": false,
+  "dap_an": "$x=2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị ở mỗi vế trước, khi đó $x$ là thừa số chưa biết nên lấy tích chia cho thừa số đã biết.\n\n**Bước 1.** Quy đồng mẫu số rồi cộng các phân số trong ngoặc ở vế trái thành một phân số.\n\n**Bước 2.** Cộng các số ở vế phải thành một phân số.\n\n**Bước 3.** Xác định $x$ là thừa số chưa biết, dùng quy tắc: thừa số bằng tích chia cho thừa số kia.\n\n**Bước 4.** Chia hai phân số bằng cách nhân với phân số đảo ngược rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nTìm $x$ biết: $\\left(\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}\\right)\\times x=1+\\dfrac{2}{3}+\\dfrac{1}{2}$\n\nTa có: $\\dfrac{1}{2}+\\dfrac{1}{3}+\\dfrac{1}{4}=\\dfrac{6}{12}+\\dfrac{4}{12}+\\dfrac{3}{12}=\\dfrac{13}{12}$\n\n$1+\\dfrac{2}{3}+\\dfrac{1}{2}=\\dfrac{6}{6}+\\dfrac{4}{6}+\\dfrac{3}{6}=\\dfrac{13}{6}$\n\nDo đó: $\\dfrac{13}{12}\\times x=\\dfrac{13}{6}$\n\n$x=\\dfrac{13}{6}:\\dfrac{13}{12}$\n\n$x=\\dfrac{13}{6}\\times\\dfrac{12}{13}$\n\n$x=2$\n\nVậy $x=2$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B15b",
+  "gop_y": false,
+  "dap_an": "$x=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị ở mỗi vế trước, khi đó $x$ là số chia chưa biết nên lấy số bị chia chia cho thương.\n\n**Bước 1.** Quy đồng mẫu số để tính tổng và hiệu các phân số trong ngoặc ở vế trái.\n\n**Bước 2.** Quy đồng mẫu số để tính giá trị vế phải thành một phân số.\n\n**Bước 3.** Xác định $x$ là số chia chưa biết, dùng quy tắc: số chia bằng số bị chia chia cho thương.\n\n**Bước 4.** Thực hiện chia hai phân số bằng cách nhân với phân số đảo ngược rồi rút gọn.\n\n**Phần 2. Trình bày**\n\nTìm $x$ biết: $\\left(\\dfrac{1}{2}+\\dfrac{1}{3}-\\dfrac{1}{4}\\right):x=\\dfrac{1}{6}+\\dfrac{1}{9}-\\dfrac{1}{12}$\n\nTa có: $\\dfrac{1}{2}+\\dfrac{1}{3}-\\dfrac{1}{4}=\\dfrac{6}{12}+\\dfrac{4}{12}-\\dfrac{3}{12}=\\dfrac{7}{12}$\n\n$\\dfrac{1}{6}+\\dfrac{1}{9}-\\dfrac{1}{12}=\\dfrac{6}{36}+\\dfrac{4}{36}-\\dfrac{3}{36}=\\dfrac{7}{36}$\n\nDo đó: $\\dfrac{7}{12}:x=\\dfrac{7}{36}$\n\n$x=\\dfrac{7}{12}:\\dfrac{7}{36}$\n\n$x=\\dfrac{7}{12}\\times\\dfrac{36}{7}$\n\n$x=3$\n\nVậy $x=3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B15c",
+  "gop_y": false,
+  "dap_an": "$x=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính hai vế trước, khi đó cả cụm $x+\\dfrac{1}{2}$ là số chia chưa biết, tìm cụm đó rồi mới tìm $x$.\n\n**Bước 1.** Quy đồng mẫu số để cộng các phân số trong ngoặc đầu ở vế trái.\n\n**Bước 2.** Quy đồng mẫu số để cộng các phân số ở vế phải.\n\n**Bước 3.** Coi $x+\\dfrac{1}{2}$ là số chia chưa biết, dùng quy tắc: số chia bằng số bị chia chia cho thương.\n\n**Bước 4.** Từ giá trị của cụm $x+\\dfrac{1}{2}$, tìm $x$ bằng quy tắc tìm số hạng chưa biết.\n\n**Phần 2. Trình bày**\n\nTìm $x$ biết: $\\left(\\dfrac{4}{7}+\\dfrac{2}{3}\\right):\\left(x+\\dfrac{1}{2}\\right)=\\dfrac{8}{7}+\\dfrac{4}{3}$\n\nTa có: $\\dfrac{4}{7}+\\dfrac{2}{3}=\\dfrac{12}{21}+\\dfrac{14}{21}=\\dfrac{26}{21}$\n\n$\\dfrac{8}{7}+\\dfrac{4}{3}=\\dfrac{24}{21}+\\dfrac{28}{21}=\\dfrac{52}{21}$\n\nDo đó: $\\dfrac{26}{21}:\\left(x+\\dfrac{1}{2}\\right)=\\dfrac{52}{21}$\n\n$x+\\dfrac{1}{2}=\\dfrac{26}{21}:\\dfrac{52}{21}$\n\n$x+\\dfrac{1}{2}=\\dfrac{26}{21}\\times\\dfrac{21}{52}$\n\n$x+\\dfrac{1}{2}=\\dfrac{1}{2}$\n\n$x=\\dfrac{1}{2}-\\dfrac{1}{2}$\n\n$x=0$\n\nVậy $x=0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B15d",
+  "gop_y": false,
+  "dap_an": "$x=\\dfrac{5}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm phần $\\dfrac{2}{7}:x$ trước bằng quy tắc số hạng chưa biết, sau đó tìm $x$ là số chia.\n\n**Bước 1.** Xác định $\\dfrac{2}{7}:x$ là số hạng chưa biết của một phép cộng có tổng bằng $1$.\n\n**Bước 2.** Tìm số hạng đó bằng cách lấy tổng trừ đi số hạng đã biết.\n\n**Bước 3.** Xác định $x$ là số chia chưa biết, dùng quy tắc: số chia bằng số bị chia chia cho thương.\n\n**Bước 4.** Chia hai phân số bằng cách nhân với phân số đảo ngược rồi rút gọn.\n\n**Phần 2. Trình bày**\n\nTìm $x$ biết: $\\dfrac{3}{5}+\\dfrac{2}{7}:x=1$\n\n$\\dfrac{2}{7}:x=1-\\dfrac{3}{5}$\n\n$\\dfrac{2}{7}:x=\\dfrac{2}{5}$\n\n$x=\\dfrac{2}{7}:\\dfrac{2}{5}$\n\n$x=\\dfrac{2}{7}\\times\\dfrac{5}{2}$\n\n$x=\\dfrac{5}{7}$\n\nVậy $x=\\dfrac{5}{7}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B15e",
+  "gop_y": false,
+  "dap_an": "$x=\\dfrac{7}{20}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm phần $x:\\dfrac{1}{2}$ trước bằng quy tắc số trừ chưa biết, sau đó tìm $x$ là số bị chia.\n\n**Bước 1.** Xác định $x:\\dfrac{1}{2}$ là số trừ chưa biết trong phép trừ có số bị trừ và hiệu đã biết.\n\n**Bước 2.** Tìm số trừ bằng cách lấy số bị trừ trừ đi hiệu, quy đồng mẫu số khi tính.\n\n**Bước 3.** Xác định $x$ là số bị chia chưa biết, dùng quy tắc: số bị chia bằng thương nhân với số chia.\n\n**Bước 4.** Nhân hai phân số rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nTìm $x$ biết: $\\dfrac{6}{5}-x:\\dfrac{1}{2}=\\dfrac{1}{2}$\n\n$x:\\dfrac{1}{2}=\\dfrac{6}{5}-\\dfrac{1}{2}$\n\n$x:\\dfrac{1}{2}=\\dfrac{7}{10}$\n\n$x=\\dfrac{7}{10}\\times\\dfrac{1}{2}$\n\n$x=\\dfrac{7}{20}$\n\nVậy $x=\\dfrac{7}{20}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B16",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{429}{38}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** quên chữ số $2$ ở hàng trăm làm tử số của số bị trừ giảm đi $200$, nên số bị trừ giảm đi một phân số có mẫu số $19$ và hiệu cũng giảm đi chừng đó.\n\n**Bước 1.** Viết số $\\overline{2ab}$ thành tổng của $200$ và số $\\overline{ab}$.\n\n**Bước 2.** Xác định số bị trừ khi quên chữ số $2$ nhỏ hơn số bị trừ đúng bao nhiêu.\n\n**Bước 3.** Nhận xét khi số bị trừ giảm đi một lượng mà số trừ giữ nguyên thì hiệu thay đổi thế nào.\n\n**Bước 4.** Cộng phần đã giảm vào kết quả sai để tìm hiệu đúng, nhớ quy đồng mẫu số khi cộng.\n\n**Phần 2. Trình bày**\n\nTìm hiệu đúng của $2$ phân số ban đầu, biết khi trừ $\\dfrac{\\overline{2ab}}{19}$ cho $\\dfrac{m}{n}$ bạn đã quên viết chữ số $2$ ở tử số của số bị trừ và được kết quả là $\\dfrac{29}{38}$.\n\nTa có: $\\dfrac{\\overline{2ab}}{19}=\\dfrac{200+\\overline{ab}}{19}=\\dfrac{200}{19}+\\dfrac{\\overline{ab}}{19}$\n\nKhi quên viết chữ số $2$ ở tử số của phân số bị trừ thì phân số bị trừ đã giảm đi $\\dfrac{200}{19}$.\n\nDo đó hiệu cũng giảm đi $\\dfrac{200}{19}$ và được kết quả là $\\dfrac{29}{38}$.\n\nVậy hiệu đúng của $2$ phân số ban đầu là: $\\dfrac{29}{38}+\\dfrac{200}{19}=\\dfrac{429}{38}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B17a",
+  "gop_y": false,
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chỗ và nhóm các phân số cùng mẫu số lại với nhau để cộng nhanh.\n\n**Bước 1.** Nhận ra trong biểu thức có hai nhóm phân số: một nhóm cùng mẫu số $5$ và một nhóm cùng mẫu số $7$.\n\n**Bước 2.** Nhóm các phân số cùng mẫu số lại bằng dấu ngoặc.\n\n**Bước 3.** Cộng từng nhóm rồi cộng các kết quả với nhau.\n\n**Phần 2. Trình bày**\n\nThực hiện phép tính (Tính hợp lý nếu có thể): $\\dfrac{3}{5}+\\dfrac{4}{7}+\\dfrac{2}{5}+\\dfrac{1}{7}+\\dfrac{2}{7}$\n\n$=\\left(\\dfrac{3}{5}+\\dfrac{2}{5}\\right)+\\left(\\dfrac{4}{7}+\\dfrac{1}{7}+\\dfrac{2}{7}\\right)$\n\n$=\\dfrac{5}{5}+\\dfrac{7}{7}$\n\n$=1+1$\n\n$=2$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B17b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{15}{7}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc có dấu trừ đứng trước thì đổi dấu các số trong ngoặc, rồi nhóm các phân số cùng mẫu số.\n\n**Bước 1.** Bỏ ngoặc có dấu trừ phía trước bằng cách đổi dấu từng số hạng trong ngoặc.\n\n**Bước 2.** Nhóm các phân số cùng mẫu số $12$ và cùng mẫu số $7$ lại với nhau.\n\n**Bước 3.** Tính từng nhóm rồi cộng các kết quả, chú ý nhóm cùng mẫu số $12$ ra một số tự nhiên.\n\n**Phần 2. Trình bày**\n\nThực hiện phép tính (Tính hợp lý nếu có thể): $\\dfrac{17}{12}+\\dfrac{9}{7}-\\left(\\dfrac{8}{7}-\\dfrac{7}{12}\\right)$\n\n$=\\dfrac{17}{12}+\\dfrac{9}{7}-\\dfrac{8}{7}+\\dfrac{7}{12}$\n\n$=\\left(\\dfrac{17}{12}+\\dfrac{7}{12}\\right)+\\left(\\dfrac{9}{7}-\\dfrac{8}{7}\\right)$\n\n$=\\dfrac{24}{12}+\\dfrac{1}{7}$\n\n$=2+\\dfrac{1}{7}$\n\n$=\\dfrac{14}{7}+\\dfrac{1}{7}=\\dfrac{15}{7}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B17c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{4}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** thực hiện theo thứ tự: tính trong ngoặc trước, rồi phép chia, cuối cùng mới đến phép cộng.\n\n**Bước 1.** Quy đồng mẫu số để cộng hai phân số trong ngoặc thành một phân số.\n\n**Bước 2.** Thực hiện phép chia bằng cách nhân với phân số đảo ngược của số chia, rút gọn kết quả.\n\n**Bước 3.** Cộng với phân số còn lại sau khi quy đồng mẫu số hai phân số.\n\n**Phần 2. Trình bày**\n\nThực hiện phép tính (Tính hợp lý nếu có thể): $\\dfrac{7}{8}:\\left(\\dfrac{14}{3}+\\dfrac{7}{2}\\right)+\\dfrac{4}{28}$\n\n$=\\dfrac{7}{8}:\\left(\\dfrac{28}{6}+\\dfrac{21}{6}\\right)+\\dfrac{4}{28}$\n\n$=\\dfrac{7}{8}:\\dfrac{49}{6}+\\dfrac{4}{28}$\n\n$=\\dfrac{7}{8}\\times\\dfrac{6}{49}+\\dfrac{4}{28}$\n\n$=\\dfrac{3}{28}+\\dfrac{4}{28}$\n\n$=\\dfrac{7}{28}=\\dfrac{1}{4}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B17d",
+  "gop_y": false,
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn các phân số chưa tối giản để lộ ra các phân số cùng mẫu số, rồi nhóm chúng lại.\n\n**Bước 1.** Rút gọn các phân số có thể rút gọn được trong biểu thức.\n\n**Bước 2.** Nhóm các phân số cùng mẫu số lại với nhau bằng dấu ngoặc.\n\n**Bước 3.** Tính từng nhóm ra số tự nhiên rồi cộng các kết quả với nhau.\n\n**Phần 2. Trình bày**\n\nThực hiện phép tính (Tính hợp lý nếu có thể): $\\dfrac{175}{100}+\\dfrac{18}{21}+\\dfrac{45}{32}+\\dfrac{5}{4}+\\dfrac{1}{7}-\\dfrac{13}{32}$\n\n$=\\dfrac{7}{4}+\\dfrac{6}{7}+\\dfrac{45}{32}+\\dfrac{5}{4}+\\dfrac{1}{7}-\\dfrac{13}{32}$\n\n$=\\left(\\dfrac{7}{4}+\\dfrac{5}{4}\\right)+\\left(\\dfrac{6}{7}+\\dfrac{1}{7}\\right)+\\left(\\dfrac{45}{32}-\\dfrac{13}{32}\\right)$\n\n$=\\dfrac{12}{4}+\\dfrac{7}{7}+\\dfrac{32}{32}$\n\n$=3+1+1$\n\n$=5$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B18a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân các phân số là nhân các tử số với nhau và nhân các mẫu số với nhau, rồi rút gọn các thừa số giống nhau ở tử số và mẫu số.\n\n**Bước 1.** Viết số tự nhiên $2$ và $5$ thành phân số có mẫu số $1$ hoặc gộp trực tiếp vào tử số.\n\n**Bước 2.** Viết cả biểu thức thành một phân số có tử số và mẫu số đều là tích nhiều thừa số.\n\n**Bước 3.** Phân tích các thừa số ở mẫu số để nhìn ra thừa số giống ở tử số, rồi rút gọn.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $2\\times\\dfrac{3}{16}\\times\\dfrac{4}{15}\\times 5$\n\n$=\\dfrac{2\\times 3\\times 4\\times 5}{16\\times 15}$\n\n$=\\dfrac{2\\times 3\\times 4\\times 5}{4\\times 4\\times 3\\times 5}$\n\nRút gọn các thừa số $3$; $4$; $5$ giống nhau ở tử số và mẫu số:\n\n$=\\dfrac{2}{4}=\\dfrac{1}{2}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B18b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{2}{9}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** rút gọn từng phân số trước nếu được, rồi viết cả biểu thức thành một phân số để rút gọn các thừa số giống nhau.\n\n**Bước 1.** Rút gọn phân số có thể rút gọn được ngay trong biểu thức.\n\n**Bước 2.** Viết tích các phân số thành một phân số có tử số và mẫu số là tích nhiều thừa số.\n\n**Bước 3.** Phân tích một số thừa số thành tích để nhìn ra thừa số giống ở tử số và mẫu số.\n\n**Bước 4.** Rút gọn các thừa số giống nhau rồi tính kết quả còn lại.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\dfrac{6}{7}\\times\\dfrac{14}{9}\\times\\dfrac{3}{18}$\n\n$=\\dfrac{6}{7}\\times\\dfrac{14}{9}\\times\\dfrac{1}{6}$\n\n$=\\dfrac{6\\times 14\\times 1}{7\\times 9\\times 6}$\n\n$=\\dfrac{6\\times 7\\times 2\\times 1}{7\\times 9\\times 6}$\n\nRút gọn các thừa số $6$ và $7$ giống nhau ở tử số và mẫu số:\n\n$=\\dfrac{2}{9}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B18c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{25}{3}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong một tích, đổi chỗ các thừa số để ghép những phân số rút gọn được với nhau.\n\n**Bước 1.** Tìm cặp phân số mà tử số của phân số này và mẫu số của phân số kia có thừa số chung.\n\n**Bước 2.** Nhóm các cặp phân số đó lại bằng dấu ngoặc rồi rút gọn riêng từng cặp.\n\n**Bước 3.** Nhân các phân số còn lại thành một phân số rồi rút gọn tiếp các thừa số giống nhau.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\dfrac{13}{14}\\times\\dfrac{17}{4}\\times\\dfrac{56}{15}\\times\\dfrac{70}{39}\\times\\dfrac{21}{34}\\times\\dfrac{25}{49}$\n\n$=\\left(\\dfrac{13}{14}\\times\\dfrac{70}{39}\\right)\\times\\left(\\dfrac{17}{4}\\times\\dfrac{21}{34}\\right)\\times\\left(\\dfrac{56}{15}\\times\\dfrac{25}{49}\\right)$\n\n$=\\dfrac{5}{3}\\times\\dfrac{21}{8}\\times\\dfrac{40}{21}$\n\n$=\\dfrac{5\\times 21\\times 40}{3\\times 8\\times 21}$\n\n$=\\dfrac{5\\times 21\\times 8\\times 5}{3\\times 8\\times 21}$\n\nRút gọn các thừa số $8$ và $21$ giống nhau ở tử số và mẫu số:\n\n$=\\dfrac{25}{3}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B18d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{1}{12}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách mỗi tích ở tử số và mẫu số thành một thừa số chung nhân với một thừa số riêng, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Nhận xét tích thứ nhất ở tử số và tích thứ nhất ở mẫu số, rồi so sánh tích thứ hai và thứ ba với chúng.\n\n**Bước 2.** Viết lại các tích thứ hai và thứ ba dưới dạng tích thứ nhất nhân thêm một số nhân.\n\n**Bước 3.** Đặt thừa số chung ra ngoài ngoặc ở cả tử số và mẫu số.\n\n**Bước 4.** Rút gọn thừa số chung và tổng trong ngoặc giống nhau ở tử số và mẫu số.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\dfrac{1\\times 3\\times 5+2\\times 6\\times 10+3\\times 9\\times 15}{3\\times 5\\times 12+6\\times 10\\times 24+9\\times 15\\times 36}$\n\nTa có: $2\\times 6\\times 10=1\\times 3\\times 5\\times 2\\times 2\\times 2$ và $3\\times 9\\times 15=1\\times 3\\times 5\\times 3\\times 3\\times 3$\n\n$6\\times 10\\times 24=3\\times 5\\times 12\\times 2\\times 2\\times 2$ và $9\\times 15\\times 36=3\\times 5\\times 12\\times 3\\times 3\\times 3$\n\n$=\\dfrac{1\\times 3\\times 5\\times(1+2\\times 2\\times 2+3\\times 3\\times 3)}{3\\times 5\\times 12\\times(1+2\\times 2\\times 2+3\\times 3\\times 3)}$\n\nRút gọn thừa số chung $3\\times 5$ và tổng trong ngoặc ở tử số và mẫu số:\n\n$=\\dfrac{1}{12}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B18e",
+  "gop_y": false,
+  "dap_an": "$40$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân chia liên tiếp thì thực hiện từ trái sang phải, nhưng có thể đổi chỗ các số kèm theo dấu của chúng để ghép những phép tính rút gọn được.\n\n**Bước 1.** Nhìn tử số và mẫu số tìm các số có quan hệ gấp lên hoặc chia ra với nhau.\n\n**Bước 2.** Ghép các phép chia với các số bị chia tương ứng rồi tính trước để số gọn hơn.\n\n**Bước 3.** Phân tích số lớn thành tích để lộ thừa số giống nhau ở tử số và mẫu số.\n\n**Bước 4.** Rút gọn thừa số giống nhau rồi tính kết quả cuối cùng.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\dfrac{1248\\times 625:5\\times 4\\times 2}{2\\times 312\\times 125:25\\times 10}$\n\n$=\\dfrac{(625:5)\\times(4\\times 2)\\times 1248}{(125:25)\\times 2\\times 10\\times 312}$\n\n$=\\dfrac{125\\times 8\\times 4\\times 312}{5\\times 2\\times 10\\times 312}$\n\n$=\\dfrac{1000\\times 4\\times 312}{100\\times 312}$\n\nRút gọn thừa số $312$ ở tử số và mẫu số:\n\n$=\\dfrac{1000\\times 4}{100}=10\\times 4=40$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B19a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{648}{91}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi mỗi thừa số dạng $1+\\dfrac{1}{n}$ thành một phân số, khi đó tử số của phân số sau bằng mẫu số của phân số trước nên các số rút gọn dần.\n\n**Bước 1.** Viết từng thừa số trong ngoặc thành một phân số bằng cách cộng $1$ với phân số đã cho.\n\n**Bước 2.** Viết tích các phân số vừa tìm theo thứ tự rồi quan sát tử số và mẫu số.\n\n**Bước 3.** Nhận ra tử số của phân số này bằng mẫu số của phân số liền trước nên rút gọn được.\n\n**Bước 4.** Chỉ giữ lại mẫu số của phân số đầu và tử số của phân số cuối để ra kết quả.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\left(1+\\dfrac{1}{91}\\right)\\times\\left(1+\\dfrac{1}{92}\\right)\\times\\left(1+\\dfrac{1}{93}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{647}\\right)$\n\n$=\\dfrac{92}{91}\\times\\dfrac{93}{92}\\times\\dfrac{94}{93}\\times\\ldots\\times\\dfrac{647}{646}\\times\\dfrac{648}{647}$\n\nTử số của mỗi phân số bằng mẫu số của phân số đứng trước nên rút gọn lần lượt, chỉ còn mẫu số đầu tiên và tử số cuối cùng:\n\n$=\\dfrac{648}{91}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B19b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{12}{125}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi mỗi thừa số dạng $1-\\dfrac{1}{n}$ thành một phân số, khi đó mẫu số của phân số này bằng tử số của phân số sau nên các số rút gọn dần.\n\n**Bước 1.** Viết từng thừa số trong ngoặc thành một phân số bằng cách lấy $1$ trừ phân số đã cho.\n\n**Bước 2.** Viết tích các phân số vừa tìm theo thứ tự rồi quan sát tử số và mẫu số.\n\n**Bước 3.** Nhận ra mẫu số của phân số này bằng tử số của phân số liền sau nên rút gọn được.\n\n**Bước 4.** Chỉ giữ lại tử số của phân số đầu và mẫu số của phân số cuối, rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\left(1-\\dfrac{1}{97}\\right)\\times\\left(1-\\dfrac{1}{98}\\right)\\times\\left(1-\\dfrac{1}{99}\\right)\\times\\ldots\\times\\left(1-\\dfrac{1}{1000}\\right)$\n\n$=\\dfrac{96}{97}\\times\\dfrac{97}{98}\\times\\dfrac{98}{99}\\times\\ldots\\times\\dfrac{998}{999}\\times\\dfrac{999}{1000}$\n\nMẫu số của mỗi phân số bằng tử số của phân số đứng sau nên rút gọn lần lượt, chỉ còn tử số đầu tiên và mẫu số cuối cùng:\n\n$=\\dfrac{96}{1000}=\\dfrac{12}{125}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B19c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{200}{101}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi mỗi ngoặc thành một phân số rồi phân tích tử số và mẫu số thành tích hai số theo cùng một quy luật để lộ cách rút gọn.\n\n**Bước 1.** Viết từng ngoặc thành một phân số và nhận ra tử số là tích của hai số giống nhau.\n\n**Bước 2.** Viết tử số thành tích của hai thừa số giống nhau, mẫu số thành tích của số đứng trước và số đứng sau số ấy.\n\n**Bước 3.** Viết tích các phân số thành hai phân số có tử số và mẫu số là tích các số liên tiếp.\n\n**Bước 4.** Rút gọn các thừa số giống nhau ở tử số và mẫu số của mỗi phân số rồi nhân kết quả.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\left(1+\\dfrac{1}{3}\\right)\\times\\left(1+\\dfrac{1}{8}\\right)\\times\\left(1+\\dfrac{1}{15}\\right)\\times\\ldots\\times\\left(1+\\dfrac{1}{9999}\\right)$\n\n$=\\dfrac{4}{3}\\times\\dfrac{9}{8}\\times\\dfrac{16}{15}\\times\\ldots\\times\\dfrac{10000}{9999}$\n\n$=\\dfrac{2\\times 2}{1\\times 3}\\times\\dfrac{3\\times 3}{2\\times 4}\\times\\dfrac{4\\times 4}{3\\times 5}\\times\\ldots\\times\\dfrac{100\\times 100}{99\\times 101}$\n\n$=\\dfrac{2\\times 3\\times 4\\times\\ldots\\times 100}{1\\times 2\\times 3\\times\\ldots\\times 99}\\times\\dfrac{2\\times 3\\times 4\\times\\ldots\\times 100}{3\\times 4\\times 5\\times\\ldots\\times 101}$\n\nRút gọn các thừa số giống nhau ở tử số và mẫu số của mỗi phân số:\n\n$=\\dfrac{100}{1}\\times\\dfrac{2}{101}$\n\n$=\\dfrac{200}{101}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B19d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{202}{27}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi mỗi ngoặc thành một phân số rồi phân tích tử số và mẫu số thành tích của hai số cách nhau một khoảng cố định để lộ quy luật rút gọn.\n\n**Bước 1.** Viết từng ngoặc thành một phân số và quan sát tử số, mẫu số của vài phân số đầu.\n\n**Bước 2.** Phân tích tử số và mẫu số của từng phân số thành tích hai thừa số theo cùng một quy luật.\n\n**Bước 3.** Viết tích các phân số thành hai phân số có tử số và mẫu số là tích các số liên tiếp.\n\n**Bước 4.** Rút gọn các thừa số giống nhau ở tử số và mẫu số của mỗi phân số rồi nhân kết quả.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức: $\\left(1+\\dfrac{7}{9}\\right)\\times\\left(1+\\dfrac{7}{20}\\right)\\times\\left(1+\\dfrac{7}{33}\\right)\\times\\ldots\\times\\left(1+\\dfrac{7}{10800}\\right)$\n\n$=\\dfrac{16}{9}\\times\\dfrac{27}{20}\\times\\dfrac{40}{33}\\times\\ldots\\times\\dfrac{10807}{10800}$\n\n$=\\dfrac{2\\times 8}{1\\times 9}\\times\\dfrac{3\\times 9}{2\\times 10}\\times\\dfrac{4\\times 10}{3\\times 11}\\times\\ldots\\times\\dfrac{101\\times 107}{100\\times 108}$\n\n$=\\dfrac{2\\times 3\\times 4\\times\\ldots\\times 100\\times 101}{1\\times 2\\times 3\\times\\ldots\\times 100}\\times\\dfrac{8\\times 9\\times 10\\times\\ldots\\times 107}{9\\times 10\\times 11\\times\\ldots\\times 108}$\n\nRút gọn các thừa số giống nhau ở tử số và mẫu số của mỗi phân số:\n\n$=\\dfrac{101}{1}\\times\\dfrac{8}{108}$\n\n$=\\dfrac{101}{1}\\times\\dfrac{2}{27}$\n\n$=\\dfrac{202}{27}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B20a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{97656}{78125}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi mẫu số gấp $5$ lần mẫu số đứng trước, nên nhân cả tổng với $5$ rồi trừ đi tổng ban đầu thì hầu hết các số hạng triệt tiêu.\n\n**Bước 1.** Nhận ra mỗi số hạng bằng số hạng đứng trước chia cho $5$, tức mẫu số tăng gấp $5$ lần.\n\n**Bước 2.** Nhân cả tổng với $5$ để các số hạng của tích khớp thẳng hàng với tổng ban đầu.\n\n**Bước 3.** Lấy tích vừa tìm trừ đi tổng ban đầu, các số hạng giống nhau bị trừ hết, chỉ còn số hạng đầu và số hạng cuối.\n\n**Bước 4.** Tìm tổng bằng cách chia hiệu vừa tìm cho số lần chênh lệch.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức sau: $A=1+\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\dfrac{1}{625}+\\ldots+\\dfrac{1}{15625}+\\dfrac{1}{78125}$\n\nTa có: $A\\times 5=5+1+\\dfrac{1}{5}+\\dfrac{1}{25}+\\dfrac{1}{125}+\\ldots+\\dfrac{1}{15625}$\n\nLấy $A\\times 5$ trừ $A$, các số hạng giống nhau bị trừ hết nên:\n\n$A\\times 4=5-\\dfrac{1}{78125}$\n\n$A\\times 4=\\dfrac{390625}{78125}-\\dfrac{1}{78125}$\n\n$A\\times 4=\\dfrac{390624}{78125}$\n\n$A=\\dfrac{390624}{78125}:4$\n\n$A=\\dfrac{97656}{78125}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B20b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{425}{128}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi mẫu số gấp $2$ lần mẫu số đứng trước, nên nhân cả tổng với $2$ rồi trừ đi tổng ban đầu thì hầu hết các số hạng triệt tiêu.\n\n**Bước 1.** Nhận ra mỗi số hạng bằng một nửa số hạng đứng trước, tức mẫu số tăng gấp $2$ lần.\n\n**Bước 2.** Nhân cả tổng với $2$ để các số hạng của tích khớp thẳng hàng với tổng ban đầu.\n\n**Bước 3.** Lấy tích vừa tìm trừ đi tổng ban đầu, chỉ còn lại số hạng đầu của tích và số hạng cuối của tổng.\n\n**Bước 4.** Quy đồng mẫu số để tính hiệu rồi rút gọn kết quả.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức sau: $B=\\dfrac{5}{3}+\\dfrac{5}{6}+\\dfrac{5}{12}+\\dfrac{5}{24}+\\ldots+\\dfrac{5}{192}+\\dfrac{5}{384}$\n\nTa có: $B\\times 2=\\dfrac{10}{3}+\\dfrac{5}{3}+\\dfrac{5}{6}+\\dfrac{5}{12}+\\ldots+\\dfrac{5}{96}+\\dfrac{5}{192}$\n\nLấy $B\\times 2$ trừ $B$, các số hạng giống nhau bị trừ hết nên:\n\n$B=\\dfrac{10}{3}-\\dfrac{5}{384}$\n\n$B=\\dfrac{1280}{384}-\\dfrac{5}{384}$\n\n$B=\\dfrac{1275}{384}=\\dfrac{425}{128}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B20c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{100}{51}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai thừa số ở mẫu mỗi số hạng hơn kém nhau $2$ đơn vị, nên đưa tử số $2$ ra ngoài rồi tách mỗi phân số thành hiệu hai phân số để các số hạng triệt tiêu.\n\n**Bước 1.** Nhận xét hiệu hai thừa số ở mẫu số của mỗi số hạng và so với tử số.\n\n**Bước 2.** Đưa thừa số chung ra ngoài ngoặc để tử số của mỗi phân số bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Tách mỗi phân số thành hiệu của hai phân số có tử số $1$, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Tính phần còn lại trong ngoặc rồi nhân với thừa số đã đưa ra ngoài.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức sau: $C=\\dfrac{4}{1\\times 3}+\\dfrac{4}{3\\times 5}+\\dfrac{4}{5\\times 7}+\\ldots+\\dfrac{4}{49\\times 51}$\n\n$C=2\\times\\left(\\dfrac{2}{1\\times 3}+\\dfrac{2}{3\\times 5}+\\dfrac{2}{5\\times 7}+\\ldots+\\dfrac{2}{49\\times 51}\\right)$\n\n$C=2\\times\\left(\\dfrac{1}{1}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{7}+\\ldots+\\dfrac{1}{49}-\\dfrac{1}{51}\\right)$\n\n$C=2\\times\\left(\\dfrac{1}{1}-\\dfrac{1}{51}\\right)$\n\n$C=2\\times\\dfrac{50}{51}=\\dfrac{100}{51}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B20d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{33}{202}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai thừa số ở mẫu mỗi số hạng hơn kém nhau $3$ đơn vị, nên nhân cả tổng với $3$ để tử số bằng hiệu hai thừa số ở mẫu rồi tách thành hiệu hai phân số.\n\n**Bước 1.** Tính hiệu hai thừa số ở mẫu số của mỗi số hạng và so với tử số.\n\n**Bước 2.** Nhân cả tổng với số phù hợp để tử số của mỗi phân số bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Tách mỗi phân số thành hiệu của hai phân số có tử số $1$, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Tìm tổng ban đầu bằng cách chia kết quả vừa tính cho số đã nhân.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức sau: $D=\\dfrac{1}{2\\times 5}+\\dfrac{1}{5\\times 8}+\\dfrac{1}{8\\times 11}+\\dfrac{1}{11\\times 14}+\\ldots+\\dfrac{1}{98\\times 101}$\n\n$D\\times 3=\\dfrac{3}{2\\times 5}+\\dfrac{3}{5\\times 8}+\\dfrac{3}{8\\times 11}+\\dfrac{3}{11\\times 14}+\\ldots+\\dfrac{3}{98\\times 101}$\n\n$D\\times 3=\\dfrac{1}{2}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{8}+\\dfrac{1}{8}-\\dfrac{1}{11}+\\dfrac{1}{11}-\\dfrac{1}{14}+\\ldots+\\dfrac{1}{98}-\\dfrac{1}{101}$\n\n$D\\times 3=\\dfrac{1}{2}-\\dfrac{1}{101}$\n\n$D\\times 3=\\dfrac{99}{202}$\n\n$D=\\dfrac{99}{202}:3=\\dfrac{33}{202}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B20e",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{7}{52}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai thừa số ở mẫu mỗi số hạng hơn kém nhau $5$ đơn vị, nên nhân cả tổng với một phân số để tử số bằng hiệu hai thừa số ở mẫu rồi tách thành hiệu hai phân số.\n\n**Bước 1.** Tính hiệu hai thừa số ở mẫu số của mỗi số hạng và so với tử số $3$.\n\n**Bước 2.** Tìm số cần nhân vào cả tổng để tử số của mỗi phân số bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Tách mỗi phân số thành hiệu của hai phân số có tử số $1$, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Tìm tổng ban đầu bằng cách chia kết quả vừa tính cho số đã nhân.\n\n**Phần 2. Trình bày**\n\nTính giá trị biểu thức sau: $E=\\dfrac{3}{4\\times 9}+\\dfrac{3}{9\\times 14}+\\dfrac{3}{14\\times 19}+\\ldots+\\dfrac{3}{34\\times 39}$\n\n$E\\times\\dfrac{5}{3}=\\dfrac{5}{4\\times 9}+\\dfrac{5}{9\\times 14}+\\dfrac{5}{14\\times 19}+\\ldots+\\dfrac{5}{34\\times 39}$\n\n$E\\times\\dfrac{5}{3}=\\dfrac{1}{4}-\\dfrac{1}{9}+\\dfrac{1}{9}-\\dfrac{1}{14}+\\dfrac{1}{14}-\\dfrac{1}{19}+\\ldots+\\dfrac{1}{34}-\\dfrac{1}{39}$\n\n$E\\times\\dfrac{5}{3}=\\dfrac{1}{4}-\\dfrac{1}{39}$\n\n$E\\times\\dfrac{5}{3}=\\dfrac{35}{156}$\n\n$E=\\dfrac{35}{156}:\\dfrac{5}{3}=\\dfrac{7}{52}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B21a",
+  "gop_y": false,
+  "dap_an": "$y=\\dfrac{1}{64}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ các ngoặc rồi gom các số $y$ lại với nhau và gom các phân số lại với nhau, khi đó $y$ nhân với số lần xuất hiện của nó.\n\n**Bước 1.** Bỏ ngoặc trong vế trái vì chỉ có phép cộng nên giá trị không đổi.\n\n**Bước 2.** Gom các số $y$ lại thành một nhóm và gom các phân số lại thành một nhóm.\n\n**Bước 3.** Đếm số lần $y$ xuất hiện rồi tính tổng các phân số bằng cách quy đồng mẫu số.\n\n**Bước 4.** Dùng quy tắc tìm số hạng chưa biết rồi thừa số chưa biết để tìm $y$.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\left(y+\\dfrac{1}{16}\\right)=1$\n\n$y+\\dfrac{1}{2}+y+\\dfrac{1}{4}+y+\\dfrac{1}{8}+y+\\dfrac{1}{16}=1$\n\n$(y+y+y+y)+\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}\\right)=1$\n\n$y\\times 4+\\left(\\dfrac{8}{16}+\\dfrac{4}{16}+\\dfrac{2}{16}+\\dfrac{1}{16}\\right)=1$\n\n$y\\times 4+\\dfrac{15}{16}=1$\n\n$y\\times 4=1-\\dfrac{15}{16}$\n\n$y\\times 4=\\dfrac{1}{16}$\n\n$y=\\dfrac{1}{16}:4$\n\n$y=\\dfrac{1}{64}$\n\nVậy $y=\\dfrac{1}{64}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B21b",
+  "gop_y": false,
+  "dap_an": "$y=\\dfrac{1}{10240}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gom các số $y$ lại, đếm xem có bao nhiêu số $y$, rồi tính tổng các phân số có mẫu số gấp đôi bằng cách nhân với $2$ và trừ đi tổng ban đầu.\n\n**Bước 1.** Bỏ ngoặc và gom các số $y$ lại một nhóm, các phân số lại một nhóm.\n\n**Bước 2.** Đếm số lần $y$ xuất hiện bằng cách đếm số ngoặc, mỗi mẫu số gấp đôi mẫu số trước.\n\n**Bước 3.** Đặt tên cho tổng các phân số rồi nhân với $2$ và trừ tổng ban đầu để tính nhanh tổng đó.\n\n**Bước 4.** Dùng quy tắc tìm số hạng chưa biết rồi thừa số chưa biết để tìm $y$.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $\\left(y+\\dfrac{1}{2}\\right)+\\left(y+\\dfrac{1}{4}\\right)+\\left(y+\\dfrac{1}{8}\\right)+\\ldots+\\left(y+\\dfrac{1}{1024}\\right)=1$\n\n$(y+y+\\ldots+y)+\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{512}+\\dfrac{1}{1024}\\right)=1$\n\nCó $10$ số $y$ nên:\n\n$y\\times 10+\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{512}+\\dfrac{1}{1024}\\right)=1$\n\nĐặt $M=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{512}+\\dfrac{1}{1024}$, ta có:\n\n$M\\times 2=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\ldots+\\dfrac{1}{256}+\\dfrac{1}{512}$\n\nLấy $M\\times 2$ trừ $M$, các số hạng giống nhau bị trừ hết nên:\n\n$M=1-\\dfrac{1}{1024}=\\dfrac{1023}{1024}$\n\nDo đó: $y\\times 10+\\dfrac{1023}{1024}=1$\n\n$y\\times 10=1-\\dfrac{1023}{1024}$\n\n$y\\times 10=\\dfrac{1}{1024}$\n\n$y=\\dfrac{1}{1024}:10$\n\n$y=\\dfrac{1}{10240}$\n\nVậy $y=\\dfrac{1}{10240}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B22a",
+  "gop_y": false,
+  "dap_an": "$A<1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính được tổng chính xác bằng cách nhân với $2$ rồi trừ đi tổng ban đầu, sau đó so sánh kết quả với $1$.\n\n**Bước 1.** Nhận ra mỗi mẫu số gấp đôi mẫu số đứng trước để chọn nhân tổng với $2$.\n\n**Bước 2.** Nhân cả tổng với $2$ rồi viết các số hạng của tích thẳng hàng với tổng ban đầu.\n\n**Bước 3.** Lấy tích trừ tổng ban đầu, các số hạng giống nhau bị trừ hết nên chỉ còn lại hai số hạng.\n\n**Bước 4.** So sánh kết quả với $1$ bằng cách xem phần bị trừ đi là một phân số dương.\n\n**Phần 2. Trình bày**\n\nChứng tỏ rằng: $A=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{1024}+\\dfrac{1}{2048}<1$\n\nTa có: $A\\times 2=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\ldots+\\dfrac{1}{512}+\\dfrac{1}{1024}$\n\nLấy $A\\times 2$ trừ $A$, các số hạng giống nhau bị trừ hết nên:\n\n$A=1-\\dfrac{1}{2048}$\n\nVì $1-\\dfrac{1}{2048}<1$ nên $A<1$.\n\nVậy $A<1$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B22b",
+  "gop_y": false,
+  "dap_an": "$B<\\dfrac{1}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi mẫu số gấp $3$ lần mẫu số đứng trước, nên nhân tổng với $3$ rồi trừ đi tổng ban đầu để tính được hai lần tổng, sau đó so sánh với $1$.\n\n**Bước 1.** Nhận ra mỗi mẫu số gấp $3$ lần mẫu số đứng trước để chọn nhân tổng với $3$.\n\n**Bước 2.** Nhân cả tổng với $3$ rồi viết các số hạng của tích thẳng hàng với tổng ban đầu.\n\n**Bước 3.** Lấy tích trừ tổng ban đầu để được hai lần tổng, chỉ còn hai số hạng sau khi triệt tiêu.\n\n**Bước 4.** So sánh hai lần tổng với $1$ rồi suy ra so sánh tổng với một nửa.\n\n**Phần 2. Trình bày**\n\nChứng tỏ rằng: $B=\\dfrac{1}{3}+\\dfrac{1}{9}+\\dfrac{1}{27}+\\ldots+\\dfrac{1}{2187}+\\dfrac{1}{6561}<\\dfrac{1}{2}$\n\nTa có: $B\\times 3=1+\\dfrac{1}{3}+\\dfrac{1}{9}+\\ldots+\\dfrac{1}{729}+\\dfrac{1}{2187}$\n\nLấy $B\\times 3$ trừ $B$, các số hạng giống nhau bị trừ hết nên:\n\n$B\\times 2=1-\\dfrac{1}{6561}<1$\n\nVì $B\\times 2<1$ nên $B<\\dfrac{1}{2}$.\n\nVậy $B<\\dfrac{1}{2}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23a",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{49}{100}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân cả tử số và mẫu số mỗi số hạng với $2$ để mẫu số trở thành tích hai số chẵn liên tiếp, rồi tách thành hiệu hai phân số để triệt tiêu.\n\n**Bước 1.** Nhân cả tử số và mẫu số của mỗi phân số với $2$ để nhìn ra quy luật của các mẫu số.\n\n**Bước 2.** Viết mỗi mẫu số thành tích của hai số chẵn hơn kém nhau $2$ đơn vị.\n\n**Bước 3.** Tách mỗi phân số thành hiệu của hai phân số có tử số $1$, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Tính phần còn lại gồm số hạng đầu và số hạng cuối.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $A=\\dfrac{1}{4}+\\dfrac{1}{12}+\\dfrac{1}{24}+\\dfrac{1}{40}+\\ldots+\\dfrac{1}{4900}$\n\n$A=\\dfrac{2}{8}+\\dfrac{2}{24}+\\dfrac{2}{48}+\\dfrac{2}{80}+\\ldots+\\dfrac{2}{9800}$\n\n$A=\\dfrac{2}{2\\times 4}+\\dfrac{2}{4\\times 6}+\\dfrac{2}{6\\times 8}+\\dfrac{2}{8\\times 10}+\\ldots+\\dfrac{2}{98\\times 100}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{6}+\\dfrac{1}{6}-\\dfrac{1}{8}+\\dfrac{1}{8}-\\dfrac{1}{10}+\\ldots+\\dfrac{1}{98}-\\dfrac{1}{100}$\n\n$A=\\dfrac{1}{2}-\\dfrac{1}{100}=\\dfrac{49}{100}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23b",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{33}{50}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân tổng với một phân số để mỗi mẫu số trở thành tích hai số cách nhau $3$ đơn vị, rồi nhân thêm để tử số bằng hiệu hai thừa số và tách thành hiệu hai phân số.\n\n**Bước 1.** Thử nhân tổng với một phân số để các số hạng có mẫu số dễ phân tích thành tích hai thừa số.\n\n**Bước 2.** Viết mỗi mẫu số mới thành tích hai thừa số hơn kém nhau một số cố định.\n\n**Bước 3.** Nhân thêm để tử số bằng hiệu hai thừa số ở mẫu rồi tách mỗi phân số thành hiệu hai phân số.\n\n**Bước 4.** Các số hạng giữa dãy triệt tiêu, tính phần còn lại rồi tìm tổng ban đầu bằng phép chia.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $B=\\dfrac{1}{2}+\\dfrac{1}{14}+\\dfrac{1}{35}+\\dfrac{1}{65}+\\ldots+\\dfrac{1}{4850}$\n\n$B\\times\\dfrac{1}{2}=\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\dfrac{1}{130}+\\ldots+\\dfrac{1}{9700}$\n\n$B\\times\\dfrac{1}{2}=\\dfrac{1}{1\\times 4}+\\dfrac{1}{4\\times 7}+\\dfrac{1}{7\\times 10}+\\dfrac{1}{10\\times 13}+\\ldots+\\dfrac{1}{97\\times 100}$\n\n$B\\times\\dfrac{1}{2}\\times 3=\\dfrac{3}{1\\times 4}+\\dfrac{3}{4\\times 7}+\\dfrac{3}{7\\times 10}+\\dfrac{3}{10\\times 13}+\\ldots+\\dfrac{3}{97\\times 100}$\n\n$B\\times\\dfrac{3}{2}=\\dfrac{1}{1}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{10}+\\ldots+\\dfrac{1}{97}-\\dfrac{1}{100}$\n\n$B\\times\\dfrac{3}{2}=\\dfrac{1}{1}-\\dfrac{1}{100}=\\dfrac{99}{100}$\n\n$B=\\dfrac{99}{100}:\\dfrac{3}{2}=\\dfrac{33}{50}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23c",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{9}{25}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhân tổng với $2$ để mẫu số thành tích hai số hơn kém nhau $4$ đơn vị, rồi nhân thêm để tử số bằng hiệu hai thừa số và tách thành hiệu hai phân số.\n\n**Bước 1.** Nhân tổng với $2$ để các mẫu số trở nên dễ phân tích thành tích.\n\n**Bước 2.** Viết mỗi mẫu số thành tích hai thừa số, tìm hiệu của chúng và so với tử số.\n\n**Bước 3.** Nhân thêm một phân số để tử số bằng hiệu hai thừa số rồi tách mỗi phân số thành hiệu hai phân số.\n\n**Bước 4.** Các số hạng giữa dãy triệt tiêu, tính phần còn lại rồi tìm tổng ban đầu bằng phép chia.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $C=\\dfrac{3}{10}+\\dfrac{3}{90}+\\dfrac{3}{234}+\\ldots+\\dfrac{3}{1050}$\n\n$C\\times 2=\\dfrac{3}{5}+\\dfrac{3}{45}+\\dfrac{3}{117}+\\ldots+\\dfrac{3}{525}$\n\n$C\\times 2=\\dfrac{3}{1\\times 5}+\\dfrac{3}{5\\times 9}+\\dfrac{3}{9\\times 13}+\\ldots+\\dfrac{3}{21\\times 25}$\n\n$C\\times 2\\times\\dfrac{4}{3}=\\dfrac{4}{1\\times 5}+\\dfrac{4}{5\\times 9}+\\dfrac{4}{9\\times 13}+\\ldots+\\dfrac{4}{21\\times 25}$\n\n$C\\times\\dfrac{8}{3}=\\dfrac{1}{1}-\\dfrac{1}{5}+\\dfrac{1}{5}-\\dfrac{1}{9}+\\dfrac{1}{9}-\\dfrac{1}{13}+\\ldots+\\dfrac{1}{21}-\\dfrac{1}{25}$\n\n$C\\times\\dfrac{8}{3}=\\dfrac{1}{1}-\\dfrac{1}{25}$\n\n$C\\times\\dfrac{8}{3}=\\dfrac{24}{25}$\n\n$C=\\dfrac{24}{25}:\\dfrac{8}{3}=\\dfrac{9}{25}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23d",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{9}{46}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết mỗi mẫu số thành tích hai số hơn kém nhau $5$ đơn vị, rồi nhân tổng với $5$ để tử số bằng hiệu hai thừa số và tách thành hiệu hai phân số.\n\n**Bước 1.** Phân tích các mẫu số $6$; $66$; $176$; … thành tích của hai thừa số theo một quy luật.\n\n**Bước 2.** Tìm hiệu của hai thừa số ở mỗi mẫu số rồi so với tử số $1$.\n\n**Bước 3.** Nhân tổng với hiệu đó để tử số bằng hiệu hai thừa số rồi tách mỗi phân số thành hiệu hai phân số.\n\n**Bước 4.** Các số hạng giữa dãy triệt tiêu, tính phần còn lại rồi tìm tổng ban đầu bằng phép chia.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $D=\\dfrac{1}{6}+\\dfrac{1}{66}+\\dfrac{1}{176}+\\dfrac{1}{336}+\\ldots+\\dfrac{1}{1886}$\n\n$D=\\dfrac{1}{1\\times 6}+\\dfrac{1}{6\\times 11}+\\dfrac{1}{11\\times 16}+\\dfrac{1}{16\\times 21}+\\ldots+\\dfrac{1}{41\\times 46}$\n\n$D\\times 5=\\dfrac{5}{1\\times 6}+\\dfrac{5}{6\\times 11}+\\dfrac{5}{11\\times 16}+\\dfrac{5}{16\\times 21}+\\ldots+\\dfrac{5}{41\\times 46}$\n\n$D\\times 5=\\dfrac{1}{1}-\\dfrac{1}{6}+\\dfrac{1}{6}-\\dfrac{1}{11}+\\dfrac{1}{11}-\\dfrac{1}{16}+\\dfrac{1}{16}-\\dfrac{1}{21}+\\ldots+\\dfrac{1}{41}-\\dfrac{1}{46}$\n\n$D\\times 5=\\dfrac{1}{1}-\\dfrac{1}{46}$\n\n$D\\times 5=\\dfrac{45}{46}$\n\n$D=\\dfrac{45}{46}:5=\\dfrac{9}{46}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23e",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{11263}{1024}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi phân số có tử số hơn mẫu số $1$ đơn vị, nên tách mỗi phân số thành $1$ cộng với một phân số có tử số $1$, rồi tính riêng tổng các số $1$ và tổng các phân số.\n\n**Bước 1.** Nhận xét tử số của mỗi phân số hơn mẫu số $1$ đơn vị để tách thành $1$ cộng phân số.\n\n**Bước 2.** Gom các số $1$ lại và gom các phân số có tử số $1$ lại.\n\n**Bước 3.** Đếm số lượng các số $1$ bằng cách đếm số phân số trong dãy.\n\n**Bước 4.** Tính tổng các phân số mẫu số gấp đôi bằng cách nhân với $2$ rồi trừ đi tổng ban đầu, sau đó cộng hai nhóm lại.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $E=\\dfrac{3}{2}+\\dfrac{5}{4}+\\dfrac{9}{8}+\\dfrac{17}{16}+\\ldots+\\dfrac{1025}{1024}$\n\n$E=\\left(1+\\dfrac{1}{2}\\right)+\\left(1+\\dfrac{1}{4}\\right)+\\left(1+\\dfrac{1}{8}\\right)+\\left(1+\\dfrac{1}{16}\\right)+\\ldots+\\left(1+\\dfrac{1}{1024}\\right)$\n\n$E=(1+1+\\ldots+1)+\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+\\ldots+\\dfrac{1}{1024}\\right)$\n\nCó $10$ số $1$ nên:\n\n$E=10+\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}+\\ldots+\\dfrac{1}{1024}\\right)$\n\nĐặt $M=\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\ldots+\\dfrac{1}{512}+\\dfrac{1}{1024}$, ta có:\n\n$M\\times 2=1+\\dfrac{1}{2}+\\dfrac{1}{4}+\\ldots+\\dfrac{1}{256}+\\dfrac{1}{512}$\n\nLấy $M\\times 2$ trừ $M$, các số hạng giống nhau bị trừ hết nên:\n\n$M=1-\\dfrac{1}{1024}=\\dfrac{1023}{1024}$\n\nDo đó: $E=10+\\dfrac{1023}{1024}=\\dfrac{10240}{1024}+\\dfrac{1023}{1024}=\\dfrac{11263}{1024}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B23f",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{14762}{19683}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách riêng các số hạng mang dấu cộng và các số hạng mang dấu trừ, thấy nhóm đầu gấp $3$ lần nhóm sau, rồi tính nhóm sau bằng cách nhân với $9$ và trừ đi tổng ban đầu.\n\n**Bước 1.** Chia các số hạng thành hai nhóm: nhóm mang dấu cộng và nhóm mang dấu trừ.\n\n**Bước 2.** Nhận ra nhóm mang dấu cộng bằng $3$ lần nhóm mang dấu trừ để biểu thức chỉ còn một nhóm.\n\n**Bước 3.** Đặt tên cho tổng nhóm mang dấu trừ rồi nhân với $9$ để các số hạng thẳng hàng với tổng ban đầu.\n\n**Bước 4.** Lấy tích trừ tổng ban đầu để tìm tổng, rồi quay lại tính giá trị biểu thức.\n\n**Phần 2. Trình bày**\n\nTính giá trị của biểu thức sau: $F=1-\\dfrac{1}{3}+\\dfrac{1}{9}-\\dfrac{1}{27}+\\dfrac{1}{81}-\\dfrac{1}{243}+\\ldots+\\dfrac{1}{6561}-\\dfrac{1}{19683}$\n\n$F=\\left(1+\\dfrac{1}{9}+\\dfrac{1}{81}+\\ldots+\\dfrac{1}{6561}\\right)-\\left(\\dfrac{1}{3}+\\dfrac{1}{27}+\\dfrac{1}{243}+\\ldots+\\dfrac{1}{19683}\\right)$\n\nĐặt $N=\\dfrac{1}{3}+\\dfrac{1}{27}+\\dfrac{1}{243}+\\ldots+\\dfrac{1}{19683}$, ta có:\n\n$F=N\\times 3-N=N\\times 2$\n\n$N\\times 9=3+\\dfrac{1}{3}+\\dfrac{1}{27}+\\ldots+\\dfrac{1}{2187}$\n\nLấy $N\\times 9$ trừ $N$, các số hạng giống nhau bị trừ hết nên:\n\n$N\\times 8=3-\\dfrac{1}{19683}$\n\n$N\\times 8=\\dfrac{59049}{19683}-\\dfrac{1}{19683}=\\dfrac{59048}{19683}$\n\n$N=\\dfrac{59048}{19683}:8=\\dfrac{7381}{19683}$\n\nDo đó: $F=N\\times 2=\\dfrac{7381}{19683}\\times 2=\\dfrac{14762}{19683}$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B24a",
+  "gop_y": false,
+  "dap_an": "$y=\\dfrac{25}{8}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết mỗi mẫu số trong ngoặc thành tích hai số hơn kém nhau $3$ đơn vị, nhân hai vế với $3$ để tử số bằng hiệu hai thừa số rồi tách thành hiệu hai phân số.\n\n**Bước 1.** Phân tích các mẫu số $4$; $28$; $70$; … thành tích của hai thừa số theo một quy luật.\n\n**Bước 2.** Nhân cả hai vế của đẳng thức với $3$ để tử số của mỗi phân số trong ngoặc bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Tách mỗi phân số thành hiệu hai phân số, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Tính giá trị trong ngoặc rồi tìm $y$ bằng quy tắc tìm thừa số chưa biết.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $y\\times\\left(\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\ldots+\\dfrac{1}{550}\\right)=1$\n\nTa có: $y\\times\\left(\\dfrac{1}{1\\times 4}+\\dfrac{1}{4\\times 7}+\\dfrac{1}{7\\times 10}+\\ldots+\\dfrac{1}{22\\times 25}\\right)=1$\n\nNhân cả hai vế với $3$:\n\n$y\\times\\left(\\dfrac{3}{1\\times 4}+\\dfrac{3}{4\\times 7}+\\dfrac{3}{7\\times 10}+\\ldots+\\dfrac{3}{22\\times 25}\\right)=3$\n\n$y\\times\\left(\\dfrac{1}{1}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{10}+\\ldots+\\dfrac{1}{22}-\\dfrac{1}{25}\\right)=3$\n\n$y\\times\\left(\\dfrac{1}{1}-\\dfrac{1}{25}\\right)=3$\n\n$y\\times\\dfrac{24}{25}=3$\n\n$y=3:\\dfrac{24}{25}$\n\n$y=\\dfrac{25}{8}$\n\nVậy $y=\\dfrac{25}{8}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B24b",
+  "gop_y": false,
+  "dap_an": "$y=\\dfrac{44}{45}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính giá trị tổng ở mỗi vế trước: vế trái là tổng các phân số mẫu số gấp đôi, vế phải là dãy hiệu của hai phân số liền nhau.\n\n**Bước 1.** Quy đồng mẫu số để tính tổng các phân số trong ngoặc ở vế trái.\n\n**Bước 2.** Viết mỗi mẫu số ở vế phải thành tích hai số liền nhau.\n\n**Bước 3.** Tách mỗi phân số thành hiệu hai phân số có tử số $1$, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Dùng quy tắc tìm thừa số chưa biết, chia hai phân số bằng cách nhân với phân số đảo ngược rồi rút gọn.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $\\left(\\dfrac{1}{2}+\\dfrac{1}{4}+\\dfrac{1}{8}+\\dfrac{1}{16}\\right)\\times y=\\dfrac{1}{2}+\\dfrac{1}{6}+\\dfrac{1}{12}+\\dfrac{1}{20}+\\ldots+\\dfrac{1}{132}$\n\n$\\left(\\dfrac{8}{16}+\\dfrac{4}{16}+\\dfrac{2}{16}+\\dfrac{1}{16}\\right)\\times y=\\dfrac{1}{1\\times 2}+\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\ldots+\\dfrac{1}{11\\times 12}$\n\n$\\dfrac{15}{16}\\times y=\\dfrac{1}{1}-\\dfrac{1}{2}+\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\ldots+\\dfrac{1}{11}-\\dfrac{1}{12}$\n\n$\\dfrac{15}{16}\\times y=\\dfrac{1}{1}-\\dfrac{1}{12}$\n\n$\\dfrac{15}{16}\\times y=\\dfrac{11}{12}$\n\n$y=\\dfrac{11}{12}:\\dfrac{15}{16}$\n\n$y=\\dfrac{11}{12}\\times\\dfrac{16}{15}=\\dfrac{44}{45}$\n\nVậy $y=\\dfrac{44}{45}$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B25a",
+  "gop_y": false,
+  "dap_an": "$y=100$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết mỗi mẫu số thành tích hai số hơn kém nhau $3$ đơn vị, nhân hai vế với $3$ rồi tách thành hiệu hai phân số để các số hạng triệt tiêu và chỉ còn $y$ trong phân số cuối.\n\n**Bước 1.** Phân tích các mẫu số $4$; $28$; $70$; $130$ thành tích của hai thừa số theo một quy luật.\n\n**Bước 2.** Nhân cả hai vế của đẳng thức với $3$ để tử số của mỗi phân số bằng hiệu hai thừa số ở mẫu.\n\n**Bước 3.** Tách mỗi phân số thành hiệu hai phân số, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Từ đẳng thức chỉ còn $y$ trong một phân số, tìm $y$ bằng quy tắc tìm số trừ rồi số chia.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $\\dfrac{1}{4}+\\dfrac{1}{28}+\\dfrac{1}{70}+\\dfrac{1}{130}+\\ldots+\\dfrac{1}{y\\times(y+3)}=\\dfrac{34}{103}$\n\nTa có: $\\dfrac{1}{1\\times 4}+\\dfrac{1}{4\\times 7}+\\dfrac{1}{7\\times 10}+\\dfrac{1}{10\\times 13}+\\ldots+\\dfrac{1}{y\\times(y+3)}=\\dfrac{34}{103}$\n\nNhân cả hai vế với $3$:\n\n$\\dfrac{3}{1\\times 4}+\\dfrac{3}{4\\times 7}+\\dfrac{3}{7\\times 10}+\\ldots+\\dfrac{3}{y\\times(y+3)}=\\dfrac{102}{103}$\n\n$\\dfrac{1}{1}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{7}+\\dfrac{1}{7}-\\dfrac{1}{10}+\\ldots+\\dfrac{1}{y}-\\dfrac{1}{y+3}=\\dfrac{102}{103}$\n\n$1-\\dfrac{1}{y+3}=\\dfrac{102}{103}$\n\n$\\dfrac{1}{y+3}=1-\\dfrac{102}{103}$\n\n$\\dfrac{1}{y+3}=\\dfrac{1}{103}$\n\n$y+3=103$\n\n$y=103-3$\n\n$y=100$\n\nVậy $y=100$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ10 · B25b",
+  "gop_y": false,
+  "dap_an": "$y=2010$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết mỗi số hạng thành phân số có tử số $2$ và mẫu số là tích hai số liên tiếp, đưa $2$ ra ngoài rồi tách thành hiệu hai phân số để các số hạng triệt tiêu.\n\n**Bước 1.** Nhân cả tử số và mẫu số của mỗi phân số với $2$ để mẫu số trở thành tích hai số liên tiếp.\n\n**Bước 2.** Đưa thừa số $2$ ra ngoài ngoặc rồi viết các mẫu số trong ngoặc thành tích hai số liền nhau.\n\n**Bước 3.** Tách mỗi phân số thành hiệu hai phân số, các số hạng giữa dãy triệt tiêu lẫn nhau.\n\n**Bước 4.** Dùng quy tắc tìm số trừ chưa biết rồi tìm $y+1$ và cuối cùng tìm $y$.\n\n**Phần 2. Trình bày**\n\nTìm $y$ biết: $\\dfrac{1}{3}+\\dfrac{1}{6}+\\dfrac{1}{10}+\\dfrac{1}{15}+\\ldots+\\dfrac{1}{y\\times(y+1):2}=\\dfrac{2009}{2011}$\n\n$\\dfrac{2}{6}+\\dfrac{2}{12}+\\dfrac{2}{20}+\\dfrac{2}{30}+\\ldots+\\dfrac{2}{y\\times(y+1)}=\\dfrac{2009}{2011}$\n\n$2\\times\\left(\\dfrac{1}{2\\times 3}+\\dfrac{1}{3\\times 4}+\\dfrac{1}{4\\times 5}+\\ldots+\\dfrac{1}{y\\times(y+1)}\\right)=\\dfrac{2009}{2011}$\n\n$2\\times\\left(\\dfrac{1}{2}-\\dfrac{1}{3}+\\dfrac{1}{3}-\\dfrac{1}{4}+\\dfrac{1}{4}-\\dfrac{1}{5}+\\ldots+\\dfrac{1}{y}-\\dfrac{1}{y+1}\\right)=\\dfrac{2009}{2011}$\n\n$2\\times\\left(\\dfrac{1}{2}-\\dfrac{1}{y+1}\\right)=\\dfrac{2009}{2011}$\n\n$\\dfrac{1}{2}-\\dfrac{1}{y+1}=\\dfrac{2009}{2011}:2=\\dfrac{2009}{4022}$\n\n$\\dfrac{1}{y+1}=\\dfrac{1}{2}-\\dfrac{2009}{4022}$\n\n$\\dfrac{1}{y+1}=\\dfrac{2011}{4022}-\\dfrac{2009}{4022}=\\dfrac{2}{4022}=\\dfrac{1}{2011}$\n\n$y+1=2011$\n\n$y=2011-1$\n\n$y=2010$\n\nVậy $y=2010$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

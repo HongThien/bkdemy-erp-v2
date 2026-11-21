@@ -1,0 +1,294 @@
+[
+ {
+  "ma": "CĐ2 · B1",
+  "khu": "CĐ2",
+  "so": 1,
+  "y": null,
+  "de_chung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.",
+  "noi_dung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.\na) Viết được tất cả bao nhiêu số có $4$ chữ số khác nhau từ $4$ chữ số đã cho?\nb) Tìm số lớn nhất, số bé nhất có $4$ chữ số khác nhau được viết từ $4$ chữ số đã cho.\nc) Tìm số lẻ lớn nhất, số chẵn bé nhất có $4$ chữ số khác nhau được viết từ $4$ chữ số đã cho.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B1a",
+  "khu": "CĐ2",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.",
+  "noi_dung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.\nViết được tất cả bao nhiêu số có $4$ chữ số khác nhau từ $4$ chữ số đã cho?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B1b",
+  "khu": "CĐ2",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.",
+  "noi_dung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.\nTìm số lớn nhất, số bé nhất có $4$ chữ số khác nhau được viết từ $4$ chữ số đã cho.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B1c",
+  "khu": "CĐ2",
+  "so": 1,
+  "y": "c",
+  "de_chung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.",
+  "noi_dung": "Cho $4$ chữ số $0$; $3$; $8$ và $9$.\nTìm số lẻ lớn nhất, số chẵn bé nhất có $4$ chữ số khác nhau được viết từ $4$ chữ số đã cho.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B2",
+  "khu": "CĐ2",
+  "so": 2,
+  "y": null,
+  "de_chung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.",
+  "noi_dung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.\na) Có thể viết được bao nhiêu số có $4$ chữ số từ $5$ chữ số đã cho?\nb) Có thể viết được bao nhiêu số lẻ có $5$ chữ số mà chữ số hàng trăm là $4$?\nc) Có thể viết được bao nhiêu số chẵn có $5$ chữ số khác nhau?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B2a",
+  "khu": "CĐ2",
+  "so": 2,
+  "y": "a",
+  "de_chung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.",
+  "noi_dung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.\nCó thể viết được bao nhiêu số có $4$ chữ số từ $5$ chữ số đã cho?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B2b",
+  "khu": "CĐ2",
+  "so": 2,
+  "y": "b",
+  "de_chung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.",
+  "noi_dung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.\nCó thể viết được bao nhiêu số lẻ có $5$ chữ số mà chữ số hàng trăm là $4$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B2c",
+  "khu": "CĐ2",
+  "so": 2,
+  "y": "c",
+  "de_chung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.",
+  "noi_dung": "Cho $5$ chữ số $1$; $4$; $6$; $8$; $9$.\nCó thể viết được bao nhiêu số chẵn có $5$ chữ số khác nhau?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B3",
+  "khu": "CĐ2",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho $4$ chữ số $3$; $5$; $6$; $8$. Hãy lập tất cả các số có $4$ chữ số mà ở mỗi số có đủ $4$ chữ số đã cho. Tính tổng các số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B4",
+  "khu": "CĐ2",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Có bao nhiêu số có $4$ chữ số mà tổng các chữ số là $3$?\nb) Có bao nhiêu số có $2$ chữ số mà hiệu các chữ số là $2$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B4a",
+  "khu": "CĐ2",
+  "so": 4,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số có $4$ chữ số mà tổng các chữ số là $3$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B4b",
+  "khu": "CĐ2",
+  "so": 4,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số có $2$ chữ số mà hiệu các chữ số là $2$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B5",
+  "khu": "CĐ2",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số tự nhiên chẵn có $4$ chữ số khác nhau mà mỗi số không có chữ số $6$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B6",
+  "khu": "CĐ2",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho các chữ số $x$; $2$; $5$; $8$. Từ $4$ chữ số đã cho ta lập được tất cả $12$ số có $4$ chữ số mà mỗi số có đủ cả $4$ chữ số ấy. Biết tổng các số lập được bằng $66660$. Tìm $x$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B7",
+  "khu": "CĐ2",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho $4$ chữ số $a$, $b$, $c$, $d$ khác nhau và khác $0$ thoả mãn $a+b+c+d=15$. Tính tổng tất cả các số có $4$ chữ số được lập từ các chữ số đã cho, biết mỗi số có mặt đủ $4$ chữ số đã cho.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B8",
+  "khu": "CĐ2",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Từ $5$ chữ số $0$; $2$; $3$; $7$; $5$ lập được bao nhiêu số có $4$ chữ số khác nhau và đều chia hết cho $5$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B9",
+  "khu": "CĐ2",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Từ $6$ chữ số $0$; $1$; $2$; $4$; $7$; $9$ lập được bao nhiêu số chẵn có $5$ chữ số khác nhau và mỗi số đều chia hết cho $3$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B10",
+  "khu": "CĐ2",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số tự nhiên có $4$ chữ số, chia hết cho $3$ và tận cùng bằng $5$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B11",
+  "khu": "CĐ2",
+  "so": 11,
+  "y": null,
+  "de_chung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:",
+  "noi_dung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:\na) Số tạo bởi $2$ chữ số đầu (theo thứ tự ấy) lớn hơn số tạo bởi $2$ chữ số cuối (theo thứ tự ấy).\nb) Số tạo bởi $2$ chữ số đầu (theo thứ tự ấy) cộng với số tạo bởi $2$ chữ số cuối (theo thứ tự ấy) nhỏ hơn $100$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B11a",
+  "khu": "CĐ2",
+  "so": 11,
+  "y": "a",
+  "de_chung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:",
+  "noi_dung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:\nSố tạo bởi $2$ chữ số đầu (theo thứ tự ấy) lớn hơn số tạo bởi $2$ chữ số cuối (theo thứ tự ấy).",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B11b",
+  "khu": "CĐ2",
+  "so": 11,
+  "y": "b",
+  "de_chung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:",
+  "noi_dung": "Tìm số lượng các số tự nhiên có $4$ chữ số mà:\nSố tạo bởi $2$ chữ số đầu (theo thứ tự ấy) cộng với số tạo bởi $2$ chữ số cuối (theo thứ tự ấy) nhỏ hơn $100$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B12",
+  "khu": "CĐ2",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số tự nhiên có $4$ chữ số, chia hết cho $5$ và có đúng $1$ chữ số $5$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B13",
+  "khu": "CĐ2",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số tự nhiên có $3$ chữ số, biết cộng nó với số viết theo thứ tự ngược lại ta được một số chia hết cho $5$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B14",
+  "khu": "CĐ2",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Từ $5$ chữ số $0$; $3$; $5$; $7$; $8$, lập được tất cả bao nhiêu số có $4$ chữ số khác nhau chia hết cho $15$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B15",
+  "khu": "CĐ2",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có bao nhiêu số có $5$ chữ số chia hết cho $3$ và có ít nhất $1$ chữ số $6$?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B16",
+  "khu": "CĐ2",
+  "so": 16,
+  "y": null,
+  "de_chung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:",
+  "noi_dung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:\na) Các chữ số có thể giống nhau.\nb) Các chữ số đều khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B16a",
+  "khu": "CĐ2",
+  "so": 16,
+  "y": "a",
+  "de_chung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:",
+  "noi_dung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:\nCác chữ số có thể giống nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B16b",
+  "khu": "CĐ2",
+  "so": 16,
+  "y": "b",
+  "de_chung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:",
+  "noi_dung": "Tính tổng các số tự nhiên có $4$ chữ số được lập bởi các chữ số $2$; $3$; $0$; $7$, trong đó:\nCác chữ số đều khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B17",
+  "khu": "CĐ2",
+  "so": 17,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trong hội nghị cháu ngoan Bác Hồ có $30$ bạn tham dự. Vui mừng, phấn khởi nên cứ $2$ bạn bắt tay nhau làm quen $1$ lần. Hỏi có tất cả bao nhiêu cái bắt tay?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B18",
+  "khu": "CĐ2",
+  "so": 18,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trong một buổi lễ có $13$ cặp vợ chồng tham gia. Mỗi người đàn ông bắt tay với tất cả các người khác trừ vợ của mình. Các phụ nữ không ai bắt tay nhau. Hỏi có tất cả bao nhiêu cái bắt tay?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ2 · B19",
+  "khu": "CĐ2",
+  "so": 19,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Bằng cách xuất phát từ chữ cái M, đi lần lượt theo từng chữ cái (không ngắt quãng), hỏi có bao nhiêu cách để tạo thành chữ MATH?",
+  "anh": [
+   "Hình các chữ cái xếp hình thoi, từ trên xuống: M; A A; T T T; H H H H; T T T; A A; M"
+  ]
+ },
+ {
+  "ma": "CĐ2 · B20",
+  "khu": "CĐ2",
+  "so": 20,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một chú kiến đang ở vị trí $A$. Hỏi có bao nhiêu cách để kiến có thể đến được vị trí $B$, biết chú kiến chỉ có thể đi theo $3$ hướng $\\rightarrow$, $\\uparrow$ và $\\nearrow$.",
+  "anh": [
+   "Lưới gồm hai hình chữ nhật nối tiếp, A ở góc dưới trái, B ở góc trên phải, có hai đường chéo (từ A lên điểm giữa cạnh trên; từ điểm giữa cạnh dưới lên B)"
+  ]
+ }
+]

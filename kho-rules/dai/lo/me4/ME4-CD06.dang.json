@@ -1,0 +1,107 @@
+{
+ "CĐ6 · B1": {
+  "dang": "NDB01627",
+  "chac": "vua",
+  "ly_do": "Bình thêm 16 thì bằng An nên hiệu ẩn 16; có thể xếp tổng hiệu cơ bản"
+ },
+ "CĐ6 · B2": {
+  "dang": "NDB01627",
+  "chac": "vua",
+  "ly_do": "cả hai bao cùng bớt số khác nhau rồi bằng nhau; hiệu lúc sau bằng 0"
+ },
+ "CĐ6 · B3": {
+  "dang": "NDB01541",
+  "chac": "vua",
+  "ly_do": "tổng hiệu hai lượt: vịt bằng nửa tổng, rồi ngan hơn ngỗng 40; không có dạng riêng"
+ },
+ "CĐ6 · B4": {
+  "dang": "NDB01627",
+  "chac": "cao",
+  "ly_do": "cả hai tổ cùng thêm số khác nhau, cho hiệu lúc sau, hỏi số lúc đầu"
+ },
+ "CĐ6 · B5": {
+  "dang": "NDB03503",
+  "chac": "cao",
+  "ly_do": "tuổi hai người: hiệu tuổi không đổi, tổng tuổi hiện nay tìm từ tổng cách đây 5 năm"
+ },
+ "CĐ6 · B6a": {
+  "dang": "NDB01627",
+  "chac": "vua",
+  "ly_do": "cho hiệu lúc đầu và tổng lúc sau (cùng thêm số khác nhau); có thể xếp tổng hiệu cơ bản"
+ },
+ "CĐ6 · B6b": {
+  "dang": "NDB01627",
+  "chac": "vua",
+  "ly_do": "hiệu thay đổi khi mỗi bạn viết hết số vở khác nhau; sách dùng hiệu lúc đầu 6"
+ },
+ "CĐ6 · B7": {
+  "dang": "NDB01626",
+  "chac": "cao",
+  "ly_do": "chuyển dầu từ thùng này sang thùng kia, tổng không đổi, sau đó bằng nhau"
+ },
+ "CĐ6 · B8": {
+  "dang": "NDB01626",
+  "chac": "cao",
+  "ly_do": "Bình cho An, tổng không đổi, cho hiệu lúc sau, hỏi lúc đầu"
+ },
+ "CĐ6 · B9": {
+  "dang": "NDB01626",
+  "chac": "cao",
+  "ly_do": "Huy và Hoàng cho nhau, tổng không đổi, cho hiệu lúc sau"
+ },
+ "CĐ6 · B10": {
+  "dang": "NDB01627",
+  "chac": "vua",
+  "ly_do": "vừa lấy ra mỗi kho số khác nhau (tổng đổi) vừa chuyển kho này sang kho kia"
+ },
+ "CĐ6 · B11": {
+  "dang": "NDB01626",
+  "chac": "cao",
+  "ly_do": "chuyển sách qua lại giữa hai ngăn, tổng không đổi, cho hiệu lúc sau"
+ },
+ "CĐ6 · B12a": {
+  "dang": "NDB01624",
+  "chac": "cao",
+  "ly_do": "tổng hai số lẻ liên tiếp, hiệu suy ra từ chữ liên tiếp"
+ },
+ "CĐ6 · B12b": {
+  "dang": "NDB01624",
+  "chac": "cao",
+  "ly_do": "tổng hai số chẵn, hiệu suy ra từ \"giữa có đúng 2 số lẻ\""
+ },
+ "CĐ6 · B12c": {
+  "dang": "NDB01624",
+  "chac": "cao",
+  "ly_do": "tổng hai số chẵn, hiệu suy ra từ \"giữa có đúng 6 số lẻ liên tiếp\""
+ },
+ "CĐ6 · B12d": {
+  "dang": "NDB01624",
+  "chac": "cao",
+  "ly_do": "tổng hai số lẻ, hiệu suy ra từ \"giữa có đúng 10 số chẵn\""
+ },
+ "CĐ6 · B12e": {
+  "dang": "NDB01624",
+  "chac": "vua",
+  "ly_do": "tổng hai số tự nhiên bất kì, hiệu suy ra từ \"giữa có đúng 15 số tự nhiên khác\" (mô tả dạng nói số chẵn lẻ)"
+ },
+ "CĐ6 · B13": {
+  "dang": "NDB01624",
+  "chac": "cao",
+  "ly_do": "tổng hai số tự nhiên, hiệu suy ra từ \"giữa có tất cả 15 số chẵn\""
+ },
+ "CĐ6 · B14": {
+  "dang": "NDB01541",
+  "chac": "vua",
+  "ly_do": "tổng suy từ trung bình cộng, hiệu suy từ viết thêm chữ số 3 bên trái; không có dạng riêng"
+ },
+ "CĐ6 · B15": {
+  "dang": "NDB03471",
+  "chac": "cao",
+  "ly_do": "số hai chữ số có tổng chữ số cho trước, đổi chỗ thì tăng; tổng hiệu hai chữ số"
+ },
+ "CĐ6 · B16": {
+  "dang": "NDB03471",
+  "chac": "cao",
+  "ly_do": "hiệu hai chữ số, tổng số và số đảo cho trước; tổng hiệu hai chữ số"
+ }
+}

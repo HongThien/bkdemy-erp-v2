@@ -1,0 +1,227 @@
+[
+ {
+  "ma": "CĐ6 · B1",
+  "khu": "CĐ6",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "An và Bình có 70 viên bi. Biết nếu Bình có thêm 16 viên bi thì 2 bạn có số bi bằng nhau. Hỏi ban đầu mỗi bạn có bao nhiêu viên bi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B2",
+  "khu": "CĐ6",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai bao gạo cân nặng tổng cộng 147kg. Biết rằng nếu lấy ra ở bao thứ nhất 5kg và bao thứ hai 22kg thì số gạo còn lại ở 2 bao bằng nhau. Hỏi mỗi bao có bao nhiêu ki-lô-gam gạo?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B3",
+  "khu": "CĐ6",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một trại chăn nuôi có 200 con vịt, ngan và ngỗng. Số vịt bằng tổng số ngan và ngỗng, số ngan nhiều hơn số ngỗng là 40 con. Hỏi trang trại đó có bao nhiêu con ngan, vịt, ngỗng?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B4",
+  "khu": "CĐ6",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai tổ trồng được 30 cây. Sau đó tổ 1 trồng thêm 5 cây nữa, tổ 2 trồng thêm 3 cây nữa nên số cây tổ 1 trồng được nhiều hơn số cây tổ 2 trồng được là 8 cây. Hỏi lúc đầu mỗi tổ trồng được bao nhiêu cây?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B5",
+  "khu": "CĐ6",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cách đây 5 năm tổng số tuổi 2 mẹ con là 34 tuổi. Biết rằng mẹ sinh con năm 26 tuổi. Tính tuổi của mỗi người hiện nay.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B6",
+  "khu": "CĐ6",
+  "so": 6,
+  "y": null,
+  "de_chung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:",
+  "noi_dung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:\na) Lúc đầu mỗi bạn có bao nhiêu quyển vở?\nb) Nếu sau kì 1 Huy viết hết số vở ít hơn Hoàng là 5 quyển thì sau kì 1 bạn nào sẽ còn nhiều vở hơn và nhiều hơn bao nhiêu quyển?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B6a",
+  "khu": "CĐ6",
+  "so": 6,
+  "y": "a",
+  "de_chung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:",
+  "noi_dung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:\nLúc đầu mỗi bạn có bao nhiêu quyển vở?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B6b",
+  "khu": "CĐ6",
+  "so": 6,
+  "y": "b",
+  "de_chung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:",
+  "noi_dung": "Học kì 1, Huy có nhiều hơn Hoàng 6 quyển vở. Sau đó Huy mua thêm 5 quyển, Hoàng mua thêm 9 quyển thì tổng số vở 2 bạn lúc này là 34 quyển. Hỏi:\nNếu sau kì 1 Huy viết hết số vở ít hơn Hoàng là 5 quyển thì sau kì 1 bạn nào sẽ còn nhiều vở hơn và nhiều hơn bao nhiêu quyển?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B7",
+  "khu": "CĐ6",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai thùng có tổng cộng 82 lít dầu. Nếu chuyển 7 lít dầu từ thùng thứ nhất sang thùng thứ hai thì 2 thùng có số dầu bằng nhau. Hỏi mỗi thùng có bao nhiêu lít dầu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B8",
+  "khu": "CĐ6",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "An và Bình có 120 viên bi. Nếu Bình cho An 25 viên thì Bình còn hơn An 10 viên bi. Hỏi lúc đầu mỗi bạn có bao nhiêu viên bi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B9",
+  "khu": "CĐ6",
+  "so": 9,
+  "y": null,
+  "de_chung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:",
+  "noi_dung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:\na) Lúc đầu mỗi bạn có bao nhiêu viên bi?\nb) Huy phải cho Hoàng mấy viên để Hoàng có nhiều hơn Huy 1 viên?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B9a",
+  "khu": "CĐ6",
+  "so": 9,
+  "y": "a",
+  "de_chung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:",
+  "noi_dung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:\nLúc đầu mỗi bạn có bao nhiêu viên bi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B9b",
+  "khu": "CĐ6",
+  "so": 9,
+  "y": "b",
+  "de_chung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:",
+  "noi_dung": "Huy và Hoàng có tất cả 25 viên bi. Nếu như Huy cho Hoàng 5 viên, rồi Hoàng cho lại Huy 3 viên thì số bi của Huy nhiều hơn của Hoàng là 1 viên. Hỏi:\nHuy phải cho Hoàng mấy viên để Hoàng có nhiều hơn Huy 1 viên?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B10",
+  "khu": "CĐ6",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai kho chứa tất cả 45 tấn thóc. Sau khi lấy ra kho thứ nhất 5 tấn và kho thứ hai 4 tấn rồi chuyển từ kho thứ nhất sang kho thứ hai 10 tấn thì kho thứ nhất còn lại số thóc ít hơn kho thứ hai là 6 tấn. Hỏi lúc đầu mỗi kho có bao nhiêu tấn thóc?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B11",
+  "khu": "CĐ6",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tổng số sách của 2 ngăn là 2995 quyển sách. Nếu chuyển 125 quyển từ ngăn thứ nhất sang ngăn thứ hai rồi lại chuyển 48 quyển từ ngăn thứ hai sang ngăn thứ nhất thì ngăn thứ nhất vẫn hơn ngăn thứ hai 341 quyển. Hỏi mỗi ngăn có bao nhiêu quyển sách?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tìm 2 số lẻ liên tiếp có tổng bằng 4020.\nb) Tìm 2 số chẵn có tổng bằng 1000, biết giữa chúng có đúng 2 số lẻ.\nc) Tổng 2 số chẵn bằng 480. Tìm 2 số đó, biết giữa chúng có đúng 6 số lẻ liên tiếp.\nd) Tìm 2 số lẻ có tổng bằng 2010, biết giữa chúng có đúng 10 số chẵn.\ne) Tìm 2 số có tổng bằng 2024, biết giữa chúng có đúng 15 số tự nhiên khác.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12a",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tìm 2 số lẻ liên tiếp có tổng bằng 4020.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12b",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tìm 2 số chẵn có tổng bằng 1000, biết giữa chúng có đúng 2 số lẻ.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12c",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": "c",
+  "de_chung": "",
+  "noi_dung": "Tổng 2 số chẵn bằng 480. Tìm 2 số đó, biết giữa chúng có đúng 6 số lẻ liên tiếp.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12d",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": "d",
+  "de_chung": "",
+  "noi_dung": "Tìm 2 số lẻ có tổng bằng 2010, biết giữa chúng có đúng 10 số chẵn.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B12e",
+  "khu": "CĐ6",
+  "so": 12,
+  "y": "e",
+  "de_chung": "",
+  "noi_dung": "Tìm 2 số có tổng bằng 2024, biết giữa chúng có đúng 15 số tự nhiên khác.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B13",
+  "khu": "CĐ6",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm 2 số tự nhiên biết tổng của chúng bằng 2023 và giữa chúng có tất cả 15 số chẵn.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B14",
+  "khu": "CĐ6",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của hai số tự nhiên bằng 2375. Nếu viết thêm chữ số 3 vào bên trái số bé ta được số lớn. Tìm số bé.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B15",
+  "khu": "CĐ6",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một số có hai chữ số mà tổng của hai chữ số bằng 11. Nếu đổi chỗ hai chữ số cho nhau thì số đó tăng lên 27 đơn vị. Tìm số có hai chữ số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ6 · B16",
+  "khu": "CĐ6",
+  "so": 16,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho một số tự nhiên có hai chữ số. Hiệu của hai chữ số là 5. Tổng của số đó với số có được khi đổi vị trí hai chữ số cho nhau của số đã cho là 143. Tìm số đó.",
+  "anh": []
+ }
+]

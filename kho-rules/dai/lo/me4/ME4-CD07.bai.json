@@ -1,0 +1,344 @@
+[
+ {
+  "ma": "CĐ7 · B1",
+  "khu": "CĐ7",
+  "so": 1,
+  "y": null,
+  "de_chung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.",
+  "noi_dung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.\na) $\\overline{426*}$\nb) $\\overline{670*}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B1a",
+  "khu": "CĐ7",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.",
+  "noi_dung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.\n$\\overline{426*}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B1b",
+  "khu": "CĐ7",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.",
+  "noi_dung": "Điền chữ số thích hợp vào dấu $*$ để được các số vừa chia hết cho 9 vừa chia hết cho 5.\n$\\overline{670*}$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B2",
+  "khu": "CĐ7",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Viết thêm vào bên phải và bên trái số 1996 mỗi bên 1 chữ số để được số chia hết cho 2, 5 và 9.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B3",
+  "khu": "CĐ7",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm các chữ số $x$, $y$ để $\\overline{4x5y}$ là một số chia hết cho cả 9 và 4.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B4",
+  "khu": "CĐ7",
+  "so": 4,
+  "y": null,
+  "de_chung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:",
+  "noi_dung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:\na) Chia hết cho 12\nb) Chia hết cho 225",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B4a",
+  "khu": "CĐ7",
+  "so": 4,
+  "y": "a",
+  "de_chung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:",
+  "noi_dung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:\nChia hết cho 12",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B4b",
+  "khu": "CĐ7",
+  "so": 4,
+  "y": "b",
+  "de_chung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:",
+  "noi_dung": "Cho số $\\overline{2x387y}$. Hãy thay $x$, $y$ bởi các chữ số thích hợp để được một số:\nChia hết cho 225",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B5",
+  "khu": "CĐ7",
+  "so": 5,
+  "y": null,
+  "de_chung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:",
+  "noi_dung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:\na) Chia hết cho 6\nb) Chia hết cho 15\nc) Chia hết cho 18\nd) Chia hết cho 45",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B5a",
+  "khu": "CĐ7",
+  "so": 5,
+  "y": "a",
+  "de_chung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:",
+  "noi_dung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:\nChia hết cho 6",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B5b",
+  "khu": "CĐ7",
+  "so": 5,
+  "y": "b",
+  "de_chung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:",
+  "noi_dung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:\nChia hết cho 15",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B5c",
+  "khu": "CĐ7",
+  "so": 5,
+  "y": "c",
+  "de_chung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:",
+  "noi_dung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:\nChia hết cho 18",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B5d",
+  "khu": "CĐ7",
+  "so": 5,
+  "y": "d",
+  "de_chung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:",
+  "noi_dung": "Cho 4 chữ số 0; 4; 5; 8. Hỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho thỏa mãn mỗi số:\nChia hết cho 45",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B6",
+  "khu": "CĐ7",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Biết tích $18\\times 19\\times 20\\times 21\\times a$ có kết quả đúng là số có dạng $\\overline{3*91000}$. Hãy tìm giá trị của chữ số $*$ mà không nhân trực tiếp kết quả.\nb) Biết tích $21\\times 22\\times 23\\times 24\\times 25$ có kết quả là số có dạng $\\overline{63*56**}$. Hãy tìm giá trị của các chữ số $*$ mà không nhân trực tiếp kết quả.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B6a",
+  "khu": "CĐ7",
+  "so": 6,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Biết tích $18\\times 19\\times 20\\times 21\\times a$ có kết quả đúng là số có dạng $\\overline{3*91000}$. Hãy tìm giá trị của chữ số $*$ mà không nhân trực tiếp kết quả.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B6b",
+  "khu": "CĐ7",
+  "so": 6,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Biết tích $21\\times 22\\times 23\\times 24\\times 25$ có kết quả là số có dạng $\\overline{63*56**}$. Hãy tìm giá trị của các chữ số $*$ mà không nhân trực tiếp kết quả.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B7",
+  "khu": "CĐ7",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Cho số tự nhiên $N=\\overline{3x57y}$. Thay $x$, $y$ bởi những chữ số thích hợp để $N$ chia cho 2 dư 1, chia cho 5 dư 3 và chia hết cho 9.\nb) Cho số $A=\\overline{5x1y}$. Thay $x$, $y$ bởi những chữ số thích hợp để $A$ chia hết cho 6 và chia cho 5 dư 4.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B7a",
+  "khu": "CĐ7",
+  "so": 7,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Cho số tự nhiên $N=\\overline{3x57y}$. Thay $x$, $y$ bởi những chữ số thích hợp để $N$ chia cho 2 dư 1, chia cho 5 dư 3 và chia hết cho 9.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B7b",
+  "khu": "CĐ7",
+  "so": 7,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Cho số $A=\\overline{5x1y}$. Thay $x$, $y$ bởi những chữ số thích hợp để $A$ chia hết cho 6 và chia cho 5 dư 4.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B8",
+  "khu": "CĐ7",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số lớn nhất có 4 chữ số mà tổng các chữ số bằng 9, biết số đó chia 2 dư 1, chia 5 dư 2.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B9",
+  "khu": "CĐ7",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số tự nhiên bé nhất khác 3 sao cho khi chia số đó cho 4; 5; 7 đều dư 3.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B10",
+  "khu": "CĐ7",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số tự nhiên bé nhất sao cho khi chia số đó cho 3; 4; 5; 7 có số dư lần lượt là 1; 2; 3; 5.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B11",
+  "khu": "CĐ7",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trong một cuộc họp người ta xếp ghế băng thành 2 dãy. Cứ mỗi ghế băng bố trí 3 người ngồi. Số đại biểu ở 2 dãy bằng nhau. Nếu mỗi dãy bố trí 5 người 1 ghế thì có 1 người ngồi riêng một mình. Hãy tính số đại biểu, biết số đại biểu là số có 2 chữ số không quá 50.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B12",
+  "khu": "CĐ7",
+  "so": 12,
+  "y": null,
+  "de_chung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?",
+  "noi_dung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?\na) $111\\ldots 111$ (có 2010 chữ số 1)\nb) $333\\ldots 333$ (có 2007 chữ số 3)\nc) $444\\ldots 444$ (có 2001 chữ số 4)\nd) $\\overline{bbb\\ldots bbb}$ (có 999 chữ số $b$, $b$ chẵn)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B12a",
+  "khu": "CĐ7",
+  "so": 12,
+  "y": "a",
+  "de_chung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?",
+  "noi_dung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?\n$111\\ldots 111$ (có 2010 chữ số 1)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B12b",
+  "khu": "CĐ7",
+  "so": 12,
+  "y": "b",
+  "de_chung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?",
+  "noi_dung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?\n$333\\ldots 333$ (có 2007 chữ số 3)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B12c",
+  "khu": "CĐ7",
+  "so": 12,
+  "y": "c",
+  "de_chung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?",
+  "noi_dung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?\n$444\\ldots 444$ (có 2001 chữ số 4)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B12d",
+  "khu": "CĐ7",
+  "so": 12,
+  "y": "d",
+  "de_chung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?",
+  "noi_dung": "Không làm phép chia, hãy xác định các số dưới đây chia hết cho những số nào trong các số 2, 3, 5, 9?\n$\\overline{bbb\\ldots bbb}$ (có 999 chữ số $b$, $b$ chẵn)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B13",
+  "khu": "CĐ7",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "An có 3 mảnh giấy. An xé mỗi mảnh làm 5, rồi lại lấy một số mảnh xé làm 5, cứ như vậy mãi. Hỏi cuối cùng An có thể thu được 49 mảnh hay không? Vì sao?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B14",
+  "khu": "CĐ7",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có thể thay các chữ trong phép tính sau bằng các chữ số thích hợp được không? Tại sao? $\\overline{CHAMHOC}-\\overline{HOCCHAM}=102386$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B15",
+  "khu": "CĐ7",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tổng kết học kỳ I học sinh lớp 4A đều được xếp học lực Khá và Giỏi. Trong đó, 21 bạn xếp loại Giỏi và 18 bạn xếp loại Khá. Cô giáo mua 200 quyển vở để làm phần thưởng và được phân đều mỗi loại Khá và Giỏi. Hỏi 200 quyển vở có vừa đủ để thưởng cho các bạn học sinh trong lớp không? Tại sao?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B16",
+  "khu": "CĐ7",
+  "so": 16,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Có 32 đoạn que, mỗi đoạn dài 1cm, 48 đoạn que, mỗi đoạn dài 2cm và 45 đoạn que, mỗi đoạn dài 3cm. Hỏi có thể xếp nối các đoạn que đó thành một hình chữ nhật không? Vì sao?\nb) Có 12 đoạn que, mỗi đoạn que dài 25cm và 20 đoạn que, mỗi đoạn que dài 21cm. Hỏi có thể xếp nối các đoạn que thành hình vuông được không? Vì sao? Nếu xếp được, hãy chỉ ra 1 cách phù hợp.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B16a",
+  "khu": "CĐ7",
+  "so": 16,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Có 32 đoạn que, mỗi đoạn dài 1cm, 48 đoạn que, mỗi đoạn dài 2cm và 45 đoạn que, mỗi đoạn dài 3cm. Hỏi có thể xếp nối các đoạn que đó thành một hình chữ nhật không? Vì sao?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B16b",
+  "khu": "CĐ7",
+  "so": 16,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Có 12 đoạn que, mỗi đoạn que dài 25cm và 20 đoạn que, mỗi đoạn que dài 21cm. Hỏi có thể xếp nối các đoạn que thành hình vuông được không? Vì sao? Nếu xếp được, hãy chỉ ra 1 cách phù hợp.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B17",
+  "khu": "CĐ7",
+  "so": 17,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một cửa hàng có 7 rổ đựng trứng gà hoặc vịt (mỗi rổ chỉ đựng một loại). Số trứng theo thứ tự là: 45; 56; 60; 66; 75; 85 và 92. Sau khi bán 6 rổ, còn lại một rổ trứng gà, người ta thấy trong số trứng đã bán, số trứng vịt gấp 3 trứng gà. Hỏi rổ trứng gà còn lại là rổ có bao nhiêu quả và hãy tìm số trứng mỗi loại lúc đầu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B18",
+  "khu": "CĐ7",
+  "so": 18,
+  "y": null,
+  "de_chung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).",
+  "noi_dung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).\na) Hỏi phải thêm vào $M$ ít nhất bao nhiêu đơn vị để được một số chia hết cho 15?\nb) Hỏi phải bớt $M$ đi ít nhất bao nhiêu đơn vị để được một số chia hết cho 45?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B18a",
+  "khu": "CĐ7",
+  "so": 18,
+  "y": "a",
+  "de_chung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).",
+  "noi_dung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).\nHỏi phải thêm vào $M$ ít nhất bao nhiêu đơn vị để được một số chia hết cho 15?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ7 · B18b",
+  "khu": "CĐ7",
+  "so": 18,
+  "y": "b",
+  "de_chung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).",
+  "noi_dung": "Cho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).\nHỏi phải bớt $M$ đi ít nhất bao nhiêu đơn vị để được một số chia hết cho 45?",
+  "anh": []
+ }
+]

@@ -1,0 +1,263 @@
+[
+ {
+  "ma": "CĐ5 · B1",
+  "khu": "CĐ5",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai số có tổng là $5729$. Nếu bớt số thứ nhất $1908$ đơn vị và thêm vào số thứ hai $626$ đơn vị thì được tổng mới bằng bao nhiêu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B2",
+  "khu": "CĐ5",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Sau khi cùng thêm vào số bị trừ và số trừ $285$ đơn vị thì hiệu $2$ số bằng $20187$. Hỏi hiệu ban đầu của hai số là bao nhiêu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B3",
+  "khu": "CĐ5",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm hiệu của $2$ số, biết rằng sau khi bớt ở số bị trừ $95$ đơn vị và thêm vào số trừ $56$ đơn vị thì được hai số có hiệu là $7082$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B4",
+  "khu": "CĐ5",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi thực hiện phép trừ $2$ số, một bạn đã sơ ý viết sai như sau: Ở số trừ có hai chữ số cuối cùng là $49$ đã viết thành $94$ nên phép trừ sai có kết quả là $1935$. Tìm hiệu ban đầu của phép trừ.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B5",
+  "khu": "CĐ5",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trong $1$ phép trừ, biết tổng của số bị trừ, số trừ và hiệu bằng $2000$. Tìm số bị trừ và số trừ, biết số trừ lớn hơn hiệu là $200$ đơn vị.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B6",
+  "khu": "CĐ5",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi cộng một số tự nhiên với $107$, một bạn học sinh đã chép nhầm $107$ thành $1007$ nên được kết quả là $1996$. Tìm tổng đúng của phép cộng.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B7",
+  "khu": "CĐ5",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hiệu của hai số là $2162$. Nếu viết thêm chữ số $0$ vào tận cùng bên phải số trừ và vẫn giữ nguyên số bị trừ thì được hiệu mới là $56$. Tìm số bị trừ và số trừ.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B8",
+  "khu": "CĐ5",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi trừ một số có $3$ chữ số cho một số có $1$ chữ số, do đãng trí, một bạn học sinh đã đặt số trừ thẳng với chữ số hàng trăm nên đã được kết quả là $486$ mà lẽ ra kết quả đúng phải là $783$. Tìm số bị trừ và số trừ.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B9",
+  "khu": "CĐ5",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm $2$ số có hiệu bằng $1850$, biết nếu viết thêm $1$ chữ số $5$ vào bên phải số trừ và giữ nguyên số bị trừ thì được hiệu mới bằng $360$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B10",
+  "khu": "CĐ5",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tìm hai số biết thương bằng $\\dfrac{1}{4}$ số lớn và gấp $8$ lần số bé.\nb) Tìm hai số biết số bé bằng $\\dfrac{1}{3}$ thương và thương bằng $\\dfrac{1}{9}$ số lớn.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B10a",
+  "khu": "CĐ5",
+  "so": 10,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tìm hai số biết thương bằng $\\dfrac{1}{4}$ số lớn và gấp $8$ lần số bé.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B10b",
+  "khu": "CĐ5",
+  "so": 10,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tìm hai số biết số bé bằng $\\dfrac{1}{3}$ thương và thương bằng $\\dfrac{1}{9}$ số lớn.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B11",
+  "khu": "CĐ5",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tìm số bị chia và số chia bé nhất có thể có thương bằng $125$ và số dư bằng $47$.\nb) Tìm số bị chia của một phép chia biết thương gấp $24$ lần số chia và có số dư lớn nhất là $78$.\nc) Tìm một số biết rằng nếu đem số đó chia cho $97$ thì được thương kém số dư $2$ đơn vị, đồng thời số dư là số lẻ lớn nhất trong các số dư có thể có.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B11a",
+  "khu": "CĐ5",
+  "so": 11,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tìm số bị chia và số chia bé nhất có thể có thương bằng $125$ và số dư bằng $47$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B11b",
+  "khu": "CĐ5",
+  "so": 11,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tìm số bị chia của một phép chia biết thương gấp $24$ lần số chia và có số dư lớn nhất là $78$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B11c",
+  "khu": "CĐ5",
+  "so": 11,
+  "y": "c",
+  "de_chung": "",
+  "noi_dung": "Tìm một số biết rằng nếu đem số đó chia cho $97$ thì được thương kém số dư $2$ đơn vị, đồng thời số dư là số lẻ lớn nhất trong các số dư có thể có.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B12",
+  "khu": "CĐ5",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Một phép chia có số chia bằng $65$, số dư bằng $31$. Hỏi phải bớt đi ở số bị chia ít nhất bao nhiêu đơn vị để được phép chia hết và thương giảm đi $5$ đơn vị?\nb) Một phép chia có số chia bằng $29$, số dư là số dư lớn nhất có thể. Hỏi phải thêm vào số bị chia ít nhất bao nhiêu đơn vị để được phép chia hết và thương tăng thêm $3$ đơn vị?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B12a",
+  "khu": "CĐ5",
+  "so": 12,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Một phép chia có số chia bằng $65$, số dư bằng $31$. Hỏi phải bớt đi ở số bị chia ít nhất bao nhiêu đơn vị để được phép chia hết và thương giảm đi $5$ đơn vị?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B12b",
+  "khu": "CĐ5",
+  "so": 12,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Một phép chia có số chia bằng $29$, số dư là số dư lớn nhất có thể. Hỏi phải thêm vào số bị chia ít nhất bao nhiêu đơn vị để được phép chia hết và thương tăng thêm $3$ đơn vị?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B13",
+  "khu": "CĐ5",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một phép chia có số bị chia bằng $71$, thương bằng $11$, số dư là số dư lớn nhất có thể có. Tìm số chia.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B14",
+  "khu": "CĐ5",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi thực hiện phép chia hai số tự nhiên thì được thương là $6$ và dư $51$. Tổng của số bị chia, số chia, thương và số dư bằng $969$. Hãy tìm số bị chia và số chia trong phép chia này.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B15",
+  "khu": "CĐ5",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Tích của hai số là $1932$. Nếu thêm vào thừa số thứ nhất $8$ đơn vị thì được tích mới là $2604$. Tìm hai số đó.\nb) Tích của hai số là $1692$. Nếu bớt ở thừa số thứ hai $17$ đơn vị thì được tích mới là $893$. Tìm hai số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B15a",
+  "khu": "CĐ5",
+  "so": 15,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Tích của hai số là $1932$. Nếu thêm vào thừa số thứ nhất $8$ đơn vị thì được tích mới là $2604$. Tìm hai số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B15b",
+  "khu": "CĐ5",
+  "so": 15,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Tích của hai số là $1692$. Nếu bớt ở thừa số thứ hai $17$ đơn vị thì được tích mới là $893$. Tìm hai số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B16",
+  "khu": "CĐ5",
+  "so": 16,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi nhân một số tự nhiên với $25$, do lúng túng, bạn Lan đã viết nhầm thêm chữ số $3$ vào bên phải thừa số $25$ nên đã làm cho kết quả tăng $32376$ đơn vị. Em hãy giúp bạn tìm tích đúng của phép nhân đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B17",
+  "khu": "CĐ5",
+  "so": 17,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi nhân $234$ với một số tự nhiên, do chép nhầm, bạn Ngọc đã làm đổi chỗ chữ số hàng nghìn với chữ số hàng chục; chữ số hàng đơn vị với chữ số hàng trăm của thừa số thứ hai nên đã được kết quả là $2250846$. Em hãy giúp bạn Ngọc tìm tích đúng của phép nhân đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B18",
+  "khu": "CĐ5",
+  "so": 18,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Lan thực hiện một phép nhân, do viết nhầm chữ số hàng đơn vị của thừa số thứ hai từ $2$ thành $8$ nên đã được kết quả là $2034$ mà đáng lẽ phải là $1356$. Em hãy tìm các thừa số ban đầu của phép nhân đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B19",
+  "khu": "CĐ5",
+  "so": 19,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi nhân một số tự nhiên với $901$ do sơ ý, một bạn đã đặt các tích thẳng cột như trong phép cộng nên đã được kết quả là $2100$. Em hãy tìm tích đúng giúp bạn.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ5 · B20",
+  "khu": "CĐ5",
+  "so": 20,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khi nhân $345$ với một số có $3$ chữ số có chữ số hàng trăm và hàng đơn vị giống nhau, còn chữ số hàng chục bằng $0$, bạn Linh đã đặt các tích riêng thẳng cột nên kết quả đã bị giảm đi so với tích đúng là $136620$. Em hãy tìm tích đúng.",
+  "anh": []
+ }
+]

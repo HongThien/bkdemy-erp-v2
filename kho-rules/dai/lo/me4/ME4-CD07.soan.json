@@ -1,0 +1,242 @@
+[
+ {
+  "ma_nguon": "CĐ7 · B1a",
+  "gop_y": false,
+  "dap_an": "Không có chữ số nào",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số vừa chia hết cho 5 vừa chia hết cho 9 phải thỏa mãn cả hai dấu hiệu, nên xét chữ số tận cùng trước rồi thử tổng các chữ số.\n\n**Bước 1.** Dùng dấu hiệu chia hết cho 5 để liệt kê các chữ số có thể thay vào dấu $*$.\n\n**Bước 2.** Với mỗi khả năng, viết ra số tương ứng và tính tổng các chữ số của số đó.\n\n**Bước 3.** Kiểm tra tổng ấy có chia hết cho 9 không rồi kết luận có chữ số nào thỏa mãn hay không.\n\n**Chú ý:** Phải thử hết mọi khả năng của chữ số tận cùng trước khi kết luận.\n\n**Phần 2. Trình bày**\n\nĐiền chữ số thích hợp vào dấu $*$ để số $\\overline{426*}$ vừa chia hết cho 9 vừa chia hết cho 5.\n\nĐể $\\overline{426*}$ chia hết cho 5 thì chữ số thay vào $*$ phải bằng 0 hoặc 5.\n\nNếu chữ số thay vào $*$ là 0 ta được số: $4260$.\n\nSố $4260$ có tổng các chữ số là: $4+2+6+0=12$, không chia hết cho 9 nên số đó không chia hết cho 9 (loại).\n\nNếu chữ số thay vào $*$ là 5 ta được số: $4265$.\n\nSố $4265$ có tổng các chữ số là: $4+2+6+5=17$, không chia hết cho 9 nên số đó không chia hết cho 9 (loại).\n\nVậy không có chữ số nào thay vào $*$ thỏa mãn yêu cầu bài toán.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B1b",
+  "gop_y": false,
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số vừa chia hết cho 5 vừa chia hết cho 9 phải thỏa mãn cả hai dấu hiệu, nên xét chữ số tận cùng trước rồi thử tổng các chữ số.\n\n**Bước 1.** Dùng dấu hiệu chia hết cho 5 để liệt kê các chữ số có thể thay vào dấu $*$.\n\n**Bước 2.** Với mỗi khả năng, viết ra số tương ứng và tính tổng các chữ số của số đó.\n\n**Bước 3.** Chọn chữ số làm cho tổng các chữ số chia hết cho 9 rồi kết luận.\n\n**Chú ý:** Chỉ cần một chữ số thỏa mãn cả hai dấu hiệu là đủ, các khả năng còn lại bị loại.\n\n**Phần 2. Trình bày**\n\nĐiền chữ số thích hợp vào dấu $*$ để số $\\overline{670*}$ vừa chia hết cho 9 vừa chia hết cho 5.\n\nĐể $\\overline{670*}$ chia hết cho 5 thì chữ số thay vào $*$ phải bằng 0 hoặc 5.\n\nNếu chữ số thay vào $*$ là 0 ta được số: $6700$.\n\nSố $6700$ có tổng các chữ số là: $6+7+0+0=13$, không chia hết cho 9 nên số đó không chia hết cho 9 (loại).\n\nNếu chữ số thay vào $*$ là 5 ta được số: $6705$.\n\nSố $6705$ có tổng các chữ số là: $6+7+0+5=18$, chia hết cho 9 nên số đó chia hết cho 9.\n\nVậy chữ số cần tìm thay vào $*$ để thỏa mãn yêu cầu bài toán là $5$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B2",
+  "gop_y": false,
+  "dap_an": "$219960$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho cả 2 và 5 thì chữ số tận cùng bằng 0; sau đó dùng dấu hiệu chia hết cho 9 để tìm chữ số viết thêm ở bên trái.\n\n**Bước 1.** Gọi chữ số viết thêm bên trái là $a$, bên phải là $b$ rồi viết số mới dưới dạng chữ số.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho 2 và cho 5 để tìm chữ số tận cùng $b$.\n\n**Bước 3.** Dùng dấu hiệu chia hết cho 9: tổng các chữ số phải chia hết cho 9, từ đó tìm chữ số $a$.\n\n**Chú ý:** Chữ số $a$ đứng ở hàng cao nhất nên phải khác 0.\n\n**Phần 2. Trình bày**\n\nViết thêm vào bên phải và bên trái số $1996$ mỗi bên 1 chữ số để được số chia hết cho 2, 5 và 9.\n\nGọi 2 chữ số viết thêm vào bên trái và bên phải số $1996$ lần lượt là $a$, $b$ ($a$ khác $0$).\n\nKhi đó ta có số: $\\overline{a1996b}$.\n\nSố $\\overline{a1996b}$ chia hết cho cả 2 và 5 nên chữ số tận cùng bằng 0 hay $b=0$.\n\nThay $b=0$ vào ta được số: $\\overline{a19960}$.\n\nSố $\\overline{a19960}$ chia hết cho 9 nên tổng các chữ số của nó $(a+1+9+9+6+0)$ chia hết cho 9.\n\nHay $(a+25)$ chia hết cho 9.\n\nVì $a$ là chữ số nên $a+25$ nằm từ $26$ đến $34$, trong đó chỉ có $27$ chia hết cho 9 nên $a=2$.\n\nVậy số sau khi viết thêm là $219960$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B3",
+  "gop_y": false,
+  "dap_an": "$x=7,y=2$ ; $x=3,y=6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho cả 9 và 4 phải thỏa mãn riêng từng dấu hiệu; dùng dấu hiệu chia hết cho 4 (hai chữ số cuối) để tìm $y$ trước, rồi dùng dấu hiệu chia hết cho 9 để tìm $x$.\n\n**Bước 1.** Dùng dấu hiệu chia hết cho 4: số tạo bởi hai chữ số cuối phải chia hết cho 4 để tìm các giá trị của $y$.\n\n**Bước 2.** Với mỗi giá trị của $y$, tính tổng các chữ số của số rồi cho tổng đó chia hết cho 9 để tìm $x$.\n\n**Bước 3.** Viết các kết quả thành các cặp $x$, $y$ tìm được.\n\n**Chú ý:** Có nhiều hơn một giá trị của $y$ nên phải xét từng trường hợp.\n\n**Phần 2. Trình bày**\n\nTìm các chữ số $x$, $y$ để $\\overline{4x5y}$ là một số chia hết cho cả 9 và 4.\n\nĐể $\\overline{4x5y}$ chia hết cho 4 thì $\\overline{5y}$ phải chia hết cho 4 nên $y=2$ hoặc $y=6$.\n\nNếu $y=2$ ta có số: $\\overline{4x52}$.\n\nVì $\\overline{4x52}$ chia hết cho 9 nên tổng các chữ số của nó $(4+x+5+2)$ chia hết cho 9.\n\nHay $(x+11)$ chia hết cho 9 nên $x=7$.\n\nNếu $y=6$ ta có số: $\\overline{4x56}$.\n\nVì $\\overline{4x56}$ chia hết cho 9 nên tổng các chữ số của nó $(4+x+5+6)$ chia hết cho 9.\n\nHay $(x+15)$ chia hết cho 9 nên $x=3$.\n\nVậy $x=7$, $y=2$ hoặc $x=3$, $y=6$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B4a",
+  "gop_y": false,
+  "dap_an": "$x=2,y=2$ ; $x=5,y=2$ ; $x=8,y=2$ ; $x=1,y=6$ ; $x=4,y=6$ ; $x=7,y=6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 12 thì phải chia hết cho cả 3 và 4; dấu hiệu chia hết cho 4 cho biết $y$, dấu hiệu chia hết cho 3 cho biết $x$.\n\n**Bước 1.** Nhận ra số chia hết cho 12 thì chia hết cho cả 3 và 4 để tách thành hai điều kiện đơn giản.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho 4 với hai chữ số cuối để tìm các giá trị của $y$.\n\n**Bước 3.** Với mỗi giá trị của $y$, cho tổng các chữ số chia hết cho 3 để tìm các giá trị của $x$.\n\n**Bước 4.** Liệt kê đầy đủ các cặp $x$, $y$ vừa tìm được.\n\n**Chú ý:** Mỗi giá trị của $y$ cho nhiều giá trị của $x$, đừng bỏ sót cặp nào.\n\n**Phần 2. Trình bày**\n\nCho số $\\overline{2x387y}$.\n\nThay $x$, $y$ bởi các chữ số thích hợp để được một số chia hết cho 12.\n\nĐể $\\overline{2x387y}$ chia hết cho 12 thì $\\overline{2x387y}$ phải chia hết cho cả 3 và 4.\n\nSố $\\overline{2x387y}$ chia hết cho 4 thì $\\overline{7y}$ phải chia hết cho 4 nên $y=2$ hoặc $y=6$.\n\nNếu $y=2$ ta có số: $\\overline{2x3872}$.\n\nVì $\\overline{2x3872}$ chia hết cho 3 nên tổng các chữ số của nó $(2+x+3+8+7+2)$ chia hết cho 3.\n\nHay $(x+22)$ chia hết cho 3 nên $x=2$; $x=5$ hoặc $x=8$.\n\nNếu $y=6$ ta có số: $\\overline{2x3876}$.\n\nVì $\\overline{2x3876}$ chia hết cho 3 nên tổng các chữ số của nó $(2+x+3+8+7+6)$ chia hết cho 3.\n\nHay $(x+26)$ chia hết cho 3 nên $x=1$; $x=4$ hoặc $x=7$.\n\nVậy các cặp $x$, $y$ thỏa mãn yêu cầu bài toán là: $x=2,y=2$; $x=5,y=2$; $x=8,y=2$; $x=1,y=6$; $x=4,y=6$; $x=7,y=6$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B4b",
+  "gop_y": false,
+  "dap_an": "$x=2,y=5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 225 thì phải chia hết cho cả 25 và 9; hai chữ số cuối cho biết $y$, tổng các chữ số cho biết $x$.\n\n**Bước 1.** Tách 225 thành tích của 25 và 9 để có hai điều kiện chia hết.\n\n**Bước 2.** Dùng dấu hiệu chia hết cho 25 với hai chữ số cuối để tìm $y$.\n\n**Bước 3.** Thay $y$ vào số rồi cho tổng các chữ số chia hết cho 9 để tìm $x$.\n\n**Chú ý:** Số chia hết cho 25 có hai chữ số cuối là 00; 25; 50 hoặc 75.\n\n**Phần 2. Trình bày**\n\nCho số $\\overline{2x387y}$.\n\nThay $x$, $y$ bởi các chữ số thích hợp để được một số chia hết cho 225.\n\nĐể $\\overline{2x387y}$ chia hết cho 225 thì $\\overline{2x387y}$ phải chia hết cho cả 25 và 9 (vì $225=25\\times 9$).\n\nSố $\\overline{2x387y}$ chia hết cho 25 thì $\\overline{7y}$ phải chia hết cho 25 nên $y=5$.\n\nVới $y=5$ ta có số: $\\overline{2x3875}$.\n\nVì $\\overline{2x3875}$ chia hết cho 9 nên tổng các chữ số của nó $(2+x+3+8+7+5)$ chia hết cho 9.\n\nHay $(x+25)$ chia hết cho 9 nên $x=2$.\n\nVậy cặp $x$, $y$ thỏa mãn yêu cầu bài toán là $x=2$, $y=5$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B5a",
+  "gop_y": false,
+  "dap_an": "$7$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 6 phải chia hết cho cả 2 và 3; tìm các bộ ba chữ số có tổng chia hết cho 3 rồi xếp sao cho chữ số tận cùng là số chẵn.\n\n**Bước 1.** Chọn từ bốn chữ số đã cho các bộ ba có tổng các chữ số chia hết cho 3.\n\n**Bước 2.** Với mỗi bộ ba, lập các số có ba chữ số khác nhau, chữ số hàng trăm phải khác 0.\n\n**Bước 3.** Giữ lại các số có chữ số tận cùng chẵn rồi cộng số các số của mọi bộ ba.\n\n**Chú ý:** Chữ số 0 không được đứng ở hàng trăm.\n\n**Phần 2. Trình bày**\n\nCho 4 chữ số 0; 4; 5; 8.\n\nHỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho chia hết cho 6?\n\nMột số chia hết cho 6 thì phải chia hết cho cả 2 và 3.\n\nCó 2 bộ 3 chữ số chia hết cho 3 là: 0; 4; 5 và 0; 4; 8.\n\nTừ các chữ số 0; 4; 5 lập được 3 số chia hết cho cả 2 và 3 là: 450; 504; 540.\n\nTừ các chữ số 0; 4; 8 lập được 4 số chia hết cho cả 2 và 3 là: 408; 480; 804; 840.\n\nVậy từ 4 chữ số đã cho lập được tất cả $7$ số có ba chữ số khác nhau chia hết cho 6.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B5b",
+  "gop_y": false,
+  "dap_an": "$5$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 15 phải chia hết cho cả 3 và 5; tìm các bộ ba chữ số có tổng chia hết cho 3 rồi xếp sao cho chữ số tận cùng là 0 hoặc 5.\n\n**Bước 1.** Chọn từ bốn chữ số đã cho các bộ ba có tổng các chữ số chia hết cho 3.\n\n**Bước 2.** Với mỗi bộ ba, lập các số có ba chữ số khác nhau, chữ số hàng trăm phải khác 0.\n\n**Bước 3.** Giữ lại các số có chữ số tận cùng là 0 hoặc 5 rồi cộng số các số của mọi bộ ba.\n\n**Chú ý:** Bộ ba không có chữ số 0 hoặc 5 thì không lập được số chia hết cho 5.\n\n**Phần 2. Trình bày**\n\nCho 4 chữ số 0; 4; 5; 8.\n\nHỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho chia hết cho 15?\n\nMột số chia hết cho 15 thì phải chia hết cho cả 3 và 5.\n\nCó 2 bộ 3 chữ số chia hết cho 3 là: 0; 4; 5 và 0; 4; 8.\n\nTừ các chữ số 0; 4; 5 lập được 3 số chia hết cho cả 3 và 5 là: 405; 450; 540.\n\nTừ các chữ số 0; 4; 8 lập được 2 số chia hết cho cả 3 và 5 là: 480; 840.\n\nVậy từ 4 chữ số đã cho lập được tất cả $5$ số có ba chữ số khác nhau chia hết cho 15.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B5c",
+  "gop_y": false,
+  "dap_an": "$3$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 18 phải chia hết cho cả 2 và 9; tìm bộ ba chữ số có tổng chia hết cho 9 rồi xếp sao cho chữ số tận cùng là số chẵn.\n\n**Bước 1.** Chọn từ bốn chữ số đã cho các bộ ba có tổng các chữ số chia hết cho 9.\n\n**Bước 2.** Với bộ ba tìm được, lập các số có ba chữ số khác nhau, chữ số hàng trăm phải khác 0.\n\n**Bước 3.** Giữ lại các số có chữ số tận cùng chẵn rồi đếm.\n\n**Chú ý:** Số chia hết cho 9 thì tổng các chữ số chia hết cho 9, nên chỉ cần xét tổng của từng bộ ba.\n\n**Phần 2. Trình bày**\n\nCho 4 chữ số 0; 4; 5; 8.\n\nHỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho chia hết cho 18?\n\nMột số chia hết cho 18 thì phải chia hết cho cả 2 và 9.\n\nCó 1 bộ 3 chữ số chia hết cho 9 là: 0; 4; 5.\n\nTừ các chữ số 0; 4; 5 lập được 3 số chia hết cho cả 2 và 9 là: 450; 504; 540.\n\nVậy từ 4 chữ số đã cho lập được tất cả $3$ số có ba chữ số khác nhau chia hết cho 18.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B5d",
+  "gop_y": false,
+  "dap_an": "$3$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 45 phải chia hết cho cả 5 và 9; tìm bộ ba chữ số có tổng chia hết cho 9 rồi xếp sao cho chữ số tận cùng là 0 hoặc 5.\n\n**Bước 1.** Chọn từ bốn chữ số đã cho các bộ ba có tổng các chữ số chia hết cho 9.\n\n**Bước 2.** Với bộ ba tìm được, lập các số có ba chữ số khác nhau, chữ số hàng trăm phải khác 0.\n\n**Bước 3.** Giữ lại các số có chữ số tận cùng là 0 hoặc 5 rồi đếm.\n\n**Chú ý:** Số chia hết cho 45 cũng chia hết cho 9 nên phải xét tổng các chữ số trước.\n\n**Phần 2. Trình bày**\n\nCho 4 chữ số 0; 4; 5; 8.\n\nHỏi có bao nhiêu số có 3 chữ số khác nhau được viết từ 4 chữ số đã cho chia hết cho 45?\n\nMột số chia hết cho 45 thì phải chia hết cho cả 5 và 9.\n\nCó 1 bộ 3 chữ số chia hết cho 9 là: 0; 4; 5.\n\nTừ các chữ số 0; 4; 5 lập được 3 số chia hết cho cả 5 và 9 là: 405; 450; 540.\n\nVậy từ 4 chữ số đã cho lập được tất cả $3$ số có ba chữ số khác nhau chia hết cho 45.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B6a",
+  "gop_y": false,
+  "dap_an": "$5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích có thừa số 18 nên số $\\overline{3*91000}$ chia hết cho 18, do đó chia hết cho 9; dùng dấu hiệu chia hết cho 9 để tìm chữ số $*$ mà không phải nhân.\n\n**Bước 1.** Nhận ra tích có thừa số 18 nên kết quả chia hết cho 18, từ đó chia hết cho 9.\n\n**Bước 2.** Viết tổng các chữ số của số $\\overline{3*91000}$ theo chữ số cần tìm.\n\n**Bước 3.** Cho tổng đó chia hết cho 9 và chú ý chữ số chỉ nhận giá trị từ 0 đến 9 để tìm $*$.\n\n**Chú ý:** Không cần biết thừa số $a$, chỉ cần biết tích có thừa số 18.\n\n**Phần 2. Trình bày**\n\nBiết tích $18\\times 19\\times 20\\times 21\\times a$ có kết quả đúng là số có dạng $\\overline{3*91000}$.\n\nTìm giá trị của chữ số $*$ mà không nhân trực tiếp kết quả.\n\nDo $\\overline{3*91000}$ là tích của $18\\times 19\\times 20\\times 21\\times a$ nên $\\overline{3*91000}$ chia hết cho 18.\n\nĐể $\\overline{3*91000}$ chia hết cho 18 thì $\\overline{3*91000}$ phải chia hết cho 9.\n\nTổng các chữ số $(3+*+9+1+0+0+0)$ chia hết cho 9 hay $(*+13)$ chia hết cho 9.\n\nVì $*$ là chữ số nên $*+13$ nằm từ $13$ đến $22$, trong đó chỉ có $18$ chia hết cho 9 nên $*=5$.\n\nVậy giá trị của chữ số $*$ là $5$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B6b",
+  "gop_y": false,
+  "dap_an": "$7$ ; $0$ ; $0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tích có thừa số 25 và 4 nên tận cùng có hai chữ số 0, rồi tích có hai thừa số 3 nên chia hết cho 9 để tìm chữ số $*$ còn lại.\n\n**Bước 1.** Ghép hai thừa số 25 và 4 để thấy tích tận cùng có hai chữ số 0, từ đó tìm hai chữ số $*$ ở cuối.\n\n**Bước 2.** Tách các thừa số của tích để thấy tích chia hết cho 9.\n\n**Bước 3.** Cho tổng các chữ số của số vừa viết chia hết cho 9 để tìm chữ số $*$ ở giữa.\n\n**Chú ý:** Chữ số hàng đơn vị của tích có 25 và 4 phải là 0, nên không cần tính cả tích.\n\n**Phần 2. Trình bày**\n\nBiết tích $21\\times 22\\times 23\\times 24\\times 25$ có kết quả là số có dạng $\\overline{63*56**}$.\n\nTìm giá trị của các chữ số $*$ mà không nhân trực tiếp kết quả.\n\nTa có: $21\\times 22\\times 23\\times 24\\times 25=7\\times 3\\times 22\\times 23\\times 3\\times 2\\times 4\\times 25$\n\nVì $25\\times 4$ có tận cùng là 2 chữ số 0 nên tích $7\\times 3\\times 22\\times 23\\times 3\\times 2\\times 4\\times 25$ có tận cùng là 2 chữ số 0.\n\nDo đó hai chữ số $*$ tận cùng của số $\\overline{63*56**}$ có giá trị bằng 0.\n\nTa được số: $\\overline{63*5600}$.\n\nTa thấy $7\\times 3\\times 22\\times 23\\times 3\\times 2\\times 4\\times 25$ chia hết cho 9 nên $\\overline{63*5600}$ chia hết cho 9.\n\nTổng các chữ số $(6+3+*+5+6+0+0)$ chia hết cho 9 hay $(*+20)$ chia hết cho 9.\n\nVì $*$ là chữ số nên $*+20$ nằm từ $20$ đến $29$, trong đó chỉ có $27$ chia hết cho 9 nên $*=7$.\n\nVậy giá trị của các chữ số $*$ lần lượt từ trái qua phải là $7$; $0$; $0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B7a",
+  "gop_y": false,
+  "dap_an": "$x=0,y=3$ ; $x=9,y=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Điều kiện chia cho 2 và cho 5 chỉ phụ thuộc chữ số tận cùng $y$, còn điều kiện chia hết cho 9 phụ thuộc tổng các chữ số; ta tìm $y$ trước rồi tìm $x$.\n\n**Bước 1.** Dùng điều kiện chia cho 5 dư 3 để liệt kê các chữ số tận cùng $y$ có thể có.\n\n**Bước 2.** Dùng điều kiện chia cho 2 dư 1 để chọn $y$ trong các giá trị vừa liệt kê.\n\n**Bước 3.** Thay $y$ vào số rồi cho tổng các chữ số chia hết cho 9 để tìm các giá trị của $x$.\n\n**Chú ý:** $x$ không đứng ở hàng cao nhất nên được phép nhận cả giá trị 0.\n\n**Phần 2. Trình bày**\n\nCho số tự nhiên $N=\\overline{3x57y}$.\n\nThay $x$, $y$ bởi những chữ số thích hợp để $N$ chia cho 2 dư 1, chia cho 5 dư 3 và chia hết cho 9.\n\nSố $\\overline{3x57y}$ chia cho 5 dư 3 nên $y=3$ hoặc $y=8$.\n\nMà $\\overline{3x57y}$ chia cho 2 dư 1 nên $y=3$.\n\nKhi đó ta được số: $\\overline{3x573}$.\n\nĐể $\\overline{3x573}$ chia hết cho 9 thì tổng các chữ số của nó $(3+x+5+7+3)$ chia hết cho 9.\n\nHay $(x+18)$ chia hết cho 9 nên $x=0$ hoặc $x=9$.\n\nVậy có 2 cặp $x$, $y$ thỏa mãn yêu cầu bài toán là: $x=0,y=3$; $x=9,y=3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B7b",
+  "gop_y": false,
+  "dap_an": "$x=2,y=4$ ; $x=5,y=4$ ; $x=8,y=4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 6 thì chia hết cho cả 2 và 3; điều kiện chia cho 5 dư 4 cùng với chia hết cho 2 cho biết chữ số tận cùng $y$.\n\n**Bước 1.** Dùng điều kiện chia cho 5 dư 4 để liệt kê các chữ số tận cùng $y$ có thể có.\n\n**Bước 2.** Dùng điều kiện chia hết cho 2 (một nửa của điều kiện chia hết cho 6) để chọn $y$.\n\n**Bước 3.** Dùng điều kiện chia hết cho 3: tổng các chữ số phải chia hết cho 3 để tìm các giá trị của $x$.\n\n**Bước 4.** Liệt kê đầy đủ các cặp $x$, $y$ vừa tìm được.\n\n**Chú ý:** Số chia hết cho 6 phải thỏa mãn cả điều kiện chia hết cho 2 lẫn chia hết cho 3.\n\n**Phần 2. Trình bày**\n\nCho số $A=\\overline{5x1y}$.\n\nThay $x$, $y$ bởi những chữ số thích hợp để $A$ chia hết cho 6 và chia cho 5 dư 4.\n\nMột số chia hết cho 6 thì phải chia hết cho cả 2 và 3.\n\nSố $\\overline{5x1y}$ chia cho 5 dư 4 nên $y=4$ hoặc $y=9$.\n\nLại có $\\overline{5x1y}$ chia hết cho 2 nên $y=4$.\n\nKhi đó ta được số: $\\overline{5x14}$.\n\nĐể $\\overline{5x14}$ chia hết cho 3 thì tổng các chữ số của nó $(5+x+1+4)$ chia hết cho 3 hay $(x+10)$ chia hết cho 3.\n\nSuy ra $x=2$; $x=5$ hoặc $x=8$.\n\nVậy có 3 cặp $x$, $y$ thỏa mãn yêu cầu bài toán là: $x=2,y=4$; $x=5,y=4$; $x=8,y=4$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B8",
+  "gop_y": false,
+  "dap_an": "$2007$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai điều kiện chia có dư cho biết ngay chữ số hàng đơn vị; muốn số lớn nhất thì dồn phần tổng còn lại vào chữ số hàng cao nhất.\n\n**Bước 1.** Dùng điều kiện chia cho 5 dư 2 và chia cho 2 dư 1 để xác định chữ số hàng đơn vị.\n\n**Bước 2.** Lấy tổng các chữ số trừ chữ số hàng đơn vị để biết tổng ba chữ số còn lại.\n\n**Bước 3.** Đặt toàn bộ tổng còn lại vào chữ số hàng nghìn và điền 0 cho hàng trăm, hàng chục để được số lớn nhất.\n\n**Chú ý:** Chữ số hàng nghìn càng lớn thì số càng lớn, nên các hàng thấp hơn nên là 0.\n\n**Phần 2. Trình bày**\n\nTìm số lớn nhất có 4 chữ số mà tổng các chữ số bằng 9, biết số đó chia 2 dư 1, chia 5 dư 2.\n\nSố đó chia cho 5 dư 2 nên chữ số hàng đơn vị là 2 hoặc 7.\n\nSố đó chia cho 2 dư 1 nên là số lẻ, do đó chữ số hàng đơn vị là 7.\n\nSố cần tìm là số lớn nhất có 4 chữ số và tổng các chữ số bằng 9 nên chữ số hàng trăm và hàng chục đều bằng 0 và chữ số hàng nghìn là: $9-7=2$.\n\nVậy số cần tìm là $2007$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B9",
+  "gop_y": false,
+  "dap_an": "$143$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các số dư đều bằng 3 nên nếu bớt số cần tìm đi 3 đơn vị thì được số chia hết cho cả 4; 5 và 7.\n\n**Bước 1.** Bớt số cần tìm đi 3 đơn vị để các phép chia đều không còn dư.\n\n**Bước 2.** Tìm số bé nhất khác 0 chia hết cho cả 4; 5 và 7 bằng cách nhân ba số này với nhau.\n\n**Bước 3.** Cộng lại 3 đơn vị để được số cần tìm.\n\n**Chú ý:** Số 3 cũng chia cho 4; 5; 7 đều dư 3 nhưng đề đã loại số này, nên phải chọn số khác 0 nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên bé nhất khác 3 sao cho khi chia số đó cho 4; 5; 7 đều dư 3.\n\nKhi chia số đó cho 4; 5; 7 đều dư 3 nên nếu bớt số đó đi 3 đơn vị thì được số chia hết cho 4; 5; 7.\n\nVì số tự nhiên cần tìm bé nhất khác 3 nên số bé nhất sau khi bớt đi 3 đơn vị chia hết cho cả 4; 5; 7 phải khác 0.\n\nVì 4; 5; 7 không cùng chia hết cho số nào khác 1 nên số bé nhất khác 0 chia hết cho cả 4; 5; 7 là: $4\\times 5\\times 7=140$\n\nSố bé nhất cần tìm là: $140+3=143$\n\nVậy số cần tìm là $143$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B10",
+  "gop_y": false,
+  "dap_an": "$418$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số dư đều kém số chia đúng 2 đơn vị, nên nếu cộng thêm 2 đơn vị thì được số chia hết cho cả 3; 4; 5 và 7.\n\n**Bước 1.** So sánh từng số dư với số chia để thấy chúng cùng kém số chia 2 đơn vị.\n\n**Bước 2.** Cộng thêm 2 đơn vị vào số cần tìm để được số chia hết cho cả bốn số.\n\n**Bước 3.** Tìm số bé nhất khác 0 chia hết cho cả bốn số bằng cách nhân chúng với nhau, rồi bớt đi 2 đơn vị.\n\n**Chú ý:** Số mới phải lớn hơn 2 nên không thể bằng 0.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên bé nhất sao cho khi chia số đó cho 3; 4; 5; 7 có số dư lần lượt là 1; 2; 3; 5.\n\nVì số đó chia cho 3; 4; 5; 7 có số dư lần lượt là 1; 2; 3; 5 nên nếu cộng thêm 2 đơn vị thì được số mới chia hết cho cả 3; 4; 5; 7.\n\nVì số mới chia hết cho cả 3; 4; 5; 7 và lớn hơn 2 nên số mới khác 0.\n\nSố nhỏ nhất khác 0 chia hết cho cả 3; 4; 5; 7 là: $3\\times 4\\times 5\\times 7=420$\n\nVậy số bé nhất cần tìm là: $420-2=418$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B11",
+  "gop_y": false,
+  "dap_an": "$36$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai dãy bằng nhau và mỗi ghế 3 người cho biết số đại biểu chia hết cho 2 và 3; xếp 5 người một ghế thừa 1 người cho biết số đó chia cho 5 dư 1.\n\n**Bước 1.** Đọc từng cách xếp ghế để rút ra tính chất chia hết hoặc chia có dư của số đại biểu.\n\n**Bước 2.** Gọi số đại biểu là số có hai chữ số rồi dùng điều kiện chia cho 5 dư 1 để tìm các giá trị của chữ số hàng đơn vị.\n\n**Bước 3.** Dùng điều kiện chia hết cho 2 để chọn chữ số hàng đơn vị.\n\n**Bước 4.** Dùng điều kiện chia hết cho 3 và không quá 50 để tìm chữ số hàng chục.\n\n**Chú ý:** Số có hai chữ số nên chữ số hàng chục phải khác 0.\n\n**Phần 2. Trình bày**\n\nHãy tính số đại biểu, biết số đại biểu là số có 2 chữ số không quá 50.\n\nVì xếp ghế thành 2 dãy, mỗi ghế có 3 người ngồi thì số đại biểu ở 2 dãy bằng nhau nên số đại biểu là một số chia hết cho 2 và 3.\n\nNếu bố trí 5 người ngồi 1 ghế thì sẽ có 1 người ngồi riêng nên số đại biểu là số chia cho 5 dư 1.\n\nVậy số đại biểu là một số chia hết cho 2; 3 và chia cho 5 dư 1.\n\nGọi số đại biểu là $\\overline{ab}$ (người), $a$ khác $0$.\n\nVì $\\overline{ab}$ chia cho 5 dư 1 nên $b=1$ hoặc $b=6$.\n\nMà $\\overline{ab}$ chia hết cho 2 nên $b=6$, ta được $\\overline{a6}$.\n\nVì $\\overline{a6}$ chia hết cho 3 và không lớn hơn 50 nên $a$ chỉ có thể là 3.\n\nVậy số đại biểu là $36$ người.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B12a",
+  "gop_y": false,
+  "dap_an": "Chia hết cho $3$ ; không chia hết cho $2$ ; $5$ ; $9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không chia được nên dùng dấu hiệu: chữ số tận cùng cho biết chia hết cho 2 và 5, tổng các chữ số cho biết chia hết cho 3 và 9.\n\n**Bước 1.** Xét chữ số tận cùng để biết số có chia hết cho 2 hoặc cho 5 hay không.\n\n**Bước 2.** Tính tổng các chữ số bằng cách nhân số chữ số với giá trị của mỗi chữ số.\n\n**Bước 3.** Xét tổng đó có chia hết cho 3 và cho 9 không rồi kết luận.\n\n**Chú ý:** Số chia hết cho 9 thì tổng các chữ số phải chia hết cho 9, chỉ chia hết cho 3 thì chưa đủ.\n\n**Phần 2. Trình bày**\n\nXác định số $111\\ldots 111$ (có $2010$ chữ số $1$) chia hết cho những số nào trong các số 2, 3, 5, 9, không làm phép chia.\n\nSố $111\\ldots 111$ không chia hết cho 2 vì là số lẻ.\n\nSố $111\\ldots 111$ không chia hết cho 5 vì chữ số tận cùng khác 0 và 5.\n\nTổng các chữ số của số $111\\ldots 111$ (có $2010$ chữ số $1$) là $2010$.\n\nSố $2010$ có tổng các chữ số là 3, chia hết cho 3 và không chia hết cho 9.\n\nVậy $111\\ldots 111$ (có $2010$ chữ số $1$) chia hết cho 3 và không chia hết cho 2; 5; 9.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B12b",
+  "gop_y": false,
+  "dap_an": "Chia hết cho $3$ ; $9$ ; không chia hết cho $2$ ; $5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không chia được nên dùng dấu hiệu: chữ số tận cùng cho biết chia hết cho 2 và 5, tổng các chữ số cho biết chia hết cho 3 và 9.\n\n**Bước 1.** Xét chữ số tận cùng để biết số có chia hết cho 2 hoặc cho 5 hay không.\n\n**Bước 2.** Tính tổng các chữ số bằng cách nhân số chữ số với giá trị của mỗi chữ số.\n\n**Bước 3.** Tính tổng các chữ số của tổng đó rồi xét có chia hết cho 3 và cho 9 không để kết luận.\n\n**Chú ý:** Có thể phải tính tổng các chữ số hai lần: tổng của số, rồi tổng các chữ số của tổng đó.\n\n**Phần 2. Trình bày**\n\nXác định số $333\\ldots 333$ (có $2007$ chữ số $3$) chia hết cho những số nào trong các số 2, 3, 5, 9, không làm phép chia.\n\nSố $333\\ldots 333$ không chia hết cho 2 vì là số lẻ.\n\nSố $333\\ldots 333$ không chia hết cho 5 vì chữ số tận cùng khác 0 và 5.\n\nTổng các chữ số của số $333\\ldots 333$ (có $2007$ chữ số $3$) là: $2007\\times 3=6021$\n\nSố $6021$ có tổng các chữ số là 9, chia hết cho 3 và chia hết cho 9.\n\nVậy $333\\ldots 333$ (có $2007$ chữ số $3$) chia hết cho 3; 9 và không chia hết cho 2; 5.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B12c",
+  "gop_y": false,
+  "dap_an": "Chia hết cho $2$ ; $3$ ; không chia hết cho $5$ ; $9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không chia được nên dùng dấu hiệu: chữ số tận cùng cho biết chia hết cho 2 và 5, tổng các chữ số cho biết chia hết cho 3 và 9.\n\n**Bước 1.** Xét chữ số tận cùng để biết số có chia hết cho 2 hoặc cho 5 hay không.\n\n**Bước 2.** Tính tổng các chữ số bằng cách nhân số chữ số với giá trị của mỗi chữ số.\n\n**Bước 3.** Tính tổng các chữ số của tổng đó rồi xét có chia hết cho 3 và cho 9 không để kết luận.\n\n**Chú ý:** Chữ số tận cùng là 4 thì số chẵn nhưng chưa chắc chia hết cho 5.\n\n**Phần 2. Trình bày**\n\nXác định số $444\\ldots 444$ (có $2001$ chữ số $4$) chia hết cho những số nào trong các số 2, 3, 5, 9, không làm phép chia.\n\nSố $444\\ldots 444$ chia hết cho 2 vì có chữ số tận cùng là 4.\n\nSố $444\\ldots 444$ không chia hết cho 5 vì có chữ số tận cùng khác 0 và 5.\n\nTổng các chữ số của số $444\\ldots 444$ (có $2001$ chữ số $4$) là: $2001\\times 4=8004$\n\nSố $8004$ có tổng các chữ số là 12, chia hết cho 3 và không chia hết cho 9.\n\nVậy $444\\ldots 444$ (có $2001$ chữ số $4$) chia hết cho 2; 3 và không chia hết cho 5; 9.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B12d",
+  "gop_y": false,
+  "dap_an": "Chia hết cho $2$ ; $3$ ; $9$ ; không chia hết cho $5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chữ số tận cùng $b$ là số chẵn cho biết chia hết cho 2 và 5; tổng các chữ số là $999\\times b$ nên chỉ cần xét thừa số 999 đối với 3 và 9.\n\n**Bước 1.** Xét chữ số tận cùng chẵn để biết số có chia hết cho 2 và cho 5 hay không.\n\n**Bước 2.** Viết tổng các chữ số dưới dạng tích của 999 với chữ số $b$.\n\n**Bước 3.** Xét 999 có chia hết cho 3 và cho 9 không để kết luận cho tổng, từ đó cho cả số.\n\n**Chú ý:** Chữ số đầu của số là $b$ nên $b$ khác 0, vì vậy chữ số tận cùng không thể bằng 0.\n\n**Phần 2. Trình bày**\n\nXác định số $\\overline{bbb\\ldots bbb}$ (có $999$ chữ số $b$, $b$ chẵn) chia hết cho những số nào trong các số 2, 3, 5, 9, không làm phép chia.\n\nSố $\\overline{bbb\\ldots bbb}$ chia hết cho 2 vì chữ số tận cùng $b$ là số chẵn.\n\nSố $\\overline{bbb\\ldots bbb}$ không chia hết cho 5 vì chữ số tận cùng là số chẵn (khác 5) và $b$ khác 0.\n\nTổng các chữ số của số $\\overline{bbb\\ldots bbb}$ (có $999$ chữ số $b$) là: $999\\times b$\n\nVì 999 chia hết cho cả 3 và 9 nên $999\\times b$ chia hết cho cả 3 và 9.\n\nSuy ra số $\\overline{bbb\\ldots bbb}$ chia hết cho cả 3 và 9.\n\nVậy $\\overline{bbb\\ldots bbb}$ chia hết cho 2; 3; 9 và không chia hết cho 5.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B13",
+  "gop_y": false,
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần xé một mảnh thành 5 mảnh thì số mảnh luôn tăng thêm cùng một số, nên số mảnh sau mỗi lần xé giữ nguyên số dư khi chia cho số đó.\n\n**Bước 1.** Tính số mảnh giấy tăng thêm sau mỗi lần xé một mảnh làm 5.\n\n**Bước 2.** Xác định số dư của số mảnh ban đầu khi chia cho số vừa tìm, và thấy số dư này không đổi sau mọi lần xé.\n\n**Bước 3.** So sánh với số dư của 49 khi chia cho số đó để trả lời có thể hay không.\n\n**Chú ý:** Không cần thử từng lần xé; chỉ cần xét tính chất chung của số mảnh.\n\n**Phần 2. Trình bày**\n\nAn có 3 mảnh giấy, xé mỗi mảnh làm 5, rồi lại lấy một số mảnh xé làm 5, cứ như vậy mãi.\n\nHỏi cuối cùng An có thể thu được 49 mảnh hay không?\n\nKhi xé 1 mảnh ra làm 5 thì số mảnh tăng thêm là 4.\n\nKhi xé một số mảnh ra làm 5 thì số mảnh tăng lên là một số chia hết cho 4.\n\nVì số mảnh ban đầu là 3 nên số mảnh thu được sau mỗi lần xé là một số chia cho 4 dư 3.\n\nMà 49 chia cho 4 dư 1 nên không xé được số mảnh như vậy.\n\nVậy cuối cùng An không thể thu được 49 mảnh.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B14",
+  "gop_y": false,
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số CHAMHOC và HOCCHAM gồm cùng các chữ số, chỉ đổi chỗ, nên cùng số dư khi chia cho 9 và hiệu của chúng phải chia hết cho 9.\n\n**Bước 1.** So sánh các chữ số của hai số để thấy tổng các chữ số của chúng bằng nhau.\n\n**Bước 2.** Từ đó suy ra hiệu của hai số có tính chất chia hết cho 9.\n\n**Bước 3.** Kiểm tra số đã cho ở vế phải có chia hết cho 9 không rồi trả lời có thể hay không.\n\n**Chú ý:** Các chữ cái giống nhau thay bằng cùng một chữ số nên tổng các chữ số của hai số luôn bằng nhau.\n\n**Phần 2. Trình bày**\n\nCó thể thay các chữ trong phép tính $\\overline{CHAMHOC}-\\overline{HOCCHAM}=102386$ bằng các chữ số thích hợp được không?\n\nTa thấy tổng các chữ số của $\\overline{CHAMHOC}$ và tổng các chữ số của $\\overline{HOCCHAM}$ bằng nhau nên hai số này có cùng số dư khi chia cho 9.\n\nDo đó, hiệu của chúng $\\overline{CHAMHOC}-\\overline{HOCCHAM}$ chia hết cho 9.\n\nMặt khác, số $102386$ không chia hết cho 9 (do tổng các chữ số của nó bằng 20 không chia hết cho 9).\n\nVậy không thể thay các chữ trong phép tính bằng các chữ số thích hợp được.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B15",
+  "gop_y": false,
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số vở thưởng cho mỗi loại bằng số bạn của loại đó nhân với số vở mỗi bạn nhận; hai số bạn đều chia hết cho 3 nên tổng số vở cũng phải chia hết cho 3.\n\n**Bước 1.** Viết số vở thưởng cho mỗi loại thành tích của số bạn với số vở mỗi bạn nhận.\n\n**Bước 2.** Nhận xét số bạn mỗi loại có chia hết cho 3 không để rút ra tính chất của tổng số vở.\n\n**Bước 3.** Kiểm tra số vở cô giáo mua có tính chất đó không rồi kết luận.\n\n**Chú ý:** Các bạn cùng một loại được thưởng số vở như nhau, nhưng hai loại có thể được thưởng khác nhau.\n\n**Phần 2. Trình bày**\n\nHỏi 200 quyển vở có vừa đủ để thưởng cho các bạn học sinh trong lớp không?\n\nCác bạn cùng một loại được phân đều số vở nên số vở thưởng cho loại Giỏi bằng 21 lần số vở mỗi bạn Giỏi nhận, số vở thưởng cho loại Khá bằng 18 lần số vở mỗi bạn Khá nhận.\n\nTa thấy 21 chia hết cho 3; 18 chia hết cho 3.\n\nNên số vở cần mua để thưởng vừa đủ cho các bạn học sinh phải là một số chia hết cho 3.\n\nMà 200 không chia hết cho 3.\n\nVậy 200 quyển vở không thể thưởng vừa đủ cho các bạn học sinh trong lớp.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B16a",
+  "gop_y": false,
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chu vi hình chữ nhật bằng 2 lần tổng chiều dài và chiều rộng nên luôn là số chẵn; xếp nối tất cả các que thì chu vi bằng tổng độ dài các que.\n\n**Bước 1.** Tính tổng độ dài của từng nhóm que rồi cộng lại thành tổng độ dài tất cả các que.\n\n**Bước 2.** Xét tổng đó là số chẵn hay số lẻ.\n\n**Bước 3.** So sánh với tính chất chu vi hình chữ nhật là số chẵn để kết luận.\n\n**Chú ý:** Các que đều phải được dùng hết nên tổng độ dài các que chính là chu vi.\n\n**Phần 2. Trình bày**\n\nHỏi có thể xếp nối các đoạn que đó thành một hình chữ nhật không?\n\nTổng độ dài 32 đoạn que, mỗi đoạn dài 1cm là: $1\\times 32=32$ (cm)\n\nTổng độ dài 48 đoạn que, mỗi đoạn dài 2cm là: $2\\times 48=96$ (cm)\n\nTổng độ dài 45 đoạn que, mỗi đoạn dài 3cm là: $3\\times 45=135$ (cm)\n\nTổng độ dài tất cả các đoạn que là: $32+96+135=263$ (cm), $263$ là một số lẻ.\n\nChu vi của một hình chữ nhật là số chẵn (vì bằng 2 lần tổng của chiều dài và chiều rộng).\n\nVậy không thể xếp nối tất cả các que đó thành một hình chữ nhật được.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B16b",
+  "gop_y": false,
+  "dap_an": "Có ; mỗi cạnh xếp $3$ đoạn dài $25$ cm và $5$ đoạn dài $21$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hình vuông có 4 cạnh bằng nhau; nếu số que của mỗi loại đều chia hết cho 4 thì chia đều từng loại cho 4 cạnh, mỗi cạnh có số que như nhau.\n\n**Bước 1.** Kiểm tra số que của mỗi loại có chia hết cho 4 không để chia đều cho 4 cạnh.\n\n**Bước 2.** Nếu chia hết, tính số que mỗi loại nằm trên một cạnh.\n\n**Bước 3.** Ghi cách xếp: mỗi cạnh gồm bao nhiêu que mỗi loại.\n\n**Chú ý:** Đề yêu cầu chỉ ra một cách xếp cụ thể nên phải nêu số que mỗi loại trên mỗi cạnh.\n\n**Phần 2. Trình bày**\n\nHỏi có thể xếp nối 12 đoạn que dài 25cm và 20 đoạn que dài 21cm thành hình vuông được không? Nếu xếp được, hãy chỉ ra 1 cách phù hợp.\n\nVì 12 và 20 là các số chia hết cho 4 nên có thể xếp nối các que đó thành hình vuông được.\n\nCách xếp phù hợp: chia đều mỗi loại đoạn que vào 4 cạnh.\n\nTa có: $12:4=3$ và $20:4=5$.\n\nVậy mỗi cạnh xếp nối 3 đoạn que dài 25cm và 5 đoạn que dài 21cm.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B17",
+  "gop_y": false,
+  "dap_an": "Rổ trứng gà còn lại có $75$ quả ; trứng gà lúc đầu: $176$ quả ; trứng vịt lúc đầu: $303$ quả",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trong số trứng đã bán, trứng vịt gấp 3 lần trứng gà nên số trứng đã bán gồm 4 phần bằng nhau, tức là chia hết cho 4; dựa vào đó tìm rổ trứng còn lại.\n\n**Bước 1.** Cộng số trứng của 7 rổ để biết tổng số trứng ban đầu.\n\n**Bước 2.** Dựa vào tính chất chia hết cho 4 của số trứng đã bán để biết số trứng còn lại cùng số dư với tổng khi chia cho 4.\n\n**Bước 3.** Xét từng rổ để chọn rổ có số trứng thỏa mãn tính chất đó.\n\n**Bước 4.** Tìm số trứng đã bán rồi chia theo tỉ số 1 phần trứng gà và 3 phần trứng vịt.\n\n**Bước 5.** Cộng số trứng gà đã bán với số trứng ở rổ còn lại, rồi lấy tổng trừ số đó để có số trứng vịt.\n\n**Chú ý:** Rổ còn lại là rổ trứng gà nên số trứng gà lúc đầu gồm cả rổ này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số trứng ban đầu đựng trong 7 rổ là: $45+56+60+66+75+85+92=479$ (quả)\n\nVì trong số trứng đã bán, số trứng vịt gấp 3 lần số trứng gà nên tổng số trứng đã bán là một số chia hết cho 4.\n\nTổng số trứng ban đầu (479 quả) là số chia cho 4 dư 3, số trứng đã bán là số chia hết cho 4 nên số trứng còn lại là số chia cho 4 dư 3.\n\nTrong 7 rổ trên chỉ có 75 là số chia cho 4 dư 3 nên rổ còn lại đựng 75 quả và rổ đó chính là rổ trứng gà.\n\nSố quả trứng đã bán là: $479-75=404$ (quả)\n\nSố quả trứng gà đã bán là: $404:(1+3)\\times 1=101$ (quả)\n\nLúc đầu cửa hàng có số quả trứng gà là: $101+75=176$ (quả)\n\nLúc đầu cửa hàng có số quả trứng vịt là: $479-176=303$ (quả)\n\nĐáp số: Rổ trứng gà còn lại có $75$ quả ; trứng gà lúc đầu: $176$ quả ; trứng vịt lúc đầu: $303$ quả",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B18a",
+  "gop_y": false,
+  "dap_an": "$5$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 15 phải chia hết cho cả 5 và 3; xét số dư của M khi chia cho 3 qua tổng các chữ số, rồi chọn số cộng thêm nhỏ nhất thỏa cả hai điều kiện.\n\n**Bước 1.** Tính tổng các chữ số của M để biết M chia cho 3 dư bao nhiêu.\n\n**Bước 2.** Tìm điều kiện của số cộng thêm để tổng chia hết cho 3.\n\n**Bước 3.** Vì M chia hết cho 5 nên số cộng thêm cũng phải chia hết cho 5.\n\n**Bước 4.** Chọn số nhỏ nhất thỏa mãn cả hai điều kiện vừa tìm.\n\n**Chú ý:** Số cộng thêm phải chia hết cho 5 để chữ số tận cùng của tổng vẫn là 0 hoặc 5.\n\n**Phần 2. Trình bày**\n\nCho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).\n\nHỏi phải thêm vào $M$ ít nhất bao nhiêu đơn vị để được một số chia hết cho 15?\n\nMột số chia hết cho 15 nếu số đó vừa chia hết cho 5, vừa chia hết cho 3.\n\nTổng các chữ số của $M$ là: $5\\times 2024=10120$\n\nVì $10120$ có tổng các chữ số bằng 4, chia cho 3 dư 1 nên số cộng thêm phải chia cho 3 dư 2.\n\nVì $M$ chia hết cho 5 nên số cộng thêm phải chia hết cho 5.\n\nSố nhỏ nhất vừa chia hết cho 5, vừa chia cho 3 dư 2 là 5.\n\nVậy phải thêm vào $M$ ít nhất $5$ đơn vị.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ7 · B18b",
+  "gop_y": false,
+  "dap_an": "$40$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia hết cho 45 phải chia hết cho cả 5 và 9; số dư của M khi chia cho 9 cho biết số bớt đi phải chia cho 9 dư bao nhiêu và phải chia hết cho 5.\n\n**Bước 1.** Tính tổng các chữ số của M để biết M chia cho 9 dư bao nhiêu.\n\n**Bước 2.** Gọi số bớt đi là $A$ rồi suy ra $A$ chia cho 9 có số dư bằng số dư của M, và $A$ chia hết cho 5.\n\n**Bước 3.** Cộng thêm vào $A$ một số để $A$ cộng số đó chia hết cho cả 5 và 9, tức là chia hết cho 45.\n\n**Bước 4.** Chọn số nhỏ nhất khác 0 chia hết cho 45 rồi tìm $A$.\n\n**Chú ý:** Số bớt đi nhỏ nhất ứng với số chia hết cho 45 nhỏ nhất khác 0, vì số 0 không thỏa mãn.\n\n**Phần 2. Trình bày**\n\nCho số tự nhiên $M=555\\ldots 555$ (2024 chữ số 5).\n\nHỏi phải bớt $M$ đi ít nhất bao nhiêu đơn vị để được một số chia hết cho 45?\n\nMột số chia hết cho 45 nếu số đó vừa chia hết cho 5, vừa chia hết cho 9.\n\nTổng các chữ số của $M$ là: $5\\times 2024=10120$\n\nVì $10120$ có tổng các chữ số bằng 4, chia cho 9 dư 4 nên số bớt đi phải chia cho 9 dư 4.\n\nGọi số bớt đi là $A$, ta có:\n\n$A$ chia cho 9 dư 4 nên $A+5$ chia hết cho 9.\n\nVì $M$ chia hết cho 5 nên số bớt đi là $A$ cũng phải chia hết cho 5, do đó $A+5$ chia hết cho 5.\n\nVì $A+5$ chia hết cho cả 5 và 9 nên $A+5$ chia hết cho 45 mà $A+5$ nhỏ nhất nên $A+5=45$.\n\nSuy ra $A=40$.\n\nVậy phải bớt $M$ đi ít nhất $40$ đơn vị.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

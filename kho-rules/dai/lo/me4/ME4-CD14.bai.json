@@ -1,0 +1,137 @@
+[
+ {
+  "ma": "CĐ14 · B1",
+  "khu": "CĐ14",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Đội tuyển của trường A tham gia Hội khoẻ Phù Đổng cấp huyện gồm các bạn học sinh nam và học sinh nữ. Dự định số bạn nữ tham gia đội tuyển bằng $\\dfrac{1}{4}$ số nam nhưng do điều kiện thay đổi $1$ bạn nữ thay bằng $1$ bạn nam. Khi đó số bạn nữ bằng $\\dfrac{1}{5}$ số nam. Tính xem đội tuyển của trường A đi dự hội thao bao nhiêu học sinh.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B2",
+  "khu": "CĐ14",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một tủ sách có hai ngăn. Số sách ở ngăn dưới gấp $3$ lần số sách ngăn trên. Nếu chuyển $10$ quyển sách ở ngăn trên xuống ngăn dưới thì số sách ngăn dưới gấp $7$ lần ngăn trên. Tính số sách mỗi ngăn lúc đầu.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B3",
+  "khu": "CĐ14",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một hình chữ nhật có chiều rộng bằng $\\dfrac{2}{5}$ chiều dài. Nếu thêm vào chiều rộng $4$ m và đồng thời bớt chiều dài $4$ m thì lúc đó chiều rộng bằng $\\dfrac{2}{3}$ chiều dài. Tính diện tích của hình chữ nhật đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B4",
+  "khu": "CĐ14",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Lúc đầu số vịt dưới ao nhiều gấp $5$ lần số vịt trên bờ. Nhưng sau khi có $3$ con vịt từ trên bờ nhảy xuống ao bơi lội thì số vịt dưới ao nhiều gấp $8$ lần số vịt trên bờ. Hỏi cả đàn có bao nhiêu con?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B5",
+  "khu": "CĐ14",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hồng và Lan cùng hái hoa, biết số hoa của Lan bằng $\\dfrac{3}{5}$ số hoa của Hồng. Sau khi hai bạn cùng hái thêm $15$ bông, lúc này số hoa của Lan bằng $\\dfrac{9}{13}$ số hoa của Hồng. Tính số hoa mỗi bạn có lúc đầu.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B6",
+  "khu": "CĐ14",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Năm nay tuổi bố gấp $3$ lần tuổi con. $12$ năm trước, tuổi bố gấp $7$ lần tuổi con. Hỏi tuổi hiện nay của mỗi người?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B7",
+  "khu": "CĐ14",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có hai ngăn sách. Lúc đầu số sách ngăn I bằng $\\dfrac{7}{3}$ số sách ngăn II. Người ta chuyển thêm vào hai ngăn mỗi ngăn $40$ quyển sách. Khi đó số sách ngăn II bằng $\\dfrac{17}{29}$ số sách ngăn I. Hỏi lúc này hai ngăn có tất cả bao nhiêu quyển sách?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B8",
+  "khu": "CĐ14",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Lúc đầu số gà bằng $\\dfrac{3}{5}$ số vịt. Sau đó mua thêm mỗi loại $10$ con nên lúc này số vịt bằng $\\dfrac{3}{2}$ số gà. Hỏi lúc đầu mỗi loại có bao nhiêu con?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B9",
+  "khu": "CĐ14",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Đầu năm, lớp $4$A có số học sinh nam bằng $\\dfrac{3}{4}$ số học sinh nữ. Đến giữa năm, có thêm $3$ học sinh nam chuyển vào nên số học sinh nam lúc này bằng $\\dfrac{9}{10}$ số học sinh nữ. Tính tổng số học sinh lúc đầu năm.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B10",
+  "khu": "CĐ14",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một giá sách gồm hai ngăn: Số sách ngăn dưới bằng $\\dfrac{6}{5}$ số sách ngăn trên. Nếu xếp $15$ quyển sách mới mua vào ngăn trên thì lúc đó số sách ở ngăn dưới bằng $\\dfrac{12}{11}$ số sách ngăn trên. Hỏi lúc đầu mỗi ngăn có bao nhiêu quyển sách?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B11",
+  "khu": "CĐ14",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Nhà em có số gà mái nhiều gấp $6$ lần số gà trống. Sau đó mua thêm $5$ con gà trống nữa nên bây giờ số gà trống bằng $\\dfrac{1}{4}$ số gà mái. Hỏi lúc đầu có bao nhiêu con gà mái, gà trống?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B12",
+  "khu": "CĐ14",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một cửa hàng nhập về một số xe máy. Người bán hàng lấy ra $\\dfrac{1}{8}$ số xe nhập về đem trưng bày để bán, số xe còn lại bỏ trong kho. Sau khi bán $3$ chiếc xe ở quầy trưng bày thì người chủ quầy nhận thấy số xe ở trong kho nhiều gấp $10$ lần số xe còn lại ở quầy trưng bày xe. Hỏi cửa hàng lúc đầu nhập về bao nhiêu chiếc xe máy?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B13",
+  "khu": "CĐ14",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một người có số gà nhiều gấp $7$ lần số vịt. Sau đó người ấy nuôi thêm $200$ con gà và $900$ con vịt nữa nên số gà lúc này bằng $\\dfrac{9}{10}$ số vịt. Hỏi lúc đầu người ấy nuôi mỗi loại bao nhiêu con?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B14",
+  "khu": "CĐ14",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một hiệu sách có số sách giáo khoa bằng $\\dfrac{2}{5}$ số sách tham khảo. Sau đó, do nhập về $50$ quyển sách giáo khoa và bán đi $100$ quyển sách tham khảo nên lúc này số sách giáo khoa bằng $\\dfrac{5}{8}$ số sách tham khảo. Hỏi lúc đầu cửa hàng có bao nhiêu sách mỗi loại?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ14 · B15",
+  "khu": "CĐ14",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tủ sách thư viện trường em có hai ngăn: Ngăn thứ nhất có số sách bằng $\\dfrac{2}{3}$ số sách ngăn thứ hai. Nếu xếp thêm vào ngăn thứ nhất $80$ cuốn và ngăn thứ hai $40$ cuốn thì số sách ngăn thứ nhất bằng $\\dfrac{3}{4}$ số sách ngăn thứ hai. Hỏi ban đầu mỗi ngăn tủ có bao nhiêu cuốn sách?",
+  "anh": []
+ }
+]

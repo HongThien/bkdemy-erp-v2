@@ -1,0 +1,353 @@
+[
+ {
+  "ma": "CĐ1 · B1",
+  "khu": "CĐ1",
+  "so": 1,
+  "y": null,
+  "de_chung": "Viết số tự nhiên thoả mãn điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên thoả mãn điều kiện sau:\na) Số lẻ, nhỏ nhất và có $3$ chữ số khác nhau.\nb) Số lớn nhất có $4$ chữ số khác nhau.\nc) Số lẻ, nhỏ nhất có $7$ chữ số khác nhau.\nd) Số chẵn, nhỏ nhất và có $10$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B1a",
+  "khu": "CĐ1",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Viết số tự nhiên thoả mãn điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên thoả mãn điều kiện sau:\nSố lẻ, nhỏ nhất và có $3$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B1b",
+  "khu": "CĐ1",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Viết số tự nhiên thoả mãn điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên thoả mãn điều kiện sau:\nSố lớn nhất có $4$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B1c",
+  "khu": "CĐ1",
+  "so": 1,
+  "y": "c",
+  "de_chung": "Viết số tự nhiên thoả mãn điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên thoả mãn điều kiện sau:\nSố lẻ, nhỏ nhất có $7$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B1d",
+  "khu": "CĐ1",
+  "so": 1,
+  "y": "d",
+  "de_chung": "Viết số tự nhiên thoả mãn điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên thoả mãn điều kiện sau:\nSố chẵn, nhỏ nhất và có $10$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B2",
+  "khu": "CĐ1",
+  "so": 2,
+  "y": null,
+  "de_chung": "Viết số tự nhiên theo điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên theo điều kiện sau:\na) Số lớn nhất có $8$ chữ số khác nhau.\nb) Số lẻ lớn nhất có $6$ chữ số khác nhau.\nc) Số chẵn bé nhất có $5$ chữ số khác nhau.\nd) Số bé nhất có $7$ chữ số khác nhau bắt đầu bởi chữ số $8$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B2a",
+  "khu": "CĐ1",
+  "so": 2,
+  "y": "a",
+  "de_chung": "Viết số tự nhiên theo điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên theo điều kiện sau:\nSố lớn nhất có $8$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B2b",
+  "khu": "CĐ1",
+  "so": 2,
+  "y": "b",
+  "de_chung": "Viết số tự nhiên theo điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên theo điều kiện sau:\nSố lẻ lớn nhất có $6$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B2c",
+  "khu": "CĐ1",
+  "so": 2,
+  "y": "c",
+  "de_chung": "Viết số tự nhiên theo điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên theo điều kiện sau:\nSố chẵn bé nhất có $5$ chữ số khác nhau.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B2d",
+  "khu": "CĐ1",
+  "so": 2,
+  "y": "d",
+  "de_chung": "Viết số tự nhiên theo điều kiện sau:",
+  "noi_dung": "Viết số tự nhiên theo điều kiện sau:\nSố bé nhất có $7$ chữ số khác nhau bắt đầu bởi chữ số $8$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B3",
+  "khu": "CĐ1",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Viết số tự nhiên lớn nhất sao cho kể từ trái sang phải, mỗi chữ số của nó đều lớn hơn chữ số đứng liền sau là $2$ đơn vị.\nb) Viết số tự nhiên lớn nhất sao cho kể từ trái sang phải, số đó có $2$ chữ số $1$ và từ chữ số thứ ba trở đi thì mỗi chữ số đều bằng tổng $2$ chữ số đứng liền trước nó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B3a",
+  "khu": "CĐ1",
+  "so": 3,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất sao cho kể từ trái sang phải, mỗi chữ số của nó đều lớn hơn chữ số đứng liền sau là $2$ đơn vị.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B3b",
+  "khu": "CĐ1",
+  "so": 3,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất sao cho kể từ trái sang phải, số đó có $2$ chữ số $1$ và từ chữ số thứ ba trở đi thì mỗi chữ số đều bằng tổng $2$ chữ số đứng liền trước nó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B4",
+  "khu": "CĐ1",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tổng các chữ số của số đó bằng $35$.\nb) Viết số nhỏ nhất có tổng các chữ số bằng $52$.\nc) Viết số tự nhiên lớn nhất có các chữ số khác $0$ và tổng các chữ số bằng $7$.\nd) Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tổng các chữ số của số đó bằng $34$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B4a",
+  "khu": "CĐ1",
+  "so": 4,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tổng các chữ số của số đó bằng $35$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B4b",
+  "khu": "CĐ1",
+  "so": 4,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Viết số nhỏ nhất có tổng các chữ số bằng $52$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B4c",
+  "khu": "CĐ1",
+  "so": 4,
+  "y": "c",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất có các chữ số khác $0$ và tổng các chữ số bằng $7$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B4d",
+  "khu": "CĐ1",
+  "so": 4,
+  "y": "d",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tổng các chữ số của số đó bằng $34$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B5",
+  "khu": "CĐ1",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Hãy viết số tự nhiên nhỏ nhất có tích các chữ số bằng $120$.\nb) Hãy viết số tự nhiên lớn nhất có các chữ số khác nhau và có tích các chữ số bằng $120$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B5a",
+  "khu": "CĐ1",
+  "so": 5,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Hãy viết số tự nhiên nhỏ nhất có tích các chữ số bằng $120$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B5b",
+  "khu": "CĐ1",
+  "so": 5,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Hãy viết số tự nhiên lớn nhất có các chữ số khác nhau và có tích các chữ số bằng $120$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B6",
+  "khu": "CĐ1",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "a) Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $40$.\nb) Viết số tự nhiên chẵn lớn nhất, bé nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $60$.\nc) Viết số tự nhiên nhỏ nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $720$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B6a",
+  "khu": "CĐ1",
+  "so": 6,
+  "y": "a",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên lớn nhất, nhỏ nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $40$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B6b",
+  "khu": "CĐ1",
+  "so": 6,
+  "y": "b",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên chẵn lớn nhất, bé nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $60$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B6c",
+  "khu": "CĐ1",
+  "so": 6,
+  "y": "c",
+  "de_chung": "",
+  "noi_dung": "Viết số tự nhiên nhỏ nhất có các chữ số khác nhau mà tích các chữ số của số đó bằng $720$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B7",
+  "khu": "CĐ1",
+  "so": 7,
+  "y": null,
+  "de_chung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:",
+  "noi_dung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:\na) Số lớn nhất;\nb) Số bé nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B7a",
+  "khu": "CĐ1",
+  "so": 7,
+  "y": "a",
+  "de_chung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:",
+  "noi_dung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:\nSố lớn nhất;",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B7b",
+  "khu": "CĐ1",
+  "so": 7,
+  "y": "b",
+  "de_chung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:",
+  "noi_dung": "Viết số tự nhiên $N$ gồm $6$ số chẵn liên tiếp kể từ số $12$. Xóa bớt $6$ chữ số của $N$ và giữ nguyên thứ tự các chữ số còn lại, để có:\nSố bé nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B8",
+  "khu": "CĐ1",
+  "so": 8,
+  "y": null,
+  "de_chung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\na) Số lớn nhất;\nb) Số nhỏ nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B8a",
+  "khu": "CĐ1",
+  "so": 8,
+  "y": "a",
+  "de_chung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố lớn nhất;",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B8b",
+  "khu": "CĐ1",
+  "so": 8,
+  "y": "b",
+  "de_chung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số tự nhiên từ $1$ đến $15$ theo thứ tự từ bé đến lớn để được $1$ số có nhiều chữ số $1234\\ldots1415$. Xóa đi $8$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố nhỏ nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B9",
+  "khu": "CĐ1",
+  "so": 9,
+  "y": null,
+  "de_chung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\na) Số lớn nhất;\nb) Số nhỏ nhất;\nc) Số chẵn lớn nhất;\nd) Số lẻ nhỏ nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B9a",
+  "khu": "CĐ1",
+  "so": 9,
+  "y": "a",
+  "de_chung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố lớn nhất;",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B9b",
+  "khu": "CĐ1",
+  "so": 9,
+  "y": "b",
+  "de_chung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố nhỏ nhất;",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B9c",
+  "khu": "CĐ1",
+  "so": 9,
+  "y": "c",
+  "de_chung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố chẵn lớn nhất;",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B9d",
+  "khu": "CĐ1",
+  "so": 9,
+  "y": "d",
+  "de_chung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:",
+  "noi_dung": "Viết liên tiếp các số có $2$ chữ số từ $20$ đến $11$ theo thứ tự từ lớn đến bé để được $1$ số có nhiều chữ số $201918\\ldots1211$. Xóa đi $12$ chữ số của số đó và giữ nguyên thứ tự các chữ số còn lại để được:\nSố lẻ nhỏ nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B10",
+  "khu": "CĐ1",
+  "so": 10,
+  "y": null,
+  "de_chung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.",
+  "noi_dung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.\na) Hỏi số đó có bao nhiêu chữ số?\nb) Xóa đi $20$ chữ số của số đó (giữ nguyên thứ tự các chữ số còn lại) để được số nhỏ nhất và số lớn nhất. Viết các số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B10a",
+  "khu": "CĐ1",
+  "so": 10,
+  "y": "a",
+  "de_chung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.",
+  "noi_dung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.\nHỏi số đó có bao nhiêu chữ số?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ1 · B10b",
+  "khu": "CĐ1",
+  "so": 10,
+  "y": "b",
+  "de_chung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.",
+  "noi_dung": "Một số tự nhiên gồm các số tự nhiên liên tiếp từ $2000$ đến $2015$ được viết theo thứ tự liền nhau: $200020012002\\ldots20092015$.\nXóa đi $20$ chữ số của số đó (giữ nguyên thứ tự các chữ số còn lại) để được số nhỏ nhất và số lớn nhất. Viết các số đó.",
+  "anh": []
+ }
+]

@@ -1,0 +1,77 @@
+{
+ "CĐ8 · B1": {
+  "dang": "NDB03479",
+  "chac": "cao",
+  "ly_do": "xoá chữ số 3 ở hàng đơn vị, số mới giảm 1794 đơn vị"
+ },
+ "CĐ8 · B2": {
+  "dang": "NDB01540",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số 2 vào đằng trước số, số mới gấp 9 lần số cũ"
+ },
+ "CĐ8 · B3": {
+  "dang": "NDB01540",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số 5 vào đằng trước và đằng sau số, hai số mới hơn kém 1107"
+ },
+ "CĐ8 · B4": {
+  "dang": "NDB03478",
+  "chac": "cao",
+  "ly_do": "viết thêm chữ số 0 vào giữa hai chữ số, số mới gấp 7 lần số cũ"
+ },
+ "CĐ8 · B5": {
+  "dang": "NDB03481",
+  "chac": "cao",
+  "ly_do": "số bằng 9 lần chữ số hàng đơn vị của nó"
+ },
+ "CĐ8 · B6": {
+  "dang": "NDB03482",
+  "chac": "cao",
+  "ly_do": "số chia cho tổng các chữ số được thương 9 dư 1"
+ },
+ "CĐ8 · B7": {
+  "dang": "NDB03482",
+  "chac": "cao",
+  "ly_do": "số chia cho tổng các chữ số thì bằng 11 (không dư)"
+ },
+ "CĐ8 · B8": {
+  "dang": "NDB01540",
+  "chac": "vua",
+  "ly_do": "viết thêm hai chữ số vào bên phải, số mới lớn hơn số cũ 1986 đơn vị; dạng nói viết thêm một chữ số bên trái"
+ },
+ "CĐ8 · B9": {
+  "dang": "NDB03480",
+  "chac": "cao",
+  "ly_do": "gạch chữ số hàng trăm, số còn lại có hai chữ số nhân 7 được số ban đầu"
+ },
+ "CĐ8 · B10": {
+  "dang": "NDB03483",
+  "chac": "cao",
+  "ly_do": "số gấp 5 lần tích các chữ số của nó"
+ },
+ "CĐ8 · B11": {
+  "dang": "NDB03484",
+  "chac": "cao",
+  "ly_do": "cộng theo hàng với số viết bằng chữ abcd + abc + ab + a (ví dụ trong mô tả dạng)"
+ },
+ "CĐ8 · B12": {
+  "dang": "NDB03484",
+  "chac": "cao",
+  "ly_do": "cộng theo hàng với số viết bằng chữ abcd + abc + ab + a = 1111"
+ },
+ "CĐ8 · B13": {
+  "dang": "NDB03485",
+  "chac": "cao",
+  "ly_do": "tích hai số viết bằng chữ aa × bc = 1001 (ví dụ trong mô tả dạng)"
+ },
+ "CĐ8 · B14": {
+  "dang": "NDB03485",
+  "chac": "vua",
+  "ly_do": "tích các chữ số và số viết bằng chữ a × b × ab = bbb (tích hai số viết bằng chữ)"
+ },
+ "CĐ8 · B15": {
+  "dang": "NDB03485",
+  "chac": "cao",
+  "ly_do": "tích hai số viết bằng chữ ab × cd = bbb (ví dụ trong mô tả dạng)"
+ }
+}

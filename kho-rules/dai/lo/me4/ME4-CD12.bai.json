@@ -1,0 +1,164 @@
+[
+ {
+  "ma": "CĐ12 · B1",
+  "khu": "CĐ12",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Chị chia kẹo cho các em, nếu cho mỗi em $3$ chiếc thì thừa $2$ chiếc, nếu chia cho mỗi em $4$ chiếc thì thiếu $2$ chiếc. Hỏi có bao nhiêu chiếc kẹo và bao nhiêu em được chia kẹo?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B2",
+  "khu": "CĐ12",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cô giáo chia vở cho học sinh, nếu chia mỗi bạn $8$ quyển thì thừa $6$ quyển, nếu chia cho mỗi bạn $10$ quyển thì thừa $2$ quyển. Hỏi cô giáo có bao nhiêu quyển vở và bao nhiêu học sinh được chia vở?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B3",
+  "khu": "CĐ12",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Ở một nhà trẻ có một số cháu được chia thành các nhóm, mỗi nhóm có một cô giáo phụ trách. Nếu chia mỗi nhóm $6$ cháu thì có $4$ cháu chưa có ai phụ trách, nếu chia mỗi nhóm $8$ cháu thì thừa một cô. Hỏi nhà trẻ đó có bao nhiêu cháu, bao nhiêu cô giáo?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B4",
+  "khu": "CĐ12",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Ở một lớp học, nếu xếp mỗi bàn $4$ bạn thì còn $1$ bạn chưa có chỗ ngồi, nếu xếp mỗi bàn $5$ bạn thì thừa $2$ bàn. Hỏi lớp có bao nhiêu học sinh và bao nhiêu bàn?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B5",
+  "khu": "CĐ12",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một lớp có số lượng sách Văn và số lượng sách Toán bằng nhau. Cô giáo chia cho mỗi tổ $7$ sách Văn thì thừa $3$ quyển, mỗi tổ $8$ sách Toán thì thiếu $3$ quyển. Tính số sách Văn, Toán và số tổ được chia sách?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B6",
+  "khu": "CĐ12",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khối $4$ đồng diễn thể dục. Nếu các em xếp hàng $12$ thì thừa $5$ học sinh. Nếu xếp hàng $15$ thì cũng thừa $5$ bạn, nhưng số hàng ít đi $4$ hàng. Hỏi có bao nhiêu học sinh tham gia đồng diễn?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B7",
+  "khu": "CĐ12",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Để hoàn thành kế hoạch, một công nhân dự định mỗi giờ làm $32$ sản phẩm. Do cải tiến kỹ thuật nên mỗi giờ làm được $35$ sản phẩm. Vì vậy trước lúc hết thời gian quy định $1$ giờ chỉ còn $20$ sản phẩm nữa là hoàn thành kế hoạch. Hỏi theo kế hoạch, người đó phải làm bao nhiêu sản phẩm?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B8",
+  "khu": "CĐ12",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai người cùng dệt một số chiếu như nhau. Mỗi ngày người thứ nhất dệt được $8$ cái, người thứ hai dệt được $10$ cái. Sau một số ngày cùng dệt người thứ nhất còn phải dệt $60$ cái, người thứ hai còn phải dệt $40$ cái. Hỏi mỗi người nhận dệt bao nhiêu cái chiếu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B9",
+  "khu": "CĐ12",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có một số người rủ nhau đi mua cam. Nếu mỗi người mua $5$ quả thì vẫn còn thừa $5$ quả; còn nếu mỗi người mua $6$ quả thì một người không có quả nào. Hỏi có bao nhiêu người và bao nhiêu quả cam?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B10",
+  "khu": "CĐ12",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Một đơn vị bộ đội cần sang sông. Nếu mỗi thuyền chở $20$ người thì còn thừa $8$ người chưa được sang sông. Nếu mỗi thuyền chở $24$ người thì thừa một thuyền. Hỏi có bao nhiêu thuyền, bao nhiêu người bộ đội?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B11",
+  "khu": "CĐ12",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có một số lít dầu hỏa. Nếu đổ vào các can $6$ lít thì vừa hết. Nếu đổ vào các can $10$ lít thì thừa $2$ lít và số can giảm đi $5$ can. Hỏi có bao nhiêu lít dầu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B12",
+  "khu": "CĐ12",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cô giáo chia vở cho học sinh. Nếu chia mỗi em $6$ quyển thì thừa $4$ quyển. Còn nếu chia mỗi em $8$ quyển thì thừa $6$ quyển nhưng có $2$ em không nhận được quyển nào. Hỏi có bao nhiêu học sinh và bao nhiêu quyển vở?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B13",
+  "khu": "CĐ12",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cô giáo chia kẹo cho hai tổ học sinh trong một lớp học mầm non. Tổ một có $9$ em, tổ hai có $12$ em. Số kẹo tổ hai nhận nhiều hơn tổ một là $12$ viên. Hỏi mỗi tổ nhận bao nhiêu viên kẹo? (Biết số viên kẹo mỗi em được nhận là như nhau)",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B14",
+  "khu": "CĐ12",
+  "so": 14,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai công nhân được giao dệt một số khăn mặt bằng nhau. Mỗi ngày chị thứ nhất dệt được $48$ cái, chị thứ hai dệt được $56$ cái. Sau khi dệt một số ngày như nhau tính ra chị thứ nhất còn phải dệt thêm $62$ cái, chị thứ hai phải dệt thêm $14$ cái mới đủ số lượng quy định. Hỏi số khăn cần dệt theo dự kiến của mỗi chị là bao nhiêu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B15",
+  "khu": "CĐ12",
+  "so": 15,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cô giáo chia kẹo, bánh cho các cháu nhân dịp tổng kết học kì. Số lượng bánh bằng số lượng kẹo. Nếu chia cho mỗi cháu $3$ bánh thì thừa $2$ bánh. Nếu chia mỗi cháu $4$ kẹo thì thiếu $3$ chiếc kẹo. Tính số kẹo, bánh và số cháu được chia.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B16",
+  "khu": "CĐ12",
+  "so": 16,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai bể nước có dung tích bằng nhau. Người ta mở $2$ vòi nước, mỗi vòi chảy vào $1$ bể. Vòi $1$ một phút chảy được $40$ lít nước, vòi $2$ một phút chảy được $30$ lít nước. Người ta cho $2$ vòi chảy cùng một lúc vào $2$ bể. Khi vòi $1$ chảy đầy bể thì vòi $2$ còn phải chảy $600$ lít nước nữa mới đầy bể. Tính dung tích mỗi bể.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B17",
+  "khu": "CĐ12",
+  "so": 17,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Bể nước thứ nhất chứa $800$ lít nước, bể nước thứ hai chứa $1200$ lít nước. Người ta tháo ra cùng một lúc ở bể thứ nhất mỗi phút $15$ lít và ở bể thứ hai mỗi phút $25$ lít. Hỏi sau bao lâu số nước còn lại ở hai bể bằng nhau?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ12 · B18",
+  "khu": "CĐ12",
+  "so": 18,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Việt có một số bi và một số túi. Nếu Việt bỏ vào mỗi túi $9$ viên bi thì thừa $15$ viên, nếu bỏ vào mỗi túi $12$ viên bi thì vừa đủ. Hỏi Việt có bao nhiêu viên bi, bao nhiêu túi?",
+  "anh": []
+ }
+]

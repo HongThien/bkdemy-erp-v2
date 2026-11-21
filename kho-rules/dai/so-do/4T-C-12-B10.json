@@ -1,0 +1,1 @@
+{"gia_tri_phan":192,"hang":[{"nhan":"Mỗi thuyền 24 người","phan":1,"ghi":"24 người × ? thuyền"},{"nhan":"Số bộ đội","phan":1,"bot":"thừa 1 thuyền","bot_gt":24},{"nhan":"Mỗi thuyền 20 người","phan":1,"bot":"8 người + 1 thuyền","bot_gt":32,"ghi":"20 người × ? thuyền"}],"dau_hoi":["Số bộ đội"]}

@@ -1,0 +1,354 @@
+[
+ {
+  "ma_nguon": "CĐ9 · B1a",
+  "gop_y": false,
+  "dap_an": "$29$ ; $47$ ; $76$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy này không cách đều, nên phải tìm xem mỗi số hạng được tạo ra từ các số hạng đứng ngay trước nó như thế nào.\n\n**Bước 1.** Nhìn hiệu của hai số liền nhau để thấy dãy không cách đều, mỗi lần một khác.\n\n**Bước 2.** Thử cộng hai số hạng đứng liền nhau rồi so kết quả với số hạng đứng sau chúng.\n\n**Bước 3.** Khi quy luật đúng với mọi số hạng đã cho thì dùng chính quy luật đó để viết tiếp ba số hạng.\n\n**Chú ý:** quy luật phải đúng với tất cả các số hạng đã cho, không chỉ với vài số hạng đầu.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $1$; $3$; $4$; $7$; $11$; $18$; …\n\nTa có: $1+3=4$; $3+4=7$; $4+7=11$; $7+11=18$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ ba) bằng tổng của hai số hạng đứng liền trước nó.\n\nBa số hạng tiếp theo là: $11+18=29$; $18+29=47$; $29+47=76$.\n\nVậy viết tiếp ba số hạng, ta được: $1$; $3$; $4$; $7$; $11$; $18$; $29$; $47$; $76$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1b",
+  "gop_y": false,
+  "dap_an": "$40$ ; $74$ ; $136$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các số hạng tăng nhanh dần, nên thử xem mỗi số hạng có bằng tổng của nhiều số hạng đứng trước nó hay không.\n\n**Bước 1.** Nhận xét dãy không cách đều và mỗi số hạng lớn hơn nhiều so với số hạng đứng ngay trước.\n\n**Bước 2.** Thử cộng ba số hạng đứng liền nhau rồi so với số hạng đứng sau ba số đó.\n\n**Bước 3.** Kiểm tra quy luật vừa tìm với tất cả các số hạng đã cho rồi áp dụng để viết tiếp ba số hạng.\n\n**Chú ý:** số hạng đầu tiên cần ba số đứng trước nên quy luật chỉ bắt đầu từ số hạng thứ tư.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $0$; $2$; $4$; $6$; $12$; $22$; …\n\nTa có: $0+2+4=6$; $2+4+6=12$; $4+6+12=22$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ tư) bằng tổng của ba số hạng đứng liền trước nó.\n\nBa số hạng tiếp theo là: $6+12+22=40$; $12+22+40=74$; $22+40+74=136$.\n\nVậy viết tiếp ba số hạng, ta được: $0$; $2$; $4$; $6$; $12$; $22$; $40$; $74$; $136$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1c",
+  "gop_y": false,
+  "dap_an": "$18$ ; $25$ ; $33$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm hiệu của hai số liền nhau, nếu các hiệu đó lại tạo thành một dãy có quy luật thì dùng nó để viết tiếp.\n\n**Bước 1.** Tính hiệu của từng cặp số hạng đứng liền nhau trong dãy đã cho.\n\n**Bước 2.** Quan sát các hiệu vừa tính để nhận ra chúng tăng thêm một số cố định sau mỗi lần.\n\n**Bước 3.** Viết tiếp các hiệu theo quy luật đó rồi cộng vào số hạng đứng trước để ra ba số hạng mới.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $0$; $3$; $7$; $12$; …\n\nTa có: số thứ hai $=$ số thứ nhất $+3=3$\n\nSố thứ ba $=$ số thứ hai $+4=7$\n\nSố thứ tư $=$ số thứ ba $+5=12$\n\nQuy luật: số hạng đứng sau bằng số hạng đứng liền trước cộng với một số, số được cộng thêm lần lượt là $3$; $4$; $5$; …\n\nBa số hạng tiếp theo là:\n\nSố thứ năm $=$ số thứ tư $+6=18$\n\nSố thứ sáu $=$ số thứ năm $+7=25$\n\nSố thứ bảy $=$ số thứ sáu $+8=33$\n\nVậy viết tiếp ba số hạng, ta được: $0$; $3$; $7$; $12$; $18$; $25$; $33$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1d",
+  "gop_y": false,
+  "dap_an": "$120$ ; $720$ ; $5040$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy tăng rất nhanh, nên nghĩ đến phép nhân giữa số hạng đứng trước với số thứ tự của số hạng đứng sau.\n\n**Bước 1.** Tính xem số hạng sau gấp số hạng đứng ngay trước bao nhiêu lần.\n\n**Bước 2.** So sánh các số lần gấp đó với số thứ tự của số hạng để thấy mối liên hệ.\n\n**Bước 3.** Dùng quy luật vừa tìm để lần lượt viết tiếp ba số hạng.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $1$; $2$; $6$; $24$; …\n\nTa có: $1\\times 2=2$; $2\\times 3=6$; $6\\times 4=24$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ hai) bằng tích của số hạng đứng liền trước nó nhân với số thứ tự của số hạng đó.\n\nBa số hạng tiếp theo là: $24\\times 5=120$; $120\\times 6=720$; $720\\times 7=5040$.\n\nVậy viết tiếp ba số hạng, ta được: $1$; $2$; $6$; $24$; $120$; $720$; $5040$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1e",
+  "gop_y": false,
+  "dap_an": "$66$ ; $55$ ; $43$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy giảm dần, nên tìm xem mỗi lần giảm đi bao nhiêu và số bị giảm có thay đổi theo quy luật không.\n\n**Bước 1.** Tính hiệu của từng cặp hai số hạng liền nhau, lấy số đứng trước trừ số đứng sau.\n\n**Bước 2.** Nhận xét các số bị trừ đi tăng thêm một đơn vị sau mỗi lần.\n\n**Bước 3.** Viết tiếp các số bị trừ theo quy luật đó rồi lần lượt tìm ba số hạng mới.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $100$; $93$; $85$; $76$; …\n\nTa nhận thấy:\n\nSố thứ hai $=$ số thứ nhất $-7=93$\n\nSố thứ ba $=$ số thứ hai $-8=85$\n\nSố thứ tư $=$ số thứ ba $-9=76$\n\nQuy luật: số hạng đứng sau bằng số hạng đứng liền trước trừ đi một số, số bị trừ đi lần lượt là $7$; $8$; $9$; …\n\nBa số cần viết tiếp theo là:\n\nSố thứ năm $=$ số thứ tư $-10=66$\n\nSố thứ sáu $=$ số thứ năm $-11=55$\n\nSố thứ bảy $=$ số thứ sáu $-12=43$\n\nVậy viết tiếp ba số hạng, ta được: $100$; $93$; $85$; $76$; $66$; $55$; $43$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1f",
+  "gop_y": false,
+  "dap_an": "$39$ ; $60$ ; $94$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai số hạng liền nhau cộng lại rồi bớt đi một số cố định thì ra số hạng đứng sau chúng.\n\n**Bước 1.** Thử cộng hai số hạng đầu rồi so kết quả với số hạng thứ ba của dãy.\n\n**Bước 2.** Nhận ra tổng đó chưa khớp, rồi tìm số cần bớt đi để được đúng số hạng thứ ba.\n\n**Bước 3.** Kiểm tra số cần bớt với các cặp số hạng tiếp theo rồi dùng quy luật viết tiếp ba số.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $10$; $13$; $18$; $26$; …\n\nTa có: $10+13-5=18$; $13+18-5=26$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ ba) bằng tổng của hai số hạng liền trước nó trừ đi $5$.\n\nBa số cần viết tiếp theo là:\n\nSố thứ năm $=$ số thứ ba $+$ số thứ tư $-5=18+26-5=39$\n\nSố thứ sáu $=$ số thứ tư $+$ số thứ năm $-5=26+39-5=60$\n\nSố thứ bảy $=$ số thứ năm $+$ số thứ sáu $-5=39+60-5=94$\n\nVậy viết tiếp ba số hạng, ta được: $10$; $13$; $18$; $26$; $39$; $60$; $94$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1g",
+  "gop_y": false,
+  "dap_an": "$25$ ; $36$ ; $49$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các số trong dãy đều viết được thành tích của hai số bằng nhau, nên chỉ cần tìm số thứ tự tương ứng.\n\n**Bước 1.** Viết từng số hạng đã cho thành tích của hai thừa số giống nhau.\n\n**Bước 2.** Quan sát các thừa số đó để thấy chúng tăng dần từng đơn vị một.\n\n**Bước 3.** Viết tiếp ba thừa số kế tiếp rồi nhân mỗi thừa số với chính nó để được ba số hạng mới.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $0$; $1$; $4$; $9$; $16$; …\n\nTa nhận thấy: $0=0\\times 0$; $1=1\\times 1$; $4=2\\times 2$; $9=3\\times 3$; $16=4\\times 4$.\n\nQuy luật: mỗi số hạng bằng tích của số thứ tự trừ đi $1$ nhân với chính nó.\n\nBa số cần viết tiếp theo là: $5\\times 5=25$; $6\\times 6=36$; $7\\times 7=49$.\n\nVậy viết tiếp ba số hạng, ta được: $0$; $1$; $4$; $9$; $16$; $25$; $36$; $49$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1h",
+  "gop_y": false,
+  "dap_an": "$243$ ; $6561$ ; $1594323$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số hạng tăng rất nhanh, nên thử nhân hai số hạng đứng liền nhau để xem có ra số hạng đứng sau không.\n\n**Bước 1.** Thử nhân hai số hạng đầu rồi so kết quả với số hạng thứ ba của dãy.\n\n**Bước 2.** Kiểm tra cách nhân đó với các cặp số hạng tiếp theo trong dãy đã cho.\n\n**Bước 3.** Dùng quy luật đúng với mọi số hạng để lần lượt tính ba số hạng mới.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $1$; $3$; $3$; $9$; $27$; …\n\nTa có: $1\\times 3=3$; $3\\times 3=9$; $3\\times 9=27$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ ba) bằng tích của hai số hạng đứng liền trước nó.\n\nBa số hạng tiếp theo là: $9\\times 27=243$; $27\\times 243=6561$; $243\\times 6561=1594323$.\n\nVậy viết tiếp ba số hạng, ta được: $1$; $3$; $3$; $9$; $27$; $243$; $6561$; $1594323$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B1i",
+  "gop_y": false,
+  "dap_an": "$87$ ; $1481$ ; $128849$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số hạng tăng rất nhanh, nên nghĩ đến tích của hai số hạng liền trước rồi cộng thêm một số cố định.\n\n**Bước 1.** Thử nhân hai số hạng đầu rồi xem phải cộng thêm bao nhiêu để được số hạng thứ ba.\n\n**Bước 2.** Kiểm tra số cộng thêm đó với các cặp số hạng tiếp theo của dãy đã cho.\n\n**Bước 3.** Dùng quy luật đã kiểm tra để lần lượt tính ba số hạng mới.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng vào dãy số: $1$; $1$; $3$; $5$; $17$; …\n\nTa có: $1\\times 1+2=3$; $1\\times 3+2=5$; $3\\times 5+2=17$.\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ ba) bằng tích của hai số hạng đứng liền trước nó rồi cộng thêm $2$.\n\nBa số hạng tiếp theo là: $5\\times 17+2=87$; $17\\times 87+2=1481$; $87\\times 1481+2=128849$.\n\nVậy viết tiếp ba số hạng, ta được: $1$; $1$; $3$; $5$; $17$; $87$; $1481$; $128849$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B2a",
+  "gop_y": false,
+  "dap_an": "$4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cách đều nên đi ngược từ số cuối về đầu, mỗi lần lùi đúng một khoảng cách, lùi tất cả số hạng trừ một lần.\n\n**Bước 1.** Tính khoảng cách giữa hai số liền nhau từ các số hạng đã cho ở cuối dãy.\n\n**Bước 2.** Xác định số lần lùi từ số cuối về số đầu bằng số số hạng của dãy trừ đi một.\n\n**Bước 3.** Lấy số cuối trừ đi tích của số lần lùi với khoảng cách để tìm số hạng đầu tiên.\n\n**Phần 2. Trình bày**\n\nTìm số hạng đầu tiên của dãy số có $10$ số hạng: …; $32$; $36$; $40$.\n\nDãy số đã cho là dãy số cách đều với $10$ số hạng và khoảng cách giữa hai số liền nhau là $4$ đơn vị.\n\nSố hạng đầu tiên là: $40-(10-1)\\times 4=4$\n\nVậy số hạng đầu tiên của dãy là $4$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B2b",
+  "gop_y": false,
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cách đều nên đi ngược từ số cuối về đầu, mỗi lần lùi đúng một khoảng cách, lùi tất cả số hạng trừ một lần.\n\n**Bước 1.** Tính khoảng cách giữa hai số liền nhau từ các số hạng đã cho ở cuối dãy.\n\n**Bước 2.** Xác định số lần lùi từ số cuối về số đầu bằng số số hạng của dãy trừ đi một.\n\n**Bước 3.** Lấy số cuối trừ đi tích của số lần lùi với khoảng cách để tìm số hạng đầu tiên.\n\n**Phần 2. Trình bày**\n\nTìm số hạng đầu tiên của dãy số có $10$ số hạng: …; $44$; $49$; $54$.\n\nDãy số đã cho là dãy số cách đều với $10$ số hạng và khoảng cách giữa hai số liền nhau là $5$ đơn vị.\n\nSố hạng đầu tiên là: $54-(10-1)\\times 5=9$\n\nVậy số hạng đầu tiên của dãy là $9$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B3",
+  "gop_y": false,
+  "dap_an": "$522$ ; $996$ ; $496$ ; $522$ ; $996$ ; $496$ ; $522$ ; $996$ ; $496$ ; $522$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai bộ ba ô liên tiếp kề nhau có chung hai ô và cùng có tổng bằng nhau nên hai ô ở hai đầu phải bằng nhau.\n\n**Bước 1.** Đánh số các ô trống để dễ theo dõi rồi viết tổng ba ô liên tiếp đầu tiên.\n\n**Bước 2.** So sánh hai bộ ba ô liền nhau để thấy ô đứng cách nhau ba vị trí có giá trị bằng nhau.\n\n**Bước 3.** Suy ra các ô còn lại lặp lại theo từng nhóm ba ô rồi tính ô trống còn thiếu từ tổng đã cho.\n\n**Bước 4.** Điền đủ các ô và kiểm tra mọi bộ ba ô liên tiếp đều có tổng bằng số đã cho.\n\n**Phần 2. Trình bày**\n\nĐiền các số thích hợp vào dãy $10$ ô: …; $996$; …; …; …; $496$; …; …; …; … sao cho tổng ba ô liên tiếp đều bằng $2014$.\n\nTa đánh số thứ tự các ô cần điền như sau: ô số $1$; $996$; ô số $2$; ô số $3$; ô số $4$; $496$; ô số $5$; ô số $6$; ô số $7$; ô số $8$.\n\nTheo bài ra ta có: $996+$ ô số $2+$ ô số $3=2014$\n\nÔ số $2+$ ô số $3+$ ô số $4=2014$\n\nSuy ra ô số $4=996$.\n\nTương tự: ô số $6=$ ô số $4=996$\n\nÔ số $2=496=$ ô số $7$\n\nÔ số $1=$ ô số $3=$ ô số $5=$ ô số $8$\n\nMà ô số $1=2014-(996+$ ô số $2)=2014-(996+496)=522$.\n\nDo đó ô số $1=$ ô số $3=$ ô số $5=$ ô số $8=522$.\n\nVậy ta có các ô điền xong như sau: $522$; $996$; $496$; $522$; $996$; $496$; $522$; $996$; $496$; $522$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B4a",
+  "gop_y": false,
+  "dap_an": "$156$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đây là dãy cách đều, số hạng thứ $n$ bằng số hạng đầu cộng với $n-1$ lần khoảng cách.\n\n**Bước 1.** Tính hiệu của hai số hạng liền nhau để tìm khoảng cách của dãy.\n\n**Bước 2.** Xác định số lần cộng khoảng cách bằng thứ tự số hạng cần tìm trừ đi một.\n\n**Bước 3.** Lấy tích của số lần đó với khoảng cách cộng với số hạng đầu tiên để tìm số hạng cần tìm.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $32$ của dãy: $1$; $6$; $11$; $16$; $21$; $26$; …\n\nĐây là dãy số cách đều có khoảng cách giữa hai số liền nhau là $5$ đơn vị.\n\nSố hạng thứ $32$ là: $(32-1)\\times 5+1=156$\n\nVậy số hạng thứ $32$ của dãy là $156$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B4b",
+  "gop_y": false,
+  "dap_an": "$1226$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy không cách đều nhưng các hiệu của hai số liền nhau tăng đều, nên số hạng cần tìm bằng số đầu cộng tổng các hiệu đó.\n\n**Bước 1.** Tính hiệu của các cặp số hạng liền nhau để nhận ra các hiệu là $1$; $2$; $3$; $4$; …\n\n**Bước 2.** Viết số hạng thứ $n$ bằng số hạng đầu cộng với tổng của các hiệu đứng trước nó.\n\n**Bước 3.** Nhận ra các hiệu lập thành dãy số cách đều liên tiếp từ $1$ để tính tổng bằng công thức dãy số cách đều.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $50$ của dãy: $1$; $2$; $4$; $7$; $11$; $16$; …\n\nTa nhận thấy:\n\nSố thứ $1=1$\n\nSố thứ $2=$ số thứ $1+1=1+1$\n\nSố thứ $3=$ số thứ $2+2=1+1+2$\n\nSố thứ $4=$ số thứ $3+3=1+1+2+3$\n\nSố hạng thứ $50=$ số thứ $49+49=1+1+2+3+\\ldots+48+49$\n\nSố hạng thứ $50$ là: $1+(1+49)\\times 49:2=1226$\n\nVậy số hạng thứ $50$ của dãy là $1226$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B4c",
+  "gop_y": false,
+  "dap_an": "$844$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các hiệu của hai số liền nhau là các số lẻ liên tiếp, nên số hạng cần tìm bằng số đầu cộng tổng các số lẻ đó.\n\n**Bước 1.** Tính hiệu của các cặp số hạng liền nhau để nhận ra các hiệu là $1$; $3$; $5$; $7$; …\n\n**Bước 2.** Viết số hạng cần tìm bằng số hạng đầu cộng với các số lẻ liên tiếp bắt đầu từ $1$.\n\n**Bước 3.** Tìm số lẻ cuối cùng cần cộng rồi tính tổng các số lẻ đó theo công thức dãy số cách đều.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $30$ của dãy: $3$; $4$; $7$; $12$; $19$; …\n\nTa nhận thấy:\n\nSố thứ $2=$ số thứ nhất $+$ số lẻ thứ nhất $=3+1$ (số lẻ thứ nhất là $1$)\n\nSố thứ $3=$ số thứ $2+$ số lẻ thứ hai $=3+1+3$ (số lẻ thứ hai là $(2-1)\\times 2+1=3$)\n\nSố thứ $4=$ số thứ $3+$ số lẻ thứ ba $=3+1+3+5$ (số lẻ thứ ba là $(3-1)\\times 2+1=5$)\n\nSố thứ $30=$ số thứ $29+$ số lẻ thứ $29=3+1+3+5+\\ldots+57$ (số lẻ thứ $29$ là $(29-1)\\times 2+1=57$)\n\nSố hạng thứ $30$ là: $3+(1+57)\\times 29:2=844$\n\nVậy số hạng thứ $30$ của dãy là $844$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B4d",
+  "gop_y": false,
+  "dap_an": "$361$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cách đều nên biết số cuối và số số hạng thì tìm được số đầu, rồi từ số đầu tìm được số hạng bất kì.\n\n**Bước 1.** Tính khoảng cách của dãy từ hiệu hai số liền nhau ở cuối dãy.\n\n**Bước 2.** Tìm số hạng đầu tiên bằng cách lùi từ số cuối đúng số lần bằng số số hạng trừ đi một.\n\n**Bước 3.** Từ số hạng đầu và khoảng cách, tính số hạng thứ $60$ bằng công thức số hạng thứ $n$.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $60$ của dãy …; $589$; $595$; $601$ biết dãy có $100$ số hạng.\n\nDãy trên là dãy số cách đều có khoảng cách giữa hai số liền nhau là $6$ đơn vị.\n\nSố hạng đầu tiên của dãy là: $601-(100-1)\\times 6=7$\n\nSố hạng thứ $60$ của dãy là: $(60-1)\\times 6+7=361$\n\nVậy số hạng thứ $60$ của dãy là $361$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B5a",
+  "gop_y": false,
+  "dap_an": "$180$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các số có ba chữ số chia hết cho $5$ cách đều nhau $5$ đơn vị, nên lập dãy rồi đếm số số hạng.\n\n**Bước 1.** Tìm số bé nhất và số lớn nhất có ba chữ số mà chia hết cho $5$.\n\n**Bước 2.** Nhận ra hai số chia hết cho $5$ liền nhau hơn kém nhau $5$ đơn vị nên các số tạo thành dãy cách đều.\n\n**Bước 3.** Tính số số hạng của dãy bằng công thức: hiệu của số cuối và số đầu chia cho khoảng cách rồi cộng một.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCác số có ba chữ số chia hết cho $5$ tạo thành một dãy số cách đều với khoảng cách là $5$: $100$; $105$; $110$; $115$; …; $995$.\n\nSố các số có ba chữ số chia hết cho $5$ là: $(995-100):5+1=180$ (số)\n\nĐáp số: $180$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B5b",
+  "gop_y": false,
+  "dap_an": "$675$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số chia hết cho $2$ mà không chia hết cho $3$ bằng số chia hết cho $2$ trừ đi số chia hết cho cả $2$ và $3$.\n\n**Bước 1.** Đếm các số từ $1$ đến $2024$ chia hết cho $2$ bằng cách lập dãy cách đều rồi tính số số hạng.\n\n**Bước 2.** Nhận ra số chia hết cho cả $2$ và $3$ là số chia hết cho $6$ rồi đếm chúng bằng cách tương tự.\n\n**Bước 3.** Lấy số các số chia hết cho $2$ trừ đi số các số chia hết cho $6$ để được số cần tìm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong các số từ $1$ đến $2024$, muốn biết có bao nhiêu số chia hết cho $2$ nhưng không chia hết cho $3$ ta tìm số các số chia hết cho $2$ trừ đi số các số chia hết cho cả $2$ và $3$.\n\nSố các số chia hết cho $2$ là: $(2024-2):2+1=1012$ (số)\n\nSố chia hết cho cả $2$ và $3$ là số chia hết cho $6$.\n\nSố các số chia hết cho $6$ là: $(2022-6):6+1=337$ (số)\n\nSố các số chia hết cho $2$ nhưng không chia hết cho $3$ là: $1012-337=675$ (số)\n\nĐáp số: $675$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B5c",
+  "gop_y": false,
+  "dap_an": "$300$ số ; $164850$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các số có ba chữ số chia $3$ dư $2$ cách đều nhau $3$ đơn vị, nên lập dãy rồi tính số số hạng và tổng của dãy.\n\n**Bước 1.** Tìm số bé nhất và số lớn nhất có ba chữ số mà chia $3$ dư $2$.\n\n**Bước 2.** Nhận ra các số đó tạo thành dãy cách đều có khoảng cách là $3$ rồi tính số số hạng của dãy.\n\n**Bước 3.** Tính tổng của dãy bằng cách lấy tổng của số đầu và số cuối nhân với số số hạng rồi chia cho $2$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bé nhất có ba chữ số chia $3$ dư $2$ là $101$.\n\nSố lớn nhất có ba chữ số chia $3$ dư $2$ là $998$.\n\nTa có dãy số các số chia $3$ dư $2$: $101$; $104$; $107$; $110$; …; $998$.\n\nDãy trên có số số hạng là: $(998-101):3+1=300$ (số)\n\nTổng của các số đó là: $(101+998)\\times 300:2=164850$\n\nĐáp số: $300$ số ; tổng $164850$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B6a",
+  "gop_y": false,
+  "dap_an": "$29$ ; $34$ ; $39$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hiệu của hai số liền nhau trong dãy đều bằng nhau, nên mỗi số hạng bằng số hạng đứng ngay trước cộng thêm số cố định đó.\n\n**Bước 1.** Tính hiệu của từng cặp số hạng đứng liền nhau trong dãy đã cho.\n\n**Bước 2.** Nhận xét các hiệu đều bằng nhau để nêu quy luật của dãy.\n\n**Bước 3.** Cộng liên tiếp số cố định đó vào số hạng cuối cùng để viết thêm ba số hạng.\n\n**Phần 2. Trình bày**\n\nTìm quy luật và viết thêm $3$ số hạng tiếp theo của dãy: $4$; $9$; $14$; $19$; $24$; …\n\nQuy luật: mỗi số hạng (kể từ số hạng thứ hai) bằng tổng của số hạng đứng liền trước nó với $5$.\n\nBa số hạng tiếp theo là: $24+5=29$; $29+5=34$; $34+5=39$.\n\nVậy viết tiếp ba số hạng, ta được: $4$; $9$; $14$; $19$; $24$; $29$; $34$; $39$; …",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B6b",
+  "gop_y": false,
+  "dap_an": "$749$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đây là dãy cách đều nên số hạng thứ $n$ bằng số hạng đầu cộng với $n-1$ lần khoảng cách.\n\n**Bước 1.** Nhận ra dãy cách đều và xác định khoảng cách giữa hai số liền nhau.\n\n**Bước 2.** Xác định số lần cộng khoảng cách bằng thứ tự của số hạng cần tìm trừ đi một.\n\n**Bước 3.** Lấy tích của số lần đó với khoảng cách rồi cộng với số hạng đầu tiên để ra số hạng cần tìm.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $150$ của dãy: $4$; $9$; $14$; $19$; $24$; …\n\nDãy số đã cho là dãy cách đều có khoảng cách giữa hai số liền nhau là $5$ đơn vị.\n\nSố hạng thứ $150$ của dãy là: $(150-1)\\times 5+4=749$\n\nVậy số hạng thứ $150$ của dãy là $749$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B6c",
+  "gop_y": false,
+  "dap_an": "Không",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số hạng của dãy đều có cùng số dư khi chia cho khoảng cách, nên số nào không có số dư đó thì không thuộc dãy.\n\n**Bước 1.** Xác định khoảng cách của dãy rồi tìm số dư của các số hạng khi chia cho khoảng cách đó.\n\n**Bước 2.** Nhận xét tất cả các số hạng của dãy đều có chung một số dư.\n\n**Bước 3.** Tìm số dư của số $2023$ khi chia cho khoảng cách rồi so với số dư chung của dãy để kết luận.\n\n**Phần 2. Trình bày**\n\nSố $2023$ có thuộc dãy số $4$; $9$; $14$; $19$; $24$; … không? Vì sao?\n\nDãy số đã cho gồm các số chia cho $5$ dư $4$.\n\nMà $2023$ chia cho $5$ dư $3$.\n\nVậy số $2023$ không thuộc dãy số đã cho.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B7a",
+  "gop_y": false,
+  "dap_an": "$2893$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số từ $1$ đến $1000$ theo số chữ số của chúng, mỗi nhóm đếm số số rồi nhân với số chữ số của mỗi số.\n\n**Bước 1.** Chia các số thành nhóm số có một chữ số, hai chữ số, ba chữ số và bốn chữ số.\n\n**Bước 2.** Đếm số số của mỗi nhóm bằng cách lấy hiệu của số cuối và số đầu rồi cộng một.\n\n**Bước 3.** Nhân số số của mỗi nhóm với số chữ số của nhóm đó rồi cộng các kết quả lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $1$ đến $9$ có $9$ số có $1$ chữ số.\n\nTừ $10$ đến $99$ có: $(99-10):1+1=90$ (số có $2$ chữ số)\n\nTừ $100$ đến $999$ có: $(999-100):1+1=900$ (số có $3$ chữ số)\n\nCó $1$ số có $4$ chữ số (là số $1000$).\n\nSố chữ số để viết các số tự nhiên liên tiếp từ $1$ đến $1000$ là: $9+2\\times 90+3\\times 900+4=2893$ (chữ số)\n\nĐáp số: $2893$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B7b",
+  "gop_y": false,
+  "dap_an": "$3497$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số chẵn từ $0$ đến $2024$ theo số chữ số, mỗi nhóm lập thành dãy cách đều $2$ đơn vị rồi đếm số số hạng.\n\n**Bước 1.** Chia các số chẵn thành nhóm số có một, hai, ba và bốn chữ số.\n\n**Bước 2.** Đếm số các số chẵn của mỗi nhóm bằng công thức tính số số hạng của dãy cách đều có khoảng cách là $2$.\n\n**Bước 3.** Nhân số các số của mỗi nhóm với số chữ số tương ứng rồi cộng lại.\n\n**Chú ý:** số $0$ cũng là số chẵn và được viết bằng một chữ số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $0$ đến $8$ có số các số chẵn là: $(8-0):2+1=5$ (số)\n\nTừ $10$ đến $98$ có số các số chẵn là: $(98-10):2+1=45$ (số)\n\nTừ $100$ đến $998$ có số các số chẵn là: $(998-100):2+1=450$ (số)\n\nTừ $1000$ đến $2024$ có số các số chẵn là: $(2024-1000):2+1=513$ (số)\n\nSố chữ số để viết các số chẵn liên tiếp từ $0$ đến $2024$ là: $1\\times 5+2\\times 45+3\\times 450+4\\times 513=3497$ (chữ số)\n\nĐáp số: $3497$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B8",
+  "gop_y": false,
+  "dap_an": "$606$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số trang chia thành nhóm trang có một, hai, ba chữ số, mỗi nhóm đếm số trang rồi nhân với số chữ số của số trang.\n\n**Bước 1.** Chia các trang từ $1$ đến $238$ thành nhóm trang có một chữ số, hai chữ số và ba chữ số.\n\n**Bước 2.** Đếm số trang của mỗi nhóm bằng hiệu của số trang cuối và số trang đầu rồi cộng một.\n\n**Bước 3.** Nhân số trang của mỗi nhóm với số chữ số của số trang rồi cộng các kết quả lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ trang $1$ đến trang $9$ có $9$ trang có $1$ chữ số.\n\nTừ trang $10$ đến trang $99$ có: $(99-10):1+1=90$ (trang có $2$ chữ số)\n\nTừ trang $100$ đến trang $238$ có: $(238-100):1+1=139$ (trang có $3$ chữ số)\n\nCần dùng tất cả số chữ số là: $1\\times 9+2\\times 90+3\\times 139=606$ (chữ số)\n\nĐáp số: $606$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B9",
+  "gop_y": false,
+  "dap_an": "$114$ trang",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính trước số chữ số đã dùng cho các trang có một và hai chữ số, phần còn lại dùng cho trang có ba chữ số.\n\n**Bước 1.** Tính số chữ số dùng để đánh các trang từ $1$ đến $99$ theo từng nhóm một chữ số và hai chữ số.\n\n**Bước 2.** Lấy tổng số chữ số đã cho trừ đi số chữ số vừa tính để biết còn lại bao nhiêu chữ số.\n\n**Bước 3.** Chia số chữ số còn lại cho $3$ để biết số trang có ba chữ số rồi cộng với $99$ trang đã có.\n\n**Chú ý:** số trang sách bắt đầu đánh từ trang số $1$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ trang $1$ đến trang $9$ có $9$ trang có $1$ chữ số.\n\nTừ trang $10$ đến trang $99$ có: $(99-10):1+1=90$ (trang có $2$ chữ số)\n\nSố chữ số dùng để đánh số trang từ $1$ đến $99$ là: $1\\times 9+2\\times 90=189$ (chữ số)\n\nSố chữ số còn lại để đánh các trang có $3$ chữ số là: $234-189=45$ (chữ số)\n\nSố trang sách có $3$ chữ số là: $45:3=15$ (trang)\n\nSố trang của quyển sách là: $9+90+15=114$ (trang)\n\nĐáp số: $114$ trang",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B10",
+  "gop_y": false,
+  "dap_an": "$1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính số chữ số dùng cho các số có một và hai chữ số, phần chữ số còn lại chia cho $3$ để biết viết được bao nhiêu số có ba chữ số.\n\n**Bước 1.** Tính số chữ số dùng để viết các số từ $1$ đến $99$ theo từng nhóm số có một và hai chữ số.\n\n**Bước 2.** Lấy $2024$ chữ số trừ đi số chữ số vừa tính rồi chia cho $3$ để biết số các số có ba chữ số viết được.\n\n**Bước 3.** Xem số dư của phép chia để biết chữ số cuối cùng là chữ số thứ mấy của số tiếp theo, từ đó tìm ra chữ số đó.\n\n**Chú ý:** số dư khác $0$ nghĩa là số cuối cùng chưa được viết trọn vẹn, chỉ viết các chữ số đầu của nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $1$ đến $9$ có $9$ số có một chữ số.\n\nTừ $10$ đến $99$ có: $(99-10):1+1=90$ (số có $2$ chữ số)\n\nSố chữ số để viết các số tự nhiên liên tiếp từ $1$ đến $99$ là: $1\\times 9+2\\times 90=189$ (chữ số)\n\nSố chữ số còn lại để viết các số có $3$ chữ số là: $2024-189=1835$ (chữ số)\n\nTa có: $1835:3=611$ (dư $2$)\n\nTừ $100$ đến $710$ có $611$ số nên số tự nhiên cần tìm được viết: $12345678\\ldots99100101102\\ldots70971071$.\n\nVậy chữ số hàng đơn vị của số cần tìm là $1$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề in \"1235678…\" (thiếu chữ số 4); đã chép thành \"12345678…\" theo dãy số tự nhiên liên tiếp và theo hướng dẫn của sách (12345678...99100101…)."
+ },
+ {
+  "ma_nguon": "CĐ9 · B11a",
+  "gop_y": false,
+  "dap_an": "$6985$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chia các số từ $1$ đến $2023$ theo số chữ số, mỗi nhóm đếm số số rồi nhân với số chữ số của nhóm đó.\n\n**Bước 1.** Chia các số của dãy thành nhóm số có một, hai, ba và bốn chữ số.\n\n**Bước 2.** Đếm số số của mỗi nhóm bằng hiệu của số cuối và số đầu rồi cộng một.\n\n**Bước 3.** Nhân số số của mỗi nhóm với số chữ số tương ứng rồi cộng các kết quả lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $1$ đến $9$ có $9$ số có $1$ chữ số.\n\nTừ $10$ đến $99$ có: $(99-10):1+1=90$ (số có $2$ chữ số)\n\nTừ $100$ đến $999$ có: $(999-100):1+1=900$ (số có $3$ chữ số)\n\nTừ $1000$ đến $2023$ có: $(2023-1000):1+1=1024$ (số có $4$ chữ số)\n\nĐể viết hết các số của dãy cần dùng tất cả số chữ số là: $1\\times 9+2\\times 90+3\\times 900+4\\times 1024=6985$ (chữ số)\n\nĐáp số: $6985$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B11b",
+  "gop_y": false,
+  "dap_an": "$602$ chữ số $5$ ; $1613$ chữ số $1$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm riêng chữ số cần tìm ở từng hàng, mỗi hàng liệt kê các số có chữ số đó ở hàng ấy rồi đếm bằng dãy cách đều.\n\n**Bước 1.** Xét chữ số cần tìm ở hàng đơn vị bằng cách lập dãy các số có chữ số đó ở hàng đơn vị rồi đếm số số hạng.\n\n**Bước 2.** Làm tương tự cho hàng chục, hàng trăm và hàng nghìn, chia các số thành từng khoảng nhỏ để đếm.\n\n**Bước 3.** Cộng số chữ số tìm được ở các hàng lại để ra tổng số chữ số cần tìm trong dãy.\n\n**Chú ý:** chữ số $5$ không đứng ở hàng nghìn của các số đến $2023$, còn chữ số $1$ thì có, nên khi đếm chữ số $1$ phải xét thêm hàng nghìn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXét các chữ số $5$ ở hàng đơn vị: $5$; $15$; $25$; $35$; …; $2015$.\n\nCó số số hạng là: $(2015-5):10+1=202$ (số)\n\nDo đó có $202$ chữ số $5$ ở hàng đơn vị.\n\nXét các chữ số $5$ ở hàng chục: $50$; $51$; …; $59$ và $150$; $151$; …; $159$ và … và $1950$; $1951$; …; $1959$.\n\nCó số số hạng là: $[(1950-50):100+1]\\times 10=200$ (số)\n\nDo đó có $200$ chữ số $5$ ở hàng chục.\n\nXét chữ số $5$ ở hàng trăm: $500$; $501$; …; $599$ và $1500$; $1501$; …; $1599$.\n\nMỗi dãy có số số hạng là: $(599-500)+1=100$ (số)\n\nDo đó có $200$ chữ số $5$ ở hàng trăm.\n\nTrong dãy số đã cho có tất cả số chữ số $5$ là: $202+200+200=602$ (chữ số)\n\nXét các chữ số $1$ ở hàng đơn vị: $1$; $11$; $21$; $31$; …; $2021$.\n\nCó số số hạng là: $(2021-1):10+1=203$ (số)\n\nDo đó có $203$ chữ số $1$ ở hàng đơn vị.\n\nXét các chữ số $1$ ở hàng chục: $10$; $11$; …; $19$ và $110$; $111$; …; $119$ và … và $2010$; $2011$; …; $2019$.\n\nCó số số hạng là: $[(2010-10):100+1]\\times 10=210$ (số)\n\nDo đó có $210$ chữ số $1$ ở hàng chục.\n\nXét chữ số $1$ ở hàng trăm: $100$; $101$; …; $199$ và $1100$; $1101$; …; $1199$.\n\nMỗi dãy có $100$ số nên có $200$ chữ số $1$ ở hàng trăm.\n\nXét chữ số $1$ ở hàng nghìn: $1000$; $1001$; …; $1999$.\n\nCó số số hạng là: $(1999-1000)+1=1000$ (số)\n\nTrong dãy số đã cho có tất cả số chữ số $1$ là: $203+210+200+1000=1613$ (chữ số)\n\nĐáp số: $602$ chữ số $5$ ; $1613$ chữ số $1$",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B12",
+  "gop_y": false,
+  "dap_an": "$527$ chữ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chữ số $0$ không đứng ở hàng cao nhất, nên chỉ xét chữ số $0$ ở hàng đơn vị, hàng chục và hàng trăm.\n\n**Bước 1.** Xét chữ số $0$ ở hàng đơn vị bằng cách lập dãy các số tròn chục rồi đếm số số hạng.\n\n**Bước 2.** Xét chữ số $0$ ở hàng chục và hàng trăm, chia các số thành từng khoảng nhỏ rồi đếm.\n\n**Bước 3.** Cộng số chữ số $0$ đếm được ở ba hàng lại để ra kết quả.\n\n**Chú ý:** chữ số đứng ở hàng cao nhất của một số khác $0$ không thể là $0$, nên chữ số $0$ không đếm ở hàng nghìn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nXét các chữ số $0$ ở hàng đơn vị: $10$; $20$; $30$; …; $2020$.\n\nCó số số hạng là: $(2020-10):10+1=202$ (số)\n\nDo đó có $202$ chữ số $0$ ở hàng đơn vị.\n\nXét các chữ số $0$ ở hàng chục: $100$; $101$; …; $109$ và $200$; $201$; …; $209$ và … và $2000$; $2001$; …; $2009$.\n\nCó số số hạng là: $[(2000-100):100+1]\\times 10=200$ (số)\n\nDo đó có $200$ chữ số $0$ ở hàng chục.\n\nXét chữ số $0$ ở hàng trăm: $1000$; $1001$; …; $1099$.\n\nCó số số hạng là: $(1099-1000)+1=100$ (số)\n\nVà $2000$; $2001$; …; $2024$.\n\nCó số số hạng là: $(2024-2000)+1=25$ (số)\n\nDo đó có $125$ chữ số $0$ ở hàng trăm.\n\nTrong dãy số đã cho có tất cả số chữ số $0$ là: $202+200+125=527$ (chữ số)\n\nĐáp số: $527$ chữ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B13",
+  "gop_y": false,
+  "dap_an": "$126$ số",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các số bị xóa đều có chữ số tận cùng là $2$; $4$; $6$; $8$ hoặc $5$, nên mỗi chục số chỉ còn lại $5$ số.\n\n**Bước 1.** Xét các chữ số tận cùng của những số bị xóa ở bước thứ nhất và bước thứ hai.\n\n**Bước 2.** Suy ra mỗi chục số liên tiếp chỉ giữ lại các số có chữ số tận cùng là $0$; $1$; $3$; $7$; $9$.\n\n**Bước 3.** Đếm số chục có trong dãy rồi nhân với số số còn lại ở mỗi chục, sau đó xét riêng các số cuối dãy còn dư.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNhận xét: các số phải xóa có tận cùng là $2$; $4$; $6$; $8$; $5$.\n\nMỗi chục xóa $5$ số, còn lại $5$ số.\n\nTừ $1$ đến $250$ có $25$ chục nên có số các số còn lại sau khi xóa là: $5\\times 25=125$ (số)\n\nXét các số $251$; $252$, xóa số $252$, giữ lại số $251$.\n\nSố các số còn lại sau khi xóa là: $125+1=126$ (số)\n\nĐáp số: $126$ số",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B14a",
+  "gop_y": false,
+  "dap_an": "$368$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cách đều nên số hạng thứ $n$ bằng số hạng đầu cộng với $n-1$ lần khoảng cách.\n\n**Bước 1.** Tính hiệu của hai số liền nhau để tìm khoảng cách giữa các số hạng của dãy.\n\n**Bước 2.** Xác định số lần cộng khoảng cách bằng thứ tự của số hạng cần tìm trừ đi một.\n\n**Bước 3.** Lấy tích của số lần đó với khoảng cách rồi cộng với số hạng đầu tiên.\n\n**Phần 2. Trình bày**\n\nTìm số hạng thứ $90$ của dãy: $12$; $16$; $20$; $24$; $28$; …\n\nDãy số đã cho là dãy số cách đều có khoảng cách giữa hai số hạng liền nhau là $4$ đơn vị.\n\nSố hạng thứ $90$ của dãy là: $(90-1)\\times 4+12=368$\n\nVậy số hạng thứ $90$ của dãy là $368$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B14b",
+  "gop_y": false,
+  "dap_an": "Số $2024$ thuộc dãy ; là số hạng thứ $504$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mọi số hạng của dãy đều chia hết cho khoảng cách, nên chỉ những số chia hết cho khoảng cách và không bé hơn số đầu mới thuộc dãy.\n\n**Bước 1.** Nhận xét các số hạng của dãy đều chia hết cho khoảng cách giữa hai số liền nhau.\n\n**Bước 2.** Kiểm tra từng số đã cho xem số nào chia hết cho khoảng cách để chọn ra số thuộc dãy.\n\n**Bước 3.** Tính số số hạng từ số đầu của dãy đến số tìm được để biết nó là số hạng thứ mấy.\n\n**Phần 2. Trình bày**\n\nTrong các số $2022$; $2023$; $2024$; $2025$ số nào thuộc dãy số $12$; $16$; $20$; $24$; $28$; …? Vì sao? Nếu thuộc nó là số hạng thứ bao nhiêu của dãy?\n\nCác số hạng của dãy số đã cho là số chia hết cho $4$.\n\nDo đó số $2024$ thuộc dãy số đó.\n\nCác số $2022$; $2023$; $2025$ đều không chia hết cho $4$ nên các số đó không thuộc dãy số đã cho.\n\nTừ số $12$ đến số $2024$ có số số hạng là: $(2024-12):4+1=504$ (số)\n\nDo đó số $2024$ là số hạng thứ $504$ của dãy.\n\nVậy trong các số đã cho, chỉ có số $2024$ thuộc dãy và là số hạng thứ $504$ của dãy.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B14c",
+  "gop_y": false,
+  "dap_an": "$5500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tổng của dãy cách đều bằng tổng của số đầu và số cuối nhân với số số hạng rồi chia cho $2$.\n\n**Bước 1.** Nhận ra dãy cách đều và tính khoảng cách giữa hai số liền nhau.\n\n**Bước 2.** Tìm số hạng thứ $50$ của dãy bằng công thức số hạng thứ $n$ để biết số cuối của $50$ số hạng đầu.\n\n**Bước 3.** Tính tổng bằng cách lấy tổng của số đầu và số cuối nhân với $50$ rồi chia cho $2$.\n\n**Phần 2. Trình bày**\n\nTính tổng $50$ số hạng đầu tiên của dãy: $12$; $16$; $20$; $24$; $28$; …\n\nSố hạng thứ $50$ của dãy là: $(50-1)\\times 4+12=208$\n\nTổng của $50$ số hạng đầu tiên của dãy là: $(12+208)\\times 50:2=5500$\n\nVậy tổng $50$ số hạng đầu tiên của dãy là $5500$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B15",
+  "gop_y": false,
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm số chữ số dùng để viết các số chẵn có một, hai, ba chữ số, phần còn lại dùng cho các số chẵn có bốn chữ số.\n\n**Bước 1.** Đếm các số chẵn có một chữ số, hai chữ số và ba chữ số rồi tính số chữ số dùng để viết chúng.\n\n**Bước 2.** Lấy $2000$ trừ đi số chữ số vừa tính để biết còn lại bao nhiêu chữ số dùng cho các số chẵn có bốn chữ số.\n\n**Bước 3.** Chia số chữ số còn lại cho $4$ để biết chữ số cuối cùng thuộc số chẵn thứ mấy rồi tìm số đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTừ $2$ đến $8$ có tất cả $4$ số chẵn có $1$ chữ số.\n\nTừ $10$ đến $98$ có số số chẵn là: $(98-10):2+1=45$ (số)\n\nTừ $100$ đến $998$ có số số chẵn là: $(998-100):2+1=450$ (số)\n\nSố chữ số dùng để viết các số chẵn từ $2$ đến $998$ là: $1\\times 4+2\\times 45+3\\times 450=1444$ (chữ số)\n\nSố chữ số còn lại dùng để viết các số chẵn có $4$ chữ số là: $2000-1444=556$ (chữ số)\n\nSố các số chẵn có $4$ chữ số là: $556:4=139$ (số)\n\nSố chẵn bé nhất có $4$ chữ số là $1000$.\n\nSố chẵn có $4$ chữ số thứ $139$ là: $(139-1)\\times 2+1000=1276$\n\nVậy chữ số thứ $2000$ của dãy số đã cho là $6$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B16",
+  "gop_y": false,
+  "dap_an": "$101$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dãy cách đều với khoảng cách $1$, nên số số hạng tính theo $x$ rồi viết công thức tổng của dãy và tìm $x$.\n\n**Bước 1.** Tính số số hạng của dãy từ $10$ đến $x$ theo $x$ bằng công thức tính số số hạng.\n\n**Bước 2.** Viết tổng của dãy bằng tổng của số đầu và số cuối nhân với số số hạng rồi chia cho $2$.\n\n**Bước 3.** Đưa tổng đó về tích hai thừa số, phân tích số $5106$ thành tích sao cho hai thừa số hơn kém nhau $19$ để tìm $x$.\n\n**Chú ý:** hai thừa số $(x+10)$ và $(x-9)$ luôn hơn kém nhau $19$ đơn vị, đó là chìa khóa để tách tích.\n\n**Phần 2. Trình bày**\n\nTìm $x$ để tổng các số hạng của dãy số $10$; $11$; $12$; $13$; …; $x$ bằng $5106$.\n\nDãy trên là dãy số cách đều có khoảng cách giữa hai số liền nhau là $1$ đơn vị.\n\nDãy số có số số hạng là: $(x-10):1+1=x-9$ (số hạng)\n\nTheo đề bài ta có tổng các số hạng của dãy số đã cho bằng $5106$.\n\nDo đó: $(10+x)\\times (x-9):2=5106$\n\n$(10+x)\\times (x-9)=10212$\n\n$(10+x)\\times (x-9)=111\\times 92$\n\n$(x+10)\\times (x-9)=(101+10)\\times (101-9)$\n\nSuy ra $x=101$.\n\nVậy để tổng các số hạng của dãy số đã cho bằng $5106$ thì $x=101$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B17a",
+  "gop_y": false,
+  "dap_an": "Có",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn biết có bốn chữ số $1$ liền nhau hay không thì xét các chỗ nối giữa hai số liên tiếp khi viết liền nhau.\n\n**Bước 1.** Nhận xét cách ba chữ số $1$ liền nhau xuất hiện khi viết các số liên tiếp.\n\n**Bước 2.** Thử các số liên tiếp có nhiều chữ số $1$ rồi xem chúng nối liền với số viết ngay sau đó.\n\n**Bước 3.** Kiểm tra chữ số đứng trước và đứng sau để chắc chắn có đúng bốn chữ số $1$ liền nhau.\n\n**Phần 2. Trình bày**\n\nCó thể xuất hiện đúng $4$ chữ số $1$ liền nhau hay không? Vì sao?\n\nCó thể xuất hiện đúng $4$ chữ số $1$ liền nhau nếu ta viết đến số $21111$: $12345678\\ldots2111021111$.\n\nVậy có thể xuất hiện đúng $4$ chữ số $1$ liền nhau.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B17b",
+  "gop_y": false,
+  "dap_an": "$555$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm chỗ đầu tiên có năm chữ số $2$ liền nhau rồi đếm số chữ số đã viết trước chỗ đó.\n\n**Bước 1.** Tìm các số liên tiếp mà khi viết liền nhau cho ra năm chữ số $2$ liên tiếp đầu tiên.\n\n**Bước 2.** Đếm số chữ số dùng để viết các số có một, hai và ba chữ số đứng trước chỗ đó.\n\n**Bước 3.** Cộng các kết quả để biết có bao nhiêu chữ số đã viết trước năm chữ số $2$ liên tiếp.\n\n**Chú ý:** cách đếm vị trí giống như trong đề, ba chữ số $1$ liền nhau xuất hiện sau khi đã viết đủ $11$ chữ số.\n\n**Phần 2. Trình bày**\n\nBắt đầu từ chữ số thứ bao nhiêu của số $123456789101112131415\\ldots$ xuất hiện $5$ chữ số $2$ liên tiếp?\n\nNăm chữ số $2$ liên tiếp xuất hiện lần đầu tiên khi viết đến số $223$: $12345678\\ldots221222223$.\n\nTừ $1$ đến $9$ có $9$ số có $1$ chữ số.\n\nTừ $10$ đến $99$ có: $(99-10):1+1=90$ (số có $2$ chữ số)\n\nTừ $100$ đến $221$ có: $(221-100):1+1=122$ (số có $3$ chữ số)\n\nTừ $1$ đến $221$ có số chữ số là: $1\\times 9+2\\times 90+3\\times 122=555$ (chữ số)\n\nVậy bắt đầu từ chữ số thứ $555$ của số đó, xuất hiện $5$ chữ số $2$ liên tiếp.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B18a",
+  "gop_y": false,
+  "dap_an": "U",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm chữ cái lặp lại, nên chia vị trí cần tìm cho số chữ cái của một nhóm rồi xét số dư.\n\n**Bước 1.** Đếm số chữ cái của một nhóm để biết sau bao nhiêu chữ cái thì dãy lặp lại.\n\n**Bước 2.** Chia số thứ tự của chữ cái cần tìm cho số chữ cái của một nhóm để tìm số nhóm đủ và số dư.\n\n**Bước 3.** Căn cứ vào số dư để xác định chữ cái cần tìm là chữ cái thứ mấy trong nhóm tiếp theo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi nhóm chữ cái “VUIHOCTOAN” gồm có $10$ chữ cái.\n\nTa có: $2112:10=211$ (dư $2$)\n\nVì thế ta viết được $211$ nhóm chữ cái “VUIHOCTOAN” và thêm $2$ chữ cái.\n\nVậy chữ cái thứ $2112$ là chữ “U”.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B18b",
+  "gop_y": false,
+  "dap_an": "V: Vàng ; O: Vàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chữ V thứ $150$ và chữ O thứ $135$ thành vị trí trong cả dãy chữ cái, rồi chia vị trí đó cho số màu để xét số dư.\n\n**Bước 1.** Tìm vị trí của chữ V thứ $150$ trong cả dãy chữ cái dựa vào việc mỗi nhóm có đúng một chữ V.\n\n**Bước 2.** Tìm vị trí của chữ O thứ $135$ dựa vào việc mỗi nhóm có hai chữ O và chữ O đầu đứng thứ năm.\n\n**Bước 3.** Chia mỗi vị trí vừa tìm cho $6$ rồi dựa vào số dư để biết màu của chữ cái đó.\n\n**Chú ý:** nếu chia hết cho $6$ thì chữ cái đó mang màu cuối cùng trong thứ tự các màu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì mỗi nhóm chữ cái “VUIHOCTOAN” xuất hiện đúng $1$ chữ V nên chữ V thứ $150$ là chữ cái đầu tiên của nhóm “VUIHOCTOAN” thứ $150$.\n\nDo đó trong dãy chữ đã cho, chữ V thứ $150$ là chữ cái thứ: $10\\times 149+1=1491$\n\nTa có $1$ nhóm màu dùng để tô các chữ gồm $6$ màu theo thứ tự: Đỏ, Cam, Vàng, Lục, Lam, Tím.\n\nTa có: $1491:6=248$ (dư $3$)\n\nVậy chữ cái thứ $1491$ được tô màu Vàng hay chữ V thứ $150$ được tô màu Vàng.\n\nMỗi nhóm “VUIHOCTOAN” xuất hiện $2$ chữ O.\n\nTa có: $135:2=67$ (dư $1$)\n\nDo đó chữ O thứ $135$ là chữ cái thứ $5$ trong nhóm “VUIHOCTOAN” thứ $68$.\n\nVì thế trong dãy chữ đã cho, chữ O thứ $135$ là chữ cái thứ: $10\\times 67+5=675$\n\nTa có: $675:6=112$ (dư $3$)\n\nVậy chữ cái thứ $675$ được tô màu Vàng hay chữ O thứ $135$ được tô màu Vàng.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B19a",
+  "gop_y": false,
+  "dap_an": "T",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm chữ cái lặp lại, nên chia vị trí cần tìm cho số chữ cái của một nhóm rồi xét số dư để tìm chữ cái.\n\n**Bước 1.** Đếm số chữ cái của một nhóm, không đếm khoảng trắng giữa các tiếng.\n\n**Bước 2.** Chia số thứ tự của chữ cái cần tìm cho số chữ cái của một nhóm để tìm số dư.\n\n**Bước 3.** Căn cứ vào số dư để xác định chữ cái cần tìm nằm ở tiếng nào, vị trí nào trong nhóm tiếp theo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi nhóm chữ cái “QUYET TAM HOC GIOI” gồm có $15$ chữ cái.\n\nTa có: $2000:15=133$ (dư $5$)\n\nVì thế viết được $133$ nhóm chữ cái “QUYET TAM HOC GIOI” và thêm $5$ chữ cái.\n\nVậy chữ cái thứ $2000$ là chữ “T” (trong tiếng QUYET).",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B19b",
+  "gop_y": false,
+  "dap_an": "$100$ chữ I ; $50$ chữ A",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đếm trong một nhóm có bao nhiêu chữ T, chữ I, chữ A rồi so sánh số lượng ba loại chữ này với nhau.\n\n**Bước 1.** Đếm trong một nhóm “QUYET TAM HOC GIOI” có bao nhiêu chữ T, bao nhiêu chữ I và bao nhiêu chữ A.\n\n**Bước 2.** So sánh để thấy số chữ T bằng số chữ I và gấp đôi số chữ A.\n\n**Bước 3.** Từ số chữ T đã biết trong dãy, suy ra số chữ I và số chữ A theo quan hệ vừa tìm được.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTrong mỗi nhóm chữ cái “QUYET TAM HOC GIOI” có $2$ chữ T, $2$ chữ I, $1$ chữ A.\n\nDo đó số chữ T bằng số chữ I và gấp đôi số chữ A.\n\nTrong dãy có $100$ chữ T nên:\n\nCó số chữ I là: $100$ (chữ)\n\nCó số chữ A là: $100:2=50$ (chữ)\n\nVậy khi đếm được trong dãy có $100$ chữ T thì có $100$ chữ I và $50$ chữ A.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề không nói rõ \"đếm được 100 chữ T\" là dừng đúng tại chữ T thứ 100 hay là đủ trọn vẹn 50 nhóm. Sách hiểu là đủ 50 nhóm trọn vẹn (100 chữ I, 50 chữ A); nếu dừng đúng tại chữ T thứ 100 (chữ T của tiếng TAM trong nhóm thứ 50) thì chưa viết đến GIOI của nhóm đó, được 98 chữ I và 49 chữ A."
+ },
+ {
+  "ma_nguon": "CĐ9 · B19c",
+  "gop_y": false,
+  "dap_an": "Tím ; Đỏ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tô màu theo từng tiếng lặp lại, nên tìm số màu rồi chia thứ tự tiếng cho số màu để xét số dư.\n\n**Bước 1.** Đếm số màu trong một lượt tô để biết sau bao nhiêu tiếng thì thứ tự màu lặp lại.\n\n**Bước 2.** Chia $2023$ cho số màu rồi dựa vào số dư để biết màu của tiếng thứ $2023$.\n\n**Bước 3.** Tìm xem chữ Y thứ $500$ nằm trong tiếng thứ mấy, rồi chia thứ tự tiếng đó cho số màu để biết màu của nó.\n\n**Chú ý:** mỗi nhóm “QUYET TAM HOC GIOI” có $4$ tiếng và chỉ có đúng một chữ Y nằm trong tiếng “QUYET”.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCứ $5$ màu Xanh, Đỏ, Tím, Vàng, Nâu tạo thành $1$ nhóm có $5$ màu.\n\nTa có: $2023:5=404$ (dư $3$)\n\nVậy tiếng thứ $2023$ được tô màu Tím.\n\nMỗi nhóm chữ cái “QUYET TAM HOC GIOI” có $4$ tiếng.\n\nTa thấy trong mỗi nhóm xuất hiện đúng $1$ chữ Y nên chữ Y thứ $500$ nằm trong tiếng thứ nhất của nhóm “QUYET TAM HOC GIOI” thứ $500$.\n\nVì thế chữ Y thứ $500$ nằm trong tiếng thứ: $4\\times 499+1=1997$\n\nTa có: $1997:5=399$ (dư $2$)\n\nVậy tiếng thứ $1997$ được tô màu Đỏ hay chữ Y thứ $500$ được tô màu Đỏ.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ9 · B20",
+  "gop_y": false,
+  "dap_an": "Cột B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi hàng có $4$ số nên chia $2023$ cho $4$ để biết số đó nằm ở hàng thứ mấy, rồi xét chiều tăng của hàng đó.\n\n**Bước 1.** Đếm số cột của bảng rồi chia $2023$ cho số cột để tìm số hàng đã viết đủ và số dư.\n\n**Bước 2.** Nhận xét các hàng có thứ tự lẻ tăng dần từ trái sang phải, còn các hàng có thứ tự chẵn tăng dần từ phải sang trái.\n\n**Bước 3.** Xác định hàng chứa số $2023$ rồi liệt kê các số của hàng đó theo thứ tự các cột để tìm cột cần tìm.\n\n**Phần 2. Trình bày**\n\nSố $2023$ nằm ở cột nào khi xếp các số tự nhiên liên tiếp kể từ $1$ thành $4$ cột A, B, C, D theo bảng của đề?\n\nTa thấy có $4$ cột: A, B, C, D.\n\nVì $2023:4=505$ (dư $3$) nên khi viết đến số $2023$ thì ta đã viết hết $505$ hàng và thêm $3$ ô ở hàng $506$.\n\nNhận xét: các hàng có thứ tự lẻ thì các số liên tiếp tăng dần từ trái qua phải.\n\nCác hàng có thứ tự chẵn thì các số liên tiếp tăng dần từ phải qua trái.\n\nSố $2023$ nằm ở hàng thứ $506$ nên các số liên tiếp tăng dần từ phải qua trái.\n\nCác số ở hàng $506$ lần lượt từ cột A đến cột D là: $2024$; $2023$; $2022$; $2021$.\n\nVậy số $2023$ nằm ở cột B.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

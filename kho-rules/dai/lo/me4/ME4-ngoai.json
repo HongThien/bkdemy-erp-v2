@@ -1,0 +1,374 @@
+{
+ "model": "claude-opus-5-5",
+ "lan_chay": "ngoai-me4-2026-11-21 (Opus xem ảnh sơ đồ)",
+ "cau": {
+  "CĐ3 · B3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số thứ ba 1 phần, thứ hai 2 phần, thứ nhất 4 phần, tổng 105 (=35×3); ? ở số thứ ba — khớp."
+  },
+  "CĐ3 · B6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Dũng 1 phần = TBC; An+Bình+Hùng 3 phần = 18+16+23=57; ? ở Dũng — khớp (gộp 3 bạn, Hùng=17+6 tính sẵn)."
+  },
+  "CĐ3 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Quý = TBC + 6; Lân+Long = 2 TBC thiếu 6 (nét đứt) = 30; ? ở Quý — khớp."
+  },
+  "CĐ3 · B13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Mỗi phần = TBC 3 lớp; 4B = 1 phần thiếu 2×2 (26), 4A+4C = 2 phần + 2×2; có 28, 26, ? ở 4C; tỉ lệ khớp."
+  },
+  "CĐ5 · B9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số trừ mới = 10 lần số trừ cũ + 5, phần chênh 1490 (=1850−360); ? ở số trừ — khớp (không vẽ số bị trừ, chấp nhận)."
+  },
+  "CĐ5 · B14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số bị chia = 6 phần số chia + 51, tổng SBC+SC = 912 (=969−6−51); ? ở số chia — khớp."
+  },
+  "CĐ6 · B1": {
+   "hinh_dung": true,
+   "hinh_ghi": "An hơn Bình 16, tổng 70, ? cả hai — khớp."
+  },
+  "CĐ6 · B2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Bao hai hơn bao một 17 kg (=22−5), tổng 147 kg, ? cả hai — khớp."
+  },
+  "CĐ6 · B3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Vịt = ngan+ngỗng, tổng 200; ngan hơn ngỗng 40, ngan+ngỗng 100; ? cả ba — khớp."
+  },
+  "CĐ6 · B4": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau; ghi tổng '38 cây' là số do lời giải tính (30+5+3); thiếu nhãn 30, 5, 3; ? đặt ở lúc sau trong khi đề hỏi lúc đầu."
+  },
+  "CĐ6 · B5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiện nay: tổng 44 (=34+10), mẹ hơn con 26; ? cả hai — khớp."
+  },
+  "CĐ6 · B6a": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc đầu: Huy hơn Hoàng 6, tổng 20 (=34−5−9); ? cả hai — khớp."
+  },
+  "CĐ6 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Thùng một hơn thùng hai 14 lít (=7×2), tổng 82; ? cả hai — khớp."
+  },
+  "CĐ6 · B8": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau; thiếu nhãn 25 viên (Bình cho An); ? đặt ở lúc sau trong khi đề hỏi lúc đầu."
+  },
+  "CĐ6 · B9": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau (câu a) và trạng thái câu b; thiếu nhãn 5 viên, 3 viên; ? ở lúc sau trong khi câu a hỏi lúc đầu."
+  },
+  "CĐ6 · B10": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau; ghi '36 tấn' là số do lời giải tính (45−5−4); thiếu nhãn 45, 5, 4, 10; ? ở lúc sau trong khi đề hỏi lúc đầu."
+  },
+  "CĐ6 · B11": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau; thiếu nhãn 125 và 48 quyển; ? ở lúc sau trong khi đề hỏi số sách ban đầu mỗi ngăn."
+  },
+  "CĐ6 · B12a": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số lớn hơn số bé 2, tổng 4020; ? cả hai — khớp."
+  },
+  "CĐ6 · B12b": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu 4 (giữa có 2 số lẻ), tổng 1000; ? cả hai — khớp."
+  },
+  "CĐ6 · B12c": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu 12 (giữa có 6 số lẻ), tổng 480; ? cả hai — khớp."
+  },
+  "CĐ6 · B12d": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu 20 (giữa có 10 số chẵn), tổng 2010; ? cả hai — khớp."
+  },
+  "CĐ6 · B12e": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu 16 (giữa có 15 số), tổng 2024; ? cả hai — khớp."
+  },
+  "CĐ6 · B13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu 31 (15 số chẵn ở giữa, tổng lẻ), tổng 2023; ? cả hai — khớp."
+  },
+  "CĐ6 · B14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số lớn = số bé + 3000, tổng 4750 (=2375×2); ? ở số bé — khớp."
+  },
+  "CĐ6 · B15": {
+   "hinh_dung": true,
+   "hinh_ghi": "Chữ số b hơn a 3 (=27:9), tổng 11; ? cả hai — khớp."
+  },
+  "CĐ6 · B16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Chữ số lớn hơn bé 5, tổng 13 (=143:11); ? cả hai — khớp."
+  },
+  "CĐ10 · B11": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tử mới 3 phần, mẫu mới 4 phần, hiệu 25 (=64−39) không đổi; ? ở tử mới (x = tử mới − 39) — khớp."
+  },
+  "CĐ11 · B1": {
+   "hinh_dung": false,
+   "hinh_ghi": "Cam 8 vạch, quýt 15 vạch lộ đáp án tỉ số 8/15; không ghi 3/4, 2/5; không có ?."
+  },
+  "CĐ11 · B2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Ba đoạn bằng nhau 2/3 số 1, 1/2 số 2, 3/5 số 3; hỏi tỉ số thứ nhất:thứ ba = ?, không lộ đáp án."
+  },
+  "CĐ11 · B3": {
+   "hinh_dung": false,
+   "hinh_ghi": "Số 1/2/3 = 8/12/15 vạch lộ đáp án 8/15 và 3/2; không ghi tỉ số 2/3, 4/5; không có ?."
+  },
+  "CĐ11 · B4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Xanh 7, vàng 6, trắng 8 phần (/21) khớp 1/3, 2/7; trắng có 16; ? ở xanh, vàng và tổng."
+  },
+  "CĐ11 · B5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Sáng 3, chiều 2, còn 1 phần (12 m) trên 6 phần, khớp 1/2 và 2/3 phần còn lại; ? ở cả tấm."
+  },
+  "CĐ11 · B6": {
+   "hinh_dung": false,
+   "hinh_ghi": "Bi vàng (38 viên) không có đoạn riêng, chỉ ghi trong nhãn hàng 'xanh + vàng'; hai sơ đồ vẽ 'cả hộp' dài khác nhau (10 phần vs 7 phần cùng độ dài phần)."
+  },
+  "CĐ11 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tổ1:3 tổ còn lại = 1:2, tổ2 1:3, tổ3 1:4; tổ 4 có 26 đúng tỉ lệ; ? ở cả lớp."
+  },
+  "CĐ11 · B8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tử mới 4 phần, mẫu mới 7 phần, hiệu 30 (=61−31); ? ở tử mới — khớp."
+  },
+  "CĐ11 · B9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số lớn = 4 lần số bé (tổng = 5 lần bé), hiệu 3 phần = 705; ? cả hai — khớp."
+  },
+  "CĐ11 · B10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Thùng 1:2:3 = 5:6:7 phần (4/5·5 = 2/3·6 = 4/7·7), tổng 90 lít; ? cả ba — khớp."
+  },
+  "CĐ11 · B11": {
+   "hinh_dung": false,
+   "hinh_ghi": "Chỉ có lúc sau 5:3; hiệu ghi '12 quyển' là số do lời giải tính (24−2×6); thiếu nhãn 24 và 6; ? ở lúc sau (chỉ kệ 1) trong khi đề hỏi lúc đầu."
+  },
+  "CĐ11 · B12": {
+   "hinh_dung": true,
+   "hinh_ghi": "20 : 15 : 12 phần (3·20 = 4·15 = 5·12), tổng 235; ? cả ba — khớp."
+  },
+  "CĐ11 · B13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Bao1 3, bao2 1, bao3 4 phần (khớp 3/5 và gấp 4); nhãn bao1+bao3: 49 kg; ? ở cả 3 bao."
+  },
+  "CĐ11 · B14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiểu loại 75000 đ là tờ 5000 đ (duy nhất chia hết); 50000:20000 = 5:2 phần; 635000, 75000 có nhãn; ? số tờ."
+  },
+  "CĐ11 · B15": {
+   "hinh_dung": true,
+   "hinh_ghi": "Gà/vịt lúc đầu = 4/7 phần + đoạn bán 24, 35; lúc sau 4:7; 290 có nhãn; ? ở lúc đầu; tỉ lệ đúng."
+  },
+  "CĐ11 · B16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc sau A:B = 7:10, tổng lúc sau = 785−105+136; ? ở lúc đầu. Đoạn −105/+136 chỉ ghi ở tiêu đề, nhãn 'ít hơn kho A' là quan hệ suy ra (không lộ số)."
+  },
+  "CĐ11 · B17": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số bé 3 phần, số lớn 5 phần (hiệu = 2/3 bé), tổng 2024; ? cả hai — khớp."
+  },
+  "CĐ11 · B18": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc đầu đỏ 1 phần, xanh 3 phần, hiệu 56 (=51+12−7); ? cả hai — khớp."
+  },
+  "CĐ11 · B19": {
+   "hinh_dung": true,
+   "hinh_ghi": "Bình 9 phần, An 10 phần (2/3·9 = 3/5·10), An hơn 1 phần = 120000 đồng; ? cả hai — khớp."
+  },
+  "CĐ11 · B20": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tổ4=1 phần, tổ3=2, tổ2=3, tổ1=4 (=tổ2+tổ4), ngoặc 70 quyển, '?' ở cả 4 tổ — khớp đề."
+  },
+  "CĐ12 · B1": {
+   "hinh_dung": true,
+   "hinh_ghi": "4n, số kẹo thiếu 2, 3n với đoạn 2+2; ? ở số kẹo và số em; tỉ lệ khớp."
+  },
+  "CĐ12 · B2": {
+   "hinh_dung": true,
+   "hinh_ghi": "10n, số vở thừa 2, 8n với đoạn 6−2; ? số vở, số bạn; tỉ lệ khớp."
+  },
+  "CĐ12 · B3": {
+   "hinh_dung": true,
+   "hinh_ghi": "8×số cô, số cháu thừa 1 cô, 6×số cô với đoạn '4 cháu + 1 cô' (đơn vị trộn nhưng hiểu được); ? đúng."
+  },
+  "CĐ12 · B4": {
+   "hinh_dung": true,
+   "hinh_ghi": "5×số bàn, số HS thừa 2 bàn, 4×số bàn với đoạn 1 bạn + 2 bàn; ? đúng; tỉ lệ khớp."
+  },
+  "CĐ12 · B5": {
+   "hinh_dung": true,
+   "hinh_ghi": "8n, số sách Văn=Toán thiếu 3, 7n với đoạn 3+3; ? đúng; tỉ lệ khớp."
+  },
+  "CĐ12 · B6": {
+   "hinh_dung": true,
+   "hinh_ghi": "15×số hàng cũ, số HS (15×4−5), 12×số hàng cũ (15×4); đủ 12, 15, 5, 4; ? số HS."
+  },
+  "CĐ12 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "35×đủ giờ vs kế hoạch 32×giờ, chênh 35−20; còn 20 sản phẩm có nhãn; ? ở kế hoạch."
+  },
+  "CĐ12 · B8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số chiếu mỗi người, người 2 đã dệt (còn 40), người 1 đã dệt (còn 60, chênh 60−40); ? đúng."
+  },
+  "CĐ12 · B9": {
+   "hinh_dung": true,
+   "hinh_ghi": "6×người, số cam thiếu 1 người, 5×người với đoạn 5 quả + 1 người; ? đúng."
+  },
+  "CĐ12 · B10": {
+   "hinh_dung": true,
+   "hinh_ghi": "24×thuyền, bộ đội thừa 1 thuyền, 20×thuyền với đoạn 8 người + 1 thuyền; ? đúng."
+  },
+  "CĐ12 · B11": {
+   "hinh_dung": true,
+   "hinh_ghi": "10 lít × số can cũ vs số dầu (6 lít/can), chênh 5×10−2; ? ở số lít dầu."
+  },
+  "CĐ12 · B12": {
+   "hinh_dung": true,
+   "hinh_ghi": "8n, số vở (chênh 8×2−6), 6n (chênh 4+8×2−6); đủ 6, 8, 4, 6, 2; ? đúng."
+  },
+  "CĐ12 · B13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Kẹo tổ hai (12 em) và tổ một (9 em), chênh 12 viên; ? cả hai; không chia phần theo em nhưng nhãn số em đủ."
+  },
+  "CĐ12 · B14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số khăn mỗi chị, chị 2 đã dệt (còn 14), chị 1 đã dệt (còn 62, chênh 62−14); ? đúng."
+  },
+  "CĐ12 · B15": {
+   "hinh_dung": true,
+   "hinh_ghi": "4×cháu, số kẹo=bánh thiếu 3, 3×cháu với đoạn 2+3; ? đúng."
+  },
+  "CĐ12 · B16": {
+   "hinh_dung": true,
+   "hinh_ghi": "Vòi 1 đầy bể (40 l/phút) vs vòi 2 (30 l/phút) thiếu 600 lít; ? ở dung tích."
+  },
+  "CĐ12 · B17": {
+   "hinh_dung": true,
+   "hinh_ghi": "Bể hai đã tháo (25×?) vs bể một (15×?), chênh 1200−800; ? phút; tỉ lệ khớp."
+  },
+  "CĐ12 · B18": {
+   "hinh_dung": true,
+   "hinh_ghi": "Số bi 12×túi vs 9×túi thừa 15; ? số bi, số túi."
+  },
+  "CĐ13 · B1": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc mẹ gấp 5 con: con 1 phần, mẹ 5 phần, hiệu 28 tuổi; '?' ở tuổi con (từ đó suy số năm) — hợp lý, thiếu tiêu đề thời điểm nhưng không sai."
+  },
+  "CĐ13 · B2": {
+   "hinh_dung": true,
+   "hinh_ghi": "2 lần cha = 7 lần con ⇒ con 2 phần, cha 7 phần, hiệu 30 tuổi, '?' ở tuổi con — khớp đề."
+  },
+  "CĐ13 · B3": {
+   "hinh_dung": true,
+   "hinh_ghi": "3 năm sau Hùng:Cường = 7:6, hiệu 4 tuổi, có '?' — khớp đề (dấu '?' đặt giữa hai hàng hơi lơ lửng nhưng đọc được)."
+  },
+  "CĐ13 · B4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Cháu 1, bác 4 phần; lúc sau cháu 4, bác 7; tổng lúc sau 121; ? ở hiện nay."
+  },
+  "CĐ13 · B5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiện nay 1:7, sau 10 năm 1:3, hiệu không đổi; ? hiện nay. Lưu ý: hai sơ đồ khác tỉ lệ nên đoạn 'hiệu (không đổi)' vẽ dài khác nhau."
+  },
+  "CĐ13 · B6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tổng tuổi 2 con 2 phần, 2 lần tuổi mẹ 6 phần, hiệu không đổi 56 tuổi (2×32-8), có '?' — khớp đề."
+  },
+  "CĐ13 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Con 4 phần, cha 6 phần + 24 tuổi (=6×4), tổng 104, '?' ở con — khớp đề."
+  },
+  "CĐ13 · B8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiệu tuổi mẹ-con = 22+3 = 25; lúc mẹ gấp 6: con 1 phần, mẹ 6 phần, '?' cả hai — khớp đề."
+  },
+  "CĐ13 · B9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiện nay: anh = em + 8, cha = em + 34, tổng 45+24 = 69, '?' ở em út — khớp đề (số liệu quy về hiện nay)."
+  },
+  "CĐ13 · B10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Cách đây 2 năm Linh:Huệ = 9:14, hiệu 10 tuổi, '?' ở Linh — khớp đề."
+  },
+  "CĐ13 · B11": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hồng 2 phần, chú Hùng 5 phần + 15 tuổi, hiệu 27 tuổi, '?' ở Hồng — khớp đề."
+  },
+  "CĐ13 · B12": {
+   "hinh_dung": true,
+   "hinh_ghi": "Em 1, chị 3; 3 năm trước (đoạn 3 năm nét đứt); lúc sau em 3, chị 5, tổng 32; ? ở 3 năm trước."
+  },
+  "CĐ13 · B13": {
+   "hinh_dung": true,
+   "hinh_ghi": "Trước đây em 1, anh 2; hiện nay em 2, anh 3; tổng 20; ? ở hiện nay."
+  },
+  "CĐ13 · B14": {
+   "hinh_dung": true,
+   "hinh_ghi": "Tổng tuổi 3 con 3 phần, 3 lần tuổi mẹ 12 phần, hiệu không đổi 108 (135-27), có '?' — khớp đề."
+  },
+  "CĐ13 · B15": {
+   "hinh_dung": true,
+   "hinh_ghi": "2 lần tuổi chị, tổng ít hơn 3 tuổi, tuổi em = hiệu + 12; ? ở chị và em; không ghi số đáp án."
+  },
+  "CĐ14 · B1": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc đầu nữ:nam 1:4, lúc sau 1:5, tổng không đổi; số 1 bạn ở tiêu đề; ? tổng số."
+  },
+  "CĐ14 · B2": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc đầu trên:dưới 1:3, sau khi chuyển 10 quyển 1:7, tổng không đổi; ? ở lúc đầu."
+  },
+  "CĐ14 · B3": {
+   "hinh_dung": true,
+   "hinh_ghi": "Rộng:dài 2:5 rồi 2:3, nửa chu vi không đổi; 4 m ở tiêu đề; ? rộng, dài (để tính diện tích)."
+  },
+  "CĐ14 · B4": {
+   "hinh_dung": true,
+   "hinh_ghi": "Trên bờ:dưới ao 1:5 rồi 1:8, cả đàn không đổi; 3 con ở tiêu đề; ? cả đàn."
+  },
+  "CĐ14 · B5": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lan:Hồng 3:5 rồi 9:13, hiệu không đổi; 15 bông ở tiêu đề; ? lúc đầu."
+  },
+  "CĐ14 · B6": {
+   "hinh_dung": true,
+   "hinh_ghi": "Hiện nay con:bố 1:3, 12 năm trước 1:7, hiệu không đổi; ? hiện nay."
+  },
+  "CĐ14 · B7": {
+   "hinh_dung": true,
+   "hinh_ghi": "Lúc đầu II:I 3:7, lúc sau 17:29, hiệu không đổi; 40 quyển ở tiêu đề; ? tổng lúc sau (đúng câu hỏi)."
+  },
+  "CĐ14 · B8": {
+   "hinh_dung": true,
+   "hinh_ghi": "Gà:vịt 3:5 rồi 2:3, hiệu không đổi; 10 con ở tiêu đề; ? lúc đầu."
+  },
+  "CĐ14 · B9": {
+   "hinh_dung": true,
+   "hinh_ghi": "Nam:nữ 3:4 rồi 9:10 (nữ không đổi); 3 HS nam ở tiêu đề; ? tổng đầu năm."
+  },
+  "CĐ14 · B10": {
+   "hinh_dung": true,
+   "hinh_ghi": "Trên:dưới 5:6 rồi 11:12 (dưới không đổi); 15 quyển ở tiêu đề; ? lúc đầu."
+  },
+  "CĐ14 · B11": {
+   "hinh_dung": true,
+   "hinh_ghi": "Trống:mái 1:6 rồi 1:4 (mái không đổi); 5 con ở tiêu đề; ? lúc đầu."
+  },
+  "CĐ14 · B12": {
+   "hinh_dung": true,
+   "hinh_ghi": "Quầy:kho 1:7 (1/8), sau bán 3 chiếc 1:10 (kho không đổi); ? số xe nhập về."
+  }
+ }
+}

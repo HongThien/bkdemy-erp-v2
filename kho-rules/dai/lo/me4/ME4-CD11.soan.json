@@ -1,0 +1,628 @@
+[
+ {
+  "ma_nguon": "CĐ11 · B1",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{8}{15}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** muốn tìm tỉ số của hai số khi biết phân số của số này bằng phân số của số kia, ta đưa hai phân số về cùng tử số rồi đọc số phần bằng nhau của mỗi số từ mẫu số.\n\n**Bước 1.** Viết điều kiện của đề thành một đẳng thức giữa hai phân số của hai số.\n\n**Bước 2.** Nhân cả tử số và mẫu số của từng phân số để hai phân số có cùng tử số.\n\n**Bước 3.** Khi hai phân số bằng nhau và cùng tử số thì mẫu số cho biết số phần bằng nhau của từng số.\n\n**Bước 4.** Lập tỉ số của số cam và số quýt theo số phần vừa tìm được.\n\n**Chú ý:** tỉ số phải viết đúng thứ tự đề hỏi, số cam đứng trước, số quýt đứng sau.\n\n**Phần 2. Trình bày**\n\nTheo đề bài ta có: $\\dfrac{3}{4}$ số cam bằng $\\dfrac{2}{5}$ số quýt.\n\nHay: $\\dfrac{6}{8}$ số cam bằng $\\dfrac{6}{15}$ số quýt.\n\nTa có sơ đồ:\n\nSố cam: 8 phần; Số quýt: 15 phần\n\nCoi số cam là $8$ phần bằng nhau thì số quýt là $15$ phần như thế.\n\nVậy tỉ số giữa số cam và số quýt là: $8:15=\\dfrac{8}{15}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Số cam",
+     "phan": 8
+    },
+    {
+     "nhan": "Số quýt",
+     "phan": 15
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B2",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{9}{10}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phân số của hai số bằng nhau thì ta đưa chúng về cùng tử số, khi đó mẫu số cho biết số phần bằng nhau của mỗi số và từ đó lập được tỉ số.\n\n**Bước 1.** Chọn hai số mà đề hỏi tỉ số, ở đây là số thứ nhất và số thứ ba, rồi bỏ qua số thứ hai.\n\n**Bước 2.** Viết điều kiện giữa số thứ nhất và số thứ ba thành đẳng thức của hai phân số.\n\n**Bước 3.** Nhân cả tử số và mẫu số của từng phân số để hai phân số có cùng tử số.\n\n**Bước 4.** Đọc số phần bằng nhau của số thứ nhất và số thứ ba từ hai mẫu số mới.\n\n**Chú ý:** điều kiện về số thứ hai không cần dùng để trả lời câu hỏi này.\n\n**Phần 2. Trình bày**\n\nTheo đề bài ta có: $\\dfrac{2}{3}$ số thứ nhất bằng $\\dfrac{3}{5}$ số thứ ba.\n\nHay: $\\dfrac{6}{9}$ số thứ nhất bằng $\\dfrac{6}{10}$ số thứ ba.\n\nTa có sơ đồ:\n\n$\\dfrac{2}{3}$ số thứ nhất, $\\dfrac{1}{2}$ số thứ hai và $\\dfrac{3}{5}$ số thứ ba là ba đoạn bằng nhau; cần tìm tỉ số của số thứ nhất và số thứ ba.\n\nKhi đó nếu coi số thứ nhất là $9$ phần bằng nhau thì số thứ ba là $10$ phần như thế.\n\nVậy tỉ số của số thứ nhất và số thứ ba là: $9:10=\\dfrac{9}{10}$",
+  "so_do_mo_ta": {
+   "tieu_de": "Ba đoạn bằng nhau",
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "2/3 số thứ nhất",
+     "phan": 1
+    },
+    {
+     "nhan": "1/2 số thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "3/5 số thứ ba",
+     "phan": 1,
+     "ghi": "số thứ nhất : số thứ ba = ?"
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B3",
+  "gop_y": false,
+  "dap_an": "$\\dfrac{8}{15}$ ; $\\dfrac{3}{2}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai tỉ số đã cho cùng nhắc tới số thứ hai, nên ta đưa số thứ hai về cùng một số phần trong cả hai tỉ số rồi ghép ba số vào một sơ đồ.\n\n**Bước 1.** Tìm số thứ hai trong từng tỉ số, nó là mẫu số của tỉ số thứ nhất và là tử số của tỉ số thứ hai.\n\n**Bước 2.** Nhân cả tử số và mẫu số của từng tỉ số để số thứ hai có cùng số phần ở cả hai tỉ số.\n\n**Bước 3.** Đọc số phần bằng nhau của số thứ nhất, số thứ hai và số thứ ba rồi vẽ sơ đồ.\n\n**Bước 4.** Lập hai tỉ số mà đề hỏi, chú ý số nào đứng trước, số nào đứng sau.\n\n**Phần 2. Trình bày**\n\nTỉ số của số thứ nhất và số thứ hai là $\\dfrac{2}{3}$ hay bằng $\\dfrac{8}{12}$.\n\nTỉ số của số thứ hai và số thứ ba là $\\dfrac{4}{5}$ hay bằng $\\dfrac{12}{15}$.\n\nDo đó ta coi số thứ hai là $12$ phần bằng nhau thì số thứ nhất là $8$ phần như thế và số thứ ba là $15$ phần như thế.\n\nTa có sơ đồ:\n\nSố thứ nhất: 8 phần; Số thứ hai: 12 phần; Số thứ ba: 15 phần\n\nTỉ số của số thứ nhất và số thứ ba là: $8:15=\\dfrac{8}{15}$\n\nTỉ số của số thứ hai và số thứ nhất là: $12:8=\\dfrac{12}{8}=\\dfrac{3}{2}$\n\nVậy tỉ số của số thứ nhất và số thứ ba là $\\dfrac{8}{15}$ ; tỉ số của số thứ hai và số thứ nhất là $\\dfrac{3}{2}$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 8
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 12
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 15
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B4",
+  "gop_y": true,
+  "dap_an": "a) $42$ học sinh ; b) $14$ học sinh mặc áo xanh ; $12$ học sinh mặc áo vàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi cả lớp là $1$, lấy $1$ trừ các phân số đã biết để tìm phân số chỉ số học sinh mặc áo trắng, rồi từ số em áo trắng tìm ra cả lớp.\n\n**Bước 1.** Ý a: tìm phân số chỉ số học sinh mặc áo trắng bằng cách lấy $1$ trừ phân số của áo xanh và phân số của áo vàng.\n\n**Bước 2.** Ý a: số em áo trắng đã biết ứng với phân số vừa tìm, nên chia cho tử số để được một phần rồi nhân với mẫu số để được cả lớp.\n\n**Bước 3.** Ý b: dùng số học sinh cả lớp vừa tìm để lấy phân số của nó, chia cho mẫu số rồi nhân với tử số.\n\n**Chú ý:** ý b dùng kết quả của ý a nên phải làm đúng ý a trước.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nÁo xanh: 7 phần; áo vàng: 6 phần; áo trắng: 8 phần, ứng với 16 học sinh; cần tìm tổng số học sinh cả lớp và số học sinh mặc áo xanh, áo vàng.\n\na) Số học sinh mặc áo trắng chiếm số phần của tổng số học sinh cả lớp là: $1-\\dfrac{1}{3}-\\dfrac{2}{7}=\\dfrac{8}{21}$ (tổng số học sinh cả lớp)\n\n$16$ học sinh tương ứng với $\\dfrac{8}{21}$ tổng số học sinh cả lớp.\n\nLớp 4A có tất cả số học sinh là: $16:8\\times 21=42$ (học sinh)\n\nb) Số học sinh mặc áo xanh là: $42:3=14$ (học sinh)\n\nSố học sinh mặc áo vàng là: $42\\times 2:7=12$ (học sinh)\n\nĐáp số: a) $42$ học sinh ; b) áo xanh: $14$ học sinh, áo vàng: $12$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2,
+   "hang": [
+    {
+     "nhan": "Áo xanh",
+     "phan": 7
+    },
+    {
+     "nhan": "Áo vàng",
+     "phan": 6
+    },
+    {
+     "nhan": "Áo trắng (16 học sinh)",
+     "phan": 8
+    }
+   ],
+   "tong": "?",
+   "dau_hoi": [
+    "Áo xanh",
+    "Áo vàng"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B5",
+  "gop_y": false,
+  "dap_an": "$72$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** coi cả tấm vải là $1$, tính phần vải bán mỗi buổi theo phân số của cả tấm vải, rồi phần còn lại ứng với $12$ mét sẽ cho biết cả tấm vải.\n\n**Bước 1.** Tìm phần vải còn lại sau buổi sáng bằng cách lấy $1$ trừ phân số đã bán buổi sáng.\n\n**Bước 2.** Buổi chiều bán một phân số của phần còn lại, nên nhân hai phân số để biết buổi chiều bán bao nhiêu phần của cả tấm vải.\n\n**Bước 3.** Lấy $1$ trừ phần bán buổi sáng và phần bán buổi chiều để tìm phân số chỉ $12$ mét còn lại.\n\n**Bước 4.** Chia $12$ mét cho tử số rồi nhân với mẫu số để tìm chiều dài cả tấm vải.\n\n**Chú ý:** phân số của buổi chiều là phân số của số vải còn lại, không phải của cả tấm vải.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nBuổi sáng: 3 phần; buổi chiều: 2 phần; còn lại: 1 phần, ứng với 12 m; cần tìm chiều dài cả tấm vải.\n\nSố mét vải còn lại sau khi bán buổi sáng chiếm: $1-\\dfrac{1}{2}=\\dfrac{1}{2}$ (chiều dài ban đầu của tấm vải)\n\nSố mét vải buổi chiều bán được chiếm: $\\dfrac{1}{2}\\times\\dfrac{2}{3}=\\dfrac{1}{3}$ (chiều dài ban đầu của tấm vải)\n\nSố mét vải còn lại sau khi bán cả hai buổi chiếm: $1-\\dfrac{1}{2}-\\dfrac{1}{3}=\\dfrac{1}{6}$ (chiều dài ban đầu của tấm vải)\n\n$12$ m tương ứng với $\\dfrac{1}{6}$ chiều dài ban đầu của tấm vải.\n\nVậy chiều dài ban đầu của tấm vải là: $12:1\\times 6=72$ (m)\n\nĐáp số: $72$ m vải",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 12,
+   "hang": [
+    {
+     "nhan": "Buổi sáng",
+     "phan": 3
+    },
+    {
+     "nhan": "Buổi chiều",
+     "phan": 2
+    },
+    {
+     "nhan": "Còn lại",
+     "phan": 1,
+     "ghi": "12 m"
+    }
+   ],
+   "tong": "?"
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B6",
+  "gop_y": false,
+  "dap_an": "$140$ viên bi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** từ quan hệ giữa số bi đỏ với tổng bi xanh và bi vàng, tìm số bi đỏ chiếm bao nhiêu phần của cả hộp, rồi lấy phần bi vàng còn lại ứng với $38$ viên.\n\n**Bước 1.** Coi số bi đỏ là một số phần bằng nhau, suy ra tổng bi xanh và bi vàng là bao nhiêu phần như thế.\n\n**Bước 2.** Cộng hai số phần để biết cả hộp có bao nhiêu phần, từ đó tìm phân số chỉ số bi đỏ so với cả hộp.\n\n**Bước 3.** Lấy $1$ trừ phân số bi xanh và phân số bi đỏ để tìm phân số chỉ số bi vàng.\n\n**Bước 4.** Chia $38$ viên cho tử số rồi nhân với mẫu số để tìm số bi cả hộp.\n\n**Chú ý:** phân số của bi đỏ so với tổng bi xanh và bi vàng khác phân số của bi đỏ so với cả hộp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nBi đỏ: 3 phần; bi xanh và bi vàng: 7 phần, trong đó bi vàng có 38 viên; cả hộp có ? viên. Bi xanh bằng $\\dfrac{3}{7}$ số bi cả hộp: cả hộp 7 phần, bi xanh 3 phần.\n\nSố bi đỏ bằng $\\dfrac{3}{7}$ tổng số bi xanh và bi vàng nên nếu coi số bi đỏ là $3$ phần bằng nhau thì tổng số bi xanh và bi vàng là $7$ phần như vậy.\n\nDo đó số bi của cả hộp là $10$ phần như thế.\n\nVì vậy số bi đỏ bằng $\\dfrac{3}{10}$ số bi cả hộp.\n\nSố bi vàng chiếm: $1-\\dfrac{3}{7}-\\dfrac{3}{10}=\\dfrac{19}{70}$ (số bi cả hộp)\n\n$38$ viên tương ứng với $\\dfrac{19}{70}$ số bi cả hộp.\n\nVậy Tuấn có tất cả số viên bi là: $38:19\\times 70=140$ (viên)\n\nĐáp số: $140$ viên bi",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Bi đỏ bằng 3/7 tổng số bi xanh và bi vàng",
+    "gia_tri_phan": 14,
+    "hang": [
+     {
+      "nhan": "Bi đỏ",
+      "phan": 3
+     },
+     {
+      "nhan": "Xanh + vàng (vàng: 38 viên)",
+      "phan": 7
+     }
+    ],
+    "tong": "Cả hộp: ?"
+   },
+   {
+    "tieu_de": "Bi xanh bằng 3/7 số bi cả hộp",
+    "gia_tri_phan": 20,
+    "hang": [
+     {
+      "nhan": "Cả hộp",
+      "phan": 7
+     },
+     {
+      "nhan": "Bi xanh",
+      "phan": 3
+     }
+    ],
+    "dau_hoi": [
+     "Cả hộp"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B7",
+  "gop_y": false,
+  "dap_an": "$120$ điểm $10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** một tổ bằng $\\dfrac{1}{k}$ tổng của 3 tổ còn lại thì tổ đó là $1$ phần, 3 tổ còn lại là $k$ phần, nên cả lớp là $k+1$ phần và tổ đó chiếm $\\dfrac{1}{k+1}$ số điểm 10 của cả lớp.\n\n**Bước 1.** Với tổ 1, coi tổ 1 là một phần thì 3 tổ còn lại là mấy phần, từ đó tìm phân số của tổ 1 so với cả lớp.\n\n**Bước 2.** Làm tương tự để tìm phân số của tổ 2 và của tổ 3 so với số điểm 10 của cả lớp.\n\n**Bước 3.** Lấy $1$ trừ ba phân số vừa tìm để được phân số chỉ số điểm 10 của tổ 4.\n\n**Bước 4.** Chia $26$ điểm 10 cho tử số rồi nhân với mẫu số để tìm số điểm 10 của cả lớp.\n\n**Chú ý:** phân số đề cho là so với tổng của 3 tổ còn lại, chưa phải so với cả lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nTổ 1: 1 phần, 3 tổ còn lại: 2 phần; Tổ 2: 1 phần, 3 tổ còn lại: 3 phần; Tổ 3: 1 phần, 3 tổ còn lại: 4 phần; Tổ 4: 26 điểm 10, cả lớp: ? điểm 10.\n\nSố điểm 10 của tổ 1 bằng $\\dfrac{1}{2}$ tổng số điểm 10 của 3 tổ còn lại nên số điểm 10 của tổ 1 bằng $\\dfrac{1}{2+1}=\\dfrac{1}{3}$ số điểm 10 của cả lớp.\n\nSố điểm 10 của tổ 2 bằng $\\dfrac{1}{3}$ tổng số điểm 10 của 3 tổ còn lại nên số điểm 10 của tổ 2 bằng $\\dfrac{1}{3+1}=\\dfrac{1}{4}$ số điểm 10 của cả lớp.\n\nSố điểm 10 của tổ 3 bằng $\\dfrac{1}{4}$ tổng số điểm 10 của 3 tổ còn lại nên số điểm 10 của tổ 3 bằng $\\dfrac{1}{4+1}=\\dfrac{1}{5}$ số điểm 10 của cả lớp.\n\nSố điểm 10 của tổ 4 chiếm: $1-\\dfrac{1}{3}-\\dfrac{1}{4}-\\dfrac{1}{5}=\\dfrac{13}{60}$ (số điểm 10 của cả lớp)\n\n$26$ điểm 10 tương ứng với $\\dfrac{13}{60}$ số điểm 10 của cả lớp.\n\nVậy số điểm 10 của cả lớp là: $26:13\\times 60=120$ (điểm)\n\nĐáp số: $120$ điểm $10$",
+  "so_do_mo_ta": [
+   {
+    "gia_tri_phan": 40,
+    "hang": [
+     {
+      "nhan": "Tổ 1",
+      "phan": 1
+     },
+     {
+      "nhan": "3 tổ còn lại",
+      "phan": 2
+     }
+    ]
+   },
+   {
+    "gia_tri_phan": 30,
+    "hang": [
+     {
+      "nhan": "Tổ 2",
+      "phan": 1
+     },
+     {
+      "nhan": "3 tổ còn lại",
+      "phan": 3
+     }
+    ]
+   },
+   {
+    "gia_tri_phan": 24,
+    "hang": [
+     {
+      "nhan": "Tổ 3",
+      "phan": 1
+     },
+     {
+      "nhan": "3 tổ còn lại",
+      "phan": 4
+     }
+    ]
+   },
+   {
+    "tieu_de": "Tổ 4 và cả lớp",
+    "gia_tri_phan": 26,
+    "hang": [
+     {
+      "nhan": "Tổ 4",
+      "phan": 1,
+      "ghi": "26 điểm 10"
+     },
+     {
+      "nhan": "Cả lớp",
+      "phan": 1,
+      "them": "3 tổ còn lại",
+      "them_gt": 94
+     }
+    ],
+    "dau_hoi": [
+     "Cả lớp"
+    ]
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B8",
+  "gop_y": false,
+  "dap_an": "$9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** khi cùng thêm một số vào tử số và mẫu số thì hiệu giữa mẫu số và tử số không thay đổi, nên dùng hiệu đó làm số cố định để tìm tử số của phân số mới.\n\n**Bước 1.** Tính hiệu giữa mẫu số và tử số của phân số đã cho, hiệu này giữ nguyên sau khi thêm.\n\n**Bước 2.** Từ giá trị của phân số mới, coi tử số và mẫu số mới là một số phần bằng nhau.\n\n**Bước 3.** Vẽ sơ đồ rồi chia hiệu cho hiệu số phần để tìm giá trị một phần, từ đó tính tử số mới.\n\n**Bước 4.** Lấy tử số mới trừ tử số cũ để tìm số tự nhiên cần thêm.\n\n**Phần 2. Trình bày**\n\nCho phân số $\\dfrac{31}{61}$.\n\nTìm số tự nhiên $a$ sao cho khi cùng thêm $a$ vào tử số và mẫu số thì được phân số mới có giá trị bằng $\\dfrac{4}{7}$.\n\nKhi cùng thêm $a$ vào tử số và mẫu số của phân số $\\dfrac{31}{61}$ thì hiệu giữa mẫu số và tử số không thay đổi và bằng: $61-31=30$\n\nPhân số mới có giá trị bằng $\\dfrac{4}{7}$ nên nếu coi tử số của phân số mới là $4$ phần bằng nhau thì mẫu số của phân số mới là $7$ phần như thế.\n\nTa có sơ đồ:\n\nTử số mới: 4 phần; Mẫu số mới: 7 phần; hiệu hai số là 30\n\nTử số của phân số mới là: $30:(7-4)\\times 4=40$\n\nSố tự nhiên $a$ cần tìm là: $40-31=9$\n\nVậy $a=9$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 10,
+   "hang": [
+    {
+     "nhan": "Tử số mới",
+     "phan": 4
+    },
+    {
+     "nhan": "Mẫu số mới",
+     "phan": 7
+    }
+   ],
+   "hieu": "30",
+   "dau_hoi": [
+    "Tử số mới"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B9",
+  "gop_y": false,
+  "dap_an": "$235$ số bé ; $940$ số lớn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tổng hai số bằng $5$ lần số bé nghĩa là số lớn hơn số bé một số lần cho trước, nên đây là bài hiệu và tỉ số, hiệu số phần ứng với $705$.\n\n**Bước 1.** Coi số bé là một phần thì tổng hai số là mấy phần như thế.\n\n**Bước 2.** Lấy tổng số phần trừ đi số phần của số bé để tìm số phần của số lớn.\n\n**Bước 3.** Vẽ sơ đồ, lấy hiệu $705$ chia cho hiệu số phần để tìm giá trị một phần chính là số bé.\n\n**Bước 4.** Cộng số bé với hiệu để tìm số lớn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nSố bé: 1 phần; Số lớn: 4 phần; hiệu hai số là 705\n\nVì tổng hai số bằng $5$ lần số bé nên nếu coi số bé là $1$ phần thì tổng hai số là $5$ phần như thế.\n\nDo đó số lớn là: $5-1=4$ (phần như thế)\n\nSố bé là: $705:(4-1)\\times 1=235$\n\nSố lớn là: $235+705=940$\n\nĐáp số: Số bé: $235$ ; Số lớn: $940$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 235,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 1
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 4
+    }
+   ],
+   "hieu": "705",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B10",
+  "gop_y": false,
+  "dap_an": "$25$ lít thùng thứ nhất ; $30$ lít thùng thứ hai ; $35$ lít thùng thứ ba",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số dầu còn lại của ba thùng bằng nhau, nên viết ba phân số của ba thùng thành ba số bằng nhau rồi đưa về cùng tử số để đọc số phần bằng nhau của mỗi thùng.\n\n**Bước 1.** Tìm phân số chỉ số dầu còn lại của từng thùng bằng cách lấy $1$ trừ phân số đã rót ra.\n\n**Bước 2.** Viết số dầu còn lại của ba thùng bằng nhau, rồi quy đồng tử số của ba phân số.\n\n**Bước 3.** Đọc số phần bằng nhau của thùng thứ hai và thùng thứ ba khi coi thùng thứ nhất là một số phần.\n\n**Bước 4.** Vẽ sơ đồ rồi chia $90$ lít cho tổng số phần để tìm giá trị một phần.\n\n**Bước 5.** Nhân giá trị một phần với số phần của từng thùng.\n\n**Chú ý:** thùng thứ ba có thể tìm bằng cách lấy tổng trừ đi hai thùng đã biết.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố lít dầu còn lại ở thùng thứ nhất chiếm: $1-\\dfrac{1}{5}=\\dfrac{4}{5}$ (số dầu của cả thùng)\n\nSố lít dầu còn lại ở thùng thứ hai chiếm: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số dầu của cả thùng)\n\nSố lít dầu còn lại ở thùng thứ ba chiếm: $1-\\dfrac{3}{7}=\\dfrac{4}{7}$ (số dầu của cả thùng)\n\nTheo bài ra ta có: $\\dfrac{4}{5}$ số dầu của thùng thứ nhất $=\\dfrac{2}{3}$ số dầu của thùng thứ hai $=\\dfrac{4}{7}$ số dầu của thùng thứ ba.\n\nHay: $\\dfrac{4}{5}$ số dầu của thùng thứ nhất $=\\dfrac{4}{6}$ số dầu của thùng thứ hai $=\\dfrac{4}{7}$ số dầu của thùng thứ ba.\n\nDo đó nếu coi số dầu của thùng thứ nhất là $5$ phần bằng nhau thì số dầu của thùng thứ hai và của thùng thứ ba lần lượt là $6$ phần và $7$ phần như thế.\n\nTa có sơ đồ:\n\nThùng thứ nhất: 5 phần; Thùng thứ hai: 6 phần; Thùng thứ ba: 7 phần; tổng 90 lít\n\nGiá trị của mỗi phần là: $90:(5+6+7)=5$ (lít)\n\nSố lít dầu của thùng thứ nhất là: $5\\times 5=25$ (lít)\n\nSố lít dầu của thùng thứ hai là: $5\\times 6=30$ (lít)\n\nSố lít dầu của thùng thứ ba là: $90-25-30=35$ (lít)\n\nĐáp số: Thùng thứ nhất: $25$ lít ; Thùng thứ hai: $30$ lít ; Thùng thứ ba: $35$ lít",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Thùng thứ nhất",
+     "phan": 5
+    },
+    {
+     "nhan": "Thùng thứ hai",
+     "phan": 6
+    },
+    {
+     "nhan": "Thùng thứ ba",
+     "phan": 7
+    }
+   ],
+   "tong": "90 lít",
+   "dau_hoi": [
+    "Thùng thứ nhất",
+    "Thùng thứ hai",
+    "Thùng thứ ba"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B11",
+  "gop_y": false,
+  "dap_an": "$36$ quyển kệ thứ nhất ; $12$ quyển kệ thứ hai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** chuyển sách từ kệ này sang kệ kia làm hiệu số sách của hai kệ thay đổi, nên phải tính hiệu lúc sau rồi dùng tỉ số lúc sau để tìm số sách lúc sau, sau đó tính ngược về lúc đầu.\n\n**Bước 1.** Tìm hiệu số sách của hai kệ sau khi chuyển, chú ý kệ thứ nhất bớt đi và kệ thứ hai thêm vào cùng một số quyển.\n\n**Bước 2.** Từ tỉ số lúc sau, coi số sách kệ thứ hai là một số phần rồi tìm số phần của kệ thứ nhất.\n\n**Bước 3.** Vẽ sơ đồ lúc sau rồi chia hiệu cho hiệu số phần để tìm số sách kệ thứ nhất lúc sau.\n\n**Bước 4.** Cộng thêm số sách đã chuyển để được kệ thứ nhất lúc đầu, rồi trừ hiệu ban đầu để được kệ thứ hai.\n\n**Chú ý:** hiệu ban đầu và hiệu lúc sau khác nhau, không dùng lẫn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu chuyển $6$ quyển từ kệ thứ nhất sang kệ thứ hai thì số quyển sách ở kệ thứ nhất hơn số quyển sách ở kệ thứ hai là: $24-6-6=12$ (quyển)\n\nLúc sau, số sách ở kệ thứ hai bằng $\\dfrac{3}{5}$ số sách ở kệ thứ nhất nên nếu coi số sách ở kệ thứ hai là $3$ phần bằng nhau thì số sách ở kệ thứ nhất là $5$ phần như thế.\n\nTa có sơ đồ:\n\nLúc sau, kệ thứ nhất: 5 phần; kệ thứ hai: 3 phần; hiệu hai số là 12 quyển\n\nLúc sau, số sách ở kệ thứ nhất là: $12:(5-3)\\times 5=30$ (quyển)\n\nLúc đầu, số sách ở kệ thứ nhất là: $30+6=36$ (quyển)\n\nLúc đầu, số sách ở kệ thứ hai là: $36-24=12$ (quyển)\n\nĐáp số: Kệ thứ nhất: $36$ quyển ; Kệ thứ hai: $12$ quyển",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc sau",
+   "gia_tri_phan": 6,
+   "hang": [
+    {
+     "nhan": "Kệ thứ nhất",
+     "phan": 5
+    },
+    {
+     "nhan": "Kệ thứ hai",
+     "phan": 3
+    }
+   ],
+   "hieu": "12 quyển",
+   "dau_hoi": [
+    "Kệ thứ nhất"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B12",
+  "gop_y": false,
+  "dap_an": "$100$ số thứ nhất ; $75$ số thứ hai ; $60$ số thứ ba",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nếu $3$ lần số thứ nhất bằng $4$ lần số thứ hai và bằng $5$ lần số thứ ba thì viết $3$, $4$, $5$ thành các phân số có cùng tử số, khi đó mẫu số cho biết số phần bằng nhau của từng số.\n\n**Bước 1.** Tìm số nhỏ nhất mà cả $3$, $4$ và $5$ cùng chia hết được, số đó dùng làm tử số chung.\n\n**Bước 2.** Viết $3$ lần, $4$ lần, $5$ lần của từng số thành các phân số cùng tử số chung.\n\n**Bước 3.** Đọc số phần bằng nhau của số thứ nhất, số thứ hai, số thứ ba rồi vẽ sơ đồ.\n\n**Bước 4.** Chia tổng $235$ cho tổng số phần để tìm một phần, rồi nhân với số phần của từng số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTheo bài ra ta có: $3$ lần số thứ nhất $=4$ lần số thứ hai $=5$ lần số thứ ba.\n\nHay: $\\dfrac{60}{20}$ số thứ nhất $=\\dfrac{60}{15}$ số thứ hai $=\\dfrac{60}{12}$ số thứ ba.\n\nNếu coi số thứ nhất là $20$ phần bằng nhau thì số thứ hai và số thứ ba lần lượt là $15$ phần và $12$ phần như thế.\n\nTa có sơ đồ:\n\nSố thứ nhất: 20 phần; Số thứ hai: 15 phần; Số thứ ba: 12 phần; tổng 235\n\nGiá trị của $1$ phần là: $235:(20+15+12)=5$\n\nSố thứ nhất là: $5\\times 20=100$\n\nSố thứ hai là: $5\\times 15=75$\n\nSố thứ ba là: $235-100-75=60$\n\nĐáp số: Số thứ nhất: $100$ ; Số thứ hai: $75$ ; Số thứ ba: $60$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 5,
+   "hang": [
+    {
+     "nhan": "Số thứ nhất",
+     "phan": 20
+    },
+    {
+     "nhan": "Số thứ hai",
+     "phan": 15
+    },
+    {
+     "nhan": "Số thứ ba",
+     "phan": 12
+    }
+   ],
+   "tong": "235",
+   "dau_hoi": [
+    "Số thứ nhất",
+    "Số thứ hai",
+    "Số thứ ba"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B13",
+  "gop_y": false,
+  "dap_an": "$21$ kg bao thứ nhất ; $7$ kg bao thứ hai ; $28$ kg bao thứ ba",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lấy bao thứ hai làm một phần, tìm số phần của bao thứ ba và của bao thứ nhất, rồi dùng tổng của bao thứ nhất và bao thứ ba để tìm giá trị một phần.\n\n**Bước 1.** Coi bao thứ hai là một phần thì bao thứ ba là mấy phần, rồi cộng để được tổng hai bao đó.\n\n**Bước 2.** Bao thứ nhất bằng một phân số của tổng này, nên tìm số phần của bao thứ nhất.\n\n**Bước 3.** Vẽ sơ đồ ba bao, lấy tổng số phần của bao thứ nhất và bao thứ ba làm mẫu để chia $49$ kg.\n\n**Bước 4.** Nhân giá trị một phần với số phần của bao thứ nhất, rồi tìm hai bao còn lại.\n\n**Chú ý:** tổng $49$ kg là của bao thứ nhất và bao thứ ba, không phải của cả ba bao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì bao thứ ba có số đường gấp $4$ lần bao thứ hai nên coi số đường ở bao thứ hai là $1$ phần thì số đường ở bao thứ ba là $4$ phần như thế.\n\nKhi đó, tổng số đường của bao thứ hai và bao thứ ba là: $1+4=5$ (phần như thế)\n\nDo đó, số đường của bao thứ nhất là $3$ phần như thế.\n\nTa có sơ đồ:\n\nBao thứ nhất: 3 phần; bao thứ hai: 1 phần; bao thứ ba: 4 phần; bao thứ nhất và bao thứ ba cộng lại là 49 kg; cần tìm số ki-lô-gam đường mỗi bao.\n\nSố đường của bao thứ nhất là: $49:(3+4)\\times 3=21$ (kg)\n\nSố đường của bao thứ ba là: $49-21=28$ (kg)\n\nSố đường của bao thứ hai là: $28:4=7$ (kg)\n\nĐáp số: Bao thứ nhất: $21$ kg ; Bao thứ hai: $7$ kg ; Bao thứ ba: $28$ kg",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Bao thứ nhất",
+     "phan": 3
+    },
+    {
+     "nhan": "Bao thứ hai",
+     "phan": 1
+    },
+    {
+     "nhan": "Bao thứ ba",
+     "phan": 4,
+     "ghi": "bao 1 + bao 3: 49 kg"
+    }
+   ],
+   "dau_hoi": [
+    "Bao thứ nhất",
+    "Bao thứ hai",
+    "Bao thứ ba"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B14",
+  "gop_y": false,
+  "dap_an": "$15$ tờ loại $5000$ đồng ; $8$ tờ loại $20000$ đồng ; $8$ tờ loại $50000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm trước loại tiền đã mua đúng $75000$ đồng, rồi với hai loại còn lại có số tờ bằng nhau thì tổng tiền của hai loại tỉ lệ với mệnh giá của chúng, từ đó đưa về bài tổng và tỉ số.\n\n**Bước 1.** Xét xem loại mệnh giá nào chia hết được $75000$ để biết loại tiền mua riêng hết $75000$ đồng.\n\n**Bước 2.** Lấy tổng tiền trừ $75000$ đồng để tìm tổng tiền của hai loại còn lại.\n\n**Bước 3.** Hai loại có số tờ bằng nhau nên tỉ số tổng tiền bằng tỉ số mệnh giá, từ đó đọc số phần của từng loại.\n\n**Bước 4.** Vẽ sơ đồ, chia tổng tiền hai loại cho tổng số phần rồi tìm số tờ mỗi loại.\n\n**Chú ý:** $75000$ không chia hết cho $50000$ và cũng không chia hết cho $20000$, vì vậy loại đã mua hết $75000$ đồng chỉ có thể là loại $5000$ đồng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì riêng một loại tiền đã mua hết $75000$ đồng nên mệnh giá đó chỉ có thể là $5000$ đồng.\n\nSố tờ tiền mệnh giá $5000$ đồng là: $75000:5000=15$ (tờ)\n\nTổng số tiền còn lại của $2$ mệnh giá $50000$ đồng và $20000$ đồng là: $635000-75000=560000$ (đồng)\n\nGiá trị của tờ tiền $50000$ đồng gấp giá trị của tờ tiền $20000$ đồng số lần là: $50000:20000=\\dfrac{5}{2}$ (lần)\n\nMà số tờ tiền $50000$ đồng bằng số tờ tiền $20000$ đồng nên tổng số tiền loại $50000$ đồng gấp $\\dfrac{5}{2}$ lần tổng số tiền loại $20000$ đồng.\n\nCoi tổng số tiền loại $20000$ đồng là $2$ phần bằng nhau thì tổng số tiền loại $50000$ đồng là $5$ phần như thế.\n\nTa có sơ đồ:\n\nTiền loại 50000 đồng: 5 phần; tiền loại 20000 đồng: 2 phần (hai loại có số tờ bằng nhau); hai loại cộng lại là 635000 trừ 75000 đồng. Loại còn lại: 75000 đồng, tức là 5000 × ? tờ. Cần tìm số tờ mỗi loại.\n\nTổng số tiền loại $20000$ đồng là: $560000:(5+2)\\times 2=160000$ (đồng)\n\nSố tờ tiền loại $20000$ đồng là: $160000:20000=8$ (tờ)\n\nDo đó số tờ tiền loại $50000$ đồng cũng là $8$ tờ.\n\nĐáp số: Loại $5000$ đồng: $15$ tờ ; Loại $20000$ đồng: $8$ tờ ; Loại $50000$ đồng: $8$ tờ",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Hai loại 50000 đồng và 20000 đồng có số tờ bằng nhau",
+    "gia_tri_phan": 80000,
+    "hang": [
+     {
+      "nhan": "50000 đồng × ? tờ",
+      "phan": 5
+     },
+     {
+      "nhan": "20000 đồng × ? tờ",
+      "phan": 2
+     }
+    ],
+    "tong": "Hai loại: 635000 - 75000 đồng"
+   },
+   {
+    "tieu_de": "Loại tiền còn lại",
+    "gia_tri_phan": 75000,
+    "hang": [
+     {
+      "nhan": "Loại 5000 đồng",
+      "phan": 1,
+      "ghi": "75000 đồng = 5000 × ? tờ"
+     }
+    ]
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B15",
+  "gop_y": false,
+  "dap_an": "$108$ con gà ; $182$ con vịt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tỉ số cho ở thời điểm sau khi bán, nên ta tính tổng số gà và vịt còn lại rồi chia theo tỉ số, sau đó cộng lại số đã bán để về lúc đầu.\n\n**Bước 1.** Tìm tổng số gà và vịt còn lại sau khi bán bằng cách lấy tổng ban đầu trừ số con đã bán.\n\n**Bước 2.** Coi số vịt còn lại là một số phần bằng nhau rồi tìm số phần của gà còn lại từ phân số đề cho.\n\n**Bước 3.** Vẽ sơ đồ rồi chia tổng số còn lại cho tổng số phần để tìm số gà còn lại.\n\n**Bước 4.** Cộng thêm số gà đã bán để được số gà lúc đầu, rồi lấy tổng trừ số gà để được số vịt lúc đầu.\n\n**Chú ý:** tỉ số $\\dfrac{4}{7}$ là của số con còn lại, không phải của số con lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi bán, trang trại còn số gà và vịt là: $290-(24+35)=231$ (con)\n\nSau khi bán, số gà còn lại bằng $\\dfrac{4}{7}$ số vịt còn lại nên coi số vịt còn lại là $7$ phần bằng nhau thì số gà còn lại là $4$ phần như thế.\n\nTa có sơ đồ:\n\nGà lúc đầu: 4 phần thêm 24 con đã bán; vịt lúc đầu: 7 phần thêm 35 con đã bán; gà và vịt lúc đầu cộng lại là 290 con (cần tìm số gà, số vịt lúc đầu); gà còn lại: 4 phần; vịt còn lại: 7 phần.\n\nSố gà còn lại là: $231:(4+7)\\times 4=84$ (con)\n\nSố gà lúc đầu là: $84+24=108$ (con)\n\nSố vịt lúc đầu là: $290-108=182$ (con)\n\nĐáp số: $108$ con gà ; $182$ con vịt",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 21,
+   "hang": [
+    {
+     "nhan": "Gà lúc đầu",
+     "phan": 4,
+     "them": "bán 24 con",
+     "them_gt": 24
+    },
+    {
+     "nhan": "Vịt lúc đầu",
+     "phan": 7,
+     "them": "bán 35 con",
+     "them_gt": 35,
+     "ghi": "gà + vịt lúc đầu: 290 con"
+    },
+    {
+     "nhan": "Gà còn lại",
+     "phan": 4
+    },
+    {
+     "nhan": "Vịt còn lại",
+     "phan": 7
+    }
+   ],
+   "dau_hoi": [
+    "Gà lúc đầu",
+    "Vịt lúc đầu"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B16",
+  "gop_y": false,
+  "dap_an": "$441$ tấn thóc kho A ; $344$ tấn thóc kho B",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tỉ số cho ở lúc sau khi kho A xuất và kho B nhập, nên ta tìm tổng số thóc lúc sau rồi chia theo tỉ số, sau đó tính ngược về lúc đầu.\n\n**Bước 1.** Tìm tổng số thóc của hai kho lúc sau, chú ý một kho bớt đi còn một kho thêm vào.\n\n**Bước 2.** Coi số thóc kho B là một số phần rồi tìm số phần của kho A từ phân số đề cho.\n\n**Bước 3.** Vẽ sơ đồ lúc sau rồi chia tổng cho tổng số phần để tìm số thóc kho B lúc sau.\n\n**Bước 4.** Trừ số thóc đã nhập để được kho B lúc đầu, rồi lấy tổng ban đầu trừ đi để được kho A lúc đầu.\n\n**Chú ý:** tổng lúc sau khác tổng lúc đầu vì hai kho thay đổi bằng hai số khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau khi kho A xuất đi và kho B nhập thêm thì tổng số thóc ở cả $2$ kho là: $785-105+136=816$ (tấn)\n\nLúc sau, số thóc kho A bằng $\\dfrac{7}{10}$ số thóc kho B nên nếu coi số thóc ở kho B là $10$ phần bằng nhau thì số thóc ở kho A là $7$ phần như thế.\n\nTa có sơ đồ:\n\nLúc đầu: cả hai kho có 785 tấn thóc, cần tìm số thóc mỗi kho. Lúc sau (kho A xuất đi 105 tấn, kho B nhập thêm 136 tấn): kho A: 7 phần; kho B: 10 phần; tổng lúc sau là 785 trừ 105 cộng 136 tấn.\n\nLúc sau, kho B có số tấn thóc là: $816:(7+10)\\times 10=480$ (tấn)\n\nLúc đầu, kho B có số tấn thóc là: $480-136=344$ (tấn)\n\nLúc đầu, kho A có số tấn thóc là: $785-344=441$ (tấn)\n\nĐáp số: Kho A: $441$ tấn thóc ; Kho B: $344$ tấn thóc",
+  "so_do_mo_ta": [
+   {
+    "tieu_de": "Lúc đầu",
+    "gia_tri_phan": 441,
+    "hang": [
+     {
+      "nhan": "Kho A",
+      "phan": 1
+     },
+     {
+      "nhan": "Kho B",
+      "phan": 1,
+      "bot": "ít hơn kho A",
+      "bot_gt": 97
+     }
+    ],
+    "tong": "785 tấn",
+    "dau_hoi": [
+     "Kho A",
+     "Kho B"
+    ]
+   },
+   {
+    "tieu_de": "Lúc sau (kho A xuất đi 105 tấn, kho B nhập thêm 136 tấn)",
+    "gia_tri_phan": 48,
+    "hang": [
+     {
+      "nhan": "Kho A",
+      "phan": 7
+     },
+     {
+      "nhan": "Kho B",
+      "phan": 10
+     }
+    ],
+    "tong": "Tổng lúc sau: 785 - 105 + 136"
+   }
+  ],
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B17",
+  "gop_y": false,
+  "dap_an": "$759$ số bé ; $1265$ số lớn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hiệu bằng một phân số của số bé nên số bé và hiệu là các số phần bằng nhau, từ đó tìm số phần của số lớn rồi chia tổng theo tổng số phần.\n\n**Bước 1.** Coi số bé là một số phần bằng nhau theo mẫu số của phân số, khi đó hiệu hai số là số phần theo tử số.\n\n**Bước 2.** Cộng số phần của số bé với số phần của hiệu để tìm số phần của số lớn.\n\n**Bước 3.** Vẽ sơ đồ rồi chia tổng $2024$ cho tổng số phần để tìm số bé.\n\n**Bước 4.** Lấy tổng trừ số bé để tìm số lớn.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì hiệu của hai số bằng $\\dfrac{2}{3}$ số bé nên nếu coi số bé là $3$ phần bằng nhau thì hiệu hai số là $2$ phần như thế.\n\nDo đó, số lớn là: $2+3=5$ (phần như thế)\n\nTa có sơ đồ:\n\nSố bé: 3 phần; Số lớn: 5 phần; tổng 2024\n\nSố bé là: $2024:(3+5)\\times 3=759$\n\nSố lớn là: $2024-759=1265$\n\nĐáp số: Số bé: $759$ ; Số lớn: $1265$",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 253,
+   "hang": [
+    {
+     "nhan": "Số bé",
+     "phan": 3
+    },
+    {
+     "nhan": "Số lớn",
+     "phan": 5
+    }
+   ],
+   "tong": "2024",
+   "dau_hoi": [
+    "Số bé",
+    "Số lớn"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B18",
+  "gop_y": false,
+  "dap_an": "$28$ chiếc bút đỏ ; $84$ chiếc bút xanh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai loại bút bán đi số lượng khác nhau nên hiệu thay đổi, ta tìm hiệu lúc đầu bằng cách cộng lại phần chênh lệch đã bán, rồi dùng bài hiệu và tỉ số.\n\n**Bước 1.** Tìm số bút xanh đã bán nhiều hơn số bút đỏ đã bán bao nhiêu chiếc.\n\n**Bước 2.** Bán cùng số chiếc mỗi loại thì hiệu không đổi, nên hiệu lúc sau giảm đúng bằng phần bán nhiều hơn, từ đó suy ra hiệu lúc đầu.\n\n**Bước 3.** Từ tỉ số lúc đầu, coi số bút đỏ là một phần thì bút xanh là mấy phần.\n\n**Bước 4.** Vẽ sơ đồ rồi chia hiệu lúc đầu cho hiệu số phần để tìm số bút đỏ, sau đó tìm số bút xanh.\n\n**Chú ý:** hiệu $51$ chiếc là hiệu lúc sau khi bán, không phải hiệu lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bút xanh đã bán nhiều hơn số bút đỏ đã bán là: $12-7=5$ (bút)\n\nNếu cùng bán $7$ chiếc bút xanh và $7$ chiếc bút đỏ thì hiệu của số bút xanh và số bút đỏ còn lại vẫn bằng hiệu của số bút xanh và số bút đỏ lúc đầu.\n\nSau khi bán $7$ chiếc bút xanh, còn bán thêm $5$ chiếc bút xanh nữa nên cuối cùng hiệu của số bút xanh và số bút đỏ còn lại giảm $5$ chiếc so với hiệu của số bút xanh và số bút đỏ lúc đầu.\n\nVì hiệu của số bút xanh và số bút đỏ còn lại là $51$ chiếc nên hiệu của số bút xanh và số bút đỏ lúc đầu là: $51+5=56$ (chiếc)\n\nLúc đầu, số bút xanh gấp $3$ lần số bút đỏ nên nếu coi số bút đỏ là $1$ phần thì số bút xanh là $3$ phần như thế.\n\nTa có sơ đồ:\n\nBút đỏ: 1 phần; Bút xanh: 3 phần; hiệu hai số là 56 chiếc\n\nLúc đầu, có số bút đỏ là: $56:(3-1)\\times 1=28$ (chiếc)\n\nLúc đầu, có số bút xanh là: $28\\times 3=84$ (chiếc)\n\nĐáp số: $28$ chiếc bút đỏ ; $84$ chiếc bút xanh",
+  "so_do_mo_ta": {
+   "tieu_de": "Lúc đầu",
+   "gia_tri_phan": 28,
+   "hang": [
+    {
+     "nhan": "Bút đỏ",
+     "phan": 1
+    },
+    {
+     "nhan": "Bút xanh",
+     "phan": 3
+    }
+   ],
+   "hieu": "56 chiếc",
+   "dau_hoi": [
+    "Bút đỏ",
+    "Bút xanh"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B19",
+  "gop_y": false,
+  "dap_an": "$1080000$ đồng anh Bình ; $1200000$ đồng anh An",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số tiền còn lại của hai anh bằng nhau nên viết hai phân số của hai số tiền ban đầu thành hai số bằng nhau, đưa về cùng tử số rồi đọc số phần, sau đó dùng hiệu $120000$ đồng.\n\n**Bước 1.** Tìm phân số chỉ số tiền còn lại của mỗi anh bằng cách lấy $1$ trừ phân số đã tiêu.\n\n**Bước 2.** Viết số tiền còn lại của hai anh bằng nhau rồi quy đồng tử số của hai phân số.\n\n**Bước 3.** Đọc số phần bằng nhau của anh Bình và anh An rồi vẽ sơ đồ.\n\n**Bước 4.** Chia hiệu $120000$ đồng cho hiệu số phần để tìm số tiền của anh Bình, rồi cộng hiệu để được số tiền của anh An.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố tiền còn lại của anh Bình chiếm: $1-\\dfrac{1}{3}=\\dfrac{2}{3}$ (số tiền anh Bình có lúc đầu)\n\nSố tiền còn lại của anh An chiếm: $1-\\dfrac{2}{5}=\\dfrac{3}{5}$ (số tiền anh An có lúc đầu)\n\nTa có: $\\dfrac{2}{3}$ số tiền anh Bình có lúc đầu bằng $\\dfrac{3}{5}$ số tiền anh An có lúc đầu.\n\nHay: $\\dfrac{6}{9}$ số tiền anh Bình có lúc đầu bằng $\\dfrac{6}{10}$ số tiền anh An có lúc đầu.\n\nCoi số tiền anh Bình có lúc đầu là $9$ phần bằng nhau thì số tiền anh An có lúc đầu là $10$ phần như thế.\n\nTa có sơ đồ:\n\nAnh Bình: 9 phần; Anh An: 10 phần; hiệu hai số là 120000 đồng\n\nLúc đầu anh Bình có số tiền là: $120000:(10-9)\\times 9=1080000$ (đồng)\n\nLúc đầu anh An có số tiền là: $1080000+120000=1200000$ (đồng)\n\nĐáp số: Anh Bình: $1080000$ đồng ; Anh An: $1200000$ đồng",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 120000,
+   "hang": [
+    {
+     "nhan": "Anh Bình",
+     "phan": 9
+    },
+    {
+     "nhan": "Anh An",
+     "phan": 10
+    }
+   ],
+   "hieu": "120000 đồng",
+   "dau_hoi": [
+    "Anh Bình",
+    "Anh An"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ11 · B20",
+  "gop_y": false,
+  "dap_an": "$28$ quyển tổ 1 ; $21$ quyển tổ 2 ; $14$ quyển tổ 3 ; $7$ quyển tổ 4",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** lấy tổ nhận ít nhất làm một phần, rồi lần lượt tìm số phần của các tổ còn lại từ các quan hệ gấp đôi và tổng, sau đó chia $70$ quyển theo tổng số phần.\n\n**Bước 1.** Chọn tổ 4 là một phần, vì các tổ khác đều so sánh trực tiếp hoặc gián tiếp với tổ 4.\n\n**Bước 2.** Tìm số phần của tổ 3 từ quan hệ gấp đôi, rồi số phần của tổ 2 bằng tổng số phần của tổ 3 và tổ 4.\n\n**Bước 3.** Tìm số phần của tổ 1 bằng tổng số phần của tổ 2 và tổ 4.\n\n**Bước 4.** Vẽ sơ đồ bốn tổ, cộng các số phần rồi chia $70$ quyển để tìm giá trị một phần.\n\n**Bước 5.** Nhân giá trị một phần với số phần của từng tổ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì số vở tổ 3 nhận gấp đôi số vở tổ 4 nhận nên nếu coi số vở tổ 4 nhận là $1$ phần thì số vở tổ 3 nhận là $2$ phần như thế.\n\nKhi đó tổng số vở của tổ 4 và tổ 3 nhận là $3$ phần.\n\nHay số vở tổ 2 nhận $3$ phần.\n\nTổng số vở của tổ 2 và tổ 4 nhận là $4$ phần hay số vở tổ 1 nhận là $4$ phần.\n\nTa có sơ đồ:\n\nTổ 1: 4 phần; Tổ 2: 3 phần; Tổ 3: 2 phần; Tổ 4: 1 phần; tổng 70 quyển\n\nTổng số phần bằng nhau là: $1+2+3+4=10$ (phần)\n\nTổ 4 nhận được số quyển vở là: $70:10\\times 1=7$ (quyển)\n\nTổ 3 nhận được số quyển vở là: $7\\times 2=14$ (quyển)\n\nTổ 2 nhận được số quyển vở là: $7\\times 3=21$ (quyển)\n\nTổ 1 nhận được số quyển vở là: $7\\times 4=28$ (quyển)\n\nĐáp số: Tổ 1: $28$ quyển vở ; Tổ 2: $21$ quyển vở ; Tổ 3: $14$ quyển vở ; Tổ 4: $7$ quyển vở",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 7,
+   "hang": [
+    {
+     "nhan": "Tổ 1",
+     "phan": 4
+    },
+    {
+     "nhan": "Tổ 2",
+     "phan": 3
+    },
+    {
+     "nhan": "Tổ 3",
+     "phan": 2
+    },
+    {
+     "nhan": "Tổ 4",
+     "phan": 1
+    }
+   ],
+   "tong": "70 quyển",
+   "dau_hoi": [
+    "Tổ 1",
+    "Tổ 2",
+    "Tổ 3",
+    "Tổ 4"
+   ]
+  },
+  "ghi_chu_nghi": null
+ }
+]

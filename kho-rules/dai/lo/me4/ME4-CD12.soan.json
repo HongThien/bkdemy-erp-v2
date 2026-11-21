@@ -1,0 +1,550 @@
+[
+ {
+  "ma_nguon": "CĐ12 · B1",
+  "gop_y": false,
+  "dap_an": "$14$ chiếc kẹo ; $4$ em",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cùng một số kẹo, chia mỗi em ít hơn thì còn thừa, chia mỗi em nhiều hơn thì bị thiếu; hai cách chia hơn kém nhau đúng bằng số thừa cộng với số thiếu.\n\n**Bước 1.** Xác định hai hiệu số của bài: cách chia thứ nhất thừa mấy chiếc, cách chia thứ hai thiếu mấy chiếc.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh vẽ nét đứt, để thấy số kẹo đủ chia theo hai cách hơn kém nhau bao nhiêu.\n\n**Bước 3.** Tìm xem mỗi em ở cách chia sau được nhiều hơn cách chia trước bao nhiêu chiếc.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi em để tìm số em, rồi tính số kẹo.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số kẹo đủ chia cho mỗi em 4 chiếc; đoạn giữa: số kẹo có (cần tìm), còn thiếu 2 chiếc (nét đứt) so với đoạn trên; đoạn dưới: số kẹo đủ chia cho mỗi em 3 chiếc, ngắn hơn đoạn trên một đoạn nét đứt dài 2 + 2 chiếc. Số em cũng cần tìm.\n\nSố kẹo đủ chia cho mỗi em $3$ chiếc ít hơn số kẹo đủ chia cho mỗi em $4$ chiếc là: $2+2=4$ (chiếc)\n\n$1$ em có $3$ chiếc ít hơn $1$ em có $4$ chiếc là: $4-3=1$ (chiếc)\n\nSố em được chia kẹo là: $4:1=4$ (em)\n\nSố chiếc kẹo là: $3\\times 4+2=14$ (chiếc)\n\nĐáp số: $14$ chiếc kẹo và $4$ em",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 16,
+   "hang": [
+    {
+     "nhan": "Chia 4 chiếc/em",
+     "phan": 1,
+     "ghi": "4 chiếc × ? em"
+    },
+    {
+     "nhan": "Số kẹo",
+     "phan": 1,
+     "bot": "thiếu 2",
+     "bot_gt": 2
+    },
+    {
+     "nhan": "Chia 3 chiếc/em",
+     "phan": 1,
+     "bot": "2 + 2 chiếc",
+     "bot_gt": 4,
+     "ghi": "3 chiếc × ? em"
+    }
+   ],
+   "dau_hoi": [
+    "Số kẹo"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B2",
+  "gop_y": false,
+  "dap_an": "$22$ quyển vở ; $2$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cả hai cách chia đều thừa vở, cách chia nhiều vở hơn cho mỗi bạn thì số vở thừa ít hơn; phần chênh giữa hai số thừa chính là phần vở mà các bạn được thêm ở cách chia sau.\n\n**Bước 1.** Xác định hai hiệu số: chia mỗi bạn $8$ quyển thì thừa $6$ quyển, chia mỗi bạn $10$ quyển thì thừa $2$ quyển.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn: số vở đủ chia mỗi bạn $8$ quyển ngắn hơn số vở đủ chia mỗi bạn $10$ quyển một phần nét đứt.\n\n**Bước 3.** Tìm phần chênh bằng hiệu hai số vở thừa, rồi tìm mỗi bạn được thêm bao nhiêu quyển.\n\n**Bước 4.** Chia phần chênh cho số quyển mỗi bạn được thêm để tìm số học sinh, sau đó tính số vở.\n\n**Chú ý:** hai số thừa trừ cho nhau (không cộng), vì cả hai cách chia đều còn thừa.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số vở đủ chia cho mỗi bạn 10 quyển; đoạn giữa: số vở có (cần tìm), dài hơn đoạn trên 2 quyển (thừa 2 quyển); đoạn dưới: số vở đủ chia cho mỗi bạn 8 quyển, ngắn hơn đoạn trên một đoạn nét đứt dài 6 - 2 quyển. Số học sinh cũng cần tìm.\n\nSố vở đủ chia cho mỗi bạn $8$ quyển ít hơn số vở đủ chia cho mỗi bạn $10$ quyển là: $6-2=4$ (quyển)\n\n$1$ bạn có $8$ quyển ít hơn $1$ bạn có $10$ quyển là: $10-8=2$ (quyển)\n\nSố học sinh được chia vở là: $4:2=2$ (học sinh)\n\nCô giáo có số quyển vở là: $8\\times 2+6=22$ (quyển)\n\nĐáp số: $22$ quyển vở và $2$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 20,
+   "hang": [
+    {
+     "nhan": "Chia 10 quyển/bạn",
+     "phan": 1,
+     "ghi": "10 quyển × ? bạn"
+    },
+    {
+     "nhan": "Số vở",
+     "phan": 1,
+     "them": "thừa 2",
+     "them_gt": 2
+    },
+    {
+     "nhan": "Chia 8 quyển/bạn",
+     "phan": 1,
+     "bot": "6 - 2 quyển",
+     "bot_gt": 4,
+     "ghi": "8 quyển × ? bạn"
+    }
+   ],
+   "dau_hoi": [
+    "Số vở"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B3",
+  "gop_y": false,
+  "dap_an": "$40$ cháu ; $6$ cô giáo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi nhóm có một cô giáo nên số nhóm bằng số cô giáo; đổi \"thừa một cô\" thành \"thiếu cả một nhóm cháu\" thì bài trở về dạng một lần thừa, một lần thiếu.\n\n**Bước 1.** Đổi hai dữ kiện về số cháu: chia mỗi nhóm $6$ cháu thì thừa $4$ cháu, chia mỗi nhóm $8$ cháu thì thừa một cô tức là thiếu $8$ cháu.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng của số cháu thừa và số cháu thiếu.\n\n**Bước 3.** Tìm mỗi nhóm ở cách chia sau nhiều hơn cách chia trước bao nhiêu cháu.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi nhóm để tìm số nhóm, từ đó tìm số cô giáo và số cháu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu chia mỗi nhóm $8$ cháu thì thừa một cô, tức là còn thiếu $8$ cháu để đủ cho tất cả các cô giáo phụ trách.\n\nTa có sơ đồ:\n\nĐoạn trên: số cháu đủ chia cho mỗi nhóm 8 cháu; đoạn giữa: số cháu có (cần tìm), thiếu một phần nét đứt ứng với thừa 1 cô; đoạn dưới: số cháu đủ chia cho mỗi nhóm 6 cháu, ngắn hơn đoạn trên một đoạn nét đứt dài 4 cháu + 1 cô. Số cô giáo (số nhóm) cũng cần tìm.\n\nSố cháu đủ chia cho mỗi nhóm $6$ cháu ít hơn số cháu đủ chia cho mỗi nhóm $8$ cháu là: $4+8=12$ (cháu)\n\n$1$ nhóm có $6$ cháu ít hơn $1$ nhóm có $8$ cháu là: $8-6=2$ (cháu)\n\nCó tất cả số nhóm (hay số cô giáo phụ trách) là: $12:2=6$ (nhóm)\n\nNhà trẻ có tất cả số cháu là: $6\\times 6+4=40$ (cháu)\n\nĐáp số: $40$ cháu và $6$ cô giáo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Chia 8 cháu/nhóm",
+     "phan": 1,
+     "ghi": "8 cháu × ? cô giáo"
+    },
+    {
+     "nhan": "Số cháu",
+     "phan": 1,
+     "bot": "thừa 1 cô",
+     "bot_gt": 8
+    },
+    {
+     "nhan": "Chia 6 cháu/nhóm",
+     "phan": 1,
+     "bot": "4 cháu + 1 cô",
+     "bot_gt": 12,
+     "ghi": "6 cháu × ? cô giáo"
+    }
+   ],
+   "dau_hoi": [
+    "Số cháu"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B4",
+  "gop_y": false,
+  "dap_an": "$45$ học sinh ; $11$ bàn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"thừa hai bàn\" nghĩa là nếu mỗi bàn $5$ bạn thì còn thiếu bạn để ngồi đầy hai bàn đó; đổi về số bạn thì bài thành một lần thừa, một lần thiếu.\n\n**Bước 1.** Đổi số bàn thừa thành số bạn còn thiếu bằng cách nhân số bàn thừa với số bạn mỗi bàn.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số bạn thừa và số bạn thiếu.\n\n**Bước 3.** Tìm mỗi bàn ở cách xếp sau nhiều hơn cách xếp trước bao nhiêu bạn.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi bàn để tìm số bàn, rồi tính số học sinh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu xếp mỗi bàn $5$ bạn thì thừa hai bàn, tức là còn thiếu số bạn để đủ chia vào tất cả các bàn là: $5\\times 2=10$ (bạn)\n\nTa có sơ đồ:\n\nĐoạn trên: số bạn đủ xếp cho mỗi bàn 5 bạn; đoạn giữa: số học sinh có (cần tìm), thiếu một phần nét đứt ứng với thừa 2 bàn; đoạn dưới: số bạn đủ xếp cho mỗi bàn 4 bạn, ngắn hơn đoạn trên một đoạn nét đứt dài 1 bạn + 2 bàn. Số bàn cũng cần tìm.\n\nSố bạn đủ xếp cho mỗi bàn $4$ bạn ít hơn số bạn đủ xếp cho mỗi bàn $5$ bạn là: $10+1=11$ (bạn)\n\n$1$ bàn có $4$ bạn ít hơn $1$ bàn có $5$ bạn là: $5-4=1$ (bạn)\n\nCó tất cả số bàn là: $11:1=11$ (cái bàn)\n\nLớp đó có số học sinh là: $4\\times 11+1=45$ (học sinh)\n\nĐáp số: $45$ học sinh và $11$ cái bàn",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 55,
+   "hang": [
+    {
+     "nhan": "Xếp 5 bạn/bàn",
+     "phan": 1,
+     "ghi": "5 bạn × ? bàn"
+    },
+    {
+     "nhan": "Số học sinh",
+     "phan": 1,
+     "bot": "thừa 2 bàn",
+     "bot_gt": 10
+    },
+    {
+     "nhan": "Xếp 4 bạn/bàn",
+     "phan": 1,
+     "bot": "1 bạn + 2 bàn",
+     "bot_gt": 11,
+     "ghi": "4 bạn × ? bàn"
+    }
+   ],
+   "dau_hoi": [
+    "Số học sinh"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B5",
+  "gop_y": false,
+  "dap_an": "$6$ tổ ; $45$ quyển sách Văn ; $45$ quyển sách Toán",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số sách Văn bằng số sách Toán nên chia sách Văn cũng như chia sách Toán; ta có một lần chia thừa và một lần chia thiếu của cùng một số sách.\n\n**Bước 1.** Ghép hai dữ kiện thành hai hiệu số của cùng một số sách: chia mỗi tổ $7$ quyển thì thừa $3$ quyển, chia mỗi tổ $8$ quyển thì thiếu $3$ quyển.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số quyển thừa và số quyển thiếu.\n\n**Bước 3.** Tìm mỗi tổ ở cách chia sau nhiều hơn cách chia trước bao nhiêu quyển.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi tổ để tìm số tổ, rồi tính số sách Văn và số sách Toán.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì số lượng sách Văn bằng số lượng sách Toán nên chia sách Văn cũng như chia sách Toán.\n\nTa có sơ đồ:\n\nĐoạn trên: số sách đủ chia cho mỗi tổ 8 quyển; đoạn giữa: số sách Văn (bằng số sách Toán, cần tìm), thiếu 3 quyển (nét đứt) so với đoạn trên; đoạn dưới: số sách đủ chia cho mỗi tổ 7 quyển, ngắn hơn đoạn trên một đoạn nét đứt dài 3 + 3 quyển. Số tổ cũng cần tìm.\n\nSố sách đủ chia cho mỗi tổ $7$ quyển ít hơn số sách đủ chia cho mỗi tổ $8$ quyển là: $3+3=6$ (quyển)\n\n$1$ tổ có $7$ quyển ít hơn $1$ tổ có $8$ quyển là: $8-7=1$ (quyển)\n\nSố tổ được chia sách là: $6:1=6$ (tổ)\n\nSố sách Văn hay số sách Toán là: $7\\times 6+3=45$ (quyển)\n\nĐáp số: $6$ tổ; sách Toán $45$ quyển; sách Văn $45$ quyển",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Chia 8 quyển/tổ",
+     "phan": 1,
+     "ghi": "8 quyển × ? tổ"
+    },
+    {
+     "nhan": "Số sách Văn = Toán",
+     "phan": 1,
+     "bot": "thiếu 3",
+     "bot_gt": 3
+    },
+    {
+     "nhan": "Chia 7 quyển/tổ",
+     "phan": 1,
+     "bot": "3 + 3 quyển",
+     "bot_gt": 6,
+     "ghi": "7 quyển × ? tổ"
+    }
+   ],
+   "dau_hoi": [
+    "Số sách Văn = Toán"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B6",
+  "gop_y": false,
+  "dap_an": "$245$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cách xếp hàng $15$ vừa thừa $5$ em vừa ít đi $4$ hàng; ta phải đổi thành số em còn thiếu để so với cách xếp hàng $12$ có cùng số hàng.\n\n**Bước 1.** Tìm số học sinh còn thiếu khi xếp hàng $15$: lấy $4$ hàng đầy trừ đi $5$ em đang thừa.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số em thừa ở cách xếp hàng $12$ và số em thiếu vừa tìm.\n\n**Bước 3.** Tìm mỗi hàng ở cách xếp sau nhiều hơn cách xếp trước bao nhiêu em.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi hàng để tìm số hàng, rồi tính số học sinh.\n\n**Chú ý:** cả hai cách xếp đều thừa $5$ em, nhưng số hàng khác nhau nên không được trừ hai số thừa cho nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu xếp mỗi hàng $15$ học sinh thì thừa $5$ bạn nhưng ít đi $4$ hàng, tức là còn thiếu số học sinh để đủ số hàng như trước là: $15\\times 4-5=55$ (học sinh)\n\nTa có sơ đồ:\n\nĐoạn trên: số học sinh đủ xếp mỗi hàng 15 em với số hàng ban đầu; đoạn giữa: số học sinh có (cần tìm), thiếu một đoạn nét đứt dài 15 × 4 - 5 em; đoạn dưới: số học sinh đủ xếp mỗi hàng 12 em với số hàng ban đầu, ngắn hơn đoạn trên một đoạn nét đứt dài 15 × 4 em.\n\nSố học sinh đủ xếp mỗi hàng $15$ bạn nhiều hơn số học sinh đủ xếp mỗi hàng $12$ bạn là: $55+5=60$ (học sinh)\n\n$1$ hàng có $15$ học sinh nhiều hơn $1$ hàng có $12$ học sinh là: $15-12=3$ (học sinh)\n\nCó tất cả số hàng là: $60:3=20$ (hàng)\n\nCó tất cả số học sinh tham gia đồng diễn là: $12\\times 20+5=245$ (học sinh)\n\nĐáp số: $245$ học sinh",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 300,
+   "hang": [
+    {
+     "nhan": "15 em × số hàng cũ",
+     "phan": 1
+    },
+    {
+     "nhan": "Số học sinh",
+     "phan": 1,
+     "bot": "15 × 4 - 5 em",
+     "bot_gt": 55
+    },
+    {
+     "nhan": "12 em × số hàng cũ",
+     "phan": 1,
+     "bot": "15 × 4 em",
+     "bot_gt": 60
+    }
+   ],
+   "dau_hoi": [
+    "Số học sinh"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B7",
+  "gop_y": false,
+  "dap_an": "$160$ sản phẩm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm theo kế hoạch ($32$ sản phẩm mỗi giờ) thì vừa đủ, làm $35$ sản phẩm mỗi giờ thì thừa ra một số sản phẩm; phần thừa đó do mỗi giờ làm nhiều hơn mà có.\n\n**Bước 1.** Tìm số sản phẩm thừa nếu làm $35$ sản phẩm mỗi giờ đủ thời gian, từ lượng còn thiếu ở giờ cuối.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là số sản phẩm thừa vừa tìm.\n\n**Bước 3.** Tìm mỗi giờ làm theo cách sau nhiều hơn theo kế hoạch bao nhiêu sản phẩm.\n\n**Bước 4.** Chia số sản phẩm thừa cho phần làm thêm mỗi giờ để tìm số giờ, rồi tính số sản phẩm theo kế hoạch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu mỗi giờ làm $35$ sản phẩm thì khi làm đủ giờ sẽ thừa số sản phẩm là: $35-20=15$ (sản phẩm)\n\nTa có sơ đồ:\n\nĐoạn trên: số sản phẩm làm được nếu mỗi giờ làm 35 sản phẩm trong đủ thời gian quy định; đoạn dưới: số sản phẩm theo kế hoạch (mỗi giờ 32 sản phẩm, cần tìm), ngắn hơn đoạn trên một đoạn nét đứt dài 35 - 20 sản phẩm (trước hạn 1 giờ còn 20 sản phẩm).\n\n$1$ giờ làm $35$ sản phẩm nhiều hơn $1$ giờ làm $32$ sản phẩm là: $35-32=3$ (sản phẩm)\n\nTheo kế hoạch, số giờ làm là: $15:3=5$ (giờ)\n\nTheo kế hoạch, người đó phải làm số sản phẩm là: $32\\times 5=160$ (sản phẩm)\n\nĐáp số: $160$ sản phẩm",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 175,
+   "hang": [
+    {
+     "nhan": "35 sản phẩm/giờ, đủ giờ",
+     "phan": 1
+    },
+    {
+     "nhan": "Kế hoạch: 32 sản phẩm/giờ",
+     "phan": 1,
+     "bot": "35 - 20",
+     "bot_gt": 15,
+     "ghi": "trước hạn 1 giờ còn 20 sản phẩm"
+    }
+   ],
+   "dau_hoi": [
+    "Kế hoạch: 32 sản phẩm/giờ"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B8",
+  "gop_y": false,
+  "dap_an": "$140$ cái chiếu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai người nhận dệt số chiếu bằng nhau, nên người dệt nhiều hơn mỗi ngày sẽ còn phải dệt ít hơn; hiệu số cái còn phải dệt chính là số cái người đó đã dệt hơn.\n\n**Bước 1.** Xác định hai hiệu số: số cái còn phải dệt của hai người, và số cái dệt được mỗi ngày của hai người.\n\n**Bước 2.** Tìm sau một số ngày người thứ hai đã dệt nhiều hơn người thứ nhất bao nhiêu cái.\n\n**Bước 3.** Tìm mỗi ngày người thứ hai dệt nhiều hơn người thứ nhất bao nhiêu cái.\n\n**Bước 4.** Chia hai hiệu số cho nhau để tìm số ngày đã dệt, rồi tính số chiếu mỗi người nhận dệt.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số chiếu mỗi người nhận dệt (cần tìm) bằng số chiếu người thứ hai đã dệt thêm 40 cái còn phải dệt; đoạn giữa: số chiếu người thứ hai đã dệt (mỗi ngày 10 cái); đoạn dưới: số chiếu người thứ nhất đã dệt (mỗi ngày 8 cái), ngắn hơn đoạn giữa một đoạn nét đứt dài 60 - 40 cái (người thứ nhất còn phải dệt 60 cái).\n\nSau một số ngày thì người thứ hai đã dệt nhiều hơn người thứ nhất số cái chiếu là: $60-40=20$ (cái)\n\n$1$ ngày người thứ hai dệt được nhiều hơn người thứ nhất là: $10-8=2$ (cái)\n\nSố ngày đã dệt chiếu là: $20:2=10$ (ngày)\n\nMỗi người nhận dệt số cái chiếu là: $8\\times 10+60=140$ (cái)\n\nĐáp số: $140$ cái chiếu",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 100,
+   "hang": [
+    {
+     "nhan": "Số chiếu mỗi người nhận dệt",
+     "phan": 1,
+     "them": "40 cái"
+    },
+    {
+     "nhan": "Người 2 đã dệt (10 cái/ngày)",
+     "phan": 1,
+     "ghi": "còn phải dệt 40 cái"
+    },
+    {
+     "nhan": "Người 1 đã dệt (8 cái/ngày)",
+     "phan": 1,
+     "bot": "60 - 40 cái",
+     "bot_gt": 20,
+     "ghi": "còn phải dệt 60 cái"
+    }
+   ],
+   "dau_hoi": [
+    "Số chiếu mỗi người nhận dệt"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B9",
+  "gop_y": false,
+  "dap_an": "$11$ người ; $60$ quả cam",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"một người không có quả nào\" nghĩa là nếu mỗi người mua $6$ quả thì còn thiếu đúng $6$ quả; bài trở thành một lần thừa, một lần thiếu.\n\n**Bước 1.** Đổi dữ kiện thứ hai thành số quả còn thiếu khi mỗi người mua $6$ quả.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số quả thừa và số quả thiếu.\n\n**Bước 3.** Tìm mỗi người ở cách mua sau nhiều hơn cách mua trước bao nhiêu quả.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi người để tìm số người, rồi tính số quả cam.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu mỗi người mua $6$ quả thì một người không có quả nào, tức là thiếu $6$ quả.\n\nTa có sơ đồ:\n\nĐoạn trên: số cam đủ chia cho mỗi người 6 quả; đoạn giữa: số cam có (cần tìm), thiếu một phần nét đứt ứng với 1 người không có quả nào; đoạn dưới: số cam đủ chia cho mỗi người 5 quả, ngắn hơn đoạn trên một đoạn nét đứt dài 5 quả + 1 người. Số người cũng cần tìm.\n\nSố cam đủ để bán mỗi người $5$ quả ít hơn số cam đủ để bán mỗi người $6$ quả là: $5+6=11$ (quả)\n\n$1$ người mua $5$ quả ít hơn $1$ người mua $6$ quả là: $6-5=1$ (quả)\n\nCó số người mua cam là: $11:1=11$ (người)\n\nCó tất cả số quả cam là: $5\\times 11+5=60$ (quả)\n\nĐáp số: $11$ người và $60$ quả cam",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 66,
+   "hang": [
+    {
+     "nhan": "Mỗi người 6 quả",
+     "phan": 1,
+     "ghi": "6 quả × ? người"
+    },
+    {
+     "nhan": "Số quả cam",
+     "phan": 1,
+     "bot": "1 người",
+     "bot_gt": 6
+    },
+    {
+     "nhan": "Mỗi người 5 quả",
+     "phan": 1,
+     "bot": "5 quả + 1 người",
+     "bot_gt": 11,
+     "ghi": "5 quả × ? người"
+    }
+   ],
+   "dau_hoi": [
+    "Số quả cam"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B10",
+  "gop_y": false,
+  "dap_an": "$8$ chiếc thuyền ; $168$ người",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** \"thừa một thuyền\" nghĩa là nếu mỗi thuyền chở $24$ người thì còn thiếu đúng $24$ người để đầy thuyền đó; bài trở thành một lần thừa, một lần thiếu.\n\n**Bước 1.** Đổi dữ kiện thừa một thuyền thành số người còn thiếu khi mỗi thuyền chở $24$ người.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số người thừa và số người thiếu.\n\n**Bước 3.** Tìm mỗi thuyền ở cách chở sau nhiều hơn cách chở trước bao nhiêu người.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi thuyền để tìm số thuyền, rồi tính số người bộ đội.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu mỗi thuyền chở $24$ người thì thừa một thuyền, tức là thiếu $24$ người.\n\nTa có sơ đồ:\n\nĐoạn trên: số người đủ chở cho mỗi thuyền 24 người; đoạn giữa: số bộ đội có (cần tìm), thiếu một phần nét đứt ứng với thừa 1 thuyền; đoạn dưới: số người đủ chở cho mỗi thuyền 20 người, ngắn hơn đoạn trên một đoạn nét đứt dài 8 người + 1 thuyền. Số thuyền cũng cần tìm.\n\nSố người đủ để chở mỗi thuyền $20$ người ít hơn số người đủ để chở mỗi thuyền $24$ người là: $8+24=32$ (người)\n\n$1$ thuyền chở $20$ người ít hơn $1$ thuyền chở $24$ người là: $24-20=4$ (người)\n\nCó số chiếc thuyền là: $32:4=8$ (chiếc)\n\nCó tất cả số bộ đội sang sông là: $20\\times 8+8=168$ (người)\n\nĐáp số: $8$ chiếc thuyền và $168$ người bộ đội",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 192,
+   "hang": [
+    {
+     "nhan": "Mỗi thuyền 24 người",
+     "phan": 1,
+     "ghi": "24 người × ? thuyền"
+    },
+    {
+     "nhan": "Số bộ đội",
+     "phan": 1,
+     "bot": "thừa 1 thuyền",
+     "bot_gt": 24
+    },
+    {
+     "nhan": "Mỗi thuyền 20 người",
+     "phan": 1,
+     "bot": "8 người + 1 thuyền",
+     "bot_gt": 32,
+     "ghi": "20 người × ? thuyền"
+    }
+   ],
+   "dau_hoi": [
+    "Số bộ đội"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B11",
+  "gop_y": false,
+  "dap_an": "$72$ lít dầu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổ mỗi can $6$ lít thì vừa hết, đổ mỗi can $10$ lít thì số can giảm đi mà vẫn thừa; ta đổi ra số lít còn thiếu nếu giữ nguyên số can như lần đổ đầu.\n\n**Bước 1.** Tính số lít dầu còn thiếu khi đổ mỗi can $10$ lít và giữ nguyên số can: lấy số can giảm nhân $10$ rồi trừ số lít thừa.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là số lít dầu còn thiếu vừa tìm.\n\n**Bước 3.** Tìm mỗi can ở cách đổ sau nhiều hơn cách đổ trước bao nhiêu lít.\n\n**Bước 4.** Chia số lít thiếu cho phần hơn của mỗi can để tìm số can, rồi tính số lít dầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu đổ vào mỗi can $10$ lít thì thừa $2$ lít và số can giảm đi $5$ can, tức là thiếu số lít dầu là: $5\\times 10-2=48$ (lít)\n\nTa có sơ đồ:\n\nĐoạn trên: số lít dầu đủ đổ mỗi can 10 lít với số can ban đầu; đoạn dưới: số lít dầu có (đổ mỗi can 6 lít thì vừa hết, cần tìm), ngắn hơn đoạn trên một đoạn nét đứt dài 5 × 10 - 2 lít (số can giảm 5, thừa 2 lít).\n\nSố lít dầu đủ để đổ mỗi can $6$ lít ít hơn số lít dầu đủ để đổ mỗi can $10$ lít là $48$ lít.\n\n$1$ can đổ $6$ lít ít hơn $1$ can đổ $10$ lít là: $10-6=4$ (lít)\n\nCó số can dầu là: $48:4=12$ (can)\n\nCó số lít dầu là: $12\\times 6=72$ (lít)\n\nĐáp số: $72$ lít dầu",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 120,
+   "hang": [
+    {
+     "nhan": "Mỗi can 10 lít, đủ số can cũ",
+     "phan": 1,
+     "ghi": "10 lít × số can cũ"
+    },
+    {
+     "nhan": "Số lít dầu (6 lít/can)",
+     "phan": 1,
+     "bot": "5 × 10 - 2 lít",
+     "bot_gt": 48
+    }
+   ],
+   "dau_hoi": [
+    "Số lít dầu (6 lít/can)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B12",
+  "gop_y": false,
+  "dap_an": "$7$ học sinh ; $46$ quyển vở",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** có $2$ em không nhận được quyển nào nghĩa là chia mỗi em $8$ quyển thì còn thiếu quyển vở cho hai em đó; bài trở thành một lần thừa, một lần thiếu.\n\n**Bước 1.** Tính số quyển vở còn thiếu khi chia mỗi em $8$ quyển: lấy số quyển cho hai em trừ đi số quyển đang thừa.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số quyển thừa ở cách chia đầu và số quyển thiếu vừa tìm.\n\n**Bước 3.** Tìm mỗi em ở cách chia sau nhiều hơn cách chia trước bao nhiêu quyển.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi em để tìm số học sinh, rồi tính số quyển vở.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNếu chia mỗi em $8$ quyển thì thừa $6$ quyển nhưng có $2$ em không nhận được quyển nào, tức là thiếu số quyển vở là: $8\\times 2-6=10$ (quyển)\n\nTa có sơ đồ:\n\nĐoạn trên: số vở đủ chia cho mỗi em 8 quyển; đoạn giữa: số vở có (cần tìm), thiếu một đoạn nét đứt dài 8 × 2 - 6 quyển (2 em không nhận được quyển nào, thừa 6 quyển); đoạn dưới: số vở đủ chia cho mỗi em 6 quyển, ngắn hơn đoạn trên một đoạn nét đứt dài 4 + 8 × 2 - 6 quyển. Số học sinh cũng cần tìm.\n\nSố quyển vở đủ để chia mỗi em $6$ quyển ít hơn số quyển vở đủ để chia mỗi em $8$ quyển là: $4+10=14$ (quyển)\n\n$1$ em có $6$ quyển ít hơn $1$ em có $8$ quyển là: $8-6=2$ (quyển)\n\nSố học sinh được chia vở là: $14:2=7$ (học sinh)\n\nSố quyển vở cô giáo dùng để chia là: $6\\times 7+4=46$ (quyển)\n\nĐáp số: $7$ học sinh và $46$ quyển vở",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 56,
+   "hang": [
+    {
+     "nhan": "Chia 8 quyển/em",
+     "phan": 1,
+     "ghi": "8 quyển × ? em"
+    },
+    {
+     "nhan": "Số vở",
+     "phan": 1,
+     "bot": "8 × 2 - 6",
+     "bot_gt": 10
+    },
+    {
+     "nhan": "Chia 6 quyển/em",
+     "phan": 1,
+     "bot": "4 + 8 × 2 - 6",
+     "bot_gt": 14,
+     "ghi": "6 quyển × ? em"
+    }
+   ],
+   "dau_hoi": [
+    "Số vở"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B13",
+  "gop_y": false,
+  "dap_an": "$36$ viên kẹo tổ một ; $48$ viên kẹo tổ hai",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** mỗi em nhận số kẹo như nhau nên tổ nhiều em hơn thì nhận nhiều kẹo hơn; hiệu số em của hai tổ ứng với hiệu số kẹo của hai tổ.\n\n**Bước 1.** Xác định hai hiệu số của bài: hiệu số em của hai tổ và hiệu số viên kẹo của hai tổ.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là số viên kẹo tổ hai nhận nhiều hơn tổ một.\n\n**Bước 3.** Chia hiệu số kẹo cho hiệu số em để tìm mỗi em nhận bao nhiêu viên kẹo.\n\n**Bước 4.** Nhân số viên kẹo của mỗi em với số em của từng tổ để tìm số kẹo mỗi tổ nhận.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số kẹo tổ hai nhận (12 em, cần tìm); đoạn dưới: số kẹo tổ một nhận (9 em, cần tìm), ngắn hơn đoạn trên một đoạn nét đứt dài 12 viên.\n\nTổ một ít hơn tổ hai số em là: $12-9=3$ (em)\n\nMỗi học sinh được chia số viên kẹo là: $12:3=4$ (viên)\n\nTổ một nhận được số viên kẹo là: $4\\times 9=36$ (viên)\n\nTổ hai nhận được số viên kẹo là: $36+12=48$ (viên)\n\nĐáp số: tổ một $36$ viên kẹo; tổ hai $48$ viên kẹo",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 48,
+   "hang": [
+    {
+     "nhan": "Kẹo của tổ hai (12 em)",
+     "phan": 1
+    },
+    {
+     "nhan": "Kẹo của tổ một (9 em)",
+     "phan": 1,
+     "bot": "12 viên",
+     "bot_gt": 12
+    }
+   ],
+   "dau_hoi": [
+    "Kẹo của tổ hai (12 em)",
+    "Kẹo của tổ một (9 em)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B14",
+  "gop_y": false,
+  "dap_an": "$350$ cái khăn mặt",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai chị được giao số khăn bằng nhau, nên chị còn phải dệt ít hơn thì đã dệt được nhiều hơn; hiệu số khăn còn phải dệt chính là hiệu số khăn đã dệt.\n\n**Bước 1.** Xác định hai hiệu số: số khăn còn phải dệt của hai chị, và số khăn dệt được mỗi ngày của hai chị.\n\n**Bước 2.** Tìm sau một số ngày chị thứ hai đã dệt nhiều hơn chị thứ nhất bao nhiêu cái khăn.\n\n**Bước 3.** Tìm mỗi ngày chị thứ hai dệt nhiều hơn chị thứ nhất bao nhiêu cái.\n\n**Bước 4.** Chia hai hiệu số cho nhau để tìm số ngày đã dệt, rồi tính số khăn theo dự kiến.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số khăn mỗi chị cần dệt (cần tìm) bằng số khăn chị thứ hai đã dệt thêm 14 cái còn phải dệt; đoạn giữa: số khăn chị thứ hai đã dệt (mỗi ngày 56 cái); đoạn dưới: số khăn chị thứ nhất đã dệt (mỗi ngày 48 cái), ngắn hơn đoạn giữa một đoạn nét đứt dài 62 - 14 cái (chị thứ nhất còn phải dệt 62 cái).\n\nSau khi dệt được một số ngày thì số khăn mặt chị thứ nhất dệt được ít hơn chị thứ hai là: $62-14=48$ (cái)\n\n$1$ ngày chị thứ nhất dệt được ít hơn chị thứ hai số khăn mặt là: $56-48=8$ (cái)\n\nSố ngày đã dệt khăn là: $48:8=6$ (ngày)\n\nTheo dự kiến mỗi chị phải dệt được số cái khăn mặt là: $48\\times 6+62=350$ (cái)\n\nĐáp số: $350$ cái khăn mặt",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 336,
+   "hang": [
+    {
+     "nhan": "Số khăn mỗi chị cần dệt",
+     "phan": 1,
+     "them": "14 cái"
+    },
+    {
+     "nhan": "Chị 2 đã dệt (56 cái/ngày)",
+     "phan": 1,
+     "ghi": "còn phải dệt 14 cái"
+    },
+    {
+     "nhan": "Chị 1 đã dệt (48 cái/ngày)",
+     "phan": 1,
+     "bot": "62 - 14 cái",
+     "bot_gt": 48,
+     "ghi": "còn phải dệt 62 cái"
+    }
+   ],
+   "dau_hoi": [
+    "Số khăn mỗi chị cần dệt"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B15",
+  "gop_y": false,
+  "dap_an": "$17$ cái kẹo ; $17$ cái bánh ; $5$ cháu",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số kẹo bằng số bánh nên chia kẹo cũng như chia bánh; ta có một lần chia thừa $2$ và một lần chia thiếu $3$ của cùng một số cái.\n\n**Bước 1.** Ghép hai dữ kiện thành hai hiệu số của cùng một số cái: chia mỗi cháu $3$ cái thì thừa $2$ cái, chia mỗi cháu $4$ cái thì thiếu $3$ cái.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là tổng số cái thừa và số cái thiếu.\n\n**Bước 3.** Tìm mỗi cháu ở cách chia sau nhiều hơn cách chia trước bao nhiêu cái.\n\n**Bước 4.** Lấy phần chênh chia cho phần hơn của mỗi cháu để tìm số cháu, rồi tính số kẹo và số bánh.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nVì số lượng kẹo và bánh bằng nhau nên chia bánh cũng như chia kẹo.\n\nTa có sơ đồ:\n\nĐoạn trên: số kẹo hoặc bánh đủ chia cho mỗi cháu 4 cái; đoạn giữa: số kẹo (bằng số bánh, cần tìm), thiếu 3 cái (nét đứt) so với đoạn trên; đoạn dưới: số kẹo hoặc bánh đủ chia cho mỗi cháu 3 cái, ngắn hơn đoạn trên một đoạn nét đứt dài 2 + 3 cái. Số cháu cũng cần tìm.\n\nSố kẹo hoặc bánh đủ để chia cho mỗi cháu $3$ cái ít hơn số kẹo hoặc bánh đủ để chia mỗi cháu $4$ cái là: $2+3=5$ (cái)\n\n$1$ cháu có $3$ kẹo hoặc bánh ít hơn $1$ cháu có $4$ kẹo hoặc bánh số cái là: $4-3=1$ (cái)\n\nSố cháu được chia kẹo là: $5:1=5$ (cháu)\n\nSố kẹo bằng số bánh và bằng: $3\\times 5+2=17$ (cái)\n\nĐáp số: $17$ cái kẹo, $17$ cái bánh và $5$ cháu",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 20,
+   "hang": [
+    {
+     "nhan": "Chia 4 cái/cháu",
+     "phan": 1,
+     "ghi": "4 cái × ? cháu"
+    },
+    {
+     "nhan": "Số kẹo = số bánh",
+     "phan": 1,
+     "bot": "thiếu 3",
+     "bot_gt": 3
+    },
+    {
+     "nhan": "Chia 3 cái/cháu",
+     "phan": 1,
+     "bot": "2 + 3 cái",
+     "bot_gt": 5,
+     "ghi": "3 cái × ? cháu"
+    }
+   ],
+   "dau_hoi": [
+    "Số kẹo = số bánh"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B16",
+  "gop_y": false,
+  "dap_an": "$2400$ lít nước",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai vòi chảy cùng một khoảng thời gian; khi vòi $1$ chảy đầy thì lượng nước vòi $1$ đã chảy nhiều hơn vòi $2$ đúng bằng lượng nước vòi $2$ còn phải chảy.\n\n**Bước 1.** Xác định hai hiệu số: lượng nước vòi $2$ còn thiếu so với vòi $1$ trong cùng thời gian, và lượng nước hai vòi chảy được mỗi phút.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là lượng nước vòi $2$ còn phải chảy.\n\n**Bước 3.** Tìm mỗi phút vòi $1$ chảy nhiều hơn vòi $2$ bao nhiêu lít nước.\n\n**Bước 4.** Chia lượng nước chênh cho phần chảy hơn mỗi phút để tìm thời gian chảy đầy bể, rồi tính dung tích bể.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: lượng nước vòi 1 đã chảy được (vừa đầy bể, mỗi phút 40 lít) là dung tích bể cần tìm; đoạn dưới: lượng nước vòi 2 đã chảy được (mỗi phút 30 lít), ngắn hơn đoạn trên một đoạn nét đứt dài 600 lít.\n\nKhi vòi $2$ cùng chảy thời gian bằng với vòi $1$ chảy để đầy bể thì lượng nước vòi $1$ đã chảy được nhiều hơn vòi $2$ đã chảy được là: $600$ lít nước.\n\nMỗi phút vòi $1$ chảy được nhiều hơn vòi $2$ số lít nước là: $40-30=10$ (lít)\n\nThời gian vòi $1$ chảy để đầy bể là: $600:10=60$ (phút)\n\nDung tích của mỗi bể là: $40\\times 60=2400$ (lít)\n\nĐáp số: $2400$ lít nước",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 2400,
+   "hang": [
+    {
+     "nhan": "Vòi 1 đã chảy (đầy bể)",
+     "phan": 1,
+     "ghi": "40 lít/phút"
+    },
+    {
+     "nhan": "Vòi 2 đã chảy",
+     "phan": 1,
+     "bot": "600 lít",
+     "bot_gt": 600,
+     "ghi": "30 lít/phút"
+    }
+   ],
+   "dau_hoi": [
+    "Vòi 1 đã chảy (đầy bể)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B17",
+  "gop_y": false,
+  "dap_an": "$40$ phút",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bể thứ hai chứa nhiều nước hơn nên muốn số nước còn lại bằng nhau thì bể thứ hai phải tháo ra nhiều hơn bể thứ nhất đúng bằng phần nước chứa hơn ban đầu.\n\n**Bước 1.** Tìm bể thứ hai chứa nhiều hơn bể thứ nhất bao nhiêu lít nước lúc đầu.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là số lít nước bể thứ hai phải tháo nhiều hơn bể thứ nhất.\n\n**Bước 3.** Tìm mỗi phút bể thứ hai tháo ra nhiều hơn bể thứ nhất bao nhiêu lít nước.\n\n**Bước 4.** Chia phần nước phải tháo hơn cho phần tháo hơn mỗi phút để tìm thời gian.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số nước đã tháo ở bể thứ hai (mỗi phút 25 lít, thời gian cần tìm); đoạn dưới: số nước đã tháo ở bể thứ nhất (mỗi phút 15 lít, cùng thời gian), ngắn hơn đoạn trên một đoạn nét đứt dài 1200 - 800 lít.\n\nBể thứ hai chứa nhiều hơn bể thứ nhất số lít nước là: $1200-800=400$ (lít)\n\nĐể số nước còn lại ở $2$ bể bằng nhau thì số nước đã tháo ở bể thứ hai phải nhiều hơn số nước đã tháo ở bể thứ nhất là $400$ lít.\n\nMỗi phút bể thứ hai tháo ra nhiều hơn bể thứ nhất số lít nước là: $25-15=10$ (lít)\n\nVậy phải tháo nước trong thời gian là: $400:10=40$ (phút)\n\nĐáp số: $40$ phút",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 1000,
+   "hang": [
+    {
+     "nhan": "Bể hai đã tháo",
+     "phan": 1,
+     "ghi": "25 lít/phút × ? phút"
+    },
+    {
+     "nhan": "Bể một đã tháo",
+     "phan": 1,
+     "bot": "1200 - 800 lít",
+     "bot_gt": 400,
+     "ghi": "15 lít/phút × ? phút"
+    }
+   ]
+  },
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ12 · B18",
+  "gop_y": false,
+  "dap_an": "$60$ viên bi ; $5$ túi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ mỗi túi $12$ viên thì vừa đủ, bỏ mỗi túi $9$ viên thì thừa; số bi thừa chính là do mỗi túi được bỏ ít hơn mà có.\n\n**Bước 1.** Xác định hai hiệu số: bỏ mỗi túi $9$ viên thì thừa $15$ viên, bỏ mỗi túi $12$ viên thì không thừa không thiếu.\n\n**Bước 2.** Vẽ sơ đồ hai đoạn thẳng, phần chênh nét đứt là số viên bi thừa.\n\n**Bước 3.** Tìm mỗi túi ở cách bỏ sau nhiều hơn cách bỏ trước bao nhiêu viên bi.\n\n**Bước 4.** Chia số bi thừa cho phần hơn của mỗi túi để tìm số túi, rồi tính số viên bi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTa có sơ đồ:\n\nĐoạn trên: số bi đủ bỏ vào mỗi túi 12 viên, cũng là số bi có (cần tìm); đoạn dưới: số bi đủ bỏ vào mỗi túi 9 viên, ngắn hơn đoạn trên một đoạn nét đứt dài 15 viên (thừa 15 viên). Số túi cũng cần tìm.\n\nSố viên bi đủ để bỏ vào mỗi túi $12$ viên nhiều hơn số viên bi đủ để bỏ vào mỗi túi $9$ viên là: $15$ viên.\n\n$1$ túi có $12$ viên nhiều hơn $1$ túi có $9$ viên là: $12-9=3$ (viên bi)\n\nCó tất cả số túi là: $15:3=5$ (túi)\n\nViệt có tất cả số viên bi là: $12\\times 5=60$ (viên bi)\n\nĐáp số: $60$ viên bi và $5$ túi",
+  "so_do_mo_ta": {
+   "gia_tri_phan": 60,
+   "hang": [
+    {
+     "nhan": "Số bi (12 viên/túi, vừa đủ)",
+     "phan": 1,
+     "ghi": "12 viên × ? túi"
+    },
+    {
+     "nhan": "Chia 9 viên/túi",
+     "phan": 1,
+     "bot": "15 viên",
+     "bot_gt": 15,
+     "ghi": "9 viên × ? túi"
+    }
+   ],
+   "dau_hoi": [
+    "Số bi (12 viên/túi, vừa đủ)"
+   ]
+  },
+  "ghi_chu_nghi": null
+ }
+]

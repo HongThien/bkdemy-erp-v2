@@ -1,0 +1,461 @@
+[
+ {
+  "ma": "CĐ4 · B1",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": null,
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\na) $687+969+313$\nb) $186-65-35$\nc) $1024-(1024-15)$\nd) $(368+764)-(363+759)$\ne) $3145-246+2347-145+4246-347$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B1a",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$687+969+313$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B1b",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$186-65-35$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B1c",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": "c",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$1024-(1024-15)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B1d",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": "d",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$(368+764)-(363+759)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B1e",
+  "khu": "CĐ4",
+  "so": 1,
+  "y": "e",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$3145-246+2347-145+4246-347$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": null,
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\na) $92\\times 164-64\\times(82+2170:217)$\nb) $(100+42)\\times 42+(200-58)\\times 58$\nc) $132\\times 9+132+100\\times 50$\nd) $(56\\times 27+56\\times 35):62$\ne) $(158\\times 129-158\\times 39):180$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2a",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": "a",
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\n$92\\times 164-64\\times(82+2170:217)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2b",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": "b",
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\n$(100+42)\\times 42+(200-58)\\times 58$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2c",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": "c",
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\n$132\\times 9+132+100\\times 50$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2d",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": "d",
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\n$(56\\times 27+56\\times 35):62$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B2e",
+  "khu": "CĐ4",
+  "so": 2,
+  "y": "e",
+  "de_chung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)",
+  "noi_dung": "Tính giá trị biểu thức (Tính hợp lý nếu có thể)\n$(158\\times 129-158\\times 39):180$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": null,
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\na) $8\\times 427\\times 3+6\\times 573\\times 4$\nb) $86\\times 27-43\\times 54$\nc) $(145\\times 99+145)-(143\\times 101-143)$\nd) $10000-47\\times 72-47\\times 28$\ne) $3457-27\\times 48-48\\times 73+6543$\nf) $326\\times 728+327\\times 272$\ng) $2008\\times 867+2009\\times 133$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3a",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "a",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$8\\times 427\\times 3+6\\times 573\\times 4$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3b",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "b",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$86\\times 27-43\\times 54$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3c",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "c",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$(145\\times 99+145)-(143\\times 101-143)$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3d",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "d",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$10000-47\\times 72-47\\times 28$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3e",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "e",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$3457-27\\times 48-48\\times 73+6543$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3f",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "f",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$326\\times 728+327\\times 272$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B3g",
+  "khu": "CĐ4",
+  "so": 3,
+  "y": "g",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$2008\\times 867+2009\\times 133$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": null,
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\na) $1234\\times 4+1234\\times 3+1234\\times 2+1234$\nb) $345\\times 123-345-345\\times 22$\nc) $4\\times 125\\times 25\\times 8$\nd) $2\\times 8\\times 50\\times 25\\times 125$\ne) $2\\times 3\\times 4\\times 5\\times 50\\times 25$\nf) $25\\times 20\\times 125\\times 8-8\\times 20\\times 5\\times 125$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4a",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "a",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$1234\\times 4+1234\\times 3+1234\\times 2+1234$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4b",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "b",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$345\\times 123-345-345\\times 22$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4c",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "c",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$4\\times 125\\times 25\\times 8$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4d",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "d",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$2\\times 8\\times 50\\times 25\\times 125$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4e",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "e",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$2\\times 3\\times 4\\times 5\\times 50\\times 25$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B4f",
+  "khu": "CĐ4",
+  "so": 4,
+  "y": "f",
+  "de_chung": "Tính bằng cách thuận tiện:",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$25\\times 20\\times 125\\times 8-8\\times 20\\times 5\\times 125$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": null,
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\na) $x-140:35=270$\nb) $357:(87:x)=119$\nc) $(x+1)+(x+3)+(x+5)=30$\nd) $125+(x-25)\\times 5+x=150$\ne) $x\\times 101-x+72\\times 99+72=21500$\nf) $2010:x-1307:x=37$\ng) $180-(x+15):x\\times 20=100$\nh) $x:8\\times 32+x:3\\times 18-x:5\\times 10=120$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5a",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "a",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$x-140:35=270$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5b",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "b",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$357:(87:x)=119$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5c",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "c",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$(x+1)+(x+3)+(x+5)=30$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5d",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "d",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$125+(x-25)\\times 5+x=150$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5e",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "e",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$x\\times 101-x+72\\times 99+72=21500$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5f",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "f",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$2010:x-1307:x=37$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5g",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "g",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$180-(x+15):x\\times 20=100$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B5h",
+  "khu": "CĐ4",
+  "so": 5,
+  "y": "h",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$x:8\\times 32+x:3\\times 18-x:5\\times 10=120$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B6",
+  "khu": "CĐ4",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho một số có $3$ chữ số mà hàng trăm, hàng chục, hàng đơn vị của nó là $3$ số tự nhiên liên tiếp tăng dần. Hỏi số đó thay đổi như thế nào nếu ta viết số đó theo thứ tự ngược lại?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B7",
+  "khu": "CĐ4",
+  "so": 7,
+  "y": null,
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\na) $\\overline{xx}+x+5=101$\nb) $\\overline{xxx}-\\overline{xx}-x-25=272$\nc) $\\overline{xxx}+\\overline{xx}+x+x+x+1=1001$\nd) $35655-\\overline{xxx}-\\overline{xx}-x=34548$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B7a",
+  "khu": "CĐ4",
+  "so": 7,
+  "y": "a",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\overline{xx}+x+5=101$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B7b",
+  "khu": "CĐ4",
+  "so": 7,
+  "y": "b",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\overline{xxx}-\\overline{xx}-x-25=272$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B7c",
+  "khu": "CĐ4",
+  "so": 7,
+  "y": "c",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$\\overline{xxx}+\\overline{xx}+x+x+x+1=1001$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B7d",
+  "khu": "CĐ4",
+  "so": 7,
+  "y": "d",
+  "de_chung": "Tìm $x$ biết:",
+  "noi_dung": "Tìm $x$ biết:\n$35655-\\overline{xxx}-\\overline{xx}-x=34548$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B8",
+  "khu": "CĐ4",
+  "so": 8,
+  "y": null,
+  "de_chung": "So sánh $C$ và $D$ biết:",
+  "noi_dung": "So sánh $C$ và $D$ biết:\na) $C=\\overline{aa}\\times b$ và $D=\\overline{bb}\\times a$.\nb) $C=\\overline{aaa}\\times b$ và $D=\\overline{bbb}\\times a$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B8a",
+  "khu": "CĐ4",
+  "so": 8,
+  "y": "a",
+  "de_chung": "So sánh $C$ và $D$ biết:",
+  "noi_dung": "So sánh $C$ và $D$ biết:\n$C=\\overline{aa}\\times b$ và $D=\\overline{bb}\\times a$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B8b",
+  "khu": "CĐ4",
+  "so": 8,
+  "y": "b",
+  "de_chung": "So sánh $C$ và $D$ biết:",
+  "noi_dung": "So sánh $C$ và $D$ biết:\n$C=\\overline{aaa}\\times b$ và $D=\\overline{bbb}\\times a$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B9",
+  "khu": "CĐ4",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho một số có $4$ chữ số biết hàng nghìn, hàng trăm, hàng chục, hàng đơn vị của nó là $4$ số tự nhiên liên tiếp tăng dần. Hỏi số đó thay đổi như thế nào nếu ta viết số đó theo thứ tự ngược lại?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B10",
+  "khu": "CĐ4",
+  "so": 10,
+  "y": null,
+  "de_chung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:",
+  "noi_dung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:\na) $a-d=5$; $b-c=3$\nb) $a-d=5$; $c-b=4$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B10a",
+  "khu": "CĐ4",
+  "so": 10,
+  "y": "a",
+  "de_chung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:",
+  "noi_dung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:\n$a-d=5$; $b-c=3$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B10b",
+  "khu": "CĐ4",
+  "so": 10,
+  "y": "b",
+  "de_chung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:",
+  "noi_dung": "Tính: $\\overline{abcd}-\\overline{dcba}$, biết:\n$a-d=5$; $c-b=4$",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B11",
+  "khu": "CĐ4",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm số tự nhiên $y$ để biểu thức $2024+2023:(2023-y)$ đạt giá trị nhỏ nhất.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ4 · B12",
+  "khu": "CĐ4",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Cho phép toán:\n$\\begin{array}{r} \\overline{ABC} \\\\ +\\ \\overline{BAC} \\\\ \\hline 1660 \\end{array}$\nHãy tính tổng các chữ số $A+B+C$.",
+  "anh": []
+ }
+]

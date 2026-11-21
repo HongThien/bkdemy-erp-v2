@@ -1,0 +1,16 @@
+{
+ "CĐ15 · B1": { "dang": "NDB03508", "chac": "cao", "ly_do": "Biết thời gian từng người làm một mình, tìm thời gian hai người làm chung." },
+ "CĐ15 · B2": { "dang": "NDB03510", "chac": "cao", "ly_do": "Biết thời gian làm chung và thời gian người thứ nhất, tìm thời gian người thứ hai." },
+ "CĐ15 · B3": { "dang": "NDB03511", "chac": "vua", "ly_do": "Cùng làm 4 giờ rồi tốp thứ hai làm nốt (giai đoạn), hỏi thời gian từng tốp; gần NDB03510." },
+ "CĐ15 · B4": { "dang": "NDB03511", "chac": "vua", "ly_do": "Anh làm trước 4 phút rồi hai anh em làm tiếp (giai đoạn), hỏi thời gian em; gần NDB03510." },
+ "CĐ15 · B5": { "dang": "NDB03511", "chac": "vua", "ly_do": "Tổ 1 làm một mình rồi tổ 2 làm nốt (giai đoạn), biết thời gian làm chung; gần NDB03510." },
+ "CĐ15 · B6": { "dang": "NDB03511", "chac": "vua", "ly_do": "Máy I gặt trước rồi máy II gặt tiếp được 7/12 thửa ruộng (giai đoạn), biết thời gian làm chung; gần NDB03510." },
+ "CĐ15 · B7": { "dang": "NDB03512", "chac": "cao", "ly_do": "Ba người rồi người thứ ba, rồi người thứ nhất cùng người thứ tư (nhiều người, nhiều giai đoạn), hỏi người thứ tư." },
+ "CĐ15 · B8": { "dang": "NDB03511", "chac": "cao", "ly_do": "Cùng làm, rồi một người làm tiếp, rồi cùng làm tiếp đến xong (giai đoạn)." },
+ "CĐ15 · B9": { "dang": "NDB03511", "chac": "cao", "ly_do": "Cùng làm 2 giờ rồi một người nghỉ, người kia làm tiếp (giai đoạn), hỏi thời gian từng người." },
+ "CĐ15 · B10": { "dang": "NDB03508", "chac": "vua", "ly_do": "Hai vòi chảy vào bể, biết thời gian từng vòi, tìm thời gian chảy chung; dạng tên 'hai người' nhưng cùng phương pháp." },
+ "CĐ15 · B11a": { "dang": "NDB03510", "chac": "cao", "ly_do": "Biết thời gian làm chung và thời gian người thứ nhất, tìm thời gian người thứ hai." },
+ "CĐ15 · B11b": { "dang": "NDB03510", "chac": "vua", "ly_do": "Cả việc là 216 thùng, chia số thùng mỗi người đóng trong thời gian làm chung; cùng dữ kiện với ý a nhưng hỏi số thùng." },
+ "CĐ15 · B12": { "dang": "NDB03512", "chac": "vua", "ly_do": "Ba người làm chung, mỗi người làm số công việc khác nhau, tính theo tuần rồi đổi ra giờ; gần NDB03508." },
+ "CĐ15 · B13": { "dang": "NDB03510", "chac": "vua", "ly_do": "Biết thời gian làm chung và một nửa việc do hai người làm số giờ khác nhau, tìm thời gian người thứ hai; gần NDB03511." }
+}

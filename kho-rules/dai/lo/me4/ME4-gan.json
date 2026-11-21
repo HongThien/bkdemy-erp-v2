@@ -1,0 +1,2963 @@
+{
+ "khoi": "4T",
+ "lan_chay": "me4-lam-2026-11-21 (6 trạm soạn Sonnet)",
+ "model": "claude-sonnet-5-5",
+ "kiem": {
+  "model": "claude-opus-5-5",
+  "lan_chay": "me4-mu-2026-11-21 (2 trạm Opus gán mù)"
+ },
+ "cau": [
+  {
+   "ma_cau": "T14T0000002162",
+   "ma_nguon": "CĐ5 · B20",
+   "dang": "NDB03466",
+   "ly_do": "Nhân 345 với số có dạng a0a nhưng đặt các tích riêng thẳng cột như phép cộng.",
+   "dang_mu": "NDB03466",
+   "ly_do_mu": "Nhân đặt tích riêng thẳng cột như phép cộng"
+  },
+  {
+   "ma_cau": "T14T0000002167",
+   "ma_nguon": "CĐ6 · B5",
+   "dang": "NDB03503",
+   "ly_do": "tuổi hai người: hiệu tuổi không đổi, tổng tuổi hiện nay tìm từ tổng cách đây 5 năm",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Tuổi: tổng cách đây 5 năm, hiệu tuổi không đổi; cũng là tổng hiệu cơ bản"
+  },
+  {
+   "ma_cau": "T14T0000002168",
+   "ma_nguon": "CĐ6 · B6a",
+   "dang": "NDB01627",
+   "ly_do": "cho hiệu lúc đầu và tổng lúc sau (cùng thêm số khác nhau); có thể xếp tổng hiệu cơ bản",
+   "dang_mu": "NDB01627",
+   "ly_do_mu": "Hai bên cùng thêm số khác nhau, biết hiệu/tổng lúc sau, tìm ban đầu"
+  },
+  {
+   "ma_cau": "T14T0000002205",
+   "ma_nguon": "CĐ7 · B12d",
+   "dang": "NDB03474",
+   "ly_do": "không làm phép chia, nhận biết số bbb…bbb (b chẵn) chia hết cho 2, 3, 5, 9",
+   "dang_mu": "NDB03474",
+   "ly_do_mu": "Không làm phép chia, xét 11…1, 33…3 chia hết cho 2,3,5,9"
+  },
+  {
+   "ma_cau": "T14T0000002238",
+   "ma_nguon": "CĐ9 · B3",
+   "dang": "NDB03491",
+   "ly_do": "Điền ô sao cho tổng ba ô liên tiếp bằng nhau.",
+   "dang_mu": "NDB03491",
+   "ly_do_mu": "Điền ô sao cho tổng ba ô liên tiếp bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002249",
+   "ma_nguon": "CĐ9 · B7a",
+   "dang": "NDB03493",
+   "ly_do": "Đếm số chữ số khi viết liền các số từ 1 đến 1000.",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Đếm số chữ số khi viết liền 1 đến 1000"
+  },
+  {
+   "ma_cau": "T14T0000002253",
+   "ma_nguon": "CĐ9 · B10",
+   "dang": "NDB03494",
+   "ly_do": "Tìm chữ số thứ n của dãy các số viết liền.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Tìm chữ số thứ 2024 của dãy viết liền"
+  },
+  {
+   "ma_cau": "T14T0000002256",
+   "ma_nguon": "CĐ9 · B12",
+   "dang": "NDB03494",
+   "ly_do": "Đếm riêng chữ số 0 trong dãy viết liền 1 đến 2024.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Đếm riêng chữ số 0 trong dãy 1 đến 2024"
+  },
+  {
+   "ma_cau": "T14T0000002264",
+   "ma_nguon": "CĐ9 · B17b",
+   "dang": "NDB03494",
+   "ly_do": "Tìm vị trí xuất hiện năm chữ số 2 liền nhau trong dãy viết liền, tính số chữ số bằng cách đếm theo nhóm.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Tìm vị trí chữ số khi xuất hiện 5 chữ số 2 liền trong dãy viết liền"
+  },
+  {
+   "ma_cau": "T14T0000002289",
+   "ma_nguon": "CĐ10 · B10",
+   "dang": "NDB03515",
+   "ly_do": "Tìm chữ số x để bất đẳng thức giữa hai phân số đúng; x là chữ số trong số, gần dạng bất đẳng thức giữa phân số.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm chữ số x thoả bất đẳng thức phân số; trộn số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002293",
+   "ma_nguon": "CĐ10 · B13b",
+   "dang": "NDB03515",
+   "ly_do": "Cùng biểu thức 156/(327 − x) nhưng hỏi giá trị bé nhất, mô tả dạng chỉ nêu lớn nhất.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm x để 156/(327−x) bé nhất"
+  },
+  {
+   "ma_cau": "T14T0000002333",
+   "ma_nguon": "CĐ10 · B23f",
+   "dang": "NDB03517",
+   "ly_do": "Dãy mẫu nhân ba có dấu cộng trừ xen kẽ, tách hai nhóm rồi tính như dãy mẫu nhân ba.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Dãy mẫu nhân ba đan dấu; dạng gần nhất mẫu nhân ba"
+  },
+  {
+   "ma_cau": "T14T0000002347",
+   "ma_nguon": "CĐ11 · B10",
+   "dang": "NDB01549",
+   "ly_do": "Ba đại lượng có phân số của chúng (phần còn lại) bằng nhau, đưa về cùng tử số rồi chia tổng.",
+   "dang_mu": "NDB01549",
+   "ly_do_mu": "Phần còn lại ba thùng bằng nhau = phân số các đại lượng bằng nhau, biết tổng"
+  },
+  {
+   "ma_cau": "T14T0000002401",
+   "ma_nguon": "CĐ14 · B11",
+   "dang": "NDB01551",
+   "ly_do": "Mua thêm gà trống, số gà mái không đổi, hai tỉ số gấp 6 và 1/4.",
+   "dang_mu": "NDB01551",
+   "ly_do_mu": "Chỉ thêm gà trống, số gà mái không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002024",
+   "ma_nguon": "CĐ1 · B1a",
+   "dang": "NDB01509",
+   "ly_do": "Chỉ cho số chữ số + điều kiện lẻ / khác nhau, hỏi số nhỏ nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002025",
+   "ma_nguon": "CĐ1 · B1b",
+   "dang": "NDB01509",
+   "ly_do": "Chỉ cho số chữ số khác nhau, hỏi số lớn nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002026",
+   "ma_nguon": "CĐ1 · B1c",
+   "dang": "NDB01509",
+   "ly_do": "Chỉ cho số chữ số khác nhau + lẻ, hỏi số nhỏ nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002027",
+   "ma_nguon": "CĐ1 · B1d",
+   "dang": "NDB01509",
+   "ly_do": "Chỉ cho số chữ số khác nhau + chẵn, hỏi số nhỏ nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002028",
+   "ma_nguon": "CĐ1 · B2a",
+   "dang": "NDB01509",
+   "ly_do": "Chỉ cho số chữ số khác nhau, hỏi số lớn nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002029",
+   "ma_nguon": "CĐ1 · B2b",
+   "dang": "NDB01509",
+   "ly_do": "Số chữ số khác nhau + lẻ, hỏi số lớn nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002030",
+   "ma_nguon": "CĐ1 · B2c",
+   "dang": "NDB01509",
+   "ly_do": "Số chữ số khác nhau + chẵn, hỏi số bé nhất.",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002031",
+   "ma_nguon": "CĐ1 · B2d",
+   "dang": "NDB01509",
+   "ly_do": "Số chữ số khác nhau, hàng cao nhất cho trước (một hàng cho trước).",
+   "dang_mu": "NDB01509",
+   "ly_do_mu": "Chỉ cho số chữ số (khác nhau, chẵn/lẻ, chữ số đầu), hỏi số lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002032",
+   "ma_nguon": "CĐ1 · B3a",
+   "dang": "NDB03448",
+   "ly_do": "Hai chữ số liền nhau hơn kém 2 đơn vị, hỏi số lớn nhất.",
+   "dang_mu": "NDB03448",
+   "ly_do_mu": "Viết số lớn nhất theo quy luật giữa các chữ số liền nhau"
+  },
+  {
+   "ma_cau": "T14T0000002033",
+   "ma_nguon": "CĐ1 · B3b",
+   "dang": "NDB03448",
+   "ly_do": "Từ chữ số thứ ba bằng tổng hai chữ số liền trước, hỏi số lớn nhất.",
+   "dang_mu": "NDB03448",
+   "ly_do_mu": "Viết số lớn nhất theo quy luật giữa các chữ số liền nhau"
+  },
+  {
+   "ma_cau": "T14T0000002034",
+   "ma_nguon": "CĐ1 · B4a",
+   "dang": "NDB01511",
+   "ly_do": "Biết tổng chữ số, hỏi cả lớn nhất lẫn nhỏ nhất; hợp hai dạng nên chọn dạng sau.",
+   "dang_mu": "NDB01508",
+   "ly_do_mu": "Biết tổng chữ số, chữ số khác nhau, không cho số chữ số; hỏi cả lớn nhất (01508) lẫn nhỏ nhất (01511)"
+  },
+  {
+   "ma_cau": "T14T0000002035",
+   "ma_nguon": "CĐ1 · B4b",
+   "dang": "NDB01511",
+   "ly_do": "Chỉ cho tổng chữ số, hỏi số nhỏ nhất (không cho số chữ số).",
+   "dang_mu": "NDB01511",
+   "ly_do_mu": "Chỉ cho tổng chữ số, hỏi số nhỏ nhất: tách thành ít chữ số nhất"
+  },
+  {
+   "ma_cau": "T14T0000002036",
+   "ma_nguon": "CĐ1 · B4c",
+   "dang": "NDB01508",
+   "ly_do": "Chỉ cho tổng chữ số (khác 0), hỏi số lớn nhất.",
+   "dang_mu": "NDB01508",
+   "ly_do_mu": "Chỉ cho tổng chữ số, hỏi số lớn nhất: tách thành nhiều chữ số nhất"
+  },
+  {
+   "ma_cau": "T14T0000002037",
+   "ma_nguon": "CĐ1 · B4d",
+   "dang": "NDB01511",
+   "ly_do": "Biết tổng chữ số khác nhau, hỏi cả lớn nhất lẫn nhỏ nhất; dạng sau thắng.",
+   "dang_mu": "NDB01508",
+   "ly_do_mu": "Biết tổng chữ số, chữ số khác nhau, không cho số chữ số; hỏi cả lớn nhất (01508) lẫn nhỏ nhất (01511)"
+  },
+  {
+   "ma_cau": "T14T0000002038",
+   "ma_nguon": "CĐ1 · B5a",
+   "dang": "NDB01507",
+   "ly_do": "Biết tích các chữ số, hỏi số nhỏ nhất; mô tả dạng nói 'cho số chữ số' mà đề không cho.",
+   "dang_mu": "NDB01507",
+   "ly_do_mu": "Biết tích các chữ số, tách tích thành các chữ số rồi sắp xếp lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002039",
+   "ma_nguon": "CĐ1 · B5b",
+   "dang": "NDB01507",
+   "ly_do": "Biết tích các chữ số khác nhau, hỏi số lớn nhất; đề không cho số chữ số.",
+   "dang_mu": "NDB01507",
+   "ly_do_mu": "Biết tích các chữ số, tách tích thành các chữ số rồi sắp xếp lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002040",
+   "ma_nguon": "CĐ1 · B6a",
+   "dang": "NDB01507",
+   "ly_do": "Biết tích các chữ số khác nhau, hỏi lớn nhất và nhỏ nhất; đề không cho số chữ số.",
+   "dang_mu": "NDB01507",
+   "ly_do_mu": "Biết tích các chữ số, tách tích thành các chữ số rồi sắp xếp lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002041",
+   "ma_nguon": "CĐ1 · B6b",
+   "dang": "NDB01507",
+   "ly_do": "Biết tích chữ số khác nhau + chẵn, hỏi lớn nhất và bé nhất.",
+   "dang_mu": "NDB01507",
+   "ly_do_mu": "Biết tích các chữ số, tách tích thành các chữ số rồi sắp xếp lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002042",
+   "ma_nguon": "CĐ1 · B6c",
+   "dang": "NDB01507",
+   "ly_do": "Biết tích chữ số khác nhau, hỏi số nhỏ nhất.",
+   "dang_mu": "NDB01507",
+   "ly_do_mu": "Biết tích các chữ số, tách tích thành các chữ số rồi sắp xếp lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002043",
+   "ma_nguon": "CĐ1 · B7a",
+   "dang": "NDB03445",
+   "ly_do": "Xoá 6 chữ số của số tạo bởi các số chẵn liên tiếp để lớn nhất.",
+   "dang_mu": "NDB03445",
+   "ly_do_mu": "Xoá chữ số của số tạo bởi các số chẵn liên tiếp để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002044",
+   "ma_nguon": "CĐ1 · B7b",
+   "dang": "NDB03445",
+   "ly_do": "Xoá 6 chữ số của số tạo bởi các số chẵn liên tiếp để bé nhất.",
+   "dang_mu": "NDB03445",
+   "ly_do_mu": "Xoá chữ số của số tạo bởi các số chẵn liên tiếp để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002046",
+   "ma_nguon": "CĐ1 · B8b",
+   "dang": "NDB03446",
+   "ly_do": "Viết liền 1 đến 15 rồi xoá 8 chữ số để nhỏ nhất.",
+   "dang_mu": "NDB03446",
+   "ly_do_mu": "Xoá bớt chữ số của dãy số tự nhiên viết liền để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002047",
+   "ma_nguon": "CĐ1 · B9a",
+   "dang": "NDB03446",
+   "ly_do": "Dãy 20 19 ... 11 viết liền, xoá 12 chữ số để lớn nhất.",
+   "dang_mu": "NDB03446",
+   "ly_do_mu": "Xoá bớt chữ số của dãy số tự nhiên viết liền để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002048",
+   "ma_nguon": "CĐ1 · B9b",
+   "dang": "NDB03446",
+   "ly_do": "Dãy 20 19 ... 11 viết liền, xoá 12 chữ số để nhỏ nhất.",
+   "dang_mu": "NDB03446",
+   "ly_do_mu": "Xoá bớt chữ số của dãy số tự nhiên viết liền để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002049",
+   "ma_nguon": "CĐ1 · B9c",
+   "dang": "NDB03447",
+   "ly_do": "Xoá chữ số để được số chẵn lớn nhất (điều kiện tận cùng); dạng sau thắng.",
+   "dang_mu": "NDB03447",
+   "ly_do_mu": "Xoá chữ số dãy viết liền để được số chẵn lớn nhất/lẻ nhỏ nhất; gần cả 03446"
+  },
+  {
+   "ma_cau": "T14T0000002050",
+   "ma_nguon": "CĐ1 · B9d",
+   "dang": "NDB03447",
+   "ly_do": "Xoá chữ số để được số lẻ nhỏ nhất (điều kiện tận cùng); dạng sau thắng.",
+   "dang_mu": "NDB03447",
+   "ly_do_mu": "Xoá chữ số dãy viết liền để được số chẵn lớn nhất/lẻ nhỏ nhất; gần cả 03446"
+  },
+  {
+   "ma_cau": "T14T0000002051",
+   "ma_nguon": "CĐ1 · B10a",
+   "dang": "NDB03493",
+   "ly_do": "Đếm số chữ số khi viết liền các số 2000 đến 2015.",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Đếm số chữ số khi viết liền các số 2000 đến 2015"
+  },
+  {
+   "ma_cau": "T14T0000002052",
+   "ma_nguon": "CĐ1 · B10b",
+   "dang": "NDB03446",
+   "ly_do": "Dãy 2000 đến 2015 viết liền, xoá 20 chữ số để nhỏ nhất và lớn nhất.",
+   "dang_mu": "NDB03446",
+   "ly_do_mu": "Xoá bớt chữ số của dãy số tự nhiên viết liền để được lớn nhất/nhỏ nhất"
+  },
+  {
+   "ma_cau": "T14T0000002053",
+   "ma_nguon": "CĐ2 · B1a",
+   "dang": "NDB01514",
+   "ly_do": "Nhóm chữ số có 0, các chữ số khác nhau, hỏi bao nhiêu số, không có điều kiện chẵn lẻ.",
+   "dang_mu": "NDB01514",
+   "ly_do_mu": "Đếm số 4 chữ số khác nhau từ nhóm chữ số có 0, không điều kiện"
+  },
+  {
+   "ma_cau": "T14T0000002054",
+   "ma_nguon": "CĐ2 · B1b",
+   "dang": "NDB01512",
+   "ly_do": "Cho sẵn nhóm chữ số, hỏi số lớn nhất và bé nhất viết từ các chữ số đó.",
+   "dang_mu": "NDB01512",
+   "ly_do_mu": "Viết số lớn nhất/bé nhất (chẵn, lẻ) từ các chữ số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002055",
+   "ma_nguon": "CĐ2 · B1c",
+   "dang": "NDB01512",
+   "ly_do": "Cho sẵn nhóm chữ số, hỏi số lẻ lớn nhất và chẵn bé nhất.",
+   "dang_mu": "NDB01512",
+   "ly_do_mu": "Viết số lớn nhất/bé nhất (chẵn, lẻ) từ các chữ số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002056",
+   "ma_nguon": "CĐ2 · B2a",
+   "dang": "NDB01513",
+   "ly_do": "Nhóm chữ số đều khác 0, cho lặp, không điều kiện chẵn lẻ, chỉ nhân số cách chọn mỗi hàng.",
+   "dang_mu": "NDB01513",
+   "ly_do_mu": "Đếm số từ các chữ số khác 0, cho lặp, không điều kiện"
+  },
+  {
+   "ma_cau": "T14T0000002057",
+   "ma_nguon": "CĐ2 · B2b",
+   "dang": "NDB01515",
+   "ly_do": "Đếm số lẻ có hàng trăm cho trước: có điều kiện lẻ nên chọn hàng đơn vị trước.",
+   "dang_mu": "NDB01515",
+   "ly_do_mu": "Đếm số lập từ chữ số cho trước có điều kiện chẵn/lẻ, hàng cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002058",
+   "ma_nguon": "CĐ2 · B2c",
+   "dang": "NDB01515",
+   "ly_do": "Đếm số chẵn có các chữ số khác nhau: điều kiện chẵn, chọn hàng đơn vị trước.",
+   "dang_mu": "NDB01515",
+   "ly_do_mu": "Đếm số lập từ chữ số cho trước có điều kiện chẵn/lẻ, hàng cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002059",
+   "ma_nguon": "CĐ2 · B3",
+   "dang": "NDB03453",
+   "ly_do": "Tổng tất cả các số lập từ các chữ số khác nhau cho trước, mỗi chữ số xuất hiện đều ở mỗi hàng.",
+   "dang_mu": "NDB03453",
+   "ly_do_mu": "Tổng tất cả các số lập từ các chữ số khác nhau cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002060",
+   "ma_nguon": "CĐ2 · B4a",
+   "dang": "NDB03450",
+   "ly_do": "Đếm số có tổng các chữ số cho trước bằng cách liệt kê các cách chọn chữ số.",
+   "dang_mu": "NDB03450",
+   "ly_do_mu": "Đếm số có tổng (hiệu) các chữ số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002061",
+   "ma_nguon": "CĐ2 · B4b",
+   "dang": "NDB03450",
+   "ly_do": "Đếm số có hiệu hai chữ số cho trước bằng cách liệt kê các cặp chữ số.",
+   "dang_mu": "NDB03450",
+   "ly_do_mu": "Đếm số có tổng (hiệu) các chữ số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002062",
+   "ma_nguon": "CĐ2 · B5",
+   "dang": "NDB01515",
+   "ly_do": "Đếm số chẵn có chữ số khác nhau và loại chữ số 6; còn gần NDB03451 (đếm phần bù) nhưng ở đây đếm trực tiếp.",
+   "dang_mu": "NDB01515",
+   "ly_do_mu": "Đếm số chẵn chữ số khác nhau, loại chữ số 6; đếm có điều kiện nhưng không cho sẵn nhóm chữ số"
+  },
+  {
+   "ma_cau": "T14T0000002063",
+   "ma_nguon": "CĐ2 · B6",
+   "dang": "NDB03454",
+   "ly_do": "Biết tổng các số lập được (66660), tìm chữ số chưa biết x.",
+   "dang_mu": "NDB03454",
+   "ly_do_mu": "Biết tổng các số lập được 66660, tìm chữ số chưa biết"
+  },
+  {
+   "ma_cau": "T14T0000002064",
+   "ma_nguon": "CĐ2 · B7",
+   "dang": "NDB03455",
+   "ly_do": "Biết tổng các chữ số (a+b+c+d=15), tính tổng các số lập được.",
+   "dang_mu": "NDB03455",
+   "ly_do_mu": "Biết a+b+c+d=15, tính tổng các số lập được"
+  },
+  {
+   "ma_cau": "T14T0000002065",
+   "ma_nguon": "CĐ2 · B8",
+   "dang": "NDB03449",
+   "ly_do": "Đếm số chia hết cho 5, chọn hàng đơn vị trước rồi chia Trường hợp 1/2 theo chữ số 0.",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số chia hết cho 5/3/15, tận cùng 5: chọn hàng đơn vị trước"
+  },
+  {
+   "ma_cau": "T14T0000002066",
+   "ma_nguon": "CĐ2 · B9",
+   "dang": "NDB03449",
+   "ly_do": "Đếm số chẵn chia hết cho 3: chọn hàng đơn vị trước, Trường hợp 1/2; dạng sau thắng (chung với NDB01534).",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số chẵn chia hết cho 3 lập từ chữ số cho trước; cũng gần 01534"
+  },
+  {
+   "ma_cau": "T14T0000002067",
+   "ma_nguon": "CĐ2 · B10",
+   "dang": "NDB03449",
+   "ly_do": "Số chia hết cho 3 và tận cùng 5, nhưng cách giải là dãy cách đều nên có thể là NDB01524 (Tính số số hạng).",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số chia hết cho 5/3/15, tận cùng 5: chọn hàng đơn vị trước"
+  },
+  {
+   "ma_cau": "T14T0000002070",
+   "ma_nguon": "CĐ2 · B12",
+   "dang": "NDB03452",
+   "ly_do": "Đếm số chia hết cho 5 có đúng một chữ số 5 (chia trường hợp vị trí); dạng sau thắng.",
+   "dang_mu": "NDB03452",
+   "ly_do_mu": "Đúng một chữ số 5 kèm chia hết cho 5; trộn 03452 và 03449"
+  },
+  {
+   "ma_cau": "T14T0000002071",
+   "ma_nguon": "CĐ2 · B13",
+   "dang": "NDB03449",
+   "ly_do": "Số cộng số viết ngược chia hết cho 5: xét tận cùng của tổng a+c; không dạng nào khớp đúng tên.",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số 3 chữ số mà tổng với số đảo chia hết cho 5; điều kiện chữ số tận cùng, không khớp hẳn dạng"
+  },
+  {
+   "ma_cau": "T14T0000002072",
+   "ma_nguon": "CĐ2 · B14",
+   "dang": "NDB03449",
+   "ly_do": "Đếm số chia hết cho 15 (3 và 5) từ nhóm chữ số cho trước; dạng sau thắng (chung với NDB01534).",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số chia hết cho 5/3/15, tận cùng 5: chọn hàng đơn vị trước"
+  },
+  {
+   "ma_cau": "T14T0000002073",
+   "ma_nguon": "CĐ2 · B15",
+   "dang": "NDB03451",
+   "ly_do": "Có ít nhất một chữ số 6 và chia hết cho 3: lấy tất cả trừ phần bù.",
+   "dang_mu": "NDB03451",
+   "ly_do_mu": "Có ít nhất một chữ số 6: đếm phần bù (kèm chia hết cho 3)"
+  },
+  {
+   "ma_cau": "T14T0000002074",
+   "ma_nguon": "CĐ2 · B16a",
+   "dang": "NDB03453",
+   "ly_do": "Tổng các số lập được nhưng các chữ số được lặp lại, khác mô tả (các chữ số khác nhau).",
+   "dang_mu": "NDB03453",
+   "ly_do_mu": "Tổng các số lập được nhưng chữ số được lặp lại; mô tả dạng nói chữ số khác nhau"
+  },
+  {
+   "ma_cau": "T14T0000002075",
+   "ma_nguon": "CĐ2 · B16b",
+   "dang": "NDB03453",
+   "ly_do": "Tổng tất cả các số lập từ các chữ số khác nhau cho trước, có chữ số 0.",
+   "dang_mu": "NDB03453",
+   "ly_do_mu": "Tổng tất cả các số lập từ các chữ số khác nhau cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002076",
+   "ma_nguon": "CĐ2 · B17",
+   "dang": "NDB03456",
+   "ly_do": "Bắt tay giữa n người, mỗi cái bắt tay tính hai lần.",
+   "dang_mu": "NDB03456",
+   "ly_do_mu": "Bắt tay giữa 30 người"
+  },
+  {
+   "ma_cau": "T14T0000002077",
+   "ma_nguon": "CĐ2 · B18",
+   "dang": "NDB03457",
+   "ly_do": "Bắt tay có điều kiện: đàn ông không bắt tay vợ mình, phụ nữ không bắt tay nhau.",
+   "dang_mu": "NDB03457",
+   "ly_do_mu": "Bắt tay có điều kiện (trừ vợ, phụ nữ không bắt tay nhau)"
+  },
+  {
+   "ma_cau": "T14T0000002078",
+   "ma_nguon": "CĐ3 · B1a",
+   "dang": "NDB01542",
+   "ly_do": "Cho bốn số, hỏi trung bình cộng của các số đó.",
+   "dang_mu": "NDB01542",
+   "ly_do_mu": "Tính trung bình cộng các số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002079",
+   "ma_nguon": "CĐ3 · B1b",
+   "dang": "NDB01586",
+   "ly_do": "Dãy số cách đều 3 đơn vị, hỏi trung bình cộng của dãy.",
+   "dang_mu": "NDB01586",
+   "ly_do_mu": "Trung bình cộng của dãy số cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002080",
+   "ma_nguon": "CĐ3 · B1c",
+   "dang": "NDB01586",
+   "ly_do": "Dãy số cách đều 4 đơn vị, hỏi trung bình cộng của dãy.",
+   "dang_mu": "NDB01586",
+   "ly_do_mu": "Trung bình cộng của dãy số cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002081",
+   "ma_nguon": "CĐ3 · B1d",
+   "dang": "NDB01586",
+   "ly_do": "Dãy số cách đều 1 đơn vị từ 1 đến 2015, hỏi trung bình cộng.",
+   "dang_mu": "NDB01586",
+   "ly_do_mu": "Trung bình cộng của dãy số cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002082",
+   "ma_nguon": "CĐ3 · B1e",
+   "dang": "NDB01586",
+   "ly_do": "Dãy số cách đều 5 đơn vị từ 5 đến 2005, hỏi trung bình cộng.",
+   "dang_mu": "NDB01586",
+   "ly_do_mu": "Trung bình cộng của dãy số cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002083",
+   "ma_nguon": "CĐ3 · B2",
+   "dang": "NDB01583",
+   "ly_do": "Cho trung bình cộng của ba số và hai số, tìm số còn lại.",
+   "dang_mu": "NDB01583",
+   "ly_do_mu": "Biết TBC và hai số, tìm số thứ ba"
+  },
+  {
+   "ma_cau": "T14T0000002084",
+   "ma_nguon": "CĐ3 · B3",
+   "dang": "NDB01547",
+   "ly_do": "Tổng ba số ẩn trong trung bình cộng, các số gấp đôi nhau (quy về số nhỏ nhất); gần dạng ẩn tổng.",
+   "dang_mu": "NDB01547",
+   "ly_do_mu": "Tổng ẩn qua TBC, ba số gấp lên so với số nhỏ nhất: tỉ số nhiều đại lượng"
+  },
+  {
+   "ma_cau": "T14T0000002085",
+   "ma_nguon": "CĐ3 · B4",
+   "dang": "NDB03459",
+   "ly_do": "Tìm nhiều số chẵn liên tiếp khi biết trung bình cộng của chúng.",
+   "dang_mu": "NDB03459",
+   "ly_do_mu": "Tìm nhiều số khi biết TBC của các nhóm con"
+  },
+  {
+   "ma_cau": "T14T0000002086",
+   "ma_nguon": "CĐ3 · B5",
+   "dang": "NDB01590",
+   "ly_do": "Biết trung bình cộng trước và sau khi bớt một người, tìm tuổi người bớt.",
+   "dang_mu": "NDB01590",
+   "ly_do_mu": "TBC trước–sau khi thêm một đại lượng, tìm đại lượng thêm"
+  },
+  {
+   "ma_cau": "T14T0000002087",
+   "ma_nguon": "CĐ3 · B6",
+   "dang": "NDB01592",
+   "ly_do": "Dũng có số bi bằng trung bình cộng của cả nhóm bốn bạn.",
+   "dang_mu": "NDB01592",
+   "ly_do_mu": "Một đại lượng bằng TBC cả nhóm"
+  },
+  {
+   "ma_cau": "T14T0000002088",
+   "ma_nguon": "CĐ3 · B7",
+   "dang": "NDB01593",
+   "ly_do": "Quý có số bi nhiều hơn trung bình cộng của cả nhóm ba bạn là 6 viên.",
+   "dang_mu": "NDB01593",
+   "ly_do_mu": "Một đại lượng nhiều hơn TBC cả nhóm 6"
+  },
+  {
+   "ma_cau": "T14T0000002089",
+   "ma_nguon": "CĐ3 · B8",
+   "dang": "NDB01590",
+   "ly_do": "Biết trung bình cộng trước và sau khi thêm một gói, tìm gói thêm vào.",
+   "dang_mu": "NDB01590",
+   "ly_do_mu": "TBC trước–sau khi thêm một đại lượng, tìm đại lượng thêm"
+  },
+  {
+   "ma_cau": "T14T0000002090",
+   "ma_nguon": "CĐ3 · B9",
+   "dang": "NDB01588",
+   "ly_do": "Tổng ẩn trong trung bình cộng, hai lớp thêm khác nhau rồi bằng nhau; gần dạng tăng giảm đại lượng.",
+   "dang_mu": "NDB01588",
+   "ly_do_mu": "Tổng ẩn qua TBC, hiệu từ thêm cây để bằng nhau: tổng hiệu"
+  },
+  {
+   "ma_cau": "T14T0000002091",
+   "ma_nguon": "CĐ3 · B10",
+   "dang": "NDB03459",
+   "ly_do": "Tìm ba số khi biết trung bình cộng của cả nhóm và các nhóm con.",
+   "dang_mu": "NDB03459",
+   "ly_do_mu": "Tìm nhiều số khi biết TBC của các nhóm con"
+  },
+  {
+   "ma_cau": "T14T0000002092",
+   "ma_nguon": "CĐ3 · B11",
+   "dang": "NDB03459",
+   "ly_do": "Biết trung bình cộng của 4 số và của các nhóm con 3 số, tìm trung bình cộng hai số giữa.",
+   "dang_mu": "NDB03459",
+   "ly_do_mu": "Tìm nhiều số khi biết TBC của các nhóm con"
+  },
+  {
+   "ma_cau": "T14T0000002093",
+   "ma_nguon": "CĐ3 · B12",
+   "dang": "NDB01583",
+   "ly_do": "Biết trung bình cộng của hai số và sau khi gấp một số lên 3 lần; không có dạng riêng.",
+   "dang_mu": "NDB01590",
+   "ly_do_mu": "TBC thay đổi khi gấp một số lên 3 lần; gần dạng thay đổi đại lượng trong TBC"
+  },
+  {
+   "ma_cau": "T14T0000002094",
+   "ma_nguon": "CĐ3 · B13",
+   "dang": "NDB01593",
+   "ly_do": "Trung bình cộng hai lớp nhiều hơn trung bình cộng ba lớp 2 học sinh; không đúng một dạng, gần dạng nhiều hơn trung bình cộng.",
+   "dang_mu": "NDB01593",
+   "ly_do_mu": "TBC hai lớp nhiều hơn TBC ba lớp 2; biến thể của quan hệ với TBC cả nhóm"
+  },
+  {
+   "ma_cau": "T14T0000002100",
+   "ma_nguon": "CĐ4 · B2a",
+   "dang": "NDB01519",
+   "ly_do": "Hai tích cùng thừa số 92 sau khi tính ngoặc; thuận tiện chỉ ở bước cuối.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002101",
+   "ma_nguon": "CĐ4 · B2b",
+   "dang": "NDB01519",
+   "ly_do": "Tổng hai tích sau khi tính ngoặc có chung thừa số 142.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002102",
+   "ma_nguon": "CĐ4 · B2c",
+   "dang": "NDB01519",
+   "ly_do": "Có số hạng riêng 132 và phải đổi 100×50 thành 10×500 để lại có thừa số chung.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002103",
+   "ma_nguon": "CĐ4 · B2d",
+   "dang": "NDB01519",
+   "ly_do": "Tổng hai tích chung thừa số 56 trong ngoặc, rồi chia cho 62.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002104",
+   "ma_nguon": "CĐ4 · B2e",
+   "dang": "NDB01519",
+   "ly_do": "Hiệu hai tích chung thừa số 158 trong ngoặc, rồi chia cho 180.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002105",
+   "ma_nguon": "CĐ4 · B3a",
+   "dang": "NDB01519",
+   "ly_do": "Phải đổi 8×3 và 6×4 thành 24 để có thừa số chung 24 rồi mới gộp được.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002106",
+   "ma_nguon": "CĐ4 · B3b",
+   "dang": "NDB01519",
+   "ly_do": "Phải tách 86 = 43×2 mới đưa được về hai tích bằng nhau; hiệu bằng 0.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002107",
+   "ma_nguon": "CĐ4 · B3c",
+   "dang": "NDB01519",
+   "ly_do": "Mỗi ngoặc là tổng hoặc hiệu các tích chung thừa số 145 hoặc 143.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002108",
+   "ma_nguon": "CĐ4 · B3d",
+   "dang": "NDB01519",
+   "ly_do": "Hai tích trừ đi cùng chung thừa số 47, cộng hai thừa số còn lại thành 100.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002109",
+   "ma_nguon": "CĐ4 · B3e",
+   "dang": "NDB01519",
+   "ly_do": "Cần ghép 3457 + 6543 thành 10000 rồi mới gộp hai tích chung thừa số 48.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002110",
+   "ma_nguon": "CĐ4 · B3f",
+   "dang": "NDB01519",
+   "ly_do": "Phải tách 327 = 326 + 1 mới có thừa số chung 272 hoặc 326; còn dư số hạng 272.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002111",
+   "ma_nguon": "CĐ4 · B3g",
+   "dang": "NDB01519",
+   "ly_do": "Phải tách 2009 = 2008 + 1 mới có thừa số chung 2008; còn dư số hạng 133.",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002112",
+   "ma_nguon": "CĐ4 · B4a",
+   "dang": "NDB01519",
+   "ly_do": "Tổng các tích có chung thừa số 1234 (số hạng cuối là 1234×1).",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002113",
+   "ma_nguon": "CĐ4 · B4b",
+   "dang": "NDB01519",
+   "ly_do": "Hiệu các tích chung thừa số 345 (số hạng giữa là 345×1).",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002117",
+   "ma_nguon": "CĐ4 · B4f",
+   "dang": "NDB01519",
+   "ly_do": "Hiệu hai tích nhiều thừa số; ghép cặp tròn rồi đặt thừa số chung 1000 (gần nhất dạng tính thuận tiện).",
+   "dang_mu": "NDB01519",
+   "ly_do_mu": "Tính thuận tiện bằng tính chất phân phối: đưa về thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002118",
+   "ma_nguon": "CĐ4 · B5a",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x, hai phép tính, phép chia 140:35 trước rồi tìm số bị trừ.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x một đến hai phép tính, có ngoặc"
+  },
+  {
+   "ma_cau": "T14T0000002119",
+   "ma_nguon": "CĐ4 · B5b",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x, hai phép chia có ngoặc.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x một đến hai phép tính, có ngoặc"
+  },
+  {
+   "ma_cau": "T14T0000002120",
+   "ma_nguon": "CĐ4 · B5c",
+   "dang": "NDB03461",
+   "ly_do": "Tìm x, nhiều chữ x cùng lúc (tổng các ngoặc chứa x).",
+   "dang_mu": "NDB03461",
+   "ly_do_mu": "Nhiều chữ x (x+1)+(x+3)+(x+5); cũng khớp 00647 tìm x dùng tổng dãy số"
+  },
+  {
+   "ma_cau": "T14T0000002121",
+   "ma_nguon": "CĐ4 · B5d",
+   "dang": "NDB03461",
+   "ly_do": "Tìm x, hai chữ x trong biểu thức có ngoặc và nhân.",
+   "dang_mu": "NDB03461",
+   "ly_do_mu": "Tìm x nhiều phép tính, nhiều chữ x cùng lúc"
+  },
+  {
+   "ma_cau": "T14T0000002122",
+   "ma_nguon": "CĐ4 · B5e",
+   "dang": "NDB03462",
+   "ly_do": "Tìm x dùng tính chất phân phối: x×101−x và 72×99+72.",
+   "dang_mu": "NDB03462",
+   "ly_do_mu": "Tìm x dùng tính chất phân phối"
+  },
+  {
+   "ma_cau": "T14T0000002123",
+   "ma_nguon": "CĐ4 · B5f",
+   "dang": "NDB03462",
+   "ly_do": "Hai phép chia cùng số chia x, gộp theo tính chất phân phối của phép chia; gần dạng nhiều chữ x.",
+   "dang_mu": "NDB03462",
+   "ly_do_mu": "Tìm x dùng tính chất phân phối"
+  },
+  {
+   "ma_cau": "T14T0000002124",
+   "ma_nguon": "CĐ4 · B5g",
+   "dang": "NDB03461",
+   "ly_do": "Tìm x, nhiều phép tính, chữ x xuất hiện nhiều lần.",
+   "dang_mu": "NDB03461",
+   "ly_do_mu": "Tính ngược rồi (x+15):x=4, x xuất hiện hai lần"
+  },
+  {
+   "ma_cau": "T14T0000002125",
+   "ma_nguon": "CĐ4 · B5h",
+   "dang": "NDB03461",
+   "ly_do": "Tìm x, ba chữ x cùng lúc trong biểu thức nhân chia.",
+   "dang_mu": "NDB03461",
+   "ly_do_mu": "Tìm x nhiều phép tính, nhiều chữ x cùng lúc"
+  },
+  {
+   "ma_cau": "T14T0000002126",
+   "ma_nguon": "CĐ4 · B6",
+   "dang": "NDB03489",
+   "ly_do": "Số đảo ngược: ba chữ số liên tiếp tăng dần, viết ngược lại, hỏi số thay đổi thế nào.",
+   "dang_mu": "NDB03489",
+   "ly_do_mu": "Số đảo ngược abcd−dcba, số chữ số liên tiếp tăng dần viết ngược"
+  },
+  {
+   "ma_cau": "T14T0000002127",
+   "ma_nguon": "CĐ4 · B7a",
+   "dang": "NDB03487",
+   "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xx.",
+   "dang_mu": "NDB03487",
+   "ly_do_mu": "Tìm x là chữ số trong biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002128",
+   "ma_nguon": "CĐ4 · B7b",
+   "dang": "NDB03487",
+   "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx.",
+   "dang_mu": "NDB03487",
+   "ly_do_mu": "Tìm x là chữ số trong biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002129",
+   "ma_nguon": "CĐ4 · B7c",
+   "dang": "NDB03487",
+   "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx.",
+   "dang_mu": "NDB03487",
+   "ly_do_mu": "Tìm x là chữ số trong biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002130",
+   "ma_nguon": "CĐ4 · B7d",
+   "dang": "NDB03487",
+   "ly_do": "Tìm x là chữ số trong biểu thức có số viết bằng chữ xxx, xx, số bị trừ 35655.",
+   "dang_mu": "NDB03487",
+   "ly_do_mu": "Tìm x là chữ số trong biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002131",
+   "ma_nguon": "CĐ4 · B8a",
+   "dang": "NDB03488",
+   "ly_do": "So sánh hai biểu thức có số viết bằng chữ aa×b và bb×a.",
+   "dang_mu": "NDB03488",
+   "ly_do_mu": "So sánh hai biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002132",
+   "ma_nguon": "CĐ4 · B8b",
+   "dang": "NDB03488",
+   "ly_do": "So sánh hai biểu thức có số viết bằng chữ aaa×b và bbb×a.",
+   "dang_mu": "NDB03488",
+   "ly_do_mu": "So sánh hai biểu thức có số viết bằng chữ"
+  },
+  {
+   "ma_cau": "T14T0000002133",
+   "ma_nguon": "CĐ4 · B9",
+   "dang": "NDB03489",
+   "ly_do": "Số đảo ngược: bốn chữ số liên tiếp tăng dần, viết ngược lại, hỏi số thay đổi thế nào.",
+   "dang_mu": "NDB03489",
+   "ly_do_mu": "Số đảo ngược abcd−dcba, số chữ số liên tiếp tăng dần viết ngược"
+  },
+  {
+   "ma_cau": "T14T0000002134",
+   "ma_nguon": "CĐ4 · B10a",
+   "dang": "NDB03489",
+   "ly_do": "Số đảo ngược abcd − dcba với hai hiệu chữ số cho trước.",
+   "dang_mu": "NDB03489",
+   "ly_do_mu": "Số đảo ngược abcd−dcba, số chữ số liên tiếp tăng dần viết ngược"
+  },
+  {
+   "ma_cau": "T14T0000002135",
+   "ma_nguon": "CĐ4 · B10b",
+   "dang": "NDB03489",
+   "ly_do": "Số đảo ngược abcd − dcba với hai hiệu chữ số cho trước (c lớn hơn b).",
+   "dang_mu": "NDB03489",
+   "ly_do_mu": "Số đảo ngược abcd−dcba, số chữ số liên tiếp tăng dần viết ngược"
+  },
+  {
+   "ma_cau": "T14T0000002137",
+   "ma_nguon": "CĐ4 · B12",
+   "dang": "NDB03486",
+   "ly_do": "Phép cộng viết chồng bằng chữ ABC + BAC = 1660, tìm A + B + C.",
+   "dang_mu": "NDB03486",
+   "ly_do_mu": "Cộng viết chồng bằng chữ ABC+BAC=1660"
+  },
+  {
+   "ma_cau": "T14T0000002138",
+   "ma_nguon": "CĐ5 · B1",
+   "dang": "NDB01521",
+   "ly_do": "Hai số hạng bị bớt, thêm một số đơn vị, hỏi tổng mới.",
+   "dang_mu": "NDB01521",
+   "ly_do_mu": "Thay đổi số hạng trong phép cộng, tìm tổng mới"
+  },
+  {
+   "ma_cau": "T14T0000002141",
+   "ma_nguon": "CĐ5 · B4",
+   "dang": "NDB03465",
+   "ly_do": "Số trừ có hai chữ số cuối 49 viết nhầm thành 94, tìm hiệu đúng.",
+   "dang_mu": "NDB03465",
+   "ly_do_mu": "Trừ/cộng viết sai chữ số (49 thành 94; 107 thành 1007)"
+  },
+  {
+   "ma_cau": "T14T0000002142",
+   "ma_nguon": "CĐ5 · B5",
+   "dang": "NDB03464",
+   "ly_do": "Biết tổng của số bị trừ, số trừ và hiệu, tìm số bị trừ và số trừ.",
+   "dang_mu": "NDB03464",
+   "ly_do_mu": "Tổng của số bị trừ, số trừ và hiệu bằng 2000"
+  },
+  {
+   "ma_cau": "T14T0000002143",
+   "ma_nguon": "CĐ5 · B6",
+   "dang": "NDB03465",
+   "ly_do": "Chép nhầm số hạng 107 thành 1007, tìm tổng đúng.",
+   "dang_mu": "NDB03465",
+   "ly_do_mu": "Trừ/cộng viết sai chữ số (49 thành 94; 107 thành 1007)"
+  },
+  {
+   "ma_cau": "T14T0000002144",
+   "ma_nguon": "CĐ5 · B7",
+   "dang": "NDB01540",
+   "ly_do": "Viết thêm chữ số 0 vào bên phải số trừ rồi so hiệu mới; gần dạng viết thêm chữ số nhưng ở phép trừ.",
+   "dang_mu": "NDB01546",
+   "ly_do_mu": "Viết thêm chữ số vào bên phải số trừ: số trừ mới gấp 10 (+chữ số), hiệu tỉ ẩn tỉ; gần 01540"
+  },
+  {
+   "ma_cau": "T14T0000002146",
+   "ma_nguon": "CĐ5 · B9",
+   "dang": "NDB01540",
+   "ly_do": "Viết thêm chữ số 5 vào bên phải số trừ rồi so hiệu mới; gần dạng viết thêm chữ số nhưng ở phép trừ.",
+   "dang_mu": "NDB01546",
+   "ly_do_mu": "Viết thêm chữ số vào bên phải số trừ: số trừ mới gấp 10 (+chữ số), hiệu tỉ ẩn tỉ; gần 01540"
+  },
+  {
+   "ma_cau": "T14T0000002149",
+   "ma_nguon": "CĐ5 · B11a",
+   "dang": "NDB03469",
+   "ly_do": "Tìm số bị chia và số chia bé nhất khi biết thương và số dư.",
+   "dang_mu": "NDB03469",
+   "ly_do_mu": "Tìm số bị chia, số chia bé nhất khi biết thương và số dư"
+  },
+  {
+   "ma_cau": "T14T0000002150",
+   "ma_nguon": "CĐ5 · B11b",
+   "dang": "NDB03468",
+   "ly_do": "Số dư lớn nhất cho trước nên số chia hơn số dư 1 đơn vị; thương gấp 24 lần số chia.",
+   "dang_mu": "NDB03468",
+   "ly_do_mu": "Số dư lớn nhất suy ra số chia, rồi tìm số bị chia theo thương; trộn 03468/03469"
+  },
+  {
+   "ma_cau": "T14T0000002151",
+   "ma_nguon": "CĐ5 · B11c",
+   "dang": "NDB03468",
+   "ly_do": "Số dư lẻ lớn nhất khi chia cho 97, thương kém số dư 2 đơn vị.",
+   "dang_mu": "NDB03468",
+   "ly_do_mu": "Số dư lớn nhất có thể, số dư nhỏ hơn số chia"
+  },
+  {
+   "ma_cau": "T14T0000002152",
+   "ma_nguon": "CĐ5 · B12a",
+   "dang": "NDB03470",
+   "ly_do": "Bớt ở số bị chia ít nhất bao nhiêu để chia hết và thương giảm 5 đơn vị.",
+   "dang_mu": "NDB03470",
+   "ly_do_mu": "Thêm/bớt bao nhiêu để chia hết; biết tổng các thành phần phép chia"
+  },
+  {
+   "ma_cau": "T14T0000002153",
+   "ma_nguon": "CĐ5 · B12b",
+   "dang": "NDB03470",
+   "ly_do": "Thêm vào số bị chia ít nhất bao nhiêu để chia hết và thương tăng 3 đơn vị, số dư lớn nhất.",
+   "dang_mu": "NDB03470",
+   "ly_do_mu": "Thêm/bớt bao nhiêu để chia hết; biết tổng các thành phần phép chia"
+  },
+  {
+   "ma_cau": "T14T0000002154",
+   "ma_nguon": "CĐ5 · B13",
+   "dang": "NDB03468",
+   "ly_do": "Số dư lớn nhất có thể, biết số bị chia và thương, tìm số chia.",
+   "dang_mu": "NDB03468",
+   "ly_do_mu": "Số dư lớn nhất có thể, số dư nhỏ hơn số chia"
+  },
+  {
+   "ma_cau": "T14T0000002155",
+   "ma_nguon": "CĐ5 · B14",
+   "dang": "NDB03470",
+   "ly_do": "Biết tổng số bị chia, số chia, thương và số dư (969), thương 6, dư 51.",
+   "dang_mu": "NDB03470",
+   "ly_do_mu": "Thêm/bớt bao nhiêu để chia hết; biết tổng các thành phần phép chia"
+  },
+  {
+   "ma_cau": "T14T0000002156",
+   "ma_nguon": "CĐ5 · B15a",
+   "dang": "NDB03463",
+   "ly_do": "Thêm vào một thừa số thì tích tăng thêm; gần dạng thay đổi thừa số.",
+   "dang_mu": "NDB03463",
+   "ly_do_mu": "Thay đổi thừa số, tích thay đổi tương ứng"
+  },
+  {
+   "ma_cau": "T14T0000002157",
+   "ma_nguon": "CĐ5 · B15b",
+   "dang": "NDB03463",
+   "ly_do": "Bớt ở một thừa số thì tích giảm đi; gần dạng thay đổi thừa số.",
+   "dang_mu": "NDB03463",
+   "ly_do_mu": "Thay đổi thừa số, tích thay đổi tương ứng"
+  },
+  {
+   "ma_cau": "T14T0000002158",
+   "ma_nguon": "CĐ5 · B16",
+   "dang": "NDB03467",
+   "ly_do": "Viết nhầm thêm chữ số 3 vào bên phải thừa số 25, tích tăng 32376, tìm tích đúng.",
+   "dang_mu": "NDB03467",
+   "ly_do_mu": "Nhân viết nhầm, thêm hoặc đổi chữ số của thừa số"
+  },
+  {
+   "ma_cau": "T14T0000002159",
+   "ma_nguon": "CĐ5 · B17",
+   "dang": "NDB03467",
+   "ly_do": "Đổi chỗ chữ số hàng nghìn với hàng chục, đơn vị với hàng trăm của thừa số, tìm tích đúng.",
+   "dang_mu": "NDB03467",
+   "ly_do_mu": "Nhân viết nhầm, thêm hoặc đổi chữ số của thừa số"
+  },
+  {
+   "ma_cau": "T14T0000002160",
+   "ma_nguon": "CĐ5 · B18",
+   "dang": "NDB03467",
+   "ly_do": "Viết nhầm chữ số hàng đơn vị của thừa số thứ hai từ 2 thành 8, tìm các thừa số.",
+   "dang_mu": "NDB03467",
+   "ly_do_mu": "Nhân viết nhầm, thêm hoặc đổi chữ số của thừa số"
+  },
+  {
+   "ma_cau": "T14T0000002161",
+   "ma_nguon": "CĐ5 · B19",
+   "dang": "NDB03466",
+   "ly_do": "Nhân với 901 nhưng đặt các tích riêng thẳng cột như phép cộng.",
+   "dang_mu": "NDB03466",
+   "ly_do_mu": "Nhân đặt tích riêng thẳng cột như phép cộng"
+  },
+  {
+   "ma_cau": "T14T0000002163",
+   "ma_nguon": "CĐ6 · B1",
+   "dang": "NDB01627",
+   "ly_do": "Bình thêm 16 thì bằng An nên hiệu ẩn 16; có thể xếp tổng hiệu cơ bản",
+   "dang_mu": "NDB01541",
+   "ly_do_mu": "Tổng cho sẵn, hiệu ẩn qua thêm/bớt để bằng nhau; có thể xếp 01627"
+  },
+  {
+   "ma_cau": "T14T0000002164",
+   "ma_nguon": "CĐ6 · B2",
+   "dang": "NDB01627",
+   "ly_do": "cả hai bao cùng bớt số khác nhau rồi bằng nhau; hiệu lúc sau bằng 0",
+   "dang_mu": "NDB01541",
+   "ly_do_mu": "Tổng cho sẵn, hiệu ẩn qua thêm/bớt để bằng nhau; có thể xếp 01627"
+  },
+  {
+   "ma_cau": "T14T0000002165",
+   "ma_nguon": "CĐ6 · B3",
+   "dang": "NDB01541",
+   "ly_do": "tổng hiệu hai lượt: vịt bằng nửa tổng, rồi ngan hơn ngỗng 40; không có dạng riêng",
+   "dang_mu": "NDB01541",
+   "ly_do_mu": "Ba đại lượng, tổng hiệu hai lượt; gần 01625 (dùng cho tuổi)"
+  },
+  {
+   "ma_cau": "T14T0000002166",
+   "ma_nguon": "CĐ6 · B4",
+   "dang": "NDB01627",
+   "ly_do": "cả hai tổ cùng thêm số khác nhau, cho hiệu lúc sau, hỏi số lúc đầu",
+   "dang_mu": "NDB01627",
+   "ly_do_mu": "Hai bên cùng thêm số khác nhau, biết hiệu/tổng lúc sau, tìm ban đầu"
+  },
+  {
+   "ma_cau": "T14T0000002169",
+   "ma_nguon": "CĐ6 · B6b",
+   "dang": "NDB01627",
+   "ly_do": "hiệu thay đổi khi mỗi bạn viết hết số vở khác nhau; sách dùng hiệu lúc đầu 6",
+   "dang_mu": "NDB01627",
+   "ly_do_mu": "Ý tiếp theo dùng kết quả ý a, tính hiệu sau khi bớt vở"
+  },
+  {
+   "ma_cau": "T14T0000002170",
+   "ma_nguon": "CĐ6 · B7",
+   "dang": "NDB01626",
+   "ly_do": "chuyển dầu từ thùng này sang thùng kia, tổng không đổi, sau đó bằng nhau",
+   "dang_mu": "NDB01626",
+   "ly_do_mu": "Cho nhận giữa hai bên, tổng không đổi, biết hiệu lúc sau"
+  },
+  {
+   "ma_cau": "T14T0000002171",
+   "ma_nguon": "CĐ6 · B8",
+   "dang": "NDB01626",
+   "ly_do": "Bình cho An, tổng không đổi, cho hiệu lúc sau, hỏi lúc đầu",
+   "dang_mu": "NDB01626",
+   "ly_do_mu": "Cho nhận giữa hai bên, tổng không đổi, biết hiệu lúc sau"
+  },
+  {
+   "ma_cau": "T14T0000002172",
+   "ma_nguon": "CĐ6 · B9",
+   "dang": "NDB01626",
+   "ly_do": "Huy và Hoàng cho nhau, tổng không đổi, cho hiệu lúc sau",
+   "dang_mu": "NDB01626",
+   "ly_do_mu": "Cho nhận giữa hai bên, tổng không đổi, biết hiệu lúc sau"
+  },
+  {
+   "ma_cau": "T14T0000002173",
+   "ma_nguon": "CĐ6 · B10",
+   "dang": "NDB01627",
+   "ly_do": "vừa lấy ra mỗi kho số khác nhau (tổng đổi) vừa chuyển kho này sang kho kia",
+   "dang_mu": "NDB01627",
+   "ly_do_mu": "Vừa bớt ra ngoài vừa chuyển kho này sang kho kia; trộn 01627 và 01626"
+  },
+  {
+   "ma_cau": "T14T0000002174",
+   "ma_nguon": "CĐ6 · B11",
+   "dang": "NDB01626",
+   "ly_do": "chuyển sách qua lại giữa hai ngăn, tổng không đổi, cho hiệu lúc sau",
+   "dang_mu": "NDB01626",
+   "ly_do_mu": "Cho nhận giữa hai bên, tổng không đổi, biết hiệu lúc sau"
+  },
+  {
+   "ma_cau": "T14T0000002175",
+   "ma_nguon": "CĐ6 · B12a",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số lẻ liên tiếp, hiệu suy ra từ chữ liên tiếp",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002176",
+   "ma_nguon": "CĐ6 · B12b",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số chẵn, hiệu suy ra từ \"giữa có đúng 2 số lẻ\"",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002177",
+   "ma_nguon": "CĐ6 · B12c",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số chẵn, hiệu suy ra từ \"giữa có đúng 6 số lẻ liên tiếp\"",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002178",
+   "ma_nguon": "CĐ6 · B12d",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số lẻ, hiệu suy ra từ \"giữa có đúng 10 số chẵn\"",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002179",
+   "ma_nguon": "CĐ6 · B12e",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số tự nhiên bất kì, hiệu suy ra từ \"giữa có đúng 15 số tự nhiên khác\" (mô tả dạng nói số chẵn lẻ)",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002180",
+   "ma_nguon": "CĐ6 · B13",
+   "dang": "NDB01624",
+   "ly_do": "tổng hai số tự nhiên, hiệu suy ra từ \"giữa có tất cả 15 số chẵn\"",
+   "dang_mu": "NDB01624",
+   "ly_do_mu": "Tổng hiệu ẩn hiệu: số chẵn lẻ, giữa chúng có k số"
+  },
+  {
+   "ma_cau": "T14T0000002181",
+   "ma_nguon": "CĐ6 · B14",
+   "dang": "NDB01541",
+   "ly_do": "tổng suy từ trung bình cộng, hiệu suy từ viết thêm chữ số 3 bên trái; không có dạng riêng",
+   "dang_mu": "NDB01588",
+   "ly_do_mu": "Tổng ẩn qua TBC, hiệu 3000 do viết thêm chữ số 3 bên trái"
+  },
+  {
+   "ma_cau": "T14T0000002182",
+   "ma_nguon": "CĐ6 · B15",
+   "dang": "NDB03471",
+   "ly_do": "số hai chữ số có tổng chữ số cho trước, đổi chỗ thì tăng; tổng hiệu hai chữ số",
+   "dang_mu": "NDB03471",
+   "ly_do_mu": "Tổng hiệu với số hai chữ số đổi chỗ"
+  },
+  {
+   "ma_cau": "T14T0000002183",
+   "ma_nguon": "CĐ6 · B16",
+   "dang": "NDB03471",
+   "ly_do": "hiệu hai chữ số, tổng số và số đảo cho trước; tổng hiệu hai chữ số",
+   "dang_mu": "NDB03471",
+   "ly_do_mu": "Tổng hiệu với số hai chữ số đổi chỗ"
+  },
+  {
+   "ma_cau": "T14T0000002184",
+   "ma_nguon": "CĐ7 · B1a",
+   "dang": "NDB03473",
+   "ly_do": "chia hết cho 9 và 5 (tức 45) bằng cách xét 2 chữ số tận cùng; cũng gần NDB01533 / NDB00653",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Tìm chữ số * để chia hết cho 9 và 5 (tức 45); cũng khớp 01533/00653"
+  },
+  {
+   "ma_cau": "T14T0000002185",
+   "ma_nguon": "CĐ7 · B1b",
+   "dang": "NDB03473",
+   "ly_do": "chia hết cho 9 và 5 (tức 45) bằng cách xét 2 chữ số tận cùng; cũng gần NDB01533 / NDB00653",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Tìm chữ số * để chia hết cho 9 và 5 (tức 45); cũng khớp 01533/00653"
+  },
+  {
+   "ma_cau": "T14T0000002186",
+   "ma_nguon": "CĐ7 · B2",
+   "dang": "NDB03473",
+   "ly_do": "viết thêm chữ số hai bên số 1996 để chia hết cho 2, 5 và 9 (ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Tìm/viết thêm chữ số để chia hết cho 12, 90 (2,5,9), 225"
+  },
+  {
+   "ma_cau": "T14T0000002187",
+   "ma_nguon": "CĐ7 · B3",
+   "dang": "NDB03473",
+   "ly_do": "chia hết cho 9 và 4 (tức 36) với hai chữ số x, y; cũng gần NDB03472 / NDB00654",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Hai chữ số x,y để chia hết cho 9 và 4 (36); cũng khớp 00654"
+  },
+  {
+   "ma_cau": "T14T0000002188",
+   "ma_nguon": "CĐ7 · B4a",
+   "dang": "NDB03473",
+   "ly_do": "tìm chữ số x, y để số chia hết cho 12",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Tìm/viết thêm chữ số để chia hết cho 12, 90 (2,5,9), 225"
+  },
+  {
+   "ma_cau": "T14T0000002189",
+   "ma_nguon": "CĐ7 · B4b",
+   "dang": "NDB03473",
+   "ly_do": "tìm chữ số x, y để số chia hết cho 225",
+   "dang_mu": "NDB03473",
+   "ly_do_mu": "Tìm/viết thêm chữ số để chia hết cho 12, 90 (2,5,9), 225"
+  },
+  {
+   "ma_cau": "T14T0000002190",
+   "ma_nguon": "CĐ7 · B5a",
+   "dang": "NDB01534",
+   "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 6; cũng gần NDB00656",
+   "dang_mu": "NDB01534",
+   "ly_do_mu": "Đếm số lập từ chữ số cho trước chia hết cho 6/18/45; gần 03449"
+  },
+  {
+   "ma_cau": "T14T0000002191",
+   "ma_nguon": "CĐ7 · B5b",
+   "dang": "NDB01534",
+   "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 15; cũng gần NDB00656",
+   "dang_mu": "NDB03449",
+   "ly_do_mu": "Đếm số lập từ chữ số chia hết cho 15; cũng khớp 01534"
+  },
+  {
+   "ma_cau": "T14T0000002192",
+   "ma_nguon": "CĐ7 · B5c",
+   "dang": "NDB01534",
+   "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 18; cũng gần NDB00656",
+   "dang_mu": "NDB01534",
+   "ly_do_mu": "Đếm số lập từ chữ số cho trước chia hết cho 6/18/45; gần 03449"
+  },
+  {
+   "ma_cau": "T14T0000002193",
+   "ma_nguon": "CĐ7 · B5d",
+   "dang": "NDB01534",
+   "ly_do": "lập số ba chữ số từ bốn chữ số cho trước, đếm số chia hết cho 45; cũng gần NDB00656",
+   "dang_mu": "NDB01534",
+   "ly_do_mu": "Đếm số lập từ chữ số cho trước chia hết cho 6/18/45; gần 03449"
+  },
+  {
+   "ma_cau": "T14T0000002194",
+   "ma_nguon": "CĐ7 · B6a",
+   "dang": "NDB00655",
+   "ly_do": "tìm chữ số * trong tích cho dạng số có dấu *, giải thích không nhân trực tiếp",
+   "dang_mu": "NDB00655",
+   "ly_do_mu": "Tìm chữ số * của tích không nhân trực tiếp"
+  },
+  {
+   "ma_cau": "T14T0000002195",
+   "ma_nguon": "CĐ7 · B6b",
+   "dang": "NDB00655",
+   "ly_do": "tìm các chữ số * trong tích cho dạng số có hai dấu *, giải thích không nhân trực tiếp",
+   "dang_mu": "NDB00655",
+   "ly_do_mu": "Tìm chữ số * của tích không nhân trực tiếp"
+  },
+  {
+   "ma_cau": "T14T0000002196",
+   "ma_nguon": "CĐ7 · B7a",
+   "dang": "NDB01536",
+   "ly_do": "số có chữ số bị che, điều kiện chia dư 2, dư 5 và chia hết cho 9",
+   "dang_mu": "NDB01536",
+   "ly_do_mu": "Thay x,y để số chia có dư theo điều kiện (xen chia hết)"
+  },
+  {
+   "ma_cau": "T14T0000002197",
+   "ma_nguon": "CĐ7 · B7b",
+   "dang": "NDB01536",
+   "ly_do": "số có chữ số bị che, điều kiện chia hết cho 6 và chia 5 dư 4",
+   "dang_mu": "NDB01536",
+   "ly_do_mu": "Thay x,y để số chia có dư theo điều kiện (xen chia hết)"
+  },
+  {
+   "ma_cau": "T14T0000002198",
+   "ma_nguon": "CĐ7 · B8",
+   "dang": "NDB01506",
+   "ly_do": "số lớn nhất 4 chữ số biết tổng chữ số, kèm điều kiện chia dư; cũng gần NDB01536",
+   "dang_mu": "NDB01506",
+   "ly_do_mu": "Số lớn nhất 4 chữ số tổng chữ số 9 kèm điều kiện chia có dư (tận cùng 7)"
+  },
+  {
+   "ma_cau": "T14T0000002199",
+   "ma_nguon": "CĐ7 · B9",
+   "dang": "NDB01539",
+   "ly_do": "số tự nhiên chia cho 4; 5; 7 đều dư 3, hỏi số bé nhất",
+   "dang_mu": "NDB01539",
+   "ly_do_mu": "Số bé nhất chia cho nhiều số có điều kiện số dư"
+  },
+  {
+   "ma_cau": "T14T0000002200",
+   "ma_nguon": "CĐ7 · B10",
+   "dang": "NDB01539",
+   "ly_do": "số tự nhiên chia cho 3; 4; 5; 7 có số dư kém số chia cùng 2 đơn vị, hỏi số bé nhất",
+   "dang_mu": "NDB01539",
+   "ly_do_mu": "Số bé nhất chia cho nhiều số có điều kiện số dư"
+  },
+  {
+   "ma_cau": "T14T0000002201",
+   "ma_nguon": "CĐ7 · B11",
+   "dang": "NDB01539",
+   "ly_do": "số hai chữ số khi chia cho nhiều số có điều kiện chia hết và chia dư; cũng gần NDB01536",
+   "dang_mu": "NDB01539",
+   "ly_do_mu": "Bài lời văn: số đại biểu chia hết/chia có dư theo cách xếp ghế, số 2 chữ số"
+  },
+  {
+   "ma_cau": "T14T0000002202",
+   "ma_nguon": "CĐ7 · B12a",
+   "dang": "NDB03474",
+   "ly_do": "không làm phép chia, nhận biết số 11…1 chia hết cho 2, 3, 5, 9 (ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03474",
+   "ly_do_mu": "Không làm phép chia, xét 11…1, 33…3 chia hết cho 2,3,5,9"
+  },
+  {
+   "ma_cau": "T14T0000002203",
+   "ma_nguon": "CĐ7 · B12b",
+   "dang": "NDB03474",
+   "ly_do": "không làm phép chia, nhận biết số 33…3 chia hết cho 2, 3, 5, 9",
+   "dang_mu": "NDB03474",
+   "ly_do_mu": "Không làm phép chia, xét 11…1, 33…3 chia hết cho 2,3,5,9"
+  },
+  {
+   "ma_cau": "T14T0000002204",
+   "ma_nguon": "CĐ7 · B12c",
+   "dang": "NDB03474",
+   "ly_do": "không làm phép chia, nhận biết số 44…4 chia hết cho 2, 3, 5, 9",
+   "dang_mu": "NDB03474",
+   "ly_do_mu": "Không làm phép chia, xét 11…1, 33…3 chia hết cho 2,3,5,9"
+  },
+  {
+   "ma_cau": "T14T0000002206",
+   "ma_nguon": "CĐ7 · B13",
+   "dang": "NDB03475",
+   "ly_do": "giải thích \"có thể hay không\" bằng tính chất chia (xé giấy, ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03475",
+   "ly_do_mu": "Giải thích có thể hay không bằng tính chất chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002207",
+   "ma_nguon": "CĐ7 · B14",
+   "dang": "NDB03475",
+   "ly_do": "giải thích \"có thể hay không\" bằng dấu hiệu chia hết cho 9 (CHAMHOC − HOCCHAM, ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03475",
+   "ly_do_mu": "Giải thích có thể hay không bằng tính chất chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002208",
+   "ma_nguon": "CĐ7 · B15",
+   "dang": "NDB03475",
+   "ly_do": "giải thích \"có thể hay không\" bằng tính chất chia hết cho 3 (200 quyển vở thưởng đều, ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03475",
+   "ly_do_mu": "Giải thích có thể hay không bằng tính chất chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002209",
+   "ma_nguon": "CĐ7 · B16a",
+   "dang": "NDB03475",
+   "ly_do": "giải thích \"có thể hay không\" bằng tính chẵn lẻ của tổng độ dài (chu vi hình chữ nhật là số chẵn)",
+   "dang_mu": "NDB03475",
+   "ly_do_mu": "Giải thích có thể hay không bằng tính chất chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002210",
+   "ma_nguon": "CĐ7 · B16b",
+   "dang": "NDB03475",
+   "ly_do": "giải thích \"có thể hay không\" bằng tính chia hết cho 4 của số que mỗi loại",
+   "dang_mu": "NDB03475",
+   "ly_do_mu": "Giải thích có thể hay không bằng tính chất chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002214",
+   "ma_nguon": "CĐ8 · B1",
+   "dang": "NDB03479",
+   "ly_do": "xoá chữ số 3 ở hàng đơn vị, số mới giảm 1794 đơn vị",
+   "dang_mu": "NDB03479",
+   "ly_do_mu": "Xoá chữ số hàng đơn vị, số giảm 1794 đơn vị"
+  },
+  {
+   "ma_cau": "T14T0000002215",
+   "ma_nguon": "CĐ8 · B2",
+   "dang": "NDB01540",
+   "ly_do": "viết thêm chữ số 2 vào đằng trước số, số mới gấp 9 lần số cũ",
+   "dang_mu": "NDB01540",
+   "ly_do_mu": "Viết thêm chữ số vào đằng trước (và đằng sau) số cần tìm"
+  },
+  {
+   "ma_cau": "T14T0000002216",
+   "ma_nguon": "CĐ8 · B3",
+   "dang": "NDB01540",
+   "ly_do": "viết thêm chữ số 5 vào đằng trước và đằng sau số, hai số mới hơn kém 1107",
+   "dang_mu": "NDB01540",
+   "ly_do_mu": "Viết thêm chữ số vào đằng trước (và đằng sau) số cần tìm"
+  },
+  {
+   "ma_cau": "T14T0000002217",
+   "ma_nguon": "CĐ8 · B4",
+   "dang": "NDB03478",
+   "ly_do": "viết thêm chữ số 0 vào giữa hai chữ số, số mới gấp 7 lần số cũ",
+   "dang_mu": "NDB03478",
+   "ly_do_mu": "Viết thêm chữ số 0 vào giữa số hai chữ số"
+  },
+  {
+   "ma_cau": "T14T0000002218",
+   "ma_nguon": "CĐ8 · B5",
+   "dang": "NDB03481",
+   "ly_do": "số bằng 9 lần chữ số hàng đơn vị của nó",
+   "dang_mu": "NDB03481",
+   "ly_do_mu": "Số bằng 9 lần chữ số hàng đơn vị"
+  },
+  {
+   "ma_cau": "T14T0000002219",
+   "ma_nguon": "CĐ8 · B6",
+   "dang": "NDB03482",
+   "ly_do": "số chia cho tổng các chữ số được thương 9 dư 1",
+   "dang_mu": "NDB03482",
+   "ly_do_mu": "Số chia cho tổng các chữ số được thương và dư cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002220",
+   "ma_nguon": "CĐ8 · B7",
+   "dang": "NDB03482",
+   "ly_do": "số chia cho tổng các chữ số thì bằng 11 (không dư)",
+   "dang_mu": "NDB03482",
+   "ly_do_mu": "Số chia cho tổng các chữ số được thương và dư cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002221",
+   "ma_nguon": "CĐ8 · B9",
+   "dang": "NDB03480",
+   "ly_do": "gạch chữ số hàng trăm, số còn lại có hai chữ số nhân 7 được số ban đầu",
+   "dang_mu": "NDB03480",
+   "ly_do_mu": "Gạch chữ số hàng trăm, số còn lại hai chữ số"
+  },
+  {
+   "ma_cau": "T14T0000002222",
+   "ma_nguon": "CĐ8 · B11",
+   "dang": "NDB03484",
+   "ly_do": "cộng theo hàng với số viết bằng chữ abcd + abc + ab + a (ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03484",
+   "ly_do_mu": "Cộng theo hàng abcd+abc+ab+a, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002223",
+   "ma_nguon": "CĐ8 · B12",
+   "dang": "NDB03484",
+   "ly_do": "cộng theo hàng với số viết bằng chữ abcd + abc + ab + a = 1111",
+   "dang_mu": "NDB03484",
+   "ly_do_mu": "Cộng theo hàng abcd+abc+ab+a=1111"
+  },
+  {
+   "ma_cau": "T14T0000002224",
+   "ma_nguon": "CĐ8 · B13",
+   "dang": "NDB03485",
+   "ly_do": "tích hai số viết bằng chữ aa × bc = 1001 (ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03485",
+   "ly_do_mu": "Tích hai số viết bằng chữ aa×bc=1001"
+  },
+  {
+   "ma_cau": "T14T0000002225",
+   "ma_nguon": "CĐ8 · B14",
+   "dang": "NDB03485",
+   "ly_do": "tích các chữ số và số viết bằng chữ a × b × ab = bbb (tích hai số viết bằng chữ)",
+   "dang_mu": "NDB03485",
+   "ly_do_mu": "Tích chứa số viết bằng chữ a×b×ab=bbb"
+  },
+  {
+   "ma_cau": "T14T0000002226",
+   "ma_nguon": "CĐ8 · B15",
+   "dang": "NDB03485",
+   "ly_do": "tích hai số viết bằng chữ ab × cd = bbb (ví dụ trong mô tả dạng)",
+   "dang_mu": "NDB03485",
+   "ly_do_mu": "Tích hai số viết bằng chữ ab×cd=bbb"
+  },
+  {
+   "ma_cau": "T14T0000002227",
+   "ma_nguon": "CĐ9 · B1a",
+   "dang": "NDB03490",
+   "ly_do": "Tìm quy luật dãy không cách đều (tổng hai số liền trước), viết thêm 3 số hạng.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy không cách đều (tổng hai số liền trước), viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002228",
+   "ma_nguon": "CĐ9 · B1b",
+   "dang": "NDB03490",
+   "ly_do": "Quy luật tổng ba số liền trước, viết thêm 3 số hạng.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy không cách đều (tổng ba số liền trước), viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002229",
+   "ma_nguon": "CĐ9 · B1c",
+   "dang": "NDB03490",
+   "ly_do": "Quy luật cộng 3, 4, 5,… (cộng 1 rồi 2 rồi 3 kiểu), viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy hiệu tăng dần, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002230",
+   "ma_nguon": "CĐ9 · B1d",
+   "dang": "NDB03490",
+   "ly_do": "Quy luật nhân với số thứ tự, viết thêm 3 số hạng.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy nhân lần lượt 2,3,4…, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002231",
+   "ma_nguon": "CĐ9 · B1e",
+   "dang": "NDB03490",
+   "ly_do": "Dãy giảm với số trừ tăng dần 7, 8, 9,… viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy hiệu tăng dần (giảm 7,8,9…), viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002232",
+   "ma_nguon": "CĐ9 · B1f",
+   "dang": "NDB03490",
+   "ly_do": "Quy luật tổng hai số liền trước trừ 5, viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy hiệu theo quy luật, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002233",
+   "ma_nguon": "CĐ9 · B1g",
+   "dang": "NDB03490",
+   "ly_do": "Dãy số chính phương, quy luật nhân số với chính nó, viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy số chính phương, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002234",
+   "ma_nguon": "CĐ9 · B1h",
+   "dang": "NDB03490",
+   "ly_do": "Mỗi số bằng tích hai số liền trước, viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy mỗi số bằng tích hai số liền trước, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002235",
+   "ma_nguon": "CĐ9 · B1i",
+   "dang": "NDB03490",
+   "ly_do": "Mỗi số bằng tích hai số liền trước cộng 2, viết thêm 3 số.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy quy luật không cách đều, viết thêm số hạng"
+  },
+  {
+   "ma_cau": "T14T0000002236",
+   "ma_nguon": "CĐ9 · B2a",
+   "dang": "NDB01523",
+   "ly_do": "Dãy cách đều biết số cuối và số số hạng, tìm số đầu: dùng cùng công thức với tìm số hạng thứ n nhưng đề hỏi số đầu.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều biết số cuối và số số hạng, tìm số đầu (ngược của tìm số hạng thứ n)"
+  },
+  {
+   "ma_cau": "T14T0000002237",
+   "ma_nguon": "CĐ9 · B2b",
+   "dang": "NDB01523",
+   "ly_do": "Như B2a: dãy cách đều, tìm số hạng đầu khi biết số cuối và số số hạng.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều biết số cuối và số số hạng, tìm số đầu"
+  },
+  {
+   "ma_cau": "T14T0000002239",
+   "ma_nguon": "CĐ9 · B4a",
+   "dang": "NDB01523",
+   "ly_do": "Dãy cách đều, tìm số hạng thứ 32.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều, tìm số hạng thứ 32"
+  },
+  {
+   "ma_cau": "T14T0000002240",
+   "ma_nguon": "CĐ9 · B4b",
+   "dang": "NDB03490",
+   "ly_do": "Dãy không cách đều (hiệu tăng 1, 2, 3,…), tìm số hạng thứ 50; chưa có dạng riêng cho hiệu tăng đều.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy không cách đều (hiệu tăng 1), tìm số hạng thứ 50; giáp NDB01523"
+  },
+  {
+   "ma_cau": "T14T0000002241",
+   "ma_nguon": "CĐ9 · B4c",
+   "dang": "NDB03490",
+   "ly_do": "Dãy có hiệu là các số lẻ liên tiếp, tìm số hạng thứ 30; chưa có dạng riêng.",
+   "dang_mu": "NDB03490",
+   "ly_do_mu": "Dãy không cách đều (hiệu tăng 2), tìm số hạng thứ 30; giáp NDB01523"
+  },
+  {
+   "ma_cau": "T14T0000002242",
+   "ma_nguon": "CĐ9 · B4d",
+   "dang": "NDB01523",
+   "ly_do": "Dãy cách đều biết số cuối và số số hạng, tìm số hạng thứ 60.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều có 100 số hạng, tìm số hạng thứ 60"
+  },
+  {
+   "ma_cau": "T14T0000002243",
+   "ma_nguon": "CĐ9 · B5a",
+   "dang": "NDB01537",
+   "ly_do": "Đếm các số có 3 chữ số chia hết cho 5 bằng dãy cách đều.",
+   "dang_mu": "NDB01537",
+   "ly_do_mu": "Đếm số có 3 chữ số chia hết cho 5"
+  },
+  {
+   "ma_cau": "T14T0000002244",
+   "ma_nguon": "CĐ9 · B5b",
+   "dang": "NDB01537",
+   "ly_do": "Đếm số chia hết cho 2 nhưng không chia hết cho 3 trong khoảng cho trước.",
+   "dang_mu": "NDB01537",
+   "ly_do_mu": "Đếm số chia hết cho 2 không chia hết cho 3 trong khoảng"
+  },
+  {
+   "ma_cau": "T14T0000002245",
+   "ma_nguon": "CĐ9 · B5c",
+   "dang": "NDB01537",
+   "ly_do": "Đếm số chia 3 dư 2 có 3 chữ số, thêm yêu cầu tính tổng (cũng hợp NDB01525).",
+   "dang_mu": "NDB01537",
+   "ly_do_mu": "Đếm số chia 3 dư 2 kèm tính tổng (giáp NDB01525)"
+  },
+  {
+   "ma_cau": "T14T0000002246",
+   "ma_nguon": "CĐ9 · B6a",
+   "dang": "NDB03490",
+   "ly_do": "Tìm quy luật và viết thêm 3 số, nhưng dãy này là cách đều (cộng 5); dạng NDB03490 ghi dãy không cách đều.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều viết thêm 3 số hạng; bản đồ chỉ có viết thêm cho dãy không cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002247",
+   "ma_nguon": "CĐ9 · B6b",
+   "dang": "NDB01523",
+   "ly_do": "Dãy cách đều, tìm số hạng thứ 150.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều, tìm số hạng thứ 150"
+  },
+  {
+   "ma_cau": "T14T0000002248",
+   "ma_nguon": "CĐ9 · B6c",
+   "dang": "NDB01526",
+   "ly_do": "Hỏi số 2023 có thuộc dãy cách đều không.",
+   "dang_mu": "NDB01526",
+   "ly_do_mu": "Số 2023 có thuộc dãy cách đều không"
+  },
+  {
+   "ma_cau": "T14T0000002250",
+   "ma_nguon": "CĐ9 · B7b",
+   "dang": "NDB03493",
+   "ly_do": "Đếm số chữ số khi viết liền các số chẵn từ 0 đến 2024.",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Đếm số chữ số khi viết liền số chẵn 0 đến 2024"
+  },
+  {
+   "ma_cau": "T14T0000002251",
+   "ma_nguon": "CĐ9 · B8",
+   "dang": "NDB03493",
+   "ly_do": "Đánh số trang quyển sách dày 238 trang, đếm số chữ số.",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Đánh số trang sách 238 trang cần bao nhiêu chữ số"
+  },
+  {
+   "ma_cau": "T14T0000002252",
+   "ma_nguon": "CĐ9 · B9",
+   "dang": "NDB03493",
+   "ly_do": "Biết số chữ số đánh trang, tìm số trang (nêu rõ trong mô tả dạng).",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Biết 234 chữ số, tìm số trang"
+  },
+  {
+   "ma_cau": "T14T0000002254",
+   "ma_nguon": "CĐ9 · B11a",
+   "dang": "NDB03493",
+   "ly_do": "Đếm tổng số chữ số khi viết liền các số từ 1 đến 2023.",
+   "dang_mu": "NDB03493",
+   "ly_do_mu": "Đếm số chữ số viết liền 1 đến 2023"
+  },
+  {
+   "ma_cau": "T14T0000002255",
+   "ma_nguon": "CĐ9 · B11b",
+   "dang": "NDB03494",
+   "ly_do": "Đếm riêng chữ số 5 và chữ số 1 trong dãy viết liền.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Đếm riêng chữ số 5 và 1 trong dãy 1 đến 2023"
+  },
+  {
+   "ma_cau": "T14T0000002257",
+   "ma_nguon": "CĐ9 · B13",
+   "dang": "NDB01537",
+   "ly_do": "Đếm số còn lại sau khi xoá các số theo dấu hiệu chia hết cho 2 và 5; gần dạng đếm số chia hết nhưng đề phát biểu theo kiểu xoá.",
+   "dang_mu": "NDB01537",
+   "ly_do_mu": "Đếm số chia hết cho 2 và 5 / không chia hết trong khoảng 1–252"
+  },
+  {
+   "ma_cau": "T14T0000002258",
+   "ma_nguon": "CĐ9 · B14a",
+   "dang": "NDB01523",
+   "ly_do": "Dãy cách đều, tìm số hạng thứ 90.",
+   "dang_mu": "NDB01523",
+   "ly_do_mu": "Dãy cách đều, tìm số hạng thứ 90"
+  },
+  {
+   "ma_cau": "T14T0000002259",
+   "ma_nguon": "CĐ9 · B14b",
+   "dang": "NDB01526",
+   "ly_do": "Số nào thuộc dãy cách đều và là số hạng thứ mấy.",
+   "dang_mu": "NDB01526",
+   "ly_do_mu": "Số nào thuộc dãy, là số hạng thứ mấy"
+  },
+  {
+   "ma_cau": "T14T0000002260",
+   "ma_nguon": "CĐ9 · B14c",
+   "dang": "NDB01525",
+   "ly_do": "Tổng 50 số hạng đầu tiên của dãy cách đều.",
+   "dang_mu": "NDB01525",
+   "ly_do_mu": "Tổng 50 số hạng đầu của dãy cách đều"
+  },
+  {
+   "ma_cau": "T14T0000002261",
+   "ma_nguon": "CĐ9 · B15",
+   "dang": "NDB03494",
+   "ly_do": "Tìm chữ số thứ 2000 của dãy các số chẵn viết liền.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Chữ số thứ 2000 của dãy số chẵn viết liền"
+  },
+  {
+   "ma_cau": "T14T0000002262",
+   "ma_nguon": "CĐ9 · B16",
+   "dang": "NDB01525",
+   "ly_do": "Tìm số cuối x khi biết tổng dãy cách đều bằng 5106; gần dạng tổng dãy số nhưng đề hỏi ngược.",
+   "dang_mu": "NDB01525",
+   "ly_do_mu": "Biết tổng dãy cách đều, tìm số cuối x; ngược của tổng dãy, giáp NDB00646"
+  },
+  {
+   "ma_cau": "T14T0000002263",
+   "ma_nguon": "CĐ9 · B17a",
+   "dang": "NDB03494",
+   "ly_do": "Hỏi có hay không đoạn đúng 4 chữ số 1 liền nhau trong dãy viết liền; gần dạng chữ số trong dãy viết liền nhưng không hỏi chữ số thứ n.",
+   "dang_mu": "NDB03494",
+   "ly_do_mu": "Lập luận xuất hiện 4 chữ số 1 liền nhau trong dãy viết liền"
+  },
+  {
+   "ma_cau": "T14T0000002265",
+   "ma_nguon": "CĐ9 · B18a",
+   "dang": "NDB01538",
+   "ly_do": "Chữ cái thứ n của nhóm chữ cái lặp lại.",
+   "dang_mu": "NDB01538",
+   "ly_do_mu": "Nhóm chữ cái lặp lại, chữ thứ 2112"
+  },
+  {
+   "ma_cau": "T14T0000002266",
+   "ma_nguon": "CĐ9 · B18b",
+   "dang": "NDB01538",
+   "ly_do": "Tô màu lần lượt các chữ cái lặp, tìm màu của chữ thứ n.",
+   "dang_mu": "NDB01538",
+   "ly_do_mu": "Nhóm chữ cái lặp lại kết hợp chu kì màu"
+  },
+  {
+   "ma_cau": "T14T0000002402",
+   "ma_nguon": "CĐ14 · B12",
+   "dang": "NDB01551",
+   "ly_do": "Bán xe ở quầy, số xe trong kho không đổi, hai tỉ số 1/8 (đổi sang kho) và gấp 10.",
+   "dang_mu": "NDB01551",
+   "ly_do_mu": "Số xe trong kho không đổi, quầy bán bớt 3; hai tỉ số"
+  },
+  {
+   "ma_cau": "T14T0000002267",
+   "ma_nguon": "CĐ9 · B19a",
+   "dang": "NDB01538",
+   "ly_do": "Chữ cái thứ 2000 của dãy chữ lặp lại.",
+   "dang_mu": "NDB01538",
+   "ly_do_mu": "Nhóm chữ cái lặp lại, chữ thứ 2000"
+  },
+  {
+   "ma_cau": "T14T0000002268",
+   "ma_nguon": "CĐ9 · B19b",
+   "dang": "NDB01538",
+   "ly_do": "Đếm số chữ I, chữ A khi biết số chữ T trong dãy lặp.",
+   "dang_mu": "NDB01538",
+   "ly_do_mu": "Nhóm lặp lại, đếm số chữ mỗi loại"
+  },
+  {
+   "ma_cau": "T14T0000002269",
+   "ma_nguon": "CĐ9 · B19c",
+   "dang": "NDB01538",
+   "ly_do": "Tô màu lần lượt các tiếng lặp, tìm màu tiếng thứ n và chữ Y thứ 500.",
+   "dang_mu": "NDB01538",
+   "ly_do_mu": "Tiếng/chữ lặp lại kết hợp chu kì màu"
+  },
+  {
+   "ma_cau": "T14T0000002270",
+   "ma_nguon": "CĐ9 · B20",
+   "dang": "NDB03492",
+   "ly_do": "Xếp số vào bảng 4 cột ngoằn ngoèo, tìm cột của số 2023.",
+   "dang_mu": "NDB03492",
+   "ly_do_mu": "Xếp số vào bảng ngoằn ngoèo 4 cột, số 2023 ở cột nào"
+  },
+  {
+   "ma_cau": "T14T0000002271",
+   "ma_nguon": "CĐ10 · B1a",
+   "dang": "NDB01555",
+   "ly_do": "Rút gọn phân số có tử và mẫu cùng chia hết cho số nhỏ quen thuộc.",
+   "dang_mu": "NDB01555",
+   "ly_do_mu": "Rút gọn phân số tử mẫu vừa phải bằng dấu hiệu chia hết"
+  },
+  {
+   "ma_cau": "T14T0000002272",
+   "ma_nguon": "CĐ10 · B1b",
+   "dang": "NDB01556",
+   "ly_do": "Rút gọn phân số lặp cả cụm chữ số (252525/808080, 165165165/462462462).",
+   "dang_mu": "NDB01556",
+   "ly_do_mu": "Rút gọn phân số có cụm chữ số lặp (252525, 165165165); hai phân số đầu là dạng chuẩn"
+  },
+  {
+   "ma_cau": "T14T0000002273",
+   "ma_nguon": "CĐ10 · B2a",
+   "dang": "NDB03513",
+   "ly_do": "Tìm x trong hai phân số bằng nhau, ví dụ nêu đúng 3/7 = x/21.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Tìm x trong hai phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002274",
+   "ma_nguon": "CĐ10 · B2b",
+   "dang": "NDB03513",
+   "ly_do": "Tìm x trong hai phân số bằng nhau, một phân số cần rút gọn trước.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Tìm x trong hai phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002275",
+   "ma_nguon": "CĐ10 · B2c",
+   "dang": "NDB03513",
+   "ly_do": "Tìm x trong hai phân số bằng nhau, tử số chứa biểu thức x+5.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Tìm x ở tử số trong hai phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002276",
+   "ma_nguon": "CĐ10 · B2d",
+   "dang": "NDB03513",
+   "ly_do": "Phân số bằng nhau có x ở mẫu dạng x:3 và vế phải là số tự nhiên 12.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "60:(x:3)=12 thực chất tìm x hai phép chia có ngoặc; giáp NDB03513"
+  },
+  {
+   "ma_cau": "T14T0000002277",
+   "ma_nguon": "CĐ10 · B3",
+   "dang": "NDB03513",
+   "ly_do": "Ví dụ của dạng nêu đúng 2/x = y/6 = 12/18.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Tìm x, y trong dãy phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002278",
+   "ma_nguon": "CĐ10 · B4",
+   "dang": "NDB03513",
+   "ly_do": "Tìm a, b, c, d trong chuỗi các phân số bằng nhau.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Tìm a, b, c, d trong dãy phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002279",
+   "ma_nguon": "CĐ10 · B5a",
+   "dang": "NDB03514",
+   "ly_do": "Tìm phân số bằng phân số cho trước theo điều kiện về tử số.",
+   "dang_mu": "NDB03514",
+   "ly_do_mu": "Phân số bằng phân số cho trước với tử số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002280",
+   "ma_nguon": "CĐ10 · B5b",
+   "dang": "NDB03514",
+   "ly_do": "Tìm phân số bằng phân số cho trước theo điều kiện về mẫu số (lớn hơn 15, nhỏ hơn 50).",
+   "dang_mu": "NDB03514",
+   "ly_do_mu": "Phân số bằng 5/8 với mẫu số trong khoảng"
+  },
+  {
+   "ma_cau": "T14T0000002281",
+   "ma_nguon": "CĐ10 · B5c",
+   "dang": "NDB03514",
+   "ly_do": "Tìm phân số bằng phân số cho trước, tử số là số hai chữ số chia hết cho 3 và 4.",
+   "dang_mu": "NDB03514",
+   "ly_do_mu": "Phân số bằng 68/119 với điều kiện tử số"
+  },
+  {
+   "ma_cau": "T14T0000002282",
+   "ma_nguon": "CĐ10 · B6",
+   "dang": "NDB03495",
+   "ly_do": "Chỉ trừ ở mẫu số, giữ nguyên tử số; gần dạng thêm bớt cùng một số vào tử và mẫu nhưng chỉ đổi mẫu.",
+   "dang_mu": "NDB03513",
+   "ly_do_mu": "Bớt một số ở mẫu được phân số bằng 4/3; gần tìm số trong phân số bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002283",
+   "ma_nguon": "CĐ10 · B7",
+   "dang": "NDB03514",
+   "ly_do": "Ví dụ của dạng nêu lập phân số bằng 1/2 từ các chữ số cho trước.",
+   "dang_mu": "NDB03514",
+   "ly_do_mu": "Lập phân số bằng 1/2 từ các chữ số cho trước, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002284",
+   "ma_nguon": "CĐ10 · B8a",
+   "dang": "NDB03515",
+   "ly_do": "Ví dụ của dạng nêu đúng 2/x > 1/2.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm x tự nhiên thoả bất đẳng thức phân số"
+  },
+  {
+   "ma_cau": "T14T0000002285",
+   "ma_nguon": "CĐ10 · B8b",
+   "dang": "NDB03515",
+   "ly_do": "Ví dụ của dạng nêu đúng 1 < 11/x < 2.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm x thoả 1<11/x<2"
+  },
+  {
+   "ma_cau": "T14T0000002286",
+   "ma_nguon": "CĐ10 · B8c",
+   "dang": "NDB03515",
+   "ly_do": "Tìm số tự nhiên x thoả bất đẳng thức giữa các phân số cùng mẫu sau khi rút gọn.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm x thoả kẹp giữa hai phân số"
+  },
+  {
+   "ma_cau": "T14T0000002287",
+   "ma_nguon": "CĐ10 · B9a",
+   "dang": "NDB03516",
+   "ly_do": "Ví dụ của dạng nêu đúng 7 phân số nằm giữa 7/9 và 8/9.",
+   "dang_mu": "NDB03516",
+   "ly_do_mu": "Tìm 7 phân số nằm giữa hai phân số"
+  },
+  {
+   "ma_cau": "T14T0000002288",
+   "ma_nguon": "CĐ10 · B9b",
+   "dang": "NDB03516",
+   "ly_do": "Tìm các phân số nằm giữa hai phân số cho trước (1 và 5/4).",
+   "dang_mu": "NDB03516",
+   "ly_do_mu": "Tìm 8 phân số nằm giữa 1 và 5/4"
+  },
+  {
+   "ma_cau": "T14T0000002290",
+   "ma_nguon": "CĐ10 · B11",
+   "dang": "NDB03495",
+   "ly_do": "Thêm cùng một số x vào tử số và mẫu số của 39/64 để được 3/4 (ví dụ của dạng).",
+   "dang_mu": "NDB03495",
+   "ly_do_mu": "Thêm cùng số vào tử và mẫu để được phân số cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002291",
+   "ma_nguon": "CĐ10 · B12",
+   "dang": "NDB01559",
+   "ly_do": "So sánh một phân số với 1 bằng cách tách tích; không phải hai phân số ở hai phía của 1.",
+   "dang_mu": "NDB01559",
+   "ly_do_mu": "So sánh phân số dạng tích với 1 bằng so tử–mẫu"
+  },
+  {
+   "ma_cau": "T14T0000002292",
+   "ma_nguon": "CĐ10 · B13a",
+   "dang": "NDB03515",
+   "ly_do": "Ví dụ của dạng nêu đúng tìm x để 156/(327 − x) lớn nhất.",
+   "dang_mu": "NDB03515",
+   "ly_do_mu": "Tìm x để 156/(327−x) lớn nhất, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002294",
+   "ma_nguon": "CĐ10 · B14a",
+   "dang": "NDB01562",
+   "ly_do": "Hai phân số bé hơn 1 có mẫu hơn tử cùng 2 đơn vị, so sánh bằng phần bù.",
+   "dang_mu": "NDB01562",
+   "ly_do_mu": "Hai phân số cùng hiệu mẫu–tử bằng 2, so phần bù"
+  },
+  {
+   "ma_cau": "T14T0000002295",
+   "ma_nguon": "CĐ10 · B14b",
+   "dang": "NDB01562",
+   "ly_do": "Hai phân số bé hơn 1 có mẫu hơn tử cùng 14 đơn vị, so sánh bằng phần bù.",
+   "dang_mu": "NDB01562",
+   "ly_do_mu": "Hai phân số cùng hiệu mẫu–tử bằng 14, so phần bù"
+  },
+  {
+   "ma_cau": "T14T0000002299",
+   "ma_nguon": "CĐ10 · B14f",
+   "dang": "NDB01560",
+   "ly_do": "Dùng phân số trung gian 1/5 bằng cách giữ tử số; mô tả dạng nêu trường hợp tử bé mẫu lớn, ở đây khác.",
+   "dang_mu": "NDB01558",
+   "ly_do_mu": "Quy đồng tử số 126 rồi so mẫu"
+  },
+  {
+   "ma_cau": "T14T0000002300",
+   "ma_nguon": "CĐ10 · B15a",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x theo quy tắc thành phần chưa biết nhưng số là phân số; chưa có dạng Tìm x phân số riêng.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x với phân số (tính ngoặc rồi tìm thừa số); bản đồ thiếu dạng tìm x phân số"
+  },
+  {
+   "ma_cau": "T14T0000002301",
+   "ma_nguon": "CĐ10 · B15b",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x (số chia) có phân số; chưa có dạng Tìm x phân số riêng.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm số chia x với phân số; bản đồ thiếu dạng tìm x phân số"
+  },
+  {
+   "ma_cau": "T14T0000002302",
+   "ma_nguon": "CĐ10 · B15c",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x trong số chia là biểu thức x + 1/2, có ngoặc; chưa có dạng Tìm x phân số riêng.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x trong ngoặc là số chia, phân số; thiếu dạng tìm x phân số"
+  },
+  {
+   "ma_cau": "T14T0000002303",
+   "ma_nguon": "CĐ10 · B15d",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x hai phép tính, có phân số; chưa có dạng Tìm x phân số riêng.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x hai phép tính với phân số; thiếu dạng tìm x phân số"
+  },
+  {
+   "ma_cau": "T14T0000002304",
+   "ma_nguon": "CĐ10 · B15e",
+   "dang": "NDB03460",
+   "ly_do": "Tìm x hai phép tính, có phân số; chưa có dạng Tìm x phân số riêng.",
+   "dang_mu": "NDB03460",
+   "ly_do_mu": "Tìm x hai phép tính với phân số; thiếu dạng tìm x phân số"
+  },
+  {
+   "ma_cau": "T14T0000002305",
+   "ma_nguon": "CĐ10 · B16",
+   "dang": "NDB03465",
+   "ly_do": "Trừ viết thiếu chữ số 2 ở tử số số bị trừ; giống dạng trừ viết sai chữ số nhưng là phân số.",
+   "dang_mu": "NDB03465",
+   "ly_do_mu": "Làm sai do quên viết chữ số ở tử số phép trừ phân số"
+  },
+  {
+   "ma_cau": "T14T0000002306",
+   "ma_nguon": "CĐ10 · B17a",
+   "dang": "NDB01566",
+   "ly_do": "Tính thuận tiện bằng cách nhóm các phân số cùng mẫu số.",
+   "dang_mu": "NDB01566",
+   "ly_do_mu": "Tính thuận tiện nhóm các phân số cùng mẫu"
+  },
+  {
+   "ma_cau": "T14T0000002307",
+   "ma_nguon": "CĐ10 · B17b",
+   "dang": "NDB01566",
+   "ly_do": "Tính thuận tiện: bỏ ngoặc có dấu trừ rồi nhóm phân số cùng mẫu số.",
+   "dang_mu": "NDB01566",
+   "ly_do_mu": "Bỏ ngoặc nhóm phân số cùng mẫu"
+  },
+  {
+   "ma_cau": "T14T0000002308",
+   "ma_nguon": "CĐ10 · B17c",
+   "dang": "NDB01570",
+   "ly_do": "Biểu thức có phép chia phân số, tính theo thứ tự.",
+   "dang_mu": "NDB01570",
+   "ly_do_mu": "Biểu thức phân số có phép chia và ngoặc"
+  },
+  {
+   "ma_cau": "T14T0000002309",
+   "ma_nguon": "CĐ10 · B17d",
+   "dang": "NDB01566",
+   "ly_do": "Tính thuận tiện nhưng phải rút gọn trước mới lộ các phân số cùng mẫu số.",
+   "dang_mu": "NDB01566",
+   "ly_do_mu": "Rút gọn rồi nhóm phân số cùng mẫu thành số tự nhiên"
+  },
+  {
+   "ma_cau": "T14T0000002310",
+   "ma_nguon": "CĐ10 · B18a",
+   "dang": "NDB01567",
+   "ly_do": "Tích các phân số và số tự nhiên, rút gọn chéo.",
+   "dang_mu": "NDB01567",
+   "ly_do_mu": "Chuỗi tích phân số rút gọn chéo"
+  },
+  {
+   "ma_cau": "T14T0000002311",
+   "ma_nguon": "CĐ10 · B18b",
+   "dang": "NDB01567",
+   "ly_do": "Tích ba phân số có nhiều cặp rút gọn được.",
+   "dang_mu": "NDB01567",
+   "ly_do_mu": "Chuỗi tích ba phân số"
+  },
+  {
+   "ma_cau": "T14T0000002312",
+   "ma_nguon": "CĐ10 · B18c",
+   "dang": "NDB01567",
+   "ly_do": "Tích sáu phân số, đổi chỗ để ghép cặp rút gọn.",
+   "dang_mu": "NDB01567",
+   "ly_do_mu": "Chuỗi tích nhiều phân số rút gọn từng cặp"
+  },
+  {
+   "ma_cau": "T14T0000002313",
+   "ma_nguon": "CĐ10 · B18d",
+   "dang": "NDB01556",
+   "ly_do": "Phân số có tử và mẫu là tổng các tích, tách thừa số chung để rút gọn; gần dạng rút gọn biểu thức tích.",
+   "dang_mu": "NDB01556",
+   "ly_do_mu": "Phân số tử mẫu là tổng các tích, đặt thừa số chung rồi rút gọn"
+  },
+  {
+   "ma_cau": "T14T0000002314",
+   "ma_nguon": "CĐ10 · B18e",
+   "dang": "NDB01556",
+   "ly_do": "Phân số có tử và mẫu là tích nhiều thừa số xen nhân chia, rút gọn thừa số chung.",
+   "dang_mu": "NDB01556",
+   "ly_do_mu": "Phân số tử mẫu là biểu thức tích, rút gọn thừa số chung"
+  },
+  {
+   "ma_cau": "T14T0000002315",
+   "ma_nguon": "CĐ10 · B19a",
+   "dang": "NDB01573",
+   "ly_do": "Tích các thừa số dạng 1 cộng phân số, đổi thành phân số rồi triệt tiêu.",
+   "dang_mu": "NDB01573",
+   "ly_do_mu": "Tích các ngoặc 1+1/n, dãy kép"
+  },
+  {
+   "ma_cau": "T14T0000002316",
+   "ma_nguon": "CĐ10 · B19b",
+   "dang": "NDB01573",
+   "ly_do": "Tích các thừa số dạng 1 trừ phân số, đổi thành phân số rồi triệt tiêu.",
+   "dang_mu": "NDB01573",
+   "ly_do_mu": "Tích các ngoặc 1−1/n, dãy kép"
+  },
+  {
+   "ma_cau": "T14T0000002317",
+   "ma_nguon": "CĐ10 · B19c",
+   "dang": "NDB01573",
+   "ly_do": "Tích các thừa số dạng 1 cộng phân số có mẫu là tích hai số cách nhau 2.",
+   "dang_mu": "NDB01573",
+   "ly_do_mu": "Tích ngoặc 1+1/(n²−1), dãy kép"
+  },
+  {
+   "ma_cau": "T14T0000002318",
+   "ma_nguon": "CĐ10 · B19d",
+   "dang": "NDB01573",
+   "ly_do": "Tích các thừa số dạng 1 cộng 7 phần mẫu, tách thành tích hai số.",
+   "dang_mu": "NDB01573",
+   "ly_do_mu": "Tích ngoặc 1+7/…, dãy kép"
+  },
+  {
+   "ma_cau": "T14T0000002319",
+   "ma_nguon": "CĐ10 · B20a",
+   "dang": "NDB03517",
+   "ly_do": "Ví dụ của dạng nêu đúng 1 + 1/5 + 1/25 +…, mẫu gấp 5 lần.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Tổng dãy phân số mẫu nhân 5"
+  },
+  {
+   "ma_cau": "T14T0000002320",
+   "ma_nguon": "CĐ10 · B20b",
+   "dang": "NDB03517",
+   "ly_do": "Tổng dãy phân số có mẫu nhân đôi, dùng nhân 2 trừ tổng ban đầu.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Tổng dãy phân số mẫu nhân đôi"
+  },
+  {
+   "ma_cau": "T14T0000002321",
+   "ma_nguon": "CĐ10 · B20c",
+   "dang": "NDB01575",
+   "ly_do": "Hiệu - tích có tử số 4 gấp 2 lần hiệu hai thừa số (tử chưa chuẩn).",
+   "dang_mu": "NDB01575",
+   "ly_do_mu": "Dãy hiệu–tích tử 4 gấp đôi hiệu 2"
+  },
+  {
+   "ma_cau": "T14T0000002322",
+   "ma_nguon": "CĐ10 · B20d",
+   "dang": "NDB01575",
+   "ly_do": "Hiệu - tích có tử số 1 nhỏ hơn hiệu 3 của hai thừa số (tử chưa chuẩn).",
+   "dang_mu": "NDB01575",
+   "ly_do_mu": "Dãy hiệu–tích tử 1 nhỏ hơn hiệu 3"
+  },
+  {
+   "ma_cau": "T14T0000002323",
+   "ma_nguon": "CĐ10 · B20e",
+   "dang": "NDB01575",
+   "ly_do": "Hiệu - tích có tử số 3 nhỏ hơn hiệu 5 của hai thừa số (tử chưa chuẩn).",
+   "dang_mu": "NDB01575",
+   "ly_do_mu": "Dãy hiệu–tích tử 3 khác hiệu 5"
+  },
+  {
+   "ma_cau": "T14T0000002324",
+   "ma_nguon": "CĐ10 · B21a",
+   "dang": "NDB03461",
+   "ly_do": "Tìm y có nhiều chữ y cùng lúc trong tổng nhiều ngoặc (y + phân số); chưa có dạng riêng cho phân số.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Tách phần y và tổng phân số mẫu nhân đôi; giáp NDB00647 (số cộng không cách đều)"
+  },
+  {
+   "ma_cau": "T14T0000002325",
+   "ma_nguon": "CĐ10 · B21b",
+   "dang": "NDB03517",
+   "ly_do": "Tìm y trong tổng nhiều ngoặc, phải tính tổng dãy mẫu nhân đôi; gần dạng tổng dãy mẫu nhân đôi.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Tách phần y và tổng dãy mẫu nhân đôi; giáp NDB00647"
+  },
+  {
+   "ma_cau": "T14T0000002326",
+   "ma_nguon": "CĐ10 · B22a",
+   "dang": "NDB03518",
+   "ly_do": "Chứng tỏ tổng dãy phân số mẫu nhân đôi nhỏ hơn 1.",
+   "dang_mu": "NDB03518",
+   "ly_do_mu": "Chứng tỏ tổng dãy mẫu nhân đôi nhỏ hơn 1"
+  },
+  {
+   "ma_cau": "T14T0000002327",
+   "ma_nguon": "CĐ10 · B22b",
+   "dang": "NDB03518",
+   "ly_do": "Chứng tỏ tổng dãy phân số mẫu nhân ba nhỏ hơn 1/2.",
+   "dang_mu": "NDB03518",
+   "ly_do_mu": "Chứng tỏ tổng dãy mẫu nhân ba nhỏ hơn 1/2"
+  },
+  {
+   "ma_cau": "T14T0000002328",
+   "ma_nguon": "CĐ10 · B23a",
+   "dang": "NDB01576",
+   "ly_do": "Tử số 1, mẫu số viết ra số (4; 12; 24;…) chưa ở dạng tích.",
+   "dang_mu": "NDB01576",
+   "ly_do_mu": "Mẫu viết ra số, phân tích thành tích để tách hiệu"
+  },
+  {
+   "ma_cau": "T14T0000002329",
+   "ma_nguon": "CĐ10 · B23b",
+   "dang": "NDB01576",
+   "ly_do": "Mẫu số viết ra số (2; 14; 35;…), phải nhân 1/2 mới phân tích được thành tích.",
+   "dang_mu": "NDB01576",
+   "ly_do_mu": "Mẫu viết ra số, nhân đôi rồi phân tích thành tích cách 3"
+  },
+  {
+   "ma_cau": "T14T0000002330",
+   "ma_nguon": "CĐ10 · B23c",
+   "dang": "NDB01576",
+   "ly_do": "Mẫu số viết ra số và tử số 3, phải nhân 2 rồi nhân 4/3; gần dạng tử số chưa chuẩn.",
+   "dang_mu": "NDB01576",
+   "ly_do_mu": "Mẫu 10, 90, 234… phân tích thành tích"
+  },
+  {
+   "ma_cau": "T14T0000002331",
+   "ma_nguon": "CĐ10 · B23d",
+   "dang": "NDB01576",
+   "ly_do": "Tử số 1, mẫu số viết ra số (6; 66; 176;…) phân tích thành tích hai số cách nhau 5.",
+   "dang_mu": "NDB01576",
+   "ly_do_mu": "Mẫu 6, 66, 176… phân tích thành tích cách 5"
+  },
+  {
+   "ma_cau": "T14T0000002332",
+   "ma_nguon": "CĐ10 · B23e",
+   "dang": "NDB03517",
+   "ly_do": "Tách phân số có tử hơn mẫu 1 đơn vị rồi tính tổng dãy mẫu nhân đôi.",
+   "dang_mu": "NDB03517",
+   "ly_do_mu": "Tách 1 + phân số mẫu nhân đôi rồi tính tổng"
+  },
+  {
+   "ma_cau": "T14T0000002334",
+   "ma_nguon": "CĐ10 · B24a",
+   "dang": "NDB01577",
+   "ly_do": "Tìm y nhân với dãy hiệu - tích (mẫu 4; 28; 70;… tích cách nhau 3).",
+   "dang_mu": "NDB01577",
+   "ly_do_mu": "Tìm y khi có dãy hiệu–tích (mẫu chưa chuẩn) làm thừa số"
+  },
+  {
+   "ma_cau": "T14T0000002335",
+   "ma_nguon": "CĐ10 · B24b",
+   "dang": "NDB01577",
+   "ly_do": "Tìm y có dãy hiệu - tích ở vế phải và dãy mẫu nhân đôi ở vế trái.",
+   "dang_mu": "NDB01577",
+   "ly_do_mu": "Tìm y, hai vế có dãy mẫu nhân đôi và dãy hiệu–tích; giáp NDB03517"
+  },
+  {
+   "ma_cau": "T14T0000002336",
+   "ma_nguon": "CĐ10 · B25a",
+   "dang": "NDB01577",
+   "ly_do": "Tìm y là thừa số cuối trong dãy hiệu - tích có tổng cho trước.",
+   "dang_mu": "NDB01577",
+   "ly_do_mu": "Tìm y là số cuối của dãy hiệu–tích có tổng cho trước"
+  },
+  {
+   "ma_cau": "T14T0000002337",
+   "ma_nguon": "CĐ10 · B25b",
+   "dang": "NDB01577",
+   "ly_do": "Tìm y trong dãy mẫu y×(y+1):2, phải nhân 2 mới đưa về hiệu - tích.",
+   "dang_mu": "NDB01577",
+   "ly_do_mu": "Tìm y số cuối của dãy hiệu–tích (mẫu số tam giác)"
+  },
+  {
+   "ma_cau": "T14T0000002338",
+   "ma_nguon": "CĐ11 · B1",
+   "dang": "NDB03496",
+   "ly_do": "Biết 3/4 số cam bằng 2/5 số quýt, tìm tỉ số hai đại lượng: đúng ví dụ của dạng.",
+   "dang_mu": "NDB03496",
+   "ly_do_mu": "3/4 cam bằng 2/5 quýt, tìm tỉ số"
+  },
+  {
+   "ma_cau": "T14T0000002339",
+   "ma_nguon": "CĐ11 · B2",
+   "dang": "NDB03496",
+   "ly_do": "Ba số, các phân số của chúng bằng nhau, tìm tỉ số hai trong ba số.",
+   "dang_mu": "NDB03496",
+   "ly_do_mu": "Phân số của ba số bằng nhau, tìm tỉ số số thứ nhất và thứ ba"
+  },
+  {
+   "ma_cau": "T14T0000002340",
+   "ma_nguon": "CĐ11 · B3",
+   "dang": "NDB03496",
+   "ly_do": "Cho tỉ số từng cặp liền kề, tìm tỉ số hai cặp khác; cùng loại tìm tỉ số khi biết quan hệ, nhưng quan hệ cho dưới dạng tỉ số đôi một.",
+   "dang_mu": "NDB03496",
+   "ly_do_mu": "Từ hai tỉ số đôi một suy ra tỉ số còn lại"
+  },
+  {
+   "ma_cau": "T14T0000002341",
+   "ma_nguon": "CĐ11 · B4",
+   "dang": "NDB01581",
+   "ly_do": "Hai phân số của cả lớp và giá trị phần còn lại, tìm cả lớp rồi tìm từng phần.",
+   "dang_mu": "NDB01581",
+   "ly_do_mu": "Hai phần là phân số của tổng, biết phần còn lại 16, tìm tổng"
+  },
+  {
+   "ma_cau": "T14T0000002342",
+   "ma_nguon": "CĐ11 · B5",
+   "dang": "NDB01581",
+   "ly_do": "Bán 1/2 rồi 2/3 số còn lại, biết phần còn lại là 12 m, tìm chiều dài ban đầu.",
+   "dang_mu": "NDB01581",
+   "ly_do_mu": "Phân số rồi phân số của số còn lại, biết phần còn lại, tìm tổng"
+  },
+  {
+   "ma_cau": "T14T0000002343",
+   "ma_nguon": "CĐ11 · B6",
+   "dang": "NDB03497",
+   "ly_do": "Số bi đỏ bằng 3/7 tổng hai loại còn lại, cần đổi về phân số của cả hộp; cũng có thể xếp vào dạng tìm đại lượng ba đại lượng.",
+   "dang_mu": "NDB03497",
+   "ly_do_mu": "Bi đỏ bằng 3/7 tổng bi còn lại, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002344",
+   "ma_nguon": "CĐ11 · B7",
+   "dang": "NDB03497",
+   "ly_do": "Mỗi tổ bằng một phân số tổng các tổ còn lại, đổi ra phân số của cả lớp.",
+   "dang_mu": "NDB03497",
+   "ly_do_mu": "Mỗi tổ bằng phân số của tổng các tổ còn lại"
+  },
+  {
+   "ma_cau": "T14T0000002345",
+   "ma_nguon": "CĐ11 · B8",
+   "dang": "NDB03495",
+   "ly_do": "Thêm cùng số a vào tử và mẫu 31/61 để được 4/7: đúng ví dụ của dạng.",
+   "dang_mu": "NDB03495",
+   "ly_do_mu": "Thêm cùng số vào tử và mẫu 31/61 để được 4/7"
+  },
+  {
+   "ma_cau": "T14T0000002346",
+   "ma_nguon": "CĐ11 · B9",
+   "dang": "NDB01546",
+   "ly_do": "Hiệu cho sẵn, tỉ số ẩn: tổng bằng 5 lần số bé nên số lớn gấp 4 lần số bé.",
+   "dang_mu": "NDB01546",
+   "ly_do_mu": "Hiệu cho sẵn, tỉ số ẩn qua tổng bằng 5 lần số bé"
+  },
+  {
+   "ma_cau": "T14T0000002348",
+   "ma_nguon": "CĐ11 · B11",
+   "dang": "NDB01550",
+   "ly_do": "Chuyển sách giữa hai kệ rồi cho tỉ số; dạng ghi tổng không đổi nhưng ở đây cho hiệu ban đầu, nên chọn mức vừa.",
+   "dang_mu": "NDB01550",
+   "ly_do_mu": "Chuyển sách giữa hai kệ rồi có tỉ số mới, nhưng đề cho hiệu chứ không cho tổng"
+  },
+  {
+   "ma_cau": "T14T0000002349",
+   "ma_nguon": "CĐ11 · B12",
+   "dang": "NDB01549",
+   "ly_do": "3 lần số thứ nhất bằng 4 lần số thứ hai bằng 5 lần số thứ ba, đưa về cùng tử số; gần dạng phân số của các đại lượng bằng nhau.",
+   "dang_mu": "NDB01549",
+   "ly_do_mu": "3 lần số thứ nhất bằng 4 lần số thứ hai bằng 5 lần số thứ ba, biết tổng"
+  },
+  {
+   "ma_cau": "T14T0000002350",
+   "ma_nguon": "CĐ11 · B13",
+   "dang": "NDB03497",
+   "ly_do": "Bao thứ nhất bằng 3/5 tổng hai bao còn lại, bao thứ ba gấp 4 lần bao thứ hai.",
+   "dang_mu": "NDB03497",
+   "ly_do_mu": "Bao 1 bằng 3/5 tổng hai bao còn lại kèm gấp lần và tổng hai bao; trộn tỉ số nhiều đại lượng"
+  },
+  {
+   "ma_cau": "T14T0000002352",
+   "ma_nguon": "CĐ11 · B15",
+   "dang": "NDB01550",
+   "ly_do": "Bớt hai số khác nhau, cho tỉ số lúc sau và tổng; chưa có dạng riêng cho bớt khác nhau nên chọn dạng hai tỉ số gần nhất.",
+   "dang_mu": "NDB01544",
+   "ly_do_mu": "Cùng bớt hai loại khác nhau rồi có tỉ số, tổng sau phải tính lại; tổng tỉ"
+  },
+  {
+   "ma_cau": "T14T0000002353",
+   "ma_nguon": "CĐ11 · B16",
+   "dang": "NDB01550",
+   "ly_do": "Kho A xuất, kho B nhập, cho tỉ số lúc sau; dùng tổng lúc sau, tính ngược về lúc đầu.",
+   "dang_mu": "NDB01544",
+   "ly_do_mu": "Kho A xuất, kho B nhập rồi có tỉ số, tổng sau phải tính lại; tổng tỉ"
+  },
+  {
+   "ma_cau": "T14T0000002354",
+   "ma_nguon": "CĐ11 · B17",
+   "dang": "NDB01546",
+   "ly_do": "Tổng cho sẵn, hiệu bằng 2/3 số bé nên tỉ số suy ra từ quan hệ khác.",
+   "dang_mu": "NDB01546",
+   "ly_do_mu": "Tổng cho sẵn, tỉ số ẩn qua hiệu bằng 2/3 số bé"
+  },
+  {
+   "ma_cau": "T14T0000002355",
+   "ma_nguon": "CĐ11 · B18",
+   "dang": "NDB01551",
+   "ly_do": "Cho tỉ số lúc đầu, hiệu lúc sau sau khi bán hai số khác nhau; hiệu lúc đầu tính được, tìm hai số bằng hiệu và tỉ.",
+   "dang_mu": "NDB01545",
+   "ly_do_mu": "Tỉ số gấp 3, hiệu lúc đầu suy từ hiệu sau khi bán; hiệu tỉ ẩn hiệu"
+  },
+  {
+   "ma_cau": "T14T0000002356",
+   "ma_nguon": "CĐ11 · B19",
+   "dang": "NDB01549",
+   "ly_do": "Phần còn lại của hai anh bằng nhau, đưa về cùng tử số rồi dùng hiệu cho sẵn.",
+   "dang_mu": "NDB01543",
+   "ly_do_mu": "Phần còn lại bằng nhau ⇒ 2/3 số này bằng 3/5 số kia, biết hiệu"
+  },
+  {
+   "ma_cau": "T14T0000002357",
+   "ma_nguon": "CĐ11 · B20",
+   "dang": "NDB01547",
+   "ly_do": "Bốn đại lượng, lấy tổ nhỏ nhất làm một phần rồi suy ra số phần của các tổ khác, tổng cho sẵn.",
+   "dang_mu": "NDB01547",
+   "ly_do_mu": "Bốn tổ quy về tổ 4 nhỏ nhất làm 1 phần, biết tổng"
+  },
+  {
+   "ma_cau": "T14T0000002358",
+   "ma_nguon": "CĐ12 · B1",
+   "dang": "NDB03499",
+   "ly_do": "Chia mỗi em 3 chiếc thì thừa 2, mỗi em 4 chiếc thì thiếu 2: thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Chia kẹo thừa 2, thiếu 2"
+  },
+  {
+   "ma_cau": "T14T0000002359",
+   "ma_nguon": "CĐ12 · B2",
+   "dang": "NDB03498",
+   "ly_do": "Chia 8 quyển thừa 6, chia 10 quyển thừa 2: thừa – thừa.",
+   "dang_mu": "NDB03498",
+   "ly_do_mu": "Chia vở thừa 6, thừa 2"
+  },
+  {
+   "ma_cau": "T14T0000002360",
+   "ma_nguon": "CĐ12 · B3",
+   "dang": "NDB03499",
+   "ly_do": "Chia 6 cháu thừa 4 cháu, chia 8 cháu thừa một cô (thiếu 8 cháu): thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 4 cháu, thừa 1 cô (= thiếu 8 cháu): thừa–thiếu"
+  },
+  {
+   "ma_cau": "T14T0000002361",
+   "ma_nguon": "CĐ12 · B4",
+   "dang": "NDB03499",
+   "ly_do": "Mỗi bàn 4 bạn thừa 1 bạn, mỗi bàn 5 bạn thừa 2 bàn (thiếu 10 bạn): thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 1 bạn, thừa 2 bàn (= thiếu 10 bạn): thừa–thiếu"
+  },
+  {
+   "ma_cau": "T14T0000002362",
+   "ma_nguon": "CĐ12 · B5",
+   "dang": "NDB03499",
+   "ly_do": "Cùng một số sách: chia mỗi tổ 7 quyển thừa 3, mỗi tổ 8 quyển thiếu 3: thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 3 sách Văn, thiếu 3 sách Toán, cùng số sách"
+  },
+  {
+   "ma_cau": "T14T0000002363",
+   "ma_nguon": "CĐ12 · B6",
+   "dang": "NDB03499",
+   "ly_do": "Hai lần đều thừa 5 nhưng số hàng ít đi 4, phải đổi thành thiếu 55 rồi làm thừa – thiếu; gần thừa – thừa.",
+   "dang_mu": "NDB03498",
+   "ly_do_mu": "Hai cách xếp hàng cùng thừa 5, số hàng ít đi 4; biến thể hai hiệu số"
+  },
+  {
+   "ma_cau": "T14T0000002364",
+   "ma_nguon": "CĐ12 · B7",
+   "dang": "NDB03498",
+   "ly_do": "Một cách vừa đủ (kế hoạch), một cách thừa 15: thừa – vừa đủ, bản đồ chưa có dạng riêng; gần thừa – thừa.",
+   "dang_mu": "NDB03500",
+   "ly_do_mu": "Năng suất tăng, trước hạn 1 giờ còn thiếu 20 sản phẩm; biến thể hai hiệu số"
+  },
+  {
+   "ma_cau": "T14T0000002365",
+   "ma_nguon": "CĐ12 · B8",
+   "dang": "NDB03501",
+   "ly_do": "Hai người dệt cùng số chiếu, mỗi ngày làm khác nhau, hiệu số còn phải dệt.",
+   "dang_mu": "NDB03501",
+   "ly_do_mu": "Hai người dệt cùng số chiếu, mỗi ngày dệt khác nhau"
+  },
+  {
+   "ma_cau": "T14T0000002366",
+   "ma_nguon": "CĐ12 · B9",
+   "dang": "NDB03499",
+   "ly_do": "Mỗi người 5 quả thừa 5, mỗi người 6 quả thì một người không có quả nào (thiếu 6): thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 5 quả, một người không có (thiếu 6): thừa–thiếu"
+  },
+  {
+   "ma_cau": "T14T0000002367",
+   "ma_nguon": "CĐ12 · B10",
+   "dang": "NDB03499",
+   "ly_do": "Mỗi thuyền 20 người thừa 8, mỗi thuyền 24 người thừa một thuyền (thiếu 24): thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 8 người, thừa 1 thuyền (thiếu 24): thừa–thiếu"
+  },
+  {
+   "ma_cau": "T14T0000002368",
+   "ma_nguon": "CĐ12 · B11",
+   "dang": "NDB03500",
+   "ly_do": "Một cách vừa hết, một cách thiếu 48 (thừa 2 nhưng giảm 5 can): thiếu – vừa đủ; gần thừa – thiếu.",
+   "dang_mu": "NDB03498",
+   "ly_do_mu": "Đổ can vừa hết / thừa 2 và số can giảm 5; biến thể hai hiệu số"
+  },
+  {
+   "ma_cau": "T14T0000002369",
+   "ma_nguon": "CĐ12 · B12",
+   "dang": "NDB03499",
+   "ly_do": "Chia 8 quyển thừa 6 nhưng 2 em không nhận (thiếu 10): đổi về thừa – thiếu; đề nói thừa nên có thể xếp thừa – thừa.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Thừa 4 quyển; thừa 6 nhưng 2 em không có (thiếu 10): thừa–thiếu"
+  },
+  {
+   "ma_cau": "T14T0000002371",
+   "ma_nguon": "CĐ12 · B14",
+   "dang": "NDB03501",
+   "ly_do": "Hai chị dệt cùng số khăn, mỗi ngày làm khác nhau, hiệu số còn phải dệt.",
+   "dang_mu": "NDB03501",
+   "ly_do_mu": "Hai người dệt cùng số khăn, mỗi ngày dệt khác nhau"
+  },
+  {
+   "ma_cau": "T14T0000002372",
+   "ma_nguon": "CĐ12 · B15",
+   "dang": "NDB03499",
+   "ly_do": "Kẹo bằng bánh: chia mỗi cháu 3 bánh thừa 2, chia mỗi cháu 4 kẹo thiếu 3: thừa – thiếu.",
+   "dang_mu": "NDB03499",
+   "ly_do_mu": "Bánh thừa 2, kẹo thiếu 3, số bánh bằng số kẹo"
+  },
+  {
+   "ma_cau": "T14T0000002373",
+   "ma_nguon": "CĐ12 · B16",
+   "dang": "NDB03502",
+   "ly_do": "Hai vòi chảy cùng lúc vào hai bể bằng nhau, hiệu lượng nước tăng đều theo phút.",
+   "dang_mu": "NDB03502",
+   "ly_do_mu": "Hai bể bằng nhau hai vòi chảy cùng lúc, hiệu thay đổi đều"
+  },
+  {
+   "ma_cau": "T14T0000002374",
+   "ma_nguon": "CĐ12 · B17",
+   "dang": "NDB03502",
+   "ly_do": "Hai bể tháo nước cùng lúc, hiệu lượng nước thay đổi đều mỗi phút.",
+   "dang_mu": "NDB03502",
+   "ly_do_mu": "Hai bể tháo cùng lúc, sau bao lâu bằng nhau"
+  },
+  {
+   "ma_cau": "T14T0000002375",
+   "ma_nguon": "CĐ12 · B18",
+   "dang": "NDB03498",
+   "ly_do": "Một cách thừa 15, một cách vừa đủ: thừa – vừa đủ, bản đồ chưa có dạng riêng; gần thừa – thừa.",
+   "dang_mu": "NDB03498",
+   "ly_do_mu": "Thừa 15 viên / vừa đủ; hai hiệu số dạng thừa–vừa đủ"
+  },
+  {
+   "ma_cau": "T14T0000002376",
+   "ma_nguon": "CĐ13 · B1",
+   "dang": "NDB03504",
+   "ly_do": "Hỏi sau bao nhiêu năm nữa thì tuổi mẹ gấp 5 lần tuổi con: đúng tên dạng.",
+   "dang_mu": "NDB03504",
+   "ly_do_mu": "Sau bao nhiêu năm tuổi mẹ gấp 5 lần tuổi con"
+  },
+  {
+   "ma_cau": "T14T0000002377",
+   "ma_nguon": "CĐ13 · B2",
+   "dang": "NDB03504",
+   "ly_do": "Hỏi cách đây mấy năm thì 2 lần tuổi cha bằng 7 lần tuổi con: đúng dạng sau (cách đây) bao nhiêu năm thì gấp k lần.",
+   "dang_mu": "NDB03504",
+   "ly_do_mu": "Cách đây mấy năm 2 lần tuổi cha bằng 7 lần tuổi con"
+  },
+  {
+   "ma_cau": "T14T0000002378",
+   "ma_nguon": "CĐ13 · B3",
+   "dang": "NDB03503",
+   "ly_do": "Cho hiệu và một tỉ số tại thời điểm 3 năm sau, hỏi tuổi hiện nay; có thể xếp vào dạng hai thời điểm nhưng hiệu đã cho sẵn nên chọn dạng một thời điểm.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Hiệu tuổi không đổi, tỉ số tại thời điểm 3 năm sau; hiệu–tỉ"
+  },
+  {
+   "ma_cau": "T14T0000002379",
+   "ma_nguon": "CĐ13 · B4",
+   "dang": "NDB03505",
+   "ly_do": "Một tỉ số hiện nay và một thời điểm khác có tổng cho sẵn: hai thời điểm với hai tỉ số khác nhau (1:4 và 4:7).",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Tỉ số hiện nay, tổng tuổi ở thời điểm sau; hiệu tuổi không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002380",
+   "ma_nguon": "CĐ13 · B5",
+   "dang": "NDB03505",
+   "ly_do": "Hiện nay gấp 7 lần và sau 10 năm gấp 3 lần: hai thời điểm có hai tỉ số khác nhau.",
+   "dang_mu": "NDB03505",
+   "ly_do_mu": "Hai thời điểm có hai tỉ số tuổi khác nhau (gấp 7, gấp 3)"
+  },
+  {
+   "ma_cau": "T14T0000002381",
+   "ma_nguon": "CĐ13 · B6",
+   "dang": "NDB03506",
+   "ly_do": "Tuổi mẹ gấp rưỡi tổng tuổi hai con: dạng tổng tuổi nhiều người.",
+   "dang_mu": "NDB03506",
+   "ly_do_mu": "Tuổi mẹ gấp rưỡi tổng tuổi hai con"
+  },
+  {
+   "ma_cau": "T14T0000002382",
+   "ma_nguon": "CĐ13 · B7",
+   "dang": "NDB03503",
+   "ly_do": "Cho tổng tuổi hai người và quan hệ phân số ở một thời điểm (hiện nay), không có thời điểm thứ hai.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Tổng tuổi và quan hệ 1/4 kém 1/6 là 4 tại một thời điểm"
+  },
+  {
+   "ma_cau": "T14T0000002383",
+   "ma_nguon": "CĐ13 · B8",
+   "dang": "NDB03503",
+   "ly_do": "Cho hiệu tuổi (gián tiếp qua mốc 3 năm nữa) và tỉ số 6 lần tại một thời điểm; hỏi tuổi ở thời điểm đó.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Suy hiệu tuổi, rồi hiệu–tỉ khi tuổi mẹ gấp 6 lần; giáp NDB03504"
+  },
+  {
+   "ma_cau": "T14T0000002384",
+   "ma_nguon": "CĐ13 · B9",
+   "dang": "NDB01625",
+   "ly_do": "Ba cha con, biết tổng và các hiệu tuổi không đổi, hỏi tuổi từng người: đúng mô tả dạng hiệu tuổi không đổi.",
+   "dang_mu": "NDB01625",
+   "ly_do_mu": "Ba người: tổng tuổi và hai hiệu tuổi, dùng tổng hiệu; giáp NDB03506"
+  },
+  {
+   "ma_cau": "T14T0000002385",
+   "ma_nguon": "CĐ13 · B10",
+   "dang": "NDB03503",
+   "ly_do": "Cho hiệu tuổi và tỉ số phân số của tuổi cách đây 2 năm; hỏi tuổi hiện nay.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Hiệu tuổi 10, tỉ số dạng phân số tại thời điểm 2 năm trước"
+  },
+  {
+   "ma_cau": "T14T0000002386",
+   "ma_nguon": "CĐ13 · B11",
+   "dang": "NDB03503",
+   "ly_do": "Cho hiệu tuổi và quan hệ phân số (1/2 Hồng kém 1/5 chú Hùng) tại thời điểm hiện nay.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Hiệu tuổi 27 và quan hệ 1/2 kém 1/5 là 3 hiện nay"
+  },
+  {
+   "ma_cau": "T14T0000002406",
+   "ma_nguon": "CĐ15 · B1",
+   "dang": "NDB03508",
+   "ly_do": "Biết thời gian từng người làm một mình, tìm thời gian hai người làm chung.",
+   "dang_mu": "NDB03508",
+   "ly_do_mu": "Hai người làm chung, tìm thời gian làm xong"
+  },
+  {
+   "ma_cau": "T14T0000002407",
+   "ma_nguon": "CĐ15 · B2",
+   "dang": "NDB03510",
+   "ly_do": "Biết thời gian làm chung và thời gian người thứ nhất, tìm thời gian người thứ hai.",
+   "dang_mu": "NDB03510",
+   "ly_do_mu": "Biết làm chung và một người làm riêng, tìm người kia"
+  },
+  {
+   "ma_cau": "T14T0000002387",
+   "ma_nguon": "CĐ13 · B12",
+   "dang": "NDB03505",
+   "ly_do": "Tỉ số 3 lần hiện nay và tổng 32 tuổi ở thời điểm khi tuổi em bằng tuổi chị hiện nay: hai thời điểm.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Tỉ số hiện nay, tổng tuổi ở thời điểm sau; hiệu tuổi không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002388",
+   "ma_nguon": "CĐ13 · B13",
+   "dang": "NDB03505",
+   "ly_do": "Tổng tuổi hiện nay và quan hệ gấp đôi giữa tuổi em hiện nay với tuổi em lúc anh bằng tuổi em hiện nay; cũng gần dạng khi tuổi này bằng tuổi kia hiện nay.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Quan hệ tuổi ở hai thời điểm qua hiệu tuổi không đổi, biết tổng"
+  },
+  {
+   "ma_cau": "T14T0000002408",
+   "ma_nguon": "CĐ15 · B3",
+   "dang": "NDB03511",
+   "ly_do": "Cùng làm 4 giờ rồi tốp thứ hai làm nốt (giai đoạn), hỏi thời gian từng tốp; gần NDB03510.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Cùng làm 4 giờ rồi một tốp làm nốt"
+  },
+  {
+   "ma_cau": "T14T0000002389",
+   "ma_nguon": "CĐ13 · B14",
+   "dang": "NDB03506",
+   "ly_do": "Tuổi mẹ bằng 4/3 tổng tuổi ba con: đúng ví dụ của dạng tổng tuổi nhiều người.",
+   "dang_mu": "NDB03506",
+   "ly_do_mu": "Tuổi mẹ bằng 4/3 tổng tuổi ba con, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002390",
+   "ma_nguon": "CĐ13 · B15",
+   "dang": "NDB03503",
+   "ly_do": "Cho hiệu và tổng tuổi hai chị em dưới dạng quan hệ gián tiếp tại hiện nay; chỉ cần tìm hiệu số tuổi rồi tuổi từng người.",
+   "dang_mu": "NDB03503",
+   "ly_do_mu": "Lập luận ra hiệu tuổi rồi tổng–hiệu tại một thời điểm"
+  },
+  {
+   "ma_cau": "T14T0000002391",
+   "ma_nguon": "CĐ14 · B1",
+   "dang": "NDB01550",
+   "ly_do": "Thay 1 bạn nữ bằng 1 bạn nam, tổng không đổi, hai tỉ số 1/4 và 1/5.",
+   "dang_mu": "NDB01550",
+   "ly_do_mu": "Thay 1 nữ bằng 1 nam, tổng không đổi, hai tỉ số"
+  },
+  {
+   "ma_cau": "T14T0000002392",
+   "ma_nguon": "CĐ14 · B2",
+   "dang": "NDB01550",
+   "ly_do": "Chuyển 10 quyển từ ngăn trên xuống ngăn dưới, tổng không đổi, hai tỉ số gấp 3 và gấp 7.",
+   "dang_mu": "NDB01550",
+   "ly_do_mu": "Chuyển 10 quyển giữa hai ngăn, tổng không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002393",
+   "ma_nguon": "CĐ14 · B3",
+   "dang": "NDB01550",
+   "ly_do": "Thêm vào rộng 4 m, bớt dài 4 m nên nửa chu vi (tổng) không đổi; có thể xếp cùng dạng tổng ẩn hình chữ nhật.",
+   "dang_mu": "NDB01550",
+   "ly_do_mu": "Thêm rộng bớt dài cùng 4 m, nửa chu vi không đổi, hai tỉ số"
+  },
+  {
+   "ma_cau": "T14T0000002394",
+   "ma_nguon": "CĐ14 · B4",
+   "dang": "NDB01550",
+   "ly_do": "3 con vịt chuyển từ bờ xuống ao, tổng cả đàn không đổi, hai tỉ số gấp 5 và gấp 8.",
+   "dang_mu": "NDB01550",
+   "ly_do_mu": "3 con vịt chuyển từ bờ xuống ao, tổng không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002395",
+   "ma_nguon": "CĐ14 · B5",
+   "dang": "NDB03507",
+   "ly_do": "Hai bạn cùng hái thêm 15 bông, hiệu số hoa không đổi, hai tỉ số 3/5 và 9/13; gần NDB01551 nhưng dạng sau thắng.",
+   "dang_mu": "NDB03507",
+   "ly_do_mu": "Cùng hái thêm 15 bông, hiệu không đổi, đúng ví dụ dạng"
+  },
+  {
+   "ma_cau": "T14T0000002396",
+   "ma_nguon": "CĐ14 · B6",
+   "dang": "NDB03507",
+   "ly_do": "Tuổi bố, con qua các năm: hiệu không đổi, hai tỉ số gấp 3 và gấp 7; gần dạng tuổi NDB03505 và NDB01551.",
+   "dang_mu": "NDB03505",
+   "ly_do_mu": "Tuổi bố con hai thời điểm có hai tỉ số khác nhau"
+  },
+  {
+   "ma_cau": "T14T0000002397",
+   "ma_nguon": "CĐ14 · B7",
+   "dang": "NDB03507",
+   "ly_do": "Thêm 40 quyển vào mỗi ngăn, hiệu số sách không đổi, hai tỉ số 7/3 và 17/29.",
+   "dang_mu": "NDB03507",
+   "ly_do_mu": "Cùng thêm 40 quyển, hiệu không đổi; trùng NDB01551"
+  },
+  {
+   "ma_cau": "T14T0000002398",
+   "ma_nguon": "CĐ14 · B8",
+   "dang": "NDB03507",
+   "ly_do": "Mua thêm mỗi loại 10 con, hiệu số gà, vịt không đổi, hai tỉ số 3/5 và 3/2.",
+   "dang_mu": "NDB03507",
+   "ly_do_mu": "Cùng mua thêm 10 con, hiệu không đổi; trùng NDB01551"
+  },
+  {
+   "ma_cau": "T14T0000002399",
+   "ma_nguon": "CĐ14 · B9",
+   "dang": "NDB01551",
+   "ly_do": "Thêm học sinh nam, số học sinh nữ không đổi, hai tỉ số 3/4 và 9/10.",
+   "dang_mu": "NDB01551",
+   "ly_do_mu": "Chỉ nam tăng 3, số nữ không đổi; hai tỉ số một đại lượng không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002400",
+   "ma_nguon": "CĐ14 · B10",
+   "dang": "NDB01551",
+   "ly_do": "Thêm sách vào ngăn trên, số sách ngăn dưới không đổi, hai tỉ số 6/5 và 12/11.",
+   "dang_mu": "NDB01551",
+   "ly_do_mu": "Chỉ ngăn trên thêm 15, ngăn dưới không đổi"
+  },
+  {
+   "ma_cau": "T14T0000002409",
+   "ma_nguon": "CĐ15 · B4",
+   "dang": "NDB03511",
+   "ly_do": "Anh làm trước 4 phút rồi hai anh em làm tiếp (giai đoạn), hỏi thời gian em; gần NDB03510.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Anh làm trước rồi hai anh em cùng làm tiếp"
+  },
+  {
+   "ma_cau": "T14T0000002410",
+   "ma_nguon": "CĐ15 · B5",
+   "dang": "NDB03511",
+   "ly_do": "Tổ 1 làm một mình rồi tổ 2 làm nốt (giai đoạn), biết thời gian làm chung; gần NDB03510.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Tổ 1 làm rồi tổ 2 làm nốt, so với làm chung"
+  },
+  {
+   "ma_cau": "T14T0000002411",
+   "ma_nguon": "CĐ15 · B6",
+   "dang": "NDB03511",
+   "ly_do": "Máy I gặt trước rồi máy II gặt tiếp được 7/12 thửa ruộng (giai đoạn), biết thời gian làm chung; gần NDB03510.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Máy I gặt rồi máy II gặt tiếp được 7/12; giai đoạn kết hợp làm chung"
+  },
+  {
+   "ma_cau": "T14T0000002412",
+   "ma_nguon": "CĐ15 · B7",
+   "dang": "NDB03512",
+   "ly_do": "Ba người rồi người thứ ba, rồi người thứ nhất cùng người thứ tư (nhiều người, nhiều giai đoạn), hỏi người thứ tư.",
+   "dang_mu": "NDB03512",
+   "ly_do_mu": "Nhiều người làm theo giai đoạn, người thứ tư làm thay"
+  },
+  {
+   "ma_cau": "T14T0000002413",
+   "ma_nguon": "CĐ15 · B8",
+   "dang": "NDB03511",
+   "ly_do": "Cùng làm, rồi một người làm tiếp, rồi cùng làm tiếp đến xong (giai đoạn).",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Làm chung, một người làm tiếp, rồi cùng làm nốt"
+  },
+  {
+   "ma_cau": "T14T0000002414",
+   "ma_nguon": "CĐ15 · B9",
+   "dang": "NDB03511",
+   "ly_do": "Cùng làm 2 giờ rồi một người nghỉ, người kia làm tiếp (giai đoạn), hỏi thời gian từng người.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Làm chung 2 giờ rồi một người nghỉ, người kia làm nốt"
+  },
+  {
+   "ma_cau": "T14T0000002415",
+   "ma_nguon": "CĐ15 · B10",
+   "dang": "NDB03508",
+   "ly_do": "Hai vòi chảy vào bể, biết thời gian từng vòi, tìm thời gian chảy chung; dạng tên 'hai người' nhưng cùng phương pháp.",
+   "dang_mu": "NDB03508",
+   "ly_do_mu": "Hai vòi cùng chảy vào bể, tìm thời gian đầy"
+  },
+  {
+   "ma_cau": "T14T0000002416",
+   "ma_nguon": "CĐ15 · B11a",
+   "dang": "NDB03510",
+   "ly_do": "Biết thời gian làm chung và thời gian người thứ nhất, tìm thời gian người thứ hai.",
+   "dang_mu": "NDB03510",
+   "ly_do_mu": "Biết làm chung 8 giờ và người thứ nhất 12 giờ, tìm người thứ hai"
+  },
+  {
+   "ma_cau": "T14T0000002417",
+   "ma_nguon": "CĐ15 · B11b",
+   "dang": "NDB03510",
+   "ly_do": "Cả việc là 216 thùng, chia số thùng mỗi người đóng trong thời gian làm chung; cùng dữ kiện với ý a nhưng hỏi số thùng.",
+   "dang_mu": "NDB03510",
+   "ly_do_mu": "Từ năng suất hai người chia số thùng đã đóng"
+  },
+  {
+   "ma_cau": "T14T0000002418",
+   "ma_nguon": "CĐ15 · B12",
+   "dang": "NDB03512",
+   "ly_do": "Ba người làm chung, mỗi người làm số công việc khác nhau, tính theo tuần rồi đổi ra giờ; gần NDB03508.",
+   "dang_mu": "NDB03508",
+   "ly_do_mu": "Ba người làm chung, quy năng suất từ khối lượng gấp lần; giáp NDB03512"
+  },
+  {
+   "ma_cau": "T14T0000002419",
+   "ma_nguon": "CĐ15 · B13",
+   "dang": "NDB03510",
+   "ly_do": "Biết thời gian làm chung và một nửa việc do hai người làm số giờ khác nhau, tìm thời gian người thứ hai; gần NDB03511.",
+   "dang_mu": "NDB03511",
+   "ly_do_mu": "Làm chung 12 giờ, người 1 làm 7 giờ người 2 làm 4 giờ được nửa việc"
+  },
+  {
+   "ma_cau": "T14T0000002045",
+   "ma_nguon": "CĐ1 · B8a",
+   "dang": "NDB03446",
+   "ly_do": "Viết liền 1 đến 15 rồi xoá 8 chữ số để lớn nhất.",
+   "dang_mu": "NDB03446",
+   "ly_do_mu": "Xoá bớt chữ số của dãy số tự nhiên viết liền để được lớn nhất/nhỏ nhất"
+  }
+ ]
+}

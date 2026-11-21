@@ -1,0 +1,22 @@
+{
+ "CĐ11 · B1": { "dang": "NDB03496", "chac": "cao", "ly_do": "Biết 3/4 số cam bằng 2/5 số quýt, tìm tỉ số hai đại lượng: đúng ví dụ của dạng." },
+ "CĐ11 · B2": { "dang": "NDB03496", "chac": "cao", "ly_do": "Ba số, các phân số của chúng bằng nhau, tìm tỉ số hai trong ba số." },
+ "CĐ11 · B3": { "dang": "NDB03496", "chac": "vua", "ly_do": "Cho tỉ số từng cặp liền kề, tìm tỉ số hai cặp khác; cùng loại tìm tỉ số khi biết quan hệ, nhưng quan hệ cho dưới dạng tỉ số đôi một." },
+ "CĐ11 · B4": { "dang": "NDB01581", "chac": "cao", "ly_do": "Hai phân số của cả lớp và giá trị phần còn lại, tìm cả lớp rồi tìm từng phần." },
+ "CĐ11 · B5": { "dang": "NDB01581", "chac": "cao", "ly_do": "Bán 1/2 rồi 2/3 số còn lại, biết phần còn lại là 12 m, tìm chiều dài ban đầu." },
+ "CĐ11 · B6": { "dang": "NDB03497", "chac": "vua", "ly_do": "Số bi đỏ bằng 3/7 tổng hai loại còn lại, cần đổi về phân số của cả hộp; cũng có thể xếp vào dạng tìm đại lượng ba đại lượng." },
+ "CĐ11 · B7": { "dang": "NDB03497", "chac": "cao", "ly_do": "Mỗi tổ bằng một phân số tổng các tổ còn lại, đổi ra phân số của cả lớp." },
+ "CĐ11 · B8": { "dang": "NDB03495", "chac": "cao", "ly_do": "Thêm cùng số a vào tử và mẫu 31/61 để được 4/7: đúng ví dụ của dạng." },
+ "CĐ11 · B9": { "dang": "NDB01546", "chac": "vua", "ly_do": "Hiệu cho sẵn, tỉ số ẩn: tổng bằng 5 lần số bé nên số lớn gấp 4 lần số bé." },
+ "CĐ11 · B10": { "dang": "NDB01549", "chac": "vua", "ly_do": "Ba đại lượng có phân số của chúng (phần còn lại) bằng nhau, đưa về cùng tử số rồi chia tổng." },
+ "CĐ11 · B11": { "dang": "NDB01550", "chac": "vua", "ly_do": "Chuyển sách giữa hai kệ rồi cho tỉ số; dạng ghi tổng không đổi nhưng ở đây cho hiệu ban đầu, nên chọn mức vừa." },
+ "CĐ11 · B12": { "dang": "NDB01549", "chac": "vua", "ly_do": "3 lần số thứ nhất bằng 4 lần số thứ hai bằng 5 lần số thứ ba, đưa về cùng tử số; gần dạng phân số của các đại lượng bằng nhau." },
+ "CĐ11 · B13": { "dang": "NDB03497", "chac": "vua", "ly_do": "Bao thứ nhất bằng 3/5 tổng hai bao còn lại, bao thứ ba gấp 4 lần bao thứ hai." },
+ "CĐ11 · B14": { "dang": "NDB01546", "chac": "vua", "ly_do": "Số tờ hai loại bằng nhau nên tỉ số tổng tiền bằng tỉ số mệnh giá (tỉ số ẩn), tổng cho trước." },
+ "CĐ11 · B15": { "dang": "NDB01550", "chac": "vua", "ly_do": "Bớt hai số khác nhau, cho tỉ số lúc sau và tổng; chưa có dạng riêng cho bớt khác nhau nên chọn dạng hai tỉ số gần nhất." },
+ "CĐ11 · B16": { "dang": "NDB01550", "chac": "vua", "ly_do": "Kho A xuất, kho B nhập, cho tỉ số lúc sau; dùng tổng lúc sau, tính ngược về lúc đầu." },
+ "CĐ11 · B17": { "dang": "NDB01546", "chac": "vua", "ly_do": "Tổng cho sẵn, hiệu bằng 2/3 số bé nên tỉ số suy ra từ quan hệ khác." },
+ "CĐ11 · B18": { "dang": "NDB01551", "chac": "vua", "ly_do": "Cho tỉ số lúc đầu, hiệu lúc sau sau khi bán hai số khác nhau; hiệu lúc đầu tính được, tìm hai số bằng hiệu và tỉ." },
+ "CĐ11 · B19": { "dang": "NDB01549", "chac": "vua", "ly_do": "Phần còn lại của hai anh bằng nhau, đưa về cùng tử số rồi dùng hiệu cho sẵn." },
+ "CĐ11 · B20": { "dang": "NDB01547", "chac": "vua", "ly_do": "Bốn đại lượng, lấy tổ nhỏ nhất làm một phần rồi suy ra số phần của các tổ khác, tổng cho sẵn." }
+}

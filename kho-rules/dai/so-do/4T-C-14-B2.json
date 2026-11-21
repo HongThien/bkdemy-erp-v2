@@ -1,0 +1,1 @@
+[{"tieu_de":"Lúc đầu","gia_tri_phan":20,"hang":[{"nhan":"Ngăn trên","phan":1},{"nhan":"Ngăn dưới","phan":3}],"tong":"Tổng số sách","dau_hoi":["Ngăn trên","Ngăn dưới"]},{"tieu_de":"Lúc sau (chuyển 10 quyển từ ngăn trên xuống ngăn dưới)","gia_tri_phan":10,"hang":[{"nhan":"Ngăn trên","phan":1},{"nhan":"Ngăn dưới","phan":7}],"tong":"Tổng số sách"}]

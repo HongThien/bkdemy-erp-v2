@@ -1,0 +1,137 @@
+[
+ {
+  "ma": "CĐ15 · B1",
+  "khu": "CĐ15",
+  "so": 1,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai anh em cùng làm việc nhà. Nếu một mình anh làm thì sau $2$ giờ sẽ xong việc, còn nếu em làm một mình thì sau $3$ giờ sẽ xong việc đó. Hỏi cả $2$ người cùng làm thì sau mấy giờ sẽ xong việc đó?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B2",
+  "khu": "CĐ15",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai người cùng làm một công việc sau $\\dfrac{12}{5}$ giờ sẽ xong. Nếu người thứ nhất làm $1$ mình xong công việc đó thì mất $4$ giờ. Hỏi người thứ hai làm $1$ mình thì sau bao lâu mới xong công việc đó?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B3",
+  "khu": "CĐ15",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai tốp thợ lặn cùng làm $1$ công việc thì sau $12$ giờ sẽ xong. Họ cùng làm được $4$ giờ thì tốp thứ nhất nghỉ, tốp thứ hai làm nốt trong $20$ giờ nữa mới xong. Hỏi nếu làm riêng thì mỗi tốp phải mất bao nhiêu giờ mới xong công việc đó?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B4",
+  "khu": "CĐ15",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Anh làm việc nhà thì sau $16$ phút sẽ xong. Khi anh làm được $4$ phút thì có thêm em cùng làm nên cả $2$ anh em làm tiếp trong $10$ phút là xong. Hỏi nếu em làm một mình thì sau bao lâu xong việc nhà?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B5",
+  "khu": "CĐ15",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai tổ cùng làm một công việc trong $48$ giờ thì xong. Nếu tổ $1$ làm một mình trong $60$ giờ, sau đó tổ $1$ nghỉ, tổ $2$ làm nốt công việc còn lại trong $32$ giờ nữa thì xong. Hỏi nếu chỉ có tổ $1$ làm một mình thì làm xong công việc đó trong bao nhiêu giờ?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B6",
+  "khu": "CĐ15",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai máy cùng gặt xong một thửa ruộng hết $12$ giờ. Nếu máy I gặt một mình trong $4$ giờ, rồi máy II gặt tiếp thêm $9$ giờ nữa thì được $\\dfrac{7}{12}$ thửa ruộng. Hỏi mỗi máy gặt một mình thì gặt xong thửa ruộng trong bao lâu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B7",
+  "khu": "CĐ15",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Người thứ nhất, người thứ hai, người thứ ba có thể làm xong công việc một mình lần lượt trong $25$ ngày, $20$ ngày, $24$ ngày. Cả $3$ người cùng làm trong $2$ ngày, sau đó chỉ còn người thứ ba làm trong $6$ ngày. Phần việc còn lại người thứ nhất và người thứ tư cùng làm với người thứ ba $4$ ngày nữa mới xong. Hỏi nếu người thứ tư làm một mình thì sau bao lâu xong công việc?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B8",
+  "khu": "CĐ15",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Người thứ nhất làm $15$ giờ thì hoàn thành công việc. Người thứ hai cần $12$ giờ thì hoàn thành. Lúc đầu $2$ người làm chung $3$ giờ sau đó người thứ nhất làm một mình trong $2$ giờ nữa. Tiếp đó nếu người thứ hai quay lại cùng làm thì hai người làm tiếp trong bao nhiêu giờ để xong công việc?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B9",
+  "khu": "CĐ15",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai người làm chung một công việc thì sau $5$ giờ sẽ xong. Sau khi làm được $2$ giờ thì người thứ hai có việc phải nghỉ và người thứ nhất phải làm thêm $9$ giờ nữa mới xong. Hỏi nếu làm riêng thì mỗi người phải làm trong bao lâu?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B10",
+  "khu": "CĐ15",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Có hai vòi nước chảy vào một cái bể. Nếu vòi thứ nhất chảy một mình thì phải mất $6$ giờ mới đầy bể, thời gian để chảy một mình đầy bể của vòi thứ hai bằng $\\dfrac{2}{3}$ của vòi thứ nhất. Hỏi nếu bể không có nước thì mở cả hai vòi cùng một lúc thì sau bao lâu đầy bể?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B11",
+  "khu": "CĐ15",
+  "so": 11,
+  "y": null,
+  "de_chung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong.",
+  "noi_dung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong. Hỏi:\na) Nếu người thứ hai làm một mình thì sau bao lâu sẽ xong?\nb) Nếu $2$ người đóng gói được tổng cộng $216$ thùng hàng thì mỗi người đã đóng gói được bao nhiêu thùng?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B11a",
+  "khu": "CĐ15",
+  "so": 11,
+  "y": "a",
+  "de_chung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong.",
+  "noi_dung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong. Nếu người thứ hai làm một mình thì sau bao lâu sẽ xong?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B11b",
+  "khu": "CĐ15",
+  "so": 11,
+  "y": "b",
+  "de_chung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong.",
+  "noi_dung": "Một cửa hàng cần đóng gói một số thùng hàng. Nếu $2$ người cùng làm thì sau $8$ giờ sẽ xong. Người thứ nhất làm một mình thì sau $12$ giờ sẽ xong. Nếu $2$ người đóng gói được tổng cộng $216$ thùng hàng thì mỗi người đã đóng gói được bao nhiêu thùng?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B12",
+  "khu": "CĐ15",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Ba người cùng làm một công việc. Người thứ nhất có thể hoàn thành trong $3$ tuần; người thứ hai có thể hoàn thành một công việc nhiều gấp ba lần công việc đó trong $8$ tuần; người thứ ba có thể hoàn thành một công việc nhiều gấp $5$ công việc đó trong $12$ tuần. Hỏi nếu cả ba người cùng làm công việc ban đầu thì sẽ hoàn thành trong bao nhiêu giờ biết mỗi tuần làm $45$ giờ?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ15 · B13",
+  "khu": "CĐ15",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Hai người thợ cùng làm chung $1$ công việc thì sau $12$ giờ sẽ xong. Nếu người thứ nhất làm $7$ giờ và người thứ hai làm $4$ giờ thì được một nửa công việc. Hỏi người thứ hai làm công việc đó một mình thì sau bao lâu sẽ hoàn thành công việc?",
+  "anh": []
+ }
+]

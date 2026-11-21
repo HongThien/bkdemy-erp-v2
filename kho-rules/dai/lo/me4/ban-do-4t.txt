@@ -1,0 +1,290 @@
+# BẢN ĐỒ 4T (dai_bdm_*) — xuất 21/11 sau khi ghi 74 dạng ME. Dòng: <mã dạng> | <tên dạng> | <mô tả>
+
+## Số tự nhiên › Viết số theo điều kiện cho trước › Viết số khi biết số chữ số (NNB01708)
+NDB01506 | Viết số tự nhiên lớn nhất khi biết tổng chữ số và số chữ số | Đề cho số chữ số của số cần viết và tổng các chữ số, hỏi số tự nhiên lớn nhất thỏa mãn (có thể kèm điều kiện các chữ số khác nhau). Dấu hiệu: đề nói rõ "có N chữ số" cùng với "tổng các chữ số bằng S". Khác dạng "lớn nhất khi biết tổng chữ số": dạng đó không cho số chữ số, phải tự tách tổng thành nhiều chữ số nhất; khác dạng "nhỏ nhất khi biết tổng chữ số và số chữ số": đề hỏi số nhỏ nhất.
+NDB01507 | Viết số tự nhiên lớn nhất / nhỏ nhất khi biết tích các chữ số và số chữ số | Đề cho số chữ số của số cần viết và tích các chữ số, hỏi số tự nhiên lớn nhất thỏa mãn (thường kèm "các chữ số khác nhau"). Phải tách tích thành tích của đủ số chữ số rồi sắp xếp. Khác dạng "lớn nhất khi biết tổng chữ số và số chữ số": ở đây tách bằng phép nhân, không phải phép cộng.
+NDB01508 | Viết số tự nhiên lớn nhất  khi biết tổng chữ số | Đề chỉ cho tổng các chữ số (và nói các chữ số khác nhau), hỏi số tự nhiên lớn nhất; không cho số chữ số, nên phải tự tách tổng thành nhiều chữ số khác nhau nhất có thể. Khác dạng "lớn nhất khi biết tổng chữ số và số chữ số": ở dạng đó số chữ số đã cho sẵn.
+NDB01509 | Viết số tự nhiên lớn nhất - nhỏ nhất khi biết số chữ số | Đề chỉ cho số chữ số của số cần viết (không cho tổng hay tích các chữ số), hỏi số lớn nhất hoặc nhỏ nhất, thường kèm điều kiện chẵn, lẻ, tròn chục, các chữ số khác nhau hoặc một hàng cho trước. Nếu đề có thêm tổng hoặc tích các chữ số thì thuộc các dạng "biết tổng/tích chữ số".
+NDB01510 | Viết số tự nhiên nhỏ nhất khi biết tổng chữ số và số chữ số | Đề cho số chữ số và tổng các chữ số, hỏi số tự nhiên nhỏ nhất thỏa mãn (có thể kèm điều kiện khác nhau). Khác dạng "lớn nhất khi biết tổng chữ số và số chữ số": đề hỏi số nhỏ nhất nên hàng cao chọn chữ số bé, chữ số lớn dồn xuống hàng thấp; khác dạng "nhỏ nhất khi biết tổng các chữ số": ở dạng đó không cho số chữ số.
+NDB01511 | Viết số tự nhiên nhỏ nhất khi biết tổng các chữ số | Đề chỉ cho tổng các chữ số (có thể thêm "các chữ số khác nhau"), hỏi số tự nhiên nhỏ nhất; không cho số chữ số nên phải tự tách tổng thành ít chữ số nhất. Khác dạng "nhỏ nhất khi biết tổng chữ số và số chữ số": ở đó số chữ số đã cho sẵn.
+NDB01512 | Viết số lớn nhất - nhỏ nhất từ các chữ số cho trước | Đề cho sẵn một nhóm chữ số (ví dụ $0$; $2$; $5$; $9$; $6$; $8$) và yêu cầu dùng các chữ số đó viết số lớn nhất hoặc nhỏ nhất, thường kèm số chữ số, chẵn hay lẻ, các chữ số khác nhau. Chỉ được dùng chữ số trong nhóm đề cho. Khác dạng "khi biết số chữ số": ở dạng đó đề không cho sẵn nhóm chữ số.
+NDB03448 | Viết số lớn nhất theo quy luật giữa các chữ số liền nhau | Hai chữ số liền nhau hơn kém 2 đơn vị; từ chữ số thứ ba bằng tổng hai chữ số đứng liền trước
+
+## Số tự nhiên › Viết số theo điều kiện cho trước › Xoá bớt chữ số (NNB02270)
+NDB03445 | Xoá bớt chữ số của một số (hoặc dãy số chẵn liên tiếp) để được số lớn nhất, nhỏ nhất | Ví dụ: xoá 6 chữ số của số tạo bởi các số chẵn liên tiếp để số còn lại lớn nhất / nhỏ nhất
+NDB03446 | Xoá bớt chữ số của dãy số tự nhiên viết liền | Ví dụ: viết liền 1 đến 15 (1234…1415) rồi xoá 6 chữ số; dãy 20 19 18 … 11
+NDB03447 | Xoá chữ số để được số chẵn lớn nhất / số lẻ nhỏ nhất | Có thêm điều kiện về chữ số tận cùng
+
+## Số tự nhiên › Đếm số và chữ số › Đếm số các số tạo ra từ các chữ số khác 0 (NNB01709)
+NDB01513 | Đếm số các số tạo ra từ các chữ số khác 0 không có điều kiện | Đề cho vài chữ số đều khác $0$ và hỏi viết được bao nhiêu số tự nhiên có số chữ số cho trước (có thể "khác nhau" hoặc cho lặp lại), không thêm điều kiện chẵn, lẻ. Chỉ việc nhân số cách chọn của từng hàng. Khác dạng "có chữ số 0": ở đó nhóm chữ số có $0$ nên hàng cao nhất bớt một cách chọn; khác dạng "có điều kiện": không có điều kiện chẵn, lẻ, lớn hơn, nhỏ hơn.
+NDB01514 | Đếm các số tạo ra từ các chữ số có chữ số 0 | Đề cho một nhóm chữ số có chữ số $0$ và hỏi viết được bao nhiêu số (thường các chữ số khác nhau), không thêm điều kiện chẵn, lẻ. Dấu hiệu: nhóm chữ số có $0$ nên hàng cao nhất không được chọn $0$. Khác dạng "các chữ số khác $0$": ở đó mọi hàng cùng số cách chọn; khác dạng "có điều kiện": không có điều kiện chẵn, lẻ.
+NDB01515 | Đếm các số lập từ các chữ số có điều kiện | Đề cho một nhóm chữ số (thường có $0$) và hỏi lập được bao nhiêu số chẵn (hoặc lẻ, hoặc thỏa một điều kiện thêm) có số chữ số cho trước. Dấu hiệu: ngoài "bao nhiêu số" còn có điều kiện chẵn, lẻ nên phải chọn hàng đơn vị trước hoặc tách trường hợp. Khác hai dạng đếm còn lại cùng nhóm: ở đó không có điều kiện chẵn, lẻ.
+
+## Số tự nhiên › Đếm số và chữ số › Đếm số theo điều kiện (NNB02271)
+NDB03449 | Đếm số chia hết cho 5, 3, 15 hoặc tận cùng bằng 5 | Chọn hàng bị ràng buộc (hàng đơn vị) trước, chia Trường hợp 1 / 2 nếu có chữ số 0
+NDB03450 | Đếm số có tổng các chữ số (hoặc hiệu hai chữ số) cho trước | Liệt kê các cách chọn chữ số rồi đếm
+NDB03451 | Đếm số có ít nhất một chữ số cho trước (đếm phần bù) | Ví dụ: có ít nhất một chữ số 6 = tất cả − không có chữ số 6
+NDB03452 | Đếm số có đúng một chữ số cho trước (chia trường hợp vị trí) | Ví dụ: có đúng một chữ số 5
+
+## Số tự nhiên › Đếm số và chữ số › Tổng các số lập được (NNB02272)
+NDB03453 | Tổng tất cả các số lập từ các chữ số khác nhau cho trước | Mỗi chữ số xuất hiện đều nhau ở mỗi hàng
+NDB03454 | Biết tổng các số lập được, tìm chữ số chưa biết | Ví dụ: tổng các số lập được bằng 66660
+NDB03455 | Biết tổng các chữ số, tính tổng các số lập được | Ví dụ: a + b + c + d = 15
+
+## Số tự nhiên › Đo lường › Đổi đơn vị (NNB01710)
+NDB01516 | Đổi đơn vị đo khối lượng | Đề cho số đo khối lượng viết bằng một hoặc hai đơn vị (tấn, tạ, yến, ki-lô-gam, héc-tô-gam, đề-ca-gam, gam) và yêu cầu đổi sang một đơn vị khác, thường dạng "điền số thích hợp vào chỗ trống". Chỉ đổi đơn vị khối lượng; đổi đơn vị độ dài, diện tích, thời gian không thuộc dạng này.
+
+## Số tự nhiên › Tính toán › Nhân số có nhiều chữ số (NNB01711)
+NDB01517 | Nhân các số có nhiều chữ số sử dụng tính chất phép nhân | Đề yêu cầu tính tích hai số nhiều chữ số "theo cách tách số", tức là tách một thừa số thành tổng (hoặc hiệu) các số tròn chục, tròn trăm rồi nhân từng phần và cộng (trừ) lại. Khác dạng "đặt tính": ở đây không đặt tính cột dọc mà viết các bước nhân từng phần; khác dạng "tính thuận tiện": ở đó đề đã cho sẵn tổng hoặc hiệu các tích có chung một thừa số cần gộp lại.
+NDB01518 | Nhân số có nhiều chữ số sử dụng đặt tính | Đề yêu cầu "đặt tính rồi tính" phép nhân có thừa số hai, ba chữ số (thừa số kia cũng nhiều chữ số), phải nhân từng chữ số rồi cộng các tích riêng. Khác dạng "tách số": ở đây làm theo cột dọc, không tách thừa số thành tổng.
+NDB01519 | Tính thuận tiện sử dụng tính chất phân phối của phép nhân với phép cộng trừ | Đề cho tổng hoặc hiệu các tích có chung một thừa số (có thể còn một số hạng riêng bằng chính thừa số đó, ví dụ cộng thêm $25$) và yêu cầu "tính thuận tiện" hoặc "tính nhanh". Dấu hiệu: cùng một số xuất hiện ở mọi tích. Khác dạng "tách số": ở đây gộp các tích lại thành một tích, không tách thừa số.
+
+## Số tự nhiên › Tính toán › Chia số có nhiều chữ số (NNB01712)
+NDB01520 | Chia số có 2 chữ số | Đề cho phép chia (chia hết hoặc có dư) mà số chia có hai chữ số, yêu cầu "tính" hoặc "đặt tính rồi tính". Dấu hiệu: phải ước lượng thương từng lần, thử bằng phép nhân. Khác phép chia cho số có một chữ số: ở đây số chia có hai chữ số nên phải nhẩm thử và chỉnh lại thương.
+
+## Số tự nhiên › Tính toán › Tìm x (NNB02274)
+NDB03460 | Tìm x: một đến hai phép tính, có ngoặc | Ví dụ: x − 140 : 35 = 270; 357 : (87 : x) = 119
+NDB03461 | Tìm x: nhiều phép tính, nhiều chữ x cùng lúc | Ví dụ: (x+1)+(x+3)+(x+5)=30; x : 8 × 32 + x : 3 × 18 − x : 5 × 10 = 120
+NDB03462 | Tìm x dùng tính chất phân phối | Ví dụ: 1358 × x − 358 × x = 25000
+
+## Số tự nhiên › Quan hệ đại lượng trong phép toán › Thay đổi các thành phần của phép tính (NNB01713)
+NDB01521 | Thay đổi đại lượng trong phép cộng | Đề nói hai số (hoặc các số hạng) của một phép cộng bị thay đổi (thêm vào, bớt đi, gấp lên) rồi hỏi tổng ban đầu, tổng mới hoặc các số hạng. Chỉ xét thành phần của phép cộng; thay đổi thành phần của phép trừ, nhân, chia không thuộc dạng này.
+NDB03463 | Thay đổi thừa số, số bị chia, số chia | Tích, thương đổi thế nào khi một thành phần gấp lên / giảm đi
+NDB03464 | Tổng của số bị trừ, số trừ và hiệu | Ví dụ: tổng của số bị trừ, số trừ và hiệu bằng 2000
+
+## Số tự nhiên › Quan hệ đại lượng trong phép toán › Làm sai khi tính (NNB02275)
+NDB03465 | Trừ hoặc cộng viết sai chữ số | Ví dụ: viết 49 thành 94; 107 thành 1007
+NDB03466 | Nhân đặt tích riêng thẳng cột như phép cộng | Ví dụ: 46 × …, 901 × …
+NDB03467 | Nhân viết nhầm, thêm hoặc đổi chữ số của thừa số | Ví dụ: thêm chữ số 3 vào 25; đổi chỗ hàng nghìn và hàng trăm
+
+## Số tự nhiên › Quan hệ đại lượng trong phép toán › Phép chia có dư đặc biệt (NNB02276)
+NDB03468 | Số dư lớn nhất, số chia nhỏ nhất | Số dư luôn nhỏ hơn số chia
+NDB03469 | Tìm số bị chia hoặc số chia bé nhất khi biết thương và số dư | 
+NDB03470 | Thêm hoặc bớt bao nhiêu để chia hết; biết tổng các thành phần | Ví dụ: tổng số bị chia, số chia, thương và dư bằng 969
+
+## Hình học › Chu vi và diện tích các hình › Chu vi các hình (NNB01714)
+NDB01522 | Tính chu vi các hình - dạng cơ bản | Đề cho các kích thước của hình vuông, hình chữ nhật và hỏi chu vi (hoặc cho chu vi, hỏi cạnh, chiều dài, chiều rộng), dùng thẳng công thức. Khác bài chu vi giải bằng tổng–hiệu: nếu đề cho chu vi cùng hiệu giữa chiều dài và chiều rộng ("dài hơn rộng ... cm", "tăng rộng thêm ... thành hình vuông") thì giải bằng nửa chu vi và tổng–hiệu, không thuộc dạng này; tính diện tích cũng chưa thuộc dạng này.
+
+## Các bài toán Logic › Dãy số cách đều › Dãy số cách đều (NNB01715)
+NDB01523 | Tìm số hạng thứ n | Đề cho một dãy số cách đều (nêu vài số đầu, có thể có cả số cuối) và hỏi giá trị của số hạng đứng ở vị trí thứ $n$ cho trước. Khác dạng "Tính số số hạng của dãy số": ở đây đã biết vị trí và cần tìm số, còn dạng kia đã biết số cuối và cần tìm số lượng số hạng; khác dạng "Tìm vị trí của một số": dạng đó cho một số và hỏi nó đứng thứ mấy.
+NDB01524 | Tính số số hạng của dãy số | Đề cho một dãy số cách đều có số đầu và số cuối và hỏi dãy có bao nhiêu số hạng (bao nhiêu số). Khác dạng "Tìm số hạng thứ n": ở đó cho vị trí và tìm số, còn ở đây cho số cuối và tìm số lượng; khác dạng "Tổng của dãy số cách đều": ở đây chỉ hỏi số lượng số hạng, không cộng các số lại.
+NDB01525 | Tổng của dãy số cách đều | Đề cho một dãy số cách đều chỉ nêu vài số đầu (chưa nói số cuối) rồi hỏi tổng của $n$ số hạng đầu tiên, hoặc cho dãy tới số cuối rồi hỏi tổng cả dãy. Phải tìm số hạng thứ $n$ (hoặc số số hạng) rồi mới tính tổng. Khác dạng "Tính tổng dãy số": ở dạng đó đề viết sẵn tổng $a+b+\ldots+z$ và phải tự tìm số lượng số hạng.
+NDB00646 | Tính tổng dãy số | Đề viết sẵn một tổng nhiều số hạng theo quy luật, dạng $A=a+b+c+\ldots+y+z$ (kể cả dãy giảm dần), và hỏi giá trị của tổng. Phải nhận ra các số cách đều, tự tìm số số hạng rồi tính tổng. Khác dạng "Tổng của dãy số cách đều": ở đó đề nói "tổng $n$ số hạng đầu tiên của dãy".
+NDB00647 | Tìm x dùng tổng dãy số | Đề là một đẳng thức có chữ (tìm $x$) mà vế trái là tổng nhiều ngoặc dạng $\left(x+a\right)+\left(x+b\right)+\ldots+\left(x+z\right)$, với các số cộng thêm $a,b,\ldots,z$ cách đều nhau. Phải tách phần chứa $x$ và phần các số cộng thêm, dùng công thức tổng dãy số rồi mới tìm $x$.
+NDB01526 | Tìm vị trí của một số trong dãy số ? | Đề cho một dãy số cách đều và một số cho trước, hỏi số đó có thuộc dãy không và nếu có thì là số hạng thứ mấy. Khác dạng "Tìm số hạng thứ n": đó là cho vị trí và tìm số, còn ở đây cho số và tìm vị trí; khác dạng "Tính số số hạng": ở đây số cho trước nằm trong dãy, chưa chắc là số cuối.
+
+## Các bài toán Logic › Dãy số cách đều › Quy luật dãy số và điền ô (NNB02280)
+NDB03490 | Tìm quy luật dãy số không cách đều, viết thêm số hạng | Ví dụ: mỗi số bằng tổng hai số liền trước; nhân 3; cộng 1 rồi 2 rồi 3
+NDB03491 | Điền ô sao cho tổng ba ô liên tiếp bằng nhau | 
+NDB03492 | Xếp số vào bảng ngoằn ngoèo, số cho trước nằm ở cột nào | Ví dụ: số 2023 ở bảng 4 cột
+
+## Các bài toán Logic › Dãy số cách đều › Viết liền các số (NNB02281)
+NDB03493 | Đếm số chữ số khi viết liền các số (đánh số trang sách) | Ví dụ: 150 trang cần 342 chữ số; biết 234 chữ số tìm số trang
+NDB03494 | Đếm riêng chữ số 0, 1, 5 và tìm chữ số thứ n của dãy viết liền | 
+
+## Các bài toán Logic › Bài toán trồng cây › Bài toán trồng cây trên đường thẳng (NNB01716)
+NDB00648 | 2 đầu | Đề cho cây trồng cách đều trên đoạn đường, cả hai đầu đường đều có cây (thường trồng ở hai bên đường), hỏi tổng số cây. Số cây một bên $=$ số khoảng $+1$, rồi nhân $2$ nếu có hai bên. Khác dạng "1 đầu": ở đó chỉ một đầu có cây.
+NDB00649 | 1 đầu | Đề cho cây trồng cách đều dọc đường, chỉ MỘT đầu có cây, đầu kia không (ví dụ "cổng cơ quan không có đèn, còn cổng bưu điện có đèn"), thường cho số cây và khoảng cách để tìm độ dài đường. Số khoảng $=$ số cây. Khác dạng "2 đầu": ở đó cả hai đầu đều có cây nên số cây hơn số khoảng $1$.
+NDB00650 | 0 đầu | Đề có các điểm chia đều trên một đoạn thẳng mà hai đầu KHÔNG có điểm nào, điển hình là cắt (cưa) một thanh thành nhiều đoạn bằng nhau: số lần cắt $=$ số đoạn $-1$, rồi hỏi số lần cắt hoặc thời gian cắt. Cũng gồm bài trồng cây mà cả hai đầu đường đều không có cây. Khác dạng "2 đầu": ở đó hai đầu đều có cây nên số cây hơn số khoảng $1$.
+NDB00651 | 2 cây | Đề trồng xen kẽ hai loại cây theo quy luật lặp lại (ví dụ cứ $2$ cây loại A thì đến $1$ cây loại B), cách đều nhau trên đoạn đường, hai đầu đều là cây loại B, hỏi số cây của một loại. Phải tính tổng số cây rồi số cây loại B. Khác dạng "2 đầu": ở đó chỉ có một loại cây, không có quy luật xen kẽ.
+NDB01528 | Bài toán trồng cây khép kín | Đề trồng (cắm) cây quanh một hình khép kín như sân bóng, vườn, ao (đi một vòng trở về chỗ xuất phát), cho kích thước hình và khoảng cách giữa hai cây liền nhau, hỏi số cây. Phải tính chu vi trước, số cây bằng số khoảng. Khác các dạng trồng trên đường thẳng: ở đây không có "đầu" nên không cộng hay trừ $1$.
+
+## Các bài toán Logic › Rút về đơn vị › Rút về đơn vị một đại lượng (NNB01717)
+NDB01529 | Rút về đơn vị một đại lượng | Đề cho giá trị của một số phần bằng nhau (ví dụ $8$ thùng có $448$ kg táo; $5$ bộ cần $15$ m vải) rồi hỏi giá trị của số phần khác, hoặc hỏi số phần khi biết tổng giá trị. Phải tìm giá trị của MỘT phần trước (phép chia).
+
+## Các bài toán Logic › Thống kê - Xác suất › Thống kê (NNB01718)
+NDB01530 | Xác định các đại lượng cơ bản của thống kê | Đề cho một dãy số liệu (bảng hoặc biểu đồ) và hỏi các đại lượng cơ bản: có bao nhiêu giá trị (bao nhiêu bạn), giá trị lớn nhất hoặc bé nhất, trung bình cộng của dãy, hoặc trung bình cộng của một nhóm giá trị chọn ra (ba bạn nặng nhất...). Khác các bài trung bình cộng thuần: ở đây phải đọc, đếm và chọn số liệu từ dãy.
+
+## Các bài toán Logic › TÍnh ngược từ cuối › Tìm số  ban đầu trong chuỗi phép tính (NNB01719)
+NDB01531 | Tìm số  ban đầu trong chuỗi phép tính | Đề kể một chuỗi các phép tính làm liên tiếp từ một số chưa biết (gấp lên, cộng thêm, chia, bớt...) đến kết quả cuối cùng cho trước, hỏi số ban đầu. Giải bằng cách đi ngược từ kết quả cuối, đảo từng phép tính.
+
+## Các bài toán Logic › Đếm cách, bắt tay, đường đi › Đếm cách, bắt tay, đường đi (NNB02273)
+NDB03456 | Bắt tay giữa n người | Cộng dần: 29 + 28 + … + 1
+NDB03457 | Bắt tay có điều kiện (trừ vợ chồng, trừ người quen) | Tổng số cái bắt tay trừ đi những cặp không bắt tay
+NDB03458 | Đếm đường đi, đếm cách xếp chữ trên sơ đồ | Cộng dần số đường vào mỗi nút; cần hình đề (chữ MATH, đường kiến đi)
+
+## Cấu tạo số › Dấu hiệu chia hết › Ứng dụng tính chất chia hết (NNB01720)
+NDB01532 | Nhận biết số có tính chất chia hết | Đề cho sẵn một dãy số rồi hỏi số nào chia hết (hoặc không chia hết) cho 2; 3; 5; 9; chỉ cần áp dụng dấu hiệu để chọn hoặc loại từng số. Khác dạng Tìm chữ số để số đó chia hết cho 2,3,5,9: ở đó số có chữ số bị che (a, b, dấu *) phải tìm, còn ở đây các số đã viết đủ chữ số. Khác dạng Lập số từ các chữ số: ở đó phải tự viết số rồi mới xét.
+NDB00652 | Chọn các số chia hết cho 2, 3, 5, 9 trong một danh sách (kể cả "chia hết cho A nhưng không chia hết cho B") | 
+NDB01533 | Tìm chữ số để số đó chia hết cho 2,3,5,9 | Đề cho số có một hoặc hai chữ số bị che bằng chữ (a, b) hoặc dấu *, kèm điều kiện chia hết cho 2; 3; 5; 9 (hoặc 6; 36; 45), hỏi các chữ số cần điền. Khác dạng Nhận biết số có tính chất chia hết: số chưa viết đủ nên phải tìm chữ số, không phải chọn số có sẵn. Khác dạng Tìm số thỏa mãn điều kiện chia có dư: điều kiện ở đây chỉ là chia hết (dư 0).
+NDB00653 | Tìm một chữ số a để số chia hết cho 3, 4, 9… | 
+NDB00654 | Tìm hai chữ số để số chia hết đồng thời cho nhiều số | 
+NDB00655 | Tìm chữ số * (kèm giải thích): hai dấu *, tích không nhân trực tiếp | 
+NDB01534 | Lập số từ các chữ số để chia hết cho 2,3,5,9 | Đề cho vài chữ số (thường 3 hoặc 4 chữ số khác nhau) rồi yêu cầu tự viết tất cả các số (hoặc số lớn nhất, nhỏ nhất, hoặc đếm số) từ các chữ số đó thỏa điều kiện chia hết cho 2; 3; 5; 9. Khác dạng Tìm chữ số để số đó chia hết cho 2,3,5,9: không có số bị che mà phải ghép chữ số thành số. Khác dạng Nhận biết số có tính chất chia hết: các số chưa có sẵn trong đề.
+NDB00656 | Viết các số từ các chữ số cho trước chia hết cho 3, 5, 9 | 
+NDB03472 | Tìm chữ số để số chia hết cho 4, 8, 25, 125 | 
+NDB03473 | Tìm hoặc viết thêm chữ số để chia hết cho 6, 12, 15, 18, 36, 45, 225 | Ví dụ: viết thêm một chữ số vào bên phải và bên trái 1996
+NDB03474 | Không làm phép chia, nhận biết số 11…1, 33…3 chia hết cho 2, 3, 5, 9 | Ví dụ: số gồm 2010 chữ số 1
+NDB03475 | Giải thích "có thể hay không" bằng tính chất chia hết | Ví dụ: xé giấy; CHAMHOC − HOCCHAM = 102386; 200 quyển vở thưởng đều
+
+## Cấu tạo số › Phép chia có dư › Ứng dụng dấu hiệu chia hết - chia có dư (NNB01721)
+NDB01535 | Nhận biết số chia có dư theo điều kiện | Đề cho sẵn một số hoặc một dãy số đã viết đủ chữ số, hỏi các số đó chia cho 2; 3; 5; 9 dư bao nhiêu, hoặc số nào chia cho một số nào đó thì dư một số cho trước. Khác dạng Tìm số thỏa mãn điều kiện chia có dư: ở đó số có chữ số bị che phải tìm. Khác dạng Nhận biết số có tính chất chia hết: ở đây điều kiện là chia có dư (dư khác 0), không phải chia hết.
+NDB01536 | Tìm số thỏa mãn điều kiện chia có dư | Đề cho số có chữ số bị che (a, b) kèm một hoặc nhiều điều kiện về số dư (chia 2 dư 1, chia 5 dư 3, chia 9 dư 5, có thể xen điều kiện chia hết), hỏi các số cần tìm. Khác dạng Tìm chữ số để số đó chia hết cho 2,3,5,9: ở đó mọi điều kiện đều là chia hết (dư 0). Khác dạng Nhận biết số chia có dư theo điều kiện: ở đó số đã viết đủ chữ số.
+NDB01537 | Tìm số lượng các số chia hết - chia có dư trong dãy số tự nhiên | Đề hỏi có bao nhiêu số (có số chữ số cho trước hoặc nằm trong một khoảng) chia hết cho một hay nhiều số, không chia hết, hoặc chia cho một số thì dư cho trước. Đề không bắt viết các số mà hỏi số lượng, nên lập dãy cách đều rồi đếm số hạng. Khác dạng Bài toán về dãy đối tượng lặp lại: ở đó hỏi phần tử thứ n là gì hoặc có bao nhiêu mỗi loại trong dãy lặp. Khác dạng Nhận biết số có tính chất chia hết: không chọn từ danh sách cho sẵn.
+NDB01538 | Bài toán về dãy đối tượng lặp lại | Đề cho một nhóm đối tượng (màu, chữ cái, hình, người) được xếp hoặc viết lặp đi lặp lại theo đúng thứ tự, hỏi đối tượng thứ n là gì hoặc trong n đối tượng có bao nhiêu cái mỗi loại. Dấu hiệu: "liên tiếp", "rồi lại", "thứ ...". Khác dạng Tìm số lượng các số chia hết - chia có dư trong dãy số tự nhiên: ở đó đếm số lượng số thỏa điều kiện chia, còn ở đây dùng phép chia số thứ tự cho số đối tượng của một nhóm.
+NDB01539 | Tìm số tự nhiên khi biết điều kiện chia cho nhiều số khác nhau | Đề cho một số tự nhiên mà khi chia cho nhiều số khác nhau (2, 3, 5 hoặc 3, 4, 5, 7 ...) đều có điều kiện số dư cho sẵn (cùng một số dư, hoặc dư kém số chia cùng một đơn vị), hỏi số nhỏ nhất, hoặc số có hai chữ số thỏa mãn. Khác dạng Tìm số thỏa mãn điều kiện chia có dư: ở đó số có chữ số bị che (a, b), còn ở đây số chưa biết chữ số nào mà chỉ biết số dư khi chia cho nhiều số.
+
+## Cấu tạo số › Cấu tạo số › Viết thêm, xoá, gạch chữ số (NNB01722)
+NDB01540 | Viết thêm chữ số vào bên trái (bên phải) số cho trước | Đề nói viết thêm một chữ số vào bên trái (đầu) số cần tìm thì được số mới gấp một số lần số cũ hoặc hơn số cũ một số đơn vị, hỏi số cần tìm. Dấu hiệu: "viết thêm chữ số ... vào bên trái". Khác các dạng viết thêm chữ số vào bên phải (tận cùng): ở đó số mới là số cũ nhân 10 rồi cộng chữ số; ở bên trái số mới là chữ số viết thêm ở hàng cao nhất cộng số cũ.
+NDB03478 | Viết thêm chữ số vào giữa số cho trước | 
+NDB03479 | Xoá một chữ số của số (hàng đơn vị, hàng trăm…) rồi so với số ban đầu | Giảm k đơn vị hoặc giảm k lần
+NDB03480 | Gạch bỏ chữ số, số còn lại có hai chữ số | 
+
+## Cấu tạo số › Cấu tạo số › Chuyển, đổi chỗ chữ số (NNB02277)
+NDB03476 | Chuyển chữ số cuối lên đầu số | Ví dụ: số mới hơn số cũ 765 đơn vị
+NDB03477 | Đổi chỗ hai chữ số của một số | 
+
+## Cấu tạo số › Cấu tạo số › Số và tổng, tích, thương các chữ số (NNB02278)
+NDB03481 | Số bằng k lần chữ số hàng đơn vị của nó | 
+NDB03482 | Số chia cho tổng các chữ số được thương và số dư cho trước | 
+NDB03483 | Số gấp k lần tích các chữ số của nó | 
+
+## Cấu tạo số › Cấu tạo số › Phép tính với số viết bằng chữ (NNB02279)
+NDB03484 | Cộng theo hàng với số viết bằng chữ | Ví dụ: abcd + abc + ab + a = 11106
+NDB03485 | Tích hai số viết bằng chữ | Ví dụ: aa × bc = 1001; ab × cd = bbb
+NDB03486 | Cộng, trừ viết chồng bằng chữ | Ví dụ: ABC + BAC = 1660, tìm A + B + C
+NDB03487 | Tìm x là chữ số trong biểu thức có số viết bằng chữ | Ví dụ: xx + x + 5 = 101
+NDB03488 | So sánh hai biểu thức có số viết bằng chữ | Ví dụ: aa × b với bb × a
+NDB03489 | Số đảo ngược: abcd − dcba, số liên tiếp tăng dần viết ngược | 
+
+## Các bài toán lời văn › Bài toán tổng hiệu › Bài toán tổng hiệu có ẩn đại lượng (NNB01723)
+NDB01541 | Bài toán tổng hiệu cơ bản | đề bài cho tổng và hiệu của hai số (hay hai đại lượng như hai đội, hai bạn) ngay trong đề và hỏi từng số. Tổng và hiệu đều có sẵn, không cần tính thêm. Khác dạng ẩn tổng, ẩn hiệu: ở đây cả tổng lẫn hiệu cho thẳng bằng số.
+NDB01623 | Bài toán tổng hiệu ẩn tổng - Chu vi diện tích | đề bài cho chu vi của hình chữ nhật (hoặc mảnh đất, sân, vườn) và hiệu giữa chiều dài và chiều rộng, rồi hỏi chiều dài, chiều rộng hoặc diện tích. Tổng không cho thẳng mà là nửa chu vi. Khác dạng tổng hiệu cơ bản: tổng phải tìm bằng cách lấy chu vi chia $2$.
+NDB01624 | Bài toán tổng hiệu ẩn hiệu - Các số tự nhiên chẵn lẻ | đề bài cho tổng của hai số tự nhiên chẵn (hoặc lẻ, hoặc liên tiếp) và nói giữa chúng có bao nhiêu số chẵn hoặc lẻ khác, rồi hỏi hai số. Hiệu không cho bằng số mà phải suy ra từ "liên tiếp", "giữa có … số". Khác dạng tổng hiệu cơ bản: hiệu phải tự tìm qua khoảng cách giữa các số chẵn lẻ.
+NDB03471 | Tổng hiệu với số hai chữ số đổi chỗ | Ví dụ: hiệu hai chữ số bằng 5, tổng số đã cho và số đảo bằng 143
+
+## Các bài toán lời văn › Bài toán tổng hiệu › Bài toán tổng hiệu có thay đổi đại lượng (NNB01749)
+NDB01626 | Bài toán cho nhận | đề bài cho tổng của hai người (hai bạn, hai đội) và nói một người cho người kia một số đồ vật, sau đó cho biết hiệu lúc sau, rồi hỏi số của mỗi người ban đầu. Tổng không đổi sau khi cho nhận. Khác dạng tăng giảm đại lượng: ở đây vật chuyển từ người này sang người kia, tổng giữ nguyên.
+NDB01627 | Bài toán tăng giảm đại lượng | đề bài cho tổng của hai số lượng, rồi cho cả hai cùng thêm (hoặc cùng bớt) những số khác nhau, sau đó cho hiệu lúc sau và hỏi số ban đầu. Tổng thay đổi đúng bằng số thêm cả hai bên. Khác dạng cho nhận: ở đây số lượng được THÊM từ ngoài vào (hoặc bớt đi hẳn), tổng lúc sau khác tổng ban đầu.
+
+## Các bài toán lời văn › Bài toán tổng hiệu › Bài toán về tuổi (NNB02285)
+NDB01625 | Tuổi: hiệu tuổi không đổi | đề bài cho tổng số tuổi của ba người (ông, bố, con hay bà, mẹ, cháu) cùng hiệu giữa người lớn nhất với tổng hai người còn lại và hiệu giữa hai người còn lại, rồi hỏi tuổi của từng người. Dùng tổng hiệu hai lần. Khác dạng tổng hiệu cơ bản: có ba đại lượng nên phải làm hai lượt.
+NDB03503 | Tuổi: tổng, hiệu hoặc tỉ số tại một thời điểm | 
+NDB03504 | Tuổi: sau (cách đây) bao nhiêu năm thì gấp k lần | 
+NDB03505 | Tuổi: hai thời điểm có hai tỉ số khác nhau | 
+NDB03506 | Tuổi: tổng tuổi nhiều người | Ví dụ: tuổi mẹ bằng 4/3 tổng tuổi ba con
+
+## Các bài toán lời văn › Trung bình cộng › Các bài toán cơ bản về trung bình cộng (NNB01724)
+NDB01542 | Tính trung bình cộng của các số | Đề bài cho các đại lượng và hỏi trung bình cộng
+NDB01583 | Tìm 1 đại lượng khi biết trung bình cộng | Đề bài cho trung bình cộng và hỏi 1 đại lượng
+NDB01584 | Tính trung bình cộng của 1 nhóm có nhiều loại đại lượng | Thường là sẽ cho nhiều loại đại lượng, mỗi loại có số lượng khác nhau. 
+
+Ví dụ : 4 xe loại I mỗi xe chở 8 tấn , 5 xe loại II mỗi xe chở 12 tấn . Tính trung bình cộng mỗi xe
+NDB01585 | Tìm 1 loại đại lượng khi biết trung bình cộng của nhóm các đại lượng | Bài ngược của 1.3. CHo trung bình cộng, cho xe loại I hỏi loại II
+NDB01586 | Tìm trung bình cộng của dãy số cách đều | Tìm trung bình cộng của các số tạo thành dãy số cách đều
+NDB01588 | Bài toán tổng hiệu ẩn tổng bằng trung bình cộng | Bài toán tổng hiệu ẩn tổng bằng trung bình cộng
+NDB03459 | Tìm nhiều số khi biết trung bình cộng của các nhóm con | Ví dụ: 5 số chẵn liên tiếp trung bình 126; trung bình 4 số, 3 số đầu, 3 số cuối
+
+## Các bài toán lời văn › Trung bình cộng › Thay đổi trung bình cộng khi thêm bớt đại lượng (NNB01739)
+NDB01589 | Tính trung bình cộng của nhóm trong bài toán Trung bình cộng thêm bớt đại lượng | Tính trung bình cộng của nhóm khi biết trung bình cộng ban đầu, số đại lượng và đại lượng thêm/bớt
+NDB01590 | Tính đại lượng thêm/bớt trong bài toán Trung bình cộng thêm bớt đại lượng | Tính đại lượng thêm/bớt khi biết trung bình cộng trước và sau khi thay đổi và cả số đại lượng
+NDB01591 | Tính số đại lượng trong bài toán Trung bình cộng thêm bớt đại lượng | Tính số đại lượng khi biết đại lượng thêm bớt và trung bình cộng trước - sau khi thêm bớt
+
+## Các bài toán lời văn › Trung bình cộng › Quan hệ của một số với trung bình cộng của cả nhóm (NNB01740)
+NDB01592 | Một đại lượng bằng trung bình cộng cả nhóm | Một đại lượng bằng trung bình cộng cả nhóm
+NDB01593 | Một đại lượng nhiều hơn trung bình cộng cả nhóm | Đề bài sẽ cho Một đại lượng nhiều hơn trung bình cộng cả nhóm bao nhiêu
+NDB01594 | Một đại lượng ít hơn trung bình cộng cả nhóm | Đề bài sẽ cho Một đại lượng ít hơn trung bình cộng cả nhóm bao nhiêu
+
+## Các bài toán lời văn › Bài toán tổng tỉ - hiệu tỉ › Bài toán tổng tỉ - hiệu tỉ có đại lượng cố định (NNB01725)
+NDB01543 | Bài toán tổng tỉ - hiệu tỉ cơ bản | đề bài cho tổng (hoặc hiệu) của hai số và tỉ số của chúng (có thể cho dưới dạng "$\dfrac{a}{b}$ số này bằng $\dfrac{c}{d}$ số kia"), rồi hỏi hai số. Tổng hoặc hiệu, tỉ số đều cho thẳng. Khác dạng ẩn tổng, ẩn hiệu, ẩn tỉ số: ở đây không có đại lượng nào bị giấu.
+NDB01544 | Bài toán tổng tỉ - hiệu tỉ ẩn tổng | đề bài cho tỉ số của hai số nhưng không cho tổng trực tiếp: tổng được giấu trong trung bình cộng, chu vi (nửa chu vi) hay một dữ kiện tương tự, rồi hỏi hai số. Phải tính tổng trước. Khác dạng tổng tỉ - hiệu tỉ cơ bản: tổng chưa có sẵn.
+NDB01545 | Bài toán tổng tỉ - hiệu tỉ ẩn hiệu | đề bài cho tỉ số của hai số nhưng không cho hiệu bằng số mà bằng lời (số lớn nhất có hai chữ số, số tròn chục nhỏ nhất có ba chữ số, hơn kém nhau nhờ thêm/bớt chữ số…), rồi hỏi hai số. Phải tìm hiệu trước. Khác dạng tổng tỉ - hiệu tỉ cơ bản: hiệu chưa cho sẵn bằng số.
+NDB01546 | Bài toán tổng tỉ - hiệu tỉ ẩn tỉ số | đề bài cho tổng (hoặc hiệu) của hai số, nhưng tỉ số không cho sẵn mà phải suy ra từ quan hệ khác như "gấp … lần", "viết thêm chữ số $0$ vào bên phải", phép chia hết có thương cho trước, rồi hỏi hai số. Khác dạng tổng tỉ - hiệu tỉ cơ bản: tỉ số chưa cho thành phân số.
+NDB03496 | Tìm tỉ số hai hoặc ba đại lượng khi biết quan hệ phân số | Ví dụ: 3/4 số cam bằng 2/5 số quýt
+NDB03497 | Một phần bằng phân số của tổng các phần còn lại | Ví dụ: số bi xanh bằng 3/7 tổng số bi cả hộp
+
+## Các bài toán lời văn › Bài toán tổng tỉ - hiệu tỉ › Bài toán tỉ số có nhiều đại lượng (NNB01726)
+NDB01547 | Bài toán tỉ số nhiều đại lượng - Quy về đại lượng nhỏ nhất | đề bài cho tổng của ba (hoặc nhiều) đại lượng và nói các đại lượng đều gấp lên so với cùng MỘT đại lượng nhỏ nhất bằng một số lần, rồi hỏi từng đại lượng. Lấy đại lượng nhỏ nhất làm $1$ phần. Khác dạng tỉ số đôi một: tất cả đều so với cùng một đại lượng. Khác dạng phân số bằng nhau: dùng "gấp … lần", không dùng "$\dfrac{a}{b}$ của … bằng $\dfrac{c}{d}$ của …".
+NDB01548 | Bài toán tỉ số nhiều đại lượng - Có tỉ số đôi một của các đại lượng | đề bài cho tổng của ba đại lượng và cho tỉ số từng đôi một (ví dụ đại lượng I bằng $\dfrac{2}{3}$ đại lượng II, đại lượng II bằng $\dfrac{4}{5}$ đại lượng III), rồi hỏi từng đại lượng. Đại lượng nằm ở giữa xuất hiện hai lần với số phần khác nhau nên phải đồng nhất. Khác dạng quy về đại lượng nhỏ nhất: hai tỉ số có cùng đại lượng ở giữa, cần quy đồng số phần.
+NDB01549 | Bài toán tỉ số nhiều đại lượng - Cho phân số của các đại lượng bằng nhau | đề bài cho tổng của ba (hoặc nhiều) đại lượng và nói một phần của đại lượng này bằng một phần của đại lượng kia (ví dụ $\dfrac{1}{2}$ số thứ nhất bằng $\dfrac{1}{3}$ số thứ hai bằng $\dfrac{1}{4}$ số thứ ba), rồi hỏi từng đại lượng. Coi phần bằng nhau ấy là $1$ đơn vị. Khác dạng tỉ số đôi một: ở đây các phân số của các đại lượng bằng nhau chứ không cho tỉ số từng cặp.
+
+## Các bài toán lời văn › Bài toán tổng tỉ - hiệu tỉ › Bài toán hai tỉ số (NNB01727)
+NDB01550 | Hai tỉ số: tổng không đổi (chuyển giữa các đại lượng) | đề bài cho tổng của hai số lượng (hai bao, hai thùng, hai bạn), nói chuyển một số từ bên này sang bên kia thì hai bên có tỉ số mới, rồi hỏi số lúc đầu. Tổng không đổi nên dùng tổng tỉ lúc sau. Khác dạng tăng giảm các đại lượng: ở đây chuyển qua lại giữa hai bên, không thêm hay bớt từ ngoài.
+NDB01551 | Hai tỉ số: một đại lượng không đổi (tăng giảm các đại lượng) | đề bài cho hiệu hai số (ví dụ tuổi mẹ hơn tuổi con) và tỉ số của chúng sau khi cùng thêm hoặc cùng bớt một lượng (sau vài năm nữa, cách đây vài năm), rồi hỏi số lúc đầu. Hiệu không đổi nên dùng hiệu tỉ lúc sau. Khác dạng chuyển giữa các đại lượng: ở đây cả hai cùng tăng hoặc cùng giảm như nhau, hiệu không đổi.
+NDB03507 | Hai tỉ số: hiệu không đổi | Ví dụ: hiệu số hoa của hai bạn không đổi khi cùng hái thêm
+
+## Các bài toán lời văn › Bài toán hai hiệu số › Chia đều: thừa – thừa, thừa – thiếu, thiếu – thiếu (NNB02283)
+NDB03498 | Hai hiệu số: thừa – thừa | Ví dụ: chia mỗi người 2 quả thừa 12 quả, chia mỗi người 3 quả thừa 2 quả; sơ đồ hai đoạn, phần chênh nét đứt
+NDB03499 | Hai hiệu số: thừa – thiếu | 
+NDB03500 | Hai hiệu số: thiếu – thiếu | 
+
+## Các bài toán lời văn › Bài toán hai hiệu số › Hai đại lượng cùng đổi theo thời gian (NNB02284)
+NDB03501 | Hai người làm cùng số sản phẩm, mỗi ngày làm khác nhau | Ví dụ: dệt chiếu, dệt khăn mặt
+NDB03502 | Hai bể nước chảy hoặc rút cùng lúc (hiệu thay đổi đều) | 
+
+## Các bài toán lời văn › Bài toán công việc chung › Làm chung và làm riêng (NNB02286)
+NDB03508 | Hai người làm chung, tìm thời gian làm xong | Quy về số phần bằng nhau (bội chung nhỏ nhất), không chia cho phân số
+NDB03509 | Vòi nước chảy vào cùng vòi tháo ra | 
+NDB03510 | Biết làm chung và một người làm riêng, tìm thời gian người kia | 
+
+## Các bài toán lời văn › Bài toán công việc chung › Làm theo giai đoạn, nhiều người (NNB02287)
+NDB03511 | Công việc làm theo giai đoạn (cùng làm rồi một người làm tiếp hoặc nghỉ) | 
+NDB03512 | Nhiều người làm chung, khoán theo tuần | Ví dụ: ba người, người thứ tư làm thay
+
+## Phân số › Phân số › Quy đồng phân số (NNB01728)
+NDB01552 | Quy đồng mẫu số 2 phân số | Đề cho hai phân số khác mẫu số và yêu cầu quy đồng mẫu số hai phân số đó (viết thành hai phân số bằng chúng và có cùng mẫu số), không hỏi phân số nào lớn hơn. Khác dạng "So sánh phân số bằng quy đồng mẫu số": dạng này chỉ dừng ở việc đưa về cùng mẫu, không có bước kết luận so sánh. Khác dạng "Quy đồng mẫu số nhiều phân số": ở đây chỉ có đúng hai phân số.
+NDB01553 | Quy đồng tử số 2 phân số | Đề cho hai phân số khác tử số và yêu cầu quy đồng tử số hai phân số đó (viết thành hai phân số bằng chúng và có cùng tử số), không hỏi phân số nào lớn hơn. Khác dạng "So sánh phân số bằng quy đồng tử số": dạng này chỉ dừng ở việc đưa về cùng tử số, không có bước kết luận so sánh. Khác dạng quy đồng mẫu số: chọn TỬ số chung rồi nhân cả tử lẫn mẫu.
+NDB01554 | Quy đồng mẫu số nhiều phân số | Đề cho từ ba phân số trở lên (có thể kèm số tự nhiên) và yêu cầu quy đồng mẫu số tất cả về cùng một mẫu số. Khác dạng "Quy đồng mẫu số 2 phân số": phải tìm một mẫu số chung cho cả ba mẫu số trở lên.
+
+## Phân số › Phân số › Rút gọn phân số (NNB01729)
+NDB01555 | Rút gọn phân số dạng chuẩn | Đề cho một phân số có tử số và mẫu số vừa phải, cùng chia hết cho một số nhỏ ($2$, $3$, $5$, $9$…) và yêu cầu rút gọn hoặc đưa về phân số tối giản. Khác dạng "Rút gọn phân số dạng đặc biệt": ở đây chọn được số chia bằng dấu hiệu chia hết quen thuộc, không có tử và mẫu lặp lại cả cụm chữ số hay biểu thức tích.
+NDB01556 | Rút gọn phân số dạng đặc biệt | Đề cho phân số có tử số và mẫu số lớn, lặp lại cả cụm chữ số (như $1313$, $123123$, $20232023$…) hoặc cho biểu thức dạng tích/tích nhiều thừa số để rút gọn, và yêu cầu rút gọn. Dấu hiệu: số có dạng $\overline{abab}$, $\overline{abcabc}$ hoặc các thừa số giống nhau xuất hiện ở cả tử và mẫu. Khác dạng "Rút gọn phân số dạng chuẩn": phải nhận ra thừa số chung (như $101$, $1001$), không chỉ dựa vào dấu hiệu chia hết.
+
+## Phân số › Phân số › Thêm (bớt) cùng một số vào tử số và mẫu số (NNB02282)
+NDB03495 | Thêm (bớt) cùng một số tự nhiên vào tử số và mẫu số để được phân số cho trước | Ví dụ: 39/64 thêm x thành 3/4; 31/61 thêm a thành 4/7
+
+## Phân số › Phân số › Phân số bằng nhau (NNB02288)
+NDB03513 | Tìm x, y, a, b trong các phân số bằng nhau | Ví dụ: 3/7 = x/21; 2/x = y/6 = 12/18
+NDB03514 | Tìm các phân số bằng phân số cho trước theo điều kiện về tử số, mẫu số | Ví dụ: tử số là 3; 12; 24; mẫu số lớn hơn 15 nhưng nhỏ hơn 50; lập phân số bằng 1/2 từ các chữ số cho trước
+
+## Phân số › So sánh phân số › So sánh phân số trực tiếp (NNB01730)
+NDB01557 | So sánh phân số bằng quy đồng mẫu số | Đề cho hai phân số khác mẫu số và hỏi phân số nào lớn hơn, bé hơn (hoặc điền dấu $>$, $<$, $=$). Dấu hiệu: mẫu số nhỏ, dễ tìm mẫu số chung và hai phân số không cùng phía của $1$ theo kiểu so sánh nhanh. Khác dạng "So sánh phân số bằng quy đồng tử số": ở đây quy đồng MẪU số rồi so tử số.
+NDB01558 | So sánh phân số bằng quy đồng tử số | Đề cho hai phân số và hỏi phân số nào lớn hơn, bé hơn; dấu hiệu: tử số của hai phân số bằng nhau hoặc dễ đưa về bằng nhau (có thể nhân lên thành cùng một số), còn mẫu số lớn, khó quy đồng (như $\dfrac{6}{29}$ và $\dfrac{9}{44}$). Khác dạng "So sánh phân số bằng quy đồng mẫu số": quy đồng TỬ số rồi so MẪU số (mẫu số lớn hơn thì phân số bé hơn).
+
+## Phân số › So sánh phân số › So sánh phân số gián tiếp (NNB01731)
+NDB01559 | So sánh phân số bằng cách so sánh với 1 | Đề cho hai phân số mà một phân số lớn hơn $1$ (tử số lớn hơn mẫu số) và phân số kia bé hơn $1$ (tử số bé hơn mẫu số), hỏi phân số nào lớn hơn. Chỉ cần so mỗi phân số với $1$, không phải quy đồng. Khác dạng "So sánh phân số bằng phân số trung gian" và dạng phần bù: hai phân số ở HAI PHÍA của $1$.
+NDB01560 | So sánh phân số bằng phân số trung gian | Đề cho hai phân số khác cả tử số lẫn mẫu số, không cùng phía của $1$ hoặc không kém nhau cùng một đơn vị, mà một phân số có tử số bé hơn và mẫu số lớn hơn phân số kia (như $\dfrac{2023}{2026}$ và $\dfrac{2024}{2025}$), hỏi phân số nào lớn hơn. Khác dạng phần bù: hiệu mẫu số trừ tử số của hai phân số KHÔNG bằng nhau ($3$ và $1$), nên phải chọn phân số chen ở giữa.
+NDB01561 | So sánh phân số bằng phần bù (mẫu số và tử số hơn kém nhau 1 đơn vị) | Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số đúng $1$ đơn vị (dạng $\dfrac{n}{n+1}$, như $\dfrac{2023}{2024}$ và $\dfrac{2024}{2025}$), hỏi phân số nào lớn hơn. Cách làm: tìm phần bù của mỗi phân số (đều có tử số $1$) rồi so sánh. Khác dạng "phần bù" thứ hai trong nhóm: ở đây phần bù là $\dfrac{1}{\text{mẫu}}$. Khác dạng so sánh phân số trung gian: hai phân số có cùng khoảng cách tử-mẫu.
+NDB01562 | So sánh phân số bằng phần bù (hai phân số có cùng hiệu mẫu số và tử số) | Đề cho hai phân số cùng bé hơn $1$, mỗi phân số có mẫu số hơn tử số cùng một số $k$ lớn hơn $1$ (như $\dfrac{7}{9}$ và $\dfrac{9}{11}$, đều có mẫu số hơn tử số $2$), hỏi phân số nào lớn hơn. Cách làm: phần bù có tử số $k$, so sánh hai phần bù cùng tử số. Khác dạng phần bù thứ nhất trong nhóm: ở đây tử số của phần bù là $k$ chứ không phải $1$.
+NDB01563 | Sắp xếp dãy phân số | Đề cho từ ba phân số trở lên và yêu cầu sắp xếp theo thứ tự từ bé đến lớn hoặc từ lớn đến bé. Dấu hiệu: có chữ "sắp xếp" và một dãy phân số, có thể kết hợp nhiều cách so sánh (so với $1$, phần bù, phần hơn, quy đồng). Khác các dạng so sánh: so sánh chỉ có HAI phân số.
+
+## Phân số › So sánh phân số › Tìm x và phân số xen giữa (NNB02289)
+NDB03515 | Tìm số tự nhiên x thoả bất đẳng thức giữa các phân số | Ví dụ: 2/x > 1/2; 1 < 11/x < 2; tìm x để 156/(327 − x) lớn nhất
+NDB03516 | Tìm các phân số nằm giữa hai phân số cho trước | Ví dụ: 7 phân số nằm giữa 7/9 và 8/9
+
+## Phân số › Các phép tính cơ bản với phân số › Cộng trừ phân số (NNB01732)
+NDB01564 | Phép cộng trừ hai phân số | Đề bài cho đúng hai phân số (có thể một số là số tự nhiên) nối với nhau bằng một dấu cộng hoặc một dấu trừ và hỏi giá trị của phép tính. Khác dạng "Phép cộng trừ nhiều phân số": ở đây chỉ có hai số, một phép tính, chỉ cần tìm mẫu số chung của hai mẫu.
+NDB01565 | Phép cộng trừ nhiều phân số | Đề bài cho biểu thức có từ ba phân số trở lên, chỉ có phép cộng và trừ (có thể có ngoặc) và hỏi giá trị; phải quy đồng tất cả về một mẫu số chung. Khác dạng "Phép cộng trừ hai phân số": có từ ba phân số trở lên. Khác dạng "Tính thuận tiện biểu thức phân số dạng tổng hiệu": ở đó đề yêu cầu tính thuận tiện và có các mẫu số trùng nhau để nhóm, ở đây cứ quy đồng rồi tính.
+NDB01566 | Tính thuận tiện biểu thức phân số dạng tổng hiệu | Đề bài cho một biểu thức cộng trừ nhiều phân số và yêu cầu "tính bằng cách thuận tiện". Dấu hiệu: có các phân số CÙNG MẪU SỐ rải rác trong biểu thức, nhóm lại thì ra số tự nhiên. Khác dạng "Phép cộng trừ nhiều phân số": ở đó quy đồng tất cả, ở đây đổi chỗ và nhóm các phân số cùng mẫu.
+
+## Phân số › Các phép tính cơ bản với phân số › Phép nhân phân số (NNB01733)
+NDB01567 | Chuỗi tích các phân số | Đề bài cho tích của ba hay nhiều phân số (chỉ có phép nhân) và hỏi giá trị; các tử số và mẫu số có nhiều cặp rút gọn được với nhau. Khác dạng "Dãy phân số dạng tích - Dãy đơn": số thừa số ít, không theo quy luật "tử sau bằng mẫu trước".
+NDB01568 | Tính thuận tiện phân số kết hợp phép nhân | Đề bài cho biểu thức gồm các tích phân số cộng hoặc trừ nhau và yêu cầu tính bằng cách thuận tiện. Dấu hiệu: một phân số xuất hiện ở tất cả các tích (thừa số chung), phần còn lại cùng mẫu hoặc cộng lại ra số tròn. Khác dạng "Tính giá trị biểu thức chứa phép nhân": ở đó tính theo thứ tự phép tính, ở đây đặt thừa số chung ra ngoài ngoặc.
+NDB01569 | Tính giá trị biểu thức chứa phép nhân | Đề bài cho biểu thức có phép nhân xen với phép cộng hoặc trừ phân số (có thể có ngoặc) và hỏi giá trị; phải tính theo thứ tự phép tính (nhân trước, cộng trừ sau, ngoặc trước). Khác dạng "Tính thuận tiện phân số kết hợp phép nhân": ở đó số liệu cho phép đặt thừa số chung, ở đây tính từng bước theo thứ tự. Khác dạng "Tính biểu thức phân số chứa phép chia": ở đây không có phép chia.
+
+## Phân số › Các phép tính cơ bản với phân số › Phép chia phân số (NNB01734)
+NDB01570 | Tính biểu thức phân số chứa phép chia | Đề bài cho biểu thức có phép chia phân số (có thể xen nhân, cộng, trừ, ngoặc) và hỏi giá trị: đổi phép chia thành nhân với phân số đảo ngược. Khác dạng "Tính thuận tiện phân số kết hợp phép chia": ở đó các phép chia có chung số chia để nhóm lại, ở đây tính theo thứ tự phép tính.
+NDB01571 | Tính thuận tiện phân số kết hợp phép chia | Đề bài cho các phép chia cùng một số chia (cùng một phân số đứng sau dấu chia) nối nhau bằng dấu cộng, trừ và yêu cầu tính thuận tiện: gom các số bị chia lại rồi chia một lần. Khác dạng "Tính biểu thức phân số chứa phép chia": ở đó các số chia khác nhau, đổi từng phép chia thành phép nhân và tính tuần tự.
+
+## Phân số › Bài toán về dãy phân số › Dãy phân số dạng tích (NNB01735)
+NDB01572 | Dãy phân số dạng tích - Dãy đơn | Đề bài cho tích của nhiều phân số liên tiếp, có quy luật: tử số của phân số sau bằng mẫu số của phân số trước (hoặc viết gọn bằng dấu "…"), và hỏi giá trị. Mỗi thừa số đã là một phân số. Khác dạng "Dãy phân số dạng tích - Dãy kép": ở đó mỗi thừa số là một biểu thức dạng "1 trừ phân số" phải đổi thành phân số trước. Khác "Chuỗi tích các phân số": ở đó số thừa số ít, rút gọn từng cặp.
+NDB01573 | Dãy phân số dạng tích -  Dãy kép | Đề bài cho tích nhiều thừa số, mỗi thừa số là một ngoặc dạng "1 trừ một phân số" (hoặc "1 cộng một phân số"), và hỏi giá trị. Cần đổi mỗi ngoặc thành một phân số rồi mới thấy quy luật triệt tiêu. Khác dạng "Dãy phân số dạng tích - Dãy đơn": ở đó các thừa số đã là phân số.
+
+## Phân số › Bài toán về dãy phân số › Dãy phân số dạng Hiệu - tích (NNB01736)
+NDB01574 | Dãy phân số dạng hiệu tích chuẩn | Đề bài cho tổng của dãy phân số có tử số là $1$ (hoặc tử số bằng hiệu hai thừa số ở mẫu) và mẫu số là tích hai số liên tiếp trong dãy cách đều: $\dfrac{1}{2\times 3}+\dfrac{1}{3\times 4}+\ldots$. Khác dạng "tử số chưa chuẩn": ở đây tử số ĐÃ bằng hiệu hai thừa số ở mẫu, tách ngay được. Khác dạng "mẫu số chưa chuẩn": ở đây mẫu số đã viết sẵn dạng tích hai thừa số.
+NDB01575 | Dãy phân số dạng Hiệu - tích có tử số chưa chuẩn | Đề bài cho dãy phân số có mẫu số là tích hai thừa số cách đều nhau nhưng tử số KHÔNG bằng hiệu hai thừa số ở mẫu (tử gấp mấy lần hiệu, hoặc nhỏ hơn hiệu), ví dụ $\dfrac{4}{1\times 3}+\dfrac{4}{3\times 5}+\ldots$ (hiệu là $2$, tử là $4$). Khác dạng "hiệu tích chuẩn": phải biến đổi tử số trước (đưa thừa số chung ra ngoài). Khác dạng "mẫu số chưa chuẩn": mẫu số đã viết sẵn dạng tích, chỉ tử số lệch.
+NDB01576 | Dãy phân số dạng Hiệu - tích có mẫu số chưa chuẩn | Đề bài cho dãy phân số tử số $1$ nhưng mẫu số viết ra số (2; 6; 12; 20; 30; ...), chưa ở dạng tích; phải phân tích mỗi mẫu số thành tích hai số liên tiếp ($2=1\times 2$; $6=2\times 3$; ...) mới làm được. Khác dạng "hiệu tích chuẩn": ở đây mẫu số chưa viết sẵn dạng tích.
+NDB01577 | Bài toán tìm x áp dụng tính chất dãy phân số hiệu tích | Đề bài cho phép tính có một thành phần chưa biết $x$, trong đó có một dãy phân số hiệu - tích (tử số bằng hiệu hai thừa số ở mẫu) nằm ở một vế, và hỏi giá trị của $x$. Phải tính dãy trước rồi mới tìm thành phần chưa biết. Khác các dạng dãy hiệu - tích khác: ở đó đề hỏi giá trị của dãy, ở đây hỏi $x$.
+
+## Phân số › Bài toán về dãy phân số › Dãy phân số mẫu nhân đôi, nhân ba (NNB02290)
+NDB03517 | Tính tổng dãy phân số có mẫu nhân đôi hoặc nhân ba | Ví dụ: 1/2 + 1/4 + … + 1/2048; 1 + 1/5 + 1/25 + …
+NDB03518 | Chứng tỏ tổng dãy phân số nhỏ hơn 1 (hoặc nhỏ hơn 1/2) | 
+
+## Phân số › Giá trị phân số của một số › Giá trị phân số của một số (NNB01737)
+NDB01578 | Ứng dụng tính giá trị phân số của một số | Đề bài cho một số (toàn thể) và cho biết một phân số "của số đó", hỏi giá trị của phần ấy hoặc phần còn lại; chỉ cần một phép nhân (có thể thêm một phép trừ). Khác dạng "Ứng dụng giá trị của phân số nhiều bước": ở đó có từ hai phân số hoặc phân số "của số còn lại".
+NDB01579 | Ứng dụng giá trị của phân số nhiều bước | Đề bài cho một tổng ban đầu và hai hay nhiều phân số, mỗi phân số ứng với một phần (kể cả phần tính "của số còn lại" sau phần trước), hỏi giá trị của một phần hoặc của phần còn lại: phải làm hai phép tính trở lên. Khác dạng "Ứng dụng tính giá trị phân số của một số": ở đó chỉ một phân số, một phép nhân.
+
+## Phân số › Tìm một số khi biết giá trị phân số › Tìm đại lượng khi biết giá trị của phân số của đại lượng đó (NNB01738)
+NDB01580 | Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Hai đại lượng | Đề bài cho giá trị của một phần (phần đã cho đi, phần còn lại, hoặc "một phân số của nó bằng ...") ứng với MỘT phân số của số cần tìm, và hỏi số ban đầu; có hai đại lượng: số cần tìm và phần đã biết giá trị. Khác dạng "Ba đại lượng": ở đó có hai phần đều đã cho bằng phân số của tổng, giá trị đã biết là phần còn lại. Khác dạng "tổng hiệu các thành phần": ở đó giá trị đã biết ứng với hiệu hay tổng hai phân số.
+NDB01581 | Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Ba đại lượng | Đề bài cho hai phần, mỗi phần bằng một phân số của số cần tìm (phần thứ hai có thể tính "của số còn lại" sau phần thứ nhất), kèm giá trị phần còn lại, và hỏi số ban đầu. Phải tìm phân số ứng với phần còn lại rồi chia. Khác dạng "Hai đại lượng": ở đó chỉ một phân số đã dùng.
+NDB01582 | Tìm đại lượng khi biết giá trị của phân số của đại lượng đó - Biết giá trị tổng hiệu các thành phần | Đề bài cho hai phần bằng hai phân số của số cần tìm, nhưng giá trị đã biết là HIỆU (hơn kém) hoặc TỔNG của hai phần ấy, không phải giá trị một phần riêng hay phần còn lại; hỏi số ban đầu. Khác dạng "Ba đại lượng": ở đó giá trị đã biết là phần còn lại, ở đây là chênh lệch hay tổng của hai phần.

@@ -1,0 +1,1 @@
+[{"tieu_de":"Lúc đầu","gia_tri_phan":441,"hang":[{"nhan":"Kho A","phan":1},{"nhan":"Kho B","phan":1,"bot":"ít hơn kho A","bot_gt":97}],"tong":"785 tấn","dau_hoi":["Kho A","Kho B"]},{"tieu_de":"Lúc sau (kho A xuất đi 105 tấn, kho B nhập thêm 136 tấn)","gia_tri_phan":48,"hang":[{"nhan":"Kho A","phan":7},{"nhan":"Kho B","phan":10}],"tong":"Tổng lúc sau: 785 - 105 + 136"}]

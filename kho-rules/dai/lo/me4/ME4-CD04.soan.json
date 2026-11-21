@@ -1,0 +1,346 @@
+[
+ {
+  "ma_nguon": "CĐ4 · B1a",
+  "gop_y": false,
+  "dap_an": "$1969$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chỗ và nhóm các số hạng sao cho hai số cộng lại thành số tròn trăm, tròn nghìn thì tính nhanh hơn.\n\n**Bước 1.** Nhìn chữ số hàng đơn vị của từng số để tìm hai số cộng lại thành số tròn chục.\n\n**Bước 2.** Dùng tính chất giao hoán và kết hợp để ghép hai số đó vào cùng một ngoặc.\n\n**Bước 3.** Tính tổng trong ngoặc trước, rồi cộng với số còn lại.\n\n**Phần 2. Trình bày**\n\n$687+969+313$\n\n$=(687+313)+969$\n\n$=1000+969$\n\n$=1969$\n\nVậy $687+969+313=1969$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B1b",
+  "gop_y": false,
+  "dap_an": "$86$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ một số đi hai số liên tiếp thì bằng trừ đi tổng của hai số đó.\n\n**Bước 1.** Nhận ra hai số bị trừ lần lượt là $65$ và $35$, hai số này cộng lại được số tròn.\n\n**Bước 2.** Viết hai số đó vào trong ngoặc đặt sau dấu trừ.\n\n**Bước 3.** Tính tổng trong ngoặc rồi lấy số bị trừ trừ đi tổng đó.\n\n**Chú ý:** chỉ được bỏ hoặc thêm ngoặc sau dấu trừ khi các số trong ngoặc đều được cộng với nhau.\n\n**Phần 2. Trình bày**\n\n$186-65-35$\n\n$=186-(65+35)$\n\n$=186-100$\n\n$=86$\n\nVậy $186-65-35=86$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B1c",
+  "gop_y": false,
+  "dap_an": "$15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ đi một hiệu thì ta trừ số bị trừ trước, rồi cộng thêm số trừ của hiệu đó.\n\n**Bước 1.** Nhận ra số $1024$ xuất hiện cả ở ngoài và trong ngoặc.\n\n**Bước 2.** Bỏ ngoặc có dấu trừ đứng trước: số đứng sau dấu trừ trong ngoặc được đổi thành cộng.\n\n**Bước 3.** Thực hiện hai số $1024$ trừ nhau rồi cộng với số còn lại.\n\n**Phần 2. Trình bày**\n\n$1024-(1024-15)$\n\n$=1024-1024+15$\n\n$=0+15=15$\n\nVậy $1024-(1024-15)=15$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B1d",
+  "gop_y": false,
+  "dap_an": "$10$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai tổng có các số hạng gần nhau thì ghép từng cặp để trừ trước, ra các hiệu nhỏ dễ tính.\n\n**Bước 1.** So sánh hai số ở cùng vị trí trong hai ngoặc để thấy chúng hơn kém nhau ít.\n\n**Bước 2.** Bỏ ngoặc sau dấu trừ rồi đổi chỗ các số sao cho hai số cùng cặp đứng cạnh nhau.\n\n**Bước 3.** Tính từng hiệu trong ngoặc rồi cộng hai kết quả lại.\n\n**Phần 2. Trình bày**\n\n$(368+764)-(363+759)$\n\n$=(368-363)+(764-759)$\n\n$=5+5$\n\n$=10$\n\nVậy $(368+764)-(363+759)=10$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B1e",
+  "gop_y": false,
+  "dap_an": "$9000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chỗ các số nhưng giữ nguyên dấu đứng trước mỗi số, rồi ghép cặp sao cho hiệu là số tròn nghìn.\n\n**Bước 1.** Tìm các cặp số có ba chữ số cuối giống nhau để trừ cho nhau ra số tròn nghìn.\n\n**Bước 2.** Nhóm từng cặp vào ngoặc, mỗi số mang theo dấu đứng ngay trước nó.\n\n**Bước 3.** Tính từng hiệu trong ngoặc rồi cộng các kết quả lại.\n\n**Phần 2. Trình bày**\n\n$3145-246+2347-145+4246-347$\n\n$=(3145-145)+(2347-347)+(4246-246)$\n\n$=3000+2000+4000$\n\n$=9000$\n\nVậy $3145-246+2347-145+4246-347=9000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B2a",
+  "gop_y": false,
+  "dap_an": "$9200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính trong ngoặc trước, sau đó nếu hai tích có chung một thừa số thì đặt thừa số chung ra ngoài.\n\n**Bước 1.** Trong ngoặc, làm phép chia trước rồi mới làm phép cộng.\n\n**Bước 2.** Thay kết quả vào, xem hai tích có thừa số nào giống nhau.\n\n**Bước 3.** Đặt thừa số chung ra ngoài rồi tính hiệu trong ngoặc.\n\n**Bước 4.** Nhân thừa số chung với kết quả trong ngoặc.\n\n**Phần 2. Trình bày**\n\n$92\\times 164-64\\times(82+2170:217)$\n\n$=92\\times 164-64\\times(82+10)$\n\n$=92\\times 164-64\\times 92$\n\n$=92\\times(164-64)=92\\times 100=9200$\n\nVậy giá trị của biểu thức là $9200$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B2b",
+  "gop_y": false,
+  "dap_an": "$14200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tính các ngoặc trước, rồi thấy hai tích có chung một thừa số thì dùng tính chất nhân một số với một tổng.\n\n**Bước 1.** Tính từng ngoặc để biến mỗi số hạng thành một tích đơn giản.\n\n**Bước 2.** Nhận ra hai tích có chung một thừa số.\n\n**Bước 3.** Gộp hai tích thành một tích: thừa số chung nhân với tổng hai thừa số còn lại.\n\n**Bước 4.** Tính tổng trong ngoặc rồi nhân.\n\n**Phần 2. Trình bày**\n\n$(100+42)\\times 42+(200-58)\\times 58$\n\n$=142\\times 42+142\\times 58$\n\n$=142\\times(42+58)$\n\n$=142\\times 100=14200$\n\nVậy giá trị của biểu thức là $14200$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B2c",
+  "gop_y": false,
+  "dap_an": "$6320$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết lại số hạng đứng một mình thành một tích có chung thừa số, rồi nhóm hai lần theo thừa số chung.\n\n**Bước 1.** Nhận ra $132$ đứng một mình chính là $132\\times 1$, nên gộp được với $132\\times 9$.\n\n**Bước 2.** Tính tổng trong ngoặc của nhóm đầu để ra một số tròn chục.\n\n**Bước 3.** Đổi tích còn lại để có thừa số $10$ giống nhóm đầu rồi đặt $10$ ra ngoài.\n\n**Bước 4.** Tính tổng trong ngoặc rồi nhân.\n\n**Phần 2. Trình bày**\n\n$132\\times 9+132+100\\times 50$\n\n$=132\\times(9+1)+10\\times 500$\n\n$=132\\times 10+10\\times 500$\n\n$=10\\times(132+500)$\n\n$=10\\times 632=6320$\n\nVậy giá trị của biểu thức là $6320$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B2d",
+  "gop_y": false,
+  "dap_an": "$56$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gộp hai tích có chung thừa số trong ngoặc, sau đó thấy số bị chia và số chia có cùng một thừa số.\n\n**Bước 1.** Nhận ra trong ngoặc hai tích cùng có thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài rồi tính tổng trong ngoặc.\n\n**Bước 3.** So sánh số trong ngoặc với số chia $62$ để thấy hai số giống nhau.\n\n**Bước 4.** Thực hiện phép nhân chia từ trái sang phải.\n\n**Phần 2. Trình bày**\n\n$(56\\times 27+56\\times 35):62$\n\n$=56\\times(27+35):62$\n\n$=56\\times 62:62$\n\n$=56\\times 1=56$\n\nVậy giá trị của biểu thức là $56$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B2e",
+  "gop_y": false,
+  "dap_an": "$79$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** gộp hiệu hai tích có chung thừa số, rồi tách một thừa số để rút gọn với số chia.\n\n**Bước 1.** Nhận ra trong ngoặc hai tích cùng có thừa số chung.\n\n**Bước 2.** Đặt thừa số chung ra ngoài rồi tính hiệu trong ngoặc.\n\n**Bước 3.** Tách thừa số $158$ thành một tích có thừa số $2$ để nhóm cùng số $90$.\n\n**Bước 4.** Nhóm tích tạo ra số bằng số chia rồi thực hiện phép chia.\n\n**Phần 2. Trình bày**\n\n$(158\\times 129-158\\times 39):180$\n\n$=158\\times(129-39):180$\n\n$=158\\times 90:180$\n\n$=79\\times 2\\times 90:180$\n\n$=79\\times 180:180$\n\n$=79\\times 1=79$\n\nVậy giá trị của biểu thức là $79$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3a",
+  "gop_y": false,
+  "dap_an": "$24000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chỗ các thừa số trong từng tích để xuất hiện một thừa số chung, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Trong mỗi tích, nhân hai thừa số nhỏ trước để xem có ra cùng một số không.\n\n**Bước 2.** Dùng tính chất giao hoán và kết hợp để đưa hai thừa số nhỏ đứng cạnh nhau.\n\n**Bước 3.** Đặt thừa số chung ra ngoài rồi tính tổng trong ngoặc.\n\n**Bước 4.** Nhân thừa số chung với tổng đó.\n\n**Phần 2. Trình bày**\n\n$8\\times 427\\times 3+6\\times 573\\times 4$\n\n$=8\\times 3\\times 427+6\\times 4\\times 573$\n\n$=24\\times 427+24\\times 573$\n\n$=24\\times(427+573)$\n\n$=24\\times 1000=24000$\n\nVậy giá trị của biểu thức là $24000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3b",
+  "gop_y": false,
+  "dap_an": "$0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách một thừa số thành tích của hai số để hai tích trở nên giống hệt nhau.\n\n**Bước 1.** Nhận ra $86$ gấp đôi $43$, nên $86$ có thể viết thành tích của $43$ với một số nhỏ.\n\n**Bước 2.** Viết lại tích thứ nhất sao cho có thừa số $43$ giống tích thứ hai.\n\n**Bước 3.** Nhân các thừa số còn lại ở mỗi tích rồi so sánh hai tích với nhau.\n\n**Phần 2. Trình bày**\n\n$86\\times 27-43\\times 54$\n\n$=43\\times 2\\times 27-43\\times 54$\n\n$=43\\times 54-43\\times 54=0$\n\nVậy giá trị của biểu thức là $0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3c",
+  "gop_y": false,
+  "dap_an": "$200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong mỗi ngoặc, viết số đứng một mình thành tích với $1$ rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Nhận ra $145$ trong ngoặc đầu chính là $145\\times 1$ và $143$ trong ngoặc sau là $143\\times 1$.\n\n**Bước 2.** Đặt thừa số chung ra ngoài ở từng ngoặc rồi tính tổng, hiệu trong ngoặc.\n\n**Bước 3.** Hai tích mới cùng có thừa số $100$, nên đặt $100$ ra ngoài.\n\n**Bước 4.** Tính hiệu hai số rồi nhân với $100$.\n\n**Phần 2. Trình bày**\n\n$(145\\times 99+145)-(143\\times 101-143)$\n\n$=145\\times(99+1)-143\\times(101-1)$\n\n$=145\\times 100-143\\times 100$\n\n$=(145-143)\\times 100$\n\n$=2\\times 100=200$\n\nVậy giá trị của biểu thức là $200$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3d",
+  "gop_y": false,
+  "dap_an": "$5300$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ đi hai tích có chung thừa số thì ta trừ đi tích của thừa số chung với tổng hai thừa số còn lại.\n\n**Bước 1.** Nhận ra hai tích bị trừ cùng có thừa số $47$.\n\n**Bước 2.** Gộp hai tích đó lại thành một tích đặt trong ngoặc sau dấu trừ.\n\n**Bước 3.** Tính tổng hai thừa số còn lại để ra số tròn.\n\n**Bước 4.** Tính tích rồi lấy $10000$ trừ đi tích đó.\n\n**Phần 2. Trình bày**\n\n$10000-47\\times 72-47\\times 28$\n\n$=10000-47\\times(72+28)$\n\n$=10000-47\\times 100$\n\n$=10000-4700=5300$\n\nVậy giá trị của biểu thức là $5300$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3e",
+  "gop_y": false,
+  "dap_an": "$5200$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi chỗ các số hạng để hai số cộng lại thành số tròn, và hai tích có chung thừa số được gộp lại.\n\n**Bước 1.** Tìm hai số hạng đứng riêng lẻ có tổng là số tròn nghìn.\n\n**Bước 2.** Đổi chỗ các số hạng, giữ nguyên dấu đứng trước từng số, để hai số đó đứng cạnh nhau.\n\n**Bước 3.** Nhận ra hai tích bị trừ cùng có thừa số $48$ và gộp lại.\n\n**Bước 4.** Tính tổng trong ngoặc, nhân rồi lấy số tròn nghìn trừ đi tích.\n\n**Phần 2. Trình bày**\n\n$3457-27\\times 48-48\\times 73+6543$\n\n$=3457+6543-27\\times 48-48\\times 73$\n\n$=10000-48\\times(27+73)$\n\n$=10000-48\\times 100$\n\n$=10000-4800=5200$\n\nVậy giá trị của biểu thức là $5200$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3f",
+  "gop_y": false,
+  "dap_an": "$326272$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách một thừa số thành tổng của hai số để xuất hiện một thừa số chung, phần dư nhân ra sẽ đứng lại một mình.\n\n**Bước 1.** Nhận ra $327$ hơn $326$ một đơn vị nên viết $327=326+1$.\n\n**Bước 2.** Nhân phân phối để tách tích thứ hai thành hai tích.\n\n**Bước 3.** Gộp hai tích có thừa số chung $326$ và tính tổng trong ngoặc.\n\n**Bước 4.** Nhân rồi cộng với tích còn lại.\n\n**Phần 2. Trình bày**\n\n$326\\times 728+327\\times 272$\n\n$=326\\times 728+(326+1)\\times 272$\n\n$=326\\times 728+326\\times 272+272$\n\n$=326\\times(728+272)+272$\n\n$=326\\times 1000+272$\n\n$=326000+272=326272$\n\nVậy giá trị của biểu thức là $326272$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B3g",
+  "gop_y": false,
+  "dap_an": "$2008133$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tách một thừa số thành tổng của hai số để xuất hiện một thừa số chung, phần dư nhân ra sẽ đứng lại một mình.\n\n**Bước 1.** Nhận ra $2009$ hơn $2008$ một đơn vị nên viết $2009=2008+1$.\n\n**Bước 2.** Nhân phân phối để tách tích thứ hai thành hai tích.\n\n**Bước 3.** Gộp hai tích có thừa số chung $2008$ và tính tổng trong ngoặc.\n\n**Bước 4.** Nhân rồi cộng với tích còn lại.\n\n**Phần 2. Trình bày**\n\n$2008\\times 867+2009\\times 133$\n\n$=2008\\times 867+(2008+1)\\times 133$\n\n$=2008\\times 867+2008\\times 133+133$\n\n$=2008\\times(867+133)+133$\n\n$=2008\\times 1000+133$\n\n$=2008000+133=2008133$\n\nVậy giá trị của biểu thức là $2008133$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4a",
+  "gop_y": false,
+  "dap_an": "$12340$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** các tích có chung một thừa số thì gộp lại thành thừa số chung nhân với tổng các thừa số còn lại.\n\n**Bước 1.** Nhận ra mọi số hạng đều có thừa số $1234$, số hạng cuối chính là $1234\\times 1$.\n\n**Bước 2.** Đặt $1234$ ra ngoài ngoặc.\n\n**Bước 3.** Tính tổng các số trong ngoặc rồi nhân với $1234$.\n\n**Phần 2. Trình bày**\n\n$1234\\times 4+1234\\times 3+1234\\times 2+1234$\n\n$=1234\\times(4+3+2+1)$\n\n$=1234\\times 10=12340$\n\nVậy giá trị của biểu thức là $12340$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4b",
+  "gop_y": false,
+  "dap_an": "$34500$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đặt thừa số chung ra ngoài, nhớ rằng số $345$ đứng một mình là $345\\times 1$ và dấu trừ đứng trước nó vẫn giữ nguyên.\n\n**Bước 1.** Nhận ra cả ba số hạng đều có thừa số $345$.\n\n**Bước 2.** Đặt $345$ ra ngoài, mỗi số hạng mang theo dấu đứng ngay trước nó.\n\n**Bước 3.** Tính trong ngoặc rồi nhân với $345$.\n\n**Phần 2. Trình bày**\n\n$345\\times 123-345-345\\times 22$\n\n$=345\\times(123-1-22)$\n\n$=345\\times 100=34500$\n\nVậy giá trị của biểu thức là $34500$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4c",
+  "gop_y": false,
+  "dap_an": "$100000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong một tích, ghép các thừa số có tích tròn như $4\\times 25=100$ và $8\\times 125=1000$.\n\n**Bước 1.** Tìm các cặp thừa số nhân với nhau được số tròn trăm hoặc tròn nghìn.\n\n**Bước 2.** Dùng tính chất kết hợp để đưa mỗi cặp vào một ngoặc.\n\n**Bước 3.** Nhân các tích tròn với nhau.\n\n**Phần 2. Trình bày**\n\n$4\\times 125\\times 25\\times 8$\n\n$=(4\\times 25)\\times(125\\times 8)$\n\n$=100\\times 1000=100000$\n\nVậy giá trị của biểu thức là $100000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4d",
+  "gop_y": false,
+  "dap_an": "$2500000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong một tích, ghép các thừa số có tích tròn như $2\\times 50=100$ và $8\\times 125=1000$.\n\n**Bước 1.** Tìm các cặp thừa số nhân với nhau được số tròn trăm hoặc tròn nghìn.\n\n**Bước 2.** Dùng tính chất giao hoán, kết hợp để đưa mỗi cặp vào một ngoặc, thừa số còn lại để ngoài.\n\n**Bước 3.** Nhân các tích tròn với nhau rồi nhân với thừa số còn lại.\n\n**Phần 2. Trình bày**\n\n$2\\times 8\\times 50\\times 25\\times 125$\n\n$=(2\\times 50)\\times(8\\times 125)\\times 25$\n\n$=100\\times 1000\\times 25$\n\n$=2500000$\n\nVậy giá trị của biểu thức là $2500000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4e",
+  "gop_y": false,
+  "dap_an": "$150000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trong một tích, ghép các thừa số có tích tròn như $2\\times 50=100$ và $4\\times 25=100$.\n\n**Bước 1.** Tìm các cặp thừa số nhân với nhau được số tròn trăm.\n\n**Bước 2.** Dùng tính chất giao hoán, kết hợp để đưa mỗi cặp vào một ngoặc, hai thừa số còn lại ghép thành một cặp.\n\n**Bước 3.** Nhân các tích với nhau.\n\n**Phần 2. Trình bày**\n\n$2\\times 3\\times 4\\times 5\\times 50\\times 25$\n\n$=(2\\times 50)\\times(4\\times 25)\\times(3\\times 5)$\n\n$=100\\times 100\\times 15$\n\n$=150000$\n\nVậy giá trị của biểu thức là $150000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B4f",
+  "gop_y": false,
+  "dap_an": "$400000$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** ghép các thừa số thành cặp có tích tròn trong từng tích, rồi nhận ra hai tích có chung một thừa số.\n\n**Bước 1.** Ở mỗi tích, tìm các cặp thừa số nhân với nhau được số tròn.\n\n**Bước 2.** Nhóm từng cặp vào ngoặc, tính ra các tích tròn.\n\n**Bước 3.** Nhận ra hai tích sau khi nhóm có chung một thừa số tròn nghìn.\n\n**Bước 4.** Đặt thừa số chung ra ngoài, tính hiệu trong ngoặc rồi nhân.\n\n**Phần 2. Trình bày**\n\n$25\\times 20\\times 125\\times 8-8\\times 20\\times 5\\times 125$\n\n$=(25\\times 20)\\times(125\\times 8)-(8\\times 125)\\times(20\\times 5)$\n\n$=500\\times 1000-1000\\times 100$\n\n$=1000\\times(500-100)$\n\n$=1000\\times 400=400000$\n\nVậy giá trị của biểu thức là $400000$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5a",
+  "gop_y": false,
+  "dap_an": "$x=274$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** làm phép chia trước theo thứ tự thực hiện phép tính, rồi tìm số bị trừ bằng cách lấy hiệu cộng với số trừ.\n\n**Bước 1.** Thực hiện phép chia $140:35$ để biểu thức gọn lại.\n\n**Bước 2.** Nhận ra $x$ là số bị trừ trong phép trừ còn lại.\n\n**Bước 3.** Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ.\n\n**Phần 2. Trình bày**\n\n$x-140:35=270$\n\n$\\begin{array}{l} x-4=270 \\\\ x=270+4 \\\\ x=274 \\end{array}$\n\nVậy $x=274$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5b",
+  "gop_y": false,
+  "dap_an": "$x=29$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm lần lượt từng thành phần chưa biết: trước hết tìm số chia là cả ngoặc, rồi tìm $x$ trong ngoặc.\n\n**Bước 1.** Xem $87:x$ là một số chưa biết, nó là số chia của phép chia $357:(87:x)$.\n\n**Bước 2.** Muốn tìm số chia, ta lấy số bị chia chia cho thương.\n\n**Bước 3.** Khi biết $87:x$, tìm $x$ là số chia nên lấy số bị chia chia cho thương.\n\n**Phần 2. Trình bày**\n\n$357:(87:x)=119$\n\n$\\begin{array}{l} 87:x=357:119 \\\\ 87:x=3 \\\\ x=87:3 \\\\ x=29 \\end{array}$\n\nVậy $x=29$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5c",
+  "gop_y": false,
+  "dap_an": "$x=7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** nhóm các chữ $x$ lại với nhau và các số lại với nhau, đưa về một phép nhân với $x$.\n\n**Bước 1.** Bỏ các ngoặc rồi nhóm ba chữ $x$ thành một nhóm, các số thành một nhóm.\n\n**Bước 2.** Cộng các số, viết ba chữ $x$ thành $3\\times x$.\n\n**Bước 3.** Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết.\n\n**Bước 4.** Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$(x+1)+(x+3)+(x+5)=30$\n\n$\\begin{array}{l} (x+x+x)+(1+3+5)=30 \\\\ 3\\times x+9=30 \\\\ 3\\times x=30-9 \\\\ 3\\times x=21 \\\\ x=21:3 \\\\ x=7 \\end{array}$\n\nVậy $x=7$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5d",
+  "gop_y": false,
+  "dap_an": "$x=25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** bỏ ngoặc bằng cách nhân $(x-25)$ với $5$, rồi gộp các số và gộp các chữ $x$ lại.\n\n**Bước 1.** Nhân từng số trong ngoặc $(x-25)$ với $5$ để bỏ ngoặc.\n\n**Bước 2.** Gộp hai số $125$ đối nhau để chúng triệt tiêu.\n\n**Bước 3.** Gộp các chữ $x$ lại thành một phép nhân $x\\times$ một số.\n\n**Bước 4.** Tìm $x$ là thừa số bằng cách lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$125+(x-25)\\times 5+x=150$\n\n$\\begin{array}{l} 125+x\\times 5-25\\times 5+x=150 \\\\ 125+x\\times 5-125+x=150 \\\\ 125-125+x\\times 5+x=150 \\\\ 0+x\\times(5+1)=150 \\\\ x\\times 6=150 \\\\ x=150:6 \\\\ x=25 \\end{array}$\n\nVậy $x=25$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5e",
+  "gop_y": false,
+  "dap_an": "$x=143$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** dùng tính chất nhân một số với một hiệu, một tổng để gộp $x\\times 101-x$ và $72\\times 99+72$.\n\n**Bước 1.** Nhận ra $x$ đứng một mình chính là $x\\times 1$ và $72$ đứng một mình chính là $72\\times 1$.\n\n**Bước 2.** Đặt $x$ ra ngoài ở nhóm đầu, đặt $72$ ra ngoài ở nhóm sau rồi tính trong ngoặc.\n\n**Bước 3.** Hai tích cùng có thừa số $100$, nên gộp lại thành $(x+72)\\times 100$.\n\n**Bước 4.** Tìm $x+72$ rồi tìm $x$ theo quy tắc tìm số hạng.\n\n**Phần 2. Trình bày**\n\n$x\\times 101-x+72\\times 99+72=21500$\n\n$\\begin{array}{l} x\\times(101-1)+72\\times(99+1)=21500 \\\\ x\\times 100+72\\times 100=21500 \\\\ (x+72)\\times 100=21500 \\\\ x+72=21500:100 \\\\ x+72=215 \\\\ x=215-72 \\\\ x=143 \\end{array}$\n\nVậy $x=143$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5f",
+  "gop_y": false,
+  "dap_an": "$x=19$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** hai phép chia có cùng số chia $x$ thì ta trừ hai số bị chia trước rồi mới chia cho $x$.\n\n**Bước 1.** Nhận ra hai số bị chia khác nhau nhưng cùng chia cho $x$.\n\n**Bước 2.** Gộp thành phép chia một số bị chia bằng hiệu hai số, cho $x$.\n\n**Bước 3.** Muốn tìm số chia, ta lấy số bị chia chia cho thương.\n\n**Phần 2. Trình bày**\n\n$2010:x-1307:x=37$\n\n$\\begin{array}{l} (2010-1307):x=37 \\\\ 703:x=37 \\\\ x=703:37 \\\\ x=19 \\end{array}$\n\nVậy $x=19$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5g",
+  "gop_y": false,
+  "dap_an": "$x=5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** tìm dần từng thành phần chưa biết từ ngoài vào trong, chia một tổng cho $x$ thành tổng các thương rồi tìm $x$.\n\n**Bước 1.** Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu, để tìm cả phần $(x+15):x\\times 20$.\n\n**Bước 2.** Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết, để tìm $(x+15):x$.\n\n**Bước 3.** Chia một tổng cho một số thì chia từng số hạng cho số đó: $(x+15):x=x:x+15:x$.\n\n**Bước 4.** Tìm $15:x$ rồi tìm $x$ theo quy tắc tìm số chia.\n\n**Chú ý:** $x:x$ luôn bằng $1$.\n\n**Phần 2. Trình bày**\n\n$180-(x+15):x\\times 20=100$\n\n$\\begin{array}{l} (x+15):x\\times 20=180-100 \\\\ (x+15):x\\times 20=80 \\\\ (x+15):x=80:20 \\\\ (x+15):x=4 \\\\ x:x+15:x=4 \\\\ 1+15:x=4 \\\\ 15:x=4-1 \\\\ 15:x=3 \\\\ x=15:3 \\\\ x=5 \\end{array}$\n\nVậy $x=5$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B5h",
+  "gop_y": false,
+  "dap_an": "$x=15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** đổi mỗi số hạng thành tích của $x$ với một số, rồi gộp ba số hạng bằng cách đặt $x$ ra ngoài.\n\n**Bước 1.** Viết $x:8\\times 32$ thành $x\\times 32:8$ để tính phần chia trước.\n\n**Bước 2.** Làm tương tự với hai số hạng còn lại, mỗi số hạng thành $x$ nhân một số.\n\n**Bước 3.** Đặt $x$ ra ngoài và tính tổng, hiệu các số trong ngoặc.\n\n**Bước 4.** Tìm $x$ là thừa số bằng cách lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$x:8\\times 32+x:3\\times 18-x:5\\times 10=120$\n\n$\\begin{array}{l} x\\times 32:8+x\\times 18:3-x\\times 10:5=120 \\\\ x\\times 4+x\\times 6-x\\times 2=120 \\\\ x\\times(4+6-2)=120 \\\\ x\\times 8=120 \\\\ x=120:8 \\\\ x=15 \\end{array}$\n\nVậy $x=15$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B6",
+  "gop_y": false,
+  "dap_an": "Tăng $198$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết hai số theo cấu tạo số rồi lấy số mới trừ số cũ, các chữ số cùng hàng sẽ cho hiệu theo quy luật liên tiếp.\n\n**Bước 1.** Gọi số cần tìm là $\\overline{abc}$, dùng điều kiện ba chữ số liên tiếp tăng dần để tìm hiệu $c-a$.\n\n**Bước 2.** Viết số đảo ngược là $\\overline{cba}$ rồi viết cả hai số theo cấu tạo số.\n\n**Bước 3.** Lấy số mới trừ số cũ, gộp các số cùng hàng để tìm quy luật.\n\n**Bước 4.** Thay hiệu $c-a$ vào để biết số mới tăng hay giảm bao nhiêu đơn vị.\n\n**Phần 2. Trình bày**\n\nGọi số có $3$ chữ số đó là $\\overline{abc}$ ($a$ khác $0$).\n\nVì ba chữ số liên tiếp tăng dần nên $b=a+1$ và $c=b+1=a+2$, suy ra $c-a=2$.\n\nSố đó viết theo thứ tự ngược lại là $\\overline{cba}$.\n\nTa có: $\\overline{cba}-\\overline{abc}$\n\n$=100\\times c+10\\times b+a-(100\\times a+10\\times b+c)$\n\n$=100\\times c+10\\times b+a-100\\times a-10\\times b-c$\n\n$=(100\\times c-c)+(10\\times b-10\\times b)-(100\\times a-a)$\n\n$=99\\times c-99\\times a=99\\times(c-a)$\n\n$=99\\times 2=198$ (vì $c-a=2$)\n\nVậy số đó tăng $198$ đơn vị.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B7a",
+  "gop_y": false,
+  "dap_an": "$x=8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số $\\overline{xx}$ theo cấu tạo số thành $11$ lần $x$, rồi gộp các chữ $x$ lại.\n\n**Bước 1.** Viết $\\overline{xx}=x\\times 10+x$ rồi gộp thành $x\\times 11$.\n\n**Bước 2.** Gộp $x\\times 11$ với $x$ thành một tích có thừa số $x$.\n\n**Bước 3.** Muốn tìm số hạng chưa biết, ta lấy tổng trừ số hạng đã biết.\n\n**Bước 4.** Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$\\overline{xx}+x+5=101$\n\n$\\begin{array}{l} x\\times 11+x=101-5 \\\\ x\\times(11+1)=96 \\\\ x\\times 12=96 \\\\ x=96:12 \\\\ x=8 \\end{array}$\n\nVậy $x=8$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B7b",
+  "gop_y": false,
+  "dap_an": "$x=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết $\\overline{xxx}$ thành $111$ lần $x$ và $\\overline{xx}$ thành $11$ lần $x$, rồi gộp các tích có thừa số $x$.\n\n**Bước 1.** Viết $\\overline{xxx}=x\\times 111$ và $\\overline{xx}=x\\times 11$ theo cấu tạo số.\n\n**Bước 2.** Gộp các số hạng có $x$ lại, tính hiệu các số trong ngoặc.\n\n**Bước 3.** Chuyển số $25$ sang vế phải bằng cách lấy tổng cộng thêm số trừ.\n\n**Bước 4.** Tìm $x$ là thừa số bằng cách lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$\\overline{xxx}-\\overline{xx}-x-25=272$\n\n$\\begin{array}{l} x\\times 111-x\\times 11-x-25=272 \\\\ x\\times(111-11-1)=272+25 \\\\ x\\times 99=297 \\\\ x=297:99 \\\\ x=3 \\end{array}$\n\nVậy $x=3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B7c",
+  "gop_y": false,
+  "dap_an": "$x=8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết $\\overline{xxx}$ thành $111$ lần $x$ và $\\overline{xx}$ thành $11$ lần $x$, rồi gộp các tích có thừa số $x$.\n\n**Bước 1.** Viết $\\overline{xxx}=x\\times 111$ và $\\overline{xx}=x\\times 11$ theo cấu tạo số.\n\n**Bước 2.** Đếm đúng số chữ $x$ đứng riêng lẻ rồi gộp mọi số hạng có $x$ vào một ngoặc.\n\n**Bước 3.** Chuyển số $1$ sang vế phải bằng cách lấy tổng trừ số hạng đã biết.\n\n**Bước 4.** Tìm $x$ là thừa số bằng cách lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$\\overline{xxx}+\\overline{xx}+x+x+x+1=1001$\n\n$\\begin{array}{l} x\\times 111+x\\times 11+x+x+x+1=1001 \\\\ x\\times(111+11+1+1+1)=1001-1 \\\\ x\\times 125=1000 \\\\ x=1000:125 \\\\ x=8 \\end{array}$\n\nVậy $x=8$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B7d",
+  "gop_y": false,
+  "dap_an": "$x=9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** trừ liên tiếp ba số thì bằng trừ đi tổng của chúng; tìm tổng đó trước, rồi viết các số theo cấu tạo số.\n\n**Bước 1.** Đưa ba số bị trừ vào một ngoặc đặt sau dấu trừ.\n\n**Bước 2.** Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu.\n\n**Bước 3.** Viết $\\overline{xxx}$, $\\overline{xx}$ theo cấu tạo số rồi gộp các tích có thừa số $x$.\n\n**Bước 4.** Tìm $x$ là thừa số bằng cách lấy tích chia cho thừa số đã biết.\n\n**Phần 2. Trình bày**\n\n$35655-\\overline{xxx}-\\overline{xx}-x=34548$\n\n$\\begin{array}{l} 35655-(\\overline{xxx}+\\overline{xx}+x)=34548 \\\\ \\overline{xxx}+\\overline{xx}+x=35655-34548 \\\\ x\\times 111+x\\times 11+x=1107 \\\\ x\\times(111+11+1)=1107 \\\\ x\\times 123=1107 \\\\ x=1107:123 \\\\ x=9 \\end{array}$\n\nVậy $x=9$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B8a",
+  "gop_y": false,
+  "dap_an": "$C=D$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số có hai chữ số giống nhau thành $11$ lần chữ số đó, rồi so sánh hai tích có cùng các thừa số.\n\n**Bước 1.** Viết $\\overline{aa}$ theo cấu tạo số rồi suy ra nó bằng $11$ nhân với $a$.\n\n**Bước 2.** Làm tương tự với $\\overline{bb}$.\n\n**Bước 3.** Viết $C$ và $D$ thành tích của $11$, $a$, $b$ rồi so sánh hai tích.\n\n**Phần 2. Trình bày**\n\nSo sánh $C=\\overline{aa}\\times b$ và $D=\\overline{bb}\\times a$.\n\nTa có: $C=\\overline{aa}\\times b=11\\times a\\times b$.\n\n$D=\\overline{bb}\\times a=11\\times b\\times a=11\\times a\\times b$.\n\nDo đó $C=D$ (vì cùng bằng $11\\times a\\times b$).\n\nVậy $C=D$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B8b",
+  "gop_y": false,
+  "dap_an": "$C=D$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết số có ba chữ số giống nhau thành $111$ lần chữ số đó, rồi so sánh hai tích có cùng các thừa số.\n\n**Bước 1.** Viết $\\overline{aaa}$ theo cấu tạo số rồi suy ra nó bằng $111$ nhân với $a$.\n\n**Bước 2.** Làm tương tự với $\\overline{bbb}$.\n\n**Bước 3.** Viết $C$ và $D$ thành tích của $111$, $a$, $b$ rồi so sánh hai tích.\n\n**Phần 2. Trình bày**\n\nSo sánh $C=\\overline{aaa}\\times b$ và $D=\\overline{bbb}\\times a$.\n\nTa có:\n\n$C=\\overline{aaa}\\times b=111\\times a\\times b$.\n\n$D=\\overline{bbb}\\times a=111\\times b\\times a=111\\times a\\times b$.\n\nDo đó $C=D$ (vì cùng bằng $111\\times a\\times b$).\n\nVậy $C=D$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B9",
+  "gop_y": false,
+  "dap_an": "Tăng $3087$ đơn vị",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết hai số theo cấu tạo số rồi lấy số mới trừ số cũ, các chữ số cùng hàng cho hiệu theo quy luật liên tiếp.\n\n**Bước 1.** Gọi số cần tìm là $\\overline{abcd}$, dùng điều kiện liên tiếp tăng dần để tìm các hiệu $d-a$ và $c-b$.\n\n**Bước 2.** Viết số đảo ngược là $\\overline{dcba}$ rồi viết cả hai số theo cấu tạo số.\n\n**Bước 3.** Lấy số mới trừ số cũ, gộp các số cùng hàng để ra hai tích có thừa số $999$ và $90$.\n\n**Bước 4.** Thay các hiệu tìm được vào để biết số mới tăng hay giảm bao nhiêu đơn vị.\n\n**Phần 2. Trình bày**\n\nGọi số có $4$ chữ số đó là $\\overline{abcd}$ ($a$ khác $0$).\n\nVì bốn chữ số liên tiếp tăng dần nên $b=a+1$; $c=b+1=a+2$; $d=c+1=b+2=a+3$, suy ra $d-a=3$ và $c-b=1$.\n\nSố đó viết theo thứ tự ngược lại là $\\overline{dcba}$.\n\nTa có: $\\overline{dcba}-\\overline{abcd}$\n\n$=1000\\times d+100\\times c+10\\times b+a-(1000\\times a+100\\times b+10\\times c+d)$\n\n$=1000\\times d+100\\times c+10\\times b+a-1000\\times a-100\\times b-10\\times c-d$\n\n$=(1000\\times d-d)+(100\\times c-10\\times c)-(100\\times b-10\\times b)-(1000\\times a-a)$\n\n$=999\\times d+90\\times c-90\\times b-999\\times a$\n\n$=999\\times(d-a)+90\\times(c-b)$\n\n$=999\\times 3+90\\times 1$ (vì $d-a=3$; $c-b=1$)\n\n$=2997+90=3087$\n\nVậy số đó tăng $3087$ đơn vị.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B10a",
+  "gop_y": false,
+  "dap_an": "$5265$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết cả hai số theo cấu tạo số, trừ nhau rồi gộp các số cùng hàng để chỉ còn các hiệu $a-d$ và $b-c$.\n\n**Bước 1.** Viết $\\overline{abcd}$ và $\\overline{dcba}$ theo cấu tạo số, mỗi chữ số nhân với giá trị hàng của nó.\n\n**Bước 2.** Lấy số thứ nhất trừ số thứ hai rồi gộp các số cùng chữ số.\n\n**Bước 3.** Đưa kết quả về dạng tích của $999$ với $(a-d)$ cộng tích của $90$ với $(b-c)$.\n\n**Bước 4.** Thay hai hiệu đã cho vào rồi tính.\n\n**Phần 2. Trình bày**\n\nTính $\\overline{abcd}-\\overline{dcba}$, biết $a-d=5$; $b-c=3$.\n\nTa có: $\\overline{abcd}-\\overline{dcba}$\n\n$=1000\\times a+100\\times b+10\\times c+d-(1000\\times d+100\\times c+10\\times b+a)$\n\n$=1000\\times a+100\\times b+10\\times c+d-1000\\times d-100\\times c-10\\times b-a$\n\n$=(1000\\times a-a)+(100\\times b-10\\times b)-(100\\times c-10\\times c)-(1000\\times d-d)$\n\n$=999\\times a+90\\times b-90\\times c-999\\times d$\n\n$=999\\times(a-d)+90\\times(b-c)$\n\nThay $a-d=5$; $b-c=3$ vào ta được: $999\\times 5+90\\times 3=4995+270=5265$\n\nVậy $\\overline{abcd}-\\overline{dcba}=5265$ với $a-d=5$; $b-c=3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B10b",
+  "gop_y": false,
+  "dap_an": "$4635$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** viết cả hai số theo cấu tạo số, trừ nhau rồi gộp các số cùng hàng để chỉ còn các hiệu $a-d$ và $c-b$.\n\n**Bước 1.** Viết $\\overline{abcd}$ và $\\overline{dcba}$ theo cấu tạo số, mỗi chữ số nhân với giá trị hàng của nó.\n\n**Bước 2.** Lấy số thứ nhất trừ số thứ hai rồi gộp các số cùng chữ số.\n\n**Bước 3.** Đưa kết quả về dạng tích của $999$ với $(a-d)$ trừ tích của $90$ với $(c-b)$, vì đề cho hiệu lớn trừ bé.\n\n**Bước 4.** Thay hai hiệu đã cho vào rồi tính.\n\n**Phần 2. Trình bày**\n\nTính $\\overline{abcd}-\\overline{dcba}$, biết $a-d=5$; $c-b=4$.\n\nTa có: $\\overline{abcd}-\\overline{dcba}$\n\n$=1000\\times a+100\\times b+10\\times c+d-(1000\\times d+100\\times c+10\\times b+a)$\n\n$=1000\\times a+100\\times b+10\\times c+d-1000\\times d-100\\times c-10\\times b-a$\n\n$=(1000\\times a-a)+(100\\times b-10\\times b)-(100\\times c-10\\times c)-(1000\\times d-d)$\n\n$=999\\times a+90\\times b-90\\times c-999\\times d$\n\n$=999\\times(a-d)-90\\times(c-b)$\n\nThay $a-d=5$; $c-b=4$ vào ta được: $999\\times 5-90\\times 4=4995-360=4635$\n\nVậy $\\overline{abcd}-\\overline{dcba}=4635$ với $a-d=5$; $c-b=4$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B11",
+  "gop_y": false,
+  "dap_an": "$y=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** số $2024$ không đổi, nên biểu thức nhỏ nhất khi thương $2023:(2023-y)$ nhỏ nhất.\n\n**Bước 1.** Nhận ra chỉ có thương là thay đổi theo $y$, còn $2024$ giữ nguyên.\n\n**Bước 2.** Với số bị chia $2023$ không đổi, thương nhỏ nhất khi số chia lớn nhất.\n\n**Bước 3.** Số chia $2023-y$ lớn nhất khi số trừ $y$ nhỏ nhất, mà $y$ là số tự nhiên.\n\n**Bước 4.** Thay giá trị $y$ tìm được vào biểu thức để tính giá trị nhỏ nhất.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên $y$ để biểu thức $2024+2023:(2023-y)$ đạt giá trị nhỏ nhất.\n\nĐể biểu thức $2024+2023:(2023-y)$ đạt giá trị nhỏ nhất thì $2023:(2023-y)$ đạt giá trị nhỏ nhất.\n\n$2023:(2023-y)$ đạt giá trị nhỏ nhất khi $2023-y$ đạt giá trị lớn nhất.\n\nKhi đó: $2023-y=2023$\n\n$y=2023-2023=0$.\n\nVới $y=0$, giá trị của biểu thức đã cho là:\n\n$2024+2023:(2023-0)=2024+1=2025$.\n\nVậy giá trị nhỏ nhất của biểu thức $2024+2023:(2023-y)$ bằng $2025$ khi $y=0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ4 · B12",
+  "gop_y": false,
+  "dap_an": "$20$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** cộng theo từng hàng từ phải sang trái, chú ý số nhớ, và xét các trường hợp của chữ số $C$ rồi loại các trường hợp mâu thuẫn.\n\n**Bước 1.** Xét hàng đơn vị: $C+C$ có chữ số tận cùng là $0$, từ đó tìm các giá trị có thể của $C$.\n\n**Bước 2.** Với mỗi giá trị của $C$, xét hàng chục để tìm tổng $A+B$ có thể và số nhớ sang hàng trăm.\n\n**Bước 3.** Xét hàng trăm: tổng $A+B$ cùng số nhớ phải cho chữ số $6$ và nhớ $1$ sang hàng nghìn, rồi loại trường hợp mâu thuẫn.\n\n**Bước 4.** Với trường hợp còn lại, cộng $A+B$ với $C$ để được kết quả.\n\n**Phần 2. Trình bày**\n\nTính $A+B+C$, biết $\\overline{ABC}+\\overline{BAC}=1660$.\n\nNhìn vào phép toán ta suy ra $C+C$ có chữ số tận cùng là $0$, do đó $C=0$ hoặc $C=5$.\n\nNếu $C=0$, xét tổng các chữ số ở hàng chục $B+A$ có tận cùng là $6$, suy ra $B+A=6$ hoặc $B+A=16$.\n\nNếu $B+A=6$, viết $6$.\n\nXét tổng các chữ số ở hàng trăm có $A+B=16$, mâu thuẫn với $B+A=6$, nên loại trường hợp này.\n\nNếu $B+A=16$, viết $6$ nhớ $1$.\n\nXét tổng các chữ số ở hàng trăm có $A+B+1=16$, suy ra $A+B=15$, mâu thuẫn với $B+A=16$, nên loại trường hợp này.\n\nVì vậy loại trường hợp $C=0$, suy ra $C=5$.\n\nXét tổng các chữ số ở hàng đơn vị có $C+C=10$, viết $0$ nhớ $1$.\n\nXét tổng các chữ số ở hàng chục thấy $B+A+1$ có tận cùng là $6$ nên $B+A+1=6$ hoặc $B+A+1=16$.\n\nNếu $B+A+1=6$, viết $6$.\n\nXét tổng các chữ số ở hàng trăm có $A+B=16$, mâu thuẫn với $B+A+1=6$, nên loại trường hợp này.\n\nNếu $B+A+1=16$, viết $6$ nhớ $1$.\n\nXét tổng các chữ số ở hàng trăm có $A+B+1=16$, thoả mãn $B+A+1=16$.\n\nDo đó $C=5$ và $A+B+1=16$ hay $A+B=15$.\n\nVậy $A+B+C=15+5=20$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]

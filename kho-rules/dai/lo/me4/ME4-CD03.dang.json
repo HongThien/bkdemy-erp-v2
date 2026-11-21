@@ -1,0 +1,87 @@
+{
+ "CĐ3 · B1a": {
+  "dang": "NDB01542",
+  "chac": "cao",
+  "ly_do": "Cho bốn số, hỏi trung bình cộng của các số đó."
+ },
+ "CĐ3 · B1b": {
+  "dang": "NDB01586",
+  "chac": "cao",
+  "ly_do": "Dãy số cách đều 3 đơn vị, hỏi trung bình cộng của dãy."
+ },
+ "CĐ3 · B1c": {
+  "dang": "NDB01586",
+  "chac": "cao",
+  "ly_do": "Dãy số cách đều 4 đơn vị, hỏi trung bình cộng của dãy."
+ },
+ "CĐ3 · B1d": {
+  "dang": "NDB01586",
+  "chac": "cao",
+  "ly_do": "Dãy số cách đều 1 đơn vị từ 1 đến 2015, hỏi trung bình cộng."
+ },
+ "CĐ3 · B1e": {
+  "dang": "NDB01586",
+  "chac": "cao",
+  "ly_do": "Dãy số cách đều 5 đơn vị từ 5 đến 2005, hỏi trung bình cộng."
+ },
+ "CĐ3 · B2": {
+  "dang": "NDB01583",
+  "chac": "cao",
+  "ly_do": "Cho trung bình cộng của ba số và hai số, tìm số còn lại."
+ },
+ "CĐ3 · B3": {
+  "dang": "NDB01547",
+  "chac": "vua",
+  "ly_do": "Tổng ba số ẩn trong trung bình cộng, các số gấp đôi nhau (quy về số nhỏ nhất); gần dạng ẩn tổng."
+ },
+ "CĐ3 · B4": {
+  "dang": "NDB03459",
+  "chac": "cao",
+  "ly_do": "Tìm nhiều số chẵn liên tiếp khi biết trung bình cộng của chúng."
+ },
+ "CĐ3 · B5": {
+  "dang": "NDB01590",
+  "chac": "cao",
+  "ly_do": "Biết trung bình cộng trước và sau khi bớt một người, tìm tuổi người bớt."
+ },
+ "CĐ3 · B6": {
+  "dang": "NDB01592",
+  "chac": "cao",
+  "ly_do": "Dũng có số bi bằng trung bình cộng của cả nhóm bốn bạn."
+ },
+ "CĐ3 · B7": {
+  "dang": "NDB01593",
+  "chac": "cao",
+  "ly_do": "Quý có số bi nhiều hơn trung bình cộng của cả nhóm ba bạn là 6 viên."
+ },
+ "CĐ3 · B8": {
+  "dang": "NDB01590",
+  "chac": "cao",
+  "ly_do": "Biết trung bình cộng trước và sau khi thêm một gói, tìm gói thêm vào."
+ },
+ "CĐ3 · B9": {
+  "dang": "NDB01588",
+  "chac": "vua",
+  "ly_do": "Tổng ẩn trong trung bình cộng, hai lớp thêm khác nhau rồi bằng nhau; gần dạng tăng giảm đại lượng."
+ },
+ "CĐ3 · B10": {
+  "dang": "NDB03459",
+  "chac": "cao",
+  "ly_do": "Tìm ba số khi biết trung bình cộng của cả nhóm và các nhóm con."
+ },
+ "CĐ3 · B11": {
+  "dang": "NDB03459",
+  "chac": "cao",
+  "ly_do": "Biết trung bình cộng của 4 số và của các nhóm con 3 số, tìm trung bình cộng hai số giữa."
+ },
+ "CĐ3 · B12": {
+  "dang": "NDB01583",
+  "chac": "vua",
+  "ly_do": "Biết trung bình cộng của hai số và sau khi gấp một số lên 3 lần; không có dạng riêng."
+ },
+ "CĐ3 · B13": {
+  "dang": "NDB01593",
+  "chac": "vua",
+  "ly_do": "Trung bình cộng hai lớp nhiều hơn trung bình cộng ba lớp 2 học sinh; không đúng một dạng, gần dạng nhiều hơn trung bình cộng."
+ }
+}

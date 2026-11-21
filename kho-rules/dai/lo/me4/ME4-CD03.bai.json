@@ -1,0 +1,164 @@
+[
+ {
+  "ma": "CĐ3 · B1",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": null,
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\na) $10$; $17$; $24$; $37$.\nb) $1$; $4$; $7$; $10$; $13$; $16$; $19$; $22$; $25$.\nc) $2$; $6$; $10$; $14$; $18$; $22$; $26$; $30$; $34$; $38$.\nd) $1$; $2$; $3$; $4$; $5$; …; $2014$; $2015$.\ne) $5$; $10$; $15$; $20$; …; $2000$; $2005$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B1a",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": "a",
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\n$10$; $17$; $24$; $37$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B1b",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": "b",
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\n$1$; $4$; $7$; $10$; $13$; $16$; $19$; $22$; $25$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B1c",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": "c",
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\n$2$; $6$; $10$; $14$; $18$; $22$; $26$; $30$; $34$; $38$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B1d",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": "d",
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\n$1$; $2$; $3$; $4$; $5$; …; $2014$; $2015$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B1e",
+  "khu": "CĐ3",
+  "so": 1,
+  "y": "e",
+  "de_chung": "Tìm trung bình cộng của các số sau:",
+  "noi_dung": "Tìm trung bình cộng của các số sau:\n$5$; $10$; $15$; $20$; …; $2000$; $2005$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B2",
+  "khu": "CĐ3",
+  "so": 2,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của $3$ số bằng $25$. Biết số thứ nhất là $12$; số thứ hai là $40$. Tìm số thứ ba.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B3",
+  "khu": "CĐ3",
+  "so": 3,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của $3$ số là $35$. Tìm số thứ ba, biết số thứ nhất gấp đôi số thứ hai, số thứ hai gấp đôi số thứ ba.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B4",
+  "khu": "CĐ3",
+  "so": 4,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tìm $5$ số chẵn liên tiếp, biết trung bình cộng của chúng bằng $126$.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B5",
+  "khu": "CĐ3",
+  "so": 5,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Tuổi trung bình cộng của cô giáo chủ nhiệm và $30$ học sinh lớp 4A là $12$ tuổi. Nếu không kể cô giáo chủ nhiệm thì tuổi trung bình cộng của $30$ học sinh lớp 4A là $11$ tuổi. Hỏi cô giáo chủ nhiệm bao nhiêu tuổi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B6",
+  "khu": "CĐ3",
+  "so": 6,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "An có $18$ viên bi, Bình có $16$ viên bi, Hùng có số viên bi bằng trung bình cộng số bi của An và Bình cộng thêm $6$ viên bi, Dũng có số bi bằng trung bình cộng số bi của cả $4$ bạn. Hỏi Dũng có bao nhiêu viên bi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B7",
+  "khu": "CĐ3",
+  "so": 7,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Lân có $20$ viên bi. Long có số bi bằng một nửa số bi của Lân. Quý có số bi nhiều hơn trung bình cộng số bi của $3$ bạn là $6$ viên bi. Hỏi Quý có bao nhiêu viên bi?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B8",
+  "khu": "CĐ3",
+  "so": 8,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trọng lượng của năm gói hàng trong một thùng hàng lần lượt là $700$ g, $800$ g, $800$ g, $850$ g và $900$ g. Hỏi phải bỏ thêm một gói hàng nặng bao nhiêu gam vào thùng đó để trọng lượng trung bình của cả sáu gói sẽ tăng thêm $40$ g?",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B9",
+  "khu": "CĐ3",
+  "so": 9,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Lớp 5A và 5B trồng được một số cây. Biết trung bình cộng số cây $2$ lớp đã trồng được là $235$ cây. Nếu lớp 5A trồng thêm $80$ cây và lớp 5B trồng thêm $40$ cây thì số cây $2$ lớp bằng nhau. Tính số cây lúc đầu mỗi lớp đã trồng.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B10",
+  "khu": "CĐ3",
+  "so": 10,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của $3$ số bằng $24$. Trung bình cộng của số thứ nhất và số thứ hai bằng $21$, của số thứ hai và số thứ ba bằng $26$. Tìm $3$ số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B11",
+  "khu": "CĐ3",
+  "so": 11,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của $4$ số bằng $25$. Trung bình cộng của $3$ số đầu bằng $22$, trung bình cộng của $3$ số cuối bằng $20$. Tìm trung bình cộng của số thứ hai và số thứ ba.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B12",
+  "khu": "CĐ3",
+  "so": 12,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Trung bình cộng của $2$ số bằng $57$. Nếu gấp số thứ hai lên $3$ lần thì trung bình cộng của chúng bằng $105$. Tìm $2$ số đó.",
+  "anh": []
+ },
+ {
+  "ma": "CĐ3 · B13",
+  "khu": "CĐ3",
+  "so": 13,
+  "y": null,
+  "de_chung": "",
+  "noi_dung": "Khối lớp 4 của một trường Tiểu học có ba lớp. Biết rằng lớp 4A có $28$ học sinh, lớp 4B có $26$ học sinh. Trung bình cộng số học sinh hai lớp 4A và 4C nhiều hơn trung bình cộng số học sinh của ba lớp là $2$ học sinh. Tính số học sinh lớp 4C.",
+  "anh": []
+ }
+]

@@ -1,0 +1,122 @@
+[
+ {
+  "ma_nguon": "CĐ8 · B1",
+  "gop_y": false,
+  "dap_an": "$1993$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gọi số còn lại sau khi xoá chữ số 3 là $A$ thì số ban đầu bằng $A$ nhân 10 rồi cộng 3; hiệu của hai số cho biết ngay $A$.\n\n**Bước 1.** Gọi $A$ là số mới sau khi xoá chữ số 3 và viết số ban đầu theo $A$.\n\n**Bước 2.** Lập phép tính \"số ban đầu trừ số mới bằng 1794\" theo đề bài.\n\n**Bước 3.** Gộp các lần xuất hiện của $A$ ở hai bên rồi chuyển về dạng $A$ nhân một số bằng một số cụ thể để tìm $A$.\n\n**Bước 4.** Viết lại số ban đầu bằng cách thêm chữ số 3 vào bên phải $A$ và thử lại.\n\n**Chú ý:** $A$ có thể có nhiều chữ số nên không được đặt $A$ là một chữ số.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên biết nếu xoá đi chữ số 3 ở hàng đơn vị của số đó thì được số mới giảm $1794$ đơn vị so với số ban đầu.\n\nGọi số cần tìm có dạng $\\overline{A3}$ ($A$ là số có thể gồm 3 chữ số, 4 chữ số, ...).\n\nTheo đề bài ta có: $\\overline{A3}-A=1794$\n\n$A\\times 10+3-A=1794$\n\n$A\\times 9+3=1794$\n\n$A\\times 9=1794-3$\n\n$A\\times 9=1791$\n\n$A=1791:9$\n\n$A=199$\n\nThử lại: $1993-199=1794$ (thỏa mãn).\n\nVậy số cần tìm là $1993$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B2",
+  "gop_y": false,
+  "dap_an": "$250$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết thêm chữ số 2 vào đằng trước số có ba chữ số thì số mới bằng 2000 cộng số cũ; đặt số mới bằng 9 lần số cũ rồi bớt hai vế đi số cũ.\n\n**Bước 1.** Gọi số cần tìm bằng chữ và viết số mới theo số cũ, chú ý chữ số 2 đứng ở hàng nghìn.\n\n**Bước 2.** Lập phép tính \"số mới bằng 9 lần số cũ\" theo đề bài.\n\n**Bước 3.** Bớt cả hai vế đi số cũ để chỉ còn một số bằng một số lần số cũ.\n\n**Bước 4.** Chia để tìm số cũ.\n\n**Chú ý:** Số cần tìm có ba chữ số nên chữ số hàng trăm phải khác 0.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên có ba chữ số biết nếu viết thêm vào đằng trước số đó một chữ số 2 ta được số mới bằng 9 lần số phải tìm.\n\nGọi số cần tìm là $\\overline{abc}$ ($a$, $b$, $c$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{2abc}=\\overline{abc}\\times 9$\n\n$2000+\\overline{abc}=\\overline{abc}\\times 9$\n\n$2000=\\overline{abc}\\times 8$ (bớt cả hai vế đi $\\overline{abc}$)\n\n$\\overline{abc}=2000:8$\n\n$\\overline{abc}=250$\n\nVậy số cần tìm là $250$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B3",
+  "gop_y": false,
+  "dap_an": "$432$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chữ số 5 viết đằng trước đứng ở hàng nghìn, chữ số 5 viết đằng sau đứng ở hàng đơn vị; hai số mới hơn kém nhau 1107 nên ta lập đẳng thức rồi tìm số cũ.\n\n**Bước 1.** Viết hai số mới theo số cũ $\\overline{abc}$: một số có chữ số 5 ở hàng nghìn, một số có chữ số 5 ở hàng đơn vị.\n\n**Bước 2.** Lập phép tính \"số viết đằng trước bằng số viết đằng sau cộng 1107\".\n\n**Bước 3.** Gộp các số hạng bằng nhau rồi bớt hai vế đi cùng một số để còn $\\overline{abc}$ nhân một số.\n\n**Bước 4.** Chia để tìm số cũ.\n\n**Chú ý:** Nhân số cũ với 10 mới được số có chữ số 5 viết thêm ở hàng đơn vị.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên có ba chữ số biết nếu viết thêm chữ số 5 vào đằng trước, đằng sau số đó ta đều được hai số có bốn chữ số nhưng số viết đằng trước hơn số viết đằng sau $1107$ đơn vị.\n\nGọi số cần tìm là $\\overline{abc}$ ($a$, $b$, $c$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{5abc}=\\overline{abc5}+1107$\n\n$5000+\\overline{abc}=\\overline{abc}\\times 10+5+1107$\n\n$5000+\\overline{abc}=\\overline{abc}\\times 10+1112$\n\n$3888+\\overline{abc}=\\overline{abc}\\times 10$ (bớt cả hai vế đi $1112$)\n\n$3888=\\overline{abc}\\times 9$ (bớt cả hai vế đi $\\overline{abc}$)\n\n$\\overline{abc}=3888:9$\n\n$\\overline{abc}=432$\n\nVậy số cần tìm là $432$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B4",
+  "gop_y": false,
+  "dap_an": "$15$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết chữ số 0 vào giữa thì chữ số hàng chục cũ trở thành hàng trăm; đặt số mới bằng 7 lần số cũ rồi bớt hai vế để tìm quan hệ giữa hai chữ số.\n\n**Bước 1.** Gọi số có hai chữ số là $\\overline{ab}$ và viết số mới $\\overline{a0b}$ theo $a$ và $b$.\n\n**Bước 2.** Lập phép tính \"số mới bằng 7 lần số cũ\" rồi viết cả hai số theo hàng.\n\n**Bước 3.** Bớt hai vế đi các số hạng giống nhau để rút ra quan hệ giữa $a$ và $b$.\n\n**Bước 4.** Dùng điều kiện $a$ khác 0 và $b$ là một chữ số để tìm $a$, $b$.\n\n**Chú ý:** $b$ chỉ là một chữ số nên không thể lớn hơn 9.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên có hai chữ số biết nếu viết thêm chữ số 0 vào giữa hai chữ số của số đó ta được số mới bằng 7 lần số phải tìm.\n\nGọi số cần tìm là $\\overline{ab}$ ($a$, $b$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{a0b}=\\overline{ab}\\times 7$\n\n$a\\times 100+b=(a\\times 10+b)\\times 7$\n\n$a\\times 100+b=a\\times 70+b\\times 7$\n\n$a\\times 30+b=b\\times 7$ (bớt cả hai vế đi $a\\times 70$)\n\n$a\\times 30=b\\times 6$ (bớt cả hai vế đi $b$)\n\n$a\\times 5=b$\n\nSuy ra $b$ chia hết cho 5, mà $a$ khác $0$ nên $b=5$ và do đó $a=1$.\n\nVậy số cần tìm là $15$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B5",
+  "gop_y": false,
+  "dap_an": "$45$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bằng 9 lần chữ số hàng đơn vị của nó thì không thể quá lớn nên chỉ có một hoặc hai chữ số; viết số theo hàng chục, hàng đơn vị rồi tìm quan hệ giữa hai chữ số.\n\n**Bước 1.** So sánh với giá trị lớn nhất của 9 lần một chữ số để chỉ ra số cần tìm có tối đa mấy chữ số.\n\n**Bước 2.** Gọi số là $\\overline{ab}$ và lập phép tính \"số bằng 9 lần chữ số hàng đơn vị\".\n\n**Bước 3.** Bớt hai vế đi các số hạng giống nhau để tìm quan hệ giữa $a$ và $b$.\n\n**Bước 4.** Xét các giá trị có thể của $b$ để chọn cặp $a$, $b$ thỏa mãn điều kiện $a$ khác 0.\n\n**Chú ý:** Ta tìm số tự nhiên khác 0, vì số 0 chỉ là trường hợp tầm thường.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên bằng 9 lần chữ số hàng đơn vị của nó.\n\nChữ số ở hàng đơn vị lớn nhất là 9 nên số tự nhiên cần tìm lớn nhất có thể là: $9\\times 9=81$\n\nSố có một chữ số bằng 9 lần chính nó chỉ khi số đó bằng 0, nên không xét (ta tìm số khác 0).\n\nVậy số cần tìm là số có hai chữ số.\n\nGọi số cần tìm là $\\overline{ab}$ ($a$, $b$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{ab}=9\\times b$\n\n$a\\times 10+b=9\\times b$\n\n$a\\times 10=8\\times b$ (bớt cả hai vế đi $b$)\n\n$a\\times 5=4\\times b$\n\nSuy ra $b$ chia hết cho 5 nên $b=0$ hoặc $b=5$.\n\nNếu $b=0$ suy ra $a=0$ (loại).\n\nNếu $b=5$ suy ra $a\\times 5=4\\times 5=20$, do đó $a=4$.\n\nVậy số cần tìm là $45$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": "Đề không loại số 0 (0 = 9 × 0 cũng thỏa). Sách chỉ nêu số 45 nên lời giải bỏ qua số 0 và coi là số cần tìm khác 0; đáp án giữ theo sách."
+ },
+ {
+  "ma_nguon": "CĐ8 · B6",
+  "gop_y": false,
+  "dap_an": "$91$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia cho tổng các chữ số được thương 9 dư 1 thì số đó bằng 9 lần tổng các chữ số cộng 1; viết theo hàng chục, hàng đơn vị rồi bớt hai vế.\n\n**Bước 1.** Gọi số là $\\overline{ab}$ và viết phép chia có dư thành đẳng thức \"số bằng thương nhân số chia cộng số dư\".\n\n**Bước 2.** Viết số theo hàng chục, hàng đơn vị rồi bớt hai vế các số hạng giống nhau để tìm quan hệ giữa $a$ và $b$.\n\n**Bước 3.** Xét các giá trị của $b$ vì $a$ là một chữ số không lớn hơn 9.\n\n**Bước 4.** Loại trường hợp không hợp lý về số dư rồi thử lại.\n\n**Chú ý:** Số dư phải bé hơn số chia, nên tổng các chữ số phải lớn hơn 1.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên có hai chữ số biết số đó chia cho tổng các chữ số của nó được thương là 9 và dư 1.\n\nGọi số cần tìm là $\\overline{ab}$ ($a$, $b$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{ab}=(a+b)\\times 9+1$\n\n$a\\times 10+b=a\\times 9+b\\times 9+1$\n\n$a+b=b\\times 9+1$ (bớt cả hai vế đi $a\\times 9$)\n\n$a=b\\times 8+1$ (bớt cả hai vế đi $b$)\n\nVì $a$ lớn nhất là 9 nên $b=0$ hoặc $b=1$.\n\nNếu $b=0$, suy ra $a=1$, do đó $a+b=1$ (loại, vì số dư khi chia cho $a+b$ là 1 nên $a+b$ phải lớn hơn 1).\n\nNếu $b=1$, suy ra $a=9$.\n\nThử lại: $91=(9+1)\\times 9+1$ (thỏa mãn).\n\nVậy số cần tìm là $91$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B7",
+  "gop_y": false,
+  "dap_an": "$198$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số chia cho tổng các chữ số bằng 11 thì số đó bằng 11 lần tổng các chữ số; viết theo hàng trăm, chục, đơn vị rồi bớt hai vế để tìm quan hệ giữa các chữ số.\n\n**Bước 1.** Gọi số là $\\overline{abc}$ và viết đẳng thức \"số bằng 11 lần tổng các chữ số\".\n\n**Bước 2.** Viết số theo hàng trăm, chục, đơn vị rồi bớt hai vế các số hạng giống nhau.\n\n**Bước 3.** Xét chữ số $c$ có bằng 0 hay không để loại trường hợp không thể xảy ra.\n\n**Bước 4.** Với $c$ khác 0, dùng giá trị lớn nhất của số có hai chữ số để tìm $a$ rồi các chữ số còn lại, sau đó thử lại.\n\n**Chú ý:** Khi $c=0$, vế phải chỉ còn chữ số $b$ nên không thể bằng một số nhân với 89.\n\n**Phần 2. Trình bày**\n\nTìm một số tự nhiên có ba chữ số biết số đó chia cho tổng các chữ số của nó thì bằng 11.\n\nGọi số cần tìm là $\\overline{abc}$ ($a$, $b$, $c$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{abc}=(a+b+c)\\times 11$\n\n$a\\times 100+b\\times 10+c=a\\times 11+b\\times 11+c\\times 11$\n\n$a\\times 89=b+c\\times 10$ (bớt cả hai vế đi $a\\times 11$; $b\\times 10$; $c$) (1)\n\nNếu $c=0$, ta có: $a\\times 89=b$ (không thể xảy ra do $a$ khác $0$ và $b$ nhỏ hơn 10).\n\nDo đó loại $c=0$.\n\nNếu $c$ khác $0$ thì $b+c\\times 10=\\overline{cb}$.\n\nKhi đó (1) viết lại thành: $a\\times 89=\\overline{cb}$.\n\nVì $\\overline{cb}$ lớn nhất là 99 nên $a=1$ và $\\overline{cb}=89$.\n\nThử lại: $198=(1+9+8)\\times 11$ (thỏa mãn).\n\nVậy số cần tìm là $198$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B8",
+  "gop_y": false,
+  "dap_an": "Số đã cho: $20$ ; hai chữ số viết thêm: $0$ và $6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số mới bắt đầu bằng đúng số đã cho (hai chữ số đầu), nên chặn số đã cho giữa 9 và 100 để chặn khoảng giá trị của số mới, rồi thử các khả năng.\n\n**Bước 1.** Gọi số đã cho là $\\overline{ab}$, hai chữ số viết thêm là $c$, $d$ và lập đẳng thức \"số mới bằng số cũ cộng 1986\".\n\n**Bước 2.** Chặn số đã cho giữa 9 và 100 rồi cộng 1986 để chặn khoảng giá trị của số mới.\n\n**Bước 3.** Từ khoảng giá trị đó, tìm các giá trị có thể của hai chữ số đầu của số mới, cũng chính là số đã cho.\n\n**Bước 4.** Thử từng trường hợp, loại trường hợp mà số mới không bắt đầu bằng số đã cho.\n\n**Chú ý:** Hai chữ số đầu của số mới phải trùng với số đã cho.\n\n**Phần 2. Trình bày**\n\nCho một số có hai chữ số.\n\nNếu viết thêm hai chữ số nữa vào bên phải số đó thì được số mới lớn hơn số đã cho $1986$ đơn vị.\n\nTìm số đã cho và hai chữ số mới viết thêm.\n\nGọi số cần tìm là $\\overline{ab}$ ($a$, $b$ là các chữ số và $a$ khác $0$) và hai chữ số viết thêm vào là $c$ và $d$.\n\nTheo đề bài ta có: $\\overline{abcd}=\\overline{ab}+1986$\n\nVì $\\overline{ab}$ là số có hai chữ số nên: $9<\\overline{ab}<100$\n\nSuy ra: $9+1986<\\overline{ab}+1986<100+1986$\n\n$1995<\\overline{ab}+1986<2086$\n\n$1995<\\overline{abcd}<2086$\n\nDo đó $\\overline{ab}$ chỉ có thể bằng 19 hoặc 20.\n\nTrường hợp 1: $\\overline{ab}=19$, suy ra $\\overline{abcd}=19+1986=2005$ (loại).\n\nTrường hợp 2: $\\overline{ab}=20$, suy ra $\\overline{abcd}=20+1986=2006$ (thỏa mãn).\n\nVậy số có hai chữ số là $20$ và hai chữ số viết thêm là $0$ và $6$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B9",
+  "gop_y": false,
+  "dap_an": "$350$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Gạch chữ số hàng trăm thì số ban đầu bằng $a$ nhân 100 cộng số còn lại; số ban đầu lại bằng 7 lần số còn lại nên $a$ nhân 100 bằng 6 lần số còn lại.\n\n**Bước 1.** Gọi số ban đầu là $\\overline{abc}$ và viết nó theo $a$ và số hai chữ số $\\overline{bc}$.\n\n**Bước 2.** Lập đẳng thức \"số ban đầu bằng 7 lần số còn lại\" rồi bớt hai vế đi $\\overline{bc}$.\n\n**Bước 3.** Dùng tính chia hết cho 6 để tìm các giá trị có thể của $a$.\n\n**Bước 4.** Loại giá trị làm số còn lại có ba chữ số rồi tính số cần tìm và thử lại.\n\n**Chú ý:** Sau khi gạch, số còn lại phải có đúng hai chữ số.\n\n**Phần 2. Trình bày**\n\nTìm số có ba chữ số, biết nếu gạch chữ số hàng trăm ta được số có hai chữ số mà nhân số này với 7 được số ban đầu.\n\nGọi số cần tìm là $\\overline{abc}$ ($a$, $b$, $c$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{abc}=\\overline{bc}\\times 7$\n\n$a\\times 100+\\overline{bc}=\\overline{bc}\\times 7$\n\n$a\\times 100=\\overline{bc}\\times 6$ (bớt cả hai vế đi $\\overline{bc}$)\n\n$\\overline{a00}=\\overline{bc}\\times 6$ (vì $a$ khác $0$)\n\nSuy ra $\\overline{a00}$ chia hết cho 6 nên $a$ phải bằng 3, hoặc bằng 6, hoặc bằng 9.\n\nNếu $a=6$ hoặc $a=9$ thì $\\overline{bc}$ là số có ba chữ số nên loại.\n\nNếu $a=3$ thì $\\overline{bc}=300:6=50$.\n\nThử lại: $350=50\\times 7$ (thỏa mãn).\n\nVậy số cần tìm là $350$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B10",
+  "gop_y": false,
+  "dap_an": "$175$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số bằng 5 lần tích các chữ số nên chia hết cho 5; từ đó tìm chữ số hàng đơn vị, rồi dùng tính chia hết cho 25 để tìm chữ số hàng chục.\n\n**Bước 1.** Dùng tính chia hết cho 5 để tìm chữ số hàng đơn vị, loại chữ số 0 vì khi đó tích các chữ số bằng 0.\n\n**Bước 2.** Thay chữ số hàng đơn vị vừa tìm vào đẳng thức và rút gọn.\n\n**Bước 3.** Dùng tính chia hết cho 25 để tìm các giá trị có thể của chữ số hàng chục.\n\n**Bước 4.** Xét từng giá trị của chữ số hàng chục, loại trường hợp vô lí rồi tìm chữ số hàng trăm.\n\n**Chú ý:** Các chữ số đều phải khác 0, vì nếu có một chữ số bằng 0 thì tích bằng 0 mà số cần tìm có ba chữ số.\n\n**Phần 2. Trình bày**\n\nTìm số tự nhiên có ba chữ số, biết rằng số đó gấp 5 lần tích các chữ số của nó.\n\nGọi số cần tìm là $\\overline{abc}$ ($a$, $b$, $c$ là các chữ số và $a$ khác $0$).\n\nTheo đề bài ta có: $\\overline{abc}=5\\times a\\times b\\times c$\n\nVì $5\\times a\\times b\\times c$ chia hết cho 5 nên $\\overline{abc}$ chia hết cho 5.\n\nDo đó $c=0$ hoặc $c=5$.\n\nNhưng $c$ không thể bằng 0, vậy $c=5$.\n\nSố phải tìm có dạng $\\overline{ab5}$.\n\nThay vào ta có: $\\overline{ab5}=5\\times a\\times b\\times 5$\n\n$a\\times 100+b\\times 10+5=25\\times a\\times b$\n\n$a\\times 100+\\overline{b5}=25\\times a\\times b$ (do $b$ khác $0$)\n\nVì $25\\times a\\times b$ chia hết cho 25 nên $a\\times 100+\\overline{b5}$ chia hết cho 25, mà $a\\times 100$ chia hết cho 25 nên $\\overline{b5}$ chia hết cho 25.\n\nDo đó $b=2$ hoặc $b=7$.\n\nNếu $b=2$ thì $a\\times 100+25=25\\times a\\times 2$ hay $\\overline{a25}=50\\times a$.\n\nVế trái là số lẻ mà vế phải là số chẵn nên loại.\n\nNếu $b=7$ thì $a\\times 100+75=25\\times a\\times 7$ hay $a\\times 100+75=175\\times a$.\n\nSuy ra: $75=75\\times a$, do đó $a=75:75=1$.\n\nThử lại: $175=5\\times 1\\times 7\\times 5$ (thỏa mãn).\n\nVậy số cần tìm là $175$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B11",
+  "gop_y": false,
+  "dap_an": "$a=9$ ; $b=9$ ; $c=9$ ; $d=9$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số hạng của tổng đều bắt đầu bằng chữ số $a$ nên khi các chữ số bé hơn 9 thì tổng quá nhỏ; so sánh với giá trị lớn nhất để chứng tỏ lần lượt từng chữ số bằng 9.\n\n**Bước 1.** Ước lượng giá trị lớn nhất của tổng khi $a$ bé hơn 9 để chứng tỏ $a=9$.\n\n**Bước 2.** Thay $a=9$ vào và rút gọn thành một tổng nhỏ hơn chỉ còn các chữ số $b$, $c$, $d$.\n\n**Bước 3.** Lặp lại cách ước lượng để tìm $b$, rồi tìm $c$.\n\n**Bước 4.** Tìm $d$ từ phép tính còn lại rồi thử lại.\n\n**Chú ý:** Mỗi lần thay một chữ số vào thì tổng cần tìm giảm đi đúng phần đã biết.\n\n**Phần 2. Trình bày**\n\nThay chữ bằng chữ số thích hợp: $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=11106$.\n\nNếu $a<9$ thì $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a<9000+900+90+9$.\n\nDo đó $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a<9999<11106$ (loại).\n\nDo đó $a=9$.\n\nThay vào $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=11106$ ta có:\n\n$\\overline{9bcd}+\\overline{9bc}+\\overline{9b}+9=11106$\n\n$9000+\\overline{bcd}+900+\\overline{bc}+90+b+9=11106$\n\n$\\overline{bcd}+\\overline{bc}+b+9999=11106$\n\n$\\overline{bcd}+\\overline{bc}+b=1107$ (1)\n\nNếu $b<9$ thì $\\overline{bcd}+\\overline{bc}+b<900+90+9$.\n\nDo đó $\\overline{bcd}+\\overline{bc}+b<999<1107$ (loại).\n\nDo đó $b=9$.\n\nThay vào (1) ta có:\n\n$\\overline{9cd}+\\overline{9c}+9=1107$\n\n$900+\\overline{cd}+90+c+9=1107$\n\n$\\overline{cd}+c+999=1107$\n\n$\\overline{cd}+c=108$ (2)\n\nNếu $c<9$ thì $\\overline{cd}+c<90+9$.\n\nDo đó $\\overline{cd}+c<99<108$ (loại).\n\nDo đó $c=9$.\n\nThay vào (2) ta có: $\\overline{cd}=108-9=99$.\n\nDo đó $d=9$.\n\nThay $a=9$; $b=9$; $c=9$; $d=9$ vào $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a$ ta được: $9999+999+99+9=11106$.\n\nVậy $a=9$; $b=9$; $c=9$; $d=9$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B12",
+  "gop_y": false,
+  "dap_an": "$a=1$ ; $b=0$ ; $c=0$ ; $d=0$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chữ số $a$ đứng ở hàng cao nhất của mọi số hạng nên chỉ bằng 1 mới không làm tổng vượt quá 1111; khi đó các chữ số còn lại phải làm tổng phần còn lại bằng 0.\n\n**Bước 1.** So sánh tổng với 1111 để chứng tỏ $a$ không thể lớn hơn 1.\n\n**Bước 2.** Thay $a=1$ vào và viết các số hạng theo hàng.\n\n**Bước 3.** Rút gọn để thấy tổng các phần còn lại phải bằng 0.\n\n**Bước 4.** Từ tổng bằng 0 suy ra từng số hạng của tổng đó đều bằng 0 rồi thử lại.\n\n**Chú ý:** Các chữ số $b$, $c$, $d$ có thể bằng 0 vì chúng không đứng ở hàng cao nhất.\n\n**Phần 2. Trình bày**\n\nTìm các chữ số $a$, $b$, $c$, $d$ biết: $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=1111$.\n\nNếu $a>1$ thì $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a>1111$.\n\nDo đó $a$ bé hơn hoặc bằng 1 mà $a$ khác $0$ nên $a=1$.\n\nThay $a=1$ vào $\\overline{abcd}+\\overline{abc}+\\overline{ab}+a=1111$ ta được:\n\n$\\overline{1bcd}+\\overline{1bc}+\\overline{1b}+1=1111$\n\n$1000+100\\times b+10\\times c+d+100+10\\times b+c+10+b+1=1111$\n\n$111\\times b+11\\times c+d+1111=1111$\n\n$111\\times b+11\\times c+d=0$\n\nSuy ra $b=0$; $c=0$; $d=0$.\n\nThử lại: $1000+100+10+1=1111$ (thỏa mãn).\n\nVậy $a=1$; $b=0$; $c=0$; $d=0$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B13",
+  "gop_y": false,
+  "dap_an": "$a=7$ ; $b=1$ ; $c=3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $\\overline{aa}$ bằng 11 nhân $a$ nên chia hai vế cho 11 để còn tích $a\\times\\overline{bc}$; phân tích số nhận được thành tích rồi dùng điều kiện các chữ số khác nhau.\n\n**Bước 1.** Viết $\\overline{aa}$ thành 11 nhân $a$ rồi chuyển đẳng thức về dạng đơn giản hơn.\n\n**Bước 2.** Chia hai vế cho 11 để tìm giá trị của tích $a\\times\\overline{bc}$.\n\n**Bước 3.** Phân tích giá trị đó thành tích của hai số và xét các khả năng cho $a$ và $\\overline{bc}$.\n\n**Bước 4.** Chọn khả năng có ba chữ số khác nhau rồi thử lại.\n\n**Chú ý:** Phải kiểm tra điều kiện $a$, $b$, $c$ khác nhau để loại trường hợp trùng chữ số.\n\n**Phần 2. Trình bày**\n\nTìm các chữ số $a$, $b$, $c$ khác nhau biết: $\\overline{aa}\\times\\overline{bc}=1001$.\n\nTa có: $\\overline{aa}\\times\\overline{bc}=1001$\n\n$11\\times a\\times\\overline{bc}=1001$\n\n$a\\times\\overline{bc}=1001:11$\n\n$a\\times\\overline{bc}=91$\n\nVì $91=1\\times 91=7\\times 13$ và $a$, $b$, $c$ khác nhau nên $a=7$; $b=1$; $c=3$.\n\nThử lại: $77\\times 13=1001$ (thỏa mãn).\n\nVậy $a=7$; $b=1$; $c=3$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B14",
+  "gop_y": false,
+  "dap_an": "$a=3$ ; $b=7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $\\overline{bbb}$ bằng $b$ nhân 111 nên có thể bớt $b$ ở hai vế (vì $b$ khác 0) để còn tích $a\\times\\overline{ab}$ bằng một số cụ thể.\n\n**Bước 1.** Viết $\\overline{bbb}$ thành $b$ nhân 111.\n\n**Bước 2.** Bớt $b$ ở hai vế vì $b$ khác 0 để còn tích $a\\times\\overline{ab}$ bằng một số.\n\n**Bước 3.** Phân tích số đó thành tích của hai số rồi chọn số thứ nhất là một chữ số.\n\n**Bước 4.** Từ giá trị của $\\overline{ab}$ suy ra $b$ và thử lại.\n\n**Chú ý:** $a$ là một chữ số nên $a$ không thể là một số lớn hơn 9.\n\n**Phần 2. Trình bày**\n\nTìm các chữ số $a$, $b$ khác 0 thoả mãn: $a\\times b\\times\\overline{ab}=\\overline{bbb}$.\n\nTa có: $a\\times b\\times\\overline{ab}=\\overline{bbb}$\n\n$a\\times b\\times\\overline{ab}=b\\times 111$\n\nSuy ra: $a\\times\\overline{ab}=111$ (vì $b$ khác $0$)\n\nVì $111=3\\times 37$ và $a$ là chữ số, $\\overline{ab}$ là số có hai chữ số nên $a=3$; $\\overline{ab}=37$.\n\nDo đó $b=7$.\n\nThử lại: $3\\times 7\\times 37=777$ (thỏa mãn).\n\nVậy $a=3$; $b=7$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ },
+ {
+  "ma_nguon": "CĐ8 · B15",
+  "gop_y": false,
+  "dap_an": "$\\overline{ab}=37$ và $\\overline{cd}=21$ ; $\\overline{ab}=15$ và $\\overline{cd}=37$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** $\\overline{bbb}$ bằng $b\\times 3\\times 37$ nên một trong hai số $\\overline{ab}$, $\\overline{cd}$ phải chia hết cho 37; xét từng trường hợp để tìm cặp số thỏa mãn.\n\n**Bước 1.** Viết $\\overline{bbb}$ thành tích $b\\times 3\\times 37$.\n\n**Bước 2.** Từ tích suy ra số nào trong hai số chia hết cho 37 rồi liệt kê các số có hai chữ số chia hết cho 37.\n\n**Bước 3.** Với mỗi trường hợp, thay vào đẳng thức để tìm số còn lại.\n\n**Bước 4.** Loại các trường hợp làm số còn lại không có hai chữ số hoặc làm chữ số vô lí, rồi thử lại.\n\n**Chú ý:** Cả $\\overline{ab}$ và $\\overline{cd}$ đều có hai chữ số nên mỗi số không thể nhỏ hơn 10.\n\n**Phần 2. Trình bày**\n\nTìm các số tự nhiên $\\overline{ab}$, $\\overline{cd}$ sao cho: $\\overline{ab}\\times\\overline{cd}=\\overline{bbb}$.\n\nTa có: $\\overline{ab}\\times\\overline{cd}=\\overline{bbb}$\n\n$\\overline{ab}\\times\\overline{cd}=b\\times 111$\n\n$\\overline{ab}\\times\\overline{cd}=b\\times 3\\times 37$\n\nSuy ra $\\overline{ab}$ chia hết cho 37 hoặc $\\overline{cd}$ chia hết cho 37.\n\nNếu $\\overline{ab}$ chia hết cho 37 thì $\\overline{ab}=37$ hoặc $\\overline{ab}=74$ (do $\\overline{ab}$ là số có hai chữ số).\n\nTrường hợp $\\overline{ab}=37$, suy ra $b=7$.\n\nDo đó $37\\times\\overline{cd}=777$, suy ra $\\overline{cd}=777:37=21$.\n\nThử lại: $37\\times 21=777$ (thỏa mãn).\n\nTrường hợp $\\overline{ab}=74$, suy ra $b=4$.\n\nDo đó $74\\times\\overline{cd}=444$.\n\nSuy ra $\\overline{cd}=444:74=6$ (vô lí, vì $\\overline{cd}$ là số có hai chữ số).\n\nDo đó loại trường hợp $\\overline{ab}=74$.\n\nNếu $\\overline{cd}$ chia hết cho 37 thì $\\overline{cd}=37$ hoặc $\\overline{cd}=74$ (do $\\overline{cd}$ là số có hai chữ số).\n\nTrường hợp $\\overline{cd}=37$, suy ra $\\overline{ab}=b\\times 3$.\n\n$a\\times 10+b=b\\times 3$\n\n$a\\times 10=b\\times 2$\n\n$a\\times 5=b$\n\nVì vậy $a=1$, $b=5$.\n\nThử lại: $15\\times 37=555$ (thỏa mãn).\n\nTrường hợp $\\overline{cd}=74$, suy ra:\n\n$\\overline{ab}\\times 74=b\\times 3\\times 37$\n\n$\\overline{ab}\\times 2\\times 37=b\\times 3\\times 37$\n\n$\\overline{ab}\\times 2=b\\times 3$\n\n$(a\\times 10+b)\\times 2=b\\times 3$\n\n$a\\times 20+b\\times 2=b\\times 3$\n\n$a\\times 20=b$\n\nVì $a$ khác $0$ nên $a$ nhỏ nhất bằng 1, do đó $b$ nhỏ nhất là $1\\times 20=20$ (vô lí, vì $b$ là số có 1 chữ số).\n\nDo đó loại trường hợp $\\overline{cd}=74$.\n\nVậy có hai trường hợp thỏa mãn yêu cầu bài toán là: $\\overline{ab}=37$ và $\\overline{cd}=21$ hoặc $\\overline{ab}=15$ và $\\overline{cd}=37$.",
+  "so_do_mo_ta": null,
+  "ghi_chu_nghi": null
+ }
+]
