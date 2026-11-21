@@ -17,5 +17,12 @@ export function loiHinhThuc(de, lc) {
   if (lc.some((x) => /\d/.test(String(x)) && !/\$/.test(String(x)) && !/[A-Za-zÀ-ỹ]{4,}/.test(String(x)))) ly.push('phương án không bọc $')
   // dãy "-...-..." (nhiều dấu chấm lửng liền nhau) — người đọc không biết quy luật
   if (/(\.{3}|\\dots|\\cdots)\s*[-+]\s*(\.{3}|\\dots|\\cdots)/.test(d)) ly.push('dãy có hai dấu chấm lửng liền nhau')
+  // (mẫu mù form gốc K6, 21/11) dấu "." làm phép nhân (đọc nhầm số thập phân; VN dùng "," cho thập phân): 237.28, }.7, ).(
+  if ((d.match(/\$[^$]*\$/g) || []).some((m) => /\d\.\d|[)\]}]\.\s*[\d(\[a-zA-Z\\]|[\d}]\.\s*[(\[a-zA-Z\\]|[a-zA-Z]\.\s*[\d(\[]/.test(m))) ly.push('dấu "." làm phép nhân')
+  // đề hỏi hai ẩn (x, y) mà phương án là cặp "a; b" không ghi x=, y=
+  if (/\$x\$\s*,\s*\$y\$|\bx\s*,\s*y\b/.test(d) && lc.some((x) => /;/.test(String(x))) && !lc.some((x) => /[xy]\s*=/.test(String(x)))) ly.push('đề hai ẩn, phương án cặp không ghi x=, y=')
+  // đề "chọn trong các số sau: a; b; c; d" mà phương án không thuộc danh sách đề cho
+  { const m = d.match(/(?:trong các số|trong các giá trị|trong các số sau)[^:]*:\s*([^?]*)/i)
+    if (m) { const tap = new Set((m[1].match(/-?\d+(?:[.,]\d+)?/g) || [])); if (tap.size >= 3 && lc.some((x) => { const n = String(x).replace(/[$\\\s]/g, '').match(/^-?\d+(?:[.,]\d+)?$/); return n && !tap.has(n[0]) })) ly.push('phương án không thuộc danh sách đề cho') } }
   return ly
 }
