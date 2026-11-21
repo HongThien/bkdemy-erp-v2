@@ -82218,3 +82218,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Vị trí điểm lấy theo hình (ghi trong lời giải bằng "(theo hình)"):** MH.126 Kiểu 1 và MH.130: $A$ nằm giữa $B$, $F$ · $D$ nằm giữa $E$, $F$ (đề chỉ cho F là giao điểm).
 - **Lệch tiền đề cần Thùy xem (không đổi DB):** MH.131 "(N trung điểm AB, P đối xứng C qua N) ← B1" và "(L trung điểm AC, Q đối xứng B qua L) ← B2" — để chứng minh D,B,P thẳng hàng phải dùng AC∥BD (Bài 4, sinh từ B2); D,C,Q thẳng hàng dùng AB∥CD (Bài 3, sinh từ B1) ⇒ tiền đề đúng theo toán có vẻ đảo cặp (6.1 ← B2, 6.2 ← B1). Lời giải đang viện thẳng "(Bài 4)" / "(Bài 3)" nên đúng dù tiền đề chưa đổi. Còn lại: MH.126 Kiểu 2 B10 (BFC cân) không cần tiền đề B9 (dùng AF=CE của đề).
 - **Chưa làm:** sơ đồ tư duy · hình riêng từng bài (`anh_chuan`) · duyệt (`da_duyet` vẫn false) · chưa xem popup bài trên app thật.
+
+### 21/11 (đêm) — [Hình–Luyện K7] MH.131: ĐỔI tiền đề hai nhánh N,P và L,Q (Thùy chốt "Đổi tiền đề")
+- `BT.07.131.08` (N trung điểm AB, P đối xứng C qua N): tiền đề **B1 → B2** · `BT.07.131.10` (L trung điểm AC, Q đối xứng B qua L): **B2 → B1**. Lý do: D,B,P thẳng hàng cần AC∥BD (từ B2); D,C,Q thẳng hàng cần AB∥CD (từ B1). Script `scripts/kho/hl-k7-131-doi-tien-de.mjs` (chạy thử ROLLBACK rồi `--ghi`, đi qua `fn_hl_sua_bai` giữ nguyên đề · hình · lời giải). Đọc lại: MH.131 vẫn 12 tiền đề, sai nhánh 0, hai lời giải còn nguyên (đã viện đúng "Bài 4" / "Bài 3").
+- Dòng "Lệch tiền đề cần Thùy xem" ở mục lời giải phía trên: đã xử lý xong bằng mục này.
