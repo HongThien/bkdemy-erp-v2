@@ -1,0 +1,158 @@
+[
+ {
+  "ma_nguon": "C4V.5@p116",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng hai phân thức hai biến dương có điều kiện x+y≤xy; giải bằng quy đồng, đặt s,p, xét hiệu."
+ },
+ {
+  "ma_nguon": "C4B.5@p119",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng ba phân thức, a+b+c=2 phân tích mẫu thành tích, quy đồng rồi chặn bằng Cô-si."
+ },
+ {
+  "ma_nguon": "C4B.10@p122",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Điều kiện chứa tổng phân thức, nhân ab+bc+ca, chặn xy/(x+y)≤(x+y)/4; khớp một phần dạng này."
+ },
+ {
+  "ma_nguon": "C4B.11x@p123",
+  "dang": "NDB03295",
+  "chac": "vua",
+  "ly": "Ghép tổng bình phương, thế a+b=2 để chỉ còn biến ab rồi chặn; hơi lai với xét hiệu bình phương."
+ },
+ {
+  "ma_nguon": "C4B.13@p125",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng phân thức ba biến dương a+b+c=1, a+bc=(a+b)(a+c), quy đồng và Cô-si; có thể là thế điều kiện."
+ },
+ {
+  "ma_nguon": "C4B.19@p130",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tổng ba phân thức, a+b+c=2017, thay vào mẫu, 1/(u+v)≤(1/4)(1/u+1/v), cộng hoán vị vòng, rút gọn."
+ },
+ {
+  "ma_nguon": "C4B.23@p132",
+  "dang": "NDB03298",
+  "chac": "vua",
+  "ly": "a,b,c là ba cạnh tam giác, mẫu dương nhờ bất đẳng thức tam giác, dùng 1/u+1/v≥4/(u+v) từng cặp."
+ },
+ {
+  "ma_nguon": "C4B.25@p133",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tổng ba phân thức, abc=1, chặn từng mẫu bằng a²+b²≥2ab, cộng rồi dùng điều kiện rút gọn."
+ },
+ {
+  "ma_nguon": "C4B.28@p135",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng ba phân thức, xy+yz+zx=xyz, chặn mẫu bằng 1/(p+q)≤(1/4)(1/p+1/q) liên tiếp."
+ },
+ {
+  "ma_nguon": "C4B.37@p141",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Đề in lỗi; bản đúng: abc=1, đổi biến lập phương, bổ đề x³+y³≥xy(x+y), cộng rồi rút gọn."
+ },
+ {
+  "ma_nguon": "C4B.38@p142",
+  "dang": "NDB03296",
+  "chac": "vua",
+  "ly": "Quy đồng theo S,R,P rồi giả sử c lớn nhất để xét dấu; cũng là biến đổi tương đương."
+ },
+ {
+  "ma_nguon": "C4B2.1@p146",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng phân thức ba biến dương có điều kiện, đổi biến x=1/(2a+1), Bu-nhi-a-cốp-xki dạng phân thức."
+ },
+ {
+  "ma_nguon": "C5V.1@p171",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng ba phân thức, xyz=1, chặn từng mẫu bằng tổng bình phương, nhân tử mẫu dùng điều kiện."
+ },
+ {
+  "ma_nguon": "C5V.2@p171",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng ba phân thức, xyz=1, chặn mẫu (x-y)²+2(xy+x+1), cộng theo vế dùng điều kiện."
+ },
+ {
+  "ma_nguon": "C5V.3@p172",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng ba phân thức, xyz=2, chặn từng mẫu theo điểm rơi bằng tổng bình phương rồi dùng điều kiện."
+ },
+ {
+  "ma_nguon": "C5V.5@p173",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tìm GTNN tổng phân thức ba biến dương a+b+c=1, dùng 1/a+1/b≥4/(a+b) và c(a+b)≤1/4."
+ },
+ {
+  "ma_nguon": "C5B.2@p174",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly": "Thế x-1=-y từ x+y=1 đưa tích về biểu thức theo xy rồi chặn; không phải rút biến thành đa thức."
+ },
+ {
+  "ma_nguon": "C5B.8@p175",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng ba phân thức xyz=8, đổi biến u=2/x thành uvw=1 rồi quy đồng xét hiệu; biến thực."
+ },
+ {
+  "ma_nguon": "C5B.10@p175",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng phân thức ba biến dương, tổng nghịch đảo cho trước, dùng 1/(p+q)≤(1/4)(1/p+1/q) hai lần."
+ },
+ {
+  "ma_nguon": "C5B.13@p176",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng phân thức xyz=1, đổi biến lập phương, bổ đề p³+q³≥pq(p+q), cộng rút gọn."
+ },
+ {
+  "ma_nguon": "C5B.14@p176",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng phân thức có điều kiện, dùng đánh giá tiếp tuyến từng biến rồi cộng; kỹ thuật tiếp tuyến không nêu trong mô tả."
+ },
+ {
+  "ma_nguon": "C5B.17@p177",
+  "dang": "NDB03305",
+  "chac": "vua",
+  "ly": "Biến đổi điều kiện đối xứng bậc ba để P=3-(x-1)(y-1)(z-1), đặt ẩn phụ u,v,w rồi xét dấu."
+ },
+ {
+  "ma_nguon": "C5B.21@p177",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng ba phân thức abc=1, thay ab²c=b, chặn mẫu Cô-si, đổi biến x/y rồi dùng Nesbit; kỹ thuật lai."
+ },
+ {
+  "ma_nguon": "C5B.29@p179",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng hai phân thức có điều kiện a+b+c≤3, dùng Engel/Bu-nhi-a-cốp-xki và tách 2018=2+2016."
+ },
+ {
+  "ma_nguon": "C5B.30@p179",
+  "dang": "NDB03579",
+  "chac": "vua",
+  "ly": "Tổng phân thức có điều kiện a+b+c=1, a+bc=(a+b)(a+c), chặn bằng Cô-si; có thêm hạng tử đa thức, biến không âm."
+ },
+ {
+  "ma_nguon": "C5B.32@p180",
+  "dang": "NDB03579",
+  "chac": "cao",
+  "ly": "Tìm GTLN tổng ba phân thức abc=1, bổ đề a⁵+b⁵≥a²b²(a+b), cộng hoán vị vòng, rút gọn bằng điều kiện."
+ }
+]

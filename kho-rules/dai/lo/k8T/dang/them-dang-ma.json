@@ -1,0 +1,9 @@
+[
+ {
+  "ma": "NDB03579",
+  "nhom": "NNB01473",
+  "ten": "Tổng phân thức nhiều biến có điều kiện: chặn từng mẫu, bổ đề, đổi biến",
+  "mo_ta": "Bài tìm GTLN / GTNN hoặc chứng minh bất đẳng thức cho tổng các phân thức của hai hoặc ba biến dương có điều kiện ràng buộc ($xyz=1$, $a+b+c=1$, $a+b+c=2017$…). Chặn từng mẫu (bình phương, bổ đề $p^3+q^3ge pq(p+q)$) hoặc dùng $dfrac1{x+y}ledfrac14left(dfrac1x+dfrac1y\right)$ / đổi biến, cộng theo vế các bất đẳng thức hoán vị vòng rồi dùng điều kiện để rút gọn tổng.",
+  "tt": 4
+ }
+]

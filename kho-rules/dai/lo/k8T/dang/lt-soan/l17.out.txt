@@ -1,0 +1,62 @@
+#DANG NDB03579
+@LT
+##ĐL Bổ đề nghịch đảo của tổng hai số dương
+Với $p,q>0$ ta có $\dfrac{1}{p}+\dfrac{1}{q}\ge\dfrac{4}{p+q}$, tức là $\dfrac{1}{p+q}\le\dfrac14\left(\dfrac{1}{p}+\dfrac{1}{q}\right)$. Dấu "=" xảy ra khi và chỉ khi $p=q$.
+Chứng minh: $\dfrac{1}{p}+\dfrac{1}{q}-\dfrac{4}{p+q}=\dfrac{(p+q)^2-4pq}{pq(p+q)}=\dfrac{(p-q)^2}{pq(p+q)}\ge0$.
+
+##ĐL Bổ đề lập phương
+Với $p,q>0$ ta có $p^3+q^3\ge pq(p+q)$. Dấu "=" xảy ra khi và chỉ khi $p=q$.
+Chứng minh: $p^3+q^3-pq(p+q)=(p+q)(p^2-pq+q^2)-pq(p+q)=(p+q)(p-q)^2\ge0$.
+
+##TC Các công cụ chặn một mẫu
+- Tổng hai bình phương không âm: nếu mẫu $M$ có thể viết $M=N+(A)^2+(B)^2$ với $N>0$ thì $M\ge N$ nên $\dfrac{1}{M}\le\dfrac{1}{N}$ (lấy nghịch đảo hai số dương thì đổi chiều).
+- Hệ quả của Cô-si: $(p+q)^2\ge4pq$, từ đó có $\dfrac{1}{p+q}\le\dfrac14\left(\dfrac{1}{p}+\dfrac{1}{q}\right)$; dùng liên tiếp hai lần cho mẫu có bốn số hạng dạng $2x+y+z$.
+- Bổ đề lập phương $p^3+q^3\ge pq(p+q)$ dùng khi mẫu chứa tổng hai lập phương (hoặc sau khi đặt $x=p^3$, $y=q^3$, $z=r^3$).
+
+##TC Dùng điều kiện để rút gọn tổng
+- Nếu $xyz=1$ thì $\dfrac{1}{xy+x+1}+\dfrac{1}{yz+y+1}+\dfrac{1}{zx+z+1}=1$, vì $\dfrac{1}{yz+y+1}=\dfrac{x}{xy+x+1}$ và $\dfrac{1}{zx+z+1}=\dfrac{xy}{xy+x+1}$ (nhân cả tử và mẫu với $x$, rồi với $xy$, và thay $xyz=1$).
+- Nếu $xyz=1$ thì $\dfrac{1}{xy}=z$; nếu đặt $x=p^3$, $y=q^3$, $z=r^3$ thì $pqr=1$ và $\dfrac{1}{pq}=r$, nên các phân thức cùng mẫu $p+q+r$.
+- Nếu điều kiện là tổng các nghịch đảo $\dfrac{1}{x}+\dfrac{1}{y}+\dfrac{1}{z}=k$ thì sau khi chặn mẫu bằng bổ đề nghịch đảo, vế phải cộng lại thành bội của $\dfrac{1}{x}+\dfrac{1}{y}+\dfrac{1}{z}$ và thay bằng $k$.
+
+##PP Tổng các phân thức nhiều biến có điều kiện ràng buộc
+Dự đoán điểm rơi (thường là các biến bằng nhau và thỏa điều kiện), tính cực trị tại đó, rồi chọn công cụ có dấu "=" đúng tại điểm rơi ấy
+Chặn từng mẫu (bằng bình phương, bổ đề nghịch đảo hoặc bổ đề lập phương) để được phân thức đơn giản hơn; nêu rõ mẫu dương trước khi lấy nghịch đảo
+Hoán vị vòng $x\to y\to z\to x$ để viết hai bất đẳng thức còn lại rồi cộng ba bất đẳng thức theo vế
+Dùng điều kiện ràng buộc để rút gọn vế phải thành một hằng số (nhân cả tử và mẫu, đổi biến, hoặc gom hệ số)
+Kết luận cực trị; chỉ ra dấu "=" của mọi bất đẳng thức xảy ra đồng thời và bộ biến đó thỏa điều kiện, rồi tính lại biểu thức tại đó
+
+##CY
+- Các biến phải dương trước khi dùng bổ đề nghịch đảo, bổ đề lập phương hoặc lấy nghịch đảo hai vế; khi lấy nghịch đảo hai số dương thì bất đẳng thức đổi chiều.
+- Hệ số trong mỗi đánh giá phải chọn sao cho dấu "=" xảy ra tại cùng một điểm rơi ở cả ba phân thức; đánh giá lỏng hơn làm tổng vượt quá cận cần tìm.
+- Chỉ kết luận "giá trị lớn nhất (nhỏ nhất) bằng $M$" khi có bộ biến thỏa điều kiện làm mọi dấu "=" xảy ra cùng lúc.
+
+@VD
+##VD
+Cho ba số thực dương $x,y,z$ thỏa mãn $xyz=1$. Tìm giá trị lớn nhất của $B=\dfrac{1}{2x^2+y^2+3}+\dfrac{1}{2y^2+z^2+3}+\dfrac{1}{2z^2+x^2+3}$.
+
+Bài giải:
+Ta có $2x^2+y^2+3=(x-y)^2+(x-1)^2+2(xy+x+1)$.
+Vì $(x-y)^2\ge0$, $(x-1)^2\ge0$ và $x,y>0$ nên $2x^2+y^2+3\ge2(xy+x+1)>0$.
+Lấy nghịch đảo hai số dương (đổi chiều): $\dfrac{1}{2x^2+y^2+3}\le\dfrac{1}{2(xy+x+1)}$.
+Hoán vị vòng $x\to y\to z\to x$: $\dfrac{1}{2y^2+z^2+3}\le\dfrac{1}{2(yz+y+1)}$ và $\dfrac{1}{2z^2+x^2+3}\le\dfrac{1}{2(zx+z+1)}$.
+Cộng ba bất đẳng thức theo vế: $B\le\dfrac12\left(\dfrac{1}{xy+x+1}+\dfrac{1}{yz+y+1}+\dfrac{1}{zx+z+1}\right)$. (1)
+Vì $xyz=1$ nên nhân cả tử và mẫu của phân thức thứ hai với $x$: $\dfrac{1}{yz+y+1}=\dfrac{x}{xyz+xy+x}=\dfrac{x}{xy+x+1}$.
+Nhân cả tử và mẫu của phân thức thứ ba với $xy$: $\dfrac{1}{zx+z+1}=\dfrac{xy}{x^2yz+xyz+xy}=\dfrac{xy}{x+1+xy}$.
+Do đó tổng trong ngoặc ở (1) bằng $\dfrac{1+x+xy}{xy+x+1}=1$, suy ra $B\le\dfrac12$ với mọi $x,y,z>0$ có $xyz=1$. (2)
+Dấu "=" xảy ra khi $x=y$, $y=z$, $z=x$ và $x=1$, $y=1$, $z=1$, tức $x=y=z=1$ (thỏa $xyz=1$); khi đó $B=3\cdot\dfrac16=\dfrac12$. (3)
+Từ (2) và (3): $\max B=\dfrac12$.
+Vậy giá trị lớn nhất của $B$ bằng $\dfrac12$, đạt khi $x=y=z=1$.
+
+##VD
+Cho ba số dương $x,y,z$ thỏa mãn $\dfrac{1}{x}+\dfrac{1}{y}+\dfrac{1}{z}=2010$. Tìm giá trị lớn nhất của $P=\dfrac{1}{2x+y+z}+\dfrac{1}{x+2y+z}+\dfrac{1}{x+y+2z}$.
+
+Bài giải:
+Với $p,q>0$ có $\dfrac{1}{p}+\dfrac{1}{q}-\dfrac{4}{p+q}=\dfrac{(p-q)^2}{pq(p+q)}\ge0$, nên $\dfrac{1}{p+q}\le\dfrac14\left(\dfrac{1}{p}+\dfrac{1}{q}\right)$ (*), dấu "=" khi $p=q$.
+Áp dụng (*) với $p=x+y>0$, $q=x+z>0$: $\dfrac{1}{2x+y+z}\le\dfrac14\left(\dfrac{1}{x+y}+\dfrac{1}{x+z}\right)$.
+Áp dụng (*) lần nữa với các số dương $x,y$ và $x,z$: $\dfrac{1}{x+y}\le\dfrac14\left(\dfrac1x+\dfrac1y\right)$ và $\dfrac{1}{x+z}\le\dfrac14\left(\dfrac1x+\dfrac1z\right)$.
+Suy ra $\dfrac{1}{2x+y+z}\le\dfrac{1}{16}\left(\dfrac2x+\dfrac1y+\dfrac1z\right)$.
+Hoán vị vòng: $\dfrac{1}{x+2y+z}\le\dfrac{1}{16}\left(\dfrac1x+\dfrac2y+\dfrac1z\right)$ và $\dfrac{1}{x+y+2z}\le\dfrac{1}{16}\left(\dfrac1x+\dfrac1y+\dfrac2z\right)$.
+Cộng ba bất đẳng thức theo vế: $P\le\dfrac{1}{16}\cdot4\left(\dfrac1x+\dfrac1y+\dfrac1z\right)=\dfrac14\cdot2010=\dfrac{1005}{2}$. (1)
+Dấu "=" xảy ra khi trong mỗi lần dùng (*) hai số bằng nhau, tức $x=y=z$; kết hợp $\dfrac3x=2010$ được $x=y=z=\dfrac{1}{670}$. Khi đó mỗi mẫu bằng $\dfrac{4}{670}$ nên $P=3\cdot\dfrac{670}{4}=\dfrac{1005}{2}$. (2)
+Từ (1) và (2): $\max P=\dfrac{1005}{2}$.
+Vậy giá trị lớn nhất của $P$ bằng $\dfrac{1005}{2}$, đạt khi $x=y=z=\dfrac{1}{670}$.
