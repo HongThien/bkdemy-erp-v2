@@ -1580,7 +1580,17 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - **Cuối kì I**: C1–C3 đầy đủ (khai căn tích / thương, đưa thừa số ra / vào dấu căn, trục căn thức, rút gọn, phương trình chứa căn, $|A|$) · C4 · C5 nửa đầu (đường tròn, đường kính – dây, vị trí đường thẳng – đường tròn, tiếp tuyến, hai tiếp tuyến cắt nhau, hai đường tròn; độ dài cung, quạt, vành khuyên khi đề hỏi).
 - **Đề khó** (120 phút, chuyên, cụm chuyên môn): bài khó dùng được mọi kiến thức C1–C5 nói trên; vẫn không giải được trong phạm vi ⇒ giải cách đúng nhất + `**Chưa chắc:**`.
 - Đề cương: phạm vi khác nhau từng đề ⇒ đọc dòng phạm vi đề tự ghi ("Chương I; II; IV", "Đại số hết bài 6, Hình hết bài 12") và áp đúng phạm vi đó.
-- **Giữa kì II**: chưa có luật — lô mẫu đầu tiên sẽ rút.
+- **Giữa kì II** [lô mẫu B055 — 6 đề, 21/11 · Thùy duyệt mẫu]: phạm vi = những gì CHÍNH ĐỀ đó kiểm tra (§A15), thường C1–C3 + C6 (hàm số $y=ax^2$, phương trình bậc hai, Viète) + C7–C8 (thống kê, xác suất) + Hình (đường tròn, góc nội tiếp, tứ giác nội tiếp; có đề thêm hình trụ – nón – cầu). Quy ước rút từ lô mẫu:
+  - Đề đã kiểm tra C6 ⇒ bài lập phương trình bậc hai và phương trình bậc hai tham số giải bằng $\Delta$ / $\Delta'$ (b chẵn) / nhẩm nghiệm $a+b+c=0$, $a-b+c=0$; Viète chỉ dùng SAU khi chỉ ra có hai nghiệm; "có hai nghiệm" tính cả nghiệm kép; hệ thức không đối xứng giữa $x_1$, $x_2$ ⇒ giải qua tổng và tích, không tách hai cách gán. (Mô tả dạng NDB00732 còn ghi "phân tích nhân tử" là khuôn HK1 — đề xuất sửa cho trưởng khối.)
+  - **Được dùng**: góc nội tiếp (số đo cung, hệ quả, góc chắn nửa đường tròn), kể cả trong đường tròn vừa chứng minh ở ý trước (khi viết "cùng chắn cung …" phải bảo đảm hai đỉnh cùng phía dây); tứ giác nội tiếp **chỉ chiều thuận**; hình trụ khi chính đề ra ("không tính nắp và đáy" ⇒ diện tích xung quanh; $\pi$ theo đề, kết luận "khoảng"). Vẫn CẤM các mục "Đã bỏ khỏi chương trình 2018" ở trên.
+  - Chứng minh "bốn điểm cùng thuộc đường tròn / tứ giác nội tiếp": theo khuôn A1/G1 (hai góc vuông cùng nhìn một đoạn ⇒ trung điểm đoạn đó cách đều bốn điểm; hoặc hình chữ nhật). Tâm đường tròn ngoại tiếp tam giác nhọn nằm trong tam giác là tính chất gọi tên được (không ghi "(gt)"). Có thể viết "(góc chung)" kèm một dòng nêu vị trí điểm.
+  - **Đề Hình thiếu "tam giác nhọn"**: dựng toạ độ thử cả cấu hình tù; tia / giao điểm mất hoặc hình suy biến ⇒ THÊM "và tam giác … nhọn" vào đề + `**Ghi chú:**`; không lấy vị trí điểm "theo hình vẽ". Thiếu điều kiện chỉ làm suy biến tên gọi mà kết luận vẫn đúng (AB=AC, góc 45°) ⇒ chỉ `**Ghi chú:**`, không sửa đề in. Dấu "<" chặt kiểu $EF<AH$ phải chứng minh "không phải đường kính".
+  - Cực trị bài thực tế (hộp, tấm tôn, hàng rào, bể): hoàn thành bình phương / xét hiệu / $4ab=(a+b)^2-(a-b)^2$ — KHÔNG Cô-si dùng thẳng (kể cả Cô-si 3 số như hướng dẫn chấm; ngoại lệ chỉ khi đề nằm ở dạng "ứng dụng Côsi"). Mô tả NDB01209 ghi "dùng Cauchy" mâu thuẫn mục Đại (a) ⇒ trưởng khối quyết, tạm theo mục Đại.
+  - Thống kê: kí hiệu nhóm $[a;b)$ được dùng trong bảng tần số ghép nhóm (KNTT chương 7); nhóm cuối viết "từ … đến …" là đoạn đóng; nhóm được hỏi là hợp các nhóm liền nhau ⇒ cộng tần số + `**Ghi chú:**`. Xúc xắc đề không ghi "cân đối, đồng chất" ⇒ coi các mặt đồng khả năng + `**Ghi chú:**`, không treo `**Chưa chắc:**`. So sánh biểu thức với hằng số mà có thể bằng ⇒ kết luận "≥" / "≤" kèm điểm dấu bằng.
+  - Hai ý làm tròn nối nhau (quãng đường → tốc độ): ý sau tính từ giá trị CHÍNH XÁC của ý trước. Hướng dẫn chấm làm tròn sai mức đề hỏi ⇒ theo đề + `**Ghi chú:**`.
+  - Đáp số phân số có dạng thập phân hữu hạn vừa 4 ô ($-\dfrac52=-2{,}5$) ⇒ `tra_loi_ngan` (§A7 thắng dòng "phân số ⇒ tu_luan" ở mục Loại câu K9).
+  - Đề chia "phần riêng" theo hệ (chuẩn / nâng cao) ⇒ nhập cả hai, mỗi hệ một `## PHẦN`, giữ nhãn in. Ý in 1., 2., 3. trong bài số La Mã ⇒ nhập a), b), c). Mỗi câu chỉ MỘT dòng `**Ghi chú:**`.
+  - Phân dạng: bản đồ Đại K9 chỉ có nhóm (chưa có dạng) cho hàm số $y=ax^2$ (NNB01075), tần số (NNB01076), xác suất (NNB01077), hình hộp (NNB01078); chưa có nhóm cho phương trình bậc hai / Viète / hình trụ – nón – cầu ⇒ `dang=—` + `THIẾU DẠNG: <tên>` (không tự thêm dạng). Hình K9 chưa có dạng chờ (`HH09000000`) và chưa có bài cho góc nội tiếp / tứ giác nội tiếp / hình tổng hợp ⇒ cổng tạm gán `HH00140`.
 - **Cuối kì II**: chưa có luật — lô mẫu đầu tiên sẽ rút.
 - **Thi vào lớp 10**: chưa có luật — lô mẫu đầu tiên sẽ rút.
   (Luật theo bài của HK2 đã có và áp cho ba mốc này: C6–C8 ở mục Đại; góc nội tiếp, tứ giác nội tiếp, hình tổng hợp ở Sổ tay dạng F, G, H mục Hình.)
@@ -2349,7 +2359,7 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 | 6 | ✔ (bộ đề 10/10) | ✔ (toanmath 13/11) | — | — | |
 | 7 | — | ✔ (toanmath 13/11) | — | — | |
 | 8 | ✔ (bộ đề 10/10) | ✔ (toanmath 13/11) | — | — | |
-| 9 | ✔ (bộ đề 18/10) | ✔ (toanmath 12/11) | — | — | — |
+| 9 | ✔ (bộ đề 18/10) | ✔ (toanmath 12/11) | ✔ (toanmath B055, Thùy gật 21/11 — chưa bấm `fn_kho_lo_mau_duyet`) | — | — |
 | 10 | — | ✔ (toanmath 14/11) | — | — | |
 | 11 | — | ✔ (toanmath 14/11) | — | — | |
 | 12 | — | ✔ (toanmath 14/11) | ⏳ lô mẫu = B106, B108 (15/11) | — | — |
