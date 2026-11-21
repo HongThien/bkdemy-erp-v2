@@ -1,0 +1,98 @@
+[
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-ban-mai-school-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 2459,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — THCS Nhật Tân, quận Tây Hồ, Hà Nội",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.33,
+  "trung_kho": false
+ },
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-ba-dinh-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1795,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-chuong-duong-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1817,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-le-ngoc-han-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 1,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-mai-dich-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1964,
+  "best": {
+   "ten": "Đề ôn tập cuối học kì 1 Toán 9 năm 2024-2025 — THCS Nghĩa Tân, Hà Nội (Đề ôn tập số 1)",
+   "ti_le": 0.17,
+   "cau": 6
+  },
+  "nhi": 0.06,
+  "so_de_khop": 0,
+  "giong_ten": 0.67,
+  "trung_kho": false
+ },
+ {
+  "batch": "B055",
+  "folder": "Đề thi/GKII",
+  "ten_bai": "de-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-phuc-loi-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 975,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ }
+]

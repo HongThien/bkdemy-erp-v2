@@ -1,0 +1,130 @@
+[
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-da-ton-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3914,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì I Toán 9 — THCS Phan Chu Trinh (Hà Nội) · phần Đại số",
+   "ti_le": 0.07,
+   "cau": 15
+  },
+  "nhi": 0.03,
+  "so_de_khop": 0,
+  "giong_ten": 0.45,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-9-nam-2024-2025-truong-thcs-nghia-tan-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 3391,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ki-2-toan-9-nam-2025-2026-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ky-2-toan-9-nam-2024-2025-truong-nguyen-tat-thanh-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-hoc-ky-2-toan-9-nam-2025-2026-truong-thcs-le-quy-don-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 3251,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT huyện Gia Lâm, Hà Nội",
+   "ti_le": 0.33,
+   "cau": 3
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ki-2-toan-9-nam-2024-2025-truong-thcs-tho-loc-ha-noi",
+  "ket_luan": "khong_doc",
+  "so_tu": 0,
+  "best": {
+   "ten": "Đề tham khảo vào 10 Hà Nội số 17 — Tiếng Anh (LoiGiaiHay soạn)",
+   "ti_le": 0,
+   "cau": 0
+  },
+  "nhi": 0,
+  "so_de_khop": 0,
+  "giong_ten": 0.2,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-9-nam-2024-2025-truong-thcs-le-quy-don-ha-noi",
+  "ket_luan": "mo_ho",
+  "so_tu": 3240,
+  "best": {
+   "ten": "Đề kiểm tra cuối học kì 1 Toán 9 năm 2024-2025 — Phòng GD&ĐT huyện Gia Lâm, Hà Nội",
+   "ti_le": 0.33,
+   "cau": 3
+  },
+  "nhi": 0.25,
+  "so_de_khop": 0,
+  "giong_ten": 0.43,
+  "trung_kho": false
+ },
+ {
+  "batch": "B062",
+  "folder": "Đề cương/GKII",
+  "ten_bai": "de-cuong-giua-ky-2-toan-9-nam-2024-2025-truong-thcs-nguyen-binh-khiem-ha-noi",
+  "ket_luan": "khac",
+  "so_tu": 1210,
+  "best": {
+   "ten": "Đề cương ôn tập cuối học kì I Toán 9 — THCS Đoàn Thị Điểm (Hà Nội) · phần Hình",
+   "ti_le": 0.15,
+   "cau": 13
+  },
+  "nhi": 0.14,
+  "so_de_khop": 0,
+  "giong_ten": 0.5,
+  "trung_kho": false
+ }
+]

@@ -13,7 +13,8 @@ const ROOT = path.resolve(HERE, '../../../..')
 const B = JSON.parse(fs.readFileSync(path.join(HERE, 'batch.json'), 'utf8'))
 const ds = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, '.nhap-tam/toanmath-word/danh-sach.json'), 'utf8')) } catch { return [] } })()
 const docx = new Map(ds.filter((x) => x.docx).map((x) => [path.normalize(x.file), x.docx]))
-const bai = B.find((b) => b.ma === MA).bai.map((x) => ({ ...x, batch: MA })), KHOI = bai[0].khoi.slice(1)
+const FOLDER = arg('--folder') // 21/11: chỉ đo bài có folder khớp (vd GKII trong batch trộn GKI + GKII); ra batch/<ma>/do-trung.<folder>.json, không đè do-trung.json
+const bai = B.find((b) => b.ma === MA).bai.filter((x) => !FOLDER || new RegExp(FOLDER).test(x.folder)).map((x) => ({ ...x, batch: MA })), KHOI = bai[0].khoi.slice(1)
 
 const tu = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/gi, 'd').toLowerCase().match(/[a-z0-9]+/g) || []
 const K = +arg('--k', 6), PH = +arg('--ph', 0.5)  // chốt 12/11: cụm 6 chữ, câu khớp khi ≥50% cụm có trong file (cụm 5 + 1 cụm là đủ ⇒ nhiễu quá cao)
@@ -60,6 +61,6 @@ for (const x of bai) {
   // BỎ khỏi batch chỉ khi ĐỦ 2 nhân chứng: nội dung (trung, hoặc ≥0.4 và vượt nhì ≥0.3) + tên trường khớp ≥0.8; bộ nhiều đề không bỏ
   o.trung_kho = !boDe(x.ten_bai) && nm >= 0.8 && (kl === 'trung' || (t >= 0.4 && t - nhi >= 0.3))
 }
-fs.mkdirSync(path.join(HERE, 'batch', MA), { recursive: true }); fs.writeFileSync(path.join(HERE, 'batch', MA, 'do-trung.json'), JSON.stringify(out, null, 1))
+fs.mkdirSync(path.join(HERE, 'batch', MA), { recursive: true }); fs.writeFileSync(path.join(HERE, 'batch', MA, FOLDER ? 'do-trung.' + FOLDER.replace(/\W/g, '') + '.json' : 'do-trung.json'), JSON.stringify(out, null, 1))
 console.log('Đề thi khối', KHOI, 'trong kho:', de.size)
 for (const x of out) console.log(x.ket_luan.padEnd(9), (x.trung_kho ? 'TRÙNG' : '').padEnd(5), String(x.best?.ti_le).padEnd(5), String(x.nhi).padEnd(5), String(x.giong_ten).padEnd(5), x.ten_bai.slice(0, 70), '|', (x.best?.ten || '').slice(0, 70))

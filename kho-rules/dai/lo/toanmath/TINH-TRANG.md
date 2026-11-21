@@ -1,6 +1,6 @@
 # TÌNH TRẠNG batch toanmath
 
-> Tự sinh bởi `tinh-trang.mjs` lúc 2026-11-15 22:14 (giờ VN) — KHÔNG sửa tay. Luật cập nhật: `spec-giai-bai.md` §C8.
+> Tự sinh bởi `tinh-trang.mjs` lúc 2026-11-21 09:19 (giờ VN) — KHÔNG sửa tay. Luật cập nhật: `spec-giai-bai.md` §C8.
 > Số câu đếm từ tệp soạn (dòng `### … | kho= | loai=`); đề chưa soạn thì chưa có số.
 
 ## 1. Tổng theo chặng × khối
@@ -14,16 +14,16 @@
 | 1. Cuối kì | K11 | 10 | 7 | 0 | 3 | 35 / 35 | 2871 | 0 |
 | 1. Cuối kì | K10 | 9 | 2 | 4 | 3 | 18 / 32 | 1385 | 0 |
 | 1. Cuối kì | K12 | 5 | 2 | 0 | 3 | 11 / 11 | 258 | 0 |
-| 2. Giữa kì | K9 | 9 | 0 | 0 | 9 | 0 / 0 | 0 | 0 |
-| 2. Giữa kì | K8 | 9 | 0 | 0 | 9 | 0 / 0 | 0 | 0 |
-| 2. Giữa kì | K7 | 8 | 0 | 0 | 8 | 0 / 0 | 0 | 0 |
-| 2. Giữa kì | K6 | 6 | 0 | 0 | 6 | 0 / 0 | 0 | 0 |
+| 2. Giữa kì | K9 | 9 | 1 | 5 | 3 | 6 / 55 | 44 | 0 |
+| 2. Giữa kì | K8 | 9 | 0 | 1 | 8 | 0 / 15 | 0 | 1 |
+| 2. Giữa kì | K7 | 8 | 0 | 5 | 3 | 0 / 37 | 0 | 1 |
+| 2. Giữa kì | K6 | 6 | 0 | 4 | 2 | 0 / 33 | 0 | 7 |
 | 2. Giữa kì | K11 | 10 | 0 | 0 | 10 | 0 / 0 | 0 | 0 |
 | 2. Giữa kì | K10 | 9 | 0 | 0 | 9 | 0 / 0 | 0 | 0 |
 | 2. Giữa kì | K12 | 4 | 2 | 0 | 2 | 5 / 5 | 110 | 0 |
 | 3. Thi vào lớp trên | K9 | 5 | 0 | 0 | 5 | 0 / 0 | 0 | 0 |
 | 3. Thi vào lớp trên | K12 | 16 | 0 | 0 | 16 | 0 / 0 | 0 | 0 |
-| **Tổng** | | **130** | **30** | **5** | **95** | **211 / 226** | **10133** | **0** |
+| **Tổng** | | **130** | **31** | **20** | **79** | **217 / 366** | **10177** | **9** |
 
 ## 2. Đang dở — từng đề (việc kế tiếp)
 
@@ -66,6 +66,215 @@
 |---|---|---|---|---|---|---|
 | B047-01 | THPT Nguyễn Trãi, Đà Nẵng | **chờ soát** | 88 | 3 |  |  |
 | B047-02 | THPT Nguyễn Trãi, Hà Nội | **chờ soạn** | ~79 |  |  |  |
+
+### B056 — K9 đề thi giữa kì (2/3) · đang làm 0/16 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B056-01 | THCS Trưng Vương, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-02 | Ban Mai School, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-03 | THCS Chương Dương, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-04 | THCS Lê Ngọc Hân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-05 | THCS Mai Dịch, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-06 | THCS Ngọc Lâm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-07 | THCS Trưng Vương, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-08 | xã Đông Anh, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-09 | THCS Cầu Giấy, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-10 | THCS Nguyễn Bỉnh Khiêm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-11 | THCS Nhật Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-12 | THCS Thanh Mỹ, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-13 | THCS Mỹ Đình 2, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-14 | THCS Nam Từ Liêm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-15 | THCS Nhật Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B056-16 | THCS Ngọc Lâm, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B057 — K9 đề thi giữa kì (3/3) · đang làm 0/16 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B057-01 | THCS Tây Mỗ 3, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-02 | THPT chuyên Hà Nội – Amsterdam | **chờ soạn** | — |  |  |  |
+| B057-03 | THCS Cổ Đông, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-04 | THCS Nghĩa Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-05 | THCS Ngọc Lâm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-06 | THCS Nguyễn Du, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-07 | THCS Phan Đình Giót, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-08 | THCS Phúc Đồng, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-09 | THCS Ba Đình, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-10 | THCS Cầu Diễn, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-11 | THCS Đức Giang, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-12 | THCS Nghĩa Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-13 | THCS Kiêu Kỵ, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-14 | THCS Lê Hồng Phong, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-15 | THCS Nguyễn Trường Tộ, Hà Nội | **chờ soạn** | — |  |  |  |
+| B057-16 | THCS Ngọc Lâm, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B061 — K9 đề cương giữa kì (2/4) · đang làm 0/1 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B061-01 | THCS Ngô Sĩ Liên, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B062 — K9 đề cương giữa kì (3/4) · đang làm 0/8 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B062-01 | THCS Đa Tốn, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-02 | THCS Nghĩa Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-03 | THCS Thọ Lộc, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-04 | Trường Nguyễn Tất Thành, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-05 | THCS Lê Quý Đôn, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-06 | THCS Thọ Lộc, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-07 | THCS Lê Quý Đôn, Hà Nội | **chờ soạn** | — |  |  |  |
+| B062-08 | THCS Nguyễn Bỉnh Khiêm, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B063 — K9 đề cương giữa kì (4/4) · đang làm 0/8 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B063-01 | THCS Thăng Long, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-02 | THCS Thành Công, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-03 | THCS Ngọc Thụy, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-04 | THCS Thành Công, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-05 | THCS Mỹ Đình 2, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-06 | THCS Ngọc Thụy, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-07 | THCS Nguyễn Bỉnh Khiêm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B063-08 | THCS Yên Thượng, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B066 — K8 đề thi giữa kì (3/4) · đang làm 0/15 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B066-01 | THCS Gia Quất, Hà Nội | **ĐẠT — chờ ghi** | 15 | 1 | có |  |
+| B066-02 | THCS Lý Sơn, quận Long Biên, Hà Nội | **chờ soát** | 14 |  |  |  |
+| B066-03 | THCS Phúc Lợi, quận Long Biên, Hà Nội | **chờ soát** | 14 |  |  |  |
+| B066-04 | Trường Ban Mai (Ban Mai School), Hà Nội | **đang soát** | 13 |  | có |  |
+| B066-05 | THCS Chương Dương, phường Hồng Hà, Hà Nội | **chờ soát** | 6 | 1 |  |  |
+| B066-06 | THCS Khương Thượng, Hà Nội | **chờ soát** | 13 | 1 |  |  |
+| B066-07 | THCS Mai Dịch, phường Từ Liêm, Hà Nội | **đang soát** | 15 |  | có |  |
+| B066-08 | THCS Nghĩa Tân, phường Nghĩa Đô, Hà Nội | **chờ soát** | 6 |  |  |  |
+| B066-09 | THCS Ngọc Lâm, phường Bồ Đề, Hà Nội | **chờ soát** | 13 |  |  |  |
+| B066-10 | THCS Phan Chu Trinh, phường Giảng Võ, Hà Nội | **đang soát** | 9 |  |  |  |
+| B066-11 | THCS Phan Đình Giót, phường Thanh Xuân, Hà Nội | **chờ soát** | 8 |  |  |  |
+| B066-12 | THCS Phương Liệt, phường Tương Mai, Hà Nội | **chờ soát** | 8 |  |  |  |
+| B066-13 | UBND xã Đông Anh (Phòng Văn hoá – Xã hội), Hà Nội | **chờ soát** | 9 |  |  |  |
+| B066-14 | THCS & THPT Lương Thế Vinh, Hà Nội | **chờ soát** | 12 | 1 |  |  |
+| B066-15 | THCS Cầu Giấy, quận Cầu Giấy, Hà Nội | **chờ soát** | 16 |  |  |  |
+
+### B073 — K7 đề thi giữa kì — Word · đang làm 0/1 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B073-01 | Trường THCS Uy Nỗ, huyện Đông Anh, Hà Nội | **ĐẠT — chờ ghi** | 18 | 1 | có |  |
+
+### B075 — K7 đề thi giữa kì (2/3) · đang làm 0/7 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B075-01 | Trường THCS Ban Mai (Ban Mai School), Hà Nội — quận/huyện không in trên đề | **đang soát** | 15 | 1 |  |  |
+| B075-02 | Trường THCS Chương Dương, quận Hoàn Kiếm, Hà Nội | **đang soát** | 12 | 1 |  |  |
+| B075-03 | Trường THCS Gia Quất, Hà Nội — quận/huyện không in trên đề | **đang soát** | 13 | 2 |  |  |
+| B075-04 | Trường THCS Ngô Sĩ Liên, Hà Nội — quận/huyện không in trên đề | **đang soát** | 15 |  | có |  |
+| B075-05 | Trường THCS Phúc Lợi, quận Long Biên, Hà Nội | **đang soát** | 13 |  | có |  |
+| B075-06 | Trường THCS Ban Mai (Ban Mai School), Hà Nội — quận/huyện không in trên đề | **đang soát** | 16 |  | có |  |
+| B075-07 | Trường THCS Chương Dương, phường Hồng Hà, Hà Nội | **đang soát** | 16 | 2 | có |  |
+
+### B076 — K7 đề thi giữa kì (3/3) · đang làm 0/15 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B076-01 | THCS Mai Dịch, phường Từ Liêm, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-02 | THCS Nghĩa Tân, phường Nghĩa Đô, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-03 | THCS Ngọc Lâm, phường Bồ Đề, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-04 | THCS Xuân Đỉnh, phường Xuân Đỉnh, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-05 | Trường Thực nghiệm KHGD (Viện Khoa học Giáo dục Việt Nam), Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-06 | UBND xã Đông Anh – Phòng Văn hoá – Xã hội (đề chung của xã), Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-07 | THCS Cầu Giấy, quận Cầu Giấy, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-08 | THCS Nguyễn Bình Khiêm, quận Long Biên, Hà Nội | **chờ soạn** | — |  |  |  |
+| B076-09 | THCS Thanh Mỹ, thị xã Sơn Tây, Hà Nội | **chờ soạn** | ~17 |  |  |  |
+| B076-10 | THCS Nguyễn Trãi, Hà Nội | **chờ soạn** | ~23 |  |  |  |
+| B076-11 | THCS Ngọc Lâm, quận Long Biên, Hà Nội | **chờ soạn** | ~13 |  |  |  |
+| B076-12 | THCS Phúc Đồng, quận Long Biên, Hà Nội | **chờ soạn** | ~11 |  |  |  |
+| B076-13 | THCS Việt Hưng, quận Long Biên, Hà Nội | **chờ soạn** | ~10 |  |  |  |
+| B076-14 | THCS Đức Giang, Hà Nội | **chờ soạn** | ~10 |  |  |  |
+| B076-15 | THCS Nguyễn Trường Tộ, Hà Nội | **chờ soạn** | ~8 |  |  |  |
+
+### B079 — K7 đề cương giữa kì (2/3) · đang làm 0/4 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B079-01 | THCS Đa Tốn, Hà Nội | **chờ soạn** | ~68 |  |  |  |
+| B079-02 | THCS Nghĩa Tân, quận Cầu Giấy, Hà Nội | **chờ soạn** | ~50 |  |  |  |
+| B079-03 | THCS Khương Thượng (Tổ Tự nhiên 1), Hà Nội | **TREO — chờ quyết** | ~38 |  |  | đề cương tự ghi «Đại số: Chương VI (đến bài 3 cộng trừ đa thức một biến)», «Hình: Chương VII» — đánh số chương lệch KNTT (nghi CTST/Cánh Diều); scan — chờ Thùy xác nhận bộ sách (21/11) |
+| B079-04 | THCS Lê Quý Đôn (Nhóm Toán 7), Hà Nội | **chờ soạn** | ~45 |  |  |  |
+
+### B080 — K7 đề cương giữa kì (3/3) · đang làm 0/10 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B080-01 | THCS Thọ Lộc, xã Phúc Thọ, Hà Nội | **chờ soạn** | ~42 |  |  |  |
+| B080-02 | THCS Thọ Lộc, huyện Phúc Thọ, Hà Nội | **chờ soạn** | ~30 |  |  |  |
+| B080-03 | THCS Nguyễn Bỉnh Khiêm, quận Long Biên, Hà Nội | **chờ soạn** | ~50 |  |  |  |
+| B080-04 | THCS Thăng Long (Tổ Tự nhiên), Hà Nội | **chờ soạn** | ~18 |  |  |  |
+| B080-05 | THCS Thành Công, Hà Nội | **chờ soạn** | ~56 |  |  |  |
+| B080-06 | THCS Chu Văn An, phường Tây Hồ, Hà Nội | **TREO — chờ quyết** | ~18 |  |  | nghi bộ sách Cánh Diều (tên bài «Biến cố trong một số trò chơi đơn giản»…) — spec Khối 7: Cánh Diều ⇒ không nhập đề; chờ Thùy xác nhận bộ sách (21/11) |
+| B080-07 | THCS Ngọc Thụy, phường Bồ Đề, Hà Nội | **TREO — chờ quyết** | ~29 |  |  | nghi bộ sách Cánh Diều (scan, đề cương + 2 đề minh hoạ trích tập ôn dài) — chờ Thùy xác nhận bộ sách (21/11) |
+| B080-08 | THCS Thành Công, Hà Nội | **chờ soạn** | ~70 |  |  |  |
+| B080-09 | THCS Ngọc Thụy, quận Long Biên, Hà Nội | **TREO — chờ quyết** | ~43 |  |  | nghi bộ sách Cánh Diều (đánh số câu nhảy 20→30, 26 TN + 17 TL) — chờ Thùy xác nhận bộ sách (21/11) |
+| B080-10 | THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội | **TREO — chờ quyết** | ~28 |  |  | nghi bộ sách Cánh Diều (độ chắc thấp–vừa; 2 đề minh hoạ) — chờ Thùy xác nhận bộ sách (21/11) |
+
+### B081 — K6 đề thi giữa kì (1/2) · đang làm 0/7 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B081-06 | Ban Mai School, Hà Nội | **ĐẠT — chờ ghi** | 20 | 1 | có |  |
+| B081-07 | THCS Chương Dương, phường Hồng Hà, Hà Nội | **ĐẠT — chờ ghi** | 18 |  | có |  |
+| B081-08 | THCS Đồng Ngạc, Hà Nội (scan) | **ĐẠT — chờ ghi** | 20 | 2 | có |  |
+| B081-09 | THCS Gia Quất, phường Việt Hưng, Hà Nội | **ĐẠT — chờ ghi** | 14 | 2 | có |  |
+| B081-10 | THCS Mai Dịch, quận Cầu Giấy, Hà Nội | **ĐẠT — chờ ghi** | 22 | 1 |  |  |
+| B081-11 | THCS Phúc Lợi, quận Long Biên, Hà Nội | **ĐẠT — chờ ghi** | 17 |  | có |  |
+| B081-12 | Ban Mai School, Hà Nội | **ĐẠT — chờ ghi** | 24 | 1 | có |  |
+
+### B082 — K6 đề thi giữa kì (2/2) · đang làm 0/13 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B082-01 | THCS và THPT M.V. Lô-mô-nô-xốp, Hà Nội (scan) | **chờ soát** | 16 | 3 |  |  |
+| B082-02 | THCS Chương Dương, phường Hồng Hà, Hà Nội | **chờ soát** | 19 | 2 |  |  |
+| B082-03 | THCS Mai Dịch, phường Từ Liêm, Hà Nội | **chờ soát** | 22 | 2 |  |  |
+| B082-04 | THCS Nghĩa Tân, Hà Nội (scan) | **chờ soát** | 21 | 1 |  |  |
+| B082-05 | THCS Ngọc Lâm, Hà Nội (scan) | **chờ soát** | 19 | 1 |  |  |
+| B082-06 | Xã Đông Anh, Hà Nội | **chờ soát** | 15 |  |  |  |
+| B082-07 | THCS Cầu Giấy, Hà Nội (scan) | **chờ soát** | 22 | 2 |  |  |
+| B082-08 | THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội (scan) | **chờ soát** | 15 |  |  |  |
+| B082-09 | THCS Thanh Mỹ, thị xã Sơn Tây, Hà Nội | **chờ soát** | 23 | 1 |  |  |
+| B082-10 | THCS Ngọc Lâm, Hà Nội (scan) | **chờ soát** | 19 |  |  |  |
+| B082-11 | THCS Phúc Đồng, quận Long Biên, Hà Nội | **chờ soát** | 18 | 1 |  |  |
+| B082-12 | THCS Việt Hưng, quận Long Biên, Hà Nội | **chờ soát** | 18 |  |  |  |
+| B082-13 | THCS Việt Hưng, phường Việt Hưng, Hà Nội | **chờ soát** | 17 |  |  |  |
+
+### B085 — K6 đề cương giữa kì (2/3) · đang làm 0/5 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B085-04 | THCS Đa Tốn, Hà Nội | **chờ soạn** | — |  |  |  |
+| B085-05 | THCS Nghĩa Tân, Hà Nội | **chờ soạn** | — |  |  |  |
+| B085-06 | THCS Thọ Lộc, Hà Nội (scan) | **chờ soạn** | — |  |  |  |
+| B085-07 | THCS Thọ Lộc, Hà Nội (scan) | **chờ soạn** | — |  |  |  |
+| B085-08 | THCS Nguyễn Bỉnh Khiêm, quận Long Biên, Hà Nội | **chờ soạn** | — |  |  |  |
+
+### B086 — K6 đề cương giữa kì (3/3) · đang làm 0/8 đề đã ghi
+
+| Đề | Đơn vị | Tình trạng | Câu | Chưa chắc | Soát có sửa | Khúc |
+|---|---|---|---|---|---|---|
+| B086-01 | THCS Thăng Long, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-02 | THCS Thành Công, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-03 | THCS Chu Văn An, quận Tây Hồ, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-04 | THCS Ngọc Thụy, Hà Nội (scan) | **chờ soạn** | — |  |  |  |
+| B086-05 | THCS Thành Công, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-06 | THCS Chu Văn An, quận Tây Hồ, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-07 | THCS Ngọc Thụy, quận Long Biên, Hà Nội | **chờ soạn** | — |  |  |  |
+| B086-08 | THCS Nguyễn Bỉnh Khiêm, phường Phúc Lợi, Hà Nội | **chờ soạn** | — |  |  |  |
 
 ## 3. Mọi batch
 
@@ -125,38 +334,38 @@
 | B052 | 1 | K12 đề thi cuối kì (2/3) | 16 | 9 | XONG |  |  |  |  |  |  |  | 9 | 214 |
 | B053 | 1 | K12 đề thi cuối kì (3/3) | 16 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B054 | 1 | K12 đề thi cuối kì — scan nghi trùng | 1 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B055 | 2 | K9 đề thi giữa kì (1/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B056 | 2 | K9 đề thi giữa kì (2/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B057 | 2 | K9 đề thi giữa kì (3/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B055 | 2 | K9 đề thi giữa kì (1/3) | 15 | 6 | XONG |  |  |  |  |  |  |  | 6 | 44 |
+| B056 | 2 | K9 đề thi giữa kì (2/3) | 15 | 16 | đang làm 0/16 đề đã ghi | 16 |  |  |  |  |  |  |  |  |
+| B057 | 2 | K9 đề thi giữa kì (3/3) | 15 | 16 | đang làm 0/16 đề đã ghi | 16 |  |  |  |  |  |  |  |  |
 | B058 | 2 | K9 đề thi giữa kì — scan nghi trùng (1/2) | 13 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B059 | 2 | K9 đề thi giữa kì — scan nghi trùng (2/2) | 14 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B060 | 2 | K9 đề cương giữa kì (1/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B061 | 2 | K9 đề cương giữa kì (2/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B062 | 2 | K9 đề cương giữa kì (3/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B063 | 2 | K9 đề cương giữa kì (4/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B061 | 2 | K9 đề cương giữa kì (2/4) | 8 | 1 | đang làm 0/1 đề đã ghi | 1 |  |  |  |  |  |  |  |  |
+| B062 | 2 | K9 đề cương giữa kì (3/4) | 8 | 8 | đang làm 0/8 đề đã ghi | 8 |  |  |  |  |  |  |  |  |
+| B063 | 2 | K9 đề cương giữa kì (4/4) | 8 | 8 | đang làm 0/8 đề đã ghi | 8 |  |  |  |  |  |  |  |  |
 | B064 | 2 | K8 đề thi giữa kì (1/4) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B065 | 2 | K8 đề thi giữa kì (2/4) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B066 | 2 | K8 đề thi giữa kì (3/4) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B066 | 2 | K8 đề thi giữa kì (3/4) | 15 | 15 | đang làm 0/15 đề đã ghi |  |  | 11 | 3 |  |  | 1 |  |  |
 | B067 | 2 | K8 đề thi giữa kì (4/4) | 16 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B068 | 2 | K8 đề thi giữa kì — scan nghi trùng | 10 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B069 | 2 | K8 đề cương giữa kì (1/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B070 | 2 | K8 đề cương giữa kì (2/4) | 9 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B071 | 2 | K8 đề cương giữa kì (3/4) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B072 | 2 | K8 đề cương giữa kì (4/4) | 9 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B073 | 2 | K7 đề thi giữa kì — Word | 1 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B073 | 2 | K7 đề thi giữa kì — Word | 1 | 1 | đang làm 0/1 đề đã ghi |  |  |  |  |  |  | 1 |  |  |
 | B074 | 2 | K7 đề thi giữa kì (1/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B075 | 2 | K7 đề thi giữa kì (2/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B076 | 2 | K7 đề thi giữa kì (3/3) | 15 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B075 | 2 | K7 đề thi giữa kì (2/3) | 15 | 7 | đang làm 0/7 đề đã ghi |  |  |  | 7 |  |  |  |  |  |
+| B076 | 2 | K7 đề thi giữa kì (3/3) | 15 | 15 | đang làm 0/15 đề đã ghi | 15 |  |  |  |  |  |  |  |  |
 | B077 | 2 | K7 đề thi giữa kì — scan nghi trùng | 1 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B078 | 2 | K7 đề cương giữa kì (1/3) | 9 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B079 | 2 | K7 đề cương giữa kì (2/3) | 10 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B080 | 2 | K7 đề cương giữa kì (3/3) | 10 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B081 | 2 | K6 đề thi giữa kì (1/2) | 12 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B082 | 2 | K6 đề thi giữa kì (2/2) | 13 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B079 | 2 | K7 đề cương giữa kì (2/3) | 10 | 4 | đang làm 0/4 đề đã ghi | 3 |  |  |  |  |  |  |  |  |
+| B080 | 2 | K7 đề cương giữa kì (3/3) | 10 | 10 | đang làm 0/10 đề đã ghi | 6 |  |  |  |  |  |  |  |  |
+| B081 | 2 | K6 đề thi giữa kì (1/2) | 12 | 7 | đang làm 0/7 đề đã ghi |  |  |  |  |  |  | 7 |  |  |
+| B082 | 2 | K6 đề thi giữa kì (2/2) | 13 | 13 | đang làm 0/13 đề đã ghi |  |  | 13 |  |  |  |  |  |  |
 | B083 | 2 | K6 đề thi giữa kì — scan nghi trùng | 4 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B084 | 2 | K6 đề cương giữa kì (1/3) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B085 | 2 | K6 đề cương giữa kì (2/3) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
-| B086 | 2 | K6 đề cương giữa kì (3/3) | 8 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
+| B085 | 2 | K6 đề cương giữa kì (2/3) | 8 | 5 | đang làm 0/5 đề đã ghi | 5 |  |  |  |  |  |  |  |  |
+| B086 | 2 | K6 đề cương giữa kì (3/3) | 8 | 8 | đang làm 0/8 đề đã ghi | 8 |  |  |  |  |  |  |  |  |
 | B087 | 2 | K11 đề thi giữa kì — Word | 10 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B088 | 2 | K11 đề thi giữa kì (1/2) | 13 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
 | B089 | 2 | K11 đề thi giữa kì (2/2) | 13 | — | chưa chuẩn bị |  |  |  |  |  |  |  |  |  |
