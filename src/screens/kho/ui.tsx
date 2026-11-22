@@ -274,13 +274,15 @@ const docTab = (mac_dinh: LoiGiaiTab): LoiGiaiTab => {
   } catch { /* bỏ qua */ }
   return mac_dinh
 }
-// caHai=false: chỉ 2 tab Lời giải · Hướng dẫn; nho=false: luôn mở đúng mac_dinh, không đọc/ghi lựa chọn đã nhớ (màn Duyệt — Thùy 22/11)
-export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai', caHai = true, nho = true }: { raw: unknown; className?: string; mac_dinh?: LoiGiaiTab; caHai?: boolean; nho?: boolean }) {
+// chiLoiGiai=true: ẨN hẳn Hướng dẫn, chỉ hiện Lời giải (Phần 2), không thanh tab — màn Duyệt không cần hướng dẫn (Thùy 22/11).
+// caHai=false: chỉ 2 tab Lời giải · Hướng dẫn; nho=false: luôn mở đúng mac_dinh, không đọc/ghi lựa chọn đã nhớ
+export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai', caHai = true, nho = true, chiLoiGiai = false }: { raw: unknown; className?: string; mac_dinh?: LoiGiaiTab; caHai?: boolean; nho?: boolean; chiLoiGiai?: boolean }) {
   const [tab, setTab] = useState<LoiGiaiTab>(() => (nho ? docTab(mac_dinh) : mac_dinh))
   const text = epChuoi(raw)
   if (!text.trim()) return null
   const t = tach2Phan(text)
   if (!t) return <MathText className={className}>{text}</MathText>
+  if (chiLoiGiai) return <div className={className}><div className="katex-text" dangerouslySetInnerHTML={{ __html: t.truoc_html + t.p2_html }} /></div>
   const chon = (k: LoiGiaiTab) => { setTab(k); if (nho) { try { localStorage.setItem(LS_LG_TAB, k) } catch { /* bỏ qua */ } } }
   const html = tab === 'huong_dan'
     ? t.truoc_html + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div>`

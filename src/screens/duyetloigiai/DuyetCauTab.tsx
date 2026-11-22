@@ -346,7 +346,7 @@ function The({ r, mon, busyAll, bdm, onXong, onSua, anh, nx, onCanSua, deSauAt, 
         <div className="flex items-center justify-between"><span className={lbl}>Lời giải{doiLg ? ' · đã sửa' : ''}{r.nguon_giai === 'ai' ? ' (AI)' : ''}</span>
           <button onClick={() => setSuaLg((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaLg ? '✓ Xong' : '✎ Sửa'}</button></div>
         {suaLg ? <SolutionField value={loiGiai} onChange={setLoiGiai} taClassName={`${inp} min-h-[260px] font-mono text-[13px]`} />
-          : <div className={`${box} text-[16px]`}>{loiGiai ? <LoiGiaiXem raw={loiGiai} caHai={false} nho={false} /> : '—'}</div>}
+          : <div className={`${box} text-[16px]`}>{loiGiai ? <LoiGiaiXem raw={loiGiai} chiLoiGiai /> : '—'}</div>}
         {r.anh_dap_an && <img src={r.anh_dap_an} alt="ảnh giải" className="mt-2 max-h-72 w-auto max-w-full rounded-lg border border-slate-200" />}
       </section>
 

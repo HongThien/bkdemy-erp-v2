@@ -232,7 +232,7 @@ export default function DuyetLoiGiaiScreen() {
                   </section>
                   <section className="min-w-0 border-t border-slate-100 p-5 lg:border-l lg:border-t-0">
                     <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải (AI)</div>
-                    <div className="text-[16px]"><LoiGiaiXem raw={r.loiGiai} caHai={false} nho={false} /></div>
+                    <div className="text-[16px]"><LoiGiaiXem raw={r.loiGiai} chiLoiGiai /></div>
                   </section>
                   <aside className="min-w-0 rounded-b-xl border-t border-slate-100 bg-slate-50/70 p-4 lg:rounded-b-none lg:rounded-r-xl lg:border-l lg:border-t-0">
                     <div className="flex flex-col gap-3 lg:sticky lg:top-3">

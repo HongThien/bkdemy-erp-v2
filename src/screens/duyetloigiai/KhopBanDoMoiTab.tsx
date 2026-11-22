@@ -323,7 +323,7 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
         {c.dap_an && <p className="mb-3 text-[13px] text-slate-500">Đáp án: <b className="text-slate-800"><MathText>{c.dap_an}</MathText></b></p>}
         <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải</div>
         <div className="text-[16px] leading-relaxed text-slate-800">
-          {loiGiai === undefined ? <span className="text-sm text-slate-400">Đang tải…</span> : loiGiai ? <LoiGiaiXem raw={loiGiai} caHai={false} nho={false} /> : <span className="text-sm text-slate-400">— chưa có lời giải —</span>}
+          {loiGiai === undefined ? <span className="text-sm text-slate-400">Đang tải…</span> : loiGiai ? <LoiGiaiXem raw={loiGiai} chiLoiGiai /> : <span className="text-sm text-slate-400">— chưa có lời giải —</span>}
         </div>
       </section>
 
