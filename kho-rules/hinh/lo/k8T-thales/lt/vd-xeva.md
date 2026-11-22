@@ -17,62 +17,62 @@ Vậy $MB=7$ cm.
 
 ##VD
 Cho tam giác $ABC$,
-các điểm $D$, $E$, $F$ lần lượt thuộc các cạnh $BC$, $CA$, $AB$ sao cho $AD$, $BE$, $CF$ đồng quy.
-Biết $AF=4$ cm, $FB=10$ cm, $BD=6$ cm, $DC=8$ cm, $EC=10$ cm.
-Tính $EA$.
+các điểm $A'$, $B'$, $C'$ lần lượt thuộc các cạnh $BC$, $CA$, $AB$ sao cho $AA'$, $BB'$, $CC'$ đồng quy.
+Biết $AC'=4$ cm, $C'B=10$ cm, $BA'=6$ cm, $A'C=8$ cm, $B'C=10$ cm.
+Tính $B'A$.
 
 {{HINH:xeva_vd|Hình ví dụ 2}}
 
 Bài giải:
-Xét tam giác $ABC$ có $AD$, $BE$, $CF$ đồng quy (gt)
-nên $\dfrac{DB}{DC}\cdot\dfrac{EC}{EA}\cdot\dfrac{FA}{FB}=1$ (định lí Xê-va).
-Thay số: $\dfrac{6}{8}\cdot\dfrac{10}{EA}\cdot\dfrac{4}{10}=1$, suy ra $\dfrac{3}{4}\cdot\dfrac{2}{5}\cdot\dfrac{10}{EA}=1$.
-Do đó $\dfrac{3}{10}\cdot\dfrac{10}{EA}=1$, tức $\dfrac{3}{EA}=1$.
-Vậy $EA=3$ cm.
+Xét tam giác $ABC$ có $AA'$, $BB'$, $CC'$ đồng quy (gt)
+nên $\dfrac{A'B}{A'C}\cdot\dfrac{B'C}{B'A}\cdot\dfrac{C'A}{C'B}=1$ (định lí Xê-va).
+Thay số: $\dfrac{6}{8}\cdot\dfrac{10}{B'A}\cdot\dfrac{4}{10}=1$, suy ra $\dfrac{3}{4}\cdot\dfrac{2}{5}\cdot\dfrac{10}{B'A}=1$.
+Do đó $\dfrac{3}{10}\cdot\dfrac{10}{B'A}=1$, tức $\dfrac{3}{B'A}=1$.
+Vậy $B'A=3$ cm.
 
 ##VD
 Cho tam giác $ABC$.
-Điểm $D$ thuộc cạnh $BC$ sao cho $DB=2DC$, $E$ là trung điểm của $AD$,
-đường thẳng $BE$ cắt $AC$ tại $F$.
-Tính tỉ số $\dfrac{FA}{FC}$.
+Điểm $A'$ thuộc cạnh $BC$ sao cho $A'B=2A'C$, $I$ là trung điểm của $AA'$,
+đường thẳng $BI$ cắt $AC$ tại $B'$.
+Tính tỉ số $\dfrac{B'A}{B'C}$.
 
 {{HINH:menelaus_vd_tuyen|Hình ví dụ 3}}
 
 Bài giải:
-Xét tam giác $ADC$ với cát tuyến $BEF$ (đường thẳng $BE$ cắt $DC$ tại $B$, cắt $AD$ tại $E$, cắt $CA$ tại $F$)
-nên $\dfrac{BD}{BC}\cdot\dfrac{FC}{FA}\cdot\dfrac{EA}{ED}=1$ (định lí Mê-nê-la-uýt).
-Vì $DB=2DC$ nên $BC=BD+DC=3DC$, suy ra $\dfrac{BD}{BC}=\dfrac{2}{3}$.
-Vì $E$ là trung điểm của $AD$ nên $\dfrac{EA}{ED}=1$.
-Thay vào: $\dfrac{2}{3}\cdot\dfrac{FC}{FA}\cdot1=1$, suy ra $\dfrac{FC}{FA}=\dfrac{3}{2}$.
-Vậy $\dfrac{FA}{FC}=\dfrac{2}{3}$.
+Xét tam giác $AA'C$ với cát tuyến $BIB'$ (đường thẳng $BI$ cắt $A'C$ tại $B$, cắt $AA'$ tại $I$, cắt $CA$ tại $B'$)
+nên $\dfrac{BA'}{BC}\cdot\dfrac{B'C}{B'A}\cdot\dfrac{IA}{IA'}=1$ (định lí Mê-nê-la-uýt).
+Vì $A'B=2A'C$ nên $BC=BA'+A'C=3A'C$, suy ra $\dfrac{BA'}{BC}=\dfrac{2}{3}$.
+Vì $I$ là trung điểm của $AA'$ nên $\dfrac{IA}{IA'}=1$.
+Thay vào: $\dfrac{2}{3}\cdot\dfrac{B'C}{B'A}\cdot1=1$, suy ra $\dfrac{B'C}{B'A}=\dfrac{3}{2}$.
+Vậy $\dfrac{B'A}{B'C}=\dfrac{2}{3}$.
 
 ##VD
 Cho tam giác $ABC$,
-các điểm $D$, $E$, $F$ lần lượt là trung điểm của $BC$, $CA$, $AB$.
-Chứng minh $AD$, $BE$, $CF$ đồng quy.
+các điểm $A'$, $B'$, $C'$ lần lượt là trung điểm của $BC$, $CA$, $AB$.
+Chứng minh $AA'$, $BB'$, $CC'$ đồng quy.
 
 {{HINH:xeva_trung_tuyen|Hình ví dụ 4}}
 
 Bài giải:
-Vì $D$, $E$, $F$ là trung điểm của $BC$, $CA$, $AB$ (gt)
-nên $DB=DC$, $EC=EA$, $FA=FB$.
-Suy ra $\dfrac{DB}{DC}\cdot\dfrac{EC}{EA}\cdot\dfrac{FA}{FB}=1\cdot1\cdot1=1$.
-Xét tam giác $ABC$ có $D$, $E$, $F$ thuộc các cạnh $BC$, $CA$, $AB$ và $\dfrac{DB}{DC}\cdot\dfrac{EC}{EA}\cdot\dfrac{FA}{FB}=1$
-nên $AD$, $BE$, $CF$ đồng quy (định lí Xê-va đảo).
+Vì $A'$, $B'$, $C'$ là trung điểm của $BC$, $CA$, $AB$ (gt)
+nên $A'B=A'C$, $B'C=B'A$, $C'A=C'B$.
+Suy ra $\dfrac{A'B}{A'C}\cdot\dfrac{B'C}{B'A}\cdot\dfrac{C'A}{C'B}=1\cdot1\cdot1=1$.
+Xét tam giác $ABC$ có $A'$, $B'$, $C'$ thuộc các cạnh $BC$, $CA$, $AB$ và $\dfrac{A'B}{A'C}\cdot\dfrac{B'C}{B'A}\cdot\dfrac{C'A}{C'B}=1$
+nên $AA'$, $BB'$, $CC'$ đồng quy (định lí Xê-va đảo).
 
 ##VD
 Cho tam giác $ABC$,
-các đường phân giác $AD$, $BE$, $CF$ ($D\in BC$, $E\in CA$, $F\in AB$).
-Chứng minh $AD$, $BE$, $CF$ đồng quy.
+các đường phân giác $AA'$, $BB'$, $CC'$ ($A'\in BC$, $B'\in CA$, $C'\in AB$).
+Chứng minh $AA'$, $BB'$, $CC'$ đồng quy.
 
 {{HINH:xeva_phan_giac|Hình ví dụ 5}}
 
 Bài giải:
-Vì $AD$, $BE$, $CF$ là các đường phân giác của tam giác $ABC$ (gt)
-nên $\dfrac{DB}{DC}=\dfrac{AB}{AC}$, $\dfrac{EC}{EA}=\dfrac{BC}{BA}$, $\dfrac{FA}{FB}=\dfrac{CA}{CB}$ (tính chất đường phân giác).
-Nhân ba đẳng thức theo từng vế: $\dfrac{DB}{DC}\cdot\dfrac{EC}{EA}\cdot\dfrac{FA}{FB}=\dfrac{AB}{AC}\cdot\dfrac{BC}{BA}\cdot\dfrac{CA}{CB}=1$.
-Xét tam giác $ABC$ có $D$, $E$, $F$ thuộc các cạnh $BC$, $CA$, $AB$ và tích ba tỉ số bằng $1$
-nên $AD$, $BE$, $CF$ đồng quy (định lí Xê-va đảo).
+Vì $AA'$, $BB'$, $CC'$ là các đường phân giác của tam giác $ABC$ (gt)
+nên $\dfrac{A'B}{A'C}=\dfrac{AB}{AC}$, $\dfrac{B'C}{B'A}=\dfrac{BC}{BA}$, $\dfrac{C'A}{C'B}=\dfrac{CA}{CB}$ (tính chất đường phân giác).
+Nhân ba đẳng thức theo từng vế: $\dfrac{A'B}{A'C}\cdot\dfrac{B'C}{B'A}\cdot\dfrac{C'A}{C'B}=\dfrac{AB}{AC}\cdot\dfrac{BC}{BA}\cdot\dfrac{CA}{CB}=1$.
+Xét tam giác $ABC$ có $A'$, $B'$, $C'$ thuộc các cạnh $BC$, $CA$, $AB$ và tích ba tỉ số bằng $1$
+nên $AA'$, $BB'$, $CC'$ đồng quy (định lí Xê-va đảo).
 
 ##VD
 Cho tam giác $ABC$ có ba cạnh đôi một khác nhau.

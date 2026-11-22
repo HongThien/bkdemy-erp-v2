@@ -1,8 +1,8 @@
 // ve-xeva.mjs — hình cho LÝ THUYẾT + VÍ DỤ bài HH00131 "Định lí Mê-nê-la-uýt, định lí Xê-va" khối 8T (Thùy 22/11).
 //   node kho-rules/hinh/lo/k8T-thales/lt/ve-xeva.mjs        → kho-rules/hinh/lo/k8T-thales/lt/ra/<ten>.png + .svg
-// Quy ước tên: cát tuyến d cắt các đường thẳng BC, CA, AB lần lượt tại M, N, P · ba đường xuyên AD, BE, CF (D∈BC, E∈CA, F∈AB) đồng quy tại O.
+// Quy ước tên: cát tuyến d cắt các đường thẳng BC, CA, AB lần lượt tại M, N, P · ba đường AA', BB', CC' (A'∈BC, B'∈CA, C'∈AB; Thùy 22/11: không dùng D, E, F) đồng quy tại O.
 // menelaus: d cắt AB, AC trong cạnh, BC ngoài đoạn · menelaus_ba_ngoai: d cắt cả ba đường thẳng ngoài đoạn · menelaus_cm: kẻ CK ∥ AB (nét đứt), K ∈ d · menelaus_dao: MN cắt AB tại P' ·
-// xeva: AD, BE, CF đồng quy tại O · xeva_dao: AD ∩ BE = O, CO cắt AB tại F' · ví dụ: menelaus_vd (tỉ số thật) · xeva_vd (tỉ số thật) · menelaus_vd_tuyen · xeva_trung_tuyen · xeva_phan_giac · menelaus_phan_giac_ngoai.
+// xeva: AA', BB', CC' đồng quy tại O · xeva_dao: AA' ∩ BB' = O, CO cắt AB tại C1 · ví dụ: menelaus_vd (tỉ số thật) · xeva_vd (tỉ số thật) · menelaus_vd_tuyen · xeva_trung_tuyen · xeva_phan_giac · menelaus_phan_giac_ngoai.
 // Hình chỉ vẽ DỮ KIỆN (không đánh dấu điều phải chứng minh). Toạ độ DỰNG theo tỉ số (không ước mắt).
 import { P, seg, segDash, dot, label, labelOut, lerp, mid, inter, tick, angleMark, hinh, xuatTat, dist } from '../../../../../scripts/anh/ve_hinh_lib.mjs'
 import { dirname, join } from 'node:path'
@@ -62,13 +62,13 @@ hinh('menelaus', [A, B, C, M1, P1], [...tamGiac, seg(C, M1), seg(P1, M1), diem([
 // 5) Xê-va: ba đường xuyên đồng quy tại O
 const O = P(185, 150), D = inter(A, O, B, C), E = inter(B, O, C, A), F = inter(C, O, A, B)
 hinh('xeva', [A, B, C], [...tamGiac, seg(A, D), seg(B, E), seg(C, F), diem([[A], [B], [C], [D], [E], [F], [O]]),
-  nhan([...dinh, [D, 'D', 0, 32], [E, 'E', 22, 0], [F, 'F', -20, 2], [O, 'O', 18, 22]])])
+  nhan([...dinh, [D, "A'", 0, 32], [E, "B'", 22, 0], [F, "C'", -20, 2], [O, 'O', 18, 22]])])
 
 // 6) Xê-va đảo: AD ∩ BE = O, CO cắt AB tại F'
 {
   const D2 = lerp(B, C, 0.4), E2 = lerp(C, A, 0.45), O2 = inter(A, D2, B, E2), Fp = inter(C, O2, A, B)
   hinh('xeva_dao', [A, B, C], [...tamGiac, seg(A, D2), seg(B, E2), seg(C, Fp), diem([[A], [B], [C], [D2], [E2], [Fp], [O2]]),
-    nhan([...dinh, [D2, 'D', 0, 32], [E2, 'E', 22, 0], [Fp, "F'", -24, 2], [O2, 'O', 18, 22]])])
+    nhan([...dinh, [D2, "A'", 0, 32], [E2, "B'", 22, 0], [Fp, 'C<tspan font-size="18" dy="6">1</tspan>', -24, 2], [O2, 'O', 18, 22]])])
 }
 
 // 7) ví dụ 1: AB = 10, AC = 8, BC = 7 chỉ dùng tỉ số: PA:PB = 2:3, NA:NC = 1:3; MB = BC (M ở tia đối của tia BC); tam giác thu nhỏ 0,6 cho vừa khung
@@ -81,19 +81,19 @@ hinh('xeva', [A, B, C], [...tamGiac, seg(A, D), seg(B, E), seg(C, F), diem([[A],
 {
   const Fv = lerp(A, B, 4 / 14), Dv = lerp(B, C, 6 / 14), Ev = lerp(C, A, 10 / 13), Ov = inter(A, Dv, B, Ev)
   hinh('xeva_vd', [A, B, C], [...tamGiac, seg(A, Dv), seg(B, Ev), seg(C, Fv), diem([[A], [B], [C], [Dv], [Ev], [Fv], [Ov]]),
-    nhan([...dinh, [Dv, 'D', 0, 32], [Ev, 'E', 22, 0], [Fv, 'F', -20, 2], [Ov, 'O', 18, 22]])])
+    nhan([...dinh, [Dv, "A'", 0, 32], [Ev, "B'", 22, 0], [Fv, "C'", -20, 2], [Ov, 'O', 18, 22]])])
 }
 // 9) ví dụ 3: D ∈ BC với DB = 2DC, E trung điểm AD, F = BE ∩ AC
 {
   const Dm = lerp(B, C, 2 / 3), Em = mid(A, Dm), Fm = inter(B, Em, A, C)
   hinh('menelaus_vd_tuyen', [A, B, C], [...tamGiac, seg(A, Dm), seg(B, Fm), tick(A, Em, 1), tick(Em, Dm, 1), diem([[A], [B], [C], [Dm], [Em], [Fm]]),
-    nhan([...dinh, [Dm, 'D', 0, 32], [Em, 'E', -20, 4], [Fm, 'F', 22, 0]])])
+    nhan([...dinh, [Dm, "A'", 0, 32], [Em, 'I', -20, 4], [Fm, "B'", 22, 0]])])
 }
 // 10) ví dụ 4: ba trung tuyến (gạch trung điểm)
 {
   const Dt = mid(B, C), Et = mid(C, A), Ft = mid(A, B)
   hinh('xeva_trung_tuyen', [A, B, C], [...tamGiac, seg(A, Dt), seg(B, Et), seg(C, Ft), tick(B, Dt, 1), tick(Dt, C, 1), tick(C, Et, 2), tick(Et, A, 2), tick(A, Ft, 3), tick(Ft, B, 3),
-    diem([[A], [B], [C], [Dt], [Et], [Ft]]), nhan([...dinh, [Dt, 'D', 0, 32], [Et, 'E', 22, 0], [Ft, 'F', -20, 2]])])
+    diem([[A], [B], [C], [Dt], [Et], [Ft]]), nhan([...dinh, [Dt, "A'", 0, 32], [Et, "B'", 22, 0], [Ft, "C'", -20, 2]])])
 }
 // 11) ví dụ 5 và 6: tam giác lệch có ba cạnh a = BC = 7, b = CA = 5, c = AB = 3 (đơn vị 25 px)
 {
@@ -110,11 +110,11 @@ hinh('xeva', [A, B, C], [...tamGiac, seg(A, D), seg(B, E), seg(C, F), diem([[A],
   const D5 = bis2(Ap, Bp, Cp), E5 = bis2(Bp, Cp, Ap), F5 = bis2(Cp, Ap, Bp)
   hinh('xeva_phan_giac', [Ap, Bp, Cp], [seg(Ap, Bp), seg(Bp, Cp), seg(Cp, Ap), seg(Ap, D5), seg(Bp, E5), seg(Cp, F5),
     angleMark(Ap, Bp, D5, 30, 1), angleMark(Ap, D5, Cp, 38, 1), angleMark(Bp, Cp, E5, 30, 2), angleMark(Bp, E5, Ap, 38, 2), angleMark(Cp, Ap, F5, 30, 3), angleMark(Cp, F5, Bp, 38, 3),
-    diem([[Ap], [Bp], [Cp], [D5], [E5], [F5]]), nhan([[Ap, 'A', 0, -14], [Bp, 'B', -16, 28], [Cp, 'C', 16, 28], [D5, 'D', 0, 32], [E5, 'E', 22, 4], [F5, 'F', -20, 4]])])
+    diem([[Ap], [Bp], [Cp], [D5], [E5], [F5]]), nhan([[Ap, 'A', 0, -14], [Bp, 'B', -16, 28], [Cp, 'C', 16, 28], [D5, "A'", 0, 32], [E5, "B'", 22, 4], [F5, "C'", -20, 4]])])
   void Dp; void Ep; void Fp
   if (false) hinh('xeva_phan_giac_cu', [Av, Bv, Cv], [seg(Av, Bv), seg(Bv, Cv), seg(Cv, Av), seg(Av, Dp), seg(Bv, Ep), seg(Cv, Fp),
     angleMark(Av, Bv, Dp, 26, 1), angleMark(Av, Dp, Cv, 32, 1), angleMark(Bv, Cv, Ep, 26, 2), angleMark(Bv, Ep, Av, 32, 2), angleMark(Cv, Av, Fp, 26, 3), angleMark(Cv, Fp, Bv, 32, 3),
-    diem([[Av], [Bv], [Cv], [Dp], [Ep], [Fp]]), nhan([...dv, [Dp, 'D', 0, 32], [Ep, 'E', 22, 4], [Fp, 'F', -20, 4]])])
+    diem([[Av], [Bv], [Cv], [Dp], [Ep], [Fp]]), nhan([...dv, [Dp, "A'", 0, 32], [Ep, "B'", 22, 4], [Fp, "C'", -20, 4]])])
   // phân giác ngoài: M ∈ BC (MB/MC = c/b), N ∈ CA (NC/NA = a/c), P ∈ AB (PA/PB = b/a); chân phân giác ngoài đều nằm ngoài đoạn
   const ngoai = (V, X, Y) => { const k = len(V, X) / len(V, Y); return add(X, P((X.x - Y.x) * k / (1 - k), (X.y - Y.y) * k / (1 - k))) }   // điểm chia ngoài XY theo tỉ số XQ/YQ = k
   const Mv = ngoai(Av, Bv, Cv), Nv = ngoai(Bv, Cv, Av), Pv = ngoai(Cv, Av, Bv)
