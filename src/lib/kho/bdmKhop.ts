@@ -55,6 +55,9 @@ export type KhopLocMuc = { id: string; ten: string; duong: string | null; so_cau
 /** Các mục ở một cấp đang có câu trong hàng (kèm số câu), theo thứ tự bản đồ — chỉ Toán. */
 export const khopLocDs = (khoi: string, hang: KhopHang, cap: KhopCap, nguon?: string | null) =>
   go<KhopLocMuc[]>('fn_bdm_khop_loc_ds', { p_khoi: khoi, p_hang: hang, p_cap: cap, p_nguon: nguon ?? null })
+// Gợi ý dạng bài cho câu đang hiện (Thùy 22/11, mig 202611220947) — chỉ bộ Toán. nguon: phan_van (AI nêu trong lý do) · ban_do_cu (đối ứng cũ→mới) · tu_khoa
+export type KhopGoiY = { id: string; dang_bai: string; nhom: string; chuyen_de: string; nguon: 'phan_van' | 'ban_do_cu' | 'tu_khoa' }
+export const khopGoiY = (khoi: string, maCau: string[]) => go<Record<string, KhopGoiY[]>>('fn_bdm_khop_goi_y', { p_khoi: khoi, p_ma_cau: maCau, p_n: 6 })
 export const khopDich = (khoi: string) => go<KhopDich[]>(K('dich'), { p_khoi: khoi })
 export const khopQuyet = (maCau: string, hanhDong: KhopHanhDong, dangBai?: string | null, lyDo?: string | null) =>
   go<{ ok: boolean }>(K('quyet'), { p_ma_cau: maCau, p_hanh_dong: hanhDong, p_dang_bai: dangBai ?? null, p_ly_do: lyDo ?? null })

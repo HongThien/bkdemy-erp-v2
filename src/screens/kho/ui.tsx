@@ -274,13 +274,14 @@ const docTab = (mac_dinh: LoiGiaiTab): LoiGiaiTab => {
   } catch { /* bỏ qua */ }
   return mac_dinh
 }
-export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai' }: { raw: unknown; className?: string; mac_dinh?: LoiGiaiTab }) {
-  const [tab, setTab] = useState<LoiGiaiTab>(() => docTab(mac_dinh))
+// caHai=false: chỉ 2 tab Lời giải · Hướng dẫn; nho=false: luôn mở đúng mac_dinh, không đọc/ghi lựa chọn đã nhớ (màn Duyệt — Thùy 22/11)
+export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai', caHai = true, nho = true }: { raw: unknown; className?: string; mac_dinh?: LoiGiaiTab; caHai?: boolean; nho?: boolean }) {
+  const [tab, setTab] = useState<LoiGiaiTab>(() => (nho ? docTab(mac_dinh) : mac_dinh))
   const text = epChuoi(raw)
   if (!text.trim()) return null
   const t = tach2Phan(text)
   if (!t) return <MathText className={className}>{text}</MathText>
-  const chon = (k: LoiGiaiTab) => { setTab(k); try { localStorage.setItem(LS_LG_TAB, k) } catch { /* bỏ qua */ } }
+  const chon = (k: LoiGiaiTab) => { setTab(k); if (nho) { try { localStorage.setItem(LS_LG_TAB, k) } catch { /* bỏ qua */ } } }
   const html = tab === 'huong_dan'
     ? t.truoc_html + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div>`
     : tab === 'loi_giai'
@@ -289,7 +290,7 @@ export function LoiGiaiXem({ raw, className, mac_dinh = 'loi_giai' }: { raw: unk
   return (
     <div className={className}>
       <div className="mb-1.5 flex w-fit gap-0.5 rounded-lg bg-slate-100 p-0.5 text-[11.5px]">
-        {([['loi_giai', '📝 Lời giải'], ['huong_dan', '💡 Hướng dẫn'], ['ca_hai', '📑 Cả 2']] as [LoiGiaiTab, string][]).map(([k, nhan]) => (
+        {([['loi_giai', '📝 Lời giải'], ['huong_dan', '💡 Hướng dẫn'], ['ca_hai', '📑 Cả 2']] as [LoiGiaiTab, string][]).filter(([k]) => caHai || k !== 'ca_hai').map(([k, nhan]) => (
           <button key={k} type="button" onClick={() => chon(k)}
             className={`rounded px-2 py-0.5 font-semibold ${tab === k ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}>{nhan}</button>
         ))}

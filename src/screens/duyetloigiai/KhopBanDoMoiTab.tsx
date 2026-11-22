@@ -5,10 +5,10 @@
 // Sau mỗi quyết định: vá đúng câu tại chỗ (không tải lại cả danh sách), đếm cập nhật nền (CLAUDE.md §6).
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SearchSelect, { type Opt } from '../../components/SearchSelect'
-import { MathText } from '../kho/ui'
+import { MathText, LoiGiaiXem } from '../kho/ui'
 import {
-  KHOP_CAP_LABEL, KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopCoPhamVi, khopDem, khopDich, khopGiao, khopGo, khopHang, khopLocDs, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
-  type KhopCap, type KhopCau, type KhopDem, type KhopDich, type KhopHang, type KhopLocMuc, type KhopPhamVi,
+  KHOP_CAP_LABEL, KHOP_HANG_LABEL, KHOP_HANG_MOTA, khopCoPhamVi, khopDem, khopDich, khopGiao, khopGo, khopGoiY, khopHang, khopLocDs, khopNguonDs, khopPhamVi, khopQuyet, khopUngVien,
+  type KhopCap, type KhopCau, type KhopDem, type KhopDich, type KhopGoiY, type KhopHang, type KhopLocMuc, type KhopPhamVi,
 } from '../../lib/kho/bdmKhop'
 import { useNhanXet, NutCanSua, NhanXetCu, DongChoSua } from './CanSua'
 import { useDeSau, NutDeSau, NhanDeSau } from './DeSau'
@@ -20,6 +20,7 @@ import { fetchCausByMa } from '../../lib/ontap'
 
 const HANG: KhopHang[] = ['de_xuat', 'trong', 'thieu', 'mau']
 const TRANG = 20
+const TAG_GOI_Y: Record<string, string> = { de_xuat: '💡 AI đề xuất', phan_van: '⚖ AI đang phân vân giữa các dạng này', ban_do_cu: '📚 theo bản đồ cũ', tu_khoa: '🔎 khớp từ khoá trong đề', cung_nhom: 'cùng nhóm với dạng AI đề xuất' }
 const BANG_CAU: Record<string, string> = { dai: 'dai_cau_hoi', hgt: 'hgt_cau_hoi', khtn: 'khtn_cau_hoi', vatly: 'vatly_cau_hoi', hoahoc: 'hoahoc_cau_hoi' }
 // Nhớ hàng đang mở khi chuyển tab/khối rồi quay lại (module-level, sống tới F5).
 const monCau = (c: KhopCau) => (c.nhanh === 'hgt' ? 'hgt' : c.nhanh === 'khtn' ? 'khtn' : c.nhanh === 'vatly' ? 'vatly' : c.nhanh === 'hoahoc' ? 'hoahoc' : 'toan') as 'hgt' | 'toan' | 'khtn' | 'vatly' | 'hoahoc'   // nhận xét "Cần sửa" ghi vào đúng kho của câu
@@ -58,6 +59,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
   const [dem, setDem] = useState<KhopDem | null>(null)
   const [rows, setRows] = useState<KhopCau[]>([])
   const [tong, setTong] = useState(0)
+  const [gy, setGy] = useState<Record<string, KhopGoiY[]>>({})   // gợi ý dạng bài của câu đang hiện (hàng Chưa chắc / Chưa có dạng, chỉ Toán)
   const [lg, setLg] = useState<Record<string, string | null>>({})   // lời giải của câu đang hiện (nạp theo trang, không phải của cả hàng)
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState<string | null>(null)
@@ -117,6 +119,18 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
     })
     return () => { song = false }
   }, [rows]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Gợi ý dạng (Thùy 22/11): người duyệt tích 1 lần, chỉ khi mọi gợi ý sai mới phải gõ tên. Nạp cho các câu ĐANG HIỆN, một lượt / trang.
+  useEffect(() => {
+    if (!coCap || (hang !== 'de_xuat' && hang !== 'trong')) return
+    const can = rows.filter((c) => gy[c.ma_cau] === undefined).map((c) => c.ma_cau)
+    if (!can.length) return
+    let song = true
+    const xong = (r: Record<string, KhopGoiY[]>) => { if (song) setGy((p) => ({ ...p, ...Object.fromEntries(can.map((m) => [m, r[m] ?? []])) })) }
+    khopGoiY(khoi, can).then(xong).catch(() => xong({}))
+    return () => { song = false }
+  }, [rows, hang, khoi, coCap]) // eslint-disable-line react-hooks/exhaustive-deps
+  const dichMap = useMemo(() => new Map(dich.map((d) => [d.id, d])), [dich])
 
   // Bù thêm câu NỀN khi trang vơi (không xoá list đang hiện): đọc lại đúng trang này, câu trang sau đã dồn lên.
   const buThem = useCallback(async () => {
@@ -210,7 +224,7 @@ export default function KhopBanDoMoiTab({ khoi, chuDeId, onXem, onChanged }: { k
               {rows.some((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)) && <li className="list-none"><DongChoSua n={rows.filter((c) => nhanXet.dangChoSua(monCau(c), c.ma_cau)).length} /></li>}
               {deSau.xep(rows.filter((c) => !nhanXet.dangChoSua(monCau(c), c.ma_cau)), (c) => [monDS, c.ma_cau]).map((c) => <CauCard key={c.ma_cau} c={c} hang={hang} dich={dich} onQuyet={quyet} onXem={onXem}
                 nx={nhanXet.cua(monCau(c), c.ma_cau)} onCanSua={nhanXet.vaNX}
-                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} loiGiai={lg[c.ma_cau]} />)}
+                deSauAt={deSau.luc(monDS, c.ma_cau)} onDeSau={() => deSauCau(c)} loiGiai={lg[c.ma_cau]} goiY={gy[c.ma_cau]} coGoiY={coCap} dichMap={dichMap} />)}
               {soTrang > 1 && <li className="flex list-none justify-center pt-3"><PhanTrang trang={trang} soTrang={soTrang} onChon={setTrang} /></li>}
             </ul>
           )}
@@ -248,8 +262,9 @@ function ChonPhamVi({ cap, loc, ds, onCap, onLoc }: {
   )
 }
 
-function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau, loiGiai }: {
+function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau, loiGiai, goiY, coGoiY, dichMap }: {
   loiGiai?: string | null   // undefined = đang tải
+  goiY?: KhopGoiY[]; coGoiY: boolean; dichMap: Map<string, KhopDich>   // goiY undefined = đang nạp
   c: KhopCau; hang: KhopHang; dich: KhopDich[]; onXem?: (dangBaiId: string) => void; nx?: TrangThaiNX; onCanSua: (t: TrangThaiNX) => void
   deSauAt: string | null; onDeSau: () => Promise<void>
   onQuyet: (c: KhopCau, hd: 'gan' | 'thieu' | 'bo_de_xuat' | 'mau_giu' | 'mau_doi' | 'tu_choi' | 'kho_rac', dangBai?: string | null, lyDo?: string | null) => Promise<void>
@@ -264,6 +279,21 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
   const [loi, setLoi] = useState<string | null>(null)
   const opts: Opt[] = useMemo(() => dich.map((d) => ({ id: d.id, label: d.dang_bai, sub: `${d.chu_de} › ${d.chuyen_de} › ${d.nhom}` })), [dich])
   const choGiu = hang === 'de_xuat' || hang === 'mau'
+  // Hàng Chưa chắc / Chưa có dạng: liệt kê sẵn các dạng hệ đang phân vân để tích 1 lần (Thùy 22/11); gõ tên chỉ khi mọi gợi ý sai.
+  const goiYMode = hang === 'de_xuat' || hang === 'trong'
+  const [goKhac, setGoKhac] = useState(false)
+  const dsChon: { id: string; ten: string; duong: string; tag: string }[] = []
+  if (goiYMode) {
+    const them = (id: string | null | undefined, tag: string) => {
+      if (!id || dsChon.length >= 8 || dsChon.some((x) => x.id === id)) return
+      const d = dichMap.get(id); if (!d) return
+      dsChon.push({ id, ten: d.dang_bai, duong: `${d.nhom} › ${d.chuyen_de}`, tag })
+    }
+    them(c.dang_bai_id, 'de_xuat')
+    ;(goiY ?? []).forEach((g) => them(g.id, g.nguon))
+    const goc = c.dang_bai_id ? dichMap.get(c.dang_bai_id) : null
+    if (goc) dich.filter((d) => d.nhom_id === goc.nhom_id).forEach((d) => them(d.id, 'cung_nhom'))
+  }
 
   const chay = async (f: () => Promise<void>) => { setBan(true); setLoi(null); try { await f() } catch (e: any) { setLoi(e.message ?? String(e)); setBan(false) } }
   const lc = Array.isArray(c.lua_chon) ? (c.lua_chon as string[]) : null
@@ -293,7 +323,7 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
         {c.dap_an && <p className="mb-3 text-[13px] text-slate-500">Đáp án: <b className="text-slate-800"><MathText>{c.dap_an}</MathText></b></p>}
         <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Lời giải</div>
         <div className="text-[16px] leading-relaxed text-slate-800">
-          {loiGiai === undefined ? <span className="text-sm text-slate-400">Đang tải…</span> : loiGiai ? <MathText>{loiGiai}</MathText> : <span className="text-sm text-slate-400">— chưa có lời giải —</span>}
+          {loiGiai === undefined ? <span className="text-sm text-slate-400">Đang tải…</span> : loiGiai ? <LoiGiaiXem raw={loiGiai} caHai={false} nho={false} /> : <span className="text-sm text-slate-400">— chưa có lời giải —</span>}
         </div>
       </section>
 
@@ -314,19 +344,48 @@ function CauCard({ c, hang, dich, onQuyet, onXem, nx, onCanSua, deSauAt, onDeSau
           )}
           {c.ly_do && <p className="text-[12px] italic text-slate-500">“{c.ly_do}”</p>}
 
-          {choGiu && c.dang_bai_id && (
-            <button disabled={ban} onClick={() => chay(() => onQuyet(c, hang === 'mau' ? 'mau_giu' : 'gan', hang === 'mau' ? null : c.dang_bai_id))}
-              className="w-full rounded-lg bg-emerald-600 px-3 py-2.5 text-[14px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Đúng dạng này</button>
+          {goiYMode ? (
+            <div>
+              <div className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-slate-400">{dsChon.length ? 'Chọn dạng đúng — bấm 1 lần là xong' : 'Chọn dạng bài'}</div>
+              {goiY === undefined && coGoiY && <p className="mb-1 text-[12px] text-slate-400">Đang tìm thêm gợi ý…</p>}
+              <div className="flex flex-col gap-1.5">
+                {dsChon.map((o, i) => (
+                  <button key={o.id} disabled={ban} onClick={() => chay(() => onQuyet(c, 'gan', o.id))}
+                    className={`rounded-lg border px-3 py-2 text-left transition disabled:opacity-40 ${i === 0 && o.tag === 'de_xuat' ? 'border-emerald-300 bg-emerald-50 hover:bg-emerald-100' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50'}`}>
+                    <div className="text-[13px] font-semibold text-slate-800">{o.ten}</div>
+                    <div className="text-[11px] text-slate-500">{o.duong}</div>
+                    <div className="mt-0.5 text-[10.5px] text-slate-400">{TAG_GOI_Y[o.tag]}</div>
+                  </button>
+                ))}
+              </div>
+              {dsChon.length === 0 && (goiY !== undefined || !coGoiY) && <p className="text-[12px] text-slate-400">Hệ chưa gợi ý được dạng nào cho câu này.</p>}
+              <button onClick={() => setGoKhac((v) => !v)} className="mt-2 text-[12px] text-slate-500 underline-offset-2 hover:underline">{goKhac || dsChon.length === 0 ? '▾' : '▸'} Không dạng nào đúng — gõ tên dạng khác</button>
+              {(goKhac || dsChon.length === 0) && (
+                <div className="mt-1">
+                  <SearchSelect value={chon} onChange={setChon} options={opts} placeholder="Gõ tên dạng bài…" allowClear />
+                  <button disabled={ban || !chon}
+                    onClick={() => chay(() => onQuyet(c, 'gan', chon))}
+                    className="mt-1.5 w-full rounded-md bg-slate-800 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-slate-700 disabled:opacity-30">Chuyển câu vào dạng này</button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+            {choGiu && c.dang_bai_id && (
+              <button disabled={ban} onClick={() => chay(() => onQuyet(c, hang === 'mau' ? 'mau_giu' : 'gan', hang === 'mau' ? null : c.dang_bai_id))}
+                className="w-full rounded-lg bg-emerald-600 px-3 py-2.5 text-[14px] font-semibold text-white hover:bg-emerald-500 disabled:opacity-40">✓ Đúng dạng này</button>
+            )}
+            <div>
+              <div className="mb-1 text-[11px] text-slate-400">{choGiu && c.dang_bai_id ? 'Hoặc chọn dạng khác' : 'Chọn dạng bài'}</div>
+              <SearchSelect value={chon} onChange={setChon} options={opts} placeholder="Gõ tên dạng bài…" allowClear />
+              <button disabled={ban || !chon || chon === c.dang_bai_id}
+                onClick={() => chay(() => onQuyet(c, hang === 'mau' ? 'mau_doi' : 'gan', chon))}
+                className="mt-1.5 w-full rounded-md bg-slate-800 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-slate-700 disabled:opacity-30">
+                {hang === 'mau' ? 'Sai → đổi sang dạng này' : 'Chuyển câu vào dạng này'}
+              </button>
+            </div>
+            </>
           )}
-          <div>
-            <div className="mb-1 text-[11px] text-slate-400">{choGiu && c.dang_bai_id ? 'Hoặc chọn dạng khác' : 'Chọn dạng bài'}</div>
-            <SearchSelect value={chon} onChange={setChon} options={opts} placeholder="Gõ tên dạng bài…" allowClear />
-            <button disabled={ban || !chon || chon === c.dang_bai_id}
-              onClick={() => chay(() => onQuyet(c, hang === 'mau' ? 'mau_doi' : 'gan', chon))}
-              className="mt-1.5 w-full rounded-md bg-slate-800 px-3 py-1.5 text-[13px] font-medium text-white hover:bg-slate-700 disabled:opacity-30">
-              {hang === 'mau' ? 'Sai → đổi sang dạng này' : 'Chuyển câu vào dạng này'}
-            </button>
-          </div>
           {moTuChoi ? (
             <div className="space-y-1.5 rounded-md border border-rose-200 bg-rose-50 p-2">
               <div className="text-[11px] font-semibold uppercase tracking-wide text-rose-700">✕ Từ chối — vì sao không hợp lý</div>

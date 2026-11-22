@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocDang, ChonDang } from './LocDang'
 import { nhanhCuaMon, NHANH_LABEL, LOAI_CAU, listHangDuyet, duyetCauHangDuyet, tuChoiCauHangDuyet, listCumBai, tenCum, khoTbls, HANG_DUYET_LABEL, laDangCho,
   listNguLieuCuaCau, DANG_DE_ANH, khoiChayBanDoMoi, getDangBaiTen, type CauHangDuyet, type KhoMon, type HangDuyetLoc, type CumBai, type SuaCauDuyet, type NguLieu, type CauAnhThem } from '../../lib/kho/api'
-import { MathText, TextAnh, NguLieuBlock, inp } from '../kho/ui'
+import { MathText, LoiGiaiXem, TextAnh, NguLieuBlock, inp } from '../kho/ui'
 import { SolutionField } from '../kho/DangHub'
 import DangPickerOne from '../../components/DangPickerOne'
 import { myNhanSuId } from '../../lib/nhansu'
@@ -346,7 +346,7 @@ function The({ r, mon, busyAll, bdm, onXong, onSua, anh, nx, onCanSua, deSauAt, 
         <div className="flex items-center justify-between"><span className={lbl}>Lời giải{doiLg ? ' · đã sửa' : ''}{r.nguon_giai === 'ai' ? ' (AI)' : ''}</span>
           <button onClick={() => setSuaLg((v) => !v)} className="text-[11px] font-medium text-slate-400 hover:text-indigo-600">{suaLg ? '✓ Xong' : '✎ Sửa'}</button></div>
         {suaLg ? <SolutionField value={loiGiai} onChange={setLoiGiai} taClassName={`${inp} min-h-[260px] font-mono text-[13px]`} />
-          : <div className={`${box} text-[16px]`}><MathText>{loiGiai || '—'}</MathText></div>}
+          : <div className={`${box} text-[16px]`}>{loiGiai ? <LoiGiaiXem raw={loiGiai} caHai={false} nho={false} /> : '—'}</div>}
         {r.anh_dap_an && <img src={r.anh_dap_an} alt="ảnh giải" className="mt-2 max-h-72 w-auto max-w-full rounded-lg border border-slate-200" />}
       </section>
 

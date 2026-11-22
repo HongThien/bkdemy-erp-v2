@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-609 bảng · 42 view · 0 enum · 477 trigger · 2052 function
+609 bảng · 42 view · 0 enum · 477 trigger · 2054 function
 
 ## _app_secrets
 
@@ -12492,6 +12492,7 @@ WITH luot AS (
 - `_ts_gio_trong_buoi(p_ngay date, p_tu time without time zone, p_den time without time zone, p_tl integer, p_som timestamp without time zone)` → TABLE(bat_dau time without time zone, xong time without time zone)
 - `_ts_gio_vn()` → timestamp without time zone
 - `_ts_khung_chan_trung()` → trigger
+- `_ts_kiem_ca(p_khung uuid, p_ngay date, p_som timestamp without time zone, p_max_ngay integer)` → text
 - `_ts_kiem_slot(p_khung uuid, p_ngay date, p_bd time without time zone, p_tl integer, p_som timestamp without time zone, p_max_ngay integer)` → text
 - `_ts_lop_cua_khoi(p_khoi text)` → text
 - `_ts_lop_hop_le(p_lop text)` → boolean
@@ -12616,6 +12617,7 @@ WITH luot AS (
 - `fn_bdm_khop_dich(p_khoi text)` → jsonb
 - `fn_bdm_khop_giao(p_tai_khoan uuid, p_khoi text, p_chu_de text DEFAULT NULL::text)` → bigint
 - `fn_bdm_khop_go(p_id bigint)` → void
+- `fn_bdm_khop_goi_y(p_khoi text, p_ma_cau text[], p_n integer DEFAULT 6)` → jsonb
 - `fn_bdm_khop_hang(p_khoi text, p_hang text, p_limit integer DEFAULT 30, p_offset integer DEFAULT 0, p_chu_de text DEFAULT NULL::text, p_nguon text DEFAULT NULL::text, p_loc text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_khop_loc_ds(p_khoi text, p_hang text, p_cap text, p_nguon text DEFAULT NULL::text)` → TABLE(id text, ten text, duong text, so_cau bigint)
 - `fn_bdm_khop_nguon_ds(p_khoi text, p_hang text, p_chu_de text DEFAULT NULL::text, p_loc text DEFAULT NULL::text)` → TABLE(nguon text, so_cau bigint)
