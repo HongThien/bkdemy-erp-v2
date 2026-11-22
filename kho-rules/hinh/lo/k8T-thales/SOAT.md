@@ -30,3 +30,9 @@ Soát: Opus đọc mẫu sơ đồ + hình (G16, G20 bài 216…); cổng `nhap_
 **Đã ghi:** 103 câu (79 bài): Thalès +70 · Đường trung bình +20 · Phân giác +9 · Bổ đề hình thang +3 · Mê-nê-la-uýt +1; 88 sơ đồ tư duy; 139 ảnh; tự duyệt.
 **Để riêng (43 khối, trong nháp):** DE_SAU (đồng dạng / diện tích / cực trị) · KHAC (tam giác lớp 7, hình chữ nhật…) · TRUNG · bài sách không lời giải.
 Trang xem: lô 2A (TCHH) https://claude.ai/artifact/KcLUMiACR1XoQkW1dk4GVa · lô 2B (VHB) https://claude.ai/artifact/6xej727EgonVfkBAEcfcb3.
+
+## Lô 3 (22/11) — đẩy thêm bài tập vào Phân giác · Mê-nê-la-uýt/Xê-va (Thùy: "Đẩy thêm bài tập vào các phần vừa rồi")
+4 trạm Sonnet (G22 NĐT Hình III §3 bài 19–27 · G23 VHB2 §15 VD36 + BT 219–228 · G24 TCHH CĐ4 Bài 1–7 · G25 TCHH CĐ4 Bài 8–13 + 10 bài tự luyện); 2 trạm Opus soát độc lập (đối chiếu đề với ảnh trang, đọc từng dòng lời giải, mở bảng hình): tìm 3 lỗi toán/đề (TCHH 4.4 lập luận vòng, 4.8 "H∈AO", NĐT 26 đề thừa ngoặc), 2 lỗi khuôn, 1 lỗi hình — đã sửa. Cổng `nhap_lo.mjs --chi-kiem` 0 lỗi; máy kiểm toạ độ 32.400+ phép 0 FAIL.
+**Đã ghi:** 30 câu (23 bài) — Phân giác +20 (9 → 29) · Mê-nê-la-uýt/Xê-va +9 (5 → 14) · Thalès +1 (107 → 108); 19 sơ đồ tư duy; 43 ảnh; tự duyệt. `--bo VHB2-226` (trùng NĐT-H3.26).
+**Để riêng (trong nháp `lo3/drafts`):** DE_SAU — NĐT-H3.20 (diện tích → HH00166) · VHB2-222 (quỹ tích → HH00135) · VHB2-227* (diện tích → HH00132) · TCHH-4.7 (bổ đề ba trực tâm — Opus nghi giải được chỉ bằng Thalès, chờ Thùy quyết) · TCHH-4.12 (đồng dạng) · KHAC (Tứ giác): TCHH-4.1, 4.9 (HH00093) · 4.3, 4.6 (HH8T000000) · TRUNG: NĐT-H3.22, H3.23, VHB2-226, TCHH-4.TL6 · KHONG_NHAP: TCHH-4.TL1–5, TL7–10 (sách không lời giải).
+Bản nháp + script vẽ/kiểm của trạm: `lo3/drafts`, `lo3/ve`.
