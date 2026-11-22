@@ -42,6 +42,15 @@ for (let t = 0; t < 400; t++) {
     chk('E thuộc đoạn AC', onSeg(E, A, C)); chk("BE∥AD'", par(B, E, A, Dn)); chk('BAC\' = 2·AEB', near(ang(A, B, Cp), 2 * ang(E, A, B)))
     chk("D'AC' = AEB", near(ang(A, Dn, Cp), ang(E, A, B)))
     chk('CB/CD\' = CE/CA', near(d(C, B) / d(C, Dn), d(C, E) / b)) }
+  // cách 2 (AB<AC): qua B kẻ ∥ AC cắt AD tại I, AE (= AD' trong biến Dn) tại K ⇒ BI = BA = BK, B trung điểm IK, K ∈ đoạn EA, D giữa A và I
+  if (lon) { const dB = add(B, sub(C, A)), I = inter(A, D, B, dB), Kk = inter(A, Dn, B, dB)
+    chk('BI∥AC', par(B, I, A, C)); chk('BK∥AC', par(B, Kk, A, C))
+    chk('BIA = IAC (so le trong)', near(ang(I, B, A), ang(A, I, C))); chk('BI = BA', near(d(B, I), c)); chk('BK = BA', near(d(B, Kk), c)); chk('BI = BK', near(d(B, I), d(B, Kk)))
+    chk('D giữa A và I', onSeg(D, A, I)); chk('K ∈ đoạn EA', onSeg(Kk, A, Dn)); chk('B giữa I và K, trung điểm', onSeg(B, I, Kk) && near(d(B, I), d(B, Kk)))
+    chk('DB/DC = BI/AC', near(d(D, B) / d(D, C), d(B, I) / b)); chk('EB/EC = BK/AC', near(d(Dn, B) / d(Dn, C), d(B, Kk) / b))
+    chk('EK/EA = EB/EC', near(d(Dn, Kk) / d(Dn, A), d(Dn, B) / d(Dn, C)))
+    chk('IAK = 90°', near(dot(sub(I, A), sub(Kk, A)), 0, 1e-8)); chk('AB = IK/2', near(c, d(I, Kk) / 2))
+    chk('BKA = KAC (so le trong)', near(ang(Kk, B, A), ang(A, Kk, Cp))); chk('KAC = BAK', near(ang(A, Kk, Cp), ang(A, B, Kk))) }
   // ví dụ 3 (DE ∥ AB, E ∈ AC): AE = DE, 1/DE = 1/AB + 1/AC
   { const E = lerp(C, A, d(D, C) / a)
     chk('DE∥AB', par(D, E, A, B)); chk('EA = ED', near(d(E, A), d(E, D))); chk('1/DE = 1/AB + 1/AC', near(1 / d(D, E), 1 / c + 1 / b))

@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { createClient } from '@supabase/supabase-js'
 const DIR = dirname(fileURLToPath(import.meta.url))
 const GHI = process.argv.includes('--ghi')
+const THAY = process.argv.includes('--thay')   // 22/11 Thùy đổi tên điểm + thêm cách 2: THAY bản do chính phiên này ghi trước đó (hình lên tên mới có hậu tố -v2 để khỏi dính cache)
 const MA = 'HH00128'
 const envL = Object.fromEntries(readFileSync('.env.local', 'utf8').split(/\r?\n/).filter((l) => l.includes('=') && !l.trim().startsWith('#')).map((l) => [l.slice(0, l.indexOf('=')).trim(), l.slice(l.indexOf('=') + 1).trim().replace(/^["']|["']$/g, '')]))
 process.loadEnvFile('.env')
@@ -41,20 +42,21 @@ try {
   const b = (await c.query(`select ma_bai, khoi, mo_ta, vi_du from hinh_hoc_bai where ma_bai = $1`, [MA])).rows[0]
   if (!b || b.khoi !== '8T') throw new Error(`${MA} không phải bài khối 8T`)
   const daCoLt = (await c.query(`select 1 from hinh_hoc_bai_ly_thuyet where ma_bai = $1`, [MA])).rowCount
-  if (daCoLt || (b.vi_du ?? '') !== '') throw new Error(`${MA} đã có lý thuyết / ví dụ — chỉ ghi vào ô trống`)
+  if (!THAY && (daCoLt || (b.vi_du ?? '') !== '')) throw new Error(`${MA} đã có lý thuyết / ví dụ — chỉ ghi vào ô trống`)
   // upload hình (chỉ khi --ghi)
   const url = {}
   const sb = GHI ? createClient(envL.VITE_SUPABASE_URL, envL.SUPABASE_SERVICE_ROLE, { auth: { persistSession: false, autoRefreshToken: false } }) : null
   const thang = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` })()
   for (const h of hinhDung) {
-    const p = `hinh_hoc/${thang}/lt-${MA}-${h}.png`
+    const p = `hinh_hoc/${thang}/lt-${MA}-${h}${THAY ? '-v2' : ''}.png`
     if (!GHI) { url[h] = `dry://kho-anh/${p}`; continue }
     const { error } = await sb.storage.from('kho-anh').upload(p, readFileSync(join(DIR, 'ra', h + '.png')), { contentType: 'image/png', upsert: false })
     if (error) throw new Error(`upload ${h}: ${error.message}`)
     url[h] = sb.storage.from('kho-anh').getPublicUrl(p).data.publicUrl
   }
   const them = (s) => s.replace(/\{\{HINH:([a-z_]+)\|([^}]*)\}\}/g, (_, h, alt) => `![${alt}](${url[h]})`)
-  await c.query(`insert into hinh_hoc_bai_ly_thuyet (ma_bai, noi_dung, cap_nhat_at) values ($1, $2, now())`, [MA, them(lt0)])
+  if (THAY && daCoLt) await c.query(`update hinh_hoc_bai_ly_thuyet set noi_dung = $2, cap_nhat_at = now() where ma_bai = $1`, [MA, them(lt0)])
+  else await c.query(`insert into hinh_hoc_bai_ly_thuyet (ma_bai, noi_dung, cap_nhat_at) values ($1, $2, now())`, [MA, them(lt0)])
   // mô tả đã có (bản đồ 14/11) thì GIỮ; chỉ điền khi trống
   await c.query(`update hinh_hoc_bai set mo_ta = case when coalesce(mo_ta,'') = '' then $2 else mo_ta end, vi_du = $3 where ma_bai = $1`, [MA, MO_TA, them(vd0)])
   console.log(`ghi: lý thuyết ${them(lt0).length} ký tự · ví dụ ${them(vd0).length} ký tự · ${hinhDung.length} hình`)
