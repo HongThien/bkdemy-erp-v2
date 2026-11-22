@@ -1,0 +1,72 @@
+[
+ {
+  "ma": "T3100000001439",
+  "bang": "hgt_cau_hoi",
+  "khoa": "ma_cau",
+  "tep": "T3100000001439.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_de"
+  ],
+  "cu": {
+   "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/861f374b-fb2c-49fb-b034-d136c86483ad_78e84357_p12c12.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/T3100000001439-66ccee7f-f4c1-4696-8c78-6ae252c478bb.png"
+ },
+ {
+  "ma": "T310000000295",
+  "bang": "hgt_cau_hoi",
+  "khoa": "ma_cau",
+  "tep": "T310000000295+T310010104005.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_de"
+  ],
+  "cu": {
+   "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/8ac68199-426f-4b8c-a2ea-44356ad113b3_k10vecto.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/T310000000295-7c646263-1d4e-481b-9e61-58a6bd54bf6d.png"
+ },
+ {
+  "ma": "T310010104005",
+  "bang": "hgt_cau_hoi",
+  "khoa": "ma_cau",
+  "tep": "T310000000295+T310010104005.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_de"
+  ],
+  "cu": {
+   "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/00d140c9-c868-4300-bba9-54aad9fb5632.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/T310000000295-7c646263-1d4e-481b-9e61-58a6bd54bf6d.png"
+ },
+ {
+  "ma": "T310000000978",
+  "bang": "hgt_cau_hoi",
+  "khoa": "ma_cau",
+  "tep": "T310000000978.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_de"
+  ],
+  "cu": {
+   "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/nhap_kho/2026-10/a1ebce38-90f7-451c-97b3-dc30bb646de7_k10vecto.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/T310000000978-21a50707-8508-4a35-9720-85ba6421a7a4.png"
+ },
+ {
+  "ma": "T310010104015",
+  "bang": "hgt_cau_hoi",
+  "khoa": "ma_cau",
+  "tep": "T310010104015.png",
+  "kieu": "chung",
+  "cot": [
+   "anh_de"
+  ],
+  "cu": {
+   "anh_de": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/184d2847-6307-40c3-adb9-a0f7bfed7bf9.png"
+  },
+  "moi": "https://osrvycilwshkzhljuxef.supabase.co/storage/v1/object/public/kho-anh/hinh_hoc/2026-11/T310010104015-9db596d6-f925-4b13-8f27-e5c3b60eb5c9.png"
+ }
+]

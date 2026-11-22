@@ -105,3 +105,10 @@ Mỗi đợt từ 3 trở đi **không chạy hết một lượt**: cắt lô �
 - 24 câu K6 nhắc "trục số / bảng sau / sơ đồ cột" mà không có ảnh đều là **đề chữ** (bảng viết bằng LaTeX/lời, "vẽ trục số" là yêu cầu HS tự vẽ) — không thiếu hình, không cần `ve_moi`.
 - Làm: vẽ lại T106000000365 (3 hàng thùng rác, chữ 18–22 px, nội dung khớp từng loại rác trong ảnh gốc) → `ve_lai:a`. Gói vẽ `scripts/anh/ve_lai/dai6-k6-lo1.mjs`; ghi qua `gan_hinh_dai.mjs` (chạy thử ROLLBACK đạt rồi `--ghi`); URL cũ ở `scripts/anh/bien_ban/gan-hinh-dai-2026-11-21-08-13-55.json`; ảnh cũ không xoá.
 - Sau lượt này: Đại K6 **26/26 có nhãn** (12 goc · 14 ve_lai · 0 chưa rõ). `SO-HINH.md` dựng lại. Số dạng K6 dưới 30 câu dùng được (`do-dang-du-cau`) = 11 và KHÔNG đổi — nguyên nhân là thiếu câu, không phải thiếu hình đề.
+
+## 9. Nhóm bài "Bài toán thực tế véc tơ" (HGT K10, NNB01524) — 22/11, Thùy: "có vài hình chất lượng khá thấp"
+
+- Nhóm có 5 dạng (NDB00914–917 · NDB01425), 135 câu, **98 câu có hình đề** — cả 98 là ảnh cắt (`nhap_kho` 85 + ảnh khác 13), chưa nhãn nguồn. Xem từng hình ở cỡ app: **23 hình tệ** (ảnh nhỏ / mờ / nhãn li ti ở màn 360px, scan bẩn có hạt, còn chữ thừa của câu khác, hoặc vẽ sẵn hợp lực) ⇒ vẽ lại bằng code (`scripts/anh/ve_lai/VT-thuc-te.mjs`, 20 hình / 23 câu), nhãn `ve_lai` (a: 13 · e: 5 · b: 1 · bc: 1 · ab: 3). Hình vẽ lại KHÔNG vẽ hợp lực / đáp số; số liệu chỉ là số đề cho.
+- Biên bản URL cũ: `scripts/anh/bien_ban/gan-hinh-2026-11-22-16-22-54.json` … `-16-23-01.json` (5 tệp). Ảnh cũ không xoá.
+- **Chưa làm, chờ người xác nhận:** T310000000796 và T310000000918 (bàn cờ vua / cờ tướng — quân cờ nhỏ không đọc chắc, phải đọc lại nguồn mới biết vị trí mọi quân), T310000000140 (3 cách biểu diễn lực đẩy Archimedes — phải đọc đúng chiều / độ dài từng mũi tên của ảnh gốc). Hai-ba hình này là mã a, chưa gắn nhãn.
+- 72 hình còn lại của nhóm xem là ổn (minh hoạ sách có màu, GeoGebra…) nhưng **chưa ghi nhãn `goc`** (chờ Thùy duyệt đợt ghi nhãn).
