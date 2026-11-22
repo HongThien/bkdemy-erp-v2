@@ -50,7 +50,7 @@ try {
   for (const h of hinhDung) {
     const p = `hinh_hoc/${thang}/lt-${MA}-${h}${THAY ? '-v2' : ''}.png`
     if (!GHI) { url[h] = `dry://kho-anh/${p}`; continue }
-    const { error } = await sb.storage.from('kho-anh').upload(p, readFileSync(join(DIR, 'ra', h + '.png')), { contentType: 'image/png', upsert: false })
+    const { error } = await sb.storage.from('kho-anh').upload(p, readFileSync(join(DIR, 'ra', h + '.png')), { contentType: 'image/png', upsert: THAY })
     if (error) throw new Error(`upload ${h}: ${error.message}`)
     url[h] = sb.storage.from('kho-anh').getPublicUrl(p).data.publicUrl
   }

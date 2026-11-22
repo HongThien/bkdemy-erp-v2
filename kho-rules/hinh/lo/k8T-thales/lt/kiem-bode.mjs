@@ -47,8 +47,13 @@ for (let t = 0; t < 400; t++) {
     chk('VD4 OE = OF', near(d(O, E), d(O, F))); chk('VD4 1/OE = 1/AB + 1/CD', near(1 / d(O, E), 1 / d(A, B) + 1 / d(C, D)))
     chk('VD4 OE/CD = AO/AC', near(d(O, E) / d(C, D), d(A, O) / d(A, C))); chk('VD4 OF/CD = BO/BD', near(d(O, F) / d(C, D), d(B, O) / d(B, D)))
     chk('VD4 AO/AC = BO/BD', near(d(A, O) / d(A, C), d(B, O) / d(B, D))); chk('VD4 OE/AB = DO/DB', near(d(O, E) / d(A, B), d(D, O) / d(D, B))) }
-  // ví dụ 3: M trung điểm AB, MO cắt CD tại N ⇒ N trung điểm CD
-  { const M = mid(A, B), N = inter(M, O, D, C); chk('VD3 N trung điểm CD', near(d(N, C), d(N, D))) }
+  // hệ quả 1 (qua I) và hệ quả 2 (qua O): hai chiều. Chiều thuận: M trung điểm AB ⇒ N trung điểm CD; chiều đảo: N trung điểm CD ⇒ M trung điểm AB
+  { const M = mid(A, B), N = mid(D, C)
+    const n1 = inter(I, M, D, C), n2 = inter(O, M, D, C), m1 = inter(I, N, A, B), m2 = inter(O, N, A, B)
+    chk('HQ1 thuận', near(d(n1, C), d(n1, D))); chk('HQ2 thuận', near(d(n2, C), d(n2, D)))
+    chk('HQ1 đảo', near(d(m1, A), d(m1, B))); chk('HQ2 đảo', near(d(m2, A), d(m2, B))) }
+  // ví dụ 3: N trung điểm CD, đường thẳng qua O cắt AB tại M ⇒ M trung điểm AB
+  { const N = mid(D, C), M = inter(N, O, A, B); chk('VD3 M trung điểm AB', near(d(M, A), d(M, B))); chk('VD3 MA/MB = NC/ND', near(d(M, A) / d(M, B), d(N, C) / d(N, D))) }
   // ví dụ 5: tam giác ABC, M trung điểm BC, E∈AB, F∈AC, EF∥BC, BF∩CE=O ⇒ A, O, M thẳng hàng; AM cắt EF tại trung điểm
   { const A3 = P(R(-3, 3), R(2, 5)), B3 = P(R(-6, -1), 0), C3 = P(R(1, 6), 0), k = R(0.2, 0.8)
     const M3 = mid(B3, C3), E3 = lerp(A3, B3, k), F3 = lerp(A3, C3, k), O3 = inter(B3, F3, C3, E3), N3 = inter(A3, M3, E3, F3)
@@ -58,6 +63,10 @@ for (let t = 0; t < 400; t++) {
 // số trong các ví dụ — dựng lại bằng toạ độ
 const eq = (nhan, a, b) => chk(nhan, near(a, b))
 eq('VD1 NC', 4 * 3 / 2, 6); eq('VD2 ND', 8 * 6 / 4, 12)
+{ // VD5: AB=6, CD=12 ⇒ OE = OF = 4, EF = 8 (dựng lại bằng toạ độ)
+  const A = P(0, 3), B = P(6, 3), D = P(-4, 0), C = P(8, 0), O = inter(A, C, B, D)
+  const E = inter(O, P(O.x + 1, O.y), A, D), F = inter(O, P(O.x + 1, O.y), B, C)
+  eq('VD5 AB', d(A, B), 6); eq('VD5 CD', d(C, D), 12); eq('VD5 1/OE', 1 / d(O, E), 1 / 6 + 1 / 12); eq('VD5 OE', d(O, E), 4); eq('VD5 OF', d(O, F), 4); eq('VD5 EF', d(E, F), 8) }
 { // VD1: AB=5, CD=10 (A là trung điểm ID); M cách A 2 cm, cách B 3 cm; N: ND=4, NC=6
   const D = P(0, 0), C = P(10, 0), I = P(3, 6), A = lerp(I, D, 0.5), B = lerp(I, C, 0.5)
   eq('VD1 AB', d(A, B), 5); const M = lerp(A, B, 2 / 5), N = inter(I, M, D, C)

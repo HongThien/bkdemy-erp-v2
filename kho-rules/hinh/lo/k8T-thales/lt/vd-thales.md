@@ -1,5 +1,8 @@
 ##VD
-Cho $\triangle ABC$, điểm $D$ thuộc cạnh $AB$, điểm $E$ thuộc cạnh $AC$ sao cho $DE\parallel BC$. Biết $AD=3$ cm, $DB=5$ cm, $AC=12$ cm. Tính $AE$ và $EC$.
+Cho $\triangle ABC$, điểm $D$ thuộc cạnh $AB$,
+điểm $E$ thuộc cạnh $AC$ sao cho $DE\parallel BC$.
+Biết $AD=3$ cm, $DB=5$ cm, $AC=12$ cm.
+Tính $AE$ và $EC$.
 
 {{HINH:thales_thuan|Hình ví dụ 1: DE song song BC}}
 
@@ -12,7 +15,9 @@ Do $E$ nằm giữa $A$ và $C$ nên $EC=AC-AE=12-4{,}5=7{,}5$ (cm).
 Vậy $AE=4{,}5$ cm và $EC=7{,}5$ cm.
 
 ##VD
-Cho $\triangle ABC$ có $AB=15$ cm, $AC=20$ cm. Trên cạnh $AB$ lấy điểm $D$ sao cho $AD=6$ cm, trên cạnh $AC$ lấy điểm $E$ sao cho $AE=8$ cm.
+Cho $\triangle ABC$ có $AB=15$ cm, $AC=20$ cm.
+Trên cạnh $AB$ lấy điểm $D$ sao cho $AD=6$ cm,
+trên cạnh $AC$ lấy điểm $E$ sao cho $AE=8$ cm.
 a) Chứng minh $DE\parallel BC$.
 b) Biết $BC=10$ cm, tính $DE$.
 
@@ -29,7 +34,9 @@ nên $\dfrac{DE}{BC}=\dfrac{AD}{AB}$ (hệ quả của định lí Thalès).
 Suy ra $\dfrac{DE}{10}=\dfrac{2}{5}$ nên $DE=\dfrac{2\cdot10}{5}=4$ (cm).
 
 ##VD
-Cho hai đường thẳng $BD$ và $CE$ cắt nhau tại $A$ sao cho $A$ nằm giữa $B$ và $D$, $A$ nằm giữa $C$ và $E$ (dạng đồng hồ cát). Biết $BC\parallel DE$, $AB=6$ cm, $AD=4$ cm, $AC=9$ cm, $BC=12$ cm. Tính $AE$ và $DE$.
+Cho hai đường thẳng $BD$ và $CE$ cắt nhau tại $A$ sao cho $A$ nằm giữa $B$ và $D$, $A$ nằm giữa $C$ và $E$ (dạng đồng hồ cát).
+Biết $BC\parallel DE$, $AB=6$ cm, $AD=4$ cm, $AC=9$ cm, $BC=12$ cm.
+Tính $AE$ và $DE$.
 
 {{HINH:thales_dong_ho_cat|Hình ví dụ 3: dạng đồng hồ cát}}
 
@@ -42,7 +49,10 @@ Suy ra $DE=\dfrac{2}{3}\cdot12=8$ (cm).
 Vậy $AE=6$ cm và $DE=8$ cm.
 
 ##VD
-Cho $\triangle ABC$ có $AB=6$ cm, $AC=8$ cm. Trên tia $AB$ lấy điểm $D$ sao cho $B$ nằm giữa $A$ và $D$, $BD=3$ cm. Đường thẳng qua $D$ song song với $BC$ cắt tia $AC$ tại $E$. Tính $CE$ và chứng minh $\dfrac{DB}{AB}=\dfrac{EC}{AC}$.
+Cho $\triangle ABC$ có $AB=6$ cm, $AC=8$ cm.
+Trên tia $AB$ lấy điểm $D$ sao cho $B$ nằm giữa $A$ và $D$, $BD=3$ cm.
+Đường thẳng qua $D$ song song với $BC$ cắt tia $AC$ tại $E$.
+Tính $CE$ và chứng minh $\dfrac{DB}{AB}=\dfrac{EC}{AC}$.
 
 {{HINH:thales_keo_dai|Hình ví dụ 4: D, E nằm trên phần kéo dài}}
 
@@ -56,7 +66,10 @@ Cũng theo định lí Thalès mở rộng, $\dfrac{DB}{AB}=\dfrac{EC}{AC}$; ki�
 Vậy $CE=4$ cm.
 
 ##VD
-Cho $\triangle ABC$, điểm $D$ thuộc cạnh $AB$, điểm $E$ thuộc cạnh $AC$ sao cho $DE\parallel BC$. Biết $AB=10$ cm, $AC=14$ cm, $BC=12$ cm và chu vi $\triangle ADE$ bằng $18$ cm. Chứng minh $\dfrac{AD}{AB}=\dfrac{AE}{AC}=\dfrac{DE}{BC}$ và tính $AD$.
+Cho $\triangle ABC$, điểm $D$ thuộc cạnh $AB$,
+điểm $E$ thuộc cạnh $AC$ sao cho $DE\parallel BC$.
+Biết $AB=10$ cm, $AC=14$ cm, $BC=12$ cm và chu vi $\triangle ADE$ bằng $18$ cm.
+Chứng minh $\dfrac{AD}{AB}=\dfrac{AE}{AC}=\dfrac{DE}{BC}$ và tính $AD$.
 
 {{HINH:thales_he_qua|Hình ví dụ 5: dùng hệ quả của định lí Thalès}}
 
