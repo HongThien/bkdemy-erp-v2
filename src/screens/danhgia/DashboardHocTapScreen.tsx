@@ -266,8 +266,8 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
 // Case ca khối (L2–L4) đang mở thì không đề xuất chồng; L1 đang mở hoặc đã xong vẫn bấm được để đề xuất tiếp (đổi mức đi lại đường đề xuất + duyệt).
 function OBoTro({ bt, onMo }: { bt: NonNullable<HSDB['bt']>; onMo: () => void }) {
   const khoa = bt.tt === 'dang_bo_tro' && bt.muc !== 1
-  const nhan = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? `Có ca ${ngayVN(bt.ca_ngay)}` : 'Chờ xếp ca') : bt.tt === 'xong' ? 'Đã xong ✓' : NHAN_TT[bt.tt].t
-  const giai = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? 'Đã duyệt, đã xếp ca — chờ tới ca' : 'Đã duyệt, chưa có ca nào được xếp') : bt.tt === 'xong' ? 'Đã bổ trợ xong trong tuần này' : NHAN_TT[bt.tt].t
+  const nhan = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? `Có ca ${ngayVN(bt.ca_ngay)}` : bt.muc === 1 ? 'Chờ ca sau giờ' : 'Chờ xếp ca') : bt.tt === 'xong' ? 'Đã xong ✓' : NHAN_TT[bt.tt].t
+  const giai = bt.tt === 'dang_bo_tro' ? (bt.ca_ngay ? 'Đã duyệt, đã xếp ca — chờ tới ca' : bt.muc === 1 ? 'Đã duyệt L1 — em ở hàng chờ bổ trợ sau giờ, TA chưa tạo ca' : 'Đã duyệt, chưa có ca nào được xếp') : bt.tt === 'xong' ? 'Đã bổ trợ xong trong tuần này' : NHAN_TT[bt.tt].t
   return (
     <button onClick={() => !khoa && onMo()} title={`${bt.muc ? `Mức L${bt.muc} · ` : ''}${giai}${khoa ? '' : ' · bấm để xem / đề xuất'}`}
       className={`whitespace-nowrap rounded-md px-2 py-1 text-[11px] font-semibold ${NHAN_TT[bt.tt].cls} ${khoa ? 'cursor-default' : ''}`}>
