@@ -44,6 +44,7 @@ import { ChonBaiHoc } from './bdm/ChuyenDeHinhBuilder'
 import { hhCayChon, hhGoiYBai } from '../../lib/chuyenDeHinh'
 import { cayChon, goiYDangBai, etViTri, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
 import { MON_CO_KHO } from '../../lib/mon'
+import { bdmCuaMon } from '../../lib/kho/banDoMoi'
 
 const MONS = MON_CO_KHO
 const DEFAULT_ROWS_PER_PHAN = 3
@@ -51,8 +52,8 @@ const DEFAULT_ROWS_PER_PHAN = 3
 // đồ lúc chọn câu" — Đại số / Hình giải tích trong cùng 1 đề, không cứng theo phần) → mọi thao tác tra kho
 // (gợi ý câu, ✎ Chọn, mã đề 2/3) đi theo `khoCuaMon(mon, row.nhanh)`; lưu bền ở `cau_hinh.nhanhByCau`.
 type Row = { maDang: string | null; maCau: string | null; nhanh: string | null }
-// Dạng bài bản đồ mới của khối (Đại 'toan' + Hình giải tích 'hgt' — cùng kho bdm_cau_hoi, hàng MT nhánh 'bdm').
-type NhanhBdm = 'toan' | 'hgt'
+// Dạng bài bản đồ mới của khối (Toán: Đại 'toan' + Hình giải tích 'hgt'; KHTN · Lý · Hóa: một vùng — cùng kho bdm_cau_hoi, hàng MT nhánh 'bdm').
+type NhanhBdm = 'toan' | 'hgt' | 'khtn' | 'vatly' | 'hoahoc'   // vùng chính của môn (bdmCuaMon.nhanhTl) + Hình giải tích
 type DbInfo = { id: string; ten: string; nhom_id: string; nhom_ten: string; so_cau: number; nhanh: NhanhBdm }
 // Hình · Học (bài học = 1 dạng bài, giống ET): kho riêng hinh_hoc_cau_hoi, hàng MT nhánh 'hinh_hoc', maDang = ma_bai.
 type HhInfo = { id: string; ten: string; chu_de: string; so_cau: number }
@@ -332,7 +333,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const coBdm = dbs.size > 0
   const coHgt = [...dbs.values()].some((x) => x.nhanh === 'hgt')
   const coHh = hhs.size > 0
-  const tabsChon: NhanhChon[] = ['toan', ...(coHgt ? ['hgt' as const] : []), ...(coHh ? ['hinh_hoc' as const] : [])]
+  const nhChinh = (bdmCuaMon(d?.mon)?.nhanhTl ?? 'toan') as NhanhBdm
+  const tabsChon: NhanhChon[] = [nhChinh, ...(coHgt ? ['hgt' as const] : []), ...(coHh ? ['hinh_hoc' as const] : [])]
   // ── KHUÔN ĐỀ THI THẬT (13/11 — khối 12: 12 trắc nghiệm · 4 đúng sai · 6 trả lời ngắn, xem KHUON_THI ở lib/mt) ──
   const khuon = d ? KHUON_THI[d.khoi] ?? null : null
   const vaiCua = (phanId: string): PhanKhuon | null => {
@@ -468,7 +470,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
       const hh = chon.some((n) => n.ma === 'hinh_hoc') && coKhoHinh(d.mon) ? await hhCayChon(d.khoi).catch(() => []) : []
       if (alive) setHhs(new Map(hh.map((b) => [b.ma_bai, { id: b.ma_bai, ten: b.ten, chu_de: b.chu_de ?? 'Hình', so_cau: b.so_cau }])))
       const m = new Map<string, DbInfo>()
-      for (const nh of ['toan', 'hgt'] as NhanhBdm[]) {
+      const bd = bdmCuaMon(d.mon)   // Toán: Đại + Hình giải tích; KHTN · Lý · Hóa: một vùng của môn (cây chọn đi theo môn qua p_nhanh)
+      for (const nh of (bd?.coVung ? ['toan', 'hgt'] : [bd?.nhanhTl ?? 'toan']) as NhanhBdm[]) {
         const cay = await cayChon(d.khoi, nh).catch(() => [])
         for (const cd of cay) for (const chd of cd.chuyen_de) for (const n of chd.nhom) for (const x of n.dang_bai)
           m.set(x.id, { id: x.id, ten: x.ten, nhom_id: n.id, nhom_ten: n.ten, so_cau: x.so_cau, nhanh: nh })
@@ -1020,7 +1023,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                         title={`${khuon?.ten}: phần này đúng ${pk.soCau} câu, mỗi câu ${String(pk.diem).replace('.', ',')} điểm${pk.vai === 'ds' ? ' (chấm từng ý: đúng 1/2/3/4 ý = 0,1/0,25/0,5/1)' : ''}`}>
                         🎓 Khuôn THPT · {n}/{pk.soCau} câu · {String(pk.diem).replace('.', ',')}đ/câu</span> })()}
                     {coBdm && kh?.phanId !== p.id && p.id !== dsPid && (
-                      <button onClick={() => setKh({ phanId: p.id, nhanh: 'toan', plan: [] })}
+                      <button onClick={() => setKh({ phanId: p.id, nhanh: nhChinh, plan: [] })}
                         className="rounded-md border border-dashed border-indigo-300 px-2 py-0.5 text-[11.5px] font-medium text-indigo-600 hover:bg-indigo-50">⚡ Thêm nhiều dạng</button>
                     )}
                     <button onClick={() => xoaPhan(p)} className="ml-auto text-[12px] text-slate-300 hover:text-rose-600">Xoá phần</button>
@@ -1077,9 +1080,9 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                         <div className="flex flex-wrap items-center gap-2 pt-1">
                           {(coHgt || coHh) && (
                             <div className="flex overflow-hidden rounded-md ring-1 ring-indigo-200" title="Bản đồ để chọn dạng bài">
-                              {(([['toan', 'Đại số'], ...(coHgt ? [['hgt', 'Hình giải tích']] : []), ...(coHh ? [['hinh_hoc', 'Hình · Học']] : [])]) as [NhanhChon, string][]).map(([v, l]) => (
+                              {tabsChon.map((v) => (
                                 <button key={v} onClick={() => setKh((k) => k && { ...k, nhanh: v })}
-                                  className={`px-2 py-1 text-[11.5px] font-medium ${kh.nhanh === v ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600'}`}>{l}</button>
+                                  className={`px-2 py-1 text-[11.5px] font-medium ${kh.nhanh === v ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600'}`}>{v === 'toan' ? 'Đại số' : TEN_TAB[v]}</button>
                               ))}
                             </div>
                           )}
@@ -1169,7 +1172,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
                           <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
-                          <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? 'toan' }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
+                          <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
                             className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
                             {laDs ? (
                               r.maDang ? <span className="line-clamp-2 text-slate-700"><span className="mr-1 rounded bg-teal-50 px-1 py-0.5 text-[10px] font-semibold text-teal-700">Đ/S</span>{chuDeDs.find((x) => x.id === r.maDang)?.ten ?? r.maDang}</span>
@@ -1379,7 +1382,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
 
 // Ô số câu của 1 hàng: tay kéo ⠿ + số câu gõ được (gõ số mới, Enter ⇒ chuyển câu tới vị trí đó; Esc huỷ).
 // Thanh đổi nhánh nổi trên bộ chọn dạng bài (cùng khuôn TabNhanh của ET mới); `them` = nút ngoài hệ dạng (Hình · Luyện).
-const TEN_TAB: Record<NhanhChon, string> = { toan: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình · Học' }
+const TEN_TAB: Record<NhanhChon, string> = { toan: 'Đại', hgt: 'Hình giải tích', hinh_hoc: 'Hình · Học', khtn: 'KHTN', vatly: 'Vật lý', hoahoc: 'Hóa học' }
 function TabNhanhMt({ co, tab, onDoi, them }: { co: NhanhChon[]; tab: NhanhChon; onDoi: (t: NhanhChon) => void; them?: { ten: string; onClick: () => void }[] }) {
   if (co.length + (them?.length ?? 0) < 2) return null
   return (
