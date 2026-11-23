@@ -82382,3 +82382,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Màn `ChiPhiAi.tsx` (đồ vật "💸 CHI PHÍ AI" dưới cột lịch tuần, chỉ phòng Giám đốc): ô số · bảng theo người (lượt · tiền · token · câu vào kho · câu phân dạng · lệnh bản đồ · ảnh · tiền / câu vào kho) · cột theo ngày · theo kênh / model / loại việc · 15 phiên tốn nhất. Đã mở trên máy (tạm bật cho admin dev rồi gỡ).
 - Số 01–23/11: tổng ≈ $2.367 ≈ 61,6 triệu đ giá trị tương đương, 100% là phiên Claude (thuê bao); Dương 500 lượt ≈ 51 triệu đ, 5.410 câu vào kho ≈ 9.425đ / câu.
 - Chưa có số: chấm BTVN bằng máy (bảng có cột token nhưng 29 lần đều trống — Edge Function chưa ghi) · máy tự giải bài (scheduler không lưu usage) · phiên Claude Code Thùy tự chạy. Trợ lý dùng deepseek: chưa có giá ⇒ chỉ đếm token.
+
+## 23/11 — Hình–Học K8: sửa đề 2 câu lỗi rồi duyệt (nốt 136/136)
+- Thùy chọn "Sửa rồi duyệt" cho 2 câu máy nghi đề gốc lỗi: HHC015483 (HH00176) thêm định nghĩa E vào đề + bỏ chữ "đề bổ sung" trong lời giải; HHC015613 (HH00183) ý a "DECF" → "EMCF". Cả hai `da_duyet=true`, `duyet_nguon='ai'`.
+- Kết quả: 136/136 câu cuối kì 1 trong 10 chuyên đề đều duyệt + kho chuẩn. Script `scripts/kho/hh-k8-sua-de-2-cau-loi-duyet.mjs` (chạy thử ROLLBACK → `--ghi`, đọc lại), bản lùi `_luu-tru/du-lieu/hh-k8-sua-de-2-cau-loi-23-11.json`.
