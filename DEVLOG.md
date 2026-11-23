@@ -82282,3 +82282,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 ## 23/11 16:10 — Mục tiêu tuần: buổi MT không có BTVN, KHÔNG ngoại lệ (mig 202611231535 ĐÃ ÁP — Thùy nhắc lại "MT ko có bài tập về nhà")
 - **Sai của tôi:** mig 1511 tự thêm ngoại lệ "buổi MT có đề BTVN / có kết quả BTVN thì vẫn hiện việc BTVN" trong khi Thùy đã trả lời rõ "Không có BTVN". Gỡ: CTE `bt` của `_mtt_tinh` giờ chỉ còn điều kiện "buổi không phải MT". Thử (ROLLBACK): 5A1 ca 24/11 đặt MT ⇒ việc = MT.
 - Hệ quả đã biết: 3 buổi MT cũ có đề BTVN / 2 buổi có kết quả BTVN (từ 01/09) sẽ không hiện việc BTVN trên tờ tuần nếu tuần đó còn tính lại; tuần đã chốt sổ không đổi.
+
+## 23/11 (chiều) — Chuyên đề Hình: nguồn từng bài + lời giải chi tiết ngay dưới bài (builder) — không migration
+- **Thùy:** "tài liệu chuyên đề muốn có chú thích nguồn tài liệu của các bài đó — làm cho chuyên đề Hình 8 cuối kì 1"; thêm: "mỗi bài cần có giải chi tiết xem ở dưới, giống lúc trong kho".
+- **Đo (chuyên đề Hình Cuối kì 1 K8, `211931d9…`):** 116 bài (1 ở mô hình + 115 ở "Bài chưa có mô hình"), **116/116 có nguồn** (`hinh_bai.nguon`, rút gọn ở `_nguon_ngan` → "Đề cương/Đề thi cuối kì 1 năm … — THCS …"; 0 bài thiếu nên không phải báo ai bổ sung). Lời giải: **394/394 ý có `loi_giai` + `dap_an`** (0 bài thiếu).
+- **Nguồn đã nằm sẵn ở DB** ⇒ không thêm cột / bảng. Bản IN đã in nguồn từ 21/10 (mig 202610211813 `fn_tl_nguon_cau` → `BaiHinhIn` "Bài N. (Nguồn…)"), bản GV đã in đáp số + lời giải từng ý — chỉ **builder** chưa hiện.
+- **Làm:** `ChuyenDeHinhBuilder.tsx` — `BaiLuyenXem` (dùng chung ở mọi chỗ builder liệt kê bài Hình) thêm: dòng "Nguồn: …" (đọc `nguonCau(id)` qua `NguonBaiCtx`, đọc lại nền khi tập bài đổi) + nút "▸ Lời giải chi tiết" mở đáp án + `LoiGiaiXem` + hình lời giải từng ý (cùng khuôn "Lời giải + hình từng ý" của kho `BanDoMoi PopupBai`). Bài không có nguồn ⇒ không hiện dòng (§1.5).
+- **Kiểm:** `tsc` sạch (trừ lỗi cũ `pdfRender.ts`). **Chưa kiểm trên màn thật** (cần đăng nhập app).

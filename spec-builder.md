@@ -229,6 +229,7 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 - **Mỗi chuyên đề một nhánh**, chọn lúc tạo: Đại + HGT (+ KHTN) = `BuilderBanDoMoi laChuyenDe` · **Hình = Hình–Luyện** `bdm/ChuyenDeHinhBuilder` (Phần → mô hình → bài kho trọn ý, `fn_tl_hl_dat_mo_hinh / dat_bai / noi_dung`); in `bdm/ChuyenDeHinhPrintView` (đề = giả thiết chung, bài một ý thì đề nằm trong ý — như màn duyệt).
 - Builder / in **từ chối bài Hình sai nhánh** (`spec-ban-do-toan` — bất biến "nhánh chứa tiền đề").
 - Ví dụ đang có: "Hình Giữa kì 1" K7 · K8 · K9 (chỉ bài hình 3–4 ý, chuẩn 2,5 điểm — Thùy 04/11), "Hình Cuối kì 1" K8 (13/11).
+- **Chuẩn riêng chuyên đề — nguồn + lời giải từng bài (Thùy 23/11):** mỗi bài hiện **nguồn tài liệu** (`fn_tl_nguon_cau`: Hình đọc `hinh_bai.nguon`, rút gọn `_nguon_ngan`; chưa có nguồn ⇒ để trống, không bịa) và **lời giải chi tiết ngay dưới bài** (đáp án + `LoiGiaiXem` + hình lời giải từng ý, như kho). Builder: dòng "Nguồn: …" + nút "▸ Lời giải chi tiết" (`BaiLuyenXem`); in: "Bài N. (Nguồn…)" cả bản HS lẫn GV, lời giải chỉ bản GV. Đo 23/11 Hình CK1 K8: 116/116 bài có nguồn, 394/394 ý có lời giải. Chuyên đề Đại/HGT (`BuilderBanDoMoi laChuyenDe`) dùng chung `fn_tl_nguon_cau` ở bản in, chưa có dòng nguồn + lời giải trong builder.
 
 ## 8. Đề thi trên app (Kho đề thi)
 

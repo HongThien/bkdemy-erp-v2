@@ -3,12 +3,12 @@
 // Không đi với lớp nào (không Gán lớp). Mọi ghi qua RPC (lib/chuyenDeHinh.ts); sau thao tác VÁ đúng phần, không tải lại cả tài liệu.
 // ⭐ laGiaoTrinh (Thùy 27/10 — giáo trình Hình bản đồ mới, mig 202610271757): CÙNG builder, đơn vị "Buổi", mỗi buổi thêm phần HỌC
 // (bài học → lý thuyết + bài luyện + BTVN) trước phần LUYỆN (mô hình); có Gán lớp; in bằng PrintView chung (Học + Luyện).
-import { useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { addBuoi, updatePhan, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type CauHinh } from '../../../lib/tailieu'
-import { xoaBuoi, loiDoc, datCoPhan } from '../../../lib/tailieuBdm'
+import { xoaBuoi, loiDoc, datCoPhan, nguonCau } from '../../../lib/tailieuBdm'
 import { cdhNoiDung, cdhDatMoHinh, cdhDatBai, cdhDatBtvn, cdhCayChon, hhCayChon, hhCau, hhCauLop, hhDatBai, hhDatCau, hhGoiY, hhYMeta, type HhYMeta, type CdhNoiDung, type CdhPhan, type CdhMoHinh, type CdhBai, type CdhChonMoHinh, type CdhChonChuDe, type HhBai, type HhChonBai, type HhCauKho } from '../../../lib/chuyenDeHinh'
 import { khoCuaMoHinh, demKhoMoHinh, type ChuoiKho, type DemKho } from '../../../lib/kho/hinhCay'
-import { MathText, DeY, inp } from '../../kho/ui'
+import { MathText, DeY, LoiGiaiXem, inp } from '../../kho/ui'
 import { MAU_PRESET, AnhMmCtl, AnhXem, CheDoHinhBtn } from '../TaiLieuBuilder'
 import ChuyenDeHinhPrintView from './ChuyenDeHinhPrintView'
 import { ngayBuoi, THU, ddmm, tuDate } from '../../../lib/giaoTrinhTuan'
@@ -18,6 +18,9 @@ import { KhoiCau, CopyBuoiModal, type CfgCau } from './BuilderBanDoMoi'
 import { AnhMmEditCtx } from '../anhMmCtx'
 import type { CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
+
+// Nguồn từng bài (mã bài ⇒ "Đề cương cuối kì 1 năm … — THCS …", fn_tl_nguon_cau) — builder hiện cạnh bài, bản in dùng cùng nguồn (Thùy 23/11).
+const NguonBaiCtx = createContext<Record<string, string>>({})
 
 const SO_CAU_MAC_DINH = 4   // khớp p_so_luyen / p_so_btvn mặc định của fn_tl_hh_dat_bai
 
@@ -41,6 +44,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const [cheXem, setCheXem] = useState<'lop' | 'btvn'>('lop')
   const xemLop = !laGiaoTrinh || cheXem === 'lop', xemBtvn = laGiaoTrinh && cheXem === 'btvn'
   const [copyBuoi, setCopyBuoi] = useState(false)   // 📥 Lấy buổi từ giáo trình Hình của lớp khác (16/11 — trước chỉ builder Đại/HGT có)
+  const [nguon, setNguon] = useState<Record<string, string>>({})
   const markSaved = () => setSaved(true)
   useEffect(() => { if (!saved) return; const t = setTimeout(() => setSaved(false), 2000); return () => clearTimeout(t) }, [saved])
 
@@ -52,6 +56,9 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   // Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): buổi nào đã lên kế hoạch cho ca nào — cùng dòng với màn tuần ở Phòng trưởng khối.
   const [ngayKeHoach, setNgayKeHoach] = useState<Map<string, string>>(new Map())
   useEffect(() => { if (laGiaoTrinh) ngayBuoi(id).then((ds) => setNgayKeHoach(new Map(ds.map((x) => [x.buoi_id, x.ngay])))).catch(() => { /* nhãn phụ — lỗi thì không hiện */ }) }, [id, laGiaoTrinh])
+  // Nguồn đọc lại khi TẬP BÀI đổi (thêm/bớt/chép buổi) — nền, lỗi thì thôi (nhãn phụ). Không có nguồn ⇒ không hiện (§1.5).
+  const khoaBai = useMemo(() => (nd?.buoi ?? []).flatMap((p) => [...p.mo_hinh.flatMap((m) => m.bai), ...(p.khac?.bai ?? []), ...(p.btvn_luyen ?? []).flatMap((v) => v.bai)].map((b) => b.ma_bai)).join(','), [nd])
+  useEffect(() => { if (khoaBai) nguonCau(id).then(setNguon).catch(() => { /* nhãn phụ */ }) }, [id, khoaBai])
   const lam = async (f: () => Promise<void>) => { setBao(null); try { await f() } catch (e) { setBao(loiDoc(e)) } }
   const vaPhan = (p: CdhPhan) => { setNd((x) => (x ? { ...x, buoi: x.buoi.map((b) => (b.id === p.id ? p : b)) } : x)); markSaved() }
 
@@ -118,6 +125,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
   const khoi = nd.tai_lieu.khoi
 
   return (
+    <NguonBaiCtx.Provider value={nguon}>
     <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: true, phai: anhPhaiCua(ch, nd.tai_lieu.nhanh), setPhai: (m, v) => saveCh({ anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } }) }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
@@ -340,6 +348,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
       {ganLop && <GanLopBdm hinh masterId={id} khoi={khoi} tl={{ mon: nd.tai_lieu.mon, nhanh: nd.tai_lieu.nhanh, cau_hinh: ch }} onClose={() => setGanLop(false)} />}
     </div>
     </AnhMmEditCtx.Provider>
+    </NguonBaiCtx.Provider>
   )
 }
 
@@ -478,8 +487,12 @@ function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | nul
   const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
   const anh = motY ? (b.y[0]?.anh_de ?? b.anh_de) : b.anh_de
   const cd = cfg?.cheDo[b.ma_bai] ?? 'hien'
+  const nguon = useContext(NguonBaiCtx)[b.ma_bai]
+  const [moLg, setMoLg] = useState(false)
+  const coLg = b.y.some((y) => y.dap_an?.trim() || y.loi_giai?.trim() || y.anh_loi_giai)
   return (
     <>
+      {nguon && <div className="mt-1 text-[11.5px] italic text-slate-500" title="Nguồn tài liệu của bài (đề cương / đề thi) — bản in chuyên đề in cùng dòng này">Nguồn: {nguon}</div>}
       {cfg && (
         <div className="mt-1 flex flex-wrap items-center justify-end gap-2">
           <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết, in sau cả bài (bản HS)">dòng
@@ -502,6 +515,18 @@ function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | nul
         </div>
         {anh && <div className="shrink-0"><AnhXem ma={b.ma_bai} url={anh} cheDo={cd} /></div>}
       </div>
+      {/* Lời giải chi tiết ngay dưới bài — cùng khuôn "Lời giải + hình từng ý" của kho (BanDoMoi PopupBai): đáp án + LoiGiaiXem + hình lời giải */}
+      {coLg && <button type="button" onClick={() => setMoLg((v) => !v)} className="mt-1.5 text-[12.5px] font-medium text-teal-700 hover:underline">{moLg ? '▾ Ẩn lời giải' : '▸ Lời giải chi tiết'}</button>}
+      {moLg && b.y.map((y, i) => (y.dap_an?.trim() || y.loi_giai?.trim() || y.anh_loi_giai) && (
+        <div key={i} className="mt-1.5 flex gap-2 border-t border-slate-200 pt-1.5 text-[13px] leading-relaxed text-slate-700">
+          {!motY && <b className="shrink-0 text-violet-700">{y.nhan ? `${y.nhan})` : '•'}</b>}
+          <div className="min-w-0 flex-1">
+            {y.dap_an?.trim() && <div>Đáp án: <b className="text-emerald-700"><MathText>{y.dap_an}</MathText></b></div>}
+            {y.loi_giai?.trim() && <LoiGiaiXem raw={y.loi_giai} className="whitespace-pre-wrap leading-relaxed" />}
+            {y.anh_loi_giai && <img src={y.anh_loi_giai} alt="" className="mt-2 max-h-64 rounded border border-violet-200 bg-white object-contain" />}
+          </div>
+        </div>
+      ))}
     </>
   )
 }
