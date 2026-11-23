@@ -82236,3 +82236,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **CHƯA kiểm:** gửi thật qua app tới bot và Claude đọc PDF thật · tải tệp về từ tin đã gửi · lượt gọi API với tệp 3 MB (giới hạn kích thước request của cổng Supabase chưa đo).
 - **Việc của người:** deploy ERP · máy chạy bot `git pull` rồi khởi động lại `bot.mjs` (bot bản cũ bỏ qua tệp: Claude chỉ thấy chữ "(chỉ gửi tệp)").
 - **Cổng `check:kien-truc` đang ✗ ở K1** (hàm nội bộ `_…` mà người đăng nhập gọi được: 329, trần 322, +7) — KHÔNG do lượt này (mig 202611231415 chỉ tạo `fn_*`; lần tôi chạy 19/11 còn đúng trần, từ đó có 12 commit migration của phiên khác). Tôi không sửa `tran.json` hộ; cần phiên đã thêm 7 hàm đó thu quyền hoặc ghi lý do nâng trần.
+
+## 23/11 15:00 — Dashboard học tập (trong Phòng): bộ lọc theo cột Bổ trợ (Thùy 23/11: "cần có filter L1 - L2 - L3 để dễ theo dõi")
+- `DashboardHocTapScreen.tsx`: dải nút **Bổ trợ: Tất cả · L1 · L2 · L3 · L4 · Chưa** trên thanh lọc (chỉ hiện trong Phòng, nơi có cột Bổ trợ); lọc dòng đã tải theo `bt.muc` (Chưa = em chưa có đề xuất / ca nào), không gọi lại DB; lựa chọn nhớ tới F5; chân bảng ghi "đang hiện n / tổng HS". Thêm L4 và "Chưa" ngoài ba mức Thùy nêu vì mức L4 có thật và "chưa bổ trợ" là danh sách hay cần nhất khi chốt.
+- Kiểm trên app (dev admin, phòng Trưởng bộ môn, Toán 9): Tất cả 72 em · L2 = 15 · L1 = 14 · Chưa = 43, cộng đúng 72; chân bảng "đang hiện 14 / 72 HS". Chưa thử bằng tài khoản trưởng khối thật.

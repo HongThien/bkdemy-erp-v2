@@ -12,15 +12,18 @@ import BoTroPopup from '../phongtk/BoTroPopup'
 // dau: khối đặt ĐẦU thanh lọc (vd thanh 4 mục của Chất lượng) — Thùy 10/11: dồn hết thanh đầu về 1 dòng
 export type DashboardPhong = { o: { mon: string; khoi: string }[]; onMoHoSo?: (hsId: string, mon: string) => void; dau?: ReactNode }
 
+// Lọc theo cột Bổ trợ (Thùy 23/11): mức L1–L4 của em hiện tại, hoặc em chưa có bổ trợ — chỉ lọc dòng đang tải, không tính lại số
+type LocBt = 'tat_ca' | 1 | 2 | 3 | 4 | 'chua'
+const LOC_BT: [LocBt, string, string][] = [['tat_ca', 'Tất cả', 'Mọi em'], [1, 'L1', 'L1 · sau giờ'], [2, 'L2', 'L2 · ca khối, TA dạy'], [3, 'L3', 'L3 · ca khối, giáo viên dạy'], [4, 'L4', 'L4 · chuẩn bị kỹ + đổi giáo viên'], ['chua', 'Chưa', 'Em chưa có đề xuất / ca bổ trợ nào']]
 type Cua = { id: string; hs: HSDB; cap: CapDB; ma: string; tenCot: string; x: number; y: number; z: number; data?: LichSuO; loi?: string; dangThem?: boolean }
 
 // Rời tab quay lại = đúng chỗ cũ, kể cả các cửa sổ đang mở (CLAUDE §React).
 // mon KHÔNG có mặc định gõ cứng (Thùy 16/11: nhân sự KHTN mở ra thấy Toán): môn đầu = ô đầu tiên trong QUYỀN MÔN của người đăng nhập
 // (DB: fn_dbht_o ← fn_mon_cua_toi); môn nhớ từ trước mà không còn trong quyền (đổi tài khoản không F5) thì bỏ, kể cả bảng đã nhớ.
 const NHO: {
-  o: ODashboard[] | null; mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }
+  o: ODashboard[] | null; mon: string; khoi: string | null; soTuan: number; cap: CapDB; lopId: string | null; sap: { cot: string; tang: boolean }; locBt: LocBt
   bang: BangDB | null; khoaBang: string; cua: Cua[]; zMax: number; tapTrung: boolean; tab: 'bang' | 'mtt'
-} = { o: null, mon: '', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false, tab: 'bang' }
+} = { o: null, mon: '', khoi: null, soTuan: 4, cap: 'chuyen_de', lopId: null, sap: { cot: 'lop', tang: true }, locBt: 'tat_ca', bang: null, khoaBang: '', cua: [], zMax: 60, tapTrung: false, tab: 'bang' }
 
 const TEN_CAP: Record<CapDB, string> = { chu_de: 'chủ đề', chuyen_de: 'chuyên đề', nhom: 'nhóm bài' }
 const mauPct = (p: number | undefined) => p == null ? 'text-slate-300'
@@ -40,6 +43,8 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   const [soTuan] = useState(NHO.soTuan)   // 10/11: ô = mastery theo lần, không lọc tuần nữa — giữ tham số cho chữ ký hàm DB
   const [cap, setCap] = useState<CapDB>(NHO.cap)
   const [lopId, setLopId] = useState<string | null>(NHO.lopId)
+  const [locBt, setLocBtS] = useState<LocBt>(NHO.locBt)
+  const setLocBt = (v: LocBt) => { NHO.locBt = v; setLocBtS(v) }
   const [sap, setSap] = useState(NHO.sap)
   const [bang, setBang] = useState<BangDB | null>(NHO.bang)
   const [dangTai, setDangTai] = useState(false)
@@ -99,7 +104,8 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
   }, [mon, khoi, soTuan, cap, lamMoi, tab, monHopLe])
 
   const lops = bang ? [...new Map(bang.hs.map((h) => [h.lop_id, h.lop])).entries()].sort((a, b) => a[1].localeCompare(b[1], 'vi', { numeric: true })) : []
-  const hien = (bang?.hs ?? []).filter((h) => !lopId || h.lop_id === lopId)
+  const locMuc = phong ? locBt : 'tat_ca'   // cột Bổ trợ chỉ có trong Phòng ⇒ bộ lọc cũng chỉ áp ở đó
+  const hien = (bang?.hs ?? []).filter((h) => (!lopId || h.lop_id === lopId) && (locMuc === 'tat_ca' || (locMuc === 'chua' ? !h.bt : h.bt?.muc === locMuc)))
   const giaTri = (h: HSDB, cot: string): number | string | null => cot === 'ten' ? h.ten : cot === 'lop' ? h.lop : cot === 'ny' ? (h.nhom_yeu ?? null) : (h.o[cot]?.p ?? null)
   const sapXep = [...hien].sort((a, b) => {
     const x = giaTri(a, sap.cot), y = giaTri(b, sap.cot)
@@ -168,6 +174,12 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
             <option value="">Cả khối</option>
             {lops.map(([id, ten]) => <option key={id} value={id}>Lớp {ten}</option>)}
           </select>
+        )}
+        {phong && (
+          <div className="flex items-center overflow-hidden rounded-md ring-1 ring-slate-200" title="Lọc theo cột Bổ trợ">
+            <span className="bg-slate-50 px-2 text-[11.5px] font-semibold leading-8 text-slate-500">Bổ trợ</span>
+            {LOC_BT.map(([v, nhan, giai]) => <button key={String(v)} onClick={() => setLocBt(v)} title={giai} className={nut(locBt === v)}>{nhan}</button>)}
+          </div>
         )}</>}
         <button onClick={() => setLamMoi((x) => x + 1)} title="Đọc lại" className="h-8 rounded-md px-2 text-[14px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
         {cua.length > 0 && <button onClick={() => setCua([])} className="ml-auto h-7 rounded-md px-3 text-[12px] font-semibold text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">Đóng {cua.length} cửa sổ</button>}
@@ -237,7 +249,7 @@ export default function DashboardHocTapScreen({ phong }: { phong?: DashboardPhon
               </table>
             </div>
             <p className="text-[11px] text-slate-400">
-              {bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{tapTrung ? ` · 🎯 Tập trung: đang hiện ${cotHien.length} cột có ô yếu` : ''}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình tối đa 5 lần làm bài gần nhất TRONG 30 NGÀY của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần) — 30 ngày không có lần nào thì ô trống; 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
+              {sapXep.length !== bang.hs.length ? `đang hiện ${sapXep.length} / ` : ''}{bang.hs.length} HS · {bang.cot.length} {TEN_CAP[cap]}{tapTrung ? ` · 🎯 Tập trung: đang hiện ${cotHien.length} cột có ô yếu` : ''}{bang.tinh_at ? ` · số tính lúc ${gioVN(bang.tinh_at)}` : ''}. Ô = MASTERY THEO LẦN (Thùy 10/11): trung bình tối đa 5 lần làm bài gần nhất TRONG 30 NGÀY của em ở {TEN_CAP[cap]} đó (Hình–Học 3 lần) — 30 ngày không có lần nào thì ô trống; 1 lần = 1 bài làm, % lần = trung bình các câu của bài thuộc ô; mọi lần ngang nhau.
               Kênh: ET · BTVN · MT / khảo sát · phiếu và test bổ trợ (không tính tự luyện, trừ cấp 1). {TEN_CAP[cap]} theo bản đồ mới; Hình–Học: bài học = chuyên đề = nhóm bài. Nhóm yếu = số nhóm bài đang yếu. Số đọc từ bảng chụp mastery (tự làm mới 5 phút/lần khi có điểm mới).
             </p>
           </>
