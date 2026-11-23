@@ -769,7 +769,7 @@ function TabChuoi(p: ChungProps & {
   const td = useMemo(() => new Map([...baiById.keys()].map((id) => [id, api.tienDeCua(L, id)])), [baiById, L])
   const bc = useMemo(() => api.xepGiaThiet({
     gocId,
-    gt: nhanhs.map((n) => ({ id: n.id, cha: n.id === gocId ? null : chaCua(n.id), chinh: laChinh(n.id) })),
+    gt: nhanhs.map((n) => ({ id: n.id, cha: n.id === gocId ? null : chaCua(n.id), chinh: laChinh(n.id), vai: p.vai(n.id) })),
     bai: [...baiById.values()].map((b) => ({ id: b.id, gt: b.mo_hinh_id, so: soB(b.so), tienDe: td.get(b.id) ?? [] })),
   }), [gocId, nhanhs, baiById, chaCua, laChinh, td])
 
@@ -793,8 +793,8 @@ function TabChuoi(p: ChungProps & {
     const cha = chaCua(n.id); const a = cha ? bc.khoi.get(cha) : null; const b = bc.khoi.get(n.id)
     if (!a || !b) continue
     const chinh = laChinh(n.id)
-    if (p.vai(n.id) === 'thanh_vien') {   // thành viên → nút nhóm: đi ngược chiều, vào cạnh phải thẻ nhóm
-      day.push(<path key={'g' + n.id} d={`M${OX + b.x},${OY + b.y + 8 + HEX / 2} H${OX + (a.x + a.w + b.x) / 2} V${OY + a.y + 8 + HEX / 2} H${OX + a.x + a.w + 2}`}
+    if (p.vai(n.id) === 'thanh_vien') {   // thành viên (đứng TRÊN) → nút nhóm (đứng dưới): từ cạnh trái thẻ thành viên, xuống theo một trục chung, vào cạnh trái thẻ nhóm
+      day.push(<path key={'g' + n.id} d={`M${OX + b.x},${OY + b.y + 8 + HEX / 2} H${OX + b.x - 18} V${OY + a.y + 8 + HEX / 2} H${OX + a.x - 2}`}
         stroke={MAU_TV.dac} strokeWidth={2.6} fill="none" markerEnd="url(#gt-tv)" />)
       continue
     }
