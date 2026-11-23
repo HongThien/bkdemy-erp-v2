@@ -208,6 +208,7 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 - Phần đề + Cơ bản / Nâng cao (`phanBac`) · **điểm từng câu = ĐỀ GỐC** (`cau_hinh.diemByCau`; bản gán đọc theo đề gốc); Hình đặt điểm **theo từng ý**, người soạn tự đặt, không chia đều (Thùy 07/10).
 - Trộn nhánh trong một đề (Đại · HGT · Hình — `nhanhByCau`, Thùy 02/09). **Bài Hình = hàng câu trong phần**, chọn 2 bước mô hình → bài (hoặc nguyên bài từ kho — Thùy 29/10); khoá hàng `HINH:<uuid>`.
 - **Số câu theo đúng thứ tự builder**, một bộ đếm cho in lẫn chấm: câu Đại +1, bài Hình +số ý ("Câu 17–19.", ý a/b/c dưới) (Thùy 02/09).
+- **Chọn đến DẠNG BÀI đúng như ET mới (Thùy 23/11):** mỗi hàng bấm ô dạng ⇒ `BoChonNhom` (chủ đề → chuyên đề → nhóm → chip dạng bài) + tab **Đại · Hình giải tích · Hình · Học** (bài học = dạng bài, `ChonBaiHoc`; hàng nhánh `hinh_hoc`) + nút Hình · Luyện; ⚡ kế hoạch có đủ 3 tab. Khối chưa chạy bản đồ mới vẫn dùng `DangPickerOne`.
 - Soạn như ET mới (Thùy 28/10): mỗi phần **⚡ Thêm nhiều dạng** (dạng bài × N câu, `BoChonNhom`, gợi ý `fn_tl_bdm_goi_y` né câu xuyên mọi phần) · ✎ Chọn tick nhiều câu · **đổi thứ tự** kéo thả hoặc gõ số câu (sang phần khác được).
 - **⧉ Nhân bản** MT (`fn_mt_nhan_ban`, Thùy 28/10: hai lớp thi gần giống, sửa 20 %): chép phần + câu + `cau_hinh` một giao dịch; phần và hàng Hình **cấp mã mới**, mọi khoá trỏ tới chúng đổi theo.
 - **3 mã đề** (`made.ts`, luật cụm — §2.6).
