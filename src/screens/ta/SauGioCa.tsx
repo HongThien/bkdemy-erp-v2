@@ -4,6 +4,7 @@
 //   · Bài test = mỗi dạng yếu trong nhóm yếu 1 câu (DB chọn, fn_btnhe_in_test). TA NHẬP đáp án em khoanh → Nộp = XONG ca (như ET).
 // Mọi chọn câu / chấm / đóng ca ở DB. Dùng lại TrangIn + NhapKetQua của phiếu giấy bổ trợ yếu, khung lý thuyết của kho (LyThuyetBlockView).
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { MathText, LT_CORE_CSS, LyThuyetBlockView } from '../kho/ui'
 import { parseLyThuyetBlocks } from '../../lib/lythuyetBlocks'
 import { inLayBaiGiay, listPhieuGiayCuaCa, type BaiInGiay, type CaTA } from '../../lib/botro_yeu_ca'
@@ -73,9 +74,10 @@ function NoiDung({ text }: { text: string }) {
     : <LyThuyetBlockView key={i} b={b} />)}</>
 }
 export function TrangInLyThuyet({ bai, onDong }: { bai: LyThuyetSauGio; onDong: () => void }) {
-  return (
+  // 23/11: portal dưới <body> + display:none phần còn lại (xem CSS_IN ở PhieuGiayYeuTA) — lồng trong modal ca thì in chỉ ra trang 1.
+  return createPortal(
     <div className="bk-print fixed inset-0 z-[100] overflow-auto bg-white">
-      <style>{`@media print { body * { visibility: hidden !important; } .bk-print, .bk-print * { visibility: visible !important; } .bk-print { position: absolute !important; inset: 0 auto auto 0 !important; width: 100% !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-dang { break-inside: avoid-page; } }${LT_CORE_CSS}`}</style>
+      <style>{`@media print { body > *:not(.bk-print) { display: none !important; } .bk-print { position: static !important; inset: auto !important; width: 100% !important; height: auto !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-dang { break-inside: avoid-page; } }${LT_CORE_CSS}`}</style>
       <div className="bk-no-print sticky top-0 z-10 flex items-center gap-2 border-b border-slate-200 bg-white/95 px-4 py-2">
         <span className="text-[13px] font-semibold text-slate-700">Xem trước lý thuyết — {bai.hs.ho_ten} · {bai.dang.length} dạng</span>
         <button onClick={() => window.print()} className="ml-auto rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">🖨 In</button>
@@ -98,6 +100,7 @@ export function TrangInLyThuyet({ bai, onDong }: { bai: LyThuyetSauGio; onDong: 
           </section>
         ))}
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

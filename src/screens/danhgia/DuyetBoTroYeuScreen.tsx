@@ -1,5 +1,5 @@
 // Tab "Duyệt bổ trợ" — viết lại 17/10 (Thùy): 2 VÒNG + CHỐT TUẦN. Mockup: docs/mockup-duyet-bo-tro-2-vong.html · spec-bo-tro.md §25.
-//  Vòng 1 = 📉 Điểm thấp + 🚨 Báo động → "Đưa vào theo dõi" (KHÔNG chiếm slot) · Vòng 2 = 👁 Đang theo dõi → "Duyệt chính thức" (mới chiếm slot).
+//  Bước 1 = 📉 Điểm thấp + 🚨 Báo động → "Đưa vào theo dõi" (KHÔNG chiếm slot) · Bước 2 = 👁 Đang theo dõi → "Duyệt chính thức" (mới chiếm slot).
 //  KHÔNG realtime: Điểm thấp + Đang theo dõi đọc ẢNH CHỤP TUẦN (thứ 2 người duyệt bấm "Chốt tuần"); chỉ Báo động đọc LIVE.
 //  Mỗi màn 1 học sinh. Máy KHÔNG đề xuất level. Sau mutation vá tại chỗ (CLAUDE.md §2), nhớ tab/vị trí khi rời màn.
 import { useEffect, useMemo, useState } from 'react'
@@ -241,12 +241,12 @@ export default function DuyetBoTroYeuScreen() {
           </span>
         </div>
         <div className="mb-2 flex flex-wrap items-center gap-x-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-1 text-[12px] text-amber-900"
-          title={tab === 'td' ? 'Vòng 2: chỉ em ĐÃ vào theo dõi. Số liệu làm mới theo lần chốt tuần, kèm so với lúc vào theo dõi. Duyệt chính thức = bổ trợ 1 lần trong tuần rồi tự kết thúc (dù chưa hết dạng yếu); sau bổ trợ mà còn dạng yếu em tự quay lại đây. Em hết tín hiệu vẫn nằm đây tới khi bạn Gỡ tay. Việc khẩn giữa tuần → loại Bổ trợ Khẩn cấp, không ở đây.'
-            : tab === 'bd' ? 'Vòng 1: em bị GV/TA bấm chuông (ET/MT/BTVN/đánh giá/hổng nền) trong 30 ngày qua. Quyết có đáng theo dõi không — chưa tốn slot.'
-            : 'Vòng 1: em máy gom từ ET · BTVN · chuyên đề (ảnh chụp tuần). Quyết có đáng theo dõi không — chưa tốn slot. Em có thêm báo động vẫn hiện ở đây kèm chip 🚨; duyệt xong ở tab nào thì biến mất ở cả hai.'}>
-          {tab === 'td' ? <><b>Vòng 2 · Theo dõi → Chính thức:</b> chỉ em ĐÃ vào theo dõi · duyệt chính thức = bổ trợ <b>1 lần/tuần</b> rồi tự kết thúc · hết tín hiệu vẫn ở đây tới khi <b>Gỡ tay</b></>
-            : tab === 'bd' ? <><b>Vòng 1 · 🚨 Báo động:</b> GV/TA bấm chuông trong 30 ngày · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>
-            : <><b>Vòng 1 · 📉 Điểm thấp:</b> máy gom từ ET · BTVN · chuyên đề · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>}
+          title={tab === 'td' ? 'Bước 2: chỉ em ĐÃ vào theo dõi. Số liệu làm mới theo lần chốt tuần, kèm so với lúc vào theo dõi. Duyệt chính thức = bổ trợ 1 lần trong tuần rồi tự kết thúc (dù chưa hết dạng yếu); sau bổ trợ mà còn dạng yếu em tự quay lại đây. Em hết tín hiệu vẫn nằm đây tới khi bạn Gỡ tay. Việc khẩn giữa tuần → loại Bổ trợ Khẩn cấp, không ở đây.'
+            : tab === 'bd' ? 'Bước 1: em bị GV/TA bấm chuông (ET/MT/BTVN/đánh giá/hổng nền) trong 30 ngày qua. Quyết có đáng theo dõi không — chưa tốn slot.'
+            : 'Bước 1: em máy gom từ ET · BTVN · chuyên đề (ảnh chụp tuần). Quyết có đáng theo dõi không — chưa tốn slot. Em có thêm báo động vẫn hiện ở đây kèm chip 🚨; duyệt xong ở tab nào thì biến mất ở cả hai.'}>
+          {tab === 'td' ? <><b>Bước 2 · Theo dõi → Chính thức:</b> chỉ em ĐÃ vào theo dõi · duyệt chính thức = bổ trợ <b>1 lần/tuần</b> rồi tự kết thúc · hết tín hiệu vẫn ở đây tới khi <b>Gỡ tay</b></>
+            : tab === 'bd' ? <><b>Bước 1 · 🚨 Báo động:</b> GV/TA bấm chuông trong 30 ngày · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>
+            : <><b>Bước 1 · 📉 Điểm thấp:</b> máy gom từ ET · BTVN · chuyên đề · quyết <b>có đáng theo dõi không</b> — chưa tốn slot</>}
           <span className="text-amber-700/70">ⓘ rê chuột xem đầy đủ</span>
         </div>
         {loi && <p className="mb-3 rounded-xl bg-rose-50 px-3 py-2 text-[12.5px] font-semibold text-rose-700 ring-1 ring-rose-200">{loi}</p>}
@@ -290,7 +290,7 @@ export default function DuyetBoTroYeuScreen() {
                   {tab === 'td' && <SoVoiLucVao e={e as DangTheoDoi} />}
 
                   <div className="sticky bottom-0 z-10 -mx-5 -mb-5 mt-4 flex flex-wrap items-center gap-2 rounded-b-2xl border-t border-slate-200 bg-slate-50/95 px-5 py-2.5 shadow-[0_-8px_14px_-10px_rgba(15,23,42,0.35)] backdrop-blur">
-                    <span className="cursor-help text-[13px] font-bold text-slate-800" title={tab === 'td' ? 'Chỉ lúc này mới trừ slot. Bổ trợ 1 lần trong tuần rồi tự kết thúc; sau đó em còn dạng yếu (trong dạng đã học) sẽ tự quay lại Đang theo dõi.' : 'Vòng 1 KHÔNG tốn slot, KHÔNG mở case, không chọn mức. Máy không đề xuất level.'}>{tab === 'td' ? 'Vòng 2 — duyệt chính thức' : 'Vòng 1 — đưa vào theo dõi?'} <span className="font-normal text-slate-400">ⓘ</span></span>
+                    <span className="cursor-help text-[13px] font-bold text-slate-800" title={tab === 'td' ? 'Chỉ lúc này mới trừ slot. Bổ trợ 1 lần trong tuần rồi tự kết thúc; sau đó em còn dạng yếu (trong dạng đã học) sẽ tự quay lại Đang theo dõi.' : 'Bước 1 KHÔNG tốn slot, KHÔNG mở case, không chọn mức. Máy không đề xuất level.'}>{tab === 'td' ? 'Bước 2 — duyệt chính thức' : 'Bước 1 — đưa vào theo dõi?'} <span className="font-normal text-slate-400">ⓘ</span></span>
                     {tab === 'td' && <>
                       <select value={muc} onChange={(x) => setMuc(Number(x.target.value))} className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-[13px]">
                         {[1, 2, 3, 4].map((m) => <option key={m} value={m}>{MUC_TEN[m]}</option>)}</select>

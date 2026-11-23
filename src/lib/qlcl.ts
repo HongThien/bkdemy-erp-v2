@@ -45,7 +45,7 @@ export async function hsDangYeu(mon: string, khoi: string): Promise<HsDangYeu[]>
   if (error) throw error
   return (data ?? []) as HsDangYeu[]
 }
-// Đề xuất Yếu (trưởng khối) ⇒ em vào "Đang theo dõi" (vòng 2 màn Duyệt của Trang), nguồn 'truong_khoi'. DB kiểm phạm vi.
+// Đề xuất Yếu (trưởng khối) ⇒ em vào "Đang theo dõi" (bước 2 màn Duyệt của Trang), nguồn 'truong_khoi'. DB kiểm phạm vi.
 export async function deXuatYeu(hocSinhId: string, mon: string, ghiChu: string | null): Promise<void> {
   const { error } = await supabase.rpc('fn_qlcl_de_xuat_yeu', { p_hs: hocSinhId, p_mon: mon, p_ghi_chu: ghiChu })
   if (error) throw error

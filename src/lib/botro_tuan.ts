@@ -1,5 +1,5 @@
 // DUYỆT BỔ TRỢ 2 VÒNG + CHỐT TUẦN (Thùy 17/10). Spec: spec-bo-tro.md §25. Mockup: docs/mockup-duyet-bo-tro-2-vong.html.
-// Vòng 1 (Báo động · Điểm thấp) → Đang theo dõi (không chiếm slot) → Vòng 2: duyệt chính thức (đường duyệt cũ, mới chiếm slot).
+// Bước 1 (Báo động · Điểm thấp) → Đang theo dõi (không chiếm slot) → Bước 2: duyệt chính thức (đường duyệt cũ, mới chiếm slot).
 // KHÔNG realtime: thứ 2 người duyệt bấm "Chốt tuần" ⇒ ảnh chụp lưu DB (bo_tro_chot_tuan*); chỉ tab Báo động đọc live.
 // ET 4 buổi (so lớp + màu) và BTVN 4 buổi (Đ/C/S) tính ở DB (fn_botro_et_btvn); file này chỉ gọi RPC + gõ kiểu.
 import { supabase } from './supabase'
@@ -52,7 +52,7 @@ export async function theoDoiKetThuc(id: string, tt: 'go' | 'len_chinh_thuc', ly
   if (error) throw error
 }
 
-// Vòng 2: duyệt CHÍNH THỨC — đi đúng đường cũ (kiểm trần → hs_level + log → mở case → đổ dạng yếu theo luật DB), rồi đánh dấu đã lên chính thức.
+// Bước 2: duyệt CHÍNH THỨC — đi đúng đường cũ (kiểm trần → hs_level + log → mở case → đổ dạng yếu theo luật DB), rồi đánh dấu đã lên chính thức.
 // Máy KHÔNG đề xuất level (levelMayDeXuat = null). Dạng của case đổ bằng luật DB cũ (fn_btyeu_fill_dang_yeu) — người chỉnh ở bước Nội dung.
 export async function duyetChinhThuc(input: { theoDoiId: string; hocSinhId: string; mon: string; level: number; uuTien: UuTienCase; lyDo: string | null; nguon: 'bao_dong' | 'diem_thap' | 'sau_bo_tro' | 'truong_khoi' }): Promise<void> {
   const chan = await kiemSucChua(input.hocSinhId, input.mon, input.uuTien)
