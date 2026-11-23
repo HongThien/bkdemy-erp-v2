@@ -122,7 +122,8 @@
 Chọn NGÀY → các ca của ngày (ca khối sinh từ lịch khối · ca tạo tay · "Lịch riêng" = buổi xếp không khớp ca nào)
   → bấm một ca ⇒ ứng viên đúng MÔN + KHỐI của ca, ba tab ĐUỔI · BÙ · YẾU, đã sắp ưu tiên; em không vừa hiện mờ kèm lý do ("cần 4 · còn 2", "hết suất")
   → "+ Xếp" = ĐÃ CHỐT VỚI PHỤ HUYNH ⇒ trừ đơn vị ngay, sinh buổi của em gắn vào ca
-  → gỡ em (khi chưa điểm danh) · huỷ ca (có lý do) ⇒ buổi huỷ, em về hàng chờ
+  → gỡ em (khi chưa điểm danh) · huỷ ca (có lý do) ⇒ buổi huỷ, đơn vị được trả; em Bù / Đuổi về hàng chờ,
+    **em Yếu MẤT lượt tuần này — case đóng, không về hàng chờ (1 lần / em / tuần, Thùy 23/11; `spec-bo-tro.md` §5)**
 ```
 - **"Lộc chốt với phụ huynh rồi mới điền; đã điền là đã chốt"** (Thùy 24/09 khuya) — không còn bước "chờ PH → Xác nhận".
 - Thứ tự tổng: **ngày → loại (Đuổi → Bù → Yếu) → ưu tiên trong loại.**

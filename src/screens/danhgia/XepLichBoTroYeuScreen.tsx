@@ -83,7 +83,7 @@ export default function XepLichBoTroYeuScreen() {
   const reload = () => {
     setLoading(true)
     taiDeXuat()
-    // Mở màn = dọn ca đã xếp mà không diễn ra (qua ngày không điểm danh) ⇒ tự huỷ, case về Cần xếp — Thùy 23/09.
+    // Mở màn = dọn ca đã xếp mà không diễn ra (qua ngày không điểm danh) ⇒ tự huỷ; từ 23/11 case ĐÓNG (1 lần / em / tuần), không về Cần xếp — trigger DB trg_btyeu_huy_buoi_dong_case.
     donCaKhongDienRa().then((d) => setVuaDon(d.length)).catch(() => {}).then(() => (RETEST_BAT ? buRetestTon().catch(() => 0) : 0)).then(() => listCaseChoXepLich()).then((r) => {
       setItems(r)
       setMuc(new Map(r.map((c) => [c.hoc_sinh_id, c.level]))) // level đi kèm RPC — không gọi getLevels riêng nữa
@@ -128,7 +128,7 @@ export default function XepLichBoTroYeuScreen() {
         <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h1 className="text-[22px] font-bold text-slate-800">Xếp bổ trợ yếu</h1>
-            <p className="mt-1 text-[13px] text-slate-500">{tab === 'can_xep' ? 'Case đang bổ trợ chưa có buổi chờ học — bấm vào để xếp ngày, giờ, phòng, người với phụ huynh.' : tab === 'da_xep' ? 'Đã có buổi chờ học — qua ngày mà không điểm danh sẽ tự huỷ và quay về Cần xếp.' : tab === 'cho_retest' ? 'Dạy hết dạng, chờ retest sau ET buổi thường (TA lớp được báo trên app TA). Retest đạt hết ⇒ Đánh giá ca ⇒ Hoàn thành.' : tab === 'hoan_thanh' ? `Case đã đóng vòng (lưu toàn bộ).${RETEST_BAT ? '' : ' Em hết dạng yếu + TA đóng ca cuối ⇒ tự vào đây.'} Yếu lại ⇒ vòng mới.` : tab === 'retest' ? 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.' : 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.'}</p>
+            <p className="mt-1 text-[13px] text-slate-500">{tab === 'can_xep' ? 'Case đang bổ trợ chưa có buổi chờ học — bấm vào để xếp ngày, giờ, phòng, người với phụ huynh.' : tab === 'da_xep' ? 'Đã có buổi chờ học — qua ngày mà không điểm danh sẽ tự huỷ và case đóng (mất lượt tuần này, không quay về Cần xếp).' : tab === 'cho_retest' ? 'Dạy hết dạng, chờ retest sau ET buổi thường (TA lớp được báo trên app TA). Retest đạt hết ⇒ Đánh giá ca ⇒ Hoàn thành.' : tab === 'hoan_thanh' ? `Case đã đóng vòng (lưu toàn bộ).${RETEST_BAT ? '' : ' Em hết dạng yếu + TA đóng ca cuối ⇒ tự vào đây.'} Yếu lại ⇒ vòng mới.` : tab === 'retest' ? 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.' : 'Theo dõi bài retest tầng 2: chờ làm · quá hạn · đã nộp (đạt/trượt từng dạng). Không xếp lịch — TA lớp cho em làm sau ET; quá hạn thì dời ngày.'}</p>
           </div>
           {/* Thùy 24/09: filter giống Bù/Đuổi (chip khối + tìm tên) và nằm góc trên bên phải */}
           <div className="flex flex-wrap items-center justify-end gap-2">
@@ -164,7 +164,7 @@ export default function XepLichBoTroYeuScreen() {
           </div>
         ) : (
           <div>
-            {vuaDon > 0 && <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-[12px] text-amber-800 ring-1 ring-amber-200">⚠ Vừa tự huỷ {vuaDon} buổi đã xếp mà không diễn ra (qua ngày, không điểm danh) — các case đó quay về Cần xếp với tag "không diễn ra".</p>}
+            {vuaDon > 0 && <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-[12px] text-amber-800 ring-1 ring-amber-200">⚠ Vừa tự huỷ {vuaDon} buổi đã xếp mà không diễn ra (qua ngày, không điểm danh) — các case đó đã đóng (mất lượt tuần này, không quay về Cần xếp); xem ở tab Hoàn thành.</p>}
             {tab === 'can_xep' && (
               <div className="space-y-3">
                 {choXep.map((c) => <CaseCard key={c.id} c={c} mucLv={muc.get(c.hoc_sinh_id) ?? 0} onMo={() => setMoId(c.id)} onDoiMuc={(kq) => vaMuc(c, kq)} deXuat={deXuat.get(c.id) ?? []} onThemMay={() => themDangMay(c)} />)}

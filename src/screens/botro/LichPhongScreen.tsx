@@ -80,7 +80,7 @@ export default function LichPhongScreen() {
     } catch (e: any) { setLoi(e?.message ?? String(e)); return false }
   }
   async function go(ca: CaBoTro, h: HsTrongCa) {
-    if (!confirm(`Gỡ ${h.ho_ten} (${LOAI_TEN[h.loai]} · ${h.don_vi} đv) khỏi ca ${hhmm(ca.gio_bat_dau)}? Em quay lại hàng chờ.`)) return
+    if (!confirm(`Gỡ ${h.ho_ten} (${LOAI_TEN[h.loai]} · ${h.don_vi} đv) khỏi ca ${hhmm(ca.gio_bat_dau)}? ${h.loai === 'yeu' ? 'Em MẤT lượt bổ trợ yếu tuần này (1 lần / em / tuần) — case đóng, không quay lại Cần xếp.' : 'Em quay lại hàng chờ.'}`)) return
     setLoi(null)
     try {
       await goKhoiCa(h.bhh_id, 'OPS gỡ ở Lịch phòng')
@@ -90,7 +90,7 @@ export default function LichPhongScreen() {
     } catch (e: any) { setLoi(e?.message ?? String(e)) }
   }
   async function huy(ca: CaBoTro) {
-    const ly = prompt(`Huỷ ca ${hhmm(ca.gio_bat_dau)}–${hhmm(ca.gio_ket_thuc)} · ${ca.nhan_su_ten ?? '?'}? ${ca.hs.length} em đã xếp sẽ quay lại hàng chờ.\nLý do:`, 'TA nghỉ')
+    const ly = prompt(`Huỷ ca ${hhmm(ca.gio_bat_dau)}–${hhmm(ca.gio_ket_thuc)} · ${ca.nhan_su_ten ?? '?'}? ${ca.hs.length} em đã xếp sẽ quay lại hàng chờ${ca.hs.some((x) => x.loai === 'yeu') ? ' — riêng em Yếu MẤT lượt tuần này (case đóng, không quay lại Cần xếp)' : ''}.\nLý do:`, 'TA nghỉ')
     if (ly === null) return
     setLoi(null)
     try {

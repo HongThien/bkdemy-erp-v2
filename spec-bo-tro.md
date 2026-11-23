@@ -89,11 +89,12 @@
 
 ```
 Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 buổi chờ học) → Em có mặt → Luyện → Đóng ca & sinh test → Test → Hoàn tất ca ⇒ case KẾT THÚC
-                                     ↑ ca không diễn ra / em vắng ⇒ buổi huỷ, case về Cần xếp
+                                     ↑ MỌI huỷ buổi (em vắng · PH từ chối · không diễn ra · trung tâm huỷ ca) ⇒ buổi huỷ, case ĐÓNG — KHÔNG về Cần xếp
 ```
 
 - Một case tối đa **một buổi chờ học** (trigger). "Đã xếp chưa bổ trợ" là trạng thái cứng — không xếp lại khi buổi còn sống (Thùy 20/09).
-- Ca đã xếp mà không diễn ra ⇒ tự huỷ buổi, case về Cần xếp (`fn_btyeu_don_ca_khong_dien_ra`). TA điểm danh nhầm ⇒ chạm lại để bỏ (`fn_btyeu_bo_diem_danh`).
+- **⭐ MỘT EM · MỘT LẦN XẾP / TUẦN (Thùy 23/11).** Mỗi tuần em chỉ có **một lượt xếp bổ trợ khối**, ở lượt chốt đầu tuần. **MỌI huỷ đều mất lượt** — em không đến (TA đánh vắng · qua ngày không điểm danh), PH từ chối (Lộc gỡ em), trung tâm huỷ ca (TA nghỉ), xoá lịch khối, OPS huỷ tay: buổi huỷ, **case đóng ngay** (`ket_qua = 'bo'`, ghi chú đóng bắt đầu "Ca huỷ —"), **không quay lại danh sách Cần xếp**, không xếp lại trong tuần. Tuần sau trưởng khối nhìn Dashboard và chốt lại nếu em còn yếu. Một nơi duy nhất: trigger `trg_btyeu_huy_buoi_dong_case` trên `buoi_hoc` (mig `202611231443`) — mọi đường huỷ đều đi qua `UPDATE buoi_hoc SET trang_thai='huy'`. Đơn vị ca vẫn được trả (ca mở lại cho em khác). TA điểm danh nhầm ⇒ chạm lại để bỏ (`fn_btyeu_bo_diem_danh`) ⇒ buổi mở lại thì trigger **mở lại đúng case** đã bị nó đóng. Ngoại lệ: kết thúc case có chủ ý (`_btyeu_ket_thuc_case` — lý do huỷ "Hết dạng yếu…") vẫn ghi `day_xong`. Trưởng khối vẫn duyệt lượt mới được bất kỳ ngày nào (§4.5) — luật này chỉ chặn **tự quay về Cần xếp**, không chặn quyết định của trưởng khối.
+- Sau giờ (L1) đã như vậy từ trước: vắng không bù, 1 lần / em / tuần (§7.2).
 
 **Ba cách một case kết thúc (cột `ket_qua`; 30 ngày tới 17/11, case khối):**
 
@@ -101,7 +102,7 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 |---|---|---|
 | `day_xong` | TA bấm **Hoàn tất ca** | 51 |
 | `het_han` | Case mở quá **14 ngày** mà không có ca đang học (Thùy 26/10) | 60 |
-| `bo` | Hạ L0 (hết yếu / dừng) · reset duyệt lại | 30 |
+| `bo` | Hạ L0 (hết yếu / dừng) · reset duyệt lại · **buổi bị huỷ — em không đến / PH từ chối / trung tâm huỷ ca (Thùy 23/11, ghi chú "Ca huỷ —…")** | 30 |
 
 **Luật kết luận đang có hiệu lực:**
 
@@ -137,6 +138,7 @@ Duyệt (mở / gộp case, đổ dạng) → Cần xếp → Đã xếp (1 bu�
 - Theo §3–§6. Dạng trong case có nguồn: `duyet` (lúc duyệt) · `tay` · `may` · `bao_dong`. Dạng bị xoá / gộp ở bản đồ ⇒ case tự đổi sang dạng nhận hoặc đóng dạng (`_btyeu_dong_bo_dang_ban_do`).
 - Hạn 14 ngày: `fn_btyeu_het_han_xu_ly` (§12 kỹ thuật 2).
 - Hiện (17/11): 54 case đang mở, 31 đã có buổi chờ học.
+- Huỷ buổi ⇒ case đóng, không về Cần xếp (§5, Thùy 23/11). Đo 23/11 trước khi áp: 14 case `dang_xu` (đều L2+) đã có buổi huỷ và không còn buổi sống — migration KHÔNG đụng dòng cũ; đóng chúng là việc riêng chờ Thùy.
 
 ### 7.2 Sau giờ (L1) — Thùy 11/11 → 16/11
 - **Hàng chờ** = em có đề xuất **mới nhất** là L1 đã duyệt **trong tuần này**, chưa có ca sau giờ tuần này (`fn_btnhe_cho`). **1 lần / em / tuần.** Vắng không bù. Không qua Lộc, không suất.

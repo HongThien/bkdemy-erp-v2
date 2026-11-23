@@ -235,7 +235,7 @@ export function CaDetail({ buoiId, onBack, nhe }: { buoiId: string; onBack: () =
             : hoiVang ? (
               <div className="flex flex-wrap items-center gap-2 text-[13px]">
                 <span className="text-slate-600">Đánh vắng và HUỶ buổi này?</span>
-                <button disabled={!!busy} onClick={() => chay('vang', async () => { await diemDanh(ca.buoi_hoc_hs_id, 'vang'); await huyBuoi(ca.buoi_id, nhe ? 'HS vắng ca Nhẹ — không bù' : 'HS vắng ca bổ trợ yếu') }, nhe ? 'Đã đánh vắng — ca Nhẹ không bù.' : 'Đã đánh vắng và huỷ buổi. OPS xếp lại ở màn Xếp bổ trợ yếu.')}
+                <button disabled={!!busy} onClick={() => chay('vang', async () => { await diemDanh(ca.buoi_hoc_hs_id, 'vang'); await huyBuoi(ca.buoi_id, nhe ? 'HS vắng ca Nhẹ — không bù' : 'HS vắng ca bổ trợ yếu') }, nhe ? 'Đã đánh vắng — ca Nhẹ không bù.' : 'Đã đánh vắng và huỷ buổi. Em mất lượt bổ trợ yếu tuần này — không xếp lại; tuần sau trưởng khối chốt lại.')}
                   className="rounded-lg bg-rose-600 px-3 py-1.5 font-semibold text-white disabled:opacity-50">Vắng · huỷ buổi</button>
                 <button onClick={() => setHoiVang(false)} className="rounded-lg px-3 py-1.5 text-slate-500">Thôi</button>
               </div>
