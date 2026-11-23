@@ -82261,3 +82261,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Chưa kiểm:** bấm đặt MT thật qua app · băng thông báo trên app học sinh và màn nhân sự (chưa có ca MT thật nào để nhìn) · tờ đã công bố có tự tính lại để hiện việc MT hay phải chờ lượt làm mới.
 - **Chờ Thùy:** buổi MT có còn BTVN trong Mục tiêu tuần không (đang giữ như buổi MT hiện nay: có).
 - `check:style-hs` đang RỚT ở `CaBoTroHS.tsx` (3 màu gõ tay > mốc 2) — có từ trước, không thuộc lượt này; `MucTieuTuanHS.tsx` tôi sửa thì qua. `check:kien-truc` vẫn ✗ K1 do 7 hàm của phiên khác.
+
+## 23/11 16:00 — Mục tiêu tuần: buổi Kiểm tra tháng không có việc BTVN (mig 202611231511 ĐÃ ÁP — Thùy "Không có BTVN")
+- `_mtt_tinh`, CTE `bt`: bỏ việc BTVN của buổi đã gán đề MT (`tai_lieu` loại `mt_buoi`) hoặc đã đặt MT ở Giáo trình tuần (`gtt_ca_mt`), TRỪ khi buổi đó có đề BTVN đã gán hoặc đã có dòng `btvn_ket_qua` (tôi tự thêm ngoại lệ này: từ 01/09 có 113 buổi MT, 3 buổi có đề BTVN, 2 buổi có kết quả — không giấu dữ liệu thật).
+- Thử (transaction, ROLLBACK), lớp 5A1 ca 24/11: buổi thường = ET + BTVN · đặt MT, hàm cũ = MT + BTVN · hàm mới = **MT**. Lớp không có MT trong tuần: tờ khớp từng byte trước–sau. Nhánh ngoại lệ "có đề BTVN thật" CHƯA thử được (không chèn nổi dòng `tai_lieu` giả vì thiếu cột bắt buộc).
+- Tuần đã chốt sổ không đổi; tờ tuần đang chạy đổi ở lượt tính lại kế tiếp (số "việc tổng" của em có buổi MT giảm 1).
