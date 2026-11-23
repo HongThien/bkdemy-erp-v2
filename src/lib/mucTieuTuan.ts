@@ -23,7 +23,10 @@ export type MttViec = {
   nhom: string[] | null; gio: string | null; phong: string | null
   them_sau?: boolean   // việc không có trong kế hoạch đã khoá lúc chốt (vd ca bổ trợ xếp thêm giữa tuần)
 }
+// Buổi KIỂM TRA THÁNG (MT) của tuần — đặt ở Giáo trình tuần (mig 202611231505); gắn vào tờ lúc đọc nên có cả khi tờ chưa công bố
+export type MttKiemTra = { ngay: string; lop: string }
 export type MttTo = {
+  kiem_tra?: MttKiemTra[]
   tuan: string; den_ngay: string; mon: string; chot: boolean
   ke_hoach_at?: string | null   // lúc khoá mục tiêu (bấm chốt lớp) — null = chưa khoá
   them_sau_chot?: { ma: string; ten: string; phan: 1 | 2 }[]   // nhóm xuất hiện SAU khi chốt (không vào mục tiêu tuần này)
@@ -35,7 +38,7 @@ export type MttTo = {
   tu_luyen: { so_cau: number; so_luot: number; pct: number | null; nhom: string[] }
   tinh_at: string; hang?: number | null; hang_truoc?: number | null; hang_doi?: number | null; so_hs?: number | null; so_tinh_at?: string | null; da_chot_so?: boolean
 }
-export type MttChuaChot = { chua_chot: true; tuan: string; mon: string }
+export type MttChuaChot = { chua_chot: true; tuan: string; mon: string; kiem_tra?: MttKiemTra[] }
 export type MttKetQua = MttTo | MttChuaChot | null
 export const laChuaChot = (x: MttKetQua): x is MttChuaChot => !!x && 'chua_chot' in x
 

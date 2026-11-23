@@ -276,6 +276,7 @@ function ToHsPanel({ hs, mon, tuan }: { hs: { id: string; ten: string }; mon: st
           <span className="text-[15px] font-bold text-slate-900">{hs.ten}{to?.hs.lop ? ` · ${to.hs.lop}` : ''}</span>
           {to && <span title={`Mục tiêu tuần ${ngayNgan(to.tuan)} – ${ngayNgan(to.den_ngay)} · ${mon}${to.ke_hoach_at ? ` · mục tiêu khoá lúc ${gioPhut(to.ke_hoach_at)} ${ngayNgan(to.ke_hoach_at.slice(0, 10))}` : ''}${to.da_chot_so ? ' · sổ đã chốt' : ''}`}
             className={`rounded px-1.5 py-0.5 text-[10.5px] font-bold ${to.chot ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>{to.chot ? 'Đã công bố' : 'Nháp'}</span>}
+          {to?.kiem_tra?.map((k) => <span key={k.ngay} title="Buổi này lớp làm bài kiểm tra tháng, không học bài mới (đặt ở Giáo trình tuần)" className="rounded bg-violet-100 px-1.5 py-0.5 text-[10.5px] font-bold text-violet-800">📝 Kiểm tra tháng · {thuNgay(k.ngay)}</span>)}
           {to && xem === 'tuan' && <span className="text-[12px] text-slate-600">
             Tiến độ <b>{so(to.tien_do, '%')}</b>{to.tien_do_d != null && ` (${to.tien_do_d >= 0 ? '▲' : '▼'}${Math.abs(to.tien_do_d)})`}
             {' · '}Việc <b>{to.viec_xong}/{to.viec_tong}</b>

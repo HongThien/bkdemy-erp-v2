@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  oCuaToi, manTuan, chonBuoi, datKhung, chuyen, ngayBuoi, thuHaiTuanSau, congNgay, ddmm, gio, THU, khungThanhChon,
+  oCuaToi, manTuan, chonBuoi, datKhung, datMt, chuyen, ngayBuoi, thuHaiTuanSau, congNgay, ddmm, gio, THU, khungThanhChon,
   type GttMan, type GttCa, type GttLop, type GttO, type GttGiaoTrinh, type GttHanhDong, type KhungHinh,
 } from '../../lib/giaoTrinhTuan'
 import { noiDung, loiDoc, type NdBuoi, type ChonBuoi } from '../../lib/tailieuBdm'
@@ -90,7 +90,7 @@ export default function GiaoTrinhTuan() {
   const caMo = lopMo ? lopMo.ca.find((c) => c.ngay === mo!.ngay) ?? null : null
   // đếm ô đang hiện (badge) — không phải số nghiệp vụ
   const caHien = (man?.lop ?? []).flatMap((l) => l.ca.filter((c) => !c.huy))
-  const soTrong = caHien.filter((c) => !c.buoi || c.buoi.khung.length === 0).length
+  const soTrong = caHien.filter((c) => !c.mt && (!c.buoi || c.buoi.khung.length === 0)).length   // ca Kiểm tra tháng coi như đã có nội dung
   const tt = man?.trang_thai?.hanh_dong ?? null
   const coGui = !!man?.sua && tt !== 'gui'
   const coDuyet = !!man?.duyet && tt === 'gui'
@@ -201,6 +201,19 @@ export default function GiaoTrinhTuan() {
 // Một ô ca trên lưới.
 function OCa({ ca, dangMo, onMo }: { ca: GttCa; dangMo: boolean; onMo: () => void }) {
   if (ca.huy) return <div className="h-[96px] truncate rounded-lg bg-slate-100 px-2 py-1.5 text-[11.5px] text-slate-400 line-through">{gio(ca.gio_bat_dau)} · ca huỷ</div>
+  // Ca KIỂM TRA THÁNG – MT (Thùy 23/11): lớp làm bài kiểm tra, không học ⇒ ô riêng, không có khung
+  if (ca.mt) return (
+    <button onClick={onMo} title="Buổi kiểm tra tháng — bấm để xem / đổi"
+      className={`block h-[96px] w-full overflow-hidden rounded-lg border px-2 py-1 text-left transition hover:shadow-sm ${dangMo ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-violet-300 bg-violet-50'}`}>
+      <div className="flex items-center gap-1 text-[10.5px] text-slate-500">
+        <span className="min-w-0 flex-1 truncate">{gio(ca.gio_bat_dau)}–{gio(ca.gio_ket_thuc)}{ca.phong ? ` · ${ca.phong}` : ''}</span>
+        {ca.sua_sau_duyet && <span title="Đã sửa sau khi trưởng bộ môn duyệt" className="shrink-0 rounded bg-amber-100 px-1 font-semibold text-amber-700">✎</span>}
+      </div>
+      <div className="mt-1 truncate text-[12.5px] font-bold text-violet-700">📝 Kiểm tra tháng</div>
+      <div className="truncate text-[11.5px] font-semibold text-violet-600">MT · không học bài mới</div>
+      <div className={`truncate text-[11px] ${ca.mt.co_de ? 'text-emerald-600' : 'text-slate-400'}`}>{ca.mt.co_de ? '✓ đã gán đề MT' : 'chưa gán đề MT'}</div>
+    </button>
+  )
   const b = ca.buoi
   const trong = !b || b.khung.length === 0
   return (
@@ -274,6 +287,21 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
             {ca.da_gan.khop === false ? 'Ngày dạy, GV đã gán một buổi KHÁC buổi kế hoạch.' : 'GV đã gán buổi cho lớp (ngày dạy). Sửa khung bây giờ không đổi bản đã gán.'}
           </p>}
 
+          {ca.mt && (
+            <section className="rounded-xl border border-violet-200 bg-violet-50 px-3 py-2.5">
+              <div className="text-[14.5px] font-bold text-violet-800">📝 Kiểm tra tháng – MT</div>
+              <p className="mt-0.5 text-violet-900">Buổi này lớp <b>làm bài kiểm tra tháng</b>, không học bài mới. Học sinh thấy thông báo này trong Mục tiêu tuần.</p>
+              <p className={`mt-1 text-[12.5px] ${ca.mt.co_de ? 'text-emerald-700' : 'text-slate-500'}`}>{ca.mt.co_de ? '✓ Lớp đã được gán đề MT cho ngày này.' : 'Chưa gán đề MT cho ngày này — đề gán ở Làm tài liệu › MT như thường lệ.'}</p>
+              {sua && <button disabled={busy} onClick={() => lam(() => datMt(lop.id, ca.ngay, false))} className="mt-2 rounded-lg px-3 py-1.5 text-rose-600 hover:bg-rose-100">Bỏ kiểm tra tháng</button>}
+            </section>
+          )}
+          {sua && !ca.mt && (
+            <button disabled={busy}
+              onClick={() => { if (!b || window.confirm(`Ca đang gắn ${tenBuoi(b.stt, b.tieu_de)}. Đặt là buổi Kiểm tra tháng thì buổi đó được gỡ khỏi ca (buổi vẫn còn trong giáo trình). Tiếp tục?`)) lam(() => datMt(lop.id, ca.ngay, true)) }}
+              className="w-full rounded-xl border border-dashed border-violet-300 bg-violet-50/60 px-3 py-2 text-left font-semibold text-violet-800 hover:bg-violet-100 disabled:opacity-50">
+              📝 Kiểm tra tháng – MT <span className="font-normal text-violet-700">· buổi này lớp làm bài kiểm tra, không học</span>
+            </button>
+          )}
           {b ? (
             <section className="rounded-xl border border-slate-200">
               <div className="border-b border-slate-100 px-3 py-2">
@@ -309,10 +337,11 @@ function KhungCa({ lop, ca, mon, khoi, sua, onDong, onVa, onBuilder }: {
                 {sua && <button disabled={busy} onClick={() => lam(() => chonBuoi(lop.id, ca.ngay, null))} className="rounded-lg px-3 py-1.5 text-rose-600 hover:bg-rose-50">Bỏ gắn</button>}
               </div>
             </section>
-          ) : !sua ? <p className="text-slate-500">Ca này chưa có khung.</p> : null}
+          ) : !sua && !ca.mt ? <p className="text-slate-500">Ca này chưa có khung.</p> : null}
 
           {sua && chonCoSan && (
             <section className="space-y-3">
+              {ca.mt && <p className="text-[12px] font-semibold uppercase tracking-wide text-slate-400">Hoặc đổi lại thành buổi học</p>}
               {lop.giao_trinh.length === 0 && <p className="rounded-lg bg-rose-50 px-3 py-2 text-rose-700">Lớp chưa có giáo trình (bản đồ mới). Tạo ở <b>Làm tài liệu › Giáo trình (bản đồ mới)</b> rồi quay lại.</p>}
               {[...lop.giao_trinh].sort((a, b) => thuTuNhanh(a.nhanh) - thuTuNhanh(b.nhanh)).map((g) => (   // chỉ sắp để hiện: nhánh chính (Đại) trước, Hình sau
                 <ChonBuoiCuaGt key={g.id} gt={g} mon={mon} lop={lop} ca={ca} busy={busy}

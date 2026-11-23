@@ -13,6 +13,8 @@ export type GttBuoi = {
 export type GttCa = {
   lop_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; huy: boolean
   buoi: GttBuoi | null
+  // 23/11 (mig 202611231505): ca KIỂM TRA THÁNG – MT (lớp làm bài kiểm tra, không học) — không gắn buổi; co_de = lớp đã được gán đề MT cho đúng ngày đó
+  mt: { co_de: boolean; dat_at: string } | null
   da_gan: { tai_lieu_id: string; khop: boolean } | null   // đã gán buổi cho lớp ngày dạy (bản chép) — khớp buổi đã lên kế hoạch không
   sua_sau_duyet: boolean
 }
@@ -47,6 +49,12 @@ export async function manTuan(mon: string, khoi: string, tuan: string): Promise<
 /** Gắn ca với buổi có sẵn của giáo trình lớp (null = bỏ gắn). Trả ca để vá tại chỗ. */
 export async function chonBuoi(lopId: string, ngay: string, buoiId: string | null): Promise<GttCa> {
   const { data, error } = await supabase.rpc('fn_gtt_chon_buoi', { p_lop: lopId, p_ngay: ngay, p_buoi: buoiId })
+  if (error) throw error
+  return data as GttCa
+}
+/** Đặt / bỏ "Kiểm tra tháng – MT" cho một ca (đặt thì buổi đang gắn tự gỡ). Trả ca để vá tại chỗ. */
+export async function datMt(lopId: string, ngay: string, bat: boolean): Promise<GttCa> {
+  const { data, error } = await supabase.rpc('fn_gtt_dat_mt', { p_lop: lopId, p_ngay: ngay, p_bat: bat })
   if (error) throw error
   return data as GttCa
 }

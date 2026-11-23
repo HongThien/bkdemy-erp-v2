@@ -135,6 +135,15 @@ Builder giáo trình CỦA LỚP ───────────────�
 | `_gtt_ca` · `_gtt_khung` · `_gtt_khung_khoa` · `_gtt_ca_json` · `_gtt_snap` · `_gtt_ke_tiep` · `_gtt_kiem_ca` · `_gtt_kiem_pham_vi` · `_gtt_la_tbm` · `_gtt_trang_thai` · `_gtt_snap_duyet` | nội bộ |
 | Trigger | `gtt_ca_kiem_trg` · `gtt_ca_ghi_vet_trg` · `trg_gtt_theo_ngay_day` (trên `tai_lieu`) |
 
+### 3.6b Ca "Kiểm tra tháng – MT" (Thùy 23/11; mig `202611231505`)
+
+- Trong khung một ca có thêm lựa chọn **📝 Kiểm tra tháng – MT**: buổi đó lớp **làm bài kiểm tra tháng, không học bài mới**. Ô trên lưới hiện riêng (tím): "Kiểm tra tháng · MT · không học bài mới" + "✓ đã gán đề MT / chưa gán đề MT".
+- **Một ca chỉ là MỘT trong hai:** gắn buổi học (`gtt_ca`) hoặc kiểm tra tháng (`gtt_ca_mt`, khoá `(lop_id, ngay)`). Đặt MT ⇒ buổi đang gắn tự gỡ khỏi ca (buổi vẫn còn trong giáo trình, "buổi kế tiếp" tự lùi lại); gắn buổi học cho ca MT (trên màn, hoặc GV gán buổi thật ngày dạy) ⇒ dấu MT tự gỡ. Hai chiều do trigger DB lo; vết ở `gtt_ca_log.viec` = `mt_dat` / `mt_bo`.
+- Ai đặt được: như sửa khung (`fn_gtt_dat_mt`, cổng `_gtt_kiem_ca` — lớp trong phạm vi, ca còn trong TKB, chưa huỷ, chưa qua). Ca MT **tính là đã có nội dung** ("còn x/y ca chưa có khung" không đếm nó); bản chụp lúc duyệt ghi `{mt: true}` ⇒ đặt / bỏ MT sau duyệt hiện cờ "sửa sau duyệt".
+- Đây là **KẾ HOẠCH**. Đề MT thật vẫn gán bằng luồng MT sẵn có (`tai_lieu` loại `mt_buoi`); việc chấm của nhân sự (chỉ còn "Chấm MT") vẫn bật theo đề thật như cũ — đặt MT ở đây KHÔNG tự tạo đề.
+- **Báo trong Mục tiêu tuần:** (1) tờ tuần của em có băng **"📝 Kiểm tra tháng (MT) — Thứ …"** ngay đầu, hiện cả khi mục tiêu tuần chưa công bố (gắn lúc đọc: `fn_mtt_cua_toi` / `fn_mtt_hs` → khoá `kiem_tra`); màn nhân sự hiện thẻ tím cạnh tên em. (2) Trong "Việc của con", việc của buổi đó là **MT** thay ET ngay từ lúc đặt (`_mtt_tinh`: thêm điều kiện ca đã đặt MT) — có trên tờ ở lượt tính lại kế tiếp.
+- *Chưa quyết (đang giữ như buổi MT hiện nay):* buổi MT vẫn sinh việc **BTVN** trong Mục tiêu tuần; nhóm bài của buổi MT không vào mục tiêu học (ca không gắn buổi nên không có nhóm).
+
 ### 3.7 Nối với Mục tiêu tuần
 
 - `_mtt_tinh` thấy **ca chiếu từ TKB** (`_gtt_ca`, từ hôm nay — buổi tương lai chưa có dòng `buoi_hoc`) ⇒ thấy đủ buổi của tuần ngay thứ Hai (mig `1754`). Buổi thuộc tuần theo luật §4.2 (buổi kế rơi vào tuần — mig `1800`, tối 17/11); ca chiếu thuộc tuần cũng thành việc "sắp tới".

@@ -79,6 +79,13 @@ export default function MucTieuTuanHS({ mon, onBack, onMo }: { mon: string; onBa
       {loi && <TrongHS>Không tải được mục tiêu tuần. {loi}</TrongHS>}
       {kq === undefined && !loi && <TrongHS>Đang tải…</TrongHS>}
       {kq === null && <TrongHS>Em chưa có lớp môn {mon} trong tuần này.</TrongHS>}
+      {/* Thùy 23/11: tuần có buổi KIỂM TRA THÁNG (đặt ở Giáo trình tuần) ⇒ báo ngay đầu tờ, kể cả khi mục tiêu tuần chưa công bố */}
+      {kq && (kq.kiem_tra ?? []).map((k) => (
+        <div key={k.ngay} className="px-4 py-3" style={{ background: NEN.canhBao, borderRadius: 'var(--sk-radius)', color: MAU.ink }}>
+          <p className="text-[15.5px] font-bold" style={HEAD}>📝 Kiểm tra tháng (MT) — {thuNgay(k.ngay)}</p>
+          <p className="mt-0.5 text-[13.5px]">Buổi này lớp {k.lop} làm bài kiểm tra tháng, không học bài mới. Em ôn lại các nhóm bài trong mục tiêu trước buổi kiểm tra.</p>
+        </div>
+      ))}
       {kq && laChuaChot(kq) && (
         <TheHS className="px-5 py-6 text-center">
           <p className="text-[18px] font-bold" style={{ ...HEAD, color: MAU.ink }}>Thầy cô đang soạn mục tiêu tuần</p>

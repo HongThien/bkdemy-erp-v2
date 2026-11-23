@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-610 bảng · 42 view · 0 enum · 477 trigger · 2058 function
+611 bảng · 42 view · 0 enum · 479 trigger · 2062 function
 
 ## _app_secrets
 
@@ -2883,6 +2883,17 @@ END |  |  |
 | buoi_moi | uuid | Y |  |  |  |
 | nhan_su_id | uuid | Y |  |  |  |
 | at | timestamp with time zone |  | now() |  |  |
+| viec | text | Y |  |  | `mt_dat` · `mt_bo` |
+
+## gtt_ca_mt
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| lop_id | uuid |  |  | PK FK→lop.id |  |
+| ngay | date |  |  | PK |  |
+| mon | text |  |  |  |  |
+| dat_boi | uuid | Y |  | FK→nhan_su.id |  |
+| dat_at | timestamp with time zone |  | now() |  |  |
 
 ## gtt_duyet
 
@@ -5018,7 +5029,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→thanh_tuu.mon |  |
+| mon | text |  |  | PK FK→huy_hieu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -11447,8 +11458,10 @@ WITH luot AS (
 | gay_ledger | trg_log_gay_ledger | AFTER | INSERT/UPDATE | log_gay_ledger |
 | giai_thuong | trg_giai_thuong_check_slot | BEFORE | INSERT | giai_thuong_check_slot |
 | giai_thuong_xs_khoi | trg_giai_thuong_xs_khoi_log | AFTER | INSERT/DELETE/UPDATE | _giai_thuong_xs_khoi_log_tg |
+| gtt_ca | gtt_ca_bo_mt_trg | AFTER | INSERT | _gtt_ca_bo_mt_trg |
 | gtt_ca | gtt_ca_ghi_vet_trg | AFTER | INSERT/DELETE/UPDATE | _gtt_ca_ghi_vet |
 | gtt_ca | gtt_ca_kiem_trg | BEFORE | INSERT/UPDATE | _gtt_ca_kiem |
+| gtt_ca_mt | gtt_ca_mt_trg | BEFORE | INSERT/DELETE | _gtt_ca_mt_trg |
 | han_nop_ngoai_le | tg_han_nop_ngoai_le_log | AFTER | INSERT/DELETE/UPDATE | trg_han_nop_ngoai_le_log |
 | he_thong_cong_tac | trg_he_thong_cong_tac_log | AFTER | INSERT/UPDATE | _he_thong_cong_tac_ghi_log |
 | he_thong_cong_tac | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
@@ -11980,9 +11993,11 @@ WITH luot AS (
 - `_giai_thuong_xs_khoi_log_tg()` → trigger
 - `_giai_xu(p_khoi text)` → integer
 - `_gtt_ca(p_lops uuid[], p_tu date, p_den date)` → TABLE(lop_id uuid, ngay date, gio_bat_dau time without time zone, gio_ket_thuc time without time zone, phong text, buoi_hoc_id uuid, huy boolean)
+- `_gtt_ca_bo_mt_trg()` → trigger
 - `_gtt_ca_ghi_vet()` → trigger
 - `_gtt_ca_json(p_lop uuid, p_ngay date, p_snap jsonb)` → jsonb
 - `_gtt_ca_kiem()` → trigger
+- `_gtt_ca_mt_trg()` → trigger
 - `_gtt_de_xuat_tre(p_tuan date)` → integer
 - `_gtt_gay_tre_chay()` → integer
 - `_gtt_han(p_tuan date, OUT dien timestamp with time zone, OUT duyet timestamp with time zone)` → record
@@ -12179,6 +12194,7 @@ WITH luot AS (
 - `_mtt_ha_muc(p_muc text)` → text
 - `_mtt_hom_nay()` → date
 - `_mtt_kem_hang(p_payload jsonb, p_hang integer, p_hang_truoc integer, p_so integer, p_tinh_at timestamp with time zone)` → jsonb
+- `_mtt_kem_kiem_tra(p_to jsonb, p_hs uuid, p_mon text, p_tuan date)` → jsonb
 - `_mtt_kiem_cong_bo(p_lop uuid, p_tuan date)` → void
 - `_mtt_lam_moi(p_giay integer DEFAULT 40)` → jsonb
 - `_mtt_moc(p_ngay date)` → timestamp with time zone
@@ -12974,6 +12990,7 @@ WITH luot AS (
 - `fn_gtt_chon_buoi(p_lop uuid, p_ngay date, p_buoi uuid)` → jsonb
 - `fn_gtt_chuyen(p_mon text, p_khoi text, p_tuan date, p_hanh_dong text, p_ghi_chu text DEFAULT NULL::text)` → jsonb
 - `fn_gtt_dat_khung(p_lop uuid, p_ngay date, p_chon jsonb, p_tai_lieu uuid DEFAULT NULL::uuid)` → jsonb
+- `fn_gtt_dat_mt(p_lop uuid, p_ngay date, p_bat boolean)` → jsonb
 - `fn_gtt_man_tuan(p_mon text, p_khoi text, p_tuan date)` → jsonb
 - `fn_gtt_ngay_buoi(p_tai_lieu uuid)` → TABLE(buoi_id uuid, lop_id uuid, ngay date)
 - `fn_gv_dashboard(p_ym text)` → jsonb
