@@ -7,7 +7,7 @@ import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import {
-  PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
+  PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, phienTamDung, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
   listGhi, getBot, getPhien, listAnhThu, getAnhDu,
   type AnhGui, type AnhThu, type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
   listTep, getTep, type TepGui, type TepTin,
@@ -404,7 +404,23 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   )
 }
 
+// 23/11 Thùy: "báo khi trưởng khối bấm Claude : Chức năng này tạm dừng" — hỏi DB một lần (fn_phien_tam_dung); rào thật ở DB (_phien_kiem_khoa).
 export default function PhienClaudeTab() {
+  const [tamDung, setTamDung] = useState<boolean | null>(null)
+  useEffect(() => { phienTamDung().then(setTamDung).catch(() => setTamDung(false)) }, [])
+  if (tamDung === null) return <div className="p-6 text-sm text-slate-400">Đang tải…</div>
+  if (tamDung) return (
+    <div className="flex min-h-[300px] items-center justify-center">
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 px-8 py-6 text-center">
+        <div className="text-3xl">⏸️</div>
+        <div className="mt-2 text-base font-semibold text-amber-800">Chức năng này tạm dừng</div>
+      </div>
+    </div>
+  )
+  return <PhienClaudeTabChinh />
+}
+
+function PhienClaudeTabChinh() {
   const [ds, setDs] = useState<PhienItem[] | null>(NHO.ds)
   const [chon, setChon] = useState<string | null>(NHO.chon)
   const [taoMoi, setTaoMoi] = useState(false)

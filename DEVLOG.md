@@ -82345,3 +82345,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 23/11 (tiếp 4) — [Hình–Học K8] Duyệt 6 bài chuyên đề mới HH00183–188 (Thùy "Mày duyệt luôn")
 - `scripts/kho/hh-k8-duyet-6-chuyen-de-moi.mjs` (chạy thử ROLLBACK rồi `--ghi`): `da_duyet=true`, `duyet_at=now()`, **`duyet_boi=NULL`** (Claude duyệt theo lệnh Thùy — không ghi tên người). Đọc lại: 6/6 đã duyệt. Muốn đổi người duyệt: bấm bỏ duyệt rồi duyệt lại trên app.
+
+- 23/11 (tiếp): màn 🤖 Phiên Claude hiện "Chức năng này tạm dừng" khi khoá (Thùy). Mig 202611231704 (ĐÃ ÁP) `fn_phien_tam_dung()` — đo: TK Ngọc ⇒ true, Thùy ⇒ false; anon không gọi được. Màn hỏi một lần lúc mở, true thì chỉ hiện câu báo. Chưa mở trên app bằng tài khoản TK thật.

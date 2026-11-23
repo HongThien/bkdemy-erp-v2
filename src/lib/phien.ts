@@ -86,6 +86,13 @@ export async function getPhamVi(): Promise<PhienPhamVi[]> {
   return (data ?? []) as PhienPhamVi[]
 }
 
+// 23/11: true = phiên Claude đang tạm dừng với người xem (trưởng khối khi công tắc tắt)
+export async function phienTamDung(): Promise<boolean> {
+  const { data, error } = await supabase.rpc('fn_phien_tam_dung')
+  if (error) throw error
+  return data === true
+}
+
 export async function listPhien(): Promise<PhienItem[]> {
   const { data, error } = await supabase.rpc('fn_phien_ds', { p_gioi_han: 100 })
   if (error) throw error
