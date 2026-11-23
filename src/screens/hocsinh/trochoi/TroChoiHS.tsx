@@ -94,7 +94,11 @@ export function GameNongTraiHS({ onBack, hoTen }: { onBack: () => void; hoTen?: 
       } else if (d.loai === 'rpc' && typeof d.id === 'number' && typeof d.ten === 'string') {
         // bạn lớp thật: game xin gọi hàm server (danh sách trắng ở ntRpc)
         const id = d.id
-        void ntRpc(d.ten, d.tham ?? {}).then((kq) => noi({ loai: 'rpc', id, kq })).catch(() => noi({ loai: 'rpc', id, kq: { ok: false, loi: 'mang' } }))
+        void ntRpc(d.ten, d.tham ?? {}).then((kq) => noi({ loai: 'rpc', id, kq })).catch((e: unknown) => {
+          // trước đây nuốt hết lỗi thành 'mang' ⇒ không phân biệt được mất mạng / hết phiên / hàm server nổ. Kèm mã ngắn để bảng bạn bè hiện ra.
+          const m = e as { code?: string; message?: string; status?: number } | null
+          noi({ loai: 'rpc', id, kq: { ok: false, loi: `mang:${String(m?.code ?? m?.status ?? m?.message ?? '').slice(0, 32)}` } })
+        })
       } else if (d.loai === 'xu' && typeof d.k === 'number' && typeof d.ra === 'number') {
         // game báo xu đã đổi trong tháng (tích luỹ): lưu bản mới nhất trước, rồi server cắt theo ngày chơi + trần tháng và ghi VÍ XU THẬT
         const k = d.k, ra = d.ra

@@ -13,6 +13,20 @@ const DEV_ACCOUNTS: { ten: string; email: string; pw: string }[] = import.meta.e
 // HS đăng nhập bằng mã HS + PIN → email tổng hợp <ma_hs>@hs.bkdemy.local (mig 0063).
 const HS_DOMAIN = 'hs.bkdemy.local'
 
+type LoiAuth = { status?: number; code?: string; message?: string; name?: string }
+// Sai mã/mật khẩu thật (Supabase trả 400 invalid_credentials) — KHÁC với bị giới hạn lượt, mất mạng, máy chủ lỗi.
+const saiThongTin = (e: LoiAuth) => e.code === 'invalid_credentials' || (e.status === 400 && /invalid login credentials/i.test(e.message ?? ''))
+// Trước đây MỌI lỗi đều hiện "Sai mã học sinh hoặc mã PIN" ⇒ cả lớp dùng chung wifi bị giới hạn lượt (429) hoặc mất mạng cũng bị gọi là sai pass.
+function moTaLoi(e: LoiAuth, mode: 'staff' | 'hs'): string {
+  if (e.status === 429 || e.code === 'over_request_rate_limit' || /rate limit|too many/i.test(e.message ?? ''))
+    return 'Có quá nhiều bạn đăng nhập cùng lúc (cùng mạng wifi). Đợi khoảng 1–2 phút rồi thử lại, đừng bấm liên tục nhé.'
+  if (e.name === 'AuthRetryableFetchError' || e.status === 0 || /failed to fetch|network|load failed/i.test(e.message ?? ''))
+    return 'Không kết nối được máy chủ — kiểm tra mạng rồi thử lại.'
+  if (e.status && e.status >= 500) return `Máy chủ đang lỗi (${e.status}) — thử lại sau ít phút, báo thầy cô nếu vẫn bị.`
+  if (saiThongTin(e) || mode === 'staff') return mode === 'hs' ? 'Sai mã học sinh hoặc mật khẩu. Chưa tự đổi mật khẩu thì mật khẩu chính là mã học sinh của em (viết hoa, ví dụ HS0224).' : e.message ?? 'Đăng nhập không được.'
+  return `Đăng nhập chưa được (${e.code ?? e.status ?? 'lỗi lạ'}) — chụp màn hình gửi thầy cô.`
+}
+
 // hsOnly = true khi chạy trong bundle riêng hs.bkacademy.edu.vn (main-hs.tsx) — ẩn hẳn tab
 // "Nhân sự" (HS không cần thấy, và bundle đó vốn không import gì thuộc màn staff).
 // staffOnly = true cho bundle app OPS (main-ops.tsx) — ẩn tab "Học sinh" (đối xứng hsOnly);
@@ -29,8 +43,23 @@ export default function Login({ hsOnly = false, staffOnly = false, title, subtit
     e.preventDefault()
     setBusy(true); setErr(null)
     const em = mode === 'hs' ? `${maHS.trim().toLowerCase()}@${HS_DOMAIN}` : email.trim()
-    const { error } = await supabase.auth.signInWithPassword({ email: em, password: pw })
-    if (error) { setErr(mode === 'hs' ? 'Sai mã học sinh hoặc mã PIN.' : error.message); setBusy(false) }
+    let { error } = await supabase.auth.signInWithPassword({ email: em, password: pw })
+    // HS: mật khẩu mặc định = CHÍNH mã HS viết hoa (provision_hs_auth), mà ô mã HS tự hiện chữ hoa còn ô mật khẩu thì không
+    // ⇒ em gõ "hs0224" bị từ chối dù trông đúng. Chỉ khi sai thông tin mới thử lại: (1) bỏ khoảng trắng thừa (bàn phím điện thoại hay chèn),
+    // (2) mật khẩu trùng mã HS (không phân biệt hoa/thường) ⇒ thử đúng dạng mã HS viết hoa. Không nới lỏng gì với mật khẩu riêng.
+    if (error && mode === 'hs' && saiThongTin(error)) {
+      const thu: string[] = []
+      const gon = pw.trim()
+      if (gon !== pw) thu.push(gon)
+      const ma = maHS.trim().toUpperCase()
+      if (ma && gon.toLowerCase() === ma.toLowerCase() && gon !== ma) thu.push(ma)
+      for (const p of thu) {
+        const r = await supabase.auth.signInWithPassword({ email: em, password: p })
+        error = r.error
+        if (!error || !saiThongTin(error)) break
+      }
+    }
+    if (error) { setErr(moTaLoi(error, mode)); setBusy(false) }
     // thành công → onAuthStateChange ở App tự cập nhật
   }
 
@@ -69,14 +98,14 @@ export default function Login({ hsOnly = false, staffOnly = false, title, subtit
             <input value={maHS} onChange={(e) => setMaHS(e.target.value)} placeholder="HS0001" className={`${inp} mb-3.5 uppercase`} autoFocus autoComplete="username" />
           </>
         )}
-        <label className="mb-1 block text-[12px] font-semibold uppercase tracking-wide text-slate-500">{mode === 'hs' ? 'Mã PIN' : 'Mật khẩu'}</label>
+        <label className="mb-1 block text-[12px] font-semibold uppercase tracking-wide text-slate-500">{mode === 'hs' ? 'Mật khẩu' : 'Mật khẩu'}</label>
         <input type="password" value={pw} onChange={(e) => setPw(e.target.value)} className={`${inp} mb-4`} autoComplete="current-password" />
         {err && <p className="mb-3 text-xs text-rose-600">{err}</p>}
         <button type="submit" disabled={busy || (mode === 'staff' ? !email.trim() : !maHS.trim()) || !pw}
           className="w-full rounded-md bg-indigo-600 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-500 disabled:opacity-40">
           {busy ? 'Đang đăng nhập…' : 'Đăng nhập'}
         </button>
-        <p className="mt-4 text-center text-[11px] text-slate-400">{mode === 'hs' ? 'Mã học sinh + PIN do trung tâm cấp.' : 'Tài khoản do quản trị cấp (Supabase Dashboard).'}</p>
+        <p className="mt-4 text-center text-[11px] text-slate-400">{mode === 'hs' ? 'Chưa đổi mật khẩu thì mật khẩu là mã học sinh của em (viết hoa).' : 'Tài khoản do quản trị cấp (Supabase Dashboard).'}</p>
 
         {DEV_ACCOUNTS.length > 0 && (
           <div className="mt-5 border-t border-dashed border-slate-200 pt-4">

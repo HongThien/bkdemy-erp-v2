@@ -519,18 +519,18 @@ function dsBan() {
   const that = E.BAN_THAT.ds.map((b, i) => ({ k: E.BAN_THAT_K0 + i, ten: b.ten, cap: b.cap, giup: b.giup || 0, hai: b.hai || 0, ao: false }));
   return that.concat(NV.hdBuoc(s) ? ao : []);
 }
-let banDangNap = false;
+let banDangNap = false, banLoi = null, banDaNap = false;   // banLoi: lỗi lần nạp gần nhất (null = ổn) — để phân biệt 'chưa tải được' với 'chưa có bạn nào mở'
 // làm mới danh sách bạn + lượt còn lại từ server (nền, không xoá danh sách đang hiện)
 async function napBan() {
   if (!dht() || banDangNap) return; banDangNap = true;
   try {
     const r = await NT_CAU.rpc('ban_ds');
     if (r && Array.isArray(r.ban)) {
-      E.datBanThatDs(r); E.lamMoi(s);
+      E.datBanThatDs(r); E.lamMoi(s); banLoi = null; banDaNap = true;
       if (typeof r.con_giup === 'number') s.hom.giup = Math.max(0, L.giup - r.con_giup);
       if (typeof r.con_trom === 'number') s.hom.trom = Math.max(0, L.trom - r.con_trom);
       if (bangMo) veBang(true);
-    }
+    } else { banLoi = (r && r.loi) || 'mang'; if (bangMo) veBang(true); }   // 15/11→23/11: trước đây lỗi nạp bị nuốt ⇒ bảng báo nhầm 'chưa có bạn nào mở nông trại'
   } finally { banDangNap = false; }
 }
 // việc bạn đã làm lên vườn MÌNH (tưới hộ, bắt sâu, hái, chó đuổi) ⇒ gộp vào vườn + hộp thư
@@ -547,10 +547,10 @@ function moBanBe() { moBang('Bạn cùng lớp', veBanBe); void napBan(); }
 function veBanBe() {
   E.lamMoi(s);
   const ds = dsBan().map(b => ({ B: b, k: b.k, t: { giup: b.giup, hai: b.hai } }));
-  const key = JSON.stringify(ds.map(x => [x.k, x.t])) + s.hom.giup + s.hom.trom;
+  const key = JSON.stringify(ds.map(x => [x.k, x.t])) + s.hom.giup + s.hom.trom + '|' + banLoi + banDaNap;
   const html = `<p class="nho" style="margin-top:0">Hôm nay còn <b>${L.giup - s.hom.giup}</b> lượt giúp · <b>${L.trom - s.hom.trom}</b> lượt hái. Chỉ hái được cây chín từ hôm trước mà bạn chưa hái — mỗi ô 1–2 quả.</p>`
     + ds.map(x => `<div class="banThe"><div class="banMat">${x.B.ten[0]}</div><div class="giua"><b>${x.B.ten}</b> <span class="nho">cấp ${x.B.cap}${x.B.ao ? ' · bạn tập' : ''}</span><div class="nho">${[x.t.giup ? '🤝 ' + x.t.giup + ' ô cần giúp' : '', x.t.hai ? '🧺 ' + x.t.hai + ' ô hái được' : ''].filter(Boolean).join(' · ') || 'Vườn gọn gàng'}</div></div><button class="nut vang" data-k="${x.k}">Sang chơi</button></div>`).join('')
-    + (dht() ? (ds.some(x => !x.B.ao) ? '' : '<p class="nho">Chưa có bạn cùng lớp nào mở nông trại — rủ các bạn chơi nhé!</p>') : '<p class="nho">Bản thử: 6 bạn ảo. Bản online: bạn cùng lớp thật.</p>');
+    + (dht() ? (ds.some(x => !x.B.ao) ? '' : banLoi ? '<p class="nho">⚠ Chưa tải được danh sách bạn (' + banLoi + '). Mạng chậm hoặc máy chủ bận — đóng bảng này rồi mở lại để thử lại nhé.</p>' : !banDaNap ? '<p class="nho">Đang tải danh sách bạn…</p>' : '<p class="nho">Chưa có bạn cùng lớp nào mở nông trại — rủ các bạn chơi nhé!</p>') : '<p class="nho">Bản thử: 6 bạn ảo. Bản online: bạn cùng lớp thật.</p>');
   return { key, html, gan: el => el.querySelectorAll('[data-k]').forEach(b => b.onclick = () => sangBan(+b.dataset.k)) };
 }
 async function sangBan(k) {
