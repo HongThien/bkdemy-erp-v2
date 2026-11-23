@@ -22,7 +22,7 @@ type Dl = {
   top_phien: { phien_id: string; tieu_de: string; ten: string; mon: string; khoi: string; loai: string; luot: number; usd: number }[]
 }
 
-const KENH: Record<string, string> = { phien: '🤖 Phiên Claude', tro_ly: '💬 Trợ lý', hoi_dap: '❓ Hỏi đáp nhân sự', danh_gia: '📝 Đánh giá AI', cham_btvn: '✍️ Chấm BTVN bằng máy' }
+const KENH: Record<string, string> = { phien: '🤖 Phiên Claude', tro_ly: '💬 Trợ lý', hoi_dap: '❓ Hỏi đáp nhân sự', danh_gia: '📝 Đánh giá AI', cham_btvn: '✍️ Chấm BTVN bằng máy', claude_code: '💻 Claude Code (Thùy)' }
 const LOAI_PHIEN: Record<string, string> = { ban_do: 'Bản đồ', ly_thuyet: 'Lý thuyết dạng', nhap_kho: 'Nhập kho & phân dạng', bao_sai: 'Câu báo sai', giai_bai: 'Giải bài từ ảnh' }
 
 // Ngày theo giờ máy (VN), không dùng toISOString (CLAUDE §2 Timezone)
@@ -81,7 +81,7 @@ export default function ChiPhiAi() {
           {/* Ô số */}
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <O nhan="Tổng chi phí quy đổi" so={dong(dl.tong.usd)} phu={`$${dl.tong.usd.toFixed(2)} · ${dl.tong.luot} lượt · ${dl.tong.so_nguoi} người`} />
-            <O nhan="Gói thuê bao (giá trị tương đương)" so={dong(dl.tong.usd_thue_bao)} phu="Phiên Claude trên máy Thùy — không trả theo token" />
+            <O nhan="Gói thuê bao (giá trị tương đương)" so={dong(dl.tong.usd_thue_bao)} phu="Phiên Claude + Claude Code của Thùy — không trả theo token" />
             <O nhan="Trả theo token thật (API)" so={dong(dl.tong.usd_tra_that)} phu="Trợ lý · hỏi đáp · đánh giá · chấm BTVN" />
             <O nhan="Token" so={soNgan(dl.tong.vao + dl.tong.ghi + dl.tong.doc + dl.tong.ra)}
                phu={`đọc lại ${soNgan(dl.tong.doc)} · ghi đệm ${soNgan(dl.tong.ghi)} · vào ${soNgan(dl.tong.vao)} · viết ra ${soNgan(dl.tong.ra)}`} />

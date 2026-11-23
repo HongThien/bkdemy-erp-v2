@@ -462,6 +462,14 @@ if (ONCE) {
   process.exit(0)
 }
 setInterval(() => heartbeat(), HEARTBEAT_MS)
+// 23/11 (Thùy — bộ đếm token): MỖI NGÀY MỘT LẦN (Thùy: "Mỗi ngày 1 lần là dc") đẩy token Claude Code của MÁY NÀY vào sổ chi phí AI (scripts/ai/nhap-claude-code.mjs; upsert, không đếm trùng).
+const nhapClaudeCode = () => {
+  const ch = spawn(process.execPath, [join(root, 'scripts', 'ai', 'nhap-claude-code.mjs')], { cwd: root, windowsHide: true })
+  let o = ''; ch.stdout.on('data', (d) => { o += d }); ch.stderr.on('data', (d) => { o += d })
+  ch.on('close', () => log('token Claude Code:', o.trim().slice(0, 200)))
+}
+nhapClaudeCode()
+setInterval(nhapClaudeCode, 24 * 3600_000)
 // 11/11 (audit timeout): nhặt mồ côi chỉ cần mỗi 5 phút — ngưỡng mồ côi là TIMEOUT + 5 phút (≥ 10 phút), quét 60 s là thừa.
 let lanQuet = 0
 setInterval(async () => { if (lanQuet++ % 5 === 0) await nhatMoCoi(); await quet() }, POLL_MS)

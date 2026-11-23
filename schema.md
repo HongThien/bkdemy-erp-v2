@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-616 bảng · 42 view · 0 enum · 520 trigger · 2085 function
+616 bảng · 42 view · 0 enum · 520 trigger · 2086 function
 
 ## _app_secrets
 
@@ -63,7 +63,7 @@
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | id | bigint |  |  | PK |  |
-| kenh | text |  |  |  | `phien` · `tro_ly` · `hoi_dap` · `danh_gia` · `cham_btvn` |
+| kenh | text |  |  |  | `phien` · `tro_ly` · `hoi_dap` · `danh_gia` · `cham_btvn` · `claude_code` |
 | nguon_id | text |  |  |  |  |
 | at | timestamp with time zone |  |  |  |  |
 | nhan_su_id | uuid | Y |  | FK→nhan_su.id |  |
@@ -7003,7 +7003,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -12727,6 +12727,7 @@ WITH luot AS (
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
 - `fn_ai_chi_phi(p_tu date, p_den date)` → jsonb
+- `fn_ai_nhap_claude_code(p_ns uuid, p_ds jsonb)` → jsonb
 - `fn_ban_be_cua_toi()` → jsonb
 - `fn_ban_be_goi_y(p_tim text)` → jsonb
 - `fn_ban_be_gui(p_hs uuid)` → text
