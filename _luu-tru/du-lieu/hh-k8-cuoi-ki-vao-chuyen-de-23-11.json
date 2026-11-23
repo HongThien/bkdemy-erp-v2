@@ -738,5 +738,11 @@
   "tu": "HH08000000",
   "den": "HH00188",
   "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015574",
+  "tu": "HH08000000",
+  "den": "HH00176",
+  "rut_cu": true
  }
 ]

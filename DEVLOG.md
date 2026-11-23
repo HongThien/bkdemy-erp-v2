@@ -82362,3 +82362,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ### 23/11 — Nhóm bài: một hình đại diện
 - **Làm:** màn Chuỗi bỏ ô hình của từng thành viên trong khung nhóm bài; cả nhóm dùng MỘT hình = hình giả thiết đầu ra (đã kiểm MH.126: đủ phân giác, BA=BE, DE⊥BC; hình thành viên chỉ là bản thiếu). Khối thành viên thu từ cao 242 → 180. `xepGiaThiet` (`laTV`) + `CayNhanh.tsx`. Spec §10.5 ghi thêm. Dữ liệu `anh_cau_hinh` của thành viên giữ nguyên trong DB, chỉ không hiện.
+
+### 23/11 (tiếp 5) — [Hình–Học K8] Chốt "không có dạng bài riêng" · dời câu lẻ · duyệt câu · độ khó 10 bài (Thùy "đẩy bài vào kho đi còn chờ gì nữa. tự duyệt luôn")
+- **Thùy:** "Hình học ko cần dạng bài — nếu cần thì giống nhóm luôn" ⇒ giữ luật 28/10 (bài học = dạng = nhóm = chuyên đề), **không đổi DB / mastery**; spec §9 sửa lại (bỏ ghi chú "ba tầng, chờ DB" đã ghi sáng nay).
+- `scripts/kho/hh-k8-chuyen-de-duyet-cau-do-kho.mjs` (chạy thử ROLLBACK rồi `--ghi`): dời HHC015574 → HH00176 (hệ thức; hai đoạn bằng nhau — chỗ gần nhất) · **duyệt 134 câu** (`da_duyet`, `duyet_nguon='ai'`, `duyet_boi` NULL; trừ 2 câu `kiem_may='nghi'` HHC015483, HHC015613) · **độ khó** HH00173 4 · 174 3 · 175 5 · 176 5 · 183 3 · 184 4 · 185 3 · 186 4 · 187 3 · 188 2 (đề xuất của Claude, Thùy chưa cho số riêng — sửa bằng chip trên thẻ bài). Đọc lại: 10 bài · 136 câu · 134 duyệt · 134 `kho_chuan`.
+- Bản lùi cộng dồn có thêm dòng HHC015574. Việc "duyệt câu" lùi bằng `da_duyet=false` cho đúng 134 câu trong bản lùi (trừ 2 câu nghi).
