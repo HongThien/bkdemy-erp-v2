@@ -753,7 +753,7 @@ const nhanVaiNut = (p: Pick<ChungProps, 'vai' | 'tvCua' | 'nbById'>, n: MoHinh, 
   if (v === 'thanh_vien') { const x = p.tvCua.get(n.id); return { nhan: `Thành viên · ${x ? api.moTaChoHoi(x.nb, x.tv) : ''}`, gt: n.gia_thiet ?? '', m: MAU_TV } }
   const nb = p.nbById.get(n.id)
   return {
-    nhan: (v === 'nhom_bai' ? `◈ Nhóm bài${nb ? ` (${nb.su_kien.map((s) => s.ky_hieu).join('·')})` : ''} · ` : '') + tenGT(laGoc, chinh) + (laGoc ? '' : ': ' + tron(n.ten)),
+    nhan: (v === 'nhom_bai' ? `Đầu ra của nhóm bài${nb ? ` ${nb.su_kien.map((s) => s.ky_hieu).join('·')}` : ''} · ` : '') + tenGT(laGoc, chinh) + (laGoc ? '' : ': ' + tron(n.ten)),
     gt: (laGoc ? n.gia_thiet : n.gia_thiet_them) ?? '', m: mauGT(laGoc, chinh),
   }
 }
@@ -793,14 +793,15 @@ function TabChuoi(p: ChungProps & {
     const cha = chaCua(n.id); const a = cha ? bc.khoi.get(cha) : null; const b = bc.khoi.get(n.id)
     if (!a || !b) continue
     const chinh = laChinh(n.id)
-    if (p.vai(n.id) === 'thanh_vien') {   // thành viên (đứng TRÊN) → nút nhóm (đứng dưới): từ cạnh trái thẻ thành viên, xuống theo một trục chung, vào cạnh trái thẻ nhóm
-      day.push(<path key={'g' + n.id} d={`M${OX + b.x},${OY + b.y + 8 + HEX / 2} H${OX + b.x - 18} V${OY + a.y + 8 + HEX / 2} H${OX + a.x - 2}`}
-        stroke={MAU_TV.dac} strokeWidth={2.6} fill="none" markerEnd="url(#gt-tv)" />)
-      continue
-    }
+    if (p.vai(n.id) === 'thanh_vien') continue   // thành viên nằm TRONG khung nhóm bài; một mũi tên chung từ khung xuống thẻ đầu ra (vẽ bên dưới)
     day.push(chinh
       ? <path key={'g' + n.id} d={`M${OX + a.x + 40},${OY + a.y + a.h} V${OY + b.y + 8}`} stroke={MAU[1].dac} strokeWidth={3} fill="none" markerEnd="url(#gt-c)" />
       : <path key={'g' + n.id} d={`M${OX + a.x + a.w},${OY + a.y + 8 + HEX / 2} H${OX + (a.x + a.w + b.x) / 2} V${OY + b.y + 8 + HEX / 2} H${OX + b.x}`} stroke={MAU[2].dac} strokeWidth={2.4} fill="none" markerEnd="url(#gt-p)" />)
+  }
+  // khung nhóm bài → thẻ đầu ra (nút nhóm)
+  for (const [nid, f] of bc.khung) {
+    const N = bc.khoi.get(nid); if (!N) continue
+    day.push(<path key={'kn' + nid} d={`M${OX + f.x + 40},${OY + f.y + f.h} V${OY + N.y + 6}`} stroke={MAU_TV.dac} strokeWidth={2.8} fill="none" markerEnd="url(#gt-tv)" />)
   }
   // bài → bài (dây của chuỗi): cùng hàng thẳng; khác hàng đi trong KHE giữa 2 cột, không đè thẻ
   for (const [id, tu] of bc.boi) {
@@ -820,7 +821,13 @@ function TabChuoi(p: ChungProps & {
           {/* khối giả thiết */}
           {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k) return null; const { m } = nhanVaiNut(p, n, n.id === gocId, laChinh(n.id)); const nhom = p.vai(n.id) === 'nhom_bai'; return (
             <div key={'k' + n.id} className={`absolute rounded-2xl ${nhom ? 'border-2 border-solid' : 'border border-dashed'}`}
-              style={{ left: OX + k.x, top: OY + k.y, width: k.w, height: k.h, background: m.nhat, borderColor: nhom ? '#ea580c' : m.vien }} />) })}
+              style={{ left: OX + k.x, top: OY + k.y, width: k.w, height: k.h, background: m.nhat, borderColor: m.vien }} />) })}
+          {/* KHUNG NHÓM BÀI: ôm các thành viên (Thùy 23/11) */}
+          {[...bc.khung].map(([nid, f]) => { const nb = p.nbById.get(nid); return (
+            <div key={'kh' + nid} className="absolute rounded-2xl border-[3px] border-solid" style={{ left: OX + f.x, top: OY + f.y, width: f.w, height: f.h, borderColor: '#ea580c', background: '#fffaf5' }}
+              title={nb ? 'Sự kiện: ' + nb.su_kien.map((s) => `${s.ky_hieu}: ${tron(s.noi_dung)}`).join(' · ') : undefined}>
+              <span className="absolute left-3 top-1.5 rounded-full px-2.5 py-px text-[12px] font-bold text-white" style={{ background: '#ea580c' }}>◈ Nhóm bài{nb ? ` (${nb.su_kien.map((s) => s.ky_hieu).join('·')})` : ''}</span>
+            </div>) })}
           <svg className="pointer-events-none absolute left-0 top-0" width={bc.rong + 2 * OX} height={bc.cao + 2 * OY} style={{ zIndex: 2 }}>
             <defs>
               {[['b', '#64748b'], ['t', '#2563eb']].map(([k, c]) => (
