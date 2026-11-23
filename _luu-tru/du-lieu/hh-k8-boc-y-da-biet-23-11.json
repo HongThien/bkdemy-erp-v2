@@ -1,0 +1,74 @@
+{
+ "HH00061100": {
+  "b": "Biết $MECB$ là hình bình hành (ý a)."
+ },
+ "HH00062080": {
+  "b": "Biết $ADME$ là hình chữ nhật (ý a).",
+  "c": "Biết $ADME$ là hình chữ nhật (ý a).",
+  "d": "Biết $ADME$ là hình chữ nhật (ý a). Biết $E$ là trung điểm của $AC$ (ý b).",
+  "e": "Trên tia đối của tia $DM$, lấy $Q$ sao cho $D$ là trung điểm của $MQ$. Biết $ADME$ là hình chữ nhật (ý a). Biết $QMCA$ là hình bình hành (ý d)."
+ },
+ "HHC002480": {
+  "b": "Biết $DE\\parallel BC$ (ý a)."
+ },
+ "HHC003939": {
+  "b": "Biết $DBEC$ là hình bình hành (ý a).",
+  "c": "Biết $C$ là trung điểm của đoạn $EF$ (ý b).",
+  "d": "Biết $BCFD$ là hình bình hành (ý b)."
+ },
+ "HHC015620": {
+  "b": "Biết $ANDM$ là hình chữ nhật (ý a).",
+  "c": "Biết $ANDM$ là hình chữ nhật (ý a)."
+ },
+ "HHC019015": {
+  "b": "Biết $\\dfrac{KM}{KN}=\\dfrac{QM}{QN}$ (ý a).",
+  "c": "Biết $\\dfrac{KM}{KN}=\\dfrac{QM}{QN}$ (ý a). Biết $KH\\parallel NP$ (ý b)."
+ },
+ "HHC019028": {
+  "b": "Biết $MN\\parallel BC$ (ý a).",
+  "c": "Gọi $K$ là điểm đối xứng của $M$ qua $B$, nối $KN$ cắt $BC$ tại $F$. Biết $MN=\\dfrac{1}{2}BC$ (ý a). Biết $F$ là trung điểm của $KN$ (ý b)."
+ },
+ "HHC019032": {
+  "b": "Biết $AC=3AN$ (ý a)."
+ },
+ "HHC019036": {
+  "b": "Biết $MN\\perp AC$ (ý a).",
+  "c": "Qua $A$ vẽ đường thẳng song song với $BC$, cắt tia $MN$ tại $D$. Biết $AMCD$ là hình thoi (ý b)."
+ },
+ "HHC019044": {
+  "b": "Biết $MN\\perp AC$ (ý a).",
+  "c": "Qua $A$ vẽ đường thẳng song song với $BC$, cắt tia $MN$ tại $D$. Biết $AMCD$ là hình thoi (ý b). Biết $N$ là trung điểm của $MD$ (ý b)."
+ },
+ "HHC019050": {
+  "b": "Biết $AD^2=AB\\cdot AE$ (ý a).",
+  "c": "Kẻ $DF\\perp AC$ ($F\\in AC$). Biết $\\triangle ADE\\backsim\\triangle ABD$ (ý a). Biết $\\triangle AEF\\backsim\\triangle ACB$ (ý b)."
+ },
+ "HHC019052": {
+  "c": "Qua $D$ kẻ đường thẳng song song với đường thẳng $AB$ cắt $AC$ tại $M$."
+ },
+ "HHC019056": {
+  "c": "Gọi $M$, $N$ theo thứ tự là trung điểm của $BD$, $BC$. Biết $MN\\parallel DC$ (ý b)."
+ },
+ "HHC019058": {
+  "c": "Kẻ $BE$ vuông góc với tia $CD$ tại $E$."
+ },
+ "HHC019060": {
+  "c": "Trên cạnh $BC$ lấy điểm $M$ sao cho $H$ là trung điểm của $BM$, đường thẳng qua $C$ vuông góc với tia $AM$ tại $K$ và cắt tia $AH$ tại $I$. Biết $M$ nằm giữa $A$ và $K$ (ý b)."
+ },
+ "HHC019062": {
+  "c": "Biết $AB\\cdot BE=MB\\cdot BH$ (ý b). Biết $E$ nằm giữa $A$ và $B$ (ý b)."
+ },
+ "HHC019064": {
+  "b": "Biết $\\dfrac{AB}{HB}=\\dfrac{BC}{AB}$ (ý a).",
+  "c": "Biết $\\dfrac{AB}{HB}=\\dfrac{BC}{AB}$ (ý a)."
+ },
+ "HHC019068": {
+  "b": "Biết $\\triangle BDH\\backsim\\triangle ADC$ (ý a).",
+  "c": "Biết $\\triangle BDH\\backsim\\triangle ADC$ (ý a). Biết $DH\\cdot DA=DB\\cdot DC$ (ý b).",
+  "d": "Lấy điểm $K$ sao cho $D$ là trung điểm của $HK$. Biết $\\triangle BDH=\\triangle BDK$ (ý c)."
+ },
+ "HHC019074": {
+  "b": "Biết $HK\\parallel NP$ (ý a).",
+  "c": "Biết $\\dfrac{HM}{HN}=\\dfrac{IM}{IN}$ (ý a). Biết $HK\\parallel NP$ (ý a)."
+ }
+}
