@@ -82342,3 +82342,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Mig 202611231659 (ĐÃ ÁP): công tắc `phien_claude_truong_khoi` = false + `_phien_kiem_khoa()` chặn ở fn_phien_mo · fn_phien_mo_lai · fn_phien_gui · _phien_bd_vao (sau khi đóng vai người mở ⇒ phiên TK đang mở cũng dừng, kể cả bot đọc). Admin hệ thống (Thùy) vẫn dùng. Không xoá phiên/tin. Lúc áp: 0 tin đang chờ, 18 phiên TK đang mở.
 - Thử trong ROLLBACK: TK mở/nhắn/bot đọc ⇒ chặn; Thùy mở ⇒ OK; bật công tắc ⇒ TK qua cổng. Mig 202611231701: thu EXECUTE authenticated của hàm nội bộ (K1). K1 vẫn +7 so trần — của phiên khác, không phải 2 mig này.
 - Chưa làm: luồng ticket → Thùy duyệt → Claude chạy; màn chưa có dòng báo "đang khoá" (bấm thì hiện lỗi rõ chữ).
+
+### 23/11 (tiếp 4) — [Hình–Học K8] Duyệt 6 bài chuyên đề mới HH00183–188 (Thùy "Mày duyệt luôn")
+- `scripts/kho/hh-k8-duyet-6-chuyen-de-moi.mjs` (chạy thử ROLLBACK rồi `--ghi`): `da_duyet=true`, `duyet_at=now()`, **`duyet_boi=NULL`** (Claude duyệt theo lệnh Thùy — không ghi tên người). Đọc lại: 6/6 đã duyệt. Muốn đổi người duyệt: bấm bỏ duyệt rồi duyệt lại trên app.
