@@ -13,9 +13,11 @@ import pg from 'pg'
 import { bien } from './kho/cau-hinh.mjs'
 
 const GHI = process.argv.includes('--ghi')
-const DICH = 'HH00171'
+// 23/11 (lượt 2, "Đẩy luôn"): thêm HH00170 · HH00172. Chạy:  node scripts/hinh-k7-cong-goc-them.mjs --dich HH00170|HH00171|HH00172 [--ghi]
+const DICH = process.argv[process.argv.indexOf('--dich') + 1]
+if (!/^HH00(170|171|172)$/.test(DICH ?? '')) { console.error('Thiếu --dich HH00170|HH00171|HH00172'); process.exit(1) }
 // ma_cau → ý thẳng hàng (đã đọc lời giải: cộng hai góc kề bù, hai điểm khác phía)
-const MAP = {
+const MAP171 = {
   HHC015077: 'c · A, E, F — ACF = EBF (c.g.c) ⇒ AFC = EFB, cộng kề bù AFC + AFB = 180°',
   HHC015086: 'd · F, D, E — ADF = EDC ⇒ ADE + ADF = 180°',
   HHC015113: 'b · F, D, E — BDF = EDC ⇒ BDE + BDF = 180°',
@@ -27,7 +29,34 @@ const MAP = {
   HHC015168: 'c · A, O, E — OBE = OIA ⇒ BOA + BOE = 180°',
   HHC015204: 'c · M, O, N — OBM = ODN ⇒ MON = MOD + DON = 180°',
 }
-// Không đưa: HHC015116 (trùng đề HHC015168 — chỉ lấy một bản) · HHC015210 (máy kiểm "nghi": ý c bị đổi góc theo suy luận, cần người xác nhận đề gốc)
+// HH00170 cùng đường: hai tia / hai đường cùng là phân giác (hoặc cùng thuộc trung trực) ⇒ trùng nhau
+const MAP170 = {
+  HHC014414: 'd · A, D, H — AH, AD cùng là phân giác góc BAC ⇒ trùng',
+  HHC015059: 'c · B, K, E — BK, BE cùng là phân giác góc ABC ⇒ trùng',
+  HHC015061: 'd · A, O, H — AO, AH cùng là phân giác góc BAC ⇒ trùng',
+  HHC015140: 'c · M, E, H — MH, ME cùng là phân giác góc AMB ⇒ trùng',
+  HHC015151: 'd · B, M, N — Mt, MN cùng là phân giác góc KMH ⇒ trùng',
+  HHC015155: 'd · A, M, N — AM, AN cùng là phân giác góc BAC ⇒ trùng',
+  HHC015133: 'd · B, N, D — NBC = DBC, N, D cùng phía BC ⇒ hai tia BN, BD trùng',
+  HHC015206: 'e · B, D, M — BM, BD cùng là phân giác góc ABC ⇒ trùng',
+  HHC018972: 'c · B, D, M — BM, BD cùng là phân giác góc ABC ⇒ trùng',
+  HHC018992: 'c · B, D, M — BM, BD cùng là phân giác góc FBC ⇒ trùng',
+  HHC015123: 'd · O, A, I — O, A, I cùng thuộc đường trung trực của BC',
+  HHC015169: 'd · A, M, N — A, N, M cùng cách đều H, K ⇒ cùng thuộc trung trực của HK',
+}
+// HH00172 tiên đề Ơ-clit: qua một điểm chỉ có một đường song song / vuông góc (hệ quả) ⇒ hai đường trùng nhau
+const MAP172 = {
+  HHC015075: 'c · I, M, K — MI ⊥ AC, BD ∥ AC ⇒ MI ⊥ BD; MK ⊥ BD ⇒ MI, MK trùng',
+  HHC015149: 'd · I, E, K — EI ⊥ AC, AC ∥ BD ⇒ EI ⊥ BD; EK ⊥ BD ⇒ trùng',
+  HHC015114: 'c · K, D, E — EK ⊥ BC, ED ⊥ BC tại E ⇒ trùng',
+  HHC015115: 'd · E, I, N — EI ⊥ BC, EN ⊥ BC (EN ⊥ DK, DK ∥ BC) ⇒ trùng',
+  HHC015138: 'd · D, A, K — AK ∥ BC, AD ∥ BC ⇒ trùng (tiên đề Ơ-clit)',
+  HHC015141: 'd · M, N, E — NM ∥ BC, NE ∥ BC ⇒ trùng (tiên đề Ơ-clit)',
+  HHC018998: 'c · P, M, N — MP ∥ BC, MN ∥ BC ⇒ trùng (tiên đề Ơ-clit)',
+}
+const MAP = { HH00170: MAP170, HH00171: MAP171, HH00172: MAP172 }[DICH]
+// Không đưa (cộng góc): HHC015116 (trùng đề HHC015168 — chỉ lấy một bản) · HHC015210 (máy kiểm "nghi": ý c bị đổi góc theo suy luận, cần người xác nhận đề gốc)
+// Không đưa (lượt 2): HHC015146 (trùng đề HHC015075) · HHC015167 (trùng HHC015114) · HHC015160 (trùng HHC015133) · HHC015089 (máy kiểm "nghi") · HHC015200 (trùng HHC015140)
 
 // ───────── bộ cắt (cùng logic kho-rules/hinh/lo/tach-y/tach.mjs) ─────────
 const NHAN = /^[ \t]*(?:\*\*)?([a-h]|[1-9])(\*?)\)(?:\*\*)?[ \t]*/
@@ -85,8 +114,11 @@ function loiGiaiTheoY(raw, nhans) {
 }
 // bước Phần 1 gắn nhiều ý ("Ý a và b: …" · "Ý b) c) …") ⇒ một bước cho mỗi ý (chữ giữ nguyên)
 const nhieuY = (t) => (t ?? '').replace(/\r\n/g, '\n').split('\n').flatMap((ln) => {
-  const m = ln.match(/^(\*\*Bước \d+\.\*\*)\s*Ý ([a-h])(?:\)\s*|\s*(?:và|,)\s*(?:ý\s*)?)([a-h])(?:\)|:)\s*(.*)$/)
-  return m ? [m[1] + ' Ý ' + m[2] + ': ' + m[4], m[1] + ' Ý ' + m[3] + ': ' + m[4]] : [ln]
+  // "Ý a):" · "Ý a, b, c:" · "Ý b) và c):" · "Ý b) c)" ⇒ danh sách nhãn ⇒ mỗi ý một bước "Ý x: …"
+  const m = ln.match(/^(\*\*Bước \d+\.\*\*)\s*Ý\s+((?:[a-h](?!\p{L})\)?(?:\s*(?:,|và)\s*(?:ý\s*)?|\s+(?=[a-h](?!\p{L})\)))?)+)\s*:?\s*(.*)$/u)
+  if (!m) return [ln]
+  const nhan = [...new Set(m[2].replace(/và/g, ' ').match(/[a-h]/g))]
+  return nhan.map((x) => m[1] + ' Ý ' + x + ': ' + m[3])
 }).join('\n')
 
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL_RW ?? bien('DATABASE_URL')?.gia_tri })
@@ -130,7 +162,7 @@ try {
      where y.ma_cau_goc = any($1)`, [ids])).rows[0]
   const sau = (await c.query(`select count(distinct bai_y) bai, count(*) y, count(*) filter (where kho_chuan) chuan from hinh_hoc_cau_hoi where dang_chinh = $1 and xoa_at is null and coalesce(rut_khoi_kho,false) = false`, [DICH])).rows[0]
   console.log(ghiLai.join('\n'))
-  console.log('bài', nBai, '| ý', nY, '| kiểm:', k, '\nHH00171 sau khi ghi (bài–ý / ý / ý trong kho chuẩn):', sau)
+  console.log('bài', nBai, '| ý', nY, '| kiểm:', k, '\n' + DICH + ' sau khi ghi (bài–ý / ý / ý trong kho chuẩn):', sau)
   if (+k.bai !== nBai || +k.y !== nY || +k.de_sai || +k.dang_sai || +k.trang_thai_sai || +k.goc_chua_rut) throw new Error('Kiểm sau ghi KHÔNG đạt — huỷ cả lô')
   await c.query(GHI ? 'commit' : 'rollback')
   console.log(GHI ? '✔ ĐÃ GHI (commit)' : '(chạy thử — đã ROLLBACK, thêm --ghi để ghi thật)')
