@@ -441,6 +441,7 @@
 | `scripts/anh/nhap_hh_tu_draft.mjs HH000xx draft.md --cam "<regex>" --hinh <dir> --ra <dir>` | Nhập câu phần Học (câu đơn): chuẩn hoá, lọc từ cấm, 1 transaction; `--ghi`; `--lop giang` = kho trên lớp. **Chưa hiểu bài–ý, chưa hiểu sơ đồ tư duy** ⇒ bài nhiều ý / có chứng minh dùng `nhap_lo.mjs` |
 | `kho-rules/hinh/lo/k8T-thales/nhap_lo.mjs "<thư mục>" [--chi-kiem]` | Cổng kiểm + nhập lô Hình–Học có bài–ý + sơ đồ tư duy; chặn từ cấm; lặp tới 0 lỗi |
 | `kho-rules/hinh/lo/k8-thales/bai-nhieu-y/nhap_bai_y.mjs` | Mẫu nhập bài–ý (chạy thử rollback → `--ghi`; kiểm trùng lời dẫn) |
+| `scripts/hinh-k7-cong-goc-them.mjs --dich HH00170\|HH00171\|HH00172 [--ghi]` · `scripts/hinh-k7-thang-hang-goc-khop-the-y.mjs [--ghi]` | Đẩy bài nhiều ý CHƯA tách (dạng chờ K7) vào ba bài Thẳng hàng: bảng `MAP` mã câu → ý thẳng hàng (đã đọc lời giải), tách bài–ý bằng logic `tach.mjs`, tạo thẻ ý ở bài đích, rút câu gốc; script thứ hai đổi `dang_chinh` câu gốc cho khớp thẻ ý + đếm theo công thức màn kho [23/11] |
 | `scripts/anh/hh_lop_chep.mjs` | Chép câu sang kho trên lớp (không xoá gốc); sau đó `fn_hh_lop_xep` |
 | `scripts/anh/gan_hinh.mjs <thư mục> [--ghi] [--thay] [--bang baitoan\|bienthe\|mohinh\|cachgiai\|hlbai\|hly]` | Upload + gắn hình theo tên tệp (= mã câu; `+` nối nhiều câu; `_de`/`_lg`); không đè trừ `--thay`; lưu biên bản URL cũ |
 | `scripts/anh/ve_lai_xuat.mjs --khoi <k> \| --bai … \| --bang …` · `ve_lai_bang.mjs <gói>` | Xuất gói vẽ lại · bảng cũ \| mới |
@@ -1157,6 +1158,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
   - **Ngoại lệ chiều đảo trung trực CHỈ có hiệu lực trong ba bài này** (và câu xếp vào chúng). Các bài khác (HH00104…) vẫn cấm như bảng trên.
   - Cả ba bài tự có lý thuyết riêng làm whitelist (đúng luật "lý thuyết của chính bài + mọi bài đứng trước"). Nội dung gốc: `scripts/hinh-k7-thang-hang-noidung.mjs`.
   - **Phân dạng câu "chứng minh ba điểm thẳng hàng"** (chờ Thùy xác nhận): xếp vào MỘT trong ba bài theo PHƯƠNG PHÁP của lời giải (cùng đường / cộng góc / tiên đề Ơ-clit); câu nhiều ý mà ý trọng tâm là thẳng hàng thì cả câu theo bài đó; hai phương pháp cùng hợp ⇒ dạng sau thắng (HH00172 > HH00171 > HH00170).
+  - **Bài nhiều ý CHƯA tách có ý thẳng hàng** [23/11 · Thùy "đẩy thêm vào đi"]: tách bài–ý rồi đưa **CẢ BÀI** (mọi ý, không chỉ ý thẳng hàng — Thùy 16/11 "kho thẳng hàng phải đủ ý a–b–c") vào bài theo phương pháp của ý thẳng hàng. Phương pháp quyết bằng **ĐỌC lời giải của chính ý đó**, không bằng từ khoá. Hai bản trùng đề ⇒ chỉ đưa một; câu máy kiểm `nghi` ⇒ không đưa. Ghi theo LUẬT DỜI BÀI (`spec-ban-do-toan.md` § Hình–Học): thẻ ý mang bài đích, câu gốc `rut_khoi_kho=true` + `dang_chinh` khớp thẻ ý, đếm lại bằng công thức của màn kho. Số đo + danh sách không đưa: `spec-ban-do-toan.md` mục "Ba bài Thẳng hàng K7".
   - Ví dụ của bài (ô ví dụ, không nằm trong lý thuyết) thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
 - "Tam giác cân: phân giác ở đỉnh cũng là đường cao / trung tuyến" ⇒ tự chứng minh bằng tam giác bằng nhau.
 - CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
@@ -1198,6 +1200,9 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
 - [10/10] số đo trên hình vẽ nhỏ ⇒ phóng to trước khi chép; số liệu chỉ có trên hình mà không chép vào đề ⇒ sai luật "đề tự đủ dữ kiện".
 - [27/10] dòng dài dày đặc ký hiệu ⇒ dòng ngắn (Hình chung).
 - [21/11] giả thiết nút Hình–Luyện viết "Tia $DE$ cắt đường thẳng $AB$ tại $F$" nhưng hình có $D$ nằm giữa $E$ và $F$ ⇒ tia sai hướng (phải là tia $ED$ hoặc "giao điểm của đường thẳng $DE$ và $AB$"); lộ ra khi viết lời giải bằng toạ độ ⇒ **viết giả thiết bằng toạ độ hình trước, không theo trí nhớ của file nguồn**; đã sửa MH.285.
+- [23/11] bước Phần 1 gắn NHIỀU ý trên một dòng ("Ý a, b, c: …" · "Ý b) và c): …" · "Ý b) c) …") hoặc viết "Ý a): …" ⇒ máy tách ý (`tach.mjs`) cắt lệch, ý sau mất Phần 1 ⇒ **mỗi ý một bước, viết đúng khuôn "Ý a: …"**. Câu cũ đã lỡ viết gộp: `hinh-k7-cong-goc-them.mjs` có bước tách danh sách nhãn (chữ giữ nguyên).
+- [23/11] ghi "32 câu cần tách bài–ý trước" vào DEVLOG rồi bỏ đó ⇒ bài cộng góc chỉ có 6 bài suốt một tuần, Thùy phải hỏi "sao ít bài tập thế" ⇒ **việc để dở phải vào bảng việc chờ của spec** (`spec-ban-do-toan.md` §12b), không chỉ nằm trong DEVLOG.
+- [23/11] đẩy bài–ý vào bài khác mà để câu gốc ở dạng chờ ⇒ trái LUẬT DỜI BÀI (phát hiện khi đối chiếu spec, đã sửa cùng ngày) ⇒ **đọc mục "LUẬT DỜI BÀI" trước khi viết script dời / đẩy câu Hình**.
 - [14/10 · Thùy] đề hình thiếu giả thiết cần cho hình (vd thiếu "BD là tia phân giác của góc ABC") ⇒ bổ sung vào đề + `**Ghi chú:**`, không ngầm dùng.
 
 ### Theo loại nguồn
