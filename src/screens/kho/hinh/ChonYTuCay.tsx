@@ -213,15 +213,15 @@ export default function ChonYTuCay({ L, khoi, phan, chonSan, baiSan, onClose, on
             const laGoc = n.id === gocId
             const ct = chaTen(n)
             return (
-              <section key={n.id} className={`mb-4 rounded-xl border ${n.vai === 'thanh_vien' ? 'border-orange-300' : n.vai === 'nhom_bai' ? 'border-2 border-orange-400' : 'border-slate-200'}`}>
+              <section key={n.id} className={`mb-4 rounded-xl border ${n.vai === 'thanh_vien' ? 'border-orange-300' : 'border-slate-200'}`}>
                 <div className="flex gap-3 border-b border-slate-100 bg-slate-50/70 px-4 py-2.5 max-md:flex-col max-md:gap-2 max-md:px-3">
                   <div className="min-w-0 flex-1">
                     <div className={`text-[12.5px] font-bold ${laGoc ? 'text-teal-700' : 'text-slate-600'}`}>
                       {n.vai === 'thanh_vien'
                         ? <span className="text-orange-700">Thành viên nhóm bài «{ct ?? tron(g?.ten ?? '')}»: {tron(n.ten)}</span>
                         : <>
-                          {n.vai === 'nhom_bai' && <span className="mr-1 rounded bg-orange-100 px-1 text-[11px] text-orange-700">◈ nhóm bài</span>}
-                          {laGoc ? 'Giả thiết' : `${L.canh.find((x) => x.mo_hinh_id === n.id)?.chinh ? 'Nhánh chính' : 'Nhánh phụ'}: ${tron(n.ten)}`}
+                          {n.vai === 'nhom_bai' && <span className="mr-1 rounded bg-slate-100 px-1 text-[11px] text-slate-500">đầu ra của nhóm bài</span>}
+                          {laGoc ? 'Giả thiết' : `Nhánh: ${tron(n.ten)}`}
                           {ct && <span className="font-normal text-slate-400"> — đi tiếp từ «{ct}»</span>}
                         </>}
                     </div>

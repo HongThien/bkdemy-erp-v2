@@ -133,7 +133,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   }, [bais, nhanhs])
   const canhCua = useMemo(() => new Map(L.canh.map((c) => [c.mo_hinh_id, c])), [L.canh])
   const chaCua = useCallback((nid: string): string | null => (nid === gocId ? null : canhCua.get(nid)?.cha_id ?? null), [canhCua, gocId])
-  const laChinh = useCallback((nid: string) => !!canhCua.get(nid)?.chinh, [canhCua])
+  const laChinh = useCallback((_nid: string) => false, [])   // bỏ nhánh chính / phụ (Thùy 21/11): mọi nhánh ngang hàng
   const duong = useCallback((nid: string): string[] => {            // [gốc … nhánh]
     const a: string[] = []
     for (let c: string | null = nid, i = 0; c && i < 64; c = chaCua(c), i++) a.unshift(c)
@@ -260,11 +260,11 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
   const luuGT = async () => {
     if (!hopGT || ban || !hopGT.gt.trim()) return
     const h = hopGT
-    if (!h.id) { await chay(() => api.themGiaThiet(h.cha, h.ten.trim(), h.gt.trim(), h.chinh), h.chinh ? 'Đã thêm nhánh chính' : 'Đã thêm nhánh phụ'); setHopGT(null); return }
+    if (!h.id) { await chay(() => api.themGiaThiet(h.cha, h.ten.trim(), h.gt.trim(), false), 'Đã thêm nhánh'); setHopGT(null); return }
     setBan(true); setLoi(null)
     try {
       await api.suaNhanh(h.id, { ten: h.ten.trim() || h.gt.trim(), gia_thiet_them: h.gt.trim() })
-      if (h.cha !== chaCua(h.id) || h.chinh !== laChinh(h.id)) await api.doiChaGiaThiet(h.id, h.cha, h.chinh)
+      if (h.cha !== chaCua(h.id)) await api.doiChaGiaThiet(h.id, h.cha, false)
       await reload(); bao('Đã lưu giả thiết'); setHopGT(null)
     } catch (e: any) { setLoi(e.message ?? String(e)) }
     finally { setBan(false) }
@@ -362,7 +362,7 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
               <Seg value={tab} onChange={setTab} options={[{ v: 'chuoi', label: '① Chuỗi' }, { v: 'nhom', label: '② Nhóm' }, { v: 'kho', label: `③ Kho bài · ${demKho.get(gocId!)?.so_chuoi ?? 0}` }]} />
               <Btn kind="pri" disabled={ban} onClick={() => setHopBai({ id: null, nhanh: (cur && baiById.get(cur)?.mo_hinh_id) || gocId! })}
                 title="Thêm bài vào một giả thiết. Bài tiếp theo của 1 bài: bấm vào bài đó ⇒ ＋ Bài tiếp theo">＋ Thêm bài</Btn>
-              <Btn disabled={ban} onClick={() => { const g = (cur && baiById.get(cur)?.mo_hinh_id) || gocId!; setHopGT({ id: null, cha: g, ten: '', gt: '', chinh: !conCuaNhanh(g).some((n) => laChinh(n.id)) }) }}
+              <Btn disabled={ban} onClick={() => { const g = (cur && baiById.get(cur)?.mo_hinh_id) || gocId!; setHopGT({ id: null, cha: g, ten: '', gt: '', chinh: false }) }}
                 title="Thêm một giả thiết rẽ ra từ giả thiết (bấm vào thẻ màu của giả thiết để chọn đúng chỗ)">⑂ Thêm giả thiết</Btn>
               <Btn disabled={!bais.length} onClick={() => setInChuoi(true)} title="In chuỗi bài cho HS làm (bản GV kèm lời giải)">🖨 In chuỗi</Btn>
               {ban && <span className="text-[12px] text-slate-400">đang lưu…</span>}
@@ -428,24 +428,15 @@ export default function CayNhanh({ L, khoi, reload, chuDeId }: { L: Luoi; khoi: 
         const conChau = new Set<string>(); const xuong = (id: string) => { conChau.add(id); conCuaNhanh(id).forEach((c) => xuong(c.id)) }
         if (hopGT.id) xuong(hopGT.id)
         const chaDuoc = [...nhanhs].filter((n) => !conChau.has(n.id)).sort((a, b) => doSau(a.id) - doSau(b.id) || a.ma.localeCompare(b.ma))
-        const daCoChinh = conCuaNhanh(hopGT.cha).some((n) => laChinh(n.id) && n.id !== hopGT.id)
         return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-5" onClick={() => setHopGT(null)}>
           <div className="w-full max-w-lg rounded-2xl bg-white p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <h2 className="mb-1 text-[16px] font-semibold">{hopGT.id ? 'Sửa giả thiết' : 'Thêm giả thiết'}</h2>
             <p className="mb-3 text-[12.5px] text-slate-500">Giả thiết mới rẽ ra từ một giả thiết (không rẽ từ bài). Bài trong giả thiết mới dùng được mọi giả thiết trên đường từ giả thiết mô hình xuống.</p>
             <label className="mb-1 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Rẽ ra từ giả thiết</label>
-            <select className={inpCls} value={hopGT.cha} onChange={(e) => setHopGT({ ...hopGT, cha: e.target.value, chinh: hopGT.chinh && !conCuaNhanh(e.target.value).some((n) => laChinh(n.id) && n.id !== hopGT.id) })}>
+            <select className={inpCls} value={hopGT.cha} onChange={(e) => setHopGT({ ...hopGT, cha: e.target.value })}>
               {chaDuoc.map((n) => <option key={n.id} value={n.id}>{'— '.repeat(doSau(n.id))}{n.id === gocId ? 'Giả thiết mô hình' : tron(n.ten)}</option>)}
             </select>
-            <div className="mt-3 flex gap-2">
-              {([[true, 'Nhánh chính', 'đi thẳng tiếp giả thiết cha'], [false, 'Nhánh phụ', 'rẽ sang bên']] as const).map(([v, t, m]) => (
-                <button key={t} disabled={v && daCoChinh} onClick={() => setHopGT({ ...hopGT, chinh: v })}
-                  className={`flex-1 rounded-lg border px-3 py-2 text-left text-[12.5px] disabled:opacity-40 ${hopGT.chinh === v ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:bg-slate-50'}`}
-                  title={v && daCoChinh ? 'Giả thiết cha đã có nhánh chính' : undefined}>
-                  <b>{t}</b><span className="block text-slate-500">{m}</span>
-                </button>))}
-            </div>
             <label className="mb-1 mt-3 block text-[11px] font-semibold uppercase tracking-wide text-slate-400">Giả thiết thêm (gõ $…$ cho công thức)</label>
             <textarea autoFocus className={`${inpCls} h-20`} value={hopGT.gt} onChange={(e) => setHopGT({ ...hopGT, gt: e.target.value })} placeholder="vd: Kẻ $AH \perp BC$ ($H \in BC$)." />
             {hopGT.gt.trim() && <div className="mt-1 rounded-md bg-slate-50 px-2 py-1 text-[12.5px]"><MathText>{hopGT.gt}</MathText></div>}
@@ -759,7 +750,7 @@ const nhanVaiNut = (p: Pick<ChungProps, 'vai' | 'tvCua' | 'nbById'>, n: MoHinh, 
 }
 const soB = (so: string | undefined) => parseInt((so ?? '').replace(/\D/g, ''), 10) || 1e6
 const mauGT = (laGoc: boolean, chinh: boolean) => (laGoc ? MAU[0] : chinh ? MAU[1] : MAU[2])
-const tenGT = (laGoc: boolean, chinh: boolean) => (laGoc ? 'Giả thiết mô hình' : chinh ? 'Nhánh chính' : 'Nhánh phụ')
+const tenGT = (laGoc: boolean, _chinh: boolean) => (laGoc ? 'Giả thiết mô hình' : 'Nhánh')   // bỏ chính / phụ (Thùy 21/11)
 function TabChuoi(p: ChungProps & {
   khung: React.RefObject<HTMLDivElement>; L: Luoi
   onMo: (id: string) => void; onThemBai: (gt: string) => void; onThemGT: (gt: string, chinh: boolean) => void; onSuaGT: (gt: string) => void
@@ -798,10 +789,13 @@ function TabChuoi(p: ChungProps & {
       ? <path key={'g' + n.id} d={`M${OX + a.x + 40},${OY + a.y + a.h} V${OY + b.y + 8}`} stroke={MAU[1].dac} strokeWidth={3} fill="none" markerEnd="url(#gt-c)" />
       : <path key={'g' + n.id} d={`M${OX + a.x + a.w},${OY + a.y + 8 + HEX / 2} H${OX + (a.x + a.w + b.x) / 2} V${OY + b.y + 8 + HEX / 2} H${OX + b.x}`} stroke={MAU[2].dac} strokeWidth={2.4} fill="none" markerEnd="url(#gt-p)" />)
   }
-  // khung nhóm bài → thẻ đầu ra (nút nhóm)
+  // khung nhóm bài → các bài đi tiếp của khối (nằm ngay bên phải khung, cùng hàng chuỗi)
   for (const [nid, f] of bc.khung) {
-    const N = bc.khoi.get(nid); if (!N) continue
-    day.push(<path key={'kn' + nid} d={`M${OX + f.x + 40},${OY + f.y + f.h} V${OY + N.y + 6}`} stroke={MAU_TV.dac} strokeWidth={2.8} fill="none" markerEnd="url(#gt-tv)" />)
+    for (const [bid, o] of bc.bai) {
+      if (baiById.get(bid)?.mo_hinh_id !== nid || bc.boi.get(bid)) continue
+      day.push(<path key={'kn' + bid} d={`M${OX + f.x + f.w},${OY + f.y + f.h / 2} H${OX + f.x + f.w + GX / 2} V${OY + o.y + H / 2} H${OX + o.x}`}
+        stroke={MAU_TV.dac} strokeWidth={2.4} fill="none" markerEnd="url(#gt-tv)" />)
+    }
   }
   // bài → bài (dây của chuỗi): cùng hàng thẳng; khác hàng đi trong KHE giữa 2 cột, không đè thẻ
   for (const [id, tu] of bc.boi) {
@@ -824,7 +818,7 @@ function TabChuoi(p: ChungProps & {
               style={{ left: OX + k.x, top: OY + k.y, width: k.w, height: k.h, background: m.nhat, borderColor: m.vien }} />) })}
           {/* KHUNG NHÓM BÀI: ôm các thành viên (Thùy 23/11) */}
           {[...bc.khung].map(([nid, f]) => { const nb = p.nbById.get(nid); return (
-            <div key={'kh' + nid} className="absolute rounded-2xl border-[3px] border-solid" style={{ left: OX + f.x, top: OY + f.y, width: f.w, height: f.h, borderColor: '#ea580c', background: '#fffaf5' }}
+            <div key={'kh' + nid} className="absolute rounded-2xl border-[3px] border-solid" style={{ left: OX + f.x, top: OY + f.y, width: f.w, height: f.h, borderColor: '#ea580c', background: 'transparent' }}
               title={nb ? 'Sự kiện: ' + nb.su_kien.map((s) => `${s.ky_hieu}: ${tron(s.noi_dung)}`).join(' · ') : undefined}>
               <span className="absolute left-3 top-1.5 rounded-full px-2.5 py-px text-[12px] font-bold text-white" style={{ background: '#ea580c' }}>◈ Nhóm bài{nb ? ` (${nb.su_kien.map((s) => s.ky_hieu).join('·')})` : ''}</span>
             </div>) })}
@@ -840,7 +834,7 @@ function TabChuoi(p: ChungProps & {
           {/* thẻ giả thiết (bo tròn — Thùy 23/10 bỏ lục giác: cạnh nhọn cắt chữ) — bấm để thêm bài / nhánh, sửa */}
           {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k) return null; const laGoc = n.id === gocId; const chinh = laChinh(n.id)
             const { nhan, gt, m } = nhanVaiNut(p, n, laGoc, chinh); const v = p.vai(n.id); const cha = chaCua(n.id)
-            const coChinh = conCuaNhanh(n.id).some((c) => laChinh(c.id)); const nb = p.nbById.get(n.id)
+            const nb = p.nbById.get(n.id)
             const mi = 'block w-full rounded-lg px-2.5 py-1.5 text-left hover:bg-slate-100 disabled:opacity-40'
             return (
             <div key={'h' + n.id}>
@@ -858,8 +852,7 @@ function TabChuoi(p: ChungProps & {
                     <button className={mi} onClick={() => { setMenu(null); if (cha) p.onThanhVien(cha, n.id, null) }}>✎ Sửa thành viên (giả thiết · cho / hỏi)</button>
                   </> : <>
                     <button className={mi} onClick={() => { setMenu(null); p.onThemBai(n.id) }}>＋ Bài trong giả thiết này</button>
-                    <button disabled={coChinh} className={mi} title={coChinh ? 'Đã có nhánh chính' : undefined} onClick={() => { setMenu(null); p.onThemGT(n.id, true) }}>⑂ Nhánh chính (đi thẳng xuống)</button>
-                    <button className={mi} onClick={() => { setMenu(null); p.onThemGT(n.id, false) }}>⑂ Nhánh phụ (rẽ sang phải)</button>
+                    <button className={mi} onClick={() => { setMenu(null); p.onThemGT(n.id, false) }}>⑂ Thêm nhánh (rẽ sang phải)</button>
                     <button className={mi} onClick={() => { setMenu(null); p.onSuaGT(n.id) }}>✎ {laGoc ? 'Sửa mô hình' : 'Sửa / dời giả thiết'}</button>
                     <div className="my-1 border-t border-slate-100" />
                     {v === 'nhom_bai' ? <>
@@ -921,11 +914,10 @@ function TabNhom(p: ChungProps & {
     const n = nhanhById.get(nid); if (!n) return <></>
     const laGoc = nid === gocId; const chinh = laChinh(nid); const cua = lan.get(nid) ?? []
     const { nhan, gt, m } = nhanVaiNut(p, n, laGoc, chinh); const v = p.vai(nid); const nb = p.nbById.get(nid)
-    const coChinh = conCuaNhanh(nid).some((c) => laChinh(c.id))
     return (
-      <div className={`my-2.5 rounded-xl ${v === 'nhom_bai' ? 'border-[3px]' : 'border-2'} p-3 ${!laGoc && !chinh ? 'ml-6' : ''}`} style={{ borderColor: v === 'nhom_bai' ? '#ea580c' : m.vien, background: m.nhat }}>
+      <div className={`my-2.5 rounded-xl border-2 p-3 ${!laGoc && !chinh ? 'ml-6' : ''}`} style={{ borderColor: m.vien, background: m.nhat }}>
         <div className="mb-1 flex flex-wrap items-center gap-2">
-          <span className="rounded-full px-2 py-px text-[11px] font-semibold text-white" style={{ background: m.dac }}>{v === 'thanh_vien' ? nhan : (v === 'nhom_bai' ? '◈ Nhóm bài · ' : '') + (laGoc ? 'Giả thiết mô hình' : chinh ? '↓ Nhánh chính' : '↱ Nhánh phụ')}</span>
+          <span className="rounded-full px-2 py-px text-[11px] font-semibold text-white" style={{ background: m.dac }}>{v === 'thanh_vien' ? nhan : (v === 'nhom_bai' ? 'Đầu ra của nhóm bài · ' : '') + (laGoc ? 'Giả thiết mô hình' : 'Nhánh')}</span>
           {!laGoc && <b className="text-[13.5px] text-slate-900">{tron(n.ten)}</b>}
           <Ma>{n.ma}</Ma>
           <span className="text-[11px] text-slate-400">{cua.length} bài · {baiCaNhanh(nid)} bài cả nhánh con</span>
@@ -933,8 +925,7 @@ function TabNhom(p: ChungProps & {
             {v === 'thanh_vien'
               ? <button className="text-orange-700 hover:underline" onClick={() => { const c = p.chaCua(nid); if (c) p.onThanhVien(c, nid, null) }}>✎ sửa thành viên</button>
               : <>
-                <button className="text-blue-600 hover:underline disabled:opacity-40" disabled={coChinh} onClick={() => p.onThemGT(nid, true)}>⑂ nhánh chính</button>
-                <button className="text-violet-700 hover:underline" onClick={() => p.onThemGT(nid, false)}>⑂ nhánh phụ</button>
+                <button className="text-violet-700 hover:underline" onClick={() => p.onThemGT(nid, false)}>⑂ thêm nhánh</button>
                 {!laGoc && <button className="text-blue-600 hover:underline" onClick={() => p.onSuaGT(nid)}>✎ sửa / dời</button>}
                 {v === 'nhom_bai'
                   ? <><button className="text-orange-700 hover:underline" onClick={() => p.onThanhVien(nid, null, null)}>＋ thành viên</button>

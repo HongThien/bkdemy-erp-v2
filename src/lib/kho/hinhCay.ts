@@ -116,28 +116,35 @@ export function nhanhCuaCay(moHinh: MoHinh[], canh: { mo_hinh_id: string; cha_id
 export const gocCayCua = (L: Luoi) => L.moHinh.filter((m) => !m.neo_baitoan_id && m.la_mo_hinh !== false)
 
 // ══════════════════ XẾP CHỖ kiểu GIẢ THIẾT (Thùy 22/10, mockup docs/mockup-hinh-gia-thiet-mh072.html) ══════════════════
-// Mỗi giả thiết = một KHỐI (lục giác đầu khối + các bài). Nhánh CHÍNH đi thẳng XUỐNG dưới giả thiết cha; nhánh PHỤ rẽ
-// sang PHẢI. Trong khối, chuỗi bài NẰM NGANG: cột = cấp (theo tiền đề cùng khối); bài con ĐẦU TIÊN (theo số) đi tiếp
-// cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
+// Mỗi giả thiết = một KHỐI (thẻ giả thiết đầu khối + hình + các bài). Các nhánh con của một giả thiết là NGANG HÀNG, rẽ sang PHẢI, xếp dọc
+// (Thùy 21/11: không còn nhánh chính / phụ). Trong khối, chuỗi bài NẰM NGANG: cột = cấp (theo tiền đề cùng khối); bài con ĐẦU TIÊN (theo số)
+// đi tiếp cùng hàng, mỗi bài con sau xuống một hàng mới (vd B1→B2 · B3→B6→B7 · B4 · B5). `boi` = bài trước đã "đặt" bài này
 // (dây vẽ); tiền đề còn lại hiện thành nhãn ở góc thẻ. Mũi tên đi trong KHE giữa các cột, không đè thẻ.
-// HW × HH = ô HÌNH của giả thiết, bên trái khối (Thùy 22/10: mỗi giả thiết phải có hình để hình dung); bài nằm bên phải ô hình.
-export const KT_GT = { LE: 28, W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 66, TOP: 92, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136 }
+// HW × HH = ô HÌNH của giả thiết, bên trái khối (Thùy 22/10); bài nằm bên phải ô hình.
+// NHÓM BÀI (Thùy 23/11): chuỗi là các node nối nhau; một bài có nhiều cách hỏi = MỘT node to (nhóm) chứa các thành viên. Nút nhóm = giả thiết đầu ra
+// của nhóm; KHUNG nhóm (ôm các thành viên) nằm TRONG hàng chuỗi của khối đó, giữa ô hình và các bài đi tiếp (B4…); mũi tên đi từ khung sang các bài.
+export const KT_GT = { LE: 28, W: 210, H: 74, GX: 40, GY: 18, PAD: 14, HEX: 66, TOP: 92, CACH_DOC: 56, CACH_NGANG: 110, HW: 240, HH: 136, GK_TREN: 36, GK_LE: 12, GK_DUOI: 12, GK_CACH: 22 }
 export type HopXY = { x: number; y: number; w: number; h: number }
 export type BoCucGT = { khoi: Map<string, HopXY>; khung: Map<string, HopXY>; bai: Map<string, { x: number; y: number }>; boi: Map<string, string | null>; rong: number; cao: number }
 export function xepGiaThiet(a: {
   gocId: string
-  gt: { id: string; cha: string | null; chinh: boolean; vai?: string }[]
+  gt: { id: string; cha: string | null; chinh?: boolean; vai?: string }[]
   bai: { id: string; gt: string; so: number; tienDe: string[] }[]
 }): BoCucGT {
-  const { LE, W, H, GX, GY, PAD, TOP, CACH_DOC, CACH_NGANG, HW, HH } = KT_GT
-  const X0 = PAD + HW + 24                                               // bài bắt đầu sau ô hình
+  const { LE, W, H, GX, GY, PAD, TOP, CACH_NGANG, HW, HH, GK_TREN, GK_LE, GK_DUOI, GK_CACH } = KT_GT
+  const X0 = PAD + HW + 24                                               // bài (hoặc khung nhóm) bắt đầu sau ô hình
   const gtCua = new Map(a.bai.map((b) => [b.id, b.gt])), soCua = new Map(a.bai.map((b) => [b.id, b.so]))
+  const tv = (id: string) => a.gt.filter((g) => g.cha === id && g.vai === 'thanh_vien')
+  const con = (id: string) => a.gt.filter((g) => g.cha === id && g.vai !== 'thanh_vien')
   const boi = new Map<string, string | null>()
-  const trong = new Map<string, { lv: Map<string, number>; hang: Map<string, number>; w: number; h: number }>()
-  for (const g of a.gt) {
+  type Trong = { lv: Map<string, number>; hang: Map<string, number>; w: number; h: number; x0: number; wF: number; hF: number }
+  const trong = new Map<string, Trong>()
+  // thành viên trước (kích thước của chúng cần cho nút nhóm)
+  const thuTu = [...a.gt].sort((p, q) => (q.vai === 'thanh_vien' ? 1 : 0) - (p.vai === 'thanh_vien' ? 1 : 0))
+  for (const g of thuTu) {
     const ds = a.bai.filter((b) => b.gt === g.id).sort((x, y) => x.so - y.so)
     const cha = new Map(ds.map((b) => [b.id, b.tienDe.filter((t) => gtCua.get(t) === g.id)]))
-    const con = (id: string) => ds.filter((b) => cha.get(b.id)!.includes(id)).map((b) => b.id)
+    const conB = (id: string) => ds.filter((b) => cha.get(b.id)!.includes(id)).map((b) => b.id)
     const lv = new Map<string, number>()
     const L = (id: string, sau = 0): number => {
       if (lv.has(id)) return lv.get(id)!
@@ -150,7 +157,7 @@ export function xepGiaThiet(a: {
       if (hang.has(id)) return
       hang.set(id, r); boi.set(id, tu); maxR = Math.max(maxR, r)
       let dau = true
-      for (const m of con(id).sort((x, y) => soCua.get(x)! - soCua.get(y)!)) {
+      for (const m of conB(id).sort((x, y) => soCua.get(x)! - soCua.get(y)!)) {
         if (hang.has(m) || lv.get(m) !== lv.get(id)! + 1) continue        // bài con ở cấp xa hơn: để bài trước gần nó đặt
         dat(m, dau ? r : maxR + 1, id); dau = false
       }
@@ -158,37 +165,35 @@ export function xepGiaThiet(a: {
     ds.filter((b) => !cha.get(b.id)!.length).forEach((b) => dat(b.id, maxR + 1, null))
     ds.filter((b) => !hang.has(b.id)).forEach((b) => dat(b.id, maxR + 1, null))
     const soCot = Math.max(1, ...ds.map((b) => lv.get(b.id)!)), soHang = Math.max(1, maxR + 1)
-    trong.set(g.id, { lv, hang, w: X0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD) })
+    // khung nhóm bài: ôm các thành viên, nằm giữa ô hình và các bài
+    const ms = tv(g.id).filter((m) => trong.has(m.id))
+    let wF = 0, hF = 0
+    if (ms.length) {
+      wF = Math.max(...ms.map((m) => trong.get(m.id)!.w)) + 2 * GK_LE
+      hF = GK_TREN + ms.reduce((s, m) => s + trong.get(m.id)!.h, 0) + (ms.length - 1) * GK_CACH + GK_DUOI
+    }
+    const x0 = X0 + (wF ? wF + GX : 0)
+    trong.set(g.id, { lv, hang, x0, wF, hF, w: x0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD, hF ? TOP + hF + PAD : 0) })
   }
-  // Thành viên của nhóm bài đứng TRƯỚC (Thùy 23/11: "B1 B2 B3 mới là nhóm bài, B4 B5 B6 là bài riêng"): xếp thành cột từ trên xuống TRONG một khung "Nhóm bài",
-  // thẻ nút nhóm (giả thiết đầu ra, mang B4…) nằm dưới khung; nhánh đi tiếp của nút nhóm vẫn rẽ sang phải. Các nhánh còn lại: ngang hàng, xếp dọc bên phải (không còn chính / phụ — Thùy 21/11).
-  const tv = (id: string) => a.gt.filter((g) => g.cha === id && g.vai === 'thanh_vien')
-  const con = (id: string) => a.gt.filter((g) => g.cha === id && g.vai !== 'thanh_vien')
-  const khoi = new Map<string, HopXY>(), khung = new Map<string, HopXY>()   // khung = KHUNG "Nhóm bài" ôm các thành viên (Thùy 23/11: nhóm bài = các thành viên; thẻ nút nhóm chỉ là giả thiết đầu ra)
-  const GK_TREN = 36, GK_LE = 12, GK_DUOI = 12, GK_CACH = 22
+  const khoi = new Map<string, HopXY>(), khung = new Map<string, HopXY>()
   const datGT = (id: string, x: number, y: number, sau = 0): number => {      // trả chiều cao phần cây chiếm
     const t = trong.get(id); if (!t || sau > 64) return 0
-    let yN = y                                                                // y của thẻ nút (dưới khung nhóm bài)
-    const ms = tv(id).filter((m) => trong.has(m.id))
-    if (ms.length) {
-      let yy = y + GK_TREN, wMax = 0
-      for (const m of ms) { const tm = trong.get(m.id)!; khoi.set(m.id, { x: x + GK_LE, y: yy, w: tm.w, h: tm.h }); yy += tm.h + GK_CACH; wMax = Math.max(wMax, tm.w) }
-      yy = yy - GK_CACH + GK_DUOI
-      khung.set(id, { x, y, w: wMax + 2 * GK_LE, h: yy - y })
-      yN = yy + CACH_DOC
+    khoi.set(id, { x, y, w: t.w, h: t.h })
+    if (t.wF) {
+      const fx = x + X0, fy = y + TOP
+      khung.set(id, { x: fx, y: fy, w: t.wF, h: t.hF })
+      let yy = fy + GK_TREN
+      for (const m of tv(id)) { const tm = trong.get(m.id); if (!tm) continue; khoi.set(m.id, { x: fx + GK_LE, y: yy, w: tm.w, h: tm.h }); yy += tm.h + GK_CACH }
     }
-    khoi.set(id, { x, y: yN, w: t.w, h: t.h })
-    let yPhu = yN
-    for (const p of con(id).filter((g) => !g.chinh)) yPhu += datGT(p.id, x + t.w + CACH_NGANG, yPhu, sau + 1) + 24
-    const cao = Math.max(t.h, yPhu - yN - 24)
-    const chinh = con(id).find((g) => g.chinh)
-    return (yN - y) + (chinh ? cao + CACH_DOC + datGT(chinh.id, x, yN + cao + CACH_DOC, sau + 1) : cao)
+    let yPhu = y
+    for (const p of con(id)) yPhu += datGT(p.id, x + t.w + CACH_NGANG, yPhu, sau + 1) + 24
+    return Math.max(t.h, yPhu - y - 24)
   }
   datGT(a.gocId, LE, 0)
   const bai = new Map<string, { x: number; y: number }>()
   for (const [id, k] of khoi) {
     const t = trong.get(id)!
-    for (const [b, r] of t.hang) bai.set(b, { x: k.x + X0 + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
+    for (const [b, r] of t.hang) bai.set(b, { x: k.x + t.x0 + (t.lv.get(b)! - 1) * (W + GX), y: k.y + TOP + r * (H + GY) })
   }
   let rong = 0, cao = 0
   for (const k of khoi.values()) { rong = Math.max(rong, k.x + k.w); cao = Math.max(cao, k.y + k.h) }
