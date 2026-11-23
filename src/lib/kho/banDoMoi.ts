@@ -340,6 +340,9 @@ export type KhoCauRow = {
   nguon: string; la_goc: boolean; nguon_gan: string; dang_bai_id: string | null; dang_bai: string | null; ly_do: string | null
   // Hình–Học bài nhiều ý (mig 202611091550): câu là 1 ý của bài HHB… — chỉ kho Hình–Học trả, Đại/HGT để trống
   bai_y?: string | null; nhan_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null; loi_dan?: string | null
+  // Nhãn lọc (Thùy 23/11, mig 202611232047 — chỉ kho của bài học Hình–Học trả): ma_nhan = mã gốc của BÀI mà nhãn bám vào
+  // (HHB… / HHC… gốc) · nhan_loc = id các nhãn của bài. Lib: nhanLoc.ts.
+  ma_nhan?: string | null; nhan_loc?: string[]
 }
 // Thùy 27/10 — ngăn 📚 Kho câu: chuyển 1 câu sang dạng bài khác (gán của người; mặc định kèm bản sao của câu gốc) · đưa câu vào
 // KHO RÁC (xoa_at, khôi phục ở màn Kho rác). Kho gốc (Đại/HGT) và mọi luật chặn nằm ở DB (fn_bdm_cau_chuyen_dang / fn_bdm_cau_xoa).
@@ -360,8 +363,9 @@ export async function getKhoCau(loai: 'dang_bai' | 'nhom' | 'chua_khop' | 'de_xu
 }
 
 // ── Kho câu HÌNH–HỌC (04/11) — cùng hình dạng trả về với Đại để KhoModal dùng chung; bảng hinh_hoc_*, hàm fn_hh_* ──
-export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0): Promise<KhoCauRow[]> {
-  const { data, error } = await supabase.rpc('fn_hh_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset })
+// `nhan` = id các nhãn lọc đang bật: DB chỉ trả bài mang ĐỦ mọi nhãn đó ("và" — Thùy 23/11); rỗng = không lọc.
+export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 'chua_khop', id: string, loc: KhoCauLoc = 'tat_ca', limit = 40, offset = 0, nhan: readonly string[] = []): Promise<KhoCauRow[]> {
+  const { data, error } = await supabase.rpc('fn_hh_kho_cau', { p_loai: loai, p_id: id, p_loc: loc, p_limit: limit, p_offset: offset, p_nhan: nhan.length ? nhan : null })
   if (error) loi(error)
   return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
 }

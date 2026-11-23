@@ -16,6 +16,8 @@ import PrintView from '../PrintView'
 import GanLopBdm from './GanLopBdm'
 import { KhoiCau, CopyBuoiModal, type CfgCau } from './BuilderBanDoMoi'
 import { AnhMmEditCtx } from '../anhMmCtx'
+import { useNhanLoc, ThanhNhan, NhanCuaBai } from '../../kho/NhanLoc'
+import { duNhan } from '../../../lib/kho/nhanLoc'
 import type { CauHoi } from '../../../lib/kho/api'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 
@@ -422,7 +424,10 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
   // hình trái, đề + MỌI ý; ô tìm theo mã / nguồn / đề (lọc hiển thị thuần, không đụng dữ liệu).
   const [tim, setTim] = useState('')
   const q = tim.trim().toLowerCase()
-  const hien = (kho ?? []).filter((b) => !q || [b.ma_bai, b.nguon ?? '', b.gia_thiet_chung ?? '', ...b.y.map((y) => y.noi_dung)].join(' ').toLowerCase().includes(q))
+  // Nhãn lọc của bài kho (Thùy 23/11, spec-kho-cau-hoi §14): kho của mô hình đã tải trọn ⇒ bật / tắt là lọc HIỂN THỊ, bài đã chọn giữ nguyên. Chỉ xem — gán / gỡ ở kho.
+  const NL = useNhanLoc('hinh_luyen')
+  const [batNL, setBatNL] = useState<string[]>([])
+  const hien = (kho ?? []).filter((b) => duNhan(b.nhan_loc, batNL) && (!q || [b.ma_bai, b.nguon ?? '', b.gia_thiet_chung ?? '', ...b.y.map((y) => y.noi_dung)].join(' ').toLowerCase().includes(q)))
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
       <div className="absolute inset-x-16 inset-y-8 flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -439,6 +444,7 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
                   className="h-8 w-72 rounded-md border border-slate-200 px-2.5 text-[13px] outline-none focus:border-teal-400" />
                 <span className="text-[12px] text-slate-400">{hien.length}/{kho.length} bài</span>
               </div>
+              <ThanhNhan className="mb-3" ds={NL.ds} so={(n) => kho.filter((b) => b.nhan_loc?.includes(n.id)).length} bat={batNL} onBat={setBatNL} soKhop={hien.length} />
               <div className="space-y-3">
                 {hien.map((b) => {
                   const on = chon.includes(b.ma_bai), khoaB = khoa.includes(b.ma_bai)
@@ -454,6 +460,7 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
                         <div className="flex flex-wrap items-center gap-x-3 text-[12px]">
                           <span className="font-mono font-semibold text-teal-700">{b.ma_bai}</span>
                           <span className="text-slate-500">{b.nguon ?? 'chưa rõ nguồn'}</span>
+                          <NhanCuaBai ds={NL.ds} ids={b.nhan_loc} nho />
                           {!b.gan_ca_bai && <span className="rounded bg-slate-100 px-1.5 text-slate-500">ý gán vào bài của mô hình</span>}
                           <span className="ml-auto font-medium text-slate-500">{b.y.length} ý</span>
                         </div>
@@ -673,7 +680,14 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
     hhCau(maBai).then(setLuyen).catch((e) => setErr(loiDoc(e)))
     if (coKhoLop) hhCauLop(maBai).then((l) => { setLop(l.map((x) => ({ ...x, la_goc: true }))); if (!l.length) setNguon('luyen') }).catch((e) => setErr(loiDoc(e)))
   }, [maBai, coKhoLop])
-  const kho = nguon === 'lop' ? lop : luyen
+  // Nhãn lọc của bài (Thùy 23/11, spec-kho-cau-hoi §14) — chỉ kho luyện mang nhãn; kho của bài học đã tải trọn ⇒ bật / tắt là lọc HIỂN THỊ,
+  // câu đã tick ở bài đang ẩn vẫn giữ. Chỉ xem — gán / gỡ ở kho. Số trên thanh = số BÀI (bài nhiều ý tính 1) đang có trong danh sách.
+  const NL = useNhanLoc('hinh_hoc')
+  const [batNL, setBatNL] = useState<string[]>([])
+  const coNL = nguon === 'luyen'
+  const khoTat = nguon === 'lop' ? lop : luyen
+  const kho = khoTat && coNL && batNL.length ? khoTat.filter((c) => duNhan(c.nhan_loc, batNL)) : khoTat
+  const soBaiNhan = (ds: CauChon[], id?: string) => new Set(ds.filter((c) => !id || c.nhan_loc?.includes(id)).map((c) => c.ma_nhan ?? c.ma_cau)).size
   const bat = (ma: string) => setChon((s) => (s.includes(ma) ? s.filter((x) => x !== ma) : [...s, ma]))
   return (
     <div className="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm" onClick={onClose}>
@@ -689,9 +703,12 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
           </div>}
           <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
         </div>
+        {coNL && luyen && luyen.length > 0 && (
+          <ThanhNhan className="border-b border-slate-100 px-6 py-2" ds={NL.ds} so={(n) => soBaiNhan(luyen, n.id)} bat={batNL} onBat={setBatNL} soKhop={kho ? soBaiNhan(kho) : null} />
+        )}
         <div className="min-h-0 flex-1 space-y-2 overflow-auto px-6 py-4">
           {err ? <p className="text-sm text-rose-600">{err}</p> : !kho ? <p className="text-sm text-slate-400">Đang tải kho…</p>
-            : kho.length === 0 ? <p className="text-sm text-slate-400">{nguon === 'lop' ? 'Bài học này chưa có câu ở kho trên lớp — soạn ở Bản đồ mới › Hình – Học › 🏫 Kho trên lớp.' : 'Bài học này chưa có câu kho chuẩn.'}</p>
+            : kho.length === 0 ? <p className="text-sm text-slate-400">{coNL && batNL.length ? 'Không bài nào có đủ các nhãn đang bật.' : nguon === 'lop' ? 'Bài học này chưa có câu ở kho trên lớp — soạn ở Bản đồ mới › Hình – Học › 🏫 Kho trên lớp.' : 'Bài học này chưa có câu kho chuẩn.'}</p>
             : gomTheoBai(kho).map((g) => {
               // Bài nhiều ý (Thùy 09/11): 1 THẺ = đề bài + hình 1 lần, mỗi ý 1 dòng chọn riêng (hệ vẫn hiểu là n câu, chấm từng ý)
               if (g[0].bai_y) {
@@ -704,6 +721,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
                     <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px]">
                       <span className="font-mono font-semibold text-teal-700">{dau.bai_y}</span>
                       <span className="text-slate-400">bài {g.length} ý · chọn từng ý</span>
+                      <NhanCuaBai ds={NL.ds} ids={dau.nhan_loc} nho />
                       <button onClick={chonBai} disabled={!moTat.length} className="ml-auto rounded border border-sky-300 px-2 py-0.5 font-medium text-sky-700 hover:bg-sky-50 disabled:opacity-40">{du ? 'Bỏ cả bài' : 'Chọn cả bài'}</button>
                     </div>
                     <div className="flex gap-4 max-md:flex-col">
@@ -740,6 +758,7 @@ export function ChonCauHoc({ maBai, ten, daChon, khoa, coKhoLop = false, macDinh
                     {!c.la_goc && <span className="rounded bg-slate-100 px-1.5 text-slate-500">bản sao</span>}
                     {c.vai && <span className="rounded bg-teal-50 px-1.5 text-teal-700">{c.vai === 'giang' ? '🎓 Bài giảng' : '✏️ Luyện trên lớp'}</span>}
                     <span className="text-slate-400">đã dùng {c.so_lan_dung} lần</span>
+                    <NhanCuaBai ds={NL.ds} ids={c.nhan_loc} nho />
                   </div>
                   <div className="line-clamp-3 text-[13px] text-slate-700"><MathText>{c.noi_dung}</MathText></div>
                   {c.anh_de && <img src={c.anh_de} alt="" className="mt-1 max-h-24 rounded border border-slate-200" />}

@@ -99,6 +99,7 @@ Số hiển thị (Nhóm 2 · Dạng bài 2.3 · Câu 5) **suy lúc in**, không
 - Chọn theo **nhóm là chính**, vẫn chọn **dạng bài lẻ** (kể cả từ nhiều nhóm trong một buổi); chọn nhóm ⇒ mặc định mọi dạng bài theo thứ tự bản đồ, bỏ tick dạng không dạy (A1, Thùy 17/10). Nhóm chưa có dạng bài chọn được, câu lấy cả nhóm.
 - Bộ chọn: `BoChonNhom` — popup gần full màn, chủ đề (ô tìm-chọn) → chuyên đề → hộp nhóm có chip dạng bài (số câu, ✓LT / ✓VD); chuyên đề chỉ có trong bộ chọn. Popup kho / chọn câu ~95vw × 95vh (28/10).
 - **Bổ trợ không đi đường này** — chỉ MCQ / trả lời ngắn qua `_btyeu_chon_cau` (`spec-bo-tro` §4).
+- **Nhãn lọc trong hộp chọn (Thùy 23/11):** hộp chọn câu Hình–Học (`ChonCauHoc`) và hộp chọn bài Hình–Luyện (`ChonBai`) có thanh **Nhãn lọc** — bật nhiều nhãn = bài phải có đủ; builder chỉ lọc + xem, gán / gỡ ở kho; đổi bộ lọc không mất câu đã tick. Luật + dữ liệu + component (`kho/NhanLoc.tsx`): `spec-kho-cau-hoi` §14.
 
 ### 2.3 Gợi ý câu — MỘT luật, ở DB (`fn_tl_bdm_goi_y`)
 1. Loại câu đã dùng trong **buổi** (`_tl_bdm_cau_da_dung`) và danh sách loại trừ truyền vào.

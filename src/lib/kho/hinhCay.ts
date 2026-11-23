@@ -407,6 +407,7 @@ export type YChuoi = {
 export type ChuoiKho = {
   id: string; ma_bai: string; nguon: string | null; nguon_ma_cau: string | null; de_bai: string | null
   gia_thiet_chung: string | null; anh_de: string | null; gan_ca_bai: boolean; y: YChuoi[]
+  nhan_loc?: string[]   // id các NHÃN LỌC của bài (Thùy 23/11, mig 202611232047 — nhanLoc.ts); khác nhãn Dạng bài / Bổ đề của từng ý
 }
 /** Bài kho thuộc mô hình: gán cả bài vào mô hình, hoặc có ý gán vào một bài của cây. */
 export async function khoCuaMoHinh(moHinhId: string): Promise<ChuoiKho[]> {

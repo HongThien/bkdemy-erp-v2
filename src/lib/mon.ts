@@ -28,6 +28,12 @@ const NHANH_THE: Record<string, string> = { hinh: 'Hình', hinh_gt: 'HGT' }
 const NHANH_CHINH_THEO_MON: Record<string, string> = { 'Toán': 'Đại', 'TSA': 'Đại' }
 export const theNhanh = (mon: string | null | undefined, nhanh: string | null | undefined): string | null =>
   nhanh ? NHANH_THE[nhanh] ?? nhanh : (mon ? NHANH_CHINH_THEO_MON[mon] ?? null : null)
+// Nhãn lọc động của kho (Thùy 23/11, spec-kho-cau-hoi §14): kho nào dùng BỘ NHÃN của (môn, nhánh) nào. Kho Hình–Học và kho
+// Hình–Luyện dùng chung một bộ. Mở cho kho khác = thêm dòng ở đây + nới CHECK ở DB (_nhan_loc_nhanh_cua_kho, fn_nhan_loc_gan).
+export const KHO_NHAN_LOC = {
+  hinh_hoc: { mon: 'Toán', nhanh: 'hinh' },
+  hinh_luyen: { mon: 'Toán', nhanh: 'hinh' },
+} as const
 
 // ⚠ File này phải là HẰNG SỐ THUẦN (lib data-layer import nó) — hook useMonScope (scope④ theo môn,
 // dính useStore) ĐÃ DỜI sang src/hooks/useMonScope.ts (08-29, app OPS: nằm chung file là mọi bundle

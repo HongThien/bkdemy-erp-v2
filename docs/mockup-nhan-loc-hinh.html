@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup — Nhãn lọc động cho kho Hình</title>
+<style>
+  :root{--ink:#1d1d1f;--ink2:#515154;--ink3:#86868b;--line:#e5e5ea;--bg:#f5f5f7;--card:#fff;--ac:#4f46e5;--ac-bg:#eef2ff;--teal:#0f766e}
+  *{box-sizing:border-box}html,body{margin:0}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 110px}
+  h1{font-size:22px;font-weight:600;margin:0 0 4px}
+  .sub{color:var(--ink2);font-size:13.5px;margin:0 0 16px}
+  .seg{display:inline-flex;flex-wrap:wrap;gap:2px;background:#e9e9ee;border-radius:11px;padding:3px;margin-bottom:16px}
+  .seg button{border:0;background:transparent;border-radius:9px;padding:7px 14px;font-size:13.5px;font-weight:500;color:var(--ink2);cursor:pointer}
+  .seg button.on{background:#fff;color:var(--ac);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .man{background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+  .dau{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#fff;border-bottom:1px solid var(--line);padding:10px 16px}
+  .dau b.t{font-size:14.5px}
+  .dau .ten{flex:1;min-width:120px;color:var(--ink2);font-size:13px}
+  .loc{display:inline-flex;gap:2px;background:#f0f0f3;border-radius:8px;padding:2px}
+  .loc span{padding:2px 9px;border-radius:6px;font-size:12px;color:var(--ink2)}
+  .loc span.on{background:#fff;color:var(--ac);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+  /* THANH NHÃN */
+  .thanh{display:flex;flex-wrap:wrap;align-items:center;gap:7px;background:#fff;border-bottom:1px solid var(--line);padding:9px 16px}
+  .thanh .nhanh{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);margin-right:2px}
+  /* NHÃN = khối ĐẬM màu, chữ trắng, bóng (Thùy 23/11). Chỉ gradient + box-shadow tĩnh: không ảnh, không blur, không animation chạy liên tục ⇒ không tốn hiệu suất. */
+  .bong{color:#fff;border:0;background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.08) 48%,rgba(0,0,0,.06) 100%),var(--c);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.22),0 4px 9px -3px var(--c);text-shadow:0 1px 1px rgba(0,0,0,.22)}
+  .pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;transition:transform .12s,opacity .12s,box-shadow .12s}
+  .pill:hover{transform:translateY(-1px)}
+  .pill .so{font-size:11px;font-weight:600;background:rgba(255,255,255,.26);border-radius:999px;padding:0 6px;text-shadow:none}
+  .pill.on{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 0 2px #fff,0 0 0 4px var(--c),0 6px 12px -3px var(--c)}
+  .thanh.coloc .pill:not(.on){opacity:.55;box-shadow:none}
+  .thanh.coloc .pill:not(.on):hover{opacity:.85}
+  .nut{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;font-size:12.5px;font-weight:500;color:var(--ink2);cursor:pointer}
+  .nut:hover{border-color:#a5b4fc;color:var(--ac)}
+  .nut.on{background:var(--ac-bg);border-color:#c7d2fe;color:var(--ac)}
+  .nut.chinh{background:var(--ac);border-color:var(--ac);color:#fff}
+  .dangloc{font-size:12px;color:var(--ink2)}
+  .than{padding:14px 16px;display:flex;flex-direction:column;gap:12px;min-height:260px}
+  .the{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid transparent;position:relative}
+  .the.chon{border-color:#a5b4fc;background:#fafaff}
+  .the .h{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+  .ma{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;font-weight:600;color:var(--teal)}
+  .mo{font-size:12px;color:var(--ink3)}
+  .chip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:600}
+  .chip i{font-style:normal;cursor:pointer;opacity:.7;font-weight:400;text-shadow:none}
+  .chip i:hover{opacity:1}
+  .them{border:1px dashed #c7c7cc;background:#fff;color:var(--ink3);border-radius:999px;padding:1px 9px;font-size:11.5px;cursor:pointer}
+  .them:hover{border-color:var(--ac);color:var(--ac)}
+  .noidung{display:flex;gap:14px}
+  .hinh{flex:0 0 150px;height:104px;border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#c7c7cc;font-size:11.5px;background:#fafafa}
+  .loidan{background:var(--teal);color:#fff;border-radius:9px;padding:7px 11px;font-size:13.5px;margin-bottom:6px}
+  .y{border:1px solid var(--line);border-radius:9px;padding:5px 10px;font-size:13.5px;margin-bottom:5px;background:#fafafa;display:flex;gap:8px;align-items:flex-start}
+  .y b{color:#6d28d9}
+  .y .o{flex:0 0 18px;height:18px;border-radius:5px;background:#eef;margin-top:2px;border:1px solid #c7d2fe;cursor:pointer;font-size:11px;color:#fff;display:flex;align-items:center;justify-content:center}
+  .y .o.on{background:#0284c7;border-color:#0284c7}
+  .m{font-style:italic;font-family:"Cambria Math",Cambria,Georgia,serif}
+  .tick{width:20px;height:20px;border-radius:6px;border:1.5px solid #c7c7cc;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:#fff;flex:0 0 auto}
+  .tick.on{background:var(--ac);border-color:var(--ac)}
+  .rong{padding:38px 0;text-align:center;color:var(--ink3);font-size:13.5px}
+  /* hộp gán nhãn */
+  .hop{position:absolute;z-index:50;width:280px;background:#fff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.2);border:1px solid var(--line);padding:10px}
+  .hop input{width:100%;height:34px;border:1px solid var(--line);border-radius:9px;padding:0 10px;font-size:13.5px;outline:none}
+  .hop input:focus{border-color:#a5b4fc}
+  .hop .ds{max-height:210px;overflow:auto;margin-top:8px}
+  .hop .dong{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:13.5px}
+  .hop .dong:hover{background:#f5f5f7}
+  .hop .dong .dau2{width:16px;color:var(--ac);font-weight:700}
+  .hop .tao{border-top:1px solid var(--line);margin-top:8px;padding-top:9px}
+  .hop .tao .tt{font-size:12px;color:var(--ink3);margin-bottom:6px}
+  .mauo{display:flex;gap:6px;margin-bottom:9px}
+  .mauo span{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+  .mauo span.on{box-shadow:0 0 0 2px var(--ink)}
+  .hop .chu{font-size:11.5px;color:var(--ink3);margin-top:8px}
+  /* thanh gán hàng loạt */
+  .loat{position:sticky;bottom:12px;margin:0 16px 14px;background:#1d1d1f;color:#fff;border-radius:14px;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  .loat .nut{background:#3a3a3c;border-color:#48484a;color:#fff}
+  .loat .nut.chinh{background:#fff;color:var(--ink);border-color:#fff}
+  .chan{display:flex;align-items:center;gap:10px;background:#fff;border-top:1px solid var(--line);padding:10px 16px;font-size:13px;color:var(--ink2)}
+  /* quản lý */
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  th,td{text-align:left;padding:9px 14px;font-size:13.5px;border-bottom:1px solid var(--line)}
+  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink3);font-weight:600;background:#fafafa}
+  .khoi{background:#fff;border-radius:14px;padding:14px 18px;margin-top:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:4px solid var(--ac)}
+  .khoi h3{margin:0 0 6px;font-size:15px}
+  .khoi li{margin-bottom:3px}
+  .khoi ul{margin:0;padding-left:20px;font-size:13.5px;color:var(--ink2)}
+  details{background:#fff;border-radius:14px;padding:12px 18px;margin-top:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-size:13px;color:var(--ink2)}
+  summary{cursor:pointer;font-weight:600;color:var(--ink)}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;background:#f0f0f3;border-radius:4px;padding:0 4px}
+  .mota{font-size:12.5px;color:var(--ink3);margin:0 0 10px}
+  @media (max-width:640px){.noidung{flex-direction:column}.hinh{flex-basis:80px;width:100%}}
+</style>
+
+<div class="wrap">
+  <h1>Nhãn lọc động — kho Hình</h1>
+  <p class="sub">Bản vẽ thử để Thùy duyệt (bấm thử được, dữ liệu giả). Gán một nhãn bất kì cho một bài → trên thanh lọc tự có một nút bật / tắt. Nhãn chỉ để <b>tìm bài</b>: không vào đánh giá, không đổi bài học / mô hình của bài, học sinh không thấy.</p>
+
+  <div class="seg" id="seg"></div>
+  <p class="mota" id="mota"></p>
+  <div id="man"></div>
+
+  <div class="khoi">
+    <h3>Luật theo câu trả lời của Thùy 23/11</h3>
+    <ul>
+      <li><b>Gán ở cấp bài:</b> bài nhiều ý (a–b–c) một bộ nhãn cho cả bài; câu đơn gán cho câu.</li>
+      <li><b>Hai kho:</b> kho bài Hình–Học và kho bài Hình–Luyện. Chuỗi bài mô hình (cây) chưa làm.</li>
+      <li><b>Một bộ nhãn chung</b> cho cả kho Hình, mọi khối, mọi người. Ai là nhân sự vào được kho thì tạo và gán / gỡ được; đổi tên, đổi màu, xoá nhãn chỉ trưởng khối trở lên và quản trị.</li>
+      <li><b>Bật nhiều nhãn = "và":</b> bài phải có đủ mọi nhãn đang bật.</li>
+      <li><b>Để phẳng một dãy</b>, chưa gom nhóm (chùm "Lớp S / Lớp A / Lớp B" là 3 nhãn riêng; gom nhóm khi dãy dài).</li>
+      <li><b>Thanh chỉ hiện nhãn có trong danh sách đang mở</b>, kèm số bài. Hộp gán nhãn thì hiện mọi nhãn đã có.</li>
+      <li><b>Có ở builder:</b> hộp chọn câu Hình–Học và hộp chọn bài Hình–Luyện (giáo trình, ET) có cùng thanh nhãn. Ở builder chỉ lọc và xem nhãn; gán / gỡ làm ở kho.</li>
+      <li><b>Bản sao (clone) dùng chung nhãn với câu gốc:</b> gán cho câu gốc là bản sao có luôn, gỡ cũng vậy.</li>
+      <li><b>Gán hàng loạt:</b> bấm "Chọn nhiều", tick các bài, gán hoặc gỡ một nhãn cho cả loạt.</li>
+      <li><b>Xoá nhãn = ẩn đi</b> (khôi phục được); bài không mất gì.</li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>Phần kỹ thuật (Claude tự quyết — Thùy không cần đọc): phiếu 10 câu, bảng, hàm</summary>
+    <p><b>Bảng mới (2):</b> <code>kho_nhan_loc</code> (id uuid = mã gốc bất biến · <code>mon</code> · <code>nhanh</code>='hinh' · ten · mau (1 trong 8 màu) · tao_boi · tao_at · <code>xoa_at</code> xoá mềm; tên không trùng trong cùng môn + nhánh) · <code>kho_nhan_loc_gan</code> (nhan_id → kho_nhan_loc · <code>kho</code> ∈ hinh_hoc | hinh_luyen · <code>ma</code> text = mã gốc của bài · gan_boi · gan_at; khoá chính (kho, ma, nhan_id)). Không tạo bảng kiểu <code>hinh_…</code>; mở cho kho khác sau = nới CHECK của <code>kho</code> + thêm một nhánh trong hàm.</p>
+    <p><b>Mã bài mà nhãn bám vào:</b> Hình–Học = <code>coalesce(bai_y, parent_ma_cau, ma_cau)</code> — HHB… với bài nhiều ý, HHC… gốc với câu đơn và mọi bản sao của nó (đúng khoá mà màn kho đang dùng để xếp các ý / bản sao liền nhau). Hình–Luyện = <code>hinh_bai.ma_bai</code> (HLB…). Mã cấp bằng sequence, không cấp lại ⇒ dòng gán của bài đã xoá không bao giờ dính sang bài khác.</p>
+    <p><b>Phiếu 10 câu (spec-kien-truc §9):</b> 1) Miền Kho; sở hữu 2 bảng trên, builder chỉ gọi hàm. 2) Mã gốc: nhãn = <code>id</code> cấp lúc tạo (đổi tên / màu không đổi id); dòng gán bám mã gốc bài. 3) Có <code>mon</code> ở bảng nhãn; bảng gán có <code>kho</code>. 4) Đọc: nhân sự (RLS <code>(select la_thanh_vien())</code>); ghi chỉ qua RPC có cổng — tạo / gán / gỡ: nhân sự; sửa / xoá nhãn: trưởng khối trở lên của môn + quản trị; học sinh, phụ huynh, người chưa đăng nhập: không quyền gì. 5) Lúc mở kho Hình–Học: 2 lượt gọi (danh sách câu sẵn có, thêm tham số nhãn + cột nhãn của bài · danh mục nhãn kèm số bài trong phạm vi); builder: thêm 1 lượt danh mục, nhãn từng bài đi kèm danh sách đang có. 6) Chi phí theo MỘT bài học / MỘT mô hình (lớn nhất ~500 câu); đo ms trước khi lên màn. 7) Không có số tính sẵn. 8) Index: khoá chính (kho, ma, nhan_id) + (nhan_id, kho); bảng hẹp. 9) Không polling. 10) Lớn theo số bài × số nhãn (ước dưới 50 nghìn dòng), không phải nhật ký.</p>
+    <p><b>Lọc ở DB:</b> kho Hình–Học phân trang 40 câu ⇒ điều kiện "đủ mọi nhãn đang bật" nằm trong <code>fn_hh_kho_cau</code> (thêm tham số mảng nhãn). Hộp chọn của builder và tab Kho bài của mô hình vốn tải trọn danh sách của một bài học / một mô hình ⇒ nhãn đi kèm từng bài, bật / tắt là lọc phần đang hiện (như bộ lọc Loại / Dạng hiện có), tick đã chọn không mất.</p>
+    <p><b>Không đụng:</b> mastery, phân dạng, <code>dang_chinh</code>, mô hình của bài, app học sinh, app phụ huynh — không hàm nào của các phần đó đọc 2 bảng này.</p>
+  </details>
+</div>
+
+<div class="hop" id="hop" style="display:none"></div>
+
+<script>
+const MAU = {
+  // 8 màu ĐẬM, đủ tương phản với chữ trắng
+  do:   {c:'#dc2626', ten:'Đỏ'},
+  cam:  {c:'#ea580c', ten:'Cam'},
+  vang: {c:'#ca8a04', ten:'Vàng'},
+  luc:  {c:'#16a34a', ten:'Lục'},
+  ngoc: {c:'#0d9488', ten:'Ngọc'},
+  lam:  {c:'#2563eb', ten:'Lam'},
+  tim:  {c:'#7c3aed', ten:'Tím'},
+  xam:  {c:'#52525b', ten:'Xám'},
+}
+let NHAN = [
+  {id:'n1', ten:'Rất khó',  mau:'do',  boi:'Thùy'},
+  {id:'n2', ten:'Dễ thi',   mau:'cam', boi:'Thùy'},
+  {id:'n3', ten:'Phải học', mau:'luc', boi:'Thùy'},
+  {id:'n4', ten:'Lớp S',    mau:'tim', boi:'Thùy'},
+  {id:'n5', ten:'Lớp A',    mau:'lam', boi:'Thùy'},
+  {id:'n6', ten:'Lớp B',    mau:'ngoc',boi:'Thùy'},
+  {id:'n7', ten:'Đề Hà Nội',mau:'xam', boi:'Trang'},
+]
+// công thức viết gọn kiểu LaTeX trong dữ liệu giả → ký hiệu đọc được (bản thật dùng MathText sẵn có)
+const kyHieu = (s) => s.replace(/\\dfrac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\\widehat\{([^}]*)\}/g, '∠$1').replace(/\\cdot/g, '·').replace(/\\parallel/g, '∥')
+  .replace(/\\perp/g, '⊥').replace(/\\cap/g, '∩').replace(/\^\\circ/g, '°').replace(/\^2/g, '²').replace(/\^3/g, '³')
+const m = (s) => s.replace(/\$([^$]+)\$/g, (_, x) => `<span class="m">${kyHieu(x)}</span>`)
+const HOC = [
+  {ma:'HHB000412', mo:'bài nhiều ý · 3 ý', dan:'Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Gọi $D$, $E$ là hình chiếu của $H$ trên $AB$, $AC$.',
+   y:[['a','Chứng minh $ADHE$ là hình chữ nhật.'],['b','Chứng minh $AD \\cdot AB = AE \\cdot AC$.'],['c','Chứng minh $DE^3 = BC \\cdot BD \\cdot CE$.']], nhan:['n1','n4','n2']},
+  {ma:'HHB000418', mo:'bài nhiều ý · 2 ý', dan:'Cho hình thang $ABCD$ ($AB \\parallel CD$), $O$ là giao điểm hai đường chéo. Đường thẳng qua $O$ song song với đáy cắt $AD$, $BC$ tại $M$, $N$.',
+   y:[['a','Chứng minh $OM = ON$.'],['b','Chứng minh $\\dfrac{1}{AB} + \\dfrac{1}{CD} = \\dfrac{2}{MN}$.']], nhan:['n2','n3','n5']},
+  {ma:'HHC015574', mo:'câu đơn', don:'Cho tam giác $ABC$ cân tại $A$, các đường cao $BK$, $CE$. Chứng minh $BK = CE$.', nhan:['n3','n6']},
+  {ma:'HHC015574', mo:'bản sao HHC016210 · nhãn theo câu gốc', don:'Cho tam giác $MNP$ cân tại $M$, các đường cao $NH$, $PK$. Chứng minh $NH = PK$.', nhan:null, goc:'HHC015574', hien:'HHC016210'},
+  {ma:'HHB000431', mo:'bài nhiều ý · 3 ý', dan:'Cho tam giác $ABC$ nhọn, các đường cao $AD$, $BE$, $CF$ cắt nhau tại $H$.',
+   y:[['a','Chứng minh $AE \\cdot AC = AF \\cdot AB$.'],['b','Chứng minh $\\widehat{AEF} = \\widehat{ABC}$.'],['c','Chứng minh $BH \\cdot BE + CH \\cdot CF = BC^2$.']], nhan:['n1','n2','n4','n5']},
+  {ma:'HHB000440', mo:'bài nhiều ý · 2 ý', dan:'Cho hình bình hành $ABCD$. Một đường thẳng qua $A$ cắt $BD$, $BC$, $DC$ lần lượt tại $E$, $K$, $G$.',
+   y:[['a','Chứng minh $AE^2 = EK \\cdot EG$.'],['b','Chứng minh $\\dfrac{1}{AE} = \\dfrac{1}{AK} + \\dfrac{1}{AG}$.']], nhan:[]},
+  {ma:'HHC015602', mo:'câu đơn', don:'Cho tam giác $ABC$, trung tuyến $AM$. Phân giác góc $AMB$ cắt $AB$ tại $D$, phân giác góc $AMC$ cắt $AC$ tại $E$. Chứng minh $DE \\parallel BC$.', nhan:['n5','n6','n7']},
+]
+const LUYEN = [
+  {ma:'HLB00311', mo:'Đề cương cuối kì I · THCS Giảng Võ · 3 ý', dan:'Cho đường tròn $(O)$ và điểm $M$ nằm ngoài đường tròn. Kẻ hai tiếp tuyến $MA$, $MB$ ($A$, $B$ là tiếp điểm). $H$ là giao điểm của $OM$ và $AB$.',
+   y:[['a','Chứng minh bốn điểm $M, A, O, B$ cùng thuộc một đường tròn.'],['b','Chứng minh $OM \\perp AB$ và $OH \\cdot OM = R^2$.'],['c','Kẻ đường kính $AC$, $MC$ cắt $(O)$ tại $D$. Chứng minh $\\widehat{MHD} = \\widehat{MCO}$.']], nhan:['n2','n3','n5','n7']},
+  {ma:'HLB00324', mo:'Đề cương cuối kì I · THCS Cầu Giấy · 3 ý', dan:'Từ điểm $M$ ở ngoài $(O;R)$ kẻ hai tiếp tuyến $MA$, $MB$. Kẻ đường kính $BC$.',
+   y:[['a','Chứng minh $AC \\parallel MO$.'],['b','$MC$ cắt $(O)$ tại $E$. Chứng minh $ME \\cdot MC = MA^2$.'],['c','Tiếp tuyến tại $C$ cắt $AB$ tại $F$. Chứng minh $OF \\perp MC$.']], nhan:['n1','n4','n7']},
+  {ma:'HLB00338', mo:'chưa rõ nguồn · 2 ý', dan:'Cho $(O)$, điểm $A$ nằm ngoài, tiếp tuyến $AB$, $AC$. Gọi $I$ là trung điểm $AB$, $CI$ cắt $(O)$ tại $K$.',
+   y:[['a','Chứng minh $IB^2 = IK \\cdot IC$.'],['b','Chứng minh $AK$ kéo dài cắt $(O)$ tại $D$ thì $BD \\parallel AC$... (đề gốc)']], nhan:['n1','n4']},
+  {ma:'HLB00352', mo:'Đề thi vào 10 Hà Nội 2019 · 3 ý', dan:'Cho đường tròn $(O;R)$ và điểm $S$ ở ngoài. Kẻ tiếp tuyến $SA$, $SB$ và cát tuyến $SCD$ không đi qua $O$.',
+   y:[['a','Chứng minh $SA^2 = SC \\cdot SD$.'],['b','Gọi $I$ là trung điểm $CD$. Chứng minh 5 điểm $S, A, I, O, B$ cùng thuộc một đường tròn.'],['c','Chứng minh $\\widehat{AHC} = \\widehat{AHD}$... ($H = SO \\cap AB$)']], nhan:['n2','n3','n4','n5','n7']},
+  {ma:'HLB00367', mo:'Đề cương cuối kì I · THCS Nghĩa Tân · 2 ý', dan:'Cho nửa đường tròn $(O)$ đường kính $AB$, $M$ thuộc nửa đường tròn. Tiếp tuyến tại $M$ cắt tiếp tuyến tại $A$, $B$ ở $C$, $D$.',
+   y:[['a','Chứng minh $CD = AC + BD$.'],['b','Chứng minh $\\widehat{COD} = 90^\\circ$ và $AC \\cdot BD = R^2$.']], nhan:['n3','n6']},
+]
+const MAN = [
+  {id:'hoc',   ten:'① Kho Hình–Học',  mo:'Bản đồ › Hình–Học › bài học › 📚 Kho bài tập (popup đang có). Thêm: thanh nhãn, nhãn trên từng thẻ, nút "＋ nhãn", "Chọn nhiều".', ds:HOC,   kieu:'kho'},
+  {id:'luyen', ten:'② Kho Hình–Luyện', mo:'Bản đồ › Hình–Luyện › mô hình › tab ③ Kho bài (đang có). Cùng thanh nhãn, cùng bộ nhãn với Hình–Học.', ds:LUYEN, kieu:'kho'},
+  {id:'bh',    ten:'③ Builder · chọn câu Hình–Học', mo:'Giáo trình Hình / ET › ✎ Chọn câu của một bài học (hộp đang có). Thêm thanh nhãn để lọc; nhãn chỉ xem, tick ý như cũ — đổi bộ lọc không mất ý đã tick.', ds:HOC, kieu:'chon'},
+  {id:'bl',    ten:'④ Builder · chọn bài Hình–Luyện', mo:'Giáo trình Hình › 🌿 Luyện › Chọn bài trong kho của mô hình (hộp đang có). Thêm thanh nhãn để lọc.', ds:LUYEN, kieu:'chon'},
+  {id:'ql',    ten:'⑤ Quản lý nhãn', mo:'Mở từ nút "⚙ Nhãn" trên thanh. Chỉ trưởng khối trở lên và quản trị thấy nút đổi tên / đổi màu / xoá.', kieu:'ql'},
+]
+const TT = {}   // trạng thái từng màn: bật, chọn nhiều, đã tick
+MAN.forEach((x) => TT[x.id] = {bat:new Set(), loat:false, tick:new Set(), y:new Set()})
+let dangMo = 'hoc'
+const $ = (s) => document.querySelector(s)
+const nhanSong = () => NHAN.filter((n) => !n.xoa)
+const cuaBai = (b) => b.nhan ?? (MAN.find((x) => x.ds && x.ds.includes(b)).ds.find((g) => g.ma === b.goc && g.nhan)?.nhan ?? [])
+const chipHtml = (n, go) => { const c = MAU[n.mau]; return `<span class="chip bong" style="--c:${c.c}">${n.ten}${go ? `<i title="Gỡ nhãn này khỏi bài" data-go="${go}|${n.id}">✕</i>` : ''}</span>` }
+
+function ve() {
+  $('#seg').innerHTML = MAN.map((x) => `<button class="${x.id === dangMo ? 'on' : ''}" data-man="${x.id}">${x.ten}</button>`).join('')
+  const M = MAN.find((x) => x.id === dangMo), t = TT[dangMo]
+  $('#mota').textContent = M.mo
+  if (M.kieu === 'ql') return veQuanLy()
+  const ds = M.ds
+  const dem = (id) => ds.filter((b) => b.nhan && b.nhan.includes(id)).length + ds.filter((b) => !b.nhan && cuaBai(b).includes(id)).length
+  const coTrong = nhanSong().filter((n) => dem(n.id) > 0)
+  ;[...t.bat].forEach((id) => { if (!coTrong.some((n) => n.id === id)) t.bat.delete(id) })
+  const hien = ds.filter((b) => [...t.bat].every((id) => cuaBai(b).includes(id)))
+  const laKho = M.kieu === 'kho', laHoc = M.ds === HOC
+  const tieuDe = laKho ? (laHoc ? '📚 Kho của dạng bài' : '🌿 MH.128 · Mô hình hai tiếp tuyến — ③ Kho bài') : (laHoc ? 'Chọn câu · Hệ thức' : 'Chọn bài · MH.128 Mô hình hai tiếp tuyến')
+  const thanh = `<div class="thanh ${t.bat.size ? 'coloc' : ''}"><span class="nhanh">Nhãn</span>${coTrong.map((n) => { const c = MAU[n.mau], on = t.bat.has(n.id)
+      return `<span class="pill bong ${on ? 'on' : ''}" data-bat="${n.id}" style="--c:${c.c}">${on ? '✓ ' : ''}${n.ten}<span class="so">${dem(n.id)}</span></span>` }).join('')
+    || '<span class="dangloc">Chưa bài nào trong danh sách này có nhãn.</span>'}
+    ${t.bat.size ? `<span class="dangloc">→ có đủ ${t.bat.size} nhãn: <b>${hien.length}</b> bài</span><button class="nut" data-xoaloc="1">Xoá lọc</button>` : ''}
+    <span style="flex:1"></span>
+    ${laKho ? `<button class="nut ${t.loat ? 'on' : ''}" data-loat="1">☑ Chọn nhiều</button><button class="nut" data-man="ql">⚙ Nhãn</button>` : ''}</div>`
+  const the = (b, i) => {
+    const key = b.hien ?? b.ma, tick = t.tick.has(key), ns = cuaBai(b).map((id) => NHAN.find((n) => n.id === id)).filter((n) => n && !n.xoa)
+    const chips = ns.map((n) => chipHtml(n, laKho && b.nhan ? key : '')).join(' ')
+    const dauThe = `<div class="h">${(laKho && t.loat && b.nhan) || (!laKho && !laHoc) ? `<span class="tick ${tick ? 'on' : ''}" data-tick="${key}">${tick ? '✓' : ''}</span>` : ''}
+      <span class="ma">${key}</span><span class="mo">${b.mo}</span>${chips}
+      ${laKho && b.nhan ? `<button class="them" data-gan="${key}">＋ nhãn</button>` : ''}</div>`
+    const o = (k) => !laKho && laHoc ? `<span class="o ${t.y.has(k) ? 'on' : ''}" data-y="${k}">${t.y.has(k) ? '✓' : ''}</span>` : ''
+    const than = b.y ? `<div class="noidung"><div class="hinh">hình</div><div style="flex:1;min-width:0"><div class="loidan">${m(b.dan)}</div>${b.y.map(([nh, nd]) => `<div class="y">${o(key + nh)}<b>${nh})</b><span>${m(nd)}</span></div>`).join('')}</div></div>`
+      : `<div class="y" style="background:#fff;border:0;padding:0">${o(key)}<span>${m(b.don)}</span></div>`
+    return `<div class="the ${tick ? 'chon' : ''}">${dauThe}${than}</div>`
+  }
+  const soTick = t.tick.size
+  $('#man').innerHTML = `<div class="man">
+    <div class="dau"><b class="t">${tieuDe}</b>${laKho && laHoc ? '<span class="ten">Hệ thức · HH00176</span>' : '<span class="ten"></span>'}
+      <span class="mo"><b>${ds.length}</b> bài${t.bat.size ? ` · đang hiện ${hien.length}` : ''}</span>
+      ${laKho && laHoc ? '<span class="loc"><span class="on">Tất cả</span><span>Đã duyệt</span><span>Chưa duyệt</span><span>Kho chuẩn</span></span>' : ''}<span class="mo">✕</span></div>
+    ${thanh}
+    <div class="than">${hien.length ? hien.map(the).join('') : '<div class="rong">Không bài nào có đủ các nhãn đang bật. <button class="nut" data-xoaloc="1">Xoá lọc</button></div>'}</div>
+    ${laKho && t.loat ? `<div class="loat"><b>Đã chọn ${soTick} bài</b><button class="nut chinh" data-ganloat="1" ${soTick ? '' : 'disabled'}>Gán / gỡ nhãn ▾</button><button class="nut" data-tickhet="1">Chọn hết ${hien.filter((b) => b.nhan).length} bài đang hiện</button><button class="nut" data-botick="1">Bỏ chọn</button><span style="flex:1"></span><button class="nut" data-loat="1">Xong</button></div>` : ''}
+    ${!laKho ? `<div class="chan"><span>${laHoc ? `Đã chọn ${t.y.size} câu` : `Đã chọn ${soTick} bài`}</span><span style="flex:1"></span><button class="nut">Huỷ</button><button class="nut chinh">${laHoc ? `Dùng ${t.y.size} câu` : `Dùng ${soTick} bài`}</button></div>` : ''}
+  </div>`
+}
+
+function veQuanLy() {
+  const dem = (ds, id) => ds.filter((b) => b.nhan && b.nhan.includes(id)).length
+  $('#man').innerHTML = `<table><tr><th>Nhãn</th><th>Màu</th><th>Kho Hình–Học</th><th>Kho Hình–Luyện</th><th>Người tạo</th><th></th></tr>
+    ${NHAN.map((n) => `<tr style="${n.xoa ? 'opacity:.45' : ''}"><td>${chipHtml(n)}${n.xoa ? ' <span class="mo">đã xoá</span>' : ''}</td>
+      <td><div class="mauo" style="margin:0">${Object.entries(MAU).map(([k, c]) => `<span class="${n.mau === k ? 'on' : ''}" style="background:${c.c}" title="${c.ten}" data-doimau="${n.id}|${k}"></span>`).join('')}</div></td>
+      <td>${dem(HOC, n.id)} bài</td><td>${dem(LUYEN, n.id)} bài</td><td>${n.boi}</td>
+      <td style="white-space:nowrap">${n.xoa ? `<button class="nut" data-khoiphuc="${n.id}">Khôi phục</button>` : `<button class="nut" data-doiten="${n.id}">Đổi tên</button> <button class="nut" data-xoa="${n.id}">Xoá</button>`}</td></tr>`).join('')}
+  </table><p class="mota" style="margin-top:10px">Xoá nhãn = ẩn khỏi thanh lọc và khỏi mọi bài, không xoá dữ liệu; khôi phục là các bài có lại nhãn như cũ. Đổi tên / đổi màu áp ngay cho mọi bài đang mang nhãn.</p>`
+}
+
+// ── hộp gán nhãn: cho 1 bài (keys = [ma]) hoặc cả loạt đã tick ──
+let hop = null   // {keys, mau, q}
+function moHop(neo, keys) {
+  hop = {keys, mau:'lam', q:''}
+  const r = neo.getBoundingClientRect(), el = $('#hop')
+  el.style.display = 'block'
+  el.style.left = Math.max(8, Math.min(window.innerWidth - 292, r.left)) + window.scrollX + 'px'
+  el.style.top = r.bottom + window.scrollY + 6 + 'px'
+  veHop(); el.querySelector('input').focus()
+}
+function baiTheoKey(k) { return MAN.find((x) => x.id === dangMo).ds.find((b) => (b.hien ?? b.ma) === k) }
+function veHop() {
+  const el = $('#hop'), q = hop.q.trim().toLowerCase()
+  const bais = hop.keys.map(baiTheoKey)
+  const ds = nhanSong().filter((n) => !q || n.ten.toLowerCase().includes(q))
+  const trung = nhanSong().some((n) => n.ten.toLowerCase() === q)
+  el.innerHTML = `<input placeholder="Tìm nhãn hoặc gõ tên nhãn mới…" value="${hop.q.replace(/"/g, '&quot;')}">
+    <div class="ds">${ds.map((n) => { const so = bais.filter((b) => b.nhan.includes(n.id)).length, dau = so === bais.length ? '✓' : so ? '–' : ''
+      return `<div class="dong" data-chon="${n.id}"><span class="dau2">${dau}</span>${chipHtml(n)}</div>` }).join('') || '<div class="chu">Chưa có nhãn nào khớp.</div>'}</div>
+    ${q && !trung ? `<div class="tao"><div class="tt">Tạo nhãn mới «<b>${hop.q.trim()}</b>» — chọn màu:</div>
+      <div class="mauo">${Object.entries(MAU).map(([k, c]) => `<span class="${hop.mau === k ? 'on' : ''}" style="background:${c.c}" title="${c.ten}" data-mau="${k}"></span>`).join('')}</div>
+      <button class="nut chinh" data-tao="1">＋ Tạo và gán${bais.length > 1 ? ` cho ${bais.length} bài` : ''}</button></div>` : ''}
+    <div class="chu">${bais.length > 1 ? `Đang gán cho ${bais.length} bài · ✓ = mọi bài đã có · – = một số bài có. Bấm để gán cho cả loạt, bấm lần nữa để gỡ.` : 'Bấm một nhãn để gán, bấm lần nữa để gỡ. Màn không tải lại.'}</div>`
+  const ip = el.querySelector('input')
+  ip.oninput = () => { hop.q = ip.value; const p = ip.selectionStart; veHop(); const i2 = $('#hop input'); i2.focus(); i2.setSelectionRange(p, p) }
+  ip.onkeydown = (e) => { if (e.key === 'Escape') dongHop() }
+}
+function dongHop() { hop = null; $('#hop').style.display = 'none' }
+function datNhan(id) {
+  const bais = hop.keys.map(baiTheoKey), du = bais.every((b) => b.nhan.includes(id))
+  bais.forEach((b) => { b.nhan = du ? b.nhan.filter((x) => x !== id) : [...new Set([...b.nhan, id])] })
+  ve(); veHop()
+}
+
+document.addEventListener('click', (e) => {
+  const d = (k) => e.target.closest(`[data-${k}]`)?.dataset[k]
+  const t = TT[dangMo]
+  if ($('#hop').contains(e.target)) {
+    if (d('chon')) return datNhan(d('chon'))
+    if (d('mau')) { hop.mau = d('mau'); return veHop() }
+    if (d('tao')) { const n = {id:'n' + Date.now(), ten:hop.q.trim(), mau:hop.mau, boi:'Thùy'}; NHAN.push(n); hop.q = ''; return datNhan(n.id) }
+    return
+  }
+  if (hop && !d('gan') && !d('ganloat')) dongHop()
+  if (d('man')) { dangMo = d('man'); return ve() }
+  if (d('bat')) { const id = d('bat'); t.bat.has(id) ? t.bat.delete(id) : t.bat.add(id); return ve() }
+  if (d('xoaloc')) { t.bat.clear(); return ve() }
+  if (d('loat')) { t.loat = !t.loat; if (!t.loat) t.tick.clear(); return ve() }
+  if (d('tick')) { const k = d('tick'); t.tick.has(k) ? t.tick.delete(k) : t.tick.add(k); return ve() }
+  if (d('y')) { const k = d('y'); t.y.has(k) ? t.y.delete(k) : t.y.add(k); return ve() }
+  if (d('tickhet')) { MAN.find((x) => x.id === dangMo).ds.filter((b) => b.nhan && [...t.bat].every((id) => b.nhan.includes(id))).forEach((b) => t.tick.add(b.ma)); return ve() }
+  if (d('botick')) { t.tick.clear(); return ve() }
+  if (d('go')) { const [k, id] = d('go').split('|'); const b = baiTheoKey(k); b.nhan = b.nhan.filter((x) => x !== id); return ve() }
+  if (d('gan')) return moHop(e.target.closest('[data-gan]'), [d('gan')])
+  if (d('ganloat')) { if (t.tick.size) moHop(e.target.closest('[data-ganloat]'), [...t.tick]); return }
+  if (d('doimau')) { const [id, k] = d('doimau').split('|'); NHAN.find((n) => n.id === id).mau = k; return ve() }
+  if (d('doiten')) { const n = NHAN.find((x) => x.id === d('doiten')); const v = prompt('Tên mới của nhãn', n.ten); if (v && v.trim()) n.ten = v.trim(); return ve() }
+  if (d('xoa')) { const n = NHAN.find((x) => x.id === d('xoa')); if (confirm(`Xoá nhãn "${n.ten}"? Nhãn ẩn khỏi mọi bài; khôi phục lại được.`)) n.xoa = true; return ve() }
+  if (d('khoiphuc')) { NHAN.find((x) => x.id === d('khoiphuc')).xoa = false; return ve() }
+})
+ve()
+</script>
+</html>

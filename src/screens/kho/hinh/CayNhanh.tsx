@@ -14,6 +14,8 @@ import { MathText, LoiGiaiXem } from '../ui'
 import { AnhInput, Btn, Empty, Fig, Ma, Note, OcrButton, Seg, inpCls, tron } from './hinhUi'
 import Catalog from './Catalog'
 import ChuoiHinhPrintView, { type KhoiIn } from './ChuoiHinhPrintView'
+import { useNhanLoc, doiNhan, ThanhNhan, NhanCuaBai, HopGanNhan, ThanhChonNhieu, OTickBai, QuanLyNhan } from '../NhanLoc'
+import { duNhan, type NhanLoc } from '../../../lib/kho/nhanLoc'
 
 type BaiX = BaiToan & { so: string }
 // ⭐ Thùy 19/10: danh sách mô hình MẶC ĐỊNH THU GỌN (chỉ hiện tên nhóm), người dùng tự mở; hệ thống NHỚ trạng thái các lần truy cập
@@ -569,6 +571,18 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
   const [dangChuyen, setDangChuyen] = useState<string | null>(null)
   const [tbChuyen, setTbChuyen] = useState<string | null>(null)
   useEffect(() => { api.moHinhLuyenCuaKhoi(khoi).then(setMoHinhs).catch(() => setMoHinhs([])) }, [khoi])
+  // ── NHÃN LỌC của BÀI KHO (Thùy 23/11, spec-kho-cau-hoi §14) — khác nhãn Dạng bài / Bổ đề của từng ý ở dưới: nhãn tự do
+  // (tên + màu), chỉ để tìm bài. Kho của mô hình đã tải trọn ⇒ bật / tắt là lọc phần đang hiện; gán / gỡ vá đúng thẻ.
+  const NL = useNhanLoc('hinh_luyen')
+  const [batNL, setBatNL] = useState<string[]>([])
+  const [chonNhieu, setChonNhieu] = useState(false)
+  const [tickNL, setTickNL] = useState<Set<string>>(new Set())      // mã bài kho (HLB…) đang tick
+  const [hopNL, setHopNL] = useState<{ neo: DOMRect; ma: string[] } | null>(null)
+  const [quanLyNL, setQuanLyNL] = useState(false)
+  const datNhanLoc = async (ma: string[], n: NhanLoc, bat: boolean) => {
+    const doi = await NL.gan(ma, n.id, bat)
+    setRows((p) => (p ?? []).map((c) => (doi.includes(c.ma_bai) ? { ...c, nhan_loc: doiNhan(c.nhan_loc, n.id, bat) } : c)))
+  }
   const chuyenMoHinh = async (c: ChuoiKho, moHinhId: string) => {
     setDangChuyen(c.id); setLoiNhan(null)
     try {
@@ -580,7 +594,7 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
   }
   useEffect(() => {
     let huy = false
-    setRows(null); setLoi(null); setMo(null)
+    setRows(null); setLoi(null); setMo(null); setBatNL([]); setChonNhieu(false); setTickNL(new Set()); setHopNL(null)
     api.khoCuaMoHinh(gocId).then(async (r) => {
       if (huy) return
       setRows(r)
@@ -611,9 +625,9 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
     const [locLoai, locId] = locNhan.split(':')
     const yHop = (yId: string) => locNhan === 'chua' ? !nhan.some((x) => x.y_id === yId)
       : nhan.some((x) => x.y_id === yId && x.loai === locLoai && x.nhan_id === locId)
-    return (rows ?? []).filter((c) => (!conThieu || c.y.some((y) => !y.so)) && (!locNhan || c.y.some((y) => yHop(y.id)))
+    return (rows ?? []).filter((c) => (!conThieu || c.y.some((y) => !y.so)) && (!locNhan || c.y.some((y) => yHop(y.id))) && duNhan(c.nhan_loc, batNL)
       && (!k || `${c.ma_bai} ${c.nguon ?? ''} ${c.gia_thiet_chung ?? ''} ${c.y.map((y) => y.noi_dung).join(' ')}`.toLowerCase().includes(k)))
-  }, [rows, tim, conThieu, locNhan, nhan])
+  }, [rows, tim, conThieu, locNhan, nhan, batNL])
   if (loi) return <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[12.5px] text-red-700">{loi}</div>
   if (!rows) return <div className="py-8 text-center text-[13px] text-slate-400">Đang tải kho…</div>
   if (!rows.length) return <Empty icon="📚">Kho của mô hình này chưa có chuỗi nào. Gán bài ở <b>Duyệt kho › Hình luyện · chưa phân mô hình</b> (nút “＋ Gán mô hình”).</Empty>
@@ -632,6 +646,14 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
         </select>
         <span className="text-[12px] text-slate-400">{hien.length}/{rows.length} chuỗi{deXuat.length ? ` · ✨ ${deXuat.length} gợi ý nhãn chờ duyệt` : ''}</span>
       </div>
+      <ThanhNhan className="mb-2 rounded-xl border border-slate-200 bg-white px-3 py-2" ds={NL.ds} so={(n) => rows.filter((c) => c.nhan_loc?.includes(n.id)).length}
+        bat={batNL} onBat={setBatNL} soKhop={hien.length}
+        phai={<>
+          <button onClick={() => { setChonNhieu((v) => !v); setTickNL(new Set()) }} title="Tick nhiều bài rồi gán / gỡ một nhãn cho cả loạt"
+            className={`rounded-md border px-2 py-0.5 text-[12px] font-medium ${chonNhieu ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-700'}`}>☑ Chọn nhiều</button>
+          <button onClick={() => setQuanLyNL(true)} title="Danh sách nhãn: đổi tên · đổi màu · xoá" className="rounded-md border border-slate-200 bg-white px-2 py-0.5 text-[12px] font-medium text-slate-600 hover:border-indigo-300 hover:text-indigo-700">⚙ Nhãn</button>
+        </>} />
+      {NL.loi && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12.5px] text-red-700">Nhãn lọc: {NL.loi}</div>}
       {loiNhan && <div className="mb-2 rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-[12.5px] text-red-700">{loiNhan} <button className="ml-2 underline" onClick={() => setLoiNhan(null)}>đóng</button></div>}
       {tbChuyen && <div className="mb-2 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-[12.5px] text-emerald-700">✓ {tbChuyen}</div>}
       {/* Thùy 15/10: "view bé quá, mỗi chuỗi phải to gấp 2–3 lần mới đọc được" ⇒ mỗi chuỗi = một CARD đọc được ngay:
@@ -641,8 +663,11 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
         {hien.map((c) => { const dangMo = mo === c.id; return (
           <div key={c.id} className={`rounded-xl border bg-white p-4 ${dangMo ? 'border-teal-300 shadow-sm' : 'border-slate-200'}`}>
             <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              {chonNhieu && <OTickBai on={tickNL.has(c.ma_bai)} onDoi={() => setTickNL((s) => { const n = new Set(s); if (n.has(c.ma_bai)) n.delete(c.ma_bai); else n.add(c.ma_bai); return n })} />}
               <span className="font-mono text-[13px] font-semibold text-teal-700">{c.ma_bai}</span>
               <span className="text-[12px] text-slate-500">{c.nguon ?? 'chưa rõ nguồn'}{c.nguon_ma_cau ? ` · gốc ${c.nguon_ma_cau}` : ''}</span>
+              <NhanCuaBai ds={NL.ds} ids={c.nhan_loc} onGo={(n) => void datNhanLoc([c.ma_bai], n, false).catch((e) => setLoiNhan(e instanceof Error ? e.message : String(e)))}
+                onThem={(neo) => setHopNL({ neo, ma: [c.ma_bai] })} />
               {c.y.some((y) => y.baitoan_id)
                 ? <span className="rounded-md border border-slate-200 px-2 py-0.5 text-[12px] text-slate-400" title="Có ý đã gán vào bài của mô hình này — gỡ gán các ý trước rồi mới chuyển mô hình">↪ Chuyển mô hình</span>
                 : <ChonMoHinh moHinhs={moHinhs.filter((m) => m.id !== gocId)} disabled={dangChuyen === c.id} nhan="↪ Chuyển mô hình" neoPhai onChon={(id) => void chuyenMoHinh(c, id)} />}
@@ -715,7 +740,12 @@ function TabKho({ gocId, L, khoi, coBai, onMo }: { gocId: string; L: Luoi; khoi:
               </div>
             </div>
           </div>) })}
+        {chonNhieu && <ThanhChonNhieu so={tickNL.size} soHien={hien.length} onGan={(neo) => setHopNL({ neo, ma: [...tickNL] })}
+          onChonHet={() => setTickNL(new Set(hien.map((c) => c.ma_bai)))} onBo={() => setTickNL(new Set())} onXong={() => { setChonNhieu(false); setTickNL(new Set()) }} />}
       </div>
+      {hopNL && <HopGanNhan neo={hopNL.neo} ds={NL.ds} cua={hopNL.ma.map((m) => rows.find((c) => c.ma_bai === m)?.nhan_loc ?? [])}
+        onDat={(n, bat) => datNhanLoc(hopNL.ma, n, bat)} onTao={NL.tao} onDong={() => setHopNL(null)} />}
+      {quanLyNL && <QuanLyNhan kho="hinh_luyen" onDong={() => setQuanLyNL(false)} onDoi={() => void NL.tai()} />}
     </div>
   )
 }

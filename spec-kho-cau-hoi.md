@@ -12,7 +12,7 @@
 > Spec này chỉ mô tả **QUY TRÌNH + CÔNG CỤ + DỮ LIỆU**: bước nào · lệnh nào · ghi bảng nào · ai duyệt · tệp trung gian ở đâu — và trỏ đúng mục luật khi cần.
 >
 > **Mục lục.** Phần I (nháp lượt 1): §0 Đích · §1 Một câu gồm gì · §2 Vào kho · §3 MCQ · §4 Điền ô · §5 Clone (mở rộng lượt 2) · §6 Báo sai · §7 Bảng & hàm · §8 Chờ Thùy · §9 Lịch sử.
-> Phần II (lượt 2): §10 Nhập kho từ ảnh / tài liệu · §11 Nhập kho từ đề thi · §12 Quy chuẩn hiển thị · §13 Vẽ lại hình.
+> Phần II (lượt 2): §10 Nhập kho từ ảnh / tài liệu · §11 Nhập kho từ đề thi · §12 Quy chuẩn hiển thị · §13 Vẽ lại hình · **§14 Nhãn lọc động của kho (Thùy 23/11 — kho Hình)**.
 > (Giữ số mục lượt 1 vì §8 và chỗ khác đã trỏ theo số.)
 >
 > **Lượt 2 đã sửa ở Phần I:** tiêu đề · khối "Không thuộc" (nhập kho chuyển vào spec này, luật vẫn ở `spec-giai-bai`) · §5 thêm §5.0 ba đường clone + hợp nhất `spec-clone-ai` · §7 thêm dòng nhập kho / đề thi / hiển thị / hình, bỏ `clone-batch-lap.mjs` (không tồn tại) · §8 thêm L14–L22, Q8–Q13 · §9 thêm dòng quyết định của phần mới.
@@ -589,3 +589,61 @@ Bảng Luyện: chỉ ghi đúng cột khai, bump `updated_at` như app; tên kh
 - **Nhãn nguồn** (`fn_kho_hinh_dem('Toán')`): 14.462 hình đề, **14.438 chưa rõ nguồn**, 24 `ve_moi` (16/11), 0 lệnh đang chờ. Ảnh cũ trước 15/11 để "chưa rõ" theo chủ ý (chỉ xét khi có lệnh theo khối, `spec-giai-bai` §C12); 118 câu mới sau 15/11 không nhãn ⇒ §8 L16.
 - Biên bản gắn: 181 tệp trong `scripts/anh/bien_ban/` (13/10 → 16/11).
 - **Chưa có luật vẽ lại** (theo `spec-giai-bai`): K11 hình không gian (934 hình đều là ảnh gốc), `hgt_cau_hoi` (dù đã có công cụ — §8 L22); đồ thị / bảng của câu Đại, HGT chưa có máy vẽ loại đó ⇒ giữ gốc + `**Chưa chắc:**`.
+
+---
+
+## 14. Nhãn lọc động của kho (Thùy chốt 23/11/2026 — đã build, mig `202611232047` + `202611232053`)
+
+> Thùy 23/11: *"kho Hình rất nhiều bài, tìm một bài mất lâu… có quá nhiều chiều lọc nên chưa muốn làm bộ lọc cố định (mỗi lần sửa lại mệt) mà làm bộ lọc ĐỘNG: gán một nhãn bất kì cho một bài (điền tên, chọn màu), mỗi nhãn được tạo ra thì trong kho có một nút bật / tắt."* Mockup đã duyệt: `docs/mockup-nhan-loc-hinh.html`.
+
+### 14.1 Luật (10 câu trả lời của Thùy 23/11)
+
+- **Nhãn CHỈ để tìm bài.** Không vào mastery, không vào phân dạng, không thay `dang_chinh` / mô hình của bài, không lên app học sinh / phụ huynh. Khác hẳn *nhãn Dạng bài / Bổ đề / Độ khó* của Hình–Luyện (`spec-ban-do-toan` §10.5 — danh mục cố định, gán ở ý / nốt): nhãn lọc là tên tự do, gán ở **bài**. Trên màn gọi là **"Nhãn lọc"** để khỏi lẫn.
+- **Gán ở cấp BÀI:** bài nhiều ý (chuỗi a–b–c) một bộ nhãn cho cả bài; câu đơn gán cho câu.
+- **Kho đã mở:** kho bài **Hình–Học** (popup 📚 Kho bài tập của một bài học) và kho bài **Hình–Luyện** (tab ③ Kho bài của một mô hình). Chuỗi bài mô hình (cây, nốt `BT.…`) **chưa làm** ("chưa đến chuỗi").
+- **Một bộ nhãn chung** cho cả kho Hình (Học + Luyện), mọi khối, mọi người. Tạo + gán / gỡ: mọi nhân sự. **Đổi tên · đổi màu · xoá · khôi phục: trưởng khối (một khối bất kì của môn) trở lên + quản trị**; phó khối không.
+- **Bật nhiều nhãn = "và":** bài phải mang ĐỦ mọi nhãn đang bật.
+- **Để phẳng một dãy**, chưa gom nhóm (chùm "Lớp S · Lớp A · Lớp B" là 3 nhãn riêng; bật cả "Lớp S" và "Lớp A" = bài mang cả hai). Gom nhóm khi dãy dài — chờ lệnh.
+- **Thanh chỉ hiện nhãn có bài trong danh sách đang mở**, kèm số bài; hộp gán nhãn hiện mọi nhãn đã có. *(Thùy 23/11 hỏi lại về hiệu suất của việc đếm — số đo ở §14.4; giữ cách này. Mỗi khối / mỗi kho một bộ nhãn riêng: chưa làm, chờ Thùy nói nếu muốn.)*
+- **Có ở builder** ("chủ yếu là dùng cho builder"): hộp ✎ Chọn câu Hình–Học (`ChonCauHoc` — giáo trình Hình, ET) và hộp chọn bài Hình–Luyện (`ChonBai`) có cùng thanh nhãn. Builder **chỉ lọc + xem**; gán / gỡ làm ở kho (CTO phân xử 23/11, Thùy duyệt mockup). Đổi bộ lọc không mất câu đã tick. Kho trên lớp không có nhãn lọc.
+- **Bản sao (clone) dùng chung nhãn với câu gốc:** gán cho gốc là bản sao có luôn, gỡ cũng vậy; không gán riêng cho bản sao.
+- **Gán hàng loạt:** "☑ Chọn nhiều" → tick các bài → "Gán / gỡ nhãn" (✓ = mọi bài đã có · – = một số bài có; bấm = gán cho cả loạt, bấm lần nữa = gỡ).
+- **Xoá nhãn = xoá mềm** (`xoa_at`): ẩn khỏi thanh lọc và khỏi mọi bài, dòng gán giữ nguyên ⇒ khôi phục là bài có lại nhãn.
+- **Kiểu nhãn (Thùy 23/11):** khối ĐẬM màu, chữ trắng, bóng + đổ bóng (8 màu: đỏ · cam · vàng · lục · ngọc · lam · tím · xám). Bóng = gradient + `box-shadow` tĩnh (không ảnh, không blur, không animation) ⇒ không tốn hiệu suất. Đây là ngoại lệ của luật "pill mềm" cho nhãn do người dùng tự đặt; pill trạng thái (duyệt, hạn…) vẫn mềm.
+
+### 14.2 Dữ liệu
+
+- `kho_nhan_loc` — `id` uuid (**mã gốc bất biến** của nhãn; đổi tên / màu không đổi id) · `mon` · `nhanh` (CHECK `hinh`) · `ten` (≤ 40 ký tự; không trùng trong cùng môn + nhánh, không phân biệt hoa thường, chỉ xét nhãn còn sống) · `mau` (CHECK 8 khoá màu) · `tao_boi` · `tao_at` · `sua_at` · `xoa_at`.
+- `kho_nhan_loc_gan` — `nhan_id` → `kho_nhan_loc` · `kho` (CHECK `hinh_hoc` | `hinh_luyen`) · `ma` text · `gan_boi` · `gan_at`; khoá chính (`kho`, `ma`, `nhan_id`) + index (`nhan_id`, `kho`). **Gỡ nhãn = xoá dòng** (thiếu = không có dòng, CLAUDE §1.5).
+- **Một cặp bảng dùng chung có cột `kho`** (CLAUDE §1.6 — không tạo bảng `hinh_<tên>`). Mở cho kho khác: nới 2 CHECK + thêm nhánh trong `_nhan_loc_nhanh_cua_kho` và `fn_nhan_loc_gan` + một dòng `KHO_NHAN_LOC` (`src/lib/mon.ts`).
+- **Đơn vị gán = mã gốc của BÀI** (cột `ma`): Hình–Học `coalesce(bai_y, parent_ma_cau, ma_cau)` — `HHB…` với bài nhiều ý, `HHC…` gốc với câu đơn và mọi bản sao của nó (đúng khoá màn kho đang dùng để xếp ý / bản sao liền nhau); Hình–Luyện `hinh_bai.ma_bai` (`HLB…`). Client gửi mã câu / mã ý / mã bài nào của bài cũng được — DB tự quy.
+- `ma` là text không FK (đối tượng ở 3 bảng). Mã cấp bằng sequence, không cấp lại ⇒ dòng gán của bài đã xoá không dính sang bài khác; không hàm nào resolve ngược từ dòng gán ra bài (chỉ nối từ bài đang hiện sang nhãn) nên dòng mồ côi vô hại. *Số "tổng bài" ở bảng Quản lý nhãn đếm cả dòng mồ côi — chỉ để tham khảo.*
+- **Quyền:** RLS bật; policy đọc `(select la_thanh_vien())` (chỉ nhân sự); **không có policy ghi** ⇒ mọi lệnh ghi qua RPC có cổng. Học sinh / phụ huynh / người chưa đăng nhập: 0 dòng, không gọi được hàm nào.
+
+### 14.3 Hàm (mọi màn chỉ gọi RPC — `src/lib/kho/nhanLoc.ts`)
+
+| Hàm | Việc | Cổng |
+|---|---|---|
+| `fn_nhan_loc_ds(mon, nhanh, kho?, pham_vi?, ca_da_xoa?)` | danh mục nhãn + `duoc_sua` + số bài mang nhãn trong phạm vi (hôm nay: `hinh_hoc` + mã bài học) + tổng theo kho | nhân sự |
+| `fn_nhan_loc_tao(mon, nhanh, ten, mau)` | tạo nhãn; tên đã có ⇒ trả nhãn đang có | nhân sự + phạm vi môn |
+| `fn_nhan_loc_gan(kho, ma[], nhan, bat)` | gán / gỡ cho 1 hoặc nhiều bài (≤ 500), trả mã gốc các bài đã đổi | nhân sự |
+| `fn_nhan_loc_sua(nhan, ten?, mau?)` · `fn_nhan_loc_xoa(nhan, xoa?)` | đổi tên / màu · xoá mềm / khôi phục | trưởng khối trở lên + quản trị (`_nhan_loc_duoc_sua`) |
+| `fn_hh_kho_cau(…, p_nhan uuid[])` | kho Hình–Học phân trang 40 câu: **lọc "đủ mọi nhãn" ở DB**, trả thêm `ma_nhan` + `nhan_loc` | như cũ |
+| `fn_tl_hh_cau(bai)` · `fn_hl_kho_cua_mo_hinh(mo_hinh)` | hộp chọn của builder / kho của mô hình: thêm khoá `ma_nhan` · `nhan_loc` | như cũ |
+
+- **Lọc ở đâu:** kho Hình–Học phân trang ⇒ điều kiện nằm trong `fn_hh_kho_cau`. Kho của mô hình Luyện và hai hộp chọn của builder vốn tải trọn danh sách của MỘT mô hình / MỘT bài học ⇒ nhãn đi kèm từng bài, bật / tắt là lọc phần đang hiện (như bộ lọc Loại / Dạng sẵn có), số trên thanh đếm các thẻ đang có trong danh sách.
+- **Sau gán / gỡ:** vá đúng thẻ tại chỗ từ kết quả RPC, không tải lại danh sách; số trên thanh của kho Hình–Học tải nền (giữ số cũ tới khi có số mới). Gỡ đúng nhãn đang lọc ⇒ bài rời danh sách tại chỗ.
+- 3 hàm nội bộ `_nhan_loc_*` đã thu quyền gọi của người đăng nhập (mig `202611232053`).
+
+### 14.4 Màn · số đo · phiếu 10 câu
+
+- **Component dùng chung** `src/screens/kho/NhanLoc.tsx`: `useNhanLoc` · `ChipNhan` · `NhanCuaBai` · `ThanhNhan` · `HopGanNhan` · `ThanhChonNhieu` · `OTickBai` · `QuanLyNhan`. Màn mới cần nhãn lọc **dùng lại**, không vẽ kiểu nhãn khác. Đã gắn: `KhoModal` (`BanDoMoi.tsx`, chỉ khi `mo.hinh` + kho của bài học) · `TabKho` (`CayNhanh.tsx`) · `ChonCauHoc` + `ChonBai` (`ChuyenDeHinhBuilder.tsx`).
+- **Số đo 23/11** (DB thật, bài học đông nhất HH00108 — 383 câu): trang kho 40 câu **51 ms trước = 51 ms sau** (cả lượt gọi từ máy trạm); lọc 1 nhãn `Execution Time` **2,6 ms**; danh mục + đếm **4,8 ms**. So cũ–mới không lọc: `fn_hh_kho_cau` 383/383 dòng khớp, `fn_tl_hh_cau` và `fn_hl_kho_cua_mo_hinh` khớp (bỏ khoá mới).
+- **Phiếu 10 câu (`spec-kien-truc` §9):** 1) miền Kho, sở hữu 2 bảng trên; builder chỉ gọi hàm · 2) mã gốc nhãn = `id` cấp lúc tạo; dòng gán bám mã gốc bài · 3) `mon` ở bảng nhãn, `kho` ở bảng gán · 4) đọc: nhân sự; ghi: chỉ RPC có cổng (bảng trên) · 5) mở kho Hình–Học: 2 lượt gọi (danh sách câu + danh mục nhãn); builder / kho Luyện: thêm 1 lượt danh mục · 6) chi phí theo MỘT bài học / MỘT mô hình, số đo ở trên · 7) không có số tính sẵn · 8) index: khoá chính + (`nhan_id`, `kho`); bảng hẹp · 9) không polling · 10) lớn theo số bài × số nhãn, không phải nhật ký.
+
+### 14.5 Chưa làm / chờ lệnh
+
+- Thanh nhãn ở màn **"bài chưa phân mô hình"** (`HinhLuyenChuaPhanTab`) và hộp **chọn ý trên cây** (`ChonYTuCay` — ET / MT Hình–Luyện).
+- Nhãn cho **nốt của cây** (bài mô hình `BT.…`) và cho kho **Đại / Hình giải tích / KHTN**.
+- **Gom nhãn thành nhóm**; bộ nhãn riêng theo khối / theo kho (Thùy nêu 23/11 vì lo hiệu suất — số đo cho thấy không cần, chờ Thùy quyết nếu muốn vì lý do khác).
+- Gán / gỡ nhãn ngay trong builder.
