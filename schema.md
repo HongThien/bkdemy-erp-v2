@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-613 bảng · 42 view · 0 enum · 515 trigger · 2078 function
+616 bảng · 42 view · 0 enum · 520 trigger · 2085 function
 
 ## _app_secrets
 
@@ -35,6 +35,51 @@
 | loai | text |  |  | PK |  |
 | ma_cu | text |  |  | PK |  |
 | ma_moi | text |  |  |  |  |
+
+## ai_bang_gia
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| model | text |  |  | PK |  |
+| vao | numeric |  |  |  |  |
+| ra | numeric |  |  |  |  |
+| ghi_5m | numeric |  |  |  |  |
+| ghi_1h | numeric |  |  |  |  |
+| doc_cache | numeric |  |  |  |  |
+| ghi_chu | text |  | ''::text |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## ai_cau_hinh
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | integer |  | 1 | PK |  |
+| vnd_moi_usd | numeric |  |  |  |  |
+| model_mac_dinh | text |  |  |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## ai_luot_dung
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| kenh | text |  |  |  | `phien` · `tro_ly` · `hoi_dap` · `danh_gia` · `cham_btvn` |
+| nguon_id | text |  |  |  |  |
+| at | timestamp with time zone |  |  |  |  |
+| nhan_su_id | uuid | Y |  | FK→nhan_su.id |  |
+| mon | text | Y |  |  |  |
+| khoi | text | Y |  |  |  |
+| loai_viec | text |  |  |  |  |
+| phien_id | uuid | Y |  |  |  |
+| model | text | Y |  |  |  |
+| vao | bigint |  | 0 |  |  |
+| ghi_5m | bigint |  | 0 |  |  |
+| ghi_1h | bigint |  | 0 |  |  |
+| doc_cache | bigint |  | 0 |  |  |
+| ra | bigint |  | 0 |  |  |
+| cost_cli_usd | numeric | Y |  |  |  |
+| thue_bao | boolean |  |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
 
 ## anh_ban_do
 
@@ -6959,7 +7004,7 @@ END |  |  |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
 | mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
-| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
+| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11370,6 +11415,7 @@ WITH luot AS (
 | bt_grades | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
 | bt_grades | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
 | bt_grades | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| btvn_ai_lan | trg_ai_luot | AFTER | INSERT/UPDATE | _ai_tg_btvn |
 | btvn_ket_qua | trg_btvn_bu_exp_buoi_me | AFTER | INSERT/UPDATE | _trg_btvn_bu_exp_buoi_me |
 | btvn_nop_anh | tg_btvn_nop_anh_touch | AFTER | INSERT/DELETE/UPDATE | fn_btvn_nop_touch |
 | buoi_hoc | trg_btnhe_dong_case | AFTER | UPDATE | _trg_btnhe_dong_case |
@@ -11400,6 +11446,7 @@ WITH luot AS (
 | chuoi_ngay_nghi | a_hs_so_moc | AFTER | INSERT/DELETE/UPDATE/TRUNCATE | _hs_so_moc_tg |
 | claude_phien | trg_claude_phien_lich_su | AFTER | INSERT/UPDATE | _phien_ghi_lich_su |
 | claude_phien | trg_claude_phien_touch | BEFORE | UPDATE | _phien_touch |
+| claude_phien_tin | trg_ai_phien_tin | AFTER | INSERT/UPDATE | _ai_tg_phien_tin |
 | claude_phien_tin | trg_claude_phien_tin_bump | AFTER | INSERT | _phien_tin_bump |
 | claude_phien_tin | trg_claude_phien_tin_touch | BEFORE | UPDATE | _phien_touch |
 | dai_ban_do | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
@@ -11483,6 +11530,7 @@ WITH luot AS (
 | dai_cau_menh_de | trg_log_doi_dang | AFTER | UPDATE | _trg_log_doi_dang |
 | dang_ky_test | trg_log_dang_ky_test | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | dang_ky_test | trg_updated_dang_ky_test | BEFORE | UPDATE | _lich_test_cham_updated |
+| danhgia_ai_job | trg_ai_luot | AFTER | INSERT/UPDATE | _ai_tg_danh_gia |
 | diem_thi | tg_diem_thi_tinh | BEFORE | INSERT/UPDATE | fn_diem_thi_tinh |
 | gami_exp_ledger | trg_gami_exp_ledger_buoi_huy | AFTER | INSERT | _trg_gami_exp_ledger_buoi_huy |
 | gami_grades | tg_gami_grades_mt_diem | BEFORE | INSERT/UPDATE | _tg_gami_grades_mt_diem |
@@ -11643,6 +11691,7 @@ WITH luot AS (
 | hoc_sinh | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | hoc_sinh | zz_hs_so_ban | BEFORE | UPDATE | _hs_so_ban_tg |
 | hoc_sinh_lop | trg_log_hoc_sinh_lop | AFTER | INSERT/UPDATE | log_hoc_sinh_lop |
+| hoi_dap_nhan_su | trg_ai_luot | AFTER | INSERT/UPDATE | _ai_tg_hoi |
 | hs_giao_dien | hs_giao_dien_log_trg | AFTER | INSERT/UPDATE | _hs_giao_dien_ghi_log |
 | hs_moi_buoc | hs_moi_buoc_touch_trg | BEFORE | UPDATE | _hs_moi_buoc_touch |
 | hs_moi_tick | hs_moi_tick_log_trg | AFTER | INSERT/DELETE | _hs_moi_tick_log |
@@ -11767,6 +11816,7 @@ WITH luot AS (
 | thu_thach_luot | trg_rank_len_bac | AFTER | INSERT | _trg_rank_len_bac |
 | tinh_nang | tinh_nang_vet | BEFORE | UPDATE | _tinh_nang_ghi_vet |
 | tinh_nang_lop | tinh_nang_lop_vet | BEFORE | INSERT/DELETE/UPDATE | _tinh_nang_ghi_vet |
+| troly_hoi_dap | trg_ai_luot | AFTER | INSERT/UPDATE | _ai_tg_hoi |
 | truong_hoc_dm | trg_log_truong_hoc_dm | AFTER | INSERT/DELETE/UPDATE | _lich_test_ghi_log |
 | tsa_ban_do | trg_tsa_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | tsa_cau_form_tn | tsa_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | tsa_cau_form_tn_kiem |
@@ -11836,6 +11886,12 @@ WITH luot AS (
 
 ## Functions
 
+- `_ai_ghi_luot(p_kenh text, p_nguon text, p_at timestamp with time zone, p_ns uuid, p_mon text, p_khoi text, p_loai text, p_phien uuid, p_model text, p_u jsonb, p_thue_bao boolean)` → void
+- `_ai_tg_btvn()` → trigger
+- `_ai_tg_danh_gia()` → trigger
+- `_ai_tg_hoi()` → trigger
+- `_ai_tg_phien_tin()` → trigger
+- `_ai_usd(l ai_luot_dung, g ai_bang_gia)` → numeric
 - `_audit_cron_job()` → SETOF cron.job
 - `_audit_cron_runs()` → SETOF cron.job_run_details
 - `_audit_ket_noi()` → TABLE(vai text, ung_dung text, loai text, trang_thai text, so integer, im_lau_nhat_s integer, gd_lau_nhat_s integer, mo_lau_nhat_s integer)
@@ -12670,6 +12726,7 @@ WITH luot AS (
 - `dai_dang_tien_de_bao_dong(goc text)` → TABLE(ma_dang text, do_sau integer)
 - `et_de(p_bai_test uuid)` → jsonb
 - `et_nop(p_bai_lam uuid)` → jsonb
+- `fn_ai_chi_phi(p_tu date, p_den date)` → jsonb
 - `fn_ban_be_cua_toi()` → jsonb
 - `fn_ban_be_goi_y(p_tim text)` → jsonb
 - `fn_ban_be_gui(p_hs uuid)` → text
@@ -13919,6 +13976,7 @@ WITH luot AS (
 
 | bảng | constraint | định nghĩa |
 |---|---|---|
+| ai_cau_hinh | ai_cau_hinh_id_check | `CHECK ((id = 1))` |
 | anh_cau_hoi | anh_cau_hoi_check | `CHECK (((ngu_lieu IS NULL) = (thu_tu_trong_ngu_lieu IS NULL)))` |
 | anh_cau_hoi | anh_cau_hoi_unit_sgk_check | `CHECK ((unit_sgk ~ '^L[6-9]U([1-9]\|1[0-2])$'::text))` |
 | bai_cau_bao_loi | bai_cau_bao_loi_co_nguoi_bao | `CHECK (((hoc_sinh_id IS NOT NULL) OR (nhan_su_id IS NOT NULL)))` |

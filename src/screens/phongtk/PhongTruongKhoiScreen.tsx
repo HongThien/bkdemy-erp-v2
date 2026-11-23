@@ -19,6 +19,7 @@
 import { batPoll } from '../../lib/poll'
 import { useEffect, useState, type CSSProperties } from 'react'
 import PhienClaudeTab from './PhienClaudeTab'
+import ChiPhiAi from './ChiPhiAi'
 import BanDoMoiScreen from '../kho/BanDoMoi'
 import BaoCaoCaNhan from '../troly/BaoCaoCaNhan'
 import CanhPhong, { SO_GHE, mauHS, type DoVat, type NguoiCanh } from './CanhPhong'
@@ -40,7 +41,7 @@ import { nhoBen } from '../../lib/nho'
 
 type Mo = DoVat | null
 type CheDo = 'tk' | 'tbm'
-const TEN: Record<DoVat, string> = { phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công', giao_trinh_tuan: '📅 Giáo trình tuần', muc_tieu_tuan: '🎯 Mục tiêu tuần' }
+const TEN: Record<DoVat, string> = { chi_phi_ai: '💸 Chi phí AI', phien: '🤖 Phiên Claude', ban_do: '🗺 Bản đồ', quan_tri: '📋 Quản trị', chat_luong: '📈 Chất lượng', bao_cao: '📝 Báo cáo tuần', hoi_ta: '💬 Hỏi vận hành TA', duyet_cong: '🗂 Duyệt công', giao_trinh_tuan: '📅 Giáo trình tuần', muc_tieu_tuan: '🎯 Mục tiêu tuần' }
 const nhanKhoi = (o: string[]) => `Khối ${o.join(' · ')}`
 // Sống tới F5: rời phòng quay lại = đúng chỗ cũ, danh sách không trắng (CLAUDE.md §2 React).
 const NHO = nhoBen<{ mo: Mo; cheDo: CheDo | null; laGd: boolean; mon: string[] | null; xemMon: GheGd | null; xemTk: GheTbm | null; ta: CapDuoi[] | null; tk: GheTbm[] | null; gd: GheGd[] | null }>('phong', { mo: null, cheDo: null, laGd: false, mon: null, xemMon: null, xemTk: null, ta: null, tk: null, gd: null }, { luu: ['mo', 'xemMon', 'xemTk'] })
@@ -157,7 +158,7 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
         <div className={mo ? 'hidden' : 'flex min-h-0 flex-1 flex-col px-4 pb-3 pt-2 md:px-8'}>
           {loi && <p className="mb-1 self-center rounded-lg bg-white/90 px-3 py-1 text-[12.5px] text-rose-600">Chưa tải được danh sách: {loi}</p>}
           <div className="min-h-0 flex-1">
-            <CanhPhong ds={ngoi} onMoNguoi={bamNguoi} onMoDoVat={setMo} coHoiTa={cheDo === 'tbm'} />
+            <CanhPhong ds={ngoi} onMoNguoi={bamNguoi} onMoDoVat={setMo} coHoiTa={cheDo === 'tbm'} coChiPhiAi={xemPhongGd} />
           </div>
           {thua.length > 0 && (
             <div className="mt-2 flex shrink-0 flex-wrap items-center justify-center gap-1.5">
@@ -189,6 +190,8 @@ export default function PhongTruongKhoiScreen({ onTaoCaNhe }: { onTaoCaNhe: () =
               {/* Giáo trình tuần (spec-giao-trinh-tuan, Thùy 16/11): thứ Sáu trưởng khối điền khung từng ca tuần sau, trưởng bộ môn duyệt — cùng màn cho cả hai, DB lọc phạm vi. */}
               {mo === 'giao_trinh_tuan' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><GiaoTrinhTuan /></div>}
               {/* Mục tiêu tuần (Thùy 17/11 tối): đồ vật riêng cạnh Giáo trình tuần — không còn là tab trong Dashboard học tập. */}
+              {/* Chi phí AI (Thùy 23/11): chỉ phòng Giám đốc — DB chỉ trả số cho admin hệ thống (fn_ai_chi_phi). */}
+              {mo === 'chi_phi_ai' && laGd && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><ChiPhiAi /></div>}
               {mo === 'muc_tieu_tuan' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm"><MucTieuTuanPhong /></div>}
               {mo === 'bao_cao' && <div className="min-h-[calc(100vh-150px)] rounded-2xl bg-white p-4 shadow-sm">{cheDo === 'tbm' ? <BaoCaoTuanTBM /> : <BaoCaoTuanTK />}</div>}
               {mo === 'chat_luong' && (

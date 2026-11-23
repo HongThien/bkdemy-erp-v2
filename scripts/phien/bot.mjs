@@ -366,7 +366,10 @@ async function chayLuot(phienId) {
     const muonTiep = noiDung().includes(DAU_TIEP)
     if (muonTiep) phan = [noiDung().split(DAU_TIEP).join('').trim()]
     await day(true)
-    await svc.from('claude_phien_tin').update({ noi_dung: noiDung(), trang_thai: 'xong', usage: kq.usage ?? null }).eq('id', tinId)
+    // 23/11 (Thùy — bộ đếm token): lưu kèm model chạy chính (theo modelUsage, model tốn nhất) + chi phí Claude Code tự báo ⇒ sổ ai_luot_dung (trigger) tính đúng giá.
+    const mdl = Object.entries(kq.modelUsage ?? {}).sort((a, b) => (b[1]?.costUSD ?? 0) - (a[1]?.costUSD ?? 0))[0]?.[0] ?? null
+    const usage = kq.usage ? { ...kq.usage, ...(mdl ? { model: mdl } : {}), ...(kq.total_cost_usd != null ? { cost_usd: kq.total_cost_usd } : {}) } : null
+    await svc.from('claude_phien_tin').update({ noi_dung: noiDung(), trang_thai: 'xong', usage }).eq('id', tinId)
     await svc.from('claude_phien_tin').update({ trang_thai: 'xong', loi: null }).in('id', ids)
     if (laTongKet) {
       await svc.from('claude_phien').update({ trang_thai: 'dong' }).eq('id', phienId)

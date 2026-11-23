@@ -9,7 +9,7 @@
 // nhan_su_id = khoá vẽ (ghế trống dùng khoá ô).
 export type NguoiCanh = { nhan_su_id: string; ho_ten: string; hieu_suat: number | null; tre_han: number; gay_thang: number; nhan?: string; trong?: boolean }
 
-export type DoVat = 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong' | 'giao_trinh_tuan' | 'muc_tieu_tuan'
+export type DoVat = 'chi_phi_ai' | 'phien' | 'ban_do' | 'quan_tri' | 'chat_luong' | 'bao_cao' | 'hoi_ta' | 'duyet_cong' | 'giao_trinh_tuan' | 'muc_tieu_tuan'
 const W = 1600, H = 900, SAN = 560   // mép tường / sàn
 
 // 8 chỗ ngồi: hàng sau nhỏ hơn (xa hơn). Thứ tự lấp: hàng trước giữa → ra hai bên → hàng sau.
@@ -127,8 +127,9 @@ function Bien({ x, y, chu }: { x: number; y: number; chu: string }) {
   )
 }
 
-export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVat, coHoiTa = false }: {
+export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVat, coHoiTa = false, coChiPhiAi = false }: {
   ds: T[]; onMoNguoi: (ns: T) => void; onMoDoVat: (d: DoVat) => void
+  coChiPhiAi?: boolean   // phòng Giám đốc: tấm "CHI PHÍ AI" dưới cột lịch tuần (Thùy 23/11)
   coHoiTa?: boolean   // phòng trưởng bộ môn: thêm bảng tin "Hỏi vận hành TA" (Thùy 05/11)
 }) {
   const ngoi = ds.slice(0, SO_GHE)
@@ -203,6 +204,7 @@ export default function CanhPhong<T extends NguoiCanh>({ ds, onMoNguoi, onMoDoVa
         { y: 96, mau: '#2563eb', chu: 'GIÁO TRÌNH TUẦN', icon: '📅', dv: 'giao_trinh_tuan' as DoVat, nhan: 'Giáo trình tuần' },
         { y: 196, mau: '#16a34a', chu: 'MỤC TIÊU TUẦN', icon: '🎯', dv: 'muc_tieu_tuan' as DoVat, nhan: 'Mục tiêu tuần' },
         { y: 296, mau: '#e11d48', chu: 'BÁO CÁO TUẦN', icon: '📝', dv: 'bao_cao' as DoVat, nhan: 'Báo cáo tuần' },
+        ...(coChiPhiAi ? [{ y: 396, mau: '#7c3aed', chu: 'CHI PHÍ AI', icon: '💸', dv: 'chi_phi_ai' as DoVat, nhan: 'Chi phí AI' }] : []),
       ]).map((l) => (
         <g key={l.dv} className="dv" onClick={() => onMoDoVat(l.dv)} role="button" aria-label={`Mở ${l.nhan}`}>
           <rect className="vien" x={24} y={l.y} width={152} height={84} rx={8} fill="#fff" stroke="#8f5e31" strokeWidth={5} />

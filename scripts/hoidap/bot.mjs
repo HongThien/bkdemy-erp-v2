@@ -97,7 +97,9 @@ function goiClaude(cauHoi) {
       try {
         const j = JSON.parse(out)
         if (j.is_error || j.subtype !== 'success') return reject(new Error(`claude báo lỗi: ${j.subtype ?? '?'} ${String(j.result ?? '').slice(0, 300)}`))
-        resolve({ traLoi: String(j.result ?? '').trim(), usage: j.usage ?? null, model: 'claude-code' })
+        // 23/11 (bộ đếm token): model thật (modelUsage, model tốn nhất) + chi phí Claude Code tự báo vào usage ⇒ sổ ai_luot_dung
+        const mdl = Object.entries(j.modelUsage ?? {}).sort((a, b) => (b[1]?.costUSD ?? 0) - (a[1]?.costUSD ?? 0))[0]?.[0]
+        resolve({ traLoi: String(j.result ?? '').trim(), usage: j.usage ? { ...j.usage, ...(mdl ? { model: mdl } : {}), ...(j.total_cost_usd != null ? { cost_usd: j.total_cost_usd } : {}) } : null, model: mdl ?? 'claude-code' })
       } catch { resolve({ traLoi: out.trim(), usage: null, model: 'claude-code' }) } // JSON hỏng → out vẫn là văn bản dùng được
     })
     child.stdin.write(`${PROMPT}\n\n<<<CAU_HOI>>>\n${cauHoi}\n<<<HET_CAU_HOI>>>\n`)
