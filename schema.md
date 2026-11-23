@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-611 bảng · 42 view · 0 enum · 479 trigger · 2063 function
+611 bảng · 42 view · 0 enum · 479 trigger · 2064 function
 
 ## _app_secrets
 
@@ -12258,6 +12258,7 @@ WITH luot AS (
 - `_phien_kho_nhanh_ds()` → TABLE(nhanh text, cau text, ban_do_cu text, gan text, de_xuat text, thieu text, kiem_mau text, vung text)
 - `_phien_kho_phan1(p_p claude_phien, p_ma_cau text, p_ket_qua text, p_dang_bai text, p_ly_do text, p_chu_de text)` → jsonb
 - `_phien_kho_vao(p_phien uuid)` → claude_phien
+- `_phien_kiem_khoa()` → void
 - `_phien_loai_dang_mo()` → text[]
 - `_phien_loai_sua_ban_do()` → text[]
 - `_phien_tin_bump()` → trigger

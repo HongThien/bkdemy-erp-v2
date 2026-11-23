@@ -199,6 +199,7 @@ Hướng về sau (Thùy 29/10): Trang chỉ xem **mẫu** ngẫu nhiên (lý th
 | `bao_sai` | Xử lý câu bị báo sai | **Chưa mở** — §11.1 câu 4 |
 | `giai_bai` | **Gửi ảnh đề → Claude giải → bấm Copy** (không ghi vào kho) — §6.5. Phát động giải CẢ LÔ tài liệu vẫn là việc của Thùy (dây chuyền `spec-giai-bai.md` Phần C) | **Đã mở (20/11)** — §6.5 |
 
+- **⛔ KHOÁ 23/11 (Thùy): phiên Claude TẠM KHOÁ với mọi trưởng khối** — "Khóa quyền tự động được thêm sửa xóa của trưởng khối đối với bản đồ kiến thức … muốn thao tác phải gửi 1 ticket … t duyệt thì claude mới chạy" + "trước mắt khóa luôn chức năng phiên claude với tất cả trưởng khối". Công tắc `he_thong_cong_tac.phien_claude_truong_khoi` (TẮT = khoá): chỉ admin hệ thống mở / nhắn phiên; mọi lệnh ghi Claude trong phiên của trưởng khối bị chặn ở `_phien_bd_vao` (mig 202611231659). Dòng "đủ quyền" bên dưới tạm HẾT hiệu lực. **Luồng ticket (trưởng khối gửi đề xuất → Thùy duyệt → Claude chạy) chưa thiết kế.**
 - **Loại phiên chỉ là nhãn việc** (Thùy 05/11): trong khối của mình, người mở phiên có **đủ quyền** với bản đồ và kho ở mọi loại phiên — thêm · sửa · **xoá** · lý thuyết · nhập kho · phân dạng · duyệt câu · sửa câu · gắn ảnh · kho rác · vẽ hình · cả phần Hình (Thùy 05/11, 06/11, 07/11, 12/11).
 - Mỗi loại nạp sẵn ngữ cảnh + bộ lệnh: `scripts/phien/loai/<loại>.md` + luật chung `scripts/phien/CHUNG.md`. Lệnh / quyền mới thêm giữa chừng ⇒ một dòng ở `scripts/phien/MOI.md` (bot tự chèn cho phiên mở trước mốc đó — Thùy 09/11).
 
