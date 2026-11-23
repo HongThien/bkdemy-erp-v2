@@ -207,6 +207,7 @@
 
 ### 6.2 Sau giờ — L1 (`ta/SauGioNhapTA.tsx`, `ta/SauGioCa.tsx`; Thùy 11–16/11)
 - **TA không mở ca**: GV / trưởng khối đã khởi tạo và in ba thứ riêng (lý thuyết · bài luyện · bài test). TA cho em làm trên giấy rồi **nhập Đ / C / S từng câu test** (lưu từng ô, vá tại chỗ) ⇒ **"Xong" = nộp** (ô trống tính sai) ⇒ em có mặt + ca xong; test tính mastery như ET.
+- **In giấy ra đủ trang (23/11):** nút 📘 In lý thuyết và phiếu giấy dựng trang in dưới `<body>` (portal) — chi tiết `spec-bo-tro.md` §7.2. Lỗi cũ "chỉ in được trang 1" do TA báo; sửa xong thì TA cần tải bản app TA mới.
 - Công: đầu việc mặc định `bo_tro_sau_gio` (Thùy 12/11) — một ca cả lớp = một việc của TA ca đó.
 
 ### 6.3 Bù (`fn_bu_ca_cua_toi`; chấm BTVN bù `ta/ChamBtvnBu.tsx`)

@@ -284,6 +284,7 @@ Không in tên / mô tả / lý thuyết chuyên đề; builder không hiện ch
 
 - Một bộ máy dàn trang: **paged.js** + `buildPagedCss` / `pageChrome`; khối câu `cauItemParts` → `CauFlow` / `CauColumns` (băng ĐỀ ghép cặp + hàng dòng kẻ rời để ngắt trang đúng — **không** dùng column-count / grid / table, Thùy 03/08). Câu được chảy qua trang (đề Trưng Vương 11 → 7 trang, 19/10).
 - **Bỏ dải header ở mọi bản in**, giữ footer (số trang + liên hệ) (Thùy 03/08). "Câu N." luôn cùng dòng đầu với đề (`MathText prefix`, 02/07). Bọc khối bằng `<section>` lồng làm paged.js bỏ trắng trang ⇒ dùng Fragment (25/10).
+- **Trang in tự viết (không qua paged.js) — luật cô lập khi in (Thùy 23/11):** phải `createPortal` ra `document.body` và ẩn mọi thứ khác bằng `body > *:not(.bk-print){display:none}`; `.bk-print` đặt `position:static; height:auto; overflow:visible`. **Không** dùng `visibility:hidden` + `position:absolute` khi trang in còn nằm trong modal / màn cuộn — trình duyệt chỉ in vừa khung đó (ra 1 trang). Cách kiểm: dựng PDF thật (Chrome headless `page.pdf()`) với bọc `fixed inset-0 overflow-auto` rồi đếm trang. Áp: `TrangInLyThuyet`, `PhieuGiayYeuTA` (`CSS_IN`).
 - **Link PDF:** đóng builder / gán lớp ⇒ xếp hàng `linkgen_jobs` → worker Puppeteer mở `PrintJobPage` (`/#pvjob=…`, chờ `__pvState='ready'`) → PDF chữ thật. Sửa tài liệu sau khi đã có link ⇒ phải sinh lại (link cũ không tự đổi). Đo 17/11: 125 việc đang chờ · 5 hỏng.
 - Kho tài liệu: 🖨 In · ⬇ Tải PDF · In nhanh · Copy link; ✏ Sửa mở **đúng builder theo `ban_do` + nhánh + loại** (sửa 20/10).
 
