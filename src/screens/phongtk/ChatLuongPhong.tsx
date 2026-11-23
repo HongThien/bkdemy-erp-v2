@@ -16,7 +16,8 @@ import { nhoBen } from '../../lib/nho'
 type Muc = 'dashboard' | 'chung' | 'hoso' | 'bo_tro'
 const MUC: [Muc, string][] = [['dashboard', 'Dashboard học tập'], ['chung', 'Tình hình chung'], ['hoso', 'Hồ sơ học tập'], ['bo_tro', 'Danh sách bổ trợ']]
 // sống tới F5: rời phòng quay lại đúng mục, đúng em đang xem (CLAUDE §React)
-const NHO = nhoBen<{ muc: Muc; hoSo: { hs: string; mon: string } | null; o: OTongQuan[] | null; ds: Record<string, DongBtk[]> }>('chat_luong_tk', { muc: 'dashboard', hoSo: null, o: null, ds: {} }, { luu: ['muc', 'hoSo'] })
+// btO: môn × khối đang xem ở Danh sách bổ trợ, nhớ riêng cho từng ghế (Thùy 23/11: mở lại phải về đúng chỗ lần trước, không reset về khối đầu)
+const NHO = nhoBen<{ muc: Muc; hoSo: { hs: string; mon: string } | null; o: OTongQuan[] | null; ds: Record<string, DongBtk[]>; btO: Partial<Record<'tk' | 'tbm', { mon: string; khoi: string | null; lop?: string | null }>> }>('chat_luong_tk', { muc: 'dashboard', hoSo: null, o: null, ds: {}, btO: {} }, { luu: ['muc', 'hoSo', 'btO'] })
 
 const ngay = (t: string | null) => (t ? new Date(t).toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit' }) : '')
 const thanh = (on: boolean) => `whitespace-nowrap rounded-lg px-3 py-1 text-[12.5px] font-semibold ${on ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'}`
@@ -53,9 +54,17 @@ export function ChatLuongTK({ onTaoCaNhe }: { onTaoCaNhe: () => void }) {
 // Danh sách bổ trợ — cùng 1 màn cho 2 ghế: tk (sửa · bỏ · chốt & gửi) · tbm (duyệt · trả lại). Chọn 1 ô (môn × khối) để xem.
 export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO: OTongQuan[]; onMoHoSo?: (hs: string, mon: string) => void }) {
   const mons = [...new Set(cacO.map((o) => o.mon))]
-  const [mon, setMon] = useState(mons[0] ?? '')
+  // lần trước xem ô nào thì mở lại đúng ô đó — chỉ dùng khi ô còn nằm trong phạm vi hiện tại (đổi phân công / đổi tài khoản thì về mặc định)
+  const cu = NHO.btO[che]
+  const cuHopLe = !!cu && mons.includes(cu.mon) && (cu.khoi === null ? che === 'tbm' : cacO.some((o) => o.mon === cu.mon && o.khoi === cu.khoi))
+  const [mon, setMonS] = useState(cuHopLe ? cu!.mon : (mons[0] ?? ''))
   const khois = cacO.filter((o) => o.mon === mon).map((o) => o.khoi)
-  const [khoi, setKhoi] = useState<string | null>(che === 'tk' ? (khois[0] ?? null) : null)   // tbm: null = mọi khối
+  const [khoi, setKhoiS] = useState<string | null>(cuHopLe ? cu!.khoi : che === 'tk' ? (khois[0] ?? null) : null)   // tbm: null = mọi khối
+  const [lop, setLopS] = useState<string | null>(cuHopLe ? (cu!.lop ?? null) : null)   // lọc theo lớp (Thùy 23/11) — chỉ lọc dòng đang hiện
+  const nho = (m: string, k: string | null, l: string | null = null) => { NHO.btO = { ...NHO.btO, [che]: { mon: m, khoi: k, lop: l } } }
+  const setLop = (l: string | null) => { setLopS(l); nho(mon, khoi, l) }
+  const setMon = (m: string) => setMonS(m)
+  const setKhoi = (k: string | null) => { setKhoiS(k); setLopS(null); nho(mon, k) }
   const khoa = `${mon}|${khoi ?? '*'}`
   const [ds, setDs] = useState<DongBtk[] | null>(NHO.ds[khoa] ?? null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -80,6 +89,10 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
   const bao = (t: string) => { setBaoXong(t); setTimeout(() => setBaoXong(null), 2500) }
   const chay = async (id: string, f: () => Promise<void>) => { setDang(id); setLoi(null); try { await f() } catch (e: any) { setLoi(e?.message ?? String(e)) } finally { setDang(null) } }
 
+  // các lớp có trong danh sách đang tải + dòng đang hiện theo lớp chọn (lớp nhớ từ lần trước mà nay không còn em nào ⇒ coi như Cả khối)
+  const cacLop = [...new Set((ds ?? []).map((d) => d.lop).filter((x): x is string => !!x))].sort((a, b) => a.localeCompare(b, 'vi', { numeric: true }))
+  const lopLoc = lop && cacLop.includes(lop) ? lop : null
+  const dsHien = (ds ?? []).filter((d) => !lopLoc || d.lop === lopLoc)
   const soNhap = (ds ?? []).filter((d) => d.trang_thai === 'nhap').length
   const soCho = (ds ?? []).filter((d) => d.trang_thai === 'cho_duyet').length
   const chip = (on: boolean) => `rounded-full px-3 py-1 text-[12.5px] font-semibold ${on ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`
@@ -87,9 +100,16 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-1.5">
-        {mons.length > 1 && mons.map((m) => <button key={m} onClick={() => { setMon(m); setKhoi(che === 'tk' ? (cacO.find((o) => o.mon === m)?.khoi ?? null) : null) }} className={chip(mon === m)}>{m}</button>)}
+        {mons.length > 1 && mons.map((m) => <button key={m} onClick={() => { const k = che === 'tk' ? (cacO.find((o) => o.mon === m)?.khoi ?? null) : null; setMon(m); setKhoiS(k); setLopS(null); nho(m, k) }} className={chip(mon === m)}>{m}</button>)}
         {che === 'tbm' && <button onClick={() => setKhoi(null)} className={chip(khoi === null)}>Mọi khối</button>}
         {khois.map((k) => <button key={k} onClick={() => setKhoi(k)} className={chip(khoi === k)}>Khối {k}</button>)}
+        {cacLop.length > 1 && (
+          <select value={lopLoc ?? ''} onChange={(e) => setLop(e.target.value || null)} title="Lọc theo lớp" className="h-7 rounded-full border border-slate-200 bg-white px-2 text-[12.5px] font-semibold text-slate-700">
+            <option value="">{khoi === null ? 'Mọi lớp' : 'Cả khối'}</option>
+            {cacLop.map((l) => <option key={l} value={l}>Lớp {l}</option>)}
+          </select>
+        )}
+        {lopLoc && <span className="text-[12px] text-slate-400">{dsHien.length} / {(ds ?? []).length} em</span>}
         <button onClick={() => setLamMoi((x) => x + 1)} title="Đọc lại" className="ml-1 rounded-full px-2 py-1 text-[13px] text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50">↻</button>
         {baoXong && <span className="text-[12.5px] font-semibold text-emerald-600">✓ {baoXong}</span>}
         {che === 'tk' && khoi && (
@@ -123,7 +143,7 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
               </tr>
             </thead>
             <tbody>
-              {ds.map((d) => (
+              {dsHien.map((d) => (
                 <tr key={d.id} className="align-top hover:bg-slate-50/60">
                   <td className="border-b border-slate-100 px-3 py-2">
                     {onMoHoSo ? <button onClick={() => onMoHoSo(d.hoc_sinh_id, mon)} className="font-semibold text-slate-800 hover:text-indigo-700 hover:underline">{d.ho_ten}</button> : <span className="font-semibold text-slate-800">{d.ho_ten}</span>}
@@ -131,9 +151,20 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
                   </td>
                   {khoi === null && <td className="border-b border-slate-100 px-2 py-2 text-slate-600">{d.khoi}</td>}
                   <td className="border-b border-slate-100 px-2 py-2">
-                    {d.nhom.map((n) => (
-                      <div key={n.ma} className="leading-snug"><span className="text-slate-800">{n.ten}</span>{n.p != null && <b className={`ml-1 ${n.p < 50 ? 'text-rose-600' : n.p < 80 ? 'text-amber-700' : 'text-emerald-700'}`}>{n.p}%</b>}</div>
-                    ))}
+                    {d.nhom.map((n) => {
+                      const ls = d.nhom_ls?.find((x) => x.ma === n.ma)
+                      return (
+                        <div key={n.ma} className="mb-0.5 leading-snug">
+                          <span className="text-slate-800">{n.ten}</span>{n.p != null && <b className={`ml-1 ${n.p < 50 ? 'text-rose-600' : n.p < 80 ? 'text-amber-700' : 'text-emerald-700'}`}>{n.p}%</b>}
+                          {/* nhóm này đã từng được bổ trợ chưa (số do DB trả) */}
+                          {ls && (ls.so_ca > 0
+                            ? <span className="ml-1.5 whitespace-nowrap rounded bg-amber-100 px-1.5 py-px text-[11px] font-semibold text-amber-800" title="Số ca bổ trợ em có mặt và được dạy dạng thuộc nhóm này">đã bổ trợ {ls.so_ca} ca{ls.lan_cuoi ? ` · gần nhất ${ddmmVN(ls.lan_cuoi)}` : ''}</span>
+                            : ls.duyet_truoc > 0
+                            ? <span className="ml-1.5 whitespace-nowrap rounded bg-sky-100 px-1.5 py-px text-[11px] font-semibold text-sky-800" title="Đã có đề xuất được duyệt trước đó cho nhóm này nhưng chưa ca nào dạy">đã duyệt {ls.duyet_truoc} lần, chưa dạy</span>
+                            : <span className="ml-1.5 whitespace-nowrap rounded bg-slate-100 px-1.5 py-px text-[11px] font-medium text-slate-500">chưa bổ trợ lần nào</span>)}
+                        </div>
+                      )
+                    })}
                     {d.ghi_chu && <div className="mt-0.5 text-[11.5px] italic text-slate-500">“{d.ghi_chu}”</div>}
                   </td>
                   <td className="border-b border-slate-100 px-2 py-2 text-[12px] text-slate-600">{TEN_MUC[d.muc]}<div>Ưu tiên {TEN_UU_TIEN[d.uu_tien]}</div></td>

@@ -18,6 +18,8 @@ export type CaLichSu = {
 }
 export type DongBtk = {
   bao_dong?: BaoDongBtk[]; lich_su?: CaLichSu[]
+  // 23/11 (mig 202611231446): từng nhóm của đề xuất đã được bổ trợ chưa — so_ca = số ca em có mặt và được dạy dạng thuộc nhóm; duyet_truoc = số đề xuất đã duyệt khác có nhóm này
+  nhom_ls?: { ma: string; so_ca: number; lan_cuoi: string | null; duyet_truoc: number }[]
   id: string; hoc_sinh_id: string; ho_ten: string; ma_hs: string | null; lop: string | null; khoi: string
   nhom: NhomChon[]; muc: 1 | 2 | 3; uu_tien: 1 | 2 | 3; ghi_chu: string; trang_thai: TrangThaiBtk; ly_do_tra: string | null
   so_dang: number | null; case_id: string | null; case_tt: string | null; case_ket_qua: string | null
