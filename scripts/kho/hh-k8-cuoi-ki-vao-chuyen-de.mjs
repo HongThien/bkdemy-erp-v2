@@ -26,15 +26,17 @@ function tachYCuoi(nd) {
   return { stem: lines.slice(0, idx).join(' '), last: lines.slice(idx).join(' ') }
 }
 // vế chứng minh cuối cùng (sau "Chứng minh" cuối cùng); khẳng định trần ⇒ chính ý, nhưng chỉ khi thân đề có "Chứng minh…:" dẫn
-function veCuoi(stem, last) {
+function veCuoi(stem, last, full) {
   const m = [...last.matchAll(/ch[ứư]ng minh(?:\s+r[ằa]ng)?\s*:?/gi)]
   if (m.length) { const k = m[m.length - 1]; return last.slice(k.index + k[0].length).trim() }
   if (/ch[ứư]ng minh[^.]*:\s*(?:$|\n)/i.test(stem) || /ch[ứư]ng minh[^.]*:\s*$/i.test(stem)) return last.replace(MOC_Y, '').trim()
+  // khẳng định trần ở ý cuối (vd "b) FG // BC") mà đề có "chứng minh" ở chỗ khác và ý cuối KHÔNG có động từ tính / tìm / hỏi ⇒ là vế cần chứng minh
+  if (/ch[ứư]ng minh/i.test(full) && !/(tính|tìm|hỏi|bao nhiêu|xác định|điều kiện|thêm điều|cần trả)/i.test(last)) return last.replace(MOC_Y, '').trim()
   return null
 }
 const LOAI_KHAC = /(hình\s+(bình hành|thoi|vuông|chữ nhật|thang|thang cân)|tứ giác|cân\b|phân giác|trung điểm|trực tâm|là hình|điều kiện|tính|bao nhiêu|hỏi)/i
-function phanLoai(stem, last) {
-  const ve = veCuoi(stem, last); if (ve == null) return { loai: null, why: 'không có "chứng minh" ở ý cuối' }
+function phanLoai(stem, last, full) {
+  const ve = veCuoi(stem, last, full); if (ve == null) return { loai: null, why: 'không có "chứng minh" ở ý cuối' }
   // vế cuối cùng của câu ghép "A và B" — lấy phần sau " và " cuối (đích cuối cùng)
   const parts = ve.split(/\s+và\s+(?=[^$]*(?:\$[^$]*\$[^$]*)*$)/)
   const cuoi = parts[parts.length - 1]
@@ -57,12 +59,13 @@ try {
   console.log(`cuối kì 1 trong file: ${maCuoiKi.length} · còn sống trong DB: ${rows.length}`)
   const chuaDoi = rows.filter((r) => r.dang_chinh !== NGUON)
   if (chuaDoi.length) console.log(`  ${chuaDoi.length} câu không còn ở ${NGUON} (bỏ qua):`, chuaDoi.map((r) => r.ma_cau + '@' + r.dang_chinh).join(' '))
+  const truoc = +(await q(`select count(*) n from hinh_hoc_cau_hoi where dang_chinh = any($1) and xoa_at is null`, [Object.values(BAI)]))[0].n
   const dem = { vuong: 0, song: 0, thang: 0, hethuc: 0, giu: 0 }
   const lui = []
   const giu = []
   for (const r of rows.filter((x) => x.dang_chinh === NGUON)) {
     const { stem, last } = tachYCuoi(r.noi_dung)
-    const p = phanLoai(stem, last)
+    const p = phanLoai(stem, last, r.noi_dung)
     if (!p.loai) { dem.giu++; giu.push(`${r.ma_cau}  ${p.why}`); continue }
     dem[p.loai]++
     console.log(`${r.ma_cau} → ${BAI[p.loai]} (${p.loai})  ${p.ve.replace(/\s+/g, ' ').slice(0, 95)}`)
@@ -75,10 +78,11 @@ try {
   const sau = await q(`select dang_chinh, count(*) n from hinh_hoc_cau_hoi where dang_chinh = any($1) and xoa_at is null group by 1 order by 1`, [[...Object.values(BAI), NGUON]])
   console.log('đọc lại:', JSON.stringify(sau))
   const doi = Object.values(dem).slice(0, 4).reduce((a, b) => a + b, 0)
-  if (sau.filter((s) => s.dang_chinh !== NGUON).reduce((a, s) => a + +s.n, 0) !== doi) throw new Error('đếm không khớp số đã dời')
+  if (sau.filter((s) => s.dang_chinh !== NGUON).reduce((a, s) => a + +s.n, 0) - truoc !== doi) throw new Error('đếm không khớp số đã dời')
   if (GHI) {
     fs.mkdirSync('_luu-tru/du-lieu', { recursive: true })
-    fs.writeFileSync('_luu-tru/du-lieu/hh-k8-cuoi-ki-vao-chuyen-de-23-11.json', JSON.stringify(lui, null, 1))
+    const tep = '_luu-tru/du-lieu/hh-k8-cuoi-ki-vao-chuyen-de-23-11.json'; const cu = fs.existsSync(tep) ? JSON.parse(fs.readFileSync(tep, 'utf8')) : []
+    fs.writeFileSync(tep, JSON.stringify([...cu, ...lui], null, 1))   // cộng dồn các lượt chạy
     await c.query('commit'); console.log('\nĐÃ GHI (commit). Bản lùi: _luu-tru/du-lieu/hh-k8-cuoi-ki-vao-chuyen-de-23-11.json')
   } else { await c.query('rollback'); console.log('\n(chạy thử — ROLLBACK, chưa ghi gì)') }
 } catch (e) { await c.query('rollback'); console.error('LỖI → ROLLBACK:', e.message); process.exitCode = 1 }
