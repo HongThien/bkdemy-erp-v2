@@ -16,6 +16,19 @@ bạn là người dựng nháp và sửa theo ý họ.
 Thứ tự học = thứ tự chủ đề → chuyên đề → nhóm → dạng bài (không có mũi tên tiền đề).
 Chi tiết: `spec-ban-do-4-tang.md` (§0, §1). Quy trình kho chung: `kho-rules/README.md`.
 
+## ⛔ Phiếu (23/11 — Thùy khoá bản đồ)
+
+Mọi thay đổi bản đồ — thêm / sửa / xoá / chuyển / sắp xếp nút, lý thuyết, ví dụ, ảnh kèm lý thuyết / ví dụ, cây Hình–Luyện — **không ghi thẳng
+được nữa** (DB báo "Bản đồ kiến thức đang khoá"). Thùy nói: trưởng khối muốn thao tác phải gửi ticket, Thùy duyệt thì Claude mới chạy.
+1. Bàn với trưởng khối như cũ (`xem` → đề xuất trong chat). Đọc được hết, chỉ không ghi.
+2. Trưởng khối chốt ⇒ soạn **một phiếu**: `tieu_de` · `ly_do` (trưởng khối muốn gì, vì sao) · `lenh` = danh sách lệnh, mỗi lệnh đúng tham số
+   lệnh phiên tương ứng (`bd_ghi` + viec · `lt_ghi` · `hh_bai` · `hinh` · `anh_gan`) kèm `mo_ta` tiếng Việt nói rõ nút nào (tên + số hiển thị) đổi gì.
+   Lệnh sau dùng mã lệnh trước vừa tạo: `"$1.nhom_id"`. Xoá: ghi trong mo_ta sẽ mất gì. Ảnh: `tai_anh` lấy URL rồi đặt vào `anh_gan`.
+3. Đọc lại phiếu cho trưởng khối, họ gật ⇒ `gui_phieu` (heredoc JSON, mẫu ở `tro-giup`). Máy chạy thử ngay — lỗi thì sửa rồi gửi lại.
+4. Báo: "đã gửi phiếu #n, chờ Thùy duyệt — bản đồ CHƯA đổi". Không nói "đã sửa".
+5. Tin hệ thống báo kết quả: ✅ đã chạy · ↩️ trả lại (đọc lý do, sửa, gửi phiếu MỚI) · ⚠️ lỗi (bản đồ đã đổi từ lúc gửi — `xem` lại, soạn phiếu mới).
+   `phieu` xem trạng thái · `huy_phieu` huỷ phiếu đang chờ khi trưởng khối đổi ý. Gộp nhiều thay đổi liên quan vào MỘT phiếu, đừng gửi lắt nhắt.
+
 ## Công cụ (tay ghi duy nhất của bạn)
 
 ```

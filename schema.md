@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-611 bảng · 42 view · 0 enum · 479 trigger · 2065 function
+613 bảng · 42 view · 0 enum · 515 trigger · 2078 function
 
 ## _app_secrets
 
@@ -5029,7 +5029,7 @@ END |  |  |
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
-| mon | text |  |  | PK FK→huy_hieu.mon |  |
+| mon | text |  |  | PK FK→thanh_tuu.mon |  |
 | huy_hieu_key | text |  |  | PK FK→huy_hieu.key |  |
 | thanh_tuu_key | text |  |  | PK FK→thanh_tuu.key |  |
 | vai | text |  |  |  | `chuan` · `them` |
@@ -6450,6 +6450,38 @@ END |  |  |
 | nguoi_sua | uuid | Y |  | FK→nhan_su.id |  |
 | sua_at | timestamp with time zone |  | now() |  |  |
 
+## phien_phieu
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| phien_id | uuid |  |  | FK→claude_phien.id |  |
+| mon | text |  |  |  |  |
+| khoi | text |  |  |  |  |
+| nguoi_gui | uuid |  |  |  |  |
+| tieu_de | text |  |  |  |  |
+| ly_do | text |  | ''::text |  |  |
+| lenh | jsonb |  |  |  |  |
+| thu | jsonb |  |  |  |  |
+| trang_thai | text |  | 'cho_duyet'::text |  | `cho_duyet` · `tra_lai` · `da_chay` · `loi` · `huy` |
+| ghi_chu_duyet | text | Y |  |  |  |
+| nguoi_duyet | uuid | Y |  |  |  |
+| duyet_at | timestamp with time zone | Y |  |  |  |
+| ket_qua | jsonb | Y |  |  |  |
+| created_at | timestamp with time zone |  | now() |  |  |
+| updated_at | timestamp with time zone |  | now() |  |  |
+
+## phien_phieu_lich_su
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| id | bigint |  |  | PK |  |
+| phieu_id | bigint |  |  | FK→phien_phieu.id |  |
+| cu | text | Y |  |  |  |
+| moi | text |  |  |  |  |
+| actor | uuid | Y | jwt_uid() |  |  |
+| at | timestamp with time zone |  | now() |  |  |
+
 ## phong
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -6926,8 +6958,8 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
-| khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
+| khoi | text |  |  | FK→sotay_ct_hinh.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
 | ten | text |  |  |  |  |
@@ -11377,14 +11409,17 @@ WITH luot AS (
 | dai_bdm_cau_chua_khop | trg_bdm_cau_chua_khop_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_cau_chua_khop | trg_dai_bdm_cau_chua_khop_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
 | dai_bdm_cau_thieu_dang | trg_dai_bdm_cau_thieu_dang_cam_ds | BEFORE | INSERT | _bdm_cam_dung_sai |
+| dai_bdm_chu_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_chu_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_chu_de | trg_bdm_chu_de_khoa_vung | BEFORE | INSERT/UPDATE | _trg_bdm_chu_de_khoa_vung |
 | dai_bdm_chu_de | trg_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_chu_de | trg_bdm_chu_de_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_chu_de | trg_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_chuyen_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_chuyen_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_chuyen_de | trg_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_chuyen_de | trg_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_dang_bai | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_dang_bai | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _bdm_bump_nhom |
 | dai_bdm_dang_bai | trg_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
@@ -11412,14 +11447,17 @@ WITH luot AS (
 | dai_bdm_kho_ds | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_kho_ds | trg_dai_bdm_kho_ds_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| dai_bdm_nhom | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_nhom | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_nhom | trg_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom | trg_bdm_nhom_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
 | dai_bdm_nhom | trg_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _bdm_tien_de_cung_o |
 | dai_bdm_nhom | trg_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| dai_bdm_nhom_tien_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_nhom_tien_de | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_nhom_tien_de | trg_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_nhom_tien_de | trg_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _bdm_tien_de_kiem |
+| dai_bdm_o | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | dai_bdm_o | trg_bdm_cay_ban | AFTER | INSERT/DELETE/UPDATE | _trg_bdm_cay_ban |
 | dai_bdm_o | trg_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | dai_bdm_o | trg_bdm_o_thu_tu | BEFORE | INSERT | _bdm_thu_tu |
@@ -11505,6 +11543,7 @@ WITH luot AS (
 | hinh_bai | trg_hinh_bai_dong_bo_chuyen_de | AFTER | UPDATE | _hinh_bai_dong_bo_chuyen_de |
 | hinh_bai | trg_hinh_bai_trang_thai_log | AFTER | UPDATE | _hl_bai_ghi_log |
 | hinh_baitoan | hinh_baitoan_gen_ma_trg | BEFORE | INSERT/UPDATE | hinh_baitoan_gen_ma |
+| hinh_baitoan | trg_ban_do_khoa | BEFORE | INSERT/DELETE | _ban_do_khoa_ghi |
 | hinh_baitoan_bien_the | hinh_bien_the_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
 | hinh_baitoan_bo_de | trg_hl_bai_bo_de_khoi | BEFORE | INSERT/UPDATE | _hl_trg_nhan_khoi_bai |
 | hinh_baitoan_bo_de | trg_hl_bai_bo_de_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
@@ -11515,6 +11554,9 @@ WITH luot AS (
 | hinh_bien_the_yeu_cau_giai | hinh_bien_the_yeu_cau_giai_claude_dong | BEFORE | UPDATE | fn_giaibai_tg_claude_dong |
 | hinh_cach_giai | hinh_cach_giai_thu_hoi_dien | AFTER | UPDATE | hinh_form_dien_thu_hoi |
 | hinh_form_dien | hinh_form_dien_kiem | BEFORE | INSERT/UPDATE | hinh_form_dien_kiem |
+| hinh_hoc_bai | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
+| hinh_hoc_bai_ly_thuyet | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
+| hinh_hoc_bai_y | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_hoc_bai_y | trg_hh_bai_y_lan | AFTER | UPDATE | _trg_hh_bai_y_lan |
 | hinh_hoc_bai_y | trg_hh_bai_y_moc | BEFORE | UPDATE | _trg_hh_bai_y_moc |
 | hinh_hoc_ban_do | trg_hinh_hoc_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
@@ -11526,12 +11568,18 @@ WITH luot AS (
 | hinh_hoc_cau_lop | trg_hinh_hoc_cau_lop_truoc_sua | BEFORE | UPDATE | _hinh_hoc_cau_lop_truoc_sua |
 | hinh_hoc_cau_so_do | hinh_hoc_cau_so_do_updated_at | BEFORE | UPDATE | _hh_so_do_cham_updated_at |
 | hinh_mo_hinh | hinh_mo_hinh_neo_chk_trg | BEFORE | INSERT/UPDATE | hinh_mo_hinh_neo_chk |
+| hinh_mo_hinh | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_mo_hinh | trg_hl_mo_hinh_khop_nhom | BEFORE | INSERT/UPDATE | _hl_mo_hinh_khop_nhom |
 | hinh_mo_hinh | trg_hl_mo_hinh_vai_chk | BEFORE | UPDATE | _hl_mo_hinh_vai_chk |
+| hinh_mo_hinh_cha | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_mo_hinh_cha | trg_hl_canh_vai_chk | BEFORE | INSERT/UPDATE | _hl_canh_vai_chk |
+| hinh_mo_hinh_ly_thuyet | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
+| hinh_nhom_bai_su_kien | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_nhom_bai_su_kien | trg_hl_nhom_bai_su_kien_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
+| hinh_nhom_mo_hinh | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_nhom_mo_hinh | trg_hl_nhom_mh_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hinh_nhom_mo_hinh | trg_hl_nhom_mh_thu_tu | BEFORE | INSERT | _hl_nhom_mh_thu_tu |
+| hinh_thanh_vien_su_kien | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hinh_thanh_vien_su_kien | trg_hl_thanh_vien_su_kien_log | AFTER | INSERT/DELETE/UPDATE | _bdm_ghi_log |
 | hinh_thanh_vien_su_kien | trg_hl_tv_su_kien_chk | BEFORE | INSERT/UPDATE | _hl_tv_su_kien_chk |
 | hinh_y | hinh_y_bump_bai | AFTER | INSERT/DELETE/UPDATE | _hl_y_bump_bai |
@@ -11543,11 +11591,14 @@ WITH luot AS (
 | hoa_don | trg_log_hoa_don | AFTER | INSERT/UPDATE | log_hoa_don |
 | hoahoc_ban_do | trg_hoahoc_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | hoahoc_ban_do | trg_hoahoc_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| hoahoc_bdm_chu_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_chu_de | trg_hoahoc_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_chu_de | trg_hoahoc_bdm_chu_de_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
 | hoahoc_bdm_chu_de | trg_hoahoc_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| hoahoc_bdm_chuyen_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_chuyen_de | trg_hoahoc_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_chuyen_de | trg_hoahoc_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| hoahoc_bdm_dang_bai | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_bump_nhom |
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_dang_bai | trg_hoahoc_bdm_dang_bai_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
@@ -11564,12 +11615,15 @@ WITH luot AS (
 | hoahoc_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
 | hoahoc_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
 | hoahoc_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| hoahoc_bdm_nhom | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _hoahoc_bdm_tien_de_cung_o |
 | hoahoc_bdm_nhom | trg_hoahoc_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| hoahoc_bdm_nhom_tien_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_nhom_tien_de | trg_hoahoc_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_nhom_tien_de | trg_hoahoc_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _hoahoc_bdm_tien_de_kiem |
+| hoahoc_bdm_o | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | hoahoc_bdm_o | trg_hoahoc_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _hoahoc_bdm_ghi_log |
 | hoahoc_bdm_o | trg_hoahoc_bdm_o_thu_tu | BEFORE | INSERT | _hoahoc_bdm_thu_tu |
 | hoahoc_cau_form_tn | hoahoc_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | hoahoc_cau_form_tn_kiem |
@@ -11598,11 +11652,14 @@ WITH luot AS (
 | kho_nhan_xet_xu_ly | trg_bao_sai_dong_theo_nhan_xet | AFTER | INSERT | _bao_sai_dong_theo_nhan_xet |
 | khtn_ban_do | trg_khtn_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | khtn_ban_do | trg_khtn_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| khtn_bdm_chu_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_chu_de | trg_khtn_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_chu_de | trg_khtn_bdm_chu_de_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_chu_de | trg_khtn_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_chuyen_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_chuyen_de | trg_khtn_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_chuyen_de | trg_khtn_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_dang_bai | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_bump_nhom |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_dang_bai | trg_khtn_bdm_dang_bai_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
@@ -11619,12 +11676,15 @@ WITH luot AS (
 | khtn_bdm_gan_cau | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
 | khtn_bdm_gan_cau | trg_mastery_ban_ins | AFTER | INSERT | _mastery_ban_tg |
 | khtn_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
+| khtn_bdm_nhom | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _khtn_bdm_tien_de_cung_o |
 | khtn_bdm_nhom | trg_khtn_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| khtn_bdm_nhom_tien_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_nhom_tien_de | trg_khtn_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_nhom_tien_de | trg_khtn_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _khtn_bdm_tien_de_kiem |
+| khtn_bdm_o | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | khtn_bdm_o | trg_khtn_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _khtn_bdm_ghi_log |
 | khtn_bdm_o | trg_khtn_bdm_o_thu_tu | BEFORE | INSERT | _khtn_bdm_thu_tu |
 | khtn_cau_form_tn | khtn_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | khtn_cau_form_tn_kiem |
@@ -11655,6 +11715,8 @@ WITH luot AS (
 | phan_cong_lop | phan_cong_lop_log_trg | AFTER | INSERT/DELETE/UPDATE | _phan_cong_lop_ghi_log |
 | phan_cong_quan_ly_khoi | pcqlk_dong_bo_ghe_trg | AFTER | INSERT/DELETE/UPDATE | _trg_pcqlk_dong_bo_ghe |
 | phan_cong_quan_ly_khoi | pcqlk_log_trg | AFTER | INSERT/DELETE/UPDATE | _pcqlk_ghi_log |
+| phien_phieu | trg_phien_phieu_lich_su | AFTER | INSERT/UPDATE | _phien_phieu_ghi_lich_su |
+| phien_phieu | trg_phien_phieu_touch | BEFORE | UPDATE | _phien_phieu_touch |
 | qlht_doi_qua | trg_log_qlht_doi_qua | AFTER | INSERT/UPDATE | log_qlht |
 | qlht_qua | trg_log_qlht_qua | AFTER | INSERT/UPDATE | log_qlht |
 | qlht_qua_nhap | trg_log_qlht_qua_nhap | AFTER | INSERT/UPDATE | log_qlht |
@@ -11722,11 +11784,14 @@ WITH luot AS (
 | ung_vien | trg_ung_vien_doi_khoi_phan_cong | AFTER | UPDATE | tg_ung_vien_doi_khoi_phan_cong |
 | vatly_ban_do | trg_vatly_ban_do_sync_ca_test_cau | AFTER | UPDATE | tg_ban_do_sync_ca_test_cau |
 | vatly_ban_do | trg_vatly_ban_do_xoa_dong_bo_btyeu | AFTER | DELETE | _trg_btyeu_dong_bo_dang_ban_do |
+| vatly_bdm_chu_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_chu_de | trg_vatly_bdm_chu_de_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_chu_de | trg_vatly_bdm_chu_de_thu_tu | BEFORE | INSERT | _vatly_bdm_thu_tu |
 | vatly_bdm_chu_de | trg_vatly_bdm_chu_de_touch | BEFORE | UPDATE | _bdm_touch |
+| vatly_bdm_chuyen_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_chuyen_de | trg_vatly_bdm_chuyen_de_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_chuyen_de | trg_vatly_bdm_chuyen_de_touch | BEFORE | UPDATE | _bdm_touch |
+| vatly_bdm_dang_bai | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_dang_bai | trg_mastery_ban_del | AFTER | DELETE | _mastery_ban_tg |
 | vatly_bdm_dang_bai | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | vatly_bdm_dang_bai | trg_vatly_bdm_dang_bai_bump | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_bump_nhom |
@@ -11743,12 +11808,15 @@ WITH luot AS (
 | vatly_bdm_gan_cau | trg_mastery_ban_upd | AFTER | UPDATE | _mastery_ban_tg |
 | vatly_bdm_gan_cau | trg_vatly_bdm_gan_cau_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_gan_cau | trg_vatly_bdm_gan_cau_tu_duyet | AFTER | INSERT/UPDATE | _bdm_tu_duyet_sau_gan |
+| vatly_bdm_nhom | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_nhom | trg_vatly_bdm_nhom_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_nhom | trg_vatly_bdm_nhom_thu_tu | BEFORE | INSERT | _vatly_bdm_thu_tu |
 | vatly_bdm_nhom | trg_vatly_bdm_nhom_tien_de_cung_o | AFTER | UPDATE | _vatly_bdm_tien_de_cung_o |
 | vatly_bdm_nhom | trg_vatly_bdm_nhom_touch | BEFORE | UPDATE | _bdm_touch |
+| vatly_bdm_nhom_tien_de | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_nhom_tien_de | trg_vatly_bdm_nhom_tien_de_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_nhom_tien_de | trg_vatly_bdm_tien_de_kiem | BEFORE | INSERT/UPDATE | _vatly_bdm_tien_de_kiem |
+| vatly_bdm_o | trg_ban_do_khoa | BEFORE | INSERT/DELETE/UPDATE | _ban_do_khoa_ghi |
 | vatly_bdm_o | trg_vatly_bdm_o_log | AFTER | INSERT/DELETE/UPDATE | _vatly_bdm_ghi_log |
 | vatly_bdm_o | trg_vatly_bdm_o_thu_tu | BEFORE | INSERT | _vatly_bdm_thu_tu |
 | vatly_cau_form_tn | vatly_cau_form_tn_kiem | BEFORE | INSERT/UPDATE | vatly_cau_form_tn_kiem |
@@ -11775,6 +11843,8 @@ WITH luot AS (
 - `_audit_pss()` → SETOF extensions.pg_stat_statements
 - `_bai_test_mat_phieu_dong()` → trigger
 - `_ban_be_cua(p_hs uuid)` → SETOF uuid
+- `_ban_do_duoc_ghi()` → boolean
+- `_ban_do_khoa_ghi()` → trigger
 - `_bao_cao_ph_ky_ghi_log()` → trigger
 - `_bao_cao_ph_ky_quyen_cong_bo()` → trigger
 - `_bao_cao_ph_ky_truoc()` → trigger
@@ -12261,9 +12331,15 @@ WITH luot AS (
 - `_phien_kiem_khoa()` → void
 - `_phien_loai_dang_mo()` → text[]
 - `_phien_loai_sua_ban_do()` → text[]
+- `_phien_phieu_ghi_lich_su()` → trigger
+- `_phien_phieu_touch()` → trigger
 - `_phien_tin_bump()` → trigger
 - `_phien_touch()` → trigger
 - `_phien_xem_duoc(p_phien uuid)` → boolean
+- `_phieu_chay_lenh(p_phien uuid, p_lenh jsonb)` → jsonb
+- `_phieu_chay_thu(p_phien uuid, p_lenh jsonb)` → jsonb
+- `_phieu_dang_chay()` → boolean
+- `_phieu_la_nguoi_duyet()` → boolean
 - `_phieu_luu_bo()` → jsonb
 - `_phong_cap_duoi_ds()` → TABLE(nhan_su_id uuid, khoi text[])
 - `_phong_chi_so(p_ds uuid[])` → TABLE(nhan_su_id uuid, hieu_suat numeric, hieu_suat_du boolean, viec_tuan integer, dang_lam integer, da_xong integer, tre_han integer, qua_han integer, gay_thang integer)
@@ -13388,6 +13464,11 @@ WITH luot AS (
 - `fn_phien_mo(p_loai text, p_mon text, p_khoi text, p_tieu_de text DEFAULT NULL::text)` → uuid
 - `fn_phien_mo_lai(p_phien uuid)` → void
 - `fn_phien_pham_vi()` → jsonb
+- `fn_phien_phieu_ds(p_chi_cho boolean DEFAULT false, p_gioi_han integer DEFAULT 50)` → jsonb
+- `fn_phien_phieu_duyet(p_id bigint, p_duyet boolean, p_ghi_chu text DEFAULT NULL::text)` → jsonb
+- `fn_phien_phieu_gui(p_phien uuid, p_ts jsonb)` → jsonb
+- `fn_phien_phieu_huy(p_phien uuid, p_id bigint)` → jsonb
+- `fn_phien_phieu_thu(p_id bigint)` → jsonb
 - `fn_phien_tam_dung()` → boolean
 - `fn_phien_tep_ds(p_phien uuid)` → TABLE(id bigint, tin_id bigint, thu_tu smallint, ten text, mime text, kich_thuoc integer)
 - `fn_phien_tep_lay(p_id bigint)` → jsonb
@@ -14221,6 +14302,8 @@ WITH luot AS (
 | nt_xu | nt_xu_da_nhan_check | `CHECK ((da_nhan > 0))` |
 | nt_xu | nt_xu_thang_check | `CHECK ((thang ~ '^[0-9]{4}-[0-9]{2}$'::text))` |
 | phan_cong_ca | phan_cong_ca_thu_check | `CHECK (((thu >= 2) AND (thu <= 8)))` |
+| phien_phieu | phien_phieu_lenh_check | `CHECK (((jsonb_typeof(lenh) = 'array'::text) AND ((jsonb_array_length(lenh) >= 1) AND (jsonb_array_length(lenh) <= 200))))` |
+| phien_phieu | phien_phieu_tieu_de_check | `CHECK ((btrim(tieu_de) <> ''::text))` |
 | qlht_doi_qua | qlht_doi_qua_so_luong_check | `CHECK ((so_luong > 0))` |
 | qlht_qua | qlht_qua_gia_xu_check | `CHECK ((gia_xu > 0))` |
 | qlht_qua_order | qlht_qua_order_gia_xu_check | `CHECK ((gia_xu > 0))` |

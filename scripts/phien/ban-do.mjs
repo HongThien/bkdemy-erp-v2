@@ -5,6 +5,25 @@
 // `node scripts/phien/ban-do.mjs …`. Script này KHÔNG nhận mã phiên từ tham số — chỉ từ PHIEN_ID —
 // nên Claude không trỏ được sang phiên/khối khác. Mọi lệnh đi qua RPC fn_phien_bd_* (chỉ service_role):
 // DB tự kiểm phiên đang mở, đóng vai người mở phiên, kiểm lại quyền trưởng khối, nút thuộc đúng khối.
+// ⛔ PHIẾU (23/11, Thùy): bản đồ KHOÁ — thêm / sửa / xoá / chuyển / sắp xếp nút (Đại · HGT · KHTN · Lý · Hoá · Hình–Học · Hình–Luyện), lý thuyết · ví dụ,
+//   ảnh lý thuyết / ví dụ / cây Hình–Luyện KHÔNG ghi thẳng được nữa (DB báo "Bản đồ kiến thức đang khoá"). Cách làm: bàn xong với trưởng khối ⇒ soạn PHIẾU
+//   (danh sách lệnh đúng tham số các lệnh bên dưới + câu mô tả cho Thùy đọc) ⇒ trưởng khối gật ⇒ gui_phieu. Gửi = máy CHẠY THỬ ngay, lỗi thì không nhận.
+//   Thùy duyệt ⇒ máy chạy ĐÚNG các lệnh đó trong một giao dịch (một lệnh lỗi ⇒ không lệnh nào ghi). Kết quả về phiên bằng tin hệ thống.
+//   KHO (them_cau · phan_dang · duyet_cau · sua_cau · kho_rac · gan_anh câu kho · gan_anh_khac cau_lop/hinh_bai) vẫn làm thẳng như cũ.
+//   gui_phieu <<'HET'  {"tieu_de":"…","ly_do":"vì sao sửa (trưởng khối nói gì)","lenh":[
+//       {"ham":"bd_ghi","viec":"them_nhom","ts":{"chu_de_id":"NCD…","chuyen_de_id":"NCH…","ten":"…","mo_ta":"…"},"mo_ta":"Thêm nhóm '…' vào chuyên đề 2.3"},
+//       {"ham":"bd_ghi","viec":"them_dang_bai","ts":{"nhom_id":"$1.nhom_id","ten":"…"},"mo_ta":"Thêm dạng '…' vào nhóm vừa tạo"},
+//       {"ham":"lt_ghi","ts":{"loai":"dang_bai","id":"NDB…","truong":"ly_thuyet","md5_cu":"…","noi_dung":"##ĐN …"},"mo_ta":"Viết lý thuyết dạng …"},
+//       {"ham":"hh_bai","viec":"sua","ts":{"ma_bai":"HH…","ten_bai":"…"},"mo_ta":"…"},
+//       {"ham":"hinh","ham_hinh":"fn_hl_them_gia_thiet","args":{"p_cha":"…","p_ten":"…"},"mo_ta":"…"},
+//       {"ham":"anh_gan","ts":{"loai":"dang_bai","id":"NDB…","o":"vi_du","url":"<từ tai_anh>","ten_file":"…"},"mo_ta":"…"}]}  HET
+//     ham: bd_ghi (viec = them_chu_de · them_chuyen_de · them_nhom · them_dang_bai · sua · chuyen_nhom · chuyen_dang_bai · sap_xep · xoa_*) · lt_ghi (= ghi_noi_dung)
+//       · hh_bai · hinh (hàm fn_hl_* / fn_hh_*) · anh_gan (= gan_anh_khac, url lấy bằng tai_anh). "$k.<trường>" = kết quả lệnh thứ k (mã vừa tạo).
+//     Mỗi lệnh BẮT BUỘC "mo_ta" tiếng Việt rõ (nút nào — tên + số hiển thị — đổi gì). Xoá: ghi rõ sẽ mất gì. Tối đa 200 lệnh / phiếu.
+//   tai_anh '{"file":"<png>"}'          upload ảnh đã vẽ / cắt ⇒ in URL để đặt vào lệnh anh_gan của phiếu
+//   phieu                                các phiếu của phiên (số · trạng thái · lý do trả lại / lỗi)
+//   huy_phieu '{"id":12}'                huỷ phiếu đang chờ duyệt (khi trưởng khối đổi ý) rồi gửi phiếu mới
+//   Thùy TRẢ LẠI ⇒ đọc lý do trong tin hệ thống, sửa theo, gửi phiếu MỚI. Phiên của Thùy (admin) không cần phiếu.
 // HÌNH (07/11) — phiên Toán:
 //   hh_xem                                                        bài học Hình–Học của khối (mã · tên · chủ đề · số câu · độ dài lý thuyết/ví dụ)
 //   hh_bai '{"viec":"them","ten_bai":"…","chu_de_id":"NCD…"}' · '{"viec":"sua","ma_bai":"HH…","mo_ta":"…","vi_du":"…","ly_thuyet":"…"}' · '{"viec":"xoa","ma_bai":"HH…"}'
@@ -196,7 +215,7 @@ if (!lenh || lenh === 'tro-giup' || lenh === '--help') {
   // In đúng khối "Cách dùng" ở đầu file — một nguồn, không chép hướng dẫn hai nơi.
   const dong = readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n')
   // 12/11: in TỪ dòng HÌNH (đầu khối lệnh) — trước chỉ in từ "Cách dùng" nên lệnh Hình/kho/ảnh/vẽ bị giấu, phiên tưởng chưa có lệnh.
-  const tu = dong.findIndex((l) => l.startsWith('// HÌNH'))
+  const tu = dong.findIndex((l) => l.startsWith('// ⛔ PHIẾU'))   // 23/11: khối PHIẾU đứng đầu
   const den = dong.findIndex((l, i) => i > tu && l.startsWith('// ====='))
   console.log(dong.slice(tu, den).map((l) => l.replace(/^\/\/ ?/, '')).join('\n'))
   process.exit(0)
@@ -267,7 +286,7 @@ if (lenh === 'thu') {
 }
 
 let ts
-const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac', 'dung_hinh'].includes(lenh) ? await docStdin() : '{}')
+const thamSo = con[0] ?? (['phan_dang', 'them_cau', 'sua_cau', 'kho_rac', 'dung_hinh', 'gui_phieu'].includes(lenh) ? await docStdin() : '{}')
 try { ts = JSON.parse(thamSo) } catch { loi(`Tham số phải là JSON (trong dấu nháy đơn, hoặc qua heredoc với phan_dang), vd: node scripts/phien/ban-do.mjs ${lenh} '{"ten":"..."}'`) }
 
 if (lenh === 'doc') {
@@ -480,6 +499,43 @@ if (lenh === 'anh_pdf' || lenh === 'anh_docx' || lenh === 'gan_anh') {
     if (error) loi(error.message)
     console.log(`OK gan_anh ${data.ma_cau} (${data.o}): ${data.url}`)
   }
+  process.exit(0)
+}
+
+// 23/11 PHIẾU sửa bản đồ (Thùy duyệt rồi máy mới chạy) — xem đầu file.
+if (lenh === 'tai_anh') {
+  if (!ts.file) loi('Cần "file".')
+  console.log(`URL: ${await taiAnh(ts.file)}`)
+  process.exit(0)
+}
+if (lenh === 'phieu') {
+  const { data, error } = await svc.from('phien_phieu').select('id, tieu_de, trang_thai, ghi_chu_duyet, created_at, duyet_at, lenh')
+    .eq('phien_id', PHIEN).order('id', { ascending: false }).limit(50)
+  if (error) loi(error.message)
+  const ten = { cho_duyet: '⏳ chờ Thùy duyệt', tra_lai: '↩️ bị trả lại', da_chay: '✅ đã chạy', loi: '⚠️ chạy lỗi', huy: '🗑️ đã huỷ' }
+  if (!data.length) console.log('Phiên chưa gửi phiếu nào.')
+  for (const p of data) console.log(`#${p.id} ${ten[p.trang_thai] ?? p.trang_thai} · "${p.tieu_de}" · ${p.lenh.length} lệnh${p.ghi_chu_duyet ? ` · ${p.ghi_chu_duyet}` : ''}`)
+  process.exit(0)
+}
+if (lenh === 'huy_phieu') {
+  const { data, error } = await svc.rpc('fn_phien_phieu_huy', { p_phien: PHIEN, p_id: ts.id })
+  if (error) loi(error.message)
+  console.log(`OK huỷ phiếu #${data.phieu_id}`)
+  process.exit(0)
+}
+if (lenh === 'gui_phieu') {
+  if (!Array.isArray(ts.lenh)) loi('gui_phieu cần {"tieu_de","ly_do","lenh":[…]} (xem tro-giup).')
+  for (const [i, l] of ts.lenh.entries()) {
+    if (l.ham === 'lt_ghi' && typeof l.ts?.noi_dung === 'string') {
+      l.ts.noi_dung = l.ts.noi_dung.replace(/\r\n/g, '\n').replace(/^\n+|\s+$/g, '')
+      const k = kiemDinhDang(l.ts.noi_dung, l.ts.truong)
+      if (k.loi.length) loi(`Lệnh ${i + 1}: nội dung chưa đúng định dạng, CHƯA gửi phiếu: ${k.loi.join(' · ')}`)
+    }
+  }
+  const { data, error } = await svc.rpc('fn_phien_phieu_gui', { p_phien: PHIEN, p_ts: ts })
+  if (error) loi(error.message)
+  console.log(`OK đã gửi phiếu #${data.phieu_id} (${data.so_lenh} lệnh) — chạy thử đạt, chờ Thùy duyệt. CHƯA có gì ghi vào bản đồ.`)
+  for (const t of (data.thay_doi ?? []).slice(0, 40)) console.log(`  ${t.hanh_dong} ${t.loai}: ${(t.moi ?? t.cu)?.ten ?? (t.moi ?? t.cu)?.id ?? ''}`)
   process.exit(0)
 }
 

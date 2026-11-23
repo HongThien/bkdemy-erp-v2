@@ -150,3 +150,30 @@ export async function getPhien(phienId: string): Promise<{ trang_thai: PhienTran
   if (error) throw error
   return (data ?? null) as { trang_thai: PhienTrangThai } | null
 }
+
+// ── 23/11 PHIẾU sửa bản đồ: trưởng khối (qua Claude) gửi → Thùy duyệt → máy chạy đúng lệnh (mig 202611231711) ──
+export type PhieuTrangThai = 'cho_duyet' | 'tra_lai' | 'da_chay' | 'loi' | 'huy'
+export type PhieuLenh = { ham: string; viec?: string; ham_hinh?: string; mo_ta: string; ts?: Record<string, unknown>; args?: Record<string, unknown> }
+export type PhieuThayDoi = { at: string; loai: string; hanh_dong: string; cu: Record<string, unknown> | null; moi: Record<string, unknown> | null }
+export type PhieuThu = { ok: boolean; loi?: string; kq?: unknown[]; thay_doi?: PhieuThayDoi[]; luc?: string }
+export type Phieu = {
+  id: number; phien_id: string; mon: string; khoi: string; tieu_de: string; ly_do: string; lenh: PhieuLenh[]; thu: PhieuThu
+  trang_thai: PhieuTrangThai; ghi_chu_duyet: string | null; ket_qua: Record<string, unknown> | null
+  ten_gui: string | null; ten_duyet: string | null; duyet_at: string | null; created_at: string
+}
+export type PhieuDs = { la_nguoi_duyet: boolean; so_cho: number; ds: Phieu[] }
+export async function listPhieu(chiCho = false, gioiHan = 50): Promise<PhieuDs> {
+  const { data, error } = await supabase.rpc('fn_phien_phieu_ds', { p_chi_cho: chiCho, p_gioi_han: gioiHan })
+  if (error) throw error
+  return data as PhieuDs
+}
+export async function thuPhieu(id: number): Promise<PhieuThu> {
+  const { data, error } = await supabase.rpc('fn_phien_phieu_thu', { p_id: id })
+  if (error) throw error
+  return data as PhieuThu
+}
+export async function duyetPhieu(id: number, duyet: boolean, ghiChu?: string): Promise<{ ok: boolean; trang_thai: PhieuTrangThai; loi?: string }> {
+  const { data, error } = await supabase.rpc('fn_phien_phieu_duyet', { p_id: id, p_duyet: duyet, p_ghi_chu: ghiChu ?? null })
+  if (error) throw error
+  return data as { ok: boolean; trang_thai: PhieuTrangThai; loi?: string }
+}

@@ -5,9 +5,10 @@
 // Rời phòng rồi quay lại = đúng chỗ cũ: phiên đang mở + danh sách + nháp tin nhớ ở NHO (sống tới F5).
 import { batPoll } from '../../lib/poll'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import PhieuBanDo from './PhieuBanDo'
 import { supabase } from '../../lib/supabase'
 import {
-  PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, phienTamDung, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
+  PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, phienTamDung, listPhieu, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
   listGhi, getBot, getPhien, listAnhThu, getAnhDu,
   type AnhGui, type AnhThu, type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
   listTep, getTep, type TepGui, type TepTin,
@@ -428,7 +429,10 @@ function PhienClaudeTabChinh() {
   const [bot, setBot] = useState<PhienBot | null>(null)
   const [now, setNow] = useState(() => Date.now())
   const [loi, setLoi] = useState<string | null>(null)
+  const [xemPhieu, setXemPhieu] = useState(false)   // 23/11: khay phiếu sửa bản đồ (Thùy duyệt)
+  const [soCho, setSoCho] = useState(0)
 
+  useEffect(() => { listPhieu(true, 1).then((r) => setSoCho(r.so_cho)).catch(() => {}) }, [])
   useEffect(() => { NHO.ds = ds }, [ds])
   useEffect(() => { NHO.chon = chon }, [chon])
 
@@ -457,8 +461,13 @@ function PhienClaudeTabChinh() {
       </div>
       <div className="grid gap-3 lg:grid-cols-[320px_1fr]">
         <div>
-          <button onClick={() => { setTaoMoi(true); setChon(null) }}
+          <button onClick={() => { setTaoMoi(true); setChon(null); setXemPhieu(false) }}
             className="mb-2 w-full rounded-xl bg-indigo-600 px-3 py-2 text-[13.5px] font-semibold text-white hover:bg-indigo-700">+ Phiên mới</button>
+          <button onClick={() => { setXemPhieu(true); setTaoMoi(false); setChon(null) }}
+            className={`mb-2 flex w-full items-center rounded-xl border px-3 py-2 text-left text-[13px] font-semibold ${xemPhieu ? 'border-amber-300 bg-amber-50 text-amber-900' : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'}`}>
+            📋 Phiếu sửa bản đồ
+            {soCho > 0 && <span className="ml-auto rounded-full bg-amber-500 px-2 py-0.5 text-[11px] text-white">{soCho} chờ</span>}
+          </button>
           <div className="mb-2 flex gap-1 text-[12px]">
             {([['mo', 'Đang mở'], ['tat_ca', 'Tất cả']] as const).map(([k, t]) => (
               <button key={k} onClick={() => setLoc(k)} className={`rounded-full px-2.5 py-0.5 ${loc === k ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-600'}`}>{t}</button>
@@ -470,7 +479,7 @@ function PhienClaudeTabChinh() {
             {ds == null && <p className="py-4 text-center text-[12.5px] text-slate-400">Đang tải…</p>}
             {ds != null && hien.length === 0 && <p className="py-4 text-center text-[12.5px] text-slate-400">Chưa có phiên nào{loc === 'mo' ? ' đang mở' : ''}.</p>}
             {hien.map((p) => (
-              <button key={p.id} onClick={() => { setChon(p.id); setTaoMoi(false) }}
+              <button key={p.id} onClick={() => { setChon(p.id); setTaoMoi(false); setXemPhieu(false) }}
                 className={`w-full rounded-xl border px-3 py-2 text-left transition ${chon === p.id ? 'border-indigo-300 bg-indigo-50' : 'border-slate-200 bg-white hover:border-slate-300'}`}>
                 <div className="flex items-center gap-1.5">
                   <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-slate-800">{p.tieu_de}</span>
@@ -486,7 +495,9 @@ function PhienClaudeTabChinh() {
           </div>
         </div>
         <div>
-          {taoMoi ? (
+          {xemPhieu ? (
+            <PhieuBanDo onSoCho={setSoCho} />
+          ) : taoMoi ? (
             <PhienMoi onHuy={() => setTaoMoi(false)} onXong={async (id) => { setTaoMoi(false); await taiDs(); setChon(id) }} />
           ) : dangChon ? (
             <KhungChat key={dangChon.id} phien={dangChon} onDoiTrangThai={doiTt} />
