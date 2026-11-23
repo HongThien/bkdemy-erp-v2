@@ -202,13 +202,13 @@ export async function boDangKhoiCase(dangId: string): Promise<void> {
 export type UuTienCase = 1 | 2 | 3
 export const UU_TIEN_TEN: Record<UuTienCase, string> = { 3: 'Ưu tiên cao', 2: 'Thường', 1: 'Thấp' }
 export type BuoiChoHoc = { buoi_id: string; ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi_day_tg: string | null; nguoi_ten: string | null; diem_danh: string | null; qua_ngay: boolean }
-// Thùy 22/09 — 4 trạng thái VÒNG: Chờ duyệt (hàng đợi, chưa có case) → Đang bổ trợ → Chờ retest → Hoàn thành. `giaiDoan` từ DB.
+// Thùy 22/09 — 4 trạng thái giai đoạn (KHÔNG còn "vòng" — Thùy 23/11: 1 em · 1 lần xếp · 1 tuần): Chờ duyệt (hàng đợi, chưa có case) → Đang bổ trợ → Chờ retest → Hoàn thành. `giaiDoan` từ DB.
 export type GiaiDoanVong = 'dang_bo_tro' | 'cho_retest' | 'hoan_thanh'
 export const GIAI_DOAN_TEN: Record<GiaiDoanVong, string> = { dang_bo_tro: 'Đang bổ trợ', cho_retest: 'Chờ retest', hoan_thanh: 'Hoàn thành' }
 export type CaseChoXep = CaseBoTroYeuItem & {
   daXep: boolean; uuTien: UuTienCase; level: number; soDangChuaDay: number; soBuoiDaHoc: number
   buoiChoHoc: BuoiChoHoc | null; soDangMoiSauXep: number // >0 = "đợt mới" gộp vào SAU khi buổi đã xếp
-  giaiDoan: GiaiDoanVong; vong: number
+  giaiDoan: GiaiDoanVong
   soDangCanDay: number; soDangChoRetest: number; soDangXong: number; soDangMay: number // dạng máy đề xuất (người bấm thêm), chưa dạy
   soDangBaoDong: number // dạng do GV/TA bấm chuông báo động KHI em đang có case ⇒ add thẳng (trigger DB), chưa dạy
   trangThai: 'dang_xu' | 'hoan_thanh'; hoanThanhAt: string | null; ketQua: string | null
@@ -303,7 +303,7 @@ export async function listCaseChoXepLich(mon?: string): Promise<CaseChoXep[]> {
       nguon: r.nguon, ly_do: r.ly_do, created_at: r.created_at, soDang: r.so_dang,
       daXep: !!r.buoi_cho_hoc, uuTien: r.uu_tien as UuTienCase, level: r.level ?? 0, soDangChuaDay: r.so_dang_chua_day, soBuoiDaHoc: r.so_buoi_da_hoc,
       buoiChoHoc: r.buoi_cho_hoc ?? null, soDangMoiSauXep: r.so_dang_moi_sau_xep ?? 0,
-      giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong, vong: r.vong ?? 1,
+      giaiDoan: (r.giai_doan ?? 'dang_bo_tro') as GiaiDoanVong,
       soDangCanDay: r.so_dang_can_day ?? 0, soDangChoRetest: r.so_dang_cho_retest ?? 0, soDangXong: r.so_dang_xong ?? 0, soDangMay: r.so_dang_may ?? 0, soDangBaoDong: r.so_dang_bao_dong ?? 0,
       trangThai: r.trang_thai ?? 'dang_xu', hoanThanhAt: r.hoan_thanh_at ?? null, ketQua: r.ket_qua ?? null,
       soBuoiKhongDienRa: r.so_buoi_khong_dien_ra ?? 0, khongDienRaGanNhat: r.khong_dien_ra_gan_nhat ?? null,
@@ -653,7 +653,7 @@ export async function listTrangThaiCa(soNgayHoanThanh = 60): Promise<TrangThaiCa
 export type ChiTietCase = {
   case: { id: string; ho_ten: string; ma_hs: string | null; khoi: string | null; mon: string; lop: string | null; nguon: string; ly_do: string | null
     trang_thai: string; uu_tien: number; created_at: string; hoan_thanh_at: string | null; ket_qua: string | null; ghi_chu_dong: string | null
-    level: number; vong: number; mo_boi: string | null }
+    level: number; mo_boi: string | null }
   dang: { ma_dang: string; ten_dang: string; nguon: string; them_at: string; diem_luc_mo: number | null; so_lan_do_luc_mo: number | null
     day_at: string | null; retest_diem: number | null; retest_at: string | null; dat: boolean | null; dong_at: string | null; tt: 'chua_day' | 'day_lai' | 'cho_retest' | 'da_day' | 'xong' }[] // da_day = hold retest
   buoi: { ngay: string; gio_bat_dau: string | null; gio_ket_thuc: string | null; phong: string | null; nguoi: string | null; trang_thai: string

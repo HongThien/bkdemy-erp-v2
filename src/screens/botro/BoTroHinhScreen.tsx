@@ -81,7 +81,6 @@ export default function BoTroHinhScreen() {
             <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-slate-300">
               <div className="flex flex-wrap items-center gap-1.5">
                 <h3 className="text-[14px] font-bold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.lop ?? `K${c.khoi ?? '?'}`}{c.ma_hs ? ` · ${c.ma_hs}` : ''}</span></h3>
-                {c.vong_tiep && <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10.5px] font-bold text-purple-700">vòng tiếp</span>}
                 <button onClick={() => setLsCase(c)} title="Lịch sử" className="ml-auto text-[13px] text-slate-400 hover:text-slate-700">🕘</button>
               </div>
               <p className="mt-1 text-[12.5px] text-slate-600">{c.ly_do}</p>

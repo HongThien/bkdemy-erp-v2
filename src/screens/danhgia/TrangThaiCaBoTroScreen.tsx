@@ -149,7 +149,6 @@ function ChiTietModal({ c, onDong, onDoi }: { c: TrangThaiCa; onDong: () => void
             <>
               <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 rounded-xl bg-slate-50 px-4 py-3 md:grid-cols-3">
                 <div><span className="text-slate-400">Level:</span> <b>L{h.level}</b></div>
-                <div><span className="text-slate-400">Vòng:</span> <b>{h.vong}</b></div>
                 <div><span className="text-slate-400">Ưu tiên:</span> <b>{h.uu_tien === 3 ? 'Cao' : h.uu_tien === 1 ? 'Thấp' : 'Thường'}</b></div>
                 <div><span className="text-slate-400">Nguồn:</span> {NGUON_CASE[h.nguon] ?? h.nguon}</div>
                 <div><span className="text-slate-400">Mở:</span> {ngayTs(h.created_at)}{h.mo_boi ? ` · ${h.mo_boi}` : ''}</div>

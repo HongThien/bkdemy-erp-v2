@@ -185,7 +185,7 @@ export default function XepLichBoTroYeuScreen() {
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px]">
-                      <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]} · vòng {c.vong}</span>
+                      <span className={`rounded-full px-2 py-0.5 font-bold ${c.giaiDoan === 'hoan_thanh' ? 'bg-emerald-50 text-emerald-700' : 'bg-violet-50 text-violet-700'}`}>{GIAI_DOAN_TEN[c.giaiDoan]}</span>
                       <span className="text-slate-500">{c.soDangXong}/{c.soDang} dạng đã đạt{c.soDangChoRetest ? ` · ${c.soDangChoRetest} chờ retest` : ''} · đã học {c.soBuoiDaHoc} buổi</span>
                     </div>
                     {(deXuat.get(c.id) ?? []).length > 0 && (
@@ -203,7 +203,7 @@ export default function XepLichBoTroYeuScreen() {
                   <div key={c.id} className="rounded-2xl bg-white p-4 ring-1 ring-emerald-200">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[14px] font-semibold text-slate-800">{c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span></span>
-                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành · vòng {c.vong}{c.ketQua ? ` · ${KET_QUA_CASE_TEN[c.ketQua] ?? c.ketQua}` : ''}</span>
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">Hoàn thành{c.ketQua ? ` · ${KET_QUA_CASE_TEN[c.ketQua] ?? c.ketQua}` : ''}</span>
                     </div>
                     <div className="mt-1 text-[12px] text-slate-500">{c.ketQua === 'day_xong' ? `Đã dạy hết ${c.soDang} dạng` : `${c.soDangXong}/${c.soDang} dạng đạt`} · {c.soBuoiDaHoc} buổi · mở {ddmmVN(c.created_at.slice(0, 10))}{c.hoanThanhAt ? ` → đóng ${ddmmVN(c.hoanThanhAt.slice(0, 10))}` : ''}</div>
                   </div>
@@ -232,7 +232,7 @@ function CaseCard({ c, mucLv, onMo, onDoiMuc, daXep, deXuat, onThemMay }: { c: C
             {c.ho_ten} <span className="font-normal text-slate-400">· {c.mon}{c.khoi ? ` · Khối ${c.khoi}` : ''}</span>
           </div>
           <div className="mt-1 flex items-center gap-1.5">
-            <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">{GIAI_DOAN_TEN[c.giaiDoan]}{c.vong > 1 ? ` · vòng ${c.vong}` : ''}</span>
+            <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-700">{GIAI_DOAN_TEN[c.giaiDoan]}</span>
             {/* Thùy 28/09: chọn mức ngay trên card — L0 = hết yếu, dừng bổ trợ · 29/09: control chung mức + ưu tiên */}
             <MucUuTienCase caseId={c.id} hoTen={c.ho_ten} level={mucLv} uuTien={c.uuTien} dong={c.trangThai !== 'dang_xu'} onDoi={onDoiMuc} />
             <span className="text-[11px] text-slate-400">{c.soDangCanDay}/{c.soDang} dạng cần dạy{c.soDangXong ? ` · ${c.soDangXong} đã đạt` : ''}{c.soDangChoRetest ? ` · ${c.soDangChoRetest} ${RETEST_BAT ? 'chờ retest' : 'đã dạy'}` : ''}{c.soBuoiDaHoc > 0 ? ` · đã học ${c.soBuoiDaHoc} buổi` : ''}</span>
