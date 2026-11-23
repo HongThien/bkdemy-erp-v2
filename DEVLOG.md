@@ -82359,3 +82359,6 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Thử ROLLBACK: TK sửa tay bị chặn · Thùy sửa được · Claude ghi thẳng bị chặn · gửi phiếu 2 lệnh (lệnh 2 dùng $1.nhom_id) ⇒ bản đồ chưa đổi · phiếu lỗi bị từ chối lúc gửi · TK không duyệt được · Thùy chạy thử + duyệt ⇒ ghi đủ, lịch sử đúng người duyệt · duyệt lần 2 bị chặn · trả lại thiếu lý do bị chặn · huỷ · duyệt khi phiên đã đóng chạy được.
 - Mig 202611231715: policy bọc select (K27). Script `ban-do.mjs`: gui_phieu · phieu · huy_phieu · tai_anh; tro-giup in khối PHIẾU đầu tiên; CHUNG.md · loai/ban_do.md §Phiếu · MOI.md 17:30.
 - Màn: `PhieuBanDo.tsx` trong tab 🤖 Phiên Claude (nút "📋 Phiếu sửa bản đồ" + số chờ). Đã mở bằng tài khoản admin dev: khay hiện đúng "Không có phiếu nào chờ duyệt"; thẻ phiếu CHƯA xem được bằng dữ liệu thật (chưa có phiếu nào). Công tắc phien_claude_truong_khoi vẫn TẮT.
+
+### 23/11 — Nhóm bài: một hình đại diện
+- **Làm:** màn Chuỗi bỏ ô hình của từng thành viên trong khung nhóm bài; cả nhóm dùng MỘT hình = hình giả thiết đầu ra (đã kiểm MH.126: đủ phân giác, BA=BE, DE⊥BC; hình thành viên chỉ là bản thiếu). Khối thành viên thu từ cao 242 → 180. `xepGiaThiet` (`laTV`) + `CayNhanh.tsx`. Spec §10.5 ghi thêm. Dữ liệu `anh_cau_hinh` của thành viên giữ nguyên trong DB, chỉ không hiện.

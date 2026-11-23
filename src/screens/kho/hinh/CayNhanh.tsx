@@ -866,7 +866,7 @@ function TabChuoi(p: ChungProps & {
                 </div>)}
             </div>) })}
           {/* HÌNH của giả thiết (cộng dồn đường từ gốc) — bấm để xem to */}
-          {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k) return null; return (
+          {nhanhs.map((n) => { const k = bc.khoi.get(n.id); if (!k || p.vai(n.id) === 'thanh_vien') return null; return (   // thành viên dùng chung hình đại diện của nhóm
             <div key={'a' + n.id} className="absolute flex items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-white"
               style={{ left: OX + k.x + PAD, top: OY + k.y + TOP, width: HW, height: HH, zIndex: 3 }}>
               {n.anh_cau_hinh
@@ -896,7 +896,7 @@ function TabChuoi(p: ChungProps & {
       <div className="mt-2 text-[11.5px] text-slate-500">
         Thẻ màu = giả thiết (bấm để thêm bài / nhánh) · <span style={{ color: MAU[1].dac }}>mũi tên xanh</span> = nhánh chính · <span style={{ color: MAU[2].dac }}>mũi tên tím</span> = nhánh phụ ·
         thẻ trắng = bài, mũi tên xám = bài trước → bài sau · chữ xanh góc thẻ = tiền đề khác · bấm bài: viền xanh nhạt = tiền đề của nó, xanh lá = bài đi tiếp từ nó ·
-        khung viền cam đậm = <b>nhóm bài</b>, thẻ <span style={{ color: MAU_TV.dac }}>cam</span> = thành viên (cho … ⇒ hỏi …), mũi tên cam đổ vào nhóm · ★ = trọng điểm.
+        khung viền cam đậm = <b>nhóm bài</b>, thẻ <span style={{ color: MAU_TV.dac }}>cam</span> = thành viên (cho … ⇒ hỏi …; cả nhóm dùng MỘT hình đại diện ở bên trái khung), mũi tên cam đổ vào nhóm · ★ = trọng điểm.
       </div>
     </>
   )

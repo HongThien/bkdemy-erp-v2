@@ -172,8 +172,11 @@ export function xepGiaThiet(a: {
       wF = Math.max(...ms.map((m) => trong.get(m.id)!.w)) + 2 * GK_LE
       hF = GK_TREN + ms.reduce((s, m) => s + trong.get(m.id)!.h, 0) + (ms.length - 1) * GK_CACH + GK_DUOI
     }
-    const x0 = X0 + (wF ? wF + GX : 0)
-    trong.set(g.id, { lv, hang, x0, wF, hF, w: x0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD, hF ? TOP + hF + PAD : 0) })
+    const laTV = g.vai === 'thanh_vien'                                  // thành viên KHÔNG có ô hình riêng: cả nhóm dùng MỘT hình đại diện (hình đầu ra, đủ tính chất mọi thành viên — Thùy 23/11)
+    const x0 = laTV ? PAD : X0 + (wF ? wF + GX : 0)
+    trong.set(g.id, laTV
+      ? { lv, hang, x0, wF, hF, w: Math.max(x0 + soCot * W + (soCot - 1) * GX + PAD, 340), h: ds.length ? TOP + soHang * (H + GY) - GY + PAD : TOP }
+      : { lv, hang, x0, wF, hF, w: x0 + soCot * W + (soCot - 1) * GX + PAD, h: Math.max(TOP + soHang * (H + GY) - GY + PAD, TOP + HH + PAD, hF ? TOP + hF + PAD : 0) })
   }
   const khoi = new Map<string, HopXY>(), khung = new Map<string, HopXY>()
   const datGT = (id: string, x: number, y: number, sau = 0): number => {      // trả chiều cao phần cây chiếm
