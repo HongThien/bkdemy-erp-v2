@@ -82347,3 +82347,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - `scripts/kho/hh-k8-duyet-6-chuyen-de-moi.mjs` (chạy thử ROLLBACK rồi `--ghi`): `da_duyet=true`, `duyet_at=now()`, **`duyet_boi=NULL`** (Claude duyệt theo lệnh Thùy — không ghi tên người). Đọc lại: 6/6 đã duyệt. Muốn đổi người duyệt: bấm bỏ duyệt rồi duyệt lại trên app.
 
 - 23/11 (tiếp): màn 🤖 Phiên Claude hiện "Chức năng này tạm dừng" khi khoá (Thùy). Mig 202611231704 (ĐÃ ÁP) `fn_phien_tam_dung()` — đo: TK Ngọc ⇒ true, Thùy ⇒ false; anon không gọi được. Màn hỏi một lần lúc mở, true thì chỉ hiện câu báo. Chưa mở trên app bằng tài khoản TK thật.
+
+## 23/11 — MT KHTN: gốc thật = CỔNG `nhanhChonCuaKhoi` chỉ biết Toán (đính chính 2 mục trên)
+- **Đo DB thật** (giả lập nhân sự, rollback): `fn_bdm_dang_chon('KHTN'|'Vật lý'|'Hóa học', mọi khối)` = `cu` — vì `_kho_ds_nhanh_khoi` chỉ bật `'bdm'` cho `p_mon='Toán'`. Trong khi `fn_tl_bdm_cay_chon(khoi,'khtn')` CÓ dữ liệu: K7 267 · K8 550 · K9 684 dạng bài (K6 + Lý + Hóa: 0), `fn_tl_bdm_goi_y` / `fn_tl_bdm_et_vi_tri` / `fn_tl_bdm_et_ma_de` chạy đúng với KHTN, câu nằm ở `khtn_cau_hoi`.
+- **Hậu quả:** MT chặn bằng `nhanhChonCuaKhoi(...).some('bdm')` ⇒ KHTN luôn `coBdm=false` ⇒ rơi về `DangPickerOne` cũ (khtn_ban_do). Toàn bộ code KHTN của 2 lần sửa trước là code chết — Thùy báo "vẫn chưa được" là đúng.
+- **Sửa:** cổng = `'bdm' của DB (Toán)` HOẶC `bdmCuaMon(mon)` môn 1 vùng đã nối tài liệu; khối nào cây rỗng (KHTN K6, Lý, Hóa chưa có) tự rơi về bộ chọn cũ. Chưa test trên màn thật.

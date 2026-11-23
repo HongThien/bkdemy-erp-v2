@@ -465,12 +465,15 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     let alive = true
     ;(async () => {
       const chon = await nhanhChonCuaKhoi(d.mon, d.khoi)
-      if (!chon.some((n) => n.ma === 'bdm')) { if (alive) { setDbs(new Map()); setHhs(new Map()) } return }
+      const bd = bdmCuaMon(d.mon)   // Toán: Đại + Hình giải tích; KHTN · Lý · Hóa: một vùng của môn (cây chọn đi theo môn qua p_nhanh)
+      // CỔNG: Toán = DB bật 'bdm' theo khối (_kho_ds_nhanh_khoi chỉ biết Toán). KHTN/Lý/Hóa KHÔNG qua cổng đó (luôn trả 'cu') — bản đồ mới
+      // của họ tự có cây ở fn_tl_bdm_cay_chon: khối nào cây có dạng bài thì dùng, rỗng thì rơi về bộ chọn cũ (bug 23/11: KHTN không bao giờ vào nhánh mới).
+      const cong = chon.some((n) => n.ma === 'bdm') || !!(bd && !bd.coVung && bd.taiLieu)
+      if (!cong) { if (alive) { setDbs(new Map()); setHhs(new Map()) } return }
       // Hình · Học: mỗi bài học = 1 dạng bài (như ET) — chỉ môn có kho Hình
       const hh = chon.some((n) => n.ma === 'hinh_hoc') && coKhoHinh(d.mon) ? await hhCayChon(d.khoi).catch(() => []) : []
       if (alive) setHhs(new Map(hh.map((b) => [b.ma_bai, { id: b.ma_bai, ten: b.ten, chu_de: b.chu_de ?? 'Hình', so_cau: b.so_cau }])))
       const m = new Map<string, DbInfo>()
-      const bd = bdmCuaMon(d.mon)   // Toán: Đại + Hình giải tích; KHTN · Lý · Hóa: một vùng của môn (cây chọn đi theo môn qua p_nhanh)
       for (const nh of (bd?.coVung ? ['toan', 'hgt'] : [bd?.nhanhTl ?? 'toan']) as NhanhBdm[]) {
         const cay = await cayChon(d.khoi, nh).catch(() => [])
         for (const cd of cay) for (const chd of cd.chuyen_de) for (const n of chd.nhom) for (const x of n.dang_bai)
