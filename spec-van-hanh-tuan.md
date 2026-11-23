@@ -23,7 +23,7 @@ Mọi bước đọc chung **một bộ dữ liệu** (ca TKB · buổi giáo tr
 | **Thứ Sáu, buổi họp** | Trưởng khối (cả đội GV cùng soạn) | Điền **Giáo trình tuần sau**: mỗi ca TKB T2→CN học buổi nào, nhóm › dạng nào (Hình: bài học + mô hình). Bấm **Gửi duyệt** | Phòng trưởng khối › 📅 Giáo trình tuần (§3) | `gtt_ca` · `gtt_duyet(gui)` |
 | **23:59 thứ Sáu (H1)** | Trưởng khối | Đã bấm **Gửi duyệt** giáo trình tuần sau | — | Trễ ⇒ đề xuất gậy (§3.8) |
 | **Sau họp → 12:00 thứ Bảy (H2)** | Trưởng bộ môn | **Duyệt** / **Trả lại** (có lý do) giáo trình tuần từng khối | Phòng trưởng bộ môn › 📅 Giáo trình tuần | `gtt_duyet(duyet)` + **bản chụp khung** |
-| **CN 24:00 (= T2 00:00)** | Máy | Chụp **dạng yếu đầu tuần** mọi HS × môn (`_tu_dong_sang_t2`) · chốt **sổ Mục tiêu tuần** tuần cũ (`mtt_chot`, bất biến) · chụp số **đầu tuần** tuần mới (`mtt_dau`) | Bộ điều phối `_tinh_san_chay` | Sổ bất biến (§2.3) |
+| **CN 24:00 (= T2 00:00)** | Máy | Chụp **dạng yếu / nhóm yếu đầu tuần** mọi HS × môn — từng ô môn × khối, dòng `chup_dau_tuan` của bộ điều phối (§5.6; từ 23/11 thay cron riêng `tu-dong-sang-t2`) · chốt **sổ Mục tiêu tuần** tuần cũ (`mtt_chot`, bất biến) · chụp số **đầu tuần** tuần mới (`mtt_dau`) | Bộ điều phối `_tinh_san_chay` | Sổ bất biến (§2.3) |
 | **T2 sáng** | Máy | Báo cáo tuần trước MỞ (nháp, số tính sẵn) · tờ Mục tiêu tuần NHÁP dựng cho mọi em | — | — |
 | **Chiều T2** | Trưởng khối | (1) Soi Dashboard học tập, **chốt bổ trợ** tuần (Phần 2 Mục tiêu tuần + ca test sau giờ) · (2) bấm **Công bố mục tiêu tuần** theo lớp · (3) **Nộp Báo cáo tuần** tuần trước (snap) | Phòng trưởng khối › Chất lượng (bổ trợ) · **🎯 Mục tiêu tuần** (lịch thứ 2 cột trái phòng) · 📝 Báo cáo tuần | `mtt_lop_chot` · `bao_cao_tuan_khoi` |
 | **T2** | Trang | **Chốt tuần** bổ trợ (đóng băng KPI dạng yếu — `spec-truong-khoi` §4.1) | Như cũ | `chat_luong_tuan_hs` |
@@ -597,7 +597,11 @@ Mọi chỉ số tính ở **một hàm DB** theo `(ô, khoảng ngày)` — dù
 
 ### 5.6 Dạng yếu tại một mốc — nguồn DUY NHẤT
 - **"Dạng yếu của HS × môn tại mốc D"** = đúng định nghĩa hiện hành nhưng **chỉ dùng lần đo ≤ D** (`_dang_yeu_tai_lo`; đối chiếu 03/11 khớp 100 % hàm đang chạy).
-- **Chụp tự động T2 00:00** (`_dang_yeu_chup_tuan` → `dang_yeu_dau_tuan`) — ảnh là bộ đệm, lệch thì tính lại từ hàm. **Không** chụp từ `dang_yeu_hien_tai` (làm mới lười).
+- **Chụp tự động từ 00:00 thứ Hai, TỪNG Ô môn × khối** (Thùy 23/11; mig `202611232126` · `202611232132`): `_dang_yeu_chup_tuan_khoi(tuần, môn, khối)` — cùng công thức với `_dang_yeu_chup_tuan`, tính TẠI MỐC 00:00 thứ Hai nên chụp muộn vẫn ra đúng số đầu tuần — ghi `dang_yeu_dau_tuan`. Ảnh là bộ đệm, lệch thì tính lại từ hàm. **Không** chụp từ `dang_yeu_hien_tai` (làm mới lười). Tuần đã có ảnh thì không chụp đè (không thay số đầu tuần bằng số giữa tuần).
+- **Chạy trong bộ điều phối**, không còn cron riêng: dòng `chup_dau_tuan` → `_dang_yeu_chup_dau_tuan_lo(80)` — 5 phút một lượt, khung 0–16 h và 22–23 h, ưu tiên 1, ngân sách 80 giây, chỉ làm khi tuần này chưa đủ ảnh. Tiến độ từng ô ở `dang_yeu_chup_o` (tuần · môn · khối · số dòng · ms); đủ mọi ô ⇒ ghi `dang_yeu_chup_xong` (tuần · số ô · số dòng) rồi cập nhật **Tổng kết tuần** của tuần vừa đóng.
+- **Vì sao đổi (sự cố đêm 22/11):** cron riêng `tu-dong-sang-t2` (00:05 thứ Hai, gọi `_tu_dong_sang_t2`) chụp cả hệ trong MỘT lệnh; ảnh nặng lên từ 17/11 khi có thêm nhóm yếu (`_nhom_yeu_tai_lo`) ⇒ đêm 22/11 hết giờ sau 2 phút ⇒ không có ảnh 23/11 ⇒ tuần 16–22/11 không chốt được sổ, tab tuần đang chạy toàn "—", Tổng kết tuần không cập nhật — và không ai được báo (trưởng khối: "nhóm yếu các thứ không tự tổng kết"). Đọc lỗi qua `_audit_cron_runs()`. Việc nền nặng phải chia lô trong bộ điều phối (`spec-kien-truc.md` §4), không để một cron riêng chạy một lệnh.
+- **Sổ chốt tuần chỉ chốt khi ảnh ĐẦU tuần và ảnh thứ Hai tuần sau đều ĐỦ** (`_bctk_so_tuan_chot` hỏi `dang_yeu_chup_xong`). Trước 23/11 là "có dòng nào cũng được" ⇒ ảnh chụp dở sẽ chốt sai vĩnh viễn.
+- **Trạng thái đo 23/11 21:59:** `dang_yeu_chup_xong` có tuần 09/11 và 16/11 (đánh dấu đủ sẵn, 15 ô mỗi tuần), chưa có tuần 23/11 — dòng `chup_dau_tuan` chưa chạy lượt nào (khung giờ mở lại từ 22 h). `bctk_so_tuan_o` mới có tuần 09/11. Cron cũ `tu-dong-sang-t2` **vẫn BẬT**: tắt bằng file `202611232133_tat_cron_tu_dong_sang_t2_cron_sql_editor.sql` (Thùy chạy ở SQL Editor; tắt, không xoá job) rồi `--ghi-so`.
 - Sửa điểm cũ ⇒ số tính ngược quá khứ đổi theo ⇒ vì vậy báo cáo **snap lúc nộp**.
 
 ### 5.7 Phần TỰ VIẾT — Plans · Progress · Problems
@@ -607,10 +611,11 @@ Nhận định tình hình khối · 3 việc ưu tiên tuần tới · cần h�
 - Hàng báo cáo các khối (chưa nộp / đã nộp / trễ / trả lại / đã duyệt) · **Duyệt** / **Trả lại** (bắt buộc lý do); không tự duyệt mình.
 - **Báo cáo Chuyên môn tuần** (1 / môn / tuần) = **tổng môn** (cùng hàm, gộp mọi ô) + báo cáo khối **đã duyệt** + **nhận xét trưởng bộ môn**. Chốt ⇒ snap tổng môn; khối thiếu ghi rõ.
 
-### 5.8b Màn "📡 Tuần này" — trưởng bộ môn / giám đốc xem tuần ĐANG CHẠY (Thùy 19/11; mig `202611191751`; `TuanNayTBM.tsx`)
+### 5.8b Màn "📅 Theo tuần" — trưởng bộ môn / giám đốc xem TỪNG TUẦN (Thùy 19/11 mở "📡 Tuần này", mig `202611191751`; Thùy 23/11 đổi thành xem theo tuần, mig `202611232126`; `TuanNayTBM.tsx`)
+- **Xem theo tuần (Thùy 23/11: "tab Tuần này đổi thành view theo tuần, xem bản chốt tuần trước"):** ‹ › đổi tuần. **Tuần đang chạy** đọc sổ `bctk_so_hien_tai_o` (như các dòng dưới); **tuần đã đóng** đọc **sổ chốt** `bctk_so_tuan_o` (§5.5b — chốt một lần, bất biến). Nhãn trên màn: "đang chạy" / "bản chốt" / "chưa có bản chốt". Một nguồn: `fn_bctk_tuan(p_tuan)` trả danh sách khối của tuần, `fn_bctk_tuan_o(môn, khối, tuần)` trả chi tiết một khối (bấm đến đâu gọi đến đấy); hai hàm cũ `fn_bctk_hien_tai` / `fn_bctk_hien_tai_o` giữ chữ ký, gọi sang hàm mới. Hai sổ cùng hình dạng jsonb ⇒ màn dùng chung một bảng. Bản chốt hiện có (23/11): chỉ tuần 09/11; tuần 16/11 có khi ảnh đầu tuần 23/11 đủ (§5.6). Đã thử trên localhost bằng admin dev; chưa ai mở bằng tài khoản trưởng bộ môn thật, ERP chưa deploy bản này.
 - Tab đầu tiên (và mặc định) của Báo cáo tuần ở phòng Trưởng bộ môn / Giám đốc. Không chờ trưởng khối nộp: mỗi khối một dòng + dòng **Cả môn**, 8 cột của bảng Học tập (§5.5b) — nhóm yếu · dạng yếu · HS yếu ≥ 1 nhóm · HS yếu ≥ 2 nhóm · xếp bổ trợ · hiệu suất bổ trợ · vắng ca · chưa ai xử lý; mọi số là **đầu tuần → hiện tại**.
 - **Không realtime từng phút:** màn chỉ ĐỌC sổ `bctk_so_hien_tai_o` (mỗi ô một dòng, ghi đè) — bộ điều phối mã `bctk_hien_tai` làm mới 30 phút/lần, 6–23 h, ô cũ nhất trước, 20 giây (đo 19/11: 20 ô hết 3,5 s); màn ghi "tính lúc HH:MM", có nút ↻ đọc lại. Dòng Cả môn = GOM tử / mẫu của các khối (`_bctk_gom_tong`; đối chiếu 19/11 khớp tính trực tiếp).
-- **Bấm một khối** ⇒ một lượt `fn_bctk_hien_tai_o` tính trực tiếp đúng khối đó ⇒ hiện báo cáo đủ (tab Vận hành · Học tập, từng lớp, HS đang yếu) ngay dưới bảng.
+- **Bấm một khối** ⇒ một lượt `fn_bctk_tuan_o` (trước 23/11: `fn_bctk_hien_tai_o`) tính đúng khối đó cho tuần đang xem ⇒ hiện báo cáo đủ (tab Vận hành · Học tập, từng lớp, HS đang yếu) ngay dưới bảng.
 - Quyền: cổng `_bctk_gac_tbm` + môn trong `_bctk_cac_mon_toi()` (giám đốc / toàn hệ: mọi môn, lọc bằng chip môn). Trưởng khối không có tab này — họ xem tuần đang chạy ở chính màn soạn báo cáo của mình (§5.5b).
 
 ### 5.9 Chiếu TV
@@ -622,7 +627,8 @@ Quá hạn chưa nộp ⇒ **đề xuất gậy** "Nộp báo cáo tuần trễ"
 ### 5.11 Bảng & hàm (đã build)
 - `bao_cao_tuan_khoi` (1 dòng / người × tuần, chỉ ra đời khi có thật: trạng thái · `so` snap · `ca_nhan` · `tu_viet` · phiên bản công thức) + log ·
   `bao_cao_chuyen_mon_tuan` (1 / môn × tuần) + log.
-- `_dang_yeu_tai_lo` · `_dang_yeu_chup_tuan` · `_tu_dong_sang_t2` (chụp + cập nhật Tổng kết tuần) · `fn_bctk_so` · `fn_bctk_trend` · `fn_bctk_lay / _luu_nhap / _nop` ·
+- Ảnh đầu tuần (23/11): `_dang_yeu_chup_tuan_khoi` · `_dang_yeu_chup_dau_tuan_lo` (dòng `chup_dau_tuan` của bộ điều phối) · bảng `dang_yeu_chup_o` · `dang_yeu_chup_xong`. Xem theo tuần (23/11): `fn_bctk_tuan` · `fn_bctk_tuan_o`; sổ `bctk_so_hien_tai_o` (dòng `bctk_hien_tai`) · `bctk_so_tuan_o` (dòng `bctk_so_tuan`, `_bctk_so_tuan_chot`).
+- `_dang_yeu_tai_lo` · `_dang_yeu_chup_tuan` · `_tu_dong_sang_t2` (chụp cả hệ + cập nhật Tổng kết tuần — của cron cũ `tu-dong-sang-t2`, chờ tắt, §5.6) · `fn_bctk_so` · `fn_bctk_trend` · `fn_bctk_lay / _luu_nhap / _nop` ·
   `fn_bctk_hang` · `fn_bctk_xem` · `fn_bctk_xu_ly` · `fn_bcmt_lay / _luu / _chot` · `_bctk_de_xuat_tre`.
 - Đo 03/11: báo cáo khối 0,48–0,8 s · hàng trưởng bộ môn 0,1 s · báo cáo môn Toán 41 lớp 1,1 s.
 

@@ -92,14 +92,12 @@
 
 - **BOT PHIÊN CLAUDE CHẠY TRÊN 2 MÁY** — máy nhà (DESKTOP-EV1E49J) + máy công ty (DESKTOP-HD2484P): mỗi máy 2 tác vụ Windows `BKdemy Phien Claude` + `BKdemy Phien Luoi Vot`, log `scripts/phien/bot.log`; `PHIEN_TAI_LIEU_DIR` máy nhà = `G:\Other computers\My Computer\BK ACADEMY\Tài liệu tham khảo`, máy công ty = `E:\BK ACADEMY\Tài liệu tham khảo`; claude CLI ở `~/.local/bin` (login hết hạn ⇒ `claude` → `/login`). Hai máy nhận việc atomic (không trả lời trùng), chung hạn mức. Sửa `bot.mjs` ⇒ khởi động lại bot ở CẢ HAI máy.
 
-## ② VIỆC MỚI CHƯA VÀO SPEC
+## ② VIỆC 23/11 — đã ghi vào spec, ở đây chỉ còn việc ĐANG CHỜ
 
-### ⭐⭐⭐⭐ 23/11 — KHOÁ BẢN ĐỒ + PHIẾU · CHI PHÍ AI · BÁO CÁO TUẦN XEM THEO TUẦN · ẢNH ĐẦU TUẦN TỰ CHỤP LẠI (mọi thứ trên `main`, DB đã áp; ERP CHƯA deploy)
-- **Phiên Claude của trưởng khối TẮT** (công tắc `phien_claude_truong_khoi` = false; bấm vào thấy "⏸️ Chức năng này tạm dừng"). Thùy chưa cho mở lại.
-- **Bản đồ kiến thức khoá ghi** (33 bảng cấu trúc + `hinh_baitoan` insert/delete): người đăng nhập không phải admin hệ thống ⇒ bị chặn; muốn sửa phải gửi **phiếu** (`scripts/phien/ban-do.mjs gui_phieu`) → Thùy duyệt ở khay "📋 Phiếu sửa bản đồ" → cả phiếu chạy trong một giao dịch. KHO câu vẫn làm thẳng. Spec: `spec-quan-ly-chat-luong.md`.
-- **💸 Chi phí AI** ở phòng Giám đốc: sổ `ai_luot_dung` (kênh phiên · trợ lý · hỏi đáp · đánh giá · chấm BTVN · Claude Code), giá `ai_bang_gia`, tỷ giá `ai_cau_hinh`. Claude Code nhập từ nhật ký máy (`scripts/ai/nhap-claude-code.mjs`, từ 01/11; bot phiên gọi lúc khởi động + mỗi ngày). **Còn làm:** máy nhà chạy `node scripts/ai/nhap-claude-code.mjs --tu-moc` một lần · khởi động lại bot phiên + bot hỏi đáp · chấm BTVN bằng máy / máy tự giải chưa ghi token (chờ lệnh).
-- **Báo cáo tuần — tab "📅 Theo tuần"** (thay "Tuần này", phòng Trưởng bộ môn / Giám đốc): ‹ › đổi tuần; tuần đang chạy đọc `bctk_so_hien_tai_o`, tuần đã đóng đọc **sổ chốt** `bctk_so_tuan_o` (`fn_bctk_tuan` / `fn_bctk_tuan_o`). Hiện chỉ tuần 09/11 có bản chốt; tuần 16/11 sẽ có khi ảnh 23/11 đủ.
-- **Ảnh dạng yếu / nhóm yếu đầu tuần — gốc lỗi "nhóm yếu không tự tổng kết":** cron riêng `tu-dong-sang-t2` hết giờ 2 phút đêm 22/11 ⇒ không có ảnh 23/11. Đã chuyển vào bộ điều phối: dòng `chup_dau_tuan` → `_dang_yeu_chup_dau_tuan_lo(80)` chụp từng ô môn × khối (tiến độ `dang_yeu_chup_o`), đủ ⇒ `dang_yeu_chup_xong` + Tổng kết tuần; sổ chốt tuần chỉ chốt khi ảnh đầu VÀ cuối đủ. **Kiểm sáng 24/11:** `dang_yeu_chup_xong` có tuần 23/11 · `bctk_so_tuan_o` có tuần 16/11 · tab Theo tuần tuần 23/11 hết "—". **Thùy chạy SQL Editor** file `202611232133_tat_cron_tu_dong_sang_t2_cron_sql_editor.sql` (tắt cron cũ, không xoá) rồi Claude `--ghi-so`.
+- **Ảnh đầu tuần + Báo cáo tuần "📅 Theo tuần"** — `spec-van-hanh-tuan.md` §5.6, §5.8b. Thùy chạy ở SQL Editor file `202611232133_tat_cron_tu_dong_sang_t2_cron_sql_editor.sql` (cron cũ `tu-dong-sang-t2` vẫn BẬT, đo 23/11 21:59) rồi Claude `--ghi-so`. **Kiểm sáng 24/11:** `dang_yeu_chup_xong` có tuần 23/11 · `bctk_so_tuan_o` có tuần 16/11 · tab Theo tuần tuần 23/11 hết "—".
+- **💸 Chi phí AI** — `spec-quan-ly-chat-luong.md` §5.1. Còn: máy nhà chạy `node scripts/ai/nhap-claude-code.mjs --tu-moc` một lần · khởi động lại bot phiên + bot hỏi đáp · xem lệch ngày của kênh `claude_code` (sổ có dòng từ 07/2026, nhật ký ghi "chỉ từ 01/11").
+- **Phiên Claude của trưởng khối đang TẮT + bản đồ khoá ghi, sửa qua phiếu** — `spec-quan-ly-chat-luong.md` §6.2. Thùy chưa cho mở lại.
+- ERP chưa deploy bản 23/11 (xem danh sách chờ deploy ở mục ①).
 
 ## ③ CÁC MẢNG KHÁC — đọc ở spec; ở đây chỉ ghi ĐANG CHỜ GÌ
 

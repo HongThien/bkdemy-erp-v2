@@ -177,9 +177,23 @@ Hướng về sau (Thùy 29/10): Trang chỉ xem **mẫu** ngẫu nhiên (lý th
 | 📝 Lịch | Báo cáo tuần (trưởng khối: soạn / nộp · trưởng bộ môn: duyệt / ghép / chiếu) | |
 | 🗂 Khay | Duyệt công TA — DB chỉ trả công thuộc ô của người mở | Thùy 09/11 |
 | 💬 Bảng tin | **Hỏi vận hành TA** — chỉ phòng trưởng bộ môn; chỉ đọc; lương chỉ thấy phần lớp của môn mình | Thùy 05/11 |
+| 💸 Chi phí AI | Bộ đếm token / chi phí AI theo người · kênh · model — §5.1 | Chỉ phòng Giám đốc (Thùy 23/11) |
 
 - **Hiệu suất trên cảnh phòng:** số tháng đang chạy, cùng công thức với màn hiệu suất TA; đọc từ **bảng tính sẵn** `phong_so_luu` (làm mới nền 5 phút, có ngân sách giây — sau sự cố phòng Giám đốc chạm trần 8 giây ngày 10/11). Đầu tháng chưa có việc đã đóng ⇒ hiện "—", không phải 0.
 - **Chưa có:** hàng việc **"Hôm nay"** trong phòng (một hàng việc suy theo invariant — đích 01/11) · huy hiệu nhắc trên đồ vật khi tới hạn · tranh cảnh thật · phòng Vận hành · duyệt công ngay từ phòng trưởng bộ môn (Thùy chọn "xem + được duyệt" 05/11, chưa làm).
+
+### 5.1 Chi phí AI — ai dùng bao nhiêu token (Thùy 23/11; mig `202611231754` · `202611231909`; `phongtk/ChiPhiAi.tsx`)
+
+- **Đích (Thùy 23/11):** "t cần biết ai sử dụng bao nhiêu token để còn tính toán xem hiệu quả hay ko" — một màn ở phòng làm việc Giám đốc. Đồ vật **💸 CHI PHÍ AI** dưới cột lịch tuần, chỉ hiện ở phòng Giám đốc.
+- **Sổ chung `ai_luot_dung`** — 1 dòng = 1 lượt gọi model, khoá duy nhất (`kenh`, `nguon_id`). Cột: người · môn · khối · loại việc · phiên · model · token (vào · ghi đệm 5 phút · ghi đệm 1 giờ · đọc đệm · ra) · `cost_cli_usd` · `thue_bao`. Kênh (CHECK): `phien` · `tro_ly` · `hoi_dap` · `danh_gia` · `cham_btvn` · `claude_code`.
+- **Ghi tự động bằng trigger ở nguồn** ⇒ bot / app không phải nhớ ghi: `trg_ai_phien_tin` trên `claude_phien_tin` · `trg_ai_luot` trên `troly_hoi_dap` · `hoi_dap_nhan_su` · `danhgia_ai_job` · `btvn_ai_lan`. Số cũ đã chép vào sổ lúc dựng (763 lượt).
+- **Kênh `claude_code`** (Claude Code Thùy tự chạy — "từ đầu tháng 11 thôi", "mỗi ngày 1 lần là được"): `scripts/ai/nhap-claude-code.mjs` đọc `~/.claude/projects/**/*.jsonl`, bỏ dòng trùng (`message.id` + `requestId`), gọi `fn_ai_nhap_claude_code` (chỉ service_role; upsert theo máy · phiên · model · ngày; tự bỏ phiên của bot). Bot phiên tự chạy lúc khởi động + mỗi ngày một lần; lần đầu ở mỗi máy chạy tay với `--tu-moc`. "Lượt" của kênh này = nhóm phiên × ngày.
+- **Tiền tính LÚC ĐỌC, không lưu:** token × `ai_bang_gia` (USD / 1 triệu token theo model, giá API tra 23/11 — Opus 5.5 4 / 20 · Fable 5.2 8 / 40 · Sonnet 5.5 2 / 10 · Haiku 5.5 0,1 / 0,5; có cả giá ghi đệm, đọc đệm và model đời cũ) × `ai_cau_hinh` (1 USD = 26.000 đ — Thùy chỉnh được). Sửa giá hay tỷ giá là mọi số đổi theo. Lượt có `cost_cli_usd` (Claude Code tự báo) thì ưu tiên số đó. Lượt cũ không ghi model ⇒ tính theo `ai_cau_hinh.model_mac_dinh` (`claude-opus-5-5`), màn ghi "ước tính". Kênh thuê bao (`thue_bao`) ⇒ tiền là **giá trị tương đương**, không phải tiền đã trả.
+- **Màn:** ô số tổng · bảng theo người (lượt · tiền · token · câu vào kho · câu phân dạng · lệnh bản đồ · ảnh · tiền / câu vào kho) · cột theo ngày · theo kênh / model / loại việc · 15 phiên tốn nhất. Một lượt `fn_ai_chi_phi(từ, đến)` cho cả màn, chỉ admin hệ thống; đo 75 ms (sổ nhỏ, chưa cần sổ tính sẵn).
+- **Số 01–23/11 (đo 23/11):** phiên Claude ≈ 2.367 USD ≈ 61,6 triệu đ giá trị tương đương (thuê bao); người dùng nhiều nhất 500 lượt ≈ 51 triệu đ, 5.410 câu vào kho ≈ 9.425 đ / câu. Kênh Claude Code, riêng máy công ty: 1.598 nhóm ≈ 5.208 USD (repo `bkdemy-erp-v2` ≈ 4.974).
+- **Chưa có số:** chấm BTVN bằng máy (`btvn_ai_lan` có cột token nhưng Edge Function chưa ghi — 29 lần đều trống) · máy tự giải bài (scheduler không lưu usage) · trợ lý dùng deepseek chưa có giá ⇒ chỉ đếm token · 254 / 752 lượt phiên cũ không khớp được model từ nhật ký máy.
+- **Còn làm:** máy nhà chạy `node scripts/ai/nhap-claude-code.mjs --tu-moc` một lần · khởi động lại bot phiên + bot hỏi đáp (để từ nay lưu kèm `model` + `cost_usd`) · ghi token cho chấm BTVN / máy tự giải (chờ lệnh).
+- **Lệch cần xem (đo 23/11 21:59):** nhật ký ghi kênh Claude Code "chỉ từ 01/11" và 1.598 nhóm, nhưng sổ đang có 5.207 dòng `claude_code` với ngày từ 07/07/2026. Chưa rõ do máy khác nhập với mốc khác hay bộ lọc ngày nằm ở lúc đọc — chưa kiểm số trên màn theo khoảng ngày.
 
 ## 6. Phiên Claude
 
@@ -363,6 +377,7 @@ Hiệu suất TA của khối (cảnh phòng) · tỉ lệ việc sau buổi đ�
 | Hậu kiểm | `hau_kiem` (`loai` ∈ gay_ledger · gay_bo_qua · viec_van_hanh · ca_nhe; `ket_qua` ∈ dong_y · da_sua) | `fn_hau_kiem_gay` · `_khac` · `_ghi` · `_mo_lai_de_xuat` · `_sua_vvh` | — |
 | KPI dạng yếu | `dang_yeu_dau_tuan` · `dang_yeu_hien_tai` | `fn_qlcl_tong_quan` · `_nhom_yeu` · `_dang_yeu_hs` · `_dong_chay` · `_de_xuat_yeu` | Bộ điều phối: `dang_yeu` (5 phút) · chụp đầu tuần `_tu_dong_sang_t2` |
 | Phòng | `phong_so_luu` | `fn_phong_che_do` · `_la_gd` · `_cap_duoi*` · `_ghe_tbm*` · `_ghe_gd` · `_hoi_danh_muc` · `_hoi_goi` · `_phong_mon_cua_toi` · `_phong_trong_pham_vi` | Bộ điều phối: `phong_so` (5 phút) |
+| Chi phí AI (§5.1, 23/11) | `ai_luot_dung` · `ai_bang_gia` · `ai_cau_hinh` | `fn_ai_chi_phi` · `fn_ai_nhap_claude_code` | `trg_ai_phien_tin` (`claude_phien_tin`) · `trg_ai_luot` (`troly_hoi_dap` · `hoi_dap_nhan_su` · `danhgia_ai_job` · `btvn_ai_lan`) |
 | Phiên Claude | `claude_phien` (`loai` 5 giá trị; `trang_thai` mo · dang_dong · dong) · `_tin` · `_ghi` · `_lich_su` · `_bot` | Người: `fn_phien_mo` · `_gui` · `_dong` · `_mo_lai` · `_ds` · `_pham_vi` — Claude (service_role): `fn_phien_bd_xem / _doc / _ghi / _thay_doi` · `fn_phien_lt_ghi` · `fn_phien_kho_*` · `fn_phien_hh_*` · `fn_phien_hinh_goi` · `fn_phien_anh_gan` — bot: `fn_phien_bot_nhan / _tra / _nhat_mo_coi` | `trg_claude_phien_lich_su` · `_touch` · `_tin_bump` |
 | Trợ lý | `troly_bao_cao_luu` · `troly_tuan_so_luu` · `troly_hoi_dap` · `troly_ra_soat` · `troly_nhan_dinh` | `fn_troly_bao_cao_lay` · `_tuan_lay` · `_ca_nhan_lay` · `_o_lay` · `_phong_lay` · `_ca_nhan_tuan` · `_troly_tuan_danh_muc` · `_troly_viec_buoi_goc` · `_troly_bc_gia_dinh` · cổng `_troly_gac` | Tự tính sáng thứ Hai |
 | Đề xuất bổ trợ | `bo_tro_de_xuat` (+ `_log`) | `fn_btk_luu / _gui / _duyet / _tra_lai / _huy / _ds / _goi_y`; cổng `_btk_la_tk` · `_btk_la_tbm` | `trg_bo_tro_de_xuat_log` |
