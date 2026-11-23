@@ -44,8 +44,15 @@ export async function ntRpc(ten: string, tham: Record<string, unknown>): Promise
     case 'viec_ve_toi': fn = 'fn_nt_viec_ve_toi'; args = { p_sau: so(tham.sau ?? 0) }; break
     default: throw new Error('hàm không được phép')
   }
-  const { data, error } = await supabase.rpc(fn, args)
-  if (error) throw error
+  // 23/11: iPad báo "het_gio" (game đợi 10 giây không thấy app trả lời) mà server đo được ~100 ms, DB rảnh ⇒ lượt gọi TREO giữa máy em và Supabase.
+  // Tách 2 chặng để lần sau biết treo ở đâu: (1) lấy phiên (khoá phiên của supabase-js) — quá 4 giây ⇒ 'phien_treo'; (2) gọi hàm — quá 8 giây ⇒ huỷ, 'qua_gio'.
+  // Cả hai đều trả lỗi TRƯỚC mốc 10 giây của game ⇒ game hiện đúng mã thay vì 'het_gio' chung chung.
+  const treo = await Promise.race([supabase.auth.getSession().then(() => false, () => false), new Promise<boolean>((r) => setTimeout(() => r(true), 4000))])
+  if (treo) throw Object.assign(new Error('phien_treo'), { code: 'phien_treo' })
+  let q = supabase.rpc(fn, args)
+  if (typeof AbortSignal !== 'undefined' && 'timeout' in AbortSignal) q = q.abortSignal(AbortSignal.timeout(8000))
+  const { data, error } = await q
+  if (error) throw Object.assign(error, { code: error.code || (/abort/i.test(error.message) ? 'qua_gio' : undefined) })
   const kq = (data ?? {}) as Record<string, unknown>
   return fn === 'fn_nt_ban_ds' || fn === 'fn_nt_ban_vuon' || fn === 'fn_nt_viec_ve_toi' ? { ok: true, ...kq } : kq
 }
