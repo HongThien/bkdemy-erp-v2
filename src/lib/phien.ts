@@ -32,6 +32,7 @@ export type PhienTin = {
   id: number; phien_id: string; vai: TinVai; nguoi_gui: string | null; noi_dung: string
   trang_thai: TinTrangThai; loi: string | null; tra_loi_cho: number | null; created_at: string; updated_at: string
   so_anh: number   // số ảnh gửi kèm (0 = tin không ảnh) — ảnh ở claude_phien_anh, tải riêng
+  so_tep: number   // số tệp gửi kèm (PDF / tệp chữ) — tệp ở claude_phien_tep, tải riêng (mig 202611231415)
 }
 // Ảnh gửi kèm tin (spec-quan-ly-chat-luong §6.5): base64 không tiền tố data:. ≤ 5 ảnh/tin, ≤ 20 tin có ảnh/người/ngày (DB chặn).
 export type AnhGui = { mime: 'image/jpeg' | 'image/png' | 'image/webp'; thu: string; du_lieu: string }
@@ -47,6 +48,20 @@ export async function getAnhDu(anhId: number): Promise<{ mime: string; du_lieu: 
   const { data, error } = await supabase.from('claude_phien_anh').select('mime, du_lieu').eq('id', anhId).maybeSingle()
   if (error) throw error
   return (data ?? null) as { mime: string; du_lieu: string } | null
+}
+
+// Tệp gửi kèm tin (Thùy 23/11): PDF + tệp chữ, ≤ 3 tệp / tin, mỗi tệp ≤ ~3 MB (DB chặn). Word / Excel chưa nhận — lưu thành PDF.
+export type TepGui = { ten: string; mime: string; du_lieu: string }
+export type TepTin = { id: number; tin_id: number; thu_tu: number; ten: string; mime: string; kich_thuoc: number }
+export async function listTep(phienId: string): Promise<TepTin[]> {
+  const { data, error } = await supabase.rpc('fn_phien_tep_ds', { p_phien: phienId })
+  if (error) throw error
+  return (data ?? []) as TepTin[]
+}
+export async function getTep(tepId: number): Promise<TepGui | null> {
+  const { data, error } = await supabase.rpc('fn_phien_tep_lay', { p_id: tepId })
+  if (error) throw error
+  return (data ?? null) as TepGui | null
 }
 
 // "Vào kho" / "Duyệt & vào kho" ngay trong chat — người mở phiên bấm = người duyệt (DB: fn_phien_chat_vao_kho).
@@ -83,7 +98,7 @@ export async function moPhien(loai: PhienLoai, mon: string, khoi: string, tieuDe
   return data as string
 }
 
-const COT_TIN = 'id, phien_id, vai, nguoi_gui, noi_dung, trang_thai, loi, tra_loi_cho, created_at, updated_at, so_anh'
+const COT_TIN = 'id, phien_id, vai, nguoi_gui, noi_dung, trang_thai, loi, tra_loi_cho, created_at, updated_at, so_anh, so_tep'
 export async function listTin(phienId: string): Promise<PhienTin[]> {
   const { data, error } = await supabase.from('claude_phien_tin').select(COT_TIN).eq('phien_id', phienId).order('id').limit(1000)
   if (error) throw error
@@ -91,8 +106,9 @@ export async function listTin(phienId: string): Promise<PhienTin[]> {
 }
 
 // Trả về tin vừa ghi để màn VÁ TẠI CHỖ (không reload cả danh sách — CLAUDE.md §2 React).
-export async function guiTin(phienId: string, noiDung: string, anh: AnhGui[] = []): Promise<PhienTin> {
-  const { data: id, error } = await supabase.rpc('fn_phien_gui', { p_phien: phienId, p_noi_dung: noiDung, ...(anh.length ? { p_anh: anh } : {}) })
+export async function guiTin(phienId: string, noiDung: string, anh: AnhGui[] = [], tep: TepGui[] = []): Promise<PhienTin> {
+  // có tệp ⇒ gọi bản 4 tham số (phải gửi đủ p_anh + p_tep); không tệp ⇒ bản cũ như trước
+  const { data: id, error } = await supabase.rpc('fn_phien_gui', { p_phien: phienId, p_noi_dung: noiDung, ...(tep.length ? { p_anh: anh, p_tep: tep } : anh.length ? { p_anh: anh } : {}) })
   if (error) throw error
   const { data, error: e2 } = await supabase.from('claude_phien_tin').select(COT_TIN).eq('id', id).single()
   if (e2) throw e2

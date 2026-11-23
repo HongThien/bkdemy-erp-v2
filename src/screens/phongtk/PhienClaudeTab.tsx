@@ -10,9 +10,10 @@ import {
   PHIEN_LOAI, LOAI_SUA_BAN_DO, tenLoai, BOT_SONG_TRONG_MS, getPhamVi, listPhien, moPhien, listTin, guiTin, dongPhien, moLaiPhien,
   listGhi, getBot, getPhien, listAnhThu, getAnhDu,
   type AnhGui, type AnhThu, type PhienItem, type PhienTin, type PhienPhamVi, type PhienLoai, type PhienBot, type PhienGhi, type PhienTrangThai,
+  listTep, getTep, type TepGui, type TepTin,
 } from '../../lib/phien'
 import { NoiDungClaude, tachKhoi, type TheCauData } from './TheCauPhien'
-import { nenAnh, urlAnh, TOI_DA_ANH } from '../../lib/phienAnh'
+import { nenAnh, urlAnh, TOI_DA_ANH, docTep, laAnh, coTep, TOI_DA_TEP, DUOI_TEP } from '../../lib/phienAnh'
 import { nhoBen } from '../../lib/nho'
 
 const NHO = nhoBen<{ chon: string | null; ds: PhienItem[] | null; nhap: Record<string, string>; tin: Record<string, PhienTin[]> }>('phien_claude', { chon: null, ds: null, nhap: {}, tin: {} }, { luu: ['chon', 'nhap'] })
@@ -151,6 +152,8 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
   const oNhap = useRef<HTMLTextAreaElement>(null)
   const [anh, setAnh] = useState<{ g: AnhGui; url: string }[]>([])
   const [anhThu, setAnhThu] = useState<Record<number, AnhThu[]>>({})
+  const [tep, setTep] = useState<TepGui[]>([])                    // tệp đang chờ gửi kèm tin
+  const [tepTin, setTepTin] = useState<TepTin[] | null>(null)     // tệp đã gửi trong phiên (tên + cỡ), tải một lượt khi có tin kèm tệp
   const [phong, setPhong] = useState<string | null>(null)   // ảnh đang xem lớn (data URL)
   const dinhDay = useRef(true)   // người đang ở cuối khung ⇒ chữ mới tự cuộn theo; đã cuộn lên đọc thì không giật xuống
 
@@ -188,12 +191,32 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
 
   async function gui() {
     const nd = nhap.trim()
-    if ((!nd && !anh.length) || busy || tt !== 'mo') return
+    if ((!nd && !anh.length && !tep.length) || busy || tt !== 'mo') return
     setBusy(true); setLoi(null)
-    try { const t = await guiTin(phien.id, nd, anh.map((a) => a.g)); setTin((prev) => vaTin(prev, t)); setNhap(''); setAnh([]); dinhDay.current = true }
+    try { const t = await guiTin(phien.id, nd, anh.map((a) => a.g), tep); setTin((prev) => vaTin(prev, t)); setNhap(''); setAnh([]); setTep([]); if (t.so_tep > 0) setTepTin(null); dinhDay.current = true }
     catch (e: any) { setLoi(e.message ?? String(e)) } finally { setBusy(false) }
   }
   // Ảnh: dán (Ctrl+V) / kéo thả / chọn tệp. Nén ở máy; tối đa TOI_DA_ANH ảnh mỗi tin.
+  // Tệp (PDF / tệp chữ): kéo thả hoặc chọn; ảnh thì đi đường nén ảnh như cũ. Tối đa TOI_DA_TEP tệp mỗi tin.
+  async function themTep(files: File[]) {
+    const ds = files.filter((f) => !f.type.startsWith('image/'))
+    if (!ds.length) return
+    setLoi(null)
+    try {
+      const them: TepGui[] = []
+      for (const f of ds.slice(0, Math.max(0, TOI_DA_TEP - tep.length))) them.push(await docTep(f))
+      if (ds.length > TOI_DA_TEP - tep.length) setLoi(`Mỗi tin tối đa ${TOI_DA_TEP} tệp.`)
+      setTep((p) => [...p, ...them])
+    } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
+  const themMoiThu = (files: File[]) => { themAnh(files.filter(laAnh)); themTep(files.filter((f) => !laAnh(f))) }
+  async function taiTep(id: number) {
+    try {
+      const t = await getTep(id)
+      if (!t) { setLoi('Tệp đã hết hạn lưu (quá 30 ngày sau khi đóng phiên).'); return }
+      const a = document.createElement('a'); a.href = `data:${t.mime};base64,${t.du_lieu}`; a.download = t.ten; a.click()
+    } catch (e: any) { setLoi(e.message ?? String(e)) }
+  }
   async function themAnh(files: File[]) {
     const ds = files.filter((f) => f.type.startsWith('image/'))
     if (!ds.length) return
@@ -235,6 +258,14 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
     if (!can.length) return
     listAnhThu(phien.id, can).then((ds) => setAnhThu((p) => { const n = { ...p }; for (const id of can) n[id] = ds.filter((a) => a.tin_id === id); return n })).catch(() => {})
   }, [tin]) // eslint-disable-line
+  // Tên + cỡ các tệp đã gửi: một lượt cho cả phiên, chỉ khi phiên có tin kèm tệp; gửi tin mới có tệp ⇒ đọc lại.
+  const coTinTep = tin.some((t) => t.so_tep > 0)
+  useEffect(() => {
+    if (!coTinTep || tepTin) return
+    let con = true
+    listTep(phien.id).then((ds) => { if (con) setTepTin(ds) }).catch(() => {})
+    return () => { con = false }
+  }, [coTinTep, tepTin, phien.id])
   const daTraLoi = useMemo(() => new Set(tin.filter((t) => t.vai === 'claude').map((t) => t.tra_loi_cho)), [tin])
 
   return (
@@ -287,7 +318,19 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
                   {anhThu[t.id] && anhThu[t.id].length === 0 && <span className="text-[12px] opacity-80">🖼 {t.so_anh} ảnh (đã hết hạn lưu)</span>}
                 </div>
               )}
-              {t.noi_dung !== '(chỉ gửi ảnh)' && t.noi_dung}
+              {t.so_tep > 0 && (
+                <div className="mb-1.5 flex flex-wrap gap-1.5">
+                  {(tepTin ?? []).filter((x) => x.tin_id === t.id).map((x) => (
+                    <button key={x.id} type="button" onClick={() => taiTep(x.id)} title="Bấm tải về"
+                      className="max-w-full truncate rounded-lg border border-white/40 bg-white/15 px-2.5 py-1 text-left text-[12.5px] hover:bg-white/25">
+                      📎 {x.ten} <span className="opacity-75">· {coTep(x.kich_thuoc)}</span>
+                    </button>
+                  ))}
+                  {!tepTin && <span className="text-[12px] opacity-80">📎 {t.so_tep} tệp…</span>}
+                  {tepTin && !tepTin.some((x) => x.tin_id === t.id) && <span className="text-[12px] opacity-80">📎 {t.so_tep} tệp (đã hết hạn lưu)</span>}
+                </div>
+              )}
+              {t.noi_dung !== '(chỉ gửi ảnh)' && t.noi_dung !== '(chỉ gửi tệp)' && t.noi_dung}
             </div>
             <div className="mt-0.5 text-[11px] text-slate-400">
               {t.nguoi_gui === myId ? 'Bạn' : 'Đồng nghiệp'} · {gio(t.created_at)}
@@ -321,21 +364,34 @@ function KhungChat({ phien, onDoiTrangThai }: { phien: PhienItem; onDoiTrangThai
                 ))}
               </div>
             )}
+            {tep.length > 0 && (
+              <div className="mb-1.5 flex flex-wrap gap-1.5">
+                {tep.map((x, i) => (
+                  <span key={i} className="inline-flex max-w-full items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[12.5px] text-slate-700">
+                    <span className="truncate">📎 {x.ten}</span>
+                    <button type="button" onClick={() => setTep((p) => p.filter((_, j) => j !== i))} title="Bỏ tệp này" className="h-4 w-4 shrink-0 rounded-full bg-slate-600 text-[10px] leading-4 text-white">×</button>
+                  </span>
+                ))}
+              </div>
+            )}
             <textarea ref={oNhap} value={nhap} onChange={(e) => setNhap(e.target.value)} rows={2}
               onPaste={(e) => { const fs = Array.from(e.clipboardData.files); if (fs.some((f) => f.type.startsWith('image/'))) { e.preventDefault(); themAnh(fs) } }}
-              onDrop={(e) => { const fs = Array.from(e.dataTransfer.files); if (fs.length) { e.preventDefault(); themAnh(fs) } }}
+              onDrop={(e) => { const fs = Array.from(e.dataTransfer.files); if (fs.length) { e.preventDefault(); themMoiThu(fs) } }}
               onDragOver={(e) => e.preventDefault()}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); gui() } }}
-              placeholder="Nhắn Claude… (Enter gửi · Shift+Enter xuống dòng · dán / kéo thả ảnh đề vào đây). Đang bận vẫn nhắn được — Claude đọc hết khi xong lượt."
+              placeholder="Nhắn Claude… (Enter gửi · Shift+Enter xuống dòng · dán ảnh · kéo thả ảnh / tệp PDF vào đây). Đang bận vẫn nhắn được — Claude đọc hết khi xong lượt."
               className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-[14px] outline-none placeholder:text-slate-400 focus:border-indigo-300" />
             <div className="mt-1.5 flex items-center justify-between">
               <span className="flex items-center gap-2">
                 <label className="cursor-pointer rounded-lg border border-slate-200 px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50" title={`Gửi ảnh đề (tối đa ${TOI_DA_ANH}/tin)`}>
                   🖼 Ảnh<input type="file" accept="image/jpeg,image/png,image/webp" multiple className="hidden" onChange={(e) => { themAnh(Array.from(e.target.files ?? [])); e.target.value = '' }} />
                 </label>
+                <label className="cursor-pointer rounded-lg border border-slate-200 px-2.5 py-1 text-[12.5px] text-slate-600 hover:bg-slate-50" title={`Gửi tệp PDF hoặc tệp chữ (tối đa ${TOI_DA_TEP} tệp / tin, mỗi tệp 3 MB). Word / Excel: lưu thành PDF rồi gửi.`}>
+                  📎 Tệp<input type="file" accept={DUOI_TEP} multiple className="hidden" onChange={(e) => { themTep(Array.from(e.target.files ?? [])); e.target.value = '' }} />
+                </label>
                 <span className="text-[11.5px] text-red-600">{loi}</span>
               </span>
-              <button onClick={gui} disabled={(!nhap.trim() && !anh.length) || busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-40">
+              <button onClick={gui} disabled={(!nhap.trim() && !anh.length && !tep.length) || busy} className="rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700 disabled:opacity-40">
                 {busy ? 'Đang gửi…' : 'Gửi'}
               </button>
             </div>

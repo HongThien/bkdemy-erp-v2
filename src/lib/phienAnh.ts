@@ -32,3 +32,24 @@ export async function nenAnh(f: File): Promise<AnhGui> {
 }
 
 export const urlAnh = (mime: string, b64: string) => `data:${mime};base64,${b64}`
+
+// ── TỆP gửi kèm (Thùy 23/11): PDF + tệp chữ. Không nén, chỉ đọc thành base64; kiểu tệp suy từ ĐUÔI tên (trình duyệt hay để trống type của .md / .tex). ──
+export const TOI_DA_TEP = 3
+const TEP_TOI_DA_BYTE = 3_000_000
+const KIEU_TEP: Record<string, string> = { pdf: 'application/pdf', txt: 'text/plain', md: 'text/markdown', csv: 'text/csv', json: 'application/json', tex: 'text/x-tex' }
+export const DUOI_TEP = Object.keys(KIEU_TEP).map((d) => '.' + d).join(',')
+export const laAnh = (f: File) => /^image\/(jpeg|png|webp)$/.test(f.type)
+export async function docTep(f: File): Promise<{ ten: string; mime: string; du_lieu: string }> {
+  const duoi = (f.name.split('.').pop() ?? '').toLowerCase()
+  const mime = KIEU_TEP[duoi]
+  if (!mime) throw new Error(/^(docx?|xlsx?|pptx?)$/.test(duoi)
+    ? `"${f.name}": chưa nhận tệp Word / Excel / PowerPoint — lưu thành PDF rồi gửi.`
+    : `"${f.name}": chỉ nhận PDF và tệp chữ (${DUOI_TEP.replace(/,/g, ' ')}).`)
+  if (f.size > TEP_TOI_DA_BYTE) throw new Error(`"${f.name}" nặng ${(f.size / 1e6).toFixed(1)} MB — tối đa 3 MB mỗi tệp (tách nhỏ, hoặc chụp ảnh trang cần hỏi).`)
+  if (f.size === 0) throw new Error(`"${f.name}" rỗng.`)
+  const b = new Uint8Array(await f.arrayBuffer())
+  let nhi = ''
+  for (let i = 0; i < b.length; i += 0x8000) nhi += String.fromCharCode(...b.subarray(i, i + 0x8000))
+  return { ten: f.name, mime, du_lieu: btoa(nhi) }
+}
+export const coTep = (kb: number) => kb >= 1e6 ? `${(kb / 1e6).toFixed(1)} MB` : `${Math.max(1, Math.round(kb / 1e3))} KB`
