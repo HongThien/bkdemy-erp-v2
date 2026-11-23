@@ -82404,3 +82404,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Cùng cách với lượt cộng góc: `scripts/hinh-k7-cong-goc-them.mjs --dich HH00170|HH00172 --ghi` (script nay nhận `--dich`; MAP riêng từng bài; bộ tách bước Phần 1 hiểu danh sách nhãn "Ý a, b, c:" · "Ý b) và c):" · "Ý a):"). Đã đọc lời giải từng câu để phân phương pháp.
 - **HH00170 cùng đường (hai tia cùng là phân giác ⇒ trùng · cùng thuộc trung trực): +12 bài–ý, +46 ý ⇒ 6 → 18 bài, 65 ý.** **HH00172 Ơ-clit (qua một điểm chỉ một đường song song / vuông góc): +7 bài–ý, +26 ý ⇒ 6 → 13 bài, 49 ý.** HH00171: 16 bài, 57 ý. Kiểm sau ghi 0 lỗi; câu cũ chỉ `rut_khoi_kho=true`. Ý mới chưa duyệt, nằm trong kho chuẩn.
 - Không đưa: HHC015146 · HHC015167 · HHC015160 · HHC015200 (trùng đề bản đã đưa) · HHC015089 (máy kiểm "nghi") · HHC015116 · HHC015210. Gán "qua một điểm chỉ một đường vuông góc ⇒ trùng" vào HH00172 theo quyết định 16/11 (vẫn chờ Thùy xác nhận).
+
+## 23/11 — Hình–Học K8: hình vẽ của 136 câu cuối kì chưa hiện ở kho
+- Hình vẽ nằm ở `anh_dap_an` (ảnh dưới lời giải: 128/136 câu, 418/434 ý) còn `anh_de` chỉ 8 câu ⇒ kho chuyên đề không hiện hình ở đề. Quy ước K7/K9: hình chung của chuỗi ở `hinh_hoc_bai_y.anh_de` (trigger ghép ép `anh_de` mọi ý theo thẻ).
+- `scripts/kho/hh-k8-cuoi-ki-hinh-vao-de.mjs`: 128 thẻ ý chưa có hình đề ⇒ `anh_de := anh_dap_an` của câu gốc (giữ nguyên `anh_dap_an`). Kết quả: 136/136 thẻ, 434/434 ý có hình đề. Bản lùi `_luu-tru/du-lieu/hh-k8-cuoi-ki-hinh-vao-de-23-11.json`.
