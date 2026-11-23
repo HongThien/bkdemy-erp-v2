@@ -60,7 +60,7 @@ export default function BaoCaoTuanTBM() {
         ))}
         <div className="ml-auto inline-flex rounded-xl border border-slate-200 bg-white p-0.5">
           {/* Thùy 19/11: xem kết quả học tập các khối của tuần ĐANG CHẠY (trước chỉ xem được báo cáo đã chốt) */}
-          <button onClick={() => setTab('tuan_nay')} className={nut(tab === 'tuan_nay')}>📡 Tuần này</button>
+          <button onClick={() => setTab('tuan_nay')} className={nut(tab === 'tuan_nay')}>📅 Theo tuần</button>
           <button onClick={() => setTab('khoi')} className={nut(tab === 'khoi')}>Các khối</button>
           <button onClick={() => setTab('mon')} className={nut(tab === 'mon')}>Báo cáo môn{monChon ? ` ${monChon}` : ''}</button>
           <button onClick={() => setTab('cua_toi')} className={nut(tab === 'cua_toi')}>Báo cáo của tôi</button>

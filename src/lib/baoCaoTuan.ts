@@ -131,18 +131,19 @@ export async function nopBaoCao(tuan: string, caNhan: DongCaNhan[], tuViet: TuVi
   return data as BaoCaoTuan
 }
 
-// ── Tuần ĐANG CHẠY cho trưởng bộ môn / giám đốc (mig 202611191751) — fn_bctk_hien_tai chỉ đọc sổ tính sẵn; fn_bctk_hien_tai_o tính trực tiếp một khối ──
+// ── Xem THEO TUẦN cho trưởng bộ môn / giám đốc (mig 202611191751 → 202611232126) — tuần đang chạy đọc sổ tính sẵn, tuần đã đóng đọc SỔ CHỐT;
+//    bấm một khối = fn_bctk_tuan_o tính trực tiếp đúng khối đó của tuần đang xem ──
 export type HienTai = {
-  tuan: string; den: string
+  tuan: string; den: string; dang_chay: boolean; tuan_nay: string; co_chot: boolean
   mon: { mon: string; tinh_at: string | null; tong: Partial<TongSo> | null; khoi: { khoi: string; tinh_at: string; tong: Partial<TongSo>; truong: string | null }[] }[]
 }
-export async function hienTaiCacKhoi(): Promise<HienTai> {
-  const { data, error } = await supabase.rpc('fn_bctk_hien_tai')
+export async function hienTaiCacKhoi(tuan?: string | null): Promise<HienTai> {
+  const { data, error } = await supabase.rpc('fn_bctk_tuan', { p_tuan: tuan ?? null })
   if (error) throw error
   return data as HienTai
 }
-export async function hienTaiMotKhoi(mon: string, khoi: string): Promise<SoBaoCao> {
-  const { data, error } = await supabase.rpc('fn_bctk_hien_tai_o', { p_mon: mon, p_khoi: khoi })
+export async function hienTaiMotKhoi(mon: string, khoi: string, tuan?: string | null): Promise<SoBaoCao> {
+  const { data, error } = await supabase.rpc('fn_bctk_tuan_o', { p_mon: mon, p_khoi: khoi, p_tuan: tuan ?? null })
   if (error) throw error
   return data as SoBaoCao
 }

@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-618 bảng · 42 view · 0 enum · 520 trigger · 2094 function
+620 bảng · 42 view · 0 enum · 520 trigger · 2099 function
 
 ## _app_secrets
 
@@ -2283,6 +2283,27 @@
 | ip | text | Y |  |  |  |
 | sdt | text |  |  |  |  |
 | created_at | timestamp with time zone |  | now() |  |  |
+
+## dang_yeu_chup_o
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| mon | text |  |  | PK |  |
+| khoi | text |  |  | PK |  |
+| so_dong | integer |  |  |  |  |
+| ms | integer |  |  |  |  |
+| chup_at | timestamp with time zone |  | now() |  |  |
+
+## dang_yeu_chup_xong
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| tuan | date |  |  | PK |  |
+| so_o | integer |  |  |  |  |
+| so_dong | integer |  |  |  |  |
+| xong_at | timestamp with time zone |  | now() |  |  |
+| tong_ket_at | timestamp with time zone | Y |  |  |  |
 
 ## dang_yeu_dau_tuan
 
@@ -12081,7 +12102,9 @@ WITH luot AS (
 - `_chuoi_cua_tinh(p_hs uuid)` → jsonb
 - `_dai_cau_lop_truoc_sua()` → trigger
 - `_dang_da_hoc_ok(p_hs uuid, p_mon text, p_ma_dang text)` → boolean
+- `_dang_yeu_chup_dau_tuan_lo(p_ngan_sach_giay integer DEFAULT 80)` → jsonb
 - `_dang_yeu_chup_tuan(p_tuan date)` → integer
+- `_dang_yeu_chup_tuan_khoi(p_tuan date, p_mon text, p_khoi text)` → integer
 - `_dang_yeu_tai_lo(p_hs uuid[], p_mon text, p_moc timestamp with time zone)` → TABLE(hoc_sinh_id uuid, ma_dang text, ten_dang text, score numeric, n integer)
 - `_dash_viec_thang(p_loai text, p_ym text, p_cu_phut integer DEFAULT 10)` → TABLE(nhan_su_id uuid, ho_ten text, an_xep_hang boolean, ten_lop text, ngay date, tab text, kq text, ly_do text, tinh_luc timestamp with time zone)
 - `_dbht_cau(p_hs uuid[], p_tu date, p_mon text)` → TABLE(hoc_sinh_id uuid, ngay date, t timestamp with time zone, kenh text, luot text, thu_tu integer, ma_cau text, gia_tri numeric, dang_bai_id text, nhom_id text, chuyen_de_id text, chu_de_id text, ten_dang text)
@@ -12707,6 +12730,7 @@ WITH luot AS (
 - `_tt_mua()` → TABLE(mua text, tu date)
 - `_tt_tien_do(p_hs uuid)` → jsonb
 - `_tu_dong_sang_t2()` → jsonb
+- `_tu_dong_sang_t2_neu_thieu()` → jsonb
 - `_tu_luyen_chon_dang(p_hs uuid, p_mon text, p_so integer DEFAULT 10)` → jsonb
 - `_tu_luyen_dau_cua_so_truoc()` → timestamp with time zone
 - `_tu_luyen_mastery_dang(p_hs uuid, p_moc timestamp with time zone)` → TABLE(ma_dang text, score numeric, muc text, gan_day boolean)
@@ -12791,6 +12815,8 @@ WITH luot AS (
 - `fn_bctk_nop(p_tuan date, p_ca_nhan jsonb, p_tu_viet jsonb)` → jsonb
 - `fn_bctk_so(p_o jsonb, p_tu date)` → jsonb
 - `fn_bctk_trend(p_o jsonb, p_tu date)` → jsonb
+- `fn_bctk_tuan(p_tuan date DEFAULT NULL::date)` → jsonb
+- `fn_bctk_tuan_o(p_mon text, p_khoi text, p_tuan date DEFAULT NULL::date)` → jsonb
 - `fn_bctk_xem(p_id uuid)` → jsonb
 - `fn_bctk_xu_ly(p_id uuid, p_duyet boolean, p_ly_do text DEFAULT NULL::text)` → jsonb
 - `fn_bdm_cau_chua_gan(p_nhom text, p_chu_de text, p_chuyen_de text, p_limit integer DEFAULT 200, p_offset integer DEFAULT 0)` → jsonb
