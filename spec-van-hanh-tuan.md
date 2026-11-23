@@ -142,7 +142,7 @@ Builder giáo trình CỦA LỚP ───────────────�
 - Ai đặt được: như sửa khung (`fn_gtt_dat_mt`, cổng `_gtt_kiem_ca` — lớp trong phạm vi, ca còn trong TKB, chưa huỷ, chưa qua). Ca MT **tính là đã có nội dung** ("còn x/y ca chưa có khung" không đếm nó); bản chụp lúc duyệt ghi `{mt: true}` ⇒ đặt / bỏ MT sau duyệt hiện cờ "sửa sau duyệt".
 - Đây là **KẾ HOẠCH**. Đề MT thật vẫn gán bằng luồng MT sẵn có (`tai_lieu` loại `mt_buoi`); việc chấm của nhân sự (chỉ còn "Chấm MT") vẫn bật theo đề thật như cũ — đặt MT ở đây KHÔNG tự tạo đề.
 - **Báo trong Mục tiêu tuần:** (1) tờ tuần của em có băng **"📝 Kiểm tra tháng (MT) — Thứ …"** ngay đầu, hiện cả khi mục tiêu tuần chưa công bố (gắn lúc đọc: `fn_mtt_cua_toi` / `fn_mtt_hs` → khoá `kiem_tra`); màn nhân sự hiện thẻ tím cạnh tên em. (2) Trong "Việc của con", việc của buổi đó là **MT** thay ET ngay từ lúc đặt (`_mtt_tinh`: thêm điều kiện ca đã đặt MT) — có trên tờ ở lượt tính lại kế tiếp.
-- **Buổi kiểm tra tháng KHÔNG có BTVN (Thùy 23/11, mig `202611231511`):** buổi đã gán đề MT hoặc đã đặt MT ở Giáo trình tuần không sinh việc BTVN trong Mục tiêu tuần. Ngoại lệ: buổi đó thật sự có BTVN (đã gán đề BTVN hoặc đã có kết quả BTVN) thì việc BTVN vẫn hiện — dữ liệu có thật không bị giấu. Nhóm bài của buổi MT không vào mục tiêu học (ca không gắn buổi nên không có nhóm).
+- **Buổi kiểm tra tháng KHÔNG có BTVN — không ngoại lệ (Thùy 23/11: "MT ko có bài tập về nhà"; mig `202611231511` + `202611231535`):** buổi đã gán đề MT hoặc đã đặt MT ở Giáo trình tuần không sinh việc BTVN trong Mục tiêu tuần. Nhóm bài của buổi MT không vào mục tiêu học (ca không gắn buổi nên không có nhóm).
 
 ### 3.7 Nối với Mục tiêu tuần
 

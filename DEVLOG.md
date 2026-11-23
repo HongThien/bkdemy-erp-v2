@@ -82278,3 +82278,7 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Luật "không quay về Cần xếp" đã có từ f2f5dc87 (mig 202611231443, phiên khác, cùng ngày).** Việc này chỉ gỡ chữ/số "vòng": 3 hàm DB bỏ khoá `vong`; UI `XepLichBoTroYeuScreen` (3 chỗ), `TrangThaiCaBoTroScreen`, `BoTroHinhScreen` ("vòng tiếp"); `botro_yeu.ts` bỏ trường. Cột `case_truoc_id` giữ.
 - **Không đụng:** màn `DuyetBoTroYeuScreen` + `lib/botro_tuan.ts` còn chữ "Vòng 1 / Vòng 2" nhưng là luồng "Duyệt 2 vòng" đã bỏ 13/11 (màn ẩn) — chưa gỡ.
 - **Kiểm:** `tsc` sạch (trừ lỗi cũ pdfRender); gọi `fn_btyeu_case_xep_lich` bằng phiên Trang (rollback): 378 case, không còn khoá `vong`.
+
+## 23/11 16:10 — Mục tiêu tuần: buổi MT không có BTVN, KHÔNG ngoại lệ (mig 202611231535 ĐÃ ÁP — Thùy nhắc lại "MT ko có bài tập về nhà")
+- **Sai của tôi:** mig 1511 tự thêm ngoại lệ "buổi MT có đề BTVN / có kết quả BTVN thì vẫn hiện việc BTVN" trong khi Thùy đã trả lời rõ "Không có BTVN". Gỡ: CTE `bt` của `_mtt_tinh` giờ chỉ còn điều kiện "buổi không phải MT". Thử (ROLLBACK): 5A1 ca 24/11 đặt MT ⇒ việc = MT.
+- Hệ quả đã biết: 3 buổi MT cũ có đề BTVN / 2 buổi có kết quả BTVN (từ 01/09) sẽ không hiện việc BTVN trên tờ tuần nếu tuần đó còn tính lại; tuần đã chốt sổ không đổi.
