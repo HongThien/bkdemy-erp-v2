@@ -348,5 +348,395 @@
   "ma_cau": "HHC015691",
   "tu": "HH08000000",
   "den": "HH00175"
+ },
+ {
+  "ma_cau": "HHC015481",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015485",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015530",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015531",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015532",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015595",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015597",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015613",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015634",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015637",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015641",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015650",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015652",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015690",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015693",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015696",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015698",
+  "tu": "HH08000000",
+  "den": "HH00183",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015482",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015484",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015519",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015520",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015522",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015541",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015543",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015573",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015596",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015611",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015623",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015624",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015640",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015651",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015667",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015681",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015689",
+  "tu": "HH08000000",
+  "den": "HH00184",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014556",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014558",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014559",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014564",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014578",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015638",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015642",
+  "tu": "HH08000000",
+  "den": "HH00185",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014540",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014582",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014627",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014653",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015470",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015471",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015571",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015662",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015699",
+  "tu": "HH08000000",
+  "den": "HH00186",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014569",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014647",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015487",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015545",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015560",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015564",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015670",
+  "tu": "HH08000000",
+  "den": "HH00187",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014537",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014555",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014584",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014602",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014620",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014625",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC014646",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
+ },
+ {
+  "ma_cau": "HHC015505",
+  "tu": "HH08000000",
+  "den": "HH00188",
+  "rut_cu": true
  }
 ]
