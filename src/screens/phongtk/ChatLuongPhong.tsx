@@ -147,7 +147,14 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
                 <tr key={d.id} className="align-top hover:bg-slate-50/60">
                   <td className="border-b border-slate-100 px-3 py-2">
                     {onMoHoSo ? <button onClick={() => onMoHoSo(d.hoc_sinh_id, mon)} className="font-semibold text-slate-800 hover:text-indigo-700 hover:underline">{d.ho_ten}</button> : <span className="font-semibold text-slate-800">{d.ho_ten}</span>}
-                    <div className="text-[11.5px] text-slate-500">{[d.lop, d.ma_hs, d.dang_yeu != null ? `${d.dang_yeu} dạng yếu` : null].filter(Boolean).join(' · ')}</div>
+                    <div className="text-[11.5px] text-slate-500">{[d.lop, d.ma_hs].filter(Boolean).join(' · ')}</div>
+                    {/* Thùy 23/11: chỉ thống kê dạng yếu NẰM TRONG các nhóm đã chọn; dạng yếu lẻ ghi riêng (số do DB trả) */}
+                    {d.dy_chon ? (
+                      <div className="text-[11.5px]">
+                        <b className="text-rose-600">{d.dy_chon.trong} dạng yếu</b> <span className="text-slate-500">trong nhóm chọn</span>
+                        {d.dy_chon.le > 0 && <div className="text-slate-400" title="Dạng yếu nằm ngoài các nhóm đã chọn — xử lý riêng, không tính vào đề xuất này">+ {d.dy_chon.le} dạng yếu lẻ</div>}
+                      </div>
+                    ) : d.dang_yeu != null && <div className="text-[11.5px] text-slate-500">{d.dang_yeu} dạng yếu</div>}
                   </td>
                   {khoi === null && <td className="border-b border-slate-100 px-2 py-2 text-slate-600">{d.khoi}</td>}
                   <td className="border-b border-slate-100 px-2 py-2">
@@ -156,6 +163,7 @@ export function DanhSachBoTro({ che, cacO, onMoHoSo }: { che: 'tk' | 'tbm'; cacO
                       return (
                         <div key={n.ma} className="mb-0.5 leading-snug">
                           <span className="text-slate-800">{n.ten}</span>{n.p != null && <b className={`ml-1 ${n.p < 50 ? 'text-rose-600' : n.p < 80 ? 'text-amber-700' : 'text-emerald-700'}`}>{n.p}%</b>}
+                          {d.dy_chon && <span className="ml-1 text-[11.5px] text-slate-500">· {d.dy_chon.theo_nhom[n.ma] ?? 0} dạng yếu</span>}
                           {/* nhóm này đã từng được bổ trợ chưa (số do DB trả) */}
                           {ls && (ls.so_ca > 0
                             ? <span className="ml-1.5 whitespace-nowrap rounded bg-amber-100 px-1.5 py-px text-[11px] font-semibold text-amber-800" title="Số ca bổ trợ em có mặt và được dạy dạng thuộc nhóm này">đã bổ trợ {ls.so_ca} ca{ls.lan_cuoi ? ` · gần nhất ${ddmmVN(ls.lan_cuoi)}` : ''}</span>
