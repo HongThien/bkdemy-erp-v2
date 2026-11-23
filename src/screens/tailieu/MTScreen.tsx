@@ -42,7 +42,7 @@ import BoChonNhom from './bdm/BoChonNhom'
 import ChonCauBdm from './bdm/ChonCauBdm'
 import { ChonBaiHoc } from './bdm/ChuyenDeHinhBuilder'
 import { hhCayChon, hhGoiYBai } from '../../lib/chuyenDeHinh'
-import { cayChon, goiYDangBai, etViTri, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
+import { cayChon, goiYDangBai, etViTri, etMaDe, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
 import { MON_CO_KHO } from '../../lib/mon'
 import { bdmCuaMon } from '../../lib/kho/banDoMoi'
 
@@ -549,7 +549,23 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     await syncNhanhByCau({ ...rowsByPhan, [phanId]: rows })
     markSaved()
   }
+  // Hàng thuộc bản đồ mới (nhanh 'bdm' · 'hinh_hoc'): câu gợi ý TÍNH Ở DB (fn_tl_bdm_goi_y · fn_tl_hh_goi_y_bai) — y hệt ET mới.
+  // KHÔNG đọc kho gốc theo `dang_chinh = mã dạng`: kho gốc KHTN/Lý/Hóa (khtn_cau_hoi…) không mang mã NDB nên ra 0 câu (bug 23/11).
+  async function goiY1Moi(maDang: string, nhanh: string, tru: string[], loai: string | null): Promise<string | null> {
+    let m: string | undefined
+    if (nhanh === 'hinh_hoc') [m] = await hhGoiYBai(maDang, 1, tru)
+    else { const info = dbs.get(maDang); if (!info) return null; [m] = await goiYDangBai(info.nhom_id, maDang, 1, tru, loai) }
+    if (m) await napBdm([m], nhanh)
+    return m ?? null
+  }
   async function pickDang(phanId: string, idx: number, maDang: string, nhanh: string | null) {
+    if (nhanh === 'bdm' || nhanh === 'hinh_hoc') {
+      const loai = vaiCua(phanId)?.loaiKho ?? null
+      const sug = await goiY1Moi(maDang, nhanh, [...usedGlobal(phanId, idx)], loai)
+      if (!sug && loai) { setLoi(`Dạng này chưa có câu ${loaiLabel(loai)} nào chưa dùng trong kho — chọn dạng khác.`); return }
+      await luuPhan(phanId, (rowsByPhan[phanId] ?? []).map((r, i) => (i === idx ? { maDang, maCau: sug, nhanh } : r)))
+      return
+    }
     const tbl = tblCua(nhanh)
     await ensureCache(maDang, tbl)
     const ex = usedGlobal(phanId, idx); const loai = vaiCua(phanId)?.loaiKho ?? null
@@ -563,6 +579,12 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   async function doiCau(phanId: string, idx: number) {
     const r = (rowsByPhan[phanId] ?? [])[idx]; if (!r?.maDang) return
     if (phanId === dsPid) { await doiCauDs(phanId, idx); return }
+    if (r.nhanh === 'bdm' || r.nhanh === 'hinh_hoc') {
+      const sug = await goiY1Moi(r.maDang, r.nhanh, [...usedGlobal(phanId, idx), ...(r.maCau ? [r.maCau] : [])], vaiCua(phanId)?.loaiKho ?? null)
+      if (!sug) { alert('Hết câu khác cho dạng này (đã dùng hết trong MT).'); return }
+      await luuPhan(phanId, (rowsByPhan[phanId] ?? []).map((x, i) => (i === idx ? { ...x, maCau: sug } : x)))
+      return
+    }
     const ex = new Set([...usedGlobal(phanId, idx), r.maCau].filter(Boolean) as string[]); const loai = vaiCua(phanId)?.loaiKho ?? null
     if (loai) for (const c of await listCauByDang(r.maDang, tblCua(r.nhanh))) if (!hopLoai(c, loai)) ex.add(c.ma_cau)
     const sug = await suggestCauForDang(r.maDang, ex, tblCua(r.nhanh))
@@ -805,7 +827,19 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     const nhs = [...new Set(rows.map((r) => r.nhanh))]
     let chNext: CauHinh = { ...chRef.current, etMaDe: {} }
     const allCaus: CauHoi[] = []
-    for (const nh of nhs) {
+    // Hàng bản đồ mới ('bdm' · 'hinh_hoc'): đề 2/3 tính ở DB (fn_tl_bdm_et_ma_de — cùng ET mới, biết cả KHTN/Lý/Hóa) — buildMaDeLib đọc
+    // kho theo dang_chinh nên KHTN/Lý/Hóa (kho gốc không mang mã NDB) ra 0 ứng viên ⇒ đề 2/3 trùng câu gốc.
+    const rowsMoi = rows.filter((r) => r.nhanh === 'bdm' || r.nhanh === 'hinh_hoc')
+    if (rowsMoi.length && d) {
+      const baseDb = rowsMoi.map((r) => ({ ma_cau: r.maCau!, dang_bai: r.maDang!, form: cau[r.maCau!] ? etFormOf(cau[r.maCau!], chNext) : 'tra_loi_ngan' }))
+      const kq = await etMaDe(d.khoi, baseDb)
+      chNext = { ...chNext, etMaDe: { ...(chNext.etMaDe ?? {}), ...kq.etMaDe }, etFormByCau: { ...(chNext.etFormByCau ?? {}), ...kq.etFormByCau } }
+      for (const r of rowsMoi) {
+        const mas = (kq.etMaDe[r.maCau!] ?? []).filter((m): m is string => !!m)
+        await napBdm(mas, r.nhanh!)
+      }
+    }
+    for (const nh of nhs.filter((n) => n !== 'bdm' && n !== 'hinh_hoc')) {
       const base: BaseItem[] = rows.filter((r) => r.nhanh === nh).map((r) => ({ maDang: r.maDang!, maCau: r.maCau! }))
       const { ch: c2, caus } = await buildMaDeLib(base, chNext, tblCua(nh), cau)
       chNext = { ...c2, etMaDe: { ...(chNext.etMaDe ?? {}), ...(c2.etMaDe ?? {}) } }
@@ -1347,7 +1381,19 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                 setChonPlan(false)
               }} />}
       </>)}
-      {varPicker && (
+      {varPicker && d && varPicker.nhanh === 'bdm' && dbs.get(varPicker.maDang) && (
+        // Đề 2/3 của hàng bản đồ mới: chọn câu thay theo NHÓM (như ET mới) — KHTN/Lý/Hóa không đọc kho theo mã dạng được
+        <ChonCauBdm tl={{ mon: d.mon, nhanh: 'bdm', cau_hinh: null }} coKhoLop={false} nhomId={dbs.get(varPicker.maDang)!.nhom_id} uuTien={varPicker.maDang}
+          selected={ch.etMaDe?.[varPicker.baseMaCau]?.[varPicker.v] ? [ch.etMaDe[varPicker.baseMaCau][varPicker.v]!] : []}
+          khoa={[...usedMoiDe()]} onClose={() => setVarPicker(null)}
+          onConfirm={async (ms) => {
+            const used = usedMoiDe()
+            const pick = ms.find((x) => !used.has(x)) ?? ms[0] ?? null
+            if (pick) { await napBdm([pick]); await setVar(varPicker.baseMaCau, varPicker.v, pick, varPicker.form) }
+            setVarPicker(null)
+          }} />
+      )}
+      {varPicker && !(varPicker.nhanh === 'bdm' && dbs.get(varPicker.maDang)) && (
         <KhoPicker maDangs={[varPicker.maDang]} cauTbl={tblCua(varPicker.nhanh)}
           selected={ch.etMaDe?.[varPicker.baseMaCau]?.[varPicker.v] ? [ch.etMaDe[varPicker.baseMaCau][varPicker.v]!] : []}
           disabled={[...usedMoiDe()]} onClose={() => setVarPicker(null)}
