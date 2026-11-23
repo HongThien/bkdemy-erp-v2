@@ -371,6 +371,10 @@
 - Giả thiết đề cho thì đánh dấu (trung điểm, góc vuông, đoạn bằng nhau, số đo) ngay từ hình bài.
 - **Hình tổng quát không "đặc biệt thêm"**: tam giác thường vẽ LỆCH hẳn (không cân / gần cân), tam giác vuông không vuông cân, hình bình hành không thành chữ nhật / thoi; "AB < AC" vẽ lệch rõ.
 - **Tam giác ABC vuông tại A ⇒ A góc dưới trái, AB THẲNG ĐỨNG (B trên A), AC NẰM NGANG (C bên phải A)** [23/10 · Thùy]. Áp mọi hình; thắng luật giữ hướng ảnh cũ.
+- **QUY CHUẨN HƯỚNG TAM GIÁC khi VẼ hình (mới hoặc vẽ lại) — áp MỌI KHỐI (Thùy 23/11: "cho tất cả các lớp"):**
+  - **Tam giác nhọn:** **A ở trên, BC nằm ngang.**
+  - **Tam giác vuông:** **AC nằm ngang, B ở trên** (khớp luật vuông tại A ngay trên: A góc dưới trái, AB đứng).
+  - Hình gốc ổn giữ ảnh gốc theo §A8 (không vẽ lại chỉ để xoay); quy chuẩn này dùng khi dựng hình mới / vẽ lại. Đề không có tam giác ⇒ không áp. Máy vẽ (`ve_hinh_lib.mjs`, `hinh-toado.mjs`) và brief vẽ hình phải đặt toạ độ khung ban đầu theo đúng hướng này.
 - Câu có hình trong nguồn: giữ bố cục, tên điểm, vị trí tương đối như ảnh gốc (trừ luật vuông tại A).
 - Gạch bằng nhau không đặt trên đoạn CON (gạch "AB = AC" rơi lên AD với D ∈ AC ⇒ ngụ ý sai) ⇒ đổi sang đánh dấu hai góc đáy [02/11]. Số đo đặt ngoài cạnh nó thuộc về, không gần đoạn khác.
 
