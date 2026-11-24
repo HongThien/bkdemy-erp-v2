@@ -100,10 +100,16 @@ Lý do công bố lại:`)
       <div className="flex flex-wrap items-center gap-2">
         {dau}
         <div className="flex items-center overflow-hidden rounded-md ring-1 ring-slate-200">
-          <button onClick={() => setTuan(congNgay(tuan, -7))} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50" aria-label="Tuần trước">‹</button>
+          <button onClick={() => setTuan(congNgay(tuan, -7))} className="h-8 bg-white px-2.5 text-[15px] font-bold !text-slate-800 hover:bg-slate-50" aria-label="Tuần trước" title="Tuần trước">‹</button>
           <span className="h-8 bg-white px-3 text-[13px] font-semibold leading-8 text-slate-800">Tuần {ngayNgan(tuan)} – {ngayNgan(congNgay(tuan, 6))}{tuan === nay ? ' (đang chạy)' : ''}</span>
-          <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[13px] text-slate-600 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau">›</button>
+          <button onClick={() => setTuan(congNgay(tuan, 7))} disabled={tuan >= nay} className="h-8 bg-white px-2.5 text-[15px] font-bold !text-slate-800 hover:bg-slate-50 disabled:opacity-30" aria-label="Tuần sau" title="Tuần sau">›</button>
         </div>
+        {/* Thùy 24/11 "qua tuần mà trưởng khối chưa nhìn thấy số chốt mục tiêu tuần": tuần đã qua = SỔ KẾT QUẢ máy chốt 00:00 thứ Hai (mtt_chot) —
+            ghi rõ là bản chốt; đang ở tuần này thì có lối thẳng sang kết quả tuần trước */}
+        {tuan < nay
+          ? <span className="rounded-md bg-slate-800 px-2 py-1 text-[12px] font-semibold text-white">📌 Kết quả tuần — bản chốt 00:00 thứ Hai {ngayNgan(congNgay(tuan, 7))}</span>
+          : <button onClick={() => setTuan(congNgay(nay, -7))} className="h-7 rounded-md bg-slate-800 px-2.5 text-[12px] font-semibold text-white hover:bg-slate-700"
+              title="Sổ kết quả tuần trước — máy chốt lúc 00:00 thứ Hai, không sửa được">📌 Kết quả tuần trước ({ngayNgan(congNgay(nay, -7))} – {ngayNgan(congNgay(nay, -1))})</button>}
         {data && (xemLop || xemHs) && <>
           <button onClick={() => { setXemLop(null); setXemHs(null) }} className="no-nut-ve h-7 rounded-md bg-indigo-600 px-2.5 text-[12px] font-semibold text-white hover:bg-indigo-700" title="Về bảng tổng quan khối (công bố từng lớp, số cả khối)">← Tổng quan khối</button>
           {data.lop.map((l) => <button key={l.lop_id} onClick={() => { setXemLop({ id: l.lop_id, ten: l.ten_lop }); setXemHs(null) }}
@@ -128,7 +134,8 @@ Lý do công bố lại:`)
                 </button>
               : <span className="text-[12px] text-slate-400">Tuần đã qua — không công bố</span>
         })()}
-        {data?.tinh_at && <span className="text-[11.5px] text-slate-400" title={tuan === nay ? 'Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp). Phần 2 (bổ trợ) tự đồng bộ theo lượt chốt bổ trợ mới nhất, kể cả sau khi đã công bố.' : undefined}>số lúc {gioPhut(data.tinh_at)} ⓘ</span>}
+        {data?.tinh_at && tuan === nay && <span className="text-[11.5px] text-slate-400" title="Lớp chưa công bố thì học sinh và phụ huynh chưa thấy tờ tuần này (nhân sự xem được bản nháp). Phần 2 (bổ trợ) tự đồng bộ theo lượt chốt bổ trợ mới nhất, kể cả sau khi đã công bố.">số lúc {gioPhut(data.tinh_at)} ⓘ</span>}
+        {data && tuan < nay && <span className="text-[11.5px] text-slate-400" title="Chỉ lớp ĐÃ CÔNG BỐ tuần đó mới vào sổ kết quả. Lớp chưa công bố hiện bản nháp cuối tuần (không vào xếp hạng).">lớp chưa công bố = bản nháp ⓘ</span>}
         <button onClick={() => setMoTop(true)} className="ml-auto h-7 rounded-md bg-white px-2.5 text-[12px] font-semibold text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50" title={`Top 20 toàn trung tâm · ${mon}`}>🏆 Top 20</button>
       </div>
       {tb && <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800">{tb}</div>}
