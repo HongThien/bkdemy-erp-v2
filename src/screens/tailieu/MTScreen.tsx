@@ -41,7 +41,7 @@ import { useIsMobile } from '../../hooks/useIsMobile'
 import BoChonNhom from './bdm/BoChonNhom'
 import ChonCauBdm from './bdm/ChonCauBdm'
 import { ChonBaiHoc } from './bdm/ChuyenDeHinhBuilder'
-import { hhCayChon, hhGoiYBai } from '../../lib/chuyenDeHinh'
+import { hhCayChon, hhGoiYBai, hhYMeta } from '../../lib/chuyenDeHinh'
 import { cayChon, goiYDangBai, etViTri, etMaDe, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
 import { MON_CO_KHO } from '../../lib/mon'
 import { bdmCuaMon } from '../../lib/kho/banDoMoi'
@@ -545,7 +545,26 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     if (Object.keys(hinhByMa).length) nc.hinhByMa = hinhByMa; else delete nc.hinhByMa
     chRef.current = nc; setCh(nc); await updateTaiLieu(id, { cau_hinh: nc })
   }
-  async function luuPhan(phanId: string, rows: Row[]) {
+  // Hình–Học bài nhiều ý: các ý CÙNG BÀI (bai_y) phải đứng LIỀN NHAU, theo nhãn a → b → c, tại chỗ ý đầu tiên của bài — để phiếu in
+  // lời dẫn + hình 1 lần (MTPrintView.yCungBai), không tách thành từng bài riêng. Chỉ đụng hàng nhánh hinh_hoc; câu thường giữ nguyên chỗ.
+  async function gomYCungBai(rows: Row[]): Promise<Row[]> {
+    const mas = rows.filter((r) => r.nhanh === 'hinh_hoc' && r.maCau).map((r) => r.maCau!)
+    if (mas.length < 2) return rows
+    const meta = await hhYMeta(mas).catch(() => null)
+    if (!meta || ![...meta.values()].some((m) => m.bai_y)) return rows
+    const neo = new Map<string, number>()
+    return rows
+      .map((r, i) => {
+        const m = r.nhanh === 'hinh_hoc' && r.maCau ? meta.get(r.maCau) : undefined
+        const b = m?.bai_y ?? null
+        if (b && !neo.has(b)) neo.set(b, i)
+        return { r, i, neo: b ? neo.get(b)! : i, nhan: b ? (m?.nhan_y ?? '') : '' }
+      })
+      .sort((a, b) => a.neo - b.neo || a.nhan.localeCompare(b.nhan) || a.i - b.i)
+      .map((e) => e.r)
+  }
+  async function luuPhan(phanId: string, rows0: Row[]) {
+    const rows = await gomYCungBai(rows0)
     setRowsByPhan((rb) => ({ ...rb, [phanId]: rows }))
     const maCaus = rows.map((r) => r.maCau).filter(Boolean) as string[]
     await setCauOfPhan(phanId, maCaus)
@@ -1233,6 +1252,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             {c && (
                               <div className="mt-1 flex flex-wrap items-center gap-1.5">
                                 <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
+                                {c.bai_y && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-800" title="Ý của bài nhiều ý — các ý cùng bài đứng liền nhau và in chung lời dẫn + hình">ý {c.nhan_y} · {c.bai_y}</span>}
                                 {pkHang ? (
                                   pkHang.form === 'trac_nghiem' && !coPhuongAn(c.ma_cau)
                                     ? <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-semibold text-rose-700" title="Phần trắc nghiệm của khuôn THPT cần câu có 4 phương án">⚠ câu không có phương án — bấm ↻ Đổi</span>

@@ -20,6 +20,7 @@ import { pickCuaHinhRow } from '../../lib/mt'
 type HinhMucs = Record<string, (MucIn | null)[]> // ma hàng → [gốc, đề 2, đề 3]
 import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
+import { yCungBai } from './ETPrintView'
 import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
@@ -334,7 +335,37 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
             return mtRunsOf(seg.caus, mapCau, ver, gv).map((run, ri) => (
               run.tln
                 ? <TLNTable key={`${si}-${ri}`} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />
-                : <CauFlow key={`${si}-${ri}`} items={run.items.map((c) => ({ key: c.ma_cau, cols: ver.ch.colByCau?.[c.ma_cau] ?? 1, ...mtCauParts(next(), mapCau(c, ver.v), gv, ver.ch) }))} />
+                : <CauFlow key={`${si}-${ri}`} items={(() => {
+                    // Hình–Học bài nhiều ý: ≥2 ý CÙNG BÀI liền nhau ⇒ lời dẫn + hình in 1 lần (dải số 'Câu n – m.'), từng ý chỉ in 'a) …'.
+                    // Số câu vẫn 1 ý = 1 câu (bộ đếm no) ⇒ khớp bảng chấm. Chỉ gom ý dạng tự luận; ý trắc nghiệm / Đúng-Sai in như câu thường.
+                    const ms = run.items.map((c) => mapCau(c, ver.v))
+                    const gomDuoc = (m: CauHoi) => !(m.menh_de && m.menh_de.length) && etFormOf(m, ver.ch) === 'tu_luan'
+                    return ms.flatMap((c, i) => {
+                      const n = next()
+                      const cols = ver.ch.colByCau?.[run.items[i].ma_cau] ?? 1
+                      const nhom = gomDuoc(c) ? yCungBai(ms, i) : null
+                      if (!nhom || !ms.slice(nhom.dau, nhom.cuoi + 1).every(gomDuoc)) return [{ key: run.items[i].ma_cau, cols, ...mtCauParts(n, c, gv, ver.ch) }]
+                      const dau = ms[nhom.dau]
+                      const ra: { key: string; cols: number; content: React.ReactNode; lines: number; hasImg: boolean }[] = []
+                      if (i === nhom.dau) ra.push({
+                        key: `${c.bai_y}:dan`, cols: 1, lines: 0, hasImg: !!dau.anh_de,
+                        content: (<>
+                          <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n} – ${n + nhom.cuoi - nhom.dau}.</span> `}>{nhom.loiDan}</MathText></div>
+                          {dau.anh_de && <img src={dau.anh_de} alt="" className="pv-img" />}
+                        </>),
+                      })
+                      ra.push({
+                        key: run.items[i].ma_cau, cols, hasImg: false,
+                        content: (<>
+                          {c.da_biet?.trim() && <div className="pv-math"><i><MathText>{c.da_biet.trim()}</MathText></i></div>}
+                          <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${c.nhan_y})</span> `}>{c.cau_hoi_y ?? ''}</MathText></div>
+                          {gv && <GvAnswer c={c} />}
+                        </>),
+                        lines: gv ? 0 : (ver.ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES),
+                      })
+                      return ra
+                    })
+                  })()} />
             ))
           })}
         </section>

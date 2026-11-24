@@ -82500,3 +82500,8 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 
 ## 24/11 — Builder: nới giới hạn số dòng trả lời mỗi câu từ 50 lên 100
 - Làm: mọi ô "số dòng" (ET/MT/BTVN/BT/giáo trình/chuyên đề Hình/kho đề thi/ôn tập) max 50 → 100 (cả ô gõ lẫn hàm kẹp). Không đụng ô "số câu mỗi dạng" (vẫn 50).
+
+## 24/11 — MT Hình · Học: bài nhiều ý không còn bị tách thành từng bài riêng
+- Lỗi (Thùy): MT lấy bài từ kho Hình–Học ⇒ mỗi ý thành 1 hàng, in ra mỗi ý một bài (lời dẫn + hình lặp 3 lần). ET đã gom từ 09/11 (sortETCaus + yCungBai), MT thì không.
+- Sửa: MTScreen.luuPhan gom ý CÙNG BÀI liền nhau theo nhãn a→b→c (gomYCungBai, qua hhYMeta); MTPrintView dùng yCungBai của ETPrintView: lời dẫn + hình in 1 lần ("Câu n – m."), từng ý chỉ "a) …"; số câu vẫn 1 ý = 1 câu. Chỉ gom ý dạng tự luận. Hàng hiện nhãn "ý a · HHB…".
+- Chưa kiểm trên app thật (cần đăng nhập). MT đã lưu mà các ý không liền nhau thì phải lưu lại 1 lần (đổi/chọn câu) mới được xếp liền.

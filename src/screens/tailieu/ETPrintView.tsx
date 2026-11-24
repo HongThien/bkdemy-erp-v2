@@ -436,7 +436,7 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
 
 // Khúc ≥2 ý CÙNG BÀI (bai_y) liền nhau chứa vị trí i ⇒ {dau, cuoi, loiDan}; không thì null (in câu như thường).
 // Lời dẫn = noi_dung bỏ đuôi "\n[đã biết\n]câu hỏi ý" — đúng khuôn trigger _trg_hh_y_ghep ghép; lệch khuôn ⇒ không gom (an toàn).
-function yCungBai(items: CauHoi[], i: number): { dau: number; cuoi: number; loiDan: string } | null {
+export function yCungBai(items: CauHoi[], i: number): { dau: number; cuoi: number; loiDan: string } | null {
   const b = items[i].bai_y
   if (!b) return null
   let dau = i, cuoi = i
