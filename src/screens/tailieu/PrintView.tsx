@@ -8,7 +8,7 @@ import { listLop } from '../../lib/nhansu'
 import { hsCoMatCuaBuoi, hsDangHocCuaLop, ngayBuoiHopLeCuaLop } from '../../lib/gami'
 import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
-import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../kho/ui'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader, loiGiaiBanIn } from '../kho/ui'
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
 import { uploadKhoFile, khucY, deCuaY } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
@@ -1012,8 +1012,8 @@ export function GvAnswer({ c }: { c: CauHoi }) {
     <div className="pv-loigiai">
       {c.dap_an && !md && <div><b>Đáp án:</b> <MathText>{c.dap_an}</MathText></div>}
       {md && mdGiai.length > 0 && md.map((m, i) => m.loi_giai?.trim()
-        ? <div key={i}><b>{String.fromCharCode(97 + i)})</b> <MathText>{m.loi_giai}</MathText></div> : null)}
-      {c.loi_giai && <div><b>Lời giải:</b> <MathText>{c.loi_giai}</MathText></div>}
+        ? <div key={i}><b>{String.fromCharCode(97 + i)})</b> <MathText>{loiGiaiBanIn(m.loi_giai)}</MathText></div> : null)}
+      {c.loi_giai && <div><b>Lời giải:</b> <MathText>{loiGiaiBanIn(c.loi_giai)}</MathText></div>}
       {c.anh_dap_an && <img src={c.anh_dap_an} alt="" className="pv-img" />}
     </div>
   )

@@ -248,6 +248,16 @@ function html2Phan(raw: string): string | null {
     + `<div class="lg-tieude">Phần 1. Hướng dẫn</div><div class="lg-p1">${t.p1_html}</div>`
     + `<div class="lg-tieude lg-tieude2">Phần 2. Trình bày</div>` + t.p2_html
 }
+/** Lời giải cho BẢN IN: bỏ "Phần 1. Hướng dẫn" (sơ đồ hướng làm — chỉ để xem trên màn), giữ phần dẫn trước + "Phần 2. Trình bày" (Thùy 24/11:
+ *  "bản pdf in chỉ có đáp án, không ghi sơ đồ hướng làm"). Chuỗi không có 2 phần ⇒ trả nguyên. */
+export function loiGiaiBanIn(raw: string | null | undefined): string {
+  const text = raw ?? ''
+  const i1 = text.search(P1_RE), i2 = text.search(P2_RE)
+  if (i1 < 0 || i2 < i1) return text
+  const truoc = text.slice(0, i1).trim()
+  const p2 = text.slice(i2).replace(P2_RE, '').replace(/^\s*\n/, '')
+  return (truoc ? truoc + '\n' : '') + p2
+}
 /** Tách lời giải 2 phần thành 3 cụm HTML đã render (truoc / p1 Hướng dẫn / p2 Lời giải). */
 export function tach2Phan(raw: unknown): { truoc_html: string; p1_html: string; p2_html: string } | null {
   const text = epChuoi(raw)

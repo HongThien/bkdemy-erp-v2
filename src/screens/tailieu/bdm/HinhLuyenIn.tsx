@@ -2,7 +2,7 @@
 // giáo trình Hình bản đồ mới (PrintView, mig 202610271757). Như màn duyệt Hình–Luyện: đề = giả thiết chung (de_bai là bản gốc
 // trọn — in nữa thì lặp); không có giả thiết chung + 1 ý = "bài một ý": đề nằm trọn trong ý, hình = hình của ý (không có thì hình bài).
 // Số "Bài N." là số HIỂN THỊ (người gọi đếm), không lưu.
-import { MathText } from '../../kho/ui'
+import { MathText, loiGiaiBanIn } from '../../kho/ui'
 import type { CdhBai } from '../../../lib/chuyenDeHinh'
 import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { AnhDe, DeVaHinh, WriteLines } from '../PrintView'
@@ -30,7 +30,7 @@ export function BaiHinhIn({ b, no, gv, nguon, lines = 0, cheDo = 'hien' }: { b: 
           {gv && (y.dap_an || y.loi_giai || y.anh_loi_giai) && (
             <div className="pv-loigiai">
               {y.dap_an && <div className="pv-math"><MathText prefix="<b>Đáp số:</b> ">{y.dap_an}</MathText></div>}
-              {y.loi_giai && <div className="pv-math"><MathText>{y.loi_giai}</MathText></div>}
+              {y.loi_giai && <div className="pv-math"><MathText>{loiGiaiBanIn(y.loi_giai)}</MathText></div>}
               {y.anh_loi_giai && <img className="pv-img" src={y.anh_loi_giai} alt="" />}
             </div>
           )}

@@ -13,7 +13,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader } from '../ui'
+import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader, loiGiaiBanIn } from '../ui'
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../../lib/lythuyetBlocks'
 import { type CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
 import { CHROME_CSS, buildPagedCss, gtPageCss, printWithFilename, safeFileName, GT_BK_CSS } from '../../tailieu/PrintView'
@@ -402,11 +402,11 @@ export function MucsBlock({ mucs, gv, moHinhLyThuyet, batDau = 1, cauTu }: { muc
                     {(y.buoc ?? []).map((b, bi) => (
                       <div key={bi} className="hp-buoc">
                         <b>Bước {bi + 1} — {b.phatBieu}: </b>
-                        <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${b.loiGiai ?? '—'}` : (b.loiGiai ?? '—')}</MathText>
+                        <MathText>{b.giaThietPhu ? `${b.giaThietPhu}. ${loiGiaiBanIn(b.loiGiai) || '—'}` : (loiGiaiBanIn(b.loiGiai) || '—')}</MathText>
                         {b.anh && <div className="hp-fig-r"><img src={b.anh} alt="" /></div>}
                       </div>
                     ))}
-                    <MathText>{y.loiGiai ?? '—'}</MathText>
+                    <MathText>{loiGiaiBanIn(y.loiGiai) || '—'}</MathText>
                     {/* Chỉ hiện hình ở KHU GIẢI khi nó là hình RIÊNG của lời giải (khác hình đề đã hiện
                         ở trên) — Thùy 17/08: "bài nào ko có hình riêng thì đáp án ko cần hiện hình nữa,
                         dùng hình đề bài là được". Nhiều nơi build YIn fallback y.anh = anh của đề khi
