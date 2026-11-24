@@ -77,7 +77,7 @@ export function TrangInLyThuyet({ bai, onDong }: { bai: LyThuyetSauGio; onDong: 
   // 23/11: portal dưới <body> + display:none phần còn lại (xem CSS_IN ở PhieuGiayYeuTA) — lồng trong modal ca thì in chỉ ra trang 1.
   return createPortal(
     <div className="bk-print fixed inset-0 z-[100] overflow-auto bg-white">
-      <style>{`@media print { body > *:not(.bk-print) { display: none !important; } .bk-print { position: static !important; inset: auto !important; width: 100% !important; height: auto !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-dang { break-inside: avoid-page; } }${LT_CORE_CSS}`}</style>
+      <style>{`@media print { body > *:not(.bk-print) { display: none !important; } .bk-print { position: static !important; inset: auto !important; width: 100% !important; height: auto !important; overflow: visible !important; } .bk-no-print { display: none !important; } .bk-dang h2 { break-after: avoid; } }${LT_CORE_CSS}`}</style>
       <div className="bk-no-print sticky top-0 z-10 flex items-center gap-2 border-b border-slate-200 bg-white/95 px-4 py-2">
         <span className="text-[13px] font-semibold text-slate-700">Xem trước lý thuyết — {bai.hs.ho_ten} · {bai.dang.length} dạng</span>
         <button onClick={() => window.print()} className="ml-auto rounded-lg bg-indigo-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-indigo-700">🖨 In</button>

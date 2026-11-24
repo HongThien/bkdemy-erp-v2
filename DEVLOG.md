@@ -82468,3 +82468,10 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - **Đối chiếu DB trước khi ghi (chỉ đọc, 23/11 21:59):** 3 dòng bộ điều phối `chup_dau_tuan` (5 phút, 0–16 h + 22–23 h, 80 s; chưa chạy lượt nào) · `bctk_so_tuan` · `bctk_hien_tai` · `dang_yeu_chup_xong` có 09/11 + 16/11 · `bctk_so_tuan_o` chỉ có 09/11 · cron `tu-dong-sang-t2` vẫn active · CHECK kênh + 5 trigger của `ai_luot_dung` · `ai_cau_hinh` 26.000 đ, model mặc định `claude-opus-5-5`.
 - **LỆCH tìm được, chưa xử lý:** sổ `ai_luot_dung` kênh `claude_code` có 5.207 dòng, ngày từ 07/07/2026 → 23/11; mục DEVLOG 23/11 tối ghi "chỉ từ 01/11" và 1.598 nhóm (máy công ty). Chưa rõ nguồn 3.600 dòng thêm và các dòng trước 01/11. Đã ghi ở spec QLCL §5.1 + HANDOFF ②.
 - **HANDOFF ②:** thay bản chi tiết 23/11 bằng 4 dòng "đang chờ" trỏ sang spec; bản gốc chép vào `HANDOFF-ARCHIVE.md` (mục RÚT lần 2). HANDOFF còn 32KB / 125 dòng.
+
+## 24/11 — Bổ trợ sau giờ: in lý thuyết bị TRẮNG trang đầu (Thùy 24/11)
+- **Triệu chứng:** sau bản sửa 23/11 (portal), 📘 lý thuyết in ra ĐỦ trang nhưng trang 1 chỉ có dòng tiêu đề + họ tên, phần còn lại trắng; dạng 1 bắt đầu ở trang 2.
+- **Nguyên nhân:** mỗi dạng bọc `<section class="bk-dang">` có `break-inside: avoid-page`. Dạng 1 dài hơn phần còn lại của trang 1 ⇒ Chrome đẩy CẢ section sang trang 2 (dù nó dài hơn 1 trang, vẫn phải vỡ tiếp). Các khung lý thuyết bên trong (`LT_CORE_CSS`) đã tự có `break-inside: avoid` nên không cần ép cả section.
+- **Sửa (`src/screens/ta/SauGioCa.tsx`, `TrangInLyThuyet`):** bỏ `.bk-dang{break-inside:avoid-page}`, thay bằng `.bk-dang h2{break-after:avoid}` (tiêu đề dạng không bị bỏ mồ côi cuối trang).
+- **Đo (PDF thật, Chrome headless, 6 dạng Đại 12 thật từ DB, KaTeX CSS nạp):** cũ — trang 1 chỉ 23 chữ (tiêu đề), 19 trang · mới — trang 1 đầy (tiêu đề + dạng 1 + khung), 16 trang.
+- **Bài học:** `break-inside: avoid` đặt lên một khối có thể dài hơn trang ⇒ để trống trang trước nó. Chỉ đặt avoid lên khung nhỏ (thẻ, câu), không đặt lên cả mục. Khi dựng harness in nhớ nạp `katex.min.css`, không thì công thức xếp dọc, chiều cao sai.
