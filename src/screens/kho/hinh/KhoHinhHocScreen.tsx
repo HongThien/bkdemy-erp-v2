@@ -21,6 +21,7 @@ import KhoTrenLopModal from '../KhoTrenLopModal'
 import DangHub from '../DangHub'
 import { LyThuyetModal } from '../BanDo'
 import { Code, inp, MathText } from '../ui'
+import { DoKhoChon } from '../DoKhoChon'
 
 // Config MINIMAL cho DangHub — chỉ đủ để phần "Kho câu hỏi" chạy đúng bảng hinh_hoc_cau_hoi.
 // list/count/create/updateLeaf/deleteLeaf KHÔNG được DangHub gọi (chỉ BanDo dùng) — stub trả rỗng.
@@ -240,14 +241,6 @@ export default function KhoHinhHocScreen({ khoi, chuDeId, tenChuDe, onMoKho, kho
 
 // ⭐ 27/09 (CEO): độ khó Bài (1-5) thay bậc S/A/B/C — hình không có "dạng" nên đánh trực tiếp trên Bài.
 //   Ramp màu ấm (emerald → rose) đồng bộ với MUCDO_TONE bên Đại. Bấm chip = xoay 1→2→3→4→5→null→1.
-const MUCDO_TONE_HH: Record<number | string, string> = {
-  1: 'bg-emerald-500 text-white',
-  2: 'bg-lime-500 text-white',
-  3: 'bg-amber-500 text-white',
-  4: 'bg-orange-500 text-white',
-  5: 'bg-rose-500 text-white',
-  none: 'bg-slate-100 text-slate-400 hover:bg-slate-200',
-}
 
 // 1 bài học = chuyên đề = nhóm = dạng bài cùng tên (Thùy 28/10) ⇒ CHỈ vẽ tầng 4 (Thùy 05/11: "tầng 2-3-4 bản chất giống nhau").
 // Nút đi theo cặp như khung dạng bài Đại (ChiTiet ở BanDoMoi.tsx): 📖 Lý thuyết | 📝 Ví dụ · 🏫 Kho trên lớp | 📚 Kho bài tập.
@@ -258,7 +251,6 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, soLop, onOpen, 
   onMucDo: (v: number | null) => void
 }) {
   const md = bai.muc_do
-  const nextMd = md == null ? 1 : md >= 5 ? null : md + 1
   const moTa = bai.mo_ta?.trim() ?? ''
   const lop = soLop ? soLop.giang + soLop.luyen : 0
   const cham = (co: boolean, mau: string, ten: string) => <span title={co ? `Đã có ${ten}` : `Chưa có ${ten}`} className={`h-2 w-2 rounded-full ${co ? mau : 'bg-white/35'}`} />
@@ -276,8 +268,7 @@ function BaiCard({ bai, thuTuHienThi, soCau, coLyThuyet, coViDu, soLop, onOpen, 
         <span className="flex shrink-0 gap-0.5">
           {cham(!!moTa, 'bg-emerald-300', 'mô tả')}{cham(coLyThuyet, 'bg-sky-300', 'lý thuyết')}{cham(coViDu, 'bg-fuchsia-300', 'ví dụ')}{cham(lop > 0, 'bg-teal-300', 'kho trên lớp')}
         </span>
-        <button onClick={() => onMucDo(nextMd)} title={md == null ? 'Chưa gán độ khó — bấm để đặt' : `Độ khó ${md}. Bấm xoay 1→2→3→4→5→bỏ.`}
-          className={`h-5 min-w-5 shrink-0 rounded px-1 text-[11px] font-bold ${MUCDO_TONE_HH[md ?? 'none']}`}>{md ?? '?'}</button>
+        <DoKhoChon muc={md} onMuc={onMucDo} />
         <button onClick={onToggleDuyet}
           className={`shrink-0 rounded px-2 py-0.5 text-[11px] font-semibold ${bai.da_duyet ? 'bg-white text-emerald-700 hover:bg-emerald-50' : 'bg-white/90 text-rose-600 hover:bg-white'}`}>
           {bai.da_duyet ? '✓ Đã duyệt' : '○ Chưa duyệt'}
