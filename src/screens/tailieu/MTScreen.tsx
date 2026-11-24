@@ -27,7 +27,7 @@ import type { MucIn } from '../kho/hinh/HinhPrintView'
 import { sigHinh, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, setFormInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
-import { listCauByDang, listLopBac, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
+import { listCauByDang, listLopBac, tachLoiDanY, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
 import { KhoPicker } from './TaiLieuBuilder'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -1222,8 +1222,13 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       const formOpts = ET_FORMS.filter((f) => f.v !== 'trac_nghiem' || !!(c?.lua_chon && c.lua_chon.length) || (c ? !!formTnByMa[c.ma_cau] : false))
                       const dbInfo = r.nhanh === 'bdm' && r.maDang ? dbs.get(r.maDang) ?? null : null
                       const pkHang = vaiCua(p.id); const laDs = p.id === dsPid
+                      // Bài nhiều ý (Hình–Học): các hàng ý CÙNG BÀI liền nhau dính thành 1 khối (viền vàng, lời dẫn hiện 1 lần ở hàng đầu).
+                      const cungBai = (a: typeof c, b: typeof c) => !!a?.bai_y && a.bai_y === b?.bai_y
+                      const yTruoc = cungBai(c, i > 0 && rows[i - 1].maCau ? cau[rows[i - 1].maCau!] : null)
+                      const ySau = cungBai(c, i + 1 < rows.length && rows[i + 1].maCau ? cau[rows[i + 1].maCau!] : null)
+                      const khoiY = yTruoc || ySau
                       return (
-                        <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${vach(p.id, i)}`}>
+                        <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${ySau ? ' rounded-b-none' : ''}${yTruoc ? ' -mt-2 rounded-t-none border-t-slate-100' : ''}${khoiY ? ' border-l-4 border-l-amber-300' : ''}${vach(p.id, i)}`}>
                           {/* Điện thoại: wrap + order — dòng 1 = số · dạng (giãn) · ✕; dòng 2 = đề câu full bề ngang; dòng 3 = dòng kẻ ·
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
                           <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
@@ -1246,7 +1251,11 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             ) : <span className="text-indigo-500">+ chọn dạng…</span>}
                           </button>
                           <div className="min-w-0 flex-1 pt-1 max-md:order-2 max-md:basis-full max-md:pt-0.5">
-                            {c ? <div className="truncate text-[13px] text-slate-700 max-md:line-clamp-4 max-md:whitespace-normal"><MathText>{c.noi_dung}</MathText></div>
+                            {c ? <div className="truncate text-[13px] text-slate-700 max-md:line-clamp-4 max-md:whitespace-normal">
+                              {khoiY && c.cau_hoi_y ? <>
+                                {!yTruoc && <div className="truncate text-slate-500"><MathText>{tachLoiDanY(c) ?? ''}</MathText></div>}
+                                <div className="truncate"><b className="text-violet-700">{c.nhan_y}) </b><MathText>{c.cau_hoi_y}</MathText></div>
+                              </> : <MathText>{c.noi_dung}</MathText>}</div>
                               : r.maDang ? <span className="text-[12px] italic text-slate-400">chưa có câu</span>
                               : <span className="text-[12px] italic text-slate-300">chọn dạng để hệ gợi ý câu</span>}
                             {c && (

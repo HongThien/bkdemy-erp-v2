@@ -82505,3 +82505,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Lỗi (Thùy): MT lấy bài từ kho Hình–Học ⇒ mỗi ý thành 1 hàng, in ra mỗi ý một bài (lời dẫn + hình lặp 3 lần). ET đã gom từ 09/11 (sortETCaus + yCungBai), MT thì không.
 - Sửa: MTScreen.luuPhan gom ý CÙNG BÀI liền nhau theo nhãn a→b→c (gomYCungBai, qua hhYMeta); MTPrintView dùng yCungBai của ETPrintView: lời dẫn + hình in 1 lần ("Câu n – m."), từng ý chỉ "a) …"; số câu vẫn 1 ý = 1 câu. Chỉ gom ý dạng tự luận. Hàng hiện nhãn "ý a · HHB…".
 - Chưa kiểm trên app thật (cần đăng nhập). MT đã lưu mà các ý không liền nhau thì phải lưu lại 1 lần (đổi/chọn câu) mới được xếp liền.
+
+- 24/11 (tiếp): kiểm bằng dữ liệu thật "Đề khảo sát tháng 11 - Khối 8" (3 ý HHB001040 đang lưu a,c,b): bản in mới ra "Câu 1 – 3." + lời dẫn 1 lần + a) c) b) — gom đúng. Còn lại là builder vẫn hiện 3 khung ⇒ sửa: hàng ý cùng bài dính thành 1 khối (viền vàng, lời dẫn hiện 1 lần ở hàng đầu). MT lưu từ bản cũ giữ thứ tự a,c,b tới lần lưu kế (đổi/chọn câu).

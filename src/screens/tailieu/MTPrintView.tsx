@@ -254,7 +254,7 @@ function mtRunsOf(caus: CauHoi[], mapCau: (c: CauHoi, v: number | null) => CauHo
 // 3 MÃ ĐỀ (như ET): đề gốc = câu các phần; đề 2/3 = thay từng câu bằng ma_cau trong etMaDe (neo theo CÂU
 // GỐC, GIỮ NGUYÊN cấu trúc phần + thứ tự). Chưa đủ mã đề (etMaDe thiếu/ô trống) → in 1 đề như cũ.
 // perHS: mỗi HS 1 phiếu ĐÚNG mã đề đã gán (thay vì luôn in đủ 3 mã đề liên tiếp) + tên/lớp in sẵn.
-function MTDoc({ full, gv, varCau, hinhMucs, perHS, lopTen }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; hinhMucs: HinhMucs; perHS?: { id: string; ho_ten: string; maDe: number }[]; lopTen?: string }) {
+export function MTDoc({ full, gv, varCau, hinhMucs, perHS, lopTen }: { full: TaiLieuFull; gv: boolean; varCau: Record<string, CauHoi>; hinhMucs: HinhMucs; perHS?: { id: string; ho_ten: string; maDe: number }[]; lopTen?: string }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const phans = full.phans.filter((p) => p.loai_phan === 'custom')
   const base = phans.flatMap((p) => p.caus)
