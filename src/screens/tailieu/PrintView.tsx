@@ -46,6 +46,7 @@ export function printWithFilename(filename: string) {
 // bằng trang SAU nó có mở đầu phiếu (`.pv-bkh`) mới hay không. Trang trắng cuối cùng (không có trang sau
 // để so) luôn GIỮ. Dùng chung ET + MT (cùng `.pv-bkh`/`.pv-de-recto`/paged.js — cùng lớp bug).
 export function pruneGhostBlankPages(container: HTMLElement) {
+  let daXoa = false
   const pages = Array.from(container.querySelectorAll<HTMLElement>('.pagedjs_page'))
   for (let i = 0; i < pages.length; i++) {
     const p = pages[i]
@@ -58,7 +59,48 @@ export function pruneGhostBlankPages(container: HTMLElement) {
     if (!next) continue                                  // trắng CUỐI CÙNG — đệm hợp lệ (canh in 2 mặt), giữ
     if (next.querySelector('.pv-bkh')) continue          // ngay trước khối mới — đệm hợp lệ, giữ
     p.remove()                                            // còn lại = paged.js dựng dở giữa chừng — xoá
+    daXoa = true
   }
+  // footer "N / M" lấy M từ biến paged.js đặt lúc dựng (đã tính cả trang ma) ⇒ cập nhật lại sau khi xoá
+  if (daXoa) container.querySelector<HTMLElement>('.pagedjs_pages')?.style.setProperty('--pagedjs-page-count', String(container.querySelectorAll('.pagedjs_page').length))
+}
+// ⭐ 24/11 (Thùy: "GT 6S1 còn đầy chỗ trống mà đã xuống dòng" · "cái nào mà chả lỗi") — TIÊU ĐỀ MỒ CÔI + TRANG TRẮNG GIỮA TÀI LIỆU.
+// Dựng lại bằng dữ liệu thật 6S1 trong Chrome (xem DEVLOG 24/11): tắt lý thuyết/ví dụ ⇒ thân card mở đầu thẳng bằng khung câu (lồng 2 tầng)
+// nên break-after:avoid của tiêu đề Nhóm / đầu card bị paged.js BỎ QUA ⇒ tiêu đề kẹt cuối trang, nội dung sang trang sau (14/36 trang ở
+// giáo trình 6S1 tắt LT+VD); giáo trình đủ LT/VD thì có 6 trang HOÀN TOÀN TRẮNG giữa tài liệu. Thử avoid trên card / trên section: TỆ HƠN
+// (thêm trang, hở ~50% trang, tiêu đề vẫn kẹt). Cách bền: dựng → tìm tiêu đề đứng CUỐI trang → ép NGẮT TRANG trước nó (class pv-ngat) → dựng lại.
+const TIEU_DE_SEL = '.pv-h-lt, .gtbk-card-head'
+// ⚠ paged.js đôi khi NHÂN ĐÔI tiêu đề/đầu card (đo 6S1: bản dựng 128 tiêu đề, nguồn 122) ⇒ KHÔNG định danh theo thứ tự trong bản dựng;
+// gắn khoá data-pvk vào nguồn TRƯỚC khi dựng, bản sao giữ nguyên khoá.
+export function danhSoTieuDe(html: string): string {
+  const root = document.createElement('div'); root.innerHTML = html
+  root.querySelectorAll<HTMLElement>(TIEU_DE_SEL).forEach((h, k) => h.setAttribute('data-pvk', String(k)))
+  return root.innerHTML
+}
+/** Khoá (data-pvk) của các tiêu đề Nhóm / đầu card mà phần tử chữ thấp nhất trang là CHÍNH nó (mồ côi cuối trang). */
+export function timTieuDeMoCoi(container: HTMLElement): number[] {
+  const out = new Set<number>()
+  container.querySelectorAll<HTMLElement>('.pagedjs_page_content').forEach((area) => {
+    let last: HTMLElement | null = null, lb = -1
+    area.querySelectorAll<HTMLElement>('*').forEach((el) => {
+      if (el.children.length === 0 && (el.textContent ?? '').trim()) { const b = el.getBoundingClientRect().bottom; if (b > lb) { lb = b; last = el } }
+    })
+    const k = (last as HTMLElement | null)?.closest<HTMLElement>(TIEU_DE_SEL)?.getAttribute('data-pvk')
+    if (k != null) out.add(Number(k))
+  })
+  return [...out]
+}
+/** html đã đánh số + pv-ngat (break-before:page) lên phần đứng đầu cụm của các tiêu đề có khoá trong keys: card đứng ngay sau section CHỈ có tiêu đề nhóm ⇒ ngắt trước tiêu đề nhóm (giữ nhóm + card đi cùng nhau). */
+export function epNgatTruocTieuDe(html: string, keys: Iterable<number>): string {
+  const root = document.createElement('div'); root.innerHTML = html
+  for (const k of keys) {
+    const h = root.querySelector<HTMLElement>('[data-pvk="' + k + '"]'); if (!h) continue
+    let tgt: Element = h.closest('.gtbk-card') ?? h.closest('.pv-sec') ?? h
+    const truoc = tgt.previousElementSibling
+    if (tgt.classList.contains('gtbk-card') && truoc?.classList.contains('pv-sec') && truoc.querySelector('.pv-h-lt') && !truoc.querySelector('.pv-blk, .pv-box-lt, .pv-filelink')) tgt = truoc
+    tgt.classList.add('pv-ngat')
+  }
+  return root.innerHTML
 }
 // ⭐ 07-12 tiếp 6 — QUYẾT ĐỊNH KIẾN TRÚC: sau 3 LẦN sửa header/footer bằng html2canvas (override CSS
 // `!important`, xoá rule CSSOM có chờ load, opacity:0 + gate selector `:not(.pv-no-chrome)`) ĐỀU
@@ -319,16 +361,33 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
         await Promise.all(imgs.map((img) => img.complete ? Promise.resolve() : img.decode().catch(() => new Promise((res) => { img.onload = img.onerror = res }))))
       } catch { /* */ }
       if (settled || cancelled) return
-      new Previewer().preview(html, [cssUrl], container)
-        .then((flow: { total?: number }) => {
+      // Khoá data-pvk gắn vào nguồn TRƯỚC khi dựng (xem timTieuDeMoCoi). Dọn hậu kỳ KHÔNG áp khi in cả lớp / BTVN: trang đệm trắng ở đó CỐ Ý (.pv-hs-recto, in 2 mặt).
+      const htmlK = danhSoTieuDe(html)
+      const hauKy = !perHS && scope !== 'btvn'
+      new Previewer().preview(htmlK, [cssUrl], container)
+        .then(async (flow: { total?: number }) => {
+          if (settled) return
+          let cur = container
+          // ⭐ 24/11 tiêu đề mồ côi cuối trang: ép ngắt trang trước nó rồi dựng lại (tối đa 4 lượt / 10 giây; dựng lại cả giáo trình dài vẫn trong ngân sách watchdog).
+          if (hauKy && !cancelled) try {   // lỗi khi dọn KHÔNG được chặn in: giữ bản dựng đang có
+            const forced = new Set<number>(); const tBd = Date.now()
+            for (let lan = 0; lan < 4 && Date.now() - tBd < 10000 && !cancelled && !settled; lan++) {
+              const mc = timTieuDeMoCoi(cur).filter((k) => !forced.has(k))
+              if (!mc.length) break
+              mc.forEach((k) => forced.add(k))
+              const c2 = document.createElement('div'); c2.className = scopeCls; dst.appendChild(c2)
+              try { await new Previewer().preview(epNgatTruocTieuDe(htmlK, forced), [cssUrl], c2) } catch { c2.remove(); break }
+              cur.remove(); cur = c2
+            }
+          } catch { /* giữ cur */ }
           if (settled) return
           settled = true; clearTimeout(watchdog)
-          if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
-          // Dọn trang trắng ma do paged.js dựng dở (như ET/MT). KHÔNG dọn khi in cả lớp / BTVN: đó có trang đệm trắng CỐ Ý (.pv-hs-recto, in 2 mặt).
-          if (!perHS && scope !== 'btvn') pruneGhostBlankPages(container)
-          Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
-          activeContainerRef.current = container
-          setPages(flow?.total ?? 0); setRendering(false)
+          if (cancelled) { cur.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
+          // Dọn trang trắng ma do paged.js dựng dở (như ET/MT).
+          if (hauKy) pruneGhostBlankPages(cur)
+          Array.from(dst.children).forEach((c) => { if (c !== cur) (c as HTMLElement).style.display = 'none' })
+          activeContainerRef.current = cur
+          setPages(cur.querySelectorAll('.pagedjs_page').length || (flow?.total ?? 0)); setRendering(false)
           onReady?.()
         })
         .catch((e: unknown) => {
@@ -1477,6 +1536,7 @@ export const GT_BK_CSS = `
    card nhảy sang trang sau khi cuối trang không đủ chỗ (đúng lỗi "đề mục mới luôn sang trang"). Bo góc đầu
    card xử bằng border-radius trên .gtbk-card-head thay cho overflow:hidden. */
 .gtbk-card{border:1px solid #dce5ef;border-radius:3.2mm;background:#fff;margin:0 0 4mm;break-inside:auto}
+.pv-ngat{break-before:page}
 .gtbk-card-head{display:flex;align-items:center;gap:2.6mm;padding:2.4mm 3.2mm;background:#f3f7fb;border-bottom:1px solid #e2e8f0;border-radius:3mm 3mm 0 0;break-after:avoid;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-code{flex:none;padding:1mm 2.6mm;background:#13233f;color:#fff;border-radius:99px;font-family:${GT_SANS};font-size:8.5pt;font-weight:900;letter-spacing:.04em;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .gtbk-card-title{flex:1;font-family:${GT_SANS};font-size:12pt;font-weight:800;color:#203454;line-height:1.22}
