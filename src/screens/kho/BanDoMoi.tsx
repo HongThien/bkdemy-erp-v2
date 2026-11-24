@@ -10,6 +10,7 @@
 // ⭐ Vị trí trên màn KHÔNG phải dữ liệu: box xếp theo số thứ tự (DB tính từ thu_tu). CEO đổi thứ tự bằng ◀▶ / ▲▼
 //   (ghi thu_tu) — không có ô nào "ngầm" mang nghĩa.
 // Kéo thả HTML5 thuần. Sau mỗi lần ghi: tải lại cây NỀN, không xoá màn (CLAUDE §2 React).
+import { createPortal } from 'react-dom'
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type DragEvent, type ReactNode } from 'react'
 import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
@@ -721,17 +722,39 @@ function CardDangBai(p: {
 const HE_TANG = ['C', 'B', 'A', 'S'] as const
 function MucHe({ d, lam }: { d: BdmDangBai; lam: (viec: () => Promise<unknown>, xong?: string) => Promise<void> }) {
   const [mo, setMo] = useState(false)
+  // Popup vẽ qua portal + fixed: card nhóm bài có overflow-hidden nên absolute bị cắt (Thùy 24/11).
+  const nutRef = useRef<HTMLButtonElement>(null)
+  const [vt, setVt] = useState<{ top: number; left: number } | null>(null)
+  const bat = () => {
+    const r = nutRef.current?.getBoundingClientRect()
+    if (r) {
+      const rong = 230, cao = 90
+      setVt({
+        left: Math.max(8, Math.min(r.left, window.innerWidth - rong - 8)),
+        top: r.bottom + 4 + cao > window.innerHeight ? Math.max(8, r.top - cao - 4) : r.bottom + 4,
+      })
+    }
+    setMo((v) => !v)
+  }
+  useEffect(() => {
+    if (!mo) return
+    const dong = () => setMo(false)
+    window.addEventListener('scroll', dong, true)
+    window.addEventListener('resize', dong)
+    return () => { window.removeEventListener('scroll', dong, true); window.removeEventListener('resize', dong) }
+  }, [mo])
   const chua = d.muc_do == null && !d.bac_toi_thieu
   const dat = (patch: { muc_do?: number | null; bac_toi_thieu?: string | null }) => { setMo(false); void lam(() => suaDangBai(d.id, patch), 'Đã lưu độ khó / hệ') }
   const nut = (on: boolean) => `rounded px-1.5 py-0.5 text-[11px] font-semibold ${on ? 'bg-violet-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-violet-50'}`
   return (
     <span className="relative shrink-0" onClick={(e) => e.stopPropagation()}>
-      <button draggable={false} onClick={() => setMo((v) => !v)} title="Độ khó (mức 1–5) · hệ tối thiểu — bấm để đặt"
+      <button ref={nutRef} draggable={false} onClick={bat} title="Độ khó (mức 1–5) · hệ tối thiểu — bấm để đặt"
         className={`rounded px-1.5 text-[10.5px] font-semibold ring-1 ${chua ? 'bg-white text-slate-400 ring-slate-200' : 'bg-white text-amber-700 ring-amber-200 hover:bg-amber-50'}`}>
         {chua ? '⚡ chưa đặt' : `⚡ ${d.muc_do ?? '–'} · ${d.bac_toi_thieu ? d.bac_toi_thieu + (d.bac_toi_thieu === 'S' ? '' : '+') : '–'}`}
       </button>
-      {mo && (
-        <span className="absolute left-0 top-full z-30 mt-1 flex w-max flex-col gap-1.5 rounded-lg border border-slate-200 bg-white p-2 text-[11px] shadow-lg">
+      {mo && vt && createPortal(
+        <span style={{ position: 'fixed', top: vt.top, left: vt.left }} onClick={(e) => e.stopPropagation()}
+          className="z-[200] flex w-max flex-col gap-1.5 rounded-lg border border-slate-200 bg-white p-2 text-[11px] shadow-lg">
           <span className="flex items-center gap-1"><span className="w-12 text-slate-500">Độ khó</span>
             {[1, 2, 3, 4, 5].map((m) => <button key={m} draggable={false} className={nut(d.muc_do === m)} onClick={() => dat({ muc_do: m })}>{m}</button>)}
             {d.muc_do != null && <button draggable={false} className="px-1 text-slate-400 hover:text-rose-600" title="Bỏ mức" onClick={() => dat({ muc_do: null })}>✕</button>}
@@ -740,7 +763,8 @@ function MucHe({ d, lam }: { d: BdmDangBai; lam: (viec: () => Promise<unknown>, 
             {HE_TANG.map((h) => <button key={h} draggable={false} className={nut(d.bac_toi_thieu === h)} onClick={() => dat({ bac_toi_thieu: h })}>{h}{h === 'S' ? '' : '+'}</button>)}
             {d.bac_toi_thieu && <button draggable={false} className="px-1 text-slate-400 hover:text-rose-600" title="Bỏ hệ" onClick={() => dat({ bac_toi_thieu: null })}>✕</button>}
           </span>
-        </span>
+        </span>,
+        document.body,
       )}
     </span>
   )
