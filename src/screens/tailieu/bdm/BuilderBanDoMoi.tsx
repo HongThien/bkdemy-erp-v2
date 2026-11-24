@@ -257,6 +257,16 @@ export default function BuilderBanDoMoi({ id, onClose, laChuyenDe = false }: { i
               <option value="co">Theo từng nhóm / dạng</option><option value="khong">Không in cả file</option>
             </select>
           </label>
+          {/* Ví dụ TOÀN FILE (Thùy 24/11) — cùng khuôn ô Lý thuyết; ô Ví dụ từng dạng bài giữ nguyên, bật lại là theo từng ô. */}
+          <label className="flex items-center gap-1.5 text-[12px] text-slate-500" title="Tắt = in cả file KHÔNG kèm ví dụ (ô Ví dụ từng dạng bài giữ nguyên, bật lại là theo từng ô)">Ví dụ
+            <select value={ch.inViDu === false ? 'khong' : 'co'} disabled={chiXem} onChange={(e) => saveCh({ inViDu: e.target.value === 'co' })} className={sel}>
+              <option value="co">Theo từng dạng</option><option value="khong">Không in cả file</option>
+            </select>
+          </label>
+          {/* 1 chạm: không in cả lý thuyết lẫn ví dụ (chỉ còn bài luyện). Đang tắt cả hai ⇒ bấm lại để bật cả hai. */}
+          <button disabled={chiXem} onClick={() => { const tat = ch.inLyThuyet === false && ch.inViDu === false; void saveCh({ inLyThuyet: tat, inViDu: tat }) }}
+            className={`whitespace-nowrap rounded-md border px-3 py-1.5 text-[12.5px] font-medium disabled:opacity-40 ${ch.inLyThuyet === false && ch.inViDu === false ? 'border-amber-400 bg-amber-50 text-amber-800' : 'border-slate-300 text-slate-600 hover:bg-slate-50'}`}
+            title="Không in lý thuyết và ví dụ — chỉ in bài luyện. Bấm lại để in như cũ (theo từng nhóm / dạng).">{ch.inLyThuyet === false && ch.inViDu === false ? '✓ Chỉ in bài luyện' : '🚫 Ẩn lý thuyết + ví dụ'}</button>
           <button onClick={() => setInAll(true)} className={`whitespace-nowrap rounded-md bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-500`}>🖨 Xem / Xuất PDF</button>
           {!chiXem && (
             <label className="flex items-center gap-1.5 text-[12px] text-slate-500">Màu

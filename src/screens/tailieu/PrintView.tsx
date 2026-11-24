@@ -324,6 +324,8 @@ export default function PrintView({ id, onClose, headless, onlyBuoiId, linkOnly,
           if (settled) return
           settled = true; clearTimeout(watchdog)
           if (cancelled) { container.style.display = 'none'; return } // stale (deps đã đổi) → ẩn, không đụng state
+          // Dọn trang trắng ma do paged.js dựng dở (như ET/MT). KHÔNG dọn khi in cả lớp / BTVN: đó có trang đệm trắng CỐ Ý (.pv-hs-recto, in 2 mặt).
+          if (!perHS && scope !== 'btvn') pruneGhostBlankPages(container)
           Array.from(dst.children).forEach((c) => { if (c !== container) (c as HTMLElement).style.display = 'none' })
           activeContainerRef.current = container
           setPages(flow?.total ?? 0); setRendering(false)
@@ -550,6 +552,7 @@ function DocInnerCu({ full, hl, gv, scope, lt = true, onlyBuoiId, perHS = false,
 function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = false, roster = [], ngayNop = '', lopTen = '' }: DocProps & { bdm: NoiDung }) {
   const { taiLieu } = full
   const ch = taiLieu.cau_hinh ?? {}
+  const vd = ch.inViDu !== false   // Ví dụ TOÀN FILE (Thùy 24/11): tắt ⇒ không in ví dụ nào (ô Ví dụ từng dạng giữ nguyên)
   const accent = ch.mau || '#E91E8C'
   const linesByCau = ch.btvnLinesByCau ?? {}
   const colByCau = ch.colByCau ?? {}
@@ -617,9 +620,9 @@ function DocBdm({ full, bdm, nguon, gv, scope, lt = true, onlyBuoiId, perHS = fa
                     <div className="gtbk-card-body">
                       {lt && d.hien_lt && d.ly_thuyet?.trim() && <LyThuyetBody text={d.ly_thuyet} />}
                       {/* Ví dụ đã soạn bằng ký hiệu (##VD…) tự có khung + nhãn "Ví dụ 1" ⇒ không chèn thêm tiêu đề "Ví dụ" (lặp nhãn). */}
-                      {d.hien_vi_du && d.vi_du?.trim() && parseLyThuyetBlocks(d.vi_du).some((x) => x.loai !== 'text')
+                      {vd && d.hien_vi_du && d.vi_du?.trim() && parseLyThuyetBlocks(d.vi_du).some((x) => x.loai !== 'text')
                         ? <LyThuyetBody text={d.vi_du} />
-                        : d.hien_vi_du && <LtBlock title="Ví dụ" lt={d.vi_du?.trim() || d.vi_du_file_url ? { noi_dung: d.vi_du ?? '', file_url: d.vi_du_file_url, ten_file: null } : null} />}
+                        : vd && d.hien_vi_du && <LtBlock title="Ví dụ" lt={d.vi_du?.trim() || d.vi_du_file_url ? { noi_dung: d.vi_du ?? '', file_url: d.vi_du_file_url, ten_file: null } : null} />}
                       {d.caus.length > 0 && <CauFlow hop items={cauItems(caus(d.caus))} />}
                     </div>
                   </section>
