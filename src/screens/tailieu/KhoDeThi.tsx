@@ -729,9 +729,9 @@ function ChonDangMoi({ khoi: khoiDe, kho, laDS, hien, onClose, onPick }: { khoi:
 }
 
 // Ô số dòng kẻ (0–50) — ghi khi rời ô / Enter, không ghi từng phím. `key` theo giá trị để "đặt cả phần" đổi được ô từng câu.
-const kepDong = (v: string) => Math.max(0, Math.min(50, Math.round(+v || 0)))
+const kepDong = (v: string) => Math.max(0, Math.min(100, Math.round(+v || 0)))
 function ODong({ value, onDat, title }: { value: number | ''; onDat: (n: number) => void; title: string }) {
-  return <input key={value} type="number" min={0} max={50} defaultValue={value} title={title} placeholder="—"
+  return <input key={value} type="number" min={0} max={100} defaultValue={value} title={title} placeholder="—"
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}
     onBlur={(e) => { if (e.target.value === '') return; const n = kepDong(e.target.value); if (n !== value) onDat(n) }}
     className="w-12 rounded border border-slate-200 px-1 py-0.5 text-center text-[12px] text-slate-700 focus:border-indigo-400 focus:outline-none" />

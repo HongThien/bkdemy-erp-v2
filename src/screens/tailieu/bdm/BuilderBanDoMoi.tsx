@@ -619,7 +619,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                       {/* Thùy 09/11: ô trống là của CẢ BÀI (1 khối dòng kẻ sau ý cuối) ⇒ 1 ô "dòng" cho bài, lưu ở ý đầu (`m`) */}
                       {!chiXem && btvn && (
                         <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết cả bài (in 1 khối sau ý cuối)">dòng cả bài
-                          <input type="number" min={0} max={50} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                          <input type="number" min={0} max={100} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                         </label>
                       )}
                       {!chiXem && !gon && c.anh_de && (
@@ -659,7 +659,7 @@ export function KhoiCau({ tieuDe, mau, caus, cauMap, cfg, chiXem, btvn, gon, soM
                       <span className="ml-auto flex flex-wrap items-center justify-end gap-2">
                         {btvn && (
                           <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
-                            <input type="number" min={0} max={50} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                            <input type="number" min={0} max={100} value={cfg.lines[m] ?? DEFAULT_BTVN_LINES} onChange={(e) => cfg.onLine(m, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                           </label>
                         )}
                         {!gon && <ColSel value={cfg.cols[m] ?? 1} onChange={(n) => cfg.onCol(m, n)} />}

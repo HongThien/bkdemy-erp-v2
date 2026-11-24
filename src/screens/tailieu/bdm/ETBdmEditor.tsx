@@ -612,7 +612,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                       <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
                         {c && form === 'tu_luan' && (
                           <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in)">dòng
-                            <input type="number" min={0} max={50} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(50, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                            <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                           </label>
                         )}
                         {c && c.anh_de && (
@@ -713,8 +713,8 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                             </AnhMmEditCtx.Provider>
                           )}
                           <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ mỗi ý cho HS viết (bản in)">dòng
-                            <input type="number" min={0} max={50} value={hinh.soDong[p.key] ?? DONG_BTVN}
-                              onChange={(e) => { const v = Math.max(0, Math.min(50, +e.target.value || 0)); setHinh((h) => ({ ...h, soDong: { ...h.soDong, [p.key]: v } })) }}
+                            <input type="number" min={0} max={100} value={hinh.soDong[p.key] ?? DONG_BTVN}
+                              onChange={(e) => { const v = Math.max(0, Math.min(100, +e.target.value || 0)); setHinh((h) => ({ ...h, soDong: { ...h.soDong, [p.key]: v } })) }}
                               className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                           </label>
                           <button onClick={() => void doiHinh(i)} title={p.kind === 'bai' ? 'Đổi sang bài kho khác cùng mô hình, cùng số ý (ít dùng nhất)' : 'Đổi bản khác (cùng node, ít dùng nhất)'} className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>

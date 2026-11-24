@@ -503,7 +503,7 @@ function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | nul
       {cfg && (
         <div className="mt-1 flex flex-wrap items-center justify-end gap-2">
           <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết, in sau cả bài (bản HS)">dòng
-            <input type="number" min={0} max={50} value={cfg.lines[b.ma_bai] ?? dongMacDinh} onChange={(e) => cfg.onLine(b.ma_bai, Math.max(0, Math.min(50, +e.target.value || 0)))}
+            <input type="number" min={0} max={100} value={cfg.lines[b.ma_bai] ?? dongMacDinh} onChange={(e) => cfg.onLine(b.ma_bai, Math.max(0, Math.min(100, +e.target.value || 0)))}
               className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
           </label>
           {anh && <CheDoHinhBtn cur={cd} onChange={(v) => cfg.onCheDo(b.ma_bai, v)} />}
