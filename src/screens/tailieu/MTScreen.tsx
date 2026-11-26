@@ -801,8 +801,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     await deletePhan(p.id); await reload(); markSaved()
   }
   // Cấu hình chỉnh dòng (số dòng kẻ tự luận + đổi form hiển thị) — GIỐNG ET, autosave ngay (MT không có nút Lưu riêng).
-  async function setLines(maCau: string, n: number) {
-    const next: CauHinh = { ...ch, btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } }
+  async function setLines(maCau: string | string[], n: number) {
+    const next: CauHinh = { ...ch, btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), ...Object.fromEntries([maCau].flat().map((m) => [m, n])) } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
   async function setForm(maCau: string, f: ETFormKind) {
@@ -1281,11 +1281,16 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               </div>
                             )}
                           </div>
-                          {c && form === 'tu_luan' && (
-                            <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title="Số dòng kẻ cho HS viết (bản in)">dòng
-                              <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(c.ma_cau, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
-                            </label>
-                          )}
+                          {c && form === 'tu_luan' && !yTruoc && (() => {
+                            // Bài nhiều ý (Hình–Học): MỘT ô số dòng chung cho cả bài, ở hàng ý đầu — đặt cho mọi ý cùng bài (Thùy 26/11).
+                            const nhomMa: string[] = [c.ma_cau]
+                            for (let k = i + 1; k < rows.length; k++) { const ck = rows[k].maCau ? cau[rows[k].maCau!] : null; if (!cungBai(c, ck)) break; nhomMa.push(ck!.ma_cau) }
+                            return (
+                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title={nhomMa.length > 1 ? 'Số dòng kẻ dùng chung cho mọi ý của bài (bản in)' : 'Số dòng kẻ cho HS viết (bản in)'}>{nhomMa.length > 1 ? 'dòng/ý' : 'dòng'}
+                                <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(nhomMa, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
+                              </label>
+                            )
+                          })()}
                           {r.maDang && (
                             <div className="flex shrink-0 gap-1 pt-0.5 max-md:order-3 max-md:pt-0">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
