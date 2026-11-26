@@ -361,8 +361,8 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
                           <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${c.nhan_y})</span> `}>{c.cau_hoi_y ?? ''}</MathText></div>
                           {gv && <GvAnswer c={c} />}
                         </>),
-                        // Bài nhiều ý: số dòng DÙNG CHUNG cả bài = của ý đầu (Thùy 26/11), không riêng từng ý.
-                        lines: gv ? 0 : (ver.ch.btvnLinesByCau?.[run.items[nhom.dau].ma_cau] ?? DEFAULT_TL_LINES),
+                        // Bài nhiều ý: MỘT khối dòng kẻ chung cho cả bài (N dòng tổng, không phải N mỗi ý) — in sau ý cuối, các ý trước 0 dòng (Thùy 26/11).
+                        lines: gv || i !== nhom.cuoi ? 0 : (ver.ch.btvnLinesByCau?.[run.items[nhom.dau].ma_cau] ?? DEFAULT_TL_LINES),
                       })
                       return ra
                     })

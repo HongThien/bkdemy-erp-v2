@@ -1286,7 +1286,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             const nhomMa: string[] = [c.ma_cau]
                             for (let k = i + 1; k < rows.length; k++) { const ck = rows[k].maCau ? cau[rows[k].maCau!] : null; if (!cungBai(c, ck)) break; nhomMa.push(ck!.ma_cau) }
                             return (
-                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title={nhomMa.length > 1 ? 'Số dòng kẻ dùng chung cho mọi ý của bài (bản in)' : 'Số dòng kẻ cho HS viết (bản in)'}>{nhomMa.length > 1 ? 'dòng/ý' : 'dòng'}
+                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title={nhomMa.length > 1 ? 'Tổng số dòng kẻ chung cho cả bài — in một khối sau ý cuối (bản in)' : 'Số dòng kẻ cho HS viết (bản in)'}>{nhomMa.length > 1 ? 'dòng cả bài' : 'dòng'}
                                 <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(nhomMa, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
                             )
