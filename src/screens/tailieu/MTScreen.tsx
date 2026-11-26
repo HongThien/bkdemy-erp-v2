@@ -851,7 +851,10 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
     const allCaus: CauHoi[] = []
     // Hàng bản đồ mới ('bdm' · 'hinh_hoc'): đề 2/3 tính ở DB (fn_tl_bdm_et_ma_de — cùng ET mới, biết cả KHTN/Lý/Hóa) — buildMaDeLib đọc
     // kho theo dang_chinh nên KHTN/Lý/Hóa (kho gốc không mang mã NDB) ra 0 ứng viên ⇒ đề 2/3 trùng câu gốc.
-    const rowsMoi = rows.filter((r) => r.nhanh === 'bdm' || r.nhanh === 'hinh_hoc')
+    // ⭐ Hình · Học (Thùy 26/11): 3 mã đề DÙNG CHUNG MỘT bài hình — đề 2/3 = chính câu đề 1. Trước đây mỗi Ý của bài nhiều ý bị thay bằng một câu khác
+    // ⇒ ý a/b/c của đề 2/3 rơi vào các bài khác nhau, `yCungBai` không gom được ⇒ phiếu in tách thành 3 bài riêng.
+    for (const r of rows) if (r.nhanh === 'hinh_hoc' && r.maCau) chNext = { ...chNext, etMaDe: { ...(chNext.etMaDe ?? {}), [r.maCau]: [r.maCau, r.maCau] } }
+    const rowsMoi = rows.filter((r) => r.nhanh === 'bdm')
     if (rowsMoi.length && d) {
       const baseDb = rowsMoi.map((r) => ({ ma_cau: r.maCau!, dang_bai: r.maDang!, form: cau[r.maCau!] ? etFormOf(cau[r.maCau!], chNext) : 'tra_loi_ngan' }))
       const kq = await etMaDe(d.khoi, baseDb)
