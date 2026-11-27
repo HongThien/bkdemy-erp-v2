@@ -1,5 +1,60 @@
 [
- {"ma":"B018-01","ten_bai":"de-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-phuc-dien-ha-noi","don_vi":"THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội","nam":2024,"de":"1-2","hd":""},
- {"ma":"B018-02","ten_bai":"de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-do-ngoc-du-ha-noi","don_vi":"THCS Đỗ Ngọc Du, xã Đại Thanh, Hà Nội","nam":2025,"de":"3-4","hd":"5-7"},
- {"ma":"B018-03","ten_bai":"de-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-nguyen-truong-to-ha-noi","don_vi":"THCS Nguyễn Trường Tộ, Hà Nội","nam":2024,"de":"1-2","hd":""}
+ {
+  "ma": "B018-01",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2024-2025-truong-thcs-phuc-dien-ha-noi",
+  "don_vi": "THCS Phúc Diễn, quận Bắc Từ Liêm, Hà Nội",
+  "nam": 2024,
+  "de": "1-2",
+  "hd": ""
+ },
+ {
+  "ma": "B018-02",
+  "ten_bai": "de-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-do-ngoc-du-ha-noi",
+  "don_vi": "THCS Đỗ Ngọc Du, xã Đại Thanh, Hà Nội",
+  "nam": 2025,
+  "de": "3-4",
+  "hd": "5-7"
+ },
+ {
+  "ma": "B018-03",
+  "ten_bai": "de-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-nguyen-truong-to-ha-noi",
+  "don_vi": "THCS Nguyễn Trường Tộ, Hà Nội",
+  "nam": 2024,
+  "de": "1-2",
+  "hd": ""
+ },
+ {
+  "ma": "B018-14",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-ly-son-ha-noi",
+  "don_vi": "THCS Lý Sơn, quận Long Biên, Hà Nội",
+  "nam": 2024,
+  "de": "1-2",
+  "hd": "",
+  "tach": "",
+  "ma_de": "",
+  "bo_sach": "KNTT (suy đoán)",
+  "bo_sach_can_cu": "suy đoán — đề không ghi; thu thập dữ liệu, biểu đồ hình quạt, biến cố–xác suất, đa thức, tam giác cân/đường cao đồng quy ⇒ khớp KNTT Toán 7 tập 2",
+  "cau_truc": "I 8 câu TN (2 đ: Câu 1-4 chọn đáp án — loại dữ liệu, biểu đồ nhiệt độ, biến cố chia hết cho 3, xác suất xúc xắc; Câu 5-8 Đúng/Sai — góc tam giác, cạnh dài nhất, tam giác vuông cân, trung tuyến/trung trực) · II tự luận 5 câu (8 đ: C1 số có hai chữ số <25 xác suất; C2 biểu đồ quạt huy chương 4 ý; C3 P(x), Q(x) 4 ý; C4 ΔABC cân A, góc B=65° 3 ý (2,5 đ); C5 hệ số a,b để f(x) nhận 0 và −2 làm nghiệm 0,5 đ); 90 phút, thi 23/4/2025",
+  "thoi_gian_phut": 90,
+  "ghi_chu": "PDF có lớp chữ (2 trang), KHÔNG có hướng dẫn chấm / đáp án. Chỉ một mã đề (701) trong tệp, nên không tách. Biểu đồ Câu 2 TN và biểu đồ quạt Câu 2 TL nằm trong ảnh (số liệu không ra chữ) ⇒ đọc ảnh khi soạn; nếu thiếu số liệu biểu đồ thì treo câu đó. Câu 5-8 là dạng Đúng/Sai theo từng câu. Ký hiệu góc trong text mất.",
+  "chu": true,
+  "loai": "de_thi"
+ },
+ {
+  "ma": "B018-15",
+  "ten_bai": "de-cuoi-hoc-ki-2-toan-7-nam-2024-2025-truong-thcs-phuc-loi-ha-noi",
+  "don_vi": "THCS Phúc Lợi, quận Long Biên, Hà Nội",
+  "nam": 2024,
+  "de": "1-2",
+  "hd": "",
+  "tach": "",
+  "ma_de": "",
+  "bo_sach": "KNTT (suy đoán)",
+  "bo_sach_can_cu": "suy đoán — đề không ghi; biểu đồ cột, bảng số liệu, biến cố–xác suất, biểu thức đại số, đa thức một biến, quan hệ vuông góc–xiên, trọng tâm, đường cao ⇒ khớp KNTT Toán 7 tập 2",
+  "cau_truc": "I 8 câu TN 4 đáp án (2 đ: biểu đồ trà sữa, xác suất xúc xắc, bảng số liệu dệt may, biểu thức chu vi, đơn thức một biến, nghiệm đa thức, đường xiên–vuông góc, trọng tâm) · II tự luận 5 bài (8 đ: B1 bảng cân nặng 20 học sinh + xác suất (1,5 đ); B2 thu gọn A(x), bậc, hệ số; B3 sắp xếp, tổng, hiệu P(x),Q(x); B4 ΔABC cân A, hai đường cao BD, CE cắt tại H, 3 ý (3 đ); B5 f(x) tại x=100 0,5 đ); 90 phút, đề số 1",
+  "thoi_gian_phut": 90,
+  "ghi_chu": "PDF có lớp chữ (2 trang), KHÔNG có hướng dẫn chấm / đáp án. Đề một mã ('Đề số 1'; chỉ có đề 1 trong tệp). Câu 1 TN có biểu đồ (ảnh); Câu 6 chỉ ra 3 đáp án A-C (D mất/lỗi); Câu 5 có chỗ 'D. 4' thừa trong text; B1 bảng cân nặng bị đảo vị trí trong text; B3, B5 mất ký hiệu (P(x)=6x³+5x+3x²−1, Q(x)=3x²+6x³+2x+7 chưa chắc) ⇒ đọc ảnh khi soạn. Chưa có đáp án TN.",
+  "chu": true,
+  "loai": "de_thi"
+ }
 ]

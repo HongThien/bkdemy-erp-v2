@@ -1,7 +1,74 @@
 [
- {"ma":"B022-01","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-he-thong-gd-archimedes-school-ha-noi","don_vi":"Hệ thống Giáo dục Archimedes School, Hà Nội","nam":2025,"de":"1-13","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":150},
- {"ma":"B022-02","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-ngoi-sao-hoang-mai-ha-noi","don_vi":"Trường Ngôi Sao Hoàng Mai, Hà Nội","nam":2025,"de":"1-13","hd":"","bo_sach":"KNTT","chu":false,"uoc_cau":110},
- {"ma":"B022-03","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-phuc-dien-ha-noi","don_vi":"THCS Phúc Diễn (UBND phường Phú Diễn), Hà Nội","nam":2025,"de":"1-9","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":75},
- {"ma":"B022-04","ten_bai":"de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thang-long-ha-noi","don_vi":"THCS Thăng Long, Hà Nội","nam":2025,"de":"1-5","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":45},
- {"ma":"B022-05","ten_bai":"on-tap-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-thanh-cong-ha-noi","don_vi":"THCS Thành Công, Hà Nội","nam":2024,"de":"1-8","hd":"","bo_sach":"KNTT","chu":true,"uoc_cau":55}
+ {
+  "ma": "B022-01",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-he-thong-gd-archimedes-school-ha-noi",
+  "don_vi": "Hệ thống Giáo dục Archimedes School, Hà Nội",
+  "nam": 2025,
+  "de": "1-13",
+  "hd": "",
+  "bo_sach": "KNTT",
+  "chu": false,
+  "uoc_cau": 150
+ },
+ {
+  "ma": "B022-02",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-ngoi-sao-hoang-mai-ha-noi",
+  "don_vi": "Trường Ngôi Sao Hoàng Mai, Hà Nội",
+  "nam": 2025,
+  "de": "1-13",
+  "hd": "",
+  "bo_sach": "KNTT",
+  "chu": false,
+  "uoc_cau": 110
+ },
+ {
+  "ma": "B022-03",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-phuc-dien-ha-noi",
+  "don_vi": "THCS Phúc Diễn (UBND phường Phú Diễn), Hà Nội",
+  "nam": 2025,
+  "de": "1-9",
+  "hd": "",
+  "bo_sach": "KNTT",
+  "chu": true,
+  "uoc_cau": 75
+ },
+ {
+  "ma": "B022-04",
+  "ten_bai": "de-cuong-hoc-ki-1-toan-7-nam-2025-2026-truong-thcs-thang-long-ha-noi",
+  "don_vi": "THCS Thăng Long, Hà Nội",
+  "nam": 2025,
+  "de": "1-5",
+  "hd": "",
+  "bo_sach": "KNTT",
+  "chu": true,
+  "uoc_cau": 45
+ },
+ {
+  "ma": "B022-05",
+  "ten_bai": "on-tap-hoc-ky-1-toan-7-nam-2024-2025-truong-thcs-thanh-cong-ha-noi",
+  "don_vi": "THCS Thành Công, Hà Nội",
+  "nam": 2024,
+  "de": "1-8",
+  "hd": "",
+  "bo_sach": "KNTT",
+  "chu": true,
+  "uoc_cau": 55
+ },
+ {
+  "ma": "B022-07",
+  "ten_bai": "de-cuong-cuoi-ki-2-toan-7-nam-2024-2025-truong-thcs-phu-thi-ha-noi",
+  "don_vi": "THCS Phú Thị, huyện Gia Lâm (PGD-ĐT Gia Lâm), Hà Nội",
+  "nam": 2024,
+  "de": "1-6",
+  "hd": "",
+  "ma_de": "",
+  "bo_sach": "KNTT (suy đoán)",
+  "bo_sach_can_cu": "suy đoán — đề cương không ghi bộ sách; thứ tự nội dung tỉ lệ thức → đại lượng tỉ lệ → đa thức → biến cố/xác suất → quan hệ trong tam giác → hình khối khớp KNTT Toán 7 tập 2",
+  "cau_truc": "A lí thuyết 9 mục · B bài tập: I 23 câu TN (tỉ lệ thức, biến cố, quan hệ góc–cạnh/bất đẳng thức tam giác, hình hộp chữ nhật, đa thức, trọng tâm) · II tự luận: tỉ lệ 10 bài, đa thức 10 bài, xác suất 1 bài (tung đồng xu 3 lần), hình học 8 bài, hình khối (hộp chữ nhật, lăng trụ đứng) 5 bài",
+  "ghi_chu": "PDF có lớp chữ (khổ letter, 6 trang). Công thức/phân số trong lớp chữ bị vỡ (mất dấu, phân số tách dòng) ⇒ trạm soạn nên đối chiếu ảnh trang. Câu TN 10 và 22 có hình vẽ; chữ ra thiếu Câu 20 (có thể nằm cuối tr.2). Chuỗi đáp án TN: không in. Không có hướng dẫn chấm. Tiêu đề trang ghi 'PHẦN 2: TỰ LUẬN' bắt đầu từ tr.3 với 'Bài 1…10' mục tỉ lệ rồi đánh số lại cho đa thức/hình học (Bài 1…) ⇒ mã bài trong đề cương lặp số giữa các nhóm.",
+  "chu": true,
+  "loai": "de_cuong",
+  "uoc_cau": 57,
+  "kieu": "de_cuong"
+ }
 ]
