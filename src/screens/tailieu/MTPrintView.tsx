@@ -7,7 +7,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, fetchCausCuaTaiLieu, laMaHinh, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etFormOf, fetchCausCuaTaiLieu, laMaHinh, anhPhaiCua, type TaiLieuFull, type CauHinh } from '../../lib/tailieu'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 import type { CauHoi } from '../../lib/kho/api'
 // Hàng HÌNH (mô hình) xen giữa câu Đại (Thùy 02/09: "phải in cùng") — dựng MucIn bằng đúng engine của ET Hình
 // (banInTheoMoHinh) rồi in bằng MucsBlock của HinhPrintView ngay tại vị trí hàng; đánh số "Bài m" riêng (khớp nhãn
@@ -21,7 +22,7 @@ type HinhMucs = Record<string, (MucIn | null)[]> // ma hàng → [gốc, đề 2
 import { MathText, LT_CORE_CSS } from '../kho/ui'
 import { BK_CSS, BK_PAGE_CSS } from './bkPrint'
 import { yCungBai } from './ETPrintView'
-import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages } from './PrintView'
+import { cauItemParts, CauFlow, OptGrid, GvAnswer, splitStem, questionOnlyContent, TLNTable, CHROME_CSS, buildPagedCss, uploadPagesAsLink, pageChrome, printWithFilename, pruneGhostBlankPages, AnhDe, DeVaHinh } from './PrintView'
 
 const DEFAULT_TL_LINES = 4
 
@@ -214,25 +215,33 @@ export default function MTPrintView({ id, onClose, headless, linkOnly, onFail, o
 // cauItemParts thô (luôn hiện lua_chon nếu câu kho có). Đúng/Sai (menh_de) + trắc nghiệm → dùng cauItemParts.
 // ⚠ CHỈ còn gọi cho tự luận (bản HS) và MỌI form ở bản GV — trả lời ngắn (bản HS) giờ render qua
 // TLNTable/mtRunsOf (bảng câu-hỏi|ô-đáp-án, DÙNG CHUNG với ET — xem PrintView.tsx), KHÔNG còn qua hàm này.
-function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh): { content: React.ReactNode; lines: number; hasImg: boolean } {
+// Khối hình của 1 câu khi in theo chế độ: hien · o_trong (ô vẽ cho HS, bản GV vẫn hiện ảnh) · khong.
+function anhIn(c: CauHoi, cd: CheDoHinh | undefined, gv: boolean): React.ReactNode {
+  if (cd === 'khong') return null
+  if (cd === 'o_trong') return gv && c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : <div className="pv-vebox" />
+  return c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : null
+}
+function mtCauParts(no: number, c: CauHoi, gv: boolean, ch: CauHinh, cheDoHinh?: CheDoHinh): { content: React.ReactNode; lines: number; hasImg: boolean } {
   const isDS = !!(c.menh_de && c.menh_de.length)
-  if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv })
+  if (isDS || etFormOf(c, ch) === 'trac_nghiem') return cauItemParts({ no, c, gv, cheDoHinh })
   // tự luận / trả lời ngắn (bản GV) ÉP hiển thị: bỏ qua lua_chon dù câu kho có (tách stem thủ công, giống ET).
   const { stem, grid, emb } = splitStem(c)
   const form = etFormOf(c, ch)
   const nLines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_TL_LINES
   return {
+    // Hình theo chuẩn builder (spec §2.7): chế độ hiện / ô trống / không + cỡ ảnh (AnhMmCtx) + ảnh phải (AnhPhaiCtx) — như ET.
     content: (<>
-      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
-      {grid && <OptGrid grid={grid} emb={emb} />}
-      {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+      <DeVaHinh ma={c.ma_cau}
+        anh={anhIn(c, cheDoHinh, gv)}
+        de={<div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>}
+        y={grid ? <OptGrid grid={grid} emb={emb} /> : null} />
       {gv && <GvAnswer c={c} />}
     </>),
     // Dòng kẻ theo ô "dòng" GV đặt — KHÔNG chặn khi câu có ý con a)/b) (splitStem → `grid`). Trước đây
     // `!grid` làm mọi câu tự luận nhiều ý (kiểu "Bác Lan có mảnh vườn… a) … b) …") in ra 0 dòng dù GV đã
     // đặt 10 (Thùy 04/09, MT tháng 8 khối 7: "chọn tự luận và thêm dòng nhưng vẫn không thêm được dòng").
     lines: (!gv && form === 'tu_luan') ? nLines : 0,
-    hasImg: !!c.anh_de,
+    hasImg: !!c.anh_de && cheDoHinh !== 'khong',
   }
 }
 // Gom câu TRẢ LỜI NGẮN LIÊN TIẾP (bản HS) thành 1 BẢNG (TLNTable, PrintView.tsx) — chỉ gộp TRÌNH BÀY các
@@ -270,8 +279,18 @@ export function MTDoc({ full, gv, varCau, hinhMucs, perHS, lopTen }: { full: Tai
   // Biến thể KẾ THỪA số dòng (tự luận) của câu gốc: lines keyed theo ma_cau → map ma_cau gốc → biến thể.
   const chVar = (v: number): CauHinh => {
     const lines = { ...(ch.btvnLinesByCau ?? {}) }
-    for (const c of base) { const vm = etMaDe?.[c.ma_cau]?.[v]; const bl = ch.btvnLinesByCau?.[c.ma_cau]; if (vm && bl != null) lines[vm] = bl }
-    return { ...ch, btvnLinesByCau: lines }
+    // Hình (chế độ · cỡ ảnh · ảnh phải) cũng kế thừa câu gốc ⇒ 3 mã đề cùng bố cục hình (spec §2.7 "Mã đề 2 / 3 kế thừa cấu hình in").
+    const cheDo = { ...(ch.hinhCheDoByCau ?? {}) }, anhMm = { ...(ch.anhMmByCau ?? {}) }, anhPct = { ...(ch.anhPctByCau ?? {}) }, phai = { ...(ch.anhPhaiByCau ?? {}) }
+    const phaiGoc = anhPhaiCua(ch, null)
+    for (const c of base) {
+      const vm = etMaDe?.[c.ma_cau]?.[v]; if (!vm) continue
+      const bl = ch.btvnLinesByCau?.[c.ma_cau]; if (bl != null) lines[vm] = bl
+      const cd = ch.hinhCheDoByCau?.[c.ma_cau]; if (cd != null) cheDo[vm] = cd
+      const mm = ch.anhMmByCau?.[c.ma_cau]; if (mm != null) anhMm[vm] = mm
+      const pc = ch.anhPctByCau?.[c.ma_cau]; if (pc != null) anhPct[vm] = pc
+      phai[vm] = phaiGoc(c.ma_cau)
+    }
+    return { ...ch, btvnLinesByCau: lines, hinhCheDoByCau: cheDo, anhMmByCau: anhMm, anhPctByCau: anhPct, anhPhaiByCau: phai }
   }
   // maDe (1/2/3) → { badge, v, ch } — DÙNG CHUNG cho in-đủ-3-đề (mặc định) và in-theo-HS (perHS, mỗi HS
   // chỉ 1 mã). maDe 2/3 mà chưa đủ 3 mã đề (complete=false) → an toàn về đề gốc (không in đề rỗng).
@@ -301,6 +320,7 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
 }) {
   let no = 0
   const next = () => ++no
+  const cheDo = (c: CauHoi): CheDoHinh => ver.ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'
   // ⭐ Thùy 02/09: "câu hỏi phải đi theo thứ tự trong builder — câu nào ở trên tính trước; đánh giá theo từng ý" →
   // MỘT bộ đếm duy nhất theo thứ tự hàng: câu Đại +1, bài Hình +số ý (16 câu Đại → bài Hình 3 ý = Câu 17–19, bài sau
   // từ 20). Tab chấm MT đánh số lại problem_no theo ĐÚNG thứ tự này (thuTuMTTheoDe/danhSoLaiTheoDe, gami.ts) — số
@@ -319,6 +339,8 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
   }
   const mucHinh = (ma: string): MucIn | null => { const arr = hinhMucs[ma]; return (ver.v == null ? arr[0] : arr[ver.v + 1]) ?? arr[0] ?? null }
   return (
+    <AnhMmCtx.Provider value={ver.ch.anhMmByCau ?? {}}>
+    <AnhPhaiCtx.Provider value={anhPhaiCua(ver.ch, null)}>
     <div className="pv-mt" style={{ '--pv-accent': ver.ch.mau || '#7c3aed' } as CSSProperties}>
       {/* Đề test đầu vào (sinh từ MT, in qua đúng máy này — CEO 20/09) không phải "Kỳ thi lớn": nhãn theo LOẠI tài liệu. */}
       <MTHeaderBK ten={full.taiLieu.ten} badge={ver.badge} gv={gv} hoTen={hoTen} lopTen={lopTen} nhan={full.taiLieu.loai === 'de_test_dau_vao' ? 'Kiểm tra đầu vào' : undefined} />
@@ -334,7 +356,7 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
             }
             return mtRunsOf(seg.caus, mapCau, ver, gv).map((run, ri) => (
               run.tln
-                ? <TLNTable key={`${si}-${ri}`} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v)) } })} />
+                ? <TLNTable key={`${si}-${ri}`} rows={run.items.map((c) => { const n = next(); return { key: c.ma_cau, content: questionOnlyContent(n, mapCau(c, ver.v), cheDo(mapCau(c, ver.v))) } })} />
                 : <CauFlow key={`${si}-${ri}`} items={(() => {
                     // Hình–Học bài nhiều ý: ≥2 ý CÙNG BÀI liền nhau ⇒ lời dẫn + hình in 1 lần (dải số 'Câu n – m.'), từng ý chỉ in 'a) …'.
                     // Số câu vẫn 1 ý = 1 câu (bộ đếm no) ⇒ khớp bảng chấm. Chỉ gom ý dạng tự luận; ý trắc nghiệm / Đúng-Sai in như câu thường.
@@ -344,14 +366,14 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
                       const n = next()
                       const cols = ver.ch.colByCau?.[run.items[i].ma_cau] ?? 1
                       const nhom = gomDuoc(c) ? yCungBai(ms, i) : null
-                      if (!nhom || !ms.slice(nhom.dau, nhom.cuoi + 1).every(gomDuoc)) return [{ key: run.items[i].ma_cau, cols, ...mtCauParts(n, c, gv, ver.ch) }]
+                      if (!nhom || !ms.slice(nhom.dau, nhom.cuoi + 1).every(gomDuoc)) return [{ key: run.items[i].ma_cau, cols, ...mtCauParts(n, c, gv, ver.ch, cheDo(c)) }]
                       const dau = ms[nhom.dau]
                       const ra: { key: string; cols: number; content: React.ReactNode; lines: number; hasImg: boolean }[] = []
                       if (i === nhom.dau) ra.push({
-                        key: `${c.bai_y}:dan`, cols: 1, lines: 0, hasImg: !!dau.anh_de,
+                        key: `${c.bai_y}:dan`, cols: 1, lines: 0, hasImg: !!dau.anh_de && cheDo(dau) !== 'khong',
                         content: (<>
                           <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${n} – ${n + nhom.cuoi - nhom.dau}.</span> `}>{nhom.loiDan}</MathText></div>
-                          {dau.anh_de && <img src={dau.anh_de} alt="" className="pv-img" />}
+                          {anhIn(dau, cheDo(dau), gv)}
                         </>),
                       })
                       ra.push({
@@ -373,6 +395,8 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
       ) })}
       {phans.length === 0 && <p className="pv-empty">MT chưa có phần nào.</p>}
     </div>
+    </AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
   )
 }
 

@@ -24,12 +24,13 @@ import { banInTheoMoHinh, goiYMaDeChoBai, goiYMaDeBaiKho, DONG_BTVN, type Ban } 
 import ChonYTuCay from '../kho/hinh/ChonYTuCay'
 import { loadLuoi, chuoiKetNoi, type Luoi, type BaiToan } from '../../lib/kho/hinh'
 import type { MucIn } from '../kho/hinh/HinhPrintView'
-import { sigHinh, CHE_DO_HINH, cheDoKe } from '../../lib/kho/hinhGiaoTrinh'
+import { sigHinh, CHE_DO_HINH, cheDoKe, type CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import { buildMaDe as buildMaDeLib, oTrongMaDe, usedMoiDe as usedMoiDeLib, setVarInCh, setFormInCh, maDeStale, type BaseItem } from '../../lib/made'
 import { listLop, listHSCuaLop, type Lop, type HocSinh } from '../../lib/nhansu'
 import { listCauByDang, listLopBac, tachLoiDanY, LOAI_CAU, KHOI_OPTIONS, DEFAULT_KHOI, type CauHoi, type LopBac } from '../../lib/kho/api'
 import { MathText, inp } from '../kho/ui'
-import { KhoPicker } from './TaiLieuBuilder'
+import { KhoPicker, CheDoHinhBtn, AnhMmCtl, AnhXem } from './TaiLieuBuilder'
+import { AnhMmEditCtx } from './anhMmCtx'
 import DangPickerOne from '../../components/DangPickerOne'
 import BuoiNgaySelect from '../../components/BuoiNgaySelect'
 import SearchSelect from '../../components/SearchSelect'
@@ -829,6 +830,14 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   }
   // Số cột khi in — RIÊNG TỪNG CÂU (cau_hinh.colByCau, autosave). Câu tag cột liền nhau tự xếp cạnh nhau.
   const setColCau = (maCau: string, n: number) => saveCh({ ...ch, colByCau: { ...(ch.colByCau ?? {}), [maCau]: n } })
+  // Hình của câu khi IN (chuẩn builder, spec §2.7 — như ET): chế độ hiện / ô trống / không · cỡ ảnh · ảnh phải. Đề 2/3 kế thừa câu gốc lúc in.
+  const setCheDo = (m: string, v: CheDoHinh) => saveCh({ ...ch, hinhCheDoByCau: { ...(ch.hinhCheDoByCau ?? {}), [m]: v } })
+  const setAnhMm = (m: string, v: { pct: number; mm: number } | null) => {
+    const mm = { ...(ch.anhMmByCau ?? {}) }, pct = { ...(ch.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[m] = v.mm; pct[m] = v.pct } else { delete mm[m]; delete pct[m] }
+    return saveCh({ ...ch, anhMmByCau: mm, anhPctByCau: pct })
+  }
+  const setAnhPhai = (m: string, v: boolean) => saveCh({ ...ch, anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } })
 
   // ── 3 MÃ ĐỀ (như ET) — base = MỌI câu XUYÊN mọi phần (đúng thứ tự phần → hàng). Đề 2/3 tự sinh khác
   //    câu (cùng dạng + form), neo theo ma_cau gốc; lưu NGAY vào cau_hinh (MT autosave). Dùng lib/made. ──
@@ -1264,6 +1273,11 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             {c && (
                               <div className="mt-1 flex flex-wrap items-center gap-1.5">
                                 <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-500" title="Mã câu">{c.ma_cau}</span>
+                                {c.anh_de && !yTruoc && (
+                                  <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: false }}>
+                                    <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} />
+                                  </AnhMmEditCtx.Provider>
+                                )}
                                 {c.bai_y && <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-800" title="Ý của bài nhiều ý — các ý cùng bài đứng liền nhau và in chung lời dẫn + hình">ý {c.nhan_y} · {c.bai_y}</span>}
                                 {pkHang ? (
                                   pkHang.form === 'trac_nghiem' && !coPhuongAn(c.ma_cau)
@@ -1281,6 +1295,16 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               </div>
                             )}
                           </div>
+                          {c && c.anh_de && !yTruoc && (
+                            // Hình–Học: 3 chế độ (có ô trống cho HS vẽ) · cỡ ảnh · hình phải/dưới; bài nhiều ý: cấu hình ở ý đầu (ảnh của cả bài)
+                            <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: r.nhanh === 'hinh_hoc',
+                              phai: (m) => ch.anhPhaiByCau?.[m] ?? r.nhanh === 'hinh_hoc', setPhai: setAnhPhai }}>
+                              <div className="flex shrink-0 flex-wrap items-center gap-1.5 pt-0.5 max-md:order-3">
+                                <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
+                                {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+                              </div>
+                            </AnhMmEditCtx.Provider>
+                          )}
                           {c && form === 'tu_luan' && !yTruoc && (() => {
                             // Bài nhiều ý (Hình–Học): MỘT ô số dòng chung cho cả bài, ở hàng ý đầu — đặt cho mọi ý cùng bài (Thùy 26/11).
                             const nhomMa: string[] = [c.ma_cau]
