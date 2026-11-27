@@ -1,19 +1,19 @@
-luat: da9c2b7f97b6
+luat: 25ba196b9148
 
 # BRIEF SOẠN — khối 7 (cắt từ spec-giai-bai.md, KHÔNG sửa tay)
 
 > VAI: **TRẠM SOẠN (Sonnet)**. Làm theo spec §C2 trạm 3–5: đọc HẾT luật dưới đây MỘT lần cho cả batch → phân dạng từng câu → đọc lý thuyết + ví dụ của dạng → giải → thử đáp số bằng script → chạy cổng.
-> Dòng đầu tệp soạn chép đúng: `luat: da9c2b7f97b6`
+> Dòng đầu tệp soạn chép đúng: `luat: 25ba196b9148`
 
 ## ĐẦU RIÊNG CỦA BATCH
 
 # ĐẦU RIÊNG BATCH B076 — K7 GIỮA KÌ II (CHỈ phần GKII của batch trộn GKI + GKII; không đụng bài GKI) — ĐỢT SAU LÔ MẪU (chưa ghi tới khi mẫu duyệt)
 
-- `<MA>` = `B076-NN`. Danh sách: `Repo\kho-rules\dai\lo\toanmath\batch\B076\ds-de.json` — mỗi mục có `don_vi`, `nam` (năm đầu năm học), `bo_sach`, `de` (trang đề trong file PDF gốc), `hd` (trang đáp án, rỗng nếu không có), `ma_de`/`tach`, `ghi_chu`. Repo = `C:\Users\WBPC\Desktop\BKERP\bkdemy-erp-v2`.
-- `<LV>` = `C:\Users\WBPC\bk-kho-lam-viec\de-thi\toanmath\B076\<MA>` (`goc.pdf` · `trang\p-N.png` 150 dpi — N là số trang TRONG goc.pdf; bộ nhiều đề thì goc.pdf chỉ còn trang đã tách, xem thực tế thư mục · `img\` · `tam\` · `de.boc.json`). Phóng to: spec §A11.
+- `<MA>` = `B076-NN`. Danh sách: `Repo\kho-rules\dai\lo\toanmath\batch\B076\ds-de.json` — mỗi mục có `don_vi`, `nam` (năm đầu năm học), `bo_sach`, `de` (trang đề trong file PDF gốc), `hd` (trang đáp án, rỗng nếu không có), `ma_de`/`tach`, `ghi_chu`. Repo = `C:\Users\Admin\Desktop\BKERP\bkdemy-erp-v2`.
+- `<LV>` = `C:\Users\Admin\bk-kho-lam-viec\de-thi\toanmath\B076\<MA>` (`goc.pdf` · `trang\p-N.png` 150 dpi — N là số trang TRONG goc.pdf; bộ nhiều đề thì goc.pdf chỉ còn trang đã tách, xem thực tế thư mục · `img\` · `tam\` · `de.boc.json`). Phóng to: spec §A11.
 - Tệp soạn: `Repo\kho-rules\dai\lo\toanmath\batch\B076\<MA>.soan.md` (spec §A10). Loại: đề thi (`thoi_gian_phut` = số phút ghi trên đề; không ghi ⇒ 90). Mốc kiến thức: **giữa kì II lớp 7** (spec Phần B › Khối 7, dòng "Giữa kì II" — luật TẠM).
 - Cổng (chạy ở Repo, sửa tới khi "✔ đạt cổng"): `node scripts/kho/de-thi/dung-de-tu-soan.mjs kho-rules/dai/lo/toanmath/batch/B076/<MA>.soan.md --lam-viec "<LV>" --khoi 7 --chi-kiem`
-- Bản đồ dạng K7 (Đại chỉ phủ Ch I–II "Số hữu tỉ", "Số thực"; Hình: HH00099–104, HH00170–172, chờ HH07000000): dump truy vấn 21/11 ở `C:\Users\WBPC\AppData\Local\Temp\claude\ad0c1492ee4a551d\fb1a0473-f033-4d4e-8640-833d19b42010\scratchpad\bdm\dai-k7-full.txt` (tạo lại: `node scripts/kho/bdm-ly-thuyet.mjs 7`); lý thuyết Hình 7: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`. **Đọc đủ mô tả + lý thuyết của dạng ứng viên rồi mới gán** (§A3).
+- Bản đồ dạng K7 (Đại chỉ phủ Ch I–II "Số hữu tỉ", "Số thực"; Hình: HH00099–104, HH00170–172, chờ HH07000000): bản đồ truy vấn 27/11 (Ch VI–VIII, thống kê tách dạng… CHƯA có, đang chờ duyệt ⇒ câu tập 2 ghi dang=— + THIẾU DẠNG) ở `C:\Users\Admin\bk-kho-lam-viec\de-thi\toanmath\_ban-do-k7\ban-do-k7-chi-tiet.txt` (mục lục: ban-do-k7-muc-luc.md cùng thư mục) (tạo lại: `node scripts/kho/bdm-ly-thuyet.mjs 7`); lý thuyết Hình 7: `kho-rules/dai/lo/k7-ly-thuyet-hinh7.md`. **Đọc đủ mô tả + lý thuyết của dạng ứng viên rồi mới gán** (§A3).
 - Hình vẽ / cắt xong ⇒ **người điều phối** chạy `anh-batch.mjs day B076`. Trạm không tự chạy.
 - Mẫu tệp soạn ĐẠT: `batch/B108/B108-01.soan.md` (có `dang=`/`chac=`, K12) và `batch/B018/B018-01.soan.md` (K7 cuối kì I, chưa có hai trường đó), `kho-rules/dai/lo/k7/GKI-32.soan.md`.
 - Quy ước đã chốt cho lô này: (1) đề nhiều mã đề ⇒ MỘT mã (mã chọn ở ds-de), không nhập mã còn lại; (2) phần tiếng Anh / phần riêng của hệ khác (Ban Mai hệ T), bài "thưởng điểm" ngoài toán ⇒ không nhập, ghi ở GHI CHÚ CHO NGƯỜI DUYỆT; (3) có đáp án in ⇒ vẫn TỰ GIẢI TRƯỚC, bản in là nhân chứng (§A4); (4) không đáp án in ⇒ ghi rõ ở GHI CHÚ, Opus giải mù toàn bộ; (5) bản đồ Đại K7 không phủ chương ⇒ `dang=—` `chac=—`, lý do mở đầu `THIẾU DẠNG: …`/`KHÔNG THUỘC CHỦ ĐỀ: …` (ghi vào GHI CHÚ CHO NGƯỜI DUYỆT dưới dạng bảng nhãn → lý do → tên dạng nên có); KHÔNG ép vào dạng Ch I–II. **NGOẠI LỆ (đã rút ở lô mẫu B075/B073, Opus kiểm xác nhận): bản đồ CÓ dạng NDB01349 «Biểu đồ/Thống kê»** (nhóm NNB01648, đọc biểu đồ tròn / cột / đoạn thẳng, bài thực tế) ⇒ câu ĐỌC / TÍNH TRÊN biểu đồ khớp rõ ⇒ NDB01349 `cao`; câu lập bảng, phân loại dữ liệu, «dữ liệu có hợp lí không» ⇒ `vua` hoặc `—`. Dạng Hình tam giác bằng nhau / cân / trung trực ⇒ HH00099–104 (`cao` khi khớp rõ); chưa có bài (xác suất, quan hệ góc–cạnh, bất đẳng thức tam giác, đường xiên) ⇒ `dang=—`; (5b) **Dữ kiện chỉ có trên HÌNH phải chép vào phần Đề** (dòng «Biết …»), căn cứ trong lời giải ghi `(gt)`, không ghi «(theo hình)»; hình VÊNH dữ kiện đề (vd điểm vẽ trên đường tròn trong khi đề cho nhỏ hơn bán kính) ⇒ `nguon=ve_lai:d`, không giữ `goc`; hướng dẫn chấm in hay sai (nhãn bài lệch, cộng sai, dùng chiều đảo trung trực / «đường cao tam giác cân là phân giác» chưa được học) ⇒ giữ kết quả ĐÚNG + `**Ghi chú:**`; câu hiểu đề hai cách (vd «từ 15h đến 17h», «hiệu số giữa hai số chấm») ⇒ chọn một cách + `**Ghi chú:**` (`**Chưa chắc:**` chỉ khi thật sự hai cách hiểu hợp lý cho đáp số khác nhau); Đúng/Sai chỉ 2 ý ⇒ `tu_luan`; bài lời văn nhiều ý được tách a/b khi mỗi ý có đáp số riêng và ý sau không phụ thuộc lời dẫn dài (như lô mẫu); (6) bộ sách không ghi ⇒ KNTT + ghi chú; nghi Cánh Diều / CTST rõ ràng ⇒ dừng, báo điều phối (§Khối 7).
@@ -284,6 +284,7 @@ luat: da9c2b7f97b6
 
 ## A18. Trình bày — bổ sung §A5
 
+- **⭐ Hết câu là xuống dòng; xuống dòng liên tục, không viết full dòng** [22/11 · Thùy; nguyên tắc trình bày CHUNG — lời giải, lý thuyết, ví dụ, mọi khối, Đại lẫn Hình]: hết một câu (dấu chấm) ⇒ xuống dòng (xuống dòng ĐƠN, không cách dòng trống). Phần lớn dòng chỉ chiếm khoảng nửa bề ngang — khi viết, ngắt dòng liên tục: "Vì … (căn cứ)" một dòng, "nên …" dòng kế, "Mà …", "Do đó …", "Suy ra …", "Vậy …" mỗi cái đứng đầu dòng riêng, công thức kết quả dài thì để riêng một dòng. Cấm đổ cả đoạn thành một dòng dài, cấm hai câu chung một dòng. Hình còn có luật dòng ngắn chi tiết (≲ 60 ký tự, căn cứ trong ngoặc) ở mục "Trình bày (phần riêng của Hình)".
 - Phần 1 không lộ đáp số cuối ở BẤT KỲ đoạn nào, kể cả `**Chú ý:**`; không có đoạn "Thử lại" trong Phần 1.
 - `**Chú ý:**` là lời dặn cho HỌC SINH (bẫy, điều kiện) — không nhận xét về sách, về kho, về phân loại.
 - Bài nhiều ý giữ chung một câu: các bước Phần 1 ghi "Ý a: …", "Ý b: …"; tổng vẫn 3–6 bước (gộp ý ngắn).
@@ -396,6 +397,7 @@ luat: da9c2b7f97b6
   - **Ngoại lệ chiều đảo trung trực CHỈ có hiệu lực trong ba bài này** (và câu xếp vào chúng). Các bài khác (HH00104…) vẫn cấm như bảng trên.
   - Cả ba bài tự có lý thuyết riêng làm whitelist (đúng luật "lý thuyết của chính bài + mọi bài đứng trước"). Nội dung gốc: `scripts/hinh-k7-thang-hang-noidung.mjs`.
   - **Phân dạng câu "chứng minh ba điểm thẳng hàng"** (chờ Thùy xác nhận): xếp vào MỘT trong ba bài theo PHƯƠNG PHÁP của lời giải (cùng đường / cộng góc / tiên đề Ơ-clit); câu nhiều ý mà ý trọng tâm là thẳng hàng thì cả câu theo bài đó; hai phương pháp cùng hợp ⇒ dạng sau thắng (HH00172 > HH00171 > HH00170).
+  - **Bài nhiều ý CHƯA tách có ý thẳng hàng** [23/11 · Thùy "đẩy thêm vào đi"]: tách bài–ý rồi đưa **CẢ BÀI** (mọi ý, không chỉ ý thẳng hàng — Thùy 16/11 "kho thẳng hàng phải đủ ý a–b–c") vào bài theo phương pháp của ý thẳng hàng. Phương pháp quyết bằng **ĐỌC lời giải của chính ý đó**, không bằng từ khoá. Hai bản trùng đề ⇒ chỉ đưa một; câu máy kiểm `nghi` ⇒ không đưa. Ghi theo LUẬT DỜI BÀI (`spec-ban-do-toan.md` § Hình–Học): thẻ ý mang bài đích, câu gốc `rut_khoi_kho=true` + `dang_chinh` khớp thẻ ý, đếm lại bằng công thức của màn kho. Số đo + danh sách không đưa: `spec-ban-do-toan.md` mục "Ba bài Thẳng hàng K7".
   - Ví dụ của bài (ô ví dụ, không nằm trong lý thuyết) thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
 - "Tam giác cân: phân giác ở đỉnh cũng là đường cao / trung tuyến" ⇒ tự chứng minh bằng tam giác bằng nhau.
 - CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
@@ -422,6 +424,13 @@ luat: da9c2b7f97b6
   - Đề KHÔNG ghi các đẳng thức bằng chữ (ngoại lệ có chủ đích của luật "đề tự đủ dữ kiện"). Khuôn đề: "Quan sát hình vẽ (các cạnh có cùng kí hiệu thì bằng nhau, các góc có cùng kí hiệu thì bằng nhau). a) Viết các yếu tố bằng nhau mà đề bài cho trên hình. b) Viết kết luận hai tam giác bằng nhau (theo đúng thứ tự đỉnh tương ứng) và nêu trường hợp bằng nhau. c) Viết các tính chất suy ra (các cặp cạnh, góc tương ứng còn lại bằng nhau)."
   - Hình phải đúng và ĐỦ mọi ký hiệu như ảnh gốc (số gạch, số cung, ô vuông), không thêm ký hiệu nào. Cạnh chung không ký hiệu — lời giải ghi `(cạnh chung)`.
   - Phần 2: a) "Đề bài cho:" từng đẳng thức `(gt)` · b) "Xét … có:" → "Do đó $\triangle …=\triangle …$ (c.c.c)." · c) "Tính chất suy ra:" ĐỦ mọi cặp tương ứng còn lại, mỗi cặp một dòng; 1–2 dòng hệ quả (phân giác, song song, vuông góc) chỉ khi chắc chắn.
+- **Hình–Luyện CÂY (`hinh_baitoan` · `hinh_cach_giai`) — chuỗi K7 Tam giác bằng nhau** [21/11 · Thùy chọn làm hình rồi lời giải; script mẫu `scripts/kho/hl-loi-giai-k7-tam-giac-v1.mjs`]:
+  - Lời giải của cách mặc định = **Phần 2 thuần** (dòng ngắn + căn cứ, khuôn "Xét … có:"); cây chưa có chỗ lưu sơ đồ tư duy (§A6 chỉ có ở `hinh_hoc_cau_so_do`) và 402 lời giải cây hiện có đều ở dạng này.
+  - Whitelist của chuỗi = whitelist K7 (a): c.c.c · c.g.c · g.c.g · (ch - gn) · (ch - cgv) · tam giác cân · trung trực CHỈ định nghĩa · các bài "ba điểm thẳng hàng" dùng ba phương pháp HH00170–172 (hai tia cùng là phân giác thì trùng · cộng góc kề bù + hai điểm khác phía · tiên đề Ơ-clit). Không dùng hình bình hành, đường trung bình, "phân giác = đường cao = trung tuyến" của tam giác cân.
+  - **Bài nối bài ⇒ viện số hiển thị**: "(Bài 4)" = số **B…** của `fn_hl_so_hien_thi` (đọc từ DB lúc ghi, KHÔNG gõ tay). Số B đổi khi thêm / xoá bài ⇒ chạy lại script sau khi sửa dữ liệu. Nhóm bài viện đầu ra: "(Bài 1–3)", "(Bài 8 hoặc Bài 10)" cho hai kiểu.
+  - Vị trí điểm đề không ghi (A nằm giữa B, F…) ⇒ ghi "(theo hình)" ngay trong dòng. Tia nằm giữa ⇒ nêu điểm khác phía; thẳng hàng bằng cộng góc ⇒ phải nêu hai điểm đầu mút khác phía đối với đường thẳng chung.
+  - **Hình cho nút:** `scripts/anh/ve_hinh_k7_tam_giac_v2.mjs` (tra mã nút theo đường tên từ mô hình gốc, gắn `gan_hinh.mjs --bang mohinh`); hình cộng dồn giả thiết, không vẽ điều phải chứng minh (§A8).
+  - **Kiểm bắt buộc:** script toạ độ riêng cho chuỗi (đủ 3 cạnh + 3 góc theo thứ tự đỉnh, song song, thẳng hàng, nằm giữa, cùng/khác phía, tia trùng) chạy ≥ 300 bộ số ngẫu nhiên mỗi mô hình, và **thử đảo một khẳng định cho nó bắt** để biết kiểm có cắn.
 - Lời giải Hình 7 nhập 07–10/10 (HH00099–HH00104 lô đầu, HH00112) chưa có 2 phần — "khi nào hoàn thiện thì sửa một thể", không sửa lẻ [09/10 · Thùy].
 - Mẫu lập luận: `HH00112` (23 câu Ôn tập Chương III), `HH00099–104`; mẫu CKI: `kho-rules/dai/lo/k7/CKI-02`, `CKI-11`, `CKI-19`.
 
@@ -429,6 +438,10 @@ luat: da9c2b7f97b6
 - [10/10] cộng góc không nêu tia nằm giữa; khẳng định không kèm lí do trong ngoặc ⇒ chưa đạt.
 - [10/10] số đo trên hình vẽ nhỏ ⇒ phóng to trước khi chép; số liệu chỉ có trên hình mà không chép vào đề ⇒ sai luật "đề tự đủ dữ kiện".
 - [27/10] dòng dài dày đặc ký hiệu ⇒ dòng ngắn (Hình chung).
+- [21/11] giả thiết nút Hình–Luyện viết "Tia $DE$ cắt đường thẳng $AB$ tại $F$" nhưng hình có $D$ nằm giữa $E$ và $F$ ⇒ tia sai hướng (phải là tia $ED$ hoặc "giao điểm của đường thẳng $DE$ và $AB$"); lộ ra khi viết lời giải bằng toạ độ ⇒ **viết giả thiết bằng toạ độ hình trước, không theo trí nhớ của file nguồn**; đã sửa MH.285.
+- [23/11] bước Phần 1 gắn NHIỀU ý trên một dòng ("Ý a, b, c: …" · "Ý b) và c): …" · "Ý b) c) …") hoặc viết "Ý a): …" ⇒ máy tách ý (`tach.mjs`) cắt lệch, ý sau mất Phần 1 ⇒ **mỗi ý một bước, viết đúng khuôn "Ý a: …"**. Câu cũ đã lỡ viết gộp: `hinh-k7-cong-goc-them.mjs` có bước tách danh sách nhãn (chữ giữ nguyên).
+- [23/11] ghi "32 câu cần tách bài–ý trước" vào DEVLOG rồi bỏ đó ⇒ bài cộng góc chỉ có 6 bài suốt một tuần, Thùy phải hỏi "sao ít bài tập thế" ⇒ **việc để dở phải vào bảng việc chờ của spec** (`spec-ban-do-toan.md` §12b), không chỉ nằm trong DEVLOG.
+- [23/11] đẩy bài–ý vào bài khác mà để câu gốc ở dạng chờ ⇒ trái LUẬT DỜI BÀI (phát hiện khi đối chiếu spec, đã sửa cùng ngày) ⇒ **đọc mục "LUẬT DỜI BÀI" trước khi viết script dời / đẩy câu Hình**.
 - [14/10 · Thùy] đề hình thiếu giả thiết cần cho hình (vd thiếu "BD là tia phân giác của góc ABC") ⇒ bổ sung vào đề + `**Ghi chú:**`, không ngầm dùng.
 
 ### Theo loại nguồn
@@ -557,6 +570,10 @@ luat: da9c2b7f97b6
 - Giả thiết đề cho thì đánh dấu (trung điểm, góc vuông, đoạn bằng nhau, số đo) ngay từ hình bài.
 - **Hình tổng quát không "đặc biệt thêm"**: tam giác thường vẽ LỆCH hẳn (không cân / gần cân), tam giác vuông không vuông cân, hình bình hành không thành chữ nhật / thoi; "AB < AC" vẽ lệch rõ.
 - **Tam giác ABC vuông tại A ⇒ A góc dưới trái, AB THẲNG ĐỨNG (B trên A), AC NẰM NGANG (C bên phải A)** [23/10 · Thùy]. Áp mọi hình; thắng luật giữ hướng ảnh cũ.
+- **QUY CHUẨN HƯỚNG TAM GIÁC khi VẼ hình (mới hoặc vẽ lại) — áp MỌI KHỐI (Thùy 23/11: "cho tất cả các lớp"):**
+  - **Tam giác nhọn:** **A ở trên, BC nằm ngang.**
+  - **Tam giác vuông:** **AC nằm ngang, B ở trên** (khớp luật vuông tại A ngay trên: A góc dưới trái, AB đứng).
+  - Hình gốc ổn giữ ảnh gốc theo §A8 (không vẽ lại chỉ để xoay); quy chuẩn này dùng khi dựng hình mới / vẽ lại. Đề không có tam giác ⇒ không áp. Máy vẽ (`ve_hinh_lib.mjs`, `hinh-toado.mjs`) và brief vẽ hình phải đặt toạ độ khung ban đầu theo đúng hướng này.
 - Câu có hình trong nguồn: giữ bố cục, tên điểm, vị trí tương đối như ảnh gốc (trừ luật vuông tại A).
 - Gạch bằng nhau không đặt trên đoạn CON (gạch "AB = AC" rơi lên AD với D ∈ AC ⇒ ngụ ý sai) ⇒ đổi sang đánh dấu hai góc đáy [02/11]. Số đo đặt ngoài cạnh nó thuộc về, không gần đoạn khác.
 
@@ -623,6 +640,7 @@ luat: da9c2b7f97b6
 | `scripts/anh/nhap_hh_tu_draft.mjs HH000xx draft.md --cam "<regex>" --hinh <dir> --ra <dir>` | Nhập câu phần Học (câu đơn): chuẩn hoá, lọc từ cấm, 1 transaction; `--ghi`; `--lop giang` = kho trên lớp. **Chưa hiểu bài–ý, chưa hiểu sơ đồ tư duy** ⇒ bài nhiều ý / có chứng minh dùng `nhap_lo.mjs` |
 | `kho-rules/hinh/lo/k8T-thales/nhap_lo.mjs "<thư mục>" [--chi-kiem]` | Cổng kiểm + nhập lô Hình–Học có bài–ý + sơ đồ tư duy; chặn từ cấm; lặp tới 0 lỗi |
 | `kho-rules/hinh/lo/k8-thales/bai-nhieu-y/nhap_bai_y.mjs` | Mẫu nhập bài–ý (chạy thử rollback → `--ghi`; kiểm trùng lời dẫn) |
+| `scripts/hinh-k7-cong-goc-them.mjs --dich HH00170\|HH00171\|HH00172 [--ghi]` · `scripts/hinh-k7-thang-hang-goc-khop-the-y.mjs [--ghi]` | Đẩy bài nhiều ý CHƯA tách (dạng chờ K7) vào ba bài Thẳng hàng: bảng `MAP` mã câu → ý thẳng hàng (đã đọc lời giải), tách bài–ý bằng logic `tach.mjs`, tạo thẻ ý ở bài đích, rút câu gốc; script thứ hai đổi `dang_chinh` câu gốc cho khớp thẻ ý + đếm theo công thức màn kho [23/11] |
 | `scripts/anh/hh_lop_chep.mjs` | Chép câu sang kho trên lớp (không xoá gốc); sau đó `fn_hh_lop_xep` |
 | `scripts/anh/gan_hinh.mjs <thư mục> [--ghi] [--thay] [--bang baitoan\|bienthe\|mohinh\|cachgiai\|hlbai\|hly]` | Upload + gắn hình theo tên tệp (= mã câu; `+` nối nhiều câu; `_de`/`_lg`); không đè trừ `--thay`; lưu biên bản URL cũ |
 | `scripts/anh/ve_lai_xuat.mjs --khoi <k> \| --bai … \| --bang …` · `ve_lai_bang.mjs <gói>` | Xuất gói vẽ lại · bảng cũ \| mới |
@@ -739,8 +757,8 @@ Câu ở dạng chờ luôn là làn 🟡 (DB chặn duyệt câu dạng chờ).
 |---|---|---|---|---|---|
 | 6 | ✔ (bộ đề 10/10) | ✔ (toanmath 13/11) | — | — | |
 | 7 | — | ✔ (toanmath 13/11) | — | — | |
-| 8 | ✔ (bộ đề 10/10) | ✔ (toanmath 13/11) | — | — | |
-| 9 | ✔ (bộ đề 18/10) | ✔ (toanmath 12/11) | — | — | — |
+| 8 | ✔ (bộ đề 10/10) | ✔ (toanmath 13/11) | ⏳ lô mẫu = B066, 15 đề / 171 câu đã ghi 21/11, chờ duyệt mẫu (`kho_lo_mau`) | — | |
+| 9 | ✔ (bộ đề 18/10) | ✔ (toanmath 12/11) | ✔ (toanmath B055, Thùy gật 21/11 — chưa bấm `fn_kho_lo_mau_duyet`) | — | — |
 | 10 | — | ✔ (toanmath 14/11) | — | — | |
 | 11 | — | ✔ (toanmath 14/11) | — | — | |
 | 12 | — | ✔ (toanmath 14/11) | ⏳ lô mẫu = B106, B108 (15/11) | — | — |
@@ -831,4 +849,6 @@ Dùng khi Thùy (hoặc trưởng khối) đưa một hoặc vài bài và **ch�
   · 6 dạng 0 gốc: NDB01224 · 01231 · 01410 · 01619 · 01621 · 03068 — **không có nguồn sách trong kho-rules** (chỉ có mô tả/ví dụ dạng) nên soạn **bài lẻ theo chỉ định dạng (§C11)**: bộ sinh bằng code, đáp số tính bằng code, 207 câu `nguon='le'`, `giai_method='claude_code'`, `duyet_nguon='ai'`. **Cách hiểu dạng do người soạn suy từ tên/mô tả — Thùy / trưởng khối K6 nên liếc lại**, nhất là NDB01621 ("Tìm x dùng GTNN của bình phương" — hiểu là tìm x từ điều kiện bình phương ≥ 0: bình phương ≤ 0, tổng bình phương, x làm biểu thức nhỏ nhất/lớn nhất) và NDB03068 (tìm cặp a<b khi biết BCNN và tích).
   · **Không fill được (2 dạng, ngoài phạm vi):** NDB03051 (3 câu) · NDB03052 (2 câu) "Vẽ thêm hình để có trục/tâm đối xứng" — hình đề, do phiên vẽ hình xử lý.
   · NDB01621 đang đúng 30 câu (không dư); mấy dạng khác dư 3–10 câu.
+- **Luật số câu theo độ khó (Thùy 21/11):** dạng **độ khó (`muc_do`) ≥ 4 chỉ cần 10–30 câu** — số câu do điều phối (Claude) quyết theo độ biến đổi được của dạng; thiếu thì Thùy bảo clone thêm sau. Dạng độ khó ≤ 3 vẫn đích 30. **K7 21/11** (`scripts/kho/clone/k7-fill.mjs`, bộ kiểm phân số BigInt đọc lại đề): NDB00797 → 15 · 01343 → 14 · 01345 → 15 · 01346 → 20 · 01350 → 14 (độ khó 4–5, soạn bài lẻ theo chỉ định dạng vì 0 gốc) · NDB01037 → 37 · 01206 → 31 · 01355 → 32 (độ khó ≤ 3, bù đủ 30). Giữ nguyên NDB00441 (29) · 01344 (28) vì độ khó 4. **Chưa làm:** NDB01340 (12 câu nháp chờ trưởng khối duyệt) · NDB01349 (hình đề, phiên vẽ hình).
+- **K8 Đại 21/11 (`scripts/kho/clone/k8-fill.mjs`):** 64/67 dạng đủ 30. NDB00982 (độ khó 3) bù 12 câu bài lẻ + **sửa 5 câu clone sai đáp án** (xem Phần D); NDB01427 (độ khó 4) soạn 12 câu (trước đó 0 câu dùng được, còn 2 nháp chờ trưởng khối duyệt); NDB00983 (độ khó 5) giữ 13 câu, rà đáp án đúng hết. **Chưa làm:** NDB01356 (hai câu gốc có hình đề — phiên vẽ hình).
 - **Luật ưu tiên cách giải — nhóm Số chính phương K6 (NDB02800 · NDB02801; Thùy 21/11):** "chứng minh không phải số chính phương" ưu tiên **cách 1** = *chia hết cho số nguyên tố $p$ nhưng không chia hết cho $p^2$*; thứ hai **cách 2** = chữ số tận cùng; thứ ba **cách 3** = số dư khi chia cho 3, 4, 5. **Clone chọn bài chủ yếu thuộc cách 1 và lời giải dùng cách 1**; chỉ khi cách 1 không dùng được mới sang cách 2, 3. Đã bù 60 câu cách 1 (`scripts/kho/clone/k6-scp.mjs`, bộ kiểm BigInt: không là SCP · $p$ nguyên tố · $p\mid A$ · $p^2\nmid A$). Trước đó NDB02800 có 18/30 câu giải bằng chữ số tận cùng, NDB02801 chỉ 8/31 bằng cách 1 — **đã dọn xong cùng ngày** (`k6-scp-sua.mjs`): 26 câu cũ giải được bằng cách 1 → viết lại lời giải theo cách 1; 35 câu không giải được bằng cách 1 (tận cùng · số dư · kẹp · luỹ thừa số mũ lẻ · abcabc · đề không thuộc dạng) → **xoá mềm vào kho rác** (khôi phục: `update dai_cau_hoi set xoa_at = null where ma_cau = …`). Còn NDB02800 = 51 câu, NDB02801 = 35 câu.
