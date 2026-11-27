@@ -4,11 +4,12 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Previewer } from 'pagedjs'
-import { getTaiLieuFull, etFormOf, DEFAULT_BTVN_LINES, type TaiLieuFull, type PhanResolved, type CauHinh } from '../../lib/tailieu'
+import { getTaiLieuFull, etFormOf, anhPhaiCua, DEFAULT_BTVN_LINES, type TaiLieuFull, type PhanResolved, type CauHinh } from '../../lib/tailieu'
 import { getBT, type BT } from '../../lib/bt'
 import type { CauHoi } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, CHROME_CSS, buildPagedCss, printWithFilename, uploadPagesAsLink, pageChrome } from './PrintView'
+import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
+import { CauItem, CauList, OptGrid, GvAnswer, WriteLines, splitStem, AnhDe, DeVaHinh, CHROME_CSS, buildPagedCss, printWithFilename, uploadPagesAsLink, pageChrome } from './PrintView'
 
 // headless+linkOnly (07-12) — dựng ẩn CHỈ để upload+ghi file_url, dùng bởi LinkGenWorker (hàng đợi
 // toàn cục, xem component đó) khi 1 BT vừa tạo/sửa xong. Mirror ĐÚNG pattern DeThiPrintView/MTPrintView.
@@ -154,16 +155,18 @@ export default function BTPrintView({ id, onClose, headless, linkOnly, onFail, o
 // "chưa cho chọn tự luận để thêm dòng" — GV ép 1 câu hiển thị Tự luận thì phải in ra dòng kẻ tương ứng).
 function BtCau({ no, c, gv, ch }: { no: number; c: CauHoi; gv: boolean; ch: CauHinh }) {
   const isDS = !!(c.menh_de && c.menh_de.length)
-  if (isDS) return <CauItem no={no} c={c} gv={gv} />
+  const cd = ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'   // hiện / ô trống / không (chuẩn builder §2.7)
+  if (isDS) return <CauItem no={no} c={c} gv={gv} cheDoHinh={cd} />
   const form = etFormOf(c, ch)
-  if (form === 'trac_nghiem') return <CauItem no={no} c={c} gv={gv} />
+  if (form === 'trac_nghiem') return <CauItem no={no} c={c} gv={gv} cheDoHinh={cd} />
   const { stem, grid, emb } = splitStem(c)
   const lines = ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES
   return (
     <div className="pv-cau">
-      <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>
-      {grid && <OptGrid grid={grid} emb={emb} />}
-      {c.anh_de && <img src={c.anh_de} alt="" className="pv-img" />}
+      <DeVaHinh ma={c.ma_cau}
+        anh={cd === 'khong' ? null : cd === 'o_trong' ? (gv && c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : <div className="pv-vebox" />) : (c.anh_de ? <AnhDe ma={c.ma_cau} src={c.anh_de} /> : null)}
+        de={<div className="pv-math"><MathText prefix={`<span class="pv-cau-no">Câu ${no}.</span> `}>{stem}</MathText></div>}
+        y={grid ? <OptGrid grid={grid} emb={emb} /> : null} />
       {gv ? <GvAnswer c={c} /> : grid ? null : form === 'tu_luan'
         ? <WriteLines n={lines} />
         : <div className="pv-tln-ans"><span className="pv-tln-lbl">Đáp án:</span><span className="pv-tln-fill" /></div>}
@@ -187,6 +190,8 @@ function BTDoc({ full, bt, gv }: { full: TaiLieuFull; bt: BT; gv: boolean }) {
   const ch = full.taiLieu.cau_hinh ?? {}
   const dangs = full.phans.filter((p) => p.loai_phan === 'dang')
   return (
+    <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
+    <AnhPhaiCtx.Provider value={anhPhaiCua(ch, bt.nhanh)}>
     <div className="pv-mt" style={{ '--pv-accent': ch.mau || '#16a34a' } as CSSProperties}>
       <div className="pv-bt-head">
         <div className="pv-bt-titlewrap">
@@ -207,6 +212,8 @@ function BTDoc({ full, bt, gv }: { full: TaiLieuFull; bt: BT; gv: boolean }) {
         dangs.map((p, i) => <DangBlockBT key={p.id} no={i + 1} p={p} gv={gv} ch={ch} />)
       )}
     </div>
+    </AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
   )
 }
 

@@ -235,7 +235,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                                 <button onClick={() => datBai(p, m, m.bai.filter((x) => x.ma_bai !== b.ma_bai).map((x) => x.ma_bai))} className="text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                               </span>
                             </div>
-                            <BaiLuyenXem b={b} cfg={laGiaoTrinh ? cfgCau : null} />
+                            <BaiLuyenXem b={b} cfg={cfgCau} />
                           </li>
                         ))}
                       </ol>}
@@ -294,7 +294,7 @@ export default function ChuyenDeHinhBuilder({ id, onClose, laGiaoTrinh = false }
                               <span className="text-[11px] text-slate-400">{b.y.length} ý</span>
                               <button onClick={() => datBai(p, { phan_id: p.khac!.phan_id } as CdhMoHinh, p.khac!.bai.filter((x) => x.ma_bai !== b.ma_bai).map((x) => x.ma_bai))} className="ml-auto text-[12px] text-slate-400 hover:text-rose-600">✕</button>
                             </div>
-                            <BaiLuyenXem b={b} cfg={laGiaoTrinh ? cfgCau : null} />
+                            <BaiLuyenXem b={b} cfg={cfgCau} />
                           </li>
                         ))}
                       </ol>
@@ -489,7 +489,7 @@ function ChonBai({ moHinhId, ten, daChon, khoa, onClose, onConfirm }: { moHinhId
 
 // ── 1 bài Hình–Luyện trong builder (Thùy 08/11 "builder chuẩn như bên kia"): ĐỦ đề + mọi ý + hình (không cắt 3 dòng) và —
 //   giáo trình — cùng bộ điều khiển câu Học (KhoiCau): dòng kẻ sau cả bài · chế độ hình · cỡ ảnh / hình phải. Khoá = mã gốc bài
-//   (btvnLinesByCau / hinhCheDoByCau / anhMmByCau của tài liệu); in đọc ở BaiHinhIn. Chuyên đề (cfg null): chỉ xem.
+//   (btvnLinesByCau / hinhCheDoByCau / anhMmByCau của tài liệu); in đọc ở BaiHinhIn. Chuyên đề cũng có đủ bộ điều khiển (Thùy 26/11 — cùng chuẩn spec §2.7).
 function BaiLuyenXem({ b, cfg, dongMacDinh = 0 }: { b: CdhBai; cfg: CfgCau | null; dongMacDinh?: number }) {
   const motY = !b.gia_thiet_chung?.trim() && b.y.length === 1
   const anh = motY ? (b.y[0]?.anh_de ?? b.anh_de) : b.anh_de

@@ -11,12 +11,14 @@ import {
 import { usePagedList } from '../../hooks/usePagedList'
 import {
   getTaiLieuFull, updateTaiLieu, deletePhan, setCauOfPhan, autoSuggestByLoai, khoCuaMon, nhanhKhoCuaDang, NHANH_BDM,
-  DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_LINES, ET_FORMS, etFormOf, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
+  DEFAULT_LUYEN_COUNTS, DEFAULT_BTVN_LINES, ET_FORMS, etFormOf, anhPhaiCua, type PhanResolved, type CauHinh, type ETForm as ETFormKind,
 } from '../../lib/tailieu'
 import { getMasteryHS, type DangMastery } from '../../lib/mastery'
 import { LOAI_CAU, KHOI_OPTIONS } from '../../lib/kho/api'
 import { MathText } from '../kho/ui'
-import { KhoPicker } from './TaiLieuBuilder'
+import { KhoPicker, CheDoHinhBtn, AnhMmCtl, AnhXem } from './TaiLieuBuilder'
+import { AnhMmEditCtx } from './anhMmCtx'
+import type { CheDoHinh } from '../../lib/kho/hinhGiaoTrinh'
 import BTPrintView from './BTPrintView'
 import { useStore } from '../../store/useStore'
 import DangPickerOne from '../../components/DangPickerOne'
@@ -235,6 +237,15 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     const next: CauHinh = { ...ch, btvnLinesByCau: { ...(ch.btvnLinesByCau ?? {}), [maCau]: n } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
   }
+  // Hình khi IN (chuẩn builder spec §2.7): chế độ hiện / ô trống / không · cỡ ảnh · hình phải
+  async function luuCh(next: CauHinh) { setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved() }
+  const setCheDo = (m: string, v: CheDoHinh) => luuCh({ ...ch, hinhCheDoByCau: { ...(ch.hinhCheDoByCau ?? {}), [m]: v } })
+  const setAnhMm = (m: string, v: { pct: number; mm: number } | null) => {
+    const mm = { ...(ch.anhMmByCau ?? {}) }, pct = { ...(ch.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[m] = v.mm; pct[m] = v.pct } else { delete mm[m]; delete pct[m] }
+    return luuCh({ ...ch, anhMmByCau: mm, anhPctByCau: pct })
+  }
+  const setAnhPhai = (m: string, v: boolean) => luuCh({ ...ch, anhPhaiByCau: { ...(ch.anhPhaiByCau ?? {}), [m]: v } })
   async function setForm(maCau: string, f: ETFormKind) {
     const next: CauHinh = { ...ch, etFormByCau: { ...(ch.etFormByCau ?? {}), [maCau]: f } }
     setCh(next); await updateTaiLieu(id, { cau_hinh: next }); markSaved()
@@ -271,6 +282,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
     && (phans.length === 0 || nhanhGoiY(d) === (bt.nhanh ?? null)))
 
   return (
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: bt.nhanh === 'hinh_hoc', phai: anhPhaiCua(ch, bt.nhanh), setPhai: setAnhPhai }}>
     <div className="flex h-full flex-col bg-[#fafafb]">
       <div className="flex flex-wrap items-center gap-3 border-b border-slate-200 bg-white px-5 py-2.5">
         {/* ⭐ 07-12: BT autosave từng thao tác — enqueue link ở lúc ĐÓNG (không phải mỗi lần autosave). */}
@@ -308,6 +320,7 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
                 onApply={(maCaus) => applyCaus(p.id, maCaus)}
                 onLine={setLines}
                 onForm={setForm}
+                onCheDo={setCheDo}
                 onGrade={chamCau}
                 onXoaDang={() => xoaDang(p.id)}
                 onOpenPicker={() => setPicker({ phanId: p.id, maDang: p.ref_ma! })} />
@@ -327,15 +340,16 @@ export function BTEditor({ id, onClose }: { id: string; onClose: () => void }) {
         onConfirm={async (m) => { await applyCaus(picker.phanId, m); setPicker(null) }} />}
       {printing && <BTPrintView id={id} onClose={() => setPrinting(false)} />}
     </div>
+    </AnhMmEditCtx.Provider>
   )
 }
 
 // 1 khối DẠNG — mirror DangCard (TaiLieuBuilder): số lượng theo loại câu + Gợi ý/Chọn câu tay + chọn
 // FORM hiển thị mỗi câu (Trắc nghiệm/Trả lời ngắn/Tự luận, giống ET) → chọn Tự luận mới hiện số dòng
 // (Thùy 07-10: "chưa cho chọn tự luận để thêm dòng" — trước chỉ theo loai_cau gốc trong kho, không ép được).
-function DangBlockUI({ no, p, ch, cauTbl, usedExcept, grades, onApply, onLine, onForm, onGrade, onXoaDang, onOpenPicker }: {
+function DangBlockUI({ no, p, ch, cauTbl, usedExcept, grades, onApply, onLine, onForm, onCheDo, onGrade, onXoaDang, onOpenPicker }: {
   no: number; p: PhanResolved; ch: CauHinh; cauTbl: string; usedExcept: Set<string>; grades: BTGrade[]
-  onApply: (maCaus: string[]) => void; onLine: (maCau: string, n: number) => void; onForm: (maCau: string, f: ETFormKind) => void
+  onApply: (maCaus: string[]) => void; onLine: (maCau: string, n: number) => void; onForm: (maCau: string, f: ETFormKind) => void; onCheDo: (maCau: string, v: CheDoHinh) => void
   onGrade: (maCau: string, maDang: string, result: BTGradeResult) => void
   onXoaDang: () => void; onOpenPicker: () => void
 }) {
@@ -376,6 +390,13 @@ function DangBlockUI({ no, p, ch, cauTbl, usedExcept, grades, onApply, onLine, o
                         className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${form === f.v ? 'bg-violet-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>{f.lbl}</button>
                     ))}
                   </div>
+                  {c.anh_de && (
+                    <>
+                      <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => onCheDo(c.ma_cau, v)} />
+                      {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
+                      <AnhXem ma={c.ma_cau} url={c.anh_de} cheDo={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} />
+                    </>
+                  )}
                   {form === 'tu_luan' && (
                     <label className="flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ để HS viết bài này">dòng
                       <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? DEFAULT_BTVN_LINES} onChange={(e) => onLine(c.ma_cau, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />

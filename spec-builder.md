@@ -138,6 +138,8 @@ Màn / khối mới có danh sách câu **dùng lại**, không vẽ list mới:
 `KhoiCau` + `CfgCau` + `CopyBuoiModal` (`bdm/BuilderBanDoMoi.tsx`) · `CheDoHinhBtn` · `AnhMmCtl` · `AnhXem` · `ColSel` · `ApplyLinesAll` · `MaCau` (`TaiLieuBuilder.tsx`) · bọc `AnhMmEditCtx` / `AnhMmCtx` / `AnhPhaiCtx` (`anhMmCtx.ts`) ·
 chọn câu `ChonCauBdm` · `ChonCauHoc` · `ChonBaiHoc` · `ChonMoHinh` · `BoChonNhom` · in `cauItemParts` · `CauFlow` · `CauColumns` · `itemsGomY` · `itemsTheoDe` (`PrintView.tsx`). Đang dùng ở: builder Đại/HGT, builder Hình, ET mới, BTVN ôn tập, Kho đề thi, soạn bài sau giờ, `OnTapEditor`.
 
+- **Bộ điều khiển hình là CHUẨN CHUNG, không phải tuỳ builder (Thùy 26/11, sau khi MT / chuyên đề Hình / BT bị bỏ sót):** mọi builder có câu kèm ảnh phải có `CheDoHinhBtn` + `AnhMmCtl` + `AnhXem` trong `AnhMmEditCtx`, và view in tương ứng phải bọc `AnhMmCtx` / `AnhPhaiCtx` + truyền `cheDoHinh`; mã đề 2/3 kế thừa. Rà 26/11: **đủ** — giáo trình Đại/Hình (`BuilderBanDoMoi`, `ChuyenDeHinhBuilder`) · ET (`ETBdmEditor` + `ETPrintView`) · BTVN (giáo trình) · Kho đề thi · bổ trợ sau giờ · MT · chuyên đề Hình–Luyện · BT cũ. **Ngoại lệ còn lại:** phần ÔN TẬP / luyện lại của BTVN (`BtvnOnTapBdm`, `OnTapConfirmScreen`) không lưu cấu hình in theo câu — chờ Thùy quyết (§12).
+
 ### 2.9 Màn
 - **Tự lưu**, dấu "✓ Đã lưu"; sau mỗi thao tác **vá đúng thẻ**, không tải lại cả buổi; nhớ buổi đang mở + vị trí cuộn khi rời màn (B5).
 - Danh sách tài liệu / thư viện mặc định **20 gần nhất** + tìm, lọc ở server (Thùy 10/09).

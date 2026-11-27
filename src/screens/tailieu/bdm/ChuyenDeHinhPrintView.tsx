@@ -8,6 +8,8 @@ import { cdhNoiDung, type CdhNoiDung } from '../../../lib/chuyenDeHinh'
 import { nguonCau } from '../../../lib/tailieuBdm'
 import { BaiHinhIn, CDH_CSS } from './HinhLuyenIn'
 import { CHROME_CSS, buildPagedCss, printWithFilename } from '../PrintView'
+import { AnhMmCtx, AnhPhaiCtx } from '../anhMmCtx'
+import { anhPhaiCua, type CauHinh } from '../../../lib/tailieu'
 
 export default function ChuyenDeHinhPrintView({ id, onlyPhanId, onClose }: { id: string; onlyPhanId?: string; onClose: () => void }) {
   const [nd, setNd] = useState<CdhNoiDung | null>(null)
@@ -82,9 +84,12 @@ export default function ChuyenDeHinhPrintView({ id, onlyPhanId, onClose }: { id:
 }
 
 function Doc({ nd, gv, nguon }: { nd: CdhNoiDung; gv: boolean; nguon: Record<string, string> }) {
-  const ch = (nd.tai_lieu?.cau_hinh ?? {}) as { mau?: string }
+  const ch = (nd.tai_lieu?.cau_hinh ?? {}) as CauHinh & { mau?: string }
   let no = 0
+  // Cấu hình in theo bài (khoá = mã gốc bài): dòng kẻ sau cả bài · chế độ hình · cỡ ảnh · hình phải — cùng chuẩn builder (spec §2.7)
   return (
+    <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
+    <AnhPhaiCtx.Provider value={anhPhaiCua(ch, nd.tai_lieu?.nhanh)}>
     <div className="pv-cdh" style={{ '--pv-accent': ch.mau || '#2D9CDB' } as CSSProperties}>
       <div className="pv-bt-head"><div className="pv-bt-titlewrap">
         <div className="pv-bt-eyebrow">Chuyên đề Hình · Khối {nd.tai_lieu?.khoi}{gv ? ' · Bản giáo viên' : ''}</div>
@@ -98,11 +103,13 @@ function Doc({ nd, gv, nguon }: { nd: CdhNoiDung; gv: boolean; nguon: Record<str
           {[...p.mo_hinh, ...(p.khac?.bai.length ? [{ phan_id: p.khac.phan_id, ten: p.mo_hinh.length ? 'Bài tập khác' : '', bai: p.khac.bai }] : [])].map((m) => (
             <div key={m.phan_id} className="cdh-mh">
               {m.ten !== '' && <div className="cdh-mh-head">{m.ten ?? '(mô hình đã xoá khỏi bản đồ)'}</div>}
-              {m.bai.map((b) => { no += 1; return <BaiHinhIn key={b.ma_bai} b={b} no={no} gv={gv} nguon={nguon[b.ma_bai]} /> })}
+              {m.bai.map((b) => { no += 1; return <BaiHinhIn key={b.ma_bai} b={b} no={no} gv={gv} nguon={nguon[b.ma_bai]} lines={ch.btvnLinesByCau?.[b.ma_bai] ?? 0} cheDo={ch.hinhCheDoByCau?.[b.ma_bai]} /> })}
             </div>
           ))}
         </section>
       ))}
     </div>
+    </AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
   )
 }

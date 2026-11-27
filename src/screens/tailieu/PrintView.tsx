@@ -1171,7 +1171,7 @@ export function cauItemParts({ no, c, gv, lines = 0, cheDoHinh, tienTo = 'Câu',
     hasImg: !!c.anh_de,
   }
 }
-export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: number; tienTo?: string }) {
+export function CauItem(props: { no: number; c: CauHoi; gv: boolean; lines?: number; tienTo?: string; cheDoHinh?: CheDoHinh }) {
   const { content, lines } = cauItemParts(props)
   return <div className="pv-cau">{content}{lines > 0 && <WriteLines n={lines} />}</div>
 }
