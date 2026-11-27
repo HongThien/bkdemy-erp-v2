@@ -5,15 +5,17 @@
 // Ôn tập thêm (GV tick tay): tối đa CAP_NHOM_ON_TAP nhóm cũ hơn, máy gợi ý SO_CAU_ON_TAP câu/nhóm; mặc định không chọn.
 import { useEffect, useState } from 'react'
 import { noiDung, goiY, onTapXep, trichBuoiBdm, cauCuaBuoi, loiDoc, CAP_NHOM_ON_TAP, SO_CAU_ON_TAP, type NdBuoi, type UngVienXep } from '../../../lib/tailieuBdm'
-import { fetchCausCuaTaiLieu, renumberBuoiLop, DEFAULT_BTVN_LINES, type TaiLieuNhanhCtx } from '../../../lib/tailieu'
+import { fetchCausCuaTaiLieu, renumberBuoiLop, updateTaiLieu, anhPhaiCua, DEFAULT_BTVN_LINES, type TaiLieuNhanhCtx, type CauHinh } from '../../../lib/tailieu'
+import type { CheDoHinh } from '../../../lib/kho/hinhGiaoTrinh'
+import { AnhMmEditCtx, AnhMmCtx, AnhPhaiCtx } from '../anhMmCtx'
 import type { CauHoi } from '../../../lib/kho/api'
 import { useStore } from '../../../store/useStore'
 import { cauItemParts, CauFlow, CHROME_CSS } from '../PrintView'
 import { KhoiCau, type CfgCau } from './BuilderBanDoMoi'
 import ChonCauBdm from './ChonCauBdm'
 
-// Ôn tập KHÔNG lưu cấu hình in theo câu (dòng/cột/chế độ hình) — KhoiCau chạy chế độ `gon`, cfg chỉ để đủ kiểu.
-const CFG_TRONG: CfgCau = { lines: {}, cols: {}, cheDo: {}, onLine: () => {}, onLineAll: () => {}, onCol: () => {}, onCheDo: () => {} }
+// Luyện lại + Ôn tập CÓ cấu hình in theo câu như mọi builder (Thùy 26/11, spec §2.7): dòng cả bài · cột · chế độ hình · cỡ ảnh · hình phải.
+// Khởi tạo từ cau_hinh của giáo trình gốc (câu cùng giáo trình đã có sẵn), sửa ở đây, GHI vào phiếu BTVN vừa tạo (cau_hinh của phiếu) lúc Xác nhận.
 // Mặc định đề xuất SO_CAU_ON_TAP (2) câu / nhóm; GV đổi số theo loại + Gợi ý lại, hoặc ✎ Chọn câu / ✕ như builder.
 const SO_ON_TAP_MAC_DINH: Record<string, number> = { trac_nghiem: SO_CAU_ON_TAP, tra_loi_ngan: 0, tu_luan: 0 }
 type KhoiLui = { phanId: string; bac: number; buoi: string | null; nhom: string; ten: string | null; caus: string[] }
@@ -33,6 +35,20 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
   const [chonCau, setChonCau] = useState<string | null>(null) // nhóm đang mở hộp "✎ Chọn câu"
   // lui = phần luyện lại đã soạn trong giáo trình gốc (GV bỏ bớt câu được trước khi tạo phiếu).
   const [lui, setLui] = useState<KhoiLui[]>([])
+  const [ch, setCh] = useState<CauHinh>({})
+  const capNhatCh = (f: (x: CauHinh) => CauHinh) => setCh((x) => f(x))
+  const cfg: CfgCau = {
+    lines: ch.btvnLinesByCau ?? {}, cols: ch.colByCau ?? {}, cheDo: (ch.hinhCheDoByCau ?? {}) as Record<string, CheDoHinh>,
+    onLine: (m, n) => capNhatCh((x) => ({ ...x, btvnLinesByCau: { ...(x.btvnLinesByCau ?? {}), [m]: n } })),
+    onLineAll: (ms, n) => capNhatCh((x) => { const l = { ...(x.btvnLinesByCau ?? {}) }; ms.forEach((m) => { l[m] = n }); return { ...x, btvnLinesByCau: l } }),
+    onCol: (m, n) => capNhatCh((x) => ({ ...x, colByCau: { ...(x.colByCau ?? {}), [m]: n } })),
+    onCheDo: (m, v) => capNhatCh((x) => ({ ...x, hinhCheDoByCau: { ...(x.hinhCheDoByCau ?? {}), [m]: v } })),
+  }
+  const onAnhMm = (m: string, v: { pct: number; mm: number } | null) => capNhatCh((x) => {
+    const mm = { ...(x.anhMmByCau ?? {}) }, pct = { ...(x.anhPctByCau ?? {}) }
+    if (v && v.mm > 0) { mm[m] = v.mm; pct[m] = v.pct } else { delete mm[m]; delete pct[m] }
+    return { ...x, anhMmByCau: mm, anhPctByCau: pct }
+  })
 
   async function napCau(ms: string[]) {
     const can = ms.filter((m) => !cauMap.has(m))
@@ -46,6 +62,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
         const [nd, uv] = await Promise.all([noiDung(masterId, buoiId), onTapXep(masterId, buoiId, lopId)])
         const b = nd.buoi[0] ?? null
         const l = (b?.on_tap ?? []).filter((o) => o.lui_bac && o.caus.length).map((o) => ({ phanId: o.phan_id, bac: o.lui_bac!, buoi: o.lui_buoi ?? null, nhom: o.id, ten: o.ten, caus: o.caus }))
+        setCh((nd.tai_lieu?.cau_hinh ?? {}) as CauHinh)
         setBuoi(b); setUngVien(uv.ds); setXepTheoMastery(uv.xepTheoMastery); setLui(l)
         if (b) await napCau([...b.nhom.flatMap((n) => n.btvn?.caus ?? []), ...l.flatMap((k) => k.caus)])
       } catch (e) { setLoi(loiDoc(e)) }
@@ -98,6 +115,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
         lui: luiCo.map((k) => ({ bac: k.bac, buoi: k.buoi, nhom: k.nhom, caus: k.caus })),
       } : undefined
       const doc = await trichBuoiBdm(masterId, buoiId, { lopId, ngay, khoi, tenLop, tenBuoi, loai: 'btvn', phieu, onTap: chon.filter((c) => c.caus.length > 0).map((c) => ({ nhom: c.nhom, caus: c.caus })) })
+      await updateTaiLieu(doc.id, { cau_hinh: ch })   // cấu hình in (kể cả câu luyện lại / ôn tập vừa chỉnh) theo phiếu
       useStore.getState().enqueueLinkGen(doc.id, doc.loai)
       for (const d of await renumberBuoiLop(lopId)) useStore.getState().enqueueLinkGen(d.id, d.loai)
       onDone()
@@ -109,7 +127,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
     const c = cauMap.get(m)
     if (!c) return null
     bno += 1
-    return { key: m, cols: 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : DEFAULT_BTVN_LINES }) }
+    return { key: m, cols: ch.colByCau?.[m] ?? 1, ...cauItemParts({ no: bno, c, gv, lines: gv ? 0 : (ch.btvnLinesByCau?.[m] ?? DEFAULT_BTVN_LINES), cheDoHinh: ch.hinhCheDoByCau?.[m] }) }
   }
   type Items = Parameters<typeof CauFlow>[0]['items']
   const nhomGoc = (buoi?.nhom ?? []).filter((n) => n.btvn?.caus.length)
@@ -117,6 +135,9 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
   const luiHien = lui.filter((k) => k.caus.length)
 
   return (
+    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: onAnhMm, baChe: false, phai: anhPhaiCua(ch, tl.nhanh ?? null), setPhai: (m, v) => capNhatCh((x) => ({ ...x, anhPhaiByCau: { ...(x.anhPhaiByCau ?? {}), [m]: v } })) }}>
+    <AnhMmCtx.Provider value={ch.anhMmByCau ?? {}}>
+    <AnhPhaiCtx.Provider value={anhPhaiCua(ch, tl.nhanh ?? null)}>
     <div className="fixed inset-0 z-[80] flex flex-col bg-white">
       <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
         <div>
@@ -133,7 +154,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
               ? <div className="rounded-lg border border-dashed border-slate-300 p-4 text-center text-[12px] italic text-slate-400">Buổi này chưa soạn phần luyện lại. Soạn ở builder giáo trình: chế độ 📝 BTVN → “Luyện lại buổi trước / buổi trước nữa”.</div>
               : lui.map((k) => (
                 <div key={k.phanId} className="rounded-lg border border-slate-200 bg-white">
-                  <KhoiCau tieuDe={`${k.bac === 1 ? 'Buổi trước' : 'Buổi trước nữa'} · ${k.ten ?? k.nhom} · ${k.caus.length} câu`} mau="amber" gon caus={k.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false}
+                  <KhoiCau tieuDe={`${k.bac === 1 ? 'Buổi trước' : 'Buổi trước nữa'} · ${k.ten ?? k.nhom} · ${k.caus.length} câu`} mau="amber" btvn caus={k.caus} cauMap={cauMap} cfg={cfg} chiXem={false}
                     onXoa={(m) => setLui((s) => s.map((x) => x.phanId === k.phanId ? { ...x, caus: x.caus.filter((y) => y !== m) } : x))}
                     onDoi={(ds) => setLui((s) => s.map((x) => x.phanId === k.phanId ? { ...x, caus: ds } : x))} />
                 </div>
@@ -161,7 +182,7 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
                     </label>
                     {c && (
                       <div className="mt-1.5 rounded-md border border-violet-100 bg-violet-50/30">
-                        <KhoiCau tieuDe={`Ôn tập · ${c.caus.length} câu`} mau="sky" gon caus={c.caus} cauMap={cauMap} cfg={CFG_TRONG} chiXem={false} soMacDinh={SO_ON_TAP_MAC_DINH}
+                        <KhoiCau tieuDe={`Ôn tập · ${c.caus.length} câu`} mau="sky" btvn caus={c.caus} cauMap={cauMap} cfg={cfg} chiXem={false} soMacDinh={SO_ON_TAP_MAC_DINH}
                           onXoa={(m) => xoaCau(u.nhom, m)}
                           onDoi={(ds) => setChon((s) => s.map((x) => x.nhom === u.nhom ? { ...x, caus: ds } : x))}
                           onGoiY={(so) => goiYLai(u.nhom, so)}
@@ -235,5 +256,8 @@ export default function BtvnOnTapBdm({ tl, masterId, buoiId, tenBuoi, lopId, ten
         <button onClick={xacNhan} disabled={busy || !buoi} className="rounded-lg bg-violet-600 px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-violet-500 disabled:opacity-40">{busy ? 'Đang tạo…' : '✓ Xác nhận · Tạo BTVN'}</button>
       </div>
     </div>
+    </AnhPhaiCtx.Provider>
+    </AnhMmCtx.Provider>
+    </AnhMmEditCtx.Provider>
   )
 }
