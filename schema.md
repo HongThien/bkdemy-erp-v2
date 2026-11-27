@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-620 bảng · 42 view · 0 enum · 520 trigger · 2099 function
+621 bảng · 42 view · 0 enum · 520 trigger · 2100 function
 
 ## _app_secrets
 
@@ -6540,6 +6540,15 @@ END |  |  |
 | nguoi_sua | uuid | Y |  | FK→nhan_su.id |  |
 | sua_at | timestamp with time zone |  | now() |  |  |
 
+## phien_claude_chan
+
+| cột | kiểu | null | default | khóa | giá trị hợp lệ |
+|---|---|---|---|---|---|
+| nhan_su_id | uuid |  |  | PK FK→nhan_su.id |  |
+| ly_do | text |  |  |  |  |
+| chan_at | timestamp with time zone |  | now() |  |  |
+| chan_boi | uuid | Y | jwt_uid() |  |  |
+
 ## phien_phieu
 
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
@@ -7048,7 +7057,7 @@ END |  |  |
 | cột | kiểu | null | default | khóa | giá trị hợp lệ |
 |---|---|---|---|---|---|
 | ma | text |  |  | PK |  |
-| mon | text |  |  | FK→sotay_ct_hinh.mon |  |
+| mon | text |  |  | FK→sotay_ct_chu_de.mon |  |
 | khoi | text |  |  | FK→sotay_ct_chu_de.khoi |  |
 | chu_de | text |  |  | FK→sotay_ct_chu_de.ma |  |
 | thu_tu | smallint |  | 0 |  |  |
@@ -12426,6 +12435,7 @@ WITH luot AS (
 - `_phien_bd_kiem_khoi(p_bang text, p_loai text, p_id text, p_khoi text)` → void
 - `_phien_bd_vao(p_phien uuid)` → claude_phien
 - `_phien_bdm_bang(p_mon text)` → TABLE(bang text, ham text, co_vung boolean)
+- `_phien_bi_chan()` → boolean
 - `_phien_ghi_lich_su()` → trigger
 - `_phien_gioi_han_anh_ngay()` → integer
 - `_phien_hinh_khoi(p_v text)` → text
