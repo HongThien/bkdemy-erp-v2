@@ -33,8 +33,15 @@
 
 ## A2. Phạm vi kiến thức
 
-- Lời giải **chỉ dùng kiến thức của chủ đề đó và các chủ đề đứng trước** trong chương trình của khối (gồm mọi khối dưới). Mốc cụ thể từng khối, từng kì: Phần B.
-- Đề kiểm tra tới đâu thì dùng tới đó: đề giữa kì I không dùng công cụ của kì II. Công cụ vượt mốc mà đề buộc phải dùng ⇒ vẫn giải, treo `**Chưa chắc:**`.
+- **⭐ HAI LUẬT CỨNG, KHÔNG NGOẠI LỆ** [28/11 · Thùy — sau khi bài Hình K7 (MT tháng 11, ET/BTVN Thẳng hàng) bị giải bằng kiến thức lớp 8]:
+  1. **ĐÚNG LỚP**: câu của khối nào chỉ được giải bằng kiến thức của khối đó và các khối dưới. **Cấm tuyệt đối công cụ của khối TRÊN**, kể cả khi nó làm lời giải ngắn hơn, kể cả khi đáp số đúng. Ví dụ K7 cấm: hình bình hành / hình thoi / hình chữ nhật / hình thang (dấu hiệu, tính chất), đường trung bình, Ta-lét, đồng dạng, Pytago, lượng giác, hằng đẳng thức mở rộng, phương trình bậc hai… (danh sách cụ thể từng khối ở Phần B chỉ là VÍ DỤ — thiếu tên trong danh sách KHÔNG có nghĩa là được dùng).
+  2. **ĐÚNG CHỦ ĐỀ**: câu thuộc chủ đề / bài nào chỉ được dùng kiến thức của **chính chủ đề / bài đó và các chủ đề / bài ĐỨNG TRƯỚC** (theo thứ tự bản đồ). **Cấm dùng kiến thức của chủ đề / bài đứng SAU.** Đối chiếu bằng thứ tự bài trên bản đồ, không bằng trí nhớ về chương trình.
+  - **Cách kiểm**: mỗi công cụ / định lí / tính chất trong lời giải phải chỉ ra được nó nằm ở lý thuyết của bài nào (≤ bài đang xét, ≤ khối đang xét). Chỉ ra không được ⇒ công cụ ngoài phạm vi.
+  - **Tính chất quen miệng mà không có trong whitelist ⇒ TỰ CHỨNG MINH tại chỗ bằng whitelist** (vd "hai đường chéo cắt nhau tại trung điểm" không được dùng làm dấu hiệu ở K7; "phân giác của tam giác cân cũng là trung tuyến" phải chứng minh bằng tam giác bằng nhau).
+  - **Không chứng minh được trong whitelist** ⇒ KHÔNG giải bằng công cụ ngoài. Ghi `DE_SAU (<mã bài cần>)` (chép đề + 1 dòng lí do), câu **không vào kho** và không đưa vào tài liệu cho học sinh. **Cấm dùng `**Chưa chắc:**` để "xin phép" dùng công cụ ngoài phạm vi** (cờ đó chỉ dành cho hai cách hiểu đề hoặc không thử lại được).
+  - **Áp NGƯỢC cho câu đã có trong kho** (trước ngày 28/11 chưa từng bị rà): rà theo đúng hai luật này; câu vi phạm ⇒ `rut_khoi_kho` + báo trưởng khối, KHÔNG sửa lẻ trong tài liệu đã phát. Danh sách nghi ngờ đợt đầu: `reports/ra-pham-vi-hinh7-2026-11-28.md`.
+  - **Máy không bắt được** (đáp số vẫn đúng) ⇒ trạm kiểm (§A13) BẮT BUỘC đọc từng câu theo hai luật này và ghi riêng một dòng "phạm vi: đạt / vi phạm <công cụ>" trong biên bản; thiếu dòng ⇒ biên bản chưa đạt. Cổng tự duyệt (§C6) cũng chỉ cho câu tự vào kho khi trạm kiểm đã ghi "phạm vi: đạt".
+- Đề kiểm tra tới đâu thì dùng tới đó: đề giữa kì I không dùng công cụ của kì II (tức luật 2 áp theo mốc đã dạy). Công cụ vượt mốc mà đề buộc phải dùng ⇒ `DE_SAU`, không ép giải.
 - Khối nâng cao (4T, 5T, 8T): theo mục riêng của khối ở Phần B.
 - Không ghi "(như VD 8.1 của sách)" hay trỏ về tài liệu gốc trong lời giải — học sinh không có tài liệu đó.
 
@@ -1165,7 +1172,7 @@ Mỗi trạm soạn Hình nhận ≤ 6 câu. Lời giao trạm vẽ phải ghi t
   - **Bài nhiều ý CHƯA tách có ý thẳng hàng** [23/11 · Thùy "đẩy thêm vào đi"]: tách bài–ý rồi đưa **CẢ BÀI** (mọi ý, không chỉ ý thẳng hàng — Thùy 16/11 "kho thẳng hàng phải đủ ý a–b–c") vào bài theo phương pháp của ý thẳng hàng. Phương pháp quyết bằng **ĐỌC lời giải của chính ý đó**, không bằng từ khoá. Hai bản trùng đề ⇒ chỉ đưa một; câu máy kiểm `nghi` ⇒ không đưa. Ghi theo LUẬT DỜI BÀI (`spec-ban-do-toan.md` § Hình–Học): thẻ ý mang bài đích, câu gốc `rut_khoi_kho=true` + `dang_chinh` khớp thẻ ý, đếm lại bằng công thức của màn kho. Số đo + danh sách không đưa: `spec-ban-do-toan.md` mục "Ba bài Thẳng hàng K7".
   - Ví dụ của bài (ô ví dụ, không nằm trong lý thuyết) thiếu điều kiện vị trí (khác phía, nằm giữa) ⇒ bổ sung vào đề + ghi trong biên bản nháp (đã làm với bài cộng góc).
 - "Tam giác cân: phân giác ở đỉnh cũng là đường cao / trung tuyến" ⇒ tự chứng minh bằng tam giác bằng nhau.
-- CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
+- CẤM cả khối: Pytago, đồng dạng, Ta-lét, lượng giác, đường trung bình, quan hệ góc–cạnh, bất đẳng thức tam giác, đường đồng quy; **và [28/11] mọi kiến thức Tứ giác lớp 8: hình bình hành / hình thang / hình chữ nhật / hình thoi / hình vuông (dấu hiệu nhận biết + tính chất, kể cả "hai đường chéo cắt nhau tại trung điểm", "tứ giác có … ⇒ là hình bình hành")**, phân giác = đường cao = trung tuyến của tam giác cân (phải tự chứng minh), trung trực chiều ĐẢO (trừ ba bài Thẳng hàng). Danh sách này chỉ là ví dụ — nguyên tắc ở §A2 (đúng lớp, đúng chủ đề) mới là luật. Bảng CẤM của HH00170–172 "như trên" **gồm cả mục Tứ giác vừa nêu**; bài tạp HH00025 / HH07000000 không có lý thuyết riêng ⇒ **giải theo whitelist HH00104 (bài cao nhất của Tam giác bằng nhau)**, không rộng hơn. Tam giác bằng nhau chỉ khi mốc đã dạy tới (CKI có; GKI thường chưa).
 - Hình khối ($V=S_{\text{đáy}}.h$, $S_{xq}=C_{\text{đáy}}.h$…) thuộc Ch X tập 2 — không thuộc HK1. Khi tới mốc kì II: `Thể tích hình hộp chữ nhật là: $V=a.b.c=\dots$ ($cm^3$)`; lăng trụ `$S_{\text{đáy}}=\dfrac12.a.h$` rồi `$V=S_{\text{đáy}}.h$`; đổi đơn vị trước khi tính.
 
 **(b) Trình bày riêng**
