@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-621 bảng · 42 view · 0 enum · 522 trigger · 2104 function
+621 bảng · 42 view · 0 enum · 522 trigger · 2105 function
 
 ## _app_secrets
 
@@ -3811,6 +3811,7 @@ END |  |  |
 | da_biet | text | Y |  |  |  |
 | rut_khoi_kho | boolean |  | false |  |  |
 | kho_chuan | boolean | Y | ((NOT rut_khoi_kho) AND (da_duyet OR (kiem_may IS DISTINCT FROM 'nghi'::text))) |  |  |
+| gia_thiet_them | text | Y |  |  |  |
 
 ## hinh_hoc_cau_hoi_yeu_cau_giai
 
@@ -12201,6 +12202,7 @@ WITH luot AS (
 - `_hh_bai_y_danh_lai(p_bai_y text, p_ds text[])` → void
 - `_hh_so_do_cham_updated_at()` → trigger
 - `_hh_so_do_hop_le(p jsonb)` → boolean
+- `_hh_tach_gia_thiet(t text)` → text
 - `_hinh_bai_dong_bo_chuyen_de()` → trigger
 - `_hinh_hoc_cau_lop_truoc_sua()` → trigger
 - `_hk_can_hau_kiem(p_ns uuid)` → boolean
