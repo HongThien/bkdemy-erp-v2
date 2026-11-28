@@ -1,0 +1,4787 @@
+[
+ {
+  "noi_dung": "Có 15 tấn quặng chứa 45% sắt và 30 tấn quặng chứa 60% sắt. Nếu trộn hai loại này với nhau thì hỗn hợp có tỉ lệ sắt là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$52,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$82,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$45\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$5,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 300 g dung dịch nước đường chứa 6% đường và 75 g dung dịch nước đường chứa 2% đường. Nếu trộn hai loại này với nhau thì hỗn hợp có tỉ lệ đường là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$4\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$6,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$94,8\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$2,8\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$52\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 120 kg hợp kim chứa 80% đồng và 30 kg hợp kim chứa 65% đồng. Nếu trộn hai loại này với nhau thì hỗn hợp có tỉ lệ đồng là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$72,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$96,25\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$23\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$68\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$7,7\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 450 g dung dịch cồn chứa 70% cồn và 50 g dung dịch cồn chứa 50% cồn. Nếu trộn hai loại này với nhau thì hỗn hợp có tỉ lệ cồn là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng các phần khi tính khối lượng hỗn hợp"
+   },
+   {
+    "text": "$32\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$52\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$6,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ 75 tấn quặng chứa 80% sắt vào 5 tấn quặng chứa 40% sắt rồi khuấy đều. Tính tỉ số phần trăm sắt trong hỗn hợp mới.",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$22,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$42,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$7,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 10 kg sữa chứa 2% chất béo với 40 kg sữa chứa 3% chất béo. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm chất béo?",
+  "nhieu": [
+   {
+    "text": "$2,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$14\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$97,2\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$2,2\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 60 g dung dịch cồn chứa 70% cồn với 240 g dung dịch cồn chứa 50% cồn. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm cồn?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$67,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$46\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$66\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$5,4\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ 100 g dung dịch nước muối chứa 8% muối vào 150 g dung dịch nước muối chứa 20% muối rồi khuấy đều. Tính tỉ số phần trăm muối trong hỗn hợp mới.",
+  "nhieu": [
+   {
+    "text": "$14\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$38\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$84,8\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$12,8\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$1,52\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 450 g dung dịch nước muối chứa 20% muối với 150 g dung dịch nước muối chứa 10% muối. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$15\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$35\\%$",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng các phần khi tính khối lượng hỗn hợp"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$82,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$12,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 120 g dung dịch nước đường chứa 25% đường với 240 g dung dịch nước đường chứa 10% đường. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm đường?",
+  "nhieu": [
+   {
+    "text": "$17,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$35\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$45\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ chung ba loại vào một thùng: 10 kg sữa chứa 4,5% chất béo, 45 kg sữa chứa 1% chất béo và 25 kg sữa chứa 6% chất béo. Tính tỉ số phần trăm chất béo của hỗn hợp trong thùng.",
+  "nhieu": [
+   {
+    "text": "$11,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$24\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$97\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$3,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm đầu thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$9,6\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ chung ba loại vào một thùng: 350 g dung dịch nước đường chứa 2% đường, 200 g dung dịch nước đường chứa 8% đường và 450 g dung dịch nước đường chứa 10% đường. Tính tỉ số phần trăm đường của hỗn hợp trong thùng.",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$93,2\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$7,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$68\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm đầu thay vì tính theo khối lượng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ chung ba loại vào một thùng: 75 g dung dịch nước muối chứa 15% muối, 150 g dung dịch nước muối chứa 2% muối và 50 g dung dịch nước muối chứa 10% muối. Tính tỉ số phần trăm muối của hỗn hợp trong thùng.",
+  "nhieu": [
+   {
+    "text": "$9\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$27\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$38,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$93\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$13\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm đầu thay vì tính theo khối lượng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 200 g dung dịch nước muối chứa 6% muối, 600 g dung dịch nước muối chứa 4% muối và 250 g dung dịch nước muối chứa 15% muối với nhau. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$36,75\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$93\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm đầu thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$29,4\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ chung ba loại vào một thùng: 60 kg sữa chứa 1,5% chất béo, 45 kg sữa chứa 5% chất béo và 40 kg sữa chứa 3% chất béo. Tính tỉ số phần trăm chất béo của hỗn hợp trong thùng.",
+  "nhieu": [
+   {
+    "text": "$9,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$7,25\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$97\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$3,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm đầu thay vì tính theo khối lượng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 12 kg sữa chứa 5% chất béo với sữa chứa 1% chất béo có khối lượng bằng 150% khối lượng loại đầu. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm chất béo?",
+  "nhieu": [
+   {
+    "text": "$3\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$6,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$97,4\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$3,4\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$26\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người có 800 g dung dịch nước muối chứa 3% muối. Người đó đổ thêm dung dịch nước muối chứa 0,9% muối với khối lượng bằng 250% khối lượng loại đầu rồi trộn đều. Tính tỉ số phần trăm muối của hỗn hợp.",
+  "nhieu": [
+   {
+    "text": "$1,95\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$3,9\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$5,25\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$98,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$2,4\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 200 g dung dịch nước đường chứa 20% đường với dung dịch nước đường chứa 40% đường có khối lượng bằng 60% khối lượng loại đầu. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm đường?",
+  "nhieu": [
+   {
+    "text": "$30\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$44\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$72,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$32,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$2,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 300 g dung dịch nước đường chứa 8% đường với dung dịch nước đường chứa 5% đường có khối lượng bằng 50% khối lượng loại đầu. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm đường?",
+  "nhieu": [
+   {
+    "text": "$6,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$13\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$21\\%$",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng các phần khi tính khối lượng hỗn hợp"
+   },
+   {
+    "text": "$10,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$93\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 350 g dung dịch nước đường chứa 8% đường với dung dịch nước đường chứa 20% đường có khối lượng bằng 150% khối lượng loại đầu. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm đường?",
+  "nhieu": [
+   {
+    "text": "$14\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$38\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$84,8\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$12,8\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$1,52\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 150 g dung dịch cồn chứa 60% cồn với dung dịch cồn chứa 90% cồn có khối lượng bằng 150% khối lượng loại đầu. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm cồn?",
+  "nhieu": [
+   {
+    "text": "$75\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm của các phần, không tính theo khối lượng"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$22\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được (nhầm sang phần không phải chất tan)"
+   },
+   {
+    "text": "$72\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$7,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 350 g dung dịch nước đường chứa 12% đường và 50 g dung dịch nước đường chứa 20% đường. Nếu trộn hai loại này với nhau thì nước chiếm bao nhiêu phần trăm hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$84\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$13\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$81\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$8,7\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ 400 g dung dịch nước muối chứa 4% muối vào 600 g dung dịch nước muối chứa 6% muối rồi khuấy đều. Tính tỉ số phần trăm nước trong hỗn hợp mới.",
+  "nhieu": [
+   {
+    "text": "$95\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$87\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$5,2\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$95,2\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$9,48\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 80 g dung dịch cồn chứa 30% cồn với 120 g dung dịch cồn chứa 60% cồn. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$55\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần cuối thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$48\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$58\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$5,2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 800 g dung dịch nước muối chứa 4,5% muối với 200 g dung dịch nước muối chứa 6% muối. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$94,75\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$92\\%$",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng các phần khi tính khối lượng hỗn hợp"
+   },
+   {
+    "text": "$94\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$4,8\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$94,3\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 500 g dung dịch nước đường chứa 20% đường và 100 g dung dịch nước đường chứa 5% đường. Nếu trộn hai loại này với nhau thì nước chiếm bao nhiêu phần trăm hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$87,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$73,75\\%$",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng các phần khi tính khối lượng hỗn hợp"
+   },
+   {
+    "text": "$79\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng của phần thứ nhất thay vì cho cả hỗn hợp"
+   },
+   {
+    "text": "$17,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$92,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 100 g dung dịch cồn chứa 90% cồn với 350 g dung dịch cồn chứa 45% cồn. Hỏi hỗn hợp thu được chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$32,5\\%$",
+    "rule": "R532",
+    "duong_sai": "Lấy trung bình cộng các tỉ số phần trăm nước, không tính theo khối lượng từng phần"
+   },
+   {
+    "text": "$65\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng các tỉ số phần trăm của các phần thay vì tính theo khối lượng"
+   },
+   {
+    "text": "$55\\%$",
+    "rule": "R101",
+    "duong_sai": "Dừng ở tỉ số phần trăm chất tan, quên lấy 100% trừ đi để ra phần nước"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R529",
+    "duong_sai": "Ghép nhầm khối lượng của phần này với tỉ số phần trăm của phần kia"
+   },
+   {
+    "text": "$4,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hỗn hợp nặng 500 g, chứa 75% cồn, được tạo thành khi trộn 150 g dung dịch cồn chứa 40% cồn với một loại dung dịch cồn khác. Tính tỉ số phần trăm cồn của loại dung dịch cồn khác đó.",
+  "nhieu": [
+   {
+    "text": "$63\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$35\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   },
+   {
+    "text": "$9\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta pha 300 g dung dịch nước muối chứa 5% muối từ hai loại, trong đó loại thứ nhất nặng 150 g và chứa 6% muối. Hỏi loại thứ hai chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$16\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$96\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$11\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hỗn hợp nặng 280 g, chứa 10% đường, được tạo thành khi trộn 200 g dung dịch nước đường chứa 8% đường với một loại dung dịch nước đường khác. Tính tỉ số phần trăm đường của loại dung dịch nước đường khác đó.",
+  "nhieu": [
+   {
+    "text": "$55\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$12\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$18\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để có 1000 g hỗn hợp chứa 5,6% muối, người ta trộn 200 g dung dịch nước muối chứa 20% muối với một loại dung dịch nước muối khác. Hỏi loại dung dịch nước muối khác đó chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$12\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$1,6\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$98\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$25,6\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để có 180 kg hỗn hợp chứa 2% chất béo, người ta trộn 60 kg sữa chứa 3% chất béo với một loại sữa khác. Hỏi loại sữa khác đó chứa bao nhiêu phần trăm chất béo?",
+  "nhieu": [
+   {
+    "text": "$4,5\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$1\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$3\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$98,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta pha 400 g dung dịch cồn chứa 70% cồn từ hai loại, trong đó loại thứ nhất nặng 320 g và chứa 75% cồn. Hỏi loại thứ hai chứa bao nhiêu phần trăm cồn?",
+  "nhieu": [
+   {
+    "text": "$10\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$65\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$12,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$5\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để có 525 g hỗn hợp chứa 8% muối, người ta trộn 75 g dung dịch nước muối chứa 20% muối với một loại dung dịch nước muối khác. Hỏi loại dung dịch nước muối khác đó chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$36\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$94\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$12\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 30 tấn quặng chứa 30% sắt với 10 tấn quặng khác thì được hỗn hợp chứa 40,5% sắt. Hỏi quặng khác đó chứa bao nhiêu phần trăm sắt?",
+  "nhieu": [
+   {
+    "text": "$18\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$51\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$24\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$70,5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 100 kg hợp kim chứa 45% đồng với 150 kg hợp kim khác thì được hỗn hợp chứa 66% đồng. Hỏi hợp kim khác đó chứa bao nhiêu phần trăm đồng?",
+  "nhieu": [
+   {
+    "text": "$48\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$87\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$21\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 100 kg sữa chứa 4% chất béo với 100 kg sữa khác thì được hỗn hợp chứa 5% chất béo. Hỏi sữa khác đó chứa bao nhiêu phần trăm chất béo?",
+  "nhieu": [
+   {
+    "text": "$14\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$3\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$94\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$9\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho 50 kg hợp kim chứa 50% đồng hòa vào 25 kg hợp kim loại khác, người ta được hỗn hợp chứa 60% đồng. Tính tỉ số phần trăm đồng của loại hợp kim khác đó.",
+  "nhieu": [
+   {
+    "text": "$70\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho 150 kg hợp kim chứa 20% đồng hòa vào 150 kg hợp kim loại khác, người ta được hỗn hợp chứa 45% đồng. Tính tỉ số phần trăm đồng của loại hợp kim khác đó.",
+  "nhieu": [
+   {
+    "text": "$35\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$65\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng phần còn lại làm lượng chất tan rồi chia cho khối lượng hỗn hợp"
+   },
+   {
+    "text": "$7\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm (nồng độ hỗn hợp − nồng độ phần đã biết)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho 120 kg sữa chứa 2,5% chất béo hòa vào 30 kg sữa loại khác, người ta được hỗn hợp chứa 3,2% chất béo. Tính tỉ số phần trăm chất béo của loại sữa khác đó.",
+  "nhieu": [
+   {
+    "text": "$26\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng chất tan của phần đã biết vào lượng chất tan của hỗn hợp"
+   },
+   {
+    "text": "$1,2\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng cả hỗn hợp thay vì cho khối lượng phần còn lại"
+   },
+   {
+    "text": "$3,9\\%$",
+    "rule": "R532",
+    "duong_sai": "Coi hỗn hợp là trung bình cộng hai nồng độ nên lấy 2 lần nồng độ hỗn hợp trừ nồng độ đã biết"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia lượng chất tan còn lại cho khối lượng phần đã biết (chia nhầm vai trò)"
+   },
+   {
+    "text": "$94\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$5,7\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai tỉ số phần trăm (nồng độ hỗn hợp + nồng độ phần đã biết)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người có 350 g dung dịch cồn chứa 40% cồn. Người đó cần trộn thêm dung dịch cồn chứa 70% cồn để được hỗn hợp chứa 46% cồn. Hỏi phải trộn thêm bao nhiêu g dung dịch cồn loại 70% cồn?",
+  "nhieu": [
+   {
+    "text": "$1400$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch: lấy khối lượng nhân chênh lệch của loại kia rồi chia cho chênh lệch của loại này"
+   },
+   {
+    "text": "$21$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$70$ g",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$350$ g",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$875$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 80 kg sữa chứa 1% chất béo với một lượng sữa chứa 3,5% chất béo thì được hỗn hợp chứa 1,5% chất béo. Hỏi phải dùng bao nhiêu kg sữa loại 3,5% chất béo?",
+  "nhieu": [
+   {
+    "text": "$320$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch: lấy khối lượng nhân chênh lệch của loại kia rồi chia cho chênh lệch của loại này"
+   },
+   {
+    "text": "$0,4$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$16$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$80$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$200$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn 150 kg hợp kim chứa 75% đồng với một lượng hợp kim chứa 65% đồng thì được hỗn hợp chứa 69% đồng. Hỏi phải dùng bao nhiêu kg hợp kim loại 65% đồng?",
+  "nhieu": [
+   {
+    "text": "$100$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch: lấy khối lượng nhân chênh lệch của loại kia rồi chia cho chênh lệch của loại này"
+   },
+   {
+    "text": "$9$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$90$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$150$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$2250$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người có 24 tấn quặng chứa 72% sắt. Người đó cần trộn thêm quặng chứa 40% sắt để được hỗn hợp chứa 48% sắt. Hỏi phải trộn thêm bao nhiêu tấn quặng loại 40% sắt?",
+  "nhieu": [
+   {
+    "text": "$8$ tấn",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch: lấy khối lượng nhân chênh lệch của loại kia rồi chia cho chênh lệch của loại này"
+   },
+   {
+    "text": "$5,76$ tấn",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$18$ tấn",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$24$ tấn",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$720$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người có 40 kg hợp kim chứa 20% đồng. Người đó cần trộn thêm hợp kim chứa 50% đồng để được hỗn hợp chứa 42,5% đồng. Hỏi phải trộn thêm bao nhiêu kg hợp kim loại 50% đồng?",
+  "nhieu": [
+   {
+    "text": "$9$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$30$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$40$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$1200$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người có 150 kg hợp kim chứa 60% đồng. Người đó cần trộn thêm hợp kim chứa 25% đồng để được hỗn hợp chứa 53% đồng. Hỏi phải trộn thêm bao nhiêu kg hợp kim loại 25% đồng?",
+  "nhieu": [
+   {
+    "text": "$600$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch: lấy khối lượng nhân chênh lệch của loại kia rồi chia cho chênh lệch của loại này"
+   },
+   {
+    "text": "$10,5$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở lượng chất tan chênh lệch, quên chia cho phần trăm chênh lệch của loại thứ hai"
+   },
+   {
+    "text": "$30$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan chênh lệch cho hiệu hai nồng độ (b − a) thay vì cho chênh lệch với hỗn hợp"
+   },
+   {
+    "text": "$150$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau vì lấy trung bình nồng độ"
+   },
+   {
+    "text": "$375$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta trộn 60 g dung dịch nước muối chứa 4,5% muối với dung dịch nước muối chứa 8% muối để được hỗn hợp chứa 5,2% muối. Hỏi sau khi trộn thu được bao nhiêu g hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$15$ g",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm khối lượng loại thứ hai, quên cộng thêm khối lượng loại thứ nhất"
+   },
+   {
+    "text": "$60,42$ g",
+    "rule": "R408",
+    "duong_sai": "Cộng khối lượng loại thứ nhất với lượng chất tan chênh lệch (dừng ở bước giữa)"
+   },
+   {
+    "text": "$300$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch khi tìm loại thứ hai rồi cộng loại thứ nhất"
+   },
+   {
+    "text": "$45$ g",
+    "rule": "R407",
+    "duong_sai": "Trừ (thay vì cộng) khối lượng loại thứ hai khỏi loại thứ nhất"
+   },
+   {
+    "text": "$120$ g",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau nên tổng gấp đôi loại thứ nhất"
+   },
+   {
+    "text": "$750$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta trộn 240 g dung dịch nước đường chứa 30% đường với dung dịch nước đường chứa 10% đường để được hỗn hợp chứa 18% đường. Hỏi sau khi trộn thu được bao nhiêu g hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$360$ g",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm khối lượng loại thứ hai, quên cộng thêm khối lượng loại thứ nhất"
+   },
+   {
+    "text": "$268,8$ g",
+    "rule": "R408",
+    "duong_sai": "Cộng khối lượng loại thứ nhất với lượng chất tan chênh lệch (dừng ở bước giữa)"
+   },
+   {
+    "text": "$400$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch khi tìm loại thứ hai rồi cộng loại thứ nhất"
+   },
+   {
+    "text": "$480$ g",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau nên tổng gấp đôi loại thứ nhất"
+   },
+   {
+    "text": "$6000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta trộn 20 kg hợp kim chứa 65% đồng với hợp kim chứa 20% đồng để được hỗn hợp chứa 35% đồng. Hỏi sau khi trộn thu được bao nhiêu kg hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$40$ kg",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm khối lượng loại thứ hai, quên cộng thêm khối lượng loại thứ nhất"
+   },
+   {
+    "text": "$26$ kg",
+    "rule": "R408",
+    "duong_sai": "Cộng khối lượng loại thứ nhất với lượng chất tan chênh lệch (dừng ở bước giữa)"
+   },
+   {
+    "text": "$30$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch khi tìm loại thứ hai rồi cộng loại thứ nhất"
+   },
+   {
+    "text": "$600$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta trộn 75 g dung dịch nước đường chứa 25% đường với dung dịch nước đường chứa 10% đường để được hỗn hợp chứa 16% đường. Hỏi sau khi trộn thu được bao nhiêu g hỗn hợp?",
+  "nhieu": [
+   {
+    "text": "$112,5$ g",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm khối lượng loại thứ hai, quên cộng thêm khối lượng loại thứ nhất"
+   },
+   {
+    "text": "$81,75$ g",
+    "rule": "R408",
+    "duong_sai": "Cộng khối lượng loại thứ nhất với lượng chất tan chênh lệch (dừng ở bước giữa)"
+   },
+   {
+    "text": "$125$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo vai trò hai chỗ chênh lệch khi tìm loại thứ hai rồi cộng loại thứ nhất"
+   },
+   {
+    "text": "$150$ g",
+    "rule": "R532",
+    "duong_sai": "Coi hai loại có khối lượng bằng nhau nên tổng gấp đôi loại thứ nhất"
+   },
+   {
+    "text": "$1875$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn quặng chứa 45% sắt với quặng chứa 80% sắt được 70 tấn hỗn hợp chứa 60% sắt. Tính khối lượng của mỗi loại đã trộn.",
+  "nhieu": [
+   {
+    "text": "Loại $45\\%$: $30$ tấn; loại $80\\%$: $40$ tấn",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $45\\%$: $59,5$ tấn; loại $80\\%$: $10,5$ tấn",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $45\\%$: $35$ tấn; loại $80\\%$: $35$ tấn",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $45\\%$: $40$ tấn; loại $80\\%$: $300$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần pha 250 g hỗn hợp từ hai loại dung dịch nước muối: loại nhẹ chứa 2% muối và loại đậm chứa 3% muối, sao cho hỗn hợp chứa 2,8% muối. Hỏi cần lấy mỗi loại bao nhiêu g?",
+  "nhieu": [
+   {
+    "text": "Loại $2\\%$: $200$ g; loại $3\\%$: $50$ g",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $2\\%$: $248$ g; loại $3\\%$: $2$ g",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $2\\%$: $125$ g; loại $3\\%$: $125$ g",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $2\\%$: $50$ g; loại $3\\%$: $2000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần pha 36 kg hỗn hợp từ hai loại sữa: loại nhẹ chứa 1,5% chất béo và loại đậm chứa 4,5% chất béo, sao cho hỗn hợp chứa 2,5% chất béo. Hỏi cần lấy mỗi loại bao nhiêu kg?",
+  "nhieu": [
+   {
+    "text": "Loại $1,5\\%$: $12$ kg; loại $4,5\\%$: $24$ kg",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $1,5\\%$: $28$ kg; loại $4,5\\%$: $8$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan còn thiếu cho nồng độ loại đậm thay vì cho phần chênh hai nồng độ"
+   },
+   {
+    "text": "Loại $1,5\\%$: $35,64$ kg; loại $4,5\\%$: $0,36$ kg",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $1,5\\%$: $18$ kg; loại $4,5\\%$: $18$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $1,5\\%$: $24$ kg; loại $4,5\\%$: $120$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần pha 375 g hỗn hợp từ hai loại dung dịch cồn: loại nhẹ chứa 45% cồn và loại đậm chứa 50% cồn, sao cho hỗn hợp chứa 46% cồn. Hỏi cần lấy mỗi loại bao nhiêu g?",
+  "nhieu": [
+   {
+    "text": "Loại $45\\%$: $75$ g; loại $50\\%$: $300$ g",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $45\\%$: $367,5$ g; loại $50\\%$: $7,5$ g",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan còn thiếu cho nồng độ loại đậm thay vì cho phần chênh hai nồng độ"
+   },
+   {
+    "text": "Loại $45\\%$: $371,25$ g; loại $50\\%$: $3,75$ g",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $45\\%$: $187,5$ g; loại $50\\%$: $187,5$ g",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $45\\%$: $300$ g; loại $50\\%$: $750$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn hợp kim chứa 60% đồng với hợp kim chứa 80% đồng được 50 kg hỗn hợp chứa 72% đồng. Tính khối lượng của mỗi loại đã trộn.",
+  "nhieu": [
+   {
+    "text": "Loại $60\\%$: $30$ kg; loại $80\\%$: $20$ kg",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $60\\%$: $42,5$ kg; loại $80\\%$: $7,5$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan còn thiếu cho nồng độ loại đậm thay vì cho phần chênh hai nồng độ"
+   },
+   {
+    "text": "Loại $60\\%$: $44$ kg; loại $80\\%$: $6$ kg",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $60\\%$: $25$ kg; loại $80\\%$: $25$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $60\\%$: $20$ kg; loại $80\\%$: $300$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần pha 350 g hỗn hợp từ hai loại dung dịch cồn: loại nhẹ chứa 45% cồn và loại đậm chứa 80% cồn, sao cho hỗn hợp chứa 70% cồn. Hỏi cần lấy mỗi loại bao nhiêu g?",
+  "nhieu": [
+   {
+    "text": "Loại $45\\%$: $250$ g; loại $80\\%$: $100$ g",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $45\\%$: $262,5$ g; loại $80\\%$: $87,5$ g",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $45\\%$: $175$ g; loại $80\\%$: $175$ g",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $45\\%$: $100$ g; loại $80\\%$: $2500$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trộn dung dịch nước muối chứa 3% muối với dung dịch nước muối chứa 15% muối được 400 g hỗn hợp chứa 12,6% muối. Tính khối lượng của mỗi loại đã trộn.",
+  "nhieu": [
+   {
+    "text": "Loại $3\\%$: $320$ g; loại $15\\%$: $80$ g",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $3\\%$: $144$ g; loại $15\\%$: $256$ g",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan còn thiếu cho nồng độ loại đậm thay vì cho phần chênh hai nồng độ"
+   },
+   {
+    "text": "Loại $3\\%$: $361,6$ g; loại $15\\%$: $38,4$ g",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $3\\%$: $200$ g; loại $15\\%$: $200$ g",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $3\\%$: $80$ g; loại $15\\%$: $3200$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta trộn hai loại hợp kim, một loại chứa 50% đồng và một loại chứa 60% đồng, để được 75 kg hỗn hợp chứa 56% đồng. Hỏi phải dùng mỗi loại bao nhiêu kg?",
+  "nhieu": [
+   {
+    "text": "Loại $50\\%$: $45$ kg; loại $60\\%$: $30$ kg",
+    "rule": "R529",
+    "duong_sai": "Gán nhầm hai khối lượng cho hai loại (đảo vai trò)"
+   },
+   {
+    "text": "Loại $50\\%$: $67,5$ kg; loại $60\\%$: $7,5$ kg",
+    "rule": "R407",
+    "duong_sai": "Chia lượng chất tan còn thiếu cho nồng độ loại đậm thay vì cho phần chênh hai nồng độ"
+   },
+   {
+    "text": "Loại $50\\%$: $70,5$ kg; loại $60\\%$: $4,5$ kg",
+    "rule": "R408",
+    "duong_sai": "Lấy luôn lượng chất tan còn thiếu làm khối lượng loại đậm, quên chia cho phần chênh nồng độ"
+   },
+   {
+    "text": "Loại $50\\%$: $37,5$ kg; loại $60\\%$: $37,5$ kg",
+    "rule": "R532",
+    "duong_sai": "Coi mỗi loại chiếm một nửa hỗn hợp vì lấy trung bình"
+   },
+   {
+    "text": "Loại $50\\%$: $30$ kg; loại $60\\%$: $450$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 100 g dung dịch cồn chứa 40% cồn. Người ta đổ thêm 300 g nước cất vào dung dịch đó. Hỏi dung dịch lúc sau chứa bao nhiêu phần trăm cồn?",
+  "nhieu": [
+   {
+    "text": "$85\\%$",
+    "rule": "R533",
+    "duong_sai": "Cộng nước thêm vào cả lượng chất tan lẫn khối lượng dung dịch"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước chia lại cho khối lượng dung dịch mới"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$100\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 400 g dung dịch nước muối chứa 0,9% muối. Người ta đổ thêm 200 g nước cất vào dung dịch đó. Hỏi dung dịch lúc sau chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$1,8\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng nước thêm vào thay vì khối lượng dung dịch mới"
+   },
+   {
+    "text": "$0,9\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước chia lại cho khối lượng dung dịch mới"
+   },
+   {
+    "text": "$1,35\\%$",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số: tưởng thêm nước thì nồng độ tăng theo tỉ số khối lượng mới : khối lượng cũ"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 100 g dung dịch nước muối chứa 3% muối. Người ta đổ thêm 50 g nước cất vào dung dịch đó. Hỏi dung dịch lúc sau chứa bao nhiêu phần trăm muối?",
+  "nhieu": [
+   {
+    "text": "$6\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng nước thêm vào thay vì khối lượng dung dịch mới"
+   },
+   {
+    "text": "$3\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước chia lại cho khối lượng dung dịch mới"
+   },
+   {
+    "text": "$98\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$4,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số: tưởng thêm nước thì nồng độ tăng theo tỉ số khối lượng mới : khối lượng cũ"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 600 g dung dịch nước đường chứa 20% đường. Cần đổ thêm bao nhiêu g nước cất để được dung dịch chứa 2,5% đường?",
+  "nhieu": [
+   {
+    "text": "$4800$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$105$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng a% − b%)"
+   },
+   {
+    "text": "$120$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước cần thêm"
+   },
+   {
+    "text": "$525$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số: khối lượng lúc sau tính bằng M × b : a thay vì M × a : b"
+   },
+   {
+    "text": "$42000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn làm loãng 800 g dung dịch nước muối chứa 15% muối thành dung dịch chứa 5% muối thì phải thêm bao nhiêu g nước tinh khiết?",
+  "nhieu": [
+   {
+    "text": "$2400$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$80$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng a% − b%)"
+   },
+   {
+    "text": "$120$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước cần thêm"
+   },
+   {
+    "text": "$16000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn làm loãng 600 g dung dịch nước đường chứa 12% đường thành dung dịch chứa 10% đường thì phải thêm bao nhiêu g nước tinh khiết?",
+  "nhieu": [
+   {
+    "text": "$720$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$12$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng a% − b%)"
+   },
+   {
+    "text": "$72$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước cần thêm"
+   },
+   {
+    "text": "$100$ g",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số: khối lượng lúc sau tính bằng M × b : a thay vì M × a : b"
+   },
+   {
+    "text": "$1200$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nồi có 300 g dung dịch nước muối chứa 4% muối. Sau khi đun sôi, 200 g nước đã bay hơi. Tính tỉ số phần trăm muối của dung dịch còn lại trong nồi.",
+  "nhieu": [
+   {
+    "text": "$4\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước chia lại cho khối lượng dung dịch còn lại"
+   },
+   {
+    "text": "$2,4\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng nước bay hơi vào khối lượng dung dịch"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan cho khối lượng nước đã bay hơi"
+   },
+   {
+    "text": "$88\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$1,2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đun 200 g dung dịch cồn chứa 30% cồn cho bay hơi bớt 40 g nước. Hỏi dung dịch còn lại chứa bao nhiêu phần trăm cồn?",
+  "nhieu": [
+   {
+    "text": "$30\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước chia lại cho khối lượng dung dịch còn lại"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) lượng nước bay hơi vào khối lượng dung dịch"
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$3,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 240 g dung dịch nước muối chứa 0,9% muối. Muốn dung dịch đặc lại thành 6% muối thì phải cho bay hơi bao nhiêu g nước?",
+  "nhieu": [
+   {
+    "text": "$36$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch còn lại, quên lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$12,24$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$2,16$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước bay hơi"
+   },
+   {
+    "text": "$276$ g",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$2040$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần đun cho bay hơi bớt bao nhiêu g nước trong 450 g dung dịch nước muối chứa 1,5% muối để được dung dịch chứa 10% muối?",
+  "nhieu": [
+   {
+    "text": "$67,5$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch còn lại, quên lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$38,25$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$6,75$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước bay hơi"
+   },
+   {
+    "text": "$517,5$ g",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$3825$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 600 g dung dịch nước đường chứa 6% đường. Muốn dung dịch đặc lại thành 20% đường thì phải cho bay hơi bao nhiêu g nước?",
+  "nhieu": [
+   {
+    "text": "$180$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch còn lại, quên lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$84$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng dung dịch nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$36$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn lượng chất tan làm khối lượng nước bay hơi"
+   },
+   {
+    "text": "$592,8$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) lượng chất tan với tỉ số phần trăm mới rồi lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$780$ g",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$4200$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bình đựng 500 g dung dịch nước đường chứa 30% đường. Cho thêm 60 g đường tinh khiết vào bình và khuấy tan hết. Tính tỉ số phần trăm đường trong bình lúc sau.",
+  "nhieu": [
+   {
+    "text": "$42\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia lượng chất tan lúc sau cho khối lượng dung dịch lúc đầu"
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước tính lại sau khi thêm chất tan"
+   },
+   {
+    "text": "$3,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nấu chảy 25 kg hợp kim chứa 30% đồng cùng với 25 kg đồng nguyên chất. Hỏi khối hợp kim vừa nấu được chứa bao nhiêu phần trăm đồng?",
+  "nhieu": [
+   {
+    "text": "$15\\%$",
+    "rule": "R531",
+    "duong_sai": "Quên cộng lượng chất tan thêm vào, chỉ cộng vào khối lượng dung dịch"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R533",
+    "duong_sai": "Coi lượng chất tan lúc sau chỉ là phần thêm vào"
+   },
+   {
+    "text": "$35\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R408",
+    "duong_sai": "Giữ nguyên nồng độ cũ, bỏ bước tính lại sau khi thêm chất tan"
+   },
+   {
+    "text": "$6,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần nấu chảy 100 kg hợp kim chứa 20% đồng cùng với bao nhiêu kg đồng nguyên chất để được khối hợp kim chứa 50% đồng?",
+  "nhieu": [
+   {
+    "text": "$160$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$30$ kg",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$260$ kg",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$80$ kg",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn khối lượng phần còn lại (không đổi) làm lượng chất tan cần thêm"
+   },
+   {
+    "text": "$600$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cần nấu chảy 60 kg hợp kim chứa 35% đồng cùng với bao nhiêu kg đồng nguyên chất để được khối hợp kim chứa 80% đồng?",
+  "nhieu": [
+   {
+    "text": "$195$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$27$ kg",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$52,2$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) phần còn lại với tỉ số phần trăm mới rồi lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$255$ kg",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$39$ kg",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn khối lượng phần còn lại (không đổi) làm lượng chất tan cần thêm"
+   },
+   {
+    "text": "$1350$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Có 100 g dung dịch nước đường chứa 6% đường. Cần hòa thêm bao nhiêu g đường nguyên chất vào để được dung dịch chứa 50% đường?",
+  "nhieu": [
+   {
+    "text": "$188$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng lúc sau, quên trừ khối lượng lúc đầu"
+   },
+   {
+    "text": "$44$ g",
+    "rule": "R526",
+    "duong_sai": "Lấy khối lượng nhân hiệu hai tỉ số phần trăm (trừ thẳng b% − a%)"
+   },
+   {
+    "text": "$53$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) phần còn lại với tỉ số phần trăm mới rồi lấy khối lượng đầu trừ đi"
+   },
+   {
+    "text": "$288$ g",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng lúc sau với khối lượng lúc đầu"
+   },
+   {
+    "text": "$94$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy luôn khối lượng phần còn lại (không đổi) làm lượng chất tan cần thêm"
+   },
+   {
+    "text": "$880$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng dung dịch cồn chứa 12% cồn. Sau khi thêm 120 g nước tinh khiết, dung dịch trong thùng chứa 8% cồn. Hỏi lúc đầu trong thùng có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$360$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ phần nước thêm"
+   },
+   {
+    "text": "$60$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước thêm với phần chênh lệch số lần"
+   },
+   {
+    "text": "$3000$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước thêm cho hiệu hai tỉ số phần trăm (a% − b%)"
+   },
+   {
+    "text": "$1000$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng nước thêm chia cho tỉ số phần trăm chất tan lúc đầu"
+   },
+   {
+    "text": "$2400$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đổ thêm 400 g nước cất vào một bình dung dịch nước đường chứa 7,5% đường thì được dung dịch chứa 5% đường. Hỏi lúc đầu bình có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$1200$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ phần nước thêm"
+   },
+   {
+    "text": "$200$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước thêm với phần chênh lệch số lần"
+   },
+   {
+    "text": "$16000$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước thêm cho hiệu hai tỉ số phần trăm (a% − b%)"
+   },
+   {
+    "text": "$5333,33$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng nước thêm chia cho tỉ số phần trăm chất tan lúc đầu"
+   },
+   {
+    "text": "$8000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng dung dịch cồn chứa 5% cồn. Sau khi thêm 100 g nước tinh khiết, dung dịch trong thùng chứa 4% cồn. Hỏi lúc đầu trong thùng có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$500$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên trừ phần nước thêm"
+   },
+   {
+    "text": "$25$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước thêm với phần chênh lệch số lần"
+   },
+   {
+    "text": "$10000$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước thêm cho hiệu hai tỉ số phần trăm (a% − b%)"
+   },
+   {
+    "text": "$2000$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng nước thêm chia cho tỉ số phần trăm chất tan lúc đầu"
+   },
+   {
+    "text": "$4000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta đun cho bay hơi 125 g nước của một bình dung dịch nước muối chứa 9% muối thì được dung dịch chứa 12% muối. Hỏi lúc đầu bình có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$375$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên cộng phần nước bay hơi"
+   },
+   {
+    "text": "$31,25$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước bay hơi với phần chênh lệch số lần"
+   },
+   {
+    "text": "$4166,67$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước bay hơi cho hiệu hai tỉ số phần trăm (b% − a%)"
+   },
+   {
+    "text": "$5000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nồi dung dịch nước đường chứa 9% đường. Sau khi đun bay hơi bớt 75 g nước, dung dịch trong nồi chứa 12% đường. Hỏi lúc đầu trong nồi có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$225$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên cộng phần nước bay hơi"
+   },
+   {
+    "text": "$18,75$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước bay hơi với phần chênh lệch số lần"
+   },
+   {
+    "text": "$2500$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước bay hơi cho hiệu hai tỉ số phần trăm (b% − a%)"
+   },
+   {
+    "text": "$625$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng nước bay hơi chia cho tỉ số phần trăm chất tan lúc sau"
+   },
+   {
+    "text": "$3000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nồi dung dịch nước muối chứa 12% muối. Sau khi đun bay hơi bớt 100 g nước, dung dịch trong nồi chứa 16% muối. Hỏi lúc đầu trong nồi có bao nhiêu g dung dịch?",
+  "nhieu": [
+   {
+    "text": "$300$ g",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng dung dịch lúc sau, quên cộng phần nước bay hơi"
+   },
+   {
+    "text": "$25$ g",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng nước bay hơi với phần chênh lệch số lần"
+   },
+   {
+    "text": "$2500$ g",
+    "rule": "R526",
+    "duong_sai": "Chia khối lượng nước bay hơi cho hiệu hai tỉ số phần trăm (b% − a%)"
+   },
+   {
+    "text": "$625$ g",
+    "rule": "R533",
+    "duong_sai": "Lấy khối lượng nước bay hơi chia cho tỉ số phần trăm chất tan lúc sau"
+   },
+   {
+    "text": "$4000$ g",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta thu hoạch 24 kg thóc mới gặt chứa 85% nước. Sau khi phơi, thóc khô chỉ còn 20% nước. Hỏi khối lượng thóc khô thu được là bao nhiêu ki-lô-gam?",
+  "nhieu": [
+   {
+    "text": "$102$ kg",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$3,6$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$2,88$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$128$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô: nhân M với y rồi chia cho x"
+   },
+   {
+    "text": "$18$ kg",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt khô thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$45$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt ngô tươi có 40% nước, hạt ngô khô có 25% nước. Hỏi nếu phơi khô 400 kg hạt ngô tươi thì thu được bao nhiêu ki-lô-gam hạt ngô khô?",
+  "nhieu": [
+   {
+    "text": "$640$ kg",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$240$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$180$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$500$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô: nhân M với y rồi chia cho x"
+   },
+   {
+    "text": "$960$ kg",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt khô thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$3200$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta thu hoạch 72 kg hạt tiêu tươi chứa 45% nước. Sau khi phơi, hạt tiêu khô chỉ còn 12% nước. Hỏi khối lượng hạt tiêu khô thu được là bao nhiêu ki-lô-gam?",
+  "nhieu": [
+   {
+    "text": "$270$ kg",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$39,6$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$115,2$ kg",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô: nhân M với y rồi chia cho x"
+   },
+   {
+    "text": "$330$ kg",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt khô thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$450$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong cỏ tươi là 45%, trong cỏ khô là 10%. Phơi 72 kg cỏ tươi cho đến khi thành cỏ khô. Hỏi thu được bao nhiêu ki-lô-gam cỏ khô?",
+  "nhieu": [
+   {
+    "text": "$324$ kg",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$39,6$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$35,64$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$396$ kg",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt khô thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$440$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong xoài tươi là 55%, trong xoài sấy khô là 25%. Phơi 80 kg xoài tươi cho đến khi thành xoài sấy khô. Hỏi thu được bao nhiêu ki-lô-gam xoài sấy khô?",
+  "nhieu": [
+   {
+    "text": "$176$ kg",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$36$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$27$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt khô"
+   },
+   {
+    "text": "$144$ kg",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt khô thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$480$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cỏ tươi chứa 50% nước, sau khi phơi thì cỏ khô chứa 16% nước. Để thu được 250 tấn cỏ khô cần dùng bao nhiêu tấn cỏ tươi?",
+  "nhieu": [
+   {
+    "text": "$80$ tấn",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$210$ tấn",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$105$ tấn",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$4200$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thóc mới gặt có 60% nước, thóc khô có 16% nước. Muốn có 96 tấn thóc khô thì phải phơi bao nhiêu tấn thóc mới gặt?",
+  "nhieu": [
+   {
+    "text": "$25,6$ tấn",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$80,64$ tấn",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$134,4$ tấn",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt tươi thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$2016$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Gỗ tươi chứa 40% nước, sau khi phơi thì gỗ đã sấy khô chứa 25% nước. Để thu được 72 tấn gỗ đã sấy khô cần dùng bao nhiêu tấn gỗ tươi?",
+  "nhieu": [
+   {
+    "text": "$45$ tấn",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi quy đổi"
+   },
+   {
+    "text": "$54$ tấn",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng chất khô, quên chia cho phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$32,4$ tấn",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$57,6$ tấn",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô: nhân K với x rồi chia cho y"
+   },
+   {
+    "text": "$135$ tấn",
+    "rule": "R101",
+    "duong_sai": "Chia khối lượng chất khô cho phần trăm nước của hạt tươi thay vì phần trăm chất khô"
+   },
+   {
+    "text": "$900$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt sen tươi có 88% nước, hạt sen khô có 10% nước. Khi phơi 90 kg hạt sen tươi thành hạt sen khô, có bao nhiêu ki-lô-gam nước đã bay hơi?",
+  "nhieu": [
+   {
+    "text": "$12$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng hạt khô, quên lấy khối lượng hạt tươi trừ đi"
+   },
+   {
+    "text": "$79,2$ kg",
+    "rule": "R534",
+    "duong_sai": "Lấy nước của hạt tươi làm lượng nước bay hơi (quên phần nước còn lại trong hạt khô)"
+   },
+   {
+    "text": "$102$ kg",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng hạt khô vào khối lượng hạt tươi"
+   },
+   {
+    "text": "$80,28$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô rồi lấy hạt tươi trừ đi"
+   },
+   {
+    "text": "$780$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt cà phê tươi có 68% nước, hạt cà phê khô có 25% nước. Khi phơi 75 tấn hạt cà phê tươi thành hạt cà phê khô, có bao nhiêu tấn nước đã bay hơi?",
+  "nhieu": [
+   {
+    "text": "$32$ tấn",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng hạt khô, quên lấy khối lượng hạt tươi trừ đi"
+   },
+   {
+    "text": "$51$ tấn",
+    "rule": "R534",
+    "duong_sai": "Lấy nước của hạt tươi làm lượng nước bay hơi (quên phần nước còn lại trong hạt khô)"
+   },
+   {
+    "text": "$107$ tấn",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng hạt khô vào khối lượng hạt tươi"
+   },
+   {
+    "text": "$57$ tấn",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô rồi lấy hạt tươi trừ đi"
+   },
+   {
+    "text": "$430$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong xoài tươi là 30%, trong xoài sấy khô là 16%. Người ta phơi 150 kg xoài tươi. Hỏi lượng nước bay hơi khi phơi là bao nhiêu ki-lô-gam?",
+  "nhieu": [
+   {
+    "text": "$125$ kg",
+    "rule": "R408",
+    "duong_sai": "Dừng ở khối lượng hạt khô, quên lấy khối lượng hạt tươi trừ đi"
+   },
+   {
+    "text": "$45$ kg",
+    "rule": "R534",
+    "duong_sai": "Lấy nước của hạt tươi làm lượng nước bay hơi (quên phần nước còn lại trong hạt khô)"
+   },
+   {
+    "text": "$275$ kg",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì trừ) khối lượng hạt khô vào khối lượng hạt tươi"
+   },
+   {
+    "text": "$61,8$ kg",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) khối lượng chất khô với phần trăm chất khô rồi lấy hạt tươi trừ đi"
+   },
+   {
+    "text": "$250$ kg",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nho tươi chứa 25% nước. Sau khi phơi 120 kg nho tươi người ta được 112,5 kg nho khô. Tính tỉ số phần trăm nước còn lại trong nho khô.",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Cho rằng phần trăm nước không đổi so với hạt tươi"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm chất khô của hạt tươi làm phần trăm nước"
+   },
+   {
+    "text": "$6,25\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$93,75\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt sen tươi chứa 46% nước. Sau khi phơi 120 kg hạt sen tươi người ta được 67,5 kg hạt sen khô. Tính tỉ số phần trăm nước còn lại trong hạt sen khô.",
+  "nhieu": [
+   {
+    "text": "$96\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$46\\%$",
+    "rule": "R527",
+    "duong_sai": "Cho rằng phần trăm nước không đổi so với hạt tươi"
+   },
+   {
+    "text": "$54\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm chất khô của hạt tươi làm phần trăm nước"
+   },
+   {
+    "text": "$43,75\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$56,25\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong hạt sen tươi là 88%. Phơi 64 kg hạt sen tươi thì thu được 9,6 kg hạt sen khô. Hỏi tỉ số phần trăm nước trong hạt sen khô là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$88\\%$",
+    "rule": "R527",
+    "duong_sai": "Cho rằng phần trăm nước không đổi so với hạt tươi"
+   },
+   {
+    "text": "$12\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm chất khô của hạt tươi làm phần trăm nước"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt ngô tươi chứa 80% nước. Phơi 24 kg hạt ngô tươi thì khối lượng giảm 18 kg. Hỏi hạt ngô khô chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Hạt ngô tươi chứa 55% nước. Phơi 120 kg hạt ngô tươi thì khối lượng giảm 52,5 kg. Hỏi hạt ngô khô chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$55\\%$",
+    "rule": "R527",
+    "duong_sai": "Cho rằng phần trăm nước không đổi so với hạt tươi"
+   },
+   {
+    "text": "$45\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm chất khô của hạt tươi làm phần trăm nước"
+   },
+   {
+    "text": "$43,75\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$56,25\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cỏ tươi chứa 40% nước. Phơi 400 kg cỏ tươi thì khối lượng giảm 150 kg. Hỏi cỏ khô chứa bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$96\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt khô, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R527",
+    "duong_sai": "Cho rằng phần trăm nước không đổi so với hạt tươi"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm chất khô của hạt tươi làm phần trăm nước"
+   },
+   {
+    "text": "$37,5\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt khô"
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$0,4\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Phơi 500 tấn gỗ tươi thì thu được 312,5 tấn gỗ đã sấy khô, trong đó nước chiếm 4%. Hỏi gỗ tươi lúc đầu có bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$37,5\\%$",
+    "rule": "R534",
+    "duong_sai": "Coi phần nước bay hơi là phần trăm nước của hạt tươi"
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia khối lượng hạt khô cho khối lượng hạt tươi (đảo vai trò)"
+   },
+   {
+    "text": "$96\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia chất khô cho khối lượng hạt khô thay vì hạt tươi"
+   },
+   {
+    "text": "$4\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy luôn phần trăm nước của hạt khô làm phần trăm nước của hạt tươi"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Phơi 15 kg hạt điều tươi thì thu được 12,5 kg hạt điều khô, trong đó nước chiếm 10%. Hỏi hạt điều tươi lúc đầu có bao nhiêu phần trăm nước?",
+  "nhieu": [
+   {
+    "text": "$75\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R527",
+    "duong_sai": "Chia chất khô cho khối lượng hạt khô thay vì hạt tươi"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy luôn phần trăm nước của hạt khô làm phần trăm nước của hạt tươi"
+   },
+   {
+    "text": "$2,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nho tươi có 46% nước, nho khô có 10% nước. Hỏi khối lượng nho khô bằng bao nhiêu phần trăm khối lượng nho tươi ban đầu?",
+  "nhieu": [
+   {
+    "text": "$460\\%$",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi lập tỉ số"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần khối lượng đã giảm thay vì phần còn lại"
+   },
+   {
+    "text": "$54\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$36\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm nước (a% − c%)"
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong hạt ngô tươi là 60%, trong hạt ngô khô là 20%. Sau khi phơi, khối lượng hạt ngô khô bằng bao nhiêu phần trăm khối lượng hạt ngô tươi?",
+  "nhieu": [
+   {
+    "text": "$200\\%$",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô (y : x)"
+   },
+   {
+    "text": "$300\\%$",
+    "rule": "R534",
+    "duong_sai": "Dùng phần trăm nước thay cho phần trăm chất khô khi lập tỉ số"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Xoài tươi có 55% nước, xoài sấy khô có 25% nước. Hỏi sau khi phơi, khối lượng giảm đi bao nhiêu phần trăm so với lúc còn tươi?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn khối lượng hạt khô bằng bao nhiêu phần trăm mà không lấy 100% trừ đi"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm nước (a% − c%)"
+   },
+   {
+    "text": "$45\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong nho tươi là 72%, trong nho khô là 20%. Khi phơi nho tươi thành nho khô thì khối lượng giảm đi bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "$35\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn khối lượng hạt khô bằng bao nhiêu phần trăm mà không lấy 100% trừ đi"
+   },
+   {
+    "text": "$52\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm nước (a% − c%)"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$650\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lượng nước trong cỏ tươi là 80%, trong cỏ khô là 20%. Khi phơi cỏ tươi thành cỏ khô thì khối lượng giảm đi bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn khối lượng hạt khô bằng bao nhiêu phần trăm mà không lấy 100% trừ đi"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm nước (a% − c%)"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R408",
+    "duong_sai": "Dừng ở phần trăm chất khô của hạt tươi"
+   },
+   {
+    "text": "$300\\%$",
+    "rule": "R529",
+    "duong_sai": "Đảo tỉ số hai phần trăm chất khô (y : x) rồi trừ đi 100%"
+   },
+   {
+    "text": "$750\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Từ năm 2020 đến năm 2021, giá một chiếc điện thoại giảm 10%; từ năm 2021 đến năm 2022, giá một chiếc điện thoại lại tăng 10% so với năm 2021. Hỏi so với năm 2020, giá một chiếc điện thoại năm 2022 tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $99\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $1\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $0,1\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc tủ lạnh tháng 10 giảm 40% so với tháng 9, sang tháng 11 lại tăng 40% so với tháng 10. Hỏi giá một chiếc tủ lạnh tháng 11 tăng hay giảm bao nhiêu phần trăm so với tháng 9?",
+  "nhieu": [
+   {
+    "text": "Giảm $84\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $16\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $160\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Từ tháng 5 đến tháng 6, số quyển sách của một thư viện giảm 10%; từ tháng 6 đến tháng 7, số quyển sách của một thư viện lại tăng 10% so với tháng 6. Hỏi so với tháng 5, số quyển sách của một thư viện tháng 7 tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $99\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $1\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $0,1\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang trái)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc điện thoại tháng 6 tăng 60% so với tháng 5, sang tháng 7 lại giảm 40% so với tháng 6. Hỏi giá một chiếc điện thoại tháng 7 tăng hay giảm bao nhiêu phần trăm so với tháng 5?",
+  "nhieu": [
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $96\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $4\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số xe máy một cửa hàng bán được tháng 10 tăng 20% so với tháng 9, sang tháng 11 lại tăng 40% so với tháng 10. Hỏi số xe máy một cửa hàng bán được tháng 11 tăng hay giảm bao nhiêu phần trăm so với tháng 9?",
+  "nhieu": [
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $168\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Giảm $68\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Tăng $680\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sản lượng lúa của một hợp tác xã năm 2021 tăng 30% so với năm 2020, sang năm 2022 lại giảm 30% so với năm 2021. Hỏi sản lượng lúa của một hợp tác xã năm 2022 tăng hay giảm bao nhiêu phần trăm so với năm 2020?",
+  "nhieu": [
+   {
+    "text": "Giảm $91\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $9\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $90\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc tủ lạnh tháng 6 tăng 10% so với tháng 5, sang tháng 7 lại giảm 10% so với tháng 6. Hỏi giá một chiếc tủ lạnh tháng 7 tăng hay giảm bao nhiêu phần trăm so với tháng 5?",
+  "nhieu": [
+   {
+    "text": "Giảm $99\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $1\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $10\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Từ tháng 5 đến tháng 6, giá một chiếc tủ lạnh giảm 40%; từ tháng 6 đến tháng 7, giá một chiếc tủ lạnh lại tăng 40% so với tháng 6. Hỏi so với tháng 5, giá một chiếc tủ lạnh tháng 7 tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $84\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $16\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $160\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc điện thoại vào quý I là 5 000 000 đồng. Quý II giảm 40% so với quý I, quý III giảm 40% so với quý II. Hỏi giá một chiếc điện thoại vào quý III là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$9800000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$18000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vào quý I, giá một chiếc tủ lạnh là 200 000 đồng. Đến quý II, giá giảm 10% so với quý I; đến quý III, giá lại giảm 20% so với quý II. Tính giá một chiếc tủ lạnh vào quý III.",
+  "nhieu": [
+   {
+    "text": "$140000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$180000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$264000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$225000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$1440000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc tủ lạnh vào tháng 1 là 400 000 đồng. Tháng 2 tăng 10% so với tháng 1, tháng 3 tăng 25% so với tháng 2. Hỏi giá một chiếc tủ lạnh vào tháng 3 là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$540000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$440000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$270000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$352000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$5500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc xe đạp vào quý I là 600 000 đồng. Quý II giảm 60% so với quý I, quý III tăng 5% so với quý II. Hỏi giá một chiếc xe đạp vào quý III là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$270000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$912000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$2520000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vào tháng 5, giá một túi gạo là 2 000 000 đồng. Đến tháng 6, giá tăng 40% so với tháng 5; đến tháng 7, giá lại giảm 15% so với tháng 6. Tính giá một túi gạo vào tháng 7.",
+  "nhieu": [
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$2800000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$1380000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$23800000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc điện thoại quý II giảm 10% so với quý I, quý III giảm 12% so với quý II và quý IV giảm 15% so với quý III. Hỏi so với quý I, giá một chiếc điện thoại quý IV tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $37\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $67,32\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $32,68\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $20,8\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $326,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc tủ lạnh thay đổi như sau: năm 2023 giảm 40% so với năm 2022; năm 2024 giảm 20% so với năm 2023; năm 2025 tăng 5% so với năm 2024. Hỏi giá một chiếc tủ lạnh năm 2025 tăng hay giảm bao nhiêu phần trăm so với năm 2022?",
+  "nhieu": [
+   {
+    "text": "Giảm $55\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $50,4\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $49,6\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Giảm $52\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $496\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một bộ bàn ghế thay đổi như sau: tháng 6 tăng 15% so với tháng 5; tháng 7 tăng 10% so với tháng 6; tháng 8 tăng 20% so với tháng 7. Hỏi giá một bộ bàn ghế tháng 8 tăng hay giảm bao nhiêu phần trăm so với tháng 5?",
+  "nhieu": [
+   {
+    "text": "Tăng $45\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $151,8\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Giảm $51,8\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $26,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Tăng $518\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số khách tham quan một khu du lịch tháng 10 tăng 50% so với tháng 9, tháng 11 giảm 25% so với tháng 10 và tháng 12 giảm 30% so với tháng 11. Hỏi so với tháng 9, số khách tham quan một khu du lịch tháng 12 tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $78,75\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi luôn giá trị cuối bằng bao nhiêu phần trăm giá trị đầu mà quên trừ 100%"
+   },
+   {
+    "text": "Tăng $21,25\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều: tưởng tăng thành giảm (hoặc ngược lại) khi so sánh với lúc đầu"
+   },
+   {
+    "text": "Tăng $12,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "Giảm $212,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một bộ bàn ghế vào quý I là 1 200 000 đồng. Sau đó, giá quý II giảm 25% so với quý I, giá quý III giảm 30% so với quý II, giá quý IV giảm 40% so với quý III. Tính giá một bộ bàn ghế vào quý IV.",
+  "nhieu": [
+   {
+    "text": "$60000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$630000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$2730000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$150000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm của lần cuối trên giá trị đầu thay vì trên giá trị ngay trước"
+   },
+   {
+    "text": "$1050000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$3780000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một cân cà phê vào quý I là 3 000 000 đồng. Quý II tăng 60% so với quý I, quý III tăng 25% so với quý II và quý IV giảm 30% so với quý III. Hỏi giá một cân cà phê vào quý IV là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$4650000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$1170000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$5100000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm của lần cuối trên giá trị đầu thay vì trên giá trị ngay trước"
+   },
+   {
+    "text": "$42000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một túi gạo vào năm 2020 là 500 000 đồng. Sau đó, giá năm 2021 giảm 12% so với năm 2020, giá năm 2022 giảm 20% so với năm 2021, giá năm 2023 tăng 25% so với năm 2022. Tính giá một túi gạo vào năm 2023.",
+  "nhieu": [
+   {
+    "text": "$465000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$352000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$504000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$477000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm của lần cuối trên giá trị đầu thay vì trên giá trị ngay trước"
+   },
+   {
+    "text": "$4400000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sản lượng lúa của một hợp tác xã vào tháng 1 là 1 000 tấn. Tháng 2 giảm 5% so với tháng 1, tháng 3 tăng 50% so với tháng 2. Hỏi sản lượng lúa của một hợp tác xã vào tháng 3 là bao nhiêu tấn?",
+  "nhieu": [
+   {
+    "text": "$1450$ tấn",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$950$ tấn",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$525$ tấn",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$14250$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sản lượng lúa của một hợp tác xã vào quý I là 5 000 tấn. Quý II tăng 50% so với quý I, quý III tăng 20% so với quý II. Hỏi sản lượng lúa của một hợp tác xã vào quý III là bao nhiêu tấn?",
+  "nhieu": [
+   {
+    "text": "$8500$ tấn",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$7500$ tấn",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$2000$ tấn",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$6250$ tấn",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$90000$ tấn",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vào năm 2020, số xe máy một cửa hàng bán được là 3 000 chiếc xe máy. Đến năm 2021, con số này giảm 10% so với năm 2020; đến năm 2022, lại giảm 20% so với năm 2021. Tính số xe máy một cửa hàng bán được vào năm 2022.",
+  "nhieu": [
+   {
+    "text": "$2100$ chiếc xe máy",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$2700$ chiếc xe máy",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$3960$ chiếc xe máy",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$3375$ chiếc xe máy",
+    "rule": "R525",
+    "duong_sai": "Chia (thay vì nhân) giá trị lần trước cho tỉ số phần trăm của lần cuối"
+   },
+   {
+    "text": "$21600$ chiếc xe máy",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vào tháng 5, số khách tham quan một khu du lịch là 800 lượt khách. Đến tháng 6, con số này tăng 40% so với tháng 5; đến tháng 7, lại tăng 15% so với tháng 6. Tính số khách tham quan một khu du lịch vào tháng 7.",
+  "nhieu": [
+   {
+    "text": "$1240$ lượt khách",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số phần trăm rồi nhân với giá trị đầu"
+   },
+   {
+    "text": "$1120$ lượt khách",
+    "rule": "R539",
+    "duong_sai": "Dừng sau các lần thay đổi đầu, bỏ sót lần thay đổi cuối cùng"
+   },
+   {
+    "text": "$408$ lượt khách",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần: tăng thành giảm, giảm thành tăng"
+   },
+   {
+    "text": "$12880$ lượt khách",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một mặt hàng năm 2023 tăng 60% so với năm 2022, năm 2024 tăng 50% so với năm 2023. Giá vào năm 2024 là 360 000 đồng. Hỏi giá của mặt hàng đó vào năm 2022 là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$864000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) giá cuối với các tỉ số phần trăm"
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược chiều từng lần tăng giảm rồi chia giá cuối"
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia giá cuối cho tỉ số của lần thay đổi cuối, bỏ sót các lần trước"
+   },
+   {
+    "text": "$756000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng/trừ thẳng các tỉ số rồi nhân (thay vì chia) với giá cuối"
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$225000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia giá cuối cho tỉ số của lần thay đổi đầu, bỏ sót lần sau"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một mặt hàng tháng 6 giảm 5% so với tháng 5, tháng 7 giảm 40% so với tháng 6. Giá vào tháng 7 là 285 000 đồng. Hỏi giá của mặt hàng đó vào tháng 5 là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$475000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia giá cuối cho tỉ số của lần thay đổi cuối, bỏ sót các lần trước"
+   },
+   {
+    "text": "$171000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá cuối với tỉ số của lần thay đổi cuối thay vì chia"
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia giá cuối cho tỉ số của lần thay đổi đầu, bỏ sót lần sau"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một cân cà phê tháng 10 tăng 60% so với tháng 9. Hỏi giá một cân cà phê tháng 10 phải giảm bao nhiêu phần trăm so với giá tháng 10 để trở về giá tháng 9?",
+  "nhieu": [
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho (tính trên giá cũ) làm phần trăm cần đổi, không tính trên giá mới"
+   },
+   {
+    "text": "Tăng $37,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Đảo chiều: tăng thì phải tăng tiếp (hoặc giảm thì giảm tiếp) thay vì ngược lại"
+   },
+   {
+    "text": "Giảm $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi giá mới bằng bao nhiêu phần trăm giá cũ mà quên so sánh với phần cần đổi"
+   },
+   {
+    "text": "Giảm $62,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "Giảm $375\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi tăng 300% so với tháng 9, giá một thùng sữa tháng 10 cần giảm bao nhiêu phần trăm (so với giá tháng 10) để quay lại đúng giá tháng 9?",
+  "nhieu": [
+   {
+    "text": "Giảm $300\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho (tính trên giá cũ) làm phần trăm cần đổi, không tính trên giá mới"
+   },
+   {
+    "text": "Tăng $75\\%$",
+    "rule": "R530",
+    "duong_sai": "Đảo chiều: tăng thì phải tăng tiếp (hoặc giảm thì giảm tiếp) thay vì ngược lại"
+   },
+   {
+    "text": "Giảm $400\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi giá mới bằng bao nhiêu phần trăm giá cũ mà quên so sánh với phần cần đổi"
+   },
+   {
+    "text": "Giảm $25\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi tỉ số phần trăm tìm được"
+   },
+   {
+    "text": "Giảm $750\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một túi gạo tháng 6 giảm 75% so với tháng 5. Hỏi giá một túi gạo tháng 6 phải tăng bao nhiêu phần trăm so với giá tháng 6 để trở về giá tháng 5?",
+  "nhieu": [
+   {
+    "text": "Tăng $75\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho (tính trên giá cũ) làm phần trăm cần đổi, không tính trên giá mới"
+   },
+   {
+    "text": "Giảm $300\\%$",
+    "rule": "R530",
+    "duong_sai": "Đảo chiều: tăng thì phải tăng tiếp (hoặc giảm thì giảm tiếp) thay vì ngược lại"
+   },
+   {
+    "text": "Tăng $25\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi giá mới bằng bao nhiêu phần trăm giá cũ mà quên so sánh với phần cần đổi"
+   },
+   {
+    "text": "Tăng $3000\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chị Hoa gửi 400 000 000 đồng vào ngân hàng với lãi suất 7%/năm, tiền lãi chỉ tính trên số tiền gốc ban đầu (không nhập lãi vào vốn). Hỏi sau 5 năm, số tiền lãi nhận được là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$28000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một năm, quên nhân với số năm gửi"
+   },
+   {
+    "text": "$540000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Cộng thêm tiền gốc vào tiền lãi (nhầm sang cả gốc lẫn lãi)"
+   },
+   {
+    "text": "$1400000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$168000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm + 1) thay vì số năm"
+   },
+   {
+    "text": "$112000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm − 1) thay vì số năm"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chị Hoa gửi 120 000 000 đồng vào ngân hàng với lãi suất 6,5%/năm, tiền lãi chỉ tính trên số tiền gốc ban đầu (không nhập lãi vào vốn). Hỏi sau 3 năm, số tiền lãi nhận được là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$7800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một năm, quên nhân với số năm gửi"
+   },
+   {
+    "text": "$143400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Cộng thêm tiền gốc vào tiền lãi (nhầm sang cả gốc lẫn lãi)"
+   },
+   {
+    "text": "$234000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$31200000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm + 1) thay vì số năm"
+   },
+   {
+    "text": "$15600000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm − 1) thay vì số năm"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ông Tâm gửi 200 000 000 đồng vào ngân hàng với lãi suất 5%/năm, tiền lãi chỉ tính trên số tiền gốc ban đầu (không nhập lãi vào vốn). Hỏi sau 5 năm, tổng số tiền cả gốc lẫn lãi nhận được là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$210000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một năm, quên nhân với số năm gửi"
+   },
+   {
+    "text": "$50000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$10000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở tiền lãi một năm, chưa nhân số năm và chưa cộng gốc"
+   },
+   {
+    "text": "$2500000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$260000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm + 1) thay vì số năm"
+   },
+   {
+    "text": "$240000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm − 1) thay vì số năm"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thầy Cường gửi 400 000 000 đồng vào ngân hàng với lãi suất 8%/năm, tiền lãi chỉ tính trên số tiền gốc ban đầu (không nhập lãi vào vốn). Hỏi sau 4 năm, tổng số tiền cả gốc lẫn lãi nhận được là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$432000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một năm, quên nhân với số năm gửi"
+   },
+   {
+    "text": "$128000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$32000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở tiền lãi một năm, chưa nhân số năm và chưa cộng gốc"
+   },
+   {
+    "text": "$5280000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$560000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm + 1) thay vì số năm"
+   },
+   {
+    "text": "$496000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với (số năm − 1) thay vì số năm"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chị Hoa vay ngân hàng 120 000 000 đồng với lãi suất 1%/tháng. Mỗi tháng tiền lãi đều tính trên số tiền vay ban đầu (không nhập lãi vào vốn). Hỏi sau 6 tháng, người đó phải trả cả gốc lẫn lãi bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$121200000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một tháng, quên nhân với số tháng gửi"
+   },
+   {
+    "text": "$7200000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$1272000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$128400000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng + 1) thay vì số tháng"
+   },
+   {
+    "text": "$126000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng − 1) thay vì số tháng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thầy Cường gửi 25 000 000 đồng vào ngân hàng, kỳ hạn 6 tháng, lãi suất 1,2%/tháng. Hết kỳ hạn mới nhận lãi và tiền lãi các tháng không nhập vào vốn. Hỏi hết kỳ hạn, tổng số tiền nhận được cả gốc lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$25300000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một tháng, quên nhân với số tháng gửi"
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở tiền lãi một tháng, chưa nhân số tháng và chưa cộng gốc"
+   },
+   {
+    "text": "$268000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$27100000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng + 1) thay vì số tháng"
+   },
+   {
+    "text": "$26500000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng − 1) thay vì số tháng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Mai gửi 120 000 000 đồng vào ngân hàng, kỳ hạn 4 tháng, lãi suất 0,8%/tháng. Hết kỳ hạn mới nhận lãi và tiền lãi các tháng không nhập vào vốn. Hỏi hết kỳ hạn, tổng số tiền nhận được cả gốc lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$120960000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi của một tháng, quên nhân với số tháng gửi"
+   },
+   {
+    "text": "$3840000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$1238400000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$124800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng + 1) thay vì số tháng"
+   },
+   {
+    "text": "$122880000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một tháng với (số tháng − 1) thay vì số tháng"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngân hàng có lãi suất 8%/năm. Một người gửi 10 000 000 đồng, kỳ hạn 6 tháng. Hỏi khi đến hạn, người đó nhận được tất cả bao nhiêu đồng cả gốc lẫn lãi?",
+  "nhieu": [
+   {
+    "text": "$10800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Lấy tiền lãi của cả năm, không đổi số tháng ra năm"
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$11600000$ đồng",
+    "rule": "R529",
+    "duong_sai": "Đổi tháng ra năm bị ngược: lấy 12 chia số tháng thay vì số tháng chia 12"
+   },
+   {
+    "text": "$104000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$14800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với số tháng (coi số tháng là số năm)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ông Tâm gửi tiết kiệm 400 000 000 đồng, kỳ hạn 6 tháng, với lãi suất 6,5%/năm. Hỏi đến hết kỳ hạn, tổng số tiền cả gốc lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$426000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Lấy tiền lãi của cả năm, không đổi số tháng ra năm"
+   },
+   {
+    "text": "$13000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$452000000$ đồng",
+    "rule": "R529",
+    "duong_sai": "Đổi tháng ra năm bị ngược: lấy 12 chia số tháng thay vì số tháng chia 12"
+   },
+   {
+    "text": "$4130000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$556000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với số tháng (coi số tháng là số năm)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngân hàng có lãi suất 4%/năm. Một người gửi 20 000 000 đồng, kỳ hạn 6 tháng. Hỏi khi đến hạn, người đó nhận được bao nhiêu đồng tiền lãi?",
+  "nhieu": [
+   {
+    "text": "$800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Lấy tiền lãi của cả năm, không đổi số tháng ra năm"
+   },
+   {
+    "text": "$20400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Cộng thêm tiền gốc vào tiền lãi (nhầm sang cả gốc lẫn lãi)"
+   },
+   {
+    "text": "$1600000$ đồng",
+    "rule": "R529",
+    "duong_sai": "Đổi tháng ra năm bị ngược: lấy 12 chia số tháng thay vì số tháng chia 12"
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$4800000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhân tiền lãi một năm với số tháng (coi số tháng là số năm)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thầy Cường gửi tiết kiệm 500 000 000 đồng với lãi suất 0,8%/tháng. Biết tiền lãi của tháng trước được nhập vào vốn để tính lãi cho tháng sau. Hỏi sau 2 tháng, người đó nhận được bao nhiêu đồng cả vốn lẫn lãi?",
+  "nhieu": [
+   {
+    "text": "$508000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$8032000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$504000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$5080320000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$8000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Bác Lan gửi tiết kiệm 250 000 000 đồng với lãi suất 1%/tháng. Biết tiền lãi của tháng trước được nhập vào vốn để tính lãi cho tháng sau. Hỏi sau 2 tháng, người đó nhận được bao nhiêu đồng cả vốn lẫn lãi?",
+  "nhieu": [
+   {
+    "text": "$255000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$5025000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$252500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$2550250000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chị Hoa gửi tiết kiệm 150 000 000 đồng với lãi suất 8%/năm. Biết tiền lãi của năm trước được nhập vào vốn để tính lãi cho năm sau. Hỏi sau 2 năm, người đó nhận được bao nhiêu đồng cả vốn lẫn lãi?",
+  "nhieu": [
+   {
+    "text": "$174000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$24960000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$162000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$1749600000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$24000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người gửi ngân hàng 400 000 000 đồng, lãi suất 5%/năm, lãi mỗi năm được nhập vào vốn của năm sau. Hỏi sau 3 năm, tổng số tiền cả vốn lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$460000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$63050000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$441000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$420000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi một kỳ rồi cộng vào gốc, quên các kỳ sau"
+   },
+   {
+    "text": "$4630500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$60000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người gửi ngân hàng 120 000 000 đồng, lãi suất 10%/năm, lãi mỗi năm được nhập vào vốn của năm sau. Hỏi sau 3 năm, tổng số tiền cả vốn lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$156000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$39720000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$145200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$132000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi một kỳ rồi cộng vào gốc, quên các kỳ sau"
+   },
+   {
+    "text": "$1597200000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$36000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người gửi ngân hàng 40 000 000 đồng, lãi suất 5%/năm, lãi mỗi năm được nhập vào vốn của năm sau. Hỏi sau 3 năm, tổng số tiền cả vốn lẫn lãi là bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$46000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn: mỗi kỳ đều tính lãi trên số tiền gốc ban đầu"
+   },
+   {
+    "text": "$6305000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Chỉ lấy tổng tiền lãi, quên cộng tiền gốc"
+   },
+   {
+    "text": "$44100000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số tiền sau kỳ gần cuối, bỏ sót kỳ cuối cùng"
+   },
+   {
+    "text": "$42000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Chỉ tính lãi một kỳ rồi cộng vào gốc, quên các kỳ sau"
+   },
+   {
+    "text": "$463050000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R536",
+    "duong_sai": "Tính lãi đơn rồi trừ đi tiền gốc (nhầm với tiền lãi)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lãi suất tiết kiệm là 0,5%/tháng. Một người gửi một số tiền và sau 1 tháng nhận được tiền lãi là 500 000 đồng. Tính số tiền người đó đã gửi.",
+  "nhieu": [
+   {
+    "text": "$100500000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Tìm đúng tiền gốc rồi cộng thêm cả tiền lãi (cộng thay vì dừng)"
+   },
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Chia tiền lãi cho số r mà quên đổi % (quên chia 100)"
+   },
+   {
+    "text": "$1200000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhầm tháng với năm: nhân số tiền gửi với 12"
+   },
+   {
+    "text": "$1000000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lãi suất tiết kiệm là 0,5%/tháng. Một người gửi một số tiền và sau 1 tháng nhận được tiền lãi là 200 000 đồng. Tính số tiền người đó đã gửi.",
+  "nhieu": [
+   {
+    "text": "$40200000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Tìm đúng tiền gốc rồi cộng thêm cả tiền lãi (cộng thay vì dừng)"
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Chia tiền lãi cho số r mà quên đổi % (quên chia 100)"
+   },
+   {
+    "text": "$480000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhầm tháng với năm: nhân số tiền gửi với 12"
+   },
+   {
+    "text": "$400000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lãi suất tiết kiệm là 4%/năm. Một người gửi một số tiền và sau 1 năm nhận được tiền lãi là 6 000 000 đồng. Tính số tiền người đó đã gửi.",
+  "nhieu": [
+   {
+    "text": "$156000000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Tìm đúng tiền gốc rồi cộng thêm cả tiền lãi (cộng thay vì dừng)"
+   },
+   {
+    "text": "$6250000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho (100% − lãi suất) thay vì cho lãi suất"
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Chia tiền lãi cho số r mà quên đổi % (quên chia 100)"
+   },
+   {
+    "text": "$1800000000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhầm tháng với năm: nhân số tiền gửi với 12"
+   },
+   {
+    "text": "$1500000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   },
+   {
+    "text": "$12500000$ đồng",
+    "rule": "R535",
+    "duong_sai": "Nhầm tháng với năm: chia số tiền gửi cho 12"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thầy Cường gửi tiết kiệm với lãi suất 7%/năm. Sau 1 năm, cả gốc lẫn lãi là 107 000 000 đồng. Hỏi lúc đầu người đó gửi bao nhiêu đồng?",
+  "nhieu": [
+   {
+    "text": "$7000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Lấy tiền lãi (cả gốc lẫn lãi trừ tiền gửi) làm đáp số"
+   },
+   {
+    "text": "$114490000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân (thay vì chia) cả gốc lẫn lãi với (100% + lãi suất)"
+   },
+   {
+    "text": "$99510000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng phần trăm lãi suất của cả gốc lẫn lãi (N − N × r%)"
+   },
+   {
+    "text": "$207000000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng (thay vì chia) cả gốc lẫn lãi với số tiền gửi"
+   },
+   {
+    "text": "$1000000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng gửi tiết kiệm 400 000 000 đồng. Sau 1 năm, người đó nhận được 28 000 000 đồng tiền lãi. Hỏi lãi suất của ngân hàng là bao nhiêu phần trăm một năm?",
+  "nhieu": [
+   {
+    "text": "$93\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi lãi suất tìm được"
+   },
+   {
+    "text": "$107\\%$",
+    "rule": "R528",
+    "duong_sai": "Cộng thêm 100% vào lãi suất tìm được"
+   },
+   {
+    "text": "$84\\%$",
+    "rule": "R535",
+    "duong_sai": "Nhầm năm với tháng: nhân lãi suất với 12"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng gửi tiết kiệm 15 000 000 đồng. Sau 1 năm, người đó nhận được 975 000 đồng tiền lãi. Hỏi lãi suất của ngân hàng là bao nhiêu phần trăm một năm?",
+  "nhieu": [
+   {
+    "text": "$93,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi lãi suất tìm được"
+   },
+   {
+    "text": "$106,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Cộng thêm 100% vào lãi suất tìm được"
+   },
+   {
+    "text": "$78\\%$",
+    "rule": "R535",
+    "duong_sai": "Nhầm năm với tháng: nhân lãi suất với 12"
+   },
+   {
+    "text": "$65\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một người gửi ngân hàng 60 000 000 đồng, sau 1 năm nhận được cả vốn lẫn lãi là 62 400 000 đồng. Tính lãi suất một năm của ngân hàng.",
+  "nhieu": [
+   {
+    "text": "$104\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi cả gốc lẫn lãi bằng bao nhiêu phần trăm tiền gửi mà quên trừ 100%"
+   },
+   {
+    "text": "$96\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi lãi suất tìm được"
+   },
+   {
+    "text": "$48\\%$",
+    "rule": "R535",
+    "duong_sai": "Nhầm năm với tháng: nhân lãi suất với 12"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chị Hoa gửi tiết kiệm 150 000 000 đồng. Sau 1 năm, cả gốc lẫn lãi là 156 000 000 đồng. Hỏi lãi suất của ngân hàng là bao nhiêu phần trăm một năm?",
+  "nhieu": [
+   {
+    "text": "$104\\%$",
+    "rule": "R528",
+    "duong_sai": "Ghi cả gốc lẫn lãi bằng bao nhiêu phần trăm tiền gửi mà quên trừ 100%"
+   },
+   {
+    "text": "$96\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy 100% trừ đi lãi suất tìm được"
+   },
+   {
+    "text": "$48\\%$",
+    "rule": "R535",
+    "duong_sai": "Nhầm năm với tháng: nhân lãi suất với 12"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R540",
+    "duong_sai": "Lệch một hàng ở bước tính cuối (dịch dấu phẩy sang phải)"
+   }
+  ]
+ }
+]

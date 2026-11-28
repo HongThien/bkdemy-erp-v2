@@ -1,0 +1,4147 @@
+[
+ {
+  "noi_dung": "Một chiếc loa bluetooth có giá niêm yết 400 000 đồng. Cửa hàng giảm giá 20%, sau đó giảm thêm 10% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua chiếc loa bluetooth đó?",
+  "nhieu": [
+   {
+    "text": "$280000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$320000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$352000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$112000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$8000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$289000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đôi giày thể thao có giá 300 000 đồng. Cửa hàng giảm giá lần thứ nhất 10%, sau đó giảm giá lần thứ hai 30% so với giá đã giảm lần thứ nhất. Hỏi giá đôi giày thể thao sau hai lần giảm là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$180000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$270000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$351000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$111000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$9000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$190000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một chiếc ti vi có giá niêm yết 12 000 000 đồng. Cửa hàng giảm giá 50%, sau đó giảm thêm 15% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua chiếc ti vi đó?",
+  "nhieu": [
+   {
+    "text": "$4200000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$6900000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$5101000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đôi giày thể thao có giá niêm yết 800 000 đồng. Cửa hàng giảm giá 30%, sau đó giảm thêm 25% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua đôi giày thể thao đó?",
+  "nhieu": [
+   {
+    "text": "$360000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$560000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$700000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$380000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$421000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo định bán chiếc cặp sách với giá 400 000 đồng. Để thu hút khách hàng, cửa hàng giảm giá hai lần liên tiếp: lần đầu giảm 20%, lần sau giảm 15% so với giá bán trước đó. Hỏi sau hai lần giảm giá thì chiếc cặp sách có giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$260000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$320000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$368000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$128000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$12000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$273000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc máy tính bảng ở một cửa hàng quần áo có giá 4 000 000 đồng. Vì ế hàng nên cửa hàng giảm giá 10%, vẫn chưa bán được nên giảm tiếp 30% so với giá đã giảm. Hỏi giá cuối cùng của chiếc máy tính bảng là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$3600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$4680000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$1480000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$120000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$2521000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc nồi cơm điện ở một cửa hàng giày dép có giá 1 000 000 đồng. Vì ế hàng nên cửa hàng giảm giá 25%, vẫn chưa bán được nên giảm tiếp 40% so với giá đã giảm. Hỏi giá cuối cùng của chiếc nồi cơm điện là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$350000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi giảm một lần trên giá ban đầu"
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$1050000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ hai lại cộng thêm thay vì trừ đi"
+   },
+   {
+    "text": "$550000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính xong tổng tiền được giảm rồi dừng, quên lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$100000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Nhân giá với số phần trăm giảm thay vì phần trăm còn lại"
+   },
+   {
+    "text": "$451000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao giảm giá chiếc tủ lạnh hai lần liên tiếp: lần đầu giảm 50%, lần sau giảm 20% so với giá đang bán. Sau hai lần giảm, giá còn 6 000 000 đồng. Hỏi giá ban đầu của chiếc tủ lạnh là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$20000000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi chia giá cuối cho phần còn lại"
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá cuối với tỉ số còn lại thay vì chia"
+   },
+   {
+    "text": "$7500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$10800000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm phần trăm vào giá cuối thay vì chia ngược"
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$15001000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy giảm giá chiếc áo khoác hai lần liên tiếp: lần đầu giảm 10%, lần sau giảm 20% so với giá đang bán. Sau hai lần giảm, giá còn 144 000 đồng. Hỏi giá ban đầu của chiếc áo khoác là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$180000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$160000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$201000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân ngày Quốc tế Phụ nữ, một cửa hàng đồ chơi giảm giá chiếc váy 50%. Ngày hôm sau, cửa hàng giảm thêm 25% giá đang bán nên giá chiếc váy chỉ còn 150 000 đồng. Hỏi trước khi giảm giá thì chiếc váy có giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi chia giá cuối cho phần còn lại"
+   },
+   {
+    "text": "$200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$401000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giày dép giảm giá chiếc quạt điện 20% để nhập hàng mới. Sau một tuần vẫn còn hàng tồn nên cửa hàng giảm tiếp 50% so với giá trước đó và bán được với giá 200 000 đồng. Hỏi ban đầu giá chiếc quạt điện là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$80000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá cuối với tỉ số còn lại thay vì chia"
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$360000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm phần trăm vào giá cuối thay vì chia ngược"
+   },
+   {
+    "text": "$250000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$501000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc áo khoác bị giảm giá 30%, rồi lại giảm tiếp 10% so với giá vừa giảm, và hiện bán với giá 126 000 đồng. Hỏi lúc chưa giảm giá, chiếc áo khoác có giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$210000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi chia giá cuối cho phần còn lại"
+   },
+   {
+    "text": "$140000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$180000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$201000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc đồng hồ đeo tay bị giảm giá 15%, rồi lại giảm tiếp 40% so với giá vừa giảm, và hiện bán với giá 408 000 đồng. Hỏi lúc chưa giảm giá, chiếc đồng hồ đeo tay có giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$680000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ ngược lần giảm thứ hai, lấy giá sau lần giảm thứ nhất làm đáp số"
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ chia cho tỉ số của lần giảm đầu, bỏ sót lần giảm còn lại"
+   },
+   {
+    "text": "$801000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước tính cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng 40%, sau đó giảm tiếp 50% so với giá đã giảm. Hỏi sau hai lần giảm, giá của mặt hàng đó bằng bao nhiêu phần trăm giá ban đầu?",
+  "nhieu": [
+   {
+    "text": "$10\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi lấy 100% trừ đi"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính được phần đã giảm nhưng ghi nhầm là phần còn lại"
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Nhân hai phần trăm giảm thay vì hai phần trăm còn lại"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy tỉ số còn lại của lần giảm thứ hai"
+   },
+   {
+    "text": "$31\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng 15%, sau đó giảm tiếp 50% so với giá đã giảm. Hỏi sau hai lần giảm, giá của mặt hàng đó bằng bao nhiêu phần trăm giá ban đầu?",
+  "nhieu": [
+   {
+    "text": "$35\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi lấy 100% trừ đi"
+   },
+   {
+    "text": "$57,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính được phần đã giảm nhưng ghi nhầm là phần còn lại"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi lấy làm đáp số"
+   },
+   {
+    "text": "$7,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Nhân hai phần trăm giảm thay vì hai phần trăm còn lại"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy tỉ số còn lại của lần giảm thứ hai"
+   },
+   {
+    "text": "$43,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc áo được giảm 50%, rồi giảm tiếp 40% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo đã giảm tổng cộng bao nhiêu phần trăm so với giá ban đầu?",
+  "nhieu": [
+   {
+    "text": "$90\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm giảm"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính được giá còn bằng bao nhiêu phần trăm rồi ghi luôn, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$50\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm giảm của lần thứ nhất"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Nhân hai phần trăm giảm với nhau"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm giảm của lần thứ hai"
+   },
+   {
+    "text": "$71\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng hai lần liên tiếp: lần đầu giảm 20%, lần sau giảm 10% so với giá đang bán. Hỏi hai lần giảm đó tương đương với một lần giảm bao nhiêu phần trăm so với giá ban đầu?",
+  "nhieu": [
+   {
+    "text": "$30\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm giảm"
+   },
+   {
+    "text": "$72\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính được giá còn bằng bao nhiêu phần trăm rồi ghi luôn, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm giảm của lần thứ nhất"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R101",
+    "duong_sai": "Nhân hai phần trăm giảm với nhau"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm giảm của lần thứ hai"
+   },
+   {
+    "text": "$29\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá một chiếc áo được giảm 30%, rồi giảm tiếp 30% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo đã giảm tổng cộng bao nhiêu phần trăm so với giá ban đầu?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm giảm"
+   },
+   {
+    "text": "$49\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính được giá còn bằng bao nhiêu phần trăm rồi ghi luôn, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm giảm của lần thứ nhất"
+   },
+   {
+    "text": "$9\\%$",
+    "rule": "R101",
+    "duong_sai": "Nhân hai phần trăm giảm với nhau"
+   },
+   {
+    "text": "$52\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc ti vi có giá 5 000 000 đồng. Cửa hàng giảm giá hai lần liên tiếp: lần một giảm 30%, lần hai giảm 40% so với giá đang bán. Hỏi tổng số tiền được giảm sau hai lần là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$2100000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính ra giá sau hai lần giảm rồi dừng, chưa lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy số tiền được giảm ở lần thứ nhất"
+   },
+   {
+    "text": "$3500000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi tính trên giá ban đầu"
+   },
+   {
+    "text": "$7100000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá ban đầu với giá cuối thay vì trừ"
+   },
+   {
+    "text": "$2901000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo niêm yết giá chiếc áo khoác là 240 000 đồng. Cửa hàng giảm giá 25%, sau đó giảm thêm 25% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo khoác rẻ hơn lúc đầu bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$135000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính ra giá sau hai lần giảm rồi dừng, chưa lấy giá ban đầu trừ đi"
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy số tiền được giảm ở lần thứ nhất"
+   },
+   {
+    "text": "$120000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần trăm giảm rồi tính trên giá ban đầu"
+   },
+   {
+    "text": "$375000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá ban đầu với giá cuối thay vì trừ"
+   },
+   {
+    "text": "$106000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đôi giày thể thao có giá 500 000 đồng. Sau khi giảm giá 25%, cửa hàng giảm thêm một lần nữa và bán với giá 300 000 đồng. Hỏi lần giảm sau là giảm bao nhiêu phần trăm so với giá đang bán trước đó?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R529",
+    "duong_sai": "Lấy giá sau lần giảm thứ nhất chia giá cuối (chia ngược)"
+   },
+   {
+    "text": "$15\\%$",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm giảm trên giá niêm yết thay vì giá sau lần giảm đầu"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được giá cuối bằng bao nhiêu phần trăm rồi ghi luôn, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R408",
+    "duong_sai": "Lấy tổng phần trăm đã giảm so với giá niêm yết làm đáp số"
+   },
+   {
+    "text": "$21\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy niêm yết giá chiếc đồng hồ đeo tay là 600 000 đồng. Cửa hàng giảm giá lần thứ nhất 10%, rồi giảm tiếp lần thứ hai nên giá chỉ còn 486 000 đồng. Hỏi lần giảm thứ hai là giảm bao nhiêu phần trăm so với giá sau lần giảm thứ nhất?",
+  "nhieu": [
+   {
+    "text": "$9\\%$",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm giảm trên giá niêm yết thay vì giá sau lần giảm đầu"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được giá cuối bằng bao nhiêu phần trăm rồi ghi luôn, quên lấy 100% trừ đi"
+   },
+   {
+    "text": "$19\\%$",
+    "rule": "R408",
+    "duong_sai": "Lấy tổng phần trăm đã giảm so với giá niêm yết làm đáp số"
+   },
+   {
+    "text": "$11\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng niêm yết giá chiếc tủ lạnh là 10 000 000 đồng. Cửa hàng giảm giá lần thứ nhất 50%, rồi giảm tiếp lần thứ hai nên giá chỉ còn 2 500 000 đồng. Hỏi lần giảm thứ hai là giảm bao nhiêu phần trăm so với giá sau lần giảm thứ nhất?",
+  "nhieu": [
+   {
+    "text": "$100\\%$",
+    "rule": "R529",
+    "duong_sai": "Lấy giá sau lần giảm thứ nhất chia giá cuối (chia ngược)"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Tính phần trăm giảm trên giá niêm yết thay vì giá sau lần giảm đầu"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R408",
+    "duong_sai": "Lấy tổng phần trăm đã giảm so với giá niêm yết làm đáp số"
+   },
+   {
+    "text": "$51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao bán chiếc bàn học với giá niêm yết 1 200 000 đồng. Vì ế hàng nên cửa hàng giảm giá ba lần liên tiếp: lần một giảm 50%, lần hai giảm 30% so với giá sau lần một, lần ba giảm 10% so với giá sau lần hai. Hỏi sau ba lần giảm, giá chiếc bàn học là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$120000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng ba phần trăm giảm rồi giảm một lần"
+   },
+   {
+    "text": "$420000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính hai lần giảm đầu rồi lấy làm đáp số"
+   },
+   {
+    "text": "$462000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ ba lại cộng thêm thay vì trừ"
+   },
+   {
+    "text": "$600000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi dừng"
+   },
+   {
+    "text": "$379000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc váy giá 200 000 đồng được giảm giá ba đợt: đợt đầu giảm 10%, đợt hai giảm 20% so với giá đang bán, đợt ba giảm 50% so với giá đang bán. Hỏi giá cuối cùng của chiếc váy là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$40000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng ba phần trăm giảm rồi giảm một lần"
+   },
+   {
+    "text": "$144000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính hai lần giảm đầu rồi lấy làm đáp số"
+   },
+   {
+    "text": "$216000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ ba lại cộng thêm thay vì trừ"
+   },
+   {
+    "text": "$180000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi dừng"
+   },
+   {
+    "text": "$73000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc váy giá 300 000 đồng được giảm giá ba đợt: đợt đầu giảm 50%, đợt hai giảm 20% so với giá đang bán, đợt ba giảm 25% so với giá đang bán. Hỏi giá cuối cùng của chiếc váy là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$15000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng ba phần trăm giảm rồi giảm một lần"
+   },
+   {
+    "text": "$120000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính hai lần giảm đầu rồi lấy làm đáp số"
+   },
+   {
+    "text": "$150000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ ba lại cộng thêm thay vì trừ"
+   },
+   {
+    "text": "$91000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiếc quạt điện giá 600 000 đồng được giảm giá ba đợt: đợt đầu giảm 10%, đợt hai giảm 50% so với giá đang bán, đợt ba giảm 10% so với giá đang bán. Hỏi giá cuối cùng của chiếc quạt điện là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$180000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng ba phần trăm giảm rồi giảm một lần"
+   },
+   {
+    "text": "$270000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính hai lần giảm đầu rồi lấy làm đáp số"
+   },
+   {
+    "text": "$297000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lần giảm thứ ba lại cộng thêm thay vì trừ"
+   },
+   {
+    "text": "$540000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính lần giảm thứ nhất rồi dừng"
+   },
+   {
+    "text": "$244000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi chai nước ép tăng 15% còn số chai bán ra mỗi ngày bớt 20% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $8\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $92\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $15\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $9\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi cuốn truyện tranh tăng thêm 20% còn số cuốn bán ra mỗi ngày tăng thêm 60% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $80\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Giảm $92\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $192\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Tăng $93\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán suất cơm trưa. Tuần này cửa hàng giảm giá bán 40% so với tuần trước, nhưng số suất bán được tăng 30%. Hỏi doanh thu của tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "nhieu": [
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $22\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $78\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $23\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi suất cơm trưa tăng 10% còn số suất bán ra mỗi ngày tăng 60% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Giảm $76\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $176\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $10\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Tăng $77\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán hộp bút màu. Tuần này cửa hàng hạ giá bán 10% so với tuần trước, nhưng số hộp bán được tăng thêm 10%. Hỏi doanh thu của tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "nhieu": [
+   {
+    "text": "Tăng $1\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $99\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Tăng $10\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $2\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi hạ giá bán chiếc bánh mì 20% thì doanh thu của cửa hàng giảm 50% so với trước. Hỏi số chiếc bán được tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Tăng $37,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $62,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy tỉ số giá chia tỉ số doanh thu"
+   },
+   {
+    "text": "Giảm $38,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi tăng giá bán cuốn truyện tranh 25% thì doanh thu của cửa hàng tăng 15% so với trước. Hỏi số cuốn bán được tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Tăng $8\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $92\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $43,75\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Giảm $9\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau khi hạ giá bán hộp bút màu 20% thì doanh thu của cửa hàng tăng thêm 10% so với trước. Hỏi số hộp bán được tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $137,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $12\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $38,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một quán giảm giá mỗi cuốn truyện tranh 20%, nhờ vậy doanh thu tăng thêm 5% so với tuần trước. Hỏi số cuốn truyện tranh bán ra thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $25\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Giảm $31,25\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $131,25\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $16\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $32,25\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán ly trà sữa với giá 40 000 đồng mỗi ly. Sau khi điều chỉnh giá, số ly bán ra giảm 20% và doanh thu tăng 10% so với trước. Hỏi giá bán mới của mỗi ly là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$52000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "$44000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo phần trăm doanh thu, bỏ qua số lượng"
+   },
+   {
+    "text": "$32000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo phần trăm số lượng, bỏ qua doanh thu"
+   },
+   {
+    "text": "$25000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng đổi chiều: giá giảm thành tăng và ngược lại"
+   },
+   {
+    "text": "$56000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán suất cơm trưa với giá 30 000 đồng mỗi suất. Sau khi điều chỉnh giá, số suất bán ra bớt 20% và doanh thu tăng thêm 60% so với trước. Hỏi giá bán mới của mỗi suất là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$15000$ đồng",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy tỉ số số lượng chia tỉ số doanh thu"
+   },
+   {
+    "text": "$54000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "$48000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo phần trăm doanh thu, bỏ qua số lượng"
+   },
+   {
+    "text": "$24000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo phần trăm số lượng, bỏ qua doanh thu"
+   },
+   {
+    "text": "$61000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá mỗi chai nước ép là 25 000 đồng. Sau khi thay đổi giá bán, số chai bán được giảm 25% nên doanh thu bớt 40%. Hỏi giá mỗi chai nước ép sau khi thay đổi là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$15000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo phần trăm doanh thu, bỏ qua số lượng"
+   },
+   {
+    "text": "$30000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng đổi chiều: giá giảm thành tăng và ngược lại"
+   },
+   {
+    "text": "$21000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá mỗi chiếc bánh kem nhỏ là 40 000 đồng. Sau khi thay đổi giá bán, số chiếc bán được tăng 25% nên doanh thu tăng thêm 50%. Hỏi giá mỗi chiếc bánh kem nhỏ sau khi thay đổi là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$75000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia doanh thu cho số lượng"
+   },
+   {
+    "text": "$50000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo phần trăm doanh thu, bỏ qua số lượng"
+   },
+   {
+    "text": "$32000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng đổi chiều: giá giảm thành tăng và ngược lại"
+   },
+   {
+    "text": "$49000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Sau một tuần, doanh thu của cửa hàng A bằng 108% doanh thu của cửa hàng B mặc dù giá mỗi sản phẩm của cửa hàng B bằng 160% giá mỗi sản phẩm của cửa hàng A. Hỏi số sản phẩm bán được của cửa hàng A nhiều hơn hay ít hơn bao nhiêu phần trăm số sản phẩm bán được của cửa hàng B?",
+  "nhieu": [
+   {
+    "text": "Ít hơn $72,8\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép tính nhưng kết luận ngược nhiều hơn / ít hơn"
+   },
+   {
+    "text": "Ít hơn $32,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Dùng ngược quan hệ giá: lấy tỉ số giá của nơi này thay cho nơi kia"
+   },
+   {
+    "text": "Nhiều hơn $172,8\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Ít hơn $37,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính giá của A so với B rồi lấy làm đáp số"
+   },
+   {
+    "text": "Ít hơn $52\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Nhiều hơn $73,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, doanh thu của rạp A bằng 126% doanh thu của rạp B, còn giá mỗi vé của rạp B bằng 200% giá của rạp A. Hỏi số vé bán ra của rạp A nhiều hơn hay ít hơn số vé bán ra của rạp B bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Ít hơn $37\\%$",
+    "rule": "R529",
+    "duong_sai": "Dùng ngược quan hệ giá: lấy tỉ số giá của nơi này thay cho nơi kia"
+   },
+   {
+    "text": "Nhiều hơn $252\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Ít hơn $50\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính giá của A so với B rồi lấy làm đáp số"
+   },
+   {
+    "text": "Ít hơn $74\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Nhiều hơn $153\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, doanh thu của quán A bằng 108% doanh thu của quán B, còn giá mỗi ly nước của quán B bằng 250% giá của quán A. Hỏi số ly nước bán ra của quán A nhiều hơn hay ít hơn số ly nước bán ra của quán B bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Ít hơn $56,8\\%$",
+    "rule": "R529",
+    "duong_sai": "Dùng ngược quan hệ giá: lấy tỉ số giá của nơi này thay cho nơi kia"
+   },
+   {
+    "text": "Nhiều hơn $270\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Ít hơn $60\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính giá của A so với B rồi lấy làm đáp số"
+   },
+   {
+    "text": "Nhiều hơn $171\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một tuần, phim A thu được số tiền bằng 90% số tiền phim B thu được, và giá bán mỗi vé ở phim A bằng 75% giá bán mỗi vé ở phim B. Hỏi phim A bán được nhiều hơn hay ít hơn phim B bao nhiêu phần trăm số vé?",
+  "nhieu": [
+   {
+    "text": "Ít hơn $20\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép tính nhưng kết luận ngược nhiều hơn / ít hơn"
+   },
+   {
+    "text": "Nhiều hơn $120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Ít hơn $32,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia doanh thu cho giá"
+   },
+   {
+    "text": "Nhiều hơn $15\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Nhiều hơn $21\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một tuần, quán A thu được số tiền bằng 84% số tiền quán B thu được, và giá bán mỗi ly nước ở quán A bằng 150% giá bán mỗi ly nước ở quán B. Hỏi quán A bán được nhiều hơn hay ít hơn quán B bao nhiêu phần trăm số ly nước?",
+  "nhieu": [
+   {
+    "text": "Nhiều hơn $44\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép tính nhưng kết luận ngược nhiều hơn / ít hơn"
+   },
+   {
+    "text": "Ít hơn $56\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Nhiều hơn $26\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia doanh thu cho giá"
+   },
+   {
+    "text": "Ít hơn $66\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Ít hơn $45\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một tuần, phim A thu được số tiền bằng 84% số tiền phim B thu được, và giá bán mỗi vé ở phim A bằng 75% giá bán mỗi vé ở phim B. Hỏi phim A bán được nhiều hơn hay ít hơn phim B bao nhiêu phần trăm số vé?",
+  "nhieu": [
+   {
+    "text": "Ít hơn $12\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép tính nhưng kết luận ngược nhiều hơn / ít hơn"
+   },
+   {
+    "text": "Nhiều hơn $112\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được số lượng bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Ít hơn $37\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia doanh thu cho giá"
+   },
+   {
+    "text": "Nhiều hơn $9\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Nhiều hơn $13\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một quán thu được 4 800 000 đồng từ việc bán chiếc bánh mì trong tuần đầu. Sang tuần sau, giá mỗi chiếc giảm 5% và số chiếc bán được tăng thêm 5% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$4800000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$4560000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của giá, bỏ qua số lượng"
+   },
+   {
+    "text": "$5040000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của số lượng, bỏ qua giá"
+   },
+   {
+    "text": "$4812000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của doanh thu"
+   },
+   {
+    "text": "$4789000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một quán thu được 5 000 000 đồng từ việc bán chai nước ép trong tuần đầu. Sang tuần sau, giá mỗi chai bớt 40% và số chai bán được bớt 10% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của giá, bỏ qua số lượng"
+   },
+   {
+    "text": "$4500000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của số lượng, bỏ qua giá"
+   },
+   {
+    "text": "$7300000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của doanh thu"
+   },
+   {
+    "text": "$2701000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, cửa hàng bán suất cơm trưa thu được 8 000 000 đồng. Tháng này cửa hàng giảm giá bán 30%, nhưng số suất bán ra tăng thêm 50% so với tháng trước. Hỏi doanh thu tháng này là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$9600000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$5600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của giá, bỏ qua số lượng"
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của số lượng, bỏ qua giá"
+   },
+   {
+    "text": "$7600000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của doanh thu"
+   },
+   {
+    "text": "$8401000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một quán thu được 3 000 000 đồng từ việc bán chiếc bánh mì trong tuần đầu. Sang tuần sau, giá mỗi chiếc bớt 10% và số chiếc bán được giảm đi 50% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$2700000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của giá, bỏ qua số lượng"
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của số lượng, bỏ qua giá"
+   },
+   {
+    "text": "$4650000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của doanh thu"
+   },
+   {
+    "text": "$1351000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà hàng dành số tiền cố định mỗi tháng để mua bột mì. Giá mỗi kg bột mì tăng 100% so với tháng trước. Hỏi nhà hàng phải mua số kg bột mì tăng hay giảm bao nhiêu phần trăm để số tiền chi ra không đổi?",
+  "nhieu": [
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Mỗi tháng một quán ăn mua thịt heo với tổng số tiền không đổi. Tháng này giá thịt heo giảm 50% so với tháng trước. Hỏi để tổng số tiền mua thịt heo không đổi thì lượng thịt heo mua tháng này phải tăng hay giảm bao nhiêu phần trăm so với tháng trước?",
+  "nhieu": [
+   {
+    "text": "Tăng $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $101\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Mỗi tháng một quán ăn mua đường với tổng số tiền không đổi. Tháng này giá đường giảm 50% so với tháng trước. Hỏi để tổng số tiền mua đường không đổi thì lượng đường mua tháng này phải tăng hay giảm bao nhiêu phần trăm so với tháng trước?",
+  "nhieu": [
+   {
+    "text": "Tăng $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $101\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà hàng dành số tiền cố định mỗi tháng để mua thịt heo. Giá mỗi kg thịt heo bớt 60% so với tháng trước. Hỏi nhà hàng phải mua số kg thịt heo tăng hay giảm bao nhiêu phần trăm để số tiền chi ra không đổi?",
+  "nhieu": [
+   {
+    "text": "Tăng $250\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $151\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Doanh thu bán ly trà sữa hôm nay bằng 110% doanh thu hôm qua, còn số ly bán được hôm nay bằng 80% số ly bán được hôm qua. Hỏi giá bán mỗi ly hôm nay tăng hay giảm bao nhiêu phần trăm so với hôm qua?",
+  "nhieu": [
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $137,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được giá bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $12\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Tăng $38,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tuần này một cửa hàng thu được số tiền bằng 90% tuần trước nhờ bán chiếc bánh kem nhỏ, và số chiếc bán ra bằng 60% tuần trước. Hỏi giá mỗi chiếc tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "nhieu": [
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $150\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được giá bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $46\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Tăng $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tuần này một cửa hàng thu được số tiền bằng 108% tuần trước nhờ bán cuốn truyện tranh, và số cuốn bán ra bằng 60% tuần trước. Hỏi giá mỗi cuốn tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "nhieu": [
+   {
+    "text": "Giảm $80\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được giá bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $35,2\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $48\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm đề cho thay vì chia"
+   },
+   {
+    "text": "Tăng $81\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài của một miếng đất hình chữ nhật tăng thêm 20%, chiều rộng giảm đi 40%. Hỏi diện tích miếng đất đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $28\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $72\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $29\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một sân trường hình chữ nhật. Nếu bớt chiều dài 30% và tăng thêm chiều rộng 30% thì diện tích của nó thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $9\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $91\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $30\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài của một sân trường hình chữ nhật tăng 5%, chiều rộng giảm đi 10%. Hỏi diện tích sân trường đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "Giảm $5\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $5,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $94,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $6,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài của một mặt bàn hình chữ nhật giảm 40%, chiều rộng giảm đi 30%. Hỏi diện tích mặt bàn đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "Giảm $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $58\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $42\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Giảm $30\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $59\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài của một mặt bàn hình chữ nhật giảm 5%, chiều rộng bớt 50%. Hỏi diện tích mặt bàn đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "nhieu": [
+   {
+    "text": "Giảm $55\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay đổi thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "Tăng $52,5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $47,5\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ nhất"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của đại lượng thứ hai"
+   },
+   {
+    "text": "Giảm $53,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một sân trường hình chữ nhật có diện tích $300\\ \\text{cm}^2$. Người ta giảm chiều dài 20%, tăng thêm chiều rộng 30%. Tính diện tích mới của sân trường đó (đơn vị xăng-ti-mét vuông).",
+  "nhieu": [
+   {
+    "text": "$330\\ \\text{cm}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$240\\ \\text{cm}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều dài"
+   },
+   {
+    "text": "$390\\ \\text{cm}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều rộng"
+   },
+   {
+    "text": "$288\\ \\text{cm}^2$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của diện tích"
+   },
+   {
+    "text": "$3120\\ \\text{cm}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một màn hình ti vi hình chữ nhật có diện tích $1200\\ \\text{m}^2$. Người ta tăng thêm chiều dài 10%, bớt chiều rộng 30%. Tính diện tích mới của màn hình ti vi đó (đơn vị mét vuông).",
+  "nhieu": [
+   {
+    "text": "$960\\ \\text{m}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$1320\\ \\text{m}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều dài"
+   },
+   {
+    "text": "$840\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều rộng"
+   },
+   {
+    "text": "$1476\\ \\text{m}^2$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của diện tích"
+   },
+   {
+    "text": "$9240\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tờ giấy hình chữ nhật có diện tích $600\\ \\text{cm}^2$. Người ta giảm chiều dài 10%, tăng thêm chiều rộng 10%. Tính diện tích mới của tờ giấy đó (đơn vị xăng-ti-mét vuông).",
+  "nhieu": [
+   {
+    "text": "$600\\ \\text{cm}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$540\\ \\text{cm}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều dài"
+   },
+   {
+    "text": "$660\\ \\text{cm}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều rộng"
+   },
+   {
+    "text": "$606\\ \\text{cm}^2$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của diện tích"
+   },
+   {
+    "text": "$5940\\ \\text{cm}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tấm gỗ hình chữ nhật có diện tích $200\\ \\text{cm}^2$. Người ta giảm đi chiều dài 30%, bớt chiều rộng 40%. Tính diện tích mới của tấm gỗ đó (đơn vị xăng-ti-mét vuông).",
+  "nhieu": [
+   {
+    "text": "$60\\ \\text{cm}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$140\\ \\text{cm}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều dài"
+   },
+   {
+    "text": "$120\\ \\text{cm}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của chiều rộng"
+   },
+   {
+    "text": "$316\\ \\text{cm}^2$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của diện tích"
+   },
+   {
+    "text": "$840\\ \\text{cm}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi giảm chiều dài của một tấm bìa hình chữ nhật đi 20%, cần tăng chiều rộng thêm bao nhiêu phần trăm để diện tích không đổi?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho, quên rằng phần trăm tính trên số mới"
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số chiều dài mới làm đáp số"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù thay vì phần trăm cần tìm"
+   },
+   {
+    "text": "$26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi giảm chiều dài của một sân trường hình chữ nhật đi 75%, cần tăng chiều rộng thêm bao nhiêu phần trăm để diện tích không đổi?",
+  "nhieu": [
+   {
+    "text": "$75\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho, quên rằng phần trăm tính trên số mới"
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số chiều dài mới làm đáp số"
+   },
+   {
+    "text": "$310\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù thay vì phần trăm cần tìm"
+   },
+   {
+    "text": "$301\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một màn hình ti vi hình chữ nhật được tăng chiều dài 25%. Hỏi phải giảm chiều rộng đi bao nhiêu phần trăm (so với chiều rộng cũ) để diện tích vẫn như cũ?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho, quên rằng phần trăm tính trên số mới"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số chiều dài mới làm đáp số"
+   },
+   {
+    "text": "$21\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi tăng chiều dài của một tờ giấy hình chữ nhật thêm 150%, cần giảm chiều rộng đi bao nhiêu phần trăm để diện tích không đổi?",
+  "nhieu": [
+   {
+    "text": "$150\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho, quên rằng phần trăm tính trên số mới"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số chiều dài mới làm đáp số"
+   },
+   {
+    "text": "$61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Người ta tăng thêm chiều dài của một màn hình ti vi hình chữ nhật 25% và điều chỉnh chiều rộng, kết quả là diện tích bớt 30% so với trước. Hỏi chiều rộng thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $55\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Tăng $44\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $56\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $12,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Giảm $45\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bức tranh hình chữ nhật được bớt chiều dài 50% và thay đổi cả chiều rộng, khi đó diện tích giảm đi 5% so với ban đầu. Hỏi chiều rộng đã tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $45\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Giảm $90\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $190\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $52,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $91\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tấm gỗ hình chữ nhật được giảm đi chiều dài 20% và thay đổi cả chiều rộng, khi đó diện tích tăng 40% so với ban đầu. Hỏi chiều rộng đã tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Lấy hiệu hai phần trăm thay đổi thay vì chia hai tỉ số"
+   },
+   {
+    "text": "Giảm $75\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $175\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $12\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân hai tỉ số thay vì chia"
+   },
+   {
+    "text": "Tăng $76\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một hình chữ nhật. Khi bớt chiều dài 4,5 cm và giảm chiều rộng 40% thì diện tích mới giảm đi 46% so với diện tích ban đầu. Tính chiều dài mới.",
+  "nhieu": [
+   {
+    "text": "$45$ cm",
+    "rule": "R531",
+    "duong_sai": "Tìm được chiều dài cũ rồi dừng, quên cộng/trừ số xăng-ti-mét đề cho"
+   },
+   {
+    "text": "$49,5$ cm",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ (hoặc ngược lại) ở bước cuối"
+   },
+   {
+    "text": "$405$ cm",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   },
+   {
+    "text": "$4,05$ cm",
+    "rule": "R525",
+    "duong_sai": "Nhân số xăng-ti-mét đề cho với tỉ số thay vì chia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một hình chữ nhật. Khi tăng thêm chiều dài 4,5 cm và giảm chiều rộng 25% thì diện tích mới giảm 17,5% so với diện tích ban đầu. Tính chiều dài mới.",
+  "nhieu": [
+   {
+    "text": "$45$ cm",
+    "rule": "R531",
+    "duong_sai": "Tìm được chiều dài cũ rồi dừng, quên cộng/trừ số xăng-ti-mét đề cho"
+   },
+   {
+    "text": "$40,5$ cm",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ (hoặc ngược lại) ở bước cuối"
+   },
+   {
+    "text": "$495$ cm",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   },
+   {
+    "text": "$4,95$ cm",
+    "rule": "R525",
+    "duong_sai": "Nhân số xăng-ti-mét đề cho với tỉ số thay vì chia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một hình chữ nhật. Khi tăng thêm chiều dài 6 cm và tăng thêm chiều rộng 20% thì diện tích mới tăng thêm 56% so với diện tích ban đầu. Tính chiều dài mới.",
+  "nhieu": [
+   {
+    "text": "$20$ cm",
+    "rule": "R531",
+    "duong_sai": "Tìm được chiều dài cũ rồi dừng, quên cộng/trừ số xăng-ti-mét đề cho"
+   },
+   {
+    "text": "$14$ cm",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ (hoặc ngược lại) ở bước cuối"
+   },
+   {
+    "text": "$260$ cm",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   },
+   {
+    "text": "$7,8$ cm",
+    "rule": "R525",
+    "duong_sai": "Nhân số xăng-ti-mét đề cho với tỉ số thay vì chia"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hình vuông có độ dài cạnh tăng 50%. Hỏi diện tích của hình vuông đó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai lần phần trăm thay đổi của cạnh thay vì nhân"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của cạnh làm đáp số"
+   },
+   {
+    "text": "Tăng $225\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được diện tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $126\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nếu bớt mỗi cạnh của một hình vuông 25% thì diện tích hình vuông thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai lần phần trăm thay đổi của cạnh thay vì nhân"
+   },
+   {
+    "text": "Tăng $43,75\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $25\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của cạnh làm đáp số"
+   },
+   {
+    "text": "Giảm $56,25\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được diện tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $44,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nếu tăng mỗi cạnh của một hình vuông 25% thì diện tích hình vuông thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai lần phần trăm thay đổi của cạnh thay vì nhân"
+   },
+   {
+    "text": "Giảm $56,25\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $25\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của cạnh làm đáp số"
+   },
+   {
+    "text": "Tăng $156,25\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được diện tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $57,25\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tờ giấy hình chữ nhật có chiều dài bớt 10% và chiều rộng tăng thêm 60% thì diện tích tăng $176\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$77,44\\ \\text{m}^2$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần diện tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$352\\ \\text{m}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm rồi chia"
+   },
+   {
+    "text": "$1760\\ \\text{m}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của chiều dài"
+   },
+   {
+    "text": "$576\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Tìm được diện tích mới rồi dừng, quên tìm diện tích ban đầu"
+   },
+   {
+    "text": "$752\\ \\text{m}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$4000\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một miếng đất hình chữ nhật có chiều dài tăng 50% và chiều rộng bớt 20% thì diện tích tăng thêm $80\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$16\\ \\text{m}^2$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần diện tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$160\\ \\text{m}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của chiều dài"
+   },
+   {
+    "text": "$480\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Tìm được diện tích mới rồi dừng, quên tìm diện tích ban đầu"
+   },
+   {
+    "text": "$560\\ \\text{m}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$4000\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một sân trường hình chữ nhật. Nếu tăng chiều dài 5% và tăng thêm chiều rộng 20% thì diện tích tăng thêm $156\\ \\text{cm}^2$. Tính diện tích ban đầu của sân trường đó.",
+  "nhieu": [
+   {
+    "text": "$40,56\\ \\text{cm}^2$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần diện tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$624\\ \\text{cm}^2$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm rồi chia"
+   },
+   {
+    "text": "$3120\\ \\text{cm}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của chiều dài"
+   },
+   {
+    "text": "$756\\ \\text{cm}^2$",
+    "rule": "R408",
+    "duong_sai": "Tìm được diện tích mới rồi dừng, quên tìm diện tích ban đầu"
+   },
+   {
+    "text": "$912\\ \\text{cm}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$6000\\ \\text{cm}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một màn hình ti vi hình chữ nhật có chiều dài tăng 5% và chiều rộng tăng 50% thì diện tích tăng thêm $345\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$6900\\ \\text{m}^2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ lấy phần trăm thay đổi của chiều dài"
+   },
+   {
+    "text": "$945\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Tìm được diện tích mới rồi dừng, quên tìm diện tích ban đầu"
+   },
+   {
+    "text": "$1290\\ \\text{m}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$6000\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhờ máy móc mới, năng suất của đội thợ gặt tăng 100% so với dự kiến. Hỏi thời gian gặt xong một thửa ruộng giảm bao nhiêu phần trăm so với dự kiến?",
+  "nhieu": [
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhờ máy móc mới, năng suất của nhóm thợ xây tăng 100% so với dự kiến. Hỏi thời gian xây xong một bức tường giảm bao nhiêu phần trăm so với dự kiến?",
+  "nhieu": [
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhờ máy móc mới, năng suất của nhóm thợ sơn tăng 400% so với dự kiến. Hỏi thời gian sơn xong một toà nhà giảm bao nhiêu phần trăm so với dự kiến?",
+  "nhieu": [
+   {
+    "text": "Tăng $80\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $400\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Giảm $81\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhờ máy móc mới, năng suất của đội thợ gặt tăng 150% so với dự kiến. Hỏi thời gian gặt xong một thửa ruộng giảm bao nhiêu phần trăm so với dự kiến?",
+  "nhieu": [
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $150\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Giảm $61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của nhóm thợ sơn giảm đi 75%. Hỏi thời gian sơn xong một toà nhà tăng bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Tăng $400\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $75\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $75\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $301\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của đội công nhân giảm đi 50%. Hỏi thời gian hoàn thành một công trình tăng bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Tăng $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $101\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của nhóm thợ sơn giảm đi 50%. Hỏi thời gian sơn xong một toà nhà tăng bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Tăng $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $101\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 24 ngày. Nếu tăng số người thêm 300% (năng suất mỗi người như nhau) thì tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$96$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia"
+   },
+   {
+    "text": "$72$ ngày",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm của số ngày dự định thay vì chia cho tỉ số"
+   },
+   {
+    "text": "$18$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày rút ngắn được rồi lấy làm đáp số"
+   },
+   {
+    "text": "$7$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đội thợ may dự định may xong một lô quần áo trong 30 ngày. Nếu tăng số người thêm 400% (năng suất mỗi người như nhau) thì đội thợ may đó may xong một lô quần áo trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$150$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia"
+   },
+   {
+    "text": "$120$ ngày",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm của số ngày dự định thay vì chia cho tỉ số"
+   },
+   {
+    "text": "$24$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày rút ngắn được rồi lấy làm đáp số"
+   },
+   {
+    "text": "$7$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 20 ngày. Nếu tăng số người thêm 150% (năng suất mỗi người như nhau) thì tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$50$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia"
+   },
+   {
+    "text": "$30$ ngày",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm của số ngày dự định thay vì chia cho tỉ số"
+   },
+   {
+    "text": "$12$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày rút ngắn được rồi lấy làm đáp số"
+   },
+   {
+    "text": "$9$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đội thợ gặt dự định gặt xong một thửa ruộng trong 20 ngày. Nếu tăng số người thêm 400% (năng suất mỗi người như nhau) thì đội thợ gặt đó gặt xong một thửa ruộng trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$100$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia"
+   },
+   {
+    "text": "$80$ ngày",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm của số ngày dự định thay vì chia cho tỉ số"
+   },
+   {
+    "text": "$16$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày rút ngắn được rồi lấy làm đáp số"
+   },
+   {
+    "text": "$5$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhóm thợ sơn dự kiến sơn xong một toà nhà trong 60 ngày. Nhờ cải tiến, năng suất tăng 60% so với dự kiến. Hỏi nhóm thợ sơn đó hoàn thành sớm hơn dự kiến bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$37,5$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày làm thật rồi dừng, quên lấy số ngày dự kiến trừ đi"
+   },
+   {
+    "text": "$36$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia rồi lấy hiệu"
+   },
+   {
+    "text": "$97,5$ ngày",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ ở bước cuối"
+   },
+   {
+    "text": "$23,5$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sẽ sơn xong một toà nhà trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 400% so với kế hoạch. Hỏi nhóm thợ sơn xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$7,2$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày làm thật rồi dừng, quên lấy số ngày dự kiến trừ đi"
+   },
+   {
+    "text": "$144$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia rồi lấy hiệu"
+   },
+   {
+    "text": "$43,2$ ngày",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ ở bước cuối"
+   },
+   {
+    "text": "$29,8$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Theo kế hoạch, tổ sản xuất sẽ làm xong một đơn hàng trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 150% so với kế hoạch. Hỏi tổ sản xuất xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$14,4$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày làm thật rồi dừng, quên lấy số ngày dự kiến trừ đi"
+   },
+   {
+    "text": "$54$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia rồi lấy hiệu"
+   },
+   {
+    "text": "$50,4$ ngày",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ ở bước cuối"
+   },
+   {
+    "text": "$22,6$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sẽ sơn xong một toà nhà trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 25% so với kế hoạch. Hỏi nhóm thợ sơn xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$28,8$ ngày",
+    "rule": "R408",
+    "duong_sai": "Tìm số ngày làm thật rồi dừng, quên lấy số ngày dự kiến trừ đi"
+   },
+   {
+    "text": "$9$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tỉ số thay vì chia rồi lấy hiệu"
+   },
+   {
+    "text": "$64,8$ ngày",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ ở bước cuối"
+   },
+   {
+    "text": "$8,2$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số người của đội thợ may giảm đi 37,5% so với dự định, năng suất mỗi người không đổi. Hỏi thời gian may xong một lô quần áo tăng bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $37,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đội thợ gặt có một số người nghỉ nên số người làm việc giảm 80% so với ban đầu (năng suất mỗi người như nhau). Hỏi thời gian để gặt xong một thửa ruộng tăng thêm bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Tăng $500\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $80\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $80\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $401\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số người của đội thợ gặt giảm đi 50% so với dự định, năng suất mỗi người không đổi. Hỏi thời gian gặt xong một thửa ruộng tăng bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Tăng $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm đề cho nhưng đổi chiều, quên tính trên số mới"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: coi đại lượng đổi cùng chiều với phần trăm đề cho"
+   },
+   {
+    "text": "Tăng $101\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn thời gian sơn xong một toà nhà giảm đi 20% so với kế hoạch thì nhóm thợ sơn cần tăng năng suất thêm bao nhiêu phần trăm so với kế hoạch?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm thời gian giảm làm phần trăm năng suất tăng"
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số thời gian còn lại làm đáp số"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù thay vì phần trăm cần tìm"
+   },
+   {
+    "text": "$26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để làm xong một đơn hàng nhanh hơn, một tổ sản xuất muốn giảm thời gian làm đi 20% so với dự định. Hỏi năng suất lao động phải tăng thêm bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm thời gian giảm làm phần trăm năng suất tăng"
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số thời gian còn lại làm đáp số"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù thay vì phần trăm cần tìm"
+   },
+   {
+    "text": "$26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn thời gian may xong một lô quần áo giảm đi 60% so với kế hoạch thì đội thợ may cần tăng năng suất thêm bao nhiêu phần trăm so với kế hoạch?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy luôn phần trăm thời gian giảm làm phần trăm năng suất tăng"
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được tỉ số bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R539",
+    "duong_sai": "Lấy tỉ số thời gian còn lại làm đáp số"
+   },
+   {
+    "text": "$160\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù thay vì phần trăm cần tìm"
+   },
+   {
+    "text": "$151\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 40 ngày. Sau đó số người tăng thêm 100% nhưng năng suất của mỗi người giảm 20% so với dự định. Hỏi tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$20$ ngày",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người tăng, bỏ qua năng suất mỗi người giảm"
+   },
+   {
+    "text": "$50$ ngày",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo năng suất mỗi người, bỏ qua số người"
+   },
+   {
+    "text": "$64$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tích hai tỉ số thay vì chia"
+   },
+   {
+    "text": "$26$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhóm thợ xây dự định xây xong một bức tường trong 36 ngày. Sau đó số người tăng thêm 60% nhưng năng suất của mỗi người giảm 50% so với dự định. Hỏi nhóm thợ xây đó xây xong một bức tường trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$22,5$ ngày",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người tăng, bỏ qua năng suất mỗi người giảm"
+   },
+   {
+    "text": "$72$ ngày",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo năng suất mỗi người, bỏ qua số người"
+   },
+   {
+    "text": "$28,8$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tích hai tỉ số thay vì chia"
+   },
+   {
+    "text": "$46$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đội thợ may dự định may xong một lô quần áo trong 48 ngày. Sau đó số người tăng thêm 150% nhưng năng suất của mỗi người giảm 20% so với dự định. Hỏi đội thợ may đó may xong một lô quần áo trong bao nhiêu ngày?",
+  "nhieu": [
+   {
+    "text": "$19,2$ ngày",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người tăng, bỏ qua năng suất mỗi người giảm"
+   },
+   {
+    "text": "$60$ ngày",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo năng suất mỗi người, bỏ qua số người"
+   },
+   {
+    "text": "$96$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tích hai tỉ số thay vì chia"
+   },
+   {
+    "text": "$25$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sơn xong một toà nhà trong 48 ngày. Thực tế, số người tăng 25% còn năng suất mỗi người giảm 50% so với kế hoạch. Hỏi thực tế cần bao nhiêu ngày để sơn xong một toà nhà?",
+  "nhieu": [
+   {
+    "text": "$64$ ngày",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng hai phần trăm thay vì nhân hai tỉ số"
+   },
+   {
+    "text": "$38,4$ ngày",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người tăng, bỏ qua năng suất mỗi người giảm"
+   },
+   {
+    "text": "$96$ ngày",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo năng suất mỗi người, bỏ qua số người"
+   },
+   {
+    "text": "$30$ ngày",
+    "rule": "R525",
+    "duong_sai": "Nhân số ngày với tích hai tỉ số thay vì chia"
+   },
+   {
+    "text": "$77,8$ ngày",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một đơn vị ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhóm thợ xây tăng số người thêm 100% và nhờ tập huấn nên năng suất của mỗi người cũng tăng 25% so với trước. Hỏi thời gian để xây xong một bức tường giảm đi bao nhiêu phần trăm so với trước?",
+  "nhieu": [
+   {
+    "text": "Tăng $60\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thời gian bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người, bỏ qua năng suất mỗi người"
+   },
+   {
+    "text": "Tăng $150\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: lấy phần trăm năng suất cả đội tăng làm đáp số"
+   },
+   {
+    "text": "Giảm $61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số người của tổ sản xuất tăng 60%, đồng thời năng suất mỗi người tăng 25% so với dự định. Hỏi thời gian làm xong một đơn hàng giảm bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Giảm $85\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm tăng rồi coi là thời gian giảm"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người, bỏ qua năng suất mỗi người"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: lấy phần trăm năng suất cả đội tăng làm đáp số"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số người của nhóm thợ sơn tăng 25%, đồng thời năng suất mỗi người tăng 60% so với dự định. Hỏi thời gian sơn xong một toà nhà giảm bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Giảm $85\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm tăng rồi coi là thời gian giảm"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người, bỏ qua năng suất mỗi người"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: lấy phần trăm năng suất cả đội tăng làm đáp số"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số người của đội công nhân tăng 25%, đồng thời năng suất mỗi người tăng 25% so với dự định. Hỏi thời gian hoàn thành một công trình giảm bao nhiêu phần trăm so với dự định?",
+  "nhieu": [
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng hai phần trăm tăng rồi coi là thời gian giảm"
+   },
+   {
+    "text": "Tăng $36\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $64\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thời gian bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo số người, bỏ qua năng suất mỗi người"
+   },
+   {
+    "text": "Tăng $56,25\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia: lấy phần trăm năng suất cả đội tăng làm đáp số"
+   },
+   {
+    "text": "Giảm $37\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật. Nếu tăng chiều dài 60%, tăng chiều rộng 40% và giảm chiều cao 30% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $56,8\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $156,8\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $124\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót kích thước còn lại"
+   },
+   {
+    "text": "Giảm $2\\%$",
+    "rule": "R408",
+    "duong_sai": "Bỏ sót tỉ số của chiều dài khi nhân"
+   },
+   {
+    "text": "Tăng $57,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp quà có dạng hình hộp chữ nhật. Nếu tăng thêm chiều dài 40%, bớt chiều rộng 5% và tăng thêm chiều cao 30% thì thể tích của hộp quà thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $65\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $72,9\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $172,9\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $33\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót kích thước còn lại"
+   },
+   {
+    "text": "Tăng $23,5\\%$",
+    "rule": "R408",
+    "duong_sai": "Bỏ sót tỉ số của chiều dài khi nhân"
+   },
+   {
+    "text": "Tăng $73,9\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật. Nếu bớt chiều dài 40%, giảm chiều rộng 25% và tăng thêm chiều cao 40% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $25\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $37\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $63\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $55\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót kích thước còn lại"
+   },
+   {
+    "text": "Tăng $5\\%$",
+    "rule": "R408",
+    "duong_sai": "Bỏ sót tỉ số của chiều dài khi nhân"
+   },
+   {
+    "text": "Giảm $38\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài, chiều rộng, chiều cao của một bể cá hình hộp chữ nhật lần lượt tăng thêm 25%, tăng 50%, tăng thêm 30%. Hỏi thể tích bể cá đó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $105\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $243,75\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $87,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót kích thước còn lại"
+   },
+   {
+    "text": "Tăng $95\\%$",
+    "rule": "R408",
+    "duong_sai": "Bỏ sót tỉ số của chiều dài khi nhân"
+   },
+   {
+    "text": "Tăng $144,75\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chiều dài, chiều rộng, chiều cao của một bể nước hình hộp chữ nhật lần lượt giảm 40%, bớt 40%, tăng thêm 10%. Hỏi thể tích bể nước đó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $60,4\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $39,6\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $64\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót kích thước còn lại"
+   },
+   {
+    "text": "Giảm $34\\%$",
+    "rule": "R408",
+    "duong_sai": "Bỏ sót tỉ số của chiều dài khi nhân"
+   },
+   {
+    "text": "Giảm $61,4\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp bánh hình hộp chữ nhật có thể tích $240\\ \\text{cm}^3$. Nếu tăng thêm chiều dài 15% và giảm chiều cao 15% thì thể tích mới của hộp bánh là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$240\\ \\text{cm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "$204\\ \\text{cm}^3$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của kích thước cuối"
+   },
+   {
+    "text": "$245,4\\ \\text{cm}^3$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của thể tích"
+   },
+   {
+    "text": "$2346\\ \\text{cm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp quà hình hộp chữ nhật có thể tích $240\\ \\text{cm}^3$. Nếu bớt chiều dài 25% và giảm đi chiều cao 40% thì thể tích mới của hộp quà là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$84\\ \\text{cm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "$144\\ \\text{cm}^3$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của kích thước cuối"
+   },
+   {
+    "text": "$372\\ \\text{cm}^3$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của thể tích"
+   },
+   {
+    "text": "$1080\\ \\text{cm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp quà hình hộp chữ nhật có thể tích $400\\ \\text{cm}^3$. Nếu giảm chiều dài 50% và giảm đi chiều cao 10% thì thể tích mới của hộp quà là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$160\\ \\text{cm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "$360\\ \\text{cm}^3$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của kích thước cuối"
+   },
+   {
+    "text": "$620\\ \\text{cm}^3$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của thể tích"
+   },
+   {
+    "text": "$1800\\ \\text{cm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp bánh có dạng hình hộp chữ nhật có thể tích $800\\ \\text{cm}^3$. Người ta giảm đi chiều dài 40% và tăng thêm chiều cao 20%. Tính thể tích mới của hộp bánh.",
+  "nhieu": [
+   {
+    "text": "$640\\ \\text{cm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "$960\\ \\text{cm}^3$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của kích thước cuối"
+   },
+   {
+    "text": "$1024\\ \\text{cm}^3$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của thể tích"
+   },
+   {
+    "text": "$5760\\ \\text{cm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng xốp hình hộp chữ nhật có thể tích $250\\ \\text{dm}^3$. Nếu tăng thêm chiều dài 20%, giảm đi chiều rộng 30% và giảm chiều cao 50% thì thể tích mới của thùng xốp là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$100\\ \\text{dm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "$210\\ \\text{dm}^3$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu, bỏ sót tỉ số còn lại"
+   },
+   {
+    "text": "$125\\ \\text{dm}^3$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính theo thay đổi của kích thước cuối"
+   },
+   {
+    "text": "$395\\ \\text{dm}^3$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng đổi chiều tăng/giảm của thể tích"
+   },
+   {
+    "text": "$1050\\ \\text{dm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một thùng xốp hình hộp chữ nhật. Người ta bớt chiều dài 20% và tăng thêm chiều rộng 25%. Hỏi để thể tích thùng xốp giảm 5% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $5\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $95\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp bánh hình hộp chữ nhật được tăng thêm chiều dài 25% và bớt chiều rộng 50%. Để thể tích mới tăng thêm 5% so với thể tích cũ thì chiều cao phải thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $68\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $168\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $69\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một hộp quà hình hộp chữ nhật. Người ta giảm chiều dài 20% và tăng thêm chiều rộng 20%. Hỏi để thể tích hộp quà tăng 20% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $25\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $15,2\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy tích hai tỉ số chia tỉ số thể tích"
+   },
+   {
+    "text": "Tăng $26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cho một hộp quà hình hộp chữ nhật. Người ta bớt chiều dài 20% và giảm chiều rộng 25%. Hỏi để thể tích hộp quà bớt 25% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $25\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $55\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy tích hai tỉ số chia tỉ số thể tích"
+   },
+   {
+    "text": "Tăng $26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng xốp hình hộp chữ nhật được tăng thêm chiều dài 25% và tăng chiều rộng 60%. Hỏi chiều cao phải tăng hay giảm bao nhiêu phần trăm để thể tích không thay đổi?",
+  "nhieu": [
+   {
+    "text": "Giảm $85\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $20\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo chiều dài, bỏ sót chiều rộng"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn giữ nguyên thể tích của một hộp quà hình hộp chữ nhật khi bớt chiều dài 50% và tăng chiều rộng 25% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $25\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo chiều dài, bỏ sót chiều rộng"
+   },
+   {
+    "text": "Tăng $61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn giữ nguyên thể tích của một hộp quà hình hộp chữ nhật khi tăng thêm chiều dài 60% và tăng chiều rộng 25% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $85\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $50\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép chia nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Giảm $37,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo chiều dài, bỏ sót chiều rộng"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Muốn giữ nguyên thể tích của một thùng xốp hình hộp chữ nhật khi giảm đi chiều dài 50% và giảm chiều rộng 20% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $250\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được chiều cao bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân thay vì chia cho tích hai tỉ số"
+   },
+   {
+    "text": "Tăng $100\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính theo chiều dài, bỏ sót chiều rộng"
+   },
+   {
+    "text": "Tăng $151\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Độ dài cạnh của một khối lập phương tăng 30%. Hỏi thể tích của khối lập phương đó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Tăng $90\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $219,7\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $69\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Tăng $120,7\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Độ dài cạnh của một khối lập phương giảm 30%. Hỏi thể tích của khối lập phương đó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $90\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $65,7\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $34,3\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $51\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $66,7\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nếu cả ba kích thước (chiều dài, chiều rộng, chiều cao) của một hình hộp chữ nhật cùng giảm đi 20% thì thể tích của nó tăng hay giảm bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "Giảm $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $48,8\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $51,2\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $36\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $49,8\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng đựng hàng có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm cạnh đáy 10% và tăng chiều cao 10% thì thể tích của thùng đựng hàng thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $10\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $10,9\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $89,1\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $19\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $1\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính cạnh đáy một lần, quên cạnh đáy xuất hiện hai lần"
+   },
+   {
+    "text": "Giảm $11,9\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bể cá có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu tăng thêm cạnh đáy 60% và giảm đi chiều cao 40% thì thể tích của bể cá thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Tăng $80\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Giảm $53,6\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Tăng $153,6\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Tăng $156\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $4\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính cạnh đáy một lần, quên cạnh đáy xuất hiện hai lần"
+   },
+   {
+    "text": "Tăng $54,6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một hộp bánh có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm cạnh đáy 40% và tăng thêm chiều cao 40% thì thể tích của hộp bánh thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $40\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $49,6\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $50,4\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $64\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $16\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính cạnh đáy một lần, quên cạnh đáy xuất hiện hai lần"
+   },
+   {
+    "text": "Giảm $50,6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm đi cạnh đáy 5% và bớt chiều cao 40% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "nhieu": [
+   {
+    "text": "Giảm $50\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm thay vì nhân các tỉ số"
+   },
+   {
+    "text": "Tăng $45,85\\%$",
+    "rule": "R530",
+    "duong_sai": "Làm đúng phép nhân nhưng kết luận ngược chiều tăng/giảm"
+   },
+   {
+    "text": "Giảm $54,15\\%$",
+    "rule": "R528",
+    "duong_sai": "Tìm được thể tích bằng bao nhiêu phần trăm rồi ghi luôn, quên so với 100%"
+   },
+   {
+    "text": "Giảm $9,75\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ nhân hai tỉ số, thiếu một lần nhân"
+   },
+   {
+    "text": "Giảm $43\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính cạnh đáy một lần, quên cạnh đáy xuất hiện hai lần"
+   },
+   {
+    "text": "Giảm $46,85\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng sai một chữ số ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bể cá hình hộp chữ nhật. Nếu bớt chiều dài 50%, giảm đi chiều rộng 15% và giảm chiều cao 20% thì thể tích giảm $990\\ \\text{dm}^3$. Tính thể tích ban đầu của bể cá đó.",
+  "nhieu": [
+   {
+    "text": "$653,4\\ \\text{dm}^3$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần thể tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$510\\ \\text{dm}^3$",
+    "rule": "R408",
+    "duong_sai": "Tìm được thể tích mới rồi dừng, quên tìm thể tích ban đầu"
+   },
+   {
+    "text": "$15000\\ \\text{dm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi tăng chiều dài 30% và tăng chiều rộng 25%, thể tích của một bể cá hình hộp chữ nhật tăng $375\\ \\text{dm}^3$. Hỏi thể tích ban đầu của bể cá là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$975\\ \\text{dm}^3$",
+    "rule": "R408",
+    "duong_sai": "Tìm được thể tích mới rồi dừng, quên tìm thể tích ban đầu"
+   },
+   {
+    "text": "$1350\\ \\text{dm}^3$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$6000\\ \\text{dm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thùng đựng hàng hình hộp chữ nhật. Nếu bớt chiều dài 10%, tăng chiều rộng 20% và bớt chiều cao 50% thì thể tích giảm đi $276\\ \\text{dm}^3$. Tính thể tích ban đầu của thùng đựng hàng đó.",
+  "nhieu": [
+   {
+    "text": "$126,96\\ \\text{dm}^3$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần thể tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$690\\ \\text{dm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm rồi chia"
+   },
+   {
+    "text": "$3450\\ \\text{dm}^3$",
+    "rule": "R539",
+    "duong_sai": "Chỉ tính hai tỉ số đầu rồi chia"
+   },
+   {
+    "text": "$324\\ \\text{dm}^3$",
+    "rule": "R408",
+    "duong_sai": "Tìm được thể tích mới rồi dừng, quên tìm thể tích ban đầu"
+   },
+   {
+    "text": "$48\\ \\text{dm}^3$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$6000\\ \\text{dm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi tăng thêm chiều dài 20% và bớt chiều rộng 10%, thể tích của một bể cá hình hộp chữ nhật tăng $80\\ \\text{dm}^3$. Hỏi thể tích ban đầu của bể cá là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$6,4\\ \\text{dm}^3$",
+    "rule": "R525",
+    "duong_sai": "Nhân phần thể tích thay đổi với phần trăm thay vì chia"
+   },
+   {
+    "text": "$800\\ \\text{dm}^3$",
+    "rule": "R526",
+    "duong_sai": "Cộng trừ thẳng các phần trăm rồi chia"
+   },
+   {
+    "text": "$1080\\ \\text{dm}^3$",
+    "rule": "R408",
+    "duong_sai": "Tìm được thể tích mới rồi dừng, quên tìm thể tích ban đầu"
+   },
+   {
+    "text": "$1160\\ \\text{dm}^3$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$10000\\ \\text{dm}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi tăng thêm chiều dài 5% và tăng thêm chiều rộng 30%, thể tích của một bể nước hình hộp chữ nhật tăng thêm $7,3\\ \\text{m}^3$. Hỏi thể tích ban đầu của bể nước là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$27,3\\ \\text{m}^3$",
+    "rule": "R408",
+    "duong_sai": "Tìm được thể tích mới rồi dừng, quên tìm thể tích ban đầu"
+   },
+   {
+    "text": "$34,6\\ \\text{m}^3$",
+    "rule": "R407",
+    "duong_sai": "Cộng/trừ phần thay đổi hai lần thay vì một lần"
+   },
+   {
+    "text": "$200\\ \\text{m}^3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở bước cuối"
+   }
+  ]
+ }
+]

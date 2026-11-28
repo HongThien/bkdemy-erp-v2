@@ -1,0 +1,4337 @@
+[
+ {
+  "noi_dung": "Tính giá trị biểu thức (viết kết quả dưới dạng phần trăm):\n$44\\%+14\\%$",
+  "nhieu": [
+   {
+    "text": "$30\\%$",
+    "rule": "R407",
+    "duong_sai": "Đổi dấu cộng thành trừ ở số hạng thứ 2 nên cộng trừ sai các tỉ số phần trăm"
+   },
+   {
+    "text": "$580\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$59\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi cộng trừ"
+   },
+   {
+    "text": "$5,8\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch ba chữ số thay vì hai chữ số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng phần trăm):\n$94\\%-93\\%+22,4\\%$",
+  "nhieu": [
+   {
+    "text": "$209,4\\%$",
+    "rule": "R407",
+    "duong_sai": "Đổi dấu trừ thành cộng ở số hạng thứ 2 nên cộng trừ sai các tỉ số phần trăm"
+   },
+   {
+    "text": "$1\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ cộng trừ hai số hạng đầu rồi dừng lại, bỏ sót số hạng cuối"
+   },
+   {
+    "text": "$234\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$2,34\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$24,4\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi cộng trừ"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng phần trăm):\n$126\\%-65,5\\%+125\\%$",
+  "nhieu": [
+   {
+    "text": "$316,5\\%$",
+    "rule": "R407",
+    "duong_sai": "Đổi dấu trừ thành cộng ở số hạng thứ 2 nên cộng trừ sai các tỉ số phần trăm"
+   },
+   {
+    "text": "$60,5\\%$",
+    "rule": "R408",
+    "duong_sai": "Chỉ cộng trừ hai số hạng đầu rồi dừng lại, bỏ sót số hạng cuối"
+   },
+   {
+    "text": "$1855\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$18,55\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$186,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi cộng trừ"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính giá trị biểu thức (viết kết quả dưới dạng số thập phân):\n$3,5\\%+62\\%$",
+  "nhieu": [
+   {
+    "text": "$6,55$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$65,5$",
+    "rule": "R100",
+    "duong_sai": "Quên đổi tỉ số phần trăm ra số thập phân (không chia cho 100), giữ nguyên phần số"
+   },
+   {
+    "text": "$0,656$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi cộng trừ"
+   },
+   {
+    "text": "$0,0655$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch ba chữ số thay vì hai chữ số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$32\\%-20,75\\%+63\\%$",
+  "nhieu": [
+   {
+    "text": "$1,1575$",
+    "rule": "R407",
+    "duong_sai": "Đổi dấu trừ thành cộng ở số hạng thứ 2 nên cộng trừ sai các tỉ số phần trăm"
+   },
+   {
+    "text": "$0,1125$",
+    "rule": "R408",
+    "duong_sai": "Chỉ cộng trừ hai số hạng đầu rồi dừng lại, bỏ sót số hạng cuối"
+   },
+   {
+    "text": "$7,425$",
+    "rule": "R538",
+    "duong_sai": "Đổi kết quả cuối sai chỗ dấu phẩy, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$74,25$",
+    "rule": "R100",
+    "duong_sai": "Quên đổi tỉ số phần trăm ra số thập phân (không chia cho 100), giữ nguyên phần số"
+   },
+   {
+    "text": "$0,7435$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi cộng trừ"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng số thập phân):\n$170\\%\\times 75\\%$",
+  "nhieu": [
+   {
+    "text": "$2,45$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần số rồi giữ dấu phần trăm thay vì đổi ra số thập phân rồi nhân"
+   },
+   {
+    "text": "$12,75$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng dịch dấu phẩy ở kết quả sai một chữ số"
+   },
+   {
+    "text": "$127,5$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số hai tỉ số rồi giữ dấu phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$0,1275$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng đếm thiếu một chữ số thập phân ở kết quả"
+   },
+   {
+    "text": "$1,276$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng số thập phân):\n$170\\%\\times 10\\%$",
+  "nhieu": [
+   {
+    "text": "$1,8$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần số rồi giữ dấu phần trăm thay vì đổi ra số thập phân rồi nhân"
+   },
+   {
+    "text": "$17$",
+    "rule": "R407",
+    "duong_sai": "Dùng phép chia thay cho phép nhân hai tỉ số phần trăm"
+   },
+   {
+    "text": "$1,7$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng dịch dấu phẩy ở kết quả sai một chữ số"
+   },
+   {
+    "text": "$0,017$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng đếm thiếu một chữ số thập phân ở kết quả"
+   },
+   {
+    "text": "$0,171$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng phần trăm):\n$30\\%\\times 30\\%$",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng hai phần số rồi giữ dấu phần trăm thay vì đổi ra số thập phân rồi nhân"
+   },
+   {
+    "text": "$100\\%$",
+    "rule": "R407",
+    "duong_sai": "Dùng phép chia thay cho phép nhân hai tỉ số phần trăm"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng dịch dấu phẩy ở kết quả sai một chữ số"
+   },
+   {
+    "text": "$0,9\\%$",
+    "rule": "R538",
+    "duong_sai": "Nhân đúng nhưng đếm thiếu một chữ số thập phân ở kết quả"
+   },
+   {
+    "text": "$900\\%$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số hai tỉ số rồi giữ dấu phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$25\\%:10\\%$",
+  "nhieu": [
+   {
+    "text": "$0,4$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược vai trò: lấy tỉ số thứ hai chia cho tỉ số thứ nhất"
+   },
+   {
+    "text": "$0,025$",
+    "rule": "R407",
+    "duong_sai": "Dùng phép nhân thay cho phép chia hai tỉ số phần trăm"
+   },
+   {
+    "text": "$0,15$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm thay vì chia"
+   },
+   {
+    "text": "$25$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,25$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả bằng một phần mười"
+   },
+   {
+    "text": "$2,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$6,4\\%:8\\%$",
+  "nhieu": [
+   {
+    "text": "$1,25$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược vai trò: lấy tỉ số thứ hai chia cho tỉ số thứ nhất"
+   },
+   {
+    "text": "$8$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,9$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   },
+   {
+    "text": "$0,08$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$120\\%:20\\%$",
+  "nhieu": [
+   {
+    "text": "$0,24$",
+    "rule": "R407",
+    "duong_sai": "Dùng phép nhân thay cho phép chia hai tỉ số phần trăm"
+   },
+   {
+    "text": "$1$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng hai tỉ số phần trăm thay vì chia"
+   },
+   {
+    "text": "$60$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,6$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả bằng một phần mười"
+   },
+   {
+    "text": "$6,1$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$125\\%\\times 50\\%:10\\%$",
+  "nhieu": [
+   {
+    "text": "$0,625$",
+    "rule": "R408",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu rồi dừng, bỏ sót phép chia cuối"
+   },
+   {
+    "text": "$0,0625$",
+    "rule": "R407",
+    "duong_sai": "Nhân với tỉ số cuối thay vì chia cho tỉ số cuối"
+   },
+   {
+    "text": "$62,5$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$25$",
+    "rule": "R529",
+    "duong_sai": "Lấy tỉ số thứ nhất chia cho tích hai tỉ số sau, sai thứ tự phép tính"
+   },
+   {
+    "text": "$6,35$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$200\\%\\times 50\\%:25\\%$",
+  "nhieu": [
+   {
+    "text": "$1$",
+    "rule": "R408",
+    "duong_sai": "Chỉ nhân hai tỉ số đầu rồi dừng, bỏ sót phép chia cuối"
+   },
+   {
+    "text": "$0,25$",
+    "rule": "R407",
+    "duong_sai": "Nhân với tỉ số cuối thay vì chia cho tỉ số cuối"
+   },
+   {
+    "text": "$40$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,4$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân sai chỗ dấu phẩy, kết quả bằng một phần mười"
+   },
+   {
+    "text": "$16$",
+    "rule": "R529",
+    "duong_sai": "Lấy tỉ số thứ nhất chia cho tích hai tỉ số sau, sai thứ tự phép tính"
+   },
+   {
+    "text": "$4,1$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$12,5\\%\\times 5$",
+  "nhieu": [
+   {
+    "text": "$62,5$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số với số tự nhiên và quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$6,25$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,025$",
+    "rule": "R407",
+    "duong_sai": "Dùng phép chia thay cho phép nhân với số tự nhiên"
+   },
+   {
+    "text": "$0,0625$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$0,635$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$59:40\\%$",
+  "nhieu": [
+   {
+    "text": "$23,6$",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia cho tỉ số phần trăm"
+   },
+   {
+    "text": "$1475$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai chỗ dấu phẩy, kết quả gấp 10 lần"
+   },
+   {
+    "text": "$147,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một chữ số ở bước chia cuối"
+   },
+   {
+    "text": "$14,75$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$18\\times 30\\%+18\\times 10\\%$",
+  "nhieu": [
+   {
+    "text": "$0,4$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$3,6$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ hai tỉ số phần trăm thay vì cộng"
+   },
+   {
+    "text": "$72$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,72$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$720$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$7,3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$5\\%\\times 15+15\\%\\times 15$",
+  "nhieu": [
+   {
+    "text": "$0,2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$30$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$300$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$0,3$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$5\\%\\times 0,8+15\\%\\times 0,8$",
+  "nhieu": [
+   {
+    "text": "$0,2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$1,6$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$16$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$0,016$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$0,17$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$1,6\\times 45\\%+1,6\\times 5\\%$",
+  "nhieu": [
+   {
+    "text": "$0,5$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$0,64$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ hai tỉ số phần trăm thay vì cộng"
+   },
+   {
+    "text": "$8$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,08$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$80$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$0,9$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$125\\times 45\\%+125\\times 5\\%$",
+  "nhieu": [
+   {
+    "text": "$50$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ hai tỉ số phần trăm thay vì cộng"
+   },
+   {
+    "text": "$625$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$6250$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$6,25$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$62,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$5\\%\\times 8,4+15\\%\\times 8,4$",
+  "nhieu": [
+   {
+    "text": "$0,2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$16,8$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$168$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$0,168$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$1,69$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$150\\%\\times 16-55\\%\\times 16$",
+  "nhieu": [
+   {
+    "text": "$0,95$",
+    "rule": "R539",
+    "duong_sai": "Chỉ trừ hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$32,8$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng cộng hai tỉ số phần trăm thay vì trừ"
+   },
+   {
+    "text": "$152$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1,52$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$1520$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$15,3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$2,5\\times 40\\%-2,5\\times 20\\%$",
+  "nhieu": [
+   {
+    "text": "$0,2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ trừ hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$1,5$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng cộng hai tỉ số phần trăm thay vì trừ"
+   },
+   {
+    "text": "$5$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,05$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$50$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$0,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$15\\times 75\\%-15\\times 55\\%$",
+  "nhieu": [
+   {
+    "text": "$0,2$",
+    "rule": "R539",
+    "duong_sai": "Chỉ trừ hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$19,5$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng cộng hai tỉ số phần trăm thay vì trừ"
+   },
+   {
+    "text": "$30$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,3$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$300$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$130\\%\\times 8,4-55\\%\\times 8,4$",
+  "nhieu": [
+   {
+    "text": "$0,75$",
+    "rule": "R539",
+    "duong_sai": "Chỉ trừ hai tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$15,54$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng cộng hai tỉ số phần trăm thay vì trừ"
+   },
+   {
+    "text": "$63$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,63$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$630$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$6,4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$36\\times 60\\%\\times 5$",
+  "nhieu": [
+   {
+    "text": "$21,6$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$4,32$",
+    "rule": "R407",
+    "duong_sai": "Chia cho số còn lại thay vì nhân với số còn lại"
+   },
+   {
+    "text": "$1080$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$10,8$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$10800$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$109$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$2,5\\%\\times 360\\times 40$",
+  "nhieu": [
+   {
+    "text": "$9$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$3600$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$36000$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$36$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$361$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$75\\times 6\\%\\times 50$",
+  "nhieu": [
+   {
+    "text": "$4,5$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$2250$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$22500$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$22,5$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$226$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$6\\%\\times 125\\times 50$",
+  "nhieu": [
+   {
+    "text": "$7,5$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$3750$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$37500$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$37,5$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$376$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$20\\times 250\\times 5\\%$",
+  "nhieu": [
+   {
+    "text": "$12,5$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$2500$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$25000$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$25$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$251$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$6\\%\\times 36\\times 50$",
+  "nhieu": [
+   {
+    "text": "$2,16$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$1080$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$10800$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$10,8$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$109$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$1,25\\%\\times 4,5\\times 80$",
+  "nhieu": [
+   {
+    "text": "$45$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$450$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$4,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$0,45$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$5\\times 6,4\\times 40\\%$",
+  "nhieu": [
+   {
+    "text": "$2,56$",
+    "rule": "R408",
+    "duong_sai": "Mới nhân số chung với tỉ số phần trăm mà chưa nhân với số còn lại (dừng ở bước giữa)"
+   },
+   {
+    "text": "$0,512$",
+    "rule": "R407",
+    "duong_sai": "Chia cho số còn lại thay vì nhân với số còn lại"
+   },
+   {
+    "text": "$128$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1,28$",
+    "rule": "R538",
+    "duong_sai": "Nhóm đúng cặp số nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$1280$",
+    "rule": "R100",
+    "duong_sai": "Nhân phần số của tỉ số phần trăm với hai số còn lại, quên chia cho 100"
+   },
+   {
+    "text": "$12,9$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$50\\%\\times 6,4+20\\%\\times 6,4+30\\%\\times 6,4$",
+  "nhieu": [
+   {
+    "text": "$1$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng ba tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$2,56$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ tỉ số cuối thay vì cộng"
+   },
+   {
+    "text": "$64$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,64$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$640$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$6,5$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$15\\%\\times 2,5+35\\%\\times 2,5+10\\%\\times 2,5$",
+  "nhieu": [
+   {
+    "text": "$0,6$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng ba tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$1$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ tỉ số cuối thay vì cộng"
+   },
+   {
+    "text": "$15$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,15$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$150$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$1,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$40\\%\\times 6,4+25\\%\\times 6,4+35\\%\\times 6,4$",
+  "nhieu": [
+   {
+    "text": "$1$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng ba tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$1,92$",
+    "rule": "R407",
+    "duong_sai": "Nhóm đúng thừa số chung nhưng trừ tỉ số cuối thay vì cộng"
+   },
+   {
+    "text": "$64$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,64$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$640$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$6,5$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$15\\%\\times 25+10\\%\\times 25+25\\%\\times 25$",
+  "nhieu": [
+   {
+    "text": "$0,5$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng ba tỉ số phần trăm trong ngoặc rồi dừng, quên nhân với thừa số chung"
+   },
+   {
+    "text": "$125$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1250$",
+    "rule": "R100",
+    "duong_sai": "Nhân thẳng phần số với thừa số chung, quên đổi tỉ số phần trăm ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$1,25$",
+    "rule": "R538",
+    "duong_sai": "Nhân với thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$12,6$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$4,8-4,8\\times 30\\%-4,8\\times 25\\%$",
+  "nhieu": [
+   {
+    "text": "$2,64$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: tính tổng hai tỉ số phần trăm của số chung thay vì phần còn lại"
+   },
+   {
+    "text": "$3,36$",
+    "rule": "R408",
+    "duong_sai": "Mới trừ đi tỉ số phần trăm thứ nhất rồi dừng, bỏ sót tỉ số phần trăm thứ hai"
+   },
+   {
+    "text": "$4,56$",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ tỉ số phần trăm thứ hai khi đặt thừa số chung"
+   },
+   {
+    "text": "$21,6$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,216$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$2,17$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$56-56\\times 45\\%-56\\times 35\\%$",
+  "nhieu": [
+   {
+    "text": "$44,8$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: tính tổng hai tỉ số phần trăm của số chung thay vì phần còn lại"
+   },
+   {
+    "text": "$30,8$",
+    "rule": "R408",
+    "duong_sai": "Mới trừ đi tỉ số phần trăm thứ nhất rồi dừng, bỏ sót tỉ số phần trăm thứ hai"
+   },
+   {
+    "text": "$50,4$",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ tỉ số phần trăm thứ hai khi đặt thừa số chung"
+   },
+   {
+    "text": "$112$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1,12$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$11,3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$8,4-8,4\\times 10\\%-8,4\\times 15\\%$",
+  "nhieu": [
+   {
+    "text": "$2,1$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: tính tổng hai tỉ số phần trăm của số chung thay vì phần còn lại"
+   },
+   {
+    "text": "$7,56$",
+    "rule": "R408",
+    "duong_sai": "Mới trừ đi tỉ số phần trăm thứ nhất rồi dừng, bỏ sót tỉ số phần trăm thứ hai"
+   },
+   {
+    "text": "$8,82$",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ tỉ số phần trăm thứ hai khi đặt thừa số chung"
+   },
+   {
+    "text": "$63$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,63$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$6,4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$1,6-1,6\\times 10\\%-1,6\\times 35\\%$",
+  "nhieu": [
+   {
+    "text": "$0,72$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: tính tổng hai tỉ số phần trăm của số chung thay vì phần còn lại"
+   },
+   {
+    "text": "$1,44$",
+    "rule": "R408",
+    "duong_sai": "Mới trừ đi tỉ số phần trăm thứ nhất rồi dừng, bỏ sót tỉ số phần trăm thứ hai"
+   },
+   {
+    "text": "$2$",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ tỉ số phần trăm thứ hai khi đặt thừa số chung"
+   },
+   {
+    "text": "$8,8$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$0,088$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$0,89$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$3\\times 30\\%+7\\times 30\\%$",
+  "nhieu": [
+   {
+    "text": "$10$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$30$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$300$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$0,3$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$75\\%\\times 70+75\\%\\times 30$",
+  "nhieu": [
+   {
+    "text": "$100$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$30$",
+    "rule": "R407",
+    "duong_sai": "Đặt đúng thừa số chung nhưng trừ hai số trong ngoặc thay vì cộng"
+   },
+   {
+    "text": "$750$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$7,5$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$7500$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$76$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính một cách thuận tiện:\n$75\\%\\times 6,8+75\\%\\times 33,2$",
+  "nhieu": [
+   {
+    "text": "$40$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$300$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$3000$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$3$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$31$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$3,7\\times 35\\%+16,3\\times 35\\%$",
+  "nhieu": [
+   {
+    "text": "$20$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$70$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$700$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$0,7$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$8$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính nhanh:\n$10\\%\\times 26-10\\%\\times 6$",
+  "nhieu": [
+   {
+    "text": "$20$",
+    "rule": "R539",
+    "duong_sai": "Chỉ trừ hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$3,2$",
+    "rule": "R407",
+    "duong_sai": "Đặt đúng thừa số chung nhưng cộng hai số trong ngoặc thay vì trừ"
+   },
+   {
+    "text": "$0,2$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$200$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$3$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tính bằng cách thuận tiện:\n$60\\%\\times 4+60\\%\\times 16$",
+  "nhieu": [
+   {
+    "text": "$20$",
+    "rule": "R539",
+    "duong_sai": "Chỉ cộng hai số trong ngoặc rồi dừng, quên nhân với tỉ số phần trăm chung"
+   },
+   {
+    "text": "$120$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1200$",
+    "rule": "R100",
+    "duong_sai": "Nhân số trong ngoặc với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$1,2$",
+    "rule": "R538",
+    "duong_sai": "Đặt đúng thừa số chung nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$13$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tìm 65% của 220 kg.",
+  "nhieu": [
+   {
+    "text": "$14300$ kg",
+    "rule": "R100",
+    "duong_sai": "Lấy số nhân với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$77$ kg",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính (100 − p)% của số thay vì p%"
+   },
+   {
+    "text": "$14,3$ kg",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$1430$ kg",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$144$ kg",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "55% của 220 m bằng bao nhiêu m?",
+  "nhieu": [
+   {
+    "text": "$12100$ m",
+    "rule": "R100",
+    "duong_sai": "Lấy số nhân với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$400$ m",
+    "rule": "R525",
+    "duong_sai": "Chia số cho tỉ số phần trăm thay vì nhân"
+   },
+   {
+    "text": "$99$ m",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính (100 − p)% của số thay vì p%"
+   },
+   {
+    "text": "$12,1$ m",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$1210$ m",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$122$ m",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5B có 25 học sinh, trong đó 12% số học sinh đi học bằng xe đạp. Hỏi có bao nhiêu học sinh đi học bằng xe đạp?",
+  "nhieu": [
+   {
+    "text": "$300$ học sinh",
+    "rule": "R100",
+    "duong_sai": "Lấy số nhân với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$22$ học sinh",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính (100 − p)% của số thay vì p%"
+   },
+   {
+    "text": "$30$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$4$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khối lớp Năm của một trường có 150 học sinh, trong đó 80% số học sinh biết bơi. Hỏi có bao nhiêu học sinh biết bơi?",
+  "nhieu": [
+   {
+    "text": "$12000$ học sinh",
+    "rule": "R100",
+    "duong_sai": "Lấy số nhân với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$30$ học sinh",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính (100 − p)% của số thay vì p%"
+   },
+   {
+    "text": "$12$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$1200$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$121$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bao chứa 45 kg gạo. Người ta đã dùng 40% lượng gạo đó. Hỏi trong một bao còn lại bao nhiêu kg gạo?",
+  "nhieu": [
+   {
+    "text": "$18$ kg",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính lượng đã dùng rồi dừng, quên lấy tổng trừ đi lượng đã dùng"
+   },
+   {
+    "text": "$63$ kg",
+    "rule": "R407",
+    "duong_sai": "Cộng lượng đã dùng vào tổng thay vì trừ đi"
+   },
+   {
+    "text": "$43,2$ kg",
+    "rule": "R538",
+    "duong_sai": "Tìm lượng đã dùng sai, dịch ba chữ số thay vì hai chữ số rồi mới trừ"
+   },
+   {
+    "text": "$28$ kg",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cuộn chứa 12,5 m dây điện. Người ta đã dùng 12% lượng dây điện đó. Hỏi trong một cuộn còn lại bao nhiêu m dây điện?",
+  "nhieu": [
+   {
+    "text": "$1,5$ m",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính lượng đã dùng rồi dừng, quên lấy tổng trừ đi lượng đã dùng"
+   },
+   {
+    "text": "$14$ m",
+    "rule": "R407",
+    "duong_sai": "Cộng lượng đã dùng vào tổng thay vì trừ đi"
+   },
+   {
+    "text": "$12,35$ m",
+    "rule": "R538",
+    "duong_sai": "Tìm lượng đã dùng sai, dịch ba chữ số thay vì hai chữ số rồi mới trừ"
+   },
+   {
+    "text": "$12$ m",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một mảnh đất hình chữ nhật có chiều dài 36 m và chiều rộng 30 m. Người ta dùng 15% diện tích mảnh đất để đào ao thả cá. Tính diện tích phần đất dùng để đào ao thả cá.",
+  "nhieu": [
+   {
+    "text": "$1080\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính diện tích cả mảnh đất rồi dừng, quên lấy tỉ số phần trăm của diện tích"
+   },
+   {
+    "text": "$5,4\\ \\text{m}^2$",
+    "rule": "R527",
+    "duong_sai": "Tính tỉ số phần trăm của chiều dài thay vì của diện tích"
+   },
+   {
+    "text": "$918\\ \\text{m}^2$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần đất còn lại thay vì phần đất theo đề"
+   },
+   {
+    "text": "$16200\\ \\text{m}^2$",
+    "rule": "R100",
+    "duong_sai": "Nhân diện tích với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$9,9\\ \\text{m}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng chiều dài với chiều rộng thay vì nhân khi tính diện tích"
+   },
+   {
+    "text": "$163\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một mảnh đất hình chữ nhật có chiều dài 45 m và chiều rộng 12 m. Người ta dùng 15% diện tích mảnh đất để trồng hoa. Tính diện tích phần đất dùng để trồng hoa.",
+  "nhieu": [
+   {
+    "text": "$540\\ \\text{m}^2$",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính diện tích cả mảnh đất rồi dừng, quên lấy tỉ số phần trăm của diện tích"
+   },
+   {
+    "text": "$6,75\\ \\text{m}^2$",
+    "rule": "R527",
+    "duong_sai": "Tính tỉ số phần trăm của chiều dài thay vì của diện tích"
+   },
+   {
+    "text": "$459\\ \\text{m}^2$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần đất còn lại thay vì phần đất theo đề"
+   },
+   {
+    "text": "$8100\\ \\text{m}^2$",
+    "rule": "R100",
+    "duong_sai": "Nhân diện tích với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$8,55\\ \\text{m}^2$",
+    "rule": "R407",
+    "duong_sai": "Cộng chiều dài với chiều rộng thay vì nhân khi tính diện tích"
+   },
+   {
+    "text": "$82\\ \\text{m}^2$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, một xưởng may sản xuất được 240 chiếc áo. Tháng này sản lượng tăng thêm 5% so với trước đó. Hỏi tháng này xưởng sản xuất được bao nhiêu chiếc áo?",
+  "nhieu": [
+   {
+    "text": "$12$ chiếc áo",
+    "rule": "R531",
+    "duong_sai": "Chỉ tính phần tăng thêm rồi dừng, quên cộng vào số ban đầu"
+   },
+   {
+    "text": "$228$ chiếc áo",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành giảm đi nên trừ phần tăng khỏi số ban đầu"
+   },
+   {
+    "text": "$1440$ chiếc áo",
+    "rule": "R100",
+    "duong_sai": "Tính phần tăng bằng cách nhân với phần số, quên chia cho 100"
+   },
+   {
+    "text": "$360$ chiếc áo",
+    "rule": "R538",
+    "duong_sai": "Tính phần tăng sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$253$ chiếc áo",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tìm số A, biết rằng 16% của số A là 40.",
+  "nhieu": [
+   {
+    "text": "$A=6,4$",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia cho tỉ số phần trăm"
+   },
+   {
+    "text": "$A=25$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=2,5$",
+    "rule": "R100",
+    "duong_sai": "Chia cho phần số của tỉ số phần trăm, quên đổi ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$A=2500$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=251$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Biết 40% của số A bằng 14,4. Tìm số A.",
+  "nhieu": [
+   {
+    "text": "$A=5,76$",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia cho tỉ số phần trăm"
+   },
+   {
+    "text": "$A=24$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: chia cho (100 − p)% thay vì p%"
+   },
+   {
+    "text": "$A=3,6$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=0,36$",
+    "rule": "R100",
+    "duong_sai": "Chia cho phần số của tỉ số phần trăm, quên đổi ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$A=360$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=37$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tìm số A, biết rằng 75% của số A là 27.",
+  "nhieu": [
+   {
+    "text": "$A=20,25$",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia cho tỉ số phần trăm"
+   },
+   {
+    "text": "$A=108$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: chia cho (100 − p)% thay vì p%"
+   },
+   {
+    "text": "$A=3,6$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=0,36$",
+    "rule": "R100",
+    "duong_sai": "Chia cho phần số của tỉ số phần trăm, quên đổi ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$A=360$",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$A=37$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một đàn gà có 30 con gà trống, chiếm 15% tổng số gà của đàn. Hỏi đàn gà có tất cả bao nhiêu con?",
+  "nhieu": [
+   {
+    "text": "$20$ con",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm ra số thập phân sai, dịch một chữ số thay vì hai chữ số"
+   },
+   {
+    "text": "$2$ con",
+    "rule": "R100",
+    "duong_sai": "Chia cho phần số của tỉ số phần trăm, quên đổi ra số thập phân (quên chia 100)"
+   },
+   {
+    "text": "$201$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$2000$ con",
+    "rule": "R538",
+    "duong_sai": "Đổi tỉ số phần trăm sai, dịch ba chữ số thay vì hai chữ số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nông trại nuôi gà và vịt, số gà chiếm 30% tổng số gia cầm. Biết số vịt là 105 con. Hỏi nông trại nuôi tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$350$ con gia cầm",
+    "rule": "R527",
+    "duong_sai": "Chia cho tỉ số phần trăm của phần không liên quan thay vì phần còn lại"
+   },
+   {
+    "text": "$73,5$ con gia cầm",
+    "rule": "R525",
+    "duong_sai": "Nhân với phần trăm còn lại thay vì chia"
+   },
+   {
+    "text": "$1500$ con gia cầm",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$15$ con gia cầm",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$151$ con gia cầm",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một kho hàng, gạo tẻ chiếm 60% tổng số gạo, còn lại là gạo nếp. Biết có 24 bao gạo nếp. Hỏi kho có tất cả bao nhiêu bao gạo?",
+  "nhieu": [
+   {
+    "text": "$40$ bao gạo",
+    "rule": "R527",
+    "duong_sai": "Chia cho tỉ số phần trăm của phần không liên quan thay vì phần còn lại"
+   },
+   {
+    "text": "$15$ bao gạo",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm phần trăm còn lại"
+   },
+   {
+    "text": "$600$ bao gạo",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$6$ bao gạo",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$61$ bao gạo",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một kho hàng, gạo tẻ chiếm 30% tổng số gạo, còn lại là gạo nếp. Biết có 140 bao gạo nếp. Hỏi kho có tất cả bao nhiêu bao gạo?",
+  "nhieu": [
+   {
+    "text": "$98$ bao gạo",
+    "rule": "R525",
+    "duong_sai": "Nhân với phần trăm còn lại thay vì chia"
+   },
+   {
+    "text": "$2000$ bao gạo",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$201$ bao gạo",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$20$ bao gạo",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng phần trăm còn lại nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Số học sinh của một trường năm nay tăng 10% so với năm ngoái và đạt 4400 em. Hỏi năm ngoái trường đó có bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$4840$ học sinh",
+    "rule": "R525",
+    "duong_sai": "Nhân với phần trăm thay vì chia cho phần trăm"
+   },
+   {
+    "text": "$3960$ học sinh",
+    "rule": "R527",
+    "duong_sai": "Tính 10% trên số đã cho (số sau) thay vì trên số ban đầu rồi trừ"
+   },
+   {
+    "text": "$40000$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$400$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$4001$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một xe tải chở hàng, sau khi dỡ xuống 25% số hàng thì trên xe còn 3000 thùng. Hỏi lúc đầu xe chở bao nhiêu thùng hàng?",
+  "nhieu": [
+   {
+    "text": "$2400$ thùng hàng",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm phần trăm so với số ban đầu"
+   },
+   {
+    "text": "$2250$ thùng hàng",
+    "rule": "R525",
+    "duong_sai": "Nhân với phần trăm thay vì chia cho phần trăm"
+   },
+   {
+    "text": "$3750$ thùng hàng",
+    "rule": "R527",
+    "duong_sai": "Tính 25% trên số đã cho (số sau) thay vì trên số ban đầu rồi cộng"
+   },
+   {
+    "text": "$40000$ thùng hàng",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$400$ thùng hàng",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$4001$ thùng hàng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Mè (vừng) đem ép thì được 20% dầu mè. Hỏi muốn có 80 kg dầu mè thì cần bao nhiêu tạ mè?",
+  "nhieu": [
+   {
+    "text": "$400$ tạ mè",
+    "rule": "R408",
+    "duong_sai": "Chia đúng ra số ki-lô-gam rồi dừng, quên đổi sang tạ"
+   },
+   {
+    "text": "$40$ tạ mè",
+    "rule": "R538",
+    "duong_sai": "Đổi ki-lô-gam sang tạ sai, chia cho 10 thay vì 100"
+   },
+   {
+    "text": "$1$ tạ mè",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: chia cho (100 − p)% rồi đổi sang tạ"
+   },
+   {
+    "text": "$0,16$ tạ mè",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia rồi đổi sang tạ"
+   },
+   {
+    "text": "$5$ tạ mè",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đậu nành đem ép thì được 30% dầu nành. Hỏi muốn có 90 kg dầu nành thì cần bao nhiêu tạ đậu nành?",
+  "nhieu": [
+   {
+    "text": "$300$ tạ đậu nành",
+    "rule": "R408",
+    "duong_sai": "Chia đúng ra số ki-lô-gam rồi dừng, quên đổi sang tạ"
+   },
+   {
+    "text": "$30$ tạ đậu nành",
+    "rule": "R538",
+    "duong_sai": "Đổi ki-lô-gam sang tạ sai, chia cho 10 thay vì 100"
+   },
+   {
+    "text": "$0,27$ tạ đậu nành",
+    "rule": "R525",
+    "duong_sai": "Nhân với tỉ số phần trăm thay vì chia rồi đổi sang tạ"
+   },
+   {
+    "text": "$4$ tạ đậu nành",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "35% của một số là 70. Hỏi 45% của số đó là bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$200$",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm số đó rồi dừng, quên tìm tiếp phần trăm thứ hai của số đó"
+   },
+   {
+    "text": "$110$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính (100 − p)% của số đó"
+   },
+   {
+    "text": "$9000$",
+    "rule": "R100",
+    "duong_sai": "Nhân số đó với phần số của tỉ số phần trăm, quên chia cho 100"
+   },
+   {
+    "text": "$900$",
+    "rule": "R538",
+    "duong_sai": "Làm đúng các bước nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$9$",
+    "rule": "R538",
+    "duong_sai": "Làm đúng các bước nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$91$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết $0,02$ thành tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$0,2\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$98\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,02\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$3\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết số thập phân $5$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$50\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R529",
+    "duong_sai": "Lấy 1 chia cho số thập phân (đảo ngược) rồi đổi ra phần trăm"
+   },
+   {
+    "text": "$5\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$5000\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$501\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết số thập phân $0,7$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$7\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$30\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,7\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$700\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$71\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết số thập phân $0,07$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$0,7\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$93\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,07\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$8\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết $0,98$ thành tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$9,8\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,98\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$980\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$99\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết số thập phân $0,24$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$2,4\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$76\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,24\\%$",
+    "rule": "R100",
+    "duong_sai": "Chỉ viết thêm dấu phần trăm sau số thập phân, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$240\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi số thập phân ra phần trăm nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi phân số $\\dfrac{3}{4}$ ra tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$12\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân tử số với mẫu số thay vì chia tử số cho mẫu số"
+   },
+   {
+    "text": "$7,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,75\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$76\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết phân số $\\dfrac{7}{5}$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$35\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân tử số với mẫu số thay vì chia tử số cho mẫu số"
+   },
+   {
+    "text": "$14\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$1,4\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$141\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết phân số $\\dfrac{5}{4}$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân tử số với mẫu số thay vì chia tử số cho mẫu số"
+   },
+   {
+    "text": "$12,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy mẫu số chia cho tử số"
+   },
+   {
+    "text": "$1,25\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$126\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi phân số $\\dfrac{7}{20}$ ra tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$140\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân tử số với mẫu số thay vì chia tử số cho mẫu số"
+   },
+   {
+    "text": "$3,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$65\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,35\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$36\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi phân số $\\dfrac{9}{10}$ ra tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$9\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$10\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,9\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$91\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết phân số $\\dfrac{8}{125}$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$0,64\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng ra số thập phân nhưng đổi sang phần trăm chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$93,6\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$0,064\\%$",
+    "rule": "R100",
+    "duong_sai": "Chia tử cho mẫu rồi chỉ viết dấu phần trăm, quên dịch dấu phẩy sang phải hai chữ số"
+   },
+   {
+    "text": "$6,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi $30\\%$ ra phân số tối giản.",
+  "nhieu": [
+   {
+    "text": "$\\dfrac{3}{100}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 1000 thay vì 100 (dịch một chữ số)"
+   },
+   {
+    "text": "$\\dfrac{10}{3}$",
+    "rule": "R529",
+    "duong_sai": "Viết ngược phân số: mẫu số làm tử số"
+   },
+   {
+    "text": "$\\dfrac{7}{10}$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: viết (100 − p)/100 rồi rút gọn"
+   },
+   {
+    "text": "$\\dfrac{3}{1}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 10 thay vì 100"
+   },
+   {
+    "text": "$\\dfrac{2}{5}$",
+    "rule": "R540",
+    "duong_sai": "Rút gọn đúng nhưng lệch một đơn vị ở tử số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi $7,5\\%$ ra phân số tối giản.",
+  "nhieu": [
+   {
+    "text": "$\\dfrac{3}{400}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 1000 thay vì 100 (dịch một chữ số)"
+   },
+   {
+    "text": "$\\dfrac{37}{40}$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: viết (100 − p)/100 rồi rút gọn"
+   },
+   {
+    "text": "$\\dfrac{1}{10}$",
+    "rule": "R540",
+    "duong_sai": "Rút gọn đúng nhưng lệch một đơn vị ở tử số"
+   },
+   {
+    "text": "$\\dfrac{3}{4}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 10 thay vì 100"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết tỉ số phần trăm $63\\%$ dưới dạng phân số tối giản.",
+  "nhieu": [
+   {
+    "text": "$\\dfrac{63}{1000}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 1000 thay vì 100 (dịch một chữ số)"
+   },
+   {
+    "text": "$\\dfrac{100}{63}$",
+    "rule": "R529",
+    "duong_sai": "Viết ngược phân số: mẫu số làm tử số"
+   },
+   {
+    "text": "$\\dfrac{37}{100}$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: viết (100 − p)/100 rồi rút gọn"
+   },
+   {
+    "text": "$\\dfrac{63}{10}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 10 thay vì 100"
+   },
+   {
+    "text": "$\\dfrac{16}{25}$",
+    "rule": "R540",
+    "duong_sai": "Rút gọn đúng nhưng lệch một đơn vị ở tử số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết tỉ số phần trăm $173\\%$ dưới dạng phân số tối giản.",
+  "nhieu": [
+   {
+    "text": "$\\dfrac{173}{1000}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 1000 thay vì 100 (dịch một chữ số)"
+   },
+   {
+    "text": "$\\dfrac{100}{173}$",
+    "rule": "R529",
+    "duong_sai": "Viết ngược phân số: mẫu số làm tử số"
+   },
+   {
+    "text": "$\\dfrac{87}{50}$",
+    "rule": "R540",
+    "duong_sai": "Rút gọn đúng nhưng lệch một đơn vị ở tử số"
+   },
+   {
+    "text": "$\\dfrac{173}{10}$",
+    "rule": "R538",
+    "duong_sai": "Đổi phần trăm ra phân số nhưng viết mẫu số 10 thay vì 100"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi $13,24\\%$ ra số thập phân.",
+  "nhieu": [
+   {
+    "text": "$1,324$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$0,8676$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi (100 − p)% ra số thập phân"
+   },
+   {
+    "text": "$0,1325$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết tỉ số phần trăm $84\\%$ dưới dạng số thập phân.",
+  "nhieu": [
+   {
+    "text": "$84$",
+    "rule": "R100",
+    "duong_sai": "Chỉ bỏ dấu phần trăm, quên chia cho 100 (quên dịch dấu phẩy sang trái hai chữ số)"
+   },
+   {
+    "text": "$8,4$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$0,16$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi (100 − p)% ra số thập phân"
+   },
+   {
+    "text": "$0,084$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$0,85$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi $39\\%$ ra số thập phân.",
+  "nhieu": [
+   {
+    "text": "$39$",
+    "rule": "R100",
+    "duong_sai": "Chỉ bỏ dấu phần trăm, quên chia cho 100 (quên dịch dấu phẩy sang trái hai chữ số)"
+   },
+   {
+    "text": "$3,9$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$0,61$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi (100 − p)% ra số thập phân"
+   },
+   {
+    "text": "$0,039$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng dịch dấu phẩy ba chữ số"
+   },
+   {
+    "text": "$0,4$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi $405\\%$ ra số thập phân.",
+  "nhieu": [
+   {
+    "text": "$405$",
+    "rule": "R100",
+    "duong_sai": "Chỉ bỏ dấu phần trăm, quên chia cho 100 (quên dịch dấu phẩy sang trái hai chữ số)"
+   },
+   {
+    "text": "$40,5$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$4,06$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$0,405$",
+    "rule": "R538",
+    "duong_sai": "Đổi ra số thập phân nhưng dịch dấu phẩy ba chữ số"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi hỗn số $1\\dfrac{3}{4}$ ra tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$75\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ đổi phần phân số ra phần trăm, quên cộng phần nguyên"
+   },
+   {
+    "text": "$1750\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$176\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$17,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết hỗn số $3\\dfrac{3}{8}$ dưới dạng tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$37,5\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ đổi phần phân số ra phần trăm, quên cộng phần nguyên"
+   },
+   {
+    "text": "$112,5\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân phần nguyên với phân số thay vì cộng"
+   },
+   {
+    "text": "$3375\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$33,75\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$337,6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đổi hỗn số $3\\dfrac{1}{4}$ ra tỉ số phần trăm.",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R539",
+    "duong_sai": "Chỉ đổi phần phân số ra phần trăm, quên cộng phần nguyên"
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R407",
+    "duong_sai": "Nhân phần nguyên với phân số thay vì cộng"
+   },
+   {
+    "text": "$3250\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$32,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đúng ra số thập phân nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$326\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,15;\\ 2\\dfrac{4}{25};\\ 1,76;\\ \\dfrac{44}{25}$.",
+  "nhieu": [
+   {
+    "text": "$150\\%$; $2160\\%$; $1760\\%$; $1760\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$15\\%$; $300\\%$; $176\\%$; $1100\\%$",
+    "rule": "R407",
+    "duong_sai": "Với phân số lấy tử số nhân mẫu số thay vì chia; hỗn số làm tương tự"
+   },
+   {
+    "text": "$15\\%$; $16\\%$; $176\\%$; $176\\%$",
+    "rule": "R539",
+    "duong_sai": "Với hỗn số chỉ đổi phần phân số, quên phần nguyên"
+   },
+   {
+    "text": "$1,5\\%$; $21,6\\%$; $17,6\\%$; $17,6\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái"
+   },
+   {
+    "text": "$15\\%$; $216\\%$; $176\\%$; $177\\%$",
+    "rule": "R540",
+    "duong_sai": "Đổi đúng nhưng ý cuối lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,941;\\ 0,16;\\ \\dfrac{8}{5};\\ 1,09$.",
+  "nhieu": [
+   {
+    "text": "$941\\%$; $160\\%$; $1600\\%$; $1090\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$94,1\\%$; $16\\%$; $40\\%$; $109\\%$",
+    "rule": "R407",
+    "duong_sai": "Với phân số lấy tử số nhân mẫu số thay vì chia; hỗn số làm tương tự"
+   },
+   {
+    "text": "$94,1\\%$; $16\\%$; $160\\%$; $110\\%$",
+    "rule": "R540",
+    "duong_sai": "Đổi đúng nhưng ý cuối lệch một đơn vị ở chữ số cuối"
+   },
+   {
+    "text": "$9,41\\%$; $1,6\\%$; $16\\%$; $10,9\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,05;\\ 3\\dfrac{3}{5};\\ \\dfrac{5}{4};\\ \\dfrac{81}{50}$.",
+  "nhieu": [
+   {
+    "text": "$50\\%$; $3600\\%$; $1250\\%$; $1620\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng chỉ dịch dấu phẩy một chữ số"
+   },
+   {
+    "text": "$5\\%$; $315\\%$; $20\\%$; $4050\\%$",
+    "rule": "R407",
+    "duong_sai": "Với phân số lấy tử số nhân mẫu số thay vì chia; hỗn số làm tương tự"
+   },
+   {
+    "text": "$5\\%$; $60\\%$; $125\\%$; $162\\%$",
+    "rule": "R539",
+    "duong_sai": "Với hỗn số chỉ đổi phần phân số, quên phần nguyên"
+   },
+   {
+    "text": "$0,5\\%$; $36\\%$; $12,5\\%$; $16,2\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi mỗi số ra phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái"
+   },
+   {
+    "text": "$5\\%$; $360\\%$; $125\\%$; $163\\%$",
+    "rule": "R540",
+    "duong_sai": "Đổi đúng nhưng ý cuối lệch một đơn vị ở chữ số cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong hộp có 500 viên bi, trong đó có 486 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "nhieu": [
+   {
+    "text": "$2,8\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã cho"
+   },
+   {
+    "text": "$972\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$97,3\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$9,72\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Thư viện của một trường có 50 quyển sách, trong đó có 42 quyển sách khoa học. Hỏi sách khoa học chiếm bao nhiêu phần trăm số sách của thư viện?",
+  "nhieu": [
+   {
+    "text": "$525\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy số phần chia cho số còn lại thay vì chia cho số cả"
+   },
+   {
+    "text": "$16\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã cho"
+   },
+   {
+    "text": "$840\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$8,4\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong hộp có 500 viên bi, trong đó có 225 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "nhieu": [
+   {
+    "text": "$55\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã cho"
+   },
+   {
+    "text": "$450\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$46\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$4,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong hộp có 40 viên bi, trong đó có 23 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "nhieu": [
+   {
+    "text": "$42,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã cho"
+   },
+   {
+    "text": "$575\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$57,6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$5,75\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, một cửa hàng bán được 160 chiếc quạt, tháng này bán được 350 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "nhieu": [
+   {
+    "text": "$118,75\\%$",
+    "rule": "R528",
+    "duong_sai": "Nhầm \"bằng bao nhiêu phần trăm\" với \"hơn bao nhiêu phần trăm\" nên trừ thêm 100%"
+   },
+   {
+    "text": "$2187,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$218,76\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, một cửa hàng bán được 40 chiếc quạt, tháng này bán được 450 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "nhieu": [
+   {
+    "text": "$1025\\%$",
+    "rule": "R528",
+    "duong_sai": "Nhầm \"bằng bao nhiêu phần trăm\" với \"hơn bao nhiêu phần trăm\" nên trừ thêm 100%"
+   },
+   {
+    "text": "$11250\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1126\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$112,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, một cửa hàng bán được 50 chiếc quạt, tháng này bán được 450 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "nhieu": [
+   {
+    "text": "$800\\%$",
+    "rule": "R528",
+    "duong_sai": "Nhầm \"bằng bao nhiêu phần trăm\" với \"hơn bao nhiêu phần trăm\" nên trừ thêm 100%"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy số sau chia cho tổng hai số thay vì chia cho số gốc"
+   },
+   {
+    "text": "$9000\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$901\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Quý trước, một xưởng sản xuất được 40 chiếc ghế, quý này 64 chiếc ghế. Hỏi số ghế sản xuất được quý này nhiều hơn quý trước bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$160\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số sau bằng bao nhiêu phần trăm số trước nhưng quên so với 100%"
+   },
+   {
+    "text": "$37,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Tính phần chênh lệch trên số sau thay vì trên số trước"
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy số trước chia cho số sau"
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Quý trước, một xưởng sản xuất được 120 chiếc ghế, quý này 102 chiếc ghế. Hỏi số ghế sản xuất được quý này ít hơn quý trước bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$85\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số sau bằng bao nhiêu phần trăm số trước nhưng quên so với 100%"
+   },
+   {
+    "text": "$150\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$16\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Năm ngoái, một trang trại thu hoạch được 120 kg cà phê, năm nay 210 kg cà phê. Hỏi sản lượng cà phê năm nay nhiều hơn năm ngoái bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$175\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số sau bằng bao nhiêu phần trăm số trước nhưng quên so với 100%"
+   },
+   {
+    "text": "$750\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$76\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$7,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Tháng trước, nhà bạn An dùng 400 kWh điện, tháng này 320 kWh điện. Hỏi lượng điện tháng này ít hơn tháng trước bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số sau bằng bao nhiêu phần trăm số trước nhưng quên so với 100%"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Tính phần chênh lệch trên số sau thay vì trên số trước"
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy số trước chia cho số sau"
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$2\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$21\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nông trại đặt kế hoạch thu hoạch 120 kg rau xanh, thực tế thu hoạch được 102 kg rau xanh. Hỏi đã thực hiện được bao nhiêu phần trăm kế hoạch?",
+  "nhieu": [
+   {
+    "text": "$15\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần chưa đạt kế hoạch"
+   },
+   {
+    "text": "$850\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$86\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$8,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một tổ công nhân được giao làm 400 chiếc đèn lồng, thực tế làm được 440 chiếc đèn lồng. Hỏi tổ công nhân đã vượt mức kế hoạch bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$110\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số thực tế bằng bao nhiêu phần trăm kế hoạch nhưng quên trừ 100%"
+   },
+   {
+    "text": "$90\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ phần vượt"
+   },
+   {
+    "text": "$100\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$11\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một xưởng may đặt kế hoạch may 500 bộ quần áo, thực tế may được 575 bộ quần áo. Hỏi xưởng đã vượt mức kế hoạch bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$115\\%$",
+    "rule": "R528",
+    "duong_sai": "Chia đúng ra số thực tế bằng bao nhiêu phần trăm kế hoạch nhưng quên trừ 100%"
+   },
+   {
+    "text": "$85\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ phần vượt"
+   },
+   {
+    "text": "$150\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Tính đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$16\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một lớp học có 25 học sinh nam và 20 học sinh nữ. Tính tỉ số phần trăm của số học sinh nam và số học sinh nữ.",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy số nữ chia cho số nam"
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R528",
+    "duong_sai": "Nhầm \"bằng bao nhiêu phần trăm\" với \"hơn bao nhiêu phần trăm\" nên trừ thêm 100%"
+   },
+   {
+    "text": "$1250\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$12,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$126\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một lớp học có 28 học sinh nam và 10 học sinh nữ. Tính tỉ số phần trăm của số học sinh nam và số học sinh nữ.",
+  "nhieu": [
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Nhầm \"bằng bao nhiêu phần trăm\" với \"hơn bao nhiêu phần trăm\" nên trừ thêm 100%"
+   },
+   {
+    "text": "$2800\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$281\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$28\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một câu lạc bộ có 15 bạn nam và 20 bạn nữ. Số bạn nam bằng bao nhiêu phần trăm số bạn nữ?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: lấy 100% trừ kết quả"
+   },
+   {
+    "text": "$750\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$76\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$7,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5C có 12 học sinh nam và 18 học sinh nữ. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "nhieu": [
+   {
+    "text": "$150\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy số nữ chia cho số nam thay vì chia cho cả lớp"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính tỉ số phần trăm của số nam"
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5B có 14 học sinh nam và 26 học sinh nữ. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "nhieu": [
+   {
+    "text": "$35\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính tỉ số phần trăm của số nam"
+   },
+   {
+    "text": "$650\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$66\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$6,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một lớp học có 16 học sinh nam. Số học sinh nữ nhiều hơn số học sinh nam là 8 em. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "nhieu": [
+   {
+    "text": "$150\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy số nữ chia cho số nam thay vì chia cho cả lớp"
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính tỉ số phần trăm của số nam"
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$6\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$61\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một lớp học có 19 học sinh nam. Số học sinh nữ nhiều hơn số học sinh nam là 2 em. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "nhieu": [
+   {
+    "text": "$47,5\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính tỉ số phần trăm của số nam"
+   },
+   {
+    "text": "$525\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$52,6\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$5,25\\%$",
+    "rule": "R538",
+    "duong_sai": "Chia đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bao gạo nặng 1,5 kg, đã dùng hết 1275 g. Hỏi lượng gạo đã dùng chiếm bao nhiêu phần trăm bao gạo?",
+  "nhieu": [
+   {
+    "text": "$15\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã dùng"
+   },
+   {
+    "text": "$850\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đơn vị đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$86\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$8,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đơn vị đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một bao gạo nặng 2 kg, đã dùng hết 908 g. Hỏi lượng gạo đã dùng chiếm bao nhiêu phần trăm bao gạo?",
+  "nhieu": [
+   {
+    "text": "$54,6\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã dùng"
+   },
+   {
+    "text": "$454\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đơn vị đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$45,5\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$4,54\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đơn vị đúng nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một kho chứa 0,8 tạ, đã xuất đi 49 kg. Hỏi lượng hàng đã xuất chiếm bao nhiêu phần trăm lượng hàng trong kho?",
+  "nhieu": [
+   {
+    "text": "$38,75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính phần còn lại thay vì phần đã dùng"
+   },
+   {
+    "text": "$612,5\\%$",
+    "rule": "R538",
+    "duong_sai": "Đổi đơn vị đúng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$61,26\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5A có số bạn nam chiếm 45% sĩ số của lớp và ít hơn số bạn nữ là 2 bạn. Hỏi lớp 5A có tất cả bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$2$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$200$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$21$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5A có số bạn nam chiếm 60% sĩ số của lớp và nhiều hơn số bạn nữ là 5 bạn. Hỏi lớp 5A có tất cả bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$5$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$1$ bạn",
+    "rule": "R525",
+    "duong_sai": "Nhân hiệu với hiệu hai phần trăm thay vì chia"
+   },
+   {
+    "text": "$250$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$26$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 35% tổng số cây trong vườn và ít hơn số cây bưởi là 120 cây. Hỏi vườn đó có tất cả bao nhiêu cây?",
+  "nhieu": [
+   {
+    "text": "$120$ cây",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$36$ cây",
+    "rule": "R525",
+    "duong_sai": "Nhân hiệu với hiệu hai phần trăm thay vì chia"
+   },
+   {
+    "text": "$4000$ cây",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$401$ cây",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 68% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 72 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$72$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$225$ học sinh",
+    "rule": "R101",
+    "duong_sai": "Lấy hiệu chia cho phần trăm của bộ phận còn lại thay vì chia cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$2000$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$201$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 64% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 56 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$56$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$2000$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$201$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 52% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 60 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$60$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "$125$ học sinh",
+    "rule": "R101",
+    "duong_sai": "Lấy hiệu chia cho phần trăm của bộ phận còn lại thay vì chia cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$15000$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "$1501$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 65% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 150 học sinh. Hỏi: a) Trường đó có tất cả bao nhiêu học sinh? b) Có bao nhiêu học sinh nam, bao nhiêu học sinh nữ?",
+  "nhieu": [
+   {
+    "text": "a) $5000$ học sinh; b) $3250$ học sinh nam, $1750$ học sinh nữ",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "a) $500$ học sinh; b) $175$ học sinh nam, $325$ học sinh nữ",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi chỗ số bộ phận chiếm a% với bộ phận còn lại"
+   },
+   {
+    "text": "a) $500$ học sinh; b) $325$ học sinh nam, $825$ học sinh nữ",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm bộ phận còn lại (lấy tổng cộng với bộ phận kia)"
+   },
+   {
+    "text": "a) $501$ học sinh; b) $326$ học sinh nam, $175$ học sinh nữ",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở bước tính tổng và phần chiếm a%"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 46% tổng số cây trong vườn và ít hơn số cây bưởi là 48 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "nhieu": [
+   {
+    "text": "a) $6000$ cây; b) $2760$ cây cam, $3240$ cây bưởi",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "a) $600$ cây; b) $324$ cây cam, $276$ cây bưởi",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi chỗ số bộ phận chiếm a% với bộ phận còn lại"
+   },
+   {
+    "text": "a) $600$ cây; b) $276$ cây cam, $876$ cây bưởi",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm bộ phận còn lại (lấy tổng cộng với bộ phận kia)"
+   },
+   {
+    "text": "a) $601$ cây; b) $277$ cây cam, $324$ cây bưởi",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở bước tính tổng và phần chiếm a%"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 45% tổng số cây trong vườn và ít hơn số cây bưởi là 30 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "nhieu": [
+   {
+    "text": "a) $3000$ cây; b) $1350$ cây cam, $1650$ cây bưởi",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "a) $300$ cây; b) $165$ cây cam, $135$ cây bưởi",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi chỗ số bộ phận chiếm a% với bộ phận còn lại"
+   },
+   {
+    "text": "a) $300$ cây; b) $135$ cây cam, $435$ cây bưởi",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm bộ phận còn lại (lấy tổng cộng với bộ phận kia)"
+   },
+   {
+    "text": "a) $301$ cây; b) $136$ cây cam, $165$ cây bưởi",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở bước tính tổng và phần chiếm a%"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 60% tổng số cây trong vườn và nhiều hơn số cây bưởi là 240 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "nhieu": [
+   {
+    "text": "a) $400$ cây; b) $240$ cây cam, $160$ cây bưởi",
+    "rule": "R527",
+    "duong_sai": "Cho rằng hiệu hai bộ phận ứng với chính phần trăm đã cho nên lấy hiệu chia cho phần trăm đó"
+   },
+   {
+    "text": "a) $240$ cây; b) $144$ cây cam, $96$ cây bưởi",
+    "rule": "R407",
+    "duong_sai": "Cộng hai phần trăm thành 100% rồi chia hiệu cho 100% thay vì trừ hai phần trăm"
+   },
+   {
+    "text": "a) $600$ cây; b) $360$ cây cam, $240$ cây bưởi",
+    "rule": "R101",
+    "duong_sai": "Lấy hiệu chia cho phần trăm của bộ phận còn lại thay vì chia cho hiệu hai phần trăm"
+   },
+   {
+    "text": "a) $12000$ cây; b) $7200$ cây cam, $4800$ cây bưởi",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng đổi ra số thập phân sai một chữ số"
+   },
+   {
+    "text": "a) $1200$ cây; b) $480$ cây cam, $720$ cây bưởi",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: đổi chỗ số bộ phận chiếm a% với bộ phận còn lại"
+   },
+   {
+    "text": "a) $1200$ cây; b) $720$ cây cam, $1920$ cây bưởi",
+    "rule": "R407",
+    "duong_sai": "Cộng thay vì trừ khi tìm bộ phận còn lại (lấy tổng cộng với bộ phận kia)"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 43% và số con vịt chiếm 29% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 70 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$250$ con",
+    "rule": "R101",
+    "duong_sai": "Chia hiệu cho phần trăm của phần còn lại thay vì cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$70$ con",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở số đã cho (hiệu hai bộ phận) và lấy luôn làm tổng, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$5000$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$50$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$501$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 54% và số con vịt chiếm 10% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 264 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$264$ con",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở số đã cho (hiệu hai bộ phận) và lấy luôn làm tổng, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$6000$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$601$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$60$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 47% và số con vịt chiếm 15% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 320 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$320$ con",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở số đã cho (hiệu hai bộ phận) và lấy luôn làm tổng, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$10000$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1001$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$100$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng hiệu hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một khu vườn có số cây cam chiếm 52% và số cây quýt chiếm 26% tổng số cây trong vườn, còn lại là cây bưởi. Biết số cây cam nhiều hơn số cây quýt là 520 cây. Hỏi có bao nhiêu cây cam?",
+  "nhieu": [
+   {
+    "text": "$2000$ cây",
+    "rule": "R408",
+    "duong_sai": "Chỉ tìm tổng rồi dừng, quên tìm bộ phận chiếm a%"
+   },
+   {
+    "text": "$960$ cây",
+    "rule": "R101",
+    "duong_sai": "Lấy nhầm phần trăm bù: tính bộ phận còn lại thay vì bộ phận chiếm a%"
+   },
+   {
+    "text": "$10400$ cây",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng bộ phận nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$104$ cây",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng bộ phận nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$1041$ cây",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 34% và số con vịt chiếm 22% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 448 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$448$ con",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở tổng hai bộ phận và lấy luôn làm tổng cả, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$8000$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$801$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$80$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 16% và số sách truyện chiếm 23% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 1170 quyển sách. Hỏi thư viện có tất cả bao nhiêu quyển sách?",
+  "nhieu": [
+   {
+    "text": "$1170$ quyển sách",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở tổng hai bộ phận và lấy luôn làm tổng cả, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$30000$ quyển sách",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$3001$ quyển sách",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$300$ quyển sách",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 48% và số con vịt chiếm 44% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 460 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "nhieu": [
+   {
+    "text": "$11500$ con",
+    "rule": "R407",
+    "duong_sai": "Trừ thay vì cộng hai phần trăm khi tìm phần trăm ứng với tổng"
+   },
+   {
+    "text": "$5750$ con",
+    "rule": "R101",
+    "duong_sai": "Chia cho phần trăm của phần còn lại thay vì cho tổng hai phần trăm"
+   },
+   {
+    "text": "$460$ con",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở tổng hai bộ phận và lấy luôn làm tổng cả, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$5000$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$50$ con",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$501$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 26% và số sách truyện chiếm 29% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 825 quyển sách. Hỏi thư viện có tất cả bao nhiêu quyển sách?",
+  "nhieu": [
+   {
+    "text": "$825$ quyển sách",
+    "rule": "R408",
+    "duong_sai": "Dừng lại ở tổng hai bộ phận và lấy luôn làm tổng cả, bỏ sót bước chia cho phần trăm"
+   },
+   {
+    "text": "$15000$ quyển sách",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1501$ quyển sách",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   },
+   {
+    "text": "$150$ quyển sách",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng hai phần trăm nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đầu năm học, một trường tiểu học có số học sinh nam bằng số học sinh nữ. Đến cuối học kì I, nhà trường nhận thêm 27 học sinh nữ và 3 học sinh nam nên số học sinh nữ chiếm 58% tổng số học sinh toàn trường. Hỏi đầu năm học, trường đó có bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$150$ học sinh",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$180$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào tổng lúc sau thay vì trừ đi"
+   },
+   {
+    "text": "$1200$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$12$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$121$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 14 bạn nữ và 6 bạn nam nên số bạn nữ chiếm 58% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$50$ bạn",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$70$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào tổng lúc sau thay vì trừ đi"
+   },
+   {
+    "text": "$300$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$3$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$31$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 11 bạn nữ và 3 bạn nam nên số bạn nữ chiếm 58% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$50$ bạn",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$64$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào tổng lúc sau thay vì trừ đi"
+   },
+   {
+    "text": "$360$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$37$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 13 bạn nữ và 2 bạn nam nên số bạn nữ chiếm 60% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$55$ bạn",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$70$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào tổng lúc sau thay vì trừ đi"
+   },
+   {
+    "text": "$400$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$4$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$41$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Đầu năm học, một trường tiểu học có số học sinh nam bằng số học sinh nữ. Đến cuối học kì I, nhà trường nhận thêm 17 học sinh nữ và 8 học sinh nam nên số học sinh nữ chiếm 52% tổng số học sinh toàn trường. Hỏi đầu năm học, trường đó có bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$225$ học sinh",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$250$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào tổng lúc sau thay vì trừ đi"
+   },
+   {
+    "text": "$2000$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$20$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng lúc đầu nhưng dịch dấu phẩy sai một chữ số về bên trái nên kết quả chỉ bằng một phần mười"
+   },
+   {
+    "text": "$201$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một câu lạc bộ nhận thêm 3 thành viên mới. Lúc này số thành viên nam chiếm 48% tổng số thành viên và ít hơn số thành viên nữ là 12 thành viên. Hỏi trước khi nhận thêm, câu lạc bộ đó có bao nhiêu thành viên?",
+  "nhieu": [
+   {
+    "text": "$300$ thành viên",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$303$ thành viên",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào thay vì trừ đi"
+   },
+   {
+    "text": "$22$ thành viên",
+    "rule": "R527",
+    "duong_sai": "Chia hiệu cho phần trăm của bộ phận thay vì cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$2970$ thành viên",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$298$ thành viên",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Lớp 5C nhận thêm 6 bạn mới. Lúc này số bạn nam chiếm 60% sĩ số của lớp và nhiều hơn số bạn nữ là 9 bạn. Hỏi trước khi nhận thêm, lớp 5C có bao nhiêu bạn?",
+  "nhieu": [
+   {
+    "text": "$45$ bạn",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$51$ bạn",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào thay vì trừ đi"
+   },
+   {
+    "text": "$9$ bạn",
+    "rule": "R527",
+    "duong_sai": "Chia hiệu cho phần trăm của bộ phận thay vì cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$390$ bạn",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$40$ bạn",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trường tiểu học nhận thêm 9 học sinh mới. Lúc này số học sinh nam chiếm 44% tổng số học sinh toàn trường và ít hơn số học sinh nữ là 120 học sinh. Hỏi trước khi nhận thêm, trường đó có bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$1000$ học sinh",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc sau rồi dừng, quên trừ số người nhận thêm"
+   },
+   {
+    "text": "$1009$ học sinh",
+    "rule": "R407",
+    "duong_sai": "Cộng số người nhận thêm vào thay vì trừ đi"
+   },
+   {
+    "text": "$9910$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$992$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một câu lạc bộ có số thành viên nam chiếm 60% tổng số thành viên và nhiều hơn số thành viên nữ là 40 thành viên. Sau đó có 7 thành viên mới được nhận thêm. Hỏi lúc này câu lạc bộ đó có bao nhiêu thành viên?",
+  "nhieu": [
+   {
+    "text": "$200$ thành viên",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên cộng số người nhận thêm"
+   },
+   {
+    "text": "$193$ thành viên",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành chuyển đi nên trừ thay vì cộng"
+   },
+   {
+    "text": "$107$ thành viên",
+    "rule": "R101",
+    "duong_sai": "Chia hiệu cho phần trăm của bộ phận còn lại thay vì cho hiệu hai phần trăm"
+   },
+   {
+    "text": "$2070$ thành viên",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$208$ thành viên",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một câu lạc bộ có số thành viên nam chiếm 44% tổng số thành viên và ít hơn số thành viên nữ là 24 thành viên. Sau đó có 14 thành viên chuyển đi nơi khác. Hỏi lúc này câu lạc bộ đó có bao nhiêu thành viên?",
+  "nhieu": [
+   {
+    "text": "$200$ thành viên",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên trừ số người chuyển đi"
+   },
+   {
+    "text": "$214$ thành viên",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành nhận thêm nên cộng thay vì trừ"
+   },
+   {
+    "text": "$1860$ thành viên",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$187$ thành viên",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trường tiểu học có số học sinh nam chiếm 46% tổng số học sinh toàn trường và ít hơn số học sinh nữ là 96 học sinh. Sau đó có 21 học sinh mới được nhận thêm. Hỏi lúc này trường đó có bao nhiêu học sinh?",
+  "nhieu": [
+   {
+    "text": "$1200$ học sinh",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên cộng số người nhận thêm"
+   },
+   {
+    "text": "$1179$ học sinh",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành chuyển đi nên trừ thay vì cộng"
+   },
+   {
+    "text": "$12210$ học sinh",
+    "rule": "R538",
+    "duong_sai": "Tìm đúng tổng nhưng dịch dấu phẩy một chữ số về bên phải (nhân thêm 10) nên kết quả gấp 10 lần"
+   },
+   {
+    "text": "$1222$ học sinh",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong một khu vườn có số cây cam chiếm 35% và số cây quýt chiếm 23% tổng số cây trong vườn, còn lại là cây bưởi. Biết tổng số cây cam và cây quýt là 174 cây. Sau đó có thêm 10 cây mới. Hỏi lúc này có tất cả bao nhiêu cây?",
+  "nhieu": [
+   {
+    "text": "$300$ cây",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên cộng số người mới thêm"
+   },
+   {
+    "text": "$290$ cây",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành bớt đi nên trừ thay vì cộng số người mới thêm"
+   },
+   {
+    "text": "$1460$ cây",
+    "rule": "R407",
+    "duong_sai": "Trừ thay vì cộng hai phần trăm khi tìm tổng"
+   },
+   {
+    "text": "$311$ cây",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 47% và số sách truyện chiếm 13% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 240 quyển sách. Sau đó có thêm 24 quyển sách mới. Hỏi lúc này có tất cả bao nhiêu quyển sách?",
+  "nhieu": [
+   {
+    "text": "$400$ quyển sách",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên cộng số người mới thêm"
+   },
+   {
+    "text": "$376$ quyển sách",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành bớt đi nên trừ thay vì cộng số người mới thêm"
+   },
+   {
+    "text": "$624$ quyển sách",
+    "rule": "R101",
+    "duong_sai": "Chia cho phần trăm của phần còn lại thay vì cho tổng hai phần trăm rồi mới cộng"
+   },
+   {
+    "text": "$425$ quyển sách",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 32% và số con vịt chiếm 45% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 462 con. Sau đó có thêm 3 con mới. Hỏi lúc này có tất cả bao nhiêu con?",
+  "nhieu": [
+   {
+    "text": "$600$ con",
+    "rule": "R531",
+    "duong_sai": "Chỉ tìm tổng lúc đầu rồi dừng, quên cộng số người mới thêm"
+   },
+   {
+    "text": "$597$ con",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược thành bớt đi nên trừ thay vì cộng số người mới thêm"
+   },
+   {
+    "text": "$604$ con",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một đơn vị ở chữ số cuối khi tính bước cuối"
+   }
+  ]
+ }
+]

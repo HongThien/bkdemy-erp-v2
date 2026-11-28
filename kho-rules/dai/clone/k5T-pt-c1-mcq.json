@@ -1,0 +1,4902 @@
+[
+ {
+  "noi_dung": "Một cửa hàng bán bộ bàn ghế ăn với giá 7 200 000 đồng và thu được lãi 20% so với giá vốn. Hỏi giá vốn của bộ bàn ghế ăn đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (1 200 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$7200000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$8640000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 20% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$1440000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 20% của giá bán (7 200 000 × 20%) thay vì chia cho 120%."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: chia giá bán cho 80% thay vì 120%."
+   },
+   {
+    "text": "$5760000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá bán rồi trừ đi, quên rằng 20% là phần của giá vốn."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, bán chiếc cặp sách được 800 000 đồng, lãi 60% giá vốn. Tính giá vốn của chiếc cặp sách đó.",
+  "nhieu": [
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: chia giá bán cho 40% thay vì 160%."
+   },
+   {
+    "text": "$320000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 60% trên giá bán rồi trừ đi, quên rằng 60% là phần của giá vốn."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 60% của giá bán (800 000 × 60%) thay vì chia cho 160%."
+   },
+   {
+    "text": "$1280000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 60% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (300 000 đồng) rồi dừng, tưởng là giá vốn."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán chiếc cặp sách được 690 000 đồng, lãi 15% giá gốc. Tính giá gốc của chiếc cặp sách đó.",
+  "nhieu": [
+   {
+    "text": "$90000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (90 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$690000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$4600000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 15% thay vì cho 115%."
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc máy tính bảng được 2 200 000 đồng, lãi 10% giá vốn. Tính giá vốn của chiếc máy tính bảng đó.",
+  "nhieu": [
+   {
+    "text": "$1980000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 10% trên giá bán rồi trừ đi, quên rằng 10% là phần của giá vốn."
+   },
+   {
+    "text": "$220000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 10% của giá bán (2 200 000 × 10%) thay vì chia cho 110%."
+   },
+   {
+    "text": "$2420000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 10% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (200 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$2200000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$20000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, bán chiếc xe đạp với giá 5 400 000 đồng và thu được lãi 80% so với giá nhập. Hỏi giá nhập của chiếc xe đạp đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$9720000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 80% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$27000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: chia giá bán cho 20% thay vì 180%."
+   },
+   {
+    "text": "$5400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$6750000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 80% thay vì cho 180%."
+   },
+   {
+    "text": "$1080000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 80% trên giá bán rồi trừ đi, quên rằng 80% là phần của giá vốn."
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (2 400 000 đồng) rồi dừng, tưởng là giá vốn."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc bàn học với giá 600 000 đồng và thu được lãi 20% so với giá vốn. Hỏi giá vốn của chiếc bàn học đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 20% thay vì cho 120%."
+   },
+   {
+    "text": "$720000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 20% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá bán rồi trừ đi, quên rằng 20% là phần của giá vốn."
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: chia giá bán cho 80% thay vì 120%."
+   },
+   {
+    "text": "$100000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (100 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$600000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị bán chiếc bàn học được 1 400 000 đồng, lãi 40% giá vốn. Tính giá vốn của chiếc bàn học đó.",
+  "nhieu": [
+   {
+    "text": "$1400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$1960000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 40% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$560000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 40% của giá bán (1 400 000 × 40%) thay vì chia cho 140%."
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (400 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$840000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 40% trên giá bán rồi trừ đi, quên rằng 40% là phần của giá vốn."
+   },
+   {
+    "text": "$10000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc bàn ủi với giá 540 000 đồng và thu được lãi 35% so với giá vốn. Hỏi giá vốn của chiếc bàn ủi đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$351000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 35% trên giá bán rồi trừ đi, quên rằng 35% là phần của giá vốn."
+   },
+   {
+    "text": "$540000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$729000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 35% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$189000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 35% của giá bán (540 000 × 35%) thay vì chia cho 135%."
+   },
+   {
+    "text": "$140000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (140 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán chiếc bàn ủi được 625 000 đồng, lãi 25% giá nhập. Tính giá nhập của chiếc bàn ủi đó.",
+  "nhieu": [
+   {
+    "text": "$125000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (125 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 25% thay vì cho 125%."
+   },
+   {
+    "text": "$625000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, bán chiếc ba lô du lịch với giá 540 000 đồng và thu được lãi 35% so với giá nhập. Hỏi giá nhập của chiếc ba lô du lịch đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$729000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 35% giá bán thay vì tìm giá vốn."
+   },
+   {
+    "text": "$140000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (140 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$351000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 35% trên giá bán rồi trừ đi, quên rằng 35% là phần của giá vốn."
+   },
+   {
+    "text": "$540000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$189000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 35% của giá bán (540 000 × 35%) thay vì chia cho 135%."
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán bộ đồ chơi xếp hình được 156 000 đồng, lãi 30% giá nhập. Tính giá nhập của bộ đồ chơi xếp hình đó.",
+  "nhieu": [
+   {
+    "text": "$36000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính ra tiền lãi (36 000 đồng) rồi dừng, tưởng là giá vốn."
+   },
+   {
+    "text": "$156000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm giá vốn."
+   },
+   {
+    "text": "$520000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 30% thay vì cho 130%."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc tủ lạnh và lãi được 6 000 000 đồng, số tiền lãi bằng 60% giá nhập. Hỏi giá nhập của chiếc tủ lạnh đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$16000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (giá nhập cộng lãi) rồi ghi làm giá nhập."
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Trừ tiền lãi khỏi giá nhập vừa tìm, nhầm thêm một bước."
+   },
+   {
+    "text": "$3600000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 60% của tiền lãi thay vì chia tiền lãi cho 60%."
+   },
+   {
+    "text": "$15000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 40% (phần trăm bù) thay vì 60%."
+   },
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc loa bluetooth và lãi được 120 000 đồng, số tiền lãi bằng 15% giá vốn. Hỏi giá vốn của chiếc loa bluetooth đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$680000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Trừ tiền lãi khỏi giá nhập vừa tìm, nhầm thêm một bước."
+   },
+   {
+    "text": "$18000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 15% của tiền lãi thay vì chia tiền lãi cho 15%."
+   },
+   {
+    "text": "$920000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (giá nhập cộng lãi) rồi ghi làm giá nhập."
+   },
+   {
+    "text": "$80000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán bộ bàn ghế ăn và lãi được 2 800 000 đồng, số tiền lãi bằng 70% giá nhập. Hỏi giá nhập của bộ bàn ghế ăn đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi tiền lãi là 70% của giá bán nên giá nhập là phần còn lại."
+   },
+   {
+    "text": "$6800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (giá nhập cộng lãi) rồi ghi làm giá nhập."
+   },
+   {
+    "text": "$1960000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 70% của tiền lãi thay vì chia tiền lãi cho 70%."
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán chiếc xe đạp và lãi được 1 800 000 đồng, số tiền lãi bằng 60% giá gốc. Hỏi giá gốc của chiếc xe đạp đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$4800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (giá nhập cộng lãi) rồi ghi làm giá nhập."
+   },
+   {
+    "text": "$1080000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Lấy 60% của tiền lãi thay vì chia tiền lãi cho 60%."
+   },
+   {
+    "text": "$4500000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 40% (phần trăm bù) thay vì 60%."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi tiền lãi là 60% của giá bán nên giá nhập là phần còn lại."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Khi bán chiếc xe đạp, một cửa hàng đồ gia dụng lãi 375 000 đồng, tương ứng 25% so với giá nhập. Tìm giá nhập của chiếc xe đạp đó.",
+  "nhieu": [
+   {
+    "text": "$1125000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi tiền lãi là 25% của giá bán nên giá nhập là phần còn lại."
+   },
+   {
+    "text": "$1875000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (giá nhập cộng lãi) rồi ghi làm giá nhập."
+   },
+   {
+    "text": "$500000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 75% (phần trăm bù) thay vì 25%."
+   },
+   {
+    "text": "$150000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập chiếc điện thoại với giá gốc 3 000 000 đồng và bán ra với lãi 25% so với giá gốc. Hỏi khi bán chiếc điện thoại đó, cửa hàng lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$3750000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$2250000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 75% giá vốn (phần trăm bù) thay vì 25%."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 25% thay vì nhân với 25%."
+   },
+   {
+    "text": "$75000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá vốn của chiếc bàn học là 800 000 đồng. Một cửa hàng định giá bán để lãi 40% so với giá vốn. Tính số tiền lãi khi bán chiếc bàn học đó.",
+  "nhieu": [
+   {
+    "text": "$448000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 40% trên giá bán thay vì trên giá vốn."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 60% giá vốn (phần trăm bù) thay vì 40%."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 40% thay vì nhân với 40%."
+   },
+   {
+    "text": "$1120000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$32000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập chiếc ti vi với giá nhập 12 000 000 đồng và bán ra với lãi 70% so với giá nhập. Hỏi khi bán chiếc ti vi đó, cửa hàng lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$3600000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá vốn trừ tiền lãi thay vì tìm tiền lãi."
+   },
+   {
+    "text": "$14280000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 70% trên giá bán thay vì trên giá vốn."
+   },
+   {
+    "text": "$20400000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$840000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, nhập chiếc nồi cơm điện với giá nhập 1 000 000 đồng và bán ra với lãi 80% so với giá nhập. Hỏi khi bán chiếc nồi cơm điện đó, cửa hàng lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1440000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 80% trên giá bán thay vì trên giá vốn."
+   },
+   {
+    "text": "$200000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá vốn trừ tiền lãi thay vì tìm tiền lãi."
+   },
+   {
+    "text": "$1250000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 80% thay vì nhân với 80%."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$80000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập chiếc loa bluetooth với giá nhập 500 000 đồng và bán ra với lãi 25% so với giá nhập. Hỏi khi bán chiếc loa bluetooth đó, cửa hàng lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$625000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$375000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 75% giá vốn (phần trăm bù) thay vì 25%."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 25% thay vì nhân với 25%."
+   },
+   {
+    "text": "$1250000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá vốn của chiếc đồng hồ đeo tay là 1 000 000 đồng. Chú Hùng, chủ một cửa hàng, định giá bán để lãi 10% so với giá vốn. Tính số tiền lãi khi bán chiếc đồng hồ đeo tay đó.",
+  "nhieu": [
+   {
+    "text": "$10000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 10% thay vì nhân với 10%."
+   },
+   {
+    "text": "$110000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 10% trên giá bán thay vì trên giá vốn."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 90% giá vốn (phần trăm bù) thay vì 10%."
+   },
+   {
+    "text": "$1100000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$10000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá nhập của chiếc quạt điện là 500 000 đồng. Một nhà sách định giá bán để lãi 20% so với giá nhập. Tính số tiền lãi khi bán chiếc quạt điện đó.",
+  "nhieu": [
+   {
+    "text": "$400000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá vốn trừ tiền lãi thay vì tìm tiền lãi."
+   },
+   {
+    "text": "$600000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Tính ra giá bán (gốc cộng lãi) rồi ghi làm tiền lãi."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá vốn cho 20% thay vì nhân với 20%."
+   },
+   {
+    "text": "$120000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá bán thay vì trên giá vốn."
+   },
+   {
+    "text": "$10000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý mua chiếc váy với giá 500 000 đồng rồi bán lại với giá 650 000 đồng. Hỏi cửa hàng lãi bao nhiêu tiền khi bán chiếc váy đó?",
+  "nhieu": [
+   {
+    "text": "$650000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số liệu ban đầu, lấy giá vốn làm đáp số."
+   },
+   {
+    "text": "$1150000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá vốn thay vì lấy hiệu."
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, mua chiếc ti vi với giá 8 000 000 đồng rồi bán lại với giá 8 800 000 đồng. Hỏi cửa hàng lãi bao nhiêu tiền khi bán chiếc ti vi đó?",
+  "nhieu": [
+   {
+    "text": "$8800000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$16800000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá vốn thay vì lấy hiệu."
+   },
+   {
+    "text": "$8000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số liệu ban đầu, lấy giá vốn làm đáp số."
+   },
+   {
+    "text": "$80000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng mua chiếc quạt điện với giá 400 000 đồng rồi bán lại với giá 500 000 đồng. Hỏi cửa hàng lãi bao nhiêu tiền khi bán chiếc quạt điện đó?",
+  "nhieu": [
+   {
+    "text": "$500000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá vốn thay vì lấy hiệu."
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số liệu ban đầu, lấy giá vốn làm đáp số."
+   },
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, mua chiếc váy với giá 300 000 đồng rồi bán lại với giá 435 000 đồng. Hỏi cửa hàng lãi bao nhiêu tiền khi bán chiếc váy đó?",
+  "nhieu": [
+   {
+    "text": "$435000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn giá bán (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Dừng ở số liệu ban đầu, lấy giá vốn làm đáp số."
+   },
+   {
+    "text": "$735000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá vốn thay vì lấy hiệu."
+   },
+   {
+    "text": "$1350000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán chiếc tủ lạnh với giá 27 000 000 đồng và lãi 35% so với giá nhập. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$9450000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Lấy 35% của giá bán thay vì 35% của giá nhập."
+   },
+   {
+    "text": "$17550000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 65% của giá bán (phần trăm bù) làm tiền lãi."
+   },
+   {
+    "text": "$20000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá nhập rồi dừng, ghi làm tiền lãi."
+   },
+   {
+    "text": "$700000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị bán chiếc áo khoác với giá 750 000 đồng và lãi 50% so với giá nhập. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$375000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: coi giá nhập bằng giá bán trừ 50%, ghi làm tiền lãi."
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 50% thay vì tìm giá nhập rồi lấy hiệu."
+   },
+   {
+    "text": "$500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá nhập rồi dừng, ghi làm tiền lãi."
+   },
+   {
+    "text": "$25000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc ba lô du lịch với giá 660 000 đồng và lãi 10% so với giá vốn. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá nhập rồi dừng, ghi làm tiền lãi."
+   },
+   {
+    "text": "$594000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: coi giá nhập bằng giá bán trừ 10%, ghi làm tiền lãi."
+   },
+   {
+    "text": "$66000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Lấy 10% của giá bán thay vì 10% của giá nhập."
+   },
+   {
+    "text": "$6000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, bán chiếc xe đạp với giá 2 900 000 đồng và lãi 45% so với giá vốn. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá nhập rồi dừng, ghi làm tiền lãi."
+   },
+   {
+    "text": "$1595000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: coi giá nhập bằng giá bán trừ 45%, ghi làm tiền lãi."
+   },
+   {
+    "text": "$1305000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Lấy 45% của giá bán thay vì 45% của giá nhập."
+   },
+   {
+    "text": "$90000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập chiếc áo sơ mi với giá gốc 250 000 đồng. Hỏi phải bán chiếc áo sơ mi đó với giá bao nhiêu tiền để lãi 30% so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$175000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 30% thay vì cộng."
+   },
+   {
+    "text": "$75000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (75 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$7500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 30 mà quên chia 100."
+   },
+   {
+    "text": "$3250000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, nhập chiếc đồng hồ đeo tay với giá vốn 2 000 000 đồng. Hỏi phải bán chiếc đồng hồ đeo tay đó với giá bao nhiêu tiền để lãi 30% so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (600 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$60000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 30 mà quên chia 100."
+   },
+   {
+    "text": "$1400000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 30% thay vì cộng."
+   },
+   {
+    "text": "$260000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập bộ bàn ghế ăn với giá vốn 10 000 000 đồng. Hỏi phải bán bộ bàn ghế ăn đó với giá bao nhiêu tiền để lãi 20% so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$50000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá gốc cho 20% thay vì nhân với 20%."
+   },
+   {
+    "text": "$12500000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 20% là phần trăm của giá bán, chia giá gốc cho 80%."
+   },
+   {
+    "text": "$8000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 20% thay vì cộng."
+   },
+   {
+    "text": "$200000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 20 mà quên chia 100."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (2 000 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá gốc của chiếc tủ lạnh là 10 000 000 đồng. Một cửa hàng thời trang muốn lãi 75% so với giá gốc. Hỏi cửa hàng phải bán chiếc tủ lạnh đó với giá bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$7500000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (7 500 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$750000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 75 mà quên chia 100."
+   },
+   {
+    "text": "$40000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 75% là phần trăm của giá bán, chia giá gốc cho 25%."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 75% thay vì cộng."
+   },
+   {
+    "text": "$1750000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, nhập chiếc ti vi với giá vốn 15 000 000 đồng. Hỏi phải bán chiếc ti vi đó với giá bao nhiêu tiền để lãi 40% so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (6 000 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$600000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 40 mà quên chia 100."
+   },
+   {
+    "text": "$37500000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá gốc cho 40% thay vì nhân với 40%."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 40% thay vì cộng."
+   },
+   {
+    "text": "$25000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 40% là phần trăm của giá bán, chia giá gốc cho 60%."
+   },
+   {
+    "text": "$2100000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá gốc của chiếc quạt điện là 350 000 đồng. Một siêu thị muốn lãi 30% so với giá gốc. Hỏi cửa hàng phải bán chiếc quạt điện đó với giá bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$10500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 30 mà quên chia 100."
+   },
+   {
+    "text": "$245000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 30% thay vì cộng."
+   },
+   {
+    "text": "$105000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (105 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$500000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 30% là phần trăm của giá bán, chia giá gốc cho 70%."
+   },
+   {
+    "text": "$4550000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá gốc của chiếc xe đạp là 2 500 000 đồng. Một đại lý muốn lãi 75% so với giá gốc. Hỏi cửa hàng phải bán chiếc xe đạp đó với giá bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$10000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 75% là phần trăm của giá bán, chia giá gốc cho 25%."
+   },
+   {
+    "text": "$187500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 75 mà quên chia 100."
+   },
+   {
+    "text": "$1875000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (1 875 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$625000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 75% thay vì cộng."
+   },
+   {
+    "text": "$43750000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập chiếc máy tính bảng với giá vốn 5 000 000 đồng. Hỏi phải bán chiếc máy tính bảng đó với giá bao nhiêu tiền để lãi 80% so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 80% thay vì cộng."
+   },
+   {
+    "text": "$400000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 80 mà quên chia 100."
+   },
+   {
+    "text": "$25000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Coi lãi 80% là phần trăm của giá bán, chia giá gốc cho 20%."
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (4 000 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$6250000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá gốc cho 80% thay vì nhân với 80%."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập chiếc nồi cơm điện với giá gốc 1 000 000 đồng. Hỏi phải bán chiếc nồi cơm điện đó với giá bao nhiêu tiền để lãi 10% so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$10000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 10 mà quên chia 100."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 10% thay vì cộng."
+   },
+   {
+    "text": "$100000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (100 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$110000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Giá gốc của chiếc điện thoại là 3 000 000 đồng. Một nhà sách muốn lãi 15% so với giá gốc. Hỏi cửa hàng phải bán chiếc điện thoại đó với giá bao nhiêu?",
+  "nhieu": [
+   {
+    "text": "$20000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá gốc cho 15% thay vì nhân với 15%."
+   },
+   {
+    "text": "$45000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá gốc với 15 mà quên chia 100."
+   },
+   {
+    "text": "$2550000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 15% thay vì cộng."
+   },
+   {
+    "text": "$450000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi (450 000 đồng), quên cộng giá gốc."
+   },
+   {
+    "text": "$345000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập chiếc áo sơ mi với giá nhập 240 000 đồng và muốn lãi 108 000 đồng cho mỗi chiếc. Hỏi cửa hàng phải bán chiếc áo sơ mi đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$240000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Dừng ở giá nhập, chưa cộng tiền lãi."
+   },
+   {
+    "text": "$108000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn tiền lãi làm giá bán, quên cộng giá nhập."
+   },
+   {
+    "text": "$132000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá nhập trừ tiền lãi thay vì cộng."
+   },
+   {
+    "text": "$3480000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập chiếc máy tính bảng với giá vốn 6 000 000 đồng và muốn lãi 2 100 000 đồng cho mỗi chiếc. Hỏi cửa hàng phải bán chiếc máy tính bảng đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2100000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn tiền lãi làm giá bán, quên cộng giá nhập."
+   },
+   {
+    "text": "$3900000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá nhập trừ tiền lãi thay vì cộng."
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Dừng ở giá nhập, chưa cộng tiền lãi."
+   },
+   {
+    "text": "$81000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, nhập chiếc đồng hồ đeo tay với giá gốc 600 000 đồng và muốn lãi 210 000 đồng cho mỗi chiếc. Hỏi cửa hàng phải bán chiếc đồng hồ đeo tay đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Dừng ở giá nhập, chưa cộng tiền lãi."
+   },
+   {
+    "text": "$210000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn tiền lãi làm giá bán, quên cộng giá nhập."
+   },
+   {
+    "text": "$390000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá nhập trừ tiền lãi thay vì cộng."
+   },
+   {
+    "text": "$8100000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập chiếc áo sơ mi với giá vốn 200 000 đồng và muốn lãi 50 000 đồng cho mỗi chiếc. Hỏi cửa hàng phải bán chiếc áo sơ mi đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$150000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Lấy giá nhập trừ tiền lãi thay vì cộng."
+   },
+   {
+    "text": "$200000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Dừng ở giá nhập, chưa cộng tiền lãi."
+   },
+   {
+    "text": "$50000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi luôn tiền lãi làm giá bán, quên cộng giá nhập."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, nhập 5 chiếc quạt điện (mỗi chiếc có giá gốc 500 000 đồng) và bán hết với lãi 45% so với giá gốc. Hỏi cửa hàng thu được tất cả bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1125000$ đồng",
+    "rule": "R531",
+    "duong_sai": "Chỉ tính tổng tiền lãi, quên cộng tiền vốn của cả lô."
+   },
+   {
+    "text": "$725000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính giá bán một chiếc, quên nhân với 5 chiếc."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính tổng tiền vốn của cả lô, chưa cộng lãi."
+   },
+   {
+    "text": "$1375000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 45% thay vì cộng."
+   },
+   {
+    "text": "$36250000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 20 chiếc cặp sách (mỗi chiếc có giá gốc 600 000 đồng) và bán hết với lãi 50% so với giá gốc. Hỏi cửa hàng thu được tất cả bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R531",
+    "duong_sai": "Chỉ tính tổng tiền lãi, quên cộng tiền vốn của cả lô."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính tổng tiền vốn của cả lô, chưa cộng lãi."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính giá bán một chiếc, quên nhân với 20 chiếc."
+   },
+   {
+    "text": "$180000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng nhập 5 đôi giày thể thao (mỗi đôi có giá vốn 800 000 đồng) và bán hết với lãi 50% so với giá vốn. Hỏi cửa hàng thu được tất cả bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính tổng tiền vốn của cả lô, chưa cộng lãi."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 50% thay vì cộng."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính giá bán một chiếc, quên nhân với 5 chiếc."
+   },
+   {
+    "text": "$60000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập 12 chiếc xe đạp (mỗi chiếc có giá gốc 1 800 000 đồng) và bán hết với lãi 40% so với giá gốc. Hỏi cửa hàng thu được tất cả bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$12960000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược lãi thành lỗ: trừ 40% thay vì cộng."
+   },
+   {
+    "text": "$21600000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính tổng tiền vốn của cả lô, chưa cộng lãi."
+   },
+   {
+    "text": "$2520000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính giá bán một chiếc, quên nhân với 12 chiếc."
+   },
+   {
+    "text": "$8640000$ đồng",
+    "rule": "R531",
+    "duong_sai": "Chỉ tính tổng tiền lãi, quên cộng tiền vốn của cả lô."
+   },
+   {
+    "text": "$302400000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán bộ đồ chơi xếp hình với giá 120 000 đồng, biết giá nhập là 100 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá nhập?",
+  "nhieu": [
+   {
+    "text": "$500\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 20%."
+   },
+   {
+    "text": "$220\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách mua chiếc bàn học với giá 1 000 000 đồng rồi bán lại với giá 1 800 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 80%."
+   },
+   {
+    "text": "$280\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc loa bluetooth với giá 540 000 đồng, biết giá nhập là 300 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá nhập?",
+  "nhieu": [
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$280\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 80%."
+   },
+   {
+    "text": "$800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng mua bộ bàn ghế ăn với giá 8 000 000 đồng rồi bán lại với giá 11 200 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$240\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$60\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 40%."
+   },
+   {
+    "text": "$140\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang mua chiếc tủ lạnh với giá 12 000 000 đồng rồi bán lại với giá 13 200 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$90\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 10%."
+   },
+   {
+    "text": "$210\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$110\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$1000\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$100\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán chiếc váy với giá 780 000 đồng, biết giá nhập là 600 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá nhập?",
+  "nhieu": [
+   {
+    "text": "$70\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 30%."
+   },
+   {
+    "text": "$130\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$230\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$300\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán chiếc điện thoại với giá 6 400 000 đồng, biết giá vốn là 4 000 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá vốn?",
+  "nhieu": [
+   {
+    "text": "$37,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$260\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 60%."
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho giá bán."
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, bán chiếc bàn học với giá 700 000 đồng, biết giá vốn là 400 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá vốn?",
+  "nhieu": [
+   {
+    "text": "$275\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$175\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 75%."
+   },
+   {
+    "text": "$750\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, bán chiếc ti vi với giá 10 800 000 đồng, biết giá gốc là 6 000 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá gốc?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 80%."
+   },
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$280\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán chiếc máy giặt với giá 10 000 000 đồng, biết giá vốn là 8 000 000 đồng. Hỏi tỉ lệ lãi của cửa hàng là bao nhiêu phần trăm giá vốn?",
+  "nhieu": [
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 25%."
+   },
+   {
+    "text": "$225\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho giá bán."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập chiếc máy tính bảng với giá nhập 2 400 000 đồng. Khi bán ra, cửa hàng lãi 480 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá nhập?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 20%."
+   },
+   {
+    "text": "$220\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang nhập chiếc bàn ủi với giá vốn 400 000 đồng. Khi bán ra, cửa hàng lãi 200 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá vốn?",
+  "nhieu": [
+   {
+    "text": "$250\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$150\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, nhập chiếc xe đạp với giá vốn 3 500 000 đồng. Khi bán ra, cửa hàng lãi 2 800 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá vốn?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 80%."
+   },
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$280\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, nhập chiếc nồi cơm điện với giá gốc 500 000 đồng. Khi bán ra, cửa hàng lãi 150 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá gốc?",
+  "nhieu": [
+   {
+    "text": "$230\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$70\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 30%."
+   },
+   {
+    "text": "$130\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$300\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập chiếc nồi cơm điện với giá nhập 600 000 đồng. Khi bán ra, cửa hàng lãi 150 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá nhập?",
+  "nhieu": [
+   {
+    "text": "$225\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 25%."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập chiếc nồi cơm điện với giá gốc 400 000 đồng. Khi bán ra, cửa hàng lãi 200 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá gốc?",
+  "nhieu": [
+   {
+    "text": "$150\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán bộ bàn ghế ăn với giá 4 800 000 đồng và lãi 1 800 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 60%."
+   },
+   {
+    "text": "$260\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$62,5\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho giá bán."
+   },
+   {
+    "text": "$37,5\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán đôi giày thể thao với giá 500 000 đồng và lãi 100 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$225\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 25%."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc ti vi với giá 14 400 000 đồng và lãi 2 400 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 20%."
+   },
+   {
+    "text": "$220\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán chiếc đồng hồ đeo tay với giá 1 000 000 đồng và lãi 200 000 đồng. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "$225\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng giá bán với giá nhập rồi so với giá nhập thay vì lấy hiệu."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá bán thay vì chia cho giá nhập."
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần trăm bù: 100% − 25%."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá nhập chia cho tiền lãi."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong tuần, một siêu thị nhập 100 quyển vở và bán được 80 quyển vở. Hỏi cửa hàng đã bán được bao nhiêu phần trăm số hàng đã nhập?",
+  "nhieu": [
+   {
+    "text": "$20\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính phần trăm số hàng CHƯA bán (phần bù) thay vì số đã bán."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy số nhập chia cho số bán."
+   },
+   {
+    "text": "$180\\%$",
+    "rule": "R528",
+    "duong_sai": "Cộng thêm 100% vào tỉ số đã tính."
+   },
+   {
+    "text": "$800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán lẻ nhập về 40 ki-lô-gam gạo, đến cuối ngày đã bán được 8 ki-lô-gam gạo. Hỏi tỉ lệ bán (số hàng đã bán so với số hàng nhập) là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$120\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng số nhập với số bán rồi chia cho số nhập."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Lấy số hàng còn lại chia cho số hàng đã bán."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính phần trăm số hàng CHƯA bán (phần bù) thay vì số đã bán."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập về 40 quyển vở, đến cuối ngày đã bán được 8 quyển vở. Hỏi tỉ lệ bán (số hàng đã bán so với số hàng nhập) là bao nhiêu phần trăm?",
+  "nhieu": [
+   {
+    "text": "$120\\%$",
+    "rule": "R407",
+    "duong_sai": "Cộng số nhập với số bán rồi chia cho số nhập."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính phần trăm số hàng CHƯA bán (phần bù) thay vì số đã bán."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Lấy số hàng còn lại chia cho số hàng đã bán."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán lẻ nhập 150 chiếc áo phông và bán được 40% số hàng đã nhập, mỗi chiếc áo phông bán với giá 120 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$720000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 40 mà quên chia 100."
+   },
+   {
+    "text": "$10800000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Tính cho 60% số hàng chưa bán (phần bù) thay vì 40% số hàng đã bán."
+   },
+   {
+    "text": "$45000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 40% thay vì nhân."
+   },
+   {
+    "text": "$18000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$72000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 120 chiếc áo phông và bán được 50% số hàng đã nhập, mỗi chiếc áo phông bán với giá 200 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$1200000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 50 mà quên chia 100."
+   },
+   {
+    "text": "$48000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 50% thay vì nhân."
+   },
+   {
+    "text": "$24000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$120000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập 150 chiếc áo phông và bán được 50% số hàng đã nhập, mỗi chiếc áo phông bán với giá 120 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$36000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 50% thay vì nhân."
+   },
+   {
+    "text": "$900000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 50 mà quên chia 100."
+   },
+   {
+    "text": "$18000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$90000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 200 hộp bánh và bán được 25% số hàng đã nhập, mỗi hộp bánh bán với giá 120 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$18000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Tính cho 75% số hàng chưa bán (phần bù) thay vì 25% số hàng đã bán."
+   },
+   {
+    "text": "$24000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$96000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 25% thay vì nhân."
+   },
+   {
+    "text": "$600000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 25 mà quên chia 100."
+   },
+   {
+    "text": "$60000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 40 quyển vở và bán được 20% số hàng đã nhập, mỗi quyển vở bán với giá 12 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$384000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Tính cho 80% số hàng chưa bán (phần bù) thay vì 20% số hàng đã bán."
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 20% thay vì nhân."
+   },
+   {
+    "text": "$9600000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 20 mà quên chia 100."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$960000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 120 hộp bánh và bán được 75% số hàng đã nhập, mỗi hộp bánh bán với giá 80 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$9600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$720000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 75 mà quên chia 100."
+   },
+   {
+    "text": "$12800000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 75% thay vì nhân."
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Tính cho 25% số hàng chưa bán (phần bù) thay vì 75% số hàng đã bán."
+   },
+   {
+    "text": "$72000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 80 ki-lô-gam gạo và bán được 20% số hàng đã nhập, mỗi ki-lô-gam gạo bán với giá 22 000 đồng. Hỏi cửa hàng thu được bao nhiêu tiền từ số hàng đã bán?",
+  "nhieu": [
+   {
+    "text": "$1760000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Lấy cả số hàng đã nhập nhân giá bán, quên chỉ bán một phần."
+   },
+   {
+    "text": "$1408000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Tính cho 80% số hàng chưa bán (phần bù) thay vì 20% số hàng đã bán."
+   },
+   {
+    "text": "$35200000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân với 20 mà quên chia 100."
+   },
+   {
+    "text": "$8800000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia số hàng cho 20% thay vì nhân."
+   },
+   {
+    "text": "$3520000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập 40 chiếc áo phông, mỗi chiếc áo phông có giá gốc 120 000 đồng. Cửa hàng bán được 25% số hàng với lãi 10% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$480000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$132000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 10% trên giá bán thay vì trên giá gốc."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$1320000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$12000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính lãi của một sản phẩm, quên nhân số hàng đã bán."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập 120 ki-lô-gam gạo, mỗi ki-lô-gam gạo có giá gốc 35 000 đồng. Cửa hàng bán được 50% số hàng với lãi 25% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2100000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$2625000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$1050000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$5250000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán lẻ nhập 120 ki-lô-gam cam, mỗi ki-lô-gam cam có giá gốc 35 000 đồng. Cửa hàng bán được 75% số hàng với lãi 20% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$7000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính lãi của một sản phẩm, quên nhân số hàng đã bán."
+   },
+   {
+    "text": "$3780000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$840000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$3150000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$756000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá bán thay vì trên giá gốc."
+   },
+   {
+    "text": "$6300000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập 120 ki-lô-gam cam, mỗi ki-lô-gam cam có giá gốc 45 000 đồng. Cửa hàng bán được 40% số hàng với lãi 25% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1350000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$2700000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$2160000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$675000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 25% trên giá bán thay vì trên giá gốc."
+   },
+   {
+    "text": "$5400000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng nhập 300 chiếc bút bi, mỗi chiếc bút bi có giá gốc 8 000 đồng. Cửa hàng bán được 25% số hàng với lãi 30% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$720000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$234000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 30% trên giá bán thay vì trên giá gốc."
+   },
+   {
+    "text": "$780000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán lẻ nhập 60 quyển vở, mỗi quyển vở có giá gốc 10 000 đồng. Cửa hàng bán được 75% số hàng với lãi 10% so với giá gốc, số hàng còn lại chưa bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$60000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Tính lãi như thể bán hết số hàng, bỏ sót bước lấy phần đã bán."
+   },
+   {
+    "text": "$450000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền vốn của số hàng đã bán, chưa tính phần lãi."
+   },
+   {
+    "text": "$495000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi cả tiền gốc lẫn lãi của số hàng đã bán làm tiền lãi."
+   },
+   {
+    "text": "$1000$ đồng",
+    "rule": "R104",
+    "duong_sai": "Chỉ tính lãi của một sản phẩm, quên nhân số hàng đã bán."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý mua chiếc nồi cơm điện với giá vốn 1 200 000 đồng và muốn lãi bằng 60% giá bán. Hỏi cửa hàng phải bán chiếc nồi cơm điện đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$72000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 60 mà quên chia 100."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia giá vốn cho 60% thay vì cho 40% (phần bù)."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 40% thay vì chia."
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 160% thay vì 40%."
+   },
+   {
+    "text": "$1920000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 60% trên giá vốn thay vì trên giá bán."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách mua chiếc xe đạp với giá nhập 4 000 000 đồng và muốn lãi bằng 75% giá bán. Hỏi cửa hàng phải bán chiếc xe đạp đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 25% thay vì chia."
+   },
+   {
+    "text": "$7000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 75% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$300000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 75 mà quên chia 100."
+   },
+   {
+    "text": "$160000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập bộ bàn ghế ăn với giá vốn 8 000 000 đồng rồi bán ra, tiền lãi bằng 60% giá bán. Tính giá bán của bộ bàn ghế ăn đó.",
+  "nhieu": [
+   {
+    "text": "$480000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 60 mà quên chia 100."
+   },
+   {
+    "text": "$3200000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 40% thay vì chia."
+   },
+   {
+    "text": "$12800000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 60% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 160% thay vì 40%."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$200000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng nhập bộ bàn ghế ăn với giá gốc 4 000 000 đồng rồi bán ra, tiền lãi bằng 50% giá bán. Tính giá bán của bộ bàn ghế ăn đó.",
+  "nhieu": [
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$200000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 50 mà quên chia 100."
+   },
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 50% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 50% thay vì chia."
+   },
+   {
+    "text": "$80000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Cô Lan, chủ một cửa hàng, nhập chiếc máy giặt với giá gốc 6 000 000 đồng rồi bán ra, tiền lãi bằng 20% giá bán. Tính giá bán của chiếc máy giặt đó.",
+  "nhieu": [
+   {
+    "text": "$30000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia giá vốn cho 20% thay vì cho 80% (phần bù)."
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 120% thay vì 80%."
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$4800000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 80% thay vì chia."
+   },
+   {
+    "text": "$7200000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$120000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 20 mà quên chia 100."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý nhập chiếc bàn học với giá nhập 1 200 000 đồng rồi bán ra, tiền lãi bằng 60% giá bán. Tính giá bán của chiếc bàn học đó.",
+  "nhieu": [
+   {
+    "text": "$480000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 40% thay vì chia."
+   },
+   {
+    "text": "$72000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 60 mà quên chia 100."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$1920000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 60% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia giá vốn cho 60% thay vì cho 40% (phần bù)."
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 160% thay vì 40%."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang mua chiếc váy với giá vốn 600 000 đồng và muốn lãi bằng 50% giá bán. Hỏi cửa hàng phải bán chiếc váy đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$300000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 50% thay vì chia."
+   },
+   {
+    "text": "$30000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 50 mà quên chia 100."
+   },
+   {
+    "text": "$400000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 150% thay vì 50%."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 50% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$600000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập chiếc cặp sách với giá gốc 450 000 đồng rồi bán ra, tiền lãi bằng 50% giá bán. Tính giá bán của chiếc cặp sách đó.",
+  "nhieu": [
+   {
+    "text": "$450000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược: chia cho 150% thay vì 50%."
+   },
+   {
+    "text": "$675000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 50% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$225000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 50% thay vì chia."
+   },
+   {
+    "text": "$22500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 50 mà quên chia 100."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng mua chiếc tủ lạnh với giá nhập 8 000 000 đồng và muốn lãi bằng 20% giá bán. Hỏi cửa hàng phải bán chiếc tủ lạnh đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$6400000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 80% thay vì chia."
+   },
+   {
+    "text": "$9600000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$40000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia giá vốn cho 20% thay vì cho 80% (phần bù)."
+   },
+   {
+    "text": "$160000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 20 mà quên chia 100."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$100000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang mua chiếc bàn học với giá gốc 400 000 đồng và muốn lãi bằng 20% giá bán. Hỏi cửa hàng phải bán chiếc bàn học đó với giá bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$100000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$8000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 20 mà quên chia 100."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia giá vốn cho 20% thay vì cho 80% (phần bù)."
+   },
+   {
+    "text": "$320000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 80% thay vì chia."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 20% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng nhập chiếc bàn học với giá nhập 400 000 đồng rồi bán ra, tiền lãi bằng 75% giá bán. Tính giá bán của chiếc bàn học đó.",
+  "nhieu": [
+   {
+    "text": "$100000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 25% thay vì chia."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$700000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 75% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$30000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 75 mà quên chia 100."
+   },
+   {
+    "text": "$16000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị nhập chiếc quạt điện với giá vốn 500 000 đồng rồi bán ra, tiền lãi bằng 75% giá bán. Tính giá bán của chiếc quạt điện đó.",
+  "nhieu": [
+   {
+    "text": "$125000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân giá vốn với 25% thay vì chia."
+   },
+   {
+    "text": "$875000$ đồng",
+    "rule": "R527",
+    "duong_sai": "Tính 75% trên giá vốn thay vì trên giá bán."
+   },
+   {
+    "text": "$37500000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá vốn với 75 mà quên chia 100."
+   },
+   {
+    "text": "$1500000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra tiền lãi rồi dừng, chưa cộng giá vốn."
+   },
+   {
+    "text": "$20000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc xe đạp, biết giá vốn bằng 40% giá bán và cửa hàng lãi 2 700 000 đồng. Hỏi giá bán của chiếc xe đạp đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá vốn rồi dừng, ghi làm giá bán."
+   },
+   {
+    "text": "$6750000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 40% (giá vốn) thay vì cho 60% (lãi)."
+   },
+   {
+    "text": "$1620000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân tiền lãi với 60% thay vì chia."
+   },
+   {
+    "text": "$45000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán chiếc tủ lạnh, biết giá vốn bằng 80% giá bán và cửa hàng lãi 3 000 000 đồng. Hỏi giá vốn của chiếc tủ lạnh đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$3750000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 80% thay vì cho 20%."
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân tiền lãi với 80% thay vì chia theo 20%."
+   },
+   {
+    "text": "$15000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Cộng thêm tiền lãi vào giá vốn, ra giá bán thay vì giá vốn."
+   },
+   {
+    "text": "$120000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán chiếc quạt điện, biết giá nhập bằng 60% giá bán và cửa hàng lãi 300 000 đồng. Hỏi giá nhập của chiếc quạt điện đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$180000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân tiền lãi với 60% thay vì chia theo 40%."
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tìm ra giá bán rồi dừng, chưa tính giá vốn."
+   },
+   {
+    "text": "$500000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 60% thay vì cho 40%."
+   },
+   {
+    "text": "$4500000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc máy tính bảng, biết giá vốn bằng 40% giá bán và cửa hàng lãi 3 000 000 đồng. Hỏi giá bán của chiếc máy tính bảng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$7500000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 40% (giá vốn) thay vì cho 60% (lãi)."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân tiền lãi với 60% thay vì chia."
+   },
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tìm ra giá vốn rồi dừng, ghi làm giá bán."
+   },
+   {
+    "text": "$50000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán chiếc xe đạp, biết giá vốn bằng 40% giá bán và cửa hàng lãi 3 600 000 đồng. Hỏi giá vốn của chiếc xe đạp đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$6000000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Cộng thêm tiền lãi vào giá vốn, ra giá bán thay vì giá vốn."
+   },
+   {
+    "text": "$1440000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân tiền lãi với 40% thay vì chia theo 60%."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Chia tiền lãi cho 40% thay vì cho 60%."
+   },
+   {
+    "text": "$24000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị bán chiếc váy với giá 1 200 000 đồng, tiền lãi bằng 75% giá bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1600000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 75% thay vì nhân."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 25% giá bán (phần bù, chính là giá nhập) thay vì 75%."
+   },
+   {
+    "text": "$2100000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì chỉ lấy tiền lãi."
+   },
+   {
+    "text": "$90000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá bán với 75 mà quên chia 100."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Chú Hùng, chủ một cửa hàng, bán đôi giày thể thao với giá 1 250 000 đồng, tiền lãi bằng 60% giá bán. Hỏi giá nhập của đôi giày thể thao đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2000000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì trừ."
+   },
+   {
+    "text": "$3125000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 40% thay vì nhân."
+   },
+   {
+    "text": "$750000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi rồi dừng, quên lấy giá bán trừ đi."
+   },
+   {
+    "text": "$5000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng bán bộ đồ chơi xếp hình với giá 400 000 đồng, tiền lãi bằng 40% giá bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$16000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá bán với 40 mà quên chia 100."
+   },
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 40% thay vì nhân."
+   },
+   {
+    "text": "$560000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì chỉ lấy tiền lãi."
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 60% giá bán (phần bù, chính là giá nhập) thay vì 40%."
+   },
+   {
+    "text": "$1600000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán chiếc bàn ủi với giá 1 600 000 đồng, tiền lãi bằng 75% giá bán. Hỏi giá vốn của chiếc bàn ủi đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$2800000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì trừ."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi rồi dừng, quên lấy giá bán trừ đi."
+   },
+   {
+    "text": "$6400000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 25% thay vì nhân."
+   },
+   {
+    "text": "$4000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc cặp sách với giá 1 500 000 đồng, tiền lãi bằng 60% giá bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$600000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 40% giá bán (phần bù, chính là giá nhập) thay vì 60%."
+   },
+   {
+    "text": "$2400000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì chỉ lấy tiền lãi."
+   },
+   {
+    "text": "$2500000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 60% thay vì nhân."
+   },
+   {
+    "text": "$90000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá bán với 60 mà quên chia 100."
+   },
+   {
+    "text": "$9000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc loa bluetooth với giá 750 000 đồng, tiền lãi bằng 60% giá bán. Hỏi giá nhập của chiếc loa bluetooth đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$450000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi rồi dừng, quên lấy giá bán trừ đi."
+   },
+   {
+    "text": "$1875000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 40% thay vì nhân."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì trừ."
+   },
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thời trang bán đôi giày thể thao với giá 1 000 000 đồng, tiền lãi bằng 30% giá bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$30000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá bán với 30 mà quên chia 100."
+   },
+   {
+    "text": "$700000$ đồng",
+    "rule": "R101",
+    "duong_sai": "Lấy 70% giá bán (phần bù, chính là giá nhập) thay vì 30%."
+   },
+   {
+    "text": "$1300000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì chỉ lấy tiền lãi."
+   },
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị bán chiếc loa bluetooth với giá 600 000 đồng, tiền lãi bằng 50% giá bán. Hỏi cửa hàng lãi được bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$30000000$ đồng",
+    "rule": "R100",
+    "duong_sai": "Nhân giá bán với 50 mà quên chia 100."
+   },
+   {
+    "text": "$1200000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 50% thay vì nhân."
+   },
+   {
+    "text": "$900000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì chỉ lấy tiền lãi."
+   },
+   {
+    "text": "$3000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách bán chiếc máy tính bảng với giá 20 000 000 đồng, tiền lãi bằng 75% giá bán. Hỏi giá gốc của chiếc máy tính bảng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$80000000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Chia giá bán cho 25% thay vì nhân."
+   },
+   {
+    "text": "$35000000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng tiền lãi vào giá bán thay vì trừ."
+   },
+   {
+    "text": "$15000000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Mới tính tiền lãi rồi dừng, quên lấy giá bán trừ đi."
+   },
+   {
+    "text": "$50000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý mua chiếc váy với giá 300 000 đồng rồi bán lại với giá 750 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá bán?",
+  "nhieu": [
+   {
+    "text": "$250\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: lấy giá bán chia cho giá nhập."
+   },
+   {
+    "text": "$150\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá nhập thay vì chia cho giá bán."
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính giá nhập bằng bao nhiêu phần trăm giá bán (phần bù của lãi)."
+   },
+   {
+    "text": "$600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách mua đôi giày thể thao với giá 900 000 đồng rồi bán lại với giá 1 125 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá bán?",
+  "nhieu": [
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi cộng thêm 100%."
+   },
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính giá nhập bằng bao nhiêu phần trăm giá bán (phần bù của lãi)."
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá nhập thay vì chia cho giá bán."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý mua chiếc tủ lạnh với giá 18 000 000 đồng rồi bán lại với giá 22 500 000 đồng. Hỏi tiền lãi bằng bao nhiêu phần trăm giá bán?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Tính giá nhập bằng bao nhiêu phần trăm giá bán (phần bù của lãi)."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng bao nhiêu phần trăm giá nhập rồi cộng thêm 100%."
+   },
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Lấy tiền lãi chia cho giá nhập thay vì chia cho giá bán."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng bán một mặt hàng và lãi 20% giá bán. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "$80\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần bù: 100% − 20% = 80%."
+   },
+   {
+    "text": "$120\\%$",
+    "rule": "R528",
+    "duong_sai": "Cộng thêm: 100% + 20% = 120%."
+   },
+   {
+    "text": "$20\\%$",
+    "rule": "R527",
+    "duong_sai": "Ghi luôn 20%, quên đổi cơ sở từ giá bán sang giá gốc."
+   },
+   {
+    "text": "$400\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: giá gốc (80%) chia cho tiền lãi (20%)."
+   },
+   {
+    "text": "$250\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán một mặt hàng và lãi 60% giá bán. Hỏi cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "$60\\%$",
+    "rule": "R527",
+    "duong_sai": "Ghi luôn 60%, quên đổi cơ sở từ giá bán sang giá gốc."
+   },
+   {
+    "text": "$160\\%$",
+    "rule": "R528",
+    "duong_sai": "Cộng thêm: 100% + 60% = 160%."
+   },
+   {
+    "text": "$40\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần bù: 100% − 60% = 40%."
+   },
+   {
+    "text": "$1500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một đại lý bán một mặt hàng và lãi 25% so với giá gốc. Hỏi tiền lãi bằng bao nhiêu phần trăm giá bán?",
+  "nhieu": [
+   {
+    "text": "$25\\%$",
+    "rule": "R527",
+    "duong_sai": "Ghi luôn 25%, quên đổi cơ sở từ giá gốc sang giá bán."
+   },
+   {
+    "text": "$500\\%$",
+    "rule": "R529",
+    "duong_sai": "Chia ngược: giá bán (125%) chia cho tiền lãi (25%)."
+   },
+   {
+    "text": "$75\\%$",
+    "rule": "R101",
+    "duong_sai": "Lấy phần bù: 100% − 25% = 75%."
+   },
+   {
+    "text": "$125\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán bằng 125% giá gốc rồi ghi luôn."
+   },
+   {
+    "text": "$200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một cửa hàng mỹ phẩm bán hàng với lãi 40% so với giá vốn. Trong tuần lễ tri ân khách hàng, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (90%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $54\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $126\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 40% − 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $260\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi thường bán hàng lãi 40% giá vốn. Nhân ngày lễ, cửa hàng hạ giá 25% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $15\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 40% − 25% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $105\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $75\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "Lãi $50\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi thường bán hàng lãi 80% giá gốc. Nhân dịp khai trương, cửa hàng hạ giá 10% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $98\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (90%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 80% − 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $162\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $620\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một cửa hàng quần áo bán hàng với lãi 75% so với giá nhập. Để dọn kho, cửa hàng giảm giá 20% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $110\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $95\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 75% + 20% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (80%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $140\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $400\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một nhà sách bán hàng với lãi 30% so với giá vốn. Nhân ngày lễ, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $43\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $117\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 30% − 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (90%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $170\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo thường bán hàng lãi 70% giá vốn. Nhân ngày lễ, cửa hàng hạ giá 20% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 70% + 20% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (80%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $104\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $136\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $360\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách thường bán hàng lãi 100% giá vốn. Nhân dịp sinh nhật cửa hàng, cửa hàng hạ giá 40% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $180\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 40%."
+   },
+   {
+    "text": "Lãi $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 100% − 40% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao thường bán hàng lãi 100% giá gốc. Vào dịp khuyến mãi mùa hè, cửa hàng hạ giá 10% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 100% − 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $120\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một cửa hàng quần áo bán hàng với lãi 100% so với giá gốc. Để dọn kho, cửa hàng giảm giá 30% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $130\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 100% + 30% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $140\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $160\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 30%."
+   },
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (70%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $400\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao thường bán hàng lãi 60% giá nhập. Vào dịp khuyến mãi mùa hè, cửa hàng hạ giá 30% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $108\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 30%."
+   },
+   {
+    "text": "Lãi $112\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (70%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $30\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 60% − 30% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $120\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao thường bán hàng lãi 100% giá gốc. Vào dịp khuyến mãi mùa hè, cửa hàng hạ giá 25% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $150\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "Lãi $75\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (75%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $125\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 100% + 25% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng thường bán hàng lãi 50% giá gốc. Vào dịp khuyến mãi mùa hè, cửa hàng hạ giá 10% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $65\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (90%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $135\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $40\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 50% − 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $350\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ gia dụng thường bán hàng lãi 80% giá vốn. Nhân dịp khai trương, cửa hàng hạ giá 20% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $100\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 80% + 20% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $144\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $116\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (80%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $440\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo thường bán hàng lãi 60% giá gốc. Trong tuần lễ tri ân khách hàng, cửa hàng hạ giá 25% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $85\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 60% + 25% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $75\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (75%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $120\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $100\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi thường bán hàng lãi 75% giá vốn. Trong tuần lễ tri ân khách hàng, cửa hàng hạ giá 40% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $35\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 75% − 40% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $145\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 40%."
+   },
+   {
+    "text": "Lãi $60\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (60%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $105\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $50\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một cửa hàng đồ chơi bán hàng với lãi 60% so với giá vốn. Trong tuần lễ tri ân khách hàng, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (90%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $76\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 60% + 10% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $144\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $440\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giày dép thường bán hàng lãi 60% giá nhập. Trong tuần lễ tri ân khách hàng, cửa hàng hạ giá 20% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $40\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 60% − 20% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $92\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $128\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (80%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $280\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Ngày thường, một cửa hàng giày dép bán hàng với lãi 50% so với giá vốn. Trong tuần lễ tri ân khách hàng, cửa hàng giảm giá 30% so với giá bán ngày thường. Hỏi khi đó cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 50% + 30% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $95\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 30%."
+   },
+   {
+    "text": "Lãi $105\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (70%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $50\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy thường bán hàng lãi 40% giá vốn. Nhân dịp Quốc tế Phụ nữ, cửa hàng hạ giá 20% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $80\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (80%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $112\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $20\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 40% − 20% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $68\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $120\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo thường bán hàng lãi 70% giá gốc. Nhân dịp Quốc tế Phụ nữ, cửa hàng hạ giá 30% so với giá bán thường ngày. Hỏi sau khi hạ giá, cửa hàng còn lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R101",
+    "duong_sai": "Chỉ lấy phần trăm còn lại sau giảm (70%), bỏ qua giá vốn."
+   },
+   {
+    "text": "Lãi $121\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 30%."
+   },
+   {
+    "text": "Lãi $40\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 70% − 30% thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "Lãi $119\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá bán mới bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $190\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo nhập một mặt hàng với giá nhập 100 000 đồng. Ngày thường cửa hàng bán lãi 70% so với giá nhập. Vào dịp khuyến mãi mùa hè, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$87000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 70% − 10% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$70000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$153000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$17000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$530000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng mỹ phẩm nhập một mặt hàng với giá gốc 600 000 đồng. Ngày thường cửa hàng bán lãi 80% so với giá gốc. Nhân dịp khai trương, cửa hàng giảm giá 30% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$324000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 80% − 30% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$756000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$804000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 30%."
+   },
+   {
+    "text": "$1560000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập một mặt hàng với giá vốn 120 000 đồng. Ngày thường cửa hàng bán lãi 50% so với giá vốn. Trong tuần lễ tri ân khách hàng, cửa hàng giảm giá 20% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$36000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$96000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$144000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách nhập một mặt hàng với giá nhập 800 000 đồng. Ngày thường cửa hàng bán lãi 80% so với giá nhập. Nhân dịp sinh nhật cửa hàng, cửa hàng giảm giá 25% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$440000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 80% − 25% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$640000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$1080000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$360000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$1000000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "$2800000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao nhập một mặt hàng với giá gốc 150 000 đồng. Ngày thường cửa hàng bán lãi 80% so với giá gốc. Vào dịp khuyến mãi mùa hè, cửa hàng giảm giá 40% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$228000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 40%."
+   },
+   {
+    "text": "$60000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 80% − 40% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$162000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$108000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$120000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi nhập một mặt hàng với giá gốc 800 000 đồng. Ngày thường cửa hàng bán lãi 20% so với giá gốc. Trong tuần lễ tri ân khách hàng, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$864000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$80000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 20% − 10% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$96000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$160000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$256000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "$640000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giày dép nhập một mặt hàng với giá vốn 300 000 đồng. Ngày thường cửa hàng bán lãi 100% so với giá vốn. Vào dịp khuyến mãi mùa hè, cửa hàng giảm giá 20% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$120000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$480000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$300000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$420000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 100% − 20% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng thể thao nhập một mặt hàng với giá nhập 600 000 đồng. Ngày thường cửa hàng bán lãi 40% so với giá nhập. Nhân dịp khai trương, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$756000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$324000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "$84000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$180000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 40% − 10% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$240000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$1560000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy nhập một mặt hàng với giá vốn 100 000 đồng. Ngày thường cửa hàng bán lãi 40% so với giá vốn. Để dọn kho, cửa hàng giảm giá 25% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$105000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$40000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$35000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$15000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 40% − 25% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$75000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "$50000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi nhập một mặt hàng với giá nhập 200 000 đồng. Ngày thường cửa hàng bán lãi 80% so với giá nhập. Nhân dịp khai trương, cửa hàng giảm giá 10% so với giá bán ngày thường. Hỏi khi đó, bán mặt hàng này cửa hàng còn lãi bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$140000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Lấy 80% − 10% rồi tính trên giá vốn thay vì nhân hai tỉ số."
+   },
+   {
+    "text": "$324000$ đồng",
+    "rule": "R537",
+    "duong_sai": "Ghi giá bán sau giảm (cả gốc lẫn lãi) làm tiền lãi."
+   },
+   {
+    "text": "$196000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 10%."
+   },
+   {
+    "text": "$36000$ đồng",
+    "rule": "R408",
+    "duong_sai": "Chỉ tính số tiền được giảm, chưa lấy tiền lãi trừ đi."
+   },
+   {
+    "text": "$160000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính tiền lãi ngày thường rồi dừng, chưa tính phần giảm giá."
+   },
+   {
+    "text": "$1240000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách giảm giá 10% so với giá niêm yết nhân dịp sinh nhật cửa hàng, và bán vẫn lãi 26% so với giá gốc. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $36\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 26% + 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $140\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $38,6\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $400\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp Quốc tế Phụ nữ, một nhà sách giảm giá 10% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 62% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $78,2\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $52\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 62% − 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Trong tuần lễ tri ân khách hàng, một cửa hàng đồ chơi giảm giá 20% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 40% so với giá nhập. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 40% + 20% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $175\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $68\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 120% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $750\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng mỹ phẩm giảm giá 10% so với giá niêm yết nhân dịp khai trương, và bán vẫn lãi 17% so với giá vốn. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $7\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 17% − 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $130\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $28,7\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $300\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để dọn kho, một nhà sách giảm giá 20% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 36% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $63,2\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 120% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $16\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 36% − 20% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $170\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $700\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng giày dép giảm giá 40% so với giá niêm yết nhân dịp khai trương, và bán vẫn lãi 20% so với giá vốn. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $68\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 140% thay vì chia cho 60%."
+   },
+   {
+    "text": "Lãi $60\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 20% + 40% thay vì chia cho 60%."
+   },
+   {
+    "text": "Lãi $1000\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp khai trương, một cửa hàng đồ chơi giảm giá 10% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 80% so với giá nhập. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $98\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $90\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 80% + 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $1000\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Để dọn kho, một cửa hàng đồ gia dụng giảm giá 30% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 40% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $70\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 40% + 30% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $82\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 130% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $1000\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp Quốc tế Phụ nữ, một cửa hàng quần áo giảm giá 30% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 12% so với giá nhập. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $45,6\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 130% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $42\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 12% + 30% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một nhà sách giảm giá 25% so với giá niêm yết nhân dịp cuối năm, và bán vẫn lãi 50% so với giá vốn. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $75\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 50% + 25% thay vì chia cho 75%."
+   },
+   {
+    "text": "Lãi $87,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 125% thay vì chia cho 75%."
+   },
+   {
+    "text": "Lãi $200\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $20\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "Lãi $1000\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo giảm giá 10% so với giá niêm yết nhân dịp Quốc tế Phụ nữ, và bán vẫn lãi 35% so với giá nhập. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $25\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 35% − 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $48,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $150\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp Quốc tế Phụ nữ, một siêu thị điện máy giảm giá 20% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 44% so với giá gốc. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $64\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 44% + 20% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $20\\%$",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "Lãi $72,8\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 120% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $180\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $800\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân ngày lễ, một siêu thị điện máy giảm giá 25% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 20% so với giá nhập. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá nhập?",
+  "nhieu": [
+   {
+    "text": "Lãi $50\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 125% thay vì chia cho 75%."
+   },
+   {
+    "text": "Lãi $45\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 20% + 25% thay vì chia cho 75%."
+   },
+   {
+    "text": "Lãi $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp Quốc tế Phụ nữ, một cửa hàng đồ chơi giảm giá 40% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 5% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $175\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $47\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 140% thay vì chia cho 60%."
+   },
+   {
+    "text": "Lãi $45\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 5% + 40% thay vì chia cho 60%."
+   },
+   {
+    "text": "Lãi $750\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp cuối năm, một cửa hàng quần áo giảm giá 10% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 44% so với giá gốc. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $34\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 44% − 10% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $58,4\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 110% thay vì chia cho 90%."
+   },
+   {
+    "text": "Lãi $600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy giảm giá 20% so với giá niêm yết nhân dịp sinh nhật cửa hàng, và bán vẫn lãi 28% so với giá vốn. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $53,6\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 120% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $160\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $8\\%$",
+    "rule": "R526",
+    "duong_sai": "Trừ thẳng 28% − 20% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $600\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp sinh nhật cửa hàng, một cửa hàng đồ chơi giảm giá 30% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 5% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $36,5\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 130% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $35\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 5% + 30% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $150\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $500\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Nhân dịp Quốc tế Phụ nữ, một cửa hàng giày dép giảm giá 20% so với giá niêm yết. Tuy nhiên, cửa hàng vẫn còn lãi 12% so với giá vốn. Hỏi ngày thường (không giảm giá) cửa hàng bán lãi bao nhiêu phần trăm so với giá vốn?",
+  "nhieu": [
+   {
+    "text": "Lãi $34,4\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 120% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $140\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $32\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 12% + 20% thay vì chia cho 80%."
+   },
+   {
+    "text": "Lãi $400\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một siêu thị điện máy giảm giá 30% so với giá niêm yết để dọn kho, và bán vẫn lãi 19% so với giá gốc. Hỏi nếu bán đúng giá niêm yết thì cửa hàng lãi bao nhiêu phần trăm so với giá gốc?",
+  "nhieu": [
+   {
+    "text": "Lãi $54,7\\%$",
+    "rule": "R525",
+    "duong_sai": "Nhân với 130% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $170\\%$",
+    "rule": "R528",
+    "duong_sai": "Tính giá niêm yết bằng bao nhiêu phần trăm giá vốn rồi ghi luôn, quên trừ 100%."
+   },
+   {
+    "text": "Lãi $49\\%$",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 19% + 30% thay vì chia cho 70%."
+   },
+   {
+    "text": "Lãi $700\\%$",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng mỹ phẩm nhập một mặt hàng với giá vốn 800 000 đồng. Nhân dịp cuối năm, cửa hàng giảm giá 20% so với giá niêm yết và vẫn còn lãi 20% so với giá vốn. Hỏi giá niêm yết của mặt hàng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$1120000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 20% + 20% rồi lấy trên giá gốc."
+   },
+   {
+    "text": "$768000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân với 80% thay vì chia cho 80%."
+   },
+   {
+    "text": "$960000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính giá bán sau giảm rồi dừng, chưa tìm giá niêm yết."
+   },
+   {
+    "text": "$800000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "$1152000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 20% vào giá bán sau giảm thay vì chia."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng quần áo nhập một mặt hàng với giá gốc 100 000 đồng. Để dọn kho, cửa hàng giảm giá 25% so với giá niêm yết và vẫn còn lãi 35% so với giá gốc. Hỏi giá niêm yết của mặt hàng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$135000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính giá bán sau giảm rồi dừng, chưa tìm giá niêm yết."
+   },
+   {
+    "text": "$160000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 35% + 25% rồi lấy trên giá gốc."
+   },
+   {
+    "text": "$108000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "$1800000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi nhập một mặt hàng với giá vốn 600 000 đồng. Nhân dịp khai trương, cửa hàng giảm giá 20% so với giá niêm yết và vẫn còn lãi 60% so với giá vốn. Hỏi giá niêm yết của mặt hàng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$768000$ đồng",
+    "rule": "R525",
+    "duong_sai": "Nhân với 80% thay vì chia cho 80%."
+   },
+   {
+    "text": "$1152000$ đồng",
+    "rule": "R407",
+    "duong_sai": "Cộng thêm 20% vào giá bán sau giảm thay vì chia."
+   },
+   {
+    "text": "$800000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 20%."
+   },
+   {
+    "text": "$960000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính giá bán sau giảm rồi dừng, chưa tìm giá niêm yết."
+   },
+   {
+    "text": "$1080000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 60% + 20% rồi lấy trên giá gốc."
+   },
+   {
+    "text": "$12000000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ },
+ {
+  "noi_dung": "Một cửa hàng đồ chơi nhập một mặt hàng với giá gốc 300 000 đồng. Nhân dịp sinh nhật cửa hàng, cửa hàng giảm giá 25% so với giá niêm yết và vẫn còn lãi 5% so với giá gốc. Hỏi giá niêm yết của mặt hàng đó là bao nhiêu tiền?",
+  "nhieu": [
+   {
+    "text": "$315000$ đồng",
+    "rule": "R539",
+    "duong_sai": "Mới tính giá bán sau giảm rồi dừng, chưa tìm giá niêm yết."
+   },
+   {
+    "text": "$252000$ đồng",
+    "rule": "R530",
+    "duong_sai": "Hiểu ngược giảm giá thành tăng giá 25%."
+   },
+   {
+    "text": "$390000$ đồng",
+    "rule": "R526",
+    "duong_sai": "Cộng thẳng 5% + 25% rồi lấy trên giá gốc."
+   },
+   {
+    "text": "$4200000$ đồng",
+    "rule": "R540",
+    "duong_sai": "Làm đúng cách nhưng lệch một hàng ở kết quả cuối."
+   }
+  ]
+ }
+]
