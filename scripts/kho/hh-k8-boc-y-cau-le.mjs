@@ -41,7 +41,10 @@ const LG_TAY = {
     },
   },
 }
-const BIET_TAY = {}   // ghi đè tay: mã gốc → nhãn ý → da_biet (chuỗi, '' = không có)
+const BIET_TAY = {   // ghi đè tay: mã gốc → nhãn ý → da_biet (chuỗi, '' = không có)
+  HHC019978: { b: 'Biết $AMHN$ là hình chữ nhật nên $O$ là trung điểm của $AH$ (ý a).', c: 'Biết $I$ là trung điểm của $HB$ (ý b).' },   // 28/11 · Thùy: bóc ý bài này
+}
+const CHI = process.env.MA ? new Set(process.env.MA.split(',')) : null   // MA=HHC…,HHC… ⇒ chỉ bóc các câu này
 const MOC = /^\s*([a-eA-E]|\d{1,2})[).]\s*/
 const ABC = 'abcde'
 
@@ -64,7 +67,7 @@ function tachLoiGiai(g, ys) {
   let p1txt = '', p2txt = lg
   if (coHead) { p1txt = lg.slice(0, i2); p2txt = lg.slice(i2).replace(/^\*\*Phần 2\. Trình bày\*\*\s*/, '') }
   else if (/\*\*Phần 1\./.test(lg)) throw new Error('có Phần 1 mà không có Phần 2')
-  p2txt = boSoDo(p2txt)
+  p2txt = boSoDo(p2txt).replace(/^\s*\*\*([a-e])\)\*\*\s*/gm, '$1) ')   // nhãn ý in đậm **a)** → a)
   const blocks = new Map(); let cur = null
   const tieuDe = TIEUDE[g.ma_cau]
   for (const l of p2txt.split('\n')) {
@@ -132,6 +135,7 @@ try {
   const lui = [], bo = []
   for (const g of goc) {
     if (LOAI_TRU.has(g.ma_cau)) continue
+    if (CHI && !CHI.has(g.ma_cau)) continue
     const { stem, ys } = parseDe(g.noi_dung)
     if (ys.length < 2) continue
     if (!stem) { bo.push(`${g.ma_cau}: không có lời dẫn`); continue }
@@ -185,7 +189,7 @@ try {
   const kt = await q(`select count(*) n, count(*) filter (where c.noi_dung = '') rong, count(*) filter (where c.kho_chuan) chuan from hinh_hoc_cau_hoi c where c.ma_cau = any($1)`, [lui.flatMap((x) => x.y)])
   console.log('\nđọc lại ý mới:', kt[0], '· câu gốc đã bóc:', lui.length)
   if (+kt[0].rong) throw new Error('ý có noi_dung rỗng — trigger ghép không chạy')
-  if (GHI) { fs.writeFileSync('_luu-tru/du-lieu/hh-k8-boc-y-cau-le-23-11.json', JSON.stringify(lui, null, 1)); await c.query('commit'); console.log('ĐÃ GHI (commit)') }
+  if (GHI) { fs.writeFileSync('_luu-tru/du-lieu/hh-k8-boc-y-cau-le-28-11-HHC019978.json', JSON.stringify(lui, null, 1)); await c.query('commit'); console.log('ĐÃ GHI (commit)') }
   else { await c.query('rollback'); console.log('(chạy thử — ROLLBACK)') }
 } catch (e) { await c.query('rollback'); console.error('LỖI → ROLLBACK:', e.message); process.exitCode = 1 }
 await c.end()
