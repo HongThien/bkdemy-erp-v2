@@ -1039,7 +1039,10 @@ export function splitStem(c: CauHoi): { stem: string; grid: { lbl: string; body:
   // "[hình]" là quy ước NHẬP LIỆU (kho/api.ts: nhân sự cắt ảnh đính sau vào anh_de) — không phải nội dung
   // đề thật. Đã có anh_de (ảnh đã đính) mà chuỗi thô vẫn còn placeholder → strip lúc IN, đừng để lộ literal
   // "[hình]" ra giấy (Thùy báo ảnh chụp MT câu 7). KHÔNG sửa DB — chỉ ẩn lúc render.
-  const noiDung = c.anh_de ? c.noi_dung.replace(/\[\s*hình\s*\]/gi, '').replace(/\s+/g, ' ').trim() : c.noi_dung
+  // Ý của bài nhiều ý in LẺ: noi_dung = lời dẫn + "\n" + [đã biết + "\n"] + câu hỏi ý (trigger ghép) — "Đã biết" KHÔNG phải đề (Thùy 28/11) ⇒ cắt khỏi bản in.
+  const duoiCoDaBiet = c.bai_y && c.da_biet?.trim() && c.cau_hoi_y ? '\n' + c.da_biet.trim() + '\n' + c.cau_hoi_y : null
+  const nd0 = duoiCoDaBiet && c.noi_dung.endsWith(duoiCoDaBiet) ? c.noi_dung.slice(0, c.noi_dung.length - duoiCoDaBiet.length) + '\n' + c.cau_hoi_y : c.noi_dung
+  const noiDung = c.anh_de ? nd0.replace(/\[\s*hình\s*\]/gi, '').replace(/\s+/g, ' ').trim() : nd0
   const hasOpts = !!(c.lua_chon && c.lua_chon.length)
   const emb = hasOpts ? null : splitLabeled(noiDung, 'ABCDEFGH')
   const yc = hasOpts || emb ? null : splitLabeled(noiDung, 'abcdefghijkl')
