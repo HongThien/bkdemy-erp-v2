@@ -14,7 +14,7 @@ create or replace function public._hh_bai_y_danh_lai(p_bai_y text, p_ds text[]) 
 language plpgsql as $f$
 declare
   v_all text[];     -- toàn bộ ý còn sống của bài, theo thứ tự mới
-  v_n int;
+  v_n int; v_max int;
   v_kieu text;      -- 'chu' | 'so'
   v_cu text[]; v_moi text[];
   i int; r record;
@@ -32,7 +32,8 @@ begin
   if not exists (select 1 from hinh_hoc_cau_hoi where bai_y = p_bai_y and xoa_at is null and nhan_y not like '~%' and nhan_y !~ '^[a-z]$') then v_kieu := 'chu';
   elsif not exists (select 1 from hinh_hoc_cau_hoi where bai_y = p_bai_y and xoa_at is null and nhan_y not like '~%' and nhan_y !~ '^[0-9]$') then v_kieu := 'so';
   else raise exception 'Bài % dùng nhãn ý đặc biệt (vd 1a, b*) — chưa tự đổi thứ tự được, nhờ Claude xử lý tay.', p_bai_y; end if;
-  if v_n > case when v_kieu = 'chu' then 26 else 9 end then
+  v_max := (case when v_kieu = 'chu' then 26 else 9 end);
+  if v_n > v_max then
     raise exception 'Bài % quá nhiều ý để đánh nhãn tự động (%).', p_bai_y, v_n;
   end if;
 
@@ -91,7 +92,7 @@ begin
 
   select array(select ma_cau from hinh_hoc_cau_hoi where bai_y = p_bai_y and xoa_at is null and ma_cau <> v_ma order by nhan_y, ma_cau) into v_ds;
   if p_sau is not null and p_sau = any(v_ds) then
-    v_ds := v_ds[1:array_position(v_ds, p_sau)] || v_ma || v_ds[array_position(v_ds, p_sau) + 1:];
+    v_ds := v_ds[1:array_position(v_ds, p_sau)] || v_ma || v_ds[array_position(v_ds, p_sau) + 1:array_length(v_ds, 1)];
   else
     v_ds := v_ds || v_ma;
   end if;

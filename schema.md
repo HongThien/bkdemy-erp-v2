@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-621 bảng · 42 view · 0 enum · 520 trigger · 2100 function
+621 bảng · 42 view · 0 enum · 520 trigger · 2103 function
 
 ## _app_secrets
 
@@ -12196,6 +12196,7 @@ WITH luot AS (
 - `_gtt_theo_ngay_day()` → trigger
 - `_gtt_trang_thai(p_mon text, p_khoi text, p_tuan date)` → gtt_duyet
 - `_he_thong_cong_tac_ghi_log()` → trigger
+- `_hh_bai_y_danh_lai(p_bai_y text, p_ds text[])` → void
 - `_hh_so_do_cham_updated_at()` → trigger
 - `_hh_so_do_hop_le(p jsonb)` → boolean
 - `_hinh_bai_dong_bo_chuyen_de()` → trigger
@@ -13204,6 +13205,8 @@ WITH luot AS (
 - `fn_hau_kiem_mo_lai_de_xuat(p_de_xuat uuid, p_ghi_chu text)` → void
 - `fn_hau_kiem_sua_vvh(p_id uuid, p_chat_luong numeric, p_tien_do numeric, p_ghi_chu text)` → void
 - `fn_he_thong_cong_tac_dat(p_ma text, p_bat boolean)` → boolean
+- `fn_hh_bai_y_doi_thu_tu(p_bai_y text, p_ds text[])` → void
+- `fn_hh_bai_y_them_y(p_bai_y text, p_cau_hoi_y text, p_da_biet text DEFAULT NULL::text, p_sau text DEFAULT NULL::text)` → text
 - `fn_hh_cau_chuyen_dang(p_ma_cau text, p_ma_bai text, p_ca_ban_sao boolean DEFAULT true)` → jsonb
 - `fn_hh_cau_xoa(p_ma_cau text, p_ca_ban_sao boolean DEFAULT false)` → integer
 - `fn_hh_kho_cau(p_loai text, p_id text, p_loc text DEFAULT 'tat_ca'::text, p_limit integer DEFAULT 40, p_offset integer DEFAULT 0, p_nhan uuid[] DEFAULT NULL::uuid[])` → TABLE(tong bigint, ma_cau text, loai_cau text, noi_dung text, lua_chon jsonb, menh_de jsonb, dap_an text, loi_giai text, anh_de text, anh_dap_an text, da_duyet boolean, kho_chuan boolean, kiem_may text, nguon text, la_goc boolean, nguon_gan text, dang_bai_id text, dang_bai text, ly_do text, bai_y text, nhan_y text, cau_hoi_y text, da_biet text, loi_dan text, ma_nhan text, nhan_loc uuid[])
