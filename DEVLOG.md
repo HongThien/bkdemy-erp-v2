@@ -82507,3 +82507,5 @@ Cách soát: xuất `pg_get_functiondef` 16 hàm, ĐỌC thân từng hàm (bả
 - Chưa kiểm trên app thật (cần đăng nhập). MT đã lưu mà các ý không liền nhau thì phải lưu lại 1 lần (đổi/chọn câu) mới được xếp liền.
 
 - 24/11 (tiếp): kiểm bằng dữ liệu thật "Đề khảo sát tháng 11 - Khối 8" (3 ý HHB001040 đang lưu a,c,b): bản in mới ra "Câu 1 – 3." + lời dẫn 1 lần + a) c) b) — gom đúng. Còn lại là builder vẫn hiện 3 khung ⇒ sửa: hàng ý cùng bài dính thành 1 khối (viền vàng, lời dẫn hiện 1 lần ở hàng đầu). MT lưu từ bản cũ giữ thứ tự a,c,b tới lần lưu kế (đổi/chọn câu).
+
+- 28/11: kho Hình–Học bài nhiều ý — THÊM Ý + ĐỔI THỨ TỰ Ý (Thùy). Mig 202611281504: `fn_hh_bai_y_them_y(bai_y, cau_hoi_y, da_biet, sau)` + `fn_hh_bai_y_doi_thu_tu(bai_y, ds_ma_cau)`; nội bộ `_hh_bai_y_danh_lai` cấp lại `nhan_y` (a,b,c hoặc 1,2,3) + `thu_tu` theo vị trí mới, mã câu HHC KHÔNG đổi; chữ "(ý a)" trong `da_biet` các ý được sửa theo nhãn mới. Bài nhãn lạ (1a, b*) ⇒ từ chối, nhờ xử tay. UI: `BaiYKho` (BanDoMoi.tsx) nút ▲▼ từng ý, "＋ ý sau ý này", "＋ Thêm ý"; ý mới chưa lời giải/đáp án (✎ Sửa để điền). Chưa áp mig lên DB (cần chuỗi ghi), chưa thử trên app.

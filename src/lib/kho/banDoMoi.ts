@@ -369,6 +369,16 @@ export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 
   if (error) loi(error)
   return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
 }
+// Bài nhiều ý (Thùy 28/11): thêm ý mới (sau ý `sau`, null = cuối) · đổi thứ tự ý. Nhãn a/b/c cấp lại ở DB, mã câu không đổi.
+export async function themYVaoBai(baiY: string, cauHoiY: string, daBiet: string | null, sau: string | null): Promise<string> {
+  const { data, error } = await supabase.rpc('fn_hh_bai_y_them_y', { p_bai_y: baiY, p_cau_hoi_y: cauHoiY, p_da_biet: daBiet, p_sau: sau })
+  if (error) loi(error)
+  return data as string
+}
+export async function doiThuTuYCuaBai(baiY: string, dsMaCau: string[]): Promise<void> {
+  const { error } = await supabase.rpc('fn_hh_bai_y_doi_thu_tu', { p_bai_y: baiY, p_ds: dsMaCau })
+  if (error) loi(error)
+}
 export async function chuyenCauHinhSangBai(maCau: string, maBai: string, caBanSao = true): Promise<{ id: string; ten: string; nhom: string; chu_de: string; so_cau: number }> {
   const { data, error } = await supabase.rpc('fn_hh_cau_chuyen_dang', { p_ma_cau: maCau, p_ma_bai: maBai, p_ca_ban_sao: caBanSao })
   if (error) loi(error)

@@ -16,7 +16,7 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, layCauDeSua, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, themYVaoBai, doiThuTuYCuaBai, layCauDeSua, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
   type KhoCauRow, type KhoCauLoc,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -1537,7 +1537,9 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi, onDoi }: { mo: KhoMo; khoi: 
           {!dang && !loi && rows.length === 0 && <div className="py-10 text-center text-[13px] text-slate-400">{nhanBat.length ? 'Không bài nào có đủ các nhãn đang bật.' : `Không có câu nào${loc !== 'tat_ca' ? ' ở bộ lọc này' : ''}.`}</div>}
           {/* Hình–Học bài nhiều ý (Thùy 09/11): các ý CÙNG BÀI đứng liền nhau (DB xếp sẵn) ⇒ gom 1 thẻ kiểu kho Hình–Luyện; câu thường như cũ */}
           {gomBaiY(rows).map((g) => g.length > 1 || g[0].bai_y
-            ? <BaiYKho key={g[0].bai_y + ':' + g[0].ma_cau} ys={g} {...dauNhan(g[0])} onXoa={(r, ca) => void xoa(r, ca)} onDuyet={(r, d) => void doiDuyet(r, d)} onSua={(r) => void moSua(r)} />
+            ? <BaiYKho key={g[0].bai_y + ':' + g[0].ma_cau} ys={g} {...dauNhan(g[0])} onXoa={(r, ca) => void xoa(r, ca)} onDuyet={(r, d) => void doiDuyet(r, d)} onSua={(r) => void moSua(r)}
+              onThemY={async (baiY, cauHoi, daBiet, sau) => { try { await themYVaoBai(baiY, cauHoi, daBiet, sau); setTb('Đã thêm ý mới'); setTimeout(() => setTb(null), 2500); tai(0); onDaDoi(); return true } catch (e) { setLoi(e instanceof Error ? e.message : String(e)); return false } }}
+              onDoiThuTu={async (baiY, ds) => { try { await doiThuTuYCuaBai(baiY, ds); tai(0); onDaDoi() } catch (e) { setLoi(e instanceof Error ? e.message : String(e)) } }} />
             : <CauKho key={g[0].ma_cau} r={g[0]} {...dauNhan(g[0])} nhom={mo.loai === 'nhom'} onChuyen={mo.loai === 'dung_sai' || g[0].loai_cau === 'dung_sai' ? undefined : () => setChuyen(g[0])} onXoa={(ca) => void xoa(g[0], ca)} onDuyet={(d) => void doiDuyet(g[0], d)} onSua={() => void moSua(g[0])} />)}
           {dang && <div className="py-3 text-center text-[12.5px] text-slate-400">Đang tải…</div>}
           {!dang && rows.length < tong && (
@@ -1647,9 +1649,14 @@ function gomBaiY(rows: KhoCauRow[]): KhoCauRow[][] {
 // Thẻ BÀI NHIỀU Ý (Hình–Học) — khuôn thẻ kho Hình–Luyện (CayNhanh › Kho bài): mã bài · chuỗi ý a → b → c, hình trái, lời dẫn
 // dải xanh, mỗi ý 1 khung (câu hỏi ý + dòng "Đã biết" nếu có) kèm thao tác của câu ý đó; lời giải từng ý mở khi bấm.
 // Mỗi ý là 1 câu kho thật (mã HHC riêng) ⇒ duyệt / sửa / xoá theo ý; không "chuyển dạng" lẻ 1 ý (ý luôn thuộc bài học của bài).
-function BaiYKho({ ys, tick, nhan, onXoa, onDuyet, onSua }: { ys: KhoCauRow[]; tick?: ReactNode; nhan?: ReactNode; onXoa: (r: KhoCauRow, caBanSao: boolean) => void; onDuyet: (r: KhoCauRow, duyet: boolean) => void; onSua: (r: KhoCauRow) => void }) {
+function BaiYKho({ ys, tick, nhan, onXoa, onDuyet, onSua, onThemY, onDoiThuTu }: { ys: KhoCauRow[]; tick?: ReactNode; nhan?: ReactNode; onXoa: (r: KhoCauRow, caBanSao: boolean) => void; onDuyet: (r: KhoCauRow, duyet: boolean) => void; onSua: (r: KhoCauRow) => void
+  onThemY: (baiY: string, cauHoi: string, daBiet: string | null, sau: string | null) => Promise<boolean>; onDoiThuTu: (baiY: string, dsMaCau: string[]) => Promise<void> }) {
   const [moLg, setMoLg] = useState(false)
+  const [them, setThem] = useState<{ cauHoi: string; daBiet: string; sau: string } | null>(null)   // form thêm ý; sau = mã câu ý đứng trước ('' = cuối bài)
+  const [ban, setBan] = useState(false)
   const dau = ys[0]
+  const baiY = dau.bai_y as string
+  const dich = (i: number, j: number) => { const ds = ys.map((y) => y.ma_cau); [ds[i], ds[j]] = [ds[j], ds[i]]; setBan(true); void onDoiThuTu(baiY, ds).finally(() => setBan(false)) }
   const chip = (c: string, t: string) => <span className={`rounded px-1.5 py-0.5 text-[10.5px] font-semibold ${c}`}>{t}</span>
   return (
     <div className={`rounded-xl border bg-white p-4 shadow-sm max-md:p-2.5 ${moLg ? 'border-teal-300' : 'border-slate-200'}`}>
@@ -1673,12 +1680,18 @@ function BaiYKho({ ys, tick, nhan, onXoa, onDuyet, onSua }: { ys: KhoCauRow[]; t
           : <div className="flex h-48 w-64 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-200 text-[12px] text-slate-300 max-md:hidden">chưa có hình</div>}
         <div className="min-w-0 flex-1 space-y-2">
           {dau.loi_dan && <div className="rounded-lg bg-teal-600 px-3.5 py-2.5 text-[15px] leading-relaxed text-white"><MathText>{dau.loi_dan}</MathText></div>}
-          {ys.map((y) => (
+          {ys.map((y, i) => (
             <div key={y.ma_cau} className="rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-2">
               <div className="mb-1 flex flex-wrap items-center gap-1.5">
                 <code className="text-[11px] text-slate-400">{y.ma_cau}</code>
                 {y.kho_chuan ? chip('bg-emerald-100 text-emerald-700', 'kho chuẩn') : y.da_duyet ? chip('bg-sky-100 text-sky-700', 'đã duyệt') : chip('bg-amber-100 text-amber-700', 'chưa duyệt')}
                 <ThaoTacCau r={y} onXoa={(ca) => onXoa(y, ca)} onDuyet={(d) => onDuyet(y, d)} onSua={() => onSua(y)} />
+                {ys.length > 1 && (
+                  <span className="flex items-center gap-0.5">
+                    <button disabled={ban || i === 0} onClick={() => dich(i, i - 1)} title="Đưa ý này lên trước" className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] text-slate-600 hover:border-teal-400 hover:text-teal-700 disabled:opacity-30">▲</button>
+                    <button disabled={ban || i === ys.length - 1} onClick={() => dich(i, i + 1)} title="Đưa ý này xuống sau" className="rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] text-slate-600 hover:border-teal-400 hover:text-teal-700 disabled:opacity-30">▼</button>
+                  </span>)}
+                <button onClick={() => setThem({ cauHoi: '', daBiet: '', sau: y.ma_cau })} title="Thêm một ý mới ngay sau ý này" className="rounded border border-dashed border-teal-300 px-1.5 py-0.5 text-[11px] font-medium text-teal-700 hover:bg-teal-50">＋ ý sau ý này</button>
               </div>
               <div className="flex gap-2.5 text-[15px] leading-relaxed text-slate-800">
                 <b className="shrink-0 text-violet-700">{y.nhan_y})</b>
@@ -1691,7 +1704,22 @@ function BaiYKho({ ys, tick, nhan, onXoa, onDuyet, onSua }: { ys: KhoCauRow[]; t
                   {y.anh_dap_an && <img src={y.anh_dap_an} alt="" className="mt-2 max-h-64 rounded border border-violet-200 bg-white object-contain" />}
                 </div>)}
             </div>))}
-          <button onClick={() => setMoLg((v) => !v)} className="text-[12.5px] font-medium text-teal-700 hover:underline">{moLg ? '▾ Ẩn lời giải' : '▸ Lời giải + hình từng ý'}</button>
+          {them && (
+            <div className="space-y-2 rounded-lg border border-teal-300 bg-teal-50/40 p-3">
+              <div className="text-[12.5px] font-semibold text-teal-800">Thêm ý mới {them.sau ? `· đứng sau ý ${ys.find((y) => y.ma_cau === them.sau)?.nhan_y ?? ''}` : '· cuối bài'}</div>
+              <textarea autoFocus rows={2} value={them.cauHoi} onChange={(e) => setThem({ ...them, cauHoi: e.target.value })} placeholder="Câu hỏi của ý (vd: Chứng minh $HD \perp OC$.)" className={`${inp} w-full text-[13px]`} />
+              <textarea rows={1} value={them.daBiet} onChange={(e) => setThem({ ...them, daBiet: e.target.value })} placeholder="Đã biết (không bắt buộc) — kết quả ý trước cần dùng, vd: Biết $AN/NC = BH/HC$ (ý a)." className={`${inp} w-full text-[13px]`} />
+              <div className="flex items-center gap-2">
+                <button disabled={ban || !them.cauHoi.trim()} onClick={() => { setBan(true); void onThemY(baiY, them.cauHoi, them.daBiet.trim() || null, them.sau || null).then((ok) => { if (ok) setThem(null) }).finally(() => setBan(false)) }}
+                  className="rounded-md bg-teal-600 px-3 py-1 text-[12.5px] font-semibold text-white hover:bg-teal-700 disabled:opacity-40">Thêm ý</button>
+                <button onClick={() => setThem(null)} className="rounded-md px-2 py-1 text-[12.5px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+                <span className="text-[11.5px] text-slate-400">Ý mới chưa có lời giải / đáp án — bấm ✎ Sửa ở ý đó để điền. Nhãn các ý sau được cấp lại tự động.</span>
+              </div>
+            </div>)}
+          <div className="flex items-center gap-3">
+            <button onClick={() => setMoLg((v) => !v)} className="text-[12.5px] font-medium text-teal-700 hover:underline">{moLg ? '▾ Ẩn lời giải' : '▸ Lời giải + hình từng ý'}</button>
+            {!them && <button onClick={() => setThem({ cauHoi: '', daBiet: '', sau: '' })} className="text-[12.5px] font-medium text-teal-700 hover:underline">＋ Thêm ý</button>}
+          </div>
         </div>
       </div>
     </div>
