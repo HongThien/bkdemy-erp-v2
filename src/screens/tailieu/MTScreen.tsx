@@ -41,7 +41,7 @@ import { useIsMobile } from '../../hooks/useIsMobile'
 // nhiều dạng bài × N câu + popup chọn câu theo NHÓM của ET bản đồ mới (ETBdmEditor), chỉ ở khối đã chạy bản đồ mới.
 import BoChonNhom from './bdm/BoChonNhom'
 import ChonCauBdm from './bdm/ChonCauBdm'
-import { ChonBaiHoc } from './bdm/ChuyenDeHinhBuilder'
+import { ChonBaiHoc, ChonCauHoc } from './bdm/ChuyenDeHinhBuilder'
 import { hhCayChon, hhGoiYBai, hhYMeta } from '../../lib/chuyenDeHinh'
 import { cayChon, goiYDangBai, etViTri, etMaDe, loiDoc, type ChonBuoi } from '../../lib/tailieuBdm'
 import { MON_CO_KHO } from '../../lib/mon'
@@ -325,6 +325,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
   const [chonPlan, setChonPlan] = useState(false)
   const [khBusy, setKhBusy] = useState(false)
   const [chonCauBdm, setChonCauBdm] = useState<{ phanId: string; idx: number } | null>(null)
+  const [chonCauHoc, setChonCauHoc] = useState<{ phanId: string; idx: number } | null>(null)   // Hình · Học: thẻ bài + chọn từng ý (như ET)
   const [keo, setKeo] = useState<{ phanId: string; idx: number } | null>(null)
   const [dich, setDich] = useState<{ phanId: string; idx: number; sau: boolean } | null>(null)
   const [loi, setLoi] = useState<string | null>(null)
@@ -1328,7 +1329,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           {r.maDang && (
                             <div className="flex shrink-0 gap-1 pt-0.5 max-md:order-3 max-md:pt-0">
                               <button onClick={() => doiCau(p.id, i)} title="Đổi câu khác (ít dùng kế tiếp)" className="rounded-md bg-indigo-50 px-2 py-1 text-[12px] font-medium text-indigo-700 hover:bg-indigo-100">↻ Đổi</button>
-                              {<button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
+                              {<button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : dbInfo ? setChonCauBdm({ phanId: p.id, idx: i }) : r.nhanh === 'hinh_hoc' ? setChonCauHoc({ phanId: p.id, idx: i }) : setPicker({ phanId: p.id, idx: i, maDang: r.maDang!, nhanh: r.nhanh }))}
                                 title="Chọn câu — tick NHIỀU câu được: câu thêm chèn ngay sau hàng này" className="rounded-md border border-slate-300 px-2 py-1 text-[12px] font-medium text-slate-600 hover:border-indigo-400">✎ Chọn</button>}
                             </div>
                           )}
@@ -1417,6 +1418,19 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
             setPicker(null)
           }} />
       )}
+      {chonCauHoc && (() => {
+        const r = rowsByPhan[chonCauHoc.phanId]?.[chonCauHoc.idx]
+        if (!r?.maDang) return null
+        const { phanId, idx } = chonCauHoc
+        return (
+          <ChonCauHoc maBai={r.maDang} ten={tenDang(r.maDang, 'hinh_hoc')} daChon={r.maCau ? [r.maCau] : []} khoa={[...usedGlobal(phanId, idx)]}
+            onClose={() => setChonCauHoc(null)}
+            onConfirm={async (ms) => {
+              try { if (ms.length) await napBdm(ms, 'hinh_hoc'); await chenNhieuCau(phanId, idx, ms, () => r.maDang, 'hinh_hoc') } catch (e) { setLoi(loiDoc(e)) }
+              setChonCauHoc(null)
+            }} />
+        )
+      })()}
       {chonCauBdm && (() => {
         const r = rowsByPhan[chonCauBdm.phanId]?.[chonCauBdm.idx]
         const info = r?.maDang ? dbs.get(r.maDang) : null
