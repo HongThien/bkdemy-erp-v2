@@ -9,7 +9,7 @@
 > phải xem qua Supabase dashboard hoặc app. Sửa dứt điểm: `alter role ... bypassrls`,
 > hoặc chuyển sở hữu bảng về cùng role với các bảng còn lại.
 
-621 bảng · 42 view · 0 enum · 520 trigger · 2103 function
+621 bảng · 42 view · 0 enum · 522 trigger · 2104 function
 
 ## _app_secrets
 
@@ -11667,6 +11667,8 @@ WITH luot AS (
 | hinh_hoc_cau_hoi | trg_chan_duyet_dang_cho | BEFORE | INSERT/UPDATE | _trg_chan_duyet_dang_cho |
 | hinh_hoc_cau_hoi | trg_chan_xoa_cau_dang_dung | BEFORE | DELETE | _kho_chan_xoa_cau_dang_dung |
 | hinh_hoc_cau_hoi | trg_de_thi_dien_dang | AFTER | UPDATE | _trg_de_thi_dien_dang |
+| hinh_hoc_cau_hoi | trg_hh_y_lan_y_khac_ins | AFTER | INSERT | _trg_hh_y_lan_y_khac |
+| hinh_hoc_cau_hoi | trg_hh_y_lan_y_khac_upd | AFTER | UPDATE | _trg_hh_y_lan_y_khac |
 | hinh_hoc_cau_lop | trg_hinh_hoc_cau_lop_truoc_sua | BEFORE | UPDATE | _hinh_hoc_cau_lop_truoc_sua |
 | hinh_hoc_cau_so_do | hinh_hoc_cau_so_do_updated_at | BEFORE | UPDATE | _hh_so_do_cham_updated_at |
 | hinh_mo_hinh | hinh_mo_hinh_neo_chk_trg | BEFORE | INSERT/UPDATE | hinh_mo_hinh_neo_chk |
@@ -12644,6 +12646,7 @@ WITH luot AS (
 - `_trg_hh_bai_y_moc()` → trigger
 - `_trg_hh_dv_bu()` → trigger
 - `_trg_hh_y_ghep()` → trigger
+- `_trg_hh_y_lan_y_khac()` → trigger
 - `_trg_kho_cau_dang()` → trigger
 - `_trg_kho_cau_dang_cau()` → trigger
 - `_trg_kho_cau_khuon_log()` → trigger
