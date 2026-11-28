@@ -395,7 +395,6 @@ function ETDoc({ ten, nhanh, caus, ch, hinh, gv, badge, hoTen, nhanDe }: { ten: 
                 ra.push({
                   key: c.ma_cau, cols, hasImg: false,
                   content: (<>
-                    {c.da_biet?.trim() && <div className="pv-math"><i><MathText>{c.da_biet.trim()}</MathText></i></div>}
                     <div className="pv-math"><MathText prefix={`<span class="pv-cau-no">${c.nhan_y})</span> `}>{c.cau_hoi_y ?? ''}</MathText></div>
                     {gv && <GvAnswer c={c} />}
                   </>),

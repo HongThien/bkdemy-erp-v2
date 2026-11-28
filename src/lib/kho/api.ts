@@ -95,16 +95,6 @@ export function tachLoiDanY(c: { noi_dung: string; cau_hoi_y?: string | null; da
 }
 export const deCuaY = (c: { cau_hoi_y?: string | null; da_biet?: string | null }): string =>
   (c.da_biet?.trim() ? c.da_biet.trim() + '\n' : '') + (c.cau_hoi_y ?? '')
-// Các ý đang in có LIỀN NHAU TỪ Ý ĐẦU của bài (a,b,c… hoặc 1,2,3…, không thiếu ý nào ở trước) ⇒ học sinh đã thấy mọi ý trước ngay trên phiếu ⇒
-// KHÔNG in "Đã biết" (Thùy 28/11: "đó không phải đề mà in đề cũng in ra"). Thiếu ý trước (ý chọn lẻ) ⇒ vẫn in để câu tự đủ.
-export function lienTuYDau(nhan: (string | null | undefined)[]): boolean {
-  if (!nhan.length) return false
-  const ma = nhan.map((n) => (n ?? '').trim())
-  const chu = /^[a-z]$/.test(ma[0]), so = /^\d+$/.test(ma[0])
-  if (chu) return ma.every((n, i) => n.length === 1 && n.charCodeAt(0) === 97 + i)
-  if (so) return ma.every((n, i) => n === String(i + 1))
-  return false
-}
 // Khúc ≥2 ý CÙNG BÀI liền nhau bắt đầu ở i ⇒ chỉ số cuối khúc + lời dẫn; không thì null.
 export function khucY<T extends { noi_dung: string; bai_y?: string | null; cau_hoi_y?: string | null; da_biet?: string | null }>(cs: T[], i: number): { cuoi: number; dan: string } | null {
   const b = cs[i].bai_y
