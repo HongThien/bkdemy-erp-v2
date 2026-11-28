@@ -369,6 +369,15 @@ export async function getKhoCauHinh(loai: 'dang_bai' | 'dung_sai' | 'de_xuat' | 
   if (error) loi(error)
   return ((data ?? []) as (Omit<KhoCauRow, 'tong'> & { tong: number | string })[]).map((r) => ({ ...r, tong: Number(r.tong) }))
 }
+// Sửa 1 ý của bài nhiều ý (Thùy 28/11): đề ý = lời dẫn (của BÀI, đổi là đổi mọi ý) + đã biết + câu hỏi ý — `noi_dung` do trigger ghép nên KHÔNG ghi thẳng.
+export async function suaYCuaBai(a: { maCau: string; baiY: string; cauHoiY: string; daBiet: string | null; dapAn: string | null; loiGiai: string | null; loiDan: string | null }): Promise<void> {
+  const { error } = await supabase.from('hinh_hoc_cau_hoi').update({ cau_hoi_y: a.cauHoiY, da_biet: a.daBiet, dap_an: a.dapAn, loi_giai: a.loiGiai }).eq('ma_cau', a.maCau)
+  if (error) loi(error)
+  if (a.loiDan != null) {   // chỉ gửi khi người dùng đổi lời dẫn
+    const { error: e2 } = await supabase.from('hinh_hoc_bai_y').update({ loi_dan: a.loiDan }).eq('ma_bai_y', a.baiY)
+    if (e2) loi(e2)
+  }
+}
 // Bài nhiều ý (Thùy 28/11): thêm ý mới (sau ý `sau`, null = cuối) · đổi thứ tự ý. Nhãn a/b/c cấp lại ở DB, mã câu không đổi.
 export async function themYVaoBai(baiY: string, cauHoiY: string, daBiet: string | null, sau: string | null): Promise<string> {
   const { data, error } = await supabase.rpc('fn_hh_bai_y_them_y', { p_bai_y: baiY, p_cau_hoi_y: cauHoiY, p_da_biet: daBiet, p_sau: sau })

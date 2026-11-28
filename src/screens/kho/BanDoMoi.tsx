@@ -16,7 +16,7 @@ import {
   getCay, themChuDe, suaChuDe, themChuyenDeVaoChuDe, suaChuyenDe, xoaChuDeTronGoi, xoaChuyenDeKhoiChuDe, xoaNhomTronGoi,
   themNhom, suaNhom, themDangBai, suaDangBai, xoaDangBai, sapXep, chuyenNhom, chuyenDangBai, chuyenO,
   nangDangBai, haNhom, gopChuyenDe, getLyThuyetNhom, getViDuDangBai, getLyThuyetDangBai, lyThuyetNhomApi, viDuDangBaiApi, lyThuyetDangBaiApi,
-  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, themYVaoBai, doiThuTuYCuaBai, layCauDeSua, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
+  getDangCu, ganDangCu, goDoiUng, goDoiUngTheoDich, getCauChuaGan, ganCau, ganCum, getKhoCau, chuyenCauSangDang, xoaCauKho, getKhoCauHinh, chuyenCauHinhSangBai, xoaCauHinh, themYVaoBai, doiThuTuYCuaBai, suaYCuaBai, layCauDeSua, BDM_NHANH, PHAN_HINH, khuonCuaVung, datMonBdm, tinhNangBdm, type BdmNhanh, type BdmMon,
   type KhoCauRow, type KhoCauLoc,
   type BdmCay, type BdmChuDe, type BdmO, type BdmNhom, type BdmDangBai, type BdmDangCu, type BdmDangCuRef, type BdmDich, type BdmCauChuaGan,
 } from '../../lib/kho/banDoMoi'
@@ -1431,7 +1431,9 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi, onDoi }: { mo: KhoMo; khoi: 
   // ✎ Sửa (Thùy 08/11 "kho câu cần cho sửa") — mở đúng màn sửa có sẵn: CauModal (câu thường) · DungSaiModal (Đúng/Sai)
   const [sua, setSua] = useState<{ cau: CauHoi; tbl: string } | null>(null)
   const [dsOpts, setDsOpts] = useState<{ id: string; label: string; sub: string }[]>([])
+  const [suaY, setSuaY] = useState<KhoCauRow | null>(null)   // ý của bài nhiều ý đang sửa (màn riêng — đề ý do trigger ghép, không sửa thẳng noi_dung)
   const moSua = async (r: KhoCauRow) => {
+    if (r.bai_y) { setSuaY(r); return }
     try {
       const x = await layCauDeSua(r.ma_cau, mo.hinh ? 'hinh_hoc_cau_hoi' : undefined)
       if (x.cau.loai_cau === 'dung_sai') setDsOpts(await listDangOptions(x.tbl).catch(() => []))
@@ -1554,6 +1556,8 @@ function KhoModal({ mo, khoi, cay, onDong, onDaDoi, onDoi }: { mo: KhoMo; khoi: 
       </div>
       {hop && <HopGanNhan neo={hop.neo} ds={NL.ds} cua={hop.ma.map(nhanCua)} onDat={(n, bat) => datNhan(hop.ma, n, bat)} onTao={NL.tao} onDong={() => setHop(null)} />}
       {quanLy && <QuanLyNhan kho="hinh_hoc" onDong={() => setQuanLy(false)} onDoi={() => void NL.tai()} />}
+      {suaY && <SuaYModal r={suaY} onClose={() => setSuaY(null)}
+        onXong={() => { setSuaY(null); setTb(`Đã lưu ý ${suaY.nhan_y} (${suaY.ma_cau})`); setTimeout(() => setTb(null), 2500); tai(0); onDaDoi() }} />}
       {sua && <div onClick={(e) => e.stopPropagation()}>{sua.cau.loai_cau === 'dung_sai'
         ? <DungSaiModal cau={sua.cau} dangChinhMoi={null} tbl={sua.tbl} dangOpts={dsOpts} onClose={() => setSua(null)} onSaved={() => void daSua(sua.cau.ma_cau, sua.tbl)} />
         : <CauModal editing={sua.cau} cauTbl={sua.tbl} onClose={() => setSua(null)} onSaved={() => void daSua(sua.cau.ma_cau, sua.tbl)} />}</div>}
@@ -1720,6 +1724,71 @@ function BaiYKho({ ys, tick, nhan, onXoa, onDuyet, onSua, onThemY, onDoiThuTu }:
             <button onClick={() => setMoLg((v) => !v)} className="text-[12.5px] font-medium text-teal-700 hover:underline">{moLg ? '▾ Ẩn lời giải' : '▸ Lời giải + hình từng ý'}</button>
             {!them && <button onClick={() => setThem({ cauHoi: '', daBiet: '', sau: '' })} className="text-[12.5px] font-medium text-teal-700 hover:underline">＋ Thêm ý</button>}
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Màn sửa 1 ý (bài nhiều ý Hình–Học): câu hỏi ý · đã biết · đáp án · lời giải riêng của ý; lời dẫn chung của bài sửa ở ô riêng (đổi là đổi MỌI ý của bài).
+function SuaYModal({ r, onClose, onXong }: { r: KhoCauRow; onClose: () => void; onXong: () => void }) {
+  const [cauHoi, setCauHoi] = useState(r.cau_hoi_y ?? '')
+  const [daBiet, setDaBiet] = useState(r.da_biet ?? '')
+  const [dapAn, setDapAn] = useState(r.dap_an ?? '')
+  const [loiGiai, setLoiGiai] = useState(r.loi_giai ?? '')
+  const [loiDan, setLoiDan] = useState(r.loi_dan ?? '')
+  const [dang, setDang] = useState(false)
+  const [loi, setLoi] = useState<string | null>(null)
+  const luu = async () => {
+    setDang(true); setLoi(null)
+    try {
+      await suaYCuaBai({ maCau: r.ma_cau, baiY: r.bai_y as string, cauHoiY: cauHoi.trim(), daBiet: daBiet.trim() || null, dapAn: dapAn.trim() || null, loiGiai: loiGiai.trim() || null,
+        loiDan: loiDan.trim() !== (r.loi_dan ?? '').trim() ? loiDan.trim() : null })
+      onXong()
+    } catch (e) { setLoi(e instanceof Error ? e.message : String(e)); setDang(false) }
+  }
+  const nhan = 'mb-1 block text-[12px] font-semibold text-slate-600'
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/50 p-4 max-md:p-0" onClick={(e) => { e.stopPropagation(); onClose() }}>
+      <div className="flex max-h-[94vh] w-[900px] max-w-full flex-col overflow-hidden rounded-2xl bg-white shadow-2xl max-md:h-dvh max-md:max-h-none max-md:rounded-none" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-3">
+          <h3 className="text-[15px] font-semibold text-slate-900">Sửa ý {r.nhan_y})</h3>
+          <code className="text-[12px] text-slate-400">{r.ma_cau} · {r.bai_y}</code>
+          <button onClick={onClose} className="ml-auto text-slate-400 hover:text-slate-700">✕</button>
+        </div>
+        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-5">
+          <div>
+            <label className={nhan}>Lời dẫn chung của bài <span className="font-normal text-amber-700">— đổi ở đây là đổi cho MỌI ý của bài {r.bai_y}</span></label>
+            <textarea rows={3} value={loiDan} onChange={(e) => setLoiDan(e.target.value)} className={`${inp} w-full text-[13px]`} />
+          </div>
+          <div>
+            <label className={nhan}>Đã biết <span className="font-normal text-slate-400">(không bắt buộc — điều ý trước đã dựng / chứng minh mà ý này dùng)</span></label>
+            <textarea rows={2} value={daBiet} onChange={(e) => setDaBiet(e.target.value)} className={`${inp} w-full text-[13px]`} />
+          </div>
+          <div>
+            <label className={nhan}>Câu hỏi của ý {r.nhan_y})</label>
+            <textarea rows={3} value={cauHoi} onChange={(e) => setCauHoi(e.target.value)} className={`${inp} w-full text-[13px]`} />
+          </div>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_2fr]">
+            <div>
+              <label className={nhan}>Đáp án</label>
+              <textarea rows={6} value={dapAn} onChange={(e) => setDapAn(e.target.value)} className={`${inp} w-full text-[13px]`} />
+            </div>
+            <div>
+              <label className={nhan}>Lời giải của ý</label>
+              <textarea rows={6} value={loiGiai} onChange={(e) => setLoiGiai(e.target.value)} className={`${inp} w-full font-mono text-[12.5px]`} />
+            </div>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-[13.5px] leading-relaxed text-slate-700">
+            <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">Xem trước đề ý</div>
+            {daBiet.trim() && <div><MathText>{daBiet}</MathText></div>}
+            <div><b className="text-violet-700">{r.nhan_y})</b> <MathText>{cauHoi}</MathText></div>
+          </div>
+        </div>
+        {loi && <p className="px-5 pb-1 text-[12.5px] text-rose-600">{loi}</p>}
+        <div className="flex items-center justify-end gap-2 border-t border-slate-200 px-5 py-3">
+          <button onClick={onClose} className="rounded-md px-3 py-1.5 text-[13px] text-slate-500 hover:bg-slate-100">Huỷ</button>
+          <button onClick={() => void luu()} disabled={dang || !cauHoi.trim()} className="rounded-md bg-teal-600 px-4 py-1.5 text-[13px] font-semibold text-white hover:bg-teal-700 disabled:opacity-40">{dang ? 'Đang lưu…' : 'Lưu'}</button>
         </div>
       </div>
     </div>
