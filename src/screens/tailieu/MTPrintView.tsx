@@ -352,7 +352,7 @@ function MTPhieu({ full, phans, ver, gv, mapCau, hinhMucs, hoTen, lopTen }: {
             if ('hinh' in seg) {
               const m = mucHinh(seg.hinh); if (!m) return null
               const cauTu = no + 1; no += m.kieu === 'de' ? m.ys.length : 0
-              return <div key={si} className="pv-mt-hinh"><MucsBlock mucs={[m]} gv={gv} cauTu={cauTu} /></div>
+              return <div key={si} className="pv-mt-hinh"><MucsBlock mucs={[m.kieu === 'de' ? { ...m, anhMm: ver.ch.anhMmByCau?.[seg.hinh] ?? null } : m]} gv={gv} cauTu={cauTu} /></div>
             }
             return mtRunsOf(seg.caus, mapCau, ver, gv).map((run, ri) => (
               run.tln

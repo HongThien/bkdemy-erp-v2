@@ -1186,6 +1186,12 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                   <span className="text-[10px] text-slate-300">hình vẽ:</span>
                                   <button onClick={() => setHinhInfo(ma, { cheDo: cheDoKe(h.cheDo ?? 'hien') })} title={`${cd.goi} — bấm để đổi (hiện → ô trống → không)`}
                                     className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600 hover:bg-slate-200">{cd.icon} {cd.nhan}</button>
+                                  {/* cỡ ảnh khi in — cùng ô AnhMmCtl như ET Hình (khoá = mã hàng Hình, lưu ch.anhMmByCau) */}
+                                  {m && m.kieu === 'de' && m.anhDe && (h.cheDo ?? 'hien') !== 'khong' && (
+                                    <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: true }}>
+                                      <AnhMmCtl ma={ma} url={m.anhDe} />
+                                    </AnhMmEditCtx.Provider>
+                                  )}
                                 </>
                               )}
                               <label className="ml-auto flex shrink-0 items-center gap-1 text-[11px] text-slate-400" title="Số dòng kẻ cho HS viết (bản in) — trống = mặc định như ET">dòng
@@ -1220,7 +1226,9 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                         </div>
                                       )) })()}
                                   </div>
-                                  {m.anhDe && <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain max-md:max-w-full max-md:self-center" />}
+                                  {m.anhDe && (ch.anhMmByCau?.[ma]
+                                    ? <img src={m.anhDe} alt="" style={{ width: `${ch.anhMmByCau[ma]}mm` }} className="h-auto max-w-[45%] shrink-0 rounded border border-slate-200 bg-white object-contain max-md:max-w-full max-md:self-center" />
+                                    : <img src={m.anhDe} alt="" className="max-h-40 w-auto max-w-[280px] shrink-0 rounded border border-slate-200 bg-white object-contain max-md:max-w-full max-md:self-center" />)}
                                 </>
                               ) : <span className="text-[12px] italic text-slate-400">{hinhL ? 'đang dựng đề…' : 'đang tải kho Hình…'}</span>}
                             </div>
@@ -1240,12 +1248,12 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                       const ySau = cungBai(c, i + 1 < rows.length && rows[i + 1].maCau ? cau[rows[i + 1].maCau!] : null)
                       const khoiY = yTruoc || ySau
                       return (
-                        <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${ySau ? ' rounded-b-none' : ''}${yTruoc ? ' -mt-2 rounded-t-none border-t-slate-100' : ''}${khoiY ? ' border-l-4 border-l-amber-300' : ''}${vach(p.id, i)}`}>
+                        <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${ySau ? ' rounded-b-none' : ''}${yTruoc ? ' -mt-2 rounded-t-none border-t border-dashed border-t-amber-200 bg-slate-50/60 pt-1.5' : ''}${khoiY ? ' border-l-4 border-l-amber-300' : ''}${vach(p.id, i)}`}>
                           {/* Điện thoại: wrap + order — dòng 1 = số · dạng (giãn) · ✕; dòng 2 = đề câu full bề ngang; dòng 3 = dòng kẻ ·
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
                           <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
-                          <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
+                          {yTruoc ? <div className="w-56 shrink-0 max-md:hidden" aria-hidden /> : <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
                             className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
                             {laDs ? (
                               r.maDang ? <span className="line-clamp-2 text-slate-700"><span className="mr-1 rounded bg-teal-50 px-1 py-0.5 text-[10px] font-semibold text-teal-700">Đ/S</span>{chuDeDs.find((x) => x.id === r.maDang)?.ten ?? r.maDang}</span>
@@ -1261,7 +1269,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                 {tenDang(r.maDang, r.nhanh)}
                               </span>
                             ) : <span className="text-indigo-500">+ chọn dạng…</span>}
-                          </button>
+                          </button>}
                           <div className="min-w-0 flex-1 pt-1 max-md:order-2 max-md:basis-full max-md:pt-0.5">
                             {c ? <div className="truncate text-[13px] text-slate-700 max-md:line-clamp-4 max-md:whitespace-normal">
                               {khoiY && c.cau_hoi_y ? <>
