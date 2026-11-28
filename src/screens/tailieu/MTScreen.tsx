@@ -1251,7 +1251,9 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                         <div key={i} {...tha(p.id, i)} className={`rounded-xl border border-slate-200 bg-slate-50/60 p-2.5${ySau ? ' rounded-b-none' : ''}${yTruoc ? ' -mt-2 rounded-t-none border-t border-dashed border-t-amber-200 bg-slate-50/60 pt-1.5' : ''}${khoiY ? ' border-l-4 border-l-amber-300' : ''}${vach(p.id, i)}`}>
                           {/* Điện thoại: wrap + order — dòng 1 = số · dạng (giãn) · ✕; dòng 2 = đề câu full bề ngang; dòng 3 = dòng kẻ ·
                               ↻ ✎ · 2 cột · điểm. Desktop vẫn 1 hàng ngang như cũ (order chỉ bật dưới md). */}
-                          <div className="flex items-start gap-2 max-md:flex-wrap max-md:items-center max-md:gap-1.5">
+                          <div className="flex flex-wrap items-start gap-2 max-md:items-center max-md:gap-1.5">
+                          {/* Máy tính: chỉnh hình (chế độ · cỡ · hình phải) + số dòng xuống DÒNG DƯỚI — không chen cùng hàng làm cột đề bị bóp hẹp (Thùy 28/11) */}
+                          <div className="hidden h-0 basis-full md:order-[98] md:-mb-2 md:block" aria-hidden />
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
                           {yTruoc ? <div className="w-56 shrink-0 max-md:hidden" aria-hidden /> : <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
                             className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
@@ -1307,7 +1309,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             // Hình–Học: 3 chế độ (có ô trống cho HS vẽ) · cỡ ảnh · hình phải/dưới; bài nhiều ý: cấu hình ở ý đầu (ảnh của cả bài)
                             <AnhMmEditCtx.Provider value={{ mm: ch.anhMmByCau ?? {}, pct: ch.anhPctByCau ?? {}, set: setAnhMm, baChe: r.nhanh === 'hinh_hoc',
                               phai: (m) => ch.anhPhaiByCau?.[m] ?? r.nhanh === 'hinh_hoc', setPhai: setAnhPhai }}>
-                              <div className="flex shrink-0 flex-wrap items-center gap-1.5 pt-0.5 max-md:order-3">
+                              <div className="flex shrink-0 flex-wrap items-center gap-1.5 pt-0.5 max-md:order-3 md:order-[99] md:ml-[4.25rem]">
                                 <CheDoHinhBtn cur={ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien'} onChange={(v) => setCheDo(c.ma_cau, v)} />
                                 {(ch.hinhCheDoByCau?.[c.ma_cau] ?? 'hien') !== 'khong' && <AnhMmCtl ma={c.ma_cau} url={c.anh_de} />}
                               </div>
@@ -1318,7 +1320,7 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                             const nhomMa: string[] = [c.ma_cau]
                             for (let k = i + 1; k < rows.length; k++) { const ck = rows[k].maCau ? cau[rows[k].maCau!] : null; if (!cungBai(c, ck)) break; nhomMa.push(ck!.ma_cau) }
                             return (
-                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0" title={nhomMa.length > 1 ? 'Tổng số dòng kẻ chung cho cả bài — in một khối sau ý cuối (bản in)' : 'Số dòng kẻ cho HS viết (bản in)'}>{nhomMa.length > 1 ? 'dòng cả bài' : 'dòng'}
+                              <label className="flex shrink-0 items-center gap-1 pt-1.5 text-[11px] text-slate-400 max-md:order-3 max-md:pt-0 md:order-[99]" title={nhomMa.length > 1 ? 'Tổng số dòng kẻ chung cho cả bài — in một khối sau ý cuối (bản in)' : 'Số dòng kẻ cho HS viết (bản in)'}>{nhomMa.length > 1 ? 'dòng cả bài' : 'dòng'}
                                 <input type="number" min={0} max={100} value={ch.btvnLinesByCau?.[c.ma_cau] ?? 4} onChange={(e) => setLines(nhomMa, Math.max(0, Math.min(100, +e.target.value || 0)))} className="h-7 w-12 rounded border border-slate-300 px-1 text-center text-[12px]" />
                               </label>
                             )
