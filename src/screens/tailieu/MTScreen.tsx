@@ -1256,8 +1256,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                           {/* Máy tính: chỉnh hình (chế độ · cỡ · hình phải) + số dòng xuống DÒNG DƯỚI — không chen cùng hàng làm cột đề bị bóp hẹp (Thùy 28/11) */}
                           <div className="hidden h-0 basis-full md:order-[98] md:-mb-2 md:block" aria-hidden />
                           <SoHang className="mt-0.5" nhan={nhanSo[`${p.id}:${i}`] ?? ''} onKeo={keoTu(p.id, i)} onKeoXong={keoXong} onDoi={(so) => diChuyen({ phanId: p.id, idx: i }, viTriTheoSo({ phanId: p.id, idx: i }, so))} />
-                          {yTruoc ? <div className="w-56 shrink-0 max-md:hidden" aria-hidden /> : <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
-                            className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
+                          {yTruoc ? <div className="w-56 shrink-0 max-md:hidden md:mr-auto" aria-hidden /> : <button onClick={() => (laDs ? setChonDs({ phanId: p.id, idx: i }) : setDangModal({ phanId: p.id, idx: i, nhanh: r.nhanh, tab: r.nhanh === 'hinh_hoc' ? 'hinh_hoc' : dbInfo?.nhanh ?? nhChinh }))} title={laDs ? 'Câu Đúng/Sai theo chủ đề — bấm để chọn tay từ kho' : dbInfo ? `${dbInfo.nhom_ten} › ${dbInfo.ten}` : undefined}
+                            className="w-56 shrink-0 rounded-md border border-slate-300 bg-white px-2.5 py-2 text-left text-[13px] hover:border-indigo-400 md:mr-auto max-md:w-auto max-md:min-w-0 max-md:flex-1 max-md:shrink">
                             {laDs ? (
                               r.maDang ? <span className="line-clamp-2 text-slate-700"><span className="mr-1 rounded bg-teal-50 px-1 py-0.5 text-[10px] font-semibold text-teal-700">Đ/S</span>{chuDeDs.find((x) => x.id === r.maDang)?.ten ?? r.maDang}</span>
                                 : <span className="text-teal-600">+ chọn câu Đúng/Sai từ kho…</span>
@@ -1273,8 +1273,8 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                               </span>
                             ) : <span className="text-indigo-500">+ chọn dạng…</span>}
                           </button>}
-                          <div className="min-w-0 flex-1 pt-1 max-md:order-2 max-md:basis-full max-md:pt-0.5">
-                            {c ? <div className="truncate text-[13px] text-slate-700 max-md:line-clamp-4 max-md:whitespace-normal">
+                          <div className="order-2 min-w-0 flex-1 basis-full pt-0.5 md:pl-[4.25rem]">
+                            {c ? <div className="line-clamp-4 whitespace-normal text-[13px] text-slate-700">
                               {khoiY && c.cau_hoi_y ? <>
                                 {!yTruoc && <div className="truncate text-slate-500"><MathText>{tachLoiDanY(c) ?? ''}</MathText></div>}
                                 <div className="truncate"><b className="text-violet-700">{c.nhan_y}) </b><MathText>{c.cau_hoi_y}</MathText></div>
@@ -1356,16 +1356,30 @@ export function MTEditor({ id, onClose, onMo }: { id: string; onClose: () => voi
                                 const vc = vm ? cau[vm] : null
                                 const f = etFormOf(c, ch)
                                 return (
-                                  <div key={v} className="flex items-center gap-2 text-[12px]">
+                                  <div key={v} className="flex flex-wrap items-center gap-2 text-[12px]">
                                     <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">Mã đề {v + 2}</span>
                                     {vm ? (
                                       <>
                                         <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 max-md:hidden">{vm}</span>
-                                        <span className="min-w-0 flex-1 truncate text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
+                                        <span className="min-w-0 flex-1 line-clamp-2 text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
                                       </>
                                     ) : (
                                       <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — chưa có câu cùng dạng + form khác</span>
                                     )}
+                                    {(vc ?? c).anh_de && !yTruoc && (() => {
+                                      // Hình của TỪNG mã đề (Thùy 28/11): mặc định giống mã đề 1, đổi riêng được. Khoá riêng: mã câu biến thể, hoặc "<mã>#2|#3" khi biến thể chính là câu gốc (Hình·Học).
+                                      const gc = c.ma_cau, key = vm && vm !== gc ? vm : `${gc}#${v + 2}`
+                                      const hd = ch.hinhCheDoByCau?.[key] ?? ch.hinhCheDoByCau?.[gc] ?? 'hien'
+                                      return (
+                                        <AnhMmEditCtx.Provider value={{ mm: { [key]: ch.anhMmByCau?.[key] ?? ch.anhMmByCau?.[gc] ?? 0 }, pct: { [key]: ch.anhPctByCau?.[key] ?? ch.anhPctByCau?.[gc] ?? 0 }, set: setAnhMm, baChe: r.nhanh === 'hinh_hoc',
+                                          phai: (m) => ch.anhPhaiByCau?.[m] ?? ch.anhPhaiByCau?.[gc] ?? r.nhanh === 'hinh_hoc', setPhai: setAnhPhai }}>
+                                          <div className="flex shrink-0 flex-wrap items-center gap-1.5">
+                                            <CheDoHinhBtn cur={hd} onChange={(x) => setCheDo(key, x)} />
+                                            {hd !== 'khong' && <AnhMmCtl ma={key} url={(vc ?? c).anh_de!} />}
+                                          </div>
+                                        </AnhMmEditCtx.Provider>
+                                      )
+                                    })()}
                                     {!laDs && <button onClick={() => setVarPicker({ baseMaCau: c.ma_cau, v, maDang: r.maDang ?? c.dang_chinh, nhanh: r.nhanh, form: f })}
                                       className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>}
                                   </div>

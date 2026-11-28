@@ -285,10 +285,12 @@ export function MTDoc({ full, gv, varCau, hinhMucs, perHS, lopTen }: { full: Tai
     for (const c of base) {
       const vm = etMaDe?.[c.ma_cau]?.[v]; if (!vm) continue
       const bl = ch.btvnLinesByCau?.[c.ma_cau]; if (bl != null) lines[vm] = bl
-      const cd = ch.hinhCheDoByCau?.[c.ma_cau]; if (cd != null) cheDo[vm] = cd
-      const mm = ch.anhMmByCau?.[c.ma_cau]; if (mm != null) anhMm[vm] = mm
-      const pc = ch.anhPctByCau?.[c.ma_cau]; if (pc != null) anhPct[vm] = pc
-      phai[vm] = phaiGoc(c.ma_cau)
+      // riêng từng mã đề (builder MT): khoá = mã biến thể, hoặc "<mã>#2|#3" khi biến thể chính là câu gốc (Hình·Học); không đặt riêng ⇒ giống mã đề 1
+      const ok = vm !== c.ma_cau ? vm : `${c.ma_cau}#${v + 2}`
+      const cd = ch.hinhCheDoByCau?.[ok] ?? ch.hinhCheDoByCau?.[c.ma_cau]; if (cd != null) cheDo[vm] = cd
+      const mm = ch.anhMmByCau?.[ok] ?? ch.anhMmByCau?.[c.ma_cau]; if (mm != null) anhMm[vm] = mm
+      const pc = ch.anhPctByCau?.[ok] ?? ch.anhPctByCau?.[c.ma_cau]; if (pc != null) anhPct[vm] = pc
+      phai[vm] = ch.anhPhaiByCau?.[ok] ?? phaiGoc(c.ma_cau)
     }
     return { ...ch, btvnLinesByCau: lines, hinhCheDoByCau: cheDo, anhMmByCau: anhMm, anhPctByCau: anhPct, anhPhaiByCau: phai }
   }

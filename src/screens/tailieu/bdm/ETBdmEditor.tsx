@@ -668,7 +668,7 @@ export default function ETBdmEditor({ et, onClose }: { et?: ETView; onClose?: ()
                               {vm ? (<>
                                 <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">{vm}</span>
                                 {vm === c.ma_cau && <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-700" title="Cụm của câu này không còn câu khác cùng form — đề này dùng lại câu gốc. Bấm ✎ để chọn tay câu khác cùng dạng bài nếu muốn.">= câu gốc</span>}
-                                <span className="min-w-0 flex-1 truncate text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
+                                <span className="min-w-0 flex-1 line-clamp-2 text-slate-600">{vc ? <MathText>{vc.noi_dung}</MathText> : '…'}</span>
                               </>) : <span className="min-w-0 flex-1 font-medium text-rose-500">⚠ TRỐNG — bấm Sinh đề 2 &amp; 3 hoặc chọn tay</span>}
                               {r.db && <button onClick={() => setChonVar({ base: c.ma_cau, v, db: r.db!, form: etFormOf(c, ch) })}
                                 className="shrink-0 rounded-md border border-slate-300 px-2 py-0.5 text-[11px] font-medium text-slate-600 hover:border-violet-400">✎ {vm ? 'Đổi' : 'Chọn'}</button>}
