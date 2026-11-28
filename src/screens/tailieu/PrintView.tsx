@@ -10,7 +10,7 @@ import { congNgay } from '../../lib/tuan'
 import { BK_CSS, BtvnBkHead } from './bkPrint'
 import { MathText, LT_CORE_CSS, LyThuyetBlockView, BaiTapHeader, loiGiaiBanIn } from '../kho/ui'
 import { parseLyThuyetBlocks, laDauNhomBaiTap } from '../../lib/lythuyetBlocks'
-import { uploadKhoFile, khucY, deCuaY } from '../../lib/kho/api'
+import { uploadKhoFile, khucY, deCuaY, lienTuYDau } from '../../lib/kho/api'
 import type { CauHoi } from '../../lib/kho/api'
 import { AnhMmCtx, AnhPhaiCtx } from './anhMmCtx'
 import { noiDung as noiDungBdm, nguonCau, type NoiDung } from '../../lib/tailieuBdm'
@@ -1287,7 +1287,8 @@ export function itemsGomY(cs: CauHoi[], o: {
     // ⭐ Thùy 15/11 ("tự sang trang · đang gom toàn bộ các bài vào 1 cấu trúc, chuẩn phải là hiển thị từng bài"): cả bài = MỘT khối
     // y như câu thường — lời dẫn + các ý bên trái, hình nửa phải (DeVaHinh), dòng kẻ sau cả bài. Trước đây đầu bài (lời dẫn +
     // hình full ngang, break-after:avoid) và từng ý là các khối rời ⇒ paged.js đẩy cả cụm sang trang, bỏ trắng ~2/3 trang (GT 8S0).
-    const ps = ys.map((y, t) => cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` }))
+    const boDaBiet = lienTuYDau(ys.map((y) => y.nhan_y))   // đủ ý từ đầu bài ⇒ không in "Đã biết" (không phải đề)
+    const ps = ys.map((y, t) => cauItemParts({ no: so[t], c: { ...y, noi_dung: deCuaY(boDaBiet ? { cau_hoi_y: y.cau_hoi_y } : y), anh_de: null }, gv: o.gv, lines: o.dong(dau), nhan: `${y.nhan_y})` }))
     out.push({
       key: `bai-${dau.bai_y}-${dau.ma_cau}`, cols: 1, nhom: dau.bai_y!, lines: ps[0]?.lines ?? 0, hasImg: !!anh,
       content: <DeVaHinh ma={dau.ma_cau} anh={anh}
