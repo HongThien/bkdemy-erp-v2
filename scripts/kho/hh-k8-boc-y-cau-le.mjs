@@ -12,7 +12,7 @@ const GHI = process.argv.includes('--ghi')
 const env = fs.readFileSync('.env', 'utf8').match(/^\s*DATABASE_URL\s*=\s*(.+?)\s*$/m)[1].replace(/^["']|["']$/g, '')
 const c = new pg.Client({ connectionString: process.env.DATABASE_URL_RW ?? env, ssl: { rejectUnauthorized: false } }); await c.connect()
 const q = async (s, p) => (await c.query(s, p)).rows
-const TEP_BIET = '_luu-tru/du-lieu/hh-k8-boc-y-da-biet-23-11.json'
+const TEP_BIET = process.env.DA_BIET_FILE ?? '_luu-tru/du-lieu/hh-k8-boc-y-da-biet-23-11.json'
 const DA_BIET = fs.existsSync(TEP_BIET) ? JSON.parse(fs.readFileSync(TEP_BIET, 'utf8')) : null
 const XUAT = []   // XUAT=<tệp.json> ⇒ xuất đề + lời giải từng ý để soát da_biet bằng mắt
 
@@ -131,7 +131,7 @@ function vienDanNgam(p2, k) {
 await c.query('begin')
 try {
   await c.query(`select set_config('kho.duyet_noi_dung', 'on', true)`)   // duyệt ĐỀ (nội dung) ở dạng chờ được phép — giữ nguyên trạng thái duyệt của câu gốc
-  const goc = await q(`select c.* from hinh_hoc_cau_hoi c join hinh_hoc_bai b on b.ma_bai = c.dang_chinh where c.xoa_at is null and b.khoi = '8' and c.bai_y is null and not c.rut_khoi_kho and not exists (select 1 from hinh_hoc_bai_y yg where yg.ma_cau_goc = c.ma_cau and yg.xoa_at is null) and c.loai_cau in ('tu_luan','tra_loi_ngan') order by c.ma_cau`)
+  const goc = await q(`select c.* from hinh_hoc_cau_hoi c join hinh_hoc_bai b on b.ma_bai = c.dang_chinh where c.xoa_at is null and b.khoi = any($1) and c.bai_y is null and not c.rut_khoi_kho and not exists (select 1 from hinh_hoc_bai_y yg where yg.ma_cau_goc = c.ma_cau and yg.xoa_at is null) and c.loai_cau in ('tu_luan','tra_loi_ngan') order by c.ma_cau`, [(process.env.KHOI ?? '8').split(',')])
   const lui = [], bo = []
   for (const g of goc) {
     if (LOAI_TRU.has(g.ma_cau)) continue
@@ -165,7 +165,7 @@ try {
         if (khongTruy.length) tt = 'KHÔNG TRUY ĐƯỢC: ' + khongTruy.map((t) => `$${t}$`).join(' ; ')
       }
       // Bảng da_biet đã soát tay (agent soát + Claude kiểm) THẮNG heuristic: có tệp ⇒ ý nào không ghi trong tệp = không có da_biet
-      if (DA_BIET) { biet.length = 0; if (DA_BIET[g.ma_cau]?.[k]) biet.push(DA_BIET[g.ma_cau][k]) }
+      if (DA_BIET && DA_BIET[g.ma_cau]) { biet.length = 0; if (DA_BIET[g.ma_cau]?.[k]) biet.push(DA_BIET[g.ma_cau][k]) }
       if (BIET_TAY[g.ma_cau]?.[k] !== undefined) { biet.length = 0; if (BIET_TAY[g.ma_cau][k]) biet.push(BIET_TAY[g.ma_cau][k]) }
       ydu.push({ nhan: k, cau_hoi_y: ys[i].text, da_biet: biet.join(' ') || null, loi_giai: ldg, tt, sua })
     }
@@ -189,7 +189,7 @@ try {
   const kt = await q(`select count(*) n, count(*) filter (where c.noi_dung = '') rong, count(*) filter (where c.kho_chuan) chuan from hinh_hoc_cau_hoi c where c.ma_cau = any($1)`, [lui.flatMap((x) => x.y)])
   console.log('\nđọc lại ý mới:', kt[0], '· câu gốc đã bóc:', lui.length)
   if (+kt[0].rong) throw new Error('ý có noi_dung rỗng — trigger ghép không chạy')
-  if (GHI) { fs.writeFileSync('_luu-tru/du-lieu/hh-k8-boc-y-cau-le-28-11-HHC019978.json', JSON.stringify(lui, null, 1)); await c.query('commit'); console.log('ĐÃ GHI (commit)') }
+  if (GHI) { fs.writeFileSync(`_luu-tru/du-lieu/hh-boc-y-cau-le-28-11-${process.env.MA ? process.env.MA.split(',').length + 'cau' : 'k8'}.json`, JSON.stringify(lui, null, 1)); await c.query('commit'); console.log('ĐÃ GHI (commit)') }
   else { await c.query('rollback'); console.log('(chạy thử — ROLLBACK)') }
 } catch (e) { await c.query('rollback'); console.error('LỖI → ROLLBACK:', e.message); process.exitCode = 1 }
 await c.end()

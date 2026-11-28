@@ -1,0 +1,154 @@
+{
+ "HHC018864": {},
+ "HHC018867": {
+  "c": "Biết tứ giác $BCEF$ nội tiếp (ý a). Biết $\\widehat{BAD}=\\widehat{QAC}$ và $AE\\cdot AQ=AB\\cdot AH$ (ý b)."
+ },
+ "HHC018872": {
+  "b": "Biết bốn điểm $B$, $F$, $E$, $C$ cùng thuộc một đường tròn (ý a).",
+  "c": "Tia $BE$ và tia $CF$ cắt đường tròn $(O)$ lần lượt tại $P$, $Q$."
+ },
+ "HHC018997": {
+  "b": "Biết $\\triangle HMB=\\triangle HNC$ (ý a)."
+ },
+ "HHC019142": {},
+ "HHC019928": {},
+ "HHC019933": {
+  "b": "Biết chu vi của một bánh xe là $700\\pi$ mm (ý a)."
+ },
+ "HHC019937": {
+  "c": "Gọi $C$ là một điểm thuộc cung nhỏ $AB$ của đường tròn $(O)$. Tia $SC$ cắt đường tròn $(O)$ tại điểm $D$ khác $C$. Lấy $M$ là chân đường vuông góc kẻ từ $O$ xuống $CD$. Biết tứ giác $SAOB$ là tứ giác nội tiếp (ý a)."
+ },
+ "HHC019941": {
+  "b": "Biết chu vi của một bánh xe khoảng $1727\\ \\text{mm}$ (ý a)."
+ },
+ "HHC019944": {
+  "b": "Biết bốn điểm $B$, $F$, $E$, $C$ cùng thuộc một đường tròn (ý a).",
+  "c": "Biết $MF\\cdot ME=MB\\cdot MC$ và $\\widehat{FEI}=\\widehat{BAC}$ (ý b)."
+ },
+ "HHC019949": {},
+ "HHC019952": {
+  "b": "Biết tứ giác $ABDE$ nội tiếp (ý a).",
+  "c": "Kẻ $OM$ vuông góc với $BC$ tại $M$. Đường thẳng $OM$ cắt $AB$, $AC$ theo thứ tự tại $P$, $Q$. Gọi $N$ là trung điểm của $PQ$. Biết $AP\\cdot CM=PN\\cdot HC$ (ý b)."
+ },
+ "HHC019956": {},
+ "HHC019962": {},
+ "HHC019967": {
+  "c": "Vẽ dây $AC$ song song $d$, gọi $I$ và $K$ lần lượt là giao điểm của $d$ với $AB$ và $BC$. Biết bốn điểm $A$, $O$, $B$, $M$ cùng thuộc một đường tròn (ý a). Biết $\\triangle IAD\\backsim\\triangle IEB$ (ý b)."
+ },
+ "HHC019971": {},
+ "HHC019976": {
+  "c": "Biết $\\triangle BAC\\backsim\\triangle BKH$ (ý b)."
+ },
+ "HHC018865": {
+  "c": "Kẻ đường kính $AK$ của $(O)$."
+ },
+ "HHC018868": {
+  "b": "Biết tứ giác $AEMF$ là tứ giác nội tiếp (ý a).",
+  "c": "Đường thẳng $AM$ cắt đường tròn $(O)$ tại điểm thứ hai là $K$. Biết $\\widehat{KBC}=\\widehat{MEF}$ và $BC\\cdot ME=EF\\cdot BK$ (ý b)."
+ },
+ "HHC018982": {
+  "b": "Biết $BA=BD$ (ý a).",
+  "c": "Gọi $H$ là giao điểm của $BE$ và $AD$. Biết $\\triangle AHB=\\triangle DHB$ (ý b)."
+ },
+ "HHC019128": {
+  "b": "Biết $AB=6$ cm (ý a)."
+ },
+ "HHC019151": {
+  "c": "Đường thẳng $b$ đi qua $A$ nhưng không đi qua $B$."
+ },
+ "HHC019930": {
+  "b": "Biết tứ giác $OBDC$ nội tiếp (ý a).",
+  "c": "Qua $D$ vẽ đường thẳng song song với $AB$, cắt đường tròn $(O)$ tại $E$ và $F$ ($E$ nằm giữa $D$ và $F$). Gọi $I$ là trung điểm của $EF$. Biết $\\widehat{BAC}=\\widehat{DIC}$ (ý b)."
+ },
+ "HHC019934": {
+  "c": "Biết $\\widehat{DPE}=\\widehat{APB}$ và $PD\\cdot AB=PA\\cdot DE$ (ý b)."
+ },
+ "HHC019939": {
+  "c": "Kẻ đường kính $BK$ của đường tròn $(O)$ cắt cạnh $AC$ tại $Q$. Gọi $P$ là giao điểm của $BH$ và $EN$. Biết $\\widehat{IBA}=\\widehat{CBQ}$ (ý b)."
+ },
+ "HHC019942": {
+  "c": "Kẻ đường kính $AK$ của đường tròn tâm $O$. Biết bốn điểm $A$, $E$, $D$, $B$ cùng nằm trên một đường tròn (ý a)."
+ },
+ "HHC019946": {
+  "c": "Biết bốn điểm $K$, $E$, $B$, $I$ cùng thuộc một đường tròn (ý a)."
+ },
+ "HHC019950": {
+  "b": "Biết tứ giác $ABOH$ là tứ giác nội tiếp (ý a).",
+  "c": "Biết tứ giác $ABOH$ là tứ giác nội tiếp (ý a)."
+ },
+ "HHC019953": {
+  "c": "Biết tứ giác $NEQF$ là tứ giác nội tiếp (ý a)."
+ },
+ "HHC019958": {
+  "c": "Biết $OB^2=OH\\cdot OM$ (ý b)."
+ },
+ "HHC019963": {
+  "b": "Biết tứ giác $BFEC$ nội tiếp (ý a).",
+  "c": "Biết tứ giác $BFEC$ nội tiếp (ý a)."
+ },
+ "HHC019968": {
+  "b": "Biết tứ giác $ADEC$ nội tiếp đường tròn (ý a).",
+  "c": "Biết tứ giác $ADEC$ nội tiếp đường tròn (ý a). Biết $\\triangle ADB\\backsim\\triangle ACK$ và $\\widehat{BAD}=\\widehat{EDC}$ (ý b)."
+ },
+ "HHC019972": {
+  "c": "Gọi $T$ là trung điểm của $EB$. Đường thẳng $OT$ cắt $AB$ tại điểm $Q$. Biết $Q$ là trung điểm của $JB$ (ý b)."
+ },
+ "HHC019977": {
+  "b": "Biết tứ giác $ABCD$ nội tiếp (ý a).",
+  "c": "Biết tứ giác $ABCD$ nội tiếp (ý a)."
+ },
+ "HHC018866": {},
+ "HHC018870": {
+  "b": "Biết $AHKC$ là tứ giác nội tiếp (ý a)."
+ },
+ "HHC018989": {
+  "b": "Biết $AM$ là tia phân giác của $\\widehat{BAC}$ (ý a).",
+  "c": "Kẻ $ME\\perp AB$ ($E\\in AB$), $MF\\perp AC$ ($F\\in AC$). Biết $\\triangle MEF$ cân tại $M$ (ý b)."
+ },
+ "HHC019136": {
+  "b": "Vẽ hai đường thẳng $a$ và $b$ sao cho chúng cắt nhau tại điểm $E$.",
+  "c": "Vẽ hai đường thẳng $a$ và $b$ sao cho chúng cắt nhau tại điểm $E$. Vẽ hai điểm $C$ và $D$ nằm trên đường thẳng $a$ sao cho điểm $E$ nằm giữa hai điểm $C$ và $D$. Lấy trên đường thẳng $b$ điểm $F$ khác điểm $E$. Vẽ đường thẳng đi qua hai điểm $F$ và $D$.",
+  "d": "Vẽ hai đường thẳng $a$ và $b$ sao cho chúng cắt nhau tại điểm $E$. Vẽ hai điểm $C$ và $D$ nằm trên đường thẳng $a$ sao cho điểm $E$ nằm giữa hai điểm $C$ và $D$. Lấy trên đường thẳng $b$ điểm $F$ khác điểm $E$. Vẽ đường thẳng đi qua hai điểm $F$ và $D$."
+ },
+ "HHC019927": {
+  "c": "Tia $MC$ cắt tia $BD$ tại $K$. Biết $MI\\cdot MK=\\dfrac{3R^2}{4}$ (ý b)."
+ },
+ "HHC019932": {
+  "b": "Biết bốn điểm $A$, $F$, $D$, $C$ cùng thuộc một đường tròn (ý a).",
+  "c": "Gọi $M$ là trung điểm của đoạn thẳng $BC$, $K$ là giao điểm của hai đường thẳng $BC$ và $EF$. Biết $FB$ là tia phân giác của góc $DFK$ (ý b)."
+ },
+ "HHC019936": {
+  "c": "Gọi $H$ là giao điểm của $AE$ và $CD$. Biết $OA=3\\cdot OH$ (ý b)."
+ },
+ "HHC019940": {
+  "b": "Biết năm điểm $A$, $B$, $D$, $E$, $F$ cùng nằm trên một đường tròn (ý a).",
+  "c": "Biết năm điểm $A$, $B$, $D$, $E$, $F$ cùng nằm trên một đường tròn (ý a). Biết $DF\\parallel BE$ (ý b)."
+ },
+ "HHC019943": {
+  "b": "Biết diện tích mặt bàn ban đầu là $0{,}5024\\ \\text{m}^2$ (ý a)."
+ },
+ "HHC019948": {
+  "b": "Biết bốn điểm $A$, $B$, $D$, $E$ cùng thuộc một đường tròn (ý a).",
+  "c": "Tiếp tuyến tại $C$ của đường tròn $(O)$ cắt tia $AD$ và tia $AE$ lần lượt ở $H$ và $K$."
+ },
+ "HHC019951": {
+  "b": "Biết diện tích mặt bàn là $1{,}13\\ \\text{m}^2$ (ý a)."
+ },
+ "HHC019954": {
+  "b": "Biết tứ giác $AEHF$ là tứ giác nội tiếp (ý a).",
+  "c": "Đường tròn ngoại tiếp tứ giác $AEHF$ cắt đường tròn $(O)$ tại điểm thứ hai là $G$ khác $A$ và cắt đường thẳng $BG$ tại $T$ khác $G$."
+ },
+ "HHC019961": {
+  "c": "Biết $OH\\cdot OA=R^2$ (ý b)."
+ },
+ "HHC019965": {
+  "b": "Biết bốn điểm $B$, $C$, $E$, $F$ cùng thuộc một đường tròn (ý a).",
+  "c": "Biết $KB\\cdot KC=KE\\cdot KF$ (ý b)."
+ },
+ "HHC019970": {
+  "c": "Kẻ đường kính $AK$ của đường tròn $(O)$. Biết tứ giác $AEDB$ nội tiếp (ý a)."
+ },
+ "HHC019974": {
+  "c": "Biết tứ giác $BCNP$ nội tiếp (ý a). Biết $\\triangle BAM\\backsim\\triangle QAC$ (ý b)."
+ }
+}
