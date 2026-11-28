@@ -1,0 +1,1138 @@
+[
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một chiếc loa bluetooth có giá niêm yết 400 000 đồng. Cửa hàng giảm giá 20%, sau đó giảm thêm 10% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua chiếc loa bluetooth đó?",
+  "dap_an": "$288000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá đã giảm ở lần thứ nhất**, nên không thể cộng $20\\%+10\\%$. Mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm; hai lần giảm thì **nhân hai tỉ số phần trăm còn lại** rồi lấy giá ban đầu nhân với kết quả.\n\n**Bước 1.** Sau lần giảm thứ nhất, giá còn lại bằng $100\\%-20\\%$ của giá niêm yết ban đầu.\n\n**Bước 2.** Lần giảm thứ hai tính trên giá mới, nên giá còn lại bằng $100\\%-10\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau hai lần giảm.\n\n**Chú ý:** giảm $20\\%$ rồi giảm $10\\%$ không bằng giảm một lần $30\\%$, vì hai lần giảm có hai giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-20\\%=80\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-10\\%=90\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $80\\%\\times 90\\%=0,8\\times 0,9=0,72=72\\%$ (giá niêm yết)\n\nGiá chiếc loa bluetooth sau hai lần giảm là: $400000\\times 72\\%=288000$ (đồng)\n\nĐáp số: $288000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đôi giày thể thao có giá 300 000 đồng. Cửa hàng giảm giá lần thứ nhất 10%, sau đó giảm giá lần thứ hai 30% so với giá đã giảm lần thứ nhất. Hỏi giá đôi giày thể thao sau hai lần giảm là bao nhiêu tiền?",
+  "dap_an": "$189000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá đã giảm ở lần thứ nhất**, nên không thể cộng $10\\%+30\\%$. Mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm; hai lần giảm thì **nhân hai tỉ số phần trăm còn lại** rồi lấy giá ban đầu nhân với kết quả.\n\n**Bước 1.** Sau lần giảm thứ nhất, giá còn lại bằng $100\\%-10\\%$ của giá niêm yết ban đầu.\n\n**Bước 2.** Lần giảm thứ hai tính trên giá mới, nên giá còn lại bằng $100\\%-30\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau hai lần giảm.\n\n**Chú ý:** giảm $10\\%$ rồi giảm $30\\%$ không bằng giảm một lần $40\\%$, vì hai lần giảm có hai giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-10\\%=90\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-30\\%=70\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $90\\%\\times 70\\%=0,9\\times 0,7=0,63=63\\%$ (giá niêm yết)\n\nGiá đôi giày thể thao sau hai lần giảm là: $300000\\times 63\\%=189000$ (đồng)\n\nĐáp số: $189000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một chiếc ti vi có giá niêm yết 12 000 000 đồng. Cửa hàng giảm giá 50%, sau đó giảm thêm 15% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua chiếc ti vi đó?",
+  "dap_an": "$5100000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá đã giảm ở lần thứ nhất**, nên không thể cộng $50\\%+15\\%$. Mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm; hai lần giảm thì **nhân hai tỉ số phần trăm còn lại** rồi lấy giá ban đầu nhân với kết quả.\n\n**Bước 1.** Sau lần giảm thứ nhất, giá còn lại bằng $100\\%-50\\%$ của giá niêm yết ban đầu.\n\n**Bước 2.** Lần giảm thứ hai tính trên giá mới, nên giá còn lại bằng $100\\%-15\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau hai lần giảm.\n\n**Chú ý:** giảm $50\\%$ rồi giảm $15\\%$ không bằng giảm một lần $65\\%$, vì hai lần giảm có hai giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-15\\%=85\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $50\\%\\times 85\\%=0,5\\times 0,85=0,425=42,5\\%$ (giá niêm yết)\n\nGiá chiếc ti vi sau hai lần giảm là: $12000000\\times 42,5\\%=5100000$ (đồng)\n\nĐáp số: $5100000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đôi giày thể thao có giá niêm yết 800 000 đồng. Cửa hàng giảm giá 30%, sau đó giảm thêm 25% trên giá đã giảm cho khách có thẻ thành viên. Mẹ Lan có thẻ thành viên thì phải trả bao nhiêu tiền để mua đôi giày thể thao đó?",
+  "dap_an": "$420000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá đã giảm ở lần thứ nhất**, nên không thể cộng $30\\%+25\\%$. Mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm; hai lần giảm thì **nhân hai tỉ số phần trăm còn lại** rồi lấy giá ban đầu nhân với kết quả.\n\n**Bước 1.** Sau lần giảm thứ nhất, giá còn lại bằng $100\\%-30\\%$ của giá niêm yết ban đầu.\n\n**Bước 2.** Lần giảm thứ hai tính trên giá mới, nên giá còn lại bằng $100\\%-25\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau hai lần giảm.\n\n**Chú ý:** giảm $30\\%$ rồi giảm $25\\%$ không bằng giảm một lần $55\\%$, vì hai lần giảm có hai giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-30\\%=70\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-25\\%=75\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $70\\%\\times 75\\%=0,7\\times 0,75=0,525=52,5\\%$ (giá niêm yết)\n\nGiá đôi giày thể thao sau hai lần giảm là: $800000\\times 52,5\\%=420000$ (đồng)\n\nĐáp số: $420000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng quần áo định bán chiếc cặp sách với giá 400 000 đồng. Để thu hút khách hàng, cửa hàng giảm giá hai lần liên tiếp: lần đầu giảm 20%, lần sau giảm 15% so với giá bán trước đó. Hỏi sau hai lần giảm giá thì chiếc cặp sách có giá bao nhiêu tiền?",
+  "dap_an": "$272000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá đều tính **trên giá bán ngay trước lần đó**: lần hai tính trên giá đã giảm ở lần một, không tính trên $400000$ đồng.\n\n**Bước 1.** Lần giảm thứ nhất: tìm $20\\%$ của giá ban đầu, đó là số tiền giảm đi.\n\n**Bước 2.** Lấy giá ban đầu trừ số tiền giảm đi để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Lần giảm thứ hai: lấy giá mới làm gốc, tìm $15\\%$ của nó là số tiền giảm đi.\n\n**Bước 4.** Trừ số tiền giảm đi ở lần hai khỏi giá sau lần một để được giá cuối cùng.\n\n**Chú ý:** không tính $15\\%$ của giá ban đầu ở lần giảm thứ hai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần giảm giá thứ nhất, giá chiếc cặp sách giảm đi: $400000\\times 20\\%=80000$ (đồng)\n\nGiá chiếc cặp sách sau lần giảm thứ nhất là: $400000-80000=320000$ (đồng)\n\nLần giảm giá thứ hai, giá chiếc cặp sách giảm đi: $320000\\times 15\\%=48000$ (đồng)\n\nGiá chiếc cặp sách sau hai lần giảm là: $320000-48000=272000$ (đồng)\n\nĐáp số: $272000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc máy tính bảng ở một cửa hàng quần áo có giá 4 000 000 đồng. Vì ế hàng nên cửa hàng giảm giá 10%, vẫn chưa bán được nên giảm tiếp 30% so với giá đã giảm. Hỏi giá cuối cùng của chiếc máy tính bảng là bao nhiêu tiền?",
+  "dap_an": "$2520000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá đều tính **trên giá bán ngay trước lần đó**: lần hai tính trên giá đã giảm ở lần một, không tính trên $4000000$ đồng.\n\n**Bước 1.** Lần giảm thứ nhất: tìm $10\\%$ của giá ban đầu, đó là số tiền giảm đi.\n\n**Bước 2.** Lấy giá ban đầu trừ số tiền giảm đi để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Lần giảm thứ hai: lấy giá mới làm gốc, tìm $30\\%$ của nó là số tiền giảm đi.\n\n**Bước 4.** Trừ số tiền giảm đi ở lần hai khỏi giá sau lần một để được giá cuối cùng.\n\n**Chú ý:** không tính $30\\%$ của giá ban đầu ở lần giảm thứ hai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần giảm giá thứ nhất, giá chiếc máy tính bảng giảm đi: $4000000\\times 10\\%=400000$ (đồng)\n\nGiá chiếc máy tính bảng sau lần giảm thứ nhất là: $4000000-400000=3600000$ (đồng)\n\nLần giảm giá thứ hai, giá chiếc máy tính bảng giảm đi: $3600000\\times 30\\%=1080000$ (đồng)\n\nGiá chiếc máy tính bảng sau hai lần giảm là: $3600000-1080000=2520000$ (đồng)\n\nĐáp số: $2520000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_a2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc nồi cơm điện ở một cửa hàng giày dép có giá 1 000 000 đồng. Vì ế hàng nên cửa hàng giảm giá 25%, vẫn chưa bán được nên giảm tiếp 40% so với giá đã giảm. Hỏi giá cuối cùng của chiếc nồi cơm điện là bao nhiêu tiền?",
+  "dap_an": "$450000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá đều tính **trên giá bán ngay trước lần đó**: lần hai tính trên giá đã giảm ở lần một, không tính trên $1000000$ đồng.\n\n**Bước 1.** Lần giảm thứ nhất: tìm $25\\%$ của giá ban đầu, đó là số tiền giảm đi.\n\n**Bước 2.** Lấy giá ban đầu trừ số tiền giảm đi để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Lần giảm thứ hai: lấy giá mới làm gốc, tìm $40\\%$ của nó là số tiền giảm đi.\n\n**Bước 4.** Trừ số tiền giảm đi ở lần hai khỏi giá sau lần một để được giá cuối cùng.\n\n**Chú ý:** không tính $40\\%$ của giá ban đầu ở lần giảm thứ hai.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLần giảm giá thứ nhất, giá chiếc nồi cơm điện giảm đi: $1000000\\times 25\\%=250000$ (đồng)\n\nGiá chiếc nồi cơm điện sau lần giảm thứ nhất là: $1000000-250000=750000$ (đồng)\n\nLần giảm giá thứ hai, giá chiếc nồi cơm điện giảm đi: $750000\\times 40\\%=300000$ (đồng)\n\nGiá chiếc nồi cơm điện sau hai lần giảm là: $750000-300000=450000$ (đồng)\n\nĐáp số: $450000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng thể thao giảm giá chiếc tủ lạnh hai lần liên tiếp: lần đầu giảm 50%, lần sau giảm 20% so với giá đang bán. Sau hai lần giảm, giá còn 6 000 000 đồng. Hỏi giá ban đầu của chiếc tủ lạnh là bao nhiêu tiền?",
+  "dap_an": "$15000000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm cho giá sau cùng bằng **tích hai tỉ số còn lại** của giá ban đầu. Đề cho giá sau cùng, nên tìm số phần trăm đó rồi **lấy giá sau cùng chia cho nó** để ra giá ban đầu.\n\n**Bước 1.** Tìm giá sau lần giảm thứ nhất và sau lần thứ hai bằng bao nhiêu phần trăm giá trước đó (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Đề cho giá sau hai lần giảm là 6 000 000 đồng, đó chính là $40\\%$ của giá ban đầu.\n\n**Bước 4.** Muốn tìm một số khi biết một phần trăm của nó, ta lấy số đã biết chia cho phần trăm đó.\n\n**Chú ý:** không lấy 6 000 000 đồng cộng thêm $50\\%+20\\%$ của nó, vì các phần trăm giảm không tính trên giá còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-20\\%=80\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $50\\%\\times 80\\%=0,5\\times 0,8=0,4=40\\%$ (giá ban đầu)\n\nGiá chiếc tủ lạnh ban đầu là: $6000000:40\\%=15000000$ (đồng)\n\nĐáp số: $15000000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một siêu thị điện máy giảm giá chiếc áo khoác hai lần liên tiếp: lần đầu giảm 10%, lần sau giảm 20% so với giá đang bán. Sau hai lần giảm, giá còn 144 000 đồng. Hỏi giá ban đầu của chiếc áo khoác là bao nhiêu tiền?",
+  "dap_an": "$200000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm cho giá sau cùng bằng **tích hai tỉ số còn lại** của giá ban đầu. Đề cho giá sau cùng, nên tìm số phần trăm đó rồi **lấy giá sau cùng chia cho nó** để ra giá ban đầu.\n\n**Bước 1.** Tìm giá sau lần giảm thứ nhất và sau lần thứ hai bằng bao nhiêu phần trăm giá trước đó (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Đề cho giá sau hai lần giảm là 144 000 đồng, đó chính là $72\\%$ của giá ban đầu.\n\n**Bước 4.** Muốn tìm một số khi biết một phần trăm của nó, ta lấy số đã biết chia cho phần trăm đó.\n\n**Chú ý:** không lấy 144 000 đồng cộng thêm $10\\%+20\\%$ của nó, vì các phần trăm giảm không tính trên giá còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-10\\%=90\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-20\\%=80\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $90\\%\\times 80\\%=0,9\\times 0,8=0,72=72\\%$ (giá ban đầu)\n\nGiá chiếc áo khoác ban đầu là: $144000:72\\%=200000$ (đồng)\n\nĐáp số: $200000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhân ngày Quốc tế Phụ nữ, một cửa hàng đồ chơi giảm giá chiếc váy 50%. Ngày hôm sau, cửa hàng giảm thêm 25% giá đang bán nên giá chiếc váy chỉ còn 150 000 đồng. Hỏi trước khi giảm giá thì chiếc váy có giá bao nhiêu tiền?",
+  "dap_an": "$400000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm cho giá sau cùng bằng **tích hai tỉ số còn lại** của giá ban đầu. Đề cho giá sau cùng, nên tìm số phần trăm đó rồi **lấy giá sau cùng chia cho nó** để ra giá ban đầu.\n\n**Bước 1.** Tìm giá sau lần giảm thứ nhất và sau lần thứ hai bằng bao nhiêu phần trăm giá trước đó (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Đề cho giá sau hai lần giảm là 150 000 đồng, đó chính là $37,5\\%$ của giá ban đầu.\n\n**Bước 4.** Muốn tìm một số khi biết một phần trăm của nó, ta lấy số đã biết chia cho phần trăm đó.\n\n**Chú ý:** không lấy 150 000 đồng cộng thêm $50\\%+25\\%$ của nó, vì các phần trăm giảm không tính trên giá còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-25\\%=75\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $50\\%\\times 75\\%=0,5\\times 0,75=0,375=37,5\\%$ (giá ban đầu)\n\nGiá chiếc váy ban đầu là: $150000:37,5\\%=400000$ (đồng)\n\nĐáp số: $400000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng giày dép giảm giá chiếc quạt điện 20% để nhập hàng mới. Sau một tuần vẫn còn hàng tồn nên cửa hàng giảm tiếp 50% so với giá trước đó và bán được với giá 200 000 đồng. Hỏi ban đầu giá chiếc quạt điện là bao nhiêu tiền?",
+  "dap_an": "$500000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi **ngược từng lần giảm**: giá sau lần hai bằng $50\\%$ giá sau lần một, nên chia để tìm giá sau lần một; rồi giá sau lần một bằng $80\\%$ giá ban đầu, nên chia tiếp để tìm giá ban đầu.\n\n**Bước 1.** Sau lần giảm thứ hai, giá còn $100\\%-50\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 2.** Lấy giá cuối cùng chia cho tỉ số phần trăm đó để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Sau lần giảm thứ nhất, giá còn $100\\%-20\\%$ của giá ban đầu.\n\n**Bước 4.** Lấy giá sau lần giảm thứ nhất chia cho tỉ số phần trăm này để được giá ban đầu.\n\n**Chú ý:** mỗi phép chia dùng đúng giá gốc của lần giảm đó; không chia giá cuối cho $80\\%$ ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ hai, giá còn: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ nhất)\n\nGiá chiếc quạt điện sau lần giảm thứ nhất là: $200000:50\\%=400000$ (đồng)\n\nSau lần giảm giá thứ nhất, giá còn: $100\\%-20\\%=80\\%$ (giá ban đầu)\n\nGiá chiếc quạt điện ban đầu là: $400000:80\\%=500000$ (đồng)\n\nĐáp số: $500000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc áo khoác bị giảm giá 30%, rồi lại giảm tiếp 10% so với giá vừa giảm, và hiện bán với giá 126 000 đồng. Hỏi lúc chưa giảm giá, chiếc áo khoác có giá bao nhiêu tiền?",
+  "dap_an": "$200000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi **ngược từng lần giảm**: giá sau lần hai bằng $90\\%$ giá sau lần một, nên chia để tìm giá sau lần một; rồi giá sau lần một bằng $70\\%$ giá ban đầu, nên chia tiếp để tìm giá ban đầu.\n\n**Bước 1.** Sau lần giảm thứ hai, giá còn $100\\%-10\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 2.** Lấy giá cuối cùng chia cho tỉ số phần trăm đó để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Sau lần giảm thứ nhất, giá còn $100\\%-30\\%$ của giá ban đầu.\n\n**Bước 4.** Lấy giá sau lần giảm thứ nhất chia cho tỉ số phần trăm này để được giá ban đầu.\n\n**Chú ý:** mỗi phép chia dùng đúng giá gốc của lần giảm đó; không chia giá cuối cho $70\\%$ ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ hai, giá còn: $100\\%-10\\%=90\\%$ (giá sau lần giảm thứ nhất)\n\nGiá chiếc áo khoác sau lần giảm thứ nhất là: $126000:90\\%=140000$ (đồng)\n\nSau lần giảm giá thứ nhất, giá còn: $100\\%-30\\%=70\\%$ (giá ban đầu)\n\nGiá chiếc áo khoác ban đầu là: $140000:70\\%=200000$ (đồng)\n\nĐáp số: $200000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_b2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc đồng hồ đeo tay bị giảm giá 15%, rồi lại giảm tiếp 40% so với giá vừa giảm, và hiện bán với giá 408 000 đồng. Hỏi lúc chưa giảm giá, chiếc đồng hồ đeo tay có giá bao nhiêu tiền?",
+  "dap_an": "$800000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đi **ngược từng lần giảm**: giá sau lần hai bằng $60\\%$ giá sau lần một, nên chia để tìm giá sau lần một; rồi giá sau lần một bằng $85\\%$ giá ban đầu, nên chia tiếp để tìm giá ban đầu.\n\n**Bước 1.** Sau lần giảm thứ hai, giá còn $100\\%-40\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 2.** Lấy giá cuối cùng chia cho tỉ số phần trăm đó để được giá sau lần giảm thứ nhất.\n\n**Bước 3.** Sau lần giảm thứ nhất, giá còn $100\\%-15\\%$ của giá ban đầu.\n\n**Bước 4.** Lấy giá sau lần giảm thứ nhất chia cho tỉ số phần trăm này để được giá ban đầu.\n\n**Chú ý:** mỗi phép chia dùng đúng giá gốc của lần giảm đó; không chia giá cuối cho $85\\%$ ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ hai, giá còn: $100\\%-40\\%=60\\%$ (giá sau lần giảm thứ nhất)\n\nGiá chiếc đồng hồ đeo tay sau lần giảm thứ nhất là: $408000:60\\%=680000$ (đồng)\n\nSau lần giảm giá thứ nhất, giá còn: $100\\%-15\\%=85\\%$ (giá ban đầu)\n\nGiá chiếc đồng hồ đeo tay ban đầu là: $680000:85\\%=800000$ (đồng)\n\nĐáp số: $800000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_c_con",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng 40%, sau đó giảm tiếp 50% so với giá đã giảm. Hỏi sau hai lần giảm, giá của mặt hàng đó bằng bao nhiêu phần trăm giá ban đầu?",
+  "dap_an": "$30\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần biết giá tiền: coi giá ban đầu là $100\\%$, mỗi lần giảm thì nhân với tỉ số còn lại. Hai lần giảm cho giá cuối bằng **tích hai tỉ số còn lại**.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$; sau lần giảm thứ nhất, giá còn $100\\%-40\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn $100\\%-50\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Chú ý:** đáp số là phần trăm giá còn lại, không phải phần trăm đã giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-40\\%=60\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $60\\%\\times 50\\%=0,6\\times 0,5=0,3=30\\%$ (giá ban đầu)\n\nĐáp số: $30\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_c_con",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng 15%, sau đó giảm tiếp 50% so với giá đã giảm. Hỏi sau hai lần giảm, giá của mặt hàng đó bằng bao nhiêu phần trăm giá ban đầu?",
+  "dap_an": "$42,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Không cần biết giá tiền: coi giá ban đầu là $100\\%$, mỗi lần giảm thì nhân với tỉ số còn lại. Hai lần giảm cho giá cuối bằng **tích hai tỉ số còn lại**.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$; sau lần giảm thứ nhất, giá còn $100\\%-15\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn $100\\%-50\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Chú ý:** đáp số là phần trăm giá còn lại, không phải phần trăm đã giảm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-15\\%=85\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $85\\%\\times 50\\%=0,85\\times 0,5=0,425=42,5\\%$ (giá ban đầu)\n\nĐáp số: $42,5\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_c_giam",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá một chiếc áo được giảm 50%, rồi giảm tiếp 40% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo đã giảm tổng cộng bao nhiêu phần trăm so với giá ban đầu?",
+  "dap_an": "$70\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm **không cộng** phần trăm vì có hai giá gốc khác nhau. Coi giá ban đầu là $100\\%$, tìm giá sau hai lần giảm bằng cách nhân hai tỉ số còn lại, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$; sau lần giảm thứ nhất giá còn $100\\%-50\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn $100\\%-40\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết giá đã giảm tổng cộng bao nhiêu phần trăm.\n\n**Chú ý:** đáp số không phải $50\\%+40\\%=90\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-40\\%=60\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $50\\%\\times 60\\%=0,5\\times 0,6=0,3=30\\%$ (giá ban đầu)\n\nHai lần giảm tương đương một lần giảm: $100\\%-30\\%=70\\%$ (giá ban đầu)\n\nĐáp số: $70\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_c_giam",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng giảm giá một mặt hàng hai lần liên tiếp: lần đầu giảm 20%, lần sau giảm 10% so với giá đang bán. Hỏi hai lần giảm đó tương đương với một lần giảm bao nhiêu phần trăm so với giá ban đầu?",
+  "dap_an": "$28\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm **không cộng** phần trăm vì có hai giá gốc khác nhau. Coi giá ban đầu là $100\\%$, tìm giá sau hai lần giảm bằng cách nhân hai tỉ số còn lại, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$; sau lần giảm thứ nhất giá còn $100\\%-20\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn $100\\%-10\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết giá đã giảm tổng cộng bao nhiêu phần trăm.\n\n**Chú ý:** đáp số không phải $20\\%+10\\%=30\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-20\\%=80\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-10\\%=90\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $80\\%\\times 90\\%=0,8\\times 0,9=0,72=72\\%$ (giá ban đầu)\n\nHai lần giảm tương đương một lần giảm: $100\\%-72\\%=28\\%$ (giá ban đầu)\n\nĐáp số: $28\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_c_giam",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá một chiếc áo được giảm 30%, rồi giảm tiếp 30% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo đã giảm tổng cộng bao nhiêu phần trăm so với giá ban đầu?",
+  "dap_an": "$51\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai lần giảm **không cộng** phần trăm vì có hai giá gốc khác nhau. Coi giá ban đầu là $100\\%$, tìm giá sau hai lần giảm bằng cách nhân hai tỉ số còn lại, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Coi giá ban đầu là $100\\%$; sau lần giảm thứ nhất giá còn $100\\%-30\\%$.\n\n**Bước 2.** Sau lần giảm thứ hai, giá còn $100\\%-30\\%$ của giá sau lần giảm thứ nhất.\n\n**Bước 3.** Nhân hai tỉ số phần trăm để biết giá sau hai lần giảm bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết giá đã giảm tổng cộng bao nhiêu phần trăm.\n\n**Chú ý:** đáp số không phải $30\\%+30\\%=60\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-30\\%=70\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-30\\%=70\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $70\\%\\times 70\\%=0,7\\times 0,7=0,49=49\\%$ (giá ban đầu)\n\nHai lần giảm tương đương một lần giảm: $100\\%-49\\%=51\\%$ (giá ban đầu)\n\nĐáp số: $51\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc ti vi có giá 5 000 000 đồng. Cửa hàng giảm giá hai lần liên tiếp: lần một giảm 30%, lần hai giảm 40% so với giá đang bán. Hỏi tổng số tiền được giảm sau hai lần là bao nhiêu?",
+  "dap_an": "$2900000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền được giảm cả hai lần bằng **giá ban đầu trừ giá cuối cùng**. Tìm giá cuối bằng cách nhân hai tỉ số còn lại, rồi lấy hiệu.\n\n**Bước 1.** Tìm mỗi lần giảm, giá còn bằng bao nhiêu phần trăm giá trước đó.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với tỉ số vừa tìm được để ra giá cuối cùng.\n\n**Bước 4.** Lấy giá ban đầu trừ giá cuối cùng để biết tổng số tiền được giảm.\n\n**Chú ý:** không tính tổng tiền giảm bằng $70\\%$ của giá ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-30\\%=70\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-40\\%=60\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $70\\%\\times 60\\%=0,7\\times 0,6=0,42=42\\%$ (giá ban đầu)\n\nGiá chiếc ti vi sau hai lần giảm là: $5000000\\times 42\\%=2100000$ (đồng)\n\nSố tiền được giảm là: $5000000-2100000=2900000$ (đồng)\n\nĐáp số: $2900000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng quần áo niêm yết giá chiếc áo khoác là 240 000 đồng. Cửa hàng giảm giá 25%, sau đó giảm thêm 25% so với giá đã giảm. Hỏi sau hai lần giảm, chiếc áo khoác rẻ hơn lúc đầu bao nhiêu tiền?",
+  "dap_an": "$105000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số tiền được giảm cả hai lần bằng **giá ban đầu trừ giá cuối cùng**. Tìm giá cuối bằng cách nhân hai tỉ số còn lại, rồi lấy hiệu.\n\n**Bước 1.** Tìm mỗi lần giảm, giá còn bằng bao nhiêu phần trăm giá trước đó.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với tỉ số vừa tìm được để ra giá cuối cùng.\n\n**Bước 4.** Lấy giá ban đầu trừ giá cuối cùng để biết tổng số tiền được giảm.\n\n**Chú ý:** không tính tổng tiền giảm bằng $50\\%$ của giá ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-25\\%=75\\%$ (giá ban đầu)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-25\\%=75\\%$ (giá sau lần giảm thứ nhất)\n\nGiá sau hai lần giảm bằng: $75\\%\\times 75\\%=0,75\\times 0,75=0,5625=56,25\\%$ (giá ban đầu)\n\nGiá chiếc áo khoác sau hai lần giảm là: $240000\\times 56,25\\%=135000$ (đồng)\n\nSố tiền được giảm là: $240000-135000=105000$ (đồng)\n\nĐáp số: $105000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đôi giày thể thao có giá 500 000 đồng. Sau khi giảm giá 25%, cửa hàng giảm thêm một lần nữa và bán với giá 300 000 đồng. Hỏi lần giảm sau là giảm bao nhiêu phần trăm so với giá đang bán trước đó?",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá sau lần giảm thứ nhất**, nên phải tìm giá đó bằng tiền trước. Sau đó so giá cuối với giá này để biết giá cuối bằng bao nhiêu phần trăm, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Giá sau lần giảm thứ nhất bằng $100\\%-25\\%$ giá niêm yết; lấy giá niêm yết nhân với tỉ số đó.\n\n**Bước 2.** Lấy giá cuối cùng chia cho giá sau lần giảm thứ nhất để biết giá cuối bằng bao nhiêu phần trăm giá này.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết lần giảm thứ hai là bao nhiêu phần trăm.\n\n**Chú ý:** không so giá cuối với giá niêm yết ban đầu, vì lần giảm thứ hai tính trên giá sau lần thứ nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-25\\%=75\\%$ (giá niêm yết)\n\nGiá đôi giày thể thao sau lần giảm thứ nhất là: $500000\\times 75\\%=375000$ (đồng)\n\nGiá sau lần giảm thứ hai bằng: $300000:375000=0,8=80\\%$ (giá sau lần giảm thứ nhất)\n\nLần giảm giá thứ hai là: $100\\%-80\\%=20\\%$ (giá sau lần giảm thứ nhất)\n\nĐáp số: $20\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một siêu thị điện máy niêm yết giá chiếc đồng hồ đeo tay là 600 000 đồng. Cửa hàng giảm giá lần thứ nhất 10%, rồi giảm tiếp lần thứ hai nên giá chỉ còn 486 000 đồng. Hỏi lần giảm thứ hai là giảm bao nhiêu phần trăm so với giá sau lần giảm thứ nhất?",
+  "dap_an": "$10\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá sau lần giảm thứ nhất**, nên phải tìm giá đó bằng tiền trước. Sau đó so giá cuối với giá này để biết giá cuối bằng bao nhiêu phần trăm, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Giá sau lần giảm thứ nhất bằng $100\\%-10\\%$ giá niêm yết; lấy giá niêm yết nhân với tỉ số đó.\n\n**Bước 2.** Lấy giá cuối cùng chia cho giá sau lần giảm thứ nhất để biết giá cuối bằng bao nhiêu phần trăm giá này.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết lần giảm thứ hai là bao nhiêu phần trăm.\n\n**Chú ý:** không so giá cuối với giá niêm yết ban đầu, vì lần giảm thứ hai tính trên giá sau lần thứ nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-10\\%=90\\%$ (giá niêm yết)\n\nGiá chiếc đồng hồ đeo tay sau lần giảm thứ nhất là: $600000\\times 90\\%=540000$ (đồng)\n\nGiá sau lần giảm thứ hai bằng: $486000:540000=0,9=90\\%$ (giá sau lần giảm thứ nhất)\n\nLần giảm giá thứ hai là: $100\\%-90\\%=10\\%$ (giá sau lần giảm thứ nhất)\n\nĐáp số: $10\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng đồ gia dụng niêm yết giá chiếc tủ lạnh là 10 000 000 đồng. Cửa hàng giảm giá lần thứ nhất 50%, rồi giảm tiếp lần thứ hai nên giá chỉ còn 2 500 000 đồng. Hỏi lần giảm thứ hai là giảm bao nhiêu phần trăm so với giá sau lần giảm thứ nhất?",
+  "dap_an": "$50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lần giảm thứ hai tính trên **giá sau lần giảm thứ nhất**, nên phải tìm giá đó bằng tiền trước. Sau đó so giá cuối với giá này để biết giá cuối bằng bao nhiêu phần trăm, rồi lấy $100\\%$ trừ đi.\n\n**Bước 1.** Giá sau lần giảm thứ nhất bằng $100\\%-50\\%$ giá niêm yết; lấy giá niêm yết nhân với tỉ số đó.\n\n**Bước 2.** Lấy giá cuối cùng chia cho giá sau lần giảm thứ nhất để biết giá cuối bằng bao nhiêu phần trăm giá này.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết lần giảm thứ hai là bao nhiêu phần trăm.\n\n**Chú ý:** không so giá cuối với giá niêm yết ban đầu, vì lần giảm thứ hai tính trên giá sau lần thứ nhất.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá niêm yết)\n\nGiá chiếc tủ lạnh sau lần giảm thứ nhất là: $10000000\\times 50\\%=5000000$ (đồng)\n\nGiá sau lần giảm thứ hai bằng: $2500000:5000000=0,5=50\\%$ (giá sau lần giảm thứ nhất)\n\nLần giảm giá thứ hai là: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ nhất)\n\nĐáp số: $50\\%$"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng thể thao bán chiếc bàn học với giá niêm yết 1 200 000 đồng. Vì ế hàng nên cửa hàng giảm giá ba lần liên tiếp: lần một giảm 50%, lần hai giảm 30% so với giá sau lần một, lần ba giảm 10% so với giá sau lần hai. Hỏi sau ba lần giảm, giá chiếc bàn học là bao nhiêu tiền?",
+  "dap_an": "$378000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá cho một tỉ số còn lại tính trên **giá ngay trước đó**; ba lần giảm thì giá cuối bằng **tích ba tỉ số** nhân với giá ban đầu, không cộng dồn các phần trăm giảm.\n\n**Bước 1.** Với mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm của lần đó.\n\n**Bước 2.** Nhân lần lượt ba tỉ số phần trăm (đổi ra số thập phân) để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau ba lần giảm.\n\n**Chú ý:** không lấy $100\\%-(50\\%+30\\%+10\\%)$ vì ba lần giảm có ba giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-30\\%=70\\%$ (giá sau lần giảm thứ nhất)\n\nSau lần giảm giá thứ ba, giá bằng: $100\\%-10\\%=90\\%$ (giá sau lần giảm thứ hai)\n\nGiá sau ba lần giảm bằng: $50\\%\\times 70\\%\\times 90\\%=0,5\\times 0,7\\times 0,9=0,315=31,5\\%$ (giá niêm yết)\n\nGiá chiếc bàn học sau ba lần giảm là: $1200000\\times 31,5\\%=378000$ (đồng)\n\nĐáp số: $378000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc váy giá 200 000 đồng được giảm giá ba đợt: đợt đầu giảm 10%, đợt hai giảm 20% so với giá đang bán, đợt ba giảm 50% so với giá đang bán. Hỏi giá cuối cùng của chiếc váy là bao nhiêu tiền?",
+  "dap_an": "$72000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá cho một tỉ số còn lại tính trên **giá ngay trước đó**; ba lần giảm thì giá cuối bằng **tích ba tỉ số** nhân với giá ban đầu, không cộng dồn các phần trăm giảm.\n\n**Bước 1.** Với mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm của lần đó.\n\n**Bước 2.** Nhân lần lượt ba tỉ số phần trăm (đổi ra số thập phân) để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau ba lần giảm.\n\n**Chú ý:** không lấy $100\\%-(10\\%+20\\%+50\\%)$ vì ba lần giảm có ba giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-10\\%=90\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-20\\%=80\\%$ (giá sau lần giảm thứ nhất)\n\nSau lần giảm giá thứ ba, giá bằng: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ hai)\n\nGiá sau ba lần giảm bằng: $90\\%\\times 80\\%\\times 50\\%=0,9\\times 0,8\\times 0,5=0,36=36\\%$ (giá niêm yết)\n\nGiá chiếc váy sau ba lần giảm là: $200000\\times 36\\%=72000$ (đồng)\n\nĐáp số: $72000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc váy giá 300 000 đồng được giảm giá ba đợt: đợt đầu giảm 50%, đợt hai giảm 20% so với giá đang bán, đợt ba giảm 25% so với giá đang bán. Hỏi giá cuối cùng của chiếc váy là bao nhiêu tiền?",
+  "dap_an": "$90000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá cho một tỉ số còn lại tính trên **giá ngay trước đó**; ba lần giảm thì giá cuối bằng **tích ba tỉ số** nhân với giá ban đầu, không cộng dồn các phần trăm giảm.\n\n**Bước 1.** Với mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm của lần đó.\n\n**Bước 2.** Nhân lần lượt ba tỉ số phần trăm (đổi ra số thập phân) để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau ba lần giảm.\n\n**Chú ý:** không lấy $100\\%-(50\\%+20\\%+25\\%)$ vì ba lần giảm có ba giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-50\\%=50\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-20\\%=80\\%$ (giá sau lần giảm thứ nhất)\n\nSau lần giảm giá thứ ba, giá bằng: $100\\%-25\\%=75\\%$ (giá sau lần giảm thứ hai)\n\nGiá sau ba lần giảm bằng: $50\\%\\times 80\\%\\times 75\\%=0,5\\times 0,8\\times 0,75=0,3=30\\%$ (giá niêm yết)\n\nGiá chiếc váy sau ba lần giảm là: $300000\\times 30\\%=90000$ (đồng)\n\nĐáp số: $90000$ đồng"
+ },
+ {
+  "dang": "NDB02774",
+  "mau": "gk_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiếc quạt điện giá 600 000 đồng được giảm giá ba đợt: đợt đầu giảm 10%, đợt hai giảm 50% so với giá đang bán, đợt ba giảm 10% so với giá đang bán. Hỏi giá cuối cùng của chiếc quạt điện là bao nhiêu tiền?",
+  "dap_an": "$243000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi lần giảm giá cho một tỉ số còn lại tính trên **giá ngay trước đó**; ba lần giảm thì giá cuối bằng **tích ba tỉ số** nhân với giá ban đầu, không cộng dồn các phần trăm giảm.\n\n**Bước 1.** Với mỗi lần giảm, giá còn lại bằng $100\\%$ trừ đi phần trăm giảm của lần đó.\n\n**Bước 2.** Nhân lần lượt ba tỉ số phần trăm (đổi ra số thập phân) để biết giá cuối bằng bao nhiêu phần trăm giá ban đầu.\n\n**Bước 3.** Lấy giá ban đầu nhân với số phần trăm vừa tìm được để ra giá sau ba lần giảm.\n\n**Chú ý:** không lấy $100\\%-(10\\%+50\\%+10\\%)$ vì ba lần giảm có ba giá gốc khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSau lần giảm giá thứ nhất, giá bằng: $100\\%-10\\%=90\\%$ (giá niêm yết)\n\nSau lần giảm giá thứ hai, giá bằng: $100\\%-50\\%=50\\%$ (giá sau lần giảm thứ nhất)\n\nSau lần giảm giá thứ ba, giá bằng: $100\\%-10\\%=90\\%$ (giá sau lần giảm thứ hai)\n\nGiá sau ba lần giảm bằng: $90\\%\\times 50\\%\\times 90\\%=0,9\\times 0,5\\times 0,9=0,405=40,5\\%$ (giá niêm yết)\n\nGiá chiếc quạt điện sau ba lần giảm là: $600000\\times 40,5\\%=243000$ (đồng)\n\nĐáp số: $243000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi chai nước ép tăng 15% còn số chai bán ra mỗi ngày bớt 20% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng bán. Hai đại lượng cùng thay đổi nên doanh thu mới bằng **tích hai tỉ số phần trăm** so với lúc đầu; coi mỗi đại lượng lúc đầu là $100\\%$, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** So với $100\\%$ để biết doanh thu tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $15\\%$ với $20\\%$ để kết luận về doanh thu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%+15\\%=115\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%-20\\%=80\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $115\\%\\times 80\\%=1,15\\times 0,8=0,92=92\\%$ (doanh thu cũ)\n\nDoanh thu giảm đi: $100\\%-92\\%=8\\%$\n\nĐáp số: Giảm $8\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi cuốn truyện tranh tăng thêm 20% còn số cuốn bán ra mỗi ngày tăng thêm 60% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $92\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng bán. Hai đại lượng cùng thay đổi nên doanh thu mới bằng **tích hai tỉ số phần trăm** so với lúc đầu; coi mỗi đại lượng lúc đầu là $100\\%$, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** So với $100\\%$ để biết doanh thu tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $20\\%$ với $60\\%$ để kết luận về doanh thu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%+20\\%=120\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+60\\%=160\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $120\\%\\times 160\\%=1,2\\times 1,6=1,92=192\\%$ (doanh thu cũ)\n\nDoanh thu tăng: $192\\%-100\\%=92\\%$\n\nĐáp số: Tăng $92\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng bán suất cơm trưa. Tuần này cửa hàng giảm giá bán 40% so với tuần trước, nhưng số suất bán được tăng 30%. Hỏi doanh thu của tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "dap_an": "Giảm $22\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng bán. Hai đại lượng cùng thay đổi nên doanh thu mới bằng **tích hai tỉ số phần trăm** so với lúc đầu; coi mỗi đại lượng lúc đầu là $100\\%$, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** So với $100\\%$ để biết doanh thu tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$ với $30\\%$ để kết luận về doanh thu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-40\\%=60\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+30\\%=130\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $60\\%\\times 130\\%=0,6\\times 1,3=0,78=78\\%$ (doanh thu cũ)\n\nDoanh thu giảm đi: $100\\%-78\\%=22\\%$\n\nĐáp số: Giảm $22\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi điều chỉnh, giá mỗi suất cơm trưa tăng 10% còn số suất bán ra mỗi ngày tăng 60% so với trước. Hỏi doanh thu mỗi ngày tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $76\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng bán. Hai đại lượng cùng thay đổi nên doanh thu mới bằng **tích hai tỉ số phần trăm** so với lúc đầu; coi mỗi đại lượng lúc đầu là $100\\%$, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** So với $100\\%$ để biết doanh thu tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $10\\%$ với $60\\%$ để kết luận về doanh thu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%+10\\%=110\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+60\\%=160\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $110\\%\\times 160\\%=1,1\\times 1,6=1,76=176\\%$ (doanh thu cũ)\n\nDoanh thu tăng: $176\\%-100\\%=76\\%$\n\nĐáp số: Tăng $76\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng bán hộp bút màu. Tuần này cửa hàng hạ giá bán 10% so với tuần trước, nhưng số hộp bán được tăng thêm 10%. Hỏi doanh thu của tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "dap_an": "Giảm $1\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng bán. Hai đại lượng cùng thay đổi nên doanh thu mới bằng **tích hai tỉ số phần trăm** so với lúc đầu; coi mỗi đại lượng lúc đầu là $100\\%$, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) được doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** So với $100\\%$ để biết doanh thu tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $10\\%$ với $10\\%$ để kết luận về doanh thu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-10\\%=90\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+10\\%=110\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $90\\%\\times 110\\%=0,9\\times 1,1=0,99=99\\%$ (doanh thu cũ)\n\nDoanh thu giảm đi: $100\\%-99\\%=1\\%$\n\nĐáp số: Giảm $1\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi hạ giá bán chiếc bánh mì 20% thì doanh thu của cửa hàng giảm 50% so với trước. Hỏi số chiếc bán được tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $37,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá bán. Muốn biết số lượng mới bằng bao nhiêu phần trăm số lượng cũ thì lấy **phần trăm doanh thu chia cho phần trăm giá bán** (cùng so với lúc đầu).\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ (coi doanh thu cũ là $100\\%$).\n\n**Bước 2.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá bán (đổi ra số thập phân) để được số lượng mới bằng bao nhiêu phần trăm số lượng cũ.\n\n**Bước 4.** So với $100\\%$ để biết số lượng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hay tổng của $50\\%$ và $20\\%$ rồi kết luận ngay, vì doanh thu là tích của giá và số lượng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%-50\\%=50\\%$ (doanh thu cũ)\n\nGiá bán mới bằng: $100\\%-20\\%=80\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $50\\%:80\\%=0,5:0,8=0,625=62,5\\%$ (số lượng cũ)\n\nSố lượng bán giảm đi: $100\\%-62,5\\%=37,5\\%$\n\nĐáp số: Giảm $37,5\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi tăng giá bán cuốn truyện tranh 25% thì doanh thu của cửa hàng tăng 15% so với trước. Hỏi số cuốn bán được tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá bán. Muốn biết số lượng mới bằng bao nhiêu phần trăm số lượng cũ thì lấy **phần trăm doanh thu chia cho phần trăm giá bán** (cùng so với lúc đầu).\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ (coi doanh thu cũ là $100\\%$).\n\n**Bước 2.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá bán (đổi ra số thập phân) để được số lượng mới bằng bao nhiêu phần trăm số lượng cũ.\n\n**Bước 4.** So với $100\\%$ để biết số lượng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hay tổng của $15\\%$ và $25\\%$ rồi kết luận ngay, vì doanh thu là tích của giá và số lượng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+15\\%=115\\%$ (doanh thu cũ)\n\nGiá bán mới bằng: $100\\%+25\\%=125\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $115\\%:125\\%=1,15:1,25=0,92=92\\%$ (số lượng cũ)\n\nSố lượng bán giảm đi: $100\\%-92\\%=8\\%$\n\nĐáp số: Giảm $8\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau khi hạ giá bán hộp bút màu 20% thì doanh thu của cửa hàng tăng thêm 10% so với trước. Hỏi số hộp bán được tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $37,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá bán. Muốn biết số lượng mới bằng bao nhiêu phần trăm số lượng cũ thì lấy **phần trăm doanh thu chia cho phần trăm giá bán** (cùng so với lúc đầu).\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ (coi doanh thu cũ là $100\\%$).\n\n**Bước 2.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá bán (đổi ra số thập phân) để được số lượng mới bằng bao nhiêu phần trăm số lượng cũ.\n\n**Bước 4.** So với $100\\%$ để biết số lượng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hay tổng của $10\\%$ và $20\\%$ rồi kết luận ngay, vì doanh thu là tích của giá và số lượng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+10\\%=110\\%$ (doanh thu cũ)\n\nGiá bán mới bằng: $100\\%-20\\%=80\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $110\\%:80\\%=1,1:0,8=1,375=137,5\\%$ (số lượng cũ)\n\nSố lượng bán tăng: $137,5\\%-100\\%=37,5\\%$\n\nĐáp số: Tăng $37,5\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một quán giảm giá mỗi cuốn truyện tranh 20%, nhờ vậy doanh thu tăng thêm 5% so với tuần trước. Hỏi số cuốn truyện tranh bán ra thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $31,25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá bán. Muốn biết số lượng mới bằng bao nhiêu phần trăm số lượng cũ thì lấy **phần trăm doanh thu chia cho phần trăm giá bán** (cùng so với lúc đầu).\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ (coi doanh thu cũ là $100\\%$).\n\n**Bước 2.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá bán (đổi ra số thập phân) để được số lượng mới bằng bao nhiêu phần trăm số lượng cũ.\n\n**Bước 4.** So với $100\\%$ để biết số lượng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hay tổng của $5\\%$ và $20\\%$ rồi kết luận ngay, vì doanh thu là tích của giá và số lượng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+5\\%=105\\%$ (doanh thu cũ)\n\nGiá bán mới bằng: $100\\%-20\\%=80\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $105\\%:80\\%=1,05:0,8=1,3125=131,25\\%$ (số lượng cũ)\n\nSố lượng bán tăng: $131,25\\%-100\\%=31,25\\%$\n\nĐáp số: Tăng $31,25\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng bán ly trà sữa với giá 40 000 đồng mỗi ly. Sau khi điều chỉnh giá, số ly bán ra giảm 20% và doanh thu tăng 10% so với trước. Hỏi giá bán mới của mỗi ly là bao nhiêu tiền?",
+  "dap_an": "$55000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên giá bán $=$ doanh thu $:$ số lượng. Giá mới bằng **phần trăm doanh thu chia cho phần trăm số lượng** (so với lúc đầu), rồi nhân với giá cũ.\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu lúc đầu.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng lúc đầu.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm số lượng để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 4.** Lấy giá cũ nhân với số phần trăm vừa tìm được để ra giá mới.\n\n**Chú ý:** phải so từng đại lượng với lúc đầu ($110\\%$ và $80\\%$) rồi mới chia, không lấy hiệu hai phần trăm thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+10\\%=110\\%$ (doanh thu cũ)\n\nSố lượng bán mới bằng: $100\\%-20\\%=80\\%$ (số lượng bán cũ)\n\nGiá bán mới bằng: $110\\%:80\\%=1,1:0,8=1,375=137,5\\%$ (giá bán cũ)\n\nGiá bán mới của mỗi ly là: $40000\\times 137,5\\%=55000$ (đồng)\n\nĐáp số: $55000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cửa hàng bán suất cơm trưa với giá 30 000 đồng mỗi suất. Sau khi điều chỉnh giá, số suất bán ra bớt 20% và doanh thu tăng thêm 60% so với trước. Hỏi giá bán mới của mỗi suất là bao nhiêu tiền?",
+  "dap_an": "$60000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên giá bán $=$ doanh thu $:$ số lượng. Giá mới bằng **phần trăm doanh thu chia cho phần trăm số lượng** (so với lúc đầu), rồi nhân với giá cũ.\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu lúc đầu.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng lúc đầu.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm số lượng để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 4.** Lấy giá cũ nhân với số phần trăm vừa tìm được để ra giá mới.\n\n**Chú ý:** phải so từng đại lượng với lúc đầu ($160\\%$ và $80\\%$) rồi mới chia, không lấy hiệu hai phần trăm thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+60\\%=160\\%$ (doanh thu cũ)\n\nSố lượng bán mới bằng: $100\\%-20\\%=80\\%$ (số lượng bán cũ)\n\nGiá bán mới bằng: $160\\%:80\\%=1,6:0,8=2=200\\%$ (giá bán cũ)\n\nGiá bán mới của mỗi suất là: $30000\\times 200\\%=60000$ (đồng)\n\nĐáp số: $60000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá mỗi chai nước ép là 25 000 đồng. Sau khi thay đổi giá bán, số chai bán được giảm 25% nên doanh thu bớt 40%. Hỏi giá mỗi chai nước ép sau khi thay đổi là bao nhiêu tiền?",
+  "dap_an": "$20000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên giá bán $=$ doanh thu $:$ số lượng. Giá mới bằng **phần trăm doanh thu chia cho phần trăm số lượng** (so với lúc đầu), rồi nhân với giá cũ.\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu lúc đầu.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng lúc đầu.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm số lượng để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 4.** Lấy giá cũ nhân với số phần trăm vừa tìm được để ra giá mới.\n\n**Chú ý:** phải so từng đại lượng với lúc đầu ($60\\%$ và $75\\%$) rồi mới chia, không lấy hiệu hai phần trăm thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%-40\\%=60\\%$ (doanh thu cũ)\n\nSố lượng bán mới bằng: $100\\%-25\\%=75\\%$ (số lượng bán cũ)\n\nGiá bán mới bằng: $60\\%:75\\%=0,6:0,75=0,8=80\\%$ (giá bán cũ)\n\nGiá bán mới của mỗi chai là: $25000\\times 80\\%=20000$ (đồng)\n\nĐáp số: $20000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Giá mỗi chiếc bánh kem nhỏ là 40 000 đồng. Sau khi thay đổi giá bán, số chiếc bán được tăng 25% nên doanh thu tăng thêm 50%. Hỏi giá mỗi chiếc bánh kem nhỏ sau khi thay đổi là bao nhiêu tiền?",
+  "dap_an": "$48000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên giá bán $=$ doanh thu $:$ số lượng. Giá mới bằng **phần trăm doanh thu chia cho phần trăm số lượng** (so với lúc đầu), rồi nhân với giá cũ.\n\n**Bước 1.** Tìm doanh thu mới bằng bao nhiêu phần trăm doanh thu lúc đầu.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng lúc đầu.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm số lượng để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 4.** Lấy giá cũ nhân với số phần trăm vừa tìm được để ra giá mới.\n\n**Chú ý:** phải so từng đại lượng với lúc đầu ($150\\%$ và $125\\%$) rồi mới chia, không lấy hiệu hai phần trăm thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDoanh thu mới bằng: $100\\%+50\\%=150\\%$ (doanh thu cũ)\n\nSố lượng bán mới bằng: $100\\%+25\\%=125\\%$ (số lượng bán cũ)\n\nGiá bán mới bằng: $150\\%:125\\%=1,5:1,25=1,2=120\\%$ (giá bán cũ)\n\nGiá bán mới của mỗi chiếc là: $40000\\times 120\\%=48000$ (đồng)\n\nĐáp số: $48000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Sau một tuần, doanh thu của cửa hàng A bằng 108% doanh thu của cửa hàng B mặc dù giá mỗi sản phẩm của cửa hàng B bằng 160% giá mỗi sản phẩm của cửa hàng A. Hỏi số sản phẩm bán được của cửa hàng A nhiều hơn hay ít hơn bao nhiêu phần trăm số sản phẩm bán được của cửa hàng B?",
+  "dap_an": "Nhiều hơn $72,8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng. Coi các đại lượng của cửa hàng B là $100\\%$: tìm giá của cửa hàng A bằng bao nhiêu phần trăm giá của cửa hàng B, rồi lấy **phần trăm doanh thu chia cho phần trăm giá** để được số lượng của cửa hàng A.\n\n**Bước 1.** Đề cho giá của cửa hàng B bằng $160\\%$ giá của cửa hàng A, nên lấy $100\\%$ chia cho $160\\%$ để biết giá của cửa hàng A bằng bao nhiêu phần trăm giá của cửa hàng B.\n\n**Bước 2.** Doanh thu của cửa hàng A bằng $108\\%$ doanh thu của cửa hàng B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá để biết số sản phẩm của cửa hàng A bằng bao nhiêu phần trăm số sản phẩm của cửa hàng B.\n\n**Bước 4.** So với $100\\%$ để biết cửa hàng A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** giá của cửa hàng B bằng $160\\%$ giá của cửa hàng A, không phải giá của cửa hàng A bằng $160\\%$ giá của cửa hàng B.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá của cửa hàng A bằng: $100\\%:160\\%=1:1,6=0,625=62,5\\%$ (giá của cửa hàng B)\n\nSố sản phẩm bán được của cửa hàng A bằng: $108\\%:62,5\\%=1,08:0,625=1,728=172,8\\%$ (số sản phẩm bán được của cửa hàng B)\n\nSố sản phẩm bán được của cửa hàng A nhiều hơn cửa hàng B: $172,8\\%-100\\%=72,8\\%$\n\nĐáp số: Nhiều hơn $72,8\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, doanh thu của rạp A bằng 126% doanh thu của rạp B, còn giá mỗi vé của rạp B bằng 200% giá của rạp A. Hỏi số vé bán ra của rạp A nhiều hơn hay ít hơn số vé bán ra của rạp B bao nhiêu phần trăm?",
+  "dap_an": "Nhiều hơn $152\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng. Coi các đại lượng của rạp B là $100\\%$: tìm giá của rạp A bằng bao nhiêu phần trăm giá của rạp B, rồi lấy **phần trăm doanh thu chia cho phần trăm giá** để được số lượng của rạp A.\n\n**Bước 1.** Đề cho giá của rạp B bằng $200\\%$ giá của rạp A, nên lấy $100\\%$ chia cho $200\\%$ để biết giá của rạp A bằng bao nhiêu phần trăm giá của rạp B.\n\n**Bước 2.** Doanh thu của rạp A bằng $126\\%$ doanh thu của rạp B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá để biết số vé của rạp A bằng bao nhiêu phần trăm số vé của rạp B.\n\n**Bước 4.** So với $100\\%$ để biết rạp A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** giá của rạp B bằng $200\\%$ giá của rạp A, không phải giá của rạp A bằng $200\\%$ giá của rạp B.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá của rạp A bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (giá của rạp B)\n\nSố vé bán được của rạp A bằng: $126\\%:50\\%=1,26:0,5=2,52=252\\%$ (số vé bán được của rạp B)\n\nSố vé bán được của rạp A nhiều hơn rạp B: $252\\%-100\\%=152\\%$\n\nĐáp số: Nhiều hơn $152\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, doanh thu của quán A bằng 108% doanh thu của quán B, còn giá mỗi ly nước của quán B bằng 250% giá của quán A. Hỏi số ly nước bán ra của quán A nhiều hơn hay ít hơn số ly nước bán ra của quán B bao nhiêu phần trăm?",
+  "dap_an": "Nhiều hơn $170\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng. Coi các đại lượng của quán B là $100\\%$: tìm giá của quán A bằng bao nhiêu phần trăm giá của quán B, rồi lấy **phần trăm doanh thu chia cho phần trăm giá** để được số lượng của quán A.\n\n**Bước 1.** Đề cho giá của quán B bằng $250\\%$ giá của quán A, nên lấy $100\\%$ chia cho $250\\%$ để biết giá của quán A bằng bao nhiêu phần trăm giá của quán B.\n\n**Bước 2.** Doanh thu của quán A bằng $108\\%$ doanh thu của quán B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá để biết số ly nước của quán A bằng bao nhiêu phần trăm số ly nước của quán B.\n\n**Bước 4.** So với $100\\%$ để biết quán A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** giá của quán B bằng $250\\%$ giá của quán A, không phải giá của quán A bằng $250\\%$ giá của quán B.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá của quán A bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (giá của quán B)\n\nSố ly nước bán được của quán A bằng: $108\\%:40\\%=1,08:0,4=2,7=270\\%$ (số ly nước bán được của quán B)\n\nSố ly nước bán được của quán A nhiều hơn quán B: $270\\%-100\\%=170\\%$\n\nĐáp số: Nhiều hơn $170\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một tuần, phim A thu được số tiền bằng 90% số tiền phim B thu được, và giá bán mỗi vé ở phim A bằng 75% giá bán mỗi vé ở phim B. Hỏi phim A bán được nhiều hơn hay ít hơn phim B bao nhiêu phần trăm số vé?",
+  "dap_an": "Nhiều hơn $20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá. Coi các đại lượng của phim B là $100\\%$, rồi lấy **phần trăm doanh thu của phim A chia cho phần trăm giá của phim A**.\n\n**Bước 1.** Doanh thu của phim A bằng $90\\%$ doanh thu của phim B.\n\n**Bước 2.** Giá mỗi vé của phim A bằng $75\\%$ giá mỗi vé của phim B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá (đổi ra số thập phân) để biết số vé của phim A bằng bao nhiêu phần trăm của phim B.\n\n**Bước 4.** So với $100\\%$ để biết phim A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** chia, không nhân: số lượng bằng doanh thu chia cho giá.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố vé bán được của phim A bằng: $90\\%:75\\%=0,9:0,75=1,2=120\\%$ (số vé bán được của phim B)\n\nSố vé bán được của phim A nhiều hơn phim B: $120\\%-100\\%=20\\%$\n\nĐáp số: Nhiều hơn $20\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một tuần, quán A thu được số tiền bằng 84% số tiền quán B thu được, và giá bán mỗi ly nước ở quán A bằng 150% giá bán mỗi ly nước ở quán B. Hỏi quán A bán được nhiều hơn hay ít hơn quán B bao nhiêu phần trăm số ly nước?",
+  "dap_an": "Ít hơn $44\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá. Coi các đại lượng của quán B là $100\\%$, rồi lấy **phần trăm doanh thu của quán A chia cho phần trăm giá của quán A**.\n\n**Bước 1.** Doanh thu của quán A bằng $84\\%$ doanh thu của quán B.\n\n**Bước 2.** Giá mỗi ly nước của quán A bằng $150\\%$ giá mỗi ly nước của quán B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá (đổi ra số thập phân) để biết số ly nước của quán A bằng bao nhiêu phần trăm của quán B.\n\n**Bước 4.** So với $100\\%$ để biết quán A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** chia, không nhân: số lượng bằng doanh thu chia cho giá.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố ly nước bán được của quán A bằng: $84\\%:150\\%=0,84:1,5=0,56=56\\%$ (số ly nước bán được của quán B)\n\nSố ly nước bán được của quán A ít hơn quán B: $100\\%-56\\%=44\\%$\n\nĐáp số: Ít hơn $44\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_d2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một tuần, phim A thu được số tiền bằng 84% số tiền phim B thu được, và giá bán mỗi vé ở phim A bằng 75% giá bán mỗi vé ở phim B. Hỏi phim A bán được nhiều hơn hay ít hơn phim B bao nhiêu phần trăm số vé?",
+  "dap_an": "Nhiều hơn $12\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên số lượng $=$ doanh thu $:$ giá. Coi các đại lượng của phim B là $100\\%$, rồi lấy **phần trăm doanh thu của phim A chia cho phần trăm giá của phim A**.\n\n**Bước 1.** Doanh thu của phim A bằng $84\\%$ doanh thu của phim B.\n\n**Bước 2.** Giá mỗi vé của phim A bằng $75\\%$ giá mỗi vé của phim B.\n\n**Bước 3.** Lấy phần trăm doanh thu chia cho phần trăm giá (đổi ra số thập phân) để biết số vé của phim A bằng bao nhiêu phần trăm của phim B.\n\n**Bước 4.** So với $100\\%$ để biết phim A bán nhiều hơn hay ít hơn bao nhiêu phần trăm.\n\n**Chú ý:** chia, không nhân: số lượng bằng doanh thu chia cho giá.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố vé bán được của phim A bằng: $84\\%:75\\%=0,84:0,75=1,12=112\\%$ (số vé bán được của phim B)\n\nSố vé bán được của phim A nhiều hơn phim B: $112\\%-100\\%=12\\%$\n\nĐáp số: Nhiều hơn $12\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một quán thu được 4 800 000 đồng từ việc bán chiếc bánh mì trong tuần đầu. Sang tuần sau, giá mỗi chiếc giảm 5% và số chiếc bán được tăng thêm 5% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "dap_an": "$4788000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên doanh thu mới bằng **tích hai tỉ số phần trăm** của giá và số lượng so với lúc đầu; sau đó lấy doanh thu cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** Lấy doanh thu cũ nhân với số phần trăm vừa tìm được để ra doanh thu mới.\n\n**Chú ý:** không cộng trừ thẳng $5\\%$ với $5\\%$ rồi lấy phần trăm của doanh thu cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-5\\%=95\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+5\\%=105\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $95\\%\\times 105\\%=0,95\\times 1,05=0,9975=99,75\\%$ (doanh thu cũ)\n\nDoanh thu mới là: $4800000\\times 99,75\\%=4788000$ (đồng)\n\nĐáp số: $4788000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một quán thu được 5 000 000 đồng từ việc bán chai nước ép trong tuần đầu. Sang tuần sau, giá mỗi chai bớt 40% và số chai bán được bớt 10% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "dap_an": "$2700000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên doanh thu mới bằng **tích hai tỉ số phần trăm** của giá và số lượng so với lúc đầu; sau đó lấy doanh thu cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** Lấy doanh thu cũ nhân với số phần trăm vừa tìm được để ra doanh thu mới.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$ với $10\\%$ rồi lấy phần trăm của doanh thu cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-40\\%=60\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%-10\\%=90\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $60\\%\\times 90\\%=0,6\\times 0,9=0,54=54\\%$ (doanh thu cũ)\n\nDoanh thu mới là: $5000000\\times 54\\%=2700000$ (đồng)\n\nĐáp số: $2700000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, cửa hàng bán suất cơm trưa thu được 8 000 000 đồng. Tháng này cửa hàng giảm giá bán 30%, nhưng số suất bán ra tăng thêm 50% so với tháng trước. Hỏi doanh thu tháng này là bao nhiêu tiền?",
+  "dap_an": "$8400000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên doanh thu mới bằng **tích hai tỉ số phần trăm** của giá và số lượng so với lúc đầu; sau đó lấy doanh thu cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** Lấy doanh thu cũ nhân với số phần trăm vừa tìm được để ra doanh thu mới.\n\n**Chú ý:** không cộng trừ thẳng $30\\%$ với $50\\%$ rồi lấy phần trăm của doanh thu cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-30\\%=70\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%+50\\%=150\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $70\\%\\times 150\\%=0,7\\times 1,5=1,05=105\\%$ (doanh thu cũ)\n\nDoanh thu mới là: $8000000\\times 105\\%=8400000$ (đồng)\n\nĐáp số: $8400000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một quán thu được 3 000 000 đồng từ việc bán chiếc bánh mì trong tuần đầu. Sang tuần sau, giá mỗi chiếc bớt 10% và số chiếc bán được giảm đi 50% so với tuần đầu. Hỏi tuần sau quán thu được bao nhiêu tiền?",
+  "dap_an": "$1350000$ đồng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá bán $\\times$ số lượng, nên doanh thu mới bằng **tích hai tỉ số phần trăm** của giá và số lượng so với lúc đầu; sau đó lấy doanh thu cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm giá bán mới bằng bao nhiêu phần trăm giá bán cũ.\n\n**Bước 2.** Tìm số lượng bán mới bằng bao nhiêu phần trăm số lượng bán cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) để biết doanh thu mới bằng bao nhiêu phần trăm doanh thu cũ.\n\n**Bước 4.** Lấy doanh thu cũ nhân với số phần trăm vừa tìm được để ra doanh thu mới.\n\n**Chú ý:** không cộng trừ thẳng $10\\%$ với $50\\%$ rồi lấy phần trăm của doanh thu cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $100\\%-10\\%=90\\%$ (giá bán cũ)\n\nSố lượng bán mới bằng: $100\\%-50\\%=50\\%$ (số lượng bán cũ)\n\nDoanh thu mới bằng: $90\\%\\times 50\\%=0,9\\times 0,5=0,45=45\\%$ (doanh thu cũ)\n\nDoanh thu mới là: $3000000\\times 45\\%=1350000$ (đồng)\n\nĐáp số: $1350000$ đồng"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nhà hàng dành số tiền cố định mỗi tháng để mua bột mì. Giá mỗi kg bột mì tăng 100% so với tháng trước. Hỏi nhà hàng phải mua số kg bột mì tăng hay giảm bao nhiêu phần trăm để số tiền chi ra không đổi?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí $=$ giá $\\times$ lượng mua. Chi phí **không đổi** nên giá tăng bao nhiêu lần thì lượng mua giảm đi bấy nhiêu lần (và ngược lại): lượng mới bằng $100\\%$ **chia** cho phần trăm giá mới.\n\n**Bước 1.** Tìm giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 2.** Chi phí không đổi, tức chi phí mới bằng $100\\%$ chi phí cũ; lấy $100\\%$ chia cho phần trăm giá để biết lượng mua mới bằng bao nhiêu phần trăm lượng cũ.\n\n**Bước 3.** So với $100\\%$ để biết lượng mua phải tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** lượng mua không thay đổi đúng bằng $100\\%$; phải chia $100\\%$ cho $200\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá mới bằng: $100\\%+100\\%=200\\%$ (giá cũ)\n\nLượng bột mì mua mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (lượng bột mì cũ)\n\nLượng bột mì mua giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Mỗi tháng một quán ăn mua thịt heo với tổng số tiền không đổi. Tháng này giá thịt heo giảm 50% so với tháng trước. Hỏi để tổng số tiền mua thịt heo không đổi thì lượng thịt heo mua tháng này phải tăng hay giảm bao nhiêu phần trăm so với tháng trước?",
+  "dap_an": "Tăng $100\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí $=$ giá $\\times$ lượng mua. Chi phí **không đổi** nên giá tăng bao nhiêu lần thì lượng mua giảm đi bấy nhiêu lần (và ngược lại): lượng mới bằng $100\\%$ **chia** cho phần trăm giá mới.\n\n**Bước 1.** Tìm giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 2.** Chi phí không đổi, tức chi phí mới bằng $100\\%$ chi phí cũ; lấy $100\\%$ chia cho phần trăm giá để biết lượng mua mới bằng bao nhiêu phần trăm lượng cũ.\n\n**Bước 3.** So với $100\\%$ để biết lượng mua phải tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** lượng mua không thay đổi đúng bằng $50\\%$; phải chia $100\\%$ cho $50\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá mới bằng: $100\\%-50\\%=50\\%$ (giá cũ)\n\nLượng thịt heo mua mới bằng: $100\\%:50\\%=1:0,5=2=200\\%$ (lượng thịt heo cũ)\n\nLượng thịt heo mua tăng: $200\\%-100\\%=100\\%$\n\nĐáp số: Tăng $100\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Mỗi tháng một quán ăn mua đường với tổng số tiền không đổi. Tháng này giá đường giảm 50% so với tháng trước. Hỏi để tổng số tiền mua đường không đổi thì lượng đường mua tháng này phải tăng hay giảm bao nhiêu phần trăm so với tháng trước?",
+  "dap_an": "Tăng $100\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí $=$ giá $\\times$ lượng mua. Chi phí **không đổi** nên giá tăng bao nhiêu lần thì lượng mua giảm đi bấy nhiêu lần (và ngược lại): lượng mới bằng $100\\%$ **chia** cho phần trăm giá mới.\n\n**Bước 1.** Tìm giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 2.** Chi phí không đổi, tức chi phí mới bằng $100\\%$ chi phí cũ; lấy $100\\%$ chia cho phần trăm giá để biết lượng mua mới bằng bao nhiêu phần trăm lượng cũ.\n\n**Bước 3.** So với $100\\%$ để biết lượng mua phải tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** lượng mua không thay đổi đúng bằng $50\\%$; phải chia $100\\%$ cho $50\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá mới bằng: $100\\%-50\\%=50\\%$ (giá cũ)\n\nLượng đường mua mới bằng: $100\\%:50\\%=1:0,5=2=200\\%$ (lượng đường cũ)\n\nLượng đường mua tăng: $200\\%-100\\%=100\\%$\n\nĐáp số: Tăng $100\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nhà hàng dành số tiền cố định mỗi tháng để mua thịt heo. Giá mỗi kg thịt heo bớt 60% so với tháng trước. Hỏi nhà hàng phải mua số kg thịt heo tăng hay giảm bao nhiêu phần trăm để số tiền chi ra không đổi?",
+  "dap_an": "Tăng $150\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chi phí $=$ giá $\\times$ lượng mua. Chi phí **không đổi** nên giá tăng bao nhiêu lần thì lượng mua giảm đi bấy nhiêu lần (và ngược lại): lượng mới bằng $100\\%$ **chia** cho phần trăm giá mới.\n\n**Bước 1.** Tìm giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 2.** Chi phí không đổi, tức chi phí mới bằng $100\\%$ chi phí cũ; lấy $100\\%$ chia cho phần trăm giá để biết lượng mua mới bằng bao nhiêu phần trăm lượng cũ.\n\n**Bước 3.** So với $100\\%$ để biết lượng mua phải tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** lượng mua không thay đổi đúng bằng $60\\%$; phải chia $100\\%$ cho $40\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá mới bằng: $100\\%-60\\%=40\\%$ (giá cũ)\n\nLượng thịt heo mua mới bằng: $100\\%:40\\%=1:0,4=2,5=250\\%$ (lượng thịt heo cũ)\n\nLượng thịt heo mua tăng: $250\\%-100\\%=150\\%$\n\nĐáp số: Tăng $150\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Doanh thu bán ly trà sữa hôm nay bằng 110% doanh thu hôm qua, còn số ly bán được hôm nay bằng 80% số ly bán được hôm qua. Hỏi giá bán mỗi ly hôm nay tăng hay giảm bao nhiêu phần trăm so với hôm qua?",
+  "dap_an": "Tăng $37,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên giá $=$ doanh thu $:$ số lượng. Lấy **phần trăm doanh thu chia cho phần trăm số lượng** để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 1.** Đề cho sẵn doanh thu mới bằng $110\\%$ doanh thu cũ và số lượng mới bằng $80\\%$ số lượng cũ.\n\n**Bước 2.** Lấy phần trăm doanh thu chia cho phần trăm số lượng (đổi ra số thập phân) để được giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 3.** So với $100\\%$ để biết giá tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** phải chia hai tỉ số phần trăm, không lấy hiệu $110\\%-80\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $110\\%:80\\%=1,1:0,8=1,375=137,5\\%$ (giá bán cũ)\n\nGiá bán mỗi ly tăng: $137,5\\%-100\\%=37,5\\%$\n\nĐáp số: Tăng $37,5\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tuần này một cửa hàng thu được số tiền bằng 90% tuần trước nhờ bán chiếc bánh kem nhỏ, và số chiếc bán ra bằng 60% tuần trước. Hỏi giá mỗi chiếc tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "dap_an": "Tăng $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên giá $=$ doanh thu $:$ số lượng. Lấy **phần trăm doanh thu chia cho phần trăm số lượng** để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 1.** Đề cho sẵn doanh thu mới bằng $90\\%$ doanh thu cũ và số lượng mới bằng $60\\%$ số lượng cũ.\n\n**Bước 2.** Lấy phần trăm doanh thu chia cho phần trăm số lượng (đổi ra số thập phân) để được giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 3.** So với $100\\%$ để biết giá tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** phải chia hai tỉ số phần trăm, không lấy hiệu $90\\%-60\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $90\\%:60\\%=0,9:0,6=1,5=150\\%$ (giá bán cũ)\n\nGiá bán mỗi chiếc tăng: $150\\%-100\\%=50\\%$\n\nĐáp số: Tăng $50\\%$"
+ },
+ {
+  "dang": "NDB02775",
+  "mau": "dt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tuần này một cửa hàng thu được số tiền bằng 108% tuần trước nhờ bán cuốn truyện tranh, và số cuốn bán ra bằng 60% tuần trước. Hỏi giá mỗi cuốn tuần này tăng hay giảm bao nhiêu phần trăm so với tuần trước?",
+  "dap_an": "Tăng $80\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Doanh thu $=$ giá $\\times$ số lượng, nên giá $=$ doanh thu $:$ số lượng. Lấy **phần trăm doanh thu chia cho phần trăm số lượng** để biết giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 1.** Đề cho sẵn doanh thu mới bằng $108\\%$ doanh thu cũ và số lượng mới bằng $60\\%$ số lượng cũ.\n\n**Bước 2.** Lấy phần trăm doanh thu chia cho phần trăm số lượng (đổi ra số thập phân) để được giá mới bằng bao nhiêu phần trăm giá cũ.\n\n**Bước 3.** So với $100\\%$ để biết giá tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** phải chia hai tỉ số phần trăm, không lấy hiệu $108\\%-60\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nGiá bán mới bằng: $108\\%:60\\%=1,08:0,6=1,8=180\\%$ (giá bán cũ)\n\nGiá bán mỗi cuốn tăng: $180\\%-100\\%=80\\%$\n\nĐáp số: Tăng $80\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài của một miếng đất hình chữ nhật tăng thêm 20%, chiều rộng giảm đi 40%. Hỏi diện tích miếng đất đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "dap_an": "Giảm $28\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Coi chiều dài, chiều rộng lúc đầu đều là $100\\%$; diện tích mới bằng **tích hai tỉ số phần trăm** mới, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $20\\%$ với $40\\%$ để ra phần trăm diện tích thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+20\\%=120\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-40\\%=60\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $120\\%\\times 60\\%=1,2\\times 0,6=0,72=72\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-72\\%=28\\%$\n\nĐáp số: Giảm $28\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một sân trường hình chữ nhật. Nếu bớt chiều dài 30% và tăng thêm chiều rộng 30% thì diện tích của nó thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $9\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Coi chiều dài, chiều rộng lúc đầu đều là $100\\%$; diện tích mới bằng **tích hai tỉ số phần trăm** mới, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $30\\%$ với $30\\%$ để ra phần trăm diện tích thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-30\\%=70\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+30\\%=130\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $70\\%\\times 130\\%=0,7\\times 1,3=0,91=91\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-91\\%=9\\%$\n\nĐáp số: Giảm $9\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài của một sân trường hình chữ nhật tăng 5%, chiều rộng giảm đi 10%. Hỏi diện tích sân trường đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "dap_an": "Giảm $5,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Coi chiều dài, chiều rộng lúc đầu đều là $100\\%$; diện tích mới bằng **tích hai tỉ số phần trăm** mới, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $5\\%$ với $10\\%$ để ra phần trăm diện tích thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+5\\%=105\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-10\\%=90\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $105\\%\\times 90\\%=1,05\\times 0,9=0,945=94,5\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-94,5\\%=5,5\\%$\n\nĐáp số: Giảm $5,5\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài của một mặt bàn hình chữ nhật giảm 40%, chiều rộng giảm đi 30%. Hỏi diện tích mặt bàn đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "dap_an": "Giảm $58\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Coi chiều dài, chiều rộng lúc đầu đều là $100\\%$; diện tích mới bằng **tích hai tỉ số phần trăm** mới, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$ với $30\\%$ để ra phần trăm diện tích thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-40\\%=60\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-30\\%=70\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $60\\%\\times 70\\%=0,6\\times 0,7=0,42=42\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-42\\%=58\\%$\n\nĐáp số: Giảm $58\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài của một mặt bàn hình chữ nhật giảm 5%, chiều rộng bớt 50%. Hỏi diện tích mặt bàn đó tăng hay giảm bao nhiêu phần trăm so với ban đầu?",
+  "dap_an": "Giảm $52,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình chữ nhật $=$ chiều dài $\\times$ chiều rộng. Coi chiều dài, chiều rộng lúc đầu đều là $100\\%$; diện tích mới bằng **tích hai tỉ số phần trăm** mới, không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân) để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $5\\%$ với $50\\%$ để ra phần trăm diện tích thay đổi.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-5\\%=95\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-50\\%=50\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $95\\%\\times 50\\%=0,95\\times 0,5=0,475=47,5\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-47,5\\%=52,5\\%$\n\nĐáp số: Giảm $52,5\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một sân trường hình chữ nhật có diện tích $300\\ \\text{cm}^2$. Người ta giảm chiều dài 20%, tăng thêm chiều rộng 30%. Tính diện tích mới của sân trường đó (đơn vị xăng-ti-mét vuông).",
+  "dap_an": "$312\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của chiều dài và chiều rộng so với lúc đầu; sau đó lấy diện tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) được diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Lấy diện tích cũ nhân với số phần trăm vừa tìm để ra diện tích mới.\n\n**Chú ý:** không cộng trừ thẳng hai phần trăm của hai cạnh để tìm diện tích mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+30\\%=130\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $80\\%\\times 130\\%=0,8\\times 1,3=1,04=104\\%$ (diện tích cũ)\n\nDiện tích mới là: $300\\times 104\\%=312$ ($\\text{cm}^2$)\n\nĐáp số: $312\\ \\text{cm}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một màn hình ti vi hình chữ nhật có diện tích $1200\\ \\text{m}^2$. Người ta tăng thêm chiều dài 10%, bớt chiều rộng 30%. Tính diện tích mới của màn hình ti vi đó (đơn vị mét vuông).",
+  "dap_an": "$924\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của chiều dài và chiều rộng so với lúc đầu; sau đó lấy diện tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) được diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Lấy diện tích cũ nhân với số phần trăm vừa tìm để ra diện tích mới.\n\n**Chú ý:** không cộng trừ thẳng hai phần trăm của hai cạnh để tìm diện tích mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+10\\%=110\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-30\\%=70\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $110\\%\\times 70\\%=1,1\\times 0,7=0,77=77\\%$ (diện tích cũ)\n\nDiện tích mới là: $1200\\times 77\\%=924$ ($\\text{m}^2$)\n\nĐáp số: $924\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tờ giấy hình chữ nhật có diện tích $600\\ \\text{cm}^2$. Người ta giảm chiều dài 10%, tăng thêm chiều rộng 10%. Tính diện tích mới của tờ giấy đó (đơn vị xăng-ti-mét vuông).",
+  "dap_an": "$594\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của chiều dài và chiều rộng so với lúc đầu; sau đó lấy diện tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) được diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Lấy diện tích cũ nhân với số phần trăm vừa tìm để ra diện tích mới.\n\n**Chú ý:** không cộng trừ thẳng hai phần trăm của hai cạnh để tìm diện tích mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-10\\%=90\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+10\\%=110\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $90\\%\\times 110\\%=0,9\\times 1,1=0,99=99\\%$ (diện tích cũ)\n\nDiện tích mới là: $600\\times 99\\%=594$ ($\\text{cm}^2$)\n\nĐáp số: $594\\ \\text{cm}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tấm gỗ hình chữ nhật có diện tích $200\\ \\text{cm}^2$. Người ta giảm đi chiều dài 30%, bớt chiều rộng 40%. Tính diện tích mới của tấm gỗ đó (đơn vị xăng-ti-mét vuông).",
+  "dap_an": "$84\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của chiều dài và chiều rộng so với lúc đầu; sau đó lấy diện tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Tìm chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Nhân hai tỉ số phần trăm (đổi ra số thập phân) được diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Lấy diện tích cũ nhân với số phần trăm vừa tìm để ra diện tích mới.\n\n**Chú ý:** không cộng trừ thẳng hai phần trăm của hai cạnh để tìm diện tích mới.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-30\\%=70\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-40\\%=60\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $70\\%\\times 60\\%=0,7\\times 0,6=0,42=42\\%$ (diện tích cũ)\n\nDiện tích mới là: $200\\times 42\\%=84$ ($\\text{cm}^2$)\n\nĐáp số: $84\\ \\text{cm}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_c1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi giảm chiều dài của một tấm bìa hình chữ nhật đi 20%, cần tăng chiều rộng thêm bao nhiêu phần trăm để diện tích không đổi?",
+  "dap_an": "$25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng. Diện tích **không đổi** nên chiều dài mới bằng bao nhiêu phần trăm thì chiều rộng mới bằng $100\\%$ **chia** cho phần trăm đó.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Diện tích không đổi, tức diện tích mới bằng $100\\%$ diện tích cũ; lấy $100\\%$ chia cho tỉ số chiều dài để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Lấy tỉ số chiều rộng mới trừ $100\\%$ để biết chiều rộng phải tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** chiều rộng phải tăng thêm nhiều hơn $20\\%$, vì hai phần trăm này tính trên hai cạnh khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%:80\\%=1:0,8=1,25=125\\%$ (chiều rộng cũ)\n\nChiều rộng phải tăng thêm: $125\\%-100\\%=25\\%$ (chiều rộng cũ)\n\nĐáp số: $25\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_c1",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi giảm chiều dài của một sân trường hình chữ nhật đi 75%, cần tăng chiều rộng thêm bao nhiêu phần trăm để diện tích không đổi?",
+  "dap_an": "$300\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng. Diện tích **không đổi** nên chiều dài mới bằng bao nhiêu phần trăm thì chiều rộng mới bằng $100\\%$ **chia** cho phần trăm đó.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Diện tích không đổi, tức diện tích mới bằng $100\\%$ diện tích cũ; lấy $100\\%$ chia cho tỉ số chiều dài để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Lấy tỉ số chiều rộng mới trừ $100\\%$ để biết chiều rộng phải tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** chiều rộng phải tăng thêm nhiều hơn $75\\%$, vì hai phần trăm này tính trên hai cạnh khác nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-75\\%=25\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%:25\\%=1:0,25=4=400\\%$ (chiều rộng cũ)\n\nChiều rộng phải tăng thêm: $400\\%-100\\%=300\\%$ (chiều rộng cũ)\n\nĐáp số: $300\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_c2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một màn hình ti vi hình chữ nhật được tăng chiều dài 25%. Hỏi phải giảm chiều rộng đi bao nhiêu phần trăm (so với chiều rộng cũ) để diện tích vẫn như cũ?",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích **không đổi** nên chiều rộng mới bằng $100\\%$ **chia** cho tỉ số phần trăm của chiều dài mới; sau đó so với $100\\%$ để biết phải giảm bao nhiêu.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số chiều dài để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số chiều rộng mới để biết chiều rộng phải giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** chiều rộng giảm ít hơn $25\\%$, không giảm đúng $25\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%:125\\%=1:1,25=0,8=80\\%$ (chiều rộng cũ)\n\nChiều rộng phải giảm đi: $100\\%-80\\%=20\\%$ (chiều rộng cũ)\n\nĐáp số: $20\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_c2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi tăng chiều dài của một tờ giấy hình chữ nhật thêm 150%, cần giảm chiều rộng đi bao nhiêu phần trăm để diện tích không đổi?",
+  "dap_an": "$60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích **không đổi** nên chiều rộng mới bằng $100\\%$ **chia** cho tỉ số phần trăm của chiều dài mới; sau đó so với $100\\%$ để biết phải giảm bao nhiêu.\n\n**Bước 1.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số chiều dài để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số chiều rộng mới để biết chiều rộng phải giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** chiều rộng giảm ít hơn $150\\%$, không giảm đúng $150\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+150\\%=250\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (chiều rộng cũ)\n\nChiều rộng phải giảm đi: $100\\%-40\\%=60\\%$ (chiều rộng cũ)\n\nĐáp số: $60\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Người ta tăng thêm chiều dài của một màn hình ti vi hình chữ nhật 25% và điều chỉnh chiều rộng, kết quả là diện tích bớt 30% so với trước. Hỏi chiều rộng thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $44\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều rộng $=$ diện tích $:$ chiều dài. Muốn biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ thì lấy **phần trăm diện tích chia cho phần trăm chiều dài**.\n\n**Bước 1.** Tìm diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 2.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** Lấy phần trăm diện tích chia cho phần trăm chiều dài (đổi ra số thập phân) để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều rộng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hai phần trăm $30\\%$ và $25\\%$ làm đáp số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mới bằng: $100\\%-30\\%=70\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $70\\%:125\\%=0,7:1,25=0,56=56\\%$ (chiều rộng cũ)\n\nChiều rộng giảm đi: $100\\%-56\\%=44\\%$\n\nĐáp số: Giảm $44\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bức tranh hình chữ nhật được bớt chiều dài 50% và thay đổi cả chiều rộng, khi đó diện tích giảm đi 5% so với ban đầu. Hỏi chiều rộng đã tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $90\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều rộng $=$ diện tích $:$ chiều dài. Muốn biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ thì lấy **phần trăm diện tích chia cho phần trăm chiều dài**.\n\n**Bước 1.** Tìm diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 2.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** Lấy phần trăm diện tích chia cho phần trăm chiều dài (đổi ra số thập phân) để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều rộng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hai phần trăm $5\\%$ và $50\\%$ làm đáp số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mới bằng: $100\\%-5\\%=95\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $100\\%-50\\%=50\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $95\\%:50\\%=0,95:0,5=1,9=190\\%$ (chiều rộng cũ)\n\nChiều rộng tăng: $190\\%-100\\%=90\\%$\n\nĐáp số: Tăng $90\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tấm gỗ hình chữ nhật được giảm đi chiều dài 20% và thay đổi cả chiều rộng, khi đó diện tích tăng 40% so với ban đầu. Hỏi chiều rộng đã tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều rộng $=$ diện tích $:$ chiều dài. Muốn biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ thì lấy **phần trăm diện tích chia cho phần trăm chiều dài**.\n\n**Bước 1.** Tìm diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 2.** Tìm chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** Lấy phần trăm diện tích chia cho phần trăm chiều dài (đổi ra số thập phân) để biết chiều rộng mới bằng bao nhiêu phần trăm chiều rộng cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều rộng tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu hai phần trăm $40\\%$ và $20\\%$ làm đáp số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mới bằng: $100\\%+40\\%=140\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $140\\%:80\\%=1,4:0,8=1,75=175\\%$ (chiều rộng cũ)\n\nChiều rộng tăng: $175\\%-100\\%=75\\%$\n\nĐáp số: Tăng $75\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một hình chữ nhật. Khi bớt chiều dài 4,5 cm và giảm chiều rộng 40% thì diện tích mới giảm đi 46% so với diện tích ban đầu. Tính chiều dài mới.",
+  "dap_an": "$40,5$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều dài mới bằng **phần trăm diện tích chia cho phần trăm chiều rộng**. Từ đó biết 4,5 cm ứng với bao nhiêu phần trăm chiều dài cũ để tìm chiều dài cũ, rồi suy ra chiều dài mới.\n\n**Bước 1.** Tìm chiều rộng mới và diện tích mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Lấy phần trăm diện tích chia cho phần trăm chiều rộng để biết chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** So với $100\\%$ để biết chiều dài đã giảm bao nhiêu phần trăm; 4,5 cm ứng với số phần trăm đó nên chia để tìm chiều dài cũ.\n\n**Bước 4.** Trừ đi 4,5 cm để ra chiều dài mới.\n\n**Chú ý:** 4,5 cm là số đo cụ thể, còn các tỉ số khác là phần trăm; phải đổi 4,5 cm sang phần trăm của chiều dài cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng mới bằng: $100\\%-40\\%=60\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $100\\%-46\\%=54\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $54\\%:60\\%=0,54:0,6=0,9=90\\%$ (chiều dài cũ)\n\nChiều dài đã giảm đi: $100\\%-90\\%=10\\%$ (chiều dài cũ)\n\nChiều dài cũ là: $4,5:10\\%=45$ (cm)\n\nChiều dài mới là: $45-4,5=40,5$ (cm)\n\nĐáp số: $40,5$ cm"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một hình chữ nhật. Khi tăng thêm chiều dài 4,5 cm và giảm chiều rộng 25% thì diện tích mới giảm 17,5% so với diện tích ban đầu. Tính chiều dài mới.",
+  "dap_an": "$49,5$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều dài mới bằng **phần trăm diện tích chia cho phần trăm chiều rộng**. Từ đó biết 4,5 cm ứng với bao nhiêu phần trăm chiều dài cũ để tìm chiều dài cũ, rồi suy ra chiều dài mới.\n\n**Bước 1.** Tìm chiều rộng mới và diện tích mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Lấy phần trăm diện tích chia cho phần trăm chiều rộng để biết chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** So với $100\\%$ để biết chiều dài đã tăng bao nhiêu phần trăm; 4,5 cm ứng với số phần trăm đó nên chia để tìm chiều dài cũ.\n\n**Bước 4.** Cộng thêm 4,5 cm để ra chiều dài mới.\n\n**Chú ý:** 4,5 cm là số đo cụ thể, còn các tỉ số khác là phần trăm; phải đổi 4,5 cm sang phần trăm của chiều dài cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng mới bằng: $100\\%-25\\%=75\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $100\\%-17,5\\%=82,5\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $82,5\\%:75\\%=0,825:0,75=1,1=110\\%$ (chiều dài cũ)\n\nChiều dài đã tăng: $110\\%-100\\%=10\\%$ (chiều dài cũ)\n\nChiều dài cũ là: $4,5:10\\%=45$ (cm)\n\nChiều dài mới là: $45+4,5=49,5$ (cm)\n\nĐáp số: $49,5$ cm"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một hình chữ nhật. Khi tăng thêm chiều dài 6 cm và tăng thêm chiều rộng 20% thì diện tích mới tăng thêm 56% so với diện tích ban đầu. Tính chiều dài mới.",
+  "dap_an": "$26$ cm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích $=$ chiều dài $\\times$ chiều rộng, nên chiều dài mới bằng **phần trăm diện tích chia cho phần trăm chiều rộng**. Từ đó biết 6 cm ứng với bao nhiêu phần trăm chiều dài cũ để tìm chiều dài cũ, rồi suy ra chiều dài mới.\n\n**Bước 1.** Tìm chiều rộng mới và diện tích mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Lấy phần trăm diện tích chia cho phần trăm chiều rộng để biết chiều dài mới bằng bao nhiêu phần trăm chiều dài cũ.\n\n**Bước 3.** So với $100\\%$ để biết chiều dài đã tăng bao nhiêu phần trăm; 6 cm ứng với số phần trăm đó nên chia để tìm chiều dài cũ.\n\n**Bước 4.** Cộng thêm 6 cm để ra chiều dài mới.\n\n**Chú ý:** 6 cm là số đo cụ thể, còn các tỉ số khác là phần trăm; phải đổi 6 cm sang phần trăm của chiều dài cũ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều rộng mới bằng: $100\\%+20\\%=120\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $100\\%+56\\%=156\\%$ (diện tích cũ)\n\nChiều dài mới bằng: $156\\%:120\\%=1,56:1,2=1,3=130\\%$ (chiều dài cũ)\n\nChiều dài đã tăng: $130\\%-100\\%=30\\%$ (chiều dài cũ)\n\nChiều dài cũ là: $6:30\\%=20$ (cm)\n\nChiều dài mới là: $20+6=26$ (cm)\n\nĐáp số: $26$ cm"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hình vuông có độ dài cạnh tăng 50%. Hỏi diện tích của hình vuông đó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $125\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình vuông $=$ cạnh $\\times$ cạnh. Cạnh mới bằng bao nhiêu phần trăm cạnh cũ thì diện tích mới bằng **tích hai tỉ số bằng nhau đó**.\n\n**Bước 1.** Tìm cạnh mới bằng bao nhiêu phần trăm cạnh cũ.\n\n**Bước 2.** Diện tích mới bằng cạnh mới nhân cạnh mới, nên nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân).\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** diện tích không tăng đúng $50\\%$; phải nhân cạnh với chính nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh hình vuông mới bằng: $100\\%+50\\%=150\\%$ (cạnh hình vuông cũ)\n\nDiện tích mới bằng: $150\\%\\times 150\\%=1,5\\times 1,5=2,25=225\\%$ (diện tích cũ)\n\nDiện tích tăng: $225\\%-100\\%=125\\%$\n\nĐáp số: Tăng $125\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nếu bớt mỗi cạnh của một hình vuông 25% thì diện tích hình vuông thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $43,75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình vuông $=$ cạnh $\\times$ cạnh. Cạnh mới bằng bao nhiêu phần trăm cạnh cũ thì diện tích mới bằng **tích hai tỉ số bằng nhau đó**.\n\n**Bước 1.** Tìm cạnh mới bằng bao nhiêu phần trăm cạnh cũ.\n\n**Bước 2.** Diện tích mới bằng cạnh mới nhân cạnh mới, nên nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân).\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** diện tích không giảm đúng $25\\%$; phải nhân cạnh với chính nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh hình vuông mới bằng: $100\\%-25\\%=75\\%$ (cạnh hình vuông cũ)\n\nDiện tích mới bằng: $75\\%\\times 75\\%=0,75\\times 0,75=0,5625=56,25\\%$ (diện tích cũ)\n\nDiện tích giảm đi: $100\\%-56,25\\%=43,75\\%$\n\nĐáp số: Giảm $43,75\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nếu tăng mỗi cạnh của một hình vuông 25% thì diện tích hình vuông thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $56,25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích hình vuông $=$ cạnh $\\times$ cạnh. Cạnh mới bằng bao nhiêu phần trăm cạnh cũ thì diện tích mới bằng **tích hai tỉ số bằng nhau đó**.\n\n**Bước 1.** Tìm cạnh mới bằng bao nhiêu phần trăm cạnh cũ.\n\n**Bước 2.** Diện tích mới bằng cạnh mới nhân cạnh mới, nên nhân hai tỉ số phần trăm (đổi ra số thập phân rồi nhân).\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** diện tích không tăng đúng $25\\%$; phải nhân cạnh với chính nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh hình vuông mới bằng: $100\\%+25\\%=125\\%$ (cạnh hình vuông cũ)\n\nDiện tích mới bằng: $125\\%\\times 125\\%=1,25\\times 1,25=1,5625=156,25\\%$ (diện tích cũ)\n\nDiện tích tăng: $156,25\\%-100\\%=56,25\\%$\n\nĐáp số: Tăng $56,25\\%$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tờ giấy hình chữ nhật có chiều dài bớt 10% và chiều rộng tăng thêm 60% thì diện tích tăng $176\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "dap_an": "$400\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của hai cạnh. Tìm diện tích tăng bao nhiêu phần trăm diện tích cũ; phần diện tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm diện tích ban đầu.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Phần diện tích tăng thêm đề cho ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra diện tích ban đầu.\n\n**Chú ý:** không lấy $176$ nhân với phần trăm; $176$ là phần diện tích thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-10\\%=90\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+60\\%=160\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $90\\%\\times 160\\%=0,9\\times 1,6=1,44=144\\%$ (diện tích cũ)\n\nDiện tích tăng: $144\\%-100\\%=44\\%$ (diện tích cũ)\n\nDiện tích ban đầu là: $176:44\\%=400$ ($\\text{m}^2$)\n\nĐáp số: $400\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một miếng đất hình chữ nhật có chiều dài tăng 50% và chiều rộng bớt 20% thì diện tích tăng thêm $80\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "dap_an": "$400\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của hai cạnh. Tìm diện tích tăng bao nhiêu phần trăm diện tích cũ; phần diện tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm diện tích ban đầu.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Phần diện tích tăng thêm đề cho ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra diện tích ban đầu.\n\n**Chú ý:** không lấy $80$ nhân với phần trăm; $80$ là phần diện tích thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+50\\%=150\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-20\\%=80\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $150\\%\\times 80\\%=1,5\\times 0,8=1,2=120\\%$ (diện tích cũ)\n\nDiện tích tăng: $120\\%-100\\%=20\\%$ (diện tích cũ)\n\nDiện tích ban đầu là: $80:20\\%=400$ ($\\text{m}^2$)\n\nĐáp số: $400\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một sân trường hình chữ nhật. Nếu tăng chiều dài 5% và tăng thêm chiều rộng 20% thì diện tích tăng thêm $156\\ \\text{cm}^2$. Tính diện tích ban đầu của sân trường đó.",
+  "dap_an": "$600\\ \\text{cm}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của hai cạnh. Tìm diện tích tăng bao nhiêu phần trăm diện tích cũ; phần diện tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm diện tích ban đầu.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Phần diện tích tăng thêm đề cho ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra diện tích ban đầu.\n\n**Chú ý:** không lấy $156$ nhân với phần trăm; $156$ là phần diện tích thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+5\\%=105\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+20\\%=120\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $105\\%\\times 120\\%=1,05\\times 1,2=1,26=126\\%$ (diện tích cũ)\n\nDiện tích tăng: $126\\%-100\\%=26\\%$ (diện tích cũ)\n\nDiện tích ban đầu là: $156:26\\%=600$ ($\\text{cm}^2$)\n\nĐáp số: $600\\ \\text{cm}^2$"
+ },
+ {
+  "dang": "NDB02776",
+  "mau": "dtich_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một màn hình ti vi hình chữ nhật có chiều dài tăng 5% và chiều rộng tăng 50% thì diện tích tăng thêm $345\\ \\text{m}^2$. Hỏi diện tích ban đầu là bao nhiêu?",
+  "dap_an": "$600\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Diện tích mới bằng **tích hai tỉ số phần trăm** của hai cạnh. Tìm diện tích tăng bao nhiêu phần trăm diện tích cũ; phần diện tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm diện tích ban đầu.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích mới bằng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết diện tích tăng bao nhiêu phần trăm diện tích cũ.\n\n**Bước 4.** Phần diện tích tăng thêm đề cho ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra diện tích ban đầu.\n\n**Chú ý:** không lấy $345$ nhân với phần trăm; $345$ là phần diện tích thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+5\\%=105\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+50\\%=150\\%$ (chiều rộng cũ)\n\nDiện tích mới bằng: $105\\%\\times 150\\%=1,05\\times 1,5=1,575=157,5\\%$ (diện tích cũ)\n\nDiện tích tăng: $157,5\\%-100\\%=57,5\\%$ (diện tích cũ)\n\nDiện tích ban đầu là: $345:57,5\\%=600$ ($\\text{m}^2$)\n\nĐáp số: $600\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhờ máy móc mới, năng suất của đội thợ gặt tăng 100% so với dự kiến. Hỏi thời gian gặt xong một thửa ruộng giảm bao nhiêu phần trăm so với dự kiến?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi nên **năng suất và thời gian tỉ lệ nghịch**: công việc $=$ năng suất $\\times$ thời gian. Thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết thời gian giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không giảm đúng $100\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+100\\%=200\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhờ máy móc mới, năng suất của nhóm thợ xây tăng 100% so với dự kiến. Hỏi thời gian xây xong một bức tường giảm bao nhiêu phần trăm so với dự kiến?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi nên **năng suất và thời gian tỉ lệ nghịch**: công việc $=$ năng suất $\\times$ thời gian. Thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết thời gian giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không giảm đúng $100\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+100\\%=200\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhờ máy móc mới, năng suất của nhóm thợ sơn tăng 400% so với dự kiến. Hỏi thời gian sơn xong một toà nhà giảm bao nhiêu phần trăm so với dự kiến?",
+  "dap_an": "Giảm $80\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi nên **năng suất và thời gian tỉ lệ nghịch**: công việc $=$ năng suất $\\times$ thời gian. Thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết thời gian giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không giảm đúng $400\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+400\\%=500\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:500\\%=1:5=0,2=20\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-20\\%=80\\%$\n\nĐáp số: Giảm $80\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nhờ máy móc mới, năng suất của đội thợ gặt tăng 150% so với dự kiến. Hỏi thời gian gặt xong một thửa ruộng giảm bao nhiêu phần trăm so với dự kiến?",
+  "dap_an": "Giảm $60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Khối lượng công việc không đổi nên **năng suất và thời gian tỉ lệ nghịch**: công việc $=$ năng suất $\\times$ thời gian. Thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy $100\\%$ trừ tỉ số vừa tìm được để biết thời gian giảm đi bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không giảm đúng $150\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+150\\%=250\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-40\\%=60\\%$\n\nĐáp số: Giảm $60\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của nhóm thợ sơn giảm đi 75%. Hỏi thời gian sơn xong một toà nhà tăng bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $300\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ năng suất $\\times$ thời gian và công việc không đổi, nên thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để được thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không tăng đúng $75\\%$; phải chia $100\\%$ cho $25\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%-75\\%=25\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:25\\%=1:0,25=4=400\\%$ (thời gian cũ)\n\nThời gian tăng: $400\\%-100\\%=300\\%$\n\nĐáp số: Tăng $300\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của đội công nhân giảm đi 50%. Hỏi thời gian hoàn thành một công trình tăng bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $100\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ năng suất $\\times$ thời gian và công việc không đổi, nên thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để được thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không tăng đúng $50\\%$; phải chia $100\\%$ cho $50\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%-50\\%=50\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:50\\%=1:0,5=2=200\\%$ (thời gian cũ)\n\nThời gian tăng: $200\\%-100\\%=100\\%$\n\nĐáp số: Tăng $100\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Vì thời tiết xấu, năng suất làm việc của nhóm thợ sơn giảm đi 50%. Hỏi thời gian sơn xong một toà nhà tăng bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $100\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ năng suất $\\times$ thời gian và công việc không đổi, nên thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của năng suất mới.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để được thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** thời gian không tăng đúng $50\\%$; phải chia $100\\%$ cho $50\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%-50\\%=50\\%$ (năng suất cũ)\n\nThời gian mới bằng: $100\\%:50\\%=1:0,5=2=200\\%$ (thời gian cũ)\n\nThời gian tăng: $200\\%-100\\%=100\\%$\n\nĐáp số: Tăng $100\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 24 ngày. Nếu tăng số người thêm 300% (năng suất mỗi người như nhau) thì tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "dap_an": "$6$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người mới, rồi nhân với số ngày dự định.\n\n**Bước 1.** Tìm số người mới bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày cần làm.\n\n**Chú ý:** số người tăng thì số ngày giảm; không lấy số ngày trừ đi $300\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+300\\%=400\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:400\\%=1:4=0,25=25\\%$ (thời gian dự định)\n\nSố ngày cần để làm xong một đơn hàng là: $24\\times 25\\%=6$ (ngày)\n\nĐáp số: $6$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đội thợ may dự định may xong một lô quần áo trong 30 ngày. Nếu tăng số người thêm 400% (năng suất mỗi người như nhau) thì đội thợ may đó may xong một lô quần áo trong bao nhiêu ngày?",
+  "dap_an": "$6$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người mới, rồi nhân với số ngày dự định.\n\n**Bước 1.** Tìm số người mới bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày cần làm.\n\n**Chú ý:** số người tăng thì số ngày giảm; không lấy số ngày trừ đi $400\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+400\\%=500\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:500\\%=1:5=0,2=20\\%$ (thời gian dự định)\n\nSố ngày cần để may xong một lô quần áo là: $30\\times 20\\%=6$ (ngày)\n\nĐáp số: $6$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 20 ngày. Nếu tăng số người thêm 150% (năng suất mỗi người như nhau) thì tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "dap_an": "$8$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người mới, rồi nhân với số ngày dự định.\n\n**Bước 1.** Tìm số người mới bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày cần làm.\n\n**Chú ý:** số người tăng thì số ngày giảm; không lấy số ngày trừ đi $150\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+150\\%=250\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (thời gian dự định)\n\nSố ngày cần để làm xong một đơn hàng là: $20\\times 40\\%=8$ (ngày)\n\nĐáp số: $8$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đội thợ gặt dự định gặt xong một thửa ruộng trong 20 ngày. Nếu tăng số người thêm 400% (năng suất mỗi người như nhau) thì đội thợ gặt đó gặt xong một thửa ruộng trong bao nhiêu ngày?",
+  "dap_an": "$4$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người mới, rồi nhân với số ngày dự định.\n\n**Bước 1.** Tìm số người mới bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày cần làm.\n\n**Chú ý:** số người tăng thì số ngày giảm; không lấy số ngày trừ đi $400\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+400\\%=500\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:500\\%=1:5=0,2=20\\%$ (thời gian dự định)\n\nSố ngày cần để gặt xong một thửa ruộng là: $20\\times 20\\%=4$ (ngày)\n\nĐáp số: $4$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nhóm thợ sơn dự kiến sơn xong một toà nhà trong 60 ngày. Nhờ cải tiến, năng suất tăng 60% so với dự kiến. Hỏi nhóm thợ sơn đó hoàn thành sớm hơn dự kiến bao nhiêu ngày?",
+  "dap_an": "$22,5$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất và thời gian tỉ lệ nghịch (công việc không đổi): thời gian mới bằng $100\\%$ **chia** cho tỉ số năng suất. Tìm số ngày làm thật rồi lấy số ngày dự kiến trừ đi.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất dự kiến.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự kiến.\n\n**Bước 3.** Lấy số ngày dự kiến nhân với số phần trăm vừa tìm để biết số ngày làm thật.\n\n**Bước 4.** Lấy số ngày dự kiến trừ số ngày làm thật để biết xong sớm bao nhiêu ngày.\n\n**Chú ý:** đề hỏi xong sớm hơn bao nhiêu ngày, không phải số ngày làm thật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+60\\%=160\\%$ (năng suất dự kiến)\n\nThời gian mới bằng: $100\\%:160\\%=1:1,6=0,625=62,5\\%$ (thời gian dự kiến)\n\nSố ngày làm thật là: $60\\times 62,5\\%=37,5$ (ngày)\n\nSố ngày xong sớm hơn dự kiến là: $60-37,5=22,5$ (ngày)\n\nĐáp số: $22,5$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sẽ sơn xong một toà nhà trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 400% so với kế hoạch. Hỏi nhóm thợ sơn xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "dap_an": "$28,8$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất và thời gian tỉ lệ nghịch (công việc không đổi): thời gian mới bằng $100\\%$ **chia** cho tỉ số năng suất. Tìm số ngày làm thật rồi lấy số ngày dự kiến trừ đi.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất dự kiến.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự kiến.\n\n**Bước 3.** Lấy số ngày dự kiến nhân với số phần trăm vừa tìm để biết số ngày làm thật.\n\n**Bước 4.** Lấy số ngày dự kiến trừ số ngày làm thật để biết xong sớm bao nhiêu ngày.\n\n**Chú ý:** đề hỏi xong sớm hơn bao nhiêu ngày, không phải số ngày làm thật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+400\\%=500\\%$ (năng suất dự kiến)\n\nThời gian mới bằng: $100\\%:500\\%=1:5=0,2=20\\%$ (thời gian dự kiến)\n\nSố ngày làm thật là: $36\\times 20\\%=7,2$ (ngày)\n\nSố ngày xong sớm hơn dự kiến là: $36-7,2=28,8$ (ngày)\n\nĐáp số: $28,8$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Theo kế hoạch, tổ sản xuất sẽ làm xong một đơn hàng trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 150% so với kế hoạch. Hỏi tổ sản xuất xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "dap_an": "$21,6$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất và thời gian tỉ lệ nghịch (công việc không đổi): thời gian mới bằng $100\\%$ **chia** cho tỉ số năng suất. Tìm số ngày làm thật rồi lấy số ngày dự kiến trừ đi.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất dự kiến.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự kiến.\n\n**Bước 3.** Lấy số ngày dự kiến nhân với số phần trăm vừa tìm để biết số ngày làm thật.\n\n**Bước 4.** Lấy số ngày dự kiến trừ số ngày làm thật để biết xong sớm bao nhiêu ngày.\n\n**Chú ý:** đề hỏi xong sớm hơn bao nhiêu ngày, không phải số ngày làm thật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+150\\%=250\\%$ (năng suất dự kiến)\n\nThời gian mới bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (thời gian dự kiến)\n\nSố ngày làm thật là: $36\\times 40\\%=14,4$ (ngày)\n\nSố ngày xong sớm hơn dự kiến là: $36-14,4=21,6$ (ngày)\n\nĐáp số: $21,6$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sẽ sơn xong một toà nhà trong 36 ngày. Do làm việc hiệu quả hơn nên năng suất tăng 25% so với kế hoạch. Hỏi nhóm thợ sơn xong sớm hơn kế hoạch bao nhiêu ngày?",
+  "dap_an": "$7,2$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Năng suất và thời gian tỉ lệ nghịch (công việc không đổi): thời gian mới bằng $100\\%$ **chia** cho tỉ số năng suất. Tìm số ngày làm thật rồi lấy số ngày dự kiến trừ đi.\n\n**Bước 1.** Tìm năng suất mới bằng bao nhiêu phần trăm năng suất dự kiến.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số năng suất để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự kiến.\n\n**Bước 3.** Lấy số ngày dự kiến nhân với số phần trăm vừa tìm để biết số ngày làm thật.\n\n**Bước 4.** Lấy số ngày dự kiến trừ số ngày làm thật để biết xong sớm bao nhiêu ngày.\n\n**Chú ý:** đề hỏi xong sớm hơn bao nhiêu ngày, không phải số ngày làm thật.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nNăng suất mới bằng: $100\\%+25\\%=125\\%$ (năng suất dự kiến)\n\nThời gian mới bằng: $100\\%:125\\%=1:1,25=0,8=80\\%$ (thời gian dự kiến)\n\nSố ngày làm thật là: $36\\times 80\\%=28,8$ (ngày)\n\nSố ngày xong sớm hơn dự kiến là: $36-28,8=7,2$ (ngày)\n\nĐáp số: $7,2$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số người của đội thợ may giảm đi 37,5% so với dự định, năng suất mỗi người không đổi. Hỏi thời gian may xong một lô quần áo tăng bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người còn lại.\n\n**Bước 1.** Tìm số người còn lại bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** số người giảm $37,5\\%$ nhưng thời gian không tăng đúng $37,5\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%-37,5\\%=62,5\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:62,5\\%=1:0,625=1,6=160\\%$ (thời gian dự định)\n\nThời gian tăng: $160\\%-100\\%=60\\%$\n\nĐáp số: Tăng $60\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đội thợ gặt có một số người nghỉ nên số người làm việc giảm 80% so với ban đầu (năng suất mỗi người như nhau). Hỏi thời gian để gặt xong một thửa ruộng tăng thêm bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $400\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người còn lại.\n\n**Bước 1.** Tìm số người còn lại bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** số người giảm $80\\%$ nhưng thời gian không tăng đúng $80\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%-80\\%=20\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:20\\%=1:0,2=5=500\\%$ (thời gian dự định)\n\nThời gian tăng: $500\\%-100\\%=400\\%$\n\nĐáp số: Tăng $400\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số người của đội thợ gặt giảm đi 50% so với dự định, năng suất mỗi người không đổi. Hỏi thời gian gặt xong một thửa ruộng tăng bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Tăng $100\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi, năng suất mỗi người như nhau nên **số người và thời gian tỉ lệ nghịch**: thời gian mới bằng $100\\%$ **chia** cho tỉ số phần trăm của số người còn lại.\n\n**Bước 1.** Tìm số người còn lại bằng bao nhiêu phần trăm số người ban đầu.\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số số người để biết thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết thời gian tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** số người giảm $50\\%$ nhưng thời gian không tăng đúng $50\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%-50\\%=50\\%$ (số người ban đầu)\n\nThời gian mới bằng: $100\\%:50\\%=1:0,5=2=200\\%$ (thời gian dự định)\n\nThời gian tăng: $200\\%-100\\%=100\\%$\n\nĐáp số: Tăng $100\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn thời gian sơn xong một toà nhà giảm đi 20% so với kế hoạch thì nhóm thợ sơn cần tăng năng suất thêm bao nhiêu phần trăm so với kế hoạch?",
+  "dap_an": "$25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi nên năng suất và thời gian tỉ lệ nghịch: năng suất mới bằng $100\\%$ **chia** cho tỉ số phần trăm của thời gian mới, rồi so với $100\\%$.\n\n**Bước 1.** Tìm thời gian mới bằng bao nhiêu phần trăm thời gian dự định (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số thời gian để biết năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết năng suất phải tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** năng suất phải tăng nhiều hơn $20\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThời gian mới bằng: $100\\%-20\\%=80\\%$ (thời gian dự định)\n\nNăng suất mới bằng: $100\\%:80\\%=1:0,8=1,25=125\\%$ (năng suất cũ)\n\nNăng suất phải tăng thêm: $125\\%-100\\%=25\\%$ (năng suất cũ)\n\nĐáp số: $25\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Để làm xong một đơn hàng nhanh hơn, một tổ sản xuất muốn giảm thời gian làm đi 20% so với dự định. Hỏi năng suất lao động phải tăng thêm bao nhiêu phần trăm so với dự định?",
+  "dap_an": "$25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi nên năng suất và thời gian tỉ lệ nghịch: năng suất mới bằng $100\\%$ **chia** cho tỉ số phần trăm của thời gian mới, rồi so với $100\\%$.\n\n**Bước 1.** Tìm thời gian mới bằng bao nhiêu phần trăm thời gian dự định (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số thời gian để biết năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết năng suất phải tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** năng suất phải tăng nhiều hơn $20\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThời gian mới bằng: $100\\%-20\\%=80\\%$ (thời gian dự định)\n\nNăng suất mới bằng: $100\\%:80\\%=1:0,8=1,25=125\\%$ (năng suất cũ)\n\nNăng suất phải tăng thêm: $125\\%-100\\%=25\\%$ (năng suất cũ)\n\nĐáp số: $25\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_f",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn thời gian may xong một lô quần áo giảm đi 60% so với kế hoạch thì đội thợ may cần tăng năng suất thêm bao nhiêu phần trăm so với kế hoạch?",
+  "dap_an": "$150\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc không đổi nên năng suất và thời gian tỉ lệ nghịch: năng suất mới bằng $100\\%$ **chia** cho tỉ số phần trăm của thời gian mới, rồi so với $100\\%$.\n\n**Bước 1.** Tìm thời gian mới bằng bao nhiêu phần trăm thời gian dự định (lấy $100\\%$ trừ phần trăm giảm).\n\n**Bước 2.** Lấy $100\\%$ chia cho tỉ số thời gian để biết năng suất mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy tỉ số vừa tìm trừ $100\\%$ để biết năng suất phải tăng thêm bao nhiêu phần trăm.\n\n**Chú ý:** năng suất phải tăng nhiều hơn $60\\%$, vì năng suất và thời gian tỉ lệ nghịch.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nThời gian mới bằng: $100\\%-60\\%=40\\%$ (thời gian dự định)\n\nNăng suất mới bằng: $100\\%:40\\%=1:0,4=2,5=250\\%$ (năng suất cũ)\n\nNăng suất phải tăng thêm: $250\\%-100\\%=150\\%$ (năng suất cũ)\n\nĐáp số: $150\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tổ sản xuất dự định làm xong một đơn hàng trong 40 ngày. Sau đó số người tăng thêm 100% nhưng năng suất của mỗi người giảm 20% so với dự định. Hỏi tổ sản xuất đó làm xong một đơn hàng trong bao nhiêu ngày?",
+  "dap_an": "$25$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, và công việc không đổi. Số người và năng suất mỗi người đều thay đổi nên **nhân hai tỉ số** để được năng suất cả đội, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số năng suất cả đội để được thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 4.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày làm thật.\n\n**Chú ý:** không lấy $100\\%-20\\%$; số người và năng suất mỗi người nhân với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+100\\%=200\\%$ (số người dự định)\n\nNăng suất mỗi người mới bằng: $100\\%-20\\%=80\\%$ (năng suất mỗi người dự định)\n\nNăng suất cả đội mới bằng: $200\\%\\times 80\\%=2\\times 0,8=1,6=160\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:160\\%=1:1,6=0,625=62,5\\%$ (thời gian dự định)\n\nSố ngày cần để làm xong một đơn hàng là: $40\\times 62,5\\%=25$ (ngày)\n\nĐáp số: $25$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nhóm thợ xây dự định xây xong một bức tường trong 36 ngày. Sau đó số người tăng thêm 60% nhưng năng suất của mỗi người giảm 50% so với dự định. Hỏi nhóm thợ xây đó xây xong một bức tường trong bao nhiêu ngày?",
+  "dap_an": "$45$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, và công việc không đổi. Số người và năng suất mỗi người đều thay đổi nên **nhân hai tỉ số** để được năng suất cả đội, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số năng suất cả đội để được thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 4.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày làm thật.\n\n**Chú ý:** không lấy $60\\%-50\\%$; số người và năng suất mỗi người nhân với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+60\\%=160\\%$ (số người dự định)\n\nNăng suất mỗi người mới bằng: $100\\%-50\\%=50\\%$ (năng suất mỗi người dự định)\n\nNăng suất cả đội mới bằng: $160\\%\\times 50\\%=1,6\\times 0,5=0,8=80\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:80\\%=1:0,8=1,25=125\\%$ (thời gian dự định)\n\nSố ngày cần để xây xong một bức tường là: $36\\times 125\\%=45$ (ngày)\n\nĐáp số: $45$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một đội thợ may dự định may xong một lô quần áo trong 48 ngày. Sau đó số người tăng thêm 150% nhưng năng suất của mỗi người giảm 20% so với dự định. Hỏi đội thợ may đó may xong một lô quần áo trong bao nhiêu ngày?",
+  "dap_an": "$24$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, và công việc không đổi. Số người và năng suất mỗi người đều thay đổi nên **nhân hai tỉ số** để được năng suất cả đội, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số năng suất cả đội để được thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 4.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày làm thật.\n\n**Chú ý:** không lấy $150\\%-20\\%$; số người và năng suất mỗi người nhân với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+150\\%=250\\%$ (số người dự định)\n\nNăng suất mỗi người mới bằng: $100\\%-20\\%=80\\%$ (năng suất mỗi người dự định)\n\nNăng suất cả đội mới bằng: $250\\%\\times 80\\%=2,5\\times 0,8=2=200\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (thời gian dự định)\n\nSố ngày cần để may xong một lô quần áo là: $48\\times 50\\%=24$ (ngày)\n\nĐáp số: $24$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Theo kế hoạch, nhóm thợ sơn sơn xong một toà nhà trong 48 ngày. Thực tế, số người tăng 25% còn năng suất mỗi người giảm 50% so với kế hoạch. Hỏi thực tế cần bao nhiêu ngày để sơn xong một toà nhà?",
+  "dap_an": "$76,8$ ngày",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, và công việc không đổi. Số người và năng suất mỗi người đều thay đổi nên **nhân hai tỉ số** để được năng suất cả đội, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số năng suất cả đội để được thời gian mới bằng bao nhiêu phần trăm thời gian dự định.\n\n**Bước 4.** Lấy số ngày dự định nhân với số phần trăm vừa tìm để ra số ngày làm thật.\n\n**Chú ý:** không lấy $25\\%-50\\%$; số người và năng suất mỗi người nhân với nhau.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+25\\%=125\\%$ (số người dự định)\n\nNăng suất mỗi người mới bằng: $100\\%-50\\%=50\\%$ (năng suất mỗi người dự định)\n\nNăng suất cả đội mới bằng: $125\\%\\times 50\\%=1,25\\times 0,5=0,625=62,5\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:62,5\\%=1:0,625=1,6=160\\%$ (thời gian dự định)\n\nSố ngày cần để sơn xong một toà nhà là: $48\\times 160\\%=76,8$ (ngày)\n\nĐáp số: $76,8$ ngày"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nhóm thợ xây tăng số người thêm 100% và nhờ tập huấn nên năng suất của mỗi người cũng tăng 25% so với trước. Hỏi thời gian để xây xong một bức tường giảm đi bao nhiêu phần trăm so với trước?",
+  "dap_an": "Giảm $60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, công việc không đổi. **Nhân hai tỉ số** để được năng suất cả đội mới, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số đó để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm để biết thời gian giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy $100\\%+25\\%$ làm số phần trăm thời gian giảm; hai tỉ số tăng phải nhân với nhau rồi lấy $100\\%$ chia cho tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+100\\%=200\\%$ (số người cũ)\n\nNăng suất mỗi người mới bằng: $100\\%+25\\%=125\\%$ (năng suất mỗi người cũ)\n\nNăng suất cả đội mới bằng: $200\\%\\times 125\\%=2\\times 1,25=2,5=250\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:250\\%=1:2,5=0,4=40\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-40\\%=60\\%$\n\nĐáp số: Giảm $60\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số người của tổ sản xuất tăng 60%, đồng thời năng suất mỗi người tăng 25% so với dự định. Hỏi thời gian làm xong một đơn hàng giảm bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, công việc không đổi. **Nhân hai tỉ số** để được năng suất cả đội mới, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số đó để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm để biết thời gian giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy $60\\%+25\\%$ làm số phần trăm thời gian giảm; hai tỉ số tăng phải nhân với nhau rồi lấy $100\\%$ chia cho tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+60\\%=160\\%$ (số người cũ)\n\nNăng suất mỗi người mới bằng: $100\\%+25\\%=125\\%$ (năng suất mỗi người cũ)\n\nNăng suất cả đội mới bằng: $160\\%\\times 125\\%=1,6\\times 1,25=2=200\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số người của nhóm thợ sơn tăng 25%, đồng thời năng suất mỗi người tăng 60% so với dự định. Hỏi thời gian sơn xong một toà nhà giảm bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, công việc không đổi. **Nhân hai tỉ số** để được năng suất cả đội mới, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số đó để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm để biết thời gian giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy $25\\%+60\\%$ làm số phần trăm thời gian giảm; hai tỉ số tăng phải nhân với nhau rồi lấy $100\\%$ chia cho tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+25\\%=125\\%$ (số người cũ)\n\nNăng suất mỗi người mới bằng: $100\\%+60\\%=160\\%$ (năng suất mỗi người cũ)\n\nNăng suất cả đội mới bằng: $125\\%\\times 160\\%=1,25\\times 1,6=2=200\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03002",
+  "mau": "ns_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số người của đội công nhân tăng 25%, đồng thời năng suất mỗi người tăng 25% so với dự định. Hỏi thời gian hoàn thành một công trình giảm bao nhiêu phần trăm so với dự định?",
+  "dap_an": "Giảm $36\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Công việc $=$ số người $\\times$ năng suất mỗi người $\\times$ thời gian, công việc không đổi. **Nhân hai tỉ số** để được năng suất cả đội mới, rồi thời gian mới bằng $100\\%$ chia cho tỉ số đó.\n\n**Bước 1.** Tìm số người mới và năng suất mỗi người mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết năng suất cả đội mới bằng bao nhiêu phần trăm năng suất cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số đó để biết thời gian mới bằng bao nhiêu phần trăm thời gian cũ.\n\n**Bước 4.** Lấy $100\\%$ trừ tỉ số vừa tìm để biết thời gian giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy $25\\%+25\\%$ làm số phần trăm thời gian giảm; hai tỉ số tăng phải nhân với nhau rồi lấy $100\\%$ chia cho tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố người mới bằng: $100\\%+25\\%=125\\%$ (số người cũ)\n\nNăng suất mỗi người mới bằng: $100\\%+25\\%=125\\%$ (năng suất mỗi người cũ)\n\nNăng suất cả đội mới bằng: $125\\%\\times 125\\%=1,25\\times 1,25=1,5625=156,25\\%$ (năng suất cả đội cũ)\n\nThời gian mới bằng: $100\\%:156,25\\%=1:1,5625=0,64=64\\%$ (thời gian cũ)\n\nThời gian giảm đi: $100\\%-64\\%=36\\%$\n\nĐáp số: Giảm $36\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật. Nếu tăng chiều dài 60%, tăng chiều rộng 40% và giảm chiều cao 30% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $56,8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao. Coi ba kích thước lúc đầu đều là $100\\%$; thể tích mới bằng **tích ba tỉ số phần trăm** mới (đổi ra số thập phân rồi nhân), không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $60\\%$, $40\\%$, $30\\%$ để ra phần trăm thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+60\\%=160\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+40\\%=140\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%-30\\%=70\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $160\\%\\times 140\\%\\times 70\\%=1,6\\times 1,4\\times 0,7=1,568=156,8\\%$ (thể tích cũ)\n\nThể tích tăng: $156,8\\%-100\\%=56,8\\%$\n\nĐáp số: Tăng $56,8\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp quà có dạng hình hộp chữ nhật. Nếu tăng thêm chiều dài 40%, bớt chiều rộng 5% và tăng thêm chiều cao 30% thì thể tích của hộp quà thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $72,9\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao. Coi ba kích thước lúc đầu đều là $100\\%$; thể tích mới bằng **tích ba tỉ số phần trăm** mới (đổi ra số thập phân rồi nhân), không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$, $5\\%$, $30\\%$ để ra phần trăm thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+40\\%=140\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-5\\%=95\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%+30\\%=130\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $140\\%\\times 95\\%\\times 130\\%=1,4\\times 0,95\\times 1,3=1,729=172,9\\%$ (thể tích cũ)\n\nThể tích tăng: $172,9\\%-100\\%=72,9\\%$\n\nĐáp số: Tăng $72,9\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật. Nếu bớt chiều dài 40%, giảm chiều rộng 25% và tăng thêm chiều cao 40% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $37\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao. Coi ba kích thước lúc đầu đều là $100\\%$; thể tích mới bằng **tích ba tỉ số phần trăm** mới (đổi ra số thập phân rồi nhân), không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$, $25\\%$, $40\\%$ để ra phần trăm thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-40\\%=60\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-25\\%=75\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%+40\\%=140\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $60\\%\\times 75\\%\\times 140\\%=0,6\\times 0,75\\times 1,4=0,63=63\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-63\\%=37\\%$\n\nĐáp số: Giảm $37\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài, chiều rộng, chiều cao của một bể cá hình hộp chữ nhật lần lượt tăng thêm 25%, tăng 50%, tăng thêm 30%. Hỏi thể tích bể cá đó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $143,75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao. Coi ba kích thước lúc đầu đều là $100\\%$; thể tích mới bằng **tích ba tỉ số phần trăm** mới (đổi ra số thập phân rồi nhân), không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $25\\%$, $50\\%$, $30\\%$ để ra phần trăm thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+50\\%=150\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%+30\\%=130\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $125\\%\\times 150\\%\\times 130\\%=1,25\\times 1,5\\times 1,3=2,4375=243,75\\%$ (thể tích cũ)\n\nThể tích tăng: $243,75\\%-100\\%=143,75\\%$\n\nĐáp số: Tăng $143,75\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_a",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Chiều dài, chiều rộng, chiều cao của một bể nước hình hộp chữ nhật lần lượt giảm 40%, bớt 40%, tăng thêm 10%. Hỏi thể tích bể nước đó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $60,4\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích hình hộp chữ nhật $=$ dài $\\times$ rộng $\\times$ cao. Coi ba kích thước lúc đầu đều là $100\\%$; thể tích mới bằng **tích ba tỉ số phần trăm** mới (đổi ra số thập phân rồi nhân), không cộng trừ thẳng các phần trăm.\n\n**Bước 1.** Tìm chiều dài, chiều rộng, chiều cao mới bằng bao nhiêu phần trăm lúc đầu (tăng thì cộng vào $100\\%$, giảm thì trừ đi).\n\n**Bước 2.** Nhân ba tỉ số phần trăm (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không cộng trừ thẳng $40\\%$, $40\\%$, $10\\%$ để ra phần trăm thể tích.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-40\\%=60\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-40\\%=60\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%+10\\%=110\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $60\\%\\times 60\\%\\times 110\\%=0,6\\times 0,6\\times 1,1=0,396=39,6\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-39,6\\%=60,4\\%$\n\nĐáp số: Giảm $60,4\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp bánh hình hộp chữ nhật có thể tích $240\\ \\text{cm}^3$. Nếu tăng thêm chiều dài 15% và giảm chiều cao 15% thì thể tích mới của hộp bánh là bao nhiêu?",
+  "dap_an": "$234,6\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của những kích thước có thay đổi (kích thước không đổi coi là $100\\%$); sau đó lấy thể tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy thể tích cũ nhân với số phần trăm vừa tìm để ra thể tích mới.\n\n**Chú ý:** kích thước không đổi thì không đưa vào phép nhân; không cộng trừ thẳng các phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+15\\%=115\\%$ (chiều dài cũ)\n\nChiều cao mới bằng: $100\\%-15\\%=85\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $115\\%\\times 85\\%=1,15\\times 0,85=0,9775=97,75\\%$ (thể tích cũ)\n\nThể tích mới là: $240\\times 97,75\\%=234,6$ ($\\text{cm}^3$)\n\nĐáp số: $234,6\\ \\text{cm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp quà hình hộp chữ nhật có thể tích $240\\ \\text{cm}^3$. Nếu bớt chiều dài 25% và giảm đi chiều cao 40% thì thể tích mới của hộp quà là bao nhiêu?",
+  "dap_an": "$108\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của những kích thước có thay đổi (kích thước không đổi coi là $100\\%$); sau đó lấy thể tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy thể tích cũ nhân với số phần trăm vừa tìm để ra thể tích mới.\n\n**Chú ý:** kích thước không đổi thì không đưa vào phép nhân; không cộng trừ thẳng các phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-25\\%=75\\%$ (chiều dài cũ)\n\nChiều cao mới bằng: $100\\%-40\\%=60\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $75\\%\\times 60\\%=0,75\\times 0,6=0,45=45\\%$ (thể tích cũ)\n\nThể tích mới là: $240\\times 45\\%=108$ ($\\text{cm}^3$)\n\nĐáp số: $108\\ \\text{cm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp quà hình hộp chữ nhật có thể tích $400\\ \\text{cm}^3$. Nếu giảm chiều dài 50% và giảm đi chiều cao 10% thì thể tích mới của hộp quà là bao nhiêu?",
+  "dap_an": "$180\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của những kích thước có thay đổi (kích thước không đổi coi là $100\\%$); sau đó lấy thể tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy thể tích cũ nhân với số phần trăm vừa tìm để ra thể tích mới.\n\n**Chú ý:** kích thước không đổi thì không đưa vào phép nhân; không cộng trừ thẳng các phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-50\\%=50\\%$ (chiều dài cũ)\n\nChiều cao mới bằng: $100\\%-10\\%=90\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $50\\%\\times 90\\%=0,5\\times 0,9=0,45=45\\%$ (thể tích cũ)\n\nThể tích mới là: $400\\times 45\\%=180$ ($\\text{cm}^3$)\n\nĐáp số: $180\\ \\text{cm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp bánh có dạng hình hộp chữ nhật có thể tích $800\\ \\text{cm}^3$. Người ta giảm đi chiều dài 40% và tăng thêm chiều cao 20%. Tính thể tích mới của hộp bánh.",
+  "dap_an": "$576\\ \\text{cm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của những kích thước có thay đổi (kích thước không đổi coi là $100\\%$); sau đó lấy thể tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy thể tích cũ nhân với số phần trăm vừa tìm để ra thể tích mới.\n\n**Chú ý:** kích thước không đổi thì không đưa vào phép nhân; không cộng trừ thẳng các phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-40\\%=60\\%$ (chiều dài cũ)\n\nChiều cao mới bằng: $100\\%+20\\%=120\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $60\\%\\times 120\\%=0,6\\times 1,2=0,72=72\\%$ (thể tích cũ)\n\nThể tích mới là: $800\\times 72\\%=576$ ($\\text{cm}^3$)\n\nĐáp số: $576\\ \\text{cm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_b",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng xốp hình hộp chữ nhật có thể tích $250\\ \\text{dm}^3$. Nếu tăng thêm chiều dài 20%, giảm đi chiều rộng 30% và giảm chiều cao 50% thì thể tích mới của thùng xốp là bao nhiêu?",
+  "dap_an": "$105\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của những kích thước có thay đổi (kích thước không đổi coi là $100\\%$); sau đó lấy thể tích cũ nhân với tỉ số này.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy thể tích cũ nhân với số phần trăm vừa tìm để ra thể tích mới.\n\n**Chú ý:** kích thước không đổi thì không đưa vào phép nhân; không cộng trừ thẳng các phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+20\\%=120\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-30\\%=70\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%-50\\%=50\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $120\\%\\times 70\\%\\times 50\\%=1,2\\times 0,7\\times 0,5=0,42=42\\%$ (thể tích cũ)\n\nThể tích mới là: $250\\times 42\\%=105$ ($\\text{dm}^3$)\n\nĐáp số: $105\\ \\text{dm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một thùng xốp hình hộp chữ nhật. Người ta bớt chiều dài 20% và tăng thêm chiều rộng 25%. Hỏi để thể tích thùng xốp giảm 5% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ diện tích đáy $\\times$ chiều cao, nên chiều cao $=$ thể tích $:$ diện tích đáy. Tìm diện tích đáy mới (tích dài $\\times$ rộng) rồi lấy **phần trăm thể tích chia cho phần trăm diện tích đáy**.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu rồi nhân để được diện tích đáy mới.\n\n**Bước 2.** Tìm thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy phần trăm thể tích chia cho phần trăm diện tích đáy (đổi ra số thập phân) để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu các phần trăm thay đổi; thể tích là tích của dài, rộng và cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+25\\%=125\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $80\\%\\times 125\\%=0,8\\times 1,25=1=100\\%$ (diện tích đáy cũ)\n\nThể tích mới bằng: $100\\%-5\\%=95\\%$ (thể tích cũ)\n\nChiều cao mới bằng: $95\\%:100\\%=0,95:1=0,95=95\\%$ (chiều cao cũ)\n\nChiều cao giảm đi: $100\\%-95\\%=5\\%$\n\nĐáp số: Giảm $5\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp bánh hình hộp chữ nhật được tăng thêm chiều dài 25% và bớt chiều rộng 50%. Để thể tích mới tăng thêm 5% so với thể tích cũ thì chiều cao phải thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $68\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ diện tích đáy $\\times$ chiều cao, nên chiều cao $=$ thể tích $:$ diện tích đáy. Tìm diện tích đáy mới (tích dài $\\times$ rộng) rồi lấy **phần trăm thể tích chia cho phần trăm diện tích đáy**.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu rồi nhân để được diện tích đáy mới.\n\n**Bước 2.** Tìm thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy phần trăm thể tích chia cho phần trăm diện tích đáy (đổi ra số thập phân) để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu các phần trăm thay đổi; thể tích là tích của dài, rộng và cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-50\\%=50\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $125\\%\\times 50\\%=1,25\\times 0,5=0,625=62,5\\%$ (diện tích đáy cũ)\n\nThể tích mới bằng: $100\\%+5\\%=105\\%$ (thể tích cũ)\n\nChiều cao mới bằng: $105\\%:62,5\\%=1,05:0,625=1,68=168\\%$ (chiều cao cũ)\n\nChiều cao tăng: $168\\%-100\\%=68\\%$\n\nĐáp số: Tăng $68\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một hộp quà hình hộp chữ nhật. Người ta giảm chiều dài 20% và tăng thêm chiều rộng 20%. Hỏi để thể tích hộp quà tăng 20% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ diện tích đáy $\\times$ chiều cao, nên chiều cao $=$ thể tích $:$ diện tích đáy. Tìm diện tích đáy mới (tích dài $\\times$ rộng) rồi lấy **phần trăm thể tích chia cho phần trăm diện tích đáy**.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu rồi nhân để được diện tích đáy mới.\n\n**Bước 2.** Tìm thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy phần trăm thể tích chia cho phần trăm diện tích đáy (đổi ra số thập phân) để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu các phần trăm thay đổi; thể tích là tích của dài, rộng và cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+20\\%=120\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $80\\%\\times 120\\%=0,8\\times 1,2=0,96=96\\%$ (diện tích đáy cũ)\n\nThể tích mới bằng: $100\\%+20\\%=120\\%$ (thể tích cũ)\n\nChiều cao mới bằng: $120\\%:96\\%=1,2:0,96=1,25=125\\%$ (chiều cao cũ)\n\nChiều cao tăng: $125\\%-100\\%=25\\%$\n\nĐáp số: Tăng $25\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_c",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Cho một hộp quà hình hộp chữ nhật. Người ta bớt chiều dài 20% và giảm chiều rộng 25%. Hỏi để thể tích hộp quà bớt 25% so với ban đầu thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ diện tích đáy $\\times$ chiều cao, nên chiều cao $=$ thể tích $:$ diện tích đáy. Tìm diện tích đáy mới (tích dài $\\times$ rộng) rồi lấy **phần trăm thể tích chia cho phần trăm diện tích đáy**.\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu rồi nhân để được diện tích đáy mới.\n\n**Bước 2.** Tìm thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** Lấy phần trăm thể tích chia cho phần trăm diện tích đáy (đổi ra số thập phân) để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** không lấy hiệu các phần trăm thay đổi; thể tích là tích của dài, rộng và cao.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-20\\%=80\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-25\\%=75\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $80\\%\\times 75\\%=0,8\\times 0,75=0,6=60\\%$ (diện tích đáy cũ)\n\nThể tích mới bằng: $100\\%-25\\%=75\\%$ (thể tích cũ)\n\nChiều cao mới bằng: $75\\%:60\\%=0,75:0,6=1,25=125\\%$ (chiều cao cũ)\n\nChiều cao tăng: $125\\%-100\\%=25\\%$\n\nĐáp số: Tăng $25\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng xốp hình hộp chữ nhật được tăng thêm chiều dài 25% và tăng chiều rộng 60%. Hỏi chiều cao phải tăng hay giảm bao nhiêu phần trăm để thể tích không thay đổi?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích **không đổi** nên chiều cao mới bằng $100\\%$ **chia** cho tỉ số phần trăm của diện tích đáy mới (diện tích đáy mới $=$ tích hai tỉ số của dài và rộng).\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích đáy mới bằng bao nhiêu phần trăm diện tích đáy cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số diện tích đáy để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** chiều cao không thay đổi đúng bằng tổng hay hiệu hai phần trăm của dài và rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+25\\%=125\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+60\\%=160\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $125\\%\\times 160\\%=1,25\\times 1,6=2=200\\%$ (diện tích đáy cũ)\n\nChiều cao mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (chiều cao cũ)\n\nChiều cao giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn giữ nguyên thể tích của một hộp quà hình hộp chữ nhật khi bớt chiều dài 50% và tăng chiều rộng 25% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích **không đổi** nên chiều cao mới bằng $100\\%$ **chia** cho tỉ số phần trăm của diện tích đáy mới (diện tích đáy mới $=$ tích hai tỉ số của dài và rộng).\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích đáy mới bằng bao nhiêu phần trăm diện tích đáy cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số diện tích đáy để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** chiều cao không thay đổi đúng bằng tổng hay hiệu hai phần trăm của dài và rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-50\\%=50\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+25\\%=125\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $50\\%\\times 125\\%=0,5\\times 1,25=0,625=62,5\\%$ (diện tích đáy cũ)\n\nChiều cao mới bằng: $100\\%:62,5\\%=1:0,625=1,6=160\\%$ (chiều cao cũ)\n\nChiều cao tăng: $160\\%-100\\%=60\\%$\n\nĐáp số: Tăng $60\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn giữ nguyên thể tích của một hộp quà hình hộp chữ nhật khi tăng thêm chiều dài 60% và tăng chiều rộng 25% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $50\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích **không đổi** nên chiều cao mới bằng $100\\%$ **chia** cho tỉ số phần trăm của diện tích đáy mới (diện tích đáy mới $=$ tích hai tỉ số của dài và rộng).\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích đáy mới bằng bao nhiêu phần trăm diện tích đáy cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số diện tích đáy để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** chiều cao không thay đổi đúng bằng tổng hay hiệu hai phần trăm của dài và rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+60\\%=160\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+25\\%=125\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $160\\%\\times 125\\%=1,6\\times 1,25=2=200\\%$ (diện tích đáy cũ)\n\nChiều cao mới bằng: $100\\%:200\\%=1:2=0,5=50\\%$ (chiều cao cũ)\n\nChiều cao giảm đi: $100\\%-50\\%=50\\%$\n\nĐáp số: Giảm $50\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_d",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Muốn giữ nguyên thể tích của một thùng xốp hình hộp chữ nhật khi giảm đi chiều dài 50% và giảm chiều rộng 20% thì chiều cao phải tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $150\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích **không đổi** nên chiều cao mới bằng $100\\%$ **chia** cho tỉ số phần trăm của diện tích đáy mới (diện tích đáy mới $=$ tích hai tỉ số của dài và rộng).\n\n**Bước 1.** Tìm chiều dài mới và chiều rộng mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân hai tỉ số phần trăm để biết diện tích đáy mới bằng bao nhiêu phần trăm diện tích đáy cũ.\n\n**Bước 3.** Lấy $100\\%$ chia cho tỉ số diện tích đáy để biết chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 4.** So với $100\\%$ để biết chiều cao tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** chiều cao không thay đổi đúng bằng tổng hay hiệu hai phần trăm của dài và rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-50\\%=50\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-20\\%=80\\%$ (chiều rộng cũ)\n\nDiện tích đáy mới bằng: $50\\%\\times 80\\%=0,5\\times 0,8=0,4=40\\%$ (diện tích đáy cũ)\n\nChiều cao mới bằng: $100\\%:40\\%=1:0,4=2,5=250\\%$ (chiều cao cũ)\n\nChiều cao tăng: $250\\%-100\\%=150\\%$\n\nĐáp số: Tăng $150\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Độ dài cạnh của một khối lập phương tăng 30%. Hỏi thể tích của khối lập phương đó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Tăng $119,7\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích khối lập phương $=$ cạnh $\\times$ cạnh $\\times$ cạnh, nên thể tích mới bằng **tích ba tỉ số giống nhau** của cạnh.\n\n**Bước 1.** Tìm mỗi kích thước (hay cạnh) mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân ba tỉ số phần trăm giống nhau (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** thể tích không tăng đúng $30\\%$, cũng không phải $3\\times 30\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi kích thước mới bằng: $100\\%+30\\%=130\\%$ (mỗi kích thước cũ)\n\nThể tích mới bằng: $130\\%\\times 130\\%\\times 130\\%=1,3\\times 1,3\\times 1,3=2,197=219,7\\%$ (thể tích cũ)\n\nThể tích tăng: $219,7\\%-100\\%=119,7\\%$\n\nĐáp số: Tăng $119,7\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Độ dài cạnh của một khối lập phương giảm 30%. Hỏi thể tích của khối lập phương đó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $65,7\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích khối lập phương $=$ cạnh $\\times$ cạnh $\\times$ cạnh, nên thể tích mới bằng **tích ba tỉ số giống nhau** của cạnh.\n\n**Bước 1.** Tìm mỗi kích thước (hay cạnh) mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân ba tỉ số phần trăm giống nhau (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** thể tích không giảm đúng $30\\%$, cũng không phải $3\\times 30\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi kích thước mới bằng: $100\\%-30\\%=70\\%$ (mỗi kích thước cũ)\n\nThể tích mới bằng: $70\\%\\times 70\\%\\times 70\\%=0,7\\times 0,7\\times 0,7=0,343=34,3\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-34,3\\%=65,7\\%$\n\nĐáp số: Giảm $65,7\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_e",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Nếu cả ba kích thước (chiều dài, chiều rộng, chiều cao) của một hình hộp chữ nhật cùng giảm đi 20% thì thể tích của nó tăng hay giảm bao nhiêu phần trăm?",
+  "dap_an": "Giảm $48,8\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích $=$ dài $\\times$ rộng $\\times$ cao. Ba kích thước cùng đổi một tỉ số nên thể tích mới bằng **tích ba tỉ số giống nhau**.\n\n**Bước 1.** Tìm mỗi kích thước (hay cạnh) mới bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân ba tỉ số phần trăm giống nhau (đổi ra số thập phân) được thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** thể tích không giảm đúng $20\\%$, cũng không phải $3\\times 20\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nMỗi kích thước mới bằng: $100\\%-20\\%=80\\%$ (mỗi kích thước cũ)\n\nThể tích mới bằng: $80\\%\\times 80\\%\\times 80\\%=0,8\\times 0,8\\times 0,8=0,512=51,2\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-51,2\\%=48,8\\%$\n\nĐáp số: Giảm $48,8\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng đựng hàng có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm cạnh đáy 10% và tăng chiều cao 10% thì thể tích của thùng đựng hàng thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $10,9\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đáy là hình vuông nên thể tích $=$ cạnh đáy $\\times$ cạnh đáy $\\times$ chiều cao. Cạnh đáy xuất hiện **hai lần**, nên thể tích mới bằng tích của **hai tỉ số cạnh đáy** và tỉ số chiều cao.\n\n**Bước 1.** Tìm cạnh đáy mới bằng bao nhiêu phần trăm cạnh đáy cũ.\n\n**Bước 2.** Tìm chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 3.** Nhân hai lần tỉ số cạnh đáy với tỉ số chiều cao (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** đừng quên tỉ số cạnh đáy phải nhân hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh đáy mới bằng: $100\\%-10\\%=90\\%$ (cạnh đáy cũ)\n\nChiều cao mới bằng: $100\\%+10\\%=110\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $90\\%\\times 90\\%\\times 110\\%=0,9\\times 0,9\\times 1,1=0,891=89,1\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-89,1\\%=10,9\\%$\n\nĐáp số: Giảm $10,9\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bể cá có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu tăng thêm cạnh đáy 60% và giảm đi chiều cao 40% thì thể tích của bể cá thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Tăng $53,6\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đáy là hình vuông nên thể tích $=$ cạnh đáy $\\times$ cạnh đáy $\\times$ chiều cao. Cạnh đáy xuất hiện **hai lần**, nên thể tích mới bằng tích của **hai tỉ số cạnh đáy** và tỉ số chiều cao.\n\n**Bước 1.** Tìm cạnh đáy mới bằng bao nhiêu phần trăm cạnh đáy cũ.\n\n**Bước 2.** Tìm chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 3.** Nhân hai lần tỉ số cạnh đáy với tỉ số chiều cao (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** đừng quên tỉ số cạnh đáy phải nhân hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh đáy mới bằng: $100\\%+60\\%=160\\%$ (cạnh đáy cũ)\n\nChiều cao mới bằng: $100\\%-40\\%=60\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $160\\%\\times 160\\%\\times 60\\%=1,6\\times 1,6\\times 0,6=1,536=153,6\\%$ (thể tích cũ)\n\nThể tích tăng: $153,6\\%-100\\%=53,6\\%$\n\nĐáp số: Tăng $53,6\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một hộp bánh có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm cạnh đáy 40% và tăng thêm chiều cao 40% thì thể tích của hộp bánh thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $49,6\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đáy là hình vuông nên thể tích $=$ cạnh đáy $\\times$ cạnh đáy $\\times$ chiều cao. Cạnh đáy xuất hiện **hai lần**, nên thể tích mới bằng tích của **hai tỉ số cạnh đáy** và tỉ số chiều cao.\n\n**Bước 1.** Tìm cạnh đáy mới bằng bao nhiêu phần trăm cạnh đáy cũ.\n\n**Bước 2.** Tìm chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 3.** Nhân hai lần tỉ số cạnh đáy với tỉ số chiều cao (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** đừng quên tỉ số cạnh đáy phải nhân hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh đáy mới bằng: $100\\%-40\\%=60\\%$ (cạnh đáy cũ)\n\nChiều cao mới bằng: $100\\%+40\\%=140\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $60\\%\\times 60\\%\\times 140\\%=0,6\\times 0,6\\times 1,4=0,504=50,4\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-50,4\\%=49,6\\%$\n\nĐáp số: Giảm $49,6\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_g",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng xốp có dạng hình hộp chữ nhật với đáy là hình vuông. Nếu giảm đi cạnh đáy 5% và bớt chiều cao 40% thì thể tích của thùng xốp thay đổi như thế nào (tăng hay giảm bao nhiêu phần trăm)?",
+  "dap_an": "Giảm $45,85\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đáy là hình vuông nên thể tích $=$ cạnh đáy $\\times$ cạnh đáy $\\times$ chiều cao. Cạnh đáy xuất hiện **hai lần**, nên thể tích mới bằng tích của **hai tỉ số cạnh đáy** và tỉ số chiều cao.\n\n**Bước 1.** Tìm cạnh đáy mới bằng bao nhiêu phần trăm cạnh đáy cũ.\n\n**Bước 2.** Tìm chiều cao mới bằng bao nhiêu phần trăm chiều cao cũ.\n\n**Bước 3.** Nhân hai lần tỉ số cạnh đáy với tỉ số chiều cao (đổi ra số thập phân) để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** So với $100\\%$ để biết thể tích tăng hay giảm bao nhiêu phần trăm.\n\n**Chú ý:** đừng quên tỉ số cạnh đáy phải nhân hai lần.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nCạnh đáy mới bằng: $100\\%-5\\%=95\\%$ (cạnh đáy cũ)\n\nChiều cao mới bằng: $100\\%-40\\%=60\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $95\\%\\times 95\\%\\times 60\\%=0,95\\times 0,95\\times 0,6=0,5415=54,15\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-54,15\\%=45,85\\%$\n\nĐáp số: Giảm $45,85\\%$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bể cá hình hộp chữ nhật. Nếu bớt chiều dài 50%, giảm đi chiều rộng 15% và giảm chiều cao 20% thì thể tích giảm $990\\ \\text{dm}^3$. Tính thể tích ban đầu của bể cá đó.",
+  "dap_an": "$1500\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của kích thước. Tìm thể tích giảm bao nhiêu phần trăm thể tích cũ; phần thể tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm thể tích ban đầu.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích giảm bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** Phần thể tích giảm đi ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra thể tích ban đầu.\n\n**Chú ý:** không lấy $990$ nhân với phần trăm; $990$ là phần thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-50\\%=50\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-15\\%=85\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%-20\\%=80\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $50\\%\\times 85\\%\\times 80\\%=0,5\\times 0,85\\times 0,8=0,34=34\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-34\\%=66\\%$ (thể tích cũ)\n\nThể tích ban đầu là: $990:66\\%=1500$ ($\\text{dm}^3$)\n\nĐáp số: $1500\\ \\text{dm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi tăng chiều dài 30% và tăng chiều rộng 25%, thể tích của một bể cá hình hộp chữ nhật tăng $375\\ \\text{dm}^3$. Hỏi thể tích ban đầu của bể cá là bao nhiêu?",
+  "dap_an": "$600\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của kích thước. Tìm thể tích tăng bao nhiêu phần trăm thể tích cũ; phần thể tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm thể tích ban đầu.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** Phần thể tích tăng thêm ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra thể tích ban đầu.\n\n**Chú ý:** không lấy $375$ nhân với phần trăm; $375$ là phần thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+30\\%=130\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+25\\%=125\\%$ (chiều rộng cũ)\n\nThể tích mới bằng: $130\\%\\times 125\\%=1,3\\times 1,25=1,625=162,5\\%$ (thể tích cũ)\n\nThể tích tăng: $162,5\\%-100\\%=62,5\\%$ (thể tích cũ)\n\nThể tích ban đầu là: $375:62,5\\%=600$ ($\\text{dm}^3$)\n\nĐáp số: $600\\ \\text{dm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thùng đựng hàng hình hộp chữ nhật. Nếu bớt chiều dài 10%, tăng chiều rộng 20% và bớt chiều cao 50% thì thể tích giảm đi $276\\ \\text{dm}^3$. Tính thể tích ban đầu của thùng đựng hàng đó.",
+  "dap_an": "$600\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của kích thước. Tìm thể tích giảm bao nhiêu phần trăm thể tích cũ; phần thể tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm thể tích ban đầu.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích giảm bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** Phần thể tích giảm đi ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra thể tích ban đầu.\n\n**Chú ý:** không lấy $276$ nhân với phần trăm; $276$ là phần thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%-10\\%=90\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+20\\%=120\\%$ (chiều rộng cũ)\n\nChiều cao mới bằng: $100\\%-50\\%=50\\%$ (chiều cao cũ)\n\nThể tích mới bằng: $90\\%\\times 120\\%\\times 50\\%=0,9\\times 1,2\\times 0,5=0,54=54\\%$ (thể tích cũ)\n\nThể tích giảm đi: $100\\%-54\\%=46\\%$ (thể tích cũ)\n\nThể tích ban đầu là: $276:46\\%=600$ ($\\text{dm}^3$)\n\nĐáp số: $600\\ \\text{dm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi tăng thêm chiều dài 20% và bớt chiều rộng 10%, thể tích của một bể cá hình hộp chữ nhật tăng $80\\ \\text{dm}^3$. Hỏi thể tích ban đầu của bể cá là bao nhiêu?",
+  "dap_an": "$1000\\ \\text{dm}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của kích thước. Tìm thể tích tăng bao nhiêu phần trăm thể tích cũ; phần thể tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm thể tích ban đầu.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** Phần thể tích tăng thêm ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra thể tích ban đầu.\n\n**Chú ý:** không lấy $80$ nhân với phần trăm; $80$ là phần thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+20\\%=120\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%-10\\%=90\\%$ (chiều rộng cũ)\n\nThể tích mới bằng: $120\\%\\times 90\\%=1,2\\times 0,9=1,08=108\\%$ (thể tích cũ)\n\nThể tích tăng: $108\\%-100\\%=8\\%$ (thể tích cũ)\n\nThể tích ban đầu là: $80:8\\%=1000$ ($\\text{dm}^3$)\n\nĐáp số: $1000\\ \\text{dm}^3$"
+ },
+ {
+  "dang": "NDB03003",
+  "mau": "tt_h",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khi tăng thêm chiều dài 5% và tăng thêm chiều rộng 30%, thể tích của một bể nước hình hộp chữ nhật tăng thêm $7,3\\ \\text{m}^3$. Hỏi thể tích ban đầu của bể nước là bao nhiêu?",
+  "dap_an": "$20\\ \\text{m}^3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Thể tích mới bằng **tích các tỉ số phần trăm** của kích thước. Tìm thể tích tăng bao nhiêu phần trăm thể tích cũ; phần thể tích thay đổi đề cho ứng với số phần trăm đó nên **chia** để tìm thể tích ban đầu.\n\n**Bước 1.** Tìm mỗi kích thước có thay đổi bằng bao nhiêu phần trăm lúc đầu.\n\n**Bước 2.** Nhân các tỉ số phần trăm để biết thể tích mới bằng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 3.** So với $100\\%$ để biết thể tích tăng bao nhiêu phần trăm thể tích cũ.\n\n**Bước 4.** Phần thể tích tăng thêm ứng với số phần trăm vừa tìm, nên lấy số đó chia cho phần trăm để ra thể tích ban đầu.\n\n**Chú ý:** không lấy $7,3$ nhân với phần trăm; $7,3$ là phần thay đổi nên phải chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nChiều dài mới bằng: $100\\%+5\\%=105\\%$ (chiều dài cũ)\n\nChiều rộng mới bằng: $100\\%+30\\%=130\\%$ (chiều rộng cũ)\n\nThể tích mới bằng: $105\\%\\times 130\\%=1,05\\times 1,3=1,365=136,5\\%$ (thể tích cũ)\n\nThể tích tăng: $136,5\\%-100\\%=36,5\\%$ (thể tích cũ)\n\nThể tích ban đầu là: $7,3:36,5\\%=20$ ($\\text{m}^3$)\n\nĐáp số: $20\\ \\text{m}^3$"
+ }
+]

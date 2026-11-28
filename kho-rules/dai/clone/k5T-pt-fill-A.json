@@ -1,0 +1,1226 @@
+[
+ {
+  "dang": "NDB02767",
+  "mau": "ct_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị biểu thức (viết kết quả dưới dạng phần trăm):\n$44\\%+14\\%$",
+  "dap_an": "$58\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tỉ số phần trăm đều lấy $1\\%$ làm đơn vị, nên cộng hoặc trừ chúng chỉ cần cộng, trừ phần số rồi viết dấu $\\%$ vào kết quả.\n\n**Bước 1.** Nhận ra biểu thức chỉ gồm các tỉ số phần trăm nối với nhau bằng dấu cộng hoặc dấu trừ.\n\n**Bước 2.** Cộng, trừ các phần số theo thứ tự từ trái sang phải và giữ đúng dấu phẩy thập phân.\n\n**Bước 3.** Viết dấu $\\%$ vào kết quả vì đề yêu cầu viết dưới dạng phần trăm.\n\n**Chú ý:** chỉ viết dấu $\\%$ một lần ở kết quả, không nhân hay chia thêm $100$.\n\n**Phần 2. Trình bày**\n\n$44\\%+14\\%$\n\n$=(44+14)\\%=58\\%$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ct_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng phần trăm):\n$94\\%-93\\%+22,4\\%$",
+  "dap_an": "$23,4\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tỉ số phần trăm đều lấy $1\\%$ làm đơn vị, nên cộng hoặc trừ chúng chỉ cần cộng, trừ phần số rồi viết dấu $\\%$ vào kết quả.\n\n**Bước 1.** Nhận ra biểu thức chỉ gồm các tỉ số phần trăm nối với nhau bằng dấu cộng hoặc dấu trừ.\n\n**Bước 2.** Cộng, trừ các phần số theo thứ tự từ trái sang phải và giữ đúng dấu phẩy thập phân.\n\n**Bước 3.** Viết dấu $\\%$ vào kết quả vì đề yêu cầu viết dưới dạng phần trăm.\n\n**Chú ý:** chỉ viết dấu $\\%$ một lần ở kết quả, không nhân hay chia thêm $100$.\n\n**Phần 2. Trình bày**\n\n$94\\%-93\\%+22,4\\%$\n\n$=(94-93+22,4)\\%=23,4\\%$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ct_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng phần trăm):\n$126\\%-65,5\\%+125\\%$",
+  "dap_an": "$185,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tỉ số phần trăm đều lấy $1\\%$ làm đơn vị, nên cộng hoặc trừ chúng chỉ cần cộng, trừ phần số rồi viết dấu $\\%$ vào kết quả.\n\n**Bước 1.** Nhận ra biểu thức chỉ gồm các tỉ số phần trăm nối với nhau bằng dấu cộng hoặc dấu trừ.\n\n**Bước 2.** Cộng, trừ các phần số theo thứ tự từ trái sang phải và giữ đúng dấu phẩy thập phân.\n\n**Bước 3.** Viết dấu $\\%$ vào kết quả vì đề yêu cầu viết dưới dạng phần trăm.\n\n**Chú ý:** chỉ viết dấu $\\%$ một lần ở kết quả, không nhân hay chia thêm $100$.\n\n**Phần 2. Trình bày**\n\n$126\\%-65,5\\%+125\\%$\n\n$=(126-65,5+125)\\%=185,5\\%$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ct_td",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính giá trị biểu thức (viết kết quả dưới dạng số thập phân):\n$3,5\\%+62\\%$",
+  "dap_an": "$0,655$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tỉ số phần trăm đều lấy $1\\%$ làm đơn vị, nên cộng hoặc trừ chúng chỉ cần cộng, trừ phần số rồi viết dấu $\\%$ vào kết quả.\n\n**Bước 1.** Nhận ra biểu thức chỉ gồm các tỉ số phần trăm nối với nhau bằng dấu cộng hoặc dấu trừ.\n\n**Bước 2.** Cộng, trừ các phần số theo thứ tự từ trái sang phải và giữ đúng dấu phẩy thập phân.\n\n**Bước 3.** Viết kết quả thành tỉ số phần trăm rồi đổi sang số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Chú ý:** kết quả viết dưới dạng số thập phân thì không còn dấu $\\%$.\n\n**Phần 2. Trình bày**\n\n$3,5\\%+62\\%$\n\n$=(3,5+62)\\%=65,5\\%=0,655$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ct_td",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$32\\%-20,75\\%+63\\%$",
+  "dap_an": "$0,7425$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các tỉ số phần trăm đều lấy $1\\%$ làm đơn vị, nên cộng hoặc trừ chúng chỉ cần cộng, trừ phần số rồi viết dấu $\\%$ vào kết quả.\n\n**Bước 1.** Nhận ra biểu thức chỉ gồm các tỉ số phần trăm nối với nhau bằng dấu cộng hoặc dấu trừ.\n\n**Bước 2.** Cộng, trừ các phần số theo thứ tự từ trái sang phải và giữ đúng dấu phẩy thập phân.\n\n**Bước 3.** Viết kết quả thành tỉ số phần trăm rồi đổi sang số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Chú ý:** kết quả viết dưới dạng số thập phân thì không còn dấu $\\%$.\n\n**Phần 2. Trình bày**\n\n$32\\%-20,75\\%+63\\%$\n\n$=(32-20,75+63)\\%=74,25\\%=0,7425$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "nhan_td",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng số thập phân):\n$170\\%\\times 75\\%$",
+  "dap_an": "$1,275$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai tỉ số phần trăm thì đổi từng tỉ số ra số thập phân rồi nhân hai số thập phân, không nhân phần số rồi giữ nguyên dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Nhân hai số thập phân vừa đổi, chú ý đếm đủ số chữ số ở phần thập phân của kết quả.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân đúng như đề yêu cầu.\n\n**Chú ý:** tích của hai tỉ số phần trăm không phải là tích hai phần số: $50\\%\\times 50\\%=0,5\\times 0,5=0,25$ chứ không phải $2500\\%$.\n\n**Phần 2. Trình bày**\n\n$170\\%\\times 75\\%$\n\n$=1,7\\times 0,75=1,275$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "nhan_td",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng số thập phân):\n$170\\%\\times 10\\%$",
+  "dap_an": "$0,17$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai tỉ số phần trăm thì đổi từng tỉ số ra số thập phân rồi nhân hai số thập phân, không nhân phần số rồi giữ nguyên dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Nhân hai số thập phân vừa đổi, chú ý đếm đủ số chữ số ở phần thập phân của kết quả.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân đúng như đề yêu cầu.\n\n**Chú ý:** tích của hai tỉ số phần trăm không phải là tích hai phần số: $50\\%\\times 50\\%=0,5\\times 0,5=0,25$ chứ không phải $2500\\%$.\n\n**Phần 2. Trình bày**\n\n$170\\%\\times 10\\%$\n\n$=1,7\\times 0,1=0,17$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "nhan_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thực hiện phép tính (viết kết quả dưới dạng phần trăm):\n$30\\%\\times 30\\%$",
+  "dap_an": "$9\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân hai tỉ số phần trăm thì đổi từng tỉ số ra số thập phân rồi nhân hai số thập phân, không nhân phần số rồi giữ nguyên dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Nhân hai số thập phân vừa đổi, chú ý đếm đủ số chữ số ở phần thập phân của kết quả.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số rồi viết dấu $\\%$.\n\n**Chú ý:** tích của hai tỉ số phần trăm không phải là tích hai phần số: $50\\%\\times 50\\%=0,5\\times 0,5=0,25$ chứ không phải $2500\\%$.\n\n**Phần 2. Trình bày**\n\n$30\\%\\times 30\\%$\n\n$=0,3\\times 0,3=0,09=9\\%$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "chia_2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$25\\%:10\\%$",
+  "dap_an": "$2,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia hai tỉ số phần trăm cho nhau thì đổi cả hai ra số thập phân rồi chia; kết quả là một số bình thường, không còn dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Chia số thập phân thứ nhất cho số thập phân thứ hai theo đúng thứ tự đề bài.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân, không viết dấu $\\%$.\n\n**Chú ý:** thương của hai tỉ số phần trăm là một số không có dấu $\\%$.\n\n**Phần 2. Trình bày**\n\n$25\\%:10\\%$\n\n$=0,25:0,1=2,5$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "chia_2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$6,4\\%:8\\%$",
+  "dap_an": "$0,8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia hai tỉ số phần trăm cho nhau thì đổi cả hai ra số thập phân rồi chia; kết quả là một số bình thường, không còn dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Chia số thập phân thứ nhất cho số thập phân thứ hai theo đúng thứ tự đề bài.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân, không viết dấu $\\%$.\n\n**Chú ý:** thương của hai tỉ số phần trăm là một số không có dấu $\\%$.\n\n**Phần 2. Trình bày**\n\n$6,4\\%:8\\%$\n\n$=0,064:0,08=0,8$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "chia_2",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$120\\%:20\\%$",
+  "dap_an": "$6$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia hai tỉ số phần trăm cho nhau thì đổi cả hai ra số thập phân rồi chia; kết quả là một số bình thường, không còn dấu $\\%$.\n\n**Bước 1.** Đổi từng tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Chia số thập phân thứ nhất cho số thập phân thứ hai theo đúng thứ tự đề bài.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân, không viết dấu $\\%$.\n\n**Chú ý:** thương của hai tỉ số phần trăm là một số không có dấu $\\%$.\n\n**Phần 2. Trình bày**\n\n$120\\%:20\\%$\n\n$=1,2:0,2=6$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ba_so",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$125\\%\\times 50\\%:10\\%$",
+  "dap_an": "$6,25$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có nhân và chia các tỉ số phần trăm: đổi tất cả ra số thập phân rồi tính từ trái sang phải.\n\n**Bước 1.** Đổi cả ba tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Thực hiện phép nhân đứng trước, vì phép nhân và phép chia được tính từ trái sang phải.\n\n**Bước 3.** Chia kết quả vừa tìm cho số thập phân cuối cùng rồi viết đáp số.\n\n**Chú ý:** không giữ dấu $\\%$ khi đã đổi ra số thập phân; kết quả cuối là một số bình thường.\n\n**Phần 2. Trình bày**\n\n$125\\%\\times 50\\%:10\\%$\n\n$=1,25\\times 0,5:0,1=0,625:0,1=6,25$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "ba_so",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$200\\%\\times 50\\%:25\\%$",
+  "dap_an": "$4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Biểu thức có nhân và chia các tỉ số phần trăm: đổi tất cả ra số thập phân rồi tính từ trái sang phải.\n\n**Bước 1.** Đổi cả ba tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Thực hiện phép nhân đứng trước, vì phép nhân và phép chia được tính từ trái sang phải.\n\n**Bước 3.** Chia kết quả vừa tìm cho số thập phân cuối cùng rồi viết đáp số.\n\n**Chú ý:** không giữ dấu $\\%$ khi đã đổi ra số thập phân; kết quả cuối là một số bình thường.\n\n**Phần 2. Trình bày**\n\n$200\\%\\times 50\\%:25\\%$\n\n$=2\\times 0,5:0,25=1:0,25=4$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "so_nhan",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$12,5\\%\\times 5$",
+  "dap_an": "$0,625$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Nhân một tỉ số phần trăm với một số tự nhiên: đổi tỉ số phần trăm ra số thập phân rồi nhân với số đó.\n\n**Bước 1.** Đổi tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Nhân số thập phân vừa đổi với số tự nhiên đã cho.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** kết quả không còn dấu $\\%$ vì đề yêu cầu số thập phân.\n\n**Phần 2. Trình bày**\n\n$12,5\\%\\times 5$\n\n$=0,125\\times 5=0,625$"
+ },
+ {
+  "dang": "NDB02767",
+  "mau": "so_chia_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính (viết kết quả dưới dạng số thập phân):\n$59:40\\%$",
+  "dap_an": "$147,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Chia một số tự nhiên cho một tỉ số phần trăm: đổi tỉ số phần trăm ra số thập phân rồi chia; kết quả lớn hơn số bị chia khi tỉ số bé hơn $100\\%$.\n\n**Bước 1.** Đổi tỉ số phần trăm ra số thập phân bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 2.** Chia số tự nhiên cho số thập phân vừa đổi theo đúng thứ tự đề bài.\n\n**Bước 3.** Viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** số bị chia là số tự nhiên đứng trước dấu hai chấm, không đảo thứ tự hai số.\n\n**Phần 2. Trình bày**\n\n$59:40\\%$\n\n$=59:0,4=147,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$18\\times 30\\%+18\\times 10\\%$",
+  "dap_an": "$7,2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $30\\%\\times 18$ và $10\\%\\times 18$ có chung thừa số $18$, nên đặt $18$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $18$.\n\n**Bước 1.** Nhìn ra thừa số $18$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$18\\times 30\\%+18\\times 10\\%$\n\n$=18\\times(30\\%+10\\%)=18\\times 40\\%=7,2$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$5\\%\\times 15+15\\%\\times 15$",
+  "dap_an": "$3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $5\\%\\times 15$ và $15\\%\\times 15$ có chung thừa số $15$, nên đặt $15$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $15$.\n\n**Bước 1.** Nhìn ra thừa số $15$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$5\\%\\times 15+15\\%\\times 15$\n\n$=(5\\%+15\\%)\\times 15=20\\%\\times 15=3$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$5\\%\\times 0,8+15\\%\\times 0,8$",
+  "dap_an": "$0,16$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $5\\%\\times 0,8$ và $15\\%\\times 0,8$ có chung thừa số $0,8$, nên đặt $0,8$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $0,8$.\n\n**Bước 1.** Nhìn ra thừa số $0,8$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$5\\%\\times 0,8+15\\%\\times 0,8$\n\n$=(5\\%+15\\%)\\times 0,8=20\\%\\times 0,8=0,16$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$1,6\\times 45\\%+1,6\\times 5\\%$",
+  "dap_an": "$0,8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $45\\%\\times 1,6$ và $5\\%\\times 1,6$ có chung thừa số $1,6$, nên đặt $1,6$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $1,6$.\n\n**Bước 1.** Nhìn ra thừa số $1,6$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$1,6\\times 45\\%+1,6\\times 5\\%$\n\n$=1,6\\times(45\\%+5\\%)=1,6\\times 50\\%=0,8$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$125\\times 45\\%+125\\times 5\\%$",
+  "dap_an": "$62,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $45\\%\\times 125$ và $5\\%\\times 125$ có chung thừa số $125$, nên đặt $125$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $125$.\n\n**Bước 1.** Nhìn ra thừa số $125$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$125\\times 45\\%+125\\times 5\\%$\n\n$=125\\times(45\\%+5\\%)=125\\times 50\\%=62,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$5\\%\\times 8,4+15\\%\\times 8,4$",
+  "dap_an": "$1,68$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích $5\\%\\times 8,4$ và $15\\%\\times 8,4$ có chung thừa số $8,4$, nên đặt $8,4$ làm thừa số chung: cộng hai tỉ số phần trăm rồi mới nhân với $8,4$.\n\n**Bước 1.** Nhìn ra thừa số $8,4$ xuất hiện ở cả hai tích, đó là thừa số chung cần đặt ra ngoài.\n\n**Bước 2.** Viết tổng hai tỉ số phần trăm trong ngoặc, vì tổng hai tích có chung một thừa số bằng tổng hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Cộng hai tỉ số phần trăm rồi đổi kết quả ra số thập phân để nhân với số chung.\n\n**Chú ý:** phải cộng hai tỉ số phần trăm trước, đừng nhân từng tích riêng rồi mới cộng.\n\n**Phần 2. Trình bày**\n\n$5\\%\\times 8,4+15\\%\\times 8,4$\n\n$=(5\\%+15\\%)\\times 8,4=20\\%\\times 8,4=1,68$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_tru",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$150\\%\\times 16-55\\%\\times 16$",
+  "dap_an": "$15,2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $16$, nên đặt $16$ làm thừa số chung: trừ hai tỉ số phần trăm rồi mới nhân với $16$.\n\n**Bước 1.** Tìm thừa số xuất hiện ở cả hai tích, đó là $16$.\n\n**Bước 2.** Viết hiệu hai tỉ số phần trăm trong ngoặc, vì hiệu hai tích có chung một thừa số bằng hiệu hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Trừ hai tỉ số phần trăm, đổi kết quả ra số thập phân rồi nhân với số chung.\n\n**Chú ý:** trừ hai tỉ số phần trăm trước, kết quả vẫn mang dấu $\\%$ cho tới khi nhân với số chung.\n\n**Phần 2. Trình bày**\n\n$150\\%\\times 16-55\\%\\times 16$\n\n$=(150\\%-55\\%)\\times 16=95\\%\\times 16=15,2$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_tru",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$2,5\\times 40\\%-2,5\\times 20\\%$",
+  "dap_an": "$0,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $2,5$, nên đặt $2,5$ làm thừa số chung: trừ hai tỉ số phần trăm rồi mới nhân với $2,5$.\n\n**Bước 1.** Tìm thừa số xuất hiện ở cả hai tích, đó là $2,5$.\n\n**Bước 2.** Viết hiệu hai tỉ số phần trăm trong ngoặc, vì hiệu hai tích có chung một thừa số bằng hiệu hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Trừ hai tỉ số phần trăm, đổi kết quả ra số thập phân rồi nhân với số chung.\n\n**Chú ý:** trừ hai tỉ số phần trăm trước, kết quả vẫn mang dấu $\\%$ cho tới khi nhân với số chung.\n\n**Phần 2. Trình bày**\n\n$2,5\\times 40\\%-2,5\\times 20\\%$\n\n$=2,5\\times(40\\%-20\\%)=2,5\\times 20\\%=0,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_tru",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$15\\times 75\\%-15\\times 55\\%$",
+  "dap_an": "$3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $15$, nên đặt $15$ làm thừa số chung: trừ hai tỉ số phần trăm rồi mới nhân với $15$.\n\n**Bước 1.** Tìm thừa số xuất hiện ở cả hai tích, đó là $15$.\n\n**Bước 2.** Viết hiệu hai tỉ số phần trăm trong ngoặc, vì hiệu hai tích có chung một thừa số bằng hiệu hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Trừ hai tỉ số phần trăm, đổi kết quả ra số thập phân rồi nhân với số chung.\n\n**Chú ý:** trừ hai tỉ số phần trăm trước, kết quả vẫn mang dấu $\\%$ cho tới khi nhân với số chung.\n\n**Phần 2. Trình bày**\n\n$15\\times 75\\%-15\\times 55\\%$\n\n$=15\\times(75\\%-55\\%)=15\\times 20\\%=3$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_tru",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$130\\%\\times 8,4-55\\%\\times 8,4$",
+  "dap_an": "$6,3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $8,4$, nên đặt $8,4$ làm thừa số chung: trừ hai tỉ số phần trăm rồi mới nhân với $8,4$.\n\n**Bước 1.** Tìm thừa số xuất hiện ở cả hai tích, đó là $8,4$.\n\n**Bước 2.** Viết hiệu hai tỉ số phần trăm trong ngoặc, vì hiệu hai tích có chung một thừa số bằng hiệu hai số còn lại nhân với thừa số đó.\n\n**Bước 3.** Trừ hai tỉ số phần trăm, đổi kết quả ra số thập phân rồi nhân với số chung.\n\n**Chú ý:** trừ hai tỉ số phần trăm trước, kết quả vẫn mang dấu $\\%$ cho tới khi nhân với số chung.\n\n**Phần 2. Trình bày**\n\n$130\\%\\times 8,4-55\\%\\times 8,4$\n\n$=(130\\%-55\\%)\\times 8,4=75\\%\\times 8,4=6,3$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$36\\times 60\\%\\times 5$",
+  "dap_an": "$108$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $60\\%$ và $5$ nhân với nhau được số tròn ($60\\%\\times 5=3$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $60\\%$ và $5$ có tích tròn, vì $60\\%=0,6$ và $0,6\\times 5=3$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $36\\times(60\\%\\times 5)$, còn $36$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $36$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$36\\times 60\\%\\times 5$\n\n$=36\\times(60\\%\\times 5)=36\\times(0,6\\times 5)=36\\times 3=108$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$2,5\\%\\times 360\\times 40$",
+  "dap_an": "$360$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $2,5\\%$ và $40$ nhân với nhau được số tròn ($2,5\\%\\times 40=1$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $2,5\\%$ và $40$ có tích tròn, vì $2,5\\%=0,025$ và $0,025\\times 40=1$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $360\\times(2,5\\%\\times 40)$, còn $360$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $360$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$2,5\\%\\times 360\\times 40$\n\n$=360\\times(2,5\\%\\times 40)=360\\times(0,025\\times 40)=360\\times 1=360$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$75\\times 6\\%\\times 50$",
+  "dap_an": "$225$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $6\\%$ và $50$ nhân với nhau được số tròn ($6\\%\\times 50=3$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $6\\%$ và $50$ có tích tròn, vì $6\\%=0,06$ và $0,06\\times 50=3$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $75\\times(6\\%\\times 50)$, còn $75$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $75$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$75\\times 6\\%\\times 50$\n\n$=75\\times(6\\%\\times 50)=75\\times(0,06\\times 50)=75\\times 3=225$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$6\\%\\times 125\\times 50$",
+  "dap_an": "$375$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $6\\%$ và $50$ nhân với nhau được số tròn ($6\\%\\times 50=3$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $6\\%$ và $50$ có tích tròn, vì $6\\%=0,06$ và $0,06\\times 50=3$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $125\\times(6\\%\\times 50)$, còn $125$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $125$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$6\\%\\times 125\\times 50$\n\n$=125\\times(6\\%\\times 50)=125\\times(0,06\\times 50)=125\\times 3=375$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$20\\times 250\\times 5\\%$",
+  "dap_an": "$250$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $5\\%$ và $20$ nhân với nhau được số tròn ($5\\%\\times 20=1$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $5\\%$ và $20$ có tích tròn, vì $5\\%=0,05$ và $0,05\\times 20=1$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $250\\times(20\\times 5\\%)$, còn $250$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $250$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$20\\times 250\\times 5\\%$\n\n$=250\\times(20\\times 5\\%)=250\\times(20\\times 0,05)=250\\times 1=250$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$6\\%\\times 36\\times 50$",
+  "dap_an": "$108$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $6\\%$ và $50$ nhân với nhau được số tròn ($6\\%\\times 50=3$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $6\\%$ và $50$ có tích tròn, vì $6\\%=0,06$ và $0,06\\times 50=3$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $36\\times(6\\%\\times 50)$, còn $36$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $36$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$6\\%\\times 36\\times 50$\n\n$=36\\times(6\\%\\times 50)=36\\times(0,06\\times 50)=36\\times 3=108$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$1,25\\%\\times 4,5\\times 80$",
+  "dap_an": "$4,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $1,25\\%$ và $80$ nhân với nhau được số tròn ($1,25\\%\\times 80=1$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $1,25\\%$ và $80$ có tích tròn, vì $1,25\\%=0,0125$ và $0,0125\\times 80=1$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $4,5\\times(1,25\\%\\times 80)$, còn $4,5$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $4,5$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$1,25\\%\\times 4,5\\times 80$\n\n$=4,5\\times(1,25\\%\\times 80)=4,5\\times(0,0125\\times 80)=4,5\\times 1=4,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_cap_tron",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$5\\times 6,4\\times 40\\%$",
+  "dap_an": "$12,8$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai thừa số $40\\%$ và $5$ nhân với nhau được số tròn ($40\\%\\times 5=2$), nên dùng tính chất giao hoán và kết hợp để nhóm hai số này lại trước.\n\n**Bước 1.** Nhận ra cặp số $40\\%$ và $5$ có tích tròn, vì $40\\%=0,4$ và $0,4\\times 5=2$.\n\n**Bước 2.** Nhóm hai số đó trong ngoặc: $6,4\\times(5\\times 40\\%)$, còn $6,4$ để riêng.\n\n**Bước 3.** Tính phần trong ngoặc trước, sau đó nhân kết quả với $6,4$.\n\n**Chú ý:** chỉ nhóm hai số khi cả ba số đều được nhân với nhau, không có dấu cộng hay trừ xen giữa.\n\n**Phần 2. Trình bày**\n\n$5\\times 6,4\\times 40\\%$\n\n$=6,4\\times(5\\times 40\\%)=6,4\\times(5\\times 0,4)=6,4\\times 2=12,8$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_ba_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$50\\%\\times 6,4+20\\%\\times 6,4+30\\%\\times 6,4$",
+  "dap_an": "$6,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tích đều có thừa số $6,4$, nên đặt $6,4$ làm thừa số chung rồi cộng ba tỉ số phần trăm trong ngoặc.\n\n**Bước 1.** Nhìn ra thừa số $6,4$ có mặt ở cả ba tích.\n\n**Bước 2.** Viết tổng ba tỉ số phần trăm trong ngoặc rồi nhân với $6,4$.\n\n**Bước 3.** Cộng ba tỉ số phần trăm được $100\\%$, mà $100\\%=1$ nên kết quả bằng chính số chung.\n\n**Chú ý:** cộng đủ cả ba tỉ số phần trăm trong ngoặc, không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\n$50\\%\\times 6,4+20\\%\\times 6,4+30\\%\\times 6,4$\n\n$=(50\\%+20\\%+30\\%)\\times 6,4=100\\%\\times 6,4=1\\times 6,4=6,4$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_ba_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$15\\%\\times 2,5+35\\%\\times 2,5+10\\%\\times 2,5$",
+  "dap_an": "$1,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tích đều có thừa số $2,5$, nên đặt $2,5$ làm thừa số chung rồi cộng ba tỉ số phần trăm trong ngoặc.\n\n**Bước 1.** Nhìn ra thừa số $2,5$ có mặt ở cả ba tích.\n\n**Bước 2.** Viết tổng ba tỉ số phần trăm trong ngoặc rồi nhân với $2,5$.\n\n**Bước 3.** Cộng ba tỉ số phần trăm rồi nhân kết quả với số chung.\n\n**Chú ý:** cộng đủ cả ba tỉ số phần trăm trong ngoặc, không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\n$15\\%\\times 2,5+35\\%\\times 2,5+10\\%\\times 2,5$\n\n$=(15\\%+35\\%+10\\%)\\times 2,5=60\\%\\times 2,5=1,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_ba_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$40\\%\\times 6,4+25\\%\\times 6,4+35\\%\\times 6,4$",
+  "dap_an": "$6,4$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tích đều có thừa số $6,4$, nên đặt $6,4$ làm thừa số chung rồi cộng ba tỉ số phần trăm trong ngoặc.\n\n**Bước 1.** Nhìn ra thừa số $6,4$ có mặt ở cả ba tích.\n\n**Bước 2.** Viết tổng ba tỉ số phần trăm trong ngoặc rồi nhân với $6,4$.\n\n**Bước 3.** Cộng ba tỉ số phần trăm được $100\\%$, mà $100\\%=1$ nên kết quả bằng chính số chung.\n\n**Chú ý:** cộng đủ cả ba tỉ số phần trăm trong ngoặc, không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\n$40\\%\\times 6,4+25\\%\\times 6,4+35\\%\\times 6,4$\n\n$=(40\\%+25\\%+35\\%)\\times 6,4=100\\%\\times 6,4=1\\times 6,4=6,4$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_ba_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$15\\%\\times 25+10\\%\\times 25+25\\%\\times 25$",
+  "dap_an": "$12,5$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Ba tích đều có thừa số $25$, nên đặt $25$ làm thừa số chung rồi cộng ba tỉ số phần trăm trong ngoặc.\n\n**Bước 1.** Nhìn ra thừa số $25$ có mặt ở cả ba tích.\n\n**Bước 2.** Viết tổng ba tỉ số phần trăm trong ngoặc rồi nhân với $25$.\n\n**Bước 3.** Cộng ba tỉ số phần trăm rồi nhân kết quả với số chung.\n\n**Chú ý:** cộng đủ cả ba tỉ số phần trăm trong ngoặc, không bỏ sót số nào.\n\n**Phần 2. Trình bày**\n\n$15\\%\\times 25+10\\%\\times 25+25\\%\\times 25$\n\n$=(15\\%+10\\%+25\\%)\\times 25=50\\%\\times 25=12,5$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_tru_100",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$4,8-4,8\\times 30\\%-4,8\\times 25\\%$",
+  "dap_an": "$2,16$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $4,8=4,8\\times 100\\%$ để cả ba số hạng đều có thừa số $4,8$, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Viết số hạng đầu thành $4,8\\times 100\\%$, vì $100\\%=1$ nên giá trị không đổi.\n\n**Bước 2.** Đặt $4,8$ làm thừa số chung: $4,8\\times(100\\%-30\\%-25\\%)$.\n\n**Bước 3.** Tính phần trong ngoặc bằng cách trừ liên tiếp các tỉ số phần trăm rồi nhân với $4,8$.\n\n**Chú ý:** phải đổi số hạng đứng một mình thành $4,8\\times 100\\%$ trước khi đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$4,8-4,8\\times 30\\%-4,8\\times 25\\%$\n\n$=4,8\\times 100\\%-4,8\\times 30\\%-4,8\\times 25\\%=4,8\\times(100\\%-30\\%-25\\%)=4,8\\times 45\\%=2,16$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_tru_100",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$56-56\\times 45\\%-56\\times 35\\%$",
+  "dap_an": "$11,2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $56=56\\times 100\\%$ để cả ba số hạng đều có thừa số $56$, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Viết số hạng đầu thành $56\\times 100\\%$, vì $100\\%=1$ nên giá trị không đổi.\n\n**Bước 2.** Đặt $56$ làm thừa số chung: $56\\times(100\\%-45\\%-35\\%)$.\n\n**Bước 3.** Tính phần trong ngoặc bằng cách trừ liên tiếp các tỉ số phần trăm rồi nhân với $56$.\n\n**Chú ý:** phải đổi số hạng đứng một mình thành $56\\times 100\\%$ trước khi đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$56-56\\times 45\\%-56\\times 35\\%$\n\n$=56\\times 100\\%-56\\times 45\\%-56\\times 35\\%=56\\times(100\\%-45\\%-35\\%)=56\\times 20\\%=11,2$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_tru_100",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$8,4-8,4\\times 10\\%-8,4\\times 15\\%$",
+  "dap_an": "$6,3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $8,4=8,4\\times 100\\%$ để cả ba số hạng đều có thừa số $8,4$, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Viết số hạng đầu thành $8,4\\times 100\\%$, vì $100\\%=1$ nên giá trị không đổi.\n\n**Bước 2.** Đặt $8,4$ làm thừa số chung: $8,4\\times(100\\%-10\\%-15\\%)$.\n\n**Bước 3.** Tính phần trong ngoặc bằng cách trừ liên tiếp các tỉ số phần trăm rồi nhân với $8,4$.\n\n**Chú ý:** phải đổi số hạng đứng một mình thành $8,4\\times 100\\%$ trước khi đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$8,4-8,4\\times 10\\%-8,4\\times 15\\%$\n\n$=8,4\\times 100\\%-8,4\\times 10\\%-8,4\\times 15\\%=8,4\\times(100\\%-10\\%-15\\%)=8,4\\times 75\\%=6,3$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_tru_100",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$1,6-1,6\\times 10\\%-1,6\\times 35\\%$",
+  "dap_an": "$0,88$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $1,6=1,6\\times 100\\%$ để cả ba số hạng đều có thừa số $1,6$, rồi đặt thừa số chung ra ngoài.\n\n**Bước 1.** Viết số hạng đầu thành $1,6\\times 100\\%$, vì $100\\%=1$ nên giá trị không đổi.\n\n**Bước 2.** Đặt $1,6$ làm thừa số chung: $1,6\\times(100\\%-10\\%-35\\%)$.\n\n**Bước 3.** Tính phần trong ngoặc bằng cách trừ liên tiếp các tỉ số phần trăm rồi nhân với $1,6$.\n\n**Chú ý:** phải đổi số hạng đứng một mình thành $1,6\\times 100\\%$ trước khi đặt thừa số chung.\n\n**Phần 2. Trình bày**\n\n$1,6-1,6\\times 10\\%-1,6\\times 35\\%$\n\n$=1,6\\times 100\\%-1,6\\times 10\\%-1,6\\times 35\\%=1,6\\times(100\\%-10\\%-35\\%)=1,6\\times 55\\%=0,88$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$3\\times 30\\%+7\\times 30\\%$",
+  "dap_an": "$3$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $30\\%$, nên đặt $30\\%$ làm thừa số chung rồi cộng hai số còn lại: $3+7$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $30\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $30\\%$ ra ngoài, trong ngoặc cộng hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $30\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$3\\times 30\\%+7\\times 30\\%$\n\n$=(3+7)\\times 30\\%=10\\times 30\\%=3$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$75\\%\\times 70+75\\%\\times 30$",
+  "dap_an": "$75$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $75\\%$, nên đặt $75\\%$ làm thừa số chung rồi cộng hai số còn lại: $70+30$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $75\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $75\\%$ ra ngoài, trong ngoặc cộng hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $75\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$75\\%\\times 70+75\\%\\times 30$\n\n$=75\\%\\times(70+30)=75\\%\\times 100=75$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính một cách thuận tiện:\n$75\\%\\times 6,8+75\\%\\times 33,2$",
+  "dap_an": "$30$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $75\\%$, nên đặt $75\\%$ làm thừa số chung rồi cộng hai số còn lại: $6,8+33,2$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $75\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $75\\%$ ra ngoài, trong ngoặc cộng hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $75\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$75\\%\\times 6,8+75\\%\\times 33,2$\n\n$=75\\%\\times(6,8+33,2)=75\\%\\times 40=30$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$3,7\\times 35\\%+16,3\\times 35\\%$",
+  "dap_an": "$7$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $35\\%$, nên đặt $35\\%$ làm thừa số chung rồi cộng hai số còn lại: $3,7+16,3$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $35\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $35\\%$ ra ngoài, trong ngoặc cộng hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $35\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$3,7\\times 35\\%+16,3\\times 35\\%$\n\n$=(3,7+16,3)\\times 35\\%=20\\times 35\\%=7$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_tru",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính nhanh:\n$10\\%\\times 26-10\\%\\times 6$",
+  "dap_an": "$2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $10\\%$, nên đặt $10\\%$ làm thừa số chung rồi trừ hai số còn lại: $26-6$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $10\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $10\\%$ ra ngoài, trong ngoặc trừ hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $10\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$10\\%\\times 26-10\\%\\times 6$\n\n$=10\\%\\times(26-6)=10\\%\\times 20=2$"
+ },
+ {
+  "dang": "NDB02768",
+  "mau": "tt_chung_pt_cong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tính bằng cách thuận tiện:\n$60\\%\\times 4+60\\%\\times 16$",
+  "dap_an": "$12$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai tích có chung thừa số $60\\%$, nên đặt $60\\%$ làm thừa số chung rồi cộng hai số còn lại: $4+16$ cho kết quả tròn.\n\n**Bước 1.** Nhìn ra thừa số $60\\%$ có mặt ở cả hai tích.\n\n**Bước 2.** Đặt $60\\%$ ra ngoài, trong ngoặc cộng hai số còn lại.\n\n**Bước 3.** Tính phần trong ngoặc được số tròn rồi nhân với $60\\%$ để ra kết quả.\n\n**Chú ý:** thừa số chung ở đây là một tỉ số phần trăm, còn phần trong ngoặc là hai số bình thường.\n\n**Phần 2. Trình bày**\n\n$60\\%\\times 4+60\\%\\times 16$\n\n$=60\\%\\times(4+16)=60\\%\\times 20=12$"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_tinh",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm 65% của 220 kg.",
+  "dap_an": "$143$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm $65\\%$ của một số là lấy số đó nhân với $65\\%$; vì $65\\%=0,65$ nên có thể đổi ra số thập phân rồi nhân.\n\n**Bước 1.** Xác định số đã cho là $220$ kg và tỉ số phần trăm cần lấy là $65\\%$.\n\n**Bước 2.** Viết phép nhân: số đã cho nhân với $65\\%$ (từ \"của\" báo hiệu phép nhân).\n\n**Bước 3.** Đổi $65\\%$ ra số thập phân rồi nhân, viết kết quả kèm đơn vị kg.\n\n**Chú ý:** đây là tìm một phần của số đã cho nên dùng phép nhân, không dùng phép chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKết quả là: $220\\times 65\\%=220\\times 0,65=143$ (kg)\n\nĐáp số: $143$ kg"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_tinh",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "55% của 220 m bằng bao nhiêu m?",
+  "dap_an": "$121$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm $55\\%$ của một số là lấy số đó nhân với $55\\%$; vì $55\\%=0,55$ nên có thể đổi ra số thập phân rồi nhân.\n\n**Bước 1.** Xác định số đã cho là $220$ m và tỉ số phần trăm cần lấy là $55\\%$.\n\n**Bước 2.** Viết phép nhân: số đã cho nhân với $55\\%$ (từ \"của\" báo hiệu phép nhân).\n\n**Bước 3.** Đổi $55\\%$ ra số thập phân rồi nhân, viết kết quả kèm đơn vị m.\n\n**Chú ý:** đây là tìm một phần của số đã cho nên dùng phép nhân, không dùng phép chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKết quả là: $220\\times 55\\%=220\\times 0,55=121$ (m)\n\nĐáp số: $121$ m"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_hs",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5B có 25 học sinh, trong đó 12% số học sinh đi học bằng xe đạp. Hỏi có bao nhiêu học sinh đi học bằng xe đạp?",
+  "dap_an": "$3$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh đi học bằng xe đạp là $12\\%$ của tổng số học sinh; tìm $12\\%$ của $25$ thì lấy $25$ nhân với $12\\%$.\n\n**Bước 1.** Xác định số cả là $25$ học sinh và số học sinh đi học bằng xe đạp chiếm $12\\%$ của số cả.\n\n**Bước 2.** Viết phép nhân: tổng số học sinh nhân với $12\\%$.\n\n**Bước 3.** Đổi $12\\%$ ra số thập phân rồi nhân, viết kết quả kèm đơn vị học sinh.\n\n**Chú ý:** đáp số là số học sinh đi học bằng xe đạp, không phải số học sinh còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh đi học bằng xe đạp là: $25\\times 12\\%=3$ (học sinh)\n\nĐáp số: $3$ học sinh"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_hs",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Khối lớp Năm của một trường có 150 học sinh, trong đó 80% số học sinh biết bơi. Hỏi có bao nhiêu học sinh biết bơi?",
+  "dap_an": "$120$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số học sinh biết bơi là $80\\%$ của tổng số học sinh; tìm $80\\%$ của $150$ thì lấy $150$ nhân với $80\\%$.\n\n**Bước 1.** Xác định số cả là $150$ học sinh và số học sinh biết bơi chiếm $80\\%$ của số cả.\n\n**Bước 2.** Viết phép nhân: tổng số học sinh nhân với $80\\%$.\n\n**Bước 3.** Đổi $80\\%$ ra số thập phân rồi nhân, viết kết quả kèm đơn vị học sinh.\n\n**Chú ý:** đáp số là số học sinh biết bơi, không phải số học sinh còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh biết bơi là: $150\\times 80\\%=120$ (học sinh)\n\nĐáp số: $120$ học sinh"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_con_lai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bao chứa 45 kg gạo. Người ta đã dùng 40% lượng gạo đó. Hỏi trong một bao còn lại bao nhiêu kg gạo?",
+  "dap_an": "$27$ kg",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm lượng đã dùng bằng cách lấy tổng lượng nhân với $40\\%$, rồi lấy tổng lượng trừ đi lượng đã dùng để được lượng còn lại.\n\n**Bước 1.** Tìm lượng gạo đã dùng: lấy $45$ kg nhân với $40\\%$.\n\n**Bước 2.** Lấy tổng lượng gạo trừ đi lượng đã dùng để tìm lượng còn lại.\n\n**Bước 3.** Viết đáp số kèm đơn vị kg.\n\n**Chú ý:** đề hỏi lượng còn lại chứ không phải lượng đã dùng, nên còn một bước trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLượng gạo đã dùng là: $45\\times 40\\%=18$ (kg)\n\nLượng gạo còn lại là: $45-18=27$ (kg)\n\nĐáp số: $27$ kg"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_con_lai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một cuộn chứa 12,5 m dây điện. Người ta đã dùng 12% lượng dây điện đó. Hỏi trong một cuộn còn lại bao nhiêu m dây điện?",
+  "dap_an": "$11$ m",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm lượng đã dùng bằng cách lấy tổng lượng nhân với $12\\%$, rồi lấy tổng lượng trừ đi lượng đã dùng để được lượng còn lại.\n\n**Bước 1.** Tìm lượng dây điện đã dùng: lấy $12,5$ m nhân với $12\\%$.\n\n**Bước 2.** Lấy tổng lượng dây điện trừ đi lượng đã dùng để tìm lượng còn lại.\n\n**Bước 3.** Viết đáp số kèm đơn vị m.\n\n**Chú ý:** đề hỏi lượng còn lại chứ không phải lượng đã dùng, nên còn một bước trừ.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nLượng dây điện đã dùng là: $12,5\\times 12\\%=1,5$ (m)\n\nLượng dây điện còn lại là: $12,5-1,5=11$ (m)\n\nĐáp số: $11$ m"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_dien_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một mảnh đất hình chữ nhật có chiều dài 36 m và chiều rộng 30 m. Người ta dùng 15% diện tích mảnh đất để đào ao thả cá. Tính diện tích phần đất dùng để đào ao thả cá.",
+  "dap_an": "$162\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tìm diện tích cả mảnh đất trước (dài nhân rộng), rồi tìm $15\\%$ của diện tích đó bằng phép nhân.\n\n**Bước 1.** Tìm diện tích mảnh đất hình chữ nhật: lấy chiều dài nhân chiều rộng.\n\n**Bước 2.** Phần đất dùng để đào ao thả cá là $15\\%$ của diện tích mảnh đất, nên lấy diện tích nhân với $15\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị mét vuông.\n\n**Chú ý:** $15\\%$ tính trên diện tích chứ không tính trên chiều dài hay chiều rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $36\\times 30=1080$ ($\\text{m}^2$)\n\nDiện tích đất dùng để đào ao thả cá là: $1080\\times 15\\%=162$ ($\\text{m}^2$)\n\nĐáp số: $162\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_dien_tich",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một mảnh đất hình chữ nhật có chiều dài 45 m và chiều rộng 12 m. Người ta dùng 15% diện tích mảnh đất để trồng hoa. Tính diện tích phần đất dùng để trồng hoa.",
+  "dap_an": "$81\\ \\text{m}^2$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tìm diện tích cả mảnh đất trước (dài nhân rộng), rồi tìm $15\\%$ của diện tích đó bằng phép nhân.\n\n**Bước 1.** Tìm diện tích mảnh đất hình chữ nhật: lấy chiều dài nhân chiều rộng.\n\n**Bước 2.** Phần đất dùng để trồng hoa là $15\\%$ của diện tích mảnh đất, nên lấy diện tích nhân với $15\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị mét vuông.\n\n**Chú ý:** $15\\%$ tính trên diện tích chứ không tính trên chiều dài hay chiều rộng.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nDiện tích mảnh đất là: $45\\times 12=540$ ($\\text{m}^2$)\n\nDiện tích đất dùng để trồng hoa là: $540\\times 15\\%=81$ ($\\text{m}^2$)\n\nĐáp số: $81\\ \\text{m}^2$"
+ },
+ {
+  "dang": "NDB02769",
+  "mau": "pc_tang",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, một xưởng may sản xuất được 240 chiếc áo. Tháng này sản lượng tăng thêm 5% so với trước đó. Hỏi tháng này xưởng sản xuất được bao nhiêu chiếc áo?",
+  "dap_an": "$252$ chiếc áo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phần tăng thêm là $5\\%$ của số ban đầu; tìm phần tăng bằng phép nhân rồi cộng vào số ban đầu.\n\n**Bước 1.** Xác định số ban đầu là $240$ chiếc áo và phần tăng thêm bằng $5\\%$ của số đó.\n\n**Bước 2.** Tìm phần tăng thêm: lấy $240$ nhân với $5\\%$.\n\n**Bước 3.** Cộng phần tăng thêm vào số ban đầu để được số áo sau khi tăng.\n\n**Chú ý:** đề hỏi giá trị sau khi tăng nên phải cộng thêm phần tăng vào số ban đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần tăng thêm là: $240\\times 5\\%=12$ (chiếc áo)\n\nGiá trị sau khi tăng là: $240+12=252$ (chiếc áo)\n\nĐáp số: $252$ chiếc áo"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_tim_A",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm số A, biết rằng 16% của số A là 40.",
+  "dap_an": "$A=250$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số A ứng với $100\\%$, còn $40$ chỉ là $16\\%$ của A; biết $16\\%$ của một số là $40$ thì số đó bằng $40:16\\%$.\n\n**Bước 1.** Nhận ra số A là số cả (ứng với $100\\%$) và $40$ ứng với $16\\%$ của A.\n\n**Bước 2.** Muốn tìm cả số khi biết một phần trăm của nó, ta lấy giá trị đã biết chia cho tỉ số phần trăm.\n\n**Bước 3.** Đổi $16\\%$ ra số thập phân rồi chia, sau đó nhân lại với $16\\%$ để thử kết quả.\n\n**Chú ý:** không nhân $40$ với $16\\%$: đó là cách tìm phần trăm của một số, không phải tìm cả số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố A là: $40:16\\%=40:0,16=250$\n\nĐáp số: $A=250$"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_tim_A",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Biết 40% của số A bằng 14,4. Tìm số A.",
+  "dap_an": "$A=36$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số A ứng với $100\\%$, còn $14,4$ chỉ là $40\\%$ của A; biết $40\\%$ của một số là $14,4$ thì số đó bằng $14,4:40\\%$.\n\n**Bước 1.** Nhận ra số A là số cả (ứng với $100\\%$) và $14,4$ ứng với $40\\%$ của A.\n\n**Bước 2.** Muốn tìm cả số khi biết một phần trăm của nó, ta lấy giá trị đã biết chia cho tỉ số phần trăm.\n\n**Bước 3.** Đổi $40\\%$ ra số thập phân rồi chia, sau đó nhân lại với $40\\%$ để thử kết quả.\n\n**Chú ý:** không nhân $14,4$ với $40\\%$: đó là cách tìm phần trăm của một số, không phải tìm cả số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố A là: $14,4:40\\%=14,4:0,4=36$\n\nĐáp số: $A=36$"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_tim_A",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tìm số A, biết rằng 75% của số A là 27.",
+  "dap_an": "$A=36$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số A ứng với $100\\%$, còn $27$ chỉ là $75\\%$ của A; biết $75\\%$ của một số là $27$ thì số đó bằng $27:75\\%$.\n\n**Bước 1.** Nhận ra số A là số cả (ứng với $100\\%$) và $27$ ứng với $75\\%$ của A.\n\n**Bước 2.** Muốn tìm cả số khi biết một phần trăm của nó, ta lấy giá trị đã biết chia cho tỉ số phần trăm.\n\n**Bước 3.** Đổi $75\\%$ ra số thập phân rồi chia, sau đó nhân lại với $75\\%$ để thử kết quả.\n\n**Chú ý:** không nhân $27$ với $75\\%$: đó là cách tìm phần trăm của một số, không phải tìm cả số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố A là: $27:75\\%=27:0,75=36$\n\nĐáp số: $A=36$"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_phan_chiem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một đàn gà có 30 con gà trống, chiếm 15% tổng số gà của đàn. Hỏi đàn gà có tất cả bao nhiêu con?",
+  "dap_an": "$200$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số phần đã biết ứng với $15\\%$ của tổng; muốn tìm tổng ta lấy số đã biết chia cho $15\\%$.\n\n**Bước 1.** Xác định số đã biết là $30$, đó là $15\\%$ của tổng số cần tìm.\n\n**Bước 2.** Tổng số ứng với $100\\%$; lấy số đã biết chia cho tỉ số phần trăm $15\\%$.\n\n**Bước 3.** Thử lại: lấy tổng vừa tìm nhân với $15\\%$ phải ra đúng $30$.\n\n**Chú ý:** không lấy $30$ nhân với $15\\%$: $30$ chưa phải là cả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số là: $30:15\\%=200$ (con)\n\nĐáp số: $200$ con"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_phan_chiem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một đàn gà có 52 con gà trống, chiếm 65% tổng số gà của đàn. Hỏi đàn gà có tất cả bao nhiêu con?",
+  "dap_an": "$80$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số phần đã biết ứng với $65\\%$ của tổng; muốn tìm tổng ta lấy số đã biết chia cho $65\\%$.\n\n**Bước 1.** Xác định số đã biết là $52$, đó là $65\\%$ của tổng số cần tìm.\n\n**Bước 2.** Tổng số ứng với $100\\%$; lấy số đã biết chia cho tỉ số phần trăm $65\\%$.\n\n**Bước 3.** Thử lại: lấy tổng vừa tìm nhân với $65\\%$ phải ra đúng $52$.\n\n**Chú ý:** không lấy $52$ nhân với $65\\%$: $52$ chưa phải là cả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số là: $52:65\\%=80$ (con)\n\nĐáp số: $80$ con"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_phan_chiem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thư viện của trường có 15 quyển truyện tranh, chiếm 30% tổng số sách của thư viện. Hỏi thư viện có tất cả bao nhiêu quyển sách?",
+  "dap_an": "$50$ quyển sách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số phần đã biết ứng với $30\\%$ của tổng; muốn tìm tổng ta lấy số đã biết chia cho $30\\%$.\n\n**Bước 1.** Xác định số đã biết là $15$, đó là $30\\%$ của tổng số cần tìm.\n\n**Bước 2.** Tổng số ứng với $100\\%$; lấy số đã biết chia cho tỉ số phần trăm $30\\%$.\n\n**Bước 3.** Thử lại: lấy tổng vừa tìm nhân với $30\\%$ phải ra đúng $15$.\n\n**Chú ý:** không lấy $15$ nhân với $30\\%$: $15$ chưa phải là cả.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTổng số là: $15:30\\%=50$ (quyển sách)\n\nĐáp số: $50$ quyển sách"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_con_lai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nông trại nuôi gà và vịt, số gà chiếm 30% tổng số gia cầm. Biết số vịt là 105 con. Hỏi nông trại nuôi tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$150$ con gia cầm",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đã biết là phần còn lại, chiếm $100\\%-30\\%=70\\%$ của tổng; lấy số đó chia cho $70\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của phần đã biết số lượng: lấy $100\\%$ trừ $30\\%$.\n\n**Bước 2.** Số $105$ ứng với $70\\%$ của tổng nên lấy $105$ chia cho $70\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị con gia cầm.\n\n**Chú ý:** không chia $105$ cho $30\\%$: số $105$ không ứng với $30\\%$ mà ứng với phần còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần còn lại chiếm: $100\\%-30\\%=70\\%$ (tổng số)\n\nTổng số là: $105:70\\%=150$ (con gia cầm)\n\nĐáp số: $150$ con gia cầm"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_con_lai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một kho hàng, gạo tẻ chiếm 60% tổng số gạo, còn lại là gạo nếp. Biết có 24 bao gạo nếp. Hỏi kho có tất cả bao nhiêu bao gạo?",
+  "dap_an": "$60$ bao gạo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đã biết là phần còn lại, chiếm $100\\%-60\\%=40\\%$ của tổng; lấy số đó chia cho $40\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của phần đã biết số lượng: lấy $100\\%$ trừ $60\\%$.\n\n**Bước 2.** Số $24$ ứng với $40\\%$ của tổng nên lấy $24$ chia cho $40\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị bao gạo.\n\n**Chú ý:** không chia $24$ cho $60\\%$: số $24$ không ứng với $60\\%$ mà ứng với phần còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần còn lại chiếm: $100\\%-60\\%=40\\%$ (tổng số)\n\nTổng số là: $24:40\\%=60$ (bao gạo)\n\nĐáp số: $60$ bao gạo"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_con_lai",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một kho hàng, gạo tẻ chiếm 30% tổng số gạo, còn lại là gạo nếp. Biết có 140 bao gạo nếp. Hỏi kho có tất cả bao nhiêu bao gạo?",
+  "dap_an": "$200$ bao gạo",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đã biết là phần còn lại, chiếm $100\\%-30\\%=70\\%$ của tổng; lấy số đó chia cho $70\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của phần đã biết số lượng: lấy $100\\%$ trừ $30\\%$.\n\n**Bước 2.** Số $140$ ứng với $70\\%$ của tổng nên lấy $140$ chia cho $70\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị bao gạo.\n\n**Chú ý:** không chia $140$ cho $30\\%$: số $140$ không ứng với $30\\%$ mà ứng với phần còn lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nPhần còn lại chiếm: $100\\%-30\\%=70\\%$ (tổng số)\n\nTổng số là: $140:70\\%=200$ (bao gạo)\n\nĐáp số: $200$ bao gạo"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_tang",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Số học sinh của một trường năm nay tăng 10% so với năm ngoái và đạt 4400 em. Hỏi năm ngoái trường đó có bao nhiêu học sinh?",
+  "dap_an": "$4000$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số năm ngoái là $100\\%$; năm nay tăng $10\\%$ nên bằng $100\\%+10\\%=110\\%$ số năm ngoái, từ đó lấy số hiện có chia cho $110\\%$.\n\n**Bước 1.** Coi số năm ngoái là $100\\%$, cộng thêm $10\\%$ để biết số năm nay bằng bao nhiêu phần trăm.\n\n**Bước 2.** Số đã cho 4400 ứng với $110\\%$ của số cần tìm.\n\n**Bước 3.** Lấy số đã cho chia cho $110\\%$ để tìm số cần tìm.\n\n**Chú ý:** $10\\%$ tính trên số năm ngoái, nên không lấy số năm nay trừ đi $10\\%$ của nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố năm nay bằng: $100\\%+10\\%=110\\%$ (số năm ngoái)\n\nSố năm ngoái là: $4400:110\\%=4000$ (học sinh)\n\nĐáp số: $4000$ học sinh"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_giam",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một xe tải chở hàng, sau khi dỡ xuống 25% số hàng thì trên xe còn 3000 thùng. Hỏi lúc đầu xe chở bao nhiêu thùng hàng?",
+  "dap_an": "$4000$ thùng hàng",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số lúc đầu là $100\\%$; đã bớt $25\\%$ nên số còn lại bằng $100\\%-25\\%=75\\%$ số lúc đầu, từ đó lấy số còn lại chia cho $75\\%$.\n\n**Bước 1.** Coi số lúc đầu là $100\\%$, trừ đi $25\\%$ để biết số còn lại bằng bao nhiêu phần trăm.\n\n**Bước 2.** Số đã cho 3000 ứng với $75\\%$ của số cần tìm.\n\n**Bước 3.** Lấy số đã cho chia cho $75\\%$ để tìm số cần tìm.\n\n**Chú ý:** $25\\%$ tính trên số lúc đầu, nên không lấy số còn lại cộng thêm $25\\%$ của nó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố còn lại bằng: $100\\%-25\\%=75\\%$ (số lúc đầu)\n\nSố lúc đầu là: $3000:75\\%=4000$ (thùng hàng)\n\nĐáp số: $4000$ thùng hàng"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_doi_don_vi",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Mè (vừng) đem ép thì được 20% dầu mè. Hỏi muốn có 80 kg dầu mè thì cần bao nhiêu tạ mè?",
+  "dap_an": "$4$ tạ mè",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dầu mè chiếm $20\\%$ khối lượng mè; biết khối lượng dầu mè thì lấy khối lượng đó chia cho $20\\%$ để tìm khối lượng mè, rồi đổi ra tạ.\n\n**Bước 1.** Xác định 80 kg dầu mè ứng với $20\\%$ khối lượng mè.\n\n**Bước 2.** Lấy 80 chia cho $20\\%$ để tìm khối lượng mè theo ki-lô-gam.\n\n**Bước 3.** Đổi ki-lô-gam sang tạ vì đề hỏi bằng tạ ($1$ tạ $=100$ kg).\n\n**Chú ý:** đề hỏi bằng đơn vị tạ nên phải đổi đơn vị ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng mè cần dùng là: $80:20\\%=400$ (kg)\n\nĐổi: $400:100=4$ (tạ)\n\nĐáp số: $4$ tạ mè"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_doi_don_vi",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đậu nành đem ép thì được 30% dầu nành. Hỏi muốn có 90 kg dầu nành thì cần bao nhiêu tạ đậu nành?",
+  "dap_an": "$3$ tạ đậu nành",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Dầu nành chiếm $30\\%$ khối lượng đậu nành; biết khối lượng dầu nành thì lấy khối lượng đó chia cho $30\\%$ để tìm khối lượng đậu nành, rồi đổi ra tạ.\n\n**Bước 1.** Xác định 90 kg dầu nành ứng với $30\\%$ khối lượng đậu nành.\n\n**Bước 2.** Lấy 90 chia cho $30\\%$ để tìm khối lượng đậu nành theo ki-lô-gam.\n\n**Bước 3.** Đổi ki-lô-gam sang tạ vì đề hỏi bằng tạ ($1$ tạ $=100$ kg).\n\n**Chú ý:** đề hỏi bằng đơn vị tạ nên phải đổi đơn vị ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nKhối lượng đậu nành cần dùng là: $90:30\\%=300$ (kg)\n\nĐổi: $300:100=3$ (tạ)\n\nĐáp số: $3$ tạ đậu nành"
+ },
+ {
+  "dang": "NDB02770",
+  "mau": "ts_roi_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "35% của một số là 70. Hỏi 45% của số đó là bao nhiêu?",
+  "dap_an": "$90$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm số đó: biết $35\\%$ của số là $70$ thì số đó bằng $70:35\\%$; sau đó tìm $45\\%$ của số vừa tìm.\n\n**Bước 1.** Tìm số đó: lấy $70$ chia cho $35\\%$ vì $70$ là $35\\%$ của số cần tìm.\n\n**Bước 2.** Tìm $45\\%$ của số đó bằng cách lấy số vừa tìm nhân với $45\\%$.\n\n**Bước 3.** Viết đáp số là kết quả của bước hai.\n\n**Chú ý:** đề hỏi $45\\%$ của số đó chứ không hỏi chính số đó.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đó là: $70:35\\%=200$\n\n45% của số đó là: $200\\times 45\\%=90$\n\nĐáp số: $90$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết $0,02$ thành tỉ số phần trăm.",
+  "dap_an": "$2\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $0,02$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$0,02=2\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết số thập phân $5$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$500\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $5$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$5=500\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết số thập phân $0,7$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$70\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $0,7$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$0,7=70\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết số thập phân $0,07$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$7\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $0,07$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$0,07=7\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết $0,98$ thành tỉ số phần trăm.",
+  "dap_an": "$98\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $0,98$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$0,98=98\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_stp_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết số thập phân $0,24$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$24\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Muốn viết một số thập phân dưới dạng tỉ số phần trăm, ta nhân số đó với $100$ (dịch dấu phẩy sang phải hai chữ số) rồi viết thêm dấu $\\%$, vì $1=100\\%$.\n\n**Bước 1.** Xác định số thập phân cần đổi là $0,24$.\n\n**Bước 2.** Dịch dấu phẩy sang phải hai chữ số, thêm chữ số $0$ nếu phần thập phân không đủ hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào bên phải kết quả.\n\n**Chú ý:** số lớn hơn $1$ khi đổi ra phần trăm thì lớn hơn $100\\%$, chẳng hạn $1,2=120\\%$.\n\n**Phần 2. Trình bày**\n\n$0,24=24\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi phân số $\\dfrac{3}{4}$ ra tỉ số phần trăm.",
+  "dap_an": "$75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $4$ là ước của $100$, nên nhân cả tử và mẫu với cùng một số để được phân số có mẫu số $100$ rồi viết thành phần trăm.\n\n**Bước 1.** Tìm số nhân với mẫu số $4$ để được $100$: $100:4=25$.\n\n**Bước 2.** Nhân cả tử số và mẫu số với $25$ để được phân số có mẫu số $100$.\n\n**Bước 3.** Viết phân số có mẫu số $100$ thành tỉ số phần trăm: tử số là số phần trăm.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{3}{4}=\\dfrac{3\\times 25}{4\\times 25}=\\dfrac{75}{100}=75\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết phân số $\\dfrac{7}{5}$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$140\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $5$ là ước của $100$, nên nhân cả tử và mẫu với cùng một số để được phân số có mẫu số $100$ rồi viết thành phần trăm.\n\n**Bước 1.** Tìm số nhân với mẫu số $5$ để được $100$: $100:5=20$.\n\n**Bước 2.** Nhân cả tử số và mẫu số với $20$ để được phân số có mẫu số $100$.\n\n**Bước 3.** Viết phân số có mẫu số $100$ thành tỉ số phần trăm: tử số là số phần trăm.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7}{5}=\\dfrac{7\\times 20}{5\\times 20}=\\dfrac{140}{100}=140\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết phân số $\\dfrac{5}{4}$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$125\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $4$ là ước của $100$, nên nhân cả tử và mẫu với cùng một số để được phân số có mẫu số $100$ rồi viết thành phần trăm.\n\n**Bước 1.** Tìm số nhân với mẫu số $4$ để được $100$: $100:4=25$.\n\n**Bước 2.** Nhân cả tử số và mẫu số với $25$ để được phân số có mẫu số $100$.\n\n**Bước 3.** Viết phân số có mẫu số $100$ thành tỉ số phần trăm: tử số là số phần trăm.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{5}{4}=\\dfrac{5\\times 25}{4\\times 25}=\\dfrac{125}{100}=125\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi phân số $\\dfrac{7}{20}$ ra tỉ số phần trăm.",
+  "dap_an": "$35\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $20$ là ước của $100$, nên nhân cả tử và mẫu với cùng một số để được phân số có mẫu số $100$ rồi viết thành phần trăm.\n\n**Bước 1.** Tìm số nhân với mẫu số $20$ để được $100$: $100:20=5$.\n\n**Bước 2.** Nhân cả tử số và mẫu số với $5$ để được phân số có mẫu số $100$.\n\n**Bước 3.** Viết phân số có mẫu số $100$ thành tỉ số phần trăm: tử số là số phần trăm.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{7}{20}=\\dfrac{7\\times 5}{20\\times 5}=\\dfrac{35}{100}=35\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi phân số $\\dfrac{9}{10}$ ra tỉ số phần trăm.",
+  "dap_an": "$90\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $10$ là ước của $100$, nên nhân cả tử và mẫu với cùng một số để được phân số có mẫu số $100$ rồi viết thành phần trăm.\n\n**Bước 1.** Tìm số nhân với mẫu số $10$ để được $100$: $100:10=10$.\n\n**Bước 2.** Nhân cả tử số và mẫu số với $10$ để được phân số có mẫu số $100$.\n\n**Bước 3.** Viết phân số có mẫu số $100$ thành tỉ số phần trăm: tử số là số phần trăm.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{9}{10}=\\dfrac{9\\times 10}{10\\times 10}=\\dfrac{90}{100}=90\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_ps_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết phân số $\\dfrac{8}{125}$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$6,4\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mẫu số $125$ không nhân được thành $100$ gọn, nên chia tử số cho mẫu số được số thập phân rồi đổi sang phần trăm.\n\n**Bước 1.** Chia tử số cho mẫu số: $8:125$ để được số thập phân.\n\n**Bước 2.** Dịch dấu phẩy của thương sang phải hai chữ số.\n\n**Bước 3.** Viết thêm dấu $\\%$ vào kết quả.\n\n**Chú ý:** phân số có mẫu số $100$ thì tử số chính là số phần trăm: $\\dfrac{15}{100}=15\\%$.\n\n**Phần 2. Trình bày**\n\n$\\dfrac{8}{125}=8:125=0,064=6,4\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_ps",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi $30\\%$ ra phân số tối giản.",
+  "dap_an": "$\\dfrac{3}{10}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $30\\%=\\dfrac{30}{100}$ rồi rút gọn phân số bằng cách chia cả tử và mẫu cho số lớn nhất mà cả hai cùng chia hết.\n\n**Bước 1.** Viết $30\\%$ thành phân số có mẫu số $100$: $\\dfrac{30}{100}$.\n\n**Bước 2.** Tìm số lớn nhất mà cả tử số $30$ và mẫu số $100$ cùng chia hết.\n\n**Bước 3.** Chia cả tử và mẫu cho số đó, kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** đề yêu cầu phân số tối giản nên không dừng lại ở phân số có mẫu số $100$.\n\n**Phần 2. Trình bày**\n\n$30\\%=\\dfrac{30}{100}=\\dfrac{30:10}{100:10}=\\dfrac{3}{10}$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_ps",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết tỉ số phần trăm $0,5\\%$ dưới dạng phân số tối giản.",
+  "dap_an": "$\\dfrac{1}{200}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $0,5\\%=\\dfrac{0,5}{100}$ rồi rút gọn phân số bằng cách chia cả tử và mẫu cho số lớn nhất mà cả hai cùng chia hết.\n\n**Bước 1.** Viết $0,5\\%$ thành phân số có mẫu số $100$: $\\dfrac{0,5}{100}$.\n\n**Bước 2.** Nhân cả tử và mẫu với $10$ để tử số không còn dấu phẩy.\n\n**Bước 3.** Chia cả tử và mẫu cho số đó, kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** đề yêu cầu phân số tối giản nên không dừng lại ở phân số có mẫu số $100$.\n\n**Phần 2. Trình bày**\n\n$0,5\\%=\\dfrac{0,5}{100}=\\dfrac{5}{1000}=\\dfrac{5:5}{1000:5}=\\dfrac{1}{200}$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_ps",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi $7,5\\%$ ra phân số tối giản.",
+  "dap_an": "$\\dfrac{3}{40}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $7,5\\%=\\dfrac{7,5}{100}$ rồi rút gọn phân số bằng cách chia cả tử và mẫu cho số lớn nhất mà cả hai cùng chia hết.\n\n**Bước 1.** Viết $7,5\\%$ thành phân số có mẫu số $100$: $\\dfrac{7,5}{100}$.\n\n**Bước 2.** Nhân cả tử và mẫu với $10$ để tử số không còn dấu phẩy.\n\n**Bước 3.** Chia cả tử và mẫu cho số đó, kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** đề yêu cầu phân số tối giản nên không dừng lại ở phân số có mẫu số $100$.\n\n**Phần 2. Trình bày**\n\n$7,5\\%=\\dfrac{7,5}{100}=\\dfrac{75}{1000}=\\dfrac{75:25}{1000:25}=\\dfrac{3}{40}$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_ps",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết tỉ số phần trăm $63\\%$ dưới dạng phân số tối giản.",
+  "dap_an": "$\\dfrac{63}{100}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $63\\%=\\dfrac{63}{100}$ rồi rút gọn phân số bằng cách chia cả tử và mẫu cho số lớn nhất mà cả hai cùng chia hết.\n\n**Bước 1.** Viết $63\\%$ thành phân số có mẫu số $100$: $\\dfrac{63}{100}$.\n\n**Bước 2.** Tìm số lớn nhất mà cả tử số $63$ và mẫu số $100$ cùng chia hết.\n\n**Bước 3.** Chia cả tử và mẫu cho số đó, kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** đề yêu cầu phân số tối giản nên không dừng lại ở phân số có mẫu số $100$.\n\n**Phần 2. Trình bày**\n\n$63\\%=\\dfrac{63}{100}=\\dfrac{63:1}{100:1}=\\dfrac{63}{100}$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_ps",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết tỉ số phần trăm $173\\%$ dưới dạng phân số tối giản.",
+  "dap_an": "$\\dfrac{173}{100}$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Viết $173\\%=\\dfrac{173}{100}$ rồi rút gọn phân số bằng cách chia cả tử và mẫu cho số lớn nhất mà cả hai cùng chia hết.\n\n**Bước 1.** Viết $173\\%$ thành phân số có mẫu số $100$: $\\dfrac{173}{100}$.\n\n**Bước 2.** Tìm số lớn nhất mà cả tử số $173$ và mẫu số $100$ cùng chia hết.\n\n**Bước 3.** Chia cả tử và mẫu cho số đó, kiểm tra phân số mới đã tối giản chưa.\n\n**Chú ý:** đề yêu cầu phân số tối giản nên không dừng lại ở phân số có mẫu số $100$.\n\n**Phần 2. Trình bày**\n\n$173\\%=\\dfrac{173}{100}=\\dfrac{173:1}{100:1}=\\dfrac{173}{100}$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_stp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi $13,24\\%$ ra số thập phân.",
+  "dap_an": "$0,1324$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $13,24\\%=\\dfrac{13,24}{100}$ nên đổi tỉ số phần trăm ra số thập phân bằng cách chia cho $100$, tức dịch dấu phẩy sang trái hai chữ số và bỏ dấu $\\%$.\n\n**Bước 1.** Viết $13,24\\%$ thành phân số có mẫu số $100$: $\\dfrac{13,24}{100}$.\n\n**Bước 2.** Chia tử số cho $100$ bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 3.** Bỏ dấu $\\%$ và viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** dịch dấu phẩy sang trái, thêm chữ số $0$ ở đầu nếu số có ít hơn hai chữ số ở phần nguyên.\n\n**Phần 2. Trình bày**\n\n$13,24\\%=\\dfrac{13,24}{100}=0,1324$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_stp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết tỉ số phần trăm $84\\%$ dưới dạng số thập phân.",
+  "dap_an": "$0,84$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $84\\%=\\dfrac{84}{100}$ nên đổi tỉ số phần trăm ra số thập phân bằng cách chia cho $100$, tức dịch dấu phẩy sang trái hai chữ số và bỏ dấu $\\%$.\n\n**Bước 1.** Viết $84\\%$ thành phân số có mẫu số $100$: $\\dfrac{84}{100}$.\n\n**Bước 2.** Chia tử số cho $100$ bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 3.** Bỏ dấu $\\%$ và viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** dịch dấu phẩy sang trái, thêm chữ số $0$ ở đầu nếu số có ít hơn hai chữ số ở phần nguyên.\n\n**Phần 2. Trình bày**\n\n$84\\%=\\dfrac{84}{100}=0,84$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_stp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi $39\\%$ ra số thập phân.",
+  "dap_an": "$0,39$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $39\\%=\\dfrac{39}{100}$ nên đổi tỉ số phần trăm ra số thập phân bằng cách chia cho $100$, tức dịch dấu phẩy sang trái hai chữ số và bỏ dấu $\\%$.\n\n**Bước 1.** Viết $39\\%$ thành phân số có mẫu số $100$: $\\dfrac{39}{100}$.\n\n**Bước 2.** Chia tử số cho $100$ bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 3.** Bỏ dấu $\\%$ và viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** dịch dấu phẩy sang trái, thêm chữ số $0$ ở đầu nếu số có ít hơn hai chữ số ở phần nguyên.\n\n**Phần 2. Trình bày**\n\n$39\\%=\\dfrac{39}{100}=0,39$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_pt_stp",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi $405\\%$ ra số thập phân.",
+  "dap_an": "$4,05$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Vì $405\\%=\\dfrac{405}{100}$ nên đổi tỉ số phần trăm ra số thập phân bằng cách chia cho $100$, tức dịch dấu phẩy sang trái hai chữ số và bỏ dấu $\\%$.\n\n**Bước 1.** Viết $405\\%$ thành phân số có mẫu số $100$: $\\dfrac{405}{100}$.\n\n**Bước 2.** Chia tử số cho $100$ bằng cách dịch dấu phẩy sang trái hai chữ số.\n\n**Bước 3.** Bỏ dấu $\\%$ và viết kết quả dưới dạng số thập phân.\n\n**Chú ý:** dịch dấu phẩy sang trái, thêm chữ số $0$ ở đầu nếu số có ít hơn hai chữ số ở phần nguyên.\n\n**Phần 2. Trình bày**\n\n$405\\%=\\dfrac{405}{100}=4,05$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_hs_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi hỗn số $1\\dfrac{3}{4}$ ra tỉ số phần trăm.",
+  "dap_an": "$175\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi hỗn số ra phân số, chia tử số cho mẫu số được số thập phân, rồi dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Bước 1.** Đổi hỗn số $1\\dfrac{3}{4}$ thành phân số: nhân phần nguyên với mẫu số rồi cộng tử số.\n\n**Bước 2.** Chia tử số cho mẫu số để được số thập phân.\n\n**Bước 3.** Dịch dấu phẩy sang phải hai chữ số và viết thêm dấu $\\%$.\n\n**Chú ý:** hỗn số lớn hơn $1$ nên kết quả phải lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\n$1\\dfrac{3}{4}=\\dfrac{7}{4}=7:4=1,75=175\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_hs_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết hỗn số $3\\dfrac{3}{8}$ dưới dạng tỉ số phần trăm.",
+  "dap_an": "$337,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi hỗn số ra phân số, chia tử số cho mẫu số được số thập phân, rồi dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Bước 1.** Đổi hỗn số $3\\dfrac{3}{8}$ thành phân số: nhân phần nguyên với mẫu số rồi cộng tử số.\n\n**Bước 2.** Chia tử số cho mẫu số để được số thập phân.\n\n**Bước 3.** Dịch dấu phẩy sang phải hai chữ số và viết thêm dấu $\\%$.\n\n**Chú ý:** hỗn số lớn hơn $1$ nên kết quả phải lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\n$3\\dfrac{3}{8}=\\dfrac{27}{8}=27:8=3,375=337,5\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_hs_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đổi hỗn số $3\\dfrac{1}{4}$ ra tỉ số phần trăm.",
+  "dap_an": "$325\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Đổi hỗn số ra phân số, chia tử số cho mẫu số được số thập phân, rồi dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Bước 1.** Đổi hỗn số $3\\dfrac{1}{4}$ thành phân số: nhân phần nguyên với mẫu số rồi cộng tử số.\n\n**Bước 2.** Chia tử số cho mẫu số để được số thập phân.\n\n**Bước 3.** Dịch dấu phẩy sang phải hai chữ số và viết thêm dấu $\\%$.\n\n**Chú ý:** hỗn số lớn hơn $1$ nên kết quả phải lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\n$3\\dfrac{1}{4}=\\dfrac{13}{4}=13:4=3,25=325\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_danh_sach",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,15;\\ 2\\dfrac{4}{25};\\ 1,76;\\ \\dfrac{44}{25}$.",
+  "dap_an": "$15\\%$; $216\\%$; $176\\%$; $176\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số được đổi riêng: số thập phân thì dịch dấu phẩy sang phải hai chữ số, phân số và hỗn số thì chia tử cho mẫu (hoặc quy đồng mẫu số $100$) rồi mới viết dấu $\\%$.\n\n**Bước 1.** Với số thập phân, dịch dấu phẩy sang phải hai chữ số rồi viết dấu $\\%$.\n\n**Bước 2.** Với phân số, đổi thành mẫu số $100$ hoặc chia tử số cho mẫu số rồi đổi sang phần trăm.\n\n**Bước 3.** Với hỗn số, đổi ra phân số trước rồi làm như với phân số.\n\n**Chú ý:** làm từng số một và kiểm tra lại số nào lớn hơn $1$ thì phần trăm lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\na) $0,15=15\\%$\n\nb) $2\\dfrac{4}{25}=\\dfrac{54}{25}=54:25=2,16=216\\%$\n\nc) $1,76=176\\%$\n\nd) $\\dfrac{44}{25}=\\dfrac{44\\times 4}{25\\times 4}=\\dfrac{176}{100}=176\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_danh_sach",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,941;\\ 0,16;\\ \\dfrac{8}{5};\\ 1,09$.",
+  "dap_an": "$94,1\\%$; $16\\%$; $160\\%$; $109\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số được đổi riêng: số thập phân thì dịch dấu phẩy sang phải hai chữ số, phân số và hỗn số thì chia tử cho mẫu (hoặc quy đồng mẫu số $100$) rồi mới viết dấu $\\%$.\n\n**Bước 1.** Với số thập phân, dịch dấu phẩy sang phải hai chữ số rồi viết dấu $\\%$.\n\n**Bước 2.** Với phân số, đổi thành mẫu số $100$ hoặc chia tử số cho mẫu số rồi đổi sang phần trăm.\n\n**Bước 3.** Với hỗn số, đổi ra phân số trước rồi làm như với phân số.\n\n**Chú ý:** làm từng số một và kiểm tra lại số nào lớn hơn $1$ thì phần trăm lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\na) $0,941=94,1\\%$\n\nb) $0,16=16\\%$\n\nc) $\\dfrac{8}{5}=\\dfrac{8\\times 20}{5\\times 20}=\\dfrac{160}{100}=160\\%$\n\nd) $1,09=109\\%$"
+ },
+ {
+  "dang": "NDB03000",
+  "mau": "doi_danh_sach",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Viết các số sau dưới dạng tỉ số phần trăm: $0,05;\\ 3\\dfrac{3}{5};\\ \\dfrac{5}{4};\\ \\dfrac{81}{50}$.",
+  "dap_an": "$5\\%$; $360\\%$; $125\\%$; $162\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Mỗi số được đổi riêng: số thập phân thì dịch dấu phẩy sang phải hai chữ số, phân số và hỗn số thì chia tử cho mẫu (hoặc quy đồng mẫu số $100$) rồi mới viết dấu $\\%$.\n\n**Bước 1.** Với số thập phân, dịch dấu phẩy sang phải hai chữ số rồi viết dấu $\\%$.\n\n**Bước 2.** Với phân số, đổi thành mẫu số $100$ hoặc chia tử số cho mẫu số rồi đổi sang phần trăm.\n\n**Bước 3.** Với hỗn số, đổi ra phân số trước rồi làm như với phân số.\n\n**Chú ý:** làm từng số một và kiểm tra lại số nào lớn hơn $1$ thì phần trăm lớn hơn $100\\%$.\n\n**Phần 2. Trình bày**\n\na) $0,05=5\\%$\n\nb) $3\\dfrac{3}{5}=\\dfrac{18}{5}=18:5=3,6=360\\%$\n\nc) $\\dfrac{5}{4}=\\dfrac{5\\times 25}{4\\times 25}=\\dfrac{125}{100}=125\\%$\n\nd) $\\dfrac{81}{50}=\\dfrac{81\\times 2}{50\\times 2}=\\dfrac{162}{100}=162\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_phan_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hộp có 500 viên bi, trong đó có 486 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "dap_an": "$97,2\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của hai số là lấy số được so sánh chia cho số gốc (số \"cả\"), rồi đổi thương ra phần trăm.\n\n**Bước 1.** Xác định số được so sánh là $486$ và số gốc làm chuẩn là $500$ (đứng sau \"số ... cả\" hoặc \"tổng số\").\n\n**Bước 2.** Chia số được so sánh cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** chia đúng thứ tự: phần chia cho cả, không đảo lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $486:500=0,972=97,2\\%$\n\nĐáp số: $97,2\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_phan_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Thư viện của một trường có 50 quyển sách, trong đó có 42 quyển sách khoa học. Hỏi sách khoa học chiếm bao nhiêu phần trăm số sách của thư viện?",
+  "dap_an": "$84\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của hai số là lấy số được so sánh chia cho số gốc (số \"cả\"), rồi đổi thương ra phần trăm.\n\n**Bước 1.** Xác định số được so sánh là $42$ và số gốc làm chuẩn là $50$ (đứng sau \"số ... cả\" hoặc \"tổng số\").\n\n**Bước 2.** Chia số được so sánh cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** chia đúng thứ tự: phần chia cho cả, không đảo lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $42:50=0,84=84\\%$\n\nĐáp số: $84\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_phan_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hộp có 500 viên bi, trong đó có 225 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "dap_an": "$45\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của hai số là lấy số được so sánh chia cho số gốc (số \"cả\"), rồi đổi thương ra phần trăm.\n\n**Bước 1.** Xác định số được so sánh là $225$ và số gốc làm chuẩn là $500$ (đứng sau \"số ... cả\" hoặc \"tổng số\").\n\n**Bước 2.** Chia số được so sánh cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** chia đúng thứ tự: phần chia cho cả, không đảo lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $225:500=0,45=45\\%$\n\nĐáp số: $45\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_phan_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong hộp có 40 viên bi, trong đó có 23 viên bi màu đỏ. Hỏi số bi đỏ chiếm bao nhiêu phần trăm số bi trong hộp?",
+  "dap_an": "$57,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của hai số là lấy số được so sánh chia cho số gốc (số \"cả\"), rồi đổi thương ra phần trăm.\n\n**Bước 1.** Xác định số được so sánh là $23$ và số gốc làm chuẩn là $40$ (đứng sau \"số ... cả\" hoặc \"tổng số\").\n\n**Bước 2.** Chia số được so sánh cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** chia đúng thứ tự: phần chia cho cả, không đảo lại.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $23:40=0,575=57,5\\%$\n\nĐáp số: $57,5\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_bang_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, một cửa hàng bán được 160 chiếc quạt, tháng này bán được 350 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "dap_an": "$218,75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** So sánh hai số bằng tỉ số phần trăm: số của thời điểm sau là số được so sánh, số của thời điểm trước là số gốc, nên lấy số sau chia cho số trước.\n\n**Bước 1.** Xác định số gốc là số ở thời điểm trước, bằng $160$, và số được so sánh là $350$.\n\n**Bước 2.** Lấy số được so sánh chia cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** số đứng sau chữ \"so với\" hoặc \"của\" là số gốc, nó là số chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $350:160=2,1875=218,75\\%$\n\nĐáp số: $218,75\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_bang_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, một cửa hàng bán được 40 chiếc quạt, tháng này bán được 450 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "dap_an": "$1125\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** So sánh hai số bằng tỉ số phần trăm: số của thời điểm sau là số được so sánh, số của thời điểm trước là số gốc, nên lấy số sau chia cho số trước.\n\n**Bước 1.** Xác định số gốc là số ở thời điểm trước, bằng $40$, và số được so sánh là $450$.\n\n**Bước 2.** Lấy số được so sánh chia cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** số đứng sau chữ \"so với\" hoặc \"của\" là số gốc, nó là số chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $450:40=11,25=1125\\%$\n\nĐáp số: $1125\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_bang_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, một cửa hàng bán được 50 chiếc quạt, tháng này bán được 450 chiếc quạt. Hỏi số quạt bán được trong tháng này bằng bao nhiêu phần trăm số quạt bán được trong tháng trước?",
+  "dap_an": "$900\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** So sánh hai số bằng tỉ số phần trăm: số của thời điểm sau là số được so sánh, số của thời điểm trước là số gốc, nên lấy số sau chia cho số trước.\n\n**Bước 1.** Xác định số gốc là số ở thời điểm trước, bằng $50$, và số được so sánh là $450$.\n\n**Bước 2.** Lấy số được so sánh chia cho số gốc để được số thập phân.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** số đứng sau chữ \"so với\" hoặc \"của\" là số gốc, nó là số chia.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $450:50=9=900\\%$\n\nĐáp số: $900\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hon_kem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Quý trước, một xưởng sản xuất được 40 chiếc ghế, quý này 64 chiếc ghế. Hỏi số ghế sản xuất được quý này nhiều hơn quý trước bao nhiêu phần trăm?",
+  "dap_an": "$60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm số sau bằng bao nhiêu phần trăm số trước (lấy số sau chia số trước), sau đó so với $100\\%$ để biết nhiều hơn bao nhiêu phần trăm.\n\n**Bước 1.** Xác định số trước là số gốc $40$ và số sau là $64$.\n\n**Bước 2.** Lấy số sau chia cho số gốc rồi đổi ra phần trăm để biết số sau bằng bao nhiêu phần trăm số gốc.\n\n**Bước 3.** Số sau lớn hơn số gốc nên lấy kết quả trừ đi $100\\%$ để tìm phần nhiều hơn.\n\n**Chú ý:** \"nhiều hơn bao nhiêu phần trăm\" khác \"bằng bao nhiêu phần trăm\": phải so với $100\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sau bằng số trước: $64:40=1,6=160\\%$\n\nSố sau nhiều hơn số trước: $160\\%-100\\%=60\\%$\n\nĐáp số: $60\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hon_kem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Quý trước, một xưởng sản xuất được 120 chiếc ghế, quý này 102 chiếc ghế. Hỏi số ghế sản xuất được quý này ít hơn quý trước bao nhiêu phần trăm?",
+  "dap_an": "$15\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm số sau bằng bao nhiêu phần trăm số trước (lấy số sau chia số trước), sau đó so với $100\\%$ để biết ít hơn bao nhiêu phần trăm.\n\n**Bước 1.** Xác định số trước là số gốc $120$ và số sau là $102$.\n\n**Bước 2.** Lấy số sau chia cho số gốc rồi đổi ra phần trăm để biết số sau bằng bao nhiêu phần trăm số gốc.\n\n**Bước 3.** Số sau bé hơn số gốc nên lấy $100\\%$ trừ kết quả để tìm phần ít hơn.\n\n**Chú ý:** \"ít hơn bao nhiêu phần trăm\" khác \"bằng bao nhiêu phần trăm\": phải so với $100\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sau bằng số trước: $102:120=0,85=85\\%$\n\nSố sau ít hơn số trước: $100\\%-85\\%=15\\%$\n\nĐáp số: $15\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hon_kem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Năm ngoái, một trang trại thu hoạch được 120 kg cà phê, năm nay 210 kg cà phê. Hỏi sản lượng cà phê năm nay nhiều hơn năm ngoái bao nhiêu phần trăm?",
+  "dap_an": "$75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm số sau bằng bao nhiêu phần trăm số trước (lấy số sau chia số trước), sau đó so với $100\\%$ để biết nhiều hơn bao nhiêu phần trăm.\n\n**Bước 1.** Xác định số trước là số gốc $120$ và số sau là $210$.\n\n**Bước 2.** Lấy số sau chia cho số gốc rồi đổi ra phần trăm để biết số sau bằng bao nhiêu phần trăm số gốc.\n\n**Bước 3.** Số sau lớn hơn số gốc nên lấy kết quả trừ đi $100\\%$ để tìm phần nhiều hơn.\n\n**Chú ý:** \"nhiều hơn bao nhiêu phần trăm\" khác \"bằng bao nhiêu phần trăm\": phải so với $100\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sau bằng số trước: $210:120=1,75=175\\%$\n\nSố sau nhiều hơn số trước: $175\\%-100\\%=75\\%$\n\nĐáp số: $75\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hon_kem",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Tháng trước, nhà bạn An dùng 400 kWh điện, tháng này 320 kWh điện. Hỏi lượng điện tháng này ít hơn tháng trước bao nhiêu phần trăm?",
+  "dap_an": "$20\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Trước hết tìm số sau bằng bao nhiêu phần trăm số trước (lấy số sau chia số trước), sau đó so với $100\\%$ để biết ít hơn bao nhiêu phần trăm.\n\n**Bước 1.** Xác định số trước là số gốc $400$ và số sau là $320$.\n\n**Bước 2.** Lấy số sau chia cho số gốc rồi đổi ra phần trăm để biết số sau bằng bao nhiêu phần trăm số gốc.\n\n**Bước 3.** Số sau bé hơn số gốc nên lấy $100\\%$ trừ kết quả để tìm phần ít hơn.\n\n**Chú ý:** \"ít hơn bao nhiêu phần trăm\" khác \"bằng bao nhiêu phần trăm\": phải so với $100\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố sau bằng số trước: $320:400=0,8=80\\%$\n\nSố sau ít hơn số trước: $100\\%-80\\%=20\\%$\n\nĐáp số: $20\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_ke_hoach_dat",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một nông trại đặt kế hoạch thu hoạch 120 kg rau xanh, thực tế thu hoạch được 102 kg rau xanh. Hỏi đã thực hiện được bao nhiêu phần trăm kế hoạch?",
+  "dap_an": "$85\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số đã thực hiện so với kế hoạch: lấy số thực tế chia cho số kế hoạch rồi đổi ra phần trăm.\n\n**Bước 1.** Xác định kế hoạch (số gốc) là $120$ và thực tế (số so sánh) là $102$.\n\n**Bước 2.** Lấy thực tế chia cho kế hoạch để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** số gốc là kế hoạch, không phải số thực tế.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đã thực hiện so với kế hoạch là: $102:120=0,85=85\\%$\n\nĐáp số: $85\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_ke_hoach_vuot",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một tổ công nhân được giao làm 400 chiếc đèn lồng, thực tế làm được 440 chiếc đèn lồng. Hỏi tổ công nhân đã vượt mức kế hoạch bao nhiêu phần trăm?",
+  "dap_an": "$10\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thực tế so với kế hoạch: lấy thực tế chia kế hoạch được tỉ số phần trăm đã thực hiện, rồi trừ $100\\%$ để biết đã vượt mức bao nhiêu.\n\n**Bước 1.** Xác định kế hoạch (số gốc) là $400$ và thực tế (số so sánh) là $440$.\n\n**Bước 2.** Lấy thực tế chia cho kế hoạch để được số thập phân.\n\n**Bước 3.** Đổi ra phần trăm rồi lấy kết quả trừ $100\\%$ để được phần vượt mức.\n\n**Chú ý:** kết quả cuối là phần vượt mức, không phải số phần trăm kế hoạch đã thực hiện.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đã thực hiện so với kế hoạch là: $440:400=1,1=110\\%$\n\nĐã vượt mức kế hoạch là: $110\\%-100\\%=10\\%$\n\nĐáp số: $10\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_ke_hoach_vuot",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một xưởng may đặt kế hoạch may 500 bộ quần áo, thực tế may được 575 bộ quần áo. Hỏi xưởng đã vượt mức kế hoạch bao nhiêu phần trăm?",
+  "dap_an": "$15\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số thực tế so với kế hoạch: lấy thực tế chia kế hoạch được tỉ số phần trăm đã thực hiện, rồi trừ $100\\%$ để biết đã vượt mức bao nhiêu.\n\n**Bước 1.** Xác định kế hoạch (số gốc) là $500$ và thực tế (số so sánh) là $575$.\n\n**Bước 2.** Lấy thực tế chia cho kế hoạch để được số thập phân.\n\n**Bước 3.** Đổi ra phần trăm rồi lấy kết quả trừ $100\\%$ để được phần vượt mức.\n\n**Chú ý:** kết quả cuối là phần vượt mức, không phải số phần trăm kế hoạch đã thực hiện.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố đã thực hiện so với kế hoạch là: $575:500=1,15=115\\%$\n\nĐã vượt mức kế hoạch là: $115\\%-100\\%=15\\%$\n\nĐáp số: $15\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_nam_nu",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một lớp học có 25 học sinh nam và 20 học sinh nữ. Tính tỉ số phần trăm của số học sinh nam và số học sinh nữ.",
+  "dap_an": "$125\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của số nam so với số nữ: số đứng sau \"so với\" (số nữ) là số gốc nên là số chia.\n\n**Bước 1.** Xác định số được so sánh là số nam $25$ và số gốc là số nữ $20$.\n\n**Bước 2.** Lấy số nam chia cho số nữ để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** đề so với số nữ (không phải cả lớp) nên không cần tìm tổng số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $25:20=1,25=125\\%$\n\nĐáp số: $125\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_nam_nu",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một lớp học có 28 học sinh nam và 10 học sinh nữ. Tính tỉ số phần trăm của số học sinh nam và số học sinh nữ.",
+  "dap_an": "$280\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của số nam so với số nữ: số đứng sau \"so với\" (số nữ) là số gốc nên là số chia.\n\n**Bước 1.** Xác định số được so sánh là số nam $28$ và số gốc là số nữ $10$.\n\n**Bước 2.** Lấy số nam chia cho số nữ để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** đề so với số nữ (không phải cả lớp) nên không cần tìm tổng số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $28:10=2,8=280\\%$\n\nĐáp số: $280\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_nam_nu",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một câu lạc bộ có 15 bạn nam và 20 bạn nữ. Số bạn nam bằng bao nhiêu phần trăm số bạn nữ?",
+  "dap_an": "$75\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Tìm tỉ số phần trăm của số nam so với số nữ: số đứng sau \"so với\" (số nữ) là số gốc nên là số chia.\n\n**Bước 1.** Xác định số được so sánh là số nam $15$ và số gốc là số nữ $20$.\n\n**Bước 2.** Lấy số nam chia cho số nữ để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm: dịch dấu phẩy sang phải hai chữ số và viết dấu $\\%$.\n\n**Chú ý:** đề so với số nữ (không phải cả lớp) nên không cần tìm tổng số.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nTỉ số phần trăm là: $15:20=0,75=75\\%$\n\nĐáp số: $75\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_nu_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5C có 12 học sinh nam và 18 học sinh nữ. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "dap_an": "$60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số gốc là cả lớp (tổng nam và nữ) nên phải tìm tổng trước, rồi lấy số nữ chia cho tổng.\n\n**Bước 1.** Tìm tổng số học sinh cả lớp: cộng số nam và số nữ.\n\n**Bước 2.** Lấy số học sinh nữ chia cho tổng số vừa tìm để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** không lấy số nữ chia cho số nam: đề so với cả lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh cả lớp là: $12+18=30$ (học sinh)\n\nSố học sinh nữ chiếm số phần trăm số học sinh cả lớp là: $18:30=0,6=60\\%$\n\nĐáp số: $60\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_nu_cl",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5B có 14 học sinh nam và 26 học sinh nữ. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "dap_an": "$65\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Số gốc là cả lớp (tổng nam và nữ) nên phải tìm tổng trước, rồi lấy số nữ chia cho tổng.\n\n**Bước 1.** Tìm tổng số học sinh cả lớp: cộng số nam và số nữ.\n\n**Bước 2.** Lấy số học sinh nữ chia cho tổng số vừa tìm để được số thập phân.\n\n**Bước 3.** Đổi số thập phân sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** không lấy số nữ chia cho số nam: đề so với cả lớp.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh cả lớp là: $14+26=40$ (học sinh)\n\nSố học sinh nữ chiếm số phần trăm số học sinh cả lớp là: $26:40=0,65=65\\%$\n\nĐáp số: $65\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hieu_tong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một lớp học có 16 học sinh nam. Số học sinh nữ nhiều hơn số học sinh nam là 8 em. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "dap_an": "$60\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tìm số học sinh nữ rồi tìm tổng số học sinh cả lớp, sau đó lấy số nữ chia cho tổng số.\n\n**Bước 1.** Tìm số học sinh nữ: lấy số nam cộng với số em nữ nhiều hơn.\n\n**Bước 2.** Tìm số học sinh cả lớp: cộng số nam với số nữ.\n\n**Bước 3.** Lấy số nữ chia cho số học sinh cả lớp rồi đổi ra phần trăm.\n\n**Chú ý:** số nữ nhiều hơn số nam 8 em, không phải số nữ bằng 8 em.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ là: $16+8=24$ (học sinh)\n\nSố học sinh cả lớp là: $16+24=40$ (học sinh)\n\nSố học sinh nữ chiếm số phần trăm số học sinh cả lớp là: $24:40=0,6=60\\%$\n\nĐáp số: $60\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_hieu_tong",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một lớp học có 19 học sinh nam. Số học sinh nữ nhiều hơn số học sinh nam là 2 em. Hỏi số học sinh nữ chiếm bao nhiêu phần trăm số học sinh cả lớp?",
+  "dap_an": "$52,5\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Phải tìm số học sinh nữ rồi tìm tổng số học sinh cả lớp, sau đó lấy số nữ chia cho tổng số.\n\n**Bước 1.** Tìm số học sinh nữ: lấy số nam cộng với số em nữ nhiều hơn.\n\n**Bước 2.** Tìm số học sinh cả lớp: cộng số nam với số nữ.\n\n**Bước 3.** Lấy số nữ chia cho số học sinh cả lớp rồi đổi ra phần trăm.\n\n**Chú ý:** số nữ nhiều hơn số nam 2 em, không phải số nữ bằng 2 em.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ là: $19+2=21$ (học sinh)\n\nSố học sinh cả lớp là: $19+21=40$ (học sinh)\n\nSố học sinh nữ chiếm số phần trăm số học sinh cả lớp là: $21:40=0,525=52,5\\%$\n\nĐáp số: $52,5\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_don_vi",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bao gạo nặng 1,5 kg, đã dùng hết 1275 g. Hỏi lượng gạo đã dùng chiếm bao nhiêu phần trăm bao gạo?",
+  "dap_an": "$85\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số đo ở hai đơn vị khác nhau phải đổi về cùng một đơn vị rồi mới lập tỉ số: đổi đơn vị lớn sang đơn vị bé.\n\n**Bước 1.** Đổi số đo lớn $1,5$ kg sang g để cùng đơn vị với $1275$ g.\n\n**Bước 2.** Lấy số đo của phần đã có chia cho số đo của cả (số gốc) sau khi đã cùng đơn vị.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** không lập tỉ số khi hai số đo khác đơn vị: $1,5$ kg và $1275$ g chưa so sánh được ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $1,5\\times 1000=1500$ (g)\n\nTỉ số phần trăm là: $1275:1500=0,85=85\\%$\n\nĐáp số: $85\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_don_vi",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một bao gạo nặng 2 kg, đã dùng hết 908 g. Hỏi lượng gạo đã dùng chiếm bao nhiêu phần trăm bao gạo?",
+  "dap_an": "$45,4\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số đo ở hai đơn vị khác nhau phải đổi về cùng một đơn vị rồi mới lập tỉ số: đổi đơn vị lớn sang đơn vị bé.\n\n**Bước 1.** Đổi số đo lớn $2$ kg sang g để cùng đơn vị với $908$ g.\n\n**Bước 2.** Lấy số đo của phần đã có chia cho số đo của cả (số gốc) sau khi đã cùng đơn vị.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** không lập tỉ số khi hai số đo khác đơn vị: $2$ kg và $908$ g chưa so sánh được ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $2\\times 1000=2000$ (g)\n\nTỉ số phần trăm là: $908:2000=0,454=45,4\\%$\n\nĐáp số: $45,4\\%$"
+ },
+ {
+  "dang": "NDB03001",
+  "mau": "ti_don_vi",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một kho chứa 0,8 tạ, đã xuất đi 49 kg. Hỏi lượng hàng đã xuất chiếm bao nhiêu phần trăm lượng hàng trong kho?",
+  "dap_an": "$61,25\\%$",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai số đo ở hai đơn vị khác nhau phải đổi về cùng một đơn vị rồi mới lập tỉ số: đổi đơn vị lớn sang đơn vị bé.\n\n**Bước 1.** Đổi số đo lớn $0,8$ tạ sang kg để cùng đơn vị với $49$ kg.\n\n**Bước 2.** Lấy số đo của phần đã có chia cho số đo của cả (số gốc) sau khi đã cùng đơn vị.\n\n**Bước 3.** Đổi kết quả sang phần trăm bằng cách dịch dấu phẩy sang phải hai chữ số.\n\n**Chú ý:** không lập tỉ số khi hai số đo khác đơn vị: $0,8$ tạ và $49$ kg chưa so sánh được ngay.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nĐổi: $0,8\\times 100=80$ (kg)\n\nTỉ số phần trăm là: $49:80=0,6125=61,25\\%$\n\nĐáp số: $61,25\\%$"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5A có số bạn nam chiếm 45% sĩ số của lớp và ít hơn số bạn nữ là 2 bạn. Hỏi lớp 5A có tất cả bao nhiêu bạn?",
+  "dap_an": "$20$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $45\\%$ và $55\\%$ của cùng một tổng thì hiệu của chúng ứng với $10\\%$ của tổng; biết hiệu là $2$ thì lấy $2$ chia cho $10\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $45\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $2$ ứng với $10\\%$ của tổng nên lấy $2$ chia cho $10\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $2$ nhân với $10\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ chiếm: $100\\%-45\\%=55\\%$ (sĩ số của lớp)\n\nHiệu hai bộ phận ứng với: $55\\%-45\\%=10\\%$ (sĩ số của lớp)\n\nSĩ số của lớp là: $2:10\\%=20$ (bạn)\n\nĐáp số: $20$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5A có số bạn nam chiếm 60% sĩ số của lớp và nhiều hơn số bạn nữ là 5 bạn. Hỏi lớp 5A có tất cả bao nhiêu bạn?",
+  "dap_an": "$25$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $60\\%$ và $40\\%$ của cùng một tổng thì hiệu của chúng ứng với $20\\%$ của tổng; biết hiệu là $5$ thì lấy $5$ chia cho $20\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $60\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $5$ ứng với $20\\%$ của tổng nên lấy $5$ chia cho $20\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $5$ nhân với $20\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ chiếm: $100\\%-60\\%=40\\%$ (sĩ số của lớp)\n\nHiệu hai bộ phận ứng với: $60\\%-40\\%=20\\%$ (sĩ số của lớp)\n\nSĩ số của lớp là: $5:20\\%=25$ (bạn)\n\nĐáp số: $25$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 35% tổng số cây trong vườn và ít hơn số cây bưởi là 120 cây. Hỏi vườn đó có tất cả bao nhiêu cây?",
+  "dap_an": "$400$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $35\\%$ và $65\\%$ của cùng một tổng thì hiệu của chúng ứng với $30\\%$ của tổng; biết hiệu là $120$ thì lấy $120$ chia cho $30\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $35\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $120$ ứng với $30\\%$ của tổng nên lấy $120$ chia cho $30\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $120$ nhân với $30\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây bưởi chiếm: $100\\%-35\\%=65\\%$ (tổng số cây trong vườn)\n\nHiệu hai bộ phận ứng với: $65\\%-35\\%=30\\%$ (tổng số cây trong vườn)\n\nTổng số cây trong vườn là: $120:30\\%=400$ (cây)\n\nĐáp số: $400$ cây"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 68% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 72 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "dap_an": "$200$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $68\\%$ và $32\\%$ của cùng một tổng thì hiệu của chúng ứng với $36\\%$ của tổng; biết hiệu là $72$ thì lấy $72$ chia cho $36\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $68\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $72$ ứng với $36\\%$ của tổng nên lấy $72$ chia cho $36\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $72$ nhân với $36\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ chiếm: $100\\%-68\\%=32\\%$ (tổng số học sinh toàn trường)\n\nHiệu hai bộ phận ứng với: $68\\%-32\\%=36\\%$ (tổng số học sinh toàn trường)\n\nTổng số học sinh toàn trường là: $72:36\\%=200$ (học sinh)\n\nĐáp số: $200$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 64% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 56 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "dap_an": "$200$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $64\\%$ và $36\\%$ của cùng một tổng thì hiệu của chúng ứng với $28\\%$ của tổng; biết hiệu là $56$ thì lấy $56$ chia cho $28\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $64\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $56$ ứng với $28\\%$ của tổng nên lấy $56$ chia cho $28\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $56$ nhân với $28\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ chiếm: $100\\%-64\\%=36\\%$ (tổng số học sinh toàn trường)\n\nHiệu hai bộ phận ứng với: $64\\%-36\\%=28\\%$ (tổng số học sinh toàn trường)\n\nTổng số học sinh toàn trường là: $56:28\\%=200$ (học sinh)\n\nĐáp số: $200$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_mot_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 52% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 60 học sinh. Hỏi trường đó có tất cả bao nhiêu học sinh?",
+  "dap_an": "$1500$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $52\\%$ và $48\\%$ của cùng một tổng thì hiệu của chúng ứng với $4\\%$ của tổng; biết hiệu là $60$ thì lấy $60$ chia cho $4\\%$ để tìm tổng.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại: lấy $100\\%$ trừ đi $52\\%$.\n\n**Bước 2.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 3.** Số $60$ ứng với $4\\%$ của tổng nên lấy $60$ chia cho $4\\%$ để tìm tổng.\n\n**Chú ý:** hai phần trăm phải cùng tính trên một tổng, và không lấy $60$ nhân với $4\\%$.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ chiếm: $100\\%-52\\%=48\\%$ (tổng số học sinh toàn trường)\n\nHiệu hai bộ phận ứng với: $52\\%-48\\%=4\\%$ (tổng số học sinh toàn trường)\n\nTổng số học sinh toàn trường là: $60:4\\%=1500$ (học sinh)\n\nĐáp số: $1500$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_y",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Ở một trường tiểu học, số học sinh nam chiếm 65% tổng số học sinh toàn trường và nhiều hơn số học sinh nữ là 150 học sinh. Hỏi: a) Trường đó có tất cả bao nhiêu học sinh? b) Có bao nhiêu học sinh nam, bao nhiêu học sinh nữ?",
+  "dap_an": "a) $500$ học sinh; b) $325$ học sinh nam, $175$ học sinh nữ",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận ứng với $30\\%$ của tổng nên tìm được tổng; có tổng rồi thì tìm bộ phận chiếm $65\\%$ bằng phép nhân, bộ phận còn lại bằng phép trừ.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại và hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng.\n\n**Bước 2.** Lấy $150$ chia cho $30\\%$ để tìm tổng.\n\n**Bước 3.** Tìm bộ phận chiếm $65\\%$ bằng cách nhân tổng với $65\\%$, rồi lấy tổng trừ đi để được bộ phận còn lại.\n\n**Chú ý:** ý a) cần tìm trước để làm ý b); kiểm tra lại hiệu hai bộ phận có đúng bằng $150$ không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số học sinh nữ chiếm: $100\\%-65\\%=35\\%$ (tổng số học sinh toàn trường)\n\nHiệu hai bộ phận ứng với: $65\\%-35\\%=30\\%$ (tổng số học sinh toàn trường)\n\nTổng số học sinh toàn trường là: $150:30\\%=500$ (học sinh)\n\nb) Số học sinh nam là: $500\\times 65\\%=325$ (học sinh)\n\nSố học sinh nữ là: $500-325=175$ (học sinh)\n\nĐáp số: a) $500$ học sinh; b) $325$ học sinh nam, $175$ học sinh nữ"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_y",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 46% tổng số cây trong vườn và ít hơn số cây bưởi là 48 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "dap_an": "a) $600$ cây; b) $276$ cây cam, $324$ cây bưởi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận ứng với $8\\%$ của tổng nên tìm được tổng; có tổng rồi thì tìm bộ phận chiếm $46\\%$ bằng phép nhân, bộ phận còn lại bằng phép trừ.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại và hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng.\n\n**Bước 2.** Lấy $48$ chia cho $8\\%$ để tìm tổng.\n\n**Bước 3.** Tìm bộ phận chiếm $46\\%$ bằng cách nhân tổng với $46\\%$, rồi lấy tổng trừ đi để được bộ phận còn lại.\n\n**Chú ý:** ý a) cần tìm trước để làm ý b); kiểm tra lại hiệu hai bộ phận có đúng bằng $48$ không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số cây bưởi chiếm: $100\\%-46\\%=54\\%$ (tổng số cây trong vườn)\n\nHiệu hai bộ phận ứng với: $54\\%-46\\%=8\\%$ (tổng số cây trong vườn)\n\nTổng số cây trong vườn là: $48:8\\%=600$ (cây)\n\nb) Số cây cam là: $600\\times 46\\%=276$ (cây)\n\nSố cây bưởi là: $600-276=324$ (cây)\n\nĐáp số: a) $600$ cây; b) $276$ cây cam, $324$ cây bưởi"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_y",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 45% tổng số cây trong vườn và ít hơn số cây bưởi là 30 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "dap_an": "a) $300$ cây; b) $135$ cây cam, $165$ cây bưởi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận ứng với $10\\%$ của tổng nên tìm được tổng; có tổng rồi thì tìm bộ phận chiếm $45\\%$ bằng phép nhân, bộ phận còn lại bằng phép trừ.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại và hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng.\n\n**Bước 2.** Lấy $30$ chia cho $10\\%$ để tìm tổng.\n\n**Bước 3.** Tìm bộ phận chiếm $45\\%$ bằng cách nhân tổng với $45\\%$, rồi lấy tổng trừ đi để được bộ phận còn lại.\n\n**Chú ý:** ý a) cần tìm trước để làm ý b); kiểm tra lại hiệu hai bộ phận có đúng bằng $30$ không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số cây bưởi chiếm: $100\\%-45\\%=55\\%$ (tổng số cây trong vườn)\n\nHiệu hai bộ phận ứng với: $55\\%-45\\%=10\\%$ (tổng số cây trong vườn)\n\nTổng số cây trong vườn là: $30:10\\%=300$ (cây)\n\nb) Số cây cam là: $300\\times 45\\%=135$ (cây)\n\nSố cây bưởi là: $300-135=165$ (cây)\n\nĐáp số: a) $300$ cây; b) $135$ cây cam, $165$ cây bưởi"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_y",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một vườn cây ăn quả chỉ trồng cam và bưởi, số cây cam chiếm 60% tổng số cây trong vườn và nhiều hơn số cây bưởi là 240 cây. Hỏi: a) Vườn đó có tất cả bao nhiêu cây? b) Có bao nhiêu cây cam, bao nhiêu cây bưởi?",
+  "dap_an": "a) $1200$ cây; b) $720$ cây cam, $480$ cây bưởi",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận ứng với $20\\%$ của tổng nên tìm được tổng; có tổng rồi thì tìm bộ phận chiếm $60\\%$ bằng phép nhân, bộ phận còn lại bằng phép trừ.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại và hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng.\n\n**Bước 2.** Lấy $240$ chia cho $20\\%$ để tìm tổng.\n\n**Bước 3.** Tìm bộ phận chiếm $60\\%$ bằng cách nhân tổng với $60\\%$, rồi lấy tổng trừ đi để được bộ phận còn lại.\n\n**Chú ý:** ý a) cần tìm trước để làm ý b); kiểm tra lại hiệu hai bộ phận có đúng bằng $240$ không.\n\n**Phần 2. Trình bày**\n\nBài giải\n\na) Số cây bưởi chiếm: $100\\%-60\\%=40\\%$ (tổng số cây trong vườn)\n\nHiệu hai bộ phận ứng với: $60\\%-40\\%=20\\%$ (tổng số cây trong vườn)\n\nTổng số cây trong vườn là: $240:20\\%=1200$ (cây)\n\nb) Số cây cam là: $1200\\times 60\\%=720$ (cây)\n\nSố cây bưởi là: $1200-720=480$ (cây)\n\nĐáp số: a) $1200$ cây; b) $720$ cây cam, $480$ cây bưởi"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 43% và số con vịt chiếm 29% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 70 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$500$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $43\\%$ và $29\\%$ của cùng một tổng thì hiệu của chúng ứng với $14\\%$ của tổng; biết hiệu là $70$ thì lấy $70$ chia cho $14\\%$ để tìm tổng.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy $43\\%$ trừ $29\\%$.\n\n**Bước 2.** Số $70$ ứng với $14\\%$ của tổng nên lấy $70$ chia cho $14\\%$ để tìm tổng.\n\n**Bước 3.** Đối chiếu đề hỏi tổng nên kết quả bước hai là đáp số.\n\n**Chú ý:** phần \"còn lại\" không liên quan đến hiệu nên không dùng đến trong bài này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố con gà nhiều hơn số con vịt ứng với: $43\\%-29\\%=14\\%$ (tổng số gia cầm)\n\nTổng số gia cầm là: $70:14\\%=500$ (con)\n\nĐáp số: $500$ con"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 54% và số con vịt chiếm 10% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 264 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$600$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $54\\%$ và $10\\%$ của cùng một tổng thì hiệu của chúng ứng với $44\\%$ của tổng; biết hiệu là $264$ thì lấy $264$ chia cho $44\\%$ để tìm tổng.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy $54\\%$ trừ $10\\%$.\n\n**Bước 2.** Số $264$ ứng với $44\\%$ của tổng nên lấy $264$ chia cho $44\\%$ để tìm tổng.\n\n**Bước 3.** Đối chiếu đề hỏi tổng nên kết quả bước hai là đáp số.\n\n**Chú ý:** phần \"còn lại\" không liên quan đến hiệu nên không dùng đến trong bài này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố con gà nhiều hơn số con vịt ứng với: $54\\%-10\\%=44\\%$ (tổng số gia cầm)\n\nTổng số gia cầm là: $264:44\\%=600$ (con)\n\nĐáp số: $600$ con"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 47% và số con vịt chiếm 15% tổng số gia cầm, còn lại là ngan. Biết số con gà nhiều hơn số con vịt là 320 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$1000$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $47\\%$ và $15\\%$ của cùng một tổng thì hiệu của chúng ứng với $32\\%$ của tổng; biết hiệu là $320$ thì lấy $320$ chia cho $32\\%$ để tìm tổng.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy $47\\%$ trừ $15\\%$.\n\n**Bước 2.** Số $320$ ứng với $32\\%$ của tổng nên lấy $320$ chia cho $32\\%$ để tìm tổng.\n\n**Bước 3.** Đối chiếu đề hỏi tổng nên kết quả bước hai là đáp số.\n\n**Chú ý:** phần \"còn lại\" không liên quan đến hiệu nên không dùng đến trong bài này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố con gà nhiều hơn số con vịt ứng với: $47\\%-15\\%=32\\%$ (tổng số gia cầm)\n\nTổng số gia cầm là: $320:32\\%=1000$ (con)\n\nĐáp số: $1000$ con"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_hieu_hai_pt_phan",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một khu vườn có số cây cam chiếm 52% và số cây quýt chiếm 26% tổng số cây trong vườn, còn lại là cây bưởi. Biết số cây cam nhiều hơn số cây quýt là 520 cây. Hỏi có bao nhiêu cây cam?",
+  "dap_an": "$1040$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $52\\%$ và $26\\%$ của cùng một tổng thì hiệu của chúng ứng với $26\\%$ của tổng; biết hiệu là $520$ thì lấy $520$ chia cho $26\\%$ để tìm tổng.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm của tổng: lấy $52\\%$ trừ $26\\%$.\n\n**Bước 2.** Số $520$ ứng với $26\\%$ của tổng nên lấy $520$ chia cho $26\\%$ để tìm tổng.\n\n**Bước 3.** Tìm số cây cam: lấy tổng vừa tìm nhân với $52\\%$.\n\n**Chú ý:** phần \"còn lại\" không liên quan đến hiệu nên không dùng đến trong bài này.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố cây cam nhiều hơn số cây quýt ứng với: $52\\%-26\\%=26\\%$ (tổng số cây trong vườn)\n\nTổng số cây trong vườn là: $520:26\\%=2000$ (cây)\n\nSố cây cam là: $2000\\times 52\\%=1040$ (cây)\n\nĐáp số: $1040$ cây"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 34% và số con vịt chiếm 22% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 448 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$800$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $34\\%$ và $22\\%$ của cùng một tổng thì cả hai cộng lại chiếm $56\\%$ của tổng; biết tổng hai bộ phận là $448$ thì lấy $448$ chia cho $56\\%$.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng: cộng $34\\%$ với $22\\%$.\n\n**Bước 2.** Số $448$ ứng với $56\\%$ của tổng nên lấy $448$ chia cho $56\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị con.\n\n**Chú ý:** ở bài này cộng hai phần trăm (vì đề cho tổng), còn bài cho hiệu thì trừ hai phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $34\\%+22\\%=56\\%$ (tổng số gia cầm)\n\nTổng số gia cầm là: $448:56\\%=800$ (con)\n\nĐáp số: $800$ con"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 16% và số sách truyện chiếm 23% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 1170 quyển sách. Hỏi thư viện có tất cả bao nhiêu quyển sách?",
+  "dap_an": "$3000$ quyển sách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $16\\%$ và $23\\%$ của cùng một tổng thì cả hai cộng lại chiếm $39\\%$ của tổng; biết tổng hai bộ phận là $1170$ thì lấy $1170$ chia cho $39\\%$.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng: cộng $16\\%$ với $23\\%$.\n\n**Bước 2.** Số $1170$ ứng với $39\\%$ của tổng nên lấy $1170$ chia cho $39\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị quyển sách.\n\n**Chú ý:** ở bài này cộng hai phần trăm (vì đề cho tổng), còn bài cho hiệu thì trừ hai phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $16\\%+23\\%=39\\%$ (tổng số sách)\n\nTổng số sách là: $1170:39\\%=3000$ (quyển sách)\n\nĐáp số: $3000$ quyển sách"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 48% và số con vịt chiếm 44% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 460 con. Hỏi trại đó có tất cả bao nhiêu con gia cầm?",
+  "dap_an": "$500$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $48\\%$ và $44\\%$ của cùng một tổng thì cả hai cộng lại chiếm $92\\%$ của tổng; biết tổng hai bộ phận là $460$ thì lấy $460$ chia cho $92\\%$.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng: cộng $48\\%$ với $44\\%$.\n\n**Bước 2.** Số $460$ ứng với $92\\%$ của tổng nên lấy $460$ chia cho $92\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị con.\n\n**Chú ý:** ở bài này cộng hai phần trăm (vì đề cho tổng), còn bài cho hiệu thì trừ hai phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $48\\%+44\\%=92\\%$ (tổng số gia cầm)\n\nTổng số gia cầm là: $460:92\\%=500$ (con)\n\nĐáp số: $500$ con"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_hai_pt",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 26% và số sách truyện chiếm 29% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 825 quyển sách. Hỏi thư viện có tất cả bao nhiêu quyển sách?",
+  "dap_an": "$1500$ quyển sách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $26\\%$ và $29\\%$ của cùng một tổng thì cả hai cộng lại chiếm $55\\%$ của tổng; biết tổng hai bộ phận là $825$ thì lấy $825$ chia cho $55\\%$.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng: cộng $26\\%$ với $29\\%$.\n\n**Bước 2.** Số $825$ ứng với $55\\%$ của tổng nên lấy $825$ chia cho $55\\%$.\n\n**Bước 3.** Viết đáp số kèm đơn vị quyển sách.\n\n**Chú ý:** ở bài này cộng hai phần trăm (vì đề cho tổng), còn bài cho hiệu thì trừ hai phần trăm.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $26\\%+29\\%=55\\%$ (tổng số sách)\n\nTổng số sách là: $825:55\\%=1500$ (quyển sách)\n\nĐáp số: $1500$ quyển sách"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_bang_nhau_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đầu năm học, một trường tiểu học có số học sinh nam bằng số học sinh nữ. Đến cuối học kì I, nhà trường nhận thêm 27 học sinh nữ và 3 học sinh nam nên số học sinh nữ chiếm 58% tổng số học sinh toàn trường. Hỏi đầu năm học, trường đó có bao nhiêu học sinh?",
+  "dap_an": "$120$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận lúc cuối học kì I chính là hiệu số học sinh nữ và học sinh nam nhận thêm (vì lúc đầu hai bộ phận bằng nhau); hiệu này ứng với $16\\%$ của tổng lúc cuối học kì I, từ đó tìm tổng rồi trừ đi số nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận lúc cuối học kì I: bằng số học sinh nữ nhận thêm trừ số học sinh nam nhận thêm.\n\n**Bước 2.** Tìm hiệu đó ứng với bao nhiêu phần trăm tổng lúc cuối học kì I: $58\\%$ trừ $42\\%$.\n\n**Bước 3.** Lấy hiệu chia cho phần trăm vừa tìm để được tổng lúc cuối học kì I, rồi trừ số nhận thêm để tìm tổng lúc đầu.\n\n**Chú ý:** lúc đầu hai bộ phận bằng nhau nên hiệu lúc sau chỉ do số nhận thêm tạo ra; đừng quên trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ nhiều hơn số học sinh nam lúc cuối học kì I là: $27-3=24$ (học sinh)\n\nSố học sinh nam chiếm: $100\\%-58\\%=42\\%$ (tổng số học sinh toàn trường lúc cuối học kì I)\n\nHiệu hai bộ phận ứng với: $58\\%-42\\%=16\\%$ (tổng số học sinh toàn trường lúc cuối học kì I)\n\nTổng số học sinh toàn trường lúc cuối học kì I là: $24:16\\%=150$ (học sinh)\n\nTổng số học sinh toàn trường lúc đầu là: $150-27-3=120$ (học sinh)\n\nĐáp số: $120$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_bang_nhau_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 14 bạn nữ và 6 bạn nam nên số bạn nữ chiếm 58% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "dap_an": "$30$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận lúc học kì II chính là hiệu số bạn nữ và bạn nam nhận thêm (vì lúc đầu hai bộ phận bằng nhau); hiệu này ứng với $16\\%$ của tổng lúc học kì II, từ đó tìm tổng rồi trừ đi số nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận lúc học kì II: bằng số bạn nữ nhận thêm trừ số bạn nam nhận thêm.\n\n**Bước 2.** Tìm hiệu đó ứng với bao nhiêu phần trăm tổng lúc học kì II: $58\\%$ trừ $42\\%$.\n\n**Bước 3.** Lấy hiệu chia cho phần trăm vừa tìm để được tổng lúc học kì II, rồi trừ số nhận thêm để tìm tổng lúc đầu.\n\n**Chú ý:** lúc đầu hai bộ phận bằng nhau nên hiệu lúc sau chỉ do số nhận thêm tạo ra; đừng quên trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ nhiều hơn số bạn nam lúc học kì II là: $14-6=8$ (bạn)\n\nSố bạn nam chiếm: $100\\%-58\\%=42\\%$ (sĩ số của lớp lúc học kì II)\n\nHiệu hai bộ phận ứng với: $58\\%-42\\%=16\\%$ (sĩ số của lớp lúc học kì II)\n\nSĩ số của lớp lúc học kì II là: $8:16\\%=50$ (bạn)\n\nSĩ số của lớp lúc đầu là: $50-14-6=30$ (bạn)\n\nĐáp số: $30$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_bang_nhau_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 11 bạn nữ và 3 bạn nam nên số bạn nữ chiếm 58% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "dap_an": "$36$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận lúc học kì II chính là hiệu số bạn nữ và bạn nam nhận thêm (vì lúc đầu hai bộ phận bằng nhau); hiệu này ứng với $16\\%$ của tổng lúc học kì II, từ đó tìm tổng rồi trừ đi số nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận lúc học kì II: bằng số bạn nữ nhận thêm trừ số bạn nam nhận thêm.\n\n**Bước 2.** Tìm hiệu đó ứng với bao nhiêu phần trăm tổng lúc học kì II: $58\\%$ trừ $42\\%$.\n\n**Bước 3.** Lấy hiệu chia cho phần trăm vừa tìm để được tổng lúc học kì II, rồi trừ số nhận thêm để tìm tổng lúc đầu.\n\n**Chú ý:** lúc đầu hai bộ phận bằng nhau nên hiệu lúc sau chỉ do số nhận thêm tạo ra; đừng quên trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ nhiều hơn số bạn nam lúc học kì II là: $11-3=8$ (bạn)\n\nSố bạn nam chiếm: $100\\%-58\\%=42\\%$ (sĩ số của lớp lúc học kì II)\n\nHiệu hai bộ phận ứng với: $58\\%-42\\%=16\\%$ (sĩ số của lớp lúc học kì II)\n\nSĩ số của lớp lúc học kì II là: $8:16\\%=50$ (bạn)\n\nSĩ số của lớp lúc đầu là: $50-11-3=36$ (bạn)\n\nĐáp số: $36$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_bang_nhau_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đầu năm học, lớp 5C có số bạn nam bằng số bạn nữ. Sang học kì II, lớp nhận thêm 13 bạn nữ và 2 bạn nam nên số bạn nữ chiếm 60% sĩ số của lớp. Hỏi đầu năm học, lớp 5C có bao nhiêu bạn?",
+  "dap_an": "$40$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận lúc học kì II chính là hiệu số bạn nữ và bạn nam nhận thêm (vì lúc đầu hai bộ phận bằng nhau); hiệu này ứng với $20\\%$ của tổng lúc học kì II, từ đó tìm tổng rồi trừ đi số nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận lúc học kì II: bằng số bạn nữ nhận thêm trừ số bạn nam nhận thêm.\n\n**Bước 2.** Tìm hiệu đó ứng với bao nhiêu phần trăm tổng lúc học kì II: $60\\%$ trừ $40\\%$.\n\n**Bước 3.** Lấy hiệu chia cho phần trăm vừa tìm để được tổng lúc học kì II, rồi trừ số nhận thêm để tìm tổng lúc đầu.\n\n**Chú ý:** lúc đầu hai bộ phận bằng nhau nên hiệu lúc sau chỉ do số nhận thêm tạo ra; đừng quên trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ nhiều hơn số bạn nam lúc học kì II là: $13-2=11$ (bạn)\n\nSố bạn nam chiếm: $100\\%-60\\%=40\\%$ (sĩ số của lớp lúc học kì II)\n\nHiệu hai bộ phận ứng với: $60\\%-40\\%=20\\%$ (sĩ số của lớp lúc học kì II)\n\nSĩ số của lớp lúc học kì II là: $11:20\\%=55$ (bạn)\n\nSĩ số của lớp lúc đầu là: $55-13-2=40$ (bạn)\n\nĐáp số: $40$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_bang_nhau_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Đầu năm học, một trường tiểu học có số học sinh nam bằng số học sinh nữ. Đến cuối học kì I, nhà trường nhận thêm 17 học sinh nữ và 8 học sinh nam nên số học sinh nữ chiếm 52% tổng số học sinh toàn trường. Hỏi đầu năm học, trường đó có bao nhiêu học sinh?",
+  "dap_an": "$200$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hiệu hai bộ phận lúc cuối học kì I chính là hiệu số học sinh nữ và học sinh nam nhận thêm (vì lúc đầu hai bộ phận bằng nhau); hiệu này ứng với $4\\%$ của tổng lúc cuối học kì I, từ đó tìm tổng rồi trừ đi số nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận lúc cuối học kì I: bằng số học sinh nữ nhận thêm trừ số học sinh nam nhận thêm.\n\n**Bước 2.** Tìm hiệu đó ứng với bao nhiêu phần trăm tổng lúc cuối học kì I: $52\\%$ trừ $48\\%$.\n\n**Bước 3.** Lấy hiệu chia cho phần trăm vừa tìm để được tổng lúc cuối học kì I, rồi trừ số nhận thêm để tìm tổng lúc đầu.\n\n**Chú ý:** lúc đầu hai bộ phận bằng nhau nên hiệu lúc sau chỉ do số nhận thêm tạo ra; đừng quên trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ nhiều hơn số học sinh nam lúc cuối học kì I là: $17-8=9$ (học sinh)\n\nSố học sinh nam chiếm: $100\\%-52\\%=48\\%$ (tổng số học sinh toàn trường lúc cuối học kì I)\n\nHiệu hai bộ phận ứng với: $52\\%-48\\%=4\\%$ (tổng số học sinh toàn trường lúc cuối học kì I)\n\nTổng số học sinh toàn trường lúc cuối học kì I là: $9:4\\%=225$ (học sinh)\n\nTổng số học sinh toàn trường lúc đầu là: $225-17-8=200$ (học sinh)\n\nĐáp số: $200$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_sau_them_hoi_dau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một câu lạc bộ nhận thêm 3 thành viên mới. Lúc này số thành viên nam chiếm 48% tổng số thành viên và ít hơn số thành viên nữ là 12 thành viên. Hỏi trước khi nhận thêm, câu lạc bộ đó có bao nhiêu thành viên?",
+  "dap_an": "$297$ thành viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lúc sau, hiệu hai bộ phận ứng với $4\\%$ của tổng lúc sau; tìm tổng lúc sau rồi trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại lúc sau: lấy $100\\%$ trừ $48\\%$.\n\n**Bước 2.** Hiệu hai bộ phận ứng với $4\\%$ của tổng lúc sau, nên lấy $12$ chia cho $4\\%$ để tìm tổng lúc sau.\n\n**Bước 3.** Lấy tổng lúc sau trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Chú ý:** các phần trăm tính trên tổng LÚC SAU (đã nhận thêm), nên phải trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thành viên nữ chiếm: $100\\%-48\\%=52\\%$ (tổng số thành viên lúc sau)\n\nHiệu hai bộ phận ứng với: $52\\%-48\\%=4\\%$ (tổng số thành viên lúc sau)\n\nTổng số thành viên lúc sau là: $12:4\\%=300$ (thành viên)\n\nTổng số thành viên trước khi nhận thêm là: $300-3=297$ (thành viên)\n\nĐáp số: $297$ thành viên"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_sau_them_hoi_dau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Lớp 5C nhận thêm 6 bạn mới. Lúc này số bạn nam chiếm 60% sĩ số của lớp và nhiều hơn số bạn nữ là 9 bạn. Hỏi trước khi nhận thêm, lớp 5C có bao nhiêu bạn?",
+  "dap_an": "$39$ bạn",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lúc sau, hiệu hai bộ phận ứng với $20\\%$ của tổng lúc sau; tìm tổng lúc sau rồi trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại lúc sau: lấy $100\\%$ trừ $60\\%$.\n\n**Bước 2.** Hiệu hai bộ phận ứng với $20\\%$ của tổng lúc sau, nên lấy $9$ chia cho $20\\%$ để tìm tổng lúc sau.\n\n**Bước 3.** Lấy tổng lúc sau trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Chú ý:** các phần trăm tính trên tổng LÚC SAU (đã nhận thêm), nên phải trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố bạn nữ chiếm: $100\\%-60\\%=40\\%$ (sĩ số của lớp lúc sau)\n\nHiệu hai bộ phận ứng với: $60\\%-40\\%=20\\%$ (sĩ số của lớp lúc sau)\n\nSĩ số của lớp lúc sau là: $9:20\\%=45$ (bạn)\n\nSĩ số của lớp trước khi nhận thêm là: $45-6=39$ (bạn)\n\nĐáp số: $39$ bạn"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_sau_them_hoi_dau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trường tiểu học nhận thêm 9 học sinh mới. Lúc này số học sinh nam chiếm 44% tổng số học sinh toàn trường và ít hơn số học sinh nữ là 120 học sinh. Hỏi trước khi nhận thêm, trường đó có bao nhiêu học sinh?",
+  "dap_an": "$991$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Lúc sau, hiệu hai bộ phận ứng với $12\\%$ của tổng lúc sau; tìm tổng lúc sau rồi trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Bước 1.** Tìm phần trăm của bộ phận còn lại lúc sau: lấy $100\\%$ trừ $44\\%$.\n\n**Bước 2.** Hiệu hai bộ phận ứng với $12\\%$ của tổng lúc sau, nên lấy $120$ chia cho $12\\%$ để tìm tổng lúc sau.\n\n**Bước 3.** Lấy tổng lúc sau trừ đi số đã nhận thêm để được tổng lúc đầu.\n\n**Chú ý:** các phần trăm tính trên tổng LÚC SAU (đã nhận thêm), nên phải trừ số nhận thêm ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ chiếm: $100\\%-44\\%=56\\%$ (tổng số học sinh toàn trường lúc sau)\n\nHiệu hai bộ phận ứng với: $56\\%-44\\%=12\\%$ (tổng số học sinh toàn trường lúc sau)\n\nTổng số học sinh toàn trường lúc sau là: $120:12\\%=1000$ (học sinh)\n\nTổng số học sinh toàn trường trước khi nhận thêm là: $1000-9=991$ (học sinh)\n\nĐáp số: $991$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_dau_hoi_sau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một câu lạc bộ có số thành viên nam chiếm 60% tổng số thành viên và nhiều hơn số thành viên nữ là 40 thành viên. Sau đó có 7 thành viên mới được nhận thêm. Hỏi lúc này câu lạc bộ đó có bao nhiêu thành viên?",
+  "dap_an": "$207$ thành viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phần trăm tính trên tổng lúc đầu: hiệu hai bộ phận ứng với $20\\%$ của tổng lúc đầu nên tìm được tổng lúc đầu, rồi cộng thêm số thành viên nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm tổng lúc đầu: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 2.** Lấy $40$ chia cho $20\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Cộng thêm $7$ thành viên để được tổng lúc sau.\n\n**Chú ý:** đề hỏi tổng lúc này (sau khi nhận thêm), không phải tổng lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thành viên nữ chiếm: $100\\%-60\\%=40\\%$ (tổng số thành viên lúc đầu)\n\nHiệu hai bộ phận ứng với: $60\\%-40\\%=20\\%$ (tổng số thành viên lúc đầu)\n\nTổng số thành viên lúc đầu là: $40:20\\%=200$ (thành viên)\n\nTổng số thành viên lúc này là: $200+7=207$ (thành viên)\n\nĐáp số: $207$ thành viên"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_dau_hoi_sau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một câu lạc bộ có số thành viên nam chiếm 44% tổng số thành viên và ít hơn số thành viên nữ là 24 thành viên. Sau đó có 14 thành viên chuyển đi nơi khác. Hỏi lúc này câu lạc bộ đó có bao nhiêu thành viên?",
+  "dap_an": "$186$ thành viên",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phần trăm tính trên tổng lúc đầu: hiệu hai bộ phận ứng với $12\\%$ của tổng lúc đầu nên tìm được tổng lúc đầu, rồi trừ đi số thành viên chuyển đi.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm tổng lúc đầu: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 2.** Lấy $24$ chia cho $12\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Trừ đi $14$ thành viên để được tổng lúc sau.\n\n**Chú ý:** đề hỏi tổng lúc này (sau khi chuyển đi), không phải tổng lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố thành viên nữ chiếm: $100\\%-44\\%=56\\%$ (tổng số thành viên lúc đầu)\n\nHiệu hai bộ phận ứng với: $56\\%-44\\%=12\\%$ (tổng số thành viên lúc đầu)\n\nTổng số thành viên lúc đầu là: $24:12\\%=200$ (thành viên)\n\nTổng số thành viên lúc này là: $200-14=186$ (thành viên)\n\nĐáp số: $186$ thành viên"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_dau_hoi_sau",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trường tiểu học có số học sinh nam chiếm 46% tổng số học sinh toàn trường và ít hơn số học sinh nữ là 96 học sinh. Sau đó có 21 học sinh mới được nhận thêm. Hỏi lúc này trường đó có bao nhiêu học sinh?",
+  "dap_an": "$1221$ học sinh",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Các phần trăm tính trên tổng lúc đầu: hiệu hai bộ phận ứng với $8\\%$ của tổng lúc đầu nên tìm được tổng lúc đầu, rồi cộng thêm số học sinh nhận thêm.\n\n**Bước 1.** Tìm hiệu hai bộ phận ứng với bao nhiêu phần trăm tổng lúc đầu: lấy phần trăm lớn trừ phần trăm bé.\n\n**Bước 2.** Lấy $96$ chia cho $8\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Cộng thêm $21$ học sinh để được tổng lúc sau.\n\n**Chú ý:** đề hỏi tổng lúc này (sau khi nhận thêm), không phải tổng lúc đầu.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nSố học sinh nữ chiếm: $100\\%-46\\%=54\\%$ (tổng số học sinh toàn trường lúc đầu)\n\nHiệu hai bộ phận ứng với: $54\\%-46\\%=8\\%$ (tổng số học sinh toàn trường lúc đầu)\n\nTổng số học sinh toàn trường lúc đầu là: $96:8\\%=1200$ (học sinh)\n\nTổng số học sinh toàn trường lúc này là: $1200+21=1221$ (học sinh)\n\nĐáp số: $1221$ học sinh"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_roi_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Trong một khu vườn có số cây cam chiếm 35% và số cây quýt chiếm 23% tổng số cây trong vườn, còn lại là cây bưởi. Biết tổng số cây cam và cây quýt là 174 cây. Sau đó có thêm 10 cây mới. Hỏi lúc này có tất cả bao nhiêu cây?",
+  "dap_an": "$310$ cây",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $35\\%$ và $23\\%$ của tổng lúc đầu, cộng lại ứng với $58\\%$ của tổng đó; tìm tổng lúc đầu rồi cộng thêm số cây mới.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng lúc đầu: cộng $35\\%$ với $23\\%$.\n\n**Bước 2.** Lấy $174$ chia cho $58\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Cộng thêm $10$ cây mới để được tổng lúc này.\n\n**Chú ý:** các phần trăm tính trên tổng lúc đầu, nên chỉ cộng số mới thêm vào ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $35\\%+23\\%=58\\%$ (tổng số cây trong vườn lúc đầu)\n\nTổng số cây trong vườn lúc đầu là: $174:58\\%=300$ (cây)\n\nTổng số cây trong vườn lúc này là: $300+10=310$ (cây)\n\nĐáp số: $310$ cây"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_roi_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một thư viện có số sách khoa học chiếm 47% và số sách truyện chiếm 13% tổng số sách, còn lại là sách tham khảo. Biết tổng số quyển sách khoa học và quyển sách truyện là 240 quyển sách. Sau đó có thêm 24 quyển sách mới. Hỏi lúc này có tất cả bao nhiêu quyển sách?",
+  "dap_an": "$424$ quyển sách",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $47\\%$ và $13\\%$ của tổng lúc đầu, cộng lại ứng với $60\\%$ của tổng đó; tìm tổng lúc đầu rồi cộng thêm số quyển sách mới.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng lúc đầu: cộng $47\\%$ với $13\\%$.\n\n**Bước 2.** Lấy $240$ chia cho $60\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Cộng thêm $24$ quyển sách mới để được tổng lúc này.\n\n**Chú ý:** các phần trăm tính trên tổng lúc đầu, nên chỉ cộng số mới thêm vào ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $47\\%+13\\%=60\\%$ (tổng số sách lúc đầu)\n\nTổng số sách lúc đầu là: $240:60\\%=400$ (quyển sách)\n\nTổng số sách lúc này là: $400+24=424$ (quyển sách)\n\nĐáp số: $424$ quyển sách"
+ },
+ {
+  "dang": "NDB03553",
+  "mau": "ht_tong_roi_them",
+  "loai_cau": "tra_loi_ngan",
+  "noi_dung": "Một trại chăn nuôi có số con gà chiếm 32% và số con vịt chiếm 45% tổng số gia cầm, còn lại là ngan. Biết tổng số con gà và con vịt là 462 con. Sau đó có thêm 3 con mới. Hỏi lúc này có tất cả bao nhiêu con?",
+  "dap_an": "$603$ con",
+  "loi_giai": "**Phần 1. Hướng dẫn**\n\n**Mấu chốt:** Hai bộ phận chiếm $32\\%$ và $45\\%$ của tổng lúc đầu, cộng lại ứng với $77\\%$ của tổng đó; tìm tổng lúc đầu rồi cộng thêm số con mới.\n\n**Bước 1.** Tìm cả hai bộ phận chiếm bao nhiêu phần trăm tổng lúc đầu: cộng $32\\%$ với $45\\%$.\n\n**Bước 2.** Lấy $462$ chia cho $77\\%$ để tìm tổng lúc đầu.\n\n**Bước 3.** Cộng thêm $3$ con mới để được tổng lúc này.\n\n**Chú ý:** các phần trăm tính trên tổng lúc đầu, nên chỉ cộng số mới thêm vào ở bước cuối.\n\n**Phần 2. Trình bày**\n\nBài giải\n\nHai bộ phận chiếm: $32\\%+45\\%=77\\%$ (tổng số gia cầm lúc đầu)\n\nTổng số gia cầm lúc đầu là: $462:77\\%=600$ (con)\n\nTổng số gia cầm lúc này là: $600+3=603$ (con)\n\nĐáp số: $603$ con"
+ }
+]
